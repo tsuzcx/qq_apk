@@ -1,102 +1,102 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.Shader.TileMode;
-import java.util.Map;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.util.Pair;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
 
 public class ulc
-  implements uld
+  extends JobSegment<List<String>, List<String>>
+  implements tkm
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  protected final int a;
-  public Bitmap a;
-  private String jdField_a_of_type_JavaLangString;
-  public Map<String, Bitmap> a;
-  protected final int b;
+  private String a = "story.icon.UidListToUrlListSegment";
   
-  public ulc(int paramInt1, int paramInt2, float paramFloat, Map<String, Bitmap> paramMap, Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_JavaLangString = uls.a(new Object[] { "rounded", "r=", Integer.valueOf(paramInt1), "dm=", Integer.valueOf(paramInt2), "ds=", Float.valueOf(paramFloat) });
-  }
+  public ulc(String paramString) {}
   
-  public Bitmap a(Bitmap paramBitmap)
+  private Pair<List<String>, Boolean> a(List<String> paramList)
   {
-    for (;;)
+    ArrayList localArrayList = new ArrayList();
+    tdo localtdo = (tdo)tdc.a(2);
+    paramList = paramList.iterator();
+    boolean bool = true;
+    if (paramList.hasNext())
     {
-      try
-      {
-        float f1 = paramBitmap.getWidth();
-        float f2 = paramBitmap.getHeight();
-        float f3 = f2 / f1;
-        int m = (int)f2;
-        int k = (int)f1;
-        int j;
-        int i;
-        if (f3 > this.jdField_a_of_type_Float)
-        {
-          m = (int)(paramBitmap.getWidth() * this.jdField_a_of_type_Float);
-          j = (paramBitmap.getHeight() - m) / 2;
-          i = 0;
-          if (this.jdField_a_of_type_JavaUtilMap == null) {
-            break label422;
-          }
-          localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilMap.get("RT:w=" + k + "h=" + m);
-          if ((localBitmap == null) || (localBitmap.isRecycled()))
-          {
-            paramBitmap = Bitmap.createBitmap(paramBitmap, i, j, k, m);
-            localBitmap = paramBitmap;
-            if (this.jdField_a_of_type_JavaUtilMap != null)
-            {
-              this.jdField_a_of_type_JavaUtilMap.put("RT:w=" + k + "h=" + m, paramBitmap);
-              localBitmap = paramBitmap;
-            }
-            Paint localPaint = new Paint();
-            localPaint.setAntiAlias(true);
-            localPaint.setShader(new BitmapShader(localBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
-            if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-              break label414;
-            }
-            paramBitmap = Bitmap.createBitmap(localBitmap.getWidth(), localBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-            paramBitmap.eraseColor(0);
-            new Canvas(paramBitmap).drawRoundRect(new RectF(this.b, this.b, localBitmap.getWidth() - this.b, localBitmap.getHeight() - this.b), this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, localPaint);
-            return paramBitmap;
-          }
-        }
-        else
-        {
-          k = (int)(paramBitmap.getHeight() / this.jdField_a_of_type_Float);
-          i = (paramBitmap.getWidth() - k) / 2;
-          j = 0;
-          continue;
-        }
-        localBitmap.eraseColor(0);
-        ulr.a(paramBitmap, localBitmap, i, j, k, m, null, false);
-        continue;
-        paramBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      QQUserUIItem localQQUserUIItem = localtdo.b((String)paramList.next());
+      if ((localQQUserUIItem != null) && (localQQUserUIItem.headUrl != null)) {
+        localArrayList.add(localQQUserUIItem.headUrl);
       }
-      catch (Exception paramBitmap)
+      for (;;)
       {
-        urk.e("RoundedTransformation", "occur error:" + paramBitmap);
-        return null;
+        break;
+        localArrayList.add("stub_url");
+        bool = false;
       }
-      label414:
-      continue;
-      label422:
-      Bitmap localBitmap = null;
     }
+    return new Pair(localArrayList, Boolean.valueOf(bool));
   }
   
-  public String a()
+  private void b(List<String> paramList)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    ukm.a(this.a, "fireRefreshUserInfo : %s", new JSONArray(paramList));
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(new tej(null, (String)paramList.next()));
+    }
+    new tkl(this).a(1, localArrayList);
+  }
+  
+  protected void a(JobContext paramJobContext, List<String> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      notifyError(new ErrorMessage(-1, ""));
+    }
+    do
+    {
+      return;
+      paramJobContext = Collections.unmodifiableList(paramList);
+      paramList = a(paramJobContext);
+      ukm.a(this.a, "getUnionIdListFromCache ok=%s", paramList.second);
+      a((List)paramList.first);
+    } while (((Boolean)paramList.second).booleanValue());
+    ukm.a(this.a, "fireRefreshUserInfo");
+    b(paramJobContext);
+  }
+  
+  protected void a(List<String> paramList)
+  {
+    ukm.a(this.a, "notifyResult url list : " + new JSONArray(paramList));
+    if (paramList.size() == 1)
+    {
+      ukm.b(this.a, "add one more default item because of product logic");
+      paramList.add("stub_url");
+    }
+    super.notifyResult(paramList);
+  }
+  
+  public void a(tkn paramtkn)
+  {
+    if ((paramtkn == null) || (paramtkn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramtkn.jdField_a_of_type_JavaUtilList == null))
+    {
+      ukm.b(this.a, "refresh user info fail %s", paramtkn);
+      if (paramtkn == null) {}
+      for (paramtkn = new ErrorMessage(-1, "event is null");; paramtkn = paramtkn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage)
+      {
+        notifyError(paramtkn);
+        return;
+      }
+    }
+    ukm.a(this.a, "refresh user info success, let's return the new info");
+    ArrayList localArrayList = new ArrayList();
+    paramtkn = paramtkn.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramtkn.hasNext()) {
+      localArrayList.add(((QQUserUIItem)paramtkn.next()).headUrl);
+    }
+    a(localArrayList);
   }
 }
 

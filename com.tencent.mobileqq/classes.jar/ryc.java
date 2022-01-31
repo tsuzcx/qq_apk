@@ -1,6 +1,17 @@
-abstract interface ryc
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONObject;
+
+public class ryc
+  implements View.OnClickListener
 {
-  public abstract rwm a();
+  public ryc(BridgeModule paramBridgeModule, String paramString) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, new JSONObject());
+  }
 }
 
 

@@ -1,13 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class aayk
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public aayk(GroupManagerActivity paramGroupManagerActivity) {}
+  public aayk(DialogActivity paramDialogActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
     this.a.finish();
   }

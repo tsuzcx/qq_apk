@@ -1,146 +1,69 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.takevideo.tag.TagItemEntry;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.ttpic.videoshelf.model.edit.NodeGroup;
+import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
+import com.tencent.ttpic.videoshelf.model.template.VideoShelfTemplate;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import javax.annotation.Nonnull;
 
 public class bixh
+  extends AsyncTask<Void, Void, Void>
 {
-  private final int jdField_a_of_type_Int = 20;
-  private atmp jdField_a_of_type_Atmp;
-  private bihf jdField_a_of_type_Bihf;
-  private final bixk jdField_a_of_type_Bixk;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<vik> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private vik jdField_a_of_type_Vik;
-  private int b = 1;
+  public bixh(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
   
-  public bixh(bixk parambixk, atmp paramatmp)
+  protected Void a(Void... paramVarArgs)
   {
-    this.jdField_a_of_type_Bixk = parambixk;
-    this.jdField_a_of_type_Atmp = paramatmp;
-  }
-  
-  public static List<vik> a(atmp paramatmp)
-  {
-    Object localObject = a(paramatmp, TagItemEntry.class, TagItemEntry.class.getSimpleName(), null, null);
-    paramatmp = (atmp)localObject;
-    if (localObject == null) {
-      paramatmp = new ArrayList();
-    }
-    localObject = new ArrayList();
-    paramatmp = paramatmp.iterator();
-    while (paramatmp.hasNext()) {
-      ((List)localObject).add(new vik((TagItemEntry)paramatmp.next()));
-    }
-    return localObject;
-  }
-  
-  public static List<? extends atmo> a(atmp paramatmp, Class<? extends atmo> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    return paramatmp.a(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
-  }
-  
-  public static void a(atmp paramatmp, List<vik> paramList)
-  {
-    try
+    paramVarArgs = new Intent();
+    paramVarArgs.putExtra("from", true);
+    paramVarArgs.putExtra("isNeedEditButton", true);
+    paramVarArgs.putExtra("usePagPreview", true);
+    paramVarArgs.putExtra("videoOutWidth", AEVideoShelfEditFragment.a(this.a).getVideoWidth());
+    paramVarArgs.putExtra("videoOutHeight", AEVideoShelfEditFragment.a(this.a).getVideoHeight());
+    paramVarArgs.putExtra("pagFilePath", AEVideoShelfEditFragment.a(this.a).getPagFilePath());
+    paramVarArgs.putExtra("audioFilePath", AEVideoShelfEditFragment.a(this.a).getAudioPath());
+    paramVarArgs.putExtra("MaterialPath", AEVideoShelfEditFragment.a(this.a));
+    paramVarArgs.putExtra("MaterialId", AEVideoShelfEditFragment.b(this.a));
+    paramVarArgs.putExtra("MaterialName", AEVideoShelfEditFragment.a(this.a).getVideoName());
+    paramVarArgs.putStringArrayListExtra("PhotoList", AEVideoShelfEditFragment.a(this.a));
+    paramVarArgs.putExtra("loc_play_show_tab_name", AEVideoShelfEditFragment.c(this.a));
+    paramVarArgs.putExtra("loc_play_show_material_id", AEVideoShelfEditFragment.b(this.a));
+    paramVarArgs.putExtra("VIDEO_STORY_FROM_TYPE", AETemplateInfoFragment.a(this.a.getActivity()));
+    HashMap localHashMap = new HashMap();
+    Object localObject = AEVideoShelfEditFragment.a(this.a).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      Object localObject = a(paramatmp, TagItemEntry.class, TagItemEntry.class.getSimpleName(), null, null);
-      if (localObject != null)
+      Iterator localIterator = ((NodeGroup)((Iterator)localObject).next()).nodeItemList.iterator();
+      while (localIterator.hasNext())
       {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          TagItemEntry localTagItemEntry = (TagItemEntry)((Iterator)localObject).next();
-          localTagItemEntry.setStatus(1001);
-          paramatmp.b(localTagItemEntry);
+        NodeItem localNodeItem = (NodeItem)localIterator.next();
+        if (localNodeItem.type != 1) {
+          localHashMap.put(AEVideoShelfEditFragment.a(this.a, localNodeItem.nodeID, localNodeItem.cropBitmap), localNodeItem.indexLayerForPag);
+        } else {
+          localHashMap.put(AEVideoShelfEditFragment.a(this.a, localNodeItem.nodeID, localNodeItem.bitmap), localNodeItem.indexLayerForPag);
         }
       }
     }
-    finally
-    {
-      paramatmp.a().b();
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      paramatmp.b(((vik)paramList.next()).a());
-    }
-    paramatmp.a().c();
-    paramatmp.a().b();
+    localObject = new Bundle();
+    ((Bundle)localObject).putSerializable("nodeImgList", localHashMap);
+    paramVarArgs.putExtras((Bundle)localObject);
+    AEVideoShelfEditFragment.a(this.a, paramVarArgs);
+    return null;
   }
   
-  public List<vik> a()
+  protected void a(Void paramVoid)
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    super.onPostExecute(paramVoid);
+    AEVideoShelfEditFragment.c(this.a);
   }
   
-  @Nullable
-  public vik a()
+  protected void onPreExecute()
   {
-    return this.jdField_a_of_type_Vik;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Bihf = null;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = 1;
-    this.jdField_a_of_type_Vik = null;
-  }
-  
-  public void a(@Nonnull bihf parambihf)
-  {
-    urk.a("EditVideoTagPresenter", "%s refresh data, behavior:%s", this, parambihf);
-    this.jdField_a_of_type_Bihf = parambihf;
-    if (parambihf.jdField_a_of_type_Boolean) {}
-    for (parambihf = new tak(parambihf.jdField_a_of_type_Int, parambihf.jdField_a_of_type_Long, "", 20);; parambihf = new tak("", 20))
-    {
-      slv.a().a(parambihf, new bixi(this));
-      return;
-    }
-  }
-  
-  public void a(List<vik> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public void a(vik paramvik)
-  {
-    this.jdField_a_of_type_Vik = paramvik;
-  }
-  
-  public boolean a()
-  {
-    return this.b == 1;
-  }
-  
-  public boolean a(bihf parambihf)
-  {
-    if (this.jdField_a_of_type_Bihf != null) {
-      if (this.jdField_a_of_type_Bihf.equals(parambihf)) {}
-    }
-    while (parambihf != null)
-    {
-      return true;
-      return false;
-    }
-    return false;
-  }
-  
-  public void b(@Nonnull bihf parambihf)
-  {
-    urk.a("EditVideoTagPresenter", "%s loadMore data, behavior:%s", this, parambihf);
-    this.jdField_a_of_type_Bihf = parambihf;
-    if (parambihf.jdField_a_of_type_Boolean) {}
-    for (parambihf = new tak(parambihf.jdField_a_of_type_Int, parambihf.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, 20);; parambihf = new tak(this.jdField_a_of_type_JavaLangString, 20))
-    {
-      slv.a().a(parambihf, new bixj(this));
-      return;
-    }
+    super.onPreExecute();
+    AEVideoShelfEditFragment.a(this.a, null);
   }
 }
 

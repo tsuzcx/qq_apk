@@ -1,172 +1,259 @@
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
+import android.content.Context;
+import android.content.res.Resources;
+import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.ApngImage;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.lang.ref.WeakReference;
+import java.net.MalformedURLException;
 import java.net.URL;
-import javax.annotation.Nullable;
-import mqq.app.AppRuntime;
+import java.util.List;
 
 public class baop
+  extends BaseAdapter
 {
-  public static int[] a = { 2, 3, 4, 5, 6, 8 };
-  public static final int[] b = { 1, 0, 2, 3, 9, 27 };
+  int jdField_a_of_type_Int;
+  Context jdField_a_of_type_AndroidContentContext;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  Setting jdField_a_of_type_ComTencentMobileqqDataSetting = null;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<TextView> jdField_a_of_type_JavaLangRefWeakReference = null;
+  protected List<String> a;
+  boolean jdField_a_of_type_Boolean = false;
+  String jdField_b_of_type_JavaLangString = null;
+  protected List<String> b;
+  boolean jdField_b_of_type_Boolean = true;
+  boolean c = false;
   
-  public static URLDrawable a(String paramString1, String paramString2, Drawable paramDrawable, int[] paramArrayOfInt, String paramString3, Bundle paramBundle)
+  public baop(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    return a(null, paramString1, paramString2, paramDrawable, paramArrayOfInt, paramString3, paramBundle);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = ((int)paramContext.getResources().getDimension(2131297326));
   }
   
-  public static URLDrawable a(String paramString, int[] paramArrayOfInt, Drawable paramDrawable)
+  private URL a(URL paramURL)
   {
-    return a(paramString, paramArrayOfInt, paramDrawable, null, new baoq(paramArrayOfInt));
-  }
-  
-  public static URLDrawable a(String paramString, int[] paramArrayOfInt, Drawable paramDrawable, Bundle paramBundle, URLDrawable.URLDrawableListener paramURLDrawableListener)
-  {
-    String str1 = new File(paramString).getName();
-    String str2 = a(paramString);
-    paramString = b(BaseApplicationImpl.sApplication.getRuntime(), str2, paramString, paramDrawable, paramArrayOfInt, str1, paramBundle);
-    if (paramString != null)
+    URL localURL = paramURL;
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
-      int i = paramString.getStatus();
-      if (i != 1)
+      localURL = paramURL;
+      if ("2000".equals(this.jdField_b_of_type_JavaLangString))
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("ddddd", 2, "urlDrawable is not  SUCCESSED :" + i);
+        localURL = paramURL;
+        if (paramURL.getProtocol().startsWith("http")) {
+          localURL = sfd.a(paramURL.toString(), 2);
         }
-        paramString.setURLDrawableListener(paramURLDrawableListener);
-        if (i == 2) {
-          paramString.restartDownload();
+      }
+    }
+    return localURL;
+  }
+  
+  private boolean a(int paramInt)
+  {
+    return (this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() > paramInt) && (!TextUtils.isEmpty((CharSequence)this.jdField_b_of_type_JavaUtilList.get(paramInt))) && (ayog.a((String)this.jdField_b_of_type_JavaUtilList.get(paramInt)) != null);
+  }
+  
+  public String a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < getCount())) {
+      return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public void a(int paramInt, baor parambaor)
+  {
+    if ((parambaor == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
+    URLImageView localURLImageView;
+    ImageProgressCircle localImageProgressCircle;
+    label67:
+    Object localObject;
+    label83:
+    label217:
+    label219:
+    do
+    {
+      return;
+      localURLImageView = parambaor.jdField_a_of_type_ComTencentImageURLImageView;
+      localImageProgressCircle = parambaor.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
+      parambaor = a(paramInt);
+      if ((this.c) || (a(paramInt)))
+      {
+        parambaor = (String)this.jdField_b_of_type_JavaUtilList.get(paramInt);
+        QLog.d("TroopAvatarBigPhotoAdapter", 2, "load origin");
+        if (TextUtils.isEmpty(parambaor)) {
+          break label217;
+        }
+        if (!this.jdField_a_of_type_Boolean) {
+          break label219;
+        }
+        localObject = parambaor;
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopAvatarBigPhotoAdapter", 2, "loadThumbImage() path = " + (String)localObject);
+        }
+        String str = Uri.parse((String)localObject).getScheme();
+        if ((!TextUtils.isEmpty(str)) && ((str.equals("http")) || (str.equals("https")))) {
+          break label294;
         }
       }
       for (;;)
       {
-        return paramString;
-        paramString.startDownload();
-        continue;
-        paramDrawable = paramString.getCurrDrawable();
-        if ((paramDrawable != null) && ((paramDrawable instanceof ApngDrawable)) && (((ApngDrawable)paramDrawable).getImage() != null)) {
-          ApngImage.playByTag(paramArrayOfInt[0]);
+        try
+        {
+          localObject = new File((String)localObject).toURL();
+          localObject = a((URL)localObject);
+          if (((this.jdField_a_of_type_ComTencentMobileqqDataSetting != null) && (this.jdField_a_of_type_ComTencentMobileqqDataSetting.bHeadType != 0)) || (parambaor == null) || (!parambaor.equals(aglg.jdField_a_of_type_JavaLangString))) {
+            break label324;
+          }
+          localURLImageView.setImageResource(2130841976);
+          return;
         }
+        catch (MalformedURLException parambaor) {}
+        QLog.d("TroopAvatarBigPhotoAdapter", 2, "load current");
+        break label67;
+        break;
+        if (bahh.b(parambaor))
+        {
+          if ((parambaor != null) && (parambaor.equals(aglg.jdField_a_of_type_JavaLangString)))
+          {
+            localObject = bahh.a(parambaor, this.jdField_a_of_type_JavaLangString, 0);
+            localObject = bahh.b((String)localObject);
+            break label83;
+          }
+          localObject = bahh.a(parambaor, this.jdField_a_of_type_JavaLangString, 1);
+          continue;
+        }
+        localObject = parambaor;
+        break label83;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.i("TroopAvatarBigPhotoAdapter", 2, parambaor.toString());
+        return;
+        try
+        {
+          localObject = new URL((String)localObject);
+        }
+        catch (MalformedURLException parambaor) {}
       }
+    } while (!QLog.isColorLevel());
+    label294:
+    QLog.i("TroopAvatarBigPhotoAdapter", 2, parambaor.toString());
+    return;
+    label324:
+    parambaor = URLDrawable.URLDrawableOptions.obtain();
+    parambaor.mRequestWidth = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
+    parambaor.mRequestHeight = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels;
+    parambaor.mLoadingDrawable = aywk.a;
+    if (this.jdField_b_of_type_Boolean) {
+      parambaor.mPlayGifImage = true;
     }
-    return null;
+    localURLImageView.setImageDrawable(URLDrawable.getDrawable((URL)localObject, parambaor));
+    a(localImageProgressCircle);
+    localURLImageView.setURLDrawableDownListener(new baoq(this, localImageProgressCircle, localURLImageView));
   }
   
-  public static URLDrawable a(@Nullable AppRuntime paramAppRuntime, String paramString1, String paramString2, Drawable paramDrawable, int[] paramArrayOfInt, String paramString3, Bundle paramBundle)
+  public void a(TextView paramTextView)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return null;
-    }
-    paramAppRuntime = paramBundle;
-    if (paramBundle == null) {}
-    try
-    {
-      paramAppRuntime = new Bundle();
-      boolean bool = paramAppRuntime.getBoolean("key_play_apng", true);
-      int i = paramAppRuntime.getInt("key_loop");
-      paramBundle = new URL("vasapngdownloader", paramString1, paramString2);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mUseApngImage = bool;
-      localURLDrawableOptions.mUseMemoryCache = paramAppRuntime.getBoolean("key_use_cache", true);
-      localURLDrawableOptions.mMemoryCacheKeySuffix = (bool + "," + i);
-      i = paramAppRuntime.getInt("key_width", 0);
-      int j = paramAppRuntime.getInt("key_height", 0);
-      if ((i > 0) && (j > 0))
-      {
-        localURLDrawableOptions.mRequestWidth = i;
-        localURLDrawableOptions.mRequestHeight = j;
-      }
-      localURLDrawableOptions.mLoadingDrawable = paramDrawable;
-      localURLDrawableOptions.mFailedDrawable = paramDrawable;
-      paramAppRuntime.putIntArray("key_tagId_arr", paramArrayOfInt);
-      paramAppRuntime.putString("key_name", paramString3);
-      paramAppRuntime.putBoolean("key_double_bitmap", true);
-      localURLDrawableOptions.mExtraInfo = paramAppRuntime;
-      if ("-Dynamic-".equals(paramString2)) {
-        localURLDrawableOptions.mUseAutoScaleParams = false;
-      }
-      if (!paramAppRuntime.getBoolean("key_use_auto_scale_params", true)) {
-        localURLDrawableOptions.mUseAutoScaleParams = false;
-      }
-      paramAppRuntime = URLDrawable.getDrawable(paramBundle, localURLDrawableOptions);
-      if (QLog.isColorLevel()) {
-        QLog.d("VasApngUtil", 2, "getApngDrawable ApngImage ok path:" + paramString1 + ", name=" + paramString3);
-      }
-      return paramAppRuntime;
-    }
-    catch (Exception paramAppRuntime)
-    {
-      QLog.e("VasApngUtil", 1, "getApngDrawable ApngImage err:" + paramAppRuntime.toString() + ", path:" + paramString1 + ", name=" + paramString3);
-    }
-    return null;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTextView);
   }
   
-  public static URLDrawable a(AppRuntime paramAppRuntime, String paramString1, String paramString2, Drawable paramDrawable, int[] paramArrayOfInt, String paramString3, boolean paramBoolean, Bundle paramBundle)
+  public void a(ImageProgressCircle paramImageProgressCircle)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return null;
+    if (paramImageProgressCircle == null) {}
+    while (paramImageProgressCircle.getVisibility() == 4) {
+      return;
     }
-    paramAppRuntime = paramBundle;
-    if (paramBundle == null) {}
-    try
-    {
-      paramAppRuntime = new Bundle();
-      boolean bool = paramAppRuntime.getBoolean("key_play_apng", true);
-      int i = paramAppRuntime.getInt("key_loop");
-      paramString2 = new URL("vasapngdownloader", paramString1, paramString2);
-      paramBundle = URLDrawable.URLDrawableOptions.obtain();
-      paramBundle.mUseApngImage = bool;
-      paramBundle.mUseMemoryCache = paramAppRuntime.getBoolean("key_use_cache", true);
-      paramBundle.mMemoryCacheKeySuffix = (bool + "," + i);
-      paramBundle.mUseUnFinishCache = paramBoolean;
-      i = paramAppRuntime.getInt("key_width", 0);
-      int j = paramAppRuntime.getInt("key_height", 0);
-      if ((i > 0) && (j > 0))
-      {
-        paramBundle.mRequestWidth = i;
-        paramBundle.mRequestHeight = j;
-      }
-      paramBundle.mLoadingDrawable = paramDrawable;
-      paramBundle.mFailedDrawable = paramDrawable;
-      paramAppRuntime.putIntArray("key_tagId_arr", paramArrayOfInt);
-      paramAppRuntime.putString("key_name", paramString3);
-      paramAppRuntime.putBoolean("key_double_bitmap", true);
-      paramBundle.mExtraInfo = paramAppRuntime;
-      paramBundle.mUseAutoScaleParams = false;
-      paramAppRuntime = URLDrawable.getDrawable(paramString2, paramBundle);
-      if (QLog.isColorLevel()) {
-        QLog.d("VasApngUtil", 2, "getApngDrawable ApngImage ok path:" + paramString1 + ", name=" + paramString3);
-      }
-      return paramAppRuntime;
-    }
-    catch (Exception paramAppRuntime)
-    {
-      QLog.e("VasApngUtil", 1, "getApngDrawable ApngImage err:" + paramAppRuntime.toString() + ", path:" + paramString1 + ", name=" + paramString3);
-    }
-    return null;
+    paramImageProgressCircle.setVisibility(4);
   }
   
-  public static String a(String paramString)
+  public void a(String paramString)
   {
-    return ajed.aU + ".vipicon/" + paramString.hashCode() + ".png";
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
   
-  public static URLDrawable b(AppRuntime paramAppRuntime, String paramString1, String paramString2, Drawable paramDrawable, int[] paramArrayOfInt, String paramString3, Bundle paramBundle)
+  public void a(String paramString, Setting paramSetting)
   {
-    return a(paramAppRuntime, paramString1, paramString2, paramDrawable, paramArrayOfInt, paramString3, true, paramBundle);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqDataSetting = paramSetting;
+  }
+  
+  public void a(List<String> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(List<String> paramList)
+  {
+    this.jdField_b_of_type_JavaUtilList = paramList;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558818, null);
+      paramView = new baor(this);
+      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131367776));
+      paramView.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle = ((ImageProgressCircle)localView.findViewById(2131367875));
+      localView.setTag(paramView);
+      paramViewGroup = paramView;
+    }
+    for (;;)
+    {
+      a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+      a(paramInt, paramViewGroup);
+      return localView;
+      paramViewGroup = (baor)paramView.getTag();
+      localView = paramView;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baop
  * JD-Core Version:    0.7.0.1
  */

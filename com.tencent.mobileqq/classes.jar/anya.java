@@ -1,16 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class anya
-  implements DialogInterface.OnCancelListener
+  extends anyc
 {
-  public anya(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public static int b = 165;
+  public int a;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public Drawable a(Context paramContext, float paramFloat)
   {
-    this.a.a.a(null);
-    LocalFileBrowserActivity.a(this.a);
+    return ayla.a(this.a);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  {
+    int i = paramEditText.getSelectionStart();
+    int j = paramEditText.getSelectionEnd();
+    paramEditText.getEditableText().replace(i, j, ayla.a(this.a));
+    paramEditText.requestFocus();
   }
 }
 

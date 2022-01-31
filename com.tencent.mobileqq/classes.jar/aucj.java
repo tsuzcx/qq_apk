@@ -1,49 +1,23 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
 
-public abstract class aucj
+public final class aucj
+  implements Parcelable.Creator<TranslateResult>
 {
-  public static void a(QQAppInterface paramQQAppInterface)
+  public TranslateResult a(Parcel paramParcel)
   {
-    BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putBoolean("UserGuide", true).commit();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "markUserGuideFlag");
-    }
+    return new TranslateResult(paramParcel);
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  public TranslateResult[] a(int paramInt)
   {
-    boolean bool = false;
-    if (!BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("UserGuide", false)) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface)
-  {
-    long l = System.currentTimeMillis();
-    BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putLong("UserTips", l);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "markUserTipsFlag:" + l);
-    }
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool = false;
-    if (Math.abs(System.currentTimeMillis() - BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).getLong("UserTips", 0L)) >= 3600000L) {
-      bool = true;
-    }
-    return bool;
+    return new TranslateResult[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aucj
  * JD-Core Version:    0.7.0.1
  */

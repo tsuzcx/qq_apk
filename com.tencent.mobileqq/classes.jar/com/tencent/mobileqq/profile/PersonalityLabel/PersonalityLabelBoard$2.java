@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
 import android.view.View;
-import atvi;
+import autg;
 import mqq.util.WeakReference;
 
 class PersonalityLabelBoard$2
@@ -17,13 +17,13 @@ class PersonalityLabelBoard$2
       }
     }
     label62:
-    for (atvi localatvi = null;; localatvi = (atvi)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get())
+    for (autg localautg = null;; localautg = (autg)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get())
     {
-      if (localatvi != null)
+      if (localautg != null)
       {
         int i = this.this$0.jdField_a_of_type_AndroidViewView.getTop();
         if (i >= 0) {
-          localatvi.e(i);
+          localautg.e(i);
         }
       }
       return;

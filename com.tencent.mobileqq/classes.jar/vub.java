@@ -1,22 +1,75 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-class vub
-  implements DialogInterface.OnClickListener
+public class vub
+  extends bfya
 {
-  vub(vua paramvua) {}
+  private vto a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vub(vto paramvto)
   {
-    ((ajrc)this.a.a.app.a(10)).a(true);
-    awqx.b(null, "dc00898", "", "", "0X800A476", "0X800A476", 0, 0, "", "", "", "");
+    this.a = paramvto;
   }
+  
+  public void clearView(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  {
+    super.clearView(paramRecyclerView, paramViewHolder);
+    if ((paramViewHolder instanceof vtx))
+    {
+      ((vtx)paramViewHolder).a = false;
+      if ((paramRecyclerView.getScrollState() == 0) && (!paramRecyclerView.isComputingLayout())) {
+        paramRecyclerView.getAdapter().notifyItemChanged(paramViewHolder.getAdapterPosition(), Integer.valueOf(0));
+      }
+    }
+  }
+  
+  public float getMoveThreshold(RecyclerView.ViewHolder paramViewHolder)
+  {
+    return 0.25F;
+  }
+  
+  public int getMovementFlags(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  {
+    paramRecyclerView = paramRecyclerView.getLayoutManager();
+    if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).getOrientation() == 0)) {}
+    for (int i = 15;; i = 0) {
+      return makeMovementFlags(i, 0);
+    }
+  }
+  
+  public boolean isItemViewSwipeEnabled()
+  {
+    return false;
+  }
+  
+  public boolean onMove(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2)
+  {
+    if (this.a != null) {
+      this.a.a(paramViewHolder1.getAdapterPosition(), paramViewHolder2.getAdapterPosition());
+    }
+    return false;
+  }
+  
+  public void onSelectedChanged(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    super.onSelectedChanged(paramViewHolder, paramInt);
+    if ((paramInt == 2) && ((paramViewHolder instanceof vtx)))
+    {
+      paramViewHolder = (vtx)paramViewHolder;
+      paramViewHolder.a = true;
+      if ((this.a instanceof vtu)) {
+        ((vtu)this.a).notifyItemChanged(paramViewHolder.getAdapterPosition(), Integer.valueOf(0));
+      }
+    }
+  }
+  
+  public void onSwiped(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vub
  * JD-Core Version:    0.7.0.1
  */

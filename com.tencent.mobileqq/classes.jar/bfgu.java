@@ -1,41 +1,21 @@
-import android.app.Dialog;
-import android.view.Window;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 public class bfgu
 {
-  private static void b(String paramString)
+  private static SharedPreferences a;
+  
+  public static SharedPreferences a()
   {
-    Dialog localDialog = new Dialog(BaseApplicationImpl.getApplication(), 2131690181);
-    localDialog.getWindow().setType(2003);
-    localDialog.setContentView(2131493323);
-    TextView localTextView = (TextView)localDialog.findViewById(2131299583);
-    if (localTextView != null) {
-      localTextView.setText("dump文件保存地址");
+    if (a == null) {
+      a = bepk.a().a().getSharedPreferences("pre_miniapp", 4);
     }
-    localTextView = (TextView)localDialog.findViewById(2131299579);
-    if ((localTextView != null) && (paramString != null)) {
-      localTextView.setText(paramString);
-    }
-    localTextView = (TextView)localDialog.findViewById(2131299568);
-    if (localTextView != null)
-    {
-      localTextView.setText(2131625035);
-      localTextView.setOnClickListener(new bfgw(localDialog));
-    }
-    localTextView = (TextView)localDialog.findViewById(2131299574);
-    if (localTextView != null)
-    {
-      localTextView.setText(2131625971);
-      localTextView.setOnClickListener(new bfgx(localDialog, paramString));
-    }
-    localDialog.show();
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfgu
  * JD-Core Version:    0.7.0.1
  */

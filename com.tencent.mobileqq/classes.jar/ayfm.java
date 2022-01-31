@@ -1,44 +1,48 @@
-import android.content.ContentResolver;
-import android.database.ContentObserver;
-import android.os.Handler;
-import android.provider.Settings.System;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ayfm
-  extends ContentObserver
+  extends Dialog
 {
-  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
-  
-  public ayfm(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, Handler paramHandler)
+  public ayfm(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    super(paramHandler);
-    this.jdField_a_of_type_AndroidContentContentResolver = paramTroopAvatarWallPreviewActivity.getContentResolver();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidContentContentResolver.unregisterContentObserver(this);
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    super.onChange(paramBoolean);
-    if (Settings.System.getInt(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getContentResolver(), "accelerometer_rotation", -1) == 1)
+    super(paramContext, 2131755791);
+    setContentView(2131562510);
+    paramContext = (TextView)findViewById(2131377350);
+    if (!TextUtils.isEmpty(paramString1))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.setRequestedOrientation(4);
-      return;
+      paramContext.setVisibility(0);
+      paramContext.setText(paramString1);
+      paramContext = (TextView)findViewById(2131364692);
+      if (TextUtils.isEmpty(paramString2)) {
+        break label142;
+      }
+      paramContext.setVisibility(0);
+      paramContext.setMovementMethod(LinkMovementMethod.getInstance());
+      paramContext.setText(new aydv(paramString2, 8));
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.setRequestedOrientation(1);
+    for (;;)
+    {
+      ((Button)findViewById(2131364616)).setOnClickListener(new ayfn(this, paramOnClickListener1));
+      ((ImageView)findViewById(2131364269)).setOnClickListener(new ayfo(this, paramOnClickListener2));
+      setCanceledOnTouchOutside(false);
+      return;
+      paramContext.setVisibility(8);
+      break;
+      label142:
+      paramContext.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayfm
  * JD-Core Version:    0.7.0.1
  */

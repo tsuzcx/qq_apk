@@ -1,8 +1,8 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import ajjy;
+import ajyc;
 import android.os.Build.VERSION;
-import bbmy;
+import bcpw;
 
 class EditVideoActivity$2$1
   implements Runnable
@@ -14,7 +14,7 @@ class EditVideoActivity$2$1
     if (((Build.VERSION.SDK_INT > 16) && (this.a.this$0.isDestroyed())) || (this.a.this$0.isFinishing())) {
       return;
     }
-    bbmy.a(this.a.this$0, ajjy.a(2131637969), 0).a();
+    bcpw.a(this.a.this$0, ajyc.a(2131703754), 0).a();
     this.a.this$0.finish();
   }
 }

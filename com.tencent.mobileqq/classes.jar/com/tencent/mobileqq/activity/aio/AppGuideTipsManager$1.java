@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acjd;
+import acts;
 import android.text.TextUtils;
-import atmp;
+import aukn;
 import com.tencent.mobileqq.data.AppGuideTipsConfig;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -11,14 +11,14 @@ import java.util.Map;
 public class AppGuideTipsManager$1
   implements Runnable
 {
-  public AppGuideTipsManager$1(acjd paramacjd) {}
+  public AppGuideTipsManager$1(acts paramacts) {}
   
   public void run()
   {
-    acjd.a(this.this$0);
+    acts.a(this.this$0);
     this.this$0.c();
-    acjd.a(this.this$0).clear();
-    ArrayList localArrayList = (ArrayList)acjd.a(this.this$0).a(AppGuideTipsConfig.class, AppGuideTipsConfig.class.getSimpleName(), false, null, null, null, null, null, null);
+    acts.a(this.this$0).clear();
+    ArrayList localArrayList = (ArrayList)acts.a(this.this$0).a(AppGuideTipsConfig.class, AppGuideTipsConfig.class.getSimpleName(), false, null, null, null, null, null, null);
     if ((localArrayList == null) || (localArrayList.size() <= 0)) {}
     for (;;)
     {
@@ -51,15 +51,15 @@ public class AppGuideTipsManager$1
         label174:
         j += 1;
         break label137;
-        acjd.a(this.this$0).put(localAppGuideTipsConfig.tipsType, localAppGuideTipsConfig);
+        acts.a(this.this$0).put(localAppGuideTipsConfig.tipsType, localAppGuideTipsConfig);
         i += 1;
         break label71;
-        acjd.a(this.this$0, true);
+        acts.a(this.this$0, true);
         this.this$0.b();
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d(acjd.a, 2, "loadConfig, mTipsMap size=" + acjd.a(this.this$0).size());
+        QLog.d(acts.a, 2, "loadConfig, mTipsMap size=" + acts.a(this.this$0).size());
         return;
       }
       catch (Exception localException)

@@ -1,152 +1,171 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.ark.image.PhotoListLogicArk.2;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.armap.ARMapTracer;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Locale;
-import mqq.util.WeakReference;
+import java.util.HashMap;
 
 public class alhb
-  extends aggm
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
+  static alhb a;
+  public int a;
+  public long a;
+  public long b;
+  public long c;
+  public long d;
+  public long e;
+  public long f;
   
-  private alhb(NewPhotoListActivity paramNewPhotoListActivity)
+  public static alhb a()
   {
-    super(paramNewPhotoListActivity);
-  }
-  
-  public static aggh b(NewPhotoListActivity paramNewPhotoListActivity)
-  {
-    if ((jdField_a_of_type_Aggh == null) || (jdField_a_of_type_Aggh.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoListActivity)) {}
     try
     {
-      if ((jdField_a_of_type_Aggh == null) || (jdField_a_of_type_Aggh.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoListActivity)) {
-        jdField_a_of_type_Aggh = new alhb(paramNewPhotoListActivity);
+      if (jdField_a_of_type_Alhb == null) {
+        jdField_a_of_type_Alhb = new alhb();
       }
-      return jdField_a_of_type_Aggh;
+      return jdField_a_of_type_Alhb;
     }
     finally {}
   }
   
-  public Intent a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static void a(long paramLong)
   {
-    Intent localIntent = ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getIntent();
-    localIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
-    localIntent.putExtra("key_ark_app_res_path", this.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("key_should_compress", this.jdField_a_of_type_Boolean);
-    localIntent.putExtra("key_ark_app_engine_res_dir", this.b);
-    localIntent.putExtra("enter_from", 3);
-    return super.a(paramAdapterView, paramView, paramInt, paramLong);
-  }
-  
-  protected void a(Intent paramIntent)
-  {
-    super.a(paramIntent);
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("key_ark_app_res_path");
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("key_should_compress", false);
-    this.b = paramIntent.getStringExtra("key_ark_app_engine_res_dir");
-  }
-  
-  protected void a(View paramView)
-  {
-    algw.a().a("callbackArk", null, null);
-    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).finish();
-    super.a(paramView);
-  }
-  
-  protected void b(Intent paramIntent)
-  {
-    paramIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
-    paramIntent.putExtra("enter_from", 3);
-    super.b(paramIntent);
-  }
-  
-  protected void c()
-  {
-    super.c();
-    NewPhotoListActivity localNewPhotoListActivity = (NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localNewPhotoListActivity != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoListLogicArk", 2, "ArkApp ark app res:" + this.jdField_a_of_type_JavaLangString);
-      }
-      localNewPhotoListActivity.findViewById(2131306214).setVisibility(4);
+    if (QLog.isColorLevel()) {
+      QLog.d("ARFaceDataCollector", 2, "reportARFaceInit,initCost  = " + paramLong + ",devType = " + ARMapTracer.a());
     }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("device_type", String.valueOf(ARMapTracer.a()));
+    axrl.a(BaseApplicationImpl.getApplication()).a(null, "actARFaceInit", true, paramLong, 0L, localHashMap, "", true);
   }
   
-  protected void c(Intent paramIntent)
+  public static void a(long paramLong, int paramInt)
   {
-    super.c(paramIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("ARFaceDataCollector", 2, "reportARTrackStablity,duration  = " + paramLong + ",count = " + paramInt);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("device_type", String.valueOf(ARMapTracer.a()));
+    localHashMap.put("recoverCount", String.valueOf(paramInt));
+    axrl.a(BaseApplicationImpl.getApplication()).a(null, "actARFaceTrackStability", true, paramLong, 0L, localHashMap, "", true);
   }
   
-  protected void d(View paramView)
+  public static void a(algt paramalgt, algq paramalgq)
   {
-    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).c.setClickable(false);
-    if (!this.jdField_a_of_type_Aggf.a.isEmpty()) {
-      ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b((String)this.jdField_a_of_type_Aggf.a.get(this.jdField_a_of_type_Aggf.a.size() - 1));
-    }
-    baaf.a();
-    if (this.jdField_a_of_type_Aggf.a.size() == 0)
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errorcode_mq", String.valueOf(paramalgq.jdField_a_of_type_Int));
+    localHashMap.put("errorcode_yt", String.valueOf(paramalgq.b));
+    if ((paramalgq.jdField_a_of_type_Int == 0) && (paramalgq.b == 0)) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("PhotoList", 2, "size == 0");
-      }
-      return;
-    }
-    if (((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getIntent().getBooleanExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", false))
-    {
-      paramView = this.jdField_a_of_type_Aggf.a.iterator();
-      for (long l = 0L; paramView.hasNext(); l = bace.a((String)paramView.next()) + l) {}
-      if (apck.a())
+      int i = 0;
+      int m = 0;
+      int j = 0;
+      int k = 0;
+      if (bool)
       {
-        apbx.a((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), 2131627035, 2131627040, new alhc(this));
-        return;
-      }
-    }
-    if (this.jdField_a_of_type_Aggf.a.size() > 0)
-    {
-      if (QLog.isColorLevel())
-      {
-        paramView = new StringBuilder(this.jdField_a_of_type_Aggf.a.size() * 128);
-        int i = 0;
-        while (i < this.jdField_a_of_type_Aggf.a.size())
-        {
-          paramView.append(String.format(Locale.CHINA, "choose image[%d],path=%s \r\n", new Object[] { Integer.valueOf(i), this.jdField_a_of_type_Aggf.a.get(i) }));
-          i += 1;
+        i = m;
+        if (paramalgt.a.a != null) {
+          i = paramalgt.a.a.length;
         }
-        QLog.d("PhotoListLogicArk", 2, paramView.toString());
+        j = k;
+        if (paramalgq.jdField_a_of_type_JavaUtilArrayList != null) {
+          j = paramalgq.jdField_a_of_type_JavaUtilArrayList.size();
+        }
+        localHashMap.put("send_person_count", String.valueOf(i));
+        localHashMap.put("receive_star_count", String.valueOf(j));
       }
-      ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).e();
-      ThreadManagerV2.executeOnSubThread(new PhotoListLogicArk.2(this));
-    }
-    for (;;)
-    {
-      ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).finish();
+      long l = System.currentTimeMillis() - paramalgt.c;
+      localHashMap.put("upload_cost", String.valueOf(l));
+      axrl.a(BaseApplicationImpl.getApplication()).a(null, "actARFaceCloudResult", bool, 0L, 0L, localHashMap, "", true);
+      if (QLog.isColorLevel()) {
+        QLog.d("ARFaceDataCollector", 2, "reportARFaceCloudResult,sendPersonCount  = " + i + ",starCount = " + j + ",uploadCost = " + l);
+      }
       return;
-      algw.a().a("callbackArk", null, null);
     }
   }
   
-  protected void g()
+  public static void a(String paramString, int paramInt)
   {
-    algw.a().a("callbackArk", null, null);
-    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).finish();
-    baaf.a((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get(), false, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ARFaceDataCollector", 2, "reportARSoLoadResult,libName  = " + paramString + ",result = " + paramInt);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("libName", paramString);
+    localHashMap.put("loadResult", String.valueOf(paramInt));
+    axrl.a(BaseApplicationImpl.getApplication()).a(null, "actARFaceSoLoadResult", true, 0L, 0L, localHashMap, "", true);
+  }
+  
+  public static void b(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARFaceDataCollector", 2, "reportARFaceDetect,cost  = " + paramLong);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("device_type", String.valueOf(ARMapTracer.a()));
+    axrl.a(BaseApplicationImpl.getApplication()).a(null, "actARFaceDetect", true, paramLong, 0L, localHashMap, "", true);
+  }
+  
+  public static void c()
+  {
+    alhb localalhb = a();
+    localalhb.b();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("device_type", String.valueOf(ARMapTracer.a()));
+    localHashMap.put("ppTotalCost", String.valueOf(localalhb.b));
+    localHashMap.put("ppFaceDectectCost", String.valueOf(localalhb.c));
+    localHashMap.put("upload_cost", String.valueOf(localalhb.d));
+    localHashMap.put("ppExtractCost", String.valueOf(localalhb.e));
+    localHashMap.put("ppExtractFaceCount", String.valueOf(localalhb.jdField_a_of_type_Int));
+    localHashMap.put("firstDrawUICost", String.valueOf(localalhb.f));
+    long l2 = localalhb.b;
+    if (localalhb.e > localalhb.d) {}
+    for (long l1 = localalhb.e;; l1 = localalhb.d)
+    {
+      localHashMap.put("totalCost", String.valueOf(l1 + l2 + localalhb.f));
+      axrl.a(BaseApplicationImpl.getApplication()).a(null, "actFaceStepDuration", true, 0L, 0L, localHashMap, "", true);
+      localalhb.a();
+      return;
+    }
+  }
+  
+  public static void c(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARFaceDataCollector", 2, "reportARExtracFaceFeatrue,cost  = " + paramLong);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("device_type", String.valueOf(ARMapTracer.a()));
+    axrl.a(BaseApplicationImpl.getApplication()).a(null, "actARExtractFaceFeatrue", true, paramLong, 0L, localHashMap, "", true);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
+    this.c = 0L;
+    this.d = 0L;
+    this.e = 0L;
+    this.f = 0L;
+  }
+  
+  public void b()
+  {
+    long l2 = this.b;
+    if (this.e > this.d) {}
+    for (long l1 = this.e;; l1 = this.d)
+    {
+      long l3 = this.f;
+      long l4 = System.currentTimeMillis();
+      long l5 = this.jdField_a_of_type_Long;
+      if (QLog.isColorLevel()) {
+        QLog.d("ARFaceDataCollector", 2, "printStepDuration preprocessTotalCost  = " + this.b + ",preprocessFaceDetectCost = " + this.c + ",picUploadCost = " + this.d + ",preprocessFeatureExtrctCost = " + this.e + ",preprocessFaceCount = " + this.jdField_a_of_type_Int + ",firstDrawUICost = " + this.f + ",totalCost = " + (l1 + l2 + l3) + ",starTime = " + this.jdField_a_of_type_Long + ",realCost = " + (l4 - l5));
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alhb
  * JD-Core Version:    0.7.0.1
  */

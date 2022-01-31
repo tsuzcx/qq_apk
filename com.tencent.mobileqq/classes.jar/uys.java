@@ -1,19 +1,24 @@
+import java.io.File;
+import java.lang.ref.WeakReference;
+
 public class uys
 {
-  public int a;
-  public uyq a;
-  public int b;
+  private static final String jdField_a_of_type_JavaLangString = ajsf.aV + "/Tencent/com/tencent/mobileqq/";
+  private static final boolean jdField_a_of_type_Boolean = new File(jdField_a_of_type_JavaLangString + "testserver").exists();
   
-  private uys(uyu paramuyu)
+  public static void a(uyv<Integer> paramuyv)
   {
-    this.jdField_a_of_type_Uyq = uyu.a(paramuyu);
-    this.jdField_a_of_type_Int = uyu.a(paramuyu);
-    this.b = uyu.b(paramuyu);
+    paramuyv = new WeakReference(paramuyv);
+    uzn localuzn = new uzn(null);
+    localuzn.a(new uyt(paramuyv));
+    localuzn.a(new uyu(paramuyv));
+    localuzn.a();
   }
   
-  public String toString()
+  public static boolean a()
   {
-    return "DoodleConfig{doodleStrategy=" + this.jdField_a_of_type_Uyq + ", maxBitmapWidth=" + this.jdField_a_of_type_Int + ", maxBitmapHeight=" + this.b + '}';
+    if (jdField_a_of_type_Boolean) {}
+    return false;
   }
 }
 

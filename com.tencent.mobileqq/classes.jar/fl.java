@@ -1,134 +1,110 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import com.etrump.mixlayout.ETDecoration;
-import com.etrump.mixlayout.ETEngine;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.dataline.activities.DLFilesViewerActivity;
+import com.dataline.activities.LiteActivity;
+import com.dataline.activities.LiteMutiPicViewerActivity;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.DataLineMsgSet;
+import com.tencent.mobileqq.data.DataLineMsgSetList;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class fl
+class fl
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private ArrayList<ff> jdField_a_of_type_JavaUtilArrayList = new ArrayList(4);
-  private int b;
-  private int c;
-  private int d;
-  private int e;
+  fl(fk paramfk) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return this.d;
-  }
-  
-  public ff a(int paramInt)
-  {
-    int j = this.jdField_a_of_type_Int;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    int i = j;
-    while (localIterator.hasNext())
+    if (!this.a.a()) {}
+    do
     {
-      ff localff = (ff)localIterator.next();
-      i += localff.c();
-      if ((j <= paramInt) && (paramInt < i)) {
-        return localff;
+      return;
+      this.a.a();
+      paramView = (fw)paramView.getTag();
+      localObject2 = paramView.a();
+      localObject1 = ((DataLineMsgSet)localObject2).getFirstItem();
+      if (!((DataLineMsgSet)localObject2).isSingle()) {
+        break;
       }
-      j = i;
-    }
-    return null;
-  }
-  
-  public ArrayList<ff> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(Canvas paramCanvas, int paramInt1, int paramInt2)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    } while (-1000 == ((DataLineMsgRecord)localObject1).msgtype);
+    FileManagerEntity localFileManagerEntity = apue.a((DataLineMsgRecord)localObject1);
+    if ((((DataLineMsgRecord)localObject1).nOpType == 31) || (apue.d(localFileManagerEntity)))
     {
-      ff localff = (ff)localIterator.next();
-      localff.a(paramCanvas, paramInt1, paramInt2, this.d);
-      paramInt1 += localff.c();
+      fk.a(this.a, (DataLineMsgRecord)localObject1);
+      return;
     }
-  }
-  
-  public void a(ETEngine paramETEngine, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = 0;
-    this.d = paramInt3;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    if (((DataLineMsgRecord)localObject1).nOpType == 29)
     {
-      ff localff = (ff)localIterator.next();
-      if (localff.d() > this.d) {
-        this.d = localff.d();
+      fk.b(this.a, (DataLineMsgRecord)localObject1);
+      return;
+    }
+    Object localObject2 = new apof(this.a.jdField_a_of_type_AndroidContentContext, localFileManagerEntity);
+    ArrayList localArrayList = new ArrayList();
+    if (localFileManagerEntity.nFileType == 0)
+    {
+      Iterator localIterator = fk.a(this.a).iterator();
+      label304:
+      while (localIterator.hasNext())
+      {
+        Object localObject3 = (DataLineMsgSet)localIterator.next();
+        if (((DataLineMsgSet)localObject3).isSingle())
+        {
+          localObject3 = ((DataLineMsgSet)localObject3).values().iterator();
+          for (;;)
+          {
+            if (!((Iterator)localObject3).hasNext()) {
+              break label304;
+            }
+            DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject3).next();
+            int j = apue.a(localDataLineMsgRecord.filename);
+            int i = j;
+            if (j == -1)
+            {
+              i = j;
+              if (localDataLineMsgRecord.msgtype == -2000) {
+                i = 0;
+              }
+            }
+            if (i != localFileManagerEntity.nFileType) {
+              break;
+            }
+            if (localDataLineMsgRecord != localObject1) {
+              localArrayList.add(String.valueOf(apue.a(localDataLineMsgRecord).nSessionId));
+            } else {
+              localArrayList.add(String.valueOf(localFileManagerEntity.nSessionId));
+            }
+          }
+        }
       }
-      paramInt1 = this.c;
-      this.c = (localff.c() + paramInt1);
-    }
-    this.e = 0;
-    localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      paramInt1 = ((ff)localIterator.next()).a(paramETEngine);
-      if (paramInt1 > this.e) {
-        this.e = paramInt1;
+      if (localArrayList.size() == 0) {
+        localArrayList.add(String.valueOf(localFileManagerEntity.nSessionId));
       }
+      ((apof)localObject2).a(localArrayList);
     }
-  }
-  
-  public void a(ETEngine paramETEngine, Bitmap paramBitmap, ETDecoration paramETDecoration, int paramInt1, int paramInt2)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    paramView = apvk.a(paramView.a().a, localFileManagerEntity.fileName);
+    Object localObject1 = new apog(this.a.jdField_a_of_type_AndroidContentContext, (apoj)localObject2);
+    ((apog)localObject1).a(11);
+    ((apog)localObject1).a(paramView);
+    ((apog)localObject1).a();
+    return;
+    if (((DataLineMsgSet)localObject2).getGroupType() == -2000)
     {
-      ff localff = (ff)localIterator.next();
-      localff.a(paramETEngine, paramBitmap, paramETDecoration, paramInt1, this.d - localff.d() + paramInt2 - (this.e - localff.a(paramETEngine)));
-      paramInt1 += localff.c();
+      paramView = new Intent(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity, LiteMutiPicViewerActivity.class);
+      paramView.putExtra("dataline_group_id", ((DataLineMsgSet)localObject2).getGroupId());
+      this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.startActivity(paramView);
+      return;
     }
-  }
-  
-  public void a(ff paramff)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramff);
-  }
-  
-  public int b()
-  {
-    return this.c;
-  }
-  
-  public void b(Canvas paramCanvas, int paramInt1, int paramInt2)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      ff localff = (ff)localIterator.next();
-      localff.b(paramCanvas, paramInt1, paramInt2, this.d);
-      paramInt1 += localff.c();
-    }
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int d()
-  {
-    return this.b;
-  }
-  
-  public int e()
-  {
-    return this.e;
+    paramView = new Intent(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity, DLFilesViewerActivity.class);
+    paramView.putExtra("dl_files_groupid", ((DataLineMsgSet)localObject2).getGroupId());
+    this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.startActivityForResult(paramView, 102);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     fl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import alkl;
-import alkw;
+import alyz;
+import alzk;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Looper;
 import android.util.AttributeSet;
-import azvw;
-import azwp;
-import azwq;
-import azwr;
-import azyc;
-import beog;
-import beoh;
+import baxa;
+import baxt;
+import baxu;
+import baxv;
+import bazg;
+import bfwa;
+import bfwb;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.VideoDrawable;
@@ -28,12 +28,12 @@ import mqq.util.WeakReference;
 
 public class DynamicAvatarView
   extends URLTextImageView
-  implements beoh
+  implements bfwb
 {
   public int a;
-  public azvw a;
-  public beog a;
-  private VideoDrawable.OnPlayRepeatListener jdField_a_of_type_ComTencentImageVideoDrawable$OnPlayRepeatListener = new alkw(this);
+  public baxa a;
+  public bfwa a;
+  private VideoDrawable.OnPlayRepeatListener jdField_a_of_type_ComTencentImageVideoDrawable$OnPlayRepeatListener = new alzk(this);
   private Runnable jdField_a_of_type_JavaLangRunnable = new DynamicAvatarView.1(this);
   public String a;
   public boolean a;
@@ -62,13 +62,13 @@ public class DynamicAvatarView
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Azvw == null) || (!this.jdField_a_of_type_Boolean))
+    if ((this.jdField_a_of_type_Baxa == null) || (!this.jdField_a_of_type_Boolean))
     {
       StringBuilder localStringBuilder;
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder().append("updateImageDrawable null == mDynamicFaceDrawable: ");
-        if (this.jdField_a_of_type_Azvw != null) {
+        if (this.jdField_a_of_type_Baxa != null) {
           break label69;
         }
       }
@@ -81,7 +81,7 @@ public class DynamicAvatarView
     }
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      setImageDrawable(this.jdField_a_of_type_Azvw.a());
+      setImageDrawable(this.jdField_a_of_type_Baxa.a());
       return;
     }
     ThreadManager.getUIHandler().post(this.jdField_a_of_type_JavaLangRunnable);
@@ -94,11 +94,11 @@ public class DynamicAvatarView
   
   public void a(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_Azvw != null)
+    if (this.jdField_a_of_type_Baxa != null)
     {
-      this.jdField_a_of_type_Azvw.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-      if (this.jdField_a_of_type_Azvw.a() != this.jdField_a_of_type_Azvw.jdField_a_of_type_ComTencentImageURLDrawable) {
-        setImageDrawable(this.jdField_a_of_type_Azvw.a());
+      this.jdField_a_of_type_Baxa.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+      if (this.jdField_a_of_type_Baxa.a() != this.jdField_a_of_type_Baxa.jdField_a_of_type_ComTencentImageURLDrawable) {
+        setImageDrawable(this.jdField_a_of_type_Baxa.a());
       }
       return;
     }
@@ -109,8 +109,8 @@ public class DynamicAvatarView
   {
     super.onAttachedToWindow();
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Azvw != null) {
-      setImageDrawable(this.jdField_a_of_type_Azvw.a());
+    if (this.jdField_a_of_type_Baxa != null) {
+      setImageDrawable(this.jdField_a_of_type_Baxa.a());
     }
   }
   
@@ -119,8 +119,8 @@ public class DynamicAvatarView
     Drawable localDrawable = getDrawable();
     if (((localDrawable instanceof URLDrawable)) && ((((URLDrawable)localDrawable).getCurrDrawable() instanceof VideoDrawable)))
     {
-      if (this.jdField_a_of_type_Azvw != null) {
-        this.jdField_a_of_type_Azvw.jdField_a_of_type_Alkl.a(this.jdField_a_of_type_Azvw, true);
+      if (this.jdField_a_of_type_Baxa != null) {
+        this.jdField_a_of_type_Baxa.jdField_a_of_type_Alyz.a(this.jdField_a_of_type_Baxa, true);
       }
       if (QLog.isColorLevel()) {
         QLog.e("Q.dynamicAvatar", 2, "removeOnPlayRepeatListener.01");
@@ -135,9 +135,9 @@ public class DynamicAvatarView
   {
     try
     {
-      if (this.jdField_a_of_type_Beog != null)
+      if (this.jdField_a_of_type_Bfwa != null)
       {
-        this.jdField_a_of_type_Beog.a(paramCanvas, this);
+        this.jdField_a_of_type_Bfwa.a(paramCanvas, this);
         return;
       }
       super.onDraw(paramCanvas);
@@ -167,59 +167,59 @@ public class DynamicAvatarView
     QLog.i("Q.dynamicAvatar", 1, "onLoadSuccessed, curDrawable " + paramURLDrawable);
   }
   
-  public void setFaceDrawable(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, byte paramByte, int paramInt3, boolean paramBoolean1, Drawable paramDrawable1, Drawable paramDrawable2, azwq paramazwq, int paramInt4, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt5)
+  public void setFaceDrawable(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, byte paramByte, int paramInt3, boolean paramBoolean1, Drawable paramDrawable1, Drawable paramDrawable2, baxu parambaxu, int paramInt4, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt5)
   {
     this.jdField_a_of_type_Int = paramInt5;
     this.jdField_b_of_type_JavaLangString = paramString;
     this.jdField_b_of_type_Boolean = paramBoolean3;
     String str = null;
-    if (this.jdField_a_of_type_Azvw != null) {
-      str = alkl.a(this.jdField_a_of_type_Azvw, false);
+    if (this.jdField_a_of_type_Baxa != null) {
+      str = alyz.a(this.jdField_a_of_type_Baxa, false);
     }
-    if (alkl.b(paramInt1, paramInt2, paramString, paramInt4).equals(str))
+    if (alyz.b(paramInt1, paramInt2, paramString, paramInt4).equals(str))
     {
-      boolean bool = this.jdField_a_of_type_Azvw.a();
-      this.jdField_a_of_type_Azvw.a(paramAppInterface, null, paramInt1, paramInt2, paramString, paramInt4, paramInt3, paramBoolean3, paramInt5, paramBoolean2, paramBoolean5, paramBoolean1, null, true);
+      boolean bool = this.jdField_a_of_type_Baxa.a();
+      this.jdField_a_of_type_Baxa.a(paramAppInterface, null, paramInt1, paramInt2, paramString, paramInt4, paramInt3, paramBoolean3, paramInt5, paramBoolean2, paramBoolean5, paramBoolean1, null, true);
       if ((paramAppInterface instanceof QQAppInterface)) {}
-      for (this.jdField_a_of_type_Azvw.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new azwr(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramInt4, paramBoolean1, paramDrawable1, paramDrawable2, paramazwq, paramBoolean4);; this.jdField_a_of_type_Azvw.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new azyc(paramAppInterface, paramInt1, paramInt2, paramString, (byte)1, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, paramazwq, paramBoolean4))
+      for (this.jdField_a_of_type_Baxa.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new baxv(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramInt4, paramBoolean1, paramDrawable1, paramDrawable2, parambaxu, paramBoolean4);; this.jdField_a_of_type_Baxa.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new bazg(paramAppInterface, paramInt1, paramInt2, paramString, (byte)1, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, parambaxu, paramBoolean4))
       {
-        this.jdField_a_of_type_Azvw.a(paramBoolean4, null);
+        this.jdField_a_of_type_Baxa.a(paramBoolean4, null);
         if (!bool) {
-          setImageDrawable(this.jdField_a_of_type_Azvw.a());
+          setImageDrawable(this.jdField_a_of_type_Baxa.a());
         }
         return;
       }
     }
     this.jdField_a_of_type_JavaLangString = "";
-    if (this.jdField_a_of_type_Azvw != null)
+    if (this.jdField_a_of_type_Baxa != null)
     {
-      this.jdField_a_of_type_Azvw.a(paramAppInterface, null, paramInt1, paramInt2, paramString, paramInt4, paramInt3, paramBoolean3, paramInt5, paramBoolean2, paramBoolean5, paramBoolean1, null, false);
+      this.jdField_a_of_type_Baxa.a(paramAppInterface, null, paramInt1, paramInt2, paramString, paramInt4, paramInt3, paramBoolean3, paramInt5, paramBoolean2, paramBoolean5, paramBoolean1, null, false);
       if ((paramAppInterface instanceof QQAppInterface))
       {
-        this.jdField_a_of_type_Azvw.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new azwr(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramInt4, paramBoolean1, paramDrawable1, paramDrawable2, paramazwq, paramBoolean4);
-        this.jdField_a_of_type_Azvw.a(paramBoolean4, null);
+        this.jdField_a_of_type_Baxa.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new baxv(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramInt4, paramBoolean1, paramDrawable1, paramDrawable2, parambaxu, paramBoolean4);
+        this.jdField_a_of_type_Baxa.a(paramBoolean4, null);
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Azvw.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(this);
-      setImageDrawable(this.jdField_a_of_type_Azvw.a());
+      this.jdField_a_of_type_Baxa.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(this);
+      setImageDrawable(this.jdField_a_of_type_Baxa.a());
       return;
-      this.jdField_a_of_type_Azvw.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new azyc(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, paramazwq, paramBoolean4);
+      this.jdField_a_of_type_Baxa.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new bazg(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, parambaxu, paramBoolean4);
       break;
-      this.jdField_a_of_type_Azvw = new azvw(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, paramazwq, paramInt4, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramInt5);
+      this.jdField_a_of_type_Baxa = new baxa(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, parambaxu, paramInt4, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramInt5);
     }
   }
   
   public void setFaceDrawable(AppInterface paramAppInterface, int paramInt1, String paramString, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, int paramInt3)
   {
-    Drawable localDrawable = azwp.a(paramInt1, 3);
+    Drawable localDrawable = baxt.a(paramInt1, 3);
     setFaceDrawable(paramAppInterface, paramInt1, 200, paramString, (byte)0, 3, false, localDrawable, localDrawable, null, paramInt2, false, paramBoolean1, paramBoolean2, false, paramInt3);
   }
   
   public void setFaceDrawable(AppInterface paramAppInterface, int paramInt1, String paramString, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt3)
   {
-    Drawable localDrawable = azwp.a(paramInt1, 3);
+    Drawable localDrawable = baxt.a(paramInt1, 3);
     setFaceDrawable(paramAppInterface, paramInt1, 200, paramString, (byte)0, 3, false, localDrawable, localDrawable, null, paramInt2, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramInt3);
   }
   
@@ -229,16 +229,16 @@ public class DynamicAvatarView
     this.jdField_b_of_type_JavaLangString = paramString;
     this.jdField_b_of_type_Boolean = paramBoolean1;
     String str = null;
-    if (this.jdField_a_of_type_Azvw != null) {
-      str = alkl.a(this.jdField_a_of_type_Azvw, false);
+    if (this.jdField_a_of_type_Baxa != null) {
+      str = alyz.a(this.jdField_a_of_type_Baxa, false);
     }
-    if (alkl.b(paramInt1, paramInt2, paramString, paramInt3).equals(str))
+    if (alyz.b(paramInt1, paramInt2, paramString, paramInt3).equals(str))
     {
-      boolean bool = this.jdField_a_of_type_Azvw.a();
-      this.jdField_a_of_type_Azvw.a(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, 3, paramBoolean1, paramInt4, paramBoolean5, paramBoolean4, paramBoolean2, paramDynamicAvatar, true);
-      this.jdField_a_of_type_Azvw.a(paramBoolean3, paramDynamicAvatar);
+      boolean bool = this.jdField_a_of_type_Baxa.a();
+      this.jdField_a_of_type_Baxa.a(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, 3, paramBoolean1, paramInt4, paramBoolean5, paramBoolean4, paramBoolean2, paramDynamicAvatar, true);
+      this.jdField_a_of_type_Baxa.a(paramBoolean3, paramDynamicAvatar);
       if (!bool) {
-        setImageDrawable(this.jdField_a_of_type_Azvw.a());
+        setImageDrawable(this.jdField_a_of_type_Baxa.a());
       }
       if (QLog.isDevelopLevel()) {
         QLog.w("Q.dynamicAvatar", 2, "setFaceDrwable bitmapDrawable is: " + paramDrawable + " id: " + paramString);
@@ -246,22 +246,22 @@ public class DynamicAvatarView
       return;
     }
     this.jdField_a_of_type_JavaLangString = "";
-    if (this.jdField_a_of_type_Azvw == null) {
-      this.jdField_a_of_type_Azvw = new azvw(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, paramBoolean1, paramDynamicAvatar, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramInt4);
+    if (this.jdField_a_of_type_Baxa == null) {
+      this.jdField_a_of_type_Baxa = new baxa(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, paramBoolean1, paramDynamicAvatar, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramInt4);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Azvw.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(this);
-      setImageDrawable(this.jdField_a_of_type_Azvw.a());
+      this.jdField_a_of_type_Baxa.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(this);
+      setImageDrawable(this.jdField_a_of_type_Baxa.a());
       break;
-      this.jdField_a_of_type_Azvw.a(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, 3, paramBoolean1, paramInt4, paramBoolean5, paramBoolean4, paramBoolean2, paramDynamicAvatar, false);
-      this.jdField_a_of_type_Azvw.a(paramBoolean3, paramDynamicAvatar);
+      this.jdField_a_of_type_Baxa.a(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, 3, paramBoolean1, paramInt4, paramBoolean5, paramBoolean4, paramBoolean2, paramDynamicAvatar, false);
+      this.jdField_a_of_type_Baxa.a(paramBoolean3, paramDynamicAvatar);
     }
   }
   
   public void setFaceDrawable(AppInterface paramAppInterface, Drawable paramDrawable, int paramInt1, String paramString, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, int paramInt3)
   {
-    azwp.a(paramInt1, 3);
+    baxt.a(paramInt1, 3);
     a(paramAppInterface, paramDrawable, paramInt1, 200, paramString, false, paramInt2, false, paramBoolean1, paramBoolean2, false, paramInt3);
   }
   
@@ -311,17 +311,17 @@ public class DynamicAvatarView
           if (n >= 0) {
             localObject2 = ((String)localObject3).substring(n);
           }
-          if (this.jdField_a_of_type_Azvw == null) {
+          if (this.jdField_a_of_type_Baxa == null) {
             break label418;
           }
-          localObject2 = (String)localObject2 + this.jdField_a_of_type_Azvw.d;
+          localObject2 = (String)localObject2 + this.jdField_a_of_type_Baxa.d;
           localObject3 = new StringBuilder().append("setImageDrawable isStatic: ");
-          if (paramDrawable == this.jdField_a_of_type_Azvw.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
+          if (paramDrawable == this.jdField_a_of_type_Baxa.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
           {
             bool = true;
             label203:
             localObject3 = ((StringBuilder)localObject3).append(bool).append(" isDynamic: ");
-            if (paramDrawable != this.jdField_a_of_type_Azvw.jdField_a_of_type_ComTencentImageURLDrawable) {
+            if (paramDrawable != this.jdField_a_of_type_Baxa.jdField_a_of_type_ComTencentImageURLDrawable) {
               break label412;
             }
             bool = true;
@@ -341,15 +341,15 @@ public class DynamicAvatarView
         }
         for (;;)
         {
-          if (((k != 0) && (i == 0)) || ((localDrawable == null) && (this.jdField_a_of_type_Azvw != null))) {
-            this.jdField_a_of_type_Azvw.jdField_a_of_type_Alkl.a(this.jdField_a_of_type_Azvw, false);
+          if (((k != 0) && (i == 0)) || ((localDrawable == null) && (this.jdField_a_of_type_Baxa != null))) {
+            this.jdField_a_of_type_Baxa.jdField_a_of_type_Alyz.a(this.jdField_a_of_type_Baxa, false);
           }
-          if ((this.jdField_a_of_type_Azvw != null) && (paramDrawable != this.jdField_a_of_type_Azvw.jdField_a_of_type_ComTencentImageURLDrawable) && (paramDrawable != this.jdField_a_of_type_Azvw.jdField_a_of_type_AndroidGraphicsDrawableDrawable))
+          if ((this.jdField_a_of_type_Baxa != null) && (paramDrawable != this.jdField_a_of_type_Baxa.jdField_a_of_type_ComTencentImageURLDrawable) && (paramDrawable != this.jdField_a_of_type_Baxa.jdField_a_of_type_AndroidGraphicsDrawableDrawable))
           {
             this.jdField_b_of_type_JavaLangString = "";
             this.jdField_a_of_type_JavaLangString = "";
             this.jdField_b_of_type_Boolean = false;
-            this.jdField_a_of_type_Azvw = null;
+            this.jdField_a_of_type_Baxa = null;
           }
           super.setImageDrawable(paramDrawable);
           if (!QLog.isDevelopLevel()) {
@@ -390,7 +390,7 @@ public class DynamicAvatarView
   
   public void setStrangerFaceDrawable(AppInterface paramAppInterface, int paramInt1, String paramString, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt3)
   {
-    Drawable localDrawable = azwp.a(32, 3);
+    Drawable localDrawable = baxt.a(32, 3);
     setFaceDrawable(paramAppInterface, 32, paramInt1, paramString, (byte)1, 3, paramBoolean1, localDrawable, localDrawable, null, paramInt2, false, paramBoolean2, paramBoolean3, paramBoolean4, paramInt3);
   }
 }

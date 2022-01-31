@@ -1,52 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 
 public class aelz
+  extends aelu
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
+  public AnimationView.AnimationInfo a;
+  public String b;
   
-  public static aelz a(String paramString)
+  public aelz(String paramString)
   {
-    aelz localaelz = new aelz();
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
     {
-      paramString = new JSONObject(paramString);
-      if ((paramString.has("useRecommendedSticker")) && (paramString.has("maxMatchLength")))
-      {
-        localaelz.a(paramString.getBoolean("useRecommendedSticker"));
-        localaelz.a(paramString.getInt("maxMatchLength"));
-      }
-      return localaelz;
+      this.b = paramRedPacketInfo.background;
+      this.a = paramRedPacketInfo.animInfo;
     }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("StickerRecConfigBean", 2, paramString.getMessage());
-    }
-    return localaelz;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return (this.b != null) || (this.a != null);
   }
 }
 

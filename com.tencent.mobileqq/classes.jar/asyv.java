@@ -1,136 +1,249 @@
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class asyv
-  extends asyn
 {
-  public asyv(Context paramContext, QQAppInterface paramQQAppInterface)
+  public static Drawable a(Resources paramResources, int paramInt)
   {
-    super(paramContext, paramQQAppInterface);
+    Drawable localDrawable = null;
+    if (paramInt == 0) {
+      localDrawable = bamn.a(paramResources, paramResources.getColor(2131166129));
+    }
+    while (paramInt != 1) {
+      return localDrawable;
+    }
+    return bamn.a(paramResources, paramResources.getColor(2131166127));
   }
   
-  public int a(asyu paramasyu)
+  public static String a(int paramInt)
   {
-    return 3;
-  }
-  
-  public View a(ViewGroup paramViewGroup, asyu paramasyu)
-  {
-    paramasyu = (asyw)paramasyu;
-    paramViewGroup = LayoutInflater.from(this.a).inflate(2131495318, paramViewGroup, false);
-    paramasyu.g = ((TextView)paramViewGroup.findViewById(2131312545));
-    paramasyu.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131302919));
-    paramasyu.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131303006));
-    paramasyu.jdField_e_of_type_AndroidViewView = paramViewGroup.findViewById(2131300489);
-    paramasyu.jdField_f_of_type_AndroidViewView = paramViewGroup.findViewById(2131300490);
-    return paramViewGroup;
-  }
-  
-  public asyu a()
-  {
-    return new asyw(this);
-  }
-  
-  public String b(asyu paramasyu)
-  {
-    return ((atao)((asyw)paramasyu).a).jdField_a_of_type_JavaLangString;
-  }
-  
-  public void f(asyu paramasyu)
-  {
-    paramasyu = (asyw)paramasyu;
-    Object localObject1 = (atao)paramasyu.a;
-    label69:
-    int j;
-    if (((atao)localObject1).c > 1)
+    String str = ajyi.c;
+    switch (paramInt)
     {
-      paramasyu.jdField_e_of_type_AndroidViewView.setVisibility(0);
-      paramasyu.jdField_f_of_type_AndroidViewView.setVisibility(0);
-      paramasyu.g.setMovementMethod(LinkMovementMethod.getInstance());
-      if (!TextUtils.isEmpty(((atao)localObject1).n)) {
-        break label307;
-      }
-      paramasyu.g.setVisibility(8);
-      j = vms.a(this.a, 200.0F);
-      if ((((atao)localObject1).jdField_a_of_type_Int <= 0) || (((atao)localObject1).jdField_b_of_type_Int <= 0)) {
-        break label414;
+    case 3: 
+    case 6: 
+    case 7: 
+    case 8: 
+    default: 
+      return ajyi.c;
+    case 2: 
+      return ajyc.a(2131705597);
+    case 4: 
+      return ajyc.a(2131705595);
+    case 5: 
+      return ajyc.a(2131705596);
+    }
+    return ajyc.a(2131705598);
+  }
+  
+  public static void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    Object localObject2 = null;
+    int k = 0;
+    if ((paramContext == null) || (paramQQAppInterface == null) || (paramString1 == null) || (paramString1.length() == 0) || (paramString2 == null) || (paramString2.length() == 0)) {
+      return;
+    }
+    boolean bool = paramString2.equals(paramQQAppInterface.getCurrentAccountUin());
+    Object localObject1;
+    int i;
+    if (!bool)
+    {
+      localObject1 = (ajxn)paramQQAppInterface.getManager(51);
+      if ((localObject1 != null) && (((ajxn)localObject1).b(paramString2))) {
+        i = 1;
       }
     }
-    label414:
-    for (int i = ((atao)localObject1).jdField_b_of_type_Int * j / ((atao)localObject1).jdField_a_of_type_Int;; i = j)
+    for (;;)
     {
-      if (i * 3 > j * 4) {
-        i = j * 4 / 3;
+      HotChatManager localHotChatManager = paramQQAppInterface.a(false);
+      if (localHotChatManager != null)
+      {
+        HotChatInfo localHotChatInfo = localHotChatManager.a(paramString1);
+        localObject1 = localHotChatInfo;
+        paramQQAppInterface = localObject2;
+        if (localHotChatInfo != null)
+        {
+          paramQQAppInterface = localHotChatInfo.troopCode;
+          localObject1 = localHotChatInfo;
+        }
       }
       for (;;)
       {
-        for (;;)
+        int j = k;
+        if (localHotChatManager != null)
         {
-          Object localObject2;
-          if (!TextUtils.equals((String)paramasyu.jdField_e_of_type_AndroidWidgetImageView.getTag(2131311070), ((atao)localObject1).jdField_b_of_type_JavaLangString))
-          {
-            paramasyu.jdField_e_of_type_AndroidWidgetImageView.setTag(2131311070, ((atao)localObject1).jdField_b_of_type_JavaLangString);
-            localObject2 = (FrameLayout.LayoutParams)paramasyu.jdField_e_of_type_AndroidWidgetImageView.getLayoutParams();
-            if (localObject2 != null) {
-              break label330;
-            }
-            localObject2 = new FrameLayout.LayoutParams(j, i);
-            paramasyu.jdField_e_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-          }
-          try
-          {
-            for (;;)
-            {
-              localObject2 = URLDrawable.URLDrawableOptions.obtain();
-              ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.a.getResources().getDrawable(2130844567);
-              ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.a.getResources().getDrawable(2130844567);
-              localObject1 = URLDrawable.getDrawable(((atao)localObject1).jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2);
-              ((URLDrawable)localObject1).setTag(azue.b(j, i, azvv.a(this.a, 3.0F)));
-              ((URLDrawable)localObject1).setDecodeHandler(azue.e);
-              paramasyu.jdField_e_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
-              return;
-              paramasyu.jdField_e_of_type_AndroidViewView.setVisibility(8);
-              paramasyu.jdField_f_of_type_AndroidViewView.setVisibility(8);
-              break;
-              label307:
-              paramasyu.g.setVisibility(0);
-              paramasyu.g.setText(((atao)localObject1).n);
-              break label69;
-              label330:
-              if ((((FrameLayout.LayoutParams)localObject2).width != j) || (((FrameLayout.LayoutParams)localObject2).height != i))
-              {
-                ((FrameLayout.LayoutParams)localObject2).width = j;
-                ((FrameLayout.LayoutParams)localObject2).height = i;
-                paramasyu.jdField_e_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-              }
-            }
-          }
-          catch (Exception localException)
-          {
-            do
-            {
-              paramasyu.jdField_e_of_type_AndroidWidgetImageView.setImageDrawable(this.a.getResources().getDrawable(2130844567));
-            } while (!QLog.isColorLevel());
-            QLog.i("BaseMomentItemBuilder", 1, localException.toString());
-            return;
+          j = k;
+          if (((HotChatInfo)localObject1).isGameRoom) {
+            j = 1;
           }
         }
+        if ((bool) || (i == 0))
+        {
+          if ((localObject1 != null) && (((HotChatInfo)localObject1).isBuLuoHotChat()))
+          {
+            i = 86;
+            label173:
+            paramString2 = new ProfileActivity.AllInOne(paramString2, i);
+            paramString2.h = 33;
+            paramString2.d = paramString1;
+            paramString2.c = paramQQAppInterface;
+            paramQQAppInterface = new Intent(paramContext, NearbyPeopleProfileActivity.class);
+            paramQQAppInterface.putExtra("AllInOne", paramString2);
+            if (!bool) {
+              break label268;
+            }
+          }
+          label268:
+          for (i = 2;; i = 3)
+          {
+            paramQQAppInterface.putExtra("param_mode", i);
+            if (j != 0) {
+              paramQQAppInterface.putExtra("is_from_werewolves", true);
+            }
+            paramContext.startActivity(paramQQAppInterface);
+            return;
+            i = 0;
+            break;
+            i = 42;
+            break label173;
+          }
+        }
+        paramString2 = new ProfileActivity.AllInOne(paramString2, 20);
+        paramString2.a = 20;
+        paramString2.d = paramString1;
+        paramString2.c = paramQQAppInterface;
+        if (j != 0) {}
+        for (i = 113;; i = 4)
+        {
+          paramString2.h = i;
+          ProfileActivity.b(paramContext, paramString2);
+          return;
+        }
+        localObject1 = null;
+        paramQQAppInterface = localObject2;
+      }
+      i = 0;
+    }
+  }
+  
+  public static void a(TextView paramTextView, int paramInt)
+  {
+    if (paramTextView == null) {}
+    Drawable localDrawable;
+    do
+    {
+      return;
+      localDrawable = a(BaseApplication.getContext().getResources(), paramInt);
+    } while (localDrawable == null);
+    paramTextView.setBackgroundDrawable(localDrawable);
+  }
+  
+  public static void a(axac paramaxac, long paramLong, String paramString, int paramInt)
+  {
+    boolean bool;
+    switch (paramInt)
+    {
+    default: 
+      bool = false;
+    }
+    for (;;)
+    {
+      if (bool) {
+        paramaxac.a(0, paramString, paramLong, 1);
+      }
+      if (QLog.isColorLevel()) {
+        atbp.a("PttShow", new Object[] { "addLocalMaxMsgSeq", String.format("needUpdateLocal:%b\tfrom:%d\t msgSeq:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt), Long.valueOf(paramLong) }) });
+      }
+      return;
+      long l = paramaxac.a(0, paramString);
+      if (1L + l == paramLong)
+      {
+        bool = true;
+      }
+      else
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        atbp.a("PttShow", new Object[] { "addLocalMaxMsgSeq", String.format("not continuous seq local:%d\tmsgseq:%d\tfrom:%d", new Object[] { Long.valueOf(l), Long.valueOf(paramLong), Integer.valueOf(paramInt) }) });
+        bool = false;
+        continue;
+        bool = true;
       }
     }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString) {}
+  
+  public static void a(HotChatInfo paramHotChatInfo, QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt)
+  {
+    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
+    localIntent.putExtra("url", bfng.a(bfng.a(bfng.a(bfng.a(bfng.a("http://nearby.qq.com/hot_chat/member_list.html?_wv=3&_bid=2581", "_wv", "3"), "_bid", "2581"), "gc", paramHotChatInfo.troopUin), "rid", paramHotChatInfo.uuid), "from", String.valueOf(0)));
+    paramHotChatInfo = new Bundle();
+    paramHotChatInfo.putBoolean("hide_left_button", true);
+    localIntent.putExtras(paramHotChatInfo);
+    paramActivity.startActivity(localIntent);
+    if (paramInt == 0) {
+      akbk.a(paramQQAppInterface, "0X800638B");
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    akbk.a(paramQQAppInterface, "0X800638C");
+  }
+  
+  public static boolean a(int paramInt, String paramString)
+  {
+    if (paramInt == 1) {
+      return ((HotChatManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(60)).b(paramString);
+    }
+    return false;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
+  {
+    boolean bool = true;
+    if ((paramQQAppInterface == null) || (paramRecentUser == null) || (paramRecentUser.getType() != 1) || (TextUtils.isEmpty(paramRecentUser.uin))) {
+      bool = false;
+    }
+    do
+    {
+      return bool;
+      if ((paramRecentUser.lFlag & 1L) == 0L)
+      {
+        paramQQAppInterface = paramQQAppInterface.a(false);
+        if ((paramQQAppInterface != null) && (paramQQAppInterface.b(paramRecentUser.uin))) {
+          paramRecentUser.lFlag |= 1L;
+        }
+      }
+    } while ((paramRecentUser.lFlag & 1L) == 1L);
+    return false;
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord.istroop == 1) {
+      return ((HotChatManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(60)).b(paramMessageRecord.frienduin);
+    }
+    return false;
   }
 }
 

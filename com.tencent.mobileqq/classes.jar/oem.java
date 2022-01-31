@@ -1,29 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyUgcVideoReportItem;
 
-public class oem
-  implements ValueAnimator.AnimatorUpdateListener
+public final class oem
+  implements Parcelable.Creator<ReadInJoyUgcVideoReportItem>
 {
-  public oem(DailyTipsFoldUtils.1 param1, View paramView, int paramInt) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public ReadInJoyUgcVideoReportItem a(Parcel paramParcel)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
-    int i = (int)(this.jdField_a_of_type_Int * f);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.smoothScrollToPositionFromTop(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.getHeaderViewsCount(), -i, 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("DailyTipsFoldUtils", 2, "percent = " + f + ", scrollHeight = " + i);
-    }
+    return new ReadInJoyUgcVideoReportItem(paramParcel);
+  }
+  
+  public ReadInJoyUgcVideoReportItem[] a(int paramInt)
+  {
+    return new ReadInJoyUgcVideoReportItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oem
  * JD-Core Version:    0.7.0.1
  */

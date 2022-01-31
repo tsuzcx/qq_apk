@@ -1,6 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
@@ -62,6 +63,26 @@ class AdProxyImpl$SDKRewardedVideoAdView
     this.this$0.requestAdInfo(localActivity, this.mUin, this.mPosid, this.mAppid, this.SHARE_RATE, this.mAdType, this.mDeviceOrientation, this.mGdtCookie, this.mEntryPath, this.mReportData, this.mRefer, this.mVia, new AdProxyImpl.SDKRewardedVideoAdView.1(this));
   }
   
+  public void onReceiveVideoClose(int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdProxyImpl", 2, "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
+    }
+    long l1 = paramBundle.getLong("duration_time");
+    long l2 = paramBundle.getLong("elapsed_time");
+    boolean bool = paramBundle.getBoolean("profitable_flag", false);
+    if (this.mRewardedListener != null)
+    {
+      if ((bool) && (paramInt == -1)) {
+        this.mRewardedListener.onReward();
+      }
+      this.mRewardedListener.onADClose();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AdProxyImpl", 1, "RewardedAd ActivityResultListener receive durationTime= " + l1 + " elaspedTime=" + l2 + " profitable=" + bool + ", resultCode = " + paramInt);
+    }
+  }
+  
   public void showAD()
   {
     Activity localActivity;
@@ -84,7 +105,7 @@ class AdProxyImpl$SDKRewardedVideoAdView
       break;
       this.mGdtMotiveVideoPageData.refId = "biz_src_miniapp";
       this.mGdtMotiveVideoPageData.containerType = 1;
-      this.mGdtMotiveVideoPageData.resultReceiver = new AdProxyImpl.SDKRewardedVideoAdView.2(this, new Handler(Looper.getMainLooper()));
+      this.mGdtMotiveVideoPageData.resultReceiver = new AdProxyImpl.AdResultReceiver(new Handler(Looper.getMainLooper()), this);
       GdtMotiveVideoFragment.a(localActivity, GdtMotiveVideoFragment.class, this.mGdtMotiveVideoPageData);
     } while (this.mRewardedListener == null);
     this.mRewardedListener.onADShow();

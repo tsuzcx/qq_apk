@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.model.request;
 
-import umm;
-import umo;
-import umq;
+import uzi;
+import uzk;
+import uzm;
 
 public class GetUserGuideInfoStep$1
   implements Runnable
 {
-  public GetUserGuideInfoStep$1(umm paramumm, umq paramumq) {}
+  public GetUserGuideInfoStep$1(uzi paramuzi, uzm paramuzm) {}
   
   public void run()
   {
-    if (umm.a(this.this$0) != null) {
-      umm.a(this.this$0).a(this.a);
+    if (uzi.a(this.this$0) != null) {
+      uzi.a(this.this$0).a(this.a);
     }
   }
 }

@@ -1,44 +1,48 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import com.tencent.av.ui.VideoLayerUI;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class map
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
+class map
+  extends man
 {
-  public map(VideoLayerUI paramVideoLayerUI) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  map(LinearLayout paramLinearLayout)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onScale");
-    }
-    if (VideoLayerUI.c(this.a) < 0) {
-      VideoLayerUI.a(this.a, (int)paramScaleGestureDetector.getFocusX());
-    }
-    if (VideoLayerUI.d(this.a) < 0) {
-      VideoLayerUI.b(this.a, (int)paramScaleGestureDetector.getFocusY());
-    }
-    float f = paramScaleGestureDetector.getScaleFactor();
-    this.a.jdField_a_of_type_ArrayOfLtl[0].a(f, VideoLayerUI.c(this.a), VideoLayerUI.d(this.a));
-    return true;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131372500));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLinearLayout.findViewById(2131372219));
   }
   
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
+  Resources a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onScaleEnd");
-    }
-    float f1 = this.a.jdField_a_of_type_ArrayOfLtl[0].c();
-    float f2 = this.a.jdField_a_of_type_ArrayOfLtl[0].a();
-    float f3 = this.a.jdField_a_of_type_ArrayOfLtl[0].b();
-    if (f1 < f2) {
-      VideoLayerUI.a(this.a, this.a.jdField_a_of_type_ArrayOfLtl[0], f2 / f1, 60L);
-    }
-    while (f1 <= f3) {
+    return this.jdField_a_of_type_AndroidWidgetTextView.getResources();
+  }
+  
+  void a()
+  {
+    if (!a()) {
       return;
     }
-    VideoLayerUI.a(this.a, this.a.jdField_a_of_type_ArrayOfLtl[0], f3 / f1, 60L);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
+  
+  boolean a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView != null;
+  }
+  
+  boolean a(maq parammaq)
+  {
+    a();
+    if ((parammaq.a != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
+    {
+      mal.a(this.jdField_a_of_type_AndroidWidgetTextView, parammaq);
+      return true;
+    }
+    return false;
   }
 }
 

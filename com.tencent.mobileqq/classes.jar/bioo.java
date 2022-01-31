@@ -1,132 +1,47 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.TextView;
 
 public class bioo
-  extends bion
+  extends bijx
 {
-  public static boolean b;
-  public List<bior> a = new ArrayList();
-  public Map<String, Map<String, biop>> a;
-  public int c;
-  public String f;
-  public String g = "default";
-  public String h;
-  public String i;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public bioo(@NonNull String paramString)
+  public bioo(ViewStub paramViewStub)
   {
-    super(paramString);
+    super(paramViewStub);
   }
   
-  public static List<bior> a(JSONArray paramJSONArray)
+  protected void a(View paramView)
   {
-    ArrayList localArrayList = new ArrayList();
-    int j = 0;
-    while (j < paramJSONArray.length())
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365838);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365837));
+  }
+  
+  public void b()
+  {
+    a();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692630);
+  }
+  
+  public void c()
+  {
+    if (a())
     {
-      localArrayList.add(new bior(paramJSONArray.getJSONObject(j)));
-      j += 1;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    return localArrayList;
   }
   
-  public static Map<String, Map<String, biop>> a(JSONArray paramJSONArray)
+  public void d()
   {
-    Object localObject1;
-    if (paramJSONArray != null) {
-      try
-      {
-        if (paramJSONArray.length() > 0)
-        {
-          HashMap localHashMap1 = new HashMap(paramJSONArray.length());
-          int j = 0;
-          for (;;)
-          {
-            localObject1 = localHashMap1;
-            if (j >= paramJSONArray.length()) {
-              break;
-            }
-            Object localObject2 = paramJSONArray.getJSONObject(j);
-            localObject1 = ((JSONObject)localObject2).getString("id");
-            localObject2 = ((JSONObject)localObject2).getJSONArray("res");
-            if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
-            {
-              HashMap localHashMap2 = new HashMap(((JSONArray)localObject2).length());
-              int k = 0;
-              while (k < ((JSONArray)localObject2).length())
-              {
-                JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(k);
-                biop localbiop = new biop();
-                localbiop.a = localJSONObject.getString("resname");
-                localbiop.b = localJSONObject.getString("resurl");
-                localbiop.d = localJSONObject.getString("cityname");
-                localbiop.c = localJSONObject.getString("md5");
-                localHashMap2.put(localbiop.d, localbiop);
-                k += 1;
-              }
-              localHashMap1.put(localObject1, localHashMap2);
-            }
-            j += 1;
-          }
-        }
-        localObject1 = null;
-      }
-      catch (JSONException paramJSONArray)
-      {
-        QLog.e("FacePackage", 1, paramJSONArray, new Object[0]);
-      }
+    if (!a()) {
+      return;
     }
-    return localObject1;
-  }
-  
-  public bior a(String paramString)
-  {
-    if ((!baip.a(paramString)) && (this.a != null))
-    {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        bior localbior = (bior)localIterator.next();
-        if (paramString.equals(localbior.a)) {
-          return localbior;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    return "InformationFacePackage";
-  }
-  
-  public String a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.a.size())) {
-      return ((bior)this.a.get(paramInt)).c;
-    }
-    return null;
-  }
-  
-  public int b()
-  {
-    return this.a.size();
-  }
-  
-  public String b(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.a.size())) {
-      return ((bior)this.a.get(paramInt)).d;
-    }
-    return null;
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 

@@ -1,22 +1,26 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.widget.AbsListView;
 
 public class aara
-  implements InputFilter
+  implements bfob
 {
-  Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("[🀀-🏿]|[🐀-🟿]|[☀-⟿]", 66);
+  public aara(ChatHistory paramChatHistory) {}
   
-  public aara(EditInfoActivity paramEditInfoActivity) {}
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramCharSequence).find()) {
-      return "";
+    this.a.m = paramInt;
+    if (paramInt == 0)
+    {
+      AbstractGifImage.resumeAll();
+      return;
     }
-    return null;
+    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_Int == 1) && (!this.a.a.jdField_a_of_type_Boolean)) {
+      this.a.a.d();
+    }
+    AbstractGifImage.pauseAll();
   }
 }
 

@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.wadl.WadlJsBridgeCallBack.2;
+import android.content.Context;
+import android.text.ClipboardManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ContextMenuTextView;
 
 public class bckl
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public bckl(WadlJsBridgeCallBack.2 param2) {}
+  public bckl(ContextMenuTextView paramContextMenuTextView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    if (paramView.getId() == 2131364825)
+    {
+      paramView = ContextMenuTextView.a(this.a);
+      ContextMenuTextView.a(this.a);
+      ((ClipboardManager)paramView.getSystemService("clipboard")).setText(this.a.getText().toString());
+    }
   }
 }
 

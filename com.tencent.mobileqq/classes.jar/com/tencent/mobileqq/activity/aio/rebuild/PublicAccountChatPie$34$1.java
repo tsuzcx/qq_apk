@@ -1,62 +1,28 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aegy;
-import aehv;
-import ajhq;
-import ajjy;
-import atmp;
-import atmq;
-import bcpn;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import aerv;
+import aesr;
+import aukn;
+import auko;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
 
 public class PublicAccountChatPie$34$1
   implements Runnable
 {
-  public PublicAccountChatPie$34$1(aehv paramaehv) {}
+  public PublicAccountChatPie$34$1(aesr paramaesr, mobileqq_mp.GetPublicAccountDetailInfoResponse paramGetPublicAccountDetailInfoResponse) {}
   
   public void run()
   {
-    Object localObject = this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    EqqDetail localEqqDetail = (EqqDetail)((atmp)localObject).a(EqqDetail.class, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    ((atmp)localObject).a();
-    if (localEqqDetail == null) {
-      return;
+    AccountDetail localAccountDetail = new AccountDetail(this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse);
+    aukn localaukn = this.jdField_a_of_type_Aesr.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory(this.jdField_a_of_type_Aesr.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).createEntityManager();
+    if (localaukn != null) {
+      localaukn.b(localAccountDetail);
     }
-    try
-    {
-      localObject = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
-      ((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).mergeFrom(localEqqDetail.accountData);
-      localEqqDetail.groupInfoList = ((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).config_group_info.get();
-      localEqqDetail.mIsAgreeSyncLbs = true;
-      localEqqDetail.mIsSyncLbsSelected = true;
-      Iterator localIterator1 = localEqqDetail.groupInfoList.iterator();
-      while (localIterator1.hasNext())
-      {
-        Iterator localIterator2 = ((mobileqq_mp.ConfigGroupInfo)localIterator1.next()).config_info.get().iterator();
-        while (localIterator2.hasNext())
-        {
-          mobileqq_mp.ConfigInfo localConfigInfo = (mobileqq_mp.ConfigInfo)localIterator2.next();
-          if (localConfigInfo.title.get().equals(ajjy.a(2131642970))) {
-            localConfigInfo.state.set(1);
-          }
-        }
-      }
-      localEqqDetail.accountData = ((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).toByteArray();
-      ((ajhq)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(69)).a(localEqqDetail);
-      this.a.a.jdField_a_of_type_Bcpn.a(true);
-      return;
-    }
-    catch (Exception localException) {}
+    this.jdField_a_of_type_Aesr.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount(localAccountDetail, 0L);
+    this.jdField_a_of_type_Aesr.a.a(this.jdField_a_of_type_Aesr.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
   }
 }
 

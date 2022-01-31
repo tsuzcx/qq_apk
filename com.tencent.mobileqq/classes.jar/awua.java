@@ -1,24 +1,30 @@
+import com.tencent.mobileqq.search.util.SearchConfigManager;
 import java.util.Comparator;
+import java.util.Map;
 
-class awua
-  implements Comparator
+public final class awua
+  implements Comparator<awur>
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  public int a(awur paramawur1, awur paramawur2)
   {
-    paramObject1 = (awtw)paramObject1;
-    paramObject2 = (awtw)paramObject2;
-    if (paramObject1.a > paramObject2.a) {
-      return -1;
+    paramawur2 = (Integer)SearchConfigManager.searchEngineOrder.get(paramawur2.a);
+    if (paramawur2 == null) {
+      paramawur2 = Integer.valueOf(0);
     }
-    if (paramObject1.a < paramObject2.a) {
-      return 1;
+    for (;;)
+    {
+      Integer localInteger = (Integer)SearchConfigManager.searchEngineOrder.get(paramawur1.a);
+      paramawur1 = localInteger;
+      if (localInteger == null) {
+        paramawur1 = Integer.valueOf(0);
+      }
+      return Integer.signum(paramawur2.intValue() - paramawur1.intValue());
     }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awua
  * JD-Core Version:    0.7.0.1
  */

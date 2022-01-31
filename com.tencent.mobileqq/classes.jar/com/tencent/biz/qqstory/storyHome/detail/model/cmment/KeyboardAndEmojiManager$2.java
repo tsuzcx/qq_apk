@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.storyHome.detail.model.cmment;
 
-import udw;
+import uqs;
 
 public class KeyboardAndEmojiManager$2
   implements Runnable
 {
-  public KeyboardAndEmojiManager$2(udw paramudw) {}
+  public KeyboardAndEmojiManager$2(uqs paramuqs) {}
   
   public void run()
   {

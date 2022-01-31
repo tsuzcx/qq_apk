@@ -1,181 +1,92 @@
 import android.app.Activity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.ContentResolver;
+import android.database.ContentObserver;
+import android.os.Handler;
+import android.provider.Settings.SettingNotFoundException;
+import android.provider.Settings.System;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
 
 public class qky
-  extends RecyclerView.Adapter<qla>
-  implements qkw, qkx
 {
   private Activity jdField_a_of_type_AndroidAppActivity;
-  private VideoFeedsRecyclerView jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ArrayList<VideoInfo> jdField_a_of_type_JavaUtilArrayList;
-  private qkz jdField_a_of_type_Qkz;
+  private ContentObserver jdField_a_of_type_AndroidDatabaseContentObserver = new qkz(this, new Handler());
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public qky(VideoFeedsRecyclerView paramVideoFeedsRecyclerView, ArrayList<VideoInfo> paramArrayList, Activity paramActivity, QQAppInterface paramQQAppInterface, qkz paramqkz)
+  public qky(Activity paramActivity)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView = paramVideoFeedsRecyclerView;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Qkz = paramqkz;
   }
   
-  private void a(RecyclerView paramRecyclerView, List<VideoInfo> paramList, int paramInt)
+  private void c()
   {
-    int j = paramRecyclerView.getChildCount();
-    int i = 0;
-    while (i < j)
+    if (!this.b)
     {
-      RecyclerView.ViewHolder localViewHolder = paramRecyclerView.getChildViewHolder(paramRecyclerView.getChildAt(i));
-      if ((localViewHolder instanceof qla))
-      {
-        VideoInfo localVideoInfo = (VideoInfo)paramList.get(((qla)localViewHolder).a);
-        if ((localVideoInfo.e()) && (localVideoInfo.a.a == paramInt)) {
-          ((qla)localViewHolder).d();
-        }
-      }
-      i += 1;
+      this.b = true;
+      this.jdField_a_of_type_AndroidAppActivity.getContentResolver().registerContentObserver(Settings.System.getUriFor("screen_brightness"), true, this.jdField_a_of_type_AndroidDatabaseContentObserver);
     }
   }
   
-  private boolean a(RecyclerView paramRecyclerView, List<VideoInfo> paramList, VideoInfo paramVideoInfo)
+  private void d()
   {
-    int j = paramRecyclerView.getChildCount();
-    int k = paramList.indexOf(paramVideoInfo);
-    int i = 0;
-    while (i < j)
+    if (this.b)
     {
-      paramList = paramRecyclerView.getChildViewHolder(paramRecyclerView.getChildAt(i));
-      if ((k >= 0) && ((paramList instanceof qla)) && (((qla)paramList).a == k))
-      {
-        ((qla)paramList).d();
-        return true;
-      }
-      i += 1;
+      this.b = false;
+      this.jdField_a_of_type_AndroidAppActivity.getContentResolver().unregisterContentObserver(this.jdField_a_of_type_AndroidDatabaseContentObserver);
     }
-    return false;
   }
   
-  private boolean a(RecyclerView paramRecyclerView, List<VideoInfo> paramList, String paramString)
+  public int a()
   {
-    int j = paramRecyclerView.getChildCount();
-    int i = 0;
-    while (i < j)
+    ContentResolver localContentResolver = this.jdField_a_of_type_AndroidAppActivity.getContentResolver();
+    try
     {
-      RecyclerView.ViewHolder localViewHolder = paramRecyclerView.getChildViewHolder(paramRecyclerView.getChildAt(i));
-      if (((localViewHolder instanceof qla)) && (paramString.equals(((VideoInfo)paramList.get(((qla)localViewHolder).a)).j))) {
-        ((qla)localViewHolder).d();
-      }
-      i += 1;
+      int i = Settings.System.getInt(localContentResolver, "screen_brightness");
+      return i;
     }
-    return false;
-  }
-  
-  public qla a(ViewGroup paramViewGroup, int paramInt)
-  {
-    Object localObject = null;
-    LayoutInflater localLayoutInflater = LayoutInflater.from(paramViewGroup.getContext());
-    switch (paramInt)
-    {
-    default: 
-      paramViewGroup = localObject;
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Qkz != null) {
-        this.jdField_a_of_type_Qkz.a(paramViewGroup);
-      }
-      return paramViewGroup;
-      paramViewGroup = new qlv(localLayoutInflater.inflate(2131494394, paramViewGroup, false), this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      continue;
-      paramViewGroup = new noi(localLayoutInflater.inflate(2131494223, paramViewGroup, false), this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    VideoInfo localVideoInfo = (VideoInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.getChildCount();
-    paramInt = 0;
-    for (;;)
-    {
-      if (paramInt < i)
-      {
-        Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.getChildViewHolder(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.getChildAt(paramInt));
-        if ((localObject instanceof qln))
-        {
-          localObject = (qln)localObject;
-          if (((qln)localObject).a() == localVideoInfo) {
-            ((qln)localObject).d();
-          }
-        }
-      }
-      else
-      {
-        return;
-      }
-      paramInt += 1;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView, this.jdField_a_of_type_JavaUtilArrayList, paramString);
-  }
-  
-  public void a(qla paramqla, int paramInt)
-  {
-    paramqla.a = paramInt;
-    VideoInfo localVideoInfo = (VideoInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if ((paramqla.b == 0) || (paramqla.b == 1)) {
-      paramqla.a(localVideoInfo);
-    }
-    if (this.jdField_a_of_type_Qkz != null) {
-      this.jdField_a_of_type_Qkz.a(paramqla, localVideoInfo, paramInt);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView, this.jdField_a_of_type_JavaUtilArrayList, paramInt);
-  }
-  
-  public void b(VideoInfo paramVideoInfo)
-  {
-    a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView, this.jdField_a_of_type_JavaUtilArrayList, paramVideoInfo);
-  }
-  
-  public void d(VideoInfo paramVideoInfo)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(paramVideoInfo)))
-    {
-      int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramVideoInfo);
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramVideoInfo);
-      notifyItemRemoved(i);
-    }
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > paramInt) && (((VideoInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).c)) {
-      return 1;
-    }
+    catch (Settings.SettingNotFoundException localSettingNotFoundException) {}
     return 0;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppActivity.getWindow().getAttributes();
+      localLayoutParams.screenBrightness = -1.0F;
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().setAttributes(localLayoutParams);
+    }
+  }
+  
+  public void a(float paramFloat)
+  {
+    c();
+    this.jdField_a_of_type_Boolean = true;
+    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppActivity.getWindow().getAttributes();
+    localLayoutParams.screenBrightness = paramFloat;
+    this.jdField_a_of_type_AndroidAppActivity.getWindow().setAttributes(localLayoutParams);
+  }
+  
+  public boolean a()
+  {
+    ContentResolver localContentResolver = this.jdField_a_of_type_AndroidAppActivity.getContentResolver();
+    try
+    {
+      int i = Settings.System.getInt(localContentResolver, "screen_brightness_mode");
+      return i == 1;
+    }
+    catch (Settings.SettingNotFoundException localSettingNotFoundException)
+    {
+      localSettingNotFoundException.printStackTrace();
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    d();
   }
 }
 

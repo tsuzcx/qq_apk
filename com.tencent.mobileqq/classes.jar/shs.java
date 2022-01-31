@@ -1,18 +1,15 @@
-import java.util.List;
-
-public abstract interface shs
+class shs
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(List<shp> paramList, boolean paramBoolean);
-  
-  public abstract void a(sht paramsht);
+  String a;
+  String b;
+  String c;
+  String d;
+  String e;
+  String f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     shs
  * JD-Core Version:    0.7.0.1
  */

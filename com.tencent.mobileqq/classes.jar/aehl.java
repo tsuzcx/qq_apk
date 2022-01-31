@@ -1,25 +1,16 @@
-import android.os.Bundle;
-import android.os.Handler;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aehl
-  implements BusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  aehl(aegy paramaegy) {}
+  aehl(aegu paramaegu) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBundle != null)
-    {
-      paramInt = paramBundle.getInt("update_type");
-      if (paramInt != 2) {}
+    if (this.a.a != null) {
+      this.a.a.o();
     }
-    else
-    {
-      return;
-    }
-    if (paramInt == 1) {}
-    this.a.a.sendEmptyMessage(2);
   }
 }
 

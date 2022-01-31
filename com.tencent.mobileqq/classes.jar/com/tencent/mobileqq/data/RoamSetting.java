@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class RoamSetting
-  extends atmo
+  extends aukm
 {
   public static final String SETTING_REVISION = "setting_revision";
-  @atoc
+  @auma
   public String path;
   public String value;
   

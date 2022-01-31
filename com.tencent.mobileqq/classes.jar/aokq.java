@@ -1,34 +1,136 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.util.WeakReference;
 
-class aokq
-  extends aoko
+public class aokq
+  implements aoko
 {
-  public aokq(aokk paramaokk)
+  private static volatile aokq jdField_a_of_type_Aokq;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  protected aokm a;
+  private WeakReference<BaseActivity> jdField_a_of_type_MqqUtilWeakReference;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private WeakReference<ExtendFriendVoiceView> b;
+  
+  private aokq(BaseActivity paramBaseActivity)
   {
-    super(paramaokk);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramBaseActivity);
   }
   
-  protected String a()
+  public static final aokq a(BaseActivity paramBaseActivity)
   {
-    return "StateCancelUploadWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    if (jdField_a_of_type_Aokq == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      if (jdField_a_of_type_Aokq == null) {
+        jdField_a_of_type_Aokq = new aokq(paramBaseActivity);
+      }
+      return jdField_a_of_type_Aokq;
+    }
+  }
+  
+  public static final void a()
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      b();
+      jdField_a_of_type_Aokq = null;
       return;
     }
-    aokk.b(this.jdField_a_of_type_Aokk, 11, 9);
-    aokk.c(this.jdField_a_of_type_Aokk, 11, 9);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateCancelUploadWhenRecv)");
-    this.jdField_a_of_type_Aoko = new aokr(this.jdField_a_of_type_Aokk);
   }
+  
+  public static final void b()
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Aokq != null)
+      {
+        if (jdField_a_of_type_Aokq.a()) {
+          jdField_a_of_type_Aokq.c();
+        }
+        ExtendFriendVoiceView localExtendFriendVoiceView = jdField_a_of_type_Aokq.a();
+        if ((localExtendFriendVoiceView != null) && (localExtendFriendVoiceView.b())) {
+          localExtendFriendVoiceView.d();
+        }
+      }
+      return;
+    }
+  }
+  
+  public ExtendFriendVoiceView a()
+  {
+    if (this.b != null) {
+      return (ExtendFriendVoiceView)this.b.get();
+    }
+    return null;
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Aokm != null) {
+      this.jdField_a_of_type_Aokm.b();
+    }
+  }
+  
+  public void a(ExtendFriendVoiceView paramExtendFriendVoiceView)
+  {
+    if (paramExtendFriendVoiceView != null) {
+      this.b = new WeakReference(paramExtendFriendVoiceView);
+    }
+  }
+  
+  public void a(File paramFile) {}
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MatchChatAioVoicePlayerManager", 2, "playVoice " + paramString);
+    }
+    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localBaseActivity != null)
+    {
+      if (this.jdField_a_of_type_Aokm == null) {
+        this.jdField_a_of_type_Aokm = new aokm(this, localBaseActivity);
+      }
+      if (!TextUtils.isEmpty(paramString))
+      {
+        this.jdField_a_of_type_Aokm.a(paramString);
+        this.jdField_a_of_type_Boolean = true;
+      }
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2) {}
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MatchChatAioVoicePlayerManager", 2, "stopVoice");
+    }
+    if (this.jdField_a_of_type_Aokm != null)
+    {
+      this.jdField_a_of_type_Aokm.a();
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void c(boolean paramBoolean) {}
+  
+  public void f(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aokq
  * JD-Core Version:    0.7.0.1
  */

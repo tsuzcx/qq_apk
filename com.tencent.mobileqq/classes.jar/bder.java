@@ -1,35 +1,53 @@
-import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.util.List;
-import java.util.Map;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.tmassistant.common.ProtocolPackage;
+import com.tencent.tmassistant.common.jce.ReqHead;
+import com.tencent.tmassistant.common.jce.Request;
+import com.tencent.tmassistant.common.jce.SdkInfo;
+import com.tencent.tmassistant.common.jce.Ticket;
+import com.tencent.tmassistant.common.jce.TicketWtLogin;
+import com.tencent.tmassistantbase.network.PostHttpRequest;
 
-class bder
-  implements DownloaderProxy.DownloadListener
+public abstract class bder
+  extends PostHttpRequest
 {
-  bder(bdep parambdep, MiniAppInfo paramMiniAppInfo, String paramString, bdes parambdes) {}
-  
-  public void onDownloadFailed(int paramInt, String paramString) {}
-  
-  public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
-  
-  public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2) {}
-  
-  public void onDownloadSucceed(int paramInt, String paramString, Map<String, List<String>> paramMap)
+  public int a(JceStruct paramJceStruct)
   {
-    if (!bdfi.a(paramString, bdep.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, false), this.jdField_a_of_type_JavaLangString)) {
-      if (this.jdField_a_of_type_Bdes != null) {
-        this.jdField_a_of_type_Bdes.a(null, -1, "解包失败");
+    try
+    {
+      paramJceStruct = ProtocolPackage.buildRequest(paramJceStruct);
+      if (paramJceStruct == null) {
+        return -1;
       }
     }
-    while (this.jdField_a_of_type_Bdes == null) {
-      return;
+    catch (Throwable paramJceStruct)
+    {
+      for (;;)
+      {
+        paramJceStruct = null;
+      }
+      Object localObject = new SdkInfo();
+      ((SdkInfo)localObject).versionCode = 1;
+      ((SdkInfo)localObject).versionName = bcxm.a().c();
+      ((SdkInfo)localObject).name = "AppNews";
+      ((SdkInfo)localObject).channel = "";
+      ((SdkInfo)localObject).builderNum = "";
+      paramJceStruct.head.sdkInfo = ((SdkInfo)localObject);
+      localObject = new TicketWtLogin();
+      ((TicketWtLogin)localObject).uin = bcxm.a().a();
+      ((TicketWtLogin)localObject).A2 = bcxm.a().b().getBytes();
+      Ticket localTicket = new Ticket();
+      localTicket.value = ProtocolPackage.jceStructToUTF8Byte((JceStruct)localObject);
+      localTicket.type = 1;
+      paramJceStruct.head.ticket = localTicket;
+      int i = paramJceStruct.head.requestId;
+      sendRequest(ProtocolPackage.buildPostData(paramJceStruct));
+      return i;
     }
-    this.jdField_a_of_type_Bdes.a((bdfx)this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.apkgInfo, 0, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bder
  * JD-Core Version:    0.7.0.1
  */

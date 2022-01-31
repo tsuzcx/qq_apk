@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ark.API;
 
-import alad;
-import alae;
-import alai;
-import alam;
+import alop;
+import aloq;
+import alou;
+import aloy;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
@@ -12,13 +12,13 @@ import com.tencent.qphone.base.util.QLog;
 public class ArkAppEventObserverManager$1$1
   implements Runnable
 {
-  public ArkAppEventObserverManager$1$1(alae paramalae, SosoInterface.SosoLbsInfo paramSosoLbsInfo, int paramInt) {}
+  public ArkAppEventObserverManager$1$1(aloq paramaloq, SosoInterface.SosoLbsInfo paramSosoLbsInfo, int paramInt) {}
   
   public void run()
   {
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder("onLocationFinish mPositionCallback=").append(alad.a(this.jdField_a_of_type_Alae.a)).append(", mPositionCallbackId=").append(alad.b(this.jdField_a_of_type_Alae.a)).append(", mGetCurrentPositionCallback=").append(alad.a(this.jdField_a_of_type_Alae.a)).append(", mGetCurrentPositionCallbackId=").append(alad.a(this.jdField_a_of_type_Alae.a)).append(", lbsInfo=").append(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo).append(", lbsInfo.mLocation=");
+      StringBuilder localStringBuilder = new StringBuilder("onLocationFinish mPositionCallback=").append(alop.a(this.jdField_a_of_type_Aloq.a)).append(", mPositionCallbackId=").append(alop.b(this.jdField_a_of_type_Aloq.a)).append(", mGetCurrentPositionCallback=").append(alop.a(this.jdField_a_of_type_Aloq.a)).append(", mGetCurrentPositionCallbackId=").append(alop.a(this.jdField_a_of_type_Aloq.a)).append(", lbsInfo=").append(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo).append(", lbsInfo.mLocation=");
       if (this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo != null)
       {
         localObject = this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a;
@@ -27,10 +27,10 @@ public class ArkAppEventObserverManager$1$1
     }
     else
     {
-      if ((alad.a(this.jdField_a_of_type_Alae.a) != null) || (alad.a(this.jdField_a_of_type_Alae.a) != null)) {
+      if ((alop.a(this.jdField_a_of_type_Aloq.a) != null) || (alop.a(this.jdField_a_of_type_Aloq.a) != null)) {
         break label180;
       }
-      SosoInterface.b(alad.a(this.jdField_a_of_type_Alae.a));
+      SosoInterface.b(alop.a(this.jdField_a_of_type_Aloq.a));
     }
     label180:
     label367:
@@ -47,10 +47,10 @@ public class ArkAppEventObserverManager$1$1
       } while ((this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a == null));
       if (QLog.isColorLevel())
       {
-        if (alad.a(this.jdField_a_of_type_Alae.a) == null) {
+        if (alop.a(this.jdField_a_of_type_Aloq.a) == null) {
           break label760;
         }
-        QLog.d("ArkAppEventObserverManager", 2, "onLocationFinish errCode=" + this.jdField_a_of_type_Int + ", positionCallback=" + alad.a(this.jdField_a_of_type_Alae.a) + ", lat02=" + this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.a + ", lon02=" + this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.b + ", lat84=" + this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.c + ", lon84=" + this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.d + ", mLastLat=" + alad.b(this.jdField_a_of_type_Alae.a) + ", mLastLon=" + alad.a(this.jdField_a_of_type_Alae.a));
+        QLog.d("ArkAppEventObserverManager", 2, "onLocationFinish errCode=" + this.jdField_a_of_type_Int + ", positionCallback=" + alop.a(this.jdField_a_of_type_Aloq.a) + ", lat02=" + this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.a + ", lon02=" + this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.b + ", lat84=" + this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.c + ", lon84=" + this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.d + ", mLastLat=" + alop.b(this.jdField_a_of_type_Aloq.a) + ", mLastLon=" + alop.a(this.jdField_a_of_type_Aloq.a));
       }
       double d3 = this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.c;
       double d4 = this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.d;
@@ -62,7 +62,7 @@ public class ArkAppEventObserverManager$1$1
         d2 = d4;
         if (d4 <= 1.0E-006D)
         {
-          localObject = alad.a(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.b, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.a);
+          localObject = alop.a(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.b, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.a);
           d3 = localObject[0];
           d4 = localObject[1];
           d1 = d4;
@@ -75,38 +75,38 @@ public class ArkAppEventObserverManager$1$1
           }
         }
       }
-      if ((alad.a(this.jdField_a_of_type_Alae.a) != null) && ((Math.abs(d1 - alad.b(this.jdField_a_of_type_Alae.a)) >= 1.0E-006D) || (Math.abs(d2 - alad.a(this.jdField_a_of_type_Alae.a)) >= 1.0E-006D)))
+      if ((alop.a(this.jdField_a_of_type_Aloq.a) != null) && ((Math.abs(d1 - alop.b(this.jdField_a_of_type_Aloq.a)) >= 1.0E-006D) || (Math.abs(d2 - alop.a(this.jdField_a_of_type_Aloq.a)) >= 1.0E-006D)))
       {
-        localObject = alad.a(this.jdField_a_of_type_Alae.a);
+        localObject = alop.a(this.jdField_a_of_type_Aloq.a);
         if (this.jdField_a_of_type_Int != 0) {
           break label927;
         }
         bool = true;
-        ((alam)localObject).a(bool, d1, d2);
-        alad.a(this.jdField_a_of_type_Alae.a, d1);
-        alad.b(this.jdField_a_of_type_Alae.a, d2);
+        ((aloy)localObject).a(bool, d1, d2);
+        alop.a(this.jdField_a_of_type_Aloq.a, d1);
+        alop.b(this.jdField_a_of_type_Aloq.a, d2);
       }
-    } while (alad.a(this.jdField_a_of_type_Alae.a) == null);
-    Object localObject = alad.a(this.jdField_a_of_type_Alae.a);
+    } while (alop.a(this.jdField_a_of_type_Aloq.a) == null);
+    Object localObject = alop.a(this.jdField_a_of_type_Aloq.a);
     if (this.jdField_a_of_type_Int == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ((alai)localObject).a(bool, d1, d2);
-      if (alad.a(this.jdField_a_of_type_Alae.a) != 0L) {
-        alad.a(this.jdField_a_of_type_Alae.a).a(alad.a(this.jdField_a_of_type_Alae.a));
+      ((alou)localObject).a(bool, d1, d2);
+      if (alop.a(this.jdField_a_of_type_Aloq.a) != 0L) {
+        alop.a(this.jdField_a_of_type_Aloq.a).a(alop.a(this.jdField_a_of_type_Aloq.a));
       }
-      alad.a(this.jdField_a_of_type_Alae.a, null);
-      alad.a(this.jdField_a_of_type_Alae.a, 0L);
-      if (alad.a(this.jdField_a_of_type_Alae.a) != null) {
+      alop.a(this.jdField_a_of_type_Aloq.a, null);
+      alop.a(this.jdField_a_of_type_Aloq.a, 0L);
+      if (alop.a(this.jdField_a_of_type_Aloq.a) != null) {
         break;
       }
-      SosoInterface.b(alad.a(this.jdField_a_of_type_Alae.a));
+      SosoInterface.b(alop.a(this.jdField_a_of_type_Aloq.a));
       return;
       label760:
-      if (alad.a(this.jdField_a_of_type_Alae.a) == null) {
+      if (alop.a(this.jdField_a_of_type_Aloq.a) == null) {
         break label367;
       }
-      QLog.d("ArkAppEventObserverManager", 2, "onLocationFinish errCode=" + this.jdField_a_of_type_Int + ", getcurrentPositionCallback=" + alad.a(this.jdField_a_of_type_Alae.a) + ", lat02=" + this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.a + ", lon02=" + this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.b + ", lat84=" + this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.c + ", lon84=" + this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.d + ", mLastLat=" + alad.b(this.jdField_a_of_type_Alae.a) + ", mLastLon=" + alad.a(this.jdField_a_of_type_Alae.a));
+      QLog.d("ArkAppEventObserverManager", 2, "onLocationFinish errCode=" + this.jdField_a_of_type_Int + ", getcurrentPositionCallback=" + alop.a(this.jdField_a_of_type_Aloq.a) + ", lat02=" + this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.a + ", lon02=" + this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.b + ", lat84=" + this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.c + ", lon84=" + this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.d + ", mLastLat=" + alop.b(this.jdField_a_of_type_Aloq.a) + ", mLastLon=" + alop.a(this.jdField_a_of_type_Aloq.a));
       break label367;
       label927:
       bool = false;

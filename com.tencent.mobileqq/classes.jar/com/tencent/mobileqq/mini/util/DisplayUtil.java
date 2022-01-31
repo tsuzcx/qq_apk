@@ -21,9 +21,9 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import awmc;
-import befo;
-import bggm;
+import axli;
+import bfni;
+import bhpg;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -47,7 +47,7 @@ public class DisplayUtil
   
   static
   {
-    if (befo.i()) {}
+    if (bfni.j()) {}
     try
     {
       Method localMethod = Class.forName("android.os.SystemProperties").getDeclaredMethod("get", new Class[] { String.class });
@@ -143,8 +143,8 @@ public class DisplayUtil
     int j;
     if ((paramActivity != null) && (paramActivity.getWindow() != null) && (paramActivity.getWindow().getDecorView() != null))
     {
-      Rect localRect = bggm.a(paramActivity.getWindow().getDecorView());
-      localRect.top = bggm.a(paramActivity, paramActivity);
+      Rect localRect = bhpg.a(paramActivity.getWindow().getDecorView());
+      localRect.top = bhpg.a(paramActivity, paramActivity);
       DisplayMetrics localDisplayMetrics = new DisplayMetrics();
       if (Build.VERSION.SDK_INT >= 17)
       {
@@ -303,7 +303,7 @@ public class DisplayUtil
       k = i;
       if (m != 0)
       {
-        j = awmc.c(BaseApplication.getContext());
+        j = axli.c(BaseApplication.getContext());
         k = 0;
       }
       i = j;
@@ -459,7 +459,7 @@ public class DisplayUtil
   
   public static boolean isSimpleThemeAndStatusBarOfWhite(String paramString)
   {
-    return ("3063".equals(paramString)) || ("3066".equals(paramString)) || ("3065".equals(paramString)) || ("3067".equals(paramString));
+    return ("3063".equals(paramString)) || ("3066".equals(paramString)) || ("3065".equals(paramString)) || ("3067".equals(paramString)) || ("3491".equals(paramString));
   }
   
   public static boolean isWhiteModeTheme()

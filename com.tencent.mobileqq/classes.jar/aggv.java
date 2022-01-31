@@ -1,6 +1,16 @@
-public abstract interface aggv
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
+
+public class aggv
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void b(boolean paramBoolean);
+  public aggv(MiniMsgTabFragment paramMiniMsgTabFragment) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    MiniMsgTabFragment.a(this.a, -1, null);
+  }
 }
 
 

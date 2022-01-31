@@ -1,25 +1,28 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.widget.SimpleTextView;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
 public class acgd
+  extends MqqHandler
 {
-  public int a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  SimpleTextView jdField_a_of_type_ComTencentWidgetSimpleTextView;
-  public Object a;
-  int jdField_b_of_type_Int;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  TextView d;
-  TextView e;
-  TextView f;
-  TextView g;
+  public acgd(TroopAssistantActivity paramTroopAssistantActivity) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (!this.a.app.isLogin()) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.c();
+      return;
+    }
+    this.a.c();
+  }
 }
 
 

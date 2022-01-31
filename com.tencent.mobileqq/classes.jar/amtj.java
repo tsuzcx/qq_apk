@@ -1,40 +1,90 @@
-import android.database.sqlite.SQLiteCursor;
-import android.database.sqlite.SQLiteCursorDriver;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteQuery;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.utils.SecurityUtile;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class amtj
-  extends SQLiteCursor
+public class amtj
+  extends ampb<amth>
 {
-  amtj(amti paramamti, SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
+  @NonNull
+  public static amth a()
   {
-    super(paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
-  }
-  
-  public byte[] getBlob(int paramInt)
-  {
-    byte[] arrayOfByte2 = super.getBlob(paramInt);
-    byte[] arrayOfByte1 = arrayOfByte2;
-    if (this.a.a.isNeedEncry()) {
-      arrayOfByte1 = SecurityUtile.a(arrayOfByte2);
+    amth localamth2 = (amth)ampm.a().a(458);
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendContactGuideConfProcessor", 2, "loadConfig bean: " + localamth2);
     }
-    return arrayOfByte1;
+    amth localamth1 = localamth2;
+    if (localamth2 == null) {
+      localamth1 = new amth();
+    }
+    return localamth1;
   }
   
-  public String getString(int paramInt)
+  public int a()
   {
-    String str2 = super.getString(paramInt);
-    String str1 = str2;
-    if (this.a.a.isNeedEncry()) {}
-    try
+    return 458;
+  }
+  
+  @NonNull
+  public amth a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendContactGuideConfProcessor", 2, "migrateOldOrDefaultContent " + paramInt);
+    }
+    return new amth();
+  }
+  
+  @Nullable
+  public amth a(ampi[] paramArrayOfampi)
+  {
+    return amth.a(paramArrayOfampi);
+  }
+  
+  public Class<amth> a()
+  {
+    return amth.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendContactGuideConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(amth paramamth)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendContactGuideConfProcessor", 2, "onUpdate " + paramamth.toString());
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      str1 = SecurityUtile.b(str2);
-      return str1;
+      localObject = (QQAppInterface)localObject;
+      if (((QQAppInterface)localObject).a(34))
+      {
+        ((akbo)((QQAppInterface)localObject).getManager(34)).a = paramamth;
+        if (QLog.isColorLevel()) {
+          QLog.d("NewFriendContactGuideConfProcessor", 2, "onUpdate bean");
+        }
+      }
     }
-    catch (Exception localException) {}
-    return str2;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

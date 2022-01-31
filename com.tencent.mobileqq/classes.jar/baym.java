@@ -1,58 +1,38 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.app.MobileQQ;
 
 public class baym
 {
-  public long a;
-  private bayp a;
-  public long b;
-  public long c;
-  public long d;
-  public long e;
-  public long f;
-  
-  public baym(bayp parambayp)
+  public static String a(Context paramContext)
   {
-    this.jdField_a_of_type_Bayp = parambayp;
+    if (paramContext == null) {}
+    do
+    {
+      return null;
+      paramContext = paramContext.getFilesDir();
+    } while (paramContext == null);
+    return paramContext.getParent() + "/lib/";
   }
   
-  public void a(Bundle paramBundle, AppInterface paramAppInterface, Intent paramIntent)
+  public static void a(String paramString)
   {
-    if ((paramIntent != null) && (paramIntent.getBooleanExtra("pre_init_webview_plugin", true))) {
-      this.jdField_a_of_type_Bayp.preInitWebviewPlugin();
-    }
-    if ((paramIntent != null) && (paramIntent.getBooleanExtra("pre_get_key", true))) {
-      WebAccelerateHelper.getInstance().preGetKey(paramIntent, paramAppInterface);
-    }
-    long l2 = System.currentTimeMillis();
-    this.jdField_a_of_type_Bayp.buildLayout();
-    long l1 = System.currentTimeMillis();
-    this.b = (l1 - l2);
-    this.jdField_a_of_type_Bayp.buildContentView(paramBundle);
-    l2 = System.currentTimeMillis();
-    this.e = (l2 - l1);
-    this.jdField_a_of_type_Bayp.buildTitleBar();
-    l1 = System.currentTimeMillis();
-    this.c = (l1 - l2);
-    this.jdField_a_of_type_Bayp.buildBottomBar();
-    l2 = System.currentTimeMillis();
-    this.d = (l2 - l1);
-    this.jdField_a_of_type_Bayp.buildWebView(paramAppInterface);
-    l1 = System.currentTimeMillis();
-    this.jdField_a_of_type_Long = (l1 - l2);
-    this.jdField_a_of_type_Bayp.buildData();
-    this.f = (System.currentTimeMillis() - l1);
-    if (QLog.isColorLevel()) {
-      QLog.i("WebViewDirector", 2, "buildLayoutTime : " + this.b + ", buildContentTime " + this.e + ", buildTitleTime " + this.c + ", buildWebViewTime " + this.jdField_a_of_type_Long + ", buildBottomTime " + this.d + ", buildDataTime " + this.f);
+    if ((paramString != null) && ((paramString.contains("NativeGifFactory")) || (paramString.contains("NativeGifIndex8")) || (paramString.contains("libkIndexGif")) || (paramString.contains("libskia"))))
+    {
+      BaseApplicationImpl.getApplication().getSharedPreferences("early_qq.android.native.gif", 4).edit().putBoolean("use_new_gif_so", false).commit();
+      if (QLog.isColorLevel()) {
+        QLog.d("GifSoLoader", 2, String.format("Crash in libkIndexGif support library at %s process!", new Object[] { BaseApplicationImpl.getMobileQQ().getQQProcessName() }));
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     baym
  * JD-Core Version:    0.7.0.1
  */

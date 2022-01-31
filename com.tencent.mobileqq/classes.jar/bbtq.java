@@ -1,71 +1,238 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.open.agent.AgentActivity;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import android.os.Handler;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import mqq.app.MobileQQ;
+import java.util.Set;
+import org.json.JSONObject;
 
 public class bbtq
-  extends BroadcastReceiver
+  implements INetInfoHandler
 {
-  public bbtq(AgentActivity paramAgentActivity) {}
+  WebViewPlugin jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bbtq(HealthBusinessPlugin paramHealthBusinessPlugin1, HealthBusinessPlugin paramHealthBusinessPlugin2)
   {
-    if ((QLog.isColorLevel()) && (this.a.getAppInterface() != null)) {
-      QLog.d("AgentActivity", 2, "-->onReceive, intent.getAction(): " + paramIntent.getAction());
-    }
-    if ("action_login_sucess".equals(paramIntent.getAction())) {
-      if (AgentActivity.a(this.a) != null)
-      {
-        paramContext = bcam.a(paramIntent, "login_success_uin");
-        if (!TextUtils.isEmpty(paramContext)) {
-          AgentActivity.a(this.a).putExtra("login_success_uin", paramContext);
-        }
-        if (AgentActivity.a(this.a).getIntExtra("intent_router", 0) != 1) {
-          break label305;
-        }
-        abju.a(this.a, AgentActivity.a(this.a), PublicFragmentActivityForOpenSDK.class, OpenAuthorityFragment.class, 0);
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin = paramHealthBusinessPlugin2;
+    QLog.d("HealthBusinessPlugin", 2, "plugin to do:" + this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin);
+  }
+  
+  public void onNetMobile2None()
+  {
+    QLog.d("HealthBusinessPlugin", 1, "onNetMobile2None");
     for (;;)
     {
-      if ((AgentActivity.a(this.a)) && (!this.a.a.isLogin()))
+      try
       {
-        paramContext = this.a.a.getAccount();
-        QLog.i("AgentActivity", 1, "mLonginReceiver() OpenSDKAppinterface not login, logined uin= " + paramContext);
-        paramIntent = this.a.a.getApplication().getAllAccounts();
-        if ((paramIntent != null) && (paramIntent.size() > 0) && (!TextUtils.isEmpty(paramContext)))
+        JSONObject localJSONObject1 = new JSONObject();
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("status", "0");
+        localJSONObject1.put("source", "none");
+        int i = 0;
+        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
+        if (localIterator.hasNext())
         {
-          paramIntent = paramIntent.iterator();
-          while (paramIntent.hasNext())
+          String str = (String)localIterator.next();
+          if (((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).isPlaying())
           {
-            SimpleAccount localSimpleAccount = (SimpleAccount)paramIntent.next();
-            if (paramContext.equals(localSimpleAccount.getUin()))
-            {
-              this.a.a.login(localSimpleAccount);
-              QLog.i("AgentActivity", 2, "mLonginReceiver() OpenSDKAppinterface do login uin= " + paramContext);
-            }
+            ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).pause();
+            this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.a.post(this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b);
+            QLog.d("HealthBusinessPlugin", 1, "onNetMobile2None Broadcast");
+            i = 1;
           }
         }
+        else
+        {
+          if (i != 0) {
+            this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.dispatchJsEvent("healthSport_networkStatusChanged", localJSONObject2, localJSONObject1);
+          }
+          return;
+        }
       }
-      this.a.unregisterReceiver(this);
+      catch (Exception localException)
+      {
+        QLog.d("HealthBusinessPlugin", 1, "onNetMobile2None Exception");
+        return;
+      }
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    QLog.d("HealthBusinessPlugin", 1, "onNetMobile2Wifi");
+    try
+    {
+      paramString = new JSONObject();
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("status", "1");
+      paramString.put("source", "none");
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.dispatchJsEvent("healthSport_networkStatusChanged", (JSONObject)localObject, paramString);
+      paramString = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
+      while (paramString.hasNext())
+      {
+        localObject = (String)paramString.next();
+        ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(localObject)).start();
+      }
+      QLog.d("HealthBusinessPlugin", 1, "onNetMobile2Wifi Broadcast");
+    }
+    catch (Exception paramString)
+    {
+      QLog.d("HealthBusinessPlugin", 1, "onNetMobile2Wifi Exception");
       return;
-      label305:
-      this.a.startActivityForResult(AgentActivity.a(this.a), 0);
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    QLog.d("HealthBusinessPlugin", 1, "onNetNone2Mobile");
+    for (;;)
+    {
+      try
+      {
+        paramString = new JSONObject();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("status", "2");
+        paramString.put("source", "none");
+        int i = 0;
+        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
+        if (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          QLog.d("HealthBusinessPlugin", 2, "mVideoPlayerManager.get(key).isPlaying():" + ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).isPlaying());
+          if (((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).isPlaying())
+          {
+            ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).pause();
+            i = 1;
+          }
+        }
+        else
+        {
+          if (i != 0) {
+            this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.dispatchJsEvent("healthSport_networkStatusChanged", localJSONObject, paramString);
+          }
+          QLog.d("HealthBusinessPlugin", 1, "onNetNone2Mobile Broadcast");
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        QLog.d("HealthBusinessPlugin", 1, "onNetNone2Mobile Exception");
+        return;
+      }
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    QLog.d("HealthBusinessPlugin", 1, "onNetNone2Wifi");
+    try
+    {
+      paramString = new JSONObject();
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("status", "1");
+      paramString.put("source", "none");
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.dispatchJsEvent("healthSport_networkStatusChanged", (JSONObject)localObject, paramString);
+      paramString = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
+      while (paramString.hasNext())
+      {
+        localObject = (String)paramString.next();
+        ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(localObject)).start();
+      }
+      QLog.d("HealthBusinessPlugin", 1, "onNetNone2Wifi Broadcast");
+    }
+    catch (Exception paramString)
+    {
+      QLog.d("HealthBusinessPlugin", 1, "onNetNone2Wifi Exception");
+      return;
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    QLog.d("HealthBusinessPlugin", 1, "onNetWifi2Mobile");
+    for (;;)
+    {
+      try
+      {
+        paramString = new JSONObject();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("status", "2");
+        paramString.put("source", "none");
+        int i = 0;
+        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
+        if (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          QLog.d("HealthBusinessPlugin", 2, "mVideoPlayerManager.get(key).isPlaying():" + ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).isPlaying());
+          if (((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).isPlaying())
+          {
+            ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).pause();
+            i = 1;
+          }
+        }
+        else
+        {
+          if (i != 0) {
+            this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.dispatchJsEvent("healthSport_networkStatusChanged", localJSONObject, paramString);
+          }
+          QLog.d("HealthBusinessPlugin", 1, "onNetWifi2Mobile Broadcast");
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        QLog.d("HealthBusinessPlugin", 1, "onNetWifi2Mobile Exception");
+        return;
+      }
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    QLog.d("HealthBusinessPlugin", 1, "onNetWifi2None");
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject1 = new JSONObject();
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("status", "0");
+        localJSONObject1.put("source", "none");
+        int i = 0;
+        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
+        if (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          if (((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).isPlaying())
+          {
+            ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).pause();
+            this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.a.post(this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b);
+            QLog.d("HealthBusinessPlugin", 1, "onNetWifi2None Broadcast");
+            i = 1;
+          }
+        }
+        else
+        {
+          if (i != 0) {
+            this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.dispatchJsEvent("healthSport_networkStatusChanged", localJSONObject2, localJSONObject1);
+          }
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.d("HealthBusinessPlugin", 1, "onNetWifi2None Exception");
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbtq
  * JD-Core Version:    0.7.0.1
  */

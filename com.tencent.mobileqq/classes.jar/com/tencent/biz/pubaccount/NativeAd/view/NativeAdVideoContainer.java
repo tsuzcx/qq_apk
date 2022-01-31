@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.NativeAd.view;
 
-import aciy;
+import actn;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -17,7 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import azue;
+import bavi;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
 import com.tencent.common.app.AppInterface;
@@ -26,19 +26,19 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
-import nad;
-import nas;
-import nbe;
-import nbm;
-import nbr;
-import nmr;
-import nmv;
-import npj;
-import rvb;
+import nle;
+import nlt;
+import nmf;
+import nmn;
+import nms;
+import nyc;
+import nyg;
+import oau;
+import sht;
 
 public class NativeAdVideoContainer
   extends RelativeLayout
-  implements View.OnClickListener, nbr
+  implements View.OnClickListener, nms
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -50,8 +50,8 @@ public class NativeAdVideoContainer
   private ReadInJoyNativeAdAppVideoView jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView;
   private AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
   private ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
-  private nas jdField_a_of_type_Nas;
-  private nbm jdField_a_of_type_Nbm;
+  private nlt jdField_a_of_type_Nlt;
+  private nmn jdField_a_of_type_Nmn;
   private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -82,8 +82,8 @@ public class NativeAdVideoContainer
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    inflate(getContext(), 2131494228, this);
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView = ((ReadInJoyNativeAdAppVideoView)findViewById(2131296521));
+    inflate(getContext(), 2131559799, this);
+    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView = ((ReadInJoyNativeAdAppVideoView)findViewById(2131362062));
     paramContext = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView.getLayoutParams();
     paramContext.height = ((int)(getResources().getDisplayMetrics().widthPixels * 0.5626F));
     this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView.setLayoutParams(paramContext);
@@ -94,28 +94,28 @@ public class NativeAdVideoContainer
   
   public static void a(Context paramContext, AdvertisementInfo paramAdvertisementInfo, int paramInt)
   {
-    nbe.a(new nmv().a(paramContext).a(nbe.a).b(nbe.V).a(paramAdvertisementInfo).d(paramInt).a());
+    nmf.a(new nyg().a(paramContext).a(nmf.a).b(nmf.V).a(paramAdvertisementInfo).d(paramInt).a());
   }
   
   private void a(View paramView, int paramInt)
   {
     int i = 4;
     paramView.getId();
-    nmr localnmr = new nmr();
-    localnmr.b = true;
-    rvb.a(rvb.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, null, 4, true, localnmr), this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
+    nyc localnyc = new nyc();
+    localnyc.b = true;
+    sht.a(sht.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, null, 4, true, localnyc), this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
     int j = paramView.getId();
-    if ((j == 2131296510) || (j == 2131296475)) {
+    if ((j == 2131362051) || (j == 2131362017)) {
       i = 2;
     }
     for (;;)
     {
       a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, i);
       return;
-      if ((j == 2131296514) || (j == 2131296477)) {
+      if ((j == 2131362055) || (j == 2131362019)) {
         i = 3;
-      } else if (j != 2131296480) {
-        if ((j == 2131296512) || (j == 2131296448) || (j == 2131303947)) {
+      } else if (j != 2131362022) {
+        if ((j == 2131362053) || (j == 2131361990) || (j == 2131369623)) {
           i = 8;
         } else {
           i = paramInt;
@@ -134,7 +134,7 @@ public class NativeAdVideoContainer
     try
     {
       localObject = URLDrawable.getDrawable(new URL(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdCorporateLogo), (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setDecodeHandler(azue.a);
+      ((URLDrawable)localObject).setDecodeHandler(bavi.a);
       paramReadInJoyHeadImageView.setImageDrawable((Drawable)localObject);
       return;
     }
@@ -147,19 +147,19 @@ public class NativeAdVideoContainer
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131296481));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)findViewById(2131296510));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296514));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296512));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131303947));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296513));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362023));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)findViewById(2131362051));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362055));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362053));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369623));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362054));
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    localLayoutParams.leftMargin = aciy.a(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    localLayoutParams.leftMargin = actn.a(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewAdRatingBar = ((AdRatingBar)findViewById(2131308963));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131303964));
-    this.f = ((TextView)findViewById(2131296479));
+    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewAdRatingBar = ((AdRatingBar)findViewById(2131374703));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369637));
+    this.f = ((TextView)findViewById(2131362021));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -168,12 +168,12 @@ public class NativeAdVideoContainer
   
   private void g()
   {
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131296483));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)findViewById(2131296475));
-    this.c = ((TextView)findViewById(2131296477));
-    this.d = ((TextView)findViewById(2131296480));
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)findViewById(2131302554));
-    this.e = ((TextView)findViewById(2131296448));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362025));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)findViewById(2131362017));
+    this.c = ((TextView)findViewById(2131362019));
+    this.d = ((TextView)findViewById(2131362022));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)findViewById(2131368174));
+    this.e = ((TextView)findViewById(2131361990));
     this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(0);
     this.jdField_a_of_type_AndroidWidgetSeekBar.setEnabled(false);
     this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(0);
@@ -211,7 +211,7 @@ public class NativeAdVideoContainer
     }
     for (;;)
     {
-      String str = npj.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
+      String str = oau.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
       if (TextUtils.isEmpty(str)) {
         break label224;
       }
@@ -241,17 +241,17 @@ public class NativeAdVideoContainer
     a(paramView, 9);
   }
   
-  public void a(nas paramnas, AdvertisementInfo paramAdvertisementInfo, AppInterface paramAppInterface)
+  public void a(nlt paramnlt, AdvertisementInfo paramAdvertisementInfo, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_Nas = paramnas;
+    this.jdField_a_of_type_Nlt = paramnlt;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
-    nad localnad = new nad();
-    localnad.a = false;
-    localnad.b = true;
-    localnad.c = true;
-    localnad.d = false;
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView.setAdSetting(localnad);
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView.setVideoData(paramnas, paramAdvertisementInfo, paramAppInterface);
+    nle localnle = new nle();
+    localnle.a = false;
+    localnle.b = true;
+    localnle.c = true;
+    localnle.d = false;
+    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView.setAdSetting(localnle);
+    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView.setVideoData(paramnlt, paramAdvertisementInfo, paramAppInterface);
     this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView.a(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewAdRatingBar.setVisibility(8);
     h();
@@ -286,8 +286,8 @@ public class NativeAdVideoContainer
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView.setisFullScreen(false, 8);
-      if (this.jdField_a_of_type_Nbm != null) {
-        this.jdField_a_of_type_Nbm.a();
+      if (this.jdField_a_of_type_Nmn != null) {
+        this.jdField_a_of_type_Nmn.a();
       }
     }
   }
@@ -299,8 +299,8 @@ public class NativeAdVideoContainer
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
       this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView.setisFullScreen(true, 8);
-      if (this.jdField_a_of_type_Nbm != null) {
-        this.jdField_a_of_type_Nbm.b();
+      if (this.jdField_a_of_type_Nmn != null) {
+        this.jdField_a_of_type_Nmn.b();
       }
     }
   }
@@ -310,9 +310,9 @@ public class NativeAdVideoContainer
     a(paramView, 1000);
   }
   
-  public void setOnVideoFullScreen(nbm paramnbm)
+  public void setOnVideoFullScreen(nmn paramnmn)
   {
-    this.jdField_a_of_type_Nbm = paramnbm;
+    this.jdField_a_of_type_Nmn = paramnmn;
   }
   
   public void setVideoPlayPositon(long paramLong)

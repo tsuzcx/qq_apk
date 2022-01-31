@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajda;
-import ajjy;
-import bbmy;
+import ajrc;
+import ajyc;
+import bcpw;
 
 public class ApolloPanel$CmshowAppController$6
   implements Runnable
 {
-  public ApolloPanel$CmshowAppController$6(ajda paramajda) {}
+  public ApolloPanel$CmshowAppController$6(ajrc paramajrc) {}
   
   public void run()
   {
-    bbmy.a(this.a.a.getContext(), 1, ajjy.a(2131634684), 0).b(0);
-    ajda.a(this.a);
+    bcpw.a(this.a.a.getContext(), 1, ajyc.a(2131700471), 0).b(0);
+    ajrc.a(this.a);
   }
 }
 

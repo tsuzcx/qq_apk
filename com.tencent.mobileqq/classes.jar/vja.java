@@ -1,25 +1,28 @@
-import android.graphics.drawable.Drawable;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
 
-public class vja
+public abstract interface vja
 {
-  public static final int[] a;
-  public static final int[] b;
-  public int a;
-  public Drawable a;
-  public int b;
+  @NonNull
+  public abstract Context a();
   
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { -16777216, -1, -2148308, -1009097, -8136876, -13338378, -8464904, -531608, -1551972 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130845689, 2130845687, 2130845690, 2130845688, 2130845693, 2130845692, 2130845696, 2130845691, 2130845694 };
-  }
+  public abstract Intent a(vsd paramvsd);
   
-  public vja(Drawable paramDrawable, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
+  @NonNull
+  public abstract View a();
+  
+  public abstract void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3);
+  
+  public abstract void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong);
+  
+  public abstract void b();
+  
+  @Nullable
+  public abstract Activity getActivity();
 }
 
 

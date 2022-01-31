@@ -1,60 +1,60 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search;
 
-import ajed;
+import ajsf;
 import android.view.View;
-import avkj;
-import avon;
-import avrb;
-import avtz;
-import avuz;
+import awkc;
+import awog;
+import awqu;
+import awts;
+import awus;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import pwd;
-import pwf;
-import pwg;
-import pwh;
+import qib;
+import qid;
+import qie;
+import qif;
 
 public class HybridSearchFragment
   extends BaseSearchFragment
-  implements avrb
+  implements awqu
 {
   private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private pwg jdField_a_of_type_Pwg;
+  private qie jdField_a_of_type_Qie;
   
   public static HybridSearchFragment a()
   {
     return new HybridSearchFragment();
   }
   
-  public avkj a()
+  public awkc a()
   {
-    return new pwf(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Azwg);
+    return new qid(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Baxk);
   }
   
-  public avuz a()
+  public awus a()
   {
     ArrayList localArrayList = new ArrayList();
     HashSet localHashSet = new HashSet();
-    localHashSet.add(ajed.aB);
-    localArrayList.add(new avtz(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1, 1, null, localHashSet));
-    localArrayList.add(new pwd());
-    return new pwh(localArrayList);
+    localHashSet.add(ajsf.aC);
+    localArrayList.add(new awts(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1, 1, null, localHashSet));
+    localArrayList.add(new qib());
+    return new qif(localArrayList);
   }
   
   public void a(View paramView)
   {
-    paramView = (avon)paramView.getTag(2131313373);
-    if (this.jdField_a_of_type_Pwg != null) {
-      this.jdField_a_of_type_Pwg.a(paramView);
+    paramView = (awog)paramView.getTag(2131379208);
+    if (this.jdField_a_of_type_Qie != null) {
+      this.jdField_a_of_type_Qie.a(paramView);
     }
   }
   
-  public void a(pwg parampwg)
+  public void a(qie paramqie)
   {
-    this.jdField_a_of_type_Pwg = parampwg;
+    this.jdField_a_of_type_Qie = paramqie;
   }
   
   public boolean a()

@@ -1,63 +1,82 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.ArConfigService.4.1;
-import com.tencent.mobileqq.ar.ArConfigService.4.2;
-import com.tencent.mobileqq.ar.ArConfigService.4.3;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class akne
-  implements amys
+  extends ajta
 {
-  public akne(ArConfigService paramArConfigService) {}
+  public akne(HiddenChatFragment paramHiddenChatFragment) {}
   
-  public void a(XmlData paramXmlData)
+  public void a(int paramInt1, int paramInt2, Map<String, Integer> paramMap, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "EarlyDownLoadListener");
-    }
-  }
-  
-  public void a(XmlData paramXmlData, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadProgress data=%s curOffset=%s totalLen=%s", new Object[] { paramXmlData, Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
-    }
-    if ("qq.android.ar.native.so_v8.0.0".equals(paramXmlData.strResName)) {
-      ArConfigService.a(this.a, (int)(100L * paramLong1 / paramLong2));
-    }
-    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
-    if (!ArConfigService.e(this.a)) {
-      ArConfigService.a(this.a).post(new ArConfigService.4.1(this, i));
-    }
-  }
-  
-  public void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadFinish data=%s result=%s", new Object[] { paramXmlData, Boolean.valueOf(paramBoolean1) }));
-    }
-    if (paramBoolean1)
+    paramString = this.a.getActivity();
+    String str1 = HiddenChatFragment.a(this.a).getCurrentAccountUin();
+    if ((paramMap != null) && (paramMap.size() > 0))
     {
-      if ("qq.android.ar.native.so_v8.0.0".equals(paramXmlData.strResName)) {
-        ArConfigService.b(this.a, true);
-      }
-      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
-        ArConfigService.a(this.a).post(new ArConfigService.4.2(this));
+      Iterator localIterator = paramMap.keySet().iterator();
+      paramInt1 = 0;
+      if (localIterator.hasNext())
+      {
+        String str2 = (String)localIterator.next();
+        paramInt2 = ((Integer)paramMap.get(str2)).intValue();
+        if (paramInt2 == 4000) {
+          bbjn.j(paramString, str1, str2);
+        }
       }
     }
-    while (ArConfigService.e(this.a)) {
-      return;
+    for (;;)
+    {
+      break;
+      if (paramInt2 != 0)
+      {
+        paramInt1 = 1;
+        continue;
+        if (paramInt1 == 0) {
+          bbjn.j(this.a.getActivity(), HiddenChatFragment.a(this.a).getCurrentAccountUin());
+        }
+        return;
+      }
     }
-    ArConfigService.a(this.a).post(new ArConfigService.4.3(this));
-    ArConfigService.a(this.a, true);
   }
   
-  public void b(XmlData paramXmlData) {}
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  {
+    if (paramInt2 != 0)
+    {
+      paramString1 = paramString2;
+      if (!this.a.getActivity().isFinishing())
+      {
+        paramString1 = paramString2;
+        if (!"troop_delete_top_from_conversation".equals(paramString3))
+        {
+          paramString1 = paramString2;
+          if (TextUtils.isEmpty(paramString2)) {
+            paramString1 = this.a.getResources().getString(2131694927);
+          }
+          bcpw.a(this.a.getActivity(), 1, paramString1, 0).a();
+        }
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("tag_hidden_chat", 2, "onSetCommonUsedTroop, retCode = " + paramInt2 + " , wording = " + paramString1);
+      }
+      return;
+      this.a.a();
+      paramString1 = paramString2;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akne
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,15 @@
-import com.google.gson.reflect.TypeToken;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class nfx
-  extends TypeToken<Set<Long>>
+  implements View.OnClickListener
 {
-  nfx(nfw paramnfw) {}
+  nfx(nfu paramnfu) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a(this.a.a);
+  }
 }
 
 

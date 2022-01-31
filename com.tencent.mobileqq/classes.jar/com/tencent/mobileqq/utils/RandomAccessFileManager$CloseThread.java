@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import bahm;
+import bbir;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -39,26 +39,26 @@ class RandomAccessFileManager$CloseThread
           }
           if (j < i)
           {
-            localbahm2 = (bahm)RandomAccessFileManager.a(this.this$0).get(arrayOfString[j]);
-            bahm localbahm1;
-            for (??? = localbahm2.jdField_b_of_type_Bahm;; localObject3 = localbahm1)
+            localbbir2 = (bbir)RandomAccessFileManager.a(this.this$0).get(arrayOfString[j]);
+            bbir localbbir1;
+            for (??? = localbbir2.jdField_b_of_type_Bbir;; localObject3 = localbbir1)
             {
-              localbahm1 = ((bahm)???).jdField_b_of_type_Bahm;
-              if (((bahm)???).jdField_a_of_type_Int != 0) {
+              localbbir1 = ((bbir)???).jdField_b_of_type_Bbir;
+              if (((bbir)???).jdField_a_of_type_Int != 0) {
                 break;
               }
               long l1 = System.currentTimeMillis();
-              long l2 = ((bahm)???).jdField_b_of_type_Long;
+              long l2 = ((bbir)???).jdField_b_of_type_Long;
               if (l1 - l2 <= 1000L) {
                 break;
               }
               try
               {
-                ((bahm)???).jdField_a_of_type_JavaIoRandomAccessFile.close();
+                ((bbir)???).jdField_a_of_type_JavaIoRandomAccessFile.close();
                 if (QLog.isColorLevel()) {
-                  QLog.d("AppleMojiHandler", 2, "file " + arrayOfString[j] + "[" + ((bahm)???).jdField_a_of_type_Long + "]" + " close by Thread:" + Thread.currentThread().getId());
+                  QLog.d("AppleMojiHandler", 2, "file " + arrayOfString[j] + "[" + ((bbir)???).jdField_a_of_type_Long + "]" + " close by Thread:" + Thread.currentThread().getId());
                 }
-                RandomAccessFileManager.a(this.this$0, localbahm2, (bahm)???, arrayOfString[j], RandomAccessFileManager.a(this.this$0));
+                RandomAccessFileManager.a(this.this$0, localbbir2, (bbir)???, arrayOfString[j], RandomAccessFileManager.a(this.this$0));
               }
               catch (IOException localIOException)
               {
@@ -78,11 +78,11 @@ class RandomAccessFileManager$CloseThread
     {
       for (;;)
       {
-        bahm localbahm2;
+        bbir localbbir2;
         continue;
         int j = 0;
         continue;
-        if (localbahm2 == localInterruptedException) {
+        if (localbbir2 == localInterruptedException) {
           j += 1;
         }
       }

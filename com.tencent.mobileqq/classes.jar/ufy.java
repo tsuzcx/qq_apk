@@ -1,32 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
 
 class ufy
-  extends JobSegment<Integer, ujb>
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  private uja a;
+  ufy(ufu paramufu, ufq paramufq) {}
   
-  public ufy(@NonNull uja paramuja)
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    this.a = paramuja;
-  }
-  
-  protected void a(JobContext paramJobContext, Integer paramInteger)
-  {
-    Object localObject = this.a.a(paramInteger.intValue(), 5);
-    if ((((ujb)localObject).a.size() > 0) || (((ujb)localObject).b))
-    {
-      urk.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
-      notifyResult(localObject);
-      return;
-    }
-    localObject = new szx();
-    ((szx)localObject).a = this.a.a();
-    ((szx)localObject).b = QQStoryContext.a().b();
-    slv.a().a((slz)localObject, new ufz(this, paramJobContext, paramInteger));
+    this.jdField_a_of_type_Ufq.a(this.jdField_a_of_type_Ufu);
   }
 }
 

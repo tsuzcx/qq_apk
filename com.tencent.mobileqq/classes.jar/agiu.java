@@ -1,23 +1,26 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import mqq.util.WeakReference;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class agiu
-  implements View.OnClickListener
+public class agiu
+  extends aume
 {
-  agiu(agit paramagit) {}
+  public agiu(BindNumberActivity paramBindNumberActivity) {}
   
-  public void onClick(View paramView)
+  protected void b(boolean paramBoolean)
   {
-    if (agit.a(this.a) == null)
-    {
-      agit.a(this.a, babr.a((Context)this.a.a.get(), 0, ((NewPhotoPreviewActivity)this.a.a.get()).getString(2131652585), null, ((NewPhotoPreviewActivity)this.a.a.get()).getString(2131652583), ((NewPhotoPreviewActivity)this.a.a.get()).getString(2131652584), new agiv(this), new agiw(this)));
-      agit.a(this.a).setCanceledOnTouchOutside(false);
+    super.b(paramBoolean);
+    if (paramBoolean) {
+      BindNumberActivity.a(this.a).sendEmptyMessage(3);
     }
-    agit.a(this.a).show();
+    for (;;)
+    {
+      this.a.app.unRegistObserver(this.a.b);
+      this.a.b = null;
+      return;
+      this.a.b();
+      this.a.b(2131718737);
+    }
   }
 }
 

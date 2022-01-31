@@ -4,9 +4,9 @@ import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import bdcz;
-import bdfx;
-import bdfz;
+import begz;
+import bejy;
+import beka;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,18 +16,18 @@ public class DebugJsPlugin
   private String mAppId;
   private SharedPreferences mSharedPref;
   
-  public void onCreate(bdcz parambdcz)
+  public void onCreate(begz parambegz)
   {
-    super.onCreate(parambdcz);
+    super.onCreate(parambegz);
     this.mAppId = this.mApkgInfo.d;
     this.mSharedPref = this.mContext.getSharedPreferences("miniapp", 4);
   }
   
-  public void setEnableDebug(bdfz parambdfz)
+  public void setEnableDebug(beka parambeka)
   {
     try
     {
-      boolean bool = new JSONObject(parambdfz.b).optBoolean("enableDebug");
+      boolean bool = new JSONObject(parambeka.b).optBoolean("enableDebug");
       if (this.mAppId != null)
       {
         if (bool != Boolean.valueOf(this.mSharedPref.getBoolean(this.mAppId + "_debug", false)).booleanValue())
@@ -35,13 +35,13 @@ public class DebugJsPlugin
           new AlertDialog.Builder(this.mContext).setTitle("重启后生效").setPositiveButton(17039370, new DebugJsPlugin.1(this, bool)).create().show();
           return;
         }
-        parambdfz.a();
+        parambeka.a();
         return;
       }
     }
     catch (JSONException localJSONException)
     {
-      parambdfz.b();
+      parambeka.b();
     }
   }
 }

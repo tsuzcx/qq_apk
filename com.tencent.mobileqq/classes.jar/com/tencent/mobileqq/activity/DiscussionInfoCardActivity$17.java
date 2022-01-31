@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
 import android.app.Activity;
-import bbms;
+import bcpq;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 final class DiscussionInfoCardActivity$17
   implements Runnable
 {
-  DiscussionInfoCardActivity$17(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, Activity paramActivity, int paramInt, bbms parambbms) {}
+  DiscussionInfoCardActivity$17(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, Activity paramActivity, int paramInt, bcpq parambcpq) {}
   
   /* Error */
   public void run()
@@ -22,9 +22,9 @@ final class DiscussionInfoCardActivity$17
     //   7: getfield 20	com/tencent/mobileqq/activity/DiscussionInfoCardActivity$17:jdField_a_of_type_Long	J
     //   10: lcmp
     //   11: ifne +622 -> 633
-    //   14: invokestatic 48	azzu:a	()Z
+    //   14: invokestatic 48	bbay:a	()Z
     //   17: ifeq +386 -> 403
-    //   20: getstatic 53	ajed:bA	Ljava/lang/String;
+    //   20: getstatic 53	ajsf:bI	Ljava/lang/String;
     //   23: astore 4
     //   25: new 55	java/lang/StringBuilder
     //   28: dup
@@ -49,39 +49,39 @@ final class DiscussionInfoCardActivity$17
     //   69: ifne +787 -> 856
     //   72: ldc 76
     //   74: astore 5
-    //   76: new 78	awui
+    //   76: new 78	axuk
     //   79: dup
     //   80: ldc 80
-    //   82: invokespecial 83	awui:<init>	(Ljava/lang/Class;)V
+    //   82: invokespecial 83	axuk:<init>	(Ljava/lang/Class;)V
     //   85: bipush 15
-    //   87: invokevirtual 86	awui:c	(I)Lawui;
+    //   87: invokevirtual 86	axuk:c	(I)Laxuk;
     //   90: new 55	java/lang/StringBuilder
     //   93: dup
     //   94: invokespecial 56	java/lang/StringBuilder:<init>	()V
     //   97: ldc 87
-    //   99: invokestatic 92	ajjy:a	(I)Ljava/lang/String;
+    //   99: invokestatic 92	ajyc:a	(I)Ljava/lang/String;
     //   102: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   105: aload_0
     //   106: getfield 28	com/tencent/mobileqq/activity/DiscussionInfoCardActivity$17:c	Ljava/lang/String;
     //   109: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   112: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   115: invokevirtual 95	awui:a	(Ljava/lang/String;)Lawui;
+    //   115: invokevirtual 95	axuk:a	(Ljava/lang/String;)Laxuk;
     //   118: aload_0
     //   119: getfield 30	com/tencent/mobileqq/activity/DiscussionInfoCardActivity$17:d	Ljava/lang/String;
-    //   122: invokevirtual 98	awui:e	(Ljava/lang/String;)Lawui;
-    //   125: invokevirtual 101	awui:a	()Lcom/tencent/mobileqq/structmsg/AbsShareMsg;
+    //   122: invokevirtual 98	axuk:e	(Ljava/lang/String;)Laxuk;
+    //   125: invokevirtual 101	axuk:a	()Lcom/tencent/mobileqq/structmsg/AbsShareMsg;
     //   128: astore 8
     //   130: aload_0
     //   131: getfield 22	com/tencent/mobileqq/activity/DiscussionInfoCardActivity$17:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   134: bipush 51
     //   136: invokevirtual 107	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   139: checkcast 109	ajjj
+    //   139: checkcast 109	ajxn
     //   142: astore 9
     //   144: aload_0
     //   145: getfield 22	com/tencent/mobileqq/activity/DiscussionInfoCardActivity$17:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   148: bipush 53
     //   150: invokevirtual 107	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   153: checkcast 111	ajhh
+    //   153: checkcast 111	ajvk
     //   156: astore 10
     //   158: aload 7
     //   160: astore 4
@@ -90,7 +90,7 @@ final class DiscussionInfoCardActivity$17
     //   167: aload 10
     //   169: aload_0
     //   170: getfield 24	com/tencent/mobileqq/activity/DiscussionInfoCardActivity$17:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   173: invokevirtual 114	ajhh:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/DiscussionInfo;
+    //   173: invokevirtual 114	ajvk:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/DiscussionInfo;
     //   176: astore 6
     //   178: aload 7
     //   180: astore 4
@@ -101,14 +101,14 @@ final class DiscussionInfoCardActivity$17
     //   190: getfield 24	com/tencent/mobileqq/activity/DiscussionInfoCardActivity$17:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   193: aload 6
     //   195: getfield 119	com/tencent/mobileqq/data/DiscussionInfo:ownerUin	Ljava/lang/String;
-    //   198: invokevirtual 122	ajhh:a	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mobileqq/data/DiscussionMemberInfo;
+    //   198: invokevirtual 122	ajvk:a	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mobileqq/data/DiscussionMemberInfo;
     //   201: astore 4
     //   203: aload 4
     //   205: ifnull +553 -> 758
     //   208: aload 4
     //   210: aload_0
     //   211: getfield 22	com/tencent/mobileqq/activity/DiscussionInfoCardActivity$17:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   214: invokestatic 127	babh:a	(Lcom/tencent/mobileqq/data/DiscussionMemberInfo;Lcom/tencent/mobileqq/app/QQAppInterface;)Ljava/lang/String;
+    //   214: invokestatic 127	bbcl:a	(Lcom/tencent/mobileqq/data/DiscussionMemberInfo;Lcom/tencent/mobileqq/app/QQAppInterface;)Ljava/lang/String;
     //   217: astore 4
     //   219: aload 4
     //   221: astore 6
@@ -116,23 +116,23 @@ final class DiscussionInfoCardActivity$17
     //   225: invokestatic 133	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   228: ifeq +10 -> 238
     //   231: ldc 134
-    //   233: invokestatic 92	ajjy:a	(I)Ljava/lang/String;
+    //   233: invokestatic 92	ajyc:a	(I)Ljava/lang/String;
     //   236: astore 6
-    //   238: new 136	awyk
+    //   238: new 136	axym
     //   241: dup
-    //   242: invokespecial 137	awyk:<init>	()V
+    //   242: invokespecial 137	axym:<init>	()V
     //   245: astore 4
     //   247: aload 4
     //   249: iconst_1
-    //   250: invokevirtual 142	awum:b	(I)V
+    //   250: invokevirtual 142	axuo:b	(I)V
     //   253: aload 4
     //   255: aload_0
     //   256: getfield 32	com/tencent/mobileqq/activity/DiscussionInfoCardActivity$17:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   259: ldc 143
     //   261: invokevirtual 148	android/app/Activity:getString	(I)Ljava/lang/String;
-    //   264: invokevirtual 150	awum:a	(Ljava/lang/String;)V
+    //   264: invokevirtual 150	axuo:a	(Ljava/lang/String;)V
     //   267: iconst_2
-    //   268: invokestatic 155	awuv:a	(I)Lawum;
+    //   268: invokestatic 155	axux:a	(I)Laxuo;
     //   271: astore 7
     //   273: aload 7
     //   275: aload 5
@@ -147,19 +147,19 @@ final class DiscussionInfoCardActivity$17
     //   295: dup
     //   296: invokespecial 56	java/lang/StringBuilder:<init>	()V
     //   299: ldc 161
-    //   301: invokestatic 92	ajjy:a	(I)Ljava/lang/String;
+    //   301: invokestatic 92	ajyc:a	(I)Ljava/lang/String;
     //   304: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   307: aload 6
     //   309: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   312: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   315: iconst_1
-    //   316: invokevirtual 164	awum:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
+    //   316: invokevirtual 164	axuo:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
     //   319: aload 8
     //   321: aload 4
-    //   323: invokevirtual 170	com/tencent/mobileqq/structmsg/AbsShareMsg:addItem	(Lawul;)V
+    //   323: invokevirtual 170	com/tencent/mobileqq/structmsg/AbsShareMsg:addItem	(Laxun;)V
     //   326: aload 8
     //   328: aload 7
-    //   330: invokevirtual 170	com/tencent/mobileqq/structmsg/AbsShareMsg:addItem	(Lawul;)V
+    //   330: invokevirtual 170	com/tencent/mobileqq/structmsg/AbsShareMsg:addItem	(Laxun;)V
     //   333: new 172	android/content/Intent
     //   336: dup
     //   337: invokespecial 173	android/content/Intent:<init>	()V
@@ -180,17 +180,17 @@ final class DiscussionInfoCardActivity$17
     //   369: aload 4
     //   371: aload_0
     //   372: getfield 34	com/tencent/mobileqq/activity/DiscussionInfoCardActivity$17:jdField_a_of_type_Int	I
-    //   375: invokestatic 193	aphp:a	(Landroid/app/Activity;Landroid/content/Intent;I)V
+    //   375: invokestatic 193	aqbc:a	(Landroid/app/Activity;Landroid/content/Intent;I)V
     //   378: aload_0
-    //   379: getfield 36	com/tencent/mobileqq/activity/DiscussionInfoCardActivity$17:jdField_a_of_type_Bbms	Lbbms;
+    //   379: getfield 36	com/tencent/mobileqq/activity/DiscussionInfoCardActivity$17:jdField_a_of_type_Bcpq	Lbcpq;
     //   382: ifnull +20 -> 402
     //   385: aload_0
-    //   386: getfield 36	com/tencent/mobileqq/activity/DiscussionInfoCardActivity$17:jdField_a_of_type_Bbms	Lbbms;
-    //   389: invokevirtual 198	bbms:isShowing	()Z
+    //   386: getfield 36	com/tencent/mobileqq/activity/DiscussionInfoCardActivity$17:jdField_a_of_type_Bcpq	Lbcpq;
+    //   389: invokevirtual 198	bcpq:isShowing	()Z
     //   392: ifeq +10 -> 402
     //   395: aload_0
-    //   396: getfield 36	com/tencent/mobileqq/activity/DiscussionInfoCardActivity$17:jdField_a_of_type_Bbms	Lbbms;
-    //   399: invokevirtual 201	bbms:dismiss	()V
+    //   396: getfield 36	com/tencent/mobileqq/activity/DiscussionInfoCardActivity$17:jdField_a_of_type_Bcpq	Lbcpq;
+    //   399: invokevirtual 201	bcpq:dismiss	()V
     //   402: return
     //   403: ldc 203
     //   405: astore 4
@@ -207,7 +207,7 @@ final class DiscussionInfoCardActivity$17
     //   429: sipush 8192
     //   432: invokespecial 216	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;I)V
     //   435: astore 6
-    //   437: invokestatic 221	bacm:e	()Landroid/graphics/drawable/Drawable;
+    //   437: invokestatic 221	bbdr:e	()Landroid/graphics/drawable/Drawable;
     //   440: checkcast 223	android/graphics/drawable/BitmapDrawable
     //   443: invokevirtual 227	android/graphics/drawable/BitmapDrawable:getBitmap	()Landroid/graphics/Bitmap;
     //   446: getstatic 233	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
@@ -322,7 +322,7 @@ final class DiscussionInfoCardActivity$17
     //   671: aload_0
     //   672: getfield 26	com/tencent/mobileqq/activity/DiscussionInfoCardActivity$17:b	Ljava/lang/String;
     //   675: ldc_w 275
-    //   678: invokestatic 280	bfqn:a	(Ljava/util/ArrayList;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/ArrayList;
+    //   678: invokestatic 280	bgyu:a	(Ljava/util/ArrayList;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/ArrayList;
     //   681: astore 4
     //   683: aload 4
     //   685: ifnull +178 -> 863
@@ -361,19 +361,19 @@ final class DiscussionInfoCardActivity$17
     //   758: aload 9
     //   760: aload 6
     //   762: getfield 119	com/tencent/mobileqq/data/DiscussionInfo:ownerUin	Ljava/lang/String;
-    //   765: invokevirtual 300	ajjj:b	(Ljava/lang/String;)Z
+    //   765: invokevirtual 300	ajxn:b	(Ljava/lang/String;)Z
     //   768: ifeq +20 -> 788
     //   771: aload_0
     //   772: getfield 22	com/tencent/mobileqq/activity/DiscussionInfoCardActivity$17:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   775: aload 6
     //   777: getfield 119	com/tencent/mobileqq/data/DiscussionInfo:ownerUin	Ljava/lang/String;
-    //   780: invokestatic 304	babh:j	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
+    //   780: invokestatic 304	bbcl:j	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
     //   783: astore 4
     //   785: goto -566 -> 219
     //   788: aload 9
     //   790: aload 6
     //   792: getfield 119	com/tencent/mobileqq/data/DiscussionInfo:ownerUin	Ljava/lang/String;
-    //   795: invokevirtual 307	ajjj:e	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Friends;
+    //   795: invokevirtual 307	ajxn:e	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Friends;
     //   798: astore 4
     //   800: aload 4
     //   802: ifnull +13 -> 815
@@ -440,10 +440,10 @@ final class DiscussionInfoCardActivity$17
     //   176	303	6	localObject11	Object
     //   492	336	6	localIOException5	java.io.IOException
     //   834	16	6	localObject12	Object
-    //   1	328	7	localawum	awum
+    //   1	328	7	localaxuo	axuo
     //   128	229	8	localAbsShareMsg	com.tencent.mobileqq.structmsg.AbsShareMsg
-    //   142	647	9	localajjj	ajjj
-    //   156	32	10	localajhh	ajhh
+    //   142	647	9	localajxn	ajxn
+    //   156	32	10	localajvk	ajvk
     // Exception table:
     //   from	to	target	type
     //   478	483	492	java/io/IOException

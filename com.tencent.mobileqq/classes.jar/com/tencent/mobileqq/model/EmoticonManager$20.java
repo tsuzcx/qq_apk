@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.model;
 
 import android.text.TextUtils;
-import arnz;
-import atmp;
-import atmr;
+import askd;
+import aukn;
+import aukp;
 import com.tencent.mobileqq.data.RecentEmotion;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -11,18 +11,18 @@ import java.util.List;
 public class EmoticonManager$20
   implements Runnable
 {
-  public EmoticonManager$20(arnz paramarnz, List paramList) {}
+  public EmoticonManager$20(askd paramaskd, List paramList) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
-    atmr localatmr = this.this$0.a.a();
+    aukp localaukp = this.this$0.a.a();
     for (;;)
     {
       int i;
       try
       {
-        localatmr.a();
+        localaukp.a();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("saveRecentEmotionToDB:");
         i = this.a.size() - 1;
@@ -49,27 +49,27 @@ public class EmoticonManager$20
           if (localRecentEmotion2 != null) {
             this.this$0.a.b(localRecentEmotion2);
           }
-          arnz.a(this.this$0, localRecentEmotion3);
+          askd.a(this.this$0, localRecentEmotion3);
         }
       }
       catch (Exception localException)
       {
         QLog.e("EmoticonManager", 2, "saveRecentEmotionToDB e = " + localException.getMessage());
-        localatmr.b();
+        localaukp.b();
         if (QLog.isColorLevel()) {
           QLog.d("EmoticonManager", 2, "saveRecentEmotionToDB_Time: " + (System.currentTimeMillis() - l));
         }
         return;
-        localatmr.c();
+        localaukp.c();
         if (QLog.isColorLevel()) {
           QLog.d("EmoticonManager", 2, localException.toString());
         }
-        localatmr.b();
+        localaukp.b();
         continue;
       }
       finally
       {
-        localatmr.b();
+        localaukp.b();
       }
       label364:
       i -= 1;

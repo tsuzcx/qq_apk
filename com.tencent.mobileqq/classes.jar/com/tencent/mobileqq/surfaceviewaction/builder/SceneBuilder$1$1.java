@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.surfaceviewaction.builder;
 
-import axba;
-import axbo;
-import axbx;
+import aybc;
+import aybq;
+import aybz;
 
 class SceneBuilder$1$1
   implements Runnable
@@ -11,8 +11,8 @@ class SceneBuilder$1$1
   
   public void run()
   {
-    axba localaxba = axbo.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.this$0, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_Axbc, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_Axbx.a(localaxba);
+    aybc localaybc = aybq.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.this$0, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_Aybe, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_Aybz.a(localaybc);
   }
 }
 

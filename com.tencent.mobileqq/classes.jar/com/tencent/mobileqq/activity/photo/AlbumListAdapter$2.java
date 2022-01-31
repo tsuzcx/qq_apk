@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.photo;
 
-import afze;
-import ageh;
-import ajjy;
-import apdh;
+import aglc;
+import agqf;
+import ajyc;
+import apvb;
 import com.tencent.mobileqq.data.QQAlbumInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,7 +13,7 @@ import java.util.Locale;
 public class AlbumListAdapter$2
   implements Runnable
 {
-  public AlbumListAdapter$2(afze paramafze) {}
+  public AlbumListAdapter$2(aglc paramaglc) {}
   
   public void run()
   {
@@ -36,9 +36,9 @@ public class AlbumListAdapter$2
       QQAlbumInfo localQQAlbumInfo = (QQAlbumInfo)((Iterator)localObject).next();
       if ((localQQAlbumInfo != null) && (localQQAlbumInfo.mCoverInfo != null))
       {
-        String str2 = apdh.c(localQQAlbumInfo.mCoverInfo.path);
+        String str2 = apvb.c(localQQAlbumInfo.mCoverInfo.path);
         String str1 = localQQAlbumInfo.name;
-        if ((str2 != null) && (str1 != null) && (!str1.equals(ajjy.a(2131634401))) && (!str1.equals(ajjy.a(2131634409))))
+        if ((str2 != null) && (str1 != null) && (!str1.equals(ajyc.a(2131700189))) && (!str1.equals(ajyc.a(2131700197))))
         {
           str2 = str2.toLowerCase(Locale.US);
           str1 = str1.toLowerCase(Locale.US);
@@ -56,7 +56,7 @@ public class AlbumListAdapter$2
               n += 1;
             } else if ((str1.equals("weixin")) || (str1.equals("wechat")) || (str1.equals("micromsg"))) {
               k += localQQAlbumInfo.mMediaFileCount;
-            } else if (ageh.a(str2)) {
+            } else if (agqf.a(str2)) {
               j += localQQAlbumInfo.mMediaFileCount;
             } else {
               i += localQQAlbumInfo.mMediaFileCount;
@@ -64,11 +64,11 @@ public class AlbumListAdapter$2
           }
           else if (str1.equals("qq_screenshot")) {
             i5 += localQQAlbumInfo.mMediaFileCount;
-          } else if ((str2.contains("screenshot")) || (str2.contains(ajjy.a(2131634403))) || (str2.contains(ajjy.a(2131634410))) || (str2.equals("screen_cap")) || (str2.equals("ScreenCapture"))) {
+          } else if ((str2.contains("screenshot")) || (str2.contains(ajyc.a(2131700191))) || (str2.contains(ajyc.a(2131700198))) || (str2.equals("screen_cap")) || (str2.equals("ScreenCapture"))) {
             i4 += localQQAlbumInfo.mMediaFileCount;
-          } else if ((str1.contains("camera")) || (str1.equals("dcim")) || (str1.equals("100MEDIA")) || (str1.equals("100ANDRO")) || (str1.contains(ajjy.a(2131634395))) || (str1.contains(ajjy.a(2131634397))) || (str1.contains(ajjy.a(2131634399)))) {
+          } else if ((str1.contains("camera")) || (str1.equals("dcim")) || (str1.equals("100MEDIA")) || (str1.equals("100ANDRO")) || (str1.contains(ajyc.a(2131700183))) || (str1.contains(ajyc.a(2131700185))) || (str1.contains(ajyc.a(2131700187)))) {
             i6 += localQQAlbumInfo.mMediaFileCount;
-          } else if (ageh.a(str2)) {
+          } else if (agqf.a(str2)) {
             j += localQQAlbumInfo.mMediaFileCount;
           } else {
             i += localQQAlbumInfo.mMediaFileCount;
@@ -76,7 +76,7 @@ public class AlbumListAdapter$2
         }
       }
     }
-    ageh.a(i6, i5, i4, j, i, i3, i2, i1, n, m, k);
+    agqf.a(i6, i5, i4, j, i, i3, i2, i1, n, m, k);
   }
 }
 

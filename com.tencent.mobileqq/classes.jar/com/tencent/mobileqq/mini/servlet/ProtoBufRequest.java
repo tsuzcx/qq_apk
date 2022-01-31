@@ -4,8 +4,8 @@ import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.text.TextUtils;
-import bfpj;
-import bfpk;
+import bgxq;
+import bgxr;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -48,8 +48,8 @@ public abstract class ProtoBufRequest
     }
     PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
     localStQWebReq.Seq.set(paramInt);
-    localStQWebReq.qua.set(bfpk.a());
-    localStQWebReq.deviceInfo.set(bfpj.a().c());
+    localStQWebReq.qua.set(bgxr.a());
+    localStQWebReq.deviceInfo.set(bgxq.a().c());
     localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(getBusiBuf()));
     if (!TextUtils.isEmpty(paramString)) {
       localStQWebReq.traceid.set(paramString);

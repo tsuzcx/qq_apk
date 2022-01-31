@@ -1,54 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 
 public class abeg
-  implements DialogInterface.OnClickListener
+  extends VasQuickUpdateManager.CallBacker
 {
-  public abeg(NotificationActivity paramNotificationActivity) {}
+  public abeg(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = this.a.getIntent();
-    paramDialogInterface = null;
-    if (localObject != null) {
-      paramDialogInterface = ((Intent)localObject).getStringExtra("errorUrl");
-    }
-    localObject = paramDialogInterface;
-    if (TextUtils.isEmpty(paramDialogInterface)) {
-      localObject = "https://aq.qq.com/007";
-    }
-    QLog.d("NotificationActivity", 1, "loginFailed, before operate jump url is : " + (String)localObject);
-    localStringBuilder.append((String)localObject);
-    if (!((String)localObject).contains("?")) {
-      localStringBuilder.append("?");
-    }
-    if (!((String)localObject).endsWith("?")) {
-      localStringBuilder.append("&");
-    }
-    for (;;)
+    if ((paramLong == 15L) && (paramString1.startsWith("card.")) && (this.a.a != null))
     {
-      localStringBuilder.append("from=andapp&account=").append(NotificationActivity.b(this.a));
-      paramDialogInterface = localStringBuilder.toString();
-      QLog.d("NotificationActivity", 1, "loginFailed, after operate jump url is : " + paramDialogInterface);
-      localObject = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-      this.a.startActivity(((Intent)localObject).putExtra("url", paramDialogInterface));
-      this.a.finish();
-      return;
-      if (((String)localObject).indexOf("?") != ((String)localObject).lastIndexOf("?")) {
-        localStringBuilder.append("&");
+      paramString1 = this.a.a.obtainMessage();
+      paramString1.what = 7;
+      if (paramInt1 != 0) {
+        break label82;
       }
+      paramString1.arg1 = 1;
+    }
+    for (paramString1.arg2 = 1;; paramString1.arg2 = 0)
+    {
+      if (this.a.a != null) {
+        this.a.a.sendMessage(paramString1);
+      }
+      return;
+      label82:
+      paramString1.arg1 = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abeg
  * JD-Core Version:    0.7.0.1
  */

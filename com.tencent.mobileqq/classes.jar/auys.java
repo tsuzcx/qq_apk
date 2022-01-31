@@ -1,33 +1,24 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
 public class auys
-  implements Handler.Callback
+  implements Animation.AnimationListener
 {
-  public auys(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
+  public auys(BreatheEffectView paramBreatheEffectView) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    if (!NeoVideoFilterPlayView.a(this.a))
-    {
-      this.a.requestRender();
-      return true;
-    }
-    NeoVideoFilterPlayView.a(this.a).set(true);
-    urk.b("FlowEdit_NeoVideoFilterPlayView", "skip request render because of pause play");
-    return true;
+    this.a.a();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auys
  * JD-Core Version:    0.7.0.1
  */

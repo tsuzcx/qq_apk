@@ -1,27 +1,22 @@
-import android.support.annotation.NonNull;
-
 public class bioz
-  implements Comparable
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
   
-  public bioz(String paramString1, String paramString2, int paramInt, String paramString3)
+  public bioz(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_Int = paramInt;
-    this.c = paramString3;
   }
   
-  public int compareTo(@NonNull Object paramObject)
+  public int a()
   {
-    if ((paramObject instanceof bioz)) {
-      return this.b.compareTo(((bioz)paramObject).b);
-    }
-    return 0;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

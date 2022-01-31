@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="horizontal" android:id="@id/gs9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik">
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik">
         <LinearLayout android:orientation="horizontal" android:id="@id/m2g" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <View android:id="@id/icon" android:background="@drawable/qq_profilecard_item_sign" style="@style/bw" />
             <com.tencent.mobileqq.widget.StatableSpanTextView android:ellipsize="end" android:id="@id/info" android:singleLine="true" style="@style/bz" />

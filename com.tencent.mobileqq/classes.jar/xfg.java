@@ -1,33 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.biz.widgets.TabLayout;
-import java.io.PrintStream;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class xfg
-  implements ValueAnimator.AnimatorUpdateListener
+class xfg
+  implements Animator.AnimatorListener
 {
-  public xfg(TabLayout paramTabLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView, int paramInt5) {}
+  xfg(xff paramxff) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    System.out.println("value = " + f);
-    int i = 0;
-    while (i < this.jdField_a_of_type_Int - this.b)
-    {
-      paramValueAnimator = this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.getChildAt(this.c + i);
-      if (paramValueAnimator != null) {
-        paramValueAnimator.setTranslationX(this.d * f);
-      }
-      i += 1;
+    if (xff.a(this.a) != null) {
+      xff.a(this.a).a();
     }
-    this.jdField_a_of_type_AndroidViewView.setTranslationX(f * -this.e);
   }
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xfg
  * JD-Core Version:    0.7.0.1
  */

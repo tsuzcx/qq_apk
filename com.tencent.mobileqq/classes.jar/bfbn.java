@@ -1,31 +1,18 @@
-import com.tencent.TMG.sdk.AVCallback;
-import com.tencent.qphone.base.util.QLog;
-
-class bfbn
-  implements AVCallback
+public abstract interface bfbn
 {
-  bfbn(bfbi parambfbi) {}
+  public abstract String a(String paramString1, String paramString2, begy parambegy, int paramInt);
   
-  public void onComplete(int paramInt, String paramString)
-  {
-    if (paramInt == 0)
-    {
-      QLog.e("AVEngineWalper", 1, "AVCallback make connection successfully!!!");
-      bfbi.a(this.a, true);
-    }
-    for (;;)
-    {
-      if (this.a.a != null) {
-        this.a.a.a(paramInt, paramString);
-      }
-      return;
-      QLog.e("AVEngineWalper", 1, "AVCallback result=" + paramInt + ", errorInfo=" + paramString);
-    }
-  }
+  public abstract void a(String paramString1, String paramString2, int paramInt);
+  
+  public abstract void b(String paramString1, String paramString2, int paramInt);
+  
+  public abstract void c(String paramString1, String paramString2, int paramInt);
+  
+  public abstract void d(String paramString1, String paramString2, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfbn
  * JD-Core Version:    0.7.0.1
  */

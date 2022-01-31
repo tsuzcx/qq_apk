@@ -1,21 +1,29 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity.1;
 
-class nxh
-  extends nyf
+public class nxh
+  implements DialogInterface.OnCancelListener
 {
-  nxh(nxd paramnxd, boolean paramBoolean, List paramList)
-  {
-    super(paramnxd, null);
-  }
+  public nxh(ReadInJoyUploadAvatarActivity.1 param1) {}
   
-  void a(nyi paramnyi)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramnyi.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, nxd.a(this.jdField_a_of_type_Nxd), 3);
+    paramDialogInterface = this.a.this$0.getIntent();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("retCode", 1);
+    localBundle.putString("msg", ajyc.a(2131713087));
+    paramDialogInterface.putExtra("Bundle", localBundle);
+    this.a.this$0.setResult(-1, paramDialogInterface);
+    this.a.this$0.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nxh
  * JD-Core Version:    0.7.0.1
  */

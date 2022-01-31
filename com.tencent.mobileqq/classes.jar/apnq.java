@@ -1,40 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.fragment.AppletsSettingFragment;
-import com.tencent.widget.Switch;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.startup.step.CheckPermission;
+import mqq.app.AppActivity;
 
-public class apnq
-  implements DialogInterface.OnClickListener
+class apnq
+  implements View.OnClickListener
 {
-  public apnq(AppletsSettingFragment paramAppletsSettingFragment) {}
+  apnq(apnm paramapnm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    if (paramInt == 1)
+    if (!CheckPermission.isHasStoragePermission(this.a.a))
     {
-      paramDialogInterface = this.a;
-      if (!AppletsSettingFragment.a(this.a))
-      {
-        AppletsSettingFragment.a(paramDialogInterface, bool);
-        AppletsSettingFragment.a(this.a, AppletsSettingFragment.a(this.a));
-        this.a.a.cancel();
-      }
+      CheckPermission.requestSDCardPermission((AppActivity)this.a.a, new apnr(this));
+      return;
     }
-    while (paramInt != 0) {
-      for (;;)
-      {
-        return;
-        bool = false;
-      }
-    }
-    AppletsSettingFragment.a(this.a).setChecked(AppletsSettingFragment.a(this.a));
-    this.a.a.cancel();
+    apue.a(this.a.a, this.a.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apnq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import apbo;
-import apcc;
-import apfs;
+import apti;
+import aptw;
+import apxv;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,7 +21,7 @@ class QfileLocalFileMediaTabView$2
   {
     HashMap localHashMap1 = new HashMap();
     if (this.this$0.f) {
-      localObject1 = apbo.a().a();
+      localObject1 = apti.a().a();
     }
     while ((QfileLocalFileMediaTabView.a(this.this$0) & 0x1) > 0)
     {
@@ -30,16 +30,16 @@ class QfileLocalFileMediaTabView$2
       {
         if (((Iterator)localObject2).hasNext())
         {
-          apcc.a(true, ((apfs)((Iterator)localObject2).next()).a(), ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap1, null);
+          aptw.a(true, ((apxv)((Iterator)localObject2).next()).a(), ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap1, null);
           continue;
           localObject1 = null;
           break;
         }
       }
       if (localObject1 != null) {
-        apcc.a(true, (String)localObject1, ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap1, null);
+        aptw.a(true, (String)localObject1, ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap1, null);
       }
-      apcc.a(localHashMap1);
+      aptw.a(localHashMap1);
     }
     Object localObject2 = new ArrayList();
     ((ArrayList)localObject2).addAll(this.this$0.a);
@@ -48,12 +48,12 @@ class QfileLocalFileMediaTabView$2
     {
       localObject3 = this.this$0.d.iterator();
       while (((Iterator)localObject3).hasNext()) {
-        apcc.a(true, ((apfs)((Iterator)localObject3).next()).a(), ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap2, null);
+        aptw.a(true, ((apxv)((Iterator)localObject3).next()).a(), ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap2, null);
       }
       if (localObject1 != null) {
-        apcc.a(true, (String)localObject1, ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap2, null);
+        aptw.a(true, (String)localObject1, ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap2, null);
       }
-      apcc.a(localHashMap2);
+      aptw.a(localHashMap2);
     }
     Object localObject1 = localHashMap2.keySet().iterator();
     while (((Iterator)localObject1).hasNext()) {

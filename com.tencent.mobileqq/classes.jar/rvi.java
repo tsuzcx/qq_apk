@@ -1,18 +1,62 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.Comparator;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
+import java.util.HashMap;
+import java.util.Map;
 
-final class rvi
-  implements Comparator<ArticleInfo>
+public class rvi
 {
-  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int = 0;
+  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private final Map<Character, Float> jdField_a_of_type_JavaUtilMap = new HashMap(256);
+  private float b;
+  
+  public rvi(Paint paramPaint)
   {
-    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
-      return 0;
+    this.jdField_a_of_type_AndroidGraphicsPaint = paramPaint;
+    a();
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  float a(char paramChar)
+  {
+    if (paramChar == 0) {
+      return 0.0F;
     }
-    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
-      return -1;
+    Float localFloat = (Float)this.jdField_a_of_type_JavaUtilMap.get(Character.valueOf(paramChar));
+    if (localFloat != null) {
+      return localFloat.floatValue();
     }
-    return 1;
+    float f = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(Character.toString(paramChar));
+    this.jdField_a_of_type_JavaUtilMap.put(Character.valueOf(paramChar), Float.valueOf(f));
+    return f;
+  }
+  
+  int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
+    this.jdField_a_of_type_Float = (localFontMetrics.bottom - localFontMetrics.top);
+    this.b = (-localFontMetrics.top);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public float b()
+  {
+    return this.b;
   }
 }
 

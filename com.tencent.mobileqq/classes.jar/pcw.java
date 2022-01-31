@@ -1,41 +1,22 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.qphone.base.util.QLog;
 
-public class pcw
-  extends VafContext
+class pcw
+  implements oti
 {
-  private static void a()
-  {
-    DrawableUtil.setDrawableHelper(new pcx());
-  }
+  pcw(pcv parampcv) {}
   
-  private void b()
+  public void l()
   {
-    LogUtil.setProteusLog(new oyb());
-  }
-  
-  private void c() {}
-  
-  public void setContext(Context paramContext)
-  {
-    super.setContext(paramContext);
-    paramContext = paramContext.getResources().getDisplayMetrics();
-    float f2 = ajia.a() / 16.0F;
-    float f1 = f2;
-    if (f2 == 0.0F) {
-      f1 = 1.0F;
+    if (!pcz.b())
+    {
+      QLog.d("FeedsPreloadManager", 1, "foreground, feeds preload.");
+      this.a.a(false);
+      return;
     }
-    Utils.init(paramContext.density / f1, paramContext.widthPixels);
-    a();
-    b();
-    c();
-    rdz.a();
+    QLog.d("FeedsPreloadManager", 1, "lock screen enter foreground, no need to preload.");
   }
+  
+  public void m() {}
 }
 
 

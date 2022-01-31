@@ -1,57 +1,27 @@
-import android.os.SystemClock;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.DeleteFaceFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqhj
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  aqhk jdField_a_of_type_Aqhk;
-  boolean jdField_a_of_type_Boolean = false;
-  int b;
-  int c = 100;
+  public aqhj(DeleteFaceFragment paramDeleteFaceFragment) {}
   
-  public aqhj(int paramInt, aqhk paramaqhk)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Aqhk = paramaqhk;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.b += paramInt;
-      if (this.jdField_a_of_type_Long == 0L)
-      {
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-        return;
-      }
-    } while (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long <= this.c);
-    aqhk localaqhk = this.jdField_a_of_type_Aqhk;
-    if (this.b > this.jdField_a_of_type_Int) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localaqhk.a(bool);
-      this.jdField_a_of_type_Long = 0L;
-      this.b = 0;
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("DeleteFaceFragment", 2, "user cancel delete");
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.c = paramInt;
+    if ((DeleteFaceFragment.a(this.a) != null) && (DeleteFaceFragment.a(this.a).isShowing())) {
+      DeleteFaceFragment.a(this.a).dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqhj
  * JD-Core Version:    0.7.0.1
  */

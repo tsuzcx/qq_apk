@@ -1,38 +1,15 @@
-import android.annotation.TargetApi;
-import java.util.List;
+import android.os.Environment;
+import java.io.File;
 
-@TargetApi(14)
-public class sih
-  implements shs
+public final class sih
 {
-  public int a;
-  
-  public void a()
-  {
-    ((sia)sqg.a(6)).a(this.a);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public void a(List<shp> paramList, boolean paramBoolean)
-  {
-    if (paramList == null) {
-      return;
-    }
-    ((sia)sqg.a(6)).a(paramList, this.a, paramBoolean);
-  }
-  
-  public void a(sht paramsht)
-  {
-    ((sia)sqg.a(6)).a(paramsht);
-  }
+  public static final String a = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_PICTURES + File.separator + "Screenshots" + File.separator;
+  public static final String b = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_DCIM + File.separator + "Screenshots" + File.separator;
+  public static final String c = Environment.getExternalStorageDirectory() + File.separator + ajyc.a(2131713582) + File.separator;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sih
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,40 @@
-import android.view.View;
-import android.view.ViewStub;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-class altn
-  implements alth
+public class altn
 {
-  altn(altj paramaltj) {}
+  java.lang.ref.WeakReference<QQAppInterface> a;
   
-  public void a(View paramView)
+  public altn(QQAppInterface paramQQAppInterface)
   {
-    altj.a(this.a, altj.a(this.a).inflate());
-    altj.a(this.a).setOnClickListener(new alto(this));
-    ((TextView)altj.a(this.a).findViewById(2131299602)).setOnClickListener(new altp(this));
-    awqx.b(null, "dc00898", "", "", "0X800A8AD", "0X800A8AD", 0, 0, "", "", "", "");
+    this.a = new mqq.util.WeakReference(paramQQAppInterface);
+  }
+  
+  public boolean a(String paramString, int paramInt1, int paramInt2, ajtg paramajtg)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null)
+    {
+      ArkAppCenter.c("ArkApp.SSO", "requestArkAppList, app is null, return false");
+      return false;
+    }
+    return ((altg)localQQAppInterface.a(95)).a(paramString, paramInt1, paramInt2, paramajtg);
+  }
+  
+  public boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2, ajtg paramajtg)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null)
+    {
+      ArkAppCenter.c("ArkApp.SSO", "sendAppMsg, app is null, return false");
+      return false;
+    }
+    return ((altg)localQQAppInterface.a(95)).a(paramString1, paramString2, paramInt1, paramInt2, paramajtg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     altn
  * JD-Core Version:    0.7.0.1
  */

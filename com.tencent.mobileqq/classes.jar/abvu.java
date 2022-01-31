@@ -1,53 +1,27 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class abvu
-  implements begw
+  implements View.OnClickListener
 {
-  public abvu(TroopAssistantActivity paramTroopAssistantActivity, int paramInt, String paramString, begr parambegr) {}
+  public abvu(QQMapActivity paramQQMapActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!badq.d(BaseApplication.getContext()))
+    if (this.a.l)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a = new bbmv(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a.b(2, 2131628948, 1500);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Begr != null) {
-        this.jdField_a_of_type_Begr.dismiss();
-      }
+      this.a.w();
       return;
-      int i = -1;
-      switch (paramInt)
-      {
-      default: 
-        paramInt = i;
-      }
-      while (paramInt != this.jdField_a_of_type_Int)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app.a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
-        break;
-        paramInt = 1;
-        continue;
-        paramInt = 4;
-        continue;
-        paramInt = 2;
-        continue;
-        paramInt = 3;
-      }
     }
-    catch (Exception paramView)
+    if ("group_activity".equals(this.a.o))
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("TroopAssistantActivity", 2, paramView.toString());
+      this.a.k();
+      return;
     }
+    this.a.setResult(-1, this.a.a());
+    this.a.finish();
+    this.a.d();
   }
 }
 

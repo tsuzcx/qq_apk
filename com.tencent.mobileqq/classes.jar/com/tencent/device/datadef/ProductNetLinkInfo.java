@@ -3,12 +3,12 @@ package com.tencent.device.datadef;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import xrb;
+import yae;
 
 public class ProductNetLinkInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ProductNetLinkInfo> CREATOR = new xrb();
+  public static final Parcelable.Creator<ProductNetLinkInfo> CREATOR = new yae();
   public String linkResetVoiceDesc;
   public int productId;
   public String stopSoundWaveDesc1;

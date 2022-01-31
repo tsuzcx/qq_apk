@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aamh;
-import bady;
+import aavy;
+import bbfd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class Conversation$1$6
   implements Runnable
 {
-  public Conversation$1$6(aamh paramaamh) {}
+  public Conversation$1$6(aavy paramaavy) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class Conversation$1$6
     do
     {
       return;
-      if (bady.a(this.a.a.a.getApp(), "com.tencent.tim"))
+      if (bbfd.a(this.a.a.a.getApp(), "com.tencent.tim"))
       {
         this.a.a.a(1134058, 0L, true);
         return;

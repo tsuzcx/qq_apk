@@ -1,25 +1,10 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
-
-public class alky
-  extends AnimatorListenerAdapter
+public abstract interface alky
 {
-  public alky(SelectCoverActivity paramSelectCoverActivity) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.a = null;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a = null;
-  }
+  public abstract boolean a(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alky
  * JD-Core Version:    0.7.0.1
  */

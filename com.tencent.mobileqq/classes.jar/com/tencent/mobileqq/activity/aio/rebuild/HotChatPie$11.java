@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aefe;
-import amnh;
+import aeqd;
+import ando;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class HotChatPie$11
   implements Runnable
 {
-  public HotChatPie$11(aefe paramaefe) {}
+  public HotChatPie$11(aeqd paramaeqd) {}
   
   public void run()
   {
-    amnh.a(this.this$0.a, this.this$0.a.getAccount(), -1);
+    ando.a(this.this$0.a, this.this$0.a.getAccount(), -1);
   }
 }
 

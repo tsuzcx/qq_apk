@@ -1,34 +1,28 @@
-class aspj
-  implements tss
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import com.tencent.qphone.base.util.QLog;
+
+public class aspj
+  implements asrc
 {
-  aspj(aspg paramaspg, asox paramasox) {}
+  public aspj(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public boolean a_(tso paramtso, int paramInt1, int paramInt2)
+  public void a(int paramInt)
   {
-    int i;
-    if (paramInt1 == 3) {
-      i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioFragment", 2, "onActionUpNotFling() called with: initialVelocity = [" + paramInt + "]");
     }
-    for (;;)
-    {
-      return this.jdField_a_of_type_Asox.a(this.jdField_a_of_type_Aspg, i, Integer.valueOf(paramInt2));
-      if (paramInt1 == 701)
-      {
-        i = 2;
-      }
-      else
-      {
-        i = paramInt1;
-        if (paramInt1 == 702) {
-          i = 3;
-        }
-      }
+    MultiAIOFragment.a(this.a).setViewPagerBusy(true);
+    MultiAIOFragment.a(this.a).c(paramInt);
+    if (MultiAIOFragment.a(this.a).c() == 0) {
+      MultiAIOFragment.a(this.a).setViewPagerBusy(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aspj
  * JD-Core Version:    0.7.0.1
  */

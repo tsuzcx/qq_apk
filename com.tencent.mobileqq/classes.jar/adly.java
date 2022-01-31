@@ -1,23 +1,46 @@
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.customviews.PicProgressView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adly
-  extends admb
+  extends acun
 {
-  public FrameLayout a;
-  public RelativeLayout a;
-  public PicProgressView a;
-  public BubbleImageView a;
-  public boolean a;
-  public int e;
-  public int f;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public ArkAppLoadLayout a;
+  public ArkAppView a;
+  public TextView b;
+  public String b;
   
-  public adly(adlx paramadlx)
+  public void a(adly paramadly, alqx paramalqx)
   {
-    super(paramadlx);
-    this.jdField_a_of_type_Boolean = true;
+    Object localObject2 = paramalqx.getArkAppNameAndPath();
+    String str = localObject2[0];
+    Object localObject1 = localObject2[1];
+    localObject2 = localObject2[2];
+    paramalqx.clickTail(null, paramadly, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getContext());
+    if (localObject1 != null)
+    {
+      ArkAppCacheMgr.getAppIcon(str, new adlz(this, paramadly));
+      paramalqx = ArkAppCacheMgr.getApplicationDesc(str);
+      if (paramalqx != null)
+      {
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        paramadly.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramadly.jdField_a_of_type_AndroidWidgetTextView.setText(paramalqx);
+      }
+    }
+    while ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime() == null) {
+      return;
+    }
+    ArkAppMgr.getInstance().getAppPathByName(str, (String)localObject2, "0.0.0.1", null, new adma(this, str, paramadly));
   }
 }
 

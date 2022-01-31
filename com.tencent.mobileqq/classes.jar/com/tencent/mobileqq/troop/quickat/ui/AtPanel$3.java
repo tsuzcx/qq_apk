@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.quickat.ui;
 
-import azdd;
+import bady;
 
 public class AtPanel$3
   implements Runnable
 {
-  public AtPanel$3(azdd paramazdd) {}
+  public AtPanel$3(bady parambady) {}
   
   public void run()
   {

@@ -39,8 +39,8 @@ public class TextViewWrapLayout
       super.onMeasure(paramInt1, paramInt2);
       if (this.a)
       {
-        TextView localTextView1 = (TextView)findViewById(2131312553);
-        TextView localTextView2 = (TextView)findViewById(2131312537);
+        TextView localTextView1 = (TextView)findViewById(2131378378);
+        TextView localTextView2 = (TextView)findViewById(2131378362);
         if ((localTextView2 != null) && (localTextView1 != null) && (4 - localTextView1.getLineCount() > 0)) {
           localTextView2.setMaxLines(4 - localTextView1.getLineCount());
         }

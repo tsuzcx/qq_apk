@@ -1,7 +1,7 @@
 package com.tencent.qidian;
 
-import ajjy;
-import bbmy;
+import ajyc;
+import bcpw;
 
 class QidianProfileCardActivity$ForwardRunnable$1
   implements Runnable
@@ -10,7 +10,7 @@ class QidianProfileCardActivity$ForwardRunnable$1
   
   public void run()
   {
-    bbmy.a(this.a, ajjy.a(2131643963), 0).b(this.a.getTitleBarHeight());
+    bcpw.a(this.a, ajyc.a(2131709748), 0).b(this.a.getTitleBarHeight());
   }
 }
 

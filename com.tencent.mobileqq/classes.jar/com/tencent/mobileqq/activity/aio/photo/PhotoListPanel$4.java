@@ -1,19 +1,22 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahug;
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
+import axqw;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
 
 class PhotoListPanel$4
   implements Runnable
 {
-  PhotoListPanel$4(PhotoListPanel paramPhotoListPanel, Intent paramIntent) {}
+  PhotoListPanel$4(PhotoListPanel paramPhotoListPanel, Pair paramPair, boolean paramBoolean, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
-    ahug localahug = new ahug((BaseActivity)this.this$0.a, this.a);
-    localahug.a();
-    localahug.a();
+    if ((!((ArrayList)this.jdField_a_of_type_ComTencentUtilPair.first).isEmpty()) || (!((ArrayList)this.jdField_a_of_type_ComTencentUtilPair.second).isEmpty()))
+    {
+      this.this$0.a(this.jdField_a_of_type_ComTencentUtilPair, this.jdField_a_of_type_Boolean);
+      axdo.b = System.currentTimeMillis();
+    }
+    axqw.b(null, "CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, "", "");
   }
 }
 

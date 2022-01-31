@@ -1,9 +1,18 @@
-public class adkp
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+
+class adkp
+  extends actr
 {
-  public static boolean a(String paramString)
-  {
-    return ("2658655094".equals(paramString)) || ("3142131160".equals(paramString));
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  View jdField_b_of_type_AndroidViewView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  
+  adkp(adkn paramadkn) {}
 }
 
 

@@ -1,128 +1,38 @@
-import android.os.IBinder;
-import android.os.Parcel;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbSendMsgReq;
 
 class akqe
-  implements akqc
+  implements akoq
 {
-  private IBinder a;
+  akqe(akqc paramakqc, String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte) {}
   
-  akqe(IBinder paramIBinder)
+  public ToServiceMsg a()
   {
-    this.a = paramIBinder;
-  }
-  
-  public void a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
-      localParcel1.writeInt(paramInt);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
-      localParcel1.writeLong(paramLong1);
-      localParcel1.writeLong(paramLong2);
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
-    {
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
-        if (paramArConfigInfo != null)
-        {
-          localParcel1.writeInt(1);
-          paramArConfigInfo.writeToParcel(localParcel1, 0);
-          if (paramArEffectConfig != null)
-          {
-            localParcel1.writeInt(1);
-            paramArEffectConfig.writeToParcel(localParcel1, 0);
-            if (paramARCommonConfigInfo == null) {
-              break label131;
-            }
-            localParcel1.writeInt(1);
-            paramARCommonConfigInfo.writeToParcel(localParcel1, 0);
-            this.a.transact(4, localParcel1, localParcel2, 0);
-            localParcel2.readException();
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        localParcel1.writeInt(0);
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-      }
-      continue;
-      label131:
-      localParcel1.writeInt(0);
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Akqc.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.createToServiceMsg("MessageSvc.PbSendMsg");
+    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putByte("cmd", (byte)0);
+    localToServiceMsg.extraData.putByte("keyType", (byte)0);
+    localToServiceMsg.extraData.putByte("sendType", (byte)0);
+    localToServiceMsg.extraData.putInt("busiType", 1025);
+    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putInt("random", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putLong("msgsize", 0L);
+    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_b_of_type_Long));
+    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 9);
+    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_b_of_type_Int);
+    axav localaxav = new axav();
+    localaxav.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    localaxav.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    localToServiceMsg.putWupBuffer(axao.a(this.jdField_a_of_type_Akqc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 9, this.jdField_a_of_type_JavaLangString, localaxav, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int).toByteArray());
+    return localToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akqe
  * JD-Core Version:    0.7.0.1
  */

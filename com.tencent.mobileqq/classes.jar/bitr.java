@@ -1,54 +1,60 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.annotation.Nullable;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collections;
+import java.util.List;
 
-public abstract class bitr
+class bitr
+  implements bjob<List<biqs>>
 {
-  protected final int a;
-  protected Context a;
-  protected bits a;
-  protected final String a;
-  protected boolean a;
-  protected final String b;
-  protected boolean b;
-  protected boolean c = true;
+  bitr(bitp parambitp, bisc parambisc) {}
   
-  public bitr(Context paramContext, String paramString1, String paramString2, int paramInt)
+  public void a(@Nullable List<biqs> paramList)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public abstract int a();
-  
-  public abstract int a(int paramInt);
-  
-  public abstract View a(int paramInt, ViewGroup paramViewGroup);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, View paramView);
-  
-  public void a(bits parambits)
-  {
-    this.jdField_a_of_type_Bits = parambits;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    bitj.a(this.jdField_a_of_type_Bitp.a).a().a(bitj.a(this.jdField_a_of_type_Bitp.a));
+    QLog.d("AEGIFChunkPreviewFragment", 4, "On observe material list state");
+    int j;
+    int i;
+    if (paramList == null)
+    {
+      QLog.e("AEGIFChunkPreviewFragment", 4, "aeMaterialWrappers == null");
+      if ((paramList != null) && (bitj.a(this.jdField_a_of_type_Bitp.a) != null))
+      {
+        QLog.e("AEGIFChunkPreviewFragment", 4, "Find materials num = " + paramList.size());
+        j = Math.min(paramList.size(), this.jdField_a_of_type_Bisc.b);
+        Collections.shuffle(paramList);
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      bisj localbisj;
+      if (i < j)
+      {
+        biqs localbiqs = (biqs)paramList.get(i);
+        localbisj = new bisj();
+        localbisj.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = localbiqs.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial;
+        QLog.d("AEGIFChunkPreviewFragment", 4, "Assigning material to item index = " + i + "material id = " + localbiqs.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id);
+        localbisj.b = 0;
+        localbisj.jdField_a_of_type_Int = 10;
+        localbisj.jdField_a_of_type_JavaLangString = "";
+        bizc.a().g(localbiqs.jdField_a_of_type_JavaLangString);
+        if (bitj.a(this.jdField_a_of_type_Bitp.a).size() < bitj.a(this.jdField_a_of_type_Bitp.a)) {}
+      }
+      else
+      {
+        return;
+        if (!paramList.isEmpty()) {
+          break;
+        }
+        QLog.e("AEGIFChunkPreviewFragment", 4, "aeMaterialWrappers is empty");
+        break;
+      }
+      bitj.a(this.jdField_a_of_type_Bitp.a).add(localbisj);
+      bitj.a(this.jdField_a_of_type_Bitp.a).notifyItemInserted(bitj.a(this.jdField_a_of_type_Bitp.a).size() - 1);
+      bitj.a(this.jdField_a_of_type_Bitp.a).a(bizu.a(), localbisj);
+      i += 1;
+    }
   }
 }
 

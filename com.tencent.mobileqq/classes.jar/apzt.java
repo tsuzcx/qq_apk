@@ -1,30 +1,76 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
-import java.util.HashMap;
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Random;
 
 public class apzt
-  implements View.OnClickListener
 {
-  public apzt(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  private static apzt jdField_a_of_type_Apzt;
+  private static final String jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.qflutterCfg.name();
+  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private ajvb jdField_a_of_type_Ajvb = new apzu(this);
   
-  public void onClick(View paramView)
+  private apzt()
   {
-    QQGameFeedWebFragment.a(this.a).setVisibility(8);
-    if (QQGameFeedWebFragment.a(this.a) != null) {
-      QQGameFeedWebFragment.a(this.a).setCurrentItem(0);
+    DeviceProfileManager.a(this.jdField_a_of_type_Ajvb);
+    a();
+  }
+  
+  public static apzt a()
+  {
+    if (jdField_a_of_type_Apzt == null) {}
+    try
+    {
+      if (jdField_a_of_type_Apzt == null) {
+        jdField_a_of_type_Apzt = new apzt();
+      }
+      return jdField_a_of_type_Apzt;
     }
-    paramView = (String)QQGameFeedWebFragment.a(this.a).getTag();
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(Integer.valueOf(1), paramView);
-    localHashMap.put(Integer.valueOf(2), "");
-    localHashMap.put(Integer.valueOf(3), "20");
-    localHashMap.put(Integer.valueOf(24), "1");
-    yez.a(aing.a(), "769", "205031", "", "76901", "1", "160", localHashMap);
+    finally {}
+  }
+  
+  public void a()
+  {
+    Object localObject = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = ((String)localObject).split("\\|");
+      if (localObject.length < 2) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Int = Integer.valueOf(localObject[0]).intValue();
+        this.jdField_a_of_type_Float = Float.valueOf(localObject[1]).floatValue();
+        if (QLog.isColorLevel()) {
+          QLog.d("QFlutterDPC", 2, String.format("loadConfig, mFlutterSwitch: %s, mPerformanceReportRate = %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Float.valueOf(this.jdField_a_of_type_Float) }));
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.d("QFlutterDPC", 1, "loadConfig exception :" + localException.getMessage());
+        this.jdField_a_of_type_Int = 1;
+        this.jdField_a_of_type_Float = 1.0F;
+        continue;
+      }
+      this.jdField_a_of_type_Int = 1;
+      this.jdField_a_of_type_Float = 1.0F;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  public boolean b()
+  {
+    return jdField_a_of_type_JavaUtilRandom.nextFloat() <= this.jdField_a_of_type_Float;
   }
 }
 

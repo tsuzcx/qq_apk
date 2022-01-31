@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import akku;
-import awrn;
+import akzg;
+import axrl;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ARRecordReport$2
   implements Runnable
 {
-  public ARRecordReport$2(akku paramakku, boolean paramBoolean) {}
+  public ARRecordReport$2(akzg paramakzg, boolean paramBoolean) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    awrn.a(BaseApplication.getContext()).a("", "ar_record_active_record_start", this.a, 0L, 0L, localHashMap, "");
+    axrl.a(BaseApplication.getContext()).a("", "ar_record_active_record_start", this.a, 0L, 0L, localHashMap, "");
   }
 }
 

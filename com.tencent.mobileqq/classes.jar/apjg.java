@@ -1,22 +1,122 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.kwstudio.office.preview.TdsReaderView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsReaderGlobal;
+import com.tencent.qphone.base.util.QLog;
 
-class apjg
-  implements URLDrawable.URLDrawableListener
+public class apjg
 {
-  apjg(apjf paramapjf) {}
+  private static apjg jdField_a_of_type_Apjg;
+  private int jdField_a_of_type_Int = -1;
+  private TdsReaderView jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public static apjg a()
   {
-    paramURLDrawable.setBounds(bacm.a(paramURLDrawable, 36, 100, this.a.a));
-    apjf.a(this.a).setImageDrawable(paramURLDrawable);
+    if (jdField_a_of_type_Apjg == null) {
+      jdField_a_of_type_Apjg = new apjg();
+    }
+    return jdField_a_of_type_Apjg;
+  }
+  
+  private static boolean a(TdsReaderView paramTdsReaderView, String paramString)
+  {
+    String str = apvb.a(paramString);
+    paramString = str;
+    if (str.startsWith(".")) {
+      paramString = str.replaceFirst(".", "");
+    }
+    return paramTdsReaderView.preOpen(paramString);
+  }
+  
+  public TdsReaderView a(Activity paramActivity, String paramString, apji paramapji)
+  {
+    TdsReaderView localTdsReaderView = null;
+    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView != null) && (paramActivity.hashCode() == this.jdField_a_of_type_Int)) {
+      localTdsReaderView = this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView;
+    }
+    do
+    {
+      return localTdsReaderView;
+      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView != null)
+      {
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView.onStop();
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView = null;
+      }
+    } while (!apvb.b(paramString));
+    if (!TdsReaderGlobal.a())
+    {
+      QLog.w("TdsReaderView_LocalTdsViewManager", 4, "openFile: tds disable for filePath=" + paramString);
+      return null;
+    }
+    QLog.w("TdsReaderView_LocalTdsViewManager", 4, "initVarView: new TdsReaderView");
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView = TdsReaderView.newInstance(new apjj(paramActivity, false, paramapji, null));
+    if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView != null)
+    {
+      QLog.w("TdsReaderView_LocalTdsViewManager", 4, "initVarView: TbsReaderView openFile");
+      if (a(this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView, paramString))
+      {
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView.openFile(paramString, ".pdf");
+        this.jdField_a_of_type_Int = paramActivity.hashCode();
+        return this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView;
+      }
+      this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView.onStop();
+      this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView = null;
+      return null;
+    }
+    QLog.w("TdsReaderView_LocalTdsViewManager", 4, "openFile: tds instance failed for filePath=" + paramString);
+    return null;
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    int i = paramActivity.hashCode();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("TdsReaderView_LocalTdsViewManager", 4, "destroy hashCode[" + this.jdField_a_of_type_Int + "],activity[" + i + "]");
+    }
+    if (this.jdField_a_of_type_Int != i) {}
+    while (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView.onStop();
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView = null;
+  }
+  
+  public boolean a(Activity paramActivity, String paramString, apji paramapji, boolean paramBoolean)
+  {
+    boolean bool = false;
+    paramBoolean = bool;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (!TdsReaderGlobal.a())
+      {
+        QLog.w("TdsReaderView_LocalTdsViewManager", 4, "canOpenFile: tds disable for filePath=" + paramString);
+        paramBoolean = bool;
+      }
+    }
+    else if (QLog.isColorLevel()) {
+      if (!paramBoolean) {
+        break label150;
+      }
+    }
+    label150:
+    for (paramActivity = "pre open file true! wait callback!";; paramActivity = "pre open file false! strPath=" + paramString)
+    {
+      QLog.i("TdsReaderView_LocalTdsViewManager", 1, paramActivity);
+      if (paramapji != null) {
+        paramapji.a(paramBoolean);
+      }
+      return paramBoolean;
+      paramActivity = TdsReaderView.newInstance(new apjj(paramActivity, true, null, null));
+      if (paramActivity != null)
+      {
+        paramBoolean = a(paramActivity, paramString);
+        paramActivity.onStop();
+        break;
+      }
+      QLog.w("TdsReaderView_LocalTdsViewManager", 4, "canOpenFile: tds instance failed for filePath=" + paramString);
+      paramBoolean = bool;
+      break;
+    }
   }
 }
 

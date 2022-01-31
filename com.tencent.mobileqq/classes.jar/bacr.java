@@ -1,22 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.view.View;
 
-class bacr
-  implements DialogInterface.OnDismissListener
+public abstract class bacr
 {
-  bacr(bacn parambacn) {}
+  public final View a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected bacr(View paramView)
   {
-    if ((this.a.a instanceof LoginActivity)) {
-      ((LoginActivity)this.a.a).finish();
-    }
+    this.a = paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bacr
  * JD-Core Version:    0.7.0.1
  */

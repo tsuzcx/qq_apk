@@ -10,7 +10,7 @@ import com.tencent.mobileqq.mini.appbrand.page.PageWebview;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.mobileqq.mini.widget.MiniAppTextArea;
+import com.tencent.mobileqq.mini.widget.MiniAppTextArea1;
 import com.tencent.mobileqq.mini.widget.input.WebInputHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
@@ -40,15 +40,15 @@ class InputJsPlugin$3
           {
             InputMethodManager localInputMethodManager = (InputMethodManager)((WebviewContainer)localObject1).getContext().getSystemService("input_method");
             if (localInputMethodManager != null) {
-              localInputMethodManager.hideSoftInputFromWindow(((MiniAppTextArea)localObject2).getWindowToken(), 0);
+              localInputMethodManager.hideSoftInputFromWindow(((MiniAppTextArea1)localObject2).getWindowToken(), 0);
             }
             ((WebviewContainer)localObject1).appBrandRuntime.getCurPage().hideKeyBoardConfirmView();
             localObject1 = ApiUtil.wrapCallbackOk(this.val$event, null);
             this.val$webview.evaluateCallbackJs(this.val$callbackId, ((JSONObject)localObject1).toString());
             localObject1 = new JSONObject();
             ((JSONObject)localObject1).put("inputId", i);
-            ((JSONObject)localObject1).put("value", ((MiniAppTextArea)localObject2).getText().toString());
-            ((JSONObject)localObject1).put("cursor", ((MiniAppTextArea)localObject2).getText().toString().length());
+            ((JSONObject)localObject1).put("value", ((MiniAppTextArea1)localObject2).getText().toString());
+            ((JSONObject)localObject1).put("cursor", ((MiniAppTextArea1)localObject2).getText().toString().length());
             this.val$webview.evaluateSubcribeJS("onKeyboardComplete", ((JSONObject)localObject1).toString(), ((PageWebview)this.val$webview).pageWebviewId);
           }
         }

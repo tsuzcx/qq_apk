@@ -1,386 +1,350 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.SparseArray;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StVideo;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
+import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import tencent.im.oidb.cmd0x7f5.cmd0x7f5.GroupInfo;
 
-class wiv
-  extends Handler
+public class wiv
 {
-  public wiv(wis paramwis)
+  private static long a;
+  
+  public static int a(int paramInt)
   {
-    super(Looper.getMainLooper());
+    switch (paramInt)
+    {
+    case 4: 
+    default: 
+      return 0;
+    case 0: 
+    case 3: 
+    case 5: 
+    case 6: 
+      return 7000;
+    case 2: 
+    case 7: 
+      return 7001;
+    }
+    return 8001;
   }
   
-  public void handleMessage(Message paramMessage)
+  public static CertifiedAccountMeta.StFeed a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    if (paramMessage == null) {}
-    Bundle localBundle;
-    int i;
-    boolean bool;
-    int j;
-    Iterator localIterator;
-    label702:
-    do
+    CertifiedAccountMeta.StFeed localStFeed = new CertifiedAccountMeta.StFeed();
+    if (paramString1 != null) {
+      localStFeed.id.set(paramString1);
+    }
+    localStFeed.type.set(paramInt1);
+    localStFeed.createTime.set(paramLong);
+    paramString1 = new CertifiedAccountMeta.StUser();
+    if (paramString2 != null) {
+      paramString1.id.set(paramString2);
+    }
+    localStFeed.poster.set(paramString1);
+    if (a(paramInt1))
     {
+      paramString1 = new CertifiedAccountMeta.StVideo();
+      paramString1.height.set(paramInt3);
+      paramString1.width.set(paramInt2);
+      localStFeed.video.set(paramString1);
+    }
+    return localStFeed;
+  }
+  
+  private static String a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "0";
+    }
+    return str;
+  }
+  
+  private static void a()
+  {
+    wiq.a();
+  }
+  
+  public static void a(Activity paramActivity, String paramString, HashMap<String, String> paramHashMap)
+  {
+    if (paramString != null)
+    {
+      if (paramString.startsWith("opendetail"))
+      {
+        QLog.i("SubscribeLauncher", 2, "launchSubscribeBySchema detail");
+        paramActivity = a(a((String)paramHashMap.get("feedid")), a((String)paramHashMap.get("uin")), Integer.parseInt(b((String)paramHashMap.get("type"))), Integer.parseInt(b((String)paramHashMap.get("width"))), Integer.parseInt(b((String)paramHashMap.get("height"))), Long.parseLong(b((String)paramHashMap.get("createtime"))));
+        paramString = (String)paramHashMap.get("commentid");
+        if (TextUtils.isEmpty(paramString)) {
+          a(null, paramActivity);
+        }
+      }
       do
       {
-        do
+        return;
+        ExtraTypeInfo localExtraTypeInfo = new ExtraTypeInfo(0, 0);
+        localExtraTypeInfo.setReplyId((String)paramHashMap.get("replyid"));
+        localExtraTypeInfo.setCommentId(paramString);
+        a(null, paramActivity, localExtraTypeInfo);
+        return;
+        if (paramString.startsWith("openhomepage"))
         {
-          do
-          {
-            return;
-            localBundle = paramMessage.getData();
-          } while (localBundle == null);
-          i = localBundle.getInt("seq", -1);
-          switch (paramMessage.what)
-          {
-          }
-        } while (i == -1);
-        paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      } while (paramMessage == null);
-      paramMessage.a(localBundle);
-      return;
-      i = localBundle.getInt("type");
-      bool = localBundle.getBoolean("isSuccess", false);
-      paramMessage = localBundle.getSerializable("data");
-      j = localBundle.getInt("observer_type");
-      localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    } while (!localIterator.hasNext());
-    ajfe localajfe = (ajfe)localIterator.next();
-    Object localObject;
-    if (((j == 1) && ((localajfe instanceof ajlg))) || ((j == 2) && ((localajfe instanceof ajjh)))) {
-      if (28 == i)
-      {
-        localObject = localBundle.getByteArray("groupInfo");
-        paramMessage = new cmd0x7f5.GroupInfo();
-        if (localObject == null) {
-          break label2403;
-        }
-      }
-    }
-    label2403:
-    for (;;)
-    {
-      try
-      {
-        paramMessage.mergeFrom((byte[])localObject);
-        localObject = new Object[2];
-        localObject[0] = Integer.valueOf(localBundle.getInt("count"));
-        localObject[1] = paramMessage;
-        paramMessage = (Message)localObject;
-        localajfe.onUpdate(i, bool, paramMessage);
-      }
-      catch (InvalidProtocolBufferMicroException paramMessage)
-      {
-        paramMessage.printStackTrace();
-        paramMessage = null;
-        continue;
-      }
-      if ((j == 3) && ((localajfe instanceof ajuc)))
-      {
-        ((ajuc)localajfe).onUpdate(i, bool, paramMessage);
-        break label702;
-      }
-      if ((j == 4) && ((localajfe instanceof ajey)))
-      {
-        ((ajey)localajfe).onUpdate(i, bool, paramMessage);
-        break label702;
-      }
-      if ((j != 5) || (!(localajfe instanceof ajkn))) {
-        break label702;
-      }
-      ((ajkn)localajfe).onUpdate(i, bool, paramMessage);
-      break label702;
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.a(localBundle);
-      return;
-      if (i != -1)
-      {
-        j = localBundle.getInt("retCode", -1);
-        int k = localBundle.getInt("rate", -1);
-        paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
-        if (paramMessage != null)
-        {
-          paramMessage.a(localBundle);
-          if ((j != 0) || (k == 100))
-          {
-            QLog.d("ReadInJoy", 4, "download finish:" + localBundle);
-            this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-          }
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("readinjoy", 4, "client MSG_READINJOY_LOAD_SKIN retCode=" + j + ",rate=" + k);
+          QLog.i("SubscribeLauncher", 2, "launchSubscribeBySchema personal page");
+          a(paramActivity, a((String)paramHashMap.get("uid")));
           return;
         }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("readinjoy", 4, "client MSG_READINJOY_LOAD_SKIN callback null");
-        return;
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("readinjoy", 4, "client MSG_READINJOY_LOAD_SKIN seq=" + i);
-      return;
-      if (this.a.jdField_a_of_type_Ajey == null) {
-        break;
-      }
-      paramMessage = localBundle.getString("pageUrl");
-      localObject = localBundle.getStringArrayList("lstVideoUrl");
-      i = localBundle.getInt("totalTime", 0);
-      this.a.jdField_a_of_type_Ajey.onUpdate(localBundle.getInt("type"), true, new Object[] { paramMessage, localObject, Integer.valueOf(i) });
-      return;
-      this.a.a().a(localBundle);
-      return;
-      this.a.a().a(localBundle);
-      return;
-      localObject = (ajfe)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(localBundle.getInt("req_seq"));
-      if (localObject == null) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidUtilSparseArray.remove(localBundle.getInt("req_seq"));
-      ((ajfe)localObject).onUpdate(paramMessage.what, true, localBundle);
-      return;
-      if (localBundle == null) {
-        break;
-      }
-      i = localBundle.getInt("seq1", -1);
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.a(localBundle);
-      return;
-      if (localBundle == null) {
-        break;
-      }
-      i = localBundle.getInt("seq", -1);
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.a(localBundle);
-      return;
-      if (localBundle == null) {
-        break;
-      }
-      i = localBundle.getInt("seq1", -1);
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.a(localBundle);
-      return;
-      if (localBundle == null) {
-        break;
-      }
-      i = localBundle.getInt("seq", -1);
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.a(localBundle);
-      return;
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if ((i == -1) || (paramMessage == null)) {
-        break;
-      }
-      paramMessage.a(localBundle);
-      return;
-      if (localBundle == null) {
-        break;
-      }
-      i = localBundle.getInt("seq", -1);
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.a(localBundle);
-      return;
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.a(localBundle);
-      return;
-      paramMessage = localBundle.getString("FileName");
-      i = localBundle.getInt("Status");
-      if ((wis.a(this.a) == null) || (paramMessage == null) || (wis.a(this.a).get(paramMessage) == null)) {
-        break;
-      }
-      j = ((Integer)wis.a(this.a).get(paramMessage)).intValue();
-      if (j == -1) {
-        break;
-      }
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(j));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.a(localBundle);
-      if (i != 11) {
-        break;
-      }
-      this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(j));
-      return;
-      paramMessage = localBundle.getString("FilePath");
-      i = localBundle.getInt("size");
-      localObject = paramMessage + "/" + i;
-      if ((wis.b(this.a) == null) || (paramMessage == null) || (wis.b(this.a).get(localObject) == null)) {
-        break;
-      }
-      i = ((Integer)wis.b(this.a).get(localObject)).intValue();
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.a(localBundle);
-      return;
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.a(localBundle);
-      return;
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.a(localBundle);
-      return;
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.a(localBundle);
-      return;
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.a(localBundle);
-      return;
-      bool = localBundle.getBoolean("actionFinish");
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.a(localBundle);
-      if (!bool) {
-        break;
-      }
-      this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      return;
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.a(localBundle);
-      return;
-      if (wis.a(this.a) == null) {
-        break;
-      }
-      wis.a(this.a).a(localBundle);
-      return;
-      if (wis.a(this.a) == null) {
-        break;
-      }
-      wis.a(this.a).a(localBundle);
-      return;
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.a(localBundle);
-      return;
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      localBundle.putString("type", "troopCreateOpenAIO");
-      paramMessage.a(localBundle);
-      return;
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      localBundle.putBoolean("isSuccess", localBundle.getBoolean("isSuccess"));
-      paramMessage.a(localBundle);
-      return;
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (wiu)this.a.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
-      if ((paramMessage == null) || (localBundle == null)) {
-        break;
-      }
-      paramMessage.a(localBundle);
-      return;
-      if (i == -1) {
-        break;
-      }
-      this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+      } while (!paramString.startsWith("opendiscoverpage"));
+      QLog.i("SubscribeLauncher", 2, "launchSubscribeBySchema ServiceAccountFolder page");
+      a(paramActivity, 0, 7004, null);
       return;
     }
+    QLog.e("SubscribeLauncher", 2, "launchSubscribeBySchema failed");
+  }
+  
+  public static void a(Context paramContext, int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    a(paramContext, null, null, new ExtraTypeInfo(paramInt2, paramInt1), paramIntent);
+  }
+  
+  public static void a(Context paramContext, int paramInt, Intent paramIntent)
+  {
+    int i = 0;
+    int j = 7003;
+    if (QzoneConfig.getInstance().getConfig("qqsubscribe", "DefaultSelectExplorePage", 0) > 0) {
+      i = 1;
+    }
+    if (i != 0) {
+      j = 7004;
+    }
+    a(paramContext, paramInt, j, paramIntent);
+  }
+  
+  public static void a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed)
+  {
+    a(paramContext, paramStFeed, 0);
+  }
+  
+  public static void a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed, int paramInt)
+  {
+    a(paramContext, paramStFeed, paramInt, null);
+  }
+  
+  public static void a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed, int paramInt, Intent paramIntent)
+  {
+    a(paramContext, "", paramStFeed, new ExtraTypeInfo(0, paramInt), paramIntent);
+  }
+  
+  public static void a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed, ExtraTypeInfo paramExtraTypeInfo)
+  {
+    a(paramContext, "", paramStFeed, paramExtraTypeInfo, null);
+  }
+  
+  public static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser)
+  {
+    a(paramContext, paramStUser.id.get(), paramStUser, 0, null);
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    a(paramContext, paramString, 0);
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt)
+  {
+    a(paramContext, paramString, null, paramInt, null);
+  }
+  
+  public static void a(Context paramContext, String paramString, CertifiedAccountMeta.StFeed paramStFeed, ExtraTypeInfo paramExtraTypeInfo, Intent paramIntent)
+  {
+    if (Math.abs(System.currentTimeMillis() - a) < 500L) {
+      QLog.i("SubscribeLauncher", 2, "prevent SubscribeLaucher from doubleClick");
+    }
+    Intent localIntent;
+    for (;;)
+    {
+      return;
+      a();
+      localIntent = paramIntent;
+      if (paramIntent == null) {
+        localIntent = new Intent();
+      }
+      if (paramString != null) {
+        localIntent.putExtra("url", paramString);
+      }
+      if (paramStFeed != null)
+      {
+        ((CertifiedAccountMeta.StUser)paramStFeed.poster.get()).setHasFlag(true);
+        ((CertifiedAccountMeta.StImage)paramStFeed.cover.get()).setHasFlag(true);
+        ((CertifiedAccountMeta.StVideo)paramStFeed.video.get()).setHasFlag(true);
+        localIntent.putExtra("bundle_key_subscribe_feed_bytes_array", paramStFeed.toByteArray());
+        localIntent.putExtra("bundle_key_feed_type", paramStFeed.type.get());
+      }
+      a = System.currentTimeMillis();
+      localIntent.putExtra("PERF_OPEN_PAGE_TIME", System.currentTimeMillis());
+      if (paramContext == null) {}
+      for (paramString = BaseApplicationImpl.getContext(); !a(paramString, paramStFeed, paramExtraTypeInfo, localIntent); paramString = paramContext)
+      {
+        localIntent.setClass(BaseApplicationImpl.getContext(), QQBrowserActivity.class);
+        localIntent.putExtra("fragment_class", SubscribeHybirdFragment.class.getCanonicalName());
+        if (!(paramContext instanceof Activity)) {
+          break label218;
+        }
+        paramContext.startActivity(localIntent);
+        return;
+      }
+    }
+    label218:
+    localIntent.addFlags(268435456);
+    BaseApplicationImpl.getContext().startActivity(localIntent);
+  }
+  
+  public static void a(Context paramContext, String paramString, CertifiedAccountMeta.StUser paramStUser, int paramInt, Intent paramIntent)
+  {
+    wrb.a("1001" + paramString);
+    wrb.a("1001" + paramString, new wrk(paramString));
+    ExtraTypeInfo localExtraTypeInfo = new ExtraTypeInfo(7002, paramInt);
+    paramString = a("", paramString, -1, 0, 0, 0L);
+    if (paramStUser != null) {
+      paramString.poster.set(paramStUser);
+    }
+    a(paramContext, null, paramString, localExtraTypeInfo, paramIntent);
+  }
+  
+  public static void a(Context paramContext, String paramString, Intent paramIntent)
+  {
+    a(paramContext, paramString, null, 0, paramIntent);
+  }
+  
+  public static void a(String paramString)
+  {
+    a(paramString, 8000);
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    a(paramString, paramInt, 0);
+  }
+  
+  public static void a(String paramString, int paramInt1, int paramInt2)
+  {
+    a(null, paramString, new CertifiedAccountMeta.StFeed(), new ExtraTypeInfo(paramInt1, paramInt2), null);
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 0) || (paramInt == 3) || (paramInt == 5) || (paramInt == 6);
+  }
+  
+  private static boolean a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed, ExtraTypeInfo paramExtraTypeInfo, Intent paramIntent)
+  {
+    boolean bool2 = true;
+    ExtraTypeInfo localExtraTypeInfo = paramExtraTypeInfo;
+    if (paramExtraTypeInfo == null) {
+      localExtraTypeInfo = new ExtraTypeInfo();
+    }
+    if ((localExtraTypeInfo.pageType == 0) && (paramStFeed != null)) {
+      localExtraTypeInfo.pageType = a(paramStFeed.type.get());
+    }
+    boolean bool1;
+    int i;
+    switch (localExtraTypeInfo.pageType)
+    {
+    default: 
+      bool1 = false;
+      bool2 = false;
+      i = 0;
+    }
+    for (;;)
+    {
+      paramIntent.putExtra("key_subscribe_intent_extra_type_info", localExtraTypeInfo);
+      if (i != 0)
+      {
+        wrb.a("1002" + paramStFeed.id.get());
+        wrb.a("1002" + paramStFeed.id.get(), new wri(paramStFeed));
+      }
+      if (bool2)
+      {
+        if ((!bool1) || (!(paramContext instanceof Activity)) || (Build.VERSION.SDK_INT < 16)) {
+          break;
+        }
+        paramContext = (Activity)paramContext;
+        paramContext.startActivity(paramIntent, wrt.a());
+        paramContext.overridePendingTransition(0, 0);
+      }
+      return bool2;
+      paramIntent.setClass(paramContext, PublicFragmentActivity.class);
+      paramIntent.putExtra("public_fragment_class", SubscribeVideoDetailFragment.class.getName());
+      paramIntent.addFlags(268435456);
+      bool1 = wrt.a();
+      i = 1;
+      continue;
+      paramIntent.setClass(paramContext, PublicFragmentActivity.class);
+      paramIntent.putExtra("public_fragment_class", SubscribeMultiPicFragment.class.getName());
+      paramIntent.addFlags(268435456);
+      bool1 = wrt.a();
+      i = 1;
+      continue;
+      paramIntent.setClass(paramContext, PublicFragmentActivity.class);
+      paramIntent.putExtra("public_fragment_class", SubscribePersonalDetailFragment.class.getName());
+      paramIntent.addFlags(268435456);
+      bool1 = false;
+      i = 0;
+      continue;
+      paramIntent.setClass(paramContext, ServiceAccountFolderActivity.class);
+      paramIntent.setFlags(67108864);
+      bool1 = false;
+      i = 0;
+    }
+    paramContext.startActivity(paramIntent);
+    return bool2;
+  }
+  
+  private static String b(String paramString)
+  {
+    String str;
+    if (paramString != null)
+    {
+      str = paramString;
+      if (paramString.length() != 0) {}
+    }
+    else
+    {
+      str = "0";
+    }
+    return str;
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == 2) || (paramInt == 7);
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wiv
  * JD-Core Version:    0.7.0.1
  */

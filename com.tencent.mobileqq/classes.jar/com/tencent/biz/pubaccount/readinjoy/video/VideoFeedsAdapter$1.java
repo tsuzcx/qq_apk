@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.util.HashMap;
-import obz;
-import pzs;
+import onk;
+import qls;
 
 public class VideoFeedsAdapter$1
   implements Runnable
 {
-  public VideoFeedsAdapter$1(pzs parampzs, long paramLong) {}
+  public VideoFeedsAdapter$1(qls paramqls, long paramLong) {}
   
   public void run()
   {
-    if (pzs.a(this.this$0) != null)
+    if (qls.a(this.this$0) != null)
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_scrollInterval", String.valueOf(this.a));
-      obz.e(pzs.a(this.this$0), obz.a(), true, localHashMap);
+      onk.e(qls.a(this.this$0), onk.a(), true, localHashMap);
     }
   }
 }

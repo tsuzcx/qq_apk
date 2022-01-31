@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aome;
+import apcy;
 
 public class UniformDownloadMgr$6
   implements Runnable
 {
-  public UniformDownloadMgr$6(aome paramaome) {}
+  public UniformDownloadMgr$6(apcy paramapcy) {}
   
   public void run()
   {
-    aome.b(this.this$0, null);
-    aome.b(this.this$0);
+    apcy.b(this.this$0, null);
+    apcy.b(this.this$0);
   }
 }
 

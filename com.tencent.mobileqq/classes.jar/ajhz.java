@@ -1,70 +1,74 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ajhz
+final class ajhz
+  extends bbwf
 {
-  public static void a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord != null) {
-      paramMessageRecord.saveExtInfoToExtStr("commen_flash_pic", "true");
-    }
-  }
+  ajhz(File paramFile, airz paramairz, int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2, AtomicInteger paramAtomicInteger3, ajie paramajie, String paramString, int paramInt3, int[] paramArrayOfInt, int paramInt4) {}
   
-  public static void a(MessageRecord paramMessageRecord, boolean paramBoolean)
+  public void onDone(bbwg parambbwg)
   {
-    if (paramMessageRecord.msgtype == -2000) {
-      paramMessageRecord.saveExtInfoToExtStr("commen_flash_pic", paramBoolean + "");
+    boolean bool = true;
+    super.onDone(parambbwg);
+    if (3 == parambbwg.a()) {
+      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("FlashPicHelper", 4, "setFlashPicFlag,troopUin:" + paramMessageRecord.frienduin + ",isReaded:" + paramBoolean + ",msgType:" + paramMessageRecord.msgtype);
-    }
-  }
-  
-  public static boolean a(int paramInt, HotChatManager paramHotChatManager, String paramString)
-  {
-    return ((paramInt == 0) || (paramInt == 1) || (paramInt == 3000)) && (!paramHotChatManager.b(paramString));
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramMessageRecord != null) {
-      if (paramMessageRecord.msgtype != -2000)
+    for (;;)
+    {
+      try
       {
-        bool1 = bool2;
-        if (paramMessageRecord.msgtype != -2006) {}
-      }
-      else
-      {
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("commen_flash_pic"))) {
-          bool1 = true;
+        nay.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
+        ajhw.a(this.jdField_a_of_type_Airz, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) {
+          break label421;
         }
+        if (this.jdField_a_of_type_Ajie != null)
+        {
+          parambbwg = this.jdField_a_of_type_Ajie;
+          if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) {
+            bool = false;
+          }
+          parambbwg.onDownLoadFinish(bool, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_a_of_type_ArrayOfInt, this.d);
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloResDownloader", 2, "downloadApolloRes download all done uin: " + this.jdField_a_of_type_JavaLangString + "all cnt: " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", err cnt: " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+          }
+        }
+        this.jdField_a_of_type_JavaIoFile.delete();
+        return;
+      }
+      catch (Exception parambbwg)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambbwg.getMessage());
+        continue;
+      }
+      catch (OutOfMemoryError parambbwg)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambbwg.getMessage());
+        continue;
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+      QLog.d("ApolloResDownloader", 1, "download file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " task.getStatus()->" + parambbwg.a());
+      continue;
+      label421:
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "downloadApolloRes download uin:" + this.jdField_a_of_type_JavaLangString + ", cb cnt: " + this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", all cnt: " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
       }
     }
-    return bool1;
-  }
-  
-  public static boolean b(MessageRecord paramMessageRecord)
-  {
-    try
-    {
-      boolean bool = Boolean.valueOf(paramMessageRecord.getExtInfoFromExtStr("commen_flash_pic")).booleanValue();
-      return bool;
-    }
-    catch (Exception paramMessageRecord)
-    {
-      paramMessageRecord.printStackTrace();
-    }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajhz
  * JD-Core Version:    0.7.0.1
  */

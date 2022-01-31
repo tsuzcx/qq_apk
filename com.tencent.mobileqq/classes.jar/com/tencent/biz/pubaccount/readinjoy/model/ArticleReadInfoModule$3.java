@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
-import oov;
+import ozw;
 
 public class ArticleReadInfoModule$3
   implements Runnable
 {
-  public ArticleReadInfoModule$3(oov paramoov, ArticleReadInfo paramArticleReadInfo) {}
+  public ArticleReadInfoModule$3(ozw paramozw, ArticleReadInfo paramArticleReadInfo) {}
   
   public void run()
   {

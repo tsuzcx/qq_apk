@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.newfriend.connections;
 
-import afak;
+import afma;
 
 public class ConnectsExplorationFriendAdapter$9
   implements Runnable
 {
-  public ConnectsExplorationFriendAdapter$9(afak paramafak) {}
+  public ConnectsExplorationFriendAdapter$9(afma paramafma) {}
   
   public void run()
   {

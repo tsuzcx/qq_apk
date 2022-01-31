@@ -1,24 +1,32 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
-import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
-
 public class alhw
-  implements View.OnClickListener
+  extends alhu
 {
-  public alhw(ArkAppListActivity paramArkAppListActivity, String paramString) {}
+  public static final alhw a;
+  public alhy a;
+  public alia a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
   
-  public void onClick(View paramView)
+  static
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity, ArkAuthorityInfoActivity.class);
-    paramView.putExtra("intent_extra_authority_app_name", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity.startActivity(paramView);
+    jdField_a_of_type_Alhw = new alhw(false);
+  }
+  
+  public alhw()
+  {
+    this.b = 128L;
+  }
+  
+  public alhw(boolean paramBoolean)
+  {
+    this.b = 128L;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alhw
  * JD-Core Version:    0.7.0.1
  */

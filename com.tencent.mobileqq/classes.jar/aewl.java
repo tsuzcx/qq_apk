@@ -1,24 +1,14 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import java.util.Comparator;
 
-public class aewl
-  implements ViewTreeObserver.OnGlobalLayoutListener
+final class aewl
+  implements Comparator<aewg>
 {
-  public aewl(TroopView paramTroopView) {}
-  
-  public void onGlobalLayout()
+  public int a(aewg paramaewg1, aewg paramaewg2)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if ((paramaewg1 == null) || (paramaewg2 == null)) {
+      return 0;
     }
-    for (;;)
-    {
-      TroopView.a(this.a);
-      return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
+    return Float.compare(paramaewg1.a(), paramaewg2.a());
   }
 }
 

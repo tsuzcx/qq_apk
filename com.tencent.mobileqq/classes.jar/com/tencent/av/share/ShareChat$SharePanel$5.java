@@ -5,12 +5,12 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import loa;
+import lys;
 
 public class ShareChat$SharePanel$5
   implements Runnable
 {
-  public ShareChat$SharePanel$5(loa paramloa, QQAppInterface paramQQAppInterface, TroopInfoData paramTroopInfoData, Intent paramIntent, Context paramContext, int paramInt) {}
+  public ShareChat$SharePanel$5(lys paramlys, QQAppInterface paramQQAppInterface, TroopInfoData paramTroopInfoData, Intent paramIntent, Context paramContext, int paramInt) {}
   
   public void run()
   {

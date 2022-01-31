@@ -1,85 +1,178 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.view.SurfaceHolder;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.WeakReferenceRunnable;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
-import java.lang.ref.WeakReference;
 
 public class olf
-  implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnVideoPreparedListener, IVideoViewBase.IVideoViewCallBack
 {
-  private WeakReference<ReadInjoyIMAXAdFragment> a;
+  private static final int a = Utils.rp2px(8.0D);
   
-  public olf(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment)
+  private static int a(TemplateBean paramTemplateBean)
   {
-    this.a = new WeakReference(paramReadInjoyIMAXAdFragment);
-  }
-  
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    paramTVK_IMediaPlayer = (ReadInjoyIMAXAdFragment)this.a.get();
-    if (paramTVK_IMediaPlayer == null) {
-      return;
+    if (paramTemplateBean == null)
+    {
+      QLog.i("DividerConfigUtils", 1, "templateBean TYPE_UNKNOW == null");
+      return -1;
     }
-    ReadInjoyIMAXAdFragment.e(paramTVK_IMediaPlayer, 9);
-    ReadInjoyIMAXAdFragment.d = true;
-    paramTVK_IMediaPlayer.i();
-    ReadInjoyIMAXAdFragment.c(paramTVK_IMediaPlayer);
+    if (paramTemplateBean.findViewById("id_separator_normal_bottom") != null) {
+      return 1;
+    }
+    if (paramTemplateBean.findViewById("id_separator_special_bottom_line") != null) {
+      return 2;
+    }
+    if (paramTemplateBean.findViewById("id_separator_special_color_bottom") != null) {
+      return 3;
+    }
+    QLog.i("DividerConfigUtils", 1, "getViewType TYPE_UNKNOW" + paramTemplateBean);
+    return -1;
   }
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  private static int a(ViewBase paramViewBase, boolean paramBoolean)
   {
-    paramTVK_IMediaPlayer = (ReadInjoyIMAXAdFragment)this.a.get();
-    if (paramTVK_IMediaPlayer == null) {}
+    if (paramViewBase == null) {
+      return 0;
+    }
+    Layout.Params localParams = paramViewBase.getComLayoutParams();
+    int i = localParams.mLayoutHeight;
+    if (paramBoolean) {}
+    for (localParams.mLayoutHeight = a;; localParams.mLayoutHeight = 0)
+    {
+      paramViewBase.setComLayoutParams(localParams);
+      return localParams.mLayoutHeight - i;
+    }
+  }
+  
+  public static boolean a(Container paramContainer, pax parampax)
+  {
+    if ((paramContainer == null) || (parampax == null)) {}
+    rap localrap;
+    int k;
+    Object localObject2;
+    int i;
     do
     {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInjoyIMAXAdFragment", 2, "error msg = " + paramString);
-      }
-      ReadInjoyIMAXAdFragment.e(paramTVK_IMediaPlayer, 8);
-      paramTVK_IMediaPlayer.i();
-    } while (!QLog.isColorLevel());
-    QLog.i("ReadInjoyIMAXAdFragment", 2, "ReadInjoyIMAXAdFragment start video error");
-    return false;
-  }
-  
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
-  
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
-  
-  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
-  {
-    paramSurfaceHolder = (ReadInjoyIMAXAdFragment)this.a.get();
-    if (paramSurfaceHolder == null) {
-      return;
+      do
+      {
+        do
+        {
+          return false;
+          localrap = parampax.a();
+        } while (localrap == null);
+        k = parampax.g();
+        localObject1 = localrap.b(k);
+        localObject2 = localrap.b(k + 1);
+      } while ((localObject1 == null) || (localObject2 == null));
+      i = a(((BaseArticleInfo)localObject1).mProteusTemplateBean);
+    } while (i == -1);
+    int j = a(((BaseArticleInfo)localObject2).mProteusTemplateBean);
+    QLog.i("DividerConfigUtils", 1, "topType:" + i + " nextType:" + j);
+    if (j < 0) {
+      QLog.i("DividerConfigUtils", 1, "nextArticleInfo:" + ((BaseArticleInfo)localObject2).mProteusTemplateBean);
     }
-    paramSurfaceHolder.c();
-  }
-  
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    paramTVK_IMediaPlayer = (ReadInjoyIMAXAdFragment)this.a.get();
-    if (paramTVK_IMediaPlayer == null) {
-      return;
-    }
-    if ((Looper.myLooper() != Looper.getMainLooper()) && (ReadInjoyIMAXAdFragment.b(paramTVK_IMediaPlayer) != null))
+    Object localObject1 = paramContainer.getVirtualView();
+    ViewBase localViewBase;
+    switch (i)
     {
-      ReadInjoyIMAXAdFragment.b(paramTVK_IMediaPlayer).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(paramTVK_IMediaPlayer, 2));
-      return;
+    default: 
+      i = 0;
+    case 1: 
+      for (;;)
+      {
+        parampax = ((ViewBase)localObject1).getComLayoutParams();
+        if (parampax.mLayoutHeight >= 0) {
+          parampax.mLayoutHeight = (i + parampax.mLayoutHeight);
+        }
+        parampax = ((ViewBase)localObject1).getComLayoutParams();
+        paramContainer.setLayoutParams(new RelativeLayout.LayoutParams(parampax.mLayoutWidth, parampax.mLayoutHeight));
+        return true;
+        parampax = ((ViewBase)localObject1).findViewBaseByName("id_separator_normal_bottom");
+        switch (j)
+        {
+        default: 
+          i = a(parampax, false);
+          break;
+        case 2: 
+        case 3: 
+          i = a(parampax, true);
+        }
+      }
+    case 2: 
+      localObject2 = ((ViewBase)localObject1).findViewBaseByName("id_separator_special_bottom_space");
+      localViewBase = ((ViewBase)localObject1).findViewBaseByName("id_separator_special_bottom_line");
+      switch (j)
+      {
+      default: 
+        if (parampax.e() != 70) {}
+        break;
+      }
+      break;
     }
-    ReadInjoyIMAXAdFragment.b(paramTVK_IMediaPlayer);
+    for (boolean bool = false;; bool = true)
+    {
+      i = a((ViewBase)localObject2, bool);
+      j = b(localViewBase, bool) + (i + 0);
+      for (;;)
+      {
+        i = k - 1;
+        if (i < 0) {
+          break label456;
+        }
+        parampax = localrap.b(i);
+        i = j;
+        if (parampax == null) {
+          break;
+        }
+        i = j;
+        if (a(parampax.mProteusTemplateBean) != 3) {
+          break;
+        }
+        i = j + b(((ViewBase)localObject1).findViewBaseByName("id_separator_special_top"), false);
+        break;
+        j = a((ViewBase)localObject2, false) + 0 + b(localViewBase, false);
+        continue;
+        j = a((ViewBase)localObject2, true) + 0 + b(localViewBase, true);
+      }
+      label456:
+      i = j;
+      if (k != 0) {
+        break;
+      }
+      i = j + b(((ViewBase)localObject1).findViewBaseByName("id_separator_special_top"), false);
+      break;
+      parampax = ((ViewBase)localObject1).findViewBaseByName("id_separator_special_color_bottom");
+      switch (j)
+      {
+      default: 
+        i = a(parampax, true) + 0;
+        break;
+      case 2: 
+      case 3: 
+        i = a(parampax, false) + 0;
+        break;
+      }
+    }
+  }
+  
+  private static int b(ViewBase paramViewBase, boolean paramBoolean)
+  {
+    if (paramViewBase == null) {
+      return 0;
+    }
+    if (paramBoolean) {}
+    for (int i = 0;; i = 4)
+    {
+      paramViewBase.setVisibility(i);
+      return 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     olf
  * JD-Core Version:    0.7.0.1
  */

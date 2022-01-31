@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import agsm;
+import ahfb;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
@@ -17,17 +17,17 @@ class LineLayer$LoadTempFileJob
   implements Runnable
 {
   private int jdField_a_of_type_Int;
-  private WeakReference<agsm> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<ahfb> jdField_a_of_type_JavaLangRefWeakReference;
   private Map<Integer, String> jdField_a_of_type_JavaUtilMap = new HashMap();
   private int b = -1;
   
-  public LineLayer$LoadTempFileJob(int paramInt1, Map<Integer, String> paramMap, int paramInt2, agsm paramagsm)
+  public LineLayer$LoadTempFileJob(int paramInt1, Map<Integer, String> paramMap, int paramInt2, ahfb paramahfb)
   {
     Object localObject;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject);
     this.jdField_a_of_type_Int = paramMap;
     this.jdField_a_of_type_JavaUtilMap.putAll(paramInt2);
-    this.b = paramagsm;
+    this.b = paramahfb;
   }
   
   public void run()

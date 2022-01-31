@@ -1,34 +1,16 @@
-import android.util.SparseArray;
-import android.view.View;
-
-public class atll
+class atll
+  implements ufm
 {
-  private SparseArray<View> a = new SparseArray();
+  atll(atlk paramatlk, atky paramatky) {}
   
-  public View a(int paramInt)
+  public void a(ufk paramufk)
   {
-    if (this.a.size() > 0)
-    {
-      View localView = (View)this.a.valueAt(paramInt);
-      if (localView != null) {
-        this.a.remove(paramInt);
-      }
-      return localView;
-    }
-    return null;
-  }
-  
-  public void a(int paramInt, View paramView)
-  {
-    if (this.a.size() >= 3) {
-      return;
-    }
-    this.a.put(paramInt, paramView);
+    this.jdField_a_of_type_Atky.a(this.jdField_a_of_type_Atlk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atll
  * JD-Core Version:    0.7.0.1
  */

@@ -1,108 +1,59 @@
-import com.tencent.av.core.VcControllerImpl;
-import com.tencent.mobileqq.pb.CodedInputStreamMicro;
-import com.tencent.mobileqq.pb.WireFormatMicro;
-import java.io.IOException;
+import android.content.Context;
+import android.util.Pair;
+import com.rookery.translate.type.Language;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class lbb
+public class lbb
+  extends lay
 {
-  private VcControllerImpl a;
+  private static lbb a;
   
-  public static byte a(byte[] paramArrayOfByte)
+  public static lbb a()
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 3)) {
-      return -1;
-    }
-    return paramArrayOfByte[2];
-  }
-  
-  public static boolean a(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = CodedInputStreamMicro.newInstance(paramArrayOfByte);
     try
     {
-      for (;;)
+      if (a == null) {
+        a = new lbb();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public void a(Context paramContext, List<String> paramList, Language paramLanguage, String paramString, Long paramLong, lbr paramlbr)
+  {
+    if (paramLanguage == null) {
+      paramLanguage = Language.CHINESE_SIMPLIFIED.toString();
+    }
+    Object localObject;
+    for (;;)
+    {
+      localObject = new ArrayList();
+      ((List)localObject).add(new Pair("key", paramString));
+      ((List)localObject).add(new Pair("target", paramLanguage));
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        ((List)localObject).add(new Pair("q", (String)paramList.next()));
+      }
+      localObject = paramLanguage.toString();
+      if (localObject != null)
       {
-        int i = paramArrayOfByte.readTag();
-        if (i == 0) {
-          break;
-        }
-        if (WireFormatMicro.getTagFieldNumber(i) == 2) {
-          return true;
-        }
-        paramArrayOfByte.skipField(i);
+        paramLanguage = (Language)localObject;
+        if (((String)localObject).length() != 0) {}
       }
-      return false;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public final byte a(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    byte b2 = 1;
-    byte b1;
-    if (this.a == null) {
-      b1 = 3;
-    }
-    for (;;)
-    {
-      return b1;
-      b1 = b2;
-      if (paramArrayOfByte1 != null) {
-        try
-        {
-          int i = this.a.onRecvVideoCallBytesForSharp(paramArrayOfByte1);
-          b1 = b2;
-          if (i >= 0) {
-            return 0;
-          }
-        }
-        catch (Throwable paramArrayOfByte1) {}
+      else
+      {
+        paramLanguage = Language.CHINESE_SIMPLIFIED.toString();
       }
     }
-    return 1;
+    lba.a(paramContext, null, (List)localObject, new lbc(this, paramlbr, paramLong));
   }
-  
-  public final void a(VcControllerImpl paramVcControllerImpl)
-  {
-    this.a = paramVcControllerImpl;
-  }
-  
-  public abstract void a(byte[] paramArrayOfByte, long paramLong);
-  
-  public final byte b(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    byte b2 = 1;
-    byte b1;
-    if (this.a == null) {
-      b1 = 3;
-    }
-    for (;;)
-    {
-      return b1;
-      b1 = b2;
-      if (paramArrayOfByte1 != null) {
-        try
-        {
-          int i = this.a.onRecvVideoCallBytesForSharpC2SACK(paramArrayOfByte1);
-          b1 = b2;
-          if (i >= 0) {
-            return 0;
-          }
-        }
-        catch (Throwable paramArrayOfByte1) {}
-      }
-    }
-    return 1;
-  }
-  
-  public abstract void b(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     lbb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.handlers;
 
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import omz;
+import oyo;
 
 public class VideoHandler$VideoFeedsViewHolder$1
   implements Runnable
 {
-  public VideoHandler$VideoFeedsViewHolder$1(omz paramomz, ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  public VideoHandler$VideoFeedsViewHolder$1(oyo paramoyo, ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
   public void run()
   {

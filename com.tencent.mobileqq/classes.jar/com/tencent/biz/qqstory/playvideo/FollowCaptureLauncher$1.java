@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import bjiq;
-import tgq;
+import bkzb;
+import ttm;
 
 public class FollowCaptureLauncher$1
   implements Runnable
@@ -10,7 +10,7 @@ public class FollowCaptureLauncher$1
   
   public void run()
   {
-    bjiq.a(this.a, new tgq(this));
+    bkzb.a(this.a, new ttm(this));
   }
 }
 

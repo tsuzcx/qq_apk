@@ -1,19 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class aaga
-  implements DialogInterface.OnClickListener
+public class aaga
+  implements View.OnClickListener
 {
-  public aaga(aagm paramaagm) {}
+  public aaga(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a != null) {
-      this.a.a();
+    switch (paramView.getId())
+    {
+    default: 
+    case 2131376641: 
+      do
+      {
+        return;
+        localObject = null;
+        if ((paramView.getTag() instanceof String)) {
+          localObject = String.valueOf(paramView.getTag());
+        }
+        if ("0X8004001".equals(localObject))
+        {
+          axqw.b(this.a.app, "CliOper", "", "", "0X8004002", "0X8004002", 0, 0, "", "", "", "");
+          paramView = new Intent(this.a, SubAccountUgActivity.class);
+          paramView.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+          this.a.startActivity(paramView);
+          return;
+        }
+      } while (!"0X8004456".equals(localObject));
+      axqw.b(this.a.app, "CliOper", "", "", "0X8004457", "0X8004457", 0, 0, "", "", "", "");
+      paramView = new Intent(this.a, SubAccountBindActivity.class);
+      paramView.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+      this.a.startActivity(paramView);
+      bbcp.a().a(this.a.app.getCurrentAccountUin(), true);
+      return;
     }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    Object localObject = new Intent();
+    ((Intent)localObject).setClass(paramView.getContext(), AssociatedAccountActivity.class);
+    ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+    paramView.getContext().startActivity((Intent)localObject);
+    axqw.b(this.a.app, "CliOper", "", "", "0X8004039", "0X8004039", 0, 0, "", "", "", "");
   }
 }
 

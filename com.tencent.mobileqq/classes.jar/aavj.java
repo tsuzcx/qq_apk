@@ -1,28 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
 
 public class aavj
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aavj(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public aavj(ChatTextSizeSettingActivity paramChatTextSizeSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.f == 1) {
-      bajr.a(this.a, 1, azyk.a(3));
+    switch (paramView.getId())
+    {
+    case 2131377169: 
+    default: 
+      this.a.a = 0;
     }
     for (;;)
     {
-      this.a.D();
+      this.a.a(this.a.a);
+      axqw.b(this.a.app, "CliOper", "", "", "Trends_tab", "Font_size", 0, 0, Integer.toString(this.a.a), "", "", "");
       return;
-      if (this.a.f == 2) {
-        bajr.b(this.a, 1, azyk.a(6));
-      } else if (this.a.f == 3) {
-        bajr.a(this.a, true, 12, false, azyk.a(6));
-      } else if (this.a.f == 4) {
-        baoz.a(this.a, azyk.a(6), "SVHHZLH", 0, false, false);
-      }
+      this.a.a = 1;
+      continue;
+      this.a.a = 2;
+      continue;
+      this.a.a = 3;
     }
   }
 }

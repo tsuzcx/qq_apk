@@ -1,23 +1,24 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoas
+  implements Animation.AnimationListener
 {
-  public int a;
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  FileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo;
-  AsyncImageView jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-  EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
-  public int b;
-  ImageView b;
+  public aoas(FastImagePreviewLayout paramFastImagePreviewLayout) {}
   
-  public aoas(aoar paramaoar) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(FastImagePreviewLayout.a, 2, "removeFastImage fadeoutanimation ended");
+    }
+    this.a.removeAllViews();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,15 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
-class ablr
-  implements DialogInterface.OnClickListener
+public class ablr
+  implements DialogInterface.OnDismissListener
 {
-  ablr(ablp paramablp) {}
+  public ablr(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.p();
+    if (paramDialogInterface == LoginInfoActivity.a(this.a)) {
+      LoginInfoActivity.a(this.a, null);
+    }
   }
 }
 

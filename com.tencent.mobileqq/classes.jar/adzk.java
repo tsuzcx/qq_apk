@@ -1,336 +1,172 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.os.Handler;
-import android.os.SystemClock;
-import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
-import android.view.VelocityTracker;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewConfiguration;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener.1;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener.2;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.os.MqqHandler;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.12.1;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.12.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
 
 public class adzk
-  implements View.OnTouchListener
+  implements bbvx
 {
-  private static int jdField_e_of_type_Int = 60;
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  adzj jdField_a_of_type_Adzj;
-  adzp jdField_a_of_type_Adzp;
-  VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  public PhotoListPanel a;
-  public AtomicBoolean a;
-  boolean jdField_a_of_type_Boolean;
-  int[] jdField_a_of_type_ArrayOfInt;
-  float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int;
-  adzp jdField_b_of_type_Adzp;
-  float jdField_c_of_type_Float;
-  int jdField_c_of_type_Int;
-  adzp jdField_c_of_type_Adzp;
-  float jdField_d_of_type_Float;
-  int jdField_d_of_type_Int;
-  float jdField_e_of_type_Float;
-  float f = 0.7F;
-  float g;
+  adzk(adzh paramadzh) {}
   
-  public adzk(Context paramContext, ViewGroup paramViewGroup, int[] paramArrayOfInt, int paramInt, adzj paramadzj, PhotoListPanel paramPhotoListPanel)
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Adzj = paramadzj;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel = paramPhotoListPanel;
-    this.jdField_e_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    this.jdField_b_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    jdField_e_of_type_Int = (int)(30.0F * this.jdField_e_of_type_Float);
-    switch (PhotoListPanel.e())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.i("ShortVideoItemBuilder", 2, "onDownloadComplete, id = " + paramLong);
     }
-    for (this.jdField_b_of_type_Adzp = new adzn(this, paramContext, paramViewGroup);; this.jdField_b_of_type_Adzp = new adzp(this, paramContext, paramViewGroup))
+    if (adzh.a(this.a) == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortVideoItemBuilder", 2, "onDownloadComplete , mListView is null.");
+      }
+    }
+    Object localObject;
+    do
     {
-      this.jdField_c_of_type_Adzp = new adzl(this, paramContext, paramViewGroup);
+      do
+      {
+        return;
+        localObject = actn.a(paramLong, adzh.a(this.a).getAdapter());
+      } while (!(localObject instanceof MessageForShortVideo));
+      localObject = (MessageForShortVideo)localObject;
+    } while (((((MessageForShortVideo)localObject).fileType != 6) && (((MessageForShortVideo)localObject).fileType != 17) && (((MessageForShortVideo)localObject).fileType != 9)) || (((MessageForShortVideo)localObject).videoFileStatus == 2003));
+    ((MessageForShortVideo)localObject).videoFileStatus = 2003;
+    ((MessageForShortVideo)localObject).transferedSize = 0;
+    ((MessageForShortVideo)localObject).videoFileProgress = 100;
+    ((MessageForShortVideo)localObject).serial();
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageForShortVideo)localObject).frienduin, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, ((MessageForShortVideo)localObject).uniseq, ((MessageForShortVideo)localObject).msgData);
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoItemBuilder", 2, "onStateChange , state = " + paramInt + ", msgUniseq=" + paramLong);
+    }
+    if (paramInt == 4)
+    {
+      localObject = bbbf.a().a(Long.valueOf(paramLong));
+      if ((!bbbf.a().a(Long.valueOf(paramLong))) && (localObject != null))
+      {
+        ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8008E51", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageRecord)localObject, this.a.jdField_a_of_type_AndroidContentContext);
+        if (!bbbf.a().b(Long.valueOf(((MessageForShortVideo)localObject).uniseq)))
+        {
+          bbbf.a().a(Long.valueOf(((MessageForShortVideo)localObject).uniseq));
+          ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8008E50", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageRecord)localObject, this.a.jdField_a_of_type_AndroidContentContext);
+        }
+        bbbf.a().a(Long.valueOf(paramLong), true);
+      }
+    }
+    Object localObject = adzh.a(this.a, paramLong);
+    if (localObject == null) {
+      if (QLog.isColorLevel()) {
+        QLog.w("ShortVideoItemBuilder", 2, "holder == null, msgUniseq=" + paramLong);
+      }
+    }
+    boolean bool;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (((MessageForShortVideo)((adzr)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage).videoFileTime <= 8) {}
+          for (bool = true; paramInt == 5; bool = false)
+          {
+            adzh.a(this.a).postDelayed(new ShortVideoItemBuilder.12.1(this, bool, (adzr)localObject), 1200L);
+            return;
+          }
+          if ((paramInt != 7) && (paramInt != 8)) {
+            break;
+          }
+          adzh.a(this.a).removeCallbacksAndMessages(null);
+          ((adzr)localObject).d.setVisibility(8);
+          ((adzr)localObject).jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(0);
+          this.a.b((adzr)localObject);
+          ((adzr)localObject).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+          ((adzr)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+        } while (paramInt != 8);
+        localObject = bbbf.a().a(Long.valueOf(paramLong));
+      } while (localObject == null);
+      adzh.a(this.a, (MessageForShortVideo)localObject, ((MessageForShortVideo)localObject).videoFileTime * 1000);
       return;
-    }
-  }
-  
-  float a(int paramInt1, int paramInt2)
-  {
-    LocalMediaInfo localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Adzf.a(paramInt1);
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Adzf.getItemViewType(paramInt1);
-    float f1;
-    if (i == 1) {
-      f1 = 1168.0F / (paramInt2 * this.jdField_e_of_type_Float);
+    } while (paramInt != 4);
+    adzh.a(this.a).removeCallbacksAndMessages(null);
+    if (bool) {
+      ((adzr)localObject).d.setVisibility(8);
     }
     for (;;)
     {
-      atpg.a("PhotoListPanel", "calcuEndScale", "position = " + paramInt1 + ",scale = " + f1 + ",mediaType = " + i + ",info.mediaWidth = " + localLocalMediaInfo.mediaWidth + ",info.mediaHeight = " + localLocalMediaInfo.mediaHeight + ",sideLength = " + paramInt2);
-      return f1;
-      f1 = localLocalMediaInfo.mediaHeight * 1.0F / localLocalMediaInfo.mediaWidth;
-      if ((localLocalMediaInfo.mediaWidth > 100) || (localLocalMediaInfo.mediaHeight > 100))
-      {
-        if (localLocalMediaInfo.mediaHeight > localLocalMediaInfo.mediaWidth) {
-          f1 = 1168.0F / (f1 * paramInt2 * this.jdField_e_of_type_Float);
-        } else {
-          f1 = f1 * 1168.0F / (paramInt2 * this.jdField_e_of_type_Float);
-        }
-      }
-      else if (localLocalMediaInfo.mediaHeight > localLocalMediaInfo.mediaWidth) {
-        f1 = paramInt2 * 2336.0F / (f1 * this.jdField_e_of_type_Float);
-      } else {
-        f1 = f1 * 2336.0F / (paramInt2 * this.jdField_e_of_type_Float);
-      }
-    }
-  }
-  
-  float a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    LocalMediaInfo localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Adzf.a(paramInt1);
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Adzf.getItemViewType(paramInt1);
-    float f1;
-    if (i == 1) {
-      f1 = 160.0F * this.jdField_e_of_type_Float / Math.max(paramInt2, paramInt3);
-    }
-    for (;;)
-    {
-      atpg.a("PhotoListPanel", "calcuEndScale", "position = " + paramInt1 + ",scale = " + f1 + ",mediaType = " + i + ",info.mediaWidth = " + localLocalMediaInfo.mediaWidth + ",info.mediaHeight = " + localLocalMediaInfo.mediaHeight);
-      return f1;
-      if ((localLocalMediaInfo.mediaWidth > 100) || (localLocalMediaInfo.mediaHeight > 100)) {
-        f1 = 135.0F * this.jdField_e_of_type_Float / Math.max(paramInt2, paramInt3);
-      } else {
-        f1 = Math.max(localLocalMediaInfo.mediaWidth, localLocalMediaInfo.mediaHeight) * this.jdField_e_of_type_Float / Math.max(paramInt2, paramInt3);
-      }
-    }
-  }
-  
-  adzp a(MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2)
-  {
-    boolean bool4 = false;
-    boolean bool5 = true;
-    boolean bool1;
-    boolean bool2;
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      this.jdField_a_of_type_Boolean = true;
-      i = paramMotionEvent.findPointerIndex(this.jdField_d_of_type_Int);
-      this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-      this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-      f1 = this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(i);
-      if (-f1 > 1500.0F)
-      {
-        bool1 = true;
-        if (paramFloat2 >= 0.0F) {
-          break label375;
-        }
-        bool2 = true;
-        label81:
-        if (Math.abs(paramFloat1 / paramFloat2) >= 1.0F) {
-          break label381;
-        }
-        bool3 = true;
-        label95:
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.l != 1) {
-          break label387;
-        }
-      }
-      label387:
-      for (bool4 = bool5;; bool4 = false)
-      {
-        atpg.a("PhotoListPanel", "detectGesture", "Xvelocity=" + this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(i) + "Yvelocity=" + f1 + ",delX = " + paramFloat1 + ", delY = " + paramFloat2 + "tanA = " + Math.abs(paramFloat1 / paramFloat2) + ",Angle A = " + Math.toDegrees(Math.atan(Math.abs(paramFloat1 / paramFloat2))) + ",Velocity Angle = " + Math.toDegrees(Math.atan(Math.abs(this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(i) / f1))) + " vThresh = " + bool1 + ",direction = " + bool2 + ",anc = " + bool3 + ",satate = " + bool4 + ",mGestureHandler = " + this.jdField_a_of_type_Adzp);
-        atpg.a("PhotoListPanel", "detectGesture", "mActivePointerId x = " + paramMotionEvent.getX() + ",mActivePointerId y = " + paramMotionEvent.getY());
-        if ((this.jdField_a_of_type_Adzp != null) || (!bool2) || (!bool3) || (!bool4)) {
-          break label758;
-        }
-        atpg.a("PhotoListPanel", "detectGesture", "return mDragHandler.");
-        return this.jdField_c_of_type_Adzp;
-        bool1 = false;
+      this.a.a((adzr)localObject);
+      ((adzr)localObject).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      ((adzr)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      localObject = bbbf.a().a(Long.valueOf(paramLong));
+      if (localObject == null) {
         break;
-        label375:
-        bool2 = false;
-        break label81;
-        label381:
-        bool3 = false;
-        break label95;
+      }
+      adzh.a(this.a, (MessageForShortVideo)localObject, 0L);
+      return;
+      ((adzr)localObject).d.setVisibility(0);
+    }
+  }
+  
+  public void a(long paramLong, int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("onPlayError , id = ").append(paramLong);
+      localStringBuilder1.append(" , errorCode = ").append(paramInt);
+      StringBuilder localStringBuilder2 = localStringBuilder1.append(" , exInfo =");
+      if (paramString != null)
+      {
+        localStringBuilder2.append(paramString);
+        QLog.e("ShortVideoItemBuilder", 2, localStringBuilder1.toString());
       }
     }
-    int i = paramMotionEvent.findPointerIndex(this.jdField_d_of_type_Int);
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-    this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-    float f1 = this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(i);
-    if (-f1 > 3000.0F)
+    else if (paramInt == 14011001)
     {
-      bool1 = true;
-      if (paramFloat2 >= 0.0F) {
-        break label746;
+      if (adzh.a(this.a) != null) {
+        break label110;
       }
-      bool2 = true;
-      label454:
-      if (Math.abs(paramFloat1 / paramFloat2) >= 1.0F) {
-        break label752;
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortVideoItemBuilder", 2, "onPlayError , mListView is null.");
       }
     }
-    label746:
-    label752:
-    for (boolean bool3 = true;; bool3 = false)
+    label110:
+    do
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.l == 1) {
-        bool4 = true;
-      }
-      atpg.a("PhotoListPanel", "detectGesture", "2 Xvelocity=" + this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(i) + "Yvelocity=" + f1 + ",delX = " + paramFloat1 + ", delY = " + paramFloat2 + "tanA = " + Math.abs(paramFloat1 / paramFloat2) + ",Angle A = " + Math.toDegrees(Math.atan(Math.abs(paramFloat1 / paramFloat2))) + ",Velocity Angle = " + Math.toDegrees(Math.atan(Math.abs(this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(i) / f1))) + " vThresh = " + bool1 + ",direction = " + bool2 + ",anc = " + bool3 + ",satate = " + bool4);
-      atpg.a("PhotoListPanel", "detectGesture", "2 mActivePointerId x = " + paramMotionEvent.getX() + ",mActivePointerId y = " + paramMotionEvent.getY());
-      if ((this.jdField_a_of_type_Adzp != null) || (!bool2) || (!bool3) || (!bool4) || (!bool1)) {
-        break label758;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      atpg.a("PhotoListPanel", "detectGesture", "return mFlingHandler.");
-      return this.jdField_b_of_type_Adzp;
-      bool1 = false;
+      return;
+      paramString = "null";
       break;
-      bool2 = false;
-      break label454;
-    }
-    label758:
-    return null;
+      paramString = actn.a(paramLong, adzh.a(this.a).getAdapter());
+    } while (!(paramString instanceof MessageForShortVideo));
+    paramString = (MessageForShortVideo)paramString;
+    paramString.videoFileStatus = 5002;
+    paramString.serial();
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString.frienduin, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramString.uniseq, paramString.msgData);
+    adzh.a(this.a).post(new ShortVideoItemBuilder.12.2(this, paramString));
   }
   
-  public void a()
+  public void a(long paramLong1, long paramLong2)
   {
-    if (this.jdField_a_of_type_Adzp != null)
-    {
-      this.jdField_a_of_type_Adzp.a();
-      this.jdField_a_of_type_Adzp = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoItemBuilder", 2, "onLoopBack, id = " + paramLong1 + " ,position = " + paramLong2);
     }
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
-    {
-      this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-      this.jdField_a_of_type_AndroidViewVelocityTracker = null;
-    }
+    MessageForShortVideo localMessageForShortVideo = bbbf.a().a(Long.valueOf(paramLong1));
+    adzh.a(this.a, localMessageForShortVideo, paramLong2);
   }
   
-  public void a(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    this.jdField_a_of_type_Float = f1;
-    this.jdField_c_of_type_Float = f1;
-    this.jdField_b_of_type_Float = f2;
-    this.jdField_d_of_type_Float = f2;
-    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findChildViewUnder(f1, f2);
-    this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAdapterPosition(localView);
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-      this.jdField_d_of_type_Int = paramMotionEvent.getPointerId(0);
-      atpg.a("PhotoListPanel", "onTouch", " touchFirstActtion,mActivePointerId x = " + paramMotionEvent.getX() + ",mActivePointerId y = " + paramMotionEvent.getY());
-      this.jdField_a_of_type_Adzp = null;
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      ThreadManager.getUIHandler().postDelayed(new PhotoListPanel.SwipeUpAndDragListener.2(this), 100L);
-      return;
-      this.jdField_a_of_type_AndroidViewVelocityTracker.clear();
-    }
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_c_of_type_Adzp != null) && (this.jdField_c_of_type_Adzp.a())) {
-      this.jdField_c_of_type_Adzp.a();
-    }
-    while ((this.jdField_b_of_type_Adzp == null) || (!this.jdField_b_of_type_Adzp.a())) {
-      return;
-    }
-    this.jdField_b_of_type_Adzp.a();
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    boolean bool1 = true;
-    int i = paramMotionEvent.getAction();
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    atpg.a("PhotoListPanel", "onTouch", "x = " + f1 + ",y = " + f2 + ",event = " + paramMotionEvent + ", mPanel.mDisableGuestrueSend = " + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Boolean) {
-      return bool1;
-    }
-    switch (i)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      atpg.a("PhotoListPanel", "onTouch", " ACTION_DOWN,x = " + f1 + ",y = " + f2);
-      continue;
-      atpg.a("PhotoListPanel", "onTouch", " ACTION_MOVE,x = " + f1 + ",y = " + f2 + ",mGestureHandler = " + this.jdField_a_of_type_Adzp);
-      float f3 = this.jdField_a_of_type_Float;
-      float f4 = this.jdField_b_of_type_Float;
-      if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-        this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-      }
-      paramView = (adzh)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForAdapterPosition(this.jdField_c_of_type_Int);
-      if (paramView == null) {
-        return false;
-      }
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Adzp = a(paramMotionEvent, f1 - f3, f2 - f4);
-        if (this.jdField_a_of_type_Adzp != null) {
-          return this.jdField_a_of_type_Adzp.a(paramView, this.jdField_c_of_type_Int);
-        }
-      }
-      else if (this.jdField_a_of_type_Adzp != null)
-      {
-        return this.jdField_a_of_type_Adzp.a(paramMotionEvent);
-      }
-      atpg.a("PhotoListPanel", "onTouch", "f ACTION_MOVE,x = " + f1 + ",y = " + f2);
-      continue;
-      if (this.jdField_a_of_type_Adzp != null)
-      {
-        boolean bool2 = this.jdField_a_of_type_Adzp.b(paramMotionEvent);
-        this.jdField_a_of_type_Adzp = null;
-        bool1 = bool2;
-        if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-          break;
-        }
-        this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-        this.jdField_a_of_type_AndroidViewVelocityTracker = null;
-        return bool2;
-      }
-      long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.l == 1) && (Math.abs(f2 - this.jdField_b_of_type_Float) > Math.abs(f1 - this.jdField_a_of_type_Float)) && ((l > 200L) || (Math.abs(f2 - this.jdField_b_of_type_Float) > this.jdField_b_of_type_Int) || (Math.abs(f1 - this.jdField_a_of_type_Float) > this.jdField_b_of_type_Int)))
-      {
-        atpg.a("PhotoListPanel", "onTouch", " ACTION_UP,eat up event.dx = " + Math.abs(f1 - this.jdField_a_of_type_Float) + ",dy = " + Math.abs(f2 - this.jdField_b_of_type_Float) + ",duration = " + l);
-        if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-          break;
-        }
-        this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-        this.jdField_a_of_type_AndroidViewVelocityTracker = null;
-        return true;
-      }
-      atpg.a("PhotoListPanel", "onTouch", "f ACTION_UP,x = " + f1 + ",y = " + f2);
-      continue;
-      if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
-      {
-        this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-        this.jdField_a_of_type_AndroidViewVelocityTracker = null;
-      }
-      ThreadManagerV2.getUIHandlerV2().post(new PhotoListPanel.SwipeUpAndDragListener.1(this));
-    }
-  }
+  public void b(long paramLong1, long paramLong2) {}
 }
 
 

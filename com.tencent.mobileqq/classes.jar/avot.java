@@ -1,17 +1,31 @@
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.widget.QQViewPager;
+import com.tencent.mobileqq.widget.TabBarView;
+
 public class avot
+  implements ViewPager.OnPageChangeListener
 {
-  public String a;
-  public String b;
+  public avot(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  public avot(String paramString1, String paramString2)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).setSelectedTab(paramInt, true);
+    if (paramInt == 0)
+    {
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).a(false);
+      return;
+    }
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avot
  * JD-Core Version:    0.7.0.1
  */

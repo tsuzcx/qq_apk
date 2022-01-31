@@ -1,40 +1,32 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import android.graphics.drawable.Drawable;
+import cooperation.qzone.webviewwrapper.LiveVideoFeedVipIconListner;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
-public class bhpt
-  extends AnimatorListenerAdapter
+public final class bhpt
+  implements InvocationHandler
 {
-  public bhpt(QIMCircleProgress paramQIMCircleProgress) {}
+  public bhpt(LiveVideoFeedVipIconListner paramLiveVideoFeedVipIconListner) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    this.a.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator cancel");
+    if (paramMethod.getName().equals("onFailed")) {
+      if (this.a != null) {
+        this.a.onFailed();
+      }
     }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.b = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator start");
+    for (;;)
+    {
+      return null;
+      if ((paramMethod.getName().equals("onLoaded")) && (this.a != null)) {
+        this.a.onLoaded((Drawable)paramArrayOfObject[0]);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhpt
  * JD-Core Version:    0.7.0.1
  */

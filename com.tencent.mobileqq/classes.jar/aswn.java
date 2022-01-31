@@ -1,44 +1,61 @@
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.RemoteException;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import java.util.HashMap;
 
-class aswn
-  extends axvs
+public class aswn
+  implements ServiceConnection
 {
-  aswn(asvw paramasvw) {}
+  public aswn(MusicPlayerActivity paramMusicPlayerActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    axqf localaxqf = (axqf)paramMessage.obj;
-    switch (paramMessage.what)
+    MusicPlayerActivity.a(this.a, asvm.a(paramIBinder));
+    try
     {
-    case 1004: 
-    default: 
-    case 1003: 
-      do
+      MusicPlayerActivity.a(this.a).a(MusicPlayerActivity.a(this.a));
+      paramComponentName = MusicPlayerActivity.a(this.a).a();
+      paramIBinder = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramComponentName, -1L);
+      if (paramComponentName != null)
       {
-        do
-        {
-          return;
-        } while (localaxqf.b != 8);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + axsm.a);
+        String str = MusicPlayerActivity.a(this.a, paramComponentName);
+        if (MusicPlayerActivity.b().containsKey(str)) {
+          MusicPlayerActivity.a(this.a, (aswu)MusicPlayerActivity.b().get(str), paramIBinder);
         }
-      } while (asvw.a(this.a) == null);
-      asvw.a(this.a).a = axsm.a;
-      asvw.c(this.a);
+        for (;;)
+        {
+          int i = MusicPlayerActivity.a(this.a).a();
+          Message.obtain(MusicPlayerActivity.a(this.a), 50, i, 0).sendToTarget();
+          MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramComponentName.b, paramComponentName.g, paramComponentName.f, String.valueOf(paramComponentName.a), paramComponentName.c, MusicPlayerActivity.a(this.a).c());
+          return;
+          MusicPlayerActivity.a(this.a, paramComponentName.b, paramComponentName.g, paramComponentName.d, paramIBinder, false, false);
+        }
+      }
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
+    catch (Exception paramComponentName) {}
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    paramComponentName = MusicPlayerActivity.a(this.a);
+    if (paramComponentName != null) {}
+    try
+    {
+      paramComponentName.b(MusicPlayerActivity.a(this.a));
+      return;
     }
-    this.a.a.a();
-    this.a.a.b(ajjy.a(2131641511));
+    catch (RemoteException paramComponentName) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aswn
  * JD-Core Version:    0.7.0.1
  */

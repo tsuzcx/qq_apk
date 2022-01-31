@@ -1,40 +1,32 @@
-import java.util.Locale;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Set;
 
 class arjx
+  extends ajxl
 {
-  public static int a;
-  public float a;
-  public long a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
-  public int d;
-  public float e;
-  public float f;
-  public float g;
-  public float h;
-  public float i;
-  public float j;
-  public float k;
-  public float l;
+  arjx(arjv paramarjv) {}
   
-  public arjx()
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    int m = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = m + 1;
-    this.jdField_b_of_type_Int = m;
-  }
-  
-  public String toString()
-  {
-    return String.format(Locale.getDefault(), "[id:%d, start: %d, x: %f, y: %f, vx: %f, vy: %f, size: %d", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), Float.valueOf(this.jdField_a_of_type_Float), Float.valueOf(this.jdField_b_of_type_Float), Float.valueOf(this.c), Float.valueOf(this.jdField_d_of_type_Float), Integer.valueOf(this.jdField_d_of_type_Int) });
+    QLog.i("FetchOpenIdManager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
+    if ((paramBoolean) && (paramObject != null))
+    {
+      long l = ((Long)paramObject).longValue();
+      paramObject = arjv.a(this.a).keySet().toArray();
+      int i = paramObject.length - 1;
+      while (i >= 0)
+      {
+        Long localLong = (Long)paramObject[i];
+        this.a.a(localLong.longValue(), l);
+        i -= 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arjx
  * JD-Core Version:    0.7.0.1
  */

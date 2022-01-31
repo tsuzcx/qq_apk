@@ -1,23 +1,28 @@
-import android.support.annotation.Nullable;
-import dov.com.qq.im.AECamera.View.AECameraGLSurfaceView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import java.lang.ref.WeakReference;
 
-class wum
-  implements bhwg<Boolean>
+public class wum
+  implements View.OnClickListener
 {
-  wum(wuh paramwuh) {}
+  public wum(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean == null) {}
-    while (wuh.a(this.a) == null) {
-      return;
+    if (xeq.a("mLLSkipBackWrapper", 500L))
+    {
+      VideoPlayerView.e(this.a);
+      VideoPlayerView.a(this.a, new WeakReference(VideoPlayerView.b(this.a)), 0, 1, true);
+      if (VideoPlayerView.a(this.a) != null) {
+        this.a.a(VideoPlayerView.a(this.a).a() - 10000L);
+      }
     }
-    wuh.a(this.a).b(paramBoolean.booleanValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wum
  * JD-Core Version:    0.7.0.1
  */

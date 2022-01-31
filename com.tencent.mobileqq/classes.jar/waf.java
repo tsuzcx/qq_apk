@@ -1,65 +1,53 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import cooperation.qzone.util.QZLog;
-import java.util.Map;
+import java.util.ArrayList;
 
-public class waf
-  extends QQUIEventReceiver<vzz, vzr>
+class waf
+  extends wad
 {
-  public waf(@NonNull vzz paramvzz)
+  waf(wae paramwae, wam paramwam) {}
+  
+  public void onFailure(String paramString)
   {
-    super(paramvzz);
+    this.jdField_a_of_type_Wam.onFailure(paramString);
   }
   
-  public void a(@NonNull vzz paramvzz, @NonNull vzr paramvzr)
+  public void onFinish(boolean paramBoolean)
   {
-    switch (paramvzr.jdField_a_of_type_Int)
+    wae localwae;
+    if (this.jdField_a_of_type_Wae.jdField_a_of_type_JavaUtilArrayList.size() == 0)
     {
-    case 4: 
-    case 5: 
-    default: 
-    case 1: 
-    case 2: 
-    case 3: 
-      CertifiedAccountMeta.StFeed localStFeed;
-      int i;
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramvzz.i();
-            return;
-            paramvzz.j();
-            return;
-            vzz.a(paramvzz, false);
-            vzz.a(paramvzz, null);
-            vzz.a(paramvzz, null);
-          } while (!(paramvzr.jdField_a_of_type_JavaLangObject instanceof Object[]));
-          paramvzr = (Object[])paramvzr.jdField_a_of_type_JavaLangObject;
-        } while ((paramvzr.length < 2) || (!(paramvzr[0] instanceof CertifiedAccountMeta.StFeed)) || (!(paramvzr[1] instanceof Integer)));
-        localStFeed = (CertifiedAccountMeta.StFeed)paramvzr[0];
-        i = ((Integer)paramvzr[1]).intValue();
-      } while (!paramvzz.a(localStFeed));
-      vzz.c(paramvzz).put(Integer.valueOf(i), localStFeed);
-      QZLog.i(this.TAG, 1, "EVENT_SET_COMMENT_DATA, position:" + i + ", cellId:" + localStFeed.id.get());
+      localwae = this.jdField_a_of_type_Wae;
+      if (!paramBoolean) {
+        break label44;
+      }
+    }
+    label44:
+    for (int i = 1;; i = 0)
+    {
+      localwae.jdField_a_of_type_Int = i;
+      wae.jdField_a_of_type_Wae = null;
+      this.jdField_a_of_type_Wam.onFinish(paramBoolean);
       return;
     }
-    vzz.a(paramvzz, (Object[])paramvzr.jdField_a_of_type_JavaLangObject);
   }
   
-  public Class acceptEventClass()
+  public void onProgress(String paramString)
   {
-    return vzr.class;
+    this.jdField_a_of_type_Wam.onProgress(paramString);
+  }
+  
+  public void onStart()
+  {
+    this.jdField_a_of_type_Wam.onStart();
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    this.jdField_a_of_type_Wam.onSuccess(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     waf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aksy;
-import aksz;
-import akta;
-import aktb;
-import aktc;
+import alhk;
+import alhl;
+import alhm;
+import alhn;
+import alho;
 import android.graphics.PointF;
 import android.os.Environment;
-import attn;
-import awjy;
-import bedt;
+import aurl;
+import axje;
+import bflj;
 import com.tencent.av.avgesture.AVGestureWrapper;
 import com.tencent.mobileqq.shortvideo.resource.GestureResource;
 import com.tencent.mobileqq.shortvideo.resource.Resources;
@@ -23,8 +23,8 @@ public class ARLocalGestureCircleRecog
   private static boolean jdField_f_of_type_Boolean;
   int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
-  private aksy jdField_a_of_type_Aksy;
-  private aksz jdField_a_of_type_Aksz = new aksz();
+  private alhk jdField_a_of_type_Alhk;
+  private alhl jdField_a_of_type_Alhl = new alhl();
   PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF(-1.0F, -1.0F);
   private AVGestureWrapper jdField_a_of_type_ComTencentAvAvgestureAVGestureWrapper;
   private ARLocalGestureCircleRecog.ProcessWorker jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog$ProcessWorker;
@@ -56,7 +56,7 @@ public class ARLocalGestureCircleRecog
     {
       try
       {
-        boolean bool2 = awjy.b();
+        boolean bool2 = axje.b();
         boolean bool3 = SdkContext.getInstance().getResources().getGestureResource().isGestureEnable();
         if ((!bool2) || (!bool3))
         {
@@ -70,7 +70,7 @@ public class ARLocalGestureCircleRecog
           QLog.i("AREngine_ARLocalGestureCircleRecog", 2, "load gesture so failed. so not exist. soFilename = " + str1);
           continue;
         }
-        str3 = attn.a(str2);
+        str3 = aurl.a(str2);
       }
       finally {}
       String str3;
@@ -155,9 +155,9 @@ public class ARLocalGestureCircleRecog
     //   119: aload_1
     //   120: invokestatic 208	com/tencent/av/avgesture/AVGestureWrapper:setGlobalConfigFile	(Ljava/lang/String;)Z
     //   123: pop
-    //   124: new 210	aksx
+    //   124: new 210	alhj
     //   127: dup
-    //   128: invokespecial 211	aksx:<init>	()V
+    //   128: invokespecial 211	alhj:<init>	()V
     //   131: invokestatic 215	com/tencent/av/avgesture/AVGestureWrapper:setAVGestureReport	(Lcom/tencent/av/avgesture/AVGestureWrapper$AVUploadReport;)V
     //   134: iconst_0
     //   135: invokestatic 219	com/tencent/av/avgesture/AVGestureWrapper:setShouldUpload	(Z)V
@@ -272,10 +272,10 @@ public class ARLocalGestureCircleRecog
     return (float)(360.0D - d1);
   }
   
-  int a(PointF[] paramArrayOfPointF, int paramInt1, int[] paramArrayOfInt, int paramInt2, akta paramakta)
+  int a(PointF[] paramArrayOfPointF, int paramInt1, int[] paramArrayOfInt, int paramInt2, alhm paramalhm)
   {
     int i = 1;
-    if (!paramakta.jdField_a_of_type_Boolean) {
+    if (!paramalhm.jdField_a_of_type_Boolean) {
       i = -1;
     }
     float f2 = i * 360.0F / paramInt2;
@@ -284,8 +284,8 @@ public class ARLocalGestureCircleRecog
     if (i == -1) {}
     for (i = 0;; i = 360)
     {
-      PointF localPointF2 = new PointF(paramakta.b - paramakta.jdField_a_of_type_Float, paramakta.c);
-      new PointF(paramakta.b, paramakta.c);
+      PointF localPointF2 = new PointF(paramalhm.b - paramalhm.jdField_a_of_type_Float, paramalhm.c);
+      new PointF(paramalhm.b, paramalhm.c);
       f1 = i;
       int k = 0;
       int j = paramInt1;
@@ -293,11 +293,11 @@ public class ARLocalGestureCircleRecog
       if (paramInt1 < paramInt2)
       {
         if (paramInt1 == 0) {}
-        for (PointF localPointF1 = new PointF(localPointF2.x - paramakta.b, localPointF2.y - paramakta.c);; localPointF1 = new PointF(paramArrayOfPointF[(j - 1)].x - paramakta.b, paramArrayOfPointF[(j - 1)].y - paramakta.c))
+        for (PointF localPointF1 = new PointF(localPointF2.x - paramalhm.b, localPointF2.y - paramalhm.c);; localPointF1 = new PointF(paramArrayOfPointF[(j - 1)].x - paramalhm.b, paramArrayOfPointF[(j - 1)].y - paramalhm.c))
         {
           PointF localPointF3 = new PointF(0.0F, 0.0F);
-          localPointF3.x = ((float)(Math.cos(f3) * localPointF1.x - Math.sin(f3) * localPointF1.y) + paramakta.b);
-          localPointF3.y = ((float)(Math.sin(f3) * localPointF1.x + Math.cos(f3) * localPointF1.y) + paramakta.c);
+          localPointF3.x = ((float)(Math.cos(f3) * localPointF1.x - Math.sin(f3) * localPointF1.y) + paramalhm.b);
+          localPointF3.y = ((float)(Math.sin(f3) * localPointF1.x + Math.cos(f3) * localPointF1.y) + paramalhm.c);
           paramArrayOfPointF[j] = localPointF3;
           k = (int)(Math.random() * 210.0D + 30.0D);
           paramArrayOfInt[j] = (((int)f1 - k + 360) % 360);
@@ -307,46 +307,46 @@ public class ARLocalGestureCircleRecog
           break;
         }
       }
-      QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "genCirclePoints4. pointCnt = " + j + ", newCnt = " + paramInt1 + ", radianInc = " + f3 + ", startDegree = " + i + ", startP.x = " + localPointF2.x + ", startP.y = " + localPointF2.y + ", circle.x = " + paramakta.b + ", circle.y = " + paramakta.c);
+      QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "genCirclePoints4. pointCnt = " + j + ", newCnt = " + paramInt1 + ", radianInc = " + f3 + ", startDegree = " + i + ", startP.x = " + localPointF2.x + ", startP.y = " + localPointF2.y + ", circle.x = " + paramalhm.b + ", circle.y = " + paramalhm.c);
       return j;
     }
   }
   
-  aksz a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  alhl a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_b_of_type_Int = this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.d = this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_c_of_type_Int;
-    if ((!this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_c_of_type_Int >= 999))
+    this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_b_of_type_Int = this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.d = this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_c_of_type_Int;
+    if ((!this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_c_of_type_Int >= 999))
     {
       QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "detectImg. return. mRecogResult.circleResult.pointCnt >= ARLocalGestureCircleRecogResult.MAX_POINT_CNT - 1.");
-      return this.jdField_a_of_type_Aksz;
+      return this.jdField_a_of_type_Alhl;
     }
-    if (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktc.jdField_b_of_type_Int >= 999)
+    if (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alho.jdField_b_of_type_Int >= 999)
     {
-      this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktc.jdField_b_of_type_Int = 0;
+      this.jdField_a_of_type_Alhl.jdField_a_of_type_Alho.jdField_b_of_type_Int = 0;
       QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "detectImg. reset gesture result point cnt.");
     }
-    if (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_a_of_type_Int == 0)
+    if (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_a_of_type_Int == 0)
     {
       QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "detectImg. return. state == ARCircleResult.CIRCLE_STATE_SUCCESS.");
-      return this.jdField_a_of_type_Aksz;
+      return this.jdField_a_of_type_Alhl;
     }
     boolean bool;
     Object localObject1;
     float f1;
     float f3;
-    if ((this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_c_of_type_Int == 0) || (!this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktc.jdField_a_of_type_Boolean))
+    if ((this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_c_of_type_Int == 0) || (!this.jdField_a_of_type_Alhl.jdField_a_of_type_Alho.jdField_a_of_type_Boolean))
     {
       bool = true;
       localObject1 = a(paramArrayOfByte, paramInt1, paramInt2, paramInt3, bool);
-      if (((aktc)localObject1).jdField_a_of_type_Int == 0) {}
-      this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktc.jdField_a_of_type_Boolean = ((aktc)localObject1).jdField_a_of_type_Boolean;
-      if (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_c_of_type_Int != 0) {
+      if (((alho)localObject1).jdField_a_of_type_Int == 0) {}
+      this.jdField_a_of_type_Alhl.jdField_a_of_type_Alho.jdField_a_of_type_Boolean = ((alho)localObject1).jdField_a_of_type_Boolean;
+      if (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_c_of_type_Int != 0) {
         break label936;
       }
       f1 = -1.0F;
       f3 = -1.0F;
-      if (((aktc)localObject1).jdField_a_of_type_Int != 0) {
+      if (((alho)localObject1).jdField_a_of_type_Int != 0) {
         break label1418;
       }
       this.jdField_a_of_type_Int = 0;
@@ -357,16 +357,16 @@ public class ARLocalGestureCircleRecog
     }
     for (this.jdField_a_of_type_AndroidGraphicsPointF.y = localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].y;; this.jdField_a_of_type_AndroidGraphicsPointF.y = localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].y)
     {
-      if (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.h >= 4) {
+      if (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.h >= 4) {
         break label524;
       }
       if (f1 > 30)
       {
-        paramArrayOfByte = this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb;
+        paramArrayOfByte = this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn;
         paramArrayOfByte.h += 1;
       }
-      QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "detectImg. startDrawDetect. return. , px = " + localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].x + ", py = " + localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].y + ", d1 = " + f1 + ", d2 = " + -1.0F + ", gesturePointCnt = " + this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.h + ", stillPointCnt = " + this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.i + ", goodPointCnt = " + this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.j);
-      return this.jdField_a_of_type_Aksz;
+      QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "detectImg. startDrawDetect. return. , px = " + localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].x + ", py = " + localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].y + ", d1 = " + f1 + ", d2 = " + -1.0F + ", gesturePointCnt = " + this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.h + ", stillPointCnt = " + this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.i + ", goodPointCnt = " + this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.j);
+      return this.jdField_a_of_type_Alhl;
       bool = false;
       break;
       label470:
@@ -374,33 +374,33 @@ public class ARLocalGestureCircleRecog
       this.jdField_a_of_type_AndroidGraphicsPointF.x = localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].x;
     }
     label524:
-    if (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.i < 4)
+    if (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.i < 4)
     {
       if ((f1 < 0.0F) || (f1 >= 30)) {
         break label1404;
       }
-      paramArrayOfByte = this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb;
+      paramArrayOfByte = this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn;
       paramArrayOfByte.i += 1;
-      if (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.i >= 4) {
-        this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.j = 0;
+      if (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.i >= 4) {
+        this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.j = 0;
       }
     }
     float f4 = f1;
     float f2 = f3;
-    if (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.j < 6)
+    if (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.j < 6)
     {
       f2 = f3;
-      if (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.j != 0)
+      if (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.j != 0)
       {
         f4 = f1;
         f2 = f3;
-        if (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.j >= 1)
+        if (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.j >= 1)
         {
           f4 = f1;
           f2 = f3;
           if (f1 > 30)
           {
-            f3 = a(this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.j - 1)], localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0]);
+            f3 = a(this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.j - 1)], localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0]);
             f4 = f1;
             f2 = f3;
             if (f3 > 120) {
@@ -411,56 +411,56 @@ public class ARLocalGestureCircleRecog
       }
       else
       {
-        paramArrayOfByte = this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb;
+        paramArrayOfByte = this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn;
         paramArrayOfByte.j += 1;
-        this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.j - 1)] = new PointF(localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].x, localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].y);
+        this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.j - 1)] = new PointF(localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].x, localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].y);
         f4 = f1;
       }
     }
     label793:
     label936:
     Object localObject2;
-    if ((this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.h >= 4) && (((this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.i >= 4) && (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.j >= 4)) || (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.j >= 6)))
+    if ((this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.h >= 4) && (((this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.i >= 4) && (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.j >= 4)) || (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.j >= 6)))
     {
-      paramArrayOfByte = a(this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF, this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.j);
+      paramArrayOfByte = a(this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF, this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.j);
       if (paramArrayOfByte != null)
       {
-        this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_a_of_type_Akta.jdField_a_of_type_Boolean = paramArrayOfByte.jdField_a_of_type_Boolean;
-        a(this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_b_of_type_ArrayOfAndroidGraphicsPointF, 0, this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.e, this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_a_of_type_Akta);
-        if ((this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_c_of_type_Int == 0) && (localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(localObject1.jdField_b_of_type_Int - 1)].x > 0.0F) && (localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(localObject1.jdField_b_of_type_Int - 1)].y > 0.0F) && (!((aktc)localObject1).jdField_a_of_type_JavaLangString.equalsIgnoreCase("finger1")))
+        this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_a_of_type_Alhm.jdField_a_of_type_Boolean = paramArrayOfByte.jdField_a_of_type_Boolean;
+        a(this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_b_of_type_ArrayOfAndroidGraphicsPointF, 0, this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.e, this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_a_of_type_Alhm);
+        if ((this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_c_of_type_Int == 0) && (localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(localObject1.jdField_b_of_type_Int - 1)].x > 0.0F) && (localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(localObject1.jdField_b_of_type_Int - 1)].y > 0.0F) && (!((alho)localObject1).jdField_a_of_type_JavaLangString.equalsIgnoreCase("finger1")))
         {
-          ((aktc)localObject1).jdField_a_of_type_JavaLangString = "";
+          ((alho)localObject1).jdField_a_of_type_JavaLangString = "";
           localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(localObject1.jdField_b_of_type_Int - 1)].x = -1.0F;
           localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(localObject1.jdField_b_of_type_Int - 1)].y = -1.0F;
-          ((aktc)localObject1).d = -1;
-          ((aktc)localObject1).jdField_a_of_type_Int = -1;
+          ((alho)localObject1).d = -1;
+          ((alho)localObject1).jdField_a_of_type_Int = -1;
         }
-        this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktc.jdField_c_of_type_Int = ((aktc)localObject1).jdField_c_of_type_Int;
-        this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktc.jdField_a_of_type_JavaLangString = ((aktc)localObject1).jdField_a_of_type_JavaLangString;
+        this.jdField_a_of_type_Alhl.jdField_a_of_type_Alho.jdField_c_of_type_Int = ((alho)localObject1).jdField_c_of_type_Int;
+        this.jdField_a_of_type_Alhl.jdField_a_of_type_Alho.jdField_a_of_type_JavaLangString = ((alho)localObject1).jdField_a_of_type_JavaLangString;
         paramArrayOfByte = localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(localObject1.jdField_b_of_type_Int - 1)];
         if ((paramArrayOfByte.x <= 0.0F) || (paramArrayOfByte.y <= 0.0F)) {
           break label2220;
         }
-        this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktc.d = ((aktc)localObject1).d;
-        this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktc.jdField_a_of_type_Int = 0;
-        localObject1 = this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktc.jdField_a_of_type_ArrayOfAndroidGraphicsPointF;
-        localObject2 = this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktc;
-        paramInt1 = ((aktc)localObject2).jdField_b_of_type_Int;
-        ((aktc)localObject2).jdField_b_of_type_Int = (paramInt1 + 1);
+        this.jdField_a_of_type_Alhl.jdField_a_of_type_Alho.d = ((alho)localObject1).d;
+        this.jdField_a_of_type_Alhl.jdField_a_of_type_Alho.jdField_a_of_type_Int = 0;
+        localObject1 = this.jdField_a_of_type_Alhl.jdField_a_of_type_Alho.jdField_a_of_type_ArrayOfAndroidGraphicsPointF;
+        localObject2 = this.jdField_a_of_type_Alhl.jdField_a_of_type_Alho;
+        paramInt1 = ((alho)localObject2).jdField_b_of_type_Int;
+        ((alho)localObject2).jdField_b_of_type_Int = (paramInt1 + 1);
         localObject1[paramInt1] = paramArrayOfByte;
-        if (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_c_of_type_Int != 0) {
+        if (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_c_of_type_Int != 0) {
           break label1779;
         }
         if ((150.0F >= paramArrayOfByte.x) || (paramArrayOfByte.x >= this.jdField_b_of_type_Int - 150) || (50.0F >= paramArrayOfByte.y) || (paramArrayOfByte.y >= this.jdField_c_of_type_Int - 50)) {
           break label1734;
         }
-        localObject1 = this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_a_of_type_ArrayOfAndroidGraphicsPointF;
-        localObject2 = this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb;
-        paramInt1 = ((aktb)localObject2).jdField_c_of_type_Int;
-        ((aktb)localObject2).jdField_c_of_type_Int = (paramInt1 + 1);
+        localObject1 = this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_a_of_type_ArrayOfAndroidGraphicsPointF;
+        localObject2 = this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn;
+        paramInt1 = ((alhn)localObject2).jdField_c_of_type_Int;
+        ((alhn)localObject2).jdField_c_of_type_Int = (paramInt1 + 1);
         localObject1[paramInt1] = new PointF(paramArrayOfByte.x, paramArrayOfByte.y);
-        this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_a_of_type_Int = 1;
-        this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.j = 0;
+        this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_a_of_type_Int = 1;
+        this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.j = 0;
         this.jdField_a_of_type_Long = 0L;
         this.jdField_b_of_type_Long = 0L;
         this.jdField_e_of_type_Long = System.currentTimeMillis();
@@ -473,21 +473,21 @@ public class ARLocalGestureCircleRecog
       for (;;)
       {
         paramInt1 = 0;
-        if (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.g >= this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.e - 1) {
+        if (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.g >= this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.e - 1) {
           paramInt1 = 1;
         }
         if (paramInt1 != 0) {
-          this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_a_of_type_Int = 0;
+          this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_a_of_type_Int = 0;
         }
-        return this.jdField_a_of_type_Aksz;
-        this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.i = 0;
+        return this.jdField_a_of_type_Alhl;
+        this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.i = 0;
         break;
         this.jdField_a_of_type_Int += 1;
         if (this.jdField_a_of_type_Int > 13)
         {
-          this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.h = 0;
-          this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.i = 0;
-          this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.j = 0;
+          this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.h = 0;
+          this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.i = 0;
+          this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.j = 0;
           f4 = f1;
           f2 = f3;
           break label793;
@@ -497,40 +497,40 @@ public class ARLocalGestureCircleRecog
         if (this.jdField_a_of_type_Int <= 5) {
           break label793;
         }
-        if (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.h < 4) {
-          this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.h = 0;
+        if (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.h < 4) {
+          this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.h = 0;
         }
-        if (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.i < 4) {
-          this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.i = 0;
+        if (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.i < 4) {
+          this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.i = 0;
         }
         f4 = f1;
         f2 = f3;
-        if (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.j >= 4) {
+        if (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.j >= 4) {
           break label793;
         }
-        this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.j = 0;
+        this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.j = 0;
         f4 = f1;
         f2 = f3;
         break label793;
-        return this.jdField_a_of_type_Aksz;
-        QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "detectImg. startDrawDetect. return. , px = " + localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].x + ", py = " + localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].y + ", d1 = " + f4 + ", d2 = " + f2 + ", gesturePointCnt = " + this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.h + ", stillPointCnt = " + this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.i + ", goodPointCnt = " + this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.j);
-        return this.jdField_a_of_type_Aksz;
+        return this.jdField_a_of_type_Alhl;
+        QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "detectImg. startDrawDetect. return. , px = " + localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].x + ", py = " + localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].y + ", d1 = " + f4 + ", d2 = " + f2 + ", gesturePointCnt = " + this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.h + ", stillPointCnt = " + this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.i + ", goodPointCnt = " + this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.j);
+        return this.jdField_a_of_type_Alhl;
         QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "Gesture failed. firstPoint. x = " + paramArrayOfByte.x + ", y = " + paramArrayOfByte.y);
         continue;
-        bool = a(this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_a_of_type_ArrayOfAndroidGraphicsPointF, this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_c_of_type_Int, paramArrayOfByte, 20.0F);
+        bool = a(this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_a_of_type_ArrayOfAndroidGraphicsPointF, this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_c_of_type_Int, paramArrayOfByte, 20.0F);
         if ((!bool) && ((!bool) && (0 == 0))) {
           break label1863;
         }
         QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "Gesture failed. isRepeat = " + bool + ", isException = " + false);
       }
-      if (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktc.jdField_b_of_type_Int >= 2)
+      if (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alho.jdField_b_of_type_Int >= 2)
       {
-        f1 = a(this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktc.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktc.jdField_b_of_type_Int - 2)], this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktc.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktc.jdField_b_of_type_Int - 1)]);
+        f1 = a(this.jdField_a_of_type_Alhl.jdField_a_of_type_Alho.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.jdField_a_of_type_Alhl.jdField_a_of_type_Alho.jdField_b_of_type_Int - 2)], this.jdField_a_of_type_Alhl.jdField_a_of_type_Alho.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.jdField_a_of_type_Alhl.jdField_a_of_type_Alho.jdField_b_of_type_Int - 1)]);
         paramInt1 = 0;
         if (f1 > 50.0F)
         {
-          localObject1 = this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb;
-          ((aktb)localObject1).j += 1;
+          localObject1 = this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn;
+          ((alhn)localObject1).j += 1;
           if (this.jdField_e_of_type_Long != 0L) {
             break label2205;
           }
@@ -542,28 +542,28 @@ public class ARLocalGestureCircleRecog
       }
       for (paramInt1 = (int)(this.jdField_f_of_type_Long - this.jdField_e_of_type_Long);; paramInt1 = 0)
       {
-        QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "Gesture dist. dist = " + f1 + ", goodPointCnt = " + this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.j + ", timeLen = " + paramInt1);
-        if ((this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.j >= 1) && (paramInt1 > 30))
+        QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "Gesture dist. dist = " + f1 + ", goodPointCnt = " + this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.j + ", timeLen = " + paramInt1);
+        if ((this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.j >= 1) && (paramInt1 > 30))
         {
-          localObject1 = this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_a_of_type_ArrayOfAndroidGraphicsPointF;
-          localObject2 = this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb;
-          paramInt1 = ((aktb)localObject2).jdField_c_of_type_Int;
-          ((aktb)localObject2).jdField_c_of_type_Int = (paramInt1 + 1);
+          localObject1 = this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_a_of_type_ArrayOfAndroidGraphicsPointF;
+          localObject2 = this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn;
+          paramInt1 = ((alhn)localObject2).jdField_c_of_type_Int;
+          ((alhn)localObject2).jdField_c_of_type_Int = (paramInt1 + 1);
           localObject1[paramInt1] = new PointF(paramArrayOfByte.x, paramArrayOfByte.y);
-          this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.j = 0;
+          this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.j = 0;
           this.jdField_e_of_type_Long = System.currentTimeMillis();
           this.jdField_f_of_type_Long = 0L;
         }
         this.jdField_a_of_type_Long = 0L;
         this.jdField_b_of_type_Long = 0L;
         break;
-        f1 = a(this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_c_of_type_Int - 1)], paramArrayOfByte);
+        f1 = a(this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_c_of_type_Int - 1)], paramArrayOfByte);
         break label1929;
         this.jdField_f_of_type_Long = System.currentTimeMillis();
         break label1977;
       }
-      this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktc.jdField_a_of_type_Int = -1;
-    } while (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_c_of_type_Int <= 0);
+      this.jdField_a_of_type_Alhl.jdField_a_of_type_Alho.jdField_a_of_type_Int = -1;
+    } while (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_c_of_type_Int <= 0);
     label1418:
     label1734:
     label1779:
@@ -578,7 +578,7 @@ public class ARLocalGestureCircleRecog
         break label2373;
       }
       paramInt1 = 0;
-      if (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.g >= this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.e * 0.8D) {
+      if (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.g >= this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.e * 0.8D) {
         paramInt1 = 1;
       }
       if (paramInt1 == 0) {
@@ -588,11 +588,11 @@ public class ARLocalGestureCircleRecog
     label1863:
     label2260:
     label2289:
-    for (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_a_of_type_Int = 0;; this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_a_of_type_Int = -1)
+    for (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_a_of_type_Int = 0;; this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_a_of_type_Int = -1)
     {
       this.jdField_a_of_type_Long = 0L;
       this.jdField_b_of_type_Long = 0L;
-      return this.jdField_a_of_type_Aksz;
+      return this.jdField_a_of_type_Alhl;
       this.jdField_b_of_type_Long = System.currentTimeMillis();
       break label2260;
       paramInt1 = 0;
@@ -601,7 +601,7 @@ public class ARLocalGestureCircleRecog
     }
   }
   
-  akta a(PointF[] paramArrayOfPointF, int paramInt)
+  alhm a(PointF[] paramArrayOfPointF, int paramInt)
   {
     if (paramInt < 3) {
       return null;
@@ -609,13 +609,13 @@ public class ARLocalGestureCircleRecog
     return a(paramArrayOfPointF, paramInt - 1, paramArrayOfPointF[(paramInt - 1)]);
   }
   
-  akta a(PointF[] paramArrayOfPointF, int paramInt, PointF paramPointF)
+  alhm a(PointF[] paramArrayOfPointF, int paramInt, PointF paramPointF)
   {
     int j = paramInt + 1;
     if (j < 3) {
       return null;
     }
-    akta localakta = new akta();
+    alhm localalhm = new alhm();
     double d9 = 0.0D;
     double d8 = 0.0D;
     double d7 = 0.0D;
@@ -660,9 +660,9 @@ public class ARLocalGestureCircleRecog
     d1 = (d2 * d5 - d3 * d4) / (d14 * d4 - d5 * d5);
     d2 = (d2 * d14 - d3 * d5) / (d5 * d5 - d4 * d14);
     d3 = -(d1 * d9 + d2 * d8 + d7 + d6) / j;
-    localakta.b = ((float)d1 / -2.0F);
-    localakta.c = ((float)d2 / -2.0F);
-    localakta.jdField_a_of_type_Float = ((float)Math.sqrt(d2 * d2 + d1 * d1 - d3 * 4.0D) / 2.0F);
+    localalhm.b = ((float)d1 / -2.0F);
+    localalhm.c = ((float)d2 / -2.0F);
+    localalhm.jdField_a_of_type_Float = ((float)Math.sqrt(d2 * d2 + d1 * d1 - d3 * 4.0D) / 2.0F);
     j = 0;
     int m = 0;
     i = 0;
@@ -674,8 +674,8 @@ public class ARLocalGestureCircleRecog
     int k;
     if (m < paramInt - 1 + 1)
     {
-      localPointF1 = new PointF(localakta.b, localakta.c);
-      localPointF2 = new PointF(localakta.b + localakta.jdField_a_of_type_Float, localakta.c);
+      localPointF1 = new PointF(localalhm.b, localalhm.c);
+      localPointF2 = new PointF(localalhm.b + localalhm.jdField_a_of_type_Float, localalhm.c);
       f2 = a(localPointF1, localPointF2, paramArrayOfPointF[m]);
       if (m != paramInt - 1)
       {
@@ -716,9 +716,9 @@ public class ARLocalGestureCircleRecog
       }
       for (;;)
       {
-        localakta.jdField_a_of_type_Boolean = bool;
-        QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "fitCircle. centerX = " + localakta.b + ", centerY = " + localakta.c + ", r = " + localakta.jdField_a_of_type_Float + ", isClockwise = " + localakta.jdField_a_of_type_Boolean + ", clockWiseCnt = " + i + ", usedPointCnt = " + j + ", pointCnt = " + paramInt);
-        return localakta;
+        localalhm.jdField_a_of_type_Boolean = bool;
+        QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "fitCircle. centerX = " + localalhm.b + ", centerY = " + localalhm.c + ", r = " + localalhm.jdField_a_of_type_Float + ", isClockwise = " + localalhm.jdField_a_of_type_Boolean + ", clockWiseCnt = " + i + ", usedPointCnt = " + j + ", pointCnt = " + paramInt);
+        return localalhm;
         bool = false;
         continue;
         bool = true;
@@ -730,10 +730,10 @@ public class ARLocalGestureCircleRecog
     }
   }
   
-  aktc a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  alho a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     long l = System.currentTimeMillis();
-    aktc localaktc = new aktc(1);
+    alho localalho = new alho(1);
     boolean bool = false;
     PointF[] arrayOfPointF = new PointF[1];
     arrayOfPointF[0] = new PointF(-1.0F, -1.0F);
@@ -744,19 +744,19 @@ public class ARLocalGestureCircleRecog
         if (this.jdField_a_of_type_ComTencentAvAvgestureAVGestureWrapper != null)
         {
           bool = this.jdField_a_of_type_ComTencentAvAvgestureAVGestureWrapper.doCalc(paramArrayOfByte, paramInt1, paramInt2, 2, 270, paramBoolean);
-          localaktc.jdField_a_of_type_Boolean = bool;
-          localaktc.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAvgestureAVGestureWrapper.getGestureType();
+          localalho.jdField_a_of_type_Boolean = bool;
+          localalho.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAvgestureAVGestureWrapper.getGestureType();
           arrayOfPointF[0] = this.jdField_a_of_type_ComTencentAvAvgestureAVGestureWrapper.getKeyPointByName("finger");
           if ((bool) && (arrayOfPointF[0].x > 0.0F) && (arrayOfPointF[0].y > 0.0F))
           {
             if (!paramBoolean) {
               break label434;
             }
-            if (localaktc.jdField_a_of_type_JavaLangString.equalsIgnoreCase("finger1")) {
+            if (localalho.jdField_a_of_type_JavaLangString.equalsIgnoreCase("finger1")) {
               break label439;
             }
             break label434;
-            QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "detectGesture. doCalc. isSuccess = " + paramBoolean + ", res = " + bool + ", type = " + localaktc.jdField_a_of_type_JavaLangString + ", x = " + arrayOfPointF[0].x + ", y = " + arrayOfPointF[0].y);
+            QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "detectGesture. doCalc. isSuccess = " + paramBoolean + ", res = " + bool + ", type = " + localalho.jdField_a_of_type_JavaLangString + ", x = " + arrayOfPointF[0].x + ", y = " + arrayOfPointF[0].y);
             bool = paramBoolean;
           }
         }
@@ -765,26 +765,26 @@ public class ARLocalGestureCircleRecog
           if (!bool) {
             break label377;
           }
-          paramArrayOfByte = localaktc.jdField_a_of_type_ArrayOfAndroidGraphicsPointF;
-          paramInt1 = localaktc.jdField_b_of_type_Int;
-          localaktc.jdField_b_of_type_Int = (paramInt1 + 1);
+          paramArrayOfByte = localalho.jdField_a_of_type_ArrayOfAndroidGraphicsPointF;
+          paramInt1 = localalho.jdField_b_of_type_Int;
+          localalho.jdField_b_of_type_Int = (paramInt1 + 1);
           paramArrayOfByte[paramInt1] = new PointF(arrayOfPointF[0].x, arrayOfPointF[0].y);
-          localaktc.d = 0;
-          localaktc.jdField_a_of_type_Int = 0;
-          localaktc.jdField_c_of_type_Int = ((int)(System.currentTimeMillis() - l));
-          QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "detectGesture. gestureResult = " + localaktc + ", TotalTime = " + localaktc.jdField_c_of_type_Int);
-          return localaktc;
+          localalho.d = 0;
+          localalho.jdField_a_of_type_Int = 0;
+          localalho.jdField_c_of_type_Int = ((int)(System.currentTimeMillis() - l));
+          QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "detectGesture. gestureResult = " + localalho + ", TotalTime = " + localalho.jdField_c_of_type_Int);
+          return localalho;
         }
         paramBoolean = false;
       }
       label377:
-      localaktc.jdField_a_of_type_JavaLangString = "";
-      paramArrayOfByte = localaktc.jdField_a_of_type_ArrayOfAndroidGraphicsPointF;
-      paramInt1 = localaktc.jdField_b_of_type_Int;
-      localaktc.jdField_b_of_type_Int = (paramInt1 + 1);
+      localalho.jdField_a_of_type_JavaLangString = "";
+      paramArrayOfByte = localalho.jdField_a_of_type_ArrayOfAndroidGraphicsPointF;
+      paramInt1 = localalho.jdField_b_of_type_Int;
+      localalho.jdField_b_of_type_Int = (paramInt1 + 1);
       paramArrayOfByte[paramInt1] = new PointF(-1.0F, -1.0F);
-      localaktc.d = -1;
-      localaktc.jdField_a_of_type_Int = -1;
+      localalho.d = -1;
+      localalho.jdField_a_of_type_Int = -1;
       continue;
       label434:
       if (!paramBoolean) {
@@ -806,7 +806,7 @@ public class ARLocalGestureCircleRecog
   public void a(long paramLong, byte[] paramArrayOfByte)
   {
     if ((paramArrayOfByte == null) || (!this.jdField_b_of_type_Boolean) || (this.jdField_d_of_type_Boolean)) {}
-    while (this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktc.d == 1) {
+    while (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alho.d == 1) {
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog$ProcessWorker != null) {
@@ -815,7 +815,7 @@ public class ARLocalGestureCircleRecog
     QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "ARLocalGestureCircleRecog. onPreviewFrame");
   }
   
-  public boolean a(int paramInt1, int paramInt2, aksy paramaksy)
+  public boolean a(int paramInt1, int paramInt2, alhk paramalhk)
   {
     QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "init. imgW = " + paramInt1 + ", imgH = " + paramInt2);
     if (this.jdField_a_of_type_Boolean) {
@@ -826,13 +826,13 @@ public class ARLocalGestureCircleRecog
     this.jdField_c_of_type_Boolean = false;
     synchronized (this.jdField_b_of_type_JavaLangObject)
     {
-      bedt.a();
+      bflj.a();
       if ((a()) && (b()) && (this.jdField_a_of_type_ComTencentAvAvgestureAVGestureWrapper == null)) {
         this.jdField_a_of_type_ComTencentAvAvgestureAVGestureWrapper = new AVGestureWrapper();
       }
       this.jdField_b_of_type_Int = paramInt1;
       this.jdField_c_of_type_Int = paramInt2;
-      this.jdField_a_of_type_Aksy = paramaksy;
+      this.jdField_a_of_type_Alhk = paramalhk;
       e();
       this.jdField_a_of_type_Boolean = true;
       return this.jdField_a_of_type_Boolean;
@@ -903,7 +903,7 @@ public class ARLocalGestureCircleRecog
     if (!this.jdField_a_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_Aksy = null;
+    this.jdField_a_of_type_Alhk = null;
     synchronized (this.jdField_b_of_type_JavaLangObject)
     {
       if (this.jdField_a_of_type_ComTencentAvAvgestureAVGestureWrapper != null)
@@ -924,14 +924,14 @@ public class ARLocalGestureCircleRecog
   
   public void e()
   {
-    this.jdField_a_of_type_Aksz.a();
-    akta localakta = new akta();
-    localakta.jdField_a_of_type_Float = (this.jdField_c_of_type_Int / 4.0F * 1.05F);
-    localakta.b = (this.jdField_b_of_type_Int / 2 - 100);
-    localakta.c = (this.jdField_c_of_type_Int / 2);
-    localakta.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_a_of_type_Akta = localakta;
-    a(this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_b_of_type_ArrayOfAndroidGraphicsPointF, 0, this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.e, this.jdField_a_of_type_Aksz.jdField_a_of_type_Aktb.jdField_a_of_type_Akta);
+    this.jdField_a_of_type_Alhl.a();
+    alhm localalhm = new alhm();
+    localalhm.jdField_a_of_type_Float = (this.jdField_c_of_type_Int / 4.0F * 1.05F);
+    localalhm.b = (this.jdField_b_of_type_Int / 2 - 100);
+    localalhm.c = (this.jdField_c_of_type_Int / 2);
+    localalhm.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_a_of_type_Alhm = localalhm;
+    a(this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_b_of_type_ArrayOfAndroidGraphicsPointF, 0, this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.e, this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.jdField_a_of_type_Alhm);
     this.jdField_a_of_type_Long = 0L;
     this.jdField_b_of_type_Long = 0L;
     this.jdField_c_of_type_Long = 0L;

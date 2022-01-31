@@ -10,8 +10,6 @@ import com.tencent.youtu.ytcommon.tools.YTLogger;
 final class YTAGReflectLiveCheckInterface$1
   implements SensorManagerWorker.OnGetValue
 {
-  YTAGReflectLiveCheckInterface$1(YTAGReflectLiveCheckInterface.GetLiveStyleResult paramGetLiveStyleResult) {}
-  
   public void onGetValue(float paramFloat)
   {
     YTAGReflectLiveCheckInterface.access$008();
@@ -24,7 +22,11 @@ final class YTAGReflectLiveCheckInterface$1
         YTAGReflectLiveCheckInterface.access$100().cancel();
         YTAGReflectLiveCheckInterface.access$102(null);
       }
-      this.val$getLiveStyleResult.onSuccess(new LiveStyleRequester.YTLiveStyleReq(paramFloat), new LiveStyleResponse());
+      if (YTAGReflectLiveCheckInterface.access$200() != null)
+      {
+        YTAGReflectLiveCheckInterface.access$200().onSuccess(new LiveStyleRequester.YTLiveStyleReq(paramFloat, YTAGReflectLiveCheckInterface.mAppId), new LiveStyleResponse());
+        YTAGReflectLiveCheckInterface.access$202(null);
+      }
       SensorManagerWorker.getInstance().stop();
     }
   }

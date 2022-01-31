@@ -1,26 +1,21 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoAdExposureManager.PosListener.1;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-public final class pyt
-  implements opn
+public class pyt
 {
-  private WeakReference<pys> a;
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<pys> a;
+  public long b;
+  public String b;
+  public long c;
   
-  public pyt(pys parampys)
-  {
-    this.a = new WeakReference(parampys);
-  }
+  public pyt(pyq parampyq) {}
   
-  public void a(int paramInt)
+  public String toString()
   {
-    if (this.a != null)
-    {
-      pys localpys = (pys)this.a.get();
-      if ((localpys != null) && (pys.a(localpys) != null)) {
-        pys.a(localpys).post(new VideoAdExposureManager.PosListener.1(this, localpys, paramInt));
-      }
-    }
+    return "\nGestureEvent{direction=" + this.jdField_a_of_type_Int + ", deltaFromLastScroll=" + this.jdField_a_of_type_Long + ", scrollDistance=" + this.jdField_b_of_type_Long + ", scrollMills=" + this.c + ", scrollSpeed=" + this.jdField_a_of_type_Float + ", scrollDownAndUpCoordinate='" + this.jdField_a_of_type_JavaLangString + '\'' + ", clickCoordinate='" + this.jdField_b_of_type_JavaLangString + '\'' + ", scrollStateInfos=" + this.jdField_a_of_type_JavaUtilArrayList + "}";
   }
 }
 

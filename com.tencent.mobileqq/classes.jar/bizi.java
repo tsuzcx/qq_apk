@@ -1,23 +1,6 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-
 class bizi
-  implements acjg
 {
-  bizi(bizg parambizg) {}
-  
-  public void a(AudioPlayer paramAudioPlayer)
-  {
-    bizg.b(this.a);
-    bizg.a(this.a, bizg.a(this.a));
-  }
-  
-  public void a(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void b(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
+  private static bizg a = new bizg(null);
 }
 
 

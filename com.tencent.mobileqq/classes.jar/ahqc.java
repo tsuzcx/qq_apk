@@ -1,24 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import android.content.Context;
 
 public class ahqc
-  implements View.OnClickListener
+  extends ahqb
 {
-  public ahqc(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
-  
-  public void onClick(View paramView)
+  public ahqc(Context paramContext)
   {
-    if (this.a.c) {
-      awqx.b(this.a.app, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      awqx.b(this.a.app, "dc00899", "Grp_create_new", "", "suc_create", "clk_cancel", 0, 0, "", "" + this.a.h, "", "");
-      this.a.finish();
-      return;
-      awqx.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
-    }
+    this.a = ("[" + paramContext.getString(2131697536) + "]");
   }
 }
 

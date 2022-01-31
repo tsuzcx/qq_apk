@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aciy;
-import ajjy;
-import ajmp;
+import actn;
+import ajyc;
+import akay;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -47,7 +47,7 @@ public class TimeLineView
   
   public int a()
   {
-    return aciy.b(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    return actn.b(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
   }
   
   public BitSet a()
@@ -78,10 +78,10 @@ public class TimeLineView
   protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    int k = aciy.b(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int m = aciy.b(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int n = aciy.b(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int i1 = aciy.b(7.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int k = actn.b(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int m = actn.b(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int n = actn.b(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int i1 = actn.b(7.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
     int j = (this.jdField_b_of_type_Int >> 1) - (m >> 1);
     Paint localPaint1 = new Paint();
     Paint localPaint2 = new Paint();
@@ -113,10 +113,10 @@ public class TimeLineView
       if (i3 != 1) {
         break label389;
       }
-      str = i2 + ajjy.a(2131649165);
+      str = i2 + ajyc.a(2131714954);
       label287:
       float f = localPaint2.measureText(str);
-      i2 = aciy.b(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      i2 = actn.b(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       paramCanvas.drawText(str, m / 2 + j - f / 2.0F, (getHeight() >> 1) - i2, localPaint2);
       label339:
       j += k + m;
@@ -170,7 +170,7 @@ public class TimeLineView
       localStringBuilder.append(i).append("-").append(j + 1).append("-").append(k);
       localStringBuilder.append(", isLoc: ").append(paramBoolean);
     }
-    paramQQAppInterface = (ajmp)paramQQAppInterface.getManager(92);
+    paramQQAppInterface = (akay)paramQQAppInterface.getManager(92);
     if (!paramBoolean) {}
     for (this.jdField_a_of_type_JavaUtilBitSet = paramQQAppInterface.c(this.jdField_a_of_type_JavaUtilCalendar, this.jdField_b_of_type_JavaUtilCalendar);; this.jdField_a_of_type_JavaUtilBitSet = paramQQAppInterface.a(paramCalendar1, paramCalendar2))
     {

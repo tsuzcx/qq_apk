@@ -1,45 +1,40 @@
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class amhg
 {
-  private int a;
+  private int a = 1;
   
-  public amhg()
+  public static amhg a(String paramString)
   {
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public static amhg a(alzs paramalzs)
-  {
-    amhg localamhg = new amhg();
-    if (paramalzs != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SysSuspiciousConfBean", 2, "parse taskid->" + paramalzs.jdField_a_of_type_Int + " content->" + paramalzs.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteRecentConfBean", 2, String.format("parse content=%s", new Object[] { paramString }));
+    }
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      try
+      {
+        amhg localamhg = new amhg();
+        localamhg.a = new JSONObject(paramString).getInt("ifrecent");
+        return localamhg;
       }
-    }
-    try
-    {
-      localamhg.jdField_a_of_type_Int = new JSONObject(paramalzs.jdField_a_of_type_JavaLangString).optInt("suspiciousSwitch", 1);
-      return localamhg;
-    }
-    catch (JSONException paramalzs)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("SysSuspiciousConfBean", 2, "parse error->" + paramalzs.toString());
-    }
-    return localamhg;
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ColorNoteRecentConfBean", 2, "ColorNoteRecentConfBean parse err: ", paramString);
+    return null;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return this.a == 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amhg
  * JD-Core Version:    0.7.0.1
  */

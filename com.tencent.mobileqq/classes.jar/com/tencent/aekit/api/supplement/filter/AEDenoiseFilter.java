@@ -15,7 +15,6 @@ public class AEDenoiseFilter
   private BaseFilter mCopyFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   private TTBeautyV5SimpleDenoiseFilter mDenoiseFilter = new TTBeautyV5SimpleDenoiseFilter();
   private int mFrameIndex = 0;
-  private boolean mIsApplied = false;
   
   public void apply()
   {

@@ -1,57 +1,42 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.miniapp.MiniAppOptions;
-import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
+import org.json.JSONObject;
 
 public class armv
+  implements QQPermissionCallback
 {
-  private boolean a(armo paramarmo, MiniAppOptions paramMiniAppOptions)
+  public armv(MediaApiPlugin paramMediaApiPlugin, Intent paramIntent, Context paramContext, String paramString, JSONObject paramJSONObject, boolean paramBoolean, AppActivity paramAppActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppLauncher", 2, new Object[] { "checkMemory. cacheKey=", paramarmo.a.h });
-    }
-    return true;
+    QLog.d(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, "User requestPermissions RECORD_AUDIO denied");
+    bbcv.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  armo a(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppLauncher", 2, new Object[] { "createApp type=", Integer.valueOf(paramInt) });
-    }
-    switch (paramInt)
+    try
     {
-    default: 
-      QLog.e("MiniAppLauncher", 1, "createApp error. unknown appType");
-    case 0: 
-    case 1: 
-    case 2: 
-    case 4: 
-    case 5: 
-      return null;
-    }
-    return new bcov(paramMiniAppActivity, paramString, paramInt);
-  }
-  
-  void a(armo paramarmo, MiniAppOptions paramMiniAppOptions)
-  {
-    if (!a(paramarmo, paramMiniAppOptions)) {
+      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
+      MediaApiPlugin.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).putString("getMediaParam", this.jdField_a_of_type_OrgJsonJSONObject.toString()).putBoolean("calledFromOpenApi", this.jdField_a_of_type_Boolean).commit();
       return;
     }
-    babp.a();
-    paramarmo.a();
-  }
-  
-  void a(armr paramarmr, @NonNull armp paramarmp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppLauncher", 2, new Object[] { "downloadApp. cacheKey=", paramarmr.h });
+    catch (Exception paramArrayOfString)
+    {
+      QLog.e(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, paramArrayOfString, new Object[0]);
+      bcpw.a(this.jdField_a_of_type_AndroidContentContext, 2131690593, 0).a();
     }
-    paramarmp.a(paramarmr.f, "MiniAppLauncher", paramarmr.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     armv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,19 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.os.Bundle;
+import org.json.JSONObject;
 
 class bhsl
-  extends RecyclerView.OnScrollListener
+  implements bhsn
 {
-  bhsl(bhsk parambhsk) {}
+  bhsl(bhsj parambhsj) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(JSONObject paramJSONObject, Bundle paramBundle)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    bhsk.a(this.a).notifyDataSetChanged();
+    paramJSONObject.put("status", paramBundle.getInt("status", 1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhsl
  * JD-Core Version:    0.7.0.1
  */

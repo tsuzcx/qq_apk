@@ -1,25 +1,19 @@
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+
 public class lxf
+  implements avef
 {
-  public int a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public String d;
+  public lxf(QQServiceForAV paramQQServiceForAV) {}
   
-  public lxf()
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public String toString()
-  {
-    return "id[" + this.jdField_a_of_type_JavaLangString + "], name[" + this.c + "], desc[" + this.d + "]";
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAV", 2, "onGetQCallNickName");
+    }
+    new lxv(((QQAppInterface)this.a.a()).getApp().getApplicationContext()).a(new lxg(this, paramString));
   }
 }
 

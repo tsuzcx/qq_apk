@@ -1,6 +1,9 @@
-public abstract interface qhs
+import android.widget.TextView;
+
+class qhs
 {
-  public abstract void a(qht paramqht, qhw paramqhw, int paramInt1, int paramInt2, Object paramObject);
+  public int a;
+  public TextView a;
 }
 
 

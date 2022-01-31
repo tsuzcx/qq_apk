@@ -1,23 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.mobileqq.transfile.ProtoReqManager;
+import java.util.ArrayList;
+import java.util.List;
 
-class ayyn
-  implements DialogInterface.OnClickListener
+public class ayyn
 {
-  ayyn(ayym paramayym) {}
+  public int a;
+  ayti jdField_a_of_type_Ayti;
+  ayzc jdField_a_of_type_Ayzc = new ayzc();
+  public ayzu a;
+  public ProtoReqManager a;
+  public String a;
+  public List<ayyy> a;
+  public byte[] a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ayyn()
   {
-    this.a.a.a(this.a.a.a);
-    if (ReciteRecordLayout.a(this.a.a) != null) {
-      ReciteRecordLayout.a(this.a.a).f();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      localStringBuilder.append("index:");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(((ayyy)this.jdField_a_of_type_JavaUtilList.get(i)).toString());
+      i += 1;
     }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayyn
  * JD-Core Version:    0.7.0.1
  */

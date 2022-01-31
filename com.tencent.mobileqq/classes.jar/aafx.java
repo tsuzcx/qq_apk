@@ -1,15 +1,20 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Toast;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
 
-public final class aafx
+public class aafx
   implements View.OnClickListener
 {
-  public aafx(Toast paramToast) {}
+  public aafx(AccountManageActivity paramAccountManageActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.cancel();
+    paramView = new Intent();
+    PublicFragmentActivity.a(this.a, paramView, AccountOnlineStateActivity.class, 0);
+    aujf.a(this.a.app);
   }
 }
 

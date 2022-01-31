@@ -1,26 +1,25 @@
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class afia
-  extends ajrp
+class afia
+  implements QQPermissionCallback
 {
-  public afia(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  afia(afhz paramafhz, boolean paramBoolean, String paramString1, String paramString2) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonFromGroup_Fragment", 2, "vip status change in EmoticonGroupStoreFragment.");
-    }
-    anch localanch = (anch)EmoticonGroupStoreFragment.a(this.a).getManager(103);
-    if (localanch != null) {
-      localanch.b();
+    afhz.a(this.jdField_a_of_type_Afhz).i();
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      afhz.a(this.jdField_a_of_type_Afhz, this.jdField_a_of_type_JavaLangString, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afia
  * JD-Core Version:    0.7.0.1
  */

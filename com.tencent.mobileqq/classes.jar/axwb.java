@@ -1,192 +1,178 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.config.AppSetting;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.xmlpull.v1.XmlSerializer;
 
 public class axwb
+  extends axun
 {
-  public static String a(String paramString)
+  private String S = "";
+  public ArrayList<axun> a;
+  
+  public axwb()
   {
-    paramString = a(paramString);
-    if ((paramString == null) || (paramString.length < 6)) {}
-    do
-    {
-      return null;
-      paramString = paramString[5];
-      if (QLog.isColorLevel()) {
-        QLog.d("TransfileUtile", 2, "getPicMD5ByMsgContent:" + paramString);
-      }
-      if (paramString.length() == 32) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("TransfileUtile", 2, "getPicMD5ByMsgContent: error md5: length is not 32.");
-    return null;
-    return paramString;
+    this.jdField_a_of_type_JavaLangString = "taglist";
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  @Deprecated
-  public static String a(String paramString, long paramLong, int paramInt, boolean paramBoolean)
+  private LinearLayout a(Context paramContext)
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append('\026');
-    localStringBuffer.append(paramString);
-    localStringBuffer.append('|');
-    localStringBuffer.append(paramLong);
-    localStringBuffer.append('|');
-    localStringBuffer.append(paramInt);
-    localStringBuffer.append('|');
-    if (paramBoolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      localStringBuffer.append(paramInt);
-      return localStringBuffer.toString();
+    paramContext = new LinearLayout(paramContext);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
+    paramContext.setOrientation(0);
+    paramContext.setLayoutParams(localLayoutParams);
+    paramContext.setId(2131362311);
+    if (AppSetting.d) {
+      paramContext.setContentDescription(this.S);
     }
+    return paramContext;
   }
   
-  @Deprecated
-  public static String a(String paramString1, long paramLong, int paramInt, boolean paramBoolean, String paramString2)
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    paramString1 = a(paramString1, paramLong, paramInt, paramBoolean);
-    paramString1 = paramString1 + "|";
-    if ((paramString2 == null) || (paramString2.length() <= 0)) {
-      return paramString1 + "null";
-    }
-    return paramString1 + paramString2;
-  }
-  
-  public static String a(String paramString1, long paramLong, int paramInt, boolean paramBoolean, String paramString2, String paramString3, String paramString4)
-  {
-    paramString1 = a(paramString1, paramLong, paramInt, paramBoolean);
-    paramString1 = paramString1 + "|";
-    if ((paramString2 == null) || (paramString2.length() <= 0))
+    Object localObject = paramContext.getResources();
+    int i;
+    if (paramView != null)
     {
-      paramString1 = paramString1 + "null";
-      paramString1 = paramString1 + "|";
-      if ((paramString3 != null) && (paramString3.length() > 0)) {
-        break label191;
-      }
-    }
-    label191:
-    for (paramString1 = paramString1 + "null";; paramString1 = paramString1 + paramString3)
-    {
-      paramString1 = paramString1 + "|";
-      if ((paramString4 != null) && (paramString4.length() > 0)) {
-        break label214;
-      }
-      return paramString1 + "null";
-      paramString1 = paramString1 + paramString2;
-      break;
-    }
-    label214:
-    return paramString1 + paramString4;
-  }
-  
-  public static String a(String paramString1, long paramLong, int paramInt1, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt2, int paramInt3)
-  {
-    return a(paramString1, paramLong, paramInt1, paramBoolean, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramInt2, paramInt3, null);
-  }
-  
-  public static String a(String paramString1, long paramLong, int paramInt1, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt2, int paramInt3, String paramString9)
-  {
-    paramString1 = a(paramString1, paramLong, paramInt1, paramBoolean, paramString2, paramString3, paramString4);
-    paramString1 = paramString1 + "|";
-    if ((paramString5 == null) || (paramString5.length() <= 0))
-    {
-      paramString1 = paramString1 + "null";
-      paramString1 = paramString1 + "|";
-      if ((paramString6 != null) && (paramString6.length() > 0)) {
-        break label382;
-      }
-      paramString1 = paramString1 + "null";
-      label121:
-      paramString1 = paramString1 + "|";
-      if ((paramString7 != null) && (paramString7.length() > 0)) {
-        break label405;
-      }
-      paramString1 = paramString1 + "null";
-      label174:
-      paramString1 = paramString1 + "|";
-      if ((paramString8 != null) && (paramString8.length() > 0)) {
-        break label428;
-      }
-    }
-    label405:
-    label428:
-    for (paramString1 = paramString1 + "null";; paramString1 = paramString1 + paramString8)
-    {
-      paramString1 = paramString1 + "|";
-      paramString1 = paramString1 + paramInt2;
-      paramString1 = paramString1 + "|";
-      paramString2 = paramString1 + paramInt3;
-      paramString1 = paramString2;
-      if (paramString9 != null)
+      paramBundle = paramView;
+      if ((paramView instanceof LinearLayout))
       {
-        paramString1 = paramString2 + "|";
-        paramString1 = paramString1 + paramString9;
+        localObject = (LinearLayout)paramView;
+        i = 0;
+        for (;;)
+        {
+          paramBundle = paramView;
+          if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+            break;
+          }
+          ((axun)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramContext, ((LinearLayout)localObject).getChildAt(i), null);
+          i += 1;
+        }
       }
-      return paramString1;
-      paramString1 = paramString1 + paramString5;
-      break;
-      label382:
-      paramString1 = paramString1 + paramString6;
-      break label121;
-      paramString1 = paramString1 + paramString7;
-      break label174;
+    }
+    else
+    {
+      paramView = a(paramContext);
+      paramView.setPadding(actn.a(12.0F, (Resources)localObject), 0, actn.a(12.0F, (Resources)localObject), 0);
+      i = 0;
+      int j = 1;
+      paramBundle = paramView;
+      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        paramBundle = ((axun)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramContext, null, null);
+        if (j == 0)
+        {
+          LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramBundle.getLayoutParams();
+          localLayoutParams.setMargins(actn.a(2.0F, (Resources)localObject), 0, 0, 0);
+          paramView.addView(paramBundle, localLayoutParams);
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          paramView.addView(paramBundle);
+          j = 0;
+        }
+      }
+    }
+    return paramBundle;
+  }
+  
+  public String a()
+  {
+    return "taglist";
+  }
+  
+  public void a(axun paramaxun)
+  {
+    if ((paramaxun instanceof axwa)) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramaxun);
     }
   }
   
-  public static String a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt)
+  public void a(ObjectInput paramObjectInput)
   {
-    paramString1 = a(paramString1, 0L, 1, true, paramString2);
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append('|');
-    localStringBuffer.append(paramString2);
-    localStringBuffer.append('|');
-    localStringBuffer.append(paramString3);
-    localStringBuffer.append('|');
-    localStringBuffer.append(paramLong);
-    localStringBuffer.append('|');
-    localStringBuffer.append(paramInt);
-    return paramString1 + localStringBuffer.toString();
-  }
-  
-  public static String[] a(String paramString)
-  {
-    if (paramString == null) {}
-    do
-    {
-      return null;
-      paramString = paramString.split("\026");
-    } while ((paramString == null) || (paramString.length < 2));
-    return paramString[1].split("\\|");
-  }
-  
-  public static String b(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append('\026');
-    paramString1 = a(paramString1);
+    super.a(paramObjectInput);
+    int j = paramObjectInput.readInt();
     int i = 0;
-    while ((i < paramString1.length) && (i < 5))
+    while (i < j)
     {
-      localStringBuilder.append(paramString1[i]);
-      localStringBuilder.append('|');
+      axun localaxun = axux.a(paramObjectInput.readUTF());
+      if (localaxun != null)
+      {
+        localaxun.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+        localaxun.a(paramObjectInput);
+        a(localaxun);
+      }
       i += 1;
     }
-    if (paramString1.length == 4)
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    paramObjectOutput.writeInt(this.jdField_a_of_type_JavaUtilArrayList.size());
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((axun)localIterator.next()).a(paramObjectOutput);
+    }
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, this.jdField_a_of_type_JavaLangString);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((axun)localIterator.next()).a(paramXmlSerializer);
+    }
+    paramXmlSerializer.endTag(null, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public boolean a(axwe paramaxwe)
+  {
+    if (paramaxwe == null) {
+      return true;
+    }
+    int j = paramaxwe.a();
+    int i = 0;
+    label13:
+    axwe localaxwe;
+    if (i < j)
     {
-      localStringBuilder.append("");
-      localStringBuilder.append('|');
+      localaxwe = paramaxwe.a(i);
+      if (localaxwe != null) {
+        break label37;
+      }
     }
     for (;;)
     {
-      return localStringBuilder.toString();
-      localStringBuilder.append(paramString2);
-      localStringBuilder.append('|');
-      localStringBuilder.append(paramString3);
-      localStringBuilder.append('|');
-      localStringBuilder.append(paramLong);
-      localStringBuilder.append('|');
-      localStringBuilder.append(paramInt);
+      i += 1;
+      break label13;
+      break;
+      label37:
+      axun localaxun = null;
+      if ("tag".equals(localaxwe.b)) {
+        localaxun = axux.a(localaxwe.b);
+      }
+      if (localaxun == null) {
+        return false;
+      }
+      if (!localaxun.a(localaxwe)) {
+        break label89;
+      }
+      a(localaxun);
     }
+    label89:
+    return false;
   }
 }
 

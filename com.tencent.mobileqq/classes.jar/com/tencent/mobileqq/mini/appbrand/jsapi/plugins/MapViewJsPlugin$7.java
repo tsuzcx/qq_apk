@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.mini.widget.MapContext;
@@ -20,7 +19,7 @@ class MapViewJsPlugin$7
       JSONObject localJSONObject1 = new JSONObject(this.val$jsonParams);
       int i = localJSONObject1.optInt("mapId", 0);
       JSONObject localJSONObject2 = new JSONObject();
-      Object localObject = this.this$0.jsPluginEngine.appBrandRuntime.getCurWebviewContainer();
+      Object localObject = this.this$0.jsPluginEngine.getWebviewContainer(this.val$webview);
       if (localObject != null)
       {
         localObject = ((WebviewContainer)localObject).getMapContext(i);

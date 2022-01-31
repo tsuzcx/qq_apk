@@ -4,12 +4,12 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
-import axam;
-import babr;
-import badq;
-import bafb;
-import bbms;
-import bbmy;
+import ayao;
+import bbcv;
+import bbev;
+import bbgg;
+import bcpq;
+import bcpw;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -18,27 +18,27 @@ public class SubAccountBaseActivity
   extends IphoneTitleBarActivity
   implements DialogInterface.OnClickListener
 {
-  private bafb jdField_a_of_type_Bafb;
-  private bbms jdField_a_of_type_Bbms;
+  private bbgg jdField_a_of_type_Bbgg;
+  private bcpq jdField_a_of_type_Bcpq;
   public String b;
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bbms == null)
+    if (this.jdField_a_of_type_Bcpq == null)
     {
-      this.jdField_a_of_type_Bbms = new bbms(this, getTitleBarHeight());
-      this.jdField_a_of_type_Bbms.c(true);
+      this.jdField_a_of_type_Bcpq = new bcpq(this, getTitleBarHeight());
+      this.jdField_a_of_type_Bcpq.c(true);
     }
     if (paramInt > 0) {
-      this.jdField_a_of_type_Bbms.c(paramInt);
+      this.jdField_a_of_type_Bcpq.c(paramInt);
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_Bbms != null) && (!this.jdField_a_of_type_Bbms.isShowing()) && (!isFinishing())) {
-        this.jdField_a_of_type_Bbms.show();
+      if ((this.jdField_a_of_type_Bcpq != null) && (!this.jdField_a_of_type_Bcpq.isShowing()) && (!isFinishing())) {
+        this.jdField_a_of_type_Bcpq.show();
       }
       return;
-      this.jdField_a_of_type_Bbms.c(2131629253);
+      this.jdField_a_of_type_Bcpq.c(2131694930);
     }
   }
   
@@ -49,21 +49,21 @@ public class SubAccountBaseActivity
       localObject = this;
     }
     d();
-    this.jdField_a_of_type_Bafb = babr.a(this, 230).setTitle(paramString1).setMessage(paramString2);
-    this.jdField_a_of_type_Bafb.setPositiveButton(2131625463, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_Bafb.setNegativeButton(2131625035, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_Bafb.setCancelable(false);
-    this.jdField_a_of_type_Bafb.show();
+    this.jdField_a_of_type_Bbgg = bbcv.a(this, 230).setTitle(paramString1).setMessage(paramString2);
+    this.jdField_a_of_type_Bbgg.setPositiveButton(2131691035, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_Bbgg.setNegativeButton(2131690596, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_Bbgg.setCancelable(false);
+    this.jdField_a_of_type_Bbgg.show();
   }
   
   public boolean a()
   {
-    return badq.d(BaseApplication.getContext());
+    return bbev.d(BaseApplication.getContext());
   }
   
   public void b(String paramString)
   {
-    bbmy.a(this, paramString, 0).b(getTitleBarHeight());
+    bcpw.a(this, paramString, 0).b(getTitleBarHeight());
   }
   
   public void b(String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
@@ -73,27 +73,27 @@ public class SubAccountBaseActivity
       localObject = this;
     }
     d();
-    this.jdField_a_of_type_Bafb = babr.a(this, 230).setTitle(paramString1).setMessage(paramString2);
-    this.jdField_a_of_type_Bafb.setPositiveButton(2131625463, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_Bafb.setCancelable(false);
-    this.jdField_a_of_type_Bafb.show();
+    this.jdField_a_of_type_Bbgg = bbcv.a(this, 230).setTitle(paramString1).setMessage(paramString2);
+    this.jdField_a_of_type_Bbgg.setPositiveButton(2131691035, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_Bbgg.setCancelable(false);
+    this.jdField_a_of_type_Bbgg.show();
   }
   
   public boolean b()
   {
     boolean bool = a();
     if (!bool) {
-      b(getString(2131626719));
+      b(getString(2131692321));
     }
     return bool;
   }
   
   public void c()
   {
-    if ((this.jdField_a_of_type_Bbms != null) && (this.jdField_a_of_type_Bbms.isShowing())) {}
+    if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bbms.dismiss();
+      this.jdField_a_of_type_Bcpq.dismiss();
       return;
     }
     catch (Exception localException) {}
@@ -101,17 +101,17 @@ public class SubAccountBaseActivity
   
   public void c(String paramString)
   {
-    bbmy.a(this, 2, paramString, 0).b(getTitleBarHeight());
+    bcpw.a(this, 2, paramString, 0).b(getTitleBarHeight());
   }
   
   public void d()
   {
-    if ((this.jdField_a_of_type_Bafb != null) && (this.jdField_a_of_type_Bafb.isShowing())) {}
+    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bafb.dismiss();
+      this.jdField_a_of_type_Bbgg.dismiss();
       label24:
-      this.jdField_a_of_type_Bafb = null;
+      this.jdField_a_of_type_Bbgg = null;
       return;
     }
     catch (Exception localException)
@@ -130,9 +130,9 @@ public class SubAccountBaseActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    axam localaxam = (axam)this.app.getManager(62);
-    if (localaxam != null) {
-      localaxam.a(this);
+    ayao localayao = (ayao)this.app.getManager(62);
+    if (localayao != null) {
+      localayao.a(this);
     }
   }
   

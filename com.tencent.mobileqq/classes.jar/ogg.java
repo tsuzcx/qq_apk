@@ -1,61 +1,91 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.hotpic.PublicAccountHotPicPanel;
 
 public class ogg
-  implements oqi
+  implements bfxd
 {
-  public ogg(KandianDailyManager paramKandianDailyManager) {}
+  public ogg(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  public View a(int paramInt)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)obz.a();
-    if (localQQAppInterface == null) {}
-    QQMessageFacade localQQMessageFacade;
-    MessageForStructing localMessageForStructing;
-    String str1;
-    String str2;
-    do
+    EmoticonMainPanel localEmoticonMainPanel = null;
+    if (paramInt == 3)
     {
-      do
+      if (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel == null)
       {
-        do
-        {
-          return;
-          localQQMessageFacade = localQQAppInterface.a();
-          localMessageForStructing = (MessageForStructing)localQQMessageFacade.b(ajed.aQ, 1008);
-        } while (localMessageForStructing == null);
-        if (!localMessageForStructing.mIsParsed) {
-          localMessageForStructing.parse();
-        }
-      } while (localMessageForStructing.structingMsg == null);
-      str1 = localMessageForStructing.getExtInfoFromExtStr("puin");
-      str2 = localMessageForStructing.structingMsg.mMsgBrief;
-    } while ((!localMessageForStructing.isread) || (TextUtils.isEmpty(str2)) || (!str2.contains(ReadInJoyUserInfoModule.a())) || (!TextUtils.equals(str1, paramString)));
-    localMessageForStructing.structingMsg.mMsgBrief = str2.replace(ReadInJoyUserInfoModule.a(), paramReadInJoyUserInfo.nick);
-    localMessageForStructing.createMessageUniseq();
-    localMessageForStructing.doPrewrite();
-    localQQMessageFacade.a(localMessageForStructing.frienduin, localMessageForStructing.istroop, localMessageForStructing.uniseq, localMessageForStructing.msgData);
-    paramReadInJoyUserInfo = localQQAppInterface.getHandler(Conversation.class);
-    if (paramReadInJoyUserInfo != null) {
-      paramReadInJoyUserInfo.sendEmptyMessage(1009);
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = ((EmoticonMainPanel)View.inflate(ReadInJoyCommentComponentFragment.a(this.a), 2131559018, null));
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.setCallBack(ReadInJoyCommentComponentFragment.a(this.a));
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.b = true;
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a(ReadInJoyCommentComponentFragment.a(this.a).app, 1008, ReadInJoyCommentComponentFragment.a(this.a), ReadInJoyCommentComponentFragment.a(this.a).getTitleBarHeight(), null, null);
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.s();
+      }
+      localEmoticonMainPanel = this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel;
     }
-    QLog.d("KandianDailyManager", 2, "update msg bref, uin : " + paramString + ", msg : " + localMessageForStructing);
+    while (paramInt != 24) {
+      return localEmoticonMainPanel;
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel == null)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel = ((PublicAccountHotPicPanel)View.inflate(ReadInJoyCommentComponentFragment.a(this.a), 2131559427, null));
+      this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.a(ReadInJoyCommentComponentFragment.a(this.a).app, ReadInJoyCommentComponentFragment.a(this.a), null, this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer);
+      this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.setPublicAccountGifListener(ReadInJoyCommentComponentFragment.a(this.a));
+    }
+    return this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel;
   }
   
-  public void a(String paramString1, String paramString2) {}
+  public void a(int paramInt1, int paramInt2)
+  {
+    boolean bool;
+    if ((paramInt1 == 24) && (this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel != null)) {
+      if (paramInt2 == 1)
+      {
+        bool = true;
+        this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.a(bool);
+        label34:
+        if (paramInt2 != 1) {
+          break label82;
+        }
+        ReadInJoyCommentComponentFragment.a(this.a, 1);
+      }
+    }
+    label82:
+    do
+    {
+      return;
+      bool = false;
+      break;
+      if ((paramInt2 != 24) || (this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel == null)) {
+        break label34;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.f();
+      break label34;
+      if (paramInt2 == 3)
+      {
+        ReadInJoyCommentComponentFragment.a(this.a, 2);
+        return;
+      }
+      if (paramInt2 == 0)
+      {
+        ReadInJoyCommentComponentFragment.a(this.a, 0);
+        return;
+      }
+    } while (paramInt2 != 24);
+    ReadInJoyCommentComponentFragment.a(this.a, 3);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return false;
+  }
+  
+  public void r() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ogg
  * JD-Core Version:    0.7.0.1
  */

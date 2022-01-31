@@ -1,104 +1,65 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiIncomingCallUICtr.3.1;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.text.TextUtils;
+import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecognizer;
+import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecognizerListener;
+import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecognizerResult;
+import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecordState;
 import com.tencent.qphone.base.util.QLog;
 
-public class ltt
-  extends kur
+class ltt
+  implements VoiceRecognizerListener
 {
   ltt(ltr paramltr) {}
   
-  protected void a(long paramLong, int paramInt)
+  public void onGetError(int paramInt)
   {
-    if (this.a.jdField_b_of_type_Boolean)
-    {
-      long l = AudioHelper.b();
-      if (QLog.isColorLevel()) {
-        QLog.w("MultiIncomingCallUICtr", 1, "onDestroyInviteUI, groupId[" + paramLong + "], mPeerUin[" + this.a.jdField_c_of_type_JavaLangString + "], seq[" + l + "]");
-      }
-      if ((this.a.jdField_c_of_type_JavaLangString != null) && (this.a.jdField_c_of_type_JavaLangString.equals(String.valueOf(paramLong))))
-      {
-        this.a.a(l, paramInt);
-        this.a.a();
-      }
+    QLog.d("AVVoiceRecog", 2, "onGetError. err = " + paramInt);
+  }
+  
+  public void onGetResult(VoiceRecognizerResult paramVoiceRecognizerResult)
+  {
+    if ((!ltr.a(this.a)) || (ltr.b(this.a))) {
+      QLog.i("AVVoiceRecog", 1, "onGetResult. discard. !mIsInitAndStart || mIsPause.");
     }
+    label162:
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiIncomingCallUICtr", 2, "onDestroyInviteUI, groupId:" + paramLong + ", reason:" + paramInt + ", mGroupId:" + this.a.jdField_a_of_type_Long);
-      }
       return;
-      if ((this.a.jdField_a_of_type_Long == paramLong) || (0L == paramLong)) {
-        this.a.a();
+      if (paramVoiceRecognizerResult.isHalf)
+      {
+        QLog.i("AVVoiceRecog", 1, "onGetResult. result.isHalf.");
+        return;
+      }
+      if (TextUtils.isEmpty(paramVoiceRecognizerResult.text)) {
+        QLog.i("AVVoiceRecog", 1, "onGetResult. result.text == null.");
+      }
+      for (;;)
+      {
+        if (!paramVoiceRecognizerResult.isEnd) {
+          break label162;
+        }
+        int i = VoiceRecognizer.shareInstance().startReceiving();
+        if (i >= 0) {
+          break;
+        }
+        QLog.i("AVVoiceRecog", 1, "restart falied. ret = " + i);
+        return;
+        QLog.i("AVVoiceRecog", 1, "onGetResult. result.text = " + paramVoiceRecognizerResult.text);
+        if (ltr.a(this.a) != null) {
+          ltr.a(this.a).a(paramVoiceRecognizerResult.text);
+        }
       }
     }
   }
   
-  protected void a(long paramLong1, long paramLong2)
+  public void onGetVoiceRecordState(VoiceRecordState paramVoiceRecordState)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiIncomingCallUICtr", 2, "onCreateRoomSuc-->GroupID=" + paramLong2);
-    }
-    this.a.jdField_a_of_type_Kvq.aj = true;
-    if (this.a.jdField_b_of_type_Int == 1) {
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramLong2);
-    }
+    QLog.d("AVVoiceRecog", 2, "onGetVoiceRecordState. state = " + paramVoiceRecordState);
   }
   
-  protected void a(long paramLong, String paramString)
+  public void onVolumeChanged(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MultiIncomingCallUICtr", 2, "notifyCloseGroupVideoInviteMsgBoxByInviteId-->GroupID=" + paramLong);
-    }
-    if ((this.a.jdField_a_of_type_Long == paramLong) && (this.a.e.equals(paramString))) {
-      this.a.a();
-    }
-  }
-  
-  protected void b(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("MultiIncomingCallUICtr", 1, "onEnterRoomSuc, groupId[" + paramLong2 + "], seq[" + paramLong1 + "]");
-    }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new MultiIncomingCallUICtr.3.1(this, paramLong2), 500L);
-    this.a.f();
-    loj.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(paramLong1, false);
-    if (this.a.jdField_a_of_type_Lzu != null) {
-      this.a.jdField_a_of_type_Lzu.c();
-    }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_c_of_type_JavaLangRunnable, 1000L);
-    miu.a().a(this.a.f);
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiIncomingCallUICtr.troopgroup_vedio.invite", 2, "groupId:" + paramLong1 + ", memUin:" + paramLong2 + ",invitedId:" + paramString + ", mInviterUin:" + this.a.jdField_b_of_type_Long + ", mGroupId:" + this.a.jdField_a_of_type_Long);
-    }
-    if ((paramLong2 == this.a.jdField_b_of_type_Long) && (paramLong1 == this.a.jdField_a_of_type_Long)) {
-      this.a.a();
-    }
-  }
-  
-  protected void e(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiIncomingCallUICtr", 2, "notifyCloseAllGroupVideoInviteMsgBox-->GroupID=" + paramLong);
-    }
-    if (this.a.jdField_a_of_type_Long != paramLong) {
-      this.a.b(0);
-    }
-    this.a.a();
-  }
-  
-  protected void f(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiIncomingCallUICtr", 2, "notifyCloseGroupVideoInviteMsgBox-->GroupID=" + paramLong);
-    }
-    if (this.a.jdField_a_of_type_Long == paramLong) {
-      this.a.a();
+      QLog.d("AVVoiceRecog", 2, "onVolumeChanged. volume = " + paramInt);
     }
   }
 }

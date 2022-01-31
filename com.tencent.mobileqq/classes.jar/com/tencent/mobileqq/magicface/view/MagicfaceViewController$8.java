@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.magicface.view;
 
-import arhw;
+import asdy;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class MagicfaceViewController$8
   implements Runnable
 {
-  public MagicfaceViewController$8(arhw paramarhw) {}
+  public MagicfaceViewController$8(asdy paramasdy) {}
   
   public void run()
   {

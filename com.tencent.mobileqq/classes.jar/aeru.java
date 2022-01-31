@@ -1,21 +1,29 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class aeru
-  implements View.OnTouchListener
+class aeru
+  extends ajxl
 {
-  public aeru(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  aeru(aerl paramaerl) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onAddFriend(String paramString)
   {
-    return (paramMotionEvent.getAction() == 2) && ((this.a.a == null) || (this.a.a.getCount() == 0));
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString))
+    {
+      Intent localIntent = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent();
+      localIntent.putExtra("uintype", 0);
+      aerl.b(this.a, localIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString + "Q.nearby.follow", 2, "onAddFriend, addUin:" + paramString + "|updateSession");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeru
  * JD-Core Version:    0.7.0.1
  */

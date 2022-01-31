@@ -1,46 +1,17 @@
-import com.tencent.mobileqq.activity.InterestSwitchEditActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.widget.AdapterView;
 
 public class aazn
-  extends ajfo
+  implements bfpc
 {
-  public aazn(InterestSwitchEditActivity paramInterestSwitchEditActivity) {}
+  public aazn(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  protected void onGetDetailInfo(boolean paramBoolean, String paramString, Card paramCard)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onGetDetailInfo, isSuccess=" + paramBoolean);
-      localStringBuilder.append("，" + paramString);
-      if (paramCard != null)
-      {
-        localStringBuilder.append("，" + paramCard.switch_interest);
-        localStringBuilder.append("，" + paramCard.switch_music);
-        localStringBuilder.append("，" + paramCard.isShowCard);
-        localStringBuilder.append("，" + paramCard.switch_disable_personality_label);
-        localStringBuilder.append("，" + paramCard.switch_miniapp);
-        localStringBuilder.append("，" + paramCard.switch_musicbox);
-      }
-      QLog.i("InterestSwitchEditActivity", 2, localStringBuilder.toString());
-    }
-    if (paramBoolean)
-    {
-      if ((this.a.app.getCurrentAccountUin().equals(paramString)) && (paramCard != null) && (-1 != paramCard.switch_interest) && (-1 != paramCard.switch_music) && (-1 != paramCard.switch_present) && (-1 != paramCard.switch_miniapp) && (-1 != paramCard.switch_musicbox))
-      {
-        InterestSwitchEditActivity.a(this.a, paramCard);
-        InterestSwitchEditActivity.a(this.a);
-        InterestSwitchEditActivity.b(this.a);
-      }
-      while (!QLog.isColorLevel()) {
-        return;
-      }
-      QLog.i("InterestSwitchEditActivity", 2, "suc but has invalidate value");
-      return;
-    }
-    bbmy.a(this.a, ajjy.a(2131640011), 0).b(this.a.getTitleBarHeight());
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a(paramView);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

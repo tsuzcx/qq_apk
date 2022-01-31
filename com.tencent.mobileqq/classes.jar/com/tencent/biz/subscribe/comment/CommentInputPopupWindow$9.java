@@ -1,18 +1,18 @@
 package com.tencent.biz.subscribe.comment;
 
 import android.widget.ImageButton;
-import vzs;
+import wne;
 
 public class CommentInputPopupWindow$9
   implements Runnable
 {
-  public CommentInputPopupWindow$9(vzs paramvzs) {}
+  public CommentInputPopupWindow$9(wne paramwne) {}
   
   public void run()
   {
-    vzs.b(this.this$0);
-    vzs.a(this.this$0).setVisibility(0);
-    vzs.b(this.this$0).setVisibility(8);
+    wne.b(this.this$0);
+    wne.a(this.this$0).setVisibility(0);
+    wne.b(this.this$0).setVisibility(8);
   }
 }
 

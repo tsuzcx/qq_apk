@@ -1,63 +1,59 @@
-import android.os.Process;
-import android.support.annotation.NonNull;
-import java.io.File;
+import com.tencent.aekit.openrender.internal.Frame;
 
 public class biut
 {
-  private static int a;
+  private int jdField_a_of_type_Int;
+  private bisd jdField_a_of_type_Bisd = new bisd();
+  private biuu jdField_a_of_type_Biuu;
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private boolean jdField_a_of_type_Boolean = true;
+  private int b;
   
-  public static String a(int paramInt)
+  public Frame a(Frame paramFrame, int paramInt1, int paramInt2)
   {
-    String str;
-    if (paramInt == 1)
+    Frame localFrame = paramFrame;
+    if (this.jdField_a_of_type_Boolean)
     {
-      bace.c(sfm.e + ".nomedia");
-      str = sfm.e + b(paramInt) + "/";
+      this.jdField_a_of_type_Bisd.a(paramFrame, paramInt1, paramInt2, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
+      localFrame = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
     }
-    for (;;)
-    {
-      a(str);
-      return str;
-      str = ajed.bl + "edit_video/business_" + paramInt + "/" + b(paramInt) + "/";
-      bace.c(str + ".nomedia");
+    if (this.jdField_a_of_type_Biuu != null) {
+      this.jdField_a_of_type_Biuu.a(localFrame);
+    }
+    return localFrame;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bisd.apply();
+    if (this.jdField_a_of_type_Biuu != null) {
+      this.jdField_a_of_type_Biuu.a();
     }
   }
   
-  @NonNull
-  public static String a(int paramInt, String paramString1, String paramString2)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (paramString1 == null) {
-      throw new IllegalArgumentException("folderPath should not be null");
-    }
-    String str = paramString1;
-    if (!paramString1.endsWith("/")) {
-      str = paramString1 + "/";
-    }
-    return str + System.currentTimeMillis() + "_" + b(paramInt) + paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  private static void a(String paramString)
+  public void a(biuu parambiuu)
   {
-    paramString = new File(paramString);
-    boolean bool;
-    if (paramString.isFile())
-    {
-      bool = paramString.delete();
-      urk.d("Q.qqstory.publish.edit.PublishFileManager", "delete file : " + bool);
-    }
-    if (!paramString.exists())
-    {
-      bool = paramString.mkdirs();
-      urk.d("Q.qqstory.publish.edit.PublishFileManager", "create folder : " + bool);
-    }
+    this.jdField_a_of_type_Biuu = parambiuu;
   }
   
-  private static String b(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("T").append(System.currentTimeMillis()).append("B").append(paramInt).append("P").append(Process.myPid()).append("T").append(Process.myTid()).append("I");
-    paramInt = a;
-    a = paramInt + 1;
-    return paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Bisd.ClearGLSL();
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    if (this.jdField_a_of_type_Biuu != null) {
+      this.jdField_a_of_type_Biuu.b();
+    }
   }
 }
 

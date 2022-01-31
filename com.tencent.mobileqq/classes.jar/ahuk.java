@@ -1,20 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahuk
-  implements DialogInterface.OnClickListener
+class ahuk
+  extends akup
 {
-  public ahuk(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  private int jdField_a_of_type_Int = -1;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ahuk(ahuh paramahuh, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, int paramInt2)
   {
-    ShortVideoPlayActivity.b(this.a);
+    super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.jdField_a_of_type_Int = paramInt2;
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      double d1 = paramSosoLbsInfo.a.a;
+      double d2 = paramSosoLbsInfo.a.b;
+      if (QLog.isColorLevel()) {
+        QLog.d("LBSDetetor", 2, "onLocationUpdate() latitude=" + d1 + " longitude=" + d2);
+      }
+      ahuh.a(this.jdField_a_of_type_Ahuh, d1, d2, this.jdField_a_of_type_Int);
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("LBSDetetor", 2, "onLocationUpdate() error");
+      }
+    } while ((ahuh.a(this.jdField_a_of_type_Ahuh) == null) || (!ahuh.a(this.jdField_a_of_type_Ahuh).hasMessages(this.jdField_a_of_type_Int)));
+    ahuh.a(this.jdField_a_of_type_Ahuh, false, null, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahuk
  * JD-Core Version:    0.7.0.1
  */

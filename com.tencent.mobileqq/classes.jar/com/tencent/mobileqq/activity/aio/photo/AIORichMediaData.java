@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import adya;
+import aeiz;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.io.File;
 public abstract class AIORichMediaData
   implements Parcelable
 {
-  public static final Parcelable.Creator<AIORichMediaData> CREATOR = new adya();
+  public static final Parcelable.Creator<AIORichMediaData> CREATOR = new aeiz();
   public int f;
   public long f;
   public int g;

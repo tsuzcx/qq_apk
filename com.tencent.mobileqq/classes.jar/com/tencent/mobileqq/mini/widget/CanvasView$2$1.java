@@ -226,7 +226,7 @@ class CanvasView$2$1
     //   450: invokevirtual 183	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
     //   453: astore 11
     //   455: aload 11
-    //   457: invokestatic 189	bace:a	(Ljava/lang/String;)Ljava/io/File;
+    //   457: invokestatic 189	bbdj:a	(Ljava/lang/String;)Ljava/io/File;
     //   460: astore 10
     //   462: new 191	java/io/FileOutputStream
     //   465: dup

@@ -1,56 +1,51 @@
-import android.text.TextUtils;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
 public class affz
+  extends afda
 {
-  public int a;
-  public Object a;
-  public String a;
-  public short a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public String e;
-  public boolean e;
-  
-  public boolean a()
+  public affz(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    boolean bool2;
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      bool2 = bool1;
-      if (bool1) {
-        bool2 = this.c;
-      }
-      if (!bool2) {
-        return bool2;
-      }
-      switch (this.jdField_a_of_type_Int)
-      {
-      default: 
-        if (this.jdField_a_of_type_Short == 0) {
-          break;
-        }
-      case 1: 
-      case 2: 
-      case 3: 
-      case 4: 
-      case 5: 
-        return true;
-      }
-    }
-    return false;
-    return bool2;
+    super(paramContext, paramQQAppInterface, paramBoolean);
+  }
+  
+  protected int a()
+  {
+    return 10028;
+  }
+  
+  protected void a(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.a(paramRecommendTroopItem);
+    axqw.b(null, "dc00899", "Grp_find_new", "", "grptab", "Clk_join", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int b()
+  {
+    return 21;
+  }
+  
+  protected void b(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.b(paramRecommendTroopItem);
+    axqw.b(null, "dc00899", "Grp_recom", "", "search", "recom_clk_add", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int c()
+  {
+    return 10003;
+  }
+  
+  protected void c(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.c(paramRecommendTroopItem);
+    axqw.b(null, "dc00899", "Grp_find_new", "", "grptab", "exp_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     affz
  * JD-Core Version:    0.7.0.1
  */

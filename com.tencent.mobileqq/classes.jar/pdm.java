@@ -1,11 +1,18 @@
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public class pdm
+class pdm
+  implements View.OnClickListener
 {
-  public void a(int paramInt, List<Long> paramList, long paramLong) {}
+  pdm(pdj parampdj, String paramString, ArticleInfo paramArticleInfo) {}
   
-  public void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg) {}
+  public void onClick(View paramView)
+  {
+    paramView = omm.g + bbca.encodeToString(this.jdField_a_of_type_JavaLangString.getBytes(), 2);
+    onk.a(pdj.a(this.jdField_a_of_type_Pdj), paramView);
+    pdj.a(this.jdField_a_of_type_Pdj, onk.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+  }
 }
 
 

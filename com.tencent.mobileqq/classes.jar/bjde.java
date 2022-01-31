@@ -1,22 +1,63 @@
-import android.view.SurfaceView;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-
-public class bjde
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract class bjde
+  extends bbwf
 {
-  public bjde(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public abstract void a(int paramInt);
   
-  public void onGlobalLayout()
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString, boolean paramBoolean);
+  
+  public abstract void a(String paramString, boolean paramBoolean, int paramInt);
+  
+  public void onCancel(bbwg parambbwg)
   {
-    this.a.f = this.a.a.getWidth();
-    this.a.g = this.a.a.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.f + ",mSurfaceViewHeight:" + this.a.g);
+    super.onCancel(parambbwg);
+    a(parambbwg.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onDone(bbwg parambbwg)
+  {
+    String str = parambbwg.jdField_a_of_type_JavaLangString;
+    if (parambbwg.a() == 3) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a(str, bool, parambbwg.jdField_a_of_type_Int);
+      return;
     }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+  }
+  
+  public void onNetMobile2None()
+  {
+    super.onNetMobile2None();
+    a(2);
+  }
+  
+  public void onNetWifi2Mobile()
+  {
+    super.onNetWifi2Mobile();
+    a(1);
+  }
+  
+  public void onNetWifi2None()
+  {
+    super.onNetWifi2None();
+    a(3);
+  }
+  
+  public void onProgress(bbwg parambbwg)
+  {
+    super.onProgress(parambbwg);
+    int i = (int)parambbwg.jdField_a_of_type_Float;
+    a(parambbwg.jdField_a_of_type_JavaLangString, i);
+  }
+  
+  public boolean onStart(bbwg parambbwg)
+  {
+    super.onStart(parambbwg);
+    a(parambbwg.jdField_a_of_type_JavaLangString, true);
+    return true;
   }
 }
 

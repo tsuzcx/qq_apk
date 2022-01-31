@@ -1,14 +1,20 @@
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import java.util.List;
 
-public class tws
+public abstract interface tws
 {
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public abstract List<twv> a(List<two> paramList);
   
-  public tws(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  @NonNull
+  public abstract twr a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt, twu paramtwu);
+  
+  public abstract boolean a(twp paramtwp);
+  
+  public abstract void b();
 }
 
 

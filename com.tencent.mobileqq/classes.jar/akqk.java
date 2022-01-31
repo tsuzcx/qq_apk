@@ -1,106 +1,64 @@
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.util.Pair;
 import java.util.HashMap;
+import java.util.Map;
 
-class akqk
-  implements ITransactionCallback
+public class akqk
 {
-  akqk(akqi paramakqi, aksh paramaksh, long paramLong) {}
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static Map<String, Pair<String, Integer>> jdField_a_of_type_JavaUtilMap;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public static int a(String paramString)
   {
-    String str = "";
-    for (;;)
+    return ((Integer)((Pair)jdField_a_of_type_JavaUtilMap.get(paramString)).second).intValue();
+  }
+  
+  public static String a(String paramString)
+  {
+    return (String)((Pair)jdField_a_of_type_JavaUtilMap.get(paramString)).first;
+  }
+  
+  public static Map<String, Pair<String, Integer>> a()
+  {
+    if (jdField_a_of_type_JavaUtilMap == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      synchronized (akqi.a(this.jdField_a_of_type_Akqi))
-      {
-        if (akqi.a(this.jdField_a_of_type_Akqi) != null)
-        {
-          int i = 0;
-          if (i < akqi.a(this.jdField_a_of_type_Akqi).size())
-          {
-            if (((akqn)akqi.a(this.jdField_a_of_type_Akqi).get(i)).jdField_a_of_type_Aksh.a.equals(this.jdField_a_of_type_Aksh.a))
-            {
-              paramArrayOfByte = ((akqn)akqi.a(this.jdField_a_of_type_Akqi).get(i)).jdField_a_of_type_Akql;
-              str = ((akqn)akqi.a(this.jdField_a_of_type_Akqi).get(i)).jdField_a_of_type_Aksh.a;
-              akqi.a(this.jdField_a_of_type_Akqi).remove(i);
-              QLog.i("AREngine_ARCloudFileUpload", 1, "Upload failed. retCode = " + paramInt + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str);
-              if (paramArrayOfByte != null) {
-                paramArrayOfByte.a(paramInt, str, null);
-              }
-              return;
-            }
-            i += 1;
-          }
-        }
+      if (jdField_a_of_type_JavaUtilMap == null) {
+        a();
       }
-      paramArrayOfByte = null;
+      return jdField_a_of_type_JavaUtilMap;
     }
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  private static void a()
   {
-    Object localObject2 = null;
-    String str2 = "";
-    Object localObject3 = akqi.a(this.jdField_a_of_type_Akqi);
-    String str1 = str2;
-    Object localObject1 = localObject2;
-    for (;;)
-    {
-      try
-      {
-        if (akqi.a(this.jdField_a_of_type_Akqi) != null)
-        {
-          i = 0;
-          str1 = str2;
-          localObject1 = localObject2;
-          if (i < akqi.a(this.jdField_a_of_type_Akqi).size())
-          {
-            if (!((akqn)akqi.a(this.jdField_a_of_type_Akqi).get(i)).jdField_a_of_type_Aksh.a.equals(this.jdField_a_of_type_Aksh.a)) {
-              continue;
-            }
-            localObject1 = ((akqn)akqi.a(this.jdField_a_of_type_Akqi).get(i)).jdField_a_of_type_Akql;
-            str1 = ((akqn)akqi.a(this.jdField_a_of_type_Akqi).get(i)).jdField_a_of_type_Aksh.a;
-            akqi.a(this.jdField_a_of_type_Akqi).remove(i);
-          }
-        }
-        paramArrayOfByte = akqi.a(this.jdField_a_of_type_Akqi, paramArrayOfByte, this.jdField_a_of_type_Aksh);
-        if (paramArrayOfByte == null)
-        {
-          QLog.i("AREngine_ARCloudFileUpload", 1, "Upload successfully. retCode = " + 9058 + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str1 + ". deserialize pb failed.");
-          i = 9058;
-          if (localObject1 != null) {
-            ((akql)localObject1).a(i, str1, paramArrayOfByte);
-          }
-          return;
-          i += 1;
-          continue;
-        }
-        QLog.i("AREngine_ARCloudFileUpload", 1, "Upload successfully. retCode = " + 0 + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str1);
-      }
-      finally {}
-      int i = 0;
-    }
-  }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart()
-  {
-    QLog.i("AREngine_ARCloudFileUpload", 1, "Upload start. sessionId = " + this.jdField_a_of_type_Aksh.a);
-  }
-  
-  public void onUpdateProgress(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARCloudFileUpload", 2, "onUpdateProgress. sessionId = " + this.jdField_a_of_type_Aksh.a + ". total size = " + this.jdField_a_of_type_Long + ", transfered size = " + paramInt);
-    }
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.GetMsgV4", Pair.create("accost_processor", Integer.valueOf(5002)));
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.GetMsgV2", Pair.create("accost_processor", Integer.valueOf(5002)));
+    jdField_a_of_type_JavaUtilMap.put("AccostSvc.SvrMsg", Pair.create("accost_processor", Integer.valueOf(5001)));
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew", Pair.create("system_processor", Integer.valueOf(6002)));
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew.Friend", Pair.create("system_processor", Integer.valueOf(6001)));
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew.Group", Pair.create("system_processor", Integer.valueOf(6003)));
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgRead", Pair.create("system_processor", Integer.valueOf(6006)));
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgAction", Pair.create("system_processor", Integer.valueOf(6007)));
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_0", Pair.create("system_processor", Integer.valueOf(6008)));
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_1", Pair.create("system_processor", Integer.valueOf(6009)));
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetOneDayRoamMsg", Pair.create("c2c_processor", Integer.valueOf(1003)));
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetRoamMsg", Pair.create("c2c_processor", Integer.valueOf(2001)));
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbSearchRoamMsgInCloud", Pair.create("c2c_processor", Integer.valueOf(2005)));
+    jdField_a_of_type_JavaUtilMap.put("TransService.ReqOffFilePack", Pair.create("offlinefile_processor", Integer.valueOf(7001)));
+    jdField_a_of_type_JavaUtilMap.put("OnlinePush.ReqPush", Pair.create("businessbase_processor", Integer.valueOf(3001)));
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbBindUinGetMsg", Pair.create("sub_account_processor", Integer.valueOf(4001)));
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbBindUinMsgReadedConfirm", Pair.create("sub_account_processor", Integer.valueOf(4002)));
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d0_1", Pair.create("sub_account_processor", Integer.valueOf(4003)));
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbMultiMsgSend", Pair.create("uncommon_msg_processor", Integer.valueOf(8001)));
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbMsgWithDraw", Pair.create("uncommon_msg_processor", Integer.valueOf(8002)));
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbDelOneRoamMsg", Pair.create("uncommon_msg_processor", Integer.valueOf(8003)));
+    jdField_a_of_type_JavaUtilMap.put("SecSvcBlessingHelper.blessing_helper", Pair.create("uncommon_msg_processor", Integer.valueOf(8004)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akqk
  * JD-Core Version:    0.7.0.1
  */

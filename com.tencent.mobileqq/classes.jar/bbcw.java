@@ -1,66 +1,50 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bbcw
-  extends bbcv
+final class bbcw
+  implements View.OnClickListener
 {
-  public bbcw(int paramInt)
-  {
-    super(paramInt);
-  }
+  bbcw(DialogInterface.OnClickListener paramOnClickListener1, Dialog paramDialog, DialogInterface.OnClickListener paramOnClickListener2) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    if (WebAccelerateHelper.preloadBrowserView == null)
-    {
-      WebAccelerateHelper.preInflaterBrowserView();
-      if (QLog.isColorLevel()) {
-        QLog.d("SwiftBrowserIdleTaskHelper", 2, "preloadBrowserView on idle.");
-      }
-    }
-    do
-    {
-      return 2;
-      if (SwiftReuseTouchWebView.b != 0) {
-        break;
-      }
-      SwiftReuseTouchWebView.a(BaseApplicationImpl.sApplication).a(true);
-    } while (!QLog.isColorLevel());
-    QLog.d("SwiftBrowserIdleTaskHelper", 2, "preload Webview on idle.");
-    return 2;
-    long l;
-    if (bbcs.a() < 5)
-    {
-      l = System.currentTimeMillis();
-      if (System.currentTimeMillis() > bbcs.a() + 10000L)
-      {
-        bbcs.a();
-        bbcs.b();
-        bbcs.a(l);
-        if (QLog.isColorLevel()) {
-          QLog.d("SwiftBrowserIdleTaskHelper", 2, "downloadX5KernelIfNeeded on idle.");
-        }
-      }
-    }
+    if (paramView.getId() == 2131365172) {}
     for (;;)
     {
-      return 1;
-      if (QLog.isColorLevel())
+      try
       {
-        QLog.d("SwiftBrowserIdleTaskHelper", 2, "not need check because time limit:" + l + " - " + bbcs.a() + " < 10s.");
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("SwiftBrowserIdleTaskHelper", 2, "not need check because count limit:" + bbcs.a() + ">=" + 5 + ".");
+        if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+          this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_AndroidAppDialog, 0);
         }
+        if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
+          this.jdField_a_of_type_AndroidAppDialog.dismiss();
+        }
+        return;
+      }
+      catch (Exception paramView) {}
+      if (paramView.getId() == 2131365178)
+      {
+        if (this.b != null) {
+          this.b.onClick(this.jdField_a_of_type_AndroidAppDialog, 1);
+        }
+        try
+        {
+          if (this.jdField_a_of_type_AndroidAppDialog.isShowing())
+          {
+            this.jdField_a_of_type_AndroidAppDialog.dismiss();
+            return;
+          }
+        }
+        catch (Exception paramView) {}
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbcw
  * JD-Core Version:    0.7.0.1
  */

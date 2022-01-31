@@ -1,54 +1,81 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import com.tencent.qphone.base.util.QLog;
 
-class asae
-  extends Handler
+public class asae
+  extends akim
 {
-  asae(asaa paramasaa, Looper paramLooper)
+  public asae(LoginWelcomeManager paramLoginWelcomeManager) {}
+  
+  protected void a(int paramInt1, int paramInt2)
   {
-    super(paramLooper);
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, String.format("onTroopManagerFailed result=%s", new Object[] { Integer.valueOf(paramInt2) }));
+    }
+    if (1 == paramInt1) {
+      bcpw.a(LoginWelcomeManager.a(this.a).getApp(), 4, 2131718741, 1).a();
+    }
+    LoginWelcomeManager.a(this.a).removeObserver(this);
+    this.a.b();
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    Object localObject = paramMessage.getData();
-    if (localObject != null) {}
-    for (localObject = ((Bundle)localObject).getString("BUNDLE_KEY_FILE_PATH");; localObject = null)
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, String.format("onTroopManagerSuccess result=%s troopUin=%s", new Object[] { Integer.valueOf(paramInt2), paramString }));
+    }
+    Bundle localBundle;
+    if (1 == paramInt1)
     {
-      paramMessage = (Bitmap)paramMessage.obj;
-      if ((paramMessage != null) && (localObject != null))
-      {
-        localObject = new File((String)localObject);
-        if (((File)localObject).exists()) {
-          ((File)localObject).delete();
-        }
+      bcpw.a(LoginWelcomeManager.a(this.a).getApp(), 5, 2131718742, 1).a();
+      localBundle = LoginWelcomeManager.a(this.a).getBundle("request");
+      localBundle.putString("uin", String.valueOf(paramString));
+      if (paramInt2 != 0) {
+        break label120;
       }
-      try
-      {
-        localObject = new FileOutputStream((File)localObject);
-        paramMessage.compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject);
-        ((FileOutputStream)localObject).flush();
-        ((FileOutputStream)localObject).close();
-        return;
+    }
+    label120:
+    for (paramInt1 = i;; paramInt1 = 0)
+    {
+      localBundle.putInt("result", paramInt1);
+      LoginWelcomeManager.a(this.a).removeObserver(this);
+      this.a.b();
+      return;
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  {
+    if (paramBoolean)
+    {
+      paramString = LoginWelcomeManager.a(this.a).getBundle("request");
+      paramString.putString("uin", String.valueOf(paramLong));
+      paramString.putShort("option", paramTroopInfo.cGroupOption);
+      paramString.putString("name", paramTroopInfo.troopname);
+      if ((paramTroopInfo.cGroupOption != 4) && (paramTroopInfo.cGroupOption != 5)) {
+        break label114;
       }
-      catch (Exception paramMessage)
-      {
-        paramMessage.printStackTrace();
-        return;
+      paramString.putString("answer", paramTroopInfo.joinTroopAnswer);
+      paramString.putString("question", paramTroopInfo.joinTroopQuestion);
+    }
+    for (;;)
+    {
+      this.a.b();
+      LoginWelcomeManager.a(this.a).removeObserver(this);
+      return;
+      label114:
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginWelcomeManager", 2, "onOIDB0X88D_1_Ret err");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asae
  * JD-Core Version:    0.7.0.1
  */

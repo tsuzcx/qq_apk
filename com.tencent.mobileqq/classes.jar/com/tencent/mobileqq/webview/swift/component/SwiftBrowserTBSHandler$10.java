@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.webview.swift.component;
 
 import android.text.TextUtils;
-import bbce;
-import bbcx;
-import bbcy;
+import bcfe;
+import bcfx;
+import bcfy;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.smtt.sdk.QbSdk;
 
 public class SwiftBrowserTBSHandler$10
   implements Runnable
 {
-  public SwiftBrowserTBSHandler$10(bbce parambbce, String paramString) {}
+  public SwiftBrowserTBSHandler$10(bcfe parambcfe, String paramString) {}
   
   public void run()
   {
@@ -18,16 +18,16 @@ public class SwiftBrowserTBSHandler$10
     {
       Object localObject2 = null;
       Object localObject1 = localObject2;
-      if (bbcx.a(this.a))
+      if (bcfx.a(this.a))
       {
-        bbcy localbbcy = bbcx.a(this.a);
+        bcfy localbcfy = bcfx.a(this.a);
         localObject1 = localObject2;
-        if (localbbcy != null) {
-          localObject1 = localbbcy.b;
+        if (localbcfy != null) {
+          localObject1 = localbcfy.b;
         }
       }
       if (!TextUtils.isEmpty(this.a)) {
-        bbce.a(this.this$0.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a, this.a, (String)localObject1);
+        bcfe.a(this.this$0.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a, this.a, (String)localObject1);
       }
     }
   }

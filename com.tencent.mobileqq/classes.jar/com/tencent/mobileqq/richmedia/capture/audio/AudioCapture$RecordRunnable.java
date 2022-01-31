@@ -2,9 +2,9 @@ package com.tencent.mobileqq.richmedia.capture.audio;
 
 import android.media.AudioRecord;
 import android.os.Process;
-import aush;
-import ausj;
-import auzm;
+import avrq;
+import avrs;
+import avzf;
 import com.tencent.qphone.base.util.QLog;
 
 class AudioCapture$RecordRunnable
@@ -87,8 +87,8 @@ class AudioCapture$RecordRunnable
       QLog.d("AudioCapture", 2, "RecordRunnable record run");
     }
     this.jdField_a_of_type_Boolean = true;
-    this.this$0.jdField_a_of_type_Ausj = new ausj(AudioCapture.a(this.this$0));
-    this.this$0.jdField_a_of_type_Ausj.a();
+    this.this$0.jdField_a_of_type_Avrs = new avrs(AudioCapture.a(this.this$0));
+    this.this$0.jdField_a_of_type_Avrs.a();
     int i = 0;
     label529:
     label544:
@@ -121,7 +121,7 @@ class AudioCapture$RecordRunnable
       catch (Exception localException1)
       {
         QLog.e("AudioCapture", 1, "audio, run exception: ", localException1);
-        this.this$0.jdField_a_of_type_Ausj.a();
+        this.this$0.jdField_a_of_type_Avrs.a();
         return;
       }
       QLog.d("AudioCapture", 2, "RecordRunnable exit, error param");
@@ -156,15 +156,15 @@ class AudioCapture$RecordRunnable
           j = this.this$0.a(this.this$0.b, i);
           this.this$0.a(this.this$0.b, i - j);
         }
-        this.this$0.jdField_a_of_type_Ausj.a();
-        if (this.this$0.jdField_a_of_type_Auzm != null) {
-          this.this$0.jdField_a_of_type_Auzm.c();
+        this.this$0.jdField_a_of_type_Avrs.a();
+        if (this.this$0.jdField_a_of_type_Avzf != null) {
+          this.this$0.jdField_a_of_type_Avzf.c();
         }
         if (QLog.isColorLevel()) {
           QLog.d("AudioCapture", 2, new Object[] { "audio, run out, isRecording:", Boolean.valueOf(this.jdField_a_of_type_Boolean), " mIsVoiceRecognizerStat:", Boolean.valueOf(AudioCapture.c(this.this$0)) });
         }
         if ((!this.jdField_a_of_type_Boolean) && (AudioCapture.a(this.this$0) != null)) {
-          AudioCapture.a(this.this$0).b(this.this$0.jdField_a_of_type_Ausj.b());
+          AudioCapture.a(this.this$0).b(this.this$0.jdField_a_of_type_Avrs.b());
         }
         AudioCapture.a(this.this$0);
         return;

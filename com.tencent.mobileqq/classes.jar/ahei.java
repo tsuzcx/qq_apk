@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
 public class ahei
+  implements View.OnClickListener
 {
-  public static aheg a(Object paramObject)
+  public ahei(DrawHbFragment paramDrawHbFragment) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramObject instanceof RecentBaseData)) {
-      return new ahej();
+    if (this.a.a != null) {
+      this.a.a.a(DrawHbFragment.a(this.a).getText().toString());
     }
-    return new aheh();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahei
  * JD-Core Version:    0.7.0.1
  */

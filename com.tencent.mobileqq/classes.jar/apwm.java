@@ -1,243 +1,157 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils.TruncateAt;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageSwitcher;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.FriendInfo;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.LabelInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.File;
+import mqq.app.MobileQQ;
 
-public class apwm
-  extends BaseAdapter
+class apwm
+  implements apwn
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  public List<FeedsItemData.LabelInfo> a;
-  private Map<String, Boolean> jdField_a_of_type_JavaUtilMap;
+  apwm(apwl paramapwl) {}
   
-  public apwm(List<FeedsItemData.LabelInfo> paramList, Context paramContext)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGamePubFeedsAdapter", 0, "[LabelsAdapter] set next image");
-    }
-    if (paramList == null) {}
-    for (this.jdField_a_of_type_JavaUtilList = new ArrayList();; this.jdField_a_of_type_JavaUtilList = paramList)
+    this.a.b(paramInt);
+    if (apwl.a(this.a) != null)
     {
-      this.jdField_a_of_type_JavaUtilMap = new HashMap();
-      this.jdField_a_of_type_AndroidContentContext = paramContext;
+      if (paramInt <= 100) {
+        break label45;
+      }
+      apwl.a(this.a).b(this.a.h(), paramBundle);
+    }
+    label45:
+    while (paramInt - this.a.g() <= 0) {
       return;
     }
+    this.a.a(paramInt);
+    apwl.a(this.a).b(paramInt, paramBundle);
   }
   
-  public int getCount()
+  public void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGamePubFeedsAdapter", 0, "[getView] set next image");
-    }
-    FeedsItemData.LabelInfo localLabelInfo = (FeedsItemData.LabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject1;
-    if (paramView == null)
+    this.a.c(5);
+    QQAppInterface localQQAppInterface = apcy.a().a();
+    if (localQQAppInterface != null)
     {
-      paramViewGroup = new apwl();
-      paramView = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-      localObject1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      ((RelativeLayout)localObject1).setId(2131302406);
-      Object localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(14);
-      ((RelativeLayout.LayoutParams)localObject2).topMargin = aciy.a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      ((RelativeLayout)localObject1).setPadding(aciy.a(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      Object localObject3 = new ImageSwitcher(this.jdField_a_of_type_AndroidContentContext);
-      ((ImageSwitcher)localObject3).setId(2131302287);
-      ((ImageSwitcher)localObject3).setFactory(new apwn(this));
-      Object localObject4 = new RelativeLayout.LayoutParams(aciy.a(30.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(30.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      ((RelativeLayout.LayoutParams)localObject4).addRule(9);
-      ((RelativeLayout)localObject1).addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
-      localObject4 = new ImageSwitcher(this.jdField_a_of_type_AndroidContentContext);
-      ((ImageSwitcher)localObject4).setFactory(new apwo(this));
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(aciy.a(30.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(30.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      localLayoutParams.addRule(5, ((ImageSwitcher)localObject3).getId());
-      localLayoutParams.leftMargin = aciy.a(22.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      ((RelativeLayout)localObject1).addView((View)localObject4, localLayoutParams);
-      paramView.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageSwitcher = ((ImageSwitcher)localObject3);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageSwitcher = ((ImageSwitcher)localObject4);
-      paramViewGroup.jdField_a_of_type_Apzd = new apzd(paramViewGroup.jdField_a_of_type_AndroidWidgetImageSwitcher, paramViewGroup.jdField_b_of_type_AndroidWidgetImageSwitcher);
-      localObject2 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      ((ImageView)localObject2).setId(2131302286);
-      localObject3 = new RelativeLayout.LayoutParams(aciy.a(34.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(32.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      ((RelativeLayout.LayoutParams)localObject3).addRule(14);
-      ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localObject2);
-      localObject3 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      ((TextView)localObject3).setSingleLine(true);
-      ((TextView)localObject3).setEllipsize(TextUtils.TruncateAt.END);
-      localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(14);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(3, ((RelativeLayout)localObject1).getId());
-      ((RelativeLayout.LayoutParams)localObject2).topMargin = aciy.a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      ((TextView)localObject3).setTextSize(12.0F);
-      ((TextView)localObject3).setTextColor(-14540254);
-      ((TextView)localObject3).setId(2131304981);
-      paramView.addView((View)localObject3, (ViewGroup.LayoutParams)localObject2);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject3);
-      localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      ((TextView)localObject2).setMaxLines(1);
-      ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
-      localObject4 = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject4).addRule(14);
-      ((RelativeLayout.LayoutParams)localObject4).addRule(3, ((TextView)localObject3).getId());
-      ((RelativeLayout.LayoutParams)localObject4).topMargin = aciy.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      ((TextView)localObject2).setTextColor(-2145246686);
-      ((TextView)localObject2).setTextSize(10.0F);
-      paramView.addView((View)localObject2, (ViewGroup.LayoutParams)localObject4);
-      localObject3 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      ((ImageView)localObject3).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849053));
-      localObject4 = new RelativeLayout.LayoutParams(aciy.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      ((RelativeLayout.LayoutParams)localObject4).addRule(7, ((RelativeLayout)localObject1).getId());
-      ((RelativeLayout.LayoutParams)localObject4).addRule(6, ((RelativeLayout)localObject1).getId());
-      paramView.addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject3);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localObject2);
-      paramView.setPadding(aciy.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      paramView.setTag(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      if (apyr.a(localLabelInfo.redInfo))
+      long l1 = -1L;
+      long l2 = -1L;
+      apwr localapwr = apwr.a(paramBundle);
+      if (localapwr != null)
       {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        if (!this.jdField_a_of_type_JavaUtilMap.containsKey(localLabelInfo.name))
-        {
-          this.jdField_a_of_type_JavaUtilMap.put(localLabelInfo.name, Boolean.valueOf(true));
-          localObject1 = new HashMap();
-          yez.a((Map)localObject1, localLabelInfo.msgId);
-          ((Map)localObject1).put(Integer.valueOf(2), localLabelInfo.msgId);
-          ((Map)localObject1).put(Integer.valueOf(3), localLabelInfo.reportId);
-          yez.a(aing.a(), "769", "205648", localLabelInfo.appId, "76903", "1", "160", (Map)localObject1);
-        }
+        l1 = localapwr.jdField_a_of_type_Long;
+        l2 = localapwr.b;
       }
-      if (!localLabelInfo.isFriend) {
-        break label1342;
-      }
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageSwitcher.setVisibility(0);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageSwitcher.setVisibility(0);
-      if ((localLabelInfo.friendList == null) || (localLabelInfo.friendList.size() <= 0)) {
-        break label1201;
-      }
+      apue.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", this.a.jdField_a_of_type_Long, "", "", "", "", paramInt, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
+      apue.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", this.a.jdField_a_of_type_Long, "", "", "", "", paramInt, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
+      axrk.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-0");
     }
     for (;;)
     {
-      try
+      if (apwl.a(this.a) != null) {
+        apwl.a(this.a).a(paramInt, paramString, paramBundle);
+      }
+      return;
+      QLog.w(apwl.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 6");
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (apwl.a(this.a) != null) {
+      apwl.a(this.a).a(this.a.h(), null);
+    }
+  }
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    QLog.i(apwl.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "] >>>>>>Download SUCCESS. sdk download path=" + paramString);
+    this.a.c(4);
+    if (paramString == null)
+    {
+      QLog.e(apwl.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. download success, but filepath = null");
+      a(40, apwh.a(40), paramBundle);
+    }
+    label783:
+    label821:
+    for (;;)
+    {
+      return;
+      if (bbdj.a(this.a.e)) {
+        this.a.e = apue.b(this.a.e);
+      }
+      QLog.i(apwl.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. try to rename file to path:" + this.a.e);
+      Object localObject;
+      if (!bbdj.b(new File(paramString), new File(this.a.e)))
       {
-        if (localLabelInfo.friendList.size() < 2) {
-          continue;
-        }
-        localObject1 = URLDrawable.getDrawable(((FeedsItemData.FriendInfo)localLabelInfo.friendList.get(0)).icon);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageSwitcher.setImageDrawable((Drawable)localObject1);
-        localObject1 = URLDrawable.getDrawable(((FeedsItemData.FriendInfo)localLabelInfo.friendList.get(1)).icon);
-        paramViewGroup.jdField_b_of_type_AndroidWidgetImageSwitcher.setImageDrawable((Drawable)localObject1);
-        if (localLabelInfo.friendList.size() >= 4)
+        QLog.e(apwl.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].rename failed. temppath=" + paramString + " save path=" + this.a.e);
+        localObject = apvb.c(paramString);
+        if (!apue.b().equalsIgnoreCase((String)localObject))
         {
-          localObject1 = new ArrayList();
-          paramInt = 0;
-          if (paramInt < localLabelInfo.friendList.size())
-          {
-            ((List)localObject1).add(((FeedsItemData.FriendInfo)localLabelInfo.friendList.get(paramInt)).icon);
-            paramInt += 1;
-            continue;
-            paramViewGroup = (apwl)paramView.getTag();
-            break;
+          String str = (String)localObject + this.a.d;
+          localObject = str;
+          if (bbdj.a(str)) {
+            localObject = apue.b(str);
           }
-          paramViewGroup.jdField_a_of_type_Apzd.a((List)localObject1);
+          QLog.i(apwl.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed, try to save file to path: " + (String)localObject);
+          if (!bbdj.b(new File(paramString), new File((String)localObject)))
+          {
+            QLog.e(apwl.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed, try failed save path: " + (String)localObject);
+            a(7, apwh.a(7), paramBundle);
+            return;
+          }
+          this.a.e = ((String)localObject);
         }
       }
-      catch (Exception localException1)
+      else
       {
-        label1201:
-        QLog.e("QQGamePubFeedsAdapter", 1, "[TopCardVH] initView error." + localException1);
-        continue;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131644531));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(ajjy.a(2131644526) + localLabelInfo.friendNum + ajjy.a(2131644518));
-      return paramView;
-      localObject1 = URLDrawable.getDrawable(((FeedsItemData.FriendInfo)localLabelInfo.friendList.get(0)).icon);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageSwitcher.setVisibility(0);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageSwitcher.setImageDrawable((Drawable)localObject1);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageSwitcher.setVisibility(8);
-    }
-    try
-    {
-      label1342:
-      URLDrawable localURLDrawable;
-      if ((localLabelInfo.icons != null) && (localLabelInfo.icons.size() > 0))
-      {
-        if (localLabelInfo.icons.size() < 2) {
-          break label1509;
+        QLog.i(apwl.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename file success. path:" + this.a.e);
+        paramString = apcy.a().a();
+        if (paramString == null) {
+          break label783;
         }
-        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageSwitcher.setVisibility(0);
-        paramViewGroup.jdField_b_of_type_AndroidWidgetImageSwitcher.setVisibility(0);
-        localURLDrawable = URLDrawable.getDrawable((String)localLabelInfo.icons.get(0));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageSwitcher.setImageDrawable(localURLDrawable);
-        localURLDrawable = URLDrawable.getDrawable((String)localLabelInfo.icons.get(1));
-        paramViewGroup.jdField_b_of_type_AndroidWidgetImageSwitcher.setImageDrawable(localURLDrawable);
-        if (localLabelInfo.icons.size() >= 4) {
-          paramViewGroup.jdField_a_of_type_Apzd.a(localLabelInfo.icons);
+        long l1 = -1L;
+        long l2 = -1L;
+        localObject = apwr.a(paramBundle);
+        if (localObject == null) {
+          break label743;
         }
+        l1 = ((apwr)localObject).jdField_a_of_type_Long;
+        l2 = ((apwr)localObject).b;
+        apue.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, 0, null);
+        apue.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, 0, null);
+        axrk.a(paramString.getApplication().getApplicationContext(), paramString.getCurrentAccountUin(), "Complete_download_2_0");
       }
       for (;;)
       {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localLabelInfo.name);
-        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localLabelInfo.desc);
-        return paramView;
-        label1509:
-        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageSwitcher.setVisibility(8);
-        paramViewGroup.jdField_b_of_type_AndroidWidgetImageSwitcher.setVisibility(8);
-        localURLDrawable = URLDrawable.getDrawable((String)localLabelInfo.icons.get(0));
-        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
-      }
-    }
-    catch (Exception localException2)
-    {
-      for (;;)
-      {
-        QLog.e("QQGamePubFeedsAdapter", 1, "[TopCardVH] initView error." + localException2);
+        if (apwl.a(this.a) == null) {
+          break label821;
+        }
+        apwl.a(this.a).a(this.a.e, this.a.b, paramBundle);
+        return;
+        QLog.e(apwl.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed 2, try failed save path: " + paramString);
+        a(7, apwh.a(7), paramBundle);
+        return;
+        label743:
+        QLog.w(apwl.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report may failed - 0");
+        break;
+        QLog.i(apwl.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 7");
       }
     }
   }
+  
+  public void b(Bundle paramBundle)
+  {
+    this.a.c(3);
+    if (apwl.a(this.a) != null) {
+      apwl.a(this.a).c(this.a.h(), null);
+    }
+  }
+  
+  public void c(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apwm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,63 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class vox
-  extends Drawable
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
-  private int b;
+  public Drawable a;
+  public String a;
+  public voy a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public vox(int paramInt1, int paramInt2)
+  public vox()
   {
-    this(null, paramInt1, paramInt2);
+    this.jdField_a_of_type_Voy = new voy();
   }
   
-  public vox(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  public boolean a()
   {
-    urk.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable.");
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    setBounds(0, 0, paramInt1, paramInt2);
-    if (paramBitmap == null) {}
-    for (this.jdField_a_of_type_AndroidGraphicsBitmap = bacm.a();; this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap)
-    {
-      this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(paramInt1 / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), paramInt2 / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-      return;
+    if (this.jdField_a_of_type_Voy == null) {
+      this.jdField_a_of_type_Voy = new voy();
     }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(this.e);
+      int i = localJSONObject.getInt("align");
+      Object localObject = localJSONObject.getJSONArray("picture_margin");
+      int j = ((JSONArray)localObject).getInt(0);
+      int k = ((JSONArray)localObject).getInt(1);
+      int m = ((JSONArray)localObject).getInt(2);
+      int n = ((JSONArray)localObject).getInt(3);
+      localObject = localJSONObject.getString("text_color");
+      int i1 = localJSONObject.getInt("text_size");
+      int i2 = localJSONObject.getInt("picture_width");
+      int i3 = localJSONObject.getInt("picture_height");
+      int i4 = localJSONObject.getInt("standard_width");
+      int i5 = localJSONObject.getInt("standard_height");
+      this.jdField_a_of_type_Voy.jdField_a_of_type_Int = i;
+      this.jdField_a_of_type_Voy.jdField_a_of_type_ArrayOfInt = new int[] { j, k, m, n };
+      this.jdField_a_of_type_Voy.jdField_a_of_type_JavaLangString = ((String)localObject);
+      this.jdField_a_of_type_Voy.b = i1;
+      this.jdField_a_of_type_Voy.c = i2;
+      this.jdField_a_of_type_Voy.d = i3;
+      this.jdField_a_of_type_Voy.e = i4;
+      this.jdField_a_of_type_Voy.f = i5;
+      return true;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return false;
   }
   
-  public void a(Bitmap paramBitmap)
+  public String toString()
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(this.jdField_a_of_type_Int / paramBitmap.getWidth(), this.b / paramBitmap.getHeight());
+    return "Item{thumbUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", name='" + this.b + '\'' + ", desc='" + this.c + '\'' + ", imageUrl='" + this.d + '\'' + ", imageDrawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + ", layoutJson='" + this.e + '\'' + ", params=" + this.jdField_a_of_type_Voy + '}';
   }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    urk.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable draw start.");
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
-    urk.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable draw end.");
-  }
-  
-  public int getOpacity()
-  {
-    return 0;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

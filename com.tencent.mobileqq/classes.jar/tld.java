@@ -1,19 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class tld
-  implements Animation.AnimationListener
+public class tld
+  extends ssk
 {
-  tld(tla paramtla) {}
+  public final String a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public tld(ErrorMessage paramErrorMessage, String paramString)
   {
-    this.a.dismiss();
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String toString()
+  {
+    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + "} ";
+  }
 }
 
 

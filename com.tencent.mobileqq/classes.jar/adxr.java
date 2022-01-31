@@ -1,51 +1,45 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import com.tencent.qphone.base.util.QLog;
 
 public class adxr
-  extends atqo
+  extends adxt
 {
-  public adxr(AIOImageProviderService paramAIOImageProviderService, long paramLong1, int paramInt1, int paramInt2, long paramLong2, String paramString) {}
+  public adxr(QQStoryItemBuilder paramQQStoryItemBuilder) {}
   
-  public void a(int paramInt, atpw paramatpw)
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Adyh;
-    if (localObject != null)
-    {
-      if (paramatpw.jdField_a_of_type_Int != 0) {
-        break label139;
-      }
-      ((adyh)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramatpw.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.i("QQStoryItemBuilder", 2, "get video download finish,vid=" + paramString1);
     }
-    for (;;)
+    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {}
+    do
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Adxu;
-      if (localObject != null)
-      {
-        if (paramatpw.jdField_a_of_type_Int != 0) {
-          break;
-        }
-        ((adxu)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramatpw.jdField_a_of_type_Boolean);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      }
       return;
-      label139:
-      ((adyh)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramatpw.jdField_a_of_type_Atpr.jdField_a_of_type_JavaLangString + ", desc:" + paramatpw.jdField_a_of_type_Atpr.b, paramatpw.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
-    }
-    ((adxu)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramatpw.jdField_a_of_type_Atpr.jdField_a_of_type_JavaLangString + ", desc:" + paramatpw.jdField_a_of_type_Atpr.b, paramatpw.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
+      paramString1 = ((tcz)tdc.a(5)).a(paramString1);
+      if (paramString1 != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("QQStoryItemBuilder", 2, "get video download finish, storyVideoItem == null");
+    return;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Adxu, this.jdField_a_of_type_Long, paramString1, false);
   }
   
-  public void a_(int paramInt, boolean paramBoolean)
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Adyh;
-    if (localObject != null) {
-      ((adyh)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.e("QQStoryItemBuilder", 2, "Download video failed,vid=" + paramString1);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Adxu;
-    if (localObject != null) {
-      ((adxu)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Adxu, this.jdField_a_of_type_Long);
+  }
+  
+  public void b(String paramString1, String paramString2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("QQStoryItemBuilder", 2, "Download video onPause,vid=" + paramString1);
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Adxu, this.jdField_a_of_type_Long);
   }
 }
 

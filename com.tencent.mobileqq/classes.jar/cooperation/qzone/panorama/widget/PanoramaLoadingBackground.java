@@ -63,7 +63,7 @@ public class PanoramaLoadingBackground
   {
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.d = paramContext.getResources().getColor(2131099748);
+    this.d = paramContext.getResources().getColor(2131165285);
   }
   
   private void a(Canvas paramCanvas)

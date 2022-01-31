@@ -1,27 +1,53 @@
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter;
+import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
+import com.tencent.widget.GridView;
+import java.util.Collection;
+import java.util.Map;
+
 public class atqr
+  extends AvatarWallPagerAdapter<GridView>
 {
-  public int a;
-  public long a;
-  public Object a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
+  protected LinearLayout.LayoutParams a;
   
-  public String toString()
+  public atqr(atpi paramatpi, AvatarWallViewPager paramAvatarWallViewPager)
   {
-    return "SendResult{result=" + this.jdField_a_of_type_Int + ", errCode=" + this.jdField_b_of_type_Int + ", errStr='" + this.jdField_a_of_type_JavaLangString + '\'' + ", path='" + this.jdField_b_of_type_JavaLangString + '\'' + ", size=" + this.jdField_a_of_type_Long + ", uuid='" + this.jdField_c_of_type_JavaLangString + '\'' + ", md5='" + this.jdField_d_of_type_JavaLangString + '\'' + ", groupFileID=" + this.jdField_b_of_type_Long + ", thumbFileSize=" + this.jdField_c_of_type_Long + ", videoAttr=" + this.jdField_c_of_type_Int + ", videoKandianType=" + this.jdField_d_of_type_Int + '}';
+    super(paramAvatarWallViewPager);
+  }
+  
+  public View a(int paramInt, GridView paramGridView)
+  {
+    return atpi.a(this.jdField_a_of_type_Atpi, atpi.a(this.jdField_a_of_type_Atpi), paramInt);
+  }
+  
+  public View a(boolean paramBoolean, int paramInt)
+  {
+    View localView = new View(this.jdField_a_of_type_Atpi.jdField_a_of_type_AndroidContentContext);
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(vzo.a(this.jdField_a_of_type_Atpi.jdField_a_of_type_AndroidContentContext, 30.0F), vzo.a(this.jdField_a_of_type_Atpi.jdField_a_of_type_AndroidContentContext, 1.5F));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = vzo.a(this.jdField_a_of_type_Atpi.jdField_a_of_type_AndroidContentContext, 2.0F);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.rightMargin = vzo.a(this.jdField_a_of_type_Atpi.jdField_a_of_type_AndroidContentContext, 2.0F);
+    }
+    localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
+    if (paramBoolean)
+    {
+      localView.setBackgroundColor(-1);
+      return localView;
+    }
+    localView.setBackgroundColor(1728053247);
+    return localView;
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    this.jdField_a_of_type_Atpi.jdField_a_of_type_JavaUtilMap.values().remove(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.share;
 
-import aciy;
+import actn;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,8 +12,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
-import avgx;
-import bivd;
+import awgq;
+import bklp;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -27,7 +27,7 @@ import java.util.List;
 
 public class MiniShareQuicklySendPanelFragment
   extends PublicBaseFragment
-  implements View.OnClickListener, bivd
+  implements View.OnClickListener, bklp
 {
   public static final int QUCIKLY_SHARE_REQUEST_CODE = 678;
   public static final String TAG = MiniShareQuicklySendPanelFragment.class.getSimpleName();
@@ -39,7 +39,7 @@ public class MiniShareQuicklySendPanelFragment
   private boolean isCallback;
   private boolean isShowedPanel;
   private XListView listView;
-  private avgx mHelper;
+  private awgq mHelper;
   private View mRootView;
   private Handler mainHandler;
   private boolean needShareCallback;
@@ -55,15 +55,15 @@ public class MiniShareQuicklySendPanelFragment
   private View getBottomView()
   {
     View localView = new View(getActivity());
-    localView.setLayoutParams(new AbsListView.LayoutParams(-1, aciy.a(130.0F, getResources())));
-    localView.setBackgroundResource(2130849004);
+    localView.setLayoutParams(new AbsListView.LayoutParams(-1, actn.a(130.0F, getResources())));
+    localView.setBackgroundResource(2130849239);
     return localView;
   }
   
   private void initData()
   {
     Bundle localBundle = getActivity().getIntent().getExtras();
-    this.mHelper = new avgx();
+    this.mHelper = new awgq();
     List localList = this.mHelper.a(getActivity(), getActivity().app);
     if (localBundle != null)
     {
@@ -136,7 +136,7 @@ public class MiniShareQuicklySendPanelFragment
   public void displayPanelFinish()
   {
     if (this.arrowView != null) {
-      this.arrowView.setBackgroundResource(2130848379);
+      this.arrowView.setBackgroundResource(2130848611);
     }
   }
   
@@ -163,7 +163,7 @@ public class MiniShareQuicklySendPanelFragment
   public void hidePanelFinish()
   {
     if (this.arrowView != null) {
-      this.arrowView.setBackgroundResource(2130848378);
+      this.arrowView.setBackgroundResource(2130848610);
     }
   }
   
@@ -217,16 +217,16 @@ public class MiniShareQuicklySendPanelFragment
       return null;
     }
     this.mainHandler = new Handler(Looper.getMainLooper());
-    this.mRootView = paramLayoutInflater.inflate(2131496828, paramViewGroup, false);
-    this.slidePanel = ((SlideBottomPanel)this.mRootView.findViewById(2131310478));
-    this.contentView = this.mRootView.findViewById(2131299161);
-    this.listView = ((XListView)this.mRootView.findViewById(2131303596));
-    this.footerView = this.mRootView.findViewById(2131310099);
-    this.backgroundView = this.mRootView.findViewById(2131297459);
-    this.arrowView = ((ImageView)this.mRootView.findViewById(2131311819));
+    this.mRootView = paramLayoutInflater.inflate(2131562428, paramViewGroup, false);
+    this.slidePanel = ((SlideBottomPanel)this.mRootView.findViewById(2131376270));
+    this.contentView = this.mRootView.findViewById(2131364722);
+    this.listView = ((XListView)this.mRootView.findViewById(2131369266));
+    this.footerView = this.mRootView.findViewById(2131375863);
+    this.backgroundView = this.mRootView.findViewById(2131362999);
+    this.arrowView = ((ImageView)this.mRootView.findViewById(2131377634));
     this.listView.addFooterView(getBottomView());
     this.slidePanel.setSlidePanelListener(this);
-    this.footerView.findViewById(2131310066).setOnClickListener(this);
+    this.footerView.findViewById(2131375830).setOnClickListener(this);
     initData();
     return this.mRootView;
   }

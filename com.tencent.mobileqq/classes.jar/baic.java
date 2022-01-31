@@ -1,343 +1,292 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import android.util.SparseArray;
+import android.util.SparseIntArray;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.utils.ShareMsgHelper.1;
-import com.tencent.mobileqq.utils.ShareMsgHelper.2;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import mqq.manager.Manager;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class baic
-  implements ajed
+  implements Manager
 {
-  public static MessageRecord a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, AbsStructMsg paramAbsStructMsg)
+  public static final String a;
+  private static final String[] a;
+  private static final String[] b = { "", ajyc.a(2131713567), ajyc.a(2131713563) };
+  protected SparseArray<String[]> a;
+  protected final QQAppInterface a;
+  protected LinkedHashMap<String, baid> a;
+  
+  static
   {
-    String str = null;
-    switch (paramInt)
-    {
-    default: 
-      paramQQAppInterface = str;
+    jdField_a_of_type_JavaLangString = ".troop.school_troop." + baic.class.getSimpleName();
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "", ajyc.a(2131713564), ajyc.a(2131713566) };
+  }
+  
+  public baic(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    a();
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      return "";
     }
-    for (;;)
+    if (paramString1.length() <= 0) {
+      return "";
+    }
+    String str = paramString2;
+    if (paramString2 == null) {
+      str = "";
+    }
+    paramString2 = new StringBuilder();
+    int k = paramString1.length();
+    int i = 0;
+    if (i < k)
     {
-      return paramQQAppInterface;
-      try
+      int m = paramString1.codePointAt(i);
+      if (ayjw.a.get(m, -1) != -1)
       {
-        str = paramQQAppInterface.getCurrentAccountUin();
-        int i = avys.a;
-        avys.a = i + 1;
-        paramString = awbi.a(paramQQAppInterface, str, paramString, str, paramInt, i, paramAbsStructMsg);
-        acvh.a().a(paramString.uniseq, 0L, paramAbsStructMsg.forwardID);
-        paramQQAppInterface.a().a(paramString, 0);
-        paramQQAppInterface = paramString;
-      }
-      finally {}
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, AbsStructMsg paramAbsStructMsg, ajfe paramajfe)
-  {
-    if (paramAbsStructMsg != null) {
-      awqf.a(paramAbsStructMsg);
-    }
-    ThreadManager.post(new ShareMsgHelper.1(paramQQAppInterface, paramString, paramInt, paramAbsStructMsg, paramajfe), 8, null, false);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, AbsStructMsg paramAbsStructMsg, ajfe paramajfe, String paramString2, String paramString3)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    int i = avys.a;
-    avys.a = i + 1;
-    long l = i;
-    if (TextUtils.isEmpty(paramString1)) {}
-    for (paramajfe = str;; paramajfe = paramString1)
-    {
-      paramAbsStructMsg = awbi.a(paramQQAppInterface, str, paramString1, paramajfe, paramInt, l, paramAbsStructMsg);
-      QLog.i(axdz.i, 1, "sendDocsStructingMsg. disUin = " + paramString1 + ", disUinType = " + paramInt + ", seq = " + l + ", shmsgseq = " + paramAbsStructMsg.shmsgseq + ", time = " + paramAbsStructMsg.time);
-      paramQQAppInterface.a().a(paramAbsStructMsg, null);
-      if ((paramInt != 0) && (paramInt != 1)) {
-        break;
-      }
-      axfs.a(paramQQAppInterface, paramString1, paramInt, paramAbsStructMsg.shmsgseq, paramAbsStructMsg.time + 1L, paramString2, paramString3);
-      return;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, AbsStructMsg paramAbsStructMsg, ajfe paramajfe)
-  {
-    if (paramAbsStructMsg != null) {
-      awqf.a(paramAbsStructMsg);
-    }
-    ThreadManager.getSubThreadHandler().post(new ShareMsgHelper.2(paramQQAppInterface, paramString1, paramString2, paramInt, paramAbsStructMsg, paramajfe));
-  }
-  
-  public static boolean a(Context paramContext, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, Intent paramIntent, int paramInt3)
-  {
-    return a(paramContext, paramInt1, paramInt2, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13, paramString14, paramString15, paramString16, paramString17, "", paramIntent, paramInt3, null, -1L);
-  }
-  
-  public static boolean a(Context paramContext, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, String paramString18)
-  {
-    return a(paramContext, paramInt1, paramInt2, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13, paramString14, paramString15, paramString16, paramString17, "", null, -1, paramString18, -1L);
-  }
-  
-  public static boolean a(Context paramContext, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, String paramString18, Intent paramIntent, int paramInt3, String paramString19, long paramLong)
-  {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null)
-    {
-      localIntent = new Intent();
-      localIntent.putExtra("key_flag_from_plugin", true);
-      localIntent.setClass(paramContext, ForwardRecentActivity.class);
-    }
-    localIntent.putExtra("isFromShare", true);
-    localIntent.putExtra("forward_type", paramInt1);
-    localIntent.putExtra("pluginName", paramString1);
-    localIntent.putExtra("req_type", paramInt2);
-    localIntent.putExtra("detail_url", paramString7);
-    localIntent.putExtra("image_url_remote", paramString3);
-    localIntent.putExtra("source_url", paramString19);
-    if (paramLong != -1L) {
-      localIntent.putExtra("req_share_id", paramLong);
-    }
-    localIntent.putExtra("pubUin", paramString2);
-    localIntent.putExtra("struct_uin", paramString2);
-    if ((paramContext instanceof bazk))
-    {
-      paramString2 = ((bazk)paramContext).b();
-      if (paramString2 != null)
-      {
-        localIntent.putExtra("strurt_msgid", paramString2.k);
-        localIntent.putExtra("emoInputType", 1);
-        localIntent.putExtra("forward _key_nojump", true);
-      }
-    }
-    if ((paramInt2 == 44) || (paramInt2 == 1) || (paramInt2 == 95)) {
-      localIntent.putExtra("forward _key_nojump", true);
-    }
-    paramString2 = paramString4;
-    if (paramString4 != null)
-    {
-      paramString2 = paramString4;
-      if (paramString4.length() > 45) {
-        paramString2 = paramString4.substring(0, 45) + "…";
-      }
-    }
-    localIntent.putExtra("title", paramString2);
-    paramString2 = paramString5;
-    if (paramString5 != null)
-    {
-      paramString2 = paramString5;
-      if (paramString5.length() > 60) {
-        paramString2 = paramString5.substring(0, 60) + "…";
-      }
-    }
-    localIntent.putExtra("desc", paramString2);
-    localIntent.putExtra("forward_thumb", paramString18);
-    localIntent.putExtra("struct_share_key_content_action", paramString8);
-    localIntent.putExtra("struct_share_key_content_a_action_DATA", paramString10);
-    localIntent.putExtra("struct_share_key_content_i_action_DATA", paramString11);
-    localIntent.putExtra("struct_share_key_content_action_DATA", paramString9);
-    localIntent.putExtra("req_share_id", -1L);
-    localIntent.putExtra("struct_share_key_source_action", paramString12);
-    localIntent.putExtra("struct_share_key_source_action_data", paramString13);
-    localIntent.putExtra("struct_share_key_source_a_action_data", paramString14);
-    localIntent.putExtra("struct_share_key_source_i_action_data", paramString15);
-    localIntent.putExtra("struct_share_key_source_icon", paramString16);
-    localIntent.putExtra("app_name", paramString17);
-    localIntent.putExtra("brief_key", paramString6);
-    if ("struct_favorite".equals(paramString1))
-    {
-      localIntent.putExtra("k_favorites", false);
-      localIntent.putExtra("forward _key_nojump", true);
-    }
-    paramString1 = awuw.a(localIntent.getExtras());
-    if (paramString1 != null)
-    {
-      localIntent.putExtra("stuctmsg_bytes", paramString1.getBytes());
-      if ((paramInt3 >= 0) && ((paramContext instanceof Activity))) {
-        ((Activity)paramContext).startActivityForResult(localIntent, paramInt3);
+        int j = i;
+        if (m > 65535) {
+          j = i + 1;
+        }
+        paramString2.append(str);
+        i = j;
       }
       for (;;)
       {
-        return true;
-        if (((1001 == paramInt1) || (38 == paramInt1)) && ((paramContext instanceof bazk)))
+        i += 1;
+        break;
+        if (m == 20)
         {
-          paramString1 = ((bazk)paramContext).b();
-          if (paramString1 != null)
-          {
-            localIntent.putExtra("strurt_msgid", paramString1.k);
-            localIntent.putExtra("struct_uin", paramString1.j);
-            localIntent.putExtra("struct_url", paramString1.h);
-            localIntent.putExtra("from_web", true);
-            if ((paramString1.l != null) && (!"".equals(paramString1.l))) {
-              localIntent.putExtra("source_puin", paramString1.l);
-            }
-          }
+          i += 1;
+          paramString2.append(str);
         }
-        paramContext.startActivity(localIntent);
+        else
+        {
+          paramString2.append(paramString1.charAt(i));
+        }
       }
     }
-    return false;
+    return paramString2.toString();
   }
   
-  public static boolean a(Context paramContext, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, String paramString18, String paramString19, boolean paramBoolean)
+  private void a()
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("key_flag_from_plugin", true);
-    localIntent.putExtra("forward _key_nojump", true);
-    localIntent.putExtra("k_back", false);
-    localIntent.setClass(paramContext, ForwardRecentActivity.class);
-    localIntent.putExtra("isFromShare", true);
-    localIntent.putExtra("forward_type", paramInt1);
-    localIntent.putExtra("pluginName", paramString1);
-    localIntent.putExtra("req_type", paramInt2);
-    localIntent.putExtra("detail_url", paramString7);
-    localIntent.putExtra("image_url_remote", paramString3);
-    localIntent.putExtra("source_url", paramString18);
-    localIntent.putExtra("pubUin", paramString2);
-    localIntent.putExtra("struct_uin", paramString2);
-    paramString1 = paramString4;
-    if (paramString4 != null)
+    long l = System.currentTimeMillis();
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("homework_troop_config" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0).getString("troop_school_keyword_config", "");
+    if (TextUtils.isEmpty(str))
     {
-      paramString1 = paramString4;
-      if (paramString4.length() > 45) {
-        paramString1 = paramString4.substring(0, 45) + "…";
+      if (QLog.isColorLevel()) {
+        QLog.w(jdField_a_of_type_JavaLangString, 2, "The configString is empty, new user or no config");
       }
+      return;
     }
-    localIntent.putExtra("title", paramString1);
-    paramString1 = paramString5;
-    if (paramString5 != null)
-    {
-      paramString1 = paramString5;
-      if (paramString5.length() > 60) {
-        paramString1 = paramString5.substring(0, 60) + "…";
-      }
-    }
-    localIntent.putExtra("desc", paramString1);
-    localIntent.putExtra("forward_thumb", "");
-    localIntent.putExtra("struct_share_key_content_action", paramString8);
-    localIntent.putExtra("struct_share_key_content_a_action_DATA", paramString10);
-    localIntent.putExtra("struct_share_key_content_i_action_DATA", paramString11);
-    localIntent.putExtra("struct_share_key_content_action_DATA", paramString9);
-    localIntent.putExtra("req_share_id", -1L);
-    localIntent.putExtra("struct_share_key_source_action", paramString12);
-    localIntent.putExtra("struct_share_key_source_action_data", paramString13);
-    localIntent.putExtra("struct_share_key_source_a_action_data", paramString14);
-    localIntent.putExtra("struct_share_key_source_i_action_data", paramString15);
-    localIntent.putExtra("struct_share_key_source_icon", paramString16);
-    localIntent.putExtra("app_name", paramString17);
-    localIntent.putExtra("brief_key", paramString6);
-    localIntent.putExtra("compatible_text", paramString19);
-    localIntent.putExtra("flag", 2);
-    if (paramBoolean) {
-      localIntent.putExtra("icon_need_round", "1");
-    }
-    localIntent.putExtra("emoInputType", 2);
-    paramString1 = awuw.a(localIntent.getExtras());
-    if (paramString1 != null)
-    {
-      localIntent.putExtra("stuctmsg_bytes", paramString1.getBytes());
-      paramContext.startActivity(localIntent);
-      return true;
-    }
-    return false;
+    a(str);
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "loadConfig cost time: " + (System.currentTimeMillis() - l));
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, AbsStructMsg paramAbsStructMsg, ajfe paramajfe)
+  public static boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    switch (paramInt)
-    {
+    if (paramSessionInfo.jdField_a_of_type_Int != 1) {
+      return false;
     }
+    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(52)).c(paramSessionInfo.jdField_a_of_type_JavaLangString);
+    if (paramQQAppInterface == null) {
+      return false;
+    }
+    return paramQQAppInterface.dwGroupClassExt == 32L;
+  }
+  
+  public int a(SessionInfo paramSessionInfo)
+  {
+    int j;
+    if (paramSessionInfo.jdField_a_of_type_Int != 1)
+    {
+      j = -1;
+      return j;
+    }
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0) {
+      return -4;
+    }
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).c(paramSessionInfo.jdField_a_of_type_JavaLangString);
+    if (localTroopInfo == null)
+    {
+      QLog.w(jdField_a_of_type_JavaLangString, 2, "it must be wrong. The troopUin '" + paramSessionInfo.jdField_a_of_type_JavaLangString + "' has not troopInfo");
+      return -2;
+    }
+    if (localTroopInfo.dwGroupClassExt != 32L)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "Not school troop. The troopUin '" + paramSessionInfo.jdField_a_of_type_JavaLangString + "', dwGroupClassExt = " + localTroopInfo.dwGroupClassExt);
+      }
+      return -3;
+    }
+    int i = 0;
+    if (localTroopInfo.isTroopOwner(str)) {
+      i = 1;
+    }
+    for (;;)
+    {
+      j = i;
+      if (!QLog.isDevelopLevel()) {
+        break;
+      }
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "detect role. The currentUin '" + str + "', role = " + i);
+      return i;
+      if (localTroopInfo.isTroopAdmin(str)) {
+        i = 2;
+      }
+    }
+  }
+  
+  public baid a(SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  {
+    long l1 = System.currentTimeMillis();
+    if ((paramMessageRecord == null) || (TextUtils.isEmpty(paramMessageRecord.msg))) {
+      paramSessionInfo = null;
+    }
+    long l2;
+    String str1;
     do
     {
-      do
+      return paramSessionInfo;
+      i = a(paramSessionInfo);
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "detectKeyword.detectRole time cost: " + (System.currentTimeMillis() - l1));
+      }
+      if (i <= 0) {
+        return null;
+      }
+      if (((i & 0x2) != 2) && ((i & 0x1) != 1)) {
+        return null;
+      }
+      if (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0)
       {
-        return;
-        paramajfe = paramQQAppInterface.getCurrentAccountUin();
-        i = avys.a;
-        avys.a = i + 1;
-        long l = i;
-        i = paramAbsStructMsg.forwardID;
-        if (paramAbsStructMsg.mMsgServiceID == 80)
-        {
-          if (TextUtils.isEmpty(paramString2)) {
-            paramString2 = paramajfe;
-          }
-          for (;;)
-          {
-            paramString2 = awbi.a(paramQQAppInterface, paramajfe, paramString1, paramString2, paramInt, l, paramAbsStructMsg);
-            if (paramAbsStructMsg.mMsgServiceID != 41) {
-              break;
-            }
-            acvh.a().a(paramString2.uniseq, paramAbsStructMsg.parentUniseq, i);
-            paramQQAppInterface.a().b(paramString2, null);
-            return;
-          }
+        if (QLog.isDevelopLevel()) {
+          QLog.w(jdField_a_of_type_JavaLangString, 2, "Keywords is empty, the config is error?");
         }
-        if (paramAbsStructMsg.mMsgServiceID == 118)
-        {
-          if (TextUtils.isEmpty(paramString2)) {
-            paramString2 = paramajfe;
-          }
-          for (;;)
-          {
-            paramString2 = awbi.a(paramQQAppInterface, paramajfe, paramString1, paramString2, paramInt, l, paramAbsStructMsg);
-            break;
-          }
-        }
-        if (TextUtils.isEmpty(paramString2)) {
-          paramString2 = paramajfe;
-        }
-        for (;;)
-        {
-          paramString2 = awbi.a(paramQQAppInterface, paramajfe, paramString1, paramString2, paramInt, l, paramAbsStructMsg);
-          break;
-        }
-        if (paramAbsStructMsg.mMsgServiceID == 100)
-        {
-          paramAbsStructMsg.mMsgServiceID = 1;
-          paramString1 = awbi.a(paramQQAppInterface, paramajfe, paramString1, paramajfe, paramInt, l, paramAbsStructMsg);
-          acvh.a().a(paramString1.uniseq, paramAbsStructMsg.parentUniseq, i);
-          paramQQAppInterface.a().a(paramString1, new baid());
-          return;
-        }
-        acvh.a().a(paramString2.uniseq, paramAbsStructMsg.parentUniseq, i);
-        paramQQAppInterface.a().a(paramString2, null);
-        return;
-      } while (paramAbsStructMsg == null);
-      if (paramAbsStructMsg.mMsgServiceID == 1)
+        return null;
+      }
+      l2 = paramMessageRecord.uniseq;
+      str1 = l2 + "_" + i;
+      localbaid = (baid)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str1);
+      if (localbaid == null) {
+        break;
+      }
+      paramSessionInfo = localbaid;
+    } while (!QLog.isColorLevel());
+    QLog.i(jdField_a_of_type_JavaLangString, 2, "detectKeyword.useCache time cost: " + (System.currentTimeMillis() - l1));
+    return localbaid;
+    paramMessageRecord = paramMessageRecord.msg;
+    baid localbaid = new baid();
+    localbaid.jdField_a_of_type_Long = l2;
+    localbaid.jdField_a_of_type_Int = i;
+    localbaid.jdField_a_of_type_JavaLangString = paramSessionInfo.jdField_a_of_type_JavaLangString;
+    localbaid.a(paramMessageRecord);
+    int k = this.jdField_a_of_type_AndroidUtilSparseArray.size();
+    int i = 0;
+    while (i < k)
+    {
+      int m = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
+      paramSessionInfo = (String[])this.jdField_a_of_type_AndroidUtilSparseArray.get(m);
+      int n = paramSessionInfo.length;
+      int j = 0;
+      while (j < n)
       {
-        paramString2 = paramQQAppInterface.getCurrentAccountUin();
-        i = avys.a;
-        avys.a = i + 1;
-        paramString1 = awbi.a(paramQQAppInterface, paramString2, paramString1, paramString2, paramInt, i, paramAbsStructMsg);
-        paramQQAppInterface.a().a(paramString1, null);
+        String str2 = paramSessionInfo[j];
+        int i1 = paramMessageRecord.indexOf(str2);
+        if (i1 != -1)
+        {
+          localbaid.jdField_b_of_type_Int = m;
+          localbaid.jdField_b_of_type_JavaLangString = str2;
+          localbaid.c = i1;
+          localbaid.d = (str2.length() + i1);
+          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(str1, localbaid);
+          return localbaid;
+        }
+        j += 1;
+      }
+      i += 1;
+    }
+    localbaid.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(str1, localbaid);
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "detectKeyword time cost: " + (System.currentTimeMillis() - l1) + ", result = " + localbaid.jdField_b_of_type_Int);
+    }
+    return localbaid;
+  }
+  
+  public void a(String paramString)
+  {
+    long l = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "update config, config=" + paramString);
+    }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        JSONArray localJSONArray = new JSONArray(paramString);
+        int k = localJSONArray.length();
+        i = 0;
+        if (i < k)
+        {
+          Object localObject = localJSONArray.optJSONObject(i);
+          int m = ((JSONObject)localObject).getInt("action");
+          if (m >= jdField_a_of_type_ArrayOfJavaLangString.length) {
+            break label308;
+          }
+          ArrayList localArrayList = new ArrayList();
+          localObject = ((JSONObject)localObject).getJSONArray("words");
+          int n = ((JSONArray)localObject).length();
+          int j = 0;
+          if (j < n)
+          {
+            localArrayList.add(((JSONArray)localObject).getString(j));
+            j += 1;
+            continue;
+          }
+          this.jdField_a_of_type_AndroidUtilSparseArray.put(m, localArrayList.toArray(new String[localArrayList.size()]));
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        QLog.w(jdField_a_of_type_JavaLangString, 2, "parse config error, config = " + paramString);
+        return;
+        this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
         return;
       }
-    } while (paramAbsStructMsg.mMsgServiceID != 41);
-    paramString2 = paramQQAppInterface.getCurrentAccountUin();
-    int i = avys.a;
-    avys.a = i + 1;
-    paramString1 = awbi.a(paramQQAppInterface, paramString2, paramString1, paramString2, paramInt, i, paramAbsStructMsg);
-    paramQQAppInterface.a().b(paramString1, null);
+      finally
+      {
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "updateConfig cost time: " + (System.currentTimeMillis() - l));
+      }
+      label308:
+      i += 1;
+    }
   }
+  
+  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baic
  * JD-Core Version:    0.7.0.1
  */

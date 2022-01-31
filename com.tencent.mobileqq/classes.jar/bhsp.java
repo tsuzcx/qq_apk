@@ -1,228 +1,426 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
-import dov.com.qq.im.giftext.AEGIFOutlineTextView;
-import dov.com.qq.im.giftext.DrawableImageView;
-import java.io.File;
-import java.lang.ref.SoftReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import cooperation.qzone.webviewplugin.QzoneUiJsPlugin.1;
+import cooperation.qzone.webviewplugin.QzoneUiJsPlugin.2;
+import cooperation.qzone.webviewplugin.QzoneUiJsPlugin.3;
+import java.util.Iterator;
 import java.util.Set;
+import mqq.os.MqqHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bhsp
-  extends RecyclerView.Adapter<bhsv>
+  extends bhrq
+  implements bhko
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private bhsu jdField_a_of_type_Bhsu;
-  private bhuq jdField_a_of_type_Bhuq;
-  private bhvg jdField_a_of_type_Bhvg;
-  private HashMap<String, SoftReference<bhul>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<bhsf> jdField_a_of_type_JavaUtilList;
-  private Set<Integer> jdField_a_of_type_JavaUtilSet;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bhsq(this);
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private String b;
+  private String c;
   
-  public bhsp(Context paramContext, List<bhsf> paramList)
+  private JSONObject a(Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_Int = ((int)(DeviceUtils.getScreenWidth(paramContext) * 0.44F) + 1);
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0))
+    Object localObject1 = paramIntent.getStringExtra("param.videoPath");
+    int i = paramIntent.getIntExtra("param.videoType", 0);
+    Object localObject2 = paramIntent.getStringExtra("param.content");
+    long l1 = paramIntent.getLongExtra("param.videoSize", 0L);
+    String str1 = paramIntent.getStringExtra("param.thumbnailPath");
+    long l2 = paramIntent.getLongExtra("param.duration", 0L);
+    long l3 = paramIntent.getLongExtra("param.startTime", 0L);
+    long l4 = paramIntent.getLongExtra("param.totalDuration", 0L);
+    boolean bool1 = paramIntent.getBooleanExtra("param.needProcess", true);
+    boolean bool2 = paramIntent.getBooleanExtra("param.topicSyncQzone", false);
+    String str2 = paramIntent.getStringExtra("param.newFakeVid");
+    Bundle localBundle = paramIntent.getBundleExtra("param.extras");
+    paramIntent = new JSONObject();
+    try
     {
-      ((bhsf)this.jdField_a_of_type_JavaUtilList.get(0)).a(true);
-      this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(0));
+      paramIntent.put("videoPath", localObject1);
+      paramIntent.put("videoType", i);
+      paramIntent.put("content", localObject2);
+      paramIntent.put("videoSize", l1);
+      paramIntent.put("thumbnailPath", str1);
+      paramIntent.put("duration", l2);
+      paramIntent.put("totalDuration", l4);
+      paramIntent.put("needProcess", bool1);
+      paramIntent.put("syncQzone", bool2);
+      paramIntent.put("fakeVid", str2);
+      paramIntent.put("startTime", l3);
+      localObject1 = new JSONObject();
+      if (localBundle != null)
+      {
+        localObject2 = localBundle.keySet().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          str1 = (String)((Iterator)localObject2).next();
+          ((JSONObject)localObject1).put(str1, localBundle.getInt(str1));
+        }
+      }
+      paramIntent.put("encodeExtras", localObject1);
     }
+    catch (JSONException localJSONException)
+    {
+      QLog.w("QzoneUiJsPlugin", 1, "convertVideoInfoToJson error", localJSONException);
+      return paramIntent;
+    }
+    return paramIntent;
   }
   
-  private void a(ImageView paramImageView, String paramString, int paramInt)
+  private void a(String paramString)
   {
-    Object localObject1 = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (localObject1 != null) {}
-    for (localObject1 = (bhul)((SoftReference)localObject1).get();; localObject1 = null)
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QzoneUiJsPlugin", 4, "handleRecordVideo json=" + paramString);
+    }
+    b();
+    for (;;)
     {
-      if (localObject1 == null)
+      int j;
+      int k;
+      int m;
+      try
       {
-        localObject1 = new ArrayList();
-        if (!TextUtils.isEmpty(paramString))
+        paramString = new JSONObject(paramString);
+        String str1 = paramString.getString("callback");
+        if (!TextUtils.isEmpty(str1))
         {
-          Object localObject2 = new File(paramString);
-          if (((File)localObject2).exists())
+          this.c = str1;
+          str1 = paramString.optString("ptv_id");
+          String str2 = paramString.optString("confirm_btn_text");
+          j = paramString.optInt("need_input_text", 0);
+          if (j == 0) {
+            break label507;
+          }
+          i = paramString.optInt("need_sync_qzone", 0);
+          k = paramString.optInt("is_original_video", 0);
+          m = paramString.optInt("need_edit_video", 0);
+          boolean bool6 = paramString.optBoolean("support_local_video", true);
+          Object localObject = paramString.optJSONObject("last_video");
+          if ((localObject != null) && (((JSONObject)localObject).optInt("videoType") == 0))
           {
-            localObject2 = ((File)localObject2).listFiles();
-            if (localObject2.length > 0)
-            {
-              int i = 0;
-              while (i < localObject2.length)
-              {
-                String str = String.format(paramString + "/frame_%03d.png", new Object[] { Integer.valueOf(i) });
-                if (new File(str).exists()) {
-                  ((ArrayList)localObject1).add(str);
-                }
-                i += 1;
-              }
+            localObject = ((JSONObject)localObject).optString("videoPath");
+            if (!TextUtils.isEmpty((CharSequence)localObject)) {
+              this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bhsv.class).post(new QzoneUiJsPlugin.1(this, (String)localObject));
+            }
+          }
+          localObject = new Intent();
+          bool1 = paramString.optBoolean("support_beauty", true);
+          bool2 = paramString.optBoolean("support_dd", true);
+          bool3 = paramString.optBoolean("support_filter", true);
+          bool4 = paramString.optBoolean("dd_category_unfold", false);
+          String str3 = paramString.optString("dd_category_name");
+          String str4 = paramString.optString("dd_item_id");
+          bool5 = paramString.optBoolean("filter_category_unfold", false);
+          String str5 = paramString.optString("filter_category_name");
+          String str6 = paramString.optString("filter_item_id");
+          int n = paramString.optInt("force_camera", 0);
+          ((Intent)localObject).putExtra("PeakConstants.ARG_BEAUTY", bool1);
+          ((Intent)localObject).putExtra("PeakConstants.ARG_SUPPORT_DD", bool2);
+          ((Intent)localObject).putExtra("PeakConstants.ARG_SUPPORT_FILTER", bool3);
+          ((Intent)localObject).putExtra("PeakConstants.ARG_UNFOLD_DD", bool4);
+          ((Intent)localObject).putExtra("PeakConstants.ARG_DD_CATEGORY_NAME", str3);
+          ((Intent)localObject).putExtra("PeakConstants.ARG_DD_ITEM_ID", str4);
+          ((Intent)localObject).putExtra("PeakConstants.ARG_UNFOLD_FILTER", bool5);
+          ((Intent)localObject).putExtra("PeakConstants.ARG_FILTER_CATEGORY_NAME", str5);
+          ((Intent)localObject).putExtra("PeakConstants.ARG_FILTER_ITEM_ID", str6);
+          ((Intent)localObject).putExtra("PeakConstants.ARG_FORCE_CAMERA", n);
+          paramString = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
+          if (bgzg.a().a() > 0)
+          {
+            bool1 = true;
+            break label512;
+            bgzc.a(paramString, "ref_h5_record_video", bool1, bool2, bool3, bool4, bool5, bool6, str1, str2, (Intent)localObject);
+          }
+        }
+        else
+        {
+          return;
+        }
+        boolean bool1 = false;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.w("QzoneUiJsPlugin", 1, "handleRecordVideo error", paramString);
+        return;
+      }
+      boolean bool2 = false;
+      break label519;
+      boolean bool3 = false;
+      break label527;
+      boolean bool4 = false;
+      break label534;
+      boolean bool5 = false;
+      continue;
+      label507:
+      int i = 0;
+      continue;
+      label512:
+      if (j > 0)
+      {
+        bool2 = true;
+        label519:
+        if (m > 0)
+        {
+          bool3 = true;
+          label527:
+          if (i > 0)
+          {
+            bool4 = true;
+            label534:
+            if (k > 0) {
+              bool5 = true;
             }
           }
         }
-        localObject1 = new bhul(this.jdField_a_of_type_AndroidContentContext, (ArrayList)localObject1, 55L);
-        ((bhul)localObject1).a(false);
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new SoftReference(localObject1));
-      }
-      for (paramString = (String)localObject1;; paramString = (String)localObject1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("zswp20pro", 2, "playAnimationDrawable, position = " + paramInt);
-        }
-        if ((paramImageView.getDrawable() != null) && (paramImageView.getDrawable() != paramString) && ((paramImageView.getDrawable() instanceof bhul)))
-        {
-          ((bhul)paramImageView.getDrawable()).stop();
-          paramImageView.setImageDrawable(null);
-        }
-        paramImageView.setImageDrawable(paramString);
-        paramString.start();
-        return;
       }
     }
   }
   
-  private void a(AEGIFOutlineTextView paramAEGIFOutlineTextView)
+  private void b()
   {
-    if (this.jdField_a_of_type_Bhuq != null)
-    {
-      this.jdField_a_of_type_Bhuq.a().a(this.jdField_a_of_type_Bhvg, new bhsr(this, paramAEGIFOutlineTextView));
-      this.jdField_a_of_type_Bhuq.b().a(this.jdField_a_of_type_Bhvg, new bhss(this, paramAEGIFOutlineTextView));
-    }
-    paramAEGIFOutlineTextView.setOnClickListener(new bhst(this));
-    paramAEGIFOutlineTextView.setVisibility(0);
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      this.jdField_a_of_type_AndroidViewView.setEnabled(paramBoolean);
-      if (paramBoolean) {
-        ((TextView)this.jdField_a_of_type_AndroidViewView).setText(ajjy.a(2131634166));
-      }
-    }
-    else
-    {
+    if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    ((TextView)this.jdField_a_of_type_AndroidViewView).setText(ajjy.a(2131634176));
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.qzone.topic.video.FakeFeed");
+    localIntentFilter.addAction("com.qzone.topic.video.HalfFakeFeed");
+    localIntentFilter.addAction("com.qzone.h5.video.recordCallback");
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public bhsv a(ViewGroup paramViewGroup, int paramInt)
+  private void b(String paramString)
   {
-    return new bhsv(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131492969, paramViewGroup, false));
-  }
-  
-  public Set<Integer> a()
-  {
-    return this.jdField_a_of_type_JavaUtilSet;
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(bhsu parambhsu)
-  {
-    this.jdField_a_of_type_Bhsu = parambhsu;
-  }
-  
-  public void a(bhsv parambhsv)
-  {
-    super.onViewRecycled(parambhsv);
-    if ((bhsv.a(parambhsv) != null) && (bhsv.a(parambhsv).getDrawable() != null) && ((bhsv.a(parambhsv).getDrawable() instanceof bhul)))
-    {
-      ((bhul)bhsv.a(parambhsv).getDrawable()).stop();
-      bhsv.a(parambhsv).setImageDrawable(null);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QzoneUiJsPlugin", 4, "handlePreviewVideo json=" + paramString);
     }
-  }
-  
-  public void a(bhsv parambhsv, int paramInt)
-  {
-    bhsf localbhsf = (bhsf)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837655);
-    localObject = baop.a("https://qd.myapp.com/myapp/qqteam/QIM/ae_gif_loading.png", new int[] { 0 }, (Drawable)localObject);
-    bhsv.a(parambhsv).setImageDrawable((Drawable)localObject);
-    bhsv.a(parambhsv).setVisibility(4);
-    parambhsv.a(localbhsf.a());
-    switch (localbhsf.jdField_a_of_type_Int)
+    int i;
+    long l1;
+    long l2;
+    Bundle localBundle;
+    try
     {
-    default: 
-    case 10: 
-    case 11: 
-    case 12: 
-      for (;;)
+      JSONObject localJSONObject = new JSONObject(paramString).optJSONObject("video_info");
+      if (localJSONObject == null)
       {
-        localObject = parambhsv.itemView.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).width = -1;
-        ((ViewGroup.LayoutParams)localObject).height = this.jdField_a_of_type_Int;
-        parambhsv.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        parambhsv.itemView.setOnClickListener(new bhsq(this, localbhsf, paramInt, parambhsv));
+        QLog.e("QzoneUiJsPlugin", 1, "handlePreviewVideo video_info is empty");
         return;
-        bhsv.b(parambhsv).setVisibility(4);
-        bhsv.a(parambhsv).setVisibility(0);
+      }
+      paramString = localJSONObject.optString("videoPath");
+      i = localJSONObject.optInt("videoType");
+      l1 = localJSONObject.optLong("startTime");
+      l2 = localJSONObject.optLong("duration");
+      localJSONObject = localJSONObject.optJSONObject("encodeExtras");
+      localBundle = new Bundle();
+      if (localJSONObject != null)
+      {
+        Iterator localIterator = localJSONObject.keys();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          localBundle.putInt(str, localJSONObject.optInt(str));
+        }
+      }
+      if (i != 0) {
+        break label201;
       }
     }
-    bhsv.a(parambhsv).setVisibility(8);
-    if (paramInt == 0)
+    catch (JSONException paramString)
     {
-      a(bhsv.a(parambhsv));
-      bhsv.a(parambhsv).setVisibility(0);
+      QLog.w("QzoneUiJsPlugin", 1, "handlePreviewVideo error", paramString);
+      return;
     }
-    bhsv.b(parambhsv).setVisibility(0);
-    if (this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt)))
+    bgzc.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), i, paramString, l2, localBundle);
+    return;
+    label201:
+    if (i == 1) {
+      bgxy.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), bgyf.a(), i, paramString, l1, l1 + l2);
+    }
+  }
+  
+  private void c(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QzoneUiJsPlugin", 4, "handleUploadVideo json=" + paramString);
+    }
+    try
     {
-      parambhsv.a(true);
-      if (localbhsf.jdField_a_of_type_Int == 13) {
-        a(true);
+      if (new JSONObject(paramString).optJSONObject("video_info") == null)
+      {
+        QLog.e("QzoneUiJsPlugin", 1, "handleUploadVideo video_info is empty");
+        return;
       }
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bhsv.class).post(new QzoneUiJsPlugin.2(this, paramString));
+      return;
     }
+    catch (JSONException paramString)
+    {
+      QLog.w("QzoneUiJsPlugin", 1, "handleUploadVideo error", paramString);
+    }
+  }
+  
+  private void d(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QzoneUiJsPlugin", 4, "handleGetVideoCover json=" + paramString);
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      String str = paramString.getString("callback");
+      if (!TextUtils.isEmpty(str))
+      {
+        this.b = str;
+        paramString = paramString.getString("timestamp");
+        if (!TextUtils.isEmpty(paramString)) {
+          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bhsv.class).post(new QzoneUiJsPlugin.3(this, paramString));
+        }
+      }
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.w("QzoneUiJsPlugin", 1, "handleGetVideoCover error", paramString);
+    }
+  }
+  
+  private void e(String paramString)
+  {
+    boolean bool2 = false;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QzoneUiJsPlugin", 4, "handleTopicUploadVideo json=" + paramString);
+    }
+    b();
     for (;;)
     {
-      localObject = localbhsf.c;
-      a(bhsv.a(parambhsv), (String)localObject, paramInt);
-      break;
-      parambhsv.a(false);
+      try
+      {
+        paramString = new JSONObject(paramString);
+        String str = paramString.getString("callback");
+        if (!TextUtils.isEmpty(str)) {
+          this.jdField_a_of_type_JavaLangString = str;
+        }
+        str = paramString.getString("topicId");
+        if (TextUtils.isEmpty(str)) {
+          return;
+        }
+        if ("ptucamera".equals(paramString.optString("shoot")))
+        {
+          bool1 = true;
+          paramString = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
+          if (bgzg.a().a() > 0) {
+            bool2 = true;
+          }
+          bgzc.a(0L, paramString, true, true, "QZonePublishMoodTabActivity", bool2, true, str, bool1, null, null, null);
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        QLog.w("QzoneUiJsPlugin", 1, "topicUploadVideo error", paramString);
+        return;
+      }
+      boolean bool1 = false;
     }
   }
   
-  public void a(bhuq parambhuq, bhvg parambhvg)
+  public void a()
   {
-    this.jdField_a_of_type_Bhuq = parambhuq;
-    this.jdField_a_of_type_Bhvg = parambhvg;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_Boolean = false;
+    }
+    bhkl.a().b(this);
+    super.a();
   }
   
-  public int getItemCount()
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    if ((!"qzui".equals(paramString2)) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null)) {
+      return false;
+    }
+    if (("topicUploadVideo".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      e(paramVarArgs[0]);
+      return true;
+    }
+    if (("getVideoFaceData".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      bhkl.a().a(this);
+      d(paramVarArgs[0]);
+      return true;
+    }
+    if (("recordVideo".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      a(paramVarArgs[0]);
+      return true;
+    }
+    if (("previewVideo".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      b(paramVarArgs[0]);
+      return true;
+    }
+    if (("uploadVideo".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      c(paramVarArgs[0]);
+      return true;
+    }
+    return false;
   }
   
-  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    super.onAttachedToRecyclerView(paramRecyclerView);
+    if ((paramBundle == null) || (!paramBundle.containsKey("data"))) {}
+    do
+    {
+      return;
+      paramBundle = paramBundle.getBundle("data");
+      if (paramBundle == null)
+      {
+        QLog.e("QzoneUiJsPlugin", 1, "call js function,bundle is empty");
+        return;
+      }
+    } while ((!"cmd.videoGetFakeFeedCover".equals(paramString)) || (TextUtils.isEmpty(this.b)));
+    paramString = paramBundle.getString("param.videoCoverPath");
+    int i = paramBundle.getInt("param.videoCoverWidth", 0);
+    int j = paramBundle.getInt("param.videoCoverHeight", 0);
+    paramBundle = paramBundle.getString("param.videoClientKey");
+    if (TextUtils.isEmpty(paramString)) {}
+    for (paramString = "";; paramString = bhrl.a(paramString, i, j))
+    {
+      JSONObject localJSONObject1 = new JSONObject();
+      try
+      {
+        localJSONObject1.put("code", 0);
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("msg", "");
+        localJSONObject2.put("base64", "data:image/jpg;base64," + paramString);
+        localJSONObject2.put("timestamp", paramBundle);
+        localJSONObject2.put("isFakeFeed", true);
+        localJSONObject1.put("data", localJSONObject2);
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.b, new String[] { localJSONObject1.toString() });
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.w("QzoneUiJsPlugin", 1, "topicUploadVideo fake feed  callback error", paramString);
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhsp
  * JD-Core Version:    0.7.0.1
  */

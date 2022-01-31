@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import ageh;
-import agfp;
-import apdh;
+import agqf;
+import agro;
+import apvb;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.data.QQAlbumInfo;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.Locale;
 public class NewAlbumListAdapter$1
   implements Runnable
 {
-  public NewAlbumListAdapter$1(agfp paramagfp) {}
+  public NewAlbumListAdapter$1(agro paramagro) {}
   
   public void run()
   {
@@ -36,7 +36,7 @@ public class NewAlbumListAdapter$1
       QQAlbumInfo localQQAlbumInfo = (QQAlbumInfo)((Iterator)localObject).next();
       if ((localQQAlbumInfo != null) && (localQQAlbumInfo.mCoverInfo != null))
       {
-        String str2 = apdh.c(localQQAlbumInfo.mCoverInfo.path);
+        String str2 = apvb.c(localQQAlbumInfo.mCoverInfo.path);
         String str1 = localQQAlbumInfo.name;
         if ((str2 != null) && (str1 != null) && (!str1.equals("最近照片")) && (!str1.equals("空间照片")))
         {
@@ -56,7 +56,7 @@ public class NewAlbumListAdapter$1
               n += 1;
             } else if ((str1.equals("weixin")) || (str1.equals("wechat")) || (str1.equals("micromsg"))) {
               k += localQQAlbumInfo.mMediaFileCount;
-            } else if (ageh.a(str2)) {
+            } else if (agqf.a(str2)) {
               j += localQQAlbumInfo.mMediaFileCount;
             } else {
               i += localQQAlbumInfo.mMediaFileCount;
@@ -68,7 +68,7 @@ public class NewAlbumListAdapter$1
             i4 += localQQAlbumInfo.mMediaFileCount;
           } else if ((str1.contains("camera")) || (str1.equals("dcim")) || (str1.equals("100MEDIA")) || (str1.equals("100ANDRO")) || (str1.contains("相机")) || (str1.contains("照片")) || (str1.contains("相片"))) {
             i6 += localQQAlbumInfo.mMediaFileCount;
-          } else if (ageh.a(str2)) {
+          } else if (agqf.a(str2)) {
             j += localQQAlbumInfo.mMediaFileCount;
           } else {
             i += localQQAlbumInfo.mMediaFileCount;
@@ -76,7 +76,7 @@ public class NewAlbumListAdapter$1
         }
       }
     }
-    ageh.a(i6, i5, i4, j, i, i3, i2, i1, n, m, k);
+    agqf.a(i6, i5, i4, j, i, i3, i2, i1, n, m, k);
   }
 }
 

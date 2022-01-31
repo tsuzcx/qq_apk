@@ -1,24 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
-public class vat
-  implements Animation.AnimationListener
+public abstract interface vat
 {
-  public vat(DoodleLayout paramDoodleLayout) {}
+  public abstract StoryInputBarView a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.jdField_a_of_type_Vau != null) {
-      this.a.jdField_a_of_type_Vau.a(null);
-    }
-  }
+  public abstract wcr a(String paramString);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void a(boolean paramBoolean);
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void g();
+  
+  public abstract void h();
 }
 
 

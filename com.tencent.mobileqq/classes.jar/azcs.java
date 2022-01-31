@@ -1,14 +1,16 @@
-class azcs
-  implements azgj
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import mqq.app.QQPermissionCallback;
+
+public class azcs
+  implements QQPermissionCallback
 {
-  azcs(azco paramazco, aejb paramaejb) {}
+  public azcs(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void a(int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (!azgh.a(paramInt)) {
-      this.jdField_a_of_type_Azco.b(this.jdField_a_of_type_Aejb);
-    }
-    this.jdField_a_of_type_Azco.e(azgh.b(paramInt));
+    this.a.a(this.a, this.a);
   }
 }
 

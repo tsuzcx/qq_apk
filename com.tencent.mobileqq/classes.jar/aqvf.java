@@ -1,32 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
-import java.util.Map;
+import android.content.Context;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.haoliyou.JefsClass;
+import java.lang.ref.WeakReference;
 
 public class aqvf
-  implements DialogInterface.OnClickListener
+  implements amag
 {
-  public aqvf(ListenTogetherManager paramListenTogetherManager, int paramInt, String paramString) {}
+  public aqvf(JefsClass paramJefsClass, Runnable paramRunnable, WeakReference paramWeakReference, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
   {
-    if (paramInt == 1)
+    if ((!paramBoolean1) || ((paramBoolean2) && (this.jdField_a_of_type_JavaLangRunnable != null)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.a();
-      paramDialogInterface.dismiss();
-    }
-    while (paramInt != 0) {
+      JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_JavaLangRunnable);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.b();
-    paramDialogInterface.dismiss();
-    ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager, (ListenTogetherSession)ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager).get(aqvv.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString)));
+    paramString1 = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramString1 != null) {
+      if ((paramString1 instanceof BaseActivity))
+      {
+        paramString1 = ((BaseActivity)paramString1).app;
+        if (this.jdField_a_of_type_JavaLangString != null) {
+          break label111;
+        }
+      }
+    }
+    label111:
+    for (paramString2 = "";; paramString2 = this.jdField_a_of_type_JavaLangString)
+    {
+      axqw.b(paramString1, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, "1", "", paramString2, "");
+      return;
+      paramString1 = null;
+      break;
+      paramString1 = null;
+      break;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaLangRunnable != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqvf
  * JD-Core Version:    0.7.0.1
  */

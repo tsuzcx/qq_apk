@@ -1,11 +1,68 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface qnr
+class qnr
+  implements Application.ActivityLifecycleCallbacks
 {
-  public abstract void a(View paramView, int paramInt, ArticleInfo paramArticleInfo, ArrayList<DislikeInfo> paramArrayList);
+  private qnr(qno paramqno) {}
+  
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
+  {
+    if ((!qno.b(this.a)) && ((paramActivity instanceof VideoFeedsPlayActivity))) {
+      this.a.f();
+    }
+  }
+  
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    if (((paramActivity instanceof SplashActivity)) || ((paramActivity instanceof ReadInJoyNewFeedsActivity)))
+    {
+      this.a.f();
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsFloatWindowManager", 2, "onDestroyFloatingWindow");
+      }
+    }
+  }
+  
+  public void onActivityPaused(Activity paramActivity) {}
+  
+  public void onActivityResumed(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsFloatWindowManager", 2, "onActivityResumed: ");
+    }
+    if (((qno.a(this.a, paramActivity)) && (qno.c(this.a))) || (qno.b(this.a, paramActivity)) || (qno.c(this.a, paramActivity)))
+    {
+      this.a.d();
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsFloatWindowManager", 2, "onShowFloatingWindow");
+      }
+    }
+  }
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity) {}
+  
+  public void onActivityStopped(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsFloatWindowManager", 2, "onActivityStopped: ");
+    }
+    if ((qno.a(this.a, paramActivity)) || (qno.b(this.a, paramActivity)) || ((!BaseActivity.mAppForground) && (qno.c(this.a))))
+    {
+      this.a.e();
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsFloatWindowManager", 2, "onHideFloatingWindow");
+      }
+    }
+  }
 }
 
 

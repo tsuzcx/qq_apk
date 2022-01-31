@@ -1,21 +1,24 @@
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
 
-class nxn
-  extends nyf
+public class nxn
+  implements bfoq
 {
-  nxn(nxd paramnxd, boolean paramBoolean1, List paramList, boolean paramBoolean2)
-  {
-    super(paramnxd, null);
-  }
+  public nxn(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity, ChannelInfo paramChannelInfo) {}
   
-  void a(nyi paramnyi)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramnyi.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, 3);
+    if (paramInt == 0)
+    {
+      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelInfo, false);
+      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity).dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nxn
  * JD-Core Version:    0.7.0.1
  */

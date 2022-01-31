@@ -1,133 +1,118 @@
+import android.content.Context;
+import android.os.Handler;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdDislikeInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.NativeAd.util.VideoFeedsSoftAdDownloadManager.1;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.wadl.ipc.WadlParams;
+import cooperation.wadl.ipc.WadlResult;
 import java.util.Iterator;
 import java.util.List;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x885.oidb_0x885.AdInfo;
-import tencent.im.oidb.cmd0x885.oidb_0x885.NegFeedback;
 
 public class nmm
+  extends nlw
 {
-  private static HashMap<Integer, Pair<Integer, Integer>> a = new HashMap();
+  private VideoFeedsRecyclerView a;
   
-  static
+  public nmm(Context paramContext, boolean paramBoolean, VideoFeedsRecyclerView paramVideoFeedsRecyclerView)
   {
-    a.put(Integer.valueOf(385), new Pair(Integer.valueOf(1000), Integer.valueOf(560)));
-    a.put(Integer.valueOf(65), new Pair(Integer.valueOf(1000), Integer.valueOf(560)));
-    a.put(Integer.valueOf(600), new Pair(Integer.valueOf(1000), Integer.valueOf(560)));
-    a.put(Integer.valueOf(769), new Pair(Integer.valueOf(1280), Integer.valueOf(720)));
-    a.put(Integer.valueOf(710), new Pair(Integer.valueOf(720), Integer.valueOf(1280)));
+    super(paramContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView = paramVideoFeedsRecyclerView;
   }
   
-  public static AdvertisementInfo a(oidb_0x885.AdInfo paramAdInfo)
+  public void a(DownloadInfo paramDownloadInfo, int paramInt)
   {
-    AdvertisementInfo localAdvertisementInfo = new AdvertisementInfo();
-    int i;
-    if ((paramAdInfo != null) && (paramAdInfo.has()))
+    super.a(paramDownloadInfo, paramInt);
+    try
     {
-      localAdvertisementInfo.mAdKdPos = paramAdInfo.int32_kd_pos.get();
-      localAdvertisementInfo.mAdCl = paramAdInfo.bytes_cl.get().toStringUtf8();
-      localAdvertisementInfo.mAdImg = paramAdInfo.bytes_img.get().toStringUtf8();
-      localAdvertisementInfo.mAdImgs = paramAdInfo.bytes_img_s.get().toStringUtf8();
-      localAdvertisementInfo.mAdTxt = paramAdInfo.bytes_txt.get().toStringUtf8();
-      localAdvertisementInfo.mAdDesc = paramAdInfo.bytes_desc.get().toStringUtf8();
-      localAdvertisementInfo.mAdRl = paramAdInfo.bytes_rl.get().toStringUtf8();
-      localAdvertisementInfo.mAdApurl = paramAdInfo.bytes_apurl.get().toStringUtf8();
-      localAdvertisementInfo.mAdTraceId = paramAdInfo.bytes_trace_id.get().toStringUtf8();
-      localAdvertisementInfo.mAdProductId = paramAdInfo.bytes_product_id.get().toStringUtf8();
-      localAdvertisementInfo.mAdProductType = paramAdInfo.int32_product_type.get();
-      localAdvertisementInfo.mAdType = paramAdInfo.uint32_ad_type.get();
-      localAdvertisementInfo.mAdLandingPage = paramAdInfo.bytes_landing_page.get().toStringUtf8();
-      localAdvertisementInfo.mAdPrice = paramAdInfo.bytes_price.get().toStringUtf8();
-      localAdvertisementInfo.mAdBtnTxt = paramAdInfo.bytes_button_txt.get().toStringUtf8();
-      localAdvertisementInfo.mAdViewId = paramAdInfo.bytes_view_id.get().toStringUtf8();
-      localAdvertisementInfo.mAdCustomizedInvokeUrl = paramAdInfo.bytes_customized_invoke_url.get().toStringUtf8();
-      localAdvertisementInfo.mAdCorporationName = paramAdInfo.bytes_corporation_name.get().toStringUtf8();
-      localAdvertisementInfo.mAdCorporateImageName = paramAdInfo.bytes_corporate_image_name.get().toStringUtf8();
-      localAdvertisementInfo.mAdCorporateLogo = paramAdInfo.bytes_corporate_logo.get().toStringUtf8();
-      localAdvertisementInfo.mAdUin = paramAdInfo.uint64_ad_uin.get();
-      localAdvertisementInfo.mAdExt = paramAdInfo.bytes_ext.get().toStringUtf8();
-      if (TextUtils.isEmpty(localAdvertisementInfo.mAdExt)) {
-        localAdvertisementInfo.mAdExt = new JSONObject().toString();
-      }
-      localAdvertisementInfo.mAdVideoUrl = paramAdInfo.bytes_video_url.get().toStringUtf8();
-      localAdvertisementInfo.mAdCostType = paramAdInfo.uint32_cost_type.get();
-      localAdvertisementInfo.mAdAid = paramAdInfo.uint64_aid.get();
-      localAdvertisementInfo.mAdLayout = paramAdInfo.enum_ad_layout.get();
-      localAdvertisementInfo.mAdMaterialId = paramAdInfo.uint32_ad_material_id.get();
-      localAdvertisementInfo.mAdJumpMode = paramAdInfo.enum_ad_jump_mode.get();
-      localAdvertisementInfo.mAdExtInfo = paramAdInfo.bytes_extra_data.get().toStringUtf8();
-      if (TextUtils.isEmpty(localAdvertisementInfo.mAdExtInfo)) {
-        localAdvertisementInfo.mAdExtInfo = new JSONObject().toString();
-      }
-      localAdvertisementInfo.mAdAppDownLoadSchema = paramAdInfo.bytes_app_download_schema.get().toStringUtf8();
-      localAdvertisementInfo.mAdCanvasJson = paramAdInfo.string_canvas_json.get();
-      localAdvertisementInfo.mAdLandingPageReportUrl = paramAdInfo.bytes_landing_page_report_url.get().toStringUtf8();
-      localAdvertisementInfo.mAdAdvertiseId = paramAdInfo.uint64_advertiser_id.get();
-      localAdvertisementInfo.mAdDestType = paramAdInfo.uint32_dest_type.get();
-      localAdvertisementInfo.mAdEffectUrl = paramAdInfo.string_effect_url.get();
-      localAdvertisementInfo.mAdNocoId = paramAdInfo.int64_noco_id.get();
-      localAdvertisementInfo.mAdVia = paramAdInfo.bytes_via.get().toStringUtf8();
-      localAdvertisementInfo.mAdFeedId = paramAdInfo.uint64_feeds_id.get();
-      localAdvertisementInfo.mAdInteractionReportUrl = paramAdInfo.string_interaction_report_url.get();
-      if (paramAdInfo.rpt_msg_neg_feedback.has())
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        localAdvertisementInfo.mAdDislikeInfos = new ArrayList();
-        Iterator localIterator = paramAdInfo.rpt_msg_neg_feedback.get().iterator();
-        while (localIterator.hasNext())
+        qjf localqjf = (qjf)localIterator.next();
+        if ((localqjf.d != null) && (localqjf.d.equals(paramDownloadInfo.e)))
         {
-          oidb_0x885.NegFeedback localNegFeedback = (oidb_0x885.NegFeedback)localIterator.next();
-          if (localNegFeedback != null) {
-            localAdvertisementInfo.mAdDislikeInfos.add(new AdDislikeInfo(localNegFeedback));
-          }
+          localqjf.jdField_a_of_type_Int = paramInt;
+          localqjf.jdField_a_of_type_Int = paramDownloadInfo.f;
+          a(localqjf, paramInt, paramDownloadInfo.f);
         }
       }
-      localAdvertisementInfo.mAdScoreNum = paramAdInfo.uint32_app_score_num.get();
-      if (paramAdInfo.string_download_api_url.has()) {
-        localAdvertisementInfo.mAdDownloadApiUrl = paramAdInfo.string_download_api_url.get();
-      }
-      localAdvertisementInfo.mAdVideoFileSize = paramAdInfo.uint64_video_file_size.get();
-      localAdvertisementInfo.processAdExtraDataInfo(localAdvertisementInfo.mAdExtInfo);
-      localAdvertisementInfo.mAdvertisementExtInfo = new nmw(localAdvertisementInfo.mAdExtInfo);
-      localAdvertisementInfo.mInteractEffectType = paramAdInfo.uint32_interact_effect_type.get();
-      if (paramAdInfo.string_interact_image_list.has()) {
-        localAdvertisementInfo.mInteractImageList = paramAdInfo.string_interact_image_list.get();
-      }
-      localAdvertisementInfo.mInteractType = paramAdInfo.uint32_interact_type.get();
-      if (!paramAdInfo.int32_soft_ad_type.has()) {
-        break label820;
-      }
-      i = paramAdInfo.int32_soft_ad_type.get();
-      localAdvertisementInfo.mSoftAdType = i;
-      if (!paramAdInfo.bytes_soft_ad_data.has()) {
-        break label825;
-      }
+      return;
     }
-    label820:
-    label825:
-    for (paramAdInfo = paramAdInfo.bytes_soft_ad_data.get().toStringUtf8();; paramAdInfo = new JSONObject().toString())
+    catch (Exception paramDownloadInfo)
     {
-      localAdvertisementInfo.mSoftAdData = paramAdInfo;
-      if (localAdvertisementInfo.mSoftAdType == 2) {
-        localAdvertisementInfo.processSoftDataInfo(localAdvertisementInfo.mSoftAdData);
-      }
-      return localAdvertisementInfo;
-      i = 0;
-      break;
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ADFeedsVideoAppDownlodManager", 2, "notifyState error " + paramDownloadInfo.getMessage());
     }
+  }
+  
+  public void a(WadlResult paramWadlResult, int paramInt)
+  {
+    super.a(paramWadlResult, paramInt);
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        qjf localqjf = (qjf)localIterator.next();
+        if ((localqjf.d != null) && (localqjf.jdField_a_of_type_JavaLangString.equals(paramWadlResult.a.jdField_a_of_type_JavaLangString)) && (localqjf.d.equals(paramWadlResult.a.j)))
+        {
+          localqjf.jdField_a_of_type_Int = a(paramWadlResult);
+          localqjf.b = paramWadlResult.d;
+          if (!TextUtils.isEmpty(paramWadlResult.b)) {
+            localqjf.i = paramWadlResult.b;
+          }
+          a(localqjf, paramInt, paramWadlResult.d);
+        }
+      }
+      return;
+    }
+    catch (Exception paramWadlResult)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ADFeedsVideoAppDownlodManager", 2, "notifyState error " + paramWadlResult.getMessage());
+    }
+  }
+  
+  public void a(qjf paramqjf, int paramInt1, int paramInt2)
+  {
+    super.a(paramqjf, paramInt1, paramInt2);
+    if (paramqjf == null) {
+      return;
+    }
+    Object localObject = (LinearLayoutManager)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.getLayoutManager();
+    int j = ((LinearLayoutManager)localObject).findLastVisibleItemPosition();
+    int i = ((LinearLayoutManager)localObject).findFirstVisibleItemPosition();
+    label38:
+    if (i < j + 1)
+    {
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.getLayoutManager().findViewByPosition(i);
+      if (localObject != null) {
+        break label75;
+      }
+    }
+    label75:
+    do
+    {
+      do
+      {
+        do
+        {
+          i += 1;
+          break label38;
+          break;
+          localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.getChildViewHolder((View)localObject);
+        } while (!(localObject instanceof qms));
+        localObject = (qms)localObject;
+      } while ((((qms)localObject).t == null) || (((qms)localObject).t.getVisibility() != 0));
+      localObject = (nyi)((qms)localObject).t.getTag(2131379208);
+    } while ((localObject == null) || (!paramqjf.d.equals(((nyi)localObject).n)));
+    paramqjf = ((qls)((bfzg)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.getAdapter()).a()).a();
+    this.b.post(new VideoFeedsSoftAdDownloadManager.1(this, paramqjf, paramInt1, paramInt2));
   }
 }
 

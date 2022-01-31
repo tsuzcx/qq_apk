@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.RelativeLayout;
 
 class aedf
-  implements View.OnClickListener
+  extends acun
 {
-  aedf(aede paramaede) {}
+  public long a;
+  public RelativeLayout a;
+  public String b;
   
-  public void onClick(View paramView)
-  {
-    aduj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 1, false, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-  }
+  private aedf(aedd paramaedd) {}
 }
 
 

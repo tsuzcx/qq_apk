@@ -1,77 +1,58 @@
-import android.os.Handler;
-import android.os.Message;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
 import android.text.TextUtils;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import android.widget.RelativeLayout;
+import android.widget.VideoView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
-import oicq.wlogin_sdk.tools.util;
-import org.json.JSONObject;
+import java.io.File;
 
-public class bbyx
-  extends WtloginObserver
+final class bbyx
+  implements MediaPlayer.OnErrorListener
 {
-  public bbyx(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
+  bbyx(int paramInt, bbyz parambbyz, VideoView paramVideoView, boolean paramBoolean) {}
   
-  public void OnException(String paramString, int paramInt)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    super.OnException(paramString, paramInt);
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnException() e:" + paramString);
-  }
-  
-  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
-  {
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): ret=" + paramInt);
-    if (paramInt == 0)
-    {
-      if ((paramArrayList != null) && (paramArrayList.size() > 0)) {
-        paramInt = 0;
-      }
-      while (paramInt < paramArrayList.size())
-      {
-        try
-        {
-          paramString = HexUtil.hexStr2Bytes((String)paramArrayList.get(paramInt));
-          int i = util.buf_to_int16(paramString, 0);
-          int j = util.buf_to_int16(paramString, 2);
-          if (i == 54)
-          {
-            paramArrayOfByte1 = new byte[j];
-            System.arraycopy(paramString, 4, paramArrayOfByte1, 0, j);
-            paramString = new String(paramArrayOfByte1);
-            QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): getAppid sucess Json:" + paramString);
-            paramString = new JSONObject(paramString);
-            paramLong = paramString.optLong("open_appid");
-            paramString = paramString.optString("comefrom");
-            this.a.a(paramLong, paramString);
-            if (!TextUtils.isEmpty(paramString))
-            {
-              paramArrayOfByte1 = Message.obtain();
-              paramArrayOfByte1.what = 1004;
-              paramArrayOfByte1.obj = paramString;
-              this.a.b.sendMessage(paramArrayOfByte1);
-            }
-          }
-        }
-        catch (Throwable paramString)
-        {
-          for (;;)
-          {
-            QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): Exeption:", paramString);
-          }
-        }
-        paramInt += 1;
-        continue;
-        QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): getAppid failed for data is null");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("VipFunCallManager", 2, "playing onError what=" + paramInt1 + ", extra=" + paramInt2 + ", funcallid=" + this.jdField_a_of_type_Int);
     }
+    if (this.jdField_a_of_type_Bbyz != null) {
+      this.jdField_a_of_type_Bbyz.a(paramInt1, paramInt2, this.jdField_a_of_type_Int);
+    }
+    paramMediaPlayer = bbyt.a(null, this.jdField_a_of_type_Int, 7, null);
+    if (TextUtils.isEmpty(paramMediaPlayer)) {}
+    label159:
+    RelativeLayout localRelativeLayout;
+    do
+    {
+      for (;;)
+      {
+        return true;
+        if (new File(paramMediaPlayer).exists())
+        {
+          paramMediaPlayer = bawu.a(paramMediaPlayer);
+          if (paramMediaPlayer != null) {}
+          for (paramMediaPlayer = new BitmapDrawable(paramMediaPlayer); (paramMediaPlayer != null) && (this.jdField_a_of_type_AndroidWidgetVideoView != null); paramMediaPlayer = null)
+          {
+            if (this.jdField_a_of_type_Boolean != true) {
+              break label159;
+            }
+            this.jdField_a_of_type_AndroidWidgetVideoView.setBackgroundDrawable(paramMediaPlayer);
+            return true;
+          }
+        }
+      }
+      this.jdField_a_of_type_AndroidWidgetVideoView.setVisibility(8);
+      localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetVideoView.getParent();
+    } while (localRelativeLayout == null);
+    localRelativeLayout.setBackgroundDrawable(paramMediaPlayer);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbyx
  * JD-Core Version:    0.7.0.1
  */

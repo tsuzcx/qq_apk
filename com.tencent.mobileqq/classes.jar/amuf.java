@@ -1,28 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
-import mqq.app.MobileQQ;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class amuf
-  implements DialogInterface.OnClickListener
+public class amuf
 {
-  amuf(amua paramamua) {}
+  private int a;
+  private int b;
+  private int c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static amuf a(String paramString)
   {
-    paramDialogInterface.cancel();
-    amua.a(this.a).b();
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0).edit().remove(this.a.jdField_a_of_type_JavaLangString + DBFixManager.g).commit();
-    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, amua.f, amua.f, 0, 0, "", "", "", "");
-    amua.a(this.a).c();
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        amuf localamuf = new amuf();
+        paramString = new JSONObject(paramString);
+        localamuf.a = paramString.optInt("showVoiceToTextSwitch", -1);
+        localamuf.b = paramString.optInt("grayTipShowPerThousand", -1);
+        localamuf.c = paramString.optInt("mainSwitch", -1);
+        return localamuf;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("PttAutoChangeProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public int a()
+  {
+    return this.b;
+  }
+  
+  public boolean a()
+  {
+    return this.a == 1;
+  }
+  
+  public String toString()
+  {
+    return "open:" + this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amuf
  * JD-Core Version:    0.7.0.1
  */

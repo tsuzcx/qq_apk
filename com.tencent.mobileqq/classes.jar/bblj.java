@@ -1,21 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-
-class bblj
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bblj
 {
-  bblj(bblh parambblh) {}
+  public abstract void a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    bblh.a(this.a).setAlpha(f);
-  }
+  public abstract void a(String paramString, long paramLong, boolean paramBoolean);
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bblj
  * JD-Core Version:    0.7.0.1
  */

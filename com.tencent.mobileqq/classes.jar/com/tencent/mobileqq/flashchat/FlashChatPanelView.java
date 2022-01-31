@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.flashchat;
 
-import aael;
-import ajjy;
+import aaod;
+import ajyc;
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
-import apgr;
-import apgz;
-import aqdf;
-import awqx;
-import bbmy;
+import apyu;
+import apzc;
+import aqxh;
+import axqw;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -23,9 +23,9 @@ import mqq.os.MqqHandler;
 
 public class FlashChatPanelView
   extends RichTextPanelView
-  implements apgz
+  implements apzc
 {
-  private static final String jdField_a_of_type_JavaLangString = ajjy.a(2131638826);
+  private static final String jdField_a_of_type_JavaLangString = ajyc.a(2131704611);
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   private FlashChatTextEffectView jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView;
   
@@ -56,22 +56,22 @@ public class FlashChatPanelView
   
   public void a(View paramView, int paramInt1, int paramInt2)
   {
-    if (!aqdf.c.get()) {}
+    if (!aqxh.c.get()) {}
     label128:
     do
     {
       return;
       Object localObject = new StringBuilder();
-      apgr localapgr = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView.a(paramInt1);
-      if ((localapgr != null) && (localapgr.a != null)) {}
-      for (paramInt1 = localapgr.a.id;; paramInt1 = -1)
+      apyu localapyu = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView.a(paramInt1);
+      if ((localapyu != null) && (localapyu.a != null)) {}
+      for (paramInt1 = localapyu.a.id;; paramInt1 = -1)
       {
         paramView = (FlashChatManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(217);
         paramView.a(((StringBuilder)localObject).toString());
         if (!this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString().isEmpty()) {
           break label128;
         }
-        if ((localapgr == null) || (localapgr.a == null) || (localapgr.a.id != -100001)) {
+        if ((localapyu == null) || (localapyu.a == null) || (localapyu.a.id != -100001)) {
           break;
         }
         return;
@@ -84,13 +84,13 @@ public class FlashChatPanelView
     } while (paramView == null);
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setCompoundDrawables(null, null, null, null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131307025, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131372737, null);
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(0);
-    aael.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), paramView);
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80094D6", "0X80094D6", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aA();
+    aaod.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), paramView);
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80094D6", "0X80094D6", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aC();
     return;
-    bbmy.a(getContext(), ajjy.a(2131638825), 0).a();
+    bcpw.a(getContext(), ajyc.a(2131704610), 0).a();
   }
   
   public void a(boolean paramBoolean)

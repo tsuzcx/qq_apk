@@ -14,11 +14,11 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import azwp;
-import bfpk;
-import bfuj;
-import bfuk;
-import bgor;
+import baxt;
+import bgxr;
+import bhct;
+import bhcu;
+import bhxo;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -40,8 +40,8 @@ public class TimeHeaderLayout
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  bfuj jdField_a_of_type_Bfuj;
-  bfuk jdField_a_of_type_Bfuk;
+  bhct jdField_a_of_type_Bhct;
+  bhcu jdField_a_of_type_Bhcu;
   TextView b;
   TextView c;
   
@@ -82,31 +82,31 @@ public class TimeHeaderLayout
     if (!TextUtils.isEmpty(str3)) {
       str1 = str2.replace("{uin}", str3).replace("{hostUin}", str3);
     }
-    return str1.replace("{clicktime}", System.currentTimeMillis() + "").replace("{from}", "androidQQ").replace("{qua}", bfpk.a());
+    return str1.replace("{clicktime}", System.currentTimeMillis() + "").replace("{from}", "androidQQ").replace("{qua}", bgxr.a());
   }
   
   private void a()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    LayoutInflater.from(getContext()).inflate(2131496399, this, true);
+    LayoutInflater.from(getContext()).inflate(2131561998, this, true);
     this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qzone_time_capsule", 0);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131311458);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297399));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131308777));
-    this.b = ((TextView)findViewById(2131308302));
-    this.c = ((TextView)findViewById(2131308847));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131303391));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131377271);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362939));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374514));
+    this.b = ((TextView)findViewById(2131374023));
+    this.c = ((TextView)findViewById(2131374584));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369058));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    findViewById(2131311458).setOnClickListener(this);
-    bgor.a(9, 1);
+    findViewById(2131377271).setOnClickListener(this);
+    bhxo.a(9, 1);
   }
   
-  private void a(bfuj parambfuj)
+  private void a(bhct parambhct)
   {
     LpReportInfo_dc02880 localLpReportInfo_dc02880 = new LpReportInfo_dc02880(7, 3);
     LpReportManager.getInstance().reportToDC02880(localLpReportInfo_dc02880, false, true);
-    if ((this.jdField_a_of_type_Bfuk != null) && (parambfuj != null)) {
-      this.jdField_a_of_type_Bfuk.a(parambfuj.jdField_a_of_type_JavaLangString, 2131311458);
+    if ((this.jdField_a_of_type_Bhcu != null) && (parambhct != null)) {
+      this.jdField_a_of_type_Bhcu.a(parambhct.jdField_a_of_type_JavaLangString, 2131377271);
     }
   }
   
@@ -121,35 +121,35 @@ public class TimeHeaderLayout
   
   private void b()
   {
-    Object localObject = azwp.a(1, 3);
-    localObject = azwp.a(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, 1, BaseApplicationImpl.getApplication().getRuntime().getAccount(), 3, (Drawable)localObject, (Drawable)localObject, null);
+    Object localObject = baxt.a(1, 3);
+    localObject = baxt.a(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, 1, BaseApplicationImpl.getApplication().getRuntime().getAccount(), 3, (Drawable)localObject, (Drawable)localObject, null);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    if (this.jdField_a_of_type_Bfuj != null)
+    if (this.jdField_a_of_type_Bhct != null)
     {
-      if (this.jdField_a_of_type_Bfuj.c <= 999L) {
+      if (this.jdField_a_of_type_Bhct.c <= 999L) {
         break label120;
       }
       this.c.setText("999+");
-      if (this.jdField_a_of_type_Bfuj.b <= 999L) {
+      if (this.jdField_a_of_type_Bhct.b <= 999L) {
         break label140;
       }
       this.b.setText("999+");
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bfuj.jdField_a_of_type_Long <= 9999L) {
+      if (this.jdField_a_of_type_Bhct.jdField_a_of_type_Long <= 9999L) {
         break label160;
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setText("9999+");
       return;
       label120:
-      this.c.setText(String.valueOf(this.jdField_a_of_type_Bfuj.c));
+      this.c.setText(String.valueOf(this.jdField_a_of_type_Bhct.c));
       break;
       label140:
-      this.b.setText(String.valueOf(this.jdField_a_of_type_Bfuj.b));
+      this.b.setText(String.valueOf(this.jdField_a_of_type_Bhct.b));
     }
     label160:
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_a_of_type_Bfuj.jdField_a_of_type_Long));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_a_of_type_Bhct.jdField_a_of_type_Long));
   }
   
   public void onClick(View paramView)
@@ -160,28 +160,28 @@ public class TimeHeaderLayout
     do
     {
       return;
-      a(this.jdField_a_of_type_Bfuj);
+      a(this.jdField_a_of_type_Bhct);
       return;
-    } while (this.jdField_a_of_type_Bfuk == null);
+    } while (this.jdField_a_of_type_Bhcu == null);
     paramView = a();
     if (QLog.isColorLevel()) {
       QLog.i("QZoneMsg", 0, " jump url = " + paramView);
     }
-    bgor.a(9, 2);
-    this.jdField_a_of_type_Bfuk.a(paramView, 2131303391);
+    bhxo.a(9, 2);
+    this.jdField_a_of_type_Bhcu.a(paramView, 2131369058);
   }
   
-  public void setHeadInfo(bfuj parambfuj)
+  public void setHeadInfo(bhct parambhct)
   {
-    this.jdField_a_of_type_Bfuj = parambfuj;
-    if (parambfuj != null) {
+    this.jdField_a_of_type_Bhct = parambhct;
+    if (parambhct != null) {
       ThreadManagerV2.executeOnSubThread(new TimeHeaderLayout.1(this));
     }
   }
   
-  public void setOnDetailClickListner(bfuk parambfuk)
+  public void setOnDetailClickListner(bhcu parambhcu)
   {
-    this.jdField_a_of_type_Bfuk = parambfuk;
+    this.jdField_a_of_type_Bhcu = parambhcu;
   }
 }
 

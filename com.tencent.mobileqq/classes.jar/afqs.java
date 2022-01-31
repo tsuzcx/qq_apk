@@ -1,20 +1,19 @@
-class afqs
-  extends ajfo
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment;
+
+public class afqs
+  extends View.AccessibilityDelegate
 {
-  afqs(afqi paramafqi) {}
+  public afqs(ContactsBaseFragment paramContactsBaseFragment) {}
   
-  protected void onGetMedal(boolean paramBoolean1, boolean paramBoolean2)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    if (paramBoolean1) {
-      this.a.e();
+    int i = paramInt;
+    if (paramInt == 8) {
+      i = 32768;
     }
-  }
-  
-  protected void onGetSignInInfo(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.e();
-    }
+    super.sendAccessibilityEvent(paramView, i);
   }
 }
 

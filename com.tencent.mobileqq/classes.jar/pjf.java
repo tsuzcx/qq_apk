@@ -1,15 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-class pjf
-  implements View.OnClickListener
+public class pjf
+  implements ViewBase.OnClickListener
 {
-  pjf(pjd parampjd) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  public final String a;
   
-  public void onClick(View paramView)
+  public pjf(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    obz.a(this.a.jdField_a_of_type_AndroidContentContext, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 2, false, 2, false);
-    qoe.a(((opw)this.a.jdField_a_of_type_JavaLangObject).a(), ((opw)this.a.jdField_a_of_type_JavaLangObject).e());
+    this.jdField_a_of_type_JavaLangString = "OnTopicCapsuleClickListener";
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {}
+    String str;
+    do
+    {
+      return;
+      str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessUrl;
+      if (QLog.isColorLevel()) {
+        QLog.d("OnTopicCapsuleClickListener", 2, "business url is " + str);
+      }
+    } while ((TextUtils.isEmpty(str)) || (this.jdField_a_of_type_AndroidContentContext == null));
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, PublicAccountBrowser.class);
+    localIntent.putExtra("url", str);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    noo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    rap.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    a();
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.wstt.SSCM;
 
-import best;
-import besu;
-import besv;
+import bgan;
+import bgao;
+import bgap;
 import java.util.TimerTask;
 
 public class SSCMTimer$1
@@ -12,34 +12,34 @@ public class SSCMTimer$1
   {
     long l;
     int i;
-    if (best.a(this.this$0))
+    if (bgan.a(this.this$0))
     {
-      l = Long.parseLong(besv.a());
+      l = Long.parseLong(bgap.a());
       if (l == -1L)
       {
-        best.a(this.this$0, false);
+        bgan.a(this.this$0, false);
         i = 0;
       }
     }
     for (;;)
     {
       if (i > 0) {
-        best.a(this.this$0, 0);
+        bgan.a(this.this$0, 0);
       }
       do
       {
         do
         {
           return;
-          i = (int)(l - best.a(this.this$0));
-          best.a(this.this$0, l);
+          i = (int)(l - bgan.a(this.this$0));
+          bgan.a(this.this$0, l);
           break;
-          best.a(this.this$0, best.a(this.this$0) + best.b(this.this$0));
-        } while (best.a(this.this$0) < 120000);
-        best.b(this.this$0, 1);
+          bgan.a(this.this$0, bgan.a(this.this$0) + bgan.b(this.this$0));
+        } while (bgan.a(this.this$0) < 120000);
+        bgan.b(this.this$0, 1);
         cancel();
-      } while (best.a(this.this$0) == null);
-      best.a(this.this$0).b(best.a(this.this$0));
+      } while (bgan.a(this.this$0) == null);
+      bgan.a(this.this$0).b(bgan.a(this.this$0));
       return;
       i = 0;
     }

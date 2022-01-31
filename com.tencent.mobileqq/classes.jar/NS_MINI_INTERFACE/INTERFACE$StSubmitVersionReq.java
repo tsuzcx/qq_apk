@@ -12,10 +12,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class INTERFACE$StSubmitVersionReq
   extends MessageMicro<StSubmitVersionReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 50, 58, 64, 74, 82, 88, 96, 104, 114 }, new String[] { "extInfo", "appid", "version", "versionType", "intro", "mainPkg", "subPkgs", "pkgType", "firstPage", "roomId", "supportOffline", "skipDomainCheck", "property", "usePlugin" }, new Object[] { null, "", "", Integer.valueOf(0), "", null, null, Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null }, StSubmitVersionReq.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 50, 58, 64, 74, 82, 88, 96, 104, 114, 122 }, new String[] { "extInfo", "appid", "version", "versionType", "intro", "mainPkg", "subPkgs", "pkgType", "firstPage", "roomId", "supportOffline", "skipDomainCheck", "property", "usePlugin", "ideConfig" }, new Object[] { null, "", "", Integer.valueOf(0), "", null, null, Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, null }, StSubmitVersionReq.class);
   public final PBStringField appid = PBField.initString("");
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();
   public final PBStringField firstPage = PBField.initString("");
+  public INTERFACE.StIdeConfig ideConfig = new INTERFACE.StIdeConfig();
   public final PBStringField intro = PBField.initString("");
   public INTERFACE.StMainPkgInfo mainPkg = new INTERFACE.StMainPkgInfo();
   public final PBUInt32Field pkgType = PBField.initUInt32(0);

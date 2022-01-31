@@ -1,19 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.AVRedPacketConfig.ExpressionInfo;
-
-public final class llp
-  implements Parcelable.Creator<AVRedPacketConfig.ExpressionInfo>
+public class llp
 {
-  public AVRedPacketConfig.ExpressionInfo a(Parcel paramParcel)
-  {
-    return new AVRedPacketConfig.ExpressionInfo(paramParcel);
-  }
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = "";
+  int jdField_b_of_type_Int = 0;
+  String jdField_b_of_type_JavaLangString = "";
+  int jdField_c_of_type_Int = 0;
+  String jdField_c_of_type_JavaLangString = "";
+  int jdField_d_of_type_Int = 0;
+  String jdField_d_of_type_JavaLangString = "";
+  int jdField_e_of_type_Int = 0;
+  String jdField_e_of_type_JavaLangString = "";
+  int f = 0;
+  int g = 0;
+  int h = 0;
+  int i = 0;
+  int j = 0;
+  int k = 0;
+  int l = 0;
+  int m = 0;
   
-  public AVRedPacketConfig.ExpressionInfo[] a(int paramInt)
-  {
-    return new AVRedPacketConfig.ExpressionInfo[paramInt];
-  }
+  public llp(llf paramllf) {}
 }
 
 

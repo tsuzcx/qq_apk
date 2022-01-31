@@ -1,69 +1,76 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.app.MobileQQ;
 
 public class apkc
+  extends apka
 {
-  public View a;
-  public ImageView a;
-  public ProgressBar a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  public azqt a;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  final String jdField_a_of_type_JavaLangString = "TroopFileViewerAdapter";
   
-  public void a(Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
+  public apkc(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
   {
-    if (paramDrawable == null) {
-      return;
+    super(paramQQAppInterface, paramFileManagerEntity);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Boolean = apue.a(paramQQAppInterface.getApplication().getBaseContext(), paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize);
+    if ((paramFileManagerEntity.isZipInnerFile) && (apue.a(paramQQAppInterface, this))) {
+      this.jdField_a_of_type_Boolean = false;
     }
-    if (paramBoolean1)
+    this.jdField_a_of_type_Azqt = bakj.a(paramQQAppInterface, paramFileManagerEntity);
+    if ((this.jdField_a_of_type_Azqt.b == 2) || (this.jdField_a_of_type_Azqt.b == 3))
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(13);
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      if (!paramBoolean2)
+      boolean bool3 = apue.a(this);
+      if (c() == 3)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
-        this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(bajq.a(140.0F));
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
-        if (paramInt >= 2) {
-          break;
+        boolean bool1 = bool2;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          bool1 = bool2;
+          if (bool3) {
+            bool1 = true;
+          }
         }
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(null);
-        return;
-        this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
-        this.jdField_a_of_type_AndroidWidgetImageView.setMaxWidth(bajq.a(120.0F));
-        this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(bajq.a(120.0F));
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        this.jdField_a_of_type_Boolean = bool1;
       }
-      if (paramInt == 2)
-      {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839580);
-        return;
-      }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839581);
-      return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramDrawable, null, null, null);
-    if (paramDrawable != null)
+  }
+  
+  public int c()
+  {
+    if (apvb.b(super.g())) {
+      return 3;
+    }
+    return super.c();
+  }
+  
+  public int d()
+  {
+    if ((c() == 6) && (e() == 31)) {
+      return super.d();
+    }
+    if (this.jdField_a_of_type_Azqt != null) {
+      return this.jdField_a_of_type_Azqt.b;
+    }
+    return 0;
+  }
+  
+  public String i()
+  {
+    String str2 = apvb.a(super.b());
+    String str1 = str2;
+    if (104 == super.a().busId)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      return;
+      str1 = str2;
+      if (super.a().lastTime > 0L)
+      {
+        str1 = str2 + BaseApplicationImpl.getContext().getString(2131692475);
+        str1 = str1 + bakj.a(BaseApplicationImpl.getContext(), super.a().lastTime);
+      }
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    return str1;
   }
 }
 

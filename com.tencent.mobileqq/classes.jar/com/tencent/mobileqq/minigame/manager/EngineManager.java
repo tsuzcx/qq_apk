@@ -96,6 +96,21 @@ public class EngineManager
     paramEngineChannel.send(54, null);
   }
   
+  public static boolean isEngineGTLocalQQVersion(EngineVersion paramEngineVersion)
+  {
+    boolean bool = true;
+    try
+    {
+      int i = paramEngineVersion.compareTo(LocalGameEngine.g().mLocalEngineVersion);
+      if (i < 0) {
+        bool = false;
+      }
+      return bool;
+    }
+    catch (Throwable paramEngineVersion) {}
+    return true;
+  }
+  
   private void preInstallLocalGameLib()
   {
     Iterator localIterator = getEngineList(2).iterator();

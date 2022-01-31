@@ -1,50 +1,109 @@
-import android.support.annotation.NonNull;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
 public class uak
-  extends QQUIEventReceiver<StoryPickerFragment, tnk>
+  extends uaj
 {
-  public uak(@NonNull StoryPickerFragment paramStoryPickerFragment)
+  private uaj a;
+  
+  public Activity a()
   {
-    super(paramStoryPickerFragment);
+    return this.a.a();
   }
   
-  public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull tnk paramtnk)
+  public OpenPlayerBuilder.Data a()
   {
-    paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.clear();
-    paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.addAll(paramtnk.jdField_a_of_type_JavaUtilArrayList);
-    List localList = paramStoryPickerFragment.jdField_a_of_type_Uau.a();
-    int i = 0;
-    while (i < localList.size())
-    {
-      Iterator localIterator = ((VideoCollectionItem)localList.get(i)).collectionVideoUIItemList.iterator();
-      while (localIterator.hasNext())
-      {
-        uhj localuhj = (uhj)localIterator.next();
-        if (paramtnk.jdField_a_of_type_JavaUtilArrayList.contains(localuhj.jdField_a_of_type_JavaLangString)) {
-          localuhj.jdField_a_of_type_Boolean = true;
-        } else {
-          localuhj.jdField_a_of_type_Boolean = false;
-        }
-      }
-      i += 1;
-    }
-    paramStoryPickerFragment.c();
-    if (paramtnk.jdField_a_of_type_Boolean) {
-      paramStoryPickerFragment.rightViewText.performClick();
-    }
+    return this.a.a();
   }
   
-  public Class acceptEventClass()
+  public XViewPager a()
   {
-    return tnk.class;
+    return this.a.a();
+  }
+  
+  public String a(String paramString)
+  {
+    return this.a.a(paramString);
+  }
+  
+  public two a()
+  {
+    return this.a.a();
+  }
+  
+  public twr a()
+  {
+    return this.a.a();
+  }
+  
+  public uab a()
+  {
+    return this.a.a();
+  }
+  
+  public uaj a()
+  {
+    return this.a;
+  }
+  
+  public uau a()
+  {
+    return this.a.a();
+  }
+  
+  public void a()
+  {
+    this.a.a();
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    this.a.a(paramIntent);
+  }
+  
+  public void a(ssy paramssy)
+  {
+    this.a.a(paramssy);
+  }
+  
+  public void a(tyz paramtyz)
+  {
+    this.a.a(paramtyz);
+  }
+  
+  public void a(uaj paramuaj)
+  {
+    if (this.a != null) {
+      throw new IllegalStateException("Base context already set");
+    }
+    this.a = paramuaj;
+  }
+  
+  public void a(ubc paramubc)
+  {
+    this.a.a(paramubc);
+  }
+  
+  public boolean a()
+  {
+    return this.a.a();
+  }
+  
+  public void b(ssy paramssy)
+  {
+    this.a.b(paramssy);
+  }
+  
+  public void b(tyz paramtyz)
+  {
+    this.a.b(paramtyz);
+  }
+  
+  public boolean b()
+  {
+    return this.a.b();
   }
 }
 

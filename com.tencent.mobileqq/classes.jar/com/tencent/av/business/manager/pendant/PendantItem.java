@@ -1,15 +1,17 @@
 package com.tencent.av.business.manager.pendant;
 
-import kxb;
+import lhq;
 
 public class PendantItem
-  extends kxb
+  extends lhq
 {
+  public static final int Category_BeautyMakeup = 3;
   public static final int Category_Face = 0;
   public static final int Category_FaceAndGesture = 2;
   public static final int Category_Gesture = 1;
   private int category;
   private String desc;
+  public Object extraParam;
   private String filtername;
   private String gestureType;
   private String gestureWording;
@@ -21,11 +23,15 @@ public class PendantItem
   private String name = "";
   private int platform;
   private boolean predownload;
-  private boolean renderfirst = true;
   private String resurl;
   private int type;
   private boolean usable;
   private int voiceid;
+  
+  public static boolean isBeautyMakeup(int paramInt)
+  {
+    return paramInt == 3;
+  }
   
   public static boolean isFace(int paramInt)
   {
@@ -107,11 +113,6 @@ public class PendantItem
     return this.platform;
   }
   
-  public boolean getRenderFirst()
-  {
-    return this.renderfirst;
-  }
-  
   public String getResurl()
   {
     return this.resurl;
@@ -149,7 +150,7 @@ public class PendantItem
   
   public String toString()
   {
-    return "id[" + this.id + "], name[" + this.name + "], type[" + this.type + "], category[" + this.category + "], gestureType[" + this.gestureType + "], kind[" + this.kind + "], isDownloading[" + this.isDownloading + "]";
+    return "id[" + this.id + "], name[" + this.name + "], type[" + this.type + "], category[" + this.category + "], gestureType[" + this.gestureType + "], kind[" + this.kind + "], isDownloading[" + this.isDownloading + "], extraParam[" + this.extraParam + "]";
   }
 }
 

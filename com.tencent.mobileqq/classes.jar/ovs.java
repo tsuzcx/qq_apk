@@ -1,18 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 import com.tencent.qphone.base.util.QLog;
 
-class ovs
-  implements ViewBase.OnClickListener
+public class ovs
+  extends osp
 {
-  ovs(ovq paramovq, Container paramContainer, opw paramopw, int paramInt) {}
+  public ovs(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    ovq.a(this.jdField_a_of_type_Ovq, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Opw, this.jdField_a_of_type_Int);
     if (QLog.isColorLevel()) {
-      QLog.d("PgcProteusItem", 2, "click gallery comment for jumping to gallery articleinfo = " + this.jdField_a_of_type_Opw.a() + " position = " + this.jdField_a_of_type_Int);
+      QLog.d("Q.readinjoy.self.SelfFragment", 2, "onGetFollowAndFansResultAndForbidden retCode:" + paramInt1 + ", followCnt:" + paramInt2 + ", fansCnt:" + paramInt3 + ", isForbidden" + paramBoolean);
+    }
+    if (paramInt1 == 0) {
+      this.a.a(paramInt2, paramInt3, paramBoolean);
     }
   }
 }

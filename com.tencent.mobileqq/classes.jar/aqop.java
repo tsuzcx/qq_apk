@@ -1,32 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.intervideo.nowproxy.NowLive;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
 
 class aqop
-  extends BroadcastReceiver
+  implements Animation.AnimationListener
 {
-  aqop(aqod paramaqod) {}
+  aqop(aqoo paramaqoo) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramContext = paramIntent.getAction();
-    if ("mqq.intent.action.ACCOUNT_EXPIRED".equals(paramContext))
-    {
-      QLog.i("XProxy|NowProxy", 1, "accountReceiver, expired");
-      NowLive.killPluginProcess();
+    this.a.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (!this.a.jdField_a_of_type_Aqoi.g()) {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
-    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext)) {
-      return;
-    }
-    QLog.i("XProxy|NowProxy", 1, "accountReceiver, kicked");
-    NowLive.killPluginProcess();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqop
  * JD-Core Version:    0.7.0.1
  */

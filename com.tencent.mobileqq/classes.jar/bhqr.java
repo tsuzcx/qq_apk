@@ -1,27 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.view.VideoCoverPickerProviderView;
-import java.lang.ref.WeakReference;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class bhqr
-  implements View.OnClickListener
+class bhqr
+  extends BroadcastReceiver
 {
-  public bhqr(VideoCoverPickerProviderView paramVideoCoverPickerProviderView) {}
+  bhqr(bhqq parambhqq) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (VideoCoverPickerProviderView.a(this.a) != null)
+    if (paramIntent.getAction().equals("com.tencent.qq.syncSecretShuoshuoMsg"))
     {
-      paramView = (bhqt)VideoCoverPickerProviderView.a(this.a).get();
-      if (paramView != null) {
-        paramView.a(VideoCoverPickerProviderView.a(this.a), true);
-      }
+      int i = paramIntent.getIntExtra("com.tencent.qq.syncSecretShuoshuoMsgType", 0);
+      bhqq.a(this.a, i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhqr
  * JD-Core Version:    0.7.0.1
  */

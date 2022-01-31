@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.magicface.drawable;
 
-import anam;
 import android.os.Handler;
 import android.os.Message;
-import anjd;
-import arga;
-import argg;
-import argh;
-import arnz;
-import batm;
-import bato;
+import anqu;
+import anzm;
+import ascc;
+import asci;
+import ascj;
+import askd;
+import bbwg;
+import bbwi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import java.io.File;
@@ -17,13 +17,13 @@ import java.io.File;
 public class PngFrameManager$2
   implements Runnable
 {
-  public PngFrameManager$2(arga paramarga, argg paramargg) {}
+  public PngFrameManager$2(ascc paramascc, asci paramasci) {}
   
   public void run()
   {
-    File localFile = new File(anjd.r.replace("[epId]", this.a.jdField_a_of_type_JavaLangString));
-    arnz localarnz = (arnz)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
-    ??? = localarnz.a(this.a.jdField_a_of_type_JavaLangString);
+    File localFile = new File(anzm.r.replace("[epId]", this.a.jdField_a_of_type_JavaLangString));
+    askd localaskd = (askd)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
+    ??? = localaskd.a(this.a.jdField_a_of_type_JavaLangString);
     Object localObject1 = ???;
     if (??? == null)
     {
@@ -38,22 +38,22 @@ public class PngFrameManager$2
         if (!localFile.exists()) {
           break label165;
         }
-        this.a.jdField_a_of_type_Int = this.this$0.jdField_a_of_type_Argh.a(localFile);
+        this.a.jdField_a_of_type_Int = this.this$0.jdField_a_of_type_Ascj.a(localFile);
         this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(224, this.a).sendToTarget();
         ((EmoticonPackage)localObject1).rscType = this.a.jdField_a_of_type_Int;
-        localarnz.a((EmoticonPackage)localObject1);
+        localaskd.a((EmoticonPackage)localObject1);
       }
       label165:
-      batm localbatm;
+      bbwg localbbwg;
       do
       {
         return;
-        localbatm = new batm(anam.a(this.a.jdField_a_of_type_JavaLangString), localFile);
-        localbatm.j = true;
-      } while ((bato.a(localbatm, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 0) || (this.this$0.jdField_a_of_type_Argh == null) || (this.this$0.jdField_a_of_type_AndroidOsHandler == null));
-      this.a.jdField_a_of_type_Int = this.this$0.jdField_a_of_type_Argh.a(localFile);
+        localbbwg = new bbwg(anqu.a(this.a.jdField_a_of_type_JavaLangString), localFile);
+        localbbwg.j = true;
+      } while ((bbwi.a(localbbwg, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 0) || (this.this$0.jdField_a_of_type_Ascj == null) || (this.this$0.jdField_a_of_type_AndroidOsHandler == null));
+      this.a.jdField_a_of_type_Int = this.this$0.jdField_a_of_type_Ascj.a(localFile);
       ((EmoticonPackage)localObject1).rscType = this.a.jdField_a_of_type_Int;
-      localarnz.a((EmoticonPackage)localObject1);
+      localaskd.a((EmoticonPackage)localObject1);
       this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(224, this.a).sendToTarget();
     }
   }

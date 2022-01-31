@@ -1,225 +1,400 @@
-import android.os.SystemClock;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.support.annotation.Nullable;
+import android.support.v4.view.ViewCompat;
+import android.text.Layout;
+import android.text.TextPaint;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.ViewParent;
+import android.view.accessibility.AccessibilityEvent;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 
 public class ruf
+  extends LinearLayout
 {
-  public static int a;
-  private static long jdField_a_of_type_Long;
-  private static ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap(8));
-  public static boolean a;
-  private static long b;
-  public static boolean b;
-  private static long c;
-  public static boolean c;
-  private static long d;
-  public static boolean d;
-  private static long e;
-  public static boolean e;
-  private static long f;
+  private int jdField_a_of_type_Int = 2;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private rue jdField_a_of_type_Rue;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
   
-  static
+  public ruf(TabLayoutCompat paramTabLayoutCompat, Context paramContext)
   {
-    jdField_a_of_type_Boolean = true;
-    jdField_b_of_type_Boolean = true;
-    jdField_c_of_type_Boolean = true;
-    jdField_d_of_type_Boolean = true;
-    jdField_e_of_type_Boolean = true;
-    jdField_a_of_type_Int = 1;
+    super(paramContext);
+    if ((paramTabLayoutCompat.f != 0) && (paramContext != null)) {
+      setBackgroundDrawable(paramContext.getResources().getDrawable(paramTabLayoutCompat.f));
+    }
+    ViewCompat.setPaddingRelative(this, paramTabLayoutCompat.jdField_a_of_type_Int, paramTabLayoutCompat.jdField_b_of_type_Int, paramTabLayoutCompat.c, paramTabLayoutCompat.d);
+    setGravity(17);
+    setOrientation(1);
+    setClickable(true);
   }
   
-  public static void a()
+  private float a(Layout paramLayout, int paramInt, float paramFloat)
   {
-    jdField_a_of_type_Boolean = true;
-    jdField_b_of_type_Boolean = true;
-    jdField_c_of_type_Boolean = true;
-    jdField_d_of_type_Boolean = true;
-    jdField_e_of_type_Boolean = true;
-    jdField_a_of_type_Int = 1;
+    return paramLayout.getLineWidth(paramInt) * (paramFloat / paramLayout.getPaint().getTextSize());
   }
   
-  public static void a(String paramString1, String paramString2)
+  private void a(@Nullable TextView paramTextView, @Nullable ImageView paramImageView)
   {
-    long l = SystemClock.uptimeMillis();
-    if (paramString1 != null)
+    Drawable localDrawable;
+    CharSequence localCharSequence1;
+    label32:
+    CharSequence localCharSequence2;
+    if (this.jdField_a_of_type_Rue != null)
     {
-      paramString2 = (Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
-      if (paramString2 != null)
+      localDrawable = this.jdField_a_of_type_Rue.a();
+      if (this.jdField_a_of_type_Rue == null) {
+        break label176;
+      }
+      localCharSequence1 = this.jdField_a_of_type_Rue.a();
+      if (this.jdField_a_of_type_Rue == null) {
+        break label182;
+      }
+      localCharSequence2 = this.jdField_a_of_type_Rue.b();
+      label48:
+      if (paramImageView != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("PubAccAutoMonitor", 2, paramString1 + ", cost=" + (l - paramString2.longValue()));
+        if (localDrawable == null) {
+          break label188;
         }
-        if (!TextUtils.equals(paramString1, "KANDIAN_NEW_FEEDS_CREATE")) {
-          break label82;
+        paramImageView.setImageDrawable(localDrawable);
+        paramImageView.setVisibility(0);
+        setVisibility(0);
+        label73:
+        paramImageView.setContentDescription(localCharSequence2);
+      }
+      if (TextUtils.isEmpty(localCharSequence1)) {
+        break label202;
+      }
+      i = 1;
+      label89:
+      if (paramTextView != null)
+      {
+        if (i == 0) {
+          break label207;
         }
-        jdField_d_of_type_Long = l - paramString2.longValue();
+        paramTextView.setText(localCharSequence1);
+        paramTextView.setVisibility(0);
+        setVisibility(0);
+        label113:
+        paramTextView.setContentDescription(localCharSequence2);
+      }
+      if (paramImageView != null)
+      {
+        paramTextView = (ViewGroup.MarginLayoutParams)paramImageView.getLayoutParams();
+        if ((i == 0) || (paramImageView.getVisibility() != 0)) {
+          break label221;
+        }
       }
     }
-    label82:
-    label627:
-    while (paramString2 == null)
+    label176:
+    label182:
+    label188:
+    label202:
+    label207:
+    label221:
+    for (int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a(8);; i = 0)
     {
-      do
+      if (i != paramTextView.bottomMargin)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              if (TextUtils.equals(paramString1, "KANDIAN_NEW_FEEDS_LOAD_ARTICLE"))
-              {
-                jdField_e_of_type_Long = l - paramString2.longValue();
-                return;
-              }
-              if (TextUtils.equals(paramString1, "KANDIAN_NEW_FEEDS_LIST_VIEW_GROUP_MEASURE_LAYOUT_DRAW"))
-              {
-                f = l - paramString2.longValue();
-                return;
-              }
-              if (TextUtils.equals(paramString1, "KANDIAN_FEEDS_STAGE_1_COST"))
-              {
-                jdField_a_of_type_Long = l - paramString2.longValue();
-                return;
-              }
-              if (TextUtils.equals(paramString1, "KANDIAN_FEEDS_STAGE_2_COST"))
-              {
-                jdField_b_of_type_Long = l - paramString2.longValue();
-                return;
-              }
-              jdField_c_of_type_Long = l - paramString2.longValue();
-            } while (jdField_c_of_type_Long > 10000L);
-            if (TextUtils.equals(paramString1, "SUBSCRIPT_FEEDS_COST"))
-            {
-              awrn.a(BaseApplicationImpl.getApplication()).a(null, "actSubscribeOpenCost", true, jdField_c_of_type_Long, 0L, null, null);
-              return;
-            }
-            if (TextUtils.equals(paramString1, "SUBSCRIPT_AIO_COST"))
-            {
-              awrn.a(BaseApplicationImpl.getApplication()).a(null, "actSubscribeAIOOpenCost", true, jdField_c_of_type_Long, 0L, null, null);
-              return;
-            }
-            if (!TextUtils.equals(paramString1, "KANDIAN_FEEDS_COST")) {
-              break;
-            }
-            paramString1 = new HashMap();
-            paramString1.put("stage_total", String.valueOf(jdField_c_of_type_Long));
-            paramString1.put("tab_index", String.valueOf(jdField_a_of_type_Int));
-            paramString1.put("stage_1", String.valueOf(jdField_a_of_type_Long));
-            paramString1.put("stage_2", String.valueOf(jdField_b_of_type_Long));
-            paramString1.put("on_create", String.valueOf(jdField_d_of_type_Long));
-            paramString1.put("load_article", String.valueOf(jdField_e_of_type_Long));
-            paramString1.put("listView_cost", String.valueOf(f));
-            awrn.a(BaseApplicationImpl.getApplication()).a(null, "actKandianOpenCost", true, jdField_c_of_type_Long, 0L, paramString1, null);
-          } while (!QLog.isColorLevel());
-          QLog.i("PubAccAutoMonitor", 2, "isRecommendFirst = " + jdField_a_of_type_Boolean);
-          QLog.d("PubAccAutoMonitor", 2, new Object[] { "kandian_feeds_open_cost, total_cost = ", Long.valueOf(jdField_c_of_type_Long), ", tab_index = ", Integer.valueOf(jdField_a_of_type_Int) });
-          return;
-          if (TextUtils.equals(paramString1, "KANDIAN_TO_SUBSCRIPT_COST"))
-          {
-            awrn.a(BaseApplicationImpl.getApplication()).a(null, "actKandianToSubscribeCost", true, jdField_c_of_type_Long, 0L, null, null);
-            return;
-          }
-        } while (TextUtils.equals(paramString1, "LEBA_KANDIAN_FEEDS_COST"));
-        if (TextUtils.equals(paramString1, "SERVICE_FOLDER_COST"))
-        {
-          awrn.a(BaseApplicationImpl.getApplication()).a(null, "actServiceFolderToServiceNumListCost", true, jdField_c_of_type_Long, 0L, null, null);
-          return;
-        }
-        if (TextUtils.equals(paramString1, "recommend_tab_cost"))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("PubAccAutoMonitor", 2, "isRecommendCostFirst = " + jdField_b_of_type_Boolean);
-          }
-          paramString2 = new HashMap();
-          if (jdField_b_of_type_Boolean)
-          {
-            i = 1;
-            paramString2.put("first", String.valueOf(i));
-            paramString2.put("which", String.valueOf(1));
-            if (!bgmq.i()) {
-              break label627;
-            }
-          }
-          for (paramString1 = "0";; paramString1 = "1")
-          {
-            paramString2.put("which_kandian", paramString1);
-            awrn.a(BaseApplicationImpl.getApplication()).a(null, "actKandianTabOpenCost", true, jdField_c_of_type_Long, 0L, paramString2, null);
-            jdField_b_of_type_Boolean = false;
-            return;
-            i = 0;
-            break;
-          }
-        }
-        if (TextUtils.equals(paramString1, "video_tab_cost"))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("PubAccAutoMonitor", 2, "isVideoFirst = " + jdField_c_of_type_Boolean);
-          }
-          paramString1 = new HashMap();
-          if (jdField_c_of_type_Boolean) {}
-          for (i = 1;; i = 0)
-          {
-            paramString1.put("first", String.valueOf(i));
-            paramString1.put("which", String.valueOf(2));
-            awrn.a(BaseApplicationImpl.getApplication()).a(null, "actKandianTabOpenCost", true, jdField_c_of_type_Long, 0L, paramString1, null);
-            jdField_c_of_type_Boolean = false;
-            return;
-          }
-        }
-        if (TextUtils.equals(paramString1, "subscribe_tab_cost"))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("PubAccAutoMonitor", 2, "isSubscribeFirst = " + jdField_d_of_type_Boolean);
-          }
-          paramString1 = new HashMap();
-          if (jdField_d_of_type_Boolean) {}
-          for (i = 1;; i = 0)
-          {
-            paramString1.put("first", String.valueOf(i));
-            paramString1.put("which", String.valueOf(3));
-            awrn.a(BaseApplicationImpl.getApplication()).a(null, "actKandianTabOpenCost", true, jdField_c_of_type_Long, 0L, paramString1, null);
-            jdField_d_of_type_Boolean = false;
-            return;
-          }
-        }
-      } while (!TextUtils.equals(paramString1, "self_tab_cost"));
-      if (QLog.isColorLevel()) {
-        QLog.i("PubAccAutoMonitor", 2, "isSelfFirst = " + jdField_e_of_type_Boolean);
+        paramTextView.bottomMargin = i;
+        paramImageView.requestLayout();
       }
-      paramString1 = new HashMap();
-      if (jdField_e_of_type_Boolean) {}
-      for (int i = 1;; i = 0)
-      {
-        paramString1.put("first", String.valueOf(i));
-        paramString1.put("which", String.valueOf(4));
-        awrn.a(BaseApplicationImpl.getApplication()).a(null, "actKandianTabOpenCost", true, jdField_c_of_type_Long, 0L, paramString1, null);
-        jdField_e_of_type_Boolean = false;
-        return;
-      }
-    }
-    if (TextUtils.equals(paramString2, "KANDIAN_NEW_FEEDS_CREATE")) {
-      jdField_d_of_type_Long = 0L;
-    }
-    for (;;)
-    {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString2, Long.valueOf(l));
       return;
-      if (TextUtils.equals(paramString2, "KANDIAN_NEW_FEEDS_LOAD_ARTICLE")) {
-        jdField_e_of_type_Long = 0L;
-      } else if (TextUtils.equals(paramString2, "KANDIAN_NEW_FEEDS_LIST_VIEW_GROUP_MEASURE_LAYOUT_DRAW")) {
-        f = 0L;
-      } else if (TextUtils.equals(paramString2, "KANDIAN_FEEDS_STAGE_1_COST")) {
-        jdField_a_of_type_Long = 0L;
-      } else if (TextUtils.equals(paramString2, "KANDIAN_FEEDS_STAGE_2_COST")) {
-        jdField_b_of_type_Long = 0L;
-      } else {
-        jdField_c_of_type_Long = 0L;
+      localDrawable = null;
+      break;
+      localCharSequence1 = null;
+      break label32;
+      localCharSequence2 = null;
+      break label48;
+      paramImageView.setVisibility(8);
+      paramImageView.setImageDrawable(null);
+      break label73;
+      i = 0;
+      break label89;
+      paramTextView.setVisibility(8);
+      paramTextView.setText(null);
+      break label113;
+    }
+  }
+  
+  public void a()
+  {
+    a(null);
+    setSelected(false);
+  }
+  
+  public void a(@Nullable rue paramrue)
+  {
+    if (paramrue != this.jdField_a_of_type_Rue)
+    {
+      this.jdField_a_of_type_Rue = paramrue;
+      b();
+    }
+  }
+  
+  final void b()
+  {
+    rue localrue = this.jdField_a_of_type_Rue;
+    Object localObject;
+    if (localrue != null)
+    {
+      localObject = localrue.a();
+      if (localObject == null) {
+        break label367;
       }
+      ViewParent localViewParent = ((View)localObject).getParent();
+      if (localViewParent != this)
+      {
+        if (localViewParent != null) {
+          ((ViewGroup)localViewParent).removeView((View)localObject);
+        }
+        addView((View)localObject);
+      }
+      this.jdField_a_of_type_AndroidViewView = ((View)localObject);
+      if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      }
+      if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      }
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(16908308));
+      if (this.jdField_b_of_type_AndroidWidgetTextView != null)
+      {
+        if (Build.VERSION.SDK_INT < 16) {
+          break label359;
+        }
+        this.jdField_a_of_type_Int = this.jdField_b_of_type_AndroidWidgetTextView.getMaxLines();
+      }
+      label133:
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(16908294));
+      label146:
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        break label408;
+      }
+      if (this.jdField_a_of_type_AndroidWidgetImageView == null)
+      {
+        localObject = new ImageView(getContext());
+        ((ImageView)localObject).setLayoutParams(new ViewGroup.LayoutParams(48, 48));
+        addView((View)localObject, 0);
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject);
+      }
+      if (this.jdField_a_of_type_AndroidWidgetTextView == null)
+      {
+        localObject = new TextView(getContext());
+        ((TextView)localObject).setMaxLines(2);
+        ((TextView)localObject).setGravity(1);
+        ((TextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
+        ((TextView)localObject).setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+        addView((View)localObject);
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject);
+        if (Build.VERSION.SDK_INT < 16) {
+          break label400;
+        }
+        this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetTextView.getMaxLines();
+      }
+      label278:
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextAppearance(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.e);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.jdField_a_of_type_AndroidContentResColorStateList != null) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.jdField_a_of_type_AndroidContentResColorStateList);
+      }
+      a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidWidgetImageView);
+      label335:
+      if ((localrue == null) || (!localrue.a())) {
+        break label499;
+      }
+    }
+    label359:
+    label367:
+    label499:
+    for (boolean bool = true;; bool = false)
+    {
+      setSelected(bool);
+      return;
+      localObject = null;
+      break;
+      this.jdField_a_of_type_Int = -1;
+      break label133;
+      if (this.jdField_a_of_type_AndroidViewView != null)
+      {
+        removeView(this.jdField_a_of_type_AndroidViewView);
+        this.jdField_a_of_type_AndroidViewView = null;
+      }
+      this.jdField_b_of_type_AndroidWidgetTextView = null;
+      this.jdField_b_of_type_AndroidWidgetImageView = null;
+      break label146;
+      this.jdField_a_of_type_Int = -1;
+      break label278;
+      if ((TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.jdField_a_of_type_AndroidContentResColorStateList != null) && (this.jdField_b_of_type_AndroidWidgetTextView != null))
+      {
+        this.jdField_b_of_type_AndroidWidgetTextView.setTextAppearance(this.jdField_b_of_type_AndroidWidgetTextView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.e);
+        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.jdField_a_of_type_AndroidContentResColorStateList);
+      }
+      if ((this.jdField_b_of_type_AndroidWidgetTextView == null) && (this.jdField_b_of_type_AndroidWidgetImageView == null)) {
+        break label335;
+      }
+      a(this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetImageView);
+      break label335;
+    }
+  }
+  
+  public void onInitializeAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
+  {
+    super.onInitializeAccessibilityEvent(paramAccessibilityEvent);
+  }
+  
+  public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  {
+    super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
+  }
+  
+  public void onMeasure(int paramInt1, int paramInt2)
+  {
+    int k = 1;
+    int j = View.MeasureSpec.getSize(paramInt1);
+    int m = View.MeasureSpec.getMode(paramInt1);
+    int n = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.c();
+    int i = paramInt1;
+    if (n > 0) {
+      if (m != 0)
+      {
+        i = paramInt1;
+        if (j <= n) {}
+      }
+      else
+      {
+        i = View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.g, -2147483648);
+      }
+    }
+    super.onMeasure(i, paramInt2);
+    float f2;
+    float f1;
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    {
+      getResources();
+      f2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.jdField_a_of_type_Float;
+      j = this.jdField_a_of_type_Int;
+      if ((this.jdField_a_of_type_AndroidWidgetImageView == null) || (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0)) {
+        break label285;
+      }
+      paramInt1 = 1;
+      f1 = f2;
+      f2 = this.jdField_a_of_type_AndroidWidgetTextView.getTextSize();
+      m = this.jdField_a_of_type_AndroidWidgetTextView.getLineCount();
+      if (Build.VERSION.SDK_INT < 16) {
+        break label329;
+      }
+    }
+    label285:
+    label329:
+    for (j = this.jdField_a_of_type_AndroidWidgetTextView.getMaxLines();; j = -1)
+    {
+      if ((f1 != f2) || ((j >= 0) && (paramInt1 != j)))
+      {
+        j = k;
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.i == 1)
+        {
+          j = k;
+          if (f1 > f2)
+          {
+            j = k;
+            if (m == 1)
+            {
+              Layout localLayout = this.jdField_a_of_type_AndroidWidgetTextView.getLayout();
+              if (localLayout != null)
+              {
+                j = k;
+                if (a(localLayout, 0, f1) <= getMeasuredWidth() - getPaddingLeft() - getPaddingRight()) {}
+              }
+              else
+              {
+                j = 0;
+              }
+            }
+          }
+        }
+        if (j != 0)
+        {
+          this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, f1);
+          this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(paramInt1);
+          super.onMeasure(i, paramInt2);
+        }
+      }
+      return;
+      paramInt1 = j;
+      f1 = f2;
+      if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
+        break;
+      }
+      paramInt1 = j;
+      f1 = f2;
+      if (this.jdField_a_of_type_AndroidWidgetTextView.getLineCount() <= 1) {
+        break;
+      }
+      f1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.jdField_b_of_type_Float;
+      paramInt1 = j;
+      break;
+    }
+  }
+  
+  public boolean performClick()
+  {
+    int i = 0;
+    boolean bool = super.performClick();
+    if (this.jdField_a_of_type_Rue != null)
+    {
+      if (!bool) {
+        playSoundEffect(0);
+      }
+      rue localrue = TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat);
+      if (TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat) == this.jdField_a_of_type_Rue) {
+        i = 1;
+      }
+      this.jdField_a_of_type_Rue.a();
+      if ((TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat) != null) && (i == 0)) {
+        TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat).a(this.jdField_a_of_type_Rue, localrue, 1);
+      }
+      return true;
+    }
+    return bool;
+  }
+  
+  public void setSelected(boolean paramBoolean)
+  {
+    if (isSelected() != paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      super.setSelected(paramBoolean);
+      if ((i != 0) && (paramBoolean) && (Build.VERSION.SDK_INT < 16)) {
+        sendAccessibilityEvent(4);
+      }
+      if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setSelected(paramBoolean);
+      }
+      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setSelected(paramBoolean);
+      }
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setSelected(paramBoolean);
+      }
+      return;
     }
   }
 }

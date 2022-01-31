@@ -1,64 +1,84 @@
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.adapter.ForwardRecentItemView;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class abcf
-  extends WtloginObserver
+  implements acay
 {
-  public abcf(LoginInfoActivity paramLoginInfoActivity) {}
+  public abcf(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void a(Editable paramEditable)
   {
-    if (this.a.isFinishing()) {
-      return;
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable)) {
+      this.a.a.setVisibility(8);
     }
-    if ((paramInt == 0) && (paramDevlockInfo != null))
+    for (;;)
     {
-      if (QLog.isColorLevel())
+      if (ForwardRecentActivity.a(this.a) != null) {
+        ForwardRecentActivity.a(this.a).a(paramEditable);
+      }
+      return;
+      this.a.a.setVisibility(0);
+    }
+  }
+  
+  public void a(ResultRecord paramResultRecord)
+  {
+    if (paramResultRecord == null) {}
+    for (;;)
+    {
+      return;
+      ForwardRecentActivity.a(this.a, paramResultRecord.a, paramResultRecord.a());
+      int j = ForwardRecentActivity.a(this.a).getChildCount();
+      int i = 0;
+      while (i < j)
       {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus ret = " + paramInt);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.ProtectIntro:" + paramDevlockInfo.ProtectIntro + "  info.MbGuideType:" + paramDevlockInfo.MbGuideType);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideMsg:" + paramDevlockInfo.MbGuideMsg);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
+        Object localObject = ForwardRecentActivity.a(this.a).getChildAt(i);
+        if ((localObject instanceof ForwardRecentItemView))
+        {
+          localObject = (ForwardRecentItemView)localObject;
+          if ((((ForwardRecentItemView)localObject).a.b == paramResultRecord.b) && (((ForwardRecentItemView)localObject).a.a.equals(paramResultRecord.a))) {
+            ((ForwardRecentItemView)localObject).a(false);
+          }
+        }
+        i += 1;
       }
-      annw.a().a(paramDevlockInfo.TransferInfo);
-      LoginInfoActivity.a(this.a, paramDevlockInfo);
-      LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
-      LoginInfoActivity.b(this.a, LoginInfoActivity.a(this.a));
-      return;
     }
-    if (QLog.isColorLevel())
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (ForwardRecentActivity.a(this.a) == null))
     {
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus ret = " + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
+      ForwardRecentActivity.a(this.a, ContactSearchFragment.a(7, 2097177, null, null, ForwardRecentActivity.a(this.a)));
+      Object localObject = new ArrayList();
+      Iterator localIterator = ForwardRecentActivity.a(this.a).values().iterator();
+      while (localIterator.hasNext()) {
+        ((List)localObject).add(((ResultRecord)localIterator.next()).a);
       }
-      if (paramDevlockInfo == null) {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus DevlockInfo is null");
-      }
+      ForwardRecentActivity.a(this.a).a((List)localObject, (List)localObject);
+      localObject = this.a.getSupportFragmentManager().beginTransaction();
+      ((FragmentTransaction)localObject).add(2131375187, ForwardRecentActivity.a(this.a));
+      ((FragmentTransaction)localObject).commitAllowingStateLoss();
     }
-    LoginInfoActivity.d(this.a);
-    paramDevlockInfo = this.a.getString(2131626547);
-    paramWUserSigInfo = paramDevlockInfo;
-    if (paramErrMsg != null)
-    {
-      paramWUserSigInfo = paramDevlockInfo;
-      if (!TextUtils.isEmpty(paramErrMsg.getMessage())) {
-        paramWUserSigInfo = paramErrMsg.getMessage();
-      }
-    }
-    bbmy.a(this.a.getApplicationContext(), paramWUserSigInfo, 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abcf
  * JD-Core Version:    0.7.0.1
  */

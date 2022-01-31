@@ -1,32 +1,43 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multicard.MultiCardRootLayout;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class arwu
-  implements bejp
+  implements View.OnClickListener
 {
-  public arwu(MultiCardRootLayout paramMultiCardRootLayout) {}
+  public arwu(LocationPickFragment paramLocationPickFragment, Activity paramActivity) {}
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    int i = paramMotionEvent.getActionMasked();
-    if (MultiCardRootLayout.a(this.a) != null)
+    int i = 2;
+    if (!bbev.a())
     {
-      arww localarww = (arww)MultiCardRootLayout.a(this.a).get();
-      if ((localarww != null) && (localarww.a(i))) {
-        return true;
-      }
+      bcpw.a(this.jdField_a_of_type_AndroidAppActivity, 2131694010, 0).a();
+      return;
     }
-    if (MultiCardRootLayout.a(this.a) != null) {
-      MultiCardRootLayout.a(this.a).onTouchEvent(paramMotionEvent);
+    paramView = LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationPickFragment", 2, "[venue] pick confirm click: venue: " + paramView);
     }
-    return false;
+    if (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a()) {}
+    for (;;)
+    {
+      axqw.b(null, "CliOper", "", "", "0X800A962", "0X800A962", i, 0, "", "0", "0", "");
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_picked_location", paramView);
+      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+      return;
+      i = 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arwu
  * JD-Core Version:    0.7.0.1
  */

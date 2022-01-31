@@ -1,50 +1,24 @@
-import android.view.MotionEvent;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
 
 class awkp
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  awkp(awkk paramawkk) {}
+  awkp(awko paramawko, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-      bool1 = false;
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (awkk.a(this.a) == null);
-        paramView = awkk.a(this.a).getText().toString().trim();
-        bool1 = bool2;
-      } while (ajjy.a(2131647500).trim().equals(paramView));
-      awkk.a(this.a).setAlpha(0.5F);
-      return true;
-      if (awkk.a(this.a) != null) {
-        awkk.a(this.a).setAlpha(1.0F);
-      }
-      awkk.a(this.a, awkk.a(this.a));
-      awkk.b(this.a, System.currentTimeMillis());
-      bool1 = bool2;
-    } while (awkk.a(this.a) - awkk.b(this.a) < 300L);
-    awkk.a(this.a);
-    return true;
+    paramView = new Intent(this.jdField_a_of_type_Awko.a.getActivity(), QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Awko.a.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awkp
  * JD-Core Version:    0.7.0.1
  */

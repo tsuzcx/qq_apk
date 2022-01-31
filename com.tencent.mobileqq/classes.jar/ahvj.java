@@ -1,17 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahvj
-  implements DialogInterface.OnClickListener
+  implements axic
 {
-  public ahvj(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public ahvj(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".photo", 2, "single tap focus " + paramBoolean1);
+    }
+    ahvz.a(paramBoolean1);
+    if (paramBoolean1)
+    {
+      NewFlowCameraActivity.h(this.a, true);
+      return;
+    }
+    this.a.a.g();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahvj
  * JD-Core Version:    0.7.0.1
  */

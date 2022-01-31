@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.fling;
 
-import afjy;
+import afvv;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
@@ -36,7 +36,7 @@ public class TopContentLayout
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new afjy(this, paramContext));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new afvv(this, paramContext));
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext);
   }
   

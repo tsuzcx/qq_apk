@@ -1,9 +1,27 @@
+import android.os.Bundle;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 
-public abstract interface qph
+class qph
+  implements acwf
 {
-  public abstract void a(BaseArticleInfo paramBaseArticleInfo, View paramView, int paramInt, long paramLong);
+  qph(qpg paramqpg, MessageForShortVideo paramMessageForShortVideo) {}
+  
+  public void a(View paramView, ayqm paramayqm, int paramInt1, int paramInt2)
+  {
+    if ((paramayqm == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) || (paramayqm.jdField_b_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq)) {}
+    while ((paramayqm.jdField_b_of_type_Int != 6) && (paramayqm.jdField_b_of_type_Int != 17) && (paramayqm.jdField_b_of_type_Int != 9) && (paramayqm.jdField_b_of_type_Int != 20)) {
+      return;
+    }
+    paramView = new Bundle();
+    paramView.putInt("VALUE_SHORTVIDEO_RESP_FILE_STATUS", paramayqm.d);
+    paramView.putString("VALUE_SHORTVIDEO_RESP_FILE_DOMAIN", paramayqm.u);
+    paramView.putStringArray("VALUE_SHORTVIDEO_RESP_FILE_URLS", paramayqm.c);
+    paramView.putLong("VALUE_SHORTVIDEO_RESP_FILE_UNISEQ", paramayqm.jdField_b_of_type_Long);
+    QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_SHORTVIDEO_REQUEST_MANUAL_DOWNLOAD", paramView, null);
+  }
 }
 
 

@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.report;
 
-import aciy;
+import actn;
 import android.content.res.Resources;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import pmv;
+import pyq;
 
 public class UserActionCollector$1
   implements Runnable
 {
-  public UserActionCollector$1(pmv parampmv, int paramInt, AbsListView paramAbsListView) {}
+  public UserActionCollector$1(pyq parampyq, int paramInt, AbsListView paramAbsListView) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class UserActionCollector$1
         }
         j = this.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight();
         int k = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentWidgetAbsListView.getContext());
-        int m = this.jdField_a_of_type_ComTencentWidgetAbsListView.getResources().getDimensionPixelOffset(2131167492);
+        int m = this.jdField_a_of_type_ComTencentWidgetAbsListView.getResources().getDimensionPixelOffset(2131298585);
         i = j - k - m;
       }
       catch (Exception localException)
@@ -31,7 +31,7 @@ public class UserActionCollector$1
         {
           int j;
           label75:
-          aciy.a("UserActionCollector", "calculte height error !", localException);
+          actn.a("UserActionCollector", "calculte height error !", localException);
         }
       }
       if (i > 0) {

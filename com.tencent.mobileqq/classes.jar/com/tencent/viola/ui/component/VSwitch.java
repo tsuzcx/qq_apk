@@ -32,10 +32,10 @@ public class VSwitch
   public VSwitch(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
     super(paramViolaInstance, paramDomObject, paramVComponentContainer);
-    paramViolaInstance = new int[] { 16842912 };
+    paramViolaInstance = new int[] { 0 };
     int i = this.mActiveColor;
     int j = this.mInActiveColor;
-    this.mColorStateList = new ColorStateList(new int[][] { paramViolaInstance, { 0 } }, new int[] { i, j });
+    this.mColorStateList = new ColorStateList(new int[][] { { 16842912 }, paramViolaInstance }, new int[] { i, j });
   }
   
   public void addEvent(String paramString)

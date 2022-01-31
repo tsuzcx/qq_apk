@@ -1,21 +1,14 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class akxn
-  implements DialogInterface.OnClickListener
+class akxn
+  implements View.OnClickListener
 {
-  public akxn(ARScanEntryView paramARScanEntryView) {}
+  akxn(akxm paramakxm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    Activity localActivity = (Activity)this.a.a;
-    Intent localIntent = new Intent("android.settings.LOCATION_SOURCE_SETTINGS");
-    localIntent.putExtra("big_brother_source_key", "biz_src_jc_sacan");
-    localActivity.startActivity(localIntent);
-    paramDialogInterface.dismiss();
+    this.a.b();
   }
 }
 

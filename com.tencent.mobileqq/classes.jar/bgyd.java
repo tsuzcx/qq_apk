@@ -1,21 +1,15 @@
-import android.support.annotation.Nullable;
+import cooperation.qzone.LocalMultiProcConfig;
 
-class bgyd
-  implements bhwg<wsh>
+public class bgyd
 {
-  bgyd(bgyc parambgyc) {}
-  
-  public void a(@Nullable wsh paramwsh)
+  public static String a()
   {
-    if (paramwsh == null) {
-      return;
-    }
-    bgyc.a(this.a, paramwsh);
+    return LocalMultiProcConfig.getString("QzoneFamousSpaceSp", bgyf.a().a, "https://h5.qzone.qq.com/vpage/cover/{uin}/vpage-index?screenWidth={screenWidth}&qua={qua}&_proxy=1&_wv=1029&bottom={bottom}");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgyd
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,13 @@ import com.tencent.youtu.ytagreflectlivecheck.controller.ReflectController;
 import com.tencent.youtu.ytagreflectlivecheck.worker.CameraWorker;
 import com.tencent.youtu.ytagreflectlivecheck.worker.DataWorker;
 import com.tencent.youtu.ytcommon.tools.YTLogger;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class ProcessManager
 {
   private static String TAG = "ProcessManager";
+  private static final Lock lock = new ReentrantLock();
   private static CameraWorker mCameraWorker;
   private static DataWorker mDataWorker;
   public static int mProcessState = 0;
@@ -27,12 +30,17 @@ public class ProcessManager
     }
     mProcessState = 3;
     FinishController localFinishController = new FinishController();
-    if (YTAGReflectLiveCheckInterface.mUploadVideoRequesterV2 != null)
+    if (YTAGReflectLiveCheckInterface.mUploadVideoRequesterV3 != null)
     {
-      localFinishController.start(YTAGReflectLiveCheckInterface.mUploadVideoRequesterV2, new ProcessManager.3(), paramLong);
+      localFinishController.start(YTAGReflectLiveCheckInterface.mUploadVideoRequesterV3, new ProcessManager.3(), paramLong);
       return;
     }
-    localFinishController.start(YTAGReflectLiveCheckInterface.mUploadVideoRequester, new ProcessManager.4(), paramLong);
+    if (YTAGReflectLiveCheckInterface.mUploadVideoRequesterV2 != null)
+    {
+      localFinishController.start(YTAGReflectLiveCheckInterface.mUploadVideoRequesterV2, new ProcessManager.4(), paramLong);
+      return;
+    }
+    localFinishController.start(YTAGReflectLiveCheckInterface.mUploadVideoRequester, new ProcessManager.5(), paramLong);
   }
   
   private static void ReflectStart(long paramLong)
@@ -45,7 +53,7 @@ public class ProcessManager
     }
     mProcessState = 2;
     mReflectController = new ReflectController();
-    mReflectController.start(YTAGReflectLiveCheckInterface.mReflectLayout, new ProcessManager.2(), paramLong);
+    mReflectController.start(YTAGReflectLiveCheckInterface.mReflectLayout, YTAGReflectLiveCheckInterface.getReflectListener(), new ProcessManager.2(), paramLong);
   }
   
   public static CameraWorker cameraWorker()
@@ -66,12 +74,21 @@ public class ProcessManager
   
   public static void clearAll()
   {
-    mRetainCount -= 1;
-    if (mRetainCount == 0)
+    lock.lock();
+    try
     {
-      mDataWorker = null;
-      mCameraWorker = null;
-      mProcessState = 0;
+      mRetainCount -= 1;
+      if (mRetainCount == 0)
+      {
+        mDataWorker = null;
+        mCameraWorker = null;
+        mProcessState = 0;
+      }
+      return;
+    }
+    finally
+    {
+      lock.unlock();
     }
   }
   
@@ -82,10 +99,19 @@ public class ProcessManager
   
   public static void initAll()
   {
-    mDataWorker = new DataWorker();
-    mCameraWorker = new CameraWorker();
-    mProcessState = 0;
-    mRetainCount += 1;
+    lock.lock();
+    try
+    {
+      mDataWorker = new DataWorker();
+      mCameraWorker = new CameraWorker();
+      mProcessState = 0;
+      mRetainCount += 1;
+      return;
+    }
+    finally
+    {
+      lock.unlock();
+    }
   }
   
   public static void start(long paramLong)

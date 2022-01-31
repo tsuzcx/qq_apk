@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aege;
+import aerb;
 import android.os.Message;
-import arxu;
+import asty;
 import java.util.List;
 import mqq.os.MqqHandler;
 
 public class MultiForwardChatPie$2
   implements Runnable
 {
-  public MultiForwardChatPie$2(aege paramaege) {}
+  public MultiForwardChatPie$2(aerb paramaerb) {}
   
   public void run()
   {
-    List localList = arxu.a().a(this.this$0.a, this.this$0.g);
+    List localList = asty.a().a(this.this$0.a, this.this$0.g);
     Message localMessage = this.this$0.b.obtainMessage(0);
     localMessage.obj = localList;
     this.this$0.b.sendMessage(localMessage);

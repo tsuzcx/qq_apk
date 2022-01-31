@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import aajg;
-import ahzm;
-import akbj;
-import aonk;
-import apea;
+import aasy;
+import aimf;
+import akpv;
+import apef;
+import apvu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForStructing;
@@ -22,7 +22,7 @@ import mqq.os.MqqHandler;
 public class ChatHistoryStructMsgView$2
   implements Runnable
 {
-  public ChatHistoryStructMsgView$2(aajg paramaajg, boolean paramBoolean) {}
+  public ChatHistoryStructMsgView$2(aasy paramaasy, boolean paramBoolean) {}
   
   public void run()
   {
@@ -37,9 +37,9 @@ public class ChatHistoryStructMsgView$2
       localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
       localObject2 = this.this$0.jdField_b_of_type_JavaLangString;
       i = this.this$0.jdField_a_of_type_Int;
-      j = aajg.a();
+      j = aasy.a();
       localObject1 = ((QQMessageFacade)localObject1).a((String)localObject2, i, new int[] { -2011 }, j);
-      if ((localObject1 != null) && (((List)localObject1).size() < aajg.a())) {
+      if ((localObject1 != null) && (((List)localObject1).size() < aasy.a())) {
         this.this$0.jdField_b_of_type_Boolean = true;
       }
       localObject2 = new LinkedHashMap();
@@ -51,7 +51,7 @@ public class ChatHistoryStructMsgView$2
         break label605;
       }
       localObject3 = (MessageRecord)((List)localObject1).get(i);
-      if (ahzm.a((MessageRecord)localObject3))
+      if (aimf.a((MessageRecord)localObject3))
       {
         if (((MessageRecord)localObject3).shmsgseq < this.this$0.jdField_b_of_type_Long) {
           this.this$0.jdField_b_of_type_Long = ((MessageRecord)localObject3).shmsgseq;
@@ -73,7 +73,7 @@ public class ChatHistoryStructMsgView$2
           break label545;
         }
         localObject4 = (AbsShareMsg)((MessageForStructing)localObject4).structingMsg;
-        if ((((MessageRecord)localObject3).time < 1548460800L) || (!aonk.a(((AbsShareMsg)localObject4).mMsgUrl))) {
+        if ((((MessageRecord)localObject3).time < 1548460800L) || (!apef.a(((AbsShareMsg)localObject4).mMsgUrl))) {
           break label545;
         }
       }
@@ -82,17 +82,17 @@ public class ChatHistoryStructMsgView$2
     {
       i -= 1;
       break label120;
-      if (akbj.a(this.this$0.jdField_a_of_type_Int))
+      if (akpv.a(this.this$0.jdField_a_of_type_Int))
       {
         localObject1 = this.this$0;
-        ((aajg)localObject1).jdField_b_of_type_Long -= 1L;
+        ((aasy)localObject1).jdField_b_of_type_Long -= 1L;
         localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
         localObject2 = this.this$0.jdField_b_of_type_JavaLangString;
         i = this.this$0.jdField_a_of_type_Int;
         l1 = this.this$0.jdField_a_of_type_Long;
         j = this.this$0.jdField_b_of_type_Int;
         l2 = this.this$0.jdField_b_of_type_Long;
-        k = aajg.a();
+        k = aasy.a();
         localObject1 = ((QQMessageFacade)localObject1).a((String)localObject2, i, l1, j, l2, new int[] { -2011 }, k);
         break;
       }
@@ -102,11 +102,11 @@ public class ChatHistoryStructMsgView$2
       long l1 = this.this$0.jdField_a_of_type_Long;
       j = this.this$0.jdField_b_of_type_Int;
       long l2 = this.this$0.c;
-      int k = aajg.a();
+      int k = aasy.a();
       localObject1 = ((QQMessageFacade)localObject1).a((String)localObject2, i, l1, j, l2, new int[] { -2011 }, k);
       break;
       label545:
-      localObject4 = apea.a(((MessageRecord)localObject3).time * 1000L);
+      localObject4 = apvu.a(((MessageRecord)localObject3).time * 1000L);
       if (!((LinkedHashMap)localObject2).containsKey(localObject4)) {
         ((LinkedHashMap)localObject2).put(localObject4, new ArrayList());
       }

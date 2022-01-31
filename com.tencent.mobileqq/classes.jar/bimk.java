@@ -1,24 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.support.annotation.Nullable;
 
-public class bimk
-  implements Animation.AnimationListener
+class bimk
+  implements bjob<bivx>
 {
-  public bimk(DoodleLayout paramDoodleLayout) {}
+  bimk(bimj parambimj) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(@Nullable bivx parambivx)
   {
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.jdField_a_of_type_Bims != null) {
-      this.a.jdField_a_of_type_Bims.a(null);
+    if (parambivx == null) {
+      return;
     }
+    bimj.a(this.a, parambivx);
+    bimj.b(this.a, parambivx);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

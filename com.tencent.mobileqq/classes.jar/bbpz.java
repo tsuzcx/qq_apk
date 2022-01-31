@@ -1,30 +1,27 @@
-import android.annotation.TargetApi;
-import android.graphics.Outline;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewOutlineProvider;
+import android.os.Bundle;
+import com.tencent.mobileqq.vas.QuickUpdateIPCModule.Params;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-@TargetApi(21)
-public class bbpz
-  extends ViewOutlineProvider
+public final class bbpz
+  implements EIPCResultCallback
 {
-  private float a;
+  public bbpz(bbpw parambbpw) {}
   
-  public bbpz(float paramFloat)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a = paramFloat;
-  }
-  
-  public void getOutline(View paramView, Outline paramOutline)
-  {
-    Rect localRect = new Rect();
-    paramView.getGlobalVisibleRect(localRect);
-    paramOutline.setRoundRect(new Rect(0, 0, localRect.right - localRect.left - 0, localRect.bottom - localRect.top - 0), this.a);
+    if (paramEIPCResult.code != 0)
+    {
+      this.a.a(2, "", "");
+      return;
+    }
+    paramEIPCResult = (QuickUpdateIPCModule.Params)paramEIPCResult.data.getSerializable("params");
+    this.a.a(paramEIPCResult.intVal, paramEIPCResult.strVal1, paramEIPCResult.strVal2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbpz
  * JD-Core Version:    0.7.0.1
  */

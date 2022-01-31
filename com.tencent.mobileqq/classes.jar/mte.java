@@ -1,25 +1,23 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-class mte
-  implements Animation.AnimationListener
+public class mte
 {
-  mte(mtc parammtc) {}
+  public ayrv a;
+  public String a = "";
+  public String b = "";
+  public String c = "";
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public String toString()
   {
-    this.a.a.a.setVisibility(0);
-    this.a.a.a.startAnimation(this.a.b);
+    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
+    localStringBuffer.append(", url='").append(this.a).append('\'');
+    localStringBuffer.append(", md5='").append(this.b).append('\'');
+    localStringBuffer.append(", fileName='").append(this.c).append('\'');
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mte
  * JD-Core Version:    0.7.0.1
  */

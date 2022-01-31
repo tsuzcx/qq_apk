@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bdnw;
-import bdyn;
+import besl;
+import bffu;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -34,24 +34,24 @@ public class KeyboardLayout
     this.jdField_a_of_type_AndroidWidgetButton = new Button(getContext());
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(11);
-    localLayoutParams.leftMargin = bdyn.a(getContext(), 4.0F);
-    localLayoutParams.rightMargin = bdyn.a(getContext(), 2.0F);
-    localLayoutParams.topMargin = bdyn.a(getContext(), 2.0F);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131628576);
+    localLayoutParams.leftMargin = bffu.a(getContext(), 4.0F);
+    localLayoutParams.rightMargin = bffu.a(getContext(), 2.0F);
+    localLayoutParams.topMargin = bffu.a(getContext(), 2.0F);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131694220);
     this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840737);
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840777);
     this.jdField_a_of_type_AndroidWidgetButton.setMinHeight(0);
     this.jdField_a_of_type_AndroidWidgetButton.setMinimumHeight(0);
-    this.jdField_a_of_type_AndroidWidgetButton.setPadding(bdyn.a(getContext(), 10.0F), bdyn.a(getContext(), 5.0F), bdyn.a(getContext(), 10.0F), bdyn.a(getContext(), 5.0F));
+    this.jdField_a_of_type_AndroidWidgetButton.setPadding(bffu.a(getContext(), 10.0F), bffu.a(getContext(), 5.0F), bffu.a(getContext(), 10.0F), bffu.a(getContext(), 5.0F));
     addView(this.jdField_a_of_type_AndroidWidgetButton, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetButton.setId(2131304587);
+    this.jdField_a_of_type_AndroidWidgetButton.setId(2131370268);
     localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(0, this.jdField_a_of_type_AndroidWidgetButton.getId());
-    localLayoutParams.leftMargin = bdyn.a(getContext(), 4.0F);
-    this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundResource(2130840740);
+    localLayoutParams.leftMargin = bffu.a(getContext(), 4.0F);
+    this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundResource(2130840780);
     addView(this.jdField_a_of_type_AndroidWidgetEditText, localLayoutParams);
     setBackgroundColor(-1);
-    setPadding(0, bdyn.a(getContext(), 5.0F), 0, bdyn.a(getContext(), 2.0F));
+    setPadding(0, bffu.a(getContext(), 5.0F), 0, bffu.a(getContext(), 2.0F));
   }
   
   public Button a()
@@ -90,11 +90,11 @@ public class KeyboardLayout
           boolean bool2 = paramString.optBoolean("confirmHold", false);
           String str = paramString.optString("confirmType");
           int i = 6;
-          paramString = getResources().getText(2131628576);
+          paramString = getResources().getText(2131694220);
           if ("send".equals(str))
           {
             i = 4;
-            paramString = getResources().getText(2131628578);
+            paramString = getResources().getText(2131694222);
             this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)localObject);
             if (j >= 0)
             {
@@ -115,20 +115,20 @@ public class KeyboardLayout
             if ("search".equals(str))
             {
               i = 3;
-              paramString = getResources().getText(2131628577);
+              paramString = getResources().getText(2131694221);
               continue;
             }
             if ("next".equals(str))
             {
               i = 5;
-              paramString = getResources().getText(2131628575);
+              paramString = getResources().getText(2131694219);
               continue;
             }
             if (!"go".equals(str)) {
               continue;
             }
             i = 2;
-            paramString = getResources().getText(2131628574);
+            paramString = getResources().getText(2131694218);
             continue;
           }
           this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[0]);
@@ -137,12 +137,12 @@ public class KeyboardLayout
         }
         catch (JSONException paramString)
         {
-          bdnw.d("KeyboardLayout", "setParam exception", paramString);
+          besl.d("KeyboardLayout", "setParam exception", paramString);
           return;
         }
       }
     }
-    bdnw.d("KeyboardLayout", "setParam no param ?");
+    besl.d("KeyboardLayout", "setParam no param ?");
   }
 }
 

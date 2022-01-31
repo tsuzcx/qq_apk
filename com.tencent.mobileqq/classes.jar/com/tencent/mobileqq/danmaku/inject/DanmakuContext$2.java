@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.danmaku.inject;
 
-import ampx;
-import amqe;
+import ange;
+import angl;
 
 public class DanmakuContext$2
   implements Runnable
 {
   public void run()
   {
-    ampx.a(this.this$0).a(this.jdField_a_of_type_Amrf, this.jdField_a_of_type_Amqd);
+    ange.a(this.this$0).a(this.jdField_a_of_type_Anhm, this.jdField_a_of_type_Angk);
   }
 }
 

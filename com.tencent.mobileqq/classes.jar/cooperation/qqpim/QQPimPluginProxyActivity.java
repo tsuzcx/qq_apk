@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import bfcz;
-import bfdi;
-import bfkr;
+import bgkq;
+import bgkz;
+import bgsj;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 
@@ -17,28 +17,28 @@ public class QQPimPluginProxyActivity
   {
     Intent localIntent = new Intent();
     localIntent.putExtras(paramBundle);
-    a(paramActivity, localIntent, paramBundle.getString(bfkr.l), bfkr.i, QQPimPluginProxyActivity.class, paramDialog);
+    a(paramActivity, localIntent, paramBundle.getString(bgsj.l), bgsj.i, QQPimPluginProxyActivity.class, paramDialog);
   }
   
   private static boolean a(Activity paramActivity, Intent paramIntent, String paramString1, String paramString2, Class<? extends Activity> paramClass, Dialog paramDialog)
   {
     paramIntent.putExtra("userQqResources", 2);
     paramIntent.putExtra("useSkinEngine", true);
-    bfdi localbfdi = new bfdi(1);
-    localbfdi.jdField_b_of_type_JavaLangString = "qqpim_plugin.apk";
-    localbfdi.d = "QQ同步助手插件";
-    localbfdi.jdField_a_of_type_JavaLangString = paramString1;
-    localbfdi.e = paramString2;
-    localbfdi.jdField_a_of_type_JavaLangClass = paramClass;
-    localbfdi.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbfdi.jdField_b_of_type_Int = -1;
-    localbfdi.jdField_a_of_type_AndroidAppDialog = paramDialog;
-    localbfdi.c = 30000;
-    localbfdi.f = null;
-    localbfdi.jdField_b_of_type_Boolean = false;
-    bfcz.a(paramActivity, localbfdi);
+    bgkz localbgkz = new bgkz(1);
+    localbgkz.jdField_b_of_type_JavaLangString = "qqpim_plugin.apk";
+    localbgkz.d = "QQ同步助手插件";
+    localbgkz.jdField_a_of_type_JavaLangString = paramString1;
+    localbgkz.e = paramString2;
+    localbgkz.jdField_a_of_type_JavaLangClass = paramClass;
+    localbgkz.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localbgkz.jdField_b_of_type_Int = -1;
+    localbgkz.jdField_a_of_type_AndroidAppDialog = paramDialog;
+    localbgkz.c = 30000;
+    localbgkz.f = null;
+    localbgkz.jdField_b_of_type_Boolean = false;
+    bgkq.a(paramActivity, localbgkz);
     if (QLog.isColorLevel()) {
-      QLog.i(bfkr.jdField_a_of_type_JavaLangString, 2, "QQPimPluginProxyActivity.openPluginActivityForResult() " + paramString2 + " IPluginManager.SUPPORT_NETWORKING " + true);
+      QLog.i(bgsj.jdField_a_of_type_JavaLangString, 2, "QQPimPluginProxyActivity.openPluginActivityForResult() " + paramString2 + " IPluginManager.SUPPORT_NETWORKING " + true);
     }
     return true;
   }
@@ -47,7 +47,7 @@ public class QQPimPluginProxyActivity
   {
     Intent localIntent = new Intent();
     localIntent.putExtras(paramBundle);
-    a(paramActivity, localIntent, paramBundle.getString(bfkr.l), bfkr.j, QQPimPluginProxyActivity.class, paramDialog);
+    a(paramActivity, localIntent, paramBundle.getString(bgsj.l), bgsj.j, QQPimPluginProxyActivity.class, paramDialog);
   }
 }
 

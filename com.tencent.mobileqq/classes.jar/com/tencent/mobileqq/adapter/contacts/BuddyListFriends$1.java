@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.adapter.contacts;
 
-import aidt;
-import ajjj;
+import aiqm;
+import ajxn;
 import com.tencent.mobileqq.data.Friends;
 
 public class BuddyListFriends$1
   implements Runnable
 {
-  public BuddyListFriends$1(aidt paramaidt) {}
+  public BuddyListFriends$1(aiqm paramaiqm) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Ajjj.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataFriends.uin);
+    this.this$0.jdField_a_of_type_Ajxn.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataFriends.uin);
   }
 }
 

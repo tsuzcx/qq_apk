@@ -1,58 +1,35 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import android.widget.EditText;
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.smtt.sdk.WebView;
 
-public class bcdr
-  implements InputFilter
+class bcdr
+  implements bcdt
 {
-  protected int a;
-  protected EditText a;
+  bcdr(bcdq parambcdq) {}
   
-  public bcdr(EditText paramEditText, int paramInt)
+  public Activity a()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_a_of_type_Int = paramInt;
+    return this.a.a.a();
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public bcdq a()
   {
-    paramSpanned = new StringBuilder(this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString());
-    paramInt4 = this.jdField_a_of_type_Int - bcdy.a(paramSpanned.toString());
-    paramInt3 = bcdy.a(paramCharSequence.subSequence(paramInt1, paramInt2).toString());
-    if (paramInt4 <= 0) {
-      return "";
-    }
-    if (paramInt4 >= paramInt3) {
-      return null;
-    }
-    paramInt3 = paramInt1;
-    if (paramInt3 < paramInt2)
-    {
-      int j;
-      if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3))) {
-        j = bcdy.a(paramCharSequence.subSequence(paramInt3, paramInt3 + 2).toString());
-      }
-      for (int i = 2;; i = 1)
-      {
-        paramInt4 -= j;
-        if (paramInt4 < 0) {
-          break label161;
-        }
-        paramInt3 = i + paramInt3;
-        break;
-        j = bcdy.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
-      }
-    }
-    label161:
-    if (paramInt3 == paramInt1) {
-      return "";
-    }
-    return paramCharSequence.subSequence(paramInt1, paramInt3);
+    return this.a;
+  }
+  
+  public WebViewFragment a()
+  {
+    return this.a.a.a();
+  }
+  
+  public WebView a()
+  {
+    return this.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcdr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,46 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.support.v4.app.FragmentActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class owo
-  implements ViewBase.OnClickListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  BaseArticleInfo a;
+  public owo(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
   
-  public owo(BaseArticleInfo paramBaseArticleInfo)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    this.a = paramBaseArticleInfo;
+    if (paramMotionEvent1.getY() - paramMotionEvent2.getY() > 100.0F) {}
+    for (int i = 1;; i = 0)
+    {
+      if ((i != 0) && (!ReadInjoyIMAXAdFragment.a(this.a)))
+      {
+        ReadInjoyIMAXAdFragment.a(this.a, true);
+        ReadInjoyIMAXAdFragment.a(this.a);
+        ReadInjoyIMAXAdFragment.a(this.a, this.a.getActivity().app, nmf.q);
+      }
+      return true;
+    }
   }
   
-  public void onClick(ViewBase paramViewBase)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    paramViewBase = this.a.mSocialFeedInfo.a.a.d;
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    qoe.a((ArticleInfo)this.a, (int)this.a.mChannelID);
-    obz.a(localBaseActivity, paramViewBase);
+    if (ReadInjoyIMAXAdFragment.a(this.a)) {
+      return true;
+    }
+    ReadInjoyIMAXAdFragment.a(this.a, true);
+    ReadInjoyIMAXAdFragment.a(this.a);
+    if (ReadInjoyIMAXAdFragment.a(this.a) != null) {
+      ReadInjoyIMAXAdFragment.a(this.a, (int)ReadInjoyIMAXAdFragment.a(this.a).getCurrentPostion());
+    }
+    ReadInjoyIMAXAdFragment.a(this.a, ReadInjoyIMAXAdFragment.a(this.a), nmf.s);
+    ReadInjoyIMAXAdFragment.b(this.a, 2);
+    if (ReadInjoyIMAXAdFragment.a(this.a) != null) {
+      ReadInjoyIMAXAdFragment.c(this.a, (int)ReadInjoyIMAXAdFragment.a(this.a).getCurrentPostion());
+    }
+    ReadInjoyIMAXAdFragment.d(this.a, 0);
+    return true;
   }
 }
 

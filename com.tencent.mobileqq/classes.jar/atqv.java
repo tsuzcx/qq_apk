@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.pic.CompressInfo;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class atqv
-  extends atqu
+class atqv
+  implements Handler.Callback
 {
-  atqv(CompressInfo paramCompressInfo)
-  {
-    super(paramCompressInfo);
-  }
+  atqv(atqu paramatqu) {}
   
-  protected int a(CompressInfo paramCompressInfo)
+  public boolean handleMessage(Message paramMessage)
   {
-    return 2;
-  }
-  
-  protected boolean d()
-  {
-    return false;
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      atqu.a(this.a);
+    }
   }
 }
 

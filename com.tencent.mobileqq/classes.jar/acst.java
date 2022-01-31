@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import java.io.File;
+import java.io.FileFilter;
 
-public class acst
-  implements acul
+class acst
+  implements FileFilter
 {
-  public acst(DoodlePanel paramDoodlePanel) {}
+  acst(acsr paramacsr) {}
   
-  public void a(acuk paramacuk)
+  public boolean accept(File paramFile)
   {
-    this.a.a(paramacuk);
-    paramacuk = "" + paramacuk.a + ";" + paramacuk.b + ";" + paramacuk.c;
-    azzf.a(this.a.getContext(), "aio_doodle_colorpicker_select", paramacuk);
+    return paramFile.getName().startsWith(acsr.a(this.a));
   }
 }
 

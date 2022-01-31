@@ -1,37 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class agpr
-  implements EIPCOnGetConnectionListener
+  implements DialogInterface.OnClickListener
 {
-  agpr(agpq paramagpq) {}
+  agpr(agpn paramagpn, QQAppInterface paramQQAppInterface) {}
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramEIPCConnection != null) {
-      agpq.a(this.a, paramEIPCConnection.procName);
+    switch (paramInt)
+    {
     }
-    agpq.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "onConnectBind");
-    }
-  }
-  
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      agpq.a(this.a, paramEIPCConnection.procName);
-    }
-    agpq.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "onConnectUnbind");
+    for (;;)
+    {
+      this.jdField_a_of_type_Agpn.a.dismiss();
+      return;
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6C", "0X8009B6C", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Agpn.b();
+      agpn.a(this.jdField_a_of_type_Agpn, agpn.a(this.jdField_a_of_type_Agpn), true, Long.valueOf(agpn.b(this.jdField_a_of_type_Agpn)).longValue(), false);
+      continue;
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6D", "0X8009B6D", 0, 0, "", "", "", "");
+      agpn.a(this.jdField_a_of_type_Agpn, agpn.a(this.jdField_a_of_type_Agpn), true, Long.valueOf(agpn.b(this.jdField_a_of_type_Agpn)).longValue(), true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agpr
  * JD-Core Version:    0.7.0.1
  */

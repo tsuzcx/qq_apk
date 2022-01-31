@@ -1,84 +1,67 @@
-import android.text.TextUtils;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.pluginsdk.ActivityLifecycle.ActivityLifecycleCallback;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.buscard.BuscardHelper;
+import mqq.app.AppActivity;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class bggf
+  implements ActivityLifecycle.ActivityLifecycleCallback
 {
-  private static String a(List<String> paramList)
+  public void onNewIntent(Activity paramActivity, Intent paramIntent)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      localStringBuilder.append((String)paramList.next());
-      localStringBuilder.append(";");
+    if ((paramIntent != null) && ("android.nfc.action.TECH_DISCOVERED".equals(paramIntent.getAction()))) {
+      BuscardHelper.a("", paramActivity, paramIntent);
     }
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("", 2, "NFCActivityLifecycleCallback onNewIntent " + MobileQQ.processName);
+    }
   }
   
-  public static List<String> a(String paramString)
+  public void onPause(Activity paramActivity)
   {
-    return a(paramString, 500);
-  }
-  
-  public static List<String> a(String paramString, int paramInt)
-  {
-    int i = 0;
-    paramString = LocalMultiProcConfig.getString(paramString, "").split(";");
-    LinkedList localLinkedList = new LinkedList();
-    if ((paramString.length == 0) || (paramInt <= 0)) {
-      return localLinkedList;
-    }
-    int k;
-    for (int j = 0;; j = k)
+    try
     {
-      if (i < paramString.length)
+      BuscardHelper.a(paramActivity, true, "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("", 2, "NFCActivityLifecycleCallback onPause " + MobileQQ.processName);
+      }
+      return;
+    }
+    catch (Throwable paramActivity)
+    {
+      for (;;)
       {
-        CharSequence localCharSequence = paramString[i];
-        k = j;
-        if (!TextUtils.isEmpty(localCharSequence))
+        paramActivity.printStackTrace();
+      }
+    }
+  }
+  
+  public void onResume(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("", 2, "NFCActivityLifecycleCallback onResume " + MobileQQ.processName);
+    }
+    try
+    {
+      if ((paramActivity instanceof AppActivity))
+      {
+        AppRuntime localAppRuntime = ((AppActivity)paramActivity).getAppRuntime();
+        if ((localAppRuntime != null) && (localAppRuntime.isLogin()))
         {
-          localLinkedList.add(localCharSequence);
-          k = j + 1;
+          BuscardHelper.a(paramActivity, true, "", "", null);
+          return;
         }
-        if (k != paramInt) {}
+        BuscardHelper.a(paramActivity, true, "", "");
+        return;
       }
-      else
-      {
-        return localLinkedList;
-      }
-      i += 1;
     }
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString2)) {}
-    List localList;
-    do
+    catch (Throwable paramActivity)
     {
-      return;
-      localList = a(paramString1, 500);
-    } while (localList.contains(paramString2));
-    localList.add(0, paramString2);
-    if (localList.size() > 500) {
-      localList.remove(500);
+      paramActivity.printStackTrace();
     }
-    LocalMultiProcConfig.putString(paramString1, a(localList));
-  }
-  
-  public static void a(String paramString, List<String> paramList)
-  {
-    if (paramList == null) {
-      return;
-    }
-    LinkedList localLinkedList = new LinkedList();
-    List localList = a(paramString, 500 - paramList.size());
-    localLinkedList.addAll(paramList);
-    localLinkedList.addAll(localList);
-    LocalMultiProcConfig.putString(paramString, a(localLinkedList));
   }
 }
 

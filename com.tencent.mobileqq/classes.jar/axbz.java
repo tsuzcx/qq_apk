@@ -1,6 +1,26 @@
-public abstract interface axbz
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+
+final class axbz
+  implements axcc
 {
-  public abstract void a();
+  axbz(BusinessObserver paramBusinessObserver) {}
+  
+  public void a(int paramInt, String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("dataErrorMsg", paramString);
+    localBundle.putInt("dataErrorCode", paramInt);
+    this.a.onReceive(0, false, localBundle);
+  }
+  
+  public void a(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putByteArray("data", paramString.getBytes());
+    localBundle.putString("cmd", "getTmpkey");
+    this.a.onReceive(0, true, localBundle);
+  }
 }
 
 

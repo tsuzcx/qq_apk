@@ -1,272 +1,386 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadBPTransEntity;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadBPTransProxy.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class apeh
-  extends akej
 {
-  private List<UniformDownloadBPTransEntity> a;
+  public static int a;
+  private static long jdField_a_of_type_Long;
+  private static ArrayList<WeiYunFileInfo> jdField_a_of_type_JavaUtilArrayList;
+  private static Map<String, WeiYunFileInfo> jdField_a_of_type_JavaUtilMap;
+  private static Set<FileInfo> jdField_a_of_type_JavaUtilSet = new HashSet();
+  public static int b;
+  private static ArrayList<OfflineFileInfo> jdField_b_of_type_JavaUtilArrayList;
+  private static Map<String, apei> jdField_b_of_type_JavaUtilMap = new HashMap();
+  private static int jdField_c_of_type_Int;
+  private static ArrayList<FileManagerEntity> jdField_c_of_type_JavaUtilArrayList;
+  private static int jdField_d_of_type_Int;
+  private static ArrayList<FileInfo> jdField_d_of_type_JavaUtilArrayList;
+  private static ArrayList<String> e;
   
-  public apeh(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  static
   {
-    super(paramQQAppInterface, paramProxyManager);
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_c_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_c_of_type_Int = 20;
+    jdField_d_of_type_JavaUtilArrayList = new ArrayList();
+    e = new ArrayList();
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_Int = 2;
+    jdField_b_of_type_Int = 4;
   }
   
-  private void a(UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity, akes paramakes)
+  public static long a()
   {
-    paramakes = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if (paramakes == null)
-    {
-      QLog.e("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. addEntityToDB. EntityManager. create failed!!");
+    return jdField_a_of_type_Long;
+  }
+  
+  public static WeiYunFileInfo a(String paramString)
+  {
+    return (WeiYunFileInfo)jdField_a_of_type_JavaUtilMap.remove(paramString);
+  }
+  
+  public static ArrayList<FileInfo> a()
+  {
+    return jdField_d_of_type_JavaUtilArrayList;
+  }
+  
+  public static Set<FileInfo> a()
+  {
+    return jdField_a_of_type_JavaUtilSet;
+  }
+  
+  public static void a()
+  {
+    jdField_d_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public static void a(int paramInt)
+  {
+    jdField_c_of_type_Int = paramInt;
+  }
+  
+  public static void a(long paramLong)
+  {
+    jdField_a_of_type_Long = paramLong;
+  }
+  
+  public static void a(FileInfo paramFileInfo)
+  {
+    if (!a(paramFileInfo.a())) {}
+    while (jdField_a_of_type_JavaUtilSet.contains(paramFileInfo)) {
       return;
     }
-    UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = new UniformDownloadBPTransEntity();
-    localUniformDownloadBPTransEntity.copyFrom(paramUniformDownloadBPTransEntity);
-    if (localUniformDownloadBPTransEntity.getStatus() == 1000) {
-      paramakes.a(localUniformDownloadBPTransEntity);
-    }
-    for (;;)
-    {
-      paramakes.a();
+    jdField_a_of_type_JavaUtilSet.add(paramFileInfo);
+  }
+  
+  public static void a(FileManagerEntity paramFileManagerEntity)
+  {
+    if (!a(paramFileManagerEntity.fileSize)) {
       return;
-      if (localUniformDownloadBPTransEntity.getStatus() == 1001) {
-        paramakes.a(localUniformDownloadBPTransEntity);
-      } else {
-        QLog.e("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. addEntityToDB. error status of entity");
+    }
+    jdField_c_of_type_JavaUtilArrayList.add(paramFileManagerEntity);
+  }
+  
+  public static void a(WeiYunFileInfo paramWeiYunFileInfo)
+  {
+    if (!a(paramWeiYunFileInfo.jdField_a_of_type_Long)) {
+      return;
+    }
+    jdField_a_of_type_JavaUtilArrayList.add(paramWeiYunFileInfo);
+  }
+  
+  public static void a(String paramString, WeiYunFileInfo paramWeiYunFileInfo)
+  {
+    jdField_a_of_type_JavaUtilMap.put(paramString, paramWeiYunFileInfo);
+  }
+  
+  public static void a(String paramString, byte[] paramArrayOfByte)
+  {
+    apei localapei = new apei();
+    localapei.jdField_a_of_type_JavaLangString = paramString;
+    localapei.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    jdField_b_of_type_JavaUtilMap.put(paramString, localapei);
+  }
+  
+  public static void a(ArrayList<FileInfo> paramArrayList)
+  {
+    jdField_d_of_type_JavaUtilArrayList.clear();
+    jdField_d_of_type_JavaUtilArrayList.addAll(paramArrayList);
+  }
+  
+  public static void a(List<FileInfo> paramList)
+  {
+    jdField_a_of_type_JavaUtilSet.addAll(paramList);
+  }
+  
+  public static boolean a()
+  {
+    Iterator localIterator = jdField_c_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      if (((FileManagerEntity)localIterator.next()).nFileType == 13) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (jdField_d_of_type_Int & paramInt) == paramInt;
+  }
+  
+  private static boolean a(long paramLong)
+  {
+    if ((jdField_c_of_type_Int > 0) && (b() >= jdField_c_of_type_Int))
+    {
+      aptv.a(0, String.format(BaseApplicationImpl.getApplication().getResources().getString(2131692662), new Object[] { Integer.valueOf(jdField_c_of_type_Int) }), 0);
+      return false;
+    }
+    if ((jdField_a_of_type_Long > 0L) && (d() + paramLong > jdField_a_of_type_Long))
+    {
+      String str = BaseApplicationImpl.getApplication().getResources().getString(2131692669);
+      aptv.a(0, str + apvb.a(jdField_a_of_type_Long), 0);
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean a(FileInfo paramFileInfo)
+  {
+    return jdField_a_of_type_JavaUtilSet.contains(paramFileInfo);
+  }
+  
+  public static boolean a(FileManagerEntity paramFileManagerEntity)
+  {
+    return jdField_c_of_type_JavaUtilArrayList.contains(paramFileManagerEntity);
+  }
+  
+  public static boolean a(WeiYunFileInfo paramWeiYunFileInfo)
+  {
+    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      if (((WeiYunFileInfo)localIterator.next()).jdField_a_of_type_JavaLangString.equals(paramWeiYunFileInfo.jdField_a_of_type_JavaLangString)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return jdField_a_of_type_JavaUtilMap.containsKey(paramString);
+  }
+  
+  public static long b()
+  {
+    return jdField_a_of_type_JavaUtilSet.size() + jdField_c_of_type_JavaUtilArrayList.size() + jdField_b_of_type_JavaUtilArrayList.size() + jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public static ArrayList<FileManagerEntity> b()
+  {
+    return jdField_c_of_type_JavaUtilArrayList;
+  }
+  
+  public static void b()
+  {
+    jdField_a_of_type_JavaUtilSet.clear();
+    jdField_c_of_type_JavaUtilArrayList.clear();
+    jdField_b_of_type_JavaUtilArrayList.clear();
+    jdField_a_of_type_JavaUtilArrayList.clear();
+    c();
+  }
+  
+  public static void b(int paramInt)
+  {
+    jdField_d_of_type_Int |= paramInt;
+  }
+  
+  public static void b(FileInfo paramFileInfo)
+  {
+    jdField_a_of_type_JavaUtilSet.remove(paramFileInfo);
+  }
+  
+  public static void b(FileManagerEntity paramFileManagerEntity)
+  {
+    jdField_c_of_type_JavaUtilArrayList.remove(paramFileManagerEntity);
+  }
+  
+  public static void b(WeiYunFileInfo paramWeiYunFileInfo)
+  {
+    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)localIterator.next();
+      if (localWeiYunFileInfo.jdField_a_of_type_JavaLangString.equals(paramWeiYunFileInfo.jdField_a_of_type_JavaLangString)) {
+        jdField_a_of_type_JavaUtilArrayList.remove(localWeiYunFileInfo);
       }
     }
   }
   
-  private boolean a(int paramInt)
+  public static boolean b()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null)
-    {
-      QLog.e("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL].>>>getMore. no cache");
+    if (b() == 0L) {
       return false;
     }
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {}
-    for (long l = 9223372036854775807L;; l = ((UniformDownloadBPTransEntity)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1)).getId())
+    if (jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+      return false;
+    }
+    Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
+    String str;
+    while (localIterator.hasNext())
     {
-      localObject = "select * from ( select * from " + UniformDownloadBPTransEntity.tableName() + " where _id < " + String.valueOf(l) + " order by _id desc limit " + paramInt + ") order by _id desc";
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(UniformDownloadBPTransEntity.class, (String)localObject, null);
-      if ((localObject != null) && ((localObject == null) || (((List)localObject).size() != 0))) {
+      str = apvb.a(((FileInfo)localIterator.next()).d());
+      if ((str == null) || (str.length() == 0)) {
+        return false;
+      }
+      str = str.toLowerCase();
+      if (!ayfv.jdField_a_of_type_JavaLangString.contains(str)) {
+        return false;
+      }
+    }
+    localIterator = jdField_c_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      str = apvb.a(((FileManagerEntity)localIterator.next()).fileName);
+      if ((str == null) || (str.length() == 0)) {
+        return false;
+      }
+      str = str.toLowerCase();
+      if (!ayfv.jdField_a_of_type_JavaLangString.contains(str)) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  public static boolean b(FileInfo paramFileInfo)
+  {
+    paramFileInfo = apvb.a(paramFileInfo.d());
+    if ((paramFileInfo == null) || (paramFileInfo.length() == 0)) {}
+    do
+    {
+      return false;
+      paramFileInfo = paramFileInfo.toLowerCase();
+    } while (!ayfv.jdField_a_of_type_JavaLangString.contains(paramFileInfo));
+    return true;
+  }
+  
+  public static boolean b(FileManagerEntity paramFileManagerEntity)
+  {
+    paramFileManagerEntity = apvb.a(paramFileManagerEntity.fileName);
+    if ((paramFileManagerEntity == null) || (paramFileManagerEntity.length() == 0)) {}
+    do
+    {
+      return false;
+      paramFileManagerEntity = paramFileManagerEntity.toLowerCase();
+    } while (!ayfv.jdField_a_of_type_JavaLangString.contains(paramFileManagerEntity));
+    return true;
+  }
+  
+  public static long c()
+  {
+    Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
+    for (long l = 0L; localIterator.hasNext(); l = ((FileInfo)localIterator.next()).a() + l) {}
+    localIterator = jdField_c_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (apsz.a(localFileManagerEntity).a(false)) {
+        l += apvb.a(localFileManagerEntity.getFilePath());
+      }
+    }
+    return l;
+  }
+  
+  public static ArrayList<OfflineFileInfo> c()
+  {
+    return jdField_b_of_type_JavaUtilArrayList;
+  }
+  
+  public static void c()
+  {
+    jdField_d_of_type_Int = 0;
+  }
+  
+  public static boolean c()
+  {
+    if (b() == 0L) {
+      return false;
+    }
+    Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
+    while (localIterator.hasNext()) {
+      if (b((FileInfo)localIterator.next())) {
+        return true;
+      }
+    }
+    localIterator = jdField_c_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      if (b((FileManagerEntity)localIterator.next())) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public static long d()
+  {
+    Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
+    for (long l = 0L; localIterator.hasNext(); l = ((FileInfo)localIterator.next()).a() + l) {}
+    localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      l += ((WeiYunFileInfo)localIterator.next()).jdField_a_of_type_Long;
+    }
+    localIterator = jdField_b_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      l += ((OfflineFileInfo)localIterator.next()).b;
+    }
+    localIterator = jdField_c_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      l += ((FileManagerEntity)localIterator.next()).fileSize;
+    }
+    return l;
+  }
+  
+  public static ArrayList<WeiYunFileInfo> d()
+  {
+    return jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public static long e()
+  {
+    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    for (long l = 0L; localIterator.hasNext(); l = ((WeiYunFileInfo)localIterator.next()).jdField_a_of_type_Long + l) {}
+    localIterator = jdField_b_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      l += ((OfflineFileInfo)localIterator.next()).b;
+    }
+    localIterator = jdField_c_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      switch (localFileManagerEntity.getCloudType())
+      {
+      default: 
         break;
-      }
-      QLog.i("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL].>>>getMore. no more. ");
-      return false;
-    }
-    Object localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      b((UniformDownloadBPTransEntity)((Iterator)localObject).next());
-    }
-    return true;
-  }
-  
-  private boolean a(String paramString, boolean paramBoolean)
-  {
-    if (paramString == null)
-    {
-      QLog.e("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. delEntityFromDB. url=null");
-      return false;
-    }
-    a(UniformDownloadBPTransEntity.tableName(), "mUrl = ?", new String[] { paramString }, null);
-    if (paramBoolean)
-    {
-      QLog.i("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. delEntityFromDB. bImUpdateDB = true");
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.d();
-    }
-    return true;
-  }
-  
-  private UniformDownloadBPTransEntity b(String paramString)
-  {
-    Object localObject = "select * from " + UniformDownloadBPTransEntity.tableName() + " where mUrl = " + paramString;
-    atmp localatmp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if (localatmp == null)
-    {
-      QLog.e("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. queryEntityFromDByUrl. EntityManager. create failed!!");
-      return null;
-    }
-    localObject = localatmp.a(UniformDownloadBPTransEntity.class, (String)localObject, null);
-    if (localObject == null)
-    {
-      localatmp.a();
-      return null;
-    }
-    if (((List)localObject).size() > 1) {
-      QLog.w("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. count of DB  is over 1 when query url:" + paramString);
-    }
-    paramString = (UniformDownloadBPTransEntity)((List)localObject).get(0);
-    localatmp.a();
-    return paramString;
-  }
-  
-  private void b(UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity)
-  {
-    if (paramUniformDownloadBPTransEntity == null) {}
-    for (;;)
-    {
-      try
-      {
-        QLog.e("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. addToCacheEntityList. entiy=null");
-        return;
-      }
-      finally {}
-      if (this.jdField_a_of_type_JavaUtilList.contains(paramUniformDownloadBPTransEntity))
-      {
-        QLog.i("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. addToCacheEntityList. entiy is existed 1. url:" + paramUniformDownloadBPTransEntity.mUrl);
-      }
-      else
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        for (;;)
-        {
-          if (localIterator.hasNext())
-          {
-            UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = (UniformDownloadBPTransEntity)localIterator.next();
-            if ((localUniformDownloadBPTransEntity != null) && (localUniformDownloadBPTransEntity.mUrl.equalsIgnoreCase(paramUniformDownloadBPTransEntity.mUrl)))
-            {
-              QLog.i("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. addToCacheEntityList. entiy is existed 2. url:" + paramUniformDownloadBPTransEntity.mUrl);
-              break;
-            }
-          }
-        }
-        QLog.i("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL].>>>addToCacheEntityList. add it. url:" + paramUniformDownloadBPTransEntity.mUrl);
-        this.jdField_a_of_type_JavaUtilList.add(0, paramUniformDownloadBPTransEntity);
-        if (this.jdField_a_of_type_JavaUtilList.size() > 30) {
-          this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
-        }
+      case 1: 
+      case 2: 
+        l += localFileManagerEntity.fileSize;
       }
     }
+    return l;
   }
-  
-  private void b(String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    StringBuilder localStringBuilder = null;
-    for (;;)
-    {
-      Object localObject;
-      try
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        localObject = localStringBuilder;
-        if (localIterator.hasNext())
-        {
-          localObject = (UniformDownloadBPTransEntity)localIterator.next();
-          if ((localObject == null) || (!paramString.equalsIgnoreCase(((UniformDownloadBPTransEntity)localObject).mUrl))) {
-            continue;
-          }
-        }
-        localStringBuilder = new StringBuilder().append("[UniformDL].>>>removFromCacheEntityList. remove it. url:");
-        if (localObject == null)
-        {
-          paramString = "null";
-          QLog.i("UniformDownloadBPTransProxy<FileAssistant>", 1, paramString);
-          this.jdField_a_of_type_JavaUtilList.remove(localObject);
-          break;
-        }
-      }
-      finally {}
-      paramString = ((UniformDownloadBPTransEntity)localObject).mUrl;
-    }
-  }
-  
-  private UniformDownloadBPTransEntity c(String paramString)
-  {
-    UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = null;
-    if (paramString == null)
-    {
-      paramString = localUniformDownloadBPTransEntity;
-      return paramString;
-    }
-    for (;;)
-    {
-      try
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (localIterator.hasNext())
-        {
-          localUniformDownloadBPTransEntity = (UniformDownloadBPTransEntity)localIterator.next();
-          if (localUniformDownloadBPTransEntity == null) {
-            continue;
-          }
-          boolean bool = paramString.equalsIgnoreCase(localUniformDownloadBPTransEntity.mUrl);
-          if (!bool) {
-            continue;
-          }
-          paramString = localUniformDownloadBPTransEntity;
-          break;
-        }
-      }
-      finally {}
-      paramString = null;
-    }
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return;
-    }
-    Object localObject = "select * from ( select * from " + UniformDownloadBPTransEntity.tableName() + " order by _id desc limit " + 30 + ") order by _id desc";
-    atmp localatmp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_JavaUtilList = localatmp.a(UniformDownloadBPTransEntity.class, (String)localObject, null);
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = (UniformDownloadBPTransEntity)((Iterator)localObject).next();
-      QLog.i("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. >>>init cache:[ " + localUniformDownloadBPTransEntity.toString() + " ]");
-    }
-    localatmp.a();
-  }
-  
-  public UniformDownloadBPTransEntity a(String paramString)
-  {
-    c();
-    UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = c(paramString);
-    if (localUniformDownloadBPTransEntity != null) {
-      return localUniformDownloadBPTransEntity;
-    }
-    return b(paramString);
-  }
-  
-  protected void a() {}
-  
-  public void a(UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity)
-  {
-    QLog.i("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. >>>addEntity. url[" + paramUniformDownloadBPTransEntity.mUrl + "]");
-    c();
-    b(paramUniformDownloadBPTransEntity);
-    ThreadManager.executeOnSubThread(new UniformDownloadBPTransProxy.1(this, paramUniformDownloadBPTransEntity));
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.i("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. >>>deleteEntity. url[" + paramString + "]");
-    c();
-    b(paramString);
-    a(paramString, false);
-    a(1);
-  }
-  
-  protected void a(String paramString1, String paramString2, String[] paramArrayOfString, akes paramakes)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, paramString1, paramString2, paramArrayOfString, 2, paramakes);
-  }
-  
-  protected void b() {}
 }
 
 

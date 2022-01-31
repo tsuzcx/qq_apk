@@ -1,10 +1,16 @@
-public class awfv
+import android.text.Editable;
+import android.text.Editable.Factory;
+
+public final class awfv
+  extends Editable.Factory
 {
-  public float a;
-  public int a;
-  public long a;
-  public int b;
-  public long b;
+  public Editable newEditable(CharSequence paramCharSequence)
+  {
+    if ((paramCharSequence instanceof ayks)) {
+      return (Editable)paramCharSequence;
+    }
+    return new ayks(paramCharSequence, 1, 20);
+  }
 }
 
 

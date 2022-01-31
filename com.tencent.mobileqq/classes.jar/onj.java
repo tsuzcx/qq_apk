@@ -1,158 +1,175 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import com.tencent.biz.pubaccount.readinjoy.logic.DiandianTopConfigManager.2;
-import com.tencent.biz.pubaccount.readinjoy.logic.DiandianTopConfigManager.3;
-import com.tencent.biz.pubaccount.readinjoy.model.DiandianTopConfig;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.oidb_0xb7e.DiandianTopConfig;
-import tencent.im.oidb.oidb_0xb7e.ReqBody;
-import tencent.im.oidb.oidb_0xb7e.RspBody;
-import tencent.im.oidb.oidb_0xc90.ReqBody;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class onj
 {
-  public static final String a;
-  private static onj a;
-  public final Object a;
+  public static final String a = ajyc.a(2131712729);
+  public static final String b = ajyc.a(2131712933);
+  public static final String c = ajyc.a(2131712968);
+  public static final String d = ajyc.a(2131712713);
+  public static final String e = ajyc.a(2131713084);
+  public static final String f = ajyc.a(2131712983);
+  public static final String g = ajyc.a(2131712825);
+  public static final String h = ajyc.a(2131712749);
+  public static final String i = ajyc.a(2131712743);
+  public static final String j = ajyc.a(2131713062);
+  public static final String k = ajyc.a(2131712974);
+  public static final String l = ajyc.a(2131712763);
+  public static final String m = ajyc.a(2131712779);
+  public static final String n = ajyc.a(2131712785);
+  public static final String o = ajyc.a(2131712760);
+  public static final String p = ajyc.a(2131712928);
   
-  static
+  public static long a()
   {
-    jdField_a_of_type_JavaLangString = onj.class.getName();
+    return NetConnInfoCenter.getServerTime();
   }
   
-  public onj()
+  public static String a(long paramLong)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  public static onj a()
-  {
-    if (jdField_a_of_type_Onj == null) {}
+    paramLong *= 1000L;
+    Object localObject1 = null;
     try
     {
-      if (jdField_a_of_type_Onj == null) {
-        jdField_a_of_type_Onj = new onj();
-      }
-      return jdField_a_of_type_Onj;
+      Object localObject2 = new Date(paramLong);
+      localObject2 = new SimpleDateFormat("yyyy-MM-dd").format((Date)localObject2);
+      localObject1 = localObject2;
     }
-    finally {}
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ReadInJoyTimeUtils", 2, "getDateTimeString() ERROR millisTime=" + paramLong);
+    }
+    return localObject1;
+    return null;
   }
   
-  public static void a(long paramLong)
+  public static String a(long paramLong, boolean paramBoolean)
   {
-    AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit();
-    localEditor.putLong("config_last_update_time" + localAppInterface.getCurrentAccountUin(), paramLong);
-    localEditor.commit();
+    return b(paramLong, paramBoolean);
   }
   
-  private void a(oidb_0xb7e.RspBody paramRspBody)
+  public static String a(Calendar paramCalendar)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "fabricateModel");
-    }
-    if (paramRspBody == null) {
-      ohb.a().a(false, null);
-    }
-    do
+    return new SimpleDateFormat("HH:mm").format(paramCalendar.getTime());
+  }
+  
+  public static boolean a(long paramLong1, long paramLong2)
+  {
+    Calendar localCalendar1 = Calendar.getInstance();
+    localCalendar1.setTimeInMillis(paramLong1);
+    Calendar localCalendar2 = Calendar.getInstance();
+    localCalendar2.setTimeInMillis(paramLong2);
+    return (localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) == localCalendar2.get(6));
+  }
+  
+  private static String b(long paramLong, boolean paramBoolean)
+  {
+    long l1 = paramLong * 1000L;
+    Calendar localCalendar1 = Calendar.getInstance();
+    Calendar localCalendar2 = Calendar.getInstance();
+    long l2;
+    Object localObject2;
+    Object localObject1;
+    if (paramBoolean)
     {
-      return;
-      if (!paramRspBody.rpt_top_item.has()) {
-        break;
+      paramLong = a() * 1000L;
+      if (paramLong != localCalendar1.getTimeInMillis()) {
+        localCalendar1.setTimeInMillis(paramLong);
       }
-      paramRspBody = paramRspBody.rpt_top_item.get();
-    } while ((paramRspBody == null) || (paramRspBody.size() <= 0));
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < paramRspBody.size())
+      localCalendar2.setTimeInMillis(l1);
+      l2 = (paramLong - l1) / 1000L;
+      localObject2 = c(localCalendar2);
+      localObject1 = "";
+      if (l2 < 0L) {
+        localObject1 = localObject2;
+      }
+      if (!a(l1, paramLong)) {
+        break label254;
+      }
+      if (l2 >= 60L) {
+        break label176;
+      }
+      localObject1 = a;
+      label103:
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        break label321;
+      }
+    }
+    for (;;)
     {
-      oidb_0xb7e.DiandianTopConfig localDiandianTopConfig = (oidb_0xb7e.DiandianTopConfig)paramRspBody.get(i);
-      DiandianTopConfig localDiandianTopConfig1 = new DiandianTopConfig();
-      if (localDiandianTopConfig.bytes_jump_url.has()) {
-        localDiandianTopConfig1.jumpUrl = localDiandianTopConfig.bytes_jump_url.get().toStringUtf8();
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyTimeUtils", 2, new Object[] { "getRelativeDisplayTimeString = ", localObject2, ", now = ", c(localCalendar1), ", publish = ", c(localCalendar2) });
       }
-      if (localDiandianTopConfig.bytes_title.has()) {
-        localDiandianTopConfig1.title = localDiandianTopConfig.bytes_title.get().toStringUtf8();
-      }
-      if (localDiandianTopConfig.bytes_sub_title.has()) {
-        localDiandianTopConfig1.subTitle = localDiandianTopConfig.bytes_sub_title.get().toStringUtf8();
-      }
-      if (localDiandianTopConfig.bytes_sub_title_color.has()) {
-        localDiandianTopConfig1.subTitleColor = localDiandianTopConfig.bytes_sub_title_color.get().toStringUtf8();
-      }
-      if (localDiandianTopConfig.bytes_pic_url.has()) {
-        localDiandianTopConfig1.picUrl = localDiandianTopConfig.bytes_pic_url.get().toStringUtf8();
-      }
-      if (localDiandianTopConfig.uint32_type.has()) {
-        localDiandianTopConfig1.type = localDiandianTopConfig.uint32_type.get();
-      }
-      if (localDiandianTopConfig.uint32_topic_id.has()) {}
-      for (localDiandianTopConfig1.topicId = localDiandianTopConfig.uint32_topic_id.get();; localDiandianTopConfig1.topicId = 0)
+      return localObject2;
+      paramLong = localCalendar1.getTimeInMillis();
+      break;
+      label176:
+      if (l2 < 3600L)
       {
-        localArrayList.add(localDiandianTopConfig1);
-        i += 1;
-        break;
+        localObject1 = l2 / 60L + b;
+        break label103;
       }
+      if (l2 >= 86400L) {
+        break label103;
+      }
+      localObject1 = l2 / 3600L + c;
+      break label103;
+      label254:
+      if (c(l1, paramLong))
+      {
+        localObject1 = e + " " + a(localCalendar2);
+        break label103;
+      }
+      if (b(l1, paramLong))
+      {
+        localObject1 = b(localCalendar2);
+        break label103;
+      }
+      localObject1 = localObject2;
+      break label103;
+      label321:
+      localObject2 = localObject1;
     }
-    ohb.a().a(true, localArrayList);
-    return;
-    ohb.a().a(true, null);
   }
   
-  private void a(byte[] paramArrayOfByte, long paramLong)
+  public static String b(Calendar paramCalendar)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "saveDiandianTopConfig");
-    }
-    ThreadManager.post(new DiandianTopConfigManager.3(this, paramArrayOfByte, paramLong), 5, null, true);
+    return new SimpleDateFormat("MM-dd HH:mm").format(paramCalendar.getTime());
   }
   
-  public static boolean a()
+  public static boolean b(long paramLong1, long paramLong2)
   {
-    AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    long l = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).getLong("config_last_update_time" + localAppInterface.getCurrentAccountUin(), 0L);
-    return System.currentTimeMillis() - l >= 43200000L;
+    Calendar localCalendar1 = Calendar.getInstance();
+    localCalendar1.setTimeInMillis(paramLong1);
+    Calendar localCalendar2 = Calendar.getInstance();
+    localCalendar2.setTimeInMillis(paramLong2);
+    return localCalendar1.get(1) == localCalendar2.get(1);
   }
   
-  public void a()
+  public static String c(Calendar paramCalendar)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "loadDiandianTopConfig");
-    }
-    ThreadManager.post(new DiandianTopConfigManager.2(this), 5, null, true);
+    return new SimpleDateFormat("yy-MM-dd HH:mm").format(paramCalendar.getTime());
   }
   
-  public void a(List<Long> paramList, rbo paramrbo)
+  public static boolean c(long paramLong1, long paramLong2)
   {
-    oidb_0xc90.ReqBody localReqBody = new oidb_0xc90.ReqBody();
-    localReqBody.uint64_community_bid.set(paramList);
-    mmj.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), new onl(this, paramrbo), localReqBody.toByteArray(), "OidbSvc.0xc90", 3216, 1, null, 0L);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "requestDiandianTopConfig");
-    }
-    oidb_0xb7e.ReqBody localReqBody = new oidb_0xb7e.ReqBody();
-    mmj.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), new onk(this, paramBoolean), localReqBody.toByteArray(), "OidbSvc.0xb7e", 2942, 0, null, 0L);
+    Calendar localCalendar1 = Calendar.getInstance();
+    localCalendar1.setTimeInMillis(paramLong2);
+    localCalendar1.add(6, -1);
+    Calendar localCalendar2 = Calendar.getInstance();
+    localCalendar2.setTimeInMillis(paramLong1);
+    return (localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) == localCalendar2.get(6));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     onj
  * JD-Core Version:    0.7.0.1
  */

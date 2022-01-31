@@ -1,99 +1,362 @@
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.webviewplugin.PayJsPlugin;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.WadlWebViewJsPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.smtt.sdk.WebView;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QFlutterAppData;
+import com.tencent.mobileqq.earlydownload.xmldata.QFlutterEngineData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class aqaa
-  extends baxr
-  implements bayp
 {
-  public aqaa(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
+  public static Handler a;
+  private static aqab jdField_a_of_type_Aqab = new aqab(null);
+  private static ArrayList<aqac> jdField_a_of_type_JavaUtilArrayList;
+  private static volatile boolean jdField_a_of_type_Boolean;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "libflutter.so" };
+  private static aqab jdField_b_of_type_Aqab = new aqab(null);
+  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { "libapp.so", "libqflutter-skin-engine.so", "res.apk" };
+  
+  static
   {
-    super(paramContext, paramActivity, paramAppInterface);
-    this.mWebview = paramTouchWebView;
+    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void a()
+  public static String a()
   {
-    super.doOnResume();
+    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
+    return localFile.getAbsolutePath() + File.separator + "qflutter";
   }
   
-  public void b()
+  public static String a(String paramString)
   {
-    super.doOnPause();
+    return new File(a(), paramString).getAbsolutePath();
   }
   
-  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  private static void a()
   {
-    super.bindJavaScript(paramArrayList);
-    paramArrayList.add(new WadlWebViewJsPlugin());
-    paramArrayList.add(new aqab());
-    paramArrayList.add(new QWalletPayJsPlugin());
-    paramArrayList.add(new PayJsPlugin());
-    paramArrayList.add(new QWalletCommonJsPlugin());
-    paramArrayList.add(new QWalletBluetoothJsPlugin());
-    paramArrayList.add(new aqsg());
-    paramArrayList.add(new UiApiPlugin());
-    paramArrayList.add(new SensorAPIJavaScript());
-    paramArrayList.add(new aqrl());
-    paramArrayList.add(new MediaApiPlugin());
-    paramArrayList.add(new VasCommonJsPlugin());
-    paramArrayList.add(new basq());
-    paramArrayList.add(new QWalletMixJsPlugin());
-    paramArrayList.add(new xdo());
+    String[] arrayOfString = jdField_b_of_type_ArrayOfJavaLangString;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      bbdj.d(a(arrayOfString[i]));
+      i += 1;
+    }
   }
   
-  public void buildBottomBar() {}
+  public static void a(int paramInt, long paramLong1, long paramLong2) {}
   
-  public void buildContentView(Bundle paramBundle) {}
-  
-  public void buildData() {}
-  
-  public void buildLayout() {}
-  
-  public void buildTitleBar() {}
-  
-  public void buildWebView(AppInterface paramAppInterface)
+  public static void a(int paramInt, boolean paramBoolean)
   {
-    super.buildBaseWebView(paramAppInterface);
+    boolean bool = true;
+    label161:
+    for (;;)
+    {
+      try
+      {
+        QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("onDownloadFinish, type: %s, isSuccess: %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) }));
+        if (paramInt == 0)
+        {
+          jdField_a_of_type_Aqab.a(paramBoolean, false);
+          if ((jdField_b_of_type_Aqab.a()) && (jdField_a_of_type_Aqab.a()))
+          {
+            if ((!jdField_b_of_type_Aqab.jdField_a_of_type_Boolean) || (!jdField_a_of_type_Aqab.jdField_a_of_type_Boolean)) {
+              break label161;
+            }
+            paramBoolean = bool;
+            long l = Math.max(aqab.a(jdField_b_of_type_Aqab), aqab.a(jdField_a_of_type_Aqab));
+            a(paramBoolean, aqab.a(jdField_a_of_type_Aqab), aqab.a(jdField_b_of_type_Aqab));
+            aqao.b(paramBoolean, l, aqab.a(jdField_a_of_type_Aqab), aqab.a(jdField_b_of_type_Aqab));
+          }
+        }
+        else
+        {
+          if (paramInt != 1) {
+            continue;
+          }
+          jdField_b_of_type_Aqab.a(paramBoolean, false);
+          continue;
+        }
+        paramBoolean = false;
+      }
+      finally {}
+    }
   }
   
-  public void c()
+  private static void a(aqac paramaqac)
   {
-    super.doOnDestroy();
+    if (paramaqac != null) {}
+    try
+    {
+      if (!jdField_a_of_type_JavaUtilArrayList.contains(paramaqac)) {
+        jdField_a_of_type_JavaUtilArrayList.add(paramaqac);
+      }
+      return;
+    }
+    finally
+    {
+      paramaqac = finally;
+      throw paramaqac;
+    }
   }
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public static void a(QQAppInterface paramQQAppInterface, aqac paramaqac)
   {
-    super.onPageFinished(paramWebView, paramString);
+    for (;;)
+    {
+      boolean bool1;
+      boolean bool2;
+      try
+      {
+        bool1 = a(paramQQAppInterface);
+        bool2 = b(paramQQAppInterface);
+        a(paramaqac);
+        if ((bool1) && (bool2))
+        {
+          a(true, true, true);
+          return;
+        }
+        if (jdField_a_of_type_Boolean)
+        {
+          QLog.d("QFlutter.QFlutterDownloadManager", 1, "install, is downloading...");
+          continue;
+        }
+        jdField_a_of_type_Boolean = true;
+      }
+      finally {}
+      paramQQAppInterface = (anox)paramQQAppInterface.getManager(77);
+      if (!bool1)
+      {
+        ((apzz)paramQQAppInterface.a("qq.android.flutter.engine.v8.2.8")).a(true);
+        jdField_a_of_type_Aqab.a();
+      }
+      for (;;)
+      {
+        if (bool2) {
+          break label132;
+        }
+        ((apzy)paramQQAppInterface.a("qq.android.flutter.app.v8.2.8")).a(true);
+        jdField_b_of_type_Aqab.a();
+        break;
+        jdField_a_of_type_Aqab.a(true, true);
+      }
+      label132:
+      jdField_a_of_type_Aqab.a(true, true);
+    }
   }
   
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  private static void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    try
+    {
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("notifyResult, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean1) }));
+      int i = 0;
+      if (i < jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        aqac localaqac = (aqac)jdField_a_of_type_JavaUtilArrayList.get(i);
+        if (paramBoolean1) {
+          localaqac.a(true, a(), paramBoolean2, paramBoolean3);
+        }
+        for (;;)
+        {
+          jdField_a_of_type_JavaUtilArrayList.clear();
+          i += 1;
+          break;
+          localaqac.a(false, null, paramBoolean2, paramBoolean3);
+        }
+      }
+      jdField_a_of_type_Boolean = false;
+    }
+    finally {}
   }
   
-  public void onWebViewReady()
+  private static boolean a(anpi paramanpi)
   {
-    super.onWebViewReady();
+    if (paramanpi == null) {
+      return false;
+    }
+    paramanpi = paramanpi.a();
+    if (paramanpi == null)
+    {
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, "isEarlyDownloadConfigReady, data == null");
+      return false;
+    }
+    if ((TextUtils.isEmpty(paramanpi.strPkgName)) || (TextUtils.isEmpty(paramanpi.strResURL_big)))
+    {
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("isEarlyDownloadConfigReady, strPkgName: %s, strResURL_big: %s", new Object[] { paramanpi.strPkgName, paramanpi.strResURL_big }));
+      return false;
+    }
+    return true;
   }
   
-  public void preInitWebviewPlugin() {}
+  private static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return false;
+    }
+    paramQQAppInterface = (apzz)((anox)paramQQAppInterface.getManager(77)).a("qq.android.flutter.engine.v8.2.8");
+    boolean bool2 = a(paramQQAppInterface);
+    if ((!bool2) && (paramQQAppInterface != null) && (paramQQAppInterface.g()) && (a((QFlutterEngineData)paramQQAppInterface.a()))) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QFlutter.QFlutterDownloadManager", 2, String.format("isEngineConfigReady : %s, isEngineInstalled: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) }));
+      }
+      return bool1;
+    }
+  }
+  
+  private static boolean a(QFlutterAppData paramQFlutterAppData)
+  {
+    if (paramQFlutterAppData == null)
+    {
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, "checkAppFiles, engineData == null");
+      return false;
+    }
+    Object localObject1 = new HashMap();
+    ((HashMap)localObject1).put(a("libapp.so"), paramQFlutterAppData.libAppSoMD5);
+    ((HashMap)localObject1).put(a("libqflutter-skin-engine.so"), paramQFlutterAppData.libSkinSoMD5);
+    ((HashMap)localObject1).put(a("res.apk"), paramQFlutterAppData.assetResMD5);
+    paramQFlutterAppData = ((HashMap)localObject1).entrySet().iterator();
+    Object localObject2;
+    boolean bool;
+    if (paramQFlutterAppData.hasNext())
+    {
+      localObject2 = (Map.Entry)paramQFlutterAppData.next();
+      localObject1 = (String)((Map.Entry)localObject2).getKey();
+      if (!apvb.a((String)localObject1))
+      {
+        QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("checkAppFiles, %s is not exist", new Object[] { localObject1 }));
+        bool = false;
+      }
+    }
+    for (;;)
+    {
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, "checkAppFiles result: " + bool);
+      return bool;
+      String str = aurl.a((String)localObject1);
+      localObject2 = (String)((Map.Entry)localObject2).getValue();
+      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equalsIgnoreCase(str))) {
+        break;
+      }
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("checkAppFiles, %s md5 check fail, md5: %s fileMD5: %s", new Object[] { localObject1, localObject2, str }));
+      bool = false;
+      continue;
+      bool = true;
+    }
+  }
+  
+  private static boolean a(QFlutterEngineData paramQFlutterEngineData)
+  {
+    if (paramQFlutterEngineData == null)
+    {
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, "checkEngineFiles, engineData == null");
+      return false;
+    }
+    Object localObject = new File(a(), "libflutter.so");
+    if (!((File)localObject).exists())
+    {
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, "checkEngineFiles, libEngineFile is not exist");
+      return false;
+    }
+    localObject = aurl.a(((File)localObject).getAbsolutePath());
+    if ((TextUtils.isEmpty(paramQFlutterEngineData.libEngineSoMD5)) || (!paramQFlutterEngineData.libEngineSoMD5.equalsIgnoreCase((String)localObject)))
+    {
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("checkEngineFiles, libEngineFile md5 check fail, md5: %s fileMD5: %s", new Object[] { paramQFlutterEngineData.libEngineSoMD5, localObject }));
+      return false;
+    }
+    QLog.d("QFlutter.QFlutterDownloadManager", 1, "checkEngineFiles success");
+    return true;
+  }
+  
+  public static boolean a(String paramString, QFlutterAppData paramQFlutterAppData)
+  {
+    try
+    {
+      a();
+      bbdj.a(paramString, a(), false);
+      if (!a(paramQFlutterAppData))
+      {
+        b();
+        return false;
+      }
+    }
+    catch (IOException paramQFlutterAppData)
+    {
+      paramQFlutterAppData.printStackTrace();
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, "uncompressZip fail: " + paramString);
+      b();
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean a(String paramString, QFlutterEngineData paramQFlutterEngineData)
+  {
+    try
+    {
+      b();
+      bbdj.a(paramString, a(), false);
+      if (!a(paramQFlutterEngineData))
+      {
+        b();
+        return false;
+      }
+    }
+    catch (IOException paramQFlutterEngineData)
+    {
+      paramQFlutterEngineData.printStackTrace();
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, "uncompressZip fail: " + paramString);
+      b();
+      return false;
+    }
+    return true;
+  }
+  
+  public static String b()
+  {
+    return a("libqflutter-skin-engine.so");
+  }
+  
+  private static void b()
+  {
+    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      bbdj.d(a(arrayOfString[i]));
+      i += 1;
+    }
+  }
+  
+  private static boolean b(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return false;
+    }
+    paramQQAppInterface = (apzy)((anox)paramQQAppInterface.getManager(77)).a("qq.android.flutter.app.v8.2.8");
+    boolean bool2 = a(paramQQAppInterface);
+    if ((!bool2) && (paramQQAppInterface != null) && (paramQQAppInterface.g()) && (a((QFlutterAppData)paramQQAppInterface.a()))) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QFlutter.QFlutterDownloadManager", 2, String.format("isAppConfigReady: %s, isAppInstalled: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) }));
+      }
+      return bool1;
+    }
+  }
 }
 
 

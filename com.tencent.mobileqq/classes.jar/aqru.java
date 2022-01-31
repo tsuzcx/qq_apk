@@ -1,100 +1,84 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppWordings;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import face.qqlogin.Appconf.AppConfResponse;
-import face.qqlogin.Appconf.Wording;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.observer.BusinessObserver;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
 
-final class aqru
-  extends atdj
+public abstract class aqru
+  extends aqrr
 {
-  aqru(int paramInt, BusinessObserver paramBusinessObserver) {}
+  protected Context a;
+  protected FrameLayout a;
+  protected ImageView a;
+  protected RelativeLayout a;
+  protected TextView a;
+  protected TextView b;
+  protected TextView c;
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public aqru(Context paramContext, View paramView, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(paramInt, false, null);
+    super(paramContext, paramView, paramViewGroup);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378313));
+    this.b = ((TextView)paramView.findViewById(2131378233));
+    this.c = ((TextView)paramView.findViewById(2131378041));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367925));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131368938));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368908));
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public void a(FeedsItemData paramFeedsItemData)
   {
+    this.itemView.setBackgroundDrawable(aqst.a(this.itemView.getContext(), 8.0F, 8.0F, 8.0F, 8.0F));
+    if (!TextUtils.isEmpty(paramFeedsItemData.rcmdReason))
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramFeedsItemData.rcmdReason + "");
+      if ((!TextUtils.isEmpty(paramFeedsItemData.label)) || (!TextUtils.isEmpty(paramFeedsItemData.operateText))) {
+        break label130;
+      }
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    }
     for (;;)
     {
-      Object localObject2;
-      int i;
-      String str1;
-      String str2;
-      int j;
-      String str3;
-      try
+      this.itemView.setOnClickListener(new aqrv(this, paramFeedsItemData));
+      return;
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      break;
+      label130:
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      if (TextUtils.isEmpty(paramFeedsItemData.operateText))
       {
-        localObject2 = new Appconf.AppConfResponse();
-        ((Appconf.AppConfResponse)localObject2).mergeFrom(paramArrayOfByte);
-        localObject1 = ((Appconf.AppConfResponse)localObject2).AppName.get();
-        i = ((Appconf.AppConfResponse)localObject2).Mode.get();
-        str1 = ((Appconf.AppConfResponse)localObject2).ColorSeq.get().toStringUtf8();
-        str2 = ((Appconf.AppConfResponse)localObject2).Session.get();
-        j = ((Appconf.AppConfResponse)localObject2).Ret.get();
-        str3 = ((Appconf.AppConfResponse)localObject2).ErrMsg.get();
-        if (!QLog.isDevelopLevel()) {
-          break label373;
-        }
-        paramArrayOfByte = ((Appconf.AppConfResponse)localObject2).Debug.get();
-        Object localObject3 = ((Appconf.AppConfResponse)localObject2).Wordings.get();
-        localObject2 = new ArrayList(3);
-        if ((localObject3 != null) && (!((List)localObject3).isEmpty()))
-        {
-          localObject3 = ((List)localObject3).iterator();
-          if (!((Iterator)localObject3).hasNext()) {
-            break label254;
-          }
-          Appconf.Wording localWording = (Appconf.Wording)((Iterator)localObject3).next();
-          ((List)localObject2).add(new FaceDetectForThirdPartyManager.AppWordings(localWording.serviceType.get(), localWording.Text.get()));
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          break label254;
-        }
+        this.c.setVisibility(8);
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      for (;;)
       {
-        this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(17, false, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("FaceDetectForThirdPartyServlet", 2, "handleFaceDetectResponse error=", paramArrayOfByte);
+        if (!TextUtils.isEmpty(paramFeedsItemData.label)) {
+          break label287;
         }
-        return;
+        this.b.setVisibility(8);
+        break;
+        this.c.setText(paramFeedsItemData.operateText + "");
+        this.c.setVisibility(0);
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        Object localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.itemView.getResources().getDrawable(2130840633);
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.itemView.getResources().getDrawable(2130840633);
+        localObject = URLDrawable.getDrawable("https://i.gtimg.cn/channel/imglib/201908/upload_edff4f642a92ef91b6cb1b7209369506.png", (URLDrawable.URLDrawableOptions)localObject);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
       }
-      QLog.d("FaceDetectForThirdPartyServlet", 2, "handleFaceDetectResponse list is null appName =" + (String)localObject1);
-      label254:
-      Object localObject1 = new FaceDetectForThirdPartyManager.AppConf((String)localObject1, (List)localObject2, i);
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).colorSequence = str1;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).session = str2;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).ret = j;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).errMsg = str3;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).debug = paramArrayOfByte;
-      paramArrayOfByte = new Bundle();
-      paramArrayOfByte.putInt("app_id", this.jdField_a_of_type_Int);
-      paramArrayOfByte.putSerializable("FaceRecognition.AppConf", (Serializable)localObject1);
-      this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(17, true, paramArrayOfByte);
-      if ((QLog.isColorLevel()) && (QLog.isColorLevel()))
-      {
-        QLog.d("FaceDetectForThirdPartyServlet", 2, new Object[] { "handleFaceDetectResponse succsss=", localObject1 });
-        return;
-        label373:
-        paramArrayOfByte = null;
-      }
+      label287:
+      this.b.setText(paramFeedsItemData.label + "");
+      this.b.setVisibility(0);
     }
   }
 }

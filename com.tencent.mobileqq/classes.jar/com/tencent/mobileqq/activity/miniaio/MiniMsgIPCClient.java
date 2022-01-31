@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import afui;
+import aggi;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.qipc.QIPCModule;
@@ -16,7 +18,7 @@ public class MiniMsgIPCClient
   public static final String MODULE_NAME = "mini_msg_client_module";
   public static final String TAG = "mini_msg_IPCClient";
   private static MiniMsgIPCClient sInstance;
-  private ConcurrentHashMap<Integer, afui> mBusinessInfoMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<Integer, aggi> mBusinessInfoMap = new ConcurrentHashMap();
   private MiniMsgUser mMiniUser;
   
   public MiniMsgIPCClient(String paramString)
@@ -45,6 +47,11 @@ public class MiniMsgIPCClient
     return localBundle;
   }
   
+  private void notifyShowWindow()
+  {
+    new Handler(Looper.getMainLooper()).post(new MiniMsgIPCClient.1(this));
+  }
+  
   public static void onProcessBackground(int paramInt)
   {
     Bundle localBundle = getModuleBundle();
@@ -66,9 +73,9 @@ public class MiniMsgIPCClient
     paramString = getInstance().mBusinessInfoMap;
     if (!paramString.containsKey(Integer.valueOf(paramInt)))
     {
-      afui localafui = new afui();
-      localafui.a = paramInt;
-      paramString.put(Integer.valueOf(paramInt), localafui);
+      aggi localaggi = new aggi();
+      localaggi.a = paramInt;
+      paramString.put(Integer.valueOf(paramInt), localaggi);
       paramString = getInstance();
     }
     try
@@ -100,9 +107,9 @@ public class MiniMsgIPCClient
     QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_clear_business", localBundle, null);
   }
   
-  public afui getBusinessInfo(int paramInt)
+  public aggi getBusinessInfo(int paramInt)
   {
-    return (afui)this.mBusinessInfoMap.get(Integer.valueOf(paramInt));
+    return (aggi)this.mBusinessInfoMap.get(Integer.valueOf(paramInt));
   }
   
   public MiniMsgUser getMiniUser()
@@ -152,8 +159,20 @@ public class MiniMsgIPCClient
     {
       try
       {
+        notifyShowWindow();
         if (this.mMiniUser != null) {
           this.mMiniUser.notifyGoToConversation();
+        }
+      }
+      finally {}
+    }
+    else if ("action_mini_aio_to_aio".equals(paramString))
+    {
+      try
+      {
+        notifyShowWindow();
+        if (this.mMiniUser != null) {
+          this.mMiniUser.notifyFromMiniAIOToAIO();
         }
       }
       finally {}

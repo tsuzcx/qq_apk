@@ -1,8 +1,40 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface vjp
+public class vjp
+  implements View.OnClickListener
 {
-  public abstract void a(Bitmap paramBitmap);
+  protected long a;
+  protected View a;
+  public vjq a;
+  
+  public vjp(vjq paramvjq, View paramView)
+  {
+    this.jdField_a_of_type_Vjq = paramvjq;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    paramView.setOnClickListener(this);
+  }
+  
+  private boolean a()
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = l1 - this.jdField_a_of_type_Long;
+    if ((l2 > 0L) && (l2 < 2000L)) {
+      return true;
+    }
+    this.jdField_a_of_type_Long = l1;
+    return false;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (!a())
+    {
+      vel.a("home_page", "clk_shoot", 0, 0, new String[0]);
+      this.jdField_a_of_type_Vjq.a();
+    }
+    ayvn.g();
+  }
 }
 
 

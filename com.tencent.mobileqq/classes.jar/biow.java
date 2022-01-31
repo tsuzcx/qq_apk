@@ -1,13 +1,23 @@
-public class biow
+import android.support.annotation.Nullable;
+
+class biow
+  implements bjob<Boolean>
 {
-  public int a;
-  public String a;
-  public int[] a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  biow(bior parambior) {}
+  
+  public void a(@Nullable Boolean paramBoolean)
+  {
+    if (paramBoolean == null) {
+      return;
+    }
+    bior localbior = this.a;
+    if (!paramBoolean.booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      bior.a(localbior, bool);
+      return;
+    }
+  }
 }
 
 

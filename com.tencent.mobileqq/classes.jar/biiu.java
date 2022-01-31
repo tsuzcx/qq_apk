@@ -1,8 +1,12 @@
-public abstract interface biiu
+class biiu
+  implements avss
 {
-  public abstract void a(int paramInt);
+  biiu(biim parambiim) {}
   
-  public abstract void a(biit parambiit);
+  public void a()
+  {
+    bijj.a().e();
+  }
 }
 
 

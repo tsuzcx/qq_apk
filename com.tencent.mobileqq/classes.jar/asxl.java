@@ -1,44 +1,22 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
-class asxl
-  extends axvs
+final class asxl
+  implements Comparator<String>
 {
-  asxl(asxa paramasxa) {}
-  
-  public void handleMessage(Message paramMessage)
+  public int a(String paramString1, String paramString2)
   {
-    axqf localaxqf = (axqf)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    case 1004: 
-    default: 
-    case 1003: 
-      do
-      {
-        do
-        {
-          return;
-        } while (localaxqf.b != 8);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + axsm.a);
-        }
-      } while (asxa.a(this.a) == null);
-      asxa.a(this.a).a = axsm.a;
-      asxa.a(this.a);
-      return;
+    if (paramString1.length() > paramString2.length()) {
+      return -1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
+    if (paramString1.length() < paramString2.length()) {
+      return 1;
     }
-    this.a.a.a();
-    this.a.a.b(ajjy.a(2131641527));
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asxl
  * JD-Core Version:    0.7.0.1
  */

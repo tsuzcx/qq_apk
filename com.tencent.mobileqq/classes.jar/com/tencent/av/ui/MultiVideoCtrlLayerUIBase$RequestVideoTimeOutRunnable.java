@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import awqx;
+import axqw;
 import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,7 +16,7 @@ class MultiVideoCtrlLayerUIBase$RequestVideoTimeOutRunnable
       this.this$0.a.f();
       this.this$0.v();
       if (this.this$0.e == 2) {
-        awqx.b(null, "CliOper", "", "", "0X8004425", "0X8004425", 0, 0, "", "", "", "");
+        axqw.b(null, "CliOper", "", "", "0X8004425", "0X8004425", 0, 0, "", "", "", "");
       }
     }
     while (!QLog.isColorLevel()) {

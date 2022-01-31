@@ -1,25 +1,25 @@
-class ampf
-  implements amrk<ampo>
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.config.OnF2FConfigListener.1;
+import com.tencent.qphone.base.util.QLog;
+
+public class ampf
+  implements amot
 {
-  ampf(ampe paramampe) {}
-  
-  public int a(ampo paramampo, long paramLong)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, amos paramamos)
   {
-    if (paramampo == null) {}
-    do
+    if ((paramamos != null) && ("qqsettingme_f2f_guide_config".equals(paramString)))
     {
-      return -1;
-      paramLong = paramampo.d() - paramLong;
-      if (paramLong == 0L) {
-        return 0;
+      if (QLog.isColorLevel()) {
+        QLog.d("OnF2FConfigListener", 2, "handleConfigForTag qqsettingme_f2f content = " + paramamos.a);
       }
-    } while (paramLong <= 0L);
-    return 1;
+      ThreadManager.post(new OnF2FConfigListener.1(this, paramamos, paramQQAppInterface), 5, null, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.mediacodec.decoder.flow;
 
-import auxx;
+import avxq;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -8,9 +8,9 @@ import java.util.List;
 class Mp4FlowReEncoder$HandleFrameListRunable
   implements Runnable
 {
-  private List<auxx> a = new ArrayList();
+  private List<avxq> a = new ArrayList();
   
-  public Mp4FlowReEncoder$HandleFrameListRunable(List<auxx> paramList)
+  public Mp4FlowReEncoder$HandleFrameListRunable(List<avxq> paramList)
   {
     Collection localCollection;
     this.a.addAll(localCollection);

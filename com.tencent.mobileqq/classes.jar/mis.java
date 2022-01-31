@@ -1,43 +1,52 @@
-import android.view.View;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
 
-public class mis
+class mis
+  implements Animator.AnimatorListener
 {
-  public static int a(View paramView, int paramInt)
+  mis(miq parammiq) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramView = paramView.getTag(paramInt);
-    if (paramView == null) {
-      return 2147483647;
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationCancel");
     }
-    if ((paramView instanceof Integer)) {
-      return ((Integer)paramView).intValue();
+    this.a.b(3, false);
+    if (miq.a(this.a) != null) {
+      miq.a(this.a).requestLayout();
     }
-    a("getInt", paramInt, paramView);
-    return 2147483647;
+    miq.a(this.a, false);
   }
   
-  public static String a(View paramView, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramView = paramView.getTag(paramInt);
-    if (paramView == null) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationEnd");
     }
-    if ((paramView instanceof String)) {
-      return (String)paramView;
+    this.a.c(3);
+    if (miq.a(this.a) != null) {
+      miq.a(this.a).requestLayout();
     }
-    a("getStr", paramInt, paramView);
-    return null;
+    miq.a(this.a, false);
   }
   
-  static void a(String paramString, int paramInt, Object paramObject)
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (AudioHelper.d())
-    {
-      paramString = paramString + ajjy.a(2131648936) + paramInt + "], object[" + paramObject.getClass().getSimpleName() + "]";
-      QLog.w("TagIndex", 1, paramString, new Throwable("打印调用栈"));
-      throw new ClassCastException(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationStart");
     }
+    miq.a(this.a).setVisibility(0);
+    miq.a(this.a).setAlpha(0.0F);
+    miq.a(this.a).setVisibility(0);
+    miq.a(this.a).setAlpha(0.0F);
+    miq.a(this.a).height = -2;
+    miq.a(this.a).width = -2;
   }
 }
 

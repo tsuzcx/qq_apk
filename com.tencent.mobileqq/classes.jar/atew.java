@@ -1,32 +1,23 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
 
 public class atew
-  implements View.OnTouchListener
+  implements bfoq
 {
-  public atew(ScanOcrActivity paramScanOcrActivity) {}
+  public atew(NearbyGuideActivity paramNearbyGuideActivity, bfol parambfol) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramMotionEvent.getAction())
+    this.jdField_a_of_type_Bfol.cancel();
+    switch (paramInt)
     {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.h();
+      return;
     }
-    for (;;)
-    {
-      return false;
-      if (paramView == ScanOcrActivity.a(this.a))
-      {
-        paramView.setAlpha(0.7F);
-      }
-      else
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        paramView.setAlpha(1.0F);
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.i();
   }
 }
 

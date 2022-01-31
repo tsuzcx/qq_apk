@@ -3,30 +3,30 @@ package com.tencent.biz.qqstory.storyHome.model;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import sqg;
-import ujk;
-import ujx;
-import ukt;
-import ukv;
+import tdc;
+import uwg;
+import uwt;
+import uxp;
+import uxr;
 
 public class HomeFeedPresenter$3
   implements Runnable
 {
-  public HomeFeedPresenter$3(ujx paramujx, ArrayList paramArrayList) {}
+  public HomeFeedPresenter$3(uwt paramuwt, ArrayList paramArrayList) {}
   
   public void run()
   {
-    ujk localujk = (ujk)sqg.a(12);
+    uwg localuwg = (uwg)tdc.a(12);
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (ukt)localIterator.next();
-      if ((localObject instanceof ukv))
+      Object localObject = (uxp)localIterator.next();
+      if ((localObject instanceof uxr))
       {
-        localObject = (ukv)localObject;
-        FeedVideoInfo localFeedVideoInfo = ((ukv)localObject).a().getVideoInfo();
-        localFeedVideoInfo.mVideoItemList.addAll(((ukv)localObject).a());
-        localujk.a(0, localFeedVideoInfo.feedId, localFeedVideoInfo.mVideoSeq, localFeedVideoInfo.mVideoItemList, localFeedVideoInfo.mVideoNextCookie, localFeedVideoInfo.mIsVideoEnd, localFeedVideoInfo.mVideoPullType, true);
+        localObject = (uxr)localObject;
+        FeedVideoInfo localFeedVideoInfo = ((uxr)localObject).a().getVideoInfo();
+        localFeedVideoInfo.mVideoItemList.addAll(((uxr)localObject).a());
+        localuwg.a(0, localFeedVideoInfo.feedId, localFeedVideoInfo.mVideoSeq, localFeedVideoInfo.mVideoItemList, localFeedVideoInfo.mVideoNextCookie, localFeedVideoInfo.mIsVideoEnd, localFeedVideoInfo.mVideoPullType, true);
       }
     }
   }

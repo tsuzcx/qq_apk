@@ -1,12 +1,7 @@
-public abstract interface bawr
+abstract class bawr
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public int a;
+  public byte[] a;
 }
 
 

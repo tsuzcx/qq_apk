@@ -1,27 +1,16 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-
-final class babz
-  implements DialogInterface.OnClickListener
+class babz
+  implements bcmw
 {
-  babz(Activity paramActivity) {}
+  babz(baby parambaby) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString)
   {
-    if (paramInt == 1)
-    {
-      paramDialogInterface = new Intent("android.settings.action.MANAGE_WRITE_SETTINGS");
-      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
-      this.a.startActivity(paramDialogInterface);
-    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     babz
  * JD-Core Version:    0.7.0.1
  */

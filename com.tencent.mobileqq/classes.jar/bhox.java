@@ -1,33 +1,30 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.subscribe.event.FollowUpdateEvent;
 
-class bhox
-  extends RecyclerView.OnScrollListener
+public class bhox
 {
-  boolean jdField_a_of_type_Boolean = false;
-  
-  bhox(bhow parambhow) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public static void a(Context paramContext, FollowUpdateEvent paramFollowUpdateEvent)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((paramInt == 0) && (this.jdField_a_of_type_Boolean))
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Bhow.a();
+    if (paramFollowUpdateEvent != null) {
+      a(paramContext, paramFollowUpdateEvent.useId, paramFollowUpdateEvent.followStatus);
     }
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public static void a(Context paramContext, String paramString, int paramInt)
   {
-    if ((paramInt1 != 0) || (paramInt2 != 0)) {
-      this.jdField_a_of_type_Boolean = true;
+    if ((paramContext == null) || (paramString == null)) {
+      return;
     }
+    Intent localIntent = new Intent("action.qzone_public_account_follow");
+    localIntent.putExtra("followed", paramInt);
+    localIntent.putExtra("uin", paramString);
+    paramContext.sendBroadcast(localIntent, "com.tencent.qzone.permission.notify");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhox
  * JD-Core Version:    0.7.0.1
  */

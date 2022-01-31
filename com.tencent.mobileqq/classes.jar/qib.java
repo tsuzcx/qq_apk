@@ -1,63 +1,48 @@
-import android.os.Handler;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class qib
-  implements TVK_SDKMgr.InstallListener
+  implements awus<awog>
 {
-  private Handler a;
+  private List<qic> a = new ArrayList();
   
-  public qib(Handler paramHandler)
+  public List<awog> a(awvg paramawvg)
   {
-    this.a = paramHandler;
-  }
-  
-  public void onInstallProgress(float paramFloat)
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(2);
-    }
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      localJSONObject.put("version", "8.2.6");
-      localJSONObject.put("error_code", paramInt);
-      label25:
-      ndn.a(null, null, "0X8009752", "0X8009752", 0, 0, "0", pza.a(false), String.valueOf(paramInt), localJSONObject.toString(), false);
-      ndn.a(null, null, "0X8009753", "0X8009753", 0, 0, "0", pza.a(false), String.valueOf(paramInt), localJSONObject.toString(), false);
-      if (this.a != null) {
-        this.a.sendEmptyMessage(1);
+      qic localqic = (qic)localIterator.next();
+      if (localqic.a(paramawvg.a)) {
+        localArrayList.add(localqic);
       }
-      return;
     }
-    catch (Exception localException)
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = osj.a().c().iterator();
+    while (localIterator.hasNext())
     {
-      break label25;
+      qbc localqbc = (qbc)localIterator.next();
+      this.a.add(new qic(localqbc));
     }
   }
   
-  public void onInstalledSuccessed()
+  public void a(awvg paramawvg, awut<awog> paramawut)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("version", "8.2.6");
-      label17:
-      ndn.a(null, null, "0X8009753", "0X8009753", 0, 0, "1", pza.a(false), "", localJSONObject.toString(), false);
-      if (this.a != null) {
-        this.a.sendEmptyMessage(0);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label17;
-    }
+    paramawut.a(a(paramawvg), 1);
   }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 

@@ -1,71 +1,30 @@
-import android.text.Editable;
-import android.text.SpannableString;
-import android.text.style.AbsoluteSizeSpan;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForScribble;
 
 public class ahfd
-  implements View.OnFocusChangeListener
 {
-  public ahfd(LoginView paramLoginView) {}
+  public QQAppInterface a;
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public boolean a(MessageForScribble paramMessageForScribble, String paramString, auoo paramauoo)
   {
-    if (paramView == this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView) {
-      if (true == paramBoolean)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.length());
-        if (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.isPopupShowing()) {
-          this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.dismissDropDown();
-        }
-        if ((this.a.b != null) && (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length() > 0)) {
-          this.a.b.setVisibility(0);
-        }
-        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length());
-        if (!aheo.a(aheo.a)) {}
-      }
-    }
-    while (paramView != this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText)
-    {
-      return;
-      if ((LoginView.a(this.a).isActive(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView)) && (QLog.isColorLevel())) {
-        QLog.d("InputMethodRelativeLayout", 2, "isActive(mAutoTextAccount)");
-      }
-      this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setHint("");
-      return;
-      if ((this.a.b != null) && (this.a.b.isShown())) {
-        this.a.b.setVisibility(8);
-      }
-      paramView = new SpannableString(ajjy.a(2131641777));
-      paramView.setSpan(new AbsoluteSizeSpan(17, true), 0, paramView.length(), 33);
-      this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setHint(paramView);
-      return;
-    }
-    if (true == paramBoolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.getText().length());
-      this.a.c.setVisibility(0);
-      if (LoginView.a(this.a).isActive(this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText)) {
-        LoginView.a(this.a).showSoftInput(this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText, 2);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setHint("");
-      return;
-    }
-    this.a.c.setVisibility(8);
-    paramView = new SpannableString(ajjy.a(2131640569));
-    paramView.setSpan(new AbsoluteSizeSpan(17, true), 0, paramView.length(), 33);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setHint(paramView);
+    aywa localaywa = new aywa();
+    localaywa.jdField_a_of_type_Boolean = true;
+    localaywa.jdField_b_of_type_Int = 262153;
+    localaywa.jdField_b_of_type_JavaLangString = paramMessageForScribble.selfuin;
+    localaywa.c = paramMessageForScribble.frienduin;
+    localaywa.jdField_a_of_type_Int = paramMessageForScribble.istroop;
+    localaywa.jdField_a_of_type_Long = paramMessageForScribble.uniseq;
+    localaywa.jdField_a_of_type_Auoo = paramauoo;
+    localaywa.i = paramString;
+    localaywa.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageForScribble;
+    paramMessageForScribble.fileUploadStatus = 3;
+    this.a.a().a(localaywa);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahfd
  * JD-Core Version:    0.7.0.1
  */

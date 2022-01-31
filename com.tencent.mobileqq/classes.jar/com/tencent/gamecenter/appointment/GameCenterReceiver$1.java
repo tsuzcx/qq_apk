@@ -1,16 +1,16 @@
 package com.tencent.gamecenter.appointment;
 
 import android.text.TextUtils;
-import bcko;
-import bgsw;
-import bgsx;
+import bdop;
+import biby;
+import bibz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.wadl.ipc.WadlParams;
 import cooperation.wadl.ipc.WadlResult;
 import java.util.Iterator;
 import java.util.List;
-import yey;
+import yoc;
 
 class GameCenterReceiver$1
   implements Runnable
@@ -19,12 +19,12 @@ class GameCenterReceiver$1
   
   public void run()
   {
-    Object localObject1 = bcko.a(this.a);
+    Object localObject1 = bdop.a(this.a);
     Iterator localIterator;
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {
       try
       {
-        bgsw.a();
+        biby.a();
         if (TextUtils.equals(this.b, "android.intent.action.PACKAGE_REMOVED"))
         {
           synchronized (this.this$0.a)
@@ -35,7 +35,7 @@ class GameCenterReceiver$1
             if (!localIterator.hasNext()) {
               break label147;
             }
-            ((yey)localIterator.next()).b((WadlResult)localObject1);
+            ((yoc)localIterator.next()).b((WadlResult)localObject1);
           }
           return;
         }
@@ -53,7 +53,7 @@ class GameCenterReceiver$1
       do
       {
         do {}while (BaseApplicationImpl.sProcessId != 1);
-        bgsw.a().a("doUninstallAppCompleted", this.a);
+        biby.a().a("doUninstallAppCompleted", this.a);
         return;
       } while (!TextUtils.equals(this.b, "android.intent.action.PACKAGE_ADDED"));
       synchronized (this.this$0.a)
@@ -62,11 +62,11 @@ class GameCenterReceiver$1
         localWadlResult.b = 9;
         localIterator = this.this$0.a.iterator();
         if (localIterator.hasNext()) {
-          ((yey)localIterator.next()).a(localWadlResult);
+          ((yoc)localIterator.next()).a(localWadlResult);
         }
       }
     } while (BaseApplicationImpl.sProcessId != 1);
-    bgsw.a().a("doInstallAppCompleted", this.a);
+    biby.a().a("doInstallAppCompleted", this.a);
   }
 }
 

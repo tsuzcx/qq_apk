@@ -1,25 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
 class ajdt
-  extends batl
+  implements DialogInterface.OnKeyListener
 {
-  ajdt(ajds paramajds, String paramString1, String paramString2, String paramString3) {}
+  ajdt(ajds paramajds, ajea paramajea) {}
   
-  public void onDone(batm parambatm)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    super.onDone(parambatm);
-    if (3 == parambatm.a()) {
-      this.jdField_a_of_type_Ajds.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    if (paramInt == 4) {
+      this.jdField_a_of_type_Ajds.a(this.jdField_a_of_type_Ajea);
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleFrameZipDecoder", 2, "downloadZip onDone task.getStatus()->" + parambatm.a());
-      }
-      return;
-      this.jdField_a_of_type_Ajds.a = 2;
-      this.jdField_a_of_type_Ajds.a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    }
+    return true;
   }
 }
 

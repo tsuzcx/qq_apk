@@ -1,37 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController.6.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
-
 public class rqh
-  implements View.OnClickListener
 {
-  rqh(rqc paramrqc) {}
+  public final String a;
+  public final rqi a;
+  public final String b;
   
-  public void onClick(View paramView)
+  public rqh(String paramString1, String paramString2)
   {
-    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005733", "0X8005733", 0, 0, "", "", "", "");
-    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006430", "0X8006430", 0, 0, "", "", "", "");
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setEnabled(false);
-    ThreadManager.getSubThreadHandler().post(new SubscriptRecommendController.6.1(this));
-    if (this.a.jdField_a_of_type_Int == 1) {
-      rqc.a(this.a);
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.jdField_a_of_type_Int != 3);
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
-    } while ((paramView == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (!(this.a.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof SubscriptFeedsActivity)));
-    paramView.sendEmptyMessage(1006);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Rqi = new rqi(paramString1, paramString2);
   }
 }
 

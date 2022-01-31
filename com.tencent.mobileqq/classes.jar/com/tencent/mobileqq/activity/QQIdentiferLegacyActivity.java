@@ -8,8 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import awqx;
-import befo;
+import axqw;
+import bfni;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 
 public class QQIdentiferLegacyActivity
@@ -19,14 +19,14 @@ public class QQIdentiferLegacyActivity
   {
     paramFragmentActivity = paramFragmentActivity.getSupportFragmentManager();
     FragmentTransaction localFragmentTransaction = paramFragmentActivity.beginTransaction();
-    if (paramFragmentActivity.findFragmentById(2131301648) != null) {
-      localFragmentTransaction.replace(2131301648, paramFragment);
+    if (paramFragmentActivity.findFragmentById(2131367260) != null) {
+      localFragmentTransaction.replace(2131367260, paramFragment);
     }
-    while (befo.e())
+    while (bfni.e())
     {
       localFragmentTransaction.commitAllowingStateLoss();
       return;
-      localFragmentTransaction.add(2131301648, paramFragment);
+      localFragmentTransaction.add(2131367260, paramFragment);
     }
     localFragmentTransaction.commit();
   }
@@ -35,10 +35,10 @@ public class QQIdentiferLegacyActivity
   {
     String str = getIntent().getStringExtra("method");
     if ("setFaceData".equals(str)) {
-      awqx.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "1", "", "", "");
+      axqw.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "1", "", "", "");
     }
     if ("loginVerify".equals(str)) {
-      awqx.a(null, "dc00898", "", "", paramString, paramString, 0, 0, "2", "", "", "");
+      axqw.a(null, "dc00898", "", "", paramString, paramString, 0, 0, "2", "", "", "");
     }
   }
   
@@ -46,7 +46,7 @@ public class QQIdentiferLegacyActivity
   {
     super.doOnCreate(paramBundle);
     paramBundle = new FrameLayout(this);
-    paramBundle.setId(2131301648);
+    paramBundle.setId(2131367260);
     paramBundle.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
     setContentView(paramBundle);
     a(this, new QQIdentiferLegacy());
@@ -55,7 +55,7 @@ public class QQIdentiferLegacyActivity
   
   public boolean onBackEvent()
   {
-    Fragment localFragment = getSupportFragmentManager().findFragmentById(2131301648);
+    Fragment localFragment = getSupportFragmentManager().findFragmentById(2131367260);
     if ((localFragment != null) && ((localFragment instanceof QQLightRecognitionGuide))) {
       a("0X800A85E");
     }
@@ -65,7 +65,7 @@ public class QQIdentiferLegacyActivity
   public void onBackPressed()
   {
     super.onBackPressed();
-    Fragment localFragment = getSupportFragmentManager().findFragmentById(2131301648);
+    Fragment localFragment = getSupportFragmentManager().findFragmentById(2131367260);
     if ((localFragment != null) && ((localFragment instanceof QQLightRecognitionGuide))) {
       a("0X800A85E");
     }

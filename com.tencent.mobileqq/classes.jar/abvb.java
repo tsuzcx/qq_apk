@@ -1,21 +1,36 @@
-import android.view.MotionEvent;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemNewFriendMsgData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public final class abvb
-  implements afpy
+public class abvb
+  implements akbu
 {
-  private WeakReference<ahpw> a;
+  public abvb(QQLSActivity paramQQLSActivity) {}
   
-  public abvb(ahpw paramahpw)
-  {
-    this.a = new WeakReference(paramahpw);
-  }
+  public void ag_() {}
   
-  public void a(MotionEvent paramMotionEvent)
+  public void b() {}
+  
+  public void i_(int paramInt)
   {
-    ahpw localahpw = (ahpw)this.a.get();
-    if (localahpw != null) {
-      localahpw.a(paramMotionEvent);
+    if ((paramInt == 0) && (this.a.a.a().size() > 0))
+    {
+      Iterator localIterator = this.a.a.a().iterator();
+      while (localIterator.hasNext())
+      {
+        RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
+        if ((localRecentBaseData instanceof RecentItemNewFriendMsgData))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QQLSActivity", 2, "Need to delete RecentItemNewFriendMsgData");
+          }
+          this.a.a.a().remove(localRecentBaseData);
+          this.a.b();
+        }
+      }
     }
   }
 }

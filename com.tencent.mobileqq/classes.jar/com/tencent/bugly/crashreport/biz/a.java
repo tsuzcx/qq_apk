@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import com.tencent.bugly.crashreport.common.strategy.StrategyBean;
-import com.tencent.bugly.proguard.am;
+import com.tencent.bugly.proguard.ap;
 import com.tencent.bugly.proguard.k;
 import com.tencent.bugly.proguard.p;
 import com.tencent.bugly.proguard.t;
@@ -269,7 +269,7 @@ public final class a
       localObject3 = com.tencent.bugly.crashreport.common.strategy.a.a().c();
       if (((u)localObject4).b)
       {
-        localObject3 = ((StrategyBean)localObject3).q;
+        localObject3 = ((StrategyBean)localObject3).r;
         label619:
         if (!((u)localObject4).b) {
           break label679;
@@ -281,9 +281,9 @@ public final class a
         if (this.c == 1) {
           bool1 = true;
         }
-        ((u)localObject7).a(1001, (am)localObject5, (String)localObject3, (String)localObject4, (t)localObject6, bool1);
+        ((u)localObject7).a(1001, (ap)localObject5, (String)localObject3, (String)localObject4, (t)localObject6, bool1);
         break;
-        localObject3 = ((StrategyBean)localObject3).s;
+        localObject3 = ((StrategyBean)localObject3).t;
         break label619;
       }
       i = 1;
@@ -519,17 +519,17 @@ public final class a
     localUserInfoBean.d = ((com.tencent.bugly.crashreport.common.info.a)localObject).f();
     localUserInfoBean.e = System.currentTimeMillis();
     localUserInfoBean.f = -1L;
-    localUserInfoBean.n = ((com.tencent.bugly.crashreport.common.info.a)localObject).l;
+    localUserInfoBean.n = ((com.tencent.bugly.crashreport.common.info.a)localObject).m;
     if (paramInt == 1) {}
     for (paramInt = i;; paramInt = 0)
     {
       localUserInfoBean.o = paramInt;
       localUserInfoBean.l = ((com.tencent.bugly.crashreport.common.info.a)localObject).a();
-      localUserInfoBean.m = ((com.tencent.bugly.crashreport.common.info.a)localObject).r;
-      localUserInfoBean.g = ((com.tencent.bugly.crashreport.common.info.a)localObject).s;
-      localUserInfoBean.h = ((com.tencent.bugly.crashreport.common.info.a)localObject).t;
-      localUserInfoBean.i = ((com.tencent.bugly.crashreport.common.info.a)localObject).u;
-      localUserInfoBean.k = ((com.tencent.bugly.crashreport.common.info.a)localObject).v;
+      localUserInfoBean.m = ((com.tencent.bugly.crashreport.common.info.a)localObject).s;
+      localUserInfoBean.g = ((com.tencent.bugly.crashreport.common.info.a)localObject).t;
+      localUserInfoBean.h = ((com.tencent.bugly.crashreport.common.info.a)localObject).u;
+      localUserInfoBean.i = ((com.tencent.bugly.crashreport.common.info.a)localObject).v;
+      localUserInfoBean.k = ((com.tencent.bugly.crashreport.common.info.a)localObject).w;
       localUserInfoBean.r = ((com.tencent.bugly.crashreport.common.info.a)localObject).A();
       localUserInfoBean.s = ((com.tencent.bugly.crashreport.common.info.a)localObject).F();
       localUserInfoBean.p = ((com.tencent.bugly.crashreport.common.info.a)localObject).G();

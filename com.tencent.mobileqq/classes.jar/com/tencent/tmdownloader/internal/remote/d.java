@@ -2,8 +2,8 @@ package com.tencent.tmdownloader.internal.remote;
 
 import com.tencent.tmassistant.st.SDKReportManager2;
 import com.tencent.tmassistantbase.util.Settings;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.t;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.s;
 import com.tencent.tmdownloader.internal.a.a;
 
 public class d
@@ -16,7 +16,7 @@ public class d
   
   public void a(int paramInt, String paramString)
   {
-    ac.c("RemoteOpImpl", "<RemoteOpImpl.postReport> process:" + t.e() + ", type = " + paramInt + ", data = " + paramString);
+    ab.c("RemoteOpImpl", "<RemoteOpImpl.postReport> process:" + s.e() + ", type = " + paramInt + ", data = " + paramString);
     SDKReportManager2.getInstance().postReport(paramInt, paramString);
   }
   
@@ -42,7 +42,7 @@ public class d
   
   public void a(String paramString, byte[] paramArrayOfByte)
   {
-    ac.c("RemoteOpImpl", "<RemoteOpImpl.postReport> process:" + t.e() + ", key = " + paramString + ", valueSize = " + paramArrayOfByte.length);
+    ab.c("RemoteOpImpl", "<RemoteOpImpl.postReport> process:" + s.e() + ", key = " + paramString + ", valueSize = " + paramArrayOfByte.length);
     Settings.getInstance().setBlob(paramString, paramArrayOfByte);
   }
   

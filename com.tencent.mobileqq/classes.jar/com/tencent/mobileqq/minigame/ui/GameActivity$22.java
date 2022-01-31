@@ -1,27 +1,95 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import alsd;
-import alsl;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.mini.launch.MiniAppStartUtils;
+import com.tencent.mobileqq.mini.report.MiniAppReportManager2;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
 class GameActivity$22
-  implements alsd
+  implements MiniAppCmdInterface
 {
-  GameActivity$22(GameActivity paramGameActivity) {}
+  GameActivity$22(GameActivity paramGameActivity, LaunchParam paramLaunchParam) {}
   
-  public ColorNote getColorNote()
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if ((this.this$0.gameConfig == null) || (this.this$0.gameConfig.config == null))
+    long l;
+    Object localObject;
+    label23:
+    MiniAppInfo localMiniAppInfo;
+    if (paramJSONObject != null)
     {
-      QLog.e("[minigame] GameActivity", 1, "getColorNote, appConfig: " + this.this$0.gameConfig);
-      return null;
+      l = paramJSONObject.optLong("retCode");
+      if (paramJSONObject == null) {
+        break label301;
+      }
+      localObject = paramJSONObject.optString("errMsg");
+      QLog.i("[minigame] GameActivity", 1, "doRequestByLink, retCode = " + l + ",errMsg = " + (String)localObject);
+      if (!paramBoolean) {
+        break label351;
+      }
+      if (paramJSONObject == null) {
+        break label394;
+      }
+      localMiniAppInfo = (MiniAppInfo)paramJSONObject.opt("appInfo");
+      paramJSONObject = paramJSONObject.optString("shareTicket", "");
     }
-    byte[] arrayOfByte = MiniAppUtils.packMiniAppInfo(this.this$0.gameConfig.config);
-    return new alsl().a(16842752).a(this.this$0.gameConfig.config.appId).b(this.this$0.gameConfig.config.name).c(this.this$0.gameConfig.config.desc).d(this.this$0.gameConfig.config.iconUrl).a(arrayOfByte).a();
+    for (;;)
+    {
+      if (localMiniAppInfo != null)
+      {
+        localObject = new MiniAppConfig(localMiniAppInfo);
+        if (this.val$param != null) {
+          ((MiniAppConfig)localObject).launchParam = this.val$param;
+        }
+        ((MiniAppConfig)localObject).launchParam.miniAppId = localMiniAppInfo.appId;
+        ((MiniAppConfig)localObject).launchParam.shareTicket = paramJSONObject;
+        ((MiniAppConfig)localObject).launchParam.navigateExtData = localMiniAppInfo.extraData;
+        if (!TextUtils.isEmpty(((MiniAppConfig)localObject).launchParam.shareTicket)) {
+          ((MiniAppConfig)localObject).launchParam.scene = 1044;
+        }
+        if (((MiniAppConfig)localObject).launchParam.reportData == null) {
+          ((MiniAppConfig)localObject).launchParam.reportData = new HashMap();
+        }
+        if (localMiniAppInfo.reportData != null) {
+          ((MiniAppConfig)localObject).launchParam.reportData.putAll(localMiniAppInfo.reportData);
+        }
+        if ((localMiniAppInfo.verType != 3) && (localMiniAppInfo.verType != 1)) {
+          ((MiniAppConfig)localObject).forceReroad = 3;
+        }
+        MiniAppStartUtils.saveMiniAppInfoToFile((MiniAppConfig)localObject, BaseApplicationImpl.getApplication().getQQProcessName());
+        this.this$0.mGameAppConfig = ((MiniAppConfig)localObject);
+        MiniAppUtils.notityPullDownEntryInMainProcess((MiniAppConfig)localObject);
+        this.this$0.runOnUiThread(new GameActivity.22.1(this));
+        return;
+        l = 0L;
+        break;
+        label301:
+        localObject = "";
+        break label23;
+      }
+      MiniProgramLpReportDC04239.reportPageView(this.this$0.mGameAppConfig, "1", null, "load_fail", "shortcut_request_fail");
+      MiniAppReportManager2.reportPageView("2launch_fail", "shotcut_request_fail", null, this.this$0.mGameAppConfig);
+      GameActivity.access$2700(this.this$0, l, (String)localObject);
+      return;
+      label351:
+      MiniProgramLpReportDC04239.reportPageView(this.this$0.mGameAppConfig, "1", null, "load_fail", "shortcut_request_fail");
+      MiniAppReportManager2.reportPageView("2launch_fail", "shotcut_request_fail", null, this.this$0.mGameAppConfig);
+      GameActivity.access$2700(this.this$0, l, (String)localObject);
+      return;
+      label394:
+      paramJSONObject = null;
+      localMiniAppInfo = null;
+    }
   }
 }
 

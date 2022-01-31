@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import ajjy;
+import ajyc;
 import android.widget.Toast;
 
 class GameActivity$9
@@ -12,10 +12,10 @@ class GameActivity$9
   {
     if (this.val$retCode == 104)
     {
-      GameActivity.access$1300(this.this$0);
+      GameActivity.access$1200(this.this$0);
       return;
     }
-    Toast.makeText(this.this$0, ajjy.a(2131639218) + this.val$retCode + ")", 0).show();
+    Toast.makeText(this.this$0, ajyc.a(2131705003) + this.val$retCode + ")", 0).show();
   }
 }
 

@@ -1,17 +1,17 @@
 package dov.com.qq.im;
 
-import bheq;
+import bihg;
 import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraStoryCaptureButtonLayout;
 
 public class QIMStoryEffectCameraCaptureUnit$2
   implements Runnable
 {
-  public QIMStoryEffectCameraCaptureUnit$2(bheq parambheq) {}
+  public QIMStoryEffectCameraCaptureUnit$2(bihg parambihg) {}
   
   public void run()
   {
     this.this$0.a.w();
-    bheq.a(this.this$0, true);
+    bihg.a(this.this$0, true);
   }
 }
 

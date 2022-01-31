@@ -1,27 +1,19 @@
-import android.os.AsyncTask;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 
-class aphz
-  extends cy
+public class aphz
+  implements amkj
 {
-  aphz(aphp paramaphp) {}
+  public aphz(FileBrowserActivity paramFileBrowserActivity) {}
   
-  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
+  public void onColorNoteAnimFinish()
   {
-    try
-    {
-      cv.a(this.a.a, paramAsyncTask, paramInt, new apia(this));
-      super.a(paramAsyncTask, paramInt);
-      return;
-    }
-    catch (Exception paramAsyncTask)
-    {
-      paramAsyncTask.printStackTrace();
-    }
+    FileBrowserActivity.a(this.a);
+    this.a.overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aphz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import aosu;
-import aoxj;
-import aoyv;
+import apke;
+import apox;
+import apqp;
 
 class MusicFilePresenter$5$1
   implements Runnable
@@ -11,11 +11,11 @@ class MusicFilePresenter$5$1
   
   public void run()
   {
-    if ((this.a.this$0.jdField_a_of_type_Aosu != null) && (this.a.this$0.jdField_a_of_type_Aosu.b(aoxj.a(this.a.this$0))))
+    if ((this.a.this$0.jdField_a_of_type_Apke != null) && (this.a.this$0.jdField_a_of_type_Apke.b(apox.a(this.a.this$0))))
     {
-      int i = this.a.this$0.jdField_a_of_type_Aosu.a();
+      int i = this.a.this$0.jdField_a_of_type_Apke.a();
       this.a.this$0.b(i);
-      this.a.this$0.jdField_a_of_type_Aoyv.c(i);
+      this.a.this$0.jdField_a_of_type_Apqp.c(i);
     }
   }
 }

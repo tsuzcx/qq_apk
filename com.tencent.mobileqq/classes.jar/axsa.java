@@ -1,23 +1,33 @@
-class axsa
-  extends ajmm
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.statistics.UEC.UECItem;
+
+public final class axsa
+  implements Parcelable.Creator<UEC.UECItem>
 {
-  axsa(axrz paramaxrz) {}
-  
-  public void a(boolean paramBoolean, long paramLong, ajmn paramajmn)
+  public UEC.UECItem a(Parcel paramParcel)
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramajmn);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    this.a.d();
+    UEC.UECItem localUECItem = new UEC.UECItem();
+    localUECItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localUECItem.jdField_a_of_type_Int = paramParcel.readInt();
+    localUECItem.jdField_a_of_type_Long = paramParcel.readLong();
+    localUECItem.jdField_b_of_type_Int = paramParcel.readInt();
+    localUECItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localUECItem.c = paramParcel.readString();
+    localUECItem.d = paramParcel.readString();
+    localUECItem.e = paramParcel.readString();
+    localUECItem.f = paramParcel.readString();
+    return localUECItem;
+  }
+  
+  public UEC.UECItem[] a(int paramInt)
+  {
+    return new UEC.UECItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axsa
  * JD-Core Version:    0.7.0.1
  */

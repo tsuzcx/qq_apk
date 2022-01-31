@@ -1,100 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class asuz
-  implements begw
+  implements DialogInterface.OnClickListener
 {
-  asuz(asuy paramasuy, begr parambegr) {}
+  asuz(asuu paramasuu) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      if (this.jdField_a_of_type_Begr != null) {
-        this.jdField_a_of_type_Begr.dismiss();
-      }
-      return;
-    }
-    this.jdField_a_of_type_Asuy.a.f = true;
-    Object localObject1 = this.jdField_a_of_type_Asuy.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
-    paramView = (View)localObject1;
-    if (baip.a((String)localObject1))
-    {
-      paramView = (View)localObject1;
-      if (asuq.a(this.jdField_a_of_type_Asuy.a) != null) {
-        paramView = asuq.a(this.jdField_a_of_type_Asuy.a).uin;
-      }
-    }
-    if (baip.a(paramView)) {
-      paramView = "0";
-    }
-    for (;;)
-    {
-      long l;
-      if (this.jdField_a_of_type_Asuy.a.a.jdField_a_of_type_Long == 0L) {
-        if (asuq.a(this.jdField_a_of_type_Asuy.a) != null)
-        {
-          l = asuq.a(this.jdField_a_of_type_Asuy.a).tinyId;
-          label160:
-          if ((!"0".equals(paramView)) || (l != 0L))
-          {
-            Object localObject2 = null;
-            paramInt = 20003;
-            localObject1 = null;
-            if (this.jdField_a_of_type_Asuy.a.a.app != null) {
-              localObject1 = this.jdField_a_of_type_Asuy.a.a.app.a(false);
-            }
-            if (((localObject1 == null) || (!((HotChatManager)localObject1).b(this.jdField_a_of_type_Asuy.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.d))) && (this.jdField_a_of_type_Asuy.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h != 33) && (this.jdField_a_of_type_Asuy.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h != 4))
-            {
-              localObject1 = localObject2;
-              if (this.jdField_a_of_type_Asuy.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h != 31) {}
-            }
-            else
-            {
-              paramInt = 20012;
-              localObject1 = this.jdField_a_of_type_Asuy.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.d;
-            }
-            xbq.a(this.jdField_a_of_type_Asuy.a.a, this.jdField_a_of_type_Asuy.a.a.jdField_a_of_type_Long, paramView, (String)localObject1, paramInt, "", this.jdField_a_of_type_Asuy.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_AndroidOsBundle);
-          }
-          awqx.b(this.jdField_a_of_type_Asuy.a.a.app, "CliOper", "", "", "0X8004828", "0X8004828", 0, 0, "", "", "", "");
-          if ((asuq.a(this.jdField_a_of_type_Asuy.a) != null) && (asuq.a(this.jdField_a_of_type_Asuy.a).iIsGodFlag == 1))
-          {
-            if (asuq.a(this.jdField_a_of_type_Asuy.a).gender != 0) {
-              break label622;
-            }
-            awqx.b(this.jdField_a_of_type_Asuy.a.a.app, "CliOper", "", "", "0X800528E", "0X800528E", 0, 0, "", "", "", "");
-          }
-        }
-      }
-      for (;;)
-      {
-        awqx.b(this.jdField_a_of_type_Asuy.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_report", 0, 0, "", "", "", "");
-        if (!ProfileActivity.c(this.jdField_a_of_type_Asuy.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h)) {
-          break;
-        }
-        awqx.b(this.jdField_a_of_type_Asuy.a.a.app, "CliOper", "", "", "0X800523E", "0X800523E", 0, 0, "", "", "", "");
-        break;
-        l = 0L;
-        break label160;
-        l = this.jdField_a_of_type_Asuy.a.a.jdField_a_of_type_Long;
-        break label160;
-        label622:
-        if (asuq.a(this.jdField_a_of_type_Asuy.a).gender == 1) {
-          awqx.b(this.jdField_a_of_type_Asuy.a.a.app, "CliOper", "", "", "0X800528F", "0X800528F", 0, 0, "", "", "", "");
-        }
-      }
-    }
+    asuu.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     asuz
  * JD-Core Version:    0.7.0.1
  */

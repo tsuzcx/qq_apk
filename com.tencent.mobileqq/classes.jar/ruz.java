@@ -1,14 +1,20 @@
-import android.os.Bundle;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
 
-class ruz
-  implements wiu
+public class ruz
+  extends AnimatorListenerAdapter
 {
-  ruz(ruy paramruy, rux paramrux) {}
+  public ruz(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
   
-  public void a(Bundle paramBundle)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    boolean bool = paramBundle.getBoolean("isSuccess");
-    rus.a(this.jdField_a_of_type_Ruy.a, this.jdField_a_of_type_Rux.a, bool);
+    this.a.a();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a();
   }
 }
 

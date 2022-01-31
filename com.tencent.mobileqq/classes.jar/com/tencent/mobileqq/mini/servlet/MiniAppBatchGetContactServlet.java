@@ -3,9 +3,9 @@ package com.tencent.mobileqq.mini.servlet;
 import NS_MINI_INTERFACE.INTERFACE.StBatchGetContactRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bakc;
+import bblm;
 import mqq.app.Packet;
-import ynv;
+import yxr;
 
 public class MiniAppBatchGetContactServlet
   extends MiniAppAbstractServlet
@@ -25,7 +25,7 @@ public class MiniAppBatchGetContactServlet
     localStBatchGetContactRsp.mergeFrom(paramArrayOfByte);
     if (paramBundle.getLong("retCode") == 0L)
     {
-      paramArrayOfByte = ynv.a(localStBatchGetContactRsp);
+      paramArrayOfByte = yxr.a(localStBatchGetContactRsp);
       if (paramArrayOfByte != null) {
         paramBundle.putString("contact_list", paramArrayOfByte.toString());
       }
@@ -44,7 +44,7 @@ public class MiniAppBatchGetContactServlet
       arrayOfByte1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_info.BatchGetContact");
-    paramPacket.putSendData(bakc.a(arrayOfByte1));
+    paramPacket.putSendData(bblm.a(arrayOfByte1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

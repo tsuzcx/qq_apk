@@ -1,137 +1,170 @@
 import android.content.Context;
-import android.net.Uri;
-import com.tencent.ad.tangram.analysis.AdAnalysis;
-import com.tencent.ad.tangram.analysis.AdAnalysisEvent;
-import com.tencent.ad.tangram.protocol.gdt_analysis_event;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.ad.tangram.util.AdUriUtil;
-import com.tencent.gdtad.aditem.GdtAd;
-import java.lang.ref.WeakReference;
+import android.content.res.Resources;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-public final class yom
+public class yom
 {
-  private static gdt_analysis_event a(Context paramContext, int paramInt1, GdtAd paramGdtAd, int paramInt2, int paramInt3, String paramString)
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private String b;
+  private String c;
+  
+  public yom(AppInterface paramAppInterface)
   {
-    paramString = AdUriUtil.parse(paramString);
-    paramGdtAd = AdReporterForAnalysis.createEventForAd(paramContext, paramInt1, paramGdtAd);
-    if (paramInt2 == 0)
-    {
-      paramGdtAd.statisticsType = 101;
-      paramGdtAd.businessId = String.valueOf(paramInt3);
-      if (paramString == null) {
-        break label79;
-      }
-    }
-    label79:
-    for (paramContext = paramString.getHost();; paramContext = null)
-    {
-      paramGdtAd.hostName = paramContext;
-      return paramGdtAd;
-      if (paramInt2 == 1)
-      {
-        paramGdtAd.statisticsType = 102;
-        break;
-      }
-      if (paramInt2 != 2) {
-        break;
-      }
-      paramGdtAd.statisticsType = 105;
-      break;
-    }
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
   }
   
-  public static void a(Context paramContext, GdtAd paramGdtAd, int paramInt1, int paramInt2, boolean paramBoolean)
+  public yom a(int paramInt, String paramString)
   {
-    paramGdtAd = a(paramContext, 1058, paramGdtAd, paramInt1, paramInt2, null);
-    if (paramBoolean) {}
-    for (paramInt1 = 0;; paramInt1 = 4)
+    if ((paramInt >= 1) && (paramInt <= 40))
     {
-      paramGdtAd.internalErrorCode = paramInt1;
-      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtAd, 102));
-      return;
+      if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+        this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(String.valueOf(paramInt), paramString);
     }
+    return this;
   }
   
-  public static void a(Context paramContext, yop paramyop, int paramInt, long paramLong)
+  public yom a(String paramString)
   {
-    paramyop = a(paramContext, 1059, new GdtAd(paramyop.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo), paramyop.jdField_a_of_type_Int, paramyop.b, null);
-    if (paramInt == 0)
-    {
-      paramyop.internalErrorCode = 0;
-      paramyop.errorCode1 = paramInt;
-      if (paramLong == -2147483648L) {
-        break label120;
-      }
-    }
-    label120:
-    for (paramLong = System.currentTimeMillis() - paramLong;; paramLong = -2147483648L)
-    {
-      paramyop.duration = paramLong;
-      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramyop, 102));
-      return;
-      if (paramInt == 1)
-      {
-        paramyop.internalErrorCode = 2;
-        break;
-      }
-      if (paramInt == 2)
-      {
-        paramyop.internalErrorCode = 4;
-        break;
-      }
-      paramyop.internalErrorCode = 0;
-      break;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
   }
   
-  public static void a(Context paramContext, yop paramyop, String paramString)
+  public boolean a()
   {
-    paramyop = a(paramContext, 1056, new GdtAd(paramyop.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo), paramyop.jdField_a_of_type_Int, paramyop.b, paramString);
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramyop, 102));
-  }
-  
-  public static void a(Context paramContext, yop paramyop, String paramString, int paramInt)
-  {
-    paramyop = a(paramContext, 1060, new GdtAd(paramyop.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo), paramyop.jdField_a_of_type_Int, paramyop.b, paramString);
-    paramyop.httpErrorCode = paramInt;
-    if (paramyop.httpErrorCode == 200) {
-      paramyop.internalErrorCode = 0;
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty(this.b)) && (TextUtils.isEmpty(this.c)) && ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.size() == 0))) {
+      return false;
     }
     for (;;)
     {
-      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramyop, 102));
-      return;
-      if (paramyop.httpErrorCode == -1) {
-        paramyop.internalErrorCode = 3;
-      } else {
-        paramyop.internalErrorCode = 5;
+      try
+      {
+        if (this.jdField_a_of_type_JavaUtilList == null) {
+          this.jdField_a_of_type_JavaUtilList = new ArrayList();
+        }
+        this.jdField_a_of_type_JavaUtilList.clear();
+        long l = NetConnInfoCenter.getServerTime();
+        this.jdField_a_of_type_JavaUtilList.add(String.valueOf(l));
+        this.jdField_a_of_type_JavaUtilList.add("1");
+        this.jdField_a_of_type_JavaUtilList.add("8.2.8");
+        this.jdField_a_of_type_JavaUtilList.add("");
+        this.jdField_a_of_type_JavaUtilList.add("2");
+        this.jdField_a_of_type_JavaUtilList.add(Build.BRAND);
+        int j = nam.a();
+        if (j >= 0)
+        {
+          i = j;
+          if (j < ajsf.c.length)
+          {
+            this.jdField_a_of_type_JavaUtilList.add(ajsf.c[i]);
+            Object localObject2 = "";
+            Object localObject1 = localObject2;
+            if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+            {
+              BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp();
+              localObject1 = localObject2;
+              if (localBaseApplication != null)
+              {
+                localObject1 = localBaseApplication.getResources().getDisplayMetrics();
+                localObject1 = ((DisplayMetrics)localObject1).widthPixels + "*" + ((DisplayMetrics)localObject1).heightPixels;
+              }
+            }
+            this.jdField_a_of_type_JavaUtilList.add(localObject1);
+            this.jdField_a_of_type_JavaUtilList.add("0");
+            this.jdField_a_of_type_JavaUtilList.add("0");
+            this.jdField_a_of_type_JavaUtilList.add("1");
+            this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaLangString);
+            this.jdField_a_of_type_JavaUtilList.add(this.b);
+            this.jdField_a_of_type_JavaUtilList.add("0");
+            this.jdField_a_of_type_JavaUtilList.add(this.c);
+            a(14, Build.MODEL);
+            a(15, Build.VERSION.RELEASE);
+            if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.size() > 0))
+            {
+              i = 1;
+              if (i <= 40)
+              {
+                localObject1 = String.valueOf(i);
+                localObject2 = this.jdField_a_of_type_JavaUtilList;
+                if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject1)) {
+                  break label495;
+                }
+                localObject1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
+                ((List)localObject2).add(localObject1);
+                i += 1;
+                continue;
+              }
+            }
+            bghg.a(null, "dc00087", this.jdField_a_of_type_JavaUtilList);
+            return true;
+          }
+        }
       }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return false;
+      }
+      int i = 0;
+      continue;
+      label495:
+      String str = "";
     }
   }
   
-  public static void a(Context paramContext, yop paramyop, String paramString, int paramInt, long paramLong)
+  public yom b(String paramString)
   {
-    paramyop = a(paramContext, 1057, new GdtAd(paramyop.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo), paramyop.jdField_a_of_type_Int, paramyop.b, paramString);
-    paramyop.httpErrorCode = paramInt;
-    if (paramyop.httpErrorCode == 200) {
-      paramyop.internalErrorCode = 0;
-    }
-    for (;;)
-    {
-      paramyop.duration = paramLong;
-      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramyop, 102));
-      return;
-      if (paramyop.httpErrorCode == -1) {
-        paramyop.internalErrorCode = 3;
-      } else {
-        paramyop.internalErrorCode = 5;
-      }
-    }
+    this.b = paramString;
+    return this;
+  }
+  
+  public yom c(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public yom d(String paramString)
+  {
+    return a(4, paramString);
+  }
+  
+  public yom e(String paramString)
+  {
+    return a(1, paramString);
+  }
+  
+  public yom f(String paramString)
+  {
+    return a(11, paramString);
+  }
+  
+  public yom g(String paramString)
+  {
+    return a(12, paramString);
+  }
+  
+  public yom h(String paramString)
+  {
+    return a(35, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yom
  * JD-Core Version:    0.7.0.1
  */

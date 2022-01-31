@@ -1,114 +1,86 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.Groups;
+import android.view.View;
+import android.view.View.OnClickListener;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
-public class bitm
+class bitm
+  implements View.OnClickListener
 {
-  @NonNull
-  protected final Groups a;
-  @NonNull
-  private final List<bitl> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  @NonNull
-  private final List<bitl> b = new ArrayList();
+  bitm(bitj parambitj) {}
   
-  public bitm(@NonNull Groups paramGroups, @NonNull List<bitl> paramList)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataGroups = paramGroups;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    paramGroups = paramList.iterator();
-    while (paramGroups.hasNext())
-    {
-      paramList = (bitl)paramGroups.next();
-      if (paramList.jdField_a_of_type_Boolean) {
-        this.b.add(paramList);
+    int j = 0;
+    bitj.a(this.a, true);
+    paramView = bitj.a(this.a).a();
+    QLog.d("AEGIFChunkPreviewFragment", 4, "save button click, selectedItems = " + paramView);
+    Object localObject = bizg.a();
+    ((bizg)localObject).k();
+    int i = 0;
+    while (i < bitj.a(this.a).size()) {
+      if (!paramView.contains(Integer.valueOf(i)))
+      {
+        i += 1;
+      }
+      else
+      {
+        if (((bisj)bitj.a(this.a).get(i)).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null)
+        {
+          ((bizg)localObject).k(((bisj)bitj.a(this.a).get(i)).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id);
+          ((bizg)localObject).i("none");
+          ((bizg)localObject).j("none");
+        }
+        for (;;)
+        {
+          bizc.a().J();
+          break;
+          if (!((bisj)bitj.a(this.a).get(i)).jdField_a_of_type_JavaLangString.equals(""))
+          {
+            ((bizg)localObject).k("none");
+            ((bizg)localObject).i(((bism)bisl.jdField_a_of_type_JavaUtilList.get(bisl.jdField_a_of_type_ArrayOfInt[(i % bisl.jdField_a_of_type_ArrayOfInt.length)])).jdField_a_of_type_JavaLangString);
+            ((bizg)localObject).j(((bisj)bitj.a(this.a).get(i)).jdField_a_of_type_JavaLangString);
+          }
+          else
+          {
+            ((bizg)localObject).k("none");
+            ((bizg)localObject).i("none");
+            ((bizg)localObject).j("none");
+          }
+        }
       }
     }
-  }
-  
-  public int a()
-  {
-    return this.b.size();
-  }
-  
-  @NonNull
-  public List<bitl> a()
-  {
-    return Collections.unmodifiableList(this.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
+    bitj.a(this.a).a(false);
+    localObject = bitj.a(this.a).a();
+    QLog.d("AEGIFChunkPreviewFragment", 4, "save button click, pngDirs = " + ((biva)localObject).a + ", texts = " + ((biva)localObject).b);
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    ArrayList localArrayList3 = new ArrayList();
+    i = j;
+    if (i < ((biva)localObject).a.size())
     {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+      if (paramView.contains(((biva)localObject).d.get(i)))
+      {
+        if ((i != 0) || (bitj.a(this.a) == null)) {
+          break label474;
+        }
+        localArrayList1.add(bitj.a(this.a).jdField_a_of_type_JavaLangString);
+        localArrayList2.add(bitj.a(this.a).b);
+        localArrayList3.add(bitj.a(this.a).c);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        label474:
+        localArrayList1.add(((biva)localObject).a.get(i));
+        localArrayList2.add(((biva)localObject).b.get(i));
+        localArrayList3.add(((biva)localObject).c.get(i));
+      }
     }
-  }
-  
-  public void a(bitl parambitl)
-  {
-    parambitl.a();
-    if ((parambitl.jdField_a_of_type_Boolean) && (!this.b.contains(parambitl)))
-    {
-      this.b.add(parambitl);
-      return;
-    }
-    if ((!parambitl.jdField_a_of_type_Boolean) && (this.b.contains(parambitl)))
-    {
-      this.b.remove(parambitl);
-      return;
-    }
-    throw new IllegalStateException("onFriendClick, friend select:" + parambitl.jdField_a_of_type_Boolean + ",contains:" + this.b.contains(parambitl));
-  }
-  
-  public boolean a()
-  {
-    return (!this.b.isEmpty()) && (this.jdField_a_of_type_JavaUtilList.size() == this.b.size());
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  @NonNull
-  public List<bitl> b()
-  {
-    return Collections.unmodifiableList(this.b);
-  }
-  
-  public void b()
-  {
-    this.b.clear();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      bitl localbitl = (bitl)localIterator.next();
-      localbitl.jdField_a_of_type_Boolean = true;
-      this.b.add(localbitl);
-    }
-  }
-  
-  public void b(bitl parambitl)
-  {
-    parambitl.jdField_a_of_type_Boolean = true;
-    if (!this.b.contains(parambitl)) {
-      this.b.add(parambitl);
-    }
-  }
-  
-  public void c()
-  {
-    this.b.clear();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((bitl)localIterator.next()).jdField_a_of_type_Boolean = false;
-    }
+    bitj.a(this.a, localArrayList1, localArrayList2, localArrayList3);
   }
 }
 

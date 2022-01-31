@@ -1,20 +1,12 @@
-import android.util.Pair;
-import java.util.HashSet;
-
-class awtb
+public abstract interface awtb
 {
-  public String a;
-  public HashSet<Pair<Long, Long>> a;
-  public String b;
+  public abstract void a(awta paramawta);
   
-  private awtb(awta paramawta)
-  {
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  }
+  public abstract void a(awta paramawta, String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awtb
  * JD-Core Version:    0.7.0.1
  */

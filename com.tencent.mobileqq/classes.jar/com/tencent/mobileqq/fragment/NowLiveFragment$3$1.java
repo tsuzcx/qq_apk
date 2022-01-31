@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.fragment;
 
-import appd;
+import aqir;
 
 public class NowLiveFragment$3$1
   implements Runnable
 {
-  public NowLiveFragment$3$1(appd paramappd) {}
+  public NowLiveFragment$3$1(aqir paramaqir) {}
   
   public void run()
   {

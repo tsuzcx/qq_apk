@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class aath
-  extends ajee
+  implements DialogInterface.OnClickListener
 {
-  public aath(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public aath(ChatSettingActivity paramChatSettingActivity) {}
   
-  protected void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
+    this.a.finish();
+    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
+      ChatSettingActivity.a(this.a).dismiss();
     }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
-      }
-    } while (this.a.a == null);
-    this.a.a.c();
   }
 }
 

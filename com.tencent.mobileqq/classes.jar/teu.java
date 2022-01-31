@@ -1,25 +1,59 @@
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+
 public class teu
-  extends tet
 {
-  public String a;
-  public int b = 0;
-  public int c = 16296448;
-  public String c;
-  public int d;
-  public String d;
-  public int e = 1;
-  public String e;
-  public String f = sfm.a;
-  public String g = "mqqapi://qstory/open?src_type=internal&version=1";
-  public String h;
-  public String i = "";
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n = "";
-  public String o;
-  public String p;
+  public final int a;
+  public final int b;
+  public final int c;
+  
+  public teu(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = 1;
+  }
+  
+  public teu(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
+  
+  public static teu a(SosoInterface.SosoLocation paramSosoLocation)
+  {
+    if (paramSosoLocation != null) {
+      return new teu((int)(paramSosoLocation.a * 1000000.0D), (int)(paramSosoLocation.b * 1000000.0D));
+    }
+    return new teu(0, 0);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (teu)paramObject;
+      if (this.a != paramObject.a) {
+        return false;
+      }
+    } while (this.b == paramObject.b);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.a * 31 + this.b;
+  }
+  
+  public String toString()
+  {
+    return "GpsMsg{latitude=" + this.a + ", longitude=" + this.b + '}';
+  }
 }
 
 

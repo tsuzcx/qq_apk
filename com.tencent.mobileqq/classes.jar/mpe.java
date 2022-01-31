@@ -1,12 +1,26 @@
-public abstract interface mpe
+import com.tencent.av.app.VideoAppInterface;
+
+class mpe
+  implements mqi
 {
-  public abstract void a();
+  mpe(mpc parammpc) {}
   
-  public abstract void a(String paramString);
+  public void a(mqh parammqh)
+  {
+    mpc localmpc = this.a;
+    if (parammqh.b == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localmpc.a(bool, parammqh.g, parammqh.c);
+      this.a.a = null;
+      mpc.b(this.a).a(new Object[] { Integer.valueOf(8003), Integer.valueOf(7) });
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mpe
  * JD-Core Version:    0.7.0.1
  */

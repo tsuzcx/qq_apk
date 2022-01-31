@@ -1,24 +1,8 @@
-import android.os.MessageQueue.IdleHandler;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
-
-public final class aevs
-  implements MessageQueue.IdleHandler
+public abstract interface aevs
 {
-  final SearchContactsActivity a;
+  public abstract void a();
   
-  public aevs(SearchContactsActivity paramSearchContactsActivity)
-  {
-    this.a = paramSearchContactsActivity;
-  }
-  
-  public boolean queueIdle()
-  {
-    this.a.a.requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
-    return false;
-  }
+  public abstract void b();
 }
 
 

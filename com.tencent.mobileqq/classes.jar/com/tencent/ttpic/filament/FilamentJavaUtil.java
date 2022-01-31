@@ -809,6 +809,17 @@ public class FilamentJavaUtil
     return (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2 + paramFloat3 * paramFloat3);
   }
   
+  public static float[] lglt2xyz(float paramFloat1, float paramFloat2)
+  {
+    paramFloat1 = (paramFloat1 - 180.0F) * 3.141593F / 180.0F;
+    float f2 = -paramFloat2 * 3.141593F / 180.0F;
+    paramFloat2 = (float)Math.cos(f2);
+    float f1 = (float)Math.sin(paramFloat1);
+    f2 = (float)Math.sin(f2);
+    paramFloat1 = (float)Math.cos(paramFloat1);
+    return new float[] { Math.round(f1 * paramFloat2 * 100.0F) / 100.0F, Math.round(f2 * 100.0F) / 100.0F, Math.round(paramFloat1 * paramFloat2 * 100.0F) / 100.0F };
+  }
+  
   public static IndirectLight loadIndirectLight(Context paramContext, Engine paramEngine, String paramString, int paramInt)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -977,6 +988,23 @@ public class FilamentJavaUtil
       }
     }
     paramFilamentAsset.updateMorphWeights(paramNodeItemJava.name, arrayOfFloat);
+  }
+  
+  public static float[] xyz2lglt(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    float f1 = (float)Math.atan(paramFloat1 / paramFloat3);
+    paramFloat2 = (float)Math.asin(paramFloat2);
+    f1 = f1 / 3.141593F * 180.0F + 180.0F;
+    float f2 = -paramFloat2 / 3.141593F;
+    paramFloat2 = f1;
+    if (Math.abs(paramFloat1 - 0.0D) <= 0.0001D)
+    {
+      paramFloat2 = f1;
+      if (Math.abs(paramFloat3 - 0.0D) <= 0.0001D) {
+        paramFloat2 = 0.0F;
+      }
+    }
+    return new float[] { paramFloat2, f2 * 180.0F };
   }
 }
 

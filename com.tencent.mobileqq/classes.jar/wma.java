@@ -1,48 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract class wma
-  extends mmn
+class wma
+  implements View.OnClickListener
 {
-  public wma()
-  {
-    super(false);
-  }
+  wma(wlx paramwlx) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramInt != 0)
+    if (this.a.a() != null)
     {
-      a(false, paramInt, null, paramBundle);
-      return;
-    }
-    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
-    try
-    {
-      localRspBody.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d6.DownloadFileRspBody)localRspBody.download_file_rsp.get();
-      if (paramArrayOfByte.int32_ret_code.has())
-      {
-        a(true, 0, paramArrayOfByte, paramBundle);
-        return;
+      paramView = this.a.a().a();
+      if (paramView != null) {
+        this.a.d(paramView);
       }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    else
     {
-      a(false, -1, null, paramBundle);
       return;
     }
-    a(false, -1, null, paramBundle);
+    bcpw.a(wlx.a(this.a), 1, ajyc.a(2131714648), 0).a();
   }
-  
-  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wma
  * JD-Core Version:    0.7.0.1
  */

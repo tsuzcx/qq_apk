@@ -6,14 +6,11 @@ import android.content.DialogInterface.OnClickListener;
 class GameActivity$3
   implements DialogInterface.OnClickListener
 {
-  GameActivity$3(GameActivity paramGameActivity, DialogInterface.OnClickListener paramOnClickListener) {}
+  GameActivity$3(GameActivity paramGameActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    if (this.val$onIKnowOnClickListener != null) {
-      this.val$onIKnowOnClickListener.onClick(paramDialogInterface, paramInt);
-    }
+    this.this$0.performMiniGameClose();
   }
 }
 

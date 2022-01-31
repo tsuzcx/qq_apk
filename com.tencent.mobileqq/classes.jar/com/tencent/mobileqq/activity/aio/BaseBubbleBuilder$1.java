@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import axoa;
-import axwd;
+import ayog;
+import aywk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -16,7 +16,7 @@ public class BaseBubbleBuilder$1
   
   public void run()
   {
-    File localFile = axoa.a(axwd.a((MessageForPic)this.a, 1, null).toString());
+    File localFile = ayog.a(aywk.a((MessageForPic)this.a, 1, null).toString());
     if ((localFile == null) || (!localFile.exists())) {
       this.this$0.a.a().a((MessageForPic)this.a, 2);
     }

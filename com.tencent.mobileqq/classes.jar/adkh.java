@@ -1,142 +1,63 @@
+import android.graphics.Color;
+import android.text.TextPaint;
 import android.text.TextUtils;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.mobileqq.data.PAMessage.Item;
+import com.tencent.mobileqq.data.IntimateInfo.DNAInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 class adkh
-  implements View.OnClickListener
+  extends ClickableSpan
 {
-  adkh(adkg paramadkg) {}
+  adkh(adkg paramadkg, IntimateInfo.DNAInfo paramDNAInfo) {}
   
   public void onClick(View paramView)
   {
-    adki localadki = (adki)paramView.getTag();
-    ChatMessage localChatMessage = aciy.a(paramView);
-    long l2 = -1L;
-    long l1 = l2;
-    if ((localChatMessage instanceof MessageForPubAccount))
+    axqw.b(null, "dc00898", "", "", "0X800A20A ", "0X800A20A ", 0, 0, "", "", "", "");
+    QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A20A");
+    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl))
     {
-      paramView = (MessageForPubAccount)localChatMessage;
-      l1 = l2;
-      if (paramView.mPAMessage != null)
+      QLog.e("intimate_relationship", 2, "linkUrl is empty");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, String.format("click scheme: %s, scheme: %s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkWording, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl }));
+    }
+    paramView = bbej.a(this.jdField_a_of_type_Adkg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adkg.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
+    if (paramView != null)
+    {
+      paramView.c();
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl.toLowerCase().startsWith("mqzone://"))
+    {
+      bgxy.c(this.jdField_a_of_type_Adkg.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
+      return;
+    }
+    adka.a(this.jdField_a_of_type_Adkg.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
+    try
+    {
+      int j = Color.parseColor("#4D94FF");
+      paramTextPaint.setColor(j);
+      int i = j;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo != null)
       {
-        l1 = l2;
-        if (paramView.mPAMessage.mMsgId > 0L) {
-          l1 = paramView.mPAMessage.mMsgId;
+        i = j;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkColor)) {
+          i = Color.parseColor(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkColor);
         }
       }
-    }
-    if ((localadki == null) || (!(localChatMessage instanceof MessageForPubAccount))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatItemBuilder", 2, "PAMultiItemBuilder onClickListener holder = " + localadki + ", msg = " + localChatMessage);
-      }
-    }
-    MessageForPubAccount localMessageForPubAccount;
-    do
-    {
+      paramTextPaint.setColor(i);
       return;
-      localMessageForPubAccount = (MessageForPubAccount)localChatMessage;
-      if ((localMessageForPubAccount.mPAMessage != null) && (localMessageForPubAccount.mPAMessage.items != null) && (!localMessageForPubAccount.mPAMessage.items.isEmpty())) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ChatItemBuilder", 2, "PAMultiItemBuilder onClickListener mPAMessage or items is empty !");
-    return;
-    Object localObject1 = (PAMessage.Item)localMessageForPubAccount.mPAMessage.items.get(localadki.d);
-    ohp.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, null);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface instanceof QQAppInterface)) {
-      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "mp_msg_msgpic_click", "aio_morpic_click", localadki.d + 1, 0, "", "", Long.toString(localMessageForPubAccount.mPAMessage.mMsgId), "");
     }
-    if (((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface instanceof QQAppInterface)) && (localMessageForPubAccount.istroop == 1))
+    catch (IllegalArgumentException paramTextPaint)
     {
-      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "oper", "Clk_all", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
-      if (((azhx)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localMessageForPubAccount.uniseq)) {
-        awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "oper", "top_one", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
-      }
-    }
-    label437:
-    Object localObject2;
-    int i;
-    if (TextUtils.isEmpty(((PAMessage.Item)localObject1).a_actionData))
-    {
-      paramView = ((PAMessage.Item)localObject1).actionData;
-      if (TextUtils.isEmpty(paramView)) {
-        break label1180;
-      }
-      localObject2 = bade.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramView);
-      if (localObject2 != null) {
-        break label956;
-      }
-      if (((PAMessage.Item)localObject1).appId != 0L) {
-        break label864;
-      }
-      i = 0;
-      label481:
-      if (i == 0) {
-        break label900;
-      }
-      if (adkj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, ((PAMessage.Item)localObject1).nativeJumpString, ((PAMessage.Item)localObject1).appId, paramView)) {
-        break label869;
-      }
-      adkj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, localadki.a, localadki.b, localadki.c, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, l1);
-      label569:
-      PublicAccountHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "Pb_account_lifeservice", "mp_msg_sys_35", "singlepic_allclick");
-    }
-    for (;;)
-    {
-      l1 = localMessageForPubAccount.mPAMessage.mMsgId;
-      if (l1 > 0L) {
-        awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", localMessageForPubAccount.frienduin, "mp_msg_sys_14", "msg_click", 0, 1, 0, Long.toString(l1), "", "", "");
-      }
-      localObject1 = (nfp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(88);
-      localObject2 = (ngh)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88);
-      if ((localChatMessage != null) && (localObject1 != null) && (localObject2 != null) && (((nfp)localObject1).a(localChatMessage.senderuin))) {
-        ((ngh)localObject2).a(false, localChatMessage, localadki.d + 1, paramView);
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56) == null) || (!((ajoy)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) || (localMessageForPubAccount.mPAMessage.items == null) || (localMessageForPubAccount.mPAMessage.items.size() <= 0)) {
-        break;
-      }
-      wye.a(localMessageForPubAccount.frienduin, "auth_aio", "clk_content", 0, 0, new String[] { "", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, ((PAMessage.Item)localMessageForPubAccount.mPAMessage.items.get(0)).title });
-      return;
-      paramView = ((PAMessage.Item)localObject1).a_actionData;
-      break label437;
-      label864:
-      i = 1;
-      break label481;
-      label869:
-      PublicAccountHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "Pb_account_lifeservice", "mp_msg_sys_37", "singlepic_appclick");
-      break label569;
-      label900:
-      adkj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, localadki.a, localadki.b, localadki.c, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, l1);
-      break label569;
-      label956:
-      if (TextUtils.isEmpty(((bacn)localObject2).a()))
-      {
-        if (!adkj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, ((PAMessage.Item)localObject1).nativeJumpString, ((PAMessage.Item)localObject1).appId, paramView))
-        {
-          adkj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, localadki.a, localadki.b, localadki.c, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, l1);
-          break label569;
-        }
-        PublicAccountHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "Pb_account_lifeservice", "mp_msg_sys_37", "singlepic_appclick");
-        break label569;
-      }
-      if (!((bacn)localObject2).c())
-      {
-        adkj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, localadki.a, localadki.b, localadki.c, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, l1);
-        break label569;
-      }
-      PublicAccountHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "Pb_account_lifeservice", "mp_msg_sys_36", "singlepic_mqqclick");
-      break label569;
-      label1180:
-      adkj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, localadki.a, localadki.b, localadki.c, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, l1);
+      QLog.e("intimate_relationship", 2, " color parse err");
     }
   }
 }

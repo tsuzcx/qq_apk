@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ark;
 
-import alfd;
-import alff;
+import altr;
+import altt;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ArkHorizontalListViewAdapter$2$2
   implements Runnable
 {
-  public ArkHorizontalListViewAdapter$2$2(alfd paramalfd, String paramString) {}
+  public ArkHorizontalListViewAdapter$2$2(altr paramaltr, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Alfd.a.b.setVisibility(0);
-    this.jdField_a_of_type_Alfd.a.a.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Altr.a.b.setVisibility(0);
+    this.jdField_a_of_type_Altr.a.a.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

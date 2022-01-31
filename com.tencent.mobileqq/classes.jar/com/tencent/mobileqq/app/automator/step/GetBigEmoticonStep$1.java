@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import ajed;
-import ajxj;
-import anfj;
-import bace;
+import ajsf;
+import aklt;
+import anvs;
+import bbdj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.data.EmoticonPackage;
@@ -23,7 +23,7 @@ class GetBigEmoticonStep$1
   public void run()
   {
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(ajed.bJ);
+    ((StringBuilder)localObject1).append(ajsf.bR);
     ((StringBuilder)localObject1).append("emojiIds.txt");
     Object localObject2 = new File(((StringBuilder)localObject1).toString());
     if (!((File)localObject2).exists()) {
@@ -35,10 +35,10 @@ class GetBigEmoticonStep$1
     {
       return;
       localObject1 = new ArrayList();
-      ajxj localajxj;
+      aklt localaklt;
       try
       {
-        localObject2 = new JSONObject(bace.a((File)localObject2)).getJSONArray("data");
+        localObject2 = new JSONObject(bbdj.a((File)localObject2)).getJSONArray("data");
         if ((localObject2 == null) || (((JSONArray)localObject2).length() == 0)) {
           continue;
         }
@@ -47,10 +47,10 @@ class GetBigEmoticonStep$1
         {
           int j = ((JSONArray)localObject2).getJSONObject(i).getInt("epId");
           int k = ((JSONArray)localObject2).getJSONObject(i).getInt("type");
-          localajxj = new ajxj();
-          localajxj.jdField_a_of_type_JavaLangString = Integer.toString(j);
-          localajxj.jdField_a_of_type_Int = k;
-          ((List)localObject1).add(localajxj);
+          localaklt = new aklt();
+          localaklt.jdField_a_of_type_JavaLangString = Integer.toString(j);
+          localaklt.jdField_a_of_type_Int = k;
+          ((List)localObject1).add(localaklt);
           i += 1;
         }
         if (localJSONException.size() == 0) {
@@ -62,15 +62,15 @@ class GetBigEmoticonStep$1
         localJSONException.printStackTrace();
         return;
       }
-      localObject2 = (anfj)this.this$0.a.app.getManager(43);
+      localObject2 = (anvs)this.this$0.a.app.getManager(43);
       int i = 0;
       while (i < localJSONException.size())
       {
-        localajxj = (ajxj)localJSONException.get(i);
+        localaklt = (aklt)localJSONException.get(i);
         EmoticonPackage localEmoticonPackage = new EmoticonPackage();
-        localEmoticonPackage.jobType = localajxj.jdField_a_of_type_Int;
-        localEmoticonPackage.epId = localajxj.jdField_a_of_type_JavaLangString;
-        ((anfj)localObject2).a(localEmoticonPackage, true);
+        localEmoticonPackage.jobType = localaklt.jdField_a_of_type_Int;
+        localEmoticonPackage.epId = localaklt.jdField_a_of_type_JavaLangString;
+        ((anvs)localObject2).a(localEmoticonPackage, true);
         i += 1;
       }
     }

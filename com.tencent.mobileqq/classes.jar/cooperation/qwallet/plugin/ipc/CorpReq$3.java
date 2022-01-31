@@ -2,11 +2,11 @@ package cooperation.qwallet.plugin.ipc;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import azwh;
+import baxl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class CorpReq$3
-  implements azwh
+  implements baxl
 {
   CorpReq$3(CorpReq paramCorpReq, QQAppInterface paramQQAppInterface, String paramString, CorpResp paramCorpResp) {}
   

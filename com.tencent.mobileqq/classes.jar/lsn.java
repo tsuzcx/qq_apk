@@ -1,19 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-
-class lsn
-  implements View.OnClickListener
+public abstract interface lsn
 {
-  lsn(lsl paramlsl) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    this.a.a.a().a().at = true;
-    mjg.a(this.a.a);
-    lsl.b(this.a);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

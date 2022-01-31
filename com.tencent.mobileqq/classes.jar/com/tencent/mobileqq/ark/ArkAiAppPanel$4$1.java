@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ark;
 
-import aael;
-import adai;
-import ajjy;
-import alcm;
-import alcp;
-import alep;
-import alfn;
+import aaod;
+import adlk;
+import ajyc;
+import alra;
+import alrd;
+import altd;
+import alub;
 import android.text.TextUtils;
 import com.tencent.ark.open.ArkAppCacheMgr;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -30,19 +30,19 @@ import org.w3c.dom.Text;
 public class ArkAiAppPanel$4$1
   implements Runnable
 {
-  public ArkAiAppPanel$4$1(alcp paramalcp, String paramString) {}
+  public ArkAiAppPanel$4$1(alrd paramalrd, String paramString) {}
   
   public void run()
   {
     try
     {
-      if ((alcm.a(this.jdField_a_of_type_Alcp.a) == null) || (alcm.a(this.jdField_a_of_type_Alcp.a).size() <= 0) || (alcm.a(this.jdField_a_of_type_Alcp.a) >= alcm.a(this.jdField_a_of_type_Alcp.a).size())) {
+      if ((alra.a(this.jdField_a_of_type_Alrd.a) == null) || (alra.a(this.jdField_a_of_type_Alrd.a).size() <= 0) || (alra.a(this.jdField_a_of_type_Alrd.a) >= alra.a(this.jdField_a_of_type_Alrd.a).size())) {
         return;
       }
-      if (alcm.a(this.jdField_a_of_type_Alcp.a).get(alcm.a(this.jdField_a_of_type_Alcp.a)) == null) {
+      if (alra.a(this.jdField_a_of_type_Alrd.a).get(alra.a(this.jdField_a_of_type_Alrd.a)) == null) {
         return;
       }
-      localObject1 = ((adai)alcm.a(this.jdField_a_of_type_Alcp.a).get(alcm.a(this.jdField_a_of_type_Alcp.a))).getViewShare();
+      localObject1 = ((adlk)alra.a(this.jdField_a_of_type_Alrd.a).get(alra.a(this.jdField_a_of_type_Alrd.a))).getViewShare();
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         return;
       }
@@ -60,12 +60,12 @@ public class ArkAiAppPanel$4$1
         return;
       }
       localJSONObject = new JSONObject();
-      if (!alfn.a(((Node)localObject1).getFirstChild(), localJSONObject)) {
+      if (!alub.a(((Node)localObject1).getFirstChild(), localJSONObject)) {
         return;
       }
       localObject1 = new ArkAppMessage();
       ((ArkAppMessage)localObject1).appMinVersion = "0.0.0.1";
-      ((ArkAppMessage)localObject1).appName = ((adai)alcm.a(this.jdField_a_of_type_Alcp.a).get(alcm.a(this.jdField_a_of_type_Alcp.a))).getAppName();
+      ((ArkAppMessage)localObject1).appName = ((adlk)alra.a(this.jdField_a_of_type_Alrd.a).get(alra.a(this.jdField_a_of_type_Alrd.a))).getAppName();
       if (TextUtils.isEmpty(((ArkAppMessage)localObject1).appName)) {
         return;
       }
@@ -82,7 +82,7 @@ public class ArkAiAppPanel$4$1
       if (TextUtils.isEmpty(((ArkAppMessage)localObject1).appDesc)) {
         ((ArkAppMessage)localObject1).appDesc = ((ArkAppMessage)localObject1).appName;
       }
-      ((ArkAppMessage)localObject1).promptText = String.format(ajjy.a(2131634848), new Object[] { ((ArkAppMessage)localObject1).appDesc });
+      ((ArkAppMessage)localObject1).promptText = String.format(ajyc.a(2131700632), new Object[] { ((ArkAppMessage)localObject1).appDesc });
       localObject2 = MessageForArkApp.getConfigFromXml((Document)localObject2);
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         break label579;
@@ -113,14 +113,14 @@ public class ArkAiAppPanel$4$1
         localException.config = ((JSONObject)localObject2).toString();
       }
     }
-    if (alcm.a(this.jdField_a_of_type_Alcp.a) != null)
+    if (alra.a(this.jdField_a_of_type_Alrd.a) != null)
     {
-      localObject2 = alcm.a(this.jdField_a_of_type_Alcp.a).a();
+      localObject2 = alra.a(this.jdField_a_of_type_Alrd.a).a();
       if (localObject2 != null) {
-        aael.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), (SessionInfo)localObject2, (ArkAppMessage)localObject1);
+        aaod.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), (SessionInfo)localObject2, (ArkAppMessage)localObject1);
       }
     }
-    alep.a(null, this.jdField_a_of_type_JavaLangString, "AIOInputSendMessage", 0, 0, 0L, 0L, 0L, ((ArkAppMessage)localObject1).appName, "");
+    altd.a(null, this.jdField_a_of_type_JavaLangString, "AIOInputSendMessage", 0, 0, 0L, 0L, 0L, ((ArkAppMessage)localObject1).appName, "");
     return;
   }
 }

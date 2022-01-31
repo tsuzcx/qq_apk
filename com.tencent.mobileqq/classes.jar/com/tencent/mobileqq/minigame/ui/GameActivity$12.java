@@ -1,50 +1,15 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import android.app.ActivityManager.TaskDescription;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import bacm;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.util.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLDecoder;
-
 class GameActivity$12
   implements Runnable
 {
-  GameActivity$12(GameActivity paramGameActivity, MiniAppConfig paramMiniAppConfig) {}
+  GameActivity$12(GameActivity paramGameActivity) {}
   
   public void run()
   {
-    try
-    {
-      Bitmap localBitmap = ImageUtil.drawableToBitmap(URLDrawable.getDrawable(URLDecoder.decode(this.val$miniConfig.config.iconUrl), null));
-      if (localBitmap != null)
-      {
-        int i = (int)(localBitmap.getWidth() / 4.0F);
-        Object localObject = RoundedBitmapDrawableFactory.create(this.this$0.getResources(), localBitmap);
-        ((RoundedBitmapDrawable)localObject).setCornerRadius(i);
-        ((RoundedBitmapDrawable)localObject).setAntiAlias(true);
-        if (Build.VERSION.SDK_INT >= 21)
-        {
-          localObject = new ActivityManager.TaskDescription(this.val$miniConfig.config.name, bacm.b((Drawable)localObject));
-          this.this$0.setTaskDescription((ActivityManager.TaskDescription)localObject);
-        }
-        if (!localBitmap.isRecycled()) {
-          localBitmap.recycle();
-        }
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("miniapp-start", 1, "GameActivity changeWindowInfo exception.", localThrowable);
-    }
+    GameActivity.access$1800(this.this$0);
+    GameActivity.access$1900(this.this$0);
+    GameActivity.access$2000(this.this$0);
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import ymb;
+import yvs;
 
 public class GdtMvDownloadBtnPresenter$6
   implements Runnable
 {
-  public GdtMvDownloadBtnPresenter$6(ymb paramymb, GdtMvAppBtnData paramGdtMvAppBtnData) {}
+  public GdtMvDownloadBtnPresenter$6(yvs paramyvs, GdtMvAppBtnData paramGdtMvAppBtnData) {}
   
   public void run()
   {
-    ymb.b(this.this$0, this.a);
+    yvs.b(this.this$0, this.a);
   }
 }
 

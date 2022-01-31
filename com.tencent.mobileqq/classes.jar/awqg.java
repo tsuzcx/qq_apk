@@ -1,64 +1,29 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import java.util.List;
 
 public class awqg
+  extends awpz
 {
-  private static int jdField_a_of_type_Int = -1;
-  public static String a;
-  static boolean jdField_a_of_type_Boolean;
-  
-  static
+  awof a(afgx paramafgx, List<awog> paramList, String paramString1, boolean paramBoolean, String paramString2)
   {
-    jdField_a_of_type_JavaLangString = "GeneralConfigUtils";
+    awvx.a(80);
+    return new awnl(paramafgx, paramList, paramString1, paramBoolean);
   }
   
-  public static void a(String paramString1, String paramString2)
+  awog a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
   {
-    if (!TextUtils.isEmpty(paramString2)) {
-      jdField_a_of_type_Int = -1;
-    }
-    try
-    {
-      paramString2 = Integer.valueOf(paramString2);
-      BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit().putInt(paramString1, paramString2.intValue()).commit();
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "parseConfig(): e = " + paramString1);
-    }
+    return null;
   }
   
-  public static boolean a()
+  awog a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
   {
-    if (jdField_a_of_type_Int == -1) {
-      if (BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).getInt("pic_thumb_400Enable", 0) == 1)
-      {
-        jdField_a_of_type_Boolean = true;
-        jdField_a_of_type_Int = 1;
-      }
-    }
-    for (;;)
-    {
-      return jdField_a_of_type_Boolean;
-      jdField_a_of_type_Boolean = false;
-      jdField_a_of_type_Int = 0;
-      continue;
-      if (jdField_a_of_type_Int == 1) {
-        jdField_a_of_type_Boolean = true;
-      } else {
-        jdField_a_of_type_Boolean = false;
-      }
-    }
+    return new awnm(paramrecord, paramString, paramCharSequence);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awqg
  * JD-Core Version:    0.7.0.1
  */

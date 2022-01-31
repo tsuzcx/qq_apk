@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.data;
 
-import amtp;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import atmo;
-import atoc;
+import anjw;
+import aukm;
+import auma;
 
 public class Setting
-  extends atmo
+  extends aukm
   implements Parcelable
 {
-  public static final Parcelable.Creator<Setting> CREATOR = new amtp();
+  public static final Parcelable.Creator<Setting> CREATOR = new anjw();
   public byte bFaceFlags;
   public byte bHeadType;
   public byte bSourceType;
   public byte bUsrType;
   public long headImgTimestamp;
   public short systemHeadID;
-  @atoc
+  @auma
   public String uin;
   public long updateTimestamp;
   public String url;

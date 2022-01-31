@@ -1,11 +1,8 @@
-public abstract class awft
-  implements awfr
+import android.view.View;
+
+public abstract interface awft
 {
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, awfk paramawfk) {}
-  
-  public void b(int paramInt, awfk paramawfk) {}
+  public abstract void a(awfs paramawfs, View paramView);
 }
 
 

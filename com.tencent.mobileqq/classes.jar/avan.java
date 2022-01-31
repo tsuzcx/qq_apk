@@ -1,56 +1,46 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.view.VipPhotoViewForSimple;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
 
 public class avan
+  implements View.OnClickListener
 {
-  private static final String a = aqlm.class.getSimpleName();
+  private long jdField_a_of_type_Long;
   
-  public static void a(Throwable paramThrowable)
+  public avan(VipPhotoViewForSimple paramVipPhotoViewForSimple) {}
+  
+  public void onClick(View paramView)
   {
-    Throwable localThrowable = new Throwable(paramThrowable);
-    try
+    long l = System.currentTimeMillis();
+    if (Math.abs(l - this.jdField_a_of_type_Long) < 1000L) {}
+    do
     {
-      arrayOfField = Class.forName("java.lang.Throwable").getDeclaredFields();
-      j = arrayOfField.length;
-      i = 0;
-    }
-    catch (Throwable paramThrowable)
-    {
-      for (;;)
+      do
       {
-        Field[] arrayOfField;
-        int j;
-        int i;
-        Field localField;
-        label110:
-        QLog.e(a, 2, "addStackTag failed", paramThrowable);
-        continue;
-        i += 1;
-      }
-    }
-    if (i < j)
+        return;
+        this.jdField_a_of_type_Long = l;
+      } while ((paramView == null) || (!(paramView.getTag() instanceof ausu)));
+      paramView = (ausu)paramView.getTag();
+    } while (paramView == null);
+    int i = paramView.a;
+    paramView = VipPhotoViewForSimple.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple).a.a;
+    switch (i)
     {
-      localField = arrayOfField[i];
-      if (!localField.getName().equals("detailMessage")) {
-        break label155;
-      }
-      localField.setAccessible(true);
-      if ((paramThrowable.getCause() == null) || (localThrowable.getCause() == null)) {
-        break label110;
-      }
-      localField.set(localThrowable.getCause(), "ShortVideoCatchedException:" + paramThrowable.getCause().getMessage());
-    }
-    for (;;)
-    {
-      awpu.a(localThrowable, "ShortVideo Fail");
+    default: 
       return;
-      localField.set(localThrowable, "ShortVideoCatchedException:" + paramThrowable.getMessage());
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("ProfileCard.VipPhotoViewForSimple", 2, "View.OnClickListener click type is photo wall view");
+    }
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple.a, "CliOper", "", "", "card_mall", "0X80066C4", 0, 0, "1", "", "", "");
+    VipPhotoViewForSimple.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple, VipPhotoViewForSimple.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avan
  * JD-Core Version:    0.7.0.1
  */

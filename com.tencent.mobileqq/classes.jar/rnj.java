@@ -1,50 +1,48 @@
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.9.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.viola.core.ViolaInstance;
-import com.tencent.viola.core.ViolaInstance.ViolaPageListener;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StrikethroughSpan;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 
-public class rnj
-  implements ViolaInstance.ViolaPageListener
+class rnj
 {
-  public rnj(ViolaBaseView paramViolaBaseView) {}
+  int a;
+  private int b;
+  private int c;
   
-  public void onDispatchTouchEvent(String paramString, int paramInt1, MotionEvent paramMotionEvent, int paramInt2)
+  public static rnj a(int paramInt, Object... paramVarArgs)
   {
-    if (paramString.equals(ViolaBaseView.a(this.a).getMasterListRef())) {
-      ViolaBaseView.b(this.a, paramInt2);
-    }
-  }
-  
-  public void onScroll(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
-  {
-    if (paramString.equals(ViolaBaseView.a(this.a).getMasterListRef()))
+    rnj localrnj = new rnj();
+    localrnj.a = paramInt;
+    switch (paramInt)
     {
-      ViolaBaseView.b(this.a, paramInt5);
-      ViolaBaseView.b(this.a, true);
-      if (ViolaBaseView.a(this.a) != null) {
-        ViolaBaseView.a(this.a).a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramBoolean);
-      }
+    case 3: 
+    default: 
+      return localrnj;
+    case 1: 
+    case 2: 
+      localrnj.b = ((Integer)paramVarArgs[0]).intValue();
+      return localrnj;
     }
+    localrnj.c = ((Integer)paramVarArgs[0]).intValue();
+    return localrnj;
   }
   
-  public void onScrollStateChanged(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  public Object a()
   {
-    if (ViolaBaseView.a(this.a) != null) {
-      ViolaBaseView.a(this.a).a(paramString, paramInt1);
-    }
-    if (paramString.equals(ViolaBaseView.a(this.a).getMasterListRef()))
+    switch (this.a)
     {
-      ViolaBaseView.b(this.a, paramInt2);
-      ViolaBaseView.b(this.a, true);
+    default: 
+      return null;
+    case 1: 
+      return new rni(this.b);
+    case 2: 
+      return new ForegroundColorSpan(this.b);
+    case 5: 
+      return new StrikethroughSpan();
+    case 4: 
+      return new StyleSpan(this.c);
     }
-  }
-  
-  public void pageOpenSuccess()
-  {
-    ViolaBaseView.a(this.a, 3);
-    ThreadManager.post(new ViolaBaseView.9.1(this), 8, null, true);
+    return new UnderlineSpan();
   }
 }
 

@@ -1,142 +1,25 @@
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.IBinder;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.biz.qqstory.takevideo.rmw.RMWService;
-import com.tencent.biz.qqstory.takevideo.rmw.RMWServiceProxy.2;
-import java.util.Queue;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 
-public class vge
+class vge
+  implements vih
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Messenger jdField_a_of_type_AndroidOsMessenger;
-  private Queue<Message> jdField_a_of_type_JavaUtilQueue;
-  private vgg jdField_a_of_type_Vgg;
-  private vgi jdField_a_of_type_Vgi;
-  private int jdField_b_of_type_Int;
-  private final Messenger jdField_b_of_type_AndroidOsMessenger;
-  
-  public static String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "UNKNOWN";
-    case 2: 
-      return "CONNECTED";
-    case 1: 
-      return "CONNECTING";
-    case 0: 
-      return "DISCONNECTED";
-    }
-    return "DISCONNECTING";
-  }
-  
-  private static void b()
-  {
-    if (Looper.myLooper() != Looper.getMainLooper()) {
-      throw new IllegalStateException("should invoke at main thread");
-    }
-  }
+  vge(vgd paramvgd) {}
   
   public void a()
   {
-    Messenger localMessenger = this.jdField_a_of_type_AndroidOsMessenger;
-    if (localMessenger != null) {
-      for (;;)
-      {
-        Message localMessage = (Message)this.jdField_a_of_type_JavaUtilQueue.poll();
-        if (localMessage == null) {
-          break;
-        }
-        if (localMessage.replyTo == null) {
-          localMessage.replyTo = this.jdField_b_of_type_AndroidOsMessenger;
-        }
-        try
-        {
-          vgb.b("RMWServiceProxy", "client.flush : " + vgc.a(localMessage));
-          localMessenger.send(localMessage);
-        }
-        catch (RemoteException localRemoteException)
-        {
-          vgb.a("RMWServiceProxy", "sendMessageToService error", new Object[] { localRemoteException });
-        }
-      }
-    }
-    vgb.b("RMWServiceProxy", "can not flushMessageQueue, service state invalid : " + a(this.jdField_a_of_type_Int));
+    veg.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
   }
   
-  protected void a(ComponentName paramComponentName)
+  public void a(TroopBarPOI paramTroopBarPOI)
   {
-    this.jdField_a_of_type_AndroidOsMessenger = null;
-    this.jdField_a_of_type_Int = 0;
-    vgb.b("RMWServiceProxy", "onServiceDisconnected " + a(this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_Vgi.notifyObservers(new vgh(this.jdField_a_of_type_Int));
-    if (this.jdField_a_of_type_Vgg != null)
+    veg.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
+    if (paramTroopBarPOI != null)
     {
-      this.jdField_a_of_type_Vgg.a();
-      this.jdField_a_of_type_Vgg = null;
-    }
-  }
-  
-  protected void a(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    try
-    {
-      paramIBinder.linkToDeath(new vgf(this, paramComponentName), 0);
-      this.jdField_a_of_type_AndroidOsMessenger = new Messenger(paramIBinder);
-      this.jdField_a_of_type_Int = 2;
-      vgb.b("RMWServiceProxy", "onServiceConnected " + a(this.jdField_a_of_type_Int));
-      a();
-      this.jdField_a_of_type_Vgi.notifyObservers(new vgh(this.jdField_a_of_type_Int));
+      this.a.a.setLocation(paramTroopBarPOI.a());
       return;
     }
-    catch (RemoteException paramComponentName)
-    {
-      vgb.c("RMWServiceProxy", "linkToDeath failed : " + paramComponentName);
-      new Handler(Looper.getMainLooper()).postDelayed(new RMWServiceProxy.2(this), 1000L);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    vgb.a("RMWServiceProxy", "setup, current state = " + a(this.jdField_a_of_type_Int) + ", force = " + paramBoolean);
-    b();
-    if (this.jdField_a_of_type_AndroidContentContext == null)
-    {
-      vgb.c("RMWServiceProxy", "setup but without context, give up");
-      return;
-    }
-    switch (this.jdField_a_of_type_Int)
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return;
-    }
-    if (paramBoolean) {
-      this.jdField_b_of_type_Int = 5;
-    }
-    if (this.jdField_b_of_type_Int > 0)
-    {
-      this.jdField_b_of_type_Int -= 1;
-      vgb.c("RMWServiceProxy", "setup again because of remote died, retry count left = " + this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_Int = 1;
-      vgb.a("RMWServiceProxy", "connecting ... " + a(this.jdField_a_of_type_Int));
-      if (this.jdField_a_of_type_Vgg == null) {
-        this.jdField_a_of_type_Vgg = new vgg(this);
-      }
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, RMWService.class);
-      this.jdField_a_of_type_AndroidContentContext.bindService(localIntent, this.jdField_a_of_type_Vgg, 1);
-      return;
-    }
-    vgb.c("RMWServiceProxy", "give up setup again");
+    this.a.a.setLocation("None for test!!");
   }
 }
 

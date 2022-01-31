@@ -1,14 +1,42 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import java.lang.ref.WeakReference;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
 class aeph
+  implements View.OnTouchListener
 {
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  BubbleImageView jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
-  WeakReference<aepi> jdField_a_of_type_JavaLangRefWeakReference;
+  aeph(aepg paramaepg) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getAction();
+    paramView = this.a.jdField_a_of_type_Bcis.a();
+    if (i == 0) {
+      if ((paramView != null) && (paramView.d()))
+      {
+        this.a.l.setText(ajyc.a(2131705089));
+        this.a.l.setPressed(true);
+        this.a.jdField_a_of_type_Atcf.b();
+        paramView.a(true);
+      }
+    }
+    do
+    {
+      return true;
+      this.a.t(false);
+      return true;
+      if ((i != 3) && (i != 1)) {
+        break;
+      }
+      this.a.l.setText(ajyc.a(2131705085));
+      this.a.l.setPressed(false);
+      this.a.jdField_a_of_type_Atcf.c();
+    } while (paramView == null);
+    paramView.a(false);
+    return true;
+    return false;
+  }
 }
 
 

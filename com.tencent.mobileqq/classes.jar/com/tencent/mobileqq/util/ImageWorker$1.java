@@ -2,16 +2,16 @@ package com.tencent.mobileqq.util;
 
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
-import azxt;
-import azxv;
+import bayx;
+import bayz;
 
 public class ImageWorker$1
   implements Runnable
 {
   public void run()
   {
-    Drawable localDrawable = this.jdField_a_of_type_Azxv.a(new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Azxr, Boolean.valueOf(true) });
-    azxt.a(this.this$0).post(new ImageWorker.1.1(this, localDrawable));
+    Drawable localDrawable = this.jdField_a_of_type_Bayz.a(new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bayv, Boolean.valueOf(true) });
+    bayx.a(this.this$0).post(new ImageWorker.1.1(this, localDrawable));
   }
 }
 

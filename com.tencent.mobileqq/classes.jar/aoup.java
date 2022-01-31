@@ -1,21 +1,12 @@
-class aoup
-  implements apca
+abstract interface aoup
 {
-  aoup(aouo paramaouo) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void a()
-  {
-    aoum.a(this.a.a);
-    if (this.a.a.a != null) {
-      this.a.a.a.d();
-    }
-  }
-  
-  public void b() {}
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoup
  * JD-Core Version:    0.7.0.1
  */

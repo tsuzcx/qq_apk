@@ -1,13 +1,16 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
 
-class pvw
-  extends pvy
+public class pvw
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  public pvw(ComponentContentNoteCard paramComponentContentNoteCard) {}
+  
+  public void onClick(View paramView)
+  {
+    ComponentContentNoteCard.a(this.a);
+  }
 }
 
 

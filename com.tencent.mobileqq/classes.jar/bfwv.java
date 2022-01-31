@@ -1,23 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiShareDataInfo;
-
-public final class bfwv
-  implements Parcelable.Creator<WeishiShareDataInfo>
+public abstract interface bfwv
 {
-  public WeishiShareDataInfo a(Parcel paramParcel)
-  {
-    return new WeishiShareDataInfo(paramParcel);
-  }
-  
-  public WeishiShareDataInfo[] a(int paramInt)
-  {
-    return new WeishiShareDataInfo[paramInt];
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfwv
  * JD-Core Version:    0.7.0.1
  */

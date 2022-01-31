@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.Doraemon.impl;
 
+import aacb;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.squareup.okhttp.Call;
@@ -14,12 +15,11 @@ import java.util.Map;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
 import org.json.JSONObject;
-import zsi;
 
 public class DefaultDoraemonAppInfoHelper$1
   implements Runnable
 {
-  public DefaultDoraemonAppInfoHelper$1(zsi paramzsi) {}
+  public DefaultDoraemonAppInfoHelper$1(aacb paramaacb) {}
   
   public void run()
   {
@@ -28,7 +28,7 @@ public class DefaultDoraemonAppInfoHelper$1
     long l2;
     try
     {
-      ??? = "https://cgi.connect.qq.com/mqqapi/privilege_group_config?platform=1&platform_version=8.2.6&data_version=" + this.this$0.b;
+      ??? = "https://cgi.connect.qq.com/mqqapi/privilege_group_config?platform=1&platform_version=8.2.8&data_version=" + this.this$0.b;
       localObject7 = BaseApplicationImpl.getApplication().getRuntime();
       if (localObject7 == null)
       {
@@ -76,7 +76,7 @@ public class DefaultDoraemonAppInfoHelper$1
       {
         this.this$0.jdField_a_of_type_OrgJsonJSONObject = localJSONObject;
         this.this$0.jdField_a_of_type_JavaUtilMap.clear();
-        BaseApplicationImpl.getApplication().getSharedPreferences("DoraemonApiGroup.json", 4).edit().putString("content", (String)localObject7).putLong("version", l1).putString("app_version", "8.2.6").apply();
+        BaseApplicationImpl.getApplication().getSharedPreferences("DoraemonApiGroup.json", 4).edit().putString("content", (String)localObject7).putLong("version", l1).putString("app_version", "8.2.8").apply();
         return;
       }
     }

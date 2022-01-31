@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import asss;
-import astd;
+import atow;
+import atph;
 import com.tencent.qphone.base.util.QLog;
 
 public class NearbyPeopleProfileActivity$17$1
   implements Runnable
 {
-  public NearbyPeopleProfileActivity$17$1(asss paramasss, String paramString, boolean paramBoolean) {}
+  public NearbyPeopleProfileActivity$17$1(atow paramatow, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Asss.a.e == 1) {}
+    if (this.jdField_a_of_type_Atow.a.e == 1) {}
     do
     {
       return;
-      if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Asss.a) != null)
+      if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Atow.a) != null)
       {
-        NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Asss.a).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+        NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Atow.a).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
         return;
       }
     } while (!QLog.isColorLevel());

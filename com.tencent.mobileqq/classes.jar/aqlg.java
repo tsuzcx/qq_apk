@@ -1,11 +1,13 @@
-class aqlg
+import java.io.Reader;
+
+public abstract class aqlg
+  extends aqlf
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  protected Reader a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqlg
  * JD-Core Version:    0.7.0.1
  */

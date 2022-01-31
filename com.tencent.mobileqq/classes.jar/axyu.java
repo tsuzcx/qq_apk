@@ -1,46 +1,64 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+
 public class axyu
-  extends axyr
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b;
-  public byte[] b;
-  public int c;
-  public int d;
-  public int e;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  
-  public String toString()
+  public static View a(Context paramContext, View paramView, acxn paramacxn, Bundle paramBundle)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" chatType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" md5:");
-    localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte);
-    localStringBuilder.append(" format:");
-    localStringBuilder.append(this.g);
-    localStringBuilder.append(" str_file_name:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" uint64_file_size:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" fileTime:");
-    localStringBuilder.append(this.h);
-    localStringBuilder.append(" busiType:");
-    localStringBuilder.append(this.j);
-    localStringBuilder.append(" subBusiType:");
-    localStringBuilder.append(this.k);
-    localStringBuilder.append(" userCnt:");
-    localStringBuilder.append(this.l);
-    return localStringBuilder.toString();
+    paramacxn = paramContext.getResources();
+    int i;
+    label37:
+    Object localObject;
+    if (paramBundle.getInt("longMsgHolderType", -1) == 1)
+    {
+      i = 1;
+      if ((paramView == null) || (!(paramView instanceof RelativeLayout))) {
+        break label237;
+      }
+      ((RelativeLayout)paramView).removeAllViews();
+      paramView = (RelativeLayout)paramView;
+      paramView.setLayoutParams(new RelativeLayout.LayoutParams(-1, actn.a(75.0F, paramacxn)));
+      paramBundle = new RelativeLayout(paramContext);
+      localObject = new RelativeLayout.LayoutParams(-2, -2);
+      ((RelativeLayout.LayoutParams)localObject).addRule(13);
+      paramView.addView(paramBundle, (ViewGroup.LayoutParams)localObject);
+      localObject = new ImageView(paramContext);
+      paramContext = new TextView(paramContext);
+      if (i == 0) {
+        break label249;
+      }
+      ((ImageView)localObject).setImageResource(2130841236);
+      paramContext.setText(paramacxn.getString(2131696724));
+    }
+    for (;;)
+    {
+      ((ImageView)localObject).setId(2131376575);
+      ((ImageView)localObject).setLayoutParams(new RelativeLayout.LayoutParams(actn.a(23.5F, paramacxn), actn.a(22.5F, paramacxn)));
+      paramBundle.addView((View)localObject);
+      paramContext.setTextSize(2, 14.0F);
+      paramContext.setTextColor(Color.parseColor("#777777"));
+      localObject = new RelativeLayout.LayoutParams(-2, -2);
+      ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131376575);
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = actn.a(7.5F, paramacxn);
+      paramBundle.addView(paramContext, (ViewGroup.LayoutParams)localObject);
+      return paramView;
+      i = 0;
+      break;
+      label237:
+      paramView = new RelativeLayout(paramContext);
+      break label37;
+      label249:
+      ((ImageView)localObject).setImageResource(2130841235);
+      paramContext.setText(paramacxn.getString(2131696723));
+    }
   }
 }
 

@@ -1,21 +1,64 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.LayoutInflater.Factory;
+import android.view.LayoutInflater.Factory2;
+import android.view.View;
 
 public class vwj
-  extends AnimatorListenerAdapter
+  implements LayoutInflater.Factory2
 {
-  public vwj(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
+  private final LayoutInflater.Factory2 jdField_a_of_type_AndroidViewLayoutInflater$Factory2;
+  private final LayoutInflater.Factory jdField_a_of_type_AndroidViewLayoutInflater$Factory;
+  private final LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public vwj(@NonNull LayoutInflater paramLayoutInflater)
   {
-    this.a.clearAnimation();
-    this.a.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
+    this.jdField_a_of_type_AndroidViewLayoutInflater$Factory = paramLayoutInflater.getFactory();
+    this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2 = paramLayoutInflater.getFactory2();
+  }
+  
+  protected View a(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    vwk.a("LayoutModifier", "onCreateViewPrivate " + paramString);
+    return null;
+  }
+  
+  public View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    View localView2 = a(paramView, paramString, paramContext, paramAttributeSet);
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = localView2;
+      if (this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2 != null) {
+        localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
+      }
+    }
+    vwk.a("LayoutModifier", "onCreateView " + localView1);
+    return localView1;
+  }
+  
+  public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    View localView2 = a(null, paramString, paramContext, paramAttributeSet);
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = localView2;
+      if (this.jdField_a_of_type_AndroidViewLayoutInflater$Factory != null) {
+        localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater$Factory.onCreateView(paramString, paramContext, paramAttributeSet);
+      }
+    }
+    vwk.a("LayoutModifier", "onCreateView " + localView1);
+    return localView1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vwj
  * JD-Core Version:    0.7.0.1
  */

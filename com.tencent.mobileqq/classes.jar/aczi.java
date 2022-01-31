@@ -1,75 +1,74 @@
-import android.content.Context;
-import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.os.Handler;
-import com.tencent.mobileqq.data.IntimateInfo;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-class aczi
-  extends apqw
+public class aczi
+  extends AsyncTask<Long, Void, Void>
 {
-  aczi(acze paramacze) {}
+  private Object jdField_a_of_type_JavaLangObject;
   
-  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject)
+  public aczi(FriendProfileCardBgDrawable paramFriendProfileCardBgDrawable, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos");
-    }
-    if ((this.a.jdField_a_of_type_Arvm != null) && (this.a.jdField_a_of_type_Arvm.a() == 1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, in card mode, return");
-      }
-    }
-    do
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  protected Void a(Long... paramVarArgs)
+  {
+    for (;;)
     {
-      return;
-      if (this.a.jdField_a_of_type_Arvm != null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mViewDelegate == null :" + acze.a(this.a));
-      }
-    } while (acze.a(this.a));
-    paramObject = null;
-    if ((paramBoolean) && (paramHashMap != null))
-    {
-      long l1 = 0L;
       try
       {
-        long l2 = Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue();
-        l1 = l2;
-      }
-      catch (NumberFormatException paramObject)
-      {
-        for (;;)
+        l1 = paramVarArgs[0].longValue();
+        long l2 = paramVarArgs[1].longValue();
+        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.a(this.jdField_a_of_type_JavaLangObject, (int)l2);
+        if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.d)
         {
-          QLog.e("intimate_relationship", 2, "valueOf string err ");
+          paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler;
+          FriendProfileCardBgDrawable localFriendProfileCardBgDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable;
+          if (FriendProfileCardBgDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable) != null) {
+            break label203;
+          }
+          l1 = 1000L;
+          paramVarArgs.postDelayed(localFriendProfileCardBgDrawable, l1);
+          return null;
+        }
+        if ((paramVarArgs != null) && (!isCancelled()))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = paramVarArgs;
+          l2 = SystemClock.uptimeMillis();
+          if (l2 < l1)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable, l1 - l2);
+            return null;
+          }
         }
       }
-    }
-    for (paramHashMap = (IntimateInfo)paramHashMap.get(Long.valueOf(l1));; paramHashMap = paramObject)
-    {
-      if (paramHashMap == null) {
-        break label272;
+      catch (OutOfMemoryError paramVarArgs)
+      {
+        QLog.e("FriendProfileCardBgDrawable", 4, "", paramVarArgs);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = null;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Boolean = true;
+        return null;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable);
+        return null;
       }
-      paramObject = acze.a(this.a).obtainMessage();
-      paramObject.what = 0;
-      paramObject.obj = paramHashMap;
-      acze.a(this.a).removeMessages(0);
-      acze.a(this.a).sendMessage(paramObject);
-      return;
-      if (!QLog.isColorLevel()) {
-        break;
+      catch (Throwable paramVarArgs)
+      {
+        QLog.e("FriendProfileCardBgDrawable", 1, "", paramVarArgs);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = null;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Boolean = true;
       }
-      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mode: " + this.a.jdField_a_of_type_Arvm.a());
-      break;
-      QLog.e("intimate_relationship", 2, "onGetGroupIntimateInfos failed !");
+      return null;
+      label203:
+      long l1 = 0L;
     }
-    label272:
-    paramHashMap = acze.a(this.a).obtainMessage();
-    paramHashMap.what = 1;
-    paramHashMap.obj = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131627980);
-    acze.a(this.a).sendMessage(paramHashMap);
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Aczi = null;
   }
 }
 

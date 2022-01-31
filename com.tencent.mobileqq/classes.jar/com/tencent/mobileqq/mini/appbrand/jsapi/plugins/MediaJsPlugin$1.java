@@ -2,6 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
+import java.util.concurrent.ConcurrentHashMap;
 
 class MediaJsPlugin$1
   implements Runnable
@@ -10,11 +11,15 @@ class MediaJsPlugin$1
   
   public void run()
   {
-    WebviewContainer localWebviewContainer = this.this$0.jsPluginEngine.appBrandRuntime.getCurWebviewContainer();
-    if (localWebviewContainer != null)
+    if ((MediaJsPlugin.access$000(this.this$0) != null) && (MediaJsPlugin.access$000(this.this$0).containsKey(Integer.valueOf(this.val$videoPlayerId)))) {}
+    for (WebviewContainer localWebviewContainer = (WebviewContainer)MediaJsPlugin.access$000(this.this$0).get(Integer.valueOf(this.val$videoPlayerId));; localWebviewContainer = this.this$0.jsPluginEngine.appBrandRuntime.getCurWebviewContainer())
     {
-      localWebviewContainer.operateVideoPlayer(this.val$videoPlayerId, this.val$type, this.val$data);
-      localWebviewContainer.callbackJsEventOK(this.val$event, null, this.val$callbackId);
+      if (localWebviewContainer != null)
+      {
+        localWebviewContainer.operateVideoPlayer(this.val$videoPlayerId, this.val$type, this.val$data);
+        localWebviewContainer.callbackJsEventOK(this.val$event, null, this.val$callbackId);
+      }
+      return;
     }
   }
 }

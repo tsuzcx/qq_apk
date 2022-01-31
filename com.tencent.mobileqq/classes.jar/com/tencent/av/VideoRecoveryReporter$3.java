@@ -1,6 +1,6 @@
 package com.tencent.av;
 
-import awrn;
+import axrl;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -13,7 +13,7 @@ public final class VideoRecoveryReporter$3
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("close_reason", String.valueOf(this.jdField_a_of_type_Int));
-    awrn.a(BaseApplication.getContext()).a("", "av_recovery_close2", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+    axrl.a(BaseApplication.getContext()).a("", "av_recovery_close2", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
   }
 }
 

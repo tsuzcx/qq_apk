@@ -1,19 +1,8 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 
-public class reh
+public abstract interface reh
 {
-  public static rec a(Context paramContext, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return new ref(paramContext);
-    case 2: 
-      return new ReadInJoySkinAnimManager(paramContext);
-    }
-    return new reg(paramContext);
-  }
+  public abstract void a(ChannelCoverInfo paramChannelCoverInfo);
 }
 
 

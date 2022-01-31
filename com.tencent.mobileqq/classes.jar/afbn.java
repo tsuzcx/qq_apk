@@ -1,22 +1,26 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
-class afbn
+public class afbn
   implements View.OnClickListener
 {
-  afbn(afbk paramafbk) {}
+  public afbn(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = (RecommendTroopItem)paramView.getTag(-1);
-    azlj.a(afbk.a(this.a), paramView, 17, 10029);
-    azzx.a("Grp_contacts_news", "notice", "recom_clk", 1, 0, new String[] { paramView.uin, paramView.recomAlgol });
+    if (BlessSelectMemberActivity.a() != null) {
+      BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    }
+    if (this.a.a.isShowing()) {
+      this.a.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afbn
  * JD-Core Version:    0.7.0.1
  */

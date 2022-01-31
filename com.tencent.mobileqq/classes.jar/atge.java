@@ -1,36 +1,95 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.ocr.ui.SearchSougouResultItemBuilder.UrlDownloadListener.1;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
 
-public class atge
-  implements URLDrawable.URLDrawableListener
+class atge
+  implements atgc
 {
-  atge(atgd paramatgd) {}
+  private IBinder a;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  atge(IBinder paramIBinder)
   {
-    if ((this.a.a == null) || (paramURLDrawable == null) || (paramURLDrawable.getURL() == null)) {}
-    do
-    {
-      return;
-      paramThrowable = this.a.a.findViewWithTag(paramURLDrawable.getURL().toString());
-      if ((paramThrowable != null) && ((paramThrowable instanceof ImageView))) {
-        paramThrowable.post(new SearchSougouResultItemBuilder.UrlDownloadListener.1(this, paramThrowable));
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.ocr.SearchSougouResultItemBuilder", 2, "UrlDownloadListener image fail," + paramURLDrawable.getURL());
+    this.a = paramIBinder;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  public Message a(Message paramMessage)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    for (;;)
+    {
+      try
+      {
+        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
+        if (paramMessage != null)
+        {
+          localParcel1.writeInt(1);
+          paramMessage.writeToParcel(localParcel1, 0);
+          this.a.transact(2, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          if (localParcel2.readInt() != 0)
+          {
+            paramMessage = (Message)Message.CREATOR.createFromParcel(localParcel2);
+            return paramMessage;
+          }
+        }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        paramMessage = null;
+      }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
+      }
+    }
+  }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
+  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    for (;;)
+    {
+      try
+      {
+        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
+        if (paramBasicTypeDataParcel != null)
+        {
+          localParcel1.writeInt(1);
+          paramBasicTypeDataParcel.writeToParcel(localParcel1, 0);
+          this.a.transact(1, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          if (localParcel2.readInt() != 0)
+          {
+            paramBasicTypeDataParcel = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(localParcel2);
+            return paramBasicTypeDataParcel;
+          }
+        }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        paramBasicTypeDataParcel = null;
+      }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
+      }
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
 }
 
 

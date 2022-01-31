@@ -1,63 +1,41 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
 
-public class sgq
+final class sgq
+  extends akwt
 {
-  public long a;
-  public String a;
-  public byte[] a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  sgq(akdo paramakdo, String paramString, AppInterface paramAppInterface, Context paramContext, int paramInt, boolean paramBoolean) {}
   
-  public sgq()
+  public int a()
   {
-    this.jdField_a_of_type_ArrayOfByte = new byte[1];
+    return 4;
   }
   
-  public void a()
+  public void a(Object paramObject)
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("t", this.jdField_a_of_type_Long);
-      localJSONObject.put("ak", bach.a(this.jdField_a_of_type_ArrayOfByte));
-      ((spz)sqg.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", localJSONObject.toString());
-      urk.a("Q.qqstory.publish:VideoServerInfoManager", "save -> %s", localJSONObject);
-      return;
+    if (this.jdField_a_of_type_Akdo != null) {
+      this.jdField_a_of_type_Akdo.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
+    sgj.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Akdo != null) {
+      this.jdField_a_of_type_Akdo.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      sgj.a(this.jdField_a_of_type_AndroidContentContext, 2131695568);
     }
   }
   
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis())
-    {
-      urk.b("Q.qqstory.publish:VideoServerInfoManager", "server inf validate %s", this);
-      return true;
-    }
-    urk.d("Q.qqstory.publish:VideoServerInfoManager", "server inf invalidate %s", new Object[] { this });
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Long <= NetConnInfoCenter.getServerTimeMillis() + 600000L;
-  }
-  
-  public String toString()
-  {
-    return "ServerInfo{, userIp='" + this.jdField_a_of_type_JavaLangString + '\'' + ", serverIp1='" + this.b + '\'' + ", serverIp2='" + this.c + '\'' + ", backupServerIp1='" + this.d + '\'' + ", backupServerIp2='" + this.e + '\'' + ", expireTime=" + this.jdField_a_of_type_Long + "" + '\'' + '}';
-  }
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sgq
  * JD-Core Version:    0.7.0.1
  */

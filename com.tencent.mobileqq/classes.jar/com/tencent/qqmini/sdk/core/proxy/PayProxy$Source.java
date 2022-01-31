@@ -11,6 +11,7 @@ public class PayProxy$Source
   public static final String PAY_IS_LOCK_WITHDRAW = "payparmas_is_lock_withdraw";
   public static final String PAY_JSON_EXTRA_KEY = "payparmas_json";
   public static final String PAY_REQUEST_CODE_KEY = "payparmas_request_code";
+  public static final String PAY_REQUEST_SDK_PF = "payparmas_sdk_pf";
   public static final String PAY_TYPE_EXTRA_KEY = "payparmas_paytype";
   public static final String PAY_URL_APPINFO_EXTRA_KEY = "payparmas_url_appinfo";
 }

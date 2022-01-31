@@ -1,28 +1,34 @@
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.MessageForVIPDonate;
+import com.tencent.mobileqq.data.VIPDonateMsg;
 import com.tencent.qphone.base.util.QLog;
 
 class aefg
-  implements ajks
+  implements View.OnClickListener
 {
-  aefg(aefe paramaefe) {}
+  aefg(aeff paramaeff) {}
   
-  public boolean a(ajkx paramajkx)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      asfl.a(this.a.jdField_a_of_type_JavaLangString, "onShowHotchatNote", new Object[] { paramajkx });
+    if (this.a.a()) {
+      return;
     }
-    if (paramajkx == null)
+    paramView = (MessageForVIPDonate)((aefh)actn.a(paramView)).a;
+    Object localObject = paramView.donateMsg;
+    if ((localObject != null) && (!TextUtils.isEmpty(((VIPDonateMsg)localObject).jumpUrl)))
     {
-      if ((this.a.jdField_a_of_type_Ajkr.b) && (this.a.jdField_a_of_type_Azct != null)) {
-        this.a.jdField_a_of_type_Azct.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, null, null);
-      }
-      return false;
+      paramView = paramView.donateMsg.jumpUrl;
+      localObject = new Intent(aeff.a(this.a), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", paramView);
+      aeff.a(this.a).startActivity((Intent)localObject);
+      return;
     }
-    if (this.a.jdField_a_of_type_Azct == null) {
-      this.a.jdField_a_of_type_Azct = new azct(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, aefe.a(this.a), aefe.a(this.a), this.a.jdField_a_of_type_Aymw, this.a.V, null);
-    }
-    this.a.jdField_a_of_type_Azct.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramajkx.jdField_a_of_type_JavaLangString, paramajkx.b);
-    this.a.jdField_a_of_type_Ajkr.b = true;
-    return true;
+    QLog.e("VIPDonateMsgItemBuilder", 1, "donatemsg jumpurl empty");
   }
 }
 

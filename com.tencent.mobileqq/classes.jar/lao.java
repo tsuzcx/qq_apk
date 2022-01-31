@@ -1,112 +1,116 @@
-import android.text.TextUtils;
-import com.tencent.av.opengl.GraphicRenderMgr;
+import android.os.Message;
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
-public final class lao
+public class lao
+  extends lam
 {
-  protected String a;
-  
-  public lao(String paramString)
+  protected Object a(String paramString)
   {
-    this.a = paramString;
-  }
-  
-  public int a(String paramString, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    Object localObject = null;
+    String str = paramString.trim();
+    if (!str.startsWith("{"))
     {
-      return paramInt;
-      paramString = a(paramString);
-    } while ((paramString == null) || (paramString.length <= 0));
-    return paramString[0];
-  }
-  
-  public String a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {}
-    do
-    {
-      return paramString2;
-      paramString1 = a(paramString1);
-    } while ((paramString1 == null) || (paramString1.length <= 0));
-    return paramString1[0];
-  }
-  
-  public boolean a()
-  {
-    return TextUtils.isEmpty(this.a);
-  }
-  
-  public int[] a(String paramString)
-  {
-    Object localObject2 = null;
-    Object localObject1;
-    String[] arrayOfString;
-    int j;
-    int i;
-    try
-    {
-      localObject1 = GraphicRenderMgr.getInstance().findConfigValue(this.a, paramString, "unknown");
-      paramString = localObject2;
-      if (localObject1 != null)
-      {
-        if (((String)localObject1).equalsIgnoreCase("unknown")) {
-          paramString = localObject2;
-        }
-      }
-      else {
-        return paramString;
-      }
+      paramString = localObject;
+      if (!str.startsWith("[")) {}
     }
-    catch (UnsatisfiedLinkError paramString)
+    else
     {
-      do
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-          localObject1 = null;
-        }
-        arrayOfString = ((String)localObject1).split(",");
-        paramString = localObject2;
-      } while (arrayOfString == null);
-      j = arrayOfString.length;
-      localObject1 = new int[j];
-      i = 0;
+      paramString = new JSONTokener(str).nextValue();
     }
-    for (;;)
+    if (paramString == null) {
+      return str;
+    }
+    return paramString;
+  }
+  
+  protected void a(int paramInt, Header[] paramArrayOfHeader, Object paramObject)
+  {
+    if ((paramObject instanceof JSONObject))
     {
-      paramString = (String)localObject1;
-      if (i >= j) {
-        break;
-      }
+      a(paramInt, paramArrayOfHeader, (JSONObject)paramObject);
+      return;
+    }
+    if ((paramObject instanceof JSONArray))
+    {
+      a(paramInt, paramArrayOfHeader, (JSONArray)paramObject);
+      return;
+    }
+    a(new JSONException("Unexpected type " + paramObject.getClass().getName()), (JSONObject)null);
+  }
+  
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONArray paramJSONArray) {}
+  
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject) {}
+  
+  protected void a(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      super.a(paramMessage);
+      return;
+    }
+    paramMessage = (Object[])paramMessage.obj;
+    a(((Integer)paramMessage[0]).intValue(), (Header[])paramMessage[1], paramMessage[2]);
+  }
+  
+  public void a(Throwable paramThrowable, JSONArray paramJSONArray) {}
+  
+  public void a(Throwable paramThrowable, JSONObject paramJSONObject) {}
+  
+  protected void b(int paramInt, Header[] paramArrayOfHeader, String paramString)
+  {
+    if (paramInt != 204) {
       try
       {
-        localObject1[i] = Integer.parseInt(arrayOfString[i].trim());
-        i += 1;
+        b(a(100, new Object[] { Integer.valueOf(paramInt), paramArrayOfHeader, a(paramString) }));
+        return;
       }
-      catch (Exception paramString)
+      catch (JSONException paramArrayOfHeader)
       {
-        for (;;)
-        {
-          localObject1[i] = 0;
-        }
+        b(paramArrayOfHeader, paramString);
+        return;
       }
     }
+    b(a(100, new Object[] { Integer.valueOf(paramInt), new JSONObject() }));
   }
   
-  public String[] a(String paramString)
+  protected void c(Throwable paramThrowable, String paramString)
   {
-    paramString = GraphicRenderMgr.getInstance().findConfigValue(this.a, paramString, "unknown");
-    if ((paramString == null) || (paramString.equalsIgnoreCase("unknown"))) {
-      return null;
+    if (paramString != null)
+    {
+      try
+      {
+        Object localObject = a(paramString);
+        if ((localObject instanceof JSONObject))
+        {
+          a(paramThrowable, (JSONObject)localObject);
+          return;
+        }
+        if ((localObject instanceof JSONArray))
+        {
+          a(paramThrowable, (JSONArray)localObject);
+          return;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        a(paramThrowable, paramString);
+        return;
+      }
+      a(paramThrowable, paramString);
+      return;
     }
-    return paramString.trim().split(",");
+    a(paramThrowable, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     lao
  * JD-Core Version:    0.7.0.1
  */

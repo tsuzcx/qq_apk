@@ -1,11 +1,11 @@
 package dov.com.qq.im.capture.music;
 
 import android.os.SystemClock;
-import azzz;
-import batm;
-import bato;
-import beeg;
-import bhim;
+import bbbd;
+import bbwg;
+import bbwi;
+import bflw;
+import bjde;
 import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
 import com.tencent.qphone.base.util.QLog;
@@ -15,24 +15,24 @@ import java.io.File;
 class QQMusicDownloader$DownloadMusicTask
   implements Runnable
 {
-  batm jdField_a_of_type_Batm;
-  bhim jdField_a_of_type_Bhim;
+  bbwg jdField_a_of_type_Bbwg;
+  bjde jdField_a_of_type_Bjde;
   
-  public QQMusicDownloader$DownloadMusicTask(batm parambatm, bhim parambhim)
+  public QQMusicDownloader$DownloadMusicTask(bbwg parambbwg, bjde parambjde)
   {
-    this.jdField_a_of_type_Batm = parambatm;
-    this.jdField_a_of_type_Bhim = parambhim;
+    this.jdField_a_of_type_Bbwg = parambbwg;
+    this.jdField_a_of_type_Bjde = parambjde;
   }
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQMusicDownloader", 2, "begin download " + this.jdField_a_of_type_Batm.a);
+      QLog.d("QQMusicDownloader", 2, "begin download " + this.jdField_a_of_type_Bbwg.a);
     }
-    if ((azzz.b()) && (azzz.b() < 20971520L))
+    if ((bbbd.a()) && (bbbd.b() < 20971520L))
     {
-      if (this.jdField_a_of_type_Bhim != null) {
-        this.jdField_a_of_type_Bhim.a(this.jdField_a_of_type_Batm.a, false);
+      if (this.jdField_a_of_type_Bjde != null) {
+        this.jdField_a_of_type_Bjde.a(this.jdField_a_of_type_Bbwg.a, false);
       }
       QLog.e("QQMusicDownloader", 1, "download err no space");
     }
@@ -42,7 +42,7 @@ class QQMusicDownloader$DownloadMusicTask
     do
     {
       return;
-      String str = beeg.a;
+      String str = bflw.a;
       Object localObject = str;
       if (SdkContext.getInstance() != null)
       {
@@ -64,10 +64,10 @@ class QQMusicDownloader$DownloadMusicTask
         ((File)localObject).mkdirs();
       }
       l1 = SystemClock.uptimeMillis();
-      i = bato.a(this.jdField_a_of_type_Batm, null, null);
+      i = bbwi.a(this.jdField_a_of_type_Bbwg, null, null);
       l2 = SystemClock.uptimeMillis();
     } while (!QLog.isColorLevel());
-    QLog.i("QQMusicDownloader", 2, "download cost " + (l2 - l1) + " result " + i + " key " + this.jdField_a_of_type_Batm.a);
+    QLog.i("QQMusicDownloader", 2, "download cost " + (l2 - l1) + " result " + i + " key " + this.jdField_a_of_type_Bbwg.a);
   }
 }
 

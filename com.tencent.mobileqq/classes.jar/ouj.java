@@ -1,18 +1,13 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
 
-class ouj
+public class ouj
   implements View.OnClickListener
 {
-  ouj(ouc paramouc, qoe paramqoe, opw paramopw) {}
+  public ouj(ReadInJoyDailyFragment paramReadInJoyDailyFragment) {}
   
-  public void onClick(View paramView)
-  {
-    paramView = this.jdField_a_of_type_Qoe.a();
-    if (paramView != null) {
-      paramView.a(null, this.jdField_a_of_type_Opw.a(), 1);
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

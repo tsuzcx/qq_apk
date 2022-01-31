@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.activity.phone.PhoneInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
 
 public class afyp
-  extends atog
+  extends ajta
 {
-  public afyp(PhoneInnerFrame paramPhoneInnerFrame) {}
+  public afyp(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  protected void a(Object paramObject)
   {
-    if (this.a.a)
-    {
-      this.a.b().a().unRegistObserver(this);
-      this.a.g();
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
     }
   }
 }

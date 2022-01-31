@@ -1,163 +1,103 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.activity.ExtendGridView;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.data.TroopBarMyBar;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import java.util.ArrayList;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import android.annotation.SuppressLint;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
+import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.smtt.sdk.WebView;
 
-public class aygg
-  implements BusinessObserver
+class aygg
+  extends nke
 {
-  public aygg(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  aygg(aygf paramaygf) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  @SuppressLint({"InflateParams"})
+  public View getVideoLoadingProgressView()
   {
-    this.a.c(false);
-    this.a.rightViewText.setEnabled(true);
-    TroopBarPublishActivity localTroopBarPublishActivity = this.a;
-    this.a.getString(2131630856);
-    if (paramBoolean)
-    {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label748;
-        }
-        localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-        if (paramInt == 0) {
-          break label209;
-        }
-        localObject = paramBundle.optString("msg");
-        paramBundle = (Bundle)localObject;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          paramBundle = this.a.getString(2131630857, new Object[] { Integer.valueOf(paramInt) });
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          Object localObject;
-          label167:
-          label209:
-          StringBuffer localStringBuffer;
-          paramBundle = this.a.getString(2131630857, new Object[] { Integer.valueOf(9992) });
-          continue;
-          localStringBuffer.append("7");
-          continue;
-          localStringBuffer.append("8");
-          continue;
-          paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar.c;
-          continue;
-          paramBundle = this.a.D;
-        }
-      }
-      bbmy.a(localTroopBarPublishActivity, 1, paramBundle, 0).b(this.a.getTitleBarHeight());
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar != null) {
-        break label800;
-      }
-      paramBundle = "0";
-      azho.a("pub_page", "fail", paramBundle, "4", TroopBarPublishActivity.b(this.a), "");
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setItemEnable(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.setEnabled(true);
-      return;
-      localObject = paramBundle.getJSONObject("result");
-      localStringBuffer = new StringBuffer();
-      if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-        localStringBuffer.append("0");
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI != null) {
-        localStringBuffer.append("1");
-      }
-      if (!TextUtils.isEmpty(azho.a(this.a.jdField_b_of_type_ComTencentMobileqqTribeViewTEditText))) {
-        localStringBuffer.append("2");
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo != null) {
-        localStringBuffer.append("5");
-      }
-      if (this.a.h) {
-        if (!TextUtils.isEmpty(azho.a(this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText)))
-        {
-          localStringBuffer.append("6");
-          if (!TextUtils.isEmpty(this.a.D)) {
-            break label713;
-          }
-          if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar != null) {
-            break label699;
-          }
-          paramBundle = "0";
-          if ((this.a.jdField_b_of_type_AndroidWidgetTextView == null) || (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0)) {
-            break label820;
-          }
-        }
-      }
+    if (this.a.a != null) {
+      return this.a.a.b();
     }
-    label800:
-    label820:
-    for (paramInt = 2;; paramInt = 1)
-    {
-      awqx.b(null, "P_CliOper", "Grp_tribe", "", "pub_page", "suc", paramInt, 0, paramBundle, this.a.jdField_b_of_type_JavaLangString, localStringBuffer.toString(), "");
-      this.a.e = true;
-      ((JSONObject)localObject).optString("pid");
-      paramBundle = ((JSONObject)localObject).optString("bid");
-      if ((this.a.d) && (this.a.jdField_a_of_type_OrgJsonJSONObject != null))
-      {
-        this.a.getIntent().getStringExtra("pkg_name");
-        this.a.jdField_a_of_type_OrgJsonJSONObject.optString("share_app_name");
-        this.a.jdField_a_of_type_OrgJsonJSONObject.optLong("share_app_id");
-        if (TextUtils.isEmpty(paramBundle)) {
-          break label724;
-        }
-      }
-      for (;;)
-      {
-        baiz.a(this.a.app, "share_suc", paramBundle);
-        if (this.a.jdField_a_of_type_Ayab != null) {
-          this.a.u();
-        }
-        if ((this.a.jdField_a_of_type_Aycg != null) && (!TroopBarPublishActivity.a(this.a).equals("###...^_^###"))) {
-          awqx.b(null, "dc00899", "Grp_tribe", "", "pub_page", "sus_prefixpub", 0, 0, this.a.q, "", "", "");
-        }
-        paramBundle = new Intent();
-        paramBundle.putExtra("result", ((JSONObject)localObject).toString());
-        this.a.setResult(-1, paramBundle);
-        this.a.finish();
-        return;
-        label699:
-        label713:
-        label724:
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar != null)
-        {
-          paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar.c;
-          continue;
-          label748:
-          paramBundle = this.a.getString(2131630857, new Object[] { Integer.valueOf(9991) });
-          break;
-          paramBundle = this.a.getString(2131630857, new Object[] { Integer.valueOf(9992) });
-          break;
-          paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar.c;
-          break label167;
-        }
-        paramBundle = "";
-      }
+    return null;
+  }
+  
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramString, paramGeolocationPermissionsCallback);
+    }
+  }
+  
+  public void onHideCustomView()
+  {
+    if (this.a.a != null) {
+      this.a.a.v();
+    }
+  }
+  
+  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramWebView, paramString1, paramString2, paramJsResult);
+    }
+    return super.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
+  }
+  
+  public void onProgressChanged(WebView paramWebView, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewWrapper", 2, "onProgressChanged:" + paramInt);
+    }
+    if (this.a.a != null) {
+      this.a.a.a(paramWebView, paramInt);
+    }
+    if ((paramInt > 30) && (!paramWebView.getSettings().getLoadsImagesAutomatically())) {
+      paramWebView.getSettings().setLoadsImagesAutomatically(true);
+    }
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    if (this.a.a != null) {
+      this.a.a.b(paramWebView, paramString);
+    }
+  }
+  
+  public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramView, paramInt, paramCustomViewCallback);
+    }
+  }
+  
+  public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramView, 10, paramCustomViewCallback);
+    }
+  }
+  
+  public boolean onShowFileChooser(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
+  {
+    if ((paramValueCallback != null) && (this.a.a != null)) {
+      return this.a.a.a(paramValueCallback, paramFileChooserParams);
+    }
+    return super.onShowFileChooser(paramWebView, paramValueCallback, paramFileChooserParams);
+  }
+  
+  public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramValueCallback, paramString1, paramString2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aygg
  * JD-Core Version:    0.7.0.1
  */

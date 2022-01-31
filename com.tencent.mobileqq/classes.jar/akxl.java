@@ -1,22 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.ar.view.ARScanEntryView.26;
+import com.tencent.qphone.base.util.QLog;
 
-public class akxl
-  implements View.OnClickListener
+public abstract class akxl
+  implements ajtg
 {
-  public akxl(ARScanEntryView.26 param26) {}
+  public abstract void a(alfw paramalfw);
   
-  public void onClick(View paramView)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (this.a.jdField_a_of_type_Aklt != null) {
-      this.a.jdField_a_of_type_Aklt.a(this.a.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d("ARLBSObserver", 2, "type=" + paramInt + ", isSuccess=" + paramBoolean);
     }
-    ARScanEntryView.g(this.a.this$0);
-    ARScanEntryView.d(this.a.this$0);
-    this.a.this$0.a.setOnClickListener(this.a.this$0);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    try
+    {
+      a((alfw)paramObject);
+      return;
+    }
+    catch (Exception paramObject)
+    {
+      a(new alfw());
+    }
   }
 }
 

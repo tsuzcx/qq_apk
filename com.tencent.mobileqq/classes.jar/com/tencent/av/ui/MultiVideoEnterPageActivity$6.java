@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import badq;
+import bbev;
 import com.tencent.av.VideoController;
 
 class MultiVideoEnterPageActivity$6
@@ -10,7 +10,7 @@ class MultiVideoEnterPageActivity$6
   
   public void run()
   {
-    if ((badq.a(this.this$0) == 0) && (!this.this$0.jdField_a_of_type_Boolean))
+    if ((bbev.a(this.this$0) == 0) && (!this.this$0.jdField_a_of_type_Boolean))
     {
       this.this$0.finish();
       MultiVideoEnterPageActivity.a(this.this$0, 0, 2130772134);

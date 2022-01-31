@@ -1,37 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.config.ConfigInfo;
+import android.opengl.GLES20;
 
-class lrt
-  extends BroadcastReceiver
+public class lrt
+  extends lru
 {
-  lrt(lrs paramlrs) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public lrt(String paramString)
   {
-    paramIntent = paramIntent.getAction();
-    if (paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE"))
-    {
-      if (!lrs.a(this.a))
-      {
-        lrs.a(this.a, true);
-        if (lrs.b(this.a)) {
-          lrs.a(this.a);
-        }
-      }
-      int i = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
-      lll.a().a("update", i);
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD")) || (lrs.b(this.a)));
-      lrs.b(this.a, true);
-    } while (!lrs.a(this.a));
-    lrs.a(this.a);
+    super(paramString);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = GLES20.glGetAttribLocation(paramInt, this.jdField_a_of_type_JavaLangString);
+    lsv.a();
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
 import java.util.Map;
-import nii;
-import ojt;
+import nts;
+import ovf;
 
 public class ReadInJoyChannelWaterFallViewController$2
   implements Runnable
 {
-  public ReadInJoyChannelWaterFallViewController$2(nii paramnii, Map paramMap1, boolean paramBoolean, Map paramMap2, String paramString) {}
+  public ReadInJoyChannelWaterFallViewController$2(nts paramnts, Map paramMap1, boolean paramBoolean, Map paramMap2, String paramString) {}
   
   public void run()
   {

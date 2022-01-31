@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.weishi_new.net;
 import android.content.Context;
 import mqq.app.NewIntent;
 import mqq.app.Servlet;
-import ryz;
+import slv;
 
 public class WeishiIntent
   extends NewIntent
 {
-  public ryz a;
+  public slv a;
   
   public WeishiIntent(Context paramContext, Class<? extends Servlet> paramClass)
   {

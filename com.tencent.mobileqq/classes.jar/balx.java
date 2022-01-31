@@ -1,37 +1,37 @@
-public class balx
-  extends anjy
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+
+class balx
+  extends mxm
 {
-  public static int a = 1;
-  public static int b = 2;
-  public static int c = 3;
-  public static int d = 4;
-  public static int e = 5;
-  public static int f = 6;
-  public static int g = 7;
-  public static int h = 8;
-  public static int i;
-  public static int j = 1;
-  public static int k = 6;
-  public static int l = 1;
-  public static int m = 2;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public int n;
-  public int o;
-  public int p;
-  public int q;
-  public int r;
-  public int s;
+  balx(balw parambalw, bame parambame) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    paramBundle = new cmd0x934.RspBody();
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.jdField_a_of_type_Bame.a(paramInt, paramBundle);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     balx
  * JD-Core Version:    0.7.0.1
  */

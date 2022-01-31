@@ -2,21 +2,22 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bgmq;
+import bhvh;
 
 class KandianMergeManager$21
   implements Runnable
 {
-  KandianMergeManager$21(KandianMergeManager paramKandianMergeManager) {}
+  KandianMergeManager$21(KandianMergeManager paramKandianMergeManager, long paramLong, String paramString1, int paramInt1, String paramString2, int paramInt2) {}
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = bgmq.a(KandianMergeManager.a(this.this$0), 1).edit();
-    localEditor.remove("subscribe_push_msg_time");
-    localEditor.remove("subscribe_push_msg_uin");
-    localEditor.remove("subscribe_push_msg_status");
-    localEditor.remove("subscribe_push_msg_xml");
-    bgmq.a(localEditor, true);
+    SharedPreferences.Editor localEditor = bhvh.a(KandianMergeManager.a(this.this$0), 1).edit();
+    localEditor.putLong("subscribe_push_msg_time", this.jdField_a_of_type_Long);
+    localEditor.putString("subscribe_push_msg_uin", this.jdField_a_of_type_JavaLangString);
+    localEditor.putInt("subscribe_push_msg_status", this.jdField_a_of_type_Int);
+    localEditor.putString("subscribe_push_msg_xml", this.jdField_b_of_type_JavaLangString);
+    localEditor.putInt("subscribe_push_msg_msgtype", this.jdField_b_of_type_Int);
+    bhvh.a(localEditor, true);
   }
 }
 

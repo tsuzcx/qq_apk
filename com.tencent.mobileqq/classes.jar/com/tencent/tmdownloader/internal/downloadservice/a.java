@@ -9,8 +9,8 @@ import android.net.Uri;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.x;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.w;
 import java.io.File;
 
 public class a
@@ -21,17 +21,17 @@ public class a
     {
       if (TextUtils.isEmpty(paramString))
       {
-        ac.d("AppUtils", "localAPKPath is empty, return false");
+        ab.d("AppUtils", "localAPKPath is empty, return false");
         return false;
       }
       if (!new File(paramString).exists())
       {
-        ac.d("AppUtils", "file not exist, return false");
+        ab.d("AppUtils", "file not exist, return false");
         return false;
       }
       if (TextUtils.isEmpty(b(paramString)))
       {
-        ac.d("AppUtils", "package invaild del file, return false");
+        ab.d("AppUtils", "package invaild del file, return false");
         paramString = new File(paramString);
         if (paramString.exists()) {
           paramString.delete();
@@ -48,7 +48,7 @@ public class a
           localObject1 = localObject2;
           if (i >= 24)
           {
-            localObject1 = (Uri)x.a("android.support.v4.content.FileProvider").a("getUriForFile", new Object[] { GlobalUtil.getInstance().getContext(), "com.tencent.mobileqq.fileprovider", new File(paramString) }).a();
+            localObject1 = (Uri)w.a("android.support.v4.content.FileProvider").a("getUriForFile", new Object[] { GlobalUtil.getInstance().getContext(), "com.tencent.mobileqq.fileprovider", new File(paramString) }).a();
             localIntent.addFlags(1);
             localIntent.addFlags(2);
           }
@@ -57,17 +57,17 @@ public class a
         if (localObject1 == null) {
           localObject2 = Uri.fromFile(new File(paramString));
         }
-        ac.c("AppUtils", "uri:" + localObject2);
+        ab.c("AppUtils", "uri:" + localObject2);
         localIntent.setDataAndType((Uri)localObject2, "application/vnd.android.package-archive");
         localIntent.addFlags(268435456);
         GlobalUtil.getInstance().getContext().startActivity(localIntent);
-        ac.c("AppUtils", "sdk installApp success");
+        ab.c("AppUtils", "sdk installApp success");
         return true;
       }
     }
     catch (Exception paramString)
     {
-      ac.c("AppUtils", "installApp>>>", paramString);
+      ab.c("AppUtils", "installApp>>>", paramString);
       return false;
     }
     return false;
@@ -108,7 +108,7 @@ public class a
       }
       catch (Exception paramString)
       {
-        ac.c("AppUtils", "getApkPackageName>>>", paramString);
+        ab.c("AppUtils", "getApkPackageName>>>", paramString);
       }
     }
     return null;

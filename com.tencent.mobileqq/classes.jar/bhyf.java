@@ -1,32 +1,43 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
 
-public class bhyf
-  extends AnimatorListenerAdapter
+class bhyf
+  implements ModuleDownloadListener
 {
-  public bhyf(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  bhyf(bhye parambhye, bhyj parambhyj) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onDownloadCanceled(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim  170ms end");
-    }
-    this.a.c.setImageResource(2130843540);
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void onDownloadFailed(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim start");
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+    bhye.a(this.jdField_a_of_type_Bhye, false);
+    this.jdField_a_of_type_Bhyj.a(false);
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("vip_tar_engine.jar")) {
+      return;
     }
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bhye.a(), " onDownloadSucceed = ", bhye.b() });
+    LocalMultiProcConfig.putString("VipARUtils_JAR_md5", bhye.b());
+    bhye.a(this.jdField_a_of_type_Bhye);
+    this.jdField_a_of_type_Bhyj.a(bhye.a(this.jdField_a_of_type_Bhye));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhyf
  * JD-Core Version:    0.7.0.1
  */

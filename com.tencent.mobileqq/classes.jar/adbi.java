@@ -1,10 +1,10 @@
-import com.tencent.mobileqq.ark.ArkHorizontalListView;
-
-public class adbi
-  extends adrh
+public abstract interface adbi
 {
-  public ArkHorizontalListView a;
-  public String b;
+  public abstract boolean a();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

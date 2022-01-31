@@ -1,58 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
 
-public class afah
-  extends ajjh
+public final class afah
+  implements Parcelable.Creator<ZhituResponse>
 {
-  public afah(ConnectionsExplorationFragment paramConnectionsExplorationFragment) {}
-  
-  protected void onAddFriend(String paramString)
+  public ZhituResponse a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onAddFriend " + paramString);
-    }
-    ConnectionsExplorationFragment.a(this.a, false, true);
+    return new ZhituResponse(paramParcel);
   }
   
-  protected void onAddReqStatesChanged(boolean paramBoolean, String paramString)
+  public ZhituResponse[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onAddReqStatesChanged isSuccess=" + paramBoolean + " " + paramString);
-    }
-    ConnectionsExplorationFragment.a(this.a, false, true);
-  }
-  
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onCancelMayKnowRecommend isSuccess=" + paramBoolean + " " + paramString);
-    }
-    ConnectionsExplorationFragment.a(this.a, false, true);
-  }
-  
-  public void onGetConnectionsPerson(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onCancelMayKnowRecommend isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean) {
-      ConnectionsExplorationFragment.a(this.a, false, true);
-    }
-    while (paramInt1 != 1205) {
-      return;
-    }
-    ConnectionsExplorationFragment.a(this.a, false, false);
-  }
-  
-  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onGetMayKnowRecommend isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean) {
-      ConnectionsExplorationFragment.a(this.a, false, false);
-    }
+    return new ZhituResponse[paramInt];
   }
 }
 

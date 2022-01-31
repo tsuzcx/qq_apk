@@ -1,54 +1,61 @@
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity.4.1;
+import com.tencent.mobileqq.nearby.now.model.LocationInfo;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.app.AppRuntime.Status;
 
 public class atjg
-  extends ajfo
+  implements View.OnClickListener
 {
-  public atjg(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  public atjg(ShortVideoCommentsView paramShortVideoCommentsView, LocationInfo paramLocationInfo) {}
   
-  protected void onGetAutoReplyList(boolean paramBoolean, List<AutoReplyText> paramList, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountOnlineStateActivity", 2, String.format("onGetAutoReplyList, isSuccess: %s, selectId: %s, replyList: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramList }));
-    }
-    if (AccountOnlineStateActivity.a(this.a) != null) {
-      AccountOnlineStateActivity.a(this.a).runOnUiThread(new AccountOnlineStateActivity.4.1(this, paramBoolean, paramList));
-    }
-  }
-  
-  protected void onSetAutoReplyList(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    Object localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.getContext(), QQBrowserActivity.class);
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.lng;
+    String str3 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.lat;
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.name;
+    if (TextUtils.isEmpty(str1))
     {
-      atlj localatlj = AccountOnlineStateActivity.a(this.a).a();
-      AppRuntime.Status localStatus = atlb.a().a(localatlj);
-      if ((localStatus != null) && (localatlj.a != atlb.a().a(AccountOnlineStateActivity.a(this.a))))
-      {
-        AccountOnlineStateActivity.a(this.a, true);
-        AccountOnlineStateActivity.a(this.a).a(localStatus, localatlj.a);
-      }
-    }
-    for (;;)
-    {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.getCity();
+      paramView = String.format("http://3gimg.qq.com/lightmap/v1/marker/?key=%s&referer=qqnearby&marker=coord:%s,%s;title:%s;addr:%s", new Object[] { "25TBZ-W4HCP-2BKDM-LBYH3-L4QRT-G3BDP", str3, str2, paramView, str1 });
+      ((Intent)localObject).putExtra("url", paramView);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.getContext().startActivity((Intent)localObject);
       if (QLog.isColorLevel()) {
-        QLog.d("AccountOnlineStateActivity", 2, "onSetAutoReplyList, isSuccess: " + paramBoolean);
+        QLog.i("ShortVideoComments", 2, "when click location label ; the url is :" + paramView);
       }
+      localObject = new axra(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a).a("dc00899").b("grp_lbs").c("data_card").d("clk_lbs").e(String.valueOf(ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_Long));
+      if (!TextUtils.equals(String.valueOf(ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a.getCurrentAccountUin())) {
+        break label280;
+      }
+      paramView = "1";
+      label224:
+      if (ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView) == null) {
+        break label286;
+      }
+    }
+    label280:
+    label286:
+    for (str1 = ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_JavaLangString;; str1 = "0")
+    {
+      ((axra)localObject).a(new String[] { paramView, "", "", str1 }).a();
       return;
-      AccountOnlineStateActivity.a(this.a, true, 0);
-      continue;
-      AccountOnlineStateActivity.a(this.a, false, -2);
+      paramView = str1;
+      break;
+      paramView = "2";
+      break label224;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atjg
  * JD-Core Version:    0.7.0.1
  */

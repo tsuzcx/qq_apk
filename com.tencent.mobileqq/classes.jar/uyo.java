@@ -1,8 +1,31 @@
-import android.view.MotionEvent;
-
-public abstract interface uyo<T extends uyn>
+public class uyo
 {
-  public abstract boolean a(T paramT, MotionEvent paramMotionEvent);
+  public static ThreadLocal<StringBuilder> a = new uyp();
+  
+  public static String a(Object... paramVarArgs)
+  {
+    StringBuilder localStringBuilder = (StringBuilder)a.get();
+    if (paramVarArgs.length > 0)
+    {
+      int j = paramVarArgs.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = paramVarArgs[i];
+        if (localObject != null) {
+          localStringBuilder.append(localObject.toString());
+        }
+        i += 1;
+      }
+    }
+    return "";
+    paramVarArgs = localStringBuilder.toString();
+    if (localStringBuilder.length() > 512) {
+      a.set(new StringBuilder(512));
+    }
+    localStringBuilder.setLength(0);
+    return paramVarArgs;
+  }
 }
 
 

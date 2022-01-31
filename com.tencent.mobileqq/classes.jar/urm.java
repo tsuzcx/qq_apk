@@ -1,15 +1,29 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-final class urm
-  implements slx<urn, slu>
+public class urm
+  extends QQUIEventReceiver<uqy, tdm>
 {
-  public void a(@NonNull urn paramurn, @Nullable slu paramslu, @NonNull ErrorMessage paramErrorMessage)
+  public urm(@NonNull uqy paramuqy)
   {
-    if (paramErrorMessage.isFail()) {
-      urk.b("Q.qqstory.MonitorReport", "send monitor fail %s", paramErrorMessage);
+    super(paramuqy);
+  }
+  
+  public void a(@NonNull uqy paramuqy, @NonNull tdm paramtdm)
+  {
+    if (uqy.a(paramuqy) == null)
+    {
+      veg.b(this.TAG, "ignore this troop nick name change event. %s.", paramtdm.toString());
+      return;
     }
+    veg.a(this.TAG, "receive troop nick name change event. %s.", paramtdm.toString());
+    uqy.a(paramuqy).c();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tdm.class;
   }
 }
 

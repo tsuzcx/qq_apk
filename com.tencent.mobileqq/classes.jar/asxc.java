@@ -1,23 +1,22 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import java.util.Comparator;
 
-class asxc
-  implements TextWatcher
+final class asxc
+  implements Comparator<asyb>
 {
-  asxc(asxa paramasxa) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public int a(asyb paramasyb1, asyb paramasyb2)
   {
-    asfl.a(this.a.f, 90);
+    if (paramasyb1.a < paramasyb2.a) {
+      return -1;
+    }
+    if (paramasyb1.a > paramasyb2.a) {
+      return 1;
+    }
+    return 0;
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asxc
  * JD-Core Version:    0.7.0.1
  */

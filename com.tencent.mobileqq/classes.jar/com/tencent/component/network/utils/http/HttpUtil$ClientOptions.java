@@ -1,6 +1,7 @@
 package com.tencent.component.network.utils.http;
 
 import com.tencent.component.network.downloader.impl.DownloaderImpl;
+import com.tencent.component.network.utils.http.pool.CustomDnsResolve;
 import java.net.Proxy;
 import java.util.concurrent.TimeUnit;
 
@@ -8,6 +9,7 @@ public final class HttpUtil$ClientOptions
 {
   public int connManagerTimeout = 30000;
   public int connTimeout = 30000;
+  public CustomDnsResolve dnsResolve = null;
   public int maxConnection = -1;
   public int maxConnectionPerRoute = -1;
   public boolean multiConnection = false;

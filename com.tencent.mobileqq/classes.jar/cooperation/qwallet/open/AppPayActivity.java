@@ -7,9 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import baaw;
-import babp;
-import bfoi;
+import bbca;
+import bbct;
+import bgwp;
 import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -54,36 +54,36 @@ public class AppPayActivity
       return;
     }
     long l = VACDReportUtil.a(null, "qqwallet", "pay-open-app", "payinvoke", null, 0, null);
-    Object localObject = new bfoi();
+    Object localObject = new bgwp();
     try
     {
-      ((bfoi)localObject).a(paramIntent.getExtras());
-      boolean bool = ((bfoi)localObject).a();
-      paramIntent = ((bfoi)localObject).toString();
+      ((bgwp)localObject).a(paramIntent.getExtras());
+      boolean bool = ((bgwp)localObject).a();
+      paramIntent = ((bgwp)localObject).toString();
       paramIntent = paramIntent + "&check=" + bool;
       if (QLog.isColorLevel()) {
         QLog.i("Q.qwallet.pay", 2, "" + System.currentTimeMillis() + " AppPayActivity.doOpenPay data:" + paramIntent);
       }
       if (bool)
       {
-        VACDReportUtil.a(l, ((bfoi)localObject).i, "parseurl", paramIntent, 0, null);
+        VACDReportUtil.a(l, ((bgwp)localObject).i, "parseurl", paramIntent, 0, null);
         paramIntent = new Bundle();
         paramIntent.putInt("extra.key.pay.type", 1);
         paramIntent.putInt("extra.key.pay.from", 2);
         paramIntent.putInt("extra.key.pay.platform", 1);
         paramIntent.putInt("extra.key.app.type", 1);
         paramIntent.putLong("vacreport_key_seq", l);
-        paramIntent.putString("appId", ((bfoi)localObject).jdField_a_of_type_JavaLangString);
-        paramIntent.putString("callbackSn", ((bfoi)localObject).e);
-        paramIntent.putString("nonce", ((bfoi)localObject).j);
-        paramIntent.putLong("timeStamp", ((bfoi)localObject).jdField_a_of_type_Long);
-        paramIntent.putString("sig", ((bfoi)localObject).m);
-        paramIntent.putString("sigType", ((bfoi)localObject).l);
-        paramIntent.putString("tokenId", ((bfoi)localObject).i);
-        paramIntent.putString("bargainorId", ((bfoi)localObject).k);
-        paramIntent.putString("qVersion", babp.a(this));
-        paramIntent.putString("packageName", ((bfoi)localObject).n);
-        paramIntent.putString("callbackScheme", ((bfoi)localObject).f);
+        paramIntent.putString("appId", ((bgwp)localObject).jdField_a_of_type_JavaLangString);
+        paramIntent.putString("callbackSn", ((bgwp)localObject).e);
+        paramIntent.putString("nonce", ((bgwp)localObject).j);
+        paramIntent.putLong("timeStamp", ((bgwp)localObject).jdField_a_of_type_Long);
+        paramIntent.putString("sig", ((bgwp)localObject).m);
+        paramIntent.putString("sigType", ((bgwp)localObject).l);
+        paramIntent.putString("tokenId", ((bgwp)localObject).i);
+        paramIntent.putString("bargainorId", ((bgwp)localObject).k);
+        paramIntent.putString("qVersion", bbct.a(this));
+        paramIntent.putString("packageName", ((bgwp)localObject).n);
+        paramIntent.putString("callbackScheme", ((bgwp)localObject).f);
         localObject = new Intent(this, OpenPayActivity.class);
         ((Intent)localObject).putExtras(paramIntent);
         ((Intent)localObject).addFlags(67108864);
@@ -109,40 +109,40 @@ public class AppPayActivity
       return;
     }
     long l = VACDReportUtil.a(null, "qqwallet", "pay-app", "payinvoke", null, 0, null);
-    Object localObject = new bfoi();
-    ((bfoi)localObject).a(paramString);
-    boolean bool = ((bfoi)localObject).a();
-    paramString = ((bfoi)localObject).toString();
+    Object localObject = new bgwp();
+    ((bgwp)localObject).a(paramString);
+    boolean bool = ((bgwp)localObject).a();
+    paramString = ((bgwp)localObject).toString();
     paramString = paramString + "&check=" + bool;
     if (QLog.isColorLevel()) {
       QLog.i("Q.qwallet.pay", 2, "" + System.currentTimeMillis() + " AppPayActivity.doBrowserPay data:" + paramString);
     }
     if (bool)
     {
-      if (!a(((bfoi)localObject).n))
+      if (!a(((bgwp)localObject).n))
       {
         VACDReportUtil.endReport(l, "parseurl", paramString, 668801, "app died.");
         super.finish();
         return;
       }
-      VACDReportUtil.a(l, ((bfoi)localObject).i, "parseurl", paramString, 0, null);
+      VACDReportUtil.a(l, ((bgwp)localObject).i, "parseurl", paramString, 0, null);
       paramString = new Bundle();
       paramString.putInt("extra.key.pay.type", 1);
       paramString.putInt("extra.key.pay.from", 2);
       paramString.putInt("extra.key.pay.platform", 1);
       paramString.putInt("extra.key.app.type", 2);
       paramString.putLong("vacreport_key_seq", l);
-      paramString.putString("appId", ((bfoi)localObject).jdField_a_of_type_JavaLangString);
-      paramString.putString("callbackSn", ((bfoi)localObject).e);
-      paramString.putString("nonce", ((bfoi)localObject).j);
-      paramString.putLong("timeStamp", ((bfoi)localObject).jdField_a_of_type_Long);
-      paramString.putString("sig", ((bfoi)localObject).m);
-      paramString.putString("sigType", ((bfoi)localObject).l);
-      paramString.putString("tokenId", ((bfoi)localObject).i);
-      paramString.putString("bargainorId", ((bfoi)localObject).k);
-      paramString.putString("qVersion", babp.a(this));
-      paramString.putString("packageName", ((bfoi)localObject).n);
-      paramString.putString("callbackScheme", ((bfoi)localObject).f);
+      paramString.putString("appId", ((bgwp)localObject).jdField_a_of_type_JavaLangString);
+      paramString.putString("callbackSn", ((bgwp)localObject).e);
+      paramString.putString("nonce", ((bgwp)localObject).j);
+      paramString.putLong("timeStamp", ((bgwp)localObject).jdField_a_of_type_Long);
+      paramString.putString("sig", ((bgwp)localObject).m);
+      paramString.putString("sigType", ((bgwp)localObject).l);
+      paramString.putString("tokenId", ((bgwp)localObject).i);
+      paramString.putString("bargainorId", ((bgwp)localObject).k);
+      paramString.putString("qVersion", bbct.a(this));
+      paramString.putString("packageName", ((bgwp)localObject).n);
+      paramString.putString("callbackScheme", ((bgwp)localObject).f);
       localObject = new Intent(this, OpenPayActivity.class);
       ((Intent)localObject).putExtras(paramString);
       ((Intent)localObject).addFlags(67108864);
@@ -220,7 +220,7 @@ public class AppPayActivity
           localObject3 = str.substring(i + "mqqwallet://".length());
           try
           {
-            localObject3 = new String(baaw.decode((String)localObject3, 0));
+            localObject3 = new String(bbca.decode((String)localObject3, 0));
             localObject2 = localObject3;
           }
           catch (Exception localException2)

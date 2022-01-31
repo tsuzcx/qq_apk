@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import abin;
+import absn;
 import android.text.TextUtils;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class ProfileCardMoreActivity$7$1
   implements Runnable
 {
-  public ProfileCardMoreActivity$7$1(abin paramabin) {}
+  public ProfileCardMoreActivity$7$1(absn paramabsn) {}
   
   public void run()
   {

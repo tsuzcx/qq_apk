@@ -1,35 +1,109 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import java.util.HashMap;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.tts.SilkStreamPlayer;
+import mqq.manager.TicketManager;
 
 public class baui
-  extends bgqa
+  implements Handler.Callback
 {
-  private HashMap<String, bgqa> a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bauh jdField_a_of_type_Bauh;
+  private bauk jdField_a_of_type_Bauk;
+  protected bcpq a;
+  private SilkStreamPlayer jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer;
+  private TicketManager jdField_a_of_type_MqqManagerTicketManager;
   
-  public baui(String paramString, View paramView, HashMap<String, bgqa> paramHashMap)
+  public baui(AppInterface paramAppInterface, Context paramContext)
   {
-    super(paramString, paramView);
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_MqqManagerTicketManager = ((TicketManager)paramAppInterface.getManager(2));
+    this.jdField_a_of_type_AndroidOsHandler = new bfnk(this);
+    this.jdField_a_of_type_Bauh = new bauj(this);
   }
   
-  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
+  private void c()
   {
-    int i = vms.b(this.jdField_a_of_type_AndroidViewView.getContext());
-    paramLayoutParams.width = Math.max((int)(i * 108.0F / 360.0F), vms.a(this.jdField_a_of_type_AndroidViewView.getContext(), 108.0F));
-    paramLayoutParams.height = Math.max((int)(i * 126.0F / 360.0F), vms.a(this.jdField_a_of_type_AndroidViewView.getContext(), 126.0F));
-    return paramLayoutParams;
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if ("border".equals(paramString1))
-    {
-      if ((bgqa)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1) != null) {}
-      return;
+    if (this.jdField_a_of_type_Bcpq == null) {
+      this.jdField_a_of_type_Bcpq = new bcpq(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865));
     }
-    super.a(paramString1, paramString2);
+    if (!((Activity)this.jdField_a_of_type_AndroidContentContext).isFinishing()) {
+      this.jdField_a_of_type_Bcpq.show();
+    }
+  }
+  
+  private void d()
+  {
+    if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing())) {
+      this.jdField_a_of_type_Bcpq.dismiss();
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer.b();
+    }
+    if (this.jdField_a_of_type_Bauk != null) {
+      this.jdField_a_of_type_Bauk.b();
+    }
+  }
+  
+  public void a(bauk parambauk)
+  {
+    this.jdField_a_of_type_Bauk = parambauk;
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    if (!bbev.g(this.jdField_a_of_type_AndroidContentContext)) {
+      bcpw.a(this.jdField_a_of_type_AndroidContentContext, ajyc.a(2131715831), 1).a();
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer = new SilkStreamPlayer(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2, this.jdField_a_of_type_MqqManagerTicketManager.getSkey(paramString2));
+      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer.a(this.jdField_a_of_type_Bauh);
+      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer.a(paramString3);
+      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer.a();
+    } while (this.jdField_a_of_type_Bauk == null);
+    this.jdField_a_of_type_Bauk.a();
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer.a();
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer.c();
+    }
+    this.jdField_a_of_type_Bauk = null;
+    this.jdField_a_of_type_Bauh = null;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      c();
+      continue;
+      d();
+    }
   }
 }
 

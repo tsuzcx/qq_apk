@@ -1,49 +1,77 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class awek
+class awek
+  implements EIPCResultCallback
 {
-  public static void a(int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-    localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("waite", "" + paramInt);
-    awrn.a(VideoEnvironment.a()).a(null, "sv_waite_record_count", true, 0L, 0L, localHashMap, "");
-  }
+  awek(awei paramawei) {}
   
-  public static void a(int paramInt1, int paramInt2)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    a("sv_resource_download_base", paramInt1, paramInt2);
-  }
-  
-  private static void a(String paramString, int paramInt1, int paramInt2)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-    localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("type", "" + paramInt1);
-    localHashMap.put("error", "" + paramInt2);
-    awrn.a(VideoEnvironment.a()).a(null, paramString, true, 0L, 0L, localHashMap, "");
-  }
-  
-  public static void a(String paramString, long paramLong)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-    localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("cost", "" + paramLong);
-    awrn.a(VideoEnvironment.a()).a(null, paramString, true, 0L, 0L, localHashMap, "");
-  }
-  
-  public static void b(int paramInt1, int paramInt2)
-  {
-    a("sv_resource_download_qzone", paramInt1, paramInt2);
+    Object localObject = paramEIPCResult.data;
+    if (localObject == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            switch (((Bundle)localObject).getInt("notify_type"))
+            {
+            case 6: 
+            case 7: 
+            default: 
+              return;
+            case 4: 
+              paramEIPCResult = ((Bundle)localObject).getSerializable("my_signature");
+            }
+          } while (!(paramEIPCResult instanceof RichStatus));
+          awei.c(this.a);
+          localObject = new ArrayList();
+          ((ArrayList)localObject).add(Integer.valueOf(5));
+          ((ArrayList)localObject).add(paramEIPCResult);
+          this.a.notifyObservers(localObject);
+          return;
+          localObject = new HashMap();
+          ((HashMap)localObject).put("change_status_callback_data", paramEIPCResult.data);
+          i = paramEIPCResult.data.getInt("result");
+          int j = paramEIPCResult.data.getInt("type");
+          awei.d(this.a);
+          paramEIPCResult = new ArrayList();
+          paramEIPCResult.add(Integer.valueOf(6));
+          paramEIPCResult.add(Integer.valueOf(i));
+          paramEIPCResult.add(localObject);
+          paramEIPCResult.add(Integer.valueOf(j));
+          this.a.notifyObservers(paramEIPCResult);
+          return;
+          ((Bundle)localObject).getLong("bid");
+          paramEIPCResult = ((Bundle)localObject).getString("scid");
+        } while (TextUtils.isEmpty(paramEIPCResult));
+        i = ((Bundle)localObject).getInt("download_result");
+      } while ((!paramEIPCResult.startsWith("signature.sticker.")) || (i != 0));
+      paramEIPCResult = paramEIPCResult.substring("signature.sticker.".length(), paramEIPCResult.length() - 4);
+    } while (!TextUtils.isDigitsOnly(paramEIPCResult));
+    int i = Integer.parseInt(paramEIPCResult);
+    awei.e(this.a);
+    paramEIPCResult = new ArrayList();
+    paramEIPCResult.add(Integer.valueOf(7));
+    paramEIPCResult.add(Integer.valueOf(i));
+    this.a.notifyObservers(paramEIPCResult);
+    return;
+    i = ((Bundle)localObject).getInt("key_history_signature_num");
+    awei.f(this.a);
+    paramEIPCResult = new ArrayList();
+    paramEIPCResult.add(Integer.valueOf(8));
+    paramEIPCResult.add(Integer.valueOf(i));
+    this.a.notifyObservers(paramEIPCResult);
   }
 }
 

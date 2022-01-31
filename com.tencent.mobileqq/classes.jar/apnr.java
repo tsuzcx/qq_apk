@@ -1,13 +1,18 @@
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.applets.data.AppletItem;
-
-public abstract interface apnr
+class apnr
+  implements axod
 {
-  public abstract void a(CompoundButton paramCompoundButton, boolean paramBoolean, AppletItem paramAppletItem);
+  apnr(apnq paramapnq) {}
+  
+  public void a()
+  {
+    apue.a(this.a.a.a, this.a.a.c());
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apnr
  * JD-Core Version:    0.7.0.1
  */

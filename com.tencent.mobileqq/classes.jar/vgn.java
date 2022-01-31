@@ -1,32 +1,57 @@
-import com.tencent.mobileqq.data.TroopInfo;
+import android.text.TextUtils;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-public class vgn
+class vgn
+  extends vpe
 {
-  TroopInfo a;
-  public boolean a;
+  private final List<vot> a = new ArrayList();
   
-  public vgn(boolean paramBoolean, TroopInfo paramTroopInfo)
+  public int a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramTroopInfo;
+    return this.a.size();
   }
   
-  public static ArrayList<vgn> a(ArrayList<TroopInfo> paramArrayList, ArrayList<String> paramArrayList1)
+  public vot a(int paramInt)
   {
-    ArrayList localArrayList = new ArrayList(paramArrayList.size());
-    int i = 0;
-    while (i < paramArrayList.size())
-    {
-      TroopInfo localTroopInfo = (TroopInfo)paramArrayList.get(i);
-      vgn localvgn = new vgn(false, localTroopInfo);
-      if ((paramArrayList1 != null) && (paramArrayList1.contains(localTroopInfo.troopuin))) {
-        localvgn.jdField_a_of_type_Boolean = true;
-      }
-      localArrayList.add(localvgn);
-      i += 1;
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return (vot)this.a.get(paramInt);
     }
-    return localArrayList;
+    return null;
+  }
+  
+  public vot a(String paramString)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      vot localvot = (vot)localIterator.next();
+      if (TextUtils.equals(paramString, localvot.a)) {
+        return localvot;
+      }
+    }
+    return null;
+  }
+  
+  public void a(Collection<vot> paramCollection)
+  {
+    veg.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
+    this.a.clear();
+    this.a.addAll(paramCollection);
+    a();
+  }
+  
+  public void a(vot paramvot)
+  {
+    veg.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + paramvot);
+    int i = this.a.indexOf(paramvot);
+    if (i >= 0)
+    {
+      this.a.set(i, paramvot);
+      a(i);
+    }
   }
 }
 

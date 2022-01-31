@@ -1,19 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Conversation.45.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
 public class aawz
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public aawz(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public aawz(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    awqx.b(this.a.app, "dc00898", "", "", "0X800A0D9", "0X800A0D9", 0, 0, "", "", "", "");
-    if (badq.d(this.a)) {
-      FriendProfileMoreInfoActivity.b(this.a);
-    }
-    FriendProfileMoreInfoActivity.a(this.a, "https://ti.qq.com/hybrid-h5/school_relation/chooseschool?_wv=67108994");
+    paramContext = paramIntent.getStringExtra("wording");
+    int i = paramIntent.getIntExtra("timetowait", 360000);
+    this.a.jdField_a_of_type_Ahkf.jdField_a_of_type_Int = i;
+    this.a.jdField_a_of_type_Ahkf.jdField_a_of_type_JavaLangString = paramContext;
+    this.a.jdField_a_of_type_Ahkf.a(19, 2);
+    this.a.jdField_a_of_type_Ahkf.a(-1, null);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class).postDelayed(new Conversation.45.1(this), i);
+    axqw.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_PushBanner", "showBanner", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.confess;
 
-import alxy;
-import alyk;
+import amno;
+import amoa;
 
 public class ConfessManager$1
   implements Runnable
 {
-  public ConfessManager$1(alxy paramalxy) {}
+  public ConfessManager$1(amno paramamno) {}
   
   public void run()
   {

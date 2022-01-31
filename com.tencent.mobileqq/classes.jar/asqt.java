@@ -1,24 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.9.1;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
 
 public class asqt
-  implements View.OnClickListener
+  implements asqm
 {
-  asqt(aspq paramaspq) {}
+  public asqt(MultiAIOViewPager paramMultiAIOViewPager) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void b(int paramInt)
   {
-    this.a.c(paramView);
-    new asmr().h("video").i("playpage_like_click").b().a(this.a.a);
-    ThreadManagerV2.excute(new PlayOperationViewModel.9.1(this, (ascz)this.a.a.getManager(106)), 16, null, false);
+    if (MultiAIOViewPager.a(this.a) != null) {
+      MultiAIOViewPager.a(this.a).a(paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asqt
  * JD-Core Version:    0.7.0.1
  */

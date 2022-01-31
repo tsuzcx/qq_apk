@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import java.util.ArrayList;
 
-public class ahul
-  implements DialogInterface.OnClickListener
+public abstract interface ahul
 {
-  public ahul(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public abstract void a(int paramInt, boolean paramBoolean);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.s();
-  }
+  public abstract void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahul
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,71 @@
-import java.io.File;
-import java.io.IOException;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.DcReportUtil.1;
+import com.tencent.mobileqq.statistics.DcReportUtil.2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class axpw
 {
-  File jdField_a_of_type_JavaIoFile;
-  private String jdField_a_of_type_JavaLangString;
+  private static AtomicLong a = new AtomicLong(0L);
   
-  axpw(axpv paramaxpv, String paramString)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    if (!paramaxpv.jdField_a_of_type_JavaIoFile.exists()) {
-      paramaxpv.jdField_a_of_type_JavaIoFile.mkdirs();
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaIoFile = new File(paramaxpv.jdField_a_of_type_JavaIoFile, paramString + ".tmp");
-  }
-  
-  File a()
-  {
-    File localFile = this.jdField_a_of_type_Axpv.a(this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      return localFile;
-    }
-    if ((!this.jdField_a_of_type_JavaIoFile.exists()) || (this.jdField_a_of_type_JavaIoFile.length() <= 0L))
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
-      this.jdField_a_of_type_JavaIoFile.delete();
-      throw new IOException("write 0 length file or null File");
+      if (QLog.isColorLevel()) {
+        QLog.d("DcReportUtil", 2, "reportDCEvent tag or detail is null: " + paramString1 + ", " + paramString2);
+      }
+      return;
     }
-    this.jdField_a_of_type_JavaIoFile.renameTo(localFile);
-    return localFile;
+    if (paramQQAppInterface == null)
+    {
+      ThreadManager.post(new DcReportUtil.2(paramString1, paramString2), 5, null, true);
+      return;
+    }
+    a(paramQQAppInterface, paramString1, paramString2, 1);
   }
   
-  void a(boolean paramBoolean)
+  private static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
-    if ((!paramBoolean) || (this.jdField_a_of_type_JavaIoFile.length() <= 0L)) {
-      this.jdField_a_of_type_JavaIoFile.delete();
+    if (paramString2 != null)
+    {
+      axqw localaxqw = paramQQAppInterface.a();
+      if (localaxqw != null)
+      {
+        String str = paramString2;
+        if (paramString2.contains("${uin_unknown}")) {
+          str = paramString2.replace("${uin_unknown}", paramQQAppInterface.getCurrentAccountUin());
+        }
+        localaxqw.a(paramString1, str, paramInt);
+      }
     }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return;
+    }
+    String str = "${count_unknown}|" + paramString2;
+    paramString2 = str;
+    if (!paramBoolean)
+    {
+      long l = a.incrementAndGet();
+      paramString2 = "${report_seq_prefix}" + l + "|" + str;
+    }
+    if (paramQQAppInterface == null)
+    {
+      ThreadManager.post(new DcReportUtil.1(paramString1, paramString2), 5, null, true);
+      return;
+    }
+    a(paramQQAppInterface, paramString1, paramString2, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axpw
  * JD-Core Version:    0.7.0.1
  */

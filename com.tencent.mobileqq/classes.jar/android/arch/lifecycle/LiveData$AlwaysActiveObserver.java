@@ -1,0 +1,21 @@
+package android.arch.lifecycle;
+
+class LiveData$AlwaysActiveObserver
+  extends LiveData<T>.ObserverWrapper
+{
+  LiveData$AlwaysActiveObserver(Observer<T> paramObserver)
+  {
+    super(paramObserver, localObserver);
+  }
+  
+  boolean shouldBeActive()
+  {
+    return true;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     android.arch.lifecycle.LiveData.AlwaysActiveObserver
+ * JD-Core Version:    0.7.0.1
+ */

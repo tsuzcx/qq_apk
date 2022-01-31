@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import aroi;
+import askm;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -15,7 +15,7 @@ class PhoneContactManagerImp$12
     {
       Iterator localIterator = PhoneContactManagerImp.a(this.this$0).iterator();
       if (localIterator.hasNext()) {
-        ((aroi)localIterator.next()).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+        ((askm)localIterator.next()).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
       }
     }
   }

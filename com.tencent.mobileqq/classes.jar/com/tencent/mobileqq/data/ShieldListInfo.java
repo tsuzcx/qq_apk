@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="uin")
 public class ShieldListInfo
-  extends atmo
+  extends aukm
 {
   public static final int SHIELD_LIST_DEFAULT_SRC_SUB_ID = 0;
   public static final int SHIELD_LIST_INFO_FLAG_IS_SHIELD = 1;
@@ -36,7 +36,7 @@ public class ShieldListInfo
   public int flags;
   public int source_id;
   public int source_sub_id;
-  @atoc
+  @auma
   public String uin;
   
   public static int AIO_TYPE_2_SOURCE_ID(int paramInt)

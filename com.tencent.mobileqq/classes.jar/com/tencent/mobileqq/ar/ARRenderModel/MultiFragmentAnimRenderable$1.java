@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import ajjy;
-import akmn;
-import bbmy;
+import ajyc;
+import alaz;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class MultiFragmentAnimRenderable$1
   implements Runnable
 {
-  public MultiFragmentAnimRenderable$1(akmn paramakmn) {}
+  public MultiFragmentAnimRenderable$1(alaz paramalaz) {}
   
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.getContext(), 1, ajjy.a(2131641216), 1).a();
+    bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131707001), 1).a();
   }
 }
 

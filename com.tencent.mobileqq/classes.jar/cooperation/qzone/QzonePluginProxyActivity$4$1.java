@@ -1,15 +1,15 @@
 package cooperation.qzone;
 
-import ajjy;
+import ajyc;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import bbni;
-import bfcz;
-import bfdi;
-import bfrq;
-import bfrr;
-import bgfy;
+import bcqg;
+import bgkq;
+import bgkz;
+import bgzx;
+import bgzy;
+import bhoq;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 import com.tencent.mobileqq.pluginsdk.PluginTab;
 import com.tencent.qphone.base.util.QLog;
@@ -17,24 +17,18 @@ import com.tencent.qphone.base.util.QLog;
 public class QzonePluginProxyActivity$4$1
   implements Runnable
 {
-  public QzonePluginProxyActivity$4$1(bfrq parambfrq, String paramString, boolean paramBoolean1, boolean paramBoolean2, bfdi parambfdi) {}
+  public QzonePluginProxyActivity$4$1(bgzx parambgzx, String paramString, boolean paramBoolean1, boolean paramBoolean2, bgkz parambgkz) {}
   
   public void run()
   {
     boolean bool = true;
-    Object localObject1 = this.this$0.jdField_a_of_type_AndroidAppActivity;
-    Object localObject2;
-    if ((this.this$0.jdField_a_of_type_AndroidAppActivity instanceof BasePluginActivity))
+    Object localObject1 = this.this$0.jdField_a_of_type_AndroidContentContext;
+    if ((this.this$0.jdField_a_of_type_AndroidContentContext instanceof BasePluginActivity))
     {
-      localObject2 = ((BasePluginActivity)this.this$0.jdField_a_of_type_AndroidAppActivity).getOutActivity();
-      QLog.w("QzonePluginProxyActivity", 1, ajjy.a(2131646403) + this.jdField_a_of_type_JavaLangString + ",context:" + this.this$0.jdField_a_of_type_AndroidAppActivity);
-      localObject1 = localObject2;
-      if (localObject2 != null)
-      {
-        localObject1 = localObject2;
-        if ((localObject2 instanceof PluginTab)) {
-          localObject1 = ((PluginTab)localObject2).getOutActivity();
-        }
+      localObject1 = ((BasePluginActivity)this.this$0.jdField_a_of_type_AndroidContentContext).getOutActivity();
+      QLog.w("QzonePluginProxyActivity", 1, ajyc.a(2131712191) + this.jdField_a_of_type_JavaLangString + ",context:" + this.this$0.jdField_a_of_type_AndroidContentContext);
+      if ((localObject1 != null) && ((localObject1 instanceof PluginTab))) {
+        localObject1 = ((PluginTab)localObject1).getOutActivity();
       }
     }
     for (;;)
@@ -42,19 +36,19 @@ public class QzonePluginProxyActivity$4$1
       if ((localObject1 == null) || ((localObject1 instanceof BasePluginActivity)))
       {
         QLog.e("QzonePluginProxyActivity", 1, "activity 参数错误，尝试进行兼容失败");
-        bgfy.a(new IllegalArgumentException(ajjy.a(2131646392) + this.jdField_a_of_type_JavaLangString + ",context:" + this.this$0.jdField_a_of_type_AndroidAppActivity), ajjy.a(2131646383));
+        bhoq.a(new IllegalArgumentException(ajyc.a(2131712180) + this.jdField_a_of_type_JavaLangString + ",context:" + this.this$0.jdField_a_of_type_AndroidContentContext), ajyc.a(2131712171));
         return;
       }
       Intent localIntent = null;
-      localObject2 = localIntent;
+      Object localObject2 = localIntent;
       if (this.jdField_a_of_type_Boolean)
       {
         localObject2 = localIntent;
         if (!this.b)
         {
-          localObject2 = new bbni((Context)localObject1, this.this$0.jdField_a_of_type_AndroidContentIntent);
-          ((bbni)localObject2).a(ajjy.a(2131646390));
-          ((bbni)localObject2).setOnDismissListener(new bfrr(this));
+          localObject2 = new bcqg((Context)localObject1, this.this$0.jdField_a_of_type_AndroidContentIntent);
+          ((bcqg)localObject2).a(ajyc.a(2131712178));
+          ((bcqg)localObject2).setOnDismissListener(new bgzy(this));
         }
       }
       localIntent = this.this$0.jdField_a_of_type_AndroidContentIntent;
@@ -62,8 +56,8 @@ public class QzonePluginProxyActivity$4$1
       for (;;)
       {
         localIntent.putExtra("QZoneExtra.Plugin.isloading", bool);
-        this.jdField_a_of_type_Bfdi.a = ((Dialog)localObject2);
-        bfcz.a((Context)localObject1, this.jdField_a_of_type_Bfdi);
+        this.jdField_a_of_type_Bgkz.a = ((Dialog)localObject2);
+        bgkq.a((Context)localObject1, this.jdField_a_of_type_Bgkz);
         return;
         bool = false;
       }

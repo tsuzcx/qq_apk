@@ -1,16 +1,6 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache;
-import java.io.File;
-import java.io.FilenameFilter;
-
-public class ajxe
-  implements FilenameFilter
+public abstract interface ajxe
 {
-  public ajxe(CleanCache paramCleanCache) {}
-  
-  public boolean accept(File paramFile, String paramString)
-  {
-    return !paramString.contains("CrashInfoSummary.txt");
-  }
+  public abstract void a();
 }
 
 

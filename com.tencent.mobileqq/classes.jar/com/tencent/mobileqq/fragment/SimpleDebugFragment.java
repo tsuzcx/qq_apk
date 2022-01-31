@@ -7,9 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
-import appy;
-import appz;
-import awnu;
+import aqjn;
+import aqjo;
+import axmt;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 
 public class SimpleDebugFragment
@@ -17,26 +17,26 @@ public class SimpleDebugFragment
 {
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    int j = 2131313595;
+    int j = 2131379429;
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = (RadioGroup)this.mContentView.findViewById(2131303370);
+    paramLayoutInflater = (RadioGroup)this.mContentView.findViewById(2131369037);
     int i = j;
-    switch (awnu.e())
+    switch (axmt.e())
     {
     }
-    for (i = j;; i = 2131301537)
+    for (i = j;; i = 2131367147)
     {
       paramLayoutInflater.check(i);
       this.vg.setRightButton("");
-      paramLayoutInflater.setOnCheckedChangeListener(new appy(this, paramLayoutInflater));
-      this.vg.setOnItemSelectListener(new appz(this, paramLayoutInflater));
+      paramLayoutInflater.setOnCheckedChangeListener(new aqjn(this, paramLayoutInflater));
+      this.vg.setOnItemSelectListener(new aqjo(this, paramLayoutInflater));
       return;
     }
   }
   
   protected int getContentLayoutId()
   {
-    return 2131492917;
+    return 2131558455;
   }
   
   public boolean onBackEvent()

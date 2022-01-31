@@ -1,15 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class rnp
-  implements View.OnClickListener
+final class rnp
+  implements bfsp
 {
-  public rnp(ViolaLazyFragment paramViolaLazyFragment) {}
+  rnp(Context paramContext, AdData paramAdData) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("JumpAdUtils", 2, "onPopupWindowForAdComplain");
+    }
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_from_type", 3);
+      localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData);
+      PublicFragmentActivity.a((Activity)this.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+    }
   }
 }
 

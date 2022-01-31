@@ -1,0 +1,22 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
+
+class xjd
+  implements View.OnClickListener
+{
+  xjd(xjc paramxjc, int paramInt, VsMusicItemInfo paramVsMusicItemInfo) {}
+  
+  public void onClick(View paramView)
+  {
+    if (xjc.a(this.jdField_a_of_type_Xjc) != null) {
+      xjc.a(this.jdField_a_of_type_Xjc).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     xjd
+ * JD-Core Version:    0.7.0.1
+ */

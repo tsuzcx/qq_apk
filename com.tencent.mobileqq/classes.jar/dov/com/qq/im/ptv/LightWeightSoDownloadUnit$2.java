@@ -1,17 +1,17 @@
 package dov.com.qq.im.ptv;
 
 import android.widget.TextView;
-import bhyn;
+import bjqf;
 import com.tencent.qphone.base.util.QLog;
 
 public class LightWeightSoDownloadUnit$2
   implements Runnable
 {
-  public LightWeightSoDownloadUnit$2(bhyn parambhyn, String paramString) {}
+  public LightWeightSoDownloadUnit$2(bjqf parambjqf, String paramString) {}
   
   public void run()
   {
-    bhyn.a(this.this$0).setText(this.a);
+    bjqf.a(this.this$0).setText(this.a);
     if (QLog.isColorLevel()) {
       QLog.d("LightWeightSoDownloadUnit", 2, "setTipsTextData: textData=" + this.a);
     }

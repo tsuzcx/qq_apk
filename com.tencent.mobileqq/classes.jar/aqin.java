@@ -1,25 +1,34 @@
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.youtu.ytagreflectlivecheck.jni.model.ReflectLiveReq;
-import com.tencent.youtu.ytagreflectlivecheck.requester.UploadVideoRequesterV2;
-import com.tencent.youtu.ytagreflectlivecheck.requester.UploadVideoRequesterV2.UploadVideoResponse;
 
-class aqin
-  implements UploadVideoRequesterV2
+public class aqin
+  implements xem
 {
-  aqin(aqil paramaqil) {}
+  public aqin(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void request(ReflectLiveReq paramReflectLiveReq, UploadVideoRequesterV2.UploadVideoResponse paramUploadVideoResponse)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("qq_Identification.Model", 2, "YTAGReflectLiveCheckInterface setUploadVideoRequesterV2 request");
+      QLog.d("nearby.NearbyHybridFragment", 2, "onRefresh");
     }
-    if (this.a.jdField_a_of_type_Aqit != null)
+    this.a.g();
+    SosoInterface.SosoLbsInfo localSosoLbsInfo = NearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo;
+    if (localSosoLbsInfo == null) {
+      localSosoLbsInfo = SosoInterface.b();
+    }
+    for (;;)
     {
-      this.a.jdField_a_of_type_Aqit.a(7);
-      this.a.jdField_a_of_type_Aqit.a();
+      if (localSosoLbsInfo != null) {
+        ((akbm)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(3)).a((float)localSosoLbsInfo.a.b, (float)localSosoLbsInfo.a.a, 5);
+      }
+      this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
+      return;
     }
-    this.a.jdField_a_of_type_Aqib.a(paramReflectLiveReq);
-    paramUploadVideoResponse.onSuccess("{\"reflect_live_code\":0,\"reflect_live_msg\":\"OK\",\"picture_live_code\":0,\"picture_live_msg\":\"OK\",\"compare_code\":0,\"compare_msg\":\"OK\"}");
   }
 }
 

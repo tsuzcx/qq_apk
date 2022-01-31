@@ -1,16 +1,26 @@
-import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-public abstract interface ackm
+public class ackm
+  implements View.OnTouchListener
 {
-  public abstract void a(int paramInt, Context paramContext, ChatMessage paramChatMessage);
+  public ackm(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public abstract bakj[] a(View paramView);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 4)
+    {
+      this.a.a.dismiss();
+      return true;
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ackm
  * JD-Core Version:    0.7.0.1
  */

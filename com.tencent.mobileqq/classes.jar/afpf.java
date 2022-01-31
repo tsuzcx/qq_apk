@@ -1,55 +1,60 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
-public class afpf
+class afpf
+  implements Comparator<afph>
 {
-  ArrayList<Object> a = new ArrayList();
+  afpf(afpe paramafpe) {}
   
-  private boolean a()
+  public int a(afph paramafph1, afph paramafph2)
   {
-    boolean bool = false;
-    if (this.a != null) {}
-    for (int i = this.a.size() + 0;; i = 0)
+    if ((paramafph1 == null) && (paramafph2 == null)) {}
+    int j;
+    int k;
+    do
     {
-      if (i >= 20) {
-        bool = true;
+      do
+      {
+        return 0;
+        if ((paramafph1 == null) && (paramafph2 != null)) {
+          return -1;
+        }
+        if ((paramafph1 != null) && (paramafph2 == null)) {
+          return 1;
+        }
+        paramafph1 = paramafph1.b;
+        paramafph2 = paramafph2.b;
+      } while ((paramafph1 == null) && (paramafph2 == null));
+      if ((paramafph1 == null) && (paramafph2 != null)) {
+        return -1;
       }
-      if ((bool) && (QLog.isColorLevel())) {
-        QLog.d("Q.history.", 2, "isOverLimit");
+      if ((paramafph1 != null) && (paramafph2 == null)) {
+        return 1;
       }
-      return bool;
-    }
-  }
-  
-  public List<Object> a()
-  {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (a(paramObject))
-    {
-      this.a.remove(paramObject);
-      return;
-    }
-    if (a())
-    {
-      apcb.a(2131626944);
-      return;
-    }
-    this.a.add(paramObject);
-  }
-  
-  public boolean a(Object paramObject)
-  {
-    return this.a.contains(paramObject);
+      j = paramafph1.length();
+      k = paramafph2.length();
+      int m = Math.min(j, k);
+      int i = 0;
+      while (i < m)
+      {
+        char c1 = paramafph1.charAt(i);
+        char c2 = paramafph2.charAt(i);
+        if (c1 != c2)
+        {
+          paramafph1 = ChnToSpell.a(c1);
+          paramafph2 = ChnToSpell.a(c2);
+          if (paramafph1.jdField_a_of_type_Int == paramafph2.jdField_a_of_type_Int) {
+            return paramafph1.jdField_a_of_type_JavaLangString.compareTo(paramafph2.jdField_a_of_type_JavaLangString);
+          }
+          return paramafph1.jdField_a_of_type_Int - paramafph2.jdField_a_of_type_Int;
+        }
+        i += 1;
+      }
+      if (j < k) {
+        return -1;
+      }
+    } while (j <= k);
+    return 1;
   }
 }
 

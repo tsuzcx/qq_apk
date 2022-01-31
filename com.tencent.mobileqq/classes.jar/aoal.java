@@ -1,17 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-
-class aoal
-  implements View.OnClickListener
+public abstract interface aoal
 {
-  aoal(aoak paramaoak) {}
+  public abstract boolean a();
   
-  public void onClick(View paramView)
-  {
-    QfileCloudFileTabView.a(this.a.a, false);
-    this.a.a.h();
-  }
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

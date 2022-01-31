@@ -1,58 +1,27 @@
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class wzj
+class wzj
+  implements wze
 {
-  private static final wzl jdField_a_of_type_Wzl = new wzl(null);
-  private CopyOnWriteArrayList<wzb> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  wzj(wzi paramwzi, long paramLong) {}
   
-  public static wzj a()
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    return (wzj)jdField_a_of_type_Wzl.getInstance();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
+    if (QLog.isColorLevel())
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((wzb)localIterator.next()).b();
-      }
+      QLog.d(".troop.VideoCombineHelper", 2, "combineMp4_M4a end! isSuccess:" + paramBoolean + " path = " + paramString1);
+      QLog.d(".troop.trace_video_combine", 2, "combineMp4_M4aTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-  }
-  
-  public void a(long paramLong)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (!this.jdField_a_of_type_Boolean))
+    paramString1 = new File(paramString1);
+    if ((paramBoolean) && (paramString1.exists()))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((wzb)localIterator.next()).a(paramLong);
-      }
+      long l = System.currentTimeMillis();
+      this.jdField_a_of_type_Wzi.a.a(paramString1, this.jdField_a_of_type_Wzi.a.b, new wzk(this, l));
+      return;
     }
-  }
-  
-  public void a(wzb paramwzb)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramwzb);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((wzb)localIterator.next()).a();
-      }
-    }
-  }
-  
-  public void b(wzb paramwzb)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramwzb);
+    this.jdField_a_of_type_Wzi.a.d = paramString2;
+    this.jdField_a_of_type_Wzi.a.a.a(this.jdField_a_of_type_Wzi.a);
   }
 }
 

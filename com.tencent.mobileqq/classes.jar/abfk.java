@@ -1,19 +1,49 @@
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class abfk
-  extends ajfo
+  implements DialogInterface.OnClickListener
 {
-  public abfk(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
+  public abfk(FriendProfileCardActivity paramFriendProfileCardActivity, Context paramContext) {}
   
-  protected void onSetPCActiveState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean1)
+    switch (paramInt)
     {
-      SettingCloneUtil.writeValue(this.a.app.getApp(), paramString2, null, "qqsetting_pcactive_key", true);
-      QLog.i("CardObserver_onSetPCActiveState", 1, "Set the PC Active State " + paramBoolean1);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.dismiss();
+      com.tencent.mobileqq.activity.AddFriendLogicActivity.b = false;
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog back");
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getIntExtra("source_id", 3999) == 3090) {}
+      try
+      {
+        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getStringExtra("extra");
+        aqfb.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, true, "action_game_make_friend", Long.valueOf(paramDialogInterface).longValue(), -1, ajyc.a(2131704910));
+        if ((this.jdField_a_of_type_AndroidContentContext == null) || (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity))) {
+          continue;
+        }
+        ((Activity)this.jdField_a_of_type_AndroidContentContext).moveTaskToBack(true);
+      }
+      catch (Exception paramDialogInterface)
+      {
+        for (;;)
+        {
+          QLog.e("FriendProfileCardActivity", 1, "feedBackToGameSDK error = " + paramDialogInterface);
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog stay");
+      }
     }
   }
 }

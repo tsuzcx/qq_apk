@@ -15,9 +15,9 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tribe.async.async.JobContext;
 import com.tribe.async.async.JobSegment;
 import mqq.os.MqqHandler;
-import tin;
-import tqg;
-import urk;
+import tvj;
+import udc;
+import veg;
 
 class VideoViewVideoHolder$VideoStartSegment
   extends JobSegment<StoryVideoItem, StoryVideoItem>
@@ -41,9 +41,9 @@ class VideoViewVideoHolder$VideoStartSegment
       if ((VideoViewVideoHolder.a(paramVideoViewVideoHolder) != null) && (VideoViewVideoHolder.a(paramVideoViewVideoHolder).getWidth() == paramTextureView.getWidth() / 16) && (VideoViewVideoHolder.a(paramVideoViewVideoHolder).getHeight() == paramTextureView.getHeight() / 16))
       {
         paramTextureView = paramTextureView.getBitmap(VideoViewVideoHolder.a(paramVideoViewVideoHolder));
-        if (tin.a(paramTextureView, 4, 16))
+        if (tvj.a(paramTextureView, 4, 16))
         {
-          urk.a(paramVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "isCurrentFrameBlack CheckVideoViewRealStartRunnable find dark bitmap ! current = %d", Long.valueOf(paramLong));
+          veg.a(paramVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "isCurrentFrameBlack CheckVideoViewRealStartRunnable find dark bitmap ! current = %d", Long.valueOf(paramLong));
           return true;
         }
       }
@@ -68,12 +68,12 @@ class VideoViewVideoHolder$VideoStartSegment
         }
         return false;
       }
-      urk.d(this.this$0.jdField_a_of_type_JavaLangString, "isCurrentFrameBlack StoryPlayerTest.isBlack false. treat as not-black frame");
+      veg.d(this.this$0.jdField_a_of_type_JavaLangString, "isCurrentFrameBlack StoryPlayerTest.isBlack false. treat as not-black frame");
     }
     for (;;)
     {
       return false;
-      urk.d(this.this$0.jdField_a_of_type_JavaLangString, "isCurrentFrameBlack targetView.isAvailable() false. treat as not-black frame");
+      veg.d(this.this$0.jdField_a_of_type_JavaLangString, "isCurrentFrameBlack targetView.isAvailable() false. treat as not-black frame");
     }
   }
   
@@ -95,15 +95,15 @@ class VideoViewVideoHolder$VideoStartSegment
       }
       return;
     }
-    urk.e(this.this$0.jdField_a_of_type_JavaLangString, "onPrepared, is not on foreground, do not start video view !!");
+    veg.e(this.this$0.jdField_a_of_type_JavaLangString, "onPrepared, is not on foreground, do not start video view !!");
     notifyError(new ErrorMessage(0, "onPrepared, is not on foreground"));
   }
   
   public void onCancel()
   {
     super.onCancel();
-    urk.b(this.this$0.jdField_a_of_type_JavaLangString, "VideoStartSegment onCancel");
-    this.this$0.jdField_a_of_type_Tqg.a();
+    veg.b(this.this$0.jdField_a_of_type_JavaLangString, "VideoStartSegment onCancel");
+    this.this$0.jdField_a_of_type_Udc.a();
   }
   
   public void run()
@@ -111,25 +111,25 @@ class VideoViewVideoHolder$VideoStartSegment
     VideoViewVideoHolder localVideoViewVideoHolder = this.this$0;
     if (!localVideoViewVideoHolder.c())
     {
-      urk.d(localVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "!holder.isSelected() holder = %s", new Object[] { localVideoViewVideoHolder });
+      veg.d(localVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "!holder.isSelected() holder = %s", new Object[] { localVideoViewVideoHolder });
       notifyError(new ErrorMessage(0, "!holder.isSelected"));
       return;
     }
     if (VideoViewVideoHolder.e(this.this$0) == 1)
     {
-      urk.d(this.this$0.jdField_a_of_type_JavaLangString, "SOFT DECODE, waiting PLAYER_INFO_START_RENDERING");
+      veg.d(this.this$0.jdField_a_of_type_JavaLangString, "SOFT DECODE, waiting PLAYER_INFO_START_RENDERING");
       a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
       return;
     }
-    long l1 = localVideoViewVideoHolder.jdField_a_of_type_Tqg.a();
+    long l1 = localVideoViewVideoHolder.jdField_a_of_type_Udc.a();
     if (l1 > 0L)
     {
-      TextureView localTextureView = tin.a(localVideoViewVideoHolder.jdField_a_of_type_Tqg.a());
+      TextureView localTextureView = tvj.a(localVideoViewVideoHolder.jdField_a_of_type_Udc.a());
       if (localTextureView != null)
       {
         long l2 = SystemClock.uptimeMillis();
         boolean bool = a(localVideoViewVideoHolder, localTextureView, l1);
-        urk.a(this.this$0.jdField_a_of_type_JavaLangString, "check black cost %d ms", Long.valueOf(SystemClock.uptimeMillis() - l2));
+        veg.a(this.this$0.jdField_a_of_type_JavaLangString, "check black cost %d ms", Long.valueOf(SystemClock.uptimeMillis() - l2));
         if (!bool)
         {
           a(localVideoViewVideoHolder, l1, "NotBlackFrame");
@@ -153,8 +153,8 @@ class VideoViewVideoHolder$VideoStartSegment
     }
     if (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long > 4000L)
     {
-      urk.d(this.this$0.jdField_a_of_type_JavaLangString, "check black frame time out. holder = %s", new Object[] { localVideoViewVideoHolder });
-      localVideoViewVideoHolder.jdField_a_of_type_Tqg.a();
+      veg.d(this.this$0.jdField_a_of_type_JavaLangString, "check black frame time out. holder = %s", new Object[] { localVideoViewVideoHolder });
+      localVideoViewVideoHolder.jdField_a_of_type_Udc.a();
       VideoViewVideoHolder.c(this.this$0, 14);
       notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.this$0), "check black frame time out"));
       return;

@@ -1,40 +1,39 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import java.util.List;
+import com.tencent.ark.ArkAppPreloader.PreloadAppCallback;
+import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.qphone.base.util.QLog;
 
 class altk
-  implements View.OnClickListener
+  implements ArkAppPreloader.PreloadAppCallback
 {
-  altk(altj paramaltj) {}
+  altk(alti paramalti) {}
   
-  public void onClick(View paramView)
+  public void beginAppload(String paramString, int paramInt)
   {
-    if ((altj.a(this.a) != null) && (altj.a(this.a).getVisibility() == 0) && (altj.a(this.a).hasFocus())) {
-      return;
+    if (paramInt == 1) {
+      altc.a(paramString);
     }
-    altj.a(this.a);
-    paramView = new Intent(altj.a(this.a), AssistantSettingActivity.class);
-    paramView.putExtra("jumpTo", "color_note_recently_viewed");
-    paramView.putExtra("from", "color_note");
-    List localList = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a().a().a();
-    if ((localList.size() == 1) && (alsr.b((ColorNote)localList.get(0)))) {
-      paramView.putExtra("do_not_open", true);
+  }
+  
+  public void onAppLoaded(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      altc.b(paramString);
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preload app appname=", paramString, ",success=", Boolean.valueOf(paramBoolean) });
+      }
     }
-    paramView.addFlags(268435456);
-    altj.a(this.a).startActivity(paramView);
-    awqx.b(null, "dc00898", "", "", "0X800A8AF", "0X800A8AF", 0, 0, "", "", "", "");
+  }
+  
+  public void onReleaseAndReload(String paramString, int paramInt)
+  {
+    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling onReleaseAndReload begin app = " + paramString);
+    ArkAppMgr.getInstance().getAppPathByName(paramString, "", "0.0.0.1", null, new altl(this, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     altk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,16 @@
-public class pdi
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class pdi
+  implements View.OnClickListener
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e;
-  public boolean e;
-  public boolean f;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
-  public boolean k;
-  public boolean l;
+  pdi(pdb parampdb, String paramString1, String paramString2) {}
+  
+  public void onClick(View paramView)
+  {
+    pdb.a(2, this.jdField_a_of_type_JavaLangString);
+    onk.a(pdb.a(this.jdField_a_of_type_Pdb), this.b);
+  }
 }
 
 

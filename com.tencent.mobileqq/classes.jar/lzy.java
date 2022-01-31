@@ -1,105 +1,86 @@
-import android.os.Handler;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoInviteFloatBarUICtr.3.1;
+import com.tencent.av.so.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.io.File;
 
-public class lzy
-  extends kur
+class lzy
+  implements aysa
 {
-  lzy(lzv paramlzv) {}
+  lzy(lzx paramlzx, String paramString, int paramInt1, DownloadInfo paramDownloadInfo, int paramInt2) {}
   
-  protected void a()
+  public void onResp(aysx paramaysx)
   {
-    super.a();
-    this.a.a(false);
-  }
-  
-  protected void a(long paramLong, int paramInt)
-  {
-    super.a(paramLong);
+    ayrv localayrv = (ayrv)paramaysx.jdField_a_of_type_Aysw;
+    if (this.jdField_a_of_type_Lzx.jdField_a_of_type_Ayrv == localayrv) {
+      this.jdField_a_of_type_Lzx.jdField_a_of_type_Ayrv = null;
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "onDestroyInviteUI-->reason=" + paramInt);
+      QLog.i("QavSo", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localayrv.jdField_a_of_type_JavaLangString, Integer.valueOf(paramaysx.jdField_a_of_type_Int), Integer.valueOf(paramaysx.c), this.jdField_a_of_type_JavaLangString }));
     }
-    if ((this.a.jdField_a_of_type_Long == paramLong) || (0L == paramLong)) {
-      this.a.a();
-    }
-  }
-  
-  protected void a(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "onCreateRoomSuc-->GroupID=" + paramLong2);
-    }
-    this.a.jdField_a_of_type_Kvq.aj = true;
-    if (this.a.jdField_b_of_type_Int == 1) {
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramLong2);
-    }
-  }
-  
-  protected void a(long paramLong, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "notifyCloseGroupVideoInviteMsgBoxByInviteId-->groupId=" + paramLong);
-    }
-    if ((this.a.jdField_a_of_type_Long == paramLong) && (this.a.e.equals(paramString))) {
-      this.a.a();
-    }
-  }
-  
-  protected void a(long paramLong, ArrayList<kth> paramArrayList, int paramInt1, int paramInt2)
-  {
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext()) {
-      if (String.valueOf(((kth)paramArrayList.next()).jdField_a_of_type_Long).equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount())) {
-        this.a.a();
+    int i;
+    if (paramaysx.jdField_a_of_type_Int == 0)
+    {
+      paramaysx = new File(localayrv.c);
+      if (paramaysx.exists())
+      {
+        try
+        {
+          if (!lzw.a(localayrv.c, this.jdField_a_of_type_JavaLangString)) {
+            break label343;
+          }
+          String str = paramaysx.getParent();
+          bbdj.a(localayrv.c, str, false);
+          if (((this.jdField_a_of_type_Int != 1) || (!lzw.a(str + File.separator + this.jdField_a_of_type_ComTencentAvSoDownloadInfo.filename_so_wxvoiceembedqqegg, this.jdField_a_of_type_ComTencentAvSoDownloadInfo.MD5_so_wxvoiceembedqqegg))) && ((this.jdField_a_of_type_Int != 2) || (!lzw.a(str + File.separator + this.jdField_a_of_type_ComTencentAvSoDownloadInfo.filename_model_wxvoiceembed, this.jdField_a_of_type_ComTencentAvSoDownloadInfo.MD5_model_wxvoiceembed)))) {
+            break label343;
+          }
+          lzw.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo, this.jdField_a_of_type_Int);
+          i = 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            localException.printStackTrace();
+            i = 0;
+          }
+          lzw.a(-1);
+          this.jdField_a_of_type_Lzx.jdField_a_of_type_Boolean = false;
+          return;
+        }
+        paramaysx.delete();
       }
     }
-  }
-  
-  protected void b(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("VideoInviteFloatBarUICtr", 1, "onEnterRoomSuc, groupId[" + paramLong2 + "], seq[" + paramLong1 + "]");
-    }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new VideoInviteFloatBarUICtr.3.1(this, paramLong2), 500L);
-    this.a.jdField_a_of_type_ComTencentAvVideoController.c();
-    loj.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(paramLong1, false);
-    if (this.a.jdField_a_of_type_Lzu != null) {
-      this.a.jdField_a_of_type_Lzu.c();
-    }
-    miu.a().a(this.a.f);
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_b_of_type_JavaLangRunnable, 1000L);
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr.troopgroup_vedio.invite", 2, "groupId:" + paramLong1 + ", memUin:" + paramLong2 + ",invitedId:" + paramString + ", mInviterUin:" + this.a.jdField_b_of_type_Long + ", mGroupId:" + this.a.jdField_a_of_type_Long);
-    }
-    if ((paramLong2 == this.a.jdField_b_of_type_Long) && (paramLong1 == this.a.jdField_a_of_type_Long)) {
-      this.a.a();
+    for (;;)
+    {
+      if (i != 0)
+      {
+        lzw.a(100 / this.jdField_a_of_type_Lzx.jdField_a_of_type_Int + this.jdField_a_of_type_Lzx.b);
+        paramaysx = this.jdField_a_of_type_Lzx;
+        paramaysx.b += 100 / this.jdField_a_of_type_Lzx.jdField_a_of_type_Int;
+        if (!this.jdField_a_of_type_Lzx.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo, this.b - 1)) {
+          this.jdField_a_of_type_Lzx.jdField_a_of_type_Boolean = false;
+        }
+        return;
+      }
+      label343:
+      i = 0;
     }
   }
   
-  protected void e(long paramLong)
+  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "notifyCloseAllGroupVideoInviteMsgBox-->notifyByGroupId=" + paramLong);
+    int i;
+    if (paramLong2 == 0L) {
+      i = 0;
     }
-    if (this.a.jdField_a_of_type_Long != paramLong) {}
-    this.a.a();
-  }
-  
-  protected void f(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "notifyCloseGroupVideoInviteMsgBox-->groupId=" + paramLong);
-    }
-    if (this.a.jdField_a_of_type_Long == paramLong) {
-      this.a.a();
+    for (;;)
+    {
+      lzw.a(i / this.jdField_a_of_type_Lzx.jdField_a_of_type_Int + this.jdField_a_of_type_Lzx.b);
+      return;
+      if (paramLong1 >= paramLong2) {
+        i = 99;
+      } else {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+      }
     }
   }
 }

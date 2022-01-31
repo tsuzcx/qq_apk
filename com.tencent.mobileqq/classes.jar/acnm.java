@@ -1,74 +1,88 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.PokePanel;
-import com.tencent.mobileqq.activity.aio.PokePanel.3.1;
-import com.tencent.mobileqq.activity.aio.PokePanel.3.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class acnm
-  extends VasQuickUpdateManager.CallBacker
+  implements Animation.AnimationListener
 {
-  public acnm(PokePanel paramPokePanel) {}
+  public acnm(TroopTransferActivity paramTroopTransferActivity, TranslateAnimation paramTranslateAnimation1, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  /* Error */
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    boolean bool3 = true;
-    boolean bool1 = true;
-    boolean bool2 = false;
-    if (paramLong == 21L)
-    {
-      if ((!paramString1.equals("poke.effectList")) || (paramInt1 != 0)) {
-        break label107;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.PokePanel", 2, "download vas poke list, refresh now.");
-      }
-      paramString1 = paramVasQuickUpdateManager.app;
-      ThreadManager.getUIHandler().post(new PokePanel.3.1(this, paramString1));
-      paramString1 = "";
-      paramString2 = "";
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(paramString2)) {
-        ThreadManager.getUIHandler().post(new PokePanel.3.2(this, paramString2, paramString1, bool1));
-      }
-      return;
-      label107:
-      if (paramString1.startsWith("poke.item.effect."))
-      {
-        paramString1 = paramString1.substring("poke.item.effect.".length(), paramString1.length());
-        if (paramInt1 != 0) {}
-        for (;;)
-        {
-          paramString2 = "poke.item.effect.";
-          break;
-          bool1 = false;
-        }
-      }
-      if (paramString1.startsWith("poke.item.res."))
-      {
-        paramString1 = paramString1.substring("poke.item.res.".length(), paramString1.length());
-        if (paramInt1 != 0) {}
-        for (bool1 = bool3;; bool1 = false)
-        {
-          paramString2 = "poke.item.res.";
-          break;
-        }
-      }
-      paramString1 = "";
-      paramString2 = "";
-      bool1 = bool2;
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: aload_0
+    //   2: getfield 17	acnm:jdField_a_of_type_AndroidViewAnimationTranslateAnimation	Landroid/view/animation/TranslateAnimation;
+    //   5: if_acmpne +49 -> 54
+    //   8: aload_0
+    //   9: getfield 15	acnm:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   12: getfield 34	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidAppDialog	Landroid/app/Dialog;
+    //   15: astore_1
+    //   16: aload_1
+    //   17: ifnull +91 -> 108
+    //   20: aload_0
+    //   21: getfield 15	acnm:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   24: getfield 34	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidAppDialog	Landroid/app/Dialog;
+    //   27: invokevirtual 39	android/app/Dialog:show	()V
+    //   30: aload_0
+    //   31: getfield 15	acnm:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   34: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   37: aconst_null
+    //   38: invokevirtual 47	android/widget/LinearLayout:setAnimation	(Landroid/view/animation/Animation;)V
+    //   41: aload_0
+    //   42: getfield 15	acnm:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   45: getfield 50	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidViewView	Landroid/view/View;
+    //   48: bipush 8
+    //   50: invokevirtual 56	android/view/View:setVisibility	(I)V
+    //   53: return
+    //   54: aload_1
+    //   55: aload_0
+    //   56: getfield 19	acnm:b	Landroid/view/animation/TranslateAnimation;
+    //   59: if_acmpne +49 -> 108
+    //   62: aload_0
+    //   63: getfield 15	acnm:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   66: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   69: aconst_null
+    //   70: invokevirtual 47	android/widget/LinearLayout:setAnimation	(Landroid/view/animation/Animation;)V
+    //   73: aload_0
+    //   74: getfield 15	acnm:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   77: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   80: aload_0
+    //   81: getfield 21	acnm:jdField_a_of_type_Int	I
+    //   84: invokevirtual 59	android/widget/LinearLayout:offsetTopAndBottom	(I)V
+    //   87: aload_0
+    //   88: getfield 15	acnm:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   91: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   94: invokevirtual 62	android/widget/LinearLayout:requestLayout	()V
+    //   97: return
+    //   98: astore_1
+    //   99: aload_1
+    //   100: invokevirtual 65	java/lang/Exception:printStackTrace	()V
+    //   103: return
+    //   104: astore_1
+    //   105: goto -75 -> 30
+    //   108: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	109	0	this	acnm
+    //   0	109	1	paramAnimation	Animation
+    // Exception table:
+    //   from	to	target	type
+    //   0	16	98	java/lang/Exception
+    //   30	53	98	java/lang/Exception
+    //   54	97	98	java/lang/Exception
+    //   20	30	104	java/lang/Exception
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acnm
  * JD-Core Version:    0.7.0.1
  */

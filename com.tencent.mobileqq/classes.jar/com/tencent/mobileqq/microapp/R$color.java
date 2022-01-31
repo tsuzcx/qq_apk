@@ -2,8 +2,8 @@ package com.tencent.mobileqq.microapp;
 
 public final class R$color
 {
-  public static int a = 2131099812;
-  public static int b = 2131101491;
+  public static int a = 2131165349;
+  public static int b = 2131167087;
 }
 
 

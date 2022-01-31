@@ -8,8 +8,8 @@ import android.graphics.Paint.Style;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import axkk;
-import fg;
+import aykp;
+import gz;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -78,10 +78,10 @@ public class ETDecoration
       paramArrayOfObject.setTextSize(paramFloat4);
       paramArrayOfObject.setColor(paramInt2);
       paramArrayOfObject.setAlpha((int)(255.0F * paramFloat5));
-      if (!(paramMatrix instanceof axkk)) {
+      if (!(paramMatrix instanceof aykp)) {
         break label114;
       }
-      paramArrayOfObject = (axkk)paramMatrix;
+      paramArrayOfObject = (aykp)paramMatrix;
       paramInt1 = (int)paramFloat3 + paramArrayOfObject.a().getBounds().height();
       paramArrayOfObject.draw(paramCanvas, null, 0, 0, paramFloat2, 0, paramInt1, paramInt1, null);
     }
@@ -90,9 +90,9 @@ public class ETDecoration
       paramCanvas.restore();
       return;
       label114:
-      if ((paramMatrix instanceof fg))
+      if ((paramMatrix instanceof gz))
       {
-        paramMatrix = (fg)paramMatrix;
+        paramMatrix = (gz)paramMatrix;
         paramMatrix.draw(paramCanvas, null, 0, 0, paramFloat2, 0, 0, (int)(paramMatrix.getDrawable().getBounds().height() + paramFloat3), paramArrayOfObject);
       }
     }

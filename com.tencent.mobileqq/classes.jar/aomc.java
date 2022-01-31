@@ -1,43 +1,35 @@
-import java.io.FileOutputStream;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
 
 public class aomc
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = -1;
-  long jdField_a_of_type_Long = -1L;
-  aojs jdField_a_of_type_Aojs;
-  aomd jdField_a_of_type_Aomd;
-  bakw jdField_a_of_type_Bakw;
-  FileOutputStream jdField_a_of_type_JavaIoFileOutputStream = null;
-  String jdField_a_of_type_JavaLangString;
-  short jdField_a_of_type_Short = 0;
-  boolean jdField_a_of_type_Boolean = false;
-  int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long = 0L;
-  bakw jdField_b_of_type_Bakw;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int = 0;
-  long jdField_c_of_type_Long = 0L;
-  String jdField_c_of_type_JavaLangString;
-  int jdField_d_of_type_Int = 0;
-  long jdField_d_of_type_Long = 0L;
-  String jdField_d_of_type_JavaLangString;
-  long jdField_e_of_type_Long;
-  String jdField_e_of_type_JavaLangString;
+  public aomc(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
   
-  public aomc()
+  public void onClick(View paramView)
   {
-    this.e = 0L;
-  }
-  
-  public String toString()
-  {
-    return null;
+    if (bbev.d(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity))
+    {
+      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.d();
+      paramView = Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).obtainMessage();
+      paramView.what = 2;
+      paramView.arg1 = 2;
+      paramView.obj = this.jdField_a_of_type_JavaLangString;
+      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).sendMessage(paramView);
+      axqw.b(null, "CliOper", "", "", "0X80050EF", "0X80050EF", 2, 0, "", "", "", "");
+      return;
+    }
+    paramView = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getResources().getString(2131692271);
+    bcpw.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 0, paramView, 0).b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aomc
  * JD-Core Version:    0.7.0.1
  */

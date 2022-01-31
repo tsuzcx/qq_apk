@@ -1,32 +1,130 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 
-class uav
+public class uav
 {
-  public TextView a;
-  public StoryPickerHorizontalListView a;
+  private ErrorMessage a;
+  @NonNull
+  public final String a;
+  public tfi a;
+  public final String b;
+  private String c;
   
-  public uav(uau paramuau, View paramView, uat paramuat)
+  public uav(@NonNull String paramString1, @NonNull String paramString2)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131299361));
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView = ((StoryPickerHorizontalListView)paramView.findViewById(2131301993));
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setSelection(0);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setOnHorizontalScrollListener(paramuat);
-    paramView = (uan)this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.a();
-    paramView.a(paramuau.jdField_a_of_type_Uas);
-    paramView.a(paramuau.jdField_a_of_type_Uar);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  public void a(int paramInt, VideoCollectionItem paramVideoCollectionItem)
+  public static uav a(String paramString1, String paramString2, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setData(paramVideoCollectionItem.collectionVideoUIItemList, paramVideoCollectionItem.collectionId);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setTag(Integer.valueOf(paramInt));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(vlf.b(paramVideoCollectionItem.collectionTime));
-    this.jdField_a_of_type_Uau.jdField_a_of_type_JavaUtilHashMap.put(paramVideoCollectionItem.collectionId, new WeakReference(this));
+    if (paramString1 != null) {
+      if (paramString2 == null) {
+        break label31;
+      }
+    }
+    for (;;)
+    {
+      paramString1 = new uav(paramString1, paramString2);
+      paramString1.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      return paramString1;
+      paramString1 = "ERROR_NO_VID";
+      break;
+      label31:
+      paramString2 = "ERROR_NO_FEED";
+    }
+  }
+  
+  public static uav a(String paramString1, String paramString2, String paramString3)
+  {
+    if (paramString1 != null) {
+      if (paramString2 == null) {
+        break label31;
+      }
+    }
+    for (;;)
+    {
+      paramString1 = new uav(paramString1, paramString2);
+      paramString1.c = paramString3;
+      return paramString1;
+      paramString1 = "LOADING_NO_VID";
+      break;
+      label31:
+      paramString2 = "LOADING_NO_FEED";
+    }
+  }
+  
+  public ErrorMessage a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
+  }
+  
+  public StoryVideoItem a()
+  {
+    return ((tcz)tdc.a(5)).b(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public VideoListFeedItem a()
+  {
+    if (TextUtils.isEmpty(this.b)) {
+      return null;
+    }
+    FeedItem localFeedItem = ((uwa)tdc.a(11)).a(this.b, true);
+    if (localFeedItem == null) {
+      return null;
+    }
+    if ((localFeedItem instanceof VideoListFeedItem)) {
+      return (VideoListFeedItem)localFeedItem;
+    }
+    return null;
+  }
+  
+  public boolean a()
+  {
+    return this.c != null;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null;
+  }
+  
+  public boolean c()
+  {
+    return (!a()) && (!b());
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = localStringBuilder1.append("VideoData{").append("msgTabNodeType=");
+    int i;
+    if (this.jdField_a_of_type_Tfi == null)
+    {
+      i = 0;
+      localStringBuilder2.append(i).append(",");
+      if (!a()) {
+        break label89;
+      }
+      localStringBuilder1.append("loadingMessage='").append(this.c).append('\'');
+    }
+    for (;;)
+    {
+      localStringBuilder1.append("}");
+      return localStringBuilder1.toString();
+      i = this.jdField_a_of_type_Tfi.a;
+      break;
+      label89:
+      if (b()) {
+        localStringBuilder1.append("errorMessage=").append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+      } else {
+        localStringBuilder1.append("vid='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", feedId='").append(this.b).append('\'');
+      }
+    }
   }
 }
 

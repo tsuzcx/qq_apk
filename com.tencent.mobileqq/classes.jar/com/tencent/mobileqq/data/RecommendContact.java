@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class RecommendContact
-  extends atmo
+  extends aukm
 {
   public String contactName;
   public boolean isRead;
-  @atoc
+  @auma
   public String key;
   public String mobileCode;
   public String mobileNo;

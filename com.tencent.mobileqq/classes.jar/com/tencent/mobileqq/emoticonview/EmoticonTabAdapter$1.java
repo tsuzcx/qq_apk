@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emoticonview;
 
-import anja;
-import anjb;
-import arnz;
+import anzj;
+import anzk;
+import askd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
@@ -10,19 +10,19 @@ import com.tencent.qphone.base.util.QLog;
 public class EmoticonTabAdapter$1
   implements Runnable
 {
-  public EmoticonTabAdapter$1(anja paramanja, anjb paramanjb) {}
+  public EmoticonTabAdapter$1(anzj paramanzj, anzk paramanzk) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.w("EmoticonTabAdapter", 2, "package lossY");
     }
-    arnz localarnz = (arnz)this.this$0.a.getManager(14);
-    EmoticonPackage localEmoticonPackage = localarnz.a(this.a.a);
+    askd localaskd = (askd)this.this$0.a.getManager(14);
+    EmoticonPackage localEmoticonPackage = localaskd.a(this.a.a);
     if (localEmoticonPackage != null)
     {
       localEmoticonPackage.status = 0;
-      localarnz.a(localEmoticonPackage);
+      localaskd.a(localEmoticonPackage);
     }
   }
 }

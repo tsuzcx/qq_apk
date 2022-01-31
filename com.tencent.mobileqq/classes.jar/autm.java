@@ -1,113 +1,34 @@
-import android.opengl.GLSurfaceView;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.ttpic.openapi.filter.GLGestureListener;
-import dov.com.qq.im.AECamera.View.AECameraGLSurfaceView;
-import java.math.BigDecimal;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class autm
-  implements GLGestureListener
+  extends BroadcastReceiver
 {
-  public float a;
-  public GLSurfaceView a;
-  private float b;
-  private float c;
+  public autm(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
   
-  public autm(GLSurfaceView paramGLSurfaceView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
-  }
-  
-  public int onGetPriority()
-  {
-    return 0;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    int i = paramMotionEvent.getPointerCount();
-    int j = paramMotionEvent.getAction() & 0xFF;
-    if ((j != 3) || ((i == 1) && (paramBoolean))) {
-      switch (j)
-      {
-      }
-    }
-    float f4;
-    float f2;
-    float f3;
-    for (;;)
+    if ((paramIntent != null) && (paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.card.modify_personality_label")))
     {
-      return false;
-      this.c = this.jdField_a_of_type_Float;
-      continue;
-      if (paramMotionEvent.getY() >= this.jdField_a_of_type_Float)
+      if (QLog.isColorLevel()) {
+        QLog.i("PersonalityLabelGalleryActivity", 2, "receive broadcast modify pl info");
+      }
+      paramContext = paramIntent.getBundleExtra("key_bundle_data");
+      if ((paramContext != null) && (paramContext.getBoolean("onTagChanged")))
       {
-        this.c = this.jdField_a_of_type_Float;
-      }
-      else
-      {
-        i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
-        if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null))
-        {
-          if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof CameraCaptureView)) {
-            ((CameraCaptureView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
-          }
-          for (;;)
-          {
-            this.c = paramMotionEvent.getY();
-            break;
-            if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof AECameraGLSurfaceView)) {
-              ((AECameraGLSurfaceView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
-            }
-          }
-          if ((i == 2) && (!paramBoolean))
-          {
-            urk.a("CameraZoomGesture", "onTouchEvent %s", new Object[] { paramMotionEvent });
-            if (i != 2) {
-              break;
-            }
-            f4 = paramMotionEvent.getX(0);
-            f2 = paramMotionEvent.getY(0);
-            f3 = paramMotionEvent.getX(1);
-            f1 = paramMotionEvent.getY(1);
-            label254:
-            switch (j)
-            {
-            }
-          }
-        }
-      }
-    }
-    float f1 = uwv.a(f4, f2, f3, f1);
-    i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
-    if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null))
-    {
-      if (!(this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof CameraCaptureView)) {
-        break label421;
-      }
-      ((CameraCaptureView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
-    }
-    for (;;)
-    {
-      this.b = f1;
-      return true;
-      f4 = paramMotionEvent.getX(1);
-      f2 = paramMotionEvent.getY(1);
-      f3 = paramMotionEvent.getX(2);
-      f1 = paramMotionEvent.getY(2);
-      break label254;
-      this.b = uwv.a(f4, f2, f3, f1);
-      break;
-      label421:
-      if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof AECameraGLSurfaceView)) {
-        ((AECameraGLSurfaceView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
+        this.a.a = true;
+        PersonalityLabelGalleryActivity.a(this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     autm
  * JD-Core Version:    0.7.0.1
  */

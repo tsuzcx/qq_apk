@@ -1,11 +1,11 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.os.Message;
-import bigb;
-import bihz;
+import bjww;
+import bjyu;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import urk;
+import veg;
 
 class HWEditLocalVideoPlayer$2$1
   implements Runnable
@@ -16,17 +16,17 @@ class HWEditLocalVideoPlayer$2$1
   {
     if (this.a.this$0.jdField_a_of_type_JavaUtilList.size() > 0)
     {
-      bihz localbihz = (bihz)this.a.this$0.jdField_a_of_type_JavaUtilList.get(0);
-      HWEditLocalVideoPlayer.a(this.a.this$0, localbihz);
+      bjyu localbjyu = (bjyu)this.a.this$0.jdField_a_of_type_JavaUtilList.get(0);
+      HWEditLocalVideoPlayer.a(this.a.this$0, localbjyu);
     }
     for (;;)
     {
-      this.a.this$0.jdField_a_of_type_Bigb.a(Message.obtain(null, 8));
+      this.a.this$0.jdField_a_of_type_Bjww.a(Message.obtain(null, 8));
       HWEditLocalVideoPlayer.a(this.a.this$0, this.a.this$0.jdField_a_of_type_Int);
       HWEditLocalVideoPlayer.a(this.a.this$0).set(true);
-      this.a.this$0.jdField_a_of_type_Bigb.e(true);
+      this.a.this$0.jdField_a_of_type_Bjww.e(true);
       return;
-      urk.e("Q.qqstory.record.HWEditLocalVideoPlayer", "mFragmentInfos is empty");
+      veg.e("Q.qqstory.record.HWEditLocalVideoPlayer", "mFragmentInfos is empty");
     }
   }
 }

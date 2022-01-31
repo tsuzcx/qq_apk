@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo.widget;
 
 import android.os.Handler;
-import awnk;
+import axmj;
 
 class TCProgressBar$TimerRefresh
   implements Runnable
@@ -10,19 +10,19 @@ class TCProgressBar$TimerRefresh
   
   public void run()
   {
-    awnk localawnk;
+    axmj localaxmj;
     if (this.this$0.jdField_a_of_type_Int == 3)
     {
       this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(new TimerRefresh(this.this$0), this.this$0.d);
-      localawnk = this.this$0.jdField_a_of_type_Awnk;
-      if (this.this$0.jdField_a_of_type_Awnk.e) {
+      localaxmj = this.this$0.jdField_a_of_type_Axmj;
+      if (this.this$0.jdField_a_of_type_Axmj.e) {
         break label77;
       }
     }
     label77:
     for (boolean bool = true;; bool = false)
     {
-      localawnk.e = bool;
+      localaxmj.e = bool;
       this.this$0.invalidate();
       return;
     }

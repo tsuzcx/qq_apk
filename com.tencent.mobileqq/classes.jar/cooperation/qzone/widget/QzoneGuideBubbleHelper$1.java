@@ -1,11 +1,11 @@
 package cooperation.qzone.widget;
 
-import bglt;
+import bhuo;
 
 public class QzoneGuideBubbleHelper$1
   implements Runnable
 {
-  public QzoneGuideBubbleHelper$1(bglt parambglt) {}
+  public QzoneGuideBubbleHelper$1(bhuo parambhuo) {}
   
   public void run()
   {

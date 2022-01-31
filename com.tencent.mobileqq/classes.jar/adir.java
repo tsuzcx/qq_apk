@@ -1,13 +1,27 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import java.util.List;
 
 class adir
-  extends acju
+  implements bfoq
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  adir(adiq paramadiq, List paramList, bfol parambfol) {}
   
-  adir(adin paramadin) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      adiq.a(this.jdField_a_of_type_Adiq, this.jdField_a_of_type_JavaUtilList);
+      adgb.a(adiq.a(this.jdField_a_of_type_Adiq), this.jdField_a_of_type_JavaUtilList, 3);
+      continue;
+      this.jdField_a_of_type_Adiq.a(this.jdField_a_of_type_JavaUtilList, 0);
+      adgb.a(adiq.a(this.jdField_a_of_type_Adiq), this.jdField_a_of_type_JavaUtilList, 3);
+    }
+  }
 }
 
 

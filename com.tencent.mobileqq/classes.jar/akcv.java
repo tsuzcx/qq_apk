@@ -1,153 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.dataline.activities.PrinterActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.mobileim.structmsg.structmsg.RspHead;
-import tencent.mobileim.structmsg.structmsg.RspNextSystemMsg;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 class akcv
-  implements axta
+  implements aptu
 {
-  akcv(akcl paramakcl) {}
+  akcv(akct paramakct, BaseActivity paramBaseActivity, String paramString) {}
   
-  public void a(axtc paramaxtc, axtb paramaxtb)
+  public void a()
   {
-    if (paramaxtc.a.getResultCode() != 1000)
-    {
-      this.a.a(4006, false, null);
-      return;
-    }
-    Object localObject1;
-    int i;
-    for (;;)
-    {
-      structmsg.RspNextSystemMsg localRspNextSystemMsg;
-      Object localObject2;
-      Object localObject3;
-      MessageForSystemMsg localMessageForSystemMsg;
-      try
-      {
-        localObject1 = (ajjj)this.a.a.getManager(51);
-        paramaxtb = this.a.a.getAccount();
-        localRspNextSystemMsg = new structmsg.RspNextSystemMsg();
-        localRspNextSystemMsg.mergeFrom((byte[])paramaxtc.a.getWupBuffer());
-        new StringBuilder();
-        if ((localRspNextSystemMsg == null) || (localRspNextSystemMsg.head.result.get() != 0)) {
-          this.a.a(4006, false, null);
-        }
-        paramaxtc = new ArrayList();
-        localObject2 = localRspNextSystemMsg.msgs.get();
-        j = ((List)localObject2).size();
-        if (!QLog.isColorLevel()) {
-          break label859;
-        }
-        QLog.e("Q.systemmsg.", 2, "<---sendGetNextFriendSystemMsg Resp : decode pb size = " + j);
-      }
-      catch (Exception paramaxtc)
-      {
-        int j;
-        long l3;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.systemmsg.", 2, "clearFriendSystemMsgResp exception", paramaxtc);
-        this.a.a(4006, false, null);
-        return;
-      }
-      if (i < j)
-      {
-        localObject3 = awbi.a(-2018);
-        ((MessageRecord)localObject3).msgtype = -2018;
-        ((MessageRecord)localObject3).selfuin = paramaxtb;
-        ((MessageRecord)localObject3).frienduin = ajed.M;
-        ((MessageRecord)localObject3).senderuin = (((structmsg.StructMsg)((List)localObject2).get(i)).req_uin.get() + "");
-        ((MessageRecord)localObject3).istroop = 0;
-        ((MessageRecord)localObject3).time = ((structmsg.StructMsg)((List)localObject2).get(i)).msg_time.get();
-        ((MessageRecord)localObject3).isread = true;
-        localMessageForSystemMsg = (MessageForSystemMsg)localObject3;
-        localMessageForSystemMsg.structMsg = ((structmsg.StructMsg)((structmsg.StructMsg)((List)localObject2).get(i)).get());
-        ((MessageRecord)localObject3).msgData = localMessageForSystemMsg.structMsg.toByteArray();
-        localMessageForSystemMsg.parse();
-        paramaxtc.add(localMessageForSystemMsg);
-        i += 1;
-      }
-      else if (paramaxtc.size() > 0)
-      {
-        i = paramaxtc.size();
-        long l1 = ((MessageRecord)paramaxtc.get(0)).time;
-        long l2 = ((MessageRecord)paramaxtc.get(i - 1)).time;
-        l3 = axcy.a().a(this.a.a);
-        localObject2 = this.a.a.a().a(ajed.M, 0, l3).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (ChatMessage)((Iterator)localObject2).next();
-          if ((((ChatMessage)localObject3).time >= l2) && (((ChatMessage)localObject3).time <= l1))
-          {
-            this.a.a.a().b(ajed.M, 0, ((ChatMessage)localObject3).uniseq, false);
-            ((Iterator)localObject2).remove();
-          }
-          else if ((localObject3 instanceof MessageForSystemMsg))
-          {
-            localMessageForSystemMsg = (MessageForSystemMsg)localObject3;
-            if (localMessageForSystemMsg.structMsg == null) {
-              localMessageForSystemMsg.parse();
-            }
-            String str = localMessageForSystemMsg.senderuin;
-            if ((localMessageForSystemMsg.structMsg.msg.sub_type.get() == 13) && (((ajjj)localObject1).b(str)))
-            {
-              this.a.a.a().b(ajed.M, 0, ((ChatMessage)localObject3).uniseq, false);
-              ((Iterator)localObject2).remove();
-            }
-          }
-        }
-        axcy.a().a(this.a.a, l2);
-        if (paramaxtc.size() < 20) {
-          axcy.a().a(true, this.a.a);
-        }
-        l2 = localRspNextSystemMsg.following_friend_seq.get();
-        l1 = l2;
-        if (l2 <= 0L) {
-          l1 = this.a.a.a().e("following_friend_seq_47");
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.systemmsg.", 2, "<---sendGetNextFriendSystemMsg : decode pb following_friend_seq" + l1);
-        }
-        this.a.a.a().e("following_friend_seq_47", l1);
-        localObject1 = this.a.a.a();
-        paramaxtb = String.valueOf(paramaxtb);
-        if ((!ajml.a(paramaxtc)) || (!this.a.a.isBackground_Stop)) {
-          break label864;
-        }
-      }
-    }
-    label859:
-    label864:
-    for (boolean bool = true;; bool = false)
-    {
-      ((QQMessageFacade)localObject1).a(paramaxtc, paramaxtb, bool);
-      this.a.a("handleGetSystemMsgResp", true, paramaxtc.size(), false, false);
-      for (;;)
-      {
-        this.a.a(4005, true, null);
-        return;
-        axcy.a().a(true, this.a.a);
-      }
-      i = 0;
-      break;
-    }
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, PrinterActivity.class);
+    localIntent.putExtra(bbbi.h, 55);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.jdField_a_of_type_JavaLangString);
+    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
+    axqw.b(this.jdField_a_of_type_Akct.a, "CliOper", "", "", "0X8004059", "0X8004059", 0, 0, "", "", "", "");
   }
+  
+  public void b() {}
 }
 
 

@@ -1,26 +1,35 @@
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 class tqp
-  implements tqk
+  extends tpm
 {
-  public tqk a;
-  
-  private tqp(tqm paramtqm) {}
-  
-  public boolean a(tqg paramtqg, int paramInt, Object paramObject)
+  tqp(tqk paramtqk, StoryVideoItem paramStoryVideoItem)
   {
-    if (tqm.a(this.jdField_a_of_type_Tqm) != null)
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    Object localObject = (String)a("result");
+    try
     {
-      if (paramInt != 2) {
-        break label54;
+      localObject = new URI((String)localObject);
+      if ("file".equals(((URI)localObject).getScheme()))
+      {
+        localObject = new File((URI)localObject);
+        if (((File)localObject).exists())
+        {
+          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
+          return true;
+        }
       }
-      tqm.a(this.jdField_a_of_type_Tqm).c(tqm.a(this.jdField_a_of_type_Tqm));
     }
-    while (this.jdField_a_of_type_Tqk != null)
+    catch (URISyntaxException localURISyntaxException)
     {
-      return this.jdField_a_of_type_Tqk.a(paramtqg, paramInt, paramObject);
-      label54:
-      if (paramInt == 3) {
-        tqm.a(this.jdField_a_of_type_Tqm).b(tqm.a(this.jdField_a_of_type_Tqm));
-      }
+      veg.c(this.b, "Error: 评分投票失败", localURISyntaxException);
     }
     return false;
   }

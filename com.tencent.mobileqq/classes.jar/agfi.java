@@ -1,26 +1,43 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
+import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
-import com.tencent.mobileqq.data.QQAlbumInfo;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.activity.history.tendoc.TenDocMessageResultAdapter;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
 
-public class agfi
-  implements behi
+class agfi
+  implements bfpc
 {
-  private agfi(AlbumListFragment paramAlbumListFragment) {}
+  agfi(agfg paramagfg) {}
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = this.a.jdField_a_of_type_Agfp.a(paramInt);
-    paramView = this.a.getActivity().getIntent();
-    if ((paramAdapterView == null) || (paramAdapterView.mMediaFileCount <= 0) || (TextUtils.isEmpty(paramAdapterView.name)))
-    {
-      bbmy.a(this.a.getActivity(), 2131624466, 0).a();
+    if (QLog.isColorLevel()) {
+      QLog.i("TenDocMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
+    }
+    if ((agfg.a(this.a).getCount() <= 0) || (paramInt <= 0)) {
       return;
     }
-    this.a.jdField_a_of_type_Agfk.a(paramAdapterView, paramInt, paramView);
-    this.a.jdField_a_of_type_Agfj.a(paramAdapterView, paramInt, paramView);
+    paramAdapterView = (ager)agfg.a(this.a).getItem(paramInt - 1);
+    if ((paramAdapterView != null) && (paramAdapterView.a != null))
+    {
+      paramAdapterView = paramAdapterView.a;
+      QLog.d("TenDocMessageSearchDialog", 4, "jump to mr: " + paramAdapterView.msgseq + " " + paramAdapterView.shmsgseq);
+      if (akpv.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)) {
+        ChatHistoryBubbleListForTroopFragment.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramAdapterView.shmsgseq, 0, 2);
+      }
+      for (;;)
+      {
+        axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A175", "0X800A175", agfg.a(this.a), 0, "", "", "s_qq_history_tab", "");
+        this.a.a(true);
+        return;
+        ChatHistoryActivity.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.h, paramAdapterView.time, paramAdapterView.shmsgseq, 0);
+      }
+    }
+    QLog.e("TenDocMessageSearchDialog", 2, "null item: " + paramInt);
   }
 }
 

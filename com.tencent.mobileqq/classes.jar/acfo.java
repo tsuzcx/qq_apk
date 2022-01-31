@@ -1,83 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.activity.ThemeNoviceGuideActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.qphone.base.util.QLog;
 
 public class acfo
-  extends asfx
+  extends Handler
 {
-  public acfo(VisitorsActivity paramVisitorsActivity) {}
-  
-  protected void a(boolean paramBoolean, String paramString)
+  public acfo(ThemeNoviceGuideActivity paramThemeNoviceGuideActivity, Looper paramLooper)
   {
-    if ((paramBoolean) && (TextUtils.equals("0", paramString)))
-    {
-      if (this.a.jdField_a_of_type_Acgg != null) {
-        this.a.jdField_a_of_type_Acgg.notifyDataSetChanged();
-      }
-      if (this.a.b != null) {
-        this.a.b.notifyDataSetChanged();
-      }
-    }
+    super(paramLooper);
   }
   
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    if (!paramString1.equals(this.a.app.getCurrentAccountUin())) {}
-    do
+    paramMessage = this.a.findViewById(2131377230);
+    if (paramMessage != null) {}
+    try
     {
+      paramMessage.setBackgroundResource(2130849455);
+      axqw.b(this.a.app, "CliOper", "", this.a.app.getCurrentAccountUin(), "theme_mall", "theme_popup", 0, 0, "", "", "", "");
       return;
-      if (paramInt2 == 1)
-      {
-        if (!paramBoolean)
-        {
-          this.a.jdField_a_of_type_Aubu.b(paramString2, paramInt1, false);
-          return;
-        }
-        this.a.jdField_a_of_type_Aubu.a(paramString2, paramInt1, false);
-        return;
-      }
-    } while (paramInt2 != 0);
-    this.a.jdField_a_of_type_Aubu.a(Long.parseLong(paramString2));
-  }
-  
-  protected void a(boolean paramBoolean, ArrayList<asej> paramArrayList, int paramInt)
-  {
-    if ((paramBoolean) && (paramArrayList != null)) {}
-    for (;;)
+    }
+    catch (OutOfMemoryError paramMessage)
     {
-      asej localasej;
-      try
+      for (;;)
       {
-        if (paramArrayList.size() > 0)
-        {
-          paramArrayList = paramArrayList.iterator();
-          if (paramArrayList.hasNext())
-          {
-            localasej = (asej)paramArrayList.next();
-            if (paramInt != 511) {
-              break label121;
-            }
-            if (localasej.jdField_a_of_type_Int != 0) {
-              continue;
-            }
-            aubu localaubu = this.a.jdField_a_of_type_Aubu;
-            String str = localasej.jdField_a_of_type_Long + "";
-            int i = localasej.b;
-            localaubu.a(str, localasej.c + i, false);
-            continue;
-          }
-        }
-        return;
-      }
-      catch (Exception paramArrayList)
-      {
-        paramArrayList.printStackTrace();
-      }
-      label121:
-      if (localasej.jdField_a_of_type_Int == 0) {
-        this.a.jdField_a_of_type_Aubu.a(localasej.jdField_a_of_type_Long);
+        QLog.e("ThemeNoviceGuideActivity", 1, "handleMessage oom e = " + paramMessage);
       }
     }
   }

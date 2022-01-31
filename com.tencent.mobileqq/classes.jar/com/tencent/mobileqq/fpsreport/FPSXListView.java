@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.fpsreport;
 
+import aaad;
+import aaai;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import com.tencent.widget.XListView;
-import zqk;
-import zqp;
 
 public class FPSXListView
   extends XListView
 {
   private int jdField_a_of_type_Int;
+  private aaai jdField_a_of_type_Aaai;
   private String jdField_a_of_type_JavaLangString;
-  private zqp jdField_a_of_type_Zqp;
   private boolean jdField_a_of_type_Boolean = true;
   
   public FPSXListView(Context paramContext)
@@ -32,8 +32,8 @@ public class FPSXListView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Zqp != null) {
-      this.jdField_a_of_type_Zqp.a();
+    if (this.jdField_a_of_type_Aaai != null) {
+      this.jdField_a_of_type_Aaai.a();
     }
   }
   
@@ -45,41 +45,41 @@ public class FPSXListView
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Zqp != null)) {
-      this.jdField_a_of_type_Zqp.b();
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aaai != null)) {
+      this.jdField_a_of_type_Aaai.b();
     }
   }
   
   public void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    if (this.jdField_a_of_type_Zqp != null) {
-      this.jdField_a_of_type_Zqp.a(paramInt);
+    if (this.jdField_a_of_type_Aaai != null) {
+      this.jdField_a_of_type_Aaai.a(paramInt);
     }
     if (this.jdField_a_of_type_Int == 1) {
       if (paramInt == 0) {
-        zqk.a().a("list_leba_new", false);
+        aaad.a().a("list_leba_new", false);
       }
     }
     while (this.jdField_a_of_type_Int != 2)
     {
       return;
-      zqk.a().a("list_leba_new");
+      aaad.a().a("list_leba_new");
       return;
     }
     if (paramInt == 0)
     {
-      zqk.a().a("list_leba", false);
+      aaad.a().a("list_leba", false);
       return;
     }
-    zqk.a().a("list_leba");
+    aaad.a().a("list_leba");
   }
   
   public void setActTAG(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Zqp = new zqp();
-    this.jdField_a_of_type_Zqp.a(paramString);
+    this.jdField_a_of_type_Aaai = new aaai();
+    this.jdField_a_of_type_Aaai.a(paramString);
   }
   
   public void setReportType(int paramInt)

@@ -1,20 +1,47 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class afmy
-  implements apad
+public class afmy
+  extends baiy
 {
-  afmy(afmx paramafmx) {}
+  public afmy(NotificationView paramNotificationView) {}
   
-  public void a(int paramInt1, int paramInt2)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramInt1 == 3) && (paramInt2 == 0)) {
-      awqx.b(this.a.a.a, "dc00898", "", "", "0X800A0BE", "0X800A0BE", 3, 0, "", "", "", "");
+    if ((paramBoolean) && (paramBundle != null)) {}
+    while (this.a.jdField_a_of_type_Bcpq == null) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("structMsg");
+        structmsg.StructMsg localStructMsg = new structmsg.StructMsg();
+        localStructMsg.mergeFrom(paramBundle);
+        NotificationView.a(this.a, 1, localStructMsg);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        do
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("NotificationView", 2, "structMsg merge error");
+          }
+        } while (this.a.jdField_a_of_type_Bcpq == null);
+        this.a.jdField_a_of_type_Bcpq.dismiss();
+        bcpw.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131697633), 0).b(this.a.a());
+        return;
+      }
     }
+    this.a.jdField_a_of_type_Bcpq.dismiss();
+    bcpw.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131697633), 0).b(this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afmy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity.13.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-public class nsk
-  extends ajjh
+class nsk
+  implements View.OnClickListener
 {
-  public nsk(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  nsk(nsf paramnsf) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverBiuActivity", 2, "current uin = " + paramString + " is success " + paramBoolean);
+    QLog.i("DailyHeaderViewController", 1, "[onClick] clickToGrantPermission");
+    paramView = (BaseActivity)paramView.getContext();
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      if (paramView.shouldShowRequestPermissionRationale("android.permission.ACCESS_FINE_LOCATION"))
+      {
+        nsf.a(this.a, true);
+        return;
+      }
+      paramView.requestPermissions(new nsl(this, paramView), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      return;
     }
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().post(new ReadInJoyDeliverBiuActivity.13.1(this));
-    }
+    nsf.a(this.a, 5);
   }
 }
 

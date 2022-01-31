@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.transfile;
 
-import axro;
-import axst;
-import axub;
-import bakw;
+import ayrv;
+import ayta;
+import ayui;
+import bbmg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -11,31 +11,31 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class OldHttpEngine$OldHttpCommunicatorListner$2
   extends TimerTask
 {
-  public OldHttpEngine$OldHttpCommunicatorListner$2(axst paramaxst, axro paramaxro) {}
+  public OldHttpEngine$OldHttpCommunicatorListner$2(ayta paramayta, ayrv paramayrv) {}
   
   public void run()
   {
     boolean bool = true;
     int i;
-    if ((QLog.isColorLevel()) && (this.jdField_a_of_type_Axro != null))
+    if ((QLog.isColorLevel()) && (this.jdField_a_of_type_Ayrv != null))
     {
-      i = this.jdField_a_of_type_Axro.g;
-      if (this.jdField_a_of_type_Axro.a != 1) {
+      i = this.jdField_a_of_type_Ayrv.g;
+      if (this.jdField_a_of_type_Ayrv.a != 1) {
         break label94;
       }
     }
     for (;;)
     {
-      axub.a(i, bool, this.jdField_a_of_type_Axro.f, this.jdField_a_of_type_Axro.e, "scheduleRetry", "mIsCancelled:" + this.jdField_a_of_type_Axst.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
-      if (!this.jdField_a_of_type_Axst.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      ayui.a(i, bool, this.jdField_a_of_type_Ayrv.f, this.jdField_a_of_type_Ayrv.e, "scheduleRetry", "mIsCancelled:" + this.jdField_a_of_type_Ayta.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+      if (!this.jdField_a_of_type_Ayta.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
         break;
       }
       return;
       label94:
       bool = false;
     }
-    this.jdField_a_of_type_Axst.jdField_a_of_type_Bakw.a(9004, -1, "nonetwork");
-    this.jdField_a_of_type_Axst.b(this.jdField_a_of_type_Axst.jdField_a_of_type_Bakw, this.jdField_a_of_type_Axst.jdField_a_of_type_Bakw);
+    this.jdField_a_of_type_Ayta.jdField_a_of_type_Bbmg.a(9004, -1, "nonetwork");
+    this.jdField_a_of_type_Ayta.b(this.jdField_a_of_type_Ayta.jdField_a_of_type_Bbmg, this.jdField_a_of_type_Ayta.jdField_a_of_type_Bbmg);
   }
 }
 

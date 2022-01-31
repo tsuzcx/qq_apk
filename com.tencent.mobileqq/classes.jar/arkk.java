@@ -1,30 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.DialogInterface.OnClickListener;
 
 class arkk
-  extends Handler
 {
-  arkk(arkj paramarkj, Looper paramLooper, arki paramarki)
-  {
-    super(paramLooper);
-  }
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void handleMessage(Message paramMessage)
+  public arkk(arkh paramarkh, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    synchronized (arki.a(this.jdField_a_of_type_Arkj.jdField_a_of_type_Arki))
-    {
-      arkm localarkm = arki.a(this.jdField_a_of_type_Arkj.jdField_a_of_type_Arki, (String)paramMessage.obj);
-      if (localarkm != null) {
-        localarkm.a(paramMessage.what);
-      }
-      return;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arkk
  * JD-Core Version:    0.7.0.1
  */

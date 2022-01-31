@@ -1,15 +1,16 @@
-public class axrp
+import android.content.Context;
+
+class axrp
+  extends axrl
 {
-  public byte[] a = new byte[16];
-  
-  axrp(byte[] paramArrayOfByte)
+  protected axrp(Context paramContext)
   {
-    this.a = paramArrayOfByte;
+    super(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axrp
  * JD-Core Version:    0.7.0.1
  */

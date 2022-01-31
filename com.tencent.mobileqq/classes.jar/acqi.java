@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class acqi
-  implements axbf
+  extends bfmg
 {
-  public acqi(FriendShipWaveView paramFriendShipWaveView) {}
+  public acqi(VisitorsActivity paramVisitorsActivity) {}
   
-  public void a()
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_Axcc.a = 255;
-    this.a.jdField_a_of_type_Axcc.a(this.a.jdField_a_of_type_Axcd);
+    this.a.e.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acqi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,91 +1,65 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CardProfile;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
+import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
+import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
+import java.util.List;
 
-public class baaa
+class baaa
+  extends Handler
 {
-  public static CardProfile a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  baaa(azzz paramazzz, Looper paramLooper)
   {
-    boolean bool = true;
-    CardProfile localCardProfile = null;
-    atmp localatmp = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    paramQQAppInterface = localCardProfile;
-    if (localatmp != null)
-    {
-      localCardProfile = (CardProfile)localatmp.a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(paramInt) });
-      paramQQAppInterface = localCardProfile;
-      if (QLog.isColorLevel())
-      {
-        paramQQAppInterface = new StringBuilder().append("readFromDb. uin:").append(paramLong).append(" find:");
-        if (localCardProfile == null) {
-          break label111;
-        }
-      }
-    }
-    for (;;)
-    {
-      QLog.i("VoteUtil", 2, bool);
-      paramQQAppInterface = localCardProfile;
-      return paramQQAppInterface;
-      label111:
-      bool = false;
-    }
+    super(paramLooper);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    Object localObject = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    CardProfile localCardProfile;
-    if (localObject != null)
+    if (this.a.jdField_a_of_type_Baac == null) {}
+    WordInfo localWordInfo;
+    do
     {
-      paramQQAppInterface = (CardProfile)((atmp)localObject).a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(2) });
-      if (paramQQAppInterface != null)
-      {
-        paramQQAppInterface.bAvailableCnt -= paramInt;
-        paramQQAppInterface.bTodayVotedCnt += paramInt;
-        if (paramQQAppInterface.getStatus() != 1000) {
-          break label238;
-        }
-        ((atmp)localObject).b(paramQQAppInterface);
-      }
-      localCardProfile = (CardProfile)((atmp)localObject).a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(3) });
-      if (localCardProfile != null)
-      {
-        localCardProfile.bAvailableCnt -= paramInt;
-        localCardProfile.bTodayVotedCnt += paramInt;
-        localCardProfile.bVoteCnt = ((short)(int)localCardProfile.bTodayVotedCnt);
-        if (localCardProfile.getStatus() != 1000) {
-          break label248;
-        }
-        ((atmp)localObject).b(localCardProfile);
-      }
-      label180:
-      ((atmp)localObject).a();
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder().append("updateProfileCardVote. uin:").append(paramLong).append(" find:");
-        if (paramQQAppInterface == null) {
-          break label259;
-        }
-      }
-    }
-    label259:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("VoteUtil", 2, bool);
       return;
-      label238:
-      ((atmp)localObject).a(paramQQAppInterface);
-      break;
-      label248:
-      ((atmp)localObject).a(localCardProfile);
-      break label180;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 0: 
+        localWordInfo = (WordInfo)paramMessage.obj;
+        this.a.jdField_a_of_type_Baac.a(localWordInfo);
+        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo == null) {
+          this.a.a(localWordInfo);
+        }
+        break;
+      }
+    } while ((!localWordInfo.isDetected) || (localWordInfo.paragraphPos != this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.size() - 1));
+    paramMessage = ((ParagraphInfo)this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.get(localWordInfo.paragraphPos)).generateOrGetWordInfoList(localWordInfo.paragraphPos);
+    int i = localWordInfo.wordPos + 1;
+    label148:
+    if (i < paramMessage.size())
+    {
+      localWordInfo = (WordInfo)paramMessage.get(i);
+      if ((localWordInfo == null) || (!localWordInfo.isNormalWord())) {}
+    }
+    for (i = 0; i != 0; i = 1)
+    {
+      this.a.b();
+      return;
+      i += 1;
+      break label148;
+      this.a.jdField_a_of_type_Baac.g();
+      return;
+      this.a.jdField_a_of_type_Baac.a(this.a.jdField_a_of_type_Int, this.a.b, this.a.c);
+      this.a.jdField_a_of_type_Int = 0;
+      this.a.c = 0;
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baaa
  * JD-Core Version:    0.7.0.1
  */

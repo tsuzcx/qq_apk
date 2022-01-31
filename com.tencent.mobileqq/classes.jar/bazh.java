@@ -1,43 +1,41 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.util.FaceInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class bazh
-  implements RadioGroup.OnCheckedChangeListener
+  extends ajvz
 {
-  bazh(bazb parambazb) {}
+  bazh(bazg parambazg) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void a(boolean paramBoolean, FaceInfo paramFaceInfo)
   {
-    if ((this.a.jdField_a_of_type_Bbdj != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_Bbdj.a))) {
-      this.a.jdField_a_of_type_Bbdj.a(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onUpdateStrangerHead.faceInfo=" + paramFaceInfo + ", isSuccess=" + paramBoolean);
     }
-    TouchWebView localTouchWebView;
-    do
+    if ((this.a.b) || (this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramFaceInfo == null)) {}
+    while ((paramFaceInfo.b != this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b) || (!this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a.equals(paramFaceInfo.a))) {
+      return;
+    }
+    if ((this.a.jdField_a_of_type_Ajvz != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.a.jdField_a_of_type_Ajvz);
+    }
+    if (paramBoolean)
     {
-      do
+      paramFaceInfo = this.a.b();
+      if (paramFaceInfo != null)
       {
+        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramFaceInfo);
         return;
-        localTouchWebView = this.a.jdField_a_of_type_Bbcj.a();
-      } while (localTouchWebView == null);
-      String str = localTouchWebView.getUrl();
-      paramRadioGroup = str;
-      if (TextUtils.isEmpty(str))
-      {
-        paramRadioGroup = str;
-        if (this.a.jdField_a_of_type_AndroidContentIntent != null) {
-          paramRadioGroup = this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("url");
-        }
       }
-    } while (TextUtils.isEmpty(paramRadioGroup));
-    localTouchWebView.loadUrl(paramRadioGroup.replaceAll("(?<=[?&])subIndex=[^&]*", "subIndex=" + paramInt));
+      this.a.a();
+      return;
+    }
+    this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bazh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
 
-final class asmi
-  implements bbsh
+public class asmi
+  implements DialogInterface.OnClickListener
 {
-  asmi(String paramString, asmo paramasmo) {}
+  public asmi(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label50;
-      }
-      if (this.jdField_a_of_type_Asmo != null) {
-        this.jdField_a_of_type_Asmo.a(true);
-      }
+    MsgBackupCompleteFragment.a(this.a);
+    if (MsgBackupCompleteFragment.a(this.a) == 1) {
+      asoe.a("0X800A253", 5);
     }
-    label50:
-    while (this.jdField_a_of_type_Asmo == null) {
+    while ((MsgBackupCompleteFragment.a(this.a) != 4) || (!MsgBackupCompleteFragment.a(this.a))) {
       return;
     }
-    this.jdField_a_of_type_Asmo.a(false);
+    asoe.a("0X800A267", 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asmi
  * JD-Core Version:    0.7.0.1
  */

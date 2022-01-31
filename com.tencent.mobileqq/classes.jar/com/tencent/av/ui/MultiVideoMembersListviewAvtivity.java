@@ -14,13 +14,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
-import kth;
-import kur;
-import lvz;
-import lwa;
-import lwb;
-import lwc;
-import lwd;
+import ldw;
+import lfg;
+import mgr;
+import mgs;
+import mgt;
+import mgu;
+import mgv;
 import mqq.app.BaseActivity;
 
 public class MultiVideoMembersListviewAvtivity
@@ -29,16 +29,16 @@ public class MultiVideoMembersListviewAvtivity
   public int a;
   public long a;
   public LayoutInflater a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new lwb(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new mgt(this);
   AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = null;
   ListView jdField_a_of_type_AndroidWidgetListView = null;
   TextView jdField_a_of_type_AndroidWidgetTextView = null;
   public VideoController a;
   public VideoAppInterface a;
   public String a;
-  public ArrayList<kth> a;
-  kur jdField_a_of_type_Kur = new lwc(this);
-  public lwd a;
+  public ArrayList<ldw> a;
+  lfg jdField_a_of_type_Lfg = new mgu(this);
+  public mgv a;
   public boolean a;
   TextView b = null;
   
@@ -51,7 +51,7 @@ public class MultiVideoMembersListviewAvtivity
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_JavaLangString = null;
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Lwd = null;
+    this.jdField_a_of_type_Mgv = null;
     this.jdField_a_of_type_Boolean = false;
   }
   
@@ -88,7 +88,7 @@ public class MultiVideoMembersListviewAvtivity
   
   public void c()
   {
-    String str = String.format(super.getResources().getString(2131630145), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.c().size()) });
+    String str = String.format(super.getResources().getString(2131695832), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.c().size()) });
     if (this.b != null) {
       this.b.setText(str);
     }
@@ -99,7 +99,7 @@ public class MultiVideoMembersListviewAvtivity
     super.onCreate(paramBundle);
     this.jdField_a_of_type_Boolean = super.getIntent().getBooleanExtra("KEY_ISFORGVIDEO", false);
     if (this.jdField_a_of_type_Boolean) {
-      super.setContentView(2131493960);
+      super.setContentView(2131559528);
     }
     for (;;)
     {
@@ -112,7 +112,7 @@ public class MultiVideoMembersListviewAvtivity
       }
       super.finish();
       return;
-      super.setContentView(2131493973);
+      super.setContentView(2131559541);
     }
     this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
     if (this.jdField_a_of_type_ComTencentAvVideoController == null)
@@ -125,12 +125,12 @@ public class MultiVideoMembersListviewAvtivity
     }
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(super.getApplicationContext());
     a();
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Kur);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131303438));
-    this.b = ((TextView)super.findViewById(2131304268));
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Lfg);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369106));
+    this.b = ((TextView)super.findViewById(2131369948));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)super.findViewById(2131304195));
-    this.jdField_a_of_type_Lwd = new lwd(this);
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)super.findViewById(2131369873));
+    this.jdField_a_of_type_Mgv = new mgv(this);
     if (super.getIntent().getIntExtra("needDataSimple", 0) == 1) {}
     for (paramBundle = this.jdField_a_of_type_ComTencentAvVideoController.e();; paramBundle = this.jdField_a_of_type_ComTencentAvVideoController.c())
     {
@@ -138,35 +138,35 @@ public class MultiVideoMembersListviewAvtivity
       paramBundle = paramBundle.iterator();
       while (paramBundle.hasNext())
       {
-        kth localkth = (kth)paramBundle.next();
-        this.jdField_a_of_type_JavaUtilArrayList.add(localkth);
+        ldw localldw = (ldw)paramBundle.next();
+        this.jdField_a_of_type_JavaUtilArrayList.add(localldw);
       }
     }
     if (this.jdField_a_of_type_Boolean) {
-      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, new lvz(this));
+      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, new mgr(this));
     }
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Lwd);
-    paramBundle = String.format(super.getResources().getString(2131630145), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });
+    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Mgv);
+    paramBundle = String.format(super.getResources().getString(2131695832), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });
     this.b.setText(paramBundle);
-    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new lwa(this);
+    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new mgs(this);
     this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Kur);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Lfg);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
     this.jdField_a_of_type_ComTencentAvVideoController = null;
     this.jdField_a_of_type_AndroidViewLayoutInflater = null;
     this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_Lwd = null;
+    this.jdField_a_of_type_Mgv = null;
     this.jdField_a_of_type_AndroidWidgetListView = null;
     this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = null;
     this.jdField_a_of_type_AndroidWidgetTextView = null;
     this.b = null;
     this.jdField_a_of_type_AndroidViewView$OnClickListener = null;
-    this.jdField_a_of_type_Kur = null;
+    this.jdField_a_of_type_Lfg = null;
   }
   
   public void onPause()

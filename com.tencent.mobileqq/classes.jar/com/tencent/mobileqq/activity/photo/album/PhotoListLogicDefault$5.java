@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aggm;
+import agsl;
 import mqq.util.WeakReference;
 
 public class PhotoListLogicDefault$5
   implements Runnable
 {
-  public PhotoListLogicDefault$5(aggm paramaggm) {}
+  public PhotoListLogicDefault$5(agsl paramagsl) {}
   
   public void run()
   {
     if (((NewPhotoListActivity)this.this$0.a.get()).a == null) {
-      ((NewPhotoListActivity)this.this$0.a.get()).g();
+      ((NewPhotoListActivity)this.this$0.a.get()).e();
     }
   }
 }

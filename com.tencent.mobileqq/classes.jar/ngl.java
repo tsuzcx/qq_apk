@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import org.json.JSONObject;
 
 class ngl
-  implements View.OnClickListener
+  implements baho
 {
-  ngl(ngk paramngk, String paramString) {}
+  ngl(nfu paramnfu) {}
   
-  public void onClick(View paramView)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Ngk.jdField_a_of_type_Ngf != null) {
-      this.jdField_a_of_type_Ngk.jdField_a_of_type_Ngf.b(this.jdField_a_of_type_Ngk.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-    }
+    nfu.a(this.a, paramJSONObject);
   }
 }
 

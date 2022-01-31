@@ -1,14 +1,9 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.Comparator;
-
 public class bimh
-  implements Comparator<bika>
+  extends bimf
 {
-  public bimh(DoodleLayout paramDoodleLayout) {}
-  
-  public int a(bika parambika1, bika parambika2)
+  bimg a()
   {
-    return parambika2.i_() - parambika1.i_();
+    return new bimi();
   }
 }
 

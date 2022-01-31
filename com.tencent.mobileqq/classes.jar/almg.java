@@ -1,50 +1,33 @@
-import android.database.sqlite.SQLiteDatabase;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.QQEntityManagerFactory.SQLiteOpenHelperImpl;
-import com.tencent.mobileqq.data.RockDownloadInfo;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.ar.view.ARScanEntryView.4.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class almg
-  extends QQEntityManagerFactory
+  implements auhc
 {
-  private static Map<String, Class<?>> a = new HashMap();
+  public almg(ARScanEntryView paramARScanEntryView) {}
   
-  static
+  public void a()
   {
-    a.put(RockDownloadInfo.class.getSimpleName(), RockDownloadInfo.class);
-  }
-  
-  public almg()
-  {
-    super("RockDownload");
-  }
-  
-  public ajrl build(String paramString)
-  {
-    if (this.dbHelper == null)
-    {
-      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 1);
-      this.dbHelper = new ajrl(this.mInnerDbHelper);
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onStart ");
     }
-    return this.dbHelper;
   }
   
-  public void createDatabase(SQLiteDatabase paramSQLiteDatabase)
+  public void b()
   {
-    paramSQLiteDatabase.execSQL(atnp.a(new RockDownloadInfo()));
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onEnd  needReportRedDot = " + ARScanEntryView.a(this.a));
+    }
+    if (ARScanEntryView.a(this.a) != null) {
+      ARScanEntryView.a(this.a).post(new ARScanEntryView.4.1(this));
+    }
   }
-  
-  public String getPackageName()
-  {
-    return getClass().getPackage().getName();
-  }
-  
-  public void upgradeDatabase(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     almg
  * JD-Core Version:    0.7.0.1
  */

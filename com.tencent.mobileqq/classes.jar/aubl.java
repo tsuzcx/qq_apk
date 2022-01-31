@@ -1,20 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.VipProfileSimpleView;
-
-public class aubl
-  implements Animation.AnimationListener
+public abstract interface aubl
 {
-  public aubl(VipProfileSimpleView paramVipProfileSimpleView, Animation paramAnimation) {}
+  public abstract void a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileSimpleView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void a(String paramString);
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 

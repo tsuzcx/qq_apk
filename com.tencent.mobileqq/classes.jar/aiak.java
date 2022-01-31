@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class aiak
-  implements View.OnClickListener
+public abstract interface aiak
 {
-  aiak(aiaj paramaiaj) {}
-  
-  public void onClick(View paramView)
-  {
-    aiaj.a(this.a).a(paramView);
-  }
+  public abstract void a_(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aiak
  * JD-Core Version:    0.7.0.1
  */

@@ -1,388 +1,147 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Looper;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.theme.DarkModeManager.3;
-import com.tencent.mobileqq.theme.DarkModeManager.6;
-import com.tencent.mobileqq.theme.ThemeSwitcher;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 
 public class axkz
 {
-  private static boolean a;
-  private static boolean b;
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private avyz jdField_a_of_type_Avyz;
+  public avza a;
+  private String jdField_a_of_type_JavaLangString;
+  private float[] jdField_a_of_type_ArrayOfFloat;
   
-  private static SharedPreferences a()
+  private static long a(int paramInt)
   {
-    Object localObject2 = null;
+    return paramInt * 1000000000L / 25L;
+  }
+  
+  private Bitmap a(Bitmap paramBitmap)
+  {
+    Bitmap localBitmap = paramBitmap;
+    if (paramBitmap.getWidth() % 2 == 1)
+    {
+      localBitmap = Bitmap.createBitmap(paramBitmap.getWidth() + 1, paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(localBitmap);
+      localCanvas.drawARGB(0, 0, 0, 0);
+      localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, null);
+    }
+    return localBitmap;
+  }
+  
+  private void a()
+  {
+    veg.b("Q.qqstory.publish.upload.PicToVideoConverter", "preparing.");
+    this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    veg.b("Q.qqstory.publish.upload.PicToVideoConverter", "bitmap's width = " + this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + ", height = " + this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    avyy localavyy = new avyy(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), 532480, 1, false, 0);
+    localavyy.d = 25;
+    this.jdField_a_of_type_Avza = new avza();
+    this.jdField_a_of_type_Avza.a(localavyy);
+    this.jdField_a_of_type_Avyz = new avyz();
+    this.jdField_a_of_type_Avyz.a(localavyy, this.jdField_a_of_type_Avza.a());
+    this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_ArrayOfFloat = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
+  }
+  
+  private void b()
+  {
+    veg.b("Q.qqstory.publish.upload.PicToVideoConverter", "releasing.");
+    if (this.jdField_a_of_type_Avyz != null)
+    {
+      this.jdField_a_of_type_Avyz.a();
+      this.jdField_a_of_type_Avyz = null;
+    }
+  }
+  
+  public int a(String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      throw new IllegalStateException("convert image to video failed. because input path or target path is null!");
+    }
+    veg.d("Q.qqstory.publish.upload.PicToVideoConverter", "input file path is %s. output file path is %s.", new Object[] { paramString1, paramString2 });
+    if (!vyi.c(paramString1))
+    {
+      veg.e("Q.qqstory.publish.upload.PicToVideoConverter", "input file does not exists or is empty.");
+      return 940007;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString2;
     try
     {
-      Object localObject3 = BaseApplicationImpl.getApplication();
-      Object localObject1 = localObject2;
-      if (localObject3 != null)
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeFile(paramString1);
+      l = System.currentTimeMillis();
+    }
+    catch (OutOfMemoryError paramString2)
+    {
+      try
       {
-        localObject3 = ((BaseApplicationImpl)localObject3).getRuntime();
-        localObject1 = localObject2;
-        if (localObject3 != null) {
-          localObject1 = ((AppRuntime)localObject3).getApplication().getSharedPreferences("DarkModeManagerdark_mode_ui", 4);
-        }
-      }
-      return localObject1;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("DarkModeManager", 2, "getSharedPreferences error!: ", localThrowable);
-    }
-    return null;
-  }
-  
-  private static void a()
-  {
-    if (awnu.b()) {}
-    for (String str = "2920";; str = "1103")
-    {
-      QLog.d("DarkModeManager", 1, "switchToNightMode themeID=" + str);
-      ThemeSwitcher.a(str, "202", null);
-      return;
-    }
-  }
-  
-  public static void a(Activity paramActivity, String paramString, axle paramaxle)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing()))
-    {
-      QLog.e("DarkModeManager", 2, "showThemeDarkModeTips error!: ");
-      return;
-    }
-    paramActivity = babr.a(paramActivity, 0, null, paramActivity.getString(2131653537), paramActivity.getString(2131625035), paramActivity.getString(2131625463), new axlc(paramaxle), new axld(paramaxle));
-    paramActivity.show();
-    paramActivity.setCancelable(false);
-    a("0X800A5C9");
-  }
-  
-  public static void a(axmg paramaxmg)
-  {
-    if (b()) {
-      if ((BaseApplicationImpl.getApplication().getApplicationContext().getResources().getConfiguration().uiMode & 0x30) == 32)
-      {
-        bool1 = true;
-        bool2 = ThemeUtil.isNowThemeIsNight(null, false, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("DarkModeManager", 2, "updateDarkModeStatus isNightMode  = " + bool2 + ", isDarkMode = " + bool1);
-        }
-        b(bool1, bool2, paramaxmg);
-      }
-    }
-    while ((!b) || (BaseApplicationImpl.isCurrentVersionFirstLaunch)) {
-      for (;;)
-      {
-        boolean bool2;
-        return;
-        boolean bool1 = false;
-      }
-    }
-    d();
-  }
-  
-  public static void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "report() called with: key = [" + paramString + "]");
-    }
-    awqx.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      a("0X800A3E8");
-    }
-    SharedPreferences localSharedPreferences;
-    for (;;)
-    {
-      a = paramBoolean;
-      localSharedPreferences = a();
-      if (localSharedPreferences != null) {
-        break;
-      }
-      return;
-      a("0X800A3E7");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "updateModeStatus isOpened  = " + a);
-    }
-    localSharedPreferences.edit().putBoolean("dark_switch_key", a).apply();
-  }
-  
-  public static void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
-  {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity == null) || (localBaseActivity.isFinishing()))
-    {
-      QLog.e("DarkModeManager", 2, "showDarkModeTips error!: ");
-      return;
-    }
-    String str = localBaseActivity.getString(2131653540);
-    if (!paramBoolean1) {
-      str = localBaseActivity.getString(2131653536);
-    }
-    paramString1 = babr.a(localBaseActivity, 0, null, str, localBaseActivity.getString(2131625035), localBaseActivity.getString(2131625463), new axla(paramBoolean1, paramBoolean2), new axlb(paramString1, paramString2));
-    paramString1.show();
-    paramString1.setCancelable(false);
-    c();
-    a("0X800A5B4");
-  }
-  
-  public static boolean a()
-  {
-    return Build.VERSION.SDK_INT >= 29;
-  }
-  
-  public static boolean a(Activity paramActivity, String paramString, axle paramaxle)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing())) {}
-    while (!b()) {
-      return false;
-    }
-    boolean bool2;
-    label40:
-    boolean bool1;
-    if ((paramActivity.getResources().getConfiguration().uiMode & 0x30) == 32)
-    {
-      bool2 = true;
-      bool1 = ThemeUtil.isNowThemeIsNight(null, false, paramString);
-      if (TextUtils.isEmpty(paramString))
-      {
-        if (ThemeUtil.isNowThemeIsNight(null, false, null)) {
-          break label136;
-        }
-        bool1 = true;
-      }
-      label65:
-      if (bool2 == bool1) {
-        break label139;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeManager", 2, "userSetThemeAction isNightMode  = " + bool1 + ", isDarkMode = " + bool2);
-      }
-      if (Looper.getMainLooper() != Looper.myLooper()) {
-        break label141;
-      }
-      a(paramActivity, paramString, paramaxle);
-    }
-    for (;;)
-    {
-      return true;
-      bool2 = false;
-      break label40;
-      label136:
-      bool1 = false;
-      break label65;
-      label139:
-      break;
-      label141:
-      ThreadManager.getUIHandler().post(new DarkModeManager.6(paramActivity, paramString, paramaxle));
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (b()) {
-      if ((BaseApplicationImpl.getApplication().getApplicationContext().getResources().getConfiguration().uiMode & 0x30) != 32) {
-        break label85;
-      }
-    }
-    label85:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      boolean bool2 = ThemeUtil.isNowThemeIsNight(null, false, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeManager", 2, "updateDarkModeStatus isNightMode  = " + bool2 + ", isDarkMode = " + bool1);
-      }
-      if (bool1 != bool2) {
-        break;
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    if (a())
-    {
-      localBaseActivity = BaseActivity.sTopActivity;
-      if ((localBaseActivity != null) && (!localBaseActivity.isFinishing())) {}
-    }
-    while (!QLog.isColorLevel())
-    {
-      boolean bool1;
-      boolean bool2;
-      do
-      {
-        do
+        for (;;)
         {
-          BaseActivity localBaseActivity;
-          return false;
-          if ((localBaseActivity.getResources().getConfiguration().uiMode & 0x30) != 32) {
-            break;
-          }
-          bool1 = true;
-          bool2 = ThemeUtil.isNowThemeIsNight(null, false, null);
-          if (QLog.isColorLevel()) {
-            QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme isNightMode  = " + bool2 + ", isDarkMode = " + bool1 + ", isCurrentVersionFirstLaunch = " + BaseApplicationImpl.isCurrentVersionFirstLaunch);
-          }
-        } while (bool1 == bool2);
-        if ((!d()) && (ambz.e()))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme dialog will show!");
-          }
-          if (Looper.getMainLooper() == Looper.myLooper()) {
-            a(bool1, bool2, paramString1, paramString2);
-          }
+          a();
+          i = 0;
           for (;;)
           {
-            return true;
-            bool1 = false;
-            break;
-            ThreadManager.getUIHandler().post(new DarkModeManager.3(bool1, bool2, paramString1, paramString2));
+            if (i < 75)
+            {
+              this.jdField_a_of_type_Avza.a();
+              this.jdField_a_of_type_Avyz.a(3553, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, null, a(i));
+              i += 1;
+              continue;
+              paramString2 = paramString2;
+              System.gc();
+              try
+              {
+                Thread.sleep(1000L);
+                this.jdField_a_of_type_AndroidGraphicsBitmap = bbdr.a(paramString1, 540, 960);
+                if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+                  this.jdField_a_of_type_AndroidGraphicsBitmap = bbdr.a(paramString1, 360, 640);
+                }
+                if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+                  break;
+                }
+                veg.e("Q.qqstory.publish.upload.PicToVideoConverter", "decode bitmap <%s> error:%s", new Object[] { paramString1, paramString2 });
+                return 942014;
+              }
+              catch (InterruptedException localInterruptedException)
+              {
+                for (;;)
+                {
+                  localInterruptedException.printStackTrace();
+                }
+              }
+            }
           }
         }
-      } while (!b());
-      b(bool1, bool2, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme iscalled! switch is opened, so switch theme!");
+        this.jdField_a_of_type_Avza.b();
+        b();
+        i = 0;
       }
-      return true;
-    }
-    QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme iscalled! the system version is lower 29! so do not dialog!");
-    return false;
-  }
-  
-  @Nullable
-  private static QQAppInterface b()
-  {
-    Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject != null)
-    {
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-      if ((localObject instanceof QQAppInterface)) {
-        return (QQAppInterface)localObject;
+      catch (Exception paramString1)
+      {
+        for (;;)
+        {
+          long l;
+          veg.b("Q.qqstory.publish.upload.PicToVideoConverter", "convert picture to video error. %s.", paramString1);
+          int i = 942013;
+          this.jdField_a_of_type_Avza.c();
+          b();
+        }
       }
-    }
-    return null;
-  }
-  
-  private static void b()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null)
-    {
-      a = localSharedPreferences.getBoolean("dark_switch_key", false);
-      return;
-    }
-    a = true;
-  }
-  
-  private static void b(axmg paramaxmg)
-  {
-    Object localObject;
-    if (awnu.b())
-    {
-      int i = awnu.d();
-      localObject = awnp.b[i];
-    }
-    for (;;)
-    {
-      QLog.d("DarkModeManager", 1, "closedNightMode is called, will set themeID=" + (String)localObject);
-      ThemeSwitcher.a((String)localObject, "202", paramaxmg);
-      return;
-      localObject = axmf.a(b());
-      String str = ((Bundle)localObject).getString("themeID");
-      QLog.d("DarkModeManager", 1, "closedNightMode, pre themeID=" + str + ",version=" + ((Bundle)localObject).getString("version"));
-      localObject = str;
-      if (TextUtils.isEmpty(str)) {
-        localObject = "1000";
+      finally
+      {
+        b();
       }
+      veg.d("Q.qqstory.publish.upload.PicToVideoConverter", "convert image to video done. cost time %d. errorCode is %d.", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(i) });
+      return i;
     }
-  }
-  
-  public static void b(boolean paramBoolean)
-  {
-    b = paramBoolean;
-  }
-  
-  private static void b(boolean paramBoolean1, boolean paramBoolean2, axmg paramaxmg)
-  {
-    if ((paramBoolean1) && (!paramBoolean2)) {
-      a();
-    }
-    while ((paramBoolean1) || (!paramBoolean2)) {
-      return;
-    }
-    b(paramaxmg);
-  }
-  
-  public static boolean b()
-  {
-    return (a()) && (c());
-  }
-  
-  private static void c()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "setShownPromtFlag is called!");
-    }
-    localSharedPreferences.edit().putBoolean("dialog_has_shown_key", true).apply();
-  }
-  
-  public static boolean c()
-  {
-    
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "getDarkModeSwitch isOpened  = " + a);
-    }
-    return a;
-  }
-  
-  private static void d()
-  {
-    a("1000", "204");
-  }
-  
-  private static boolean d()
-  {
-    boolean bool = false;
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("dialog_has_shown_key", false);
-    }
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axkz
  * JD-Core Version:    0.7.0.1
  */

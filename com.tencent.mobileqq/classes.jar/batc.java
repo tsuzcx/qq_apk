@@ -1,52 +1,27 @@
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnControllerClickListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo.RecommadInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectGuidePicActivity;
 
 public class batc
-  implements TVK_IMediaPlayer.OnControllerClickListener
+  implements View.OnTouchListener
 {
-  public batc(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  public batc(TroopPicEffectGuidePicActivity paramTroopPicEffectGuidePicActivity) {}
   
-  public void onAttationClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
-  
-  public void onBackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipVideoPlayActivity", 2, "video player onBackClick");
+    int i = paramMotionEvent.getAction();
+    if (i == 0) {
+      paramView.setAlpha(0.5F);
     }
-    this.a.setResult(0);
-    this.a.finish();
-  }
-  
-  public void onBackOnFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipVideoPlayActivity", 2, "video player onBackOnFullScreenClick");
-    }
-    if (this.a.getRequestedOrientation() == 0)
+    for (;;)
     {
-      this.a.setRequestedOrientation(1);
-      return;
+      return false;
+      if ((i == 1) || (i == 3)) {
+        paramView.setAlpha(1.0F);
+      }
     }
-    this.a.setResult(0);
-    this.a.finish();
   }
-  
-  public void onCacheClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
-  
-  public void onFeedbackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
-  
-  public void onFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipVideoPlayActivity", 2, "video player onFullScreenClick--------------");
-    }
-    this.a.setRequestedOrientation(0);
-  }
-  
-  public void onReopenClick(TVK_NetVideoInfo.RecommadInfo paramRecommadInfo) {}
 }
 
 

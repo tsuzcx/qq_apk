@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr.6.1;
-import java.util.UUID;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 
-public class ayuf
-  implements ayui
+class ayuf
+  implements ajvb
 {
   ayuf(ayue paramayue) {}
   
-  public void a(UUID paramUUID, boolean paramBoolean, int paramInt, ayuh paramayuh)
+  public void a(boolean paramBoolean)
   {
-    ayrs.a(new TroopFileUploadMgr.6.1(this, paramUUID, paramBoolean, paramInt, paramayuh), false);
+    if (paramBoolean)
+    {
+      String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.HttpTimeoutParam.name());
+      this.a.a(str);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayuf
  * JD-Core Version:    0.7.0.1
  */

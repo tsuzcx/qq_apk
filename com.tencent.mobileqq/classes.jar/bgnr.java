@@ -1,36 +1,45 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.troop.TroopPluginManager.InstallRunable;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public class bgnr
-  extends Handler
+class bgnr
+  implements ServiceConnection
 {
-  public bgnr(TroopPluginManager.InstallRunable paramInstallRunable, Looper paramLooper)
+  bgnr(bgnq parambgnq) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    super(paramLooper);
+    QLog.d("QlinkServiceProxy", 1, "onServiceConnected service:" + paramComponentName);
+    bgnq.a(this.a, bgmr.a(paramIBinder));
+    bgnq.a(this.a, false);
+    bgnq.a(this.a);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    switch (paramMessage.what)
+    QLog.d("QlinkServiceProxy", 1, "onServiceDisconnected " + paramComponentName);
+    try
     {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.a == null);
-      this.a.a.a(0);
+      bgnq.a(this.a).getApplication().unbindService(bgnq.a(this.a));
+      bgnq.a(this.a, null);
+      bgnq.a(this.a, false);
       return;
-    } while (this.a.a == null);
-    this.a.a.a(2);
+    }
+    catch (Exception paramComponentName)
+    {
+      for (;;)
+      {
+        paramComponentName.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgnr
  * JD-Core Version:    0.7.0.1
  */

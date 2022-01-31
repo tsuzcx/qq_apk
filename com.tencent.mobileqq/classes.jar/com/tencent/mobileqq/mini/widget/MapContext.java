@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.widget;
 
-import akgd;
+import akup;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -17,7 +17,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import bajq;
+import bbkx;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.page.PageWebview;
@@ -90,7 +90,7 @@ public class MapContext
   private int markerMinSize;
   private SparseArray<Marker> markerSparseArray;
   private LatLng myLatLng;
-  private akgd onLocationListener;
+  private akup onLocationListener;
   private ArrayList<Polyline> polylineArrayList;
   private float rotateDegree = 0.0F;
   private Sensor sensor;
@@ -129,7 +129,7 @@ public class MapContext
     this.markerMaxSize = ((int)(this.density * 50.0F + 0.5D));
     try
     {
-      this.locationBitmap = BitmapFactory.decodeResource(paramCoverMapView.getResources(), 2130840608);
+      this.locationBitmap = BitmapFactory.decodeResource(paramCoverMapView.getResources(), 2130840653);
       this.markerSparseArray = new SparseArray();
       this.circleArrayList = new ArrayList();
       this.polylineArrayList = new ArrayList();
@@ -256,7 +256,7 @@ public class MapContext
         paramJSONObject = Drawable.createFromPath(paramJSONObject);
         localObject = paramJSONObject;
         if (paramJSONObject == null) {
-          localObject = this.context.getResources().getDrawable(2130840627);
+          localObject = this.context.getResources().getDrawable(2130840665);
         }
         localImageView.setImageDrawable((Drawable)localObject);
         if (this.mTencentMap == null) {
@@ -328,7 +328,7 @@ public class MapContext
         localObject1 = Drawable.createFromPath((String)localObject1);
         localObject3 = localObject1;
         if (localObject1 == null) {
-          localObject3 = this.context.getResources().getDrawable(2130840627);
+          localObject3 = this.context.getResources().getDrawable(2130840665);
         }
         localObject1 = createMarkerView();
         ((ImageView)localObject1).setLayoutParams(new ViewGroup.LayoutParams(k, m));
@@ -386,7 +386,7 @@ public class MapContext
       label65:
       localObject2 = paramJSONObject.optJSONArray("points");
       String str2 = paramJSONObject.optString("color", "");
-      float f1 = bajq.a((float)paramJSONObject.optDouble("width", 0.0D));
+      float f1 = bbkx.a((float)paramJSONObject.optDouble("width", 0.0D));
       boolean bool1 = paramJSONObject.optBoolean("dottedLine", false);
       boolean bool2 = paramJSONObject.optBoolean("arrowLine", false);
       localObject1 = paramJSONObject.optString("arrowIconPath", "");

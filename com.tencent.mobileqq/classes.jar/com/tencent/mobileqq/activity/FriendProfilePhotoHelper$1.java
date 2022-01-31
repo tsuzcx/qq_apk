@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aaxd;
-import ajjj;
+import abha;
+import ajxn;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
@@ -9,21 +9,21 @@ import com.tencent.mobileqq.data.Card;
 public class FriendProfilePhotoHelper$1
   implements Runnable
 {
-  public FriendProfilePhotoHelper$1(aaxd paramaaxd) {}
+  public FriendProfilePhotoHelper$1(abha paramabha) {}
   
   public void run()
   {
     try
     {
-      Object localObject1 = (ajjj)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-      Object localObject2 = ((ajjj)localObject1).b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      Object localObject1 = (ajxn)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+      Object localObject2 = ((ajxn)localObject1).b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
       if (localObject2 == null) {
         return;
       }
       if (((Card)localObject2).checkCoverUrl(this.this$0.jdField_a_of_type_ArrayOfByte)) {
         ((Card)localObject2).updateCoverData(this.this$0.jdField_a_of_type_ArrayOfByte);
       }
-      ((ajjj)localObject1).a((Card)localObject2);
+      ((ajxn)localObject1).a((Card)localObject2);
       localObject1 = ((Card)localObject2).getCoverData(this.this$0.jdField_a_of_type_Int);
       localObject2 = (String)localObject1[0];
       if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!((String)localObject2).equals(this.this$0.b)))

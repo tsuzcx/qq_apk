@@ -1,73 +1,130 @@
-import NS_MOBILE_COMM_CONF.MobileCommConf;
-import NS_MOBILE_COMM_CONF.NewMobileGlobalConf;
-import NS_MOBILE_COMM_CONF.NewMobileUserConf;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.RemoteException;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.1;
+import java.lang.ref.WeakReference;
+import java.util.HashSet;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
 
 public class bgsd
 {
-  private static bgsd jdField_a_of_type_Bgsd;
-  private long jdField_a_of_type_Long = -1L;
+  private ServiceConnection a;
+  protected bgrt a;
+  public final String a;
+  protected WeakReference<AppRuntime> a;
+  protected HashSet<String> a;
+  public ConcurrentLinkedQueue<bgsf> a;
+  protected boolean a;
+  public final String b = "com.qqindividuality.ipc.QQIndividualityRemoteProxyService";
   
-  public static bgsd a()
+  public bgsd(AppRuntime paramAppRuntime)
   {
-    if (jdField_a_of_type_Bgsd == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bgsd == null) {
-        jdField_a_of_type_Bgsd = new bgsd();
-      }
-      return jdField_a_of_type_Bgsd;
-    }
-    finally {}
+    this.jdField_a_of_type_JavaLangString = "QQIndividualityRemoteProxy";
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    this.jdField_a_of_type_AndroidContentServiceConnection = new bgse(this);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppRuntime);
+    a("qqindividuality_signature");
   }
   
-  public static void a(long paramLong)
+  private boolean a()
   {
-    if (paramLong > 0L)
+    if ((this.jdField_a_of_type_Bgrt == null) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
     {
-      SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_report", 0).edit();
-      localEditor.putLong("lastReportTime", paramLong);
-      localEditor.apply();
-    }
-  }
-  
-  public void a(MobileCommConf paramMobileCommConf)
-  {
-    if ((paramMobileCommConf == null) || (paramMobileCommConf.new_mobile_global_conf == null) || (paramMobileCommConf.new_mobile_user_conf == null)) {}
-    long l;
-    do
-    {
-      do
+      AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localAppRuntime != null)
       {
-        return;
-        l = paramMobileCommConf.new_mobile_global_conf.version;
-      } while (paramMobileCommConf.new_mobile_user_conf.version < l);
-      l = System.currentTimeMillis() / 1000L;
-    } while (((this.jdField_a_of_type_Long >= paramMobileCommConf.new_mobile_user_conf.uBeginTime) && (this.jdField_a_of_type_Long <= paramMobileCommConf.new_mobile_user_conf.uEndTime)) || (l < paramMobileCommConf.new_mobile_user_conf.uBeginTime) || (l > paramMobileCommConf.new_mobile_user_conf.uEndTime));
-    this.jdField_a_of_type_Long = l;
-    a(this.jdField_a_of_type_Long);
-    paramMobileCommConf = new NewIntent(BaseApplicationImpl.getApplication(), bgsf.class);
-    try
+        QQIndividualityPluginProxyService.a(localAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection, "com.qqindividuality.ipc.QQIndividualityRemoteProxyService");
+        this.jdField_a_of_type_Boolean = true;
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private boolean a(bgsf parambgsf)
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(parambgsf);
+  }
+  
+  private boolean b()
+  {
+    if ((this.jdField_a_of_type_Bgrt != null) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
     {
-      l = Long.parseLong(((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin());
-      paramMobileCommConf.putExtra("selfuin", l);
-      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMobileCommConf);
+      AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localAppRuntime != null)
+      {
+        QQIndividualityPluginProxyService.a(localAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection);
+        this.jdField_a_of_type_Bgrt = null;
+        this.jdField_a_of_type_Boolean = false;
+      }
+    }
+    return true;
+  }
+  
+  public void a(bgsf parambgsf)
+  {
+    if ((this.jdField_a_of_type_Bgrt != null) && (parambgsf != null))
+    {
+      Looper localLooper = Looper.getMainLooper();
+      if (Thread.currentThread() != localLooper.getThread()) {
+        new Handler(localLooper).post(new QQIndividualityRemoteProxy.1(this, parambgsf));
+      }
+    }
+    else
+    {
       return;
     }
-    catch (Exception localException)
+    try
     {
+      this.jdField_a_of_type_Bgrt.a(parambgsf.jdField_a_of_type_Int, parambgsf.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    catch (RemoteException parambgsf) {}
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (!this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
+    {
+      this.jdField_a_of_type_JavaUtilHashSet.add(paramString);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString, int paramInt, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
+    {
+      paramString = new bgsf(this, paramInt, paramBundle);
+      if (this.jdField_a_of_type_Bgrt != null) {
+        a(paramString);
+      }
       for (;;)
       {
-        QLog.e("YYBInstallPackageManager", 1, "get uin error " + localException);
-        l = 0L;
+        return true;
+        a(paramString);
+        a();
       }
     }
+    return false;
+  }
+  
+  public boolean b(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
+    {
+      this.jdField_a_of_type_JavaUtilHashSet.remove(paramString);
+      if (this.jdField_a_of_type_JavaUtilHashSet.isEmpty()) {
+        b();
+      }
+    }
+    return false;
   }
 }
 

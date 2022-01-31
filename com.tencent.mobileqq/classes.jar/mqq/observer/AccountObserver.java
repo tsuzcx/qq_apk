@@ -22,7 +22,7 @@ public abstract class AccountObserver
   
   public void onGetQuickRegisterAccount(boolean paramBoolean, int paramInt, String paramString1, String paramString2, byte[] paramArrayOfByte) {}
   
-  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt, byte[] paramArrayOfByte) {}
+  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2) {}
   
   public void onLoginSuccess(String paramString1, String paramString2) {}
   
@@ -37,6 +37,7 @@ public abstract class AccountObserver
     Object localObject1;
     String str;
     Object localObject2;
+    int i;
     switch (paramInt)
     {
     default: 
@@ -51,7 +52,7 @@ public abstract class AccountObserver
       paramInt = paramBundle.getInt("resultCode");
       str = paramBundle.getString("userAccount");
       localObject2 = paramBundle.getString("errorMsg");
-      int i = paramBundle.getInt("ret");
+      i = paramBundle.getInt("ret");
       ErrMsg localErrMsg = (ErrMsg)paramBundle.getParcelable("lastError");
       onVerifyPasswdImage((String)localObject1, paramBoolean, (String)localObject2, paramInt, str, paramBundle.getByteArray("userInput"), i, localErrMsg, paramBundle.getByteArray("image"));
       return;
@@ -93,7 +94,8 @@ public abstract class AccountObserver
       localObject1 = paramBundle.getString("errorurl");
       paramInt = paramBundle.getInt("loginret");
       localObject2 = paramBundle.getByteArray("lhsig");
-      onLoginFailed(str, paramBundle.getString("error"), (String)localObject1, paramInt, (byte[])localObject2);
+      i = paramBundle.getInt("errorver");
+      onLoginFailed(str, paramBundle.getString("error"), (String)localObject1, paramInt, (byte[])localObject2, i);
       return;
     case 1040: 
       onRegisterCmdCallback(paramBoolean);

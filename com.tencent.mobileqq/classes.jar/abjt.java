@@ -1,89 +1,32 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.JumpActivity;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class abjt
+  extends WtloginObserver
 {
-  public static void a(Activity paramActivity)
-  {
-    b(paramActivity);
-  }
+  public abjt(JumpActivity paramJumpActivity) {}
   
-  public static void a(Activity paramActivity, String paramString)
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    Intent localIntent = new Intent(paramActivity, PublicAccountBrowser.class);
-    if ((paramActivity instanceof BaseActivity)) {
-      localIntent.putExtra("uin", ((QQAppInterface)((BaseActivity)paramActivity).getAppRuntime()).getCurrentAccountUin());
+    if (paramDevlockInfo != null) {
+      aoeh.a().a(paramDevlockInfo.TransferInfo);
     }
-    if (bbaf.a.containsKey("PublicAccountJs")) {
-      localIntent.putExtra("insertPluginsArray", new String[] { "PublicAccountJs" });
-    }
-    localIntent.putExtra("fromLocalUrl", true);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hideRightButton", true);
-    localIntent.putExtra("leftViewText", paramActivity.getString(2131629842));
-    localIntent.putExtra("assignBackText", paramActivity.getString(2131629842));
-    if (TextUtils.isEmpty(paramString)) {
-      localIntent.putExtra("url", rsp.b);
-    }
+    paramWUserSigInfo = this.a;
+    if (paramInt == 0) {}
     for (;;)
     {
-      paramActivity.startActivity(localIntent);
+      paramWUserSigInfo.a(paramDevlockInfo);
       return;
-      localIntent.putExtra("url", "http://find.mp.qq.com/search/index?_wv=67109947&keyword=" + paramString);
+      paramDevlockInfo = null;
     }
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3)
-  {
-    Intent localIntent = new Intent(paramActivity, PublicAccountBrowser.class);
-    if (TextUtils.isEmpty(paramString2)) {
-      if ((paramActivity instanceof BaseActivity)) {
-        localIntent.putExtra("uin", ((QQAppInterface)((BaseActivity)paramActivity).getAppRuntime()).getCurrentAccountUin());
-      }
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(paramString1))
-      {
-        localIntent.putExtra("leftViewText", paramString1);
-        localIntent.putExtra("assignBackText", paramString1);
-      }
-      if (bbaf.a.containsKey("PublicAccountJs")) {
-        localIntent.putExtra("insertPluginsArray", new String[] { "PublicAccountJs" });
-      }
-      paramString1 = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        paramString1 = "http://dyzx.mp.qq.com/static/v8/page/subscribeindex.html?_wv=67109947&_bid=2278&_wwv=1";
-      }
-      localIntent.putExtra("fromLocalUrl", true);
-      localIntent.putExtra("hide_operation_bar", true);
-      localIntent.putExtra("url", paramString1);
-      localIntent.putExtra("hideRightButton", true);
-      paramActivity.startActivity(localIntent);
-      return;
-      localIntent.putExtra("uin", paramString2);
-    }
-  }
-  
-  private static void b(Activity paramActivity)
-  {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("last_key_words", "");
-    localIntent.putExtra("from_key", 2);
-    localIntent.putExtra(ClassificationSearchActivity.a, ClassificationSearchActivity.c);
-    localIntent.setClass(paramActivity, ClassificationSearchActivity.class);
-    ClassificationSearchActivity.a(paramActivity, localIntent, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abjt
  * JD-Core Version:    0.7.0.1
  */

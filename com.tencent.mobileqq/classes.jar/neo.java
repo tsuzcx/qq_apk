@@ -1,19 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.LikeActionDownloadBar;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public final class neo
-  implements Parcelable.Creator<VideoInfo.LikeActionDownloadBar>
+class neo
 {
-  public VideoInfo.LikeActionDownloadBar a(Parcel paramParcel)
-  {
-    return new VideoInfo.LikeActionDownloadBar(paramParcel);
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  boolean jdField_a_of_type_Boolean;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
   
-  public VideoInfo.LikeActionDownloadBar[] a(int paramInt)
-  {
-    return new VideoInfo.LikeActionDownloadBar[paramInt];
-  }
+  neo(ned paramned) {}
 }
 
 

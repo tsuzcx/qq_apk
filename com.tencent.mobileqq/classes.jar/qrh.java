@@ -1,17 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
-public class qrh
-  extends omr
+class qrh
+  implements View.OnLayoutChangeListener
 {
-  public qrh(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt)
-  {
-    super(paramString);
-  }
+  qrh(qrg paramqrg) {}
   
-  public void a(oml paramoml)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    paramoml.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView, this.jdField_a_of_type_Int);
+    VideoFeedsRecommendFragment.a(this.a.a).removeOnLayoutChangeListener(this);
+    VideoFeedsRecommendFragment.a(this.a.a).a();
   }
 }
 

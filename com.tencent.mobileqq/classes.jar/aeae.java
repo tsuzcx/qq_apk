@@ -1,18 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-class aeae
-  implements bfof
+public class aeae
+  implements bcmw
 {
-  aeae(aead paramaead) {}
+  public aeae(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, aeah paramaeah) {}
   
-  public void a(int paramInt, String... paramVarArgs)
+  public void a(String paramString)
   {
-    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null))
-    {
-      QLog.i(aead.a, 2, "error get pskey...");
-      return;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Aeah.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Aeah.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Aeah.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
     }
-    aead.a(this.a, paramVarArgs[0]);
   }
 }
 

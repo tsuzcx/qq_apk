@@ -1,92 +1,48 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.image.URLDrawable;
+import android.app.Activity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aptf
+class aptf
+  implements apac
 {
-  public apsu a;
-  public apul a;
+  aptf(apsz paramapsz, Activity paramActivity, int paramInt) {}
   
-  public static void a(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  public void a() {}
+  
+  public void b()
   {
-    boolean bool = true;
-    switch (paramInt)
+    try
     {
-    case 4: 
-    case 5: 
-    case 7: 
-    default: 
-      paramInt = 0;
-      if (paramURLDrawable.isAnim()) {
-        break;
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (localQQAppInterface == null)
+      {
+        QLog.e("FileModel<FileAssistant>", 1, "Start VideoActivity is not in QQ!");
+        return;
       }
     }
-    for (;;)
+    catch (Exception localException)
     {
-      paramView.setTag(2131296390, Boolean.valueOf(bool));
-      if (bool) {
-        paramView.setTag(2131296389, Integer.valueOf(paramInt));
+      Object localObject;
+      for (;;)
+      {
+        localObject = null;
       }
-      return;
-      paramInt = 1;
-      break;
-      paramInt = 2;
-      break;
-      paramInt = 3;
-      break;
-      bool = false;
-    }
-  }
-  
-  public void a(Intent paramIntent) {}
-  
-  public void a(apsu paramapsu)
-  {
-    this.jdField_a_of_type_Apsu = paramapsu;
-  }
-  
-  public void a(aptf paramaptf) {}
-  
-  public void a(apul paramapul)
-  {
-    this.jdField_a_of_type_Apul = paramapul;
-  }
-  
-  public void aL_()
-  {
-    if (this.jdField_a_of_type_Apul != null) {
-      this.jdField_a_of_type_Apul.o();
-    }
-  }
-  
-  public void aM_()
-  {
-    if (this.jdField_a_of_type_Apul != null) {
-      this.jdField_a_of_type_Apul.p();
-    }
-  }
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void i()
-  {
-    if (this.jdField_a_of_type_Apul != null) {
-      this.jdField_a_of_type_Apul.q();
-    }
-  }
-  
-  public void l()
-  {
-    if (this.jdField_a_of_type_Apul != null) {
-      this.jdField_a_of_type_Apul.d();
+      if (((apsz.a(this.jdField_a_of_type_Apsz).status == 0) || (apsz.a(this.jdField_a_of_type_Apsz).status == 3)) && (((this.jdField_a_of_type_AndroidAppActivity instanceof ChatActivity)) || ((this.jdField_a_of_type_AndroidAppActivity instanceof SplashActivity))) && (!apsz.a(this.jdField_a_of_type_Apsz).bSend))
+      {
+        localObject.a().a(apsz.a(this.jdField_a_of_type_Apsz).nSessionId);
+        return;
+      }
+      apsz.a(this.jdField_a_of_type_Apsz, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, 10004);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aptf
  * JD-Core Version:    0.7.0.1
  */

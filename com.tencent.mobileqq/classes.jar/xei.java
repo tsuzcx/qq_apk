@@ -1,28 +1,26 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.PopupWindow;
 
 class xei
-  extends Handler
+  implements View.OnTouchListener
 {
-  xei(xeh paramxeh, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  xei(xeh paramxeh) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramMessage.what == 203) && ((paramMessage.obj instanceof Bundle)))
+    if (paramMotionEvent.getAction() == 4)
     {
-      paramMessage = (Bundle)paramMessage.obj;
-      xeh.a(this.a, paramMessage);
+      this.a.a.dismiss();
+      return true;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xei
  * JD-Core Version:    0.7.0.1
  */

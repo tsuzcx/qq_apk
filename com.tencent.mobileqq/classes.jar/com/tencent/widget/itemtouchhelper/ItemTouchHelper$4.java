@@ -3,22 +3,22 @@ package com.tencent.widget.itemtouchhelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ItemAnimator;
 import android.support.v7.widget.RecyclerView.ViewHolder;
-import beqc;
-import beqg;
-import beqk;
+import bfxw;
+import bfya;
+import bfye;
 
 public class ItemTouchHelper$4
   implements Runnable
 {
-  public ItemTouchHelper$4(beqc parambeqc, beqk parambeqk, int paramInt) {}
+  public ItemTouchHelper$4(bfxw parambfxw, bfye parambfye, int paramInt) {}
   
   public void run()
   {
-    if ((this.this$0.mRecyclerView != null) && (this.this$0.mRecyclerView.isAttachedToWindow()) && (!this.jdField_a_of_type_Beqk.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Beqk.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.getAdapterPosition() != -1))
+    if ((this.this$0.mRecyclerView != null) && (this.this$0.mRecyclerView.isAttachedToWindow()) && (!this.jdField_a_of_type_Bfye.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Bfye.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.getAdapterPosition() != -1))
     {
       RecyclerView.ItemAnimator localItemAnimator = this.this$0.mRecyclerView.getItemAnimator();
       if (((localItemAnimator == null) || (!localItemAnimator.isRunning(null))) && (!this.this$0.hasRunningRecoverAnim())) {
-        this.this$0.mCallback.onSwiped(this.jdField_a_of_type_Beqk.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, this.jdField_a_of_type_Int);
+        this.this$0.mCallback.onSwiped(this.jdField_a_of_type_Bfye.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, this.jdField_a_of_type_Int);
       }
     }
     else

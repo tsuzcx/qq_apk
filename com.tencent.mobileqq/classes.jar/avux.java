@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView.3;
 
 public class avux
-  extends avuy
+  implements avtk
 {
-  public avux(GroupSearchEngine paramGroupSearchEngine, avuz paramavuz, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramavuz, paramString, paramInt);
-  }
+  public avux(EffectsCameraCaptureView.3 param3) {}
   
-  protected avom a(List<avon> paramList, String paramString)
+  public void a()
   {
-    return new avob(paramList, paramString, GroupSearchEngine.a(this.a));
+    bipb.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avux
  * JD-Core Version:    0.7.0.1
  */

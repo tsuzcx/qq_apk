@@ -1,42 +1,56 @@
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.observer.AccountObserver;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
 class agep
-  extends AccountObserver
+  implements bfpc
 {
-  agep(agem paramagem) {}
+  agep(agei paramagei) {}
   
-  public void onUpdateSKey(String paramString1, String paramString2)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    if (paramString1 == null)
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
+    }
+    if ((this.a.jdField_a_of_type_Agbq.getCount() <= 0) || (paramInt <= 0)) {}
+    do
+    {
+      return;
+      paramAdapterView = (ager)this.a.jdField_a_of_type_Agbq.getItem(paramInt - 1);
+    } while (paramAdapterView == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int + ",needSearchInCloud:" + this.a.b);
+    }
+    try
+    {
+      paramAdapterView = azjv.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgData);
+      if (paramAdapterView == null) {
+        break label214;
+      }
+      paramAdapterView = (TroopLinkElement)paramAdapterView;
+    }
+    catch (Exception paramAdapterView)
     {
       for (;;)
       {
-        int j = i - 1;
-        if (i <= 0) {
-          break;
-        }
-        paramString1 = agem.a(this.a, ((TroopClipPic)this.a.jdField_a_of_type_JavaUtilArrayList.get(j)).ts);
-        if (paramString1 == null)
-        {
-          i = j;
-        }
-        else
-        {
-          this.a.jdField_a_of_type_JavaUtilList.remove(paramString1);
-          this.a.b(paramString1);
-          i = j;
-        }
+        paramAdapterView = null;
+        continue;
+        paramAdapterView = null;
       }
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
     }
-    this.a.a(this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, paramString1, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    if (paramAdapterView != null)
+    {
+      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("url", paramAdapterView.url);
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    }
+    this.a.a(true);
   }
 }
 

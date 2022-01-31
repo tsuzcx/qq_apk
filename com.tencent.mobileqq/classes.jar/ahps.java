@@ -1,17 +1,4 @@
-import com.tencent.mobileqq.activity.selectable.TextPreviewMenu;
-import java.util.List;
-
-public class ahps
-  extends axky
-{
-  public ahps(TextPreviewMenu paramTextPreviewMenu) {}
-  
-  protected void a(boolean paramBoolean, List<String> paramList)
-  {
-    TextPreviewMenu.b(this.a);
-    TextPreviewMenu.a(this.a, paramList);
-  }
-}
+public abstract interface ahps {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar

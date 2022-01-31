@@ -1,6 +1,6 @@
 package cooperation.qzone.music;
 
-import ajjy;
+import ajyc;
 import android.text.TextUtils;
 import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 public class QzoneMusicHelper
 {
-  public static final String NO_NETWORK_MSG = ajjy.a(2131646240);
+  public static final String NO_NETWORK_MSG = ajyc.a(2131712028);
   
   public static SongInfo convertAudioSongInfo(JSONObject paramJSONObject)
   {

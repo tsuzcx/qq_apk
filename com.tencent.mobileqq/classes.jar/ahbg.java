@@ -1,24 +1,27 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Bundle;
+import android.text.TextUtils;
+import mqq.observer.BusinessObserver;
 
-final class ahbg
-  implements Animation.AnimationListener
+public class ahbg
+  implements BusinessObserver
 {
-  ahbg(View paramView, Animation paramAnimation) {}
+  public void a(int paramInt, String paramString, Bundle paramBundle) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    if ((paramInt == 1) && (paramBundle != null))
+    {
+      paramInt = paramBundle.getInt("btype");
+      String str = paramBundle.getString("bid");
+      if ((ahbe.a(paramInt)) && (!TextUtils.isEmpty(str))) {
+        a(paramInt, str, paramBundle);
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahbg
  * JD-Core Version:    0.7.0.1
  */

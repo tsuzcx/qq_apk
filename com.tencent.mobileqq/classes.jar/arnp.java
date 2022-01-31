@@ -1,246 +1,550 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.troop.data.VideoUploadTask;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.open.agent.BindGroupFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import localpb.richMsg.MixedMsg.Elem;
-import localpb.richMsg.MixedMsg.Msg;
-import localpb.richMsg.RichMsg.PicRec;
-import tencent.im.msg.im_msg_body.CustomFace;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.NotOnlineImage;
-import tencent.im.msg.im_msg_body.RichText;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class arnp
-  extends atqp
+public class arnp
+  extends WebViewPlugin
 {
-  arnp(arno paramarno, MessageForMixedMsg paramMessageForMixedMsg, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
+  int jdField_a_of_type_Int;
+  akim jdField_a_of_type_Akim = new arnu(this);
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  VideoUploadTask jdField_a_of_type_ComTencentMobileqqTroopDataVideoUploadTask;
+  String jdField_a_of_type_JavaLangString;
+  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  wxu jdField_a_of_type_Wxu = null;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  wxu jdField_b_of_type_Wxu;
+  String c;
+  String d;
+  String e;
+  String f;
+  String g;
   
-  private boolean a(MessageForPic paramMessageForPic, atpw paramatpw)
+  public arnp()
   {
-    im_msg_body.RichText localRichText = new im_msg_body.RichText();
-    im_msg_body.Elem localElem = new im_msg_body.Elem();
-    String str = "";
-    if (paramatpw.jdField_a_of_type_JavaLangObject != null) {
-      if ((paramatpw.jdField_a_of_type_JavaLangObject instanceof im_msg_body.NotOnlineImage))
-      {
-        localElem.not_online_image.set((im_msg_body.NotOnlineImage)paramatpw.jdField_a_of_type_JavaLangObject);
-        if (paramatpw.b)
-        {
-          if (!localElem.not_online_image.res_id.has()) {
-            break label274;
-          }
-          str = localElem.not_online_image.res_id.get().toStringUtf8();
-        }
-      }
+    this.mPluginNameSpace = "troopApi";
+  }
+  
+  private Context a()
+  {
+    for (Activity localActivity = this.mRuntime.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    return localActivity;
+  }
+  
+  private void a(int paramInt)
+  {
+    a(paramInt, 0);
+  }
+  
+  private void a(int paramInt1, int paramInt2)
+  {
+    if (this.mRuntime.a() != null) {
+      bcpw.a(this.mRuntime.a(), paramInt2, this.mRuntime.a().getString(paramInt1), 0).b(this.mRuntime.a().getResources().getDimensionPixelSize(2131298865));
     }
+  }
+  
+  private void a(TroopInfo paramTroopInfo)
+  {
+    this.jdField_a_of_type_Wxu.a(paramTroopInfo.troopuin, this.jdField_b_of_type_Int, this.e);
+  }
+  
+  private void a(String paramString)
+  {
+    JSONObject localJSONObject = new JSONObject();
     for (;;)
     {
-      paramMessageForPic.uuid = str;
-      paramMessageForPic.path = str;
-      paramMessageForPic.thumbMsgUrl = localElem.not_online_image.str_thumb_url.get();
-      paramMessageForPic.thumbHeight = localElem.not_online_image.uint32_thumb_height.get();
-      paramMessageForPic.thumbWidth = localElem.not_online_image.uint32_thumb_width.get();
-      paramMessageForPic.md5 = bace.c(arno.a());
-      paramMessageForPic.msgData = paramMessageForPic.getSerialPB().toByteArray();
-      if (QLog.isColorLevel()) {
-        QLog.d("MixedMsgManager", 2, " pic resp uuid = " + str + " picMsgMD5 = " + paramMessageForPic.md5 + " hasCode = " + paramMessageForPic.hashCode());
-      }
-      int i = 1;
-      label227:
-      boolean bool;
-      if (i != 0)
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MixedMsgManager", 2, "updateMessageForPic success");
-        }
-        localRichText.elems.add(localElem);
-        if (paramatpw.jdField_a_of_type_Int == 0) {
-          bool = true;
-        }
-      }
-      for (;;)
-      {
-        paramMessageForPic.richText = localRichText;
-        return bool;
-        label274:
-        if (!localElem.not_online_image.download_path.has()) {
-          break label489;
-        }
-        str = localElem.not_online_image.download_path.get().toStringUtf8();
-        break;
-        if ((paramatpw.jdField_a_of_type_JavaLangObject instanceof im_msg_body.CustomFace))
+        Context localContext = a();
+        if (localContext != null)
         {
-          localElem.custom_face.set((im_msg_body.CustomFace)paramatpw.jdField_a_of_type_JavaLangObject);
-          if (paramatpw.b)
+          localJSONObject.put("contactsnum", bajd.b(localContext));
+          localJSONObject.put("appnum", bajd.a(localContext));
+          localJSONObject.put("medianum", bajd.c(localContext) + bajd.d(localContext));
+          localJSONObject.put("storage", bajd.c() + bajd.a());
+          localJSONObject.put("storagetotal", bajd.d() + bajd.b());
+          if (Build.VERSION.SDK_INT < 23) {
+            break label216;
+          }
+          if (!bajd.a(localContext, 4))
           {
-            if (localElem.custom_face.str_file_path.has()) {
-              str = localElem.custom_face.str_file_path.get();
+            j = 1;
+            i = j;
+            if (!bajd.a(localContext, 59)) {
+              i = j + 2;
             }
-            paramMessageForPic.path = str;
-            paramMessageForPic.uuid = str;
-            paramMessageForPic.md5 = bace.c(arno.a());
-            paramMessageForPic.msgData = paramMessageForPic.getSerialPB().toByteArray();
+            localJSONObject.put("result", i);
+            callJs(paramString, new String[] { localJSONObject.toString() });
           }
-          i = 1;
-          break label227;
         }
-        if (QLog.isColorLevel()) {
-          QLog.e("MixedMsgManager", 2, "WTF, picResult.mExtraObj is " + paramatpw.jdField_a_of_type_JavaLangObject.getClass().getSimpleName());
-        }
-        i = 0;
-        break label227;
-        if (QLog.isColorLevel())
+        else
         {
-          QLog.e("MixedMsgManager", 2, "[requestUploadPics] Bad picture element");
-          bool = false;
+          i = -1;
           continue;
-          if (QLog.isColorLevel()) {
-            QLog.e("MixedMsgManager", 2, "updateMessageForPic failed, add empty element");
-          }
         }
-        bool = false;
+        int j = 0;
       }
-      label489:
-      str = "";
-    }
-  }
-  
-  private boolean a(ArrayList<atpw> paramArrayList)
-  {
-    MessageForMixedMsg localMessageForMixedMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg;
-    int j;
-    boolean bool2;
-    if (localMessageForMixedMsg.msgElemList != null)
-    {
-      int i = 0;
-      j = 0;
-      boolean bool1 = true;
-      bool2 = bool1;
-      if (j >= localMessageForMixedMsg.msgElemList.size()) {
-        break label135;
-      }
-      Object localObject = (MessageRecord)localMessageForMixedMsg.msgElemList.get(j);
-      if (!(localObject instanceof MessageForPic)) {
-        break label138;
-      }
-      localObject = (MessageForPic)localObject;
-      if (QLog.isColorLevel()) {
-        QLog.d("MixedMsgManager", 2, "updateMessageForPic for MessageForMixedMsg, subMsgIndex[" + j);
-      }
-      if (!a((MessageForPic)localObject, (atpw)paramArrayList.get(i))) {
-        bool1 = false;
-      }
-      i += 1;
-    }
-    label135:
-    label138:
-    for (;;)
-    {
-      j += 1;
-      break;
-      bool2 = true;
-      return bool2;
-    }
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, ArrayList<atpw> paramArrayList)
-  {
-    if ((paramInt == 0) && (paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MixedMsgManager", 2, "onForwardMultiMsgPicsUpload success[" + paramArrayList.size() + "]");
-      }
-      boolean bool = a(paramArrayList);
-      if (!bool)
+      catch (JSONException localJSONException)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("MixedMsgManager", 2, "onForwardMultiMsgPicsUpload : isAllPicUploadSuccessful = false ");
+          QLog.w("TroopApiPlugin", 2, "sendDeviceInfoToWeb JSONException:" + localJSONException);
         }
-        arno.a(this.jdField_a_of_type_Arno, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, false, "picUpload fail");
+        callJs(paramString, new String[] { "{\"result\":-1}" });
         return;
       }
-      paramArrayList = new MixedMsg.Msg();
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgElemList.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject1 = (MessageRecord)localIterator.next();
-        MixedMsg.Elem localElem = new MixedMsg.Elem();
-        if ((localObject1 instanceof MessageForText))
-        {
-          if (!TextUtils.isEmpty(((MessageRecord)localObject1).msg)) {
-            localElem.textMsg.set(((MessageRecord)localObject1).msg);
-          }
-        }
-        else {
-          for (;;)
-          {
-            paramArrayList.elems.get().add(localElem);
-            break;
-            Object localObject2;
-            if (((MessageRecord)localObject1).msgtype == -2000)
-            {
-              localObject2 = new RichMsg.PicRec();
-              try
-              {
-                localObject1 = (RichMsg.PicRec)((RichMsg.PicRec)localObject2).mergeFrom(((MessageRecord)localObject1).msgData);
-                localElem.picMsg.set((MessageMicro)localObject1);
-              }
-              catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-              {
-                QLog.e("MixedMsgManager", 1, "onForwardMultiMsgPicsUpload", localInvalidProtocolBufferMicroException);
-              }
-            }
-            else if ((localInvalidProtocolBufferMicroException instanceof MessageForReplyText))
-            {
-              try
-              {
-                MessageForReplyText localMessageForReplyText = (MessageForReplyText)localInvalidProtocolBufferMicroException;
-                if (localMessageForReplyText.mSourceMsgInfo != null) {
-                  localMessageForReplyText.mSourceMsgInfo.packSourceMsg(MessageForReplyText.getAppInterface(), localMessageForReplyText.getSourceMessage());
-                }
-                localObject2 = akhp.a(localMessageForReplyText.mSourceMsgInfo);
-                localElem.sourceMsgInfo.set(bach.a((byte[])localObject2));
-                if (TextUtils.isEmpty(localMessageForReplyText.msg)) {
-                  continue;
-                }
-                localElem.textMsg.set(localMessageForReplyText.msg);
-              }
-              catch (Exception localException) {}
-              if (QLog.isColorLevel()) {
-                QLog.d("MixedMsgManager", 2, localException.getMessage());
-              }
-            }
-          }
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgData = paramArrayList.toByteArray();
-      if (QLog.isColorLevel()) {
-        QLog.d("MixedMsgManager", 2, "updateMsgRecords done, goto onPackAndSendMsg");
-      }
-      arno.a(this.jdField_a_of_type_Arno, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, bool);
+      continue;
+      label216:
+      int i = 0;
+    }
+  }
+  
+  private void b(TroopInfo paramTroopInfo)
+  {
+    if (paramTroopInfo.cGroupOption != 3)
+    {
+      Intent localIntent = AddFriendLogicActivity.a(a(), paramTroopInfo.troopuin, paramTroopInfo.getTroopName(), paramTroopInfo.cGroupOption, this.jdField_b_of_type_Int, paramTroopInfo.joinTroopQuestion, paramTroopInfo.joinTroopAnswer, null, this.c, this.d);
+      this.jdField_a_of_type_Int = paramTroopInfo.cGroupOption;
+      startActivityForResult(localIntent, (byte)3);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("MixedMsgManager", 2, "onForwardMultiMsgPicsUpload failed");
+    this.jdField_a_of_type_Int = -1;
+    a(2131720495);
+  }
+  
+  void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    {
+      this.jdField_a_of_type_Wxu = wxu.a();
+      this.jdField_a_of_type_Wxu.a();
     }
-    arno.a(this.jdField_a_of_type_Arno, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, false, "picUpload fail : result = " + paramInt);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!"troopApi".equals(paramString2)) {
+      return false;
+    }
+    if ("createReward".equals(paramString3)) {}
+    label431:
+    int i;
+    do
+    {
+      for (;;)
+      {
+        return true;
+        if (!"openRewardDetail".equals(paramString3)) {
+          if ("previewRewardVideo".equals(paramString3))
+          {
+            try
+            {
+              paramString2 = new JSONObject(paramVarArgs[0]);
+              if (QLog.isColorLevel()) {
+                QLog.d("TroopApiPlugin", 2, "previewRewardVideo:" + paramString2);
+              }
+              paramJsBridgeListener = paramString2.optString("troopUin");
+              paramString1 = paramString2.optString("rewardId");
+              long l1 = paramString2.optLong("videoSize");
+              long l2 = paramString2.optLong("videoDuration");
+              paramString2 = paramString2.optString("callback");
+              this.jdField_a_of_type_Wxu.b(paramJsBridgeListener, paramString1, new arnq(this, l1, l2, paramString2));
+            }
+            catch (Exception paramJsBridgeListener) {}
+            if (QLog.isColorLevel()) {
+              QLog.w("TroopApiPlugin", 2, "previewRewardVideo exp", paramJsBridgeListener);
+            }
+          }
+          else if ("setRedPoint".equals(paramString3))
+          {
+            try
+            {
+              paramString1 = new JSONObject(paramVarArgs[0]);
+              if (QLog.isColorLevel()) {
+                QLog.d("TroopRankConfig", 2, "setRedPoint:" + paramString1);
+              }
+              paramJsBridgeListener = paramString1.optString("troopUin");
+              paramString1 = paramString1.optString("memberUin");
+              if (!azrd.a().a(paramJsBridgeListener, paramString1)) {
+                continue;
+              }
+              paramString1 = this.mRuntime.a();
+              paramJsBridgeListener = this.mRuntime.a();
+              if ((paramString1 == null) || (!(paramString1 instanceof AbsBaseWebViewActivity))) {
+                break label431;
+              }
+              paramJsBridgeListener = (AbsBaseWebViewActivity)paramString1;
+              paramJsBridgeListener.rightViewImg.setVisibility(0);
+              this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramJsBridgeListener);
+              paramString1 = (RelativeLayout)paramJsBridgeListener.findViewById(2131375449);
+              if (paramString1 == null) {
+                continue;
+              }
+              paramString2 = new RelativeLayout.LayoutParams(-2, -2);
+              paramString2.addRule(7, 2131368457);
+              paramString2.setMargins(0, actn.a(5.0F, paramJsBridgeListener.getResources()), actn.a(5.0F, paramJsBridgeListener.getResources()), 0);
+              this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramString2);
+              this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+              this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849289);
+              paramString1.addView(this.jdField_a_of_type_AndroidWidgetImageView);
+            }
+            catch (Exception paramJsBridgeListener) {}
+            if (QLog.isColorLevel())
+            {
+              QLog.w("TroopRankConfig", 2, "setRedPoint exp", paramJsBridgeListener);
+              continue;
+              if (paramJsBridgeListener != null)
+              {
+                paramJsBridgeListener.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+                this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramJsBridgeListener.getActivity());
+                paramString1 = (RelativeLayout)paramJsBridgeListener.jdField_a_of_type_Bcfj.d.findViewById(2131375449);
+                if (paramString1 != null)
+                {
+                  paramString2 = new RelativeLayout.LayoutParams(-2, -2);
+                  paramString2.addRule(7, 2131368457);
+                  paramString2.setMargins(0, actn.a(5.0F, paramJsBridgeListener.getResources()), actn.a(5.0F, paramJsBridgeListener.getResources()), 0);
+                  this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramString2);
+                  this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+                  this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849289);
+                  paramString1.addView(this.jdField_a_of_type_AndroidWidgetImageView);
+                }
+              }
+            }
+          }
+          else if ("openEditUniqTitle".equals(paramString3))
+          {
+            try
+            {
+              paramString2 = new JSONObject(paramVarArgs[0]);
+              this.jdField_b_of_type_JavaLangString = paramString2.getString("callback");
+              if (QLog.isColorLevel()) {
+                QLog.d("TroopRankConfig", 2, "openEditUniqTitle:" + paramString2);
+              }
+              paramJsBridgeListener = paramString2.optString("troopUin");
+              paramString1 = paramString2.optString("memberUin");
+              i = paramString2.optInt("memberRole");
+              paramString2 = paramString2.optString("uniqueTitle");
+              startActivityForResult(EditUniqueTitleActivity.a(this.mRuntime.a(), 1, paramJsBridgeListener, paramString1, i, paramString2), (byte)4);
+            }
+            catch (Exception paramJsBridgeListener) {}
+            if (QLog.isColorLevel()) {
+              QLog.w("TroopRankConfig", 2, "openEditUniqTitle exp", paramJsBridgeListener);
+            }
+          }
+          else if ("saveTroopMemberTitle".equals(paramString3))
+          {
+            try
+            {
+              this.jdField_b_of_type_Wxu = wxu.a();
+              this.jdField_b_of_type_Wxu.a();
+              paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+              if (QLog.isColorLevel()) {
+                QLog.d("TroopRankConfig", 2, "saveTroopMemberTitle:" + paramJsBridgeListener);
+              }
+              paramString1 = paramJsBridgeListener.optString("troopUin");
+              paramString2 = paramJsBridgeListener.optString("memberUin");
+              i = paramJsBridgeListener.optInt("titleId");
+              this.jdField_b_of_type_Wxu.a(paramString1, paramString2, i);
+            }
+            catch (Exception paramJsBridgeListener) {}
+            if (QLog.isColorLevel()) {
+              QLog.w("TroopRankConfig", 2, "saveTroopMemberTitle exp:", paramJsBridgeListener);
+            }
+          }
+          else if ("clickMineButton".equals(paramString3))
+          {
+            try
+            {
+              paramString1 = new JSONObject(paramVarArgs[0]);
+              if (QLog.isColorLevel()) {
+                QLog.d("TroopRankConfig", 2, "clickMineButton:" + paramString1);
+              }
+              paramJsBridgeListener = paramString1.optString("troopUin");
+              paramString1 = paramString1.optString("memberUin");
+              if (!azrd.a().a(paramJsBridgeListener, paramString1)) {
+                continue;
+              }
+              this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+              azrd.a().a(paramJsBridgeListener, paramString1, false);
+            }
+            catch (Exception paramJsBridgeListener) {}
+            if (QLog.isColorLevel()) {
+              QLog.w("TroopRankConfig", 2, "clickMineButton exp", paramJsBridgeListener);
+            }
+          }
+          else if ("addTroop".equals(paramString3))
+          {
+            try
+            {
+              paramString1 = new JSONObject(paramVarArgs[0]);
+              if (QLog.isColorLevel()) {
+                QLog.d("TroopApiPlugin", 2, "AddTroop:" + paramString1);
+              }
+              paramJsBridgeListener = paramString1.optString("troopUin");
+              this.jdField_b_of_type_Int = Integer.parseInt(paramString1.optString("sourceid"));
+              this.c = paramString1.optString("sourcename");
+              this.d = paramString1.optString("authSig");
+              this.e = paramString1.optString("authKey");
+              this.jdField_a_of_type_JavaLangString = paramString1.optString("callback");
+              paramString1 = this.mRuntime.a().getEntityManagerFactory(this.mRuntime.a().getAccount()).createEntityManager();
+              paramString2 = (TroopInfo)paramString1.a(TroopInfo.class, paramJsBridgeListener);
+              paramString1.a();
+              if (paramString2 != null) {
+                a(2131690044);
+              }
+            }
+            catch (JSONException paramJsBridgeListener)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.w("TroopApiPlugin", 2, "AddTroop JSONException:" + paramJsBridgeListener);
+              }
+              callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1,\"message\":\"request fail\"}" });
+              continue;
+              this.jdField_a_of_type_Wxu.a(paramJsBridgeListener, 8390785);
+            }
+            catch (Exception paramJsBridgeListener)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.w("TroopApiPlugin", 2, "AddTroop Exception:" + paramJsBridgeListener);
+              }
+              callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-10,\"message\":\"request fail\"}" });
+            }
+          }
+          else if ("huanjiStatus".equals(paramString3))
+          {
+            try
+            {
+              paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+              paramString1 = paramJsBridgeListener.optString("pluginPackageName");
+              paramString2 = paramJsBridgeListener.optString("pluginID");
+              paramString3 = paramJsBridgeListener.optString("versionCode");
+              this.f = paramJsBridgeListener.optString("callback");
+              this.jdField_a_of_type_Wxu.a(paramString1, paramString2, paramString3, new arnr(this));
+            }
+            catch (JSONException paramJsBridgeListener) {}
+            if (QLog.isColorLevel()) {
+              QLog.w("TroopApiPlugin", 2, "HuanjiStatus JSONException:" + paramJsBridgeListener);
+            }
+          }
+          else if ("huanjiDownload".equals(paramString3))
+          {
+            try
+            {
+              paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+              paramString1 = paramJsBridgeListener.optString("via");
+              paramString2 = paramJsBridgeListener.optString("startParam");
+              paramString3 = paramJsBridgeListener.optString("pluginId");
+              i = paramJsBridgeListener.optInt("action");
+              this.g = paramJsBridgeListener.optString("callback");
+              this.jdField_a_of_type_Wxu.a(i, paramString1, paramString3, paramString2, new arns(this));
+            }
+            catch (JSONException paramJsBridgeListener) {}
+            if (QLog.isColorLevel()) {
+              QLog.w("TroopApiPlugin", 2, "huanjiDownload JSONException:" + paramJsBridgeListener);
+            }
+          }
+          else if ("huanjiGetInfo".equals(paramString3))
+          {
+            try
+            {
+              paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+              if (QLog.isColorLevel()) {
+                QLog.d("TroopApiPlugin", 2, "huanjiGetInfo");
+              }
+              paramJsBridgeListener = paramJsBridgeListener.optString("callback");
+              paramString1 = this.mRuntime.a();
+              if (!(paramString1 instanceof AppActivity)) {
+                continue;
+              }
+              ((AppActivity)paramString1).requestPermissions(new arnt(this, paramJsBridgeListener), 1, new String[] { "android.permission.READ_CONTACTS" });
+            }
+            catch (Exception paramJsBridgeListener) {}
+            if (QLog.isColorLevel()) {
+              QLog.w("TroopApiPlugin", 2, "huanjiGetInfo Exception:" + paramJsBridgeListener);
+            }
+          }
+          else if ("thirdAppCreateGroupCallback".equals(paramString3))
+          {
+            paramJsBridgeListener = paramVarArgs[0];
+            try
+            {
+              QLog.i("TroopAbility.Jsapi", 1, "create troop callback content: " + paramJsBridgeListener);
+              paramJsBridgeListener = new JSONObject(paramJsBridgeListener);
+              i = paramJsBridgeListener.optInt("retCode");
+              paramJsBridgeListener.optString("error");
+              paramJsBridgeListener = paramJsBridgeListener.optString("troopUin");
+              if (i != 0) {
+                continue;
+              }
+              paramString1 = (BaseActivity)this.mRuntime.a();
+              if (paramString1 == null) {
+                return false;
+              }
+              paramString2 = new Intent();
+              paramString2.addFlags(603979776);
+              paramString2.putExtra("action", 2);
+              paramString2.putExtra("troop_uin", paramJsBridgeListener);
+              abtu.a(paramString1, paramString2, PublicFragmentActivity.class, BindGroupFragment.class);
+              paramString1.overridePendingTransition(0, 0);
+            }
+            catch (Exception paramJsBridgeListener)
+            {
+              if (QLog.isColorLevel()) {
+                paramJsBridgeListener.printStackTrace();
+              }
+              return false;
+            }
+          }
+          else
+          {
+            if (!"openTroopProfile".equals(paramString3)) {
+              break;
+            }
+            if (paramVarArgs != null)
+            {
+              try
+              {
+                if (paramVarArgs.length <= 0) {
+                  continue;
+                }
+                if (QLog.isColorLevel()) {
+                  QLog.w("TroopApiPlugin", 2, "open troop profile " + paramVarArgs[0]);
+                }
+                paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+                paramString1 = TroopInfoActivity.a(paramJsBridgeListener.optString("troopUin"), paramJsBridgeListener.optInt("from"));
+                paramString1.putString("authSig", paramJsBridgeListener.optString("authSig"));
+                bamn.a(this.mRuntime.a(), paramString1, 2);
+              }
+              catch (JSONException paramJsBridgeListener) {}
+              if (QLog.isColorLevel()) {
+                QLog.w("TroopApiPlugin", 2, "open troop profile Exception:" + paramJsBridgeListener);
+              }
+            }
+          }
+        }
+      }
+    } while (!"setGroupMarkSwitch".equals(paramString3));
+    for (;;)
+    {
+      try
+      {
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        i = paramJsBridgeListener.getInt("isOn");
+        paramJsBridgeListener = paramJsBridgeListener.getString("groupCode");
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopHonor.jsapi", 2, String.format("troop honor aio switch, troopUin: %s, switch: %s", new Object[] { paramJsBridgeListener, Integer.valueOf(i) }));
+        }
+        if (TextUtils.isEmpty(paramJsBridgeListener)) {
+          break;
+        }
+        paramString1 = this.jdField_a_of_type_Wxu;
+        if (i != 1) {
+          break label2078;
+        }
+        bool = true;
+        paramString1.c(paramJsBridgeListener, bool);
+      }
+      catch (Exception paramJsBridgeListener)
+      {
+        paramJsBridgeListener.printStackTrace();
+        QLog.d(this.TAG, 1, "JASPI setGroupMarkSwitch", paramJsBridgeListener);
+      }
+      break;
+      label2078:
+      boolean bool = false;
+    }
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    if (paramByte == 4)
+    {
+      if (paramInt != -1) {
+        break label94;
+      }
+      if (paramIntent != null) {
+        break label75;
+      }
+      paramIntent = "";
+    }
+    for (;;)
+    {
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("code", 0);
+        localJSONObject.put("uniqueTitle", paramIntent);
+        callJs(this.jdField_b_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+        label75:
+        paramIntent = paramIntent.getStringExtra("newUniqueTitle");
+      }
+      catch (JSONException paramIntent)
+      {
+        for (;;)
+        {
+          paramIntent.printStackTrace();
+        }
+      }
+    }
+    label94:
+    callJs(this.jdField_b_of_type_JavaLangString, new String[] { "{\"code\":-1}" });
+  }
+  
+  public void onCreate()
+  {
+    AppInterface localAppInterface = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.a();
+    if ((localAppInterface == null) || (localActivity == null)) {}
+    do
+    {
+      return;
+      a();
+    } while (this.jdField_a_of_type_Wxu == null);
+    this.jdField_a_of_type_Wxu.a(this.jdField_a_of_type_Akim);
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      this.jdField_a_of_type_Wxu.b(this.jdField_a_of_type_Akim);
+      this.jdField_a_of_type_Wxu.b();
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopDataVideoUploadTask != null) && (!this.jdField_a_of_type_ComTencentMobileqqTroopDataVideoUploadTask.a())) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopDataVideoUploadTask.a();
+    }
+    if (this.jdField_b_of_type_Wxu != null) {
+      this.jdField_b_of_type_Wxu.b();
+    }
   }
 }
 

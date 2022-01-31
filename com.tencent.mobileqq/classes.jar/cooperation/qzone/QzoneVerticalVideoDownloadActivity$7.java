@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import awqm;
+import axql;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.Properties;
 
@@ -13,7 +13,7 @@ final class QzoneVerticalVideoDownloadActivity$7
   {
     Properties localProperties = new Properties();
     localProperties.put(this.jdField_a_of_type_JavaLangString, this.b);
-    awqm.a(BaseApplicationImpl.getContext()).reportTimeKVEvent(this.c, localProperties, this.jdField_a_of_type_Int);
+    axql.a(BaseApplicationImpl.getContext()).reportTimeKVEvent(this.c, localProperties, this.jdField_a_of_type_Int);
   }
 }
 

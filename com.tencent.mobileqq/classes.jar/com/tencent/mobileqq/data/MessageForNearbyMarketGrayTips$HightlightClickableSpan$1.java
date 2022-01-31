@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import amsx;
+import anje;
 
 public class MessageForNearbyMarketGrayTips$HightlightClickableSpan$1
   implements Runnable
 {
-  public MessageForNearbyMarketGrayTips$HightlightClickableSpan$1(amsx paramamsx) {}
+  public MessageForNearbyMarketGrayTips$HightlightClickableSpan$1(anje paramanje) {}
   
   public void run()
   {

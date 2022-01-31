@@ -1,19 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import java.util.ArrayList;
 
-class avsb
-  implements View.OnClickListener
+public class avsb
 {
-  avsb(avsa paramavsa, avom paramavom) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Avom.a(paramView);
-  }
+  public int a;
+  public axdh a;
+  public PtvTemplateManager.PtvTemplateInfo a;
+  public ArrayList<avsa> a = new ArrayList();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avsb
  * JD-Core Version:    0.7.0.1
  */

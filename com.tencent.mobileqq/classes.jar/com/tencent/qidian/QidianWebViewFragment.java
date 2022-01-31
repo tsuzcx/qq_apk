@@ -1,7 +1,7 @@
 package com.tencent.qidian;
 
-import bacn;
-import bade;
+import bbds;
+import bbej;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
@@ -14,10 +14,10 @@ public class QidianWebViewFragment
     if ((paramString.startsWith("mqqwpa://")) && (paramString.contains("request=videochat"))) {
       try
       {
-        bacn localbacn = bade.a(null, getActivity(), paramString);
-        if (localbacn != null)
+        bbds localbbds = bbej.a(null, getActivity(), paramString);
+        if (localbbds != null)
         {
-          boolean bool = localbacn.c();
+          boolean bool = localbbds.c();
           return bool;
         }
       }

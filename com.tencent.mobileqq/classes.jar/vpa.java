@@ -1,14 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.io.File;
+import java.io.FileFilter;
 
 class vpa
-  implements View.OnClickListener
+  implements FileFilter
 {
-  vpa(voy paramvoy) {}
+  vpa(voz paramvoz) {}
   
-  public void onClick(View paramView)
+  public boolean accept(File paramFile)
   {
-    this.a.dismiss();
+    paramFile = paramFile.getName();
+    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp"));
   }
 }
 

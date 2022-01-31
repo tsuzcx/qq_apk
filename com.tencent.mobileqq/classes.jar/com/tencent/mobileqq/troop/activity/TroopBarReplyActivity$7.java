@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import beex;
+import bfmr;
 
 class TroopBarReplyActivity$7
   implements Runnable
@@ -9,7 +9,7 @@ class TroopBarReplyActivity$7
   
   public void run()
   {
-    beex.a(this.this$0.a);
+    bfmr.a(this.this$0.a);
     TroopBarReplyActivity.a(this.this$0);
   }
 }

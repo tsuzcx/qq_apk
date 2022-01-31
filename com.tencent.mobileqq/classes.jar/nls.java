@@ -1,15 +1,14 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
-public class nls
+class nls
   implements View.OnClickListener
 {
-  public nls(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  nls(nlr paramnlr) {}
   
   public void onClick(View paramView)
   {
-    obz.a(paramView.getContext(), "https://kandian.qq.com/mqq/vue/configPush?_wv=3&x5PreFetch=1&_bid=2378", null);
+    this.a.a.d();
   }
 }
 

@@ -1,11 +1,14 @@
-public class axyj
-  extends axyr
+import android.view.View;
+import android.view.ViewGroup;
+
+class axyj
 {
-  public int a;
-  public long a;
-  public byte[] a;
-  public int b;
-  public int c;
+  public View a;
+  public ViewGroup a;
+  public View b;
+  public ViewGroup b;
+  public View c;
+  public View d;
 }
 
 

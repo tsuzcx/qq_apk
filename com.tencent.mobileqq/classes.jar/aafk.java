@@ -1,28 +1,20 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import mqq.os.MqqHandler;
 
-public final class aafk
-  implements DialogInterface.OnClickListener
+public class aafk
+  extends MqqHandler
 {
-  public aafk(long paramLong, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString, boolean paramBoolean1, aagm paramaagm, Bundle paramBundle, boolean paramBoolean2) {}
+  public aafk(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    boolean bool = false;
-    paramDialogInterface = ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext);
-    if (paramInt == 1)
+    switch (paramMessage.what)
     {
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDialogInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Aagm, this.jdField_a_of_type_AndroidOsBundle);
+    default: 
       return;
     }
-    if (!this.b) {
-      bool = true;
-    }
-    ChatActivityUtils.a(paramDialogInterface, bool, null);
+    this.a.e();
   }
 }
 

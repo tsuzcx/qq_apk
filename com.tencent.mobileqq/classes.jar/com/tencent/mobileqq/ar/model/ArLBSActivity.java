@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.model;
 
-import akwf;
+import alkr;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ArLBSActivity
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArLBSActivity> CREATOR = new akwf();
+  public static final Parcelable.Creator<ArLBSActivity> CREATOR = new alkr();
   public String a = "";
   public String b = "";
   public String c = "";

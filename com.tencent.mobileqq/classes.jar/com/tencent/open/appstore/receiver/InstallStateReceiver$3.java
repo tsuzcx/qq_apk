@@ -1,8 +1,8 @@
 package com.tencent.open.appstore.receiver;
 
 import android.content.Intent;
-import bcdj;
-import bcds;
+import bdhk;
+import bdht;
 
 class InstallStateReceiver$3
   implements Runnable
@@ -14,11 +14,11 @@ class InstallStateReceiver$3
     if (this.jdField_a_of_type_AndroidContentIntent.hasExtra("android.intent.extra.REPLACING")) {}
     for (boolean bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("android.intent.extra.REPLACING", false);; bool = false)
     {
-      bcds.c("InstallStateReceiver", "[onReceive] ACTION_PACKAGE_ADDED >> " + this.jdField_a_of_type_JavaLangString + ",isReplacing:" + bool);
+      bdht.c("InstallStateReceiver", "[onReceive] ACTION_PACKAGE_ADDED >> " + this.jdField_a_of_type_JavaLangString + ",isReplacing:" + bool);
       if (bool) {
         return;
       }
-      bcdj.a(this.b, false);
+      bdhk.a(this.b, false);
       InstallStateReceiver.a(this.this$0, this.b, 1);
       return;
     }

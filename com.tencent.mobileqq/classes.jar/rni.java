@@ -1,19 +1,24 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.viola.core.ViolaInstance;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.text.style.LineBackgroundSpan;
 
 public class rni
-  implements View.OnLayoutChangeListener
+  implements LineBackgroundSpan
 {
-  public rni(ViolaBaseView paramViolaBaseView) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public rni(int paramInt)
   {
-    if (ViolaBaseView.a(this.a) != null) {
-      ViolaBaseView.a(this.a).setSize(paramView.getWidth(), paramView.getHeight());
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void drawBackground(Canvas paramCanvas, Paint paramPaint, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, CharSequence paramCharSequence, int paramInt6, int paramInt7, int paramInt8) {}
 }
 
 

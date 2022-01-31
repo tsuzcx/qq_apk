@@ -1,19 +1,28 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.data.AutoReplyText;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.OperationView;
+import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
+import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
 
-public abstract interface atkl
+public class atkl
 {
-  public abstract void a(AutoReplyText paramAutoReplyText);
+  public int a;
+  public View a;
+  public ViewGroup a;
+  public RelativeLayout a;
+  public VideoData a;
+  public OperationView a;
+  public QQStoryVideoPlayerErrorView a;
+  public ImageDisplayView a;
   
-  public abstract void a(AutoReplyText paramAutoReplyText1, AutoReplyText paramAutoReplyText2);
-  
-  public abstract void a(AutoReplyText paramAutoReplyText, boolean paramBoolean);
-  
-  public abstract void b(@Nullable AutoReplyText paramAutoReplyText, boolean paramBoolean);
+  public atkl(VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atkl
  * JD-Core Version:    0.7.0.1
  */

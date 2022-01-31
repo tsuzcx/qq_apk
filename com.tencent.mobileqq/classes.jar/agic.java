@@ -1,33 +1,14 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import mqq.util.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
 public class agic
-  extends aggm
+  extends atzl
 {
-  private agic(NewPhotoListActivity paramNewPhotoListActivity)
-  {
-    super(paramNewPhotoListActivity);
-  }
+  public agic(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public static aggh b(NewPhotoListActivity paramNewPhotoListActivity)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((jdField_a_of_type_Aggh == null) || (jdField_a_of_type_Aggh.a.get() != paramNewPhotoListActivity)) {}
-    try
-    {
-      if ((jdField_a_of_type_Aggh == null) || (jdField_a_of_type_Aggh.a.get() != paramNewPhotoListActivity)) {
-        jdField_a_of_type_Aggh = new agic(paramNewPhotoListActivity);
-      }
-      return jdField_a_of_type_Aggh;
-    }
-    finally {}
-  }
-  
-  protected void a(Intent paramIntent)
-  {
-    super.a(paramIntent);
-    this.jdField_a_of_type_Aggf.b = 6291456;
-    paramIntent.putExtra("PhotoConst.SHOULD_SEND_RAW_PHOTO", true);
+    AvatarPendantActivity.a(this.a);
   }
 }
 

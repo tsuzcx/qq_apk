@@ -1,204 +1,548 @@
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.Arrays;
-import java.util.zip.CRC32;
-import java.util.zip.CheckedOutputStream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.1;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.4;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.7;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
+import com.tencent.smtt.export.external.interfaces.IX5WebViewBase.HitTestResult;
+import com.tencent.smtt.export.external.interfaces.IX5WebViewBase.HitTestResult.ImageAnchorData;
+import com.tencent.smtt.sdk.CookieManager;
 
 public class bced
+  extends bcds
 {
-  protected static final String a = File.separator;
+  public int a;
+  public final Activity a;
+  public bcpq a;
+  public bfol a;
+  public CookieManager a;
+  public Object a;
+  String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public static void a(File paramFile1, File paramFile2)
+  public bced(Activity paramActivity)
   {
-    paramFile2 = new ZipOutputStream(new BufferedOutputStream(new CheckedOutputStream(new FileOutputStream(paramFile2), new CRC32())));
-    paramFile2.setLevel(0);
-    a(paramFile1, paramFile2, "", false);
-    paramFile2.flush();
-    paramFile2.close();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof QQBrowserActivity)) {
+      this.jdField_a_of_type_Int = ((QQBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight();
+    }
+    ThreadManager.postImmediately(new SwiftBrowserLongClickHandler.1(this, paramActivity), null, true);
   }
   
-  public static void a(File paramFile, String paramString)
+  private void d(String paramString)
   {
-    a(paramFile, new File(paramString));
+    if (this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+      return;
+    }
+    ThreadManager.excute(new SwiftBrowserLongClickHandler.4(this, paramString), 64, null, true);
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    if ((this.jdField_a_of_type_Bfol != null) && (this.jdField_a_of_type_Bfol.isShowing())) {
+      this.jdField_a_of_type_Bfol.dismiss();
+    }
+    aljj.a().a(hashCode(), "SwiftBrowserLongClickHandler");
   }
   
   /* Error */
-  protected static void a(File paramFile, ZipOutputStream paramZipOutputStream, String paramString)
+  public void a(String paramString)
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
-    //   3: new 66	java/util/zip/ZipEntry
+    //   1: astore 6
+    //   3: new 93	java/io/File
     //   6: dup
-    //   7: new 68	java/lang/StringBuilder
-    //   10: dup
-    //   11: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   14: aload_2
-    //   15: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   18: aload_0
-    //   19: invokevirtual 77	java/io/File:getName	()Ljava/lang/String;
-    //   22: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   28: invokespecial 81	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   31: astore_2
-    //   32: aload_2
-    //   33: lconst_0
-    //   34: invokevirtual 85	java/util/zip/ZipEntry:setTime	(J)V
-    //   37: aload_1
-    //   38: aload_2
-    //   39: invokevirtual 89	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
-    //   42: new 91	java/io/BufferedInputStream
-    //   45: dup
-    //   46: new 93	java/io/FileInputStream
-    //   49: dup
-    //   50: aload_0
-    //   51: invokespecial 94	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   54: invokespecial 97	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   57: astore_2
-    //   58: aload_2
-    //   59: astore_0
-    //   60: sipush 8192
-    //   63: newarray byte
-    //   65: astore 4
-    //   67: aload_2
-    //   68: astore_0
-    //   69: aload_2
-    //   70: aload 4
-    //   72: iconst_0
-    //   73: sipush 8192
-    //   76: invokevirtual 101	java/io/BufferedInputStream:read	([BII)I
-    //   79: istore_3
-    //   80: iload_3
-    //   81: iconst_m1
-    //   82: if_icmpeq +43 -> 125
-    //   85: aload_2
-    //   86: astore_0
-    //   87: aload_1
-    //   88: aload 4
-    //   90: iconst_0
-    //   91: iload_3
-    //   92: invokevirtual 105	java/util/zip/ZipOutputStream:write	([BII)V
-    //   95: goto -28 -> 67
-    //   98: astore_1
-    //   99: aload_2
-    //   100: astore_0
-    //   101: new 64	java/lang/Exception
-    //   104: dup
-    //   105: aload_1
-    //   106: invokespecial 108	java/lang/Exception:<init>	(Ljava/lang/Throwable;)V
-    //   109: athrow
-    //   110: astore_2
-    //   111: aload_0
-    //   112: astore_1
-    //   113: aload_2
-    //   114: astore_0
-    //   115: aload_1
-    //   116: ifnull +7 -> 123
-    //   119: aload_1
-    //   120: invokevirtual 109	java/io/BufferedInputStream:close	()V
-    //   123: aload_0
-    //   124: athrow
-    //   125: aload_2
-    //   126: astore_0
-    //   127: aload_1
-    //   128: invokevirtual 112	java/util/zip/ZipOutputStream:closeEntry	()V
-    //   131: aload_2
-    //   132: ifnull +7 -> 139
-    //   135: aload_2
-    //   136: invokevirtual 109	java/io/BufferedInputStream:close	()V
-    //   139: return
-    //   140: astore_0
-    //   141: aload 4
-    //   143: astore_1
-    //   144: goto -29 -> 115
-    //   147: astore_1
-    //   148: aconst_null
-    //   149: astore_0
-    //   150: goto -49 -> 101
+    //   7: aload_1
+    //   8: invokespecial 95	java/io/File:<init>	(Ljava/lang/String;)V
+    //   11: astore 8
+    //   13: new 97	java/io/FileInputStream
+    //   16: dup
+    //   17: aload 8
+    //   19: invokespecial 100	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   22: astore 5
+    //   24: aload 5
+    //   26: invokevirtual 105	java/io/InputStream:read	()I
+    //   29: istore_2
+    //   30: aload 5
+    //   32: invokevirtual 105	java/io/InputStream:read	()I
+    //   35: istore_3
+    //   36: aload 5
+    //   38: invokevirtual 105	java/io/InputStream:read	()I
+    //   41: istore 4
+    //   43: iload_2
+    //   44: bipush 66
+    //   46: if_icmpne +177 -> 223
+    //   49: iload_3
+    //   50: bipush 77
+    //   52: if_icmpne +171 -> 223
+    //   55: ldc 107
+    //   57: astore_1
+    //   58: aload 5
+    //   60: ifnull +331 -> 391
+    //   63: aload 5
+    //   65: invokevirtual 110	java/io/InputStream:close	()V
+    //   68: aload_1
+    //   69: ifnull +288 -> 357
+    //   72: aload_0
+    //   73: getfield 112	bced:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   76: invokestatic 118	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   79: invokevirtual 122	android/net/Uri:getLastPathSegment	()Ljava/lang/String;
+    //   82: astore 6
+    //   84: aload 6
+    //   86: invokestatic 128	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   89: ifeq +206 -> 295
+    //   92: ldc 130
+    //   94: astore 5
+    //   96: new 93	java/io/File
+    //   99: dup
+    //   100: getstatic 135	ajsf:bc	Ljava/lang/String;
+    //   103: invokespecial 95	java/io/File:<init>	(Ljava/lang/String;)V
+    //   106: invokevirtual 138	java/io/File:mkdirs	()Z
+    //   109: pop
+    //   110: new 140	java/lang/StringBuilder
+    //   113: dup
+    //   114: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   117: getstatic 135	ajsf:bc	Ljava/lang/String;
+    //   120: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   123: aload 5
+    //   125: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   128: aload_1
+    //   129: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   135: astore 7
+    //   137: new 93	java/io/File
+    //   140: dup
+    //   141: aload 7
+    //   143: invokespecial 95	java/io/File:<init>	(Ljava/lang/String;)V
+    //   146: astore 6
+    //   148: iconst_2
+    //   149: istore_2
+    //   150: aload 6
+    //   152: invokevirtual 151	java/io/File:exists	()Z
+    //   155: ifeq +174 -> 329
+    //   158: iload_2
+    //   159: ldc 152
+    //   161: if_icmpge +168 -> 329
+    //   164: new 140	java/lang/StringBuilder
+    //   167: dup
+    //   168: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   171: getstatic 135	ajsf:bc	Ljava/lang/String;
+    //   174: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: aload 5
+    //   179: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   182: ldc 154
+    //   184: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   187: iload_2
+    //   188: invokevirtual 157	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   191: ldc 159
+    //   193: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   196: aload_1
+    //   197: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   200: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   203: astore 7
+    //   205: new 93	java/io/File
+    //   208: dup
+    //   209: aload 7
+    //   211: invokespecial 95	java/io/File:<init>	(Ljava/lang/String;)V
+    //   214: astore 6
+    //   216: iload_2
+    //   217: iconst_1
+    //   218: iadd
+    //   219: istore_2
+    //   220: goto -70 -> 150
+    //   223: iload_2
+    //   224: sipush 137
+    //   227: if_icmpne +167 -> 394
+    //   230: iload_3
+    //   231: bipush 80
+    //   233: if_icmpne +161 -> 394
+    //   236: ldc 161
+    //   238: astore_1
+    //   239: goto -181 -> 58
+    //   242: ldc 163
+    //   244: astore_1
+    //   245: goto -187 -> 58
+    //   248: astore 5
+    //   250: goto -182 -> 68
+    //   253: astore_1
+    //   254: aconst_null
+    //   255: astore 5
+    //   257: aload 5
+    //   259: ifnull +127 -> 386
+    //   262: aload 5
+    //   264: invokevirtual 110	java/io/InputStream:close	()V
+    //   267: aconst_null
+    //   268: astore_1
+    //   269: goto -201 -> 68
+    //   272: astore_1
+    //   273: aconst_null
+    //   274: astore_1
+    //   275: goto -207 -> 68
+    //   278: astore_1
+    //   279: aload 6
+    //   281: astore 5
+    //   283: aload 5
+    //   285: ifnull +8 -> 293
+    //   288: aload 5
+    //   290: invokevirtual 110	java/io/InputStream:close	()V
+    //   293: aload_1
+    //   294: athrow
+    //   295: aload 6
+    //   297: astore 5
+    //   299: aload 6
+    //   301: aload_1
+    //   302: invokevirtual 169	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   305: ifeq -209 -> 96
+    //   308: aload 6
+    //   310: iconst_0
+    //   311: aload 6
+    //   313: invokevirtual 172	java/lang/String:length	()I
+    //   316: aload_1
+    //   317: invokevirtual 172	java/lang/String:length	()I
+    //   320: isub
+    //   321: invokevirtual 176	java/lang/String:substring	(II)Ljava/lang/String;
+    //   324: astore 5
+    //   326: goto -230 -> 96
+    //   329: aload 8
+    //   331: aload 6
+    //   333: invokevirtual 180	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   336: ifeq +21 -> 357
+    //   339: aload_0
+    //   340: getfield 30	bced:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
+    //   343: new 182	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$5
+    //   346: dup
+    //   347: aload_0
+    //   348: aload 7
+    //   350: invokespecial 183	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$5:<init>	(Lbced;Ljava/lang/String;)V
+    //   353: invokevirtual 187	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
+    //   356: return
+    //   357: aload_0
+    //   358: getfield 30	bced:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
+    //   361: new 189	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$6
+    //   364: dup
+    //   365: aload_0
+    //   366: invokespecial 192	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$6:<init>	(Lbced;)V
+    //   369: invokevirtual 187	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
+    //   372: return
+    //   373: astore 5
+    //   375: goto -82 -> 293
+    //   378: astore_1
+    //   379: goto -96 -> 283
+    //   382: astore_1
+    //   383: goto -126 -> 257
+    //   386: aconst_null
+    //   387: astore_1
+    //   388: goto -320 -> 68
+    //   391: goto -323 -> 68
+    //   394: iload_2
+    //   395: bipush 71
+    //   397: if_icmpne +15 -> 412
+    //   400: iload_3
+    //   401: bipush 73
+    //   403: if_icmpne +9 -> 412
+    //   406: ldc 194
+    //   408: astore_1
+    //   409: goto -351 -> 58
+    //   412: iload_2
+    //   413: sipush 255
+    //   416: if_icmpne +16 -> 432
+    //   419: iload_3
+    //   420: sipush 216
+    //   423: if_icmpne +9 -> 432
+    //   426: ldc 196
+    //   428: astore_1
+    //   429: goto -371 -> 58
+    //   432: bipush 82
+    //   434: iload_2
+    //   435: if_icmpne -193 -> 242
+    //   438: bipush 73
+    //   440: iload_3
+    //   441: if_icmpne -199 -> 242
+    //   444: bipush 70
+    //   446: iload 4
+    //   448: if_icmpne -206 -> 242
+    //   451: ldc 198
+    //   453: astore_1
+    //   454: goto -396 -> 58
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	153	0	paramFile	File
-    //   0	153	1	paramZipOutputStream	ZipOutputStream
-    //   0	153	2	paramString	String
-    //   79	13	3	i	int
-    //   1	141	4	arrayOfByte	byte[]
+    //   0	457	0	this	bced
+    //   0	457	1	paramString	String
+    //   29	407	2	i	int
+    //   35	407	3	j	int
+    //   41	408	4	k	int
+    //   22	156	5	localObject1	Object
+    //   248	1	5	localIOException1	java.io.IOException
+    //   255	70	5	localObject2	Object
+    //   373	1	5	localIOException2	java.io.IOException
+    //   1	331	6	localObject3	Object
+    //   135	214	7	str	String
+    //   11	319	8	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
-    //   60	67	98	java/lang/Exception
-    //   69	80	98	java/lang/Exception
-    //   87	95	98	java/lang/Exception
-    //   127	131	98	java/lang/Exception
-    //   60	67	110	finally
-    //   69	80	110	finally
-    //   87	95	110	finally
-    //   101	110	110	finally
-    //   127	131	110	finally
-    //   3	58	140	finally
-    //   3	58	147	java/lang/Exception
+    //   63	68	248	java/io/IOException
+    //   13	24	253	java/io/IOException
+    //   262	267	272	java/io/IOException
+    //   13	24	278	finally
+    //   288	293	373	java/io/IOException
+    //   24	43	378	finally
+    //   24	43	382	java/io/IOException
   }
   
-  protected static void a(File paramFile, ZipOutputStream paramZipOutputStream, String paramString, boolean paramBoolean)
+  void a(String paramString, int paramInt)
   {
-    if (paramFile.isDirectory())
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, ScannerActivity.class);
+    localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", paramString);
+    localIntent.putExtra("detectType", paramInt);
+    localIntent.putExtra("QRDecode", true);
+    localIntent.putExtra("QRDecodeResult", paramString);
+    String str = this.jdField_a_of_type_JavaLangString;
+    paramString = str;
+    if (!TextUtils.isEmpty(str))
     {
-      b(paramFile, paramZipOutputStream, paramString, paramBoolean);
+      paramString = str;
+      if (str.startsWith("data:")) {
+        paramString = "";
+      }
+    }
+    localIntent.putExtra("report_params", whm.a(null, paramString, null, null, null, 5));
+    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing())) {
+      this.jdField_a_of_type_Bcpq.dismiss();
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) || (!this.jdField_c_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString)) || (this.jdField_c_of_type_Int <= 0)) {
+          break label142;
+        }
+        bool2 = whm.a(this.jdField_c_of_type_Int);
+        bool1 = whm.b(this.jdField_c_of_type_Int);
+        if (bool2)
+        {
+          a(this.jdField_b_of_type_JavaLangString, 1);
+          return true;
+        }
+      }
+      if (bool1)
+      {
+        a(this.jdField_b_of_type_JavaLangString, 2);
+        return true;
+      }
+      bcpw.a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 1, 2131690183, 1).b(this.jdField_a_of_type_Int);
+      return false;
+      label142:
+      boolean bool1 = false;
+      boolean bool2 = false;
+    }
+  }
+  
+  public boolean a(View paramView)
+  {
+    int k = 0;
+    boolean bool1 = false;
+    if ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
+    {
+      bool1 = true;
+      return bool1;
+    }
+    Object localObject;
+    int i;
+    if ((this.jdField_a_of_type_Bcdt != null) && (this.jdField_a_of_type_Bcdt.a() != null))
+    {
+      localObject = this.jdField_a_of_type_Bcdt.a();
+      paramView = ((com.tencent.smtt.sdk.WebView)localObject).getX5HitTestResult();
+      if (paramView != null)
+      {
+        i = paramView.getType();
+        if (i == 8)
+        {
+          if (!(paramView.getData() instanceof IX5WebViewBase.HitTestResult.ImageAnchorData)) {
+            break label525;
+          }
+          paramView = ((IX5WebViewBase.HitTestResult.ImageAnchorData)paramView.getData()).mPicUrl;
+        }
+      }
+    }
+    for (;;)
+    {
+      label101:
+      localObject = ((com.tencent.smtt.sdk.WebView)localObject).getX5WebViewExtension();
+      boolean bool2;
+      label150:
+      int j;
+      if (localObject != null)
+      {
+        localObject = (Boolean)((IX5WebViewExtension)localObject).invokeMiscMethod("supportImageQuery", new Bundle());
+        if (localObject != null)
+        {
+          bool2 = ((Boolean)localObject).booleanValue();
+          bool1 = bool2;
+          localObject = paramView;
+          j = i;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("SwiftBrowserLongClickHandler", 2, "isSupportImageQuery:" + bool2);
+            j = i;
+            localObject = paramView;
+            bool1 = bool2;
+          }
+        }
+      }
+      for (;;)
+      {
+        if ((j != 8) && (j != 5))
+        {
+          QLog.e("SwiftBrowserLongClickHandler", 1, "the type of HitTestResult is not image type.");
+          return false;
+          paramView = paramView.getExtra();
+          break label101;
+          paramView = ((com.tencent.smtt.sdk.WebView)localObject).getHitTestResult();
+          if (paramView == null) {
+            break;
+          }
+          i = paramView.getType();
+          paramView = paramView.getExtra();
+          break label101;
+          QLog.e("SwiftBrowserLongClickHandler", 1, "X5WebView supportImageQuery invoke result is null.");
+          bool2 = false;
+          break label150;
+          QLog.e("SwiftBrowserLongClickHandler", 1, "X5WebView extension is null. can't get ability of supportImageQuery");
+          bool1 = false;
+          localObject = paramView;
+          j = i;
+          continue;
+          if (!(paramView instanceof android.webkit.WebView)) {
+            break label513;
+          }
+          paramView = ((android.webkit.WebView)paramView).getHitTestResult();
+          if (paramView == null) {
+            break;
+          }
+          j = paramView.getType();
+          localObject = paramView.getExtra();
+          bool1 = false;
+          continue;
+        }
+        if (TextUtils.isEmpty((CharSequence)localObject))
+        {
+          QLog.e("SwiftBrowserLongClickHandler", 1, "the image url of HitTestResult is empty.");
+          return false;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("SwiftBrowserLongClickHandler", 2, "showActionSheet");
+        }
+        this.jdField_a_of_type_JavaLangString = ((String)localObject);
+        i = k;
+        if ((this.jdField_a_of_type_AndroidAppActivity instanceof TeamWorkDocEditBrowserActivity)) {
+          i = 1;
+        }
+        this.jdField_a_of_type_Bfol = bfol.c(this.jdField_a_of_type_AndroidAppActivity);
+        if (bool1) {
+          this.jdField_a_of_type_Bfol.b(2131690565);
+        }
+        this.jdField_a_of_type_Bfol.b(2131690563);
+        this.jdField_a_of_type_Bfol.b(2131690562);
+        if (i != 0) {
+          this.jdField_a_of_type_Bfol.b(2131693381);
+        }
+        this.jdField_a_of_type_Bfol.c(2131690596);
+        d(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Bfol.a(new bcee(this));
+        this.jdField_a_of_type_Bfol.setOnDismissListener(new bcef(this));
+        this.jdField_a_of_type_Bfol.setCanceledOnTouchOutside(true);
+        try
+        {
+          this.jdField_a_of_type_Bfol.show();
+          return true;
+        }
+        catch (Exception paramView)
+        {
+          for (;;)
+          {
+            paramView.printStackTrace();
+          }
+        }
+        label513:
+        localObject = "";
+        j = 0;
+        bool1 = false;
+      }
+      label525:
+      paramView = "";
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("forward_type", 1);
+    localBundle.putString("forward_filepath", paramString);
+    localBundle.putString("forward_extra", paramString);
+    localBundle.putBoolean("not_forward", true);
+    localBundle.putString("forward_thumb", paramString);
+    localBundle.putBoolean("isFromShare", true);
+    localBundle.putBoolean("isJumpAIO", true);
+    paramString = new Intent();
+    paramString.putExtras(localBundle);
+    aqbc.a(this.jdField_a_of_type_AndroidAppActivity, paramString, 21);
+  }
+  
+  public void c(String paramString)
+  {
+    if (this.jdField_a_of_type_Bcdt == null)
+    {
+      QLog.e("SwiftBrowserLongClickHandler", 1, "x5QueryImage. mComponentContext is null");
       return;
     }
-    a(paramFile, paramZipOutputStream, paramString);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    a(new File(paramString1), paramString2);
-  }
-  
-  protected static void b(File paramFile, ZipOutputStream paramZipOutputStream, String paramString, boolean paramBoolean)
-  {
-    File[] arrayOfFile = paramFile.listFiles();
-    Arrays.sort(arrayOfFile);
-    int i;
-    label85:
-    File localFile;
-    if (arrayOfFile.length == 0)
+    Object localObject = this.jdField_a_of_type_Bcdt.a();
+    if (localObject == null)
     {
-      if (paramBoolean)
-      {
-        localObject = paramString + paramFile.getName() + a;
-        localObject = new ZipEntry((String)localObject);
-        ((ZipEntry)localObject).setTime(0L);
-        paramZipOutputStream.putNextEntry((ZipEntry)localObject);
-        paramZipOutputStream.closeEntry();
-      }
+      QLog.e("SwiftBrowserLongClickHandler", 1, "x5QueryImage. x5WebView is null");
+      return;
     }
-    else
+    localObject = ((com.tencent.smtt.sdk.WebView)localObject).getX5WebViewExtension();
+    if (localObject == null)
     {
-      int j = arrayOfFile.length;
-      i = 0;
-      if (i >= j) {
-        return;
-      }
-      localFile = arrayOfFile[i];
-      if (!paramBoolean) {
-        break label156;
-      }
+      QLog.e("SwiftBrowserLongClickHandler", 1, "x5QueryImage. extension is null");
+      return;
     }
-    label156:
-    for (Object localObject = paramString + paramFile.getName() + a;; localObject = paramString)
+    if (TextUtils.isEmpty(paramString))
     {
-      a(localFile, paramZipOutputStream, (String)localObject, true);
-      i += 1;
-      break label85;
-      localObject = paramString;
-      break;
+      QLog.e("SwiftBrowserLongClickHandler", 1, "x5QueryImage. filePath is null");
+      return;
     }
+    ThreadManager.excute(new SwiftBrowserLongClickHandler.7(this, paramString, (IX5WebViewExtension)localObject), 64, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bced
  * JD-Core Version:    0.7.0.1
  */

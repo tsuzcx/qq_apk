@@ -1,40 +1,65 @@
 import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
-import com.tencent.mobileqq.bubble.BubbleManager;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class acpc
-  extends AsyncTask<String, Void, Bitmap>
+  extends WebViewClient
 {
-  public acpc(VoicePrintUtils.VoicePrintView paramVoicePrintView) {}
+  private acpc(UpgradeDetailActivity paramUpgradeDetailActivity) {}
   
-  protected Bitmap a(String... paramVarArgs)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    paramVarArgs = paramVarArgs[0];
-    if (BaseApplicationImpl.sImageCache.get(paramVarArgs) == null)
-    {
-      Bitmap localBitmap = BubbleManager.a(paramVarArgs, this.a.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("VoicePrintUtils.DecodePngTask", 2, "decode " + paramVarArgs + "in background.");
-      }
-      BaseApplicationImpl.sImageCache.put(paramVarArgs, localBitmap);
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onPageFinished: " + paramString);
     }
-    return null;
+    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    super.onPageFinished(paramWebView, paramString);
   }
   
-  protected void a(Bitmap paramBitmap)
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    VoicePrintUtils.VoicePrintView.a(this.a);
-    this.a.setImageDrawable(VoicePrintUtils.VoicePrintView.a(this.a));
-    this.a.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onPageStarted: " + paramString);
+    }
+    if (this.a.a(paramString)) {
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    }
+    try
+    {
+      this.a.jdField_a_of_type_ComTencentSmttSdkWebView.stopLoading();
+      return;
+    }
+    catch (Exception paramWebView) {}
+    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    return;
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    this.a.a(true);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "shouldOverrideUrlLoading: " + paramString);
+    }
+    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
+    for (;;)
+    {
+      return true;
+      if ((!UpgradeDetailActivity.a(this.a).a(paramWebView, paramString)) && (!this.a.a(paramString))) {
+        this.a.a(paramString);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acpc
  * JD-Core Version:    0.7.0.1
  */

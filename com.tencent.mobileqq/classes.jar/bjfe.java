@@ -1,66 +1,78 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.View;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.util.WeakReference;
 
 public class bjfe
-  implements ViewPager.OnPageChangeListener
 {
-  public int a;
+  private bjfa jdField_a_of_type_Bjfa;
+  private ConcurrentHashMap<String, ArrayList<WeakReference<bjfd>>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public bjfe(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
+  public bjfe(bjfa parambjfa)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageScrollStateChanged state: " + paramInt);
-    }
+    this.jdField_a_of_type_Bjfa = parambjfa;
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void a(@NonNull bkfm parambkfm, bjfd parambjfd)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageScrolled position: " + paramInt1 + ", positionOffset: " + paramFloat + ", positionOffsetPixels: " + paramInt2);
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (this.jdField_a_of_type_Int == paramInt) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "onPageSelected l " + this.jdField_a_of_type_Int + ",n " + paramInt);
-      }
-    }
-    Object localObject;
-    do
+    String str = parambkfm.e;
+    if ((str == null) || (TextUtils.isEmpty(str)))
     {
-      return;
       if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "onPageSelected l " + this.jdField_a_of_type_Int + ",n" + paramInt);
+        QLog.i("QIMInformationPasterManager", 2, "startDownloadDynamicTextRes fontInfo is null or resUrl is empty.");
       }
-      biyj.a("", "0X8007804", "", "", "", "");
-      this.jdField_a_of_type_Int = paramInt;
-      View localView = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt);
-      if (localView != null)
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMInformationPasterManager", 2, "startDownloadDynamicText res url: " + str);
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
       {
-        localObject = (Runnable)localView.getTag();
-        if (localObject != null)
+        localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+        if (localArrayList != null)
         {
-          localView.removeCallbacks((Runnable)localObject);
-          localView.setTag(null);
+          parambkfm = localArrayList.iterator();
+          if (!parambkfm.hasNext()) {
+            break label292;
+          }
+          if (((WeakReference)parambkfm.next()).get() != parambjfd) {
+            continue;
+          }
+          i = 1;
+          if (i == 0) {
+            localArrayList.add(new WeakReference(parambjfd));
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("QIMInformationPasterManager", 2, "already put url " + str);
+          }
+          return;
         }
-        CaptureVideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager, localView, paramInt, false);
       }
-      localView = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt - 1);
-      localObject = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt + 1);
-      if (localView != null)
-      {
-        localView.removeCallbacks((Runnable)localView.getTag());
-        localView.clearAnimation();
-      }
-    } while (localObject == null);
-    ((View)localObject).removeCallbacks((Runnable)((View)localObject).getTag());
-    ((View)localObject).clearAnimation();
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(new WeakReference(parambjfd));
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localArrayList);
+      parambjfd = new ayrv();
+      parambjfd.jdField_a_of_type_Aysa = new bjff(this);
+      parambjfd.jdField_a_of_type_JavaLangString = str;
+      parambjfd.jdField_a_of_type_Int = 0;
+      parambjfd.jdField_c_of_type_JavaLangString = bjfa.a(parambkfm);
+      parambjfd.jdField_c_of_type_Int = bbev.a(aysy.a().a());
+      parambjfd.a(parambkfm);
+      lcm.a().a(parambjfd);
+      return;
+      label292:
+      int i = 0;
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString) != null;
   }
 }
 

@@ -4,7 +4,7 @@ import com.tencent.tmassistant.common.ProtocolPackage;
 import com.tencent.tmassistant.common.jce.Request;
 import com.tencent.tmassistant.common.jce.Response;
 import com.tencent.tmassistantbase.network.PostHttpRequest;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
 import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppDetailParam;
 import com.tencent.tmdatasourcesdk.internal.protocol.jce.GetAppSimpleDetailRequest;
@@ -26,19 +26,19 @@ public class a
     GetAppSimpleDetailRequest localGetAppSimpleDetailRequest = new GetAppSimpleDetailRequest();
     if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      ac.c("GetAppSimpleDetailHttpRequest", "appDetailParams size = " + paramArrayList.size());
+      ab.c("GetAppSimpleDetailHttpRequest", "appDetailParams size = " + paramArrayList.size());
       localGetAppSimpleDetailRequest.appReqList = paramArrayList;
       super.sendRequest(ProtocolPackage.buildPostData(ProtocolPackage.buildRequest(localGetAppSimpleDetailRequest)));
       return true;
     }
-    ac.e("GetAppSimpleDetailHttpRequest", "appDetailParams is null");
+    ab.e("GetAppSimpleDetailHttpRequest", "appDetailParams is null");
     return false;
   }
   
   public void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
   {
     if (paramArrayOfByte2 == null) {
-      ac.e("GetAppSimpleDetailHttpRequest", "response is null");
+      ab.e("GetAppSimpleDetailHttpRequest", "response is null");
     }
     label189:
     label208:
@@ -50,7 +50,7 @@ public class a
       if (paramArrayOfByte1 == null) {}
       for (Object localObject = "null";; localObject = Integer.valueOf(paramArrayOfByte1.length))
       {
-        ac.c("GetAppSimpleDetailHttpRequest", localObject + ",response length = " + paramArrayOfByte2.length + ",errorCode = " + paramInt);
+        ab.c("GetAppSimpleDetailHttpRequest", localObject + ",response length = " + paramArrayOfByte2.length + ",errorCode = " + paramInt);
         if ((this.a == null) || (paramInt != 0)) {
           break label247;
         }
@@ -77,15 +77,15 @@ public class a
         this.a.onExchangedURLSucceed(paramArrayOfByte1, true);
         return;
       }
-      ac.d("GetAppSimpleDetailHttpRequest", " appDetails 为空!!");
+      ab.d("GetAppSimpleDetailHttpRequest", " appDetails 为空!!");
       this.a.onExchangedURLSucceed(null, false);
       return;
-      ac.d("GetAppSimpleDetailHttpRequest", " 后台返回的ret错误，错误值为：" + paramArrayOfByte1.ret);
+      ab.d("GetAppSimpleDetailHttpRequest", " 后台返回的ret错误，错误值为：" + paramArrayOfByte1.ret);
       this.a.onExchangedURLSucceed(null, false);
       return;
-      ac.d("GetAppSimpleDetailHttpRequest", " error happened!!");
+      ab.d("GetAppSimpleDetailHttpRequest", " error happened!!");
     } while (this.a == null);
-    ac.d("GetAppSimpleDetailHttpRequest", "mListener.onExchangedURLSucceed");
+    ab.d("GetAppSimpleDetailHttpRequest", "mListener.onExchangedURLSucceed");
     this.a.onExchangedURLSucceed(null, false);
   }
 }

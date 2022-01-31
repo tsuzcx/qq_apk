@@ -2,14 +2,14 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.app.Activity;
 import android.os.Bundle;
-import bdfz;
+import beka;
 import com.tencent.qqmini.sdk.core.proxy.PayProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 
 class PayJsPlugin$9
   implements Runnable
 {
-  PayJsPlugin$9(PayJsPlugin paramPayJsPlugin, String paramString1, String paramString2, Activity paramActivity, bdfz parambdfz, boolean paramBoolean) {}
+  PayJsPlugin$9(PayJsPlugin paramPayJsPlugin, String paramString1, String paramString2, Activity paramActivity, beka parambeka, boolean paramBoolean) {}
   
   public void run()
   {
@@ -19,6 +19,7 @@ class PayJsPlugin$9
     localBundle.putInt("payparmas_paytype", 1);
     localBundle.putLong("payparmas_h5_start", System.currentTimeMillis());
     localBundle.putInt("payparmas_request_code", 6);
+    localBundle.putString("payparmas_sdk_pf", PayJsPlugin.access$500(this.this$0));
     localBundle = ((PayProxy)ProxyManager.get(PayProxy.class)).midasPay(this.val$activity, PayJsPlugin.access$400(this.this$0, this.val$payJson), new PayJsPlugin.9.1(this), localBundle);
     if (localBundle != null) {}
     for (int i = localBundle.getInt("retCode", 0);; i = 0)

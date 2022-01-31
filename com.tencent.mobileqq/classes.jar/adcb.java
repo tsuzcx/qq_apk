@@ -1,32 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.data.ArkFlashChatMessage;
-import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class adcb
-  implements DialogInterface.OnClickListener
+public class adcb
+  implements View.OnClickListener
 {
-  adcb(adbx paramadbx, MessageForArkFlashChat paramMessageForArkFlashChat) {}
+  public adcb(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = (MessageForArkFlashChat)awbi.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat);
-    if (paramDialogInterface.msgData == null) {
-      if (paramDialogInterface.ark_app_message == null) {
-        ArkAppCenter.c("ArkApp", String.format("resendMessage, msgData and ark_app_message are null", new Object[0]));
-      }
+    if ((VoiceTextEditPanel.a(this.a).get() == 1) || (VoiceTextEditPanel.a(this.a).get() == 3)) {
+      bcpw.a(this.a.getContext(), ajyc.a(2131716856), 0).b(this.a.getContext().getResources().getDimensionPixelSize(2131298865));
     }
-    while (this.jdField_a_of_type_Adbx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)
-    {
-      return;
-      paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
-    }
-    this.jdField_a_of_type_Adbx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Adbx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adbx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.uniseq);
-    this.jdField_a_of_type_Adbx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramDialogInterface, null, true);
   }
 }
 

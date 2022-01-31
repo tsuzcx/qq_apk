@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import apjo;
-import bajq;
+import aqdb;
+import bbkx;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -21,31 +21,31 @@ class ForwardNewVersionDialog$8$1
   
   public void run()
   {
-    int k = apjo.a(this.a.this$0, apjo.a(this.a.this$0));
-    int m = apjo.a(this.a.this$0, apjo.a(this.a.this$0));
-    int n = apjo.a(this.a.this$0).getHeight();
+    int k = aqdb.a(this.a.this$0, aqdb.a(this.a.this$0));
+    int m = aqdb.a(this.a.this$0, aqdb.a(this.a.this$0));
+    int n = aqdb.a(this.a.this$0).getHeight();
     int i1 = ImmersiveUtils.getStatusBarHeight(this.a.this$0.getContext());
     int i;
     int j;
     StringBuilder localStringBuilder;
     if (k - (m + n) > 0)
     {
-      i = apjo.a(this.a.this$0).getHeight() / 2;
+      i = aqdb.a(this.a.this$0).getHeight() / 2;
       Object localObject = this.a.this$0.getWindow().getAttributes();
       ((WindowManager.LayoutParams)localObject).y = (-i);
       this.a.this$0.getWindow().setAttributes((WindowManager.LayoutParams)localObject);
       if (i > m - i1)
       {
-        localObject = apjo.a(this.a.this$0).getLayoutParams();
+        localObject = aqdb.a(this.a.this$0).getLayoutParams();
         if (localObject != null)
         {
-          ((ViewGroup.LayoutParams)localObject).height = (k - ImmersiveUtils.getStatusBarHeight(this.a.this$0.getContext()) - bajq.a(10.0F));
-          apjo.a(this.a.this$0).requestLayout();
+          ((ViewGroup.LayoutParams)localObject).height = (k - ImmersiveUtils.getStatusBarHeight(this.a.this$0.getContext()) - bbkx.a(10.0F));
+          aqdb.a(this.a.this$0).requestLayout();
         }
       }
       if (QLog.isColorLevel())
       {
-        localObject = (Context)apjo.a(this.a.this$0).get();
+        localObject = (Context)aqdb.a(this.a.this$0).get();
         j = 0;
         if (localObject != null) {
           j = ((Context)localObject).getResources().getDisplayMetrics().heightPixels;
@@ -68,7 +68,7 @@ class ForwardNewVersionDialog$8$1
         i = m - i;
         break;
       }
-      i = m + n - k + bajq.a(10.0F);
+      i = m + n - k + bbkx.a(10.0F);
       break;
       label388:
       localStringBuilder.append("|context is not null");

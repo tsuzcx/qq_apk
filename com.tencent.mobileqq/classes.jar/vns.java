@@ -1,30 +1,59 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import android.util.SparseBooleanArray;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-final class vns
-  extends vnh
+public class vns
+  implements vmq
 {
-  vns(vnh paramvnh, PublishVideoEntry paramPublishVideoEntry) {}
+  private vns(DoodleLayout paramDoodleLayout) {}
   
-  public void onFailure(String paramString)
+  public void a()
   {
-    QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 1, paramString);
-    this.jdField_a_of_type_Vnh.onFailure(paramString);
-    urp.a("music_composite", "music_clip", 0, 1, new String[0]);
-    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio failed  msg：" + paramString);
+    this.a.a().c();
   }
   
-  public void onStart()
+  public void a(int paramInt)
   {
-    super.onStart();
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio start");
+    this.a.a().a(paramInt);
   }
   
-  public void onSuccess(String paramString)
+  public void a(boolean paramBoolean, vls paramvls)
   {
-    paramString = String.valueOf(System.currentTimeMillis() - this.b);
-    urp.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio end cost：" + paramString);
+    vld localvld = this.a.a();
+    if (paramBoolean)
+    {
+      localvld.a(true);
+      switch (this.a.b)
+      {
+      }
+      for (;;)
+      {
+        this.a.c(3);
+        return;
+        this.a.a().b(false);
+      }
+    }
+    if (paramvls.jdField_a_of_type_Int != -1) {
+      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, true);
+    }
+    for (;;)
+    {
+      localvld.a(paramvls);
+      localvld.a(false);
+      this.a.a(new View[] { this.a.jdField_a_of_type_AndroidWidgetRelativeLayout });
+      this.a.c(0);
+      this.a.d(0);
+      this.a.jdField_a_of_type_Vnr.i();
+      return;
+      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, false);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.a.jdField_a_of_type_Vnr != null) {
+      this.a.jdField_a_of_type_Vnr.b(3, paramInt);
+    }
   }
 }
 

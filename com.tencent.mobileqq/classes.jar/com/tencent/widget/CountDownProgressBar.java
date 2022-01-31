@@ -11,8 +11,8 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import beif;
-import beig;
+import bfpz;
+import bfqa;
 
 public class CountDownProgressBar
   extends View
@@ -21,8 +21,8 @@ public class CountDownProgressBar
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Handler jdField_a_of_type_AndroidOsHandler = new beif(this);
-  private beig jdField_a_of_type_Beig;
+  private Handler jdField_a_of_type_AndroidOsHandler = new bfpz(this);
+  private bfqa jdField_a_of_type_Bfqa;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long = 1000L;
@@ -48,11 +48,11 @@ public class CountDownProgressBar
   public CountDownProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = paramContext.getResources().getColor(2131100656);
-    this.jdField_b_of_type_Int = paramContext.getResources().getColor(2131100653);
-    this.c = paramContext.getResources().getColor(2131100657);
-    this.e = paramContext.getResources().getColor(2131099822);
-    this.l = paramContext.getResources().getColor(2131100654);
+    this.jdField_a_of_type_Int = paramContext.getResources().getColor(2131166246);
+    this.jdField_b_of_type_Int = paramContext.getResources().getColor(2131166243);
+    this.c = paramContext.getResources().getColor(2131166247);
+    this.e = paramContext.getResources().getColor(2131165359);
+    this.l = paramContext.getResources().getColor(2131166244);
     float f1 = paramContext.getResources().getDisplayMetrics().density;
     this.f = ((int)(21.0F * f1 + 0.5F));
     this.d = ((int)(2.0F * f1 + 0.5F));
@@ -121,9 +121,9 @@ public class CountDownProgressBar
     }
   }
   
-  public void setOnCountDownLinstener(beig parambeig)
+  public void setOnCountDownLinstener(bfqa parambfqa)
   {
-    this.jdField_a_of_type_Beig = parambeig;
+    this.jdField_a_of_type_Bfqa = parambfqa;
   }
   
   public void setTotalMills(long paramLong)

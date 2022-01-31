@@ -12,6 +12,7 @@ class FilamentFilter$4
   
   public void run()
   {
+    FilaBenchUtil.benchStart(FilamentJavaUtil.BenchTag.IO.tag);
     if (FilamentFilter.access$900(this.this$0).size() == 0)
     {
       Iterator localIterator = FilamentFilter.access$1000(this.this$0).iterator();
@@ -25,6 +26,7 @@ class FilamentFilter$4
       }
     }
     FilamentFilter.access$1202(this.this$0, true);
+    FilaBenchUtil.benchEnd(FilamentJavaUtil.BenchTag.IO.tag);
   }
 }
 

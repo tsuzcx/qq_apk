@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import aayg;
-import aayh;
-import aayi;
-import aayj;
-import agkl;
-import ajjh;
+import abid;
+import abie;
+import abif;
+import abig;
+import agxa;
+import ajxl;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -19,19 +20,21 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
-import aqam;
-import aqan;
-import awrn;
-import babr;
-import bacn;
-import bade;
-import bafb;
-import bbmy;
+import aquo;
+import aqup;
+import axrl;
+import bbcv;
+import bbds;
+import bbej;
+import bbgg;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -49,22 +52,22 @@ import mqq.app.AppRuntime;
 import mqq.app.Constants.LogoutReason;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import zqa;
+import zzs;
 
 public class GesturePWDUnlockActivity
   extends BaseActivity
-  implements View.OnClickListener, Animation.AnimationListener, aqan
+  implements View.OnClickListener, Animation.AnimationListener, aqup
 {
   public static boolean c;
   private float jdField_a_of_type_Float = 1.0F;
   int jdField_a_of_type_Int = 5;
   public long a;
-  ajjh jdField_a_of_type_Ajjh = new aayi(this);
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aayj(this);
+  ajxl jdField_a_of_type_Ajxl = new abif(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new abig(this);
   private View jdField_a_of_type_AndroidViewView;
   public ImageView a;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bafb jdField_a_of_type_Bafb;
+  private bbgg jdField_a_of_type_Bbgg;
   LockPatternView jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView;
   String jdField_a_of_type_JavaLangString = "";
   boolean jdField_a_of_type_Boolean = false;
@@ -98,7 +101,7 @@ public class GesturePWDUnlockActivity
   
   private void g()
   {
-    this.jdField_c_of_type_JavaLangString = getString(2131627369);
+    this.jdField_c_of_type_JavaLangString = getString(2131693009);
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("key_gesture_from_jumpactivity", false);
     this.jdField_d_of_type_Boolean = getIntent().getBooleanExtra("key_gesture_from_authority", false);
     this.jdField_b_of_type_Boolean = getIntent().getBooleanExtra("key_req_by_contact_sync", false);
@@ -107,28 +110,28 @@ public class GesturePWDUnlockActivity
       this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("scheme_content");
       this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("pkg_name");
     }
-    addObserver(this.jdField_a_of_type_Ajjh);
+    addObserver(this.jdField_a_of_type_Ajxl);
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
     this.jdField_b_of_type_Int = GesturePWDUtils.getGestureUnlockFailedTime(getActivity(), this.app.getCurrentAccountUin());
   }
   
   private void h()
   {
-    setTitle(2131627353);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131301426));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131301423));
-    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView = ((LockPatternView)findViewById(2131301425));
+    setTitle(2131692993);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367036));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367033));
+    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView = ((LockPatternView)findViewById(2131367035));
     this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setFillInGapCell(false);
     this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setTactileFeedbackEnabled(false);
     this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setOnPatternListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131301422));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367032));
     Object localObject1;
     if ((this.app != null) && (this.app.getCurrentAccountUin() != null))
     {
       localObject1 = this.app.a(this.app.getCurrentAccountUin(), (byte)3, false);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject1);
     }
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131301424));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367034));
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetTextView.setEnabled(false);
     if (this.jdField_a_of_type_Float <= 1.0D)
@@ -142,7 +145,7 @@ public class GesturePWDUnlockActivity
     {
       this.jdField_a_of_type_Int = (5 - this.jdField_b_of_type_Int);
       Object localObject2 = MessageFormat.format(this.jdField_c_of_type_JavaLangString, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131101162));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166756));
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       localObject1 = this.jdField_a_of_type_Int + "";
       int i = ((String)localObject2).indexOf((String)localObject1);
@@ -159,7 +162,7 @@ public class GesturePWDUnlockActivity
   
   public void a() {}
   
-  public void a(List<aqam> paramList)
+  public void a(List<aquo> paramList)
   {
     if (paramList != null)
     {
@@ -183,7 +186,7 @@ public class GesturePWDUnlockActivity
           GesturePWDUtils.setGestureLocking(this, false);
           if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
           {
-            paramList = bade.a(this.app, getActivity(), this.jdField_a_of_type_JavaLangString);
+            paramList = bbej.a(this.app, getActivity(), this.jdField_a_of_type_JavaLangString);
             paramList.b(this.jdField_b_of_type_JavaLangString);
             paramList.c();
           }
@@ -191,7 +194,7 @@ public class GesturePWDUnlockActivity
             QLog.d("Q.gesturelock.unlock", 2, "unlock success.");
           }
           this.jdField_a_of_type_Int = 5;
-          agkl.a(this.app, true);
+          agxa.a(this.app, true);
           return;
           setResult(-1);
         }
@@ -206,7 +209,7 @@ public class GesturePWDUnlockActivity
       d();
       return;
     }
-    bbmy.a(this, 1, getString(2131627364), 0).b(getTitleBarHeight());
+    bcpw.a(this, 1, getString(2131693004), 0).b(getTitleBarHeight());
     this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
     this.jdField_a_of_type_Int -= 1;
     if (this.jdField_a_of_type_Int > 0)
@@ -219,7 +222,7 @@ public class GesturePWDUnlockActivity
   
   public void b() {}
   
-  public void b(List<aqam> paramList) {}
+  public void b(List<aquo> paramList) {}
   
   void c()
   {
@@ -227,7 +230,7 @@ public class GesturePWDUnlockActivity
       QLog.d("Q.gesturelock.unlock", 2, "onUnlockFailedInRange");
     }
     Object localObject = MessageFormat.format(this.jdField_c_of_type_JavaLangString, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131101162));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166756));
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     String str = this.jdField_a_of_type_Int + "";
     int i = ((String)localObject).indexOf(str);
@@ -244,12 +247,12 @@ public class GesturePWDUnlockActivity
       QLog.d("Q.gesturelock.unlock", 2, "onUnlockFailedOutRange");
     }
     BaseApplicationImpl.sUiHandler.postDelayed(new GesturePWDUnlockActivity.3(this), 500L);
-    if ((this.jdField_a_of_type_Bafb != null) && (this.jdField_a_of_type_Bafb.isShowing())) {
+    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {
       return;
     }
-    this.jdField_a_of_type_Bafb = babr.a(this, 231, getString(2131627367), getString(2131627366), new aayg(this), null);
-    this.jdField_a_of_type_Bafb.setOnDismissListener(new aayh(this));
-    this.jdField_a_of_type_Bafb.show();
+    this.jdField_a_of_type_Bbgg = bbcv.a(this, 231, getString(2131693007), getString(2131693006), new abid(this), null);
+    this.jdField_a_of_type_Bbgg.setOnDismissListener(new abie(this));
+    this.jdField_a_of_type_Bbgg.show();
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -275,9 +278,19 @@ public class GesturePWDUnlockActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.gesturelock.unlock", 2, "onCreate begin.");
     }
+    Window localWindow = getWindow();
+    if (Build.VERSION.SDK_INT >= 28)
+    {
+      View localView = localWindow.getDecorView();
+      WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
+      localLayoutParams.layoutInDisplayCutoutMode = 1;
+      localWindow.setAttributes(localLayoutParams);
+      int i = localView.getSystemUiVisibility();
+      localWindow.getDecorView().setSystemUiVisibility(i | 0x400);
+    }
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131493551);
+    super.setContentView(2131559120);
     g();
     h();
     GesturePWDUtils.setGestureLocking(this, true);
@@ -295,17 +308,17 @@ public class GesturePWDUnlockActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bafb != null)
+    if (this.jdField_a_of_type_Bbgg != null)
     {
       this.e = false;
-      this.jdField_a_of_type_Bafb.dismiss();
+      this.jdField_a_of_type_Bbgg.dismiss();
     }
-    removeObserver(this.jdField_a_of_type_Ajjh);
+    removeObserver(this.jdField_a_of_type_Ajxl);
     try
     {
       unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
       label39:
-      zqa.c(this);
+      zzs.c(this);
       return;
     }
     catch (Exception localException)
@@ -458,7 +471,7 @@ public class GesturePWDUnlockActivity
     }
     e();
     GesturePWDUtils.setGestureUnlockFailedType(this, 0);
-    awrn.a(getBaseContext()).a(this.app, this.app.getCurrentAccountUin(), "Gesture_pwd", "click_forgive", 0, 1, "0", null, null, null, null);
+    axrl.a(getBaseContext()).a(this.app, this.app.getCurrentAccountUin(), "Gesture_pwd", "click_forgive", 0, 1, "0", null, null, null, null);
   }
   
   public void onLogout(Constants.LogoutReason paramLogoutReason) {}

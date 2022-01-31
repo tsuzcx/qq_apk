@@ -1,401 +1,465 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import com.tencent.qphone.base.util.MD5;
+import android.app.PendingIntent;
+import android.location.Criteria;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.os.Looper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import java.lang.reflect.Member;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map.Entry;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class axss
-  implements axrr
+  extends axso
+  implements HookMethodCallback
 {
-  private static volatile int jdField_a_of_type_Int = -1;
-  HttpCommunicator jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator;
-  private ConcurrentHashMap<String, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
-  boolean jdField_a_of_type_Boolean;
+  private int jdField_a_of_type_Int = 3;
+  private long jdField_a_of_type_Long = 900000L;
+  private LocationManager jdField_a_of_type_AndroidLocationLocationManager = (LocationManager)BaseApplicationImpl.getApplication().getSystemService("location");
+  private axtc jdField_a_of_type_Axtc = new axtc(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+  private String jdField_a_of_type_JavaLangString;
+  private Map<String, HashSet<Long>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private int jdField_b_of_type_Int = 10;
+  private long jdField_b_of_type_Long = 18000000L;
+  private axtc jdField_b_of_type_Axtc = new axtc(this.jdField_b_of_type_Int, this.jdField_b_of_type_Long);
+  private Map<String, HashSet<Long>> jdField_b_of_type_JavaUtilMap = new HashMap();
+  private Map<String, HashSet<Long>> c;
+  private Map<String, HashSet<Long>> d;
   
-  public axss(HttpCommunicator paramHttpCommunicator, boolean paramBoolean)
+  public axss(axsn paramaxsn, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richmedia.OldHttpEngine", 2, "construct " + this);
+    super(paramaxsn, paramString);
+    this.jdField_c_of_type_JavaUtilMap = new HashMap();
+    this.jdField_d_of_type_JavaUtilMap = new HashMap();
+    if ((this.jdField_a_of_type_Array2dOfJavaLangString.length >= 1) && (this.jdField_a_of_type_Array2dOfJavaLangString[0].length >= 2))
+    {
+      this.jdField_a_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][0]).intValue();
+      this.jdField_a_of_type_Long = (Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][1]).intValue() * 60 * 1000L);
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator = paramHttpCommunicator;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if ((this.jdField_a_of_type_Array2dOfJavaLangString.length >= 2) && (this.jdField_a_of_type_Array2dOfJavaLangString[1].length >= 2))
+    {
+      this.jdField_b_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[1][0]).intValue();
+      this.jdField_b_of_type_Long = (Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[1][1]).intValue() * 60 * 1000L);
+    }
   }
   
-  private bakw a(axsp paramaxsp)
+  private int a()
   {
-    if (paramaxsp == null) {
-      return null;
-    }
-    axro localaxro;
-    axst localaxst;
-    Object localObject1;
-    Object localObject3;
-    Object localObject2;
-    if ((paramaxsp.jdField_b_of_type_Int == 0) && ((paramaxsp instanceof axro)))
+    try
     {
-      localaxro = (axro)paramaxsp;
-      localaxst = (axst)localaxro.jdField_a_of_type_JavaLangObject;
-      if ((localaxst == null) || (localaxst.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
-        return null;
+      boolean bool = this.jdField_a_of_type_AndroidLocationLocationManager.isProviderEnabled("gps");
+      if (bool) {
+        return 1;
       }
-      localObject1 = localaxro.jdField_a_of_type_JavaLangString;
-      if ((!localaxro.jdField_a_of_type_Boolean) || (localaxro.jdField_a_of_type_JavaLangString == null) || (localaxro.jdField_a_of_type_JavaLangString.startsWith("https"))) {
-        break label694;
-      }
-      localObject3 = axwx.a(localaxro.jdField_a_of_type_JavaLangString);
-      localObject2 = axwx.a().a((String)localObject3, 1002);
-      localObject2 = axwx.a(localaxro.jdField_a_of_type_JavaLangString, (String)localObject2);
-      if ((localObject2 == null) || (((String)localObject2).equals(localaxro.jdField_a_of_type_JavaLangString))) {
-        break label694;
-      }
-      if (!baip.a((String)localObject3)) {
-        paramaxsp.jdField_a_of_type_JavaUtilHashMap.put("host", localObject3);
-      }
-      localaxro.jdField_b_of_type_Boolean = true;
-      localObject1 = localObject2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Q.richmedia.OldHttpEngine", 2, "NeedIpConnect url=" + localaxro.jdField_a_of_type_JavaLangString + " ipUrl=" + (String)localObject2);
-        localObject1 = localObject2;
+      return 0;
+    }
+    catch (Throwable localThrowable)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BatteryStats", 2, "", localThrowable);
       }
     }
-    label694:
-    for (;;)
+    return -1;
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+    int i = paramBundle.getInt("key_action");
+    if ((i == 1) || (i == 2))
     {
-      localObject2 = new bakw((String)localObject1, localaxro.jdField_a_of_type_ArrayOfByte, localaxst);
-      if (localaxro.jdField_a_of_type_Int == 0) {}
-      for (localObject1 = "GET";; localObject1 = "POST")
-      {
-        ((bakw)localObject2).b((String)localObject1);
-        localObject1 = localaxro.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject3 = (Map.Entry)((Iterator)localObject1).next();
-          ((bakw)localObject2).a((String)((Map.Entry)localObject3).getKey(), (String)((Map.Entry)localObject3).getValue());
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("BatteryStats", 2, new Object[] { "GPS.onOtherProcReport:action=", i + ", type=", paramBundle.getString("key_type"), ", stack=", paramBundle.getString("key_stack") });
       }
-      ((bakw)localObject2).j = localaxro.f;
-      ((bakw)localObject2).jdField_e_of_type_JavaLangString = localaxro.jdField_b_of_type_JavaLangString;
-      ((bakw)localObject2).k = localaxro.g;
-      ((bakw)localObject2).l = localaxro.jdField_h_of_type_Boolean;
-      ((bakw)localObject2).jdField_h_of_type_Boolean = localaxro.jdField_b_of_type_Boolean;
-      ((bakw)localObject2).jdField_c_of_type_Boolean = localaxro.jdField_c_of_type_Boolean;
-      ((bakw)localObject2).jdField_a_of_type_JavaLangString = paramaxsp.jdField_e_of_type_JavaLangString;
-      ((bakw)localObject2).jdField_c_of_type_Int = paramaxsp.g;
-      ((bakw)localObject2).jdField_b_of_type_Int = paramaxsp.jdField_f_of_type_Int;
-      ((bakw)localObject2).jdField_a_of_type_Axtz = localaxro.jdField_a_of_type_Axtz;
-      ((bakw)localObject2).jdField_a_of_type_ArrayOfJavaLangString = localaxro.jdField_a_of_type_ArrayOfJavaLangString;
-      ((bakw)localObject2).jdField_e_of_type_Boolean = localaxro.o;
-      ((bakw)localObject2).d = paramaxsp.l;
-      ((bakw)localObject2).i = localaxro.jdField_e_of_type_Boolean;
-      if (jdField_a_of_type_Int == -1) {
-        b();
-      }
-      switch (jdField_a_of_type_Int)
+      if ((axsn.a()) && (this.jdField_a_of_type_Boolean))
       {
-      }
-      for (;;)
-      {
-        if (paramaxsp.jdField_e_of_type_Int == 1)
-        {
-          ((bakw)localObject2).jdField_a_of_type_Int = 201;
-          label507:
-          if ((localaxro.jdField_a_of_type_JavaIoOutputStream != null) || (localaxro.jdField_c_of_type_JavaLangString != null)) {
-            ((bakw)localObject2).a(true);
-          }
-          localaxst.jdField_a_of_type_Bakw = ((bakw)localObject2);
-        }
+        Map localMap2 = this.jdField_a_of_type_JavaUtilMap;
+        if (i == 1) {}
         try
         {
-          paramaxsp = new URL(((bakw)localObject2).a());
-          localObject1 = localaxro.jdField_a_of_type_Axsq;
-          ((axsq)localObject1).jdField_a_of_type_JavaUtilHashMap.put("serverip", paramaxsp.getHost());
-          ((axsq)localObject1).jdField_a_of_type_JavaUtilHashMap.put("param_url", ((bakw)localObject2).a());
-          return localObject2;
-          if (localaxro.d)
+          paramBundle = paramBundle.getString("key_type");
+          label139:
+          HashSet localHashSet2;
+          HashSet localHashSet1;
+          if (this.jdField_b_of_type_Boolean)
           {
-            ((bakw)localObject2).jdField_h_of_type_Int = jdField_a_of_type_Int;
-            continue;
-            ((bakw)localObject2).jdField_h_of_type_Int = (jdField_a_of_type_Int / 4);
-            continue;
-            if (paramaxsp.jdField_e_of_type_Int == 2)
+            if (i == 1)
             {
-              ((bakw)localObject2).jdField_a_of_type_Int = 202;
-              break label507;
+              localMap1 = this.jdField_a_of_type_JavaUtilMap;
+              localHashSet2 = (HashSet)localMap1.get(paramBundle);
+              localHashSet1 = localHashSet2;
+              if (localHashSet2 == null)
+              {
+                localHashSet1 = new HashSet();
+                localMap1.put(paramBundle, localHashSet1);
+              }
+              localHashSet1.add(Long.valueOf(System.currentTimeMillis()));
             }
-            if (paramaxsp.jdField_e_of_type_Int != 0) {
-              break label507;
-            }
-            ((bakw)localObject2).jdField_a_of_type_Int = 200;
           }
-        }
-        catch (Exception paramaxsp)
-        {
-          for (;;)
+          else if ((this.jdField_c_of_type_Boolean) && (this.jdField_d_of_type_Boolean)) {
+            if (i != 1) {
+              break label289;
+            }
+          }
+          label289:
+          for (Map localMap1 = this.jdField_c_of_type_JavaUtilMap;; localMap1 = this.jdField_d_of_type_JavaUtilMap)
           {
-            paramaxsp.printStackTrace();
-          }
-        }
-      }
-      if (paramaxsp.jdField_a_of_type_Axrt != null)
-      {
-        paramaxsp.jdField_a_of_type_Axsq.a(1, 9302, "not support by HttpOldEngine", null);
-        paramaxsp.jdField_a_of_type_Axrt.onResp(paramaxsp.jdField_a_of_type_Axsq);
-      }
-      return null;
-    }
-  }
-  
-  private boolean a(bakw parambakw, axro paramaxro)
-  {
-    boolean bool = parambakw.c();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richmedia.OldHttpEngine", 2, "404:" + bool + " ip:" + paramaxro.jdField_b_of_type_Boolean);
-    }
-    return (bool) && (paramaxro.jdField_b_of_type_Boolean);
-  }
-  
-  private static String b(axsp paramaxsp, String paramString1, String paramString2)
-  {
-    if ((paramaxsp != null) && (paramaxsp.d != null) && (paramaxsp.d.length() > 0)) {
-      return paramaxsp.d;
-    }
-    return paramString1 + "." + MD5.toMD5(axub.a(paramString2, false)) + ".tmp";
-  }
-  
-  public static void b()
-  {
-    if (jdField_a_of_type_Int >= 0) {}
-    for (;;)
-    {
-      return;
-      Object localObject = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.aio_config.name(), "");
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = ((String)localObject).split("\\|");
-        if (localObject.length < 5) {}
-      }
-      try
-      {
-        jdField_a_of_type_Int = Integer.valueOf(localObject[4]).intValue();
-        label56:
-        if (jdField_a_of_type_Int == -1) {
-          jdField_a_of_type_Int = 1;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.richmedia.OldHttpEngine", 2, "[initCmwapConnectionTypeFromDpc]: " + jdField_a_of_type_Int);
-        return;
-      }
-      catch (Exception localException)
-      {
-        break label56;
-      }
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.richmedia.OldHttpEngine", 2, "destroy " + this);
-      }
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.b();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator = null;
-    }
-  }
-  
-  public void a(axsp paramaxsp)
-  {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    int j;
-    Object localObject3;
-    if ((paramaxsp != null) && (paramaxsp.jdField_a_of_type_Axrt != null))
-    {
-      j = 0;
-      localObject1 = localObject2;
-      i = j;
-      if ((paramaxsp instanceof axro))
-      {
-        localObject3 = (axro)paramaxsp;
-        localObject1 = localObject2;
-        i = j;
-        if (((axro)localObject3).jdField_a_of_type_Int == 0)
-        {
-          localObject1 = localObject2;
-          i = j;
-          if (paramaxsp.jdField_c_of_type_JavaLangString != null)
-          {
-            localObject1 = b(paramaxsp, paramaxsp.jdField_c_of_type_JavaLangString, ((axro)localObject3).jdField_a_of_type_JavaLangString);
-            paramaxsp.jdField_f_of_type_JavaLangString = ((String)localObject1);
-            if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(localObject1, localObject1) == null) {
-              break label346;
+            localHashSet2 = (HashSet)localMap1.get(paramBundle);
+            localHashSet1 = localHashSet2;
+            if (localHashSet2 == null)
+            {
+              localHashSet1 = new HashSet();
+              localMap1.put(paramBundle, localHashSet1);
             }
+            localHashSet1.add(Long.valueOf(System.currentTimeMillis()));
+            return;
+            paramBundle = paramBundle.getString("key_stack");
+            break;
+            localMap1 = this.jdField_b_of_type_JavaUtilMap;
+            break label139;
           }
-        }
-      }
-    }
-    label204:
-    label346:
-    for (int i = 1;; i = j)
-    {
-      if ((paramaxsp.jdField_b_of_type_Int == 0) && ((paramaxsp instanceof axro)))
-      {
-        localObject2 = (axro)paramaxsp;
-        ((axro)localObject2).jdField_a_of_type_Axsq = new axsq((axsp)localObject2);
-        localObject3 = new axst(this);
-        ((axro)localObject2).jdField_a_of_type_JavaLangObject = localObject3;
-        ((axst)localObject3).jdField_a_of_type_Axro = ((axro)localObject2);
-        ((axst)localObject3).jdField_a_of_type_Axsq = ((axro)localObject2).jdField_a_of_type_Axsq;
-        if (i == 0) {
-          ((axst)localObject3).b();
-        }
-        if ((paramaxsp.jdField_a_of_type_Axsq.jdField_a_of_type_Int == 2) && (!((axst)localObject3).jdField_b_of_type_Boolean)) {
-          break label204;
-        }
-        axst.a((axst)localObject3);
-      }
-      do
-      {
-        return;
-        if (i != 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("Q.richmedia.OldHttpEngine", 2, "sendReq:" + paramaxsp + " _id:" + paramaxsp.jdField_e_of_type_JavaLangString + " isDownloading _key:" + (String)localObject1);
-          }
-          paramaxsp.jdField_a_of_type_Axsq.jdField_a_of_type_Int = 3;
-          axst.a((axst)localObject3);
           return;
         }
-        c(paramaxsp);
-        return;
-      } while (!QLog.isColorLevel());
-      localObject2 = new StringBuilder().append("req:").append(paramaxsp).append(" callback:");
-      if (paramaxsp == null) {}
-      for (paramaxsp = (axsp)localObject1;; paramaxsp = paramaxsp.jdField_a_of_type_Axrt)
-      {
-        QLog.e("Q.richmedia.OldHttpEngine", 2, paramaxsp);
-        return;
+        finally {}
       }
     }
   }
   
-  public void a(bakw parambakw)
+  public void a(String paramString, Object[] paramArrayOfObject)
   {
-    if ((parambakw != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(parambakw);
-    }
-  }
-  
-  public void b(axsp paramaxsp)
-  {
-    if (paramaxsp == null) {}
+    if (!this.jdField_a_of_type_Boolean) {}
+    String str3;
     do
     {
       return;
-      if (paramaxsp.jdField_f_of_type_JavaLangString != null) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramaxsp.jdField_f_of_type_JavaLangString);
+      str3 = axsn.a().toString();
+      if (QLog.isColorLevel()) {
+        axsn.a(this.jdField_b_of_type_Axsn, "onGPSScan: " + str3);
       }
-    } while (!axst.class.isInstance(paramaxsp.jdField_a_of_type_JavaLangObject));
-    Object localObject = (axro)paramaxsp;
-    int i = paramaxsp.g;
-    if (((axro)localObject).jdField_a_of_type_Int == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      axub.a(i, bool, paramaxsp.jdField_f_of_type_Int, paramaxsp.jdField_e_of_type_JavaLangString, "cancelReq", "");
-      localObject = (axst)paramaxsp.jdField_a_of_type_JavaLangObject;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("OldHttpEngine", 2, "cancelReq ====== listener = " + localObject);
-        if (localObject != null) {
-          QLog.d("OldHttpEngine", 2, "cancelReq ====== listener.mIsCancelled = " + ((axst)localObject).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+      if (this.jdField_a_of_type_JavaLangString == null) {
+        this.jdField_a_of_type_JavaLangString = SosoInterface.class.getPackage().getName();
+      }
+    } while ((("requestLocationUpdates".equals(paramString)) || ("requestSingleUpdate".equals(paramString))) && (str3.contains(this.jdField_a_of_type_JavaLangString)));
+    String str4 = "location|" + a() + "|";
+    if ("requestLocationUpdates".equals(paramString)) {
+      if (paramArrayOfObject.length == 5) {
+        if ((paramArrayOfObject[2] instanceof Criteria))
+        {
+          axsn.a(this.jdField_b_of_type_Axsn, new String[] { str4, "0", "|", "0", "|", "{", paramArrayOfObject[0].toString(), "#", paramArrayOfObject[1].toString(), "#", "[", this.jdField_a_of_type_AndroidLocationLocationManager.getBestProvider((Criteria)paramArrayOfObject[2], true), ",", String.valueOf(((Criteria)paramArrayOfObject[2]).getAccuracy()), ",", String.valueOf(((Criteria)paramArrayOfObject[2]).getPowerRequirement()), "]", "}", "|", str3 });
+          label321:
+          paramString = new Bundle();
+          paramString.putInt("key_action", 2);
+          paramString.putString("key_stack", str3);
+          if (axsn.a()) {
+            break label1088;
+          }
+          axsi.a().a(paramString);
         }
       }
-      if (localObject == null) {
+    }
+    for (;;)
+    {
+      paramString = this.jdField_a_of_type_Axtc.a(str3);
+      if ((paramString != null) && (paramString.size() > 0))
+      {
+        axsn.a(this.jdField_b_of_type_Axsn, 6, 0, 0, "GPS request update is too frequently(" + this.jdField_a_of_type_Int + " in " + this.jdField_a_of_type_Long / 60L / 1000L + " seconds", axtc.a(paramString));
+        this.jdField_a_of_type_Axtc.a();
+      }
+      paramString = this.jdField_b_of_type_Axtc.a(str3);
+      if ((paramString == null) || (paramString.size() <= 0)) {
         break;
       }
-      ((axst)localObject).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      bakw localbakw = ((axst)localObject).jdField_a_of_type_Bakw;
-      if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(localbakw);
+      axsn.a(this.jdField_b_of_type_Axsn, 6, 0, 0, "Wifi scan is too frequently(" + this.jdField_b_of_type_Int + " in " + this.jdField_b_of_type_Long / 60L / 1000L + " seconds", axtc.a(paramString));
+      this.jdField_b_of_type_Axtc.a();
+      return;
+      if ((paramArrayOfObject[0] instanceof String))
+      {
+        axsn.a(this.jdField_b_of_type_Axsn, new String[] { str4, "0", "|", "1", "|", "{", paramArrayOfObject[0].toString(), "#", paramArrayOfObject[1].toString(), "#", paramArrayOfObject[2].toString(), "}", "|", str3 });
+        break label321;
       }
-      ((axst)localObject).a(paramaxsp);
-      ((axst)localObject).a();
+      axsn.a(this.jdField_b_of_type_Axsn, new String[] { str4, "0", "|", "-1", "|", "{}", "|", str3 });
+      break label321;
+      if (paramArrayOfObject.length != 6) {
+        break label321;
+      }
+      if ((paramArrayOfObject[2] instanceof Criteria))
+      {
+        axsn.a(this.jdField_b_of_type_Axsn, new String[] { str4, "0", "|", "2", "|", "{", paramArrayOfObject[0].toString(), "#", paramArrayOfObject[1].toString(), "#", "[", this.jdField_a_of_type_AndroidLocationLocationManager.getBestProvider((Criteria)paramArrayOfObject[2], true), ",", String.valueOf(((Criteria)paramArrayOfObject[2]).getAccuracy()), ",", String.valueOf(((Criteria)paramArrayOfObject[2]).getPowerRequirement()), "]", "}", "|", str3 });
+        break label321;
+      }
+      if ((paramArrayOfObject[0] instanceof String))
+      {
+        axsn.a(this.jdField_b_of_type_Axsn, new String[] { str4, "0", "|", "3", "|", "{", paramArrayOfObject[0].toString(), "#", paramArrayOfObject[1].toString(), "#", paramArrayOfObject[2].toString(), "}", "|", str3 });
+        break label321;
+      }
+      axsn.a(this.jdField_b_of_type_Axsn, new String[] { str4, "0", "|", "-1", "|", "{}", "|", str3 });
+      break label321;
+      label1088:
+      a(paramString);
+      continue;
+      if ("requestSingleUpdate".equals(paramString))
+      {
+        if ((paramArrayOfObject[0] instanceof String)) {
+          axsn.a(this.jdField_b_of_type_Axsn, new String[] { str4, "1", "|", "0", "|", "{", paramArrayOfObject[0].toString(), "}", "|", str3 });
+        }
+        for (;;)
+        {
+          paramString = new Bundle();
+          paramString.putInt("key_action", 2);
+          paramString.putString("key_stack", str3);
+          if (axsn.a()) {
+            break label1437;
+          }
+          axsi.a().a(paramString);
+          break;
+          if ((paramArrayOfObject[0] instanceof Criteria)) {
+            axsn.a(this.jdField_b_of_type_Axsn, new String[] { str4, "1", "|", "1", "|", "{", "[", this.jdField_a_of_type_AndroidLocationLocationManager.getBestProvider((Criteria)paramArrayOfObject[0], true), ",", String.valueOf(((Criteria)paramArrayOfObject[0]).getAccuracy()), ",", String.valueOf(((Criteria)paramArrayOfObject[0]).getPowerRequirement()), "]", "}", "|", str3 });
+          } else {
+            axsn.a(this.jdField_b_of_type_Axsn, new String[] { str4, "1", "|", "-1", "|", "{}", "|", str3 });
+          }
+        }
+        label1437:
+        a(paramString);
+      }
+      else if ("requestSoso".equals(paramString))
+      {
+        label1465:
+        axsn localaxsn;
+        String str5;
+        String str6;
+        String str1;
+        if (paramArrayOfObject[2] == null)
+        {
+          paramString = "none";
+          localaxsn = this.jdField_b_of_type_Axsn;
+          str5 = paramArrayOfObject[0].toString();
+          str6 = paramArrayOfObject[1].toString();
+          if (paramArrayOfObject[3] != null) {
+            break label1684;
+          }
+          str1 = "-1";
+          label1497:
+          if (paramArrayOfObject[4] != null) {
+            break label1694;
+          }
+        }
+        label1684:
+        label1694:
+        for (String str2 = "-1";; str2 = paramArrayOfObject[4].toString())
+        {
+          axsn.a(localaxsn, new String[] { str4, "2", "|", "0", "|", "{", str5, "#", str6, "#", paramString, "#", str1, "#", str2, "#", paramArrayOfObject[5].toString(), "}", "|", str3 });
+          paramArrayOfObject = new Bundle();
+          paramArrayOfObject.putInt("key_action", 1);
+          paramArrayOfObject.putString("key_type", paramString);
+          if (axsn.a()) {
+            break label1705;
+          }
+          axsi.a().a(paramArrayOfObject);
+          break;
+          paramString = paramArrayOfObject[2].toString();
+          break label1465;
+          str1 = paramArrayOfObject[3].toString();
+          break label1497;
+        }
+        label1705:
+        a(paramArrayOfObject);
+      }
+    }
+  }
+  
+  public void afterHookedMethod(MethodHookParam paramMethodHookParam) {}
+  
+  public void b()
+  {
+    super.b();
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      this.jdField_c_of_type_JavaUtilMap.clear();
+      this.jdField_d_of_type_JavaUtilMap.clear();
       return;
     }
   }
   
-  public void c(axsp paramaxsp)
+  public void beforeHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    axst localaxst;
+    a(paramMethodHookParam.method.getName(), paramMethodHookParam.args);
+  }
+  
+  public void d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
     do
     {
+      return;
       try
       {
-        bakw localbakw1 = a(paramaxsp);
-        localaxst = (axst)paramaxsp.jdField_a_of_type_JavaLangObject;
-        if ((localbakw1 != null) && (localaxst != null))
-        {
-          axsq localaxsq = paramaxsp.jdField_a_of_type_Axsq;
-          localaxsq.d += 1;
-          localaxst.jdField_b_of_type_Int = 0;
-          if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-          {
-            a(localbakw1);
-            return;
-          }
-        }
-      }
-      catch (OutOfMemoryError localOutOfMemoryError1)
-      {
-        for (;;)
-        {
-          System.gc();
-          try
-          {
-            bakw localbakw2 = a(paramaxsp);
-          }
-          catch (OutOfMemoryError localOutOfMemoryError2)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("Q.richmedia.OldHttpEngine", 2, "OOM in makeNewHttpMsgFromNetReq", localOutOfMemoryError2);
-            }
-            Object localObject = null;
-          }
-        }
-        paramaxsp = paramaxsp.jdField_a_of_type_Axsq;
-        paramaxsp.jdField_b_of_type_Int = 9366;
-        paramaxsp.jdField_a_of_type_JavaLangString = "oldengine close";
-        paramaxsp.jdField_a_of_type_Int = 1;
-        axst.a(localaxst);
+        JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { String.class, Long.TYPE, Float.TYPE, LocationListener.class, this });
+        JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { String.class, Long.TYPE, Float.TYPE, LocationListener.class, Looper.class, this });
+        JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { String.class, Long.TYPE, Float.TYPE, PendingIntent.class, this });
+        JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { Long.TYPE, Float.TYPE, Criteria.class, LocationListener.class, Looper.class, this });
+        JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { Long.TYPE, Float.TYPE, Criteria.class, PendingIntent.class, this });
+        JavaHookBridge.findAndHookMethod(LocationManager.class, "requestSingleUpdate", new Object[] { String.class, PendingIntent.class, this });
+        JavaHookBridge.findAndHookMethod(LocationManager.class, "requestSingleUpdate", new Object[] { String.class, LocationListener.class, Looper.class, this });
+        JavaHookBridge.findAndHookMethod(LocationManager.class, "requestSingleUpdate", new Object[] { Criteria.class, LocationListener.class, Looper.class, this });
+        JavaHookBridge.findAndHookMethod(LocationManager.class, "requestSingleUpdate", new Object[] { Criteria.class, PendingIntent.class, this });
         return;
       }
-    } while ((localaxst == null) || (localaxst.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()));
-    paramaxsp = paramaxsp.jdField_a_of_type_Axsq;
-    paramaxsp.jdField_b_of_type_Int = 9369;
-    paramaxsp.jdField_a_of_type_JavaLangString = "Out of memory";
-    paramaxsp.jdField_a_of_type_Int = 1;
-    axst.a(localaxst);
+      catch (Throwable localThrowable) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("BatteryStats", 2, "", localThrowable);
+  }
+  
+  public void e()
+  {
+    super.e();
+    if ((this.jdField_a_of_type_Boolean) && (axsn.a())) {}
+    label518:
+    for (;;)
+    {
+      String str;
+      Object localObject2;
+      Object localObject3;
+      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      {
+        Iterator localIterator1 = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+        int i = 0;
+        if (localIterator1.hasNext())
+        {
+          i = ((HashSet)localIterator1.next()).size() + i;
+          continue;
+        }
+        localIterator1 = this.jdField_b_of_type_JavaUtilMap.values().iterator();
+        int j = 0;
+        if (localIterator1.hasNext())
+        {
+          j = ((HashSet)localIterator1.next()).size() + j;
+          continue;
+        }
+        axsn.b(this.jdField_b_of_type_Axsn, new String[] { "fg30SdkCount", "|", String.valueOf(i) });
+        if (axsn.b(this.jdField_b_of_type_Axsn)) {
+          axsn.b(this.jdField_b_of_type_Axsn, new String[] { "fg30SysCount", "|", String.valueOf(j) });
+        }
+        localIterator1 = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+        if (localIterator1.hasNext())
+        {
+          str = (String)localIterator1.next();
+          localObject2 = (HashSet)this.jdField_a_of_type_JavaUtilMap.get(str);
+          localObject3 = axsk.a();
+          Iterator localIterator3 = ((HashSet)localObject2).iterator();
+          i = 0;
+          if (localIterator3.hasNext())
+          {
+            ((StringBuilder)localObject3).append((Long)localIterator3.next());
+            i += 1;
+            if (i >= ((HashSet)localObject2).size()) {
+              break label518;
+            }
+            ((StringBuilder)localObject3).append("#");
+            break label518;
+          }
+          axsn.b(this.jdField_b_of_type_Axsn, new String[] { "fg30SdkDetail", "|", str, "|", ((StringBuilder)localObject3).toString() });
+        }
+      }
+      Iterator localIterator2 = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
+      while (localIterator2.hasNext())
+      {
+        str = (String)localIterator2.next();
+        localObject3 = (HashSet)this.jdField_b_of_type_JavaUtilMap.get(str);
+        localObject2 = axsk.a();
+        localObject3 = ((HashSet)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext()) {
+          ((StringBuilder)localObject2).append((Long)((Iterator)localObject3).next()).append("|");
+        }
+        axsn.b(this.jdField_b_of_type_Axsn, new String[] { "fg30SysDetail", "|", str, "|", ((StringBuilder)localObject2).toString() });
+      }
+      this.jdField_a_of_type_JavaUtilMap.clear();
+      this.jdField_b_of_type_JavaUtilMap.clear();
+      return;
+    }
+  }
+  
+  public void f()
+  {
+    super.f();
+    if ((this.jdField_a_of_type_Boolean) && (axsn.a())) {}
+    label518:
+    for (;;)
+    {
+      String str;
+      Object localObject2;
+      Object localObject3;
+      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      {
+        Iterator localIterator1 = this.jdField_c_of_type_JavaUtilMap.values().iterator();
+        int i = 0;
+        if (localIterator1.hasNext())
+        {
+          i = ((HashSet)localIterator1.next()).size() + i;
+          continue;
+        }
+        localIterator1 = this.jdField_d_of_type_JavaUtilMap.values().iterator();
+        int j = 0;
+        if (localIterator1.hasNext())
+        {
+          j = ((HashSet)localIterator1.next()).size() + j;
+          continue;
+        }
+        axsn.b(this.jdField_b_of_type_Axsn, new String[] { "bg5SdkCount", "|", String.valueOf(i) });
+        if (axsn.b(this.jdField_b_of_type_Axsn)) {
+          axsn.b(this.jdField_b_of_type_Axsn, new String[] { "bg5SysCount", "|", String.valueOf(j) });
+        }
+        localIterator1 = this.jdField_c_of_type_JavaUtilMap.keySet().iterator();
+        if (localIterator1.hasNext())
+        {
+          str = (String)localIterator1.next();
+          localObject2 = (HashSet)this.jdField_c_of_type_JavaUtilMap.get(str);
+          localObject3 = axsk.a();
+          Iterator localIterator3 = ((HashSet)localObject2).iterator();
+          i = 0;
+          if (localIterator3.hasNext())
+          {
+            ((StringBuilder)localObject3).append((Long)localIterator3.next());
+            i += 1;
+            if (i >= ((HashSet)localObject2).size()) {
+              break label518;
+            }
+            ((StringBuilder)localObject3).append("#");
+            break label518;
+          }
+          axsn.b(this.jdField_b_of_type_Axsn, new String[] { "bg5SdkDetail", "|", str, "|", ((StringBuilder)localObject3).toString() });
+        }
+      }
+      Iterator localIterator2 = this.jdField_d_of_type_JavaUtilMap.keySet().iterator();
+      while (localIterator2.hasNext())
+      {
+        str = (String)localIterator2.next();
+        localObject3 = (HashSet)this.jdField_d_of_type_JavaUtilMap.get(str);
+        localObject2 = axsk.a();
+        localObject3 = ((HashSet)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext()) {
+          ((StringBuilder)localObject2).append((Long)((Iterator)localObject3).next()).append("|");
+        }
+        axsn.b(this.jdField_b_of_type_Axsn, new String[] { "bg5SysDetail", "|", str, "|", ((StringBuilder)localObject2).toString() });
+      }
+      this.jdField_c_of_type_JavaUtilMap.clear();
+      this.jdField_d_of_type_JavaUtilMap.clear();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axss
  * JD-Core Version:    0.7.0.1
  */

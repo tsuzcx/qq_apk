@@ -1,98 +1,72 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.av.ui.VoiceChangeItemView1;
+import android.view.View.OnClickListener;
+import java.lang.ref.WeakReference;
 
 public class maw
-  extends BaseAdapter
+  extends max
 {
-  public static String a;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private VoiceChangeItemView1 jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1;
-  mbb jdField_a_of_type_Mbb;
-  private maz[] jdField_a_of_type_ArrayOfMaz;
-  private int jdField_b_of_type_Int;
-  private VoiceChangeItemView1 jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1;
-  private int c;
-  private int d;
+  WeakReference<View.OnClickListener> a = null;
+  int f = 0;
+  int g = 0;
+  int h = -1;
+  int i = -1;
+  int j = -1;
   
-  static
+  public maw(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, int paramInt5, int paramInt6, View.OnClickListener paramOnClickListener)
   {
-    jdField_a_of_type_JavaLangString = "VoiceChangeAdapter";
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public void a(maz[] paramArrayOfmaz)
-  {
-    this.jdField_a_of_type_ArrayOfMaz = paramArrayOfmaz;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ArrayOfMaz == null) {
-      return 0;
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
+    this.f = paramInt5;
+    this.g = paramInt6;
+    if (paramOnClickListener != null) {
+      this.a = new WeakReference(paramOnClickListener);
     }
-    return this.jdField_a_of_type_ArrayOfMaz.length;
   }
   
-  public Object getItem(int paramInt)
+  public int a()
   {
-    if (this.jdField_a_of_type_ArrayOfMaz == null) {
+    return 3;
+  }
+  
+  public View.OnClickListener a()
+  {
+    if ((this.a == null) || (this.a.isEnqueued())) {
       return null;
     }
-    return this.jdField_a_of_type_ArrayOfMaz[paramInt];
+    return (View.OnClickListener)this.a.get();
   }
   
-  public long getItemId(int paramInt)
+  public void a(View.OnClickListener paramOnClickListener)
   {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    boolean bool = true;
-    krx.a(jdField_a_of_type_JavaLangString, "getView|position=" + paramInt + ", view=" + paramView);
-    if (paramView == null) {
-      paramView = new VoiceChangeItemView1(this.jdField_a_of_type_AndroidContentContext);
-    }
-    for (;;)
+    if (paramOnClickListener != null)
     {
-      paramViewGroup = (maz)getItem(paramInt);
-      VoiceChangeItemView1 localVoiceChangeItemView1;
-      if (paramViewGroup != null)
-      {
-        if ((this.d == 0) && (paramInt == 1) && (this.jdField_b_of_type_Int == 0)) {
-          this.jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1 = this.jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1;
-        }
-        localVoiceChangeItemView1 = (VoiceChangeItemView1)paramView;
-        if (this.c != paramViewGroup.jdField_a_of_type_Int) {
-          break label168;
-        }
-      }
-      for (;;)
-      {
-        localVoiceChangeItemView1.a(paramInt, paramViewGroup, bool, this.jdField_a_of_type_Int, this.jdField_a_of_type_Mbb);
-        if (this.c == paramViewGroup.jdField_a_of_type_Int)
-        {
-          if (paramInt != 0) {
-            this.jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1 = localVoiceChangeItemView1;
-          }
-          this.d = paramInt;
-        }
-        this.jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1 = ((VoiceChangeItemView1)paramView);
-        this.jdField_b_of_type_Int = paramInt;
-        return paramView;
-        label168:
-        bool = false;
-      }
+      this.a = new WeakReference(paramOnClickListener);
+      return;
     }
+    this.a = null;
+  }
+  
+  public int f()
+  {
+    return this.f;
+  }
+  
+  public int g()
+  {
+    return this.g;
+  }
+  
+  public int h()
+  {
+    return this.h;
+  }
+  
+  public int i()
+  {
+    return this.i;
+  }
+  
+  public int j()
+  {
+    return this.j;
   }
 }
 

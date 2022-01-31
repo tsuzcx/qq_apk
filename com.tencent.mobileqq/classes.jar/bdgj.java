@@ -1,233 +1,111 @@
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.launcher.model.EntryModel;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.open.downloadnew.DownloadInfo;
 
 public class bdgj
 {
-  private static int a(MiniAppInfo paramMiniAppInfo)
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  
+  public bdgj()
   {
-    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null)) {
-      return paramMiniAppInfo.launchParam.jdField_a_of_type_Int;
-    }
-    return 9999;
+    this.jdField_c_of_type_JavaLangString = "";
   }
   
-  private static String a(MiniAppInfo paramMiniAppInfo)
+  public int a(int paramInt)
   {
-    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null)) {
-      return paramMiniAppInfo.launchParam.h;
-    }
-    return null;
-  }
-  
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
+    switch (paramInt)
     {
-      return paramString;
-      i = paramString.indexOf("?");
-    } while (i == -1);
-    return paramString.substring(0, i);
+    default: 
+      return 0;
+    case 20: 
+      return 4;
+    case 3: 
+      return 2;
+    case 10: 
+      return 5;
+    case 2: 
+      return 1;
+    case 4: 
+      return 3;
+    case -2: 
+      return 6;
+    case 6: 
+      return 7;
+    }
+    return 9;
   }
   
-  private static JSONObject a(MiniAppInfo paramMiniAppInfo)
+  public bdgj a(DownloadInfo paramDownloadInfo)
   {
-    JSONObject localJSONObject1;
-    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null))
+    this.jdField_a_of_type_JavaLangString = paramDownloadInfo.jdField_c_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = paramDownloadInfo.e;
+    this.jdField_a_of_type_Int = a(paramDownloadInfo.a());
+    this.jdField_b_of_type_Int = paramDownloadInfo.f;
+    this.jdField_a_of_type_Long = paramDownloadInfo.jdField_c_of_type_Long;
+    this.jdField_b_of_type_Long = 0L;
+    return this;
+  }
+  
+  public int b(int paramInt)
+  {
+    switch (paramInt)
     {
-      JSONObject localJSONObject2 = new JSONObject();
-      int i = paramMiniAppInfo.launchParam.jdField_a_of_type_Int;
-      try
-      {
-        localJSONObject2.put("appId", paramMiniAppInfo.launchParam.f);
-        if (i != 1037)
-        {
-          localJSONObject1 = localJSONObject2;
-          if (i != 1038) {
-            return localJSONObject1;
-          }
-        }
-        paramMiniAppInfo = paramMiniAppInfo.launchParam.e;
-        localJSONObject1 = localJSONObject2;
-        if (TextUtils.isEmpty(paramMiniAppInfo)) {
-          return localJSONObject1;
-        }
-        if (bdgq.a(paramMiniAppInfo))
-        {
-          localJSONObject2.put("extraData", new JSONObject(paramMiniAppInfo));
-          return localJSONObject2;
-        }
-        localJSONObject2.put("extraData", paramMiniAppInfo);
-        return localJSONObject2;
-      }
-      catch (Throwable paramMiniAppInfo)
-      {
-        bdnw.d("getReferrerInfo", "error,", paramMiniAppInfo);
-        return localJSONObject2;
-      }
+    default: 
+      return 700;
+    case -24: 
+      return -24;
+    case 3: 
+    case 731: 
+    case 732: 
+      return 102;
+    case 1: 
+      return 202;
+    case 2: 
+      return 201;
+    case 4: 
+      return 100;
+    case 5: 
+      return 101;
+    case 600: 
+    case 601: 
+    case 602: 
+    case 603: 
+    case 604: 
+    case 605: 
+    case 606: 
+      return 203;
+    case 607: 
+    case 700: 
+    case 701: 
+    case 702: 
+      return 300;
+    case -50: 
+    case -40: 
+    case -30: 
+    case -20: 
+    case -1: 
+    case 703: 
+    case 704: 
+    case 705: 
+    case 706: 
+    case 707: 
+      return 500;
+    case 708: 
+      return 400;
+    case 709: 
+      return 401;
     }
-    else
-    {
-      localJSONObject1 = null;
-    }
-    return localJSONObject1;
-  }
-  
-  public static JSONObject a(String paramString)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    for (;;)
-    {
-      String str1;
-      try
-      {
-        Iterator localIterator = Uri.parse("file:///" + paramString).getQueryParameterNames().iterator();
-        if (localIterator.hasNext())
-        {
-          str1 = (String)localIterator.next();
-          if (str1.startsWith("$"))
-          {
-            localObject2 = str1.substring(1);
-            localObject1 = "[\\\\?&]" + "\\$";
-            String str2 = "";
-            localObject2 = Pattern.compile((String)localObject1 + (String)localObject2 + "=([^&#]*)").matcher(paramString);
-            localObject1 = str2;
-            if (((Matcher)localObject2).find()) {
-              localObject1 = ((Matcher)localObject2).group(1);
-            }
-            localJSONObject.put(str1, localObject1);
-          }
-        }
-        else
-        {
-          return localJSONObject;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        bdnw.d("AppBrandUtil", "getQueryJson err:", paramString);
-      }
-      Object localObject1 = "[\\\\?&]";
-      Object localObject2 = str1;
-    }
-  }
-  
-  public static JSONObject a(String paramString, MiniAppInfo paramMiniAppInfo)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    for (;;)
-    {
-      try
-      {
-        localJSONObject.put("path", a(paramString));
-        localJSONObject.put("query", a(paramString));
-        localJSONObject.put("scene", a(paramMiniAppInfo));
-        localJSONObject.put("shareTicket", a(paramMiniAppInfo));
-        localJSONObject.put("referrerInfo", a(paramMiniAppInfo));
-        paramString = b(paramMiniAppInfo);
-        if (!TextUtils.isEmpty(paramString))
-        {
-          boolean bool = bdgq.a(paramString);
-          if (!bool) {}
-        }
-        else
-        {
-          try
-          {
-            localJSONObject.put("extendData", new JSONObject(paramString));
-            localJSONObject.put("entryDataHash", c(paramMiniAppInfo));
-            return localJSONObject;
-          }
-          catch (JSONException paramString)
-          {
-            bdnw.d("AppBrandUtil", "dispatch extendData parse error", paramString);
-            continue;
-          }
-        }
-        localJSONObject.put("extendData", paramString);
-      }
-      catch (Throwable paramString)
-      {
-        bdnw.d("AppBrandUtil", "getAppLaunchInfo error, ", paramString);
-        return localJSONObject;
-      }
-    }
-  }
-  
-  public static JSONObject a(String paramString1, String paramString2, MiniAppInfo paramMiniAppInfo)
-  {
-    localJSONObject = new JSONObject();
-    for (;;)
-    {
-      try
-      {
-        localJSONObject.put("path", a(paramString1));
-        localJSONObject.put("query", a(paramString1));
-        localJSONObject.put("openType", paramString2);
-        if ("appLaunch".equals(paramString2))
-        {
-          localJSONObject.put("scene", a(paramMiniAppInfo));
-          localJSONObject.put("shareTicket", a(paramMiniAppInfo));
-          localJSONObject.put("referrerInfo", a(paramMiniAppInfo));
-          paramString1 = b(paramMiniAppInfo);
-          if (!TextUtils.isEmpty(paramString1))
-          {
-            boolean bool = bdgq.a(paramString1);
-            if (!bool) {
-              continue;
-            }
-          }
-        }
-      }
-      catch (Throwable paramString1)
-      {
-        bdnw.d("AppBrandUtil", "getPageShowInfo error, ", paramString1);
-        continue;
-        localJSONObject.put("extendData", paramString1);
-        continue;
-      }
-      try
-      {
-        localJSONObject.put("extendData", new JSONObject(paramString1));
-        bdnw.b("AppBrandUtil", "getPageLoadInfo : " + localJSONObject.toString());
-        return localJSONObject;
-      }
-      catch (JSONException paramString1)
-      {
-        bdnw.d("AppBrandUtil", "dispatch extendData parse error", paramString1);
-      }
-    }
-  }
-  
-  private static String b(MiniAppInfo paramMiniAppInfo)
-  {
-    if (paramMiniAppInfo != null) {
-      return paramMiniAppInfo.extendData;
-    }
-    return null;
-  }
-  
-  private static String c(MiniAppInfo paramMiniAppInfo)
-  {
-    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null) && (paramMiniAppInfo.launchParam.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel != null)) {
-      return paramMiniAppInfo.launchParam.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel.a();
-    }
-    return null;
+    return 600;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdgj
  * JD-Core Version:    0.7.0.1
  */

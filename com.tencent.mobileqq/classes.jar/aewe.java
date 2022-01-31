@@ -1,34 +1,20 @@
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aewe
-  implements afhb
+public abstract class aewe
+  implements aewi
 {
-  public aewe(TroopView paramTroopView) {}
+  protected QQAppInterface a;
   
-  public void a(int paramInt1, int paramInt2)
+  public aewe(QQAppInterface paramQQAppInterface)
   {
-    if (TroopView.a(this.a) != null) {
-      TroopView.a(this.a).a(paramInt1, paramInt2);
-    }
-    if (paramInt1 >= paramInt2) {
-      if (!TroopView.a(this.a))
-      {
-        TroopView.a(this.a, true);
-        if (this.a.a != null) {
-          this.a.a.a(TroopView.a(this.a));
-        }
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (!TroopView.a(this.a));
-      TroopView.a(this.a, false);
-    } while (this.a.a == null);
-    this.a.a.a(TroopView.a(this.a));
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a() {}
+  
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    return aexd.a(paramQQAppInterface).a(paramString);
   }
 }
 

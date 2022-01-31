@@ -1,31 +1,19 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import android.content.DialogInterface;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-public class apyi
-  extends GestureDetector.SimpleOnGestureListener
+class apyi
+  extends bbdf
 {
-  public apyi(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  apyi(apyg paramapyg, int paramInt) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.f();
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return super.onDoubleTapEvent(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    this.jdField_a_of_type_Apyg.a.a(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apyi
  * JD-Core Version:    0.7.0.1
  */

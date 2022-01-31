@@ -1,18 +1,15 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbEntryBannerView;
 
 public class ahhc
-  extends OrientationEventListener
+  implements ahbt
 {
-  public ahhc(FlowCameraActivity2 paramFlowCameraActivity2, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public ahhc(SpringHbEntryBannerView paramSpringHbEntryBannerView, int paramInt, SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo paramBannerInfo) {}
   
-  public void onOrientationChanged(int paramInt)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    this.a.k = paramInt;
+    SpringHbEntryBannerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryBannerView, paramInt, paramPathResult, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalConfigSpringFestivalRedpacketConfBean$SpringFestivalHbEntryInfo$PendantEntryInfo$BannerInfo);
   }
 }
 

@@ -1,24 +1,39 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.fragment.HotChatFragment;
-import com.tencent.mobileqq.fragment.HotChatFragment.HotChatWebView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
 
-public class apny
-  extends BroadcastReceiver
+class apny
+  extends ajta
 {
-  public apny(HotChatFragment paramHotChatFragment) {}
+  apny(apnm paramapnm) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(Object paramObject)
   {
-    if ((paramIntent != null) && ("com.tencent.mobileqq.refresh_hot_chat_list".equals(paramIntent.getAction())) && (this.a.a != null) && (this.a.a.mWebview != null)) {
-      this.a.a.refresh();
+    Object localObject = this.a.jdField_a_of_type_Apkp.a();
+    paramObject = (azqt)paramObject;
+    if (((FileManagerEntity)localObject).TroopUin != paramObject.b) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("TroopFileModel<FileAssistant>", 4, "difference troop uin file");
+      }
     }
+    do
+    {
+      return;
+      if (TextUtils.isEmpty(apnm.a(this.a)))
+      {
+        localObject = bakj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FileManagerEntity)localObject);
+        if (((azqt)localObject).a != null) {
+          apnm.a(this.a, ((azqt)localObject).a.toString());
+        }
+      }
+    } while ((paramObject.a == null) || (apnm.a(this.a) == null) || (!apnm.a(this.a).equals(paramObject.a.toString())));
+    apnm.a(this.a, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apny
  * JD-Core Version:    0.7.0.1
  */

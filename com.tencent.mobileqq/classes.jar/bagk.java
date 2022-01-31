@@ -1,112 +1,70 @@
 import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import tencent.im.troop.homework.ErrorInfo;
+import tencent.im.troop.homework.ReqSend1V1Msg;
+import tencent.im.troop.homework.RspSend1V1Msg;
 
-class bagk
-  extends BaseAdapter
+public class bagk
+  extends akim
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<ResultRecord> jdField_a_of_type_JavaUtilList;
+  public bagk(BulkSendMessageFragment paramBulkSendMessageFragment) {}
   
-  public bagk(QQAppInterface paramQQAppInterface, Context paramContext, List<ResultRecord> paramList, View.OnClickListener paramOnClickListener)
+  protected void a(boolean paramBoolean, homework.RspSend1V1Msg paramRspSend1V1Msg, homework.ReqSend1V1Msg paramReqSend1V1Msg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramContext;
-    this.jdField_a_of_type_AndroidContentContext = paramList;
-    Object localObject;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = localObject;
-    this.jdField_a_of_type_JavaUtilList = paramOnClickListener;
-  }
-  
-  private int a(int paramInt)
-  {
-    if (paramInt == 4) {}
-    do
-    {
-      return 11;
-      if (paramInt == 1) {
-        return 4;
+    if (QLog.isColorLevel()) {
+      if (paramRspSend1V1Msg != null) {
+        break label97;
       }
-      if (paramInt == 3000) {
-        return 101;
+    }
+    label97:
+    for (Object localObject = "null";; localObject = vys.a(paramRspSend1V1Msg))
+    {
+      QLog.d(".troop.troop_app.BulkSendMessageFragment", 2, new Object[] { "Receive response succ=", Boolean.valueOf(paramBoolean), "resp: ", localObject });
+      if (this.a.jdField_a_of_type_Vzr != null)
+      {
+        this.a.jdField_a_of_type_Vzr.a();
+        this.a.jdField_a_of_type_Vzr = null;
       }
-    } while (paramInt == 1006);
-    return 1;
-  }
-  
-  private void a(ImageView paramImageView, ResultRecord paramResultRecord)
-  {
-    if (ajed.z.equals(paramResultRecord.a))
-    {
-      paramImageView.setImageResource(2130843326);
+      localObject = this.a.getActivity();
+      if (localObject != null) {
+        break;
+      }
+      QLog.e(".troop.troop_app.BulkSendMessageFragment", 2, "onBulkSendMessage() Error: getActivity == null");
       return;
     }
-    if (ajed.A.equals(paramResultRecord.a))
+    if (paramRspSend1V1Msg == null)
     {
-      paramImageView.setImageResource(2130843324);
+      bcpw.a((Context)localObject, 1, ajyc.a(2131701221), 1).a();
       return;
     }
-    if (ajed.B.equals(paramResultRecord.a))
+    if (paramRspSend1V1Msg.result.error_code.get() != 0)
     {
-      paramImageView.setImageResource(2130843329);
+      bcpw.a((Context)localObject, 1, paramRspSend1V1Msg.result.error_desc.get().toStringUtf8(), 1).a();
       return;
     }
-    if (ajed.y.equals(paramResultRecord.a))
-    {
-      paramImageView.setImageResource(2130839271);
-      return;
+    bcpw.a((Context)localObject, 2, ajyc.a(2131701217), 1).a();
+    ((FragmentActivity)localObject).finish();
+    ((FragmentActivity)localObject).overridePendingTransition(0, 2130772001);
+    paramRspSend1V1Msg = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+    if (paramRspSend1V1Msg != null) {
+      paramRspSend1V1Msg.sendEmptyMessage(1009);
     }
-    int i = a(paramResultRecord.a());
-    paramImageView.setImageDrawable(azwp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, paramResultRecord.a));
-  }
-  
-  public ResultRecord a(int paramInt)
-  {
-    return (ResultRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_Bagg.i, this.jdField_a_of_type_Bagg.i));
-    }
-    for (;;)
-    {
-      a(paramView, a(paramInt));
-      paramView.setTag(a(paramInt));
-      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramView.setFocusable(false);
-      return paramView;
-      paramView = (ImageView)paramView;
-    }
+    paramRspSend1V1Msg = bbbb.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString);
+    bbbb.a("Grp_edu", "MassMessage", "CreateMessage_Send", 0, 0, new String[] { this.a.jdField_a_of_type_JavaLangString, paramRspSend1V1Msg, paramReqSend1V1Msg.text.get().toStringUtf8(), String.valueOf(paramReqSend1V1Msg.to_uins.size()) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bagk
  * JD-Core Version:    0.7.0.1
  */

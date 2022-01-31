@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import android.content.Intent;
-
 class JumpActivity$8
   implements Runnable
 {
-  JumpActivity$8(JumpActivity paramJumpActivity, Intent paramIntent) {}
+  JumpActivity$8(JumpActivity paramJumpActivity) {}
   
   public void run()
   {
-    JumpActivity.a(this.this$0, this.a.getExtras());
+    JumpActivity.a(this.this$0);
   }
 }
 

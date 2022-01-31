@@ -1,112 +1,165 @@
-import android.support.annotation.NonNull;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
-import com.tencent.ttpic.openapi.filter.RenderBuffer;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Align;
+import android.graphics.Paint.Style;
+import android.graphics.RectF;
+import android.graphics.Typeface;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import dov.com.qq.im.capture.text.DynamicTextItem;
 import java.util.List;
 
 public class bjhi
-  extends GPUBaseFilter
+  extends DynamicTextItem
 {
-  private int jdField_a_of_type_Int = -1;
-  private List<GPUBaseFilter> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private List<RenderBuffer> b;
+  public static final float a;
+  public static final int b;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+  bjii jdField_a_of_type_Bjii;
+  private float jdField_b_of_type_Float;
+  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
+  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
+  private float jdField_c_of_type_Float;
+  private int jdField_c_of_type_Int;
+  private RectF jdField_c_of_type_AndroidGraphicsRectF = new RectF();
+  private int d;
   
-  private void a()
+  static
   {
-    if (this.b != null)
+    jdField_a_of_type_Float = axli.a(45.0F);
+    jdField_b_of_type_Int = actn.a(24.0F, BaseApplicationImpl.getContext().getResources());
+  }
+  
+  public bjhi(int paramInt, List<String> paramList, Bitmap paramBitmap1, Bitmap paramBitmap2, Typeface paramTypeface)
+  {
+    super(paramInt, paramList);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
+    if (paramTypeface == null) {
+      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.defaultFromStyle(1));
+    }
+    for (;;)
     {
-      Iterator localIterator = this.b.iterator();
-      while (localIterator.hasNext()) {
-        ((RenderBuffer)localIterator.next()).destroy();
+      this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
+      this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+      this.jdField_a_of_type_AndroidTextTextPaint.setColor(-16777216);
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
+      this.d = (jdField_b_of_type_Int * 9);
+      new bjgi().a(0.0F, 0.0F).a(this.d, jdField_b_of_type_Int, 5, 9).a();
+      this.jdField_c_of_type_Int = jdField_b_of_type_Int;
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_c_of_type_Int);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap1;
+      this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap2;
+      if (!paramList.isEmpty()) {
+        a(0, (String)paramList.get(0));
       }
-      this.b = null;
+      return;
+      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
     }
   }
   
-  public RenderBuffer a()
+  private void a(int paramInt, RectF paramRectF, Canvas paramCanvas, Paint paramPaint)
   {
-    if ((this.b != null) && (this.b.size() > 0)) {
-      return (RenderBuffer)this.b.get(this.b.size() - 1);
+    if ((paramInt < 0) || (paramRectF == null) || (paramCanvas == null) || (paramPaint == null)) {
+      return;
     }
-    throw new RuntimeException("please check your state");
-  }
-  
-  public void a(@NonNull GPUBaseFilter paramGPUBaseFilter)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramGPUBaseFilter);
-  }
-  
-  public void destroy()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((GPUBaseFilter)localIterator.next()).destroy();
+    if (paramInt < 4)
+    {
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramRectF.left + (paramRectF.width() - this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) / 2.0F, paramRectF.top + (paramRectF.height() - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) / 2.0F, paramPaint);
+      return;
     }
-    a();
+    paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, paramRectF.left + (paramRectF.width() - this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth()) / 2.0F, paramRectF.top + (paramRectF.height() - this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight()) / 2.0F, paramPaint);
   }
   
-  public void drawTexture(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  public float a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return this.jdField_b_of_type_Float;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    int i = 0;
+    super.a(paramInt, paramString);
+    String str = super.b(paramInt);
+    paramString = str;
+    if (TextUtils.isEmpty(str)) {
+      paramString = "　　";
+    }
+    this.jdField_a_of_type_Bjii = new bjii(0);
+    this.jdField_a_of_type_Bjii.a(paramString, this.d, jdField_b_of_type_Int, this.jdField_a_of_type_AndroidTextTextPaint);
+    this.jdField_a_of_type_Bjii.a(new bjhq((int)jdField_a_of_type_Float));
+    this.jdField_b_of_type_Float = this.jdField_a_of_type_Bjii.a(1, this.jdField_a_of_type_Bjii.a()).width();
+    this.jdField_c_of_type_Float = this.jdField_a_of_type_Bjii.a(1, this.jdField_a_of_type_Bjii.a()).height();
     paramInt = 0;
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    if (paramInt < this.jdField_a_of_type_Bjii.a())
     {
-      if (paramInt != this.jdField_a_of_type_JavaUtilList.size() - 1)
-      {
-        ((RenderBuffer)this.b.get(paramInt)).bind();
-        ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, null, null);
-        ((RenderBuffer)this.b.get(paramInt)).unbind();
-        this.jdField_a_of_type_Int = ((RenderBuffer)this.b.get(paramInt)).getTexId();
-      }
+      int j = this.jdField_a_of_type_Bjii.a(paramInt);
+      if (i > j) {}
       for (;;)
       {
         paramInt += 1;
         break;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, paramArrayOfFloat1, paramArrayOfFloat2);
-        }
-        else
-        {
-          ((RenderBuffer)this.b.get(paramInt)).bind();
-          ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, paramArrayOfFloat1, paramArrayOfFloat2);
-          ((RenderBuffer)this.b.get(paramInt)).unbind();
-          this.jdField_a_of_type_Int = ((RenderBuffer)this.b.get(paramInt)).getTexId();
-        }
+        i = j;
       }
     }
-  }
-  
-  public void init()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((GPUBaseFilter)localIterator.next()).init();
-    }
-  }
-  
-  public void onOutputSizeChanged(int paramInt1, int paramInt2)
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((GPUBaseFilter)((Iterator)localObject).next()).onOutputSizeChanged(paramInt1, paramInt2);
-    }
-    a();
-    this.b = new ArrayList();
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    int i = j;
-    if (this.jdField_a_of_type_Boolean) {
-      i = j - 1;
-    }
-    j = 0;
-    while (j < i)
+    if (i <= 4) {}
+    for (this.jdField_b_of_type_Float = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();; this.jdField_b_of_type_Float = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth())
     {
-      localObject = new RenderBuffer(paramInt1, paramInt2, 33984);
-      this.b.add(localObject);
-      j += 1;
+      this.jdField_a_of_type_Bjii.a(new bjgq(this.jdField_b_of_type_Float, this.jdField_c_of_type_Float));
+      return;
     }
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_Bjii == null) {
+      return;
+    }
+    paramCanvas.save();
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
+    paramCanvas.save();
+    int i = 0;
+    while (i < this.jdField_a_of_type_Bjii.a())
+    {
+      this.jdField_c_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_Bjii.a(i));
+      this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_AndroidGraphicsRectF);
+      a(this.jdField_a_of_type_Bjii.a(i), this.jdField_b_of_type_AndroidGraphicsRectF, paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint);
+      RectF localRectF = this.jdField_c_of_type_AndroidGraphicsRectF;
+      localRectF.bottom -= jdField_a_of_type_Float;
+      this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_AndroidGraphicsRectF);
+      i += 1;
+    }
+    paramCanvas.restore();
+    paramCanvas.rotate(-10.0F, this.jdField_b_of_type_Float / 2.0F, this.jdField_c_of_type_Float / 2.0F);
+    paramCanvas.translate(0.0F, -axli.a(5.0F));
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-16777216);
+    this.jdField_a_of_type_Bjii.a(paramCanvas, 0, 0);
+    if (super.b(0))
+    {
+      this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_Bjii.a(1, this.jdField_a_of_type_Bjii.a()));
+      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
+    }
+    paramCanvas.restore();
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public float b()
+  {
+    return this.jdField_c_of_type_Float;
   }
 }
 

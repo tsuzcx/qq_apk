@@ -1,18 +1,48 @@
-import java.util.List;
+import QC.UniBusiCommItemAidInfo;
+import QC.UniBusiGetOneItemWithCheckRsp;
+import QC.UniBusiSimpleItemDetail;
 
-public abstract interface auyb
+class auyb
+  implements auyg
 {
-  public abstract int a();
+  auyb(auxz paramauxz) {}
   
-  public abstract int a(List<auxx> paramList);
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public void a(boolean paramBoolean, UniBusiGetOneItemWithCheckRsp paramUniBusiGetOneItemWithCheckRsp)
+  {
+    if (auxz.a(this.a) == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if (paramBoolean) {
+          break label195;
+        }
+        if ((paramUniBusiGetOneItemWithCheckRsp == null) || (paramUniBusiGetOneItemWithCheckRsp.stDetail == null)) {
+          break;
+        }
+      } while (paramUniBusiGetOneItemWithCheckRsp.stDetail.itemId != auxz.a(this.a).itemId);
+      if (paramUniBusiGetOneItemWithCheckRsp.ret == 0)
+      {
+        auxz.a(this.a, false);
+        this.a.b();
+        return;
+      }
+    } while (!auxz.a(this.a));
+    auxz.a(this.a, auxz.a(this.a), auxz.a(this.a).stAidInfo.androidAid, auxz.a(this.a).stAidInfo.payType, auxz.a(this.a).stAidInfo.errMsg, auxz.a(this.a).stAidInfo.month);
+    return;
+    auxz.a(this.a, false);
+    bcpw.a(auxz.a(this.a), ajyc.a(2131715126), 0).a();
+    auxz.a(this.a, null);
+    auxz.a(this.a, -1);
+    return;
+    label195:
+    this.a.b();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auyb
  * JD-Core Version:    0.7.0.1
  */

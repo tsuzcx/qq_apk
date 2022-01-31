@@ -1,16 +1,27 @@
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadRegulator;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class akho
+  extends MqqHandler
 {
-  public static boolean a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public akho(ThreadRegulator paramThreadRegulator, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LinkStarDebugProcessor.", 2, "handleLinkStarNotifyPush. linkStarMsgType=" + paramInt + " reservedData=" + paramArrayOfByte1 + " data=" + paramArrayOfByte2);
-    }
-    switch (paramInt)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    paramMessage = (akhp)paramMessage.obj;
+    if (paramMessage != null)
     {
+      if (QLog.isColorLevel()) {
+        QLog.d("ThreadManager.Regulaotr", 2, paramMessage.jdField_a_of_type_Int + " cost " + (paramMessage.b - paramMessage.jdField_a_of_type_Long) + ", paused " + paramMessage.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+      }
+      paramMessage.recycle();
     }
-    return true;
   }
 }
 

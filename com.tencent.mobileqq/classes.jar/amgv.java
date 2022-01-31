@@ -1,93 +1,36 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class amgv
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  
-  public amgv()
+  public static void a(ArrayList<ColorNote> paramArrayList)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = -1;
-  }
-  
-  public static amgv a(String paramString)
-  {
-    if (paramString == null) {}
-    do
+    HashMap localHashMap = new HashMap();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
     {
-      return null;
-      try
+      ColorNote localColorNote = (ColorNote)paramArrayList.next();
+      Integer localInteger = Integer.valueOf(localColorNote.getServiceType());
+      if (localHashMap.containsKey(localInteger))
       {
-        amgv localamgv = new amgv();
-        paramString = new JSONObject(paramString);
-        Object localObject = paramString.optJSONArray("whiteList");
-        if (localObject != null) {
-          localamgv.jdField_a_of_type_JavaLangString = ((JSONArray)localObject).toString();
-        }
-        localObject = paramString.optJSONObject("jumpLimit");
-        if (localObject != null) {
-          localamgv.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).toString();
-        }
-        localObject = paramString.optJSONArray("whiteListv2");
-        if (localObject != null) {
-          localamgv.c = ((JSONArray)localObject).toString();
-        }
-        int i = paramString.optInt("aio_pre_safecheck", -1);
-        if (i != -1) {
-          localamgv.jdField_a_of_type_Int = i;
-        }
-        localObject = paramString.optJSONArray("kbWhiteList");
-        if (localObject != null) {
-          localamgv.d = ((JSONArray)localObject).toString();
-        }
-        i = paramString.optInt("force_https_enable", -1);
-        if (i != -1) {
-          localamgv.jdField_b_of_type_Int = i;
-        }
-        localObject = paramString.optJSONArray("force_https_whitelist");
-        if (localObject != null) {
-          localamgv.e = ((JSONArray)localObject).toString();
-        }
-        paramString = paramString.optJSONArray("force_https_blacklist");
-        if (paramString != null) {
-          localamgv.f = paramString.toString();
-        }
-        QLog.d("ConfBean", 2, "confBean = " + localamgv.toString());
-        return localamgv;
+        ((ArrayList)localHashMap.get(localInteger)).add(localColorNote);
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("whitelistStr:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" limit:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" whiteListV2:").append(this.c);
-    localStringBuilder.append(" aioPreCheckSwitch:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" kbWhiteList:").append(this.d);
-    localStringBuilder.append(" forceHttpsEnable:").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(" forceHttpsWhitelist:").append(this.e);
-    localStringBuilder.append(" forceHttpsBlacklist:").append(this.f);
-    return localStringBuilder.toString();
+      else
+      {
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(localColorNote);
+        localHashMap.put(localInteger, localArrayList);
+      }
+    }
+    rnr.a((List)localHashMap.get(Integer.valueOf(16908290)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amgv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class ure
-  implements View.OnClickListener
+public abstract interface ure
 {
-  ure(urd paramurd, urc paramurc, vil paramvil) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Urc != null) {
-      this.jdField_a_of_type_Urc.a(this.jdField_a_of_type_Vil);
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ark.API;
 
-import acka;
-import albi;
-import albk;
-import albl;
-import albm;
+import acut;
+import alpw;
+import alpy;
+import alpz;
+import alqa;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.graphics.Rect;
 import android.media.AudioManager;
 import android.view.View;
-import baip;
-import bejx;
+import bbjw;
+import bfrr;
 import com.tencent.ark.ark;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -35,16 +35,16 @@ public class ArkAppNotifyCenter
   public static final String TAG = "ark.ArkAppNotifyCenter";
   public static ArkAppNotifyCenter.ArkClickListener arkClickListener;
   private static int callbackId;
-  private static HashMap<String, albk> notifyRegs = new HashMap();
-  private static albm receiver;
+  private static HashMap<String, alpy> notifyRegs = new HashMap();
+  private static alqa receiver;
   
   static
   {
     callbackId = -1;
-    Object localObject = new albl();
+    Object localObject = new alpz();
     notifyRegs.put("com.tencent.troopapp", localObject);
     notifyRegs.put("com.tencent.test.troopapp", localObject);
-    localObject = new albi();
+    localObject = new alpw();
     notifyRegs.put("com.tencent.yundong", localObject);
     notifyRegs.put("com.tencent.gdt.gouwu", localObject);
     notifyRegs.put("com.tencent.gdt.label", localObject);
@@ -54,6 +54,7 @@ public class ArkAppNotifyCenter
     notifyRegs.put("com.tencent.tangram.card", localObject);
     notifyRegs.put("com.tencent.tangram.test", localObject);
     notifyRegs.put("com.tencent.weather", localObject);
+    notifyRegs.put("com.tencent.pcg.qzone.qqcps", localObject);
   }
   
   private static void callbackMuteStatus(String paramString)
@@ -93,7 +94,7 @@ public class ArkAppNotifyCenter
   private static ChatMessage getAdArkItemIndexInAIO(List<ChatMessage> paramList, String paramString)
   {
     ChatMessage localChatMessage;
-    if ((paramList == null) || (paramList.isEmpty()) || (baip.a(paramString)))
+    if ((paramList == null) || (paramList.isEmpty()) || (bbjw.a(paramString)))
     {
       localChatMessage = null;
       return localChatMessage;
@@ -114,7 +115,7 @@ public class ArkAppNotifyCenter
           if (localObject != null)
           {
             localObject = ((ArkAppMessage)localObject).metaList;
-            if (baip.a((String)localObject)) {}
+            if (bbjw.a((String)localObject)) {}
           }
         }
         try
@@ -149,7 +150,7 @@ public class ArkAppNotifyCenter
   
   private static View getViewByPosition(ChatMessage paramChatMessage, ChatXListView paramChatXListView)
   {
-    int i = ((acka)((bejx)paramChatXListView.getAdapter()).getWrappedAdapter()).a(paramChatMessage) + paramChatXListView.getHeaderViewsCount();
+    int i = ((acut)((bfrr)paramChatXListView.getAdapter()).getWrappedAdapter()).a(paramChatMessage) + paramChatXListView.getHeaderViewsCount();
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.delmsg", 2, "pos is:" + i);
     }
@@ -168,10 +169,10 @@ public class ArkAppNotifyCenter
   
   public static boolean notify(String paramString1, String paramString2, String paramString3)
   {
-    albk localalbk = (albk)notifyRegs.get(paramString1);
-    if (localalbk != null)
+    alpy localalpy = (alpy)notifyRegs.get(paramString1);
+    if (localalpy != null)
     {
-      ThreadManager.getSubThreadHandler().post(new ArkAppNotifyCenter.1(localalbk, paramString1, paramString2, paramString3));
+      ThreadManager.getSubThreadHandler().post(new ArkAppNotifyCenter.1(localalpy, paramString1, paramString2, paramString3));
       return true;
     }
     return false;
@@ -180,7 +181,7 @@ public class ArkAppNotifyCenter
   public static void registVolumnReceiver()
   {
     if (receiver == null) {
-      receiver = new albm(null);
+      receiver = new alqa(null);
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.media.VOLUME_CHANGED_ACTION");
@@ -190,7 +191,7 @@ public class ArkAppNotifyCenter
     BaseApplicationImpl.getApplication().getBaseContext().registerReceiver(receiver, localIntentFilter);
   }
   
-  public static void setNotify(String paramString, WeakReference<albk> paramWeakReference)
+  public static void setNotify(String paramString, WeakReference<alpy> paramWeakReference)
   {
     if ((paramWeakReference != null) && (paramWeakReference.get() != null))
     {

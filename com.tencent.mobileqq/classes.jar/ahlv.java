@@ -1,132 +1,29 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.RectF;
-import android.graphics.Typeface;
-import android.text.TextUtils;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.filter.RenderBuffer;
 
 class ahlv
+  implements View.OnClickListener
 {
-  public float a;
-  public int a;
-  public ahlu a;
-  private ahlw a;
-  public Bitmap a;
-  public boolean a;
+  ahlv(ahkf paramahkf, String paramString) {}
   
-  public ahlv(String paramString, ahlw paramahlw, Typeface paramTypeface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Ahlw = paramahlw;
-    this.jdField_a_of_type_Ahlu = new ahlu(paramString, this.jdField_a_of_type_Ahlw.c, this.jdField_a_of_type_Ahlw.b, this.jdField_a_of_type_Ahlw.e, this.jdField_a_of_type_Ahlw.f, 0.0F, (this.jdField_a_of_type_Ahlw.jdField_a_of_type_Float - this.jdField_a_of_type_Ahlw.b) / 2.0F, paramTypeface);
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      b(paramString);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, "click move to url:" + this.jdField_a_of_type_JavaLangString);
     }
-  }
-  
-  private boolean a(String paramString1, String paramString2)
-  {
-    if ((paramString1 == null) && (paramString2 == null)) {}
-    do
-    {
-      return true;
-      if ((paramString1 == null) || (paramString2 == null)) {
-        return false;
-      }
-    } while (paramString1.equals(paramString2));
-    return false;
-  }
-  
-  private void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      if (this.jdField_a_of_type_Int != -1)
-      {
-        GlUtil.deleteTexture(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Int = -1;
-      }
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    }
-    if (this.jdField_a_of_type_Int != -1)
-    {
-      GlUtil.deleteTexture(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = -1;
-    }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = ahma.a(this.jdField_a_of_type_Ahlu.c, this.jdField_a_of_type_Ahlw.jdField_a_of_type_Float);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      paramString = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_Ahlu.jdField_a_of_type_Float = 0.0F;
-      this.jdField_a_of_type_Ahlu.a(paramString);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = -1;
-      return;
-      QLog.d("BeanItemWrapper", 2, "createcache error:" + this.jdField_a_of_type_Ahlu.c + "-" + this.jdField_a_of_type_Ahlw.jdField_a_of_type_Float);
-    }
-  }
-  
-  public void a(Canvas paramCanvas, float paramFloat1, float paramFloat2)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
-    {
-      this.jdField_a_of_type_Ahlu.jdField_a_of_type_Float = paramFloat1;
-      paramFloat1 = this.jdField_a_of_type_Ahlu.b;
-      ahlu localahlu = this.jdField_a_of_type_Ahlu;
-      localahlu.b += paramFloat2;
-      this.jdField_a_of_type_Ahlu.a(paramCanvas);
-      this.jdField_a_of_type_Ahlu.b = paramFloat1;
-      return;
-    }
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramFloat1, paramFloat2, null);
-  }
-  
-  public void a(RenderBuffer paramRenderBuffer, RectF paramRectF, float paramFloat1, float paramFloat2)
-  {
-    if ((paramRenderBuffer == null) || (!this.jdField_a_of_type_Boolean)) {}
-    do
-    {
-      return;
-      if ((this.jdField_a_of_type_Int < 0) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
-        this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
-    } while (this.jdField_a_of_type_Int < 0);
-    ahma.a(paramRenderBuffer, this.jdField_a_of_type_Int, this.jdField_a_of_type_Ahlu.c, this.jdField_a_of_type_Ahlw.jdField_a_of_type_Float, paramRectF, paramFloat1, paramFloat2);
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      if (!a(paramString, this.jdField_a_of_type_Ahlu.jdField_a_of_type_JavaLangString))
-      {
-        this.jdField_a_of_type_Ahlu.a(paramString);
-        b(paramString);
-      }
-      return;
-    }
+    paramView = new Intent(ahkf.a(this.jdField_a_of_type_Ahkf), QQBrowserDelegationActivity.class);
+    paramView.putExtra("injectrecommend", true);
+    ahkf.a(this.jdField_a_of_type_Ahkf).startActivity(paramView.putExtra("url", this.jdField_a_of_type_JavaLangString));
+    axqw.a(ahkf.a(this.jdField_a_of_type_Ahkf).app, "CliOper", "", "", "0X8004029", "0X8004029", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahlv
  * JD-Core Version:    0.7.0.1
  */

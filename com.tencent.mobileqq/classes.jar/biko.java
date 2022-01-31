@@ -1,15 +1,7 @@
-import java.io.File;
-import java.io.FilenameFilter;
-
-class biko
-  implements FilenameFilter
+public class biko
 {
-  biko(bikm parambikm) {}
-  
-  public boolean accept(File paramFile, String paramString)
-  {
-    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp")) || (paramString.endsWith(".apng"));
-  }
+  public int a = 0;
+  public int b = 0;
 }
 
 

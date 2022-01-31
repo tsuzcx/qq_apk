@@ -1,47 +1,27 @@
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
 
-public class bdct
+class bdct
+  extends QIPCModule
 {
-  private static bdlz a = new bdlz();
-  
-  public static void a(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
+  bdct(bdcs parambdcs, String paramString)
   {
-    bdnw.b("minisdk-start_MiniSDK", "startMiniApp miniappInfo:" + paramMiniAppInfo);
-    bdlz localbdlz = a;
-    if (paramActivity != null) {}
-    for (Context localContext = paramActivity.getApplicationContext();; localContext = null)
-    {
-      localbdlz.a(localContext);
-      a.a(paramActivity, paramMiniAppInfo, paramBundle, paramResultReceiver);
-      return;
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ("QIPC_SHOW_TOAST_ACTION".equals(paramString)) {
+      bcpw.a(BaseApplicationImpl.context, ajyc.a(2131711185), 1).a();
     }
-  }
-  
-  public static void a(Context paramContext)
-  {
-    bdnw.b("minisdk-start_MiniSDK", "preloadMiniApp");
-    a(paramContext, new Bundle());
-  }
-  
-  public static void a(Context paramContext, Bundle paramBundle)
-  {
-    bdnw.b("minisdk-start_MiniSDK", "preloadMiniApp");
-    a.a(paramContext);
-    a.a(paramContext, paramBundle);
-  }
-  
-  public static void a(Context paramContext, bdcq parambdcq)
-  {
-    a.a(paramContext, parambdcq);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdct
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,45 @@
-public final class akgn
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SignatureManager;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+
+public class akgn
+  implements Handler.Callback
 {
-  public static String a()
-  {
-    switch ()
-    {
-    default: 
-      return "X";
-    case 2: 
-      return "2g";
-    case 3: 
-      return "3g";
-    case 4: 
-      return "4g";
-    }
-    return "wifi";
-  }
+  public akgn(SignatureManager paramSignatureManager) {}
   
-  public static String b()
+  public boolean handleMessage(Message paramMessage)
   {
-    int i = 4;
-    switch (mpl.a())
+    if (2 == paramMessage.what)
     {
+      SignatureManager.jdField_a_of_type_ArrayOfBbqd = (bbqd[])paramMessage.obj;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      {
+        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
+        if (paramMessage != null) {
+          paramMessage.sendEmptyMessageDelayed(2, 50L);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Signature", 2, "update sign tpl info...");
+        }
+      }
     }
     for (;;)
     {
-      return String.valueOf(i);
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 0;
+      return true;
+      if ((3 == paramMessage.what) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+      {
+        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
+        if (paramMessage != null) {
+          paramMessage.sendEmptyMessageDelayed(7, 50L);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Signature", 2, "update sign tpl animation ...");
+        }
+      }
     }
   }
 }

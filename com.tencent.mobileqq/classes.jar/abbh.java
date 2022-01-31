@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.LebaListMgrActivity.3.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
 
 public class abbh
-  extends atdh
+  extends BroadcastReceiver
 {
-  public abbh(LebaListMgrActivity paramLebaListMgrActivity) {}
+  public abbh(FavEmosmManageActivity paramFavEmosmManageActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.mgr", 2, "onGameCenterMsgReceive. notifyData.");
-    }
-    if ((this.a.isResume()) && (paramBoolean1) && (paramInt != 2) && (LebaListMgrActivity.a(this.a) != null))
-    {
-      List localList = afqa.a().a();
-      this.a.runOnUiThread(new LebaListMgrActivity.3.1(this, localList));
+    if (FavEmosmManageActivity.a(this.a) != null) {
+      FavEmosmManageActivity.a(this.a).a(paramContext, paramIntent);
     }
   }
 }

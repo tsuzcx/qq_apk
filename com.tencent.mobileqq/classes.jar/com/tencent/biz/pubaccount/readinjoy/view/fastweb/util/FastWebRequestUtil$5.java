@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import ohb;
+import osm;
 
 public final class FastWebRequestUtil$5
   implements Runnable
 {
   public void run()
   {
-    ohb.a().c();
+    osm.a().c();
   }
 }
 

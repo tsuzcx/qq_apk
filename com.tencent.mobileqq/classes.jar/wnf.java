@@ -1,19 +1,22 @@
-import org.json.JSONObject;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.subscribe.comment.CommentInputPopupWindow.1.1;
 
 public class wnf
+  implements wnc
 {
-  public String a;
-  public String b;
+  wnf(wne paramwne) {}
   
-  public wnf(JSONObject paramJSONObject)
+  public void a(View paramView)
   {
-    this.a = paramJSONObject.optString("icon");
-    this.b = paramJSONObject.optString("jumpUrl");
+    if (this.a.isShowing()) {
+      wne.a(this.a).runOnUiThread(new CommentInputPopupWindow.1.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wnf
  * JD-Core Version:    0.7.0.1
  */

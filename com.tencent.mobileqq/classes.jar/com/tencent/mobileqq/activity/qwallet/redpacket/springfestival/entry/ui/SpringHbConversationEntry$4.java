@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
-import agud;
+import ahgs;
 
 public class SpringHbConversationEntry$4
   implements Runnable
 {
-  public SpringHbConversationEntry$4(agud paramagud) {}
+  public SpringHbConversationEntry$4(ahgs paramahgs) {}
   
   public void run()
   {
-    agud.c(this.this$0);
+    ahgs.c(this.this$0);
   }
 }
 

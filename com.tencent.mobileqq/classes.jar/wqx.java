@@ -1,44 +1,20 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.videostory.capture.widgets.AEBottomListScrollView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
 
-class wqx
-  implements bhwg<Boolean>
+public class wqx
+  implements View.OnClickListener
 {
-  wqx(wqq paramwqq) {}
+  public wqx(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean == null) {}
-    do
-    {
-      return;
-      if (wqq.a(this.a).a())
-      {
-        wqq.a(this.a).setVisibility(8);
-        return;
-      }
-      if (wqq.a(this.a).b())
-      {
-        if (!wqq.a(this.a))
-        {
-          AEBottomListScrollView localAEBottomListScrollView = wqq.a(this.a);
-          if (paramBoolean.booleanValue()) {}
-          for (int i = 0;; i = 4)
-          {
-            localAEBottomListScrollView.setVisibility(i);
-            return;
-          }
-        }
-        wqq.a(this.a).setVisibility(8);
-        return;
-      }
-    } while (!wqq.a(this.a).c());
-    wqq.a(this.a).setVisibility(8);
+    this.a.onBackEvent();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wqx
  * JD-Core Version:    0.7.0.1
  */

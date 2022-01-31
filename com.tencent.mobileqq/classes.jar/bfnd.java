@@ -1,27 +1,18 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
-public final class bfnd
+public class bfnd
 {
-  public static String a(Context paramContext)
+  public static String a(Throwable paramThrowable)
   {
-    return paramContext.getSharedPreferences("SETTING", 0).getString("debug_h5_test_env", null);
-  }
-  
-  public static void a(Context paramContext, boolean paramBoolean, String paramString)
-  {
-    paramContext.getSharedPreferences("SETTING", 0).edit().putBoolean("debug_h5_test_mode", paramBoolean).putString("debug_h5_test_env", paramString).apply();
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("SETTING", 0).getBoolean("debug_h5_test_mode", false);
+    StringWriter localStringWriter = new StringWriter();
+    paramThrowable.printStackTrace(new PrintWriter(localStringWriter));
+    return localStringWriter.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfnd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,27 @@
-import android.os.Build;
-import android.os.Environment;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 
-public class bdhb
+class bdhb
+  implements DialogInterface.OnClickListener
 {
-  static String a = Environment.getExternalStorageDirectory().getAbsolutePath();
-  static String b = a + "/DCIM/Video/";
-  static String c = a + "/照相机/Camera/";
-  static String d = a + "/相机/";
-  static String e = a + "/Camera/Video/";
-  static String f = a + "/DCIM/Camera/";
+  bdhb(bdgz parambdgz, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
   
-  public static String a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str = Build.MODEL.toUpperCase();
-    if (str.contains("GN9000L")) {
-      str = c;
-    }
-    for (;;)
-    {
-      bdnw.a("ShortVideoUtil", "getCameraPath: commonPath=" + str);
-      return str;
-      if ((str.contains("MX4")) || (str.contains("MX6")) || (str.contains("MX5")) || (str.contains("M355")) || (str.contains("M571C"))) {
-        str = b;
-      } else if (str.contains("M040")) {
-        str = e;
-      } else if ((str.contains("VIVO X7")) || (str.contains("VIVO X6A")) || (str.contains("VIVO XPLAY6")) || (str.contains("VIVO X5PRO")) || (str.contains("VIVO X9 PLUS")) || (str.contains("VIVO Y51A")) || (str.contains("VIVO X9I")) || (str.contains("VIVO X9")) || (str.contains("VIVO X6D"))) {
-        str = d;
-      } else {
-        str = f;
-      }
-    }
+    bdgz.a(this.jdField_a_of_type_Bdgz, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    axqw.b(null, "dc00898", "", "", "0X8008F7C", "0X8008F7C", 0, 0, "", "", "", "");
+    paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString(bdkm.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bdkm.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bdkm.d);
+    paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 101 + "|" + paramDialogInterface;
+    bdes.a().a(25, paramDialogInterface);
+    paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString("pageId") + "_" + this.jdField_a_of_type_AndroidOsBundle.getString("moduleId") + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bdkm.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bdkm.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bdkm.d);
+    bdhk.b("6006", "2", "0", this.jdField_a_of_type_AndroidOsBundle.getString(bdkm.i), paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdhb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,156 +1,136 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.VideoCollectionEntry;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.widget.StoryCoverView;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupAdapter;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 import java.util.List;
+import java.util.Map;
 
-public class uan
-  extends BaseAdapter
-  implements AdapterView.OnItemClickListener
+class uan
+  implements tzu
 {
-  final int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  public String a;
-  HashMap<String, uhj> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  List<uhj> jdField_a_of_type_JavaUtilList = new ArrayList();
-  uar jdField_a_of_type_Uar;
-  uas jdField_a_of_type_Uas;
-  final int jdField_b_of_type_Int;
-  HashMap<String, WeakReference<uao>> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  final int c;
+  private uan(ual paramual) {}
   
-  public uan(Context paramContext)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = vms.a(paramContext, 90.0F);
-    this.jdField_b_of_type_Int = vms.a(paramContext, 146.0F);
-    this.c = vms.a(paramContext, 4.0F);
-  }
-  
-  private View a(ViewGroup paramViewGroup)
-  {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495776, paramViewGroup, false);
-    paramViewGroup.setTag(new uao(this, paramViewGroup));
-    return paramViewGroup;
-  }
-  
-  private void a(View paramView, int paramInt)
-  {
-    paramView = (uao)paramView.getTag();
-    uhj localuhj = a(paramInt);
-    paramView.a(localuhj, paramInt);
-    this.jdField_b_of_type_JavaUtilHashMap.put(localuhj.jdField_a_of_type_JavaLangString, new WeakReference(paramView));
-  }
-  
-  private void a(ImageView paramImageView, String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals(paramImageView.getTag())))
-    {
-      vms.a(paramImageView, vmp.a(paramString), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, vms.b, "QQStoryMemory");
-      paramImageView.setTag(paramString);
+    StoryPlayerGroupHolder localStoryPlayerGroupHolder = this.a.a(paramInt1);
+    if (localStoryPlayerGroupHolder == null) {
+      veg.e("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, find vertical holder is null");
     }
-  }
-  
-  public uhj a(int paramInt)
-  {
-    return (uhj)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a(List<uhj> paramList, String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    do
     {
-      uhj localuhj = (uhj)paramList.next();
-      this.jdField_a_of_type_JavaUtilHashMap.put(localuhj.jdField_a_of_type_JavaLangString, localuhj);
+      return;
+      if (ual.a(this.a) == null)
+      {
+        veg.d("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, mCurrentSelectedGroupId is null");
+        return;
+      }
+      veg.a("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, verticalPosition=%d, currentGroup=%s, onSelectedGroup=%s", Integer.valueOf(paramInt1), ual.a(this.a), localStoryPlayerGroupHolder.jdField_a_of_type_Two);
+    } while ((ual.a(this.a) != localStoryPlayerGroupHolder.jdField_a_of_type_Two) && (!ual.a(this.a).equals(localStoryPlayerGroupHolder.jdField_a_of_type_Two)));
+    Object localObject = localStoryPlayerGroupHolder.a();
+    if ((localObject instanceof ubd))
+    {
+      localObject = (VideoViewVideoHolder)((ubd)localObject).b(VideoViewVideoHolder.class);
+      if (localObject != null)
+      {
+        if (paramInt2 != 1) {
+          break label168;
+        }
+        veg.b("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, pause because of dragging");
+        ((VideoViewVideoHolder)localObject).e();
+      }
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    super.notifyDataSetChanged();
-  }
-  
-  public void a(uar paramuar)
-  {
-    this.jdField_a_of_type_Uar = paramuar;
-  }
-  
-  public void a(uas paramuas)
-  {
-    this.jdField_a_of_type_Uas = paramuas;
-  }
-  
-  public void b(List<uhj> paramList, String paramString)
-  {
-    if (!this.jdField_a_of_type_JavaLangString.equals(paramString)) {
-      urk.d("StoryPickerHorizontalListAdapter", "mCollectionId=%s, but update id=%s", new Object[] { this.jdField_a_of_type_JavaLangString, paramString });
+    label143:
+    while (ual.a(this.a) != null)
+    {
+      ual.a(this.a).a(paramInt1, paramInt2);
+      return;
+      label168:
+      if (paramInt2 == 0)
+      {
+        if ((!localStoryPlayerGroupHolder.d()) || (!localStoryPlayerGroupHolder.c())) {
+          break label229;
+        }
+        veg.b("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, no need start");
+      }
     }
     for (;;)
     {
+      vel.a("play_video", "slide_up_down", 0, 0, new String[] { "2", "", "", "" });
+      break label143;
+      break;
+      label229:
+      veg.b("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, start because of idle");
+      ((VideoViewVideoHolder)localObject).d();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3)
+  {
+    StoryPlayerGroupHolder localStoryPlayerGroupHolder = this.a.a(paramInt1);
+    if (localStoryPlayerGroupHolder == null) {
+      veg.e("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrolled, Video, find vertical holder is null");
+    }
+    do
+    {
       return;
-      urk.a("StoryPickerHorizontalListAdapter", "updateData");
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      if (ual.a(this.a) == null)
       {
-        Object localObject = (uhj)paramList.next();
-        paramString = (uhj)this.jdField_a_of_type_JavaUtilHashMap.get(((uhj)localObject).jdField_a_of_type_JavaLangString);
-        if ((paramString != null) && (((uhj)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null))
-        {
-          paramString.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((uhj)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
-          localObject = (WeakReference)this.jdField_b_of_type_JavaUtilHashMap.get(((uhj)localObject).jdField_a_of_type_JavaLangString);
-          if ((localObject != null) && (((WeakReference)localObject).get() != null))
-          {
-            localObject = ((uao)((WeakReference)localObject).get()).a;
-            a(((StoryCoverView)localObject).a, paramString.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
-            ((StoryCoverView)localObject).setPollLayout(paramString.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout(), -1, null);
-            ((StoryCoverView)localObject).setRateLayout(paramString.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout(), -1, -1L, -1);
-          }
-        }
+        veg.d("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrolled, Video, mCurrentSelectedGroupId is null");
+        return;
+      }
+    } while (((ual.a(this.a) != localStoryPlayerGroupHolder.jdField_a_of_type_Two) && (!ual.a(this.a).equals(localStoryPlayerGroupHolder.jdField_a_of_type_Two))) || (ual.a(this.a) == null));
+    ual.a(this.a).a(paramInt1, paramInt2, paramFloat, paramInt3);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    StoryPlayerGroupHolder localStoryPlayerGroupHolder = (StoryPlayerGroupHolder)ual.a(this.a).a.get(Integer.valueOf(paramInt1));
+    if (localStoryPlayerGroupHolder == null) {
+      veg.e("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, Video, find vertical holder is null");
+    }
+    do
+    {
+      return;
+      if (ual.a(this.a) == null)
+      {
+        veg.d("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, Video, mCurrentSelectedGroupId is null");
+        return;
+      }
+      veg.b("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, Video, verticalPosition=%d, oldHorizontalPosition=%d, horizontalPosition=%d, currentGroup=%s, onSelectedGroup=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), ual.a(this.a), localStoryPlayerGroupHolder.jdField_a_of_type_Two });
+    } while ((ual.a(this.a) != localStoryPlayerGroupHolder.jdField_a_of_type_Two) && (!ual.a(this.a).equals(localStoryPlayerGroupHolder.jdField_a_of_type_Two)));
+    boolean bool1;
+    if (localStoryPlayerGroupHolder.a(paramInt3) != null)
+    {
+      if (ual.a(this.a) != null) {
+        ual.a(this.a).a(paramInt1, paramInt2, paramInt3);
+      }
+      if (localStoryPlayerGroupHolder.b != localStoryPlayerGroupHolder.jdField_a_of_type_JavaUtilList.size() - 1) {
+        break label257;
+      }
+      bool1 = true;
+      label195:
+      if (localStoryPlayerGroupHolder.b != 0) {
+        break label263;
       }
     }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null)
+    label257:
+    label263:
+    for (boolean bool2 = true;; bool2 = false)
     {
-      localView = a(paramViewGroup);
-      localView.setFocusable(true);
-    }
-    a(localView, paramInt);
-    return localView;
-  }
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if (this.jdField_a_of_type_Uas != null)
-    {
-      paramAdapterView = a(paramInt);
-      String str = VideoCollectionEntry.getCollectionKey(1, this.jdField_a_of_type_JavaLangString, QQStoryContext.a().b());
-      this.jdField_a_of_type_Uas.a(str, paramInt, paramView, paramAdapterView);
+      boolean bool3 = bool1;
+      if (bool1)
+      {
+        bool3 = bool1;
+        if (localStoryPlayerGroupHolder.d()) {
+          bool3 = false;
+        }
+      }
+      this.a.a.setEnableScrollDirection(bool3, bool2, true, true);
+      return;
+      veg.e("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, Video, getPageHolderOfPosition return null. onSelected true failed");
+      break;
+      bool1 = false;
+      break label195;
     }
   }
 }

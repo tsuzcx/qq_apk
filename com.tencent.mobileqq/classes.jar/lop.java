@@ -1,11 +1,16 @@
-import com.tencent.av.smallscreen.SmallScreenService;
+import com.tencent.av.gaudio.QQGAudioCtrl;
 
 public class lop
-  extends kur
 {
-  public lop(SmallScreenService paramSmallScreenService) {}
+  public int a;
+  public long a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public int c;
+  public int d;
   
-  protected void a(long paramLong, int paramInt, String paramString) {}
+  public lop(QQGAudioCtrl paramQQGAudioCtrl) {}
 }
 
 

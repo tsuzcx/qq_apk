@@ -1,17 +1,44 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-final class uly
-  implements ung
+public class uly
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, umn>
 {
-  uly(WeakReference paramWeakReference) {}
-  
-  public void a(ErrorMessage paramErrorMessage)
+  public uly(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    ulz localulz = (ulz)this.a.get();
-    if (localulz != null) {
-      localulz.a(paramErrorMessage);
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull umn paramumn)
+  {
+    if (paramumn.a == 1)
+    {
+      paramQQStoryShareGroupProfileActivity.g = true;
+      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Umm.a();
+      paramQQStoryShareGroupProfileActivity.b(true);
+      paramumn = paramQQStoryShareGroupProfileActivity.b;
+      if (!paramQQStoryShareGroupProfileActivity.g) {
+        break label82;
+      }
     }
+    label82:
+    for (paramQQStoryShareGroupProfileActivity = "1";; paramQQStoryShareGroupProfileActivity = "2")
+    {
+      vel.a("share_story", "clk_rank", 0, 0, new String[] { paramumn, paramQQStoryShareGroupProfileActivity });
+      return;
+      if (paramumn.a != 0) {
+        break;
+      }
+      paramQQStoryShareGroupProfileActivity.g = false;
+      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean = false;
+      break;
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return umn.class;
   }
 }
 

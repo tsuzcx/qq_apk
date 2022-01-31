@@ -1,17 +1,17 @@
 package com.tencent.gdtad.views.videoceiling;
 
-import aciy;
-import ajjy;
+import actn;
+import ajyc;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import yny;
-import yrx;
-import yry;
-import yrz;
+import yxs;
+import zbp;
+import zbq;
+import zbr;
 
 public class GdtVideoCeilingTitleBar
   extends RelativeLayout
@@ -19,7 +19,7 @@ public class GdtVideoCeilingTitleBar
   private int jdField_a_of_type_Int;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private String jdField_a_of_type_JavaLangString;
-  private yrz jdField_a_of_type_Yrz;
+  private zbr jdField_a_of_type_Zbr;
   private TextView b;
   
   public GdtVideoCeilingTitleBar(Context paramContext)
@@ -39,12 +39,12 @@ public class GdtVideoCeilingTitleBar
   
   public void a()
   {
-    yny.b("GdtVideoCeilingView", "updateBar Style " + this.jdField_a_of_type_Int);
+    yxs.b("GdtVideoCeilingView", "updateBar Style " + this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_Int != 1)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.b.setVisibility(0);
-      String str = ajjy.a(2131639440) + this.jdField_a_of_type_JavaLangString;
+      String str = ajyc.a(2131705225) + this.jdField_a_of_type_JavaLangString;
       int i = "在APP中打开".length();
       if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (str.length() <= i))
       {
@@ -60,13 +60,13 @@ public class GdtVideoCeilingTitleBar
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131311534));
-    this.b = ((TextView)findViewById(2131305368));
-    this.b.setOnClickListener(new yrx(this));
-    View localView = findViewById(2131297445);
-    int i = aciy.a(5.0F, getResources());
-    aciy.a(localView, i, i, 0, i);
-    localView.setOnClickListener(new yry(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377350));
+    this.b = ((TextView)findViewById(2131371061));
+    this.b.setOnClickListener(new zbp(this));
+    View localView = findViewById(2131362985);
+    int i = actn.a(5.0F, getResources());
+    actn.a(localView, i, i, 0, i);
+    localView.setOnClickListener(new zbq(this));
   }
   
   public void setAppName(String paramString)
@@ -74,9 +74,9 @@ public class GdtVideoCeilingTitleBar
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void setOnBtnClickListener(yrz paramyrz)
+  public void setOnBtnClickListener(zbr paramzbr)
   {
-    this.jdField_a_of_type_Yrz = paramyrz;
+    this.jdField_a_of_type_Zbr = paramzbr;
   }
   
   public void setStyle(int paramInt)

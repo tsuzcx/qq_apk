@@ -2,28 +2,28 @@ package com.tencent.biz.pubaccount.readinjoy.fragment;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 import com.tencent.qphone.base.util.QLog;
-import nhi;
-import obz;
-import ocg;
-import odh;
+import nss;
+import onk;
+import onr;
+import oos;
 import org.json.JSONException;
-import pov;
+import qar;
 
 class ReadInJoyChannelPanelFragment$7
   implements Runnable
 {
-  ReadInJoyChannelPanelFragment$7(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, TabChannelCoverInfo paramTabChannelCoverInfo, pov parampov, int paramInt) {}
+  ReadInJoyChannelPanelFragment$7(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, TabChannelCoverInfo paramTabChannelCoverInfo, qar paramqar, int paramInt) {}
   
   public void run()
   {
     try
     {
-      int i = odh.a(obz.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo.mChannelCoverId);
-      ocg localocg = new ocg().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo.mChannelCoverId).b().n(ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo)).b(this.jdField_a_of_type_Pov.l + 1).c(this.jdField_a_of_type_Int).b("is_change", i);
-      if (nhi.a()) {}
+      int i = oos.a(onk.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo.mChannelCoverId);
+      onr localonr = new onr().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo.mChannelCoverId).b().n(ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo)).b(this.jdField_a_of_type_Qar.l + 1).c(this.jdField_a_of_type_Int).b("is_change", i);
+      if (nss.a()) {}
       for (i = 1;; i = 0)
       {
-        ReadInJoyChannelPanelFragment.a("0X8009954", localocg.b("style", i).a());
+        ReadInJoyChannelPanelFragment.a("0X8009954", localonr.b("style", i).a());
         return;
       }
       return;

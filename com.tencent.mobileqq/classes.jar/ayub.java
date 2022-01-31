@@ -1,70 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
-
 public class ayub
+  extends ayud
 {
-  public TroopFileTransferManager.Item a;
-  public String a;
-  wlv jdField_a_of_type_Wlv = new ayud(this);
-  wmb jdField_a_of_type_Wmb = new ayuc(this);
-  public long d;
+  private int a = 480000;
+  private int b = 9;
+  private int c = 3;
+  private int d = 20000;
+  private int e = 40000;
+  private int f = 5000;
   
-  protected ayub(long paramLong, TroopFileTransferManager.Item paramItem)
-  {
-    this.d = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null) {}
-    for (paramItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString();; paramItem = "")
-    {
-      this.jdField_a_of_type_JavaLangString = paramItem;
-      return;
-    }
-  }
-  
-  public static ayub a(long paramLong, TroopFileTransferManager.Item paramItem)
-  {
-    if (paramLong == 0L)
-    {
-      aysb.a("TroopFileUploadFeedsSender", aysb.a, "getSender. troopuin=0");
-      return null;
-    }
-    if (paramItem == null)
-    {
-      aysb.a("TroopFileUploadFeedsSender", aysb.a, "getSender. item=null");
-      return null;
-    }
-    if (paramItem.Id == null) {
-      aysb.a("TroopFileUploadFeedsSender", aysb.a, "getSender. item.id=null");
-    }
-    return new ayub(paramLong, paramItem);
-  }
-  
-  public long a()
+  public int a()
   {
     return this.d;
   }
   
-  public UUID a()
+  public int b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
-  }
-  
-  public void j()
-  {
-    QQAppInterface localQQAppInterface = ayrz.a();
-    if (localQQAppInterface == null)
-    {
-      aysb.a("TroopFileUploadFeedsSender", aysb.a, "[" + this.jdField_a_of_type_JavaLangString + "] reqFeedMsgV2 app=null");
-      return;
-    }
-    aysb.c("TroopFileUploadFeedsSender", aysb.a, "[" + this.jdField_a_of_type_JavaLangString + "] reqFeedMsgV2");
-    wln.a(localQQAppInterface, this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Wmb);
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayub
  * JD-Core Version:    0.7.0.1
  */

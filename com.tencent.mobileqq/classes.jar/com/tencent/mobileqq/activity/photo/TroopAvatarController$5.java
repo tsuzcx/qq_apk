@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agej;
-import agem;
-import azhn;
+import agqh;
+import agqk;
+import baiq;
 import com.tencent.mobileqq.data.TroopInfo;
 
 public class TroopAvatarController$5
   implements Runnable
 {
-  public TroopAvatarController$5(agej paramagej, String paramString) {}
+  public TroopAvatarController$5(agqh paramagqh, String paramString) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Azhn.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
-    agej.b(this.this$0, null);
+    this.this$0.jdField_a_of_type_Baiq.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
+    agqh.b(this.this$0, null);
     this.this$0.b();
-    agem.a(this.a);
+    agqk.a(this.a);
   }
 }
 

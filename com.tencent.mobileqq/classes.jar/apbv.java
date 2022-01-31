@@ -1,61 +1,83 @@
-import android.text.TextUtils;
-import com.tencent.commonsdk.util.HexUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.settings.FileAssistantBannerSetting.1;
-import com.tencent.mobileqq.filemanager.settings.FileAssistantBannerSetting.2;
-import com.tencent.mobileqq.filemanager.settings.FileAssistantBannerSetting.3;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class apbv
-  implements Manager
+class apbv
+  extends apbi
 {
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public apbv(QQAppInterface paramQQAppInterface)
+  public apbv(apbe paramapbe)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    ThreadManager.executeOnSubThread(new FileAssistantBannerSetting.1(this));
+    super(paramapbe);
   }
   
-  public void a(amlc paramamlc)
+  protected String a()
   {
-    if (paramamlc == null) {
+    return "StateLocalFailedWhenChangeToOff";
+  }
+  
+  protected void a(int paramInt1, int paramInt2)
+  {
+    b(paramInt1, paramInt2);
+  }
+  
+  protected void a(int paramInt, String paramString)
+  {
+    if (a("onSenderUploadException")) {
       return;
     }
-    ThreadManager.executeOnSubThread(new FileAssistantBannerSetting.2(this, paramamlc));
+    apbe.a(this.jdField_a_of_type_Apbe, 11, 12, true);
+    a("StateExcepInvalidWhenChangeToOff");
+    this.jdField_a_of_type_Apbi = new apbr(this.jdField_a_of_type_Apbe);
   }
   
-  public boolean a()
+  protected void a(long paramLong)
   {
-    amlc localamlc = amld.a();
-    if (localamlc == null) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while ((this.jdField_a_of_type_Long != 0L) && (awao.a() - this.jdField_a_of_type_Long > localamlc.a() * 3600));
-      String str1 = apck.a(localamlc.e());
-      String str2 = HexUtil.bytes2HexStr(apck.d(localamlc.e()));
-      if ((str2 == null) || (!str2.equalsIgnoreCase(str1))) {
-        break;
-      }
-      QLog.i("FileAssistantBannerSetting", 1, "pic check is OK!");
-    } while ((TextUtils.isEmpty(localamlc.c())) && (TextUtils.isEmpty(localamlc.d())));
-    if (this.jdField_a_of_type_Long == 0L)
-    {
-      this.jdField_a_of_type_Long = awao.a();
-      ThreadManager.executeOnSubThread(new FileAssistantBannerSetting.3(this));
-    }
-    return true;
-    a(localamlc);
-    return false;
+    b(paramLong);
   }
   
-  public void onDestroy() {}
+  protected boolean a()
+  {
+    if (a("onRecvOnLineFile")) {
+      return false;
+    }
+    apbe.a(this.jdField_a_of_type_Apbe, 9, 11);
+    apbe.a(this.jdField_a_of_type_Apbe, 9, 14, false);
+    a("StateUploadingWhenRecv");
+    this.jdField_a_of_type_Apbi = new apck(this.jdField_a_of_type_Apbe);
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 16, null, 0, null);
+    return true;
+  }
+  
+  protected boolean a(int paramInt, String paramString, long paramLong)
+  {
+    if (a("onSenderUploadCompleted")) {
+      return false;
+    }
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    localFileManagerEntity.Uuid = new String(paramString);
+    localFileManagerEntity.fProgress = 0.0F;
+    if ((apue.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
+      this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
+    }
+    localFileManagerEntity.setCloudType(1);
+    apbe.a(this.jdField_a_of_type_Apbe, 11, 13, true);
+    a("StateUploadoneWhenChangeToOff");
+    this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
+    this.jdField_a_of_type_Apbi = new apcl(this.jdField_a_of_type_Apbe);
+    return true;
+  }
+  
+  protected void b()
+  {
+    if (a("onSenderCancelUpload")) {
+      return;
+    }
+    apbe.a(this.jdField_a_of_type_Apbe, 11, 9, true);
+    a("StateCancelUploadWhenRecv");
+    this.jdField_a_of_type_Apbi = new apbl(this.jdField_a_of_type_Apbe);
+  }
+  
+  protected void j() {}
 }
 
 

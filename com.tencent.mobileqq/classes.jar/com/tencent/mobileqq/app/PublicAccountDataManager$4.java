@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import ajoy;
+import akdi;
 
 public class PublicAccountDataManager$4
   implements Runnable
 {
-  public PublicAccountDataManager$4(ajoy paramajoy, String paramString) {}
+  public PublicAccountDataManager$4(akdi paramakdi, String paramString) {}
   
   public void run()
   {

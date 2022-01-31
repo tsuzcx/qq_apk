@@ -1,44 +1,23 @@
-import com.qq.taf.jce.HexUtil;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.widget.SingleLineTextView;
 
-public class axyt
-  extends axyr
+class axyt
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b;
-  public byte[] b;
-  public int c;
-  public int d;
-  public int e;
-  public String f;
-  public int g;
-  public String g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
+  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  RelativeLayout c;
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" fromChatType:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" toChatType:").append(this.b);
-    localStringBuilder.append(" fromBusiType:").append(this.c);
-    localStringBuilder.append(" toBusiType:").append(this.d);
-    localStringBuilder.append(" md5:").append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-    localStringBuilder.append(" format:").append(this.j);
-    localStringBuilder.append(" str_file_name:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" uint64_file_size:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" fileTime:").append(this.k);
-    localStringBuilder.append(" uuid:").append(this.f);
-    localStringBuilder.append(" fromUin:").append(this.g);
-    return localStringBuilder.toString();
-  }
+  axyt(axyq paramaxyq) {}
 }
 
 

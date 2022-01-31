@@ -1,218 +1,182 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.v4.util.LruCache;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler.1;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler.3;
+import android.content.Context;
+import com.tencent.commonsdk.soload.SoLoadUtilNew;
+import com.tencent.mobileqq.utils.AmrInputStreamWrapper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.io.IOException;
 
 public class bbbk
 {
-  public static final LruCache<String, bbbk> a;
-  public static final AtomicInteger c = new AtomicInteger(1);
-  public String a;
-  public final CopyOnWriteArrayList<bbbn> a;
-  public final AtomicInteger a;
-  public final mkw a;
-  public final AtomicInteger b = new AtomicInteger(1);
+  private static boolean jdField_a_of_type_Boolean;
+  static final int[] jdField_a_of_type_ArrayOfInt = { 12, 13, 15, 17, 19, 20, 26, 31, 5, 0 };
+  private int jdField_a_of_type_Int = 14;
+  private long jdField_a_of_type_Long;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private byte[] jdField_b_of_type_ArrayOfByte = new byte[320];
+  private int jdField_c_of_type_Int;
+  private byte[] jdField_c_of_type_ArrayOfByte;
+  private byte[] d = new byte[1024];
   
-  static
+  public bbbk(Context paramContext, int paramInt)
   {
-    jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(8);
+    if ((!jdField_a_of_type_Boolean) && (SoLoadUtilNew.loadSoByName(paramContext, "amrnb"))) {
+      jdField_a_of_type_Boolean = true;
+    }
+    this.jdField_a_of_type_Int = a(paramInt);
+    this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
+    this.jdField_c_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
+    this.jdField_a_of_type_Long = AmrInputStreamWrapper.CreateDecoder();
+    this.jdField_b_of_type_Long = AmrInputStreamWrapper.GsmAmrDecoderNew(this.jdField_a_of_type_Long);
+    AmrInputStreamWrapper.GsmAmrDecoderInitialize(this.jdField_b_of_type_Long);
   }
   
-  bbbk(String paramString)
+  public static int a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Mkw = mkw.a();
+    if ((paramInt >= 0) && (paramInt < 8)) {
+      return jdField_a_of_type_ArrayOfInt[paramInt] + 1;
+    }
+    return 14;
+  }
+  
+  private void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    if ((this.jdField_b_of_type_Long == 0L) || (this.jdField_a_of_type_Long == 0L)) {
+      throw new IllegalStateException("not open");
+    }
+    if (AmrInputStreamWrapper.GsmAmrDecoderDecode(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, paramArrayOfByte1, 0, paramArrayOfByte2, 0) < 0) {
+      b();
+    }
   }
   
   /* Error */
-  public static bbbk a(String paramString)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: ldc 2
-    //   4: monitorenter
-    //   5: aload_0
-    //   6: invokestatic 60	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   9: istore_1
-    //   10: iload_1
-    //   11: ifeq +8 -> 19
-    //   14: ldc 2
-    //   16: monitorexit
-    //   17: aload_2
-    //   18: areturn
-    //   19: aload_0
-    //   20: ldc 62
-    //   22: invokevirtual 68	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   25: ifne +12 -> 37
-    //   28: aload_0
-    //   29: ldc 70
-    //   31: invokevirtual 68	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   34: ifeq -20 -> 14
-    //   37: ldc 72
-    //   39: astore_2
-    //   40: aload_0
-    //   41: invokestatic 78	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   44: astore_3
-    //   45: aload_2
-    //   46: astore_0
-    //   47: aload_3
-    //   48: invokevirtual 82	android/net/Uri:isHierarchical	()Z
-    //   51: ifeq +10 -> 61
-    //   54: aload_3
-    //   55: ldc 84
-    //   57: invokevirtual 88	android/net/Uri:getQueryParameter	(Ljava/lang/String;)Ljava/lang/String;
-    //   60: astore_0
-    //   61: aload_0
-    //   62: invokestatic 90	bbbk:b	(Ljava/lang/String;)Lbbbk;
-    //   65: astore_2
-    //   66: goto -52 -> 14
-    //   69: astore_0
-    //   70: aload_0
-    //   71: invokevirtual 93	java/lang/Exception:printStackTrace	()V
-    //   74: aload_2
-    //   75: astore_0
-    //   76: goto -15 -> 61
-    //   79: astore_0
-    //   80: ldc 2
-    //   82: monitorexit
-    //   83: aload_0
-    //   84: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	85	0	paramString	String
-    //   9	2	1	bool	boolean
-    //   1	74	2	localObject	Object
-    //   44	11	3	localUri	android.net.Uri
-    // Exception table:
-    //   from	to	target	type
-    //   40	45	69	java/lang/Exception
-    //   47	61	69	java/lang/Exception
-    //   5	10	79	finally
-    //   19	28	79	finally
-    //   28	37	79	finally
-    //   40	45	79	finally
-    //   47	61	79	finally
-    //   61	66	79	finally
-    //   70	74	79	finally
-  }
-  
-  public static bbbk b(String paramString)
-  {
-    Object localObject = null;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        bbbk localbbbk = (bbbk)jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
-        localObject = localbbbk;
-        if (localbbbk == null)
-        {
-          localObject = new bbbk(paramString);
-          jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, localObject);
-        }
-      }
-      return localObject;
-    }
-    finally {}
-  }
-  
   public void a()
   {
-    this.b.compareAndSet(2, 3);
-    new Handler(Looper.getMainLooper()).post(new SwiftBrowserOfflineHandler.3(this));
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 59	bbbk:jdField_b_of_type_Long	J
+    //   4: lconst_0
+    //   5: lcmp
+    //   6: ifeq +14 -> 20
+    //   9: aload_0
+    //   10: getfield 53	bbbk:jdField_a_of_type_Long	J
+    //   13: aload_0
+    //   14: getfield 59	bbbk:jdField_b_of_type_Long	J
+    //   17: invokestatic 81	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrDecoderCleanup	(JJ)V
+    //   20: aload_0
+    //   21: getfield 59	bbbk:jdField_b_of_type_Long	J
+    //   24: lconst_0
+    //   25: lcmp
+    //   26: ifeq +14 -> 40
+    //   29: aload_0
+    //   30: getfield 53	bbbk:jdField_a_of_type_Long	J
+    //   33: aload_0
+    //   34: getfield 59	bbbk:jdField_b_of_type_Long	J
+    //   37: invokestatic 84	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrDecoderDelete	(JJ)V
+    //   40: aload_0
+    //   41: lconst_0
+    //   42: putfield 59	bbbk:jdField_b_of_type_Long	J
+    //   45: aload_0
+    //   46: invokevirtual 77	bbbk:b	()V
+    //   49: return
+    //   50: astore_1
+    //   51: aload_0
+    //   52: lconst_0
+    //   53: putfield 59	bbbk:jdField_b_of_type_Long	J
+    //   56: aload_1
+    //   57: athrow
+    //   58: astore_1
+    //   59: aload_0
+    //   60: getfield 59	bbbk:jdField_b_of_type_Long	J
+    //   63: lconst_0
+    //   64: lcmp
+    //   65: ifeq +14 -> 79
+    //   68: aload_0
+    //   69: getfield 53	bbbk:jdField_a_of_type_Long	J
+    //   72: aload_0
+    //   73: getfield 59	bbbk:jdField_b_of_type_Long	J
+    //   76: invokestatic 84	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrDecoderDelete	(JJ)V
+    //   79: aload_0
+    //   80: lconst_0
+    //   81: putfield 59	bbbk:jdField_b_of_type_Long	J
+    //   84: aload_1
+    //   85: athrow
+    //   86: astore_1
+    //   87: aload_0
+    //   88: lconst_0
+    //   89: putfield 59	bbbk:jdField_b_of_type_Long	J
+    //   92: aload_1
+    //   93: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	94	0	this	bbbk
+    //   50	7	1	localObject1	Object
+    //   58	27	1	localObject2	Object
+    //   86	7	1	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   20	40	50	finally
+    //   0	20	58	finally
+    //   59	79	86	finally
   }
   
-  public void a(bbbn parambbbn, String paramString)
+  public byte[] a(byte[] paramArrayOfByte, int paramInt)
   {
-    if ((this.b.get() == 3) && (parambbbn != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("SwiftBrowserOfflineHandler", 2, "now offline bid is ready, " + this.jdField_a_of_type_JavaLangString + ", mode is " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-      }
-      parambbbn.onCheckOfflineFinish(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+    if (this.jdField_b_of_type_Int + paramInt > 1024) {
+      this.d = new byte[this.jdField_b_of_type_Int + paramInt];
     }
-    do
+    if (this.jdField_b_of_type_Int + paramInt < this.jdField_a_of_type_Int)
     {
-      return;
-      if ((parambbbn != null) && (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(parambbbn))) {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(parambbbn);
-      }
-      parambbbn = new SwiftBrowserOfflineHandler.1(this, paramString);
-    } while (!this.b.compareAndSet(1, 2));
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserOfflineHandler", 2, "post thread to check offline, bid = " + this.jdField_a_of_type_JavaLangString);
+      System.arraycopy(paramArrayOfByte, 0, this.jdField_c_of_type_ArrayOfByte, this.jdField_b_of_type_Int, paramInt);
+      return null;
     }
-    ThreadManager.postImmediately(parambbbn, new bbbm(this), false);
-  }
-  
-  public boolean a()
-  {
-    return this.b.get() == 3;
+    System.arraycopy(this.jdField_c_of_type_ArrayOfByte, 0, this.d, 0, this.jdField_b_of_type_Int);
+    System.arraycopy(paramArrayOfByte, 0, this.d, this.jdField_b_of_type_Int, paramInt);
+    this.jdField_c_of_type_Int = (this.jdField_b_of_type_Int + paramInt);
+    paramInt = this.jdField_c_of_type_Int % this.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = paramInt;
+    if (paramInt != 0) {
+      System.arraycopy(this.d, this.jdField_c_of_type_Int - paramInt, this.jdField_c_of_type_ArrayOfByte, 0, paramInt);
+    }
+    paramArrayOfByte = new byte[this.jdField_c_of_type_Int / this.jdField_a_of_type_Int * 320];
+    int i = 0;
+    paramInt = 0;
+    while (this.jdField_c_of_type_Int >= this.jdField_a_of_type_Int)
+    {
+      System.arraycopy(this.d, paramInt, this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int);
+      try
+      {
+        a(this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte);
+        System.arraycopy(this.jdField_b_of_type_ArrayOfByte, 0, paramArrayOfByte, i, this.jdField_b_of_type_ArrayOfByte.length);
+        i += this.jdField_b_of_type_ArrayOfByte.length;
+        paramInt += this.jdField_a_of_type_Int;
+        this.jdField_c_of_type_Int -= this.jdField_a_of_type_Int;
+      }
+      catch (IOException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Amr2PcmWrapper", 2, "========mAmr2Pcm.amr2pcmParser==IOException=====", paramArrayOfByte);
+        }
+        b();
+        return null;
+      }
+    }
+    if (i == paramArrayOfByte.length) {
+      return paramArrayOfByte;
+    }
+    byte[] arrayOfByte = new byte[i];
+    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, i);
+    return arrayOfByte;
   }
   
   public void b()
   {
-    Object localObject1;
-    Object localObject2;
-    String str2;
-    String str1;
-    int i;
-    int j;
-    if (c.compareAndSet(1, 2))
-    {
-      localObject1 = this.jdField_a_of_type_Mkw.a("ex_offline", "");
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        localObject1 = ((String)localObject1).split(",");
-        localObject2 = Build.BRAND;
-        str2 = Build.MODEL;
-        str1 = Build.VERSION.RELEASE;
-        localObject2 = new StringBuffer((String)localObject2);
-        ((StringBuffer)localObject2).append(" ").append(str2);
-        str2 = ((StringBuffer)localObject2).toString().toLowerCase();
-        str1 = (" " + str1).toLowerCase();
-        i = 0;
-        j = localObject1.length;
-      }
-    }
-    else
-    {
-      while (i < j)
-      {
-        localObject2 = localObject1[i].toLowerCase();
-        if ((((String)localObject2).contains(str2)) && (str1.startsWith((String)localObject2)))
-        {
-          QLog.e("SwiftBrowserOfflineHandler", 1, "*****offline can not use!!! " + str1);
-          c.compareAndSet(2, 4);
-          return;
-        }
-        i += 1;
-      }
-    }
-    c.compareAndSet(2, 3);
-  }
-  
-  public void c()
-  {
-    QLog.w("SwiftBrowserOfflineHandler", 1, "now reset bid cache! " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-    this.b.set(1);
+    this.jdField_b_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbbk
  * JD-Core Version:    0.7.0.1
  */

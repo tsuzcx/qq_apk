@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.data.QCallRecord;
-import java.util.Comparator;
-
-class aufr
-  implements Comparator<QCallRecord>
+public abstract interface aufr
 {
-  aufr(aufp paramaufp) {}
-  
-  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
-  {
-    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

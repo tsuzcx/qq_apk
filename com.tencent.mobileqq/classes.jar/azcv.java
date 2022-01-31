@@ -1,29 +1,15 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
-public class azcv
-  implements Comparable<azcv>
+public final class azcv
+  extends Editable.Factory
 {
-  public int a;
-  public TroopInfo a;
-  public String a;
-  public int b;
-  
-  public int a(@NonNull azcv paramazcv)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if (this.b != paramazcv.b) {
-      return this.b - paramazcv.b;
+    if ((paramCharSequence instanceof ayks)) {
+      return (Editable)paramCharSequence;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime != paramazcv.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime) {
-      return (int)(paramazcv.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime);
-    }
-    if (paramazcv.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime != this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime) {
-      return (int)(paramazcv.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime);
-    }
-    if (this.jdField_a_of_type_Int != paramazcv.jdField_a_of_type_Int) {
-      return this.jdField_a_of_type_Int - paramazcv.jdField_a_of_type_Int;
-    }
-    return this.jdField_a_of_type_JavaLangString.compareTo(paramazcv.jdField_a_of_type_JavaLangString);
+    return new ayks(paramCharSequence, 3, 20);
   }
 }
 

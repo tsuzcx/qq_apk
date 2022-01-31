@@ -1,21 +1,43 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.qphone.base.util.QLog;
 
-class anyq
-  implements apca
+public class anyq
+  extends anta<CustomEmotionData>
 {
-  anyq(anyp paramanyp) {}
+  public anyq(EmoticonMainPanel paramEmoticonMainPanel) {}
   
   public void a()
   {
-    UniformDownloadActivity.a(this.a.a);
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "upload_finish");
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "download_finish");
+    }
+    this.a.p();
+    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CEE", "0X8005CEE", 0, 0, paramInt + "", "", "", "");
+  }
+  
+  public void a(CustomEmotionData paramCustomEmotionData, int paramInt1, int paramInt2)
+  {
+    this.a.p();
   }
   
   public void b()
   {
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "roaming_finish");
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      ((anss)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(103)).b(this.a.jdField_a_of_type_Anta);
+    }
+    this.a.p();
   }
 }
 

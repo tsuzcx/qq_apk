@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.redpacket.ui.RedPacketGameView;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoControlUI;
 
 public class lvt
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public lvt(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public lvt(RedPacketGameView paramRedPacketGameView, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    paramView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.a();
+    if (paramView != null)
+    {
+      paramView.a.i(this.jdField_a_of_type_Long);
+      ((VideoAppInterface)paramView.getAppRuntime()).a(new Object[] { Integer.valueOf(105), Boolean.valueOf(true), Long.valueOf(this.jdField_a_of_type_Long) });
+    }
   }
 }
 

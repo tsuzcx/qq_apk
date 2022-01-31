@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.pts;
 
 import com.tencent.pts.core.itemview.PTSItemData;
-import pdr;
-import pen;
-import peo;
+import ppj;
+import pqh;
+import pqi;
 
 public class PTSItemViewBuilder$2
   implements Runnable
 {
-  public PTSItemViewBuilder$2(pdr parampdr, PTSItemData paramPTSItemData, long paramLong) {}
+  public PTSItemViewBuilder$2(ppj paramppj, PTSItemData paramPTSItemData, long paramLong) {}
   
   public void run()
   {
-    pen.a("0X800A9DC", "", "", "", new peo().a("app_name", this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemData.getAppName()).a("get_view_cost", String.valueOf(this.jdField_a_of_type_Long)).a());
+    pqh.a("0X800A9DC", "", "", "", new pqi().a("app_name", this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemData.getAppName()).a("get_view_cost", String.valueOf(this.jdField_a_of_type_Long)).a());
   }
 }
 

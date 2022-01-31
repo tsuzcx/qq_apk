@@ -1,68 +1,30 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.Button;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class ayfo
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  ayfo(ayfn paramayfn) {}
+  ayfo(ayfm paramayfm, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131630856);
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          continue;
-        }
-        Object localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-        if (paramInt == 0) {
-          continue;
-        }
-        localObject = paramBundle.optString("msg");
-        paramBundle = (Bundle)localObject;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131630857, new Object[] { Integer.valueOf(paramInt) });
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131630857, new Object[] { Integer.valueOf(9992) });
-        continue;
-        paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131630857, new Object[] { Integer.valueOf(9991) });
-        continue;
-      }
-      bbmy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, paramBundle, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-      azho.a("two_comment", "fail", this.a.d, "4", "", "");
-      this.a.jdField_c_of_type_Boolean = false;
-      return;
-      paramBundle = paramBundle.getJSONObject("result");
-      azho.a("two_comment", "suc", this.a.d, this.a.h, "", "");
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.a(this.a.jdField_c_of_type_JavaLangString, paramBundle.toString(), true);
-      this.a.dismiss();
-      return;
-      paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131630857, new Object[] { Integer.valueOf(9992) });
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ayfm, 0);
     }
+    try
+    {
+      if (this.jdField_a_of_type_Ayfm.isShowing()) {
+        this.jdField_a_of_type_Ayfm.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayfo
  * JD-Core Version:    0.7.0.1
  */

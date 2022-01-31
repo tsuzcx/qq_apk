@@ -1,56 +1,50 @@
-public class lkf
-  extends lka
+import com.tencent.qphone.base.util.QLog;
+
+class lkf
 {
-  public boolean a;
+  int jdField_a_of_type_Int = -99;
+  boolean jdField_a_of_type_Boolean = false;
+  int b = -99;
+  int c = -99;
+  int d = -99;
+  int e = -99;
+  int f = -99;
+  int g = -99;
+  int h = -99;
+  int i = -99;
+  int j = -99;
   
-  public void a(long paramLong)
+  void a()
   {
-    paramLong -= this.jdField_a_of_type_Long;
-    int j = 0;
-    float f2 = 1.0F;
-    int i;
-    float f1;
-    if (paramLong <= 500L)
+    a(-101, this.b, this.c, this.jdField_a_of_type_Boolean, -101, -101, -101, -101, -101, -101);
+  }
+  
+  void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
+  {
+    long l = this.j;
+    if (paramInt1 <= -99) {}
+    for (this.j = 0;; this.j += 1)
     {
-      i = 0;
-      f1 = f2;
-    }
-    for (;;)
-    {
-      a(i);
-      b(f1);
+      if ((this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (this.c != paramInt3) || (this.jdField_a_of_type_Boolean != paramBoolean) || (this.d != paramInt4) || (this.e != paramInt5) || (this.f != paramInt6) || (this.g != paramInt7) || (this.h != paramInt8) || (this.i != paramInt9)) {
+        QLog.w("AndroidCamera", 1, "PreviewCallback, Index[" + l + "->" + this.j + "], degree[" + this.jdField_a_of_type_Int + "->" + paramInt1 + "], CUR_CAMERA[" + this.b + "->" + paramInt2 + "], nInFPS[" + this.c + "->" + paramInt3 + "], mSupportLandscape[" + this.jdField_a_of_type_Boolean + "->" + paramBoolean + "], cameraImageOrientation[" + this.d + "->" + paramInt4 + "], displayRotation[" + this.e + "->" + paramInt5 + "], mobileRotation[" + this.f + "->" + paramInt6 + "], dataLength[" + this.g + "->" + paramInt7 + "], w[" + this.h + "->" + paramInt8 + "], h[" + this.i + "->" + paramInt9 + "]");
+      }
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      this.c = paramInt3;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.d = paramInt4;
+      this.e = paramInt5;
+      this.f = paramInt6;
+      this.g = paramInt7;
+      this.h = paramInt8;
+      this.i = paramInt9;
       return;
-      if ((paramLong > 500L) && (paramLong < 1167L))
-      {
-        i = (int)(255L * (paramLong - 500L) / 667L);
-        f1 = (0.5F * (float)(paramLong + 1167L) - 500.0F) / 667.0F;
-      }
-      else if (((paramLong >= 1167L) && (paramLong <= 2167L)) || (!this.jdField_a_of_type_Boolean))
-      {
-        i = 255;
-        f1 = f2;
-      }
-      else
-      {
-        f1 = f2;
-        i = j;
-        if (paramLong > 2167L)
-        {
-          f1 = f2;
-          i = j;
-          if (paramLong < 2500L)
-          {
-            i = (int)((paramLong - 2500L) * 255L / -333L);
-            f1 = f2;
-          }
-        }
-      }
     }
   }
   
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  void b()
   {
-    a(paramInt1 * 5 / 1500, paramInt2 - paramInt1 * 752 / 750, paramInt1 * 1495 / 1500, paramInt2);
+    a(-100, this.b, this.c, this.jdField_a_of_type_Boolean, -100, -100, -100, -100, -100, -100);
   }
 }
 

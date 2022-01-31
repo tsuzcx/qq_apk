@@ -1,34 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tgpa.vendorpd.GameCallback;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class yex
-  implements GameCallback
+class yex
+  extends akgf
 {
-  public yex(JSONObject paramJSONObject) {}
+  yex(yeu paramyeu) {}
   
-  public int getPreDownloadVersionInfo(String paramString)
+  protected void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterCheck", 2, "checkGameRes.getGameVersionUpdateInfo res =" + paramString);
-    }
-    try
+    if (paramBoolean)
     {
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("ret") == 0)
+      if (paramInt == 1)
       {
-        paramString = paramString.optJSONObject("data");
-        bgtf.a().a(paramString, this.a);
+        aoen.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), true);
+        return;
       }
-      return 0;
+      aoen.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), false);
+      return;
     }
-    catch (Throwable paramString)
-    {
-      for (;;)
-      {
-        QLog.e("GameCenterCheck", 1, "checkGameRes.getPreDownloadVersionInfo e=" + paramString.toString());
-      }
-    }
+    aoen.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), false);
   }
 }
 

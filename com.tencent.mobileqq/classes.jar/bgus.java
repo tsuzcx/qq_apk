@@ -1,53 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
-import com.tencent.weiyun.transmission.utils.ErrorCodeUtil;
-import com.tencent.weiyun.utils.NetworkUtils;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqreader.net.BaseCgiTask;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class bgus
+public class bgus
 {
-  public static String a(int paramInt, String paramString)
+  private BaseCgiTask jdField_a_of_type_CooperationQqreaderNetBaseCgiTask;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public bgus(BaseCgiTask paramBaseCgiTask, String paramString)
   {
-    String str = paramString;
-    if (paramInt != 0)
-    {
-      str = paramString;
-      if (TextUtils.isEmpty(paramString))
-      {
-        str = ErrorCodeUtil.getErrorMsg(paramInt);
-        paramString = str;
-        if (TextUtils.isEmpty(str)) {
-          if (!ErrorCodeUtil.isHttpError(paramInt)) {
-            break label101;
-          }
-        }
-      }
-    }
-    label101:
-    for (paramString = ErrorCodeUtil.getErrorMsg(1810023);; paramString = ErrorCodeUtil.getErrorMsg(1810014))
-    {
-      str = paramString;
-      if (1810008 == paramInt) {
-        str = paramString + "\n请尝试下载到其他路径";
-      }
-      str = "(" + paramInt + ")" + str;
-      return str;
-    }
+    this.jdField_a_of_type_CooperationQqreaderNetBaseCgiTask = paramBaseCgiTask;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static String a(String paramString)
+  public String a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    paramString = new StringBuilder(paramString);
-    int i = NetworkUtils.getNetworkType(WeiyunTransmissionGlobal.getInstance().getContext());
-    paramString.append("&nettype=").append(i);
-    return paramString.toString();
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  static boolean a(int paramInt)
+  public JSONObject a()
   {
-    return (-29150 == paramInt) || (-29151 == paramInt) || (-29152 == paramInt);
+    JSONObject localJSONObject1 = new JSONObject();
+    try
+    {
+      JSONObject localJSONObject2 = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      return localJSONObject2;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("ReaderCgiResponse", 2, "json format error", localJSONException);
+    }
+    return localJSONObject1;
   }
 }
 

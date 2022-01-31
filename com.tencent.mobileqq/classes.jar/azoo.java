@@ -1,74 +1,106 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import java.util.Calendar;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import mqq.manager.TicketManager;
+import tencent.im.oidb.cmd0x487.oidb_0x487.RspBody;
 
-public class azoo
+class azoo
+  extends mxm
 {
-  private int jdField_a_of_type_Int = 15;
-  private long jdField_a_of_type_Long;
-  private azor jdField_a_of_type_Azor;
-  private begr jdField_a_of_type_Begr;
-  private WheelPickerLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout;
-  private Calendar jdField_a_of_type_JavaUtilCalendar;
-  private int b = 6;
-  private int c = 22;
-  private int d = 30;
+  azoo(azon paramazon, long paramLong) {}
   
-  public azoo(int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(Activity paramActivity, azos paramazos)
-  {
-    if (this.jdField_a_of_type_Begr == null)
-    {
-      View localView = paramActivity.getLayoutInflater().inflate(2131494806, null);
-      this.jdField_a_of_type_Begr = begr.c(paramActivity);
-      this.jdField_a_of_type_Begr.d(true);
-      this.jdField_a_of_type_Begr.a(localView, null);
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout = ((WheelPickerLayout)localView.findViewById(2131311885));
-      azpg localazpg = new azpg();
-      paramActivity = paramActivity.getResources();
-      localazpg.jdField_a_of_type_Int = 33;
-      localazpg.b = 23;
-      localazpg.c = paramActivity.getColor(2131101345);
-      localazpg.d = 17;
-      localazpg.e = 23;
-      localazpg.f = paramActivity.getColor(2131101260);
-      this.jdField_a_of_type_Azor = new azor(this, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout);
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(this.jdField_a_of_type_Azor, localazpg);
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.setPickListener(new azop(this));
-      paramActivity = localView.findViewById(2131297956);
-      if (paramActivity != null) {
-        paramActivity.setOnClickListener(new azoq(this, paramazos));
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.troop_pubaccount", 2, "TroopEntranceBar fetchBindTroopInfo onResult, errorCode=" + paramInt);
     }
-    if (!this.jdField_a_of_type_Begr.isShowing())
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    for (;;)
     {
-      paramActivity = this.jdField_a_of_type_Azor.a(this.jdField_a_of_type_Long);
-      int i = 0;
-      while (i < paramActivity.length)
+      try
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.setSelection(i, paramActivity[i]);
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(i);
-        i += 1;
+        Object localObject = new oidb_0x487.RspBody();
+        ((oidb_0x487.RspBody)localObject).mergeFrom(paramArrayOfByte);
+        paramInt = ((oidb_0x487.RspBody)localObject).uint32_result.get();
+        if (QLog.isColorLevel())
+        {
+          if (!((oidb_0x487.RspBody)localObject).bytes_errmsg.has()) {
+            break label563;
+          }
+          paramArrayOfByte = ((oidb_0x487.RspBody)localObject).bytes_errmsg.get().toStringUtf8();
+          QLog.d(".troop.troop_pubaccount", 2, "fetchBindTroopInfo onResult, ret=" + paramInt + "," + paramArrayOfByte);
+        }
+        if ((paramInt == 0) && (((oidb_0x487.RspBody)localObject).uint32_groups_flag.has()))
+        {
+          this.jdField_a_of_type_Azon.jdField_a_of_type_Int = ((oidb_0x487.RspBody)localObject).uint32_groups_flag.get();
+          azon.a(this.jdField_a_of_type_Azon);
+          this.jdField_a_of_type_Azon.notifyObservers(Integer.valueOf(0));
+          return;
+        }
+        if ((paramInt == 0) && (((oidb_0x487.RspBody)localObject).uint32_follow_state.has()))
+        {
+          paramBundle = (baja)this.jdField_a_of_type_Azon.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132);
+          paramInt = ((oidb_0x487.RspBody)localObject).uint32_follow_state.get();
+          int i = ((oidb_0x487.RspBody)localObject).uint32_remind_flag.get();
+          if (i == 1)
+          {
+            localObject = (QQAppInterface)this.b.get();
+            if (localObject == null) {
+              break label562;
+            }
+            String str = ((QQAppInterface)localObject).c();
+            paramArrayOfByte = (TicketManager)((QQAppInterface)localObject).getManager(2);
+            if (paramArrayOfByte == null) {
+              break label557;
+            }
+            paramArrayOfByte = paramArrayOfByte.getSkey(str);
+            HashMap localHashMap = new HashMap();
+            Bundle localBundle = new Bundle();
+            localBundle.putString("op", "0");
+            localBundle.putString("puin", "" + this.jdField_a_of_type_Long);
+            localBundle.putString("Cookie", "uin=" + str + ";skey=" + paramArrayOfByte);
+            localBundle.putString("Referer", "https://buluo.qq.com");
+            localHashMap.put("BUNDLE", localBundle);
+            localHashMap.put("CONTEXT", ((QQAppInterface)localObject).getApp().getApplicationContext());
+            new bahp("https://buluo.qq.com/cgi-bin/bar/extra/clean_temp_follow_state", "", new azop(this, paramBundle, i), 1000, null).a(localHashMap);
+          }
+          paramBundle.a(this.jdField_a_of_type_Azon.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramInt, i);
+          if (paramInt == 1)
+          {
+            azon.b(this.jdField_a_of_type_Azon);
+            this.jdField_a_of_type_Azon.notifyObservers(Integer.valueOf(1));
+            return;
+          }
+        }
       }
-      this.jdField_a_of_type_JavaUtilCalendar = this.jdField_a_of_type_Azor.a(paramActivity);
-    }
-    try
-    {
-      this.jdField_a_of_type_Begr.show();
+      catch (Exception paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(".troop.troop_pubaccount", 2, "fetchBindTroopInfo, exception=" + paramArrayOfByte.toString());
+        }
+      }
+      for (;;)
+      {
+        azon.c(this.jdField_a_of_type_Azon);
+        this.jdField_a_of_type_Azon.notifyObservers();
+        return;
+        QLog.d(".troop.troop_pubaccount", 2, "fetchBindTroopInfo error. errorCode=" + paramInt);
+      }
+      label557:
+      paramArrayOfByte = null;
+      continue;
+      label562:
       return;
+      label563:
+      paramArrayOfByte = "";
     }
-    catch (Exception paramActivity) {}
   }
 }
 

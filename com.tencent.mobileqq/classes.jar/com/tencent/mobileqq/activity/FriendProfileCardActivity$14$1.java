@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aatw;
-import atwx;
+import abdq;
+import auuw;
 
 public class FriendProfileCardActivity$14$1
   implements Runnable
 {
-  public FriendProfileCardActivity$14$1(aatw paramaatw) {}
+  public FriendProfileCardActivity$14$1(abdq paramabdq) {}
   
   public void run()
   {

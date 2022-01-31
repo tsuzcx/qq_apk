@@ -1,25 +1,29 @@
-class bhwi
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.troop.TroopPluginManager;
+
+public class bhwi
+  extends Handler
 {
-  bhvb jdField_a_of_type_Bhvb;
-  bhve jdField_a_of_type_Bhve;
-  
-  bhwi(bhvf parambhvf, bhve parambhve)
+  public bhwi(TroopPluginManager paramTroopPluginManager, Looper paramLooper)
   {
-    this.jdField_a_of_type_Bhvb = bhvh.a(parambhvf);
-    this.jdField_a_of_type_Bhve = parambhve;
+    super(paramLooper);
   }
   
-  void a(bhvg parambhvg, bhvd parambhvd)
+  public void handleMessage(Message paramMessage)
   {
-    bhve localbhve = bhwh.a(parambhvd);
-    this.jdField_a_of_type_Bhve = bhwh.a(this.jdField_a_of_type_Bhve, localbhve);
-    this.jdField_a_of_type_Bhvb.a(parambhvg, parambhvd);
-    this.jdField_a_of_type_Bhve = localbhve;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    ((bhwl)paramMessage.obj).a(paramMessage.arg1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhwi
  * JD-Core Version:    0.7.0.1
  */

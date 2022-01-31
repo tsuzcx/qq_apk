@@ -1,39 +1,42 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.ims.AlertReport.ButtonAction;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class abor
-  implements TextWatcher
+  implements DialogInterface.OnClickListener
 {
-  public abor(RegisterPersonalInfoActivity paramRegisterPersonalInfoActivity) {}
+  public abor(NotificationActivity paramNotificationActivity, int paramInt, String paramString) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramEditable == null) {}
-    for (;;)
+    try
     {
+      paramDialogInterface = new AlertReport.ButtonAction();
+      paramDialogInterface.uint32_cmd.set(1);
+      paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
+      paramDialogInterface.str_package_name.set(bfhb.c());
+      paramDialogInterface.uint32_app_id.set(AppSetting.a());
+      mxi.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, paramDialogInterface.toByteArray(), 34, "SecuritySvc.AlertReport");
+      axqw.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007535", "0X8007535", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
       return;
-      if (TextUtils.isEmpty(paramEditable.toString())) {
-        RegisterPersonalInfoActivity.a(this.a).setEnabled(false);
-      }
-      while (RegisterPersonalInfoActivity.a(this.a) != null)
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
       {
-        RegisterPersonalInfoActivity.a(this.a).b(RegisterPersonalInfoActivity.a(this.a).isEnabled());
-        return;
-        RegisterPersonalInfoActivity.a(this.a).setEnabled(true);
+        paramDialogInterface.printStackTrace();
       }
     }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abor
  * JD-Core Version:    0.7.0.1
  */

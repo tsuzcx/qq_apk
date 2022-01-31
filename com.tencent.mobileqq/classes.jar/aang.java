@@ -1,23 +1,24 @@
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class aang
-  extends ajre
+  extends akgk
 {
-  public aang(Conversation paramConversation) {}
+  public aang(BaseChatPie paramBaseChatPie) {}
   
-  protected void a(int paramInt)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, new Object[] { "onRegPrxyUpdateLoginDevStatus int iState = ", Integer.valueOf(paramInt) });
-    }
-    if (paramInt == 1)
+    if (((this.a.a() instanceof SplashActivity)) && (SplashActivity.a != 2)) {}
+    do
     {
-      this.a.a.a(26, 2);
-      this.a.a.a(-1, null);
       return;
-    }
-    this.a.a.k();
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.a, 2, "VideoRedbag, onCheckRealNameRsp in aio");
+      }
+    } while ((!paramBoolean) || (paramInt != axjq.a));
+    bbcv.a(this.a.a(), 0, null, this.a.a().getString(2131719580), 2131719582, 2131719581, new aanh(this), new aani(this)).show();
   }
 }
 

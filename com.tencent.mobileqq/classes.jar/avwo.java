@@ -1,65 +1,106 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.SystemClock;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class avwo
-  implements avwv
+class avwo
+  extends avxa
 {
-  protected View a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private avww jdField_a_of_type_Avww;
-  private List<avww> jdField_a_of_type_JavaUtilList;
-  private TextView b;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString = "receiver";
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
+  private String d;
   
-  public avwo() {}
+  public avwo(int paramInt, String paramString) {}
   
-  public avwo(ViewGroup paramViewGroup, int paramInt)
+  private void a()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131304741));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131303679));
-    this.jdField_a_of_type_Avww = new avwq(this.jdField_a_of_type_AndroidViewView.findViewById(2131302684));
+    if (!this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_b_of_type_Int += 1;
+      this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+      if (this.jdField_b_of_type_Int > 1) {
+        this.jdField_a_of_type_Boolean = true;
+      }
+      this.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_Int = 0;
+    }
   }
   
-  public View a()
+  private void b()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Long = Math.max((SystemClock.uptimeMillis() - this.jdField_b_of_type_Long) / 1000L, this.jdField_a_of_type_Long);
+      this.jdField_b_of_type_Long = 0L;
+      this.jdField_b_of_type_Boolean = false;
+    }
   }
   
-  public LinearLayout a()
+  private void c()
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Int == 0)) {
+      this.jdField_a_of_type_Int = 1;
+    }
   }
   
-  public TextView a()
+  public HashMap<String, String> a(String paramString)
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public avww a()
-  {
-    return this.jdField_a_of_type_Avww;
-  }
-  
-  public List<avww> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public TextView b()
-  {
-    return this.b;
+    Object localObject2 = null;
+    Object localObject1;
+    if (this.jdField_b_of_type_Int <= 0)
+    {
+      localObject1 = localObject2;
+      if (QLog.isDevelopLevel())
+      {
+        QLog.i(avxb.jdField_a_of_type_JavaLangString, 4, "View count is 0!");
+        localObject1 = localObject2;
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return localObject1;
+          if (!"Pic.AioPreview".equals(paramString)) {
+            break;
+          }
+          paramString = new HashMap();
+          paramString.put("stay_seconds", String.valueOf(this.jdField_a_of_type_Long));
+          paramString.put("gesture_double_click", String.valueOf(this.jdField_a_of_type_Int));
+          paramString.put("view_count", String.valueOf(this.jdField_b_of_type_Int));
+          paramString.put("send_type", this.jdField_a_of_type_JavaLangString);
+          if (this.jdField_a_of_type_Boolean) {
+            paramString.put("view_again", "1");
+          }
+          if (this.jdField_b_of_type_JavaLangString != null) {
+            paramString.put("size_type", this.jdField_b_of_type_JavaLangString);
+          }
+          localObject1 = paramString;
+        } while (this.jdField_c_of_type_JavaLangString == null);
+        paramString.put("format_type", this.jdField_c_of_type_JavaLangString);
+        return paramString;
+        localObject1 = localObject2;
+      } while (!"Pic.AioPreview.Preload".equals(paramString));
+      localObject1 = localObject2;
+    } while (this.d == null);
+    paramString = new HashMap();
+    paramString.put("preload_status", String.valueOf(this.jdField_c_of_type_Boolean));
+    paramString.put("preload_fail_filetype", this.d);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avwo
  * JD-Core Version:    0.7.0.1
  */

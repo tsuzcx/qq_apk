@@ -1,18 +1,9 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.7.1;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class aoyk
-  implements TVK_IMediaPlayer.OnCompletionListener
+class aoyk
+  implements ajos
 {
-  aoyk(aoyb paramaoyb) {}
-  
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    new Handler(Looper.getMainLooper()).post(new VideoFilePresenter.7.1(this));
-  }
+  aoyk(aoye paramaoye, FileManagerEntity paramFileManagerEntity) {}
 }
 
 

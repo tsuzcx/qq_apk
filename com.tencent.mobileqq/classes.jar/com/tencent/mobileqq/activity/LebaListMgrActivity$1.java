@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import afqa;
+import agca;
+import ajzo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
 class LebaListMgrActivity$1
@@ -10,9 +12,10 @@ class LebaListMgrActivity$1
   
   public void run()
   {
-    afqa.a().a(this.this$0, this.this$0.app);
-    List localList = afqa.a().a();
-    this.this$0.runOnUiThread(new LebaListMgrActivity.1.1(this, localList));
+    agca.a().a(this.this$0, this.this$0.app);
+    boolean bool = this.this$0.app.a().a();
+    List localList = agca.a().a();
+    this.this$0.runOnUiThread(new LebaListMgrActivity.1.1(this, bool, localList));
   }
 }
 

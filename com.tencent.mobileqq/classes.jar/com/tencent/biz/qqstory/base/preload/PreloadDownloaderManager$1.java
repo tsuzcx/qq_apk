@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.base.preload;
 
-import sia;
-import sik;
+import suw;
+import svg;
 
 public class PreloadDownloaderManager$1
   implements Runnable
 {
-  public PreloadDownloaderManager$1(sia paramsia) {}
+  public PreloadDownloaderManager$1(suw paramsuw) {}
   
   public void run()
   {
     this.this$0.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.b();
     this.this$0.jdField_a_of_type_JavaLangRunnable = null;
-    sik.a().a();
+    svg.a().a();
   }
 }
 

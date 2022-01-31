@@ -1,179 +1,123 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.common.app.AppInterface;
-import org.json.JSONException;
+import android.text.TextUtils;
+import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONObject;
 
 public class nmv
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  Context jdField_a_of_type_AndroidContentContext;
-  Bundle jdField_a_of_type_AndroidOsBundle;
-  VideoAdInfo jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo;
-  AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  JSONObject jdField_b_of_type_OrgJsonJSONObject;
-  int jdField_c_of_type_Int;
-  JSONObject jdField_c_of_type_OrgJsonJSONObject;
-  int jdField_d_of_type_Int;
-  JSONObject jdField_d_of_type_OrgJsonJSONObject;
-  JSONObject e;
-  JSONObject f;
+  public static final Map<Class<?>, Integer> a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public String i;
+  public String j;
   
-  public nmt a()
+  static
   {
-    nmt localnmt = new nmt(null);
-    nmt.a(localnmt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
-    nmt.a(localnmt, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    nmt.a(localnmt, this.jdField_a_of_type_Long);
-    nmt.a(localnmt, this.jdField_c_of_type_Int);
-    nmt.a(localnmt, this.jdField_a_of_type_AndroidOsBundle);
-    nmt.a(localnmt, this.jdField_a_of_type_AndroidContentContext);
-    nmt.a(localnmt, this.jdField_b_of_type_OrgJsonJSONObject);
-    nmt.a(localnmt, this.jdField_a_of_type_JavaLangString);
-    nmt.b(localnmt, this.jdField_b_of_type_Int);
-    nmt.b(localnmt, this.jdField_c_of_type_OrgJsonJSONObject);
-    nmt.c(localnmt, this.jdField_a_of_type_Int);
-    nmt.c(localnmt, this.jdField_d_of_type_OrgJsonJSONObject);
-    nmt.a(localnmt, this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo);
-    nmt.d(localnmt, this.jdField_a_of_type_OrgJsonJSONObject);
-    nmt.e(localnmt, this.e);
-    nmt.d(localnmt, this.jdField_d_of_type_Int);
-    nmt.f(localnmt, this.f);
-    localnmt.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.isMultiyVideo)) {
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_JavaUtilMap.put(Boolean.TYPE, Integer.valueOf(1));
+    jdField_a_of_type_JavaUtilMap.put(Integer.TYPE, Integer.valueOf(2));
+    jdField_a_of_type_JavaUtilMap.put(Long.TYPE, Integer.valueOf(3));
+    jdField_a_of_type_JavaUtilMap.put(String.class, Integer.valueOf(4));
+    jdField_a_of_type_JavaUtilMap.put(Double.TYPE, Integer.valueOf(5));
+  }
+  
+  public nmv() {}
+  
+  public nmv(mobileqq_mp.ConfigInfo paramConfigInfo)
+  {
+    this.jdField_a_of_type_Int = paramConfigInfo.type.get();
+    this.jdField_a_of_type_JavaLangString = paramConfigInfo.title.get();
+    this.jdField_b_of_type_JavaLangString = paramConfigInfo.content.get();
+    this.jdField_c_of_type_Int = paramConfigInfo.event_id.get();
+    this.jdField_c_of_type_JavaLangString = paramConfigInfo.url.get();
+    this.jdField_d_of_type_Int = paramConfigInfo.state.get();
+    this.jdField_e_of_type_Int = paramConfigInfo.state_id.get();
+    this.jdField_f_of_type_Int = paramConfigInfo.confirm_flag.get();
+    this.jdField_d_of_type_JavaLangString = paramConfigInfo.confirm_tips.get();
+  }
+  
+  public static nmv a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      paramJSONObject = null;
+    }
+    nmv localnmv;
+    for (;;)
+    {
+      return paramJSONObject;
+      localnmv = new nmv();
       try
       {
-        if (nmt.a(localnmt) == null) {
-          nmt.f(localnmt, new JSONObject());
-        }
-        if (nmt.a(localnmt).has("statistics_data_report"))
+        localnmv.jdField_a_of_type_Int = paramJSONObject.optInt("type");
+        localnmv.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
+        localnmv.jdField_b_of_type_JavaLangString = paramJSONObject.optString("content");
+        localnmv.jdField_b_of_type_Int = paramJSONObject.optInt("follow_handle");
+        localnmv.jdField_c_of_type_Int = paramJSONObject.optInt("event_id");
+        localnmv.jdField_d_of_type_Int = paramJSONObject.optInt("state");
+        localnmv.jdField_e_of_type_Int = paramJSONObject.optInt("state_id");
+        localnmv.jdField_c_of_type_JavaLangString = paramJSONObject.optString("url");
+        localnmv.jdField_f_of_type_Int = paramJSONObject.optInt("confirm_flag");
+        localnmv.jdField_d_of_type_JavaLangString = paramJSONObject.optString("confirm_tips");
+        localnmv.jdField_e_of_type_JavaLangString = paramJSONObject.optString("pic_url");
+        localnmv.jdField_f_of_type_JavaLangString = paramJSONObject.optString("lng");
+        localnmv.jdField_g_of_type_JavaLangString = paramJSONObject.optString("lat");
+        localnmv.jdField_h_of_type_JavaLangString = paramJSONObject.optString("phone_number");
+        localnmv.jdField_g_of_type_Int = paramJSONObject.optInt("width");
+        localnmv.jdField_h_of_type_Int = paramJSONObject.optInt("height");
+        localnmv.i = paramJSONObject.optString("icon");
+        localnmv.j = paramJSONObject.optString("vid");
+        paramJSONObject = localnmv;
+        if (localnmv.jdField_a_of_type_Int == 3)
         {
-          localJSONObject = new JSONObject(nmt.a(localnmt).getString("statistics_data_report"));
-          localJSONObject.put("show_style", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mRevisionVideoType);
-          nmt.a(localnmt).put("statistics_data_report", localJSONObject.toString());
-          return localnmt;
+          paramJSONObject = localnmv;
+          if (localnmv.jdField_c_of_type_Int == 23)
+          {
+            paramJSONObject = localnmv;
+            if (!TextUtils.isEmpty(localnmv.jdField_b_of_type_JavaLangString))
+            {
+              nex localnex = new nex();
+              localnex.a(localnmv.jdField_b_of_type_JavaLangString);
+              if ((TextUtils.isEmpty(localnmv.jdField_e_of_type_JavaLangString)) && (!TextUtils.isEmpty(localnex.jdField_a_of_type_Nfa.jdField_a_of_type_JavaLangString))) {
+                localnmv.jdField_e_of_type_JavaLangString = localnex.jdField_a_of_type_Nfa.jdField_a_of_type_JavaLangString;
+              }
+              paramJSONObject = localnmv;
+              if (TextUtils.isEmpty(localnmv.jdField_a_of_type_JavaLangString))
+              {
+                paramJSONObject = localnmv;
+                if (!TextUtils.isEmpty(localnex.jdField_a_of_type_JavaLangString))
+                {
+                  localnmv.jdField_a_of_type_JavaLangString = localnex.jdField_a_of_type_JavaLangString;
+                  return localnmv;
+                }
+              }
+            }
+          }
         }
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("show_style", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mRevisionVideoType);
-        nmt.a(localnmt).put("statistics_data_report", localJSONObject.toString());
-        return localnmt;
       }
-      catch (JSONException localJSONException)
+      catch (Exception paramJSONObject)
       {
-        localJSONException.printStackTrace();
+        paramJSONObject.printStackTrace();
       }
     }
-    return localnmt;
-  }
-  
-  public nmv a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public nmv a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public nmv a(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    return this;
-  }
-  
-  public nmv a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    return this;
-  }
-  
-  public nmv a(VideoAdInfo paramVideoAdInfo)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo = paramVideoAdInfo;
-    return this;
-  }
-  
-  public nmv a(AdvertisementInfo paramAdvertisementInfo)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
-    return this;
-  }
-  
-  public nmv a(AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    return this;
-  }
-  
-  public nmv a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public nmv a(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    return this;
-  }
-  
-  public nmv a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public nmv b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public nmv b(JSONObject paramJSONObject)
-  {
-    this.jdField_b_of_type_OrgJsonJSONObject = paramJSONObject;
-    return this;
-  }
-  
-  public nmv c(int paramInt)
-  {
-    this.jdField_d_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public nmv c(JSONObject paramJSONObject)
-  {
-    this.jdField_c_of_type_OrgJsonJSONObject = paramJSONObject;
-    return this;
-  }
-  
-  public nmv d(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public nmv d(JSONObject paramJSONObject)
-  {
-    this.e = paramJSONObject;
-    return this;
-  }
-  
-  public nmv e(JSONObject paramJSONObject)
-  {
-    this.f = paramJSONObject;
-    return this;
+    return localnmv;
   }
 }
 

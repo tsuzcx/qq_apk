@@ -1,6 +1,25 @@
-public abstract interface ryn
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+
+class ryn
+  implements bcwh
 {
-  public abstract void a(Object paramObject, int paramInt1, int paramInt2, String paramString, boolean paramBoolean, ryp paramryp);
+  ryn(rym paramrym) {}
+  
+  public void a(BaseResp paramBaseResp)
+  {
+    if ((rym.a(this.a) == null) || (!rym.a(this.a).equals(paramBaseResp.transaction))) {
+      return;
+    }
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      wim.a(1, 2131719476);
+      return;
+    }
+    wim.a(2, 2131719495);
+  }
 }
 
 

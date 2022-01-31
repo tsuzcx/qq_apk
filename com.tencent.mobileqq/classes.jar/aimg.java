@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingFragment;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
 public class aimg
-  extends aimm
 {
-  public aimg(CmGameLoadingFragment paramCmGameLoadingFragment) {}
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public Object a;
+  public String a;
+  public TextView b;
   
-  public void a(boolean paramBoolean, long paramLong, Object paramObject)
-  {
-    if (CmGameLoadingFragment.a(this.a) != null) {
-      CmGameLoadingFragment.a(this.a).a(paramBoolean, paramLong);
-    }
-  }
+  public aimg(aimf paramaimf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aimg
  * JD-Core Version:    0.7.0.1
  */

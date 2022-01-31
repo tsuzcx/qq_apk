@@ -1,30 +1,24 @@
-import android.annotation.TargetApi;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.animation.Transformation;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
-final class autq
-  implements bajj<Float>
+public class autq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  autq(View paramView) {}
+  public autq(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ValueAnimator paramValueAnimator, View paramView) {}
   
-  @TargetApi(11)
-  public void a(bajd<Float> parambajd, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QIMAnimationUtils", 2, "alphaAnimation value = " + paramFloat1);
-    }
-    paramFloat = paramFloat1.floatValue();
-    if (this.a != null)
-    {
-      this.a.setAlpha(paramFloat);
-      this.a.invalidate();
-    }
+    int i = ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramValueAnimator.height = i;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     autq
  * JD-Core Version:    0.7.0.1
  */

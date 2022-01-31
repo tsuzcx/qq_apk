@@ -1,16 +1,20 @@
-public abstract interface apsc
+import java.util.List;
+
+class apsc
+  implements bcvx
 {
-  public abstract void b();
+  apsc(apry paramapry, List paramList) {}
   
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public void a(int paramInt)
+  {
+    if (paramInt == 2) {
+      bakj.a(apry.a(this.jdField_a_of_type_Apry), apry.a(this.jdField_a_of_type_Apry), this.jdField_a_of_type_JavaUtilList);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apsc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,34 @@
-import android.view.MotionEvent;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-class mbk
-  implements mbn
+public class mbk
+  implements URLDrawable.URLDrawableListener
 {
-  mbk(mbf parammbf) {}
+  public mbk(AVActivity paramAVActivity) {}
   
-  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (paramBoolean)
-    {
-      if (!this.a.c()) {
-        break label23;
-      }
-      this.a.f();
-    }
-    for (;;)
-    {
-      return false;
-      label23:
-      if (this.a.b()) {
-        this.a.e();
-      } else if (mbf.a(this.a) != null) {
-        mbf.a(this.a).a(paramMotionEvent);
-      }
-    }
+    AVActivity.a(this.a, false);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadCanceled().");
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    AVActivity.a(this.a, false);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadFialed().");
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadProgressed(). i = " + paramInt);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    AVActivity.a(this.a, true);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadSuccessed().");
   }
 }
 

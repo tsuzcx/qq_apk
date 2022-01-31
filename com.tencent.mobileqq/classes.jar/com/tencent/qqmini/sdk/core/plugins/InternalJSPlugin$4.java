@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdcz;
-import bdfz;
-import bdnw;
+import begz;
+import beka;
+import besl;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class InternalJSPlugin$4
   implements AsyncResult
 {
-  InternalJSPlugin$4(InternalJSPlugin paramInternalJSPlugin, String paramString1, bdfz parambdfz, String paramString2, String paramString3) {}
+  InternalJSPlugin$4(InternalJSPlugin paramInternalJSPlugin, String paramString1, beka parambeka, String paramString2, String paramString3) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -18,12 +18,13 @@ class InternalJSPlugin$4
       String str1 = paramJSONObject.optString("appName");
       String str2 = paramJSONObject.optString("packageName");
       String str3 = paramJSONObject.optString("nativeAppId");
+      String str4 = paramJSONObject.optString("downloadUrl");
       int i = paramJSONObject.optInt("onlyOpen");
-      InternalJSPlugin.access$100(this.this$0, this.this$0.mMiniAppContext.a(), str3, str2, str1, i, this.val$appParameter, this.val$req);
+      InternalJSPlugin.access$100(this.this$0, this.this$0.mMiniAppContext.a(), str3, str2, str1, str4, i, this.val$appParameter, this.val$req);
       return;
     }
     this.val$req.a("jump check failed.");
-    bdnw.c("InternalJSPlugin", String.format("jump native app check failed, appid:%s, packageName:%s", new Object[] { this.val$appid, this.val$packageName }));
+    besl.c("InternalJSPlugin", String.format("jump native app check failed, appid:%s, packageName:%s", new Object[] { this.val$appConnectId, this.val$packageName }));
   }
 }
 

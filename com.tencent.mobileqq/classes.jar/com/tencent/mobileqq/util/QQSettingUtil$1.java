@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import azys;
+import bazw;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class QQSettingUtil$1
@@ -10,7 +10,7 @@ public final class QQSettingUtil$1
   
   public void run()
   {
-    azys.b(this.a);
+    bazw.b(this.a);
   }
 }
 

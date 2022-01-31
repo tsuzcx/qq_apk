@@ -1,21 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import org.json.JSONObject;
 
-public class aitf
-  implements EIPCResultCallback
+public final class aitf
+  implements aabm
 {
-  public aitf(ApolloGameActivity paramApolloGameActivity) {}
+  public aitf(View paramView, aabp paramaabp, long paramLong, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    paramEIPCResult = paramEIPCResult.data;
-    boolean bool1 = paramEIPCResult.getBoolean("isOpen");
-    boolean bool2 = paramEIPCResult.getBoolean("display", false);
-    this.a.a(bool2, bool1, ApolloGameActivity.a(this.a).mTempAIOUin);
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aabp, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed");
   }
+  
+  public void onPermission(int paramInt)
+  {
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aabp, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed permission");
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    paramJSONObject = paramJSONObject.optString("city", "");
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aabp, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, paramJSONObject, 0, "location success");
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

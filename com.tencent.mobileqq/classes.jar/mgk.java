@@ -1,60 +1,26 @@
-import android.os.SystemClock;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
 
-class mgk
-  extends ajuc
+public class mgk
+  implements DialogInterface.OnClickListener
 {
-  mgk(mgj parammgj) {}
+  public mgk(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity, View paramView) {}
   
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4, int paramInt5, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    mgp localmgp = (mgp)mgj.a(this.a).a(paramLong);
-    if (paramBoolean)
-    {
-      mgj.a(this.a, SystemClock.elapsedRealtime());
-      paramString2 = new mgr(SystemClock.elapsedRealtime(), paramInt3, paramString2, paramString3, paramString4);
-      mgj.a(this.a).put(paramString1, paramString2);
-      if (localmgp != null)
-      {
-        localmgp.a(paramInt3, paramString2, paramInt5);
-        mgj.a(this.a).a(paramLong);
-        this.a.a = paramInt4;
-        if (mgj.a(this.a) == null) {
-          break label261;
-        }
-        mgj.a(this.a).a(paramInt4);
-        mgj.a(this.a, null);
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "onGetTroopHideWebConfig record gVideoStrategy:" + paramInt3 + " isSucc:" + paramBoolean);
-      }
+    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.b()) {
       return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "mGVideoGrayConfigListener is null");
-      break;
-      paramString1 = (mgp)mgj.a(this.a).a(paramLong);
-      if (paramString1 != null)
-      {
-        paramString1.a(-1, null, paramInt5);
-        mgj.a(this.a).a(paramLong);
-        break;
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "mGVideoGrayConfigListener is null");
-      break;
-      label261:
-      if (QLog.isColorLevel()) {
-        QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "mGVideoPreDownloadListener is null");
-      }
     }
+    this.jdField_a_of_type_AndroidViewView.setEnabled(false);
+    this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.b = this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.c, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.f, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_Long);
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_JavaLangString, 1, "kickOutUsers begin, mGAudioRoomId[" + this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.b + "]");
+    this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a(1, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.c, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.f, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_Long);
+    axqw.b(null, "CliOper", "", "", "0X8009E2A", "0X8009E2A", 0, 0, "", "", "", "");
+    paramDialogInterface.dismiss();
   }
 }
 

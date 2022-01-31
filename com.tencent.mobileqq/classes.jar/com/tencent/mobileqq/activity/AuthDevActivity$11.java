@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bbms;
+import bcpq;
 
 class AuthDevActivity$11
   implements Runnable
@@ -12,7 +12,7 @@ class AuthDevActivity$11
     try
     {
       if ((AuthDevActivity.a(this.this$0) == null) && (!this.this$0.isFinishing())) {
-        AuthDevActivity.a(this.this$0, new bbms(this.this$0, this.this$0.getTitleBarHeight()));
+        AuthDevActivity.a(this.this$0, new bcpq(this.this$0, this.this$0.getTitleBarHeight()));
       }
       if ((AuthDevActivity.a(this.this$0) != null) && (!AuthDevActivity.a(this.this$0).isShowing())) {
         AuthDevActivity.a(this.this$0).show();

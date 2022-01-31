@@ -1,7 +1,7 @@
 package cooperation.buscard;
 
-import bbmy;
-import bfcz;
+import bcpw;
+import bgkq;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -25,7 +25,7 @@ public class BuscardPluginInstallActivity$1
         BuscardPluginInstallActivity.a(this.this$0, true);
         return;
       }
-      bbmy.a(this.this$0.getApplicationContext(), 2131629528, 0);
+      bcpw.a(this.this$0.getApplicationContext(), 2131695209, 0);
       BuscardPluginInstallActivity.a(this.this$0, false);
       this.this$0.finish();
       return;

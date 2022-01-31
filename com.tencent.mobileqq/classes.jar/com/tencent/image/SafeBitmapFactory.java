@@ -14,8 +14,8 @@ import android.graphics.BitmapRegionDecoder;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
-import android.os.Environment;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -35,10 +35,11 @@ public class SafeBitmapFactory
   public static final String FLASH_BACK_TEST_PATH;
   public static final long FLASH_BACK_TEST_PX_THRESHOID = 10000000L;
   public static final String FLASH_BACK_TEST_REGION_PATH;
-  public static final String LARGE_MAP_CACHE_PATH = Environment.getExternalStorageDirectory() + "/tencent/MobileQQ/hugeimagecache";
+  public static final String LARGE_MAP_CACHE_PATH;
   public static final int PX_SLICE = 4000;
   public static final long PX_THRESHOID_DEFAULTS = 100000000L;
   public static final int RAM_THRESHOID_DEFAULTS = 8;
+  public static final String ROOT_PATH;
   public static final String SAFE_DECODE_FROM = "from";
   private static final String SP_NEED_REGION_DECODE = "sp_need_region_decode";
   private static final String SP_PX_THRESHOID = "sp_px_threshoid";
@@ -47,7 +48,7 @@ public class SafeBitmapFactory
   private static final String SP_THREADS_COUNT = "sp_thread_count";
   private static final String TAG = "SafeBitmapFactory";
   public static final int THREADS_COUNT_DEFAULTS = 7;
-  public static Object lock = new Object();
+  public static Object lock;
   public static AtomicBoolean sInjectHotPatch;
   public static int sNeedRegionDecode;
   public static long sPxThreshold;
@@ -56,13 +57,21 @@ public class SafeBitmapFactory
   
   static
   {
-    FLASH_BACK_TEST_PATH = Environment.getExternalStorageDirectory() + "/tencent/MobileQQ/hugeimagecache/flashback.mc";
-    FLASH_BACK_TEST_REGION_PATH = Environment.getExternalStorageDirectory() + "/tencent/MobileQQ/hugeimagecache/flashbackRegion.mc";
-    sRamThreshold = -1;
-    sPxThreshold = -1L;
-    sThreadCount = -1;
-    sNeedRegionDecode = -1;
-    sInjectHotPatch = new AtomicBoolean(false);
+    if (BaseApplication.getContext().getExternalFilesDir(null) == null) {}
+    for (String str = BaseApplication.getContext().getFilesDir().getAbsolutePath();; str = BaseApplication.getContext().getExternalFilesDir(null).getAbsolutePath())
+    {
+      ROOT_PATH = str;
+      LARGE_MAP_CACHE_PATH = ROOT_PATH + "/tencent/MobileQQ/hugeimagecache";
+      FLASH_BACK_TEST_PATH = ROOT_PATH + "/tencent/MobileQQ/hugeimagecache/flashback.mc";
+      FLASH_BACK_TEST_REGION_PATH = ROOT_PATH + "/tencent/MobileQQ/hugeimagecache/flashbackRegion.mc";
+      sRamThreshold = -1;
+      sPxThreshold = -1L;
+      sThreadCount = -1;
+      sNeedRegionDecode = -1;
+      sInjectHotPatch = new AtomicBoolean(false);
+      lock = new Object();
+      return;
+    }
   }
   
   public static Bitmap decodeByteArray(byte[] paramArrayOfByte, int paramInt1, int paramInt2)

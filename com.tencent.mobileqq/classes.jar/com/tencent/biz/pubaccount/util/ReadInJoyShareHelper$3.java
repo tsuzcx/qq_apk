@@ -2,22 +2,22 @@ package com.tencent.biz.pubaccount.util;
 
 import android.graphics.Bitmap;
 import android.os.Message;
-import befq;
-import rbb;
-import rug;
+import bfnk;
+import rnt;
+import sgy;
 
 public class ReadInJoyShareHelper$3
   implements Runnable
 {
-  public ReadInJoyShareHelper$3(rug paramrug, Bitmap paramBitmap) {}
+  public ReadInJoyShareHelper$3(sgy paramsgy, Bitmap paramBitmap) {}
   
   public void run()
   {
-    String str = rbb.a(this.a, "ShotCache_");
+    String str = rnt.a(this.a, "ShotCache_");
     Message localMessage = Message.obtain();
     localMessage.what = 101;
     localMessage.obj = str;
-    rug.a(this.this$0).sendMessage(localMessage);
+    sgy.a(this.this$0).sendMessage(localMessage);
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.takevideo.rmw;
 
-import awhs;
-import awlw;
+import axgy;
+import axlc;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import lbk;
-import sqg;
-import uyz;
-import vgb;
+import lmb;
+import tdc;
+import vlv;
+import vsx;
 
 class RMWService$2
   extends Thread
@@ -15,21 +15,21 @@ class RMWService$2
   
   public void run()
   {
-    vgb.b("RMWService", "preload AVCodec - start -");
+    vsx.b("RMWService", "preload AVCodec - start -");
     VideoEnvironment.a("AVCodec", null, true);
-    vgb.b("RMWService", "preload AVCodec - end -");
-    vgb.b("RMWService", "preload PtvFilterSoLoad - start -");
-    awlw.a();
-    vgb.b("RMWService", "preload PtvFilterSoLoad - end -");
-    vgb.b("RMWService", "preInit DoodleEmojiManager - start -");
-    ((uyz)sqg.a(8)).a(this.this$0);
-    vgb.b("RMWService", "preInit DoodleEmojiManager - end -");
-    vgb.b("RMWService", "preInit HwEnvData.supportHardWareCodec - start -");
-    awhs.a();
-    vgb.b("RMWService", "preInit HwEnvData.supportHardWareCodec - end -");
-    vgb.b("RMWService", "preInit VcSystemInfo.getCpuInfo - start -");
-    lbk.a();
-    vgb.b("RMWService", "preInit VcSystemInfo.getCpuInfo - end -");
+    vsx.b("RMWService", "preload AVCodec - end -");
+    vsx.b("RMWService", "preload PtvFilterSoLoad - start -");
+    axlc.a();
+    vsx.b("RMWService", "preload PtvFilterSoLoad - end -");
+    vsx.b("RMWService", "preInit DoodleEmojiManager - start -");
+    ((vlv)tdc.a(8)).a(this.this$0);
+    vsx.b("RMWService", "preInit DoodleEmojiManager - end -");
+    vsx.b("RMWService", "preInit HwEnvData.supportHardWareCodec - start -");
+    axgy.a();
+    vsx.b("RMWService", "preInit HwEnvData.supportHardWareCodec - end -");
+    vsx.b("RMWService", "preInit VcSystemInfo.getCpuInfo - start -");
+    lmb.a();
+    vsx.b("RMWService", "preInit VcSystemInfo.getCpuInfo - end -");
   }
 }
 

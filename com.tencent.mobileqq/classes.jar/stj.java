@@ -1,21 +1,45 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import org.json.JSONObject;
 
 class stj
-  implements ajgy
+  extends SimpleJob<Object>
 {
-  stj(stg paramstg) {}
-  
-  public void a(boolean paramBoolean)
+  stj(sti paramsti, String paramString)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
+  {
+    Object localObject = (String)((tcv)tdc.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", "");
+    synchronized (this.a.b)
     {
-      if (localObject != null) {
-        ((sfz)((QQAppInterface)localObject).a(98)).notifyUI(1023, true, Boolean.valueOf(paramBoolean));
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        long l = this.a.a.jdField_a_of_type_Long;
+        if (l != 0L) {}
       }
-      return;
+      try
+      {
+        paramVarArgs = new stm();
+        localObject = new JSONObject((String)localObject);
+        paramVarArgs.jdField_a_of_type_Long = ((JSONObject)localObject).getLong("t");
+        paramVarArgs.jdField_a_of_type_ArrayOfByte = bbdm.a(((JSONObject)localObject).getString("ak"));
+        this.a.a = paramVarArgs;
+        veg.a("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init success -> %s", localObject);
+        return null;
+      }
+      catch (Exception paramVarArgs)
+      {
+        for (;;)
+        {
+          veg.b("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init error , %s", paramVarArgs);
+        }
+      }
     }
   }
 }

@@ -1,12 +1,23 @@
-public abstract interface aaie
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+
+public class aaie
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public aaie(AddRequestActivity paramAddRequestActivity) {}
   
-  public abstract void a(annl paramannl);
-  
-  public abstract boolean a();
-  
-  public abstract void b(annl paramannl);
+  public void onClick(View paramView)
+  {
+    paramView = this.a.getIntent();
+    paramView.putExtra("param_wzry_data", AddRequestActivity.a(this.a));
+    aflh.a(this.a.app, this.a, this.a.jdField_a_of_type_JavaLangString, AddRequestActivity.a(this.a), this.a.jdField_a_of_type_Int, AddRequestActivity.a(this.a), paramView);
+    if (AddRequestActivity.a(this.a) != null) {
+      axqw.b(this.a.app, "CliOper", "", "", "0X800843E", "0X800843E", 0, 0, "", "", "", "");
+    }
+    axqw.b(this.a.app, "CliOper", "", "", "0X800AA42", "0X800AA42", 0, 0, "", "", "", "");
+  }
 }
 
 

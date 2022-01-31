@@ -1,13 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.Arrays;
 
-final class bjif
-  implements DialogInterface.OnClickListener
+public class bjif
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static String a;
+  private static final int[] a;
+  
+  static
   {
-    bjic.a = null;
-    paramDialogInterface.cancel();
+    jdField_a_of_type_ArrayOfInt = new int[] { 0, 64, 91, 96, 123, 8543, 8576, 12295, 19967, 40870, 65295, 65306, 65312, 65339, 65344, 65371, 2147483647 };
+    jdField_a_of_type_JavaLangString = "[a-zA-Z0-9\\u4e00-\\u9fa5]";
+  }
+  
+  public static int a(char paramChar)
+  {
+    if (a(paramChar)) {
+      return 3;
+    }
+    switch (Arrays.binarySearch(jdField_a_of_type_ArrayOfInt, paramChar))
+    {
+    default: 
+      if (Character.isHighSurrogate(paramChar)) {
+        return 2;
+      }
+      break;
+    case -16: 
+    case -14: 
+    case -12: 
+    case -10: 
+    case -7: 
+    case -5: 
+    case -3: 
+    case 5: 
+      return 0;
+    }
+    return 1;
+  }
+  
+  public static int a(String paramString)
+  {
+    return Character.codePointCount(paramString, 0, paramString.length());
+  }
+  
+  private static boolean a(char paramChar)
+  {
+    return (paramChar >= '0') && (paramChar <= '9');
   }
 }
 

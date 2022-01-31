@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.canvas.components.form;
 
-import adaj;
+import adll;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -37,24 +37,24 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
-import ynv;
-import yny;
-import yod;
-import yoe;
-import ypk;
-import ypm;
-import yqa;
-import yqb;
-import yqc;
-import yqd;
-import yqo;
+import yxr;
+import yxs;
+import yxw;
+import yxx;
+import yze;
+import yzg;
+import yzu;
+import yzv;
+import yzw;
+import yzx;
+import zag;
 
 public class GdtCanvasFormComponentView
   extends GdtCanvasComponentView
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private adaj jdField_a_of_type_Adaj;
+  private adll jdField_a_of_type_Adll;
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup.MarginLayoutParams jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams;
   private GdtCanvasFormComponentData jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsFormGdtCanvasFormComponentData;
@@ -65,23 +65,23 @@ public class GdtCanvasFormComponentView
   private boolean jdField_b_of_type_Boolean;
   private int c;
   
-  public GdtCanvasFormComponentView(Context paramContext, WeakReference<yqo> paramWeakReference, GdtCanvasFormComponentData paramGdtCanvasFormComponentData)
+  public GdtCanvasFormComponentView(Context paramContext, WeakReference<zag> paramWeakReference, GdtCanvasFormComponentData paramGdtCanvasFormComponentData)
   {
     super(paramContext, paramWeakReference);
     a(paramContext, paramGdtCanvasFormComponentData);
   }
   
-  private adaj a(yqd paramyqd)
+  private adll a(yzx paramyzx)
   {
-    adaj localadaj = new adaj();
-    paramyqd.jdField_a_of_type_Adaj = localadaj;
+    adll localadll = new adll();
+    paramyzx.jdField_a_of_type_Adll = localadll;
     int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getWidth();
     int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getHeight();
-    localadaj.a(paramyqd.jdField_a_of_type_JavaLangString, paramyqd.b, paramyqd.c, paramyqd.d, paramyqd.jdField_a_of_type_Float, paramyqd.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    localadaj.setFixSize(i, j);
-    localadaj.setMaxSize(i, j);
-    localadaj.setMinSize(i, j);
-    return localadaj;
+    localadll.a(paramyzx.jdField_a_of_type_JavaLangString, paramyzx.b, paramyzx.c, paramyzx.d, paramyzx.jdField_a_of_type_Float, paramyzx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    localadll.setFixSize(i, j);
+    localadll.setMaxSize(i, j);
+    localadll.setMinSize(i, j);
+    return localadll;
   }
   
   @SuppressLint({"NewApi"})
@@ -128,8 +128,8 @@ public class GdtCanvasFormComponentView
       int[] arrayOfInt = new int[2];
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getLocationOnScreen(arrayOfInt);
       this.c = arrayOfInt[1];
-      j = ypk.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getWidth(), localRect.bottom) + arrayOfInt[1];
-      i = ypk.d(getContext()) - i;
+      j = yze.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getWidth(), localRect.bottom) + arrayOfInt[1];
+      i = yze.d(getContext()) - i;
       if (i < j)
       {
         ThreadManager.getUIHandler().postDelayed(new GdtCanvasFormComponentView.5(this, i - j), 5L);
@@ -141,20 +141,20 @@ public class GdtCanvasFormComponentView
     {
       this.jdField_a_of_type_Int = paramInt;
       return;
-      ((yqo)this.jdField_a_of_type_JavaLangRefWeakReference.get()).setPageViewTopMargin(this.jdField_b_of_type_Int);
+      ((zag)this.jdField_a_of_type_JavaLangRefWeakReference.get()).setPageViewTopMargin(this.jdField_b_of_type_Int);
     }
   }
   
   private void a(long paramLong)
   {
-    yoe localyoe = new yoe();
+    yxx localyxx = new yxx();
     if (a() != null) {}
     for (GdtAd localGdtAd = a().ad;; localGdtAd = null)
     {
-      localyoe.jdField_a_of_type_ComTencentGdtadAditemGdtAd = localGdtAd;
-      localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(62);
-      localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(paramLong - this.jdField_a_of_type_Long);
-      yod.a(localyoe);
+      localyxx.jdField_a_of_type_ComTencentGdtadAditemGdtAd = localGdtAd;
+      localyxx.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(62);
+      localyxx.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(paramLong - this.jdField_a_of_type_Long);
+      yxw.a(localyxx);
       return;
     }
   }
@@ -162,7 +162,7 @@ public class GdtCanvasFormComponentView
   private void a(Context paramContext)
   {
     if (!b()) {
-      yny.d("GdtCanvasFormComponentView", "initViews error");
+      yxs.d("GdtCanvasFormComponentView", "initViews error");
     }
     do
     {
@@ -180,13 +180,13 @@ public class GdtCanvasFormComponentView
     g();
     if ((paramGdtCanvasFormComponentData == null) || (TextUtils.isEmpty(paramGdtCanvasFormComponentData.id)))
     {
-      yny.d("GdtCanvasFormComponentView", "init error");
+      yxs.d("GdtCanvasFormComponentView", "init error");
       a(false);
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsFormGdtCanvasFormComponentData = paramGdtCanvasFormComponentData;
     a(paramContext);
-    this.jdField_a_of_type_Ypm = new ypm(new WeakReference(this), new WeakReference(this));
+    this.jdField_a_of_type_Yzg = new yzg(new WeakReference(this), new WeakReference(this));
     a(true);
   }
   
@@ -194,7 +194,7 @@ public class GdtCanvasFormComponentView
   {
     if (TextUtils.isEmpty(paramString))
     {
-      yny.d("GdtCanvasFormComponentView", "initArkContainer error");
+      yxs.d("GdtCanvasFormComponentView", "initArkContainer error");
       return;
     }
     float f2 = 0.0F;
@@ -232,8 +232,8 @@ public class GdtCanvasFormComponentView
         }
       }
     }
-    this.jdField_a_of_type_Adaj = a(new yqd(yqd.a(str2, str3, "0.0.0.1", paramString, f1, null, null)));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.initArkView(this.jdField_a_of_type_Adaj, false);
+    this.jdField_a_of_type_Adll = a(new yzx(yzx.a(str2, str3, "0.0.0.1", paramString, f1, null, null)));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.initArkView(this.jdField_a_of_type_Adll, false);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setVisibility(0);
   }
   
@@ -241,7 +241,7 @@ public class GdtCanvasFormComponentView
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = new ArkAppView(paramContext, null);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setBorderType(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setCallback(new yqa(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setCallback(new yzu(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView);
     if ((getContext() != null) && ((getContext() instanceof Activity)))
     {
@@ -250,11 +250,11 @@ public class GdtCanvasFormComponentView
       {
         this.jdField_a_of_type_AndroidViewView = paramContext.getChildAt(0);
         if (this.jdField_a_of_type_AndroidViewView != null) {
-          this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new yqb(this));
+          this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new yzv(this));
         }
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setInputCallback(new yqc(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setInputCallback(new yzw(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.post(new GdtCanvasFormComponentView.4(this));
     addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView);
     this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams = ((ViewGroup.MarginLayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getLayoutParams());
@@ -298,7 +298,7 @@ public class GdtCanvasFormComponentView
           ((ark_form_data.ArkFormData)localObject1).ad_info.dest_info.dest_type.set(((GdtAd)localObject2).getDestType());
           ((ark_form_data.ArkFormData)localObject1).form_info.form_module_id.set(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsFormGdtCanvasFormComponentData.id);
           ((ark_form_data.ArkFormData)localObject1).form_info.index.set(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsFormGdtCanvasFormComponentData.index);
-          localObject1 = ynv.a((PBField)localObject1);
+          localObject1 = yxr.a((PBField)localObject1);
           if ((localObject1 != null) && ((localObject1 instanceof JSONObject))) {
             this.jdField_a_of_type_JavaLangString = localObject1.toString();
           }
@@ -307,7 +307,7 @@ public class GdtCanvasFormComponentView
             localObject2 = new JSONObject();
             ((JSONObject)localObject2).put("gdt", localObject1);
             this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).toString();
-            yny.d("GdtCanvasFormComponentView", "after filter cancas_json:" + this.jdField_a_of_type_JavaLangString);
+            yxs.d("GdtCanvasFormComponentView", "after filter cancas_json:" + this.jdField_a_of_type_JavaLangString);
             return true;
           }
         }
@@ -354,13 +354,13 @@ public class GdtCanvasFormComponentView
   
   private void j()
   {
-    yoe localyoe = new yoe();
+    yxx localyxx = new yxx();
     if (a() != null) {}
     for (GdtAd localGdtAd = a().ad;; localGdtAd = null)
     {
-      localyoe.jdField_a_of_type_ComTencentGdtadAditemGdtAd = localGdtAd;
-      localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(61);
-      yod.a(localyoe);
+      localyxx.jdField_a_of_type_ComTencentGdtadAditemGdtAd = localGdtAd;
+      localyxx.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(61);
+      yxw.a(localyxx);
       return;
     }
   }
@@ -370,9 +370,9 @@ public class GdtCanvasFormComponentView
     return this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsFormGdtCanvasFormComponentData;
   }
   
-  public ypm a()
+  public yzg a()
   {
-    return this.jdField_a_of_type_Ypm;
+    return this.jdField_a_of_type_Yzg;
   }
   
   public void a()
@@ -391,7 +391,7 @@ public class GdtCanvasFormComponentView
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
     if ((!paramBoolean) && (getContext() != null)) {
-      this.jdField_a_of_type_Int = ypk.d(getContext());
+      this.jdField_a_of_type_Int = yze.d(getContext());
     }
   }
 }

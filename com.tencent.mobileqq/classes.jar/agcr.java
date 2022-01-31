@@ -1,21 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-
-public class agcr
-  implements View.OnClickListener
+class agcr
+  extends ajtq
 {
-  public agcr(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  agcr(agch paramagch) {}
   
-  public void onClick(View paramView)
+  protected void onGetMedal(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (PhotoPreviewActivity.a(this.a) == null)
-    {
-      PhotoPreviewActivity.a(this.a, babr.a(this.a, 0, this.a.getString(2131652585), null, this.a.getString(2131652583), this.a.getString(2131652584), new agcs(this), new agct(this)));
-      PhotoPreviewActivity.a(this.a).setCanceledOnTouchOutside(false);
+    if (paramBoolean1) {
+      this.a.e();
     }
-    PhotoPreviewActivity.a(this.a).show();
+  }
+  
+  protected void onGetSignInInfo(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.e();
+    }
   }
 }
 

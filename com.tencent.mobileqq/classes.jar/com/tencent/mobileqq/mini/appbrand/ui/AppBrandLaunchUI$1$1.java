@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import bbmy;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class AppBrandLaunchUI$1$1
@@ -10,7 +10,7 @@ class AppBrandLaunchUI$1$1
   
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.getContext(), 1, "" + this.val$errMsg, 1).a();
+    bcpw.a(BaseApplicationImpl.getContext(), 1, "" + this.val$errMsg, 1).a();
   }
 }
 

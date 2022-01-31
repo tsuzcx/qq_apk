@@ -1,25 +1,30 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
 
 public class afos
-  implements View.OnClickListener
+  extends ajta
 {
-  public afos(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public afos(TroopView paramTroopView) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
-    this.a.getActivity().finish();
-    if (this.a.d == 11) {
-      awqx.b(this.a.getActivity().app, "CliOper", "", "", "0X8006215", "0X8006215", 0, 0, "1", "", "", "");
+    if (paramInt2 == 0) {
+      this.a.j();
     }
+    while (this.a.a()) {
+      return;
+    }
+    paramString1 = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString1 = this.a.getResources().getString(2131694927);
+    }
+    bcpw.a(this.a.a(), 1, paramString1, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afos
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,43 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPtt;
+import java.util.HashMap;
 
 public class ayae
-  implements begy
+  extends ayah
 {
-  public ayae(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
-  
-  public void onDismiss()
+  public ayae(QQAppInterface paramQQAppInterface)
   {
-    TribeVideoListPlayerFragment.a(this.a);
-    this.a.e = false;
+    super(paramQQAppInterface);
+  }
+  
+  private Long b(MessageForPtt paramMessageForPtt)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this);
+    }
+    Long localLong = Long.valueOf(paramMessageForPtt.uniseq);
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localLong)) {
+      return localLong;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(localLong, paramMessageForPtt);
+    return localLong;
+  }
+  
+  public Long a(MessageForPtt paramMessageForPtt)
+  {
+    long l = b(paramMessageForPtt).longValue();
+    new ayaf(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForPtt, Long.valueOf(l)).a();
+    return Long.valueOf(l);
+  }
+  
+  public Long a(MessageForPtt paramMessageForPtt, int paramInt)
+  {
+    if (adwv.h) {
+      return a(paramMessageForPtt);
+    }
+    return b(paramMessageForPtt, paramInt);
   }
 }
 

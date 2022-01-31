@@ -1,22 +1,25 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class nfs
-  implements azwh
+  implements View.OnClickListener
 {
-  nfs(nfp paramnfp) {}
+  nfs(nfr paramnfr) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramBitmap != null))
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof nmv)))
     {
-      Intent localIntent = new Intent("action_decode_finish");
-      localIntent.putExtra("bitmap", paramBitmap);
-      localIntent.putExtra("uin", paramString);
-      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountDetailCustomModuleBaseWrapper", 2, "click!");
+      }
+      paramView = (nmv)paramView;
+      if (this.a.a != null) {
+        this.a.a.a(paramView);
+      }
+      this.a.a(paramView);
     }
   }
 }

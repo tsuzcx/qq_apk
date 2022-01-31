@@ -1,177 +1,37 @@
-import android.graphics.Canvas;
-import android.text.TextPaint;
+import NearbyGroup.GroupInfo;
+import NearbyGroup.GroupLabel;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.FollowImageTextView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
 import java.util.ArrayList;
-import java.util.List;
 
 public class azmn
+  extends aimv
 {
-  private int jdField_a_of_type_Int;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private FollowImageTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private List<azml> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private int b;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
-  
-  public azmn(FollowImageTextView paramFollowImageTextView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView = paramFollowImageTextView;
-  }
-  
-  private int a()
-  {
-    return this.jdField_a_of_type_Int - this.f - this.d;
-  }
-  
-  private int a(CharSequence paramCharSequence)
-  {
-    return (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(paramCharSequence, 0, paramCharSequence.length());
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    int n = a();
-    if (n <= 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FollowImageTextView", 2, "lineWidth=" + n);
-      }
-      return;
-    }
-    int i1 = this.jdField_a_of_type_JavaLangCharSequence.length();
-    int j = 0;
-    int k = 0;
-    int i = 0;
-    label70:
-    azml localazml;
-    if (j < i1) {
-      if (this.jdField_a_of_type_JavaLangCharSequence.charAt(j) == '\n')
-      {
-        localazml = new azml(null);
-        localazml.jdField_a_of_type_Int = i;
-        localazml.b = (j - 1);
-        localazml.c = k;
-        localazml.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangCharSequence.subSequence(i, j);
-        this.jdField_a_of_type_JavaUtilList.add(localazml);
-        i = j + 1;
-        k = 0;
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break label70;
-      int m = a(this.jdField_a_of_type_JavaLangCharSequence.subSequence(i, j + 1));
-      if (m > n)
-      {
-        localazml = new azml(null);
-        localazml.jdField_a_of_type_Int = i;
-        localazml.b = (j - 1);
-        localazml.c = k;
-        localazml.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangCharSequence.subSequence(i, j);
-        this.jdField_a_of_type_JavaUtilList.add(localazml);
-        if (this.jdField_a_of_type_JavaUtilList.size() >= i1)
-        {
-          if (FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView) == null) {
-            break;
-          }
-          FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView).a(this.jdField_a_of_type_JavaUtilList.size());
-          return;
-        }
-        i = j;
-        j -= 1;
-        k = 0;
-        continue;
-      }
-      if (j == i1 - 1)
-      {
-        localazml = new azml(null);
-        localazml.jdField_a_of_type_Int = i;
-        localazml.b = (j - 1);
-        localazml.c = m;
-        localazml.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangCharSequence.subSequence(i, i1);
-        this.jdField_a_of_type_JavaUtilList.add(localazml);
-      }
-      else
-      {
-        k = m;
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    azmk localazmk = FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView);
-    this.jdField_a_of_type_JavaLangCharSequence = localazmk.getText();
-    this.jdField_a_of_type_AndroidTextTextPaint = localazmk.getPaint();
-    this.jdField_a_of_type_Int = localazmk.getMeasuredWidth();
-    this.b = localazmk.getLineHeight();
-    this.d = localazmk.getPaddingLeft();
-    this.e = localazmk.getPaddingTop();
-    this.f = localazmk.getPaddingRight();
-    this.g = localazmk.getPaddingBottom();
-    this.c = paramInt;
-    a();
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    int i;
-    if ((this.c > 0) && (this.c < j))
-    {
-      i = 1;
-      if (i == 0) {
-        break label260;
-      }
-      j = this.c;
-    }
-    label260:
-    for (;;)
-    {
-      int k = 0;
-      for (;;)
-      {
-        if (k < j)
-        {
-          CharSequence localCharSequence = ((azml)this.jdField_a_of_type_JavaUtilList.get(k)).jdField_a_of_type_JavaLangCharSequence;
-          float f1 = this.jdField_a_of_type_AndroidTextTextPaint.getTextSize();
-          int m = localCharSequence.length();
-          float f2 = this.d + 0;
-          float f3 = this.b * k;
-          paramCanvas.drawText(localCharSequence, 0, m, f2, this.e + (f1 + f3), this.jdField_a_of_type_AndroidTextTextPaint);
-          k += 1;
-          continue;
-          i = 0;
-          break;
-        }
-      }
-      if ((i != 0) && (j < this.jdField_a_of_type_JavaUtilList.size()))
-      {
-        paramCanvas = (azml)this.jdField_a_of_type_JavaUtilList.get(j);
-        i = this.jdField_a_of_type_JavaLangCharSequence.length();
-        if ((paramCanvas.jdField_a_of_type_Int > -1) && (paramCanvas.jdField_a_of_type_Int < i))
-        {
-          paramCanvas = this.jdField_a_of_type_JavaLangCharSequence.subSequence(paramCanvas.jdField_a_of_type_Int, i);
-          FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView).setText(paramCanvas);
-          FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView, true);
-          return;
-        }
-        FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView, false);
-        return;
-      }
-      FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView, false);
-      return;
-    }
-  }
+  public int a;
+  public GroupInfo a;
+  public View a;
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public TroopLabelLayout a;
+  public ArrayList<GroupLabel> a;
+  public int b = 2;
+  public ImageView b;
+  public LinearLayout b;
+  public TextView b;
+  public TroopLabelLayout b;
+  public String b;
+  public TextView c;
+  public int d;
+  public TextView d;
+  public TextView e;
 }
 
 

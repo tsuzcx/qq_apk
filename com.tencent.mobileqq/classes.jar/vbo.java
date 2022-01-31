@@ -1,294 +1,202 @@
-import android.annotation.TargetApi;
-import android.graphics.Point;
-import android.graphics.PointF;
-import android.opengl.GLES20;
-import com.tencent.aekit.api.standard.AEModule;
-import com.tencent.aekit.openrender.AttributeParam;
-import com.tencent.aekit.openrender.UniformParam.Float2fParam;
-import com.tencent.aekit.openrender.UniformParam.Float3fParam;
-import com.tencent.aekit.openrender.UniformParam.FloatParam;
-import com.tencent.aekit.openrender.UniformParam.IntParam;
-import com.tencent.aekit.openrender.UniformParam.Mat4Param;
-import com.tencent.aekit.openrender.UniformParam.TextureParam;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.aekit.openrender.internal.VideoFilterBase;
-import com.tencent.mobileqq.shortvideo.ptvfilter.DoodleMagicAlgoHandler;
-import com.tencent.mobileqq.shortvideo.ptvfilter.DoodleMagicAlgoHandler.RenderPoint;
-import com.tencent.ttpic.baseutils.io.FileUtils;
-import com.tencent.ttpic.openapi.util.MatrixUtil;
-import com.tencent.ttpic.util.AlgoUtils;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.GeneralRecommendFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.LinkedBlockingDeque;
 
-@TargetApi(9)
-public class vbo
-  extends VideoFilterBase
+class vbo
+  extends uyl
 {
-  public static final String a;
-  public static final float[] a;
-  public static final String b;
-  float jdField_a_of_type_Float = 0.35F;
-  int jdField_a_of_type_Int;
-  Point jdField_a_of_type_AndroidGraphicsPoint;
-  Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  Queue<DoodleMagicAlgoHandler.RenderPoint> jdField_a_of_type_JavaUtilQueue = new LinkedBlockingDeque();
-  boolean jdField_a_of_type_Boolean;
-  int[] jdField_a_of_type_ArrayOfInt = new int[1];
-  float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean = false;
-  float jdField_c_of_type_Float;
-  int jdField_c_of_type_Int = -1;
-  private boolean jdField_c_of_type_Boolean;
-  int d = 0;
+  vbo(vbd paramvbd) {}
   
-  static
+  public void a(int paramInt, View paramView, Object paramObject, vas paramvas)
   {
-    jdField_a_of_type_JavaLangString = FileUtils.loadAssetsString(AEModule.getContext(), "camera/camera_video/shader/DoodleFireworksAndLighterVertexShader.dat");
-    jdField_b_of_type_JavaLangString = FileUtils.loadAssetsString(AEModule.getContext(), "camera/camera_video/shader/DoodleFireworksFragmentShader.dat");
-    jdField_a_of_type_ArrayOfFloat = new float[] { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F };
-  }
-  
-  public vbo()
-  {
-    super(jdField_a_of_type_JavaLangString, jdField_b_of_type_JavaLangString);
-    initParams();
-  }
-  
-  private void a(DoodleMagicAlgoHandler.RenderPoint paramRenderPoint, int paramInt)
-  {
-    int i1 = 0;
-    super.addParam(new UniformParam.IntParam("drawType", paramInt));
-    int i2 = paramRenderPoint.xList.length;
-    float[] arrayOfFloat1 = new float[i2 * 2];
-    float[] arrayOfFloat2 = new float[i2];
-    int m = 0;
-    paramInt = 0;
-    int i = 0;
-    int k = i;
-    int j = paramInt;
-    int n = i1;
-    if (m < i2)
+    if (vzo.b()) {}
+    Object localObject;
+    label548:
+    label554:
+    do
     {
-      if (paramRenderPoint.aList[m] <= 0.8F) {
-        break label305;
-      }
-      k = i + 1;
-      arrayOfFloat1[i] = paramRenderPoint.xList[m];
-      arrayOfFloat1[k] = paramRenderPoint.yList[m];
-      j = paramInt + 1;
-      arrayOfFloat2[paramInt] = paramRenderPoint.aList[m];
-      i = k + 1;
-      paramInt = j;
-    }
-    label296:
-    label305:
-    for (;;)
-    {
-      m += 1;
-      break;
-      if (n < i2)
+      int i;
+      do
       {
-        if (paramRenderPoint.aList[n] > 0.8F) {
-          break label296;
-        }
-        i = k + 1;
-        arrayOfFloat1[k] = paramRenderPoint.xList[n];
-        arrayOfFloat1[i] = paramRenderPoint.yList[n];
-        paramInt = j + 1;
-        arrayOfFloat2[j] = paramRenderPoint.aList[n];
-        i += 1;
-      }
-      for (;;)
-      {
-        n += 1;
-        k = i;
-        j = paramInt;
-        break;
-        super.setPositions(arrayOfFloat1);
-        super.setTexCords(arrayOfFloat1);
-        super.addAttribParam(new AttributeParam("inputBlendAlpha", arrayOfFloat2, 1));
-        super.addParam(new UniformParam.Float2fParam("texAnchor", 0.0F, 0.0F));
-        super.addParam(new UniformParam.FloatParam("texScale", 1.0F));
-        super.addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
-        return;
-        i = k;
-        paramInt = j;
-      }
-    }
-  }
-  
-  private void b()
-  {
-    super.addParam(new UniformParam.IntParam("drawType", 0));
-    super.setTexCords(new float[] { 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F });
-    super.addAttribParam(new AttributeParam("inputBlendAlpha", jdField_a_of_type_ArrayOfFloat, 1));
-  }
-  
-  public void ApplyGLSLFilter()
-  {
-    if (!this.jdField_c_of_type_Boolean)
-    {
-      this.jdField_c_of_type_Boolean = true;
-      super.ApplyGLSLFilter();
-    }
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1.0D);
-      this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId();
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    UniformParam.TextureParam localTextureParam = new UniformParam.TextureParam("inputImageTexture2", this.jdField_c_of_type_Int, 33986);
-    localTextureParam.initialParams(super.getProgramIds());
-    super.addParam(localTextureParam);
-    super.addParam(new UniformParam.IntParam("drawType", 0));
-    a(paramInt, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    super.setPositions(AlgoUtils.calPositions(0.0F, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int + 0.0F, 0.0F, paramInt2, paramInt3));
-    super.addParam(new UniformParam.Float2fParam("texAnchor", this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y));
-    super.addParam(new UniformParam.FloatParam("texScale", 1.0F));
-    super.addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
-    GLES20.glFlush();
-    super.OnDrawFrameGLSL();
-    super.renderTexture(paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void a(DoodleMagicAlgoHandler.RenderPoint paramRenderPoint)
-  {
-    if (paramRenderPoint.xList.length != 0) {
-      this.jdField_a_of_type_JavaUtilQueue.add(paramRenderPoint);
-    }
-  }
-  
-  public boolean a(List<PointF> paramList, boolean paramBoolean, vbr paramvbr)
-  {
-    GLES20.glBlendFuncSeparate(1, 771, 1, 1);
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1.0D);
-    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getFBO());
-    GLES20.glViewport(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    if ((this.d == 0) && (this.jdField_a_of_type_Boolean))
-    {
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1.0D);
-      GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-      GLES20.glClear(16640);
-      GLES20.glFlush();
-    }
-    int i = this.d;
-    PointF localPointF;
-    if (i < paramList.size())
-    {
-      localPointF = (PointF)paramList.get(i);
-      localPointF = new PointF(localPointF.x + this.jdField_a_of_type_AndroidGraphicsPoint.x, localPointF.y + this.jdField_a_of_type_AndroidGraphicsPoint.y);
-      if (i == 0)
-      {
-        this.jdField_b_of_type_Float = localPointF.x;
-        this.jdField_c_of_type_Float = localPointF.y;
-        DoodleMagicAlgoHandler.onTouchEvent(0, localPointF.x, localPointF.y);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        DoodleMagicAlgoHandler.onTouchEvent(1, localPointF.x, localPointF.y);
-      }
-    }
-    if (paramBoolean)
-    {
-      paramList = (PointF)paramList.get(paramList.size() - 1);
-      localPointF = new PointF(this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2);
-      paramList = new PointF(paramList.x + localPointF.x, paramList.y + localPointF.y);
-      if ((paramList.x == this.jdField_b_of_type_Float) && (paramList.y == this.jdField_c_of_type_Float))
-      {
-        paramList.x += 1.0F;
-        paramList.y += 1.0F;
-      }
-      DoodleMagicAlgoHandler.onTouchEvent(2, paramList.x, paramList.y);
-      this.d = 0;
-      this.jdField_b_of_type_Float = -1.0F;
-      this.jdField_b_of_type_Float = -1.0F;
-    }
-    for (;;)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      while (!this.jdField_a_of_type_JavaUtilQueue.isEmpty())
-      {
-        paramList = (DoodleMagicAlgoHandler.RenderPoint)this.jdField_a_of_type_JavaUtilQueue.poll();
-        if (paramList != null)
+        do
         {
-          paramvbr.a.add(paramList);
-          b(paramList);
+          return;
+          switch (paramView.getId())
+          {
+          default: 
+            return;
+          case 2131362066: 
+          case 2131373241: 
+            for (;;)
+            {
+              paramObject = (uxp)this.a.jdField_a_of_type_Uwt.a().get(paramInt);
+              if (paramObject == vbd.a(this.a))
+              {
+                vbd.a(this.a, null);
+                vbd.a(this.a, false);
+                this.a.c(true);
+              }
+              if (!(paramObject instanceof uwi)) {
+                break;
+              }
+              paramView = (uwi)paramObject;
+              paramView.a = false;
+              paramView.a();
+              return;
+              if ((this.a.jdField_a_of_type_Uwt.a().get(paramInt) instanceof uwi)) {
+                vel.a("share_story", "clk_guide", 1, 0, new String[0]);
+              } else if ((this.a.jdField_a_of_type_Uwt.a().get(paramInt) instanceof uxo)) {
+                vel.a("share_story", "clk_guide", 2, 0, new String[0]);
+              }
+            }
+            if ((paramObject instanceof uxo))
+            {
+              paramView = ((ShareGroupFeedItem)((uxo)paramObject).a()).getOwner();
+              vbd.a(this.a, paramObject, paramView);
+              return;
+            }
+            break;
+          }
+        } while (!(paramObject instanceof uwj));
+        if (!vyp.a(vbd.a(this.a)))
+        {
+          bcpw.a(vbd.a(this.a), 1, ajyc.a(2131704459), 0).a();
+          return;
         }
+        paramObject = (uwj)paramObject;
+        localObject = paramObject.a().getOwner();
+        ((ssv)tsu.a().a(98)).a(1, ((QQUserUIItem)localObject).getUnionId(), 0, 10);
+        paramView.setVisibility(8);
+        ((RelativeLayout)paramvas.a(2131373267)).setVisibility(8);
+        vel.a("home_page", "follow_recom", 0, 0, new String[] { "1", "1", ((QQUserUIItem)localObject).getUnionId(), paramObject.a().feedId });
+        return;
+        paramvas = ((uxp)this.a.jdField_a_of_type_Uwt.a().get(paramInt)).a();
+        localObject = paramvas.getOwner();
+        paramInt = vel.a(paramvas);
+        i = vel.b(paramvas);
+        if (this.a.jdField_a_of_type_Int == 11)
+        {
+          paramView = "3";
+          if (!(localObject instanceof ShareGroupItem)) {
+            break label548;
+          }
+        }
+        for (paramObject = ((teg)localObject).getUnionId();; paramObject = "")
+        {
+          vel.a("home_page", "clk_head_nick", paramInt, 0, new String[] { String.valueOf(i), paramView, paramvas.feedId, paramObject });
+          if (!((teg)localObject).isMe()) {
+            break label554;
+          }
+          sxp.a(vbd.a(this.a), 4, paramvas.getOwner().getUnionId());
+          return;
+          paramView = "1";
+          break;
+        }
+        switch (((teg)localObject).getRelationType())
+        {
+        default: 
+          return;
+        case 0: 
+        case 1: 
+          if (((paramvas instanceof GeneralFeedItem)) || ((paramvas instanceof GeneralRecommendFeedItem)))
+          {
+            sxp.a(vbd.a(this.a), 4, ((teg)localObject).getUnionId());
+            return;
+          }
+          break;
+        }
+      } while (!(paramvas instanceof ShareGroupFeedItem));
+      paramView = ((teg)localObject).getUnionId();
+      if (TextUtils.isEmpty(paramView))
+      {
+        veg.e("Q.qqstory.home:FeedSegment", "click the avatar when group id is null");
+        return;
       }
-      this.d = (paramList.size() - 1);
+      if (paramvas.type == 2) {}
+      for (paramInt = 1;; paramInt = 2)
+      {
+        QQStoryShareGroupProfileActivity.a(vbd.a(this.a), 2, paramView, null, paramInt, 74);
+        return;
+      }
+      for (;;)
+      {
+        try
+        {
+          if (!(localObject instanceof ShareGroupItem)) {
+            break;
+          }
+          if (this.a.jdField_a_of_type_Int != 10) {
+            break label776;
+          }
+          paramInt = 1;
+          if (this.a.jdField_a_of_type_Int != 10) {
+            break label782;
+          }
+          i = 88;
+          QQStoryShareGroupProfileActivity.a(vbd.a(this.a), 1, ((teg)localObject).getUnionId(), String.valueOf(((ShareGroupItem)localObject).groupUin), paramInt, i);
+          return;
+        }
+        catch (NumberFormatException paramView) {}
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.w("Q.qqstory.home:FeedSegment", 2, "troopId error ", paramView);
+        return;
+        paramInt = 9;
+        continue;
+        i = 76;
+      }
+      if ((this.a.jdField_a_of_type_Uwt.a() == null) || (this.a.jdField_a_of_type_Uwt.a().size() <= paramInt) || (this.a.jdField_a_of_type_Uwt.a().get(paramInt) == null)) {
+        break;
+      }
+    } while (!(this.a.jdField_a_of_type_Uwt.a().get(paramInt) instanceof uxr));
+    label776:
+    label782:
+    paramView = (uxr)this.a.jdField_a_of_type_Uwt.a().get(paramInt);
+    paramObject = new ArrayList();
+    paramvas = paramView.a().iterator();
+    paramInt = 0;
+    label903:
+    if (paramvas.hasNext())
+    {
+      localObject = (StoryVideoItem)paramvas.next();
+      if (!((StoryVideoItem)localObject).isUploadFail()) {
+        break label1061;
+      }
+      paramObject.add(localObject);
+      paramInt += 1;
     }
-    return true;
-  }
-  
-  public void b(DoodleMagicAlgoHandler.RenderPoint paramRenderPoint)
-  {
-    a(paramRenderPoint, 4);
-    super.OnDrawFrameGLSL();
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(3553, this.jdField_c_of_type_Int);
-    GLES20.glDrawArrays(5, 0, paramRenderPoint.xList.length);
-    GLES20.glFlush();
-    b();
-  }
-  
-  public void initAttribParams()
-  {
-    super.initAttribParams();
-    super.addAttribParam(new AttributeParam("inputBlendAlpha", jdField_a_of_type_ArrayOfFloat, 1));
-  }
-  
-  public void initParams()
-  {
-    super.addParam(new UniformParam.IntParam("texNeedTransform", 1));
-    super.addParam(new UniformParam.Float2fParam("canvasSize", 0.0F, 0.0F));
-    super.addParam(new UniformParam.Float2fParam("texAnchor", 0.0F, 0.0F));
-    super.addParam(new UniformParam.FloatParam("texScale", 1.0F));
-    super.addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
-    super.addParam(new UniformParam.FloatParam("positionRotate", 0.0F));
-    super.addParam(new UniformParam.IntParam("blendMode", -1));
-    super.addParam(new UniformParam.IntParam("drawType", 0));
-    super.addParam(new UniformParam.Mat4Param("u_MVPMatrix", MatrixUtil.getMVPMatrix(6.0F, 4.0F, 10.0F)));
-  }
-  
-  public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
-  {
-    GLES20.glBlendFuncSeparate(770, 771, 1, 1);
-    UniformParam.TextureParam localTextureParam = new UniformParam.TextureParam("inputImageTexture2", this.jdField_c_of_type_Int, 33986);
-    localTextureParam.initialParams(super.getProgramIds());
-    super.addParam(localTextureParam);
-    a(paramInt1, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    return true;
-  }
-  
-  public void updatePreview(Object paramObject) {}
-  
-  public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
-  {
-    super.updateVideoSize(paramInt1, paramInt2, paramDouble);
-    this.jdField_a_of_type_AndroidGraphicsPoint = new Point(paramInt1 / 2, paramInt2 / 2);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    super.addParam(new UniformParam.Float2fParam("canvasSize", paramInt1, paramInt2));
-    DoodleMagicAlgoHandler.OnUpdateSize(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Float);
-    DoodleMagicAlgoHandler.setFilter(this);
+    label1061:
+    for (;;)
+    {
+      break label903;
+      if (paramObject.size() > 0) {
+        svo.a(paramObject, vbd.a(this.a));
+      }
+      if (this.a.jdField_a_of_type_Uwt.a().size() <= 0) {
+        break;
+      }
+      vel.a("home_page", "clk_retry", vel.a(paramView.a()), 0, new String[] { "1", vel.a(this.a.jdField_a_of_type_Int), String.valueOf(paramInt), paramView.a().feedId });
+      return;
+      veg.e("Q.qqstory.home:FeedSegment", "feed upload retry failed!!");
+      return;
+      vbd.a(this.a, paramInt);
+      return;
+    }
   }
 }
 

@@ -1,42 +1,28 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
 import android.content.Intent;
-import bdcz;
-import bdel;
-import bdem;
-import bdfu;
-import bdfw;
+import beil;
+import beim;
+import besi;
+import bffl;
 
 class MiniAppProxyDefault$1
-  implements bdem
+  implements beim
 {
-  MiniAppProxyDefault$1(MiniAppProxyDefault paramMiniAppProxyDefault, bdcz parambdcz) {}
+  MiniAppProxyDefault$1(MiniAppProxyDefault paramMiniAppProxyDefault, besi parambesi) {}
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (9527 == paramInt1)
-    {
-      bdel.a().b(this);
-      switch (paramIntent.getIntExtra("clickID", -1))
-      {
-      }
-      for (;;)
-      {
-        return true;
-        this.val$miniAppContext.a(bdfu.a(2));
-        continue;
-        this.val$miniAppContext.a(bdfu.a(6));
-        continue;
-        this.val$miniAppContext.a(bdfu.a(7));
-        continue;
-        this.val$miniAppContext.a(bdfu.a(8));
-        continue;
-        this.val$miniAppContext.a(bdfw.a(2));
-        continue;
-        MiniAppProxyDefault.access$002(((Boolean)this.val$miniAppContext.a(bdfw.a(1))).booleanValue());
-      }
+    if (9527 != paramInt1) {
+      return false;
     }
-    return false;
+    beil.a().b(this);
+    paramInt1 = paramIntent.getIntExtra("more_item_id", -1);
+    paramIntent = this.this$0.getMoreItemSelectedListener();
+    if (paramIntent != null) {
+      paramIntent.onMoreItemSelected(this.val$miniRuntime, paramInt1);
+    }
+    return true;
   }
 }
 

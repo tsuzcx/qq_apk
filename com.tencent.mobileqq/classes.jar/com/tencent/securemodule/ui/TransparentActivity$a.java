@@ -3,9 +3,9 @@ package com.tencent.securemodule.ui;
 import android.os.Handler;
 import android.os.Message;
 import com.qq.jce.wup.UniAttribute;
+import com.tencent.securemodule.ar;
+import com.tencent.securemodule.ax;
 import com.tencent.securemodule.service.IControlService;
-import sm.ar;
-import sm.az;
 
 public class TransparentActivity$a
   extends Thread
@@ -62,7 +62,7 @@ public class TransparentActivity$a
         ((UniAttribute)localObject).put("data", TransparentActivity.e(this.a));
         localObject = ((UniAttribute)localObject).encode();
         if (localObject != null) {
-          TransparentActivity.d(this.a).doRemoteTask(az.a((byte[])localObject), new ar(this));
+          TransparentActivity.d(this.a).doRemoteTask(ax.a((byte[])localObject), new ar(this));
         }
         i = 1;
       }

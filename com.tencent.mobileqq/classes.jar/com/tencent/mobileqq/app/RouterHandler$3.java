@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import atmp;
-import atmq;
+import aukn;
+import auko;
 import com.tencent.litetransfersdk.LiteTransferWrapper;
 import com.tencent.litetransfersdk.MsgHeader;
 import com.tencent.litetransfersdk.ProtocolHelper;
@@ -24,8 +24,8 @@ class RouterHandler$3
     if (localObject2 == null)
     {
       localObject1 = this.this$0.b.getEntityManagerFactory().createEntityManager();
-      List localList = ((atmp)localObject1).a(RouterMsgRecord.class, "select * from " + RouterMsgRecord.sBasicTableName + this.jdField_a_of_type_ComTencentLitetransfersdkMsgHeader.uint64_src_uin + " where uSessionID=?", new String[] { String.valueOf(this.jdField_a_of_type_Long) });
-      ((atmp)localObject1).a();
+      List localList = ((aukn)localObject1).a(RouterMsgRecord.class, "select * from " + RouterMsgRecord.sBasicTableName + this.jdField_a_of_type_ComTencentLitetransfersdkMsgHeader.uint64_src_uin + " where uSessionID=?", new String[] { String.valueOf(this.jdField_a_of_type_Long) });
+      ((aukn)localObject1).a();
       if ((localList == null) || (localList.size() <= 0)) {
         break label265;
       }

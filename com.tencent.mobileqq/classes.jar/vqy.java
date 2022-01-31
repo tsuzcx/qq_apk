@@ -1,40 +1,35 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.view.widget.StoryNickNameView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.qphone.base.util.QLog;
 
-public class vqy
-  extends QQUIEventReceiver<StoryNickNameView, sxr>
+class vqy
+  extends tfc
 {
-  public vqy(@NonNull StoryNickNameView paramStoryNickNameView)
+  vqy(vqx paramvqx, stz paramstz, long paramLong)
   {
-    super(paramStoryNickNameView);
+    super(paramstz);
   }
   
-  public void a(@NonNull StoryNickNameView paramStoryNickNameView, @NonNull sxr paramsxr)
+  protected void a(tff paramtff)
   {
-    if ((paramsxr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null) && (paramsxr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {}
-    do
+    if (paramtff.jdField_a_of_type_Int == 0)
     {
+      long l1 = SystemClock.uptimeMillis();
+      long l2 = this.jdField_a_of_type_Long;
+      if (QLog.isColorLevel()) {
+        QLog.d("FileDownloadTask", 2, "startDownloadVCImage success, cost:" + (l1 - l2));
+      }
+      vqx.a().sendMessage(Message.obtain(vqx.a(), 1, null));
+    }
+    for (;;)
+    {
+      vqx.a(this.jdField_a_of_type_Vqx);
       return;
-      if ((paramsxr.jdField_a_of_type_JavaUtilList == null) || (paramsxr.jdField_a_of_type_JavaUtilList.size() == 0))
-      {
-        urk.e("Q.qqstoryStoryNickNameView", "we receiver the error info form GetUserInfoHandler!!");
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("FileDownloadTask", 2, "startDownloadVCImage error:" + paramtff.jdField_a_of_type_Int + ", errMsg:" + paramtff.jdField_a_of_type_JavaLangString);
       }
-      if (TextUtils.equals(paramsxr.b, "Q.qqstoryStoryNickNameView")) {
-        StoryNickNameView.a(paramStoryNickNameView, (QQUserUIItem)paramsxr.jdField_a_of_type_JavaUtilList.get(0));
-      }
-    } while (!TextUtils.equals(paramsxr.jdField_a_of_type_JavaLangString, paramStoryNickNameView.a()));
-    paramStoryNickNameView.a((QQUserUIItem)paramsxr.jdField_a_of_type_JavaUtilList.get(0));
-  }
-  
-  public Class acceptEventClass()
-  {
-    return sxr.class;
+    }
   }
 }
 

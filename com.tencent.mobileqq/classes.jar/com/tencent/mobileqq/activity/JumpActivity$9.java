@@ -1,25 +1,15 @@
 package com.tencent.mobileqq.activity;
 
 import android.content.Intent;
-import android.os.Message;
-import aqbo;
-import mqq.os.MqqHandler;
 
 class JumpActivity$9
   implements Runnable
 {
-  JumpActivity$9(JumpActivity paramJumpActivity, aqbo paramaqbo, Intent paramIntent, int paramInt) {}
+  JumpActivity$9(JumpActivity paramJumpActivity, Intent paramIntent) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Aqbo.a(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_AndroidContentIntent.getAction()))
-    {
-      Message localMessage = Message.obtain();
-      localMessage.what = 2;
-      localMessage.arg1 = this.jdField_a_of_type_Int;
-      localMessage.obj = this.jdField_a_of_type_AndroidContentIntent;
-      this.this$0.a.sendMessage(localMessage);
-    }
+    JumpActivity.a(this.this$0, this.a.getExtras());
   }
 }
 

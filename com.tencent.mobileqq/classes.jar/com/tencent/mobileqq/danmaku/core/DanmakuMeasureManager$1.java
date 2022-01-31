@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.danmaku.core;
 
-import ampl;
-import ampm;
-import ampo;
+import anfs;
+import anft;
+import anfv;
 
 public class DanmakuMeasureManager$1
   implements Runnable
 {
-  public DanmakuMeasureManager$1(ampl paramampl, ampo paramampo, ampm paramampm) {}
+  public DanmakuMeasureManager$1(anfs paramanfs, anfv paramanfv, anft paramanft) {}
   
   public void run()
   {
-    ampl.a(ampl.a(this.this$0), this.jdField_a_of_type_Ampo);
-    if (this.jdField_a_of_type_Ampm != null) {
-      this.jdField_a_of_type_Ampm.a(this.jdField_a_of_type_Ampo);
+    anfs.a(anfs.a(this.this$0), this.jdField_a_of_type_Anfv);
+    if (this.jdField_a_of_type_Anft != null) {
+      this.jdField_a_of_type_Anft.a(this.jdField_a_of_type_Anfv);
     }
   }
 }

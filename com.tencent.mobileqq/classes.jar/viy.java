@@ -1,20 +1,25 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
-
 public class viy
-  implements viz
 {
-  public void a(@NonNull ArrayList<vja> paramArrayList, @NonNull Context paramContext)
-  {
-    int i = 0;
-    while (i < vja.a.length)
-    {
-      paramArrayList.add(new vja(paramContext.getResources().getDrawable(vja.b[i]), 0, vja.a[i]));
-      i += 1;
-    }
-  }
+  @vym(a="tag_type")
+  public int a;
+  @vym(a="tag_id")
+  public long a;
+  @vym(a="tag_name")
+  public String a;
+  @vym(a="join_count")
+  public int b;
+  @vym(a="tag_desc")
+  public String b;
+  @vym(a="music_type")
+  public int c;
+  @vym(a="wording")
+  public String c;
+  @vym(a="music_id")
+  public String d;
+  @vym(a="music_title")
+  public String e;
+  @vym(a="music_download_url")
+  public String f;
 }
 
 

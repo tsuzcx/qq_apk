@@ -1,11 +1,11 @@
 package com.tencent.biz.common.offline;
 
-import moe;
+import mzd;
 
 public class BidDownloader$1$1
   extends Thread
 {
-  public BidDownloader$1$1(moe parammoe) {}
+  public BidDownloader$1$1(mzd parammzd) {}
   
   public void run()
   {

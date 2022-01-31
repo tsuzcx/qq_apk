@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import akmo;
+import alba;
 import android.annotation.TargetApi;
 import android.graphics.SurfaceTexture;
 import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
@@ -9,19 +9,19 @@ import com.tencent.qphone.base.util.QLog;
 public class NormalVideoARRenderable$3
   implements Runnable
 {
-  public NormalVideoARRenderable$3(akmo paramakmo) {}
+  public NormalVideoARRenderable$3(alba paramalba) {}
   
   @TargetApi(11)
   public void run()
   {
     try
     {
-      akmo.a(this.this$0).updateTexImage();
-      akmo.a(this.this$0).getTransformMatrix(akmo.a(this.this$0));
+      alba.a(this.this$0).updateTexImage();
+      alba.a(this.this$0).getTransformMatrix(alba.a(this.this$0));
       if (ScanTorchActivity.i)
       {
-        akmo localakmo = this.this$0;
-        localakmo.b += 1L;
+        alba localalba = this.this$0;
+        localalba.b += 1L;
         if (this.this$0.b >= 30L)
         {
           this.this$0.b = 0L;

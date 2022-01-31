@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aiyu;
-import baot;
+import ajmw;
+import bbqp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloGameData;
@@ -19,7 +19,7 @@ final class ApolloGameUtil$7
   
   public void run()
   {
-    baot localbaot;
+    bbqp localbbqp;
     String str;
     Object localObject2;
     try
@@ -32,12 +32,12 @@ final class ApolloGameUtil$7
       if (QLog.isColorLevel()) {
         QLog.d("ApolloGameUtil", 2, "[updateRankInfo] real update " + this.jdField_a_of_type_JavaLangString);
       }
-      localbaot = (baot)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71);
-      Object localObject1 = (aiyu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
+      localbbqp = (bbqp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71);
+      Object localObject1 = (ajmw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
       str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      Object localObject5 = ((aiyu)localObject1).h();
-      Object localObject3 = ((aiyu)localObject1).a(str, ApolloGameUtil.a(), (List)localObject5);
-      Object localObject4 = ((aiyu)localObject1).a(str, this.jdField_a_of_type_JavaLangString, ApolloGameUtil.a(), (List)localObject5);
+      Object localObject5 = ((ajmw)localObject1).h();
+      Object localObject3 = ((ajmw)localObject1).a(str, ApolloGameUtil.a(), (List)localObject5);
+      Object localObject4 = ((ajmw)localObject1).a(str, this.jdField_a_of_type_JavaLangString, ApolloGameUtil.a(), (List)localObject5);
       if ((localObject3 != null) && (QLog.isColorLevel())) {
         QLog.d("ApolloGameUtil", 2, "[updateRankInfo] self init " + ((List)localObject3).size());
       }
@@ -89,7 +89,7 @@ final class ApolloGameUtil$7
     label424:
     for (;;)
     {
-      localbaot.a(str, (List)localObject2, this.jdField_a_of_type_JavaLangString, localThrowable);
+      localbbqp.a(str, (List)localObject2, this.jdField_a_of_type_JavaLangString, localThrowable);
       return;
     }
   }

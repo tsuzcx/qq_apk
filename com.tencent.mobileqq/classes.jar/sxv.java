@@ -1,25 +1,20 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 public class sxv
-  extends sfo
 {
-  private tcc a;
-  public boolean a;
-  
-  public sxv(ErrorMessage paramErrorMessage)
+  public static boolean a(StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    return syo.a(paramStoryVideoItem);
   }
   
-  public sxv(boolean paramBoolean)
+  public static boolean a(String paramString)
   {
-    this(new ErrorMessage());
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return syo.a(paramString);
   }
   
-  public tcc a()
+  public static boolean a(String paramString, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Tcc;
+    return syo.a(paramString, paramBoolean);
   }
 }
 

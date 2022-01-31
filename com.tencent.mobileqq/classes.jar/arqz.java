@@ -1,25 +1,29 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupQRFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.util.LruCache;
+import android.text.TextUtils;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.data.ISong;
 
 public class arqz
-  implements bbpw
+  implements artd
 {
-  public arqz(MsgBackupQRFragment paramMsgBackupQRFragment) {}
+  public arqz(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void a(View paramView, int paramInt)
+  public void a(ISong paramISong)
   {
-    switch (paramInt)
+    if (paramISong != null)
     {
-    default: 
+      ListenTogetherManager.a(this.a, paramISong);
+      this.a.a(paramISong.a());
+      String str = (String)ListenTogetherManager.a(this.a).get(paramISong.a());
+      if (!TextUtils.isEmpty(str)) {
+        ListenTogetherManager.a(this.a, paramISong.a(), str);
+      }
+    }
+    else
+    {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("MsgBackup.MsgBackupQRFragment", 2, "TO_QRCODE page click left btn");
-    }
-    arpa.a().d();
-    this.a.onBackEvent();
-    arsa.a("0X800A242", 4);
+    ListenTogetherManager.a(this.a, paramISong.a());
   }
 }
 

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams.Floatin
 import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
-import trk;
+import ueg;
 
 class VideoPlayerView$9
   implements Runnable

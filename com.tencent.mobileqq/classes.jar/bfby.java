@@ -1,79 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.app.Activity;
+import io.flutter.view.FlutterMain;
+import io.flutter.view.FlutterNativeView;
+import io.flutter.view.FlutterView;
 
-class bfby
-  implements axrt
+public final class bfby
 {
-  bfby(bfbx parambfbx, String paramString, bfbv parambfbv) {}
-  
-  public void onResp(axsq paramaxsq)
+  public static FlutterView a(Activity paramActivity, String paramString, FlutterNativeView paramFlutterNativeView)
   {
-    axro localaxro = (axro)paramaxsq.jdField_a_of_type_Axsp;
-    if (this.jdField_a_of_type_Bfbx.jdField_a_of_type_Axro == localaxro) {
-      this.jdField_a_of_type_Bfbx.jdField_a_of_type_Axro = null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("TMG_Downloader", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localaxro.jdField_a_of_type_JavaLangString, Integer.valueOf(paramaxsq.jdField_a_of_type_Int), Integer.valueOf(paramaxsq.c), this.jdField_a_of_type_JavaLangString }));
-    }
-    if (paramaxsq.jdField_a_of_type_Int == 0)
-    {
-      paramaxsq = new File(localaxro.c);
-      if (!paramaxsq.exists()) {}
-    }
-    do
-    {
-      for (;;)
-      {
-        try
-        {
-          paramaxsq = paramaxsq.getParent();
-          bace.a(localaxro.c, paramaxsq, false);
-          bfbw.a(this.jdField_a_of_type_Bfbv.b);
-          i = 1;
-          if (i == 0) {
-            break;
-          }
-          if (this.jdField_a_of_type_Bfbx.jdField_a_of_type_Bfbz != null)
-          {
-            this.jdField_a_of_type_Bfbx.jdField_a_of_type_Bfbz.a(100);
-            this.jdField_a_of_type_Bfbx.jdField_a_of_type_Bfbz.a(0, "Download Complete!!!");
-          }
-          this.jdField_a_of_type_Bfbx.jdField_a_of_type_Boolean = false;
-          return;
-        }
-        catch (Exception paramaxsq)
-        {
-          paramaxsq.printStackTrace();
-        }
-        int i = 0;
-      }
-    } while (this.jdField_a_of_type_Bfbx.jdField_a_of_type_Bfbz == null);
-    this.jdField_a_of_type_Bfbx.jdField_a_of_type_Bfbz.a(2, "");
-  }
-  
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2)
-  {
-    int i;
-    if (paramLong2 == 0L) {
-      i = 0;
-    }
+    FlutterMain.startInitialization(paramActivity.getApplicationContext());
+    FlutterMain.ensureInitializationComplete(paramActivity.getApplicationContext(), null);
+    if (paramFlutterNativeView != null) {}
     for (;;)
     {
-      if (this.jdField_a_of_type_Bfbx.jdField_a_of_type_Bfbz != null) {
-        this.jdField_a_of_type_Bfbx.jdField_a_of_type_Bfbz.a(i);
+      paramActivity = new bfbz(paramActivity, null, paramFlutterNativeView);
+      if (paramString != null) {
+        paramActivity.setInitialRoute(paramString);
       }
-      return;
-      if (paramLong1 >= paramLong2) {
-        i = 99;
-      } else {
-        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-      }
+      paramActivity.setAlpha(0.0F);
+      return paramActivity;
+      paramFlutterNativeView = new FlutterNativeView(paramActivity);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfby
  * JD-Core Version:    0.7.0.1
  */

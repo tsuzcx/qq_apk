@@ -1,21 +1,33 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import java.util.Map;
 
 public class afot
-  implements View.OnClickListener
+  extends ajxl
 {
-  public afot(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public afot(TroopView paramTroopView) {}
   
-  public void onClick(View paramView)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.getActivity().finish();
+    if (paramBoolean1) {
+      this.a.j();
+    }
+  }
+  
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  {
+    this.a.j();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.j();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afot
  * JD-Core Version:    0.7.0.1
  */

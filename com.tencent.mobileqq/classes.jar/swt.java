@@ -1,20 +1,46 @@
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class swt
-  extends sfo
+  implements wam
 {
-  public final int a;
-  public ArrayList<sws> a;
+  private swu jdField_a_of_type_Swu;
   
-  public swt(int paramInt)
+  public swt(sws paramsws, swu paramswu)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Swu = paramswu;
   }
   
-  public String toString()
+  public void onFailure(String paramString)
   {
-    return "UpdateMemoriesEvent{dateList=" + this.jdField_a_of_type_JavaUtilArrayList + ", source=" + this.jdField_a_of_type_Int + '}';
+    veg.e(sws.a, "fail to execute ffmpeg command. error message : %s.", new Object[] { paramString });
+  }
+  
+  public void onFinish(boolean paramBoolean)
+  {
+    sws.a(this.jdField_a_of_type_Sws);
+    if (sws.b(this.jdField_a_of_type_Sws) == 0)
+    {
+      veg.b(sws.a, "all ffmpeg commands have already finished. start clearing cache.");
+      sws.a(this.jdField_a_of_type_Sws);
+    }
+  }
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
+    veg.b(sws.a, "start executing ffmpeg commands.");
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    if (vyi.a(BaseApplication.getContext(), this.jdField_a_of_type_Swu.d, this.jdField_a_of_type_Swu.e))
+    {
+      veg.b(sws.a, "save video to album success.");
+      vel.a("video_edit", "video_save_local", 0, 0, new String[0]);
+      return;
+    }
+    veg.e(sws.a, "save video to album failed.");
   }
 }
 

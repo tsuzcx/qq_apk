@@ -1,11 +1,26 @@
-class rvx
-  implements psh<String, String>
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.qphone.base.util.QLog;
+
+public class rvx
+  extends AnimatorListenerAdapter
 {
-  rvx(rvw paramrvw) {}
+  public rvx(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, View paramView) {}
   
-  public String a(String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return rvw.a(paramString);
+    super.onAnimationEnd(paramAnimator);
+    this.jdField_a_of_type_AndroidViewView.setLayerType(0, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
   }
 }
 

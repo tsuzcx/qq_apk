@@ -1,32 +1,73 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitConfigHelper;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtSDKKitFrameworkWorkMode;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arcz
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public arcz(PoiSlideBottomPanel paramPoiSlideBottomPanel, View paramView, float paramFloat, int paramInt) {}
+  private static arcz jdField_a_of_type_Arcz;
+  private static final String jdField_a_of_type_JavaLangString = arcz.class.getSimpleName();
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private JSONObject b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static arcz a()
   {
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if ((paramValueAnimator instanceof Float))
+    try
     {
-      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
-      if (QLog.isColorLevel()) {
-        QLog.d("PoiSlideBottomPanel", 2, "[panel] onAnimationUpdate: hide invoked. org: " + this.jdField_a_of_type_Float + " dest: " + this.jdField_a_of_type_Int + " value: " + this.jdField_a_of_type_AndroidViewView.getY());
+      if (jdField_a_of_type_Arcz == null) {
+        jdField_a_of_type_Arcz = new arcz();
       }
-      if (PoiSlideBottomPanel.g(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel) != null) {
-        PoiSlideBottomPanel.h(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel).fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / this.jdField_a_of_type_Int);
-      }
+      arcz localarcz = jdField_a_of_type_Arcz;
+      return localarcz;
     }
+    finally {}
+  }
+  
+  private YtSDKKitFramework.YtSDKKitFrameworkWorkMode a(int paramInt)
+  {
+    YtSDKKitFramework.YtSDKKitFrameworkWorkMode localYtSDKKitFrameworkWorkMode = YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_UNKNOWN;
+    switch (paramInt)
+    {
+    default: 
+      return localYtSDKKitFrameworkWorkMode;
+    case 0: 
+      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_UNKNOWN;
+    case 1: 
+      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_OCR_TYPE;
+    case 2: 
+      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_SILENT_TYPE;
+    case 3: 
+      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTION_TYPE;
+    case 4: 
+      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_REFLECT_TYPE;
+    }
+    return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTREFLECT_TYPE;
+  }
+  
+  public int a(String paramString1, String paramString2)
+  {
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString1).getJSONObject("sdk_settings");
+      this.b = new JSONObject(paramString2).getJSONObject("ui_basic_config");
+      return 0;
+    }
+    catch (JSONException paramString1)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "initWithConfig error " + paramString1.getMessage());
+    }
+    return -1;
+  }
+  
+  public JSONObject a(int paramInt)
+  {
+    return YtSDKKitConfigHelper.getSDKConfig(a(paramInt), this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     arcz
  * JD-Core Version:    0.7.0.1
  */

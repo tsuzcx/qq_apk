@@ -1,22 +1,29 @@
-import dov.com.qq.im.capture.view.CountDownView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
 class wuz
-  implements bjep
+  implements bcwh
 {
-  wuz(wuy paramwuy) {}
+  wuz(wuu paramwuu) {}
   
-  public void a()
+  public void a(BaseResp paramBaseResp)
   {
-    if (wut.a(this.a.a) != null) {
-      wut.a(this.a.a).a(3, false);
+    if ((wuu.c(this.a) == null) || (!wuu.c(this.a).equals(paramBaseResp.transaction))) {
+      return;
     }
-    wut.a(this.a.a).setTouchEnable(false);
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      bcpw.a(wuu.a(this.a), 1, "分享失败", 0).a();
+      return;
+    }
+    bcpw.a(wuu.a(this.a), 2, "分享成功", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wuz
  * JD-Core Version:    0.7.0.1
  */

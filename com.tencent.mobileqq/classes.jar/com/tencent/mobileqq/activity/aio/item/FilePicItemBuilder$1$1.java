@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adeg;
-import apdh;
+import adpi;
+import apvb;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class FilePicItemBuilder$1$1
@@ -11,7 +11,7 @@ class FilePicItemBuilder$1$1
   
   public void run()
   {
-    if ((apdh.b(this.a.a.strLargeThumPath)) || (apdh.b(this.a.a.strMiddleThumPath))) {
+    if ((apvb.b(this.a.a.strLargeThumPath)) || (apvb.b(this.a.a.strMiddleThumPath))) {
       this.a.this$0.b();
     }
   }

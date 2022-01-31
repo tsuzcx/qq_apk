@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.widget.BubbleUpFrameAnimView android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" qq:animHeight="48.0dip" qq:animHeightCnt="5" qq:animImageUrl="https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-photo/feed/day/stickynote_detail_feed_praise_anim.png" qq:animSpeed="25" qq:animWidth="40.0dip" qq:animWidthCnt="2"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qq="http://schemas.android.com/apk/res-auto" />

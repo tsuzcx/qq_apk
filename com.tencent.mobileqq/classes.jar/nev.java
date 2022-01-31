@@ -1,34 +1,19 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class nev
-  implements ajfe
 {
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public ImageView b;
+  TextView b;
+  public ImageView c;
+  TextView c;
+  public ImageView d;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramObject != null)
-    {
-      paramObject = (Bundle)paramObject;
-      if (paramObject.getInt("VALUE_OBSERVER_TAG") == hashCode()) {}
-    }
-    while (!QLog.isColorLevel())
-    {
-      return;
-      try
-      {
-        a(paramBoolean, paramObject);
-        return;
-      }
-      catch (Exception paramObject)
-      {
-        paramObject.printStackTrace();
-        return;
-      }
-    }
-    QLog.e("VideoPlayRecommendObserver", 2, "onUpdate: error, data null");
-  }
+  nev(ned paramned) {}
 }
 
 

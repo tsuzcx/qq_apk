@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import ahhj;
-import ahoi;
-import ahok;
-import ahom;
+import ahua;
+import aiba;
+import aibc;
+import aibe;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.os.SystemClock;
-import awii;
-import awij;
-import awim;
+import axho;
+import axhp;
+import axhs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -32,7 +32,7 @@ public class GLVideoClipUtil
   private static final int jdField_c_of_type_Int;
   private static int q = -1;
   public int a;
-  private ahom jdField_a_of_type_Ahom = new ahom(this, null);
+  private aibe jdField_a_of_type_Aibe = new aibe(this, null);
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   private int[] jdField_a_of_type_ArrayOfInt = new int[1];
   private ByteBuffer[] jdField_a_of_type_ArrayOfJavaNioByteBuffer = new ByteBuffer[2];
@@ -121,9 +121,9 @@ public class GLVideoClipUtil
     float[] tmp77_72 = tmp72_67;
     tmp77_72[15] = 1.0F;
     tmp77_72;
-    boolean bool1 = awii.d(awii.e);
-    boolean bool2 = awii.b(awii.f);
-    if ((paramBoolean) && ((bool1) || (bool2)) && (ahhj.jdField_a_of_type_Int == 1)) {
+    boolean bool1 = axho.d(axho.e);
+    boolean bool2 = axho.b(axho.f);
+    if ((paramBoolean) && ((bool1) || (bool2)) && (ahua.jdField_a_of_type_Int == 1)) {
       System.arraycopy(arrayOfFloat, 0, this.jdField_c_of_type_ArrayOfFloat, 0, arrayOfFloat.length);
     }
     for (;;)
@@ -136,11 +136,11 @@ public class GLVideoClipUtil
       paramInt1 = jdField_b_of_type_ArrayOfFloat.length;
       System.arraycopy(new float[] { f1, f4, f2, f4, f2, f3, f1, f3 }, 0, arrayOfFloat, 0, paramInt1);
       return;
-      bool1 = awii.d(awii.g);
+      bool1 = axho.d(axho.g);
       if (bool1) {
         paramBoolean = false;
       }
-      if ((bool1) && (ahhj.jdField_a_of_type_Int == 2)) {
+      if ((bool1) && (ahua.jdField_a_of_type_Int == 2)) {
         Matrix.multiplyMM(this.jdField_c_of_type_ArrayOfFloat, 0, new float[] { -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F }, 0, arrayOfFloat, 0);
       } else if (paramBoolean) {
         Matrix.multiplyMM(this.jdField_c_of_type_ArrayOfFloat, 0, new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F }, 0, arrayOfFloat, 0);
@@ -178,16 +178,16 @@ public class GLVideoClipUtil
       long l1 = this.r * this.s * 3 / 2;
       if (l1 != paramInt)
       {
-        ahom localahom = this.jdField_a_of_type_Ahom;
-        localahom.jdField_a_of_type_Int += 1;
+        aibe localaibe = this.jdField_a_of_type_Aibe;
+        localaibe.jdField_a_of_type_Int += 1;
         bool = true;
-        if (this.jdField_a_of_type_Ahom.jdField_a_of_type_Int >= 3) {
+        if (this.jdField_a_of_type_Aibe.jdField_a_of_type_Int >= 3) {
           throw new GLVideoClipUtil.GLClipOldLibException("checkDataLength: dataSize=" + l1 + " length=" + paramInt + "prev*preh=" + this.r + " * " + this.s);
         }
       }
       else
       {
-        this.jdField_a_of_type_Ahom.jdField_a_of_type_Int = 0;
+        this.jdField_a_of_type_Aibe.jdField_a_of_type_Int = 0;
       }
     }
     return bool;
@@ -294,48 +294,48 @@ public class GLVideoClipUtil
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
-    awim localawim = awij.a().a();
+    axhs localaxhs = axhp.a().a();
     int i4 = paramInt1;
     int i3 = paramInt2;
     int i2 = paramInt3;
     int i1 = paramInt4;
-    if (localawim != null)
+    if (localaxhs != null)
     {
-      QLog.d("GLVideoClipUtil", 2, "allocateNativeBuffer[CameraControl-]: Width=" + localawim.jdField_a_of_type_Int + " Height=" + localawim.jdField_b_of_type_Int + " width1" + paramInt1 + " height1" + paramInt2);
+      QLog.d("GLVideoClipUtil", 2, "allocateNativeBuffer[CameraControl-]: Width=" + localaxhs.jdField_a_of_type_Int + " Height=" + localaxhs.jdField_b_of_type_Int + " width1" + paramInt1 + " height1" + paramInt2);
       i4 = paramInt1;
       i3 = paramInt2;
       i2 = paramInt3;
       i1 = paramInt4;
-      if (localawim.jdField_a_of_type_Int > 0)
+      if (localaxhs.jdField_a_of_type_Int > 0)
       {
         i4 = paramInt1;
         i3 = paramInt2;
         i2 = paramInt3;
         i1 = paramInt4;
-        if (localawim.jdField_b_of_type_Int > 0) {
-          if (localawim.jdField_a_of_type_Int == paramInt1)
+        if (localaxhs.jdField_b_of_type_Int > 0) {
+          if (localaxhs.jdField_a_of_type_Int == paramInt1)
           {
             i4 = paramInt1;
             i3 = paramInt2;
             i2 = paramInt3;
             i1 = paramInt4;
-            if (localawim.jdField_b_of_type_Int == paramInt2) {}
+            if (localaxhs.jdField_b_of_type_Int == paramInt2) {}
           }
           else
           {
             if ((paramInt1 != paramInt4) || (paramInt2 != paramInt3)) {
               break label283;
             }
-            paramInt2 = localawim.jdField_b_of_type_Int;
-            paramInt1 = localawim.jdField_a_of_type_Int;
+            paramInt2 = localaxhs.jdField_b_of_type_Int;
+            paramInt1 = localaxhs.jdField_a_of_type_Int;
           }
         }
       }
     }
     for (;;)
     {
-      i4 = localawim.jdField_a_of_type_Int;
-      i3 = localawim.jdField_b_of_type_Int;
+      i4 = localaxhs.jdField_a_of_type_Int;
+      i3 = localaxhs.jdField_b_of_type_Int;
       QLog.d("GLVideoClipUtil", 2, "allocateNativeBuffer[Adjust]: clipwidth=" + paramInt2 + " clipheight=" + paramInt1);
       i1 = paramInt1;
       i2 = paramInt2;
@@ -346,15 +346,15 @@ public class GLVideoClipUtil
         {
           throw new GLVideoClipUtil.GLClipOldLibException("initClipSpec:err=" + paramInt1);
           label283:
-          if (paramInt4 * 1.0F / paramInt3 > localawim.jdField_a_of_type_Int * 1.0F / localawim.jdField_b_of_type_Int)
+          if (paramInt4 * 1.0F / paramInt3 > localaxhs.jdField_a_of_type_Int * 1.0F / localaxhs.jdField_b_of_type_Int)
           {
-            paramInt1 = (int)(localawim.jdField_a_of_type_Int * paramInt3 * 1.0F / paramInt4);
+            paramInt1 = (int)(localaxhs.jdField_a_of_type_Int * paramInt3 * 1.0F / paramInt4);
             paramInt2 = paramInt1 - paramInt1 % 16;
-            paramInt1 = localawim.jdField_a_of_type_Int;
+            paramInt1 = localaxhs.jdField_a_of_type_Int;
             continue;
           }
-          paramInt2 = localawim.jdField_b_of_type_Int;
-          paramInt1 = (int)(localawim.jdField_b_of_type_Int * paramInt4 * 1.0F / paramInt3);
+          paramInt2 = localaxhs.jdField_b_of_type_Int;
+          paramInt1 = (int)(localaxhs.jdField_b_of_type_Int * paramInt4 * 1.0F / paramInt3);
           paramInt1 -= paramInt1 % 16;
         }
       }
@@ -545,7 +545,7 @@ public class GLVideoClipUtil
     GLES20.glFrontFace(2305);
     GLES20.glCullFace(1029);
     f();
-    this.jdField_a_of_type_Int = ahok.a("precision highp float;\nattribute vec4 position;\nattribute vec4 textureCoordinateIn;\nuniform   mat4 uSTMatrix;\nvarying   vec2 texturecoordinateOut;\nvoid main()\n{\ntexturecoordinateOut = (uSTMatrix * textureCoordinateIn).xy;\ngl_Position = position;\n}\n", jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Int = aibc.a("precision highp float;\nattribute vec4 position;\nattribute vec4 textureCoordinateIn;\nuniform   mat4 uSTMatrix;\nvarying   vec2 texturecoordinateOut;\nvoid main()\n{\ntexturecoordinateOut = (uSTMatrix * textureCoordinateIn).xy;\ngl_Position = position;\n}\n", jdField_a_of_type_JavaLangString);
     if (this.jdField_a_of_type_Int == 0)
     {
       CameraGLSurfaceView.a("GLVideoHelper.createShaderProgram: mGLProgram=" + this.jdField_a_of_type_Int);
@@ -598,7 +598,7 @@ public class GLVideoClipUtil
       i1 = GLES20.glGetError();
       paramBoolean = bool;
     } while (i1 == 0);
-    ahoi.a("glDrawFrame:err=" + i1 + " errname=" + ahoi.a(i1));
+    aiba.a("glDrawFrame:err=" + i1 + " errname=" + aiba.a(i1));
     return bool;
   }
   

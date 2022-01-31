@@ -1,35 +1,21 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-final class ruc
-  extends akih
+class ruc
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ruc(ajpe paramajpe, String paramString, AppInterface paramAppInterface, Context paramContext) {}
+  ruc(rub paramrub, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public int a()
+  int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    return 4;
+    return Math.round((paramInt2 - paramInt1) * paramFloat) + paramInt1;
   }
   
-  public void a(Object paramObject)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.jdField_a_of_type_Ajpe != null) {
-      this.jdField_a_of_type_Ajpe.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
-    }
-    rtr.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    float f = paramValueAnimator.getAnimatedFraction();
+    this.jdField_a_of_type_Rub.a(a(this.jdField_a_of_type_Int, this.b, f), a(this.c, this.d, f));
   }
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
-  {
-    if (this.jdField_a_of_type_Ajpe != null) {
-      this.jdField_a_of_type_Ajpe.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-    }
-    rtr.a(this.jdField_a_of_type_AndroidContentContext, 2131629887);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

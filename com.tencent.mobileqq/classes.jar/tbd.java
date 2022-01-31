@@ -1,12 +1,10 @@
-public class tbd
-  extends slu
+public abstract class tbd
 {
-  public final byte[] a;
+  public abstract String a();
   
-  public tbd(byte[] paramArrayOfByte)
-  {
-    this.a = paramArrayOfByte;
-  }
+  public abstract tbe a(byte[] paramArrayOfByte);
+  
+  protected abstract byte[] a();
 }
 
 

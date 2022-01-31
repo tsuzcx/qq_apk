@@ -1,54 +1,43 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.redtouch.RedTouch;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.observer.BusinessObserver;
 
-class aqig
-  implements BusinessObserver
+public class aqig
+  implements View.OnClickListener
 {
-  aqig(aqif paramaqif, FaceDetectForThirdPartyManager paramFaceDetectForThirdPartyManager, int paramInt, QQAppInterface paramQQAppInterface) {}
+  public aqig(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 17) && (paramBoolean) && (paramBundle != null))
+    Object localObject = (String)atbg.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin(), "nearby_mine_page_url", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.NearbyHybridFragment", 2, "onClick, server mine url=" + (String)localObject);
+    }
+    paramView = (View)localObject;
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      paramView = "https://nearby.qq.com/nearby-index/mine.html?_bid=3027&_wv=16777218";
+    }
+    localObject = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", paramView);
+    this.a.getActivity().startActivity((Intent)localObject);
+    atbp.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "my_click", 0);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch == null) {}
+    for (boolean bool = false;; bool = this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.a())
     {
-      paramInt = paramBundle.getInt("app_id", 0);
-      if (QLog.isColorLevel()) {
-        QLog.d("qqidentification_server", 2, "onReceive appid = " + paramInt);
-      }
-      if (paramInt == 0) {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a().a(42);
+      try
+      {
+        axqw.b(null, "dc00899", "grp_lbs", "", "entry", "nearby_frag_mine_click_tmp", 0, 0, bool + "", "", "", "");
         return;
       }
-      FaceDetectForThirdPartyManager.AppConf localAppConf = (FaceDetectForThirdPartyManager.AppConf)paramBundle.getSerializable("FaceRecognition.AppConf");
-      if (this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager.a(paramInt, localAppConf);
-      }
-      this.jdField_a_of_type_Aqif.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramBundle));
-      return;
-    }
-    if (paramInt != 15)
-    {
-      this.jdField_a_of_type_Aqif.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(-102, null));
-      label126:
-      if (paramInt != 17) {
-        break label184;
-      }
-      if (paramBundle != null) {
-        break label186;
-      }
-    }
-    label184:
-    label186:
-    for (paramBundle = "1";; paramBundle = "2")
-    {
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009D63", "0X8009D63", 0, 0, paramBundle, "", "", "");
-      return;
-      this.jdField_a_of_type_Aqif.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(15, null));
-      break label126;
-      break;
+      catch (Exception paramView) {}
     }
   }
 }

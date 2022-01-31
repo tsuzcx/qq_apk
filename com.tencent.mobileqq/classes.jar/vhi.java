@@ -1,6 +1,15 @@
-public abstract interface vhi
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class vhi
+  implements View.OnClickListener
 {
-  public abstract void a();
+  vhi(vhg paramvhg) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.a(0);
+  }
 }
 
 

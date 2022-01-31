@@ -1,26 +1,78 @@
-import android.app.ProgressDialog;
+import com.tencent.open.appcommon.js.BaseInterface;
+import com.tencent.smtt.sdk.WebView;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class bdfp
-  implements bdft<Boolean>
 {
-  private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
-  private bdfq jdField_a_of_type_Bdfq;
+  protected static Map<Integer, List<BaseInterface>> a = new HashMap();
   
-  public static bdfp a(bdfq parambdfq)
+  public static void a(WebView paramWebView)
   {
-    bdfp localbdfp = new bdfp();
-    localbdfp.jdField_a_of_type_Bdfq = parambdfq;
-    return localbdfp;
+    int i;
+    try
+    {
+      i = paramWebView.hashCode();
+      paramWebView = (List)a.get(Integer.valueOf(i));
+      if (paramWebView == null) {
+        return;
+      }
+      Iterator localIterator = paramWebView.iterator();
+      while (localIterator.hasNext()) {
+        ((BaseInterface)localIterator.next()).destroy();
+      }
+      paramWebView.clear();
+    }
+    catch (Exception paramWebView)
+    {
+      paramWebView.printStackTrace();
+      return;
+    }
+    a.remove(Integer.valueOf(i));
   }
   
-  public Boolean a(bdcw parambdcw)
+  public static void a(WebView paramWebView, String paramString)
   {
-    return Boolean.valueOf(false);
+    try
+    {
+      int i = paramWebView.hashCode();
+      paramWebView = ((List)a.get(Integer.valueOf(i))).iterator();
+      while (paramWebView.hasNext())
+      {
+        BaseInterface localBaseInterface = (BaseInterface)paramWebView.next();
+        if (localBaseInterface != null) {
+          localBaseInterface.setCurrentUrl(paramString);
+        }
+      }
+      return;
+    }
+    catch (Exception paramWebView)
+    {
+      paramWebView.printStackTrace();
+    }
+  }
+  
+  public static void a(List<BaseInterface> paramList, WebView paramWebView, String paramString, arlu paramarlu)
+  {
+    if (!bdhz.a(paramString))
+    {
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        BaseInterface localBaseInterface = (BaseInterface)localIterator.next();
+        paramarlu.a(localBaseInterface, localBaseInterface.getInterfaceName());
+        bdfg.a.put(localBaseInterface.getInterfaceName(), localBaseInterface.getClass());
+        localBaseInterface.setCurrentUrl(paramString);
+      }
+    }
+    a.put(Integer.valueOf(paramWebView.hashCode()), paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdfp
  * JD-Core Version:    0.7.0.1
  */

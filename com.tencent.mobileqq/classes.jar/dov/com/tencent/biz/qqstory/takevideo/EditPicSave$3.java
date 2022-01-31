@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.app.Dialog;
-import bice;
+import bjtb;
 
 public class EditPicSave$3
   implements Runnable
 {
-  public EditPicSave$3(bice parambice) {}
+  public EditPicSave$3(bjtb parambjtb) {}
   
   public void run()
   {
-    bice.a(this.this$0).show();
+    bjtb.a(this.this$0).show();
   }
 }
 

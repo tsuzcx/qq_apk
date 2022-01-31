@@ -1,34 +1,38 @@
-public class wsh
+import android.content.Context;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+import com.squareup.okhttp.ResponseBody;
+import java.io.IOException;
+import org.json.JSONObject;
+
+final class wsh
+  implements Callback
 {
-  public static final wsh a;
-  private static final wsh[] a;
-  public static final wsh b;
-  public static final wsh c;
-  public final int a;
-  public final int b;
+  wsh(Context paramContext, wsi paramwsi) {}
   
-  static
+  public void onFailure(Request paramRequest, IOException paramIOException)
   {
-    jdField_a_of_type_Wsh = new wsh(0, 2131624274);
-    jdField_b_of_type_Wsh = new wsh(1, 2131624275);
-    c = new wsh(2, 2131624273);
-    jdField_a_of_type_ArrayOfWsh = new wsh[] { jdField_a_of_type_Wsh, jdField_b_of_type_Wsh, c };
+    wsg.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Wsi, "abcdabcdabcdabcd");
   }
   
-  wsh(int paramInt1, int paramInt2)
+  public void onResponse(Response paramResponse)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public static wsh[] a()
-  {
-    return jdField_a_of_type_ArrayOfWsh;
+    try
+    {
+      paramResponse = new JSONObject(paramResponse.body().string()).optString("key");
+      wsg.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Wsi, paramResponse);
+      return;
+    }
+    catch (Throwable paramResponse)
+    {
+      paramResponse.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wsh
  * JD-Core Version:    0.7.0.1
  */

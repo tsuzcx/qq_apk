@@ -3,13 +3,13 @@ package com.tencent.mobileqq.extendfriend.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anpo;
+import aofz;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 
 public class MiniAppRecommInfo$MiniApp
   implements Parcelable
 {
-  public static final Parcelable.Creator<MiniApp> CREATOR = new anpo();
+  public static final Parcelable.Creator<MiniApp> CREATOR = new aofz();
   public int a;
   public MiniAppInfo a;
   public String a;

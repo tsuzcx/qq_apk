@@ -1,56 +1,69 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDelFeedComment;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDelFeedComment;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import com.tencent.biz.pubaccount.weishi_new.push.biz.WSWeSeeClientBiz.1;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
 public class smp
-  extends soh
+  extends smk<WSRedDotPushMsg, WSPushStrategyInfo>
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  soj jdField_a_of_type_Soj;
+  private int jdField_a_of_type_Int;
+  private Intent jdField_a_of_type_AndroidContentIntent;
   
-  public smp(CommentEntry paramCommentEntry, soj paramsoj)
+  public smp(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangString = paramCommentEntry.feedId;
-    this.jdField_a_of_type_Int = paramCommentEntry.commentId;
-    this.jdField_a_of_type_Soj = paramsoj;
+    super(paramWSRedDotPushMsg);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
   }
   
-  public String a()
+  private String a(String paramString)
   {
-    return sml.b;
-  }
-  
-  public soi a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspDelFeedComment localRspDelFeedComment = new qqstory_service.RspDelFeedComment();
-    try
-    {
-      localRspDelFeedComment.mergeFrom(paramArrayOfByte);
-      return new smq(localRspDelFeedComment, this.jdField_a_of_type_Soj);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      urk.d("Q.qqstory:FeedCommentDataProvider", "" + paramArrayOfByte);
+    if (!TextUtils.isEmpty(paramString)) {
+      return Uri.parse(paramString).getQueryParameter("logsour");
     }
     return null;
   }
   
-  protected byte[] a()
+  private void a(String paramString)
   {
-    qqstory_service.ReqDelFeedComment localReqDelFeedComment = new qqstory_service.ReqDelFeedComment();
-    localReqDelFeedComment.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    localReqDelFeedComment.comment_id.set(this.jdField_a_of_type_Int);
-    return localReqDelFeedComment.toByteArray();
+    if ((this.jdField_a_of_type_Int == 2) && (TextUtils.equals(a(paramString), "2020020163")))
+    {
+      sms.a();
+      WSPublicAccReport.getInstance().feedsItemForPushReport("gzh_click", 1000003);
+    }
+  }
+  
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  {
+    boolean bool3 = vzz.a(paramContext);
+    sne.d("WSPushLog", "WSWeSeeClientBiz strategyInfo.scheme = " + paramWSPushStrategyInfo.mScheme + ", isInstallWeishi = " + bool3);
+    boolean bool1 = false;
+    if (this.jdField_a_of_type_Int == 2)
+    {
+      WSRecommendFragment.a(paramContext);
+      bool1 = true;
+    }
+    boolean bool2 = bool1;
+    if (!TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme))
+    {
+      bool2 = bool1;
+      if (bool3)
+      {
+        slo.a().a(new WSWeSeeClientBiz.1(this, paramContext, paramWSPushStrategyInfo), 200L);
+        bool2 = true;
+      }
+    }
+    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     smp
  * JD-Core Version:    0.7.0.1
  */

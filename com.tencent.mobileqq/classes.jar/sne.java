@@ -1,44 +1,62 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
 public class sne
-  extends QQUIEventReceiver<smz, sxo>
 {
-  public sne(@NonNull smz paramsmz)
+  private static final String a = "weishi" + "8.2.8".replaceAll("\\.", "");
+  
+  public static void a(String paramString)
   {
-    super(paramsmz);
+    b(a, 4, paramString);
   }
   
-  public void a(@NonNull smz paramsmz, @NonNull sxo paramsxo)
+  public static void a(String paramString1, int paramInt, String paramString2)
   {
-    if (paramsxo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
-    CommentEntry localCommentEntry;
-    do
-    {
-      return;
-      Iterator localIterator;
-      while (!localIterator.hasNext()) {
-        localIterator = paramsmz.a.iterator();
-      }
-      localCommentEntry = (CommentEntry)localIterator.next();
-    } while ((paramsxo.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.authorUnionId) == null) && (paramsxo.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.replierUnionId) == null));
-    paramsmz.f();
-    urk.e(this.TAG, "UserIconUpdateReceiver FeedCommentLego need to update");
+    QLog.i(paramString1, paramInt, paramString2);
   }
   
-  public Class acceptEventClass()
+  public static void a(String paramString1, String paramString2)
   {
-    return sxo.class;
+    a(a + "-" + paramString1, 4, paramString2);
+  }
+  
+  public static void b(String paramString)
+  {
+    d(a, 1, paramString);
+  }
+  
+  public static void b(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.d(paramString1, paramInt, paramString2);
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    b(a + "-" + paramString1, 4, paramString2);
+  }
+  
+  public static void c(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.w(paramString1, paramInt, paramString2);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    c(a + "-" + paramString1, 4, paramString2);
+  }
+  
+  public static void d(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.e(paramString1, paramInt, paramString2);
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    d(a + "-" + paramString1, 1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sne
  * JD-Core Version:    0.7.0.1
  */

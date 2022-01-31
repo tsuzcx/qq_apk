@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.database;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class MyStoryEntry
-  extends atmo
+  extends aukm
 {
   public String createTime;
   public long duration;
   public int state;
-  @atoc
+  @auma
   public int uid;
 }
 

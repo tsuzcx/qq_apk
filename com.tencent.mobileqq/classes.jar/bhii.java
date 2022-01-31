@@ -1,181 +1,229 @@
-import android.app.Activity;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.component.network.DownloaderFactory;
+import com.tencent.component.network.downloader.Downloader;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-import dov.com.qq.im.capture.music.QimMusicDownloader;
-import dov.com.qq.im.capture.view.MusicProviderView;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.app.AppRuntime;
 
 public class bhii
-  extends bhgn
+  implements Handler.Callback
 {
-  bhim a;
-  public MusicItemInfo a;
-  int d;
+  private static String jdField_a_of_type_JavaLangString = "livepluginso.jar";
+  private Context jdField_a_of_type_AndroidContentContext;
+  Handler jdField_a_of_type_AndroidOsHandler;
+  private Downloader jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader;
+  private Map<String, bhij> jdField_a_of_type_JavaUtilMap;
   
-  public bhii(int paramInt)
+  bhii(Context paramContext)
   {
-    super(null);
-    this.jdField_a_of_type_Bhim = new bhij(this);
-    this.d = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = ((QIMMusicConfigManager)bhfm.a(2)).b(paramInt);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(this.jdField_a_of_type_AndroidContentContext).getCommonDownloader();
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.enableResumeTransfer(true);
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
   }
   
-  public float a()
+  private static void a()
   {
+    String str = bhjq.a(BaseApplicationImpl.getContext());
+    if (TextUtils.isEmpty(str)) {}
+    File localFile;
+    do
+    {
+      return;
+      localFile = new File(str + jdField_a_of_type_JavaLangString);
+    } while (!localFile.exists());
     try
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress;
-      float f = 1.0F * i / 100.0F;
-      return f;
+      bhnq.b(localFile, new File(str));
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneLiveSoDownloader", 2, "unZipPluginSo success");
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.w("QZoneLiveSoDownloader", 1, "unzipTofolder" + localException.getMessage());
+      return;
     }
     finally
     {
-      localObject = finally;
-      throw localObject;
+      localFile.delete();
     }
   }
   
-  public int a()
+  private void a(bhij parambhij)
   {
-    int i = 3;
-    for (;;)
+    if (parambhij != null)
     {
-      boolean bool;
-      try
-      {
-        MusicItemInfo localMusicItemInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-        if (localMusicItemInfo == null) {
-          return i;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress > -1)
-        {
-          int j = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress;
-          if (j == 100) {
-            continue;
-          }
-          i = 1;
-          continue;
-        }
+      Object localObject = bhij.a(parambhij);
+      if (localObject != null) {
+        ((bhik)localObject).a(parambhij);
       }
-      finally {}
-      try
-      {
-        bool = bace.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath());
-        if (bool) {
-          continue;
-        }
+      localObject = bhjq.a(BaseApplicationImpl.getContext()) + jdField_a_of_type_JavaLangString;
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneLiveSoDownloader", 2, "downloadSoInner url:" + bhij.a(parambhij) + "     path:" + (String)localObject);
       }
-      catch (Exception localException)
+      if (!this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(bhij.a(parambhij), (String)localObject, new bhil(this, parambhij)))
       {
-        continue;
+        localObject = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 3);
+        ((Message)localObject).obj = parambhij;
+        ((Message)localObject).sendToTarget();
       }
-      i = 2;
     }
   }
   
-  public int a(Activity paramActivity, int paramInt)
+  private void a(bhij parambhij, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QCombo.Music", 2, "applyMusic" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+    parambhij = new HashMap();
+    parambhij.put("ret_code", String.valueOf(paramInt1));
+    parambhij.put("refer", String.valueOf(paramInt2));
+    if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null)) {
+      axrl.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "actQZLiveDownloadSoReport", true, 0L, 0L, parambhij, null);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo == null) {
-      return 0;
-    }
-    MusicProviderView localMusicProviderView2 = (MusicProviderView)paramActivity.findViewById(2131298336);
-    MusicProviderView localMusicProviderView1 = localMusicProviderView2;
-    if (localMusicProviderView2 == null)
-    {
-      ((QIMProviderContainerView)paramActivity.findViewById(2131306351)).a(104);
-      localMusicProviderView1 = (MusicProviderView)paramActivity.findViewById(2131298336);
-      localMusicProviderView1.g();
-    }
-    paramActivity = ((bhiu)bhfm.a().c(8)).a();
-    if ((MusicProviderView.a) && (paramActivity != null) && (paramActivity.mItemId != this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mItemId) && (paramActivity.mType == 5))
-    {
-      localMusicProviderView1.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-      return 0;
-    }
-    localMusicProviderView1.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-    return 0;
   }
   
-  public void a(Activity paramActivity, int paramInt)
+  private void b(bhij parambhij)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo == null) {}
-    while ((paramInt == 1) || (paramInt == 3)) {
+    if (parambhij != null) {
+      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.cancel(bhij.a(parambhij), new bhil(this, parambhij));
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    Message localMessage = Message.obtain();
+    localMessage.what = 1;
+    localMessage.obj = paramString;
+  }
+  
+  public void a(String paramString, bhik parambhik, int paramInt)
+  {
+    bhij localbhij = new bhij();
+    bhij.a(localbhij, paramString);
+    bhij.a(localbhij, parambhik);
+    bhij.a(localbhij, paramInt);
+    if ((bhjq.a(BaseApplicationImpl.getContext())) && (parambhik != null))
+    {
+      parambhik.d(localbhij);
       return;
     }
-    ((bhiu)bhfm.a().c(8)).a(paramInt);
+    paramString = Message.obtain();
+    paramString.what = 0;
+    paramString.obj = localbhij;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
   }
   
-  public int b()
+  public boolean handleMessage(Message paramMessage)
   {
-    int j = 3;
+    switch (paramMessage.what)
+    {
+    }
     for (;;)
     {
-      try
+      return false;
+      if ((paramMessage.obj instanceof bhij))
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo == null)
-        {
-          i = j;
-          if (QLog.isColorLevel())
-          {
-            QLog.i("MusicProviderView.Downloader", 2, "download STATE_DOWNLOADED" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-            i = j;
-          }
-          return i;
+        paramMessage = (bhij)paramMessage.obj;
+        if (this.jdField_a_of_type_JavaUtilMap.containsKey(bhij.a(paramMessage))) {
+          return false;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress > -1)
+        this.jdField_a_of_type_JavaUtilMap.put(bhij.a(paramMessage), paramMessage);
+        a(paramMessage);
+        return true;
+        if ((paramMessage.obj instanceof String))
         {
-          if (QLog.isColorLevel()) {
-            QLog.i("MusicProviderView.Downloader", 2, "download mMusic.mProgress" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress);
-          }
-        }
-        else
-        {
-          if (!bace.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath()))
+          paramMessage = (String)paramMessage.obj;
+          if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramMessage))
           {
-            if (QLog.isColorLevel()) {
-              QLog.i("MusicProviderView.Downloader", 2, "download ." + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress);
+            Object localObject = (bhij)this.jdField_a_of_type_JavaUtilMap.get(paramMessage);
+            a((bhij)localObject, 3, bhij.a((bhij)localObject));
+            this.jdField_a_of_type_JavaUtilMap.remove(paramMessage);
+            b((bhij)localObject);
+            continue;
+            if ((paramMessage.obj instanceof bhij))
+            {
+              paramMessage = (bhij)paramMessage.obj;
+              if (this.jdField_a_of_type_JavaUtilMap.containsKey(bhij.a(paramMessage)))
+              {
+                a(paramMessage, 1, bhij.a(paramMessage));
+                this.jdField_a_of_type_JavaUtilMap.remove(bhij.a(paramMessage));
+                localObject = bhij.a(paramMessage);
+                if (localObject != null)
+                {
+                  ((bhik)localObject).b(paramMessage);
+                  continue;
+                  if ((paramMessage.obj instanceof bhij))
+                  {
+                    paramMessage = (bhij)paramMessage.obj;
+                    if (this.jdField_a_of_type_JavaUtilMap.containsKey(bhij.a(paramMessage)))
+                    {
+                      a(paramMessage, 2, bhij.a(paramMessage));
+                      this.jdField_a_of_type_JavaUtilMap.remove(bhij.a(paramMessage));
+                      localObject = bhij.a(paramMessage);
+                      if (localObject != null)
+                      {
+                        ((bhik)localObject).c(paramMessage);
+                        continue;
+                        if ((paramMessage.obj instanceof bhij))
+                        {
+                          paramMessage = (bhij)paramMessage.obj;
+                          if (this.jdField_a_of_type_JavaUtilMap.containsKey(bhij.a(paramMessage)))
+                          {
+                            localObject = bhij.a(paramMessage);
+                            a();
+                            LocalMultiProcConfig.putInt("QzoneLiveSoVersion", QzoneConfig.getInstance().getConfig("LiveSetting", "LivePluginSOVersion", 5));
+                            if (bhjq.a(BaseApplicationImpl.getContext()))
+                            {
+                              a(paramMessage, 0, bhij.a(paramMessage));
+                              this.jdField_a_of_type_JavaUtilMap.remove(bhij.a(paramMessage));
+                              if (localObject != null) {
+                                ((bhik)localObject).d(paramMessage);
+                              }
+                            }
+                            else if (localObject != null)
+                            {
+                              ((bhik)localObject).c(paramMessage);
+                              continue;
+                              if ((paramMessage.obj instanceof bhij))
+                              {
+                                paramMessage = (bhij)paramMessage.obj;
+                                if (this.jdField_a_of_type_JavaUtilMap.containsKey(bhij.a(paramMessage)))
+                                {
+                                  localObject = bhij.a(paramMessage);
+                                  if (localObject != null) {
+                                    ((bhik)localObject).e(paramMessage);
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
-            this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress = 1;
-            QimMusicDownloader.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mUrl, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath(), this.jdField_a_of_type_Bhim);
-            a();
-            i = 2;
-            continue;
           }
-          i = j;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.i("MusicProviderView.Downloader", 2, "STATE_DOWNLOADED ." + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress);
-          i = j;
-          continue;
         }
-        int i = 1;
       }
-      finally {}
     }
-  }
-  
-  public void c(Activity paramActivity, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo == null) {}
-    while ((paramInt == 1) || (paramInt == 3)) {
-      return;
-    }
-    ((bhiu)bhfm.a().c(8)).d();
-  }
-  
-  public String toString()
-  {
-    return "Music@" + this.d + "@" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo + hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhii
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import aciy;
+import actn;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
-import awnu;
+import axmt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import java.util.List;
@@ -40,18 +40,18 @@ public class TabBarView2
   public TabBarView2(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = aciy.a(56.0F, getResources());
+    this.jdField_b_of_type_Int = actn.a(56.0F, getResources());
     this.m = 16;
     boolean bool1 = ThemeUtil.isNowThemeIsDefaultCache(BaseApplicationImpl.getApplication().getRuntime(), true);
     int k = this.s;
     boolean bool2 = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
     int i;
     int j;
-    if (awnu.a()) {
+    if (axmt.a()) {
       if (bool2)
       {
-        i = 2131100734;
-        k = 2131101336;
+        i = 2131166326;
+        k = 2131166931;
         int n = 255;
         j = i;
         i = k;
@@ -76,32 +76,32 @@ public class TabBarView2
       this.t = paramContext.getDimensionPixelSize(4, this.t);
       this.u = paramContext.getDimensionPixelSize(3, this.u);
       paramContext.recycle();
-      if (("1103".equals(ThemeUtil.curThemeId)) || (awnu.a()))
+      if (("1103".equals(ThemeUtil.curThemeId)) || (axmt.a()))
       {
         this.r = getResources().getColor(j);
         this.s = k;
       }
       b();
       return;
-      i = 2131100733;
+      i = 2131166325;
       break;
       if (bool2)
       {
-        m = 2131099922;
-        i = 2131099921;
-        j = 2131099920;
+        m = 2131165507;
+        i = 2131165506;
+        j = 2131165505;
         k = 30;
       }
       else if (!bool1)
       {
-        i = 2131101336;
-        j = 2131101267;
+        i = 2131166931;
+        j = 2131166861;
       }
       else
       {
-        m = 2131099923;
-        i = 2131101336;
-        j = 2131099923;
+        m = 2131165508;
+        i = 2131166931;
+        j = 2131165508;
       }
     }
   }

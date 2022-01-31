@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emosm.view;
 
-import andd;
 import android.os.SystemClock;
 import android.view.View;
+import antl;
 
 class DragSortListView$DragScroller
   implements Runnable
@@ -84,7 +84,7 @@ class DragSortListView$DragScroller
         this.jdField_b_of_type_Boolean = false;
         return;
       }
-      this.jdField_b_of_type_Float = this.this$0.jdField_a_of_type_Andd.a((this.this$0.jdField_b_of_type_Float - i2) / this.this$0.c, this.jdField_a_of_type_Long);
+      this.jdField_b_of_type_Float = this.this$0.jdField_a_of_type_Antl.a((this.this$0.jdField_b_of_type_Float - i2) / this.this$0.c, this.jdField_a_of_type_Long);
       this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
       this.jdField_a_of_type_Float = ((float)(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long));
       this.jdField_a_of_type_Int = Math.round(this.jdField_b_of_type_Float * this.jdField_a_of_type_Float);
@@ -126,7 +126,7 @@ class DragSortListView$DragScroller
         this.jdField_b_of_type_Boolean = false;
         return;
       }
-      this.jdField_b_of_type_Float = (-this.this$0.jdField_a_of_type_Andd.a((i1 - this.this$0.jdField_a_of_type_Float) / this.this$0.d, this.jdField_a_of_type_Long));
+      this.jdField_b_of_type_Float = (-this.this$0.jdField_a_of_type_Antl.a((i1 - this.this$0.jdField_a_of_type_Float) / this.this$0.d, this.jdField_a_of_type_Long));
       break;
       label470:
       this.jdField_a_of_type_Int = Math.max(-n, this.jdField_a_of_type_Int);

@@ -1,184 +1,65 @@
-import android.annotation.SuppressLint;
-import android.content.ContentResolver;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.media.ThumbnailUtils;
-import android.os.Build.VERSION;
-import android.provider.MediaStore.Images.Media;
-import android.provider.MediaStore.Video.Thumbnails;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.NonNull;
+import android.util.Log;
+import com.tencent.feedback.eup.CrashReport;
+import com.tencent.mobileqq.statistics.CaughtException;
+import com.tencent.mobileqq.statistics.CaughtExceptionReport.1;
+import com.tencent.mobileqq.statistics.CaughtExceptionReport.2;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.Iterator;
+import java.util.Set;
 
-public class axps
-  extends axoa
+public final class axps
 {
-  private static final String[] a = { "DISTINCT _id", "_data" };
+  private static final Set<String> a = new CaughtExceptionReport.1(20);
+  private static final Set<Class> b = new CaughtExceptionReport.2(5);
   
-  public static String a(String paramString)
+  public static void a(@NonNull Throwable paramThrowable)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      paramString = null;
+    a(paramThrowable, "This is CaughtException");
+  }
+  
+  public static void a(@NonNull Throwable paramThrowable, @NonNull String paramString)
+  {
+    if ((paramThrowable == null) || (paramString == null)) {
+      return;
     }
-    String str;
-    do
+    if (!a(paramThrowable))
     {
-      return paramString;
-      str = paramString;
-      if (paramString.startsWith("file://")) {
-        str = paramString.substring("file://".length());
+      Log.e("CaughtExceptionReport", "this report is not permitted. ", paramThrowable);
+      return;
+    }
+    Object localObject = paramThrowable;
+    if (!(paramThrowable instanceof CaughtException)) {
+      localObject = new CaughtException("Caught: " + paramThrowable.getMessage(), paramThrowable);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("CaughtExceptionReport-eup", 2, "rqd将上报信息到rdm网站，上报不会导致客户端闪退，仅用作数据统计");
+    }
+    CrashReport.handleCatchException(Thread.currentThread(), (Throwable)localObject, "ExtraMessage: " + paramString, null);
+  }
+  
+  private static boolean a(Throwable paramThrowable)
+  {
+    if (b.contains(paramThrowable.getClass())) {
+      return true;
+    }
+    paramThrowable = paramThrowable.getStackTrace();
+    if ((paramThrowable == null) || (paramThrowable.length < 1)) {
+      return false;
+    }
+    paramThrowable = paramThrowable[0].getClassName();
+    Iterator localIterator = a.iterator();
+    while (localIterator.hasNext()) {
+      if (paramThrowable.startsWith((String)localIterator.next())) {
+        return true;
       }
-      paramString = str;
-    } while (str.startsWith(File.separator));
-    return File.separator + str;
-  }
-  
-  public static URL a(String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append("|");
-    localStringBuilder.append(paramInt1);
-    localStringBuilder.append("|");
-    localStringBuilder.append(paramInt2);
-    localStringBuilder.append("|");
-    localStringBuilder.append(paramString2);
-    try
-    {
-      paramString1 = new URL("devicemsgthumb", "", localStringBuilder.toString());
-      return paramString1;
     }
-    catch (MalformedURLException paramString1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceMsgThumbDownloader", 2, paramString1.getMessage(), paramString1);
-      }
-    }
-    return null;
-  }
-  
-  public Cursor a(String paramString)
-  {
-    paramString = "_data='" + a(paramString) + "' COLLATE NOCASE";
-    return BaseApplicationImpl.getContext().getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, a, paramString, null, null);
-  }
-  
-  @SuppressLint({"NewApi"})
-  public Bitmap a(String paramString)
-  {
-    if (Build.VERSION.SDK_INT < 8) {
-      return null;
-    }
-    return ThumbnailUtils.createVideoThumbnail(paramString, 1);
-  }
-  
-  public LocalMediaInfo a(URL paramURL)
-  {
-    try
-    {
-      LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-      paramURL = paramURL.getFile().split("\\|");
-      localLocalMediaInfo.path = paramURL[0];
-      localLocalMediaInfo.thumbWidth = Integer.parseInt(paramURL[1]);
-      localLocalMediaInfo.thumbHeight = Integer.parseInt(paramURL[2]);
-      return localLocalMediaInfo;
-    }
-    catch (Exception paramURL) {}
-    return null;
-  }
-  
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    return new File(ajed.aT);
-  }
-  
-  public boolean a()
-  {
     return false;
-  }
-  
-  public Bitmap b(String paramString)
-  {
-    Object localObject = null;
-    Cursor localCursor = null;
-    if (Build.VERSION.SDK_INT < 5)
-    {
-      localObject = localCursor;
-      label17:
-      return localObject;
-    }
-    try
-    {
-      localCursor = a(paramString);
-      paramString = (String)localObject;
-      if (localCursor != null) {
-        paramString = (String)localObject;
-      }
-    }
-    finally
-    {
-      try
-      {
-        if (localCursor.getCount() > 0)
-        {
-          long l = localCursor.getLong(localCursor.getColumnIndexOrThrow("_id"));
-          paramString = (String)localObject;
-          if (localCursor.moveToFirst()) {
-            paramString = MediaStore.Video.Thumbnails.getThumbnail(BaseApplicationImpl.getContext().getContentResolver(), l, 1, null);
-          }
-        }
-        localObject = paramString;
-        if (localCursor == null) {
-          break label17;
-        }
-        localCursor.close();
-        return paramString;
-      }
-      finally
-      {
-        break label112;
-      }
-      paramString = finally;
-      localCursor = null;
-    }
-    label112:
-    if (localCursor != null) {
-      localCursor.close();
-    }
-    throw paramString;
-  }
-  
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramFile = a(paramDownloadParams.url);
-    if (paramFile == null) {}
-    do
-    {
-      return null;
-      if (bace.b(paramFile.path)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("DeviceMsgThumbDownloader", 2, "decodeFile file not exits. just return");
-    return null;
-    paramURLDrawableHandler = BaseApplicationImpl.getContext();
-    if (apck.a(paramFile.path) == 2) {}
-    for (paramFile = new axpu(this);; paramFile = new axpt(this)) {
-      return afzf.a(paramURLDrawableHandler).a(paramDownloadParams.url, paramFile);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axps
  * JD-Core Version:    0.7.0.1
  */

@@ -37,7 +37,7 @@ public class LivePlayerJsPlugin
       {
         JSONObject localJSONObject1 = new JSONObject(paramString2);
         localObject = localJSONObject1.optString("type");
-        AppBrandTask.runTaskOnUiThread(new LivePlayerJsPlugin.1(this, localJSONObject1.optInt("livePlayerId"), (String)localObject, paramInt, localJSONObject1));
+        AppBrandTask.runTaskOnUiThread(new LivePlayerJsPlugin.1(this, paramJsRuntime, localJSONObject1.optInt("livePlayerId"), (String)localObject, paramInt, localJSONObject1));
         return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
       }
       catch (JSONException localJSONException1)

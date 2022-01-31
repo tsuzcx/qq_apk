@@ -1,20 +1,10 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-
-public final class aycl
-  extends Editable.Factory
+public abstract interface aycl
 {
-  public Editable newEditable(CharSequence paramCharSequence)
-  {
-    if ((paramCharSequence instanceof axkn)) {
-      return (Editable)paramCharSequence;
-    }
-    return new axkn(paramCharSequence, 3, 20);
-  }
+  public abstract int a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aycl
  * JD-Core Version:    0.7.0.1
  */

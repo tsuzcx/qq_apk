@@ -1,11 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
-class adsw
-  extends adst
+public class adsw
+  implements View.OnTouchListener
 {
-  public adsw(QQAppInterface paramQQAppInterface)
+  public adsw(HeartCombolEffectView paramHeartCombolEffectView) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramQQAppInterface);
+    return true;
   }
 }
 

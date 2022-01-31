@@ -1,54 +1,40 @@
-import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import cooperation.qwallet.plugin.QWalletHelper;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.shortvideo.resource.ArtFilterResource;
 
 public class bfll
-  extends RemoteCommand
+  implements ArtFilterResource
 {
-  public bfll()
+  public String getCommonPrefix()
   {
-    super("qqreader_plugin_asyn_cmd");
+    return ahwy.c;
   }
   
-  private QQAppInterface a()
+  public String getFilterResPath()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (QQAppInterface)localAppRuntime;
+    if (bflj.a) {
+      return bkue.b;
     }
-    return null;
+    return avsd.b;
   }
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public String getModelPath()
   {
-    switch (paramBundle.getInt("CommondType"))
-    {
-    }
-    for (;;)
-    {
-      return null;
-      if (a() != null)
-      {
-        paramBundle = paramBundle.getString("publicaccount_uin");
-        rtr.a(a(), a().getApp(), paramBundle, new bflm(this, paramOnInvokeFinishLinstener));
-        continue;
-        QWalletHelper.preloadQWallet(a());
-      }
-    }
+    return "";
   }
   
-  public boolean isSynchronized()
+  public String getReshapePath()
   {
-    return false;
+    return "";
+  }
+  
+  public String getSoPathDir()
+  {
+    return axlc.d(BaseApplicationImpl.getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfll
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,34 @@
 package com.tencent.mobileqq.richstatus;
 
-import ajjj;
+import ajxn;
 import android.text.TextUtils;
-import avev;
-import avey;
+import aweo;
+import awer;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import gf;
+import hy;
 import mqq.os.MqqHandler;
 
 public class StatusManager$3$2
   implements Runnable
 {
-  public StatusManager$3$2(avey paramavey, boolean paramBoolean) {}
+  public StatusManager$3$2(awer paramawer, boolean paramBoolean) {}
   
   public void run()
   {
     int j = 0;
-    avev.a(this.jdField_a_of_type_Avey.a, null);
-    ajjj localajjj = (ajjj)avev.a(this.jdField_a_of_type_Avey.a).getManager(51);
-    if (localajjj != null)
+    aweo.a(this.jdField_a_of_type_Awer.a, null);
+    ajxn localajxn = (ajxn)aweo.a(this.jdField_a_of_type_Awer.a).getManager(51);
+    if (localajxn != null)
     {
-      Object localObject2 = localajjj.a(avev.a(this.jdField_a_of_type_Avey.a).getAccount());
+      Object localObject2 = localajxn.a(aweo.a(this.jdField_a_of_type_Awer.a).getAccount());
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new ExtensionInfo();
-        ((ExtensionInfo)localObject1).uin = avev.a(this.jdField_a_of_type_Avey.a).getAccount();
+        ((ExtensionInfo)localObject1).uin = aweo.a(this.jdField_a_of_type_Awer.a).getAccount();
       }
       localObject2 = ((ExtensionInfo)localObject1).getRichStatus();
       if ((localObject2 != null) && ((!TextUtils.isEmpty(((RichStatus)localObject2).actionText)) || (!TextUtils.isEmpty(((RichStatus)localObject2).dataText)) || (!TextUtils.isEmpty(((RichStatus)localObject2).toSpannableStringWithoutAction())))) {
@@ -39,15 +39,15 @@ public class StatusManager$3$2
       {
         long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
         ((ExtensionInfo)localObject1).setRichBuffer(new byte[0], l);
-        localajjj.a((ExtensionInfo)localObject1);
+        localajxn.a((ExtensionInfo)localObject1);
       }
     }
     ThreadManager.getUIHandler().post(new StatusManager.3.2.1(this));
-    Object localObject1 = gf.a();
+    Object localObject1 = hy.a();
     if (this.jdField_a_of_type_Boolean) {}
     for (int i = j;; i = -1)
     {
-      ((gf)localObject1).a(i, RichStatus.getEmptyStatus(), null, 1);
+      ((hy)localObject1).a(i, RichStatus.getEmptyStatus(), null, 1);
       return;
       label218:
       i = 0;

@@ -1,23 +1,12 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-
-public class aarw
-  extends adra
+public abstract interface aarw
 {
-  public aarw(FontSettingActivity paramFontSettingActivity, QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
-  {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-  }
+  public abstract void a();
   
-  public void a(acju paramacju, ChatMessage paramChatMessage) {}
+  public abstract void a(aodw paramaodw);
   
-  public void b(View paramView) {}
+  public abstract boolean a();
+  
+  public abstract void b(aodw paramaodw);
 }
 
 

@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.DownloadBarInfo;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public final class nep
-  implements Parcelable.Creator<VideoInfo.DownloadBarInfo>
+class nep
 {
-  public VideoInfo.DownloadBarInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.DownloadBarInfo(paramParcel);
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public VideoInfo.DownloadBarInfo[] a(int paramInt)
-  {
-    return new VideoInfo.DownloadBarInfo[paramInt];
-  }
+  nep(ned paramned) {}
 }
 
 

@@ -5,10 +5,10 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
-import bckd;
-import bckn;
-import bgsw;
-import bgsx;
+import bdoe;
+import bdoo;
+import biby;
+import bibz;
 import mqq.app.AppService;
 
 public class WadlJsBridgeService
@@ -16,18 +16,18 @@ public class WadlJsBridgeService
 {
   private static String jdField_a_of_type_JavaLangString = "WadlJsBridgeService";
   private Looper jdField_a_of_type_AndroidOsLooper;
-  private bckn jdField_a_of_type_Bckn;
-  private bgsx jdField_a_of_type_Bgsx;
+  private bdoo jdField_a_of_type_Bdoo;
+  private bibz jdField_a_of_type_Bibz;
   
   public WadlJsBridgeService()
   {
-    bckd.b(jdField_a_of_type_JavaLangString, "##@WadlJsBridgeService()");
+    bdoe.b(jdField_a_of_type_JavaLangString, "##@WadlJsBridgeService()");
   }
   
   private int a(String paramString)
   {
-    bgsw.a();
-    bckd.b(jdField_a_of_type_JavaLangString, "##@doWadlJob = " + paramString);
+    biby.a();
+    bdoe.b(jdField_a_of_type_JavaLangString, "##@doWadlJob = " + paramString);
     if ("start".equals(paramString)) {
       return 0;
     }
@@ -54,39 +54,39 @@ public class WadlJsBridgeService
   public void onCreate()
   {
     super.onCreate();
-    bckd.b(jdField_a_of_type_JavaLangString, "wadlJsBridgeService onCreate()");
+    bdoe.b(jdField_a_of_type_JavaLangString, "wadlJsBridgeService onCreate()");
     HandlerThread localHandlerThread = new HandlerThread("WadlJsBridgeService.Thread", 10);
     localHandlerThread.start();
     this.jdField_a_of_type_AndroidOsLooper = localHandlerThread.getLooper();
-    this.jdField_a_of_type_Bckn = new bckn(this, this.jdField_a_of_type_AndroidOsLooper);
-    if (this.jdField_a_of_type_Bgsx == null)
+    this.jdField_a_of_type_Bdoo = new bdoo(this, this.jdField_a_of_type_AndroidOsLooper);
+    if (this.jdField_a_of_type_Bibz == null)
     {
-      this.jdField_a_of_type_Bgsx = new bgsx();
-      bckd.b(jdField_a_of_type_JavaLangString, "##@MessageService-->onCreate():" + this.jdField_a_of_type_Bgsx + "," + this.app);
+      this.jdField_a_of_type_Bibz = new bibz();
+      bdoe.b(jdField_a_of_type_JavaLangString, "##@MessageService-->onCreate():" + this.jdField_a_of_type_Bibz + "," + this.app);
     }
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Bgsx != null) {
-      this.jdField_a_of_type_Bgsx.d();
+    if (this.jdField_a_of_type_Bibz != null) {
+      this.jdField_a_of_type_Bibz.d();
     }
-    bckd.b(jdField_a_of_type_JavaLangString, "Service is Destroyed");
+    bdoe.b(jdField_a_of_type_JavaLangString, "Service is Destroyed");
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    bckd.b(jdField_a_of_type_JavaLangString, "##@Service is Started():onStartCommand: ," + paramInt1 + "," + paramInt2 + ":" + paramIntent);
+    bdoe.b(jdField_a_of_type_JavaLangString, "##@Service is Started():onStartCommand: ," + paramInt1 + "," + paramInt2 + ":" + paramIntent);
     if (paramIntent != null)
     {
       String str = paramIntent.getStringExtra("ACTIONNAME");
       paramIntent = paramIntent.getStringExtra("appid");
-      bckd.b(jdField_a_of_type_JavaLangString, "##@ACTIONNAME = " + str + "," + paramIntent);
-      Message localMessage = this.jdField_a_of_type_Bckn.obtainMessage();
+      bdoe.b(jdField_a_of_type_JavaLangString, "##@ACTIONNAME = " + str + "," + paramIntent);
+      Message localMessage = this.jdField_a_of_type_Bdoo.obtainMessage();
       localMessage.what = a(str);
       localMessage.obj = paramIntent;
-      this.jdField_a_of_type_Bckn.sendMessage(localMessage);
+      this.jdField_a_of_type_Bdoo.sendMessage(localMessage);
     }
     return 2;
   }

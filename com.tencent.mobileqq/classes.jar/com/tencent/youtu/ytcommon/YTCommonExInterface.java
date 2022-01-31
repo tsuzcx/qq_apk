@@ -1,55 +1,22 @@
 package com.tencent.youtu.ytcommon;
 
 import android.app.Activity;
-import android.content.Context;
-import android.hardware.Camera;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import com.tencent.youtu.ytcommon.tools.YTCameraSetting;
 import com.tencent.youtu.ytcommon.tools.YTLogger;
 import com.tencent.youtu.ytcommon.tools.YTLogger.IFaceLiveLogger;
-import com.tencent.ytcommon.util.YTCommonInterface;
 import java.lang.reflect.Method;
 
 public class YTCommonExInterface
 {
   private static final String TAG = "YTUtilityInterface";
-  public static final String VERSION = "3.2.1";
+  public static final String VERSION = "3.2.2";
   protected static Method commonSoInitAuth = null;
   private static int mBusinessCode = 0;
-  public static boolean mIsAuthSuccess = false;
   
   public static int getBusinessCode()
   {
     return mBusinessCode;
-  }
-  
-  public static int initAuth(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
-  {
-    YTLogger.i("YTUtilityInterface", "[YTUtilityInterface.initAuth] ---licence: " + paramString + " initType: " + paramInt + " isDebug: " + paramBoolean);
-    if (mIsAuthSuccess) {
-      return 0;
-    }
-    paramInt = YTCommonInterface.initAuth(paramContext, paramString, paramInt);
-    if (paramInt == 0)
-    {
-      YTLogger.i("YTUtilityInterface", "initAuth success.");
-      mIsAuthSuccess = true;
-      return paramInt;
-    }
-    YTLogger.w("YTUtilityInterface", "initAuth failed. return value: " + paramInt);
-    return paramInt;
-  }
-  
-  public static int initCamera(Context paramContext, Camera paramCamera, int paramInt)
-  {
-    YTLogger.i("YTUtilityInterface", "[YTUtilityInterface.initCamera] ---cameraId: " + paramInt);
-    return YTCameraSetting.initCamera(paramContext, paramCamera, paramInt);
-  }
-  
-  public static boolean isAuthSuccess()
-  {
-    return mIsAuthSuccess;
   }
   
   public static float setAppBrightness(Activity paramActivity, int paramInt)
@@ -93,7 +60,7 @@ public class YTCommonExInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.youtu.ytcommon.YTCommonExInterface
  * JD-Core Version:    0.7.0.1
  */

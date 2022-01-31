@@ -1,59 +1,53 @@
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import java.util.HashMap;
-import java.util.Map;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
 
 public class auaj
+  implements View.OnTouchListener
 {
-  private Map<ProfileLabelInfo, ToggleButton> a = new HashMap();
+  public auaj(OCRResultActivity paramOCRResultActivity) {}
   
-  public ToggleButton a(ProfileLabelInfo paramProfileLabelInfo)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return (ToggleButton)this.a.get(paramProfileLabelInfo);
-  }
-  
-  public Map<ProfileLabelInfo, ToggleButton> a()
-  {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
-  {
-    if (!a(paramProfileLabelInfo)) {
-      this.a.put(paramProfileLabelInfo, paramToggleButton);
-    }
-  }
-  
-  public boolean a(ProfileLabelInfo paramProfileLabelInfo)
-  {
-    return this.a.get(paramProfileLabelInfo) != null;
-  }
-  
-  public void b(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
-  {
-    if (a(paramProfileLabelInfo)) {
-      this.a.remove(paramProfileLabelInfo);
-    }
-  }
-  
-  public void c(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
-  {
-    if (paramProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_NORMAL) {
-      a(paramProfileLabelInfo, paramToggleButton);
-    }
-    for (;;)
+    paramView = (EditText)paramView;
+    int j = paramMotionEvent.getAction();
+    if (j == 1)
     {
-      paramProfileLabelInfo.toggleStatus();
-      paramToggleButton.toggle();
-      return;
-      if (paramProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_CHECKED) {
-        b(paramProfileLabelInfo, paramToggleButton);
+      Object localObject = paramView.getText();
+      int m = (int)paramMotionEvent.getX();
+      i = (int)paramMotionEvent.getY();
+      int n = paramView.getTotalPaddingLeft();
+      int k = paramView.getTotalPaddingTop();
+      m = m - n + paramView.getScrollX();
+      n = paramView.getScrollY();
+      Layout localLayout = paramView.getLayout();
+      i = localLayout.getLineForVertical(i - k + n);
+      float f = localLayout.getLineWidth(i);
+      if (m <= f)
+      {
+        i = localLayout.getOffsetForHorizontal(i, m);
+        localObject = (ClickableSpan[])((Spannable)localObject).getSpans(i, i, ClickableSpan.class);
+        if ((localObject.length != 0) && (j == 1))
+        {
+          localObject[0].onClick(paramView);
+          axqw.b(null, "dc00898", "", "", "0X80082E3", "0X80082E3", 0, 0, "", "", "", "");
+        }
       }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        return true;
+      }
+      if ((j == 1) && (!paramView.isFocused())) {
+        axqw.b(null, "dc00898", "", "", "0X80082E2", "0X80082E2", 0, 0, "", "", "", "");
+      }
+      return paramView.onTouchEvent(paramMotionEvent);
     }
   }
 }

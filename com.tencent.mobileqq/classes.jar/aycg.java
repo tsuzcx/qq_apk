@@ -1,22 +1,56 @@
-import android.text.TextUtils;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
 public class aycg
+  extends ayck
 {
-  public String a;
-  public String b;
-  public String c;
+  private Paint a;
+  private String b = "";
+  private int g = 20;
+  private int h = -1;
   
-  public void a(JSONObject paramJSONObject)
+  public aycg(SpriteGLView paramSpriteGLView, Context paramContext, String paramString, int paramInt1, int paramInt2)
   {
-    this.a = paramJSONObject.optString("left");
-    this.b = paramJSONObject.optString("text");
-    this.c = paramJSONObject.optString("right");
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    e(paramInt1);
+    f(paramInt2);
+    a(paramSpriteGLView, paramString);
   }
   
-  public boolean a()
+  public void a(SpriteGLView paramSpriteGLView, String paramString)
   {
-    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c));
+    if (paramString.equals(this.b)) {
+      return;
+    }
+    this.b = paramString;
+    paramString = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString), this.g, Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(paramString);
+    localCanvas.drawColor(-16777216, PorterDuff.Mode.CLEAR);
+    localCanvas.drawText(this.b, 0.0F, this.g * 0.8F, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.jdField_a_of_type_Aycn != null) {
+      this.jdField_a_of_type_Aycn.c();
+    }
+    this.jdField_a_of_type_Aycn = new aycn(paramSpriteGLView, paramString);
+    g();
+    f();
+  }
+  
+  public void e(int paramInt)
+  {
+    this.h = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
+  }
+  
+  public void f(int paramInt)
+  {
+    this.g = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.g);
   }
 }
 

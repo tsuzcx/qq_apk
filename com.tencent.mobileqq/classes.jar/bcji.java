@@ -1,12 +1,6 @@
-import java.util.List;
-
 public abstract interface bcji
 {
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(bcjj parambcjj, int paramInt1, String paramString, int paramInt2);
-  
-  public abstract void a(List<bcjj> paramList);
+  public abstract int a();
 }
 
 

@@ -1,17 +1,65 @@
-import android.opengl.GLES20;
+import com.tencent.av.app.VideoAppInterface;
 
 public class lhc
-  extends lhd
 {
-  public lhc(String paramString)
+  private ajtd[] a = new ajtd[4];
+  
+  private ajtd b(VideoAppInterface paramVideoAppInterface, int paramInt)
   {
-    super(paramString);
+    Object localObject = null;
+    long l1 = System.currentTimeMillis();
+    switch (paramInt)
+    {
+    }
+    for (paramVideoAppInterface = localObject;; paramVideoAppInterface = new lgq(paramVideoAppInterface))
+    {
+      lcl.c("BusinessHandlerFactory", "createHandler unknown name");
+      for (;;)
+      {
+        long l2 = System.currentTimeMillis();
+        lcl.c("BusinessHandlerFactory", "createHandler,cost time:" + (l2 - l1));
+        return paramVideoAppInterface;
+        paramVideoAppInterface = new lhb(paramVideoAppInterface);
+        continue;
+        paramVideoAppInterface = new lgy(paramVideoAppInterface);
+        continue;
+        paramVideoAppInterface = new ltz(paramVideoAppInterface);
+      }
+    }
   }
   
-  public void a(int paramInt)
+  public ajtd a(VideoAppInterface paramVideoAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = GLES20.glGetAttribLocation(paramInt, this.jdField_a_of_type_JavaLangString);
-    lie.a();
+    Object localObject = this.a[paramInt];
+    if (localObject != null) {
+      return localObject;
+    }
+    synchronized (this.a)
+    {
+      ajtd localajtd = this.a[paramInt];
+      localObject = localajtd;
+      if (localajtd == null)
+      {
+        paramVideoAppInterface = b(paramVideoAppInterface, paramInt);
+        localObject = paramVideoAppInterface;
+        if (paramVideoAppInterface != null)
+        {
+          this.a[paramInt] = paramVideoAppInterface;
+          localObject = paramVideoAppInterface;
+        }
+      }
+      return localObject;
+    }
+  }
+  
+  public void a(lgn paramlgn)
+  {
+    paramlgn.a("TransInfoCreate.CreateSession", new int[] { 1 });
+    paramlgn.a("TransInfo.JoinSession", new int[] { 0 });
+    paramlgn.a("TransInfo.ExitSession", new int[] { 0 });
+    paramlgn.a("TransInfo.ChangeSession", new int[] { 0 });
+    paramlgn.a("TransInfo.RawData", new int[] { 0 });
+    paramlgn.a("OidbSvc.0xa75", new int[] { 2 });
   }
 }
 

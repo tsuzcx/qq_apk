@@ -1,32 +1,29 @@
-import com.tencent.kwstudio.office.base.Log;
-import com.tencent.kwstudio.office.preview.IHostInterface.IHttpListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
-public final class aosk
-  implements axrt
+public class aosk
+  implements View.OnClickListener
 {
-  private final IHostInterface.IHttpListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener;
-  private final String jdField_a_of_type_JavaLangString;
+  public aosk(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  private aosk(String paramString, IHostInterface.IHttpListener paramIHttpListener)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener = paramIHttpListener;
-  }
-  
-  public void onResp(axsq paramaxsq)
-  {
-    if ((paramaxsq.c == 200) || (paramaxsq.c == 206)) {}
-    for (String str = new String(paramaxsq.a);; str = null)
+    paramView = (aosr)paramView.getTag();
+    FileInfo localFileInfo = (FileInfo)paramView.jdField_a_of_type_JavaLangObject;
+    switch (paramView.c)
     {
-      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener != null) {
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener.onResponse(paramaxsq.c, str);
-      }
-      Log.i("TdsReaderView_", "onResp url:" + this.jdField_a_of_type_JavaLangString + ", status=" + paramaxsq.c + ", rsp=" + str);
+    }
+    for (;;)
+    {
+      this.a.i();
       return;
+      this.a.a.a().ab();
+      this.a.a(localFileInfo, paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, false);
     }
   }
-  
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
 }
 
 

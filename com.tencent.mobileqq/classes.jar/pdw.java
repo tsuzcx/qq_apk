@@ -1,137 +1,118 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import org.json.JSONException;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class pdw
 {
-  public static String a(String paramString)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    QLog.i("PTSOfflineUtil", 1, "[loadFilePathAsString], path = " + paramString);
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    paramString = new File(paramString);
-    try
+    Object localObject3 = null;
+    JSONObject localJSONObject = new JSONObject();
+    pen.a(paramBaseArticleInfo, localJSONObject, true);
+    oau.b(paramBaseArticleInfo, localJSONObject);
+    oau.a(paramBaseArticleInfo, localJSONObject);
+    pen.m(paramBaseArticleInfo, localJSONObject);
+    pen.e(paramBaseArticleInfo, localJSONObject);
+    pen.g(paramBaseArticleInfo, localJSONObject);
+    pen.aa(paramBaseArticleInfo, localJSONObject);
+    localJSONObject.put("style_ID", "ReadInjoy_ad_triple_img_cell");
+    pen.a(localJSONObject, paramBaseArticleInfo);
+    Object localObject1;
+    Object localObject2;
+    label140:
+    Object localObject4;
+    if ((paramBaseArticleInfo.mPictures == null) || (paramBaseArticleInfo.mPictures.length <= 0))
     {
-      if (!paramString.exists())
+      localObject3 = rap.a(paramBaseArticleInfo.mJsonPictureList, "pictures");
+      if ((localObject3 == null) || (((JSONArray)localObject3).length() < 3)) {
+        return localJSONObject;
+      }
+      localObject1 = ((JSONArray)localObject3).optJSONObject(0);
+      if (localObject1 == null)
       {
-        QLog.i("PTSOfflineUtil", 1, "[loadFilePathAsString], file not exist.");
-        return "";
+        localObject1 = paramBaseArticleInfo.mFirstPagePicUrl;
+        localObject2 = ((JSONArray)localObject3).optJSONObject(1);
+        if (localObject2 != null) {
+          break label279;
+        }
+        localObject2 = paramBaseArticleInfo.mFirstPagePicUrl;
+        localObject3 = ((JSONArray)localObject3).optJSONObject(2);
+        if (localObject3 != null) {
+          break label289;
+        }
       }
-      paramString = new FileInputStream(paramString);
-      byte[] arrayOfByte = new byte[paramString.available()];
-      paramString.read(arrayOfByte);
-      paramString.close();
-      paramString = new String(arrayOfByte);
-      return paramString;
-    }
-    catch (IOException paramString)
-    {
-      QLog.e("PTSOfflineUtil", 1, "[loadFilePathAsString], e = " + paramString);
-      return "";
-    }
-    catch (Throwable paramString)
-    {
-      for (;;)
+      label279:
+      label289:
+      for (paramBaseArticleInfo = paramBaseArticleInfo.mFirstPagePicUrl;; paramBaseArticleInfo = ((JSONObject)localObject3).optString("picture"))
       {
-        QLog.e("PTSOfflineUtil", 1, "[loadFilePathAsString], t = " + paramString);
+        localObject3 = localObject2;
+        localObject4 = localObject1;
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("multi_img_url1", localObject4);
+        localJSONObject.put("id_multi_img_1", localObject1);
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("multi_img_url2", localObject3);
+        localJSONObject.put("id_multi_img_2", localObject1);
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("multi_img_url3", paramBaseArticleInfo);
+        localJSONObject.put("id_multi_img_3", localObject1);
+        localJSONObject.put("id_info_operate_parent", new JSONObject());
+        localJSONObject.put("id_ad_triple_container", new JSONObject());
+        return localJSONObject;
+        localObject1 = ((JSONObject)localObject1).optString("picture");
+        break;
+        localObject2 = ((JSONObject)localObject2).optString("picture");
+        break label140;
       }
     }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    Object localObject;
-    if (!TextUtils.isEmpty(paramString))
+    if ((paramBaseArticleInfo.mPictures.length < 1) || (paramBaseArticleInfo.mPictures[0] == null))
     {
-      localObject = a(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("PTSOfflineUtil", 1, "[checkOfflineVersionIsValid], configStr = " + (String)localObject);
+      localObject1 = paramBaseArticleInfo.mSinglePicture;
+      label322:
+      if (localObject1 == null) {
+        break label423;
+      }
+      localObject1 = ((URL)localObject1).getFile();
+      label331:
+      if ((paramBaseArticleInfo.mPictures.length >= 2) && (paramBaseArticleInfo.mPictures[1] != null)) {
+        break label428;
+      }
+      localObject2 = paramBaseArticleInfo.mSinglePicture;
+      label354:
+      if (localObject2 == null) {
+        break label438;
+      }
+      localObject2 = ((URL)localObject2).getFile();
+      label363:
+      if ((paramBaseArticleInfo.mPictures.length >= 3) && (paramBaseArticleInfo.mPictures[2] != null)) {
+        break label443;
       }
     }
-    try
+    label423:
+    label428:
+    label438:
+    label443:
+    for (URL localURL = paramBaseArticleInfo.mSinglePicture;; localURL = paramBaseArticleInfo.mPictures[2])
     {
-      localObject = new JSONObject((String)localObject);
-      bool1 = rdz.a(((JSONObject)localObject).optString("min_version", null), ((JSONObject)localObject).optString("max_version", null), ((JSONObject)localObject).optString("min_android_build", null), ((JSONObject)localObject).optString("max_android_build", null));
-      QLog.i("PTSOfflineUtil", 1, "[checkOfflineVersionIsValid], res = " + bool1 + ", configPath = " + paramString);
-      return bool1;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.i("PTSOfflineUtil", 1, "[checkOfflineVersionIsValid], e = " + localJSONException);
-        bool1 = bool2;
+      localObject4 = localObject1;
+      paramBaseArticleInfo = (BaseArticleInfo)localObject3;
+      localObject3 = localObject2;
+      if (localURL == null) {
+        break;
       }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.i("PTSOfflineUtil", 1, "[checkOfflineVersionIsValid], t = " + localThrowable);
-        bool1 = bool2;
-      }
-    }
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    boolean bool1 = false;
-    try
-    {
-      boolean bool2 = mpr.a(paramString1, paramString2);
-      bool1 = bool2;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.i("PTSOfflineUtil", 1, "[checkOfflineDirIsValid], t = " + localThrowable);
-      }
-    }
-    QLog.i("PTSOfflineUtil", 1, "[checkOfflineDirIsValid], res = " + bool1 + ", bid = " + paramString2 + ", dir = " + paramString1);
-    return bool1;
-  }
-  
-  public static String b(String paramString)
-  {
-    String str4 = "no version";
-    String str1 = str4;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      str1 = a(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("PTSOfflineUtil", 1, "[getOfflineCurrentVersion], configStr = " + str1);
-      }
-    }
-    try
-    {
-      str1 = new JSONObject(str1).optString("pts_version", "no version");
-      QLog.i("PTSOfflineUtil", 1, "[getOfflineCurrentVersion], res = " + str1 + ", configPath = " + paramString);
-      return str1;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.i("PTSOfflineUtil", 1, "[getOfflineCurrentVersion], e = " + localJSONException);
-        String str2 = str4;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.i("PTSOfflineUtil", 1, "[getOfflineCurrentVersion], t = " + localThrowable);
-        String str3 = str4;
-      }
+      paramBaseArticleInfo = localURL.getFile();
+      localObject4 = localObject1;
+      localObject3 = localObject2;
+      break;
+      localObject1 = paramBaseArticleInfo.mPictures[0];
+      break label322;
+      localObject1 = null;
+      break label331;
+      localObject2 = paramBaseArticleInfo.mPictures[1];
+      break label354;
+      localObject2 = null;
+      break label363;
     }
   }
 }

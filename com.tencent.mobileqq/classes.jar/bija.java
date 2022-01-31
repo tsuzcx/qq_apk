@@ -1,15 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-class bija
-  implements ValueAnimator.AnimatorUpdateListener
+public class bija
+  implements GLSurfaceView.EGLContextFactory
 {
-  bija(biiz parambiiz) {}
+  private int jdField_a_of_type_Int = 12440;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bija(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
+  
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.k();
+    int i = this.jdField_a_of_type_Int;
+    paramEGL10 = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
+    bizq.b("AECameraGLSurfaceView", "[EGLContext] createContext finish");
+    return paramEGL10;
+  }
+  
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  {
+    AECameraGLSurfaceView.a(this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView);
+    paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext);
+    bizq.b("AECameraGLSurfaceView", "[EGLContext] destroyContext finish");
   }
 }
 

@@ -1,27 +1,16 @@
-import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
+import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 
 public class vjj
-  implements bekd
+  implements ufn
 {
-  public vjj(ScrollFrameSelectBar paramScrollFrameSelectBar) {}
+  public vjj(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public boolean a(ufk paramufk, int paramInt1, int paramInt2)
   {
-    urk.a("Q.qqstory.frameWidget.ScrollFrameSelectBar", "onScrollStateChanged:%s", Integer.valueOf(paramInt));
-    switch (paramInt)
-    {
-    default: 
-    case 4098: 
-    case 4099: 
-      do
-      {
-        return;
-      } while (!ScrollFrameSelectBar.a(this.a).isPlaying());
-      ScrollFrameSelectBar.a(this.a).c();
-      return;
-    }
-    this.a.c();
+    LocalVideoSelectActivity.a(this.a).a();
+    LocalVideoSelectActivity.a(this.a).a(true);
+    return true;
   }
 }
 

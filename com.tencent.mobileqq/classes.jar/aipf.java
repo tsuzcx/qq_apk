@@ -1,364 +1,129 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare.2;
-import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare.3;
-import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare.4;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.ShowExternalTroop;
+import com.tencent.widget.XListView;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import org.json.JSONObject;
 
 public class aipf
-  implements DialogInterface.OnDismissListener, AdapterView.OnItemClickListener, begw
+  extends aimu
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private begr jdField_a_of_type_Begr;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private WeakReference<AppInterface> jdField_b_of_type_JavaLangRefWeakReference;
-  private boolean jdField_b_of_type_Boolean;
-  private String c;
-  private String d;
+  aipi jdField_a_of_type_Aipi;
+  akim jdField_a_of_type_Akim = new aipg(this);
+  Context jdField_a_of_type_AndroidContentContext;
+  protected View.OnClickListener a;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  protected TroopManager a;
+  XListView jdField_a_of_type_ComTencentWidgetXListView;
+  protected String a;
+  protected List<aipj> a;
+  protected boolean a;
+  protected List<aukm> b;
+  protected boolean b;
+  List<ShowExternalTroop> c;
   
-  public aipf(Context paramContext, AppInterface paramAppInterface)
+  public aipf(Context paramContext, QQAppInterface paramQQAppInterface, aipi paramaipi, XListView paramXListView, boolean paramBoolean, String paramString)
   {
-    try
+    super(paramContext, paramQQAppInterface, paramXListView, 4, true);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aiph(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Aipi = paramaipi;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)paramQQAppInterface.getManager(52));
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Akim);
+  }
+  
+  public void a(List<ShowExternalTroop> paramList)
+  {
+    this.jdField_b_of_type_Boolean = true;
+    if (paramList != null)
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((Activity)paramContext);
-      this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
-      return;
-    }
-    catch (Throwable paramContext)
-    {
-      QLog.i("apollo_cmGame_CmGameCommonShare", 1, "[ApolloGameShare], errInfo->" + paramContext.getMessage());
+      this.c = paramList;
+      notifyDataSetChanged();
     }
   }
   
-  private int a(String paramString)
+  public void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_cmGame_CmGameCommonShare", 2, "[parseShareParm],jsonStr:" + paramString);
-    }
-    if (TextUtils.isEmpty(paramString)) {
-      return -1;
-    }
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_b_of_type_JavaLangString = paramString.optString("extendInfo");
-      this.c = paramString.optString("summary");
-      this.jdField_a_of_type_JavaLangString = paramString.optString("localPicPath");
-      this.jdField_b_of_type_Int = paramString.optInt("activityId");
-      int i = paramString.optInt("reqCode");
-      paramString = aing.a(this.jdField_a_of_type_Int);
-      if (paramString != null)
-      {
-        paramString.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-        paramString.c = i;
-      }
-      return 0;
-    }
-    catch (Exception paramString)
-    {
-      QLog.i("apollo_cmGame_CmGameCommonShare", 1, "[showShareDialog], errInfo->" + paramString.getMessage());
-    }
-    return -3;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akim);
+    super.c();
   }
   
-  private AppInterface a()
+  public int getCount()
   {
-    if (this.jdField_b_of_type_JavaLangRefWeakReference == null) {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560325, null);
+    }
+    aipj localaipj = (aipj)getItem(paramInt);
+    if (localaipj == null) {
       return null;
     }
-    return (AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    View localView;
+    if (paramView != null)
+    {
+      localView = paramView;
+      if (paramView.getTag() != null) {}
+    }
+    else
+    {
+      localView = myd.a(this.jdField_a_of_type_AndroidContentContext, paramViewGroup, 5, false, 1);
+      localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    }
+    paramView = (azmn)localView.getTag();
+    paramView.jdField_c_of_type_Int = 4;
+    paramViewGroup = localaipj.a;
+    myd.a(localView, this.jdField_a_of_type_AndroidContentContext, paramViewGroup);
+    paramView.e.setVisibility(8);
+    paramView.jdField_a_of_type_JavaLangString = localaipj.a.troopUin;
+    paramView.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(4, paramViewGroup.troopUin));
+    return localView;
   }
   
-  private String a()
+  public void notifyDataSetChanged()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    String str;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (this.c != null)
     {
-      if (!this.jdField_a_of_type_JavaLangString.startsWith("GameSandBox:")) {
-        break label84;
-      }
-      str = this.jdField_a_of_type_JavaLangString.substring("GameSandBox:".length() + "//".length());
-      localStringBuilder.append(aiys.s);
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      localStringBuilder.append("/sandbox/");
-      localStringBuilder.append(str);
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      label84:
-      if (this.jdField_a_of_type_JavaLangString.startsWith("GameRes:"))
+      this.jdField_a_of_type_JavaUtilList.clear();
+      if (!this.c.isEmpty()) {}
+      for (int i = 1; i != 0; i = 0)
       {
-        str = this.jdField_a_of_type_JavaLangString.substring("GameRes:".length() + "//".length());
-        localStringBuilder.append(aiys.s);
-        localStringBuilder.append(this.jdField_a_of_type_Int);
-        localStringBuilder.append("/");
-        localStringBuilder.append(str);
-      }
-    }
-  }
-  
-  private String a(int paramInt)
-  {
-    return aiys.s + paramInt + "/" + "shareQRCode_default_v2.png";
-  }
-  
-  private void a(int paramInt)
-  {
-    ThreadManager.post(new CmGameCommonShare.4(this, paramInt), 5, null, true);
-  }
-  
-  private void a(int paramInt1, int paramInt2)
-  {
-    aipj localaipj = aing.a(this.jdField_a_of_type_Int);
-    if (localaipj != null) {
-      localaipj.a(paramInt1, paramInt2, 0, "");
-    }
-  }
-  
-  private boolean a(long paramLong)
-  {
-    try
-    {
-      localaipj = aing.a(this.jdField_a_of_type_Int);
-      if (localaipj == null) {
-        break label82;
-      }
-      CmGameStartChecker.StartCheckParam localStartCheckParam = localaipj.a();
-      if ((localStartCheckParam == null) || (localStartCheckParam.mGameType != 5)) {
-        break label82;
-      }
-      if (paramLong == 0L) {
-        break label76;
-      }
-      switch ((int)paramLong)
-      {
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        aipj localaipj;
-        label76:
-        label82:
-        QLog.e("apollo_cmGame_CmGameCommonShare", 1, localThrowable, new Object[0]);
-        continue;
-        int i = 1;
-        continue;
-        i = 2;
-        continue;
-        i = 3;
-        continue;
-        i = 4;
-      }
-    }
-    localaipj.e(i);
-    return true;
-    localaipj.e(1);
-    return false;
-  }
-  
-  private String b(int paramInt)
-  {
-    return aiys.s + paramInt + "/" + "shareQRCode_no_icon_default_v2.png";
-  }
-  
-  private void b()
-  {
-    Bundle localBundle = new Bundle();
-    ArrayList localArrayList = new ArrayList();
-    try
-    {
-      Object localObject = this.jdField_a_of_type_JavaLangString;
-      File localFile = new File(a());
-      if (localFile.isFile())
-      {
-        localObject = localFile;
-        if (localFile.exists()) {}
-      }
-      else
-      {
-        localFile = new File(a(this.jdField_a_of_type_Int));
-        localObject = localFile;
-        if (!localFile.exists()) {
-          localObject = new File(b(this.jdField_a_of_type_Int));
-        }
-      }
-      localArrayList.add(((File)localObject).getAbsolutePath());
-      localBundle.putStringArrayList("images", localArrayList);
-      localBundle.putString("summary", this.c);
-      localBundle.putInt("req_type", 7);
-      localBundle.putBoolean("key_need_save_draft", false);
-      localObject = null;
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-        localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      }
-      if (localObject != null)
-      {
-        bfqn.a(a(), (Context)localObject, localBundle, this, 255);
-        return;
-      }
-      a(1, 4);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("apollo_cmGame_CmGameCommonShare", 1, "publishToQzone:", localException);
-      a(1, 4);
-    }
-  }
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    a();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Begr != null) {
-      this.jdField_a_of_type_Begr.dismiss();
-    }
-  }
-  
-  public void a(Bitmap paramBitmap, int paramInt)
-  {
-    if (paramBitmap == null) {}
-    for (Object localObject = b(paramInt);; localObject = a(paramInt))
-    {
-      localObject = new File((String)localObject);
-      if (!((File)localObject).exists()) {
-        break;
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_cmGame_CmGameCommonShare", 2, new Object[] { "checkDefaultQRSharePic gameId:", paramInt + " bitmap:" + paramBitmap });
-    }
-    ThreadManager.post(new CmGameCommonShare.2(this, paramInt, paramBitmap, (File)localObject), 5, null, true);
-  }
-  
-  public void a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    behb localbehb = null;
-    this.d = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    paramInt = a(paramString);
-    if (paramInt < 0)
-    {
-      QLog.i("apollo_cmGame_CmGameCommonShare", 1, "[showShareDialog], errInfo->parse err or param err, ret:" + paramInt);
-      return;
-    }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-    for (paramString = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramString = null)
-    {
-      this.jdField_b_of_type_Boolean = false;
-      if ((this.jdField_a_of_type_Begr == null) && (paramString != null))
-      {
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(behb.a(0));
-        localArrayList.add(behb.a(1));
-        localArrayList.add(behb.a(2));
-        localArrayList.add(behb.a(3));
-        if (paramString != null)
+        Iterator localIterator = this.c.iterator();
+        while (localIterator.hasNext())
         {
-          localbehb = new behb(paramString);
-          localbehb.a(localArrayList);
+          ShowExternalTroop localShowExternalTroop = (ShowExternalTroop)localIterator.next();
+          this.jdField_a_of_type_JavaUtilList.add(new aipj(1, localShowExternalTroop));
         }
-        this.jdField_a_of_type_Begr = behb.a(paramString, localbehb, this, this, this, false);
       }
-      if ((this.jdField_a_of_type_Begr == null) || (this.jdField_a_of_type_Begr.isShowing())) {
-        break;
-      }
-      this.jdField_a_of_type_Begr.setOnDismissListener(this);
-      this.jdField_a_of_type_Begr.a(new aipg(this));
-      this.jdField_a_of_type_Begr.show();
-      return;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (new File(aiys.s + paramInt + "/" + "shareQRCode_default_v2.png").exists()) {}
-    while (new File(aiys.s + paramInt + "/" + "shareQRCode_no_icon_default_v2.png").exists()) {
-      return true;
-    }
-    return false;
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (!this.jdField_b_of_type_Boolean) {
-      a(-1, -1);
-    }
-  }
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 1000L) {}
-    do
-    {
-      do
-      {
-        return;
-        this.jdField_a_of_type_Long = l;
-        a();
-        if (QLog.isColorLevel()) {
-          QLog.d("apollo_cmGame_CmGameCommonShare", 2, new Object[] { "click type:", Long.valueOf(paramLong) });
-        }
-        this.jdField_b_of_type_Boolean = true;
-      } while (a(paramLong));
-      if (paramLong == 1L)
-      {
-        b();
-        return;
-      }
-      if (paramLong == 0L)
-      {
-        ThreadManager.post(new CmGameCommonShare.3(this), 5, null, true);
-        return;
-      }
-      if (paramLong == 2L)
-      {
-        a(0);
-        return;
-      }
-    } while (paramLong != 3L);
-    a(1);
+    super.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aipf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,363 +1,356 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.graphics.PointF;
-import android.graphics.Rect;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.os.SystemClock;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import dov.com.qq.im.QIMWebEffectCameraCaptureUnit.2;
+import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import dov.com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class bihm
-  extends bifz
-  implements DialogInterface.OnDismissListener, bihq
+  extends QIMEffectCameraCaptureUnit
 {
-  public static String a;
-  private float jdField_a_of_type_Float;
-  private bihp jdField_a_of_type_Bihp;
-  private biyd jdField_a_of_type_Biyd;
-  private float b;
-  private float c;
-  private float d;
+  public static int d;
+  public static int e;
+  public static String p;
+  public boolean A;
+  private boolean B;
+  private boolean C;
+  private boolean D;
+  private boolean E;
+  private boolean F;
+  private boolean G;
+  private boolean H;
+  private boolean I;
+  private BroadcastReceiver a;
+  public boolean a;
+  protected int f;
+  public int g;
+  public int h;
+  private int i;
+  private int j;
+  public String l;
+  public String m;
+  public String n;
+  public String o;
+  private String q;
+  private String r;
+  private String s;
+  private String t;
+  private String u;
+  private String v;
+  private String w;
+  private String x;
+  public boolean y;
+  public boolean z = true;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "EditVideoVote";
+    jdField_e_of_type_Int = 1;
+    jdField_p_of_type_JavaLangString = "key_is_from_bless";
   }
   
-  public bihm(@NonNull bigb parambigb)
+  public bihm(bjqu parambjqu, bjqt parambjqt)
   {
-    super(parambigb);
+    super(parambjqu, parambjqt);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bihn(this);
+    this.jdField_a_of_type_Bjqm = new bjqm(10007, 7, 6);
+    this.jdField_a_of_type_Int = 5;
   }
   
-  private JSONObject a(@NonNull bihp parambihp)
+  private Bundle a(Intent paramIntent)
   {
-    bijy localbijy = a().a();
-    if (localbijy != null)
+    Bundle localBundle = new Bundle();
+    localBundle.putString("dynamic_text", paramIntent.getStringExtra("dynamic_text"));
+    return localBundle;
+  }
+  
+  public static Bundle a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, String paramString1, String paramString2, boolean paramBoolean6, boolean paramBoolean7, String paramString3, String paramString4, int paramInt2, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, bihl parambihl)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("ARG_SUPPORT_VIDEO", paramBoolean1);
+    localBundle.putBoolean("ARG_SUPPORT_PHOTO", paramBoolean2);
+    localBundle.putInt("ARG_CAMERA_MODE", paramInt1);
+    localBundle.putBoolean("ARG_BEAUTY", paramBoolean3);
+    localBundle.putBoolean("ARG_SUPPORT_DD", paramBoolean4);
+    localBundle.putBoolean("ARG_UNFOLD_DD", paramBoolean5);
+    localBundle.putString("ARG_DD_CATEGORY_NAME", paramString1);
+    localBundle.putString("ARG_DD_ITEM_ID", paramString2);
+    localBundle.putBoolean("ARG_SUPPORT_FILTER", paramBoolean6);
+    localBundle.putBoolean("ARG_UNFOLD_FILTER", paramBoolean7);
+    localBundle.putString("ARG_FILTER_CATEGORY_NAME", paramString3);
+    localBundle.putString("ARG_FILTER_ITEM_ID", paramString4);
+    localBundle.putInt("ARG_DEAL_TYPE", paramInt2);
+    localBundle.putString("ARG_ACTIVITY_ID", paramString6);
+    localBundle.putString("ARG_ACTIVITY_TYPE", paramString5);
+    localBundle.putString("ARG_WEB_CALLBACK", paramString7);
+    localBundle.putString("ARG_CALLER_TYPE", paramString8);
+    localBundle.putString("arg_topic_id", paramString9);
+    localBundle.putString("arg_topic_name", paramString10);
+    localBundle.putString("arg_ad_tag", paramString11);
+    localBundle.putString("arg_callback", paramString7);
+    if (parambihl != null)
     {
-      JSONObject localJSONObject1 = new JSONObject();
-      try
-      {
-        localJSONObject1.put("v", 1);
-        localJSONObject1.put("id", 1);
-        JSONArray localJSONArray1 = new JSONArray(Arrays.asList(new Integer[] { Integer.valueOf(vms.a(a())), Integer.valueOf(vms.d(a())) }));
-        JSONArray localJSONArray2 = new JSONArray(Arrays.asList(new Float[] { Float.valueOf(localbijy.u * localbijy.q), Float.valueOf(localbijy.v * localbijy.q) }));
-        JSONArray localJSONArray3 = new JSONArray(Arrays.asList(new Float[] { Float.valueOf(localbijy.b.x + localbijy.s), Float.valueOf(localbijy.b.y + localbijy.t) }));
-        parambihp = new JSONArray(Arrays.asList(parambihp.jdField_a_of_type_ArrayOfJavaLangString));
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("ss", localJSONArray1);
-        localJSONObject2.put("ls", localJSONArray2);
-        localJSONObject2.put("lp", localJSONArray3);
-        localJSONObject2.put("r", localbijy.r);
-        localJSONObject2.put("c", parambihp);
-        localJSONObject1.put("a", localJSONObject2);
-        return localJSONObject1;
+      localBundle.putBoolean("arg_support_combo", parambihl.jdField_a_of_type_Boolean);
+      localBundle.putBoolean("arg_unfold_combo", parambihl.jdField_b_of_type_Boolean);
+      localBundle.putString("arg_combo_name", parambihl.jdField_c_of_type_JavaLangString);
+      localBundle.putString("arg_combo_id", parambihl.jdField_d_of_type_JavaLangString);
+      localBundle.putBoolean("arg_support_music", parambihl.jdField_c_of_type_Boolean);
+      localBundle.putBoolean("arg_unfold_music", parambihl.jdField_d_of_type_Boolean);
+      localBundle.putString("arg_music_name", parambihl.g);
+      localBundle.putString("arg_music_id", parambihl.h);
+    }
+    localBundle.putInt("edit_video_type", 10007);
+    localBundle.putInt("entrance_type", 7);
+    localBundle.putIntegerArrayList("support_intent_mode", new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(0) })));
+    localBundle.putBoolean("enable_local_video", false);
+    return localBundle;
+  }
+  
+  public View a()
+  {
+    View localView = super.a();
+    int i1 = 1;
+    int k;
+    if ((this.B) && (!this.C))
+    {
+      k = 3;
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setFunctionFlag(k);
+      this.f = this.jdField_a_of_type_Bjqu.a().getIntent().getIntExtra("videoId", 0);
+      if (this.f == 0) {
+        break label103;
       }
-      catch (JSONException parambihp)
-      {
-        urk.e("Q.qqstory.publish.edit.EditVideoVote", parambihp.toString());
-      }
-    }
-    return null;
-  }
-  
-  public static void a(Bundle paramBundle, bijy parambijy)
-  {
-    if (parambijy != null)
-    {
-      paramBundle.putFloat("scale", parambijy.q);
-      paramBundle.putFloat("rotate", parambijy.r);
-      paramBundle.putFloat("translateX", parambijy.s);
-      paramBundle.putFloat("translateY", parambijy.t);
-    }
-  }
-  
-  private void a(bihp parambihp, int paramInt)
-  {
-    if (this.jdField_a_of_type_Biyd != null) {
-      j();
-    }
-    this.jdField_a_of_type_Biyd = new biyd(a(), this, parambihp, paramInt);
-    this.jdField_a_of_type_Biyd.setContentView(2131495852);
-    this.jdField_a_of_type_Biyd.setOnDismissListener(this);
-    this.jdField_a_of_type_Biyd.show();
-  }
-  
-  private void j()
-  {
-    if ((this.jdField_a_of_type_Biyd != null) && (this.jdField_a_of_type_Biyd.isShowing()))
-    {
-      this.jdField_a_of_type_Biyd.dismiss();
-      this.jdField_a_of_type_Biyd = null;
-    }
-  }
-  
-  public bihp a()
-  {
-    return this.jdField_a_of_type_Bihp;
-  }
-  
-  @NonNull
-  public bijw a()
-  {
-    Object localObject = (bibg)a(bibg.class);
-    if (localObject == null) {
-      throw new IllegalStateException("can not get EditDoodleExport");
-    }
-    localObject = ((bibg)localObject).a().a();
-    if (localObject == null) {
-      throw new IllegalStateException("VoteLayer is null.");
-    }
-    return localObject;
-  }
-  
-  public void a()
-  {
-    super.a();
-    a(bihq.class, this);
-  }
-  
-  public void a(Bundle paramBundle, String[] paramArrayOfString, Bitmap paramBitmap, Rect[] paramArrayOfRect, boolean paramBoolean)
-  {
-    if (paramBundle != null)
-    {
-      this.jdField_a_of_type_Float = paramBundle.getFloat("scale");
-      this.b = paramBundle.getFloat("rotate");
-      this.c = paramBundle.getFloat("translateX");
-      this.d = paramBundle.getFloat("translateY");
-    }
-    a(paramArrayOfString, paramBitmap, paramArrayOfRect, paramBoolean);
-  }
-  
-  public void a(bijy parambijy, float paramFloat1, float paramFloat2)
-  {
-    if (this.jdField_a_of_type_Bihp == null)
-    {
-      urk.e("Q.qqstory.publish.edit.EditVideoVote", "why vote info is null????");
-      this.jdField_a_of_type_Bigb.a(35);
-      return;
-    }
-    Object localObject = new bira().c(parambijy);
-    float[] arrayOfFloat = new float[2];
-    arrayOfFloat[0] = paramFloat1;
-    arrayOfFloat[1] = paramFloat2;
-    ((Matrix)localObject).mapPoints(arrayOfFloat);
-    paramFloat1 = arrayOfFloat[0];
-    paramFloat2 = parambijy.u / 2.0F;
-    float f1 = arrayOfFloat[1];
-    float f2 = parambijy.v / 2.0F;
-    localObject = new Bundle();
-    a((Bundle)localObject, parambijy);
-    ((Bundle)localObject).putInt("element_index", vlx.a(this.jdField_a_of_type_Bihp.jdField_a_of_type_ArrayOfAndroidGraphicsRect, (int)(paramFloat1 + paramFloat2), (int)(f1 + f2)));
-    this.jdField_a_of_type_Bigb.a(35, localObject);
-    parambijy.l = false;
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    int i = 0;
-    try
-    {
-      bijy localbijy = a().a();
-      if (localbijy != null) {}
-      try
-      {
-        JSONArray localJSONArray1 = new JSONArray(Arrays.asList(new Integer[] { Integer.valueOf(vms.a(a())), Integer.valueOf(vms.d(a())) }));
-        JSONArray localJSONArray2 = new JSONArray(Arrays.asList(new Float[] { Float.valueOf(localbijy.u * localbijy.q), Float.valueOf(localbijy.v * localbijy.q) }));
-        JSONArray localJSONArray3 = new JSONArray(Arrays.asList(new Float[] { Float.valueOf(localbijy.b.x + localbijy.s), Float.valueOf(localbijy.b.y + localbijy.t) }));
-        JSONArray localJSONArray4 = new JSONArray(Arrays.asList(this.jdField_a_of_type_Bihp.jdField_a_of_type_ArrayOfJavaLangString));
-        Object localObject2 = null;
-        Object localObject1 = localObject2;
-        if (localbijy.jdField_a_of_type_ArrayOfAndroidGraphicsRect != null)
-        {
-          localObject1 = localObject2;
-          if (localbijy.jdField_a_of_type_ArrayOfAndroidGraphicsRect.length > 0)
-          {
-            localObject2 = new JSONArray();
-            Rect[] arrayOfRect = localbijy.jdField_a_of_type_ArrayOfAndroidGraphicsRect;
-            int j = arrayOfRect.length;
-            for (;;)
-            {
-              localObject1 = localObject2;
-              if (i >= j) {
-                break;
-              }
-              localObject1 = arrayOfRect[i];
-              ((JSONArray)localObject2).put(localObject1.left);
-              ((JSONArray)localObject2).put(localObject1.top);
-              ((JSONArray)localObject2).put(localObject1.right);
-              ((JSONArray)localObject2).put(localObject1.bottom);
-              i += 1;
-            }
-          }
-        }
-        localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("ss", localJSONArray1);
-        ((JSONObject)localObject2).put("ls", localJSONArray2);
-        ((JSONObject)localObject2).put("lp", localJSONArray3);
-        ((JSONObject)localObject2).put("r", localbijy.r);
-        ((JSONObject)localObject2).put("c", localJSONArray4);
-        if (localObject1 != null) {
-          ((JSONObject)localObject2).put("tr", localObject1);
-        }
-        paramJSONObject.put(jdField_a_of_type_JavaLangString, localObject2);
-        return;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        urk.e("Q.qqstory.publish.edit.EditVideoVote", paramJSONObject.toString());
-        return;
-      }
-      return;
-    }
-    catch (Exception paramJSONObject) {}
-  }
-  
-  public void a(@NonNull String[] paramArrayOfString, @NonNull Bitmap paramBitmap, @NonNull Rect[] paramArrayOfRect, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Bihj == null)
-    {
-      urk.e("Q.qqstory.publish.edit.EditVideoVote", "set vote info but mUi is null.");
-      return;
-    }
-    this.jdField_a_of_type_Bihp = new bihp(paramArrayOfString, paramBitmap, paramArrayOfRect, paramBoolean);
-    a().a(paramBitmap, paramArrayOfRect, paramArrayOfString, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
-  }
-  
-  public void a(@NonNull String[] paramArrayOfString, @NonNull Bitmap paramBitmap, @NonNull Rect[] paramArrayOfRect, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Bihj == null)
-    {
-      urk.e("Q.qqstory.publish.edit.EditVideoVote", "set vote info but mUi is null.");
-      return;
-    }
-    this.jdField_a_of_type_Bihp = new bihp(paramArrayOfString, paramBitmap, paramArrayOfRect, paramBoolean);
-    a().a(paramBitmap, paramArrayOfRect, paramArrayOfString, this.jdField_a_of_type_Float, this.b, this.c, this.d);
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_a_of_type_Biyd != null) && (this.jdField_a_of_type_Biyd.isShowing()))
-    {
-      j();
-      return true;
-    }
-    return false;
-  }
-  
-  public void a_(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      j();
-      return;
-    }
-    int i = -1;
-    paramInt = i;
-    if (paramObject != null)
-    {
-      paramInt = i;
-      if ((paramObject instanceof Bundle))
-      {
-        paramObject = (Bundle)paramObject;
-        paramInt = paramObject.getInt("element_index");
-        this.jdField_a_of_type_Float = paramObject.getFloat("scale");
-        this.b = paramObject.getFloat("rotate");
-        this.c = paramObject.getFloat("translateX");
-        this.d = paramObject.getFloat("translateY");
-      }
-    }
-    a(this.jdField_a_of_type_Bihp, paramInt);
-    a().e();
-    urp.a("video_edit", "clk_vote_entry", 1, 0, new String[0]);
-  }
-  
-  public void b(int paramInt, bitz parambitz)
-  {
-    bihp localbihp = this.jdField_a_of_type_Bihp;
-    if (localbihp != null)
-    {
-      ((bhhb)bhfm.a(15)).a(null);
-      Object localObject = a(localbihp);
-      if (localObject != null)
-      {
-        localObject = ((JSONObject)localObject).toString();
-        urk.a("Q.qqstory.publish.edit.EditVideoVote", "editVideoPrePublish, vote json:%s", localObject);
-        parambitz.a.putExtra("pl", localObject);
-        parambitz = new StringBuilder();
-        localObject = localbihp.jdField_a_of_type_ArrayOfJavaLangString;
-        int i = localObject.length;
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          parambitz.append(localObject[paramInt]).append(";");
-          paramInt += 1;
-        }
-        parambitz.deleteCharAt(parambitz.length() - 1);
-        localObject = parambitz.toString();
-        if (localbihp.jdField_a_of_type_Boolean) {}
-        for (parambitz = "1";; parambitz = "2")
-        {
-          urp.a("video_edit", "pub_vote", 1, 0, new String[] { localObject, parambitz });
-          urp.a("video_edit_new", "qa_send", 1, 0, new String[0]);
-          return;
-        }
-      }
-      urk.b("Q.qqstory.publish.edit.EditVideoVote", "editVideoPrePublish, parse vote json error.");
-      return;
-    }
-    urk.b("Q.qqstory.publish.edit.EditVideoVote", "editVideoPrePublish, vote layer is empty.");
-  }
-  
-  public boolean b()
-  {
-    Object localObject = this.jdField_a_of_type_Bihp;
-    int i;
-    if (localObject != null)
-    {
-      i = 0;
-      if (i >= ((bihp)localObject).jdField_a_of_type_ArrayOfJavaLangString.length) {
-        break label115;
-      }
-      if (!TextUtils.isEmpty(localObject.jdField_a_of_type_ArrayOfJavaLangString[i])) {}
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setMaxDuration(5000.0F);
     }
     for (;;)
     {
-      if (i != -1)
-      {
-        Context localContext = a();
-        if (i == 0) {}
-        for (localObject = ajjy.a(2131637936);; localObject = ajjy.a(2131638015))
-        {
-          babr.a(localContext, 230, (String)localObject, null, ajjy.a(2131638124), ajjy.a(2131638079), new bihn(this, i), new biho(this)).show();
-          return false;
-          i += 1;
-          break;
-        }
+      this.b.setOnClickListener(this);
+      return localView;
+      k = i1;
+      if (this.B) {
+        break;
       }
-      return true;
-      label115:
-      i = -1;
+      k = i1;
+      if (!this.C) {
+        break;
+      }
+      k = 2;
+      break;
+      label103:
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setMaxDuration(10000.0F);
     }
   }
   
-  public void d()
+  protected avuj a()
   {
-    this.jdField_a_of_type_Bihp = null;
-    urk.b("Q.qqstory.publish.edit.EditVideoVote", "deleteVote.");
+    avuj localavuj = super.a();
+    localavuj.i(this.i);
+    return localavuj;
   }
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected List<View> a()
   {
-    this.jdField_a_of_type_Bigb.a(0);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.b);
+    return localArrayList;
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.a(paramInt1, paramInt2, paramIntent);
+    PublishParam localPublishParam;
+    Activity localActivity;
+    Object localObject;
+    if ((paramInt1 == 10007) && (paramInt2 == -1) && (paramIntent != null))
+    {
+      localPublishParam = (PublishParam)paramIntent.getParcelableExtra(PublishParam.jdField_a_of_type_JavaLangString);
+      if (localPublishParam.jdField_j_of_type_Int == 1)
+      {
+        localActivity = this.jdField_a_of_type_Bjqu.a();
+        localActivity.getIntent().putExtra("ab_test_send_btn_click_time", SystemClock.uptimeMillis());
+        localObject = localPublishParam.jdField_c_of_type_JavaLangString;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("QIMWebEffectCameraCaptureUnit", 2, "hwEncodeVideo videoMergeThumbPath =" + (String)localObject);
+          QLog.d("QIMWebEffectCameraCaptureUnit", 2, "publishParam =" + localPublishParam.toString());
+        }
+        PtvFilterUtils.a(new File(localPublishParam.jdField_j_of_type_JavaLangString).getParent(), localPublishParam.jdField_b_of_type_JavaLangString);
+        if (!this.I) {
+          break label251;
+        }
+      }
+    }
+    label251:
+    for (paramInt1 = 15;; paramInt1 = 32)
+    {
+      localActivity.getIntent().putExtra("param_entrance", paramInt1);
+      localActivity.getIntent().putExtra("fake_id", localPublishParam.jdField_b_of_type_JavaLangString);
+      paramIntent = a(paramIntent);
+      localObject = new SessionInfo();
+      ((SessionInfo)localObject).jdField_a_of_type_JavaLangString = "0";
+      bihp.a(localActivity, (SessionInfo)localObject, localPublishParam, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, paramIntent, null);
+      this.jdField_a_of_type_Bizx.n();
+      return;
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+    this.g = this.jdField_a_of_type_Bjqu.a().getIntent().getIntExtra("type", 1);
+    this.h = this.jdField_a_of_type_Bjqu.a().getIntent().getIntExtra("WebSceneType", ahua.jdField_d_of_type_Int);
+    paramBundle = new IntentFilter();
+    paramBundle.addAction("tencent.video.q2v.startUploadPTV");
+    this.jdField_a_of_type_Bjqu.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
+  }
+  
+  public void a(avum paramavum)
+  {
+    super.a(paramavum);
+    bjqn localbjqn = new bjqp(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a()).a(3).a();
+    localbjqn.jdField_a_of_type_Int = this.jdField_j_of_type_Int;
+    localbjqn.jdField_a_of_type_JavaLangString = this.jdField_q_of_type_JavaLangString;
+    this.jdField_a_of_type_Bjqm.a(localbjqn);
+    bkuq.a(this.jdField_a_of_type_Bjqu.a(), paramavum, this.jdField_a_of_type_Bjqm, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int);
+  }
+  
+  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo)
+  {
+    boolean bool2 = true;
+    super.a(paramVideoCaptureResult, paramLocalMediaInfo);
+    Object localObject = new bjqs().b(3).a();
+    if (this.jdField_j_of_type_Int == jdField_d_of_type_Int)
+    {
+      ((bjqq)localObject).i = true;
+      ((bjqq)localObject).jdField_a_of_type_JavaLangString = this.jdField_q_of_type_JavaLangString;
+    }
+    ((bjqq)localObject).jdField_a_of_type_Int = this.g;
+    ((bjqq)localObject).jdField_b_of_type_Int = this.h;
+    ((bjqq)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Bjqu.a().getIntent().getStringExtra("succUrl");
+    ((bjqq)localObject).jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Bjqu.a().getIntent().getStringExtra("failedUrl");
+    this.jdField_a_of_type_Bjqm.a((bjqq)localObject);
+    a(paramLocalMediaInfo);
+    localObject = new bkud();
+    if (this.h == ahua.jdField_b_of_type_Int)
+    {
+      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = ((bkyy)bjae.a(3)).a();
+      if ((localPtvTemplateInfo != null) && ((localPtvTemplateInfo.kind == 5) || (localPtvTemplateInfo.kind == 6) || (localPtvTemplateInfo.kind == 8) || (localPtvTemplateInfo.kind == 9) || (localPtvTemplateInfo.kind == 10)))
+      {
+        ((bkud)localObject).jdField_a_of_type_Int = this.jdField_c_of_type_Int;
+        ((bkud)localObject).jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+        ((bkud)localObject).g = this.jdField_e_of_type_JavaLangString;
+        ((bkud)localObject).f = this.jdField_d_of_type_JavaLangString;
+        ((bkud)localObject).jdField_b_of_type_JavaLangString = (localPtvTemplateInfo.categoryId + "");
+        ((bkud)localObject).jdField_c_of_type_JavaLangString = localPtvTemplateInfo.id;
+        ((bkud)localObject).jdField_a_of_type_Boolean = true;
+        if (localPtvTemplateInfo.kind != 8) {
+          break label387;
+        }
+        bool1 = true;
+        ((bkud)localObject).jdField_b_of_type_Boolean = bool1;
+        if (localPtvTemplateInfo.kind != 9) {
+          break label392;
+        }
+        bool1 = true;
+        label324:
+        ((bkud)localObject).jdField_c_of_type_Boolean = bool1;
+        if (localPtvTemplateInfo.kind != 10) {
+          break label397;
+        }
+      }
+    }
+    label387:
+    label392:
+    label397:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      ((bkud)localObject).jdField_d_of_type_Boolean = bool1;
+      ((bkud)localObject).jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.e();
+      bkuq.a(this.jdField_a_of_type_Bjqu.a(), paramVideoCaptureResult, paramLocalMediaInfo, this.jdField_a_of_type_Bjqm, this.jdField_a_of_type_AndroidOsBundle, 5, (bkud)localObject);
+      return;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label324;
+    }
+  }
+  
+  public void ac()
+  {
+    Bundle localBundle = this.jdField_a_of_type_Bjqu.a().getIntent().getExtras();
+    this.B = localBundle.getBoolean("ARG_SUPPORT_VIDEO");
+    this.C = localBundle.getBoolean("ARG_SUPPORT_PHOTO");
+    this.i = localBundle.getInt("ARG_CAMERA_MODE");
+    this.D = localBundle.getBoolean("ARG_BEAUTY");
+    this.H = localBundle.getBoolean("ARG_SUPPORT_DD");
+    this.E = localBundle.getBoolean("ARG_UNFOLD_DD");
+    this.t = localBundle.getString("ARG_DD_CATEGORY_NAME");
+    this.u = localBundle.getString("ARG_DD_ITEM_ID");
+    this.G = localBundle.getBoolean("ARG_SUPPORT_FILTER");
+    this.F = localBundle.getBoolean("ARG_UNFOLD_FILTER");
+    this.v = localBundle.getString("ARG_FILTER_CATEGORY_NAME");
+    this.w = localBundle.getString("ARG_FILTER_ITEM_ID");
+    this.jdField_j_of_type_Int = localBundle.getInt("ARG_DEAL_TYPE");
+    this.jdField_q_of_type_JavaLangString = localBundle.getString("ARG_WEB_CALLBACK");
+    this.jdField_s_of_type_JavaLangString = localBundle.getString("ARG_ACTIVITY_ID");
+    this.jdField_r_of_type_JavaLangString = localBundle.getString("ARG_ACTIVITY_TYPE");
+    this.x = localBundle.getString("ARG_CALLER_TYPE");
+    this.jdField_a_of_type_Boolean = localBundle.getBoolean("arg_support_combo");
+    this.y = localBundle.getBoolean("arg_unfold_combo");
+    this.l = localBundle.getString("arg_combo_name");
+    this.m = localBundle.getString("arg_combo_id");
+    this.z = localBundle.getBoolean("arg_support_music");
+    this.A = localBundle.getBoolean("arg_unfold_music");
+    this.n = localBundle.getString("arg_music_name");
+    this.jdField_o_of_type_JavaLangString = localBundle.getString("arg_music_id");
+    this.I = localBundle.getBoolean(jdField_p_of_type_JavaLangString);
+  }
+  
+  public void e()
+  {
+    super.e();
+    this.jdField_a_of_type_Bjqu.a().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+  }
+  
+  public void h()
+  {
+    super.h();
+    this.b.setVisibility(8);
+  }
+  
+  public void n()
+  {
+    super.n();
+    ThreadManager.getUIHandler().postDelayed(new QIMWebEffectCameraCaptureUnit.2(this), 300L);
+  }
+  
+  public void o()
+  {
+    ac();
+    this.jdField_o_of_type_Boolean = this.D;
+    this.jdField_p_of_type_Boolean = this.G;
+    this.jdField_q_of_type_Boolean = this.H;
+    this.jdField_r_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    this.jdField_s_of_type_Boolean = this.z;
   }
 }
 

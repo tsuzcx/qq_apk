@@ -1,250 +1,236 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.graphics.Color;
+import android.support.annotation.Nullable;
+import android.util.TimingLogger;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
+import java.util.PriorityQueue;
 
-public class bbmv
-  implements DialogInterface.OnCancelListener, Handler.Callback
+final class bbmv
 {
-  int a;
-  public bbms a;
-  protected final WeakReference<Activity> a;
-  protected final ArrayList<DialogInterface.OnCancelListener> a;
-  protected final Handler b;
+  private static final Comparator<bbmx> jdField_a_of_type_JavaUtilComparator = new bbmw();
+  @Nullable
+  final TimingLogger jdField_a_of_type_AndroidUtilTimingLogger = null;
+  final List<bbne> jdField_a_of_type_JavaUtilList;
+  private final float[] jdField_a_of_type_ArrayOfFloat = new float[3];
+  final int[] jdField_a_of_type_ArrayOfInt;
+  @Nullable
+  final bbnd[] jdField_a_of_type_ArrayOfBbnd;
+  final int[] b;
   
-  public bbmv(Activity paramActivity)
+  bbmv(int[] paramArrayOfInt, int paramInt, @Nullable bbnd[] paramArrayOfbbnd)
   {
-    this(paramActivity, -1);
+    this.jdField_a_of_type_ArrayOfBbnd = paramArrayOfbbnd;
+    paramArrayOfbbnd = new int[32768];
+    this.b = paramArrayOfbbnd;
+    int i = 0;
+    while (i < paramArrayOfInt.length)
+    {
+      j = d(paramArrayOfInt[i]);
+      paramArrayOfInt[i] = j;
+      paramArrayOfbbnd[j] += 1;
+      i += 1;
+    }
+    int j = 0;
+    for (i = 0; j < paramArrayOfbbnd.length; i = k)
+    {
+      if ((paramArrayOfbbnd[j] > 0) && (a(j))) {
+        paramArrayOfbbnd[j] = 0;
+      }
+      k = i;
+      if (paramArrayOfbbnd[j] > 0) {
+        k = i + 1;
+      }
+      j += 1;
+    }
+    paramArrayOfInt = new int[i];
+    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+    j = 0;
+    int m;
+    for (int k = 0; j < paramArrayOfbbnd.length; k = m)
+    {
+      m = k;
+      if (paramArrayOfbbnd[j] > 0)
+      {
+        paramArrayOfInt[k] = j;
+        m = k + 1;
+      }
+      j += 1;
+    }
+    if (i <= paramInt)
+    {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      i = paramArrayOfInt.length;
+      paramInt = n;
+      while (paramInt < i)
+      {
+        j = paramArrayOfInt[paramInt];
+        this.jdField_a_of_type_JavaUtilList.add(new bbne(e(j), paramArrayOfbbnd[j]));
+        paramInt += 1;
+      }
+    }
+    this.jdField_a_of_type_JavaUtilList = a(paramInt);
   }
   
-  public bbmv(Activity paramActivity, int paramInt)
+  static int a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.b = new befq(Looper.getMainLooper(), this);
+    return paramInt >> 10 & 0x1F;
   }
   
-  public void a(int paramInt1, String paramString, int paramInt2)
+  static int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    a(paramInt1, paramString, paramInt2, null);
+    return Color.rgb(b(paramInt1, 5, 8), b(paramInt2, 5, 8), b(paramInt3, 5, 8));
   }
   
-  public void a(int paramInt1, String paramString, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
+  private List<bbne> a(int paramInt)
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localActivity == null)
+    PriorityQueue localPriorityQueue = new PriorityQueue(paramInt, jdField_a_of_type_JavaUtilComparator);
+    localPriorityQueue.offer(new bbmx(this, 0, this.jdField_a_of_type_ArrayOfInt.length - 1));
+    a(localPriorityQueue, paramInt);
+    return a(localPriorityQueue);
+  }
+  
+  private List<bbne> a(Collection<bbmx> paramCollection)
+  {
+    ArrayList localArrayList = new ArrayList(paramCollection.size());
+    paramCollection = paramCollection.iterator();
+    while (paramCollection.hasNext())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QQProgressNotifier", 2, "show baseActivity is null");
-      }
-      return;
-    }
-    if (paramOnCancelListener != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramOnCancelListener);
-    }
-    this.b.removeMessages(1);
-    this.b.removeMessages(2);
-    if ((paramInt1 == 0) && (paramInt2 > 0))
-    {
-      paramOnCancelListener = Message.obtain();
-      paramOnCancelListener.what = 1;
-      paramOnCancelListener.arg1 = paramInt1;
-      paramOnCancelListener.arg2 = 0;
-      paramOnCancelListener.obj = paramString;
-      this.b.sendMessageDelayed(paramOnCancelListener, paramInt2);
-      return;
-    }
-    if (this.jdField_a_of_type_Bbms == null)
-    {
-      if (this.jdField_a_of_type_Int > 0) {
-        this.jdField_a_of_type_Bbms = new bbms(localActivity, 0, this.jdField_a_of_type_Int, 17);
+      bbne localbbne = ((bbmx)paramCollection.next()).a();
+      if (!a(localbbne)) {
+        localArrayList.add(localbbne);
       }
     }
-    else
+    return localArrayList;
+  }
+  
+  private void a(PriorityQueue<bbmx> paramPriorityQueue, int paramInt)
+  {
+    while (paramPriorityQueue.size() < paramInt)
     {
-      label147:
-      if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-        break label290;
+      bbmx localbbmx = (bbmx)paramPriorityQueue.poll();
+      if ((localbbmx == null) || (!localbbmx.a())) {
+        break;
       }
-      this.jdField_a_of_type_Bbms.setOnCancelListener(null);
-      label165:
-      if (paramInt1 != 0) {
-        break label320;
-      }
-      if ((paramString != null) && (!"".equals(paramString.trim()))) {
-        break label301;
-      }
-      this.jdField_a_of_type_Bbms.a(localActivity.getString(2131653452));
+      paramPriorityQueue.offer(localbbmx.a());
+      paramPriorityQueue.offer(localbbmx);
+    }
+  }
+  
+  static void a(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3)
+  {
+    int i = paramInt2;
+    switch (paramInt1)
+    {
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bbms.a(false);
-      this.jdField_a_of_type_Bbms.b(true);
-      if (!localActivity.isFinishing()) {
-        break label312;
-      }
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.d("QQProgressNotifier", 4, "[" + localActivity.isFinishing() + "]");
       return;
-      this.jdField_a_of_type_Bbms = new bbms(localActivity, localActivity.getResources().getDimensionPixelSize(2131167766));
-      break label147;
-      label290:
-      this.jdField_a_of_type_Bbms.setOnCancelListener(this);
-      break label165;
-      label301:
-      this.jdField_a_of_type_Bbms.a(paramString);
-    }
-    label312:
-    this.jdField_a_of_type_Bbms.show();
-    return;
-    label320:
-    if ((paramInt1 == 2) || (paramInt1 == 4) || (paramInt1 == 6))
-    {
-      this.jdField_a_of_type_Bbms.a(paramString);
-      this.jdField_a_of_type_Bbms.d(2130839278);
-      this.jdField_a_of_type_Bbms.a(true);
-      this.jdField_a_of_type_Bbms.b(false);
-      if (!this.jdField_a_of_type_Bbms.isShowing())
+      int j;
+      while (i <= paramInt3)
       {
-        if (!localActivity.isFinishing()) {
-          break label485;
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.d("QQProgressNotifier", 4, "[" + localActivity.isFinishing() + "]");
-        }
+        paramInt1 = paramArrayOfInt[i];
+        paramInt2 = b(paramInt1);
+        j = a(paramInt1);
+        paramArrayOfInt[i] = (c(paramInt1) | paramInt2 << 10 | j << 5);
+        i += 1;
       }
-      paramString = Message.obtain();
-      paramString.what = 2;
-      paramString.arg1 = paramInt1;
-      paramOnCancelListener = this.b;
-      if (paramInt2 <= 0) {
-        break label495;
-      }
-    }
-    label427:
-    label485:
-    label495:
-    for (long l = paramInt2;; l = 1000L)
-    {
-      paramOnCancelListener.sendMessageDelayed(paramString, l);
-      return;
-      this.jdField_a_of_type_Bbms.a(paramString);
-      this.jdField_a_of_type_Bbms.d(2130839291);
-      break;
-      this.jdField_a_of_type_Bbms.show();
-      break label427;
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Bbms != null) && (this.jdField_a_of_type_Bbms.isShowing());
-  }
-  
-  public void b()
-  {
-    this.b.removeMessages(1);
-    this.b.removeMessages(2);
-    try
-    {
-      if ((this.jdField_a_of_type_Bbms != null) && (this.jdField_a_of_type_Bbms.isShowing())) {
-        this.jdField_a_of_type_Bbms.dismiss();
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      while (paramInt2 <= paramInt3)
       {
-        localThrowable.printStackTrace();
+        paramInt1 = paramArrayOfInt[paramInt2];
+        i = c(paramInt1);
+        j = b(paramInt1);
+        paramArrayOfInt[paramInt2] = (a(paramInt1) | i << 10 | j << 5);
+        paramInt2 += 1;
       }
     }
   }
   
-  public void b(int paramInt1, int paramInt2, int paramInt3)
+  private boolean a(int paramInt)
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localActivity == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QQProgressNotifier", 2, "show baseActivity is null");
-      }
-      return;
-    }
-    a(paramInt1, localActivity.getString(paramInt2), paramInt3);
+    paramInt = e(paramInt);
+    bbmy.a(paramInt, this.jdField_a_of_type_ArrayOfFloat);
+    return a(paramInt, this.jdField_a_of_type_ArrayOfFloat);
   }
   
-  public boolean handleMessage(Message paramMessage)
+  private boolean a(int paramInt, float[] paramArrayOfFloat)
   {
-    if (paramMessage.what == 1) {
-      a(paramMessage.arg1, (String)paramMessage.obj, paramMessage.arg2);
-    }
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    int j;
+    int i;
+    if (this.jdField_a_of_type_ArrayOfBbnd != null)
     {
-      do
+      bool1 = bool2;
+      if (this.jdField_a_of_type_ArrayOfBbnd.length > 0)
       {
-        do
-        {
-          return true;
-        } while (paramMessage.what != 2);
-        b();
-      } while ((paramMessage.arg1 != 3) && (paramMessage.arg1 != 4) && (paramMessage.arg1 != 6) && (paramMessage.arg1 != 5));
-      Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localActivity != null)
+        j = this.jdField_a_of_type_ArrayOfBbnd.length;
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i < j)
       {
-        if ((paramMessage.arg1 == 6) || (paramMessage.arg1 == 5))
-        {
-          paramMessage = new Intent();
-          paramMessage.putExtra("isNeedFinish", true);
-          localActivity.setResult(-1, paramMessage);
-        }
-        for (;;)
-        {
-          localActivity.finish();
-          return true;
-          localActivity.setResult(-1);
+        if (!this.jdField_a_of_type_ArrayOfBbnd[i].a(paramInt, paramArrayOfFloat)) {
+          bool1 = true;
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("QQProgressNotifier", 2, "handleMessage baseActivity is null");
-    return true;
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
   }
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  private boolean a(bbne parambbne)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QQProgressNotifier", 4, "onCancel");
+    return a(parambbne.a(), parambbne.a());
+  }
+  
+  static int b(int paramInt)
+  {
+    return paramInt >> 5 & 0x1F;
+  }
+  
+  private static int b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt3 > paramInt2) {
+      paramInt1 <<= paramInt3 - paramInt2;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    for (;;)
     {
-      paramDialogInterface = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramDialogInterface.hasNext())
-      {
-        DialogInterface.OnCancelListener localOnCancelListener = (DialogInterface.OnCancelListener)paramDialogInterface.next();
-        if (localOnCancelListener != null) {
-          localOnCancelListener.onCancel(this.jdField_a_of_type_Bbms);
-        }
-      }
+      return paramInt1 & (1 << paramInt3) - 1;
+      paramInt1 >>= paramInt2 - paramInt3;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  static int c(int paramInt)
+  {
+    return paramInt & 0x1F;
+  }
+  
+  private static int d(int paramInt)
+  {
+    return b(Color.red(paramInt), 8, 5) << 10 | b(Color.green(paramInt), 8, 5) << 5 | b(Color.blue(paramInt), 8, 5);
+  }
+  
+  private static int e(int paramInt)
+  {
+    return a(a(paramInt), b(paramInt), c(paramInt));
+  }
+  
+  List<bbne> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbmv
  * JD-Core Version:    0.7.0.1
  */

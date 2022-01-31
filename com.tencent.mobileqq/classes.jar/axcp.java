@@ -1,31 +1,70 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.5;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class axcp
-  implements MediaPlayer.OnSeekCompleteListener
+  extends MSFServlet
 {
-  public axcp(VideoSprite.5 param5) {}
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    try
+    if (paramFromServiceMsg != null) {}
+    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
     {
-      this.a.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      this.a.this$0.g = true;
-      if (this.a.this$0.jdField_a_of_type_Axcr != null) {
-        this.a.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.this$0, 33L);
+      paramIntent = new Bundle();
+      paramIntent.putString("msg", "servlet result code is " + i);
+      paramIntent.putString("requestType", this.jdField_a_of_type_JavaLangString);
+      paramIntent.putIntegerArrayList("appid", this.jdField_a_of_type_JavaUtilArrayList);
+      if (i != 1000) {
+        break label148;
       }
+      paramFromServiceMsg = bhka.a(paramFromServiceMsg.getWupBuffer());
+      if (paramFromServiceMsg == null) {
+        break;
+      }
+      paramIntent.putInt("ret", 0);
+      paramIntent.putSerializable("data", paramFromServiceMsg);
+      notifyObserver(null, 1007, true, paramIntent, atzo.class);
       return;
     }
-    catch (Exception paramMediaPlayer)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("VideoSprite", 2, "playVideo: " + QLog.getStackTraceString(paramMediaPlayer));
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneGetQbossServlet", 2, "QZONE_GET_QBOSS_DATA fail, decode result is null");
     }
+    paramIntent.putInt("ret", -2);
+    notifyObserver(null, 1007, false, paramIntent, atzo.class);
+    return;
+    label148:
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneGetQbossServlet", 2, "QZONE_GET_QBOSS_DATA fail, resultCode=" + i);
+    }
+    paramIntent.putInt("ret", -3);
+    notifyObserver(null, 1007, false, paramIntent, atzo.class);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    long l = paramIntent.getLongExtra("selfuin", 0L);
+    Object localObject = paramIntent.getIntegerArrayListExtra("appid");
+    boolean bool = paramIntent.getBooleanExtra("needReport", false);
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("requestType");
+    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+    bhka localbhka = new bhka(Long.valueOf(l).longValue(), (ArrayList)localObject, bool);
+    localObject = localbhka.encode();
+    paramIntent = (Intent)localObject;
+    if (localObject == null)
+    {
+      QLog.e("QzoneGetQbossServlet", 1, "onSend request encode result is null.cmd=" + localbhka.uniKey());
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localbhka.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

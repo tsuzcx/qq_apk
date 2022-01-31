@@ -1,33 +1,41 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import com.tencent.mobileqq.pb.PBEnumField;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class afct
-  implements aexp
+  implements View.OnClickListener
 {
-  public afct(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
+  public afct(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
   
-  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!(paramViewHolder instanceof afbv)) {}
+    paramView = paramView.getTag();
+    if ((paramView == null) || (!(paramView instanceof Integer))) {}
+    int i;
     do
     {
-      return;
-      paramView = (afbv)paramViewHolder;
-    } while (paramView.a.msg_type.get() != 2);
-    TroopSuspiciousFragment.a(this.a, paramView);
-  }
-  
-  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    return false;
+      do
+      {
+        return;
+        i = ((Integer)paramView).intValue();
+      } while ((i < 0) || (this.a.jdField_a_of_type_Afcw == null));
+      paramView = this.a.getActivity();
+    } while (paramView == null);
+    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_clk", 0, 0, this.a.b, "", "", "");
+    MessageRecord localMessageRecord = ((afcv)this.a.jdField_a_of_type_Afcw.getItem(i)).a;
+    ChatHistoryBubbleListForTroopFragment.a(paramView, this.a.b, localMessageRecord, 100, 1);
+    if (QLog.isColorLevel()) {
+      QLog.i(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "onItemClick, message = " + localMessageRecord);
+    }
+    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A597", "0X800A597", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afct
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,10 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.question.ReadInJoyQuestionBannerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
 
-public class rcj
-  implements View.OnClickListener
+public abstract interface rcj
 {
-  public rcj(ReadInJoyQuestionBannerAdapter paramReadInJoyQuestionBannerAdapter, int paramInt) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersQuestionReadInJoyQuestionBannerAdapter.a(this.jdField_a_of_type_Int);
-  }
+  public abstract boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject);
 }
 
 

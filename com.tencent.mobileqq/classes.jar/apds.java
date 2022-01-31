@@ -1,36 +1,42 @@
-import android.content.Context;
-import android.graphics.Rect;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp;
 
-final class apds
-  implements aoji
+class apds
+  implements bidp<WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp>
 {
-  apds(QQAppInterface paramQQAppInterface, Context paramContext, FileManagerEntity paramFileManagerEntity, int paramInt1, SessionInfo paramSessionInfo, ChatMessage paramChatMessage, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, Rect paramRect) {}
+  apds(apdj paramapdj, apdx paramapdx) {}
   
-  public void a() {}
-  
-  public void b()
+  public void a(int paramInt, String paramString, WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
   {
-    Object localObject = new aowq(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_Int);
-    new Bundle();
-    ((aowq)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    ((aowq)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    ((aowq)localObject).a(this.jdField_a_of_type_Boolean);
-    ((aowq)localObject).b(this.jdField_b_of_type_Boolean);
-    localObject = new aows(this.jdField_a_of_type_AndroidContentContext, (aowv)localObject);
-    ((aows)localObject).a(this.jdField_b_of_type_Int);
-    ((aows)localObject).a(this.jdField_a_of_type_AndroidGraphicsRect);
-    ((aows)localObject).a(true);
-    ((aows)localObject).a();
+    QLog.i("WeiYunLogicCenter<FileAssistant>", 1, "sendWeiYun2Dataline onFailed: errcode[" + paramInt + "], errmsg[" + paramString + "]");
+    if (this.jdField_a_of_type_Apdx != null) {
+      this.jdField_a_of_type_Apdx.a(paramInt, paramString);
+    }
+  }
+  
+  public void a(WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
+  {
+    paramCrossBidProxyCopyFileToOtherBidMsgRsp = new String(paramCrossBidProxyCopyFileToOtherBidMsgRsp.dst_path.get().toByteArray());
+    if (paramCrossBidProxyCopyFileToOtherBidMsgRsp.length() < 1)
+    {
+      QLog.e("WeiYunLogicCenter<FileAssistant>", 1, "=_= ^! [CS Replay]sendWeiYun2Dataline onSucceed,But uuid is null!!!");
+      if (this.jdField_a_of_type_Apdx != null) {
+        this.jdField_a_of_type_Apdx.a(-3, "copyFileToOtherBid_fail");
+      }
+    }
+    do
+    {
+      return;
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 1, "=_= ^ [CS Replay] sendWeiYun2Dataline onSucceed, Uuid[" + paramCrossBidProxyCopyFileToOtherBidMsgRsp + "]");
+    } while (this.jdField_a_of_type_Apdx == null);
+    this.jdField_a_of_type_Apdx.a(paramCrossBidProxyCopyFileToOtherBidMsgRsp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apds
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import java.util.List;
 
-public class aoay
-  implements View.OnTouchListener
+class aoay
+  implements aoaj
 {
-  public aoay(FileAssistantActivity paramFileAssistantActivity) {}
+  aoay(aoav paramaoav) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(List<aoah> paramList)
   {
-    if (paramMotionEvent.getAction() == 4)
+    if (paramList != null)
     {
-      this.a.a.dismiss();
-      return true;
+      this.a.a(paramList);
+      this.a.notifyDataSetChanged();
     }
-    return false;
   }
 }
 

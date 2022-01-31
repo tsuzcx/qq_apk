@@ -1,42 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine.NetSearchRunnalbe;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine.ParseTask;
-import java.util.ArrayList;
+import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
+import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.HWDecodeListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class avvg
-  extends ajjh
+  implements HWDecodeListener
 {
-  public avvg(NetSearchEngine.NetSearchRunnalbe paramNetSearchRunnalbe) {}
+  public avvg(FollowCaptureView paramFollowCaptureView) {}
   
-  protected void onSearchFriendResult(boolean paramBoolean1, int paramInt1, Object paramObject, int paramInt2, String paramString, boolean paramBoolean2, long paramLong)
+  public void onDecodeCancel() {}
+  
+  public void onDecodeError(int paramInt, Throwable paramThrowable) {}
+  
+  public void onDecodeFinish() {}
+  
+  public void onDecodeFrame(long paramLong1, long paramLong2)
   {
-    if (this.a.a != null) {
-      NetSearchEngine.a(this.a.this$0).removeObserver(this.a.a);
-    }
-    if (NetSearchEngine.NetSearchRunnalbe.a(this.a)) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while ((paramInt1 != 88) || (paramBoolean2));
-        if (!paramBoolean1) {
-          break;
-        }
-      } while (!(paramObject instanceof ArrayList));
-      ThreadManager.post(new NetSearchEngine.ParseTask(this.a.this$0, NetSearchEngine.NetSearchRunnalbe.a(this.a), (ArrayList)paramObject, NetSearchEngine.NetSearchRunnalbe.a(this.a)), 10, null, true);
-      return;
-    } while (NetSearchEngine.NetSearchRunnalbe.a(this.a) == null);
-    NetSearchEngine.NetSearchRunnalbe.a(this.a).a(null, 1);
+    FollowCaptureView.a(this.a, paramLong1);
   }
+  
+  public void onDecodeRepeat()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FollowCaptureView", 2, "onDecodeRepeat");
+    }
+    FollowCaptureView.a(this.a);
+  }
+  
+  public void onDecodeSeekTo(long paramLong) {}
+  
+  public void onDecodeStart() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avvg
  * JD-Core Version:    0.7.0.1
  */

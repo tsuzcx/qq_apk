@@ -1,14 +1,19 @@
-import com.tencent.device.datadef.DeviceInfo;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.dataline.activities.LiteActivity;
 
-class df
-  extends xrg
+public class df
+  implements DialogInterface.OnDismissListener
 {
-  df(dd paramdd) {}
+  public df(LiteActivity paramLiteActivity) {}
   
-  protected void a(ArrayList<DeviceInfo> paramArrayList)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    dd.a(this.a, 2);
+    if (LiteActivity.b(this.a))
+    {
+      LiteActivity.a(this.a, false);
+      this.a.finish();
+    }
   }
 }
 

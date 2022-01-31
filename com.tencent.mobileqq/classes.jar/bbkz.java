@@ -1,56 +1,17 @@
-import android.graphics.RectF;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 public final class bbkz
+  implements DialogInterface.OnClickListener
 {
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  public axkd a;
-  private List<RectF> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private List<axkd> b = new ArrayList();
-  
-  private bbkz(axkd paramaxkd)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Axkd = paramaxkd;
-  }
-  
-  private void a(RectF paramRectF, axkd paramaxkd)
-  {
-    int j;
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      int i = 0;
-      j = i;
-      if (!localIterator.hasNext()) {
-        break label63;
-      }
-      if (!paramRectF.equals((RectF)localIterator.next())) {
-        break label91;
-      }
-      i = 1;
-    }
-    label63:
-    label91:
-    for (;;)
-    {
-      break;
-      j = 0;
-      if (j == 0)
-      {
-        this.jdField_a_of_type_JavaUtilList.add(paramRectF);
-        this.b.add(paramaxkd);
-      }
-      return;
-    }
+    axqw.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbkz
  * JD-Core Version:    0.7.0.1
  */

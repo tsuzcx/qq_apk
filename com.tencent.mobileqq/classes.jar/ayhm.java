@@ -1,35 +1,32 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ayhm
-  implements bbsh
+class ayhm
+  implements View.OnClickListener
 {
-  public ayhm(TroopCreateLogicActivity paramTroopCreateLogicActivity) {}
+  ayhm(ayhl paramayhl) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onClick(View paramView)
   {
-    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
+    ayir localayir;
+    if (bbbd.a("tag_swip_icon_menu_item", paramView.getTag()))
+    {
+      localayir = (ayir)paramView.getTag(-10);
+      if (paramView.getId() != 2131364302) {
+        break label40;
+      }
+      ayhl.a(this.a, localayir);
+    }
+    label40:
+    while (ayhl.a(this.a) == null) {
       return;
     }
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      bbmy.a(BaseApplicationImpl.getContext(), 2, 2131653595, 1).a();
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      bbmy.a(BaseApplicationImpl.getContext(), 2, 2131653612, 1).a();
-    }
+    ayhl.a(this.a).a(paramView.getId(), localayir);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayhm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,20 @@
-import android.support.v4.util.LruCache;
-import android.text.TextUtils;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.data.ISong;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.haoliyou.JefsClass.8;
 
 public class aqvj
-  implements aqxn
+  implements DialogInterface.OnClickListener
 {
-  public aqvj(ListenTogetherManager paramListenTogetherManager) {}
+  public aqvj(JefsClass.8 param8) {}
   
-  public void a(ISong paramISong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramISong != null)
-    {
-      ListenTogetherManager.a(this.a, paramISong);
-      this.a.a(paramISong.a());
-      String str = (String)ListenTogetherManager.a(this.a).get(paramISong.a());
-      if (!TextUtils.isEmpty(str)) {
-        ListenTogetherManager.a(this.a, paramISong.a(), str);
-      }
-    }
-    else
-    {
-      return;
-    }
-    ListenTogetherManager.a(this.a, paramISong.a());
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqvj
  * JD-Core Version:    0.7.0.1
  */

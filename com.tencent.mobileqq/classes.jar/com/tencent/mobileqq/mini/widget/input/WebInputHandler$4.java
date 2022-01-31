@@ -1,15 +1,42 @@
 package com.tencent.mobileqq.mini.widget.input;
 
+import android.animation.ObjectAnimator;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
+import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
+import com.tencent.mobileqq.mini.util.DisplayUtil;
 
 class WebInputHandler$4
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  WebInputHandler$4(WebInputHandler paramWebInputHandler) {}
+  WebInputHandler$4(WebInputHandler paramWebInputHandler, WebEditText paramWebEditText) {}
   
   public void onGlobalLayout()
   {
-    WebInputHandler.access$200(this.this$0);
+    if ((this.val$webEditText.isFocused()) && (WebInputHandler.access$200(this.this$0)))
+    {
+      localObject = new int[2];
+      this.val$webEditText.getLocationOnScreen((int[])localObject);
+      i = localObject[1];
+      i = DisplayUtil.getRealHeight(this.val$webEditText.getContext()) - (i + this.val$webEditText.getHeight()) - this.val$webEditText.getMarginBottom();
+      if ((WebInputHandler.access$300(this.this$0) > i) && (this.val$webEditText.isAdjustPosition()) && (WebInputHandler.access$200(this.this$0)) && (WebInputHandler.access$400(this.this$0) != null) && (WebInputHandler.access$400(this.this$0).getCurrentWebviewContainer() != null))
+      {
+        localObject = ObjectAnimator.ofFloat(WebInputHandler.access$400(this.this$0).getCurrentWebviewContainer(), "translationY", new float[] { 0.0F, -(WebInputHandler.access$300(this.this$0) - i) });
+        ((ObjectAnimator)localObject).setDuration(200L);
+        ((ObjectAnimator)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
+        ((ObjectAnimator)localObject).start();
+      }
+    }
+    while ((WebInputHandler.access$200(this.this$0)) || (WebInputHandler.access$400(this.this$0) == null) || (WebInputHandler.access$400(this.this$0).getCurrentWebviewContainer() == null))
+    {
+      int i;
+      return;
+    }
+    Object localObject = ObjectAnimator.ofFloat(WebInputHandler.access$400(this.this$0).getCurrentWebviewContainer(), "translationY", new float[] { WebInputHandler.access$400(this.this$0).getCurrentWebviewContainer().getTranslationY(), 0.0F });
+    ((ObjectAnimator)localObject).setDuration(200L);
+    ((ObjectAnimator)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
+    ((ObjectAnimator)localObject).start();
   }
 }
 

@@ -1,15 +1,35 @@
-import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
 
 class utk
-  implements auub
+  extends SimpleJob<Object>
 {
-  utk(uth paramuth) {}
-  
-  public void a()
+  utk(uth paramuth, String paramString1, String paramString2)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 10000L);
-    ((uyz)sqg.a(8)).a(vls.a(this.a.jdField_a_of_type_Uut.a), this.a.jdField_a_of_type_Uzm);
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    paramJobContext = (tcp)tdc.a(19);
+    paramVarArgs = paramJobContext.a(tji.a(this.jdField_a_of_type_Uth.b));
+    utm localutm = new utm(this.jdField_a_of_type_Uth.c);
+    ArrayList localArrayList = new ArrayList();
+    localutm.jdField_a_of_type_JavaUtilList = paramJobContext.a(this.jdField_a_of_type_JavaLangString, localArrayList);
+    localutm.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localutm.jdField_a_of_type_Boolean = bool;
+      ste.a().dispatch(localutm);
+      veg.a("Q.qqstory.memories:MemoryDataPuller", "Get memory key list %s", localutm.jdField_a_of_type_JavaUtilList);
+      return null;
+    }
   }
 }
 

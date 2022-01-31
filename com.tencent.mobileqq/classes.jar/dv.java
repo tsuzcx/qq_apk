@@ -1,44 +1,39 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
-import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
-class dv
-  implements apcz
+public class dv
+  extends AsyncTask<Bundle, Integer, Void>
 {
-  dv(dr paramdr, DataLineMsgRecord paramDataLineMsgRecord) {}
+  public dv(LiteActivity paramLiteActivity) {}
   
-  public void onClick(View paramView)
+  protected Void a(Bundle... paramVarArgs)
   {
-    if ((this.jdField_a_of_type_Dr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_Dr.jdField_a_of_type_AndroidContentContext == null)) {}
-    String str;
-    do
+    Object localObject = paramVarArgs[0].getStringArrayList("PhotoConst.PHOTO_PATHS");
+    if (localObject == null) {}
+    for (;;)
     {
-      do
+      return null;
+      paramVarArgs = (ajuo)this.a.app.a(8);
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        do
-        {
-          return;
-          paramView = new WeakReference(this.jdField_a_of_type_Dr.jdField_a_of_type_AndroidContentContext);
-        } while (!(this.jdField_a_of_type_Dr.jdField_a_of_type_AndroidContentContext instanceof Activity));
-        if (!badq.d(this.jdField_a_of_type_Dr.jdField_a_of_type_AndroidContentContext))
-        {
-          bbmy.a(this.jdField_a_of_type_Dr.jdField_a_of_type_AndroidContentContext, 2131626719, 0).b(this.jdField_a_of_type_Dr.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131167766));
-          return;
-        }
-      } while ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord == null) || (paramView.get() == null));
-      str = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.getExtInfoFromExtStr("key_team_work_ext_info_new_url");
-      Boolean.parseBoolean(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.getExtInfoFromExtStr("team_work_is_message_convert"));
-    } while (TextUtils.isEmpty(str));
-    Bundle localBundle = new Bundle();
-    localBundle.putString("url", str);
-    localBundle.putString("tdsourcetag", "s_qq_aio_grey");
-    TeamWorkDocEditBrowserActivity.a((Context)paramView.get(), localBundle, false);
+        String str = (String)((Iterator)localObject).next();
+        DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
+        localDataLineMsgRecord.path = str;
+        localDataLineMsgRecord.msgtype = -2009;
+        paramVarArgs.a(localDataLineMsgRecord, false);
+      }
+    }
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    this.a.a(false);
   }
 }
 

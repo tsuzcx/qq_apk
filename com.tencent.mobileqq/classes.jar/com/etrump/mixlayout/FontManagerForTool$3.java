@@ -1,15 +1,15 @@
 package com.etrump.mixlayout;
 
-import fz;
+import hs;
 
 public class FontManagerForTool$3
   implements Runnable
 {
-  public FontManagerForTool$3(fz paramfz, boolean paramBoolean) {}
+  public FontManagerForTool$3(hs paramhs, boolean paramBoolean) {}
   
   public void run()
   {
-    fz.a(this.this$0, this.a, true);
+    hs.a(this.this$0, this.a, true);
   }
 }
 

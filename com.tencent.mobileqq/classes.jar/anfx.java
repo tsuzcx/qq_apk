@@ -1,13 +1,10 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-
-public abstract class anfx
+public abstract interface anfx
 {
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle) {}
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anfx
  * JD-Core Version:    0.7.0.1
  */

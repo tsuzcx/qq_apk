@@ -1,25 +1,16 @@
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.dataline.util.widget.AsyncImageView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.customviews.MessageProgressTextView;
+import com.dataline.activities.PrinterActivity;
 
 public class eg
+  extends ajuv
 {
-  public LinearLayout a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public URLImageView a;
-  public MessageProgressTextView a;
-  public LinearLayout b;
-  public TextView b;
-  public TextView c;
+  public eg(PrinterActivity paramPrinterActivity) {}
   
-  public eg(ed paramed) {}
+  protected void a(Object paramObject, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (PrinterActivity.a(this.a))) {
+      PrinterActivity.a(this.a, paramObject);
+    }
+  }
 }
 
 

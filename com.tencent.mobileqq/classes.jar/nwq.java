@@ -1,22 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
 
-class nwq
-  implements DialogInterface.OnClickListener
+public class nwq
+  implements qzi
 {
-  nwq(nwp paramnwp, String paramString, int paramInt) {}
+  public nwq(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    bbmy.a(this.jdField_a_of_type_Nwp.jdField_a_of_type_Nwk.a, 2, ajjy.a(2131647251), 0).a();
-    if (this.jdField_a_of_type_Nwp.jdField_a_of_type_Nwd != null) {
-      this.jdField_a_of_type_Nwp.jdField_a_of_type_Nwd.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt);
+    if ((ReadInJoyNewFeedsActivity.a(this.a).a(paramInt) != null) && (ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a() != null)) {
+      ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a().k();
     }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == paramInt2) {
+      shx.a(false);
+    }
+    if (paramInt2 == 1) {
+      this.a.getIntent().putExtra("channel_from", 7);
+    }
+    if ((paramInt1 == paramInt2) && (paramInt2 == 0) && ((this.a.a() instanceof ReadInJoySubChannelFragment)))
+    {
+      this.a.a().f();
+      return;
+    }
+    this.a.a(paramInt2, 256, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nwq
  * JD-Core Version:    0.7.0.1
  */

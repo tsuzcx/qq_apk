@@ -1,87 +1,116 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.highway.config.HwServlet;
-import com.tencent.mobileqq.highway.openup.SessionInfo;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtReq;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.UUID;
 
-public abstract class mjt
+public class mjt
+  implements Animation.AnimationListener
 {
-  private final int jdField_a_of_type_Int;
-  protected AppInterface a;
-  final String jdField_a_of_type_JavaLangString;
+  int jdField_a_of_type_Int = 0;
   
-  protected mjt(AppInterface paramAppInterface, int paramInt, long paramLong)
+  public mjt(VideoControlUI paramVideoControlUI, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = ("FileUpload_" + paramInt + "_" + paramLong);
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
   }
   
-  public static void a(AppInterface paramAppInterface)
+  @TargetApi(11)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramAppInterface != null) {
-      paramAppInterface.getHwEngine().preConnect();
+    long l = AudioHelper.b();
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvUiVideoControlUI$ToolbarAnimationRunnable);
+    if ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (paramAnimation != null) && (2 == this.jdField_a_of_type_Int)) {
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(118), Boolean.valueOf(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h), Boolean.valueOf(false), Long.valueOf(paramAnimation.getDuration()) });
     }
-  }
-  
-  public static byte[] a(String paramString, AppInterface paramAppInterface)
-  {
-    try
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_c_of_type_JavaLangString, 1, "onAnimationEnd, mToolBarType[" + this.jdField_a_of_type_Int + "], animation[" + paramAnimation + "], mToolbarDisplay[" + this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h + "], seq[" + l + "]");
+    if (!this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h)
     {
-      String str = paramAppInterface.getCurrentAccountUin();
-      if (SessionInfo.getInstance(str).getHttpconn_sig_session() != null)
-      {
-        int i = SessionInfo.getInstance(str).getHttpconn_sig_session().length;
-        paramString = new byte[i];
-        System.arraycopy(SessionInfo.getInstance(str).getHttpconn_sig_session(), 0, paramString, 0, i);
-        return paramString;
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_c_of_type_AndroidWidgetRelativeLayout != null) {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
       }
-      HwServlet.getConfig(paramAppInterface, str);
-      QLog.w(paramString, 1, "getSig, fail");
-      return null;
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d != null) {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d.setVisibility(0);
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvUiQavPanel != null) {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvUiQavPanel.setVisibility(4);
+      }
+      if (Build.VERSION.SDK_INT >= 19) {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(0);
+      }
+      mat.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface, true);
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.w = 0;
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController != null)
+      {
+        paramAnimation = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a();
+        if (((paramAnimation.E == 2) || (paramAnimation.E == 1)) && (!this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().q())) {
+          this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a(l, 360 - this.jdField_a_of_type_ComTencentAvUiVideoControlUI.r);
+        }
+      }
     }
-    finally {}
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.l = false;
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(102) });
+      return;
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_c_of_type_AndroidWidgetRelativeLayout != null) {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d != null) {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d.setVisibility(8);
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvUiQavPanel != null)
+      {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvUiQavPanel.setVisibility(0);
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvUiQavPanel.setAlpha(1.0F);
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_AndroidViewView != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_c_of_type_JavaLangString, 2, "onAnimationEnd, change member list ui to visible");
+        }
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+      VideoControlUI.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI, true);
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.w = 5;
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController != null)
+      {
+        paramAnimation = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a();
+        if ((paramAnimation.E == 2) || (paramAnimation.E == 1)) {
+          this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a(l, 0.0F);
+        }
+      }
+    }
   }
   
-  protected boolean a(String paramString, mjv parammjv)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    long l = new File(paramString).length();
-    String str = akqi.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    if (l == 0L)
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.l = true;
+    if ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (paramAnimation != null) && (2 == this.jdField_a_of_type_Int)) {
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(118), Boolean.valueOf(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h), Boolean.valueOf(true), Long.valueOf(paramAnimation.getDuration()) });
+    }
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_c_of_type_JavaLangString, 1, "[" + this.jdField_a_of_type_Int + "]onAnimationStart[" + paramAnimation + "]");
+    VideoControlUI.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI, (int)(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_AndroidViewAnimationAnimation.getDuration() / 5L));
+    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h) {
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.w = 0;
+    }
+    for (;;)
     {
-      parammjv.a(-10001, str, "", null);
-      return false;
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvUiVideoControlUI$ToolbarAnimationRunnable);
+      return;
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.w = 5;
+      VideoControlUI.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI, false);
     }
-    Object localObject = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    if ((localObject == null) || (localObject.length == 0))
-    {
-      parammjv.a(-10003, str, "", null);
-      return false;
-    }
-    byte[] arrayOfByte = akqi.a(paramString);
-    if ((arrayOfByte == null) || (arrayOfByte.length == 0))
-    {
-      parammjv.a(-10002, str, "", null);
-      return false;
-    }
-    mju localmju = new mju(this, str, l, arrayOfByte, parammjv);
-    Bdh_extinfo.CommFileExtReq localCommFileExtReq = new Bdh_extinfo.CommFileExtReq();
-    localCommFileExtReq.uint32_action_type.set(0);
-    localCommFileExtReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString()));
-    localObject = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, paramString, 0, (byte[])localObject, arrayOfByte, localmju, localCommFileExtReq.toByteArray());
-    int i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask((Transaction)localObject);
-    if (i != 0) {
-      parammjv.a(i, str, "", null);
-    }
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestToUpload, localFile[" + paramString + "], sessionId[" + str + "]");
-    return i == 0;
   }
 }
 

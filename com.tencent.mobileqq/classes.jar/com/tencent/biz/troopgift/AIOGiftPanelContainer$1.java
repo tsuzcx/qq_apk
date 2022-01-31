@@ -1,11 +1,11 @@
 package com.tencent.biz.troopgift;
 
-import wmm;
+import xbp;
 
 public class AIOGiftPanelContainer$1
   implements Runnable
 {
-  public AIOGiftPanelContainer$1(wmm paramwmm, int paramInt) {}
+  public AIOGiftPanelContainer$1(xbp paramxbp, int paramInt) {}
   
   public void run()
   {

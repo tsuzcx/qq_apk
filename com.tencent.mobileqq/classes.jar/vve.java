@@ -1,51 +1,81 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.view.MotionEvent;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-class vve
-  implements View.OnTouchListener
+public class vve
+  extends BaseAdapter
 {
-  vve(vvd paramvvd, Drawable paramDrawable, vvj paramvvj) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<vvg> jdField_a_of_type_JavaUtilList = new ArrayList();
+  @Nullable
+  private vvg jdField_a_of_type_Vvg;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public vve(Context paramContext)
   {
-    switch (paramMotionEvent.getAction())
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  @Nullable
+  public vvg a()
+  {
+    return this.jdField_a_of_type_Vvg;
+  }
+  
+  public void a(List<vvg> paramList)
+  {
+    if (paramList == null)
     {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
+  
+  public void a(@Nullable vvg paramvvg)
+  {
+    this.jdField_a_of_type_Vvg = paramvvg;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561380, null);
+      paramView = new vvf(paramViewGroup);
+      paramViewGroup.setTag(paramView);
     }
     for (;;)
     {
-      return true;
-      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof GradientDrawable)) {
-        if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
-        {
-          ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-15263977);
-        }
-        else
-        {
-          ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-920840);
-          continue;
-          if (vvd.a(this.jdField_a_of_type_Vvd) != null) {
-            vvd.a(this.jdField_a_of_type_Vvd).a(this.jdField_a_of_type_Vvj);
-          }
-          if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof GradientDrawable)) {
-            if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
-              ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-16777216);
-            } else {
-              ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-1);
-            }
-          }
-        }
-      }
+      paramView.a((vvg)this.jdField_a_of_type_JavaUtilList.get(paramInt), this.jdField_a_of_type_Vvg);
+      return paramView.a;
+      paramView = (vvf)paramView.getTag();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vve
  * JD-Core Version:    0.7.0.1
  */

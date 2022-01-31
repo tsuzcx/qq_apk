@@ -3,24 +3,24 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
 import java.util.Iterator;
 import java.util.List;
-import ohb;
-import opx;
+import osm;
+import pay;
 
 public class InterestLabelInfoModule$3
   implements Runnable
 {
-  public InterestLabelInfoModule$3(opx paramopx, List paramList) {}
+  public InterestLabelInfoModule$3(pay parampay, List paramList) {}
   
   public void run()
   {
-    opx.a(this.this$0).clear();
+    pay.a(this.this$0).clear();
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       InterestLabelInfo localInterestLabelInfo = (InterestLabelInfo)localIterator.next();
-      opx.a(this.this$0).add(localInterestLabelInfo);
+      pay.a(this.this$0).add(localInterestLabelInfo);
     }
-    ohb.a().a(opx.a(this.this$0));
+    osm.a().a(pay.a(this.this$0));
   }
 }
 

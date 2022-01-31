@@ -8,14 +8,14 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import obz;
-import psb;
+import onk;
+import qdz;
 import tencent.im.oidb.articlesummary.articlesummary.VideoColumnInfo;
 
 public class VideoColumnInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoColumnInfo> CREATOR = new psb();
+  public static final Parcelable.Creator<VideoColumnInfo> CREATOR = new qdz();
   public int a;
   public long a;
   public UrlJumpInfo a;
@@ -80,8 +80,8 @@ public class VideoColumnInfo
         {
           localObject1 = new VideoColumnInfo();
           ((VideoColumnInfo)localObject1).jdField_a_of_type_Int = paramVideoColumnInfo.uint32_column_id.get();
-          ((VideoColumnInfo)localObject1).jdField_a_of_type_JavaLangString = obz.a(paramVideoColumnInfo.bytes_column_name);
-          ((VideoColumnInfo)localObject1).jdField_b_of_type_JavaLangString = obz.a(paramVideoColumnInfo.bytes_column_icon_url);
+          ((VideoColumnInfo)localObject1).jdField_a_of_type_JavaLangString = onk.a(paramVideoColumnInfo.bytes_column_name);
+          ((VideoColumnInfo)localObject1).jdField_b_of_type_JavaLangString = onk.a(paramVideoColumnInfo.bytes_column_icon_url);
           ((VideoColumnInfo)localObject1).jdField_a_of_type_Long = paramVideoColumnInfo.uint64_last_update_time.get();
           ((VideoColumnInfo)localObject1).jdField_b_of_type_Int = paramVideoColumnInfo.uint32_video_count.get();
           ((VideoColumnInfo)localObject1).jdField_c_of_type_Int = paramVideoColumnInfo.uint32_subscribe_count.get();
@@ -95,18 +95,18 @@ public class VideoColumnInfo
     for (boolean bool = true;; bool = false)
     {
       ((VideoColumnInfo)localObject1).jdField_a_of_type_Boolean = bool;
-      ((VideoColumnInfo)localObject1).jdField_c_of_type_JavaLangString = obz.a(paramVideoColumnInfo.bytes_column_card_bg_url);
-      ((VideoColumnInfo)localObject1).jdField_d_of_type_JavaLangString = obz.a(paramVideoColumnInfo.bytes_column_card_bg_color);
-      ((VideoColumnInfo)localObject1).e = obz.a(paramVideoColumnInfo.bytes_column_card_icon_url);
-      ((VideoColumnInfo)localObject1).f = obz.a(paramVideoColumnInfo.bytes_app_name);
-      ((VideoColumnInfo)localObject1).g = obz.a(paramVideoColumnInfo.bytes_app_icon_url);
+      ((VideoColumnInfo)localObject1).jdField_c_of_type_JavaLangString = onk.a(paramVideoColumnInfo.bytes_column_card_bg_url);
+      ((VideoColumnInfo)localObject1).jdField_d_of_type_JavaLangString = onk.a(paramVideoColumnInfo.bytes_column_card_bg_color);
+      ((VideoColumnInfo)localObject1).e = onk.a(paramVideoColumnInfo.bytes_column_card_icon_url);
+      ((VideoColumnInfo)localObject1).f = onk.a(paramVideoColumnInfo.bytes_app_name);
+      ((VideoColumnInfo)localObject1).g = onk.a(paramVideoColumnInfo.bytes_app_icon_url);
       ((VideoColumnInfo)localObject1).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.default_jump_info);
       ((VideoColumnInfo)localObject1).jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.video_jump_info);
       ((VideoColumnInfo)localObject1).jdField_c_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.subscribe_jump_info);
       ((VideoColumnInfo)localObject1).jdField_d_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.app_jump_info);
       ((VideoColumnInfo)localObject1).jdField_d_of_type_Int = paramVideoColumnInfo.uin32_column_card_bg_style.get();
-      ((VideoColumnInfo)localObject1).h = obz.a(paramVideoColumnInfo.bytes_from_txt);
-      ((VideoColumnInfo)localObject1).i = obz.a(paramVideoColumnInfo.bytes_column_name_color);
+      ((VideoColumnInfo)localObject1).h = onk.a(paramVideoColumnInfo.bytes_from_txt);
+      ((VideoColumnInfo)localObject1).i = onk.a(paramVideoColumnInfo.bytes_column_name_color);
       return localObject1;
     }
   }

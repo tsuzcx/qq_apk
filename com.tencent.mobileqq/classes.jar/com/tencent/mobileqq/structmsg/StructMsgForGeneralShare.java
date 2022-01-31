@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.structmsg;
 
-import aciy;
-import acka;
-import acmv;
-import adqx;
-import afln;
-import ahzn;
-import aifg;
-import ajjy;
-import alov;
-import anam;
+import actn;
+import acut;
+import acxn;
+import aebw;
+import afxk;
+import aimg;
+import airz;
+import ajyc;
+import amdk;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -32,63 +31,64 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import aqod;
-import arnz;
-import aupw;
-import awmc;
-import awqx;
-import awuk;
-import awul;
-import awum;
-import awun;
-import awuv;
-import awuz;
-import awva;
-import awvb;
-import awvc;
-import awvd;
-import awve;
-import awvg;
-import awvh;
-import awvi;
-import awwc;
-import awwi;
-import awwo;
-import awwq;
-import awwx;
-import awxb;
-import awxd;
-import awxe;
-import awxf;
-import awxq;
-import awxr;
-import awxs;
-import awxv;
-import awxy;
-import awyb;
-import awyc;
-import awyd;
-import awye;
-import awyf;
-import awyi;
-import awyj;
-import awyk;
-import awyl;
-import awyo;
-import awys;
-import awyt;
-import awzd;
-import awzf;
-import awzn;
-import awzo;
-import axkd;
-import azlj;
-import azzx;
-import baaw;
-import babh;
-import bacn;
-import bade;
-import befm;
+import anqu;
+import arii;
+import askd;
+import avpe;
+import axli;
+import axqw;
+import axum;
+import axun;
+import axuo;
+import axup;
+import axux;
+import axvb;
+import axvc;
+import axvd;
+import axve;
+import axvf;
+import axvg;
+import axvi;
+import axvj;
+import axvk;
+import axwe;
+import axwk;
+import axwq;
+import axws;
+import axwz;
+import axxd;
+import axxf;
+import axxg;
+import axxh;
+import axxs;
+import axxt;
+import axxu;
+import axxx;
+import axya;
+import axyd;
+import axye;
+import axyf;
+import axyg;
+import axyh;
+import axyk;
+import axyl;
+import axym;
+import axyn;
+import axyq;
+import axyu;
+import axyv;
+import axzf;
+import axzh;
+import axzp;
+import axzq;
+import ayki;
+import bamn;
+import bbbb;
+import bbca;
+import bbcl;
+import bbds;
+import bbej;
+import bfng;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatFragment;
@@ -114,9 +114,11 @@ import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.dating.NearbyTransitActivity;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCServer;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -132,11 +134,11 @@ import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.util.WeakReference;
-import nga;
+import nrb;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rse;
-import vms;
+import sew;
+import vzo;
 
 public class StructMsgForGeneralShare
   extends AbsShareMsg
@@ -145,7 +147,7 @@ public class StructMsgForGeneralShare
   public static final String LOGO_URL_POSTFIX = ".png";
   public static final String LOGO_URL_PREFIX = "http://combo.b.qq.com/mp/api/logo/";
   private static int jdField_a_of_type_Int;
-  private static View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new awvd();
+  private static View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new axvf();
   private static String jdField_a_of_type_JavaLangString = "structmsg.StructMsgForGeneralShare";
   public static int clickedItemIndex;
   public static String eventId;
@@ -198,7 +200,7 @@ public class StructMsgForGeneralShare
     boolean bool;
     if (this.mSourceName != null)
     {
-      if (this.mSourceName.equalsIgnoreCase(ajjy.a(2131648805))) {
+      if (this.mSourceName.equalsIgnoreCase(ajyc.a(2131714594))) {
         this.mMsgServiceID = 54;
       }
     }
@@ -233,19 +235,19 @@ public class StructMsgForGeneralShare
         }
         if (("web".equals(this.mMsgAction)) && ("micro_app".equals(this.mMsg_A_ActionData)))
         {
-          localObject = new awyl();
+          localObject = new axyn();
           label367:
           if (TextUtils.isEmpty(str2)) {
             break label531;
           }
-          awum localawum = awuv.a(0);
-          localawum.b(1);
-          localawum.a(str2);
-          addItem(localawum);
+          axuo localaxuo = axux.a(0);
+          localaxuo.b(1);
+          localaxuo.a(str2);
+          addItem(localaxuo);
           if (!TextUtils.isEmpty(str3)) {
             break label498;
           }
-          ((awum)localObject).a(this.mContentCover, this.mContentTitle, this.mContentSummary, 1);
+          ((axuo)localObject).a(this.mContentCover, this.mContentTitle, this.mContentSummary, 1);
         }
         break;
       }
@@ -253,53 +255,53 @@ public class StructMsgForGeneralShare
     for (;;)
     {
       this.needSendLongMsgWhenFailed = paramBundle.getBoolean("need_send_long_msg_when_failed", false);
-      addItem((awul)localObject);
+      addItem((axun)localObject);
       if (this.mMsgAction == null) {
         this.mMsgAction = "web";
       }
       return;
-      if (!this.mSourceName.equalsIgnoreCase(ajjy.a(2131628059))) {
+      if (!this.mSourceName.equalsIgnoreCase(ajyc.a(2131693700))) {
         break;
       }
       this.mMsgServiceID = 53;
       break;
       this.mMsgServiceID = i;
       break label204;
-      localObject = awuv.a(i);
+      localObject = axux.a(i);
       break label367;
       label498:
-      a((awum)localObject, bool, str1, this.mContentCover, str3, this.mContentTitle, this.mContentSummary, paramBundle);
-      ((awum)localObject).i = 1;
+      a((axuo)localObject, bool, str1, this.mContentCover, str3, this.mContentTitle, this.mContentSummary, paramBundle);
+      ((axuo)localObject).k = 1;
       continue;
       label531:
-      if ((this.mMsgServiceID == 118) && (this.mSourceName != null) && (this.mSourceName.equalsIgnoreCase(ajjy.a(2131648803))))
+      if ((this.mMsgServiceID == 118) && (this.mSourceName != null) && (this.mSourceName.equalsIgnoreCase(ajyc.a(2131714592))))
       {
-        ((awum)localObject).a(this.mContentCover, this.mContentTitle, 0, this.mNeedRound);
+        ((axuo)localObject).a(this.mContentCover, this.mContentTitle, 0, this.mNeedRound);
       }
       else if (TextUtils.isEmpty(str3))
       {
-        ((awum)localObject).a(this.mContentCover, this.mContentTitle, this.mContentSummary, 0, this.mNeedRound);
+        ((axuo)localObject).a(this.mContentCover, this.mContentTitle, this.mContentSummary, 0, this.mNeedRound);
       }
       else
       {
-        a((awum)localObject, bool, str1, this.mContentCover, str3, this.mContentTitle, this.mContentSummary, paramBundle);
-        ((awum)localObject).i = 0;
+        a((axuo)localObject, bool, str1, this.mContentCover, str3, this.mContentTitle, this.mContentSummary, paramBundle);
+        ((axuo)localObject).k = 0;
       }
     }
   }
   
-  public StructMsgForGeneralShare(awwc paramawwc)
+  public StructMsgForGeneralShare(axwe paramaxwe)
   {
-    super(paramawwc);
-    this.mWarningTips = paramawwc.a("warningTipsContent");
-    this.mPARedPacket = paramawwc.a("paRedPacket");
-    this.mVipDonateStr = paramawwc.a("vipDonate");
-    eventId = paramawwc.a("eventId");
-    remindBrief = paramawwc.a("remindBrief");
-    eventType = paramawwc.a("eventType");
-    this.animResId = paramawwc.a("resid");
-    tips = paramawwc.a("tips");
-    this.atMembers = paramawwc.a("atmembers");
+    super(paramaxwe);
+    this.mWarningTips = paramaxwe.a("warningTipsContent");
+    this.mPARedPacket = paramaxwe.a("paRedPacket");
+    this.mVipDonateStr = paramaxwe.a("vipDonate");
+    eventId = paramaxwe.a("eventId");
+    remindBrief = paramaxwe.a("remindBrief");
+    eventType = paramaxwe.a("eventType");
+    this.animResId = paramaxwe.a("resid");
+    tips = paramaxwe.a("tips");
+    this.atMembers = paramaxwe.a("atmembers");
   }
   
   public static boolean HandleMiniAppJump(Context paramContext, String paramString)
@@ -312,7 +314,7 @@ public class StructMsgForGeneralShare
     if ((paramString.startsWith("http://q.url.cn/url/Jump")) || (paramString.startsWith("http://q.url.cn/url/Jump"))) {
       try
       {
-        paramString = befm.b(paramString.substring(paramString.indexOf("?") + 1));
+        paramString = bfng.b(paramString.substring(paramString.indexOf("?") + 1));
         HashMap localHashMap = new HashMap();
         localHashMap.putAll(paramString);
         if (localHashMap.containsKey("url"))
@@ -351,7 +353,7 @@ public class StructMsgForGeneralShare
   private void a(Context paramContext, int paramInt, View paramView)
   {
     if (paramView == null) {}
-    awul localawul;
+    axun localaxun;
     do
     {
       do
@@ -359,26 +361,26 @@ public class StructMsgForGeneralShare
         return;
         if ((paramInt <= 2) && (paramInt - 1 >= 0))
         {
-          i = aciy.a(12.0F, paramContext.getResources());
+          i = actn.a(12.0F, paramContext.getResources());
           j = paramView.getPaddingBottom();
           int k = paramView.getPaddingLeft();
           int m = paramView.getPaddingRight();
-          localawul = getItemByIndex(paramInt - 1);
-          if (((localawul instanceof awyk)) && (((awyk)localawul).a.size() == 1) && ((((awyk)localawul).a.get(0) instanceof awwq)) && (paramInt - 2 >= 0) && ((getItemByIndex(paramInt - 2) instanceof awyc)) && (awyd.a((awum)getItemByIndex(paramInt - 2), paramInt - 2)))
+          localaxun = getItemByIndex(paramInt - 1);
+          if (((localaxun instanceof axym)) && (((axym)localaxun).a.size() == 1) && ((((axym)localaxun).a.get(0) instanceof axws)) && (paramInt - 2 >= 0) && ((getItemByIndex(paramInt - 2) instanceof axye)) && (axyf.a((axuo)getItemByIndex(paramInt - 2), paramInt - 2)))
           {
             paramView.setPadding(k, i, m, j);
             return;
           }
-          if (((localawul instanceof awyc)) && ((awyd.a((awum)localawul, paramInt - 1)) || (this.isMultiVideoItem)))
+          if (((localaxun instanceof axye)) && ((axyf.a((axuo)localaxun, paramInt - 1)) || (this.isMultiVideoItem)))
           {
             paramView.setPadding(k, i, m, j);
             return;
           }
         }
       } while (paramInt != getItemCount() - 1);
-      localawul = getItemByIndex(0);
-    } while ((!(localawul instanceof awyc)) || ((!awyd.a((awum)localawul, 0)) && (!this.isMultiVideoItem)));
-    paramInt = aciy.a(12.0F, paramContext.getResources());
+      localaxun = getItemByIndex(0);
+    } while ((!(localaxun instanceof axye)) || ((!axyf.a((axuo)localaxun, 0)) && (!this.isMultiVideoItem)));
+    paramInt = actn.a(12.0F, paramContext.getResources());
     int i = paramView.getPaddingLeft();
     int j = paramView.getPaddingRight();
     paramView.setPadding(i, paramView.getPaddingTop(), j, paramInt);
@@ -403,7 +405,7 @@ public class StructMsgForGeneralShare
         i = 1;
         label64:
         if ((i == 0) || (!hasFlag(4))) {
-          paramView.setBackgroundResource(2130838123);
+          paramView.setBackgroundResource(2130838130);
         }
       }
       if (this.mMsgServiceID != 76) {
@@ -425,9 +427,9 @@ public class StructMsgForGeneralShare
       label135:
       if ((this.mMsgServiceID == 83) || (this.mMsgServiceID == 108) || (this.mMsgServiceID == 151) || (this.mMsgServiceID == 156))
       {
-        ((ViewGroup.LayoutParams)localObject).width = (BaseChatItemLayout.A + aciy.a(10.0F, paramResources));
+        ((ViewGroup.LayoutParams)localObject).width = (BaseChatItemLayout.A + actn.a(10.0F, paramResources));
         if (!TextUtils.isEmpty(this.mMsgActionData)) {
-          ((ViewGroup.LayoutParams)localObject).width += aciy.a(18.0F, paramResources);
+          ((ViewGroup.LayoutParams)localObject).width += actn.a(18.0F, paramResources);
         }
         paramView.setBackgroundDrawable(null);
       }
@@ -435,12 +437,12 @@ public class StructMsgForGeneralShare
       {
         ((ViewGroup.LayoutParams)localObject).width = BaseChatItemLayout.A;
         if (!TextUtils.isEmpty(this.mMsgActionData)) {
-          ((ViewGroup.LayoutParams)localObject).width += aciy.a(18.0F, paramResources);
+          ((ViewGroup.LayoutParams)localObject).width += actn.a(18.0F, paramResources);
         }
         paramView.setBackgroundDrawable(null);
         if (this.mMsgServiceID == 116)
         {
-          paramResources = paramView.findViewById(2131299236);
+          paramResources = paramView.findViewById(2131364799);
           if (paramResources != null)
           {
             i = paramResources.getHeight();
@@ -456,12 +458,12 @@ public class StructMsgForGeneralShare
         }
         else if (this.mMsgServiceID == 114)
         {
-          paramResources = paramView.findViewById(2131299236);
+          paramResources = paramView.findViewById(2131364799);
           if (paramResources != null)
           {
             paramBundle = paramResources.getLayoutParams();
-            if (awmc.jdField_a_of_type_Int > 1280) {}
-            for (paramBundle.height = aciy.a(144.0F, paramResources.getResources());; paramBundle.height = aciy.a(112.0F, paramResources.getResources()))
+            if (axli.jdField_a_of_type_Int > 1280) {}
+            for (paramBundle.height = actn.a(144.0F, paramResources.getResources());; paramBundle.height = actn.a(112.0F, paramResources.getResources()))
             {
               paramResources.setLayoutParams(paramBundle);
               break;
@@ -471,13 +473,13 @@ public class StructMsgForGeneralShare
       }
       else if (this.mMsgServiceID == 98)
       {
-        ((ViewGroup.LayoutParams)localObject).width = Math.min(BaseChatItemLayout.A + aciy.a(10.0F, paramResources), aciy.a(206.0F, paramResources));
+        ((ViewGroup.LayoutParams)localObject).width = Math.min(BaseChatItemLayout.A + actn.a(10.0F, paramResources), actn.a(206.0F, paramResources));
         paramView.setBackgroundDrawable(null);
       }
       else if (this.mMsgServiceID == 91)
       {
         ((ViewGroup.LayoutParams)localObject).width = -1;
-        paramView.setBackgroundResource(2130838123);
+        paramView.setBackgroundResource(2130838130);
       }
       else if (this.mMsgServiceID == 97)
       {
@@ -492,7 +494,7 @@ public class StructMsgForGeneralShare
     }
   }
   
-  private void a(awum paramawum, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, Bundle paramBundle)
+  private void a(axuo paramaxuo, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, Bundle paramBundle)
   {
     String str1 = paramBundle.getString("VINFO");
     String str2 = paramBundle.getString("TINFO");
@@ -507,13 +509,13 @@ public class StructMsgForGeneralShare
     int i1 = paramBundle.getInt("TYPE", 0);
     int i2 = paramBundle.getInt("VIDEO_FEED_TYPE", 0);
     long l = paramBundle.getLong("VIDEO_FEED_ID", 0L);
-    if (rse.a(i1)) {}
-    for (paramString2 = new awzo(paramString2, i1, str1, str2, paramString5, i, j, k, m, n, str3, str4, str5, i2, l);; paramString2 = new awzo(paramString2, paramString3, paramBoolean))
+    if (sew.a(i1)) {}
+    for (paramString2 = new axzq(paramString2, i1, str1, str2, paramString5, i, j, k, m, n, str3, str4, str5, i2, l);; paramString2 = new axzq(paramString2, paramString3, paramBoolean))
     {
       paramString2.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this;
       paramString2.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.mMsgUrl = paramString1;
-      paramawum.a(paramString2);
-      paramawum.a(new StructMsgItemTitle(paramString4));
+      paramaxuo.a(paramString2);
+      paramaxuo.a(new StructMsgItemTitle(paramString4));
       return;
     }
   }
@@ -531,10 +533,10 @@ public class StructMsgForGeneralShare
     QLog.i(jdField_a_of_type_JavaLangString, 2, String.format("dealMsgBeforeClick service_id:%s, data:%s, frd_uin:%s, sender_uin:%s", new Object[] { Integer.valueOf(paramStructMsgForGeneralShare.mMsgServiceID), paramStructMsgForGeneralShare.mMsg_A_ActionData, paramChatMessage.frienduin, paramChatMessage.senderuin }));
   }
   
-  public static String getCoverForChatHistory(awul paramawul)
+  public static String getCoverForChatHistory(axun paramaxun)
   {
-    if ((paramawul instanceof awwo)) {
-      return ((awwo)paramawul).S;
+    if ((paramaxun instanceof axwq)) {
+      return ((axwq)paramaxun).S;
     }
     return null;
   }
@@ -576,18 +578,18 @@ public class StructMsgForGeneralShare
     }
   }
   
-  public static String getSummary(awul paramawul)
+  public static String getSummary(axun paramaxun)
   {
-    if ((paramawul instanceof awzf)) {
-      return ((awzf)paramawul).Y;
+    if ((paramaxun instanceof axzh)) {
+      return ((axzh)paramaxun).Y;
     }
     return null;
   }
   
-  public static String getTitleForChatHistory(awul paramawul)
+  public static String getTitleForChatHistory(axun paramaxun)
   {
-    if ((paramawul instanceof awun)) {
-      return ((awun)paramawul).Y;
+    if ((paramaxun instanceof axup)) {
+      return ((axup)paramaxun).Y;
     }
     return null;
   }
@@ -598,7 +600,7 @@ public class StructMsgForGeneralShare
     bool1 = bool2;
     String str1;
     String str2;
-    if (paramStructMsgForGeneralShare.mMsgBrief.contains(ajjy.a(2131648801)))
+    if (paramStructMsgForGeneralShare.mMsgBrief.contains(ajyc.a(2131714590)))
     {
       str1 = getResponseRedirectLocation(paramStructMsgForGeneralShare.mMsgUrl);
       bool1 = bool2;
@@ -621,7 +623,7 @@ public class StructMsgForGeneralShare
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "handleNearbyPublicAccountMsg find shoolmate msg clicked, url =  " + str1 + ",schema = " + str2);
       }
-      paramQQAppInterface = bade.a(paramQQAppInterface, paramContext, str2);
+      paramQQAppInterface = bbej.a(paramQQAppInterface, paramContext, str2);
       bool1 = bool2;
       if (paramQQAppInterface != null)
       {
@@ -643,7 +645,7 @@ public class StructMsgForGeneralShare
     return bool1;
   }
   
-  public static void onClickEvent(QQAppInterface paramQQAppInterface, Context paramContext, StructMsgForGeneralShare paramStructMsgForGeneralShare, View paramView, awvi paramawvi)
+  public static void onClickEvent(QQAppInterface paramQQAppInterface, Context paramContext, StructMsgForGeneralShare paramStructMsgForGeneralShare, View paramView, axvk paramaxvk)
   {
     boolean bool2 = false;
     boolean bool1 = false;
@@ -652,9 +654,9 @@ public class StructMsgForGeneralShare
     Object localObject1 = paramView.getTag();
     label113:
     Object localObject3;
-    if ((localObject1 != null) && ((localObject1 instanceof adqx)))
+    if ((localObject1 != null) && ((localObject1 instanceof aebw)))
     {
-      localObject1 = ((adqx)localObject1).a;
+      localObject1 = ((aebw)localObject1).a;
       paramStructMsgForGeneralShare.uniseq = ((ChatMessage)localObject1).uniseq;
       paramStructMsgForGeneralShare.uin = ((ChatMessage)localObject1).frienduin;
       paramStructMsgForGeneralShare.uinType = ((ChatMessage)localObject1).istroop;
@@ -671,7 +673,7 @@ public class StructMsgForGeneralShare
       if ((TextUtils.isEmpty(paramView)) || ((paramStructMsgForGeneralShare.mMsgServiceID != 151) && (paramStructMsgForGeneralShare.mMsgServiceID != 156))) {
         break label446;
       }
-      paramContext = bade.a(paramQQAppInterface, paramContext, paramView);
+      paramContext = bbej.a(paramQQAppInterface, paramContext, paramView);
       if (paramContext == null) {
         break label3940;
       }
@@ -695,21 +697,21 @@ public class StructMsgForGeneralShare
         i = 1;
         if (paramStructMsgForGeneralShare.mMsgServiceID == 91)
         {
-          awqx.b(paramQQAppInterface, "dc00898", "", "", "0X8007758", "0X8007758", 0, 0, "", "", "", "");
-          awqx.b(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", paramStructMsgForGeneralShare.uin, "0X80055C7", "0X80055C7", 0, i, "" + paramStructMsgForGeneralShare.msgId, paramStructMsgForGeneralShare.templateIDForPortal, "", paramStructMsgForGeneralShare.mMsgUrl);
-          paramContext = new StringBuilder().append("MSGID=").append(Long.toString(paramStructMsgForGeneralShare.msgId)).append(";TEPLATEID=").append(paramStructMsgForGeneralShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(awul.a(paramStructMsgForGeneralShare.mMsgUrl));
-          awqx.b(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", paramStructMsgForGeneralShare.uin, "0X8005D49", "0X8005D49", 0, i, paramContext.toString(), "", "", "");
+          axqw.b(paramQQAppInterface, "dc00898", "", "", "0X8007758", "0X8007758", 0, 0, "", "", "", "");
+          axqw.b(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", paramStructMsgForGeneralShare.uin, "0X80055C7", "0X80055C7", 0, i, "" + paramStructMsgForGeneralShare.msgId, paramStructMsgForGeneralShare.templateIDForPortal, "", paramStructMsgForGeneralShare.mMsgUrl);
+          paramContext = new StringBuilder().append("MSGID=").append(Long.toString(paramStructMsgForGeneralShare.msgId)).append(";TEPLATEID=").append(paramStructMsgForGeneralShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(axun.a(paramStructMsgForGeneralShare.mMsgUrl));
+          axqw.b(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", paramStructMsgForGeneralShare.uin, "0X8005D49", "0X8005D49", 0, i, paramContext.toString(), "", "", "");
           do
           {
             return;
-            if ((localObject1 != null) && ((localObject1 instanceof ahzn)))
+            if ((localObject1 != null) && ((localObject1 instanceof aimg)))
             {
-              localObject1 = (ChatMessage)((ahzn)localObject1).a;
+              localObject1 = (ChatMessage)((aimg)localObject1).a;
               break;
             }
-            if ((localObject1 != null) && ((localObject1 instanceof afln)))
+            if ((localObject1 != null) && ((localObject1 instanceof afxk)))
             {
-              localObject1 = (ChatMessage)((afln)localObject1).a;
+              localObject1 = (ChatMessage)((afxk)localObject1).a;
               break;
             }
           } while (!(localObject1 instanceof MessageForStructing));
@@ -719,7 +721,7 @@ public class StructMsgForGeneralShare
           break label113;
           if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (((String)localObject3).startsWith("mqqapi://readinjoy/openatlas")))
           {
-            paramContext = bade.a(paramQQAppInterface, paramContext, (String)localObject3);
+            paramContext = bbej.a(paramQQAppInterface, paramContext, (String)localObject3);
             if (paramContext != null) {
               paramContext.c();
             }
@@ -729,7 +731,7 @@ public class StructMsgForGeneralShare
                 QLog.d(jdField_a_of_type_JavaLangString, 2, "handle readinjoy gallery jump rijAlbumActionData = " + (String)localObject3);
               }
               break;
-              paramawvi.a(paramStructMsgForGeneralShare.mMsgUrl);
+              paramaxvk.a(paramStructMsgForGeneralShare.mMsgUrl);
             }
           }
           if ((!TextUtils.isEmpty(paramView)) && (paramView.startsWith("mqqapi://dating/")))
@@ -745,17 +747,17 @@ public class StructMsgForGeneralShare
           }
           if ((!TextUtils.isEmpty(paramView)) && ((paramStructMsgForGeneralShare.mMsgServiceID == 65) || (paramStructMsgForGeneralShare.mMsgServiceID == 69)))
           {
-            paramawvi = new Intent(paramContext, NearbyTransitActivity.class);
-            paramawvi.putExtra("action", 1);
-            paramawvi.putExtra("hotnamecode", paramView);
-            paramawvi.putExtra("enter_time", System.currentTimeMillis());
-            paramContext.startActivity(paramawvi);
+            paramaxvk = new Intent(paramContext, NearbyTransitActivity.class);
+            paramaxvk.putExtra("action", 1);
+            paramaxvk.putExtra("hotnamecode", paramView);
+            paramaxvk.putExtra("enter_time", System.currentTimeMillis());
+            paramContext.startActivity(paramaxvk);
             bool1 = true;
             continue;
           }
           if ((!TextUtils.isEmpty(paramView)) && (paramView.startsWith("story:")))
           {
-            paramContext = bade.a(paramQQAppInterface, paramContext, paramView.substring("story:".length()));
+            paramContext = bbej.a(paramQQAppInterface, paramContext, paramView.substring("story:".length()));
             if (paramContext != null) {
               paramContext.c();
             }
@@ -768,12 +770,12 @@ public class StructMsgForGeneralShare
               QLog.d(jdField_a_of_type_JavaLangString + "Q.qqstory.TAG_NOW_ENTRANCE_ACTION_CONFIG", 2, "handle now jump actionData = " + paramView);
               bool1 = bool2;
               break;
-              paramawvi.a(paramStructMsgForGeneralShare.mMsgUrl);
+              paramaxvk.a(paramStructMsgForGeneralShare.mMsgUrl);
             }
           }
           if (paramStructMsgForGeneralShare.mMsgServiceID == 60)
           {
-            paramawvi.a(paramStructMsgForGeneralShare.mMsgUrl);
+            paramaxvk.a(paramStructMsgForGeneralShare.mMsgUrl);
             bool1 = false;
             continue;
           }
@@ -864,7 +866,7 @@ public class StructMsgForGeneralShare
                   if (TextUtils.isEmpty((CharSequence)localObject3)) {
                     break label3937;
                   }
-                  j = aqod.a((String)localObject3);
+                  j = arii.a((String)localObject3);
                   i = j;
                   j = i;
                   if (i == 0) {
@@ -887,17 +889,17 @@ public class StructMsgForGeneralShare
                 paramView.append("&fromid=share_msg_").append((String)localObject1);
                 paramView.append("&startsrc=share_msg_").append((String)localObject1);
                 if (k != 0) {
-                  paramView.append("&msgurl=").append(baaw.encodeToString(paramStructMsgForGeneralShare.mMsgUrl.getBytes(), 0));
+                  paramView.append("&msgurl=").append(bbca.encodeToString(paramStructMsgForGeneralShare.mMsgUrl.getBytes(), 0));
                 }
                 if (0L != Long.parseLong((String)localObject3)) {
                   continue;
                 }
-                bool1 = paramawvi.a(paramStructMsgForGeneralShare.mMsgUrl);
+                bool1 = paramaxvk.a(paramStructMsgForGeneralShare.mMsgUrl);
                 bool2 = bool1;
               }
               catch (NumberFormatException paramContext)
               {
-                paramawvi.a(paramStructMsgForGeneralShare.mMsgUrl);
+                paramaxvk.a(paramStructMsgForGeneralShare.mMsgUrl);
                 continue;
               }
               bool1 = bool2;
@@ -911,13 +913,13 @@ public class StructMsgForGeneralShare
             {
               paramView = localNumberFormatException2;
             }
-            paramView = "mqqapi://now/openroom?" + paramView.toString();
+            paramView = "nowmqqapi://now/openroom?" + paramView.toString();
             localObject1 = new Intent(paramContext, JumpActivity.class);
             ((Intent)localObject1).setData(Uri.parse(paramView));
             ((Intent)localObject1).putExtra("big_brother_source_key", "biz_src_jc_aio");
             paramContext.startActivity((Intent)localObject1);
             continue;
-            bool2 = paramawvi.a(paramStructMsgForGeneralShare.mMsgUrl);
+            bool2 = paramaxvk.a(paramStructMsgForGeneralShare.mMsgUrl);
             continue;
             if ((TextUtils.isEmpty(paramStructMsgForGeneralShare.mMsgUrl)) || (!paramStructMsgForGeneralShare.mMsgUrl.startsWith("mqqapi://qsubscribe"))) {
               continue;
@@ -940,7 +942,7 @@ public class StructMsgForGeneralShare
           if ((!TextUtils.isEmpty(paramView)) && (paramView.startsWith("apollo:")))
           {
             paramView = paramStructMsgForGeneralShare.mMsgUrl.split("\\?");
-            if ((paramView.length == 2) && (aifg.a(paramContext)))
+            if ((paramView.length == 2) && (airz.a(paramContext)))
             {
               paramView = paramView[1];
               paramContext.startActivity(new Intent("android.intent.action.VIEW", Uri.parse("mqqapi://cmshow/apollo_action?" + paramView)));
@@ -952,7 +954,7 @@ public class StructMsgForGeneralShare
           }
           if (((ChatMessage)localObject1).istroop == 1)
           {
-            bool1 = paramawvi.a(paramStructMsgForGeneralShare.mMsgUrl);
+            bool1 = paramaxvk.a(paramStructMsgForGeneralShare.mMsgUrl);
             break;
           }
           if (paramStructMsgForGeneralShare.hasFlag(16))
@@ -978,7 +980,7 @@ public class StructMsgForGeneralShare
               if (QLog.isDevelopLevel()) {
                 QLog.d("PortalManager", 4, paramContext);
               }
-              bool1 = paramawvi.a(paramContext);
+              bool1 = paramaxvk.a(paramContext);
               break;
             }
             paramContext = "?";
@@ -989,9 +991,9 @@ public class StructMsgForGeneralShare
           if ((paramStructMsgForGeneralShare.mMsgServiceID == 53) || (paramStructMsgForGeneralShare.mMsgServiceID == 54)) {
             try
             {
-              if (!paramawvi.c("mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=cooperation.readinjoy.ReadInJoyProxyActivity&url=" + URLEncoder.encode(paramStructMsgForGeneralShare.mMsgUrl) + "&from=" + paramStructMsgForGeneralShare.mMsgServiceID, null))
+              if (!paramaxvk.c("mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=cooperation.readinjoy.ReadInJoyProxyActivity&url=" + URLEncoder.encode(paramStructMsgForGeneralShare.mMsgUrl) + "&from=" + paramStructMsgForGeneralShare.mMsgServiceID, null))
               {
-                bool1 = paramawvi.a(paramStructMsgForGeneralShare.mMsgUrl);
+                bool1 = paramaxvk.a(paramStructMsgForGeneralShare.mMsgUrl);
                 break;
               }
               bool1 = true;
@@ -1002,15 +1004,15 @@ public class StructMsgForGeneralShare
                 QLog.d(jdField_a_of_type_JavaLangString, 2, "ReadInJoyShareMsg click error, url =  " + paramStructMsgForGeneralShare.mMsgUrl);
               }
               paramContext.printStackTrace();
-              bool1 = paramawvi.a(paramStructMsgForGeneralShare.mMsgUrl);
+              bool1 = paramaxvk.a(paramStructMsgForGeneralShare.mMsgUrl);
             }
           }
         }
         if ((paramStructMsgForGeneralShare.mMsgServiceID == 15) && ((!TextUtils.isEmpty(paramStructMsgForGeneralShare.mMsgActionData)) || (!TextUtils.isEmpty(paramStructMsgForGeneralShare.mMsg_I_ActionData))))
         {
-          paramawvi = paramStructMsgForGeneralShare.mMsgActionData;
-          paramView = paramawvi;
-          if (TextUtils.isEmpty(paramawvi)) {
+          paramaxvk = paramStructMsgForGeneralShare.mMsgActionData;
+          paramView = paramaxvk;
+          if (TextUtils.isEmpty(paramaxvk)) {
             paramView = paramStructMsgForGeneralShare.mMsg_I_ActionData;
           }
           bool1 = bool3;
@@ -1030,7 +1032,7 @@ public class StructMsgForGeneralShare
           if (TextUtils.isEmpty(paramView[1])) {
             break;
           }
-          azlj.a(paramContext, TroopInfoActivity.a(paramView[1], 14), 2);
+          bamn.a(paramContext, TroopInfoActivity.a(paramView[1], 14), 2);
           bool1 = true;
           break;
         }
@@ -1042,12 +1044,12 @@ public class StructMsgForGeneralShare
         if (bool2) {
           break;
         }
-        bool1 = paramawvi.a(paramStructMsgForGeneralShare.mMsgUrl);
+        bool1 = paramaxvk.a(paramStructMsgForGeneralShare.mMsgUrl);
         break;
         if (paramStructMsgForGeneralShare.mMsgServiceID != 97) {
           break label209;
         }
-        awqx.b(paramQQAppInterface, "dc00898", "", "", "0X8007ADA", "0X8007ADA", 0, 0, "", "", "", "");
+        axqw.b(paramQQAppInterface, "dc00898", "", "", "0X8007ADA", "0X8007ADA", 0, 0, "", "", "", "");
         break label209;
         if ("plugin".equals(paramStructMsgForGeneralShare.mMsgAction))
         {
@@ -1056,14 +1058,14 @@ public class StructMsgForGeneralShare
           }
           if (paramQQAppInterface != null)
           {
-            bool1 = paramawvi.c(paramStructMsgForGeneralShare.mMsgActionData, paramStructMsgForGeneralShare.mMsg_A_ActionData);
+            bool1 = paramaxvk.c(paramStructMsgForGeneralShare.mMsgActionData, paramStructMsgForGeneralShare.mMsg_A_ActionData);
             i = 0;
             if (bool1) {
               i = 1;
             }
-            awqx.b(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", paramStructMsgForGeneralShare.uin, "0X80055C7", "0X80055C7", 0, i, "" + paramStructMsgForGeneralShare.msgId, paramStructMsgForGeneralShare.templateIDForPortal, "", paramStructMsgForGeneralShare.mMsgUrl);
-            paramContext = new StringBuilder().append("MSGID=").append(Long.toString(paramStructMsgForGeneralShare.msgId)).append(";TEPLATEID=").append(paramStructMsgForGeneralShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(awul.a(paramStructMsgForGeneralShare.mMsgUrl));
-            awqx.b(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", paramStructMsgForGeneralShare.uin, "0X8005D49", "0X8005D49", 0, i, paramContext.toString(), "", "", "");
+            axqw.b(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", paramStructMsgForGeneralShare.uin, "0X80055C7", "0X80055C7", 0, i, "" + paramStructMsgForGeneralShare.msgId, paramStructMsgForGeneralShare.templateIDForPortal, "", paramStructMsgForGeneralShare.mMsgUrl);
+            paramContext = new StringBuilder().append("MSGID=").append(Long.toString(paramStructMsgForGeneralShare.msgId)).append(";TEPLATEID=").append(paramStructMsgForGeneralShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(axun.a(paramStructMsgForGeneralShare.mMsgUrl));
+            axqw.b(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", paramStructMsgForGeneralShare.uin, "0X8005D49", "0X8005D49", 0, i, paramContext.toString(), "", "", "");
             return;
           }
           bool1 = false;
@@ -1077,14 +1079,14 @@ public class StructMsgForGeneralShare
             i = ((FragmentActivity)localObject1).getChatFragment().a().b();
             localObject3 = ((FragmentActivity)localObject1).getChatFragment().a().a();
             localObject4 = ((FragmentActivity)localObject1).getChatFragment().a().c();
-            paramawvi = new Intent(paramContext, MultiForwardActivity.class);
-            paramawvi.putExtra("chat_subType", 3);
-            paramawvi.putExtra("uin", (String)localObject3);
-            paramawvi.putExtra("uintype", i);
-            paramawvi.putExtra("troop_code", (String)localObject4);
-            paramawvi.putExtra("multi_url", paramStructMsgForGeneralShare.mResid);
-            paramawvi.putExtra("multimsg_uniseq", paramStructMsgForGeneralShare.uniseq);
-            paramawvi.putExtra("origin_merge_structing_msg_uniseq", a(paramStructMsgForGeneralShare, (FragmentActivity)localObject1));
+            paramaxvk = new Intent(paramContext, MultiForwardActivity.class);
+            paramaxvk.putExtra("chat_subType", 3);
+            paramaxvk.putExtra("uin", (String)localObject3);
+            paramaxvk.putExtra("uintype", i);
+            paramaxvk.putExtra("troop_code", (String)localObject4);
+            paramaxvk.putExtra("multi_url", paramStructMsgForGeneralShare.mResid);
+            paramaxvk.putExtra("multimsg_uniseq", paramStructMsgForGeneralShare.uniseq);
+            paramaxvk.putExtra("origin_merge_structing_msg_uniseq", a(paramStructMsgForGeneralShare, (FragmentActivity)localObject1));
             paramView = (ViewGroup)paramView;
             if (paramView.getChildCount() > 0)
             {
@@ -1097,23 +1099,23 @@ public class StructMsgForGeneralShare
               if (!TextView.class.isInstance(localObject1)) {
                 continue;
               }
-              paramawvi.putExtra("multi_title", ((TextView)localObject1).getText().toString());
+              paramaxvk.putExtra("multi_title", ((TextView)localObject1).getText().toString());
             }
-            paramContext.startActivity(paramawvi);
+            paramContext.startActivity(paramaxvk);
           }
           bool1 = true;
           i = 0;
           if (bool1) {
             i = 1;
           }
-          awqx.b(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", paramStructMsgForGeneralShare.uin, "0X80055C7", "0X80055C7", 0, i, "" + paramStructMsgForGeneralShare.msgId, paramStructMsgForGeneralShare.templateIDForPortal, "", paramStructMsgForGeneralShare.mMsgUrl);
-          paramContext = new StringBuilder().append("MSGID=").append(Long.toString(paramStructMsgForGeneralShare.msgId)).append(";TEPLATEID=").append(paramStructMsgForGeneralShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(awul.a(paramStructMsgForGeneralShare.mMsgUrl));
-          awqx.b(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", paramStructMsgForGeneralShare.uin, "0X8005D49", "0X8005D49", 0, i, paramContext.toString(), "", "", "");
+          axqw.b(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", paramStructMsgForGeneralShare.uin, "0X80055C7", "0X80055C7", 0, i, "" + paramStructMsgForGeneralShare.msgId, paramStructMsgForGeneralShare.templateIDForPortal, "", paramStructMsgForGeneralShare.mMsgUrl);
+          paramContext = new StringBuilder().append("MSGID=").append(Long.toString(paramStructMsgForGeneralShare.msgId)).append(";TEPLATEID=").append(paramStructMsgForGeneralShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(axun.a(paramStructMsgForGeneralShare.mMsgUrl));
+          axqw.b(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", paramStructMsgForGeneralShare.uin, "0X8005D49", "0X8005D49", 0, i, paramContext.toString(), "", "", "");
           return;
         }
         if ("viewFlower".equals(paramStructMsgForGeneralShare.mMsgAction))
         {
-          paramawvi.a(paramView, paramStructMsgForGeneralShare.uin);
+          paramaxvk.a(paramView, paramStructMsgForGeneralShare.uin);
           bool1 = bool4;
         }
         else
@@ -1126,18 +1128,18 @@ public class StructMsgForGeneralShare
               if ((paramView != null) && (paramView.length == 3))
               {
                 localObject1 = paramView[0].substring("url=".length());
-                paramawvi = paramView[1].substring("name=".length());
+                paramaxvk = paramView[1].substring("name=".length());
                 paramView = paramView[2].substring("phone=".length());
                 bool1 = bool4;
                 if (TextUtils.isEmpty((CharSequence)localObject1)) {
                   continue;
                 }
-                localObject3 = (alov)paramQQAppInterface.getManager(112);
+                localObject3 = (amdk)paramQQAppInterface.getManager(112);
                 bool1 = bool4;
                 if (localObject3 == null) {
                   continue;
                 }
-                localObject4 = ((alov)localObject3).c((String)localObject1);
+                localObject4 = ((amdk)localObject3).c((String)localObject1);
                 localObject3 = new Intent(paramContext, BusinessCardEditActivity.class);
                 ((Intent)localObject3).putExtra("source_activity", 2);
                 if (localObject4 != null)
@@ -1156,7 +1158,7 @@ public class StructMsgForGeneralShare
                 }
                 localObject4 = new CardOCRInfo();
                 ((CardOCRInfo)localObject4).jdField_b_of_type_JavaLangString = ((String)localObject1);
-                ((CardOCRInfo)localObject4).jdField_a_of_type_JavaLangString = paramawvi;
+                ((CardOCRInfo)localObject4).jdField_a_of_type_JavaLangString = paramaxvk;
                 ((CardOCRInfo)localObject4).jdField_b_of_type_JavaUtilList.add(paramView);
                 ((Intent)localObject3).putExtra("mode_type", 0);
                 ((Intent)localObject3).putExtra("finish_immedia", true);
@@ -1173,19 +1175,19 @@ public class StructMsgForGeneralShare
               paramView = (FragmentActivity)paramContext;
               if (paramView.getChatFragment() != null)
               {
-                paramawvi = new Intent();
-                paramawvi.putExtra("ReceiptMessageDetailFragment.extra_msg_uni_seq", ((ChatMessage)localObject1).uniseq);
-                paramawvi.putExtra("ReceiptMessageDetailFragment.extra_res_id", paramStructMsgForGeneralShare.mResid);
-                paramawvi.putExtra("ReceiptMessageDetailFragment.extra_msg_session_info", paramView.getChatFragment().a().jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-                paramawvi.putExtra("ReceiptMessageDetailFragment.extra_shmsgseq", ((ChatMessage)localObject1).shmsgseq);
-                paramawvi.putExtra("ReceiptMessageDetailFragment.extra_sender_uin", ((ChatMessage)localObject1).senderuin);
-                paramawvi.putExtra("ReceiptMessageDetailFragment.extra_msg_seq", ((ChatMessage)localObject1).msgseq);
-                paramawvi.putExtra("ReceiptMessageDetailFragment.extra_msg_uid", ((ChatMessage)localObject1).msgUid);
-                paramawvi.putExtra("ReceiptMessageDetailFragment.extra_msg_time", ((ChatMessage)localObject1).time);
-                paramawvi.putExtra("ReceiptMessageDetailFragment.EXTRA_SESSION_TYPE_FROM_MESSAGE", ((ChatMessage)localObject1).istroop);
-                paramawvi.putExtra("ReceiptMessageDetailFragment.EXTRA_IS_READ", "1".equals(aupw.a((MessageRecord)localObject1)));
-                paramView.getChatFragment().a().bb();
-                PublicFragmentActivity.a(paramContext, paramawvi, ReceiptMessageDetailFragment.class);
+                paramaxvk = new Intent();
+                paramaxvk.putExtra("ReceiptMessageDetailFragment.extra_msg_uni_seq", ((ChatMessage)localObject1).uniseq);
+                paramaxvk.putExtra("ReceiptMessageDetailFragment.extra_res_id", paramStructMsgForGeneralShare.mResid);
+                paramaxvk.putExtra("ReceiptMessageDetailFragment.extra_msg_session_info", paramView.getChatFragment().a().jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+                paramaxvk.putExtra("ReceiptMessageDetailFragment.extra_shmsgseq", ((ChatMessage)localObject1).shmsgseq);
+                paramaxvk.putExtra("ReceiptMessageDetailFragment.extra_sender_uin", ((ChatMessage)localObject1).senderuin);
+                paramaxvk.putExtra("ReceiptMessageDetailFragment.extra_msg_seq", ((ChatMessage)localObject1).msgseq);
+                paramaxvk.putExtra("ReceiptMessageDetailFragment.extra_msg_uid", ((ChatMessage)localObject1).msgUid);
+                paramaxvk.putExtra("ReceiptMessageDetailFragment.extra_msg_time", ((ChatMessage)localObject1).time);
+                paramaxvk.putExtra("ReceiptMessageDetailFragment.EXTRA_SESSION_TYPE_FROM_MESSAGE", ((ChatMessage)localObject1).istroop);
+                paramaxvk.putExtra("ReceiptMessageDetailFragment.EXTRA_IS_READ", "1".equals(avpe.a((MessageRecord)localObject1)));
+                paramView.getChatFragment().a().bd();
+                PublicFragmentActivity.a(paramContext, paramaxvk, ReceiptMessageDetailFragment.class);
                 i = paramView.getChatFragment().a().jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
                 if (i == 0)
                 {
@@ -1202,25 +1204,25 @@ public class StructMsgForGeneralShare
                   if (paramStructMsgForGeneralShare.getStructMsgItemLists().size() <= 0) {
                     continue;
                   }
-                  paramawvi = (awul)paramStructMsgForGeneralShare.getStructMsgItemLists().get(0);
+                  paramaxvk = (axun)paramStructMsgForGeneralShare.getStructMsgItemLists().get(0);
                   paramView = paramContext;
                   k = i;
-                  if (!(paramawvi instanceof awxv)) {
+                  if (!(paramaxvk instanceof axxx)) {
                     continue;
                   }
-                  paramawvi = ((awxv)paramawvi).a.iterator();
+                  paramaxvk = ((axxx)paramaxvk).a.iterator();
                   paramView = paramContext;
                   k = i;
-                  if (!paramawvi.hasNext()) {
+                  if (!paramaxvk.hasNext()) {
                     continue;
                   }
-                  paramView = (awul)paramawvi.next();
+                  paramView = (axun)paramaxvk.next();
                   k = i;
                   if ("type".equals(paramView.jdField_a_of_type_JavaLangString))
                   {
                     k = i;
-                    if ((paramView instanceof awzn)) {
-                      i = ((awzn)paramView).i;
+                    if ((paramView instanceof axzp)) {
+                      i = ((axzp)paramView).k;
                     }
                   }
                 }
@@ -1249,12 +1251,12 @@ public class StructMsgForGeneralShare
                 }
                 if (k > -1)
                 {
-                  paramawvi = ((ChatMessage)localObject1).senderuin;
+                  paramaxvk = ((ChatMessage)localObject1).senderuin;
                   if (!((ChatMessage)localObject1).isSend()) {
                     continue;
                   }
                   paramContext = "1";
-                  awqx.b(paramQQAppInterface, "CliOper", "", paramawvi, "0x80083E9", "0x80083E9", j, 0, paramContext, "", paramView, "");
+                  axqw.b(paramQQAppInterface, "CliOper", "", paramaxvk, "0x80083E9", "0x80083E9", j, 0, paramContext, "", paramView, "");
                 }
               }
               bool1 = true;
@@ -1264,27 +1266,27 @@ public class StructMsgForGeneralShare
             }
             if (("native".equals(paramStructMsgForGeneralShare.mMsgAction)) && (paramStructMsgForGeneralShare.mMsgServiceID == 128) && (paramStructMsgForGeneralShare.message != null) && (paramStructMsgForGeneralShare.mDatas != null))
             {
-              paramawvi = paramStructMsgForGeneralShare.mDatas.optString("groupcode");
+              paramaxvk = paramStructMsgForGeneralShare.mDatas.optString("groupcode");
               localObject1 = paramStructMsgForGeneralShare.mDatas.optString("groupname");
               if (paramStructMsgForGeneralShare.message.isSend())
               {
                 paramView = paramStructMsgForGeneralShare.message.frienduin;
-                TroopInviteStatusFragment.a(paramQQAppInterface, paramContext, paramawvi, (String)localObject1, paramView, Long.valueOf(paramStructMsgForGeneralShare.mDatas.optString("msgseq")).longValue(), paramStructMsgForGeneralShare.message.senderuin, babh.a(paramQQAppInterface, paramStructMsgForGeneralShare.message.senderuin, 0));
-                azzx.a("Grp_AIO", "invite", "send_clk", 0, 0, new String[0]);
+                TroopInviteStatusFragment.a(paramQQAppInterface, paramContext, paramaxvk, (String)localObject1, paramView, Long.valueOf(paramStructMsgForGeneralShare.mDatas.optString("msgseq")).longValue(), paramStructMsgForGeneralShare.message.senderuin, bbcl.a(paramQQAppInterface, paramStructMsgForGeneralShare.message.senderuin, 0));
+                bbbb.a("Grp_AIO", "invite", "send_clk", 0, 0, new String[0]);
                 bool1 = true;
                 continue;
               }
               paramView = paramStructMsgForGeneralShare.message.selfuin;
               continue;
             }
-            bool1 = paramawvi.a(paramStructMsgForGeneralShare.mMsgAction, paramStructMsgForGeneralShare.mMsgUrl, paramStructMsgForGeneralShare.mMsgActionData, paramStructMsgForGeneralShare.mMsg_A_ActionData);
+            bool1 = paramaxvk.a(paramStructMsgForGeneralShare.mMsgAction, paramStructMsgForGeneralShare.mMsgUrl, paramStructMsgForGeneralShare.mMsgActionData, paramStructMsgForGeneralShare.mMsg_A_ActionData);
             continue;
             break label1085;
             break label1085;
             break label1085;
           }
           Object localObject2 = "";
-          paramawvi = "";
+          paramaxvk = "";
           paramView = "";
           continue;
           i = 0;
@@ -1293,6 +1295,15 @@ public class StructMsgForGeneralShare
       }
       label3940:
       bool1 = false;
+    }
+  }
+  
+  public static void unRegisterQIPC()
+  {
+    if (receiptServer != null)
+    {
+      QIPCServerHelper.getInstance().getServer().unRegisterModule(receiptServer);
+      receiptServer = null;
     }
   }
   
@@ -1330,7 +1341,7 @@ public class StructMsgForGeneralShare
       } while (paramView != null);
       paramView = new TextView(paramContext);
       localObject1 = paramView;
-    } while (new nga().a(paramContext, this.message, paramView, this.mAdSourceMenu));
+    } while (new nrb().a(paramContext, this.message, paramView, this.mAdSourceMenu));
     Object localObject1 = paramContext.getResources();
     paramView.setText(this.mAdSourceName);
     paramView.setSingleLine(true);
@@ -1338,21 +1349,21 @@ public class StructMsgForGeneralShare
     paramView.setEllipsize(TextUtils.TruncateAt.END);
     paramView.setTextColor(Color.rgb(187, 187, 187));
     paramView.setTextSize(2, 12.0F);
-    paramView.setBackgroundResource(2130846009);
+    paramView.setBackgroundResource(2130846190);
     if (!TextUtils.isEmpty(this.mSourceIcon)) {}
-    Object localObject2 = paramContext.getResources().getDrawable(2130846012);
+    Object localObject2 = paramContext.getResources().getDrawable(2130846193);
     ((Drawable)localObject2).setBounds(0, 0, 24, 16);
     paramView.setCompoundDrawables(null, null, (Drawable)localObject2, null);
-    int i = vms.a(paramContext, 6.0F);
+    int i = vzo.a(paramContext, 6.0F);
     paramView.setPadding(i, 0, i, 0);
-    paramView.setCompoundDrawablePadding(vms.a(paramContext, 2.0F));
-    localObject2 = LayoutInflater.from(paramContext).inflate(2131493826, null);
+    paramView.setCompoundDrawablePadding(vzo.a(paramContext, 2.0F));
+    localObject2 = LayoutInflater.from(paramContext).inflate(2131559394, null);
     PopupWindow localPopupWindow = new PopupWindow((View)localObject2, -1, -2, true);
     localPopupWindow.setTouchable(true);
     localPopupWindow.setOutsideTouchable(true);
-    paramView.setOnClickListener(new awve(this, paramContext, (Resources)localObject1, localPopupWindow));
-    ((View)localObject2).findViewById(2131299432).setOnClickListener(new awvg(this, localPopupWindow, paramContext));
-    ((View)localObject2).findViewById(2131300656).setOnClickListener(new awvh(this, paramContext, localPopupWindow));
+    paramView.setOnClickListener(new axvg(this, paramContext, (Resources)localObject1, localPopupWindow));
+    ((View)localObject2).findViewById(2131365000).setOnClickListener(new axvi(this, localPopupWindow, paramContext));
+    ((View)localObject2).findViewById(2131366258).setOnClickListener(new axvj(this, paramContext, localPopupWindow));
     return paramView;
   }
   
@@ -1370,7 +1381,7 @@ public class StructMsgForGeneralShare
       {
         Iterator localIterator = this.mStructMsgItemLists.iterator();
         while (localIterator.hasNext()) {
-          localStringBuffer.append(((awul)localIterator.next()).a());
+          localStringBuffer.append(((axun)localIterator.next()).a());
         }
       }
     }
@@ -1383,9 +1394,9 @@ public class StructMsgForGeneralShare
   
   public int getProgress()
   {
-    awul localawul = findXmlNode("progress");
-    if ((localawul != null) && ((localawul instanceof awzd))) {
-      return ((awzd)localawul).b();
+    axun localaxun = findXmlNode("progress");
+    if ((localaxun != null) && ((localaxun instanceof axzf))) {
+      return ((axzf)localaxun).b();
     }
     return -1;
   }
@@ -1396,9 +1407,9 @@ public class StructMsgForGeneralShare
   }
   
   @TargetApi(16)
-  public View getView(Context paramContext, View paramView, acmv paramacmv, Bundle paramBundle)
+  public View getView(Context paramContext, View paramView, acxn paramacxn, Bundle paramBundle)
   {
-    if ((paramView != null) && ((paramView.getTag(2131310784) != null) || (paramView.getTag(2131307867) != null))) {}
+    if ((paramView != null) && ((paramView.getTag(2131376580) != null) || (paramView.getTag(2131373583) != null))) {}
     for (Object localObject1 = null;; localObject1 = paramView)
     {
       Object localObject2;
@@ -1413,7 +1424,7 @@ public class StructMsgForGeneralShare
       }
       int i;
       label292:
-      for (paramView = ((View)localObject1).getTag(2131311024);; paramView = null)
+      for (paramView = ((View)localObject1).getTag(2131376833);; paramView = null)
       {
         QLog.d((String)localObject2, 2, paramView);
         this.mContext = new WeakReference(paramContext);
@@ -1430,13 +1441,13 @@ public class StructMsgForGeneralShare
         if ((i != 1) && (i != 2) && (i != 3)) {
           break label304;
         }
-        paramView = awys.a(paramContext, (View)localObject1, paramacmv, (Bundle)localObject2);
-        paramView.setId(2131310787);
-        paramView.setTag(2131310787, this);
+        paramView = axyu.a(paramContext, (View)localObject1, paramacxn, (Bundle)localObject2);
+        paramView.setId(2131376583);
+        paramView.setTag(2131376583, this);
         if ((((Bundle)localObject2).getBoolean("isSubscript", false)) || (!hasFlag(4))) {
           break;
         }
-        paramView.setBackgroundResource(2130838123);
+        paramView.setBackgroundResource(2130838130);
         return paramView;
       }
       paramView.setBackgroundDrawable(null);
@@ -1446,14 +1457,14 @@ public class StructMsgForGeneralShare
       for (int j = 1; this.mMsgException; j = 0)
       {
         QLog.d(jdField_a_of_type_JavaLangString, 1, "struct msg has version exception! uin : " + this.uin + " msgVersion : " + this.messageVersion + " version : " + this.mVersion + " msgUniseq" + this.uniseq);
-        paramContext = getVersionExceptionView(paramContext, (View)localObject1, paramacmv, (Bundle)localObject2);
-        paramContext.setId(2131310787);
-        paramContext.setTag(2131310787, this);
+        paramContext = getVersionExceptionView(paramContext, (View)localObject1, paramacxn, (Bundle)localObject2);
+        paramContext.setId(2131376583);
+        paramContext.setTag(2131376583, this);
         return paramContext;
       }
       if (localObject1 == null)
       {
-        paramView = super.getView(paramContext, null, paramacmv, (Bundle)localObject2);
+        paramView = super.getView(paramContext, null, paramacxn, (Bundle)localObject2);
         if (paramView == null) {
           return null;
         }
@@ -1479,48 +1490,48 @@ public class StructMsgForGeneralShare
           if (m < k)
           {
             localObject3 = getItemByIndex(m);
-            ((awul)localObject3).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramacmv);
-            symbol2CharactorForSmallEmoji((awul)localObject3);
-            if ((this.uin != null) && (!this.uin.equalsIgnoreCase(((awul)localObject3).R))) {
-              ((awul)localObject3).R = this.uin;
+            ((axun)localObject3).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramacxn);
+            symbol2CharactorForSmallEmoji((axun)localObject3);
+            if ((this.uin != null) && (!this.uin.equalsIgnoreCase(((axun)localObject3).R))) {
+              ((axun)localObject3).R = this.uin;
             }
-            if (((awul)localObject3).a() == 0)
+            if (((axun)localObject3).a() == 0)
             {
               if (m == 0) {
-                ((awul)localObject3).a(1);
+                ((axun)localObject3).a(1);
               }
               if (m == k - 1) {
-                ((awul)localObject3).a(2);
+                ((axun)localObject3).a(2);
               }
             }
-            if ((localObject3 instanceof awyi))
+            if ((localObject3 instanceof axyk))
             {
-              paramView = ((awul)localObject3).a(paramContext, null, (Bundle)localObject2);
+              paramView = ((axun)localObject3).a(paramContext, null, (Bundle)localObject2);
               label615:
               if ((m + 2 < k) && (paramView != null))
               {
                 localObject1 = getItemByIndex(m + 2);
-                if ((((awum)localObject1).a.size() != 0) && (paramView != null) && ((((localObject1 instanceof awyk)) && ((((awyk)localObject1).a.get(0) instanceof awyt))) || (((localObject1 instanceof awxy)) && ((((awxy)localObject1).a.get(0) instanceof awwi)))))
+                if ((((axuo)localObject1).a.size() != 0) && (paramView != null) && ((((localObject1 instanceof axym)) && ((((axym)localObject1).a.get(0) instanceof axyv))) || (((localObject1 instanceof axya)) && ((((axya)localObject1).a.get(0) instanceof axwk)))))
                 {
                   localObject1 = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
                   if (localObject1 != null)
                   {
-                    if (!(localObject3 instanceof awyk)) {
+                    if (!(localObject3 instanceof axym)) {
                       break label1773;
                     }
                     if (j == 0) {
                       break label1755;
                     }
-                    ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin = aciy.a(11.0F, paramContext.getResources());
+                    ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin = actn.a(11.0F, paramContext.getResources());
                     label750:
                     paramView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
                   }
                 }
               }
-              if ((m + 1 < k) && (paramView != null) && (j != 0) && (((awum)localObject3).a.size() == 1) && ((((awum)localObject3).a.get(0) instanceof awwq)))
+              if ((m + 1 < k) && (paramView != null) && (j != 0) && (((axuo)localObject3).a.size() == 1) && ((((axuo)localObject3).a.get(0) instanceof axws)))
               {
                 localObject1 = getItemByIndex(m + 1);
-                if ((((awum)localObject1).a.size() != 0) && ((localObject1 instanceof awxy)) && ((((awxy)localObject1).a.get(0) instanceof awwi)))
+                if ((((axuo)localObject1).a.size() != 0) && ((localObject1 instanceof axya)) && ((((axya)localObject1).a.get(0) instanceof axwk)))
                 {
                   paramView.setPadding(2, paramView.getPaddingTop(), 2, paramView.getPaddingBottom());
                   if ((paramView instanceof LinearLayout))
@@ -1537,13 +1548,13 @@ public class StructMsgForGeneralShare
               if (paramView == null) {
                 break label1812;
               }
-              if ((!TextUtils.isEmpty(((awul)localObject3).c)) || ((localObject3 instanceof awxs)))
+              if ((!TextUtils.isEmpty(((axun)localObject3).c)) || ((localObject3 instanceof axxu)))
               {
                 paramView.setTag(localObject3);
                 paramView.setClickable(true);
                 paramView.setOnClickListener((View.OnClickListener)localObject3);
-                paramView.setOnLongClickListener(new awuz(this, paramacmv));
-                paramView.setOnTouchListener(new awva(this, paramacmv));
+                paramView.setOnLongClickListener(new axvb(this, paramacxn));
+                paramView.setOnTouchListener(new axvc(this, paramacxn));
                 clickedItemIndex = 0;
               }
               if (paramView.getParent() != null)
@@ -1559,48 +1570,48 @@ public class StructMsgForGeneralShare
             {
               m += 1;
               break;
-              if ((localObject3 instanceof awyj))
+              if ((localObject3 instanceof axyl))
               {
-                paramView = ((awul)localObject3).a(paramContext, null, (Bundle)localObject2);
+                paramView = ((axun)localObject3).a(paramContext, null, (Bundle)localObject2);
                 break label615;
               }
-              if ((localObject3 instanceof awwx))
+              if ((localObject3 instanceof axwz))
               {
-                paramView = ((awul)localObject3).a(paramContext, null, (Bundle)localObject2);
+                paramView = ((axun)localObject3).a(paramContext, null, (Bundle)localObject2);
                 i = 0;
                 break label615;
               }
-              if ((localObject3 instanceof awyc))
+              if ((localObject3 instanceof axye))
               {
                 if (m + 1 < k) {
-                  ((awyc)localObject3).a = true;
+                  ((axye)localObject3).a = true;
                 }
                 for (this.isMultiVideoItem = true;; this.isMultiVideoItem = false)
                 {
                   if (j == 0) {
                     break label1178;
                   }
-                  paramView = new awyd((awum)localObject3, paramContext, m).a(paramContext, null, (Bundle)localObject2);
+                  paramView = new axyf((axuo)localObject3, paramContext, m).a(paramContext, null, (Bundle)localObject2);
                   break;
-                  ((awyc)localObject3).a = false;
+                  ((axye)localObject3).a = false;
                 }
                 label1178:
-                paramView = ((awul)localObject3).a(paramContext, null, (Bundle)localObject2);
+                paramView = ((axun)localObject3).a(paramContext, null, (Bundle)localObject2);
                 break label615;
               }
-              if ((localObject3 instanceof awye))
+              if ((localObject3 instanceof axyg))
               {
                 if (j != 0)
                 {
-                  paramView = new awyf((awum)localObject3, paramContext, m).a(paramContext, null, (Bundle)localObject2);
+                  paramView = new axyh((axuo)localObject3, paramContext, m).a(paramContext, null, (Bundle)localObject2);
                   break label615;
                 }
-                paramView = ((awul)localObject3).a(paramContext, null, (Bundle)localObject2);
+                paramView = ((axun)localObject3).a(paramContext, null, (Bundle)localObject2);
                 break label615;
               }
-              if ((localObject3 instanceof awyb))
+              if ((localObject3 instanceof axyd))
               {
-                localObject1 = ((awul)localObject3).a(paramContext, null, (Bundle)localObject2);
+                localObject1 = ((axun)localObject3).a(paramContext, null, (Bundle)localObject2);
                 paramView = (View)localObject1;
                 if (j == 0) {
                   break label3324;
@@ -1609,25 +1620,25 @@ public class StructMsgForGeneralShare
                 paramView = (View)localObject1;
                 break label615;
               }
-              if ((localObject3 instanceof awxb))
+              if ((localObject3 instanceof axxd))
               {
-                paramView = ((awul)localObject3).a(paramContext, null, (Bundle)localObject2);
+                paramView = ((axun)localObject3).a(paramContext, null, (Bundle)localObject2);
                 i = 0;
                 break label615;
               }
-              if ((localObject3 instanceof awxd))
+              if ((localObject3 instanceof axxf))
               {
-                paramView = ((awul)localObject3).a(paramContext, null, (Bundle)localObject2);
+                paramView = ((axun)localObject3).a(paramContext, null, (Bundle)localObject2);
                 i = 0;
                 break label615;
               }
-              if ((localObject3 instanceof awxe))
+              if ((localObject3 instanceof axxg))
               {
                 if ((this.mMsgServiceID == 83) || (this.mMsgServiceID == 108) || (this.mMsgServiceID == 114) || (this.mMsgServiceID == 116) || (this.mMsgServiceID == 151) || (this.mMsgServiceID == 156))
                 {
-                  paramView = new awyo();
+                  paramView = new axyq();
                   paramView.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this;
-                  paramView.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramacmv);
+                  paramView.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramacxn);
                   paramView = paramView.a(paramContext, null, (Bundle)localObject2);
                   i = 0;
                   break label615;
@@ -1653,7 +1664,7 @@ public class StructMsgForGeneralShare
                     continue;
                   }
                   ((Bundle)localObject2).putString("extend-data-json", this.mDatas.toString());
-                  localObject1 = ((awul)localObject3).a(paramContext, null, (Bundle)localObject2);
+                  localObject1 = ((axun)localObject3).a(paramContext, null, (Bundle)localObject2);
                   paramView = (View)localObject1;
                   if (localObject1 == null) {
                     break label3324;
@@ -1664,54 +1675,54 @@ public class StructMsgForGeneralShare
                   paramView = this.message.selfuin;
                 }
               }
-              if ((localObject3 instanceof awxf))
+              if ((localObject3 instanceof axxh))
               {
-                paramView = ((awul)localObject3).a(paramContext, null, (Bundle)localObject2);
+                paramView = ((axun)localObject3).a(paramContext, null, (Bundle)localObject2);
                 break label615;
               }
-              if ((localObject3 instanceof awxq))
+              if ((localObject3 instanceof axxs))
               {
                 ((Bundle)localObject2).putString("extraData", this.mExtraData);
-                paramView = ((awul)localObject3).a(paramContext, null, (Bundle)localObject2);
+                paramView = ((axun)localObject3).a(paramContext, null, (Bundle)localObject2);
                 i = 0;
                 break label615;
               }
-              if ((localObject3 instanceof awxr))
+              if ((localObject3 instanceof axxt))
               {
-                paramView = ((awul)localObject3).a(paramContext, null, (Bundle)localObject2);
+                paramView = ((axun)localObject3).a(paramContext, null, (Bundle)localObject2);
                 i = 0;
                 break label615;
               }
-              if ((localObject3 instanceof awxs))
+              if ((localObject3 instanceof axxu))
               {
-                paramView = ((awul)localObject3).a(paramContext, null, (Bundle)localObject2);
+                paramView = ((axun)localObject3).a(paramContext, null, (Bundle)localObject2);
                 i = 0;
                 break label615;
               }
-              if ((localObject3 instanceof awxv))
+              if ((localObject3 instanceof axxx))
               {
-                ((awul)localObject3).jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this;
-                paramView = ((awul)localObject3).a(paramContext, null, (Bundle)localObject2);
+                ((axun)localObject3).jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this;
+                paramView = ((axun)localObject3).a(paramContext, null, (Bundle)localObject2);
                 i = 0;
                 break label615;
               }
-              if ((localObject3 instanceof awyl))
+              if ((localObject3 instanceof axyn))
               {
-                ((awul)localObject3).jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this;
-                paramView = ((awul)localObject3).a(paramContext, null, (Bundle)localObject2);
+                ((axun)localObject3).jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this;
+                paramView = ((axun)localObject3).a(paramContext, null, (Bundle)localObject2);
                 i = 0;
                 break label615;
               }
-              paramView = ((awul)localObject3).a(paramContext, null, (Bundle)localObject2);
+              paramView = ((axun)localObject3).a(paramContext, null, (Bundle)localObject2);
               break label615;
               label1755:
-              ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin = aciy.a(16.0F, paramContext.getResources());
+              ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin = actn.a(16.0F, paramContext.getResources());
               break label750;
               label1773:
-              if ((!(localObject3 instanceof awye)) || (awyf.a((awum)localObject3, m))) {
+              if ((!(localObject3 instanceof axyg)) || (axyh.a((axuo)localObject3, m))) {
                 break label750;
               }
-              ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin = aciy.a(7.5F, paramContext.getResources());
+              ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin = actn.a(7.5F, paramContext.getResources());
               break label750;
               label1812:
               if (QLog.isDevelopLevel()) {
@@ -1727,7 +1738,7 @@ public class StructMsgForGeneralShare
             if (QLog.isColorLevel()) {
               QLog.d("Q.subscript", 2, "StructMsgForGeneralShare use subscript structmsg bg");
             }
-            paramBundle.setBackgroundResource(2130838129);
+            paramBundle.setBackgroundResource(2130838136);
           }
           a(paramBundle, paramContext.getResources(), (Bundle)localObject2);
           for (paramContext = paramBundle;; paramContext = (Context)localObject1)
@@ -1745,8 +1756,8 @@ public class StructMsgForGeneralShare
                 paramContext.getLayoutParams().width = -2;
               }
             }
-            paramContext.setId(2131310787);
-            paramContext.setTag(2131310787, this);
+            paramContext.setId(2131376583);
+            paramContext.setTag(2131376583, this);
             paramView = paramContext;
             if (i != 0) {
               break;
@@ -1762,62 +1773,62 @@ public class StructMsgForGeneralShare
             i = 1;
             if (k < m)
             {
-              awul localawul = getItemByIndex(k);
-              localawul.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramacmv);
-              if ((this.uin != null) && (!this.uin.equalsIgnoreCase(localawul.R))) {
-                localawul.R = this.uin;
+              axun localaxun = getItemByIndex(k);
+              localaxun.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramacxn);
+              if ((this.uin != null) && (!this.uin.equalsIgnoreCase(localaxun.R))) {
+                localaxun.R = this.uin;
               }
-              if (localawul.a() == 0)
+              if (localaxun.a() == 0)
               {
                 if (k == 0) {
-                  localawul.a(1);
+                  localaxun.a(1);
                 }
                 if (k == m - 1) {
-                  localawul.a(2);
+                  localaxun.a(2);
                 }
               }
               paramBundle = ((ViewGroup)localObject3).getChildAt(k);
-              if ((localawul instanceof awyi))
+              if ((localaxun instanceof axyk))
               {
-                paramView = localawul.a(paramContext, paramBundle, (Bundle)localObject2);
+                paramView = localaxun.a(paramContext, paramBundle, (Bundle)localObject2);
                 label2143:
                 if (k + 2 < m)
                 {
                   paramBundle = getItemByIndex(k + 2);
-                  if ((((awum)paramBundle).a.size() != 0) && (paramView != null) && ((((paramBundle instanceof awyk)) && ((((awyk)paramBundle).a.get(0) instanceof awyt))) || (((paramBundle instanceof awxy)) && ((((awxy)paramBundle).a.get(0) instanceof awwi)))))
+                  if ((((axuo)paramBundle).a.size() != 0) && (paramView != null) && ((((paramBundle instanceof axym)) && ((((axym)paramBundle).a.get(0) instanceof axyv))) || (((paramBundle instanceof axya)) && ((((axya)paramBundle).a.get(0) instanceof axwk)))))
                   {
                     paramBundle = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
                     if (paramBundle != null)
                     {
-                      if (!(localawul instanceof awyk)) {
+                      if (!(localaxun instanceof axym)) {
                         break label3194;
                       }
                       if (j == 0) {
                         break label3176;
                       }
-                      paramBundle.bottomMargin = aciy.a(11.0F, paramContext.getResources());
+                      paramBundle.bottomMargin = actn.a(11.0F, paramContext.getResources());
                       label2274:
                       paramView.setLayoutParams(paramBundle);
                     }
                   }
                 }
-                if ((k + 1 < m) && (paramView != null) && (((awum)localawul).a.size() == 1) && ((((awum)localawul).a.get(0) instanceof awwq)))
+                if ((k + 1 < m) && (paramView != null) && (((axuo)localaxun).a.size() == 1) && ((((axuo)localaxun).a.get(0) instanceof axws)))
                 {
                   paramBundle = getItemByIndex(k + 1);
-                  if ((((awum)paramBundle).a.size() != 0) && ((paramBundle instanceof awxy)) && ((((awxy)paramBundle).a.get(0) instanceof awwi))) {
+                  if ((((axuo)paramBundle).a.size() != 0) && ((paramBundle instanceof axya)) && ((((axya)paramBundle).a.get(0) instanceof axwk))) {
                     paramView.setPadding(2, paramView.getPaddingTop(), 2, paramView.getPaddingBottom());
                   }
                 }
                 if (paramView == null) {
                   break label3233;
                 }
-                if ((!TextUtils.isEmpty(localawul.c)) || ((localawul instanceof awxs)))
+                if ((!TextUtils.isEmpty(localaxun.c)) || ((localaxun instanceof axxu)))
                 {
-                  paramView.setTag(localawul);
+                  paramView.setTag(localaxun);
                   paramView.setClickable(true);
-                  paramView.setOnClickListener(localawul);
-                  paramView.setOnLongClickListener(new awvb(this, paramacmv));
-                  paramView.setOnTouchListener(new awvc(this, paramacmv));
+                  paramView.setOnClickListener(localaxun);
+                  paramView.setOnLongClickListener(new axvd(this, paramacxn));
+                  paramView.setOnTouchListener(new axve(this, paramacxn));
                   clickedItemIndex = 0;
                 }
               }
@@ -1825,48 +1836,48 @@ public class StructMsgForGeneralShare
               {
                 k += 1;
                 break;
-                if ((localawul instanceof awyj))
+                if ((localaxun instanceof axyl))
                 {
-                  paramView = localawul.a(paramContext, paramBundle, (Bundle)localObject2);
+                  paramView = localaxun.a(paramContext, paramBundle, (Bundle)localObject2);
                   break label2143;
                 }
-                if ((localawul instanceof awwx))
+                if ((localaxun instanceof axwz))
                 {
-                  paramView = localawul.a(paramContext, paramBundle, (Bundle)localObject2);
+                  paramView = localaxun.a(paramContext, paramBundle, (Bundle)localObject2);
                   i = 0;
                   break label2143;
                 }
-                if ((localawul instanceof awyc))
+                if ((localaxun instanceof axye))
                 {
                   if (k + 1 < m) {
-                    ((awyc)localawul).a = true;
+                    ((axye)localaxun).a = true;
                   }
                   for (this.isMultiVideoItem = true;; this.isMultiVideoItem = false)
                   {
                     if (j == 0) {
                       break label2596;
                     }
-                    paramView = new awyd((awum)localawul, paramContext, k).a(paramContext, paramBundle, (Bundle)localObject2);
+                    paramView = new axyf((axuo)localaxun, paramContext, k).a(paramContext, paramBundle, (Bundle)localObject2);
                     break;
-                    ((awyc)localawul).a = false;
+                    ((axye)localaxun).a = false;
                   }
                   label2596:
-                  paramView = localawul.a(paramContext, paramBundle, (Bundle)localObject2);
+                  paramView = localaxun.a(paramContext, paramBundle, (Bundle)localObject2);
                   break label2143;
                 }
-                if ((localawul instanceof awye))
+                if ((localaxun instanceof axyg))
                 {
                   if (j != 0)
                   {
-                    paramView = new awyf((awum)localawul, paramContext, k).a(paramContext, paramBundle, (Bundle)localObject2);
+                    paramView = new axyh((axuo)localaxun, paramContext, k).a(paramContext, paramBundle, (Bundle)localObject2);
                     break label2143;
                   }
-                  paramView = localawul.a(paramContext, paramBundle, (Bundle)localObject2);
+                  paramView = localaxun.a(paramContext, paramBundle, (Bundle)localObject2);
                   break label2143;
                 }
-                if ((localawul instanceof awyb))
+                if ((localaxun instanceof axyd))
                 {
-                  paramBundle = localawul.a(paramContext, paramBundle, (Bundle)localObject2);
+                  paramBundle = localaxun.a(paramContext, paramBundle, (Bundle)localObject2);
                   paramView = paramBundle;
                   if (j == 0) {
                     break label3315;
@@ -1875,25 +1886,25 @@ public class StructMsgForGeneralShare
                   paramView = paramBundle;
                   break label2143;
                 }
-                if ((localawul instanceof awxb))
+                if ((localaxun instanceof axxd))
                 {
-                  paramView = localawul.a(paramContext, paramBundle, (Bundle)localObject2);
+                  paramView = localaxun.a(paramContext, paramBundle, (Bundle)localObject2);
                   i = 0;
                   break label2143;
                 }
-                if ((localawul instanceof awxd))
+                if ((localaxun instanceof axxf))
                 {
-                  paramView = localawul.a(paramContext, paramBundle, (Bundle)localObject2);
+                  paramView = localaxun.a(paramContext, paramBundle, (Bundle)localObject2);
                   i = 0;
                   break label2143;
                 }
-                if ((localawul instanceof awxe))
+                if ((localaxun instanceof axxg))
                 {
                   if ((this.mMsgServiceID == 83) || (this.mMsgServiceID == 108) || (this.mMsgServiceID == 114) || (this.mMsgServiceID == 116) || (this.mMsgServiceID == 151) || (this.mMsgServiceID == 156))
                   {
-                    paramView = new awyo();
+                    paramView = new axyq();
                     paramView.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this;
-                    paramView.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramacmv);
+                    paramView.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramacxn);
                     paramView = paramView.a(paramContext, paramBundle, (Bundle)localObject2);
                     i = 0;
                     break label2143;
@@ -1916,64 +1927,64 @@ public class StructMsgForGeneralShare
                       continue;
                     }
                     ((Bundle)localObject2).putString("extend-data-json", this.mDatas.toString());
-                    paramBundle = localawul.a(paramContext, paramBundle, (Bundle)localObject2);
+                    paramBundle = localaxun.a(paramContext, paramBundle, (Bundle)localObject2);
                     paramView = paramBundle;
                     if (paramBundle == null) {
                       break label3315;
                     }
-                    paramBundle.setTag(jdField_a_of_type_Int, localawul);
+                    paramBundle.setTag(jdField_a_of_type_Int, localaxun);
                     paramView = paramBundle;
                     break;
                     paramView = this.message.selfuin;
                   }
                 }
-                if ((localawul instanceof awxf))
+                if ((localaxun instanceof axxh))
                 {
-                  paramView = localawul.a(paramContext, paramBundle, (Bundle)localObject2);
+                  paramView = localaxun.a(paramContext, paramBundle, (Bundle)localObject2);
                   break label2143;
                 }
-                if ((localawul instanceof awxq))
+                if ((localaxun instanceof axxs))
                 {
-                  paramView = localawul.a(paramContext, paramBundle, (Bundle)localObject2);
+                  paramView = localaxun.a(paramContext, paramBundle, (Bundle)localObject2);
                   i = 0;
                   break label2143;
                 }
-                if ((localawul instanceof awxr))
+                if ((localaxun instanceof axxt))
                 {
-                  paramView = localawul.a(paramContext, paramBundle, (Bundle)localObject2);
+                  paramView = localaxun.a(paramContext, paramBundle, (Bundle)localObject2);
                   i = 0;
                   break label2143;
                 }
-                if ((localawul instanceof awxs))
+                if ((localaxun instanceof axxu))
                 {
-                  paramView = localawul.a(paramContext, paramBundle, (Bundle)localObject2);
+                  paramView = localaxun.a(paramContext, paramBundle, (Bundle)localObject2);
                   i = 0;
                   break label2143;
                 }
-                if ((localawul instanceof awxv))
+                if ((localaxun instanceof axxx))
                 {
-                  localawul.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this;
-                  paramView = localawul.a(paramContext, paramBundle, (Bundle)localObject2);
+                  localaxun.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this;
+                  paramView = localaxun.a(paramContext, paramBundle, (Bundle)localObject2);
                   i = 0;
                   break label2143;
                 }
-                if ((localawul instanceof awyl))
+                if ((localaxun instanceof axyn))
                 {
-                  localawul.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this;
-                  paramView = localawul.a(paramContext, paramBundle, (Bundle)localObject2);
+                  localaxun.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this;
+                  paramView = localaxun.a(paramContext, paramBundle, (Bundle)localObject2);
                   i = 0;
                   break label2143;
                 }
-                paramView = localawul.a(paramContext, paramBundle, (Bundle)localObject2);
+                paramView = localaxun.a(paramContext, paramBundle, (Bundle)localObject2);
                 break label2143;
                 label3176:
-                paramBundle.bottomMargin = aciy.a(16.0F, paramContext.getResources());
+                paramBundle.bottomMargin = actn.a(16.0F, paramContext.getResources());
                 break label2274;
                 label3194:
-                if ((!(localawul instanceof awye)) || (awyf.a((awum)localawul, k))) {
+                if ((!(localaxun instanceof axyg)) || (axyh.a((axuo)localaxun, k))) {
                   break label2274;
                 }
-                paramBundle.bottomMargin = aciy.a(7.5F, paramContext.getResources());
+                paramBundle.bottomMargin = actn.a(7.5F, paramContext.getResources());
                 break label2274;
                 label3233:
                 if (QLog.isDevelopLevel()) {
@@ -1986,7 +1997,7 @@ public class StructMsgForGeneralShare
               if (QLog.isColorLevel()) {
                 QLog.d("Q.subscript", 2, "StructMsgForGeneralShare use subscript structmsg bg");
               }
-              ((View)localObject1).setBackgroundResource(2130838129);
+              ((View)localObject1).setBackgroundResource(2130838136);
             }
             a((View)localObject1, paramContext.getResources(), (Bundle)localObject2);
           }
@@ -2014,23 +2025,23 @@ public class StructMsgForGeneralShare
       if (!paramContext.hasNext()) {
         break label16;
       }
-      Object localObject1 = (awul)paramContext.next();
-      if (!(localObject1 instanceof awxy)) {
+      Object localObject1 = (axun)paramContext.next();
+      if (!(localObject1 instanceof axya)) {
         break;
       }
-      localObject1 = (awxy)localObject1;
-      if (((awxy)localObject1).a == null) {
+      localObject1 = (axya)localObject1;
+      if (((axya)localObject1).a == null) {
         break;
       }
-      localObject1 = ((awxy)localObject1).a.iterator();
+      localObject1 = ((axya)localObject1).a.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        Object localObject2 = (awul)((Iterator)localObject1).next();
-        if ((localObject2 instanceof awwi))
+        Object localObject2 = (axun)((Iterator)localObject1).next();
+        if ((localObject2 instanceof axwk))
         {
-          localObject2 = (awwi)localObject2;
-          if (((awwi)localObject2).b()) {
-            ((awwi)localObject2).a(paramMessageRecord.getExtInfoFromExtStr("order_pay_state_" + ((awwi)localObject2).aj), paramMessageRecord, this);
+          localObject2 = (axwk)localObject2;
+          if (((axwk)localObject2).b()) {
+            ((axwk)localObject2).a(paramMessageRecord.getExtInfoFromExtStr("order_pay_state_" + ((axwk)localObject2).aj), paramMessageRecord, this);
           }
         }
       }
@@ -2041,7 +2052,7 @@ public class StructMsgForGeneralShare
   {
     if (this.mStructMsgItemLists != null)
     {
-      awul localawul;
+      axun localaxun;
       do
       {
         Iterator localIterator = this.mStructMsgItemLists.iterator();
@@ -2053,25 +2064,25 @@ public class StructMsgForGeneralShare
             if (!localIterator.hasNext()) {
               break;
             }
-            localObject = (awul)localIterator.next();
-          } while (!(localObject instanceof awxy));
-          localObject = ((awxy)localObject).a.iterator();
+            localObject = (axun)localIterator.next();
+          } while (!(localObject instanceof axya));
+          localObject = ((axya)localObject).a.iterator();
         }
-        localawul = (awul)((Iterator)localObject).next();
-      } while ((!(localawul instanceof awwi)) || (!((awwi)localawul).b()));
+        localaxun = (axun)((Iterator)localObject).next();
+      } while ((!(localaxun instanceof axwk)) || (!((axwk)localaxun).b()));
       return true;
     }
     return false;
   }
   
-  protected boolean parseContentNode(awwc paramawwc)
+  protected boolean parseContentNode(axwe paramaxwe)
   {
-    if (paramawwc == null) {
+    if (paramaxwe == null) {
       return true;
     }
     Object localObject;
-    if ("item".equals(paramawwc.jdField_b_of_type_JavaLangString)) {
-      localObject = paramawwc.a("layout");
+    if ("item".equals(paramaxwe.jdField_b_of_type_JavaLangString)) {
+      localObject = paramaxwe.a("layout");
     }
     for (;;)
     {
@@ -2081,7 +2092,7 @@ public class StructMsgForGeneralShare
           i = Integer.parseInt((String)localObject);
         }
       }
-      catch (NumberFormatException paramawwc)
+      catch (NumberFormatException paramaxwe)
       {
         int k;
         int j;
@@ -2098,13 +2109,13 @@ public class StructMsgForGeneralShare
             j = 25;
           }
         }
-        localObject = awuv.a(j);
+        localObject = axux.a(j);
         if (localObject != null) {
           break;
         }
         return true;
       }
-      catch (NumberFormatException paramawwc)
+      catch (NumberFormatException paramaxwe)
       {
         break label89;
       }
@@ -2115,20 +2126,20 @@ public class StructMsgForGeneralShare
         QLog.d(jdField_a_of_type_JavaLangString, 4, "Item layout value is " + i);
       }
       return false;
-      localObject = awuv.a(paramawwc.jdField_b_of_type_JavaLangString);
+      localObject = axux.a(paramaxwe.jdField_b_of_type_JavaLangString);
     }
-    ((awul)localObject).jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this;
-    if (((awul)localObject).a(paramawwc))
+    ((axun)localObject).jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this;
+    if (((axun)localObject).a(paramaxwe))
     {
-      addItem((awul)localObject);
+      addItem((axun)localObject);
       return true;
     }
     return false;
   }
   
-  protected void parseMsgAttrubutes(awwc paramawwc)
+  protected void parseMsgAttrubutes(axwe paramaxwe)
   {
-    super.parseMsgAttrubutes(paramawwc);
+    super.parseMsgAttrubutes(paramaxwe);
   }
   
   public void readExternal(ObjectInput paramObjectInput)
@@ -2156,11 +2167,11 @@ public class StructMsgForGeneralShare
       this.mContentCover = paramObjectInput.readUTF();
       this.mContentTitle = paramObjectInput.readUTF();
       this.mContentSummary = paramObjectInput.readUTF();
-      localObject1 = awuv.a(this.mContentLayout);
-      ((awum)localObject1).a(new awwo(this.mContentCover));
-      ((awum)localObject1).a(new StructMsgItemTitle(this.mContentTitle));
-      ((awum)localObject1).a(new awzf(this.mContentSummary));
-      addItem((awul)localObject1);
+      localObject1 = axux.a(this.mContentLayout);
+      ((axuo)localObject1).a(new axwq(this.mContentCover));
+      ((axuo)localObject1).a(new StructMsgItemTitle(this.mContentTitle));
+      ((axuo)localObject1).a(new axzh(this.mContentSummary));
+      addItem((axun)localObject1);
       this.mSourceAppid = paramObjectInput.readLong();
       this.mSourceIcon = paramObjectInput.readUTF();
       this.mSourceName = paramObjectInput.readUTF();
@@ -2206,9 +2217,9 @@ public class StructMsgForGeneralShare
           i = 0;
           while (i < this.mStructMsgItemLists.size())
           {
-            localObject1 = (awul)this.mStructMsgItemLists.get(i);
-            ((awul)localObject1).jdField_a_of_type_Long = this.msgId;
-            ((awul)localObject1).h = this.mPromotionType;
+            localObject1 = (axun)this.mStructMsgItemLists.get(i);
+            ((axun)localObject1).jdField_a_of_type_Long = this.msgId;
+            ((axun)localObject1).j = this.mPromotionType;
             i += 1;
           }
           if (n >= 4)
@@ -2313,7 +2324,7 @@ public class StructMsgForGeneralShare
                                                 }
                                                 this.mMsgException = true;
                                                 continue;
-                                                if (!this.mSourceName.equalsIgnoreCase(ajjy.a(2131628059))) {
+                                                if (!this.mSourceName.equalsIgnoreCase(ajyc.a(2131693700))) {
                                                   break;
                                                 }
                                                 this.mMsgServiceID = 53;
@@ -2347,7 +2358,7 @@ public class StructMsgForGeneralShare
       this.mHasAdSource = true;
     }
     if (this.mSourceName != null) {
-      if (this.mSourceName.equalsIgnoreCase(ajjy.a(2131648809)))
+      if (this.mSourceName.equalsIgnoreCase(ajyc.a(2131714598)))
       {
         this.mMsgServiceID = 54;
         return;
@@ -2377,7 +2388,7 @@ public class StructMsgForGeneralShare
           m = paramObjectInput.readInt();
           if ((m == 2) && ("micro_app".equals(this.mMsg_A_ActionData)))
           {
-            localObject1 = new awyl();
+            localObject1 = new axyn();
             break label1659;
           }
         }
@@ -2387,16 +2398,16 @@ public class StructMsgForGeneralShare
       {
         if (localObject1 != null)
         {
-          ((awul)localObject1).R = this.uin;
-          ((awul)localObject1).jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this;
-          ((awul)localObject1).a(paramObjectInput);
-          Object localObject2 = (awum)localObject1;
-          if ((((awum)localObject2).a.size() != 1) || (!((awul)((awum)localObject2).a.get(0)).jdField_a_of_type_JavaLangString.equals("hr")))
+          ((axun)localObject1).R = this.uin;
+          ((axun)localObject1).jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this;
+          ((axun)localObject1).a(paramObjectInput);
+          Object localObject2 = (axuo)localObject1;
+          if ((((axuo)localObject2).a.size() != 1) || (!((axun)((axuo)localObject2).a.get(0)).jdField_a_of_type_JavaLangString.equals("hr")))
           {
-            ((awul)localObject1).Q = String.valueOf(i);
+            ((axun)localObject1).Q = String.valueOf(i);
             i += 1;
-            addItem((awul)localObject1);
-            ((awul)localObject1).a(this);
+            addItem((axun)localObject1);
+            ((axun)localObject1).a(this);
             break;
             int k = m;
             if (m == 1)
@@ -2406,15 +2417,15 @@ public class StructMsgForGeneralShare
                 k = 30;
               }
             }
-            localObject1 = awuv.a(k);
+            localObject1 = axux.a(k);
             break label1659;
-            localObject2 = awuv.a((String)localObject1);
+            localObject2 = axux.a((String)localObject1);
             localObject1 = localObject2;
             if (localObject2 == null) {
               continue;
             }
             localObject1 = localObject2;
-            if (!awum.class.isInstance(localObject2)) {
+            if (!axuo.class.isInstance(localObject2)) {
               continue;
             }
             paramObjectInput.readInt();
@@ -2431,7 +2442,7 @@ public class StructMsgForGeneralShare
   
   public void report(Object paramObject)
   {
-    awqx.b(null, "dc00898", "", "", "0X800A62F", "0X800A62F", 0, 0, "1", ForwardUtils.b(this.uinType), this.mContentTitle, "");
+    axqw.b(null, "dc00898", "", "", "0X800A62F", "0X800A62F", 0, 0, "1", ForwardUtils.b(this.uinType), this.mContentTitle, "");
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "图文曝光=0X800A62F, type=", "1", ", title=", this.mContentTitle, ", uinType=", ForwardUtils.b(this.uinType) });
     }
@@ -2449,7 +2460,7 @@ public class StructMsgForGeneralShare
         }
         this.message.saveExtInfoToExtStr("order_pay_state_" + paramString, "" + paramInt);
         if ((paramContext instanceof FragmentActivity)) {
-          ((FragmentActivity)paramContext).getChatFragment().a().jdField_a_of_type_Acka.notifyDataSetChanged();
+          ((FragmentActivity)paramContext).getChatFragment().a().jdField_a_of_type_Acut.notifyDataSetChanged();
         }
         ThreadManager.post(new StructMsgForGeneralShare.6(this, localAppRuntime), 5, null, false);
         return;
@@ -2466,33 +2477,33 @@ public class StructMsgForGeneralShare
   @Deprecated
   public void setProgress(int paramInt)
   {
-    awul localawul = findXmlNode("progress");
-    if ((localawul != null) && ((localawul instanceof awzd))) {
-      ((awzd)localawul).b(paramInt);
+    axun localaxun = findXmlNode("progress");
+    if ((localaxun != null) && ((localaxun instanceof axzf))) {
+      ((axzf)localaxun).b(paramInt);
     }
   }
   
   @Deprecated
   public void setSummary(String paramString)
   {
-    awul localawul = findXmlNode("summary");
-    if ((localawul != null) && ((localawul instanceof awzf))) {
-      ((awzf)localawul).a(paramString);
+    axun localaxun = findXmlNode("summary");
+    if ((localaxun != null) && ((localaxun instanceof axzh))) {
+      ((axzh)localaxun).a(paramString);
     }
   }
   
   @Deprecated
   public void setTitle(String paramString)
   {
-    awul localawul = findXmlNode("title");
-    if ((localawul != null) && ((localawul instanceof StructMsgItemTitle))) {
-      ((StructMsgItemTitle)localawul).a(paramString);
+    axun localaxun = findXmlNode("title");
+    if ((localaxun != null) && ((localaxun instanceof StructMsgItemTitle))) {
+      ((StructMsgItemTitle)localaxun).a(paramString);
     }
   }
   
-  public void symbol2CharactorForSmallEmoji(awul paramawul)
+  public void symbol2CharactorForSmallEmoji(axun paramaxun)
   {
-    if ((paramawul == null) || (!(paramawul instanceof awxe))) {}
+    if ((paramaxun == null) || (!(paramaxun instanceof axxg))) {}
     label39:
     label183:
     label464:
@@ -2503,27 +2514,27 @@ public class StructMsgForGeneralShare
     for (;;)
     {
       return;
-      paramawul = ((awxe)paramawul).a;
-      if ((paramawul != null) && (paramawul.size() != 0))
+      paramaxun = ((axxg)paramaxun).a;
+      if ((paramaxun != null) && (paramaxun.size() != 0))
       {
-        Object localObject1 = paramawul.iterator();
-        paramawul = null;
+        Object localObject1 = paramaxun.iterator();
+        paramaxun = null;
         Object localObject2;
         if (((Iterator)localObject1).hasNext())
         {
-          localObject2 = (awul)((Iterator)localObject1).next();
-          if (!(localObject2 instanceof awzf)) {
+          localObject2 = (axun)((Iterator)localObject1).next();
+          if (!(localObject2 instanceof axzh)) {
             break label476;
           }
-          paramawul = (awzf)localObject2;
+          paramaxun = (axzh)localObject2;
         }
         for (;;)
         {
           break label39;
-          if (paramawul == null) {
+          if (paramaxun == null) {
             break label477;
           }
-          localObject2 = paramawul.b();
+          localObject2 = paramaxun.b();
           if ((TextUtils.isEmpty((CharSequence)localObject2)) || (this.mContext == null) || (this.mContext.get() == null) || (!(this.mContext.get() instanceof BaseActivity))) {
             break;
           }
@@ -2536,7 +2547,7 @@ public class StructMsgForGeneralShare
             if (localObject1 == null) {
               break label474;
             }
-            arnz localarnz = (arnz)((QQAppInterface)localObject1).getManager(14);
+            askd localaskd = (askd)((QQAppInterface)localObject1).getManager(14);
             StringBuilder localStringBuilder = new StringBuilder((String)localObject2);
             int i = 0;
             int j;
@@ -2576,15 +2587,15 @@ public class StructMsgForGeneralShare
                       }
                     }
                   }
-                  localObject1 = anam.a((char[])localObject1);
-                  localObject2 = axkd.c;
-                  if (localarnz == null) {
+                  localObject1 = anqu.a((char[])localObject1);
+                  localObject2 = ayki.c;
+                  if (localaskd == null) {
                     break label464;
                   }
                 }
               }
             }
-            for (localObject1 = localarnz.a(Integer.toString(localObject1[0]), Integer.toString(localObject1[1]));; localObject1 = null)
+            for (localObject1 = localaskd.a(Integer.toString(localObject1[0]), Integer.toString(localObject1[1]));; localObject1 = null)
             {
               if (localObject1 != null) {
                 localObject2 = ((Emoticon)localObject1).character;
@@ -2596,7 +2607,7 @@ public class StructMsgForGeneralShare
               if (TextUtils.isEmpty(localStringBuilder)) {
                 break;
               }
-              paramawul.a(localStringBuilder.toString());
+              paramaxun.a(localStringBuilder.toString());
               return;
             }
             localObject1 = null;
@@ -2607,20 +2618,20 @@ public class StructMsgForGeneralShare
     }
   }
   
-  protected void toContentXml(awuk paramawuk)
+  protected void toContentXml(axum paramaxum)
   {
     Iterator localIterator = iterator();
     while (localIterator.hasNext()) {
-      ((awul)localIterator.next()).a(paramawuk);
+      ((axun)localIterator.next()).a(paramaxum);
     }
     if ((this.mMsgServiceID == 128) && (this.mDatas != null))
     {
-      paramawuk.startTag(null, "data");
-      paramawuk.attribute(null, "groupcode", this.mDatas.optString("groupcode"));
-      paramawuk.attribute(null, "groupname", this.mDatas.optString("groupname"));
-      paramawuk.attribute(null, "msgseq", this.mDatas.optString("msgseq"));
-      paramawuk.attribute(null, "msgtype", this.mDatas.optString("msgtype"));
-      paramawuk.endTag(null, "data");
+      paramaxum.startTag(null, "data");
+      paramaxum.attribute(null, "groupcode", this.mDatas.optString("groupcode"));
+      paramaxum.attribute(null, "groupname", this.mDatas.optString("groupname"));
+      paramaxum.attribute(null, "msgseq", this.mDatas.optString("msgseq"));
+      paramaxum.attribute(null, "msgtype", this.mDatas.optString("msgtype"));
+      paramaxum.endTag(null, "data");
     }
   }
   
@@ -2636,15 +2647,15 @@ public class StructMsgForGeneralShare
     Iterator localIterator = this.mStructMsgItemLists.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (awul)localIterator.next();
-      if ((localObject instanceof awum))
+      Object localObject = (axun)localIterator.next();
+      if ((localObject instanceof axuo))
       {
-        localObject = ((awum)localObject).a.iterator();
+        localObject = ((axuo)localObject).a.iterator();
         while (((Iterator)localObject).hasNext())
         {
-          awul localawul = (awul)((Iterator)localObject).next();
-          if ((localawul instanceof awwo)) {
-            ((awwo)localawul).S = paramString;
+          axun localaxun = (axun)((Iterator)localObject).next();
+          if ((localaxun instanceof axwq)) {
+            ((axwq)localaxun).S = paramString;
           }
         }
       }
@@ -2657,19 +2668,19 @@ public class StructMsgForGeneralShare
     Iterator localIterator = this.mStructMsgItemLists.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (awul)localIterator.next();
-      if ((localObject instanceof awum))
+      Object localObject = (axun)localIterator.next();
+      if ((localObject instanceof axuo))
       {
-        localObject = ((awum)localObject).a.iterator();
+        localObject = ((axuo)localObject).a.iterator();
         while (((Iterator)localObject).hasNext())
         {
-          awul localawul = (awul)((Iterator)localObject).next();
-          if ((localawul instanceof StructMsgItemTitle)) {
-            ((StructMsgItemTitle)localawul).Y = paramString1;
-          } else if ((localawul instanceof awzf)) {
-            ((awzf)localawul).Y = paramString2;
-          } else if ((localawul instanceof awwo)) {
-            ((awwo)localawul).S = paramString3;
+          axun localaxun = (axun)((Iterator)localObject).next();
+          if ((localaxun instanceof StructMsgItemTitle)) {
+            ((StructMsgItemTitle)localaxun).Y = paramString1;
+          } else if ((localaxun instanceof axzh)) {
+            ((axzh)localaxun).Y = paramString2;
+          } else if ((localaxun instanceof axwq)) {
+            ((axwq)localaxun).S = paramString3;
           }
         }
       }
@@ -2724,7 +2735,7 @@ public class StructMsgForGeneralShare
       paramObjectOutput.writeInt(getItemCount());
       localObject = iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((awul)((Iterator)localObject).next()).a(paramObjectOutput);
+        ((axun)((Iterator)localObject).next()).a(paramObjectOutput);
       }
       localObject = this.mMsgAction;
       break;

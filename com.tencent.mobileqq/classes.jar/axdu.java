@@ -1,23 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.teamwork.ReSendCmd;
-
-public final class axdu
-  implements Parcelable.Creator<ReSendCmd>
+public class axdu
 {
-  public ReSendCmd a(Parcel paramParcel)
-  {
-    return new ReSendCmd(paramParcel);
-  }
-  
-  public ReSendCmd[] a(int paramInt)
-  {
-    return new ReSendCmd[paramInt];
-  }
+  public long a;
+  public long b;
+  public long c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axdu
  * JD-Core Version:    0.7.0.1
  */

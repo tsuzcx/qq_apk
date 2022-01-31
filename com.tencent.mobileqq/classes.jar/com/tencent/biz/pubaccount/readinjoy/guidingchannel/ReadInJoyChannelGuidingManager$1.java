@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.guidingchannel;
 
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import qoe;
+import rap;
 
 public final class ReadInJoyChannelGuidingManager$1
   implements Runnable
 {
-  public ReadInJoyChannelGuidingManager$1(ReadInJoyXListView paramReadInJoyXListView, qoe paramqoe) {}
+  public ReadInJoyChannelGuidingManager$1(ReadInJoyXListView paramReadInJoyXListView, rap paramrap) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.performItemClick(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getHeaderViewsCount()), 0, this.jdField_a_of_type_Qoe.getItemId(0));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.performItemClick(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getHeaderViewsCount()), 0, this.jdField_a_of_type_Rap.getItemId(0));
   }
 }
 

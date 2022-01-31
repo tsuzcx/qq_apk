@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.BubblePopupWindow;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
-class axln
-  implements View.OnClickListener
+public class axln
+  implements FileFilter
 {
-  axln(axlm paramaxlm) {}
-  
-  public void onClick(View paramView)
+  public boolean accept(File paramFile)
   {
-    axlm.a(this.a).b();
+    return Pattern.matches("cpu[0-9]", paramFile.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axln
  * JD-Core Version:    0.7.0.1
  */

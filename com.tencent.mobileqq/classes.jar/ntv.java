@@ -1,19 +1,73 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.List;
 
 class ntv
-  implements ViewBase.OnClickListener
+  extends osp
 {
   ntv(ntu paramntu) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a(int paramInt)
   {
-    this.a.jdField_a_of_type_Nwk.b(this.a.jdField_a_of_type_Nwx);
+    if ((ntu.a(this.a) != null) && ((ntu.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ntu.a(this.a)).a(paramInt);
+    }
+  }
+  
+  public void a(int paramInt, List<Long> paramList)
+  {
+    if ((ntu.a(this.a) != null) && ((ntu.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ntu.a(this.a)).a(paramInt, paramList);
+    }
+  }
+  
+  public void a(TopBannerInfo paramTopBannerInfo)
+  {
+    if ((ntu.a(this.a) != null) && ((ntu.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ntu.a(this.a)).a(paramTopBannerInfo);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((ntu.a(this.a) != null) && ((ntu.a(this.a) instanceof ReadInJoyListViewGroup)) && (paramInt == ntu.a(this.a)))
+    {
+      ((ReadInJoyListViewGroup)ntu.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
+      ntu.a(this.a);
+    }
+  }
+  
+  public void ap_()
+  {
+    if ((ntu.a(this.a) != null) && ((ntu.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ntu.a(this.a)).q();
+    }
+  }
+  
+  public void b(int paramInt, List<Long> paramList)
+  {
+    if ((ntu.a(this.a) != null) && ((ntu.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ntu.a(this.a)).c(paramInt, paramList);
+    }
+  }
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((ntu.a(this.a) != null) && ((ntu.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ntu.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void c(int paramInt, List<Long> paramList)
+  {
+    if ((ntu.a(this.a) != null) && ((ntu.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ntu.a(this.a)).b(paramInt, paramList);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ntv
  * JD-Core Version:    0.7.0.1
  */

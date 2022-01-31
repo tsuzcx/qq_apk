@@ -1,66 +1,23 @@
-import java.util.ArrayList;
-
 public class bccc
 {
-  protected static bccc a;
-  protected ArrayList<bcex> a;
+  public int a;
+  public String a;
+  public String[] a;
+  public int b;
+  public String b;
   
-  public static bccc a()
+  public bccc(int paramInt1, int paramInt2, String paramString1, String paramString2, String... paramVarArgs)
   {
-    try
-    {
-      if (jdField_a_of_type_Bccc == null)
-      {
-        jdField_a_of_type_Bccc = new bccc();
-        jdField_a_of_type_Bccc.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      bccc localbccc = jdField_a_of_type_Bccc;
-      return localbccc;
-    }
-    finally {}
-  }
-  
-  public ArrayList<bcex> a()
-  {
-    return jdField_a_of_type_Bccc.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(bcex parambcex)
-  {
-    int j = jdField_a_of_type_Bccc.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      if ((bcex)jdField_a_of_type_Bccc.jdField_a_of_type_JavaUtilArrayList.get(i) == parambcex) {
-        return;
-      }
-      i += 1;
-    }
-    jdField_a_of_type_Bccc.jdField_a_of_type_JavaUtilArrayList.add(parambcex);
-  }
-  
-  public void b(bcex parambcex)
-  {
-    int j = jdField_a_of_type_Bccc.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        if ((bcex)jdField_a_of_type_Bccc.jdField_a_of_type_JavaUtilArrayList.get(i) == parambcex) {
-          jdField_a_of_type_Bccc.jdField_a_of_type_JavaUtilArrayList.remove(i);
-        }
-      }
-      else {
-        return;
-      }
-      i += 1;
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bccc
  * JD-Core Version:    0.7.0.1
  */

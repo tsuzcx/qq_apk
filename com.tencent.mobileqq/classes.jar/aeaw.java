@@ -1,30 +1,36 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import android.animation.TypeEvaluator;
+import android.graphics.PointF;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class aeaw
-  extends aeav
+  implements TypeEvaluator<PointF>
 {
-  public Bitmap a;
-  public AnimationView.AnimationInfo a;
+  private PointF[] jdField_a_of_type_ArrayOfAndroidGraphicsPointF;
   
-  public aeaw(String paramString)
-  {
-    super(paramString);
-  }
+  public aeaw(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
   {
-    if (paramRedPacketInfo != null)
+    paramPointF1 = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0];
+    paramPointF2 = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[1];
+    PointF localPointF = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[2];
+    if (paramFloat <= 1.0F)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.specialBackground;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramRedPacketInfo.specailBackgroundAnimInfo;
+      float f1 = 1.0F - paramFloat;
+      float f2 = (float)(paramPointF1.x * Math.pow(f1, 2.0D) + 2.0F * paramPointF2.x * paramFloat * f1 + localPointF.x * Math.pow(paramFloat, 2.0D));
+      double d1 = paramPointF1.y;
+      double d2 = Math.pow(f1, 2.0D);
+      return new PointF(f2, (float)(2.0F * paramPointF2.y * paramFloat * f1 + d1 * d2 + localPointF.y * Math.pow(paramFloat, 2.0D)));
     }
+    return this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[2];
   }
   
-  public boolean a()
+  public void a(PointF... paramVarArgs)
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo != null) || (this.jdField_a_of_type_AndroidGraphicsBitmap != null);
+    if (paramVarArgs.length != 3) {
+      throw new IllegalArgumentException(ajyc.a(2131714185));
+    }
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = paramVarArgs;
   }
 }
 

@@ -1,10 +1,6 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
-
 public abstract interface biya
 {
-  public abstract void a(@NonNull ArrayList<biyb> paramArrayList, @NonNull Context paramContext);
+  public abstract void a(String paramString);
 }
 
 

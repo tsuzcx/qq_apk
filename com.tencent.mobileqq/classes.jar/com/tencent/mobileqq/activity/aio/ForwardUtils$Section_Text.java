@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aclr;
+import acwk;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
 public final class ForwardUtils$Section_Text
   extends ForwardUtils.SectionBase
 {
-  public static final Parcelable.Creator<Section_Text> CREATOR = new aclr();
+  public static final Parcelable.Creator<Section_Text> CREATOR = new acwk();
   public String a;
   
   public ForwardUtils$Section_Text()

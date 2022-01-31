@@ -1,43 +1,37 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment.4.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
 
 public class ahjx
-  implements vhi
+  implements Animation.AnimationListener
 {
-  public ahjx(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
+  public ahjx(AnonymousEntranceView paramAnonymousEntranceView) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QLog.d(QzoneSlideShowPreparingFragment.a(), 2, "createSlideShowNew AblumListener - endMerge.");
-    QzoneSlideShowPreparingFragment.a(this.a).removeCallbacks(QzoneSlideShowPreparingFragment.a(this.a));
-    ThreadManager.getUIHandler().post(new QzoneSlideShowPreparingFragment.4.1(this));
-    if (QzoneSlideShowPreparingFragment.a(this.a) == 18) {
-      LpReportInfo_pf00064.allReport(585, 15, 8);
+    if (AnonymousEntranceView.a(this.a) != null) {
+      AnonymousEntranceView.a(this.a).setVisibility(4);
     }
-    if (QzoneSlideShowPreparingFragment.a(this.a) != null)
+    if (AnonymousEntranceView.b(this.a) != null)
     {
-      Object localObject = (BitmapDrawable)QzoneSlideShowPreparingFragment.a(this.a).getDrawable();
-      if (localObject != null)
-      {
-        localObject = ((BitmapDrawable)localObject).getBitmap();
-        if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
-          ((Bitmap)localObject).recycle();
-        }
-      }
+      AnonymousEntranceView.b(this.a).clearAnimation();
+      AnonymousEntranceView.b(this.a).startAnimation(AnonymousEntranceView.a(this.a));
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (AnonymousEntranceView.a(this.a) != null) {
+      AnonymousEntranceView.a(this.a).setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahjx
  * JD-Core Version:    0.7.0.1
  */

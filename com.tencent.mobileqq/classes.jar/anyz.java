@@ -1,20 +1,8 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.view.KeyEvent;
 
-public class anyz
-  implements apca
+public abstract interface anyz
 {
-  public anyz(UniformDownloadActivity paramUniformDownloadActivity) {}
-  
-  public void a()
-  {
-    UniformDownloadActivity.a(this.a);
-  }
-  
-  public void b()
-  {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
-  }
+  public abstract boolean a(KeyEvent paramKeyEvent);
 }
 
 

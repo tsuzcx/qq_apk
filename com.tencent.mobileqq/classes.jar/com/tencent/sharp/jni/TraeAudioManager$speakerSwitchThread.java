@@ -2,7 +2,7 @@ package com.tencent.sharp.jni;
 
 import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
-import kvq;
+import lgf;
 
 class TraeAudioManager$speakerSwitchThread
   extends TraeAudioManager.switchThread
@@ -31,9 +31,9 @@ class TraeAudioManager$speakerSwitchThread
         }
         if ((this.b) && (i > 4))
         {
-          kvq localkvq = VideoController.a().a();
-          if (!localkvq.N) {
-            QLog.w(this.jdField_a_of_type_JavaLangString, 1, "_run, 不需要打开扬声器, sessionInfo[" + localkvq + "]");
+          lgf locallgf = VideoController.a().a();
+          if (!locallgf.N) {
+            QLog.w(this.jdField_a_of_type_JavaLangString, 1, "_run, 不需要打开扬声器, sessionInfo[" + locallgf + "]");
           }
         }
       }

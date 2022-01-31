@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import afev;
-import afew;
-import afex;
-import afha;
+import afqs;
+import afqt;
+import afqu;
+import afsx;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.graphics.Rect;
@@ -13,7 +13,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import begh;
+import bfob;
 import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,12 +22,12 @@ import com.tencent.widget.AbsListView;
 
 public abstract class ContactsBaseFragment
   extends Fragment
-  implements afha, begh
+  implements afsx, bfob
 {
   public static Rect a;
   private int a;
-  protected afew a;
-  public afex a;
+  protected afqt a;
+  public afqu a;
   public BaseActivity a;
   public QQAppInterface a;
   public boolean a;
@@ -49,14 +49,14 @@ public abstract class ContactsBaseFragment
   
   public abstract void a();
   
-  public void a(afew paramafew)
+  public void a(afqt paramafqt)
   {
-    this.jdField_a_of_type_Afew = paramafew;
+    this.jdField_a_of_type_Afqt = paramafqt;
   }
   
-  public void a(afex paramafex)
+  public void a(afqu paramafqu)
   {
-    this.jdField_a_of_type_Afex = paramafex;
+    this.jdField_a_of_type_Afqu = paramafqu;
   }
   
   public void a(BaseActivity paramBaseActivity)
@@ -72,7 +72,7 @@ public abstract class ContactsBaseFragment
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract void aq_();
+  public abstract void an_();
   
   public int b()
   {
@@ -147,7 +147,7 @@ public abstract class ContactsBaseFragment
     this.jdField_b_of_type_AndroidViewView = a(paramLayoutInflater, paramBundle);
     paramLayoutInflater = a();
     if ((paramLayoutInflater != null) && (Build.VERSION.SDK_INT >= 14)) {
-      paramLayoutInflater.setAccessibilityDelegate(new afev(this));
+      paramLayoutInflater.setAccessibilityDelegate(new afqs(this));
     }
     if ((this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean))
     {
@@ -168,8 +168,8 @@ public abstract class ContactsBaseFragment
     super.onDestroy();
     this.jdField_b_of_type_AndroidViewView = null;
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Afew != null) {
-      this.jdField_a_of_type_Afew.d(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Afqt != null) {
+      this.jdField_a_of_type_Afqt.d(this.jdField_a_of_type_Int);
     }
   }
   

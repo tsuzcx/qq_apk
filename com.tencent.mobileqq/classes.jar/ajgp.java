@@ -1,37 +1,54 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
+import com.tencent.mobileqq.apollo.sdk.CmShowTest.4;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class ajgp
-  implements INetInfoHandler
+public class ajgp
 {
-  ajgp(ajgm paramajgm) {}
+  private static int a;
   
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString)
+  private static void b(RelativeLayout paramRelativeLayout)
   {
-    this.a.b();
+    QLog.i("CmShowTest", 1, "init relativeLayout:" + paramRelativeLayout);
+    CmShowRenderView localCmShowRenderView = new CmShowRenderView(paramRelativeLayout.getContext());
+    paramRelativeLayout.addView(localCmShowRenderView, new RelativeLayout.LayoutParams(-1, -1));
+    localCmShowRenderView.a(new ajgr(localCmShowRenderView), "1725000451", "1174992642");
   }
   
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString)
+  private static void d(CmShowRenderView paramCmShowRenderView)
   {
-    this.a.b();
+    QLog.i("CmShowTest", 1, "testMainAction");
+    CmShowRenderView.PlayActionConfig localPlayActionConfig = new CmShowRenderView.PlayActionConfig();
+    localPlayActionConfig.a = 3000272;
+    localPlayActionConfig.jdField_b_of_type_Int = 101;
+    localPlayActionConfig.c = 2;
+    localPlayActionConfig.jdField_b_of_type_Boolean = false;
+    paramCmShowRenderView.a(localPlayActionConfig);
   }
   
-  public void onNetWifi2Mobile(String paramString)
+  private static void e(CmShowRenderView paramCmShowRenderView)
   {
-    this.a.c();
+    QLog.i("CmShowTest", 1, "testPostAction");
+    CmShowRenderView.PlayActionConfig localPlayActionConfig = new CmShowRenderView.PlayActionConfig();
+    localPlayActionConfig.a = 3000272;
+    localPlayActionConfig.jdField_b_of_type_Int = 102;
+    localPlayActionConfig.jdField_b_of_type_Boolean = false;
+    localPlayActionConfig.c = 3;
+    paramCmShowRenderView.a(localPlayActionConfig);
   }
   
-  public void onNetWifi2None()
+  private static void f(CmShowRenderView paramCmShowRenderView)
   {
-    this.a.c();
+    ThreadManager.getUIHandler().postDelayed(new CmShowTest.4(paramCmShowRenderView), 5000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajgp
  * JD-Core Version:    0.7.0.1
  */

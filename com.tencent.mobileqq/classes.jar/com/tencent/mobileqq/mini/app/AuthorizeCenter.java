@@ -2,7 +2,8 @@ package com.tencent.mobileqq.mini.app;
 
 import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
-import ajjy;
+import ajyc;
+import amtc;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -58,113 +59,128 @@ public class AuthorizeCenter
   public static final String SETTING_ADD_FRIEND = "setting.addFriend";
   public static final String TAG = "AuthorizeCenter";
   private static ExtConfigInfo extConfigInfo;
-  public static final HashMap<String, String> negativeButtonDesMap;
-  private static final HashMap<String, Integer> scopeAuthTypeMap;
+  public static final HashMap<String, String> negativeButtonDesMap = new HashMap();
+  private static final HashMap<String, Integer> scopeAuthTypeMap = new HashMap();
   public static final HashMap<String, String> scopeDescMap;
   public static final List<String> scopeList;
-  private static final HashMap<String, String> scopeMap = new HashMap();
+  private static final HashMap<String, String> scopeMap;
   public static final HashMap<String, String> scopeTitleMap;
   public static final HashMap<String, String> settingScopeTitleMap;
+  private static String systemPermissionConfig = amtc.a("miniappsustempermissionconfig", "{\"chooseLocation\":\"android.permission.ACCESS_FINE_LOCATION\",\"openLocation\":\"android.permission.ACCESS_FINE_LOCATION\",\"getLocation\":\"android.permission.ACCESS_FINE_LOCATION\",\"chooseVideo\":\"android.permission.CAMERA\",\"chooseImage\":\"android.permission.CAMERA\",\"saveImageToPhotosAlbum\":\"android.permission.WRITE_EXTERNAL_STORAGE\",\"saveVideoToPhotosAlbum\":\"android.permission.WRITE_EXTERNAL_STORAGE\",\"startRecord\":\"android.permission.RECORD_AUDIO\",\"operateRecorder\":\"android.permission.RECORD_AUDIO\",\"joinVoIPChat\":\"android.permission.RECORD_AUDIO\",\"operateCamera\":\"android.permission.CAMERA\",\"updateCamera\":\"android.permission.CAMERA\",\"insertCamera\":\"android.permission.CAMERA\"}");
   public static final HashMap<String, String> systemPermissionMap;
-  public static final HashMap<String, String> systemPermissionTitleMap;
   private int ANTH_DELAY = 60;
   private String appid;
   private SharedPreferences sp;
   
   static
   {
+    scopeMap = new HashMap();
     scopeList = new ArrayList();
     scopeTitleMap = new HashMap();
     scopeDescMap = new HashMap();
     settingScopeTitleMap = new HashMap();
     systemPermissionMap = new HashMap();
-    negativeButtonDesMap = new HashMap();
-    systemPermissionTitleMap = new HashMap();
-    scopeAuthTypeMap = new HashMap();
-    systemPermissionMap.put("chooseLocation", "android.permission.ACCESS_FINE_LOCATION");
-    systemPermissionMap.put("openLocation", "android.permission.ACCESS_FINE_LOCATION");
-    systemPermissionMap.put("getLocation", "android.permission.ACCESS_FINE_LOCATION");
-    if (Build.VERSION.SDK_INT >= 16)
+    try
     {
-      systemPermissionMap.put("chooseVideo", "android.permission.CAMERA");
-      systemPermissionMap.put("chooseImage", "android.permission.CAMERA");
-      systemPermissionMap.put("saveImageToPhotosAlbum", "android.permission.WRITE_EXTERNAL_STORAGE");
-      systemPermissionMap.put("saveVideoToPhotosAlbum", "android.permission.WRITE_EXTERNAL_STORAGE");
-      systemPermissionTitleMap.put("android.permission.READ_EXTERNAL_STORAGE", ajjy.a(2131635033));
-      systemPermissionTitleMap.put("android.permission.WRITE_EXTERNAL_STORAGE", ajjy.a(2131635027));
+      if (!TextUtils.isEmpty(systemPermissionConfig))
+      {
+        JSONObject localJSONObject = new JSONObject(systemPermissionConfig);
+        if (localJSONObject.length() > 0)
+        {
+          Iterator localIterator = localJSONObject.keys();
+          while (localIterator.hasNext())
+          {
+            String str1 = (String)localIterator.next();
+            String str2 = localJSONObject.optString(str1);
+            systemPermissionMap.put(str1, str2);
+            QLog.i("AuthorizeCenter", 1, "event : " + str1 + "; permissionname : " + str2);
+          }
+        }
+      }
+      return;
     }
-    systemPermissionMap.put("startRecord", "android.permission.RECORD_AUDIO");
-    systemPermissionMap.put("operateRecorder", "android.permission.RECORD_AUDIO");
-    systemPermissionMap.put("joinVoIPChat", "android.permission.RECORD_AUDIO");
-    systemPermissionMap.put("operateCamera", "android.permission.CAMERA");
-    systemPermissionMap.put("updateCamera", "android.permission.CAMERA");
-    systemPermissionMap.put("insertCamera", "android.permission.CAMERA");
-    systemPermissionTitleMap.put("android.permission.ACCESS_FINE_LOCATION", ajjy.a(2131635023));
-    systemPermissionTitleMap.put("android.permission.RECORD_AUDIO", ajjy.a(2131635035));
-    systemPermissionTitleMap.put("android.permission.CAMERA", ajjy.a(2131635039));
-    scopeMap.put("chooseLocation", "scope.userLocation");
-    scopeMap.put("getLocation", "scope.userLocation");
-    scopeMap.put("saveImageToPhotosAlbum", "scope.writePhotosAlbum");
-    scopeMap.put("saveVideoToPhotosAlbum", "scope.writePhotosAlbum");
-    scopeMap.put("startRecord", "scope.record");
-    scopeMap.put("operateWXData", "scope.userInfo");
-    scopeMap.put("chooseInvoiceTitle", "scope.invoiceTitle");
-    scopeMap.put("openAddress", "scope.address");
-    scopeMap.put("openWeRunSetting", "scope.qqrun");
-    scopeMap.put("getNativeWeRunData", "scope.qqrun");
-    scopeMap.put("subscribeAppMsg", "scope.appMsgSubscribed");
-    scopeMap.put("insertCamera", "scope.camera");
-    scopeMap.put("Personalize", "scope.personalize");
-    scopeMap.put("getPhoneNumber", "scope.getPhoneNumber");
-    scopeList.add("scope.userLocation");
-    scopeList.add("scope.userInfo");
-    scopeList.add("scope.address");
-    scopeList.add("scope.invoiceTitle");
-    scopeList.add("scope.qqrun");
-    scopeList.add("scope.record");
-    scopeList.add("scope.writePhotosAlbum");
-    scopeList.add("scope.camera");
-    scopeList.add("scope.personalize");
-    scopeList.add("scope.appMsgSubscribed");
-    scopeList.add("setting.addFriend");
-    scopeList.add("scope.getPhoneNumber");
-    scopeTitleMap.put("scope.userLocation", ajjy.a(2131635018));
-    scopeTitleMap.put("scope.userInfo", ajjy.a(2131635017));
-    scopeTitleMap.put("scope.address", ajjy.a(2131635024));
-    scopeTitleMap.put("scope.invoiceTitle", ajjy.a(2131635029));
-    scopeTitleMap.put("scope.qqrun", ajjy.a(2131628628));
-    scopeTitleMap.put("scope.record", ajjy.a(2131635030));
-    scopeTitleMap.put("scope.writePhotosAlbum", ajjy.a(2131635032));
-    scopeTitleMap.put("scope.camera", ajjy.a(2131635038));
-    scopeTitleMap.put("scope.personalize", ajjy.a(2131635026));
-    scopeTitleMap.put("scope.appMsgSubscribed", ajjy.a(2131635042));
-    scopeTitleMap.put("setting.addFriend", ajjy.a(2131635040));
-    scopeTitleMap.put("scope.getPhoneNumber", ajjy.a(2131628627));
-    scopeDescMap.put("scope.userLocation", "");
-    scopeDescMap.put("scope.userInfo", ajjy.a(2131628626));
-    scopeDescMap.put("scope.address", "");
-    scopeDescMap.put("scope.invoiceTitle", "");
-    scopeDescMap.put("scope.qqrun", "");
-    scopeDescMap.put("scope.record", "");
-    scopeDescMap.put("scope.writePhotosAlbum", "");
-    scopeDescMap.put("scope.camera", "");
-    scopeDescMap.put("scope.personalize", "");
-    scopeDescMap.put("scope.appMsgSubscribed", ajjy.a(2131635025));
-    scopeDescMap.put("setting.addFriend", "");
-    scopeDescMap.put("scope.getPhoneNumber", "");
-    settingScopeTitleMap.put("scope.userLocation", ajjy.a(2131635019));
-    settingScopeTitleMap.put("scope.userInfo", ajjy.a(2131635020));
-    settingScopeTitleMap.put("scope.address", ajjy.a(2131635015));
-    settingScopeTitleMap.put("scope.invoiceTitle", ajjy.a(2131635036));
-    settingScopeTitleMap.put("scope.qqrun", ajjy.a(2131635016));
-    settingScopeTitleMap.put("scope.record", ajjy.a(2131635037));
-    settingScopeTitleMap.put("scope.writePhotosAlbum", ajjy.a(2131635043));
-    settingScopeTitleMap.put("scope.camera", ajjy.a(2131635028));
-    settingScopeTitleMap.put("scope.personalize", ajjy.a(2131635021));
-    settingScopeTitleMap.put("scope.appMsgSubscribed", ajjy.a(2131635034));
-    settingScopeTitleMap.put("setting.addFriend", ajjy.a(2131635041));
-    negativeButtonDesMap.put("scope.appMsgSubscribed", ajjy.a(2131635031));
-    mergeExtConfigInfo();
+    catch (Throwable localThrowable)
+    {
+      QLog.e("AuthorizeCenter", 1, "systemPermissionConfig error", localThrowable);
+      systemPermissionMap.put("chooseLocation", "android.permission.ACCESS_FINE_LOCATION");
+      systemPermissionMap.put("openLocation", "android.permission.ACCESS_FINE_LOCATION");
+      systemPermissionMap.put("getLocation", "android.permission.ACCESS_FINE_LOCATION");
+      if (Build.VERSION.SDK_INT >= 16)
+      {
+        systemPermissionMap.put("chooseVideo", "android.permission.CAMERA");
+        systemPermissionMap.put("chooseImage", "android.permission.CAMERA");
+        systemPermissionMap.put("saveImageToPhotosAlbum", "android.permission.WRITE_EXTERNAL_STORAGE");
+        systemPermissionMap.put("saveVideoToPhotosAlbum", "android.permission.WRITE_EXTERNAL_STORAGE");
+      }
+      systemPermissionMap.put("startRecord", "android.permission.RECORD_AUDIO");
+      systemPermissionMap.put("operateRecorder", "android.permission.RECORD_AUDIO");
+      systemPermissionMap.put("joinVoIPChat", "android.permission.RECORD_AUDIO");
+      systemPermissionMap.put("operateCamera", "android.permission.CAMERA");
+      systemPermissionMap.put("updateCamera", "android.permission.CAMERA");
+      scopeMap.put("chooseLocation", "scope.userLocation");
+      scopeMap.put("getLocation", "scope.userLocation");
+      scopeMap.put("saveImageToPhotosAlbum", "scope.writePhotosAlbum");
+      scopeMap.put("saveVideoToPhotosAlbum", "scope.writePhotosAlbum");
+      scopeMap.put("startRecord", "scope.record");
+      scopeMap.put("operateWXData", "scope.userInfo");
+      scopeMap.put("chooseInvoiceTitle", "scope.invoiceTitle");
+      scopeMap.put("openAddress", "scope.address");
+      scopeMap.put("openWeRunSetting", "scope.qqrun");
+      scopeMap.put("getNativeWeRunData", "scope.qqrun");
+      scopeMap.put("subscribeAppMsg", "scope.appMsgSubscribed");
+      scopeMap.put("insertCamera", "scope.camera");
+      scopeMap.put("Personalize", "scope.personalize");
+      scopeMap.put("getPhoneNumber", "scope.getPhoneNumber");
+      scopeList.add("scope.userLocation");
+      scopeList.add("scope.userInfo");
+      scopeList.add("scope.address");
+      scopeList.add("scope.invoiceTitle");
+      scopeList.add("scope.qqrun");
+      scopeList.add("scope.record");
+      scopeList.add("scope.writePhotosAlbum");
+      scopeList.add("scope.camera");
+      scopeList.add("scope.personalize");
+      scopeList.add("scope.appMsgSubscribed");
+      scopeList.add("setting.addFriend");
+      scopeList.add("scope.getPhoneNumber");
+      scopeTitleMap.put("scope.userLocation", ajyc.a(2131700802));
+      scopeTitleMap.put("scope.userInfo", ajyc.a(2131700801));
+      scopeTitleMap.put("scope.address", ajyc.a(2131700808));
+      scopeTitleMap.put("scope.invoiceTitle", ajyc.a(2131700813));
+      scopeTitleMap.put("scope.qqrun", ajyc.a(2131694278));
+      scopeTitleMap.put("scope.record", ajyc.a(2131700814));
+      scopeTitleMap.put("scope.writePhotosAlbum", ajyc.a(2131700816));
+      scopeTitleMap.put("scope.camera", ajyc.a(2131700822));
+      scopeTitleMap.put("scope.personalize", ajyc.a(2131700810));
+      scopeTitleMap.put("scope.appMsgSubscribed", ajyc.a(2131700826));
+      scopeTitleMap.put("setting.addFriend", ajyc.a(2131700824));
+      scopeTitleMap.put("scope.getPhoneNumber", ajyc.a(2131694277));
+      scopeDescMap.put("scope.userLocation", "");
+      scopeDescMap.put("scope.userInfo", ajyc.a(2131694276));
+      scopeDescMap.put("scope.address", "");
+      scopeDescMap.put("scope.invoiceTitle", "");
+      scopeDescMap.put("scope.qqrun", "");
+      scopeDescMap.put("scope.record", "");
+      scopeDescMap.put("scope.writePhotosAlbum", "");
+      scopeDescMap.put("scope.camera", "");
+      scopeDescMap.put("scope.personalize", "");
+      scopeDescMap.put("scope.appMsgSubscribed", ajyc.a(2131700809));
+      scopeDescMap.put("setting.addFriend", "");
+      scopeDescMap.put("scope.getPhoneNumber", "");
+      settingScopeTitleMap.put("scope.userLocation", ajyc.a(2131700803));
+      settingScopeTitleMap.put("scope.userInfo", ajyc.a(2131700804));
+      settingScopeTitleMap.put("scope.address", ajyc.a(2131700799));
+      settingScopeTitleMap.put("scope.invoiceTitle", ajyc.a(2131700820));
+      settingScopeTitleMap.put("scope.qqrun", ajyc.a(2131700800));
+      settingScopeTitleMap.put("scope.record", ajyc.a(2131700821));
+      settingScopeTitleMap.put("scope.writePhotosAlbum", ajyc.a(2131700827));
+      settingScopeTitleMap.put("scope.camera", ajyc.a(2131700812));
+      settingScopeTitleMap.put("scope.personalize", ajyc.a(2131700805));
+      settingScopeTitleMap.put("scope.appMsgSubscribed", ajyc.a(2131700818));
+      settingScopeTitleMap.put("setting.addFriend", ajyc.a(2131700825));
+      negativeButtonDesMap.put("scope.appMsgSubscribed", ajyc.a(2131700815));
+      mergeExtConfigInfo();
+    }
   }
   
   public AuthorizeCenter(Context paramContext, String paramString1, String paramString2)
@@ -249,12 +265,12 @@ public class AuthorizeCenter
       }
       catch (Throwable localThrowable2)
       {
-        break label39;
+        break label40;
       }
       localThrowable1 = localThrowable1;
       paramString = "";
     }
-    label39:
+    label40:
     return paramString;
   }
   

@@ -1,6 +1,16 @@
-abstract interface agfl
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class agfl
+  implements View.OnClickListener
 {
-  public abstract void a(long paramLong);
+  agfl(agfg paramagfg) {}
+  
+  public void onClick(View paramView)
+  {
+    agfg.a(this.a, paramView);
+    this.a.dismiss();
+  }
 }
 
 

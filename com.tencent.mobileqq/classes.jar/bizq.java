@@ -1,14 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class bizq
-  implements DialogInterface.OnClickListener
+public class bizq
 {
-  bizq(bizm parambizm) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(@NonNull String paramString1, @NonNull String paramString2)
   {
-    paramDialogInterface.dismiss();
+    QLog.d("MODULE_GY_AECAMERA :" + paramString1, 4, paramString2);
+  }
+  
+  public static void a(@NonNull String paramString1, @NonNull String paramString2, @Nullable Throwable paramThrowable)
+  {
+    QLog.e("MODULE_GY_AECAMERA :" + paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public static void b(@NonNull String paramString1, @NonNull String paramString2)
+  {
+    QLog.i("MODULE_GY_AECAMERA :" + paramString1, 1, paramString2);
+  }
+  
+  public static void c(@NonNull String paramString1, @NonNull String paramString2)
+  {
+    QLog.w("MODULE_GY_AECAMERA :" + paramString1, 1, paramString2);
+  }
+  
+  public static void d(@NonNull String paramString1, @NonNull String paramString2)
+  {
+    QLog.e("MODULE_GY_AECAMERA :" + paramString1, 1, paramString2);
   }
 }
 

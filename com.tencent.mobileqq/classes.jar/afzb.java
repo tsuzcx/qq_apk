@@ -1,21 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.AlbumListActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
 
 public class afzb
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public afzb(AlbumListActivity paramAlbumListActivity) {}
+  public afzb(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.finish();
-      QLog.i("AlbumListActivity", 1, "AlbumListActivity has finished by broadcastReceiver.");
-    }
+    paramDialogInterface.dismiss();
+    this.a.getActivity().setResult(8001);
   }
 }
 

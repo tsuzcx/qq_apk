@@ -1,174 +1,75 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.ButtonBase;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_UserInfo;
 
 public class oxa
-  extends oxl
 {
-  public oxa(ArticleInfo paramArticleInfo, Context paramContext)
+  public static void a(String paramString)
   {
-    super(paramArticleInfo, paramContext);
-  }
-  
-  private void a(ButtonBase paramButtonBase)
-  {
-    boolean bool = true;
-    int i;
-    if (paramButtonBase.isSelected())
+    Object localObject = TVK_SDKMgr.getProxyFactory();
+    if (localObject != null)
     {
-      i = -1;
-      paramButtonBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo;
-      paramButtonBase.b += i;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.b < 0) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.b = 0;
-      }
-      paramButtonBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo;
-      if (i <= 0) {
-        break label136;
-      }
-    }
-    label136:
-    for (int j = 1;; j = 0)
-    {
-      paramButtonBase.c = j;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
-      obz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-      if ((!obz.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID))) {
-        break label141;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("ATLAS", 2, "atlas native has undercarriage");
-      }
-      ohb.a().b();
-      return;
-      i = 1;
-      break;
-    }
-    label141:
-    paramButtonBase = ogy.a();
-    long l1 = obz.a();
-    long l2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId;
-    if (i > 0) {}
-    for (;;)
-    {
-      paramButtonBase.a(l1, l2, bool, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.clone());
-      break;
-      bool = false;
-    }
-  }
-  
-  protected int a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.c == 1) {
-      return 2;
-    }
-    return 13;
-  }
-  
-  protected void a(ArticleInfo paramArticleInfo)
-  {
-    String str2 = obz.a(paramArticleInfo);
-    SocializeFeedsInfo localSocializeFeedsInfo = paramArticleInfo.mSocialFeedInfo;
-    boolean bool = rvf.a(paramArticleInfo.mChannelID);
-    Object localObject;
-    String str1;
-    if (bool)
-    {
-      localObject = "0X800935E";
-      if (!bool) {
-        break label163;
-      }
-      str1 = "0X800935F";
-      label35:
-      if (localSocializeFeedsInfo.c != 1) {
-        break label268;
-      }
-      if ((!qoe.i(paramArticleInfo)) && (!qoe.a(paramArticleInfo)) && (!qoe.j(paramArticleInfo)) && (!qoe.k(paramArticleInfo))) {
-        break label170;
-      }
-      if (!qoe.o(paramArticleInfo)) {
-        ndn.a(null, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Pre.jdField_a_of_type_Long), (String)localObject, (String)localObject, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), "0", "" + paramArticleInfo.mStrategyId, str2, false);
-      }
-      if ((!obz.k(paramArticleInfo)) && (!obz.l(paramArticleInfo))) {
-        qoe.a(paramArticleInfo, (int)paramArticleInfo.mChannelID);
-      }
-    }
-    label163:
-    label170:
-    do
-    {
-      return;
-      localObject = "0X8007B65";
-      break;
-      str1 = "0X8007B66";
-      break label35;
-      if (obz.b(paramArticleInfo))
+      localObject = ((TVK_IProxyFactory)localObject).getCacheMgr(BaseApplicationImpl.getContext());
+      if (localObject != null)
       {
-        localObject = new JSONObject();
-        try
-        {
-          ((JSONObject)localObject).put("like", 0);
-          nzv.a(this.jdField_a_of_type_AndroidContentContext, paramArticleInfo, "0X8009A74", (JSONObject)localObject);
-          return;
-        }
-        catch (JSONException localJSONException1)
-        {
-          for (;;)
-          {
-            localJSONException1.printStackTrace();
-          }
-        }
+        TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(2, nmf.a(paramString), "");
+        localTVK_PlayerVideoInfo.setConfigMap("cache_duration", "2");
+        localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", qua.a);
+        ((TVK_ICacheMgr)localObject).preLoadVideoByUrl(BaseApplicationImpl.getContext(), paramString, null, localTVK_PlayerVideoInfo);
       }
-      ndn.a(null, paramArticleInfo.mSubscribeID, (String)localObject, (String)localObject, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(paramArticleInfo.mArticleID), "" + paramArticleInfo.mStrategyId, str2, false);
-      return;
-      if ((!qoe.i(paramArticleInfo)) && (!qoe.a(paramArticleInfo)) && (!qoe.j(paramArticleInfo)) && (!qoe.k(paramArticleInfo))) {
-        break label383;
-      }
-      if (!qoe.o(paramArticleInfo)) {
-        ndn.a(null, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Pre.jdField_a_of_type_Long), localJSONException1, localJSONException1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), "0", "" + paramArticleInfo.mStrategyId, str2, false);
-      }
-    } while ((obz.k(paramArticleInfo)) || (obz.l(paramArticleInfo)));
-    label268:
-    qoe.a(paramArticleInfo, (int)paramArticleInfo.mChannelID);
-    return;
-    label383:
-    if (obz.b(paramArticleInfo))
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    Object localObject1 = TVK_SDKMgr.getProxyFactory();
+    if (localObject1 == null) {
+      return false;
+    }
+    localObject1 = ((TVK_IProxyFactory)localObject1).getCacheMgr(BaseApplicationImpl.getContext());
+    if (localObject1 == null) {
+      return false;
+    }
+    Object localObject2 = nmf.a(paramString);
+    TVK_UserInfo localTVK_UserInfo = new TVK_UserInfo("", "");
+    localObject2 = new TVK_PlayerVideoInfo(2, (String)localObject2, "");
+    ((TVK_PlayerVideoInfo)localObject2).setConfigMap("cache_duration", "2");
+    ((TVK_PlayerVideoInfo)localObject2).setConfigMap("cache_servers_type", qua.a);
+    ((TVK_PlayerVideoInfo)localObject2).addExtraParamsMap("shouq_bus_type", "bus_type_kandian_feeds");
+    String[] arrayOfString = new String[6];
+    arrayOfString[0] = "msd";
+    arrayOfString[1] = "hd";
+    arrayOfString[2] = "fhd";
+    arrayOfString[3] = "mp4";
+    arrayOfString[4] = "shd";
+    arrayOfString[5] = "sd";
+    int m = arrayOfString.length;
+    int j = 0;
+    int i = 0;
+    while (j < m)
     {
-      localObject = new JSONObject();
+      String str = arrayOfString[j];
       try
       {
-        ((JSONObject)localObject).put("like", 1);
-        nzv.a(this.jdField_a_of_type_AndroidContentContext, paramArticleInfo, "0X8009A74", (JSONObject)localObject);
-        return;
+        int k = ((TVK_ICacheMgr)localObject1).isVideoCached(BaseApplicationImpl.getContext(), paramString, localTVK_UserInfo, (TVK_PlayerVideoInfo)localObject2, str);
+        i = k;
       }
-      catch (JSONException localJSONException2)
+      catch (Exception localException)
       {
-        for (;;)
-        {
-          localJSONException2.printStackTrace();
-        }
+        label176:
+        break label176;
+        j += 1;
+      }
+      if ((i == 2) || (i == 1)) {
+        return true;
       }
     }
-    ndn.a(null, paramArticleInfo.mSubscribeID, localJSONException2, localJSONException2, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(paramArticleInfo.mArticleID), "" + paramArticleInfo.mStrategyId, str2, false);
-  }
-  
-  protected void a(ViewBase paramViewBase)
-  {
-    if ((paramViewBase instanceof ButtonBase)) {
-      a((ButtonBase)paramViewBase);
-    }
-    do
-    {
-      return;
-      paramViewBase = paramViewBase.findViewBaseByName("id_like_button");
-    } while ((paramViewBase == null) || (!(paramViewBase instanceof ozm)));
-    ((ozm)paramViewBase).onClick();
+    if (QLog.isColorLevel()) {}
+    return false;
   }
 }
 

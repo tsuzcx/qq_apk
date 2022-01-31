@@ -6,6 +6,7 @@ import android.graphics.RectF;
 import android.util.Pair;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.facedetect.FaceStatus;
 import com.tencent.ttpic.model.FILL_STYLE;
 import com.tencent.ttpic.model.SizeI;
@@ -644,6 +645,7 @@ public class AlgoUtils
     int[] arrayOfInt1 = new int[256];
     int[] arrayOfInt2 = new int[256];
     android.graphics.Rect localRect = new android.graphics.Rect();
+    int j;
     if ((paramList == null) || (paramList.size() <= 0) || (((List)paramList.get(0)).size() <= 0))
     {
       localRect.left = 0;
@@ -653,13 +655,37 @@ public class AlgoUtils
       j = 0;
     }
     int k;
-    label99:
-    int n;
     int m;
+    int n;
     for (;;)
     {
-      if (j >= paramInt1) {
-        break label462;
+      if (j < paramInt1)
+      {
+        if (paramInt2 > 2560) {
+          LogUtils.d("GetHistogram", "illegal imageHeight = " + paramInt2);
+        }
+      }
+      else
+      {
+        j = 0;
+        paramInt2 = 0;
+        paramInt1 = 0;
+        while (paramInt1 < arrayOfInt1.length)
+        {
+          j += arrayOfInt1[paramInt1];
+          paramInt2 += arrayOfInt1[paramInt1] * paramInt1;
+          paramInt1 += 1;
+        }
+        paramList = new ArrayList((Collection)paramList.get(0));
+        j = (int)((PointF)paramList.get(25)).x;
+        k = (int)((PointF)paramList.get(33)).x;
+        m = (int)((PointF)paramList.get(87)).y;
+        n = (int)((PointF)paramList.get(4)).y;
+        localRect.left = j;
+        localRect.right = k;
+        localRect.top = m;
+        localRect.bottom = n;
+        break;
       }
       k = 0;
       if (k < paramInt2)
@@ -681,11 +707,11 @@ public class AlgoUtils
             double d2 = i1;
             m = (int)(n * 0.11D + (d2 * 0.59D + d1 * 0.3D));
             if (m < 256) {
-              break label446;
+              break label518;
             }
           }
         }
-        label446:
+        label518:
         for (n = 255;; n = m)
         {
           arrayOfInt2[n] += 1;
@@ -700,30 +726,10 @@ public class AlgoUtils
           m = i + 3;
           k += 2;
           i = m;
-          break label99;
-          paramList = new ArrayList((Collection)paramList.get(0));
-          j = (int)((PointF)paramList.get(25)).x;
-          k = (int)((PointF)paramList.get(33)).x;
-          m = (int)((PointF)paramList.get(87)).y;
-          n = (int)((PointF)paramList.get(4)).y;
-          localRect.left = j;
-          localRect.right = k;
-          localRect.top = m;
-          localRect.bottom = n;
           break;
         }
       }
       j += 2;
-    }
-    label462:
-    int j = 0;
-    paramInt2 = 0;
-    paramInt1 = 0;
-    while (paramInt1 < arrayOfInt1.length)
-    {
-      j += arrayOfInt1[paramInt1];
-      paramInt2 += arrayOfInt1[paramInt1] * paramInt1;
-      paramInt1 += 1;
     }
     if (j > 0) {
       paramInt2 /= j;

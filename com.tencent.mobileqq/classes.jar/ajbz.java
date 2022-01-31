@@ -1,27 +1,22 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class ajbz
+final class ajbz
+  implements EIPCResultCallback
 {
-  public ajbx a;
-  public View a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public RedTouch a;
-  public ImageView b;
-  public RelativeLayout b;
-  public TextView b;
-  public ImageView c;
-  public RelativeLayout c;
-  public TextView c;
-  public ImageView d;
-  public ImageView e;
+  ajbz(long paramLong, String paramString) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    paramEIPCResult = paramEIPCResult.data.getString("resData");
+    ajae.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, paramEIPCResult);
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_DRESS_PATH onCallback resJson:" + paramEIPCResult);
+    }
+  }
 }
 
 

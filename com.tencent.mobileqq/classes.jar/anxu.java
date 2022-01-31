@@ -1,35 +1,31 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class anxu
-  implements behi
+class anxu
+  implements aoaj
 {
-  public anxu(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  anxu(anxr paramanxr) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(List<aoah> paramList)
   {
-    paramAdapterView = (FileInfo)this.a.b.get(paramInt);
-    if (paramAdapterView.c()) {
-      LocalFileBrowserActivity.a(this.a, paramAdapterView.c(), true);
-    }
-    while (!this.a.f()) {
-      return;
-    }
-    if (aonm.a(paramAdapterView)) {
-      aonm.b(paramAdapterView);
-    }
-    for (;;)
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      this.a.l();
-      LocalFileBrowserActivity.a(this.a);
-      return;
-      if (this.a.f) {
-        aonm.b();
+      localStringBuilder = new StringBuilder().append("refreshPanelData call back dataList = ");
+      if (paramList != null) {
+        break label60;
       }
-      aonm.a(paramAdapterView);
+    }
+    label60:
+    for (Object localObject = "null";; localObject = Integer.valueOf(paramList.size()))
+    {
+      QLog.d("CameraEmotionAdapter", 2, localObject);
+      if (paramList != null)
+      {
+        this.a.a(paramList);
+        this.a.notifyDataSetChanged();
+      }
+      return;
     }
   }
 }

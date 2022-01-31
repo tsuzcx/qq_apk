@@ -4,6 +4,5 @@
     <ImageView android:id="@id/f63" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
     <LinearLayout android:orientation="vertical" android:id="@id/f60" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <LinearLayout android:orientation="horizontal" android:id="@id/f64" android:paddingTop="5.0dip" android:paddingBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <ImageView android:id="@id/f62" android:layout_width="fill_parent" android:layout_height="6.0dip" android:src="@drawable/qzone_skin_navigator_bottom_separator" android:scaleType="fitCenter" />
     </LinearLayout>
 </FrameLayout>

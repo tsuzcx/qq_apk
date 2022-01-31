@@ -1,18 +1,18 @@
-import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.vipav.VipFullScreenVideoView;
+import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
+import java.util.ArrayList;
 
 public class bbzb
   extends Handler
 {
-  public bbzb(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
+  public bbzb(VipFunCallPreviewActivity paramVipFunCallPreviewActivity, Looper paramLooper)
   {
     super(paramLooper);
   }
@@ -22,43 +22,54 @@ public class bbzb
     switch (paramMessage.what)
     {
     }
+    BitmapDrawable localBitmapDrawable;
     do
     {
+      RelativeLayout localRelativeLayout;
       do
       {
         do
         {
-          do
-          {
-            return;
-            paramMessage = (Bitmap)paramMessage.obj;
-          } while (paramMessage == null);
-          paramMessage = bcam.a(this.a, paramMessage, 50, 50);
-          localMessage = Message.obtain();
-          localMessage.what = 1002;
-          localMessage.obj = paramMessage;
-          this.a.b.sendMessage(localMessage);
           return;
-          paramMessage = (String)paramMessage.obj;
-        } while (TextUtils.isEmpty(paramMessage));
-        paramMessage = AuthorityActivity.a(paramMessage);
-      } while (paramMessage == null);
-      Message localMessage = Message.obtain();
-      localMessage.what = 1003;
-      localMessage.obj = paramMessage;
-      this.a.b.sendMessage(localMessage);
-      return;
-      QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "--> handler message GET_ACCOUNT_LIST");
-    } while (this.a.a.a == null);
-    this.a.a.a.c();
-    paramMessage = Message.obtain();
-    paramMessage.what = 1006;
-    this.a.b.sendMessage(paramMessage);
+          if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+          {
+            if (this.a.jdField_a_of_type_Boolean)
+            {
+              if ((this.a.g instanceof Button)) {
+                ((Button)this.a.g).setText(ajyc.a(2131716734));
+              }
+              this.a.g.setEnabled(false);
+              return;
+            }
+            this.a.g.setEnabled(true);
+            return;
+          }
+          if (this.a.jdField_a_of_type_Boolean)
+          {
+            this.a.g.setVisibility(0);
+            this.a.g.setEnabled(true);
+            if ((this.a.g instanceof Button)) {
+              ((Button)this.a.g).setText(ajyc.a(2131716728));
+            }
+            this.a.g.setEnabled(false);
+            this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+            this.a.f.setVisibility(8);
+            return;
+          }
+          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+          return;
+        } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof BitmapDrawable)));
+        localRelativeLayout = (RelativeLayout)this.a.findViewById(2131379263);
+        localBitmapDrawable = (BitmapDrawable)paramMessage.obj;
+      } while ((localBitmapDrawable == null) || (localRelativeLayout == null));
+      localRelativeLayout.setBackgroundDrawable(localBitmapDrawable);
+    } while (paramMessage.arg1 != 1);
+    this.a.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView.setBackgroundDrawable(localBitmapDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbzb
  * JD-Core Version:    0.7.0.1
  */

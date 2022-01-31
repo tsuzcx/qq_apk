@@ -1,11 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
+import com.tencent.qphone.base.util.QLog;
 
-public class qux
-  implements bemn
+class qux
+  implements DialogInterface.OnShowListener
 {
-  public qux(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  qux(qur paramqur) {}
   
-  public void a() {}
+  public void onShow(DialogInterface paramDialogInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "mDisLikeActionSheet onShow() on VideoChannel");
+    }
+    qur.a(this.a).getWindow().clearFlags(8);
+  }
 }
 
 

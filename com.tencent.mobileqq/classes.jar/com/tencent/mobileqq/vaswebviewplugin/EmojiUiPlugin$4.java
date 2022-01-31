@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bbac;
-import bbms;
+import bcdb;
+import bcpq;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 class EmojiUiPlugin$4
@@ -11,7 +11,7 @@ class EmojiUiPlugin$4
   
   public void run()
   {
-    this.this$0.progressDialog = new bbms(this.this$0.mRuntime.a(), ((QQBrowserActivity)this.this$0.mRuntime.a()).getTitleBarHeight());
+    this.this$0.progressDialog = new bcpq(this.this$0.mRuntime.a(), ((QQBrowserActivity)this.this$0.mRuntime.a()).getTitleBarHeight());
     this.this$0.progressDialog.show();
   }
 }

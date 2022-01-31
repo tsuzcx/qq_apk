@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import acxj;
+import adik;
 
 public class LocationShareHelper$3
   implements Runnable
 {
-  public LocationShareHelper$3(acxj paramacxj) {}
+  public LocationShareHelper$3(adik paramadik) {}
   
   public void run()
   {
-    acxj.a(this.this$0);
+    adik.a(this.this$0);
   }
 }
 

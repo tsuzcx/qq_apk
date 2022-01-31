@@ -1,64 +1,30 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.manager.Manager;
+import android.view.View;
+import android.widget.TextView;
 
-public class axxj
-  implements Manager
+class axxj
+  extends akdo
 {
-  private axxn jdField_a_of_type_Axxn;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean;
+  axxi jdField_a_of_type_Axxi = null;
   
-  public axxj(QQAppInterface paramQQAppInterface)
+  public axxj(axxh paramaxxh, axxi paramaxxi)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Boolean = BaseApplication.getContext().getSharedPreferences("mobileQQ", 4).getBoolean("serializePreDownload", true);
-    this.jdField_a_of_type_Axxn = ((axxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(233));
-    this.jdField_a_of_type_Axxn.b(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Axxi = paramaxxi;
   }
   
-  public static String a(int paramInt, String paramString, boolean paramBoolean)
+  public void a(boolean paramBoolean, String paramString)
   {
-    return axxn.a(paramInt, paramString, paramBoolean);
-  }
-  
-  public static ArrayList<String> a(int paramInt1, int paramInt2)
-  {
-    return new ArrayList(5);
-  }
-  
-  public axxg a(String paramString)
-  {
-    return this.jdField_a_of_type_Axxn.a(paramString);
-  }
-  
-  void a(axxg paramaxxg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreDownload.Controller", 2, "onTaskEnd: " + paramaxxg);
+    if (this.jdField_a_of_type_Axxi != null)
+    {
+      this.jdField_a_of_type_Axxi.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_Axxi.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (paramBoolean)
+      {
+        this.jdField_a_of_type_Axxi.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
+        this.jdField_a_of_type_Axxi.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131714601));
+        this.jdField_a_of_type_Axxi.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+      }
     }
-    this.jdField_a_of_type_Axxn.a(paramaxxg);
   }
-  
-  public void a(String paramString, long paramLong)
-  {
-    this.jdField_a_of_type_Axxn.a(paramString, paramLong);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, int paramInt3, int paramInt4, boolean paramBoolean, axxg paramaxxg)
-  {
-    return this.jdField_a_of_type_Axxn.a(paramInt1, paramString1, paramString2, paramInt2, paramString3, paramString4, paramInt3, paramInt4, paramBoolean, paramaxxg);
-  }
-  
-  public void onDestroy() {}
 }
 
 

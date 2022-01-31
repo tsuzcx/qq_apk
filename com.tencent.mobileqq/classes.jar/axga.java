@@ -1,21 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
+import android.util.Size;
+import java.util.Comparator;
 
-class axga
-  extends WebChromeClient
+public class axga
+  implements Comparator<Size>
 {
-  axga(axfz paramaxfz) {}
-  
-  public void onProgressChanged(WebView paramWebView, int paramInt)
+  public int a(Size paramSize1, Size paramSize2)
   {
-    super.onProgressChanged(paramWebView, paramInt);
-    QLog.i("TenDocWebViewPool", 1, "tendocpreload onProgressChanged = " + paramInt);
+    return Long.signum(paramSize1.getWidth() * paramSize1.getHeight() - paramSize2.getWidth() * paramSize2.getHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axga
  * JD-Core Version:    0.7.0.1
  */

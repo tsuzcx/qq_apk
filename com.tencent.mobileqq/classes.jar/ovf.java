@@ -1,20 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.Map;
+import java.util.Set;
 
-class ovf
-  implements pby
+public abstract interface ovf
+  extends ouo<BaseArticleInfo>
 {
-  ovf(ove paramove, ArticleInfo paramArticleInfo, Container paramContainer) {}
+  public abstract void a(Map<Long, qar> paramMap, boolean paramBoolean);
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.b != null)
-    {
-      UrlJumpInfo localUrlJumpInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.b;
-      qcn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), localUrlJumpInfo);
-    }
-  }
+  public abstract void a(Map<Long, qar> paramMap, boolean paramBoolean, Map<Long, sic> paramMap1, String paramString);
+  
+  public abstract void a(Set<Long> paramSet, Map<Long, qar> paramMap);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean, String paramString);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

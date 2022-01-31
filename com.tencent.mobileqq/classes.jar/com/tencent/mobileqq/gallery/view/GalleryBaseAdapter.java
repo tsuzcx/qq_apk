@@ -3,66 +3,66 @@ package com.tencent.mobileqq.gallery.view;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import apsu;
-import aptf;
-import apvk;
+import aqmj;
+import aqne;
+import aqpl;
 
 public class GalleryBaseAdapter
   extends BaseAdapter
 {
-  aptf jdField_a_of_type_Aptf;
-  private apvk jdField_a_of_type_Apvk;
+  aqne jdField_a_of_type_Aqne;
+  private aqpl jdField_a_of_type_Aqpl;
   
-  private apvk a(int paramInt)
+  private aqpl a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Aptf != null) && (this.jdField_a_of_type_Aptf.a != null) && (paramInt == this.jdField_a_of_type_Aptf.a.b())) {
-      return this.jdField_a_of_type_Apvk;
+    if ((this.jdField_a_of_type_Aqne != null) && (this.jdField_a_of_type_Aqne.a != null) && (paramInt == this.jdField_a_of_type_Aqne.a.b())) {
+      return this.jdField_a_of_type_Aqpl;
     }
     return null;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    apvk localapvk = a(paramInt1);
-    if (localapvk != null) {
-      localapvk.a(paramInt2);
+    aqpl localaqpl = a(paramInt1);
+    if (localaqpl != null) {
+      localaqpl.a(paramInt2);
     }
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    apvk localapvk = a(paramInt);
-    if (localapvk != null) {
-      localapvk.c();
+    aqpl localaqpl = a(paramInt);
+    if (localaqpl != null) {
+      localaqpl.c();
     }
   }
   
   public void a(View paramView, int paramInt) {}
   
-  public void a(aptf paramaptf)
+  public void a(aqne paramaqne)
   {
-    this.jdField_a_of_type_Aptf = paramaptf;
+    this.jdField_a_of_type_Aqne = paramaqne;
   }
   
-  public void a(apvk paramapvk)
+  public void a(aqpl paramaqpl)
   {
-    this.jdField_a_of_type_Apvk = paramapvk;
+    this.jdField_a_of_type_Aqpl = paramaqpl;
   }
   
   public int getCount()
   {
-    if ((this.jdField_a_of_type_Aptf == null) || (this.jdField_a_of_type_Aptf.a == null)) {
+    if ((this.jdField_a_of_type_Aqne == null) || (this.jdField_a_of_type_Aqne.a == null)) {
       return 0;
     }
-    return this.jdField_a_of_type_Aptf.a.a();
+    return this.jdField_a_of_type_Aqne.a.a();
   }
   
   public Object getItem(int paramInt)
   {
-    if ((this.jdField_a_of_type_Aptf == null) || (this.jdField_a_of_type_Aptf.a == null)) {
+    if ((this.jdField_a_of_type_Aqne == null) || (this.jdField_a_of_type_Aqne.a == null)) {
       return null;
     }
-    return this.jdField_a_of_type_Aptf.a.a(paramInt);
+    return this.jdField_a_of_type_Aqne.a.a(paramInt);
   }
   
   public long getItemId(int paramInt)

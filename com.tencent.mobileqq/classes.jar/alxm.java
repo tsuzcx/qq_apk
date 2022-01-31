@@ -1,14 +1,55 @@
-import android.view.View;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.common.app.AppInterface;
 
 public class alxm
-  implements beor
 {
-  public alxm(IphonePickerView paramIphonePickerView) {}
+  public static final String a;
+  public alxo[] a;
   
-  public void a(View paramView, int paramInt)
+  static
   {
-    IphonePickerView.a(this.a, paramView, 1);
+    jdField_a_of_type_JavaLangString = alxp.class.getSimpleName() + "." + alxm.class.getSimpleName();
+  }
+  
+  public alxm()
+  {
+    this.jdField_a_of_type_ArrayOfAlxo = new alxo[6];
+  }
+  
+  public alxo a(AppInterface paramAppInterface, int paramInt)
+  {
+    int i;
+    if (paramInt >= 0)
+    {
+      i = paramInt;
+      if (paramInt <= 6) {}
+    }
+    else
+    {
+      i = 0;
+    }
+    Object localObject = this.jdField_a_of_type_ArrayOfAlxo[i];
+    paramAppInterface = (AppInterface)localObject;
+    if (localObject == null)
+    {
+      paramAppInterface = (AppInterface)localObject;
+      switch (i)
+      {
+      default: 
+        paramAppInterface = (AppInterface)localObject;
+      }
+    }
+    for (;;)
+    {
+      localObject = paramAppInterface;
+      if (paramAppInterface == null) {
+        localObject = new alxn();
+      }
+      this.jdField_a_of_type_ArrayOfAlxo[i] = localObject;
+      return localObject;
+      paramAppInterface = new luo();
+      continue;
+      paramAppInterface = new akyk();
+    }
   }
 }
 

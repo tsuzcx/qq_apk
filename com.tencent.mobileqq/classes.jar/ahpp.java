@@ -1,13 +1,8 @@
-import android.support.annotation.NonNull;
 import android.view.View;
 
 public abstract interface ahpp
 {
-  public abstract void a();
-  
-  public abstract void a(@NonNull View paramView1, int paramInt1, int paramInt2, @NonNull View paramView2, boolean paramBoolean);
-  
-  public abstract boolean a();
+  public abstract void a(float paramFloat1, float paramFloat2, int paramInt, View paramView);
 }
 
 

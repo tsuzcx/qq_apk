@@ -1,6 +1,36 @@
-public abstract interface binl
+import android.support.annotation.NonNull;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+
+class binl
 {
-  public abstract void a();
+  static CharSequence a(@NonNull bimw parambimw)
+  {
+    if (parambimw.a) {
+      return parambimw.toString();
+    }
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    parambimw = parambimw.toString();
+    SpannableString localSpannableString = new SpannableString(parambimw);
+    localSpannableString.setSpan(new ForegroundColorSpan(-65536), 0, parambimw.length(), 17);
+    localSpannableStringBuilder.append(localSpannableString);
+    return localSpannableStringBuilder;
+  }
+  
+  static CharSequence a(@NonNull bimx parambimx)
+  {
+    if ("failed".equals(parambimx.c))
+    {
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+      parambimx = parambimx.toString();
+      SpannableString localSpannableString = new SpannableString(parambimx);
+      localSpannableString.setSpan(new ForegroundColorSpan(-65536), 0, parambimx.length(), 17);
+      localSpannableStringBuilder.append(localSpannableString);
+      return localSpannableStringBuilder;
+    }
+    return parambimx.toString();
+  }
 }
 
 

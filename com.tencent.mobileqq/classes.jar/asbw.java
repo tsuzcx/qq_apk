@@ -1,39 +1,12 @@
-import org.json.JSONObject;
-
-public class asbw
+public abstract interface asbw
 {
-  public long a;
-  public asbv a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public String c;
+  public abstract void a(int paramInt);
   
-  public static asbw a(JSONObject paramJSONObject)
-  {
-    boolean bool = true;
-    if (paramJSONObject == null) {
-      return null;
-    }
-    asbw localasbw = new asbw();
-    localasbw.jdField_a_of_type_JavaLangString = paramJSONObject.optString("id");
-    localasbw.jdField_a_of_type_Long = asbg.b(localasbw.jdField_a_of_type_JavaLangString);
-    localasbw.jdField_b_of_type_Long = asbg.a(localasbw.jdField_a_of_type_JavaLangString);
-    localasbw.jdField_b_of_type_JavaLangString = paramJSONObject.optString("name");
-    if (paramJSONObject.optInt("enable") == 1) {}
-    for (;;)
-    {
-      localasbw.jdField_a_of_type_Boolean = bool;
-      localasbw.c = paramJSONObject.optString("ruleWording");
-      return localasbw;
-      bool = false;
-    }
-  }
+  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     asbw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,94 +1,67 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.PluginPreloader.1;
-import cooperation.plugin.PluginInfo;
-import mqq.app.AppRuntime;
+import NS_MINI_INTERFACE.INTERFACE.StBatchGetContactReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetRobotUinRsp;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.List;
+import org.json.JSONObject;
 
 public class beyv
+  extends bfad
 {
-  private static final Handler a;
+  private INTERFACE.StBatchGetContactReq a = new INTERFACE.StBatchGetContactReq();
   
-  static
+  public beyv(List<String> paramList)
   {
-    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("PluginPreloader", 0);
-    localHandlerThread.start();
-    a = new Handler(localHandlerThread.getLooper());
+    this.a.appids.set(paramList);
   }
   
-  public static void a(beyr parambeyr)
+  protected String a()
   {
-    a(parambeyr, 0L);
+    return "mini_app_info";
   }
   
-  public static void a(beyr parambeyr, long paramLong)
+  public JSONObject a(byte[] paramArrayOfByte)
   {
-    if ((parambeyr == null) || (parambeyr.jdField_a_of_type_JavaLangString == null))
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    INTERFACE.StGetRobotUinRsp localStGetRobotUinRsp = new INTERFACE.StGetRobotUinRsp();
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PluginPreloader", 2, "the preload strategy or target process is null.");
+      localStGetRobotUinRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetRobotUinRsp != null)
+      {
+        paramArrayOfByte = bffw.a(localStGetRobotUinRsp);
+        if ((paramArrayOfByte instanceof JSONObject)) {
+          return (JSONObject)JSONObject.class.cast(paramArrayOfByte);
+        }
       }
-      return;
+      else
+      {
+        besl.a("VerifyPluginRequest", "onResponse fail.rsp = null");
+        return null;
+      }
     }
-    a.postDelayed(new PluginPreloader.1(parambeyr), paramLong);
+    catch (Exception paramArrayOfByte)
+    {
+      besl.a("VerifyPluginRequest", "onResponse fail." + paramArrayOfByte);
+      return null;
+    }
+    return null;
   }
   
-  public static void a(AppRuntime paramAppRuntime, beyr parambeyr, int paramInt, beyx parambeyx)
+  protected byte[] a()
   {
-    parambeyr.a(parambeyx);
-    if (parambeyr.jdField_b_of_type_JavaLangString != null)
-    {
-      bfcz localbfcz = (bfcz)paramAppRuntime.getManager(27);
-      if (localbfcz == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PluginPreloader", 2, "pluginType:" + parambeyr.jdField_b_of_type_Int + " preload:fail:nopluginmanager");
-        }
-        beyp.a(paramAppRuntime, 1, parambeyr.jdField_b_of_type_Int, parambeyr.c, 3, "preload:fail:nopluginmanager", paramInt, new String[] { String.valueOf(parambeyr.d) });
-        return;
-      }
-      PluginInfo localPluginInfo = localbfcz.a(parambeyr.jdField_b_of_type_JavaLangString);
-      if (localPluginInfo == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PluginPreloader", 2, "pluginType:" + parambeyr.jdField_b_of_type_Int + " preload:fail:noplugininfo");
-        }
-        beyp.a(paramAppRuntime, 1, parambeyr.jdField_b_of_type_Int, parambeyr.c, 3, "preload:fail:noplugininfo", paramInt, new String[] { String.valueOf(parambeyr.d) });
-        return;
-      }
-      if (localPluginInfo.mState == 4)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PluginPreloader", 2, "plugin already installed, do preload.");
-        }
-        beyp.a(paramAppRuntime, 0, parambeyr.jdField_b_of_type_Int, parambeyr.c, parambeyx.jdField_a_of_type_Int, parambeyx.jdField_a_of_type_JavaLangString, paramInt, new String[] { String.valueOf(parambeyr.d) });
-        parambeyr.a();
-        return;
-      }
-      if ((parambeyr.jdField_a_of_type_Boolean) && (badq.h(BaseApplicationImpl.getContext())))
-      {
-        localbfcz.installPlugin(parambeyr.jdField_b_of_type_JavaLangString, new beyw(paramAppRuntime, parambeyr, parambeyx, paramInt));
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PluginPreloader", 2, "pluginType:" + parambeyr.jdField_b_of_type_Int + " preload:fail:uninstall");
-      }
-      beyp.a(paramAppRuntime, 1, parambeyr.jdField_b_of_type_Int, parambeyr.c, 3, "preload:fail:uninstall", paramInt, new String[] { String.valueOf(parambeyr.d) });
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginPreloader", 2, "do preload");
-    }
-    beyp.a(paramAppRuntime, 0, parambeyr.jdField_b_of_type_Int, parambeyr.c, parambeyx.jdField_a_of_type_Int, parambeyx.jdField_a_of_type_JavaLangString, paramInt, new String[] { String.valueOf(parambeyr.d) });
-    parambeyr.a();
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "BatchGetContact";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beyv
  * JD-Core Version:    0.7.0.1
  */

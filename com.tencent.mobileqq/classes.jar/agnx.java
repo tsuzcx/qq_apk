@@ -1,26 +1,24 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import mqq.app.AppRuntime;
 
-public abstract class agnx
-  implements TextWatcher
+public class agnx
+  extends atzo
 {
-  protected EditText a;
-  
-  public agnx(EditText paramEditText)
+  protected void c(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a = paramEditText;
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof get_albumlist_num_rsp))) {
+      PhotoListActivity.f = ((get_albumlist_num_rsp)paramBundle).album_num;
+    }
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(PhotoListActivity.a());
   }
-  
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agnx
  * JD-Core Version:    0.7.0.1
  */

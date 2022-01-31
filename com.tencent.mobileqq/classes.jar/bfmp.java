@@ -1,47 +1,23 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.util.Pair;
-import cooperation.qqreader.net.BusinessTask;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.mobileqq.widget.RandomCoverView;
 
-public class bfmp
+final class bfmp
+  extends VasQuickUpdateManager.CallBacker
 {
-  private static bfmp jdField_a_of_type_Bfmp;
-  private static final Pair<Integer, Integer> jdField_a_of_type_ComTencentUtilPair = new Pair(Integer.valueOf(1494), Integer.valueOf(1));
-  private static boolean jdField_a_of_type_Boolean;
+  bfmp(BaseActivity paramBaseActivity, Card paramCard, RandomCoverView paramRandomCoverView, ajxg paramajxg, boolean paramBoolean) {}
   
-  public static SharedPreferences a()
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("Reader_shadow_gray" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 4);
-  }
-  
-  public static bfmp a()
-  {
-    if (jdField_a_of_type_Bfmp == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bfmp == null) {
-        jdField_a_of_type_Bfmp = new bfmp();
-      }
-      return jdField_a_of_type_Bfmp;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    bfne.d("ReaderShadowGrayManager", "[fetchConfig] sIsRequestedGray = " + jdField_a_of_type_Boolean);
-    if (jdField_a_of_type_Boolean) {
-      return;
-    }
-    BusinessTask localBusinessTask = new BusinessTask("ReaderShadowGray", jdField_a_of_type_ComTencentUtilPair);
-    localBusinessTask.a(new bfmq(this), true);
-    localBusinessTask.a();
+    bfmo.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramVasQuickUpdateManager.app, this.jdField_a_of_type_ComTencentMobileqqDataCard, this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView, this.jdField_a_of_type_Ajxg, this.jdField_a_of_type_Boolean);
+    paramVasQuickUpdateManager.removeCallBacker(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfmp
  * JD-Core Version:    0.7.0.1
  */

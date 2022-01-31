@@ -1,17 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import java.util.List;
-
-class rbv
-  extends ohe
+public abstract interface rbv
 {
-  rbv(rbu paramrbu) {}
-  
-  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList)
-  {
-    if (paramBoolean) {
-      rbu.a(this.a, rbu.a(this.a, paramList));
-    }
-  }
+  public abstract void a();
 }
 
 

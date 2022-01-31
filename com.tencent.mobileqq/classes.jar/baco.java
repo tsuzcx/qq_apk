@@ -1,84 +1,44 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem.AudioUploadCallback.1;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem.AudioUploadCallback.2;
 import com.tencent.qphone.base.util.QLog;
 
-class baco
-  extends mmn
+public final class baco
+  implements bhwr
 {
-  baco(bacn parambacn, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
+  public baau a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public baco(HWReciteItem paramHWReciteItem, baau parambaau)
   {
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      apmt.a("KEY_STAGE_2_CONNECT_MINI_D55", bool);
-      if (this.jdField_a_of_type_Bacn.d)
-      {
-        this.jdField_a_of_type_Bacn.d = false;
-        this.jdField_a_of_type_Bacn.c();
-      }
-      if (!this.jdField_a_of_type_Bacn.c) {
-        break;
-      }
-      bbmy.a(this.jdField_a_of_type_Bacn.jdField_a_of_type_AndroidContentContext, 1, 2131633778, 1).a();
-      paramArrayOfByte = new Intent(this.jdField_a_of_type_Bacn.jdField_a_of_type_AndroidContentContext, SplashActivity.class);
-      paramArrayOfByte.addFlags(67108864);
-      paramArrayOfByte.addFlags(268435456);
-      this.jdField_a_of_type_Bacn.jdField_a_of_type_AndroidContentContext.startActivity(paramArrayOfByte);
-      bacn.c(this.jdField_a_of_type_Bacn);
-      return;
+    this.jdField_a_of_type_Baau = parambaau;
+  }
+  
+  public void a(int paramInt)
+  {
+    HWReciteItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).post(new HWReciteItem.AudioUploadCallback.1(this));
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HWReciteItem", 2, "upload onComplete " + this.jdField_a_of_type_Baau.b);
     }
-    if (this.jdField_a_of_type_Bacn.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_Bacn.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Baau.b(paramString);
+    this.jdField_a_of_type_Baau.g = 3;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("HWReciteItem", 2, "onError errorCode = " + paramInt);
     }
-    paramBundle = bacn.a(this.jdField_a_of_type_Bacn);
-    if (paramInt == 0)
-    {
-      awqx.b(bacn.a(this.jdField_a_of_type_Bacn), "dc01160", "", "", "0X800A51A", "0X800A51A", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, this.b);
-      paramBundle.putExtra("mini_app_id", this.b);
-      paramBundle.putExtra("mini_app_path", this.c);
-      paramBundle.putExtra("mini_app_type", this.d);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bacn.jdField_a_of_type_AndroidContentContext.startActivity(paramBundle);
-      bacn.c(this.jdField_a_of_type_Bacn);
-      return;
-      if (paramInt == 25501)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("JumpAction", 2, "Account not the same");
-        }
-        awqx.b(bacn.a(this.jdField_a_of_type_Bacn), "dc01160", "", "", "0X800A51A", "0X800A51A", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, this.b);
-        paramBundle.putExtra("mini_app_id", this.b);
-        paramBundle.putExtra("mini_app_path", this.c);
-        paramBundle.putExtra("mini_app_type", this.d);
-        paramBundle.putExtra("openid", this.e);
-        paramBundle.putExtra("appid", this.jdField_a_of_type_JavaLangString);
-        paramBundle.putExtra("pull_show_open_id_diff_main", true);
-      }
-      else
-      {
-        paramArrayOfByte = ajih.a(paramArrayOfByte);
-        awqx.b(bacn.a(this.jdField_a_of_type_Bacn), "dc01160", "", "", "0X800A51B", "0X800A51B", 0, paramInt, "", "", this.jdField_a_of_type_JavaLangString, this.b);
-        if (paramInt == 25601)
-        {
-          paramBundle.putExtra("pull_mini_app_not_privilege_not_bind", true);
-          paramBundle.putExtra("pull_mini_app_not_privilege_not_bind_app_name", this.f);
-        }
-        paramBundle.putExtra("pull_mini_app_not_privilege", true);
-        paramBundle.putExtra("pull_mini_app_not_privilege_string", paramArrayOfByte);
-      }
-    }
+    this.jdField_a_of_type_Baau.g = 2;
+    HWReciteItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).post(new HWReciteItem.AudioUploadCallback.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baco
  * JD-Core Version:    0.7.0.1
  */

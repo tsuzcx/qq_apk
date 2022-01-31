@@ -1,23 +1,23 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.RenderInfo;
+import com.tencent.open.model.CreateVirtualResult;
 
 public final class bdnd
-  implements Parcelable.Creator<RenderInfo>
+  implements Parcelable.Creator<CreateVirtualResult>
 {
-  public RenderInfo a(Parcel paramParcel)
+  public CreateVirtualResult a(Parcel paramParcel)
   {
-    return new RenderInfo(paramParcel);
+    return new CreateVirtualResult(paramParcel);
   }
   
-  public RenderInfo[] a(int paramInt)
+  public CreateVirtualResult[] a(int paramInt)
   {
-    return new RenderInfo[paramInt];
+    return new CreateVirtualResult[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdnd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,106 +1,49 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.13.1;
+import android.os.SystemClock;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
 import com.tencent.qphone.base.util.QLog;
 
 public class assn
-  extends ajjh
+  implements View.OnClickListener
 {
-  public assn(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public assn(MultiCardPageIndicator paramMultiCardPageIndicator) {}
   
-  public void a()
-  {
-    boolean bool = this.a.g;
-    ajjj localajjj = (ajjj)this.a.app.getManager(51);
-    if (localajjj != null) {
-      bool = localajjj.b(NearbyPeopleProfileActivity.a(this.a).uin);
-    }
-    for (;;)
-    {
-      if (bool != this.a.g)
-      {
-        this.a.g = bool;
-        this.a.runOnUiThread(new NearbyPeopleProfileActivity.13.1(this));
-      }
-      return;
-    }
-  }
-  
-  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
-  {
-    if ((paramSetting == null) || (NearbyPeopleProfileActivity.a(this.a) == null) || (!NearbyPeopleProfileActivity.a(this.a).uin.equals(paramSetting.uin))) {
-      return;
-    }
-    if ((paramSetting.bFaceFlags & 0x20) != 0) {
-      this.a.l = 0;
-    }
-    for (;;)
-    {
-      this.a.b = paramSetting.url;
-      if (NearbyPeopleProfileActivity.a(this.a) != null) {
-        NearbyPeopleProfileActivity.a(this.a).k();
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("Q.nearby_people_card.", 2, "onGetHeadInfo mheadSize is: " + this.a.l + " mGetHeadUrl is: " + this.a.b);
-      return;
-      if ((paramSetting.bFaceFlags & 0x10) != 0) {
-        this.a.l = 640;
-      } else if ((paramSetting.bFaceFlags & 0x8) != 0) {
-        this.a.l = 140;
-      } else if ((paramSetting.bFaceFlags & 0x4) != 0) {
-        this.a.l = 100;
-      } else {
-        this.a.l = 40;
-      }
-    }
-  }
-  
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
-  {
-    if ((!paramBoolean1) || (!paramBoolean2) || (!paramBoolean3) || (TextUtils.isEmpty(paramString))) {}
-    while ((this.a.e != 3) || (this.a.g) || (NearbyPeopleProfileActivity.a(this.a) == null) || (!paramString.equals(NearbyPeopleProfileActivity.a(this.a).uin))) {
-      return;
-    }
-    a();
-  }
-  
-  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
-    while ((this.a.e != 3) || (this.a.g) || (NearbyPeopleProfileActivity.a(this.a) == null) || (!paramString.equals(NearbyPeopleProfileActivity.a(this.a).uin))) {
-      return;
-    }
-    a();
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((!paramBoolean1) || (!paramBoolean2)) {}
-    while ((this.a.e != 3) || (NearbyPeopleProfileActivity.a(this.a) == null) || (TextUtils.isEmpty(NearbyPeopleProfileActivity.a(this.a).uin))) {
-      return;
-    }
-    a();
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onUpdateStangerHead: " + paramBoolean1 + "isStrangerHead: " + paramBoolean2);
+      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
     }
-    if ((paramBoolean1) && (!TextUtils.isEmpty(paramString)) && (NearbyPeopleProfileActivity.a(this.a) != null) && (paramString.equals(NearbyPeopleProfileActivity.a(this.a).uin)) && (paramBoolean2) && ((this.a.l == 640) || (this.a.l == 0)) && (!TextUtils.isEmpty(this.a.b)) && (!this.a.h)) {
-      this.a.a(paramString, this.a.l, this.a.b, true);
+    MultiCardPageIndicator.a(this.a, SystemClock.uptimeMillis());
+    paramView = paramView.getTag();
+    if ((paramView instanceof assq)) {}
+    for (paramView = (assq)paramView;; paramView = null)
+    {
+      if (paramView == null) {}
+      int j;
+      do
+      {
+        return;
+        int i = MultiCardPageIndicator.a(this.a).a();
+        j = paramView.jdField_a_of_type_Int;
+        this.a.setCurrentItem(j);
+        axqw.b(null, "dc00898", "", "", "0X800A216", "0X800A216", 0, 0, "", "", "", "");
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        MultiCardPageIndicator.a(this.a).setCurrentItem(j);
+        if ((i == j) && (MultiCardPageIndicator.a(this.a) != null)) {
+          MultiCardPageIndicator.a(this.a).a(j);
+        }
+      } while (MultiCardPageIndicator.a(this.a) == null);
+      MultiCardPageIndicator.a(this.a).a(j);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     assn
  * JD-Core Version:    0.7.0.1
  */

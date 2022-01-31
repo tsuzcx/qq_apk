@@ -1,23 +1,40 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
 class scr
-  extends SimpleJob<Void>
+  implements View.OnTouchListener
 {
-  scr(scq paramscq) {}
+  scr(sco paramsco, scn paramscn, boolean paramBoolean) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    scq.a(this.a);
-    scq.a(this.a, false);
-    return null;
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      this.jdField_a_of_type_Sco.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Sco.jdField_a_of_type_Scn.a.getResources().getColor(2131165979));
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Sco.c.setBackgroundResource(2130842625);
+        return false;
+      }
+      this.jdField_a_of_type_Sco.c.setBackgroundResource(2130842626);
+      return false;
+    }
+    this.jdField_a_of_type_Sco.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Sco.jdField_a_of_type_Scn.a.getResources().getColor(2131165978));
+    this.jdField_a_of_type_Sco.c.setBackgroundResource(2130842634);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     scr
  * JD-Core Version:    0.7.0.1
  */

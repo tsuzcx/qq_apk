@@ -1,42 +1,40 @@
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
 
 public class asnf
-  implements AdapterView.OnItemLongClickListener
+  implements bcsv
 {
-  public asnf(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public asnf(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
   
-  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(View paramView, int paramInt)
   {
-    paramAdapterView = (Comments.Comment)paramAdapterView.getAdapter().getItem(paramInt);
-    if (paramAdapterView == null) {
-      return true;
-    }
-    paramLong = Long.parseLong(this.a.a.getCurrentAccountUin());
-    if (paramAdapterView.c == paramLong)
+    int i = 2;
+    if (paramInt == 1)
     {
-      this.a.c(paramAdapterView);
-      return true;
-    }
-    if (ShortVideoCommentsView.a(this.a).c == paramLong) {
-      this.a.e(paramAdapterView);
+      asog.a("MsgBackup.MsgBackupSelectionFragment", "click cancel btn mfrom = %d,  pcHandler = %b", new Object[] { Integer.valueOf(MsgBackupSelectionFragment.a(this.a)), Boolean.valueOf(asle.c) });
+      if (MsgBackupSelectionFragment.a(this.a) != 0) {
+        break label79;
+      }
+      paramInt = i;
+      if (MsgBackupSelectionFragment.a(this.a)) {
+        paramInt = 3;
+      }
+      asoe.a("0X800A242", paramInt);
     }
     for (;;)
     {
-      return false;
-      this.a.d(paramAdapterView);
+      this.a.onBackEvent();
+      return;
+      label79:
+      if ((asle.c) && (askt.a().a() == 1)) {
+        asoe.a("0X800A266", 5);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asnf
  * JD-Core Version:    0.7.0.1
  */

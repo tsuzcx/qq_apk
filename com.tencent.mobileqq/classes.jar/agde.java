@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import com.tencent.qphone.base.util.QLog;
 
-public final class agde
-  implements Parcelable.Creator<PhotoSendParams>
+class agde
+  extends akud
 {
-  public PhotoSendParams a(Parcel paramParcel)
-  {
-    return new PhotoSendParams(paramParcel);
-  }
+  agde(agch paramagch) {}
   
-  public PhotoSendParams[] a(int paramInt)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    return new PhotoSendParams[paramInt];
+    if (QLog.isDevelopLevel()) {
+      QLog.i("SplashActivity", 4, "mainobserver onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
+    }
+    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x2) != 0)) {
+      this.a.g();
+    }
   }
 }
 

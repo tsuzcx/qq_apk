@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import android.text.TextUtils;
-import axrt;
-import axsp;
-import axsq;
+import aysa;
+import aysw;
+import aysx;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -14,20 +14,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 class TaskManager$23$1
-  implements axrt
+  implements aysa
 {
   TaskManager$23$1(TaskManager.23 param23, String paramString, JSContext paramJSContext) {}
   
-  public void onResp(axsq paramaxsq)
+  public void onResp(aysx paramaysx)
   {
-    if (paramaxsq.jdField_a_of_type_ArrayOfByte != null) {}
-    for (String str1 = new String(paramaxsq.jdField_a_of_type_ArrayOfByte);; str1 = "")
+    if (paramaysx.jdField_a_of_type_ArrayOfByte != null) {}
+    for (String str1 = new String(paramaysx.jdField_a_of_type_ArrayOfByte);; str1 = "")
     {
       StringBuffer localStringBuffer = new StringBuffer();
-      if (paramaxsq.jdField_a_of_type_JavaUtilHashMap != null)
+      if (paramaysx.jdField_a_of_type_JavaUtilHashMap != null)
       {
         localObject1 = new JSONObject();
-        Iterator localIterator = paramaxsq.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+        Iterator localIterator = paramaysx.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
         while (localIterator.hasNext())
         {
           Object localObject2 = (Map.Entry)localIterator.next();
@@ -47,15 +47,15 @@ class TaskManager$23$1
       {
         str1 = TaskManager.compress(str1);
         localObject1 = TaskManager.compress((String)localObject1);
-        paramaxsq = this.val$callbackMethod + "(" + paramaxsq.c + ",'" + (String)localObject1 + "','" + str1 + "')";
+        paramaysx = this.val$callbackMethod + "(" + paramaysx.c + ",'" + (String)localObject1 + "','" + str1 + "')";
         if (this.val$jsContext != null)
         {
-          this.val$jsContext.evaluteStringWithException(paramaxsq, localStringBuffer);
+          this.val$jsContext.evaluteStringWithException(paramaysx, localStringBuffer);
           if (!TextUtils.isEmpty(localStringBuffer))
           {
             this.this$1.this$0.markTaskFail(this.this$1.val$task);
-            QLog.d("kandianreport.taskmanager", 1, "evaluate js exception: " + paramaxsq + " " + localStringBuffer);
-            TaskException.reportException(this.this$1.val$task.id, "evaluate js exception: " + paramaxsq + " " + localStringBuffer);
+            QLog.d("kandianreport.taskmanager", 1, "evaluate js exception: " + paramaysx + " " + localStringBuffer);
+            TaskException.reportException(this.this$1.val$task.id, "evaluate js exception: " + paramaysx + " " + localStringBuffer);
           }
         }
         return;
@@ -63,7 +63,7 @@ class TaskManager$23$1
     }
   }
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
+  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
 }
 
 

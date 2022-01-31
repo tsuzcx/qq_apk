@@ -1,37 +1,16 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class uqo
-  extends vpv
+public abstract interface uqo
 {
-  private final String a;
+  public abstract void a(int paramInt);
   
-  public uqo(Context paramContext, String paramString)
-  {
-    super(paramContext);
-    this.a = paramString;
-  }
+  public abstract void a(CommentEntry paramCommentEntry);
   
-  public int a()
-  {
-    return 0;
-  }
+  public abstract void a(CommentEntry paramCommentEntry, int paramInt);
   
-  public View a(int paramInt, unw paramunw, ViewGroup paramViewGroup)
-  {
-    return null;
-  }
+  public abstract void b(CommentEntry paramCommentEntry);
   
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public unw a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return null;
-  }
+  public abstract void c(CommentEntry paramCommentEntry);
 }
 
 

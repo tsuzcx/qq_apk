@@ -1,17 +1,11 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.widget.TextView;
 
 public class adpr
-  implements ValueAnimator.AnimatorUpdateListener
+  extends actr
 {
-  public adpr(SixCombolEffectView paramSixCombolEffectView) {}
+  TextView b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
-  }
+  adpr(adpq paramadpq) {}
 }
 
 

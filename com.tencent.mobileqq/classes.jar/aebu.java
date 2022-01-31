@@ -1,50 +1,20 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
-class aebu
-  implements View.OnClickListener
+public class aebu
+  implements Animation.AnimationListener
 {
-  aebu(aebk paramaebk) {}
+  public aebu(StructingMsgItemBuilder paramStructingMsgItemBuilder, aebw paramaebw) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    boolean bool = true;
-    paramView = paramView.getTag();
-    if ((paramView == null) || (!(paramView instanceof Integer))) {
-      return;
-    }
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    switch (((Integer)paramView).intValue())
-    {
-    default: 
-      return;
-    case 1: 
-      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, true);
-      return;
-    case 2: 
-      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, false);
-      return;
-    }
-    if (this.a.jdField_a_of_type_Bcpn.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
-    {
-      paramView = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-      String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131625011);
-      if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("param_return_addr") != null) {}
-      for (;;)
-      {
-        ChatActivityUtils.a(paramView, (SessionInfo)localObject, str, bool);
-        return;
-        bool = false;
-      }
-    }
-    this.a.bp();
+    this.jdField_a_of_type_Aebw.a.setVisibility(0);
   }
 }
 

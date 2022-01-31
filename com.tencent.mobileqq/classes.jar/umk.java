@@ -1,40 +1,24 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPhotographyGuide;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
 
 public class umk
-  extends slz
+  implements wdg
 {
-  public static final String a = skt.a("StorySvc.get_photography_guide");
+  public umk(ShareGroupInnerListView paramShareGroupInnerListView) {}
   
-  public String a()
+  public void a()
   {
-    return a;
-  }
-  
-  public slu a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetPhotographyGuide localRspGetPhotographyGuide = new qqstory_service.RspGetPhotographyGuide();
-    try
-    {
-      localRspGetPhotographyGuide.mergeFrom(paramArrayOfByte);
-      return new uml(localRspGetPhotographyGuide);
+    if ((this.a.jdField_a_of_type_Uml != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
+      this.a.jdField_a_of_type_Uml.a(this.a.jdField_a_of_type_JavaLangString);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      urk.d("Q.qqstory:GetPhotographyGuideRequest", "" + paramArrayOfByte);
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    if (this.a.jdField_a_of_type_Uml != null) {
+      return this.a.jdField_a_of_type_Uml.a(this.a.jdField_a_of_type_JavaLangString);
     }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return new qqstory_service.ReqGetPhotographyGuide().toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetPhotographyGuideRequest{}";
+    return false;
   }
 }
 

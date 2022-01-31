@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import ajjy;
-import ajle;
+import ajyc;
+import ajzk;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -25,7 +25,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import babp;
+import bbct;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.widget.BounceScrollView;
 import com.tencent.qphone.base.util.QLog;
@@ -61,7 +61,7 @@ public class IphoneTitleBarActivity
   @Deprecated
   public View mTitleContainer;
   protected boolean mUseOptimizMode;
-  protected View.OnClickListener onBackListeger = new ajle(this);
+  protected View.OnClickListener onBackListeger = new ajzk(this);
   @Deprecated
   public TextView rightHighLView;
   @Deprecated
@@ -160,7 +160,7 @@ public class IphoneTitleBarActivity
   
   public View getRightTextView()
   {
-    this.rightViewText = ((TextView)findViewById(2131302832));
+    this.rightViewText = ((TextView)findViewById(2131368457));
     setLayerType(this.rightViewText);
     return this.rightViewText;
   }
@@ -186,14 +186,14 @@ public class IphoneTitleBarActivity
   
   public View getTitleBarView()
   {
-    return findViewById(2131309578);
+    return findViewById(2131375327);
   }
   
   public void hideTitleBar()
   {
     try
     {
-      this.mTitleContainer = findViewById(2131309578);
+      this.mTitleContainer = findViewById(2131375327);
       this.mTitleContainer.setVisibility(8);
       return;
     }
@@ -202,10 +202,10 @@ public class IphoneTitleBarActivity
   
   protected void init(Intent paramIntent)
   {
-    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130848807));
+    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130849032));
     if (this.leftView == null)
     {
-      this.vg = ((ViewGroup)findViewById(2131309578));
+      this.vg = ((ViewGroup)findViewById(2131375327));
       onCreateLeftView();
     }
     try
@@ -246,16 +246,16 @@ public class IphoneTitleBarActivity
   
   protected View onCreateCenterView()
   {
-    this.centerView = ((TextView)findViewById(2131302847));
+    this.centerView = ((TextView)findViewById(2131368472));
     return this.centerView;
   }
   
   protected View onCreateLeftView()
   {
-    this.leftView = ((TextView)findViewById(2131302804));
+    this.leftView = ((TextView)findViewById(2131368429));
     this.leftView.setOnClickListener(this.onBackListeger);
-    this.mLeftBackText = ((TextView)findViewById(2131312188));
-    this.mLeftBackIcon = ((ImageView)findViewById(2131303102));
+    this.mLeftBackText = ((TextView)findViewById(2131378010));
+    this.mLeftBackIcon = ((ImageView)findViewById(2131368742));
     if ((this.mLeftBackText != null) && (this.mLeftBackIcon != null))
     {
       this.mLeftBackText.setOnClickListener(this.onBackListeger);
@@ -266,8 +266,8 @@ public class IphoneTitleBarActivity
   
   protected View onCreateRightView()
   {
-    this.rightViewText = ((TextView)findViewById(2131302832));
-    this.rightViewImg = ((ImageView)findViewById(2131302816));
+    this.rightViewText = ((TextView)findViewById(2131368457));
+    this.rightViewImg = ((ImageView)findViewById(2131368441));
     return this.rightViewText;
   }
   
@@ -311,7 +311,7 @@ public class IphoneTitleBarActivity
       printWindowFeatures();
       super.setContentView(paramInt);
       this.mContentViewID = paramInt;
-      getWindow().setFeatureInt(7, 2131493315);
+      getWindow().setFeatureInt(7, 2131558875);
     }
     do
     {
@@ -322,18 +322,18 @@ public class IphoneTitleBarActivity
       init(getIntent());
       return;
       Object localObject2 = LayoutInflater.from(this);
-      Object localObject1 = ((LayoutInflater)localObject2).inflate(2131493317, null);
+      Object localObject1 = ((LayoutInflater)localObject2).inflate(2131558877, null);
       try
       {
         localObject2 = ((LayoutInflater)localObject2).inflate(paramInt, (ViewGroup)localObject1, false);
-        this.titleRoot = ((RelativeLayout)((View)localObject1).findViewById(2131311638));
+        this.titleRoot = ((RelativeLayout)((View)localObject1).findViewById(2131377452));
         if (ImmersiveUtils.isSupporImmersive() == 1)
         {
           this.titleRoot.setFitsSystemWindows(true);
           this.titleRoot.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
         }
         localObject1 = new RelativeLayout.LayoutParams(-1, -1);
-        ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131309578);
+        ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131375327);
         this.titleRoot.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
         this.mContentView = ((View)localObject2);
         printWindowFeatures();
@@ -363,7 +363,7 @@ public class IphoneTitleBarActivity
     printWindowFeatures();
     super.setContentView(paramInt);
     this.mContentViewID = paramInt;
-    getWindow().setFeatureInt(7, 2131493315);
+    getWindow().setFeatureInt(7, 2131558875);
     if (this.mTitleContainer != null) {
       this.mTitleContainer.setVisibility(0);
     }
@@ -380,7 +380,7 @@ public class IphoneTitleBarActivity
     {
       printWindowFeatures();
       super.setContentView(paramView);
-      getWindow().setFeatureInt(7, 2131493315);
+      getWindow().setFeatureInt(7, 2131558875);
     }
     for (;;)
     {
@@ -389,14 +389,14 @@ public class IphoneTitleBarActivity
       }
       init(getIntent());
       return;
-      this.titleRoot = ((RelativeLayout)LayoutInflater.from(this).inflate(2131493317, null).findViewById(2131311638));
+      this.titleRoot = ((RelativeLayout)LayoutInflater.from(this).inflate(2131558877, null).findViewById(2131377452));
       if (ImmersiveUtils.isSupporImmersive() == 1)
       {
         this.titleRoot.setFitsSystemWindows(true);
         this.titleRoot.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
       }
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.addRule(3, 2131309578);
+      localLayoutParams.addRule(3, 2131375327);
       this.titleRoot.addView(paramView, localLayoutParams);
       printWindowFeatures();
       super.setContentView(this.titleRoot);
@@ -405,7 +405,7 @@ public class IphoneTitleBarActivity
   
   public View setContentViewB(int paramInt)
   {
-    BounceScrollView localBounceScrollView = (BounceScrollView)View.inflate(this, 2131493098, null);
+    BounceScrollView localBounceScrollView = (BounceScrollView)View.inflate(this, 2131558649, null);
     View localView = View.inflate(this, paramInt, null);
     localBounceScrollView.addView(localView);
     setContentView(localBounceScrollView);
@@ -432,10 +432,10 @@ public class IphoneTitleBarActivity
     }
     printWindowFeatures();
     super.setContentView(localView);
-    getWindow().setFeatureInt(7, 2131493363);
+    getWindow().setFeatureInt(7, 2131558924);
     try
     {
-      this.mTitleContainer = ((View)findViewById(2131300712).getParent());
+      this.mTitleContainer = ((View)findViewById(2131366319).getParent());
       this.mTitleContainer.setVisibility(8);
       return;
     }
@@ -453,10 +453,10 @@ public class IphoneTitleBarActivity
     }
     printWindowFeatures();
     super.setContentView(paramView);
-    getWindow().setFeatureInt(7, 2131493363);
+    getWindow().setFeatureInt(7, 2131558924);
     try
     {
-      this.mTitleContainer = ((View)findViewById(2131300712).getParent());
+      this.mTitleContainer = ((View)findViewById(2131366319).getParent());
       this.mTitleContainer.setVisibility(8);
       return;
     }
@@ -466,7 +466,7 @@ public class IphoneTitleBarActivity
   public String setLastActivityName()
   {
     if ((this.centerView == null) || (this.centerView.getText() == null) || (this.centerView.getText().length() == 0)) {
-      return getString(2131625011);
+      return getString(2131690572);
     }
     return this.centerView.getText().toString();
   }
@@ -474,7 +474,7 @@ public class IphoneTitleBarActivity
   public void setLeftButton(int paramInt, View.OnClickListener paramOnClickListener)
   {
     this.leftView.setVisibility(8);
-    this.leftViewNotBack = ((TextView)findViewById(2131302806));
+    this.leftViewNotBack = ((TextView)findViewById(2131368431));
     setLayerType(this.leftViewNotBack);
     this.leftViewNotBack.setVisibility(0);
     this.leftViewNotBack.setText(paramInt);
@@ -492,7 +492,7 @@ public class IphoneTitleBarActivity
       QLog.d("IphoneTitleBarActivity", 2, "setLeftButton() called with: text = [" + paramString + "], l = [" + paramOnClickListener + "]");
     }
     this.leftView.setVisibility(8);
-    this.leftViewNotBack = ((TextView)findViewById(2131302806));
+    this.leftViewNotBack = ((TextView)findViewById(2131368431));
     setLayerType(this.leftViewNotBack);
     this.leftViewNotBack.setVisibility(0);
     this.leftViewNotBack.setText(paramString);
@@ -523,7 +523,7 @@ public class IphoneTitleBarActivity
       }
       else
       {
-        localObject1 = getString(2131625011);
+        localObject1 = getString(2131690572);
       }
       if (!this.mNotShowLeftText) {
         break label145;
@@ -533,11 +533,11 @@ public class IphoneTitleBarActivity
     for (;;)
     {
       localTextView.setVisibility(0);
-      if (AppSetting.c)
+      if (AppSetting.d)
       {
         localObject2 = localObject1;
-        if (!((String)localObject1).contains(getString(2131625011))) {
-          localObject2 = getString(2131625011) + (String)localObject1;
+        if (!((String)localObject1).contains(getString(2131690572))) {
+          localObject2 = getString(2131690572) + (String)localObject1;
         }
         this.leftView.setContentDescription((CharSequence)localObject2);
       }
@@ -569,15 +569,15 @@ public class IphoneTitleBarActivity
             if (!TextUtils.isEmpty((CharSequence)localObject))
             {
               paramIntent = (Intent)localObject;
-              if (((String)localObject).contains(ajjy.a(2131640043))) {
-                paramIntent = getString(2131625011);
+              if (((String)localObject).contains(ajyc.a(2131705828))) {
+                paramIntent = getString(2131690572);
               }
             }
           }
         }
         localObject = paramIntent;
         if (paramIntent == null) {
-          localObject = getString(2131625011);
+          localObject = getString(2131690572);
         }
         if (this.mNotShowLeftText) {
           localTextView.setText("  ");
@@ -585,12 +585,12 @@ public class IphoneTitleBarActivity
         for (;;)
         {
           localTextView.setVisibility(0);
-          if (!AppSetting.c) {
+          if (!AppSetting.d) {
             break;
           }
           paramIntent = (Intent)localObject;
-          if (!((String)localObject).contains(getString(2131625011))) {
-            paramIntent = getString(2131625011) + (String)localObject;
+          if (!((String)localObject).contains(getString(2131690572))) {
+            paramIntent = getString(2131690572) + (String)localObject;
           }
           this.leftView.setContentDescription(paramIntent);
           return;
@@ -611,8 +611,8 @@ public class IphoneTitleBarActivity
     if (paramOnClickListener != null) {
       this.rightViewText.setOnClickListener(paramOnClickListener);
     }
-    if (AppSetting.c) {
-      this.rightViewText.setContentDescription(this.rightViewText.getText() + ajjy.a(2131640044));
+    if (AppSetting.d) {
+      this.rightViewText.setContentDescription(this.rightViewText.getText() + ajyc.a(2131705829));
     }
   }
   
@@ -624,7 +624,7 @@ public class IphoneTitleBarActivity
       this.rightViewText.setVisibility(0);
       this.rightViewText.setText(paramInt);
       this.rightViewText.setEnabled(false);
-      this.rightHighLView = ((TextView)getLayoutInflater().inflate(2131493320, null));
+      this.rightHighLView = ((TextView)getLayoutInflater().inflate(2131558880, null));
       setLayerType(this.rightHighLView);
       this.rightHighLView.setText(paramInt);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
@@ -677,7 +677,7 @@ public class IphoneTitleBarActivity
     {
       TextView localTextView = this.centerView;
       localTextView.setText(paramCharSequence);
-      if (AppSetting.c) {
+      if (AppSetting.d) {
         localTextView.setContentDescription(paramString);
       }
       super.setTitle(paramString);
@@ -688,7 +688,7 @@ public class IphoneTitleBarActivity
   {
     try
     {
-      View localView = (View)findViewById(2131309578).getParent();
+      View localView = (View)findViewById(2131375327).getParent();
       if (paramBoolean) {}
       for (int i = 0;; i = 8)
       {
@@ -708,7 +708,7 @@ public class IphoneTitleBarActivity
     Object localObject1;
     if (this.mUseOptimizMode)
     {
-      localObject1 = (RelativeLayout)findViewById(2131311586);
+      localObject1 = (RelativeLayout)findViewById(2131377400);
       if (this.centerView.getVisibility() == 0)
       {
         localObject1 = this.centerView;
@@ -761,13 +761,13 @@ public class IphoneTitleBarActivity
           ((RelativeLayout.LayoutParams)localObject1).leftMargin = 0;
           ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
           this.mLoadingView = new ImageView(this);
-          this.mLoadingView.setId(2131303817);
+          this.mLoadingView.setId(2131369492);
           localObject1 = new RelativeLayout.LayoutParams(-2, -2);
           ((RelativeLayout.LayoutParams)localObject1).addRule(0, ((View)localObject2).getId());
           ((RelativeLayout.LayoutParams)localObject1).addRule(15);
-          ((RelativeLayout.LayoutParams)localObject1).rightMargin = ((int)(7.0F * babp.a()));
+          ((RelativeLayout.LayoutParams)localObject1).rightMargin = ((int)(7.0F * bbct.a()));
           this.mLoadingParent.addView(this.mLoadingView, (ViewGroup.LayoutParams)localObject1);
-          localObject1 = getActivity().getResources().getDrawable(2130839115);
+          localObject1 = getActivity().getResources().getDrawable(2130839142);
           this.mLoadingView.setImageDrawable((Drawable)localObject1);
           if ((localObject1 instanceof Animatable)) {
             ((Animatable)localObject1).start();
@@ -785,7 +785,7 @@ public class IphoneTitleBarActivity
       }
       if (this.ad == null)
       {
-        this.ad = getResources().getDrawable(2130839115);
+        this.ad = getResources().getDrawable(2130839142);
         this.mOldDrawables = this.centerView.getCompoundDrawables();
         this.mOldPadding = this.centerView.getCompoundDrawablePadding();
         this.centerView.setCompoundDrawablePadding(10);

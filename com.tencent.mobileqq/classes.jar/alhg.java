@@ -1,18 +1,10 @@
-import android.os.HandlerThread;
-import com.tencent.ark.ArkEnvironmentManager.ThreadCreater;
-import com.tencent.mobileqq.app.ThreadManager;
-
-final class alhg
-  implements ArkEnvironmentManager.ThreadCreater
+public abstract interface alhg
 {
-  public HandlerThread createHanderThread(String paramString)
-  {
-    return ThreadManager.newFreeHandlerThread(paramString, -1);
-  }
+  public abstract void a(alhi paramalhi);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alhg
  * JD-Core Version:    0.7.0.1
  */

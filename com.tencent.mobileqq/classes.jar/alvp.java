@@ -1,140 +1,152 @@
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.Paint;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.ark.image.PhotoListLogicArk.2;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Locale;
+import mqq.util.WeakReference;
 
 public class alvp
+  extends agsl
 {
-  public static int a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private String b;
+  
+  private alvp(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    if ((paramMessageRecord instanceof MessageForPic)) {
-      return 1;
-    }
-    if ((paramMessageRecord instanceof MessageForShortVideo)) {
-      return 2;
-    }
-    if (apck.a(paramMessageRecord))
+    super(paramNewPhotoListActivity);
+  }
+  
+  public static agse b(NewPhotoListActivity paramNewPhotoListActivity)
+  {
+    if ((jdField_a_of_type_Agse == null) || (jdField_a_of_type_Agse.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoListActivity)) {}
+    try
     {
-      paramMessageRecord = adni.a(paramQQAppInterface, paramMessageRecord);
-      int i;
-      if ((paramMessageRecord instanceof MessageForFile))
-      {
-        paramQQAppInterface = paramQQAppInterface.a().a(paramMessageRecord.uniseq, paramMessageRecord.frienduin, paramMessageRecord.istroop);
-        if (paramQQAppInterface != null)
-        {
-          i = apck.a(paramQQAppInterface.fileName);
-          if (i == 0) {
-            return 3;
-          }
-          if (i == 2) {
-            return 4;
-          }
-        }
+      if ((jdField_a_of_type_Agse == null) || (jdField_a_of_type_Agse.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoListActivity)) {
+        jdField_a_of_type_Agse = new alvp(paramNewPhotoListActivity);
       }
-      else if ((paramMessageRecord instanceof MessageForTroopFile))
-      {
-        paramQQAppInterface = azjg.a(paramQQAppInterface, (MessageForTroopFile)paramMessageRecord);
-        if (paramQQAppInterface != null)
-        {
-          i = apck.a(paramQQAppInterface.g);
-          if (i == 0) {
-            return 3;
-          }
-          if (i == 2) {
-            return 4;
-          }
-        }
-      }
+      return jdField_a_of_type_Agse;
     }
-    return 0;
+    finally {}
   }
   
-  public static final String a(Context paramContext, int paramInt)
+  public Intent a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramInt < 0) {
-      return "";
-    }
-    int i = paramInt;
-    if (paramInt == 0) {
-      i = 1;
-    }
-    if (i < 60) {
-      return paramContext.getString(2131633585, new Object[] { Integer.valueOf(i) });
-    }
-    if (i < 3600) {
-      return paramContext.getString(2131633586, new Object[] { Integer.valueOf(i / 60), Integer.valueOf(i % 60) });
-    }
-    paramInt = i / 60;
-    return paramContext.getString(2131633587, new Object[] { Integer.valueOf(paramInt / 60), Integer.valueOf(paramInt % 60) });
+    Intent localIntent = ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getIntent();
+    localIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
+    localIntent.putExtra("key_ark_app_res_path", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("key_should_compress", this.jdField_a_of_type_Boolean);
+    localIntent.putExtra("key_ark_app_engine_res_dir", this.b);
+    localIntent.putExtra("enter_from", 3);
+    return super.a(paramAdapterView, paramView, paramInt, paramLong);
   }
   
-  public static final String a(Paint paramPaint, String paramString, int paramInt)
+  protected void a(Intent paramIntent)
   {
-    float f1 = paramPaint.measureText(paramString);
-    float f2 = paramPaint.measureText("…");
-    if (f2 > f1) {}
+    super.a(paramIntent);
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("key_ark_app_res_path");
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("key_should_compress", false);
+    this.b = paramIntent.getStringExtra("key_ark_app_engine_res_dir");
+  }
+  
+  protected void a(View paramView)
+  {
+    alvk.a().a("callbackArk", null, null);
+    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).finish();
+    super.a(paramView);
+  }
+  
+  protected void b(Intent paramIntent)
+  {
+    paramIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
+    paramIntent.putExtra("enter_from", 3);
+    super.b(paramIntent);
+  }
+  
+  protected void c()
+  {
+    super.c();
+    NewPhotoListActivity localNewPhotoListActivity = (NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localNewPhotoListActivity != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoListLogicArk", 2, "ArkApp ark app res:" + this.jdField_a_of_type_JavaLangString);
+      }
+      localNewPhotoListActivity.findViewById(2131371910).setVisibility(4);
+    }
+  }
+  
+  protected void c(Intent paramIntent)
+  {
+    super.c(paramIntent);
+  }
+  
+  protected void c(View paramView)
+  {
+    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).c.setClickable(false);
+    if (!this.jdField_a_of_type_Agsb.a.isEmpty()) {
+      ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b((String)this.jdField_a_of_type_Agsb.a.get(this.jdField_a_of_type_Agsb.a.size() - 1));
+    }
+    bbbj.a();
+    if (this.jdField_a_of_type_Agsb.a.size() == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("PhotoList", 2, "size == 0");
+      }
+      return;
+    }
+    if (((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getIntent().getBooleanExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", false))
+    {
+      paramView = this.jdField_a_of_type_Agsb.a.iterator();
+      for (long l = 0L; paramView.hasNext(); l = bbdj.a((String)paramView.next()) + l) {}
+      if (apue.a())
+      {
+        aptr.a((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), 2131692672, 2131692677, new alvq(this));
+        return;
+      }
+    }
+    if (this.jdField_a_of_type_Agsb.a.size() > 0)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramView = new StringBuilder(this.jdField_a_of_type_Agsb.a.size() * 128);
+        int i = 0;
+        while (i < this.jdField_a_of_type_Agsb.a.size())
+        {
+          paramView.append(String.format(Locale.CHINA, "choose image[%d],path=%s \r\n", new Object[] { Integer.valueOf(i), this.jdField_a_of_type_Agsb.a.get(i) }));
+          i += 1;
+        }
+        QLog.d("PhotoListLogicArk", 2, paramView.toString());
+      }
+      ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).c();
+      ThreadManagerV2.executeOnSubThread(new PhotoListLogicArk.2(this));
+    }
     for (;;)
     {
-      return paramString;
-      if (f2 > paramInt) {
-        return "…";
-      }
-      if (f1 > paramInt)
-      {
-        float[] arrayOfFloat = new float[paramString.length()];
-        paramPaint.getTextWidths(paramString, arrayOfFloat);
-        float f3 = paramInt;
-        f1 = 0.0F;
-        paramInt = 0;
-        while (paramInt < arrayOfFloat.length)
-        {
-          f1 += arrayOfFloat[paramInt];
-          if (f1 > f3 - f2) {
-            return paramString.substring(0, paramInt) + "…";
-          }
-          paramInt += 1;
-        }
-      }
+      ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).finish();
+      return;
+      alvk.a().a("callbackArk", null, null);
     }
   }
   
-  public static void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, String paramString)
+  protected void e()
   {
-    HashMap localHashMap = new HashMap();
-    if (paramBoolean1)
-    {
-      str = "1";
-      localHashMap.put("eventSuccess", str);
-      localHashMap.put("statusCode", String.valueOf(paramInt1));
-      localHashMap.put("mediaType", String.valueOf(paramInt2));
-      if (!paramBoolean2) {
-        break label113;
-      }
-    }
-    label113:
-    for (String str = "1";; str = "0")
-    {
-      localHashMap.put("rspValid", str);
-      localHashMap.put("errInfo", paramString);
-      awrn.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "DanmakuRequestMonitor", paramBoolean1, 0L, 0L, localHashMap, null);
-      return;
-      str = "0";
-      break;
-    }
+    alvk.a().a("callbackArk", null, null);
+    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).finish();
+    bbbj.a((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get(), false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alvp
  * JD-Core Version:    0.7.0.1
  */

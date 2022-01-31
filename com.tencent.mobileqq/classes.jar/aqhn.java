@@ -1,21 +1,69 @@
-import android.os.Handler;
-import com.tencent.mobileqq.hotpic.VideoBaseItem.2.1;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.fragment.HotChatFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqhn
-  implements TVK_IMediaPlayer.OnCompletionListener
+  extends BroadcastReceiver
 {
-  aqhn(aqhl paramaqhl) {}
+  public aqhn(HotChatFragment paramHotChatFragment) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    aqhl.a(this.a).post(new VideoBaseItem.2.1(this));
+    if ((paramIntent != null) && ("com.tencent.mobileqq.get_banner_rect".equals(paramIntent.getAction())))
+    {
+      paramContext = paramIntent.getStringExtra("content");
+      if (!TextUtils.isEmpty(paramContext)) {
+        break label31;
+      }
+    }
+    label31:
+    do
+    {
+      for (;;)
+      {
+        return;
+        try
+        {
+          paramContext = new JSONObject(paramContext).getJSONObject("params").getJSONArray("bannerHeight");
+          if (paramContext != null)
+          {
+            float f = this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDisplayMetrics().density;
+            int j = paramContext.length();
+            this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+            int i = 0;
+            while (i < j)
+            {
+              paramIntent = paramContext.getJSONObject(i);
+              Rect localRect = new Rect();
+              localRect.top = ((int)(paramIntent.getInt("top") * f));
+              localRect.bottom = ((int)(paramIntent.getInt("bottom") * f));
+              this.a.jdField_a_of_type_JavaUtilArrayList.add(localRect);
+              i += 1;
+            }
+            this.a.d = true;
+            return;
+          }
+        }
+        catch (JSONException paramContext) {}
+      }
+    } while (!QLog.isDevelopLevel());
+    paramContext.printStackTrace();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqhn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,128 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.image.GifDrawable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.view.VipProfileWZRYView;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class avas
+  implements View.OnClickListener
 {
-  private QQAppInterface a;
+  public avas(VipProfileWZRYView paramVipProfileWZRYView, auuw paramauuw) {}
   
-  public avas(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == -2000) || (paramInt == -2022) || (paramInt == -1035) || (paramInt == -1036);
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt == 1004) || (paramInt == 1005) || (paramInt == 2005) || (paramInt == 5001) || (paramInt == 5002);
-  }
-  
-  public int a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord != null)
-    {
-      paramMessageRecord = this.a.a().a(paramMessageRecord.frienduin, paramMessageRecord.uniseq);
-      if ((paramMessageRecord instanceof axou)) {
-        return (int)((axou)paramMessageRecord).c();
-      }
-    }
-    return -1;
-  }
-  
-  public boolean a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord != null) && (paramMessageRecord.extraflag == 32768)) {
-      return true;
-    }
-    int i;
-    if ((paramMessageRecord instanceof MessageForShortVideo)) {
-      i = ((MessageForShortVideo)paramMessageRecord).videoFileStatus;
-    }
-    for (;;)
-    {
-      return b(i);
-      if (((paramMessageRecord instanceof MessageForPic)) && (((MessageForPic)paramMessageRecord).size <= 0L))
-      {
-        int j = a(paramMessageRecord);
-        i = j;
-        if (j == 0) {
-          return true;
-        }
-      }
-      else
-      {
-        i = 0;
-      }
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
-    {
-      return false;
-      File localFile = new File(paramString);
-      if ((localFile.exists()) && (GifDrawable.isGifFile(localFile)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MediaMsgUtil", 2, "isDoutuPic gifFile");
-        }
-        return true;
-      }
-      i = bfcq.a(paramString);
-    } while ((i != 2000) && (i != 3));
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaMsgUtil", 2, new Object[] { "isDoutuPic imageType:", Integer.valueOf(i) });
-    }
-    return true;
-  }
-  
-  public int b(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord != null)
-    {
-      paramMessageRecord = this.a.a().a(paramMessageRecord.frienduin, paramMessageRecord.uniseq);
-      if (!(paramMessageRecord instanceof axou)) {}
-    }
-    for (int i = ((axou)paramMessageRecord).e();; i = -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MediaMsgUtil", 2, new Object[] { "getUploadProgress:", Integer.valueOf(i) });
-      }
-      return i;
-    }
-  }
-  
-  public boolean b(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof MessageForShortVideo))
-    {
-      MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)paramMessageRecord;
-      if ((localMessageForShortVideo.busiType == 0) && (localMessageForShortVideo.videoFileStatus != 998) && (TextUtils.isEmpty(localMessageForShortVideo.md5)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MediaMsgUtil", 2, "isVideoNeedPreCompress is true, " + paramMessageRecord.uniseq);
-        }
-        return true;
-      }
-    }
-    return false;
+    paramView = bbpp.a("gameHonourAddHonour");
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileWZRYView.a, paramView, -1L, null, false, -1);
+    VasWebviewUtil.reportCommercialDrainage("", "card_gameking", "clk_into", "0", 1, 0, 0, nam.a(), String.valueOf(this.jdField_a_of_type_Auuw.a.lCurrentBgId), String.valueOf(this.jdField_a_of_type_Auuw.a.lCurrentStyleId));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avas
  * JD-Core Version:    0.7.0.1
  */

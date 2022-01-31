@@ -1,41 +1,10 @@
-import cooperation.qzone.util.QZLog;
-
-public class ryu
+public abstract interface ryu
 {
-  public static int a;
-  public static String a;
+  public abstract void b(int paramInt);
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = "1522415138827987";
-    int j = a();
-    if (j == -1) {}
-    for (int i = 760;; i = j)
-    {
-      jdField_a_of_type_Int = i;
-      QZLog.d("WeishiHeaderConst", 4, "appversion:" + j);
-      jdField_a_of_type_Int = 760;
-      return;
-    }
-  }
+  public abstract void b(boolean paramBoolean);
   
-  static int a()
-  {
-    String str = bfpk.a();
-    int i = str.indexOf(".");
-    int j = str.lastIndexOf(".");
-    if ((j <= i) || (j - i != 2)) {}
-    while (i <= 1) {
-      return -1;
-    }
-    try
-    {
-      i = Integer.parseInt(str.substring(i - 1, j + 2).replace(".", ""));
-      return i;
-    }
-    catch (Throwable localThrowable) {}
-    return -1;
-  }
+  public abstract void c(boolean paramBoolean);
 }
 
 

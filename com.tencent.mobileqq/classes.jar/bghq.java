@@ -1,22 +1,14 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-
-class bghq
-  implements bfrh
+public abstract interface bghq
 {
-  bghq(bghp parambghp, String paramString) {}
+  public abstract void a();
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bghp.a != null)
-    {
-      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playFinish:1})";
-      this.jdField_a_of_type_Bghp.a.callJs(str);
-    }
-  }
+  public abstract void a(bghp parambghp);
+  
+  public abstract void b(bghp parambghp);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bghq
  * JD-Core Version:    0.7.0.1
  */

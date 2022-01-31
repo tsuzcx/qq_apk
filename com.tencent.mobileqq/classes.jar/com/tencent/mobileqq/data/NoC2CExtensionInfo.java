@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atnv;
-import atnz;
+import aukm;
+import ault;
+import aulx;
 
 public class NoC2CExtensionInfo
-  extends atmo
+  extends aukm
 {
   public static final int TYPE_EXT_C2C = 0;
   public static final int TYPE_EXT_COUNT = 3;
   public static final int TYPE_EXT_DISCUSSION = 2;
   public static final int TYPE_EXT_GROUP = 1;
-  @atnv(a=-1)
+  @ault(a=-1)
   public int audioPanelType = -1;
   public int chatInputType = 0;
-  @atnz
+  @aulx
   public boolean isDataChanged;
   public int pttChangeVoiceType = 0;
   public int showC2CPanel = 1;

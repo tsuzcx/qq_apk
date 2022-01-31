@@ -1,41 +1,29 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.Editable;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
 
 public class aucq
-  extends bess
+  implements TextView.OnEditorActionListener
 {
-  public int a(Context paramContext, long paramLong)
+  public aucq(OCRTextSearchActivity paramOCRTextSearchActivity) {}
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.b = badq.a(BaseApplication.getContext());
-    if (!this.a) {
-      switch (this.b)
-      {
-      default: 
-        this.c = 4096;
-      }
-    }
-    for (;;)
+    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
     {
-      if (paramLong < 102400L) {
-        this.c *= 4;
-      }
-      if (paramLong - this.c <= this.c / 2) {
-        this.c = ((int)paramLong);
-      }
-      return this.c;
-      this.c = 32768;
-      continue;
-      this.c = 32768;
-      continue;
-      this.c = 16384;
-      continue;
-      this.c = 8192;
+      OCRTextSearchActivity.a(this.a);
+      this.a.a.setSelection(this.a.a.getText().length());
+      return true;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aucq
  * JD-Core Version:    0.7.0.1
  */

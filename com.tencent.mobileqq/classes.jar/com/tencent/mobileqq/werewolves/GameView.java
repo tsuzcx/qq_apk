@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.werewolves;
 
-import aeeh;
+import aepg;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -9,17 +9,17 @@ import android.widget.FrameLayout;
 public class GameView
   extends FrameLayout
 {
-  aeeh a;
+  aepg a;
   
   public GameView(Context paramContext)
   {
     super(paramContext);
   }
   
-  public GameView(Context paramContext, aeeh paramaeeh)
+  public GameView(Context paramContext, aepg paramaepg)
   {
     super(paramContext);
-    this.a = paramaeeh;
+    this.a = paramaepg;
   }
   
   public GameView(Context paramContext, AttributeSet paramAttributeSet)
@@ -29,7 +29,7 @@ public class GameView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    this.a.aS();
+    this.a.aU();
     return super.dispatchTouchEvent(paramMotionEvent);
   }
 }

@@ -1,22 +1,27 @@
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class aeuu
-  extends akgd
+  implements baoe
 {
-  public aeuu(PublicView paramPublicView, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public aeuu(TroopChatPie paramTroopChatPie) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicView", 2, "onLocationFinish() errCode=" + paramInt);
+    if ((paramBoolean) && (this.a.g.equals(paramString)))
+    {
+      TroopChatPie.b(this.a, true);
+      paramString = (adjr)this.a.a(23);
+      if (paramString != null) {
+        paramString.a(true);
+      }
     }
-    PublicView.a(this.a, true);
-    PublicView.a(this.a, paramSosoLbsInfo);
+    do
+    {
+      return;
+      TroopChatPie.b(this.a, false);
+      paramString = (adjr)this.a.a(23);
+    } while (paramString == null);
+    paramString.a(false);
   }
 }
 

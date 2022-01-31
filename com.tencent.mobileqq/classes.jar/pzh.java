@@ -1,49 +1,26 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONObject;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
-final class pzh
-  implements pzp
+public class pzh
+  implements ajtg
 {
-  pzh(pzi parampzi) {}
+  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt) {}
   
-  public void a(int paramInt, String paramString, HashMap<Integer, pzq> paramHashMap, long paramLong)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoExtractFrame", 2, "执行结果，onResult code = " + paramInt);
-    }
-    try
+    switch (paramInt)
     {
-      int i = pzf.a().optInt("KEY_LOCAL_RESULT_SUCC_COUNT", 0);
-      pzf.a().put("KEY_LOCAL_RESULT_SUCC_COUNT", i + 1);
-      bgmq.a("kandian_video_extract_frame_local_result", pzf.a().toString());
-      label66:
-      pzf.a(System.currentTimeMillis() - pzf.a());
-      pzf.b(paramLong);
-      pzf.a(BaseApplication.getContext(), this.a, paramInt, paramString, paramHashMap);
-      if (!pzf.a().compareAndSet(false, true)) {
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoExtractFrame", 2, "任务已销毁，直接返回");
-        }
-      }
-      while (pzf.a() == null) {
-        return;
-      }
-      pzf.a().b();
-      pzf.a(null);
+    default: 
       return;
     }
-    catch (Exception localException)
-    {
-      break label66;
-    }
+    paramObject = (Object[])paramObject;
+    a(paramBoolean, (oidb_0x5bd.SkinInfo)paramObject[0], (oidb_0x5bd.GuideInfo)paramObject[1], (oidb_0x5bd.GuideInfo)paramObject[2], (oidb_0x5bd.RefreshInfo)paramObject[3], ((Integer)paramObject[4]).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     pzh
  * JD-Core Version:    0.7.0.1
  */

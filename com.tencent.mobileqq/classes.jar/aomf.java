@@ -1,22 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr.1;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 public class aomf
-  extends BroadcastReceiver
+  implements Animation.AnimationListener
 {
-  public aomf(UniformDownloadMgr.1 param1) {}
+  public aomf(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramIntent == null) {
-      return;
-    }
-    paramContext = paramIntent.getBundleExtra("param");
-    paramIntent = paramIntent.getStringExtra("url");
-    aome.a().a(paramIntent, paramContext);
+    this.a.a.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

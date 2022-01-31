@@ -18,25 +18,25 @@ class WebSocketProxyImpl$WebSocketTask$1
   
   public void onClose(int paramInt, String paramString)
   {
-    this.this$1.mListener.onClose(paramInt, paramString);
-    this.this$1.this$0.taskMap.remove(this.this$1.mUrl);
+    this.this$1.mListener.onClose(this.this$1.mSocketId, paramInt, paramString);
+    this.this$1.this$0.taskMap.remove(Integer.valueOf(this.this$1.mSocketId));
   }
   
   public void onFailure(IOException paramIOException, Response paramResponse)
   {
-    this.this$1.mListener.onError(HttpUtil.getRetCodeFrom(paramIOException, -1), "WebSocket error:network");
-    this.this$1.this$0.taskMap.remove(this.this$1.mUrl);
+    this.this$1.mListener.onError(this.this$1.mSocketId, HttpUtil.getRetCodeFrom(paramIOException, -1), "WebSocket error:network");
+    this.this$1.this$0.taskMap.remove(Integer.valueOf(this.this$1.mSocketId));
   }
   
   public void onMessage(ResponseBody paramResponseBody)
   {
-    this.this$1.mListener.onMessage(paramResponseBody.contentType().subtype(), paramResponseBody.bytes());
+    this.this$1.mListener.onMessage(this.this$1.mSocketId, paramResponseBody.contentType().subtype(), paramResponseBody.bytes());
   }
   
   public void onOpen(WebSocket paramWebSocket, Response paramResponse)
   {
     this.this$1.mWebSocket = paramWebSocket;
-    this.this$1.mListener.onOpen(paramResponse.code(), paramResponse.headers().toMultimap());
+    this.this$1.mListener.onOpen(this.this$1.mSocketId, paramResponse.code(), paramResponse.headers().toMultimap());
   }
   
   public void onPong(Buffer paramBuffer) {}

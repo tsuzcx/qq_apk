@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.util;
 
-import azyp;
-import azyq;
+import bazt;
+import bazu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Setting;
 
 public class QQAvatarFHDDecoder$1$2
   implements Runnable
 {
-  public QQAvatarFHDDecoder$1$2(azyq paramazyq, String paramString) {}
+  public QQAvatarFHDDecoder$1$2(bazu parambazu, String paramString) {}
   
   public void run()
   {
-    if (azyp.a(this.jdField_a_of_type_Azyq.a)) {
+    if (bazt.a(this.jdField_a_of_type_Bazu.a)) {
       return;
     }
-    Setting localSetting = azyp.a(this.jdField_a_of_type_Azyq.a).c(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Azyq.a.a(localSetting);
+    Setting localSetting = bazt.a(this.jdField_a_of_type_Bazu.a).c(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bazu.a.a(localSetting);
   }
 }
 

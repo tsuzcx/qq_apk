@@ -1,20 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.av.ui.BaseToolbar;
+import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
+import java.util.List;
 
 public class lrf
-  extends AnimatorListenerAdapter
 {
-  public lrf(BaseToolbar paramBaseToolbar) {}
+  public int a;
+  public List<TTFaceOriginDataModel> a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean a()
   {
-    super.onAnimationEnd(paramAnimator);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
+    return (this.d != 0) && (this.e != 0) && (this.a != null) && (!this.a.isEmpty());
   }
 }
 

@@ -1,64 +1,22 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class amjk
-  extends amie<amjj>
+class amjk
+  implements DialogInterface.OnClickListener
 {
-  public static amjj a()
-  {
-    return (amjj)alzw.a().a(413);
-  }
+  amjk(amjj paramamjj) {}
   
-  public int a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return 413;
-  }
-  
-  @NonNull
-  public amjj a(@NonNull alzs[] paramArrayOfalzs)
-  {
-    amjj localamjj = new amjj();
-    paramArrayOfalzs = paramArrayOfalzs[0].a;
-    if (paramArrayOfalzs != null) {}
-    try
-    {
-      if (!"".equals(paramArrayOfalzs))
-      {
-        paramArrayOfalzs = new JSONObject(paramArrayOfalzs);
-        localamjj.a(paramArrayOfalzs.getString("url"));
-        localamjj.a(paramArrayOfalzs.getBoolean("isEnable"));
-        localamjj.b(paramArrayOfalzs.getBoolean("hideHotValue"));
-      }
-      return localamjj;
+    if (amjj.a(this.a).isShowing()) {
+      amjj.a(this.a).dismiss();
     }
-    catch (JSONException paramArrayOfalzs)
-    {
-      paramArrayOfalzs.printStackTrace();
-    }
-    return localamjj;
-  }
-  
-  public Class<amjj> a()
-  {
-    return amjj.class;
-  }
-  
-  @NonNull
-  public amjj b()
-  {
-    return new amjj();
-  }
-  
-  @NonNull
-  public amjj c()
-  {
-    return new amjj();
+    amkg.a(amjj.a(this.a), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amjk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,44 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.25.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.List;
-
-public class qwk
-  implements bepb
+class qwk
+  extends qwp
 {
-  public qwk(FastWebActivity paramFastWebActivity) {}
+  private final float jdField_a_of_type_Float;
+  private final qwn jdField_a_of_type_Qwn;
+  private final qwn b;
+  
+  public qwk(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Qwn = new qwn(this.jdField_a_of_type_Float);
+    this.b = new qwn(this.jdField_a_of_type_Float);
+  }
+  
+  public long a(long paramLong)
+  {
+    this.jdField_a_of_type_Qwn.a(paramLong);
+    paramLong = this.jdField_a_of_type_Qwn.b;
+    this.b.a(paramLong);
+    long l = this.b.b;
+    float f = this.jdField_a_of_type_Float / (1.0F - this.jdField_a_of_type_Float);
+    return ((float)(paramLong - l) * f + (float)(2L * paramLong - l));
+  }
   
   public void a()
   {
-    if (FastWebActivity.f(this.a))
-    {
-      FastWebActivity.a(this.a).a(FastWebActivity.a(this.a).getWidth());
-      FastWebActivity.d(this.a, false);
-      FastWebActivity.i(this.a);
-      FastWebActivity.a(this.a, new qxm(FastWebActivity.a(this.a), FastWebActivity.a(this.a).getFirstVisiblePosition(), FastWebActivity.a(this.a).getLastVisiblePosition()));
-      long l = rbf.a("FastWebActivity.show");
-      rbf.b("fast_web_show_light_house_draw_finish");
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(FastWebActivity.a(this.a));
-      ThreadManager.post(new FastWebActivity.25.1(this, l, localArrayList), 5, null, false);
-    }
+    super.a();
+    this.jdField_a_of_type_Qwn.a();
+    this.b.a();
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.jdField_a_of_type_Qwn.b();
+    this.b.b();
+  }
+  
+  public String toString()
+  {
+    return "DoubleExponentialPredictor(" + this.jdField_a_of_type_Float + ')';
   }
 }
 

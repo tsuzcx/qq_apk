@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ahef;
+import ahqv;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -9,10 +9,10 @@ import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
-import axkd;
+import ayki;
 import com.tencent.qphone.base.util.QLog;
 
-@ahef
+@ahqv
 public class MsgSummary
 {
   public static final int EMOJI_DEFAULT = 0;
@@ -59,7 +59,7 @@ public class MsgSummary
         if (this.nState != 2) {
           continue;
         }
-        paramContext = ((Resources)localObject1).getDrawable(2130848276);
+        paramContext = ((Resources)localObject1).getDrawable(2130848508);
         i = j + "F ".length();
         if (paramContext != null)
         {
@@ -81,7 +81,7 @@ public class MsgSummary
       paramContext = localStringBuffer;
       if (this.nState == 1)
       {
-        paramContext = ((Resources)localObject1).getDrawable(2130848277);
+        paramContext = ((Resources)localObject1).getDrawable(2130848509);
         i = "S ".length();
         i = j + i;
         continue;
@@ -114,7 +114,7 @@ public class MsgSummary
             try
             {
               if (this.nState == 2) {
-                paramContext = ((Resources)localObject1).getDrawable(2130848276);
+                paramContext = ((Resources)localObject1).getDrawable(2130848508);
               }
               for (;;)
               {
@@ -135,7 +135,7 @@ public class MsgSummary
                 break label326;
                 paramContext = localObject2;
                 if (this.nState == 1) {
-                  paramContext = ((Resources)localObject1).getDrawable(2130848277);
+                  paramContext = ((Resources)localObject1).getDrawable(2130848509);
                 }
               }
             }
@@ -182,15 +182,15 @@ public class MsgSummary
       {
         if (this.nState == 2)
         {
-          localObject1 = localResources.getDrawable(2130848276);
+          localObject1 = localResources.getDrawable(2130848508);
           if (paramInt <= 0) {
             break label618;
           }
-          paramInt = paramContext.getResources().getColor(2131101360);
-          if (!(this.strContent instanceof axkd)) {
+          paramInt = paramContext.getResources().getColor(2131166955);
+          if (!(this.strContent instanceof ayki)) {
             break label369;
           }
-          paramContext = (axkd)this.strContent;
+          paramContext = (ayki)this.strContent;
           localObject3 = (ImageSpan[])paramContext.getSpans(0, 1, ImageSpan.class);
           if (localObject3.length > 0) {
             paramContext.removeSpan(localObject3[0]);
@@ -199,7 +199,7 @@ public class MsgSummary
           if (this.nState != 2) {
             break label332;
           }
-          paramContext = ((axkd)localObject3).a("F ", true, new int[0]);
+          paramContext = ((ayki)localObject3).a("F ", true, new int[0]);
           if (this.suffix == null) {
             break label615;
           }
@@ -229,7 +229,7 @@ public class MsgSummary
         if (this.nState != 1) {
           continue;
         }
-        localObject1 = localResources.getDrawable(2130848277);
+        localObject1 = localResources.getDrawable(2130848509);
         continue;
         localObject2 = null;
       }
@@ -245,7 +245,7 @@ public class MsgSummary
       paramContext = (Context)localObject3;
       if (this.nState == 1)
       {
-        paramContext = ((axkd)localObject3).a("S ", true, new int[0]);
+        paramContext = ((ayki)localObject3).a("S ", true, new int[0]);
         continue;
         label358:
         paramInt = 0;

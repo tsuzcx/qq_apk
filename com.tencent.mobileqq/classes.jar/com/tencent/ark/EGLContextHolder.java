@@ -16,6 +16,7 @@ import org.json.JSONObject;
 class EGLContextHolder
   extends ark.NativeObject
 {
+  private static final String EGL_BAD_ALLOC_EXCEPTION = "eglCreateWindowSurface.failed.EGL_BAD_ALLOC";
   public static final int EGL_CONTEXT_CLIENT_VERSION = 12440;
   public static final int EGL_OPENGL_ES2_BIT = 4;
   protected static final ArkEnvironmentManager ENV = ;
@@ -310,14 +311,14 @@ class EGLContextHolder
       }
       ENV.logI("ArkApp.EGLContextHolder", paramEGLContext.getMessage());
       ENV.logI("ArkApp.EGLContextHolder", "egl.start");
-      paramEGLContext = localEGL10.eglQueryString(this.mDisplay, 12371);
-      ENV.logI("ArkApp.EGLContextHolder", String.format("egl.vendor.%s", new Object[] { paramEGLContext }));
-      paramEGLContext = localEGL10.eglQueryString(this.mDisplay, 12372);
-      ENV.logI("ArkApp.EGLContextHolder", String.format("egl.version.%s", new Object[] { paramEGLContext }));
-      paramEGLContext = localEGL10.eglQueryString(this.mDisplay, 12373);
-      ENV.logI("ArkApp.EGLContextHolder", String.format("egl.extension.%s", new Object[] { paramEGLContext }));
+      paramSurfaceTexture = localEGL10.eglQueryString(this.mDisplay, 12371);
+      ENV.logI("ArkApp.EGLContextHolder", String.format("egl.vendor.%s", new Object[] { paramSurfaceTexture }));
+      paramSurfaceTexture = localEGL10.eglQueryString(this.mDisplay, 12372);
+      ENV.logI("ArkApp.EGLContextHolder", String.format("egl.version.%s", new Object[] { paramSurfaceTexture }));
+      paramSurfaceTexture = localEGL10.eglQueryString(this.mDisplay, 12373);
+      ENV.logI("ArkApp.EGLContextHolder", String.format("egl.extension.%s", new Object[] { paramSurfaceTexture }));
       ENV.logI("ArkApp.EGLContextHolder", "egl.end");
-      if (i != 0)
+      if ((i != 0) && (!"eglCreateWindowSurface.failed.EGL_BAD_ALLOC".equals(paramEGLContext.getMessage())))
       {
         paramEGLContext = GLES10.glGetString(7937);
         if (paramEGLContext != null)
@@ -337,10 +338,10 @@ class EGLContextHolder
       return false;
     }
     Object localObject1;
-    label523:
-    label654:
-    label662:
-    label731:
+    label535:
+    label666:
+    label674:
+    label743:
     int j;
     if (!localEGL10.eglInitialize(this.mDisplay, new int[] { 1, 0 }))
     {
@@ -350,12 +351,12 @@ class EGLContextHolder
       {
         localObject2 = localObject1;
         if (localObject1 != null) {
-          break label731;
+          break label743;
         }
         arrayOfInt = new int[1];
         localObject1 = new EGLConfig[1];
         if (k == 0) {
-          break label1237;
+          break label1249;
         }
         i = 1;
         if (localEGL10.eglChooseConfig(this.mDisplay, new int[] { 12352, 4, 12339, i, 12321, 8, 12322, 8, 12323, 8, 12324, 8, 12344 }, (EGLConfig[])localObject1, 1, arrayOfInt)) {
@@ -363,7 +364,7 @@ class EGLContextHolder
         }
         throw new Exception(String.format("eglChooseConfig.failed.%s", new Object[] { GLUtils.getEGLErrorString(localEGL10.eglGetError()) }));
         localObject1 = sEglConfigCount;
-        break label1226;
+        break label1238;
         localObject1 = sEglConfig;
       }
       if (localObject1[0] == null) {
@@ -376,7 +377,7 @@ class EGLContextHolder
         sEglConfig = (EGLConfig[])localObject1;
         localObject2 = localObject1;
       }
-      label782:
+      label794:
       int m;
       if ((sIsVirtualContext) && (paramEGLContext != null) && (!paramEGLContext.equals(EGL10.EGL_NO_CONTEXT)))
       {
@@ -389,7 +390,7 @@ class EGLContextHolder
       {
         i = j;
         if ((m >= 3) || (k == 0)) {}
-        label1064:
+        label1076:
         do
         {
           for (;;)
@@ -398,11 +399,11 @@ class EGLContextHolder
             {
               this.mSurface = localEGL10.eglCreateWindowSurface(this.mDisplay, localObject2[0], paramSurfaceTexture, null);
               if (this.mSurface.equals(EGL10.EGL_NO_SURFACE)) {
-                break label1064;
+                break label1076;
               }
               i = j;
               if (!this.mSurface.equals(EGL10.EGL_NO_SURFACE)) {
-                break label1242;
+                break label1254;
               }
               throw new Exception(String.format("eglCreateWindowSurface.failed.%s", new Object[] { GLUtils.getEGLErrorString(i) }));
             }
@@ -414,7 +415,7 @@ class EGLContextHolder
             this.mContext = localEGL10.eglCreateContext(this.mDisplay, localObject2[0], paramEGLContext, new int[] { 12440, 2, 12344 });
             ENV.logI("ArkApp.EGLContextHolder", String.format("create share context, this=%h, context=%h, share=%h", new Object[] { this, this.mContext, paramEGLContext }));
             if (!this.mContext.equals(EGL10.EGL_NO_CONTEXT)) {
-              break label782;
+              break label794;
             }
             throw new Exception(String.format("eglCreateContext.failed.%s", new Object[] { GLUtils.getEGLErrorString(localEGL10.eglGetError()) }));
             this.mSurface = localEGL10.eglCreatePbufferSurface(this.mDisplay, localObject2[0], new int[] { 12375, 1, 12374, 1, 12376, 1, 12344 });
@@ -432,7 +433,7 @@ class EGLContextHolder
       {
         j = 12288;
         if (!localEGL10.eglMakeCurrent(this.mDisplay, this.mSurface, this.mSurface, this.mContext)) {
-          break label1167;
+          break label1179;
         }
       }
       for (;;)
@@ -440,7 +441,7 @@ class EGLContextHolder
         if (j != 12288)
         {
           throw new Exception(String.format("eglMakeCurrent.failed.%s", new Object[] { GLUtils.getEGLErrorString(j) }));
-          label1167:
+          label1179:
           i = localEGL10.eglGetError();
           j = i;
           if (i == 12291)
@@ -453,18 +454,18 @@ class EGLContextHolder
       ENV.logI("ArkApp.EGLContextHolder", String.format("egl.context.create.%h", new Object[] { this.mContext }));
       return true;
       if (k == 0) {
-        break label654;
+        break label666;
       }
-      label1226:
+      label1238:
       if (k == 0) {
-        break label662;
+        break label674;
       }
       localObject1 = null;
       break;
-      label1237:
+      label1249:
       i = 4;
-      break label523;
-      label1242:
+      break label535;
+      label1254:
       k = 0;
     }
   }

@@ -1,35 +1,59 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
 
-class atkj
-  extends Animation
+public class atkj
+  extends GestureDetector.SimpleOnGestureListener
 {
-  atkj(atkc paramatkc, View paramView, int paramInt) {}
+  private atkj(StuffContainerView paramStuffContainerView) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    if (paramFloat == 1.0F) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.a.a == null) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
-    do
+    float f2;
+    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
     {
-      return;
-      paramTransformation = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    } while (paramTransformation == null);
-    paramTransformation.height = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramTransformation);
+      float f1 = paramMotionEvent2.getY() - paramMotionEvent1.getY();
+      f2 = paramMotionEvent2.getX() - paramMotionEvent1.getX();
+      if (Math.abs(f1) <= Math.abs(f2)) {
+        break label143;
+      }
+      if (Math.abs(Math.asin(Math.abs(f2) / Math.sqrt(f2 * f2 + f1 * f1))) < 0.5235987755982988D)
+      {
+        if (f1 >= 0.0F) {
+          break label128;
+        }
+        this.a.a.g();
+      }
+    }
+    for (;;)
+    {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      label128:
+      this.a.a.j();
+      continue;
+      label143:
+      if (f2 > 0.0F) {
+        this.a.a.h();
+      } else {
+        this.a.a.i();
+      }
+    }
   }
   
-  public boolean willChangeBounds()
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    return true;
+    if (this.a.a != null) {
+      this.a.a.f();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atkj
  * JD-Core Version:    0.7.0.1
  */

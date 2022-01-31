@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import akvc;
-import akvd;
+import aljo;
+import aljp;
 import java.util.List;
 
 public class MiniRecog$1
   implements Runnable
 {
-  public MiniRecog$1(akvc paramakvc, List paramList, long paramLong) {}
+  public MiniRecog$1(aljo paramaljo, List paramList, long paramLong) {}
   
   public void run()
   {

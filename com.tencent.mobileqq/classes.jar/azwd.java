@@ -1,16 +1,31 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.util.FaceInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.ArithResultView;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
+import org.json.JSONException;
 
-public abstract interface azwd
+public class azwd
+  implements View.OnClickListener
 {
-  public abstract void a(AppInterface paramAppInterface, FaceInfo paramFaceInfo);
+  public azwd(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
   
-  public abstract void a(FaceInfo paramFaceInfo, Bitmap paramBitmap);
+  public void onClick(View paramView)
+  {
+    try
+    {
+      CheckArithHWResultFragment.a(this.a, CheckArithHWResultFragment.a(this.a).a(), CheckArithHWResultFragment.a(this.a).a());
+      return;
+    }
+    catch (JSONException paramView)
+    {
+      paramView.printStackTrace();
+      vxs.a("QQ.Troop.homework.CheckArithHWResultFragment//onClick toJSON error:" + paramView, new Object[0]);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azwd
  * JD-Core Version:    0.7.0.1
  */

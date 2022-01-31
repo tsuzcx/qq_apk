@@ -1,32 +1,25 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
-import com.tencent.mobileqq.teamwork.PadInfo;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraExceptionHandler.1;
 
 public class axhv
-  implements View.OnClickListener
 {
-  public axhv(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  public Handler a;
+  public axhw a;
   
-  public void onClick(View paramView)
+  public axhv(Handler paramHandler, axhw paramaxhw)
   {
-    axfs.a(this.a.app, "0X800993E", String.valueOf(this.a.a));
-    paramView = (PadInfo)((axhn)paramView.getTag()).a;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("url", mof.a(paramView.pad_url, "_bid=2517"));
-    localBundle.putInt("key_team_work_edit_type", paramView.type);
-    localBundle.putString("key_team_work_title", paramView.title);
-    localBundle.putString("key_team_work_rul", paramView.pad_url);
-    localBundle.putInt("key_team_work_pad_list_type", paramView.type_list);
-    localBundle.putString("tdsourcetag", "s_qq_grpfile");
-    TeamWorkDocEditBrowserActivity.a(this.a, localBundle, true);
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.jdField_a_of_type_Axhw = paramaxhw;
+  }
+  
+  public void a(RuntimeException paramRuntimeException)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraExceptionHandler.1(this, paramRuntimeException));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axhv
  * JD-Core Version:    0.7.0.1
  */

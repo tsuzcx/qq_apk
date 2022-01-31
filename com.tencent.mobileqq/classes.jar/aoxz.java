@@ -1,32 +1,37 @@
-import android.graphics.drawable.Drawable;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-class aoxz
-  implements aorv
+public class aoxz
 {
-  aoxz(aoxw paramaoxw) {}
+  public static boolean a;
+  public Activity a;
   
-  public void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener) {}
-  
-  public void a(boolean paramBoolean)
+  static
   {
-    aoxw.a(this.a, paramBoolean);
+    jdField_a_of_type_Boolean = true;
   }
   
-  public void b(boolean paramBoolean)
+  private aoxz(Activity paramActivity)
   {
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Aotd != null)) {
-      this.a.jdField_a_of_type_Aotd.a();
-    }
-    if (paramBoolean)
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  public static boolean a(Activity paramActivity, String paramString, Bundle paramBundle)
+  {
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL]. >>>gotoDownload. url:" + paramString);
+    if ((paramActivity == null) || (paramString == null) || (paramBundle == null))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Aovk.c(), this);
-      aoxw.a(this.a, true);
-      aoxw.a(this.a);
-      this.a.d = false;
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL]. gotoDownload. param error:");
+      return false;
     }
+    new aoxz(paramActivity).a(paramString, paramBundle);
+    return true;
+  }
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    apwc.a(paramString, new aoya(this, paramBundle, paramString, paramBundle.getLong("_filesize"), paramBundle.getLong("_buttontype", 0L)));
   }
 }
 

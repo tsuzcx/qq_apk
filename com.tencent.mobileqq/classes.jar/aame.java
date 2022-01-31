@@ -1,15 +1,15 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-class aame
-  extends atdh
+public class aame
+  implements DialogInterface.OnClickListener
 {
-  aame(aamd paramaamd) {}
+  public aame(BaseChatPie paramBaseChatPie) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (aamd.a(this.a)) {
-      aamd.a(this.a);
-    }
+    this.a.b.dismiss();
   }
 }
 

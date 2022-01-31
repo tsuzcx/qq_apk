@@ -1,23 +1,12 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class apmz
-  implements View.OnClickListener
+public abstract interface apmz
 {
-  apmz(apmy paramapmy) {}
+  public abstract void a(String paramString1, String paramString2);
   
-  public void onClick(View paramView)
-  {
-    if (this.a.jdField_a_of_type_Bafb == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Bafb.hideSoftInputFromWindow();
-    paramView = new apkk(this.a.jdField_a_of_type_Bafb);
-    paramView.a(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131627122), this.a.jdField_a_of_type_JavaLangString);
-    this.a.jdField_a_of_type_Bafb.addPreviewView(paramView.b());
-    this.a.D();
-  }
+  public abstract void aA_();
+  
+  public abstract void aB_();
+  
+  public abstract void c();
 }
 
 

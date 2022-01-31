@@ -1,68 +1,79 @@
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
+import eipc.EIPCResult;
 
 public class ayfk
-  extends AsyncTask<Void, Void, Bundle>
+  extends QIPCModule
 {
-  public ayfk(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  private static ayfk a;
   
-  protected Bundle a(Void... paramVarArgs)
+  private ayfk()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("forward_type", 1);
-    paramVarArgs = new File(ajed.bP);
-    if (!paramVarArgs.exists()) {
-      paramVarArgs.mkdirs();
-    }
-    String str = ajed.bP + this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_JavaLangString + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-    paramVarArgs = str;
-    if (!new File(str).exists()) {}
-    try
-    {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
-      localBundle.putBoolean("forward_urldrawable", true);
-      localBundle.putString("forward_urldrawable_thumb_url", this.jdField_a_of_type_JavaLangString);
-      localBundle.putString("forward_filepath", paramVarArgs);
-      localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-      localBundle.putString("forward_extra", paramVarArgs);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.l)
-      {
-        localBundle.putString("forward_thumb", paramVarArgs);
-        localBundle.putBoolean("key_flag_from_plugin", true);
-      }
-      return localBundle;
-    }
-    catch (IOException paramVarArgs)
-    {
-      QLog.e("foward", 2, "IOException", paramVarArgs);
-    }
-    return null;
+    super("TeamWorkModule");
   }
   
-  protected void a(Bundle paramBundle)
+  public static ayfk a()
   {
-    if (paramBundle == null)
+    if (a == null) {}
+    try
     {
-      bbmy.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, ajjy.a(2131649421), 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getTitleBarHeight());
-      return;
+      if (a == null) {
+        a = new ayfk();
+      }
+      return a;
     }
-    Intent localIntent = new Intent();
-    localIntent.putExtras(paramBundle);
-    aphp.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, localIntent, 21);
-    TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, "0X8006A81", "0X8006A95");
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TeamWorkModule", 2, "[onCall] action = " + paramString + ", params = " + paramBundle + ", callbackId=" + paramInt);
+    }
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    if (!QQAppInterface.class.isInstance(localObject)) {
+      if (QLog.isColorLevel()) {
+        QLog.e("TeamWorkModule", 2, "[onCall] get app failed.");
+      }
+    }
+    do
+    {
+      String str1;
+      String str2;
+      do
+      {
+        return null;
+        if (!"send_to_chat_msg".equals(paramString)) {
+          break;
+        }
+        paramString = axuy.a(paramBundle);
+        paramInt = paramBundle.getInt("uin_type");
+        str1 = paramBundle.getString("to_uin");
+        str2 = paramBundle.getString("docs_gray_tips_info_json");
+        paramBundle = paramBundle.getString("detail_url");
+      } while ((localObject == null) || (paramString == null));
+      paramString.mExtraData = "aioPlusPanelTencentDoc";
+      bbjj.a((QQAppInterface)localObject, str1, paramInt, paramString, null, str2, paramBundle);
+      return null;
+    } while (!"action_download_export_file".equals(paramString));
+    boolean bool = paramBundle.getBoolean("isSuccess");
+    paramString = paramBundle.getString("docUrl");
+    localObject = (ayej)((QQAppInterface)localObject).a(142);
+    if (bool)
+    {
+      ((ayej)localObject).notifyUI(2, true, new Object[] { paramBundle.getString("url"), paramBundle.getString("fileName"), paramString, paramBundle.getString("cookie") });
+      return null;
+    }
+    ((ayej)localObject).notifyUI(1, true, new Object[] { ajyc.a(2131714774), paramString });
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayfk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adcx;
-import adcy;
-import adcz;
-import adda;
-import addb;
+import adnz;
+import adoa;
+import adob;
+import adoc;
+import adod;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -30,10 +30,10 @@ public class CustomFrameAnimationDrawable
   implements Runnable
 {
   private int jdField_a_of_type_Int;
-  adcx jdField_a_of_type_Adcx = null;
-  public adcy a;
-  private adcz jdField_a_of_type_Adcz;
-  private adda jdField_a_of_type_Adda;
+  adnz jdField_a_of_type_Adnz = null;
+  public adoa a;
+  private adob jdField_a_of_type_Adob;
+  private adoc jdField_a_of_type_Adoc;
   Resources jdField_a_of_type_AndroidContentResResources = null;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
   Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
@@ -53,9 +53,9 @@ public class CustomFrameAnimationDrawable
   private int jdField_e_of_type_Int;
   private boolean jdField_e_of_type_Boolean;
   
-  private CustomFrameAnimationDrawable(adcy paramadcy, Resources paramResources)
+  private CustomFrameAnimationDrawable(adoa paramadoa, Resources paramResources)
   {
-    this.jdField_a_of_type_Adcy = paramadcy;
+    this.jdField_a_of_type_Adoa = paramadoa;
     a(paramResources);
   }
   
@@ -66,7 +66,7 @@ public class CustomFrameAnimationDrawable
     this.jdField_a_of_type_JavaUtilArrayList = null;
     this.jdField_a_of_type_AndroidContentResResources = paramResources;
     this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_Adcy = new adcy();
+    this.jdField_a_of_type_Adoa = new adoa();
     this.jdField_a_of_type_JavaUtilVector = new Vector();
     int j;
     if (paramResources != null)
@@ -74,9 +74,9 @@ public class CustomFrameAnimationDrawable
       j = paramResources.getDisplayMetrics().densityDpi;
       if (j != 0) {}
     }
-    for (this.jdField_b_of_type_Int = i;; this.jdField_b_of_type_Int = this.jdField_a_of_type_Adcy.jdField_b_of_type_Int)
+    for (this.jdField_b_of_type_Int = i;; this.jdField_b_of_type_Int = this.jdField_a_of_type_Adoa.jdField_b_of_type_Int)
     {
-      this.jdField_a_of_type_Adcy.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      this.jdField_a_of_type_Adoa.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
       if (paramBitmap == null) {
         break label200;
       }
@@ -91,10 +91,10 @@ public class CustomFrameAnimationDrawable
     this.jdField_c_of_type_Int = -1;
   }
   
-  public CustomFrameAnimationDrawable(Resources paramResources, Bitmap paramBitmap, MqqHandler paramMqqHandler, adcy paramadcy, String paramString, boolean paramBoolean)
+  public CustomFrameAnimationDrawable(Resources paramResources, Bitmap paramBitmap, MqqHandler paramMqqHandler, adoa paramadoa, String paramString, boolean paramBoolean)
   {
     this(paramResources, paramBitmap, paramMqqHandler);
-    this.jdField_a_of_type_Adcy = paramadcy;
+    this.jdField_a_of_type_Adoa = paramadoa;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Boolean = paramBoolean;
     if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Boolean)) {
@@ -113,7 +113,7 @@ public class CustomFrameAnimationDrawable
         i = 160;
       }
     }
-    for (this.jdField_b_of_type_Int = i;; this.jdField_b_of_type_Int = this.jdField_a_of_type_Adcy.jdField_b_of_type_Int)
+    for (this.jdField_b_of_type_Int = i;; this.jdField_b_of_type_Int = this.jdField_a_of_type_Adoa.jdField_b_of_type_Int)
     {
       m();
       return;
@@ -145,27 +145,27 @@ public class CustomFrameAnimationDrawable
   
   public int a()
   {
-    return this.jdField_a_of_type_Adcy.jdField_a_of_type_Int;
+    return this.jdField_a_of_type_Adoa.jdField_a_of_type_Int;
   }
   
-  public addb a(int paramInt)
+  public adod a(int paramInt)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Adcy != null)
+    if (this.jdField_a_of_type_Adoa != null)
     {
       localObject1 = localObject2;
-      if (this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList != null)
+      if (this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList != null)
       {
         localObject1 = localObject2;
-        if (this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+        if (this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.size() > 0)
         {
           localObject1 = localObject2;
           if (paramInt >= 0)
           {
             localObject1 = localObject2;
-            if (paramInt < this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.size()) {
-              localObject1 = (addb)this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+            if (paramInt < this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.size()) {
+              localObject1 = (adod)this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
             }
           }
         }
@@ -178,11 +178,11 @@ public class CustomFrameAnimationDrawable
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Adcy.jdField_b_of_type_JavaUtilArrayList != null)
+    if (this.jdField_a_of_type_Adoa.jdField_b_of_type_JavaUtilArrayList != null)
     {
       localObject1 = localObject2;
-      if (this.jdField_a_of_type_Adcy.jdField_b_of_type_JavaUtilArrayList.size() > 0) {
-        localObject1 = (Bitmap)this.jdField_a_of_type_Adcy.jdField_b_of_type_JavaUtilArrayList.remove(0);
+      if (this.jdField_a_of_type_Adoa.jdField_b_of_type_JavaUtilArrayList.size() > 0) {
+        localObject1 = (Bitmap)this.jdField_a_of_type_Adoa.jdField_b_of_type_JavaUtilArrayList.remove(0);
       }
     }
     return localObject1;
@@ -195,37 +195,37 @@ public class CustomFrameAnimationDrawable
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Adcy.jdField_d_of_type_Int = paramInt;
+    this.jdField_a_of_type_Adoa.jdField_d_of_type_Int = paramInt;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    addb localaddb = new addb();
-    localaddb.jdField_a_of_type_Int = paramInt1;
-    localaddb.jdField_b_of_type_Int = paramInt2;
-    localaddb.jdField_c_of_type_Int = paramInt3;
-    localaddb.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.add(localaddb);
+    adod localadod = new adod();
+    localadod.jdField_a_of_type_Int = paramInt1;
+    localadod.jdField_b_of_type_Int = paramInt2;
+    localadod.jdField_c_of_type_Int = paramInt3;
+    localadod.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.add(localadod);
   }
   
   public void a(int paramInt1, int paramInt2, String paramString)
   {
-    addb localaddb = new addb();
-    localaddb.jdField_a_of_type_Int = paramInt1;
-    localaddb.jdField_b_of_type_Int = paramInt2;
-    localaddb.jdField_a_of_type_JavaLangString = paramString;
-    localaddb.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.add(localaddb);
+    adod localadod = new adod();
+    localadod.jdField_a_of_type_Int = paramInt1;
+    localadod.jdField_b_of_type_Int = paramInt2;
+    localadod.jdField_a_of_type_JavaLangString = paramString;
+    localadod.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.add(localadod);
   }
   
-  public void a(adcx paramadcx)
+  public void a(adnz paramadnz)
   {
-    this.jdField_a_of_type_Adcx = paramadcx;
+    this.jdField_a_of_type_Adnz = paramadnz;
   }
   
-  public void a(adcz paramadcz)
+  public void a(adob paramadob)
   {
-    this.jdField_a_of_type_Adcz = paramadcz;
+    this.jdField_a_of_type_Adob = paramadob;
   }
   
   public void a(Bitmap paramBitmap)
@@ -235,23 +235,23 @@ public class CustomFrameAnimationDrawable
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Adcy.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Adoa.jdField_b_of_type_Boolean = paramBoolean;
   }
   
   public int b()
   {
-    return this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+    return this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.size() - 1;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Adcy.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Adoa.jdField_b_of_type_Boolean = true;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Adcy.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Adcy.jdField_c_of_type_Int = paramInt;
+    this.jdField_a_of_type_Adoa.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Adoa.jdField_c_of_type_Int = paramInt;
   }
   
   public void c()
@@ -259,22 +259,22 @@ public class CustomFrameAnimationDrawable
     unscheduleSelf(this);
     if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
     {
-      this.jdField_a_of_type_Adcy.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Adcy.jdField_c_of_type_Int = 0;
+      this.jdField_a_of_type_Adoa.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Adoa.jdField_c_of_type_Int = 0;
       invalidateSelf();
       scheduleSelf(this, 0L);
     }
-    while (this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+    while (this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.size() == 0)
     {
       if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Boolean)) {
         this.jdField_a_of_type_Int = HapticManager.a().a(this.jdField_a_of_type_JavaLangString, 2);
       }
-      this.jdField_a_of_type_Adcy.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Adcy.jdField_c_of_type_Boolean = false;
+      this.jdField_a_of_type_Adoa.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Adoa.jdField_c_of_type_Boolean = false;
       return;
     }
-    if ((this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.size() == -1) || (this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {}
-    for (this.jdField_a_of_type_Adcy.jdField_a_of_type_Int = -1;; this.jdField_a_of_type_Adcy.jdField_a_of_type_Int = 0)
+    if ((this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.size() == -1) || (this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {}
+    for (this.jdField_a_of_type_Adoa.jdField_a_of_type_Int = -1;; this.jdField_a_of_type_Adoa.jdField_a_of_type_Int = 0)
     {
       scheduleSelf(this, 0L);
       break;
@@ -285,13 +285,13 @@ public class CustomFrameAnimationDrawable
   {
     this.jdField_e_of_type_Boolean = false;
     unscheduleSelf(this);
-    this.jdField_a_of_type_Adcy.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Adoa.jdField_a_of_type_Boolean = true;
     scheduleSelf(this, 0L);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    Paint localPaint = this.jdField_a_of_type_Adcy.jdField_a_of_type_AndroidGraphicsPaint;
+    Paint localPaint = this.jdField_a_of_type_Adoa.jdField_a_of_type_AndroidGraphicsPaint;
     if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
       if (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())
       {
@@ -306,7 +306,7 @@ public class CustomFrameAnimationDrawable
     {
       return;
       Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      if (this.jdField_a_of_type_Adcy.jdField_b_of_type_Boolean)
+      if (this.jdField_a_of_type_Adoa.jdField_b_of_type_Boolean)
       {
         paramCanvas.save();
         paramCanvas.scale(-1.0F, 1.0F, this.jdField_c_of_type_Int / 2, this.jdField_d_of_type_Int / 2);
@@ -315,24 +315,24 @@ public class CustomFrameAnimationDrawable
       this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
       int i = paramCanvas.getWidth();
       float f = paramCanvas.getHeight() * 1.0F / this.jdField_d_of_type_Int;
-      if (this.jdField_a_of_type_Adcy.jdField_d_of_type_Int == 1) {
+      if (this.jdField_a_of_type_Adoa.jdField_d_of_type_Int == 1) {
         paramCanvas.translate((i / f - this.jdField_c_of_type_Int) / 2.0F, 0.0F);
       }
       for (;;)
       {
         paramCanvas.drawBitmap((Bitmap)localObject, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, localPaint);
-        if (!this.jdField_a_of_type_Adcy.jdField_b_of_type_Boolean) {
+        if (!this.jdField_a_of_type_Adoa.jdField_b_of_type_Boolean) {
           break;
         }
         paramCanvas.restore();
         return;
-        if (this.jdField_a_of_type_Adcy.jdField_d_of_type_Int == 2) {
+        if (this.jdField_a_of_type_Adoa.jdField_d_of_type_Int == 2) {
           paramCanvas.translate(Math.abs(i / f - this.jdField_c_of_type_Int) / 2.0F, 0.0F);
         }
       }
       if (this.jdField_a_of_type_JavaUtilArrayList != null)
       {
-        if (this.jdField_a_of_type_Adcy.jdField_a_of_type_Int < 0) {
+        if (this.jdField_a_of_type_Adoa.jdField_a_of_type_Int < 0) {
           localObject = null;
         }
         for (;;)
@@ -340,7 +340,7 @@ public class CustomFrameAnimationDrawable
           if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {
             break label484;
           }
-          if (this.jdField_a_of_type_Adcy.jdField_b_of_type_Boolean)
+          if (this.jdField_a_of_type_Adoa.jdField_b_of_type_Boolean)
           {
             paramCanvas.save();
             paramCanvas.scale(-1.0F, 1.0F, ((Bitmap)localObject).getWidth() / 2, ((Bitmap)localObject).getHeight() / 2);
@@ -348,19 +348,19 @@ public class CustomFrameAnimationDrawable
           this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
           this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
           paramCanvas.drawBitmap((Bitmap)localObject, 0.0F, 0.0F, localPaint);
-          if (!this.jdField_a_of_type_Adcy.jdField_b_of_type_Boolean) {
+          if (!this.jdField_a_of_type_Adoa.jdField_b_of_type_Boolean) {
             break;
           }
           paramCanvas.restore();
           return;
-          if (this.jdField_a_of_type_Adcy.jdField_a_of_type_Int >= this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.size())
+          if (this.jdField_a_of_type_Adoa.jdField_a_of_type_Int >= this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.size())
           {
-            localObject = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(((addb)this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.size() - 1)).jdField_a_of_type_Int);
+            localObject = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(((adod)this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.size() - 1)).jdField_a_of_type_Int);
           }
           else
           {
-            localObject = (addb)this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Adcy.jdField_a_of_type_Int);
-            localObject = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(((addb)localObject).jdField_a_of_type_Int);
+            localObject = (adod)this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Adoa.jdField_a_of_type_Int);
+            localObject = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(((adod)localObject).jdField_a_of_type_Int);
           }
         }
       }
@@ -375,35 +375,35 @@ public class CustomFrameAnimationDrawable
   
   public void f()
   {
-    if (this.jdField_a_of_type_Adcy.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Adoa.jdField_a_of_type_Boolean) {
       unscheduleSelf(this);
     }
     if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_d_of_type_Boolean))
     {
       int i = 0;
-      while (i < this.jdField_a_of_type_Adcy.jdField_b_of_type_JavaUtilArrayList.size())
+      while (i < this.jdField_a_of_type_Adoa.jdField_b_of_type_JavaUtilArrayList.size())
       {
-        Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_Adcy.jdField_b_of_type_JavaUtilArrayList.remove(0);
+        Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_Adoa.jdField_b_of_type_JavaUtilArrayList.remove(0);
         if (localBitmap != null) {
           localBitmap.recycle();
         }
         i += 1;
       }
-      this.jdField_a_of_type_Adcy.jdField_b_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_Adcy.jdField_c_of_type_Int = this.jdField_a_of_type_Adcy.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Adoa.jdField_b_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_Adoa.jdField_c_of_type_Int = this.jdField_a_of_type_Adoa.jdField_a_of_type_Int;
     }
   }
   
   public void g()
   {
-    if (this.jdField_a_of_type_Adcy.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Adoa.jdField_a_of_type_Boolean) {
       unscheduleSelf(this);
     }
   }
   
   public int getAlpha()
   {
-    return this.jdField_a_of_type_Adcy.jdField_a_of_type_AndroidGraphicsPaint.getAlpha();
+    return this.jdField_a_of_type_Adoa.jdField_a_of_type_AndroidGraphicsPaint.getAlpha();
   }
   
   public int getIntrinsicHeight()
@@ -423,13 +423,13 @@ public class CustomFrameAnimationDrawable
   
   public void h()
   {
-    this.jdField_a_of_type_Adcy.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_Adoa.jdField_d_of_type_Boolean = true;
   }
   
   public void i()
   {
-    if (this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList != null) {
-      this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList != null) {
+      this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.clear();
     }
   }
   
@@ -440,7 +440,7 @@ public class CustomFrameAnimationDrawable
       this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
       this.jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
-    Object localObject1 = this.jdField_a_of_type_Adcy.jdField_b_of_type_JavaUtilArrayList;
+    Object localObject1 = this.jdField_a_of_type_Adoa.jdField_b_of_type_JavaUtilArrayList;
     Object localObject2 = ((ArrayList)localObject1).iterator();
     while (((Iterator)localObject2).hasNext())
     {
@@ -496,12 +496,12 @@ public class CustomFrameAnimationDrawable
     long l;
     if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
     {
-      j = this.jdField_a_of_type_Adcy.jdField_a_of_type_Int + 1;
+      j = this.jdField_a_of_type_Adoa.jdField_a_of_type_Int + 1;
       i = j;
-      if (!this.jdField_a_of_type_Adcy.jdField_d_of_type_Boolean) {
-        i = j % this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.size();
+      if (!this.jdField_a_of_type_Adoa.jdField_d_of_type_Boolean) {
+        i = j % this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.size();
       }
-      if (i < this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.size())
+      if (i < this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.size())
       {
         localObject1 = a();
         if (localObject1 != null)
@@ -511,60 +511,60 @@ public class CustomFrameAnimationDrawable
             this.jdField_a_of_type_JavaUtilVector.add(localObject2);
           }
           this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject1);
-          localObject1 = this.jdField_a_of_type_Adcy;
-          ((adcy)localObject1).jdField_a_of_type_Int += 1;
-          if (!this.jdField_a_of_type_Adcy.jdField_d_of_type_Boolean)
+          localObject1 = this.jdField_a_of_type_Adoa;
+          ((adoa)localObject1).jdField_a_of_type_Int += 1;
+          if (!this.jdField_a_of_type_Adoa.jdField_d_of_type_Boolean)
           {
-            localObject1 = this.jdField_a_of_type_Adcy;
-            ((adcy)localObject1).jdField_a_of_type_Int %= this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.size();
+            localObject1 = this.jdField_a_of_type_Adoa;
+            ((adoa)localObject1).jdField_a_of_type_Int %= this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.size();
           }
-          if (this.jdField_a_of_type_Adcz != null) {
-            this.jdField_a_of_type_Adcz.onUpdate(this.jdField_a_of_type_Adcy.jdField_a_of_type_Int);
+          if (this.jdField_a_of_type_Adob != null) {
+            this.jdField_a_of_type_Adob.onUpdate(this.jdField_a_of_type_Adoa.jdField_a_of_type_Int);
           }
           invalidateSelf();
         }
-        i = this.jdField_a_of_type_Adcy.jdField_c_of_type_Int + 1;
-        if (this.jdField_a_of_type_Adcy.jdField_d_of_type_Boolean) {
+        i = this.jdField_a_of_type_Adoa.jdField_c_of_type_Int + 1;
+        if (this.jdField_a_of_type_Adoa.jdField_d_of_type_Boolean) {
           break label1019;
         }
-        if (i < this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.size()) {
+        if (i < this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.size()) {
           break label1014;
         }
         l = this.jdField_e_of_type_Int;
         label259:
-        i %= this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.size();
+        i %= this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.size();
       }
     }
     for (;;)
     {
-      if (i < this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.size())
+      if (i < this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        if (i - this.jdField_a_of_type_Adcy.jdField_c_of_type_Int < 2)
+        if (i - this.jdField_a_of_type_Adoa.jdField_c_of_type_Int < 2)
         {
-          localObject1 = (addb)this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.get(i);
+          localObject1 = (adod)this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.get(i);
           if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$DecodeRunnable == null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$DecodeRunnable = new CustomFrameAnimationDrawable.DecodeRunnable(this, i, ((addb)localObject1).jdField_a_of_type_JavaLangString, ((addb)localObject1).jdField_c_of_type_Int, this.jdField_a_of_type_Adcy.jdField_b_of_type_JavaUtilArrayList);
+            this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$DecodeRunnable = new CustomFrameAnimationDrawable.DecodeRunnable(this, i, ((adod)localObject1).jdField_a_of_type_JavaLangString, ((adod)localObject1).jdField_c_of_type_Int, this.jdField_a_of_type_Adoa.jdField_b_of_type_JavaUtilArrayList);
             this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$DecodeRunnable.a(this.jdField_a_of_type_AndroidContentResResources);
             if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
               this.jdField_a_of_type_MqqOsMqqHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$DecodeRunnable);
             }
-            localObject1 = this.jdField_a_of_type_Adcy;
-            ((adcy)localObject1).jdField_c_of_type_Int += 1;
-            if (!this.jdField_a_of_type_Adcy.jdField_d_of_type_Boolean)
+            localObject1 = this.jdField_a_of_type_Adoa;
+            ((adoa)localObject1).jdField_c_of_type_Int += 1;
+            if (!this.jdField_a_of_type_Adoa.jdField_d_of_type_Boolean)
             {
-              localObject1 = this.jdField_a_of_type_Adcy;
-              ((adcy)localObject1).jdField_c_of_type_Int %= this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.size();
+              localObject1 = this.jdField_a_of_type_Adoa;
+              ((adoa)localObject1).jdField_c_of_type_Int %= this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.size();
             }
           }
         }
-        localObject1 = (addb)this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Adcy.jdField_a_of_type_Int);
+        localObject1 = (adod)this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Adoa.jdField_a_of_type_Int);
         if (l != 0L) {
           break label582;
         }
       }
       label582:
-      for (l = SystemClock.uptimeMillis() + ((addb)localObject1).jdField_b_of_type_Int;; l = SystemClock.uptimeMillis() + l)
+      for (l = SystemClock.uptimeMillis() + ((adod)localObject1).jdField_b_of_type_Int;; l = SystemClock.uptimeMillis() + l)
       {
         scheduleSelf(this, l);
         if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_Boolean)) {
@@ -572,31 +572,31 @@ public class CustomFrameAnimationDrawable
         }
         localObject2 = HapticManager.a();
         i = this.jdField_a_of_type_Int;
-        j = this.jdField_a_of_type_Adcy.jdField_a_of_type_Int;
-        ((HapticManager)localObject2).a(i, ((addb)localObject1).jdField_b_of_type_Int * j);
+        j = this.jdField_a_of_type_Adoa.jdField_a_of_type_Int;
+        ((HapticManager)localObject2).a(i, ((adod)localObject1).jdField_b_of_type_Int * j);
         return;
-        if (this.jdField_a_of_type_Adcx != null) {
-          this.jdField_a_of_type_Adcx.a();
+        if (this.jdField_a_of_type_Adnz != null) {
+          this.jdField_a_of_type_Adnz.a();
         }
         if (this.jdField_b_of_type_Boolean)
         {
           j();
-          this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.clear();
+          this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.clear();
         }
-        this.jdField_a_of_type_Adcy.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Adcy.jdField_c_of_type_Boolean = true;
+        this.jdField_a_of_type_Adoa.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Adoa.jdField_c_of_type_Boolean = true;
         return;
       }
-      if (this.jdField_a_of_type_Adcx != null) {
-        this.jdField_a_of_type_Adcx.a();
+      if (this.jdField_a_of_type_Adnz != null) {
+        this.jdField_a_of_type_Adnz.a();
       }
       if (this.jdField_b_of_type_Boolean)
       {
         j();
-        this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.clear();
+        this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.clear();
       }
-      this.jdField_a_of_type_Adcy.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Adcy.jdField_c_of_type_Boolean = true;
+      this.jdField_a_of_type_Adoa.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Adoa.jdField_c_of_type_Boolean = true;
       if (this.jdField_a_of_type_JavaLangString == null) {
         break;
       }
@@ -605,38 +605,38 @@ public class CustomFrameAnimationDrawable
       }
       this.jdField_a_of_type_Int = 0;
       return;
-      if (this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.size() == 1)
+      if (this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.size() == 1)
       {
         invalidateSelf();
-        if (this.jdField_a_of_type_Adcz == null) {
+        if (this.jdField_a_of_type_Adob == null) {
           break;
         }
-        this.jdField_a_of_type_Adcz.onUpdate(this.jdField_a_of_type_Adcy.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Adob.onUpdate(this.jdField_a_of_type_Adoa.jdField_a_of_type_Int);
         return;
       }
-      if (this.jdField_a_of_type_Adcy.jdField_d_of_type_Boolean == true)
+      if (this.jdField_a_of_type_Adoa.jdField_d_of_type_Boolean == true)
       {
-        if (this.jdField_a_of_type_Adcy.jdField_a_of_type_Int < this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.size())
+        if (this.jdField_a_of_type_Adoa.jdField_a_of_type_Int < this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.size())
         {
           invalidateSelf();
-          if (this.jdField_a_of_type_Adcz != null) {
-            this.jdField_a_of_type_Adcz.onUpdate(this.jdField_a_of_type_Adcy.jdField_a_of_type_Int);
+          if (this.jdField_a_of_type_Adob != null) {
+            this.jdField_a_of_type_Adob.onUpdate(this.jdField_a_of_type_Adoa.jdField_a_of_type_Int);
           }
-          localObject1 = (addb)this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Adcy.jdField_a_of_type_Int);
+          localObject1 = (adod)this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Adoa.jdField_a_of_type_Int);
           l = SystemClock.uptimeMillis();
-          scheduleSelf(this, ((addb)localObject1).jdField_b_of_type_Int + l);
-          localObject1 = this.jdField_a_of_type_Adcy;
-          ((adcy)localObject1).jdField_a_of_type_Int += 1;
+          scheduleSelf(this, ((adod)localObject1).jdField_b_of_type_Int + l);
+          localObject1 = this.jdField_a_of_type_Adoa;
+          ((adoa)localObject1).jdField_a_of_type_Int += 1;
           return;
         }
-        if (this.jdField_a_of_type_Adcy.jdField_c_of_type_Boolean) {
+        if (this.jdField_a_of_type_Adoa.jdField_c_of_type_Boolean) {
           break;
         }
-        if (this.jdField_a_of_type_Adcx != null) {
-          this.jdField_a_of_type_Adcx.a();
+        if (this.jdField_a_of_type_Adnz != null) {
+          this.jdField_a_of_type_Adnz.a();
         }
-        this.jdField_a_of_type_Adcy.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Adcy.jdField_c_of_type_Boolean = true;
+        this.jdField_a_of_type_Adoa.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Adoa.jdField_c_of_type_Boolean = true;
         if (this.jdField_a_of_type_JavaLangString == null) {
           break;
         }
@@ -646,16 +646,16 @@ public class CustomFrameAnimationDrawable
         this.jdField_a_of_type_Int = 0;
         return;
       }
-      this.jdField_a_of_type_Adcy.jdField_a_of_type_Int %= this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.size();
+      this.jdField_a_of_type_Adoa.jdField_a_of_type_Int %= this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.size();
       invalidateSelf();
-      if (this.jdField_a_of_type_Adcz != null) {
-        this.jdField_a_of_type_Adcz.onUpdate(this.jdField_a_of_type_Adcy.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Adob != null) {
+        this.jdField_a_of_type_Adob.onUpdate(this.jdField_a_of_type_Adoa.jdField_a_of_type_Int);
       }
-      localObject1 = (addb)this.jdField_a_of_type_Adcy.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Adcy.jdField_a_of_type_Int);
+      localObject1 = (adod)this.jdField_a_of_type_Adoa.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Adoa.jdField_a_of_type_Int);
       l = SystemClock.uptimeMillis();
-      scheduleSelf(this, ((addb)localObject1).jdField_b_of_type_Int + l);
-      localObject1 = this.jdField_a_of_type_Adcy;
-      ((adcy)localObject1).jdField_a_of_type_Int += 1;
+      scheduleSelf(this, ((adod)localObject1).jdField_b_of_type_Int + l);
+      localObject1 = this.jdField_a_of_type_Adoa;
+      ((adoa)localObject1).jdField_a_of_type_Int += 1;
       return;
       label1014:
       l = 0L;
@@ -667,9 +667,9 @@ public class CustomFrameAnimationDrawable
   
   public void setAlpha(int paramInt)
   {
-    if (paramInt != this.jdField_a_of_type_Adcy.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    if (paramInt != this.jdField_a_of_type_Adoa.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
     {
-      this.jdField_a_of_type_Adcy.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      this.jdField_a_of_type_Adoa.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
       invalidateSelf();
     }
   }
@@ -681,7 +681,7 @@ public class CustomFrameAnimationDrawable
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.jdField_a_of_type_Adcy.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.jdField_a_of_type_Adoa.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
     invalidateSelf();
   }
 }

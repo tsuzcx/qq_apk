@@ -1,42 +1,42 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.impl;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.text.TextUtils;
-import axkd;
-import azho;
+import ayki;
+import bair;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import obz;
-import opw;
-import pbi;
-import pbj;
-import pjg;
-import pqm;
-import pqn;
-import qoe;
-import rix;
-import riy;
-import riz;
+import onk;
+import pax;
+import pna;
+import pnb;
+import pvb;
+import qcj;
+import qck;
+import rap;
+import rvn;
+import rvo;
+import rvp;
 
 public class NativeCommentView
   extends ReadInJoyYAFolderTextView
-  implements IView, riz<CharSequence>
+  implements IView, rvp<CharSequence>
 {
   private String jdField_a_of_type_JavaLangString = "NativeCommentView";
-  public pjg a;
-  private riy<CharSequence> jdField_a_of_type_Riy;
+  public pvb a;
+  private rvo<CharSequence> jdField_a_of_type_Rvo;
   public boolean a;
   public boolean b;
   
   public NativeCommentView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Pjg = new pjg();
+    this.jdField_a_of_type_Pvb = new pvb();
     setShouldCallClick(true);
   }
   
@@ -44,16 +44,16 @@ public class NativeCommentView
   {
     ArticleInfo localArticleInfo;
     Object localObject;
-    if ((this.jdField_a_of_type_Pjg.a != null) && (this.jdField_a_of_type_Pjg.a.a() != null) && (this.jdField_a_of_type_Pjg.a.a().mSocialFeedInfo != null))
+    if ((this.jdField_a_of_type_Pvb.a != null) && (this.jdField_a_of_type_Pvb.a.a() != null) && (this.jdField_a_of_type_Pvb.a.a().mSocialFeedInfo != null))
     {
-      localArticleInfo = this.jdField_a_of_type_Pjg.a.a();
-      this.jdField_a_of_type_Riy = localArticleInfo.articleViewModel.a();
-      this.jdField_a_of_type_Riy.a(this);
-      localObject = (CharSequence)this.jdField_a_of_type_Riy.a();
-      if ((localArticleInfo.mFeedType != 30) && ((localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Pqm == null) || (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Pqm.b.longValue() != 30L)) && ((localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Pqn == null) || (TextUtils.isEmpty(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Pqn.c)))) {
+      localArticleInfo = this.jdField_a_of_type_Pvb.a.a();
+      this.jdField_a_of_type_Rvo = localArticleInfo.articleViewModel.a();
+      this.jdField_a_of_type_Rvo.a(this);
+      localObject = (CharSequence)this.jdField_a_of_type_Rvo.a();
+      if ((localArticleInfo.mFeedType != 30) && ((localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcj == null) || (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcj.b.longValue() != 30L)) && ((localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qck == null) || (TextUtils.isEmpty(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qck.c)))) {
         break label478;
       }
-      localObject = new axkd(azho.a(((CharSequence)this.jdField_a_of_type_Riy.a()).toString().replaceAll("\024", "")), 2, 16);
+      localObject = new ayki(bair.a(((CharSequence)this.jdField_a_of_type_Rvo.a()).toString().replaceAll("\024", "")), 2, 16);
     }
     label478:
     for (;;)
@@ -68,13 +68,13 @@ public class NativeCommentView
         setText((CharSequence)localObject);
         return;
       }
-      if ((qoe.a(this.jdField_a_of_type_Pjg.a.a())) || (qoe.c(this.jdField_a_of_type_Pjg.a.a())) || (qoe.h(this.jdField_a_of_type_Pjg.a.a())))
+      if ((rap.a(this.jdField_a_of_type_Pvb.a.a())) || (rap.c(this.jdField_a_of_type_Pvb.a.a())) || (rap.h(this.jdField_a_of_type_Pvb.a.a())))
       {
-        setMaxLines(a(this.jdField_a_of_type_Pjg.a.a()));
+        setMaxLines(a(this.jdField_a_of_type_Pvb.a.a()));
         if (localArticleInfo.isPGCShortContent()) {
-          setSpanText(ajjy.a(2131641283));
+          setSpanText(ajyc.a(2131707068));
         }
-        setMoreSpan(new pbi(this, -12084769, 16777215, 860716207));
+        setMoreSpan(new pna(this, -12084769, 16777215, 860716207));
         if (this.b)
         {
           setHeight(0);
@@ -83,10 +83,10 @@ public class NativeCommentView
         setText((CharSequence)localObject);
         return;
       }
-      if (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Pre != null)
+      if (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qdd != null)
       {
-        setMaxLines(a(this.jdField_a_of_type_Pjg.a.a()));
-        if (((obz.k(localArticleInfo)) || (obz.l(localArticleInfo))) && (this.jdField_a_of_type_Pjg.a.a().mChannelID != 0L))
+        setMaxLines(a(this.jdField_a_of_type_Pvb.a.a()));
+        if (((onk.k(localArticleInfo)) || (onk.l(localArticleInfo))) && (this.jdField_a_of_type_Pvb.a.a().mChannelID != 0L))
         {
           setSpanText("");
           setMoreSpan(null);
@@ -95,7 +95,7 @@ public class NativeCommentView
         {
           setText((CharSequence)localObject);
           return;
-          setMoreSpan(new pbj(this, -12084769, 16777215, 860716207, localArticleInfo));
+          setMoreSpan(new pnb(this, -12084769, 16777215, 860716207, localArticleInfo));
         }
         setVisibility(8);
         return;
@@ -105,10 +105,10 @@ public class NativeCommentView
     }
   }
   
-  public void a(riy<CharSequence> paramriy)
+  public void a(rvo<CharSequence> paramrvo)
   {
-    paramriy = (CharSequence)paramriy.a();
-    ThreadManager.getUIHandler().post(new NativeCommentView.3(this, paramriy));
+    paramrvo = (CharSequence)paramrvo.a();
+    ThreadManager.getUIHandler().post(new NativeCommentView.3(this, paramrvo));
   }
   
   public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -144,23 +144,28 @@ public class NativeCommentView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_Riy != null) {
-      this.jdField_a_of_type_Riy.b(this);
+    if (this.jdField_a_of_type_Rvo != null) {
+      this.jdField_a_of_type_Rvo.b(this);
     }
+  }
+  
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void onStartTemporaryDetach()
   {
     super.onStartTemporaryDetach();
-    if (this.jdField_a_of_type_Riy != null) {
-      this.jdField_a_of_type_Riy.b(this);
+    if (this.jdField_a_of_type_Rvo != null) {
+      this.jdField_a_of_type_Rvo.b(this);
     }
   }
   
-  public void setModel(opw paramopw)
+  public void setModel(pax parampax)
   {
-    this.jdField_a_of_type_Pjg.a(paramopw);
-    switch (paramopw.a())
+    this.jdField_a_of_type_Pvb.a(parampax);
+    switch (parampax.a())
     {
     }
     for (;;)

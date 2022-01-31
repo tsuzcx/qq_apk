@@ -1,218 +1,366 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.opengl.GLES20;
+import com.tencent.qphone.base.util.QLog;
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
+import java.nio.ShortBuffer;
+import java.util.HashMap;
 
 public class ascv
 {
-  public static final int[] a;
-  public static final String[] a;
-  public static final int[] b;
-  public static final String[] b;
-  public static final String[] c;
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String[] d;
-  public int e;
-  public int f;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { ajjy.a(2131641616), "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { ajjy.a(2131641624), ajjy.a(2131641611), ajjy.a(2131641620), ajjy.a(2131641622), ajjy.a(2131641627), ajjy.a(2131641613), ajjy.a(2131641631), ajjy.a(2131641615) };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { ajjy.a(2131641628), ajjy.a(2131641633), ajjy.a(2131641630), ajjy.a(2131641617), ajjy.a(2131641618), ajjy.a(2131641623), ajjy.a(2131641632), ajjy.a(2131641621), ajjy.a(2131641614), ajjy.a(2131641619), ajjy.a(2131641629), ajjy.a(2131641612), ajjy.a(2131641626) };
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, 2130844653, 2130844649, 2130844648, 2130844654, 2130844651, 2130844652, 2130844650 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 0, 1, 2, 3 };
-  }
+  private static final short[] jdField_a_of_type_ArrayOfShort = { 0, 1, 2, 2, 3, 0 };
+  private float jdField_a_of_type_Float = -1.0F;
+  private int jdField_a_of_type_Int;
+  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
+  private ShortBuffer jdField_a_of_type_JavaNioShortBuffer;
+  private HashMap<String, ByteBuffer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private int jdField_b_of_type_Int;
+  private FloatBuffer jdField_b_of_type_JavaNioFloatBuffer;
+  private byte[] jdField_b_of_type_ArrayOfByte;
+  private int jdField_c_of_type_Int;
+  private byte[] jdField_c_of_type_ArrayOfByte;
+  private int jdField_d_of_type_Int;
+  private byte[] jdField_d_of_type_ArrayOfByte;
+  private int jdField_e_of_type_Int;
+  private byte[] jdField_e_of_type_ArrayOfByte;
+  private int jdField_f_of_type_Int;
+  private byte[] jdField_f_of_type_ArrayOfByte;
+  private int g;
+  private int h = -1;
+  private int i = -1;
+  private int j = -1;
+  private int k;
+  private int l;
+  private int m;
+  private int n = -1;
+  private int o = -1;
+  private int p = -1;
+  private int q;
+  private int r;
+  private int s;
+  private int t;
+  private int u;
+  private int v;
   
   public ascv()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 4;
-    this.jdField_d_of_type_ArrayOfJavaLangString = new String[] { "0", "0", "0", "0" };
-    this.jdField_a_of_type_JavaLangString = "不限";
-    this.jdField_b_of_type_JavaLangString = "不限";
-    this.jdField_c_of_type_JavaLangString = "不限";
-    this.jdField_d_of_type_JavaLangString = "不限";
+    b();
+    a();
   }
   
-  public static ascv a(String paramString)
+  private int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    return a(paramString, "nearpeople_filters");
-  }
-  
-  public static ascv a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {}
-    do
+    Object localObject = IntBuffer.allocate(1);
+    GLES20.glGenTextures(1, (IntBuffer)localObject);
+    int i1 = ((IntBuffer)localObject).get();
+    GLES20.glBindTexture(3553, i1);
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameterf(3553, 10242, 33071.0F);
+    GLES20.glTexParameterf(3553, 10243, 33071.0F);
+    localObject = (ByteBuffer)this.jdField_a_of_type_JavaUtilHashMap.get(paramArrayOfByte.length + "");
+    if (localObject == null) {}
+    for (;;)
     {
-      do
+      try
       {
-        return null;
-        paramString1 = BaseApplicationImpl.getApplication().getSharedPreferences(paramString2 + paramString1, 4);
-      } while (paramString1 == null);
-      paramString2 = new ascv();
-      paramString2.jdField_a_of_type_Int = paramString1.getInt("gender", -1);
-    } while (paramString2.jdField_a_of_type_Int == -1);
-    paramString2.jdField_a_of_type_Boolean = paramString1.getBoolean("byuser", false);
-    paramString2.jdField_c_of_type_Int = paramString1.getInt("age", 0);
-    paramString2.jdField_d_of_type_Int = paramString1.getInt("interest", 0);
-    paramString2.jdField_b_of_type_Int = paramString1.getInt("time", 3);
-    paramString2.e = paramString1.getInt("xingzuo", 0);
-    paramString2.f = paramString1.getInt("key_career", 0);
-    paramString2.jdField_d_of_type_ArrayOfJavaLangString[0] = paramString1.getString("key_hometown_country", "0");
-    paramString2.jdField_d_of_type_ArrayOfJavaLangString[1] = paramString1.getString("key_hometown_province", "0");
-    paramString2.jdField_d_of_type_ArrayOfJavaLangString[2] = paramString1.getString("key_hometown_city", "0");
-    paramString2.jdField_a_of_type_JavaLangString = paramString1.getString("key_hometown_string", "不限");
-    paramString2.jdField_b_of_type_JavaLangString = paramString1.getString("str_country", "不限");
-    paramString2.jdField_c_of_type_JavaLangString = paramString1.getString("str_province", "不限");
-    paramString2.jdField_d_of_type_JavaLangString = paramString1.getString("str_city", "不限");
-    if ("-1".equals(paramString2.jdField_d_of_type_ArrayOfJavaLangString[0])) {
-      paramString2.jdField_d_of_type_ArrayOfJavaLangString[0] = "0";
+        localObject = ByteBuffer.allocateDirect(paramArrayOfByte.length);
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramArrayOfByte.length + "", localObject);
+        ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
+        ((ByteBuffer)localObject).put(paramArrayOfByte);
+        ((ByteBuffer)localObject).position(0);
+        GLES20.glTexImage2D(3553, 0, 6409, paramInt1, paramInt2, 0, 6409, 5121, (Buffer)localObject);
+        return i1;
+      }
+      catch (OutOfMemoryError paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+        return -2015;
+      }
     }
-    if ("-1".equals(paramString2.jdField_d_of_type_ArrayOfJavaLangString[1])) {
-      paramString2.jdField_d_of_type_ArrayOfJavaLangString[1] = "0";
-    }
-    if ("-1".equals(paramString2.jdField_d_of_type_ArrayOfJavaLangString[2])) {
-      paramString2.jdField_d_of_type_ArrayOfJavaLangString[2] = "0";
-    }
-    return paramString2;
   }
   
-  public static void a(String paramString, ascv paramascv)
+  private void a(float paramFloat)
   {
-    a(paramString, paramascv, "nearpeople_filters");
+    float f1 = 3.14159F * paramFloat / 180.0F;
+    paramFloat = (float)Math.sin(f1);
+    f1 = (float)Math.cos(f1);
+    float[] arrayOfFloat = new float[16];
+    arrayOfFloat[0] = f1;
+    arrayOfFloat[1] = paramFloat;
+    arrayOfFloat[2] = 0.0F;
+    arrayOfFloat[3] = 0.0F;
+    arrayOfFloat[4] = (-paramFloat);
+    arrayOfFloat[5] = f1;
+    arrayOfFloat[6] = 0.0F;
+    arrayOfFloat[7] = 0.0F;
+    arrayOfFloat[8] = 0.0F;
+    arrayOfFloat[9] = 0.0F;
+    arrayOfFloat[10] = 1.0F;
+    arrayOfFloat[11] = 0.0F;
+    arrayOfFloat[12] = 0.0F;
+    arrayOfFloat[13] = 0.0F;
+    arrayOfFloat[14] = 0.0F;
+    arrayOfFloat[15] = 1.0F;
+    Object localObject = ByteBuffer.allocateDirect(arrayOfFloat.length * 4);
+    ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
+    localObject = ((ByteBuffer)localObject).asFloatBuffer();
+    ((FloatBuffer)localObject).put(arrayOfFloat);
+    ((FloatBuffer)localObject).position(0);
+    GLES20.glUniformMatrix4fv(this.g, 1, false, (FloatBuffer)localObject);
   }
   
-  public static void a(String paramString1, ascv paramascv, String paramString2)
+  private void a(boolean paramBoolean)
   {
-    if ((paramascv == null) || (TextUtils.isEmpty(paramString1))) {}
+    if (paramBoolean) {}
+    for (float f1 = 1.0F;; f1 = this.u / this.s * this.t / this.v)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MagicFaceGLDisplayer", 2, "func updateRenderParam, [yCord]=" + f1);
+      }
+      float f2 = (this.q - this.s) / this.q / 2.0F;
+      float f3 = (this.r - this.t) / this.r / 2.0F;
+      Object localObject = new float[12];
+      localObject[0] = 1.0F;
+      localObject[1] = (-f1);
+      localObject[2] = 0.0F;
+      localObject[3] = 1.0F;
+      localObject[4] = f1;
+      localObject[5] = 0.0F;
+      localObject[6] = -1.0F;
+      localObject[7] = f1;
+      localObject[8] = 0.0F;
+      localObject[9] = -1.0F;
+      localObject[10] = (-f1);
+      localObject[11] = 0.0F;
+      float[] arrayOfFloat = new float[8];
+      arrayOfFloat[0] = (1.0F - f2);
+      arrayOfFloat[1] = (1.0F - f3);
+      arrayOfFloat[2] = (1.0F - f2);
+      arrayOfFloat[3] = f3;
+      arrayOfFloat[4] = f2;
+      arrayOfFloat[5] = f3;
+      arrayOfFloat[6] = f2;
+      arrayOfFloat[7] = (1.0F - f3);
+      ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(localObject.length * 4);
+      localByteBuffer.order(ByteOrder.nativeOrder());
+      this.jdField_a_of_type_JavaNioFloatBuffer = localByteBuffer.asFloatBuffer();
+      this.jdField_a_of_type_JavaNioFloatBuffer.put((float[])localObject);
+      this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
+      localObject = ByteBuffer.allocateDirect(arrayOfFloat.length * 4);
+      ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
+      this.jdField_b_of_type_JavaNioFloatBuffer = ((ByteBuffer)localObject).asFloatBuffer();
+      this.jdField_b_of_type_JavaNioFloatBuffer.put(arrayOfFloat);
+      this.jdField_b_of_type_JavaNioFloatBuffer.position(0);
+      return;
+    }
+  }
+  
+  private void b()
+  {
+    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(jdField_a_of_type_ArrayOfShort.length * 2);
+    localByteBuffer.order(ByteOrder.nativeOrder());
+    this.jdField_a_of_type_JavaNioShortBuffer = localByteBuffer.asShortBuffer();
+    this.jdField_a_of_type_JavaNioShortBuffer.put(jdField_a_of_type_ArrayOfShort);
+    this.jdField_a_of_type_JavaNioShortBuffer.position(0);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = bfna.a("attribute vec4 position;\nattribute mediump vec2 textureCoordinate;\nvarying mediump vec2 coordinate;\nuniform mat4 transformMatrix;\nvoid main()\n{\n   gl_Position = position * transformMatrix; \n   coordinate = textureCoordinate; \n}\n", "precision highp float;\nuniform sampler2D SamplerY;\nuniform sampler2D SamplerU;\nuniform sampler2D SamplerV;\nuniform sampler2D SamplerY_Alpha;\nuniform sampler2D SamplerU_Alpha;\nuniform sampler2D SamplerV_Alpha;\nvarying highp vec2 coordinate;\nvoid main()\n{\n    highp vec3 yuv;\n    highp vec3 rgb;    \n    yuv.x = texture2D(SamplerY, coordinate).r;    \n    yuv.y = texture2D(SamplerU, coordinate).r-0.5;    \n    yuv.z = texture2D(SamplerV, coordinate).r-0.5 ;    \n    rgb = mat3(      1,       1,      1,\n               \t\t0, \t\t-.34414, 1.772,\n               \t\t1.402, \t-.71414, 0) * yuv;    \n    highp vec3 yuv_Alpha;\n    highp vec3 rgb_Alpha;    \n    yuv_Alpha.x = texture2D(SamplerY_Alpha, coordinate).r;    \n    yuv_Alpha.y = texture2D(SamplerU_Alpha, coordinate).r-0.5;    \n    yuv_Alpha.z = texture2D(SamplerV_Alpha, coordinate).r-0.5 ;    \n    rgb_Alpha = mat3(      1,       1,      1,\n               \t\t0, \t\t-.34414, 1.772,\n               \t\t1.402, \t-.71414, 0) * yuv_Alpha;    \n         if(rgb_Alpha[0]  <= 0.196 ){   \n               rgb_Alpha[0] = 0.0;}   \n         else if(rgb_Alpha[0]  >= 0.922){     \n               rgb_Alpha[0] = 1.0;}  \n    gl_FragColor = vec4(rgb.r * rgb_Alpha.r ,rgb.g * rgb_Alpha.r ,rgb.b * rgb_Alpha.r, rgb_Alpha.r) ;\n}\n");
+    GLES20.glUseProgram(this.jdField_a_of_type_Int);
+    this.jdField_b_of_type_Int = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "position");
+    this.jdField_c_of_type_Int = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "textureCoordinate");
+    this.jdField_d_of_type_Int = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "SamplerY");
+    this.jdField_e_of_type_Int = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "SamplerU");
+    this.jdField_f_of_type_Int = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "SamplerV");
+    this.k = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "SamplerY_Alpha");
+    this.l = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "SamplerU_Alpha");
+    this.m = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "SamplerV_Alpha");
+    this.g = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "transformMatrix");
+    GLES20.glEnableVertexAttribArray(this.jdField_b_of_type_Int);
+    GLES20.glEnableVertexAttribArray(this.jdField_c_of_type_Int);
+  }
+  
+  public void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MagicFaceGLDisplayer", 2, "func draw begins, _srcwidth:" + paramInt1 + ",_srcheight:" + paramInt2 + ",_dstWidth:" + paramInt3 + ",_dstHeight:" + paramInt4 + ",isFull:" + paramBoolean);
+    }
+    if ((paramInt1 > 700) || (paramInt2 > 900)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("MagicFaceGLDisplayer", 2, "func draw ends, video size is too big. something must be wrong");
+      }
+    }
+    label284:
+    label308:
+    label332:
+    label354:
+    label378:
     do
     {
       return;
-      paramString1 = BaseApplicationImpl.getApplication().getSharedPreferences(paramString2 + paramString1, 4);
-    } while (paramString1 == null);
-    paramString1.edit().putBoolean("byuser", paramascv.jdField_a_of_type_Boolean).putInt("gender", paramascv.jdField_a_of_type_Int).putInt("time", paramascv.jdField_b_of_type_Int).putInt("age", paramascv.jdField_c_of_type_Int).putInt("xingzuo", paramascv.e).putInt("key_career", paramascv.f).putString("key_hometown_country", paramascv.jdField_d_of_type_ArrayOfJavaLangString[0]).putString("key_hometown_province", paramascv.jdField_d_of_type_ArrayOfJavaLangString[1]).putString("key_hometown_city", paramascv.jdField_d_of_type_ArrayOfJavaLangString[2]).putString("key_hometown_string", paramascv.jdField_a_of_type_JavaLangString).putString("str_country", paramascv.jdField_b_of_type_JavaLangString).putString("str_province", paramascv.jdField_c_of_type_JavaLangString).putString("str_city", paramascv.jdField_d_of_type_JavaLangString).putInt("interest", paramascv.jdField_d_of_type_Int).commit();
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    int i = 0;
-    boolean bool1;
-    if ((paramObject == null) || (!(paramObject instanceof ascv)))
-    {
-      bool1 = false;
-      return bool1;
-    }
-    paramObject = (ascv)paramObject;
-    if ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && ((this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int) || (((this.jdField_b_of_type_Int == 4) || (this.jdField_b_of_type_Int == 3)) && ((paramObject.jdField_b_of_type_Int == 4) || (paramObject.jdField_b_of_type_Int == 3)))) && (this.jdField_c_of_type_Int == paramObject.jdField_c_of_type_Int) && (this.e == paramObject.e) && (this.f == paramObject.f) && (this.jdField_d_of_type_Int == paramObject.jdField_d_of_type_Int)) {}
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      bool1 = bool2;
-      if (!bool2) {
-        break;
+      GLES20.glClear(16640);
+      this.u = paramInt3;
+      this.v = paramInt4;
+      this.q = paramInt1;
+      this.r = paramInt2;
+      this.s = paramInt1;
+      this.t = paramInt2;
+      if (this.jdField_a_of_type_Float == -1.0F)
+      {
+        this.jdField_a_of_type_Float = paramFloat;
+        this.jdField_a_of_type_Boolean = paramBoolean;
+        a(this.jdField_a_of_type_Boolean);
+        a(this.jdField_a_of_type_Float);
+      }
+      if (this.jdField_a_of_type_Float != paramFloat)
+      {
+        this.jdField_a_of_type_Float = paramFloat;
+        a(this.jdField_a_of_type_Float);
+      }
+      if (this.jdField_a_of_type_Boolean != paramBoolean)
+      {
+        this.jdField_a_of_type_Boolean = paramBoolean;
+        a(this.jdField_a_of_type_Boolean);
+      }
+      if ((this.q != this.s) || (this.r != this.t)) {
+        a(this.jdField_a_of_type_Boolean);
+      }
+      if (this.jdField_a_of_type_ArrayOfByte == null)
+      {
+        this.jdField_a_of_type_ArrayOfByte = new byte[this.q * this.r];
+        if (this.jdField_b_of_type_ArrayOfByte != null) {
+          break label1144;
+        }
+        this.jdField_b_of_type_ArrayOfByte = new byte[this.q * this.r / 4];
+        if (this.jdField_c_of_type_ArrayOfByte != null) {
+          break label1183;
+        }
+        this.jdField_c_of_type_ArrayOfByte = new byte[this.q * this.r / 4];
+        if (this.jdField_d_of_type_ArrayOfByte != null) {
+          break label1222;
+        }
+        this.jdField_d_of_type_ArrayOfByte = new byte[this.q * this.r];
+        if (this.jdField_e_of_type_ArrayOfByte != null) {
+          break label1257;
+        }
+        this.jdField_e_of_type_ArrayOfByte = new byte[this.q * this.r / 4];
+        if (this.jdField_f_of_type_ArrayOfByte != null) {
+          break label1296;
+        }
+        this.jdField_f_of_type_ArrayOfByte = new byte[this.q * this.r / 4];
       }
       for (;;)
       {
-        bool1 = bool2;
-        if (i >= 3) {
-          break;
-        }
-        bool2 &= this.jdField_d_of_type_ArrayOfJavaLangString[i].equalsIgnoreCase(paramObject.jdField_d_of_type_ArrayOfJavaLangString[i]);
-        bool1 = bool2;
-        if (!bool2) {
-          break;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("筛选：");
-    String str1;
-    int i;
-    switch (this.jdField_a_of_type_Int)
-    {
-    case 0: 
-    default: 
-      if ((this.jdField_c_of_type_Int != 0) && (this.jdField_c_of_type_Int < jdField_a_of_type_ArrayOfJavaLangString.length)) {
-        localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[this.jdField_c_of_type_Int]).append(',');
-      }
-      if ((this.jdField_d_of_type_Int != 0) && (this.jdField_d_of_type_Int < jdField_b_of_type_ArrayOfJavaLangString.length)) {
-        localStringBuilder.append(jdField_b_of_type_ArrayOfJavaLangString[this.jdField_d_of_type_Int]).append(',');
-      }
-      if ((this.f != 0) && (this.f < azyf.e.length))
-      {
-        String str2 = azyf.e[this.f];
-        str1 = str2;
-        if (TextUtils.isEmpty(str2)) {
-          str1 = ajjy.a(2131641625);
-        }
-        localStringBuilder.append(str1).append(',');
-      }
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_JavaLangString.equals("不限")))
-      {
-        i = this.jdField_a_of_type_JavaLangString.lastIndexOf("-");
-        if (i > 0)
+        try
         {
-          str1 = this.jdField_a_of_type_JavaLangString.substring(i + 1);
-          label223:
-          localStringBuilder.append(str1).append(',');
+          System.arraycopy(paramArrayOfByte1, 0, this.jdField_a_of_type_ArrayOfByte, 0, this.q * this.r);
+          System.arraycopy(paramArrayOfByte1, this.q * this.r, this.jdField_b_of_type_ArrayOfByte, 0, this.q * this.r / 4);
+          System.arraycopy(paramArrayOfByte1, this.q * this.r * 5 / 4, this.jdField_c_of_type_ArrayOfByte, 0, this.q * this.r / 4);
+          System.arraycopy(paramArrayOfByte2, 0, this.jdField_d_of_type_ArrayOfByte, 0, this.q * this.r);
+          System.arraycopy(paramArrayOfByte2, this.q * this.r, this.jdField_e_of_type_ArrayOfByte, 0, this.q * this.r / 4);
+          System.arraycopy(paramArrayOfByte2, this.q * this.r * 5 / 4, this.jdField_f_of_type_ArrayOfByte, 0, this.q * this.r / 4);
+          if (this.h != -1) {
+            GLES20.glDeleteTextures(1, new int[] { this.h }, 0);
+          }
+          if (this.i != -1) {
+            GLES20.glDeleteTextures(1, new int[] { this.i }, 0);
+          }
+          if (this.j != -1) {
+            GLES20.glDeleteTextures(1, new int[] { this.j }, 0);
+          }
+          if (this.n != -1) {
+            GLES20.glDeleteTextures(1, new int[] { this.n }, 0);
+          }
+          if (this.o != -1) {
+            GLES20.glDeleteTextures(1, new int[] { this.o }, 0);
+          }
+          if (this.p != -1) {
+            GLES20.glDeleteTextures(1, new int[] { this.p }, 0);
+          }
+          this.h = a(this.jdField_a_of_type_ArrayOfByte, this.q, this.r);
+          this.i = a(this.jdField_b_of_type_ArrayOfByte, this.q / 2, this.r / 2);
+          this.j = a(this.jdField_c_of_type_ArrayOfByte, this.q / 2, this.r / 2);
+          this.n = a(this.jdField_d_of_type_ArrayOfByte, this.q, this.r);
+          this.o = a(this.jdField_e_of_type_ArrayOfByte, this.q / 2, this.r / 2);
+          this.p = a(this.jdField_f_of_type_ArrayOfByte, this.q / 2, this.r / 2);
+          if ((this.h == -2015) || (this.i == -2015) || (this.j == -2015) || (this.n == -2015) || (this.o == -2015) || (this.p == -2015)) {
+            break;
+          }
+          GLES20.glVertexAttribPointer(this.jdField_b_of_type_Int, 3, 5126, false, 12, this.jdField_a_of_type_JavaNioFloatBuffer);
+          GLES20.glVertexAttribPointer(this.jdField_c_of_type_Int, 2, 5126, false, 8, this.jdField_b_of_type_JavaNioFloatBuffer);
+          GLES20.glActiveTexture(33984);
+          GLES20.glBindTexture(3553, this.n);
+          GLES20.glUniform1i(this.k, 0);
+          GLES20.glActiveTexture(33985);
+          GLES20.glBindTexture(3553, this.o);
+          GLES20.glUniform1i(this.l, 1);
+          GLES20.glActiveTexture(33986);
+          GLES20.glBindTexture(3553, this.p);
+          GLES20.glUniform1i(this.m, 2);
+          GLES20.glActiveTexture(33987);
+          GLES20.glBindTexture(3553, this.h);
+          GLES20.glUniform1i(this.jdField_d_of_type_Int, 3);
+          GLES20.glActiveTexture(33988);
+          GLES20.glBindTexture(3553, this.i);
+          GLES20.glUniform1i(this.jdField_e_of_type_Int, 4);
+          GLES20.glActiveTexture(33989);
+          GLES20.glBindTexture(3553, this.j);
+          GLES20.glUniform1i(this.jdField_f_of_type_Int, 5);
+          GLES20.glDrawElements(4, jdField_a_of_type_ArrayOfShort.length, 5123, this.jdField_a_of_type_JavaNioShortBuffer);
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("MagicFaceGLDisplayer", 2, "func draw ends");
+          return;
+        }
+        catch (OutOfMemoryError paramArrayOfByte1) {}
+        if (this.jdField_a_of_type_ArrayOfByte.length == this.q * this.r) {
+          break label284;
+        }
+        this.jdField_a_of_type_ArrayOfByte = new byte[this.q * this.r];
+        break label284;
+        if (this.jdField_b_of_type_ArrayOfByte.length == this.q * this.r / 4) {
+          break label308;
+        }
+        this.jdField_b_of_type_ArrayOfByte = new byte[this.q * this.r / 4];
+        break label308;
+        if (this.jdField_c_of_type_ArrayOfByte.length == this.q * this.r / 4) {
+          break label332;
+        }
+        this.jdField_c_of_type_ArrayOfByte = new byte[this.q * this.r / 4];
+        break label332;
+        if (this.jdField_d_of_type_ArrayOfByte.length == this.q * this.r) {
+          break label354;
+        }
+        this.jdField_d_of_type_ArrayOfByte = new byte[this.q * this.r];
+        break label354;
+        if (this.jdField_e_of_type_ArrayOfByte.length == this.q * this.r / 4) {
+          break label378;
+        }
+        this.jdField_e_of_type_ArrayOfByte = new byte[this.q * this.r / 4];
+        break label378;
+        if (this.jdField_f_of_type_ArrayOfByte.length != this.q * this.r / 4) {
+          this.jdField_f_of_type_ArrayOfByte = new byte[this.q * this.r / 4];
         }
       }
-      else
-      {
-        if ((this.e != 0) && (this.e < jdField_c_of_type_ArrayOfJavaLangString.length)) {
-          localStringBuilder.append(jdField_c_of_type_ArrayOfJavaLangString[this.e]).append(',');
-        }
-        switch (this.jdField_b_of_type_Int)
-        {
-        }
-      }
-      break;
-    }
-    for (;;)
-    {
-      str1 = localStringBuilder.toString();
-      if (TextUtils.isEmpty(str1)) {
-        break label418;
-      }
-      i = localStringBuilder.lastIndexOf(",");
-      if (i <= 0) {
-        break label418;
-      }
-      return str1.substring(0, i);
-      localStringBuilder.append("男,");
-      break;
-      localStringBuilder.append("女,");
-      break;
-      str1 = this.jdField_a_of_type_JavaLangString;
-      break label223;
-      localStringBuilder.append("30分钟内,");
-      continue;
-      localStringBuilder.append("1个小时内,");
-      continue;
-      localStringBuilder.append("4小时内,");
-      continue;
-      localStringBuilder.append("8小时内,");
-    }
-    label418:
-    return "全部";
+    } while (!QLog.isColorLevel());
+    label1144:
+    QLog.w("MagicFaceGLDisplayer", 2, "ooooom happens.");
+    label1183:
+    label1222:
+    label1257:
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ascv
  * JD-Core Version:    0.7.0.1
  */

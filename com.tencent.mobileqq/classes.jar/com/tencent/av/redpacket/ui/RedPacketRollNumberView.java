@@ -1,6 +1,6 @@
 package com.tencent.av.redpacket.ui;
 
-import aciy;
+import actn;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -11,16 +11,16 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.portal.StrokeTextView;
-import lld;
-import llf;
+import lvu;
+import lvw;
 
 public class RedPacketRollNumberView
   extends LinearLayout
-  implements llf
+  implements lvw
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private lld jdField_a_of_type_Lld;
+  private lvu jdField_a_of_type_Lvu;
   private boolean jdField_a_of_type_Boolean = true;
   private int b;
   private int c;
@@ -70,7 +70,7 @@ public class RedPacketRollNumberView
     localStrokeTextView.setTextSize(0, this.b);
     localStrokeTextView.setStrokeEnable(true);
     localStrokeTextView.setStrokeColor(-1);
-    localStrokeTextView.setStrokeSize(aciy.a(6.0F, getResources()));
+    localStrokeTextView.setStrokeSize(actn.a(6.0F, getResources()));
     localStrokeTextView.setInnerTextColor(-2094274);
     localStrokeTextView.setTypeface(Typeface.defaultFromStyle(1));
     int i = (int)paramDouble;
@@ -108,8 +108,8 @@ public class RedPacketRollNumberView
   
   public void b()
   {
-    if ((this.c == this.jdField_a_of_type_Int - 2) && (this.jdField_a_of_type_Lld != null)) {
-      this.jdField_a_of_type_Lld.a();
+    if ((this.c == this.jdField_a_of_type_Int - 2) && (this.jdField_a_of_type_Lvu != null)) {
+      this.jdField_a_of_type_Lvu.a();
     }
     this.c += 1;
   }
@@ -143,10 +143,10 @@ public class RedPacketRollNumberView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setLisener(lld paramlld)
+  public void setLisener(lvu paramlvu)
   {
-    if (paramlld != null) {
-      this.jdField_a_of_type_Lld = paramlld;
+    if (paramlvu != null) {
+      this.jdField_a_of_type_Lvu = paramlvu;
     }
   }
 }

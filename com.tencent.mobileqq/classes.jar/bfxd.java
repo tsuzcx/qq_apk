@@ -1,18 +1,18 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.view.View;
 
-public class bfxd
-  implements bfxo
+public abstract interface bfxd
 {
-  public bfxd(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
+  public abstract View a(int paramInt);
   
-  public void a()
-  {
-    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playMusicList(this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract void r();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfxd
  * JD-Core Version:    0.7.0.1
  */

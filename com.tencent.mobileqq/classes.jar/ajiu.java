@@ -1,20 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-
 public class ajiu
-  implements DialogInterface.OnDismissListener
 {
-  public ajiu(FrameHelperActivity paramFrameHelperActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    FrameHelperActivity.a(this.a, null);
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajiu
  * JD-Core Version:    0.7.0.1
  */

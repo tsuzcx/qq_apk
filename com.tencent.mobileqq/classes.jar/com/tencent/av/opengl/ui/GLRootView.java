@@ -24,17 +24,17 @@ import java.util.concurrent.locks.ReentrantLock;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 import javax.microedition.khronos.opengles.GL11;
-import lfi;
-import lgc;
-import lgd;
-import lhb;
-import lhf;
-import lhl;
-import lhp;
-import lhq;
-import lht;
-import lie;
-import lpp;
+import lpz;
+import lqt;
+import lqu;
+import lrs;
+import lrw;
+import lsc;
+import lsg;
+import lsh;
+import lsk;
+import lsv;
+import mah;
 import mqq.os.MqqHandler;
 
 public class GLRootView
@@ -48,9 +48,9 @@ public class GLRootView
   private final String jdField_a_of_type_JavaLangString = "GLRootView_" + this.jdField_a_of_type_Long;
   private final Condition jdField_a_of_type_JavaUtilConcurrentLocksCondition = this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.newCondition();
   private final ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
-  private lgc jdField_a_of_type_Lgc;
-  public lhq a;
-  private lpp jdField_a_of_type_Lpp;
+  private lqt jdField_a_of_type_Lqt;
+  public lsh a;
+  private mah jdField_a_of_type_Mah;
   boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int = 0;
   long jdField_b_of_type_Long = 0L;
@@ -72,10 +72,21 @@ public class GLRootView
     if (QLog.isDevelopLevel()) {
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "GLRootView, 构造");
     }
-    this.f = Build.MODEL.equals("MI 9");
-    CameraUtils.a(paramContext);
-    GraphicRenderMgr.loadSo();
-    if (isInEditMode()) {
+    boolean bool1 = bool2;
+    if (!Build.MODEL.equalsIgnoreCase("MI 9")) {
+      if (!Build.MODEL.equalsIgnoreCase("MI 9 Transparent Edition")) {
+        break label173;
+      }
+    }
+    label173:
+    for (bool1 = bool2;; bool1 = false)
+    {
+      this.f = bool1;
+      CameraUtils.a(paramContext);
+      GraphicRenderMgr.loadSo();
+      if (!isInEditMode()) {
+        break;
+      }
       return;
     }
     this.jdField_c_of_type_Int |= 0x1;
@@ -103,7 +114,7 @@ public class GLRootView
     {
       paramAttributeSet.recycle();
     }
-    setEGLContextClientVersion(lie.a(paramContext));
+    setEGLContextClientVersion(lsv.a(paramContext));
     if (this.jdField_a_of_type_Boolean)
     {
       setEGLConfigChooser(8, 8, 8, 8, 16, 0);
@@ -112,12 +123,12 @@ public class GLRootView
     for (;;)
     {
       setRenderer(this);
-      if (!lfi.a()) {
+      if (!lpz.a()) {
         break;
       }
-      this.jdField_a_of_type_Lpp = new lpp();
+      this.jdField_a_of_type_Mah = new mah();
       return;
-      if (lie.jdField_b_of_type_Boolean)
+      if (lsv.jdField_b_of_type_Boolean)
       {
         setEGLConfigChooser(8, 8, 8, 0, 0, 0);
         getHolder().setFormat(3);
@@ -135,14 +146,14 @@ public class GLRootView
     this.jdField_c_of_type_Int &= 0xFFFFFFFD;
     int i = getWidth();
     int j = getHeight();
-    if ((this.jdField_a_of_type_Lhq != null) && (i != 0) && (j != 0)) {
-      this.jdField_a_of_type_Lhq.b(0, 0, i, j);
+    if ((this.jdField_a_of_type_Lsh != null) && (i != 0) && (j != 0)) {
+      this.jdField_a_of_type_Lsh.b(0, 0, i, j);
     }
   }
   
-  public lpp a()
+  public mah a()
   {
-    return this.jdField_a_of_type_Lpp;
+    return this.jdField_a_of_type_Mah;
   }
   
   public void a()
@@ -150,7 +161,7 @@ public class GLRootView
     this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
     try
     {
-      if (this.jdField_a_of_type_Lhq != null)
+      if (this.jdField_a_of_type_Lsh != null)
       {
         i = this.jdField_c_of_type_Int;
         if ((i & 0x2) == 0) {}
@@ -175,22 +186,22 @@ public class GLRootView
   
   protected void a(GL10 paramGL10)
   {
-    this.jdField_a_of_type_Lgc.d();
-    lhl.g();
+    this.jdField_a_of_type_Lqt.d();
+    lsc.g();
     this.jdField_b_of_type_Boolean = false;
     if ((this.jdField_c_of_type_Int & 0x2) != 0) {
       c();
     }
-    if (this.jdField_a_of_type_Lhq != null) {
-      this.jdField_a_of_type_Lhq.a(this.jdField_a_of_type_Lgc);
+    if (this.jdField_a_of_type_Lsh != null) {
+      this.jdField_a_of_type_Lsh.a(this.jdField_a_of_type_Lqt);
     }
     for (;;)
     {
-      if (lhl.e()) {
+      if (lsc.e()) {
         requestRender();
       }
       return;
-      this.jdField_a_of_type_Lgc.a();
+      this.jdField_a_of_type_Lqt.a();
     }
   }
   
@@ -204,7 +215,7 @@ public class GLRootView
   
   public boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Lhq != null) && ((this.jdField_a_of_type_Lhq instanceof VideoLayerUI)) && (((VideoLayerUI)this.jdField_a_of_type_Lhq).c(paramMotionEvent))) {
+    if ((this.jdField_a_of_type_Lsh != null) && ((this.jdField_a_of_type_Lsh instanceof VideoLayerUI)) && (((VideoLayerUI)this.jdField_a_of_type_Lsh).c(paramMotionEvent))) {
       return true;
     }
     return super.dispatchHoverEvent(paramMotionEvent);
@@ -226,10 +237,10 @@ public class GLRootView
       boolean bool1 = bool2;
       try
       {
-        if (this.jdField_a_of_type_Lhq != null)
+        if (this.jdField_a_of_type_Lsh != null)
         {
           bool1 = bool2;
-          if (this.jdField_a_of_type_Lhq.b(paramMotionEvent)) {
+          if (this.jdField_a_of_type_Lsh.b(paramMotionEvent)) {
             bool1 = true;
           }
         }
@@ -250,30 +261,30 @@ public class GLRootView
   protected void finalize()
   {
     // Byte code:
-    //   0: invokestatic 279	lhb:a	()V
+    //   0: invokestatic 281	lrs:a	()V
     //   3: aload_0
-    //   4: invokevirtual 281	com/tencent/av/opengl/ui/GLRootView:b	()V
+    //   4: invokevirtual 283	com/tencent/av/opengl/ui/GLRootView:b	()V
     //   7: aload_0
-    //   8: invokespecial 283	android/opengl/GLSurfaceView:finalize	()V
+    //   8: invokespecial 285	android/opengl/GLSurfaceView:finalize	()V
     //   11: invokestatic 94	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   14: ifeq +14 -> 28
     //   17: aload_0
     //   18: getfield 88	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   21: iconst_1
-    //   22: ldc_w 285
+    //   22: ldc_w 287
     //   25: invokestatic 100	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   28: return
     //   29: astore_1
     //   30: aload_0
-    //   31: invokevirtual 281	com/tencent/av/opengl/ui/GLRootView:b	()V
+    //   31: invokevirtual 283	com/tencent/av/opengl/ui/GLRootView:b	()V
     //   34: aload_0
-    //   35: invokespecial 283	android/opengl/GLSurfaceView:finalize	()V
+    //   35: invokespecial 285	android/opengl/GLSurfaceView:finalize	()V
     //   38: goto -27 -> 11
     //   41: astore_1
     //   42: aload_0
-    //   43: invokevirtual 281	com/tencent/av/opengl/ui/GLRootView:b	()V
+    //   43: invokevirtual 283	com/tencent/av/opengl/ui/GLRootView:b	()V
     //   46: aload_0
-    //   47: invokespecial 283	android/opengl/GLSurfaceView:finalize	()V
+    //   47: invokespecial 285	android/opengl/GLSurfaceView:finalize	()V
     //   50: aload_1
     //   51: athrow
     // Local variable table:
@@ -309,7 +320,7 @@ public class GLRootView
       this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
     }
     SystemClock.elapsedRealtime();
-    lhp.a();
+    lsg.a();
     if (this.jdField_a_of_type_Boolean) {}
     for (float f1 = 0.0F;; f1 = 1.0F)
     {
@@ -356,10 +367,10 @@ public class GLRootView
     {
       this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
     }
-    if ((this.e) && (this.jdField_a_of_type_Lhq != null))
+    if ((this.e) && (this.jdField_a_of_type_Lsh != null))
     {
       this.e = false;
-      this.jdField_a_of_type_Lhq.e();
+      this.jdField_a_of_type_Lsh.e();
     }
     this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
   }
@@ -373,7 +384,9 @@ public class GLRootView
   
   public void onPause()
   {
-    queueEvent(new GLRootView.2(this));
+    if ((this.jdField_a_of_type_Lsh instanceof lsk)) {
+      queueEvent(new GLRootView.2(this));
+    }
     b();
     super.onPause();
   }
@@ -389,8 +402,11 @@ public class GLRootView
     if (QLog.isColorLevel()) {
       QLog.i(this.jdField_a_of_type_JavaLangString, 2, "onSurfaceChanged: " + paramInt1 + "x" + paramInt2 + ", gl10: " + paramGL10.toString());
     }
+    if ((paramInt1 == 0) || (paramInt2 == 0)) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onSurfaceChanged: error system callback - width or height is Zero value");
+    }
     Process.setThreadPriority(-4);
-    this.jdField_a_of_type_Lgc.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Lqt.a(paramInt1, paramInt2);
   }
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
@@ -399,16 +415,16 @@ public class GLRootView
     this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
     try
     {
-      this.jdField_a_of_type_Lgc = new lgd();
-      lhf.d();
-      if (this.jdField_a_of_type_Lpp != null) {
-        this.jdField_a_of_type_Lpp.a();
+      this.jdField_a_of_type_Lqt = new lqu();
+      lrw.d();
+      if (this.jdField_a_of_type_Mah != null) {
+        this.jdField_a_of_type_Mah.a();
       }
-      if ((this.jdField_a_of_type_Lhq != null) && ((this.jdField_a_of_type_Lhq instanceof lht))) {
-        ((lht)this.jdField_a_of_type_Lhq).j();
+      if ((this.jdField_a_of_type_Lsh != null) && ((this.jdField_a_of_type_Lsh instanceof lsk))) {
+        ((lsk)this.jdField_a_of_type_Lsh).j();
       }
       this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      lhb.a();
+      lrs.a();
       setRenderMode(0);
       return;
     }
@@ -442,28 +458,28 @@ public class GLRootView
     ThreadManager.getUIHandler().post(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public void setContentPane(lhq paramlhq)
+  public void setContentPane(lsh paramlsh)
   {
-    if (this.jdField_a_of_type_Lhq == paramlhq) {}
+    if (this.jdField_a_of_type_Lsh == paramlsh) {}
     do
     {
       return;
-      if (this.jdField_a_of_type_Lhq != null)
+      if (this.jdField_a_of_type_Lsh != null)
       {
         if (this.jdField_d_of_type_Boolean)
         {
           long l = SystemClock.uptimeMillis();
           MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
-          this.jdField_a_of_type_Lhq.b(localMotionEvent);
+          this.jdField_a_of_type_Lsh.b(localMotionEvent);
           localMotionEvent.recycle();
           this.jdField_d_of_type_Boolean = false;
         }
-        this.jdField_a_of_type_Lhq.a();
-        lhf.c();
+        this.jdField_a_of_type_Lsh.a();
+        lrw.c();
       }
-      this.jdField_a_of_type_Lhq = paramlhq;
-    } while (paramlhq == null);
-    paramlhq.a(this);
+      this.jdField_a_of_type_Lsh = paramlsh;
+    } while (paramlsh == null);
+    paramlsh.a(this);
     a();
   }
   

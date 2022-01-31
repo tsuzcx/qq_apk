@@ -1,21 +1,12 @@
-import java.util.concurrent.CountDownLatch;
-
-class bfrm
+public abstract interface bfrm
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final CountDownLatch jdField_a_of_type_JavaUtilConcurrentCountDownLatch;
-  private volatile String b;
-  private volatile String c;
+  public abstract void a(int paramInt);
   
-  private bfrm(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(1);
-  }
+  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfrm
  * JD-Core Version:    0.7.0.1
  */

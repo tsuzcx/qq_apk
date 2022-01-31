@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.realtime;
 
 import android.content.Context;
-import bgmq;
+import bhvh;
 import com.tencent.commonsdk.cache.QQHashMap;
-import rdt;
-import rdw;
+import rqg;
+import rqj;
 
 public class RealTimeTemplateFactoryCache
-  extends QQHashMap<String, rdw>
+  extends QQHashMap<String, rqj>
 {
   public RealTimeTemplateFactoryCache()
   {
@@ -30,16 +30,16 @@ public class RealTimeTemplateFactoryCache
   
   public void clearMemory()
   {
-    if (!bgmq.p()) {
+    if (!bhvh.o()) {
       clear();
     }
   }
   
-  public rdw get(String paramString)
+  public rqj get(String paramString)
   {
     try
     {
-      paramString = (rdw)super.get(paramString);
+      paramString = (rqj)super.get(paramString);
       return paramString;
     }
     finally
@@ -49,13 +49,13 @@ public class RealTimeTemplateFactoryCache
     }
   }
   
-  public rdw getAutoCreate(Context paramContext, String paramString)
+  public rqj getAutoCreate(Context paramContext, String paramString)
   {
     paramContext = get(paramString);
     if (paramContext != null) {
       return paramContext;
     }
-    paramContext = rdt.a(paramString);
+    paramContext = rqg.a(paramString);
     if (paramContext != null)
     {
       paramContext.b(paramString);
@@ -65,11 +65,11 @@ public class RealTimeTemplateFactoryCache
     return null;
   }
   
-  public rdw put(String paramString, rdw paramrdw)
+  public rqj put(String paramString, rqj paramrqj)
   {
     try
     {
-      paramString = (rdw)super.put(paramString, paramrdw);
+      paramString = (rqj)super.put(paramString, paramrqj);
       return paramString;
     }
     finally
@@ -79,11 +79,11 @@ public class RealTimeTemplateFactoryCache
     }
   }
   
-  public rdw remove(String paramString)
+  public rqj remove(String paramString)
   {
     try
     {
-      paramString = (rdw)super.remove(paramString);
+      paramString = (rqj)super.remove(paramString);
       return paramString;
     }
     finally

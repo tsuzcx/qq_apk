@@ -1,59 +1,27 @@
-import android.graphics.Color;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
 
 class vij
+  implements bfob
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
-  TextView d;
+  int jdField_a_of_type_Int = 0;
   
-  public vij(View paramView)
+  vij(vii paramvii) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131311048));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131311069));
-    this.b = ((TextView)paramView.findViewById(2131311039));
-    this.c = ((TextView)paramView.findViewById(2131311038));
-    this.d = ((TextView)paramView.findViewById(2131311071));
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
   }
   
-  private void a(TextView paramTextView, String paramString)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramTextView.setVisibility(8);
+    if (paramInt == 1) {
+      bfmr.b(this.jdField_a_of_type_Vii.a().a());
+    }
+    while ((paramInt != 0) || (this.jdField_a_of_type_Vii.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_Vii.a.size())) {
       return;
     }
-    paramTextView.setVisibility(0);
-    paramTextView.setText(paramString);
-  }
-  
-  public void a(vik paramvik1, vik paramvik2)
-  {
-    a(this.jdField_a_of_type_AndroidWidgetTextView, paramvik1.jdField_a_of_type_Vil.jdField_a_of_type_JavaLangString);
-    a(this.b, paramvik1.jdField_a_of_type_Vil.b);
-    if (paramvik1.jdField_a_of_type_Int <= 0) {
-      this.c.setVisibility(8);
-    }
-    for (;;)
-    {
-      a(this.d, paramvik1.jdField_a_of_type_JavaLangString);
-      if (!paramvik1.equals(paramvik2)) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845754);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFA34B"));
-      return;
-      a(this.c, paramvik1.jdField_a_of_type_Int + ajjy.a(2131645265));
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845758);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFFFFF"));
+    vii.a(this.jdField_a_of_type_Vii);
   }
 }
 

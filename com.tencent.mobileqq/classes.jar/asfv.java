@@ -1,18 +1,26 @@
+import android.widget.ImageButton;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
-class asfv
-  implements aslu
+public class asfv
+  implements PopupWindow.OnDismissListener
 {
-  asfv(asft paramasft) {}
+  public asfv(MedalGuideView paramMedalGuideView) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void onDismiss()
   {
-    QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. errorCode=" + paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "onDismiss  endOfAnim: %s", new Object[] { Boolean.valueOf(this.a.d) }));
+    }
+    this.a.d = true;
+    this.a.a.performClick();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asfv
  * JD-Core Version:    0.7.0.1
  */

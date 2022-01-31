@@ -1,21 +1,12 @@
-import java.util.Random;
+import cooperation.qzone.util.TimeCostTrace;
 
-public class bhoe
+public abstract interface bhoe
 {
-  private static Random a = new Random();
-  
-  public static bhof a()
-  {
-    int i = bjlo.a / 4;
-    int j = a.nextInt(bjlo.a / 2);
-    int k = bjlo.a / 4;
-    int m = a.nextInt(bjlo.a / 2);
-    return new bhof(i - j + bjlo.a / 2, k - m + (bjlo.b - bjlo.a(249.0F)) / 2);
-  }
+  public abstract void reportPerfTime(TimeCostTrace paramTimeCostTrace);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhoe
  * JD-Core Version:    0.7.0.1
  */

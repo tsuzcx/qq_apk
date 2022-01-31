@@ -1,92 +1,66 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.SendVidPollDataResultReceiver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.LinkedHashSet;
+import org.json.JSONArray;
 
 public class ukk
-  extends QQUIEventReceiver<ujx, syj>
+  extends uxv
 {
-  public ukk(ujx paramujx1, @NonNull ujx paramujx2)
-  {
-    super(paramujx2);
-  }
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void a(@NonNull ujx paramujx, @NonNull syj paramsyj)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if ((TextUtils.isEmpty(paramsyj.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramsyj.jdField_b_of_type_JavaLangString)) || (paramsyj.jdField_a_of_type_Int == 0) || (paramsyj.jdField_a_of_type_Long == 0L))
+    switch (paramInt1)
     {
-      urk.d("Q.qqstory.home.data.HomeFeedPresenter", "receive not eligible poll event. event.feedId = %s, event.vid = %s, event.commentId = %d, event.commentFakeId = %d.", new Object[] { paramsyj.jdField_a_of_type_JavaLangString, paramsyj.jdField_b_of_type_JavaLangString, Integer.valueOf(paramsyj.jdField_a_of_type_Int), Long.valueOf(paramsyj.jdField_a_of_type_Long) });
+    default: 
+      veg.d("AddVideoMiddleCode", "unknown request code %d", new Object[] { Integer.valueOf(paramInt1) });
+      a(paramInt2, paramIntent);
+      e();
       return;
     }
-    Object localObject1 = paramujx.a(paramsyj.jdField_a_of_type_JavaLangString);
-    if ((localObject1 == null) || (!(localObject1 instanceof ukv)))
-    {
-      urk.d("Q.qqstory.home.data.HomeFeedPresenter", "storyHomeFeed is null or it's not a VideoListHomeFeed. feedId = %s", new Object[] { paramsyj.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    Object localObject2 = (ukv)localObject1;
-    urk.a("Q.qqstory.home.data.HomeFeedPresenter", "receive poll event. event.feedId = %s, event.vid = %s, event.commentId = %d, event.pollIndex = %d.", paramsyj.jdField_a_of_type_JavaLangString, paramsyj.jdField_b_of_type_JavaLangString, Integer.valueOf(paramsyj.jdField_a_of_type_Int), Integer.valueOf(paramsyj.jdField_b_of_type_Int));
-    localObject1 = ((ukv)localObject2).a().iterator();
-    Object localObject3;
+    if (paramInt2 == -1) {}
     for (;;)
     {
-      if (((Iterator)localObject1).hasNext())
+      try
       {
-        localObject3 = (StoryVideoItem)((Iterator)localObject1).next();
-        if (((StoryVideoItem)localObject3).mVid.equals(paramsyj.jdField_b_of_type_JavaLangString))
+        LinkedHashSet localLinkedHashSet = (LinkedHashSet)paramIntent.getSerializableExtra("extra_checked_vidset");
+        if ((localLinkedHashSet != null) && (localLinkedHashSet.size() > 0))
         {
-          localObject1 = ((StoryVideoItem)localObject3).getPollLayout();
-          if ((localObject1 != null) && (((srq)localObject1).a.length > paramsyj.jdField_b_of_type_Int)) {
-            localObject1 = localObject1.a[(paramsyj.jdField_b_of_type_Int + 1)];
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        localObject1 = udl.a(paramsyj.jdField_a_of_type_JavaLangString, paramsyj.jdField_a_of_type_Int, paramsyj.jdField_a_of_type_Long, 1, (String)localObject1);
-        localObject3 = new ArrayList();
-        ((List)localObject3).add(localObject1);
-        ((ukv)localObject2).a((List)localObject3, false);
-        localObject2 = (CommentLikeFeedItem)((ukv)localObject2).a;
-        ((CommentLikeFeedItem)localObject2).mCommentCount += 1;
-        if (ujx.a((CommentLikeFeedItem)localObject2)) {
-          ((CommentLikeFeedItem)localObject2).mFriendCommentCount += 1;
-        }
-        for (;;)
-        {
-          ujx.a(paramujx).b(paramsyj.jdField_a_of_type_JavaLangString);
-          ThreadManager.post(new HomeFeedPresenter.SendVidPollDataResultReceiver.1(this, (CommentLikeFeedItem)localObject2, (CommentEntry)localObject1), 5, null, false);
-          ujx.a((CommentLikeFeedItem)localObject2, (CommentEntry)localObject1);
+          veg.d("AddVideoMiddleCode", "let's add video to group, count = %d, collection = %s", new Object[] { Integer.valueOf(localLinkedHashSet.size()), new JSONArray(localLinkedHashSet).toString() });
+          ArrayList localArrayList = new ArrayList();
+          localArrayList.addAll(localLinkedHashSet);
+          svo.a(this.jdField_a_of_type_JavaLangString, localArrayList, this.jdField_a_of_type_Int);
+          paramIntent.putExtra("totalPublishVideoCount", localLinkedHashSet.size());
+          paramIntent.putExtra("isAddFromExist", true);
+          a(paramInt2, paramIntent);
+          e();
           return;
-          if (localObject1 == null) {}
-          for (int i = 0;; i = ((srq)localObject1).a.length)
-          {
-            urk.e("Q.qqstory.home.data.HomeFeedPresenter", "get poll answer failed because PollLayout is null or pollIndex lager than contents.length. pollLayout = %s, pollLayout.contents.length = %d, event.pollIndex = %d.", new Object[] { localObject1, Integer.valueOf(i), Integer.valueOf(paramsyj.jdField_b_of_type_Int) });
-            localObject1 = null;
-            break;
-          }
-          ((CommentLikeFeedItem)localObject2).mFanCommentCount += 1;
         }
       }
-      urk.e("Q.qqstory.home.data.HomeFeedPresenter", "generate vote comment failed because poll answer is empty.");
-      return;
-      localObject1 = null;
+      catch (ClassCastException localClassCastException)
+      {
+        veg.c("AddVideoMiddleCode", "StoryPickerFragment return illegal value", localClassCastException);
+        Object localObject = null;
+        continue;
+        veg.d("AddVideoMiddleCode", "do not add video to group, exit ! result=%s, retValue=%s", new Object[] { Integer.valueOf(paramInt2), localObject });
+        paramInt2 = 0;
+        continue;
+      }
+      veg.d("AddVideoMiddleCode", "add video to group cancel by user");
     }
   }
   
-  public Class acceptEventClass()
+  public void a(Bundle paramBundle1, Bundle paramBundle2)
   {
-    return syj.class;
+    this.jdField_a_of_type_JavaLangString = paramBundle2.getString("shareGroupId");
+    this.b = paramBundle2.getString("shareGroupName");
+    this.jdField_a_of_type_Int = paramBundle2.getInt("add_video_source");
+    veg.a("AddVideoMiddleCode", "shareGroupId = %s, shareGroupName = %s, source=%d", this.jdField_a_of_type_JavaLangString, this.b, Integer.valueOf(this.jdField_a_of_type_Int));
+    StoryPickerFragment.a(a(), null, this.b, 1000, 2);
   }
 }
 

@@ -1,70 +1,72 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.AVRedPacketConfig;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class llt
-  extends Binder
-  implements lls
+class llt
+  extends BroadcastReceiver
 {
-  public llt()
-  {
-    attachInterface(this, "com.tencent.av.service.IAVRedPacketCallback");
-  }
+  llt(lls paramlls) {}
   
-  public static lls a(IBinder paramIBinder)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IAVRedPacketCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof lls))) {
-      return (lls)localIInterface;
-    }
-    return new llu(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    boolean bool = false;
-    switch (paramInt1)
+    if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_ReceiveSharpMsg"))
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.av.service.IAVRedPacketCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.av.service.IAVRedPacketCallback");
-      if (paramParcel1.readInt() != 0)
+      if (QLog.isColorLevel()) {
+        QLog.d(lls.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp msg");
+      }
+      paramContext = paramIntent.getBundleExtra("msgData");
+      if (paramContext != null)
       {
-        bool = true;
-        if (paramParcel1.readInt() == 0) {
-          break label109;
+        paramContext = paramContext.getByteArray("value");
+        if (paramContext != null) {
+          this.a.jdField_a_of_type_Llr.a(0L, paramContext, null);
         }
       }
-      label109:
-      for (paramParcel1 = (AVRedPacketConfig)AVRedPacketConfig.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    }
+    label154:
+    int i;
+    do
+    {
+      do
       {
-        a(bool, paramParcel1);
-        return true;
-        bool = false;
-        break;
-      }
-    }
-    paramParcel1.enforceInterface("com.tencent.av.service.IAVRedPacketCallback");
-    if (paramParcel1.readInt() != 0) {
-      bool = true;
-    }
-    a(bool, paramParcel1.readString(), paramParcel1.readString());
-    return true;
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                if (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_ReceiveSharpAckMsg")) {
+                  break label154;
+                }
+                if (QLog.isColorLevel()) {
+                  QLog.d(lls.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp ack msg");
+                }
+                if (!paramIntent.getBooleanExtra("timeout", false)) {
+                  break;
+                }
+              } while (!QLog.isColorLevel());
+              QLog.d(lls.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp timeout msg");
+              return;
+              paramContext = paramIntent.getBundleExtra("msgData");
+            } while (paramContext == null);
+            paramContext = paramContext.getByteArray("value");
+          } while (paramContext == null);
+          this.a.jdField_a_of_type_Llr.b(0L, paramContext, null);
+          return;
+        } while (!paramIntent.getAction().equals("SmartDevice_DeviceUnBindRst"));
+        paramContext = paramIntent.getExtras();
+      } while (paramContext == null);
+      i = paramContext.getInt("deviceoprstcode");
+      paramContext = Long.valueOf(paramContext.getLong("deviceopdin", 0L));
+    } while ((i != 0) || (paramContext.longValue() == 0L) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a() == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d == null) || (!this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d.equals(String.valueOf(paramContext))));
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1000);
   }
 }
 

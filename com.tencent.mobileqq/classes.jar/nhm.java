@@ -1,16 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-class nhm
-  implements Animation.AnimationListener
+public class nhm
+  implements bfoq
 {
-  nhm(nhi paramnhi) {}
+  public nhm(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    if (this.a.o) {
+      return;
+    }
+    this.a.o = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.a.dismiss();
+      return;
+      this.a.q();
+      continue;
+      this.a.E();
+      continue;
+      AccountDetailActivity.a(this.a, this.a.d);
+    }
+  }
 }
 
 

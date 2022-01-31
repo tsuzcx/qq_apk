@@ -1,17 +1,12 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aepk
+class aepk
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  @azxz(a=String.class)
-  List<String> jdField_a_of_type_JavaUtilList;
-  String b;
+  aepk(aepg paramaepg) {}
   
-  public String toString()
-  {
-    return "ZhituReportRequest{, type=" + this.jdField_a_of_type_Int + ", md5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", text='" + becz.a(this.b) + '\'' + '}';
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

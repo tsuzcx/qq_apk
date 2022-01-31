@@ -1,39 +1,26 @@
-import android.os.SystemClock;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
 
-public abstract class agjd
+public class agjd
+  implements agjx
 {
-  private long jdField_a_of_type_Long;
-  private agjc jdField_a_of_type_Agjc;
-  private long b;
+  public agjd(BindVerifyActivity paramBindVerifyActivity) {}
   
-  public agjd(long paramLong)
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    a(paramLong);
-  }
-  
-  public final void a()
-  {
-    long l = this.jdField_a_of_type_Long - SystemClock.elapsedRealtime();
-    if (l > 1000L)
+    if (paramBoolean) {}
+    for (paramContext = "permission_denied_by_user";; paramContext = "permission_denied")
     {
-      b(l);
+      Intent localIntent = new Intent();
+      localIntent.putExtra("bind_mobile", this.a.a());
+      localIntent.putExtra("check_permission_result", paramContext);
+      localIntent.putExtra("kSrouce", BindVerifyActivity.a(this.a));
+      this.a.setResult(-1, localIntent);
+      this.a.finish();
       return;
     }
-    b();
   }
-  
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Agjc != null) {
-      this.jdField_a_of_type_Agjc.a(paramLong);
-    }
-    this.b = paramLong;
-    this.jdField_a_of_type_Long = (SystemClock.elapsedRealtime() + 1000L * paramLong);
-  }
-  
-  public abstract void b();
-  
-  public abstract void b(long paramLong);
 }
 
 

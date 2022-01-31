@@ -1,47 +1,88 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
 public class aanb
-  extends ajgs
+  extends ajtq
 {
-  public aanb(Conversation paramConversation) {}
+  public aanb(BaseChatPie paramBaseChatPie) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    super.a(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, ajed.z, 6000);
-    }
-    while (i != 1) {
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
+    {
+      if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramObject != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramObject.uin)) && ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1001) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1003) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 10002)) && (paramObject.strCertificationInfo != null) && (!paramObject.strCertificationInfo.equals(""))) {
+        aaod.h(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      }
+      if ((paramBoolean) && (paramObject != null)) {}
+      switch (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)
+      {
+      default: 
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramObject.uin)))
+        {
+          this.a.A();
+          if (QLog.isColorLevel()) {
+            QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onCardDownload nick = " + bbbd.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d));
+          }
+          this.a.e.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+          if (AppSetting.d)
+          {
+            paramObject = this.a.e.getText().toString();
+            this.a.e.setContentDescription(paramObject);
+            this.a.a().setTitle(this.a.e.getText());
+          }
+          if ((3000 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) && ((this.a instanceof aeoe))) {
+            ((aeoe)this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.e);
+          }
+        }
+      case 1034: 
+        return;
+      }
+      this.a.b(false, false);
       return;
     }
-    this.a.a(8, ajed.A, 6000);
   }
   
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
-    if (i == 0) {
-      this.a.a(9, ajed.z, 6003);
+    if (paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays isAllow= " + paramBoolean2);
+      }
+      this.a.aS();
     }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, ajed.A, 6003);
   }
   
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  protected void onImpeach(boolean paramBoolean, String paramString)
   {
-    super.b(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, ajed.z, 6000);
+    if ((this.a.d != null) && (this.a.d.isShowing())) {
+      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.dismissDialog(231);
     }
-    while (i != 1) {
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.showDialog(232);
       return;
     }
-    this.a.a(8, ajed.A, 6003);
+    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.showDialog(233);
+  }
+  
+  protected void onSetCalReactiveDays(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays");
+      }
+      this.a.aS();
+    }
   }
 }
 

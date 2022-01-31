@@ -1,24 +1,18 @@
-import android.support.v4.view.ViewPager;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class rod
-  implements RadioGroup.OnCheckedChangeListener
+class rod
+  implements View.OnClickListener
 {
-  public rod(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
+  rod(roc paramroc) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void onClick(View paramView)
   {
-    ServiceAccountFolderActivityNew.a(this.a, true);
-    if (ServiceAccountFolderActivityNew.a(this.a).getId() == paramInt) {
-      ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(0);
-    }
-    while (ServiceAccountFolderActivityNew.b(this.a).getId() != paramInt) {
-      return;
-    }
-    ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(1);
+    onk.a(paramView.getContext(), this.a.a.a);
+    noo.a(null, "", "0X8009BA1", "0X8009BA1", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin(), "", "", "", false);
   }
 }
 

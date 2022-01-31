@@ -1,87 +1,77 @@
-import android.graphics.PointF;
-import android.view.animation.Interpolator;
+import java.lang.reflect.Array;
 
 public class aquo
-  implements Interpolator
 {
-  protected PointF a;
-  protected PointF b;
-  protected PointF c = new PointF();
-  protected PointF d = new PointF();
-  protected PointF e = new PointF();
+  static aquo[][] a;
+  public int a;
+  public int b;
   
-  public aquo(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
+  static
   {
-    this((float)paramDouble1, (float)paramDouble2, (float)paramDouble3, (float)paramDouble4);
-  }
-  
-  public aquo(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    this(new PointF(paramFloat1, paramFloat2), new PointF(paramFloat3, paramFloat4));
-  }
-  
-  public aquo(PointF paramPointF1, PointF paramPointF2)
-  {
-    if ((paramPointF1.x < 0.0F) || (paramPointF1.x > 1.0F)) {
-      throw new IllegalArgumentException("startX value must be in the range [0, 1]");
-    }
-    if ((paramPointF2.x < 0.0F) || (paramPointF2.x > 1.0F)) {
-      throw new IllegalArgumentException("endX value must be in the range [0, 1]");
-    }
-    this.a = paramPointF1;
-    this.b = paramPointF2;
-  }
-  
-  private float c(float paramFloat)
-  {
-    return this.e.x + (2.0F * this.d.x + 3.0F * this.c.x * paramFloat) * paramFloat;
-  }
-  
-  private float d(float paramFloat)
-  {
-    this.e.x = (this.a.x * 3.0F);
-    this.d.x = ((this.b.x - this.a.x) * 3.0F - this.e.x);
-    this.c.x = (1.0F - this.e.x - this.d.x);
-    return (this.e.x + (this.d.x + this.c.x * paramFloat) * paramFloat) * paramFloat;
-  }
-  
-  protected float a(float paramFloat)
-  {
-    this.e.y = (this.a.y * 3.0F);
-    this.d.y = ((this.b.y - this.a.y) * 3.0F - this.e.y);
-    this.c.y = (1.0F - this.e.y - this.d.y);
-    return (this.e.y + (this.d.y + this.c.y * paramFloat) * paramFloat) * paramFloat;
-  }
-  
-  protected float b(float paramFloat)
-  {
-    int i = 1;
-    float f1 = paramFloat;
-    for (;;)
+    jdField_a_of_type_Array2dOfAquo = (aquo[][])Array.newInstance(aquo.class, new int[] { 3, 3 });
+    int i = 0;
+    while (i < 3)
     {
-      float f2;
-      if (i < 14)
+      int j = 0;
+      while (j < 3)
       {
-        f2 = d(f1) - paramFloat;
-        if (Math.abs(f2) >= 0.001D) {}
+        jdField_a_of_type_Array2dOfAquo[i][j] = new aquo(i, j);
+        j += 1;
       }
-      else
-      {
-        return f1;
-      }
-      f1 -= f2 / c(f1);
       i += 1;
     }
   }
   
-  public float getInterpolation(float paramFloat)
+  private aquo(int paramInt1, int paramInt2)
   {
-    return a(b(paramFloat));
+    a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public static aquo a(int paramInt1, int paramInt2)
+  {
+    try
+    {
+      a(paramInt1, paramInt2);
+      aquo localaquo = jdField_a_of_type_Array2dOfAquo[paramInt1][paramInt2];
+      return localaquo;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  private static void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 < 0) || (paramInt1 > 2)) {
+      throw new IllegalArgumentException("row must be in range 0-2");
+    }
+    if ((paramInt2 < 0) || (paramInt2 > 2)) {
+      throw new IllegalArgumentException("column must be in range 0-2");
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public String toString()
+  {
+    return "(row=" + this.jdField_a_of_type_Int + ",clmn=" + this.b + ")";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aquo
  * JD-Core Version:    0.7.0.1
  */

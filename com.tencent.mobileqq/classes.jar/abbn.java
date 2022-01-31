@@ -1,97 +1,33 @@
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.activity.LikeRankingListActivity.2.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.LikeRankingInfo;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import java.util.ArrayList;
 
 public class abbn
-  extends ajfo
+  extends PagerAdapter
 {
-  public abbn(LikeRankingListActivity paramLikeRankingListActivity) {}
+  public abbn(FontSettingActivity paramFontSettingActivity) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LikeRankingListActivity", 2, "onCardDownload isSuccess=" + paramBoolean);
-    }
-    if ((paramBoolean) && ((paramObject instanceof Card)))
-    {
-      paramObject = (Card)paramObject;
-      if (paramObject.uin.equals(this.a.b)) {
-        this.a.app.a(new LikeRankingListActivity.2.1(this, paramObject));
-      }
-    }
+    ((ViewPager)paramView).removeView((View)this.a.a.get(paramInt));
   }
   
-  protected void onReqLikeRankingListResult(boolean paramBoolean1, String paramString, List<LikeRankingInfo> paramList, int paramInt, boolean paramBoolean2)
+  public int getCount()
   {
-    int i;
-    if (QLog.isColorLevel())
-    {
-      String str = "onReqLikeRankingListResult success:" + paramBoolean1;
-      paramString = new StringBuilder().append(", uin:").append(paramString).append(", size:");
-      if (paramList == null)
-      {
-        i = 0;
-        QLog.d("LikeRankingListActivity", 2, new Object[] { str, i + ", nextIndex: " + paramInt + ", isComplete:" + paramBoolean2 });
-      }
-    }
-    else
-    {
-      if (!paramBoolean1) {
-        break label341;
-      }
-      if ((paramList == null) || ((paramList.size() <= 0) && (!paramBoolean2))) {
-        break label284;
-      }
-      this.a.jdField_a_of_type_Ajll.a(paramList, paramInt, paramBoolean2);
-      if ((!paramBoolean2) || (paramList.size() != 0)) {
-        break label258;
-      }
-      this.a.e.setVisibility(0);
-      label165:
-      this.a.jdField_a_of_type_Abbo.a(paramList, true);
-      if (this.a.jdField_a_of_type_Int == 0)
-      {
-        if (paramList.size() <= 0) {
-          break label273;
-        }
-        this.a.a(String.valueOf(((LikeRankingInfo)paramList.get(0)).uin));
-        LikeRankingListActivity.a(this.a, false);
-      }
-    }
-    for (;;)
-    {
-      paramString = this.a;
-      if (paramBoolean2) {
-        paramInt = -1;
-      }
-      paramString.jdField_a_of_type_Int = paramInt;
-      return;
-      i = paramList.size();
-      break;
-      label258:
-      this.a.e.setVisibility(8);
-      break label165;
-      label273:
-      this.a.a(null);
-      continue;
-      label284:
-      this.a.a(null);
-      this.a.jdField_a_of_type_Abbo.a = false;
-      this.a.jdField_a_of_type_Abbo.notifyDataSetChanged();
-      if (this.a.jdField_a_of_type_Abbo.getCount() <= 1) {
-        this.a.e.setVisibility(0);
-      }
-    }
-    label341:
-    this.a.jdField_a_of_type_Abbo.a = false;
-    this.a.jdField_a_of_type_Abbo.notifyDataSetChanged();
-    bbmy.a(BaseApplication.getContext(), 1, ajjy.a(2131640314), 0).a();
+    return this.a.a.size();
+  }
+  
+  public Object instantiateItem(View paramView, int paramInt)
+  {
+    ((ViewPager)paramView).addView((View)this.a.a.get(paramInt), 0);
+    return this.a.a.get(paramInt);
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

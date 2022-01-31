@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import android.widget.ImageView;
 
-class axpe
-  implements ITransCallbackForReport
+public final class axpe
+  implements axnt
 {
-  axpe(axpc paramaxpc) {}
+  public axpe(ImageView paramImageView1, ImageView paramImageView2) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public void a()
   {
-    this.a.a(false, this.a.j, paramString1, paramString2);
+    if ((this.a != null) && (this.b != null))
+    {
+      this.a.setVisibility(8);
+      this.b.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axpe
  * JD-Core Version:    0.7.0.1
  */

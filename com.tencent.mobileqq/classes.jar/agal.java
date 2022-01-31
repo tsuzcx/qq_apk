@@ -1,8 +1,20 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-public abstract interface agal
+public class agal
+  implements View.OnClickListener
 {
-  public abstract void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean);
+  public agal(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    paramView.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    this.a.startActivity(paramView);
+  }
 }
 
 

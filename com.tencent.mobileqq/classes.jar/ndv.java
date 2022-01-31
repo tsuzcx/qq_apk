@@ -1,77 +1,16 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.PublicAccountUnfollowTask.1;
-import com.tencent.biz.pubaccount.PublicAccountUnfollowTask.2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
 
 public class ndv
-  implements oqy
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private ndw jdField_a_of_type_Ndw;
+  public ndv(EqqAccountDetailActivity paramEqqAccountDetailActivity, nmv paramnmv) {}
   
-  public ndv(QQAppInterface paramQQAppInterface, String paramString, Context paramContext)
+  public void onClick(View paramView)
   {
-    this(paramQQAppInterface, paramString, paramContext, null);
-  }
-  
-  public ndv(QQAppInterface paramQQAppInterface, String paramString, Context paramContext, ndw paramndw)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Ndw = paramndw;
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getSubThreadHandler();
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_Int >= 3) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null))
-    {
-      QLog.d("PublicAccountUnfollowTask", 2, "retry count reach max value or app = null ! retryCount : " + this.jdField_a_of_type_Int);
-      return;
-    }
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new PublicAccountUnfollowTask.1(this));
-  }
-  
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    if (i < 3)
-    {
-      QLog.d("PublicAccountUnfollowTask", 2, "unfollow account fail ! uin : " + this.jdField_a_of_type_JavaLangString + " , errCode : " + paramInt + ", retry : " + this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new PublicAccountUnfollowTask.2(this));
-    }
-    while (this.jdField_a_of_type_Ndw == null) {
-      return;
-    }
-    this.jdField_a_of_type_Ndw.a(false, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (paramBoolean)
-    {
-      QLog.d("PublicAccountUnfollowTask", 2, "unfollow account success ! uin : " + paramString + ",retry : " + this.jdField_a_of_type_Int);
-      paramInt = rtr.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-      ahcq.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_JavaLangString, 1008);
-      ((ohd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(163)).a().e();
-      if (this.jdField_a_of_type_Ndw != null) {
-        this.jdField_a_of_type_Ndw.a(true, paramString);
-      }
-      return;
-    }
-    a(-1, null);
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a = this.jdField_a_of_type_Nmv.d;
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_Nmv, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a);
   }
 }
 

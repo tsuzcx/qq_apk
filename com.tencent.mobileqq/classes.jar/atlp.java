@@ -1,15 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.openapi.OpenApiManager;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-public class atlp
-  implements aclm
+public abstract interface atlp
 {
-  public atlp(OpenApiManager paramOpenApiManager) {}
+  public abstract int a();
   
-  public void a(View paramView, axqf paramaxqf, int paramInt1, int paramInt2)
-  {
-    this.a.onFileTransStatusChanged(paramaxqf, paramInt1, paramInt2);
-  }
+  public abstract void a();
+  
+  public abstract void a(Comments.Comment paramComment);
+  
+  public abstract void b();
+  
+  public abstract void b(Comments.Comment paramComment);
+  
+  public abstract void c();
 }
 
 

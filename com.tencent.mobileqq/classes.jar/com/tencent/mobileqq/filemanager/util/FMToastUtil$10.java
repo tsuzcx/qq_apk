@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import apcb;
-import bbmy;
+import aptv;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class FMToastUtil$10
@@ -9,11 +9,11 @@ public final class FMToastUtil$10
 {
   public void run()
   {
-    bbmy localbbmy = new bbmy(BaseApplicationImpl.getContext());
-    localbbmy.a(2130839253);
-    localbbmy.d(3000);
-    localbbmy.c(this.a);
-    localbbmy.b(apcb.a());
+    bcpw localbcpw = new bcpw(BaseApplicationImpl.getContext());
+    localbcpw.a(2130839277);
+    localbcpw.d(3000);
+    localbcpw.c(this.a);
+    localbcpw.b(aptv.a());
   }
 }
 

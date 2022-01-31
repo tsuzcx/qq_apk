@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bfwu;
+import bhff;
 
 public class WeishiPictureUrl
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiPictureUrl> CREATOR = new bfwu();
+  public static final Parcelable.Creator<WeishiPictureUrl> CREATOR = new bhff();
   public int a;
   public PictureUrl a;
   

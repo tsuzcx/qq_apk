@@ -1,11 +1,8 @@
 public class bjkw
 {
-  private bjks a;
-  
-  public bjkw(bjku parambjku)
-  {
-    this.a = new bjks(parambjku);
-  }
+  public int a;
+  public String a;
+  public int b;
 }
 
 

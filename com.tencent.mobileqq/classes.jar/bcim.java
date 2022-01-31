@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.filedownload.ApkFileDownloadFragment;
-import com.tencent.open.filedownload.ApkFileDownloadFragment.2.1;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
 
 public class bcim
-  extends bciw
+  implements atcg
 {
-  public bcim(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
+  public bcim(WerewolvesHostInterface paramWerewolvesHostInterface, boolean paramBoolean) {}
   
-  public void a()
+  public void bt()
   {
-    ThreadManager.getUIHandler().post(new ApkFileDownloadFragment.2.1(this));
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.mGameRoomAVController.a(this.jdField_a_of_type_Boolean);
   }
+  
+  public void bu() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bcim
  * JD-Core Version:    0.7.0.1
  */

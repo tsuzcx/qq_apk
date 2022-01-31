@@ -1,30 +1,53 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import android.content.Intent;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
-import com.tencent.mobileqq.mini.sdk.MiniAppController.ActivityResultListener;
+import NS_MINI_AD.MiniAppAd.StGetAdRsp;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+import ysx;
 
 class DataJsPlugin$28
-  implements MiniAppController.ActivityResultListener
+  implements MiniAppCmdInterface
 {
-  DataJsPlugin$28(DataJsPlugin paramDataJsPlugin, JsRuntime paramJsRuntime, String paramString, int paramInt) {}
+  DataJsPlugin$28(DataJsPlugin paramDataJsPlugin, JsRuntime paramJsRuntime, String paramString, int paramInt1, int paramInt2) {}
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (paramInt1 == 9)
+    if (paramBoolean)
     {
-      if (paramInt2 == 0) {
-        this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
-      }
-      for (;;)
+      Object localObject = (MiniAppAd.StGetAdRsp)paramJSONObject.opt("response");
+      long l = paramJSONObject.optLong("retCode");
+      paramJSONObject = ((MiniAppAd.StGetAdRsp)localObject).strAdsJson.get();
+      String str = ((MiniAppAd.StGetAdRsp)localObject).strAdTemplateJson.get();
+      localObject = new JSONObject();
+      JSONObject localJSONObject = new JSONObject();
+      try
       {
-        MiniAppController.getInstance().removeActivityResultListener(this);
-        return true;
-        this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
+        localJSONObject.put("data", paramJSONObject);
+        localJSONObject.put("ret", l);
+        localJSONObject.put("adClass", str);
+        ((JSONObject)localObject).put("data", localJSONObject.toString());
+        QLog.d("[mini] DataJsPlugin", 2, "sendAdRequest. retCode = " + l);
+        this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, (JSONObject)localObject, this.val$callBackId);
+        DataJsPlugin.access$600(this.this$0, paramJSONObject, this.val$adType);
+        paramJSONObject = new GdtAd(DataJsPlugin.access$700(this.this$0, paramJSONObject));
+        ysx.a().a(paramJSONObject);
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          QLog.e("[mini] DataJsPlugin", 2, "");
+          localJSONException.printStackTrace();
+        }
       }
     }
-    return false;
+    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callBackId);
   }
 }
 

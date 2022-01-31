@@ -1,15 +1,38 @@
-import com.tencent.mobileqq.activity.PreloadWebService;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
 public class abib
-  extends WebViewClient
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abib(PreloadWebService paramPreloadWebService) {}
+  public abib(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return true;
+    int j = 1;
+    paramCompoundButton = this.a;
+    String str = this.a.app.getCurrentAccountUin();
+    if (paramBoolean)
+    {
+      i = 2;
+      GesturePWDUtils.setGesturePWDState(paramCompoundButton, str, i);
+      this.a.a(paramBoolean);
+      paramCompoundButton = this.a.app;
+      if (!paramBoolean) {
+        break label93;
+      }
+    }
+    label93:
+    for (int i = j;; i = 0)
+    {
+      axqw.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Setting_Gesture_password", 0, i, "", "", "", "");
+      this.a.a();
+      return;
+      i = 1;
+      break;
+    }
   }
 }
 

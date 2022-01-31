@@ -1,43 +1,74 @@
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataRsp;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public abstract class avzo
-  implements ajfe
+public class avzo
+  extends Handler
 {
-  public void a(boolean paramBoolean, int paramInt) {}
+  protected WeakReference<avzm> a;
   
-  public void a(boolean paramBoolean, bhso parambhso) {}
-  
-  protected void a(boolean paramBoolean, GetFontDataRsp paramGetFontDataRsp) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void b(boolean paramBoolean, int paramInt) {}
-  
-  public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public avzo(avzm paramavzm1, Looper paramLooper, avzm paramavzm2)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, (bhso)paramObject);
-      return;
-    case 2: 
-      a(paramBoolean, ((Boolean)paramObject).booleanValue());
-      return;
-    case 3: 
-      a(paramBoolean, ((Integer)paramObject).intValue());
-      return;
-    case 4: 
-      a(paramBoolean, (GetFontDataRsp)paramObject);
-      return;
+    super(paramLooper);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramavzm2);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int i = paramMessage.what;
+    avzm localavzm = (avzm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localavzm == null) {
+      if (QLog.isColorLevel()) {
+        QLog.w("HWVideoRecorder", 2, "RecodeHandler.handleMessage: encoder is null");
+      }
     }
-    b(paramBoolean, ((Integer)paramObject).intValue());
+    label187:
+    do
+    {
+      do
+      {
+        return;
+        switch (i)
+        {
+        default: 
+          throw new RuntimeException("Unhandled msg what=" + i);
+        case 0: 
+          if (paramMessage.obj != null)
+          {
+            avzm.a(localavzm, (avzp)paramMessage.obj);
+            return;
+          }
+          throw new RuntimeException("bundle == null");
+        case 1: 
+          if ((avzm.a(this.jdField_a_of_type_Avzm)) || (avzm.a(this.jdField_a_of_type_Avzm) == null) || (!avzm.a(this.jdField_a_of_type_Avzm).a)) {
+            break label187;
+          }
+          sendEmptyMessageDelayed(1, 100L);
+        }
+      } while ((!QLog.isColorLevel()) || (!QLog.isColorLevel()));
+      QLog.d("HWVideoRecorder", 2, "Thumbnail is not ready. Wait 100ms and retry.");
+      return;
+      avzm.a(localavzm);
+      return;
+      if (paramMessage.obj != null)
+      {
+        paramMessage = (Object[])paramMessage.obj;
+        if ((paramMessage == null) || (paramMessage.length != 5)) {
+          throw new IllegalArgumentException("args == null || args.length != 6");
+        }
+        localavzm.b(((Integer)paramMessage[0]).intValue(), ((Integer)paramMessage[1]).intValue(), (float[])paramMessage[2], (float[])paramMessage[3], ((Long)paramMessage[4]).longValue());
+        return;
+      }
+      throw new RuntimeException("bundle == null");
+    } while (avzm.a(this.jdField_a_of_type_Avzm) == null);
+    avzm.a(this.jdField_a_of_type_Avzm).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avzo
  * JD-Core Version:    0.7.0.1
  */

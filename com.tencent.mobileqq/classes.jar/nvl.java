@@ -1,30 +1,94 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.hotpic.PublicAccountHotPicPanel;
 
 public class nvl
-  implements nyx
+  implements bfxd
 {
-  public nvl(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  public nvl(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void a(int paramInt)
+  public View a(int paramInt)
   {
-    if (paramInt != 2) {
-      this.a.d();
-    }
-    ocg localocg1 = new ocg();
-    ocg localocg2 = localocg1.i().b("rowkey", ReadInJoyCommentListFragment.a(this.a).innerUniqueID).b("entry", "2");
-    if (paramInt == 2) {}
-    for (String str = "1";; str = "0")
+    EmoticonMainPanel localEmoticonMainPanel = null;
+    if (paramInt == 3)
     {
-      localocg2.b("result", str);
-      nvx.a("0X800A00F", ReadInJoyCommentListFragment.a(this.a), localocg1);
-      return;
+      if (ReadInJoyBaseDeliverActivity.a(this.a) == null)
+      {
+        ReadInJoyBaseDeliverActivity.a(this.a, (EmoticonMainPanel)View.inflate(this.a, 2131559018, null));
+        ReadInJoyBaseDeliverActivity.a(this.a).setCallBack(ReadInJoyBaseDeliverActivity.a(this.a));
+        ReadInJoyBaseDeliverActivity.a(this.a).b = true;
+        bool = this.a instanceof ReadInJoyDeliverBiuActivity;
+        ReadInJoyBaseDeliverActivity.a(this.a).a(this.a.app, 99999, this.a, this.a.getTitleBarHeight(), null, null, bool);
+        ReadInJoyBaseDeliverActivity.a(this.a).s();
+      }
+      localEmoticonMainPanel = ReadInJoyBaseDeliverActivity.a(this.a);
     }
+    while (paramInt != 24)
+    {
+      boolean bool;
+      return localEmoticonMainPanel;
+    }
+    if (ReadInJoyBaseDeliverActivity.a(this.a) == null)
+    {
+      ReadInJoyBaseDeliverActivity.a(this.a, (PublicAccountHotPicPanel)View.inflate(this.a, 2131559427, null));
+      ReadInJoyBaseDeliverActivity.a(this.a).a(this.a.app, this.a, null, this.a.a);
+      ReadInJoyBaseDeliverActivity.a(this.a).setPublicAccountGifListener(ReadInJoyBaseDeliverActivity.a(this.a));
+    }
+    return ReadInJoyBaseDeliverActivity.a(this.a);
   }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    boolean bool;
+    if ((paramInt1 == 24) && (ReadInJoyBaseDeliverActivity.a(this.a) != null)) {
+      if (paramInt2 == 1)
+      {
+        bool = true;
+        ReadInJoyBaseDeliverActivity.a(this.a).a(bool);
+        label34:
+        if (paramInt2 != 1) {
+          break label82;
+        }
+        this.a.b(1);
+      }
+    }
+    label82:
+    do
+    {
+      return;
+      bool = false;
+      break;
+      if ((paramInt2 != 24) || (ReadInJoyBaseDeliverActivity.a(this.a) == null)) {
+        break label34;
+      }
+      ReadInJoyBaseDeliverActivity.a(this.a).f();
+      break label34;
+      if (paramInt2 == 3)
+      {
+        this.a.b(2);
+        return;
+      }
+      if (paramInt2 == 0)
+      {
+        this.a.b(0);
+        return;
+      }
+    } while (paramInt2 != 24);
+    this.a.b(3);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return false;
+  }
+  
+  public void r() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nvl
  * JD-Core Version:    0.7.0.1
  */

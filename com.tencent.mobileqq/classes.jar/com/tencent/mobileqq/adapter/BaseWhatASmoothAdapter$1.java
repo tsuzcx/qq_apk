@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.adapter;
 
-import ahyz;
-import ahza;
+import ails;
+import ailt;
 import android.view.View;
 
 public class BaseWhatASmoothAdapter$1
   implements Runnable
 {
-  public BaseWhatASmoothAdapter$1(ahyz paramahyz, View paramView, Object paramObject1, Object paramObject2, int paramInt, ahza paramahza) {}
+  public BaseWhatASmoothAdapter$1(ails paramails, View paramView, Object paramObject1, Object paramObject2, int paramInt, ailt paramailt) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class BaseWhatASmoothAdapter$1
       this.this$0.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangObject);
       this.jdField_a_of_type_AndroidViewView.setTag(this.this$0.a + this.jdField_a_of_type_Int);
     }
-    ahza.a(this.jdField_a_of_type_Ahza, null);
+    ailt.a(this.jdField_a_of_type_Ailt, null);
   }
 }
 

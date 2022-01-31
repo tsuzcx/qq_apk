@@ -1,35 +1,29 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-
-class rpz
-  implements View.OnTouchListener
+public class rpz
 {
-  rpz(rpw paramrpw, rpv paramrpv, boolean paramBoolean) {}
+  public String a;
+  public rpu a;
+  public String b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public rpz(String paramString, rpu paramrpu, boolean paramBoolean)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      this.jdField_a_of_type_Rpw.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Rpw.jdField_a_of_type_Rpv.a.getResources().getColor(2131100389));
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Rpw.c.setBackgroundResource(2130842542);
-        return false;
-      }
-      this.jdField_a_of_type_Rpw.c.setBackgroundResource(2130842543);
-      return false;
+    if (paramString == null) {
+      throw new IllegalArgumentException();
     }
-    this.jdField_a_of_type_Rpw.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Rpw.jdField_a_of_type_Rpv.a.getResources().getColor(2131100388));
-    this.jdField_a_of_type_Rpw.c.setBackgroundResource(2130842551);
-    return false;
+    this.jdField_a_of_type_Rpu = paramrpu;
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_JavaLangString = paramString;
+      return;
+    }
+    this.b = paramString;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      return this.b;
+    }
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

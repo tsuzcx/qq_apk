@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troopgift;
 
-import azpw;
-import azpx;
+import bara;
+import barb;
 
 public class TroopGiftAnimationController$1
   implements Runnable
 {
-  public TroopGiftAnimationController$1(azpw paramazpw) {}
+  public TroopGiftAnimationController$1(bara parambara) {}
   
   public void run()
   {
     if ((this.this$0.a instanceof TroopGiftToAllSurfaceView)) {
-      ((TroopGiftToAllSurfaceView)this.this$0.a).a(new azpx(this));
+      ((TroopGiftToAllSurfaceView)this.this$0.a).a(new barb(this));
     }
   }
 }

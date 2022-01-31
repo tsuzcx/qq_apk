@@ -1,24 +1,32 @@
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import cooperation.qzone.panorama.widget.PanoramaView;
 
-public abstract interface bhhl
+public class bhhl
+  implements bhgr
 {
-  public abstract void a();
+  public bhhl(PanoramaView paramPanoramaView) {}
   
-  public abstract void a(bikj parambikj, float paramFloat1, float paramFloat2, float paramFloat3, String paramString, SegmentKeeper paramSegmentKeeper);
+  public void a()
+  {
+    if (PanoramaView.a(this.a) != null) {
+      PanoramaView.a(this.a).onPanoramaClick();
+    }
+  }
   
-  public abstract void a(bior parambior, String paramString, float paramFloat1, float paramFloat2, float paramFloat3);
+  public void a(float paramFloat)
+  {
+    if (PanoramaView.a(this.a) != null) {
+      PanoramaView.a(this.a).a(paramFloat);
+    }
+  }
   
-  public abstract void a(biov parambiov, float paramFloat1, float paramFloat2, float paramFloat3);
-  
-  public abstract void a(biov parambiov, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void b(bikj parambikj, float paramFloat1, float paramFloat2, float paramFloat3, String paramString, SegmentKeeper paramSegmentKeeper);
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    this.a.a(paramFloat1, paramFloat2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhhl
  * JD-Core Version:    0.7.0.1
  */

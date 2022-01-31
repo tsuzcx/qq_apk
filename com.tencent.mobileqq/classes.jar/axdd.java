@@ -1,67 +1,51 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.tablequery.TReportData;
-import com.tencent.mobileqq.tablequery.TableQueryController.2.1;
-import com.tencent.mobileqq.tablequery.TableQueryViewer;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.15;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 public class axdd
-  extends BroadcastReceiver
+  implements aysa
 {
-  axdd(axdc paramaxdc) {}
+  public axdd(PtvTemplateManager.15 param15) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onResp(aysx paramaysx)
   {
-    paramContext = paramIntent.getAction();
-    if ("action.query.data.viewer" == paramContext)
-    {
-      paramIntent = (TReportData)paramIntent.getSerializableExtra("queryData");
-      if (paramIntent != null) {}
+    if (QLog.isColorLevel()) {
+      QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "onResp url: " + this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUrl + " resultcode: " + paramaysx.c);
     }
-    int i;
-    do
+    this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUsable = this.a.this$0.a(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo, false);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUsable) {}
+    try
     {
-      do
+      nay.a(new File(PtvTemplateManager.b, this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleName), PtvTemplateManager.c);
+      if (paramaysx.jdField_a_of_type_Int == 0)
       {
-        return;
-        axdb localaxdb = new axdb();
-        localaxdb.k = "";
-        localaxdb.b = (paramIntent.actionName + "\n" + paramIntent.subAction + "\n" + paramIntent.mainAction + "\n");
-        if (paramIntent.actionName == null) {}
-        for (paramContext = paramIntent.mainAction;; paramContext = paramIntent.subAction)
-        {
-          localaxdb.a = paramContext;
-          if ((axdc.a) && (!axdc.b) && (axdc.a(this.a) != null)) {
-            axdc.a(this.a).a(localaxdb);
-          }
-          if ((axdc.a) && ((axdc.c) || (axdc.a()))) {
-            axdc.a(this.a).a((QQAppInterface)axdc.a(this.a).get(), paramIntent.table, 2, paramIntent.mainAction, paramIntent.actionName, paramIntent.subAction);
-          }
-          QLog.d("TableQueryController", 1, paramIntent.actionName + "\n" + paramIntent.mainAction + "\n" + paramIntent.subAction + "\n" + paramIntent.table + "\n");
-          return;
+        ayxq localayxq = (ayxq)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193);
+        if (localayxq.a()) {
+          localayxq.a(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUrl, paramaysx.jdField_a_of_type_Long);
         }
-      } while ("com.tencent.plugin.state.change" != paramContext);
-      i = paramIntent.getIntExtra("key_plugin_state", -1);
-      if (1 == i)
-      {
-        this.a.b();
-        paramContext = new TableQueryController.2.1(this);
-        ThreadManager.getSubThreadHandler().postDelayed(paramContext, 2000L);
-        return;
       }
-    } while (i != 0);
-    this.a.c();
-    axdc.a = false;
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          localIOException.printStackTrace();
+        }
+      }
+    }
   }
+  
+  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axdd
  * JD-Core Version:    0.7.0.1
  */

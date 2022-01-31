@@ -1,58 +1,74 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
-import java.io.File;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.export.js.VipDownloadInterface;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class bdmk
+public class bdmk
+  implements bdkw
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public bdmk(VipDownloadInterface paramVipDownloadInterface) {}
   
-  public bdmk() {}
-  
-  public bdmk(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo)
+  public void a(int paramInt, String paramString)
   {
-    this.a = paramString;
-    if (paramMiniAppBaseInfo != null)
+    bdht.e(this.a.a, "getQueryDownloadAction onException code = " + paramInt + " msg= ");
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      this.d = paramMiniAppBaseInfo.appId;
-      this.c = paramMiniAppBaseInfo.name;
-      this.e = paramMiniAppBaseInfo.iconUrl;
+      localJSONObject.put("errCode", paramInt);
+      localJSONObject.put("errMsg", paramString);
+      paramString = "javascript:publicAccountDownload.queryProcess(" + localJSONObject.toString() + ")";
+      this.a.a(paramString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
     }
   }
   
-  public abstract String c(String paramString);
-  
-  public String e()
+  public void a(List<DownloadInfo> paramList)
   {
-    return this.a;
-  }
-  
-  public String f()
-  {
-    return this.a;
-  }
-  
-  public String g(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    bdht.a(this.a.a, "getQueryDownloadAction onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
+    {
+      if (i < j)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
+        {
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONArray.put(localJSONObject);
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
+      }
     }
-    return new File(f(), paramString).getAbsolutePath();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("appId:").append(this.d).append(", name:").append(this.c);
-    return localStringBuilder.toString();
+    paramList = "javascript:publicAccountDownload.queryProcess(" + localJSONArray.toString() + ")";
+    bdht.a(this.a.a, "getQueryDownloadAction callback url = " + paramList);
+    this.a.a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdmk
  * JD-Core Version:    0.7.0.1
  */

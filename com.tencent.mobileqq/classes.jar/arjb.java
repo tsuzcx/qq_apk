@@ -1,63 +1,48 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopRemindSettingData;
-import com.tencent.mobileqq.managers.TroopRemindSettingManager.1;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.intervideo.nowproxy.NowPluginObserver;
+import com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment;
 
 public class arjb
+  implements NowPluginObserver
 {
-  private static arjb a;
+  public arjb(LoadingFragment paramLoadingFragment) {}
   
-  public static arjb a()
+  public void onCloseLoadingView()
   {
-    if (a == null) {
-      a = new arjb();
-    }
-    return a;
-  }
-  
-  public static void a()
-  {
-    if (a != null) {
-      a = null;
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if (localFragmentActivity != null) {
+      localFragmentActivity.finish();
     }
   }
   
-  public void a(atmp paramatmp, QQAppInterface paramQQAppInterface)
+  public void onEnterAvPlugin(Bundle paramBundle) {}
+  
+  public void onEnterRoom(Bundle paramBundle)
   {
-    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("init_troop_remind", false).commit();
+    this.a.a();
   }
   
-  public void a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    TroopRemindSettingData localTroopRemindSettingData = new TroopRemindSettingData();
-    localTroopRemindSettingData.troopUin = paramString;
-    localTroopRemindSettingData.isOpenState = 1;
-    paramQQAppInterface.b(localTroopRemindSettingData);
-  }
+  public void onExitRoom(Bundle paramBundle) {}
   
-  public boolean a(QQAppInterface paramQQAppInterface)
+  public void onLoadingViewCreated(View paramView)
   {
-    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getBoolean("init_troop_remind", true);
-  }
-  
-  public boolean a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    paramString = (TroopRemindSettingData)paramQQAppInterface.getEntityManagerFactory().createEntityManager().a(TroopRemindSettingData.class, paramString);
-    return (paramString != null) && (paramString.isOpenState == 0);
-  }
-  
-  public void b(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    ThreadManager.post(new TroopRemindSettingManager.1(this, paramQQAppInterface, paramString), 8, null, false);
+    if (paramView != null)
+    {
+      this.a.getActivity();
+      FrameLayout localFrameLayout = (FrameLayout)this.a.getView();
+      if ((paramView != null) && (localFrameLayout != null)) {
+        localFrameLayout.addView(paramView, new FrameLayout.LayoutParams(-1, -1));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arjb
  * JD-Core Version:    0.7.0.1
  */

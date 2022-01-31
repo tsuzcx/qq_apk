@@ -1,928 +1,100 @@
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.app.Application;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.os.RemoteException;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.PluginManageHandler;
-import com.tencent.mobileqq.pluginsdk.RemotePluginManager;
-import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.Dex2Oat;
-import cooperation.plugin.PluginInfo;
-import cooperation.plugin.PluginUpdater;
-import cooperation.qzone.util.NetworkState;
-import java.io.File;
-import java.io.IOException;
+import android.text.TextUtils;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.regex.Pattern;
 
-public final class bfdz
-  extends bfcz
-  implements Handler.Callback, bfdq, bfdw, bfei
+public class bfdz
 {
-  private Application jdField_a_of_type_AndroidAppApplication;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private bfct jdField_a_of_type_Bfct;
-  private bfdn jdField_a_of_type_Bfdn;
-  private bfdt jdField_a_of_type_Bfdt;
-  private bfee jdField_a_of_type_Bfee;
-  private bfeg jdField_a_of_type_Bfeg;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private PluginUpdater jdField_a_of_type_CooperationPluginPluginUpdater;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ArrayList<bfed> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ConcurrentHashMap<String, PluginInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private ConcurrentHashMap<String, OnPluginInstallListener> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  private static Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("[\\w\\d+_]+://");
+  private String jdField_a_of_type_JavaLangString;
+  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private String b;
+  private String c;
   
-  public bfdz(QQAppInterface paramQQAppInterface)
+  public bfdz(String paramString)
   {
-    QLog.d("plugin_tag", 1, "init plugin manager");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidAppApplication = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-    b();
-    this.jdField_a_of_type_CooperationPluginPluginUpdater = new PluginUpdater(this.jdField_a_of_type_AndroidAppApplication, this.jdField_a_of_type_AndroidOsHandler);
-    this.jdField_a_of_type_Bfeg = new bfeg(this.jdField_a_of_type_AndroidAppApplication, this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_CooperationPluginPluginUpdater.a(this);
-    this.jdField_a_of_type_Bfdn = new bfdn(this.jdField_a_of_type_AndroidAppApplication, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    try
-    {
-      this.jdField_a_of_type_Bfdt = new bfdt(this.jdField_a_of_type_AndroidAppApplication, bfdn.a(this.jdField_a_of_type_AndroidAppApplication).getCanonicalPath());
-      label160:
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-      this.jdField_a_of_type_Bfct = bfct.a(this.jdField_a_of_type_AndroidAppApplication);
-      this.jdField_a_of_type_Bfee = new bfee(this);
-      this.jdField_a_of_type_Bfee.a();
-      PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
-      localPluginCommunicationHandler.setCommunicationChannel(new bfej());
-      localPluginCommunicationHandler.register(new bfek(paramQQAppInterface));
-      paramQQAppInterface = PluginManageHandler.getInstance();
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin()) {
-        paramQQAppInterface.setPluginManagerProvider(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-      }
-      QLog.d("plugin_tag", 1, "init plugin manager end");
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      break label160;
-    }
-  }
-  
-  private static AlertDialog a(Context paramContext, String paramString, long paramLong, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (paramString = ajjy.a(2131642499) + paramString + "（" + bfcu.a(paramLong) + ajjy.a(2131642496);; paramString = paramString + "（" + bfcu.a(paramLong) + ajjy.a(2131642498)) {
-      return new AlertDialog.Builder(paramContext).setMessage(paramString).setNegativeButton(ajjy.a(2131642497), paramOnClickListener2).setPositiveButton(ajjy.a(2131642501), paramOnClickListener1).create();
-    }
-  }
-  
-  private static ProgressDialog a(Context paramContext, String paramString, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    paramContext = new ProgressDialog(paramContext);
-    paramContext.setProgressStyle(1);
-    paramContext.setIndeterminate(false);
-    paramContext.setTitle(paramString);
-    paramContext.setMessage(ajjy.a(2131642500));
-    paramContext.setCancelable(false);
-    paramContext.setButton(-2, ajjy.a(2131642502), new bfea(paramOnClickListener));
-    return paramContext;
-  }
-  
-  private void a(int paramInt, Context paramContext, bfdi parambfdi, bfdg parambfdg)
-  {
-    a(paramInt, false, paramContext, parambfdi, parambfdg);
-  }
-  
-  private void a(int paramInt, boolean paramBoolean, Context paramContext, bfdi parambfdi, bfdg parambfdg)
-  {
-    QLog.d("plugin_tag", 1, "doInstallAndLaunch. confirmCode, pluginId:" + paramInt + "," + parambfdi.b + ", " + this.c);
-    if ((!this.c) && (!bfct.b(parambfdi.b))) {
-      if (parambfdg != null) {
-        parambfdg.a(false, paramContext, parambfdi);
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (paramInt != 0) {
-            break;
-          }
-        } while (parambfdg == null);
-        parambfdg.a(false, paramContext, parambfdi);
-        return;
-        if (paramInt != 2) {
-          break;
-        }
-      } while (parambfdg == null);
-      localObject1 = this.jdField_a_of_type_Bfdt.a(parambfdi.b);
-      if ((localObject1 != null) && (((PluginInfo)localObject1).mInstalledPath != null))
-      {
-        parambfdi.c = ((PluginInfo)localObject1).mInstalledPath;
-        parambfdi.a((PluginBaseInfo)localObject1);
-      }
-      parambfdg.a(true, paramContext, parambfdi);
-      return;
-      if (paramInt == 4)
-      {
-        localObject1 = parambfdi.b;
-        localObject2 = new bfed();
-        ((bfed)localObject2).jdField_a_of_type_AndroidContentContext = paramContext;
-        ((bfed)localObject2).jdField_a_of_type_Bfdi = parambfdi;
-        ((bfed)localObject2).jdField_a_of_type_Bfdg = parambfdg;
-        ((bfed)localObject2).jdField_a_of_type_Boolean = true;
-        a((String)localObject1, new bfef(this, (bfed)localObject2));
-        return;
-      }
-      if (paramInt == 1)
-      {
-        localObject2 = parambfdi.b;
-        localObject1 = this.jdField_a_of_type_CooperationPluginPluginUpdater.a((String)localObject2);
-        if (localObject1 == null) {}
-        for (localObject1 = "";; localObject1 = ((PluginInfo)localObject1).mName)
-        {
-          bfed localbfed = new bfed();
-          localbfed.jdField_a_of_type_AndroidContentContext = paramContext;
-          localbfed.jdField_a_of_type_Bfdi = parambfdi;
-          localbfed.jdField_a_of_type_Bfdg = parambfdg;
-          localbfed.jdField_a_of_type_Boolean = false;
-          localbfed.jdField_a_of_type_AndroidAppProgressDialog = a(paramContext, (String)localObject1, new bfeb(this, parambfdi.b, null));
-          a((String)localObject2, paramBoolean, new bfef(this, localbfed));
-          return;
-        }
-      }
-    } while (paramInt != 3);
-    Object localObject1 = parambfdi.b;
-    Object localObject2 = new bfed();
-    ((bfed)localObject2).jdField_a_of_type_AndroidContentContext = paramContext;
-    ((bfed)localObject2).jdField_a_of_type_Bfdi = parambfdi;
-    ((bfed)localObject2).jdField_a_of_type_Bfdg = parambfdg;
-    ((bfed)localObject2).jdField_a_of_type_Boolean = true;
-    a((String)localObject1, paramBoolean, new bfef(this, (bfed)localObject2));
-  }
-  
-  private void a(String paramString, bfdh parambfdh)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "doQueryPlugin: " + paramString + ", " + parambfdh);
-    }
-    PluginInfo localPluginInfo2 = b(paramString);
-    PluginInfo localPluginInfo1 = localPluginInfo2;
-    if (localPluginInfo2 != null) {
-      localPluginInfo1 = localPluginInfo2.a();
-    }
-    b();
-    parambfdh.a(paramString, localPluginInfo1, this);
-  }
-  
-  public static boolean a()
-  {
-    boolean bool3 = false;
-    if (!DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.disable_dex2oat.name())) {}
-    for (boolean bool1 = true; bool1; bool1 = false)
-    {
-      boolean bool4 = Dex2Oat.a();
-      boolean bool2 = bool3;
-      if (bool1)
-      {
-        bool2 = bool3;
-        if (bool4)
-        {
-          bool2 = bool3;
-          if (Build.VERSION.SDK_INT >= 21) {
-            bool2 = true;
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("plugin_tag", 1, "isPluginSupportDex2Oat = " + bool2 + ", " + bool4);
-      }
-      return bool2;
-    }
-    return bool1;
-  }
-  
-  private boolean a(String paramString)
-  {
-    paramString = this.jdField_a_of_type_Bfct.a(paramString);
-    if (paramString == null) {
-      return false;
-    }
-    return this.jdField_a_of_type_CooperationPluginPluginUpdater.a(paramString);
-  }
-  
-  private PluginInfo b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "fetchPlugin :" + paramString);
-    }
-    Object localObject2 = (PluginInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    Object localObject1;
-    if (localObject2 == null)
-    {
-      PluginInfo localPluginInfo = this.jdField_a_of_type_Bfdt.a(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("plugin_tag", 2, "installed info :" + localPluginInfo);
-      }
-      localObject1 = localObject2;
-      if (localPluginInfo != null)
-      {
-        localObject1 = localObject2;
-        if (this.jdField_a_of_type_CooperationPluginPluginUpdater.a(localPluginInfo))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("plugin_tag", 2, "up to day info");
-          }
-          localObject1 = localPluginInfo;
-        }
-      }
-    }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = this.jdField_a_of_type_CooperationPluginPluginUpdater.a(paramString);
-      }
-      return localObject2;
-      int i = ((PluginInfo)localObject2).mState;
-      if ((i != -1) && (i != 4))
-      {
-        localObject1 = localObject2;
-        if (i != -2) {}
-      }
-      else
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-        localObject1 = localObject2;
-      }
-    }
-  }
-  
-  private void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "clearOldVersionPlugins");
-    }
-    File localFile1 = this.jdField_a_of_type_AndroidAppApplication.getDir("plugins", 0);
-    File localFile2 = this.jdField_a_of_type_AndroidAppApplication.getDir("NetPlugins", 0);
-    try
-    {
-      bace.a(localFile1.getCanonicalPath());
-      bace.a(localFile2.getCanonicalPath());
-      return;
-    }
-    catch (IOException localIOException) {}
-  }
-  
-  private boolean b()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(66049);
-      return true;
-    }
-    return false;
-  }
-  
-  private void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-    while (localIterator.hasNext())
-    {
-      PluginInfo localPluginInfo = (PluginInfo)localIterator.next();
-      if ((localPluginInfo != null) && (localPluginInfo.mState == 1) && (localPluginInfo.a == 1)) {
-        cancelInstall(localPluginInfo.mID);
-      }
-    }
-  }
-  
-  private void c(Context paramContext, bfdi parambfdi, bfdg parambfdg)
-  {
-    int i = 2;
-    boolean bool2 = false;
-    boolean bool3 = true;
-    if (parambfdi == null) {}
-    PluginInfo localPluginInfo2;
-    boolean bool4;
-    boolean bool1;
-    do
-    {
-      do
-      {
-        return;
-        QLog.d("plugin_tag", 1, "checkUpdate:" + parambfdi.b + ", " + parambfdi.e);
-        if ((this.c) || (bfct.b(parambfdi.b))) {
-          break;
-        }
-      } while (parambfdg == null);
-      parambfdg.a(false, paramContext, parambfdi);
-      return;
-      localObject = parambfdi.b;
-      localPluginInfo2 = this.jdField_a_of_type_CooperationPluginPluginUpdater.a((String)localObject);
-      if (localPluginInfo2 == null)
-      {
-        a(0, paramContext, parambfdi, parambfdg);
-        return;
-      }
-      bool4 = this.jdField_a_of_type_Bfdt.a((String)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("plugin_tag", 2, "installed :" + bool4);
-      }
-      if (bool4)
-      {
-        PluginInfo localPluginInfo1 = this.jdField_a_of_type_Bfdt.a((String)localObject);
-        bool1 = this.jdField_a_of_type_CooperationPluginPluginUpdater.a(localPluginInfo1);
-        if (QLog.isColorLevel()) {
-          QLog.d("plugin_tag", 2, "up to day :" + bool1);
-        }
-        localObject = localPluginInfo1;
-        if (bool1)
-        {
-          int j = i;
-          if (a())
-          {
-            bool1 = Dex2Oat.a(localPluginInfo1.mFingerPrint);
-            if (bool1) {
-              i = 4;
-            }
-            QLog.d("plugin_tag", 1, "needOTA :" + bool1);
-            j = i;
-          }
-          a(j, paramContext, parambfdi, parambfdg);
-        }
-      }
-      else
-      {
-        localObject = null;
-      }
-      if ((!bfdr.a(localPluginInfo2, this.jdField_a_of_type_AndroidAppApplication)) || (localObject == null)) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("plugin_tag", 2, "plugin still running");
-      }
-    } while (parambfdg == null);
-    parambfdi.c = ((PluginInfo)localObject).mInstalledPath;
-    parambfdi.a((PluginBaseInfo)localObject);
-    parambfdg.a(true, paramContext, parambfdi);
-    return;
-    if ((localPluginInfo2.mUpdateType == 0) && (bool4)) {
-      bool1 = false;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("plugin_tag", 2, "forceUpdate, deamonInstall：" + bool1 + ", " + bool2);
-      }
-      if (!bool2) {
-        break;
-      }
-      a(3, paramContext, parambfdi, parambfdg);
-      return;
-      bool1 = bool3;
-      if (localPluginInfo2.mInstallType != 1)
-      {
-        bool2 = true;
-        bool1 = bool3;
-      }
-    }
-    if (localObject != null) {}
-    for (Object localObject = ((PluginInfo)localObject).mFingerPrint;; localObject = null)
-    {
-      parambfdi = new bfec(this, parambfdg, bool1, paramContext, parambfdi, bool4, (String)localObject, null);
-      a(paramContext, localPluginInfo2.mName, localPluginInfo2.mLength, parambfdi, parambfdi, bool1).show();
-      return;
-    }
-  }
-  
-  private void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "doClose");
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  private void e()
-  {
-    for (;;)
-    {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("plugin_tag", 2, "getPluginList");
-        }
-        boolean bool = this.jdField_b_of_type_Boolean;
-        if (bool) {
-          return;
-        }
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_Boolean = true;
-          if (!badq.g(this.jdField_a_of_type_AndroidAppApplication)) {
-            a(false);
-          } else {
-            this.jdField_a_of_type_CooperationPluginPluginUpdater.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          }
-        }
-      }
-      finally {}
-    }
-  }
-  
-  private void f()
-  {
-    if (NetworkState.isMobile()) {
-      c();
-    }
-    while ((!NetworkState.isWifiConn()) || (!this.c)) {
-      return;
-    }
-    this.jdField_a_of_type_Bfeg.b();
-  }
-  
-  public PluginInfo a(String paramString)
-  {
-    PluginInfo localPluginInfo = b(paramString);
-    paramString = localPluginInfo;
-    if (localPluginInfo != null) {
-      paramString = localPluginInfo.a();
-    }
-    b();
-    return paramString;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "setReadyToNetworking");
-    }
-    b();
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    Object localObject = (PluginInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if ((localObject != null) && (((PluginInfo)localObject).mState == 1) && (paramInt2 > 0)) {
-      ((PluginInfo)localObject).mDownloadProgress = (paramInt1 / paramInt2);
-    }
-    localObject = (OnPluginInstallListener)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localObject != null) {}
-    try
-    {
-      ((OnPluginInstallListener)localObject).onInstallDownloadProgress(paramString, paramInt1, paramInt2);
-      return;
-    }
-    catch (RemoteException paramString) {}
-  }
-  
-  public void a(Context paramContext, bfdi parambfdi, bfdg parambfdg)
-  {
-    if ((!this.c) && (!bfct.b(parambfdi.b)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("plugin_tag", 2, "not ready");
-      }
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        bfed localbfed;
-        if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("plugin_tag", 2, "mPendingLaunchStateList not empty");
-          }
-          localbfed = new bfed();
-          localbfed.jdField_a_of_type_AndroidContentContext = paramContext;
-          localbfed.jdField_a_of_type_Bfdi = parambfdi;
-          localbfed.jdField_a_of_type_Bfdg = parambfdg;
-          this.jdField_a_of_type_JavaUtilArrayList.add(localbfed);
-          return;
-        }
-        synchronized (this.jdField_a_of_type_JavaLangObject)
-        {
-          b();
-          localbfed = new bfed();
-          localbfed.jdField_a_of_type_AndroidContentContext = paramContext;
-          localbfed.jdField_a_of_type_Bfdi = parambfdi;
-          localbfed.jdField_a_of_type_Bfdg = parambfdg;
-          this.jdField_a_of_type_JavaUtilArrayList.add(localbfed);
-          if (QLog.isColorLevel()) {
-            QLog.d("plugin_tag", 2, "set mPendingLaunchStateList");
-          }
-          return;
-        }
-      }
-    }
-    c(paramContext, parambfdi, parambfdg);
-  }
-  
-  public void a(String paramString)
-  {
-    installPlugin(paramString, null);
-  }
-  
-  public void a(String paramString, OnPluginInstallListener paramOnPluginInstallListener)
-  {
-    QLog.d("plugin_tag", 1, "dex2oatPlugin." + paramString);
-    PluginInfo localPluginInfo = this.jdField_a_of_type_Bfdt.a(paramString);
-    if (localPluginInfo == null) {
-      return;
-    }
-    if (bfdr.a(localPluginInfo, this.jdField_a_of_type_AndroidAppApplication))
-    {
-      QLog.d("plugin_tag", 1, "dex2oatPlugin plugin still running " + paramString);
-      return;
-    }
-    if (paramOnPluginInstallListener != null) {
-      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramOnPluginInstallListener);
-    }
-    localPluginInfo.mState = 5;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localPluginInfo);
-    this.jdField_a_of_type_Bfdt.b(localPluginInfo, this);
-  }
-  
-  public void a(String paramString, OnPluginInstallListener paramOnPluginInstallListener, boolean paramBoolean)
-  {
-    a(paramString, false, paramBoolean, paramOnPluginInstallListener);
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, " recordPluginStartupTime " + paramString1 + ", key = " + paramString2 + ", span = " + paramLong);
-    }
-    paramString1 = this.jdField_a_of_type_Bfdt.a(paramString1);
-    if (paramString1 != null)
-    {
-      if (!"pluginApkCost".equals(paramString2)) {
-        break label81;
-      }
-      paramString1.costApk = paramLong;
-    }
-    label81:
-    do
-    {
-      return;
-      if ("pluginOatCost".equals(paramString2))
-      {
-        paramString1.costDex2Oat = paramLong;
-        return;
-      }
-      if ("pluginDownloadCost".equals(paramString2))
-      {
-        paramString1.costDownload = paramLong;
-        return;
-      }
-    } while (!"pluginLibCost".equals(paramString2));
-    paramString1.costLib = paramLong;
-  }
-  
-  public void a(String paramString, boolean paramBoolean, OnPluginInstallListener paramOnPluginInstallListener)
-  {
-    a(paramString, paramBoolean, false, paramOnPluginInstallListener);
-  }
-  
-  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2, OnPluginInstallListener paramOnPluginInstallListener)
-  {
-    QLog.d("plugin_tag", 1, "installPlugin." + paramString);
-    PluginInfo localPluginInfo1 = null;
-    if (paramBoolean1)
-    {
-      localPluginInfo1 = this.jdField_a_of_type_Bfct.a(paramString);
-      if ((localPluginInfo1 == null) && (paramOnPluginInstallListener == null)) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        paramOnPluginInstallListener.onInstallError(paramString, 1);
-        return;
-      }
-      catch (RemoteException paramString) {}
-      PluginInfo localPluginInfo2 = this.jdField_a_of_type_CooperationPluginPluginUpdater.a(paramString);
-      if (localPluginInfo2 == null) {
-        break;
-      }
-      localPluginInfo1 = localPluginInfo2.a();
-      break;
-      if (bfdr.a(localPluginInfo1, this.jdField_a_of_type_AndroidAppApplication))
-      {
-        QLog.d("plugin_tag", 1, "plugin still running");
-        if (paramOnPluginInstallListener == null) {
-          continue;
-        }
-        try
-        {
-          paramOnPluginInstallListener.onInstallError(paramString, 2);
-          return;
-        }
-        catch (RemoteException paramString)
-        {
-          return;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("plugin_tag", 2, "plugin not run");
-      }
-      if (paramOnPluginInstallListener != null) {
-        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramOnPluginInstallListener);
-      }
-      localPluginInfo1.mState = 5;
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localPluginInfo1);
-      if ((a(paramString)) || (paramBoolean1))
-      {
-        this.jdField_a_of_type_Bfdt.a(localPluginInfo1, this);
-        return;
-      }
-      this.jdField_a_of_type_Bfdn.a(localPluginInfo1, this, paramBoolean2);
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.c = true;
-    if (!paramBoolean) {
-      this.jdField_a_of_type_Boolean = false;
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-          break label121;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("plugin_tag", 2, "onUpdateFinish. handle pending");
-        }
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        bfed localbfed = (bfed)localIterator.next();
-        c(localbfed.jdField_a_of_type_AndroidContentContext, localbfed.jdField_a_of_type_Bfdi, localbfed.jdField_a_of_type_Bfdg);
-      }
-      this.jdField_a_of_type_Bfeg.a();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (TextUtils.isEmpty(paramString)) {}
     for (;;)
     {
       return;
-      label121:
-      if (QLog.isColorLevel()) {
-        QLog.d("plugin_tag", 2, "mPendingLaunchStateList empty");
+      this.jdField_a_of_type_JavaLangString = paramString;
+      Object localObject = paramString;
+      if (paramString.contains("://")) {
+        localObject = paramString.replaceFirst("^.*://", "");
       }
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "onDownloadFinish:" + paramBoolean);
-    }
-    Object localObject = (PluginInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localObject != null)
-    {
-      if (!paramBoolean) {
-        break label72;
-      }
-      ((PluginInfo)localObject).mState = 2;
-      ((PluginInfo)localObject).mDownloadProgress = 1.0F;
-      this.jdField_a_of_type_Bfdt.a((PluginInfo)localObject, this);
-    }
-    label72:
-    do
-    {
-      return;
-      ((PluginInfo)localObject).mState = -2;
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      localObject = (OnPluginInstallListener)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    } while (localObject == null);
-    try
-    {
-      ((OnPluginInstallListener)localObject).onInstallError(paramString, 5);
-      return;
-    }
-    catch (RemoteException paramString) {}
-  }
-  
-  public boolean a(PluginInfo paramPluginInfo)
-  {
-    this.jdField_a_of_type_Bfdn.a(paramPluginInfo.mID);
-    return this.jdField_a_of_type_Bfdt.b(paramPluginInfo.mID);
-  }
-  
-  public void b(String paramString)
-  {
-    Object localObject = (PluginInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    ((PluginInfo)localObject).mState = -2;
-    localObject = (OnPluginInstallListener)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    if (localObject != null) {}
-    try
-    {
-      ((OnPluginInstallListener)localObject).onInstallError(paramString, 4);
-      return;
-    }
-    catch (RemoteException paramString) {}
-  }
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    OnPluginInstallListener localOnPluginInstallListener = (OnPluginInstallListener)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    PluginInfo localPluginInfo = (PluginInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    if (localPluginInfo != null) {
-      if (!paramBoolean) {
-        break label70;
-      }
-    }
-    for (int i = 4;; i = -2)
-    {
-      localPluginInfo.mState = i;
-      if ((localOnPluginInstallListener != null) && (!paramBoolean)) {
-        break;
-      }
-      label70:
-      try
+      if (!((String)localObject).contains("?"))
       {
-        localOnPluginInstallListener.onInstallFinish(paramString);
+        this.b = ((String)localObject);
         return;
       }
-      catch (RemoteException paramString) {}
-    }
-    try
-    {
-      localOnPluginInstallListener.onInstallError(paramString, 7);
-      return;
-    }
-    catch (RemoteException paramString) {}
-  }
-  
-  public void c(String paramString)
-  {
-    Object localObject = (PluginInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localObject != null)
-    {
-      ((PluginInfo)localObject).mState = 1;
-      ((PluginInfo)localObject).a = badq.b(this.jdField_a_of_type_AndroidAppApplication);
-    }
-    localObject = (OnPluginInstallListener)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localObject != null) {}
-    try
-    {
-      ((OnPluginInstallListener)localObject).onInstallBegin(paramString);
-      return;
-    }
-    catch (RemoteException paramString) {}
-  }
-  
-  public void cancelInstall(String paramString)
-  {
-    this.jdField_a_of_type_Bfdn.a(paramString);
-    this.jdField_a_of_type_Bfdt.b(paramString);
-  }
-  
-  public void d(String paramString)
-  {
-    Object localObject = (PluginInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    if ((localObject != null) && (((PluginInfo)localObject).mState == 1))
-    {
-      ((PluginInfo)localObject).mState = -1;
-      ((PluginInfo)localObject).a = 0;
-    }
-    localObject = (OnPluginInstallListener)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    if (localObject != null) {}
-    try
-    {
-      ((OnPluginInstallListener)localObject).onInstallError(paramString, 3);
-      return;
-    }
-    catch (RemoteException paramString) {}
-  }
-  
-  public void e(String paramString)
-  {
-    Object localObject = (PluginInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    if (localObject != null) {
-      ((PluginInfo)localObject).mState = -2;
-    }
-    localObject = (OnPluginInstallListener)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    if (localObject != null) {}
-    try
-    {
-      ((OnPluginInstallListener)localObject).onInstallError(paramString, 6);
-      return;
-    }
-    catch (RemoteException paramString) {}
-  }
-  
-  public void f(String paramString)
-  {
-    paramString = (PluginInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (paramString != null) {
-      paramString.mState = 3;
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      return true;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
-    case 65536: 
-      a(paramMessage.getData().getString("index_for_id"), (bfdh)paramMessage.obj);
-      return true;
-    case 66049: 
-      e();
-      return true;
-    case 66304: 
-      f();
-      return true;
-    }
-    d();
-    return true;
-  }
-  
-  public void installPlugin(String paramString, OnPluginInstallListener paramOnPluginInstallListener)
-  {
-    a(paramString, false, false, paramOnPluginInstallListener);
-  }
-  
-  public boolean isPlugininstalled(String paramString)
-  {
-    boolean bool2 = false;
-    paramString = a(paramString);
-    boolean bool1 = bool2;
-    if (paramString != null)
-    {
-      bool1 = bool2;
-      if (paramString.mState == 4)
+      paramString = ((String)localObject).split("\\?");
+      this.b = paramString[0];
+      this.c = paramString[1];
+      localObject = this.c.split("&");
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
       {
-        bool1 = bool2;
-        if (paramString.mInstalledPath != null) {
-          bool1 = true;
+        paramString = localObject[i];
+        if (paramString.contains("="))
+        {
+          String[] arrayOfString = paramString.split("=");
+          String str = arrayOfString[0];
+          paramString = "";
+          if (arrayOfString.length > 1) {
+            paramString = arrayOfString[1];
+          }
+          this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
         }
+        i += 1;
       }
     }
-    return bool1;
   }
   
-  public boolean isReady()
+  public bfdz(String paramString, Map<String, String> paramMap)
   {
-    return this.c;
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(65537).sendToTarget();
-    this.jdField_a_of_type_Bfee.b();
-    ??? = PluginCommunicationHandler.getInstance();
-    ((PluginCommunicationHandler)???).setCommunicationChannel(null);
-    ((PluginCommunicationHandler)???).unregister("common.get_qq_app_interface_data");
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    this.b = paramString;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.c = "";
+    this.jdField_a_of_type_JavaLangString = paramString;
+    new ArrayList();
+    if (paramMap != null)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
+      Iterator localIterator = paramMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        this.c = (this.c + str + "=" + (String)paramMap.get(str) + "&");
+      }
+    }
+    if (!TextUtils.isEmpty(this.c))
+    {
+      this.c = this.c.substring(0, this.c.length() - 1);
+      this.jdField_a_of_type_JavaLangString = (paramString + "?" + this.c);
     }
   }
   
-  public void setListener(RemotePluginManager paramRemotePluginManager) {}
+  public String a()
+  {
+    return this.b;
+  }
+  
+  public Map<String, String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilMap;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfdz
  * JD-Core Version:    0.7.0.1
  */

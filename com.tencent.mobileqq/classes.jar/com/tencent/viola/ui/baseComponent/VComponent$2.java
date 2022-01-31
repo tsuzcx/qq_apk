@@ -24,7 +24,7 @@ class VComponent$2
   
   public void run()
   {
-    if (VComponent.access$100(this.this$0) == null) {}
+    if (VComponent.access$200(this.this$0) == null) {}
     ArrayList localArrayList;
     do
     {
@@ -45,7 +45,7 @@ class VComponent$2
       Object localObject4;
       try
       {
-        JSONArray localJSONArray = VComponent.access$100(this.this$0).mProps;
+        JSONArray localJSONArray = VComponent.access$200(this.this$0).mProps;
         i = 0;
         if (i < localJSONArray.length())
         {

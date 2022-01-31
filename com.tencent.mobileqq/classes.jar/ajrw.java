@@ -1,86 +1,259 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
+import android.graphics.Bitmap;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class ajrw
-  implements SensorEventListener
+  implements Handler.Callback
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
+  protected int a;
   private long jdField_a_of_type_Long;
-  private float b;
-  private float c;
-  private float d;
+  protected ajry a;
+  protected ajrz a;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private bfnk jdField_a_of_type_Bfnk = new bfnk(Looper.getMainLooper(), this);
+  String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int;
+  private boolean jdField_c_of_type_Boolean;
   
-  private void a(long paramLong)
+  public ajrw(ajry paramajry, ajrz paramajrz)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.b = 0.0F;
-    this.c = 0.0F;
-    this.d = 0.0F;
     this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Ajry = paramajry;
+    this.jdField_a_of_type_Ajrz = paramajrz;
   }
   
-  protected void a() {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  private void a(boolean paramBoolean, File paramFile, String paramString)
   {
-    float f1 = 0.0F;
-    float f2;
-    float f3;
-    float f4;
-    long l1;
-    long l2;
-    if (paramSensorEvent.sensor.getType() == 1)
+    int i = 0;
+    if (paramBoolean) {}
+    try
     {
-      f2 = paramSensorEvent.values[0];
-      f3 = paramSensorEvent.values[1];
-      f4 = paramSensorEvent.values[2];
-      l1 = System.currentTimeMillis();
-      l2 = l1 - this.jdField_a_of_type_Long;
-      if (l2 <= 5000L) {
-        break label66;
+      a(paramFile, paramString);
+      this.jdField_a_of_type_ArrayOfJavaLangString = new File(paramString).list();
+      this.jdField_a_of_type_Int = 3;
+      if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0)) {
+        while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+        {
+          this.jdField_a_of_type_ArrayOfJavaLangString[i] = (paramString + this.jdField_a_of_type_ArrayOfJavaLangString[i]);
+          i += 1;
+        }
       }
-      a(l1);
-    }
-    label66:
-    while (l2 <= 80L) {
-      return;
-    }
-    if ((this.jdField_a_of_type_Float != 0.0F) || (this.b != 0.0F) || (this.c != 0.0F)) {
-      f1 = Math.abs(f2 - this.jdField_a_of_type_Float) + Math.abs(f3 - this.b) + Math.abs(f4 - this.c);
-    }
-    this.d += f1;
-    if ((this.d > 180.0F) && (this.jdField_a_of_type_Int >= 3))
-    {
-      if (QLog.isColorLevel())
+      if (this.jdField_a_of_type_Boolean)
       {
-        QLog.d("CIO_test", 2, "now[" + f2 + "," + f3 + "," + f4 + "]duration:" + l2 + " shake:" + f1);
-        QLog.d("CIO_test", 2, "last[" + this.jdField_a_of_type_Float + "," + this.b + "," + this.c + "]total_shake:" + f1);
+        b();
+        if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
+        {
+          this.jdField_c_of_type_Int = 0;
+          this.jdField_b_of_type_Boolean = true;
+          new ajrx(this, 0).execute(new Integer[] { Integer.valueOf(this.jdField_c_of_type_Int) });
+        }
       }
-      a();
-      a(l1);
       return;
     }
-    if (this.jdField_a_of_type_Int < 10)
+    catch (Exception paramFile)
     {
-      this.jdField_a_of_type_Int += 1;
-      this.jdField_a_of_type_Float = f2;
-      this.b = f3;
-      this.c = f4;
-      this.jdField_a_of_type_Long = l1;
+      QLog.e("SimpleFrameZipDecoder", 2, paramFile.getMessage());
+      this.jdField_a_of_type_Int = 2;
       return;
     }
-    a(l1);
+    catch (OutOfMemoryError paramFile)
+    {
+      QLog.e("SimpleFrameZipDecoder", 2, paramFile.getMessage());
+      this.jdField_a_of_type_Int = 2;
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Int == 3) {
+      b();
+    }
+    try
+    {
+      if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
+      {
+        this.jdField_c_of_type_Int = 0;
+        this.jdField_b_of_type_Boolean = true;
+        new ajrx(this, 0).execute(new Integer[] { Integer.valueOf(this.jdField_c_of_type_Int) });
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("SimpleFrameZipDecoder", 2, localException, new Object[0]);
+    }
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    if (TextUtils.isEmpty(paramString2)) {}
+    do
+    {
+      return;
+      this.jdField_b_of_type_Int = paramInt;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      if (!paramString2.equals(this.jdField_b_of_type_JavaLangString))
+      {
+        this.jdField_b_of_type_JavaLangString = paramString2;
+        this.jdField_a_of_type_Int = 0;
+        b();
+        this.jdField_a_of_type_ArrayOfJavaLangString = null;
+      }
+    } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 0));
+    paramString2 = b(this.jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    Object localObject = new File(paramString2);
+    ((File)localObject).mkdirs();
+    localObject = ((File)localObject).list();
+    File localFile = new File(this.jdField_b_of_type_JavaLangString);
+    if ((localObject != null) && (localObject.length > 0))
+    {
+      a(false, localFile, paramString2);
+      return;
+    }
+    if (localFile.exists())
+    {
+      a(true, localFile, paramString2);
+      return;
+    }
+    if (this.jdField_a_of_type_Ajry != null)
+    {
+      this.jdField_a_of_type_Ajry.a(this, paramString1, this.jdField_b_of_type_JavaLangString, paramString2);
+      return;
+    }
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void a(Bitmap paramBitmap, int paramInt)
+  {
+    long l2;
+    if ((this.jdField_b_of_type_Boolean) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
+    {
+      long l1 = System.currentTimeMillis();
+      l2 = l1 - this.jdField_a_of_type_Long;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      if (l2 <= this.jdField_b_of_type_Int) {
+        break label77;
+      }
+      this.jdField_a_of_type_Long = l1;
+      this.jdField_a_of_type_Bfnk.obtainMessage(255, this.jdField_c_of_type_Int, 0).sendToTarget();
+    }
+    for (;;)
+    {
+      this.jdField_c_of_type_Int = (paramInt + 1);
+      return;
+      label77:
+      paramBitmap = this.jdField_a_of_type_Bfnk.obtainMessage(255, this.jdField_c_of_type_Int, 0);
+      this.jdField_a_of_type_Bfnk.sendMessageDelayed(paramBitmap, this.jdField_b_of_type_Int - l2);
+    }
+  }
+  
+  protected void a(File paramFile, String paramString)
+  {
+    if ((paramFile.exists()) && (!TextUtils.isEmpty(paramString))) {
+      nay.a(paramFile, paramString);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_c_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SimpleFrameZipDecoder", 2, "onDownloadFinish，result:" + paramBoolean + " url:" + paramString1 + " zipFile:" + paramString2 + " folder:" + paramString3);
+    }
+    if ((this.jdField_b_of_type_JavaLangString != null) && (!this.jdField_b_of_type_JavaLangString.equals(paramString2)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SimpleFrameZipDecoder", 2, "onDownloadFinish，zipFile unEqual mLocalZipPath:" + this.jdField_b_of_type_JavaLangString);
+      }
+      return;
+    }
+    if (paramBoolean)
+    {
+      paramString1 = new File(paramString2);
+      if (paramString1.exists())
+      {
+        a(true, paramString1, paramString3);
+        return;
+      }
+      this.jdField_a_of_type_Int = 2;
+      return;
+    }
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  protected String b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      int i = paramString.lastIndexOf(".zip");
+      String str = paramString;
+      if (i > 0) {
+        str = paramString.substring(0, i);
+      }
+      return str + File.separator;
+    }
+    return "";
+  }
+  
+  public void b()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Bfnk.removeCallbacksAndMessages(null);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    switch (paramMessage.what)
+    {
+    default: 
+      bool = false;
+    }
+    do
+    {
+      return bool;
+    } while (!this.jdField_b_of_type_Boolean);
+    if (this.jdField_a_of_type_Ajrz == null) {
+      return false;
+    }
+    this.jdField_a_of_type_Ajrz.a(paramMessage.arg1, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_c_of_type_Int >= this.jdField_a_of_type_ArrayOfJavaLangString.length) && (this.jdField_a_of_type_ArrayOfJavaLangString.length != 1)) {
+      this.jdField_c_of_type_Int = 0;
+    }
+    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > this.jdField_c_of_type_Int)) {
+      new ajrx(this, this.jdField_c_of_type_Int).execute(new Integer[] { Integer.valueOf(this.jdField_c_of_type_Int) });
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      break;
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_Ajrz.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajrw
  * JD-Core Version:    0.7.0.1
  */

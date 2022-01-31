@@ -4,7 +4,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import mqq.app.MobileQQ;
-import ndn;
+import noo;
 
 class AfterSyncMsg$5
   implements Runnable
@@ -24,7 +24,7 @@ class AfterSyncMsg$5
     }
     for (;;)
     {
-      ndn.a(null, "CliOper", "", str, "0X80096F0", "0X80096F0", 0, 0, String.valueOf(i), "", "", "", false);
+      noo.a(null, "CliOper", "", str, "0X80096F0", "0X80096F0", 0, 0, String.valueOf(i), "", "", "", false);
       return;
       label86:
       i = 0;

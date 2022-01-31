@@ -1,39 +1,36 @@
 import android.content.Context;
-import android.support.annotation.NonNull;
+import android.view.View;
 import android.view.ViewGroup;
 
 public class vdk
-  extends vcy
+  extends wcr
 {
-  public int c;
+  private final String a;
   
-  public vdk(int paramInt1, String paramString, int paramInt2, int paramInt3)
+  public vdk(Context paramContext, String paramString)
   {
-    super(paramInt1, paramString, paramInt2);
-    this.c = paramInt3;
+    super(paramContext);
+    this.a = paramString;
   }
   
-  @NonNull
-  public Class<? extends vcz> a()
+  public int a()
   {
-    return vdl.class;
+    return 0;
   }
   
-  @NonNull
-  public vcz a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public View a(int paramInt, vas paramvas, ViewGroup paramViewGroup)
   {
-    return new vdl(this, paramContext, paramViewGroup);
+    return null;
   }
   
-  public void a(int paramInt)
+  public String a()
   {
-    urk.a("WeatherFilterData", "updateWeather:%s", Integer.valueOf(paramInt));
-    this.c = paramInt;
+    return this.a;
   }
   
-  public boolean a()
+  public vas a(int paramInt, ViewGroup paramViewGroup)
   {
-    return true;
+    return null;
   }
 }
 

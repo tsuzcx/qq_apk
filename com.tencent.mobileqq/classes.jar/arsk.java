@@ -1,24 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import org.json.JSONObject;
 
-class arsk
-  implements DialogInterface.OnClickListener
+public abstract interface arsk
 {
-  arsk(arsd paramarsd) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    awqx.b(this.a.a, "CliOper", "", "", "0X80067F7", "0X80067F7", 0, 0, "", "", "", "");
-    if (this.a.c()) {
-      arsd.a(this.a).a(false, null, false);
-    }
-  }
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arsk
  * JD-Core Version:    0.7.0.1
  */

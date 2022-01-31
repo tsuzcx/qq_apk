@@ -1,45 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.ConfigClearableEditText;
 
 public class bckd
+  implements View.OnTouchListener
 {
-  private static String a(String paramString)
+  public bckd(ConfigClearableEditText paramConfigClearableEditText) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    String str = paramString;
-    if (!TextUtils.isEmpty(paramString))
+    paramView = this.a;
+    int i;
+    if (paramMotionEvent.getX() > ConfigClearableEditText.a(this.a))
     {
-      str = paramString;
-      if (!paramString.startsWith("##@")) {
-        str = "##@" + paramString;
+      i = 1;
+      if (ConfigClearableEditText.a(this.a) != null)
+      {
+        if ((i == 0) || (paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+          break label102;
+        }
+        ConfigClearableEditText.a(this.a).b(true);
+      }
+      label66:
+      if ((paramView.getCompoundDrawables()[2] != null) || ((ConfigClearableEditText.a(this.a)) && (ConfigClearableEditText.a(this.a) != null))) {
+        break label118;
       }
     }
-    return str;
-  }
-  
-  public static void a(String paramString1, int paramInt, String paramString2)
-  {
-    paramString2 = "step" + paramInt + "-->" + paramString2;
-    QLog.d("WadlStep." + paramString1, 2, paramString2);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, a(paramString2));
-  }
-  
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, 1, a(paramString2), paramThrowable);
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    QLog.d(paramString1, 1, a(paramString2));
-  }
-  
-  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.d(paramString1, 1, a(paramString2), paramThrowable);
+    label102:
+    label118:
+    do
+    {
+      do
+      {
+        return false;
+        i = 0;
+        break;
+        ConfigClearableEditText.a(this.a).b(false);
+        break label66;
+      } while ((paramMotionEvent.getAction() != 1) || (i == 0));
+      this.a.setText("");
+      this.a.setClearButtonVisible(false);
+    } while (this.a.a == null);
+    this.a.a.a();
+    return false;
   }
 }
 

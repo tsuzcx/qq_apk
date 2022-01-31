@@ -1,99 +1,103 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.22.1;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.22.2;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.annotation.SuppressLint;
+import android.net.TrafficStats;
+import android.os.Build.VERSION;
+import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.lang.reflect.Method;
 
-public class qwj
-  extends ohe
+class qwj
+  implements qwo
 {
-  public qwj(FastWebActivity paramFastWebActivity) {}
+  private long jdField_a_of_type_Long;
+  private Method jdField_a_of_type_JavaLangReflectMethod;
+  private long jdField_b_of_type_Long;
+  private Method jdField_b_of_type_JavaLangReflectMethod;
+  private long c;
   
-  public void a(String paramString)
+  @SuppressLint({"DiscouragedPrivateApi"})
+  private final long b()
   {
-    int j = 0;
-    QLog.d("Q.readinjoy.fast_web", 2, " onWebCallback : " + paramString);
-    if (!FastWebActivity.e(this.a)) {
-      return;
-    }
-    int i;
-    if ("onPageStarted".equals(paramString)) {
-      i = 300;
-    }
-    for (;;)
+    try
     {
-      ThreadManager.getUIHandler().postDelayed(new FastWebActivity.22.2(this), i);
-      return;
-      i = j;
-      if ("onConversationJumpRestoreStack".equals(paramString)) {
-        i = j;
+      if (this.jdField_a_of_type_JavaLangReflectMethod == null)
+      {
+        this.jdField_a_of_type_JavaLangReflectMethod = TrafficStats.class.getDeclaredMethod("getLoopbackRxBytes", new Class[0]);
+        this.jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
+      }
+      long l = ((Long)this.jdField_a_of_type_JavaLangReflectMethod.invoke(null, new Object[0])).longValue();
+      return l;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("DefaultBandwidthObtainer", 2, "getLoopbackRxBytesIn28: ", localException);
       }
     }
+    return 0L;
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  @SuppressLint({"DiscouragedPrivateApi"})
+  private final long c()
   {
-    if (FastWebActivity.a(this.a) == null) {
-      return;
+    try
+    {
+      if (this.jdField_b_of_type_JavaLangReflectMethod == null)
+      {
+        this.jdField_b_of_type_JavaLangReflectMethod = TrafficStats.class.getDeclaredMethod("getRxBytes", new Class[] { String.class });
+        this.jdField_b_of_type_JavaLangReflectMethod.setAccessible(true);
+      }
+      long l = ((Long)this.jdField_b_of_type_JavaLangReflectMethod.invoke(null, new Object[] { "lo" })).longValue();
+      return l;
     }
-    ram.a(FastWebActivity.a(this.a), paramString, paramInt1, paramInt2);
-    FastWebActivity.a(this.a).notifyDataSetChanged();
-  }
-  
-  public void as_()
-  {
-    super.as_();
-    if ((FastWebActivity.c(this.a)) || (FastWebActivity.a(this.a) == null)) {
-      return;
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("DefaultBandwidthObtainer", 2, "getLoopbackRxBytesIn14: ", localException);
+      }
     }
-    this.a.runOnUiThread(new FastWebActivity.22.1(this));
+    return 0L;
   }
   
-  public void b(boolean paramBoolean, long paramLong)
+  public long a()
   {
-    this.a.a(paramBoolean, paramLong);
-  }
-  
-  public void d()
-  {
-    super.d();
-    if ((FastWebActivity.d(this.a)) || (FastWebActivity.a(this.a) == null) || (FastWebActivity.a(this.a) == null) || (FastWebActivity.a(this.a) == null)) {
-      return;
+    int i = Build.VERSION.SDK_INT;
+    long l4 = SystemClock.elapsedRealtime();
+    long l5 = TrafficStats.getTotalRxBytes();
+    long l1;
+    long l3;
+    if (i >= 28)
+    {
+      l1 = b();
+      if ((this.jdField_a_of_type_Long <= 0L) || (this.jdField_b_of_type_Long <= 0L)) {
+        break label236;
+      }
+      long l6 = l5 - this.jdField_a_of_type_Long;
+      long l7 = l1 - this.jdField_b_of_type_Long;
+      i = (int)Math.max((l4 - this.c) / 1000L, 1L);
+      l3 = Math.max(0L, (l6 - l7) / 1024L) / i;
+      l2 = l3;
+      if (QLog.isColorLevel()) {
+        QLog.d("DefaultBandwidthObtainer", 2, "calculateBandwidth: totalBytes=" + l6 + ", loopbackBytes=" + l7 + ", bandwidth=" + l3 + "kb/s");
+      }
     }
-    FastWebActivity.a(this.a).a(FastWebActivity.a(this.a).a);
-    FastWebActivity.f(this.a);
-    FastWebActivity.a(this.a).notifyDataSetChanged();
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    if (FastWebActivity.a(this.a) == null) {
-      return;
+    label236:
+    for (long l2 = l3;; l2 = 0L)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DefaultBandwidthObtainer", 2, "getCurrentBandwidth: bandwidth=" + l2 + "kb/s");
+      }
+      this.jdField_a_of_type_Long = l5;
+      this.jdField_b_of_type_Long = l1;
+      this.c = l4;
+      return l2;
+      if (i >= 14)
+      {
+        l1 = c();
+        break;
+      }
+      l1 = 0L;
+      break;
     }
-    qzz.a(FastWebActivity.a(this.a), paramBoolean);
-    FastWebActivity.a(this.a).notifyDataSetChanged();
-  }
-  
-  public void e()
-  {
-    if (FastWebActivity.a(this.a) == null) {
-      return;
-    }
-    FastWebActivity.f(this.a);
-    FastWebActivity.a(this.a).notifyDataSetChanged();
-  }
-  
-  public void n()
-  {
-    FastWebActivity.h(this.a);
-  }
-  
-  public void o()
-  {
-    FastWebActivity.a(this.a, 1);
   }
 }
 

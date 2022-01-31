@@ -1,10 +1,18 @@
-import android.widget.ProgressBar;
+import android.view.View;
 import android.widget.TextView;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.widget.AdapterView;
 
 public class avem
+  implements bfpc
 {
-  public ProgressBar a;
-  public TextView a;
+  public avem(QCallDetailActivity paramQCallDetailActivity) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramAdapterView = akcb.a(((TextView)paramView.findViewById(2131373000)).getText().toString());
+    this.a.a(this.a.getActivity(), paramAdapterView);
+  }
 }
 
 

@@ -1,4 +1,101 @@
-class nmu {}
+import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class nmu
+{
+  public int a;
+  public List<nmv> a;
+  
+  public nmu()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public nmu(int paramInt, mobileqq_mp.ConfigGroupInfo paramConfigGroupInfo)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    if (paramConfigGroupInfo == null) {}
+    for (;;)
+    {
+      return;
+      paramConfigGroupInfo = paramConfigGroupInfo.config_info.get();
+      this.jdField_a_of_type_JavaUtilList = new ArrayList(paramConfigGroupInfo.size());
+      paramConfigGroupInfo = paramConfigGroupInfo.iterator();
+      while (paramConfigGroupInfo.hasNext()) {
+        this.jdField_a_of_type_JavaUtilList.add(new nmv((mobileqq_mp.ConfigInfo)paramConfigGroupInfo.next()));
+      }
+    }
+  }
+  
+  public nmu(mobileqq_mp.ConfigGroupInfo paramConfigGroupInfo)
+  {
+    this(0, paramConfigGroupInfo);
+  }
+  
+  public static List<nmu> a(List<mobileqq_mp.ConfigGroupInfo> paramList)
+  {
+    if (paramList == null) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(new nmu((mobileqq_mp.ConfigGroupInfo)paramList.next()));
+    }
+    return localArrayList;
+  }
+  
+  public static List<nmu> a(JSONArray paramJSONArray)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONArray == null) {
+      return localArrayList;
+    }
+    for (;;)
+    {
+      try
+      {
+        int k = paramJSONArray.length();
+        int i = 0;
+        if (i >= k) {
+          break;
+        }
+        Object localObject = paramJSONArray.getJSONObject(i);
+        nmu localnmu = new nmu();
+        localnmu.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("type");
+        localObject = ((JSONObject)localObject).getJSONArray("config");
+        int m = ((JSONArray)localObject).length();
+        int j = 0;
+        if (j < m)
+        {
+          nmv localnmv = nmv.a(((JSONArray)localObject).getJSONObject(j));
+          if (localnmv != null) {
+            localnmu.jdField_a_of_type_JavaUtilList.add(localnmv);
+          }
+        }
+        else
+        {
+          localArrayList.add(localnmu);
+          i += 1;
+          continue;
+        }
+        j += 1;
+      }
+      catch (Exception paramJSONArray)
+      {
+        paramJSONArray.printStackTrace();
+        return localArrayList;
+      }
+    }
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

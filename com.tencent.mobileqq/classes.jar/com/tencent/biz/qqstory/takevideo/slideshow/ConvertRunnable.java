@@ -9,9 +9,9 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.media.MediaFormat;
 import android.text.TextUtils;
-import apdh;
-import auzr;
-import auzt;
+import apvb;
+import avzk;
+import avzm;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
@@ -20,26 +20,26 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.List;
-import urp;
-import vgo;
-import vgv;
-import vho;
-import vlj;
-import vlm;
+import vel;
+import vtk;
+import vtr;
+import vuk;
+import vyf;
+import vyi;
 
 public class ConvertRunnable
-  implements auzr, Runnable
+  implements avzk, Runnable
 {
   private int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
   Context jdField_a_of_type_AndroidContentContext;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private auzt jdField_a_of_type_Auzt;
+  private avzm jdField_a_of_type_Avzm;
   private SlideItemInfo jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo;
   QQFilterRenderManager jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = null;
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference<vgo> jdField_a_of_type_JavaLangRefWeakReference;
-  vho jdField_a_of_type_Vho;
+  private WeakReference<vtk> jdField_a_of_type_JavaLangRefWeakReference;
+  vuk jdField_a_of_type_Vuk;
   private volatile boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   long jdField_b_of_type_Long;
@@ -54,7 +54,7 @@ public class ConvertRunnable
   private long e;
   private long f = -1L;
   
-  public ConvertRunnable(Context paramContext, long paramLong1, SlideItemInfo paramSlideItemInfo, int paramInt1, int paramInt2, long paramLong2, boolean paramBoolean, vgo paramvgo)
+  public ConvertRunnable(Context paramContext, long paramLong1, SlideItemInfo paramSlideItemInfo, int paramInt1, int paramInt2, long paramLong2, boolean paramBoolean, vtk paramvtk)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo = paramSlideItemInfo;
@@ -62,11 +62,11 @@ public class ConvertRunnable
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt2;
     this.jdField_d_of_type_Long = paramLong2;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramvgo);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramvtk);
     this.jdField_b_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_Boolean = true;
     this.f = paramLong1;
-    this.jdField_a_of_type_Vho = null;
+    this.jdField_a_of_type_Vuk = null;
   }
   
   private int a(Bitmap paramBitmap, int paramInt1, int paramInt2)
@@ -103,19 +103,19 @@ public class ConvertRunnable
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      vgo localvgo = (vgo)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localvgo != null)
+      vtk localvtk = (vtk)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localvtk != null)
       {
-        vgv localvgv = new vgv();
-        localvgv.jdField_a_of_type_Long = this.f;
-        localvgv.jdField_a_of_type_Int = paramInt;
-        localvgv.jdField_b_of_type_JavaLangString = paramString2;
-        localvgv.jdField_a_of_type_JavaLangString = paramString1;
-        localvgv.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
-        localvgv.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-        localvgv.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.jdField_a_of_type_Boolean;
-        localvgv.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.jdField_c_of_type_Int;
-        localvgo.a(localvgv);
+        vtr localvtr = new vtr();
+        localvtr.jdField_a_of_type_Long = this.f;
+        localvtr.jdField_a_of_type_Int = paramInt;
+        localvtr.jdField_b_of_type_JavaLangString = paramString2;
+        localvtr.jdField_a_of_type_JavaLangString = paramString1;
+        localvtr.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+        localvtr.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+        localvtr.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.jdField_a_of_type_Boolean;
+        localvtr.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.jdField_c_of_type_Int;
+        localvtk.a(localvtr);
       }
     }
   }
@@ -175,9 +175,9 @@ public class ConvertRunnable
   
   private boolean b()
   {
-    if ((this.jdField_a_of_type_Auzt != null) && (this.jdField_c_of_type_Int > 0) && (this.e < this.jdField_d_of_type_Long))
+    if ((this.jdField_a_of_type_Avzm != null) && (this.jdField_c_of_type_Int > 0) && (this.e < this.jdField_d_of_type_Long))
     {
-      this.jdField_a_of_type_Auzt.a(3553, this.jdField_c_of_type_Int, null, null, this.e);
+      this.jdField_a_of_type_Avzm.a(3553, this.jdField_c_of_type_Int, null, null, this.e);
       this.e += 42000000L;
       return true;
     }
@@ -218,8 +218,8 @@ public class ConvertRunnable
         this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
         this.jdField_a_of_type_AndroidGraphicsBitmap = null;
       }
-    } while (this.jdField_a_of_type_Auzt == null);
-    this.jdField_a_of_type_Auzt.b();
+    } while (this.jdField_a_of_type_Avzm == null);
+    this.jdField_a_of_type_Avzm.b();
   }
   
   public void a(String paramString)
@@ -233,29 +233,29 @@ public class ConvertRunnable
       if (QLog.isColorLevel()) {
         QLog.d("ConvertRunnable", 2, "onEncodeFinish, delete old:" + this.f + " file:" + this.jdField_b_of_type_JavaLangString);
       }
-      vlm.g(this.jdField_b_of_type_JavaLangString);
+      vyi.g(this.jdField_b_of_type_JavaLangString);
       if (QLog.isColorLevel()) {
         QLog.d("ConvertRunnable", 2, "onEncodeFinish, rename start:" + this.f + " file:" + this.jdField_b_of_type_JavaLangString);
       }
-      if (vlm.a(paramString, this.jdField_b_of_type_JavaLangString))
+      if (vyi.a(paramString, this.jdField_b_of_type_JavaLangString))
       {
         this.jdField_d_of_type_Int = 0;
         if (QLog.isColorLevel()) {
           QLog.d("ConvertRunnable", 2, "onEncodeFinish, rename end:" + this.f + " file:" + this.jdField_b_of_type_JavaLangString + " result:" + this.jdField_d_of_type_Int);
         }
-        if (!apdh.a(this.jdField_b_of_type_JavaLangString)) {
+        if (!apvb.a(this.jdField_b_of_type_JavaLangString)) {
           break label458;
         }
-        l1 = apdh.a(this.jdField_b_of_type_JavaLangString);
+        l1 = apvb.a(this.jdField_b_of_type_JavaLangString);
         if (QLog.isColorLevel()) {
           QLog.d("ConvertRunnable", 2, "onEncodeFinish, file exist, size:" + l1 + " file:" + this.jdField_b_of_type_JavaLangString);
         }
         label323:
-        paramString = this.jdField_a_of_type_Auzt.a();
+        paramString = this.jdField_a_of_type_Avzm.a();
         l1 = System.currentTimeMillis();
         long l2 = this.jdField_b_of_type_Long;
-        urp.a("actImage2VideoTime", new String[] { l1 - l2 + "" });
-        urp.a("actImage2VideoResult", new String[] { "0" });
+        vel.a("actImage2VideoTime", new String[] { l1 - l2 + "" });
+        vel.a("actImage2VideoResult", new String[] { "0" });
         a(this.jdField_d_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, paramString);
       }
     }
@@ -266,10 +266,10 @@ public class ConvertRunnable
         this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceDestroyed();
         this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = null;
       }
-      if (this.jdField_a_of_type_Auzt != null)
+      if (this.jdField_a_of_type_Avzm != null)
       {
-        this.jdField_a_of_type_Auzt.c();
-        this.jdField_a_of_type_Auzt = null;
+        this.jdField_a_of_type_Avzm.c();
+        this.jdField_a_of_type_Avzm = null;
       }
       return;
       this.jdField_d_of_type_Int = 7;
@@ -280,8 +280,8 @@ public class ConvertRunnable
       }
       QLog.d("ConvertRunnable", 2, "onEncodeFinish, file not exist:" + this.f + " file:" + this.jdField_b_of_type_JavaLangString);
       break label323;
-      urp.a("actImage2VideoResult", new String[] { "3" });
-      vlm.g(paramString);
+      vel.a("actImage2VideoResult", new String[] { "3" });
+      vyi.g(paramString);
     }
   }
   
@@ -305,8 +305,8 @@ public class ConvertRunnable
       if (QLog.isColorLevel()) {
         QLog.d("ConvertRunnable", 2, "onEncodeFrame, mRun is false, tasid." + this.f);
       }
-      if (this.jdField_a_of_type_Auzt != null) {
-        this.jdField_a_of_type_Auzt.b();
+      if (this.jdField_a_of_type_Avzm != null) {
+        this.jdField_a_of_type_Avzm.b();
       }
     }
     do
@@ -315,8 +315,8 @@ public class ConvertRunnable
       {
         return;
       } while (b());
-      if (this.jdField_a_of_type_Auzt != null) {
-        this.jdField_a_of_type_Auzt.b();
+      if (this.jdField_a_of_type_Avzm != null) {
+        this.jdField_a_of_type_Avzm.b();
       }
     } while (!QLog.isColorLevel());
     QLog.d("ConvertRunnable", 2, "onEncodeFrame, stop recoder, taskid:" + this.f);
@@ -329,7 +329,7 @@ public class ConvertRunnable
     }
     if (a())
     {
-      urp.a("actVideo2VideoResult", new String[] { "9" });
+      vel.a("actVideo2VideoResult", new String[] { "9" });
       a(9, this.jdField_a_of_type_JavaLangString, null, null);
       return;
     }
@@ -354,16 +354,16 @@ public class ConvertRunnable
       }
     }
     this.jdField_b_of_type_JavaLangString = (Image2Video.jdField_b_of_type_JavaLangString + (String)localObject1);
-    vlm.g(this.jdField_b_of_type_JavaLangString);
+    vyi.g(this.jdField_b_of_type_JavaLangString);
     localObject1 = this.jdField_b_of_type_JavaLangString + ".dat";
-    if (vlm.e((String)localObject1))
+    if (vyi.e((String)localObject1))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ConvertRunnable", 2, "before,getPCMFromFile[Have audio File]:  " + this.f + " audioPath: " + (String)localObject1 + " audioFileSize=" + apdh.a((String)localObject1));
+        QLog.d("ConvertRunnable", 2, "before,getPCMFromFile[Have audio File]:  " + this.f + " audioPath: " + (String)localObject1 + " audioFileSize=" + apvb.a((String)localObject1));
       }
-      localObject3 = new vlj();
+      localObject3 = new vyf();
       l1 = System.currentTimeMillis();
-      ((vlj)localObject3).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo);
+      ((vyf)localObject3).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo);
       l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.d("ConvertRunnable", 2, "run,getMetaDataFromFile:  " + this.f + " cost=" + (l2 - l1) + " ms audioTrack: " + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.jdField_a_of_type_Boolean + " mSampleRate: " + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.jdField_c_of_type_Int);
@@ -375,81 +375,81 @@ public class ConvertRunnable
       if (!a()) {
         break;
       }
-      urp.a("actVideo2VideoResult", new String[] { "9" });
+      vel.a("actVideo2VideoResult", new String[] { "9" });
       a(9, this.jdField_a_of_type_JavaLangString, null, null);
       return;
-      localObject3 = new vlj();
+      localObject3 = new vyf();
       LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
       localLocalMediaInfo.path = this.jdField_a_of_type_JavaLangString;
       localLocalMediaInfo.mDuration = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.jdField_a_of_type_Long;
       l1 = System.currentTimeMillis();
-      bool = ((vlj)localObject3).a(localLocalMediaInfo, 0, (int)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.jdField_a_of_type_Long, (String)localObject1, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo);
+      bool = ((vyf)localObject3).a(localLocalMediaInfo, 0, (int)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.jdField_a_of_type_Long, (String)localObject1, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo);
       l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.d("ConvertRunnable", 2, "run,getPCMFromFile:  " + this.f + " cost=" + (l2 - l1) + " ms audioTrack: " + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.jdField_a_of_type_Boolean);
       }
       if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.jdField_a_of_type_Boolean)
       {
-        if ((!bool) || (!vlm.e((String)localObject1)))
+        if ((!bool) || (!vyi.e((String)localObject1)))
         {
           if (QLog.isColorLevel()) {
             QLog.d("ConvertRunnable", 2, "run,getPCMFromFile: failed " + this.f + " path=" + (String)localObject1 + " success=" + bool);
           }
-          vlm.g((String)localObject1);
-          urp.a("actVideo2VideoResult", new String[] { "8" });
+          vyi.g((String)localObject1);
+          vel.a("actVideo2VideoResult", new String[] { "8" });
           a(8, this.jdField_a_of_type_JavaLangString, null, null);
         }
       }
       else
       {
-        vlm.g((String)localObject1);
-        vlj.a((String)localObject1, (int)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.jdField_a_of_type_Long);
-        if (!vlm.e((String)localObject1))
+        vyi.g((String)localObject1);
+        vyf.a((String)localObject1, (int)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.jdField_a_of_type_Long);
+        if (!vyi.e((String)localObject1))
         {
           if (QLog.isColorLevel()) {
             QLog.d("ConvertRunnable", 2, "run[video convert],createSilentPCMFile: failed " + this.f + " path=" + (String)localObject1);
           }
-          urp.a("actVideo2VideoResult", new String[] { "8" });
+          vel.a("actVideo2VideoResult", new String[] { "8" });
           a(8, this.jdField_a_of_type_JavaLangString, null, null);
           return;
         }
       }
       if (QLog.isColorLevel()) {
-        QLog.d("ConvertRunnable", 2, "After,getPCMFromFile: hasAudioTrack= " + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.jdField_a_of_type_Boolean + " path=" + (String)localObject1 + " success=" + bool + " audioFileSize=" + apdh.a((String)localObject1));
+        QLog.d("ConvertRunnable", 2, "After,getPCMFromFile: hasAudioTrack= " + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.jdField_a_of_type_Boolean + " path=" + (String)localObject1 + " success=" + bool + " audioFileSize=" + apvb.a((String)localObject1));
       }
     }
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.jdField_c_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
     try
     {
-      this.jdField_a_of_type_Vho = new vho();
+      this.jdField_a_of_type_Vuk = new vuk();
       if (a())
       {
-        urp.a("actVideo2VideoResult", new String[] { "9" });
+        vel.a("actVideo2VideoResult", new String[] { "9" });
         a(9, this.jdField_a_of_type_JavaLangString, null, null);
         return;
       }
     }
     finally {}
     long l1 = System.currentTimeMillis();
-    boolean bool = this.jdField_a_of_type_Vho.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo);
+    boolean bool = this.jdField_a_of_type_Vuk.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo);
     long l2 = System.currentTimeMillis();
     if (a())
     {
-      urp.a("actVideo2VideoResult", new String[] { "9" });
+      vel.a("actVideo2VideoResult", new String[] { "9" });
       a(9, this.jdField_a_of_type_JavaLangString, null, null);
       return;
     }
     long l3 = System.currentTimeMillis();
     long l4 = this.jdField_c_of_type_Long;
-    urp.a("actVideo2VideoTime", new String[] { l3 - l4 + "" });
-    if ((bool) && (apdh.a(this.jdField_b_of_type_JavaLangString)))
+    vel.a("actVideo2VideoTime", new String[] { l3 - l4 + "" });
+    if ((bool) && (apvb.a(this.jdField_b_of_type_JavaLangString)))
     {
-      l3 = apdh.a(this.jdField_b_of_type_JavaLangString);
+      l3 = apvb.a(this.jdField_b_of_type_JavaLangString);
       if (QLog.isColorLevel()) {
         QLog.d("ConvertRunnable", 2, "runLocalVideo2Video, file exist, size:" + l3 + " file:" + this.jdField_b_of_type_JavaLangString);
       }
       this.jdField_d_of_type_Int = 0;
-      urp.a("actVideo2VideoResult", new String[] { "0" });
+      vel.a("actVideo2VideoResult", new String[] { "0" });
     }
     for (;;)
     {
@@ -465,8 +465,8 @@ public class ConvertRunnable
         QLog.d("ConvertRunnable", 2, "runLocalVideo2Video, [failed]file not exist:" + this.f + " file:" + this.jdField_b_of_type_JavaLangString);
       }
       this.jdField_d_of_type_Int = 7;
-      urp.a("actVideo2VideoResult", new String[] { "7" });
-      vlm.g(this.jdField_b_of_type_JavaLangString);
+      vel.a("actVideo2VideoResult", new String[] { "7" });
+      vyi.g(this.jdField_b_of_type_JavaLangString);
     }
   }
   
@@ -503,7 +503,7 @@ public class ConvertRunnable
     //   62: iconst_0
     //   63: ldc_w 363
     //   66: aastore
-    //   67: invokestatic 328	urp:a	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   67: invokestatic 328	vel:a	(Ljava/lang/String;[Ljava/lang/String;)V
     //   70: aload_0
     //   71: bipush 9
     //   73: aload_0
@@ -533,7 +533,7 @@ public class ConvertRunnable
     //   119: getfield 51	com/tencent/biz/qqstory/takevideo/slideshow/ConvertRunnable:jdField_a_of_type_Int	I
     //   122: aload_0
     //   123: getfield 53	com/tencent/biz/qqstory/takevideo/slideshow/ConvertRunnable:jdField_b_of_type_Int	I
-    //   126: invokestatic 492	azvq:a	(Ljava/io/InputStream;Landroid/graphics/Rect;II)Landroid/graphics/Bitmap;
+    //   126: invokestatic 492	bawu:a	(Ljava/io/InputStream;Landroid/graphics/Rect;II)Landroid/graphics/Bitmap;
     //   129: putfield 255	com/tencent/biz/qqstory/takevideo/slideshow/ConvertRunnable:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   132: aload 8
     //   134: ifnull +8 -> 142
@@ -553,7 +553,7 @@ public class ConvertRunnable
     //   165: getfield 51	com/tencent/biz/qqstory/takevideo/slideshow/ConvertRunnable:jdField_a_of_type_Int	I
     //   168: aload_0
     //   169: getfield 53	com/tencent/biz/qqstory/takevideo/slideshow/ConvertRunnable:jdField_b_of_type_Int	I
-    //   172: invokestatic 499	azvq:a	(Ljava/lang/String;II)Landroid/graphics/Bitmap;
+    //   172: invokestatic 499	bawu:a	(Ljava/lang/String;II)Landroid/graphics/Bitmap;
     //   175: putfield 255	com/tencent/biz/qqstory/takevideo/slideshow/ConvertRunnable:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   178: invokestatic 251	java/lang/System:currentTimeMillis	()J
     //   181: lstore 4
@@ -592,7 +592,7 @@ public class ConvertRunnable
     //   257: iconst_0
     //   258: ldc_w 505
     //   261: aastore
-    //   262: invokestatic 328	urp:a	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   262: invokestatic 328	vel:a	(Ljava/lang/String;[Ljava/lang/String;)V
     //   265: aload_0
     //   266: iconst_5
     //   267: aload_0
@@ -618,7 +618,7 @@ public class ConvertRunnable
     //   304: iconst_0
     //   305: ldc_w 505
     //   308: aastore
-    //   309: invokestatic 328	urp:a	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   309: invokestatic 328	vel:a	(Ljava/lang/String;[Ljava/lang/String;)V
     //   312: aload_0
     //   313: iconst_5
     //   314: aload_0
@@ -681,7 +681,7 @@ public class ConvertRunnable
     //   438: goto -154 -> 284
     //   441: aload_0
     //   442: getfield 49	com/tencent/biz/qqstory/takevideo/slideshow/ConvertRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   445: invokestatic 515	bacm:b	(Ljava/lang/String;)I
+    //   445: invokestatic 515	bbdr:b	(Ljava/lang/String;)I
     //   448: istore_1
     //   449: iload_1
     //   450: ifeq +88 -> 538
@@ -749,7 +749,7 @@ public class ConvertRunnable
     //   572: iconst_0
     //   573: ldc_w 363
     //   576: aastore
-    //   577: invokestatic 328	urp:a	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   577: invokestatic 328	vel:a	(Ljava/lang/String;[Ljava/lang/String;)V
     //   580: aload_0
     //   581: bipush 9
     //   583: aload_0
@@ -839,7 +839,7 @@ public class ConvertRunnable
     //   784: putfield 528	com/tencent/biz/qqstory/takevideo/slideshow/ConvertRunnable:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   787: aload_0
     //   788: getfield 528	com/tencent/biz/qqstory/takevideo/slideshow/ConvertRunnable:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   791: invokestatic 289	vlm:g	(Ljava/lang/String;)Z
+    //   791: invokestatic 289	vyi:g	(Ljava/lang/String;)Z
     //   794: pop
     //   795: aload_0
     //   796: getfield 55	com/tencent/biz/qqstory/takevideo/slideshow/ConvertRunnable:jdField_d_of_type_Long	J
@@ -879,7 +879,7 @@ public class ConvertRunnable
     //   864: iconst_0
     //   865: ldc_w 363
     //   868: aastore
-    //   869: invokestatic 328	urp:a	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   869: invokestatic 328	vel:a	(Ljava/lang/String;[Ljava/lang/String;)V
     //   872: aload_0
     //   873: bipush 9
     //   875: aload_0
@@ -926,10 +926,10 @@ public class ConvertRunnable
     //   972: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   975: astore 7
     //   977: aload 7
-    //   979: invokestatic 399	vlm:e	(Ljava/lang/String;)Z
+    //   979: invokestatic 399	vyi:e	(Ljava/lang/String;)Z
     //   982: ifeq +9 -> 991
     //   985: aload 7
-    //   987: invokestatic 538	vlm:f	(Ljava/lang/String;)Z
+    //   987: invokestatic 538	vyi:f	(Ljava/lang/String;)Z
     //   990: pop
     //   991: aload 7
     //   993: iload_1
@@ -937,9 +937,9 @@ public class ConvertRunnable
     //   996: iadd
     //   997: bipush 15
     //   999: iadd
-    //   1000: invokestatic 445	vlj:a	(Ljava/lang/String;I)V
+    //   1000: invokestatic 445	vyf:a	(Ljava/lang/String;I)V
     //   1003: aload 7
-    //   1005: invokestatic 399	vlm:e	(Ljava/lang/String;)Z
+    //   1005: invokestatic 399	vyi:e	(Ljava/lang/String;)Z
     //   1008: ifne +78 -> 1086
     //   1011: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1014: ifeq +43 -> 1057
@@ -966,7 +966,7 @@ public class ConvertRunnable
     //   1065: iconst_0
     //   1066: ldc_w 442
     //   1069: aastore
-    //   1070: invokestatic 328	urp:a	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   1070: invokestatic 328	vel:a	(Ljava/lang/String;[Ljava/lang/String;)V
     //   1073: aload_0
     //   1074: bipush 8
     //   1076: aload_0
@@ -1005,11 +1005,11 @@ public class ConvertRunnable
     //   1151: invokestatic 251	java/lang/System:currentTimeMillis	()J
     //   1154: lstore_2
     //   1155: aload_0
-    //   1156: new 240	auzt
+    //   1156: new 240	avzm
     //   1159: dup
-    //   1160: invokespecial 545	auzt:<init>	()V
-    //   1163: putfield 236	com/tencent/biz/qqstory/takevideo/slideshow/ConvertRunnable:jdField_a_of_type_Auzt	Lauzt;
-    //   1166: new 547	auzf
+    //   1160: invokespecial 545	avzm:<init>	()V
+    //   1163: putfield 236	com/tencent/biz/qqstory/takevideo/slideshow/ConvertRunnable:jdField_a_of_type_Avzm	Lavzm;
+    //   1166: new 547	avyy
     //   1169: dup
     //   1170: aload_0
     //   1171: getfield 528	com/tencent/biz/qqstory/takevideo/slideshow/ConvertRunnable:jdField_d_of_type_JavaLangString	Ljava/lang/String;
@@ -1017,24 +1017,24 @@ public class ConvertRunnable
     //   1175: getfield 51	com/tencent/biz/qqstory/takevideo/slideshow/ConvertRunnable:jdField_a_of_type_Int	I
     //   1178: aload_0
     //   1179: getfield 53	com/tencent/biz/qqstory/takevideo/slideshow/ConvertRunnable:jdField_b_of_type_Int	I
-    //   1182: invokestatic 552	auuf:a	()Lauuf;
+    //   1182: invokestatic 552	avto:a	()Lavto;
     //   1185: iconst_1
-    //   1186: invokevirtual 554	auuf:a	(I)I
+    //   1186: invokevirtual 554	avto:a	(I)I
     //   1189: sipush 1000
     //   1192: imul
     //   1193: iconst_1
     //   1194: iconst_0
     //   1195: iconst_0
-    //   1196: invokespecial 557	auzf:<init>	(Ljava/lang/String;IIIIZI)V
+    //   1196: invokespecial 557	avyy:<init>	(Ljava/lang/String;IIIIZI)V
     //   1199: astore 7
     //   1201: aload 7
     //   1203: invokestatic 563	android/opengl/EGL14:eglGetCurrentContext	()Landroid/opengl/EGLContext;
-    //   1206: invokevirtual 566	auzf:a	(Landroid/opengl/EGLContext;)V
+    //   1206: invokevirtual 566	avyy:a	(Landroid/opengl/EGLContext;)V
     //   1209: aload_0
-    //   1210: getfield 236	com/tencent/biz/qqstory/takevideo/slideshow/ConvertRunnable:jdField_a_of_type_Auzt	Lauzt;
+    //   1210: getfield 236	com/tencent/biz/qqstory/takevideo/slideshow/ConvertRunnable:jdField_a_of_type_Avzm	Lavzm;
     //   1213: aload 7
     //   1215: aload_0
-    //   1216: invokevirtual 569	auzt:a	(Lauzf;Lauzr;)V
+    //   1216: invokevirtual 569	avzm:a	(Lavyy;Lavzk;)V
     //   1219: invokestatic 251	java/lang/System:currentTimeMillis	()J
     //   1222: lstore 4
     //   1224: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z

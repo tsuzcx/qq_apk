@@ -1,16 +1,18 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
+import anqb;
+
 public class ViolaLibData
   extends XmlData
 {
   public String getSharedPreferencesName()
   {
-    return "preload_android.qq.readinjoy.viola_795";
+    return "preload_" + anqb.a;
   }
   
   public String getStrResName()
   {
-    return "android.qq.readinjoy.viola_795";
+    return anqb.a;
   }
 }
 

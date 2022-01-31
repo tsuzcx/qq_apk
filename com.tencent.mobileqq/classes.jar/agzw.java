@@ -1,18 +1,19 @@
-public abstract interface agzw
+import android.widget.Button;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+
+public class agzw
+  extends ahac
 {
-  public abstract void a(int paramInt);
+  public agzw(QzoneHbFragment paramQzoneHbFragment) {}
   
-  public abstract void a(int paramInt, float paramFloat);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    QzoneHbFragment.a(this.a).setEnabled(QzoneHbFragment.a(this.a));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agzw
  * JD-Core Version:    0.7.0.1
  */

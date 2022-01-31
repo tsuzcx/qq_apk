@@ -1,20 +1,38 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 
 class auvb
-  implements auta
+  implements AdapterView.OnItemClickListener
 {
-  auvb(auva paramauva) {}
+  auvb(auuz paramauuz) {}
   
-  public void a(boolean paramBoolean)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager onResourceDownload");
+    if (auuz.a(this.a).a()) {
+      auuz.a(this.a).b();
+    }
+    paramInt = -1;
+    switch ((int)paramLong)
+    {
+    }
+    for (;;)
+    {
+      if (auuz.a(this.a) != null) {
+        auuz.a(this.a).a(paramInt, auuz.a(this.a));
+      }
+      return;
+      auuz.a(this.a);
+      paramInt = 0;
+      continue;
+      auuz.b(this.a);
+      paramInt = 2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auvb
  * JD-Core Version:    0.7.0.1
  */

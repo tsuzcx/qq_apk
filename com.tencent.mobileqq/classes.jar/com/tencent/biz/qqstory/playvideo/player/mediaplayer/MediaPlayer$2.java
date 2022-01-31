@@ -3,7 +3,7 @@ package com.tencent.biz.qqstory.playvideo.player.mediaplayer;
 import android.util.Log;
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
-import tsi;
+import ufe;
 
 class MediaPlayer$2
   implements Runnable

@@ -1,25 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import friendlist.GetOnlineInfoResp;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnInfoListener;
 
 class ugb
-  extends ajjh
+  implements MediaPlayer.OnInfoListener
 {
-  ugb(uga paramuga) {}
+  ugb(ufu paramufu, ufo paramufo) {}
   
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if ((!paramBoolean) || (this.a.a == null) || (paramGetOnlineInfoResp == null) || (!TextUtils.equals(paramString, this.a.a.qq))) {}
-    while (uga.a(this.a) == null) {
-      return;
-    }
-    paramString = uga.a(this.a);
-    if (paramGetOnlineInfoResp.eIconType == 11) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramString.b(paramBoolean);
-      return;
-    }
+    return this.jdField_a_of_type_Ufo.a_(this.jdField_a_of_type_Ufu, paramInt1, paramInt2);
   }
 }
 

@@ -1,11 +1,16 @@
 package com.tencent.tmassistantbase.util;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 final class ad
-  extends ThreadLocal<char[]>
+  implements Runnable
 {
-  protected char[] a()
+  public void run()
   {
-    return new char[1024];
+    if ((ab.h == null) || (!ab.g()) || (ab.t.get())) {
+      return;
+    }
+    new ae(this, "TMLogInitThread").start();
   }
 }
 

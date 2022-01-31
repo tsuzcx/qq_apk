@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.util;
 
-import alme;
+import amas;
 import android.content.Context;
 import android.content.IntentFilter;
-import bbac;
+import bcdb;
 import com.tencent.biz.pubaccount.readinjoy.config.beans.AchillesParams;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import ndn;
+import noo;
 import org.json.JSONObject;
 
 public class AchillesFragmentUtils
 {
   private static AchillesFragmentUtils.InstallBroadcastReceiver jdField_a_of_type_ComTencentBizPubaccountUtilAchillesFragmentUtils$InstallBroadcastReceiver;
   private static String jdField_a_of_type_JavaLangString;
-  private static WeakReference<bbac> jdField_a_of_type_JavaLangRefWeakReference;
+  private static WeakReference<bcdb> jdField_a_of_type_JavaLangRefWeakReference;
   
   public static void a(String paramString1, String paramString2, String paramString3, AchillesParams paramAchillesParams)
   {
@@ -25,7 +25,7 @@ public class AchillesFragmentUtils
     {
       localJSONObject.put(paramAchillesParams.getPackageName(), paramAchillesParams.toString());
       label27:
-      ndn.a(null, "", "0X8009ECD", "0X8009ECD", 0, 0, paramString1, paramString2, paramString3, localJSONObject.toString(), false);
+      noo.a(null, "", "0X8009ECD", "0X8009ECD", 0, 0, paramString1, paramString2, paramString3, localJSONObject.toString(), false);
       return;
     }
     catch (Exception paramAchillesParams)
@@ -34,7 +34,7 @@ public class AchillesFragmentUtils
     }
   }
   
-  public static boolean a(String paramString1, String paramString2, bbac parambbac)
+  public static boolean a(String paramString1, String paramString2, bcdb parambcdb)
   {
     boolean bool3 = false;
     bool1 = false;
@@ -49,7 +49,7 @@ public class AchillesFragmentUtils
       if (paramString1 != null)
       {
         bool2 = bool3;
-        bool1 = alme.b(paramString1);
+        bool1 = amas.b(paramString1);
       }
       bool2 = bool1;
       if (jdField_a_of_type_ComTencentBizPubaccountUtilAchillesFragmentUtils$InstallBroadcastReceiver == null)
@@ -70,7 +70,7 @@ public class AchillesFragmentUtils
         BaseApplication.getContext().registerReceiver(jdField_a_of_type_ComTencentBizPubaccountUtilAchillesFragmentUtils$InstallBroadcastReceiver, paramString1);
       }
       bool2 = bool1;
-      jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambbac);
+      jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambcdb);
     }
     catch (Exception paramString1)
     {

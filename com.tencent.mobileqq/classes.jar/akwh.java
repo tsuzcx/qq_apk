@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import android.util.Log;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.utils.PokeBigResHandler.NetEngine.1;
 
-public final class akwh
-  implements Parcelable.Creator<ArVideoResourceInfo>
+public class akwh
+  implements aysa
 {
-  public ArVideoResourceInfo a(Parcel paramParcel)
+  public void onResp(aysx paramaysx)
   {
-    return new ArVideoResourceInfo(paramParcel);
+    if (paramaysx.jdField_a_of_type_Int == 0) {
+      ThreadManagerV2.excute(new PokeBigResHandler.NetEngine.1(this, paramaysx.jdField_a_of_type_Aysw.c), 64, null, true);
+    }
   }
   
-  public ArVideoResourceInfo[] a(int paramInt)
+  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2)
   {
-    return new ArVideoResourceInfo[paramInt];
+    Log.e("Ron", "req:[" + paramaysw.toString() + "\n curOffset" + paramLong1 + "\n totalLen" + paramLong2 + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akwh
  * JD-Core Version:    0.7.0.1
  */

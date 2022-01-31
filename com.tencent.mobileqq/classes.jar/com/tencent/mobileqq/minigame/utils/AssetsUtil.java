@@ -3,7 +3,7 @@ package com.tencent.mobileqq.minigame.utils;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.text.TextUtils;
-import apdh;
+import apvb;
 import com.tencent.mobileqq.mini.utils.DebugUtil;
 import com.tencent.mobileqq.mini.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -673,7 +673,7 @@ public class AssetsUtil
     {
       paramContext = new File(paramString2);
       if (paramContext.exists()) {
-        apdh.a(paramContext);
+        apvb.a(paramContext);
       }
       label242:
       return false;

@@ -1,215 +1,158 @@
 import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.PluginStatic;
-import com.tencent.qphone.base.util.QLog;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
+import android.webkit.WebSettings;
+import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 
 public class bfgt
 {
-  /* Error */
-  public static com.tencent.common.app.AppInterface a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  private static String jdField_a_of_type_JavaLangString;
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "anonymous", "wechat", "qq", "phone", "other" };
+  
+  public static String a()
   {
-    // Byte code:
-    //   0: ldc 22
-    //   2: iconst_1
-    //   3: new 24	java/lang/StringBuilder
-    //   6: dup
-    //   7: invokespecial 28	java/lang/StringBuilder:<init>	()V
-    //   10: ldc 30
-    //   12: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   15: aload_1
-    //   16: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   22: invokestatic 44	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   25: aload_0
-    //   26: ifnull +7 -> 33
-    //   29: aload_1
-    //   30: ifnonnull +13 -> 43
-    //   33: ldc 22
-    //   35: iconst_1
-    //   36: ldc 46
-    //   38: invokestatic 49	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   41: aconst_null
-    //   42: areturn
-    //   43: ldc 51
-    //   45: invokestatic 57	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   48: astore_2
-    //   49: aload_2
-    //   50: ifnonnull +41 -> 91
-    //   53: ldc 22
-    //   55: iconst_1
-    //   56: ldc 59
-    //   58: invokestatic 49	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   61: aconst_null
-    //   62: areturn
-    //   63: astore_3
-    //   64: aload_0
-    //   65: invokestatic 62	bfgt:a	(Landroid/content/Context;)Ljava/lang/ClassLoader;
-    //   68: astore 4
-    //   70: aload 4
-    //   72: ldc 51
-    //   74: invokevirtual 67	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
-    //   77: astore_2
-    //   78: iconst_1
-    //   79: aload 4
-    //   81: invokestatic 73	com/qq/jce/wup/BasicClassTypeUtil:setClassLoader	(ZLjava/lang/ClassLoader;)V
-    //   84: aload_3
-    //   85: invokevirtual 76	java/lang/ClassNotFoundException:printStackTrace	()V
-    //   88: goto -39 -> 49
-    //   91: aload_2
-    //   92: iconst_2
-    //   93: anewarray 53	java/lang/Class
-    //   96: dup
-    //   97: iconst_0
-    //   98: aload_0
-    //   99: invokevirtual 80	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   102: aastore
-    //   103: dup
-    //   104: iconst_1
-    //   105: aload_1
-    //   106: invokevirtual 80	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   109: aastore
-    //   110: invokevirtual 84	java/lang/Class:getDeclaredConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
-    //   113: iconst_2
-    //   114: anewarray 4	java/lang/Object
-    //   117: dup
-    //   118: iconst_0
-    //   119: aload_0
-    //   120: aastore
-    //   121: dup
-    //   122: iconst_1
-    //   123: aload_1
-    //   124: aastore
-    //   125: invokevirtual 90	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
-    //   128: astore_0
-    //   129: aload_0
-    //   130: ifnull +15 -> 145
-    //   133: aload_0
-    //   134: instanceof 92
-    //   137: ifeq +8 -> 145
-    //   140: aload_0
-    //   141: checkcast 92	com/tencent/common/app/AppInterface
-    //   144: areturn
-    //   145: ldc 22
-    //   147: iconst_1
-    //   148: ldc 94
-    //   150: invokestatic 49	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   153: aconst_null
-    //   154: areturn
-    //   155: astore_0
-    //   156: aload_0
-    //   157: invokevirtual 76	java/lang/ClassNotFoundException:printStackTrace	()V
-    //   160: goto -7 -> 153
-    //   163: astore_0
-    //   164: aload_0
-    //   165: invokevirtual 95	java/lang/IllegalArgumentException:printStackTrace	()V
-    //   168: goto -15 -> 153
-    //   171: astore_0
-    //   172: aload_0
-    //   173: invokevirtual 96	java/lang/IllegalAccessException:printStackTrace	()V
-    //   176: goto -23 -> 153
-    //   179: astore_0
-    //   180: aload_0
-    //   181: invokevirtual 97	java/lang/InstantiationException:printStackTrace	()V
-    //   184: goto -31 -> 153
-    //   187: astore_0
-    //   188: aload_0
-    //   189: invokevirtual 98	java/lang/reflect/InvocationTargetException:printStackTrace	()V
-    //   192: goto -39 -> 153
-    //   195: astore_0
-    //   196: aload_0
-    //   197: invokevirtual 99	java/lang/NoSuchMethodException:printStackTrace	()V
-    //   200: goto -47 -> 153
-    //   203: astore_0
-    //   204: aload_0
-    //   205: invokevirtual 100	java/lang/Exception:printStackTrace	()V
-    //   208: goto -55 -> 153
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	211	0	paramBaseApplicationImpl	BaseApplicationImpl
-    //   0	211	1	paramString	String
-    //   48	44	2	localClass	java.lang.Class
-    //   63	22	3	localClassNotFoundException	java.lang.ClassNotFoundException
-    //   68	12	4	localClassLoader	ClassLoader
-    // Exception table:
-    //   from	to	target	type
-    //   43	49	63	java/lang/ClassNotFoundException
-    //   53	61	155	java/lang/ClassNotFoundException
-    //   64	88	155	java/lang/ClassNotFoundException
-    //   91	129	155	java/lang/ClassNotFoundException
-    //   133	145	155	java/lang/ClassNotFoundException
-    //   145	153	155	java/lang/ClassNotFoundException
-    //   43	49	163	java/lang/IllegalArgumentException
-    //   53	61	163	java/lang/IllegalArgumentException
-    //   64	88	163	java/lang/IllegalArgumentException
-    //   91	129	163	java/lang/IllegalArgumentException
-    //   133	145	163	java/lang/IllegalArgumentException
-    //   145	153	163	java/lang/IllegalArgumentException
-    //   43	49	171	java/lang/IllegalAccessException
-    //   53	61	171	java/lang/IllegalAccessException
-    //   64	88	171	java/lang/IllegalAccessException
-    //   91	129	171	java/lang/IllegalAccessException
-    //   133	145	171	java/lang/IllegalAccessException
-    //   145	153	171	java/lang/IllegalAccessException
-    //   43	49	179	java/lang/InstantiationException
-    //   53	61	179	java/lang/InstantiationException
-    //   64	88	179	java/lang/InstantiationException
-    //   91	129	179	java/lang/InstantiationException
-    //   133	145	179	java/lang/InstantiationException
-    //   145	153	179	java/lang/InstantiationException
-    //   43	49	187	java/lang/reflect/InvocationTargetException
-    //   53	61	187	java/lang/reflect/InvocationTargetException
-    //   64	88	187	java/lang/reflect/InvocationTargetException
-    //   91	129	187	java/lang/reflect/InvocationTargetException
-    //   133	145	187	java/lang/reflect/InvocationTargetException
-    //   145	153	187	java/lang/reflect/InvocationTargetException
-    //   43	49	195	java/lang/NoSuchMethodException
-    //   53	61	195	java/lang/NoSuchMethodException
-    //   64	88	195	java/lang/NoSuchMethodException
-    //   91	129	195	java/lang/NoSuchMethodException
-    //   133	145	195	java/lang/NoSuchMethodException
-    //   145	153	195	java/lang/NoSuchMethodException
-    //   43	49	203	java/lang/Exception
-    //   53	61	203	java/lang/Exception
-    //   64	88	203	java/lang/Exception
-    //   91	129	203	java/lang/Exception
-    //   133	145	203	java/lang/Exception
-    //   145	153	203	java/lang/Exception
+    MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+    return "V1_AND_MINISDK_1.1.0_0_RELEASE_B";
   }
   
-  public static ClassLoader a(Context paramContext)
+  public static String a(Context paramContext)
   {
-    return PluginStatic.getOrCreateClassLoader(paramContext, "qqdataline.apk");
-  }
-  
-  public static void a(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("DATALINE_LOG", 4, "bigTValue:" + paramString);
-    }
-    a(paramString, 1);
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    if (paramInt > 0)
+    PackageManager localPackageManager = paramContext.getPackageManager();
+    try
     {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label48;
+      paramContext = (String)localPackageManager.getApplicationLabel(localPackageManager.getApplicationInfo(paramContext.getPackageName(), 0));
+      return paramContext;
+    }
+    catch (PackageManager.NameNotFoundException paramContext) {}
+    return "";
+  }
+  
+  public static boolean a()
+  {
+    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("qq");
+  }
+  
+  public static String b()
+  {
+    String str = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPlatformQUA();
+    if (!TextUtils.isEmpty(str)) {
+      return str;
+    }
+    return a();
+  }
+  
+  public static String b(Context paramContext)
+  {
+    MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+    Object localObject = (WindowManager)paramContext.getSystemService("window");
+    paramContext = new DisplayMetrics();
+    ((WindowManager)localObject).getDefaultDisplay().getMetrics(paramContext);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("m=").append(Build.MODEL).append('&');
+    ((StringBuilder)localObject).append("o=").append(Build.VERSION.RELEASE).append('&');
+    ((StringBuilder)localObject).append("a=").append(Build.VERSION.SDK_INT).append('&');
+    ((StringBuilder)localObject).append("p=").append(paramContext.widthPixels).append('*').append(paramContext.heightPixels).append('&');
+    ((StringBuilder)localObject).append("f=").append(Build.MANUFACTURER).append('&');
+    ((StringBuilder)localObject).append("mm=").append(bekk.b() / 1048576L).append('&');
+    ((StringBuilder)localObject).append("cf=").append(bekk.c()).append('&');
+    ((StringBuilder)localObject).append("cc=").append(bekk.b()).append('&');
+    ((StringBuilder)localObject).append("qqversion=").append(localMiniAppProxy.getAppVersion());
+    return ((StringBuilder)localObject).toString();
+  }
+  
+  public static boolean b()
+  {
+    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("demo");
+  }
+  
+  public static String c()
+  {
+    String str = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPlatformVersionString();
+    if (!TextUtils.isEmpty(str)) {
+      return str;
+    }
+    return "1.1.0";
+  }
+  
+  public static String d()
+  {
+    return f() + " QQ/" + c() + " " + b() + " MiniAppEnable miniProgram miniprogramhtmlwebview";
+  }
+  
+  public static String e()
+  {
+    int i = beuc.a().a();
+    return jdField_a_of_type_ArrayOfJavaLangString[i];
+  }
+  
+  public static String f()
+  {
+    int i = 0;
+    if (jdField_a_of_type_JavaLangString != null) {
+      return jdField_a_of_type_JavaLangString;
+    }
+    for (;;)
+    {
+      StringBuilder localStringBuilder;
+      try
+      {
+        boolean bool = bfgw.a();
+        char c;
+        String str2;
+        if (bool)
+        {
+          try
+          {
+            String str1 = WebSettings.getDefaultUserAgent(MiniAppEnv.g().getContext());
+            localStringBuilder = new StringBuilder();
+            int j = str1.length();
+            if (i >= j) {
+              break label139;
+            }
+            c = str1.charAt(i);
+            if ((c > '\037') && (c < '')) {
+              continue;
+            }
+            localStringBuilder.append(String.format("\\u%04x", new Object[] { Integer.valueOf(c) }));
+          }
+          catch (Exception localException)
+          {
+            str2 = System.getProperty("http.agent");
+            continue;
+          }
+        }
+        else
+        {
+          str2 = System.getProperty("http.agent");
+          continue;
+        }
+        localStringBuilder.append(c);
       }
-    }
-    label48:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      awqx.b((QQAppInterface)localObject, "CliOper", "", "", "DatalineClickReport", paramString, 0, paramInt, 0, "", "", "", "");
-      return;
+      catch (Throwable localThrowable)
+      {
+        jdField_a_of_type_JavaLangString = "AndroidQQ";
+      }
+      for (;;)
+      {
+        return jdField_a_of_type_JavaLangString;
+        label139:
+        jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfgt
  * JD-Core Version:    0.7.0.1
  */

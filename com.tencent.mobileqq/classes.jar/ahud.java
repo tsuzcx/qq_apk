@@ -1,48 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.richmedia.FlowActivity;
 
-public class ahud
+public abstract class ahud
 {
-  public static AtomicBoolean a;
-  public static String[] a;
+  FlowActivity a;
   
-  static
+  public ahud(FlowActivity paramFlowActivity)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "MI 3", "Coolpad 8675", "OPPO R7", "Redmi Note 2", "MX4", "vivo X5L", "m3 note", "PRO 6" };
+    this.a = paramFlowActivity;
   }
   
-  public static void a(String paramString)
+  public Context a()
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      try
-      {
-        if (Integer.valueOf(paramString).intValue() == 0)
-        {
-          jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideo.ProgressiveUtils", 2, "parseConfig(): config = " + paramString + ", sProgressiveEnable = " + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-          }
-          return;
-        }
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        continue;
-      }
-      catch (Exception localException)
-      {
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        continue;
-      }
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    }
+    return this.a;
   }
+  
+  public abstract void a(ViewGroup paramViewGroup);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahud
  * JD-Core Version:    0.7.0.1
  */

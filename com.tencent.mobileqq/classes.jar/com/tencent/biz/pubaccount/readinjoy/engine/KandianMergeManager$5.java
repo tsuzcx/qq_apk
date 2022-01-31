@@ -1,12 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import android.os.Build.VERSION;
-import com.tencent.aladdin.config.utils.DeviceInfoUtils;
-import com.tencent.av.mediacodec.DeviceCheck;
-import com.tencent.qphone.base.util.QLog;
-import ndn;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.MobileQQ;
 
 class KandianMergeManager$5
   implements Runnable
@@ -15,35 +12,9 @@ class KandianMergeManager$5
   
   public void run()
   {
-    if (Build.VERSION.SDK_INT >= 16) {}
-    for (boolean bool = DeviceCheck.c();; bool = false)
-    {
-      QLog.d("KandianMergeManager", 1, "isSupportHevc=" + bool);
-      JSONObject localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("cpu_type", DeviceInfoUtils.getCpuType());
-        localJSONObject.put("device_brand", DeviceInfoUtils.getDeviceBrand());
-        localJSONObject.put("device_manu", DeviceInfoUtils.getDeviceManufacturer());
-        localJSONObject.put("device_model", DeviceInfoUtils.getDeviceModel());
-        localJSONObject.put("device_os_version", DeviceInfoUtils.getDeviceOSVersion());
-        localJSONObject.put("os_version", DeviceInfoUtils.getOsVersion());
-        if (bool)
-        {
-          i = 1;
-          ndn.a(null, "", "0X800A4A1", "0X800A4A1", 0, i, "", "", "", localJSONObject.toString(), false);
-          return;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e("KandianMergeManager", 1, localJSONException.toString());
-          continue;
-          int i = 0;
-        }
-      }
+    BaseApplicationImpl.getApplication().unregisterReceiver(this.this$0.a);
+    if (KandianMergeManager.a(this.this$0) != null) {
+      KandianMergeManager.a(this.this$0).getApplication().getApplicationContext().unregisterReceiver(KandianMergeManager.a(this.this$0));
     }
   }
 }

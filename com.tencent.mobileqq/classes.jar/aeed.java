@@ -1,17 +1,13 @@
-class aeed
-  implements aaed
+import android.view.View;
+import android.widget.TextView;
+
+public class aeed
+  extends acun
 {
-  aeed(aedo paramaedo) {}
-  
-  public void a()
-  {
-    ((aqyp)this.a.a(32)).c(2);
-  }
-  
-  public void b()
-  {
-    ((aqyp)this.a.a(32)).d(2);
-  }
+  public TextView a;
+  public TextView b;
+  public View c;
+  public View d;
 }
 
 

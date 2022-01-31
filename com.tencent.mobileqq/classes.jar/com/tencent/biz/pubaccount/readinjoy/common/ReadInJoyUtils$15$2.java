@@ -1,25 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.content.res.Resources;
-import bbmy;
+import bcpw;
 import com.tencent.mobileqq.app.BaseActivity;
-import obz;
-import occ;
+import onk;
+import onn;
 
 public class ReadInJoyUtils$15$2
   implements Runnable
 {
-  public ReadInJoyUtils$15$2(occ paramocc) {}
+  public ReadInJoyUtils$15$2(onn paramonn) {}
   
   public void run()
   {
-    if (obz.g() >= 2)
+    if (onk.g() >= 2)
     {
-      bbmy.a(this.this$0.a, 0, this.this$0.a.getString(2131652605), 0).b(this.this$0.a.getResources().getDimensionPixelSize(2131167766));
+      bcpw.a(this.this$0.a, 0, this.this$0.a.getString(2131718424), 0).b(this.this$0.a.getResources().getDimensionPixelSize(2131298865));
       return;
     }
-    obz.b(this.this$0.a);
-    obz.a("3", "2");
+    onk.b(this.this$0.a);
+    onk.a("3", "2");
   }
 }
 

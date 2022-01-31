@@ -37,6 +37,7 @@ public abstract interface BaseConstants$ERROR
   public static final int Error_SDCard_NoSpace = 9040;
   public static final int Error_WriteFile = 9301;
   public static final int HTRET_ERR_DECODE = 64;
+  public static final int HTRET_ERR_ILLEGAL_IPV6_USER = 97;
   public static final int HTRET_ERR_OVERLOAD = 66;
   public static final int HTRET_ERR_PARA = 65;
   public static final int HTRET_ERR_SRV = 67;

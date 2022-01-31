@@ -1,21 +1,38 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
-class bekt
-  implements PopupWindow.OnDismissListener
+public class bekt
 {
-  bekt(beks parambeks) {}
-  
-  public void onDismiss()
+  public static void a(String paramString, JSONObject paramJSONObject, int paramInt)
   {
-    this.a.jdField_a_of_type_Bekw = null;
-    this.a.jdField_a_of_type_Bekv = null;
-    this.a.c();
-    obz.a = false;
+    switch (paramInt)
+    {
+    case -4: 
+    default: 
+    case -5: 
+      try
+      {
+        paramJSONObject.put("errMsg", "unknown reason");
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        besl.d("MiniappHttpUtil", "fillErrMsg", paramString);
+        return;
+      }
+      if (TextUtils.isEmpty(paramString)) {}
+      for (paramString = "abort";; paramString = paramString + ":fail abort")
+      {
+        paramJSONObject.put("errMsg", paramString);
+        return;
+      }
+    }
+    paramJSONObject.put("errMsg", "request protocol error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bekt
  * JD-Core Version:    0.7.0.1
  */

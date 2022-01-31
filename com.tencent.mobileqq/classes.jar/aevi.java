@@ -1,16 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-
 public class aevi
-  extends Handler
 {
-  public aevi(SearchBaseActivity paramSearchBaseActivity) {}
+  public double a;
+  public double b;
   
-  public void handleMessage(Message paramMessage)
+  public aevi(double paramDouble1, double paramDouble2)
   {
-    this.a.a.clearFocus();
+    this.a = paramDouble1;
+    this.b = paramDouble2;
+  }
+  
+  public aevi(aevi paramaevi)
+  {
+    a(paramaevi);
+  }
+  
+  public void a(aevi paramaevi)
+  {
+    this.a = paramaevi.a;
+    this.b = paramaevi.b;
+  }
+  
+  public String toString()
+  {
+    return "Velocity{vx=" + this.a + ", vy=" + this.b + '}';
   }
 }
 

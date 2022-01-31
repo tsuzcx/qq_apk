@@ -1,11 +1,13 @@
 package cooperation.qzone.contentbox.model;
 
+import NS_MOBILE_FEEDS.single_feed;
 import NS_QZONE_MQMSG.NewMQMsg;
 import cooperation.qzone.util.QZLog;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import org.json.JSONObject;
 
@@ -17,6 +19,7 @@ public class MQMsg
   public String capTime;
   public String eventTitle;
   public Map<String, String> expand;
+  public List<single_feed> feeds;
   public String jumpUrlToDetail = "";
   public MQUserPersonalData mqUserPersonalData;
   public MQMsgBody msgBody;
@@ -44,6 +47,7 @@ public class MQMsg
     localMQMsg.bottomCell = MQBottomCell.readFrom(paramNewMQMsg.bottomCell);
     localMQMsg.expand = paramNewMQMsg.mpExtent;
     localMQMsg.mqUserPersonalData = MQUserPersonalData.readFrom(paramNewMQMsg.userPersonalData);
+    localMQMsg.feeds = paramNewMQMsg.all_feeds_data;
     return localMQMsg;
   }
   

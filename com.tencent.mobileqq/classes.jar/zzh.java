@@ -1,20 +1,39 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import org.json.JSONObject;
 
 public class zzh
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public zzh(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public zzh(zze paramzze) {}
+  
+  public boolean a(JSONObject paramJSONObject)
   {
-    artg.a(paramBoolean);
+    try
+    {
+      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("param_index"));
+      this.jdField_b_of_type_Int = Integer.parseInt(paramJSONObject.getString("param_type"));
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("param_value1").trim();
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("param_value2").trim();
+      return true;
+    }
+    catch (Exception paramJSONObject)
+    {
+      zyz.a("KingKongNativePatch", "Parse parameter error!");
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "Index " + this.jdField_a_of_type_Int + ": " + this.jdField_b_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.jdField_b_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zzh
  * JD-Core Version:    0.7.0.1
  */

@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.TreeMap;
+import oicq.wlogin_sdk.pow.b;
 import oicq.wlogin_sdk.report.Reporter;
 import oicq.wlogin_sdk.report.report_t;
 import oicq.wlogin_sdk.sharemem.WloginLoginInfo;
@@ -57,10 +58,12 @@ public class t
   static int Y;
   public static int Z;
   public static SecureRandom a = ;
-  public static int aA;
+  public static String aA;
   public static String aB;
-  private static boolean aC;
-  private static Object aD = new Object();
+  public static int aC;
+  public static String aD;
+  private static boolean aE;
+  private static Object aF = new Object();
   public static int aa;
   static boolean ab;
   static byte[] ac;
@@ -73,17 +76,17 @@ public class t
   public static int aj;
   public static byte[] ak;
   static byte[] al;
-  public static c ao;
-  protected static String ap;
-  public static Reporter aq;
-  public static long ar;
-  public static TreeMap<Long, async_context> as;
-  public static boolean au = false;
-  public static boolean av = true;
-  public static String aw;
-  public static int ax = 0;
+  public static byte[] am;
+  public static byte[] an;
+  public static c aq;
+  protected static String ar;
+  public static Reporter as;
+  public static long at;
+  public static TreeMap<Long, async_context> au;
+  public static boolean aw = false;
+  public static boolean ax = true;
   public static String ay;
-  public static String az;
+  public static int az = 0;
   static Boolean e = Boolean.valueOf(false);
   public static Context t;
   public static int u;
@@ -92,9 +95,9 @@ public class t
   static int x;
   static int y;
   static int z;
-  Socket am = null;
-  Socket an = null;
-  public int at;
+  Socket ao = null;
+  Socket ap = null;
+  public int av;
   public byte[] b = null;
   public byte[] c = new byte[16];
   public tlv_t150 d = null;
@@ -115,7 +118,7 @@ public class t
   
   static
   {
-    aC = true;
+    aE = true;
     t = null;
     u = 2052;
     v = "";
@@ -160,11 +163,13 @@ public class t
     ai = false;
     aj = 1;
     al = new byte[0];
-    ao = null;
-    ap = "";
-    aq = new Reporter();
-    ar = 0L;
-    as = new TreeMap();
+    am = new byte[0];
+    an = new byte[0];
+    aq = null;
+    ar = "";
+    as = new Reporter();
+    at = 0L;
+    au = new TreeMap();
   }
   
   public t(Context paramContext) {}
@@ -173,11 +178,11 @@ public class t
   {
     try
     {
-      if (ar > 200L) {
-        ar = 0L;
+      if (at > 200L) {
+        at = 0L;
       }
-      long l1 = ar + 1L;
-      ar = l1;
+      long l1 = at + 1L;
+      at = l1;
       return l1;
     }
     finally {}
@@ -207,9 +212,9 @@ public class t
   {
     for (;;)
     {
-      synchronized (aD)
+      synchronized (aF)
       {
-        async_context localasync_context2 = (async_context)as.get(Long.valueOf(paramLong));
+        async_context localasync_context2 = (async_context)au.get(Long.valueOf(paramLong));
         if (localasync_context2 == null)
         {
           for (;;)
@@ -227,7 +232,7 @@ public class t
             }
             try
             {
-              as.put(Long.valueOf(paramLong), localasync_context1);
+              au.put(Long.valueOf(paramLong), localasync_context1);
               return localasync_context1;
             }
             catch (Exception localException2) {}
@@ -301,11 +306,11 @@ public class t
   
   public static void c(long paramLong)
   {
-    synchronized (aD)
+    synchronized (aF)
     {
       try
       {
-        as.remove(Long.valueOf(paramLong));
+        au.remove(Long.valueOf(paramLong));
         return;
       }
       catch (Exception localException)
@@ -395,7 +400,7 @@ public class t
           localObject2 = util.a.a(t, "ro.vivo.market.name");
           boolean bool = TextUtils.isEmpty((CharSequence)localObject2);
           if (bool) {
-            break label950;
+            break label962;
           }
           localObject1 = localObject2;
         }
@@ -418,29 +423,32 @@ public class t
           }
         }
         if (localObject1 != null) {
-          break label920;
+          break label932;
         }
         I = new byte[0];
         localObject1 = Build.BRAND;
         if (localObject1 != null) {
-          break label930;
+          break label942;
         }
         P = new byte[0];
         if ((!util.isFileExist("/system/bin/su")) && (!util.isFileExist("/system/xbin/su")) && (!util.isFileExist("/sbin/su"))) {
-          break label940;
+          break label952;
         }
         i1 = 1;
         if (i1 != 1) {
-          break label945;
+          break label957;
         }
         i1 = 1;
         aa = i1;
-        ao = new c(t);
-        aq = report_t.read_fromfile(t);
-        if (aq == null) {
-          aq = new Reporter();
+        aq = new c(t);
+        as = report_t.read_fromfile(t);
+        if (as == null) {
+          as = new Reporter();
         }
-        util.LOGI("init ok os ver:" + new String(J) + " cur_guid:" + util.buf_to_string(A) + " svn " + 2425L + " at " + m(), "");
+        if (util.need_pow_test(an)) {
+          b.a();
+        }
+        util.LOGI("init ok os ver:" + new String(J) + " cur_guid:" + util.buf_to_string(A) + " svn " + 2423L + " at " + m(), "");
         return;
         V = 1;
         X = 17;
@@ -449,25 +457,25 @@ public class t
     if ((localObject1 == null) || (localObject1.length <= 0))
     {
       localObject1 = localObject2;
-      label763:
-      aC = false;
+      label775:
+      aE = false;
       if (!Arrays.equals((byte[])localObject3, (byte[])localObject1)) {
-        break label909;
+        break label921;
       }
     }
-    label909:
+    label921:
     for (W = 0;; W = 1)
     {
       V = 1;
       U = 0;
       X = 1;
       break;
-      if ((!Arrays.equals((byte[])localObject3, (byte[])localObject2)) || (!aC)) {
-        break label953;
+      if ((!Arrays.equals((byte[])localObject3, (byte[])localObject2)) || (!aE)) {
+        break label965;
       }
       localObject3 = m();
       if ((TextUtils.isEmpty((CharSequence)localObject3)) || (!((String)localObject3).endsWith(":MSF")) || (!util.needChangeGuid(t))) {
-        break label953;
+        break label965;
       }
       util.LOGI("reset guid :" + util.buf_to_string((byte[])localObject2) + "|" + util.buf_to_string((byte[])localObject1), "");
       c.a(t, (byte[])localObject2, (byte[])localObject1);
@@ -475,7 +483,7 @@ public class t
       localObject2 = localObject1;
       localObject3 = localObject1;
       localObject1 = localObject2;
-      break label763;
+      break label775;
     }
   }
   
@@ -492,8 +500,8 @@ public class t
   @SuppressLint({"NewApi"})
   public static String m()
   {
-    if ((ap != null) && (ap.length() > 0)) {
-      return ap;
+    if ((ar != null) && (ar.length() > 0)) {
+      return ar;
     }
     try
     {
@@ -504,8 +512,8 @@ public class t
         ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
         if (localRunningAppProcessInfo.pid == i1)
         {
-          ap = localRunningAppProcessInfo.processName;
-          localObject = ap;
+          ar = localRunningAppProcessInfo.processName;
+          localObject = ar;
           return localObject;
         }
       }
@@ -532,7 +540,7 @@ public class t
   {
     try
     {
-      int i1 = ao.a(paramLong1, paramLong2, paramLong3, paramLong4, paramArrayOfByte1, paramArrayOfByte2);
+      int i1 = aq.a(paramLong1, paramLong2, paramLong3, paramLong4, paramArrayOfByte1, paramArrayOfByte2);
       return i1;
     }
     finally
@@ -546,8 +554,8 @@ public class t
   {
     try
     {
-      ao.d = this.at;
-      paramInt = ao.a(paramLong1, paramLong2, paramArrayOfByte1, paramLong3, paramLong4, paramLong5, paramLong6, paramLong7, paramWloginSimpleInfo, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4, paramArrayOfByte5, paramArrayOfByte6, paramArrayOfByte7, paramArrayOfByte8, paramArrayOfByte9, paramArrayOfByte10, paramArrayOfByte11, paramArrayOfByte12, paramArrayOfByte13, paramArrayOfByte14, paramArrayOfLong, paramInt);
+      aq.d = this.av;
+      paramInt = aq.a(paramLong1, paramLong2, paramArrayOfByte1, paramLong3, paramLong4, paramLong5, paramLong6, paramLong7, paramWloginSimpleInfo, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4, paramArrayOfByte5, paramArrayOfByte6, paramArrayOfByte7, paramArrayOfByte8, paramArrayOfByte9, paramArrayOfByte10, paramArrayOfByte11, paramArrayOfByte12, paramArrayOfByte13, paramArrayOfByte14, paramArrayOfLong, paramInt);
       return paramInt;
     }
     finally
@@ -582,7 +590,7 @@ public class t
   {
     try
     {
-      WloginSigInfo localWloginSigInfo = ao.d(paramLong1, paramLong2);
+      WloginSigInfo localWloginSigInfo = aq.d(paramLong1, paramLong2);
       if (localWloginSigInfo != null) {}
       return localWloginSigInfo;
     }
@@ -597,7 +605,7 @@ public class t
   {
     try
     {
-      ao.a(paramLong1, paramLong2, paramArrayOfByte);
+      aq.a(paramLong1, paramLong2, paramArrayOfByte);
       return;
     }
     finally
@@ -611,7 +619,7 @@ public class t
   {
     try
     {
-      ao.a(paramString);
+      aq.a(paramString);
       return;
     }
     finally
@@ -625,7 +633,7 @@ public class t
   {
     try
     {
-      ao.a(paramString, paramLong, true);
+      aq.a(paramString, paramLong, true);
       return;
     }
     finally
@@ -639,7 +647,7 @@ public class t
   {
     try
     {
-      ao.a(paramString, paramLong, paramBoolean);
+      aq.a(paramString, paramLong, paramBoolean);
       return;
     }
     finally
@@ -660,7 +668,7 @@ public class t
   {
     try
     {
-      int i1 = ao.a(paramLong1, paramLong2);
+      int i1 = aq.a(paramLong1, paramLong2);
       return i1;
     }
     finally
@@ -675,7 +683,7 @@ public class t
     long l2 = 0L;
     try
     {
-      paramString = ao.a(paramString, true);
+      paramString = aq.a(paramString, true);
       long l1 = l2;
       if (paramString != null)
       {
@@ -700,7 +708,7 @@ public class t
   {
     try
     {
-      paramString = ao.a(paramString, false);
+      paramString = aq.a(paramString, false);
       return paramString;
     }
     finally
@@ -714,7 +722,7 @@ public class t
   {
     try
     {
-      ao.b(paramLong1, paramLong2);
+      aq.b(paramLong1, paramLong2);
       return;
     }
     finally
@@ -733,7 +741,7 @@ public class t
   {
     try
     {
-      WloginSimpleInfo localWloginSimpleInfo = ao.b(paramLong);
+      WloginSimpleInfo localWloginSimpleInfo = aq.b(paramLong);
       if (localWloginSimpleInfo != null) {}
       return localWloginSimpleInfo;
     }
@@ -746,14 +754,14 @@ public class t
   
   public void d(long paramLong1, long paramLong2)
   {
-    ao.c(paramLong1, paramLong2);
+    aq.c(paramLong1, paramLong2);
   }
   
   public void d(String paramString)
   {
     try
     {
-      ao.b(paramString);
+      aq.b(paramString);
       return;
     }
     finally
@@ -767,7 +775,7 @@ public class t
   {
     try
     {
-      String str = ao.b(Long.valueOf(paramLong));
+      String str = aq.b(Long.valueOf(paramLong));
       return str;
     }
     finally
@@ -781,7 +789,7 @@ public class t
   {
     try
     {
-      ao.a(Long.valueOf(paramLong1), Long.valueOf(paramLong2));
+      aq.a(Long.valueOf(paramLong1), Long.valueOf(paramLong2));
       return;
     }
     finally
@@ -804,12 +812,12 @@ public class t
   public void i()
   {
     util.LOGD("close_connect", "close_connect");
-    if (this.am != null) {}
+    if (this.ao != null) {}
     try
     {
-      util.LOGD("close_connect", this.am.toString());
-      this.am.close();
-      this.am = null;
+      util.LOGD("close_connect", this.ao.toString());
+      this.ao.close();
+      this.ao = null;
       return;
     }
     catch (Exception localException)
@@ -823,12 +831,12 @@ public class t
   
   public void j()
   {
-    if (this.an != null) {}
+    if (this.ap != null) {}
     try
     {
-      util.LOGD("close_transport_connect", this.an.toString());
-      this.an.close();
-      this.an = null;
+      util.LOGD("close_transport_connect", this.ap.toString());
+      this.ap.close();
+      this.ap = null;
       return;
     }
     catch (Exception localException)
@@ -844,7 +852,7 @@ public class t
   {
     try
     {
-      ao.a();
+      aq.a();
       return;
     }
     finally
@@ -858,7 +866,7 @@ public class t
   {
     try
     {
-      List localList = ao.a(true);
+      List localList = aq.a(true);
       return localList;
     }
     finally

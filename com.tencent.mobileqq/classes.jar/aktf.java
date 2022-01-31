@@ -1,16 +1,25 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-
 public class aktf
 {
-  public ArCloudConfigInfo a;
-  public String a = "";
-  public boolean a;
-  public String b = "";
-  public boolean b;
+  public void a() {}
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1000: 
+      a();
+      return;
+    }
+    b();
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aktf
  * JD-Core Version:    0.7.0.1
  */

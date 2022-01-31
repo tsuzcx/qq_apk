@@ -8,7 +8,7 @@ import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.l;
+import com.tencent.tmassistantbase.util.k;
 import java.lang.reflect.Method;
 
 public class e
@@ -79,7 +79,7 @@ public class e
         if (!h.a(((PackageInfo)localObject).packageName))
         {
           Log.i("miles", "<onHook> pkg not allowed!!!");
-          l.a().post(new f(this, (PackageInfo)localObject));
+          k.a().post(new f(this, (PackageInfo)localObject));
           return paramMethod.invoke(paramObject, paramVarArgs);
         }
         Log.i("miles", "step 3 time cost: " + (System.currentTimeMillis() - l) + "ms");
@@ -92,7 +92,7 @@ public class e
           }
           Log.i("miles", "getFakePackage." + d.d());
         }
-        l.a().post(new g(this, (PackageInfo)localObject));
+        k.a().post(new g(this, (PackageInfo)localObject));
         Log.i("miles", "step 4 time cost: " + (System.currentTimeMillis() - l) + "ms");
       }
       catch (Exception localException)

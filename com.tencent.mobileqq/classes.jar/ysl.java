@@ -1,22 +1,25 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.gdtad.views.videoimax.TransitionContext;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.ad.tangram.thread.AdThreadManagerAdapter;
+import com.tencent.gdtad.adapter.GdtThreadManagerAdapter.1;
+import com.tencent.gdtad.adapter.GdtThreadManagerAdapter.2;
+import java.util.Map;
 
-public class ysl
-  extends AnimatorListenerAdapter
+public final class ysl
+  implements AdThreadManagerAdapter
 {
-  public ysl(TransitionContext paramTransitionContext) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public boolean postDelayed(Runnable paramRunnable, int paramInt, long paramLong)
   {
-    super.onAnimationCancel(paramAnimator);
-    this.a.a();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    this.a.a();
+    GdtThreadManagerAdapter.1 local1 = new GdtThreadManagerAdapter.1(this);
+    if (paramInt == 0) {
+      return new Handler(Looper.getMainLooper()).postDelayed(paramRunnable, paramLong);
+    }
+    if (local1.containsKey(Integer.valueOf(paramInt)))
+    {
+      paramInt = ((Integer)local1.get(Integer.valueOf(paramInt))).intValue();
+      return new Handler(Looper.getMainLooper()).postDelayed(new GdtThreadManagerAdapter.2(this, paramRunnable, paramInt), paramLong);
+    }
+    return false;
   }
 }
 

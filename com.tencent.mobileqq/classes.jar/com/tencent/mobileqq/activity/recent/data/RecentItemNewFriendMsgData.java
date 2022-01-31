@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ahcw;
-import ajnf;
+import ahpl;
+import akbo;
 import android.content.Context;
-import atcu;
+import atyy;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
@@ -27,10 +27,10 @@ public class RecentItemNewFriendMsgData
       QLog.d("RecentItemNewFriendMsgData", 2, "RecentItemNewFriendMsgData update");
     }
     super.a(paramQQAppInterface, paramContext);
-    ajnf localajnf = (ajnf)paramQQAppInterface.getManager(34);
-    atcu localatcu = localajnf.a();
+    akbo localakbo = (akbo)paramQQAppInterface.getManager(34);
+    atyy localatyy = localakbo.a();
     this.mTitleName = paramContext.getString(this.mTilteId);
-    if (localatcu == null)
+    if (localatyy == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("RecentItemNewFriendMsgData", 2, "isFirstShow = " + this.isFirstShow);
@@ -40,7 +40,7 @@ public class RecentItemNewFriendMsgData
       this.mMsgExtroInfo = "";
       this.mDisplayTime = 0L;
       this.mShowTime = "";
-      if (AppSetting.c)
+      if (AppSetting.d)
       {
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append(this.mTitleName).append(",");
@@ -58,15 +58,15 @@ public class RecentItemNewFriendMsgData
       this.mContentDesc = paramQQAppInterface.toString();
       return;
       this.mMsgExtroInfo = "";
-      if (localatcu.a(paramQQAppInterface) != null) {}
-      for (paramQQAppInterface = localatcu.a(paramQQAppInterface);; paramQQAppInterface = this.mLastMsg)
+      if (localatyy.a(paramQQAppInterface) != null) {}
+      for (paramQQAppInterface = localatyy.a(paramQQAppInterface);; paramQQAppInterface = this.mLastMsg)
       {
         this.mLastMsg = paramQQAppInterface;
-        this.mUnreadNum = localajnf.d();
-        if (this.mDisplayTime < localatcu.a) {
-          this.mDisplayTime = localatcu.a;
+        this.mUnreadNum = localakbo.d();
+        if (this.mDisplayTime < localatyy.a) {
+          this.mDisplayTime = localatyy.a;
         }
-        this.mShowTime = ahcw.a().a(a(), this.mDisplayTime);
+        this.mShowTime = ahpl.a().a(a(), this.mDisplayTime);
         break;
       }
       label300:

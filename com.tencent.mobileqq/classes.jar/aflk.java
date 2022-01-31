@@ -1,22 +1,35 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
 
-class aflk
-  implements apad
+public class aflk
+  extends Handler
 {
-  aflk(aflj paramaflj) {}
+  public aflk(SystemMsgListView paramSystemMsgListView) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramInt1 == 3) && (paramInt2 == 0))
+    switch (paramMessage.what)
     {
-      awqx.b(this.a.a.a, "dc00898", "", "", "0X800A0B5", "0X800A0B5", 3, 0, "", "", "", "");
-      ChatHistoryC2CFileFragment.a(this.a.a, true);
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (SystemMsgListView.a(this.a) == null);
+      this.a.i();
+      SystemMsgListView.a(this.a).notifyDataSetChanged();
+      return;
     }
+    paramMessage = SystemMsgListView.a(this.a).getResources().getString(2131719981);
+    bcpw.a(SystemMsgListView.a(this.a), 1, paramMessage, 0).b(this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aflk
  * JD-Core Version:    0.7.0.1
  */

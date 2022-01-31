@@ -1,8 +1,8 @@
 package com.tencent.av.ui;
 
-import kth;
-import lwd;
-import lwe;
+import ldw;
+import mgv;
+import mgw;
 
 class MultiVideoMembersListviewAvtivity$ListViewBaseAdapter$1$1
   implements Runnable
@@ -11,8 +11,8 @@ class MultiVideoMembersListviewAvtivity$ListViewBaseAdapter$1$1
   
   public void run()
   {
-    if ((this.a.jdField_a_of_type_Lwe.jdField_a_of_type_Long == this.a.jdField_a_of_type_Kth.jdField_a_of_type_Long) && (this.a.jdField_a_of_type_Kth.jdField_a_of_type_AndroidGraphicsBitmap == null)) {
-      this.a.jdField_a_of_type_Lwd.a(this.a.jdField_a_of_type_Kth, this.a.jdField_a_of_type_Lwe);
+    if ((this.a.jdField_a_of_type_Mgw.jdField_a_of_type_Long == this.a.jdField_a_of_type_Ldw.jdField_a_of_type_Long) && (this.a.jdField_a_of_type_Ldw.jdField_a_of_type_AndroidGraphicsBitmap == null)) {
+      this.a.jdField_a_of_type_Mgv.a(this.a.jdField_a_of_type_Ldw, this.a.jdField_a_of_type_Mgw);
     }
   }
 }

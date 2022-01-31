@@ -5,8 +5,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.AttributeSet;
-import auoo;
-import auop;
+import avnw;
+import avnx;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -59,8 +59,8 @@ public class ParticleExplodeView
     int j = 0;
     if (j < paramInt1)
     {
-      auop localauop = new auop();
-      localauop.jdField_a_of_type_AndroidGraphicsBitmap = a(paramBitmap1, paramBitmap2, paramBitmap3);
+      avnx localavnx = new avnx();
+      localavnx.jdField_a_of_type_AndroidGraphicsBitmap = a(paramBitmap1, paramBitmap2, paramBitmap3);
       int i = 0;
       if (paramInt3 == 0) {
         i = a(0, 360);
@@ -68,10 +68,10 @@ public class ParticleExplodeView
       for (;;)
       {
         double[] arrayOfDouble = a(paramInt2, i);
-        localauop.jdField_a_of_type_Float = ((float)(this.jdField_a_of_type_Int / 2 + arrayOfDouble[0]));
-        localauop.b = ((float)(this.b / 2 + arrayOfDouble[1]));
-        localauop.c = a(0, 360);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localauop);
+        localavnx.jdField_a_of_type_Float = ((float)(this.jdField_a_of_type_Int / 2 + arrayOfDouble[0]));
+        localavnx.b = ((float)(this.b / 2 + arrayOfDouble[1]));
+        localavnx.c = a(0, 360);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localavnx);
         j += 1;
         break;
         if (paramInt3 == 1) {
@@ -104,18 +104,18 @@ public class ParticleExplodeView
         if (!localIterator.hasNext()) {
           break;
         }
-        auop localauop = (auop)localIterator.next();
-        if (localauop == null) {
+        avnx localavnx = (avnx)localIterator.next();
+        if (localavnx == null) {
           continue;
         }
-        f2 = a(localauop.jdField_a_of_type_Float);
+        f2 = a(localavnx.jdField_a_of_type_Float);
         if ((f2 > 0.0F) && (f2 < 5.0F))
         {
           f1 = 5.0F;
-          localauop.b = a(localauop.jdField_a_of_type_Float, localauop.b, f1);
-          localauop.jdField_a_of_type_Float = (f1 + localauop.jdField_a_of_type_Float);
-          localauop.c += 15.0F;
-          if ((localauop.jdField_a_of_type_Float >= 0.0F) && (localauop.jdField_a_of_type_Float <= this.jdField_a_of_type_Int) && (localauop.jdField_a_of_type_Float != this.jdField_a_of_type_Int / 2)) {
+          localavnx.b = a(localavnx.jdField_a_of_type_Float, localavnx.b, f1);
+          localavnx.jdField_a_of_type_Float = (f1 + localavnx.jdField_a_of_type_Float);
+          localavnx.c += 15.0F;
+          if ((localavnx.jdField_a_of_type_Float >= 0.0F) && (localavnx.jdField_a_of_type_Float <= this.jdField_a_of_type_Int) && (localavnx.jdField_a_of_type_Float != this.jdField_a_of_type_Int / 2)) {
             continue;
           }
           localIterator.remove();
@@ -168,7 +168,7 @@ public class ParticleExplodeView
   
   protected Bitmap[] a()
   {
-    return new Bitmap[] { BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130847016), BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130847017), BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130847018) };
+    return new Bitmap[] { BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130847208), BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130847209), BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130847210) };
   }
   
   public void c()
@@ -176,7 +176,7 @@ public class ParticleExplodeView
     this.jdField_a_of_type_Boolean = true;
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this, "alpha", new float[] { 1.0F, 0.0F });
     localObjectAnimator.setDuration(500L);
-    localObjectAnimator.addListener(new auoo(this));
+    localObjectAnimator.addListener(new avnw(this));
     localObjectAnimator.start();
   }
 }

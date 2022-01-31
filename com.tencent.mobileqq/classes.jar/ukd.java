@@ -1,51 +1,72 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import java.util.List;
+import com.tencent.biz.qqstory.settings.QQStoryShieldActivity;
+import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
+import com.tencent.widget.Switch;
 
 public class ukd
-  extends sgl<ujx, ujl>
+  extends ssy
 {
-  public ukd(ujx paramujx)
+  public ukd(QQStoryShieldActivity paramQQStoryShieldActivity) {}
+  
+  public void a(boolean paramBoolean, QQStoryUserInfo paramQQStoryUserInfo)
   {
-    super(paramujx);
+    boolean bool = true;
+    QQStoryShieldActivity.a(this.a);
+    Switch localSwitch;
+    if ((paramBoolean) && (paramQQStoryUserInfo != null))
+    {
+      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
+      this.a.b.setOnCheckedChangeListener(null);
+      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
+      if (paramQQStoryUserInfo.isAllowed != 1) {
+        break label119;
+      }
+      paramBoolean = true;
+      localSwitch.setChecked(paramBoolean);
+      localSwitch = this.a.b;
+      if (paramQQStoryUserInfo.isInterested != 1) {
+        break label124;
+      }
+    }
+    label119:
+    label124:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      localSwitch.setChecked(paramBoolean);
+      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
+      this.a.b.setOnCheckedChangeListener(this.a);
+      return;
+      paramBoolean = false;
+      break;
+    }
   }
   
-  public void a(@NonNull ujx paramujx, @NonNull ujl paramujl)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (paramujl.jdField_a_of_type_Int == 0) {
+    boolean bool = true;
+    paramBoolean2 = true;
+    this.a.jdField_a_of_type_Bcpt.b();
+    if (paramBoolean1) {
       return;
     }
-    Object localObject = paramujx.a(paramujl.jdField_a_of_type_JavaLangString);
-    if (localObject == null)
+    bcpw.a(this.a, 2131694974, 0).b(this.a.getTitleBarHeight());
+    if (paramBoolean3)
     {
-      urk.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramujl.jdField_a_of_type_JavaLangString });
-      return;
+      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
+      if (!this.a.jdField_a_of_type_ComTencentWidgetSwitch.isChecked()) {}
+      for (paramBoolean1 = paramBoolean2;; paramBoolean1 = false)
+      {
+        localSwitch.setChecked(paramBoolean1);
+        return;
+      }
     }
-    if (!(localObject instanceof ujm))
+    Switch localSwitch = this.a.b;
+    if (!this.a.b.isChecked()) {}
+    for (paramBoolean1 = bool;; paramBoolean1 = false)
     {
-      urk.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramujl.jdField_a_of_type_JavaLangString });
+      localSwitch.setChecked(paramBoolean1);
       return;
     }
-    localObject = (ujm)localObject;
-    FeedVideoInfo localFeedVideoInfo = ((ujk)sqg.a(12)).a(paramujl.jdField_a_of_type_JavaLangString, ((GeneralFeedItem)((ujm)localObject).a).mVideoPullType);
-    if (localFeedVideoInfo == null)
-    {
-      urk.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find video info for feedId:%s, pullType:%d", new Object[] { paramujl.jdField_a_of_type_JavaLangString, Integer.valueOf(((GeneralFeedItem)((ujm)localObject).a).mVideoPullType) });
-      return;
-    }
-    ((ujm)localObject).c(localFeedVideoInfo.mVideoItemList, true);
-    ((GeneralFeedItem)((ujm)localObject).a).updateVideoInfo(localFeedVideoInfo);
-    urk.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video and cookie update after count:%d", paramujl.jdField_a_of_type_JavaLangString, Integer.valueOf(((ujm)localObject).a().size()));
-    ujx.a(paramujx).a((ukv)localObject);
   }
-  
-  public Class acceptEventClass()
-  {
-    return ujl.class;
-  }
-  
-  public void b(@NonNull ujx paramujx, @NonNull ujl paramujl) {}
 }
 
 

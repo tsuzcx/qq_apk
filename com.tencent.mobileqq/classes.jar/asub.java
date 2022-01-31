@@ -1,83 +1,138 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.MobileQQ;
+import tencent.im.msg.im_msg_body.RichText;
 
 class asub
-  implements View.OnClickListener
+  implements auoo
 {
-  asub(aste paramaste) {}
+  int jdField_a_of_type_Int;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  ArrayList<MessageRecord> jdField_a_of_type_JavaUtilArrayList;
+  HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
   
-  public void onClick(View paramView)
+  public asub(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString, int paramInt, ArrayList<MessageRecord> paramArrayList, HashMap<String, String> paramHashMap)
   {
-    PicInfo localPicInfo;
-    if ((paramView.getTag() instanceof PicInfo))
-    {
-      localPicInfo = (PicInfo)paramView.getTag();
-      if (localPicInfo.g != "type_qq_head_pic") {
-        break label189;
-      }
-      localPicInfo.c = this.a.a.app.a(32, String.valueOf(aste.a(this.a).uin), 200);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+  }
+  
+  private Bitmap a(Bitmap paramBitmap)
+  {
+    Bitmap localBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
+    Canvas localCanvas = new Canvas(localBitmap);
+    localCanvas.drawColor(-1);
+    localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, null);
+    return localBitmap;
+  }
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
+  {
+    return null;
+  }
+  
+  public void a(auop paramauop) {}
+  
+  public void b(auop paramauop)
+  {
+    if (paramauop.jdField_a_of_type_Int == 0) {
       if (QLog.isColorLevel()) {
-        QLog.e("Q.nearby_people_card.", 2, "on mode guest small head clicked: uin is: " + aste.a(this.a).uin + " local path is: " + localPicInfo.c);
-      }
-      paramView = xgx.a(paramView);
-      this.a.a.a(localPicInfo, paramView);
-      if (ProfileActivity.c(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h)) {
-        awqx.b(this.a.a.app, "CliOper", "", "", "0X8005240", "0X8005240", 0, 0, "", "", "", "");
-      }
-    }
-    return;
-    label189:
-    paramView = xgx.a(paramView);
-    int i = 0;
-    label196:
-    int j;
-    if (i < this.a.a.jdField_a_of_type_JavaUtilArrayList.size()) {
-      if (aste.a(this.a).nowUserType == 0)
-      {
-        if (localPicInfo.jdField_a_of_type_Int != ((PicInfo)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int) {
-          break label425;
-        }
-        j = i;
+        QLog.d("MultiMsg_TAG", 2, "send real struct msg for weixin done, cost : " + (System.currentTimeMillis() - asty.b()));
       }
     }
     for (;;)
     {
-      label256:
-      this.a.a.a(j, paramView);
-      awqx.b(this.a.a.app, "CliOper", "", "", "0X800482A", "0X800482A", 0, 0, "", "", "", "");
-      if (this.a.a.e == 3) {}
-      for (paramView = "2";; paramView = "1")
+      String str2;
+      Object localObject2;
+      long l;
+      try
       {
-        awqx.b(null, "dc00899", "grp_lbs", "", "data_card", "clk_pic", 0, 0, paramView, "", "", "");
-        if (!asep.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h, this.a.a.e)) {
-          break;
+        String str1;
+        String str3;
+        if (this.jdField_a_of_type_Int == 0)
+        {
+          str1 = String.format(((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplication().getString(2131694412), new Object[] { bbcl.b((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).c()), bbcl.b((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString) });
+          str3 = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg;
+          str2 = "https://mma.qq.com/jumpqq/forward2.html?rId=" + paramauop.c + "&fName=" + paramauop.d;
+          if (this.jdField_a_of_type_Int == 1)
+          {
+            i = 4;
+            localObject2 = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(i, this.jdField_a_of_type_JavaLangString, (byte)1, false, 0);
+            if (localObject2 != null) {
+              continue;
+            }
+          }
         }
-        this.a.a.app.a().b(localPicInfo.jdField_a_of_type_JavaLangString);
-        return;
-        j = i;
-        if (TextUtils.equals(localPicInfo.jdField_a_of_type_JavaLangString, ((PicInfo)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString)) {
-          break label256;
+        else
+        {
+          str1 = String.format(((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplication().getString(2131694413), new Object[] { bbcl.a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) });
+          continue;
         }
-        label425:
-        i += 1;
-        break label196;
+        if (this.jdField_a_of_type_Int != 3000) {
+          break label581;
+        }
+        i = 101;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("MultiMsg_TAG", 2, "send to weixin icon != null  ");
+        }
+        Object localObject1 = localObject2;
+        if (this.jdField_a_of_type_Int == 3000) {
+          localObject1 = a((Bitmap)localObject2);
+        }
+        localObject2 = String.valueOf(System.currentTimeMillis());
+        WXShareHelper.a().d((String)localObject2, str1, (Bitmap)localObject1, str3, str2);
+        l = paramauop.c.hashCode();
+        paramauop = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        if (paramauop.hasNext())
+        {
+          ((MessageRecord)paramauop.next()).msgseq = l;
+          continue;
+        }
+        ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a().a(this.jdField_a_of_type_JavaUtilArrayList, null);
       }
-      j = 0;
+      catch (Exception paramauop)
+      {
+        paramauop.printStackTrace();
+        return;
+      }
+      asty.a().a(this.jdField_a_of_type_JavaUtilHashMap, l, (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(0)).notifyUI(8031, false, Integer.valueOf(0));
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("MultiMsg_TAG", 2, "shareToWXFriend.transaction: " + (String)localObject2 + ", shareLink:" + str2);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg_TAG", 2, "upload multi msg pack failed, result.errStr=" + paramauop.b + ",result.errStr=" + paramauop.jdField_a_of_type_JavaLangString);
+      }
+      ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(0)).notifyUI(8031, false, Integer.valueOf(5));
+      return;
+      label581:
+      int i = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     asub
  * JD-Core Version:    0.7.0.1
  */

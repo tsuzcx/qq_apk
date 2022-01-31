@@ -1,20 +1,15 @@
 import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-class aban
-  implements ViewSwitcher.ViewFactory
+public class aban
+  implements View.OnLongClickListener
 {
-  aban(abai paramabai) {}
+  public aban(EditInfoActivity paramEditInfoActivity) {}
   
-  public View makeView()
+  public boolean onLongClick(View paramView)
   {
-    ImageView localImageView = new ImageView(this.a.a());
-    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    return localImageView;
+    return true;
   }
 }
 

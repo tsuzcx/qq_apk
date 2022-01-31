@@ -1,20 +1,36 @@
-public abstract interface lqa
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+
+class lqa
+  extends lkg
 {
-  public abstract void a();
+  lqa(lpz paramlpz) {}
   
-  public abstract boolean a();
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  {
+    QLog.w(lpz.jdField_a_of_type_JavaLangString, 1, "onAfterOpenCamera, success[" + paramBoolean + "], preSessionType[" + paramInt + "], seq[" + paramLong + "]");
+    if (paramBoolean) {
+      b(paramLong);
+    }
+  }
   
-  public abstract boolean a(lqd paramlqd);
+  void b(long paramLong)
+  {
+    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4);
+    localMessage.obj = Long.valueOf(paramLong);
+    localMessage.sendToTarget();
+  }
   
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean b(lqd paramlqd);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  protected void b(boolean paramBoolean)
+  {
+    long l = AudioHelper.b();
+    QLog.w(lpz.jdField_a_of_type_JavaLangString, 1, "onAfterReopenCamera, success[" + paramBoolean + "], seq[" + l + "]");
+    if (paramBoolean) {
+      b(l);
+    }
+  }
 }
 
 

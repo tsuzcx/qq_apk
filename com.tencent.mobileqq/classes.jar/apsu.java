@@ -1,39 +1,20 @@
-import android.content.Intent;
-
-public class apsu
-  implements apsw
+public abstract interface apsu
 {
-  public int a()
-  {
-    return 0;
-  }
+  public abstract long a(aysx paramaysx);
   
-  public apsv a()
-  {
-    return null;
-  }
+  public abstract void a();
   
-  public apsv a(int paramInt)
-  {
-    return null;
-  }
+  public abstract void a(long paramLong1, long paramLong2);
   
-  public void a() {}
+  public abstract void a(boolean paramBoolean);
   
-  public void a(int paramInt) {}
+  public abstract byte[] a(byte[] paramArrayOfByte, long paramLong);
   
-  public void a(Intent paramIntent) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public void b() {}
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apsu
  * JD-Core Version:    0.7.0.1
  */

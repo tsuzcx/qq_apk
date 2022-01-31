@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import ackq;
+import acvj;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class HongBaoPanel$1
-  implements ackq
+  implements acvj
 {
   HongBaoPanel$1(HongBaoPanel paramHongBaoPanel) {}
   

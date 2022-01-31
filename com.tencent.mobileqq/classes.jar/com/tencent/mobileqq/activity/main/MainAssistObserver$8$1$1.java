@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.main;
 
-import afrh;
+import agdg;
 
 class MainAssistObserver$8$1$1
   implements Runnable

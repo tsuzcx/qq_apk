@@ -6,14 +6,14 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import vzp;
-import vzq;
+import wnb;
+import wnc;
 
 public class CommentEditText
   extends EditText
 {
   private int jdField_a_of_type_Int = 140;
-  private vzq jdField_a_of_type_Vzq;
+  private wnc jdField_a_of_type_Wnc;
   
   public CommentEditText(Context paramContext)
   {
@@ -23,7 +23,7 @@ public class CommentEditText
   public CommentEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    addTextChangedListener(new vzp(this));
+    addTextChangedListener(new wnb(this));
   }
   
   public CommentEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -51,9 +51,9 @@ public class CommentEditText
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setOnInputBackListener(vzq paramvzq)
+  public void setOnInputBackListener(wnc paramwnc)
   {
-    this.jdField_a_of_type_Vzq = paramvzq;
+    this.jdField_a_of_type_Wnc = paramwnc;
   }
 }
 

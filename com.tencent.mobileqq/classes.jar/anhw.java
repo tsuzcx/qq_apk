@@ -1,205 +1,88 @@
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.text.TextPaint;
+import android.util.DisplayMetrics;
+import java.util.HashMap;
+import java.util.Map;
 
-public abstract class anhw
+public class anhw
 {
-  int jdField_a_of_type_Int;
-  anht jdField_a_of_type_Anht;
-  anhv jdField_a_of_type_Anhv;
-  public String a;
-  List<anht> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  anht jdField_b_of_type_Anht;
-  boolean jdField_b_of_type_Boolean;
-  int jdField_c_of_type_Int;
-  anht jdField_c_of_type_Anht;
-  boolean jdField_c_of_type_Boolean;
-  int jdField_d_of_type_Int;
-  anht jdField_d_of_type_Anht;
-  boolean jdField_d_of_type_Boolean;
-  anht jdField_e_of_type_Anht;
-  boolean jdField_e_of_type_Boolean;
-  anht jdField_f_of_type_Anht;
-  boolean jdField_f_of_type_Boolean;
+  private static int jdField_a_of_type_Int;
+  public static Paint a;
+  private static final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private static final TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+  private static final Map<Float, Float> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public static Paint b;
+  private static final Map<Float, Float> b;
+  private static final Map<Float, Float> c;
   
-  public anhw()
+  static
   {
-    this.jdField_a_of_type_JavaLangString = "init";
+    jdField_b_of_type_JavaUtilMap = new HashMap();
+    c = new HashMap();
+    jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
   }
   
-  public int a()
+  public static float a(float paramFloat)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int a(int paramInt)
-  {
-    int j = 1;
-    int i = 0;
-    int k = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonLinearLayout", 2, "getRealIndex, position:" + paramInt + ",pageTotalNum:" + this.jdField_d_of_type_Int + ",page:" + this.jdField_c_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      if ((paramInt + 1) % this.jdField_d_of_type_Int == 0) {
-        paramInt = -1;
-      }
-    }
-    int m;
-    label237:
-    label242:
-    do
+    jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
+    Float localFloat = (Float)jdField_a_of_type_JavaUtilMap.get(Float.valueOf(paramFloat));
+    Object localObject = localFloat;
+    if (localFloat == null)
     {
-      do
-      {
-        return paramInt;
-        return paramInt + this.jdField_c_of_type_Int * (this.jdField_d_of_type_Int - 1);
-        if (this.jdField_e_of_type_Boolean)
-        {
-          if ((paramInt == 0) && (this.jdField_c_of_type_Int == 0)) {
-            return -5;
-          }
-          if (this.jdField_f_of_type_Boolean) {
-            i = 1;
-          }
-          if ((paramInt == 1) && (this.jdField_c_of_type_Int == 0) && (this.jdField_f_of_type_Boolean)) {
-            return -6;
-          }
-          if (this.jdField_c_of_type_Int == 0) {
-            return paramInt - 1 - i;
-          }
-          return this.jdField_d_of_type_Int - 1 + (this.jdField_c_of_type_Int - 1) * this.jdField_d_of_type_Int + paramInt - i;
-        }
-        m = this.jdField_a_of_type_JavaUtilList.size();
-        if (this.jdField_d_of_type_Boolean)
-        {
-          i = 1;
-          if (!this.jdField_c_of_type_Boolean) {
-            break label237;
-          }
-        }
-        for (;;)
-        {
-          if (this.jdField_c_of_type_Int + paramInt != 0) {
-            break label270;
-          }
-          if (!this.jdField_d_of_type_Boolean) {
-            break label242;
-          }
-          return -4;
-          i = 0;
-          break;
-          j = 0;
-        }
-        paramInt = k;
-      } while (this.jdField_a_of_type_JavaUtilList.size() != 0);
-      paramInt = k;
-    } while (!this.jdField_c_of_type_Boolean);
-    return -2;
-    label270:
-    if (this.jdField_c_of_type_Int * this.jdField_d_of_type_Int + paramInt == i + (m - 1) + j)
+      localObject = jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
+      float f1 = ((Paint.FontMetrics)localObject).descent;
+      float f2 = ((Paint.FontMetrics)localObject).ascent;
+      localObject = Float.valueOf(((Paint.FontMetrics)localObject).leading + (f1 - f2));
+      jdField_a_of_type_JavaUtilMap.put(Float.valueOf(paramFloat), localObject);
+    }
+    return ((Float)localObject).floatValue();
+  }
+  
+  public static float a(float paramFloat, String paramString)
+  {
+    jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
+    return a(jdField_a_of_type_AndroidTextTextPaint, paramString);
+  }
+  
+  public static float a(Paint paramPaint, String paramString)
+  {
+    return paramPaint.measureText(paramString);
+  }
+  
+  public static float a(angu paramangu)
+  {
+    return a(paramangu.c()) + ange.a().c() * 2 + paramangu.d() * 2.0F + paramangu.e() * 2.0F;
+  }
+  
+  public static void a(Canvas paramCanvas)
+  {
+    paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+  }
+  
+  public static void a(Canvas paramCanvas, String paramString)
+  {
+    if (jdField_b_of_type_AndroidGraphicsPaint == null)
     {
-      if (this.jdField_c_of_type_Boolean) {
-        return -2;
-      }
-      return this.jdField_a_of_type_JavaUtilList.size() - 1;
+      jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+      jdField_b_of_type_AndroidGraphicsPaint.setColor(-256);
+      Object localObject = anfe.a().a().a().getDisplayMetrics();
+      jdField_b_of_type_AndroidGraphicsPaint.setTextSize(((DisplayMetrics)localObject).density * 12.5F);
+      localObject = jdField_b_of_type_AndroidGraphicsPaint.getFontMetrics();
+      jdField_a_of_type_Int = (int)Math.ceil(((Paint.FontMetrics)localObject).descent - ((Paint.FontMetrics)localObject).ascent);
     }
-    if (this.jdField_d_of_type_Boolean) {
-      return this.jdField_c_of_type_Int * this.jdField_d_of_type_Int + paramInt - 1;
-    }
-    return paramInt + this.jdField_c_of_type_Int * this.jdField_d_of_type_Int;
-  }
-  
-  public anht a(int paramInt)
-  {
-    paramInt = a(paramInt);
-    if (paramInt == -1) {
-      return this.jdField_a_of_type_Anht;
-    }
-    if (paramInt == -2) {
-      return this.jdField_c_of_type_Anht;
-    }
-    if (paramInt == -3) {
-      return this.jdField_b_of_type_Anht;
-    }
-    if (paramInt == -4) {
-      return this.jdField_d_of_type_Anht;
-    }
-    if (paramInt == -5) {
-      return this.jdField_e_of_type_Anht;
-    }
-    if (paramInt == -6) {
-      return this.jdField_f_of_type_Anht;
-    }
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (anht)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Anhv != null) {
-      this.jdField_a_of_type_Anhv.a();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_d_of_type_Int = (paramInt2 * paramInt1);
-    this.jdField_a_of_type_Anhv.a(paramInt1, paramInt2);
-  }
-  
-  public abstract void a(int paramInt, RelativeLayout paramRelativeLayout, ViewGroup paramViewGroup);
-  
-  public void a(anht paramanht)
-  {
-    this.jdField_a_of_type_Anht = paramanht;
-  }
-  
-  public void a(anhv paramanhv)
-  {
-    this.jdField_a_of_type_Anhv = paramanhv;
-  }
-  
-  public void a(List<anht> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    paramCanvas.drawText(paramString, 10.0F, paramCanvas.getHeight() - jdField_a_of_type_Int, jdField_b_of_type_AndroidGraphicsPaint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anhw
  * JD-Core Version:    0.7.0.1
  */

@@ -23,12 +23,12 @@ class BaseJsPluginEngine$2
     if ((paramBoolean) && (!"0".equals(str)))
     {
       AuthorizeCenter.scopeDescMap.put("scope.getPhoneNumber", str);
-      BaseJsPluginEngine.access$100(this.this$0, this.val$eventName, this.val$jsonParams, this.val$webview, this.val$callbackId, this.val$granted);
+      BaseJsPluginEngine.access$200(this.this$0, this.val$eventName, this.val$jsonParams, this.val$webview, this.val$callbackId, this.val$granted);
       return;
     }
     if ("0".equals(str))
     {
-      this.this$0.callbackJsEventFail(this.val$webview, this.val$eventName, new JSONObject(), this.this$0.getActivityContext().getString(2131628622), this.val$callbackId);
+      this.this$0.callbackJsEventFail(this.val$webview, this.val$eventName, new JSONObject(), this.this$0.getActivityContext().getString(2131694272), this.val$callbackId);
       return;
     }
     this.this$0.callbackJsEventFail(this.val$webview, this.val$eventName, paramJSONObject, this.val$callbackId);

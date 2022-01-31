@@ -1,26 +1,24 @@
-public class axua
-  extends axtw
+import java.util.Comparator;
+
+class axua
+  implements Comparator
 {
-  private int a = 360000;
-  private int b = 9;
-  private int c = 3;
-  private int d = 10000;
-  private int e = 20000;
-  private int f = 3000;
-  
-  public int a()
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    return this.d;
-  }
-  
-  public int b()
-  {
-    return this.e;
+    paramObject1 = (axtx)paramObject1;
+    paramObject2 = (axtx)paramObject2;
+    if (paramObject1.b > paramObject2.b) {
+      return -1;
+    }
+    if (paramObject1.b < paramObject2.b) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axua
  * JD-Core Version:    0.7.0.1
  */

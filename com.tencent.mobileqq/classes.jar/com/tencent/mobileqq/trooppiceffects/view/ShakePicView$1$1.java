@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.trooppiceffects.view;
 
-import azsn;
+import batr;
 
 public class ShakePicView$1$1
   implements Runnable
 {
-  public ShakePicView$1$1(azsn paramazsn) {}
+  public ShakePicView$1$1(batr parambatr) {}
   
   public void run()
   {

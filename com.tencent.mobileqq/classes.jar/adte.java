@@ -1,13 +1,9 @@
-import android.view.View;
-import android.widget.TextView;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
 
 public class adte
-  extends acju
+  extends acun
 {
-  public TextView a;
-  public TextView b;
-  public View c;
-  public View d;
+  public HiBoomTextView a;
 }
 
 

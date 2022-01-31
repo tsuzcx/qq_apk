@@ -1,10 +1,19 @@
-public abstract interface anui
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+
+public class anui
+  extends aikb
 {
-  public abstract void a(String paramString, int paramInt);
+  public anui(MessengerService paramMessengerService) {}
+  
+  public void a(Bundle paramBundle)
+  {
+    this.a.a(paramBundle);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anui
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
 
 public class wfr
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public wfr(VideoPlayerView paramVideoPlayerView) {}
+  public wfr(QRCardActivity paramQRCardActivity) {}
   
-  public void onClick(View paramView)
-  {
-    if (wpl.a("mLLSkipForwardWrapper", 500L))
-    {
-      VideoPlayerView.e(this.a);
-      VideoPlayerView.a(this.a, new WeakReference(VideoPlayerView.c(this.a)), 0, 1, true);
-      if (VideoPlayerView.a(this.a) != null) {
-        this.a.a(VideoPlayerView.a(this.a).a() + 10000L);
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wfr
  * JD-Core Version:    0.7.0.1
  */

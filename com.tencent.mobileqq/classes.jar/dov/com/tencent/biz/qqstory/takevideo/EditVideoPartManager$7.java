@@ -1,14 +1,14 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.graphics.Bitmap;
-import bigb;
-import bjgz;
+import bjww;
+import bkxk;
 import com.tencent.qphone.base.util.QLog;
 
 public class EditVideoPartManager$7
   implements Runnable
 {
-  public EditVideoPartManager$7(bigb parambigb) {}
+  public EditVideoPartManager$7(bjww parambjww) {}
   
   public void run()
   {
@@ -16,18 +16,18 @@ public class EditVideoPartManager$7
     if (localBitmap != null) {}
     try
     {
-      if (bigb.a(this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a, 64))
+      if (bjww.a(this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a, 64))
       {
-        if (bigb.jdField_a_of_type_Bjgz == null) {
-          bigb.jdField_a_of_type_Bjgz = new bjgz();
+        if (bjww.jdField_a_of_type_Bkxk == null) {
+          bjww.jdField_a_of_type_Bkxk = new bkxk();
         }
-        bigb.jdField_a_of_type_Bjgz.c(localBitmap.getWidth(), localBitmap.getHeight());
+        bjww.jdField_a_of_type_Bkxk.c(localBitmap.getWidth(), localBitmap.getHeight());
       }
       return;
     }
     catch (Exception localException)
     {
-      bigb.jdField_a_of_type_Bjgz = null;
+      bjww.jdField_a_of_type_Bkxk = null;
       QLog.d("Q.qqstory.publish.edit.EditVideoPartManager", 1, "artImageRender init error, ", localException);
     }
   }

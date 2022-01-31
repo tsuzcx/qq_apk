@@ -1,41 +1,48 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import tencent.im.cs.group_file_common.group_file_common.FileInfo;
 
-final class azut
-  implements DownloadParams.DecodeHandler
+class azut
+  extends xay
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  azut(azur paramazur) {}
+  
+  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
   {
-    try
+    if ((!paramBoolean) || (paramFileInfo == null)) {}
+    Object localObject2;
+    Object localObject1;
+    do
     {
-      int i = paramBitmap.getHeight();
-      int j = paramBitmap.getWidth();
-      int k = paramDownloadParams.reqWidth;
-      int m = paramDownloadParams.reqHeight;
-      float f = k * 1.0F / j;
-      paramDownloadParams = new Matrix();
-      paramDownloadParams.setScale(f, f);
-      if (i * f > m) {}
-      for (paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, (int)(m / f), paramDownloadParams, true); QLog.isColorLevel(); paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, i, paramDownloadParams, true))
+      do
       {
-        QLog.d(azue.a(), 2, String.format("ALIGN_TOP_DECODER srcHeight = %s, srcWidth = %s, reqWidth = %s, reqHeight = %s, scale = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Float.valueOf(f) }));
-        break;
-      }
-      return paramDownloadParams;
-    }
-    catch (Exception paramDownloadParams)
-    {
-      paramDownloadParams.printStackTrace();
-      return paramBitmap;
-    }
+        do
+        {
+          do
+          {
+            return;
+            localObject2 = paramFileInfo.str_file_id.get();
+          } while (TextUtils.isEmpty((CharSequence)localObject2));
+          localObject1 = localObject2;
+          if (!((String)localObject2).startsWith("/")) {
+            localObject1 = "/" + (String)localObject2;
+          }
+        } while (!((String)localObject1).equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath));
+        azsr.c("TroopFileUploadFeedsSender", azsr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onGetOneFileResult. bus_id:" + paramFileInfo.uint32_bus_id.get() + " dead_time:" + paramFileInfo.uint32_dead_time.get());
+        localObject2 = azsp.a(this.a.d);
+      } while (localObject2 == null);
+      localObject1 = ((bajk)localObject2).a((String)localObject1);
+    } while (localObject1 == null);
+    ((azpg)localObject1).a = paramFileInfo.uint32_bus_id.get();
+    ((azpg)localObject1).c = paramFileInfo.uint32_dead_time.get();
+    ((bajk)localObject2).d((azpg)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azut
  * JD-Core Version:    0.7.0.1
  */

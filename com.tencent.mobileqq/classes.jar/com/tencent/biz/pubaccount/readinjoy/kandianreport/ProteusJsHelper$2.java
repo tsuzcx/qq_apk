@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import bace;
+import bbdj;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -17,7 +17,7 @@ final class ProteusJsHelper$2
       if (!((File)localObject).exists()) {
         return;
       }
-      localObject = bace.b((File)localObject);
+      localObject = bbdj.b((File)localObject);
       if (KandianReportSoLoader.isSoFiledLoad())
       {
         ProteusJsHelper.access$000((String)localObject, this.val$bid);

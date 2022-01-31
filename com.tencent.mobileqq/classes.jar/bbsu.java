@@ -1,77 +1,41 @@
-import android.os.Bundle;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.io.File;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 public class bbsu
-  implements bbsl
+  extends bbso
 {
-  private void a(Document paramDocument, Bundle paramBundle)
+  public static bbsu a = new bbsu();
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, bbqb parambbqb, boolean paramBoolean)
   {
-    NodeList localNodeList = paramDocument.getElementsByTagName("ModifyPwdUrls");
-    paramDocument = new Bundle();
-    if ((localNodeList != null) && (localNodeList.getLength() >= 1))
-    {
-      localNodeList = localNodeList.item(0).getChildNodes();
-      int i = 0;
-      while (i < localNodeList.getLength())
-      {
-        Object localObject = localNodeList.item(i);
-        if ((localObject instanceof Element))
-        {
-          String str = ((Element)localObject).getAttribute("Name");
-          localObject = ((Element)localObject).getAttribute("Url");
-          if ((str != null) && (localObject != null) && (!str.equals("")) && (!((String)localObject).equals(""))) {
-            paramDocument.putString(str, (String)localObject);
-          }
-        }
-        i += 1;
-      }
-      paramBundle.putBundle("ModifyPwdUrls", paramDocument);
-    }
+    a.download(paramQQAppInterface, "qqVipLevel." + paramInt, parambbqb, paramBoolean);
   }
   
-  public bbss a(String paramString)
+  public static boolean a(Context paramContext, int paramInt)
   {
-    paramString = new File(paramString);
-    Object localObject1 = DocumentBuilderFactory.newInstance();
-    try
-    {
-      paramString = ((DocumentBuilderFactory)localObject1).newDocumentBuilder().parse(paramString);
-      Object localObject2 = paramString.getDocumentElement();
-      localObject1 = new Bundle();
-      localObject2 = ((Element)localObject2).getAttribute("Version");
-      int i = -1;
-      try
-      {
-        int j = Integer.parseInt((String)localObject2);
-        i = j;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          localThrowable.printStackTrace();
-        }
-      }
-      ((Bundle)localObject1).putInt("version", i);
-      a(paramString, (Bundle)localObject1);
-      return new bbst((Bundle)localObject1);
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
+    String str = "qqVipLevel." + paramInt;
+    return new File(a.getDir(paramContext, str)).exists();
+  }
+  
+  public long getBID()
+  {
+    return 41L;
+  }
+  
+  protected String getRootDir()
+  {
+    return "qqlevel_icon";
+  }
+  
+  protected String getScidPrefix()
+  {
+    return "qqVipLevel.";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbsu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public class bfju
-  implements DialogInterface.OnDismissListener
+public abstract interface bfju
 {
-  public bfju(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (this.a.a)
-    {
-      this.a.setResult(1001);
-      QQIndividualityBridgeActivity.a(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQIndividuality", 2, "dialog dismiss: " + this.a.a);
-    }
-  }
+  public abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfju
  * JD-Core Version:    0.7.0.1
  */

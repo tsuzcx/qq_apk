@@ -1,25 +1,24 @@
-import com.tencent.mobileqq.activity.JumpActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditActivity;
 
 public class aazz
-  implements aagm
+  implements View.OnClickListener
 {
-  public aazz(JumpActivity paramJumpActivity) {}
+  public aazz(EditActivity paramEditActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.finish();
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
+    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
+      EditActivity.a(this.a).dismiss();
+    }
     this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aazz
  * JD-Core Version:    0.7.0.1
  */

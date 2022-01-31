@@ -64,10 +64,10 @@ final class MiniAppInfo$1
         bool = true;
         localMiniAppInfo.isSupportBlueBar = bool;
         if (paramParcel.readInt() != 1) {
-          break label619;
+          break label659;
         }
       }
-      label619:
+      label659:
       for (boolean bool = true;; bool = false)
       {
         localMiniAppInfo.isSupportOffline = bool;
@@ -90,6 +90,11 @@ final class MiniAppInfo$1
         localMiniAppInfo.shareId = paramParcel.readString();
         localMiniAppInfo.via = paramParcel.readString();
         localMiniAppInfo.amsAdInfo = paramParcel.readString();
+        localMiniAppInfo.apngUrl = paramParcel.readString();
+        localMiniAppInfo.ide_scene = paramParcel.readString();
+        localMiniAppInfo.ide_extraAppid = paramParcel.readString();
+        localMiniAppInfo.ide_extraData = paramParcel.readString();
+        localMiniAppInfo.tianshuAdId = paramParcel.readInt();
         return localMiniAppInfo;
         bool = false;
         break;

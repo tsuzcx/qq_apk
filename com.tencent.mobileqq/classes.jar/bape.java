@@ -1,25 +1,50 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 public class bape
 {
-  public static void a(String paramString, int paramInt)
+  public static final int[] a;
+  public static final int[] b = { 2130839240, 2130839240, 2130839239 };
+  public static final int[] c = { 2131377927, 2131377928, 2131377926 };
+  protected bfvm a;
+  
+  static
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("authResult", String.valueOf(paramInt));
-    awrn.a(BaseApplication.getContext()).a("", paramString, false, 0L, -1L, localHashMap, "", true);
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131697784, 2131697785, 2131697783 };
   }
   
-  public static void a(String paramString1, String paramString2)
+  public final View a(Context paramContext, int paramInt, bfvn parambfvn)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("errCode", paramString2);
-    awrn.a(BaseApplication.getContext()).a("", paramString1, false, 0L, -1L, localHashMap, "", true);
+    View localView = LayoutInflater.from(paramContext).inflate(paramInt, null);
+    if (this.jdField_a_of_type_Bfvm == null) {
+      this.jdField_a_of_type_Bfvm = a(paramContext);
+    }
+    return this.jdField_a_of_type_Bfvm.a(paramContext, localView, parambfvn, -1);
+  }
+  
+  public bfvm a(Context paramContext)
+  {
+    int i = paramContext.getResources().getDimensionPixelSize(2131298603);
+    int j = paramContext.getResources().getDimensionPixelSize(2131298604);
+    paramContext = c;
+    int[] arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt2 = b;
+    return new bapf(this, 3, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
+  }
+  
+  public void a(Context paramContext, View paramView, Object paramObject, bfvn parambfvn, View.OnClickListener paramOnClickListener)
+  {
+    if (this.jdField_a_of_type_Bfvm != null) {
+      this.jdField_a_of_type_Bfvm.a(paramContext, paramView, 0, paramObject, parambfvn, paramOnClickListener);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bape
  * JD-Core Version:    0.7.0.1
  */

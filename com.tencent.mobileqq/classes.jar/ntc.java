@@ -1,23 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyUgcVideoReportItem;
-
-public final class ntc
-  implements Parcelable.Creator<ReadInJoyUgcVideoReportItem>
+class ntc
+  implements ree
 {
-  public ReadInJoyUgcVideoReportItem a(Parcel paramParcel)
-  {
-    return new ReadInJoyUgcVideoReportItem(paramParcel);
-  }
+  ntc(ntb paramntb) {}
   
-  public ReadInJoyUgcVideoReportItem[] a(int paramInt)
+  public void a(int paramInt)
   {
-    return new ReadInJoyUgcVideoReportItem[paramInt];
+    if (this.a.jdField_a_of_type_Rhp != null) {
+      this.a.jdField_a_of_type_Rhp.a(paramInt, this.a.jdField_a_of_type_Int);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ntc
  * JD-Core Version:    0.7.0.1
  */

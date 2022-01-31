@@ -1,40 +1,110 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Comic;
-import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-public final class amrz
-  implements Parcelable.Creator
+public class amrz
+  extends ampb<amsa>
 {
-  public IPSiteModel.Comic a(Parcel paramParcel)
+  public static boolean a;
+  private static boolean b;
+  
+  public static boolean e()
   {
-    IPSiteModel.Comic localComic = new IPSiteModel.Comic();
-    localComic.comicType = paramParcel.readInt();
-    localComic.cover = paramParcel.readString();
-    localComic.desc = paramParcel.readString();
-    localComic.id = paramParcel.readString();
-    localComic.jumpUrl = paramParcel.readString();
-    localComic.name = paramParcel.readString();
-    localComic.recommDesc = paramParcel.readString();
-    localComic.typeName = paramParcel.readString();
-    if (localComic.comicRiches == null) {
-      localComic.comicRiches = new ArrayList();
+    if (b) {
+      return a;
     }
-    localComic.comicRiches.clear();
-    paramParcel.readList(localComic.comicRiches, IPSiteModel.ComicRich.class.getClassLoader());
-    return localComic;
+    b = true;
+    a = f();
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean isSwitchOpened = " + a);
+    }
+    return a;
   }
   
-  public IPSiteModel.Comic[] a(int paramInt)
+  private static boolean f()
   {
-    return new IPSiteModel.Comic[paramInt];
+    amsa localamsa2 = (amsa)ampm.a().a(531);
+    amsa localamsa1 = localamsa2;
+    if (localamsa2 == null)
+    {
+      localamsa2 = new amsa();
+      localamsa1 = localamsa2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean = null, general new bean, so switch default");
+        localamsa1 = localamsa2;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean switch isOpened = " + localamsa1);
+    }
+    return localamsa1.a();
+  }
+  
+  public int a()
+  {
+    return 531;
+  }
+  
+  @NonNull
+  public amsa a(int paramInt)
+  {
+    return new amsa();
+  }
+  
+  @Nullable
+  public amsa a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DarkModeConfigProcessor", 2, "onParsed : " + paramArrayOfampi[0].a);
+      }
+      return amsa.a(paramArrayOfampi[0].a);
+    }
+    return new amsa();
+  }
+  
+  public Class<amsa> a()
+  {
+    return amsa.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amsa paramamsa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeConfigProcessor", 2, "onUpdate : " + paramamsa);
+    }
+    if (paramamsa != null) {
+      a = paramamsa.a();
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amrz
  * JD-Core Version:    0.7.0.1
  */

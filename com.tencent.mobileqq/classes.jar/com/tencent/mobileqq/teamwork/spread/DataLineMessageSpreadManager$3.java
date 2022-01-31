@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import axhd;
+import ayhh;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import java.util.TimerTask;
 public class DataLineMessageSpreadManager$3
   extends TimerTask
 {
-  public DataLineMessageSpreadManager$3(axhd paramaxhd) {}
+  public DataLineMessageSpreadManager$3(ayhh paramayhh) {}
   
   public void run()
   {
@@ -23,15 +23,15 @@ public class DataLineMessageSpreadManager$3
         if (QLog.isColorLevel()) {
           QLog.i("DataLineMessageSpreadManager", 1, "lastInsertTime[" + this.this$0.a + "],now[" + l1 + "], dur[" + l2 + "],timeOut start check!");
         }
-        i = axhd.a(this.this$0).size() - 1;
+        i = ayhh.a(this.this$0).size() - 1;
         while (i >= 0)
         {
-          localMessageRecord = (MessageRecord)axhd.a(this.this$0).get(i);
+          localMessageRecord = (MessageRecord)ayhh.a(this.this$0).get(i);
           this.this$0.a((DataLineMsgRecord)localMessageRecord);
           i -= 1;
         }
         this.this$0.a = 0L;
-        axhd.a(this.this$0).clear();
+        ayhh.a(this.this$0).clear();
       }
       while (!QLog.isColorLevel())
       {

@@ -6,20 +6,20 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import awrn;
-import babp;
+import axrl;
+import bbct;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.annotation.JSMethod;
 import com.tencent.viola.commons.Destroyable;
 import com.tencent.viola.module.BaseModule;
-import dp;
+import fi;
 import java.util.HashMap;
 import java.util.Iterator;
-import mpl;
-import ndn;
-import obz;
+import nam;
+import noo;
+import onk;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,7 +33,7 @@ public class QReportModule
   private HashMap getDTBase()
   {
     HashMap localHashMap = new HashMap();
-    Object localObject = (QQAppInterface)obz.a();
+    Object localObject = (QQAppInterface)onk.a();
     if (localObject != null)
     {
       localObject = ((QQAppInterface)localObject).getAccount();
@@ -42,13 +42,13 @@ public class QReportModule
       }
     }
     localHashMap.put("app", "qq");
-    localHashMap.put("av", "8.2.6");
-    localHashMap.put("imei", babp.a());
+    localHashMap.put("av", "8.2.8");
+    localHashMap.put("imei", bbct.a());
     localHashMap.put("oper_time", Long.toString(System.currentTimeMillis()));
     localHashMap.put("domain", "1");
     localHashMap.put("md", Build.MODEL);
-    localHashMap.put("net_type", Integer.toString(mpl.a()));
-    localHashMap.put("client_ip", dp.a(dp.a()));
+    localHashMap.put("net_type", Integer.toString(nam.a()));
+    localHashMap.put("client_ip", fi.a(fi.a()));
     if (BaseApplication.getContext() != null)
     {
       localObject = BaseApplication.getContext().getResources().getDisplayMetrics();
@@ -89,7 +89,7 @@ public class QReportModule
         if (QLog.isColorLevel()) {
           QLog.d("QReportModule", 2, "reportDTImpl JSONException  e: " + paramJSONObject.getMessage());
         }
-        awrn.a(paramContext).a(null, paramString, true, -1L, 0L, localHashMap, null);
+        axrl.a(paramContext).a(null, paramString, true, -1L, 0L, localHashMap, null);
       }
       if (((localObject instanceof Number)) || ((localObject instanceof Long)) || ((localObject instanceof Integer)) || ((localObject instanceof Double)) || ((localObject instanceof Float))) {
         localObject = localObject.toString();
@@ -119,7 +119,7 @@ public class QReportModule
     if (paramJSONObject != null) {}
     for (paramJSONObject = paramJSONObject.toString();; paramJSONObject = "")
     {
-      ndn.a(null, null, paramString, paramString, 0, 0, str1, str2, str3, paramJSONObject, false);
+      noo.a(null, null, paramString, paramString, 0, 0, str1, str2, str3, paramJSONObject, false);
       return;
     }
   }

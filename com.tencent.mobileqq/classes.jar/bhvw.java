@@ -1,24 +1,21 @@
-class bhvw<K, V>
-  extends bhwa<K, V>
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class bhvw
+  implements DialogInterface.OnDismissListener
 {
-  bhvw(bhvy<K, V> parambhvy1, bhvy<K, V> parambhvy2)
-  {
-    super(parambhvy1, parambhvy2);
-  }
+  bhvw(bhvv parambhvv, DialogInterface.OnDismissListener paramOnDismissListener) {}
   
-  bhvy<K, V> a(bhvy<K, V> parambhvy)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return parambhvy.a;
-  }
-  
-  bhvy<K, V> b(bhvy<K, V> parambhvy)
-  {
-    return parambhvy.b;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhvw
  * JD-Core Version:    0.7.0.1
  */

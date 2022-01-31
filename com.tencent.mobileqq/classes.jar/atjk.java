@@ -1,32 +1,30 @@
-import com.tencent.mobileqq.data.SubAccountInfo;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-class atjk
-  implements Comparator<SubAccountInfo>
+public class atjk
+  implements bfoq
 {
-  atjk(atjj paramatjj, akaq paramakaq) {}
+  public atjk(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, bfol parambfol) {}
   
-  public int a(SubAccountInfo paramSubAccountInfo1, SubAccountInfo paramSubAccountInfo2)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = this.jdField_a_of_type_Akaq.a(paramSubAccountInfo1.subuin, 7000);
-    int j = this.jdField_a_of_type_Akaq.a(paramSubAccountInfo2.subuin, 7000);
-    if ((i > 0) && (j == 0)) {}
-    do
+    switch (paramInt)
     {
-      return 1;
-      if ((i == 0) && (j > 0)) {
-        return -1;
-      }
-    } while (paramSubAccountInfo1.lasttime > paramSubAccountInfo2.lasttime);
-    if (paramSubAccountInfo1.lasttime < paramSubAccountInfo2.lasttime) {
-      return -1;
     }
-    return 0;
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Bfol != null) {
+        this.jdField_a_of_type_Bfol.dismiss();
+      }
+      return;
+      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atjk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,20 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.data.FlowMusic;
 
-public class bjee
+class bjee
+  implements bjbd
 {
-  private static bjee jdField_a_of_type_Bjee;
-  private int jdField_a_of_type_Int = -1;
+  bjee(bjed parambjed, String paramString) {}
   
-  public static bjee a()
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    if (jdField_a_of_type_Bjee == null) {
-      jdField_a_of_type_Bjee = new bjee();
-    }
-    return jdField_a_of_type_Bjee;
-  }
-  
-  public void a(long paramLong)
-  {
-    if (paramLong > 0L)
+    if (paramObject == null) {}
+    do
     {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_manufacture", Build.MANUFACTURER);
-      localHashMap.put("param_model", Build.MODEL);
-      localHashMap.put("param_sdk", String.valueOf(Build.VERSION.SDK_INT));
-      localHashMap.put("param_cost", String.valueOf(paramLong));
-      awrn.a(BaseApplicationImpl.getContext()).a(null, "dg_recognize_cost", true, paramLong, 0L, localHashMap, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("DanceGameReporter", 2, String.format("reportDGRecognizeCost, cost[%s]", new Object[] { Long.valueOf(paramLong) }));
-      }
-    }
+      return;
+      paramObject = (FlowMusic)paramObject;
+      bjed.a(this.jdField_a_of_type_Bjed, bjed.a(this.jdField_a_of_type_Bjed, paramObject, this.jdField_a_of_type_JavaLangString));
+    } while (!bjed.a(this.jdField_a_of_type_Bjed).equals(bjed.a(this.jdField_a_of_type_Bjed).getClass()));
+    this.jdField_a_of_type_Bjed.d();
   }
 }
 

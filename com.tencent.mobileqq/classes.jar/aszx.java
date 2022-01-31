@@ -1,16 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class aszx
-  implements aslu
+class aszx
+  implements DialogInterface.OnClickListener
 {
-  aszx(atab paramatab, String paramString) {}
+  aszx(aszw paramaszw) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, errorCode =" + paramInt);
-    if (this.jdField_a_of_type_Atab != null) {
-      this.jdField_a_of_type_Atab.a(false, this.jdField_a_of_type_JavaLangString);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

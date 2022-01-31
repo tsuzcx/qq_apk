@@ -1,11 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import android.view.View;
-import awnu;
-import azwp;
-import com.tencent.mobileqq.vas.avatar.AvatarLayout;
-import com.tencent.mobileqq.vas.avatar.VasFaceManager;
-import com.tencent.qphone.base.util.QLog;
+import bbcl;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class QQSettingMe$14
   implements Runnable
@@ -14,25 +10,18 @@ class QQSettingMe$14
   
   public void run()
   {
-    azwp localazwp = azwp.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a, (byte)3);
-    try
+    String str2 = bbcl.i(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a);
+    String str1;
+    if (str2 != null)
     {
-      localazwp.a(awnu.b());
-      this.this$0.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setFaceDrawable(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localazwp, 1, this.a, 200, true, true, 6);
-      this.this$0.b.setVisibility(VasFaceManager.a(this.a, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-      this.this$0.y();
-      if (QLog.isDevelopLevel()) {
-        QLog.i("QQSettingRedesign", 4, "updateFace, " + this.a);
-      }
-      return;
+      str1 = str2;
+      if (!"".equals(str2.trim())) {}
     }
-    catch (Throwable localThrowable)
+    else
     {
-      for (;;)
-      {
-        QLog.d("QQSettingRedesign", 1, "FaceDrawable is default drawable");
-      }
+      str1 = this.a;
     }
+    this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new QQSettingMe.14.1(this, str1));
   }
 }
 

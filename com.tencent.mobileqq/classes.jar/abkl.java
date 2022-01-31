@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.activity.QQIdentiferLegacy;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
 public class abkl
-  implements QQPermissionCallback
+  implements View.OnFocusChangeListener
 {
-  public abkl(QQIdentiferLegacy paramQQIdentiferLegacy) {}
+  public abkl(Leba paramLeba) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    babr.a(QQIdentiferLegacy.a(this.a), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QQIdentiferLegacy.a(this.a);
+    if (paramBoolean)
+    {
+      paramView.clearFocus();
+      awso.a(null, 0, 21, "0X8009D15", 0, 0, null, null);
+      UniteSearchActivity.a(this.a.a(), null, 21, 0L, null, 3);
+      axqw.b(this.a.a, "CliOper", "", "", "0x8004B21", "0x8004B21", 0, 0, "", "", "", "");
+    }
   }
 }
 

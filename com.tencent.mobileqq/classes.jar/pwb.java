@@ -1,55 +1,17 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import java.util.HashSet;
-import java.util.Set;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
 
-public class pwb
-  extends avsf
+class pwb
+  implements View.OnClickListener
 {
-  private avrb jdField_a_of_type_Avrb;
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  pwb(pwa parampwa, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  pwb(azwg paramazwg, avrb paramavrb, Set<String> paramSet)
+  public void onClick(View paramView)
   {
-    super(paramazwg);
-    this.jdField_a_of_type_Avrb = paramavrb;
-    this.jdField_a_of_type_JavaUtilSet = paramSet;
-  }
-  
-  public void a(avon paramavon, avww paramavww)
-  {
-    if ((paramavon instanceof pwe))
-    {
-      paramavon = ((pwe)paramavon).a().b();
-      paramavww = paramavww.b();
-      Drawable localDrawable = paramavww.getResources().getDrawable(2130839687);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = localDrawable;
-      localURLDrawableOptions.mFailedDrawable = localDrawable;
-      paramavon = URLDrawable.getDrawable(paramavon, localURLDrawableOptions);
-      paramavon.setTag(azue.a(140, 140));
-      paramavon.setDecodeHandler(azue.o);
-      paramavww.setImageDrawable(paramavon);
-      return;
-    }
-    super.a(paramavon, paramavww);
-  }
-  
-  public void b(avon paramavon, avww paramavww)
-  {
-    super.b(paramavon, paramavww);
-  }
-  
-  protected void c(avon paramavon, avww paramavww)
-  {
-    super.c(paramavon, paramavww);
-    if ((this.jdField_a_of_type_Avrb != null) && (!this.jdField_a_of_type_JavaUtilSet.contains(paramavon.b()))) {
-      paramavww.a().setOnClickListener(new pwc(this));
-    }
+    ComponentContentRecommend.a(this.jdField_a_of_type_Pwa.a, "0X80094DA", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+    this.jdField_a_of_type_Pwa.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
   }
 }
 

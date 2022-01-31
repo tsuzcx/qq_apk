@@ -42,8 +42,8 @@ public class MiniAppProfileCardView
   {
     this.mContext = paramContext;
     this.mLayoutInflater = LayoutInflater.from(paramContext);
-    this.mLayoutInflater.inflate(2131495413, this, true);
-    this.mListView = ((HorizontalListView)findViewById(2131306297));
+    this.mLayoutInflater.inflate(2131560991, this, true);
+    this.mListView = ((HorizontalListView)findViewById(2131371994));
     this.mAdapter = new MiniAppProfileCardView.HorzionAdapter(this);
     this.mListView.setAdapter(this.mAdapter);
     this.mListView.setVisibility(0);

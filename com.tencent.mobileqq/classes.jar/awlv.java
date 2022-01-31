@@ -1,118 +1,58 @@
-import android.opengl.GLES20;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class awlv
+public abstract class awlv
+  extends awoh
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[1];
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int[] jdField_b_of_type_ArrayOfInt = new int[1];
-  private int[] c = new int[1];
-  private int[] d = new int[1];
+  public int a;
+  protected QQAppInterface a;
+  protected CharSequence a;
+  protected String a;
+  protected ArrayList<String> a;
+  protected List<? extends FTSEntity> a;
+  public int b;
+  protected CharSequence b;
+  protected String b;
+  public int c = -1;
+  protected CharSequence c;
+  public int d = -1;
+  protected CharSequence d;
   
-  public static void a(String paramString) {}
-  
-  private void d()
+  public awlv(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ArrayList<String> paramArrayList, List<? extends FTSEntity> paramList)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      GLES20.glGenRenderbuffers(1, this.c, 0);
-      a("glGenRenderbuffers:Depth");
-      GLES20.glBindRenderbuffer(36161, this.c[0]);
-      a("glBindRenderbuffer:Depth");
-      if (this.jdField_b_of_type_Boolean)
-      {
-        GLES20.glRenderbufferStorage(36161, 35056, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        a("glRenderbufferStorage:Depth[packed]");
-        GLES20.glFramebufferRenderbuffer(36160, 36096, 36161, this.c[0]);
-        a("glFramebufferRenderbuffer:Depth[packed]");
-        GLES20.glFramebufferRenderbuffer(36160, 36128, 36161, this.c[0]);
-        a("glFramebufferRenderbuffer:Stencil[packed]");
-        this.d[0] = this.c[0];
-      }
-    }
-    else
-    {
-      return;
-    }
-    GLES20.glRenderbufferStorage(36161, 33189, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    a("glRenderbufferStorage:Depth");
-    GLES20.glFramebufferRenderbuffer(36160, 36096, 36161, this.c[0]);
-    a("glFramebufferRenderbuffer:Depth");
-    this.d[0] = 0;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public void a()
+  public String a()
   {
-    GLES20.glBindFramebuffer(36160, this.jdField_b_of_type_ArrayOfInt[0]);
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(int paramInt)
+  public boolean a()
   {
-    a();
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt, 0);
-    a("glFramebufferTexture2D");
-    paramInt = GLES20.glCheckFramebufferStatus(36160);
-    if (paramInt != 36053) {
-      a("glCheckFramebufferStatus: status=" + paramInt);
-    }
+    return false;
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public CharSequence d()
   {
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt3;
-    GLES20.glActiveTexture(33987);
-    GLES20.glBindTexture(3553, paramInt1);
-    a("glBindTexture");
-    GLES20.glTexParameteri(3553, 10240, 9728);
-    a("glTexParameteri");
-    GLES20.glTexParameteri(3553, 10241, 9728);
-    a("glTexParameteri");
-    GLES20.glTexParameteri(3553, 10242, 33071);
-    a("glTexParameteri");
-    GLES20.glTexParameteri(3553, 10243, 33071);
-    a("glTexParameteri");
-    GLES20.glTexImage2D(3553, 0, 6408, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0, 6408, 5121, null);
-    a("glTexImage2D");
-    GLES20.glBindTexture(3553, 0);
-    a("glBindTexture");
+    return null;
   }
   
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    a("glIsTexture");
-    GLES20.glGenFramebuffers(1, this.jdField_b_of_type_ArrayOfInt, 0);
-    a("glGenFramebuffers");
-    GLES20.glBindFramebuffer(36160, this.jdField_b_of_type_ArrayOfInt[0]);
-    a("glBindFramebuffer");
-    d();
-    return true;
-  }
+  public abstract CharSequence e();
   
-  public void b()
-  {
-    GLES20.glBindFramebuffer(36160, 0);
-  }
-  
-  public void c()
-  {
-    b();
-    if (this.jdField_a_of_type_Boolean) {
-      GLES20.glDeleteRenderbuffers(1, this.c, 0);
-    }
-    GLES20.glDeleteFramebuffers(1, this.jdField_b_of_type_ArrayOfInt, 0);
-    this.jdField_b_of_type_ArrayOfInt[0] = 0;
-    this.c[0] = 0;
-    this.d[0] = 0;
-  }
+  public abstract CharSequence f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awlv
  * JD-Core Version:    0.7.0.1
  */

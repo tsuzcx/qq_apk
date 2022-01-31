@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
-import aguj;
-import agul;
+import ahgy;
+import ahha;
 import android.view.View;
 
 class SpringHbCountDownDialog$2$1$1
@@ -11,7 +11,7 @@ class SpringHbCountDownDialog$2$1$1
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_Aguj.a(aguj.a(this.a.a.jdField_a_of_type_Aguj), aguj.b(this.a.a.jdField_a_of_type_Aguj));
+    this.a.a.jdField_a_of_type_Ahgy.a(ahgy.a(this.a.a.jdField_a_of_type_Ahgy), ahgy.b(this.a.a.jdField_a_of_type_Ahgy));
     this.a.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }

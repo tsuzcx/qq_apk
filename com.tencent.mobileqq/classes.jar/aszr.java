@@ -1,6 +1,13 @@
-public abstract interface aszr
+public class aszr
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

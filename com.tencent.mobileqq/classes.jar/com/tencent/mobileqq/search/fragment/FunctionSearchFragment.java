@@ -2,11 +2,11 @@ package com.tencent.mobileqq.search.fragment;
 
 import android.os.Bundle;
 import android.view.View;
-import avis;
-import avkj;
-import avll;
-import avlm;
-import avuz;
+import awil;
+import awkc;
+import awle;
+import awlf;
+import awus;
 import com.tencent.widget.ListView;
 import cooperation.qqfav.globalsearch.FunctionSearchEngine;
 
@@ -23,19 +23,19 @@ public class FunctionSearchFragment
     return 120;
   }
   
-  protected avkj a()
+  protected awkc a()
   {
-    return new avlm(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Azwg);
+    return new awlf(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Baxk);
   }
   
-  protected avuz a()
+  protected awus a()
   {
     return new FunctionSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1);
   }
   
   protected String a()
   {
-    return avis.a();
+    return awil.a();
   }
   
   protected void a(String paramString, int paramInt)
@@ -46,7 +46,7 @@ public class FunctionSearchFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new avll(this));
+    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new awle(this));
   }
 }
 

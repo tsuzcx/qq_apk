@@ -8,10 +8,10 @@ import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import asqy;
-import asqz;
+import atnc;
+import atnd;
 import java.util.ArrayList;
-import mjg;
+import muf;
 
 public class MetaballView
   extends View
@@ -20,9 +20,9 @@ public class MetaballView
   private final int jdField_a_of_type_Int = 2;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private asqy jdField_a_of_type_Asqy;
-  private asqz jdField_a_of_type_Asqz;
-  private ArrayList<asqy> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private atnc jdField_a_of_type_Atnc;
+  private atnd jdField_a_of_type_Atnd;
+  private ArrayList<atnc> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   float[] jdField_a_of_type_ArrayOfFloat = new float[2];
   private float jdField_b_of_type_Float = 10.0F;
   private int jdField_b_of_type_Int = 60;
@@ -82,17 +82,17 @@ public class MetaballView
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16395392);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    asqy localasqy = new asqy(this, null);
-    localasqy.jdField_a_of_type_ArrayOfFloat = new float[] { this.jdField_b_of_type_Float + this.jdField_b_of_type_Int, f1 };
-    localasqy.jdField_a_of_type_Float = (this.jdField_b_of_type_Float / 4.0F * 3.0F);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localasqy);
+    atnc localatnc = new atnc(this, null);
+    localatnc.jdField_a_of_type_ArrayOfFloat = new float[] { this.jdField_b_of_type_Float + this.jdField_b_of_type_Int, f1 };
+    localatnc.jdField_a_of_type_Float = (this.jdField_b_of_type_Float / 4.0F * 3.0F);
+    this.jdField_a_of_type_JavaUtilArrayList.add(localatnc);
     int n = 1;
     while (n < 2)
     {
-      localasqy = new asqy(this, null);
-      localasqy.jdField_a_of_type_ArrayOfFloat = new float[] { (this.jdField_b_of_type_Float * 2.0F + this.jdField_b_of_type_Int) * n, f1 };
-      localasqy.jdField_a_of_type_Float = this.jdField_b_of_type_Float;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localasqy);
+      localatnc = new atnc(this, null);
+      localatnc.jdField_a_of_type_ArrayOfFloat = new float[] { (this.jdField_b_of_type_Float * 2.0F + this.jdField_b_of_type_Int) * n, f1 };
+      localatnc.jdField_a_of_type_Float = this.jdField_b_of_type_Float;
+      this.jdField_a_of_type_JavaUtilArrayList.add(localatnc);
       n += 1;
     }
     this.jdField_d_of_type_Float = ((this.jdField_b_of_type_Float * 2.0F + this.jdField_b_of_type_Int) * 2.0F - this.jdField_b_of_type_Float * 2.0F);
@@ -106,14 +106,14 @@ public class MetaballView
   
   private void a(Canvas paramCanvas, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    Object localObject = (asqy)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt2);
-    asqy localasqy = (asqy)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
-    float f4 = a(((asqy)localObject).jdField_a_of_type_ArrayOfFloat, localasqy.jdField_a_of_type_ArrayOfFloat);
-    float f3 = ((asqy)localObject).jdField_a_of_type_Float;
-    float f1 = localasqy.jdField_a_of_type_Float;
+    Object localObject = (atnc)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt2);
+    atnc localatnc = (atnc)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
+    float f4 = a(((atnc)localObject).jdField_a_of_type_ArrayOfFloat, localatnc.jdField_a_of_type_ArrayOfFloat);
+    float f3 = ((atnc)localObject).jdField_a_of_type_Float;
+    float f1 = localatnc.jdField_a_of_type_Float;
     if (f4 > paramFloat3)
     {
-      paramCanvas.drawCircle(localasqy.jdField_a_of_type_ArrayOfFloat[0], localasqy.jdField_a_of_type_ArrayOfFloat[1], f1, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawCircle(localatnc.jdField_a_of_type_ArrayOfFloat[0], localatnc.jdField_a_of_type_ArrayOfFloat[1], f1, this.jdField_a_of_type_AndroidGraphicsPaint);
       if ((f3 != 0.0F) && (f1 != 0.0F)) {
         break label147;
       }
@@ -123,7 +123,7 @@ public class MetaballView
     {
       return;
       f1 *= (1.0F + 0.3F * (1.0F - f4 / paramFloat3));
-      paramCanvas.drawCircle(localasqy.jdField_a_of_type_ArrayOfFloat[0], localasqy.jdField_a_of_type_ArrayOfFloat[1], f1, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawCircle(localatnc.jdField_a_of_type_ArrayOfFloat[0], localatnc.jdField_a_of_type_ArrayOfFloat[1], f1, this.jdField_a_of_type_AndroidGraphicsPaint);
       break;
     }
     float f2;
@@ -132,7 +132,7 @@ public class MetaballView
     }
     for (paramFloat3 = (float)Math.acos((f1 * f1 + f4 * f4 - f3 * f3) / (2.0F * f1 * f4));; paramFloat3 = 0.0F)
     {
-      float f7 = (float)Math.atan2(localasqy.jdField_a_of_type_ArrayOfFloat[1] - localObject.jdField_a_of_type_ArrayOfFloat[1], localasqy.jdField_a_of_type_ArrayOfFloat[0] - localObject.jdField_a_of_type_ArrayOfFloat[0]);
+      float f7 = (float)Math.atan2(localatnc.jdField_a_of_type_ArrayOfFloat[1] - localObject.jdField_a_of_type_ArrayOfFloat[1], localatnc.jdField_a_of_type_ArrayOfFloat[0] - localObject.jdField_a_of_type_ArrayOfFloat[0]);
       float f8 = (float)Math.acos((f3 - f1) / f4);
       float f5 = f7 + f2 + (f8 - f2) * paramFloat1;
       f2 = f7 - f2 - (f8 - f2) * paramFloat1;
@@ -150,12 +150,12 @@ public class MetaballView
       float[] arrayOfFloat = this.f;
       f7 = this.jdField_b_of_type_ArrayOfFloat[1];
       arrayOfFloat[1] = (localObject.jdField_a_of_type_ArrayOfFloat[1] + f7);
-      this.g[0] = (this.jdField_c_of_type_ArrayOfFloat[0] + localasqy.jdField_a_of_type_ArrayOfFloat[0]);
-      this.g[1] = (this.jdField_c_of_type_ArrayOfFloat[1] + localasqy.jdField_a_of_type_ArrayOfFloat[1]);
-      this.h[0] = (this.jdField_d_of_type_ArrayOfFloat[0] + localasqy.jdField_a_of_type_ArrayOfFloat[0]);
+      this.g[0] = (this.jdField_c_of_type_ArrayOfFloat[0] + localatnc.jdField_a_of_type_ArrayOfFloat[0]);
+      this.g[1] = (this.jdField_c_of_type_ArrayOfFloat[1] + localatnc.jdField_a_of_type_ArrayOfFloat[1]);
+      this.h[0] = (this.jdField_d_of_type_ArrayOfFloat[0] + localatnc.jdField_a_of_type_ArrayOfFloat[0]);
       localObject = this.h;
       f7 = this.jdField_d_of_type_ArrayOfFloat[1];
-      localObject[1] = (localasqy.jdField_a_of_type_ArrayOfFloat[1] + f7);
+      localObject[1] = (localatnc.jdField_a_of_type_ArrayOfFloat[1] + f7);
       this.i[0] = (this.jdField_e_of_type_ArrayOfFloat[0] - this.g[0]);
       this.i[1] = (this.jdField_e_of_type_ArrayOfFloat[1] - this.g[1]);
       paramFloat1 = Math.min(paramFloat1 * paramFloat2, a(this.i) / (f3 + f1)) * Math.min(1.0F, f4 * 2.0F / (f3 + f1));
@@ -186,24 +186,24 @@ public class MetaballView
   
   private void c()
   {
-    this.jdField_a_of_type_Asqz = new asqz(this, null);
-    this.jdField_a_of_type_Asqz.setDuration(1000L);
-    this.jdField_a_of_type_Asqz.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.jdField_a_of_type_Asqz.setRepeatCount(-1);
-    this.jdField_a_of_type_Asqz.setRepeatMode(2);
-    startAnimation(this.jdField_a_of_type_Asqz);
+    this.jdField_a_of_type_Atnd = new atnd(this, null);
+    this.jdField_a_of_type_Atnd.setDuration(1000L);
+    this.jdField_a_of_type_Atnd.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.jdField_a_of_type_Atnd.setRepeatCount(-1);
+    this.jdField_a_of_type_Atnd.setRepeatMode(2);
+    startAnimation(this.jdField_a_of_type_Atnd);
   }
   
   protected int a()
   {
-    return (int)mjg.a(getContext(), 10.0F);
+    return (int)muf.a(getContext(), 10.0F);
   }
   
   protected void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt) {}
   
   protected int b()
   {
-    return (int)mjg.a(getContext(), 20.0F);
+    return (int)muf.a(getContext(), 20.0F);
   }
   
   protected void onAttachedToWindow()
@@ -226,9 +226,9 @@ public class MetaballView
   {
     int n = 1;
     super.onDraw(paramCanvas);
-    this.jdField_a_of_type_Asqy = ((asqy)this.jdField_a_of_type_JavaUtilArrayList.get(0));
-    this.jdField_a_of_type_Asqy.jdField_a_of_type_ArrayOfFloat[0] = (this.jdField_d_of_type_Float * this.jdField_e_of_type_Float + this.jdField_b_of_type_Float);
-    paramCanvas.drawCircle(this.jdField_a_of_type_Asqy.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_Asqy.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_Asqy.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_Atnc = ((atnc)this.jdField_a_of_type_JavaUtilArrayList.get(0));
+    this.jdField_a_of_type_Atnc.jdField_a_of_type_ArrayOfFloat[0] = (this.jdField_d_of_type_Float * this.jdField_e_of_type_Float + this.jdField_b_of_type_Float);
+    paramCanvas.drawCircle(this.jdField_a_of_type_Atnc.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_Atnc.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_Atnc.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
     int i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
     while (n < i1)
     {

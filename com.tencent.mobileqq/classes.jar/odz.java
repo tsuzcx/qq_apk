@@ -1,57 +1,91 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class odz
-  implements AladdinConfigHandler
+  extends osp
 {
-  private static final Set<String> a = ;
+  public odz(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public static Set<String> a()
+  public void a(int paramInt1, long paramLong, String paramString1, int paramInt2, String paramString2, String paramString3)
   {
-    return a;
-  }
-  
-  private static Set<String> b()
-  {
-    HashSet localHashSet = new HashSet();
-    Object localObject = (String)bgmq.a("readinjjoy_feeds_card_whitelist", "");
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return localHashSet;
-    }
-    localObject = ((String)localObject).split("\\|");
-    int j = localObject.length;
-    int i = 0;
-    while (i < j)
+    super.a(paramInt1, paramLong, paramString1, paramInt2, paramString2, paramString3);
+    ReadInJoyDeliverBiuActivity.b(this.a, true);
+    ReadInJoyDeliverBiuActivity.b(this.a);
+    QLog.d("ReadInJoyDeliverBiuActivity", 2, "onDeliverUGCResult retCode=" + paramInt1 + ", feedsId=" + paramLong + ", rowkey=" + paramString1 + ", status=" + paramInt2 + ", comment=" + paramString2);
+    if (paramInt1 == 0)
     {
-      localHashSet.add(localObject[i]);
-      i += 1;
+      bcpw.a(this.a, 2, this.a.getString(2131718396), 0).b(this.a.getTitleBarHeight());
+      ReadInJoyDeliverBiuActivity.e(this.a, -1);
+      ReadInJoyDeliverBiuActivity.c(this.a);
+      this.a.getIntent().putExtra("KEY_VIDEO_BIU_SUCCESS", true);
+      this.a.finish();
+      if (ReadInJoyDeliverBiuActivity.o(this.a) != 14) {
+        osj.a().b(true);
+      }
     }
-    return localHashSet;
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("WhiteListBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = ocx.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("WhiteListBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      bgmq.a("default_feeds_aladdin_keys", str2);
+      if ((paramInt1 != 0) && (ReadInJoyDeliverBiuActivity.b(this.a))) {
+        this.a.finish();
+      }
+      return;
+      bcpw.a(this.a, 1, paramString3, 0).b(this.a.getTitleBarHeight());
     }
-    return true;
   }
   
-  public void onWipeConfig(int paramInt)
+  public void a(long paramLong, int paramInt, String paramString)
   {
-    QLog.d("WhiteListBidConfigHandler", 1, "[onWipeConfig]");
+    boolean bool = true;
+    QLog.i("ReadInJoyDeliverBiuActivity", 1, "onBiuResult: retCode = " + paramInt + " errorMsg = " + paramString);
+    ReadInJoyDeliverBiuActivity.c(this.a, true);
+    ReadInJoyDeliverBiuActivity.d(this.a);
+    paramLong = NetConnInfoCenter.getServerTimeMillis() - ReadInJoyDeliverBiuActivity.a(this.a);
+    if (paramInt == 0)
+    {
+      paramString = this.a.getString(2131718396);
+      if (ReadInJoyDeliverBiuActivity.g(this.a)) {
+        paramString = this.a.getString(2131718389);
+      }
+      ReadInJoyDeliverBiuActivity.d(this.a, false);
+      bcpw.a(this.a, 2, paramString, 0).b(this.a.getTitleBarHeight());
+      ReadInJoyDeliverBiuActivity.f(this.a, -1);
+      ReadInJoyDeliverBiuActivity.c(this.a);
+      this.a.getIntent().putExtra("KEY_VIDEO_BIU_SUCCESS", true);
+      this.a.finish();
+      if (ReadInJoyDeliverBiuActivity.o(this.a) != 14) {
+        osj.a().b(true);
+      }
+      if (paramInt != 0) {
+        break label401;
+      }
+    }
+    for (;;)
+    {
+      paramString = new HashMap();
+      paramString.put("param_FailCode", paramInt + "");
+      paramString.put("param_FromType", ReadInJoyDeliverBiuActivity.o(this.a) + "");
+      axrl.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "actMultiBiuResult", bool, paramLong, 0L, paramString, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "doStatisticReport-->success:" + bool + ", costTime:" + paramLong + ", retcode:" + paramInt);
+      }
+      if (bool) {
+        ReadInJoyDeliverBiuActivity.a(this.a, bool);
+      }
+      if ((paramInt != 0) && (ReadInJoyDeliverBiuActivity.b(this.a))) {
+        this.a.finish();
+      }
+      return;
+      bcpw.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
+      break;
+      label401:
+      bool = false;
+    }
   }
 }
 

@@ -1,71 +1,50 @@
-import android.content.Intent;
-import android.net.Uri;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.TroopGagActivity;
+import com.tencent.mobileqq.activity.TroopGagActivity.3.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import mqq.util.WeakReference;
+import java.util.List;
 
 public class achb
-  implements View.OnClickListener
+  extends akim
 {
-  public achb(BirthdayActivatePage paramBirthdayActivatePage) {}
+  public achb(TroopGagActivity paramTroopGagActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    Object localObject;
-    long[] arrayOfLong;
-    if ((BirthdayActivatePage.a(this.a) != null) && (BirthdayActivatePage.a(this.a).get() != null))
+    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {
+      return;
+    }
+    if (paramBoolean)
     {
-      localObject = QzoneConfig.getInstance().getConfig("H5Url", "SendBirthdayGift", "https://h5.qzone.qq.com/giftv2/detail?_wv=131075&_fv=0&_wwv=128&uin={uin}&clicktime={clicktime}&friends={uin_uin}&_proxy=1");
-      arrayOfLong = this.a.a.a();
-      String[] arrayOfString = this.a.a.a();
-      if (arrayOfLong.length <= 0) {
-        break label358;
+      this.a.jdField_a_of_type_Achd.notifyDataSetChanged();
+      if (this.a.jdField_a_of_type_Achd.getCount() != 0) {
+        break label209;
       }
-      paramView = "";
-      int i = 0;
-      while (i < arrayOfLong.length)
-      {
-        paramView = paramView + arrayOfLong[i];
-        paramView = paramView + "_";
-        String str = paramView + arrayOfString[i];
-        int j = i + 1;
-        i = j;
-        paramView = str;
-        if (j < arrayOfLong.length)
-        {
-          paramView = str + "|";
-          i = j;
-        }
-      }
-      paramView = ((String)localObject).replace("{uin_uin}", Uri.encode(paramView)).replace("{clicktime}", String.valueOf(System.currentTimeMillis()));
-      localObject = new Intent(BaseApplication.getContext(), QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", paramView);
-      ((Intent)localObject).putExtra("injectrecommend", true);
-      ((Intent)localObject).setData(Uri.parse(paramView));
-      ((ActivateFriendActivity)BirthdayActivatePage.a(this.a).get()).startActivityForResult((Intent)localObject, 1000);
-      awqx.b(((ActivateFriendActivity)BirthdayActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E08", "0X8004E08", 0, 0, String.valueOf(arrayOfLong.length), "", "", "");
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BirthdayActivatePage", 2, "friends length=" + arrayOfLong.length + " url = " + paramView);
+      this.a.getSharedPreferences("last_update_time" + this.a.app.getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + this.a.jdField_a_of_type_JavaLangString, System.currentTimeMillis()).commit();
+      ThreadManager.post(new TroopGagActivity.3.1(this, (bakk)this.a.app.getManager(48)), 8, null, false);
+      if (!QLog.isColorLevel()) {
+        break;
       }
+      QLog.d("TroopGagActivity", 2, "onUpdateTroopGetMemberList: isSuccess=" + paramBoolean);
       return;
-      label358:
-      paramView = (View)localObject;
+      label209:
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     achb
  * JD-Core Version:    0.7.0.1
  */

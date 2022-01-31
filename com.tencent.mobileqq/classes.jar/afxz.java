@@ -1,8 +1,25 @@
-import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 
-public abstract interface afxz
+public class afxz
+  extends afxr
 {
-  public abstract void a(Context paramContext, boolean paramBoolean);
+  public static final int[] a = { 2131690735 };
+  public static final int[] b = { 2131364095 };
+  
+  public afxz(FragmentActivity paramFragmentActivity)
+  {
+    super(paramFragmentActivity);
+  }
+  
+  protected int[] a()
+  {
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return a;
+  }
 }
 
 

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.search.ftsmsg;
 
-import avmg;
-import avva;
-import avvn;
+import awlz;
+import awut;
+import awvg;
 import java.util.List;
 
 public class FTSMessageSearchEngine$2
   implements Runnable
 {
-  public FTSMessageSearchEngine$2(avmg paramavmg, avvn paramavvn, avva paramavva) {}
+  public FTSMessageSearchEngine$2(awlz paramawlz, awvg paramawvg, awut paramawut) {}
   
   public void run()
   {
-    List localList = this.this$0.b(this.jdField_a_of_type_Avvn);
-    if (this.jdField_a_of_type_Avva != null) {
-      this.jdField_a_of_type_Avva.a(localList, 1);
+    List localList = this.this$0.b(this.jdField_a_of_type_Awvg);
+    if (this.jdField_a_of_type_Awut != null) {
+      this.jdField_a_of_type_Awut.a(localList, 1);
     }
   }
 }

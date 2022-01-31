@@ -1,27 +1,17 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.PopupWindow.OnDismissListener;
 
-final class rax
-  implements bekv
+class rax
+  implements PopupWindow.OnDismissListener
 {
-  rax(Context paramContext, AdData paramAdData) {}
+  rax(rap paramrap) {}
   
-  public void a()
+  public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpAdUtils", 2, "onPopupWindowForAdComplain");
-    }
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    rap.a(this.a).a(1.0F);
+    if (this.a.b)
     {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_from_type", 3);
-      localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData);
-      PublicFragmentActivity.a((Activity)this.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+      this.a.a.c();
+      this.a.b = false;
     }
   }
 }

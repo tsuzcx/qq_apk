@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfz;
+import beka;
 
 class InternalJSPlugin$3
   implements InternalJSPlugin.openUrlCallback
 {
-  InternalJSPlugin$3(InternalJSPlugin paramInternalJSPlugin, bdfz parambdfz) {}
+  InternalJSPlugin$3(InternalJSPlugin paramInternalJSPlugin, beka parambeka) {}
   
   public void openResult(boolean paramBoolean, String paramString)
   {

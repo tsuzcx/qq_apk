@@ -1,28 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
-import cooperation.qzone.report.lp.LpReportInfo_dc00321;
+import android.animation.TypeEvaluator;
+import android.graphics.Rect;
+import com.tencent.widget.DynamicGridView;
 
 public class bfqf
-  implements View.OnClickListener
+  implements TypeEvaluator<Rect>
 {
-  public bfqf(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
+  public bfqf(DynamicGridView paramDynamicGridView) {}
   
-  public void onClick(View paramView)
+  public int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    if (!this.a.b)
-    {
-      if (1 == this.a.c) {
-        LpReportInfo_dc00321.report(8, 129, 0, false, false, null);
-      }
-      this.a.a(false, false);
-      this.a.b();
-    }
+    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
+  }
+  
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
+  {
+    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfqf
  * JD-Core Version:    0.7.0.1
  */

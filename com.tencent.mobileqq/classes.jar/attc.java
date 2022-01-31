@@ -1,30 +1,58 @@
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.portal.ImageAlphaSwitchView;
+import android.annotation.TargetApi;
+import android.view.DragEvent;
+import android.view.View;
+import android.view.View.OnDragListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.OnPicDragListener.1;
+import com.tencent.qphone.base.util.QLog;
 
+@TargetApi(11)
 public class attc
-  implements bajj<Float>
+  implements View.OnDragListener
 {
-  public attc(ImageAlphaSwitchView paramImageAlphaSwitchView) {}
+  private int a;
   
-  public void a(bajd<Float> parambajd, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public attc(atsa paramatsa, int paramInt)
   {
-    this.a.jdField_a_of_type_Float = paramFloat1.floatValue();
-    if (paramFloat1.floatValue() >= 255.0F)
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean onDrag(View paramView, DragEvent paramDragEvent)
+  {
+    switch (paramDragEvent.getAction())
     {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.b;
-      this.a.b = null;
-      this.a.jdField_a_of_type_Float = 0.0F;
-      if (this.a.jdField_a_of_type_Bajd != null)
+    }
+    for (;;)
+    {
+      return true;
+      QLog.d("onDrag", 4, "ACTION_DRAG_STARTED");
+      continue;
+      RelativeLayout localRelativeLayout = atsa.a(this.jdField_a_of_type_Atsa);
+      int i = this.jdField_a_of_type_Atsa.a.indexOfChild(paramView);
+      int j = this.jdField_a_of_type_Atsa.a.indexOfChild(localRelativeLayout);
+      if ((i != -1) && (j != -1) && (((i > j) && (paramDragEvent.getX() > this.jdField_a_of_type_Int / 2)) || ((i < j) && (paramDragEvent.getX() < this.jdField_a_of_type_Int / 2))))
       {
-        this.a.jdField_a_of_type_Bajd.cancel();
-        this.a.jdField_a_of_type_Bajd = null;
+        try
+        {
+          this.jdField_a_of_type_Atsa.a.removeView(localRelativeLayout);
+          this.jdField_a_of_type_Atsa.a.addView(localRelativeLayout, i);
+          atsa.e(this.jdField_a_of_type_Atsa);
+        }
+        catch (Exception paramView) {}
+        if (QLog.isColorLevel())
+        {
+          QLog.d("Q.nearby_people_card.", 2, "drag between small pics exception" + paramView.getMessage());
+          continue;
+          this.jdField_a_of_type_Atsa.a.post(new NearbyProfileEditPanel.OnPicDragListener.1(this));
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     attc
  * JD-Core Version:    0.7.0.1
  */

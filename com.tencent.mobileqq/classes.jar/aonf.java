@@ -1,38 +1,38 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
 
 public class aonf
+  implements Animation.AnimationListener
 {
-  private static aonf jdField_a_of_type_Aonf;
-  public static String a;
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new aong(this, "Module_WeiyunDownloadService");
-  private ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private int jdField_a_of_type_Int = 0;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public static aonf a()
+  public aonf(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt, View paramView)
   {
-    if (jdField_a_of_type_Aonf == null) {}
-    try
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {}
+    do
     {
-      jdField_a_of_type_Aonf = new aonf();
-      return jdField_a_of_type_Aonf;
-    }
-    finally {}
+      return;
+      if (this.jdField_a_of_type_Int == 0)
+      {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 1);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
   
-  private QQAppInterface a()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    return null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public QIPCModule a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

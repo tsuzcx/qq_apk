@@ -1,12 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.ChannelInfo;
 
-final class npg
-  implements DialogInterface.OnClickListener
+public final class npg
+  implements Parcelable.Creator<VideoInfo.ChannelInfo>
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public VideoInfo.ChannelInfo a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
+    return new VideoInfo.ChannelInfo(paramParcel);
+  }
+  
+  public VideoInfo.ChannelInfo[] a(int paramInt)
+  {
+    return new VideoInfo.ChannelInfo[paramInt];
   }
 }
 

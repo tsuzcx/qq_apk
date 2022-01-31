@@ -1,20 +1,19 @@
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.View.OnClickListener;
 
 class adjf
-  implements QQPermissionCallback
+  implements View.OnClickListener
 {
-  adjf(adje paramadje, View paramView, BaseActivity paramBaseActivity) {}
+  adjf(adje paramadje) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    babr.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Adje.d(this.jdField_a_of_type_AndroidViewView);
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    adje.a(this.a, paramView);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.profile.view;
 
-import ajjj;
+import ajxn;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import atwx;
-import azyk;
+import auuw;
+import bazo;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
@@ -35,15 +35,15 @@ public class ProfileHeaderView$UpdateProfileSetCardTask
       {
         try
         {
-          Object localObject1 = localProfileHeaderView.jdField_a_of_type_Atwx;
+          Object localObject1 = localProfileHeaderView.jdField_a_of_type_Auuw;
           QQAppInterface localQQAppInterface = localProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          long l1 = ((atwx)localObject1).jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId;
-          long l2 = ((atwx)localObject1).jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId;
-          int i = ((atwx)localObject1).jdField_a_of_type_ComTencentMobileqqDataCard.templateRet;
-          Object localObject2 = ((atwx)localObject1).jdField_a_of_type_ComTencentMobileqqDataCard.getBgTypeArray();
+          long l1 = ((auuw)localObject1).jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId;
+          long l2 = ((auuw)localObject1).jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId;
+          int i = ((auuw)localObject1).jdField_a_of_type_ComTencentMobileqqDataCard.templateRet;
+          Object localObject2 = ((auuw)localObject1).jdField_a_of_type_ComTencentMobileqqDataCard.getBgTypeArray();
           SharedPreferences localSharedPreferences = localQQAppInterface.getApp().getSharedPreferences("ProfileCardTips" + localQQAppInterface.getCurrentAccountUin(), 0);
-          String str = ((atwx)localObject1).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
-          if ((azyk.d((ArrayList)localObject2)) || (((atwx)localObject1).jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId == 160L))
+          String str = ((auuw)localObject1).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
+          if ((bazo.d((ArrayList)localObject2)) || (((auuw)localObject1).jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId == 160L))
           {
             localProfileHeaderView.d &= 0xFFFFFFFD;
             localProfileHeaderView.b.set(true);
@@ -60,7 +60,7 @@ public class ProfileHeaderView$UpdateProfileSetCardTask
             break label450;
           }
           localObject1 = new SimpleDateFormat("yyyyMMdd").format(new Date(System.currentTimeMillis()));
-          localObject2 = ((ajjj)localQQAppInterface.getManager(51)).b(localQQAppInterface.getCurrentAccountUin());
+          localObject2 = ((ajxn)localQQAppInterface.getManager(51)).b(localQQAppInterface.getCurrentAccountUin());
           if (localObject2 != null)
           {
             l1 = ((Card)localObject2).lCurrentBgId;

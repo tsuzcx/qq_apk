@@ -1,14 +1,23 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.lang.ref.WeakReference;
 
 class apai
-  implements bbrx
+  implements DialogInterface.OnClickListener
 {
-  apai(apae paramapae, List paramList) {}
+  apai(apad paramapad) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 2) {
-      azjg.a(apae.a(this.jdField_a_of_type_Apae), apae.a(this.jdField_a_of_type_Apae), this.jdField_a_of_type_JavaUtilList);
+    if (this.a.jdField_a_of_type_Aplh != null) {
+      this.a.jdField_a_of_type_Aplh.a(false);
+    }
+    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      paramDialogInterface = (apab)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramDialogInterface != null) {
+        paramDialogInterface.aC_();
+      }
     }
   }
 }

@@ -1,25 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemBar;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.qphone.base.util.QLog;
 
 public class aycp
-  implements Animation.AnimationListener
+  implements MediaPlayer.OnErrorListener
 {
-  public aycp(AbsPublishActivity paramAbsPublishActivity) {}
+  public aycp(VideoSprite paramVideoSprite) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    this.a.a.clearAnimation();
+    if (QLog.isColorLevel()) {
+      QLog.e("VideoSprite", 2, "onError: " + paramInt1);
+    }
+    if (paramInt1 == 1)
+    {
+      if (this.a.a != null) {
+        this.a.a.a();
+      }
+      this.a.j();
+    }
+    return true;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aycp
  * JD-Core Version:    0.7.0.1
  */

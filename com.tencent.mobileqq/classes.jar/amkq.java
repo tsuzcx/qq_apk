@@ -1,21 +1,12 @@
-import org.jetbrains.annotations.NotNull;
-
-public class amkq
+public abstract interface amkq
 {
-  public int a;
-  public String a;
+  public abstract void a();
   
-  @NotNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("{");
-    localStringBuilder.append("topicId: ").append(this.jdField_a_of_type_Int).append(",topicName: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    return localStringBuilder.toString();
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amkq
  * JD-Core Version:    0.7.0.1
  */

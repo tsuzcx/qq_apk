@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import anad;
 import android.content.Intent;
 import android.os.Handler;
-import anfc;
-import bbac;
+import anql;
+import anvl;
+import bcdb;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -13,19 +13,19 @@ public class BubbleUiPlugin
   extends VasWebviewUiPlugin
 {
   private static final String TAG = "BubbleUiPlugin";
-  anad mOnRemoteResp = new BubbleUiPlugin.2(this);
+  anql mOnRemoteResp = new BubbleUiPlugin.2(this);
   
   void OnActivityDestroy()
   {
     super.OnActivityDestroy();
-    anfc.a().b(this.mOnRemoteResp);
+    anvl.a().b(this.mOnRemoteResp);
   }
   
   void OnActivityResume()
   {
     super.OnActivityResume();
-    anfc.a().a(this.mOnRemoteResp);
-    if (anfc.a().a())
+    anvl.a().a(this.mOnRemoteResp);
+    if (anvl.a().a())
     {
       reportBubbleSetting();
       if (QLog.isColorLevel()) {

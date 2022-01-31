@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.ListView;
-import azvv;
+import bawz;
 
 public class DataReportListView
   extends ListView
@@ -19,8 +19,8 @@ public class DataReportListView
   {
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
-    if (getMeasuredHeight() > azvv.a(getContext(), 100.0F)) {
-      setMeasuredDimension(paramInt1, azvv.a(getContext(), 100.0F));
+    if (getMeasuredHeight() > bawz.a(getContext(), 100.0F)) {
+      setMeasuredDimension(paramInt1, bawz.a(getContext(), 100.0F));
     }
   }
 }

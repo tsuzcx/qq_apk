@@ -1,24 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo;
 
-public class qww
-  implements nvg
+public final class qww
+  implements Parcelable.Creator<DiscoveryInfo>
 {
-  public qww(FastWebActivity paramFastWebActivity) {}
-  
-  public void a(long paramLong)
+  public DiscoveryInfo a(Parcel paramParcel)
   {
-    if (FastWebActivity.a(this.a) != null)
-    {
-      FastWebActivity.a(this.a).b = paramLong;
-      if (FastWebActivity.a(this.a).b <= 0L)
-      {
-        FastWebActivity.a(this.a).b = 0L;
-        this.a.e();
-      }
-      FastWebActivity.a(this.a).a(FastWebActivity.a(this.a).b);
-    }
+    return new DiscoveryInfo(paramParcel);
+  }
+  
+  public DiscoveryInfo[] a(int paramInt)
+  {
+    return new DiscoveryInfo[paramInt];
   }
 }
 

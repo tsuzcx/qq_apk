@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import com.tencent.tmassistant.aidl.d;
 import com.tencent.tmassistant.aidl.e;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 
 public class TMAssistantDownloadSettingClient
   extends a
@@ -74,7 +74,7 @@ public class TMAssistantDownloadSettingClient
     //   1: monitorenter
     //   2: ldc 11
     //   4: ldc 55
-    //   6: invokestatic 61	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   6: invokestatic 61	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   9: aload_0
     //   10: invokespecial 43	com/tencent/tmdownloader/a:getServiceInterface	()Landroid/os/IInterface;
     //   13: checkcast 45	com/tencent/tmassistant/aidl/d
@@ -86,7 +86,7 @@ public class TMAssistantDownloadSettingClient
     //   27: istore_1
     //   28: ldc 11
     //   30: ldc 65
-    //   32: invokestatic 61	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   32: invokestatic 61	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   35: ldc 11
     //   37: new 67	java/lang/StringBuilder
     //   40: dup
@@ -96,10 +96,10 @@ public class TMAssistantDownloadSettingClient
     //   49: iload_1
     //   50: invokevirtual 79	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   53: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   56: invokestatic 61	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   56: invokestatic 61	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   59: ldc 11
     //   61: ldc 85
-    //   63: invokestatic 61	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   63: invokestatic 61	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   66: aload_0
     //   67: monitorexit
     //   68: iload_1
@@ -109,7 +109,7 @@ public class TMAssistantDownloadSettingClient
     //   74: pop
     //   75: ldc 11
     //   77: ldc 86
-    //   79: invokestatic 61	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   79: invokestatic 61	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   82: iconst_0
     //   83: istore_1
     //   84: goto -49 -> 35
@@ -145,26 +145,26 @@ public class TMAssistantDownloadSettingClient
     {
       try
       {
-        ac.c("TMAssistantDownloadSettingClient", "enter");
-        ac.c("TMAssistantDownloadSettingClient", "maxTaskNum: " + paramInt);
+        ab.c("TMAssistantDownloadSettingClient", "enter");
+        ab.c("TMAssistantDownloadSettingClient", "maxTaskNum: " + paramInt);
         if ((paramInt < 1) || (paramInt > 10))
         {
-          ac.c("TMAssistantDownloadSettingClient", "maxTaskNum < 1 || maxTaskNum > 10");
-          ac.c("TMAssistantDownloadSettingClient", "exit");
+          ab.c("TMAssistantDownloadSettingClient", "maxTaskNum < 1 || maxTaskNum > 10");
+          ab.c("TMAssistantDownloadSettingClient", "exit");
           return;
         }
         d locald = (d)super.getServiceInterface();
         if (locald != null)
         {
           locald.a(paramInt);
-          ac.c("TMAssistantDownloadSettingClient", "setServiceSetingMaxTaskNum");
-          ac.c("TMAssistantDownloadSettingClient", "exit");
+          ab.c("TMAssistantDownloadSettingClient", "setServiceSetingMaxTaskNum");
+          ab.c("TMAssistantDownloadSettingClient", "exit");
           continue;
         }
         super.initTMAssistantDownloadSDK();
       }
       finally {}
-      ac.c("TMAssistantDownloadSettingClient", "initTMAssistantDownloadSDK");
+      ab.c("TMAssistantDownloadSettingClient", "initTMAssistantDownloadSDK");
     }
   }
   
@@ -176,7 +176,7 @@ public class TMAssistantDownloadSettingClient
     //   1: monitorenter
     //   2: ldc 11
     //   4: ldc 55
-    //   6: invokestatic 61	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   6: invokestatic 61	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   9: ldc 11
     //   11: new 67	java/lang/StringBuilder
     //   14: dup
@@ -186,7 +186,7 @@ public class TMAssistantDownloadSettingClient
     //   23: iload_1
     //   24: invokevirtual 79	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   27: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   30: invokestatic 61	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   30: invokestatic 61	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   33: aload_0
     //   34: invokespecial 43	com/tencent/tmdownloader/a:getServiceInterface	()Landroid/os/IInterface;
     //   37: checkcast 45	com/tencent/tmassistant/aidl/d
@@ -198,10 +198,10 @@ public class TMAssistantDownloadSettingClient
     //   47: invokeinterface 122 2 0
     //   52: ldc 11
     //   54: ldc 124
-    //   56: invokestatic 61	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   56: invokestatic 61	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   59: ldc 11
     //   61: ldc 85
-    //   63: invokestatic 61	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   63: invokestatic 61	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   66: aload_0
     //   67: monitorexit
     //   68: return
@@ -210,7 +210,7 @@ public class TMAssistantDownloadSettingClient
     //   73: pop
     //   74: ldc 11
     //   76: ldc 86
-    //   78: invokestatic 61	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   78: invokestatic 61	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   81: goto -22 -> 59
     //   84: astore_2
     //   85: aload_0

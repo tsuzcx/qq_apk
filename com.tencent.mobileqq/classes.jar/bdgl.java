@@ -1,25 +1,32 @@
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.view.View;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.open.applist.QZoneAppListActivity;
+import com.tencent.open.applist.QZoneAppListActivity.1.1;
 
 public class bdgl
+  extends OnPluginInstallListener.Stub
 {
-  public static void a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public bdgl(QZoneAppListActivity paramQZoneAppListActivity) {}
+  
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
   {
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(paramView, "translationY", new float[] { paramFloat1, paramFloat2 });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat3, paramFloat4 });
-    paramView = ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat3, paramFloat4 });
-    AnimatorSet localAnimatorSet = new AnimatorSet();
-    localAnimatorSet.setDuration(100L);
-    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, paramView });
-    localAnimatorSet.addListener(new bdgm());
-    localAnimatorSet.start();
+    this.a.a(paramInt1 / paramInt2 * 100);
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    this.a.runOnUiThread(new QZoneAppListActivity.1.1(this));
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    QZoneAppListActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdgl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,33 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.msf.sdk.MsfCommand;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import tencent.im.oidb.cmd0x962.oidb_0x962.FinishInfo;
+import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
 
-public class basl
-  extends MSFServlet
+class basl
+  extends baks
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    QLog.i("health_manager", 1, "MyServlet onReceive." + paramFromServiceMsg.getServiceCmd());
-    if ((paramFromServiceMsg.isSuccess()) && (paramFromServiceMsg.getServiceCmd().equals("cmd_refresh_steps")))
-    {
-      String str = paramIntent.getStringExtra("json_string");
-      paramFromServiceMsg = (String)paramFromServiceMsg.getAttribute("StepInfoJSON");
-      Bundle localBundle = new Bundle();
-      if (!TextUtils.isEmpty(str)) {
-        localBundle.putString("json_string", str);
-      }
-      if (!TextUtils.isEmpty(paramFromServiceMsg)) {
-        localBundle.putString("StepInfoJSON", paramFromServiceMsg);
-      }
-      if (paramIntent.getExtras().getString("json_getstepcallback") != null) {
-        localBundle.putString("json_getstepcallback", paramIntent.getExtras().getString("json_getstepcallback"));
-      }
-      notifyObserver(paramIntent, 0, true, localBundle, null);
-    }
-  }
+  basl(barx parambarx, MessageForDeliverGiftTips paramMessageForDeliverGiftTips) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
   {
-    paramPacket = paramIntent.getStringExtra("msf_cmd_type");
-    ToServiceMsg localToServiceMsg = new ToServiceMsg(null, "0", paramPacket);
-    localToServiceMsg.setMsfCommand(MsfCommand.msf_step_counter);
-    localToServiceMsg.setNeedCallback(true);
-    localToServiceMsg.setTimeout(30000L);
-    if (paramPacket.equals("cmd_health_switch")) {
-      localToServiceMsg.addAttribute("isOpen", Boolean.valueOf(paramIntent.getBooleanExtra("isOpen", false)));
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopInteractGiftAnimationController", 2, "checkInteract: errorCode = " + paramInt);
     }
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState = paramRspBody.uint32_play_state.get();
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.alreadyPlayMicroseconds = paramRspBody.uint64_already_pay_microseconds.get();
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.playTotalMicroseconds = paramRspBody.uint64_play_total_microseconds.get();
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState == 2) && (paramRspBody.msg_finish_info.has()))
     {
-      sendToMSF(paramIntent, localToServiceMsg);
-      return;
-      if (paramPacket.equals("cmd_update_lastreport_time"))
-      {
-        long l = paramIntent.getLongExtra("last_report_time", 0L);
-        boolean bool = paramIntent.getBooleanExtra("has_report_yes", false);
-        localToServiceMsg.addAttribute("last_report_time", Long.valueOf(l));
-        localToServiceMsg.addAttribute("has_report_yes", Boolean.valueOf(bool));
-        localToServiceMsg.setNeedCallback(false);
-      }
-      else if (paramPacket.equals("cmd_reset_step"))
-      {
-        int i = paramIntent.getIntExtra("server_step", -1);
-        if (-1 != i) {
-          localToServiceMsg.addAttribute("server_step", Integer.valueOf(i));
-        }
-      }
+      paramRspBody = (oidb_0x962.FinishInfo)paramRspBody.msg_finish_info.get();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactText = paramRspBody.bytes_text.get().toStringUtf8();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.participateNum = paramRspBody.uint32_participate_num.get();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstUin = paramRspBody.uint64_first_uin.get();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstNickname = paramRspBody.bytes_first_nick_name.get().toStringUtf8();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interacEndtUrl = paramRspBody.bytes_url.get().toStringUtf8();
     }
   }
 }

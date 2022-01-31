@@ -1,87 +1,45 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class amdl
-  implements alzn<String>
+  implements BusinessObserver
 {
-  public ArrayList<amdm> a = new ArrayList();
+  public void a(boolean paramBoolean) {}
   
-  public void a(String paramString)
+  public void a(boolean paramBoolean, String paramString) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void b(boolean paramBoolean, String paramString) {}
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.clear();
-    if (TextUtils.isEmpty(paramString))
+    switch (paramInt)
     {
-      QLog.e("OpenSdkRandomConfig", 1, "OpenVirtual.config content is empty");
+    default: 
+      return;
+    case 1: 
+      paramInt = paramBundle.getInt("resp_result", 0);
+      b(paramBoolean, paramBundle.getString("key_card_id"), paramInt);
+      return;
+    case 2: 
+      b(paramBoolean, paramBundle.getString("key_card_id"));
+      return;
+    case 3: 
+      a(paramBoolean, paramBundle.getString("key_card_id"));
+      return;
+    case 4: 
+      a(paramBoolean);
       return;
     }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        paramString = new JSONObject(paramString).optJSONArray("random_list");
-        if (paramString != null)
-        {
-          i = 0;
-          if (i < paramString.length())
-          {
-            JSONObject localJSONObject = paramString.getJSONObject(i);
-            amdm localamdm = new amdm();
-            localamdm.a = localJSONObject.optString("nick", "");
-            localamdm.b = localJSONObject.optString("headid", "");
-            localamdm.c = localJSONObject.optString("url", "");
-            if ((!TextUtils.isEmpty(localamdm.a)) && (!TextUtils.isEmpty(localamdm.b)) && (!TextUtils.isEmpty(localamdm.c))) {
-              break label230;
-            }
-            if (!QLog.isColorLevel()) {
-              break label235;
-            }
-            QLog.e("OpenSdkRandomConfig", 2, new Object[] { "OpenVirtual.random.config.parse.find invalid,index=", Integer.valueOf(i) });
-            break label235;
-            if (j == 0) {
-              break label240;
-            }
-            this.a.add(localamdm);
-            break label240;
-          }
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("OpenSdkRandomConfig", 2, new Object[] { "OpenVirtual.random.config.parse=", toString() });
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("OpenSdkRandomConfig", 1, "OpenVirtual.config.getException.", paramString);
-        return;
-      }
-      label230:
-      int j = 1;
-      continue;
-      label235:
-      j = 0;
-      continue;
-      label240:
-      i += 1;
-    }
-  }
-  
-  public String toString()
-  {
-    if (this.a.size() > 0) {
-      return this.a.toString();
-    }
-    return "";
+    a(paramBoolean, paramBundle.getString("key_card_id"), paramBundle.getInt("key_get_detail_type"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amdl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,15 @@
-public class tsm
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+
+class tsm
+  implements tsq
 {
-  private double jdField_a_of_type_Double = 1.0D;
-  private long jdField_a_of_type_Long;
+  tsm(tsl paramtsl) {}
   
-  public tsm()
+  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
   {
-    a();
-  }
-  
-  private long b()
-  {
-    return (System.nanoTime() / 1000L * this.jdField_a_of_type_Double);
-  }
-  
-  public double a()
-  {
-    return this.jdField_a_of_type_Double;
-  }
-  
-  public long a()
-  {
-    return b() - this.jdField_a_of_type_Long;
-  }
-  
-  public long a(long paramLong)
-  {
-    return paramLong - a();
-  }
-  
-  public void a()
-  {
-    a(0L);
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = (b() - paramLong);
+    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
   }
 }
 

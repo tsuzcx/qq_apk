@@ -1,62 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class syq
-  extends swk
-  implements slx<tae, tbu>
 {
-  protected String a;
-  protected List<String> a;
+  public int a;
+  public String b;
   
-  public syq(String paramString, List<String> paramList)
+  public syq() {}
+  
+  public syq(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
+    this.a = paramInt;
+    this.b = paramString;
   }
   
-  public void a()
+  public syq(qqstory_struct.ErrorInfo paramErrorInfo)
   {
-    tae localtae = new tae();
-    localtae.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-    slv.a().a(localtae, this);
-  }
-  
-  public void a(@NonNull tae paramtae, @Nullable tbu paramtbu, @NonNull ErrorMessage paramErrorMessage)
-  {
-    sys localsys = new sys();
-    if ((paramtbu == null) || (paramErrorMessage.isFail()))
-    {
-      c();
-      sgi.a().dispatch(localsys);
-      return;
-    }
-    urk.b("Q.qqstory.net:VidToShareGroupVideoInfoHandler", "onCmdRespond: request.count=" + paramtae.jdField_a_of_type_JavaUtilList.size() + ",content=" + paramtae.jdField_a_of_type_JavaUtilList.toString());
-    urk.b("Q.qqstory.net:VidToShareGroupVideoInfoHandler", "onCmdRespond: count=" + paramtbu.jdField_a_of_type_JavaUtilList.size() + ",content=" + paramtbu.toString());
-    b();
-    paramtbu.jdField_a_of_type_JavaUtilList = ((sqd)sqg.a(5)).a(paramtbu.jdField_a_of_type_JavaUtilList);
-    localsys.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramtae = paramtbu.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramtae.hasNext())
-    {
-      paramtbu = (StoryVideoItem)paramtae.next();
-      paramtbu = new uhj(paramtbu.mVid, paramtbu);
-      localsys.jdField_a_of_type_JavaUtilList.add(paramtbu);
-    }
-    sgi.a().dispatch(localsys);
-  }
-  
-  public String toString()
-  {
-    return "VidToShareGroupVideoInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + ", mCollectionId='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    this.a = paramErrorInfo.error_code.get();
+    this.b = paramErrorInfo.error_desc.get().toStringUtf8();
   }
 }
 

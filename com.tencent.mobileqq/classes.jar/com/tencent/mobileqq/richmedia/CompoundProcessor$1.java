@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.richmedia;
 
 import android.os.Bundle;
-import aurp;
-import aurv;
-import badi;
+import avqy;
+import avre;
+import bben;
 
 public class CompoundProcessor$1
   implements Runnable
 {
-  public CompoundProcessor$1(aurp paramaurp) {}
+  public CompoundProcessor$1(avqy paramavqy) {}
   
   public void run()
   {
-    aurv localaurv = aurv.a();
+    avre localavre = avre.a();
     String str = this.this$0.a(this.this$0.jdField_b_of_type_JavaLangString);
     Bundle localBundle = new Bundle();
     localBundle.putString("vidoe_record_uniseq", this.this$0.a);
     localBundle.putString("full_video_path", str);
     localBundle.putInt("video_slices_total_time_length", this.this$0.jdField_b_of_type_Int);
-    localaurv.a(103, -1, localBundle);
-    badi.a(this.this$0.a, "clicompCompoundProcessor.compressSourceYUV", "path = " + str + ",totalTime = " + this.this$0.jdField_b_of_type_Int);
+    localavre.a(103, -1, localBundle);
+    bben.a(this.this$0.a, "clicompCompoundProcessor.compressSourceYUV", "path = " + str + ",totalTime = " + this.this$0.jdField_b_of_type_Int);
   }
 }
 

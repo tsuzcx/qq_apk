@@ -1,19 +1,6 @@
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
-import java.util.List;
-
-public class uzk
-  extends sfo
+public abstract interface uzk
 {
-  public final int a;
-  @NonNull
-  public final List<srl> a;
-  
-  public uzk(int paramInt, @NonNull List<srl> paramList)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
-  }
+  public abstract void a(uzm paramuzm);
 }
 
 

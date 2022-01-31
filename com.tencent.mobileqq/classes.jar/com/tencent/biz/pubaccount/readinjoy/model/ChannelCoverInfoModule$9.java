@@ -4,15 +4,15 @@ import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import opa;
 import org.json.JSONException;
 import org.json.JSONObject;
-import prk;
+import pab;
+import qdj;
 
 public class ChannelCoverInfoModule$9
   implements Runnable
 {
-  public ChannelCoverInfoModule$9(opa paramopa, List paramList1, List paramList2) {}
+  public ChannelCoverInfoModule$9(pab parampab, List paramList1, List paramList2) {}
   
   public void run()
   {
@@ -51,7 +51,7 @@ public class ChannelCoverInfoModule$9
         continue;
         if (QLog.isColorLevel())
         {
-          localObject = opa.a(this.this$0);
+          localObject = pab.a(this.this$0);
           if (localObject != null)
           {
             QLog.i("ChannelCoverInfoModule", 2, "now channels in db are:\n");

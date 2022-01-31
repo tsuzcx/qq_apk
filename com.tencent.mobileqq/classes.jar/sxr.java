@@ -1,20 +1,16 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
 
 public class sxr
-  extends sfo
 {
-  public QQUserUIItem a;
-  public String a;
-  public List<QQUserUIItem> a;
-  public String b;
-  
-  public String toString()
+  public static Intent a(Context paramContext, boolean paramBoolean1, Intent paramIntent, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2)
   {
-    if (this.a == null) {
-      return "UpdateUserInfoEvent " + super.toString();
-    }
-    return "UpdateUserInfoEvent " + this.a.toString() + super.toString();
+    return syk.a(paramContext, paramBoolean1, paramIntent, paramBoolean2, paramBoolean3, paramBoolean4, paramString1, paramString2);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return syk.a(paramContext);
   }
 }
 

@@ -1,172 +1,88 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.JSApiWebServerResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
-class rsy
-  implements BusinessObserver
+public class rsy
+  implements AbsListView.OnScrollListener
 {
-  rsy(rsv paramrsv, String paramString1, int paramInt, boolean paramBoolean, String paramString2) {}
+  private int jdField_a_of_type_Int = -1;
+  private int b = -1;
+  private int c;
+  private int d;
+  private int e;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public rsy(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
+  
+  private void c()
   {
-    if (paramBoolean)
+    if ((this.d > 0) && (this.e == 0))
     {
-      Object localObject = paramBundle.getByteArray("data");
-      if (localObject != null)
-      {
-        paramBundle = new mobileqq_mp.JSApiWebServerResponse();
-        label650:
-        label807:
-        for (;;)
-        {
-          try
-          {
-            paramBundle.mergeFrom((byte[])localObject);
-            localObject = (mobileqq_mp.RetInfo)paramBundle.ret_info.get();
-            paramBundle = paramBundle.body.get();
-            int i = ((mobileqq_mp.RetInfo)localObject).ret_code.get();
-            localObject = ((mobileqq_mp.RetInfo)localObject).err_info.get();
-            new JSONObject();
-            if (i != 0) {
-              break label650;
-            }
-            localObject = new JSONObject(paramBundle);
-            int j = ((JSONObject)localObject).optInt("ret");
-            paramBundle = ((JSONObject)localObject).optString("msg");
-            i = ((JSONObject)localObject).optInt("subcmd");
-            if (j != 0) {
-              break label494;
-            }
-            j = ((JSONObject)localObject).optInt("type");
-            paramBundle = "";
-            if (j == 2)
-            {
-              paramBundle = ((JSONObject)localObject).optString("url");
-              localObject = ((JSONObject)localObject).optString("mediaid");
-              if (paramBundle.equals(""))
-              {
-                JSONObject localJSONObject = new JSONObject();
-                try
-                {
-                  localJSONObject.put("retCode", -1);
-                  localJSONObject.put("msg", "mediaId for serverId error");
-                  this.jdField_a_of_type_Rsv.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-                  this.jdField_a_of_type_Rsv.c((String)localObject);
-                  awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
-                  break label807;
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.i("PublicAccountH5AbilityPlugin", 2, "sendMediaIdForUuidRequest serverId = " + paramBundle + "  type = " + paramInt + " subCom=" + i);
-                  return;
-                }
-                catch (JSONException localJSONException4)
-                {
-                  localJSONException4.printStackTrace();
-                  continue;
-                }
-              }
-            }
-            if (j != 4) {
-              continue;
-            }
-          }
-          catch (InvalidProtocolBufferMicroException paramBundle)
-          {
-            paramBundle.printStackTrace();
-            return;
-            this.jdField_a_of_type_Rsv.a(this.jdField_a_of_type_Int, paramBundle, (String)localObject, true, this.jdField_a_of_type_JavaLangString);
-          }
-          catch (JSONException paramBundle)
-          {
-            paramBundle.printStackTrace();
-            return;
-          }
-          paramBundle = ((JSONObject)localObject).optString("file_uuid");
-          if (paramBundle.equals(""))
-          {
-            localObject = new JSONObject();
-            try
-            {
-              ((JSONObject)localObject).put("retCode", -1);
-              ((JSONObject)localObject).put("msg", "mediaId for serverId error");
-              this.jdField_a_of_type_Rsv.callJs(this.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
-              awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
-            }
-            catch (JSONException localJSONException3)
-            {
-              for (;;)
-              {
-                localJSONException3.printStackTrace();
-              }
-            }
-          }
-          else
-          {
-            localObject = ((JSONObject)localObject).optString("mediaid");
-            this.jdField_a_of_type_Rsv.a(this.jdField_a_of_type_Int, paramBundle, (String)localObject, false, this.jdField_a_of_type_JavaLangString);
-            continue;
-            label494:
-            if (QLog.isColorLevel()) {
-              QLog.i("PublicAccountH5AbilityPlugin", 2, "sendMediaIdForUuidRequest errorMsg = " + paramBundle);
-            }
-            paramBundle = new JSONObject();
-            try
-            {
-              paramBundle.put("retCode", -1);
-              paramBundle.put("msg", "mediaId for serverId error");
-              this.jdField_a_of_type_Rsv.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-              if (this.jdField_a_of_type_Boolean)
-              {
-                this.jdField_a_of_type_Rsv.c(this.b);
-                awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
-                return;
-              }
-            }
-            catch (JSONException localJSONException1)
-            {
-              for (;;)
-              {
-                localJSONException1.printStackTrace();
-              }
-              awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
-              return;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("PublicAccountH5AbilityPlugin", 2, "sendMediaIdForUuidRequest errorMsg = " + localJSONException1);
-            }
-            paramBundle = new JSONObject();
-            try
-            {
-              paramBundle.put("retCode", -1);
-              paramBundle.put("msg", "mediaId for serverId error");
-              this.jdField_a_of_type_Rsv.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-              if (this.jdField_a_of_type_Boolean)
-              {
-                this.jdField_a_of_type_Rsv.c(this.b);
-                awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
-                return;
-              }
-            }
-            catch (JSONException localJSONException2)
-            {
-              for (;;)
-              {
-                localJSONException2.printStackTrace();
-              }
-              awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
-              return;
-            }
-          }
-        }
+      if ((!ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView)) || (!ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView))) {
+        break label42;
       }
+      ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView);
+    }
+    label42:
+    while (!ReadInJoyNinePicDeliverDynamicGridView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView)) {
+      return;
+    }
+    ReadInJoyNinePicDeliverDynamicGridView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView);
+  }
+  
+  public void a()
+  {
+    if ((this.c != this.jdField_a_of_type_Int) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView)) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) != -1L))
+    {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView));
+      ReadInJoyNinePicDeliverDynamicGridView.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView);
+    }
+  }
+  
+  public void b()
+  {
+    if ((this.c + this.d != this.jdField_a_of_type_Int + this.b) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView)) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) != -1L))
+    {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView));
+      ReadInJoyNinePicDeliverDynamicGridView.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView);
+    }
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.c = paramInt1;
+    this.d = paramInt2;
+    if (this.jdField_a_of_type_Int == -1)
+    {
+      i = this.c;
+      this.jdField_a_of_type_Int = i;
+      if (this.b != -1) {
+        break label111;
+      }
+    }
+    label111:
+    for (int i = this.d;; i = this.b)
+    {
+      this.b = i;
+      a();
+      b();
+      this.jdField_a_of_type_Int = this.c;
+      this.b = this.d;
+      if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) != null) {
+        ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      }
+      return;
+      i = this.jdField_a_of_type_Int;
+      break;
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    this.e = paramInt;
+    ReadInJoyNinePicDeliverDynamicGridView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, paramInt);
+    c();
+    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) != null) {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView).onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
 }

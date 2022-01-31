@@ -16,7 +16,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.net.MalformedURLException;
 import java.net.URL;
-import obj;
+import omu;
 
 public class DailyTitleBar
   extends FrameLayout
@@ -31,11 +31,11 @@ public class DailyTitleBar
   {
     super(paramContext, paramAttributeSet);
     a(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131303952);
-    this.b = findViewById(2131303962);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131312560));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131303077));
-    this.c = findViewById(2131311635);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369626);
+    this.b = findViewById(2131369635);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378384));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131368715));
+    this.c = findViewById(2131377449);
   }
   
   private void a(Context paramContext)
@@ -45,7 +45,7 @@ public class DailyTitleBar
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    View.inflate(paramContext, 2131494329, this);
+    View.inflate(paramContext, 2131559900, this);
     paramAttributeSet = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.DailyTitleBar, 0, 0);
     for (;;)
     {
@@ -54,17 +54,17 @@ public class DailyTitleBar
       {
         String str = paramAttributeSet.getString(3);
         i = paramAttributeSet.getColor(4, -16777216);
-        int j = paramAttributeSet.getResourceId(0, 2131101537);
-        k = paramAttributeSet.getResourceId(2, 2130842344);
-        m = paramAttributeSet.getResourceId(1, 2130842524);
+        int j = paramAttributeSet.getResourceId(0, 2131167134);
+        k = paramAttributeSet.getResourceId(2, 2130842419);
+        m = paramAttributeSet.getResourceId(1, 2130842607);
         setBackgroundResource(j);
-        localTextView = (TextView)findViewById(2131312560);
+        localTextView = (TextView)findViewById(2131378384);
         localTextView.setText(str);
         localTextView.setTextColor(i);
         if ((i != -1) && (i != 16777215)) {
           break label175;
         }
-        findViewById(2131303077).setVisibility(8);
+        findViewById(2131368715).setVisibility(8);
       }
       finally
       {
@@ -74,8 +74,8 @@ public class DailyTitleBar
         paramAttributeSet.recycle();
       }
       localTextView.setVisibility(8);
-      findViewById(2131302883).setBackgroundResource(k);
-      findViewById(2131303047).setBackgroundResource(m);
+      findViewById(2131368507).setBackgroundResource(k);
+      findViewById(2131368684).setBackgroundResource(m);
       paramAttributeSet.recycle();
       setClickable(true);
       a(paramContext);
@@ -90,7 +90,7 @@ public class DailyTitleBar
   
   private void b(Context paramContext)
   {
-    KandianUrlImageView localKandianUrlImageView = (KandianUrlImageView)findViewById(2131303077);
+    KandianUrlImageView localKandianUrlImageView = (KandianUrlImageView)findViewById(2131368715);
     Object localObject;
     if (localKandianUrlImageView != null)
     {
@@ -105,7 +105,7 @@ public class DailyTitleBar
     }
     try
     {
-      obj.a(localKandianUrlImageView, new URL((String)localObject), paramContext);
+      omu.a(localKandianUrlImageView, new URL((String)localObject), paramContext);
       return;
     }
     catch (MalformedURLException paramContext)

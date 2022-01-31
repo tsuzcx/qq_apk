@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import baip;
+import bbjw;
 import com.tencent.mobileqq.microapp.appbrand.utils.b;
 import com.tencent.smtt.sdk.TbsReaderView;
 import com.tencent.smtt.sdk.TbsReaderView.ReaderCallback;
@@ -23,7 +23,7 @@ public final class d
   
   private String a(String paramString)
   {
-    if (baip.a(paramString)) {}
+    if (bbjw.a(paramString)) {}
     int i;
     do
     {
@@ -63,7 +63,7 @@ public final class d
   
   public void a(File paramFile)
   {
-    if ((paramFile != null) && (!baip.a(paramFile.toString())))
+    if ((paramFile != null) && (!bbjw.a(paramFile.toString())))
     {
       File localFile = new File(b.a().a(""));
       if (!localFile.exists()) {

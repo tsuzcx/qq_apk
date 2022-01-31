@@ -1,18 +1,18 @@
 package dov.com.tencent.biz.qqstory.takevideo.sendpanel;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.widget.Toast;
-import bivo;
+import bkma;
 
 public class SendPanelPart$1
   implements Runnable
 {
-  public SendPanelPart$1(bivo parambivo) {}
+  public SendPanelPart$1(bkma parambkma) {}
   
   public void run()
   {
-    Toast.makeText(this.this$0.a().getApplicationContext(), ajjy.a(2131648037), 0).show();
+    Toast.makeText(this.this$0.a().getApplicationContext(), ajyc.a(2131713824), 0).show();
   }
 }
 

@@ -3,12 +3,12 @@ package com.tencent.mobileqq.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ScrollView;
-import bbnu;
+import bcqv;
 
 public class ObservableScrollView
   extends ScrollView
 {
-  private bbnu a;
+  private bcqv a;
   
   public ObservableScrollView(Context paramContext)
   {
@@ -33,9 +33,9 @@ public class ObservableScrollView
     }
   }
   
-  public void setScrollViewListener(bbnu parambbnu)
+  public void setScrollViewListener(bcqv parambcqv)
   {
-    this.a = parambbnu;
+    this.a = parambcqv;
   }
 }
 

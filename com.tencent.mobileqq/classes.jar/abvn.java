@@ -1,125 +1,22 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.activity.TroopAssistantActivity.11.1;
-import com.tencent.mobileqq.activity.TroopAssistantActivity.11.2;
-import com.tencent.mobileqq.activity.TroopAssistantActivity.11.3;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class abvn
-  extends ajjh
+  implements View.OnClickListener
 {
-  public abvn(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public abvn(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    if (!paramString.equals(this.a.app.getAccount())) {
-      return;
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1).sendToTarget();
-    this.a.runOnUiThread(new TroopAssistantActivity.11.1(this));
-  }
-  
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.k) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.finish();
     }
   }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    if ((paramMap == null) || (paramMap.size() == 0)) {}
-    label129:
-    do
-    {
-      return;
-      int i;
-      if (("batch_setting".equals(this.a.b)) && (this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0) && (this.a.jdField_a_of_type_Bahr != null))
-      {
-        i = 0;
-        for (;;)
-        {
-          if (i >= this.a.jdField_a_of_type_JavaUtilList.size()) {
-            break label129;
-          }
-          paramMap = String.valueOf(this.a.jdField_a_of_type_JavaUtilList.get(i));
-          if (((Boolean)this.a.jdField_a_of_type_Bahr.c.get(paramMap)).booleanValue()) {
-            break;
-          }
-          i += 1;
-        }
-        bbmy.a(this.a.app.getApp(), 2, ajjy.a(2131649414), 0).b(this.a.getTitleBarHeight());
-        TroopAssistantActivity.a(this.a);
-        return;
-      }
-      paramMap = paramMap.entrySet().iterator();
-      if (paramMap.hasNext())
-      {
-        String str = (String)((Map.Entry)paramMap.next()).getKey();
-        i = this.a.app.b(str);
-        if ((i == 1) || (i == 4)) {
-          ariz.a().c(str, this.a.app);
-        }
-        for (;;)
-        {
-          this.a.c();
-          break;
-          if (i == 3) {
-            ariz.a().b(str, this.a.app);
-          }
-        }
-      }
-    } while (!this.a.isResume());
-    if (paramBoolean)
-    {
-      bbmy.a(this.a.app.getApp(), 2, this.a.getString(2131654643), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    bbmy.a(this.a.app.getApp(), 1, this.a.getString(2131654642), 0).b(this.a.getTitleBarHeight());
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("head", 2, "ContactsActivity.onUpdateCustomHead: uin:" + paramString + ", success :" + paramBoolean);
-    }
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      return;
-    }
-    if ((this.a.app.getCurrentAccountUin() != null) && (this.a.app.getCurrentAccountUin().equals(paramString)))
-    {
-      ThreadManager.post(new TroopAssistantActivity.11.2(this, paramString), 8, null, true);
-      return;
-    }
-    this.a.c();
-  }
-  
-  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    if (paramBoolean) {
-      ThreadManager.post(new TroopAssistantActivity.11.3(this), 5, null, true);
-    }
-  }
-  
-  protected void onUpdateRecentList()
-  {
-    this.a.c();
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString) {}
 }
 
 

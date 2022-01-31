@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.doutu.combo;
 
-import amyj;
+import anor;
 
 public class ComboUIManager$1
   implements Runnable
 {
-  public ComboUIManager$1(amyj paramamyj) {}
+  public ComboUIManager$1(anor paramanor) {}
   
   public void run()
   {

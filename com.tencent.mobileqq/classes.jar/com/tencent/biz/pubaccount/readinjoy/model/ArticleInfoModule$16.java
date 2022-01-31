@@ -2,18 +2,18 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.os.Handler;
 import java.util.List;
-import ooq;
+import ozr;
 
 public class ArticleInfoModule$16
   implements Runnable
 {
-  public ArticleInfoModule$16(ooq paramooq, int paramInt1, List paramList, int paramInt2, long paramLong, boolean paramBoolean) {}
+  public ArticleInfoModule$16(ozr paramozr, int paramInt1, List paramList, int paramInt2, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
-    ooq.a(this.this$0, this.jdField_a_of_type_Int);
+    ozr.a(this.this$0, this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (List localList = ooq.a(this.this$0, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean); this.this$0.a == null; localList = this.jdField_a_of_type_JavaUtilList) {
+    for (List localList = ozr.a(this.this$0, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean); this.this$0.a == null; localList = this.jdField_a_of_type_JavaUtilList) {
       return;
     }
     this.this$0.a.post(new ArticleInfoModule.16.1(this, localList));

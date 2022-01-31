@@ -1,48 +1,69 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPromoteTaskList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetPOIList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetPOIList;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class sqf
-  implements slx<taz, tba>
+public class sqf
+  extends syv<sqg>
 {
-  sqf(sqe paramsqe) {}
+  private static final String jdField_a_of_type_JavaLangString = sxp.a("StorySvc.batch_get_poi_list");
+  private List<srg> jdField_a_of_type_JavaUtilList;
   
-  public void a(@NonNull taz paramtaz, @Nullable tba paramtba, @NonNull ErrorMessage paramErrorMessage)
+  public int a()
   {
-    if (paramtba == null) {
-      urk.e("StoryPromoteTaskManager", "onCmdRespond() error: %s", new Object[] { paramtba });
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
-    do
+    return 0;
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public sqg a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBatchGetPOIList localRspBatchGetPOIList = new qqstory_service.RspBatchGetPOIList();
+    try
     {
-      return;
-      if (paramErrorMessage.errorCode == 15000)
-      {
-        urk.a("StoryPromoteTaskManager", "onCmdRespond() no change of the request %s", paramtba);
-        this.a.jdField_a_of_type_Long = paramtba.a.uint64_expire_time.get();
-        return;
-      }
-      if (paramErrorMessage.isFail())
-      {
-        urk.e("StoryPromoteTaskManager", "onCmdRespond() error: %s", new Object[] { paramtba });
-        return;
-      }
-    } while (this.a.jdField_a_of_type_Boolean);
-    this.a.jdField_a_of_type_JavaLangString = paramtba.a.bytes_cookie.get().toStringUtf8();
-    this.a.jdField_a_of_type_Long = paramtba.a.uint64_expire_time.get();
-    this.a.a();
-    this.a.a(paramtba.a);
-    paramtaz = paramtba.a.bytes_global_promote_url.get().toStringUtf8();
-    if (!TextUtils.isEmpty(paramtaz))
-    {
-      ((spz)sqg.a(10)).b("key_story_player_promote_url", paramtaz);
-      this.a.b = paramtaz;
+      localRspBatchGetPOIList.mergeFrom(paramArrayOfByte);
+      return new sqg(localRspBatchGetPOIList);
     }
-    this.a.a("onCmdRespond()");
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  public void a(@NonNull List<srg> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  protected byte[] a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      throw new QQStoryCmdHandler.IllegalUinException("req gps list is null");
+    }
+    if ((QLog.isDebugVersion()) && (this.jdField_a_of_type_JavaUtilList.size() > 100)) {
+      throw new QQStoryCmdHandler.IllegalUinException("over LIMIT_MX data to send LIMIT_MX=100");
+    }
+    qqstory_service.ReqBatchGetPOIList localReqBatchGetPOIList = new qqstory_service.ReqBatchGetPOIList();
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(((srg)localIterator.next()).a());
+    }
+    localReqBatchGetPOIList.gps.addAll(localArrayList);
+    return localReqBatchGetPOIList.toByteArray();
   }
 }
 

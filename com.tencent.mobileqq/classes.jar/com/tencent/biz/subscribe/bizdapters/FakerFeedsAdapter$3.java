@@ -1,11 +1,11 @@
 package com.tencent.biz.subscribe.bizdapters;
 
-import vxx;
+import wlg;
 
 public class FakerFeedsAdapter$3
   implements Runnable
 {
-  public FakerFeedsAdapter$3(vxx paramvxx, int paramInt) {}
+  public FakerFeedsAdapter$3(wlg paramwlg, int paramInt) {}
   
   public void run()
   {

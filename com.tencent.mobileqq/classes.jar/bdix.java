@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqmini.sdk.core.widget.TabBar;
-
 public class bdix
-  implements View.OnClickListener
 {
-  public bdix(TabBar paramTabBar, int paramInt, bdnj parambdnj) {}
-  
-  public void onClick(View paramView)
-  {
-    if (TabBar.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetTabBar) != null) {
-      TabBar.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetTabBar).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Bdnj.a, this.jdField_a_of_type_Bdnj.b);
-    }
-  }
+  public static final String a = ajyc.a(2131702443);
+  public static final String b = ajyc.a(2131702441);
+  public static final String c = ajyc.a(2131702449);
+  public static final String d = ajyc.a(2131702444);
+  public static final String e = ajyc.a(2131702447);
+  public static final String f = ajyc.a(2131702445);
+  public static final String g = ajyc.a(2131702442);
+  public static final String h = ajyc.a(2131702448);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdix
  * JD-Core Version:    0.7.0.1
  */

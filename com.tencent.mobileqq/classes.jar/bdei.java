@@ -1,12 +1,11 @@
-public abstract interface bdei
+public class bdei
 {
-  public abstract void onFailed(String paramString1, String paramString2);
-  
-  public abstract void onSuccess(String paramString1, String paramString2);
+  public long a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdei
  * JD-Core Version:    0.7.0.1
  */

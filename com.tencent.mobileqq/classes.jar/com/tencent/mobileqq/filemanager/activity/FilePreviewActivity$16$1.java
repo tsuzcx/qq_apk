@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.widget.TextView;
-import anxh;
+import aooa;
 
 public class FilePreviewActivity$16$1
   implements Runnable
 {
-  public FilePreviewActivity$16$1(anxh paramanxh, int paramInt1, int paramInt2) {}
+  public FilePreviewActivity$16$1(aooa paramaooa, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Anxh.a.a()) {
+    if (!this.jdField_a_of_type_Aooa.a.a()) {
       return;
     }
     String str = String.valueOf(this.jdField_a_of_type_Int) + "/" + String.valueOf(this.b);
-    this.jdField_a_of_type_Anxh.a.a.setText(str);
+    this.jdField_a_of_type_Aooa.a.a.setText(str);
   }
 }
 

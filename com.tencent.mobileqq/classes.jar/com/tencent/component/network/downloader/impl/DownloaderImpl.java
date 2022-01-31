@@ -33,6 +33,7 @@ import com.tencent.component.network.utils.http.HttpUtil.ClientOptions;
 import com.tencent.component.network.utils.http.HttpUtil.RequestOptions;
 import com.tencent.component.network.utils.http.base.QZoneHttp2Client;
 import com.tencent.component.network.utils.http.base.QZoneHttpClient;
+import com.tencent.component.network.utils.http.pool.CustomDnsResolve;
 import com.tencent.component.network.utils.thread.Future;
 import com.tencent.component.network.utils.thread.PriorityThreadPool;
 import java.io.File;
@@ -491,14 +492,23 @@ public class DownloaderImpl
     {
       if (this.mHttpClient != null)
       {
-        QZoneHttpClient localQZoneHttpClient1 = this.mHttpClient;
-        return localQZoneHttpClient1;
+        QZoneHttpClient localQZoneHttpClient = this.mHttpClient;
+        return localQZoneHttpClient;
       }
     }
     finally {}
-    this.mHttpClient = HttpUtil.CreateDefaultHttpClient();
-    QZoneHttpClient localQZoneHttpClient2 = this.mHttpClient;
-    return localQZoneHttpClient2;
+    Object localObject2;
+    if (this.pHttpsIpDirectEnable)
+    {
+      localObject2 = new CustomDnsResolve();
+      ((CustomDnsResolve)localObject2).addIpStrategy(this.pDirectIPConfig);
+      ((CustomDnsResolve)localObject2).addIpStrategy(this.pBackupIPConfig);
+    }
+    for (this.mHttpClient = HttpUtil.CreateDefaultHttpClient((CustomDnsResolve)localObject2);; this.mHttpClient = HttpUtil.CreateDefaultHttpClient())
+    {
+      localObject2 = this.mHttpClient;
+      return localObject2;
+    }
   }
   
   private boolean removePendingRequest(String paramString, DownloadRequest paramDownloadRequest, Collection<DownloadRequest> paramCollection)

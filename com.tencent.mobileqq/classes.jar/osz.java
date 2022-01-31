@@ -1,111 +1,164 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInjoyWebRenderSoLoader.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class osz
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  private static int jdField_a_of_type_Int;
+  private static Object jdField_a_of_type_JavaLangObject;
+  public static String a;
+  public static String b = "_viola_reinstall_delJSC_succ_810";
+  private static String c = "";
+  private static String d;
+  
+  static
   {
-    JSONObject localJSONObject = new JSONObject();
-    Object localObject1 = new JSONObject();
-    ((JSONObject)localObject1).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + ajjy.a(2131647342));
-    localJSONObject.put("id_gallery_cnt", localObject1);
-    localObject1 = new JSONObject();
-    ((JSONObject)localObject1).put("gallery_icon", "qq_readinjoy_gallery_count");
-    localJSONObject.put("id_gallery_img", localObject1);
-    localJSONObject.put("id_gallery_bg", new JSONObject());
-    Object localObject3;
-    Object localObject2;
-    label169:
-    label184:
-    Object localObject4;
-    if ((paramBaseArticleInfo.mPictures == null) || (paramBaseArticleInfo.mPictures.length <= 0))
+    jdField_a_of_type_JavaLangObject = new Object();
+    d = "https://sqimg.qq.com/qq_product_operations/kan/violaLibs/" + anqa.jdField_a_of_type_JavaLangString + ".js";
+    jdField_a_of_type_JavaLangString = "_viola_reinstall_delBiz_succ_810";
+  }
+  
+  public static String a()
+  {
+    if (TextUtils.isEmpty(c))
     {
-      localObject3 = qoe.a(paramBaseArticleInfo.mJsonPictureList, "pictures");
-      if ((localObject3 == null) || (((JSONArray)localObject3).length() < 3)) {
-        return localJSONObject;
+      Object localObject = BaseApplicationImpl.getContext();
+      if (localObject == null) {
+        break label95;
       }
-      localObject1 = ((JSONArray)localObject3).optJSONObject(0);
-      if (localObject1 == null)
+      localObject = ((Context)localObject).getFilesDir();
+      if (TextUtils.isEmpty(c))
       {
-        localObject1 = paramBaseArticleInfo.mFirstPagePicUrl;
-        localObject2 = ((JSONArray)localObject3).optJSONObject(1);
-        if (localObject2 != null) {
-          break label343;
+        c = ((File)localObject).getParent() + "/txlib/" + "readinjoy_viola/";
+        if (AppSetting.b) {
+          c += "arm64-v8a/";
         }
-        localObject2 = paramBaseArticleInfo.mFirstPagePicUrl;
-        localObject3 = ((JSONArray)localObject3).optJSONObject(2);
-        if (localObject3 != null) {
-          break label353;
-        }
-        localObject3 = paramBaseArticleInfo.mFirstPagePicUrl;
-        localObject4 = new JSONObject();
-        ((JSONObject)localObject4).put("multi_img_url1", localObject1);
-        localJSONObject.put("id_multi_img_1", localObject4);
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url2", localObject2);
-        localJSONObject.put("id_multi_img_2", localObject1);
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url3", localObject3);
-        localJSONObject.put("id_multi_img_3", localObject1);
-        otl.a(paramBaseArticleInfo, localJSONObject, true);
-        otl.a(paramBaseArticleInfo, localJSONObject);
-        otl.b(paramBaseArticleInfo, localJSONObject);
-        otl.m(paramBaseArticleInfo, localJSONObject);
-        otl.e(paramBaseArticleInfo, localJSONObject);
-        otl.f(paramBaseArticleInfo, localJSONObject);
-        otl.X(paramBaseArticleInfo, localJSONObject);
-        if (paramBaseArticleInfo.articleStyle != 6) {
-          break label488;
-        }
-        localJSONObject.put("style_ID", "ReadInjoy_triple_img_big_cell");
       }
     }
     for (;;)
     {
-      otl.a(localJSONObject, paramBaseArticleInfo);
-      return localJSONObject;
-      localObject1 = ((JSONObject)localObject1).optString("picture");
-      break;
-      label343:
-      localObject2 = ((JSONObject)localObject2).optString("picture");
-      break label169;
-      label353:
-      localObject3 = ((JSONObject)localObject3).optString("picture");
-      break label184;
-      if ((paramBaseArticleInfo.mPictures.length < 1) || (paramBaseArticleInfo.mPictures[0] == null))
-      {
-        localObject1 = paramBaseArticleInfo.mSinglePicture;
-        label386:
-        localObject2 = ((URL)localObject1).getFile();
-        if ((paramBaseArticleInfo.mPictures.length >= 2) && (paramBaseArticleInfo.mPictures[1] != null)) {
-          break label468;
-        }
-        localObject1 = paramBaseArticleInfo.mSinglePicture;
-        label414:
-        localObject3 = ((URL)localObject1).getFile();
-        if ((paramBaseArticleInfo.mPictures.length >= 3) && (paramBaseArticleInfo.mPictures[2] != null)) {
-          break label478;
-        }
-      }
-      label468:
-      label478:
-      for (localObject1 = paramBaseArticleInfo.mSinglePicture;; localObject1 = paramBaseArticleInfo.mPictures[2])
-      {
-        localObject4 = ((URL)localObject1).getFile();
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        localObject3 = localObject4;
-        break;
-        localObject1 = paramBaseArticleInfo.mPictures[0];
-        break label386;
-        localObject1 = paramBaseArticleInfo.mPictures[1];
-        break label414;
-      }
-      label488:
-      localJSONObject.put("style_ID", "ReadInjoy_triple_img_cell");
+      return c;
+      label95:
+      QLog.w("viola.ReadInjoyWebRenderSoLoader", 2, "getSoLibPath but context is null");
     }
+  }
+  
+  private static boolean a()
+  {
+    SharedPreferences localSharedPreferences = bhvh.a(onk.a(), true, true);
+    if (localSharedPreferences == null)
+    {
+      QLog.d("viola.ReadInjoyWebRenderSoLoader", 1, "isReinstallDelSucc  failed");
+      return false;
+    }
+    boolean bool = localSharedPreferences.getBoolean(b, false);
+    QLog.d("viola.ReadInjoyWebRenderSoLoader", 1, "isReinstallDelSucc sp result=" + bool);
+    return bool;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      a();
+      boolean bool = TextUtils.isEmpty(c);
+      if (!bool) {}
+      try
+      {
+        jdField_a_of_type_Int = 1;
+        bbdj.a(paramString, c, false);
+        jdField_a_of_type_Int = 0;
+        QLog.i("viola.ReadInjoyWebRenderSoLoader", 1, "succeed to unzip so.");
+        if (jdField_a_of_type_Int == 0) {
+          return true;
+        }
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          jdField_a_of_type_Int = 2;
+          QLog.e("viola.ReadInjoyWebRenderSoLoader", 1, paramString, new Object[0]);
+        }
+      }
+    }
+    return false;
+  }
+  
+  public static boolean a(osv paramosv)
+  {
+    if (a()) {
+      return true;
+    }
+    ThreadManager.post(new ReadInjoyWebRenderSoLoader.1(paramosv), 8, null, true);
+    return false;
+  }
+  
+  private static void c()
+  {
+    Object localObject = bhvh.a(onk.a(), true, true);
+    if (localObject == null)
+    {
+      QLog.d("viola.ReadInjoyWebRenderSoLoader", 1, "delSoReinstall sp failed");
+      return;
+    }
+    QLog.d("Q.readinjoy.tt_report", 1, "delSoReinstall sp update to true");
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putBoolean(b, true);
+    bhvh.a((SharedPreferences.Editor)localObject, true);
+  }
+  
+  private static boolean c(String paramString)
+  {
+    QLog.i("viola.ReadInjoyWebRenderSoLoader", 1, "[delAllSo]" + paramString);
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return false;
+      try
+      {
+        String str = a();
+        bbdj.d(str + paramString);
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          try
+          {
+            if (new File(a(), paramString).exists()) {
+              break;
+            }
+            QLog.d("viola.ReadInjoyWebRenderSoLoader", 1, "reinstallDelSO  " + paramString + "succ");
+            return true;
+          }
+          catch (Throwable paramString) {}
+          localThrowable = localThrowable;
+          QLog.e("viola.ReadInjoyWebRenderSoLoader", 1, localThrowable, new Object[0]);
+        }
+      }
+    }
+    return false;
+  }
+  
+  private static void d()
+  {
+    Object localObject = bhvh.a(onk.a(), true, true);
+    if (localObject == null)
+    {
+      QLog.d("viola.ReadInjoyWebRenderSoLoader", 1, "delSoReinstall sp failed");
+      return;
+    }
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putBoolean(jdField_a_of_type_JavaLangString, true);
+    bhvh.a((SharedPreferences.Editor)localObject, true);
   }
 }
 

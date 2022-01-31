@@ -1,35 +1,28 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ListView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import java.lang.ref.WeakReference;
 
-class axzy
-  implements Animator.AnimatorListener
+public class axzy
+  extends Handler
 {
-  axzy(axzw paramaxzw) {}
+  private WeakReference<axzq> a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public axzy(axzq paramaxzq)
   {
-    axzw.a(this.a).setPadding(azvv.a(axzw.a(this.a).getContext(), 8.0F), -axzw.a(this.a), 0, 0);
-    axzw.a(this.a, false);
+    this.a = new WeakReference(paramaxzq);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    axzw.a(this.a).setPadding(azvv.a(axzw.a(this.a).getContext(), 8.0F), 0, 0, 0);
-    axzw.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    axzw.a(this.a).setPadding(azvv.a(axzw.a(this.a).getContext(), 8.0F), -axzw.a(this.a), 0, 0);
-    axzw.a(this.a, true);
+    if ((axzq)this.a.get() != null) {
+      ((AnyScaleTypeImageView)paramMessage.obj).setImageResource(2130844581);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axzy
  * JD-Core Version:    0.7.0.1
  */

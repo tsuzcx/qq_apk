@@ -1,79 +1,32 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
-import dov.com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator.MultiForwardShortVideoTask;
-import java.util.ArrayList;
-import tencent.im.msg.im_msg_body.RichText;
+import android.text.Layout.Alignment;
+import android.text.Spanned;
+import android.text.StaticLayout;
+import android.text.TextUtils;
 
-public class bjia
-  implements atqq
+class bjia
+  extends bkcj
 {
-  final int jdField_a_of_type_Int;
-  bjjd jdField_a_of_type_Bjjd;
-  
-  public bjia(BaseShortVideoOprerator.MultiForwardShortVideoTask paramMultiForwardShortVideoTask, int paramInt)
+  bjia(bjhy parambjhy, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Bjjd = ((bjjd)paramMultiForwardShortVideoTask.b.get(this.jdField_a_of_type_Int));
+    super(paramInt);
   }
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    return (MessageForShortVideo)((bjiy)this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a;
-  }
-  
-  public void a(atqr paramatqr)
-  {
-    MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)((bjiy)this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a;
-    localMessageForShortVideo.videoFileStatus = 1003;
-    localMessageForShortVideo.md5 = paramatqr.jdField_d_of_type_JavaLangString;
-    localMessageForShortVideo.uuid = paramatqr.jdField_c_of_type_JavaLangString;
-    localMessageForShortVideo.thumbFileSize = ((int)paramatqr.jdField_c_of_type_Long);
-    localMessageForShortVideo.videoAttr = paramatqr.jdField_c_of_type_Int;
-    localMessageForShortVideo.videoKandianType = paramatqr.jdField_d_of_type_Int;
-    localMessageForShortVideo.serial();
-    paramatqr = this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.this$0.a.a();
-    if (paramatqr != null) {
-      paramatqr.a(localMessageForShortVideo, null);
-    }
-  }
-  
-  public void b(atqr paramatqr)
-  {
-    for (;;)
+    String str1 = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
+    String str2 = bakj.b(str1);
+    Object localObject = this.jdField_a_of_type_Bjhy.a(str2);
+    localObject = this.jdField_a_of_type_Bjhy.a((String)localObject);
+    localObject = this.jdField_a_of_type_Bjhy.a((String[])localObject);
+    if (bjig.a((CharSequence)localObject, 0, ((CharSequence)localObject).length(), this.jdField_a_of_type_Bjhy.a, this.jdField_a_of_type_Bjhy.b, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false, null, 0, 4).getLineCount() > 3)
     {
-      int i;
-      synchronized (this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.b)
-      {
-        if (paramatqr.jdField_a_of_type_Int == 0)
-        {
-          a(paramatqr);
-          this.jdField_a_of_type_Bjjd.jdField_a_of_type_Int = 0;
-          if (QLog.isColorLevel()) {
-            QLog.d("BaseShortVideoOprerator", 2, "onsend success!");
-          }
-          i = BaseShortVideoOprerator.MultiForwardShortVideoTask.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask);
-          if (i == 0) {
-            this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.this$0.a(3, 0, this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.b);
-          }
-        }
-        else
-        {
-          this.jdField_a_of_type_Bjjd.jdField_a_of_type_Int = -1;
-          this.jdField_a_of_type_Bjjd.jdField_a_of_type_Atpr = new atpr();
-          this.jdField_a_of_type_Bjjd.jdField_a_of_type_Atpr.b = paramatqr.jdField_a_of_type_JavaLangString;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("BaseShortVideoOprerator", 2, "onsend fail! err:" + paramatqr.jdField_a_of_type_JavaLangString);
-        }
+      if (!TextUtils.equals("", paramCharSequence)) {
+        a();
       }
-      if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_Int == this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_JavaUtilArrayList.size() - i) {
-        this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.a();
-      }
+      return "";
     }
+    this.jdField_a_of_type_Int = (str1.length() - str2.length() + 20);
+    return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
   }
 }
 

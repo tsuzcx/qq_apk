@@ -1,55 +1,161 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.util.DisplayMetrics;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.image.SafeBitmapFactory.SafeDecodeOption;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import java.util.HashMap;
 
 public class agqg
+  implements ayww
 {
-  public static int a(String paramString, int paramInt1, int paramInt2)
+  private float jdField_a_of_type_Float;
+  private LocalMediaInfo jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+  
+  public agqg(Context paramContext, LocalMediaInfo paramLocalMediaInfo)
   {
-    SharedPreferences localSharedPreferences = a(paramInt2);
-    paramInt2 = paramInt1;
-    if (localSharedPreferences != null)
-    {
-      paramInt2 = paramInt1;
-      if (!TextUtils.isEmpty(paramString)) {
-        paramInt2 = localSharedPreferences.getInt("url_down_scene" + paramString, paramInt1);
-      }
-    }
-    return paramInt2;
+    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
   }
   
-  private static SharedPreferences a(int paramInt)
+  static int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (BaseApplicationImpl.getApplication() != null)
-    {
-      if (paramInt == 1) {
-        return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_down_record_utilinner", 4);
-      }
-      return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_down_record_util", 4);
+    int j = 1;
+    int i;
+    if (paramInt1 > paramInt2) {
+      i = paramInt2;
     }
+    while (i > paramInt3 * 2)
+    {
+      j *= 2;
+      i /= 2;
+      continue;
+      i = paramInt1;
+    }
+    return a(paramInt1, paramInt2, paramInt3, j);
+  }
+  
+  private static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    paramInt3 = paramInt3 * paramInt3 * paramInt4 * paramInt4;
+    while (paramInt1 * paramInt2 > paramInt3 * 4)
+    {
+      paramInt3 *= 4;
+      paramInt4 *= 2;
+    }
+    return paramInt4;
+  }
+  
+  public Bitmap a(URL paramURL)
+  {
+    LocalMediaInfo localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+    if (localLocalMediaInfo != null)
+    {
+      paramURL = new BitmapFactory.Options();
+      paramURL.inJustDecodeBounds = true;
+      SafeBitmapFactory.decodeFile(localLocalMediaInfo.path, paramURL);
+      paramURL.inSampleSize = a(paramURL.outWidth, paramURL.outHeight, localLocalMediaInfo.thumbWidth);
+      paramURL.inJustDecodeBounds = false;
+      Object localObject1 = null;
+      label243:
+      for (;;)
+      {
+        try
+        {
+          SafeBitmapFactory.SafeDecodeOption localSafeDecodeOption = new SafeBitmapFactory.SafeDecodeOption();
+          localSafeDecodeOption.inOptions = paramURL;
+          localSafeDecodeOption.inNeedFlashBackTest = false;
+          paramURL = SafeBitmapFactory.safeDecode(localLocalMediaInfo.path, localSafeDecodeOption);
+          boolean bool;
+          long l;
+          ((OutOfMemoryError)localObject1).printStackTrace();
+        }
+        catch (OutOfMemoryError localOutOfMemoryError2)
+        {
+          try
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("PEAK", 2, "ThumbDecoder regionDecodeInfo:" + localSafeDecodeOption.toString());
+            }
+            if ((!localSafeDecodeOption.isInJustDecodeBounds) && (localSafeDecodeOption.needRegionDecode))
+            {
+              localObject1 = localSafeDecodeOption.getInfo();
+              ((HashMap)localObject1).put("from", "ThumbDecoder");
+              localObject2 = axrl.a(BaseApplicationImpl.getApplication());
+              bool = localSafeDecodeOption.isGetBitmap;
+              l = localSafeDecodeOption.runTime;
+              i = localSafeDecodeOption.rawHeight;
+              ((axrl)localObject2).a(null, "safeDecode", bool, l, localSafeDecodeOption.rawWidth * i, (HashMap)localObject1, "");
+            }
+            if (paramURL != null) {
+              break;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.e("ThumbDecoder", 2, "decode bitmap return null,maybe oom");
+            }
+            return paramURL;
+          }
+          catch (OutOfMemoryError localOutOfMemoryError1)
+          {
+            Object localObject2;
+            int i;
+            int j;
+            int k;
+            Rect localRect;
+            break label243;
+          }
+          localOutOfMemoryError2 = localOutOfMemoryError2;
+          paramURL = (URL)localObject1;
+          localObject1 = localOutOfMemoryError2;
+        }
+      }
+      i = aywk.a(localLocalMediaInfo.path);
+      if ((i == 0) && (paramURL.getWidth() == localLocalMediaInfo.thumbWidth) && (paramURL.getHeight() == localLocalMediaInfo.thumbWidth) && (paramURL.getConfig() == Bitmap.Config.RGB_565)) {
+        return paramURL;
+      }
+      j = paramURL.getWidth();
+      k = paramURL.getHeight();
+      localRect = new Rect();
+      localObject2 = new RectF(0.0F, 0.0F, localLocalMediaInfo.thumbWidth, localLocalMediaInfo.thumbWidth);
+      if (j > k)
+      {
+        j = (j - k) / 2;
+        localRect.set(j, 0, j + k, k + 0);
+      }
+      for (;;)
+      {
+        localObject1 = Bitmap.createBitmap(localLocalMediaInfo.thumbWidth, localLocalMediaInfo.thumbWidth, Bitmap.Config.RGB_565);
+        if (localObject1 == null) {
+          break label464;
+        }
+        new Canvas((Bitmap)localObject1).drawBitmap(paramURL, localRect, (RectF)localObject2, new Paint(6));
+        paramURL.recycle();
+        paramURL = (URL)localObject1;
+        if (i == 0) {
+          break;
+        }
+        return agls.a((Bitmap)localObject1, i);
+        k = (k - j) / 2;
+        localRect.set(0, k, 0 + j, j + k);
+      }
+    }
+    label464:
     return null;
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    SharedPreferences localSharedPreferences = a(paramInt);
-    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
-      localSharedPreferences.edit().remove("url_down_scene" + paramString).apply();
-    }
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2)
-  {
-    SharedPreferences localSharedPreferences = a(paramInt2);
-    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
-      localSharedPreferences.edit().putInt("url_down_scene" + paramString, paramInt1).apply();
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agqg
  * JD-Core Version:    0.7.0.1
  */

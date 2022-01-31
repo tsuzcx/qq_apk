@@ -1,16 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter.1;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter.1.1;
+import com.tencent.widget.AbsListView;
 
 public class aoao
-  implements View.OnClickListener
+  implements bfob
 {
-  public aoao(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  public aoao(EmotionPanelViewPagerAdapter.1.1 param1) {}
   
-  public void onClick(View paramView)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    QfileCloudFileTabView.a(this.a, paramView, true);
-    paramView.sendAccessibilityEvent(8);
+    if ((paramInt == 0) || (paramInt == 2))
+    {
+      URLDrawable.resume();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter$1.jdField_a_of_type_Int == 1) {
+        EmotionPanelViewPagerAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter$1.this$0, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter$1.jdField_a_of_type_ComTencentWidgetListView);
+      }
+      return;
+    }
+    URLDrawable.pause();
   }
 }
 

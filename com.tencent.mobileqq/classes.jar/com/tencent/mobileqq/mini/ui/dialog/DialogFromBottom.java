@@ -23,7 +23,7 @@ public class DialogFromBottom
   
   public DialogFromBottom(@NonNull Context paramContext)
   {
-    super(paramContext, 2131689515);
+    super(paramContext, 2131755051);
   }
   
   private void animateDown()

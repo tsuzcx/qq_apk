@@ -5,12 +5,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.ArrayList;
 import java.util.List;
-import xcd;
+import xld;
 
 public final class NewerGuidePlugin$RecommendedListResp
   implements Parcelable
 {
-  public static final Parcelable.Creator<RecommendedListResp> CREATOR = new xcd();
+  public static final Parcelable.Creator<RecommendedListResp> CREATOR = new xld();
   public int a;
   public long a;
   public List<NewerGuidePlugin.PhoneInfo> a;

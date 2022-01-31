@@ -1,37 +1,56 @@
-import android.graphics.Bitmap;
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
+import android.support.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-class txt
-  extends SimpleObserver<Bitmap>
+public class txt
+  implements twl
 {
-  txt(txs paramtxs) {}
+  public final String a;
+  public final List<String> a;
+  private twm jdField_a_of_type_Twm;
+  private twp jdField_a_of_type_Twp;
+  private twr jdField_a_of_type_Twr;
   
-  public void a(Bitmap paramBitmap)
+  public txt(String paramString)
   {
-    super.onNext(paramBitmap);
-    txq.b(txs.a(this.a), "onNext, oldResult=%s, newResult=%s", txs.a(this.a), paramBitmap);
-    txs.a(this.a, paramBitmap);
-    txs.a(this.a, true);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Twm = new twm();
+    this.jdField_a_of_type_Twm.b = true;
+    this.jdField_a_of_type_Twm.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Twm.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Twp = new twp(new two("TROOP_GROUD_ID"));
+    this.jdField_a_of_type_Twp.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Twp.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_Twp.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_JavaLangString, "TROOP_FEED_ID");
+    this.jdField_a_of_type_Twm.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Twp);
+    this.jdField_a_of_type_Twr = new twr(new two("TROOP_GROUD_ID"), this.jdField_a_of_type_JavaLangString, "TROOP_FEED_ID");
+    this.jdField_a_of_type_Twr.jdField_a_of_type_Twp = this.jdField_a_of_type_Twp;
   }
   
-  public void onCancel()
+  public twm a(@Nullable two paramtwo, int paramInt)
   {
-    super.onCancel();
-    txq.a(txs.a(this.a), "onCancel");
-    onError(new ErrorMessage(-1, "onCancel"));
+    return this.jdField_a_of_type_Twm;
   }
   
-  public void onError(@NonNull Error paramError)
+  public twr a()
   {
-    super.onError(paramError);
-    txq.c(txs.a(this.a), "onError, oldError=%s, newError=%s", txs.a(this.a), paramError);
-    txs.a(this.a, paramError);
-    txs.a(this.a, SystemClock.uptimeMillis());
-    txs.a(this.a, false);
+    return this.jdField_a_of_type_Twr;
   }
+  
+  public void a() {}
+  
+  public void a(@Nullable two paramtwo, int paramInt1, int paramInt2, String paramString) {}
+  
+  public void a(@Nullable two paramtwo, String paramString) {}
+  
+  public void a(twq paramtwq) {}
+  
+  public void b() {}
+  
+  public void b(twq paramtwq) {}
 }
 
 

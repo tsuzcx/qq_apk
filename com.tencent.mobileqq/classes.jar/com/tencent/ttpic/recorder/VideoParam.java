@@ -2,9 +2,7 @@ package com.tencent.ttpic.recorder;
 
 import android.annotation.TargetApi;
 import android.hardware.Camera.Parameters;
-import android.os.Environment;
 import com.tencent.ttpic.baseutils.log.LogUtils;
-import java.io.File;
 import java.util.Iterator;
 import java.util.List;
 
@@ -14,7 +12,6 @@ public class VideoParam
   private static final int FPS = 25;
   private static final int IFI = 5;
   private static final String MIME = "video/avc";
-  private static final String SDCARD = Environment.getExternalStorageDirectory().getPath();
   private static final String TAG = "VideoParam";
   private static final int VIDEO_H = 480;
   private static final int VIDEO_W = 640;

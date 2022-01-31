@@ -1,33 +1,52 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.TroopAssistantHomeFeedPlayInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class txr
+  extends twc<TroopAssistantHomeFeedPlayInfo>
 {
-  @NonNull
-  private final Bitmap a;
-  
-  public txr(Bitmap paramBitmap)
+  public txr(TroopAssistantHomeFeedPlayInfo paramTroopAssistantHomeFeedPlayInfo)
   {
-    if (paramBitmap == null) {
-      throw new NullPointerException("bitmap should not be null");
+    super(paramTroopAssistantHomeFeedPlayInfo);
+    paramTroopAssistantHomeFeedPlayInfo = (uwa)tdc.a(11);
+    if (paramTroopAssistantHomeFeedPlayInfo.b != null) {
+      this.a = paramTroopAssistantHomeFeedPlayInfo.b;
     }
-    this.a = paramBitmap;
   }
   
-  public int a()
+  public uvs a(String paramString)
   {
-    return this.a.getWidth();
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      uvs localuvs = (uvs)localIterator.next();
+      if (localuvs.a.equals(paramString)) {
+        return localuvs;
+      }
+    }
+    return null;
   }
   
-  public Bitmap a()
+  public void a() {}
+  
+  public void a(boolean paramBoolean, int paramInt, twu paramtwu)
   {
-    return Bitmap.createBitmap(this.a);
+    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
+    if ((paramBoolean) && (((List)localObject).size() > 0))
+    {
+      List localList = b((List)localObject);
+      paramtwu.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
+      veg.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
+      return;
+    }
+    localObject = new tnh();
+    ((tnh)localObject).a = this.a.a();
+    veg.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((tnh)localObject).a);
+    syr.a().a((syv)localObject, new txs(this, paramtwu));
   }
   
-  public int b()
-  {
-    return this.a.getHeight();
-  }
+  public void b() {}
 }
 
 

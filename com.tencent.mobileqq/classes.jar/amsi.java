@@ -1,28 +1,80 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class amsi
-  implements View.OnClickListener
+  extends ampb<amsh>
 {
-  public amsi(MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface, Context paramContext) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appId))
+    return 168;
+  }
+  
+  @NonNull
+  public amsh a(int paramInt)
+  {
+    return new amsh();
+  }
+  
+  @Nullable
+  public amsh a(ampi[] paramArrayOfampi)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfampi != null)
     {
-      MessageForArkApp.access$000(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext);
-      alep.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName, "AIOArkSdkTailClick", 1, 0, 0L, 0L, 0L, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appView, "");
+      localObject1 = localObject2;
+      if (paramArrayOfampi.length > 0)
+      {
+        localObject1 = localObject2;
+        if (paramArrayOfampi[0] != null)
+        {
+          localObject1 = amsh.a(paramArrayOfampi[0].a);
+          paramArrayOfampi = BaseApplicationImpl.getApplication().getRuntime();
+          if ((paramArrayOfampi instanceof QQAppInterface)) {
+            ((FlashChatManager)((QQAppInterface)paramArrayOfampi).getManager(217)).b(((amsh)localObject1).a);
+          }
+        }
+      }
     }
+    return localObject1;
+  }
+  
+  public Class<amsh> a()
+  {
+    return amsh.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amsh paramamsh)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FlashChatConfProcessor", 2, "onUpdate " + paramamsh.toString());
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amsi
  * JD-Core Version:    0.7.0.1
  */

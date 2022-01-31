@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.nearby.interestTag;
 
-import asiy;
+import atfc;
 
 public class ChooseInterestTagActivity$14$1
   implements Runnable
 {
-  public ChooseInterestTagActivity$14$1(asiy paramasiy) {}
+  public ChooseInterestTagActivity$14$1(atfc paramatfc) {}
   
   public void run()
   {

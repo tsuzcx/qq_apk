@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.secspy;
 
-import avyq;
-import azto;
+import awyj;
+import baus;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class SecSpyFileManager$1
   implements Runnable
 {
-  public SecSpyFileManager$1(avyq paramavyq) {}
+  public SecSpyFileManager$1(awyj paramawyj) {}
   
   public void run()
   {
-    azto.a(this.this$0.a.getApplication());
+    baus.a(this.this$0.a.getApplication());
   }
 }
 

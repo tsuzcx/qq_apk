@@ -1,55 +1,66 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.ProgressButton;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.music.SongInfo;
 
-class asvj
-  extends Handler
+public abstract class asvj
+  extends Binder
+  implements asvi
 {
-  asvj(asuq paramasuq) {}
+  private static final String DESCRIPTOR = "com.tencent.mobileqq.music.IQQPlayerCallback";
+  static final int TRANSACTION_onPlaySongChanged = 2;
+  static final int TRANSACTION_onPlayStateChanged = 1;
   
-  public void handleMessage(Message paramMessage)
+  public asvj()
   {
-    switch (paramMessage.what)
-    {
+    attachInterface(this, "com.tencent.mobileqq.music.IQQPlayerCallback");
+  }
+  
+  public static asvi asInterface(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
     }
-    do
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof asvi))) {
+      return (asvi)localIInterface;
+    }
+    return new asvk(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-            } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
-            this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131633554);
-            return;
-          } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(paramMessage.arg1);
-          return;
-        } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(100);
-        return;
-      } while ((this.a.jdField_a_of_type_Asyg == null) || (asuq.a(this.a) == null));
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131633195);
-      }
-      this.a.jdField_a_of_type_Asyg.a(asuq.a(this.a).uRoomid);
-      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_bootstrap", 0, 0, asuq.a(this.a).uin, "", "yes", "android");
-      return;
-      bbmy.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 2131633551, 0).a();
-      return;
-    } while (this.a.jdField_a_of_type_Asyg == null);
-    this.a.jdField_a_of_type_Asyg.a();
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.music.IQQPlayerCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
+      onPlayStateChanged(paramParcel1.readInt());
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (SongInfo)SongInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      onPlaySongChanged(paramParcel1);
+      return true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     asvj
  * JD-Core Version:    0.7.0.1
  */

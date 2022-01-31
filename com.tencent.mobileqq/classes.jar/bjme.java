@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.shortvideo.util.videoconverter.ShortVideoTravellerManager.TravellerVideoItem;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public final class bjme
-  implements Parcelable.Creator<ShortVideoTravellerManager.TravellerVideoItem>
+final class bjme
+  implements EIPCResultCallback
 {
-  public ShortVideoTravellerManager.TravellerVideoItem a(Parcel paramParcel)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return new ShortVideoTravellerManager.TravellerVideoItem(paramParcel);
-  }
-  
-  public ShortVideoTravellerManager.TravellerVideoItem[] a(int paramInt)
-  {
-    return new ShortVideoTravellerManager.TravellerVideoItem[paramInt];
+    if (paramEIPCResult != null)
+    {
+      boolean bool = paramEIPCResult.data.getBoolean("key_result");
+      QLog.d("PeakIpcController", 2, "sendVideo result:" + bool);
+    }
   }
 }
 

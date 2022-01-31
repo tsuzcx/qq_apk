@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo;
 
-import aifc;
+import airv;
 
 public class ApolloGameManager$1
   implements Runnable
 {
-  public ApolloGameManager$1(aifc paramaifc) {}
+  public ApolloGameManager$1(airv paramairv) {}
   
   public void run()
   {
-    if (aifc.a(this.this$0) == null) {}
+    if (airv.a(this.this$0) == null) {}
   }
 }
 

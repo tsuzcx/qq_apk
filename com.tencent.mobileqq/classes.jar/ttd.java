@@ -1,14 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnVideoSizeChangedListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-class ttd
-  implements MediaPlayer.OnVideoSizeChangedListener
+public final class ttd
+  extends ssk
 {
-  ttd(tsy paramtsy, tsw paramtsw) {}
+  public int a;
+  public StoryVideoItem a;
+  public String a;
+  public String b;
   
-  public void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public ttd(String paramString, int paramInt, StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_a_of_type_Tsw.a(this.jdField_a_of_type_Tsy, paramInt1, paramInt2);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
   }
 }
 

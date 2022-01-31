@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.config.operation;
 
 import android.text.TextUtils;
-import atmo;
-import atoc;
+import aukm;
+import auma;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQOperationTaskRecord
-  extends atmo
+  extends aukm
 {
   public int aioCount;
   public String hasShowedUins = "";
   public long recordTime;
   public String showCount = "";
-  @atoc
+  @auma
   public int taskid;
   
   public void addUinShowCount(String paramString)

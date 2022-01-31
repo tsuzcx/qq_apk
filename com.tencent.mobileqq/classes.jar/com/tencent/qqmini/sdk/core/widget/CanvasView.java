@@ -31,16 +31,16 @@ import android.os.Build;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import bdeu;
-import bdfx;
-import bdgp;
-import bdgq;
-import bdhe;
-import bdie;
-import bdif;
-import bdii;
-import bdnw;
-import bdyn;
+import beiu;
+import bejy;
+import bekr;
+import beks;
+import belh;
+import bemh;
+import bemi;
+import beml;
+import besl;
+import bffu;
 import java.lang.reflect.Field;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -59,10 +59,10 @@ public class CanvasView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   Path jdField_a_of_type_AndroidGraphicsPath;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private bdfx jdField_a_of_type_Bdfx;
-  private bdii jdField_a_of_type_Bdii;
+  private bejy jdField_a_of_type_Bejy;
+  private beml jdField_a_of_type_Beml;
   Boolean jdField_a_of_type_JavaLangBoolean;
-  private final LinkedBlockingQueue<bdie> jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue;
+  private final LinkedBlockingQueue<bemh> jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue;
   private JSONArray jdField_a_of_type_OrgJsonJSONArray;
   float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -101,7 +101,7 @@ public class CanvasView
     }
     catch (Exception paramJSONArray)
     {
-      bdnw.d(jdField_a_of_type_JavaLangString, Log.getStackTraceString(paramJSONArray));
+      besl.d(jdField_a_of_type_JavaLangString, Log.getStackTraceString(paramJSONArray));
     }
     return 0;
   }
@@ -182,7 +182,7 @@ public class CanvasView
         {
           continue;
         }
-        bdnw.d(jdField_a_of_type_JavaLangString, "getCacheBitmapFromView failed: " + Log.getStackTraceString(paramView));
+        besl.d(jdField_a_of_type_JavaLangString, "getCacheBitmapFromView failed: " + Log.getStackTraceString(paramView));
         return localObject;
       }
     }
@@ -216,16 +216,16 @@ public class CanvasView
   {
     boolean bool = this.jdField_c_of_type_Boolean;
     Object localObject3 = this.jdField_a_of_type_OrgJsonJSONArray;
-    bdie localbdie = (bdie)this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.poll();
-    if (localbdie != null)
+    bemh localbemh = (bemh)this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.poll();
+    if (localbemh != null)
     {
       Object localObject2;
       label46:
       Object localObject1;
-      if (localbdie != null)
+      if (localbemh != null)
       {
-        bool = localbdie.jdField_a_of_type_Boolean;
-        localObject2 = localbdie.jdField_a_of_type_OrgJsonJSONArray;
+        bool = localbemh.jdField_a_of_type_Boolean;
+        localObject2 = localbemh.jdField_a_of_type_OrgJsonJSONArray;
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = new JSONArray();
@@ -253,16 +253,16 @@ public class CanvasView
         }
         catch (Throwable localThrowable)
         {
-          bdnw.d(jdField_a_of_type_JavaLangString, "process draw actions error! " + Log.getStackTraceString(localThrowable));
+          besl.d(jdField_a_of_type_JavaLangString, "process draw actions error! " + Log.getStackTraceString(localThrowable));
           continue;
         }
-        bool = localbdie.jdField_b_of_type_Boolean;
-        localbdie = (bdie)this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.poll();
+        bool = localbemh.jdField_b_of_type_Boolean;
+        localbemh = (bemh)this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.poll();
         break;
         bool = false;
         localObject2 = this.jdField_a_of_type_OrgJsonJSONArray;
         break label46;
-        localObject2 = bdgq.a((JSONArray)localObject3, (JSONArray)localObject1);
+        localObject2 = beks.a((JSONArray)localObject3, (JSONArray)localObject1);
       }
     }
     this.jdField_a_of_type_OrgJsonJSONArray = ((JSONArray)localObject3);
@@ -297,13 +297,13 @@ public class CanvasView
         int i1;
         int i2;
         int i3;
-        if (!bdhe.a((String)localObject4))
+        if (!belh.a((String)localObject4))
         {
           if (((String)localObject4).startsWith("wxfile")) {
-            localObject1 = bdeu.a().a((String)localObject4);
+            localObject1 = beiu.a().a((String)localObject4);
           }
         }
-        else if (!bdhe.a((String)localObject1))
+        else if (!belh.a((String)localObject1))
         {
           f5 = b(((JSONArray)localObject5).optDouble(1, 0.0D));
           f6 = b(((JSONArray)localObject5).optDouble(2, 0.0D));
@@ -345,13 +345,13 @@ public class CanvasView
           {
             label463:
             int i4;
-            bdnw.d(jdField_a_of_type_JavaLangString, "calculate image size error! " + Log.getStackTraceString(localException3));
+            besl.d(jdField_a_of_type_JavaLangString, "calculate image size error! " + Log.getStackTraceString(localException3));
             f2 = f1;
             f1 = f3;
             continue;
             f3 = Math.min(1440.0F / f2, 4000.0F / f1);
             if (f3 >= 1.0F) {
-              break label5304;
+              break label5310;
             }
           }
           if ((f2 > 0.0F) && (f1 > 0.0F))
@@ -381,7 +381,7 @@ public class CanvasView
           }
           m += 1;
           break;
-          localObject1 = this.jdField_a_of_type_Bdfx.g((String)localObject4);
+          localObject1 = this.jdField_a_of_type_Bejy.g((String)localObject4);
           break label93;
           f1 = f4;
           f2 = this.jdField_c_of_type_Float;
@@ -402,9 +402,9 @@ public class CanvasView
     label3207:
     for (;;)
     {
-      ((BitmapFactory.Options)localObject4).inSampleSize = bdgp.a((BitmapFactory.Options)localObject4, f4, f3);
+      ((BitmapFactory.Options)localObject4).inSampleSize = bekr.a((BitmapFactory.Options)localObject4, f4, f3);
       ((BitmapFactory.Options)localObject4).inJustDecodeBounds = false;
-      localObject1 = bdgp.a((String)localObject1, (BitmapFactory.Options)localObject4);
+      localObject1 = bekr.a((String)localObject1, (BitmapFactory.Options)localObject4);
       break;
       Object localObject6;
       if (("setStrokeStyle".equals(localObject1)) || ("setFillStyle".equals(localObject1)))
@@ -475,10 +475,10 @@ public class CanvasView
         }
         localObject4 = ((JSONArray)localObject6).optString(1);
         localObject1 = localObject4;
-        if (!bdhe.a((String)localObject4))
+        if (!belh.a((String)localObject4))
         {
           if (((String)localObject4).startsWith("wxfile")) {
-            localObject1 = bdeu.a().a((String)localObject4);
+            localObject1 = beiu.a().a((String)localObject4);
           }
         }
         else
@@ -491,10 +491,10 @@ public class CanvasView
           this.jdField_d_of_type_Boolean = true;
           this.jdField_e_of_type_Boolean = true;
           label1234:
-          if (bdhe.a((String)localObject1)) {
+          if (belh.a((String)localObject1)) {
             break label1450;
           }
-          localObject1 = bdgp.a((String)localObject1);
+          localObject1 = bekr.a((String)localObject1);
           if (localObject1 != null)
           {
             this.jdField_e_of_type_Int = ((Bitmap)localObject1).getWidth();
@@ -526,7 +526,7 @@ public class CanvasView
           this.jdField_a_of_type_AndroidGraphicsPaint.setShader((Shader)localObject1);
           this.jdField_b_of_type_AndroidGraphicsPaint.setShader((Shader)localObject1);
           break;
-          localObject1 = this.jdField_a_of_type_Bdfx.g((String)localObject4);
+          localObject1 = this.jdField_a_of_type_Bejy.g((String)localObject4);
           break label1205;
           if ("repeat-x".equals(localObject4))
           {
@@ -565,7 +565,7 @@ public class CanvasView
             f3 = b(((JSONArray)localObject7).optDouble(2, 0.0D));
             f5 = b(((JSONArray)localObject7).optDouble(3, 0.0D));
             if (f3 > 0.0F) {
-              break label5297;
+              break label5303;
             }
             f1 = -f3;
             f2 += f3;
@@ -577,7 +577,8 @@ public class CanvasView
       label1807:
       label2193:
       label2859:
-      label5297:
+      label3253:
+      label5303:
       for (f1 = f2;; f1 = f2)
       {
         for (;;)
@@ -838,7 +839,6 @@ public class CanvasView
             if (localObject4 != null)
             {
               n = ((Typeface)localObject4).getStyle();
-              label3253:
               this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(Typeface.create((String)localObject1, n));
               localObject1 = this.jdField_b_of_type_AndroidGraphicsPaint.getTypeface();
               if (localObject1 == null) {
@@ -883,12 +883,12 @@ public class CanvasView
             f2 = b(((JSONArray)localObject6).optDouble(2, 0.0D));
             f4 = b(((JSONArray)localObject6).optDouble(3, -1.0D));
             if (this.jdField_c_of_type_JavaLangString.equals("top")) {
-              f1 = f2 - f6;
+              f1 = f2 + n / 2 + f5;
             }
             for (;;)
             {
               if (f4 <= 0.0F) {
-                break label3639;
+                break label3645;
               }
               paramCanvas.save();
               f2 = f4 / ((Paint)localObject1).measureText((String)localObject4);
@@ -910,7 +910,7 @@ public class CanvasView
                 }
               }
             }
-            label3639:
+            label3645:
             paramCanvas.drawText((String)localObject4, f3, f1, (Paint)localObject1);
             break;
           }
@@ -938,7 +938,7 @@ public class CanvasView
             {
               for (;;)
               {
-                bdnw.d(jdField_a_of_type_JavaLangString, "ACTION_RESTORE: " + Log.getStackTraceString(localException1));
+                besl.d(jdField_a_of_type_JavaLangString, "ACTION_RESTORE: " + Log.getStackTraceString(localException1));
               }
             }
           }
@@ -999,7 +999,7 @@ public class CanvasView
           for (;;)
           {
             if (localObject2 == null) {
-              break label4313;
+              break label4319;
             }
             this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode((PorterDuff.Mode)localObject2));
             this.jdField_b_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode((PorterDuff.Mode)localObject2));
@@ -1016,7 +1016,7 @@ public class CanvasView
               localObject2 = PorterDuff.Mode.DARKEN;
             }
           }
-          label4313:
+          label4319:
           break;
         }
         if ("rotate".equals(localObject2))
@@ -1042,17 +1042,17 @@ public class CanvasView
         }
         if ("setShadow".equals(localObject2))
         {
-          localObject2 = new bdif(this);
+          localObject2 = new bemi(this);
           localObject4 = ((JSONArray)localObject6).optJSONArray(3);
           f1 = b(((JSONArray)localObject6).optDouble(2, 0.0D));
           f2 = b(((JSONArray)localObject6).optDouble(0, 0.0D));
           f3 = b(((JSONArray)localObject6).optDouble(1, 0.0D));
-          ((bdif)localObject2).jdField_a_of_type_Float = f1;
-          ((bdif)localObject2).jdField_b_of_type_Float = f2;
-          ((bdif)localObject2).jdField_c_of_type_Float = f3;
-          ((bdif)localObject2).jdField_a_of_type_Int = a((JSONArray)localObject4);
-          this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(((bdif)localObject2).jdField_a_of_type_Float, ((bdif)localObject2).jdField_b_of_type_Float, ((bdif)localObject2).jdField_c_of_type_Float, ((bdif)localObject2).jdField_a_of_type_Int);
-          this.jdField_b_of_type_AndroidGraphicsPaint.setShadowLayer(((bdif)localObject2).jdField_a_of_type_Float, ((bdif)localObject2).jdField_b_of_type_Float, ((bdif)localObject2).jdField_c_of_type_Float, ((bdif)localObject2).jdField_a_of_type_Int);
+          ((bemi)localObject2).jdField_a_of_type_Float = f1;
+          ((bemi)localObject2).jdField_b_of_type_Float = f2;
+          ((bemi)localObject2).jdField_c_of_type_Float = f3;
+          ((bemi)localObject2).jdField_a_of_type_Int = a((JSONArray)localObject4);
+          this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(((bemi)localObject2).jdField_a_of_type_Float, ((bemi)localObject2).jdField_b_of_type_Float, ((bemi)localObject2).jdField_c_of_type_Float, ((bemi)localObject2).jdField_a_of_type_Int);
+          this.jdField_b_of_type_AndroidGraphicsPaint.setShadowLayer(((bemi)localObject2).jdField_a_of_type_Float, ((bemi)localObject2).jdField_b_of_type_Float, ((bemi)localObject2).jdField_c_of_type_Float, ((bemi)localObject2).jdField_a_of_type_Int);
           break;
         }
         if ("setLineCap".equals(localObject2))
@@ -1065,7 +1065,7 @@ public class CanvasView
           for (;;)
           {
             if (localObject2 == null) {
-              break label4707;
+              break label4713;
             }
             this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeCap((Paint.Cap)localObject2);
             break;
@@ -1075,7 +1075,7 @@ public class CanvasView
               localObject2 = Paint.Cap.SQUARE;
             }
           }
-          label4707:
+          label4713:
           break;
         }
         if ("setLineJoin".equals(localObject2))
@@ -1088,7 +1088,7 @@ public class CanvasView
           for (;;)
           {
             if (localObject2 == null) {
-              break label4800;
+              break label4806;
             }
             this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeJoin((Paint.Join)localObject2);
             break;
@@ -1098,14 +1098,14 @@ public class CanvasView
               localObject2 = Paint.Join.MITER;
             }
           }
-          label4800:
+          label4806:
           break;
         }
         if ("setLineDash".equals(localObject2))
         {
           localObject2 = (JSONArray)((JSONArray)localObject6).opt(0);
           if (((JSONArray)localObject2).length() <= 0) {
-            break label5291;
+            break label5297;
           }
           f1 = b(((JSONArray)localObject6).optDouble(1, 0.0D));
           localObject4 = new float[((JSONArray)localObject2).length()];
@@ -1116,7 +1116,7 @@ public class CanvasView
             n += 1;
           }
         }
-        label5174:
+        label5180:
         Object localObject3;
         for (Object localObject2 = new DashPathEffect((float[])localObject4, f1);; localObject3 = null)
         {
@@ -1133,7 +1133,7 @@ public class CanvasView
               break;
             }
             if ((!"setTransform".equals(localObject2)) && (!"transform".equals(localObject2))) {
-              break label5214;
+              break label5220;
             }
             f1 = (float)((JSONArray)localObject6).optDouble(0, 1.0D);
             f2 = (float)((JSONArray)localObject6).optDouble(3, 1.0D);
@@ -1154,7 +1154,7 @@ public class CanvasView
             try
             {
               if (!"transform".equals(localObject2)) {
-                break label5174;
+                break label5180;
               }
               localObject2 = new Matrix();
               ((Matrix)localObject2).setValues((float[])localObject6);
@@ -1162,7 +1162,7 @@ public class CanvasView
             }
             catch (Exception localException2)
             {
-              bdnw.d(jdField_a_of_type_JavaLangString, Log.getStackTraceString(localException2));
+              besl.d(jdField_a_of_type_JavaLangString, Log.getStackTraceString(localException2));
             }
           }
           break;
@@ -1174,7 +1174,7 @@ public class CanvasView
           ((Matrix)localObject3).setValues((float[])localObject6);
           paramCanvas.setMatrix((Matrix)localObject3);
           break;
-          label5214:
+          label5220:
           if (!"setTextBaseline".equals(localObject3)) {
             break;
           }
@@ -1190,8 +1190,8 @@ public class CanvasView
         }
       }
       label2976:
-      label5291:
-      label5304:
+      label5297:
+      label5310:
       f3 = f1;
       label3101:
       f4 = f2;
@@ -1235,7 +1235,7 @@ public class CanvasView
     if ((Build.MANUFACTURER.equalsIgnoreCase("vivo")) || (Build.MODEL.toLowerCase().contains("vivo"))) {}
     try
     {
-      Object localObject = bdyn.a("ro.vivo.os.version", "");
+      Object localObject = bffu.a("ro.vivo.os.version", "");
       if ((localObject != null) && ("3.1".equals(((String)localObject).trim())))
       {
         localObject = Class.forName("android.util.VivoSmartMultiWindowConfig").getDeclaredField("ENABLE_SPLIT");
@@ -1281,7 +1281,7 @@ public class CanvasView
     catch (Throwable paramCanvas)
     {
       paramCanvas.printStackTrace();
-      bdnw.d(jdField_a_of_type_JavaLangString, "doDraw failed! " + Log.getStackTraceString(paramCanvas));
+      besl.d(jdField_a_of_type_JavaLangString, "doDraw failed! " + Log.getStackTraceString(paramCanvas));
     }
   }
   
@@ -1305,7 +1305,7 @@ public class CanvasView
       while ((this.jdField_b_of_type_Boolean) && (this.jdField_b_of_type_JavaLangBoolean != null))
       {
         return true;
-        bdnw.a(jdField_a_of_type_JavaLangString, "--ACTION_DOWN--");
+        besl.a(jdField_a_of_type_JavaLangString, "--ACTION_DOWN--");
         try
         {
           localObject = new JSONObject();
@@ -1314,14 +1314,14 @@ public class CanvasView
           ((JSONObject)localObject).put("id", paramMotionEvent.getPointerId(0));
           localJSONObject1.put("data", this.jdField_b_of_type_JavaLangString);
           localJSONObject1.put("touch", localObject);
-          this.jdField_a_of_type_Bdii.a("onTouchStart", localJSONObject1.toString());
+          this.jdField_a_of_type_Beml.a("onTouchStart", localJSONObject1.toString());
         }
         catch (JSONException localJSONException1)
         {
           localJSONException1.printStackTrace();
         }
         continue;
-        bdnw.a(jdField_a_of_type_JavaLangString, "--ACTION_POINTER_DOWN--" + paramMotionEvent.getPointerCount() + "   " + paramMotionEvent.getActionIndex() + "   " + paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
+        besl.a(jdField_a_of_type_JavaLangString, "--ACTION_POINTER_DOWN--" + paramMotionEvent.getPointerCount() + "   " + paramMotionEvent.getActionIndex() + "   " + paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
         try
         {
           m = paramMotionEvent.getActionIndex();
@@ -1331,7 +1331,7 @@ public class CanvasView
           ((JSONObject)localObject).put("id", paramMotionEvent.getPointerId(m));
           localJSONException1.put("data", this.jdField_b_of_type_JavaLangString);
           localJSONException1.put("touch", localObject);
-          this.jdField_a_of_type_Bdii.a("onTouchStart", localJSONException1.toString());
+          this.jdField_a_of_type_Beml.a("onTouchStart", localJSONException1.toString());
         }
         catch (JSONException localJSONException2)
         {
@@ -1379,9 +1379,9 @@ public class CanvasView
             }
             localJSONException3.put("data", this.jdField_b_of_type_JavaLangString);
             localJSONException3.put("touches", localObject);
-            this.jdField_a_of_type_Bdii.a("onTouchMove", localJSONException3.toString());
+            this.jdField_a_of_type_Beml.a("onTouchMove", localJSONException3.toString());
             break;
-            bdnw.a(jdField_a_of_type_JavaLangString, "--ACTION_UP--");
+            besl.a(jdField_a_of_type_JavaLangString, "--ACTION_UP--");
             try
             {
               localObject = new JSONObject();
@@ -1390,7 +1390,7 @@ public class CanvasView
               ((JSONObject)localObject).put("id", paramMotionEvent.getPointerId(0));
               localJSONException3.put("data", this.jdField_b_of_type_JavaLangString);
               localJSONException3.put("touch", localObject);
-              this.jdField_a_of_type_Bdii.a("onTouchEnd", localJSONException3.toString());
+              this.jdField_a_of_type_Beml.a("onTouchEnd", localJSONException3.toString());
             }
             catch (JSONException localJSONException4)
             {
@@ -1398,7 +1398,7 @@ public class CanvasView
             }
           }
           break;
-          bdnw.a(jdField_a_of_type_JavaLangString, "--ACTION_POINTER_UP--" + paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
+          besl.a(jdField_a_of_type_JavaLangString, "--ACTION_POINTER_UP--" + paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
           try
           {
             m = paramMotionEvent.getActionIndex();
@@ -1408,7 +1408,7 @@ public class CanvasView
             ((JSONObject)localObject).put("id", paramMotionEvent.getPointerId(m));
             localJSONException4.put("data", this.jdField_b_of_type_JavaLangString);
             localJSONException4.put("touch", localObject);
-            this.jdField_a_of_type_Bdii.a("onTouchEnd", localJSONException4.toString());
+            this.jdField_a_of_type_Beml.a("onTouchEnd", localJSONException4.toString());
           }
           catch (Exception localException)
           {
@@ -1416,7 +1416,7 @@ public class CanvasView
           }
         }
         break;
-        bdnw.a(jdField_a_of_type_JavaLangString, "--ACTION_CANCEL--");
+        besl.a(jdField_a_of_type_JavaLangString, "--ACTION_CANCEL--");
         localObject = new JSONArray();
         try
         {
@@ -1427,7 +1427,7 @@ public class CanvasView
           ((JSONArray)localObject).put(localJSONObject2);
           localException.put("data", this.jdField_b_of_type_JavaLangString);
           localException.put("touches", localObject);
-          this.jdField_a_of_type_Bdii.a("onTouchCancel", localException.toString());
+          this.jdField_a_of_type_Beml.a("onTouchCancel", localException.toString());
         }
         catch (JSONException localJSONException5)
         {

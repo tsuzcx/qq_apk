@@ -1,38 +1,30 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
 
 public class anmq
-  implements AdapterView.OnItemClickListener
+  implements Handler.Callback
 {
-  public anmq(AIOEmotionFragment paramAIOEmotionFragment) {}
+  private String a;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public anmq(String paramString)
   {
-    paramAdapterView = paramView.getTag();
-    if (paramAdapterView == null)
+    this.a = paramString;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      QLog.e("AIOEmotionFragment", 1, "error, tag is null");
-      return;
+    default: 
+      return true;
     }
-    try
-    {
-      this.a.a.b();
-      paramInt = ((baia)paramAdapterView).a.c;
-      this.a.c(paramInt);
-      return;
-    }
-    catch (Exception paramAdapterView)
-    {
-      QLog.e("AIOEmotionFragment", 1, "error, ", paramAdapterView);
-    }
+    atas.a(this.a, 1);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     anmq
  * JD-Core Version:    0.7.0.1
  */

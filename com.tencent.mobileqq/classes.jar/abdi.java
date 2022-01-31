@@ -1,53 +1,80 @@
-import android.view.View;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment.MyTroopObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class abdi
-  extends abdk
+  extends akim
 {
-  protected View a;
-  protected String a;
-  protected boolean a;
+  public abdi(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public abdi(View paramView, String paramString)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    super(null);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void onClick(View paramView)
-  {
-    super.onClick(paramView);
-    try
-    {
-      if (QSecFramework.a().a(1001).booleanValue()) {
-        if (this.jdField_a_of_type_Boolean)
-        {
-          paramView = this.jdField_a_of_type_AndroidViewView;
-          QSecFramework.a().a(5, 0, 1, new Object[] { Integer.valueOf(80), paramView }, null);
-          this.jdField_a_of_type_Boolean = false;
-          if (QLog.isColorLevel()) {
-            QLog.i("MainFragment", 2, "附近人机上报: lebaView onCreate, from=" + this.jdField_a_of_type_JavaLangString);
-          }
-        }
-        else
-        {
-          QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(80), Integer.valueOf(1), Integer.valueOf(6), "lebaClick", null }, null);
-          if (QLog.isColorLevel())
-          {
-            QLog.i("MainFragment", 2, "附近人机上报: lebaView onClick, from=" + this.jdField_a_of_type_JavaLangString);
-            return;
-          }
-        }
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.a();
       }
     }
-    catch (Exception paramView)
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("MainFragment", 2, "ABotDragClickListener onClick exp=", paramView);
-      }
+      do
+      {
+        return;
+        if (paramInt1 != 2) {
+          break;
+        }
+      } while (paramInt2 != 0);
+      this.a.a();
+      return;
+    } while ((paramInt1 != 9) || (paramInt2 != 0));
+    this.a.a();
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.TroopFragment", 2, "onUpdateTroopList " + paramBoolean);
+    }
+    if (paramBoolean) {
+      ThreadManager.getUIHandler().postDelayed(new ForwardTroopListFragment.MyTroopObserver.1(this), 500L);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
+  {
+    if (paramBoolean) {
+      this.a.a();
     }
   }
 }

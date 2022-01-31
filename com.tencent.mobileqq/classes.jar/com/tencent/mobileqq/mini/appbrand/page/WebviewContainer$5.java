@@ -5,14 +5,11 @@ import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 class WebviewContainer$5
   implements Runnable
 {
-  WebviewContainer$5(WebviewContainer paramWebviewContainer) {}
+  WebviewContainer$5(WebviewContainer paramWebviewContainer, String paramString) {}
   
   public void run()
   {
-    AbsAppBrandPage localAbsAppBrandPage = this.this$0.appBrandRuntime.pageContainer.getCurrentPage();
-    if (localAbsAppBrandPage.hasToastView()) {
-      localAbsAppBrandPage.hideToastView();
-    }
+    this.this$0.appBrandRuntime.pageContainer.getCurrentPage().showToastView(1, "loading", null, this.val$title, -1, false);
   }
 }
 

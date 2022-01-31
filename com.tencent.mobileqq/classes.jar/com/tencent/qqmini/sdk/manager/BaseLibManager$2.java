@@ -2,11 +2,11 @@ package com.tencent.qqmini.sdk.manager;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import bdnw;
-import bdoa;
-import bdoc;
-import bdoe;
-import bdzf;
+import besl;
+import besn;
+import besp;
+import besr;
+import bfgv;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import java.io.File;
@@ -14,15 +14,17 @@ import java.io.File;
 public class BaseLibManager$2
   implements Runnable
 {
+  public BaseLibManager$2(besn parambesn, boolean paramBoolean, String paramString, besr parambesr) {}
+  
   public void run()
   {
-    String str2 = bdzf.a().getString("downloadUrl", null);
-    String str1 = bdzf.a().getString("version", "1.10.0.00173");
-    bdnw.b("miniapp-process_BaseLibManager", "updateBaseLib start. baseLibVersion=" + str1);
+    String str2 = bfgv.a().getString("downloadUrl", null);
+    String str1 = bfgv.a().getString("version", "1.12.1.00001");
+    besl.b("miniapp-process_BaseLibManager", "updateBaseLib start. baseLibVersion=" + str1);
     boolean bool3;
     Object localObject1;
     boolean bool1;
-    if (!bdoa.a(this.this$0))
+    if (!besn.a(this.this$0))
     {
       bool3 = true;
       if (!this.jdField_a_of_type_Boolean) {
@@ -38,9 +40,9 @@ public class BaseLibManager$2
     {
       boolean bool2;
       Object localObject2;
-      if ("1.10.0.00173".equals(str1))
+      if ("1.12.1.00001".equals(str1))
       {
-        bdnw.b("miniapp-process_BaseLibManager", "[MiniEng] current version is default:1.10.0.00173");
+        besl.b("miniapp-process_BaseLibManager", "[MiniEng] current version is default:1.12.1.00001");
         bool2 = bool1;
         localObject2 = localObject1;
         label112:
@@ -55,18 +57,18 @@ public class BaseLibManager$2
       }
       for (;;)
       {
-        bdnw.b("miniapp-process_BaseLibManager", "[MiniEng] updateBaseLib current requestVersion is:" + (String)localObject1);
-        bool1 = ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateBaseLib((String)localObject1, bool3, bool1, new bdoc(this, str2, str1));
-        bdoa.a(this.this$0, true);
+        besl.b("miniapp-process_BaseLibManager", "[MiniEng] updateBaseLib current requestVersion is:" + (String)localObject1);
+        bool1 = ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateBaseLib((String)localObject1, bool3, bool1, new besp(this, str2, str1));
+        besn.a(this.this$0, true);
         if (!bool1)
         {
-          bdoa.b(this.this$0, false);
-          this.jdField_a_of_type_Bdoe.a(0);
+          besn.b(this.this$0, false);
+          this.jdField_a_of_type_Besr.a(0);
         }
         return;
         bool3 = false;
         break;
-        Object localObject3 = bdoa.a().b(str2, str1);
+        Object localObject3 = besn.a().b(str2, str1);
         localObject2 = localObject1;
         bool2 = bool1;
         if (TextUtils.isEmpty((CharSequence)localObject3)) {
@@ -81,7 +83,7 @@ public class BaseLibManager$2
             break label112;
           }
         }
-        bdnw.b("miniapp-process_BaseLibManager", "baselib directory is not exist!");
+        besl.b("miniapp-process_BaseLibManager", "baselib directory is not exist!");
         localObject2 = "0.0.1";
         bool2 = true;
         break label112;

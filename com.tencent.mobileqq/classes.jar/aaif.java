@@ -1,56 +1,28 @@
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aaif
-  implements bbom
+  implements bfoq
 {
-  public aaif(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
+  public aaif(AddRequestActivity paramAddRequestActivity, bfol parambfol) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramInt1 == paramInt2) {
-      return;
-    }
-    aaji localaaji = null;
-    switch (paramInt2)
+    switch (paramInt)
     {
     }
     for (;;)
     {
-      if (this.a.jdField_a_of_type_Aaji != null)
-      {
-        this.a.jdField_a_of_type_Aaji.b();
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.a.jdField_a_of_type_Aaji.a());
-      }
-      if (localaaji == null) {
-        break;
-      }
-      localaaji.h_(ChatHistoryFileActivity.a(this.a));
-      localaaji.a();
-      this.a.jdField_a_of_type_Aaji = localaaji;
-      this.a.jdField_a_of_type_Aaji.a = this.a;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.a.jdField_a_of_type_Aaji.a(), 0, new ViewGroup.LayoutParams(-1, -1));
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break label326;
-      }
-      this.a.jdField_a_of_type_Aaji.d();
+      this.jdField_a_of_type_Bfol.dismiss();
       return;
-      localaaji = ChatHistoryFileActivity.a(this.a, 0);
-      continue;
-      localaaji = ChatHistoryFileActivity.a(this.a, 4);
-      continue;
-      localaaji = ChatHistoryFileActivity.a(this.a, 1);
-      awqx.b(this.a.app, "dc00898", "", "", "0X8007126", "0X8007126", 0, 0, "", "", "", "");
-      continue;
-      localaaji = ChatHistoryFileActivity.a(this.a, 2);
-      awqx.b(this.a.app, "dc00898", "", "", "0X8007127", "0X8007127", 0, 0, "", "", "", "");
-      continue;
-      localaaji = ChatHistoryFileActivity.a(this.a, 3);
-      awqx.b(this.a.app, "dc00898", "", "", "0X8007128", "0X8007128", 0, 0, "", "", "", "");
+      if (bbev.d(BaseApplication.getContext())) {
+        xkq.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a, null, this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.getCurrentAccountUin(), 20010, null);
+      } else {
+        bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131694609, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
+      }
     }
-    label326:
-    this.a.jdField_a_of_type_Aaji.e();
   }
 }
 

@@ -1,49 +1,41 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class aclu
-  implements AdapterView.OnItemClickListener
+public class aclu
+  extends baiy
 {
-  aclu(aclt paramaclt) {}
+  public aclu(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    int j = ((bahx)aclt.a(this.a)[0].get(paramInt)).c;
-    aclt.a(this.a).b();
-    int i = 0;
-    switch (j)
-    {
-    }
-    for (;;)
-    {
-      if (i != 0) {
-        awqx.b(null, "dc00898", "", "", "0X800A11B", "0X800A11B", i, 0, "", "", "", "");
+    if ((paramBoolean) && (paramBundle != null)) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("structMsg");
+        new structmsg.StructMsg().mergeFrom(paramBundle);
+        TroopRequestActivity.a(this.a, 1);
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("IntimateInfoShareHelper", 2, "intimate shareAction: " + paramInt + "," + j);
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.systemmsg.TroopRequestActivity", 2, "structMsg merge error");
+        }
+        this.a.i();
+        bcpw.a(this.a, this.a.getString(2131697633), 0).b(this.a.getTitleBarHeight());
+        return;
       }
-      this.a.a(j, aclt.a(this.a));
-      return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
-      continue;
-      i = 5;
-      continue;
-      i = 6;
     }
+    this.a.i();
+    bcpw.a(this.a, this.a.getString(2131697633), 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aclu
  * JD-Core Version:    0.7.0.1
  */

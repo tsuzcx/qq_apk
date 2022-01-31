@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import bgmq;
-import ndn;
-import new;
-import obz;
+import bhvh;
+import noo;
+import npx;
+import onk;
 
 class ReadInJoyVideoSubChannelActivity$3
   implements Runnable
@@ -12,8 +12,8 @@ class ReadInJoyVideoSubChannelActivity$3
   
   public void run()
   {
-    ndn.a(null, "CliOper", "", "", "0X80066F9", "0X80066F9", 0, 0, bgmq.a("default_feeds_proteus_offline_bid"), "", "", obz.b(ReadInJoyVideoSubChannelActivity.a(this.this$0)), false);
-    ndn.a(null, "", "0X8007413", "0X8007413", 0, 0, "", "0", "", new.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
+    noo.a(null, "CliOper", "", "", "0X80066F9", "0X80066F9", 0, 0, bhvh.a("default_feeds_proteus_offline_bid"), "", "", onk.b(ReadInJoyVideoSubChannelActivity.a(this.this$0)), false);
+    noo.a(null, "", "0X8007413", "0X8007413", 0, 0, "", "0", "", npx.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
   }
 }
 

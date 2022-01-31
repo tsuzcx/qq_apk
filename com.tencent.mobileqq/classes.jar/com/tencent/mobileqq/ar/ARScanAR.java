@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import akmx;
+import albj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ARScanAR
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARScanAR> CREATOR = new akmx();
+  public static final Parcelable.Creator<ARScanAR> CREATOR = new albj();
   public int a;
   public long a;
   public String a;

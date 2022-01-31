@@ -1,22 +1,25 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.IntimateInfo;
 
 class acwr
   implements DialogInterface.OnClickListener
 {
-  acwr(acwp paramacwp, String paramString, int paramInt) {}
+  acwr(acwp paramacwp) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new Intent(acwp.a(this.jdField_a_of_type_Acwp), QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    acwp.a(this.jdField_a_of_type_Acwp).startActivity(paramDialogInterface);
-    bajr.a(acwp.a(this.jdField_a_of_type_Acwp), "cmshow", "Apollo", "activity_alert_view", ApolloUtil.b(acwp.a(this.jdField_a_of_type_Acwp).jdField_a_of_type_Int), 0, new String[] { "" + this.jdField_a_of_type_Int, "1" });
+    if ((!TextUtils.isEmpty(this.a.a)) && (acwp.a(this.a) != null))
+    {
+      if (acwp.a(this.a) == 1) {
+        acwp.b(this.a, this.a.a);
+      }
+    }
+    else {
+      return;
+    }
+    acwp.a(this.a, this.a.a, acwp.a(this.a).maskType);
   }
 }
 

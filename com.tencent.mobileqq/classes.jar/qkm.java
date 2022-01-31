@@ -1,49 +1,35 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.concurrent.ConcurrentHashMap;
 
-final class qkm
-  extends qkk
+class qkm
+  extends Handler
 {
-  private final int jdField_a_of_type_Int;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
-  
-  public qkm(int paramInt)
+  qkm(qkl paramqkl, Looper paramLooper)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    super(paramLooper);
   }
   
-  public final int a()
+  public void handleMessage(Message paramMessage)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public long a(long paramLong)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+    switch (paramMessage.what)
+    {
+    default: 
+      super.handleMessage(paramMessage);
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    for (paramLong = 0L; localIterator.hasNext(); paramLong = ((Long)localIterator.next()).longValue() + paramLong) {}
-    return paramLong / this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public String toString()
-  {
-    return "MoveAvgPredictor(" + this.jdField_a_of_type_Int + ')';
+    do
+    {
+      return;
+      paramMessage = this.a.a(false);
+    } while (paramMessage == null);
+    qkl.a(this.a).remove(Integer.valueOf(paramMessage.jdField_a_of_type_Int));
+    AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramMessage.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+    if (localAdvertisementInfo != null) {
+      localAdvertisementInfo.isShowingGuide = false;
+    }
+    this.a.a(null, paramMessage);
   }
 }
 

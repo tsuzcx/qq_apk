@@ -1,26 +1,23 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
 
 public class tzi
+  extends tzk
 {
-  public int a;
-  public long a;
-  public String a;
+  private ElasticImageView a;
   
-  public tzi(tzf paramtzf, String paramString)
+  public tzi(@NonNull ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    paramtzf = ((spt)sqg.a(19)).a(paramString);
-    if (paramtzf != null) {
-      a(paramtzf);
-    }
+    super(paramViewGroup);
   }
   
-  public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
+  protected View a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
-    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
-    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
+    this.a = ((ElasticImageView)paramViewGroup.findViewById(2131364275));
+    this.a.setOnClickListener(new tzj(this));
+    return this.a;
   }
 }
 

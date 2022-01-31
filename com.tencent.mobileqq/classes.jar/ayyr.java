@@ -1,18 +1,29 @@
-public abstract interface ayyr
+public class ayyr
+  extends ayyy
 {
-  public abstract void a(String paramString, double paramDouble);
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public int b;
   
-  public abstract void a(String paramString1, String paramString2, double paramDouble1, double paramDouble2, boolean paramBoolean);
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" groupFileID:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" groupFileKey:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" md5:");
+    localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte);
+    localStringBuilder.append(" voiceType:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" downType:").append(this.b);
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayyr
  * JD-Core Version:    0.7.0.1
  */

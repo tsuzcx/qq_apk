@@ -1,20 +1,30 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import android.text.TextPaint;
-import android.widget.EditText;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class avea
-  extends Editable.Factory
+final class avea
+  implements bfoq
 {
-  public avea(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  avea(bfol parambfol, int[] paramArrayOfInt, String paramString, Context paramContext, QQAppInterface paramQQAppInterface) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramCharSequence instanceof axkn)) {
-      return (Editable)paramCharSequence;
+    this.jdField_a_of_type_Bfol.dismiss();
+    switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
+    {
+    default: 
+      return;
     }
-    return new axkn(paramCharSequence, 3, (int)(SignatureHistoryFragment.a(this.a).getTextSize() / SignatureHistoryFragment.a(this.a).getPaint().density));
+    paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    if ((!bbmr.a) && (bbmo.a().a())) {
+      bbmo.a().a(paramView);
+    }
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    long l = awzw.a();
+    paramView.a(this.jdField_a_of_type_JavaLangString, 26, -1, l, this.jdField_a_of_type_JavaLangString);
   }
 }
 

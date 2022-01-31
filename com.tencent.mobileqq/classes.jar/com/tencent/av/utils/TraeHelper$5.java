@@ -4,12 +4,12 @@ import android.content.Context;
 import android.widget.Button;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import miu;
+import mtt;
 
 public class TraeHelper$5
   implements Runnable
 {
-  public TraeHelper$5(miu parammiu, Button paramButton, Context paramContext) {}
+  public TraeHelper$5(mtt parammtt, Button paramButton, Context paramContext) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class TraeHelper$5
     if (localVideoController == null) {
       return;
     }
-    this.this$0.b = 2;
+    this.this$0.d = 2;
     TraeHelper.5.1 local1 = new TraeHelper.5.1(this);
     localVideoController.a().runOnUiThread(local1);
   }

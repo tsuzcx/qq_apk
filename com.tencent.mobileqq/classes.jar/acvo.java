@@ -1,184 +1,37 @@
-import android.app.Activity;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.SkinRedPacketStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import java.io.File;
 
 public class acvo
-  implements acxf, beow
+  implements ahbt
 {
-  private aejb jdField_a_of_type_Aejb;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private azdd jdField_a_of_type_Azdd;
+  public acvo(CustomizeStrategyFactory.SkinRedPacketStrategy.1 param1) {}
   
-  public acvo(aejb paramaejb)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    this.jdField_a_of_type_Aejb = paramaejb;
-    this.jdField_a_of_type_AndroidAppActivity = paramaejb.a();
-  }
-  
-  private boolean a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    int i = this.jdField_a_of_type_Aejb.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart();
-    boolean bool1;
-    boolean bool2;
-    label88:
-    Object localObject;
-    label280:
-    int j;
-    if ((paramInt3 == 1) && ((paramCharSequence.charAt(paramInt1) == 65312) || (paramCharSequence.charAt(paramInt1) == '@')))
+    paramPathResult = paramPathResult.folderPath;
+    if (paramInt == 0) {}
+    try
     {
-      bool1 = true;
-      if ((paramInt3 != 0) || (i <= 0) || ((paramCharSequence.charAt(i - 1) != 65312) && (paramCharSequence.charAt(i - 1) != '@'))) {
-        break label547;
-      }
-      bool2 = true;
-      if ((bool1) || (bool2))
-      {
-        if (this.jdField_a_of_type_Aejb.A()) {
-          this.jdField_a_of_type_Aejb.d(true);
-        }
-        if (this.jdField_a_of_type_Azdd == null)
-        {
-          if (this.jdField_a_of_type_Aejb.a().findViewById(2131296688) == null)
-          {
-            paramCharSequence = new View(this.jdField_a_of_type_AndroidAppActivity);
-            paramCharSequence.setId(2131296688);
-            localObject = new RelativeLayout.LayoutParams(-1, -2);
-            ((RelativeLayout.LayoutParams)localObject).addRule(12);
-            ((RelativeLayout.LayoutParams)localObject).addRule(6, 2131302567);
-            ((RelativeLayout)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131298518)).addView(paramCharSequence, 3, (ViewGroup.LayoutParams)localObject);
-          }
-          this.jdField_a_of_type_Azdd = new azdd(this.jdField_a_of_type_Aejb);
-          this.jdField_a_of_type_Aejb.jdField_a_of_type_ComTencentWidgetXEditTextEx.setKeyEventPreImeListener(this);
-        }
-      }
-      paramInt1 = this.jdField_a_of_type_Aejb.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString().lastIndexOf("＠", i - 1);
-      paramInt2 = this.jdField_a_of_type_Aejb.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString().lastIndexOf("@", i - 1);
-      if (paramInt1 <= paramInt2) {
-        break label553;
-      }
-      j = azdj.b(this.jdField_a_of_type_Aejb.jdField_a_of_type_ComTencentWidgetXEditTextEx);
-      paramInt3 = azdj.a(this.jdField_a_of_type_Aejb.jdField_a_of_type_ComTencentWidgetXEditTextEx);
-      if (i - 1 < 0) {
-        break label596;
-      }
-    }
-    label547:
-    label553:
-    label563:
-    label569:
-    label596:
-    for (paramCharSequence = this.jdField_a_of_type_Aejb.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString().substring(i - 1, i);; paramCharSequence = null)
-    {
-      if ((paramInt3 >= 0) && (paramInt3 == i))
-      {
-        paramInt2 = 1;
-        label348:
-        if ((paramInt3 < 0) || (paramInt3 != i - 1) || (paramCharSequence == null) || (!paramCharSequence.equals(" "))) {
-          break label563;
-        }
-        paramInt3 = 1;
-        label378:
-        if (QLog.isColorLevel()) {
-          QLog.d("AIOAtHelper", 2, "selectIndex =" + i + " isFirstAddAt=" + bool1 + " isFirstBackAt=" + bool2 + " max=" + paramInt1 + " lastSpanAt=" + j + " mAtPanel=" + this.jdField_a_of_type_Azdd);
-        }
-        if ((j >= paramInt1) || (paramInt1 < 0) || (this.jdField_a_of_type_Azdd == null)) {
-          break label569;
-        }
-        paramCharSequence = this.jdField_a_of_type_Aejb.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString().substring(paramInt1 + 1, i);
-        bool1 = azdj.a(this.jdField_a_of_type_Aejb.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.jdField_a_of_type_Aejb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        localObject = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131296688);
-        this.jdField_a_of_type_Azdd.a((View)localObject, paramCharSequence, bool1);
-      }
-      for (;;)
-      {
-        return false;
-        bool1 = false;
-        break;
-        bool2 = false;
-        break label88;
-        paramInt1 = paramInt2;
-        break label280;
-        paramInt2 = 0;
-        break label348;
-        paramInt3 = 0;
-        break label378;
-        if ((this.jdField_a_of_type_Azdd != null) && (paramInt3 == 0) && (paramInt2 == 0)) {
-          this.jdField_a_of_type_Azdd.a();
-        }
-      }
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Azdd != null)
-    {
-      View localView = this.jdField_a_of_type_Aejb.a().findViewById(2131296688);
-      if (localView != null) {
-        this.jdField_a_of_type_Aejb.a().removeView(localView);
-      }
-      this.jdField_a_of_type_Azdd.b();
-      this.jdField_a_of_type_Aejb.jdField_a_of_type_ComTencentWidgetXEditTextEx.setKeyEventPreImeListener(null);
-      this.jdField_a_of_type_Azdd = null;
-    }
-  }
-  
-  public void a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAtHelper", 2, " beforeTextChanged:  start=" + paramInt1 + " after=" + paramInt3 + " count=" + paramInt2);
-    }
-    if ((this.jdField_a_of_type_Azdd != null) && (this.jdField_a_of_type_Azdd.b())) {
+      paramPathResult = paramPathResult + File.separator;
+      this.a.a.specailBackgroundAnimInfo = AnimationView.AnimationInfo.loadFromFolder(paramPathResult + "anim_bg");
       if (QLog.isColorLevel()) {
-        QLog.d("AIOAtHelper", 2, "beforeTextChanged mAtPanel spanChange");
+        QLog.d("CustomizeStrategyFactory", 2, "TYPE_SPECAIL_ANIM specailBackgroundAnimInfo=" + this.a.a.specailBackgroundAnimInfo);
       }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while ((paramInt3 != 0) || (paramInt2 <= 0) || (paramCharSequence.length() <= 0));
-        paramCharSequence = azdj.a(this.jdField_a_of_type_Aejb.jdField_a_of_type_ComTencentWidgetXEditTextEx);
-        paramInt2 = azdj.b(this.jdField_a_of_type_Aejb.jdField_a_of_type_ComTencentWidgetXEditTextEx);
-      } while ((paramCharSequence == null) || (paramInt2 != paramInt1));
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOAtHelper", 2, new Object[] { " delete member:", paramCharSequence.a(), " nick:", paramCharSequence.b() });
-      }
-    } while (this.jdField_a_of_type_Azdd == null);
-    this.jdField_a_of_type_Azdd.a(paramCharSequence.a());
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Azdd != null) && (this.jdField_a_of_type_Azdd.a());
-  }
-  
-  public boolean a(KeyEvent paramKeyEvent)
-  {
-    return (paramKeyEvent.getKeyCode() == 4) && (this.jdField_a_of_type_Azdd != null) && (this.jdField_a_of_type_Azdd.a());
-  }
-  
-  public void b(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((this.jdField_a_of_type_Azdd != null) && (this.jdField_a_of_type_Azdd.b())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOAtHelper", 2, "mAtPanel spanChange");
-      }
-    }
-    while (this.jdField_a_of_type_Aejb.f() == 3) {
+      CustomizeStrategyFactory.a().a(this.a.a);
       return;
     }
-    a(paramCharSequence, paramInt1, paramInt2, paramInt3);
+    catch (Throwable paramPathResult)
+    {
+      for (;;)
+      {
+        paramPathResult.printStackTrace();
+      }
+    }
   }
 }
 

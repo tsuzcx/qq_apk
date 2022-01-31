@@ -1,118 +1,74 @@
+import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.customized_interface.IShadow;
-import com.tencent.shadow.core.common.LoggerFactory;
-import com.tencent.shadow.dynamic.host.DynamicPluginManager;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import com.tencent.shadow.dynamic.host.PluginManager;
-import cooperation.qqreader.shadow.ReaderShadowImpl.1;
-import java.io.File;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
+import android.provider.Settings.Secure;
+import android.view.View;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class bfmr
-  implements IShadow
 {
-  private static bfmr jdField_a_of_type_Bfmr;
-  private PluginManager jdField_a_of_type_ComTencentShadowDynamicHostPluginManager;
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
-  private boolean jdField_a_of_type_Boolean;
-  
-  private bfmr()
+  public static void a(Activity paramActivity)
   {
-    setILoggerFactory();
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = ajtb.b(192);
-  }
-  
-  public static bfmr a()
-  {
-    if (jdField_a_of_type_Bfmr == null) {}
     try
     {
-      if (jdField_a_of_type_Bfmr == null) {
-        jdField_a_of_type_Bfmr = new bfmr();
+      InputMethodManager localInputMethodManager = (InputMethodManager)paramActivity.getSystemService("input_method");
+      if (localInputMethodManager.isActive()) {
+        localInputMethodManager.hideSoftInputFromWindow(paramActivity.getWindow().getDecorView().getWindowToken(), 0);
       }
-      return jdField_a_of_type_Bfmr;
+      return;
     }
-    finally {}
+    catch (Exception paramActivity)
+    {
+      while (!QLog.isDevelopLevel()) {}
+      paramActivity.printStackTrace();
+    }
   }
   
-  private PluginManager a(Context paramContext, String paramString)
+  public static void a(View paramView)
   {
-    new aqjv("Reader");
-    aqjs localaqjs = new aqjs(paramContext, "Reader", paramString, "3");
-    boolean bool;
-    if ((localaqjs.wasUpdating()) || (localaqjs.getLatest() == null))
+    ((InputMethodManager)paramView.getContext().getSystemService("input_method")).showSoftInput(paramView, 0);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    boolean bool2 = false;
+    try
     {
-      bool = true;
-      bfne.c("ReaderShadowImpl", "needWaitingUpdate:" + bool);
-      paramString = localaqjs.update();
-      if (!bool) {
-        break label174;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        paramString = (File)paramString.get();
-        if (paramString == null) {
-          break label183;
+      paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "default_input_method");
+      bool1 = bool2;
+      if (paramContext != null) {
+        if ((!paramContext.contains("com.sohu.inputmethod.sogou")) && (!paramContext.contains("com.tencent.qqpinyin")))
+        {
+          bool1 = bool2;
+          if (!paramContext.contains("com.sogou.zhuyininput")) {}
         }
-        return new DynamicPluginManager(new bfms(localaqjs, paramString));
-        bool = false;
+        else
+        {
+          bool1 = true;
+        }
       }
-      catch (ExecutionException paramString)
+    }
+    catch (NullPointerException paramContext)
+    {
+      do
       {
-        bfne.a("ReaderShadowImpl", "[loadPluginManager] ExecutionException:", paramString);
-        bfnk.a(paramContext, 0, "", bfnk.a("cdn update ExecutionException!", paramString.getMessage()));
-        paramString = null;
-        continue;
-      }
-      catch (InterruptedException paramString)
-      {
-        bfne.a("ReaderShadowImpl", "[loadPluginManager] InterruptedException:", paramString);
-        bfnk.a(paramContext, 0, "", bfnk.a("cdn update InterruptedException!", paramString.getMessage()));
-        paramString = null;
-        continue;
-      }
-      label174:
-      paramString = localaqjs.getLatest();
+        boolean bool1 = bool2;
+      } while (!QLog.isColorLevel());
+      QLog.d("InputMethodUtil", 2, "checkSogouInputDefault(), e = " + paramContext.getStackTrace());
     }
-    label183:
-    bfnk.a(paramContext, 0, "pluginManager is null!", "");
-    return null;
+    return bool1;
+    return false;
   }
   
-  public void enter(Context paramContext, long paramLong, String paramString1, String paramString2, Bundle paramBundle, EnterCallback paramEnterCallback)
+  public static void b(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new ReaderShadowImpl.1(this, paramLong, paramContext, paramString1, paramString2, paramBundle, paramEnterCallback));
-  }
-  
-  public PluginManager getPluginManager(Context paramContext, String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager == null) {
-      this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager = a(paramContext, paramString1);
-    }
-    return this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager;
-  }
-  
-  public boolean hasPluginManager()
-  {
-    return this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager != null;
-  }
-  
-  public void setILoggerFactory()
-  {
-    if (LoggerFactory.getILoggerFactory() == null) {
-      LoggerFactory.setILoggerFactory(aqjz.a());
-    }
+    ((InputMethodManager)paramView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfmr
  * JD-Core Version:    0.7.0.1
  */

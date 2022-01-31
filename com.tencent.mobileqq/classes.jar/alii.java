@@ -1,30 +1,30 @@
-import android.view.animation.Interpolator;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-class alii
-  implements Interpolator
+public abstract interface alii
 {
-  alii(alih paramalih) {}
+  public abstract void a(int paramInt);
   
-  public float getInterpolation(float paramFloat)
-  {
-    if (paramFloat < 0.2094D) {
-      return (float)(-34.0D * (paramFloat - 0.18D) * (paramFloat - 0.18D) + 1.08D);
-    }
-    if (paramFloat < 0.404D) {
-      return (float)(5.9D * (paramFloat - 0.34D) * (paramFloat - 0.34D) + 0.95D);
-    }
-    if (paramFloat < 0.6045D) {
-      return (float)(-3.0D * (paramFloat - 0.53D) * (paramFloat - 0.53D) + 1.02D);
-    }
-    if (paramFloat < 0.8064D) {
-      return (float)((paramFloat - 0.72D) * (paramFloat - 0.72D) + 0.99D);
-    }
-    return (float)(-0.3D * (paramFloat - 0.915D) * (paramFloat - 0.915D) + 1.001D);
-  }
+  public abstract void a(boolean paramBoolean, int paramInt, ArCloudConfigInfo paramArCloudConfigInfo);
+  
+  public abstract void a(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void c(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alii
  * JD-Core Version:    0.7.0.1
  */

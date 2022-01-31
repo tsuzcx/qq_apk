@@ -1,36 +1,26 @@
-import com.tencent.av.ReqGroupVideo.ReqCreateShareUrl;
-import com.tencent.av.ReqGroupVideo.RspCreateShareUrl;
-import com.tencent.av.common.ErrorInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.SuppressLint;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.gaudio.BaseGaInvite;
 
-class lnx
-  extends kwr<ReqGroupVideo.ReqCreateShareUrl, ReqGroupVideo.RspCreateShareUrl>
+@SuppressLint({"HandlerLeak"})
+public class lnx
+  extends Handler
 {
-  lnx(lnv paramlnv) {}
+  public lnx(BaseGaInvite paramBaseGaInvite) {}
   
-  public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqCreateShareUrl paramReqCreateShareUrl, ReqGroupVideo.RspCreateShareUrl paramRspCreateShareUrl, Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    paramReqCreateShareUrl = paramRspCreateShareUrl.share_url_with_no_sig.get().toStringUtf8();
-    paramObject = paramRspCreateShareUrl.share_url.get().toStringUtf8();
-    paramRspCreateShareUrl = (common.ErrorInfo)paramRspCreateShareUrl.result.get();
-    int i = kwo.a(paramRspCreateShareUrl);
-    QLog.w("ShareChat", 1, "requestGetUrlFromServer.callback, result[" + i + "], bytes_errmsg[" + paramRspCreateShareUrl.bytes_errmsg.get().toStringUtf8() + "], share_url_with_no_sig[" + paramReqCreateShareUrl + "], share_url[" + paramObject + "], seq[" + paramLong + "]");
-    if (i == 0)
+    switch (paramMessage.what)
     {
-      this.a.c = paramObject;
-      this.a.b = paramReqCreateShareUrl;
-      baei.a().a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, this.a.c);
-    }
-    for (;;)
-    {
-      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+    default: 
       return;
-      if (i != 11001) {}
+    case 0: 
+      this.a.b();
+      return;
     }
+    this.a.a("Msg");
+    super.sendEmptyMessageDelayed(1, 2000L);
   }
 }
 

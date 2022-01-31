@@ -1,18 +1,19 @@
-final class baav
-  implements baxq
+public class baav
+  extends baas
 {
-  baav(aqeb paramaqeb) {}
-  
-  public void a(boolean paramBoolean)
+  public int a()
   {
-    if ((paramBoolean) && (this.a != null)) {
-      this.a.a();
-    }
+    return 0;
+  }
+  
+  public int b()
+  {
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baav
  * JD-Core Version:    0.7.0.1
  */

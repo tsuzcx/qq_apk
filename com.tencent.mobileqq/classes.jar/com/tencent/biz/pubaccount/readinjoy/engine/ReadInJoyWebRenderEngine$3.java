@@ -1,30 +1,29 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import amzs;
-import amzt;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import anqa;
+import anqb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
-import ohi;
-import ohk;
-import oho;
+import ost;
+import osv;
+import osz;
 
 public final class ReadInJoyWebRenderEngine$3
   implements Runnable
 {
-  public ReadInJoyWebRenderEngine$3(ohk paramohk, String paramString) {}
+  public ReadInJoyWebRenderEngine$3(osv paramosv, String paramString) {}
   
   public void run()
   {
-    if (!oho.a(this.jdField_a_of_type_Ohk))
+    int j = 0;
+    if (!osz.a(this.jdField_a_of_type_Osv))
     {
       if (QLog.isColorLevel()) {
         QLog.e("viola.ReadInJoyWebRenderEngine", 2, " checkReinstallSoDel is false, return and wait for next load");
       }
-      ohi.a().set(false);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder("native_render loadLibrary from: ").append(this.jdField_a_of_type_JavaLangString);
@@ -33,12 +32,12 @@ public final class ReadInJoyWebRenderEngine$3
     {
       try
       {
-        if (amzt.i()) {
+        if (anqb.i()) {
           continue;
         }
         localStringBuilder.append("viola jsc lib not exist");
-        if (this.jdField_a_of_type_Ohk != null) {
-          this.jdField_a_of_type_Ohk.onError(ohi.c);
+        if (this.jdField_a_of_type_Osv != null) {
+          this.jdField_a_of_type_Osv.onError(ost.c);
         }
         localSharedPreferences1 = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
         l2 = localSharedPreferences1.getLong("js_lib", 0L);
@@ -47,64 +46,62 @@ public final class ReadInJoyWebRenderEngine$3
         }
         if (System.currentTimeMillis() - l2 > 120000L)
         {
-          amzt.a();
+          anqb.a();
           localSharedPreferences1.edit().putLong("js_lib", System.currentTimeMillis()).commit();
         }
-        ohi.a(1);
+        ost.a(1);
       }
       catch (Throwable localThrowable)
       {
         SharedPreferences localSharedPreferences1;
-        ohi.a(false);
+        ost.a(false);
         localStringBuilder.append(localThrowable.getMessage());
-        if (this.jdField_a_of_type_Ohk == null) {
+        if (this.jdField_a_of_type_Osv == null) {
           continue;
         }
-        this.jdField_a_of_type_Ohk.onError(ohi.b);
+        this.jdField_a_of_type_Osv.onError(ost.b);
         return;
-        if (amzs.i()) {
-          break label492;
+        if (anqa.i()) {
+          break label470;
         }
-        if (this.jdField_a_of_type_Ohk == null) {
+        if (this.jdField_a_of_type_Osv == null) {
           continue;
         }
-        this.jdField_a_of_type_Ohk.onError(ohi.d);
+        this.jdField_a_of_type_Osv.onError(ost.d);
         SharedPreferences localSharedPreferences2 = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
         long l2 = localSharedPreferences2.getLong("js_lib_biz", 0L);
         if (l2 <= 0L) {
-          break label466;
+          break label444;
         }
         if (System.currentTimeMillis() - l2 <= 120000L) {
           continue;
         }
-        amzs.a();
+        anqa.a();
         localSharedPreferences2.edit().putLong("js_lib_biz", System.currentTimeMillis()).commit();
-        ohi.a(2);
+        ost.a(2);
         continue;
       }
       finally
       {
-        ohi.a().set(false);
-        localStringBuilder.append(", isLoaded: ").append(ohi.c()).append(", cost: ").append(System.currentTimeMillis() - l1);
+        localStringBuilder.append(", isLoaded: ").append(ost.c()).append(", cost: ").append(System.currentTimeMillis() - l1);
         QLog.i("viola.ReadInJoyWebRenderEngine", 1, localStringBuilder.toString());
       }
-      ohi.a().set(false);
-      localStringBuilder.append(", isLoaded: ").append(ohi.c()).append(", cost: ").append(System.currentTimeMillis() - l1);
+      localStringBuilder.append(", isLoaded: ").append(ost.c()).append(", cost: ").append(System.currentTimeMillis() - l1);
       QLog.i("viola.ReadInJoyWebRenderEngine", 1, localStringBuilder.toString());
       return;
       localSharedPreferences1.edit().putLong("js_lib", System.currentTimeMillis()).commit();
       continue;
-      label466:
+      label444:
       localObject.edit().putLong("js_lib_biz", System.currentTimeMillis()).commit();
       continue;
-      label492:
-      String str1 = oho.a();
-      String[] arrayOfString = amzt.a;
-      int j = arrayOfString.length;
+      label470:
+      String str1 = osz.a();
+      String[] arrayOfString = anqb.a;
+      int k = arrayOfString.length;
       int i = 0;
       String str2;
       File localFile;
-      while (i < j)
+      while (i < k)
       {
         str2 = arrayOfString[i];
         localFile = new File(str1, str2);
@@ -115,17 +112,17 @@ public final class ReadInJoyWebRenderEngine$3
         }
         else
         {
-          if (this.jdField_a_of_type_Ohk != null) {
-            this.jdField_a_of_type_Ohk.onError(ohi.c);
+          if (this.jdField_a_of_type_Osv != null) {
+            this.jdField_a_of_type_Osv.onError(ost.c);
           }
           localStringBuilder.append(str2).append(" not exist");
-          ohi.a(1);
+          ost.a(1);
         }
       }
-      arrayOfString = amzs.a;
-      j = arrayOfString.length;
-      i = 0;
-      while (i < j)
+      arrayOfString = anqa.a;
+      k = arrayOfString.length;
+      i = j;
+      while (i < k)
       {
         str2 = arrayOfString[i];
         localFile = new File(str1, str2);
@@ -136,16 +133,16 @@ public final class ReadInJoyWebRenderEngine$3
         }
         else
         {
-          if (this.jdField_a_of_type_Ohk != null) {
-            this.jdField_a_of_type_Ohk.onError(ohi.d);
+          if (this.jdField_a_of_type_Osv != null) {
+            this.jdField_a_of_type_Osv.onError(ost.d);
           }
           localStringBuilder.append(str2).append(" not exist");
-          ohi.a(2);
+          ost.a(2);
         }
       }
-      ohi.a(true);
-      if (this.jdField_a_of_type_Ohk != null) {
-        this.jdField_a_of_type_Ohk.onFinish(ohi.f);
+      ost.a(true);
+      if (this.jdField_a_of_type_Osv != null) {
+        this.jdField_a_of_type_Osv.onFinish(ost.f);
       }
     }
   }

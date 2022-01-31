@@ -1,61 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class pkr
-  implements View.OnClickListener
+  implements ViewBase.IBuilder
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ppi jdField_a_of_type_Ppi;
-  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView;
-  RelativeLayout[] jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout;
-  TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView;
-  LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView[] jdField_b_of_type_ArrayOfAndroidWidgetImageView;
-  ImageView[] c;
-  
-  private pkr(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup) {}
-  
-  public void onClick(View paramView)
+  public ViewBase build(VafContext paramVafContext)
   {
-    boolean bool = true;
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131300919: 
-      i = 0;
-      if (i < this.jdField_a_of_type_Ppi.a.size()) {
-        if (((RecommendFollowInfo)this.jdField_a_of_type_Ppi.a.get(i)).isFollowed) {
-          break;
-        }
-      }
-      break;
-    }
-    for (int i = 0;; i = 1)
-    {
-      paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup;
-      List localList = this.jdField_a_of_type_Ppi.a;
-      if (i == 0) {}
-      for (;;)
-      {
-        paramView.a(localList, bool);
-        return;
-        i += 1;
-        break;
-        bool = false;
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup.a((RecommendFollowInfo)paramView.getTag());
-      return;
-    }
+    return new pkq(paramVafContext);
   }
 }
 

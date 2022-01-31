@@ -1,83 +1,58 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.TroopShortcutbarFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class acna
-  extends BaseAdapter
+  extends bafg
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  ArrayList<acmz> jdField_a_of_type_JavaUtilArrayList;
+  TroopShortcutbarFragment a;
   
-  public void a(View.OnClickListener paramOnClickListener)
+  public acna(QQAppInterface paramQQAppInterface, TroopShortcutbarFragment paramTroopShortcutbarFragment)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    super(paramQQAppInterface);
+    this.a = paramTroopShortcutbarFragment;
   }
   
-  public void a(ArrayList<acmz> paramArrayList)
+  protected void a(long paramLong, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList.size();
+    if ((paramLong == this.a.jdField_a_of_type_Long) && (paramBoolean)) {
+      this.a.a(false);
     }
-    return 0;
   }
   
-  public Object getItem(int paramInt)
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = BaseApplication.getContext();
-    acmz localacmz;
-    if (paramView == null)
+    boolean bool = false;
+    if (paramLong == this.a.jdField_a_of_type_Long)
     {
-      paramView = LayoutInflater.from(paramViewGroup).inflate(2131493206, null);
-      paramViewGroup = new acnb();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131302182));
-      paramViewGroup.b = ((ImageView)paramView.findViewById(2131300748));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131311234));
-      paramView.setTag(paramViewGroup);
-      localacmz = (acmz)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localacmz.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localacmz.jdField_a_of_type_JavaLangString);
-      if (!localacmz.jdField_a_of_type_Boolean) {
-        break label163;
+      if (!paramBoolean) {
+        bcpw.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, ajyc.a(2131696503), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
       }
-      paramViewGroup.b.setVisibility(0);
+      TroopShortcutbarFragment localTroopShortcutbarFragment = this.a;
+      if (!paramBoolean) {
+        bool = true;
+      }
+      localTroopShortcutbarFragment.a(bool);
     }
-    for (;;)
+  }
+  
+  protected void a(long paramLong1, boolean paramBoolean, long paramLong2, int paramInt)
+  {
+    boolean bool = false;
+    if ((paramLong1 == this.a.jdField_a_of_type_Long) && (!paramBoolean))
     {
-      paramViewGroup.jdField_a_of_type_Int = localacmz.jdField_a_of_type_Int;
-      paramView.setContentDescription(localacmz.b);
-      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      return paramView;
-      paramViewGroup = (acnb)paramView.getTag();
-      break;
-      label163:
-      paramViewGroup.b.setVisibility(8);
+      bcpw.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, ajyc.a(2131696503), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+      TroopShortcutbarFragment localTroopShortcutbarFragment = this.a;
+      if (!paramBoolean) {
+        bool = true;
+      }
+      localTroopShortcutbarFragment.a(bool);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acna
  * JD-Core Version:    0.7.0.1
  */

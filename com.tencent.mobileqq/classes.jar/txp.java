@@ -1,36 +1,28 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
 
 public class txp
-  extends JobSegment<List<Bitmap>, Bitmap>
+  extends Subscriber.SingleEventSubscriberNoRefect<svy>
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString = "story.icon.BitmapListToIconSegment";
+  txk a;
   
-  public txp(Context paramContext, String paramString, int paramInt)
+  public txp(@NonNull txk paramtxk)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "[" + paramString + "]");
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramtxk;
   }
   
-  protected void a(JobContext paramJobContext, List<Bitmap> paramList)
+  protected void a(@NonNull svy paramsvy)
   {
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      notifyError(new ErrorMessage(-1, "bitmap list should not be empty"));
-      return;
+    if ((paramsvy.b != null) && (paramsvy.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)) {
+      txk.a(this.a, paramsvy.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramsvy.b.mVid, paramsvy.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.feedId);
     }
-    paramJobContext = (Bitmap[])paramList.toArray(new Bitmap[paramList.size()]);
-    paramList = azym.a(this.jdField_a_of_type_Int, Bitmap.Config.ARGB_8888, paramJobContext);
-    txq.b(this.jdField_a_of_type_JavaLangString, "result bitmap = %s, child count = %d", paramList, Integer.valueOf(paramJobContext.length));
-    notifyResult(paramList);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return svy.class;
   }
 }
 

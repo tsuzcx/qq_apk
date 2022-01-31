@@ -1,18 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
-
-public class vos
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface vos
 {
-  public vos(NeoVideoRecordButton paramNeoVideoRecordButton) {}
+  public abstract void a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.c.a(((Integer)paramValueAnimator.getAnimatedValue("radius")).intValue(), 0.0F);
-    this.a.c.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
-    NeoVideoRecordButton.a(this.a);
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void b(String paramString);
 }
 
 

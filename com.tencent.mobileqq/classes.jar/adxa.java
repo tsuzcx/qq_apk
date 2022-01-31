@@ -1,10 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
-final class adxa
-  implements DialogInterface.OnClickListener
+public class adxa
+  extends acun
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public ImageView a;
+  public TextView a;
+  public CircleFileStateView a;
+  
+  public adxa(adwy paramadwy) {}
 }
 
 

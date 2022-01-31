@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.photo;
 
-import afze;
-import badi;
+import aglc;
+import bben;
 
 public class AlbumListAdapter$1
   implements Runnable
 {
-  public AlbumListAdapter$1(afze paramafze) {}
+  public AlbumListAdapter$1(aglc paramaglc) {}
   
   public void run()
   {
-    badi.a();
+    bben.a();
     this.this$0.a(100);
-    badi.a("PEAK", "queryAlbumList");
+    bben.a("PEAK", "queryAlbumList");
   }
 }
 

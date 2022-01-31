@@ -1,24 +1,17 @@
 import android.content.Context;
-import android.text.InputFilter;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
+import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
 
-class biac
-  extends uzx
+public final class biac
+  extends bhmc<QzoneHuangzuanVipIconShow, Context>
 {
-  biac(bhzq parambhzq, Context paramContext)
+  protected QzoneHuangzuanVipIconShow a(Context paramContext)
   {
-    super(paramContext);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setFilters(new InputFilter[] { new biad(this, paramInt, paramInt) });
+    return new QzoneHuangzuanVipIconShow(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     biac
  * JD-Core Version:    0.7.0.1
  */

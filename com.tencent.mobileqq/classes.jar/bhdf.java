@@ -1,24 +1,26 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-
-class bhdf
-  extends GestureDetector.SimpleOnGestureListener
+public class bhdf
 {
-  private bhdf(bhcw parambhcw) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void onLongPress(MotionEvent paramMotionEvent)
+  public bhdf() {}
+  
+  public bhdf(int paramInt)
   {
-    if ((bhcw.a(this.a) != wsh.c) && (System.currentTimeMillis() - bhcw.a(this.a) > 5000L))
-    {
-      bhcw.a(this.a).a(196614, new Object[0]);
-      bhcw.a(this.a, System.currentTimeMillis());
-      this.a.d(0);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = "";
+  }
+  
+  public String toString()
+  {
+    return "[id=" + this.jdField_a_of_type_Int + ",fTypePath=" + this.jdField_a_of_type_JavaLangString + ", tTYpePath=" + this.b + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhdf
  * JD-Core Version:    0.7.0.1
  */

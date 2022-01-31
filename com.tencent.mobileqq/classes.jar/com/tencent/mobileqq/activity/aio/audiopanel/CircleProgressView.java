@@ -13,7 +13,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import awmc;
+import axli;
 
 public class CircleProgressView
   extends ImageView
@@ -27,7 +27,7 @@ public class CircleProgressView
   private int b = -1;
   private int c = -9013368;
   private int d = 6;
-  private int e = awmc.a(11.0F);
+  private int e = axli.a(9.0F);
   
   public CircleProgressView(Context paramContext)
   {

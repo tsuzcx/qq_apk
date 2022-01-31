@@ -1,19 +1,8 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
 
-public class unn
-  implements View.OnClickListener
+public abstract interface unn
 {
-  public unn(StoryListPresenter.4.1 param1) {}
-  
-  public void onClick(View paramView)
-  {
-    urp.a("home_page", "clk_up_shoot", 0, 0, new String[0]);
-    this.a.a.this$0.jdField_a_of_type_Unx.a(false, true, 13, null);
-    this.a.a.this$0.jdField_a_of_type_Uqq.dismiss();
-  }
+  public abstract void a(View paramView, uuf paramuuf);
 }
 
 

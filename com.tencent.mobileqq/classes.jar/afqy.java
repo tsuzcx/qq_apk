@@ -1,23 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
 
-class afqy
-  implements DialogInterface.OnClickListener
+public class afqy
+  extends ajxl
 {
-  afqy(afqi paramafqi, String paramString) {}
+  public afqy(DeviceFragment paramDeviceFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onPullIpad()
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent(this.jdField_a_of_type_Afqi.a, SearchContactsActivity.class);
-    paramDialogInterface.putExtra("from_key", 0);
-    paramDialogInterface.putExtra("fromType", 13);
-    paramDialogInterface.putExtra("start_search_key", this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface.putExtra("auto_add_and_prohibit_auto_search", true);
-    this.jdField_a_of_type_Afqi.a.startActivity(paramDialogInterface);
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a.e();
+    this.a.a.notifyDataSetChanged();
   }
 }
 

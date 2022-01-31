@@ -1,21 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelZan;
 
-public class auug
-  implements ValueAnimator.AnimatorUpdateListener
+public final class auug
+  implements Parcelable.Creator<PersonalityLabelZan>
 {
-  public auug(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public PersonalityLabelZan a(Parcel paramParcel)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    CameraCaptureButtonLayout.a(this.a, f);
+    return new PersonalityLabelZan(paramParcel);
+  }
+  
+  public PersonalityLabelZan[] a(int paramInt)
+  {
+    return new PersonalityLabelZan[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auug
  * JD-Core Version:    0.7.0.1
  */

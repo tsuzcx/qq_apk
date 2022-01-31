@@ -1,85 +1,30 @@
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.view.WindowManager.BadTokenException;
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
-import java.lang.reflect.Field;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 
 class aqqt
-  implements HookMethodCallback
+  implements View.OnClickListener
 {
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
+  aqqt(aqqr paramaqqr, String paramString) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramMethodHookParam.throwable == null) {}
-    View localView;
-    do
-    {
-      return;
-      localView = (View)paramMethodHookParam.args[0];
-    } while (localView == null);
-    Object localObject1 = localView.getContext();
-    Object localObject2 = localObject1;
-    if ("android.view.ContextThemeWrapper".equals(localObject1.getClass().getName())) {}
-    label295:
+    if (this.jdField_a_of_type_JavaLangString.startsWith("mqqapi://miniapp/")) {
+      MiniAppLauncher.startMiniApp(this.jdField_a_of_type_Aqqr.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 2016, null);
+    }
     for (;;)
     {
-      try
-      {
-        localObject2 = Class.forName("android.view.ContextThemeWrapper").getDeclaredField("mBase");
-        ((Field)localObject2).setAccessible(true);
-        localObject2 = ((Field)localObject2).get(localView.getContext());
-        if ((localObject2 == null) || (!(localObject2 instanceof Context))) {
-          break label295;
-        }
-        localObject2 = (Context)localObject2;
-        localObject1 = localObject2;
-        localObject2 = localObject1;
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        azzz.a(localClassNotFoundException);
-        Object localObject3 = localObject1;
-        continue;
-      }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        azzz.a(localNoSuchFieldException);
-        Object localObject4 = localObject1;
-        continue;
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        azzz.a(localIllegalArgumentException);
-        Object localObject5 = localObject1;
-        continue;
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        azzz.a(localIllegalAccessException);
-        Object localObject6 = localObject1;
-        continue;
-        localObject1 = paramMethodHookParam.throwable;
-        continue;
-        paramMethodHookParam.throwable = new RuntimeException(paramMethodHookParam.throwable.getMessage() + " -- context is " + localObject6.getClass().getName(), paramMethodHookParam.throwable);
-        return;
-      }
-      if (paramMethodHookParam.throwable.getCause() != null)
-      {
-        localObject1 = paramMethodHookParam.throwable.getCause();
-        if ((!(localObject2 instanceof Activity)) || (((Activity)localObject2).isFinishing()) || (!(localObject1 instanceof WindowManager.BadTokenException))) {
-          continue;
-        }
-        aqqr.a(1, localObject2.getClass().getName(), paramMethodHookParam.throwable.getMessage(), 0);
-        aqqr.a(2, localObject2.getClass().getName(), null, 10000);
-        aqqr.a(3, localObject2.getClass().getName(), null, 60000);
-        paramMethodHookParam.throwable = null;
-        ((Activity)localObject2).finish();
-      }
+      yod.a(ajae.a(), "769", "205647", this.jdField_a_of_type_Aqqr.jdField_a_of_type_Aqqa.a().gameAppId, "76903", "1", "160", new String[] { "", "", "20" });
+      return;
+      paramView = new Intent(this.jdField_a_of_type_Aqqr.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aqqr.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
     }
   }
-  
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 

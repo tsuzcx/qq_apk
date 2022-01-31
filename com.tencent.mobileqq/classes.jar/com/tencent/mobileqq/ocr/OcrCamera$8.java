@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.ocr;
 
-import atek;
-import atep;
-import atet;
+import aubg;
+import aubl;
+import aubp;
 
 public class OcrCamera$8
   implements Runnable
 {
-  public OcrCamera$8(atek paramatek, boolean paramBoolean, byte[] paramArrayOfByte) {}
+  public OcrCamera$8(aubg paramaubg, boolean paramBoolean, byte[] paramArrayOfByte) {}
   
   public void run()
   {
     this.this$0.jdField_a_of_type_Boolean = false;
     this.this$0.jdField_b_of_type_Boolean = true;
-    if (this.this$0.jdField_a_of_type_Atep != null) {
-      this.this$0.jdField_a_of_type_Atep.a();
+    if (this.this$0.jdField_a_of_type_Aubl != null) {
+      this.this$0.jdField_a_of_type_Aubl.a();
     }
     if (this.jdField_a_of_type_Boolean) {}
-    for (String str = atet.a(this.jdField_a_of_type_ArrayOfByte, atek.a(this.this$0), atek.b(this.this$0), atek.c(this.this$0), this.this$0.jdField_a_of_type_Int, this.this$0.jdField_b_of_type_Int, this.this$0.jdField_a_of_type_AndroidGraphicsRectF, true);; str = atet.a(this.jdField_a_of_type_ArrayOfByte, atek.d(this.this$0), atek.e(this.this$0), atek.c(this.this$0), this.this$0.jdField_a_of_type_Int, this.this$0.jdField_b_of_type_Int))
+    for (String str = aubp.a(this.jdField_a_of_type_ArrayOfByte, aubg.a(this.this$0), aubg.b(this.this$0), aubg.c(this.this$0), this.this$0.jdField_a_of_type_Int, this.this$0.jdField_b_of_type_Int, this.this$0.jdField_a_of_type_AndroidGraphicsRectF, true);; str = aubp.a(this.jdField_a_of_type_ArrayOfByte, aubg.d(this.this$0), aubg.e(this.this$0), aubg.c(this.this$0), this.this$0.jdField_a_of_type_Int, this.this$0.jdField_b_of_type_Int))
     {
-      if (this.this$0.jdField_a_of_type_Atep != null) {
-        this.this$0.jdField_a_of_type_Atep.a(str);
+      if (this.this$0.jdField_a_of_type_Aubl != null) {
+        this.this$0.jdField_a_of_type_Aubl.a(str);
       }
-      atek.a(this.this$0, false);
+      aubg.a(this.this$0, false);
       return;
     }
   }

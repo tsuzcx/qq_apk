@@ -9,7 +9,7 @@ import com.tencent.qqmini.sdk.core.proxy.AdProxy.ICmdListener;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.IRewardVideoAdListener;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yju;
+import ysx;
 
 class AdProxyImpl$SDKRewardedVideoAdView$1
   implements AdProxy.ICmdListener
@@ -63,7 +63,7 @@ class AdProxyImpl$SDKRewardedVideoAdView$1
           paramJSONObject = new GdtAd(paramJSONObject);
           if (paramJSONObject.isValid())
           {
-            yju.a().a(paramJSONObject);
+            ysx.a().a(paramJSONObject);
             AdProxyImpl.SDKRewardedVideoAdView localSDKRewardedVideoAdView = this.this$1;
             i = j;
             if (this.this$1.mDeviceOrientation == 90) {

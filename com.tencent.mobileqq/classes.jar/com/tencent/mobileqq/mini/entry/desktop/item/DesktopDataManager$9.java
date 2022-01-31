@@ -1,60 +1,25 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import bace;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.apkg.ApkgManager;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.cache.Storage;
-import com.tencent.mobileqq.mini.launch.AppBrandLaunchManager;
-import com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.MiniAppSubProcessorInfo;
-import com.tencent.mobileqq.mini.util.StorageUtil;
-import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
-import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.AppRuntime;
+import java.util.ArrayList;
+import java.util.List;
 
 class DesktopDataManager$9
   implements Runnable
 {
-  DesktopDataManager$9(DesktopDataManager paramDesktopDataManager, MiniAppInfo paramMiniAppInfo) {}
+  DesktopDataManager$9(DesktopDataManager paramDesktopDataManager, List paramList1, List paramList2) {}
   
   public void run()
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    String str = ApkgManager.getApkgFolderPath(this.val$miniAppInfo);
-    if (new File(str).exists())
+    DesktopDataManager.access$1600(this.this$0).clear();
+    DesktopDataManager.access$1600(this.this$0).addAll(this.val$recommendExposureList);
+    DesktopDataManager.access$1502(this.this$0, this.val$desktopItemInfos);
+    if (DesktopDataManager.access$1400(this.this$0) != null)
     {
-      bace.a(str, false);
-      QLog.d("DesktopDataManager", 1, "clear apkgFile. " + this.val$miniAppInfo.appId);
+      DesktopDataManager.access$1400(this.this$0).onDataChanged();
+      QLog.d("DesktopDataManager", 1, "updateData, convertData complete");
     }
-    str = MiniAppGlobal.MINI_LOG_PATH + MD5.toMD5(this.val$miniAppInfo.appId);
-    if (new File(str).exists())
-    {
-      bace.a(str, false);
-      QLog.d("DesktopDataManager", 1, "clear cacheFile. " + this.val$miniAppInfo.appId);
-    }
-    str = Storage.getCacheDir(BaseApplicationImpl.getApplication().getBaseContext().getCacheDir().getAbsolutePath(), (String)localObject, this.val$miniAppInfo.appId);
-    if (new File(str).exists())
-    {
-      bace.a(str, false);
-      QLog.d("DesktopDataManager", 1, "clear storageFile. " + this.val$miniAppInfo.appId);
-    }
-    if (BaseApplicationImpl.getApplication().getSharedPreferences(this.val$miniAppInfo.appId + "_" + (String)localObject, 4).edit().clear().commit()) {
-      QLog.d("DesktopDataManager", 1, "clear authorize info. " + this.val$miniAppInfo.appId);
-    }
-    if (StorageUtil.getPreference().edit().putBoolean(this.val$miniAppInfo.appId + "_debug", false).commit()) {
-      QLog.d("DesktopDataManager", 1, "clear debug info. " + this.val$miniAppInfo.appId);
-    }
-    localObject = AppBrandLaunchManager.g().getCacheApp(this.val$miniAppInfo);
-    if (localObject != null)
-    {
-      AppBrandLaunchManager.g().forceKillProcess((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject);
-      QLog.d("DesktopDataManager", 1, "kill process. " + this.val$miniAppInfo.appId + "; " + ((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject).processName);
-    }
+    QLog.d("DesktopDataManager", 1, "convertData, size = " + DesktopDataManager.access$1500(this.this$0).size() + ", app List: " + DesktopDataManager.access$1500(this.this$0).toString());
   }
 }
 

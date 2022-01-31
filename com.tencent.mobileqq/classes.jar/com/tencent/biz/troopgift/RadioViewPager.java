@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import wmx;
+import xca;
 
 public class RadioViewPager
   extends RelativeLayout
@@ -28,16 +28,16 @@ public class RadioViewPager
   public RadioViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = LayoutInflater.from(paramContext).inflate(2131494769, this, false);
-    this.jdField_a_of_type_ComTencentBizTroopgiftGridListViewPager = ((GridListViewPager)paramContext.findViewById(2131305529));
-    this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator = ((RadioButtonIndicator)paramContext.findViewById(2131302461));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560341, this, false);
+    this.jdField_a_of_type_ComTencentBizTroopgiftGridListViewPager = ((GridListViewPager)paramContext.findViewById(2131371224));
+    this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator = ((RadioButtonIndicator)paramContext.findViewById(2131368081));
     this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator.setOrientation(0);
     this.jdField_a_of_type_ComTencentBizTroopgiftGridListViewPager.setOnPagerSizeChangeListener(this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator);
     this.jdField_a_of_type_ComTencentBizTroopgiftGridListViewPager.setOnPageChangeListener(this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator);
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131301471);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131301469));
-    this.c = ((TextView)paramContext.findViewById(2131301470));
-    this.b = ((TextView)paramContext.findViewById(2131301468));
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131367081);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131367079));
+    this.c = ((TextView)paramContext.findViewById(2131367080));
+    this.b = ((TextView)paramContext.findViewById(2131367078));
     this.c.getPaint().setFlags(8);
     this.c.getPaint().setAntiAlias(true);
     addView(paramContext);
@@ -92,7 +92,7 @@ public class RadioViewPager
     {
       localTextView.setVisibility(i);
       if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
-        this.c.setOnClickListener(new wmx(this, paramContext, paramString));
+        this.c.setOnClickListener(new xca(this, paramContext, paramString));
       }
       return;
       i = 8;

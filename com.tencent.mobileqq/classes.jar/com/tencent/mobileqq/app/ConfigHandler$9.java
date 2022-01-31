@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ajgd;
+import ajuf;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import java.io.File;
 import java.net.URL;
@@ -8,7 +8,7 @@ import java.net.URL;
 public class ConfigHandler$9
   implements Runnable
 {
-  public ConfigHandler$9(ajgd paramajgd, String paramString, File paramFile) {}
+  public ConfigHandler$9(ajuf paramajuf, String paramString, File paramFile) {}
   
   public void run()
   {

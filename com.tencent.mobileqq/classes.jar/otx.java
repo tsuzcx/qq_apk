@@ -1,35 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
-
-public class otx
-  implements owa
+public abstract interface otx
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
-  
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    return ota.a(paramBaseArticleInfo);
-  }
-  
-  public void a(int paramInt1, Container paramContainer, opw paramopw, int paramInt2)
-  {
-    ArticleInfo localArticleInfo = paramopw.a();
-    if ((localArticleInfo != null) && (localArticleInfo.isAccountShown)) {
-      oxx.a(paramContainer, paramopw);
-    }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, opw paramopw, ViewBase paramViewBase)
-  {
-    return false;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

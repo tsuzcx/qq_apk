@@ -1,29 +1,64 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
-class bizv
-  extends vnh
+public class bizv
 {
-  bizv(bizt parambizt, String paramString1, PeakActivity paramPeakActivity, String paramString2, String paramString3, PublishVideoEntry paramPublishVideoEntry) {}
-  
-  public void onFailure(String paramString)
+  public static Bundle a(@NonNull Intent paramIntent)
   {
-    bizt.a(this.jdField_a_of_type_Bizt, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+    return paramIntent.getBundleExtra("state");
   }
   
-  public void onFinish(boolean paramBoolean)
+  public static Bundle a(@NonNull bizx parambizx)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SaveVideoActivity", 2, "combine music finish: " + paramBoolean);
-    }
-    bace.d(this.jdField_a_of_type_JavaLangString);
-    if (paramBoolean)
+    Bundle localBundle = new Bundle();
+    if (parambizx.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout != null)
     {
-      bizt.a(this.jdField_a_of_type_Bizt, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.b, this.c, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-      return;
+      bjzt localbjzt = (bjzt)parambizx.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.a(bjzt.a);
+      bjzr localbjzr = (bjzr)parambizx.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.a("DynamicFaceLayer");
+      bkaj localbkaj = (bkaj)parambizx.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.a(bkaj.a);
+      localBundle.putBundle(bjzt.a, localbjzt.a());
+      localBundle.putBundle("DynamicFaceLayer", localbjzr.a());
+      if (localbkaj != null) {
+        localBundle.putBundle(bkaj.a, localbkaj.a());
+      }
+      a(parambizx, localBundle);
+      localBundle.putBundle("container", parambizx.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a());
+      return localBundle;
     }
-    bizt.a(this.jdField_a_of_type_Bizt, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+    QLog.e("EditState", 1, "saveState mDoodleLayout is null");
+    return localBundle;
+  }
+  
+  private static void a(bizx parambizx, Bundle paramBundle)
+  {
+    Object localObject = parambizx.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a();
+    bkat localbkat = ((bkar)localObject).a();
+    if (localbkat == null)
+    {
+      localObject = parambizx.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a();
+      parambizx = ((bkar)localObject).a();
+      if (parambizx == null) {
+        break label83;
+      }
+      parambizx.jdField_a_of_type_Int = 1001;
+    }
+    label83:
+    for (;;)
+    {
+      if (parambizx != null)
+      {
+        ((bjbt)bjae.a(15)).a(parambizx.jdField_a_of_type_AndroidGraphicsBitmap);
+        paramBundle.putBundle("VoteLayer", ((bkar)localObject).a());
+      }
+      return;
+      localbkat.jdField_a_of_type_Int = 1000;
+      parambizx = localbkat;
+    }
   }
 }
 

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanager.app;
 
 import android.os.Bundle;
-import aofy;
+import aows;
 import com.tencent.qphone.base.util.QLog;
 
 public class QFileConfigManager$3
   implements Runnable
 {
-  public QFileConfigManager$3(aofy paramaofy, Bundle paramBundle) {}
+  public QFileConfigManager$3(aows paramaows, Bundle paramBundle) {}
   
   public void run()
   {
     if (!this.a.containsKey("ipv6_all_switch")) {
       return;
     }
-    aofy.d(this.this$0, this.a.getBoolean("ipv6_all_switch", false));
-    QLog.i("QFileConfigManager", 1, "enableFileIPv6: set ipv6 config. enableFileIPv6[" + aofy.d(this.this$0) + "]");
+    aows.d(this.this$0, this.a.getBoolean("ipv6_all_switch", false));
+    QLog.i("QFileConfigManager", 1, "enableFileIPv6: set ipv6 config. enableFileIPv6[" + aows.d(this.this$0) + "]");
   }
 }
 

@@ -1,44 +1,26 @@
-import com.tencent.widget.soload.LoadExtResult;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class bese
-  implements berz
+public abstract interface bese
 {
-  private berz jdField_a_of_type_Berz;
-  private LoadExtResult jdField_a_of_type_ComTencentWidgetSoloadLoadExtResult;
+  public abstract void init(Context paramContext);
   
-  private void a(besc parambesc, besg parambesg, int paramInt)
-  {
-    besc localbesc = new besc();
-    localbesc.jdField_a_of_type_JavaUtilList.add(parambesc.jdField_a_of_type_JavaUtilList.get(paramInt));
-    localbesc.jdField_a_of_type_Long = parambesc.jdField_a_of_type_Long;
-    this.jdField_a_of_type_Berz = new berw();
-    this.jdField_a_of_type_Berz.a(localbesc, new besf(this, paramInt, parambesc, parambesg));
-  }
+  public abstract void onAppBackground(MiniAppInfo paramMiniAppInfo, Bundle paramBundle);
   
-  public void a(besc parambesc, besg parambesg)
-  {
-    a(parambesc, parambesg, 0);
-  }
+  public abstract void onAppDestroy(Bundle paramBundle);
   
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Berz != null) {
-      this.jdField_a_of_type_Berz.a(paramString);
-    }
-  }
+  public abstract void onAppForeground(MiniAppInfo paramMiniAppInfo, Bundle paramBundle);
   
-  public boolean a(String paramString)
-  {
-    if (this.jdField_a_of_type_Berz != null) {
-      return this.jdField_a_of_type_Berz.a(paramString);
-    }
-    return false;
-  }
+  public abstract void onAppStart(MiniAppInfo paramMiniAppInfo, Bundle paramBundle);
+  
+  public abstract void startMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bese
  * JD-Core Version:    0.7.0.1
  */

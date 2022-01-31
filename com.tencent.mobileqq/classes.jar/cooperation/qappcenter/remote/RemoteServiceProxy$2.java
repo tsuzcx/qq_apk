@@ -1,12 +1,12 @@
 package cooperation.qappcenter.remote;
 
-import bfev;
+import bgmm;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class RemoteServiceProxy$2
   extends Thread
 {
-  public RemoteServiceProxy$2(bfev parambfev) {}
+  public RemoteServiceProxy$2(bgmm parambgmm) {}
   
   public void run()
   {

@@ -1,30 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ajpp
-  extends BroadcastReceiver
+class ajpp
+  implements DialogInterface.OnClickListener
 {
-  public ajpp(QQAppInterface paramQQAppInterface) {}
+  ajpp(ajpn paramajpn) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.l) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.broadcast", 2, "qqHeadBroadcastReceiver onReceive, app isReleased");
-      }
-    }
-    while ((paramIntent == null) || (!"com.tencent.qqhead.getheadreq".equals(paramIntent.getAction()))) {
-      return;
-    }
-    QQAppInterface.a(this.a, paramIntent);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajpp
  * JD-Core Version:    0.7.0.1
  */

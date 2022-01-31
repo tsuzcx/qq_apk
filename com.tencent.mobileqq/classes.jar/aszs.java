@@ -1,8 +1,17 @@
-import java.util.List;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
-public abstract interface aszs
+public class aszs
 {
-  public abstract void a(boolean paramBoolean1, List<atar> paramList, boolean paramBoolean2, int paramInt);
+  public int a;
+  public LinearLayout a;
+  public TextView a;
+  public URLImageView a;
+  public RedTouch a;
+  public URLImageView b;
+  public URLImageView c;
 }
 
 

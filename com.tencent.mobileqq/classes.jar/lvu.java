@@ -1,16 +1,6 @@
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-
-public class lvu
-  implements aagl
+public abstract interface lvu
 {
-  public lvu(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.a.h = paramInt1;
-    this.a.i = paramInt2;
-    this.a.d(10);
-  }
+  public abstract void a();
 }
 
 

@@ -1,20 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
-public class ayge
-  implements DialogInterface.OnClickListener
+class ayge
+  extends WebViewClient
 {
-  public ayge(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  ayge(aygc paramaygc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    this.a.finish();
+    QLog.i("TenDocWebViewPool", 1, "tendocpreload onPageFinished = " + paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    QLog.i("TenDocWebViewPool", 1, "tendocpreload onPageStarted = " + paramString);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    return super.shouldOverrideUrlLoading(paramWebView, paramWebResourceRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayge
  * JD-Core Version:    0.7.0.1
  */

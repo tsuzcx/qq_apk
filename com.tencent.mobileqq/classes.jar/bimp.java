@@ -1,24 +1,12 @@
-import android.graphics.Bitmap;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-
-public class bimp
-  implements bijl
+class bimp
+  implements xfd
 {
-  public bimp(DoodleLayout paramDoodleLayout) {}
+  bimp(bimj parambimj, Runnable paramRunnable) {}
   
-  public void a(Bitmap paramBitmap, boolean paramBoolean)
+  public void a()
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBitmap, paramBoolean);
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (this.a.a != null)
-    {
-      urk.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
-      this.a.a.a(paramArrayOfByte);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
   }
 }

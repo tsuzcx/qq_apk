@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 
-import aorw;
-import aory;
+import apjg;
+import apji;
 
 class SimpleFileViewer$7
   implements Runnable
 {
-  SimpleFileViewer$7(SimpleFileViewer paramSimpleFileViewer, String paramString, aory paramaory) {}
+  SimpleFileViewer$7(SimpleFileViewer paramSimpleFileViewer, String paramString, apji paramapji) {}
   
   public void run()
   {
-    aorw localaorw = aorw.a();
-    SimpleFileViewer.a(this.this$0, localaorw.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aory));
+    apjg localapjg = apjg.a();
+    SimpleFileViewer.a(this.this$0, localapjg.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apji));
     SimpleFileViewer.a(this.this$0, null, SimpleFileViewer.a(this.this$0), false);
     SimpleFileViewer.a(this.this$0);
   }

@@ -1,61 +1,26 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenPermissionDialogFragment;
 
 public class amjq
-  extends amie<amjp>
+  implements DialogInterface.OnClickListener
 {
-  public int a()
-  {
-    return 26;
-  }
+  public amjq(ColorNoteSmallScreenPermissionDialogFragment paramColorNoteSmallScreenPermissionDialogFragment) {}
   
-  @NonNull
-  public amjp a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    ajfs localajfs = (ajfs)localQQAppInterface.a(16);
-    if (localajfs != null) {
-      localajfs.a(localQQAppInterface.getApplication().getApplicationContext());
-    }
-    return new amjp();
-  }
-  
-  @NonNull
-  public amjp a(alzs[] paramArrayOfalzs)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    ajfs localajfs = (ajfs)localQQAppInterface.a(16);
-    if (localajfs != null) {
-      localajfs.a(localQQAppInterface, paramArrayOfalzs[0].a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipResourceProcessor", 2, "receiveAllConfigs|type: 26,content: " + paramArrayOfalzs[0]);
-    }
-    return new amjp();
-  }
-  
-  public Class<amjp> a()
-  {
-    return amjp.class;
-  }
-  
-  @NonNull
-  public amjp b()
-  {
-    return new amjp();
-  }
-  
-  public boolean c()
-  {
-    return false;
+    paramDialogInterface.dismiss();
+    paramDialogInterface = bbcv.a(this.a.getActivity(), 230).setMessage(2131690869).setNegativeButton(2131690857, new amjs(this)).setPositiveButton(2131690859, new amjr(this));
+    paramDialogInterface.setOnDismissListener(new amjt(this));
+    paramDialogInterface.setCancelable(false);
+    paramDialogInterface.setCanceledOnTouchOutside(false);
+    paramDialogInterface.show();
+    axqw.b(null, "dc00898", "", "", "0X800AB3B", "0X800AB3B", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amjq
  * JD-Core Version:    0.7.0.1
  */

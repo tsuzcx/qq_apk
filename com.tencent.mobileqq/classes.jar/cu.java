@@ -1,37 +1,35 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.dataline.activities.PrinterSubOptionActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-class cu
-  implements View.OnClickListener
+public class cu
+  implements DialogInterface.OnClickListener
 {
-  cu(ct paramct) {}
+  public cu(LiteActivity paramLiteActivity, List paramList) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = (TextView)paramView.findViewById(2131298408);
-    cs localcs;
-    if (paramView != null)
+    ajuo localajuo = (ajuo)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
+    localajuo.b(113);
+    localajuo.a(116);
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      localcs = (cs)this.a.a.b.get(((Integer)paramView.getTag()).intValue());
-      if (localcs.jdField_a_of_type_Long == 0L) {
-        break label143;
+      DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
+      if ((localDataLineMsgRecord.fileMsgStatus == 1L) && (localDataLineMsgRecord.strMoloKey != null)) {
+        fc.f(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app);
       }
+      localArrayList.add(Long.valueOf(localDataLineMsgRecord.sessionid));
     }
-    label143:
-    for (paramView = this.a.a.a.a.a(localcs.jdField_a_of_type_Long);; paramView = this.a.a.a.a.b(localcs.jdField_a_of_type_JavaLangString))
-    {
-      this.a.a.a.a.a = paramView;
-      paramView = new Intent();
-      paramView.putExtra("sPrinterName", localcs.jdField_a_of_type_JavaLangString);
-      paramView.putExtra("sPrintDin", localcs.jdField_a_of_type_Long);
-      this.a.a.setResult(-1, paramView);
-      this.a.a.finish();
-      return;
-    }
+    localajuo.a(localArrayList);
+    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a.notifyDataSetChanged();
+    paramDialogInterface.dismiss();
   }
 }
 

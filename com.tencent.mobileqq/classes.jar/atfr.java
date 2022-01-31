@@ -1,32 +1,6 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-
-public class atfr
-  extends FlingGestureHandler
+public abstract interface atfr
 {
-  boolean a = true;
-  
-  public atfr(Activity paramActivity)
-  {
-    super(paramActivity);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a = paramBoolean;
-    if (!a()) {
-      a();
-    }
-    this.mTopLayout.setInterceptTouchFlag(paramBoolean);
-  }
-  
-  public void flingLToR()
-  {
-    if (this.a) {
-      super.flingLToR();
-    }
-  }
+  public abstract void a(long paramLong);
 }
 
 

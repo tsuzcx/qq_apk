@@ -1,24 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Build.VERSION;
+import android.widget.ImageView;
 
 class tzh
-  extends SimpleJob<Object>
+  extends AnimatorListenerAdapter
 {
-  tzh(tzf paramtzf, String paramString)
-  {
-    super(paramString);
-  }
+  tzh(tzf paramtzf) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.a == null) {
-      this.a.a = new tzi(this.a, this.a.c);
+    super.onAnimationEnd(paramAnimator);
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.a.a.setImageAlpha(255);
     }
-    this.a.d = this.a.a.a;
-    tzf.a(this.a);
-    return null;
+    for (;;)
+    {
+      this.a.a.setVisibility(8);
+      return;
+      this.a.a.setImageResource(2130849549);
+    }
   }
 }
 

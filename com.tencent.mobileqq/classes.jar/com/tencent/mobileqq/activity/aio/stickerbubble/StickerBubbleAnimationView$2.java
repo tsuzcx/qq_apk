@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.stickerbubble;
 
-import aeko;
-import aekr;
+import aevj;
+import aevm;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 class StickerBubbleAnimationView$2
   implements Runnable
 {
-  StickerBubbleAnimationView$2(StickerBubbleAnimationView paramStickerBubbleAnimationView, BitmapDrawable[] paramArrayOfBitmapDrawable, aeko paramaeko, String paramString, int paramInt) {}
+  StickerBubbleAnimationView$2(StickerBubbleAnimationView paramStickerBubbleAnimationView, BitmapDrawable[] paramArrayOfBitmapDrawable, aevj paramaevj, String paramString, int paramInt) {}
   
   public void run()
   {
@@ -17,15 +17,15 @@ class StickerBubbleAnimationView$2
     int i = 1;
     if (i < this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable.length)
     {
-      this.jdField_a_of_type_Aeko.a();
-      Object localObject = StickerBubbleAnimationView.a(this.this$0, this.jdField_a_of_type_Aeko.a(), 0.7D);
+      this.jdField_a_of_type_Aevj.a();
+      Object localObject = StickerBubbleAnimationView.a(this.this$0, this.jdField_a_of_type_Aevj.a(), 0.7D);
       BitmapDrawable[] arrayOfBitmapDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
       if (localObject != null) {}
       for (localObject = new BitmapDrawable(this.this$0.getResources(), (Bitmap)localObject);; localObject = null)
       {
         arrayOfBitmapDrawable[i] = localObject;
-        QLog.d("StickerBubbleAnimationView", 2, "decode gif: " + i + " / " + this.jdField_a_of_type_Aeko.c() + " / " + this.jdField_a_of_type_JavaLangString);
-        if (i != this.jdField_a_of_type_Aeko.c())
+        QLog.d("StickerBubbleAnimationView", 2, "decode gif: " + i + " / " + this.jdField_a_of_type_Aevj.c() + " / " + this.jdField_a_of_type_JavaLangString);
+        if (i != this.jdField_a_of_type_Aevj.c())
         {
           if (QLog.isColorLevel()) {
             QLog.e("StickerBubbleAnimationView", 2, "index is not matched, " + i + " / " + this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable.length + " / " + this.jdField_a_of_type_JavaLangString);
@@ -37,7 +37,7 @@ class StickerBubbleAnimationView$2
       }
     }
     if (j == 0) {
-      aekr.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable, this.jdField_a_of_type_Int);
+      aevm.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable, this.jdField_a_of_type_Int);
     }
   }
 }

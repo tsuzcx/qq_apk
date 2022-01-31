@@ -10,8 +10,8 @@ import com.tencent.qqmini.sdk.core.proxy.AdProxy.ICmdListener;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ykd;
-import yke;
+import yte;
+import ytf;
 
 class AdProxyImpl$SDKBoxAdView$1
   implements AdProxy.ICmdListener
@@ -56,7 +56,7 @@ class AdProxyImpl$SDKBoxAdView$1
         this.this$1.mBoxListener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
         return;
         label164:
-        this.this$1.mGdtBoxView = ykd.a(this.val$activity).a(new GdtAdBoxData(paramJSONObject)).a(new AdProxyImpl.SDKBoxAdView.1.1(this)).a();
+        this.this$1.mGdtBoxView = yte.a(this.val$activity).a(new GdtAdBoxData(paramJSONObject)).a(new AdProxyImpl.SDKBoxAdView.1.1(this)).a();
         if (this.this$1.mGdtBoxView != null)
         {
           if (this.this$1.mBoxListener != null) {

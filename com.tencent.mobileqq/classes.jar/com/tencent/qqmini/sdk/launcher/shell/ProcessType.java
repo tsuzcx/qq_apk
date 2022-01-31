@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.launcher.shell;
 
 public enum ProcessType
 {
-  MINI_APP,  MINI_GAME;
+  MINI_APP,  MINI_GAME,  MINI_INTERNAL;
   
   private ProcessType() {}
 }

@@ -1,27 +1,57 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.observer.BusinessObserver;
 
-public class arcp
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class arcp
+  implements BusinessObserver
 {
-  public arcp(MapWidget paramMapWidget, LocationRoom.Venue paramVenue) {}
+  arcp(arco paramarco, FaceDetectForThirdPartyManager paramFaceDetectForThirdPartyManager, int paramInt, QQAppInterface paramQQAppInterface) {}
   
-  public void onGlobalLayout()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue == null)
+    if ((paramInt == 17) && (paramBoolean) && (paramBundle != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(true, Float.valueOf(15.0F));
+      paramInt = paramBundle.getInt("app_id", 0);
+      QLog.d("qqidentification_server", 1, "onReceive appid = " + paramInt);
+      if (paramInt == 0) {
+        return;
+      }
+      FaceDetectForThirdPartyManager.AppConf localAppConf = (FaceDetectForThirdPartyManager.AppConf)paramBundle.getSerializable("FaceRecognition.AppConf");
+      if (this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager != null) {
+        this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager.a(paramInt, localAppConf);
+      }
+      this.jdField_a_of_type_Arco.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramBundle));
       return;
     }
-    MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
+    if (paramInt != 15)
+    {
+      this.jdField_a_of_type_Arco.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(-102, null));
+      if (paramInt != 17) {
+        break label186;
+      }
+      if (paramBundle != null) {
+        break label180;
+      }
+    }
+    label180:
+    for (paramBundle = "1";; paramBundle = "2")
+    {
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009D63", "0X8009D63", 0, 0, paramBundle, "", "", "");
+      return;
+      this.jdField_a_of_type_Arco.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(15, null));
+      break;
+    }
+    label186:
+    QLog.e("qqidentification_server", 1, "requestThirdPartyInfo unexpected error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     arcp
  * JD-Core Version:    0.7.0.1
  */

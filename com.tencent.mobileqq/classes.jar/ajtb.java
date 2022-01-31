@@ -1,60 +1,54 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.SingleThreadExecutor;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import java.util.List;
-import java.util.concurrent.AbstractExecutorService;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.TimeUnit;
+import android.content.Context;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.app.BrowserAppInterface.TBSLogRunnable;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.utils.TbsLogClient;
+import mqq.os.MqqHandler;
 
 public class ajtb
-  extends AbstractExecutorService
+  extends TbsLogClient
 {
-  private final int a;
-  
-  protected ajtb(int paramInt)
+  public ajtb(BrowserAppInterface paramBrowserAppInterface, Context paramContext)
   {
-    this.a = paramInt;
+    super(paramContext);
   }
   
-  public static ExecutorService a(int paramInt)
+  public void d(String paramString1, String paramString2)
   {
-    return new ajtb(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
   }
   
-  public static ExecutorService b(int paramInt)
+  public void e(String paramString1, String paramString2)
   {
-    return new SingleThreadExecutor(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2);
+    }
   }
   
-  public boolean awaitTermination(long paramLong, @NonNull TimeUnit paramTimeUnit)
+  public void i(String paramString1, String paramString2)
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
   }
   
-  public void execute(@NonNull Runnable paramRunnable)
+  public void showLog(String paramString)
   {
-    ThreadManagerV2.excute(paramRunnable, this.a, null, false);
+    if (this.a.b == -1) {
+      this.a.b = 0;
+    }
+    if (this.a.b == 1) {
+      this.a.getHandler(BrowserAppInterface.class).post(new BrowserAppInterface.TBSLogRunnable(this.a, paramString));
+    }
   }
   
-  public boolean isShutdown()
+  public void w(String paramString1, String paramString2)
   {
-    return false;
-  }
-  
-  public boolean isTerminated()
-  {
-    return false;
-  }
-  
-  public void shutdown()
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  @NonNull
-  public List<Runnable> shutdownNow()
-  {
-    throw new UnsupportedOperationException();
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
+    }
   }
 }
 

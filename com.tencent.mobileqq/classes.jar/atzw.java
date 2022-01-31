@@ -1,43 +1,22 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
-import com.tencent.mobileqq.profile.view.VipScaledViewPager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.ocr.OCRPerformFragment;
 
 public class atzw
-  implements ViewPager.OnPageChangeListener
+  extends BroadcastReceiver
 {
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  public atzw(OCRPerformFragment paramOCRPerformFragment) {}
   
-  public atzw(PhotoViewForShopping paramPhotoViewForShopping) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt == 1)
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.b();
-      this.jdField_a_of_type_Boolean = true;
-    }
-    if (paramInt == 2) {
-      this.b = true;
-    }
-    if (paramInt == 0)
-    {
-      if (this.b)
-      {
-        this.b = false;
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
-        this.jdField_a_of_type_Boolean = false;
-      }
+      aqmb.a().a().a("OCRPerformFragment", 4, "receive videochat");
+      this.a.getActivity().finish();
     }
   }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt) {}
 }
 
 

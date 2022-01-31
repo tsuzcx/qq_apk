@@ -1,70 +1,63 @@
-import android.view.View;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGroupDateVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGroupDateVideoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class tmx
-  implements tpx
+  extends syv
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  private int jdField_a_of_type_Int = vms.d(BaseApplication.getContext());
-  private int b = -1;
-  private int c = -1;
+  public String a;
+  public long b;
+  public String b;
+  public int c;
+  private final String c;
+  public int d;
+  public int e;
+  public int f;
   
-  public tmx(tmv paramtmv) {}
-  
-  public void a(int paramInt)
+  public tmx()
   {
-    if (this.jdField_a_of_type_Tmv.a() != 0) {
-      return;
-    }
-    this.c = paramInt;
+    this.jdField_c_of_type_JavaLangString = sxp.a("StoryGroupSvc.datacard_get_feeds_new");
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public void a(int paramInt1, float paramFloat, int paramInt2)
+  public String a()
   {
-    if (this.jdField_a_of_type_Tmv.a() != 0) {
-      return;
-    }
-    if (this.b == -1) {
-      this.b = paramInt1;
-    }
-    if (this.b != paramInt1)
-    {
-      this.b = paramInt1;
-      this.jdField_a_of_type_Float = paramFloat;
-    }
-    if (this.jdField_a_of_type_Float > 0.5D)
-    {
-      this.jdField_a_of_type_Tmv.a.setTranslationY(this.jdField_a_of_type_Int - paramInt2);
-      return;
-    }
-    this.jdField_a_of_type_Tmv.a.setTranslationY(-paramInt2);
+    return this.jdField_c_of_type_JavaLangString;
   }
   
-  public void b(int paramInt)
+  public syq a(byte[] paramArrayOfByte)
   {
-    urk.a("Q.qqstory.playernew.LoadingMoreWidget", "onPageScrollStateChanged newState=%d visible=%d", Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Tmv.a()));
-    if (this.jdField_a_of_type_Tmv.a() != 0) {}
-    do
+    qqstory_service.RspGroupDateVideoList localRspGroupDateVideoList = new qqstory_service.RspGroupDateVideoList();
+    try
     {
-      do
-      {
-        return;
-        if (paramInt == 1)
-        {
-          this.jdField_a_of_type_Float = -1.0F;
-          this.b = -1;
-          this.c = -1;
-          this.jdField_a_of_type_Tmv.a.clearAnimation();
-          return;
-        }
-      } while (paramInt != 0);
-      if (this.jdField_a_of_type_Float < 0.5D)
-      {
-        this.jdField_a_of_type_Tmv.a.setTranslationY(0.0F);
-        return;
-      }
-    } while (this.c == -1);
-    this.jdField_a_of_type_Tmv.a.setTranslationY(this.jdField_a_of_type_Int);
+      localRspGroupDateVideoList.mergeFrom(paramArrayOfByte);
+      return new ton(this.a, localRspGroupDateVideoList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      veg.b("Q.qqstory.shareGroup:GetShareGroupDateListRequest", a(), paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGroupDateVideoList localReqGroupDateVideoList = new qqstory_service.ReqGroupDateVideoList();
+    localReqGroupDateVideoList.from.set(this.e);
+    localReqGroupDateVideoList.group_unionid.set(ByteStringMicro.copyFromUtf8(this.a));
+    localReqGroupDateVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    localReqGroupDateVideoList.date_count.set(this.jdField_c_of_type_Int);
+    localReqGroupDateVideoList.video_count.set(this.d);
+    localReqGroupDateVideoList.seqno.set(this.jdField_b_of_type_Long);
+    if (this.f != -1) {
+      localReqGroupDateVideoList.time_zone.set(this.f);
+    }
+    return localReqGroupDateVideoList.toByteArray();
   }
 }
 

@@ -1,16 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 
-class unt
-  implements View.OnClickListener
+public class unt
+  implements Animation.AnimationListener
 {
-  unt(unj paramunj, uqq paramuqq) {}
+  public unt(QQStoryBaseActivity paramQQStoryBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    urp.a("home_page", "guide_close", 0, 0, new String[0]);
-    this.jdField_a_of_type_Uqq.dismiss();
+    if (this.a.c != null)
+    {
+      this.a.c.clearAnimation();
+      ((ViewGroup)((ViewGroup)this.a.findViewById(16908290)).getChildAt(0)).removeView(this.a.c);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

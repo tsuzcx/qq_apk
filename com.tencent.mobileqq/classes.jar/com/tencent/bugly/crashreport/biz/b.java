@@ -71,14 +71,14 @@ public class b
     do
     {
       return;
-      if (paramStrategyBean.p > 0L) {
-        e = paramStrategyBean.p;
+      if (paramStrategyBean.q > 0L) {
+        e = paramStrategyBean.q;
       }
-      if (paramStrategyBean.v > 0) {
-        c = paramStrategyBean.v;
+      if (paramStrategyBean.w > 0) {
+        c = paramStrategyBean.w;
       }
-    } while (paramStrategyBean.w <= 0L);
-    d = paramStrategyBean.w;
+    } while (paramStrategyBean.x <= 0L);
+    d = paramStrategyBean.x;
   }
   
   private static void c(Context paramContext, BuglyStrategy paramBuglyStrategy)
@@ -105,7 +105,7 @@ public class b
           if (n < ((List)localObject1).size())
           {
             localObject2 = (UserInfoBean)((List)localObject1).get(n);
-            if ((((UserInfoBean)localObject2).n.equals(paramBuglyStrategy.l)) && (((UserInfoBean)localObject2).b == 1))
+            if ((((UserInfoBean)localObject2).n.equals(paramBuglyStrategy.m)) && (((UserInfoBean)localObject2).b == 1))
             {
               long l1 = z.b();
               if (l1 <= 0L) {
@@ -166,7 +166,7 @@ public class b
       }
       for (;;)
       {
-        ((com.tencent.bugly.crashreport.common.info.a)localObject1).r = paramBuglyStrategy;
+        ((com.tencent.bugly.crashreport.common.info.a)localObject1).s = paramBuglyStrategy;
         if (bool1)
         {
           paramBuglyStrategy = null;

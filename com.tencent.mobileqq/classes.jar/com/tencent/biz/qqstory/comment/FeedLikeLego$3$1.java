@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.comment;
 
-import snf;
-import snr;
+import tab;
+import tan;
 
 class FeedLikeLego$3$1
   implements Runnable
@@ -11,7 +11,7 @@ class FeedLikeLego$3$1
   public void run()
   {
     this.a.this$0.a(this.a.this$0.a);
-    ((snf)this.a.this$0.a()).d();
+    ((tab)this.a.this$0.a()).d();
   }
 }
 

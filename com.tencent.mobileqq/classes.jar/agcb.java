@@ -1,8 +1,19 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.leba.QzoneFrame;
 
-public abstract interface agcb
+public class agcb
+  extends BroadcastReceiver
 {
-  public abstract void a(boolean paramBoolean, LocalMediaInfo paramLocalMediaInfo);
+  public agcb(QzoneFrame paramQzoneFrame) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (QzoneFrame.a(this.a) != null) {
+      ((bhbl)QzoneFrame.a(this.a)).updatePublishBox(paramIntent);
+    }
+  }
 }
 
 

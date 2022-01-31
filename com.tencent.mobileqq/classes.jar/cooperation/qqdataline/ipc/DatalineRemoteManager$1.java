@@ -1,15 +1,15 @@
 package cooperation.qqdataline.ipc;
 
-import bfhb;
+import bgos;
 
 public class DatalineRemoteManager$1
   implements Runnable
 {
-  public DatalineRemoteManager$1(bfhb parambfhb) {}
+  public DatalineRemoteManager$1(bgos parambgos) {}
   
   public void run()
   {
-    bfhb.a(this.this$0);
+    bgos.a(this.this$0);
   }
 }
 

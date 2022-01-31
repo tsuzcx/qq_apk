@@ -1,18 +1,18 @@
-public class nsh
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
+
+class nsh
+  implements View.OnClickListener
 {
-  public static int a()
-  {
-    return ((Integer)bgmq.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0))).intValue();
-  }
+  nsh(nsf paramnsf, String paramString) {}
   
-  public static void a()
+  public void onClick(View paramView)
   {
-    bgmq.a("sp_key_biu_long_click_tips_count", Integer.valueOf(((Integer)bgmq.a("sp_key_biu_long_click_tips_count", Integer.valueOf(0))).intValue() + 1));
-  }
-  
-  public static int b()
-  {
-    return ((Integer)bgmq.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1))).intValue();
+    if ((nsf.a(this.jdField_a_of_type_Nsf) != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      onk.a(nsf.a(this.jdField_a_of_type_Nsf).getContext(), this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

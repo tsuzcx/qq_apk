@@ -1,27 +1,61 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadPoolParams;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class asnw
-  implements View.OnTouchListener
 {
-  public asnw(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  private static asnw jdField_a_of_type_Asnw;
+  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private asnw()
   {
-    if (paramMotionEvent.getAction() == 0)
+    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null)
     {
-      if (!ShortVideoCommentsView.a(this.a)) {}
-      this.a.l();
-      ShortVideoCommentsView.b(this.a);
+      int i = Runtime.getRuntime().availableProcessors();
+      ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
+      localThreadPoolParams.corePoolsize = i;
+      localThreadPoolParams.maxPooolSize = i;
+      localThreadPoolParams.priority = 5;
+      localThreadPoolParams.poolThreadName = "msgbackup_Tranport_Executor";
+      this.jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.newFreeThreadPool(localThreadPoolParams);
     }
-    return false;
+  }
+  
+  public static asnw a()
+  {
+    try
+    {
+      if (jdField_a_of_type_Asnw == null) {
+        jdField_a_of_type_Asnw = new asnw();
+      }
+      asnw localasnw = jdField_a_of_type_Asnw;
+      return localasnw;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    asog.a("MsgBackupMsgBackupTransportExecutor", "msgbackup destroy-------------> destroyed = " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get(), new Object[0]);
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null) {
+      asog.a("MsgBackupMsgBackupTransportExecutor", "thread pool is destroyed!", new Object[0]);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asnw
  * JD-Core Version:    0.7.0.1
  */

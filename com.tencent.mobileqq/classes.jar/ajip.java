@@ -1,22 +1,42 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import android.app.Activity;
+import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
+import java.util.ArrayList;
 
-public class ajip
-  extends apgo
+public abstract interface ajip
 {
-  public ajip(FrameHelperActivity paramFrameHelperActivity) {}
+  public abstract String a();
   
-  public void a()
-  {
-    if (this.a.a.hasMessages(17)) {
-      this.a.a.removeMessages(17);
-    }
-    this.a.a.sendEmptyMessage(17);
-  }
+  public abstract String a(int paramInt, ApolloWebAvatarParam paramApolloWebAvatarParam);
+  
+  public abstract String a(ajim paramajim);
+  
+  public abstract String a(String paramString);
+  
+  public abstract String a(ArrayList<ApolloWebAvatarParam> paramArrayList);
+  
+  public abstract String a(int[] paramArrayOfInt);
+  
+  public abstract void a(int paramInt, int[] paramArrayOfInt);
+  
+  public abstract void a(Activity paramActivity, String paramString1, String paramString2);
+  
+  public abstract void a(ArrayList<String> paramArrayList);
+  
+  public abstract void a(boolean paramBoolean, float paramFloat1, float paramFloat2);
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract String b(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void d(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajip
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory.Options;
 import android.util.DisplayMetrics;
-import azvq;
-import befq;
+import bawu;
+import bfnk;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import java.io.File;
@@ -24,9 +24,9 @@ class VipProfileCardDiyActivity$2
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inDensity = 320;
       localOptions.inTargetDensity = this.this$0.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().densityDpi;
-      this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = azvq.a(localFile1.getAbsolutePath(), localOptions);
-      this.this$0.b = azvq.a(localFile2.getAbsolutePath(), localOptions);
-      this.this$0.jdField_a_of_type_Befq.sendEmptyMessage(9);
+      this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = bawu.a(localFile1.getAbsolutePath(), localOptions);
+      this.this$0.b = bawu.a(localFile2.getAbsolutePath(), localOptions);
+      this.this$0.jdField_a_of_type_Bfnk.sendEmptyMessage(9);
       this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       return;
     }

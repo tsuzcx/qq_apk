@@ -1,8 +1,18 @@
-import android.view.KeyEvent;
+import java.util.Comparator;
 
-public abstract interface azpi
+public class azpi
+  implements Comparator<azpg>
 {
-  public abstract boolean a(int paramInt, KeyEvent paramKeyEvent);
+  public int a(azpg paramazpg1, azpg paramazpg2)
+  {
+    if (paramazpg1.b < paramazpg2.b) {
+      return 1;
+    }
+    if (paramazpg1.b == paramazpg2.b) {
+      return 0;
+    }
+    return -1;
+  }
 }
 
 

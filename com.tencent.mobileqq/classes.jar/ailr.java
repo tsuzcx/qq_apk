@@ -1,21 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
+import android.widget.ImageView;
 
 public class ailr
-  implements DialogInterface.OnClickListener
 {
-  public ailr(ApolloWebGameActivity paramApolloWebGameActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ApolloWebGameActivity.a(this.a).dismiss();
-    ApolloWebGameActivity.b(this.a);
-  }
+  public int a = 1;
+  public ImageView a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ailr
  * JD-Core Version:    0.7.0.1
  */

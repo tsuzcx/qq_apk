@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import aeyq;
-import aibm;
-import ajnf;
+import afkg;
+import aiof;
+import akbo;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class NewFriendMoreSysMsgActivity
   extends BaseActivity
 {
-  private aibm a;
+  private aiof a;
   
   public static void a(Activity paramActivity, int paramInt1, int paramInt2)
   {
@@ -32,36 +32,36 @@ public class NewFriendMoreSysMsgActivity
   {
     super.doOnCreate(paramBundle);
     int i = getIntent().getIntExtra("first_visible_index", 0);
-    setContentView(2131495337);
-    paramBundle = (LinearLayout)findViewById(2131309736);
+    setContentView(2131560915);
+    paramBundle = (LinearLayout)findViewById(2131375491);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramBundle.setFitsSystemWindows(true);
       paramBundle.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    paramBundle = (SwipListView)findViewById(2131310967);
-    View localView = findViewById(2131305177);
-    TextView localTextView = (TextView)findViewById(2131302847);
+    paramBundle = (SwipListView)findViewById(2131376776);
+    View localView = findViewById(2131370850);
+    TextView localTextView = (TextView)findViewById(2131368472);
     localTextView.setVisibility(0);
-    localTextView.setText(2131628968);
-    setTitle(getString(2131628968));
-    localTextView = (TextView)findViewById(2131302804);
+    localTextView.setText(2131694632);
+    setTitle(getString(2131694632));
+    localTextView = (TextView)findViewById(2131368429);
     localTextView.setVisibility(0);
     localTextView.setText("");
-    localTextView.setOnClickListener(new aeyq(this));
-    localTextView = (TextView)findViewById(2131302832);
+    localTextView.setOnClickListener(new afkg(this));
+    localTextView = (TextView)findViewById(2131368457);
     localTextView.setVisibility(0);
-    localTextView.setText(2131633759);
-    this.a = new aibm(this, this.app, paramBundle, localView, localTextView, this.mFlingHandler, i);
+    localTextView.setText(2131699541);
+    this.a = new aiof(this, this.app, paramBundle, localView, localTextView, this.mFlingHandler, i);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    ajnf localajnf = (ajnf)this.app.getManager(34);
-    localajnf.g();
-    localajnf.k();
+    akbo localakbo = (akbo)this.app.getManager(34);
+    localakbo.g();
+    localakbo.k();
     this.a.a();
   }
   

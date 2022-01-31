@@ -1,47 +1,53 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.StructMsgObserver.1;
-import com.tencent.mobileqq.activity.StructMsgObserver.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import java.util.Observable;
-import java.util.Observer;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
 public class abtf
-  implements Observer
+  implements Comparator<abtm>
 {
-  public void update(Observable paramObservable, Object paramObject)
+  public abtf(PublicAccountListActivity paramPublicAccountListActivity) {}
+  
+  public int a(abtm paramabtm1, abtm paramabtm2)
   {
-    if (!acgk.a) {}
+    paramabtm1 = paramabtm1.a.name;
+    paramabtm2 = paramabtm2.a.name;
+    if ((paramabtm1 == null) && (paramabtm2 == null)) {}
+    int j;
+    int k;
     do
     {
-      do
+      return 0;
+      if ((paramabtm1 == null) && (paramabtm2 != null)) {
+        return -1;
+      }
+      if ((paramabtm1 != null) && (paramabtm2 == null)) {
+        return 1;
+      }
+      j = paramabtm1.length();
+      k = paramabtm2.length();
+      int m = Math.min(j, k);
+      int i = 0;
+      while (i < m)
       {
-        do
+        char c1 = paramabtm1.charAt(i);
+        char c2 = paramabtm2.charAt(i);
+        if (c1 != c2)
         {
-          do
-          {
-            return;
-            if (!(paramObject instanceof MessageForStructing)) {
-              break;
-            }
-            paramObject = (MessageForStructing)paramObject;
-            paramObservable = paramObject.structingMsg;
-          } while ((paramObject.isSend()) || (!acgk.a(paramObservable)));
-          paramObject = paramObservable.mMsgUrl;
-          str1 = paramObservable.currentAccountUin;
-          str2 = paramObservable.uin;
-          ThreadManager.post(new StructMsgObserver.1(this, paramObject, paramObservable.uinType, str1, str2), 5, null, false);
-          return;
-        } while (!(paramObject instanceof MessageForText));
-        paramObservable = (MessageForText)paramObject;
-      } while ((paramObservable.isSend()) || (TextUtils.isEmpty(paramObservable.msg)));
-      paramObject = acgk.c(paramObservable.msg);
-    } while (TextUtils.isEmpty(paramObject));
-    String str1 = paramObservable.frienduin;
-    String str2 = paramObservable.selfuin;
-    ThreadManager.post(new StructMsgObserver.2(this, paramObject, paramObservable.istroop, str2, str1), 5, null, false);
+          paramabtm1 = ChnToSpell.a(c1, i);
+          paramabtm2 = ChnToSpell.a(c2, i);
+          if (paramabtm1.jdField_a_of_type_Int == paramabtm2.jdField_a_of_type_Int) {
+            return paramabtm1.jdField_a_of_type_JavaLangString.compareTo(paramabtm2.jdField_a_of_type_JavaLangString);
+          }
+          return paramabtm1.jdField_a_of_type_Int - paramabtm2.jdField_a_of_type_Int;
+        }
+        i += 1;
+      }
+      if (j < k) {
+        return -1;
+      }
+    } while (j <= k);
+    return 1;
   }
 }
 

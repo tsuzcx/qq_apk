@@ -1,9 +1,9 @@
 package com.tencent.common.app;
 
-import bezd;
-import bfjz;
-import bfkz;
-import bflp;
+import bggu;
+import bgrr;
+import bgsr;
+import bgtp;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
 import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
@@ -47,17 +47,17 @@ public class ToolAppRuntime
       return paramString;
       if ("comic_plugin.apk".equals(paramString))
       {
-        paramString = bezd.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = bggu.a(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else if ("qqreaderplugin.apk".equals(paramString))
       {
-        paramString = bflp.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = bgtp.a(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else if ("qqpim_plugin.apk".equals(paramString))
       {
-        paramString = bfkz.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = bgsr.a(localBaseApplicationImpl, MobileQQ.processName);
       }
       else if ("module_olympic".equals(paramString))
       {
@@ -70,7 +70,7 @@ public class ToolAppRuntime
       }
       else if ("qqindividuality_plugin.apk".equals(paramString))
       {
-        paramString = bfjz.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = bgrr.a(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else if ("modular_web".equals(paramString))

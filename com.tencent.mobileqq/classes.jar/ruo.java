@@ -1,6 +1,6 @@
-abstract interface ruo
+public abstract interface ruo
 {
-  public abstract bahx a(Integer paramInteger);
+  public abstract void a(String paramString);
 }
 
 

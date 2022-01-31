@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import android.animation.TypeEvaluator;
+import com.tencent.qphone.base.util.QLog;
 
 class adbe
-  implements QQPermissionCallback
+  implements TypeEvaluator
 {
-  adbe(adbc paramadbc, BaseActivity paramBaseActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
   {
-    babr.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
-    this.jdField_a_of_type_Adbc.denied();
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Adbc.grant();
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "AlphaEvaluator value: " + paramFloat);
+    }
+    if ((paramFloat >= 0.0F) && (paramFloat <= 0.02985074626865672D)) {
+      return Double.valueOf(paramFloat * 0.5D / 0.02985074626865672D);
+    }
+    if ((paramFloat > 0.02985074626865672D) && (paramFloat <= 0.9253731343283582D)) {
+      return Double.valueOf(0.5D);
+    }
+    if ((paramFloat > 0.9253731343283582D) && (paramFloat <= 1.0F)) {
+      return Double.valueOf((1.0F - paramFloat) * 0.5D / 0.07462686567164178D);
+    }
+    return Double.valueOf(0.0D);
   }
 }
 

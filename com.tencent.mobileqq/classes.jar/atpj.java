@@ -1,84 +1,21 @@
-import java.io.File;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public abstract class atpj
-  extends atpq
+class atpj
+  implements Handler.Callback
 {
-  public int a;
-  public long a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
+  atpj(atpi paramatpi) {}
   
-  public atpj()
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_d_of_type_Int = 5;
-  }
-  
-  public File a()
-  {
-    return axoa.a(b());
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Int == -1)
+    switch (paramMessage.what)
     {
-      a("PicBaseInfo.check", "busiType invalid,busiType:" + this.jdField_a_of_type_Int);
-      return false;
     }
-    if (this.jdField_b_of_type_Int == -1)
+    for (;;)
     {
-      a("PicBaseInfo.check", "uinType invalid,uinType:" + this.jdField_b_of_type_Int);
-      return false;
+      return true;
+      atpi.a(this.a);
     }
-    if (this.c == null)
-    {
-      a("PicBaseInfo.check", "peerUin invalid,peerUin:" + this.c);
-      return false;
-    }
-    return true;
-  }
-  
-  abstract String b();
-  
-  public boolean b()
-  {
-    return a() != null;
-  }
-  
-  public String c()
-  {
-    return axoa.d(b());
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nPicBaseInfo");
-    localStringBuilder.append("\n |-").append("localUUID:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("uniseq:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("\n |-").append("busiType:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("\n |-").append("selfUin:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("peerUin:").append(this.c);
-    localStringBuilder.append("\n |-").append("secondId:").append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("md5:").append(this.f);
-    localStringBuilder.append("\n |-").append("errInfo:").append(this.jdField_a_of_type_Atpr);
-    return localStringBuilder.toString();
   }
 }
 

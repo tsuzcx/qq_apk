@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import amzv;
+import anqd;
 
 public class QavGAudioSoundData
   extends XmlData
 {
-  @amzv(a=false, b=true)
+  @anqd(a=false, b=true)
   public boolean autoDownload;
   
   public String getSharedPreferencesName()

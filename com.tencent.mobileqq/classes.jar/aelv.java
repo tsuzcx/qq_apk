@@ -1,33 +1,30 @@
-import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecBarAdapter.ImgUpdateListener.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 
 public class aelv
-  implements aeml
+  extends aelu
 {
-  public aels a;
+  public Bitmap a;
+  public AnimationView.AnimationInfo a;
   
-  public aelv(aels paramaels)
+  public aelv(String paramString)
   {
-    this.a = paramaels;
+    super(paramString);
   }
   
-  public void a(List<aelm> paramList, String paramString1, String paramString2)
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    if (this.a != null)
+    if (paramRedPacketInfo != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecBarAdapter", 2, "data=" + paramList.size());
-      }
-      aels.a(this.a);
-      ThreadManager.getUIHandler().post(new StickerRecBarAdapter.ImgUpdateListener.1(this, paramString1, paramList, paramString2));
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.specialBackground;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramRedPacketInfo.specailBackgroundAnimInfo;
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("StickerRecBarAdapter", 2, "mAdapter is null");
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo != null) || (this.jdField_a_of_type_AndroidGraphicsBitmap != null);
   }
 }
 

@@ -1,36 +1,29 @@
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.gdtad.api.GdtAd;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public class wnz
-  implements yka
+class wnz
+  implements View.OnClickListener
 {
-  public wnz(TroopGiftPanel paramTroopGiftPanel) {}
+  wnz(wnv paramwnv, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public void a(GdtAd paramGdtAd)
+  public void onClick(View paramView)
   {
-    QLog.i("TroopGiftPanel", 1, "onAdLoaded");
-    TroopGiftPanel.a(this.a, paramGdtAd);
-  }
-  
-  public void a(GdtAd paramGdtAd, yjz paramyjz)
-  {
-    QLog.e("TroopGiftPanel", 1, "onAdFailedToLoad: " + paramyjz.a());
-  }
-  
-  public void b(GdtAd paramGdtAd)
-  {
-    QLog.i("TroopGiftPanel", 1, "onAdImpression");
-  }
-  
-  public void c(GdtAd paramGdtAd)
-  {
-    QLog.i("TroopGiftPanel", 1, "onAdClicked");
+    paramView = (ClipboardManager)wnl.i(this.jdField_a_of_type_Wnv.a).getSystemService("clipboard");
+    if (paramView != null)
+    {
+      paramView.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.content.get()));
+      wnl.a(this.jdField_a_of_type_Wnv.a).dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wnz
  * JD-Core Version:    0.7.0.1
  */

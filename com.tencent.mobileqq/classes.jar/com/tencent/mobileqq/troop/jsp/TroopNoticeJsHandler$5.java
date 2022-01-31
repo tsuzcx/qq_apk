@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.jsp;
 
-import azcm;
+import badh;
 import org.json.JSONArray;
 import org.json.JSONException;
 
 public class TroopNoticeJsHandler$5
   implements Runnable
 {
-  public TroopNoticeJsHandler$5(azcm paramazcm, String paramString) {}
+  public TroopNoticeJsHandler$5(badh parambadh, String paramString) {}
   
   public void run()
   {

@@ -1,100 +1,30 @@
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextShowAnimator.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.util.Timer;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import mqq.util.WeakReference;
 
 public class acrv
+  implements View.OnClickListener
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { ".", "..", "..." };
-  private int jdField_a_of_type_Int;
-  private acrw jdField_a_of_type_Acrw;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString = ".";
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private String b = "";
-  private String c;
+  public acrv(PositionActivatePage paramPositionActivatePage) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return this.c.length();
-  }
-  
-  public SpannableString a()
-  {
-    SpannableString localSpannableString = new SpannableString(ajjy.a(2131651057) + this.jdField_a_of_type_JavaLangString);
-    localSpannableString.setSpan(new ForegroundColorSpan(this.jdField_a_of_type_AndroidContentResColorStateList.getDefaultColor()), 0, localSpannableString.length(), 33);
-    return localSpannableString;
-  }
-  
-  public SpannableString a(String paramString)
-  {
-    int i = 3;
-    if (paramString.length() - this.b.length() < 3)
+    if ((PositionActivatePage.a(this.a) != null) && (PositionActivatePage.a(this.a).get() != null))
     {
-      this.b = paramString;
-      this.c = (this.b + this.jdField_a_of_type_JavaLangString);
-      paramString = new SpannableString(this.c);
-      if (this.b.length() <= 4) {
-        break label227;
-      }
+      paramView = new Intent((Context)PositionActivatePage.a(this.a).get(), SendBirthdayWishesActivity.class);
+      paramView.putExtra("key_msg_type", 1);
+      paramView.putExtra("key_friend_list", this.a.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.a());
+      paramView.putExtra("key_roam_city", this.a.jdField_a_of_type_JavaLangString);
+      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).startActivityForResult(paramView, 1000);
+      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).overridePendingTransition(2130771979, 2130771990);
+      axqw.b(((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E06", "0X8004E06", 0, 0, "", "", "", "");
     }
-    for (;;)
-    {
-      int j = this.b.length() - i;
-      i = j;
-      if (j < 0) {
-        i = 0;
-      }
-      if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null))
-      {
-        paramString.setSpan(new ForegroundColorSpan(Color.parseColor("#777777")), 0, i, 33);
-        paramString.setSpan(new ForegroundColorSpan(this.jdField_a_of_type_AndroidContentResColorStateList.getDefaultColor()), i, this.c.length(), 33);
-        return paramString;
-        this.b = paramString.substring(0, this.b.length() + 3 - 1);
-        break;
-      }
-      paramString.setSpan(new ForegroundColorSpan(Color.parseColor("#03081a")), 0, i, 33);
-      paramString.setSpan(new ForegroundColorSpan(this.jdField_a_of_type_AndroidContentResColorStateList.getDefaultColor()), i, this.c.length(), 33);
-      return paramString;
-      label227:
-      i = 1;
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilTimer.schedule(new VoiceTextShowAnimator.1(this), 0L, 100L);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, ColorStateList paramColorStateList, acrw paramacrw)
-  {
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_Acrw = paramacrw;
-  }
-  
-  public boolean a(String paramString)
-  {
-    return paramString.length() - this.b.length() < 3;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaUtilTimer != null)
-    {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
-      this.jdField_a_of_type_JavaUtilTimer = null;
-    }
-    this.jdField_a_of_type_Int = 0;
-    this.b = "";
-    this.c = "";
-    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

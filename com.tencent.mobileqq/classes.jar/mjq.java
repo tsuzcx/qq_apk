@@ -1,39 +1,31 @@
-import java.util.HashMap;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.VideoControlUI;
+import java.lang.ref.WeakReference;
 
 public class mjq
+  implements View.OnTouchListener
 {
-  public int a;
-  public String a;
-  public HashMap<String, String> a;
-  public mjr a;
-  public int b;
-  public int c = 60000;
+  WeakReference<VideoControlUI> a;
   
-  public mjq()
+  public mjq(VideoControlUI paramVideoControlUI)
   {
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_b_of_type_Int = 5000;
+    this.a = new WeakReference(paramVideoControlUI);
   }
   
-  public String toString()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mUrl = ").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",mConnectionTimeout = ").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(",mSocketTimeout = ").append(this.c);
-    if (this.jdField_a_of_type_Mjr != null)
-    {
-      localStringBuilder.append(",mResult.mIsSucc = ").append(this.jdField_a_of_type_Mjr.jdField_a_of_type_Boolean);
-      localStringBuilder.append(",mResult.mFileLength = ").append(this.jdField_a_of_type_Mjr.jdField_a_of_type_Long);
-      localStringBuilder.append(",mResult.mErrCode = ").append(this.jdField_a_of_type_Mjr.jdField_a_of_type_Int);
-      localStringBuilder.append(",mResult.mErrStr = ").append(this.jdField_a_of_type_Mjr.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(",mResult.mTryCount = ").append(this.jdField_a_of_type_Mjr.jdField_b_of_type_Int);
-      localStringBuilder.append(",mResult.mCostTime = ").append(this.jdField_a_of_type_Mjr.jdField_b_of_type_Long).append("ms");
+    paramView = (VideoControlUI)this.a.get();
+    if (paramView != null) {
+      switch (paramMotionEvent.getAction())
+      {
+      }
     }
     for (;;)
     {
-      return localStringBuilder.toString();
-      localStringBuilder.append(",mResult = null");
+      return false;
+      paramView.z(0L);
     }
   }
 }

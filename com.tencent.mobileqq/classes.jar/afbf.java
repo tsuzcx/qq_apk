@@ -1,48 +1,61 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class afbf
-  implements View.OnTouchListener
+  implements aznu
 {
-  protected float a;
-  protected float b;
+  public afbf(BlessResultActivity paramBlessResultActivity) {}
   
-  public afbf(NotificationView paramNotificationView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    if (paramMotionEvent.getAction() == 0) {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a(paramMotionEvent.getRawY()))
-      {
-        this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-        this.b = paramMotionEvent.getRawY();
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.sendEmptyMessageDelayed(1013, 500L);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadSuccess!");
     }
-    for (;;)
-    {
-      return false;
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-      continue;
-      if (paramMotionEvent.getAction() == 2)
-      {
-        if ((Math.abs(paramMotionEvent.getRawX() - this.jdField_a_of_type_Float) > 60.0F) || (Math.abs(paramMotionEvent.getRawY() - this.b) > 60.0F)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-        }
-      }
-      else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-      }
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.g = this.a.b(this.a.d);
+    if (this.a.jdField_a_of_type_Bfmt.hasMessages(1003)) {
+      this.a.jdField_a_of_type_Bfmt.removeMessages(1003);
+    }
+    this.a.jdField_a_of_type_Bfmt.sendEmptyMessage(1001);
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadFail!");
+    }
+    if (this.a.jdField_a_of_type_Bfmt.hasMessages(1003)) {
+      this.a.jdField_a_of_type_Bfmt.removeMessages(1003);
+    }
+    this.a.jdField_a_of_type_Bfmt.sendEmptyMessage(1003);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStart!");
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStop!");
+    }
+  }
+  
+  public void c(long paramLong)
+  {
+    long l = bbdj.a(this.a.jdField_a_of_type_Afbg.a);
+    int i = (int)(100L * paramLong / l);
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadProcess! rawLen = " + l + ",offset = " + paramLong + ",process = " + i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afbf
  * JD-Core Version:    0.7.0.1
  */

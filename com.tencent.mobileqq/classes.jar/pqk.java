@@ -1,65 +1,197 @@
+import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.articlesummary.feeds_info.AccountProfile;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.qnreading.PreLoader.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class pqk
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  private static String jdField_a_of_type_JavaLangString = "PreLoader";
+  private static boolean c = true;
+  private Map<String, String> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private Set<String> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean d;
+  private boolean e;
   
-  public static pqk a(feeds_info.AccountProfile paramAccountProfile)
+  public static pqk a()
   {
-    Object localObject;
-    if (paramAccountProfile == null) {
-      localObject = null;
-    }
-    pqk localpqk;
-    do
-    {
-      return localObject;
-      localpqk = new pqk();
-      localpqk.jdField_a_of_type_Long = paramAccountProfile.uint64_uin.get();
-      localpqk.jdField_a_of_type_Int = paramAccountProfile.uint32_account_type.get();
-      if (paramAccountProfile.bytes_desc.has()) {
-        localpqk.c = paramAccountProfile.bytes_desc.get().toStringUtf8();
-      }
-      if (paramAccountProfile.bytes_profile_photo_url.has()) {
-        localpqk.b = paramAccountProfile.bytes_profile_photo_url.get().toStringUtf8();
-      }
-      if (paramAccountProfile.bytes_nick.has()) {
-        localpqk.jdField_a_of_type_JavaLangString = paramAccountProfile.bytes_nick.get().toStringUtf8();
-      }
-      localObject = localpqk;
-    } while (!paramAccountProfile.bytes_home_page_url.has());
-    localpqk.d = paramAccountProfile.bytes_home_page_url.get().toStringUtf8();
-    return localpqk;
+    return pql.a();
   }
   
-  public feeds_info.AccountProfile a()
+  private void a(BaseArticleInfo paramBaseArticleInfo)
   {
-    feeds_info.AccountProfile localAccountProfile = new feeds_info.AccountProfile();
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localAccountProfile.bytes_nick.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    if (paramBaseArticleInfo.proteusItemsData != null) {}
+    try
+    {
+      paramBaseArticleInfo = new JSONObject(paramBaseArticleInfo.proteusItemsData).optString("article_jump_url");
+      if ((!TextUtils.isEmpty(paramBaseArticleInfo)) && (paramBaseArticleInfo.startsWith("mqqapi://readinjoy/open?src_type=internal&target=4")))
+      {
+        paramBaseArticleInfo = bfng.a(paramBaseArticleInfo);
+        String str = (String)paramBaseArticleInfo.get("appSchema");
+        if (("com.tencent.reading".equals(paramBaseArticleInfo.get("appPackageName"))) && (str != null))
+        {
+          paramBaseArticleInfo = (String)bfng.a(Uri.decode(str)).get("rowkey");
+          if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramBaseArticleInfo))
+          {
+            this.jdField_a_of_type_JavaUtilSet.add(paramBaseArticleInfo);
+            QLog.d(jdField_a_of_type_JavaLangString, 1, "searchKBArticleId cache: " + paramBaseArticleInfo);
+          }
+        }
+      }
+      return;
     }
-    if (!TextUtils.isEmpty(this.b)) {
-      localAccountProfile.bytes_profile_photo_url.set(ByteStringMicro.copyFromUtf8(this.b));
+    catch (Exception paramBaseArticleInfo)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, paramBaseArticleInfo, new Object[] { "" });
     }
-    if (!TextUtils.isEmpty(this.c)) {
-      localAccountProfile.bytes_desc.set(ByteStringMicro.copyFromUtf8(this.c));
+  }
+  
+  private void a(Set<String> paramSet)
+  {
+    ThreadManager.executeOnNetWorkThread(new PreLoader.1(this, paramSet));
+  }
+  
+  private void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        if (paramString.getInt("ret") == 0)
+        {
+          paramString = paramString.getJSONArray("fullnews");
+          int i = 0;
+          while (i < paramString.length())
+          {
+            JSONObject localJSONObject = (JSONObject)paramString.get(i);
+            String str = localJSONObject.getString("id");
+            this.jdField_a_of_type_JavaUtilMap.put(str, Uri.encode(localJSONObject.toString()));
+            this.jdField_a_of_type_JavaUtilSet.remove(str);
+            i += 1;
+          }
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, paramString, new Object[] { "" });
+      }
     }
-    if (!TextUtils.isEmpty(this.d)) {
-      localAccountProfile.bytes_home_page_url.set(ByteStringMicro.copyFromUtf8(this.d));
+  }
+  
+  private boolean a()
+  {
+    QLog.d(jdField_a_of_type_JavaLangString, 1, "isNeedPreload isNeedCheckPreload: " + this.b + " isConfigNeedPreload: " + this.jdField_a_of_type_Boolean + " isInstalledKB:" + this.d);
+    return (this.b) && (this.jdField_a_of_type_Boolean) && (this.d);
+  }
+  
+  private void c()
+  {
+    boolean bool = true;
+    if (this.e) {}
+    AladdinConfig localAladdinConfig;
+    do
+    {
+      return;
+      localAladdinConfig = Aladdin.getConfig(209);
+    } while (localAladdinConfig == null);
+    if (localAladdinConfig.getIntegerFromString("is_preload_open", 0) == 1) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      if (!c) {
+        break;
+      }
+      this.d = bbfd.a(BaseApplicationImpl.getApplication(), "com.tencent.reading");
+      c = false;
+      return;
+      bool = false;
     }
-    localAccountProfile.uint32_account_type.set(this.jdField_a_of_type_Int);
-    localAccountProfile.uint64_uin.set(this.jdField_a_of_type_Long);
-    return localAccountProfile;
+  }
+  
+  public String a(String paramString)
+  {
+    if (!a()) {}
+    String str;
+    do
+    {
+      return paramString;
+      str = (String)bfng.a(paramString).get("rowkey");
+      str = (String)this.jdField_a_of_type_JavaUtilMap.get(str);
+    } while (TextUtils.isEmpty(str));
+    paramString = paramString + "&item=" + str;
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "item=" + str.length());
+    return paramString;
+  }
+  
+  public void a()
+  {
+    QLog.d(jdField_a_of_type_JavaLangString, 1, "onCreate");
+    this.b = true;
+    c();
+  }
+  
+  public void a(int paramInt, List<Long> paramList)
+  {
+    if (!a()) {
+      return;
+    }
+    b(osj.a().a(Integer.valueOf(paramInt), paramList));
+  }
+  
+  public void a(List<ArticleInfo> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(paramList);
+    b(localArrayList);
+  }
+  
+  public void b()
+  {
+    QLog.d(jdField_a_of_type_JavaLangString, 1, "onDestroy");
+    this.b = false;
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.jdField_a_of_type_JavaUtilSet.clear();
+  }
+  
+  public void b(List<BaseArticleInfo> paramList)
+  {
+    if (!a()) {}
+    do
+    {
+      return;
+      if (paramList == null)
+      {
+        QLog.d(jdField_a_of_type_JavaLangString, 1, "startRequest articleInfos == null");
+        return;
+      }
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "startRequest");
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        a((BaseArticleInfo)paramList.next());
+      }
+    } while (this.jdField_a_of_type_JavaUtilSet.size() <= 0);
+    a(this.jdField_a_of_type_JavaUtilSet);
   }
 }
 

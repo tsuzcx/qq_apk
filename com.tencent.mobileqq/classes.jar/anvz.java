@@ -1,38 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.EmoticonResp;
+import java.lang.ref.WeakReference;
 
-class anvz
-  implements Animation.AnimationListener
+public class anvz
 {
-  anvz(anvy paramanvy, anwq paramanwq1, int paramInt1, double paramDouble, boolean paramBoolean1, boolean paramBoolean2, anwq paramanwq2, boolean paramBoolean3, boolean paramBoolean4, Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt2) {}
+  WeakReference<ajvp> a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public anvz(anvs paramanvs, ajvp paramajvp)
   {
-    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_Anvy.a).b(this.jdField_b_of_type_Anwq, this.c, this.d);
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.setStatusWithAnimation(this.jdField_b_of_type_Int);
+    this.a = new WeakReference(paramajvp);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendInAnimation currentUin ( " + this.jdField_a_of_type_Anwq.e.substring(0, 4) + ", " + this.jdField_a_of_type_Int + " ) Animation Start  ");
-    }
-    double d2 = Math.atan(this.jdField_a_of_type_Double) * 180.0D / 3.141592653589793D * this.jdField_a_of_type_Anvy.jdField_b_of_type_Int;
-    double d1 = d2;
-    if (this.jdField_a_of_type_Boolean) {
-      d1 = 180.0D - d2;
-    }
-    this.jdField_a_of_type_Anvy.jdField_b_of_type_Float = ((float)d1);
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendInAnimation uinToHoleIndex add( " + this.jdField_a_of_type_Anwq.e.substring(0, 4) + ", " + this.jdField_a_of_type_Int + " )");
-    }
-    this.jdField_a_of_type_Anvy.a(2, this.jdField_b_of_type_Boolean);
-  }
+  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp) {}
 }
 
 

@@ -1,78 +1,111 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.contacts.fragment.RecommendFriendFragment;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PublicRecommendAccountInfo;
+import com.tencent.widget.FormMultiLineItem;
+import com.tencent.widget.MultiImageTextView;
 import com.tencent.widget.XListView;
-import java.util.List;
+import java.util.ArrayList;
 
 public class afft
-  extends ajjh
+  extends aimu
 {
-  public afft(RecommendFriendFragment paramRecommendFriendFragment) {}
-  
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  public afft(PublicView paramPublicView, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendFragment", 2, "onCancelMayKnowRecommend isSuccess:" + paramBoolean);
-    }
-    if (paramBoolean) {
-      RecommendFriendFragment.a(this.a);
-    }
+    super(paramContext, paramQQAppInterface, paramXListView, 1, true);
+    paramXListView.setAdapter(this);
   }
   
-  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  public PublicRecommendAccountInfo a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendFragment", 2, "onGetMayKnowRecommend isSuccess=" + paramBoolean);
+    if ((PublicView.a(this.a) != null) && (paramInt >= 0) && (paramInt < PublicView.a(this.a).size())) {
+      return (PublicRecommendAccountInfo)PublicView.a(this.a).get(paramInt);
     }
-    if (paramBoolean) {
-      RecommendFriendFragment.a(this.a);
-    }
+    return null;
   }
   
-  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  public int getCount()
   {
-    super.onMayKnowListPushAdd(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendFragment", 2, "onMayKnowListPushAdd isSuccess:" + paramBoolean);
+    if ((PublicView.a(this.a) != null) && (PublicView.a(this.a).size() > 0)) {
+      return PublicView.a(this.a).size();
     }
-    if (paramBoolean) {
-      RecommendFriendFragment.a(this.a);
-    }
+    return 0;
   }
   
-  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    super.onMayKnowListPushDel(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendFragment", 2, "onMayKnowListPushDel isSuccess:" + paramBoolean);
-    }
-    if (paramBoolean) {
-      RecommendFriendFragment.a(this.a);
-    }
-  }
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendFragment", 2, "onMayknowStateChanged isSuccess:" + paramBoolean);
-    }
-    if (paramBoolean)
+    if (paramView == null)
     {
-      if (this.a.jdField_a_of_type_Afdy != null) {
-        this.a.jdField_a_of_type_Afdy.notifyDataSetChanged();
+      paramView = new FormMultiLineItem(this.a.a);
+      paramView.setId(2131372873);
+      paramViewGroup = new affv();
+      paramViewGroup.c = ((FormMultiLineItem)paramView).a();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((FormMultiLineItem)paramView).a(0);
+      paramViewGroup.b = ((FormMultiLineItem)paramView).a(1);
+      paramView.setTag(paramViewGroup);
+      paramView.setOnClickListener(this.a);
+    }
+    Object localObject;
+    for (;;)
+    {
+      localObject = a(paramInt);
+      if (localObject != null) {
+        break;
       }
-      if (this.a.jdField_a_of_type_ComTencentWidgetXListView != null)
+      return paramView;
+      paramViewGroup = (affv)paramView.getTag();
+    }
+    if (((PublicRecommendAccountInfo)localObject).mSource == 1)
+    {
+      paramViewGroup.jdField_a_of_type_JavaLangString = ((PublicRecommendAccountInfo)localObject).mEqqNameAccount;
+      label124:
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataPublicRecommendAccountInfo = ((PublicRecommendAccountInfo)localObject);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramViewGroup.b.setVisibility(0);
+      paramViewGroup.c.setImageBitmap(a(1, paramViewGroup.jdField_a_of_type_JavaLangString));
+      if (((PublicRecommendAccountInfo)localObject).mSource != 1) {
+        break label367;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((PublicRecommendAccountInfo)localObject).mEqqCs);
+      paramViewGroup.b.setText(((PublicRecommendAccountInfo)localObject).mEqqSi);
+    }
+    for (;;)
+    {
+      if ((((PublicRecommendAccountInfo)localObject).mIsVerified != null) && (((PublicRecommendAccountInfo)localObject).mIsVerified.equalsIgnoreCase("1")))
       {
-        this.a.jdField_a_of_type_ComTencentWidgetXListView.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-        this.a.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1600L);
+        localObject = this.a.getResources().getDrawable(2130841313);
+        paramInt = (int)bbdh.a(this.a.a, 15.0F);
+        ((Drawable)localObject).setBounds(0, 0, paramInt, paramInt);
+        ((MultiImageTextView)paramViewGroup.jdField_a_of_type_AndroidWidgetTextView).a(6.0F);
+        ((MultiImageTextView)paramViewGroup.jdField_a_of_type_AndroidWidgetTextView).a((Drawable)localObject, paramInt, paramInt);
+        ((MultiImageTextView)paramViewGroup.jdField_a_of_type_AndroidWidgetTextView).b();
       }
+      if (!AppSetting.d) {
+        break;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.getText().toString());
+      ((StringBuilder)localObject).append(paramViewGroup.b.getText().toString());
+      paramView.setContentDescription(((StringBuilder)localObject).toString());
+      return paramView;
+      paramViewGroup.jdField_a_of_type_JavaLangString = String.valueOf(((PublicRecommendAccountInfo)localObject).mPublicuin);
+      break label124;
+      label367:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((PublicRecommendAccountInfo)localObject).mPublicname);
+      paramViewGroup.b.setText(((PublicRecommendAccountInfo)localObject).mPublicdesc);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afft
  * JD-Core Version:    0.7.0.1
  */

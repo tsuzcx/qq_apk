@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
 
-class tup
-  implements DialogInterface.OnDismissListener
+public class tup
+  extends AnimatorListenerAdapter
 {
-  tup(tun paramtun, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public tup(StoryPlayerActivity paramStoryPlayerActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
+    super.onAnimationEnd(paramAnimator);
+    StoryPlayerActivity.a(this.a);
+    StoryPlayerActivity.a(this.a, 0, 0);
   }
 }
 

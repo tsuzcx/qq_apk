@@ -10,16 +10,12 @@ import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.thread.HandlerThreadManager;
 import com.tencent.ttpic.baseutils.thread.HandlerThreadTag;
 import com.tencent.ttpic.cache.CompatibleList;
-import com.tencent.ttpic.cache.Load3DTextureManager;
 import com.tencent.ttpic.cache.LoadETCItemManager;
 import com.tencent.ttpic.cache.LoadFaceItemManager;
 import com.tencent.ttpic.cache.LoadItemManager;
 import com.tencent.ttpic.cache.LoadItemManager.LOAD_TYPE;
 import com.tencent.ttpic.cache.LoadStickerItemManager;
-import com.tencent.ttpic.cache.LoadStickerItemManager3D;
 import com.tencent.ttpic.cache.PreLoader;
-import com.tencent.ttpic.gameplaysdk.model.GameParams;
-import com.tencent.ttpic.gameplaysdk.model.StickerItem3D;
 import com.tencent.ttpic.model.FaceFeatureItem;
 import com.tencent.ttpic.model.MultiViewerItem;
 import com.tencent.ttpic.openapi.extrastickerutil.ExtraStickerParserAgent;
@@ -35,7 +31,6 @@ import com.tencent.ttpic.util.VideoFilterFactory.STICKER_TYPE;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -272,20 +267,21 @@ public final class VideoMemoryManager
     for (;;)
     {
       return;
+      Iterator localIterator1;
       Object localObject2;
-      Object localObject3;
+      Object localObject1;
       if (paramVideoMaterial.getFaceOffItemList() != null)
       {
-        localObject2 = paramVideoMaterial.getFaceOffItemList().iterator();
-        while (((Iterator)localObject2).hasNext())
+        localIterator1 = paramVideoMaterial.getFaceOffItemList().iterator();
+        while (localIterator1.hasNext())
         {
-          localObject3 = (FaceItem)((Iterator)localObject2).next();
-          if (!VideoMaterialUtil.isEmptyItem((FaceItem)localObject3))
+          localObject2 = (FaceItem)localIterator1.next();
+          if (!VideoMaterialUtil.isEmptyItem((FaceItem)localObject2))
           {
-            if (TextUtils.isEmpty(((FaceItem)localObject3).id)) {}
-            for (localObject1 = ((FaceItem)localObject3).faceExchangeImage;; localObject1 = ((FaceItem)localObject3).id)
+            if (TextUtils.isEmpty(((FaceItem)localObject2).id)) {}
+            for (localObject1 = ((FaceItem)localObject2).faceExchangeImage;; localObject1 = ((FaceItem)localObject2).id)
             {
-              this.mStickerManagers.put(localObject1, new LoadFaceItemManager(this.mCache, this.mGrayCache, paramVideoMaterial.getDataPath(), (FaceItem)localObject3, paramInt));
+              this.mStickerManagers.put(localObject1, new LoadFaceItemManager(this.mCache, this.mGrayCache, paramVideoMaterial.getDataPath(), (FaceItem)localObject2, paramInt));
               break;
             }
           }
@@ -293,18 +289,18 @@ public final class VideoMemoryManager
       }
       if (paramVideoMaterial.getFaceFeatureItemList() != null)
       {
-        localObject2 = paramVideoMaterial.getFaceFeatureItemList().iterator();
-        while (((Iterator)localObject2).hasNext())
+        localIterator1 = paramVideoMaterial.getFaceFeatureItemList().iterator();
+        while (localIterator1.hasNext())
         {
-          localObject3 = (FaceFeatureItem)((Iterator)localObject2).next();
-          if ((localObject3 != null) && (((FaceFeatureItem)localObject3).getFaceOffItemList() != null))
+          localObject2 = (FaceFeatureItem)localIterator1.next();
+          if ((localObject2 != null) && (((FaceFeatureItem)localObject2).getFaceOffItemList() != null))
           {
-            Iterator localIterator = ((FaceFeatureItem)localObject3).getFaceOffItemList().iterator();
+            Iterator localIterator2 = ((FaceFeatureItem)localObject2).getFaceOffItemList().iterator();
             label183:
             FaceItem localFaceItem;
-            while (localIterator.hasNext())
+            while (localIterator2.hasNext())
             {
-              localFaceItem = (FaceItem)localIterator.next();
+              localFaceItem = (FaceItem)localIterator2.next();
               if (!VideoMaterialUtil.isEmptyItem(localFaceItem)) {
                 if (!TextUtils.isEmpty(localFaceItem.id)) {
                   break label269;
@@ -314,7 +310,7 @@ public final class VideoMemoryManager
             label269:
             for (localObject1 = localFaceItem.faceExchangeImage;; localObject1 = localFaceItem.id)
             {
-              this.mStickerManagers.put(localObject1, new LoadFaceItemManager(this.mCache, this.mGrayCache, ((FaceFeatureItem)localObject3).getDataPath(), localFaceItem, paramInt));
+              this.mStickerManagers.put(localObject1, new LoadFaceItemManager(this.mCache, this.mGrayCache, ((FaceFeatureItem)localObject2).getDataPath(), localFaceItem, paramInt));
               break label183;
               break;
             }
@@ -336,32 +332,6 @@ public final class VideoMemoryManager
               this.mStickerManagers.put(((StickerItem)localObject1).id, new LoadPagItemManager(paramVideoMaterial.getDataPath(), (StickerItem)localObject1));
             } else {
               this.mStickerManagers.put(((StickerItem)localObject1).id, new LoadStickerItemManager(this.mCache, paramVideoMaterial.getDataPath(), (StickerItem)localObject1, LoadItemManager.LOAD_TYPE.LOAD_ALL, paramInt));
-            }
-          }
-        }
-      }
-      Object localObject1 = paramVideoMaterial.getItemList3D();
-      if (localObject1 != null)
-      {
-        if ((paramVideoMaterial.getGameParams() != null) && (paramVideoMaterial.getGameParams().textureImages != null)) {
-          this.mStickerManagers.put("", new Load3DTextureManager(paramVideoMaterial.getDataPath(), paramVideoMaterial.getGameParams().textureImages));
-        }
-        paramList = new HashSet();
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (StickerItem3D)((Iterator)localObject1).next();
-          if (((StickerItem3D)localObject2).id.contains(":"))
-          {
-            localObject3 = ((StickerItem3D)localObject2).id.split(":");
-            if (localObject3.length == 2)
-            {
-              localObject3 = localObject3[1];
-              if (!paramList.contains(localObject3))
-              {
-                this.mStickerManagers.put(((StickerItem3D)localObject2).id, new LoadStickerItemManager3D(paramVideoMaterial.getDataPath(), (StickerItem3D)localObject2, (String)localObject3, LoadItemManager.LOAD_TYPE.LOAD_ALL));
-                paramList.add(localObject3);
-              }
             }
           }
         }

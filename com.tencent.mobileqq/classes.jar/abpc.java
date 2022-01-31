@@ -1,25 +1,22 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity.7.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class abpc
-  extends MqqHandler
+  implements DialogInterface.OnClickListener
 {
-  public abpc(RegisterSendUpSms paramRegisterSendUpSms) {}
+  abpc(abpb paramabpb) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
+    ThreadManager.getSubThreadHandler().post(new NotificationActivity.7.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abpc
  * JD-Core Version:    0.7.0.1
  */

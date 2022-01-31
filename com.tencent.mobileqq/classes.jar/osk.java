@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 
 class osk
-  implements View.OnClickListener
+  implements qeg<TabChannelCoverInfo>
 {
-  osk(osh paramosh, String paramString, ArticleInfo paramArticleInfo) {}
+  osk(osj paramosj, int paramInt) {}
   
-  public void onClick(View paramView)
+  public boolean a(TabChannelCoverInfo paramTabChannelCoverInfo)
   {
-    paramView = obb.g + baaw.encodeToString(this.jdField_a_of_type_JavaLangString.getBytes(), 2);
-    obz.a(osh.a(this.jdField_a_of_type_Osh), paramView);
-    osh.a(this.jdField_a_of_type_Osh, obz.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    return paramTabChannelCoverInfo.mChannelCoverId == this.jdField_a_of_type_Int;
   }
 }
 

@@ -1,78 +1,52 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import android.os.Handler;
+import com.tencent.biz.qqstory.model.TrimmableManager.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class tdi
-  extends tdn
+  implements tck
 {
-  public static final String a;
-  public static final String b = jdField_a_of_type_JavaLangString + "&type=" + "onedaylist" + "&feedid=%s&identify=%d";
-  private int[] a;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+  private CopyOnWriteArraySet<tcl> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
   
-  static
+  public tdi()
   {
-    jdField_a_of_type_JavaLangString = "http://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&ptype=%d&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + skt.a(2131633886);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(new tdj());
   }
   
-  public tdi(StoryVideoItem paramStoryVideoItem, String paramString, int paramInt)
+  private void b(int paramInt)
   {
-    Object localObject = ((uje)sqg.a(11)).a(paramString);
-    if (localObject == null) {
+    veg.d("TrimmableManager", "trimMemory : level = %d", new Object[] { Integer.valueOf(paramInt) });
+    switch (paramInt)
+    {
+    default: 
       return;
     }
-    sqs localsqs = (sqs)sqg.a(2);
-    localObject = (QQUserUIItem)((FeedItem)localObject).getOwner();
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    this.jdField_d_of_type_JavaLangString = (((QQUserUIItem)localObject).nickName + ajjy.a(2131638652) + sfm.jdField_a_of_type_JavaLangString);
-    this.e = (((QQUserUIItem)localObject).nickName + ajjy.a(2131638651) + sfm.jdField_a_of_type_JavaLangString);
-    this.f = localsqs.a(((QQUserUIItem)localObject).getUnionId(), false);
-    int i;
-    if (((QQUserUIItem)localObject).isMe())
-    {
-      i = 0;
-      this.jdField_a_of_type_Int = i;
-      this.h = paramString;
-      this.jdField_d_of_type_Int = paramInt;
-      this.jdField_c_of_type_JavaLangString = ((QQUserUIItem)localObject).nickName;
-      this.g = ((QQUserUIItem)localObject).getUnionId();
-      this.k = a(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime);
-      paramStoryVideoItem = new SimpleDateFormat("M月d日").format(Long.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime));
-      this.i = (paramStoryVideoItem + " · " + this.jdField_d_of_type_Int + ajjy.a(2131638654));
-      this.j = ("#" + sfm.jdField_a_of_type_JavaLangString + "# " + this.jdField_c_of_type_JavaLangString + ajjy.a(2131638653) + sfm.jdField_a_of_type_JavaLangString + "（" + this.i + "）");
-      if (this.jdField_a_of_type_Int != 0) {
-        break label400;
-      }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
+    while (localIterator.hasNext()) {
+      ((tcl)localIterator.next()).a(paramInt);
     }
-    label400:
-    for (paramInt = 8;; paramInt = 9)
-    {
-      this.jdField_c_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_Int != 0) {
-        break label406;
-      }
-      this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 81, 82, 83, 84, 85, 45 };
-      return;
-      i = 1;
-      break;
-    }
-    label406:
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 69, 70, 71, 72, 73, 45 };
+    System.gc();
   }
   
-  protected String a(int paramInt)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    if (paramInt == 1) {
-      return String.format("mqqapi://qstory/openVideo?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&ptype=%d&type=onedaylist&feedid=%s&identify=%d&sharefromtype=%d", new Object[] { this.f, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.g, Integer.valueOf(5), this.h, Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]) });
-    }
-    return String.format(b, new Object[] { this.f, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.g, Integer.valueOf(5), b(paramInt), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]), this.h, Integer.valueOf(this.jdField_a_of_type_Int) });
+    this.jdField_a_of_type_AndroidOsHandler.post(new TrimmableManager.1(this, paramInt));
   }
   
-  public String a(String paramString, long paramLong)
+  public void a(tcl paramtcl)
   {
-    String str = new SimpleDateFormat("M月d日").format(Long.valueOf(paramLong));
-    return paramString + ajjy.a(2131638647) + str;
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramtcl);
+  }
+  
+  public void b() {}
+  
+  public void b(tcl paramtcl)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramtcl);
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.device.msg.data;
 
-import apcb;
-import xvk;
+import aptv;
+import yeo;
 
 public class DevSingleStructMsgProcessor$1
   implements Runnable
 {
-  public DevSingleStructMsgProcessor$1(xvk paramxvk) {}
+  public DevSingleStructMsgProcessor$1(yeo paramyeo) {}
   
   public void run()
   {
-    apcb.a(2131628303);
+    aptv.a(2131693944);
   }
 }
 

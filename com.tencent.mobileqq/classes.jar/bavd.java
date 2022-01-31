@@ -1,410 +1,154 @@
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vip.lianghao.RegisterLHAssistant.2;
-import com.tencent.mobileqq.vip.lianghao.view.RegisterLiangHaoChoiceLayoutView;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.qphone.base.util.MD5;
+import com.tencent.mobileqq.unifiedebug.UnifiedTraceRouter.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ScrollView;
-import java.util.Locale;
-import mqq.os.MqqHandler;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class bavd
 {
-  public static int a;
-  public static String a;
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private final View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  public auqn a;
-  private bavg jdField_a_of_type_Bavg;
-  private bavh jdField_a_of_type_Bavh;
-  private final RegisterNewBaseActivity jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity;
-  private ScrollView jdField_a_of_type_ComTencentWidgetScrollView;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bave(this);
-  public boolean a;
-  private int jdField_b_of_type_Int;
+  public float a;
+  public final int a;
+  public Handler a;
+  public QQAppInterface a;
+  public String a;
+  public List<bave> a;
+  public int b;
   public String b;
-  private boolean jdField_b_of_type_Boolean;
-  private String c;
-  private String d;
-  private String e;
-  private String f;
   
-  static
+  public bavd(QQAppInterface paramQQAppInterface, Handler paramHandler)
   {
-    jdField_a_of_type_JavaLangString = "RegisterLHAssistant";
+    this.jdField_a_of_type_Int = 32;
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public bavd(RegisterNewBaseActivity paramRegisterNewBaseActivity, View paramView, int paramInt)
+  public String a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity = paramRegisterNewBaseActivity;
-    this.jdField_a_of_type_Bavh = new bavh(paramRegisterNewBaseActivity, this);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentWidgetScrollView = ((ScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131309754));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131313439));
-    jdField_a_of_type_Int = paramInt;
-    e();
-  }
-  
-  public static void a(Context paramContext, boolean paramBoolean, String paramString1, String paramString2, Intent paramIntent)
-  {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)) || (paramIntent == null)) {
-      return;
-    }
-    boolean bool;
-    if (jdField_a_of_type_Int == 1)
-    {
-      if (paramBoolean) {}
-      for (str = "1";; str = "2")
-      {
-        awqx.a(null, "new_reg", "setting_page_yes", "result", "", 1, "", "", str, "", "", "", "", "", "");
-        if (QLog.isColorLevel()) {
-          a("gotoNextAfterPaidLH-register", paramIntent);
-        }
-        bool = paramIntent.getBooleanExtra("key_register_chose_bind_phone", false);
-        paramIntent = new Intent(paramIntent);
-        if (!paramBoolean) {
-          break label211;
-        }
-        paramIntent.setComponent(new ComponentName(paramContext, RegisterQQNumberActivity.class));
-        paramIntent.putExtra("uin", paramString1);
-        paramIntent.putExtra("key_register_is_lh", true);
-        paramContext.startActivity(paramIntent);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        a("gotoNextAfterPaidLH-intent", paramIntent);
-        return;
-      }
-    }
-    if (paramBoolean) {}
-    for (String str = "1";; str = "2")
-    {
-      awqx.a(null, "new_reg", "setting_page_no", "result", "", 1, "", "", str, "", "", "", "", "", "");
-      break;
-    }
-    label211:
-    if (bool) {
-      paramIntent.setComponent(new ComponentName(paramContext, RegisterPersonalInfoActivity.class));
-    }
+    Object localObject = String.format("/system/bin/ping -i 0.2 -c 1 -s 0 -t %d -W 4 %s", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), paramString });
+    long l = System.currentTimeMillis();
+    Process localProcess = Runtime.getRuntime().exec((String)localObject);
+    BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(localProcess.getInputStream()));
+    localObject = "";
     for (;;)
     {
-      paramIntent.putExtra("key_register_from_fail_pay_lh", true);
-      paramIntent.putExtra("key_register_fail_paid_lh", paramString1);
-      paramIntent.putExtra("lh_uin", paramString1);
-      paramIntent.putExtra("lh_light", paramString2);
-      break;
-      paramIntent.setComponent(new ComponentName(paramContext, RegisterByNicknameAndPwdActivity.class));
+      String str2 = localBufferedReader.readLine();
+      if (str2 == null) {
+        break;
+      }
+      String str1 = (String)localObject + str2 + "\n";
+      if (!str2.contains("From"))
+      {
+        localObject = str1;
+        if (!str2.contains("from")) {}
+      }
+      else
+      {
+        this.jdField_a_of_type_Float = ((float)(System.currentTimeMillis() - l));
+        localObject = str1;
+      }
     }
-  }
-  
-  public static void a(String paramString, Intent paramIntent)
-  {
-    if ((QLog.isColorLevel()) && (paramIntent != null)) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("UnifiedTraceRouter", 2, "ping url = " + paramString + " result = " + (String)localObject);
+    }
     try
     {
-      StringBuilder localStringBuilder = new StringBuilder(500);
-      localStringBuilder.append("--------------").append(paramString).append("---------------------\r\n");
-      if (paramIntent.hasExtra("phonenum")) {
-        localStringBuilder.append("phoneNum: ").append(baee.a(paramIntent.getStringExtra("phonenum"))).append("\r\n");
+      localProcess.destroy();
+      label190:
+      if (((String)localObject).equals("")) {
+        throw new IllegalArgumentException("ping result is empty");
       }
-      if (paramIntent.hasExtra("key")) {
-        localStringBuilder.append("countryCode: ").append(paramIntent.getStringExtra("key")).append("\r\n");
+      if (this.jdField_b_of_type_Int == 1)
+      {
+        this.jdField_a_of_type_JavaLangString = c((String)localObject);
+        if (QLog.isColorLevel()) {
+          QLog.d("UnifiedTraceRouter", 2, "final ip: " + this.jdField_a_of_type_JavaLangString);
+        }
       }
-      if (paramIntent.hasExtra("uin")) {
-        localStringBuilder.append("uin: ").append(paramIntent.getStringExtra("uin")).append("\r\n");
-      }
-      if (paramIntent.hasExtra("invite_code")) {
-        localStringBuilder.append("inviteCode: ").append(paramIntent.getStringExtra("uin")).append("\r\n");
-      }
-      if (paramIntent.hasExtra("key_register_sign")) {
-        localStringBuilder.append("sign: ").append(MD5.toMD5(paramIntent.getByteArrayExtra("key_register_sign"))).append("\r\n");
-      }
-      if (paramIntent.hasExtra("key_register_smscode")) {
-        localStringBuilder.append("smsCode: ").append(paramIntent.getStringExtra("key_register_smscode")).append("\r\n");
-      }
-      if (paramIntent.hasExtra("key_register_nick")) {
-        localStringBuilder.append("nick: ").append(paramIntent.getStringExtra("key_register_nick")).append("\r\n");
-      }
-      if (paramIntent.hasExtra("key_register_is_phone_num_registered")) {
-        localStringBuilder.append("isPhoneNumRegistered: ").append(paramIntent.getBooleanExtra("key_register_is_phone_num_registered", false)).append("\r\n");
-      }
-      if (paramIntent.hasExtra("key_register_chose_bind_phone")) {
-        localStringBuilder.append("isChooseBindPhoneNum: ").append(paramIntent.getBooleanExtra("key_register_chose_bind_phone", false)).append("\r\n");
-      }
-      if (paramIntent.hasExtra("key_register_unbind")) {
-        localStringBuilder.append("unbind: ").append(paramIntent.getBooleanExtra("key_register_unbind", false)).append("\r\n");
-      }
-      if (paramIntent.hasExtra("key_register_has_pwd")) {
-        localStringBuilder.append("hasPwd: ").append(paramIntent.getBooleanExtra("key_register_has_pwd", false)).append("\r\n");
-      }
-      if (paramIntent.hasExtra("key_register_from_send_sms")) {
-        localStringBuilder.append("fromSendSmsCode: ").append(paramIntent.getBooleanExtra("key_register_from_send_sms", false)).append("\r\n");
-      }
-      if (paramIntent.hasExtra("key_register_from_quick_register")) {
-        localStringBuilder.append("quickRegister: ").append(paramIntent.getBooleanExtra("key_register_from_quick_register", false)).append("\r\n");
-      }
-      if (paramIntent.hasExtra("key_register_is_lh")) {
-        localStringBuilder.append("isLH: ").append(paramIntent.getBooleanExtra("key_register_is_lh", false)).append("\r\n");
-      }
-      if (paramIntent.hasExtra("key_register_from_fail_pay_lh")) {
-        localStringBuilder.append("isFromFailPayLh: ").append(paramIntent.getBooleanExtra("key_register_from_fail_pay_lh", false)).append("\r\n");
-      }
-      if (paramIntent.hasExtra("key_register_fail_paid_lh")) {
-        localStringBuilder.append("failPayLH: ").append(paramIntent.getStringExtra("key_register_fail_paid_lh")).append("\r\n");
-      }
-      if (paramIntent.hasExtra("key_register_result")) {
-        localStringBuilder.append("registerResult: ").append(paramIntent.getBooleanExtra("key_register_result", true)).append("\r\n");
-      }
-      if (paramIntent.hasExtra("key_register_password")) {
-        localStringBuilder.append("pwd: ").append(MD5.toMD5(paramIntent.getStringExtra("key_register_password"))).append("\r\n");
-      }
-      localStringBuilder.append("-------------------------end---------------------------------\r\n");
-      QLog.i(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
-      return;
+      return localObject;
     }
     catch (Exception paramString)
     {
-      paramString.printStackTrace();
+      break label190;
     }
   }
   
-  private void e()
+  public void a(long paramLong, String paramString, Map<String, Object> paramMap)
   {
-    Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getIntent();
-    this.jdField_a_of_type_AndroidContentIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getIntent());
-    this.e = localIntent.getStringExtra("phonenum");
-    this.f = localIntent.getStringExtra("key");
-    this.jdField_a_of_type_Boolean = localIntent.getBooleanExtra("key_register_from_fail_pay_lh", false);
-    this.jdField_b_of_type_JavaLangString = localIntent.getStringExtra("key_register_fail_paid_lh");
-    this.c = localIntent.getStringExtra("key_register_nick");
-    this.d = localIntent.getStringExtra("key_register_password");
-    if (QLog.isColorLevel()) {
-      a("RegisterLHAssistant init-from", localIntent);
-    }
-    ClearableEditText localClearableEditText1;
-    if (jdField_a_of_type_Int == 1)
-    {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("key_register_unbind", true);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("key_register_chose_bind_phone", false);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131298078));
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131651335);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label412;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.b(false);
-      if (jdField_a_of_type_Int != 1) {
-        break label375;
-      }
-      ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131305588)).setVisibility(0);
-      localClearableEditText1 = (ClearableEditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131305163);
-      ClearableEditText localClearableEditText2 = (ClearableEditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131305587);
-      localClearableEditText1.setText(this.c);
-      localClearableEditText1.setEnabled(false);
-      localClearableEditText2.setText(this.d);
-      localClearableEditText2.setEnabled(false);
-      label250:
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setMinimumHeight(0);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.scrollTo(0, 0);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_Bavh.a(new bavl(localIntent)));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.app.setHandler(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
-      return;
-      if (jdField_a_of_type_Int != 2) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("key_register_unbind", false);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("key_register_chose_bind_phone", true);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131297993));
-      break;
-      label375:
-      if (jdField_a_of_type_Int != 2) {
-        break label250;
-      }
-      localClearableEditText1 = (ClearableEditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131305163);
-      localClearableEditText1.setText(this.c);
-      localClearableEditText1.setEnabled(false);
-      break label250;
-      label412:
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setMinimumHeight(0);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
-      this.jdField_a_of_type_ComTencentWidgetScrollView.scrollTo(0, 0);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-      d();
-    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new UnifiedTraceRouter.1(this, paramString, paramLong, paramMap));
   }
   
-  public Intent a()
+  public String b(String paramString)
   {
-    ClearableEditText localClearableEditText1;
-    if (jdField_a_of_type_Int == 1)
+    Object localObject2 = null;
+    int i;
+    int j;
+    Object localObject1;
+    if (paramString.contains("From"))
     {
-      localClearableEditText1 = (ClearableEditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131305163);
-      ClearableEditText localClearableEditText2 = (ClearableEditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131305587);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("key_register_nick", localClearableEditText1.getText().toString());
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("key_register_password", localClearableEditText2.getText().toString());
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        a("getRegisterData-registerData", this.jdField_a_of_type_AndroidContentIntent);
-      }
-      return this.jdField_a_of_type_AndroidContentIntent;
-      if (jdField_a_of_type_Int == 2)
+      paramString = paramString.substring(paramString.indexOf("From") + 5);
+      if (paramString.contains("("))
       {
-        localClearableEditText1 = (ClearableEditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131305163);
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("key_register_nick", localClearableEditText1.getText().toString());
+        i = paramString.indexOf("(");
+        j = paramString.indexOf(")");
+        localObject1 = paramString;
+        if (i >= 0)
+        {
+          localObject1 = paramString;
+          if (j >= 0) {
+            localObject1 = paramString.substring(i + 1, j);
+          }
+        }
       }
     }
-  }
-  
-  public void a()
-  {
-    b();
-    e();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    Intent localIntent;
-    if (this.jdField_a_of_type_Auqn == null)
-    {
-      this.jdField_a_of_type_Auqn = new auqn(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity);
-      localIntent = new Intent();
-      localIntent.putExtra("key_register_from_fail_pay_lh", this.jdField_a_of_type_Boolean);
-      localIntent.putExtra("key_register_fail_paid_lh", this.jdField_b_of_type_JavaLangString);
-      localIntent.putExtra("key_register_nick", this.c);
-      localIntent.putExtra("key_register_password", this.d);
-      if (jdField_a_of_type_Int != 2) {
-        break label117;
-      }
-    }
-    label117:
-    for (boolean bool = true;; bool = false)
-    {
-      localIntent.putExtra("key_register_chose_bind_phone", bool);
-      localIntent.putExtra("key_register_phonenum_bindnewqq", paramBoolean);
-      this.jdField_a_of_type_Auqn.a(localIntent);
-      this.jdField_a_of_type_Auqn.b();
-      return;
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Auqn != null) {
-      this.jdField_a_of_type_Auqn.a();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.app.removeHandler(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getClass());
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null)
-    {
-      if (this.jdField_a_of_type_Bavg != null) {
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.removeOnLayoutChangeListener(this.jdField_a_of_type_Bavg);
-      }
-      this.jdField_a_of_type_Bavg = null;
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
     do
     {
       do
       {
-        return;
-        i = this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility();
-        if (this.jdField_b_of_type_Boolean) {
-          break;
+        return localObject1;
+        paramString = paramString.substring(0, paramString.indexOf("\n"));
+        if (paramString.contains(":")) {}
+        for (i = paramString.indexOf(":");; i = paramString.indexOf(" "))
+        {
+          localObject1 = paramString;
+          if (i <= 0) {
+            break;
+          }
+          return paramString.substring(0, i);
         }
-        if (this.jdField_a_of_type_ComTencentWidgetScrollView.getScrollY() != 0) {
-          this.jdField_a_of_type_ComTencentWidgetScrollView.scrollTo(0, 0);
-        }
-      } while (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() == 8);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-      return;
-      if ((i == 0) && (paramBoolean))
-      {
-        this.jdField_a_of_type_Bavh.a().a(true);
-        return;
-      }
-      if (i == 0)
-      {
-        this.jdField_a_of_type_Bavh.a().a(false);
-        return;
-      }
-    } while ((i != 8) || (!paramBoolean));
-    int[] arrayOfInt = new int[2];
-    int j = this.jdField_a_of_type_AndroidWidgetButton.getContext().getResources().getDisplayMetrics().heightPixels;
-    this.jdField_a_of_type_AndroidWidgetButton.getLocationOnScreen(arrayOfInt);
-    int i = j - (arrayOfInt[1] + this.jdField_a_of_type_AndroidWidgetButton.getHeight());
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, String.format(Locale.getDefault(), "screen: %d, top: %d, height: %d, left: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(arrayOfInt[1]), Integer.valueOf(this.jdField_a_of_type_AndroidWidgetButton.getHeight()), Integer.valueOf(i) }));
-    }
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131307710).getLocationOnScreen(arrayOfInt);
-    j = arrayOfInt[1];
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131305163).getLocationOnScreen(arrayOfInt);
-    int k = arrayOfInt[1];
-    this.jdField_b_of_type_Int = (k - j);
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, String.format(Locale.getDefault(), "lineA: %d, lineB: %d, scrollHeight: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(this.jdField_b_of_type_Int) }));
-    }
-    i = this.jdField_b_of_type_Int + i;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setMinimumHeight(i);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_Bavh.a());
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, String.format(Locale.getDefault(), "miniHeight: %d", new Object[] { Integer.valueOf(i) }));
-    }
-    if (this.jdField_a_of_type_Bavg == null) {
-      this.jdField_a_of_type_Bavg = new bavg(this.jdField_a_of_type_ComTencentWidgetScrollView, this.jdField_b_of_type_Int, null);
-    }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addOnLayoutChangeListener(this.jdField_a_of_type_Bavg);
+        i = paramString.indexOf("(");
+        j = paramString.indexOf(")");
+        localObject1 = localObject2;
+      } while (i < 0);
+      localObject1 = localObject2;
+    } while (j < 0);
+    return paramString.substring(i + 1, j);
   }
   
-  public void c()
+  public String c(String paramString)
   {
-    if (jdField_a_of_type_Int == 1) {
-      awqx.a(null, "new_reg", "setting_page_yes", "lianghao_clk", "", 1, "");
+    String str = "";
+    if (paramString.contains("PING")) {
+      str = paramString.substring(paramString.indexOf("(") + 1, paramString.indexOf(")"));
     }
-    while (jdField_a_of_type_Int != 2) {
-      return;
-    }
-    awqx.a(null, "new_reg", "setting_page_no", "lianghao_clk", "", 1, "");
+    return str;
   }
   
-  public void d()
+  public String d(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getIntent().getBooleanExtra("key_register_from_quick_register", false))
+    String str = "";
+    if (paramString.contains("time="))
     {
-      this.jdField_b_of_type_Boolean = false;
-      if (QLog.isDevelopLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 4, "checkVipQQStatus isQuickRegister = true");
-      }
-      return;
+      paramString = paramString.substring(paramString.indexOf("time=") + 5);
+      str = paramString.substring(0, paramString.indexOf(" "));
     }
-    ThreadManager.excute(new RegisterLHAssistant.2(this), 16, null, true);
+    return str;
   }
 }
 

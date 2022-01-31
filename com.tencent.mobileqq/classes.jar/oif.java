@@ -1,29 +1,61 @@
+import android.graphics.Color;
+import android.text.SpannableStringBuilder;
+import android.text.TextPaint;
+import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
-import com.tencent.common.app.AppInterface;
-import java.util.HashMap;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 
 public class oif
-  implements View.OnClickListener
 {
-  public oif(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View b;
   
-  public void onClick(View paramView)
+  public View a(ohv paramohv, int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    this.a.f();
-    if (ReadInJoyAdIMAXBrowserFragment.a(this.a)) {
+    View localView = paramView;
+    if (paramView == null)
+    {
+      localView = paramohv.a().inflate(2131559847, paramViewGroup, false);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378378));
+      if (this.jdField_a_of_type_AndroidWidgetTextView.getPaint() != null) {
+        this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
+      }
+      this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131379176);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.b = localView.findViewById(2131379162);
+      this.b.setVisibility(0);
+    }
+    localView.setTag(this);
+    return localView;
+  }
+  
+  public void a(ohv paramohv, int paramInt)
+  {
+    if (paramohv == null) {
       return;
     }
-    ReadInJoyAdIMAXBrowserFragment.a(this.a, true);
-    paramView = new HashMap();
-    paramView.put("stat_src", "5");
-    nbe.a(new nmv().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(nbe.t).b(nbe.ae).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(nbe.a(paramView)).a());
+    oii localoii = (oii)paramohv.getItem(paramInt);
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    String str = ajyc.a(2131712708);
+    if (localoii.a != null) {}
+    for (paramohv = String.valueOf(paramohv.a().a(localoii.a.commentId));; paramohv = "")
+    {
+      localSpannableStringBuilder.append(str + " ");
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#262626")), 0, str.length(), 34);
+      localSpannableStringBuilder.append(paramohv);
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#737373")), str.length(), localSpannableStringBuilder.length(), 34);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oif
  * JD-Core Version:    0.7.0.1
  */

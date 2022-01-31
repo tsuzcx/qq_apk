@@ -1,19 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class behq
-  implements View.OnClickListener
+public class behq
 {
-  behq(behp parambehp) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-  }
+  public int a;
+  public String a;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     behq
  * JD-Core Version:    0.7.0.1
  */

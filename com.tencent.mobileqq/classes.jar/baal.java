@@ -1,39 +1,10 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-
-public final class baal
-  extends BroadcastReceiver
+public abstract interface baal
 {
-  public baal(BaseApplicationImpl paramBaseApplicationImpl) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    int i;
-    do
-    {
-      do
-      {
-        return;
-      } while (!"tencent.video.q2v.debug".equals(paramIntent.getAction()));
-      i = paramIntent.getIntExtra("_debug_Event_index", -1);
-      int j = paramIntent.getIntExtra("_debug_Event_value", -1);
-      if ((i >= 0) && (i < 30))
-      {
-        AudioHelper.a[i] = j;
-        QLog.w("AudioHelper", 1, "ReceiverDebugValue, [" + i + "]=[" + j + "]");
-      }
-    } while (i != 2);
-    AudioHelper.a(this.a.getApplicationContext());
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baal
  * JD-Core Version:    0.7.0.1
  */

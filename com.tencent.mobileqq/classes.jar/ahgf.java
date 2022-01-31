@@ -1,15 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
-public class ahgf
-  implements DialogInterface.OnClickListener
+class ahgf
+  implements InvocationHandler
 {
-  public ahgf(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public ahgm a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ahgf(ahgm paramahgm)
   {
-    EditLocalVideoActivity.a(this.a).dismiss();
+    this.a = paramahgm;
+  }
+  
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  {
+    QLog.i("springHb_SpringEntryManager", 2, "callbackInvocationHandler method: " + paramMethod.getName());
+    try
+    {
+      paramObject = paramMethod.invoke(this.a, paramArrayOfObject);
+      return paramObject;
+    }
+    catch (Throwable paramObject)
+    {
+      QLog.i("springHb_SpringEntryManager", 1, QLog.getStackTraceString(paramObject));
+    }
+    return null;
   }
 }
 

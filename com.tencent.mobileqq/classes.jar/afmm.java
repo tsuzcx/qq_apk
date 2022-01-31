@@ -1,43 +1,38 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.TextView;
-import com.tencent.widget.FadeIconImageView;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class afmm
-  extends aflu
+public abstract interface afmm
 {
-  public static final int[] a;
-  public static final int[] b = { 2131298528 };
+  public abstract Activity a();
   
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131625169 };
-  }
+  public abstract View a();
   
-  public afmm(FragmentActivity paramFragmentActivity)
-  {
-    super(paramFragmentActivity);
-  }
+  public abstract aqbc a();
   
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibility(8);
-  }
+  public abstract bfmt a();
   
-  protected int[] a()
-  {
-    return b;
-  }
+  public abstract QQAppInterface a();
   
-  protected int[] b()
-  {
-    return jdField_a_of_type_ArrayOfInt;
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(Runnable paramRunnable);
+  
+  public abstract void a(String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract View b();
+  
+  public abstract boolean b();
+  
+  public abstract View c();
+  
+  public abstract View d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afmm
  * JD-Core Version:    0.7.0.1
  */

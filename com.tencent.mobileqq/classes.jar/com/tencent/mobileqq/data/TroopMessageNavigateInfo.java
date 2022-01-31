@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
+import aukm;
 
 public class TroopMessageNavigateInfo
-  extends atmo
+  extends aukm
 {
   public static int STATUS_ADD = 1;
   public static int STATUS_DELETE = 3;
   public static int STATUS_MODIFY = 2;
   public static int STATUS_NORMAL;
+  public Object extObj;
   public long msgseq;
   public int receivedFlowserCount;
   public int status = STATUS_NORMAL;
@@ -18,14 +19,11 @@ public class TroopMessageNavigateInfo
   
   public int getMsgBizType()
   {
-    int i = 26;
     switch (this.type)
     {
     default: 
       if (this.type > 26) {}
-      i = this.type;
-    case 26: 
-      return i;
+      return this.type;
     case 6: 
       return 5;
     case 13: 
@@ -47,9 +45,11 @@ public class TroopMessageNavigateInfo
     case 22: 
       return 22;
     case 23: 
-      return 23;
-    case 24: 
       return 24;
+    case 24: 
+      return 25;
+    case 26: 
+      return 27;
     case 5: 
       return 4;
     case 4: 
@@ -62,8 +62,12 @@ public class TroopMessageNavigateInfo
       return 6;
     case 20: 
       return 20;
+    case 100: 
+      return 16;
+    case 102: 
+      return 31;
     }
-    return 16;
+    return 23;
   }
 }
 

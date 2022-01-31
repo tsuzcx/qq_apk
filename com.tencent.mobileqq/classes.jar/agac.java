@@ -1,25 +1,20 @@
-final class agac
-  extends afzz
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+
+public class agac
+  implements View.OnClickListener
 {
-  public boolean a(String paramString)
-  {
-    if (!super.a(paramString)) {}
-    do
-    {
-      return false;
-      paramString = agaq.a(paramString);
-    } while ((paramString != null) && ("image".equals(paramString[0])) && (agaq.a(paramString[1])));
-    return true;
-  }
+  public agac(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public boolean b()
+  public void onClick(View paramView)
   {
-    return false;
-  }
-  
-  public boolean d()
-  {
-    return true;
+    if (this.a.jdField_d_of_type_Int == 11) {
+      axqw.b(this.a.getActivity().app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
+    }
+    this.a.jdField_d_of_type_AndroidAppDialog.cancel();
   }
 }
 

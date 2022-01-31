@@ -1,112 +1,118 @@
 import android.content.Context;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.navigate.TroopDNANavBar.1;
+import com.tencent.mobileqq.activity.aio.navigate.TroopDNANavBar.2;
+import com.tencent.mobileqq.activity.aio.navigate.TroopDNANavBar.3;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
 
 public class aefu
-  implements bceo
+  extends aefo
+  implements Animation.AnimationListener
 {
-  int jdField_a_of_type_Int = 1;
-  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<aiaq> b;
-  WeakReference<XListView> c;
-  WeakReference<PullRefreshHeader> d;
-  WeakReference<TextView> e;
+  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public aefu(Context paramContext, XListView paramXListView, aiaq paramaiaq, PullRefreshHeader paramPullRefreshHeader, TextView paramTextView, int paramInt)
+  public aefu(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.c = new WeakReference(paramXListView);
-    this.b = new WeakReference(paramaiaq);
-    this.d = new WeakReference(paramPullRefreshHeader);
-    this.e = new WeakReference(paramTextView);
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramBaseChatPie, paramQQAppInterface, paramContext, paramSessionInfo, paramInt1, paramInt2);
   }
   
-  public void a(Exception paramException)
+  public static String a(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.hotchat.aio_post_list_req", 2, paramException.getMessage());
+    Object localObject = paramQQAppInterface;
+    if (paramQQAppInterface == null)
+    {
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface)) {
+        paramQQAppInterface = (QQAppInterface)localObject;
+      }
+      localObject = paramQQAppInterface;
+      if (paramQQAppInterface == null) {
+        return "troop_dna_aio_guide_counts";
+      }
     }
-    paramException = (PullRefreshHeader)this.d.get();
-    if ((paramException != null) && (paramException.getVisibility() == 0)) {
-      paramException.a(1);
-    }
+    return "troop_dna_aio_guide_counts" + ((QQAppInterface)localObject).getCurrentAccountUin();
   }
   
-  public void a(JSONObject paramJSONObject)
+  public static void e()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.hotchat.aio_post_list_req", 2, "result " + paramJSONObject);
+    ThreadManager.postImmediately(new TroopDNANavBar.3(), null, false);
+  }
+  
+  public long a()
+  {
+    return 15000L;
+  }
+  
+  public View a()
+  {
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560637, null);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362799));
+    return localView;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Adfs != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Adfs.b(true);
     }
-    XListView localXListView = (XListView)this.c.get();
-    if (localXListView == null) {}
-    aiaq localaiaq;
+    axqw.b(null, "dc00898", "", "", "0X800A469", "0X800A469", 0, 0, "", "", "", "");
+  }
+  
+  public boolean a()
+  {
+    boolean bool1 = true;
+    boolean bool2 = astm.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Adfs == null))
+    {
+      QLog.d("NavigateBarManager.TroopDNANavBar", 1, "mChatPie == null || mChatPie.mChatDrawer == null");
+      bool1 = false;
+    }
+    int i;
     do
     {
-      do
-      {
-        do
-        {
-          return;
-          localObject = (TextView)this.e.get();
-        } while (localObject == null);
-        localaiaq = (aiaq)this.b.get();
-      } while (localaiaq == null);
-      if ((paramJSONObject != null) && (paramJSONObject.optInt("retcode") == 0)) {
-        break;
+      return bool1;
+      i = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).getInt(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("NavigateBarManager.TroopDNANavBar", 2, String.format("needShow guide count: %s", new Object[] { Integer.valueOf(i) }));
       }
-      if (localXListView.getVisibility() == 8) {
-        ((TextView)localObject).setText(ajjy.a(2131639794));
-      }
-      paramJSONObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (paramJSONObject == null);
-    bbmy.a(paramJSONObject, 1, ajjy.a(2131639796), 0).a();
-    localaiaq.a();
-    return;
-    ((TextView)localObject).setVisibility(8);
-    localXListView.setVisibility(0);
-    Object localObject = paramJSONObject.optJSONObject("result");
-    label193:
-    int j;
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      localaiaq.b(((JSONObject)localObject).optJSONArray("posts"));
-      j = paramJSONObject.optInt("retcode");
-      paramJSONObject = (PullRefreshHeader)this.d.get();
-      if ((paramJSONObject != null) && (paramJSONObject.getVisibility() == 0)) {
-        if (j != 0) {
-          break label315;
-        }
-      }
-    }
-    label315:
-    for (int i = 0;; i = 1)
-    {
-      paramJSONObject.a(i);
-      localXListView.springBackOverScrollHeaderView();
-      if (j != 0) {
-        break;
-      }
-      aefe.i = System.currentTimeMillis();
-      return;
-      if (((JSONObject)localObject).optInt("isend") == 0)
-      {
-        localaiaq.a(((JSONObject)localObject).optJSONArray("posts"));
-        localaiaq.a();
-        break label193;
-      }
-      paramJSONObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramJSONObject != null) {
-        bbmy.a(paramJSONObject, 2, ajjy.a(2131639786), 0).a();
-      }
-      localaiaq.a();
-      return;
-    }
+    } while ((bool2) && (i < 3));
+    return false;
   }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new TroopDNANavBar.1(this), 500L);
+    ThreadManager.postImmediately(new TroopDNANavBar.2(this), null, false);
+  }
+  
+  public void c() {}
+  
+  public void d()
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

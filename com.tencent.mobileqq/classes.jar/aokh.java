@@ -1,23 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.annotation.TargetApi;
+import android.graphics.drawable.Drawable;
+import android.view.View;
 
+@TargetApi(16)
 class aokh
-  extends Handler
 {
-  aokh(aoke paramaoke, Looper paramLooper)
+  public static void a(View paramView, Drawable paramDrawable)
   {
-    super(paramLooper);
+    paramView.setBackground(paramDrawable);
   }
   
-  public void handleMessage(Message paramMessage)
+  public static void a(View paramView, Runnable paramRunnable)
   {
-    this.a.d();
+    paramView.postOnAnimation(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aokh
  * JD-Core Version:    0.7.0.1
  */

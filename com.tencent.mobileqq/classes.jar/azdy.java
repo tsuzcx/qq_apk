@@ -1,8 +1,41 @@
-public abstract interface azdy
+import android.os.AsyncTask;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class azdy
+  extends AsyncTask<Void, Void, String>
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public azdy(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
+  protected String a(Void... paramVarArgs)
+  {
+    try
+    {
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
+      if (paramVarArgs != null)
+      {
+        bbdr.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramVarArgs);
+        return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131695190) + " " + paramVarArgs;
+      }
+    }
+    catch (Exception paramVarArgs)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("PhotoPreviewActivity", 2, QLog.getStackTraceString(paramVarArgs));
+        }
+        paramVarArgs = null;
+      }
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131695189);
+  }
+  
+  protected void a(String paramString)
+  {
+    bcpw.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
+  }
 }
 
 

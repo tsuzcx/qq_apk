@@ -1,450 +1,635 @@
-import android.os.Looper;
-import android.support.annotation.UiThread;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.view.View;
 import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.MsgTabNodeEntity;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeRecommendActivityReadEntity;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeVidListEntity;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryManager.1;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryManager.2;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryManager.3;
+import com.tencent.biz.qqstory.base.StoryHaloManager.2;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabHaloEntity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.dispatch.Dispatcher;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.List<Ltfi;>;
+import java.util.Map;
+import java.util.Set;
+import java.util.TimeZone;
+import java.util.concurrent.ConcurrentHashMap;
 import mqq.manager.Manager;
+import org.json.JSONObject;
 
 public class stf
   implements Manager
 {
-  public int a;
-  public ArrayList<ssm> a;
-  ssr jdField_a_of_type_Ssr = new ssr(QQStoryContext.a(), this);
-  stw jdField_a_of_type_Stw;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
+  private static long jdField_a_of_type_Long;
+  ajxl jdField_a_of_type_Ajxl = new stg(this);
+  private ajxn jdField_a_of_type_Ajxn;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Boolean jdField_a_of_type_JavaLangBoolean;
+  private Double jdField_a_of_type_JavaLangDouble;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private volatile String jdField_a_of_type_JavaLangString;
+  private Map<Long, tfi> jdField_a_of_type_JavaUtilMap;
+  private Set<Long> jdField_a_of_type_JavaUtilSet;
+  private tkq jdField_a_of_type_Tkq;
   
   public stf(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    b();
   }
   
-  public static stf a(QQAppInterface paramQQAppInterface)
+  private int a(List<tfi> paramList, tfi paramtfi)
   {
-    return (stf)paramQQAppInterface.getManager(251);
-  }
-  
-  /* Error */
-  public static void a(ArrayList<MsgTabNodeEntity> paramArrayList, boolean paramBoolean)
-  {
-    // Byte code:
-    //   0: invokestatic 54	com/tencent/biz/qqstory/app/QQStoryContext:a	()Lcom/tencent/biz/qqstory/app/QQStoryContext;
-    //   3: invokevirtual 57	com/tencent/biz/qqstory/app/QQStoryContext:a	()Latmq;
-    //   6: invokevirtual 63	atmq:createEntityManager	()Latmp;
-    //   9: astore_2
-    //   10: aload_2
-    //   11: invokevirtual 68	atmp:a	()Latmr;
-    //   14: invokevirtual 72	atmr:a	()V
-    //   17: iload_1
-    //   18: ifeq +26 -> 44
-    //   21: new 74	com/tencent/biz/qqstory/database/MsgTabNodeEntity
-    //   24: dup
-    //   25: invokespecial 75	com/tencent/biz/qqstory/database/MsgTabNodeEntity:<init>	()V
-    //   28: astore_3
-    //   29: aload_3
-    //   30: sipush 1001
-    //   33: invokevirtual 79	com/tencent/biz/qqstory/database/MsgTabNodeEntity:setStatus	(I)V
-    //   36: aload_2
-    //   37: aload_3
-    //   38: aconst_null
-    //   39: aconst_null
-    //   40: invokevirtual 82	atmp:a	(Latmo;Ljava/lang/String;[Ljava/lang/String;)Z
-    //   43: pop
-    //   44: aload_0
-    //   45: invokevirtual 86	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   48: astore_0
-    //   49: aload_0
-    //   50: invokeinterface 92 1 0
-    //   55: ifeq +55 -> 110
-    //   58: aload_0
-    //   59: invokeinterface 96 1 0
-    //   64: checkcast 74	com/tencent/biz/qqstory/database/MsgTabNodeEntity
-    //   67: astore_3
-    //   68: aload_3
-    //   69: getfield 99	com/tencent/biz/qqstory/database/MsgTabNodeEntity:nodeType	I
-    //   72: iconst_1
-    //   73: if_icmpeq -24 -> 49
-    //   76: aload_3
-    //   77: getfield 99	com/tencent/biz/qqstory/database/MsgTabNodeEntity:nodeType	I
-    //   80: iconst_2
-    //   81: if_icmpeq -32 -> 49
-    //   84: aload_2
-    //   85: aload_3
-    //   86: invokevirtual 102	atmp:b	(Latmo;)V
-    //   89: goto -40 -> 49
-    //   92: astore_0
-    //   93: ldc 104
-    //   95: aload_0
-    //   96: invokestatic 109	vmn:b	(Ljava/lang/String;Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   99: invokestatic 114	awpu:a	(Ljava/lang/Throwable;)V
-    //   102: aload_2
-    //   103: invokevirtual 68	atmp:a	()Latmr;
-    //   106: invokevirtual 116	atmr:b	()V
-    //   109: return
-    //   110: aload_2
-    //   111: invokevirtual 68	atmp:a	()Latmr;
-    //   114: invokevirtual 118	atmr:c	()V
-    //   117: aload_2
-    //   118: invokevirtual 68	atmp:a	()Latmr;
-    //   121: invokevirtual 116	atmr:b	()V
-    //   124: return
-    //   125: astore_0
-    //   126: aload_2
-    //   127: invokevirtual 68	atmp:a	()Latmr;
-    //   130: invokevirtual 116	atmr:b	()V
-    //   133: aload_0
-    //   134: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	135	0	paramArrayList	ArrayList<MsgTabNodeEntity>
-    //   0	135	1	paramBoolean	boolean
-    //   9	118	2	localatmp	atmp
-    //   28	58	3	localMsgTabNodeEntity	MsgTabNodeEntity
-    // Exception table:
-    //   from	to	target	type
-    //   21	44	92	java/lang/NullPointerException
-    //   44	49	92	java/lang/NullPointerException
-    //   49	89	92	java/lang/NullPointerException
-    //   110	117	92	java/lang/NullPointerException
-    //   21	44	125	finally
-    //   44	49	125	finally
-    //   49	89	125	finally
-    //   93	102	125	finally
-    //   110	117	125	finally
-  }
-  
-  public static void a(ssm paramssm, byte[] paramArrayOfByte)
-  {
-    atmp localatmp = QQStoryContext.a().a().createEntityManager();
-    MsgTabNodeVidListEntity localMsgTabNodeVidListEntity = new MsgTabNodeVidListEntity();
-    localMsgTabNodeVidListEntity.nodeType = paramssm.jdField_a_of_type_Int;
-    localMsgTabNodeVidListEntity.unionId = paramssm.jdField_a_of_type_JavaLangString;
-    localMsgTabNodeVidListEntity.reqTimeStamp = paramssm.c;
-    localMsgTabNodeVidListEntity.rspData = paramArrayOfByte;
-    localMsgTabNodeVidListEntity.requestSource = paramssm.f;
-    localatmp.b(localMsgTabNodeVidListEntity);
-  }
-  
-  public static boolean a(ssm paramssm)
-  {
-    atmp localatmp = QQStoryContext.a().a().createEntityManager();
-    MsgTabNodeVidListEntity localMsgTabNodeVidListEntity = new MsgTabNodeVidListEntity();
-    localMsgTabNodeVidListEntity.nodeType = paramssm.jdField_a_of_type_Int;
-    localMsgTabNodeVidListEntity.unionId = paramssm.jdField_a_of_type_JavaLangString;
-    localMsgTabNodeVidListEntity.setStatus(1001);
-    return localatmp.a(localMsgTabNodeVidListEntity, "nodeType=? and unionId=?", MsgTabNodeVidListEntity.getArgs(paramssm));
-  }
-  
-  public static byte[] a(ssm paramssm)
-  {
-    byte[] arrayOfByte = null;
-    Object localObject = QQStoryContext.a().a().createEntityManager().a(MsgTabNodeVidListEntity.class, MsgTabNodeVidListEntity.class.getSimpleName(), false, MsgTabNodeVidListEntity.getSelection(), MsgTabNodeVidListEntity.getArgs(paramssm), null, null, null, null, null);
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    int i = 0;
+    while (i < paramList.size())
     {
-      localObject = (MsgTabNodeVidListEntity)((List)localObject).get(0);
-      if (((MsgTabNodeVidListEntity)localObject).reqTimeStamp == paramssm.c)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.msgTab.mgr", 2, "db has valid vid list, nodeType=" + paramssm.jdField_a_of_type_Int + ", unionId=" + paramssm.jdField_a_of_type_JavaLangString);
-        }
-        arrayOfByte = ((MsgTabNodeVidListEntity)localObject).rspData;
+      if (paramtfi.jdField_b_of_type_Long == ((tfi)paramList.get(i)).jdField_b_of_type_Long) {
+        return i;
+      }
+      i += 1;
+    }
+    return -1;
+  }
+  
+  private int a(tfi paramtfi)
+  {
+    boolean bool1 = b(paramtfi);
+    if (!bool1) {}
+    boolean bool2;
+    do
+    {
+      return -3;
+      bool2 = c(paramtfi);
+    } while (!bool2);
+    boolean bool3 = a(paramtfi);
+    if (QLog.isColorLevel()) {
+      QLog.i("StoryHaloManager", 2, "tellHaloState: invoked. Message: storyNodeRecently: " + bool2 + " storyNodeVideoAllRead: " + bool3 + " storyVideoExisted: " + bool1);
+    }
+    if (!bool3) {
+      return -1;
+    }
+    return -2;
+  }
+  
+  public static long a(long paramLong)
+  {
+    int i = 86400 * (int)(paramLong / 86400);
+    if (QLog.isColorLevel())
+    {
+      Object localObject = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+      ((SimpleDateFormat)localObject).setTimeZone(TimeZone.getTimeZone("UTC+8"));
+      localObject = ((SimpleDateFormat)localObject).format(new Date(i * 1000L));
+      QLog.i("StoryHaloManager", 2, "todayDawnSecond: invoked. Message: wholeDaySecond: " + i + " format: " + (String)localObject);
+    }
+    return i;
+  }
+  
+  private List<Long> a(Set<Long> paramSet, List<Long> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject;
+    if ((paramSet == null) && (paramList == null)) {
+      localObject = localArrayList;
+    }
+    do
+    {
+      return localObject;
+      if (paramSet != null) {
+        break;
+      }
+      localObject = paramList;
+    } while (paramList != null);
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      localObject = (Long)paramList.next();
+      if (!paramSet.contains(localObject)) {
+        localArrayList.add(localObject);
       }
     }
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        return arrayOfByte;
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.qqstory.msgTab.mgr", 2, "db vid list expired, nodeType=" + paramssm.jdField_a_of_type_Int + ", unionId=" + paramssm.jdField_a_of_type_JavaLangString);
-      return null;
-    }
-    QLog.d("Q.qqstory.msgTab.mgr", 2, "no db vid list, nodeType=" + paramssm.jdField_a_of_type_Int + ", unionId=" + paramssm.jdField_a_of_type_JavaLangString);
-    return null;
+    return localArrayList;
   }
   
-  public static final boolean b(ssm paramssm)
+  private boolean a(@Nullable tfi paramtfi)
   {
-    boolean bool2 = false;
-    paramssm = QQStoryContext.a().a().createEntityManager().a(MsgTabNodeRecommendActivityReadEntity.class, MsgTabNodeRecommendActivityReadEntity.class.getSimpleName(), false, MsgTabNodeRecommendActivityReadEntity.getSelection(), MsgTabNodeRecommendActivityReadEntity.getArgs(paramssm), null, null, null, null, null);
-    boolean bool1 = bool2;
-    if (paramssm != null)
+    if (paramtfi == null) {}
+    while (paramtfi.jdField_b_of_type_Int <= 0) {
+      return true;
+    }
+    return false;
+  }
+  
+  private void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("StoryHaloManager", 2, "init: invoked.  this: " + this);
+    }
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(99);
+    this.jdField_a_of_type_Tkq = new tkq(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_Ajxn = ((ajxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajxl);
+  }
+  
+  private void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("StoryHaloManager", 2, "parseJsonConfig: invoked. Message: json: " + paramString);
+    }
+    if (TextUtils.isEmpty(paramString))
     {
-      bool1 = bool2;
-      if (paramssm.size() > 0)
+      this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+      this.jdField_a_of_type_JavaLangDouble = Double.valueOf(0.0D);
+      return;
+    }
+    JSONObject localJSONObject = new JSONObject(paramString);
+    if (localJSONObject.optInt("enabled") == 1) {}
+    for (paramString = Boolean.TRUE;; paramString = Boolean.FALSE)
+    {
+      this.jdField_a_of_type_JavaLangBoolean = paramString;
+      this.jdField_a_of_type_JavaLangDouble = Double.valueOf(localJSONObject.optDouble("timeout_day", 0.0D));
+      return;
+    }
+  }
+  
+  private static boolean b()
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = l1 - jdField_a_of_type_Long;
+    if ((l2 > 0L) && (l2 < 3000L)) {
+      return true;
+    }
+    jdField_a_of_type_Long = l1;
+    return false;
+  }
+  
+  private boolean b(@Nullable tfi paramtfi)
+  {
+    if (paramtfi == null) {}
+    while (paramtfi.a.size() <= 0) {
+      return false;
+    }
+    return true;
+  }
+  
+  private boolean c(@Nullable tfi paramtfi)
+  {
+    if (paramtfi == null) {}
+    long l1;
+    long l3;
+    long l4;
+    do
+    {
+      return false;
+      l1 = NetConnInfoCenter.getServerTime();
+      long l2 = paramtfi.d;
+      l3 = a(l2);
+      l4 = a();
+      if (QLog.isColorLevel()) {
+        QLog.i("StoryHaloManager", 2, "isStoryNodeRecently: invoked. Message: timeoutSecond: " + l4 + " serverTime: " + l1 + " nodeInfoTimeStamp: " + l2);
+      }
+    } while (l1 - l3 >= l4);
+    return true;
+  }
+  
+  public long a()
+  {
+    String str;
+    if (this.jdField_a_of_type_JavaLangDouble == null) {
+      str = bbjn.q(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    }
+    try
+    {
+      b(str);
+      return (86400 * this.jdField_a_of_type_JavaLangDouble.doubleValue());
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        paramssm = (MsgTabNodeRecommendActivityReadEntity)paramssm.get(0);
-        bool1 = bool2;
-        if (paramssm != null)
+        if (QLog.isColorLevel()) {
+          QLog.e("StoryHaloManager", 2, "getEnabled: failed. Message: exception: " + localException);
+        }
+        this.jdField_a_of_type_JavaLangDouble = Double.valueOf(0.0D);
+      }
+    }
+  }
+  
+  public List<tfi> a()
+  {
+    Object localObject = QQStoryContext.a().a().createEntityManager().a(MsgTabHaloEntity.class);
+    if (QLog.isColorLevel()) {
+      QLog.i("StoryHaloManager", 2, "dbQueryAllNode: invoked. Message: entities: " + localObject);
+    }
+    ArrayList localArrayList = new ArrayList();
+    if (localObject == null) {
+      return localArrayList;
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      MsgTabHaloEntity localMsgTabHaloEntity = (MsgTabHaloEntity)((Iterator)localObject).next();
+      tfi localtfi = new tfi();
+      localtfi.a(localMsgTabHaloEntity);
+      localArrayList.add(localtfi);
+    }
+    return localArrayList;
+  }
+  
+  @NonNull
+  public List<Long> a(List<RecentBaseData> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramList == null) {
+      return localArrayList;
+    }
+    paramList = new ArrayList(paramList).iterator();
+    while (paramList.hasNext())
+    {
+      Object localObject = paramList.next();
+      if (a(localObject))
+      {
+        localObject = (RecentItemChatMsgData)localObject;
+        try
         {
-          bool1 = bool2;
-          if (paramssm.hasRead == 1) {
-            bool1 = true;
+          localArrayList.add(Long.valueOf(Long.valueOf(((RecentItemChatMsgData)localObject).a()).longValue()));
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          QLog.e("StoryHaloManager", 1, "getFriendUins: failed.  exception: " + localNumberFormatException);
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  @Nullable
+  public tfi a(@NonNull String paramString)
+  {
+    MsgTabHaloEntity localMsgTabHaloEntity = null;
+    List localList = QQStoryContext.a().a().createEntityManager().a(MsgTabHaloEntity.class, MsgTabHaloEntity.class.getSimpleName(), false, MsgTabHaloEntity.getSelection(), new String[] { paramString }, null, null, null, null);
+    if (QLog.isColorLevel()) {
+      QLog.i("StoryHaloManager", 2, "dbQueryUinNode: invoked. Message: msgTabHaloEntities: " + localList);
+    }
+    paramString = localMsgTabHaloEntity;
+    if (localList != null)
+    {
+      paramString = localMsgTabHaloEntity;
+      if (localList.size() > 0)
+      {
+        localMsgTabHaloEntity = (MsgTabHaloEntity)localList.get(0);
+        paramString = new tfi();
+        paramString.a(localMsgTabHaloEntity);
+      }
+    }
+    return paramString;
+  }
+  
+  @Nullable
+  public tfi a(@NonNull tfi paramtfi)
+  {
+    MsgTabHaloEntity localMsgTabHaloEntity = null;
+    List localList = QQStoryContext.a().a().createEntityManager().a(MsgTabHaloEntity.class, MsgTabHaloEntity.class.getSimpleName(), false, MsgTabHaloEntity.getSelection(), MsgTabHaloEntity.getSelectionArgs(paramtfi), null, null, null, null);
+    if (QLog.isColorLevel()) {
+      QLog.i("StoryHaloManager", 2, "dbQueryUserNode: invoked. Message: msgTabHaloEntities: " + localList);
+    }
+    paramtfi = localMsgTabHaloEntity;
+    if (localList != null)
+    {
+      paramtfi = localMsgTabHaloEntity;
+      if (localList.size() > 0)
+      {
+        localMsgTabHaloEntity = (MsgTabHaloEntity)localList.get(0);
+        paramtfi = new tfi();
+        paramtfi.a(localMsgTabHaloEntity);
+      }
+    }
+    return paramtfi;
+  }
+  
+  public void a()
+  {
+    tkr localtkr = new tkr(true);
+    ste.a().dispatch(localtkr);
+  }
+  
+  public void a(int paramInt, List<Long> paramList) {}
+  
+  public void a(View paramView, @NonNull RecentItemChatMsgData paramRecentItemChatMsgData)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("StoryHaloManager", 2, "onClick: invoked. Message: uin: " + paramRecentItemChatMsgData.a());
+    }
+    Bosses.get().postLightWeightJob(new StoryHaloManager.2(this, paramRecentItemChatMsgData, paramView), 0);
+  }
+  
+  public void a(RecentItemChatMsgData paramRecentItemChatMsgData)
+  {
+    if (!a())
+    {
+      paramRecentItemChatMsgData.haloState = 0;
+      return;
+    }
+    Object localObject = paramRecentItemChatMsgData.a();
+    try
+    {
+      long l = Long.valueOf((String)localObject).longValue();
+      localObject = (tfi)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(l));
+      int i = a((tfi)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.i("StoryHaloManager", 2, "assignHaloState: invoked. Message: haloState: " + i + " uin: " + l + " msgTabNodeInfo: " + localObject);
+      }
+      paramRecentItemChatMsgData.haloState = i;
+      return;
+    }
+    catch (NumberFormatException paramRecentItemChatMsgData)
+    {
+      QLog.e("StoryHaloManager", 1, "assignHaloState: failed.  exception: " + paramRecentItemChatMsgData);
+    }
+  }
+  
+  public void a(ConfigurationService.Config paramConfig)
+  {
+    int i = paramConfig.version.get();
+    int j = bbjn.aD(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    String str;
+    if (i != j)
+    {
+      str = ando.b(paramConfig, j, paramConfig.type.get());
+      if (QLog.isColorLevel()) {
+        QLog.i("StoryHaloManager", 2, "handleConfig: invoked. Message: configJson: " + str);
+      }
+      if (!TextUtils.isEmpty(str)) {
+        break label87;
+      }
+    }
+    label87:
+    do
+    {
+      return;
+      bbjn.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramConfig.version.get(), str);
+      try
+      {
+        b(str);
+        return;
+      }
+      catch (Exception paramConfig) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("StoryHaloManager", 2, "handleConfig: failed. Message: exception: " + paramConfig);
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(@NonNull List<tfi> paramList)
+  {
+    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap(this.jdField_a_of_type_JavaUtilMap);
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      tfi localtfi1 = (tfi)paramList.next();
+      if (localtfi1.e != 1)
+      {
+        b(localtfi1);
+      }
+      else
+      {
+        tfi localtfi2 = (tfi)localConcurrentHashMap.get(Long.valueOf(localtfi1.jdField_b_of_type_Long));
+        if (localtfi2 == null)
+        {
+          localtfi1 = a(String.valueOf(localtfi1.jdField_b_of_type_Long));
+          if (QLog.isColorLevel()) {
+            QLog.i("StoryHaloManager", 2, "updateHaloStateMap: invoked. use db cache. dbMsgNode: " + localtfi1);
+          }
+          b(localtfi1);
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("StoryHaloManager", 2, "updateHaloStateMap: invoked. use memory cache. backupNode: " + localtfi2);
+          }
+          b(localtfi2);
+        }
+      }
+    }
+  }
+  
+  public void a(List<tfi> paramList, boolean paramBoolean)
+  {
+    List localList = a();
+    aukn localaukn = QQStoryContext.a().a().createEntityManager();
+    localaukn.a().a();
+    if (paramBoolean) {}
+    label174:
+    for (;;)
+    {
+      try
+      {
+        Object localObject = new MsgTabHaloEntity();
+        ((MsgTabHaloEntity)localObject).setStatus(1001);
+        localaukn.a((aukm)localObject, null, null);
+        Iterator localIterator = paramList.iterator();
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject = (tfi)localIterator.next();
+        paramList = (List<tfi>)localObject;
+        int i;
+        if (((tfi)localObject).e == 1)
+        {
+          i = a(localList, (tfi)localObject);
+          if (i != -1) {
+            break label174;
+          }
+          paramList = (List<tfi>)localObject;
+          if (QLog.isColorLevel())
+          {
+            QLog.e("StoryHaloManager", 2, "dbBuildAllNodes: failed.  exception: info: " + localObject);
+            paramList = (List<tfi>)localObject;
           }
         }
+        localaukn.b(paramList.a());
+        continue;
+        paramList = (tfi)localList.get(i);
+      }
+      finally
+      {
+        localaukn.a().b();
+      }
+    }
+    localaukn.a().c();
+    localaukn.a().b();
+  }
+  
+  public void a(@NonNull tfi paramtfi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("StoryHaloManager", 2, "handlePushPacket: invoked. Message: msgTabNodeInfo: " + paramtfi);
+    }
+    d(paramtfi);
+    tfi localtfi = a(paramtfi);
+    if ((localtfi != null) && (localtfi.c < paramtfi.c))
+    {
+      c(paramtfi);
+      b(paramtfi);
+    }
+    while ((localtfi != null) || (paramtfi == null)) {
+      return;
+    }
+    c(paramtfi);
+    b(paramtfi);
+  }
+  
+  public boolean a()
+  {
+    String str;
+    if (this.jdField_a_of_type_JavaLangBoolean == null) {
+      str = bbjn.q(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    }
+    try
+    {
+      b(str);
+      return Boolean.TRUE.equals(this.jdField_a_of_type_JavaLangBoolean);
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("StoryHaloManager", 2, "getEnabled: failed. Message: exception: " + localException);
+        }
+        this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+      }
+    }
+  }
+  
+  public boolean a(@Nullable Object paramObject)
+  {
+    return false;
+  }
+  
+  @Nullable
+  public tfi b(@NonNull String paramString)
+  {
+    MsgTabHaloEntity localMsgTabHaloEntity = null;
+    List localList = QQStoryContext.a().a().createEntityManager().a(MsgTabHaloEntity.class, MsgTabHaloEntity.class.getSimpleName(), false, "unionId=?", new String[] { paramString }, null, null, null, null);
+    if (QLog.isColorLevel()) {
+      QLog.i("StoryHaloManager", 2, "dbQueryUnionIdNode: invoked. Message: msgTabHaloEntities: " + localList);
+    }
+    paramString = localMsgTabHaloEntity;
+    if (localList != null)
+    {
+      paramString = localMsgTabHaloEntity;
+      if (localList.size() > 0)
+      {
+        localMsgTabHaloEntity = (MsgTabHaloEntity)localList.get(0);
+        paramString = new tfi();
+        paramString.a(localMsgTabHaloEntity);
+      }
+    }
+    return paramString;
+  }
+  
+  public void b(int paramInt, List<Long> paramList)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (b()) {
+        return;
+      }
+      List localList = a(this.jdField_a_of_type_JavaUtilSet, paramList);
+      if (localList.size() > 0)
+      {
+        this.jdField_a_of_type_JavaUtilSet = new HashSet(paramList);
+        a(paramInt, localList);
+      }
+      return;
+    }
+  }
+  
+  public void b(tfi paramtfi)
+  {
+    if (paramtfi == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("StoryHaloManager", 2, "tinkerHaloStateMap: invoked.  msgTabNodeInfo: " + paramtfi);
+      }
+      return;
+    }
+    long l = paramtfi.jdField_b_of_type_Long;
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(l), paramtfi);
+  }
+  
+  public boolean b(@Nullable Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (a(paramObject))
+    {
+      paramObject = (RecentItemChatMsgData)paramObject;
+      if (paramObject.haloState != -1)
+      {
+        bool1 = bool2;
+        if (paramObject.haloState != -2) {}
+      }
+      else
+      {
+        bool1 = true;
       }
     }
     return bool1;
   }
   
-  public static final void d(ssm paramssm)
+  public void c(tfi paramtfi)
   {
-    QQStoryContext.a().a().createEntityManager().b(new MsgTabNodeRecommendActivityReadEntity(paramssm, 1));
-  }
-  
-  public ArrayList<ssm> a()
-  {
-    Object localObject = QQStoryContext.a().a().createEntityManager().a(MsgTabNodeEntity.class);
-    if (localObject == null) {
-      return new ArrayList();
-    }
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      MsgTabNodeEntity localMsgTabNodeEntity = (MsgTabNodeEntity)((Iterator)localObject).next();
-      ssm localssm = new ssm();
-      if (localssm.jdField_a_of_type_Int != 12) {
-        localssm.a(localMsgTabNodeEntity);
-      }
-      localArrayList.add(localssm);
-    }
-    Collections.sort(localArrayList, new ssn());
-    this.jdField_a_of_type_JavaUtilArrayList = localArrayList;
-    return new ArrayList(localArrayList);
-  }
-  
-  public ssm a()
-  {
-    List localList = ((sqd)sqg.a(5)).a(false);
-    ssm localssm = new ssm();
-    localssm.jdField_a_of_type_Int = 5;
-    localssm.jdField_a_of_type_JavaLangString = QQStoryContext.a().b();
-    localssm.jdField_b_of_type_Long = QQStoryContext.a().a();
-    localssm.jdField_d_of_type_Int = localList.size();
-    localssm.jdField_d_of_type_Long = (System.currentTimeMillis() / 1000L);
-    localssm.jdField_b_of_type_Boolean = false;
-    localssm.jdField_b_of_type_Int = localList.size();
-    int i = 0;
-    String str2 = "";
-    boolean bool = false;
-    String str1 = "";
-    StoryVideoItem localStoryVideoItem;
-    if (i < localList.size())
-    {
-      localStoryVideoItem = (StoryVideoItem)localList.get(i);
-      if (!localStoryVideoItem.isUploading()) {
-        break label288;
-      }
-      bool = true;
-      if (TextUtils.isEmpty(localStoryVideoItem.mVideoLocalThumbnailPath)) {
-        str1 = urh.a(localStoryVideoItem.mVideoLocalThumbnailOrigFakePath);
-      }
-    }
-    label159:
-    label288:
-    for (;;)
-    {
-      if (TextUtils.isEmpty(localStoryVideoItem.mVideoLocalThumbnailPath)) {}
-      for (str2 = urh.a(localStoryVideoItem.mVideoLocalThumbnailOrigFakePath);; str2 = urh.a(localStoryVideoItem.mVideoLocalThumbnailPath))
-      {
-        urk.b("Q.qqstory.msgTab.mgrVASH", "getLocalList: %d time: %d %d vid: %s", Integer.valueOf(i), Long.valueOf(localStoryVideoItem.mLocalCreateTime), Long.valueOf(localStoryVideoItem.mCreateTime), localStoryVideoItem.mVid);
-        i += 1;
-        break;
-        str1 = urh.a(localStoryVideoItem.mVideoLocalThumbnailPath);
-        break label159;
-      }
-      localssm.jdField_b_of_type_Boolean = bool;
-      if (!TextUtils.isEmpty(str1)) {}
-      for (;;)
-      {
-        localssm.h = str1;
-        urk.b("VASH", "getUnUploadInfo %s", String.valueOf(localssm));
-        return localssm;
-        str1 = str2;
-      }
-    }
-  }
-  
-  @UiThread
-  public ssm a(String paramString)
-  {
-    Object localObject = this.jdField_a_of_type_Ssr.b;
-    if (localObject != null)
-    {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        ssm localssm = (ssm)((Iterator)localObject).next();
-        if (TextUtils.equals(paramString, localssm.jdField_a_of_type_JavaLangString)) {
-          return localssm;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public ssr a()
-  {
-    return this.jdField_a_of_type_Ssr;
-  }
-  
-  public stw a()
-  {
-    if (this.jdField_a_of_type_Stw == null) {}
-    try
-    {
-      if (this.jdField_a_of_type_Stw == null) {
-        this.jdField_a_of_type_Stw = new stw();
-      }
-      return this.jdField_a_of_type_Stw;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    String str = vlf.a();
-    urk.a("Q.qqstory.msgTab.mgr", "markShowAnimate() %s", str);
-    ((spz)sqg.a(10)).b("key_msg_tab_show_node_list_breath_view_animate_date", str);
-  }
-  
-  public void a(MsgTabNodeEntity paramMsgTabNodeEntity)
-  {
-    if (Looper.myLooper() == ThreadManagerV2.getFileThreadLooper()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      vkw.a(bool);
-      if ((paramMsgTabNodeEntity.nodeType != 1) && (paramMsgTabNodeEntity.nodeType != 2)) {
-        break;
-      }
+    if (paramtfi.e == 1) {
       return;
     }
-    QQStoryContext.a().a().createEntityManager().b(paramMsgTabNodeEntity);
+    QQStoryContext.a().a().createEntityManager().b(paramtfi.a());
   }
   
-  public void a(List<ssm> paramList, boolean paramBoolean)
+  public void d(tfi paramtfi)
   {
-    Object localObject = new ArrayList(paramList);
-    paramList = new ArrayList();
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    if (paramtfi == null) {}
+    do
     {
-      ssm localssm = (ssm)((Iterator)localObject).next();
-      if ((localssm.jdField_a_of_type_Int != 1) && (localssm.jdField_a_of_type_Int != 2)) {
-        paramList.add(localssm.a());
-      }
-    }
-    ThreadManagerV2.executeOnFileThread(new MsgTabStoryManager.1(this, paramList, paramBoolean));
-  }
-  
-  public void a(ssm paramssm)
-  {
-    paramssm = paramssm.a();
-    if ((paramssm.nodeType == 1) || (paramssm.nodeType == 2)) {
+      return;
+      i = a(paramtfi);
+    } while (i == -3);
+    if (i == -1) {}
+    for (int i = 1;; i = 2)
+    {
+      vel.a("msg_tab", "circle_exp", 0, i, new String[] { String.valueOf(paramtfi.jdField_b_of_type_Long) });
       return;
     }
-    ThreadManagerV2.executeOnFileThread(new MsgTabStoryManager.2(this, paramssm));
-  }
-  
-  public boolean a()
-  {
-    ssr localssr = a();
-    urk.a("Q.qqstory.msgTab.mgr", "hasRedPoint() hasRedPoint=%b, hasUnreadNode=%b, hasNewUnreadNode=%b", Boolean.valueOf(localssr.g), Boolean.valueOf(localssr.e), Boolean.valueOf(localssr.f));
-    return localssr.g;
-  }
-  
-  @UiThread
-  public boolean a(String paramString)
-  {
-    Object localObject = this.jdField_a_of_type_Ssr.b;
-    if (localObject != null)
-    {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        ssm localssm = (ssm)((Iterator)localObject).next();
-        if ((localssm.jdField_a_of_type_Int == 12) && (TextUtils.equals(paramString, localssm.jdField_a_of_type_JavaLangString))) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-  
-  public void b(MsgTabNodeEntity paramMsgTabNodeEntity)
-  {
-    if (Looper.myLooper() == ThreadManagerV2.getFileThreadLooper()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      vkw.a(bool);
-      if ((paramMsgTabNodeEntity.nodeType != 1) && (paramMsgTabNodeEntity.nodeType != 2)) {
-        break;
-      }
-      return;
-    }
-    atmp localatmp = QQStoryContext.a().a().createEntityManager();
-    paramMsgTabNodeEntity.setStatus(1001);
-    localatmp.a(paramMsgTabNodeEntity, "nodeType=? and uid=? and unionId=?", new String[] { String.valueOf(paramMsgTabNodeEntity.nodeType), String.valueOf(paramMsgTabNodeEntity.uid), paramMsgTabNodeEntity.unionId });
-    localatmp.b(paramMsgTabNodeEntity);
-  }
-  
-  public void b(ssm paramssm)
-  {
-    paramssm = paramssm.a();
-    if ((paramssm.nodeType == 1) || (paramssm.nodeType == 2)) {
-      return;
-    }
-    ThreadManagerV2.executeOnFileThread(new MsgTabStoryManager.3(this, paramssm));
-  }
-  
-  public boolean b()
-  {
-    ssr localssr = a();
-    urk.a("Q.qqstory.msgTab.mgr", "hasUnreadNode() hasRedPoint=%b, hasUnreadNode=%b, hasNewUnreadNode=%b", Boolean.valueOf(localssr.g), Boolean.valueOf(localssr.e), Boolean.valueOf(localssr.f));
-    return localssr.e;
-  }
-  
-  public void c(ssm paramssm)
-  {
-    this.jdField_a_of_type_Ssr.a(paramssm);
-  }
-  
-  public boolean c()
-  {
-    if (!TextUtils.equals(vlf.a(), (String)((spz)sqg.a(10)).b("key_msg_tab_show_node_list_breath_view_animate_date", "")))
-    {
-      ssr localssr = a();
-      urk.a("Q.qqstory.msgTab.mgr", "shouldShowAnimate() date not equal and mShouldShowAnimate=%b", Boolean.valueOf(localssr.h));
-      return localssr.h;
-    }
-    urk.b("Q.qqstory.msgTab.mgr", "shouldShowAnimate() return false");
-    return false;
   }
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Ssr != null) {
-      this.jdField_a_of_type_Ssr.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("StoryHaloManager", 2, "onDestroy: invoked.  this: " + this);
     }
+    if (this.jdField_a_of_type_Tkq != null) {
+      this.jdField_a_of_type_Tkq.a();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajxl);
+    }
+    this.jdField_a_of_type_JavaUtilMap.clear();
   }
 }
 

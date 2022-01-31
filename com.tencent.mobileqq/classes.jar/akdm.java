@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager;
-import com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager.ScanSpaceTask;
-
-public class akdm
-  implements abme
+public abstract interface akdm
 {
-  public akdm(ScanSpaceManager.ScanSpaceTask paramScanSpaceTask) {}
-  
-  public void a(int paramInt)
-  {
-    ScanSpaceManager.a(this.a.this$0, paramInt);
-  }
+  public abstract void a(String paramString);
 }
 
 

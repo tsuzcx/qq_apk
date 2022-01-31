@@ -1,15 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.ArrayList;
 
-public class pan
-  extends pap
+public abstract interface pan
 {
-  public pan(VafContext paramVafContext)
-  {
-    super(paramVafContext);
-    this.a.setIsCacheIcon(true);
-    this.a.setIsClosedoAlphaAniamation(true);
-  }
+  public abstract ArrayList<BaseArticleInfo> a(int paramInt);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, pao parampao);
+  
+  public abstract int[] a(int paramInt);
 }
 
 

@@ -1,75 +1,61 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.TMG.utils.QLog;
+import android.content.Context;
+import android.graphics.Rect;
 import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class amce
-  extends alzl<amcd>
+  extends amcd
 {
-  public int a()
+  public boolean b;
+  public Rect c;
+  public Rect d;
+  public int e;
+  public String e;
+  public String f = "";
+  
+  public amce()
   {
-    return 453;
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_e_of_type_JavaLangString = "";
   }
   
-  @NonNull
-  public amcd a(int paramInt)
+  public void a(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    return new amcd();
-  }
-  
-  @Nullable
-  public amcd a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
+    if (paramJSONObject != null)
     {
-      amcd localamcd = amcd.a(paramArrayOfalzs[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("DonDisturbProcessor", 0, "onParsed don disturb" + paramArrayOfalzs[0].a);
+      super.a(paramInt, paramString, paramJSONObject);
+      paramString = BaseApplicationImpl.getContext();
+      this.jdField_e_of_type_Int = paramJSONObject.optInt("passive_type", -1);
+      this.b = paramJSONObject.optBoolean("passive_rotate", false);
+      this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("start_align", this.jdField_c_of_type_JavaLangString);
+      this.jdField_c_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
+      this.f = paramJSONObject.optString("end_align", "");
+      if (paramJSONObject.has("start_rect"))
+      {
+        JSONArray localJSONArray = paramJSONObject.getJSONArray("start_rect");
+        this.jdField_c_of_type_AndroidGraphicsRect = new Rect();
+        this.jdField_c_of_type_AndroidGraphicsRect.left = actn.a(localJSONArray.getInt(0) / 2, paramString.getResources());
+        this.jdField_c_of_type_AndroidGraphicsRect.top = actn.a(localJSONArray.getInt(1) / 2, paramString.getResources());
+        this.jdField_c_of_type_AndroidGraphicsRect.right = actn.a(localJSONArray.getInt(2) / 2, paramString.getResources());
+        this.jdField_c_of_type_AndroidGraphicsRect.bottom = actn.a(localJSONArray.getInt(3) / 2, paramString.getResources());
+        this.a = this.jdField_c_of_type_AndroidGraphicsRect;
       }
-      return localamcd;
+      if (paramJSONObject.has("end_rect"))
+      {
+        paramJSONObject = paramJSONObject.getJSONArray("end_rect");
+        this.d = new Rect();
+        this.d.left = actn.a(paramJSONObject.getInt(0) / 2, paramString.getResources());
+        this.d.top = actn.a(paramJSONObject.getInt(1) / 2, paramString.getResources());
+        this.d.right = actn.a(paramJSONObject.getInt(2) / 2, paramString.getResources());
+        this.d.bottom = actn.a(paramJSONObject.getInt(3) / 2, paramString.getResources());
+      }
     }
-    return new amcd();
-  }
-  
-  public Class<amcd> a()
-  {
-    return amcd.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amcd paramamcd)
-  {
-    baig.a(BaseApplicationImpl.getContext(), "open_don_disturb", BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramamcd.a());
-    if (QLog.isColorLevel()) {
-      QLog.d("DonDisturbProcessor", 0, "onUpdate don disturb" + paramamcd);
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amce
  * JD-Core Version:    0.7.0.1
  */

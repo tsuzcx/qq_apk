@@ -1,76 +1,179 @@
-import android.media.MediaFormat;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Message;
+import android.support.annotation.NonNull;
+import android.view.View;
+import com.tribe.async.dispatch.IEventReceiver;
 
-public class vhn
-  extends ajfb
+public abstract class vhn
+  implements IEventReceiver
 {
-  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
-  private ConcurrentHashMap<String, LocalMediaInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  @NonNull
+  public final vhp a;
+  public vja a;
+  protected long c;
   
-  public vhn(AppInterface paramAppInterface)
+  public vhn(@NonNull vhp paramvhp)
   {
-    super(paramAppInterface);
+    this.jdField_a_of_type_Vhp = paramvhp;
   }
   
-  public MediaFormat a()
+  private void f()
   {
-    return this.jdField_a_of_type_AndroidMediaMediaFormat;
-  }
-  
-  public LocalMediaInfo a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      return (LocalMediaInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (this.jdField_a_of_type_Vja == null) {
+      throw new IllegalStateException("have not attached ui");
     }
-    return null;
+  }
+  
+  public void V_()
+  {
+    f();
+  }
+  
+  public void X_()
+  {
+    f();
+  }
+  
+  @NonNull
+  public Context a()
+  {
+    f();
+    return this.jdField_a_of_type_Vja.a();
+  }
+  
+  @NonNull
+  public Resources a()
+  {
+    f();
+    return this.jdField_a_of_type_Vja.a().getResources();
+  }
+  
+  @NonNull
+  protected View a(int paramInt)
+  {
+    f();
+    View localView = this.jdField_a_of_type_Vja.a().findViewById(paramInt);
+    if (localView == null) {
+      throw new IllegalArgumentException("can not find view by id " + paramInt);
+    }
+    return localView;
+  }
+  
+  protected String a(int paramInt)
+  {
+    f();
+    return a().getString(paramInt);
+  }
+  
+  public vho a(Class<? extends vho> paramClass)
+  {
+    f();
+    return this.jdField_a_of_type_Vhp.a(paramClass);
+  }
+  
+  @NonNull
+  public vja a()
+  {
+    f();
+    return this.jdField_a_of_type_Vja;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidMediaMediaFormat = null;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowProcessor", 2, "clearCatcheMediaInfo");
+    f();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    f();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Object paramObject)
+  {
+    a(paramInt2, paramObject);
+  }
+  
+  public void a(int paramInt, Object paramObject) {}
+  
+  public void a(int paramInt, @NonNull vsd paramvsd)
+  {
+    a(paramvsd);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    f();
+  }
+  
+  public void a(Class<? extends vho> paramClass, vho paramvho)
+  {
+    f();
+    this.jdField_a_of_type_Vhp.a(paramClass, paramvho);
+  }
+  
+  public void a(@NonNull Error paramError) {}
+  
+  public void a(vja paramvja)
+  {
+    if (this.jdField_a_of_type_Vja != null) {
+      throw new IllegalStateException("attach context duplicate");
     }
-  }
-  
-  public void a(MediaFormat paramMediaFormat)
-  {
-    this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    if (paramvja == null) {
+      throw new IllegalArgumentException("ui should not be null");
     }
+    this.jdField_a_of_type_Vja = paramvja;
   }
   
-  public void a(String paramString, LocalMediaInfo paramLocalMediaInfo)
+  @Deprecated
+  public void a(@NonNull vsd paramvsd) {}
+  
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowProcessor", 2, "setCatcheMediaInfo path : " + paramString);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramLocalMediaInfo);
+    f();
+    return false;
   }
   
-  public boolean a(String paramString)
+  protected boolean a(Message paramMessage)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
+    return false;
   }
   
-  protected Class<? extends ajfe> observerClass()
+  public void b(Bundle paramBundle)
   {
-    return null;
+    f();
   }
   
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  public void b(@NonNull vsd paramvsd) {}
+  
+  public final boolean b(@NonNull Message paramMessage)
+  {
+    boolean bool = a(paramMessage);
+    paramMessage.recycle();
+    return bool;
+  }
+  
+  public void c()
+  {
+    f();
+  }
+  
+  public void d()
+  {
+    f();
+  }
+  
+  public void h()
+  {
+    f();
+  }
+  
+  public boolean isValidate()
+  {
+    return this.jdField_a_of_type_Vhp.isValidate();
+  }
 }
 
 

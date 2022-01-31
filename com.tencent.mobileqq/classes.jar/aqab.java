@@ -1,62 +1,39 @@
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class aqab
-  extends WebViewPlugin
+class aqab
 {
-  public static String a = "QQGameWebViewJsPlugin";
+  public int a;
+  private long a;
+  public boolean a;
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
+  private long c;
+  private long d;
   
-  public aqab()
+  private aqab()
   {
-    this.mPluginNameSpace = a;
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  public void a()
   {
-    super.handleEvent(paramString, paramLong, paramMap);
-    if (paramLong == 8589934621L)
-    {
-      paramString = new JSONObject();
-      if (paramMap != null) {}
-      try
-      {
-        paramString.put("action", paramMap.get("action"));
-        if (paramMap.containsKey("height")) {
-          paramString.put("height", paramMap.get("height"));
-        }
-        if (paramMap.containsKey("index")) {
-          paramString.put("index", paramMap.get("index"));
-        }
-        if (paramMap.containsKey("gameData")) {
-          paramString.put("gameData", paramMap.get("gameData"));
-        }
-      }
-      catch (ClassCastException paramMap)
-      {
-        for (;;)
-        {
-          paramMap.printStackTrace();
-        }
-      }
-      catch (JSONException paramMap)
-      {
-        for (;;)
-        {
-          paramMap.printStackTrace();
-        }
-      }
-      dispatchJsEvent("gameFeedsEvent", paramString, null);
-      return true;
-    }
-    return super.handleEvent(paramString, paramLong, paramMap);
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_b_of_type_Boolean = false;
+    this.c = System.currentTimeMillis();
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.d = (System.currentTimeMillis() - this.c);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 2;
   }
 }
 

@@ -6,11 +6,11 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
-import aqac;
+import aque;
 
 public abstract class BaseNestHeaderLayout
   extends BaseLayout
-  implements aqac
+  implements aque
 {
   public BaseNestHeaderLayout(@NonNull Context paramContext)
   {

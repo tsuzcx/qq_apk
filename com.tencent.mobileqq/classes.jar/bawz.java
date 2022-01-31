@@ -1,17 +1,27 @@
-import com.tencent.mobileqq.voicechange.QQVoiceChangerThread;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 
 public class bawz
 {
-  int jdField_a_of_type_Int;
-  baws jdField_a_of_type_Baws;
-  bawx jdField_a_of_type_Bawx;
-  baxa jdField_a_of_type_Baxa;
-  QQVoiceChangerThread jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread;
-  boolean jdField_a_of_type_Boolean;
+  public static int a(Context paramContext, float paramFloat)
+  {
+    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+  }
+  
+  public static int b(Context paramContext, float paramFloat)
+  {
+    return (int)(paramFloat / paramContext.getResources().getDisplayMetrics().density + 0.5F);
+  }
+  
+  public static int c(Context paramContext, float paramFloat)
+  {
+    return (int)(paramContext.getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bawz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,25 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+
 class aefr
-  implements mod
+  implements Animation.AnimationListener
 {
-  aefr(aefe paramaefe) {}
+  aefr(aefp paramaefp) {}
   
-  public void loaded(int paramInt, String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    aefe.a(this.a, 0, 10);
+    if (aefp.a(this.a) != null) {
+      aefp.a(this.a).setVisibility(8);
+    }
+    if (aefp.a(this.a) != null) {
+      aefp.a(this.a).c();
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

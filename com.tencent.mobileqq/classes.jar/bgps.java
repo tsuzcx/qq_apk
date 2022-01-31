@@ -1,31 +1,104 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class bgps
-  implements Downloader.DownloadListener
+public class bgps
 {
-  bgps(bgpr parambgpr, String paramString1, String paramString2) {}
+  private static bgps jdField_a_of_type_Bgps;
+  private ArrayList<bgpt> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public boolean a;
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public static bgps a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LottieLoader", 0, "diy data download fail url = " + paramString);
+    if (jdField_a_of_type_Bgps == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bgps == null) {
+        jdField_a_of_type_Bgps = new bgps();
+      }
+      return jdField_a_of_type_Bgps;
     }
-    bgpr.a(this.jdField_a_of_type_Bgpr, 2);
-    bgpr.a(this.jdField_a_of_type_Bgpr, false, paramString, this.jdField_a_of_type_JavaLangString, this.b);
+    finally {}
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public bgpt a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LottieLoader", 0, "diy data download success url = " + paramString);
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QfavRequestQueue", 2, "pop, request list is empty");
+        }
+        return null;
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        bgpt localbgpt = (bgpt)localIterator.next();
+        if (localbgpt.jdField_a_of_type_Long == paramLong)
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.remove(localbgpt);
+          if (QLog.isColorLevel()) {
+            QLog.d("QfavRequestQueue", 2, "pop, id: " + paramLong + "pendingsize:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+          }
+          return localbgpt;
+        }
+      }
     }
-    bgpr.b(this.jdField_a_of_type_Bgpr, true, paramString, this.jdField_a_of_type_JavaLangString, this.b);
+    return null;
+  }
+  
+  public List<Bundle> a(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return null;
+    }
+    Parcel localParcel = Parcel.obtain();
+    localParcel.unmarshall(paramArrayOfByte, 0, paramArrayOfByte.length);
+    localParcel.setDataPosition(0);
+    paramArrayOfByte = (Bundle)Bundle.CREATOR.createFromParcel(localParcel);
+    localParcel.recycle();
+    return paramArrayOfByte.getParcelableArrayList("pendingData");
+  }
+  
+  public boolean a()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      boolean bool = this.jdField_a_of_type_JavaUtilArrayList.isEmpty();
+      return bool;
+    }
+  }
+  
+  public byte[] a()
+  {
+    ArrayList localArrayList1 = new ArrayList();
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+        return null;
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (localIterator.hasNext()) {
+        localArrayList1.add(((bgpt)localIterator.next()).jdField_a_of_type_AndroidContentIntent.getExtras());
+      }
+    }
+    if (localArrayList2.isEmpty()) {
+      return null;
+    }
+    ??? = new Bundle();
+    ((Bundle)???).putParcelableArrayList("pendingData", localArrayList2);
+    Parcel localParcel = Parcel.obtain();
+    ((Bundle)???).writeToParcel(localParcel, 0);
+    ??? = localParcel.marshall();
+    localParcel.recycle();
+    return ???;
   }
 }
 

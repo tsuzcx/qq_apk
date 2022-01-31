@@ -1,31 +1,22 @@
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
+
 public class nwf
+  implements bfwv
 {
-  public int a;
-  public long a;
-  public CharSequence a;
-  public String a;
-  public CharSequence b;
+  public nwf(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
   
-  public nwf(String paramString, long paramLong, CharSequence paramCharSequence)
+  public void a()
   {
-    this(paramString, paramLong, paramCharSequence, 0);
-  }
-  
-  public nwf(String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    paramString = paramCharSequence;
-    if (paramCharSequence == null) {
-      paramString = "";
+    if ((!this.a.a) && (this.a.b))
+    {
+      this.a.a = true;
+      sgx.a("subscribe_tab_cost", null);
     }
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nwf
  * JD-Core Version:    0.7.0.1
  */

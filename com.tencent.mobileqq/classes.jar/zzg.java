@@ -1,57 +1,37 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import org.json.JSONObject;
 
 public class zzg
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public zzg(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public zzg(zze paramzze) {}
+  
+  public boolean a(JSONObject paramJSONObject)
   {
-    int i;
-    label43:
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
+    try
     {
-      i = 1;
-      bgmq.e(i);
-      bgmq.a(paramBoolean);
-      bgmq.a(true);
-      if (!paramBoolean) {
-        break label98;
-      }
-      bbmy.a(this.a.getBaseContext(), 2, 2131652746, 2000).a();
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label121;
-      }
-      paramCompoundButton = "0X8008236";
-      label59:
-      if (!paramBoolean) {
-        break label127;
-      }
+      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("hookpoint_type"));
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("hookpoint_lib_name").trim();
+      this.b = paramJSONObject.getString("hookpoint_func_name").trim();
+      return true;
     }
-    label98:
-    label121:
-    label127:
-    for (String str = "0X8008236";; str = "0X8008235")
+    catch (Exception paramJSONObject)
     {
-      ndn.a(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "", "", "", "", false);
-      return;
-      i = 0;
-      break;
-      bbmy.a(this.a.getBaseContext(), 2, 2131652744, 2000).a();
-      break label43;
-      paramCompoundButton = "0X8008235";
-      break label59;
+      zyz.a("KingKongNativePatch", "Parse HookPoint error!");
     }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zzg
  * JD-Core Version:    0.7.0.1
  */

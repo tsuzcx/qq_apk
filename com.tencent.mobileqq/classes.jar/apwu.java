@@ -1,130 +1,104 @@
-import android.animation.ObjectAnimator;
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.Handler;
-import android.view.animation.ScaleAnimation;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.gamecenter.anim.FullPopAnimLowVersion.6;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
-import com.tencent.mobileqq.gamecenter.data.FullPopData;
-import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
-import cooperation.qwallet.plugin.QWalletPicHelper;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import mqq.app.MobileQQ;
 
-public class apwu
-  extends apws
-  implements apyu
+class apwu
+  implements apwv
 {
-  @SuppressLint({"HandlerLeak"})
-  private Handler a;
+  apwu(apwt paramapwt) {}
   
-  public apwu(Context paramContext, FullPopData paramFullPopData, String paramString1, String paramString2, boolean paramBoolean)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    super(paramContext, paramFullPopData, paramString1, paramString2, paramBoolean);
-    this.jdField_a_of_type_AndroidOsHandler = new apwv(this);
-  }
-  
-  private void a(FullPopData paramFullPopData, FullPopVideoView paramFullPopVideoView)
-  {
-    paramFullPopData = apyn.a(paramFullPopData.resPath, "video.mp4");
-    FeedsItemData localFeedsItemData = new FeedsItemData();
-    localFeedsItemData.videoUrl = Uri.parse(paramFullPopData.getPath()).toString();
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.a();
-    paramFullPopVideoView.a(this.jdField_a_of_type_AndroidContentContext, localFeedsItemData.videoUrl);
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData != null)
+    this.a.b(paramInt);
+    if ((apwt.a(this.a) != null) && (paramInt - this.a.g() > 0))
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.bringToFront();
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      int i = awmc.e(this.jdField_a_of_type_AndroidContentContext);
-      Object localObject1 = apyn.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.resPath, "line.png", i, 0);
-      Object localObject2 = QWalletPicHelper.getDrawableForWallet(apyn.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.resPath, "box.png").getPath(), null);
-      this.c.setImageDrawable((Drawable)localObject2);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject1);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject1);
-      localObject1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "scaleY", new float[] { 0.0F, 1.0F });
-      ((ObjectAnimator)localObject1).setDuration(500L);
-      localObject2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 0.0F, 1.0F });
-      ((ObjectAnimator)localObject2).setDuration(500L);
-      a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData, this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView);
-      ((ObjectAnimator)localObject2).addListener(new apww(this));
-      ((ObjectAnimator)localObject1).start();
-      ((ObjectAnimator)localObject2).start();
+      this.a.a(paramInt);
+      apwt.a(this.a).b(paramInt, paramBundle);
     }
   }
   
-  private void f()
+  public void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 1.0F, 0.0F });
-    localObjectAnimator.setDuration(100L);
-    localObjectAnimator.start();
-    localObjectAnimator.addListener(new apwx(this));
-  }
-  
-  @SuppressLint({"NewApi"})
-  private void g()
-  {
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 1.0F, 0.0F, 1.0F, 1, 0.0F, 1, 0.3F);
-    localScaleAnimation.setDuration(500L);
-    localScaleAnimation.setAnimationListener(new apwy(this));
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.startAnimation(localScaleAnimation);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.b();
-    apys.a(System.currentTimeMillis());
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 4000L);
-  }
-  
-  private void h()
-  {
-    this.jdField_b_of_type_Boolean = true;
-    this.d.setVisibility(0);
-    this.d.bringToFront();
-    this.d.setOnClickListener(new apwz(this));
-  }
-  
-  private void i()
-  {
-    this.d.setVisibility(8);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 1.0F, 1.0F, 0.0F, 1, 0.0F, 1, 0.3F);
-    localScaleAnimation.setDuration(300L);
-    localScaleAnimation.setAnimationListener(new apxa(this));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.startAnimation(localScaleAnimation);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      a();
+    apwt.a(this.a);
+    this.a.c(5);
+    if (apwt.a(this.a) != null) {
+      apwt.a(this.a).a(paramInt, paramString, paramBundle);
     }
   }
   
-  public void c() {}
-  
-  public void d()
+  public void a(String paramString, long paramLong, Bundle paramBundle)
   {
-    ThreadManagerV2.getUIHandlerV2().post(new FullPopAnimLowVersion.6(this));
-    a(false);
+    apwt.a(this.a);
+    this.a.c(4);
+    if (bbdj.a(this.a.e)) {
+      this.a.e = apue.b(this.a.e);
+    }
+    QLog.i(apwt.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. >>>Download SUCCESS.  save file to: =" + this.a.e);
+    int i = 1;
+    long l2;
+    long l1;
+    if (paramBundle != null)
+    {
+      l2 = paramBundle.getLong("EXT_TRANS_SIZE ");
+      l1 = paramBundle.getLong("EXT_TTRANS_SIZE ");
+      i = paramBundle.getInt("EXT_AUTOTRY_COUNT");
+    }
+    for (;;)
+    {
+      if (!bbdj.b(new File(this.a.f), new File(this.a.e)))
+      {
+        QLog.e(apwt.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].rename failed.temppath=" + this.a.f + " path=" + this.a.e);
+        this.a.c(5);
+        paramString = apwh.a(7);
+        QQAppInterface localQQAppInterface = apcy.a().a();
+        if (localQQAppInterface != null)
+        {
+          apue.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfGenDownload", this.a.jdField_a_of_type_Long, "", "", "", "", 7, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
+          apue.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.a.jdField_a_of_type_Long, "", "", "", "", 7, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
+          axrk.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-1");
+          if (apwt.a(this.a) != null) {
+            apwt.a(this.a).a(7, paramString, paramBundle);
+          }
+        }
+      }
+      for (;;)
+      {
+        return;
+        QLog.w(apwt.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 5");
+        break;
+        apvz.a().a(this.a.jdField_c_of_type_JavaLangString);
+        paramString = apcy.a().a();
+        if (paramString != null)
+        {
+          apue.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfGenDownload", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, i, null);
+          apue.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, i, null);
+          axrk.a(paramString.getApplication().getApplicationContext(), paramString.getCurrentAccountUin(), "Complete_download_2_1");
+        }
+        while (apwt.a(this.a) != null)
+        {
+          l1 = paramLong;
+          if (this.a.b > 0L)
+          {
+            l1 = paramLong;
+            if (paramLong <= 0L) {
+              l1 = this.a.b;
+            }
+          }
+          apwt.a(this.a).a(this.a.e, l1, paramBundle);
+          return;
+          QLog.i(apwt.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 0");
+        }
+      }
+      l1 = paramLong;
+      l2 = paramLong;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apwu
  * JD-Core Version:    0.7.0.1
  */

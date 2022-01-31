@@ -1,26 +1,28 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class aclz
-  extends ajjh
+public class aclz
+  implements View.OnClickListener
 {
-  aclz(aclw paramaclw) {}
+  public aclz(TroopRequestActivity paramTroopRequestActivity) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin())))
-    {
-      paramString = this.a.a.a(this.a.a.getCurrentAccountUin(), (byte)3, false);
-      if ((paramString != null) && (aclw.a(this.a) != null)) {
-        aclw.a(this.a).setImageBitmap(paramString);
-      }
-    }
+    paramView = new Intent(this.a, AccountDetailActivity.class);
+    paramView.putExtra("uin", this.a.a.req_uin.get() + "");
+    paramView.putExtra("source", 112);
+    this.a.startActivity(paramView);
+    axqw.b(this.a.app, "P_CliOper", "Grp_public", "", "oper", "Clk_invite", 0, 0, "", "", "", this.a.a.req_uin.get() + "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aclz
  * JD-Core Version:    0.7.0.1
  */

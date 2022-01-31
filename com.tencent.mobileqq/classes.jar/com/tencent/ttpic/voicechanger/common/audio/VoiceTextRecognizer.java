@@ -62,7 +62,7 @@ public class VoiceTextRecognizer
       {
         if (this.handlerThread == null)
         {
-          this.handlerThread = new HandlerThread("VIDEO_TEXT_RECOGNIZER");
+          this.handlerThread = new HandlerThread("VIDEO_TEXT_RECOGNIZER_" + System.currentTimeMillis());
           this.handlerThread.start();
         }
         if (this.handlerThread.getLooper() != null) {

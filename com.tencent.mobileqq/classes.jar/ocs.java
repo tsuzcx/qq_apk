@@ -1,49 +1,63 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.lang.ref.WeakReference;
 
 public class ocs
+  implements INetInfoHandler
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<ocs> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c = "";
-  public int d;
-  public String d = "";
-  public String e = "";
-  public String f = "";
+  protected WeakReference<nyr> a;
   
-  public ocs()
+  public ocs(nyr paramnyr)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.a = new WeakReference(paramnyr);
   }
   
-  public boolean a(long paramLong)
+  public void onNetMobile2None()
   {
-    return (paramLong - this.jdField_a_of_type_Long > 0L) && (paramLong - this.jdField_a_of_type_Long < 25200L);
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((nyr)this.a.get()).c();
+    }
   }
   
-  public boolean a(long paramLong1, long paramLong2)
+  public void onNetMobile2Wifi(String paramString)
   {
-    return (paramLong1 - this.jdField_a_of_type_Long > 0L) && (paramLong1 - this.jdField_a_of_type_Long < paramLong2);
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((nyr)this.a.get()).i();
+    }
   }
   
-  public String toString()
+  public void onNetNone2Mobile(String paramString)
   {
-    return "VidUrl {\n vid: " + this.jdField_b_of_type_JavaLangString + "\n url: " + this.jdField_a_of_type_JavaLangString + "\n isH265: " + this.jdField_a_of_type_Boolean + "\n fileBitRate: " + this.c + "\n isHWCodec: " + this.jdField_b_of_type_Boolean + "\n videoReportInfo:" + this.d + "\n speedList:" + this.e + "}";
+    if ((this.a != null) && (this.a.get() != null))
+    {
+      ((nyr)this.a.get()).g();
+      ((nyr)this.a.get()).i();
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((nyr)this.a.get()).i();
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((nyr)this.a.get()).h();
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((nyr)this.a.get()).f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ocs
  * JD-Core Version:    0.7.0.1
  */

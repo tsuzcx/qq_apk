@@ -1,159 +1,195 @@
-import android.app.Activity;
+import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerBigPicItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerTriplePicItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerVideoItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusInnerData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
-import java.util.Map;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-final class oal
-  implements ViewFactory.FoundClickableViewListener
+public class oal
 {
-  oal(int paramInt, Container paramContainer, opw paramopw, VafContext paramVafContext, azwg paramazwg, qoe paramqoe, BaseArticleInfo paramBaseArticleInfo) {}
-  
-  public void onFound(ViewBase paramViewBase)
+  public static int a(ProteusBannerBigPicItemData paramProteusBannerBigPicItemData)
   {
-    owa localowa = (owa)oag.a().get(Integer.valueOf(this.jdField_a_of_type_Int));
-    if ((localowa != null) && (localowa.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Opw, paramViewBase))) {}
+    if (b(paramProteusBannerBigPicItemData)) {
+      return 28;
+    }
+    if (a(paramProteusBannerBigPicItemData)) {
+      return 25;
+    }
+    if (paramProteusBannerBigPicItemData.a) {
+      return 26;
+    }
+    return 10;
+  }
+  
+  public static int a(ProteusBannerTriplePicItemData paramProteusBannerTriplePicItemData)
+  {
+    if (a(paramProteusBannerTriplePicItemData)) {
+      return 30;
+    }
+    return 27;
+  }
+  
+  public static int a(ProteusBannerVideoItemData paramProteusBannerVideoItemData)
+  {
+    if (a(paramProteusBannerVideoItemData)) {
+      return 29;
+    }
+    return 15;
+  }
+  
+  public static int a(ProteusInnerData paramProteusInnerData)
+  {
+    int i = 20;
+    if (a(paramProteusInnerData)) {
+      i = 24;
+    }
     do
     {
-      int i;
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-          } while ((paramViewBase.getNativeView() == null) || (paramViewBase.getClickEvnet() == null));
-          i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
-          switch (i)
-          {
-          case 1035: 
-          default: 
-            paramViewBase.setOnClickListener(new oaq(this, paramViewBase));
-            return;
-          case 1001: 
-            paramViewBase.setOnClickListener(new oam(this, paramViewBase));
-            return;
-          }
-        } while (!AdvertisementInfo.isAdvertisementInfo(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo));
-        paramViewBase.setOnClickListener(new oar(this));
-        return;
-        paramViewBase.setOnClickListener(new oxa((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext()));
-        return;
-        paramViewBase.setOnClickListener(new oxv((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_Qoe));
-        return;
-        paramViewBase.setOnClickListener(new oxw((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext));
-        return;
-        paramViewBase.setOnClickListener(new owt((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext));
-        return;
-        paramViewBase.setOnClickListener(new ows((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext()));
-        return;
-        paramViewBase.setOnClickListener(new oxp((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext()));
-        return;
-        paramViewBase.setOnClickListener(new oas(this));
-        return;
-        paramViewBase.setOnClickListener(new oxq((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext()));
-        return;
-      } while ((!obz.b((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) && (!obz.c((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)));
-      paramViewBase.getNativeView().setOnClickListener(new oat(this));
-      return;
-      paramViewBase.setOnClickListener(new owr((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Qoe));
-      return;
-      paramViewBase.setOnClickListener(new owz(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo));
-      return;
-      paramViewBase.setOnClickListener(new oxh((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_Int));
-      return;
-      paramViewBase.setOnClickListener(new oxn((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext()));
-      return;
-      paramViewBase.setOnClickListener(new oxm((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext()));
-      return;
-      paramViewBase.setOnClickListener(new oxd((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_Qoe));
-      return;
-      paramViewBase.setOnClickListener(new owq((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext()));
-      return;
-      paramViewBase.setOnClickListener(new oxg((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext()));
-      return;
-      paramViewBase.setOnClickListener(new oxk((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_Qoe));
-      return;
-      paramViewBase.setOnClickListener(new oxf((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_Qoe));
-      return;
-      paramViewBase.setOnClickListener(new oxe((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_Int));
-      return;
-      paramViewBase.setOnClickListener(new oxb((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext()));
-      return;
-      paramViewBase.setOnClickListener(new owv((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_Int));
-      return;
-      paramViewBase.setOnClickListener(new owo(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo));
-      return;
-      paramViewBase.setOnClickListener(new oau(this));
-      return;
-      paramViewBase.setOnClickListener(new owy((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_Int));
-      return;
-      paramViewBase.setOnClickListener(new oxo((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_Int, paramViewBase.getEventAttachedData()));
-      return;
-      paramViewBase.setOnClickListener(new oxc(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo));
-      return;
-      paramViewBase.setOnClickListener(new oav(this));
-      return;
-      paramViewBase.setOnClickListener(new oaw(this, paramViewBase));
-      return;
-      if (AdvertisementInfo.class.isInstance(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))
-      {
-        rvb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), paramViewBase, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Opw.a(), this.jdField_a_of_type_Opw.e(), 5);
-        return;
+      return i;
+      if (paramProteusInnerData.a()) {
+        return 21;
       }
-      paramViewBase.setOnClickListener(null);
-      return;
-      rvb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), paramViewBase, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Opw.a(), this.jdField_a_of_type_Opw.e(), 5);
-      return;
-      rvb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), paramViewBase, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Opw.a(), this.jdField_a_of_type_Opw.e(), 8);
-      return;
-      rvb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), paramViewBase, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Opw.a(), this.jdField_a_of_type_Opw.e(), now.a(i));
-      return;
-      if (AdvertisementInfo.class.isInstance(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))
-      {
-        rvb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), paramViewBase, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Opw.a(), this.jdField_a_of_type_Opw.e(), 6);
-        return;
+    } while (!paramProteusInnerData.b());
+    return 20;
+  }
+  
+  public static void a(Context paramContext, AdData paramAdData)
+  {
+    if (a(paramAdData))
+    {
+      String str1 = paramAdData.jdField_a_of_type_Nxz.m;
+      if (!TextUtils.isEmpty(paramAdData.jdField_a_of_type_Nxz.n)) {
+        str1 = paramAdData.jdField_a_of_type_Nxz.n;
       }
-      paramViewBase.setOnClickListener(null);
+      String str2 = str1;
+      if (TextUtils.isEmpty(str1))
+      {
+        str2 = str1;
+        if (!TextUtils.isEmpty(paramAdData.m)) {
+          str2 = paramAdData.m;
+        }
+      }
+      onk.e(paramContext, sht.a(str2));
+    }
+  }
+  
+  public static void a(Context paramContext, AdData paramAdData, int paramInt)
+  {
+    if (paramAdData == null) {
       return;
-    } while (!rvb.a((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo));
-    paramViewBase.setOnClickListener(new oax(this));
-    return;
-    paramViewBase.setOnClickListener(new oww((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext()));
-    return;
-    paramViewBase.setOnClickListener(new owx((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_Opw.a(), this.jdField_a_of_type_Opw, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getHolderView()));
-    return;
-    paramViewBase.setOnClickListener(new oay(this));
-    return;
-    paramViewBase.setOnClickListener(new owu((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext()));
-    return;
-    paramViewBase.setOnClickListener(new oan(this));
-    return;
-    paramViewBase.setOnClickListener(new oao(this));
-    return;
-    paramViewBase.setOnClickListener(new owp(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext()));
-    return;
-    rvb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), paramViewBase, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Opw.a(), this.jdField_a_of_type_Opw.e(), 4);
-    return;
-    rvb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), paramViewBase, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Opw.a(), this.jdField_a_of_type_Opw.e(), 1);
-    return;
-    rvb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), paramViewBase, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Opw.a(), this.jdField_a_of_type_Opw.e(), 3);
-    return;
-    rvb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), paramViewBase, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Opw.a(), this.jdField_a_of_type_Opw.e(), 1000);
-    return;
-    paramViewBase.setOnClickListener(new oap(this));
+    }
+    sht.a(paramContext, paramAdData.K, paramAdData.m, paramAdData.u);
+    paramContext = (QQAppInterface)onk.a();
+    nmf.a(new nyg().a(paramContext).a(BaseApplication.getContext()).a(nmf.J).b(nmf.K).a(oav.a(paramAdData)).d(paramInt).d(nmf.a(paramAdData)).a());
+  }
+  
+  public static void a(Context paramContext, ViewBase paramViewBase, String paramString, int paramInt)
+  {
+    try
+    {
+      View localView = ((pmh)paramViewBase).getNativeView();
+      a(paramContext, paramViewBase, paramString, paramInt, localView.getWidth(), localView.getHeight());
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("FastWeqAdUtils", 2, "loadImage error " + paramContext.getMessage());
+    }
+  }
+  
+  public static void a(Context paramContext, ViewBase paramViewBase, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    try
+    {
+      paramViewBase = (pmh)paramViewBase;
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestWidth = paramInt2;
+      localURLDrawableOptions.mRequestHeight = paramInt3;
+      paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+      paramString.setTag(bavi.b(paramInt2, paramInt3, actn.a(paramInt1, paramContext.getResources())));
+      paramString.setDecodeHandler(bavi.i);
+      paramViewBase.setImageDrawable(paramString, true);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("FastWeqAdUtils", 2, "loadImage error " + paramContext.getMessage());
+    }
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    sht.a(paramContext);
+    if (!TextUtils.isEmpty(paramString2)) {}
+    for (;;)
+    {
+      onk.e(paramContext, sht.a(paramString2));
+      return;
+      if (!TextUtils.isEmpty(paramString3)) {
+        paramString2 = paramString3;
+      } else {
+        paramString2 = paramString1;
+      }
+    }
+  }
+  
+  public static boolean a(AdData paramAdData)
+  {
+    return (paramAdData != null) && (paramAdData.jdField_a_of_type_Nxz != null) && (!TextUtils.isEmpty(paramAdData.jdField_a_of_type_Nxz.b));
+  }
+  
+  public static void b(Context paramContext, AdData paramAdData)
+  {
+    if (paramAdData == null) {
+      return;
+    }
+    sht.a(paramContext, paramAdData.K, paramAdData.m, paramAdData.u);
+    paramContext = (QQAppInterface)onk.a();
+    nmf.a(new nyg().a(paramContext).a(BaseApplication.getContext()).a(nmf.J).b(nmf.K).a(oav.a(paramAdData)).d(nmf.a(paramAdData)).a());
+  }
+  
+  public static boolean b(AdData paramAdData)
+  {
+    return (paramAdData != null) && (paramAdData.jdField_a_of_type_Nyh != null) && (5001 == paramAdData.jdField_a_of_type_Nyh.g);
+  }
+  
+  public static boolean c(AdData paramAdData)
+  {
+    return (a(paramAdData)) && ("3".equals(paramAdData.jdField_a_of_type_Nxz.x));
+  }
+  
+  public static boolean d(AdData paramAdData)
+  {
+    return (a(paramAdData)) && ("1".equals(paramAdData.jdField_a_of_type_Nxz.x));
+  }
+  
+  public static boolean e(AdData paramAdData)
+  {
+    return (a(paramAdData)) && ("2".equals(paramAdData.jdField_a_of_type_Nxz.x));
+  }
+  
+  public static boolean f(AdData paramAdData)
+  {
+    if (paramAdData == null) {}
+    while ((TextUtils.isEmpty(paramAdData.K)) || (!paramAdData.c) || (!oat.d(paramAdData))) {
+      return false;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     oal
  * JD-Core Version:    0.7.0.1
  */

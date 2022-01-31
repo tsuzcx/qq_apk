@@ -1,11 +1,23 @@
-class aegh
-  extends ajjh
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class aegh
+  extends BroadcastReceiver
 {
-  aegh(aege paramaege) {}
+  public aegh(AIOGalleryActivity paramAIOGalleryActivity) {}
   
-  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    aege.a(this.a, paramBoolean, paramObject);
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOGalleryActivity", 2, "receive videochat in aiogallery");
+      }
+      this.a.finish();
+    }
   }
 }
 

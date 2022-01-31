@@ -1,65 +1,115 @@
-import android.graphics.Camera;
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.widget.AutoVerticalScrollTextView;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.Switch;
+import com.tencent.qqmini.sdk.core.widget.FormSwitchItem;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class behu
-  extends Animation
+  extends BaseAdapter
 {
-  private float jdField_a_of_type_Float;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private final boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private final boolean jdField_b_of_type_Boolean;
+  Context jdField_a_of_type_AndroidContentContext;
+  protected LayoutInflater a;
+  CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
+  List<behi> jdField_a_of_type_JavaUtilList;
   
-  public behu(AutoVerticalScrollTextView paramAutoVerticalScrollTextView, boolean paramBoolean1, boolean paramBoolean2)
+  public behu(Context paramContext, CompoundButton.OnCheckedChangeListener paramOnCheckedChangeListener)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = paramOnCheckedChangeListener;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public behi a(int paramInt)
   {
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = this.jdField_b_of_type_Float;
-    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
-    int i;
-    if (this.jdField_b_of_type_Boolean)
+    if ((paramInt > -1) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (behi)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      i = 1;
-      paramTransformation = paramTransformation.getMatrix();
-      localCamera.save();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label99;
+      behi localbehi = (behi)localIterator.next();
+      if (paramString.equals(localbehi.jdField_a_of_type_JavaLangString))
+      {
+        if (paramBoolean) {}
+        for (int i = 2;; i = 4)
+        {
+          localbehi.jdField_a_of_type_Int = i;
+          break;
+        }
       }
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * (paramFloat - 1.0F), 0.0F);
-    }
-    for (;;)
-    {
-      localCamera.getMatrix(paramTransformation);
-      localCamera.restore();
-      paramTransformation.preTranslate(-f1, -f2);
-      paramTransformation.postTranslate(f1, f2);
-      return;
-      i = -1;
-      break;
-      label99:
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * paramFloat, 0.0F);
     }
   }
   
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(List<behi> paramList)
   {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.getHeight();
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.getWidth();
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    boolean bool;
+    label30:
+    behk localbehk;
+    if (paramView != null)
+    {
+      paramView = (FormSwitchItem)paramView;
+      paramViewGroup = a(paramInt);
+      if (paramViewGroup != null)
+      {
+        if (paramViewGroup.jdField_a_of_type_Int != 2) {
+          break label100;
+        }
+        bool = true;
+        paramView.setChecked(bool);
+        paramView.a().setTag(paramViewGroup.jdField_a_of_type_JavaLangString);
+        localbehk = behl.a().a(paramViewGroup.jdField_a_of_type_JavaLangString);
+        if (localbehk == null) {
+          break label106;
+        }
+      }
+    }
+    label100:
+    label106:
+    for (paramViewGroup = localbehk.b;; paramViewGroup = paramViewGroup.jdField_a_of_type_JavaLangString)
+    {
+      paramView.setText(paramViewGroup);
+      return paramView;
+      paramView = new FormSwitchItem(this.jdField_a_of_type_AndroidContentContext);
+      paramView.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+      break;
+      bool = false;
+      break label30;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     behu
  * JD-Core Version:    0.7.0.1
  */

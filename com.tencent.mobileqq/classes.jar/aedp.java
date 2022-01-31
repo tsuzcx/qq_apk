@@ -1,19 +1,16 @@
-import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class aedp
-  extends atdl
+  implements View.OnTouchListener
 {
-  aedp(aedo paramaedo) {}
+  aedp(aedl paramaedl, acxn paramacxn) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramInt == 0) && (paramBoolean == true))
-    {
-      paramBundle.getInt("gif_ui_show_bid");
-      long l = paramBundle.getLong("gif_ui_show_seq");
-      this.a.e(65536);
-      aedo.a(this.a, Long.valueOf(l).longValue());
-    }
+    this.jdField_a_of_type_Acxn.onTouch(paramView, paramMotionEvent);
+    return false;
   }
 }
 

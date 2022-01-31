@@ -1,88 +1,58 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.CheckBox;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 
 public class ahtl
-  extends Handler
+  implements View.OnTouchListener
 {
-  public ahtl(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public ahtl(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
-    {
+    int i = paramMotionEvent.getAction();
+    paramMotionEvent.getX();
+    float f = paramMotionEvent.getY();
+    if (i == 0) {
+      this.a.jdField_b_of_type_AndroidWidgetButton.setText(null);
     }
-    label366:
     do
     {
-      Object[] arrayOfObject;
-      String str;
-      do
+      return false;
+      if (i == 2)
       {
-        do
+        if (f < this.a.jdField_b_of_type_Int * -1)
         {
-          return;
-          TroopMemberListInnerFrame.a(this.a, paramMessage);
-          return;
-          paramMessage = this.a;
-          paramMessage.jdField_a_of_type_Double += TroopMemberListInnerFrame.jdField_b_of_type_Double;
-        } while ((this.a.jdField_a_of_type_Double >= 90.0D) || (this.a.jdField_a_of_type_Int <= 0));
-        if (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.getVisibility() == 8) {
-          this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+          this.a.a(false, false);
+          return true;
         }
-        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress((int)this.a.jdField_a_of_type_Double);
-        this.a.d.setText(String.format(ajjy.a(2131649821), new Object[] { Integer.valueOf(Math.min((int)(this.a.jdField_a_of_type_Int * this.a.jdField_a_of_type_Double / 100.0D), this.a.jdField_a_of_type_Int)), Integer.valueOf(this.a.jdField_a_of_type_Int) }));
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4), 800L);
-        return;
-        TroopMemberListInnerFrame.a(this.a, paramMessage.arg1);
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
-        if (!(paramMessage.obj instanceof Object[])) {
-          break label366;
-        }
-        arrayOfObject = (Object[])paramMessage.obj;
-        if (arrayOfObject.length <= 0) {
-          break label366;
-        }
-        str = (String)arrayOfObject[1];
-        if (str.equals(this.a.jdField_b_of_type_JavaLangString)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("TroopMemberListInnerFrame.thread", 2, "handleMessage, troopUin != mTroopUin, break:" + str + "," + this.a.jdField_b_of_type_JavaLangString);
-      return;
-      this.a.jdField_a_of_type_JavaUtilMap = ((Map)arrayOfObject[0]);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberListInnerFrame.thread", 2, "handleMessage, mIndexedFriends.size=" + this.a.jdField_a_of_type_JavaUtilMap.size());
+        this.a.a(true, false);
+        return true;
       }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == 1) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == 0) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == 5))
+      if (i == 3)
       {
-        int i = TroopMemberListInnerFrame.a(this.a, this.a.jdField_a_of_type_JavaUtilMap);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b(i);
+        this.a.a(false, true);
+        return false;
       }
-      paramMessage.obj = TroopMemberListInnerFrame.a(this.a);
-      TroopMemberListInnerFrame.a(this.a, paramMessage);
-    } while ((this.a.jdField_a_of_type_Boolean) || (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.q));
-    this.a.jdField_a_of_type_Boolean = true;
-    paramMessage = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
-    if (!this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (boolean bool = true;; bool = false)
+    } while (i != 1);
+    if (f < this.a.jdField_b_of_type_Int * -1)
     {
-      paramMessage.setChecked(bool);
-      this.a.onCheckedChanged(this.a.jdField_a_of_type_AndroidWidgetCheckBox, this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
-      return;
+      this.a.l = false;
+      this.a.a(false, true);
+    }
+    for (;;)
+    {
+      this.a.jdField_b_of_type_AndroidWidgetButton.setText(2131692634);
+      return false;
+      this.a.l = true;
+      this.a.a(true, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahtl
  * JD-Core Version:    0.7.0.1
  */

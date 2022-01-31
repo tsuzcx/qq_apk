@@ -1,28 +1,19 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.subscribe.component.base.ComponentPageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class wbx
-  extends RecyclerView.OnScrollListener
+class wbx
+  implements View.OnClickListener
 {
-  public wbx(ComponentPageView paramComponentPageView) {}
+  wbx(wbu paramwbu) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onClick(View paramView)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if (paramInt2 > 0) {
-      this.a.b();
-    }
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wbx
  * JD-Core Version:    0.7.0.1
  */

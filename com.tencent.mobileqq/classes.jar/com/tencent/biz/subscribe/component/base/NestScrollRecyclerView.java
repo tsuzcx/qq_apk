@@ -18,8 +18,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import com.tencent.widget.pull2refresh.RecyclerViewCompat;
-import wbp;
-import wbs;
+import wpc;
+import wpf;
 
 public class NestScrollRecyclerView
   extends RecyclerViewCompat
@@ -80,15 +80,15 @@ public class NestScrollRecyclerView
   
   private boolean a()
   {
-    if (!(getAdapter() instanceof wbs)) {
+    if (!(getAdapter() instanceof wpf)) {
       return false;
     }
-    wbp localwbp = ((wbs)getAdapter()).a(1);
-    if (localwbp == null) {
+    wpc localwpc = ((wpf)getAdapter()).a(1);
+    if (localwpc == null) {
       return true;
     }
     int i = a(getLayoutManager());
-    if (localwbp.c(0) > i) {}
+    if (localwpc.c(0) > i) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }

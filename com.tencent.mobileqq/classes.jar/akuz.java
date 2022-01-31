@@ -1,25 +1,43 @@
-import com.tencent.qphone.base.util.QLog;
-
-class akuz
-  extends akny
+public final class akuz
 {
-  akuz(akux paramakux, akou paramakou) {}
-  
-  public void a()
+  public static String a()
   {
-    akux.a(this.jdField_a_of_type_Akux, true);
-    akux.b(this.jdField_a_of_type_Akux, false);
-    boolean bool = this.jdField_a_of_type_Akou.c();
-    if (QLog.isColorLevel()) {
-      QLog.i("MiniRecog.MiniCodeController", 2, String.format("onConnectReady isMiniResConfigReady=%b", new Object[] { Boolean.valueOf(bool) }));
+    switch ()
+    {
+    default: 
+      return "X";
+    case 2: 
+      return "2g";
+    case 3: 
+      return "3g";
+    case 4: 
+      return "4g";
     }
-    this.jdField_a_of_type_Akux.a();
-    this.jdField_a_of_type_Akux.b();
+    return "wifi";
+  }
+  
+  public static String b()
+  {
+    int i = 4;
+    switch (nam.a())
+    {
+    }
+    for (;;)
+    {
+      return String.valueOf(i);
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akuz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,17 @@
-import android.graphics.Bitmap;
-
-class aibx
-  implements avck
+public final class aibx
 {
-  aibx(aibw paramaibw) {}
+  public final int a;
+  public final int b;
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  aibx(int paramInt1, int paramInt2)
   {
-    if ((paramInt2 == 200) && (paramBitmap != null)) {
-      this.a.notifyDataSetChanged();
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aibx
  * JD-Core Version:    0.7.0.1
  */

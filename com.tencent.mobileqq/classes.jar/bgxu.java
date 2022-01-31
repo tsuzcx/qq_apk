@@ -1,73 +1,50 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import NS_MOBILE_NEWEST_FEEDS.newest_feeds_req;
+import com.qq.taf.jce.JceStruct;
+import java.util.HashMap;
+import java.util.Map;
 
 public class bgxu
+  extends bgxt
 {
-  private static final String a;
+  newest_feeds_req a = new newest_feeds_req();
   
-  static
+  public bgxu(long paramLong, Map<Long, Long> paramMap)
   {
-    jdField_a_of_type_JavaLangString = bgxu.class.getSimpleName();
+    this.a.cmd = 4;
+    this.a.login_uin = paramLong;
+    this.a.strQua = bgxr.a();
+    this.a.mapUinTimes = new HashMap();
+    this.a.mapUinTimes.putAll(paramMap);
   }
   
-  static void a(AppInterface paramAppInterface, bgya parambgya, String paramString, bgxw parambgxw)
+  public int a()
   {
-    if (parambgya == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "startDownloadMaterial is null");
-      }
-      return;
-    }
-    b(paramAppInterface, parambgya, paramString, parambgxw);
+    return 1000;
   }
   
-  private static void b(AppInterface paramAppInterface, bgya parambgya, String paramString, bgxw parambgxw)
+  public String getCmdString()
   {
-    if ((parambgya == null) || (paramAppInterface == null)) {}
-    for (;;)
-    {
-      return;
-      parambgya.a = System.currentTimeMillis();
-      parambgya.jdField_e_of_type_Boolean = true;
-      axro localaxro = new axro();
-      localaxro.jdField_a_of_type_Axrt = new bgxv(parambgya, paramString, parambgxw);
-      localaxro.jdField_a_of_type_JavaLangString = parambgya.jdField_c_of_type_JavaLangString;
-      localaxro.jdField_a_of_type_Int = 0;
-      if (parambgya.jdField_e_of_type_JavaLangString == null)
-      {
-        QLog.i(jdField_a_of_type_JavaLangString, 1, "startDownloadMaterial fail, info.name is null, url:" + parambgya.jdField_c_of_type_JavaLangString);
-        return;
-      }
-      localaxro.jdField_c_of_type_JavaLangString = new File(paramString, parambgya.jdField_e_of_type_JavaLangString).getPath();
-      localaxro.jdField_c_of_type_Int = badq.a(axsr.a().a());
-      localaxro.jdField_c_of_type_Long = 60000L;
-      try
-      {
-        paramAppInterface.getNetEngine(0).a(localaxro);
-        localaxro.jdField_a_of_type_Axrt.onUpdateProgeress(localaxro, 1L, 100L);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "startDownloadMaterial url: " + parambgya.jdField_c_of_type_JavaLangString);
-        return;
-      }
-      catch (Exception paramAppInterface)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            paramAppInterface.printStackTrace();
-          }
-        }
-      }
-    }
+    return "QzoneNewService.getMsgNewestFeeds";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    return String.format("reqetuest ,cmd:%d,loginUin;%d,qua;%s,mapUintimes:%s ", new Object[] { Integer.valueOf(this.a.cmd), Long.valueOf(this.a.login_uin), this.a.strQua, String.valueOf(this.a.mapUinTimes) });
+  }
+  
+  public String uniKey()
+  {
+    return "getMsgNewestFeeds";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgxu
  * JD-Core Version:    0.7.0.1
  */

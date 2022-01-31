@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import aciy;
+import actn;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -12,34 +12,38 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import begh;
-import bgmq;
+import bfob;
+import bfsy;
+import bhvh;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.XListView;
-import qoe;
-import qpm;
-import qpn;
-import qpo;
-import qpp;
-import qpq;
-import rvf;
+import java.util.ArrayList;
+import java.util.Iterator;
+import rap;
+import rbx;
+import rby;
+import rbz;
+import rca;
+import rcb;
+import shx;
 
 public abstract class ReadInJoyBaseListView
   extends XListView
-  implements begh
+  implements bfob
 {
   protected int a;
   private View jdField_a_of_type_AndroidViewView;
   protected ProgressBar a;
   protected RelativeLayout a;
   protected TextView a;
-  qpn jdField_a_of_type_Qpn = new qpn();
-  private qpo jdField_a_of_type_Qpo;
-  protected qpp a;
-  private qpq jdField_a_of_type_Qpq;
+  private ArrayList<bfsy> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  rby jdField_a_of_type_Rby = new rby();
+  private rbz jdField_a_of_type_Rbz;
+  protected rca a;
+  private rcb jdField_a_of_type_Rcb;
   protected boolean a;
   protected int b;
   public boolean b;
@@ -86,9 +90,9 @@ public abstract class ReadInJoyBaseListView
   private void c()
   {
     RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
-    localRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(-1, aciy.a(62.0F, getResources())));
+    localRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(-1, actn.a(62.0F, getResources())));
     TextView localTextView = new TextView(getContext());
-    localTextView.setText(2131652643);
+    localTextView.setText(2131718462);
     localTextView.setTextColor(-4473925);
     localTextView.setTextSize(14.0F);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
@@ -102,9 +106,9 @@ public abstract class ReadInJoyBaseListView
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131494531, this, false));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131306455));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131306456));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131560103, this, false));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372152));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372153));
     addFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
   }
   
@@ -119,24 +123,24 @@ public abstract class ReadInJoyBaseListView
         if (paramInt == 4) {
           break;
         }
-      } while ((!a()) || (this.jdField_a_of_type_Qpp == null));
+      } while ((!a()) || (this.jdField_a_of_type_Rca == null));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131633861);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699649);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
       b(0);
       this.jdField_c_of_type_Int = 1;
-      this.jdField_a_of_type_Qpp.b(this, paramInt);
+      this.jdField_a_of_type_Rca.b(this, paramInt);
       return;
       if (a())
       {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131633861);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699649);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
         b(0);
       }
-    } while (this.jdField_a_of_type_Qpp == null);
+    } while (this.jdField_a_of_type_Rca == null);
     this.jdField_c_of_type_Int = 1;
-    this.jdField_a_of_type_Qpp.b(this, paramInt);
+    this.jdField_a_of_type_Rca.b(this, paramInt);
   }
   
   protected void a(Context paramContext, AttributeSet paramAttributeSet)
@@ -147,18 +151,23 @@ public abstract class ReadInJoyBaseListView
     if (this.jdField_d_of_type_Boolean) {
       a();
     }
-    if (rvf.a(this.jdField_d_of_type_Int)) {
+    if (shx.a(this.jdField_d_of_type_Int)) {
       c();
     }
-    super.setOnScrollListener(this.jdField_a_of_type_Qpn);
+    super.setOnScrollListener(this.jdField_a_of_type_Rby);
     a(this);
   }
   
-  public void a(begh parambegh)
+  public void a(bfob parambfob)
   {
-    if (this.jdField_a_of_type_Qpn != null) {
-      this.jdField_a_of_type_Qpn.a(parambegh);
+    if (this.jdField_a_of_type_Rby != null) {
+      this.jdField_a_of_type_Rby.a(parambfob);
     }
+  }
+  
+  public void a(bfsy parambfsy)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambfsy);
   }
   
   public void a(boolean paramBoolean)
@@ -170,7 +179,7 @@ public abstract class ReadInJoyBaseListView
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
     {
       this.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131633860);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699648);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       b(-this.jdField_a_of_type_Int);
@@ -183,26 +192,26 @@ public abstract class ReadInJoyBaseListView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Qpn != null) {
-      this.jdField_a_of_type_Qpn.a();
+    if (this.jdField_a_of_type_Rby != null) {
+      this.jdField_a_of_type_Rby.a();
     }
   }
   
-  public void b(begh parambegh)
+  public void b(bfob parambfob)
   {
-    if (this.jdField_a_of_type_Qpn != null) {
-      this.jdField_a_of_type_Qpn.b(parambegh);
+    if (this.jdField_a_of_type_Rby != null) {
+      this.jdField_a_of_type_Rby.b(parambfob);
     }
   }
   
   public void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    if (this.jdField_a_of_type_Qpo != null)
+    if (this.jdField_a_of_type_Rbz != null)
     {
-      this.jdField_a_of_type_Qpo.a(this);
-      if (this.jdField_a_of_type_Qpq != null) {
-        this.jdField_a_of_type_Qpq.a();
+      this.jdField_a_of_type_Rbz.a(this);
+      if (this.jdField_a_of_type_Rcb != null) {
+        this.jdField_a_of_type_Rcb.a();
       }
     }
   }
@@ -219,8 +228,17 @@ public abstract class ReadInJoyBaseListView
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_b_of_type_Int < 0) && (this.jdField_c_of_type_Int != 1) && (paramInt1 >= paramInt3 - paramInt2 * 2) && ((!rvf.a(this.jdField_d_of_type_Int)) || (!this.jdField_b_of_type_Boolean))) {
+    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_b_of_type_Int < 0) && (this.jdField_c_of_type_Int != 1) && (paramInt1 >= paramInt3 - paramInt2 * 2) && ((!shx.a(this.jdField_d_of_type_Int)) || (!this.jdField_b_of_type_Boolean))) {
       a(2);
+    }
+  }
+  
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((bfsy)localIterator.next()).a(this.mFirstPosition, getChildCount(), this.mItemCount);
     }
   }
   
@@ -237,8 +255,8 @@ public abstract class ReadInJoyBaseListView
   public void setAdapter(ListAdapter paramListAdapter)
   {
     super.setAdapter(paramListAdapter);
-    if ((paramListAdapter != null) && ((paramListAdapter instanceof qoe))) {
-      ((qoe)paramListAdapter).a(new qpm(this));
+    if ((paramListAdapter != null) && ((paramListAdapter instanceof rap))) {
+      ((rap)paramListAdapter).a(new rbx(this));
     }
   }
   
@@ -252,7 +270,7 @@ public abstract class ReadInJoyBaseListView
     this.jdField_d_of_type_Boolean = paramBoolean;
     if (paramBoolean)
     {
-      if (rvf.a(this.jdField_d_of_type_Int))
+      if (shx.a(this.jdField_d_of_type_Int))
       {
         if (this.jdField_a_of_type_AndroidViewView == null) {
           c();
@@ -269,7 +287,7 @@ public abstract class ReadInJoyBaseListView
     do
     {
       return;
-      if (rvf.a(this.jdField_d_of_type_Int))
+      if (shx.a(this.jdField_d_of_type_Int))
       {
         removeFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
         if (this.jdField_a_of_type_AndroidViewView == null) {
@@ -282,7 +300,7 @@ public abstract class ReadInJoyBaseListView
       if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
         a();
       }
-      if ((bgmq.i()) && ((this.jdField_d_of_type_Int == 0) || (this.jdField_d_of_type_Int == 56)))
+      if ((bhvh.i()) && ((this.jdField_d_of_type_Int == 0) || (this.jdField_d_of_type_Int == 56)))
       {
         QLog.d("ReadInJoyBaseListView", 1, "independent kd recommend and video channel, keep footer view.");
         return;
@@ -305,7 +323,7 @@ public abstract class ReadInJoyBaseListView
       if (!this.jdField_b_of_type_Boolean) {
         break label74;
       }
-      if (rvf.a(this.jdField_d_of_type_Int))
+      if (shx.a(this.jdField_d_of_type_Int))
       {
         if (this.jdField_a_of_type_AndroidViewView == null) {
           c();
@@ -325,24 +343,24 @@ public abstract class ReadInJoyBaseListView
     removeFooterView(this.jdField_a_of_type_AndroidViewView);
   }
   
-  public void setOnDrawCompleteListener(qpo paramqpo)
+  public void setOnDrawCompleteListener(rbz paramrbz)
   {
-    this.jdField_a_of_type_Qpo = paramqpo;
+    this.jdField_a_of_type_Rbz = paramrbz;
   }
   
-  public final void setOnScrollListener(begh parambegh)
+  public final void setOnScrollListener(bfob parambfob)
   {
     throw new RuntimeException("use addScrollListener  or removeScrollListener，better call addScrollListener in ReadInJoyBaseAdapter.onAddScrollListeners for control the call sequence");
   }
   
-  public void setRefreshCallback(qpp paramqpp)
+  public void setRefreshCallback(rca paramrca)
   {
-    this.jdField_a_of_type_Qpp = paramqpp;
+    this.jdField_a_of_type_Rca = paramrca;
   }
   
-  public void setScrollEventCallback(qpq paramqpq)
+  public void setScrollEventCallback(rcb paramrcb)
   {
-    this.jdField_a_of_type_Qpq = paramqpq;
+    this.jdField_a_of_type_Rcb = paramrcb;
   }
 }
 

@@ -1,38 +1,20 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
 
-public class wgy
-  extends FragmentPagerAdapter
+class wgy
+  implements DialogInterface.OnClickListener
 {
-  public wgy(RelativePersonalBottomView paramRelativePersonalBottomView, FragmentManager paramFragmentManager)
-  {
-    super(paramFragmentManager);
-  }
+  wgy(wgw paramwgw, CompoundButton paramCompoundButton) {}
   
-  public int getCount()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return RelativePersonalBottomView.a(this.a).size();
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    if (paramInt < RelativePersonalBottomView.a(this.a).size()) {
-      return (Fragment)RelativePersonalBottomView.a(this.a).get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getItemPosition(Object paramObject)
-  {
-    return -2;
+    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wgy
  * JD-Core Version:    0.7.0.1
  */

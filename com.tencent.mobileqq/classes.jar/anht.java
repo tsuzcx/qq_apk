@@ -1,50 +1,27 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
-
 public class anht
-  extends anjy
 {
-  public EmojiStickerManager.StickerInfo a;
-  public boolean a;
-  public int c = -1;
-  public int d;
-  public int e;
-  public int f = 0;
-  public int g;
-  public String h;
-  public String i;
+  private float a;
+  private float b;
   
-  public Drawable a(Context paramContext, float paramFloat)
+  public anht(float paramFloat1, float paramFloat2)
   {
-    return axku.a(paramContext.getResources(), this.e);
+    this.a = paramFloat1;
+    this.b = paramFloat2;
   }
   
-  public Drawable a(Context paramContext, float paramFloat, int paramInt1, int paramInt2)
+  public float a()
   {
-    return axku.a(paramContext.getResources(), this.e);
+    return this.a;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo) {}
-  
-  public Drawable b(Context paramContext, float paramFloat)
+  public float b()
   {
-    return a(paramContext, paramFloat);
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "EmoticonInfo[type: " + this.c + "  action: " + this.h + "]";
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anht
  * JD-Core Version:    0.7.0.1
  */

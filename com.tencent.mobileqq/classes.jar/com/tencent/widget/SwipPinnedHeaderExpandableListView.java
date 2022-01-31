@@ -12,9 +12,9 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.ExpandableListAdapter;
 import android.widget.Scroller;
-import benp;
-import benq;
-import benr;
+import bfvj;
+import bfvk;
+import bfvl;
 
 public class SwipPinnedHeaderExpandableListView
   extends PinnedHeaderExpandableListView
@@ -26,8 +26,8 @@ public class SwipPinnedHeaderExpandableListView
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private View jdField_a_of_type_AndroidViewView;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private benp jdField_a_of_type_Benp;
-  private benr jdField_a_of_type_Benr;
+  private bfvj jdField_a_of_type_Bfvj;
+  private bfvl jdField_a_of_type_Bfvl;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
@@ -52,7 +52,7 @@ public class SwipPinnedHeaderExpandableListView
   public SwipPinnedHeaderExpandableListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new benq());
+    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new bfvk());
     paramContext = ViewConfiguration.get(getContext());
     this.g = paramContext.getScaledTouchSlop();
     this.e = (paramContext.getScaledMinimumFlingVelocity() * 4);
@@ -128,8 +128,8 @@ public class SwipPinnedHeaderExpandableListView
     if (paramView != null) {}
     for (int i = paramView.getScrollX();; i = 0)
     {
-      if (this.jdField_a_of_type_Benr != null) {
-        this.jdField_a_of_type_Benr.a(null);
+      if (this.jdField_a_of_type_Bfvl != null) {
+        this.jdField_a_of_type_Bfvl.a(null);
       }
       if (i != 0) {
         if (!(paramView.getTag(-3) instanceof Integer)) {
@@ -150,8 +150,8 @@ public class SwipPinnedHeaderExpandableListView
         do
         {
           return;
-        } while (this.jdField_a_of_type_Benp == null);
-        this.jdField_a_of_type_Benp.b(this.jdField_c_of_type_AndroidViewView);
+        } while (this.jdField_a_of_type_Bfvj == null);
+        this.jdField_a_of_type_Bfvj.b(this.jdField_c_of_type_AndroidViewView);
         return;
       }
     }
@@ -184,8 +184,8 @@ public class SwipPinnedHeaderExpandableListView
     {
       j = paramView.getScrollX();
       i = j;
-      if (this.jdField_a_of_type_Benr != null) {
-        this.jdField_a_of_type_Benr.a(paramView);
+      if (this.jdField_a_of_type_Bfvl != null) {
+        this.jdField_a_of_type_Bfvl.a(paramView);
       }
     }
     for (int i = j;; i = 0)
@@ -207,12 +207,12 @@ public class SwipPinnedHeaderExpandableListView
           this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, 0, k, 0, a(j, k));
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
         }
-        while (this.jdField_a_of_type_Benp == null)
+        while (this.jdField_a_of_type_Bfvj == null)
         {
           int k;
           return;
         }
-        this.jdField_a_of_type_Benp.a(paramView);
+        this.jdField_a_of_type_Bfvj.a(paramView);
         return;
       }
     }
@@ -258,8 +258,8 @@ public class SwipPinnedHeaderExpandableListView
   
   public boolean a(View paramView)
   {
-    if (this.jdField_a_of_type_Benr != null) {
-      return this.jdField_a_of_type_Benr.a(paramView);
+    if (this.jdField_a_of_type_Bfvl != null) {
+      return this.jdField_a_of_type_Bfvl.a(paramView);
     }
     return true;
   }
@@ -324,8 +324,8 @@ public class SwipPinnedHeaderExpandableListView
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
         return true;
       }
-      if (this.jdField_a_of_type_Benp != null) {
-        this.jdField_a_of_type_Benp.a(this.jdField_c_of_type_AndroidViewView);
+      if (this.jdField_a_of_type_Bfvj != null) {
+        this.jdField_a_of_type_Bfvj.a(this.jdField_c_of_type_AndroidViewView);
       }
       this.jdField_c_of_type_AndroidViewView = null;
       return true;
@@ -341,13 +341,13 @@ public class SwipPinnedHeaderExpandableListView
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
         return true;
       }
-      if (this.jdField_a_of_type_Benp != null) {
-        this.jdField_a_of_type_Benp.b(this.jdField_c_of_type_AndroidViewView);
+      if (this.jdField_a_of_type_Bfvj != null) {
+        this.jdField_a_of_type_Bfvj.b(this.jdField_c_of_type_AndroidViewView);
       }
       this.jdField_c_of_type_AndroidViewView = null;
       return true;
-    } while (this.jdField_a_of_type_Benr == null);
-    this.jdField_a_of_type_Benr.e();
+    } while (this.jdField_a_of_type_Bfvl == null);
+    this.jdField_a_of_type_Bfvl.e();
     return true;
   }
   
@@ -371,8 +371,8 @@ public class SwipPinnedHeaderExpandableListView
       label75:
       if ((k == 0) && (this.jdField_b_of_type_Boolean))
       {
-        if (this.jdField_a_of_type_Benr != null) {
-          this.jdField_a_of_type_Benr.a(true);
+        if (this.jdField_a_of_type_Bfvl != null) {
+          this.jdField_a_of_type_Bfvl.a(true);
         }
         d();
       }
@@ -386,8 +386,8 @@ public class SwipPinnedHeaderExpandableListView
       }
       return super.onInterceptTouchEvent(paramMotionEvent);
       this.jdField_a_of_type_Byte = 0;
-      if (this.jdField_a_of_type_Benr != null) {
-        this.jdField_a_of_type_Benr.a(null);
+      if (this.jdField_a_of_type_Bfvl != null) {
+        this.jdField_a_of_type_Bfvl.a(null);
       }
       this.jdField_a_of_type_Int = j;
       this.jdField_c_of_type_Int = j;
@@ -471,8 +471,8 @@ public class SwipPinnedHeaderExpandableListView
       this.jdField_b_of_type_Int = -1;
       this.d = -1;
       break label72;
-      if (((k == 1) || (k == 3)) && (this.jdField_a_of_type_Benr != null)) {
-        this.jdField_a_of_type_Benr.a(false);
+      if (((k == 1) || (k == 3)) && (this.jdField_a_of_type_Bfvl != null)) {
+        this.jdField_a_of_type_Bfvl.a(false);
       }
     }
   }
@@ -500,8 +500,8 @@ public class SwipPinnedHeaderExpandableListView
       {
         if ((k == 0) && (this.jdField_b_of_type_Boolean))
         {
-          if (this.jdField_a_of_type_Benr != null) {
-            this.jdField_a_of_type_Benr.a(true);
+          if (this.jdField_a_of_type_Bfvl != null) {
+            this.jdField_a_of_type_Bfvl.a(true);
           }
           label112:
           bool2 = bool1;
@@ -615,10 +615,10 @@ public class SwipPinnedHeaderExpandableListView
                 a();
                 bool1 = true;
                 continue;
-                if (((k != 1) && (k != 3)) || (this.jdField_a_of_type_Benr == null)) {
+                if (((k != 1) && (k != 3)) || (this.jdField_a_of_type_Bfvl == null)) {
                   break label112;
                 }
-                this.jdField_a_of_type_Benr.a(false);
+                this.jdField_a_of_type_Bfvl.a(false);
                 break label112;
               }
               bool1 = false;
@@ -636,8 +636,8 @@ public class SwipPinnedHeaderExpandableListView
   public void setAdapter(ExpandableListAdapter paramExpandableListAdapter)
   {
     super.setAdapter(paramExpandableListAdapter);
-    if ((paramExpandableListAdapter instanceof benr)) {
-      this.jdField_a_of_type_Benr = ((benr)paramExpandableListAdapter);
+    if ((paramExpandableListAdapter instanceof bfvl)) {
+      this.jdField_a_of_type_Bfvl = ((bfvl)paramExpandableListAdapter);
     }
   }
   
@@ -649,14 +649,14 @@ public class SwipPinnedHeaderExpandableListView
     }
   }
   
-  public void setRightIconMenuListener(benp parambenp)
+  public void setRightIconMenuListener(bfvj parambfvj)
   {
-    this.jdField_a_of_type_Benp = parambenp;
+    this.jdField_a_of_type_Bfvj = parambfvj;
   }
   
-  public void setSwipListListener(benr parambenr)
+  public void setSwipListListener(bfvl parambfvl)
   {
-    this.jdField_a_of_type_Benr = parambenr;
+    this.jdField_a_of_type_Bfvl = parambfvl;
   }
 }
 

@@ -4,7 +4,7 @@ public abstract interface ITTEngine$IListener
 {
   public abstract void onFirstRender();
   
-  public abstract void onGameLaunched(long paramLong);
+  public abstract void onGameLaunched(int paramInt, long paramLong);
   
   public abstract void onInitFinish();
 }

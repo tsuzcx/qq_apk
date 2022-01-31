@@ -1,17 +1,36 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.7.1;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
-public class uqj
-  implements une
+class uqj
+  implements View.OnTouchListener
 {
-  uqj(upw paramupw) {}
+  uqj(uqh paramuqh) {}
   
-  public void a(ErrorMessage paramErrorMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    urk.e("NewMyStorySegment", "error occur when get friends data from server steps=%s,error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
-    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.7.1(this));
+    if (paramMotionEvent.getAction() == 0)
+    {
+      if (uqh.a(this.a)) {
+        break label105;
+      }
+      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(uqh.a(this.a), uqh.a(this.a), this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, uqh.a(this.a).jdField_a_of_type_Boolean);
+      uqh.a(this.a).jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
+      paramView = this.a;
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
+        break label100;
+      }
+    }
+    label100:
+    for (boolean bool = true;; bool = false)
+    {
+      uqh.a(paramView, bool);
+      return false;
+    }
+    label105:
+    this.a.b();
+    return false;
   }
 }
 

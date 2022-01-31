@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.task;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -33,7 +33,7 @@ public class GpkgLoadAsyncTask
       for (Object localObject = this.miniAppConfig.config;; localObject = "")
       {
         QLog.e("GameLoadManager", 1, localObject);
-        onTaskFailed(2002, ajjy.a(2131639520));
+        onTaskFailed(2002, ajyc.a(2131705305));
         return;
       }
     }

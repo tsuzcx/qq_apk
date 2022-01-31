@@ -1,101 +1,29 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.ColorDrawable;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.Window;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class achi
-  extends Dialog
+  implements nck
 {
-  Context jdField_a_of_type_AndroidContentContext = null;
-  Animatable jdField_a_of_type_AndroidGraphicsDrawableAnimatable = null;
+  public achi(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public achi(Context paramContext)
+  public void a()
   {
-    super(paramContext);
-    a(paramContext);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopTypeExt = 4;
+    }
+    axqw.b(this.a.app, "P_CliOper", "Grp_create", "", "edit_data", "local_suc", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, "", "");
+    TroopInfoActivity.a(this.a, true, 0L, "", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
   }
   
-  protected void a(Context paramContext)
+  public void a(String paramString)
   {
-    super.requestWindowFeature(1);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setContentView(LayoutInflater.from(paramContext).inflate(2131495031, null));
-    paramContext = getWindow();
-    if (paramContext != null)
-    {
-      paramContext.setLayout(-1, -1);
-      paramContext.setBackgroundDrawable(new ColorDrawable(0));
-      if (ImmersiveUtils.isSupporImmersive() == 1) {
-        paramContext.addFlags(67108864);
-      }
-    }
-    setCanceledOnTouchOutside(false);
-    paramContext = (ImageView)super.findViewById(2131306876);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -1.0F, 2, 1.0F, 1, 0.0F, 1, 0.0F);
-    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    localTranslateAnimation.setDuration(800L);
-    localTranslateAnimation.setRepeatCount(-1);
-    paramContext.startAnimation(localTranslateAnimation);
-    super.setCancelable(false);
-  }
-  
-  public void dismiss()
-  {
-    super.dismiss();
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
-    }
-  }
-  
-  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4) {
-      try
-      {
-        dismiss();
-        if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-          ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
-        }
-        return false;
-      }
-      catch (Exception paramKeyEvent)
-      {
-        for (;;)
-        {
-          if (QLog.isDevelopLevel()) {
-            paramKeyEvent.printStackTrace();
-          }
-        }
-      }
-    }
-    return super.onKeyDown(paramInt, paramKeyEvent);
-  }
-  
-  public void onWindowFocusChanged(boolean paramBoolean)
-  {
-    super.onWindowFocusChanged(paramBoolean);
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839117));
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.start();
-      }
-    }
+    this.a.j();
+    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     achi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,120 +1,96 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.SystemClock;
-import com.tencent.open.agent.AuthorityActivity;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.util.HandlerPlus;
-import mqq.observer.SSOAccountObserver;
 
-public class bbtx
-  extends SSOAccountObserver
+class bbtx
+  implements SensorEventListener
 {
-  public bbtx(AuthorityActivity paramAuthorityActivity) {}
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private float b;
+  private float c;
+  private float d;
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  private void a(long paramLong)
   {
-    this.a.j = true;
-    String str = paramBundle.getString("error");
-    paramInt1 = paramBundle.getInt("code");
-    try
-    {
-      bcfk.a().a("agent_login", this.a.d, 0L, 0L, paramInt1, Long.parseLong(paramString), "1000069", "ret: " + paramInt2 + " | error: " + str);
-      bcfn.a().a(1, "LOGIN_GETTICKT", paramString, AuthorityActivity.jdField_e_of_type_JavaLangString, null, Long.valueOf(SystemClock.elapsedRealtime()), paramInt1, 1, str);
-      bcad.a().a(paramString, "", AuthorityActivity.jdField_e_of_type_JavaLangString, "1", "1", "" + paramInt1, false);
-      bcad.a().a(paramString, "", AuthorityActivity.jdField_e_of_type_JavaLangString, "1", "6", "" + paramInt1, false);
-      apmt.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", paramString, false);
-      apmt.a("KEY_LOGIN_STAGE_1_TOTAL", paramString, this.a.jdField_a_of_type_Long, null, true);
-      QLog.d("AuthorityActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bcam.a(paramString) + " | ret : " + paramInt2 + " - error: " + str + " | code: " + paramInt1);
-      if ((paramInt2 == -1000) || (paramInt2 == 154))
-      {
-        this.a.jdField_e_of_type_Long = SystemClock.elapsedRealtime();
-        bcds.c("Authority_TimeCost", "<TimeStamp> login cost : " + (this.a.jdField_e_of_type_Long - this.a.d));
-        if ((paramInt1 == 1002) && (this.a.b < 2))
-        {
-          paramString = this.a;
-          paramString.b += 1;
-          this.a.f();
-          return;
-        }
-      }
-    }
-    catch (Exception paramBundle)
-    {
-      for (;;)
-      {
-        bcds.c("Authority_Report", "report login error : ", paramBundle);
-      }
-      this.a.a(3003, this.a.getResources().getString(2131629228));
-      paramString = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-      paramString.what = 6;
-      paramString.arg1 = 3003;
-      paramString.obj = this.a.getResources().getString(2131629228);
-      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramString);
-      return;
-    }
-    this.a.c(paramString);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.b = 0.0F;
+    this.c = 0.0F;
+    this.d = 0.0F;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  public void a()
   {
-    long l = System.currentTimeMillis();
-    boolean bool = paramBundle.getBoolean("fake_callback");
-    if ((!bool) && (paramInt == 4096)) {
-      bcgd.a(paramString, l);
-    }
-    int i;
-    Object localObject;
-    if (!bool)
-    {
-      i = paramBundle.getInt("code");
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("report_type", "103");
-      ((Bundle)localObject).putString("act_type", "10");
-      ((Bundle)localObject).putString("stringext_1", "GetTicketNoPassword");
-      ((Bundle)localObject).putString("intext_2", "" + i);
-      ((Bundle)localObject).putString("intext_5", "" + (l - AuthorityActivity.a(this.a).jdField_a_of_type_Long));
-      bcad.a().a((Bundle)localObject, AuthorityActivity.jdField_e_of_type_JavaLangString, paramString, false);
-      QLog.d("AuthorityActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bcam.a(paramString) + " | ret : success | code: " + i);
-      bcds.c("Authority_TimeCost", "<TimeStamp> login cost : " + (this.a.jdField_e_of_type_Long - this.a.d));
-    }
-    try
-    {
-      bcfk.a().a("agent_login", this.a.d, this.a.jdField_a_of_type_JavaLangString.length(), paramArrayOfByte.length, 0, Long.parseLong(paramString), "1000069", null);
-      bcfn.a().a(0, "LOGIN_GETTICKT", paramString, AuthorityActivity.jdField_e_of_type_JavaLangString, null, Long.valueOf(SystemClock.elapsedRealtime()), i, 1, null);
-      bcad.a().a(paramString, "", AuthorityActivity.jdField_e_of_type_JavaLangString, "1", "1", "0", false);
-      this.a.j = false;
-      this.a.b = 0;
-      localObject = null;
-      if (paramInt == 4096) {
-        localObject = new String(paramArrayOfByte);
-      }
-      this.a.a(paramString, (String)localObject, paramBundle);
-      this.a.jdField_e_of_type_Long = SystemClock.elapsedRealtime();
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        bcds.c("Authority_Report", "report login error : ", localException);
-      }
-    }
+    bbtt.b = 1;
+    bbtt.a = true;
   }
   
-  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
+  public void b()
   {
-    paramInt = paramBundle.getInt("code");
-    this.a.b = 0;
-    this.a.jdField_e_of_type_Long = SystemClock.elapsedRealtime();
-    bcds.c("Authority_TimeCost", "<TimeStamp> login cost : " + (this.a.jdField_e_of_type_Long - this.a.d));
-    apmt.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", paramString, false);
-    apmt.a("KEY_LOGIN_STAGE_1_TOTAL", paramString, this.a.jdField_a_of_type_Long, null, false);
-    QLog.d("AuthorityActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bcam.a(paramString) + " | ret : on_user_cancel | code: " + paramInt);
+    bbtt.b = 3;
+    QLog.d("HealthStepCounterPlugin", 1, "shaking end");
+  }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    float f1 = 0.0F;
+    float f2;
+    float f3;
+    float f4;
+    long l1;
+    long l2;
+    if (paramSensorEvent.sensor.getType() == 1)
+    {
+      f2 = paramSensorEvent.values[0];
+      f3 = paramSensorEvent.values[1];
+      f4 = paramSensorEvent.values[2];
+      l1 = System.currentTimeMillis();
+      l2 = l1 - this.jdField_a_of_type_Long;
+      if (l2 <= 5000L) {
+        break label66;
+      }
+      a(l1);
+    }
+    label66:
+    do
+    {
+      do
+      {
+        return;
+      } while (l2 <= 80L);
+      if ((this.jdField_a_of_type_Float != 0.0F) || (this.b != 0.0F) || (this.c != 0.0F)) {
+        f1 = Math.abs(f2 - this.jdField_a_of_type_Float) + Math.abs(f3 - this.b) + Math.abs(f4 - this.c);
+      }
+      this.d = (f1 + this.d);
+      if ((this.d > 180.0F) && (this.jdField_a_of_type_Int >= 3))
+      {
+        a();
+        a(l1);
+        return;
+      }
+      if (this.jdField_a_of_type_Int < 10)
+      {
+        this.jdField_a_of_type_Int += 1;
+        this.jdField_a_of_type_Float = f2;
+        this.b = f3;
+        this.c = f4;
+        this.jdField_a_of_type_Long = l1;
+        return;
+      }
+      a(l1);
+    } while (bbtt.b >= 3);
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbtx
  * JD-Core Version:    0.7.0.1
  */

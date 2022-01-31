@@ -1,20 +1,21 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.report;
 
-import agvm;
-import agvp;
-import agvq;
-import agvr;
-import akfu;
+import ahib;
+import ahie;
+import ahif;
+import ahig;
+import ahje;
+import akug;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import babp;
-import badq;
-import bakc;
-import bcez;
+import bbct;
+import bbev;
+import bblm;
+import bdja;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -32,14 +33,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
-import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 import mqq.manager.Manager;
 import mqq.observer.BusinessObserver;
@@ -56,7 +55,7 @@ public class SpringHbReportManager
   private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new agvp(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ahie(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private HashMap<Long, LinkedList<newyear_report.NYReportItems>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private LinkedList<SpringHbReportManager.ReportInfo> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
@@ -95,8 +94,7 @@ public class SpringHbReportManager
   
   private String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getFilesDir().getPath());
-    localStringBuilder.append("/QWallet/").append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).append("/.config/");
+    StringBuilder localStringBuilder = new StringBuilder(ahje.c).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).append("/.config/");
     localStringBuilder.append("report.cache");
     return localStringBuilder.toString();
   }
@@ -118,8 +116,8 @@ public class SpringHbReportManager
     //   13: aload 4
     //   15: monitorenter
     //   16: aload_0
-    //   17: invokespecial 129	com/tencent/mobileqq/activity/qwallet/redpacket/springfestival/report/SpringHbReportManager:a	()Ljava/lang/String;
-    //   20: invokestatic 137	agwj:a	(Ljava/lang/String;)Ljava/lang/Object;
+    //   17: invokespecial 116	com/tencent/mobileqq/activity/qwallet/redpacket/springfestival/report/SpringHbReportManager:a	()Ljava/lang/String;
+    //   20: invokestatic 124	ahiy:a	(Ljava/lang/String;)Ljava/lang/Object;
     //   23: checkcast 30	java/util/LinkedList
     //   26: astore_1
     //   27: aload 4
@@ -145,7 +143,7 @@ public class SpringHbReportManager
     //   55: athrow
     //   56: astore_2
     //   57: aload_2
-    //   58: invokevirtual 140	java/lang/Throwable:printStackTrace	()V
+    //   58: invokevirtual 127	java/lang/Throwable:printStackTrace	()V
     //   61: goto -31 -> 30
     //   64: astore_3
     //   65: goto -16 -> 49
@@ -171,11 +169,11 @@ public class SpringHbReportManager
   
   private NewIntent a(String paramString, byte[] paramArrayOfByte, long paramLong)
   {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), agvr.class);
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), ahig.class);
     localNewIntent.putExtra("cmd", paramString);
     paramString = new Unisso.UniSsoServerReq();
     paramString.reqdata.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-    localNewIntent.putExtra("data", bakc.a(paramString.toByteArray()));
+    localNewIntent.putExtra("data", bblm.a(paramString.toByteArray()));
     if (paramLong > 0L) {
       localNewIntent.putExtra("timeout", paramLong);
     }
@@ -184,25 +182,25 @@ public class SpringHbReportManager
   
   private BusinessObserver a(long paramLong)
   {
-    return new agvq(this, paramLong);
+    return new ahif(this, paramLong);
   }
   
   private newyear_report.NYCommonInfo a()
   {
     newyear_report.NYCommonInfo localNYCommonInfo = new newyear_report.NYCommonInfo();
     localNYCommonInfo.uin.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
-    String str = akfu.b();
+    String str = akug.b();
     if (!TextUtils.isEmpty(str)) {
       localNYCommonInfo.adcode.set(str);
     }
     localNYCommonInfo.plat.set(1);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("uin=").append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
-    Object localObject = bcez.c();
+    Object localObject = bdja.c();
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       localStringBuilder.append("&imei=").append((String)localObject);
     }
-    localObject = akfu.a("qq_spring_hb");
+    localObject = akug.a("qq_spring_hb");
     if ((localObject != null) && (((SosoInterface.SosoLbsInfo)localObject).a != null))
     {
       localStringBuilder.append("&lt=").append(((SosoInterface.SosoLbsInfo)localObject).a.b);
@@ -213,9 +211,9 @@ public class SpringHbReportManager
     }
     localStringBuilder.append("&net=").append(b());
     localStringBuilder.append("&plat=").append(1);
-    localStringBuilder.append("&ver=").append(babp.e());
-    localStringBuilder.append("&model=").append(babp.i());
-    localStringBuilder.append("&qqver=").append(babp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()));
+    localStringBuilder.append("&ver=").append(bbct.e());
+    localStringBuilder.append("&model=").append(bbct.i());
+    localStringBuilder.append("&qqver=").append(bbct.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()));
     localStringBuilder.append("&appid=").append(AppSetting.a());
     localNYCommonInfo.report_array.set(localStringBuilder.toString());
     return localNYCommonInfo;
@@ -329,7 +327,7 @@ public class SpringHbReportManager
         break;
         paramReportInfo.isRealTime = false;
         return false;
-      } while ((!TextUtils.equals(agvm.b, paramReportInfo.eventName)) && (!TextUtils.equals(agvm.a, paramReportInfo.eventName)) && (!TextUtils.equals(agvm.c, paramReportInfo.eventName)) && (!TextUtils.equals(agvm.e, paramReportInfo.eventName)) && (!TextUtils.equals(agvm.d, paramReportInfo.eventName)));
+      } while ((!TextUtils.equals(ahib.b, paramReportInfo.eventName)) && (!TextUtils.equals(ahib.a, paramReportInfo.eventName)) && (!TextUtils.equals(ahib.c, paramReportInfo.eventName)) && (!TextUtils.equals(ahib.e, paramReportInfo.eventName)) && (!TextUtils.equals(ahib.d, paramReportInfo.eventName)));
       return true;
     }
     return true;
@@ -337,7 +335,7 @@ public class SpringHbReportManager
   
   private static int b()
   {
-    switch (badq.b(BaseApplicationImpl.getContext()))
+    switch (bbev.b(BaseApplicationImpl.getContext()))
     {
     case 5: 
     default: 
@@ -522,7 +520,7 @@ public class SpringHbReportManager
       if (QLog.isColorLevel()) {
         QLog.d("springHb_report_SpringHbReportManager", 2, "[tryReportInner] reportCount:" + j + ",mBatchSize:" + this.jdField_a_of_type_Int + ",isRealTime:" + bool2 + ",reportInterval:" + l1 + ",isTimeOk:" + bool1);
       }
-      if (((!bool2) && (!bool1) && (i == 0)) || (!badq.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))) {
+      if (((!bool2) && (!bool1) && (i == 0)) || (!bbev.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))) {
         break label333;
       }
       if (QLog.isColorLevel()) {

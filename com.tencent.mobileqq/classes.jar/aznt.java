@@ -1,10 +1,29 @@
-import com.tencent.image.URLImageView;
+import org.json.JSONObject;
 
-class aznt
+public class aznt
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  aznt(azns paramazns) {}
+  public aznt() {}
+  
+  public aznt(JSONObject paramJSONObject)
+  {
+    this.a = paramJSONObject.optString("serverip", "");
+    this.b = paramJSONObject.optString("serverport", "");
+    this.c = paramJSONObject.optString("checkkey", "");
+    this.d = paramJSONObject.optString("exists", "");
+    this.e = paramJSONObject.optString("uin", "");
+    this.f = paramJSONObject.optString("vid", "");
+    this.g = paramJSONObject.optString("fid", "");
+    this.h = paramJSONObject.optString("complete", "");
+  }
 }
 
 

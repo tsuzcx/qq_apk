@@ -1,24 +1,32 @@
-import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public abstract interface vav
+public class vav
+  extends QQUIEventReceiver<MystoryListView, svv>
 {
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
+  public vav(@NonNull MystoryListView paramMystoryListView)
+  {
+    super(paramMystoryListView);
+  }
   
-  public abstract void a(String paramString);
+  public void a(@NonNull MystoryListView paramMystoryListView, @NonNull svv paramsvv)
+  {
+    paramMystoryListView.q();
+    paramsvv = (vbd)paramMystoryListView.a("FeedSegment");
+    if (paramsvv != null) {
+      paramsvv.j();
+    }
+    paramMystoryListView = (vcs)paramMystoryListView.a("NewMyStorySegment");
+    if (paramMystoryListView != null) {
+      paramMystoryListView.a(false);
+    }
+  }
   
-  public abstract void a(vcb paramvcb);
-  
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void b(int paramInt, Object paramObject);
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void i();
+  public Class acceptEventClass()
+  {
+    return svv.class;
+  }
 }
 
 

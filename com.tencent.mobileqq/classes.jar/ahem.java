@@ -1,28 +1,19 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.2;
-import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.2.2.1;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
 public class ahem
-  implements Animator.AnimatorListener
+  extends ahac
 {
-  public ahem(CareNotificationBar.2 param2) {}
+  public ahem(DrawHbFragment paramDrawHbFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.a.post(new CareNotificationBar.2.2.1(this));
+    DrawHbFragment.a(this.a);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahem
  * JD-Core Version:    0.7.0.1
  */

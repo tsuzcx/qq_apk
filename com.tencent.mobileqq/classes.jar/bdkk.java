@@ -1,25 +1,21 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.qqmini.sdk.core.widget.media.danmu.BarrageView;
-import java.util.Set;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 
-public class bdkk
-  extends bdkl
+final class bdkk
+  implements DialogInterface.OnClickListener
 {
-  public bdkk(BarrageView paramBarrageView, View paramView)
-  {
-    super(paramBarrageView, paramView, null);
-  }
+  bdkk(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onAnimationEnd(paramAnimation);
-    BarrageView.a(this.a).remove(paramAnimation);
+    bdki.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdkk
  * JD-Core Version:    0.7.0.1
  */

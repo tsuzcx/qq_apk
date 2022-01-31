@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import abai;
 import android.view.ViewStub;
 import com.tencent.mobileqq.activity.main.CommonLoadingView;
 
-public class Leba$2
+class Leba$2
   implements Runnable
 {
-  public Leba$2(abai paramabai) {}
+  Leba$2(Leba paramLeba) {}
   
   public void run()
   {
-    ViewStub localViewStub = (ViewStub)this.this$0.a(2131310803);
-    ((CommonLoadingView)this.this$0.a(2131298986)).setVisibility(8);
+    ViewStub localViewStub = (ViewStub)this.this$0.a(2131376611);
+    ((CommonLoadingView)this.this$0.a(2131364546)).setVisibility(8);
     localViewStub.setVisibility(0);
   }
 }

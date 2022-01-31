@@ -1,17 +1,16 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Point;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
 
 public class pyc
-  implements TypeEvaluator<Point>
+  implements View.OnClickListener
 {
-  private Point a = new Point();
+  public pyc(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
   
-  public Point a(float paramFloat, Point paramPoint1, Point paramPoint2)
+  public void onClick(View paramView)
   {
-    int i = (int)(paramPoint1.x + (paramPoint2.x - paramPoint1.x) * paramFloat);
-    int j = (int)(paramPoint1.y + (paramPoint2.y - paramPoint1.y) * paramFloat);
-    this.a.set(i, j);
-    return this.a;
+    pdb.a(2, this.jdField_a_of_type_JavaLangString);
+    onk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
   }
 }
 

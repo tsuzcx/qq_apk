@@ -1,6 +1,6 @@
 package cooperation.qlink;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -8,9 +8,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbms;
-import bfcz;
-import bfdi;
+import bcpq;
+import bgkq;
+import bgkz;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.mobileqq.pluginsdk.PluginStatic;
 import com.tencent.qphone.base.util.QLog;
@@ -36,21 +36,21 @@ public class QlinkPluginProxyActivity
     return paramIntent.getStringExtra("qlink_plugin_activity_name");
   }
   
-  public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt, bbms parambbms)
+  public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt, bcpq parambcpq)
   {
     paramIntent.putExtra("userQqResources", 2);
-    bfdi localbfdi = new bfdi(0);
-    localbfdi.jdField_b_of_type_JavaLangString = "qlink_plugin.apk";
-    localbfdi.d = PluginInfo.c;
-    localbfdi.jdField_a_of_type_JavaLangString = paramString;
-    localbfdi.e = a(paramIntent);
-    localbfdi.jdField_a_of_type_JavaLangClass = QlinkPluginProxyActivity.class;
-    localbfdi.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbfdi.jdField_b_of_type_Int = paramInt;
-    localbfdi.jdField_a_of_type_AndroidAppDialog = parambbms;
-    localbfdi.c = 10000;
-    localbfdi.f = null;
-    bfcz.a(paramActivity, localbfdi);
+    bgkz localbgkz = new bgkz(0);
+    localbgkz.jdField_b_of_type_JavaLangString = "qlink_plugin.apk";
+    localbgkz.d = PluginInfo.c;
+    localbgkz.jdField_a_of_type_JavaLangString = paramString;
+    localbgkz.e = a(paramIntent);
+    localbgkz.jdField_a_of_type_JavaLangClass = QlinkPluginProxyActivity.class;
+    localbgkz.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localbgkz.jdField_b_of_type_Int = paramInt;
+    localbgkz.jdField_a_of_type_AndroidAppDialog = parambcpq;
+    localbgkz.c = 10000;
+    localbgkz.f = null;
+    bgkq.a(paramActivity, localbgkz);
   }
   
   public static void a(Intent paramIntent, String paramString)
@@ -92,7 +92,7 @@ public class QlinkPluginProxyActivity
     for (;;)
     {
       paramBundle = paramBundle.getString("pluginsdk_launchActivity");
-      StringBuffer localStringBuffer = new StringBuffer(ajjy.a(2131644099));
+      StringBuffer localStringBuffer = new StringBuffer(ajyc.a(2131709884));
       localStringBuffer.append(paramBundle).append(" ").append(this.mCreateErrorInfo);
       QLog.e("QLinkLog", 1, localStringBuffer.toString());
       return;

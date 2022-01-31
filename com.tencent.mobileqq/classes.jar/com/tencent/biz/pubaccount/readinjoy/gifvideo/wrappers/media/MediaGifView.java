@@ -3,11 +3,11 @@ package com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.gif.GifView;
-import omg;
+import oxu;
 
 public class MediaGifView
   extends GifView
-  implements omg
+  implements oxu
 {
   public MediaGifView(Context paramContext)
   {
@@ -24,22 +24,22 @@ public class MediaGifView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void D_()
+  public void B_()
   {
     a();
   }
   
-  public void E_()
+  public void C_()
   {
     b();
   }
+  
+  public void D_() {}
   
   public boolean a()
   {
     return false;
   }
-  
-  public void c() {}
   
   public void d() {}
   

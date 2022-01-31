@@ -1,230 +1,98 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.NearbyUtils.1;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import mqq.app.AppRuntime;
+import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.widget.ThemeImageView;
 
-public final class asfl
+public class asfl
+  extends ahny
 {
-  public static String a(int paramInt)
+  int a;
+  
+  public View a(int paramInt, Object paramObject, ahnt paramahnt, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahpq paramahpq)
   {
-    String str = "4";
-    if (paramInt == 14) {
-      str = "1";
-    }
-    do
+    paramOnClickListener = paramContext.getResources();
+    if (paramView == null)
     {
-      return str;
-      if (paramInt == 15) {
-        return "2";
+      paramahnt = null;
+      if ((paramView == null) || (!(paramView.getTag() instanceof asfm))) {
+        break label179;
       }
-    } while (paramInt != 16);
-    return "3";
-  }
-  
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    paramString = Pattern.compile("\n").matcher(paramString).replaceAll("");
-    paramString = Pattern.compile("^ +").matcher(paramString).replaceAll("");
-    return Pattern.compile(" +$").matcher(paramString).replaceAll("");
-  }
-  
-  public static void a(int paramInt, String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    int i = 0;
-    boolean bool;
-    switch (paramInt)
-    {
-    case 3: 
-    default: 
-      bool = false;
-    }
-    StringBuilder localStringBuilder;
-    while (bool)
-    {
-      localStringBuilder = new StringBuilder(100);
-      localStringBuilder.append(paramString2);
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
-      {
-        int j = paramVarArgs.length;
-        for (;;)
-        {
-          if (i < j)
-          {
-            paramString2 = paramVarArgs[i];
-            localStringBuilder.append(",").append(paramString2);
-            i += 1;
-            continue;
-            bool = QLog.isColorLevel();
-            break;
-            bool = QLog.isDevelopLevel();
-            break;
-          }
-        }
+      paramahnt = (asfm)paramahnt;
+      label35:
+      paramInt = paramViewGroup.getMeasuredHeight() - this.a;
+      if (paramInt >= 0) {
+        break label382;
       }
-      if ((paramInt != 4) || (!QLog.isDevelopLevel())) {
-        break label142;
-      }
-      QLog.i(paramString1, 4, localStringBuilder.toString());
+      paramInt = (int)(this.a * 1.5F);
     }
-    label142:
-    while ((paramInt != 2) || (!QLog.isColorLevel())) {
-      return;
-    }
-    QLog.i(paramString1, 2, localStringBuilder.toString());
-  }
-  
-  public static void a(Activity paramActivity, int paramInt)
-  {
-    Intent localIntent = new Intent(paramActivity, BindNumberActivity.class);
-    localIntent.putExtra("kSrouce", 20);
-    paramActivity.startActivityForResult(localIntent, paramInt);
-  }
-  
-  public static void a(EditText paramEditText, int paramInt)
-  {
-    String str = paramEditText.getText().toString();
-    if (str.getBytes().length > paramInt)
-    {
-      while (str.getBytes().length > paramInt) {
-        str = str.substring(0, str.length() - 1);
-      }
-      paramEditText.setText(str);
-    }
-    try
-    {
-      paramEditText.setSelection(str.length());
-      return;
-    }
-    catch (Exception paramEditText)
-    {
-      QLog.e("NearbyUtils", 1, " truncateEditText error", paramEditText);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyUtils", 2, "targetUin:" + paramString + "|type:" + paramInt);
-    }
-    ThreadManager.post(new NearbyUtils.1(paramString, paramInt, paramQQAppInterface), 8, null, false);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    if (paramString2 == null) {
-      paramString2 = "";
-    }
+    label81:
+    label382:
     for (;;)
     {
-      awqx.b(paramQQAppInterface, "dc00899", "grp_lbs", paramString2, "talk_safety_check", paramString1, 0, 0, "", "", "", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.bindphone", 2, "report talk check: action=" + paramString1 + ", toUin=" + paramString2);
-      }
-      return;
-    }
-  }
-  
-  public static void a(NearbyAppInterface paramNearbyAppInterface, String paramString, int paramInt)
-  {
-    if (paramInt > 0) {}
-    for (String str = String.valueOf(paramInt);; str = "")
-    {
-      paramInt = ((Integer)asfc.a(paramNearbyAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
-      awqx.b(null, "dc00899", "grp_lbs", "", "home", paramString, 0, 0, str, String.valueOf(paramInt), "", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyUtils", 2, "reportHomeEvent: actionName=" + paramString + ",d1[tabType]=" + str + ", d2[gender]=" + paramInt);
-      }
-      return;
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if (QLog.isDevelopLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString2).append(", [");
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
+      if ((paramView.getLayoutParams() instanceof AbsListView.LayoutParams))
       {
-        localStringBuilder.append(paramVarArgs[i]).append(",");
-        i += 1;
+        paramViewGroup = (AbsListView.LayoutParams)paramView.getLayoutParams();
+        paramViewGroup.width = -1;
+        paramViewGroup.height = paramInt;
+        paramView.setLayoutParams(paramViewGroup);
+        if ((paramObject instanceof Integer))
+        {
+          paramInt = ((Integer)paramObject).intValue();
+          if (paramInt != 20) {
+            break label292;
+          }
+          paramahnt.jdField_a_of_type_ComTencentWidgetThemeImageView.setImageResource(2130839144);
+          if ((paramahnt.jdField_a_of_type_ComTencentWidgetThemeImageView.getDrawable() instanceof Animatable)) {
+            ((Animatable)paramahnt.jdField_a_of_type_ComTencentWidgetThemeImageView.getDrawable()).start();
+          }
+          paramahnt.jdField_a_of_type_AndroidWidgetTextView.setText(2131699105);
+        }
       }
-      localStringBuilder.append("]");
-      QLog.i(paramString1, 4, localStringBuilder.toString());
-    }
-  }
-  
-  public static void a(String paramString, Object... paramVarArgs)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString).append(", [");
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
+      while (paramInt != 21)
       {
-        localStringBuilder.append(paramVarArgs[i]).append(",");
-        i += 1;
+        return paramView;
+        paramahnt = paramView.getTag();
+        break;
+        paramView = LayoutInflater.from(paramContext).inflate(2131560754, null);
+        paramahnt = new asfm();
+        paramahnt.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131368899));
+        paramahnt.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131367679));
+        paramahnt.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378431));
+        paramView.setTag(paramahnt);
+        this.a = (paramOnClickListener.getDimensionPixelSize(2131298087) + paramOnClickListener.getDimensionPixelSize(2131298089) + paramOnClickListener.getDimensionPixelSize(2131298088));
+        break label35;
+        paramViewGroup = new AbsListView.LayoutParams(-1, paramInt);
+        break label81;
       }
-      localStringBuilder.append("]");
-      QLog.i("Q.nearby", 2, localStringBuilder.toString());
-    }
-  }
-  
-  public static boolean a()
-  {
-    return QLog.isDevelopLevel();
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 3) || (paramInt == 21) || (paramInt == 22) || (paramInt == 23) || (paramInt == 28) || (paramInt == 48);
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    if (paramContext != null)
-    {
-      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-      if (paramContext != null) {
-        return paramContext.isAvailable();
+      if ((paramahnt.jdField_a_of_type_ComTencentWidgetThemeImageView.getDrawable() instanceof Animatable)) {
+        ((Animatable)paramahnt.jdField_a_of_type_ComTencentWidgetThemeImageView.getDrawable()).stop();
+      }
+      paramObject = bawu.a(paramContext.getResources(), 2130844282);
+      if (paramObject != null)
+      {
+        paramahnt.jdField_a_of_type_ComTencentWidgetThemeImageView.setImageBitmap(paramObject);
+        paramahnt.jdField_a_of_type_ComTencentWidgetThemeImageView.setMaskShape(bfwa.b);
+      }
+      for (;;)
+      {
+        paramahnt.jdField_a_of_type_AndroidWidgetTextView.setText(2131699104);
+        return paramView;
+        QLog.e("MatchEmptyItemBuilder", 1, "image qq_extend_friend_empty_normal decode failed.");
       }
     }
-    return false;
-  }
-  
-  public static boolean b()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public static boolean c()
-  {
-    return BaseApplicationImpl.getApplication().waitAppRuntime(null).getAppRuntime("module_nearby") instanceof NearbyAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asfl
  * JD-Core Version:    0.7.0.1
  */

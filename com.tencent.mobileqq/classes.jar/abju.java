@@ -1,66 +1,26 @@
-import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abju
+  extends BroadcastReceiver
 {
-  public static void a(Activity paramActivity, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
-  {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    localIntent.setClass(paramActivity, paramClass);
-    localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    paramActivity.startActivityForResult(localIntent, paramInt);
-  }
+  public abju(JumpActivity paramJumpActivity) {}
   
-  public static void a(Context paramContext, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
+    if (!this.a.isFinishing())
+    {
+      this.a.finish();
+      QLog.i("JumpAction", 1, "JumpActivity has finished by broadcastReceiver.");
     }
-    localIntent.setClass(paramContext, paramClass);
-    localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    paramContext.startActivity(localIntent);
-  }
-  
-  public static void a(Context paramContext, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
-  {
-    a(paramContext, null, paramClass, paramClass1);
-  }
-  
-  public static void a(Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
-  {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    localIntent.setClass(BaseApplicationImpl.getApplication(), paramClass);
-    localIntent.addFlags(268435456);
-    localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    BaseApplicationImpl.getApplication().startActivity(localIntent);
-  }
-  
-  public static void a(Fragment paramFragment, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
-  {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    localIntent.setClass(paramFragment.getActivity(), paramClass);
-    localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    paramFragment.startActivityForResult(localIntent, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abju
  * JD-Core Version:    0.7.0.1
  */

@@ -1,276 +1,105 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.commonsdk.util.HexUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.troop.homework.config.BeginnerGuideDownloadManager.1;
-import com.tencent.qphone.base.util.MD5;
+import android.annotation.TargetApi;
+import android.net.SSLCertificateSocketFactory;
+import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.lang.reflect.Method;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLPeerUnverifiedException;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocket;
+import org.apache.http.conn.scheme.LayeredSocketFactory;
+import org.apache.http.conn.ssl.StrictHostnameVerifier;
+import org.apache.http.params.HttpParams;
 
+@TargetApi(17)
 public class ayvs
+  implements LayeredSocketFactory
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  static final HostnameVerifier jdField_a_of_type_JavaxNetSslHostnameVerifier = new StrictHostnameVerifier();
+  SSLCertificateSocketFactory jdField_a_of_type_AndroidNetSSLCertificateSocketFactory = (SSLCertificateSocketFactory)SSLCertificateSocketFactory.getInsecure(0, null);
   private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
   
-  public ayvs(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3)
+  public ayvs(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    int i = j;
-    if (!TextUtils.isEmpty(this.b))
-    {
-      if (!TextUtils.isEmpty(this.c)) {
-        break label71;
-      }
-      i = j;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public Socket connectSocket(Socket paramSocket, String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2, HttpParams paramHttpParams)
+  {
+    paramSocket.connect(new InetSocketAddress(paramString, paramInt1));
+    return paramSocket;
+  }
+  
+  public Socket createSocket()
+  {
+    return new Socket();
+  }
+  
+  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SNISocketFactory", 2, "createSocket " + paramSocket.toString() + " host:" + paramString + " port:" + paramInt + " autoClose:" + paramBoolean);
     }
-    while (i != 0)
+    paramSocket = (SSLSocket)this.jdField_a_of_type_AndroidNetSSLCertificateSocketFactory.createSocket(paramSocket, paramString, paramInt, paramBoolean);
+    paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
+    int i = 10;
+    if (Build.VERSION.SDK_INT >= 17)
     {
-      throw new IllegalArgumentException("args error");
-      label71:
-      i = j;
-      if (a(this.jdField_a_of_type_JavaLangString)) {
-        i = 0;
+      if (QLog.isColorLevel()) {
+        QLog.i("SNISocketFactory", 2, "Setting SNI hostname");
       }
+      this.jdField_a_of_type_AndroidNetSSLCertificateSocketFactory.setHostname(paramSocket, paramString);
     }
-  }
-  
-  private static File a()
-  {
-    return new File(ajed.aU + "homework_troop");
-  }
-  
-  private void a(Handler paramHandler, int paramInt, boolean paramBoolean)
-  {
-    ThreadManager.postImmediately(new BeginnerGuideDownloadManager.1(this, paramHandler, paramInt, paramBoolean), null, true);
-    paramHandler.sendEmptyMessage(1111);
-  }
-  
-  private void a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    label162:
-    label193:
     for (;;)
     {
-      TroopManager localTroopManager;
+      SSLSession localSSLSession = paramSocket.getSession();
+      if (jdField_a_of_type_JavaxNetSslHostnameVerifier.verify(paramString, localSSLSession)) {
+        break;
+      }
+      ayrn.a(i + 4, paramString, paramInt, this.jdField_a_of_type_JavaLangString);
+      paramSocket.close();
+      throw new SSLPeerUnverifiedException("Cannot verify hostname: " + paramString);
+      if (QLog.isColorLevel()) {
+        QLog.i("SNISocketFactory", 2, "No documented SNI support on Android <4.2, trying with reflection");
+      }
+      i = 20;
+      int j;
       try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.parseConfig");
-        }
-        localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-        paramString = ayvu.a(paramString, "config.cfg");
-        if (!paramBoolean) {
-          break label162;
-        }
-        switch (paramInt)
-        {
-        case 5: 
-        case 6: 
-          if (QLog.isColorLevel()) {
-            QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.parseConfig Publish not match");
-          }
-          label86:
-          return;
-        }
+        paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { paramString });
       }
-      finally {}
-      localTroopManager.a.a = paramString;
-      continue;
-      localTroopManager.a.b = paramString;
-      continue;
-      for (;;)
+      catch (Exception localException)
       {
-        if (!QLog.isColorLevel()) {
-          break label193;
-        }
-        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.parseConfig Submit not match");
-        break label86;
-        localTroopManager.a.c = paramString;
-        break label86;
-        localTroopManager.a.d = paramString;
-        break label86;
-        break;
-        switch (paramInt)
-        {
-        }
+        j = 30;
+        i = j;
       }
-    }
-  }
-  
-  private boolean a(String paramString)
-  {
-    try
-    {
-      new URL(paramString);
-      return true;
-    }
-    catch (MalformedURLException paramString) {}
-    return false;
-  }
-  
-  private static String b(String paramString)
-  {
-    long l = System.currentTimeMillis();
-    try
-    {
-      String str1 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
-      paramString = str1;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        paramString = new File(paramString);
-        if (!paramString.exists()) {
-          break;
-        }
-        try
-        {
-          String str2 = bech.a(paramString);
-          paramString = str2;
-          if (str2 == null) {
-            paramString = "";
-          }
-        }
-        catch (IOException paramString)
-        {
-          paramString = "";
-        }
-      }
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = "";
+        QLog.i("SNISocketFactory", 2, "SNI not useable");
+        i = j;
       }
     }
     if (QLog.isColorLevel()) {
-      QLog.d("BeginnerGuideDownloadManager", 2, new Object[] { "BeginnerGuideDownloadManager$calcMD5", " md5:" + paramString + ", cost:" + (System.currentTimeMillis() - l) });
+      QLog.i("SNISocketFactory", 2, "Established " + localException.getProtocol() + " connection with " + localException.getPeerHost() + " using " + localException.getCipherSuite());
     }
-    return paramString;
+    ayrn.a(i, paramString, paramInt, this.jdField_a_of_type_JavaLangString);
+    return paramSocket;
   }
   
-  private boolean b(Handler paramHandler, int paramInt, boolean paramBoolean)
+  public boolean isSecure(Socket paramSocket)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.postDownload");
-    }
-    File localFile1 = a();
-    File localFile2 = new File(localFile1, this.b);
-    Object localObject = this.b.substring(0, this.b.lastIndexOf("."));
-    localFile1 = new File(localFile1, (String)localObject + "_src");
-    if ((!localFile1.exists()) && (!localFile1.mkdirs()))
-    {
-      paramHandler.sendEmptyMessage(1120);
-      return false;
-    }
-    localObject = new ArrayList();
-    String[] arrayOfString = localFile1.list();
-    String str = localFile1.getAbsolutePath();
-    Message localMessage = Message.obtain();
-    localMessage.what = 1110;
-    localMessage.arg1 = paramInt;
-    localMessage.obj = str;
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.postDownload begin unzip");
-      }
-      ((ArrayList)localObject).addAll(mpx.a(localFile2));
-      if (Arrays.asList(arrayOfString).containsAll((Collection)localObject))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("BeginnerGuideDownloadManager", 2, "zip file already unzip");
-        }
-        a(str, paramInt, paramBoolean);
-        paramHandler.sendMessage(localMessage);
-        return true;
-      }
-      mpx.b(localFile2.getAbsolutePath(), localFile1.getAbsolutePath());
-      if (Arrays.asList(localFile1.list()).containsAll((Collection)localObject))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("BeginnerGuideDownloadManager", 2, "zip file unzip success");
-        }
-        a(str, paramInt, paramBoolean);
-        paramHandler.sendMessage(localMessage);
-        return true;
-      }
-      throw new Exception("trigger catch");
-    }
-    catch (Exception localException)
-    {
-      paramHandler.sendEmptyMessage(1120);
-      if (QLog.isColorLevel()) {
-        QLog.d("BeginnerGuideDownloadManager", 2, "zip file unzip error ", localException);
-      }
-      paramHandler = ((ArrayList)localObject).iterator();
-      while (paramHandler.hasNext())
-      {
-        File localFile3 = new File(localFile1, (String)paramHandler.next());
-        if ((localFile3.exists()) && (!localFile3.delete()) && (QLog.isColorLevel())) {
-          QLog.d("BeginnerGuideDownloadManager", 2, "zip file unzip del error");
-        }
-      }
+    if ((paramSocket instanceof SSLSocket)) {
+      return ((SSLSocket)paramSocket).isConnected();
     }
     return false;
-  }
-  
-  public boolean a(Handler paramHandler, int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.startDownload");
-    }
-    File localFile = a();
-    if ((!localFile.exists()) && (!localFile.mkdirs())) {
-      return false;
-    }
-    localFile = new File(localFile, this.b);
-    if ((localFile.exists()) && (this.c.equalsIgnoreCase(b(localFile.getAbsolutePath()))))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.startDownload: file exists, no need to start download again");
-      }
-      a(paramHandler, paramInt, paramBoolean);
-      return true;
-    }
-    axrr localaxrr = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
-    axro localaxro = new axro();
-    localaxro.jdField_a_of_type_Boolean = true;
-    localaxro.jdField_e_of_type_Boolean = true;
-    localaxro.jdField_a_of_type_Axrt = new ayvt(this, paramHandler, paramInt, paramBoolean);
-    localaxro.jdField_a_of_type_Int = 0;
-    localaxro.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localaxro.c = localFile.getAbsolutePath();
-    localaxro.jdField_e_of_type_Int = 0;
-    localaxrr.a(localaxro);
-    if (QLog.isColorLevel()) {
-      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.startDownload sendReq success");
-    }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayvs
  * JD-Core Version:    0.7.0.1
  */

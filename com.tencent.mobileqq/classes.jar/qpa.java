@@ -1,15 +1,20 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParserWithHotReload.IHotReloadChangedObserver;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-class qpa
-  implements ProteusParserWithHotReload.IHotReloadChangedObserver
+final class qpa
+  implements Animation.AnimationListener
 {
-  qpa(qoe paramqoe) {}
+  qpa(View paramView) {}
   
-  public void onHotReloadChanged(Context paramContext, String paramString1, String paramString2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.notifyDataSetChanged();
+    this.a.setTag(-1, null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

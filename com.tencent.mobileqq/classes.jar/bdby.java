@@ -1,24 +1,23 @@
-public abstract class bdby
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import com.tencent.open.agent.OpenCardContainer;
+
+public class bdby
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  public bdby(OpenCardContainer paramOpenCardContainer, ImageView paramImageView) {}
   
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(int paramInt, String[] paramArrayOfString);
-  
-  public abstract void a(boolean paramBoolean, int paramInt);
-  
-  public abstract void a(String[] paramArrayOfString);
-  
-  public abstract void b(int paramInt, String paramString);
-  
-  public abstract void b(boolean paramBoolean, int paramInt);
-  
-  public abstract void c(int paramInt, String paramString);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = i;
+    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdby
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.conditionsearch.widget;
 
-import alxk;
-import alxl;
-import alxm;
-import alxn;
-import alxo;
-import alxp;
-import alxq;
+import amna;
+import amnb;
+import amnc;
+import amnd;
+import amne;
+import amnf;
+import amng;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -14,8 +14,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import behk;
-import beor;
+import bfpe;
+import bfwl;
 import com.tencent.mobileqq.remind.widget.WheelTextView;
 import com.tencent.mobileqq.remind.widget.WheelView;
 
@@ -24,13 +24,13 @@ public class IphonePickerView
 {
   public static int a;
   private static int b = -12303292;
-  private alxp jdField_a_of_type_Alxp;
-  private alxq jdField_a_of_type_Alxq;
+  private amnf jdField_a_of_type_Amnf;
+  private amng jdField_a_of_type_Amng;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private behk jdField_a_of_type_Behk = new alxl(this);
-  private beor jdField_a_of_type_Beor = new alxm(this);
-  private alxo[] jdField_a_of_type_ArrayOfAlxo;
+  private bfpe jdField_a_of_type_Bfpe = new amnb(this);
+  private bfwl jdField_a_of_type_Bfwl = new amnc(this);
+  private amne[] jdField_a_of_type_ArrayOfAmne;
   private WheelView[] jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView;
   private int c;
   
@@ -78,13 +78,13 @@ public class IphonePickerView
   private void a(WheelView paramWheelView, int paramInt)
   {
     paramWheelView.setTag(Integer.valueOf(paramInt));
-    alxo localalxo = new alxo(this, paramInt, 25);
+    amne localamne = new amne(this, paramInt, 25);
     this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[paramInt] = paramWheelView;
-    this.jdField_a_of_type_ArrayOfAlxo[paramInt] = localalxo;
-    paramWheelView.setAdapter(localalxo);
-    paramWheelView.setOnItemSelectedListener(this.jdField_a_of_type_Behk);
-    paramWheelView.setOnSelectViewDataUpdateListener(this.jdField_a_of_type_Beor);
-    paramWheelView.setOnEndMovementListener(new alxn(this, paramInt));
+    this.jdField_a_of_type_ArrayOfAmne[paramInt] = localamne;
+    paramWheelView.setAdapter(localamne);
+    paramWheelView.setOnItemSelectedListener(this.jdField_a_of_type_Bfpe);
+    paramWheelView.setOnSelectViewDataUpdateListener(this.jdField_a_of_type_Bfwl);
+    paramWheelView.setOnEndMovementListener(new amnd(this, paramInt));
   }
   
   public int a(int paramInt)
@@ -97,50 +97,50 @@ public class IphonePickerView
   
   public void a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfAlxo.length)) {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfAmne.length)) {
       throw new IllegalArgumentException("Error column index " + paramInt);
     }
-    this.jdField_a_of_type_ArrayOfAlxo[paramInt].notifyDataSetChanged();
+    this.jdField_a_of_type_ArrayOfAmne[paramInt].notifyDataSetChanged();
   }
   
-  public void a(alxq paramalxq)
+  public void a(amng paramamng)
   {
     Object localObject1 = getContext().getResources();
-    jdField_a_of_type_Int = ((Resources)localObject1).getColor(2131101342);
-    b = ((Resources)localObject1).getColor(2131101303);
-    setBackgroundColor(((Resources)localObject1).getColor(2131101308));
-    Object localObject2 = findViewById(2131311473);
+    jdField_a_of_type_Int = ((Resources)localObject1).getColor(2131166937);
+    b = ((Resources)localObject1).getColor(2131166898);
+    setBackgroundColor(((Resources)localObject1).getColor(2131166903));
+    Object localObject2 = findViewById(2131377286);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131101355));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131166950));
     }
-    localObject2 = findViewById(2131311474);
+    localObject2 = findViewById(2131377287);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131101355));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131166950));
     }
-    localObject2 = findViewById(2131303564);
+    localObject2 = findViewById(2131369233);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131101354));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131166949));
     }
-    localObject2 = findViewById(2131303542);
+    localObject2 = findViewById(2131369211);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131101354));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131166949));
     }
-    this.jdField_a_of_type_Alxq = paramalxq;
-    this.c = this.jdField_a_of_type_Alxq.a();
+    this.jdField_a_of_type_Amng = paramamng;
+    this.c = this.jdField_a_of_type_Amng.a();
     if ((this.c <= 0) || (this.c > 3)) {
       throw new RuntimeException("Unsupportted column count " + this.c);
     }
     this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView = new WheelView[this.c];
-    this.jdField_a_of_type_ArrayOfAlxo = new alxo[this.c];
-    paramalxq = (WheelView)findViewById(2131299365);
-    localObject1 = (WheelView)findViewById(2131302041);
-    localObject2 = (WheelView)findViewById(2131304676);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131311472));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131311500));
+    this.jdField_a_of_type_ArrayOfAmne = new amne[this.c];
+    paramamng = (WheelView)findViewById(2131364929);
+    localObject1 = (WheelView)findViewById(2131367659);
+    localObject2 = (WheelView)findViewById(2131370332);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131377285));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377313));
     if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new alxk(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new amna(this));
     }
-    a(paramalxq, 0);
+    a(paramamng, 0);
     if (this.c < 2) {
       ((WheelView)localObject1).setVisibility(8);
     }
@@ -155,9 +155,9 @@ public class IphonePickerView
     a((WheelView)localObject2, 2);
   }
   
-  public void setPickListener(alxp paramalxp)
+  public void setPickListener(amnf paramamnf)
   {
-    this.jdField_a_of_type_Alxp = paramalxp;
+    this.jdField_a_of_type_Amnf = paramamnf;
   }
   
   public void setSelection(int paramInt1, int paramInt2)

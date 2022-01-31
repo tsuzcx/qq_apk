@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import apeu;
-import apev;
+import apwo;
+import apwp;
 
 public class UniformDownloaderAppBabySdk$4$2
   implements Runnable
 {
-  public UniformDownloaderAppBabySdk$4$2(apev paramapev, String paramString1, int paramInt, String paramString2) {}
+  public UniformDownloaderAppBabySdk$4$2(apwp paramapwp, String paramString1, int paramInt, String paramString2) {}
   
   public void run()
   {
-    apeu.a(this.jdField_a_of_type_Apev.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
-    apeu.a(this.jdField_a_of_type_Apev.a);
+    apwo.a(this.jdField_a_of_type_Apwp.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    apwo.a(this.jdField_a_of_type_Apwp.a);
   }
 }
 

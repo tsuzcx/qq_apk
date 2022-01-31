@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/a9v" />
-    <item android:state_pressed="true" android:drawable="@drawable/a9v" />
-    <item android:drawable="@drawable/a9n" />
+    <item android:state_checked="true">
+        <layer-list>
+            <item android:gravity="center" android:width="20.0dip" android:top="29.0dip">
+                <shape android:shape="rectangle">
+                    <solid android:color="#ff00cafc" />
+                    <corners android:radius="1.5dip" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item android:drawable="@color/ajr" />
 </selector>

@@ -1,14 +1,29 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.qipc.QIPCModule;
 
-class qpf
-  implements View.OnClickListener
+public class qpf
 {
-  qpf(qoe paramqoe, String paramString) {}
+  private static qpf jdField_a_of_type_Qpf;
+  private acwf jdField_a_of_type_Acwf;
+  private ajxl jdField_a_of_type_Ajxl;
+  private View jdField_a_of_type_AndroidViewView;
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new qpg(this, "Module_VideoFeedsIPCServer");
+  private oeh jdField_a_of_type_Oeh;
   
-  public void onClick(View paramView)
+  public static qpf a()
   {
-    ndn.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
+    if (jdField_a_of_type_Qpf == null) {}
+    try
+    {
+      jdField_a_of_type_Qpf = new qpf();
+      return jdField_a_of_type_Qpf;
+    }
+    finally {}
+  }
+  
+  public QIPCModule a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
   }
 }
 

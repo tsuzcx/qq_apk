@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agbu;
+import agns;
 import android.util.Log;
 
 public class PhotoListActivity$8$2
   implements Runnable
 {
-  public PhotoListActivity$8$2(agbu paramagbu) {}
+  public PhotoListActivity$8$2(agns paramagns) {}
   
   public void run()
   {

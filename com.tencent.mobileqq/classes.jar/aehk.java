@@ -1,15 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
 
 class aehk
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  aehk(aegy paramaegy) {}
+  aehk(aegu paramaegu) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.ah = false;
-    awqx.b(this.a.a, "CliOper", "", "", "0X8004EFA", "0X8004EFA", 0, 0, "", "", "", "");
+    if ((this.a.a != null) && (!this.a.a.c())) {
+      this.a.a.f();
+    }
   }
 }
 

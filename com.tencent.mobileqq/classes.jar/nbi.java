@@ -1,19 +1,85 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
-final class nbi
-  extends akfx
+public class nbi
+  extends nbj
 {
-  nbi(String paramString)
+  protected int a;
+  protected int b;
+  
+  public static nbi a(ByteBuffer paramByteBuffer)
   {
-    super(paramString);
+    return a(paramByteBuffer, new nbi());
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public static nbi a(ByteBuffer paramByteBuffer, nbi paramnbi)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NativeAdUtils", 2, "getADPosition doStartADLocation onLocationFinish errCode " + paramInt + " info = " + paramSosoLbsInfo);
+    paramByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+    if (paramByteBuffer.capacity() < paramByteBuffer.position() + 4) {
+      return null;
     }
+    return paramnbi.a(paramByteBuffer.getInt(paramByteBuffer.position()) + paramByteBuffer.position(), paramByteBuffer);
+  }
+  
+  private int b(int paramInt)
+  {
+    paramInt = (paramInt + 2) * 2;
+    if (paramInt < this.b) {
+      return this.jdField_a_of_type_JavaNioByteBuffer.getShort(paramInt + this.jdField_a_of_type_Int);
+    }
+    return 0;
+  }
+  
+  public long a(int paramInt, long paramLong)
+  {
+    paramInt = b(paramInt);
+    if (paramInt != 0) {
+      paramLong = this.jdField_a_of_type_JavaNioByteBuffer.getLong(paramInt + this.c);
+    }
+    return paramLong;
+  }
+  
+  public String a(int paramInt)
+  {
+    paramInt = b(paramInt);
+    if (paramInt != 0) {
+      return b(paramInt + this.c);
+    }
+    return null;
+  }
+  
+  public nbh a(int paramInt)
+  {
+    return a(paramInt, new nbh());
+  }
+  
+  public nbh a(int paramInt, nbh paramnbh)
+  {
+    paramInt = b(paramInt);
+    if (paramInt != 0) {
+      return paramnbh.a(a(paramInt + this.c), this.jdField_a_of_type_JavaNioByteBuffer);
+    }
+    return null;
+  }
+  
+  public nbi a(int paramInt, ByteBuffer paramByteBuffer)
+  {
+    if ((paramInt < 0) || (paramByteBuffer.capacity() < paramInt + 4)) {
+      paramByteBuffer = null;
+    }
+    do
+    {
+      return paramByteBuffer;
+      this.c = paramInt;
+      this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
+      this.jdField_a_of_type_Int = (this.c - this.jdField_a_of_type_JavaNioByteBuffer.getInt(this.c));
+      if (!a(this.jdField_a_of_type_Int, 2)) {
+        return null;
+      }
+      this.b = this.jdField_a_of_type_JavaNioByteBuffer.getShort(this.jdField_a_of_type_Int);
+      paramByteBuffer = this;
+    } while (a(this.jdField_a_of_type_Int, this.b));
+    return null;
   }
 }
 

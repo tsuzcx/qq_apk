@@ -1,29 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-class nhk
-  implements ValueAnimator.AnimatorUpdateListener
+public class nhk
+  implements DialogInterface.OnDismissListener
 {
-  nhk(nhi paramnhi) {}
+  public nhk(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    nhi.a(this.a).setTranslationY(-i);
-    paramValueAnimator = nhi.a(this.a).getLayoutParams();
-    paramValueAnimator.height = (nhi.a(this.a) - i);
-    QLog.d("IconTabController", 1, "hideWithAnimation: " + paramValueAnimator.height);
-    if (paramValueAnimator.height < 0)
-    {
-      aciy.a("IconTabController", "", new IllegalStateException("hideWithAnimation" + paramValueAnimator.height));
-      paramValueAnimator.height = 0;
-    }
-    nhi.a(this.a).setLayoutParams(paramValueAnimator);
-    nhi.a(this.a).setAlpha(paramValueAnimator.height / nhi.a(this.a));
+    this.a.o = false;
   }
 }
 

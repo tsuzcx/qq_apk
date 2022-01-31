@@ -1,31 +1,75 @@
-class aeyu
-  extends benv
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AppGuideTipsConfig;
+import com.tencent.qphone.base.util.QLog;
+
+public class aeyu
+  implements aeyv, View.OnClickListener
 {
-  aeyu(aeys paramaeys, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  private aeyx jdField_a_of_type_Aeyx;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public aeyu(QQAppInterface paramQQAppInterface, Context paramContext, aeyx paramaeyx)
   {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Aeyx = paramaeyx;
   }
   
-  public void a(int paramInt, Object paramObject, benu[] paramArrayOfbenu)
+  public int a()
   {
-    paramInt = 0;
-    if ((paramArrayOfbenu == null) || (paramArrayOfbenu.length <= 0)) {}
-    for (;;)
+    return 5;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    paramVarArgs = ((acts)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(218)).a();
+    this.jdField_a_of_type_JavaLangString = paramVarArgs.tipsUrl;
+    paramVarArgs = paramVarArgs.tipsMsg;
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558590, null);
+    ((TextView)localView.findViewById(2131362413)).setText(paramVarArgs);
+    localView.setOnClickListener(this);
+    localView.findViewById(2131362411).setOnClickListener(this);
+    return localView;
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 18;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
     {
+    default: 
       return;
-      if (paramArrayOfbenu.length < 0)
-      {
-        paramArrayOfbenu[0].b = 0;
-        paramArrayOfbenu[0].a = 0;
-        paramInt = 1;
+    case 2131362410: 
+      if (QLog.isColorLevel()) {
+        QLog.d("TimTipsBar", 2, "click tips, jump");
       }
-      while (paramInt < paramArrayOfbenu.length)
-      {
-        paramArrayOfbenu[paramInt].b = -1;
-        paramArrayOfbenu[paramInt].a = -1;
-        paramInt += 1;
-      }
+      paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      paramView.putExtra("hide_operation_bar", true);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      axqw.b(null, "dc00898", "", "", "0X8008948", "0X8008948", 0, 0, "", "", "", "");
     }
+    this.jdField_a_of_type_Aeyx.a();
   }
 }
 

@@ -1,20 +1,37 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-class aroy
-  implements Handler.Callback
+public class aroy
+  extends WebViewPlugin
 {
-  aroy(arox paramarox) {}
+  public static final String a;
+  protected wxu a;
   
-  public boolean handleMessage(Message paramMessage)
+  static
   {
-    arox.a(this.a, paramMessage);
-    return true;
+    jdField_a_of_type_JavaLangString = aroy.class.getSimpleName();
+  }
+  
+  public aroy()
+  {
+    this.mPluginNameSpace = "ftssearch";
+    this.jdField_a_of_type_Wxu = wxu.a();
+    this.jdField_a_of_type_Wxu.a();
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length == 0)) {}
+    while ("ftssearch".equals(paramString2)) {
+      return false;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aroy
  * JD-Core Version:    0.7.0.1
  */

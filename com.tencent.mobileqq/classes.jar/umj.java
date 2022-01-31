@@ -1,62 +1,14 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import java.util.List;
 
-public class umj
-  extends umy
-  implements slx<umk, uml>
+public abstract interface umj
 {
-  private boolean a;
+  public abstract void a();
   
-  public String a()
-  {
-    return "GetPhotographyGuideInfoStep";
-  }
+  public abstract void a(String paramString1, int paramInt, View paramView, String paramString2);
   
-  public void a()
-  {
-    urk.d("Q.qqstory.home.GetPhotographyGuideInfoStep", "run");
-    umk localumk = new umk();
-    slv.a().a(localumk, this);
-  }
-  
-  public void a(@NonNull umk paramumk, @Nullable uml paramuml, @NonNull ErrorMessage paramErrorMessage)
-  {
-    if ((paramErrorMessage.isSuccess()) && (paramuml != null))
-    {
-      urk.b("Q.qqstory.home.GetPhotographyGuideInfoStep", "onCmdRespond success.");
-      paramumk = (spz)sqg.a(10);
-      paramuml = paramuml.a;
-      if ((paramuml != null) && (paramuml.size() > 0)) {
-        paramumk.b("StorySvc.get_photography_guide.word", paramuml.get(0));
-      }
-      for (;;)
-      {
-        d();
-        return;
-        paramumk.b("StorySvc.get_photography_guide.word", ajjy.a(2131639475));
-      }
-    }
-    urk.d("Q.qqstory.home.GetPhotographyGuideInfoStep", "onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramumk });
-    b(paramErrorMessage);
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    try
-    {
-      this.a = true;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
+  public abstract void a(String paramString1, long paramLong, StoryVideoItem paramStoryVideoItem, int paramInt, String paramString2, List<String> paramList);
 }
 
 

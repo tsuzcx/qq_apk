@@ -1,37 +1,83 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import eipc.EIPCResult;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserInteractiveStorageReq;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserInteractiveStorageRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
 import org.json.JSONObject;
 
-class bezx
-  extends VasQuickUpdateManager.CallBacker
+public class bezx
+  extends bfad
 {
-  int jdField_a_of_type_Int;
+  private CloudStorage.StGetUserInteractiveStorageReq a = new CloudStorage.StGetUserInteractiveStorageReq();
   
-  bezx(bezw parambezw, int paramInt)
+  public bezx(COMM.StCommonExt paramStCommonExt, String paramString, String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramStCommonExt != null) {
+      this.a.ext.set(paramStCommonExt);
+    }
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      paramStCommonExt = paramArrayOfString[i];
+      this.a.keyList.add(paramStCommonExt);
+      i += 1;
+    }
+    this.a.appid.set(paramString);
   }
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  protected String a()
   {
-    if ((paramInt1 == 0) && (paramLong == 1000L) && ("vipComic_config_v2.json".equals(paramString1)))
-    {
-      paramString1 = VasQuickUpdateManager.getJSONFromLocal(BaseApplicationImpl.getApplication().getRuntime(), paramString1, false, null);
-      if (paramString1 != null)
-      {
-        paramString2 = new Bundle();
-        paramString2.putString("config_json", paramString1.toString());
-        this.jdField_a_of_type_Bezw.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramString2));
-      }
+    return "mini_app_cloudstorage";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
     }
+    CloudStorage.StGetUserInteractiveStorageRsp localStGetUserInteractiveStorageRsp = new CloudStorage.StGetUserInteractiveStorageRsp();
+    try
+    {
+      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      localStGetUserInteractiveStorageRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      if (localStGetUserInteractiveStorageRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("response", localStGetUserInteractiveStorageRsp);
+        paramArrayOfByte.put("resultCode", 0);
+        paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
+        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+        return paramArrayOfByte;
+      }
+      besl.a("GetUserInteractiveStorageRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      besl.a("GetUserInteractiveStorageRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  public byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "GetUserInteractiveStorage";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bezx
  * JD-Core Version:    0.7.0.1
  */

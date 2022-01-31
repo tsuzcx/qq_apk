@@ -1,412 +1,298 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureSegmentView;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.widget.CircleProgress;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
-import dov.com.qq.im.ptv.LightWeightProgress;
-import dov.com.qq.im.ptv.LightWeightSoDownloadUnit.1;
-import dov.com.qq.im.ptv.LightWeightSoDownloadUnit.2;
-import dov.com.qq.im.ptv.LightWeightSoDownloadUnit.3;
-import dov.com.qq.im.ptv.LightWeightSoDownloadUnit.4;
-import dov.com.qq.im.ptv.PtvCameraCaptureActivity;
-import java.util.ArrayList;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
-import mqq.os.MqqHandler;
+import com.tencent.TMG.utils.QLog;
+import java.lang.ref.WeakReference;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bhyn
-  implements View.OnClickListener, auut, awfg, awfi, bhzd
 {
-  private int jdField_a_of_type_Int;
-  protected long a;
-  protected View a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  protected RelativeLayout a;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bhzb jdField_a_of_type_Bhzb;
-  private bhzc jdField_a_of_type_Bhzc;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected CameraCaptureSegmentView a;
-  public CircleProgress a;
-  protected LightWeightProgress a;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
+  private bhyy jdField_a_of_type_Bhyy;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public bhyn(bhzc parambhzc, bhzb parambhzb)
+  private bhyn(Context paramContext)
   {
-    this.jdField_a_of_type_Bhzc = parambhzc;
-    this.jdField_a_of_type_Bhzb = parambhzb;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
   }
   
-  private void a(String paramString)
+  private ViewGroup.LayoutParams a(View paramView, bhyx parambhyx, JSONObject paramJSONObject)
   {
-    ThreadManager.getUIHandler().post(new LightWeightSoDownloadUnit.2(this, paramString));
+    if ((paramView == null) || (paramJSONObject == null) || (paramJSONObject.length() == 0) || (parambhyx == null)) {
+      return null;
+    }
+    return this.jdField_a_of_type_Bhyy.a(paramView).a(paramJSONObject, parambhyx);
   }
   
-  private void b(String paramString)
+  public static bhyn a(@NonNull Context paramContext)
   {
-    ThreadManager.getUIHandler().post(new LightWeightSoDownloadUnit.3(this, paramString));
+    return new bhyn(paramContext);
   }
   
-  private void c()
+  private final bhyx a(String paramString, Context paramContext, JSONObject paramJSONObject)
   {
-    boolean bool = badq.g(null);
-    VideoEnvironment.a("LightWeightSoDownloadUnit", "startDownloadConfig netUsable=" + bool, null);
-    if (bool)
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
+    do
     {
-      VideoEnvironment.a("LightWeightSoDownloadUnit", ajjy.a(2131640283), null);
-      ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
-      return;
-    }
-    a(ajjy.a(2131640299));
-  }
-  
-  public void I_()
-  {
-    a(ajjy.a(2131640289));
-    VideoEnvironment.a("LightWeightSoDownloadUnit", ajjy.a(2131640295), null);
-    awek.a(3, -1500);
-  }
-  
-  public void J_()
-  {
-    if (Build.VERSION.SDK_INT < 23) {}
-    while (!(this.jdField_a_of_type_Bhzc.a() instanceof PtvCameraCaptureActivity)) {
-      return;
-    }
-    PtvCameraCaptureActivity localPtvCameraCaptureActivity = (PtvCameraCaptureActivity)this.jdField_a_of_type_Bhzc.a();
-    int i;
-    if (localPtvCameraCaptureActivity.checkSelfPermission("android.permission.CAMERA") != 0)
-    {
-      i = 1;
-      if (localPtvCameraCaptureActivity.checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
-        break label93;
-      }
-    }
-    label93:
-    for (int j = 1;; j = 0)
-    {
-      if ((i == 0) || (j == 0)) {
-        break label98;
-      }
-      localPtvCameraCaptureActivity.requestPermissions(this, 1, new String[] { "android.permission.CAMERA", "android.permission.RECORD_AUDIO" });
-      return;
-      i = 0;
-      break;
-    }
-    label98:
-    if (i != 0)
-    {
-      localPtvCameraCaptureActivity.requestPermissions(this, 1, new String[] { "android.permission.CAMERA" });
-      return;
-    }
-    localPtvCameraCaptureActivity.requestPermissions(this, 1, new String[] { "android.permission.RECORD_AUDIO" });
-  }
-  
-  protected int a()
-  {
-    return 2131494963;
-  }
-  
-  public View a()
-  {
-    Object localObject = new RelativeLayout(this.jdField_a_of_type_Bhzc.a());
-    ((RelativeLayout)localObject).setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    localObject = this.jdField_a_of_type_Bhzc.a().getLayoutInflater().inflate(a(), (ViewGroup)localObject, false);
-    this.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131300884);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131298339));
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureSegmentView = ((CameraCaptureSegmentView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298277));
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureSegmentView.d(false);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureSegmentView.setCaptureParam(a());
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureSegmentView.setDarkModeEnable(false);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureSegmentView.setCameraPermissionListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureSegmentView.setUseVideoOrientation(false);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureSegmentView.setDynamicResolutionMode(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)((View)localObject).findViewById(2131299259));
-    Resources localResources = this.jdField_a_of_type_Bhzc.a().getResources();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, localResources.getColor(2131101537), 100, localResources.getColor(2131099760));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(6.0F);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setOnClickListener(this);
-    this.jdField_a_of_type_DovComQqImPtvLightWeightProgress = ((LightWeightProgress)this.jdField_a_of_type_AndroidViewView.findViewById(2131306333));
-    this.jdField_a_of_type_DovComQqImPtvLightWeightProgress.setStrokeWidth(3.0F);
-    this.jdField_a_of_type_DovComQqImPtvLightWeightProgress.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297450));
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131300882));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_Bhzc.a());
-    if (!VideoEnvironment.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      bbmy.a(VideoEnvironment.a(), ajjy.a(2131640297), 1);
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_AndroidViewView;
-      boolean bool = VideoEnvironment.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (awlw.a(this.jdField_a_of_type_Bhzc.a()) != 2) {}
-      for (int i = 1;; i = 0)
+      for (;;)
       {
-        if ((bool) && (i != 0)) {
-          break label398;
+        return null;
+        try
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("JsonInflater", 0, "createViewModel：" + paramString);
+          }
+          paramContext = this.jdField_a_of_type_Bhyy.a(paramContext, paramString);
+          if (paramContext != null)
+          {
+            paramContext = this.jdField_a_of_type_Bhyy.a(paramString, paramContext);
+            a(paramContext, paramJSONObject);
+            return paramContext;
+          }
         }
-        awek.a(2);
-        c();
+        catch (Exception paramContext)
+        {
+          paramContext.printStackTrace();
+          QLog.e("JsonInflater", 1, "Error inflating type : " + paramString);
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("JsonInflater", 0, "createViewModel fail finish");
+    return null;
+  }
+  
+  private bhyx a(JSONObject paramJSONObject, ViewGroup paramViewGroup, boolean paramBoolean)
+  {
+    boolean bool = false;
+    if (paramJSONObject == null) {}
+    label103:
+    do
+    {
+      return null;
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("JsonInflater", 0, "inflate: ");
+        }
+        if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+          break label103;
+        }
+        paramJSONObject = new StringBuilder().append("inflate: weakContext == null ： ");
+        paramBoolean = bool;
+        if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+          paramBoolean = true;
+        }
+        QLog.e("JsonInflater", 1, paramBoolean + " || weakContext.get() == null ");
+        return null;
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        QLog.e("JsonInflater", 1, "inflate: exception");
+        paramJSONObject = null;
+      }
+      return paramJSONObject;
+      localObject1 = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localObject1 == null);
+    Object localObject2 = paramJSONObject.optString("type");
+    if (QLog.isColorLevel()) {
+      QLog.i("JsonInflater", 0, "Creating root view:");
+    }
+    localObject2 = a((String)localObject2, (Context)localObject1, paramJSONObject);
+    if (localObject2 == null)
+    {
+      QLog.e("JsonInflater", 1, "inflate: createViewModel error null return");
+      return null;
+    }
+    View localView = ((bhyx)localObject2).a();
+    if (localView == null)
+    {
+      QLog.e("JsonInflater", 1, "inflate: tempView error null return");
+      return null;
+    }
+    ViewGroup.LayoutParams localLayoutParams;
+    if (paramViewGroup != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("JsonInflater", 0, "generateLayoutParams");
+      }
+      localLayoutParams = a(paramViewGroup, (bhyx)localObject2, paramJSONObject);
+      localObject1 = localLayoutParams;
+      if (!paramBoolean)
+      {
+        localObject1 = localLayoutParams;
+        if (localLayoutParams != null) {
+          localView.setLayoutParams(localLayoutParams);
+        }
+      }
+    }
+    for (Object localObject1 = localLayoutParams;; localObject1 = null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("JsonInflater", 0, "-----> start inflating children");
+      }
+      a((bhyx)localObject2, localView.getContext(), paramJSONObject);
+      if (QLog.isColorLevel()) {
+        QLog.i("JsonInflater", 0, "-----> done inflating children");
+      }
+      paramJSONObject = (JSONObject)localObject2;
+      if (paramViewGroup == null) {
         break;
       }
-      label398:
-      this.jdField_a_of_type_Int = 100;
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_b_of_type_Int = 100;
-      this.jdField_b_of_type_Boolean = true;
-      VideoEnvironment.a("LightWeightSoDownloadUnit", "checkAVCodecLoadIsOK loaded=true", null);
-      ThreadManager.getUIHandler().postDelayed(new LightWeightSoDownloadUnit.1(this), 5L);
-    }
-  }
-  
-  protected auuv a()
-  {
-    return bjef.a().c(this.jdField_a_of_type_Bhzc.a());
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
-    {
-      bhyq localbhyq = (bhyq)this.jdField_a_of_type_Bhzc.a();
-      if (localbhyq != null) {
-        localbhyq.b();
+      paramJSONObject = (JSONObject)localObject2;
+      if (!paramBoolean) {
+        break;
       }
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    VideoEnvironment.a("LightWeightSoDownloadUnit", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
-    if ((paramInt1 == 1) || (paramInt1 == 0))
-    {
-      if (paramInt2 != 0)
-      {
-        VideoEnvironment.a("LightWeightSoDownloadUnit", ajjy.a(2131640290) + paramInt2 + "]", null);
-        ShortVideoResourceManager.a(ajjy.a(2131640282));
-        awek.a(1, paramInt2);
-        return;
-      }
-      ArrayList localArrayList = new ArrayList(1);
-      paramInt1 = ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList);
-      if (paramInt1 == 0)
-      {
-        VideoEnvironment.a("LightWeightSoDownloadUnit", ajjy.a(2131640278), null);
-        ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this);
-        paramInt1 = awlw.a(VideoEnvironment.a());
-        VideoEnvironment.a("LightWeightSoDownloadUnit", "PtvFilterSoLoad.getFilterSoState resultCode=" + paramInt1, null);
-        if (paramInt1 == 2)
-        {
-          ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this);
-          return;
-        }
-        if (paramInt1 == 1) {
-          ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this);
-        }
-        this.jdField_b_of_type_Int = 100;
-        this.jdField_b_of_type_Boolean = true;
-        VideoEnvironment.a("LightWeightSoDownloadUnit", "onConfigResult| supportSVFilterDownloadSo=false", null);
-        return;
-      }
-      VideoEnvironment.a("LightWeightSoDownloadUnit", ajjy.a(2131640285) + paramInt1 + "]", null);
-      ShortVideoResourceManager.a(ajjy.a(2131640279));
-      awek.a(1, paramInt1);
-      return;
-    }
-    VideoEnvironment.a("LightWeightSoDownloadUnit", ajjy.a(2131640294) + paramInt2 + "]", null);
-    ShortVideoResourceManager.a(ajjy.a(2131640305));
-    awek.a(1, paramInt2);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(Intent paramIntent) {}
-  
-  public void a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_Bhzc.a().getIntent().getLongExtra("ACTIVITY_START_TIME", -1L);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    if (paramString1.startsWith("new_qq_android_native_short_video_")) {
-      if (paramInt != 0)
-      {
-        VideoEnvironment.a("LightWeightSoDownloadUnit", ajjy.a(2131640287) + paramInt + "]", null);
-        ShortVideoResourceManager.a(ajjy.a(2131640293));
-        awek.a(2, paramInt);
-      }
-    }
-    for (;;)
-    {
-      VideoEnvironment.a("LightWeightSoDownloadUnit", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
-      return;
-      this.jdField_a_of_type_Int = 100;
-      this.jdField_a_of_type_Boolean = true;
-      a();
-      continue;
-      if (paramString1.startsWith("new_qq_android_native_short_filter_")) {
-        if (paramInt != 0)
-        {
-          VideoEnvironment.a("LightWeightSoDownloadUnit", ajjy.a(2131640312) + paramInt + "]", null);
-          ShortVideoResourceManager.a(ajjy.a(2131640301));
-          awek.a(2, paramInt);
-        }
-        else
-        {
-          this.jdField_b_of_type_Int = 100;
-          this.jdField_b_of_type_Boolean = true;
-          a();
-        }
-      }
-    }
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    if (paramString.startsWith("new_qq_android_native_short_video_")) {
-      this.jdField_a_of_type_Int = i;
-    }
-    for (;;)
-    {
-      this.c = ((this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) / 2);
-      b("doUserDownloadResourceAVCodec:");
-      a(ajjy.a(2131640298) + this.c + "%");
-      VideoEnvironment.a("LightWeightSoDownloadUnit", "name=" + paramString + ",totalLen=" + paramLong2 + ",curOffset=" + paramLong1 + ",localProgress=" + i, null);
-      return;
-      if (paramString.startsWith("new_qq_android_native_short_filter_")) {
-        this.jdField_b_of_type_Int = i;
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    this.jdField_a_of_type_Bhzc.a();
-    return true;
-  }
-  
-  public boolean a(int paramInt, KeyEvent paramKeyEvent, boolean paramBoolean)
-  {
-    return paramBoolean;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    return paramBoolean;
-  }
-  
-  public void b(Bundle paramBundle) {}
-  
-  public void b_(int paramInt1, int paramInt2) {}
-  
-  public void d()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureSegmentView.onPause();
-  }
-  
-  @QQPermissionDenied(1)
-  public void denied()
-  {
-    int j = 1;
-    if (Build.VERSION.SDK_INT < 23) {
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_Bhzc.a();
-    int i;
-    if (((Activity)localObject).checkSelfPermission("android.permission.CAMERA") != 0)
-    {
-      i = 1;
-      if (((Activity)localObject).checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
-        break label78;
-      }
-      label41:
-      if ((i == 0) || (j == 0)) {
-        break label83;
-      }
-      localObject = ajjy.a(2131640296);
-    }
-    for (;;)
-    {
-      ThreadManager.getUIHandler().post(new LightWeightSoDownloadUnit.4(this, (String)localObject));
-      return;
-      i = 0;
+      paramViewGroup.addView(localView, (ViewGroup.LayoutParams)localObject1);
+      ((bhyx)localObject2).a();
+      paramJSONObject = (JSONObject)localObject2;
       break;
-      label78:
-      j = 0;
-      break label41;
-      label83:
-      if (i != 0) {
-        localObject = ajjy.a(2131640309);
-      } else {
-        localObject = ajjy.a(2131640284);
+    }
+  }
+  
+  public bhyx a(String paramString, ViewGroup paramViewGroup, boolean paramBoolean, bhyy parambhyy)
+  {
+    Object localObject3 = null;
+    for (;;)
+    {
+      Object localObject2;
+      try
+      {
+        Object localObject1 = new JSONObject(paramString);
+        if (localObject1 != null)
+        {
+          localObject1 = a((JSONObject)localObject1, paramViewGroup, paramBoolean, parambhyy);
+          return localObject1;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        localObject2 = null;
+        continue;
+      }
+      try
+      {
+        paramString = new JSONArray(paramString);
+        localObject2 = localObject3;
+        if (paramString == null) {
+          continue;
+        }
+        return a(paramString, paramViewGroup, paramBoolean, parambhyy);
+      }
+      catch (JSONException paramString)
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+          paramString = null;
+        }
       }
     }
   }
   
-  public void e()
+  public bhyx a(String paramString, bhyy parambhyy)
   {
-    GLGestureProxy.getInstance().removeAllListener();
+    return a(paramString, null, true, parambhyy);
   }
   
-  public void f()
+  public bhyx a(@NonNull JSONArray paramJSONArray, ViewGroup paramViewGroup, boolean paramBoolean, bhyy parambhyy)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LightWeightSoDownloadUnit", 2, "onActivityResume");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureSegmentView.onResume();
-  }
-  
-  @QQPermissionGrant(1)
-  public void grant()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureSegmentView.setCameraPermissionResult(true);
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+    this.jdField_a_of_type_Bhyy = parambhyy;
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null))
     {
-    default: 
+      paramJSONArray = new StringBuilder().append("inflate: weakContext == null ： ");
+      if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        QLog.e("JsonInflater", 1, paramBoolean + " || weakContext.get() == null ");
+        return null;
+      }
+    }
+    paramViewGroup = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramViewGroup == null) {
+      return null;
+    }
+    paramViewGroup = new RelativeLayout(paramViewGroup);
+    parambhyy = this.jdField_a_of_type_Bhyy.a(paramViewGroup);
+    int i = 0;
+    while (i < paramJSONArray.length())
+    {
+      bhyx localbhyx = a(paramJSONArray.optJSONObject(i), paramViewGroup, false);
+      if (localbhyx != null)
+      {
+        paramViewGroup.addView(localbhyx.a());
+        localbhyx.a();
+        parambhyy.a(localbhyx);
+      }
+      i += 1;
+    }
+    return parambhyy;
+  }
+  
+  public bhyx a(@NonNull JSONObject paramJSONObject, ViewGroup paramViewGroup, boolean paramBoolean, bhyy parambhyy)
+  {
+    vxs.a();
+    this.jdField_a_of_type_Bhyy = parambhyy;
+    return a(paramJSONObject, paramViewGroup, paramBoolean);
+  }
+  
+  void a(bhyx parambhyx, Context paramContext, JSONObject paramJSONObject)
+  {
+    if ((parambhyx == null) || (paramContext == null) || (paramJSONObject == null) || (paramJSONObject.length() == 0)) {}
+    do
+    {
+      return;
+      paramJSONObject = paramJSONObject.optJSONArray("child");
+    } while (paramJSONObject == null);
+    int i = 0;
+    label34:
+    if (i < paramJSONObject.length())
+    {
+      JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
+      if (localJSONObject == null) {
+        break label147;
+      }
+      bhyx localbhyx = a(localJSONObject.optString("type"), paramContext, localJSONObject);
+      ViewGroup localViewGroup = (ViewGroup)parambhyx.a();
+      ViewGroup.LayoutParams localLayoutParams = a(localViewGroup, localbhyx, localJSONObject);
+      a(localbhyx, paramContext, localJSONObject);
+      if ((localbhyx != null) && (localbhyx.a() != null))
+      {
+        localViewGroup.addView(localbhyx.a(), localLayoutParams);
+        localbhyx.a();
+        parambhyx.a(localbhyx);
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label34;
+      break;
+      label147:
+      QLog.e("JsonInflater", 1, "rInflateChildren error: object = null");
+    }
+  }
+  
+  protected void a(bhyx parambhyx, JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject == null) || (paramJSONObject.length() == 0)) {
       return;
     }
-    a();
+    if (parambhyx != null) {
+      parambhyx.a(paramJSONObject);
+    }
+    this.jdField_a_of_type_Bhyy.a(parambhyx, paramJSONObject);
   }
-  
-  public void p() {}
-  
-  public void q() {}
-  
-  public void r() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhyn
  * JD-Core Version:    0.7.0.1
  */

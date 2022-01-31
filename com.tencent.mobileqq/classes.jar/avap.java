@@ -1,14 +1,14 @@
-import android.graphics.Bitmap.CompressFormat;
+import com.tencent.image.URLImageView;
 
-public class avap
+class avap
 {
-  public int a;
-  public Bitmap.CompressFormat a;
-  public String a;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  
+  avap(avao paramavao) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avap
  * JD-Core Version:    0.7.0.1
  */

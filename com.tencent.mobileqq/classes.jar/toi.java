@@ -1,20 +1,28 @@
-import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedFeature;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class toi
-  extends tog
+  extends syq
 {
-  public final View b;
+  public List<tef> a = new ArrayList();
   
-  public toi(View paramView)
+  public toi(qqstory_service.RspGetBatchFeedFeature paramRspGetBatchFeedFeature)
   {
-    super((ViewGroup)paramView.getParent());
-    this.b = paramView;
-  }
-  
-  protected View a(ViewGroup paramViewGroup)
-  {
-    return this.b;
+    if ((paramRspGetBatchFeedFeature.feed_feature_list.has()) && (!paramRspGetBatchFeedFeature.feed_feature_list.isEmpty()))
+    {
+      paramRspGetBatchFeedFeature = paramRspGetBatchFeedFeature.feed_feature_list.get().iterator();
+      while (paramRspGetBatchFeedFeature.hasNext())
+      {
+        qqstory_struct.FeedFeature localFeedFeature = (qqstory_struct.FeedFeature)paramRspGetBatchFeedFeature.next();
+        tef localtef = new tef();
+        localtef.a(localFeedFeature);
+        this.a.add(localtef);
+      }
+    }
   }
 }
 

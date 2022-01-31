@@ -1,14 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
 
 public class acfp
-  extends atdh
+  implements DialogInterface.OnClickListener
 {
-  public acfp(VisitorsActivity paramVisitorsActivity) {}
+  public acfp(TranslucentTRansferFragment paramTranslucentTRansferFragment, bbgg parambbgg) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.f();
+    this.jdField_a_of_type_Bbgg.dismiss();
+    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.getActivity(), RegisterPhoneNumActivity.class);
+    paramDialogInterface.putExtra("invite_code", this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.getActivity().getIntent().getStringExtra("invite_code"));
+    this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.startActivity(paramDialogInterface);
+    axqw.b(null, "dc00898", "", "", "0X800970C", "0X800970C", 0, 0, "", "", "", "");
   }
 }
 

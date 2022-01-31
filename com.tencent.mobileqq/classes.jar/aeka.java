@@ -1,17 +1,10 @@
-class aeka
-  extends axfi
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+
+public abstract interface aeka
 {
-  aeka(aejb paramaejb) {}
+  public abstract boolean a(PhotoListPanel paramPhotoListPanel);
   
-  public void c(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    axfs.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, aejb.n(this.a), paramBoolean, paramArrayOfObject);
-  }
-  
-  public void d(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    axfs.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, aejb.o(this.a), paramBoolean, paramArrayOfObject);
-  }
+  public abstract boolean b(PhotoListPanel paramPhotoListPanel);
 }
 
 

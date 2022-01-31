@@ -1,18 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
-public class afyd
-  implements DialogInterface.OnDismissListener
+class afyd
+  implements asun
 {
-  public afyd(DialogBaseActivity paramDialogBaseActivity) {}
+  afyd(afyc paramafyc) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    if (this.a.a != null) {
-      this.a.a.setOnDismissListener(null);
-    }
-    this.a.a = null;
+    this.a.jdField_a_of_type_Asuu.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
+    this.a.jdField_a_of_type_Asuu.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.v();
   }
 }
 

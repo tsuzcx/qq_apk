@@ -1,19 +1,31 @@
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import java.util.ArrayList;
+import java.util.List;
 
 public class afzm
   implements View.OnClickListener
 {
-  public afzm(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public afzm(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.b) {
-      awqx.b(this.a.app, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
+    vxs.a(this.a.jdField_a_of_type_Agaw);
+    vxs.a(this.a.jdField_a_of_type_JavaUtilList);
+    paramView = new ArrayList();
+    int i = 0;
+    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+    {
+      paramView.add(((agau)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
+      i += 1;
     }
-    this.a.finish();
-    baaf.a(this.a, true, false);
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
+    this.a.getActivity().setResult(-1, localIntent);
+    this.a.getActivity().finish();
   }
 }
 

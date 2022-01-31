@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.model;
 
-import akwi;
+import alku;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ArWebInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArWebInfo> CREATOR = new akwi();
+  public static final Parcelable.Creator<ArWebInfo> CREATOR = new alku();
   public String a;
   public boolean a;
   public String b;

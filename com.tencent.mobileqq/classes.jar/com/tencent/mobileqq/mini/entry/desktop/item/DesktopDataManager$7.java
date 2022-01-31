@@ -35,10 +35,10 @@ class DesktopDataManager$7
           {
             localArrayList = new ArrayList();
             j = -1;
-            i = DesktopDataManager.access$1300(this.this$0).size() - 1;
+            i = DesktopDataManager.access$1500(this.this$0).size() - 1;
             if (i >= 0)
             {
-              localObject1 = (DesktopItemInfo)DesktopDataManager.access$1300(this.this$0).get(i);
+              localObject1 = (DesktopItemInfo)DesktopDataManager.access$1500(this.this$0).get(i);
               if ((((DesktopItemInfo)localObject1).mModuleType == 1) && ((localObject1 instanceof DesktopAppInfo))) {
                 localArrayList.add(0, (DesktopAppInfo)localObject1);
               }
@@ -87,10 +87,10 @@ class DesktopDataManager$7
           }
           ((List)localObject1).add(localObject2);
           break label221;
-          DesktopDataManager.access$1300(this.this$0).addAll(j + 1, (Collection)localObject1);
+          DesktopDataManager.access$1500(this.this$0).addAll(j + 1, (Collection)localObject1);
           break;
-          if (DesktopDataManager.access$1500(this.this$0) != null) {
-            DesktopDataManager.access$1500(this.this$0).onDataChanged();
+          if (DesktopDataManager.access$1400(this.this$0) != null) {
+            DesktopDataManager.access$1400(this.this$0).onDataChanged();
           }
           return;
         }

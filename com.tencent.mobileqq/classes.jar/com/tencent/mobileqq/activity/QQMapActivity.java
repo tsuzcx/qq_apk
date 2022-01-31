@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import aaek;
-import ablk;
-import abll;
-import ablm;
-import abln;
-import ablo;
-import ablp;
-import abls;
-import ablt;
-import ablu;
-import ablv;
-import ablx;
-import ably;
-import ablz;
-import abma;
-import ajjy;
-import akfu;
-import akfx;
+import aaoc;
+import abvl;
+import abvm;
+import abvn;
+import abvo;
+import abvp;
+import abvq;
+import abvt;
+import abvu;
+import abvv;
+import abvw;
+import abvy;
+import abvz;
+import abwa;
+import abwb;
+import ajyc;
+import akug;
+import akuj;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.DialogInterface.OnDismissListener;
@@ -45,18 +45,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import aphp;
-import awqx;
-import awui;
-import awul;
-import awum;
-import awuv;
-import azvu;
-import babr;
-import badq;
-import bafb;
-import bbmr;
-import begr;
+import aqbc;
+import axqw;
+import axuk;
+import axun;
+import axuo;
+import axux;
+import bawy;
+import bbcv;
+import bbev;
+import bbgg;
+import bcpp;
+import bfol;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.map.lib.basemap.data.GeoPoint;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -89,22 +89,22 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.RejectedExecutionException;
-import mpv;
 import mqq.app.Foreground;
+import naw;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class QQMapActivity
   extends MapActivity
-  implements bbmr, SkinnableActivityProcesser.Callback
+  implements bcpp, SkinnableActivityProcesser.Callback
 {
   public double a;
   public long a;
-  akfx jdField_a_of_type_Akfx = new ably(this, "QQMapActivity", true);
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new abln(this);
+  akuj jdField_a_of_type_Akuj = new abvz(this, "QQMapActivity", true);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new abvo(this);
   Animation jdField_a_of_type_AndroidViewAnimationAnimation;
   protected Button a;
-  public begr a;
+  public bfol a;
   GeoPoint jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint;
   public QQMapView a;
   public TencentMap a;
@@ -114,7 +114,7 @@ public class QQMapActivity
   public SystemBarCompact a;
   public double b;
   float jdField_b_of_type_Float;
-  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new ablo(this);
+  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new abvp(this);
   protected View.OnClickListener b;
   Animation jdField_b_of_type_AndroidViewAnimationAnimation;
   protected TextView b;
@@ -161,16 +161,16 @@ public class QQMapActivity
   {
     this.jdField_g_of_type_JavaLangString = "";
     this.jdField_n_of_type_Boolean = false;
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new abls(this);
-    this.jdField_c_of_type_AndroidViewView$OnClickListener = new ablt(this);
-    this.jdField_d_of_type_AndroidViewView$OnClickListener = new ablu(this);
-    this.jdField_e_of_type_AndroidViewView$OnClickListener = new ablv(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new abvt(this);
+    this.jdField_c_of_type_AndroidViewView$OnClickListener = new abvu(this);
+    this.jdField_d_of_type_AndroidViewView$OnClickListener = new abvv(this);
+    this.jdField_e_of_type_AndroidViewView$OnClickListener = new abvw(this);
   }
   
   private void a()
   {
     super.showDialog(0);
-    akfu.a(this.jdField_a_of_type_Akfx);
+    akug.a(this.jdField_a_of_type_Akuj);
     if (QLog.isColorLevel()) {
       QLog.d("get_location", 2, "start get location");
     }
@@ -187,14 +187,14 @@ public class QQMapActivity
   
   public Dialog a(int paramInt1, int paramInt2, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    return azvu.a(this, getResources().getString(paramInt1), getResources().getString(paramInt2), paramOnDismissListener);
+    return bawy.a(this, getResources().getString(paramInt1), getResources().getString(paramInt2), paramOnDismissListener);
   }
   
   public Dialog a(String paramString)
   {
-    Dialog localDialog = new Dialog(this, 2131690181);
-    localDialog.setContentView(2131493365);
-    TextView localTextView = (TextView)localDialog.findViewById(2131299579);
+    Dialog localDialog = new Dialog(this, 2131755791);
+    localDialog.setContentView(2131558926);
+    TextView localTextView = (TextView)localDialog.findViewById(2131365147);
     if (localTextView != null) {
       localTextView.setText(paramString);
     }
@@ -212,8 +212,8 @@ public class QQMapActivity
       localBundle.putString("longitude", String.valueOf(localLatLng.getLongitude()));
     }
     localBundle.putString("description", this.jdField_g_of_type_JavaLangString);
-    if ((TextUtils.isEmpty(this.jdField_l_of_type_JavaLangString)) || (this.jdField_l_of_type_JavaLangString.equals(getString(2131629546)))) {
-      this.jdField_l_of_type_JavaLangString = getString(2131628363);
+    if ((TextUtils.isEmpty(this.jdField_l_of_type_JavaLangString)) || (this.jdField_l_of_type_JavaLangString.equals(getString(2131695227)))) {
+      this.jdField_l_of_type_JavaLangString = getString(2131694004);
     }
     if (TextUtils.isEmpty(this.m)) {
       this.m = "Unknown Address";
@@ -250,7 +250,7 @@ public class QQMapActivity
     this.jdField_g_of_type_JavaLangString = "";
     try
     {
-      new abma(this, paramGeoPoint, paramTextView).execute(new GeoPoint[] { paramGeoPoint });
+      new abwb(this, paramGeoPoint, paramTextView).execute(new GeoPoint[] { paramGeoPoint });
       if (paramBoolean) {
         v();
       }
@@ -271,7 +271,7 @@ public class QQMapActivity
       {
         paramString = new BitmapFactory.Options();
         paramString.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(getResources(), 2130838492, paramString);
+        BitmapFactory.decodeResource(getResources(), 2130838503, paramString);
         if ((this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap != null) && (this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getProjection() != null))
         {
           paramGeoPoint = new LatLng(paramGeoPoint.getLatitudeE6() / 1000000.0D, paramGeoPoint.getLongitudeE6() / 1000000.0D);
@@ -286,9 +286,9 @@ public class QQMapActivity
         {
           try
           {
-            this.jdField_g_of_type_AndroidViewView = getLayoutInflater().inflate(2131493612, null);
-            paramString = (ImageView)this.jdField_g_of_type_AndroidViewView.findViewById(2131300706);
-            paramString.setImageResource(2130838492);
+            this.jdField_g_of_type_AndroidViewView = getLayoutInflater().inflate(2131559182, null);
+            paramString = (ImageView)this.jdField_g_of_type_AndroidViewView.findViewById(2131366313);
+            paramString.setImageResource(2130838503);
             paramString.setBackgroundDrawable(null);
             this.jdField_b_of_type_ComTencentTencentmapMapsdkMapsModelMarker = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromView(this.jdField_g_of_type_AndroidViewView)).position(paramGeoPoint).snippet(""));
             this.jdField_b_of_type_ComTencentTencentmapMapsdkMapsModelMarker.showInfoWindow();
@@ -318,7 +318,7 @@ public class QQMapActivity
   protected void a(boolean paramBoolean)
   {
     this.s = paramBoolean;
-    if (!badq.d(this))
+    if (!bbev.d(this))
     {
       x();
       return;
@@ -363,7 +363,7 @@ public class QQMapActivity
     this.jdField_l_of_type_Boolean = false;
     if (!this.jdField_k_of_type_Boolean)
     {
-      TextView localTextView = (TextView)findViewById(2131302832);
+      TextView localTextView = (TextView)findViewById(2131368457);
       localTextView.setVisibility(0);
       localTextView.setText(localTextView.getTag().toString());
     }
@@ -373,7 +373,7 @@ public class QQMapActivity
   
   public void m()
   {
-    this.jdField_c_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ablk(this));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().addOnGlobalLayoutListener(new abvl(this));
   }
   
   public void n()
@@ -390,7 +390,7 @@ public class QQMapActivity
       return;
     }
     this.jdField_h_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_h_of_type_AndroidViewView.setOnClickListener(new ablp(this));
+    this.jdField_h_of_type_AndroidViewView.setOnClickListener(new abvq(this));
   }
   
   protected void o()
@@ -511,18 +511,18 @@ public class QQMapActivity
     }
     try
     {
-      int i1 = getResources().getColor(2131101315);
+      int i1 = getResources().getColor(2131166910);
       if (this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact == null)
       {
         this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(this, true, i1);
         if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
           break label409;
         }
-        this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusDrawable(getResources().getDrawable(2130845215));
+        this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusDrawable(getResources().getDrawable(2130845303));
       }
       for (;;)
       {
-        paramBundle = LayoutInflater.from(this).inflate(2131495599, null);
+        paramBundle = LayoutInflater.from(this).inflate(2131561190, null);
         if (ImmersiveUtils.isSupporImmersive() == 1)
         {
           paramBundle.setFitsSystemWindows(true);
@@ -532,12 +532,12 @@ public class QQMapActivity
         super.setContentView(paramBundle);
         this.jdField_k_of_type_JavaLangString = super.getIntent().getStringExtra("uin");
         sendBroadcast(new Intent("com.tencent.mobileqq.addLbsObserver"));
-        this.jdField_j_of_type_AndroidViewView = super.findViewById(2131309776);
-        this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131309772));
-        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296589));
-        this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131299485));
-        this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131299694));
-        this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131311760));
+        this.jdField_j_of_type_AndroidViewView = super.findViewById(2131375535);
+        this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131375531));
+        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362130));
+        this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365053));
+        this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365262));
+        this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131377573));
         o();
         t();
         q();
@@ -588,16 +588,16 @@ public class QQMapActivity
     do
     {
       return localObject;
-      return a(getString(2131627394));
-      localDialog = a(2131626987, 2131626986, new ablz(this));
-      localObject = localDialog.findViewById(2131299568);
+      return a(getString(2131693034));
+      localDialog = a(2131692605, 2131692604, new abwa(this));
+      localObject = localDialog.findViewById(2131365136);
       if (localObject != null) {
-        ((View)localObject).setOnClickListener(new abll(this, localDialog));
+        ((View)localObject).setOnClickListener(new abvm(this, localDialog));
       }
-      localView = localDialog.findViewById(2131299574);
+      localView = localDialog.findViewById(2131365142);
       localObject = localDialog;
     } while (localView == null);
-    localView.setOnClickListener(new ablm(this, localDialog));
+    localView.setOnClickListener(new abvn(this, localDialog));
     return localDialog;
   }
   
@@ -654,7 +654,7 @@ public class QQMapActivity
     else {
       return;
     }
-    babr.a(this, paramArrayOfString, paramArrayOfInt);
+    bbcv.a(this, paramArrayOfString, paramArrayOfInt);
   }
   
   public void onResume()
@@ -707,7 +707,7 @@ public class QQMapActivity
     this.q = true;
     Foreground.onStop(null);
     BaseActivity.mAppForground = GesturePWDUtils.getAppForground(this);
-    akfu.b(this.jdField_a_of_type_Akfx);
+    akug.b(this.jdField_a_of_type_Akuj);
     if (!BaseActivity.mAppForground) {
       GesturePWDUtils.setAppForground(this, BaseActivity.mAppForground);
     }
@@ -730,20 +730,20 @@ public class QQMapActivity
   
   protected void q()
   {
-    findViewById(2131309912).setVisibility(8);
-    this.jdField_i_of_type_AndroidViewView = findViewById(2131307351);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView = ((QQMapView)findViewById(2131304094));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131306017));
-    this.jdField_h_of_type_AndroidViewView = findViewById(2131303106);
+    findViewById(2131375673).setVisibility(8);
+    this.jdField_i_of_type_AndroidViewView = findViewById(2131373061);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView = ((QQMapView)findViewById(2131369767));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371713));
+    this.jdField_h_of_type_AndroidViewView = findViewById(2131368746);
     try
     {
-      Bitmap localBitmap = BitmapFactory.decodeResource(getResources(), 2130841777);
+      Bitmap localBitmap = BitmapFactory.decodeResource(getResources(), 2130841871);
       if (localBitmap != null)
       {
         this.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
         this.jdField_c_of_type_AndroidWidgetImageView.setPadding(0, 0, 0, localBitmap.getHeight());
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.setContentDescription(getString(2131629551));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.setContentDescription(getString(2131695232));
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.getMap().getUiSettings().setLogoPosition(0);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.getMap().getUiSettings().setScaleViewEnabled(false);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.getMap().getUiSettings().setGestureScaleByMapCenter(true);
@@ -771,7 +771,7 @@ public class QQMapActivity
         this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(4);
         try
         {
-          this.f = getLayoutInflater().inflate(2131493612, null);
+          this.f = getLayoutInflater().inflate(2131559182, null);
           this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.getMap().addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromView(this.f)).position(new LatLng(this.jdField_a_of_type_Double, this.jdField_b_of_type_Double)));
           n();
         }
@@ -794,22 +794,22 @@ public class QQMapActivity
     }
     if (((!"Asia/Shanghai".equals(str)) && (!"Asia/Hong_Kong".equals(str)) && (!"Asia/Chongqing".equals(str)) && (!"Asia/Beijing".equals(str))) || (!"zh".equals(Locale.getDefault().getLanguage())))
     {
-      awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "call_googlemap", 0, 0, "", "", "", "");
+      axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "call_googlemap", 0, 0, "", "", "", "");
       this.r = true;
     }
   }
   
   protected void s()
   {
-    Object localObject = (ViewGroup)findViewById(2131309578);
+    Object localObject = (ViewGroup)findViewById(2131375327);
     if (localObject != null) {
       IphoneTitleBarActivity.setLayerType((View)localObject);
     }
-    localObject = findViewById(2131311534);
+    localObject = findViewById(2131377350);
     if (localObject != null) {
       IphoneTitleBarActivity.setLayerType((View)localObject);
     }
-    localObject = (TextView)findViewById(2131302804);
+    localObject = (TextView)findViewById(2131368429);
     if (localObject != null) {
       IphoneTitleBarActivity.setLayerType((View)localObject);
     }
@@ -817,14 +817,14 @@ public class QQMapActivity
   
   protected void t()
   {
-    Object localObject = (TextView)findViewById(2131302804);
-    ((TextView)localObject).setContentDescription(ajjy.a(2131644655));
+    Object localObject = (TextView)findViewById(2131368429);
+    ((TextView)localObject).setContentDescription(ajyc.a(2131710440));
     ((TextView)localObject).setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-    localObject = (TextView)findViewById(2131302847);
+    localObject = (TextView)findViewById(2131368472);
     if ("group_activity".equals(this.jdField_o_of_type_JavaLangString))
     {
-      ((TextView)localObject).setText(2131625237);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131302832));
+      ((TextView)localObject).setText(2131690798);
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368457));
       if (!this.jdField_k_of_type_Boolean) {
         break label213;
       }
@@ -832,7 +832,7 @@ public class QQMapActivity
         break label159;
       }
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131629547);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131695228);
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_d_of_type_AndroidViewView$OnClickListener);
     }
     for (;;)
@@ -841,48 +841,48 @@ public class QQMapActivity
       return;
       if (this.jdField_k_of_type_Boolean)
       {
-        ((TextView)localObject).setText(2131654467);
+        ((TextView)localObject).setText(2131720363);
         break;
       }
-      ((TextView)localObject).setText(2131625236);
+      ((TextView)localObject).setText(2131690797);
       break;
       label159:
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      localObject = (ImageView)findViewById(2131302816);
+      localObject = (ImageView)findViewById(2131368441);
       ((ImageView)localObject).setVisibility(0);
-      ((ImageView)localObject).setImageResource(2130839704);
-      ((ImageView)localObject).setContentDescription(getString(2131628666));
+      ((ImageView)localObject).setImageResource(2130839753);
+      ((ImageView)localObject).setContentDescription(getString(2131694318));
       ((ImageView)localObject).setOnClickListener(this.jdField_e_of_type_AndroidViewView$OnClickListener);
     }
     label213:
     if ("group_activity".equals(this.jdField_o_of_type_JavaLangString)) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131629541);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131695222);
     }
     for (;;)
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_c_of_type_AndroidViewView$OnClickListener);
       break;
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131629547);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131695228);
     }
   }
   
   public void u()
   {
-    Object localObject2 = mpv.a(this.jdField_l_of_type_JavaLangString, 45, "UTF-8", "...");
-    String str1 = mpv.a(this.jdField_i_of_type_JavaLangString, 90, "UTF-8", "...");
-    Object localObject3 = aaek.f + "http://maps.google.com/maps?q=" + this.jdField_a_of_type_Double + "," + this.jdField_b_of_type_Double + "&iwloc=A&hl=zh-CN (" + str1 + ")";
-    if (!getResources().getString(2131630691).equals(localObject2)) {}
-    for (Object localObject1 = getResources().getString(2131625719) + " " + (String)localObject2;; localObject1 = getResources().getString(2131625719))
+    Object localObject2 = naw.a(this.jdField_l_of_type_JavaLangString, 45, "UTF-8", "...");
+    String str1 = naw.a(this.jdField_i_of_type_JavaLangString, 90, "UTF-8", "...");
+    Object localObject3 = aaoc.f + "http://maps.google.com/maps?q=" + this.jdField_a_of_type_Double + "," + this.jdField_b_of_type_Double + "&iwloc=A&hl=zh-CN (" + str1 + ")";
+    if (!getResources().getString(2131696394).equals(localObject2)) {}
+    for (Object localObject1 = getResources().getString(2131691295) + " " + (String)localObject2;; localObject1 = getResources().getString(2131691295))
     {
       String str2 = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.PoiMapActivity&type=sharedmap&lat=" + this.jdField_a_of_type_Double + "&lon=" + this.jdField_b_of_type_Double + "&title=" + (String)localObject2 + "&loc=" + str1;
-      localObject1 = new awui(StructMsgForGeneralShare.class).c(32).a((String)localObject1).d((String)localObject3).a("plugin", "", str2, str2, str2).a();
-      localObject3 = awuv.a(2);
-      ((awum)localObject3).a("http://pub.idqqimg.com/pc/misc/lbsshare_icon.jpg", (String)localObject2, str1);
-      ((AbsShareMsg)localObject1).addItem((awul)localObject3);
+      localObject1 = new axuk(StructMsgForGeneralShare.class).c(32).a((String)localObject1).d((String)localObject3).a("plugin", "", str2, str2, str2).a();
+      localObject3 = axux.a(2);
+      ((axuo)localObject3).a("http://pub.idqqimg.com/pc/misc/lbsshare_icon.jpg", (String)localObject2, str1);
+      ((AbsShareMsg)localObject1).addItem((axun)localObject3);
       localObject2 = new Intent();
       ((Intent)localObject2).putExtra("forward_type", -3);
       ((Intent)localObject2).putExtra("stuctmsg_bytes", ((AbsShareMsg)localObject1).getBytes());
-      aphp.a(this, (Intent)localObject2, 0);
+      aqbc.a(this, (Intent)localObject2, 0);
       return;
     }
   }
@@ -901,7 +901,7 @@ public class QQMapActivity
   
   public void x()
   {
-    babr.a(this, 230).setTitle(getString(2131628951)).setMessage(2131626719).setPositiveButton(getString(2131625014), new ablx(this)).show();
+    bbcv.a(this, 230).setTitle(getString(2131694612)).setMessage(2131692321).setPositiveButton(getString(2131690575), new abvy(this)).show();
   }
   
   public void y()
@@ -912,9 +912,9 @@ public class QQMapActivity
     }
     if (!this.jdField_k_of_type_Boolean)
     {
-      TextView localTextView = (TextView)findViewById(2131302832);
+      TextView localTextView = (TextView)findViewById(2131368457);
       localTextView.setVisibility(0);
-      localTextView.setText(2131624934);
+      localTextView.setText(2131690495);
     }
   }
   
@@ -923,7 +923,7 @@ public class QQMapActivity
     if (this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelMarker == null) {}
     try
     {
-      Bitmap localBitmap = BitmapFactory.decodeResource(getResources(), 2130841774);
+      Bitmap localBitmap = BitmapFactory.decodeResource(getResources(), 2130841868);
       if ((localBitmap != null) && (this.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint != null))
       {
         this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelMarker = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(localBitmap)).position(new LatLng(this.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D, this.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D)).title("").snippet(""));

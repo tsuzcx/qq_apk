@@ -1,41 +1,112 @@
-import android.graphics.Typeface;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.av.redpacket.ui.RedPacketRollTextView;
-import com.tencent.mobileqq.portal.StrokeTextView;
+import android.text.TextUtils;
+import com.tencent.av.opengl.GraphicRenderMgr;
 
-public class lle
-  implements ViewSwitcher.ViewFactory
+public final class lle
 {
-  public lle(RedPacketRollTextView paramRedPacketRollTextView, boolean paramBoolean) {}
+  protected String a;
   
-  public View makeView()
+  public lle(String paramString)
   {
-    localStrokeTextView = new StrokeTextView(RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
+    this.a = paramString;
+  }
+  
+  public int a(String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return paramInt;
+      paramString = a(paramString);
+    } while ((paramString == null) || (paramString.length <= 0));
+    return paramString[0];
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String a(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {}
+    do
+    {
+      return paramString2;
+      paramString1 = a(paramString1);
+    } while ((paramString1 == null) || (paramString1.length <= 0));
+    return paramString1[0];
+  }
+  
+  public boolean a()
+  {
+    return TextUtils.isEmpty(this.a);
+  }
+  
+  public int[] a(String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1;
+    String[] arrayOfString;
+    int j;
+    int i;
     try
     {
-      localStrokeTextView.setLayoutParams(new FrameLayout.LayoutParams(aciy.a(42.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()), -1));
-      localStrokeTextView.setTextSize(0, RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
-      localStrokeTextView.setIncludeFontPadding(false);
-      if (this.jdField_a_of_type_Boolean) {}
-      for (String str = "0";; str = "")
+      localObject1 = GraphicRenderMgr.getInstance().findConfigValue(this.a, paramString, "unknown");
+      paramString = localObject2;
+      if (localObject1 != null)
       {
-        localStrokeTextView.setText(str);
-        localStrokeTextView.setStrokeEnable(true);
-        localStrokeTextView.setStrokeColor(-1);
-        localStrokeTextView.setStrokeSize(aciy.a(6.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()));
-        localStrokeTextView.setInnerTextColor(-2094274);
-        localStrokeTextView.setTypeface(Typeface.defaultFromStyle(1));
-        localStrokeTextView.setGravity(17);
-        return localStrokeTextView;
+        if (((String)localObject1).equalsIgnoreCase("unknown")) {
+          paramString = localObject2;
+        }
       }
-      return localStrokeTextView;
+      else {
+        return paramString;
+      }
     }
-    catch (Exception localException)
+    catch (UnsatisfiedLinkError paramString)
     {
-      localException.printStackTrace();
+      do
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+          localObject1 = null;
+        }
+        arrayOfString = ((String)localObject1).split(",");
+        paramString = localObject2;
+      } while (arrayOfString == null);
+      j = arrayOfString.length;
+      localObject1 = new int[j];
+      i = 0;
     }
+    for (;;)
+    {
+      paramString = (String)localObject1;
+      if (i >= j) {
+        break;
+      }
+      try
+      {
+        localObject1[i] = Integer.parseInt(arrayOfString[i].trim());
+        i += 1;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          localObject1[i] = 0;
+        }
+      }
+    }
+  }
+  
+  public String[] a(String paramString)
+  {
+    paramString = GraphicRenderMgr.getInstance().findConfigValue(this.a, paramString, "unknown");
+    if ((paramString == null) || (paramString.equalsIgnoreCase("unknown"))) {
+      return null;
+    }
+    return paramString.trim().split(",");
   }
 }
 

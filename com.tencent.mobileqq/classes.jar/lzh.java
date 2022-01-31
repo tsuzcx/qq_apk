@@ -1,27 +1,11 @@
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.av.smallscreen.SmallScreenService;
 
-class lzh
-  implements lxc
+public class lzh
+  extends lfg
 {
-  lzh(lzg paramlzg) {}
+  public lzh(SmallScreenService paramSmallScreenService) {}
   
-  public void a()
-  {
-    if (this.a.a.a != null)
-    {
-      this.a.a.a.setViewEnable(2131306670, false);
-      this.a.a.a.setViewEnable(2131297382, false);
-      this.a.a.a.setViewEnable(2131297394, false);
-      this.a.a.a.setViewEnable(2131297393, false);
-    }
-  }
-  
-  public void b()
-  {
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 2130772163);
-  }
+  protected void a(long paramLong, int paramInt, String paramString) {}
 }
 
 

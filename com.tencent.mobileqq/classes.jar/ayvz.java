@@ -1,45 +1,41 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment;
+import android.os.Handler;
+import android.os.Looper;
 import java.util.ArrayList;
 
 public class ayvz
-  implements View.OnClickListener
+  extends Handler
 {
-  public ayvz(HomeWorkTroopSelectorFragment paramHomeWorkTroopSelectorFragment) {}
+  private ArrayList<Class<?>> filterList = new ArrayList();
   
-  public void onClick(View paramView)
+  public ayvz()
   {
-    paramView = new ArrayList();
-    ArrayList localArrayList = new ArrayList();
-    if (HomeWorkTroopSelectorFragment.a(this.a) != null)
+    this.filterList.clear();
+  }
+  
+  public ayvz(Looper paramLooper)
+  {
+    super(paramLooper);
+    this.filterList.clear();
+  }
+  
+  public void addFilter(Class<?>... paramVarArgs)
+  {
+    int i = 0;
+    while (i < paramVarArgs.length)
     {
-      int j = HomeWorkTroopSelectorFragment.a(this.a).getCount();
-      int i = 0;
-      while (i < j)
-      {
-        localObject = (aywe)HomeWorkTroopSelectorFragment.a(this.a).getItem(i);
-        if ((((Boolean)((aywe)localObject).b).booleanValue()) && (!HomeWorkTroopSelectorFragment.a(this.a).equals(((TroopInfo)((aywe)localObject).a).troopuin)))
-        {
-          paramView.add(((TroopInfo)((aywe)localObject).a).troopname);
-          localArrayList.add(((TroopInfo)((aywe)localObject).a).troopuin);
-        }
-        i += 1;
-      }
+      this.filterList.add(paramVarArgs[i]);
+      i += 1;
     }
-    Object localObject = new Intent();
-    ((Intent)localObject).putStringArrayListExtra("HomeWorkConstants:homework_async_uin_list_key", localArrayList);
-    ((Intent)localObject).putStringArrayListExtra("HomeWorkConstants:homework_async_name_list_key", paramView);
-    this.a.getActivity().setResult(262, (Intent)localObject);
-    this.a.getActivity().doOnBackPressed();
+  }
+  
+  public ArrayList<Class<?>> getFilter()
+  {
+    return this.filterList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayvz
  * JD-Core Version:    0.7.0.1
  */

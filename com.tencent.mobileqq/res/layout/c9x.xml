@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:id="@id/a7q" android:layout_width="fill_parent" android:layout_height="88.0dip"
+<merge android:id="@id/a7q" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/gai" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginLeft="18.0dip" android:text="@string/d9o" android:layout_centerVertical="true" />
     <View android:id="@id/m1_" android:background="@drawable/he5" android:layout_width="3.0dip" android:layout_height="10.0dip" android:layout_marginLeft="58.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />

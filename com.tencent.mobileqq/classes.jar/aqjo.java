@@ -1,55 +1,24 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBSInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
-import java.lang.ref.WeakReference;
-import tencent.im.oidb.cmd0xcd4.cmd0xcd4.InputNotifyRsp;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.RadioGroup;
+import com.tencent.mobileqq.fragment.SimpleDebugFragment;
 
-final class aqjo
-  extends aqjp
+public class aqjo
+  implements bcsv
 {
-  private WeakReference<aqjm> a;
+  public aqjo(SimpleDebugFragment paramSimpleDebugFragment, RadioGroup paramRadioGroup) {}
   
-  private aqjo(aqjm paramaqjm)
+  public void a(View paramView, int paramInt)
   {
-    this.a = new WeakReference(paramaqjm);
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if (((paramObject instanceof cmd0xcd4.InputNotifyRsp)) && (paramBoolean))
+    switch (paramInt)
     {
-      paramObject = (cmd0xcd4.InputNotifyRsp)paramObject;
-      int i = paramObject.sint32_result.get();
-      int j = paramObject.uint32_interval.get();
-      paramObject = paramObject.bytes_err_msg.get().toStringUtf8();
-      if (i != 0) {
-        break label84;
-      }
-      if ((j > 0) && (this.a.get() != null)) {
-        ((aqjm)this.a.get()).a = (j * 1000);
-      }
+    default: 
+      return;
     }
-    return;
-    label84:
-    QLog.d(aqjm.a(), 1, "send input status fail : " + paramObject);
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.get() != null))
+    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
     {
-      if ((!aqjm.a((aqjm)this.a.get())) && (paramBoolean2))
-      {
-        if (aqjm.a((aqjm)this.a.get()) != null) {
-          aqjm.a((aqjm)this.a.get()).a(aqjm.a((aqjm)this.a.get()));
-        }
-        aqjm.a((aqjm)this.a.get()).a.addTextChangedListener(aqjm.a((aqjm)this.a.get()));
-      }
-      aqjm.a((aqjm)this.a.get(), paramBoolean2);
     }
+    this.jdField_a_of_type_ComTencentMobileqqFragmentSimpleDebugFragment.getActivity().finish();
   }
 }
 

@@ -1,114 +1,206 @@
-import android.text.TextUtils;
-import com.tencent.av.chatroom.ChatRoomInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.av.chatroom.chatroom_sso.Msg;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.util.Pair;
+import com.rookery.asyncHttpClient.AsyncHttpRequest;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.security.KeyStore;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.ThreadPoolExecutor;
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpVersion;
+import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.conn.params.ConnManagerParams;
+import org.apache.http.conn.params.ConnPerRouteBean;
+import org.apache.http.conn.scheme.PlainSocketFactory;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.scheme.SocketFactory;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpProtocolParams;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
+import org.apache.http.protocol.SyncBasicHttpContext;
 
 public class laf
 {
-  public static int a;
-  public static int b;
-  public static int c;
-  public static int d;
-  private static long e;
-  public final long a;
-  public ChatRoomInfo a;
-  public final String a;
-  public final long b;
-  public long c;
-  public long d;
-  public int e;
-  private int f;
+  private static int jdField_a_of_type_Int = 6;
+  private static String jdField_a_of_type_JavaLangString = "UTF-8";
+  private static int jdField_b_of_type_Int = 10000;
+  private final Map<Context, List<WeakReference<Future<?>>>> jdField_a_of_type_JavaUtilMap;
+  private ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
+  private final DefaultHttpClient jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient;
+  private final HttpContext jdField_a_of_type_OrgApacheHttpProtocolHttpContext;
+  private final Map<String, String> jdField_b_of_type_JavaUtilMap;
   
-  static
+  public laf()
   {
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-    jdField_c_of_type_Int = 3;
-    jdField_d_of_type_Int = 4;
-  }
-  
-  public laf(ChatRoomInfo paramChatRoomInfo, long paramLong1, String paramString, long paramLong2, long paramLong3, int paramInt)
-  {
-    this.jdField_b_of_type_Long = a();
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo = paramChatRoomInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_c_of_type_Long = paramLong2;
-    this.jdField_d_of_type_Long = paramLong3;
-    this.jdField_e_of_type_Int = paramInt;
-    if (this.jdField_e_of_type_Int == jdField_a_of_type_Int)
+    BasicHttpParams localBasicHttpParams = new BasicHttpParams();
+    ConnManagerParams.setTimeout(localBasicHttpParams, jdField_b_of_type_Int);
+    try
     {
-      paramChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
-      paramChatRoomInfo.jdField_b_of_type_Int += 1;
-    }
-    this.f = 0;
-  }
-  
-  private static long a()
-  {
-    long l = jdField_e_of_type_Long + 1L;
-    jdField_e_of_type_Long = l;
-    return l;
-  }
-  
-  public void a()
-  {
-    this.f += 1;
-  }
-  
-  public void a(int paramInt)
-  {
-    ChatRoomInfo localChatRoomInfo;
-    if (paramInt == jdField_c_of_type_Int)
-    {
-      localChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
-      localChatRoomInfo.jdField_d_of_type_Int += 1;
-    }
-    for (;;)
-    {
-      if ((this.jdField_d_of_type_Long == -9223372036854775808L) || (this.jdField_e_of_type_Int != jdField_d_of_type_Int)) {
-        this.jdField_e_of_type_Int = paramInt;
-      }
-      return;
-      if (paramInt == jdField_b_of_type_Int)
+      ConnManagerParams.setMaxConnectionsPerRoute(localBasicHttpParams, new ConnPerRouteBean(jdField_a_of_type_Int));
+      ConnManagerParams.setMaxTotalConnections(localBasicHttpParams, 6);
+      try
       {
-        localChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
-        localChatRoomInfo.jdField_c_of_type_Int += 1;
+        label40:
+        HttpConnectionParams.setSoTimeout(localBasicHttpParams, jdField_b_of_type_Int);
+        HttpConnectionParams.setConnectionTimeout(localBasicHttpParams, jdField_b_of_type_Int);
+        HttpConnectionParams.setTcpNoDelay(localBasicHttpParams, true);
+        HttpConnectionParams.setSocketBufferSize(localBasicHttpParams, 8192);
+        HttpProtocolParams.setVersion(localBasicHttpParams, HttpVersion.HTTP_1_1);
+        label73:
+        Object localObject1 = new SchemeRegistry();
+        ((SchemeRegistry)localObject1).register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+        if (Build.VERSION.SDK_INT < 11) {}
+        for (;;)
+        {
+          try
+          {
+            Object localObject2 = KeyStore.getInstance(KeyStore.getDefaultType());
+            ((KeyStore)localObject2).load(null, null);
+            localObject2 = new laj((KeyStore)localObject2);
+            ((SSLSocketFactory)localObject2).setHostnameVerifier(new lag(this));
+            ((SchemeRegistry)localObject1).register(new Scheme("https", (SocketFactory)localObject2, 443));
+            localObject1 = new ThreadSafeClientConnManager(localBasicHttpParams, (SchemeRegistry)localObject1);
+            this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext = new SyncBasicHttpContext(new BasicHttpContext());
+            this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient = new DefaultHttpClient((ClientConnectionManager)localObject1, localBasicHttpParams);
+            this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient.addRequestInterceptor(new lah(this));
+            this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient.addResponseInterceptor(new lai(this));
+            this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient.setHttpRequestRetryHandler(new lap(3));
+            this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = ((ThreadPoolExecutor)Executors.newCachedThreadPool());
+            this.jdField_a_of_type_JavaUtilMap = new WeakHashMap();
+            this.jdField_b_of_type_JavaUtilMap = new HashMap();
+            return;
+          }
+          catch (Exception localException)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("Translator", 2, "accept all ssl factory error" + localException);
+            }
+            ((SchemeRegistry)localObject1).register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
+            continue;
+          }
+          ((SchemeRegistry)localObject1).register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
+        }
+      }
+      catch (NoSuchMethodError localNoSuchMethodError1)
+      {
+        break label73;
       }
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_d_of_type_Long != -9223372036854775808L;
-  }
-  
-  public boolean a(chatroom_sso.Msg paramMsg)
-  {
-    if (paramMsg == null) {}
-    while ((this.jdField_d_of_type_Long != paramMsg.msg_id.get()) || (this.jdField_a_of_type_Long != paramMsg.uin.get()) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramMsg.msg.get()))) {
-      return false;
+    catch (NoSuchMethodError localNoSuchMethodError2)
+    {
+      break label40;
     }
-    return true;
   }
   
-  public boolean b()
+  public static String a(String paramString, List<Pair<String, String>> paramList)
   {
-    return (this.jdField_e_of_type_Int == jdField_b_of_type_Int) && (this.f < 3) && (this.jdField_d_of_type_Long == -9223372036854775808L);
+    Object localObject = paramString;
+    if (paramList != null)
+    {
+      localObject = new LinkedList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        Pair localPair = (Pair)paramList.next();
+        ((List)localObject).add(new BasicNameValuePair((String)localPair.first, (String)localPair.second));
+      }
+      paramList = URLEncodedUtils.format((List)localObject, jdField_a_of_type_JavaLangString);
+      if (paramString.indexOf("?") == -1) {
+        localObject = paramString + "?" + paramList;
+      }
+    }
+    else
+    {
+      return localObject;
+    }
+    return paramString + "&" + paramList;
   }
   
-  public String toString()
+  public void a(Context paramContext, String paramString, Header[] paramArrayOfHeader, List<Pair<String, String>> paramList, lam paramlam)
   {
-    StringBuilder localStringBuilder = new StringBuilder(60);
-    localStringBuilder.append("ChatRoomMsg{senderUin: ").append(this.jdField_a_of_type_Long).append(", serverSeq: ").append(this.jdField_d_of_type_Long).append(", localSeq: ").append(this.jdField_b_of_type_Long).append(", state: ").append(this.jdField_e_of_type_Int).append("}");
-    return localStringBuilder.toString();
+    paramString = new HttpGet(a(paramString, paramList));
+    if (paramArrayOfHeader != null) {
+      paramString.setHeaders(paramArrayOfHeader);
+    }
+    a(this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient, this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext, paramString, null, paramlam, paramContext);
+  }
+  
+  public void a(Context paramContext, String paramString1, Header[] paramArrayOfHeader, HttpEntity paramHttpEntity, String paramString2, lam paramlam)
+  {
+    paramString1 = new HttpPost(paramString1);
+    if ((paramHttpEntity != null) && (paramString1 != null)) {
+      paramString1.setEntity(paramHttpEntity);
+    }
+    if ((paramArrayOfHeader != null) && (paramString1 != null)) {
+      paramString1.setHeaders(paramArrayOfHeader);
+    }
+    a(this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient, this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext, paramString1, paramString2, paramlam, paramContext);
+  }
+  
+  public void a(Context paramContext, boolean paramBoolean)
+  {
+    Object localObject = (List)this.jdField_a_of_type_JavaUtilMap.get(paramContext);
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Future localFuture = (Future)((WeakReference)((Iterator)localObject).next()).get();
+        if (localFuture != null)
+        {
+          localFuture.cancel(paramBoolean);
+          if (QLog.isColorLevel()) {
+            QLog.e("Translator", 2, "[cancel] cancel task" + localFuture.toString());
+          }
+        }
+      }
+    }
+    this.jdField_a_of_type_JavaUtilMap.remove(paramContext);
+  }
+  
+  protected void a(DefaultHttpClient paramDefaultHttpClient, HttpContext paramHttpContext, HttpUriRequest paramHttpUriRequest, String paramString, lam paramlam, Context paramContext)
+  {
+    if (paramString != null) {
+      paramHttpUriRequest.addHeader("Content-Type", paramString);
+    }
+    paramHttpUriRequest = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(new AsyncHttpRequest(paramDefaultHttpClient, paramHttpContext, paramHttpUriRequest, paramlam));
+    if (paramContext != null)
+    {
+      paramHttpContext = (List)this.jdField_a_of_type_JavaUtilMap.get(paramContext);
+      paramDefaultHttpClient = paramHttpContext;
+      if (paramHttpContext == null)
+      {
+        paramDefaultHttpClient = new LinkedList();
+        this.jdField_a_of_type_JavaUtilMap.put(paramContext, paramDefaultHttpClient);
+      }
+      paramDefaultHttpClient.add(new WeakReference(paramHttpUriRequest));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     laf
  * JD-Core Version:    0.7.0.1
  */

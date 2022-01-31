@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.HorizontalScrollView;
-import atzv;
+import auzb;
 
 public class HScrollView
   extends HorizontalScrollView
@@ -13,7 +13,7 @@ public class HScrollView
 {
   private int jdField_a_of_type_Int = -9999999;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private atzv jdField_a_of_type_Atzv;
+  private auzb jdField_a_of_type_Auzb;
   private int b = 1;
   
   public HScrollView(Context paramContext, AttributeSet paramAttributeSet)
@@ -30,7 +30,7 @@ public class HScrollView
     {
       return super.onTouchEvent(paramMotionEvent);
       this.b = 2;
-      this.jdField_a_of_type_Atzv.a(this.b);
+      this.jdField_a_of_type_Auzb.a(this.b);
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
       continue;
       this.jdField_a_of_type_AndroidOsHandler.post(this);
@@ -42,23 +42,23 @@ public class HScrollView
     if (getScrollX() == this.jdField_a_of_type_Int)
     {
       this.b = 1;
-      if (this.jdField_a_of_type_Atzv != null) {
-        this.jdField_a_of_type_Atzv.a(this.b);
+      if (this.jdField_a_of_type_Auzb != null) {
+        this.jdField_a_of_type_Auzb.a(this.b);
       }
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
       return;
     }
     this.b = 3;
-    if (this.jdField_a_of_type_Atzv != null) {
-      this.jdField_a_of_type_Atzv.a(this.b);
+    if (this.jdField_a_of_type_Auzb != null) {
+      this.jdField_a_of_type_Auzb.a(this.b);
     }
     this.jdField_a_of_type_Int = getScrollX();
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 50L);
   }
   
-  public void setOnScrollListener(atzv paramatzv)
+  public void setOnScrollListener(auzb paramauzb)
   {
-    this.jdField_a_of_type_Atzv = paramatzv;
+    this.jdField_a_of_type_Auzb = paramauzb;
   }
 }
 

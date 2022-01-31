@@ -1,21 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-class atjp
-  extends atla
+public class atjp
+  implements View.OnClickListener
 {
-  atjp(atjj paramatjj) {}
+  public atjp(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountPanel", 2, "onBatteryChanged updateOnlineStatusItem");
-    }
-    atjj.a(this.a).b();
+    ShortVideoCommentsView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atjp
  * JD-Core Version:    0.7.0.1
  */

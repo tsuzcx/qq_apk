@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emosm;
 
-import anae;
+import anqm;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
 import mqq.os.MqqHandler;

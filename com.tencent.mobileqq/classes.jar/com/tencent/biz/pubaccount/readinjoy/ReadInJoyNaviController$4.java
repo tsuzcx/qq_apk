@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import nit;
+import nud;
 
 public class ReadInJoyNaviController$4
   implements Runnable
 {
-  public ReadInJoyNaviController$4(nit paramnit) {}
+  public ReadInJoyNaviController$4(nud paramnud) {}
   
   public void run()
   {
-    nit.a(this.this$0, true);
+    nud.a(this.this$0, true);
   }
 }
 

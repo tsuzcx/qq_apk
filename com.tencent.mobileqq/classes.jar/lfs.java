@@ -1,54 +1,39 @@
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
+
 public class lfs
 {
-  public static final Object a;
-  private static lfs b;
-  private static int c;
-  public int a;
-  private lfs a;
-  public int b;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private boolean jdField_a_of_type_Boolean;
   
-  static
+  public lfs(VideoAppInterface paramVideoAppInterface)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  private lfs(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public static lfs a(int paramInt1, int paramInt2)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_b_of_type_Lfs != null)
-      {
-        lfs locallfs = jdField_b_of_type_Lfs;
-        jdField_b_of_type_Lfs = locallfs.jdField_a_of_type_Lfs;
-        locallfs.jdField_a_of_type_Lfs = null;
-        locallfs.jdField_a_of_type_Int = paramInt1;
-        locallfs.jdField_b_of_type_Int = paramInt2;
-        c -= 1;
-        return locallfs;
-      }
-      return new lfs(paramInt1, paramInt2);
-    }
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new lft(this);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    synchronized (jdField_a_of_type_JavaLangObject)
+    IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.MultiVideo");
+    localIntentFilter.addAction("tencent.video.q2v.AnnimateDownloadFinish");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("GVipFunCallMonitor", 2, "regist vipFunCall " + this.jdField_a_of_type_Boolean);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (c < 4)
-      {
-        this.jdField_a_of_type_Lfs = jdField_b_of_type_Lfs;
-        jdField_b_of_type_Lfs = this;
-        c += 1;
-      }
-      return;
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_Boolean = false;
     }
   }
 }

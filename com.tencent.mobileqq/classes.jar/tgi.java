@@ -1,55 +1,58 @@
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tribe.async.dispatch.Dispatcher;
-import java.io.File;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCheckActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class tgi
-  implements vnq
+  extends syv
 {
-  public long a;
-  public StoryVideoItem a;
-  public String a;
+  public static String a = sxp.a("StorySvc.check_activity");
   public String b;
+  public final String c;
   
-  public tgi(String paramString1, StoryVideoItem paramStoryVideoItem, String paramString2)
+  public tgi(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    this.b = paramString2;
+    this.c = paramString;
   }
   
-  public void onFailure(String paramString)
+  public String a()
   {
-    paramString = new tgh(this.b, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    sgi.a().dispatch(paramString);
-    urp.a("play_video", "down_fail", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-    urp.a("play_video", "down_watermark", 0, 1, new String[0]);
+    return a;
   }
   
-  public void onFinish(boolean paramBoolean) {}
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
+  public syq a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    tgh localtgh = new tgh(this.b, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    sgi.a().dispatch(localtgh);
+    qqstory_service.RspCheckActivity localRspCheckActivity = new qqstory_service.RspCheckActivity();
+    try
+    {
+      localRspCheckActivity.mergeFrom(paramArrayOfByte);
+      return new tgj(localRspCheckActivity);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
   }
   
-  public void onSuccess(String paramString)
+  protected byte[] a()
   {
-    paramString = new tgh(this.b, 2, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    paramString.b = this.jdField_a_of_type_JavaLangString;
-    sgi.a().dispatch(paramString);
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    long l3 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoDuration;
-    urp.a("play_video", "down_suc", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-    urp.a("play_video", "down_watermark_time", 0, 0, new String[] { String.valueOf(l1 - l2), String.valueOf(l3) });
-    urp.a("play_video", "down_watermark", 0, 0, new String[0]);
-    vlm.a(BaseApplication.getContext(), new File(this.jdField_a_of_type_JavaLangString));
+    qqstory_service.ReqCheckActivity localReqCheckActivity = new qqstory_service.ReqCheckActivity();
+    if (!TextUtils.isEmpty(this.c)) {
+      localReqCheckActivity.adcode.set(Long.valueOf(this.c).longValue());
+    }
+    veg.a("MsgTabCheckActiveRequest", "client version=%s", "8.2.8");
+    localReqCheckActivity.version.set("8.2.8");
+    return localReqCheckActivity.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "MsgTabCheckActiveRequest{value='" + this.b + '\'' + ", adCode='" + this.c + '\'' + '}';
   }
 }
 

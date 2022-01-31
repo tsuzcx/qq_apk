@@ -1,11 +1,11 @@
 package com.tencent.mm.hardcoder;
 
-import zrr;
+import aabk;
 
 public class HardCoderManager$2
   implements Runnable
 {
-  public HardCoderManager$2(zrr paramzrr) {}
+  public HardCoderManager$2(aabk paramaabk) {}
   
   public void run()
   {

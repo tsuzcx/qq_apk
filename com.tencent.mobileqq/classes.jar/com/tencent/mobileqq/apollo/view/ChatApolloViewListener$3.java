@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajdo;
+import ajrq;
 
 public class ChatApolloViewListener$3
   implements Runnable
 {
-  public ChatApolloViewListener$3(ajdo paramajdo) {}
+  public ChatApolloViewListener$3(ajrq paramajrq) {}
   
   public void run()
   {

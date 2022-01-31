@@ -1,11 +1,11 @@
 package com.tencent.gdtad.views.video;
 
-import yro;
+import zbg;
 
 public class GdtVideoCommonView$3$1
   implements Runnable
 {
-  public GdtVideoCommonView$3$1(yro paramyro) {}
+  public GdtVideoCommonView$3$1(zbg paramzbg) {}
   
   public void run()
   {

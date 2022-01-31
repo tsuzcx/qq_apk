@@ -1,104 +1,75 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.SystemClock;
-import android.view.KeyEvent;
-import android.view.View;
-import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.IntentFilter;
+import com.tencent.av.so.DownloadInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public abstract class lzz
+public class lzz
 {
-  protected int a;
-  protected long a;
-  public final VideoInviteActivity a;
-  protected int b;
-  protected long b;
-  protected int c;
-  protected long c;
+  int jdField_a_of_type_Int = 0;
+  DownloadInfo jdField_a_of_type_ComTencentAvSoDownloadInfo = null;
+  ArrayList<lzv> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public lzz(VideoInviteActivity paramVideoInviteActivity)
+  lzz()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity = paramVideoInviteActivity;
-    this.jdField_a_of_type_Long = AudioHelper.b();
-    this.jdField_b_of_type_Int = mjg.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity);
-    this.jdField_b_of_type_Int = mjg.b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity);
+    a(BaseApplicationImpl.getApplication());
+    this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
+    this.jdField_a_of_type_Int = mab.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo);
+    QLog.d("QavSo", 1, String.format("SoMgr, mStatusSo[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
   }
   
-  public void BtnOnClick(View paramView) {}
-  
-  public int a()
+  DownloadInfo a()
   {
-    return this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_ComTencentAvSoDownloadInfo == null) {
+      this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
+    }
+    return this.jdField_a_of_type_ComTencentAvSoDownloadInfo;
   }
   
-  public Resources a()
+  boolean a()
   {
-    return this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.getResources();
+    this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
+    this.jdField_a_of_type_Int = mab.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavSo", 4, String.format("checkResReady, mStatusSo[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+    }
+    return 11 != this.jdField_a_of_type_Int;
   }
   
-  public <T extends View> T a(int paramInt)
+  boolean a(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    return this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.findViewById(paramInt);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavSo", 4, String.format("registReceiver[%s]", new Object[] { paramBaseApplicationImpl.getQQProcessName() }));
+    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("tencent.video.somgr.notify");
+    return paramBaseApplicationImpl.registerReceiver(new maa(this), localIntentFilter) != null;
   }
   
-  public String a(int paramInt)
+  boolean b()
   {
-    return this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.getString(paramInt);
+    return this.jdField_a_of_type_Int == 1;
   }
   
-  public void a() {}
-  
-  public void a(Context paramContext, String paramString, Intent paramIntent) {}
-  
-  protected void a(String paramString)
+  boolean c()
   {
-    awqx.b(null, "CliOper", "", "", paramString, paramString, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i), "");
-  }
-  
-  public void a(lzz paramlzz)
-  {
-    if (paramlzz != null)
+    this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = mab.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo);
+    if (this.jdField_a_of_type_Int == 11)
     {
-      this.jdField_b_of_type_Long = paramlzz.jdField_b_of_type_Long;
-      this.c = paramlzz.c;
+      this.jdField_a_of_type_Int = 12;
+      BusinessCommonConfig.notifyQQDownload(3, null, 0);
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavSo", 2, String.format("nodifyDownloadRes, lastStatus[%s], mStatusSo[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int) }));
+      }
+      return bool;
     }
   }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
-      return;
-    }
-    this.c = SystemClock.elapsedRealtime();
-  }
-  
-  public boolean a(int paramInt, KeyEvent paramKeyEvent)
-  {
-    return false;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void h() {}
-  
-  public void i() {}
-  
-  public void j() {}
 }
 
 

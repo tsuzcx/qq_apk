@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import asxa;
-import atqs;
-import axvo;
-import axvt;
-import baip;
+import atte;
+import auoq;
+import ayvv;
+import aywa;
+import bbjw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 import com.tencent.mobileqq.pic.CompressInfo;
@@ -14,27 +14,27 @@ import java.util.LinkedList;
 public class NearbyProfileEditTribePanel$16
   implements Runnable
 {
-  public NearbyProfileEditTribePanel$16(asxa paramasxa) {}
+  public NearbyProfileEditTribePanel$16(atte paramatte) {}
   
   public void run()
   {
-    asxa.a(this.this$0, (PicInfo)this.this$0.jdField_a_of_type_JavaUtilLinkedList.poll());
-    if (asxa.a(this.this$0) == null) {
+    atte.a(this.this$0, (PicInfo)this.this$0.jdField_a_of_type_JavaUtilLinkedList.poll());
+    if (atte.a(this.this$0) == null) {
       return;
     }
-    CompressInfo localCompressInfo = new CompressInfo(asxa.a(this.this$0).c, 0);
+    CompressInfo localCompressInfo = new CompressInfo(atte.a(this.this$0).c, 0);
     localCompressInfo.f = 0;
-    atqs.a(localCompressInfo);
+    auoq.a(localCompressInfo);
     if (QLog.isColorLevel()) {
       QLog.d("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..uploadPhoto(), img_path = " + localCompressInfo.e);
     }
-    if (!baip.a(localCompressInfo.e))
+    if (!bbjw.a(localCompressInfo.e))
     {
-      axvt localaxvt = new axvt();
-      localaxvt.a = true;
-      localaxvt.i = localCompressInfo.e;
-      localaxvt.b = 8;
-      this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.a().a(localaxvt);
+      aywa localaywa = new aywa();
+      localaywa.a = true;
+      localaywa.i = localCompressInfo.e;
+      localaywa.b = 8;
+      this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.a().a(localaywa);
       return;
     }
     this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.runOnUiThread(new NearbyProfileEditTribePanel.16.1(this));

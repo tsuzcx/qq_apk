@@ -1,46 +1,40 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.nearby.nearby_ice_break.IceRsp;
+import android.view.View;
+import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
 
-class asfw
-  implements aslt
+public class asfw
+  extends PopupWindow
 {
-  asfw(asft paramasft) {}
+  private PopupWindow.OnDismissListener a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public asfw(View paramView, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    paramBundle = new nearby_ice_break.IceRsp();
-    try
+    super(paramView, paramInt1, paramInt2, paramBoolean);
+  }
+  
+  public void a()
+  {
+    super.dismiss();
+  }
+  
+  public void a(PopupWindow.OnDismissListener paramOnDismissListener)
+  {
+    this.a = paramOnDismissListener;
+  }
+  
+  public void dismiss()
+  {
+    if (this.a != null)
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (paramBundle.result.has())
-      {
-        if (paramBundle.result.get() == 0)
-        {
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.i("NearbyCardHandler", 2, "sendPoBingMsg. success");
-          return;
-        }
-        QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. result=" + paramBundle.result.get() + " errorMsg=" + paramBundle.err_msg.get());
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. error=" + QLog.getStackTraceString(paramArrayOfByte));
+      this.a.onDismiss();
       return;
     }
-    QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. no result");
+    super.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asfw
  * JD-Core Version:    0.7.0.1
  */

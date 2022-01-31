@@ -3,10 +3,10 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.core.ViolaInstance;
-import ohi;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rjb;
+import ost;
+import rwa;
 
 public class ReadInJoyWebRenderEngine$2
   implements Runnable
@@ -15,15 +15,15 @@ public class ReadInJoyWebRenderEngine$2
   {
     try
     {
-      JSONObject localJSONObject = rjb.a();
+      JSONObject localJSONObject = rwa.a();
       if (localJSONObject != null)
       {
         if (!TextUtils.isEmpty(this.a)) {
           localJSONObject.put("param", this.a);
         }
         localJSONObject.put("url", this.b);
-        ohi.a(this.this$0, false);
-        ohi.a(this.this$0).render(this.c, localJSONObject.toString());
+        ost.a(this.this$0, false);
+        ost.a(this.this$0).render(this.c, localJSONObject.toString());
       }
       return;
     }

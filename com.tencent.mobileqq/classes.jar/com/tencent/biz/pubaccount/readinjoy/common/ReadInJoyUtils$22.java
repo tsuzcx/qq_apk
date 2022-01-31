@@ -1,16 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import com.tencent.biz.pubaccount.util.PreloadManager;
-import rsf;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 
 public final class ReadInJoyUtils$22
   implements Runnable
 {
-  public ReadInJoyUtils$22(PreloadManager paramPreloadManager, rsf paramrsf) {}
+  public ReadInJoyUtils$22(KandianMergeManager paramKandianMergeManager) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPreloadManager.b(this.jdField_a_of_type_Rsf.a);
+    this.a.r();
   }
 }
 

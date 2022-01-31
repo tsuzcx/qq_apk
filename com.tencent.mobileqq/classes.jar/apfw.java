@@ -1,49 +1,78 @@
+import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
-public class apfw
-  implements begx
+public abstract class apfw
+  extends awoh
 {
-  public apfw(SendBottomBar paramSendBottomBar) {}
+  protected int a;
+  protected Bundle a;
+  protected String a;
   
-  public void a(View paramView, int paramInt, String paramString)
+  public apfw(String paramString, int paramInt)
   {
-    if (paramString.equals(ajjy.a(2131647995)))
-    {
-      paramView = apck.a("排序方式:\n时间", ajjy.a(2131648004), null);
-      SendBottomBar.a(this.a).setText(paramView);
-      if (SendBottomBar.a(this.a).g() == 0) {
-        return;
-      }
-      SendBottomBar.a(this.a).b(0);
-    }
-    for (;;)
-    {
-      this.a.a.dismiss();
-      return;
-      if (paramString.equals(ajjy.a(2131648024)))
-      {
-        paramView = apck.a("排序方式:\n大小", ajjy.a(2131647998), null);
-        SendBottomBar.a(this.a).setText(paramView);
-        if (SendBottomBar.a(this.a).g() == 1) {
-          break;
-        }
-        SendBottomBar.a(this.a).b(1);
-        continue;
-      }
-      if (paramString.equals(ajjy.a(2131647997)))
-      {
-        paramView = apck.a("排序方式:\n类型", ajjy.a(2131648020), null);
-        SendBottomBar.a(this.a).setText(paramView);
-        if (SendBottomBar.a(this.a).g() == 2) {
-          break;
-        }
-        SendBottomBar.a(this.a).b(2);
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<awog> a(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    return new ArrayList(0);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public void a(View paramView)
+  {
+    int i = d();
+    if (i == 1) {
+      if (paramView.getId() == 2131366211) {
+        b(paramView);
+      }
+    }
+    while (i <= 1)
+    {
+      return;
+      c(paramView);
+      return;
+    }
+    d(paramView);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  protected abstract void b(View paramView);
+  
+  public abstract boolean b();
+  
+  public abstract String c();
+  
+  protected abstract void c(View paramView);
+  
+  public int d()
+  {
+    return 0;
+  }
+  
+  public abstract String d();
+  
+  protected abstract void d(View paramView);
+  
+  public abstract int e();
 }
 
 

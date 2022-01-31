@@ -1,16 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class osf
-  implements View.OnClickListener
+public class osf
+  implements pbj
 {
-  osf(orz paramorz, String paramString1, String paramString2) {}
+  public osf(KandianSubscribeManager paramKandianSubscribeManager) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    orz.a(2, this.jdField_a_of_type_JavaLangString);
-    obz.a(orz.a(this.jdField_a_of_type_Orz), this.b);
+    QQAppInterface localQQAppInterface = (QQAppInterface)onk.a();
+    if (localQQAppInterface == null) {}
+    QQMessageFacade localQQMessageFacade;
+    MessageRecord localMessageRecord;
+    do
+    {
+      return;
+      localQQMessageFacade = localQQAppInterface.a();
+      localMessageRecord = localQQMessageFacade.b(ajsf.aQ, 1008);
+    } while ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForText)) || (TextUtils.isEmpty(localMessageRecord.msg)) || (!localMessageRecord.msg.contains(ReadInJoyUserInfoModule.a())) || (!TextUtils.equals(localMessageRecord.extStr, paramString)));
+    localMessageRecord.msg = localMessageRecord.msg.replace(ReadInJoyUserInfoModule.a(), paramReadInJoyUserInfo.nick);
+    localMessageRecord.createMessageUniseq();
+    localQQMessageFacade.a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq, "msg", localMessageRecord.msg);
+    paramReadInJoyUserInfo = localQQAppInterface.getHandler(Conversation.class);
+    if (paramReadInJoyUserInfo != null) {
+      paramReadInJoyUserInfo.sendEmptyMessage(1009);
+    }
+    QLog.d(KandianSubscribeManager.a, 2, "update msg bref, uin : " + paramString + ", msg : " + localMessageRecord);
   }
+  
+  public void a(String paramString1, String paramString2) {}
 }
 
 

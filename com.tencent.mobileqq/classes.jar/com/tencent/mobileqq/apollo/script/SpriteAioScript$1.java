@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.script;
 
-import aiii;
-import airv;
-import aisd;
-import aixo;
-import ajas;
+import aivb;
+import ajet;
+import ajfb;
+import ajlq;
+import ajou;
 import android.text.TextUtils;
 import com.tencent.mobileqq.apollo.ApolloEngine;
 import com.tencent.mobileqq.apollo.ApolloRenderDriver;
@@ -14,7 +14,7 @@ import com.tencent.qphone.base.util.QLog;
 public class SpriteAioScript$1
   extends IApolloRunnableTask
 {
-  public SpriteAioScript$1(airv paramairv, String paramString, aiii paramaiii, int paramInt, boolean paramBoolean) {}
+  public SpriteAioScript$1(ajet paramajet, String paramString, aivb paramaivb, int paramInt, boolean paramBoolean) {}
   
   public int a()
   {
@@ -43,23 +43,23 @@ public class SpriteAioScript$1
       QLog.i("cmshow_scripted_SpriteAioScript", 1, "TraceReport exe Js:" + this.jdField_a_of_type_JavaLangString.length());
     }
     if ((this.jdField_a_of_type_JavaLangString.startsWith("initDrawerInfoSprite")) || (this.jdField_a_of_type_JavaLangString.startsWith("initSprite"))) {
-      aixo.a(this.this$0.a.a(), 350, 0, new Object[] { "enter exeInitSprite" });
+      ajlq.a(this.this$0.a.a(), 350, 0, new Object[] { "enter exeInitSprite" });
     }
-    if ((this.jdField_a_of_type_Aiii != null) && (this.jdField_a_of_type_Aiii.getWorker() != null) && (this.jdField_a_of_type_Aiii.getWorker().a != null)) {
-      this.jdField_a_of_type_Aiii.getWorker().a.a(this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_Aivb != null) && (this.jdField_a_of_type_Aivb.getWorker() != null) && (this.jdField_a_of_type_Aivb.getWorker().a != null)) {
+      this.jdField_a_of_type_Aivb.getWorker().a.a(this.jdField_a_of_type_JavaLangString);
     }
     if (QLog.isColorLevel())
     {
       if (!this.jdField_a_of_type_JavaLangString.contains("CMShowDefActionName")) {
         break label164;
       }
-      ajas.b("exeCmshow0");
+      ajou.b("exeCmshow0");
     }
     label164:
     while (!this.jdField_a_of_type_JavaLangString.contains("commonInit")) {
       return;
     }
-    ajas.b("exeCommon");
+    ajou.b("exeCommon");
   }
 }
 

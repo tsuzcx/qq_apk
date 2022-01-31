@@ -1,18 +1,34 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface akyn
+class akyn
+  implements ServiceConnection
 {
-  public abstract akwq a();
+  akyn(akyl paramakyl) {}
   
-  public abstract akwu a();
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    QLog.w(akyy.a, 1, "onServiceConnected, name[" + paramComponentName + "]");
+    try
+    {
+      this.a.a = aled.a(paramIBinder);
+      this.a.a.a(akyl.a(this.a));
+      this.a.a.c();
+      return;
+    }
+    catch (Exception paramComponentName)
+    {
+      QLog.w(akyy.a, 1, "onServiceConnected, Exception", paramComponentName);
+    }
+  }
   
-  public abstract atik a();
-  
-  public abstract ARCommonConfigInfo a();
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    QLog.w(akyy.a, 1, "onServiceDisconnected, name[" + paramComponentName + "]");
+    this.a.a();
+  }
 }
 
 

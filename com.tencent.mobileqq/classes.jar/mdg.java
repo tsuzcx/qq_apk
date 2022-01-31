@@ -1,18 +1,18 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 
-public class mdg
+class mdg
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
-  int b;
-  int c;
+  mdg(mde parammde) {}
   
-  public mdg(Bitmap[] paramArrayOfBitmap, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = paramArrayOfBitmap;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    this.a.a.a().a().at = true;
+    muf.a(this.a.a);
+    mde.b(this.a);
   }
 }
 

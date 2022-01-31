@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
 import MQQ.ItemCfgInfo;
-import ajjj;
+import ajxn;
 import android.text.TextUtils;
-import awqx;
-import bgoq;
+import axqw;
+import bhxn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -114,7 +114,7 @@ public class NamePlateCfgInfo
   
   public static String getVipNamePlateCfgInfo(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramQQAppInterface = (ajjj)paramQQAppInterface.getManager(51);
+    paramQQAppInterface = (ajxn)paramQQAppInterface.getManager(51);
     if (paramQQAppInterface != null)
     {
       paramQQAppInterface = paramQQAppInterface.e(paramString);
@@ -143,7 +143,7 @@ public class NamePlateCfgInfo
     do
     {
       return null;
-      localObject = bgoq.a(paramString);
+      localObject = bhxn.a(paramString);
     } while (localObject == null);
     paramString = new HashMap(((Map)localObject).size());
     Object localObject = ((Map)localObject).entrySet().iterator();
@@ -215,7 +215,7 @@ public class NamePlateCfgInfo
     if (QLog.isColorLevel()) {
       QLog.i("QVIP.NamePlateCfgInfo", 2, "NamePlate vipNamePlateClickReport namePlateId = " + paramLong);
     }
-    awqx.b(paramQQAppInterface, "dc00898", "", "", "qq_vip", "0X800A59C", (int)paramLong, 0, "", "", "", "");
+    axqw.b(paramQQAppInterface, "dc00898", "", "", "qq_vip", "0X800A59C", (int)paramLong, 0, "", "", "", "");
   }
   
   public static void vipNamePlateExposeReport(QQAppInterface paramQQAppInterface, long paramLong)
@@ -225,16 +225,16 @@ public class NamePlateCfgInfo
       if (QLog.isColorLevel()) {
         QLog.i("QVIP.NamePlateCfgInfo", 2, "NamePlate vipNamePlateExposeReport namePlateId = " + paramLong);
       }
-      awqx.b(paramQQAppInterface, "dc00898", "", "", "qq_vip", "0X800A59B", (int)paramLong, 0, "", "", "", "");
+      axqw.b(paramQQAppInterface, "dc00898", "", "", "qq_vip", "0X800A59B", (int)paramLong, 0, "", "", "", "");
     }
   }
   
   public static void vipNamePlateExposeReport(QQAppInterface paramQQAppInterface, String paramString)
   {
-    ajjj localajjj = (ajjj)paramQQAppInterface.getManager(51);
-    if (localajjj != null)
+    ajxn localajxn = (ajxn)paramQQAppInterface.getManager(51);
+    if (localajxn != null)
     {
-      paramString = localajjj.e(paramString);
+      paramString = localajxn.e(paramString);
       if (paramString == null) {}
     }
     for (long l = paramString.bigClubTemplateId;; l = 0L)

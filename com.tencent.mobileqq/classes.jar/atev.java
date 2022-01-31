@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
 
 public class atev
-  implements QQPermissionCallback
+  implements bfoq
 {
-  public atev(ScanOcrActivity paramScanOcrActivity) {}
+  public atev(NearbyGuideActivity paramNearbyGuideActivity, bfol parambfol) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    babr.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.grant();
+    this.jdField_a_of_type_Bfol.cancel();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.a);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.f();
   }
 }
 

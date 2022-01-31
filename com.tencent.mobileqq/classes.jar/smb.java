@@ -1,30 +1,45 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import UserGrowth.stSimpleGetFeedListRsp;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import java.util.ArrayList;
+import mqq.util.WeakReference;
 
-public class smb
-  extends SimpleJob<Void>
+class smb
+  implements sju
 {
-  public smb(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString)
-  {
-    super(paramString);
-  }
+  smb(slz paramslz, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(stSimpleGetFeedListRsp paramstSimpleGetFeedListRsp)
   {
-    paramJobContext = ((spz)sqg.a(10)).a();
-    if (!TextUtils.isEmpty(paramJobContext)) {
-      this.a.a(paramJobContext);
+    sne.d("WSRecommendFragmentPresenter", "onReadCacheCompleted");
+    if ((paramstSimpleGetFeedListRsp != null) && (paramstSimpleGetFeedListRsp.feeds != null) && (paramstSimpleGetFeedListRsp.feeds.size() > 0))
+    {
+      slz.a(this.jdField_a_of_type_Slz, true);
+      if (!slz.a(this.jdField_a_of_type_Slz)) {
+        break label48;
+      }
     }
-    return null;
+    label48:
+    WSRecommendFragment localWSRecommendFragment;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramstSimpleGetFeedListRsp = paramstSimpleGetFeedListRsp.feeds;
+        } while (slz.a(this.jdField_a_of_type_Slz) == null);
+        localWSRecommendFragment = (WSRecommendFragment)slz.a(this.jdField_a_of_type_Slz).get();
+      } while (localWSRecommendFragment == null);
+      localWSRecommendFragment.a(paramstSimpleGetFeedListRsp, this.jdField_a_of_type_Boolean, this.b);
+    } while ((this.jdField_a_of_type_Boolean) || (slz.a(this.jdField_a_of_type_Slz)));
+    sne.d("WSRecommendFragmentPresenter", "showTopLoading");
+    localWSRecommendFragment.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     smb
  * JD-Core Version:    0.7.0.1
  */

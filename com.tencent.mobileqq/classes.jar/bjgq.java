@@ -1,41 +1,29 @@
+import android.graphics.RectF;
+
 public class bjgq
+  extends bjgf
 {
-  public int a;
-  public long a;
-  public awkz a;
-  public String a;
-  public boolean a;
-  public long b;
-  public awkz b;
-  public String b;
-  public boolean b;
-  public long c;
+  private float a;
+  private float b;
   
-  public bjgq()
+  public bjgq(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
+    this.a = paramFloat1;
+    this.b = paramFloat2;
   }
   
-  public void a(bjgq parambjgq)
+  void a(int paramInt, bjgg parambjgg)
   {
-    if (parambjgq == null) {
-      throw new NullPointerException();
-    }
-    this.jdField_a_of_type_JavaLangString = parambjgq.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = parambjgq.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_Awkz = parambjgq.jdField_a_of_type_Awkz;
-    this.jdField_a_of_type_Boolean = parambjgq.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Int = parambjgq.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Boolean = parambjgq.jdField_b_of_type_Boolean;
-    this.jdField_a_of_type_Long = parambjgq.jdField_a_of_type_Long;
-    this.jdField_b_of_type_Long = parambjgq.jdField_b_of_type_Long;
-    this.c = parambjgq.c;
-  }
-  
-  public String toString()
-  {
-    return "AudioDecodeConfig=[audioFilePath:" + this.jdField_a_of_type_JavaLangString + " repeat:" + this.jdField_a_of_type_Boolean + " speedType:" + this.jdField_a_of_type_Int + " mMuteAudio:" + this.jdField_b_of_type_Boolean + " startTimeMs:" + this.jdField_a_of_type_Long + " endTimeMs:" + this.jdField_b_of_type_Long + " videoDuration:" + this.c + "]";
+    float f3 = parambjgg.a.right;
+    float f4 = parambjgg.a.left;
+    float f1 = parambjgg.a.bottom;
+    float f2 = parambjgg.a.top;
+    f3 = Math.abs(f3 - f4 - this.a) / 2.0F;
+    f1 = Math.abs(f1 - f2 - this.b) / 2.0F;
+    RectF localRectF = parambjgg.a;
+    localRectF.left += f3;
+    parambjgg = parambjgg.a;
+    parambjgg.right = (f3 + parambjgg.right);
   }
 }
 

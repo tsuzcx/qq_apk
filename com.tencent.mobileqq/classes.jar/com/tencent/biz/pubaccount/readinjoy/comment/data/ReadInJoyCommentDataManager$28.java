@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.comment.data;
 
-import nxd;
-import ohb;
+import oio;
+import osm;
 
 public class ReadInJoyCommentDataManager$28
   implements Runnable
 {
-  public ReadInJoyCommentDataManager$28(nxd paramnxd, boolean paramBoolean, String paramString1, String paramString2) {}
+  public ReadInJoyCommentDataManager$28(oio paramoio, boolean paramBoolean, String paramString1, String paramString2) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean) {}
     for (int i = 0;; i = -1)
     {
-      ohb.a().a(i, nxd.a(this.this$0), this.jdField_a_of_type_JavaLangString, this.b);
+      osm.a().a(i, oio.a(this.this$0), this.jdField_a_of_type_JavaLangString, this.b);
       return;
     }
   }

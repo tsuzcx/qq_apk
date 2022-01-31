@@ -1,92 +1,49 @@
-import android.app.Activity;
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class mqf
-  extends WebViewPlugin
+class mqf
+  extends ClickableSpan
 {
-  protected Activity a;
+  mqf(mqa parammqa, boolean paramBoolean, String paramString1, String paramString2) {}
   
-  public mqf()
+  public void onClick(View paramView)
   {
-    this.mPluginNameSpace = "eqq";
-  }
-  
-  private void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
+    QLog.w(this.jdField_a_of_type_Mqa.i, 1, "closeUI showNoNameDialog, realName[" + this.jdField_a_of_type_Boolean + "]");
+    this.jdField_a_of_type_Mqa.a(this.jdField_a_of_type_JavaLangString);
+    paramView = this.jdField_a_of_type_Mqa.a();
+    if (paramView == null) {
       return;
     }
-    try
+    paramView.finish();
+    if (this.jdField_a_of_type_Boolean)
     {
-      Object localObject = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject).getString("uin");
-      localObject = ((JSONObject)localObject).getString("name");
-      Intent localIntent = aciy.a(new Intent(this.a, ChatActivity.class), null);
-      localIntent.putExtra("uin", paramString);
-      localIntent.putExtra("uintype", 1024);
-      localIntent.putExtra("uinname", (String)localObject);
-      localIntent.putExtra("entrance", 0);
-      localIntent.putExtra("aio_msg_source", 999);
-      this.a.startActivity(localIntent);
+      mpj.a(this.jdField_a_of_type_Mqa.a, this.b);
       return;
     }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    paramView = actn.a(new Intent(BaseApplicationImpl.getApplication(), SplashActivity.class), new int[] { 2 });
+    paramView.putExtra("uin", this.jdField_a_of_type_Mqa.a.a().a().d);
+    paramView.putExtra("uintype", 0);
+    paramView.putExtra("uinname", this.jdField_a_of_type_Mqa.a.a().a().e);
+    paramView.putExtra("entrance", 8);
+    BaseApplicationImpl.getApplication().startActivity(paramView);
   }
   
-  protected void a(String paramString)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return;
-      try
-      {
-        paramString = new JSONObject(paramString).getString("uin");
-        mqb.a(this.a, null, paramString, false, -1, true, -1);
-        return;
-      }
-      catch (JSONException paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("EqqWebviewPlugin", 2, "showEqq json error!");
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (!"eqq".equals(paramString2)) {}
-    do
-    {
-      return false;
-      if ("showEQQ".equals(paramString3))
-      {
-        if (paramVarArgs.length > 0) {
-          a(paramVarArgs[0]);
-        }
-        return true;
-      }
-    } while ((!"showEQQAio".equals(paramString3)) || (paramVarArgs.length != 1));
-    b(paramVarArgs[0]);
-    return false;
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    this.a = this.mRuntime.a();
+    super.updateDrawState(paramTextPaint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mqf
  * JD-Core Version:    0.7.0.1
  */

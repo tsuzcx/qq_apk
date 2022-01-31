@@ -1,33 +1,29 @@
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class aynd
+class aynd
+  extends ajxl
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  aynd(ayna paramayna) {}
   
-  public aynd() {}
-  
-  public aynd(JSONObject paramJSONObject)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    this.a = paramJSONObject.optString("serverip", "");
-    this.b = paramJSONObject.optString("serverport", "");
-    this.c = paramJSONObject.optString("checkkey", "");
-    this.d = paramJSONObject.optString("exists", "");
-    this.e = paramJSONObject.optString("uin", "");
-    this.f = paramJSONObject.optString("vid", "");
-    this.g = paramJSONObject.optString("fid", "");
-    this.h = paramJSONObject.optString("complete", "");
+    QLog.i("TogetherControlManager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
+    if (paramBoolean)
+    {
+      Iterator localIterator = ayna.a(this.a).entrySet().iterator();
+      while (localIterator.hasNext()) {
+        ((aynl)((Map.Entry)localIterator.next()).getValue()).a(paramObject);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aynd
  * JD-Core Version:    0.7.0.1
  */

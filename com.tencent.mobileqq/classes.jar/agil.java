@@ -1,19 +1,15 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
 
-class agil
+public class agil
   implements View.OnClickListener
 {
-  agil(agik paramagik) {}
+  public agil(BaseActivityView paramBaseActivityView) {}
   
   public void onClick(View paramView)
   {
-    AIOLongShotHelper.a((Activity)this.a.a.get(), (String)agik.a(this.a).a.get(0), new agim(this));
-    AIOLongShotHelper.a("0X8009DEE");
+    this.a.f();
   }
 }
 

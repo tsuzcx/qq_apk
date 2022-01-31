@@ -1,38 +1,174 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailFetchMgr.1;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.UUID;
 
-final class azuf
-  implements DownloadParams.DecodeHandler
+public class azuf
+  implements azui
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  private LinkedList<String> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private Map<String, azug> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private LinkedList<azug> b = new LinkedList();
+  
+  private String a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("URLDrawableDecodeHandler", 4, "ROUND_FACE_DECODER");
-    }
-    if (paramBitmap == null) {
-      return null;
-    }
-    paramDownloadParams = paramDownloadParams.tag;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 2))
+    return " WS:" + this.jdField_a_of_type_JavaUtilMap.size() + " QS:" + this.jdField_a_of_type_JavaUtilLinkedList.size() + " RS:" + this.b.size();
+  }
+  
+  public static String a(UUID paramUUID, int paramInt)
+  {
+    return paramUUID.toString() + "_" + paramInt;
+  }
+  
+  private void d()
+  {
+    if (this.b.size() >= 10) {}
+    label79:
+    for (;;)
     {
-      paramDownloadParams = (int[])paramDownloadParams;
-      float f2 = babp.a();
-      float f1 = f2;
-      if (f2 < 0.01F) {
-        f1 = 1.0F;
+      return;
+      for (;;)
+      {
+        if (this.jdField_a_of_type_JavaUtilLinkedList.size() <= 0) {
+          break label79;
+        }
+        Object localObject = (String)this.jdField_a_of_type_JavaUtilLinkedList.remove(0);
+        localObject = (azug)this.jdField_a_of_type_JavaUtilMap.remove(localObject);
+        if (localObject != null)
+        {
+          this.b.add(localObject);
+          if (((azug)localObject).a()) {
+            break;
+          }
+          this.b.remove(localObject);
+        }
       }
-      paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
-      paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
-      return bacm.c(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
     }
-    return bacm.c(paramBitmap, 50, 50);
+  }
+  
+  public int a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
+  {
+    if ((paramLong == 0L) || (paramItem == null)) {
+      return -1;
+    }
+    if (paramItem.Id == null) {
+      return -2;
+    }
+    if (paramInt == 0) {
+      return -5;
+    }
+    String str = a(paramItem.Id, paramInt);
+    if (a(str))
+    {
+      azsr.c("TroopFileThumbnailFetchMgr", azsr.a, "[" + str + "] fetchFileThumbnail worker exsited. ");
+      return -4;
+    }
+    azug localazug = azug.a(paramLong, paramItem, paramInt, this);
+    if (localazug == null) {
+      return -3;
+    }
+    azul.a(paramItem, paramInt);
+    this.jdField_a_of_type_JavaUtilMap.put(str, localazug);
+    this.jdField_a_of_type_JavaUtilLinkedList.add(str);
+    azsr.c("TroopFileThumbnailFetchMgr", azsr.a, "[" + str + "] fetchFileThumbnail fileName. " + paramItem.FileName + a());
+    d();
+    return 0;
+  }
+  
+  public int a(UUID paramUUID, int paramInt)
+  {
+    if (paramUUID == null) {
+      return -2;
+    }
+    String str = a(paramUUID, paramInt);
+    Object localObject = this.b.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      azug localazug = (azug)((Iterator)localObject).next();
+      if (str.equalsIgnoreCase(localazug.a()))
+      {
+        localazug.a();
+        ((Iterator)localObject).remove();
+      }
+    }
+    for (paramInt = 1;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (paramInt == 0)
+      {
+        localObject = (azug)this.jdField_a_of_type_JavaUtilMap.remove(paramUUID);
+        if (localObject == null) {
+          break label168;
+        }
+        ((azug)localObject).a();
+        paramInt |= 0x1;
+      }
+      label168:
+      for (;;)
+      {
+        boolean bool = this.jdField_a_of_type_JavaUtilLinkedList.remove(paramUUID) | paramInt;
+        if (bool) {
+          azsr.c("TroopFileThumbnailFetchMgr", azsr.a, "[" + str + "] stopFetch. " + a());
+        }
+        d();
+        return 0;
+      }
+    }
+  }
+  
+  public void a() {}
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt, azug paramazug)
+  {
+    azsi.a(new TroopFileThumbnailFetchMgr.1(this, paramString, paramBoolean, paramInt, paramazug), false);
+  }
+  
+  protected boolean a(String paramString)
+  {
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext()) {
+      if (paramString.equalsIgnoreCase(((azug)localIterator.next()).a())) {
+        return true;
+      }
+    }
+    return this.jdField_a_of_type_JavaUtilMap.containsKey(paramString);
+  }
+  
+  public void b()
+  {
+    c();
+  }
+  
+  public void b(String paramString, boolean paramBoolean, int paramInt, azug paramazug)
+  {
+    this.b.remove(paramazug);
+    azsr.c("TroopFileThumbnailFetchMgr", azsr.a, "[" + paramString + "] onWorkDoneInter. bSuc:" + paramBoolean + " errCode:" + paramInt + a());
+    d();
+  }
+  
+  protected void c()
+  {
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext()) {
+      ((azug)localIterator.next()).a();
+    }
+    this.b.clear();
+    localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator.hasNext()) {
+      ((azug)localIterator.next()).a();
+    }
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.jdField_a_of_type_JavaUtilLinkedList.clear();
+    azsr.c("TroopFileThumbnailFetchMgr", azsr.a, "stopAllInter");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azuf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import aaru;
-import ajia;
+import abbm;
+import ajwe;
 import com.tencent.widget.ListView;
 
 public class FontSettingActivity$AioListAdapter$1
   implements Runnable
 {
-  public FontSettingActivity$AioListAdapter$1(aaru paramaaru) {}
+  public FontSettingActivity$AioListAdapter$1(abbm paramabbm) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aaru.a.jdField_a_of_type_ComTencentWidgetListView.setAdapter(null);
-    this.jdField_a_of_type_Aaru.a.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Aaru.a.jdField_a_of_type_Aaru);
-    ajia.a(this.jdField_a_of_type_Aaru.a);
+    this.jdField_a_of_type_Abbm.a.jdField_a_of_type_ComTencentWidgetListView.setAdapter(null);
+    this.jdField_a_of_type_Abbm.a.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Abbm.a.jdField_a_of_type_Abbm);
+    ajwe.a(this.jdField_a_of_type_Abbm.a);
   }
 }
 

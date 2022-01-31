@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class ApolloObtainedActionData
-  extends atmo
+  extends aukm
 {
   public static final int APOLLO_OBTAINED_TYPE_ACTION = 0;
   public static final int APOLLO_OBTAINED_WAY_BUY = 4;
@@ -12,7 +12,7 @@ public class ApolloObtainedActionData
   public static final int APOLLO_OBTAINED_WAY_SLAVE = 7;
   public long beginTs;
   public long endts;
-  @atoc
+  @auma
   public int id;
   public int type;
   public int way;

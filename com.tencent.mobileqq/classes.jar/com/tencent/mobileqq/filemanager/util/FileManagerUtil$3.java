@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import apbo;
-import bace;
+import apti;
+import bbdj;
 import java.io.File;
 
 public final class FileManagerUtil$3
@@ -9,17 +9,17 @@ public final class FileManagerUtil$3
 {
   public void run()
   {
-    Object localObject2 = apbo.a().b();
-    Object localObject1 = apbo.a().c();
+    Object localObject2 = apti.a().b();
+    Object localObject1 = apti.a().c();
     File localFile = new File((String)localObject2);
-    if (!bace.a((String)localObject2)) {
+    if (!bbdj.a((String)localObject2)) {
       localFile.mkdirs();
     }
     localObject2 = new File((String)localObject1);
-    if (!bace.a((String)localObject1)) {
+    if (!bbdj.a((String)localObject1)) {
       ((File)localObject2).mkdirs();
     }
-    localObject1 = new File(apbo.a().b() + ".nomedia");
+    localObject1 = new File(apti.a().b() + ".nomedia");
     if (((File)localObject1).exists()) {
       ((File)localObject1).delete();
     }

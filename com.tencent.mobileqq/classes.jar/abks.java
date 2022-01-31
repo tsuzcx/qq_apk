@@ -1,24 +1,20 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.QQLSActivity.17.1;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class abks
-  implements Animation.AnimationListener
+  extends ajxl
 {
-  public abks(QQLSActivity paramQQLSActivity) {}
+  public abks(Leba paramLeba) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (QQLSActivity.a(this.a) != null) {
-      QQLSActivity.a(this.a).post(new QQLSActivity.17.1(this));
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    while ((axch)this.a.a.getManager(10) == null) {
+      return;
     }
+    Leba.c(this.a);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

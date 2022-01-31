@@ -1,17 +1,17 @@
 package cooperation.qzone.webviewplugin;
 
-import bgbz;
-import bgcb;
-import bgis;
+import bhkl;
+import bhkn;
+import bhrl;
 
 public class QzoneDynamicAlbumPlugin$4
   implements Runnable
 {
-  public QzoneDynamicAlbumPlugin$4(bgis parambgis) {}
+  public QzoneDynamicAlbumPlugin$4(bhrl parambhrl) {}
   
   public void run()
   {
-    bgbz.a().a().k();
+    bhkl.a().a().k();
   }
 }
 

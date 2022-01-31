@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.transfile;
 
-import axqw;
-import bbmy;
+import ayrd;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class GroupPicUploadProcessor$1
   implements Runnable
 {
-  public GroupPicUploadProcessor$1(axqw paramaxqw) {}
+  public GroupPicUploadProcessor$1(ayrd paramayrd) {}
   
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.sApplication, 2131624391, 1).a();
+    bcpw.a(BaseApplicationImpl.sApplication, 2131689939, 1).a();
   }
 }
 

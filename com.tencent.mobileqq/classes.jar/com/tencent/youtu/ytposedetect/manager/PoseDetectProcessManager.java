@@ -41,10 +41,10 @@ public class PoseDetectProcessManager
   
   public void initAll() {}
   
-  public int poseDetect(float[] paramArrayOfFloat, int paramInt, byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, float paramFloat3)
+  public int poseDetect(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt, byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    int i = YTCameraSetting.getRotateTag(this.mCameraRotate);
-    return YTPoseDetectJNIInterface.poseDetect(paramArrayOfFloat, paramInt, paramArrayOfByte, this.mDesiredPreviewWidth, this.mDesiredPreviewHeight, i, paramFloat1, paramFloat2, paramFloat3);
+    int i = YTCameraSetting.getRotateTag(this.mCameraRotate, 1);
+    return YTPoseDetectJNIInterface.poseDetect(paramArrayOfFloat1, paramArrayOfFloat2, paramInt, paramArrayOfByte, this.mDesiredPreviewWidth, this.mDesiredPreviewHeight, i, paramFloat1, paramFloat2, paramFloat3);
   }
   
   public void restoreCamera()
@@ -85,6 +85,7 @@ public class PoseDetectProcessManager
     {
       this.mIsDetecting = false;
       restoreCamera();
+      YTPoseDetectJNIInterface.resetDetect();
     }
   }
 }

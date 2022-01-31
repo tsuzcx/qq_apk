@@ -1,88 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import java.util.Random;
 
 public class bjiw
 {
-  public static long a;
-  public static boolean a;
+  private static Random a = new Random();
   
-  public static bjjc a(int paramInt1, int paramInt2)
+  public static bjix a()
   {
-    bjjc localbjjc = new bjjc();
-    localbjjc.jdField_a_of_type_Int = paramInt1;
-    localbjjc.jdField_b_of_type_Int = paramInt2;
-    return localbjjc;
-  }
-  
-  public static bjjc a(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo, int paramInt)
-  {
-    if (paramMessageForShortVideo.videoFileStatus == 5002)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoBusiManager", 2, "createShortVideoReqByMsg expired");
-      }
-      return null;
-    }
-    paramQQAppInterface = a(2, paramMessageForShortVideo.busiType);
-    paramQQAppInterface.a(paramMessageForShortVideo);
-    return paramQQAppInterface;
-  }
-  
-  static BaseShortVideoOprerator a(int paramInt, QQAppInterface paramQQAppInterface)
-  {
-    switch (paramInt)
-    {
-    case 1: 
-    case 4: 
-    default: 
-      return null;
-    }
-    return new bjhy(paramQQAppInterface);
-  }
-  
-  public static void a(bjjc parambjjc, QQAppInterface paramQQAppInterface)
-  {
-    if (parambjjc == null)
-    {
-      atpg.b("ShortVideoBusiManager", "launch", "error,req == null");
-      return;
-    }
-    BaseShortVideoOprerator localBaseShortVideoOprerator = a(parambjjc.jdField_b_of_type_Int, paramQQAppInterface);
-    if (localBaseShortVideoOprerator == null)
-    {
-      atpg.b("ShortVideoBusiManager", "launch", "error,busiInterface == null,req.busiType:" + parambjjc.jdField_b_of_type_Int);
-      return;
-    }
-    localBaseShortVideoOprerator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    localBaseShortVideoOprerator.jdField_a_of_type_Bjjc = parambjjc;
-    localBaseShortVideoOprerator.jdField_a_of_type_JavaLangString = parambjjc.jdField_a_of_type_JavaLangString;
-    localBaseShortVideoOprerator.jdField_b_of_type_JavaLangString = parambjjc.jdField_b_of_type_JavaLangString;
-    localBaseShortVideoOprerator.a(parambjjc.jdField_a_of_type_Bjjk);
-    atpg.a("ShortVideoBusiManager", "launch", "cmd:" + ShortVideoUtils.c(parambjjc.jdField_a_of_type_Int) + ", reqBusiType" + parambjjc.jdField_b_of_type_Int + ", uuid:" + parambjjc.jdField_a_of_type_JavaLangString);
-    switch (parambjjc.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 0: 
-      localBaseShortVideoOprerator.a(parambjjc.jdField_a_of_type_Bjjg);
-      return;
-    case 2: 
-      localBaseShortVideoOprerator.a(parambjjc.jdField_a_of_type_Bjix);
-      return;
-    case 1: 
-      localBaseShortVideoOprerator.a(parambjjc.jdField_a_of_type_Bjjg);
-      return;
-    case 3: 
-      localBaseShortVideoOprerator.a(parambjjc.jdField_a_of_type_Bjiy);
-      return;
-    case 4: 
-      localBaseShortVideoOprerator.a(parambjjc.jdField_a_of_type_Bjiy);
-      return;
-    }
-    localBaseShortVideoOprerator.a(parambjjc.jdField_a_of_type_JavaUtilArrayList);
+    int i = blbz.a / 4;
+    int j = a.nextInt(blbz.a / 2);
+    int k = blbz.a / 4;
+    int m = a.nextInt(blbz.a / 2);
+    return new bjix(i - j + blbz.a / 2, k - m + (blbz.b - blbz.a(249.0F)) / 2);
   }
 }
 

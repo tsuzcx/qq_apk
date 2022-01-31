@@ -1,17 +1,21 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import acib;
-import acic;
+import acsq;
+import acsr;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import baip;
-import bbac;
+import anql;
+import anqp;
+import anvl;
+import bbjw;
+import bcdb;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingInnerFragment;
@@ -26,6 +30,7 @@ import org.json.JSONObject;
 public class QWalletMixJsPlugin
   extends VasWebviewJsPlugin
 {
+  private static final String METHOD_ACTION_DELETE_NOTIFY = "delete";
   private static final String METHOD_ACTION_NPTITY_SUBSCRIBE = "subscribe";
   private static final String METHOD_NAME_QQ_NOTIFY = "qqNotify";
   public static final String OBJECT_NAME_QWALLET_MIX = "qw_mix";
@@ -37,11 +42,23 @@ public class QWalletMixJsPlugin
   private Context mContext;
   private FakeUrl mFakeUrl;
   private Handler mMainHandler = new Handler(Looper.getMainLooper());
-  private acic mReminderDataManager;
+  private acsr mReminderDataManager;
   
   public QWalletMixJsPlugin()
   {
     this.mPluginNameSpace = "qw_mix";
+  }
+  
+  private void deleteNotify(JSONObject paramJSONObject)
+  {
+    String str = paramJSONObject.optString("msgid");
+    paramJSONObject = paramJSONObject.optString("busiid");
+    if ((bbjw.a(str)) || (bbjw.a(str)))
+    {
+      handJsError("4", "params error");
+      return;
+    }
+    acsq.a(str, new QWalletMixJsPlugin.1(this, new Handler(Looper.getMainLooper()), paramJSONObject, str));
   }
   
   private void doCallback(String paramString)
@@ -75,6 +92,21 @@ public class QWalletMixJsPlugin
     }
   }
   
+  private void handJsResult(int paramInt)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("retcode", paramInt);
+      doCallback(localJSONObject.toString());
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
   private boolean handleQQNotifyJsAPi(String paramString)
   {
     try
@@ -84,14 +116,21 @@ public class QWalletMixJsPlugin
       localJSONObject = localJSONObject.optJSONObject("params");
       if ("subscribe".equals(paramString)) {
         subscribeNotify(localJSONObject);
+      } else if ("delete".equals(paramString)) {
+        deleteNotify(localJSONObject);
       }
-      label37:
-      return true;
     }
-    catch (Exception paramString)
-    {
-      break label37;
-    }
+    catch (Exception paramString) {}
+    return true;
+  }
+  
+  private void notifydelMsgUI(String paramString1, String paramString2)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("busiid", paramString1);
+    localBundle.putString("msgid", paramString2);
+    paramString1 = anqp.a("ipc_cmd_is_qq_notify_all_notify", this.mCallback, this.mOnRemoteResp.key, localBundle);
+    anvl.a().a(paramString1);
   }
   
   private void parseCallback(String paramString)
@@ -114,7 +153,7 @@ public class QWalletMixJsPlugin
   {
     String str1 = paramJSONObject.optString("msgid");
     paramJSONObject = paramJSONObject.optString("busiid");
-    if ((baip.a(str1)) || (baip.a(str1))) {
+    if ((bbjw.a(str1)) || (bbjw.a(str1))) {
       handJsError("4", "params error");
     }
     while (this.mRuntime == null) {
@@ -132,10 +171,10 @@ public class QWalletMixJsPlugin
       paramString1 = TAG;
       localStringBuilder = new StringBuilder().append("handleJsRequeste pkgName :").append(paramString2).append(" method: ").append(paramString3);
       if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-        break label133;
+        break label136;
       }
     }
-    label133:
+    label136:
     for (paramJsBridgeListener = " arg: " + paramVarArgs[0];; paramJsBridgeListener = "")
     {
       QLog.i(paramString1, 2, paramJsBridgeListener);
@@ -181,8 +220,8 @@ public class QWalletMixJsPlugin
         if (QLog.isColorLevel()) {
           QLog.d(TAG, 2, "is QQAppInterface: " + (this.app instanceof QQAppInterface));
         }
-        this.mReminderDataManager = new acic(this.app);
-        acib.a(this.app);
+        this.mReminderDataManager = new acsr(this.app);
+        acsq.a(this.app);
         this.mContext = localActivity.getApplicationContext();
       }
     }
@@ -199,7 +238,7 @@ public class QWalletMixJsPlugin
     if (this.mMainHandler != null) {
       this.mMainHandler.removeCallbacksAndMessages(null);
     }
-    acib.a();
+    acsq.a();
     super.onDestroy();
   }
   

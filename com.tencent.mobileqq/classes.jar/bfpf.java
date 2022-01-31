@@ -1,22 +1,24 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.database.DataSetObserver;
+import com.tencent.widget.AdapterViewPagerAdapter;
 
-final class bfpf
-  implements View.OnClickListener
+public class bfpf
+  extends DataSetObserver
 {
-  bfpf(Dialog paramDialog) {}
+  public bfpf(AdapterViewPagerAdapter paramAdapterViewPagerAdapter) {}
   
-  public void onClick(View paramView)
+  public void onChanged()
   {
-    if (this.a != null) {
-      this.a.dismiss();
-    }
+    this.a.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    super.onInvalidated();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfpf
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import bbpx;
+import bcsw;
 
 public class PressEffectRelativeLayout
   extends RelativeLayout
@@ -25,10 +25,10 @@ public class PressEffectRelativeLayout
     for (;;)
     {
       return super.onTouchEvent(paramMotionEvent);
-      bbpx.a(this);
+      bcsw.a(this);
       super.onTouchEvent(paramMotionEvent);
       return true;
-      bbpx.b(this);
+      bcsw.b(this);
     }
   }
 }

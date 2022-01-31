@@ -1,86 +1,82 @@
-import android.content.res.Resources;
-import android.support.v4.util.MQLruCache;
-import android.view.ViewGroup.LayoutParams;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import mqq.util.WeakReference;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import java.util.ArrayList;
 
 public class vvr
+  extends BaseAdapter
 {
-  public static URLDrawable.URLDrawableOptions a(URLImageView paramURLImageView)
+  int jdField_a_of_type_Int = -1;
+  Context jdField_a_of_type_AndroidContentContext;
+  ArrayList<vvw> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  
+  public vvr(HorizontalSelectColorLayout paramHorizontalSelectColorLayout, Context paramContext)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841114);
-    if (paramURLImageView.getLayoutParams() != null)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    notifyDataSetChanged();
+  }
+  
+  public void a(ArrayList<vvw> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    vvw localvvw = (vvw)getItem(paramInt);
+    View localView;
+    if (paramView == null)
     {
-      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561227, paramViewGroup, false);
+      paramView = new vvs(this);
+      paramView.a = ((ImageView)localView.findViewById(2131368320));
+      paramView.b = ((ImageView)localView.findViewById(2131368375));
+      localView.setTag(paramView);
+      paramViewGroup = paramView;
     }
-    return localURLDrawableOptions;
-  }
-  
-  public static void a()
-  {
-    if (BaseApplicationImpl.sProcessId == 1)
+    for (;;)
     {
-      BaseApplicationImpl.sImageCache.evict(0);
-      return;
-    }
-    BaseApplicationImpl.sImageCache.evictAll();
-  }
-  
-  public static void a(String paramString, URLImageView paramURLImageView)
-  {
-    a(paramString, paramURLImageView, null, false);
-  }
-  
-  public static void a(String paramString, URLImageView paramURLImageView, URLDrawable.URLDrawableOptions paramURLDrawableOptions, boolean paramBoolean)
-  {
-    WeakReference localWeakReference = new WeakReference(paramURLImageView);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = paramURLDrawableOptions;
-    if (paramURLDrawableOptions == null) {}
-    try
-    {
-      localURLDrawableOptions = b(paramURLImageView);
-      if (paramBoolean) {}
-      for (paramString = URLDrawable.getFileDrawable(paramString, localURLDrawableOptions); (paramString != null) && (localWeakReference.get() != null); paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions))
-      {
-        ((ImageView)localWeakReference.get()).setImageDrawable(paramString);
-        return;
+      paramViewGroup.a.setImageDrawable(localvvw.a);
+      if (paramInt != this.jdField_a_of_type_Int) {
+        break;
       }
-      return;
+      paramViewGroup.b.setVisibility(0);
+      return localView;
+      paramViewGroup = (vvs)paramView.getTag();
+      localView = paramView;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  @NotNull
-  private static URLDrawable.URLDrawableOptions b(URLImageView paramURLImageView)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130845521);
-    if (paramURLImageView.getLayoutParams() != null)
-    {
-      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
-    }
-    return localURLDrawableOptions;
-  }
-  
-  public static void b(String paramString, URLImageView paramURLImageView)
-  {
-    a(paramString, paramURLImageView, null, true);
+    paramViewGroup.b.setVisibility(8);
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vvr
  * JD-Core Version:    0.7.0.1
  */

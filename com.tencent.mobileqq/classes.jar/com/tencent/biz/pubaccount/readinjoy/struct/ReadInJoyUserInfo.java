@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import atmo;
-import atnz;
+import aukm;
+import aulx;
 
 public class ReadInJoyUserInfo
-  extends atmo
+  extends aukm
 {
-  @atnz
+  @aulx
   private static final String TAG = "ReadInJoyUserInfo";
   public int accountLevel;
   public int accountType;
@@ -15,7 +15,7 @@ public class ReadInJoyUserInfo
   public String faceUrl;
   public String largeIconUrl;
   public String nick;
-  @atnz
+  @aulx
   public boolean requestFlag;
   public String smallIconUrl;
   public int systemID;

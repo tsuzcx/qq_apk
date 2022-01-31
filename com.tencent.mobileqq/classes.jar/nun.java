@@ -1,16 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.widget.ListView;
+import java.util.List;
+import java.util.Map;
 
-public abstract interface nun
+public class nun
+  extends rny
 {
-  public abstract void a(ArticleInfo paramArticleInfo, int paramInt1, String paramString1, JSONObject paramJSONObject, String paramString2, JSONArray paramJSONArray, int paramInt2);
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private List<TabChannelCoverInfo> jdField_a_of_type_JavaUtilList;
+  protected osp a;
+  private rfl jdField_a_of_type_Rfl;
   
-  public abstract void a(ArticleInfo paramArticleInfo, String paramString1, int paramInt, String paramString2);
+  protected void a() {}
+  
+  public void a(ListView paramListView)
+  {
+    paramListView.addHeaderView(this.jdField_a_of_type_AndroidViewViewGroup);
+  }
+  
+  public void a(Map<Integer, qar> paramMap)
+  {
+    if (this.jdField_a_of_type_Rfl != null) {
+      this.jdField_a_of_type_Rfl.a(paramMap);
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    osm.a().b(this.jdField_a_of_type_Osp);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nun
  * JD-Core Version:    0.7.0.1
  */

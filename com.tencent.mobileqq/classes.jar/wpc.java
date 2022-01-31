@@ -1,149 +1,299 @@
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.Display;
-import android.view.LayoutInflater;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.component.base.ComponentPageView;
+import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
+import javax.annotation.Nullable;
 
-public class wpc
-  extends wpe
+public abstract class wpc<E>
+  extends wpa<E>
+  implements wpj
 {
+  private static final String jdField_a_of_type_JavaLangString = wpc.class.getSimpleName();
   private int jdField_a_of_type_Int;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private List<wpb> jdField_a_of_type_JavaUtilList = new ArrayList();
-  protected woy a;
-  private int b;
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private RecyclerView.AdapterDataObserver jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver = new wpd(this);
+  private wpe jdField_a_of_type_Wpe;
+  private wpf jdField_a_of_type_Wpf;
+  private final wpn jdField_a_of_type_Wpn = new wpn();
+  protected boolean a;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString = String.valueOf(hashCode());
+  protected boolean b;
+  private boolean c;
   
-  public wpc(Context paramContext)
+  public wpc(Bundle paramBundle)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    a(2131493478);
-    this.b = 4;
-    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    setHasStableIds(true);
   }
   
-  private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private void c(wpn paramwpn)
   {
-    int i = this.jdField_a_of_type_AndroidWidgetImageView.getMeasuredWidth();
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    if (paramInt3 > paramInt1)
+    if (this.jdField_a_of_type_Wpe != null)
     {
-      if (paramInt3 > paramInt2 * 2)
-      {
-        localLayoutParams.leftMargin = (paramInt2 - i / 2);
-        return;
-      }
-      if (paramInt3 > (paramInt4 - paramInt2) * 2)
-      {
-        localLayoutParams.leftMargin = (paramInt2 + paramInt3 - paramInt4 - i / 2);
-        return;
-      }
-      localLayoutParams.addRule(14);
+      this.jdField_a_of_type_Wpe.a(paramwpn, this);
       return;
     }
-    localLayoutParams.addRule(14);
+    a(paramwpn);
   }
   
-  private void a(int paramInt1, int paramInt2, boolean paramBoolean)
+  public abstract int a();
+  
+  public int a(int paramInt)
   {
-    switch (this.b)
+    return 1;
+  }
+  
+  protected Activity a()
+  {
+    if ((a() != null) && (a().a() != null)) {
+      return a().a().getActivity();
+    }
+    return null;
+  }
+  
+  protected Context a()
+  {
+    return a();
+  }
+  
+  public Bundle a()
+  {
+    return this.jdField_a_of_type_AndroidOsBundle;
+  }
+  
+  public Fragment a()
+  {
+    if (a() != null) {
+      return a().a();
+    }
+    return null;
+  }
+  
+  protected FrameLayout a(@Nullable View paramView)
+  {
+    FrameLayout localFrameLayout = new FrameLayout(a());
+    localFrameLayout.setLayoutParams(new FrameLayout.LayoutParams(-1, -2));
+    if (paramView != null) {
+      localFrameLayout.addView(paramView);
+    }
+    return localFrameLayout;
+  }
+  
+  public ExtraTypeInfo a()
+  {
+    if (a() != null) {
+      return a().a();
+    }
+    return null;
+  }
+  
+  public ComponentPageView a()
+  {
+    if (a() != null) {
+      return a().a();
+    }
+    return null;
+  }
+  
+  public NestScrollRecyclerView a()
+  {
+    if (a() != null) {
+      return a().a();
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public wpf a()
+  {
+    return this.jdField_a_of_type_Wpf;
+  }
+  
+  public wpi a(String paramString)
+  {
+    if (this.jdField_a_of_type_Wpf != null) {
+      return this.jdField_a_of_type_Wpf.a(paramString);
+    }
+    return null;
+  }
+  
+  public wpn a()
+  {
+    return this.jdField_a_of_type_Wpn;
+  }
+  
+  protected void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState) {}
+  
+  public abstract void a(Bundle paramBundle);
+  
+  public void a(String paramString, wpi paramwpi) {}
+  
+  protected void a(wpc paramwpc, int paramInt) {}
+  
+  public void a(wpe paramwpe)
+  {
+    this.jdField_a_of_type_Wpe = paramwpe;
+  }
+  
+  public void a(wpf paramwpf)
+  {
+    this.jdField_a_of_type_Wpf = paramwpf;
+  }
+  
+  public abstract void a(wpn paramwpn);
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b(int paramInt)
+  {
+    return paramInt - this.jdField_a_of_type_Int;
+  }
+  
+  public void b(View paramView)
+  {
+    if (a() != null) {
+      a().addView(paramView);
+    }
+  }
+  
+  public void b(String paramString, wpi paramwpi)
+  {
+    if (this.jdField_a_of_type_Wpf != null) {
+      this.jdField_a_of_type_Wpf.a(paramString, paramwpi);
+    }
+  }
+  
+  public void b(wpn paramwpn)
+  {
+    if (this.jdField_a_of_type_Wpe != null)
     {
-    default: 
+      this.jdField_a_of_type_Wpe.a(paramwpn, this);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setAnimationStyle(2131689502);
+    c(paramwpn);
   }
   
-  public void a(int paramInt)
+  public boolean b()
   {
-    this.jdField_a_of_type_AndroidViewView = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt, null));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131304235));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297258));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-    super.b(this.jdField_a_of_type_AndroidViewView);
+    return false;
   }
   
-  public void a(View paramView)
+  public int c()
   {
-    a();
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationOnScreen(arrayOfInt);
-    Rect localRect = new Rect(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramView.getWidth(), arrayOfInt[1] + paramView.getHeight());
-    this.jdField_a_of_type_AndroidViewView.measure(-2, -2);
-    int i = this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
-    int j = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
-    int k = this.jdField_a_of_type_AndroidViewWindowManager.getDefaultDisplay().getWidth();
-    int m = arrayOfInt[0];
-    int n = (paramView.getWidth() - i) / 2;
-    int i1 = localRect.top;
-    a(paramView.getWidth(), localRect.centerX(), i, k);
-    a(k, localRect.centerX(), true);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, m + n, i1 - j - 10);
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a(woy paramwoy)
+  public int c(int paramInt)
   {
-    this.jdField_a_of_type_Woy = paramwoy;
+    return this.jdField_a_of_type_Int + paramInt;
   }
   
-  public void a(wpb paramwpb)
+  public void c(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramwpb);
-    String str = paramwpb.a();
-    Drawable localDrawable = paramwpb.a();
-    if (this.jdField_a_of_type_Int != 0)
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int d(int paramInt)
+  {
+    return this.jdField_b_of_type_Int + paramInt;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    if ((a() != null) && (a() != null))
     {
-      localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      ((ImageView)localObject1).setBackgroundResource(2130839360);
-      localObject2 = new LinearLayout.LayoutParams(-1, -2, 1.0F);
-      ((LinearLayout.LayoutParams)localObject2).setMargins(aciy.a(15.0F, ((ImageView)localObject1).getResources()), 0, aciy.a(15.0F, ((ImageView)localObject1).getResources()), 0);
-      this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-    }
-    Object localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131493477, null);
-    Object localObject2 = (ImageView)((View)localObject1).findViewById(2131304240);
-    TextView localTextView = (TextView)((View)localObject1).findViewById(2131304253);
-    if (localDrawable != null)
-    {
-      ((ImageView)localObject2).setImageDrawable(localDrawable);
-      if (str == null) {
-        break label267;
+      a().a(4);
+      a().setRefreshing(false);
+      if (this.c) {
+        a().a(paramBoolean, this);
       }
-      if (mpv.a(str) <= 18) {
-        break label258;
-      }
-      localTextView.setText(mpv.a(str, 18, "..."));
     }
-    for (;;)
+  }
+  
+  protected void e(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+  }
+  
+  protected boolean e()
+  {
+    return false;
+  }
+  
+  public abstract int getItemCount();
+  
+  public void o()
+  {
+    this.jdField_a_of_type_Wpn.a(2);
+    this.jdField_a_of_type_Wpn.a(null);
+    if (this.jdField_a_of_type_Wpe != null)
     {
-      ((View)localObject1).setOnClickListener(new wpd(this, paramwpb.b(), paramwpb.a()));
-      ((View)localObject1).setFocusable(true);
-      ((View)localObject1).setClickable(true);
-      paramwpb = new LinearLayout.LayoutParams(-1, -2, 1.0F);
-      paramwpb.gravity = 17;
-      ((View)localObject1).setLayoutParams(paramwpb);
-      this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1);
-      this.jdField_a_of_type_Int += 1;
+      this.jdField_a_of_type_Wpe.a(this.jdField_a_of_type_Wpn, this);
       return;
-      ((ImageView)localObject2).setVisibility(8);
-      break;
-      label258:
-      localTextView.setText(str);
-      continue;
-      label267:
-      localTextView.setVisibility(8);
+    }
+    c(this.jdField_a_of_type_Wpn);
+  }
+  
+  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onAttachedToRecyclerView(paramRecyclerView);
+    registerAdapterDataObserver(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver);
+    this.jdField_b_of_type_Boolean = false;
+  }
+  
+  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onDetachedFromRecyclerView(paramRecyclerView);
+    this.jdField_b_of_type_Boolean = true;
+    unregisterAdapterDataObserver(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver);
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+  }
+  
+  public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)
+  {
+    super.onViewAttachedToWindow(paramViewHolder);
+    if (e()) {
+      p();
+    }
+  }
+  
+  protected void p()
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      a(a());
+      this.jdField_a_of_type_Wpn.a(1);
+      c(this.jdField_a_of_type_Wpn);
+      this.jdField_a_of_type_Boolean = true;
     }
   }
 }

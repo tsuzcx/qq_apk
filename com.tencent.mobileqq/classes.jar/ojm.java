@@ -1,43 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import java.util.ArrayList;
 
-public class ojm
-  implements qnh
+class ojm
+  extends ojq
 {
-  public ChannelCoverInfo a;
-  public String a;
-  private boolean a;
-  public String b;
-  
-  public ojm(ChannelCoverInfo paramChannelCoverInfo, String paramString1, String paramString2)
+  ojm(oio paramoio, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo = paramChannelCoverInfo;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    super(paramoio, null);
   }
   
-  public String a()
+  void a(ojt paramojt)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    if (this.jdField_a_of_type_Int == 1) {
+      paramojt.onCommentListLoad(1, false, new ArrayList(), false, 3, 3);
+    }
+    while (this.jdField_a_of_type_Int != 2) {
+      return;
+    }
+    paramojt.onCommentLoadMore(1, false, new ArrayList(), false, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ojm
  * JD-Core Version:    0.7.0.1
  */

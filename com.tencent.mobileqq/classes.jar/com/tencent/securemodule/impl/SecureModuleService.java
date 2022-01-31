@@ -3,6 +3,9 @@ package com.tencent.securemodule.impl;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import com.tencent.securemodule.ae;
+import com.tencent.securemodule.at;
+import com.tencent.securemodule.ax;
 import com.tencent.securemodule.service.ApkDownLoadListener;
 import com.tencent.securemodule.service.CloudScanListener;
 import com.tencent.securemodule.service.ISecureModuleService;
@@ -11,9 +14,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import sm.ae;
-import sm.at;
-import sm.az;
 
 public class SecureModuleService
   implements ISecureModuleService
@@ -102,7 +102,7 @@ public class SecureModuleService
       return -6;
     }
     at.a(this.mContext, paramProductInfo);
-    if (!az.a(this.mContext, "sm_mq")) {
+    if (!ax.a(this.mContext, "sm_mq")) {
       return -1;
     }
     return 0;

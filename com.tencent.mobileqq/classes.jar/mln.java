@@ -1,39 +1,103 @@
+import android.content.Context;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.mobileqq.widget.QQMapView;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.UiSettings;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.av.ui.VoiceChangeItemView1;
 
 public class mln
-  implements Animation.AnimationListener
+  extends BaseAdapter
 {
-  public mln(PoiMapActivity paramPoiMapActivity) {}
+  public static String a;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private VoiceChangeItemView1 jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1;
+  mls jdField_a_of_type_Mls;
+  private mlq[] jdField_a_of_type_ArrayOfMlq;
+  private int jdField_b_of_type_Int;
+  private VoiceChangeItemView1 jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1;
+  private int c;
+  private int d;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  static
   {
-    if (PoiMapActivity.g(this.a) != null) {
-      PoiMapActivity.h(this.a).getMap().getUiSettings().setLogoPositionWithMargin(0, 0, 0, 0, 0);
-    }
-    paramAnimation = (FrameLayout.LayoutParams)this.a.b.getLayoutParams();
-    paramAnimation.bottomMargin = (-this.a.p);
-    this.a.b.setLayoutParams(paramAnimation);
-    if ((this.a.e != null) && (this.a.e.getVisibility() != 0)) {
-      this.a.e.setVisibility(0);
-    }
-    PoiMapActivity.e(this.a).clearAnimation();
-    this.a.a = false;
+    jdField_a_of_type_JavaLangString = "VoiceChangeAdapter";
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    notifyDataSetChanged();
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(mlq[] paramArrayOfmlq)
+  {
+    this.jdField_a_of_type_ArrayOfMlq = paramArrayOfmlq;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_ArrayOfMlq == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_ArrayOfMlq.length;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (this.jdField_a_of_type_ArrayOfMlq == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_ArrayOfMlq[paramInt];
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    boolean bool = true;
+    lcl.a(jdField_a_of_type_JavaLangString, "getView|position=" + paramInt + ", view=" + paramView);
+    if (paramView == null) {
+      paramView = new VoiceChangeItemView1(this.jdField_a_of_type_AndroidContentContext);
+    }
+    for (;;)
+    {
+      paramViewGroup = (mlq)getItem(paramInt);
+      VoiceChangeItemView1 localVoiceChangeItemView1;
+      if (paramViewGroup != null)
+      {
+        if ((this.d == 0) && (paramInt == 1) && (this.jdField_b_of_type_Int == 0)) {
+          this.jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1 = this.jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1;
+        }
+        localVoiceChangeItemView1 = (VoiceChangeItemView1)paramView;
+        if (this.c != paramViewGroup.jdField_a_of_type_Int) {
+          break label168;
+        }
+      }
+      for (;;)
+      {
+        localVoiceChangeItemView1.a(paramInt, paramViewGroup, bool, this.jdField_a_of_type_Int, this.jdField_a_of_type_Mls);
+        if (this.c == paramViewGroup.jdField_a_of_type_Int)
+        {
+          if (paramInt != 0) {
+            this.jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1 = localVoiceChangeItemView1;
+          }
+          this.d = paramInt;
+        }
+        this.jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1 = ((VoiceChangeItemView1)paramView);
+        this.jdField_b_of_type_Int = paramInt;
+        return paramView;
+        label168:
+        bool = false;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mln
  * JD-Core Version:    0.7.0.1
  */

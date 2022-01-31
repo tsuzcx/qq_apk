@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ajls;
+import akac;
 import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,16 +8,16 @@ import java.util.HashMap;
 public class MayknowRecommendManager$4
   implements Runnable
 {
-  public MayknowRecommendManager$4(ajls paramajls, int paramInt1, int paramInt2, Bundle paramBundle) {}
+  public MayknowRecommendManager$4(akac paramakac, int paramInt1, int paramInt2, Bundle paramBundle) {}
   
   public void run()
   {
-    ajls.a(this.this$0, this.jdField_a_of_type_Int);
+    akac.a(this.this$0, this.jdField_a_of_type_Int);
     for (;;)
     {
-      synchronized (ajls.a(this.this$0))
+      synchronized (akac.b(this.this$0))
       {
-        ArrayList localArrayList = (ArrayList)ajls.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
+        ArrayList localArrayList = (ArrayList)akac.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
         if ((localArrayList == null) || (localArrayList.isEmpty()))
         {
           i = 1;
@@ -26,7 +26,7 @@ public class MayknowRecommendManager$4
           }
           bool = this.this$0.b(this.b);
           if (bool) {
-            ((FriendListHandler)ajls.a(this.this$0).a(1)).a(this.b, this.jdField_a_of_type_Int, null, true, this.jdField_a_of_type_AndroidOsBundle);
+            ((FriendListHandler)akac.a(this.this$0).a(1)).a(this.b, this.jdField_a_of_type_Int, null, true, this.jdField_a_of_type_AndroidOsBundle);
           }
           return;
         }

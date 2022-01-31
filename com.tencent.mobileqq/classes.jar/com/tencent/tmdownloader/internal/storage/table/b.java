@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 import com.tencent.tmassistant.common.a.c;
 import com.tencent.tmassistant.common.a.d;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 
 public class b
   implements c
@@ -31,7 +31,7 @@ public class b
       }
       catch (Exception parama)
       {
-        ac.c("ClientInfoTable", "exception: ", parama);
+        ab.c("ClientInfoTable", "exception: ", parama);
         parama.printStackTrace();
       }
     }
@@ -64,7 +64,7 @@ public class b
     }
     catch (Exception parama)
     {
-      ac.c("ClientInfoTable", "exception: ", parama);
+      ab.c("ClientInfoTable", "exception: ", parama);
       parama.printStackTrace();
     }
   }
@@ -82,7 +82,7 @@ public class b
     }
     catch (Exception paramString)
     {
-      ac.c("ClientInfoTable", "exception: ", paramString);
+      ab.c("ClientInfoTable", "exception: ", paramString);
       paramString.printStackTrace();
     }
   }

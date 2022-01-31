@@ -27,6 +27,24 @@ public class FilamentJNI
   
   private static native void nDestroy(long paramLong);
   
+  private static native float[] nGetDirectionColor(long paramLong);
+  
+  private static native int nGetDirectionIntensity(long paramLong);
+  
+  private static native int nGetIblIntensity(long paramLong);
+  
+  private static native int nGetIblRotation(long paramLong);
+  
+  private static native float[] nGetLightDirection(long paramLong);
+  
+  private static native int nGetMaxFaceCount(long paramLong);
+  
+  private static native float[] nGetPosition(long paramLong);
+  
+  private static native float[] nGetRotation(long paramLong);
+  
+  private static native float[] nGetScale(long paramLong);
+  
   private static native void nLoadAllData(long paramLong);
   
   private static native void nNewFurLayers(long paramLong, int paramInt);
@@ -35,15 +53,35 @@ public class FilamentJNI
   
   private static native void nResize(long paramLong, int paramInt1, int paramInt2);
   
-  private static native void nSetGlbData(long paramLong, String paramString, byte[] paramArrayOfByte);
+  private static native void nSetAverageL(long paramLong, float paramFloat);
+  
+  private static native void nSetDirectionColor(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  private static native void nSetDirectionIntensity(long paramLong, int paramInt);
+  
+  private static native boolean nSetGlbData(long paramLong, String paramString, byte[] paramArrayOfByte);
   
   private static native void nSetHeadCount(long paramLong, int paramInt);
+  
+  private static native void nSetIblDegree(long paramLong, float paramFloat);
+  
+  private static native void nSetIblIntensity(long paramLong, int paramInt);
+  
+  private static native void nSetLightDirection(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3);
   
   private static native void nSetMaterialImage(long paramLong, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2);
   
   private static native void nSetMaterialTransform(long paramLong, int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2);
   
   private static native void nSetMorphWeights(long paramLong, String paramString, float[] paramArrayOfFloat, int paramInt1, int paramInt2);
+  
+  private static native void nSetPosition(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  private static native void nSetRotation(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  private static native void nSetScale(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  private static native void nUpdateIntensityMap(long paramLong, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2);
   
   public boolean canUseShareContext()
   {
@@ -53,6 +91,51 @@ public class FilamentJNI
   public void destroy()
   {
     nDestroy(this.mNativeObject);
+  }
+  
+  public float[] getDirectionColor()
+  {
+    return nGetDirectionColor(this.mNativeObject);
+  }
+  
+  public int getDirectionIntensity()
+  {
+    return nGetDirectionIntensity(this.mNativeObject);
+  }
+  
+  public int getIblIntensity()
+  {
+    return nGetIblIntensity(this.mNativeObject);
+  }
+  
+  public int getIblRotation()
+  {
+    return nGetIblRotation(this.mNativeObject);
+  }
+  
+  public float[] getLightDirection()
+  {
+    return nGetLightDirection(this.mNativeObject);
+  }
+  
+  public int getMaxFaceCount()
+  {
+    return nGetMaxFaceCount(this.mNativeObject);
+  }
+  
+  public float[] getPosition()
+  {
+    return nGetPosition(this.mNativeObject);
+  }
+  
+  public float[] getRotation()
+  {
+    return nGetRotation(this.mNativeObject);
+  }
+  
+  public float[] getScale()
+  {
+    return nGetScale(this.mNativeObject);
   }
   
   public void loadAllData()
@@ -75,14 +158,44 @@ public class FilamentJNI
     nResize(this.mNativeObject, paramInt1, paramInt2);
   }
   
-  public void setGlbData(String paramString, byte[] paramArrayOfByte)
+  public void setAverageL(float paramFloat)
   {
-    nSetGlbData(this.mNativeObject, paramString, paramArrayOfByte);
+    nSetAverageL(this.mNativeObject, paramFloat);
+  }
+  
+  public void setDirectionColor(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    nSetDirectionColor(this.mNativeObject, paramFloat1, paramFloat2, paramFloat3);
+  }
+  
+  public void setDirectionIntensity(int paramInt)
+  {
+    nSetDirectionIntensity(this.mNativeObject, paramInt);
+  }
+  
+  public boolean setGlbData(String paramString, byte[] paramArrayOfByte)
+  {
+    return nSetGlbData(this.mNativeObject, paramString, paramArrayOfByte);
   }
   
   public void setHeadCount(int paramInt)
   {
     nSetHeadCount(this.mNativeObject, paramInt);
+  }
+  
+  public void setIblDegree(float paramFloat)
+  {
+    nSetIblDegree(this.mNativeObject, paramFloat);
+  }
+  
+  public void setIblIntensity(int paramInt)
+  {
+    nSetIblIntensity(this.mNativeObject, paramInt);
+  }
+  
+  public void setLightDirection(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    nSetLightDirection(this.mNativeObject, paramFloat1, paramFloat2, paramFloat3);
   }
   
   public void setMaterialImage(String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2)
@@ -103,6 +216,26 @@ public class FilamentJNI
   public void setNewFurLayers(int paramInt)
   {
     nNewFurLayers(this.mNativeObject, paramInt);
+  }
+  
+  public void setPosition(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    nSetPosition(this.mNativeObject, paramFloat1, paramFloat2, paramFloat3);
+  }
+  
+  public void setRotation(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    nSetRotation(this.mNativeObject, paramFloat1, paramFloat2, paramFloat3);
+  }
+  
+  public void setScale(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    nSetScale(this.mNativeObject, paramFloat1, paramFloat2, paramFloat3);
+  }
+  
+  public void updateIntensityMap(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    nUpdateIntensityMap(this.mNativeObject, paramArrayOfFloat1, paramArrayOfFloat2);
   }
 }
 

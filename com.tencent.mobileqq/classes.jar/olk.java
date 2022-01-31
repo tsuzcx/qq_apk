@@ -1,46 +1,43 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
-final class olk
-  implements Handler.Callback
+public class olk
+  implements oqa
 {
-  public boolean handleMessage(Message paramMessage)
+  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
   {
-    switch (paramMessage.what)
+    QLog.d("KBPreDownloadUtils", 2, "[onDownloadStateChanged] url=" + paramString1 + " savedPath=" + paramString2 + " errorCode=" + paramInt2 + " errorMsg=" + paramString3);
+    if (!TextUtils.equals(paramString1, olj.a(onk.a(), "sp_key_kb_download_url"))) {
+      return;
+    }
+    switch (paramInt1)
     {
     default: 
-    case 0: 
-    case 1: 
-      do
+      return;
+    case 4: 
+      long l = System.currentTimeMillis() - olj.a();
+      QLog.d("KBPreDownloadUtils", 2, "[onDownloadFinish] cost=" + l + "ms, info=" + paramString1);
+      paramString3 = BaseApplicationImpl.getApplication();
+      if (paramString3 != null)
       {
-        do
-        {
-          return true;
-          olj.a(false);
-          olj.a().removeMessages(0);
-        } while ((olj.a() == null) || (olj.a().size() <= 0));
-        paramMessage = olj.a().iterator();
-        while (paramMessage.hasNext()) {
-          ((oll)paramMessage.next()).a(true);
-        }
-        olj.a(false);
-        olj.a().removeMessages(1);
-      } while ((olj.a() == null) || (olj.a().size() <= 0));
-      paramMessage = olj.a().iterator();
-      while (paramMessage.hasNext()) {
-        ((oll)paramMessage.next()).a(false);
+        olj.a(paramString3, paramString2);
+        olj.a(true, l, 0);
+        olj.a(paramString1, paramString2);
+        oqc.a().b(olj.a());
+        return;
       }
+      QLog.e("KBPreDownloadUtils", 1, "[onDownloadStateChanged] return since context is null");
+      return;
     }
-    olj.a(true);
-    return true;
+    QLog.e("KBPreDownloadUtils", 1, "[onDownloadError] errorCode=" + paramInt2 + ", errorMsg=" + paramString3);
+    olj.a(false, System.currentTimeMillis() - olj.a(), paramInt2);
+    oqc.a().b(olj.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     olk
  * JD-Core Version:    0.7.0.1
  */

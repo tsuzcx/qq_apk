@@ -1,33 +1,16 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.ClipboardManager;
-import android.view.View;
+import java.util.List;
 
-final class awut
-  implements begw
+public abstract interface awut<M extends awoe>
 {
-  awut(String paramString, Context paramContext) {}
+  public abstract void a(List<M> paramList);
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      awus.a().dismiss();
-      return;
-      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      continue;
-      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public abstract void a(List<M> paramList, int paramInt);
+  
+  public abstract void a(List<M> paramList, awvh paramawvh);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awut
  * JD-Core Version:    0.7.0.1
  */

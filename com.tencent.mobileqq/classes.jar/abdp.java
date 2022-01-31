@@ -1,57 +1,26 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.data.Groups;
-import java.util.List;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class abdp
-  extends BaseAdapter
+  extends aume
 {
-  private abdp(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public abdp(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public int getCount()
+  protected void a(boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_JavaUtilList != null) {
-      return this.a.jdField_a_of_type_JavaUtilList.size();
+    this.a.B();
+    if (paramBoolean) {
+      return;
     }
-    return 0;
+    bcpw.a(this.a, 1, ajyc.a(2131704919), 1000).a();
   }
   
-  public Object getItem(int paramInt)
+  protected void b(boolean paramBoolean, int paramInt)
   {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = this.a.getLayoutInflater().inflate(2131493744, null);
+    super.b(paramBoolean, paramInt);
+    if ((this.a.n) && (paramBoolean)) {
+      this.a.a(0L, null, null, false);
     }
-    int i = (byte)((Groups)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).group_id;
-    paramView = (ImageView)paramViewGroup.findViewById(2131298643);
-    if (i == this.a.jdField_a_of_type_Byte) {
-      paramView.setVisibility(0);
-    }
-    for (;;)
-    {
-      paramView = (TextView)paramViewGroup.findViewById(2131301620);
-      paramView.setText(((Groups)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).group_name);
-      paramViewGroup.setContentDescription(paramView.getText().toString());
-      paramViewGroup.setTag(Integer.valueOf(paramInt));
-      paramViewGroup.setOnClickListener(this.a);
-      return paramViewGroup;
-      paramView.setVisibility(8);
-    }
+    this.a.n = false;
   }
 }
 

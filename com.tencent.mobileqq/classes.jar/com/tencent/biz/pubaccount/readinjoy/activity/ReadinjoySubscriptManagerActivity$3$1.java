@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import nmg;
+import nxr;
 
 public class ReadinjoySubscriptManagerActivity$3$1
   implements Runnable
 {
-  public ReadinjoySubscriptManagerActivity$3$1(nmg paramnmg) {}
+  public ReadinjoySubscriptManagerActivity$3$1(nxr paramnxr) {}
   
   public void run()
   {

@@ -1,182 +1,82 @@
-import android.os.RemoteCallbackList;
-import android.os.RemoteException;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
 public class aknb
-  implements akok
 {
-  public aknb(ArConfigService paramArConfigService) {}
+  public static int a;
+  public static long a;
+  public static Integer[] a;
+  public static int b;
+  public static Integer[] b;
+  public static int c;
   
-  public void a() {}
-  
-  public void a(int paramInt)
+  static
   {
-    if (ArConfigService.a(this.a) != null) {}
-    try
-    {
-      int j = ArConfigService.a(this.a).beginBroadcast();
-      int i = 0;
-      while (i < j)
-      {
-        ((akqc)ArConfigService.a(this.a).getBroadcastItem(i)).a(paramInt);
-        i += 1;
-      }
-      ArConfigService.a(this.a).finishBroadcast();
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
-      {
-        localRemoteException.printStackTrace();
-      }
-    }
-    aknk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false, paramInt);
+    jdField_a_of_type_Int = 9999;
+    jdField_b_of_type_Int = 2147483647;
+    c = 3000;
+    jdField_a_of_type_Long = 863913600L;
+    jdField_a_of_type_ArrayOfJavaLangInteger = new Integer[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(3000) };
+    jdField_b_of_type_ArrayOfJavaLangInteger = new Integer[] { Integer.valueOf(1), Integer.valueOf(4), Integer.valueOf(2), Integer.valueOf(3) };
   }
   
-  public void a(long paramLong1, long paramLong2)
+  public static boolean a(int paramInt)
   {
-    if (ArConfigService.a(this.a) != null) {}
-    try
+    boolean bool2 = false;
+    Integer[] arrayOfInteger = jdField_a_of_type_ArrayOfJavaLangInteger;
+    int j = arrayOfInteger.length;
+    int i = 0;
+    for (;;)
     {
-      int j = ArConfigService.a(this.a).beginBroadcast();
-      int i = 0;
-      while (i < j)
+      boolean bool1 = bool2;
+      if (i < j)
       {
-        ((akqc)ArConfigService.a(this.a).getBroadcastItem(i)).a(paramLong1, paramLong2);
-        i += 1;
-      }
-      ArConfigService.a(this.a).finishBroadcast();
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      localRemoteException.printStackTrace();
-    }
-  }
-  
-  public void a(ARCommonConfigInfo paramARCommonConfigInfo)
-  {
-    if (ArConfigService.a(this.a) != null) {}
-    try
-    {
-      int j = ArConfigService.a(this.a).beginBroadcast();
-      int i = 0;
-      while (i < j)
-      {
-        ((akqc)ArConfigService.a(this.a).getBroadcastItem(i)).a(null, null, paramARCommonConfigInfo);
-        i += 1;
-      }
-      ArConfigService.a(this.a).finishBroadcast();
-      return;
-    }
-    catch (RemoteException paramARCommonConfigInfo)
-    {
-      paramARCommonConfigInfo.printStackTrace();
-    }
-  }
-  
-  public void a(ArConfigInfo paramArConfigInfo)
-  {
-    if (ArConfigService.a(this.a) != null) {}
-    try
-    {
-      int j = ArConfigService.a(this.a).beginBroadcast();
-      int i = 0;
-      while (i < j)
-      {
-        ((akqc)ArConfigService.a(this.a).getBroadcastItem(i)).a(paramArConfigInfo, null, null);
-        i += 1;
-      }
-      ArConfigService.a(this.a).finishBroadcast();
-      return;
-    }
-    catch (RemoteException paramArConfigInfo)
-    {
-      paramArConfigInfo.printStackTrace();
-    }
-  }
-  
-  public void a(ArEffectConfig paramArEffectConfig)
-  {
-    if (ArConfigService.a(this.a) != null) {}
-    try
-    {
-      int j = ArConfigService.a(this.a).beginBroadcast();
-      int i = 0;
-      while (i < j)
-      {
-        ((akqc)ArConfigService.a(this.a).getBroadcastItem(i)).a(null, paramArEffectConfig, null);
-        i += 1;
-      }
-      ArConfigService.a(this.a).finishBroadcast();
-      return;
-    }
-    catch (RemoteException paramArEffectConfig)
-    {
-      paramArEffectConfig.printStackTrace();
-    }
-  }
-  
-  public void b()
-  {
-    if (ArConfigService.a(this.a) != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess before sync");
-      }
-    }
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess  sync start");
-      }
-      try
-      {
-        int j = ArConfigService.a(this.a).beginBroadcast();
-        int i = 0;
-        for (;;)
-        {
-          if (i < j) {
-            try
-            {
-              ((akqc)ArConfigService.a(this.a).getBroadcastItem(i)).a();
-              i += 1;
-            }
-            catch (RemoteException localRemoteException)
-            {
-              for (;;)
-              {
-                localRemoteException.printStackTrace();
-              }
-            }
-          }
+        if (arrayOfInteger[i].intValue() == paramInt) {
+          bool1 = true;
         }
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        QLog.d("ArConfig_ArConfigService", 1, "onDownloadSuccess  sync fail end,error reason:binder server muti-thread");
+      else {
+        return bool1;
       }
-      do
+      i += 1;
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
+  {
+    if (NetConnInfoCenter.getServerTime() - paramRecentUser.lastmsgtime >= jdField_a_of_type_Long) {}
+    while ((!a(paramRecentUser.getType())) || ((paramRecentUser.getType() == 1) && (!b(paramQQAppInterface.b(paramRecentUser.uin))))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    boolean bool2 = false;
+    Integer[] arrayOfInteger = jdField_b_of_type_ArrayOfJavaLangInteger;
+    int j = arrayOfInteger.length;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess after sync");
+        if (arrayOfInteger[i].intValue() == paramInt) {
+          bool1 = true;
         }
-        aknk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true, 0);
-        return;
-        ArConfigService.a(this.a).finishBroadcast();
-      } while (!QLog.isColorLevel());
-      QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess  sync end");
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aknb
  * JD-Core Version:    0.7.0.1
  */

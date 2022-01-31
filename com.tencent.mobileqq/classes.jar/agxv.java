@@ -1,28 +1,29 @@
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.qwallet.RedPacketVoiceFragment;
 
-class agxv
+public class agxv
   implements View.OnClickListener
 {
-  agxv(agxq paramagxq) {}
+  public agxv(RedPacketVoiceFragment paramRedPacketVoiceFragment) {}
   
   public void onClick(View paramView)
   {
-    try
+    if ((!this.a.c()) && (RedPacketVoiceFragment.a(this.a) != null) && (paramView != null))
     {
-      babr.a(agxq.a(this.a), 0, null, ajjy.a(2131635123), 2131625035, 2131629116, new agxw(this), new agxx(this)).show();
-      return;
-    }
-    catch (Throwable paramView)
-    {
-      QLog.e("Q.recent.banner", 1, "show dialog err, errInfo->" + paramView.getMessage());
+      Intent localIntent = new Intent(paramView.getContext(), PayBridgeActivity.class);
+      localIntent.putExtras(RedPacketVoiceFragment.a(this.a));
+      localIntent.putExtra("pay_requestcode", 5);
+      paramView.getContext().startActivity(localIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agxv
  * JD-Core Version:    0.7.0.1
  */

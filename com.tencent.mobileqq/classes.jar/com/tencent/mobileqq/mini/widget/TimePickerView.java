@@ -38,13 +38,13 @@ public class TimePickerView
   
   public TimePickerView(@NonNull Context paramContext)
   {
-    super(paramContext, 2131689823);
+    super(paramContext, 2131755360);
     initView(paramContext);
   }
   
   private void initView(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131493418, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131558981, null);
     setContentView(paramContext);
     Object localObject = getWindow();
     if (localObject != null)
@@ -56,12 +56,12 @@ public class TimePickerView
       ((Window)localObject).setAttributes(localLayoutParams);
       ((Window)localObject).setGravity(80);
     }
-    localObject = (FrameLayout)paramContext.findViewById(2131305959);
+    localObject = (FrameLayout)paramContext.findViewById(2131371655);
     this.mTimePicker = new TimePicker(new ContextThemeWrapper(getContext(), 16973934));
     ((FrameLayout)localObject).addView(this.mTimePicker);
-    this.mCancelTextView = ((TextView)paramContext.findViewById(2131312258));
+    this.mCancelTextView = ((TextView)paramContext.findViewById(2131378078));
     this.mCancelTextView.setOnClickListener(this);
-    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131312288));
+    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131378108));
     this.mConfirmTextView.setOnClickListener(this);
     int i = Resources.getSystem().getIdentifier("hour", "id", "android");
     int j = Resources.getSystem().getIdentifier("minute", "id", "android");
@@ -146,14 +146,14 @@ public class TimePickerView
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131312258)
+    if (paramView.getId() == 2131378078)
     {
       if (this.mOnConfirmListener != null) {
         this.mOnConfirmListener.onTimeCancel();
       }
       dismissDlg();
     }
-    while (paramView.getId() != 2131312288) {
+    while (paramView.getId() != 2131378108) {
       return;
     }
     if (this.mOnConfirmListener != null)

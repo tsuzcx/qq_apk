@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qqpim.QQPimTipsInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sharp.jni.TraeAudioManager;
+import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
 
-public final class bflb
-  implements Parcelable.Creator<QQPimTipsInfo>
+public class bflb
+  implements bfli
 {
-  public QQPimTipsInfo a(Parcel paramParcel)
-  {
-    return new QQPimTipsInfo(paramParcel, null);
-  }
+  public bflb(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
   
-  public QQPimTipsInfo[] a(int paramInt)
+  public void a(long paramLong)
   {
-    return new QQPimTipsInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.w("TraeAudioManager", 1, "_ringPlayer onCompletion, _activeMode[" + this.a.this$0.a + "], _preRingMode[" + this.a.b + "], seq[" + paramLong + "]");
+    }
+    TraeAudioManager.b(paramLong, null, -1L, true);
+    this.a.c(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bflb
  * JD-Core Version:    0.7.0.1
  */

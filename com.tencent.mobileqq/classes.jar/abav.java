@@ -1,12 +1,34 @@
-class abav
-  extends ajpe
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+
+public abstract class abav
+  extends ClickableSpan
 {
-  abav(abai paramabai) {}
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public abav(EditInfoActivity paramEditInfoActivity, int paramInt1, int paramInt2)
   {
-    if ((paramBoolean1) && (paramBoolean2)) {
-      this.a.a.notifyDataSetChanged();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.b;; i = this.jdField_a_of_type_Int)
+    {
+      paramTextPaint.setColor(i);
+      paramTextPaint.setUnderlineText(false);
+      return;
     }
   }
 }

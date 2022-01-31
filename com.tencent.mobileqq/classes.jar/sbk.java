@@ -1,10 +1,24 @@
-public abstract interface sbk
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
+
+public class sbk
+  extends BroadcastReceiver
 {
-  public abstract void a(Object paramObject);
+  private sbk(FolderFollowTabFragment paramFolderFollowTabFragment) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_refresh_return_page")) && (FolderFollowTabFragment.a(this.a) != null)) {
+      FolderFollowTabFragment.b(this.a, FolderFollowTabFragment.a(this.a));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sbk
  * JD-Core Version:    0.7.0.1
  */

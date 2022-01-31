@@ -1,38 +1,36 @@
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
-import org.json.JSONObject;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class aiow
-  implements zrt
+  implements View.OnClickListener
 {
-  aiow(aios paramaios, String paramString, long paramLong, zrw paramzrw, CmGameInitParams paramCmGameInitParams) {}
+  aiow(aiov paramaiov) {}
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    aios.a(this.jdField_a_of_type_Aios, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof aipc)))
+    {
+      paramView = (aipc)paramView;
+      bahx.a(aiov.a(this.a), aiov.a(this.a), paramView.a);
+      balw localbalw = (balw)aiov.a(this.a).getManager(203);
+      if ((localbalw != null) && (localbalw.a(aiov.a(this.a), paramView.a, aiov.a(this.a)))) {
+        localbalw.a(aiov.a(this.a), paramView.a);
+      }
+      if (aiov.a(this.a) != null) {}
+    }
+    else
+    {
+      return;
+    }
+    axqw.b(aiov.a(this.a).app, "dc00898", "", "", "", "0X8009F9F", 0, 0, paramView.a, "", "", "");
   }
-  
-  public void onPermission(int paramInt)
-  {
-    aios.a(this.jdField_a_of_type_Aios, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    String str = paramJSONObject.optString("openid");
-    paramJSONObject = paramJSONObject.optString("access_token", "");
-    aios.a(this.jdField_a_of_type_Aios, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Zrw);
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.openId = str;
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessToken = paramJSONObject;
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessTokenRet = 1;
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aiow
  * JD-Core Version:    0.7.0.1
  */

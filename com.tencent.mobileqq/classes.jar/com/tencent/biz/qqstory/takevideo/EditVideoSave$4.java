@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import android.app.Dialog;
-import uvq;
+import vim;
 
 public class EditVideoSave$4
   implements Runnable
 {
-  public EditVideoSave$4(uvq paramuvq) {}
+  public EditVideoSave$4(vim paramvim) {}
   
   public void run()
   {
-    uvq.a(this.this$0).show();
+    vim.a(this.this$0).show();
   }
 }
 

@@ -1,39 +1,30 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
 
 public class afnh
   implements View.OnClickListener
 {
-  public afnh(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public afnh(ShowExternalTroopListActivity paramShowExternalTroopListActivity, ImageView paramImageView) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.d == 15) && (ChatHistoryTroopMemberFragment.a(this.a).size() > 0))
+    bazo.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_JavaLangString, 0);
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.app;
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_Boolean) {}
+    for (paramView = "0";; paramView = "1")
     {
-      paramView = new Intent();
-      paramView.putExtra("param_deleted_uins", ChatHistoryTroopMemberFragment.a(this.a));
-      this.a.getActivity().setResult(-1, paramView);
-      if ((this.a.f == null) || (!this.a.f.equals(this.a.getActivity().app.getCurrentAccountUin()))) {
-        break label171;
-      }
-    }
-    label171:
-    for (int i = 0;; i = 1)
-    {
-      awqx.b(this.a.getActivity().app, "dc00899", "Grp_mber", "", "mber_list", "del_inacmem", 0, 0, this.a.c, "" + i, "1", ChatHistoryTroopMemberFragment.a(this.a).toString());
-      this.a.getActivity().finish();
+      axqw.b(localQQAppInterface, "P_CliOper", "Grp_join", "", "person_data", "Clk_user", 0, 0, str, paramView, "", "");
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afnh
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.biz.qqstory.playvideo.entrance;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import vkw;
+import vxs;
 
 public class VidListPlayInfo
   implements Serializable
@@ -60,7 +60,7 @@ public class VidListPlayInfo
     if (paramList1.size() == paramList2.size()) {}
     for (boolean bool = true;; bool = false)
     {
-      vkw.a(bool, "vid size not equal feedId size");
+      vxs.a(bool, "vid size not equal feedId size");
       return;
     }
   }

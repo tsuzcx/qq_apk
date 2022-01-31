@@ -1,68 +1,42 @@
-import com.tencent.mobileqq.bubble.QQAnimationDrawable;
-import com.tencent.mobileqq.bubble.QQAnimationDrawable.SerialExecutor.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.6;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
 
 public class aloi
-  implements Executor
+  implements DialogInterface.OnClickListener
 {
-  final aloj<Runnable> jdField_a_of_type_Aloj = new aloj(30);
-  Runnable jdField_a_of_type_JavaLangRunnable;
+  public aloi(ArkAppDownloadModule.6 param6) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
+    boolean bool = false;
+    alob.a(this.a.this$0, true);
+    biby.a().b(this.a.jdField_a_of_type_Int, this.a.b);
+    axqw.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "7", "", this.a.b, "");
+    if ((paramDialogInterface instanceof bbgg))
     {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_Aloj.a();
-      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
-      if (localRunnable != null)
-      {
-        QLog.d("QQAnimationDrawable", 2, "scheduleNext start");
-        QQAnimationDrawable.a.execute(this.jdField_a_of_type_JavaLangRunnable);
+      if (!((bbgg)paramDialogInterface).getCheckBoxState()) {
+        bool = true;
       }
-      return;
+      if (this.a.jdField_a_of_type_AndroidContentSharedPreferences == null) {}
     }
-    finally {}
-  }
-  
-  public void b()
-  {
     try
     {
-      this.jdField_a_of_type_Aloj.a();
+      this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.a.c, bool).apply();
       return;
     }
-    finally
+    catch (Exception paramDialogInterface)
     {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void execute(Runnable paramRunnable)
-  {
-    try
-    {
-      QLog.d("QQAnimationDrawable", 2, "SerialExecutor excute");
-      this.jdField_a_of_type_Aloj.a(new QQAnimationDrawable.SerialExecutor.1(this, paramRunnable));
-      if (this.jdField_a_of_type_JavaLangRunnable == null)
-      {
-        QLog.d("QQAnimationDrawable", 2, "SerialExecutor mActive == null scheduleNext");
-        a();
-      }
-      return;
-    }
-    finally
-    {
-      paramRunnable = finally;
-      throw paramRunnable;
+      QLog.e("ark.download.module", 1, "continue download sp error : ", paramDialogInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aloi
  * JD-Core Version:    0.7.0.1
  */

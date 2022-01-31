@@ -1,23 +1,19 @@
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.View;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import org.json.JSONObject;
 
-public class behg
-  implements ContextMenu.ContextMenuInfo
+class behg
+  implements AsyncResult
 {
-  public int a;
-  public long a;
-  public View a;
+  behg(behf parambehf) {}
   
-  public behg(View paramView, int paramInt, long paramLong)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
+    besl.d("AuthState", "setAuthorize() onCmdListener isSuccess: " + paramBoolean + "   ; ret: " + paramJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     behg
  * JD-Core Version:    0.7.0.1
  */

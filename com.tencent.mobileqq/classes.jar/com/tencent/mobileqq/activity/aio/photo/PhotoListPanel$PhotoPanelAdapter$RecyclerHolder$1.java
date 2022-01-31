@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import adzh;
+import aekg;
 import android.graphics.Rect;
 import android.view.TouchDelegate;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.view.View;
 public class PhotoListPanel$PhotoPanelAdapter$RecyclerHolder$1
   implements Runnable
 {
-  public PhotoListPanel$PhotoPanelAdapter$RecyclerHolder$1(adzh paramadzh, View paramView1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView2) {}
+  public PhotoListPanel$PhotoPanelAdapter$RecyclerHolder$1(aekg paramaekg, View paramView1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView2) {}
   
   public void run()
   {

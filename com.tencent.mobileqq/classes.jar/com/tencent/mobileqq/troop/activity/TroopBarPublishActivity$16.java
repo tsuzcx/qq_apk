@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.activity;
 
-import ajjy;
+import ajyc;
 import android.widget.ImageView;
 import android.widget.TextView;
-import ayfx;
-import ayfy;
+import azgi;
+import azgj;
 import java.io.File;
 
 public class TroopBarPublishActivity$16
@@ -18,17 +18,17 @@ public class TroopBarPublishActivity$16
     {
       this.this$0.t();
       this.this$0.s = false;
-      this.this$0.g.setText(ajjy.a(2131649439));
+      this.this$0.g.setText(ajyc.a(2131715229));
       this.this$0.g.setTextColor(-65536);
-      this.this$0.b.setOnClickListener(new ayfx(this));
+      this.this$0.b.setOnClickListener(new azgi(this));
       return;
     }
     this.this$0.s = false;
     this.this$0.g.setText("");
-    this.this$0.g.setCompoundDrawablesWithIntrinsicBounds(2130847159, 0, 0, 0);
+    this.this$0.g.setCompoundDrawablesWithIntrinsicBounds(2130847368, 0, 0, 0);
     this.this$0.H = this.a;
     this.this$0.a.a = new File(this.a).length();
-    this.this$0.b.setOnClickListener(new ayfy(this));
+    this.this$0.b.setOnClickListener(new azgj(this));
     this.this$0.a(TroopBarPublishActivity.c(this.this$0), true);
   }
 }

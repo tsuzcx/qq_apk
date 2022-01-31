@@ -1,16 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-
 public class aavx
-  implements View.OnClickListener
 {
-  public aavx(FriendProfileImageActivity paramFriendProfileImageActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    FriendProfileImageActivity.a(this.a);
-  }
+  public boolean a;
 }
 
 

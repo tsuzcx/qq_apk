@@ -1,15 +1,10 @@
-import IMMsgBodyPack.MsgType0x210;
-
-class akbu
-  implements lne
+public abstract interface akbu
 {
-  akbu(akbt paramakbt, MsgType0x210 paramMsgType0x210) {}
+  public abstract void ag_();
   
-  public void a(lnd paramlnd)
-  {
-    paramlnd.b(this.jdField_a_of_type_IMMsgBodyPackMsgType0x210.vProtobuf);
-    paramlnd.a();
-  }
+  public abstract void b();
+  
+  public abstract void i_(int paramInt);
 }
 
 

@@ -1,23 +1,44 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
-public class mza
-  implements TVK_IMediaPlayer.OnErrorListener
+class mza
+  extends bbwf
 {
-  public mza(VideoCoverView paramVideoCoverView) {}
+  mza(myz parammyz) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onDone(bbwg parambbwg)
   {
-    this.a.jdField_a_of_type_Int = 7;
-    mye.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString);
-    this.a.g();
-    return false;
+    if (parambbwg.a == 0) {
+      parambbwg = parambbwg.a().getString("file_path");
+    }
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        File localFile = new File(parambbwg);
+        String str = bbdj.b(localFile);
+        if (QLog.isColorLevel()) {
+          QLog.d("CommonConfigBase", 2, "onDone() content =  " + str + ", filePath = " + parambbwg);
+        }
+        localFile.delete();
+        this.a.b(str);
+        this.a.a(str);
+        return;
+      }
+      catch (IOException parambbwg)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d("CommonConfigBase", 2, QLog.getStackTraceString(parambbwg));
+        return;
+      }
+    }
+    QLog.d("CommonConfigBase", 2, "onError(), errorCode = " + parambbwg.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     mza
  * JD-Core Version:    0.7.0.1
  */

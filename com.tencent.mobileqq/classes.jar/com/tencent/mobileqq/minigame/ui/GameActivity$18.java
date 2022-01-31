@@ -1,13 +1,16 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import com.tencent.mobileqq.mini.appbrand.utils.MiniLog;
-
 class GameActivity$18
   implements Runnable
 {
   GameActivity$18(GameActivity paramGameActivity) {}
   
-  public void run() {}
+  public void run()
+  {
+    if (GameActivity.access$600(this.this$0) == null) {
+      GameActivity.access$800(this.this$0);
+    }
+  }
 }
 
 

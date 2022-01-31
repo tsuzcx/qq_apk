@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import advv;
+import aegu;
 
 public class AIOGalleryScene$25
   implements Runnable
 {
-  public AIOGalleryScene$25(advv paramadvv) {}
+  public AIOGalleryScene$25(aegu paramaegu) {}
   
   public void run()
   {
     if (this.this$0.n) {
       return;
     }
-    advv localadvv = this.this$0;
-    localadvv.h += this.this$0.i;
+    aegu localaegu = this.this$0;
+    localaegu.h += this.this$0.i;
     if (this.this$0.h > 99)
     {
       this.this$0.h = 99;

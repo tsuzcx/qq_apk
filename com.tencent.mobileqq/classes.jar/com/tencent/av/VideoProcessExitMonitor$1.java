@@ -1,15 +1,15 @@
 package com.tencent.av;
 
-import ktm;
+import leb;
 
 public class VideoProcessExitMonitor$1
   implements Runnable
 {
-  public VideoProcessExitMonitor$1(ktm paramktm) {}
+  public VideoProcessExitMonitor$1(leb paramleb) {}
   
   public void run()
   {
-    ktm.a(this.this$0);
+    leb.a(this.this$0);
   }
 }
 

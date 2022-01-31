@@ -1,28 +1,43 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class avqz
-  implements View.OnClickListener
+  extends Handler
 {
-  avqz(avqx paramavqx, avon paramavon) {}
-  
-  public void onClick(View paramView)
+  public avqz(Looper paramLooper)
   {
-    Object localObject = paramView.getContext();
-    paramView = this.jdField_a_of_type_Avon.b();
-    if ((localObject instanceof BaseActivity))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    avrd.a("CompoundProcessor", "handleMessage, msg.what = " + paramMessage.what + ",msg.arg1 = " + paramMessage.arg1);
+    switch (paramMessage.what)
     {
-      avwf.a("all_result", "clk_result_join", new String[0]);
-      localObject = (BaseActivity)localObject;
-      avqx.a(this.jdField_a_of_type_Avqx, (Activity)localObject, paramView);
+    case 1: 
+    default: 
+      return;
+    case 2: 
+      i = paramMessage.arg1;
+      paramMessage = paramMessage.getData();
+      avrd.a("CompoundProcessor", "ret is " + i + ",data is " + paramMessage);
+      return;
     }
+    int i = paramMessage.arg1;
+    switch (paramMessage.arg1)
+    {
+    default: 
+      return;
+    }
+    paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+    avrd.a("CompoundProcessor", "ret is " + i + ",targetFile is " + paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avqz
  * JD-Core Version:    0.7.0.1
  */

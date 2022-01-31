@@ -1,58 +1,100 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo;
-
 public class aybp
-  extends aybn
+  extends aybg
 {
-  public int a;
-  public qq_ad_get.QQAdGetRsp.AdInfo a;
-  public int b;
-  public boolean b;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
+  private aybg jdField_a_of_type_Aybg;
+  private int[] jdField_a_of_type_ArrayOfInt;
+  private aybg[] jdField_a_of_type_ArrayOfAybg;
+  private int f;
   
-  public aybp(JSONObject paramJSONObject)
+  public aybp(aybg... paramVarArgs)
   {
-    this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(ynv.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject)));
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("product_type");
-    JSONObject localJSONObject1 = paramJSONObject.optJSONObject("display_info");
-    JSONObject localJSONObject2 = localJSONObject1.optJSONObject("basic_info");
-    this.b = localJSONObject2.optString("img");
-    this.f = localJSONObject2.optString("txt");
-    localJSONObject2 = localJSONObject1.optJSONObject("video_info");
-    this.jdField_a_of_type_JavaLangString = localJSONObject2.optString("video_url");
-    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.startsWith("https"))) {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replaceFirst("https", "http");
-    }
-    this.jdField_a_of_type_Long = (localJSONObject2.optInt("media_duration") * 1000);
-    if (this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo != null) {
-      if (this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.display_info.basic_info.pic_width.get() / this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.display_info.basic_info.pic_height.get() <= 0.75F) {
-        break label293;
-      }
-    }
-    label293:
-    for (boolean bool = true;; bool = false)
+    super(0, 0, 0);
+    this.jdField_a_of_type_ArrayOfAybg = paramVarArgs;
+    this.jdField_a_of_type_ArrayOfInt = new int[paramVarArgs.length];
+    int i = 0;
+    int j = 0;
+    if (i < paramVarArgs.length)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      localJSONObject1 = localJSONObject1.optJSONObject("advertiser_info");
-      this.d = localJSONObject1.optString("corporate_image_name");
-      this.e = localJSONObject1.optString("corporate_logo");
-      localJSONObject1 = paramJSONObject.optJSONObject("report_info");
-      this.h = localJSONObject1.optString("negative_feedback_url");
-      if (!TextUtils.isEmpty(this.h)) {
-        this.h = this.h.replace("__ACT_TYPE__", "2001");
+      if (i == 0) {
+        this.jdField_a_of_type_ArrayOfInt[i] = 0;
       }
-      this.i = localJSONObject1.optString("exposure_url");
-      this.g = paramJSONObject.optJSONObject("app_info").optString("app_package_name");
+      for (;;)
+      {
+        j += paramVarArgs[i].jdField_c_of_type_Int;
+        i += 1;
+        break;
+        this.jdField_a_of_type_ArrayOfInt[i] = j;
+      }
+    }
+    this.jdField_c_of_type_Int = j;
+    if (paramVarArgs.length > 0) {
+      this.jdField_a_of_type_Aybg = paramVarArgs[this.f];
+    }
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.f = 0;
+    if (this.jdField_a_of_type_ArrayOfAybg.length > 0) {
+      this.jdField_a_of_type_Aybg = this.jdField_a_of_type_ArrayOfAybg[this.f];
+    }
+  }
+  
+  protected void a(int paramInt, float paramFloat)
+  {
+    if ((this.f + 1 < this.jdField_a_of_type_ArrayOfAybg.length) && (paramInt > this.jdField_a_of_type_ArrayOfInt[(this.f + 1)]))
+    {
+      this.jdField_a_of_type_Aybg.b();
+      aybg[] arrayOfaybg = this.jdField_a_of_type_ArrayOfAybg;
+      i = this.f + 1;
+      this.f = i;
+      this.jdField_a_of_type_Aybg = arrayOfaybg[i];
+    }
+    this.d = this.jdField_a_of_type_Aybg.d;
+    int i = paramInt - this.jdField_a_of_type_ArrayOfInt[this.f];
+    float f1 = i / this.jdField_a_of_type_Aybg.jdField_c_of_type_Int;
+    if (this.jdField_a_of_type_Aybg.e == 1) {
+      f1 = i * i / (this.jdField_a_of_type_Aybg.jdField_c_of_type_Int * this.jdField_a_of_type_Aybg.jdField_c_of_type_Int);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aybg.a(i, f1);
+      if ((this.jdField_a_of_type_Aybg.d & 0x1) != 0)
+      {
+        this.jdField_a_of_type_Float = this.jdField_a_of_type_Aybg.jdField_a_of_type_Float;
+        this.jdField_b_of_type_Float = this.jdField_a_of_type_Aybg.jdField_b_of_type_Float;
+      }
+      if ((this.jdField_a_of_type_Aybg.d & 0x10) != 0) {
+        this.jdField_b_of_type_Float = this.jdField_a_of_type_Aybg.jdField_b_of_type_Float;
+      }
+      if ((this.jdField_a_of_type_Aybg.d & 0x2) != 0) {
+        this.jdField_c_of_type_Float = this.jdField_a_of_type_Aybg.jdField_c_of_type_Float;
+      }
+      if ((this.jdField_a_of_type_Aybg.d & 0x4) != 0) {
+        this.jdField_a_of_type_Int = this.jdField_a_of_type_Aybg.jdField_a_of_type_Int;
+      }
+      if ((this.jdField_a_of_type_Aybg.d & 0x8) != 0) {
+        this.jdField_b_of_type_Int = this.jdField_a_of_type_Aybg.jdField_b_of_type_Int;
+      }
+      super.a(paramInt, paramFloat);
       return;
+      if (this.jdField_a_of_type_Aybg.e == 2)
+      {
+        f1 = i / this.jdField_a_of_type_Aybg.jdField_c_of_type_Int;
+        f1 *= (2.0F - f1);
+      }
+    }
+  }
+  
+  public void d()
+  {
+    super.d();
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfAybg.length)
+    {
+      this.jdField_a_of_type_ArrayOfInt[i] = ((int)(System.currentTimeMillis() - this.jdField_b_of_type_Long));
+      i += 1;
     }
   }
 }

@@ -1,20 +1,20 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 class aaqk
-  extends aard
+  implements DialogInterface.OnCancelListener
 {
-  aaqk(aaqj paramaaqj, int paramInt1, int paramInt2, String paramString)
-  {
-    super(paramaaqj.a, paramInt1, paramInt2);
-  }
+  aaqk(aaqj paramaaqj) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_Aaqj.a.a != null) {
-      this.jdField_a_of_type_Aaqj.a.a.setText(this.jdField_a_of_type_JavaLangString);
+    if (this.a.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.a.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
   }
 }
 

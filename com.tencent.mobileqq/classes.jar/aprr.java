@@ -1,9 +1,8 @@
-import java.io.Reader;
+import java.util.List;
 
-public abstract class aprr
-  extends aprq
+public abstract interface aprr<M>
 {
-  protected Reader a;
+  public abstract void a(List<M> paramList, int paramInt, aprx paramaprx);
 }
 
 

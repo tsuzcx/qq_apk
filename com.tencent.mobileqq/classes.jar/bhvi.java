@@ -1,15 +1,20 @@
-import android.support.annotation.RestrictTo;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import cooperation.readinjoy.ReadInJoyHelper.1;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class bhvi
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  private Map<String, Integer> a = new HashMap();
+  public bhvi(ReadInJoyHelper.1 param1) {}
+  
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  {
+    if (paramInt == 0) {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhvi
  * JD-Core Version:    0.7.0.1
  */

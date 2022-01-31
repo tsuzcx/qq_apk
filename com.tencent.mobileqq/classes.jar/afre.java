@@ -1,43 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver.5.1;
-import com.tencent.mobileqq.activity.main.MainAssistObserver.5.2;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
 
 public class afre
-  extends akfs
+  implements awcd
 {
-  afre(afqi paramafqi) {}
+  private afre(FriendFragment paramFriendFragment) {}
   
-  public void a()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (bgmq.j()) {
-      this.a.a(39, null);
+    if ((FriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
+      FriendFragment.a(this.a, 1400L, false);
     }
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    super.a(paramInt, paramObject);
-    if (!bgmq.i()) {}
-    while (this.a.a == null) {
-      return;
-    }
-    this.a.a.runOnUiThread(new MainAssistObserver.5.2(this, paramInt, paramObject));
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    a(1, paramView);
-  }
-  
-  public void c()
-  {
-    if (!bgmq.i()) {}
-    while (this.a.a == null) {
-      return;
-    }
-    this.a.a.runOnUiThread(new MainAssistObserver.5.1(this));
   }
 }
 

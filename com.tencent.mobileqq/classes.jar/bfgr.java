@@ -1,23 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qlink.SendMsg;
+import android.text.TextUtils;
+import java.lang.reflect.Method;
 
-public final class bfgr
-  implements Parcelable.Creator<SendMsg>
+public class bfgr
 {
-  public SendMsg a(Parcel paramParcel)
+  private static String a()
   {
-    return new SendMsg(paramParcel);
+    return a("ro.build.display.id", "");
   }
   
-  public SendMsg[] a(int paramInt)
+  public static String a(String paramString1, String paramString2)
   {
-    return new SendMsg[paramInt];
+    try
+    {
+      Class localClass = Class.forName("android.os.SystemProperties");
+      paramString1 = (String)localClass.getMethod("get", new Class[] { String.class, String.class }).invoke(localClass, new Object[] { paramString1, paramString2 });
+      return paramString1;
+    }
+    catch (Throwable paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+    return paramString2;
+  }
+  
+  public static boolean a()
+  {
+    return !TextUtils.isEmpty(a("ro.miui.ui.version.name", ""));
+  }
+  
+  public static boolean b()
+  {
+    return a().toLowerCase().contains("flyme");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfgr
  * JD-Core Version:    0.7.0.1
  */

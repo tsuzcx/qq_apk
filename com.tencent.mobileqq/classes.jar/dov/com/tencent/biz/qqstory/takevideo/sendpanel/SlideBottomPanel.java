@@ -16,12 +16,12 @@ import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
-import bivd;
-import bivp;
-import bivq;
-import bivr;
-import bivs;
-import bivt;
+import bklp;
+import bkmb;
+import bkmc;
+import bkmd;
+import bkme;
+import bkmf;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
 
 public class SlideBottomPanel
@@ -33,7 +33,7 @@ public class SlideBottomPanel
   private Context jdField_a_of_type_AndroidContentContext;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   protected Interpolator a;
-  public bivd a;
+  public bklp a;
   public boolean a;
   protected float b;
   public int b;
@@ -154,13 +154,13 @@ public class SlideBottomPanel
       ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { localView.getY(), this.jdField_b_of_type_Int - this.jdField_i_of_type_Float }).setDuration(this.jdField_c_of_type_Int);
       localValueAnimator.setTarget(localView);
       localValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      localValueAnimator.addUpdateListener(new bivs(this, localView));
-      localValueAnimator.addListener(new bivt(this));
+      localValueAnimator.addUpdateListener(new bkme(this, localView));
+      localValueAnimator.addListener(new bkmf(this));
       localValueAnimator.start();
       this.jdField_b_of_type_Boolean = true;
       this.jdField_e_of_type_Boolean = false;
-    } while (this.jdField_a_of_type_Bivd == null);
-    this.jdField_a_of_type_Bivd.displayPanel();
+    } while (this.jdField_a_of_type_Bklp == null);
+    this.jdField_a_of_type_Bklp.displayPanel();
   }
   
   protected void a(MotionEvent paramMotionEvent)
@@ -181,14 +181,14 @@ public class SlideBottomPanel
         {
           this.jdField_c_of_type_Boolean = true;
           this.jdField_g_of_type_Float = paramMotionEvent.getY();
-          localView.addOnLayoutChangeListener(new bivp(this));
+          localView.addOnLayoutChangeListener(new bkmb(this));
         }
       } while (!this.jdField_c_of_type_Boolean);
       this.jdField_h_of_type_Float = (paramMotionEvent.getY() - this.jdField_g_of_type_Float);
       this.jdField_g_of_type_Float = paramMotionEvent.getY();
       float f1 = localView.getY();
-      if ((this.jdField_a_of_type_Bivd != null) && (f1 > this.jdField_b_of_type_Int - this.jdField_i_of_type_Float) && (f1 < this.jdField_b_of_type_Int - this.j)) {
-        this.jdField_a_of_type_Bivd.fadeBackground(1.0F - f1 / (this.jdField_b_of_type_Int - this.j));
+      if ((this.jdField_a_of_type_Bklp != null) && (f1 > this.jdField_b_of_type_Int - this.jdField_i_of_type_Float) && (f1 < this.jdField_b_of_type_Int - this.j)) {
+        this.jdField_a_of_type_Bklp.fadeBackground(1.0F - f1 / (this.jdField_b_of_type_Int - this.j));
       }
       if (this.jdField_h_of_type_Float + f1 <= this.jdField_b_of_type_Int - this.jdField_i_of_type_Float)
       {
@@ -253,11 +253,11 @@ public class SlideBottomPanel
       ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { localView.getY(), this.jdField_b_of_type_Int - this.j });
       localValueAnimator.setInterpolator(this.jdField_b_of_type_AndroidViewAnimationInterpolator);
       localValueAnimator.setTarget(localView);
-      localValueAnimator.addUpdateListener(new bivq(this, localView, m));
-      localValueAnimator.addListener(new bivr(this));
+      localValueAnimator.addUpdateListener(new bkmc(this, localView, m));
+      localValueAnimator.addListener(new bkmd(this));
       localValueAnimator.start();
-    } while (this.jdField_a_of_type_Bivd == null);
-    this.jdField_a_of_type_Bivd.hidePanel();
+    } while (this.jdField_a_of_type_Bklp == null);
+    this.jdField_a_of_type_Bklp.hidePanel();
   }
   
   protected void b(MotionEvent paramMotionEvent)
@@ -336,8 +336,8 @@ public class SlideBottomPanel
   {
     boolean bool2 = false;
     c(paramMotionEvent);
-    if (this.jdField_a_of_type_Bivd != null) {
-      this.jdField_a_of_type_Bivd.cancelAnimator();
+    if (this.jdField_a_of_type_Bklp != null) {
+      this.jdField_a_of_type_Bklp.cancelAnimator();
     }
     switch (paramMotionEvent.getAction())
     {
@@ -407,9 +407,9 @@ public class SlideBottomPanel
     return (this.jdField_c_of_type_Boolean) || (this.jdField_b_of_type_Boolean);
   }
   
-  public void setSlidePanelListener(bivd parambivd)
+  public void setSlidePanelListener(bklp parambklp)
   {
-    this.jdField_a_of_type_Bivd = parambivd;
+    this.jdField_a_of_type_Bklp = parambklp;
   }
 }
 

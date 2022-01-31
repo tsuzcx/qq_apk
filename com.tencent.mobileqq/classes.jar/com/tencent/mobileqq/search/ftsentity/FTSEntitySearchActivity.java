@@ -2,7 +2,7 @@ package com.tencent.mobileqq.search.ftsentity;
 
 import android.content.Context;
 import android.content.Intent;
-import avmd;
+import awlw;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 
@@ -27,13 +27,13 @@ public class FTSEntitySearchActivity
   
   public String a()
   {
-    return avmd.b(this, this.a);
+    return awlw.b(this, this.a);
   }
   
   public void doOnStart()
   {
     super.doOnStart();
-    bakr.a = true;
+    bbmb.a = true;
   }
 }
 

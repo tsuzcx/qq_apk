@@ -1,23 +1,38 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.apollo.view.ApolloFavViewBinder.1;
-import com.tencent.mobileqq.apollo.view.ApolloFavViewBinder.1.1.1;
+import org.json.JSONObject;
 
 public class ajbb
-  implements Animation.AnimationListener
+  implements ajbp
 {
-  public ajbb(ApolloFavViewBinder.1 param1) {}
+  private int a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public ajbb()
   {
-    this.a.a.setVisibility(8);
-    this.a.a.postDelayed(new ApolloFavViewBinder.1.1.1(this), 300L);
+    int i = ajbo.a;
+    ajbo.a = i + 1;
+    this.a = i;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public String a()
+  {
+    return null;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public JSONObject a(ajbo paramajbo, JSONObject paramJSONObject)
+  {
+    if ("cs.audio_create.local".equals(paramJSONObject.optString("N_R_CMD")))
+    {
+      paramJSONObject = new ajao(paramJSONObject.optInt("N_R_OBJ"), paramJSONObject.optInt("id"), paramJSONObject.optString("type"));
+      if (paramajbo != null) {
+        paramajbo.a(paramJSONObject);
+      }
+    }
+    return null;
+  }
+  
+  public int c()
+  {
+    return this.a;
+  }
 }
 
 

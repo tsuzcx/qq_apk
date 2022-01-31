@@ -1,18 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDraftboxFragment.1;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDraftboxFragment.1.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
 
 public class ptk
-  implements ptl
+  extends pti
 {
-  public ptk(ReadInJoyDraftboxFragment.1 param1) {}
-  
-  public void a(List<ReadInJoyDraftboxItem> paramList)
+  public ptk(Context paramContext, baxk parambaxk, rap paramrap)
   {
-    ThreadManager.getUIHandler().post(new ReadInJoyDraftboxFragment.1.1.1(this, paramList));
+    super(paramContext, parambaxk, paramrap);
+  }
+  
+  public pqt g()
+  {
+    this.jdField_a_of_type_Pqs = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

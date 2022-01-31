@@ -1,27 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.21;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.21.1.1;
+import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
 
 public class ahuy
-  implements DialogInterface.OnClickListener
+  implements ahxf
 {
-  public ahuy(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public ahuy(NewFlowCameraActivity.21.1.1 param1) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
+    if (paramInt == 0)
     {
-      if (this.a.jdField_a_of_type_Int == 2) {
-        this.a.a();
+      NewFlowCameraActivity.b(this.a.a.a.this$0, true);
+      if (this.a.a.a.this$0.d.getVisibility() == 0)
+      {
+        this.a.a.a.this$0.d.setVisibility(8);
+        this.a.a.a.this$0.a.a(NewFlowCameraActivity.a(this.a.a.a.this$0));
       }
-      this.a.a(this.a.c);
+      return;
     }
-    aweg.a = true;
+    NewFlowCameraActivity.b(this.a.a.a.this$0, false);
+    this.a.a.a.this$0.a.a(NewFlowCameraActivity.a(this.a.a.a.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahuy
  * JD-Core Version:    0.7.0.1
  */

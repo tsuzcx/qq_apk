@@ -62,14 +62,14 @@ public class EcdhCrypt
     catch (ExceptionInInitializerError paramArrayOfByte)
     {
       util.LOGW("create key failed ExceptionInInitializerError, " + paramArrayOfByte.getMessage(), "");
-      t.aq.attr_api(2459818);
+      t.as.attr_api(2459818);
       return null;
     }
     catch (Exception localException)
     {
       util.LOGI("calShareKeyByBouncycastle failed " + pkcs8PrivateKey.toString() + " peer public key " + util.buf_to_string(paramArrayOfByte), "");
       util.printException(localException);
-      t.aq.attr_api(2459818);
+      t.as.attr_api(2459818);
     }
     return null;
   }
@@ -80,7 +80,7 @@ public class EcdhCrypt
     if (GenECDHKeyEx(paramString3, paramString2, paramString1) == 0) {
       return _g_share_key;
     }
-    t.aq.attr_api(2461268);
+    t.as.attr_api(2461268);
     return null;
   }
   
@@ -116,14 +116,14 @@ public class EcdhCrypt
     catch (ExceptionInInitializerError localExceptionInInitializerError)
     {
       util.LOGW("create key pair and shared key failed ExceptionInInitializerError, " + localExceptionInInitializerError.getMessage(), "");
-      t.aq.attr_api(2368735);
+      t.as.attr_api(2368735);
       return -1;
     }
     catch (Exception localException)
     {
       util.LOGI("initShareKeyByBouncycastle failed, ", "");
       util.printException(localException);
-      t.aq.attr_api(2368735);
+      t.as.attr_api(2368735);
     }
     return -2;
   }

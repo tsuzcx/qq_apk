@@ -1,87 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.CardUinInfo;
 
-public class ames
-  extends alzl<bhny>
+public final class ames
+  implements Parcelable.Creator<CardUinInfo>
 {
-  public int a()
+  public CardUinInfo a(Parcel paramParcel)
   {
-    return 304;
+    return new CardUinInfo(paramParcel);
   }
   
-  @NonNull
-  public bhny a(int paramInt)
+  public CardUinInfo[] a(int paramInt)
   {
-    return new bhny();
-  }
-  
-  @Nullable
-  public bhny a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length == 0)) {
-      return null;
-    }
-    paramArrayOfalzs = paramArrayOfalzs[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMStickerConfigProcessor", 2, "handleGetQIMPasterConfig onParsed, content:" + paramArrayOfalzs);
-    }
-    return new bhnv().a(paramArrayOfalzs, bhko.a.getAbsolutePath(), "temp_sticker_zip", new amet(this));
-  }
-  
-  public Class<bhny> a()
-  {
-    return bhny.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMStickerConfigProcessor", 2, "handleGetQIMPasterConfig onReqFailed");
-    }
-  }
-  
-  public void a(bhny parambhny)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMStickerConfigProcessor", 2, "handleGetQIMPasterConfig onUpdate");
-    }
-  }
-  
-  public int b()
-  {
-    if (!bhko.a()) {
-      return 0;
-    }
-    return baig.D(BaseApplicationImpl.getContext());
-  }
-  
-  public int b(int paramInt)
-  {
-    if (!bhko.a())
-    {
-      QLog.i("QIMStickerConfigProcessor", 1, "config file not exist");
-      alzw.a().a(304, 0);
-      return 0;
-    }
-    return super.b(paramInt);
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return new CardUinInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ames
  * JD-Core Version:    0.7.0.1
  */

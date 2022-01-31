@@ -1,23 +1,83 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import java.util.ArrayList;
 import java.util.List;
 
-class pcn
-  implements ViewBase.OnClickListener
+public class pcn
+  extends BaseAdapter
 {
-  pcn(pck parampck) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArrayList<pcp> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void onClick(ViewBase paramViewBase)
+  public pcn(Context paramContext)
   {
-    oag.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
-    if ((pcj.a(this.a.jdField_a_of_type_Pcj) != null) && (this.a.jdField_a_of_type_Int < pcj.a(this.a.jdField_a_of_type_Pcj).size()))
-    {
-      obz.a(pcj.a(this.a.jdField_a_of_type_Pcj).getContext(), (BaseArticleInfo)pcj.a(this.a.jdField_a_of_type_Pcj).get(this.a.jdField_a_of_type_Int), paramViewBase.getEventAttachedData());
-      return;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private void a(int paramInt, pcq parampcq)
+  {
+    String str;
+    if (((pcp)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int == 2) {
+      str = ((pcp)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).b;
     }
-    obz.a(pcj.a(this.a.jdField_a_of_type_Pcj).getContext(), paramViewBase.getEventAttachedData());
+    for (;;)
+    {
+      parampcq.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      return;
+      if (((pcp)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int == 1) {
+        str = ((pcp)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString;
+      } else {
+        str = "";
+      }
+    }
+  }
+  
+  public void a(List<pcp> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if ((paramView != null) && (((pcq)paramView.getTag()).jdField_a_of_type_Int == ((pcp)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int))
+    {
+      paramViewGroup = (pcq)paramView.getTag();
+      a(paramInt, paramViewGroup);
+      return paramView;
+    }
+    pcq localpcq = new pcq(this, null);
+    localpcq.jdField_a_of_type_Int = ((pcp)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int;
+    if (((pcp)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int == 2) {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560010, paramViewGroup, false);
+    }
+    for (localpcq.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364218));; localpcq.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368068)))
+    {
+      paramView.setTag(localpcq);
+      paramViewGroup = localpcq;
+      break;
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560013, paramViewGroup, false);
+    }
   }
 }
 

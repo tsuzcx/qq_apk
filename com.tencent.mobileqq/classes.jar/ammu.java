@@ -1,78 +1,64 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import SummaryCard.CondFitUser;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import java.util.List;
 
 public class ammu
-  extends alzl<String>
+  implements ajue
 {
-  public int a()
-  {
-    return 462;
-  }
+  public ammu(SearchResultActivity paramSearchResultActivity) {}
   
-  public Class<String> a()
+  public void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt)
   {
-    return String.class;
-  }
-  
-  @NonNull
-  public String a(int paramInt)
-  {
-    return "";
-  }
-  
-  @Nullable
-  public String a(alzs[] paramArrayOfalzs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoDrawConfProcessor", 2, "onParsed");
+    int i = 1;
+    if (paramInt == 3) {
+      if (!paramBoolean1)
+      {
+        this.a.b = 3;
+        this.a.jdField_a_of_type_Ammw.notifyDataSetChanged();
+      }
     }
-    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length == 0)) {
-      paramArrayOfalzs = null;
-    }
-    String str;
-    do
+    while (paramInt != 2)
     {
-      return paramArrayOfalzs;
-      str = paramArrayOfalzs[0].a;
-      paramArrayOfalzs = str;
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoDrawConfProcessor", 2, " onParsed, content:" + str);
-    return str;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoDrawConfProcessor", 2, "onReqFailed");
+      return;
+      if ((paramList != null) && (!paramList.isEmpty())) {
+        this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      }
+      paramList = this.a;
+      if (paramBoolean2) {}
+      for (paramInt = i;; paramInt = 0)
+      {
+        paramList.b = paramInt;
+        break;
+      }
     }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoDrawConfProcessor", 2, "onUpdate");
+    if (paramBoolean1)
+    {
+      bbaz.a(true);
+      if ((paramList != null) && (!paramList.isEmpty()))
+      {
+        this.a.jdField_a_of_type_JavaUtilList.clear();
+        this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      }
+      this.a.jdField_a_of_type_Ammw.notifyDataSetChanged();
+      bbaz.a(false);
+      SearchResultActivity.a(this.a).a(0);
+      paramList = Message.obtain();
+      paramList.what = 5;
+      SearchResultActivity.a(this.a).sendMessageDelayed(paramList, 1000L);
+      return;
     }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    SearchResultActivity.a(this.a).a(1);
+    paramList = Message.obtain();
+    paramList.what = 4;
+    SearchResultActivity.a(this.a).sendMessageDelayed(paramList, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ammu
  * JD-Core Version:    0.7.0.1
  */

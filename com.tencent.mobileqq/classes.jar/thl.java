@@ -1,21 +1,24 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
 class thl
-  extends Handler
+  extends ssy
 {
-  thl(thk paramthk, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  thl(thk paramthk) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    if (this.a.a) {
-      return;
+    super.a(paramBoolean1, paramBoolean2, paramInt, paramString);
+    if ((paramBoolean1) && (paramBoolean2)) {
+      bcpw.a(this.a.a.a, 2, ajyc.a(2131706958), 0).a();
     }
-    thk.a(this.a, this.a.c);
+    do
+    {
+      return;
+      if ((!paramBoolean1) && (paramBoolean2))
+      {
+        bcpw.a(this.a.a.a, 1, ajyc.a(2131706963), 0).a();
+        return;
+      }
+    } while ((paramBoolean1) || (paramBoolean2));
+    bcpw.a(this.a.a.a, 1, ajyc.a(2131706959), 0).a();
   }
 }
 

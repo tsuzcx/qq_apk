@@ -1,37 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.util.Base64;
-import bgmq;
-import com.tencent.biz.pubaccount.readinjoy.struct.MySelfNormalItemRedPointInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
+import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
+import rij;
 
 class KandianMergeManager$34
   implements Runnable
 {
-  KandianMergeManager$34(KandianMergeManager paramKandianMergeManager, MySelfNormalItemRedPointInfo paramMySelfNormalItemRedPointInfo) {}
+  KandianMergeManager$34(KandianMergeManager paramKandianMergeManager) {}
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = bgmq.a(KandianMergeManager.a(this.this$0), true, false).edit();
-    Object localObject = new ByteArrayOutputStream();
-    try
+    if ((KandianMergeManager.a(this.this$0) != null) && (this.this$0.h()))
     {
-      new ObjectOutputStream((OutputStream)localObject).writeObject(this.a);
-      localObject = new String(Base64.encode(((ByteArrayOutputStream)localObject).toByteArray(), 0));
-      localEditor.putString("kandian_myself_red_point" + this.a.itemId, (String)localObject);
-      bgmq.a(localEditor, true);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("KandianMergeManager", 2, "writeToSpMySelfRedPointInfo:" + localIOException.toString());
+      Kandian210Msg0xeeInfo localKandian210Msg0xeeInfo = KandianMergeManager.a(this.this$0);
+      KandianMergeManager.a(this.this$0, null);
+      Kandian210Msg0xeeInfo.removeKandian210Msg0xeeInfoFromSp();
+      rij.a().a(localKandian210Msg0xeeInfo);
     }
   }
 }

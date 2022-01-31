@@ -1,32 +1,36 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import cooperation.qlink.QlAndQQInterface.WorkState;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qqmini.sdk.ui.MiniBaseFragment;
+import com.tencent.qqmini.sdk.ui.MiniFragmentActivity;
 
-class bfff
-  implements DialogInterface.OnClickListener
+public class bfff
 {
-  bfff(bffc parambffc, ArrayList paramArrayList, Activity paramActivity, int paramInt, boolean paramBoolean) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(Activity paramActivity, Intent paramIntent, Class<? extends MiniFragmentActivity> paramClass, Class<? extends MiniBaseFragment> paramClass1, int paramInt)
   {
-    this.jdField_a_of_type_Bffc.a("0X8004855", 1);
-    this.jdField_a_of_type_Bffc.a(bffc.a(this.jdField_a_of_type_Bffc).mPeerUin, this.jdField_a_of_type_JavaUtilArrayList);
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArrayList("string_filepaths", this.jdField_a_of_type_JavaUtilArrayList);
-    localBundle.putBoolean("STRING_CONTINUE_SEND_TO_", true);
-    bffc.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, localBundle);
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
     }
+    localIntent.setClass(paramActivity, paramClass);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    paramActivity.startActivityForResult(localIntent, paramInt);
+  }
+  
+  public static void a(Context paramContext, Intent paramIntent, Class<? extends MiniFragmentActivity> paramClass, Class<? extends MiniBaseFragment> paramClass1)
+  {
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.setClass(paramContext, paramClass);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    paramContext.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfff
  * JD-Core Version:    0.7.0.1
  */

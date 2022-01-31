@@ -1,20 +1,88 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-public final class anah
+public class anah
+  extends ampb<anag>
 {
-  public static Bundle a(String paramString1, String paramString2, int paramInt, Bundle paramBundle)
+  public int a()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("cmd", paramString1);
-    localBundle.putString("callbackid", paramString2);
-    localBundle.putInt("respkey", paramInt);
-    localBundle.putBundle("request", paramBundle);
-    return localBundle;
+    return 434;
+  }
+  
+  @NonNull
+  public anag a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchBusinessConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new anag();
+  }
+  
+  @Nullable
+  public anag a(ampi[] paramArrayOfampi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchBusinessConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchBusinessConfProcessor", 2, "onParsed " + paramArrayOfampi.length);
+      }
+      return anag.a(paramArrayOfampi[0]);
+    }
+    return null;
+  }
+  
+  public Class<anag> a()
+  {
+    return anag.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchBusinessConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(anag paramanag)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramanag == null) {
+        break label43;
+      }
+    }
+    label43:
+    for (paramanag = paramanag.toString();; paramanag = " empty")
+    {
+      QLog.d("SearchBusinessConfProcessor", 2, paramanag);
+      return;
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anah
  * JD-Core Version:    0.7.0.1
  */

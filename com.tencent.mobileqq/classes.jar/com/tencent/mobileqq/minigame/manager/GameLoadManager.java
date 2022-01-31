@@ -190,15 +190,6 @@ public class GameLoadManager
     return null;
   }
   
-  public String getEngineVersion()
-  {
-    InstalledEngine localInstalledEngine = this.mGameEngineLoadTask.getEngine();
-    if ((localInstalledEngine != null) && (localInstalledEngine.loadStatus == 3)) {
-      return String.valueOf(localInstalledEngine.engineVersion);
-    }
-    return "";
-  }
-  
   public ITTEngine getGameEngine()
   {
     return this.mGameEngineLoadTask.getGameEngine();
@@ -224,7 +215,7 @@ public class GameLoadManager
   public void onTaskDone(BaseTask paramBaseTask)
   {
     if (paramBaseTask == null) {}
-    label418:
+    label416:
     for (;;)
     {
       return;
@@ -245,7 +236,7 @@ public class GameLoadManager
       for (;;)
       {
         if (!paramBaseTask.isDone()) {
-          break label418;
+          break label416;
         }
         updateFlow(paramBaseTask);
         return;

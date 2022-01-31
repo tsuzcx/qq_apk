@@ -1,66 +1,25 @@
-import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.io.Serializable;
-import java.lang.ref.WeakReference;
 
-public class anfb
-  extends Handler
+class anfb
+  implements mxo
 {
-  protected Bundle a;
-  private WeakReference<MessengerService> a;
+  anfb(anez paramanez, mxn[] paramArrayOfmxn) {}
   
-  public anfb(MessengerService paramMessengerService)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMessengerService);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    boolean bool = true;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("MessengerService$QWalletOpenMsgHandler", 2, "handleMessage, mServiceWeakRef null");
-      }
-    }
-    MessengerService localMessengerService;
-    int i;
-    do
+    if (!paramBoolean)
     {
-      do
-      {
-        return;
-        localMessengerService = (MessengerService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localMessengerService != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("MessengerService$QWalletOpenMsgHandler", 2, "handleMessage, service null");
-      return;
-      i = paramMessage.what;
-    } while (i != 4);
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("qwallet.type", i);
-    if (paramMessage.arg1 == 1) {}
-    for (;;)
-    {
-      localBundle.putBoolean("qwallet.isSuccess", bool);
-      localBundle.putSerializable("qwallet.data", (Serializable)paramMessage.obj);
-      if (this.jdField_a_of_type_AndroidOsBundle == null) {
-        break;
+      anez.a(this.jdField_a_of_type_Anez).removeCallbacks(anez.a(this.jdField_a_of_type_Anez));
+      anez.a(this.jdField_a_of_type_Anez).run();
+      if (this.jdField_a_of_type_ArrayOfMxn[0] != null) {
+        this.jdField_a_of_type_ArrayOfMxn[0].a();
       }
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      localMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anfb
  * JD-Core Version:    0.7.0.1
  */

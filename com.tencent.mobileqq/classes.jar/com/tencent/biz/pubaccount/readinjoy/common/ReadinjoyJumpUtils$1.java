@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import com.tencent.biz.pubaccount.util.PreloadManager;
-import rsf;
+import sex;
 
 public final class ReadinjoyJumpUtils$1
   implements Runnable
 {
-  public ReadinjoyJumpUtils$1(PreloadManager paramPreloadManager, rsf paramrsf) {}
+  public ReadinjoyJumpUtils$1(PreloadManager paramPreloadManager, sex paramsex) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPreloadManager.b(this.jdField_a_of_type_Rsf.a);
+    this.jdField_a_of_type_ComTencentBizPubaccountUtilPreloadManager.b(this.jdField_a_of_type_Sex.a);
   }
 }
 

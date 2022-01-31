@@ -1,22 +1,34 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-
 public class ajio
-  implements ajpj
+  implements Comparable
 {
-  public ajio(FrameHelperActivity paramFrameHelperActivity) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
   
-  public void a()
+  public int compareTo(Object paramObject)
   {
-    if (this.a.a.hasMessages(17)) {
-      this.a.a.removeMessages(17);
+    paramObject = (ajio)paramObject;
+    if (this.d < paramObject.d) {
+      return 1;
     }
-    this.a.a.sendEmptyMessage(17);
+    if (this.d > paramObject.d) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajio
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class aocl
-  implements View.OnClickListener
+class aocl
+  implements DialogInterface.OnClickListener
 {
-  public aocl(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  aocl(aoci paramaoci) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject1 = paramView.getTag();
-    Object localObject2;
-    FileManagerEntity localFileManagerEntity;
-    int i;
-    if ((localObject1 instanceof aocu))
+    paramDialogInterface = this.a.jdField_a_of_type_AndroidContentContext.getString(2131719964);
+    bbqw.a(null, this.a.jdField_a_of_type_AndroidContentContext, "mvip.g.a.bq_tz", 3, "1450000515", "CJCLUBT", paramDialogInterface, "", false, true);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
     {
-      localObject2 = (aocu)paramView.getTag();
-      localObject1 = ((aocu)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-      localFileManagerEntity = (FileManagerEntity)((aocu)localObject2).jdField_a_of_type_JavaLangObject;
-      i = ((aocu)localObject2).b;
-      i = ((aocu)localObject2).c;
+      if (EmojiStickerManager.a().a != 0) {
+        break label103;
+      }
+      paramInt = 1;
     }
     for (;;)
     {
-      if ((paramView.getId() == 2131300609) && (QfileBaseRecentFileTabView.b(this.a))) {
-        awqx.b(QfileBaseRecentFileTabView.s(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
+      VasWebviewUtil.reportCommercialDrainage(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c(), "Stick", "ClickSVIPTip", String.valueOf(paramInt), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      return;
+      label103:
+      if (EmojiStickerManager.a().a == 1) {
+        paramInt = 2;
+      } else if (EmojiStickerManager.a().a == 3000) {
+        paramInt = 3;
+      } else {
+        paramInt = -1;
       }
-      if (localFileManagerEntity != null)
-      {
-        localObject2 = this.a;
-        if (paramView.getId() != 2131300609) {
-          break label183;
-        }
-      }
-      label183:
-      for (boolean bool = true;; bool = false)
-      {
-        ((QfileBaseRecentFileTabView)localObject2).a(localFileManagerEntity, (View)localObject1, bool);
-        return;
-        if (!(localObject1 instanceof anzc)) {
-          break label188;
-        }
-        localObject2 = (anzc)paramView.getTag();
-        localObject1 = ((anzc)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-        localFileManagerEntity = (FileManagerEntity)((anzc)localObject2).jdField_a_of_type_JavaLangObject;
-        i = ((anzc)localObject2).b;
-        i = ((anzc)localObject2).jdField_a_of_type_Int;
-        break;
-      }
-      label188:
-      localObject1 = null;
-      localFileManagerEntity = null;
     }
   }
 }

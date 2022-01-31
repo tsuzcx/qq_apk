@@ -1,23 +1,17 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.CustomWebView;
 
 public class nkr
-  extends GestureDetector.SimpleOnGestureListener
 {
-  private WeakReference<nhw> a;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public nkr(nhw paramnhw)
+  public nkr(CustomWebView paramCustomWebView)
   {
-    this.a = new WeakReference(paramnhw);
-  }
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((nhw)this.a.get()).a(true);
-    }
-    return false;
+    this.jdField_a_of_type_Int = 1;
   }
 }
 

@@ -1,23 +1,13 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import java.util.ArrayList;
+import android.os.Bundle;
 
 class agbt
-  implements agal
+  implements bcpl
 {
-  agbt(agbp paramagbp, Intent paramIntent, ArrayList paramArrayList) {}
+  agbt(agbs paramagbs) {}
   
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Agbp.a.f();
-    if (biys.a(this.jdField_a_of_type_Agbp.a, paramLocalMediaInfo))
-    {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-      PhotoUtils.a(this.jdField_a_of_type_Agbp.a, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
-    }
-  }
+  public void a(Bundle paramBundle) {}
+  
+  public void b(Bundle paramBundle) {}
 }
 
 

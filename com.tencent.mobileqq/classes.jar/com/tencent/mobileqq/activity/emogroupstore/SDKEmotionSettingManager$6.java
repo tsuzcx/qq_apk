@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import afiu;
+import afur;
 import android.app.Activity;
 import com.tencent.qphone.base.util.QLog;
 
 public class SDKEmotionSettingManager$6
   implements Runnable
 {
-  public SDKEmotionSettingManager$6(afiu paramafiu) {}
+  public SDKEmotionSettingManager$6(afur paramafur) {}
   
   public void run()
   {
-    if (afiu.a(this.this$0).isFinishing()) {
+    if (afur.a(this.this$0).isFinishing()) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -19,7 +19,7 @@ public class SDKEmotionSettingManager$6
     }
     this.this$0.a = true;
     this.this$0.c();
-    afiu.a(this.this$0, afiu.b(this.this$0));
+    afur.a(this.this$0, afur.b(this.this$0));
   }
 }
 

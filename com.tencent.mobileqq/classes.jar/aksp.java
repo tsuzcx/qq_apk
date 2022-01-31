@@ -1,171 +1,42 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.armap.ARMapTracer;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
-public class aksp
+class aksp
+  implements View.OnTouchListener
 {
-  static aksp a;
-  public int a;
-  public long a;
-  public long b;
-  public long c;
-  public long d;
-  public long e;
-  public long f;
+  aksp(aksl paramaksl, ImageView paramImageView) {}
   
-  public static aksp a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
+    int i;
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
     {
-      if (jdField_a_of_type_Aksp == null) {
-        jdField_a_of_type_Aksp = new aksp();
+      if (paramMotionEvent.getAction() != 1) {
+        break label45;
       }
-      return jdField_a_of_type_Aksp;
+      i = 255;
+      if (Build.VERSION.SDK_INT < 16) {
+        break label51;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
     }
-    finally {}
-  }
-  
-  public static void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARFaceDataCollector", 2, "reportARFaceInit,initCost  = " + paramLong + ",devType = " + ARMapTracer.a());
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("device_type", String.valueOf(ARMapTracer.a()));
-    awrn.a(BaseApplicationImpl.getApplication()).a(null, "actARFaceInit", true, paramLong, 0L, localHashMap, "", true);
-  }
-  
-  public static void a(long paramLong, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARFaceDataCollector", 2, "reportARTrackStablity,duration  = " + paramLong + ",count = " + paramInt);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("device_type", String.valueOf(ARMapTracer.a()));
-    localHashMap.put("recoverCount", String.valueOf(paramInt));
-    awrn.a(BaseApplicationImpl.getApplication()).a(null, "actARFaceTrackStability", true, paramLong, 0L, localHashMap, "", true);
-  }
-  
-  public static void a(aksh paramaksh, akse paramakse)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("errorcode_mq", String.valueOf(paramakse.jdField_a_of_type_Int));
-    localHashMap.put("errorcode_yt", String.valueOf(paramakse.b));
-    if ((paramakse.jdField_a_of_type_Int == 0) && (paramakse.b == 0)) {}
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      int i = 0;
-      int m = 0;
-      int j = 0;
-      int k = 0;
-      if (bool)
-      {
-        i = m;
-        if (paramaksh.a.a != null) {
-          i = paramaksh.a.a.length;
-        }
-        j = k;
-        if (paramakse.jdField_a_of_type_JavaUtilArrayList != null) {
-          j = paramakse.jdField_a_of_type_JavaUtilArrayList.size();
-        }
-        localHashMap.put("send_person_count", String.valueOf(i));
-        localHashMap.put("receive_star_count", String.valueOf(j));
-      }
-      long l = System.currentTimeMillis() - paramaksh.c;
-      localHashMap.put("upload_cost", String.valueOf(l));
-      awrn.a(BaseApplicationImpl.getApplication()).a(null, "actARFaceCloudResult", bool, 0L, 0L, localHashMap, "", true);
-      if (QLog.isColorLevel()) {
-        QLog.d("ARFaceDataCollector", 2, "reportARFaceCloudResult,sendPersonCount  = " + i + ",starCount = " + j + ",uploadCost = " + l);
-      }
-      return;
-    }
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARFaceDataCollector", 2, "reportARSoLoadResult,libName  = " + paramString + ",result = " + paramInt);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("libName", paramString);
-    localHashMap.put("loadResult", String.valueOf(paramInt));
-    awrn.a(BaseApplicationImpl.getApplication()).a(null, "actARFaceSoLoadResult", true, 0L, 0L, localHashMap, "", true);
-  }
-  
-  public static void b(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARFaceDataCollector", 2, "reportARFaceDetect,cost  = " + paramLong);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("device_type", String.valueOf(ARMapTracer.a()));
-    awrn.a(BaseApplicationImpl.getApplication()).a(null, "actARFaceDetect", true, paramLong, 0L, localHashMap, "", true);
-  }
-  
-  public static void c()
-  {
-    aksp localaksp = a();
-    localaksp.b();
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("device_type", String.valueOf(ARMapTracer.a()));
-    localHashMap.put("ppTotalCost", String.valueOf(localaksp.b));
-    localHashMap.put("ppFaceDectectCost", String.valueOf(localaksp.c));
-    localHashMap.put("upload_cost", String.valueOf(localaksp.d));
-    localHashMap.put("ppExtractCost", String.valueOf(localaksp.e));
-    localHashMap.put("ppExtractFaceCount", String.valueOf(localaksp.jdField_a_of_type_Int));
-    localHashMap.put("firstDrawUICost", String.valueOf(localaksp.f));
-    long l2 = localaksp.b;
-    if (localaksp.e > localaksp.d) {}
-    for (long l1 = localaksp.e;; l1 = localaksp.d)
-    {
-      localHashMap.put("totalCost", String.valueOf(l1 + l2 + localaksp.f));
-      awrn.a(BaseApplicationImpl.getApplication()).a(null, "actFaceStepDuration", true, 0L, 0L, localHashMap, "", true);
-      localaksp.a();
-      return;
-    }
-  }
-  
-  public static void c(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARFaceDataCollector", 2, "reportARExtracFaceFeatrue,cost  = " + paramLong);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("device_type", String.valueOf(ARMapTracer.a()));
-    awrn.a(BaseApplicationImpl.getApplication()).a(null, "actARExtractFaceFeatrue", true, paramLong, 0L, localHashMap, "", true);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-    this.c = 0L;
-    this.d = 0L;
-    this.e = 0L;
-    this.f = 0L;
-  }
-  
-  public void b()
-  {
-    long l2 = this.b;
-    if (this.e > this.d) {}
-    for (long l1 = this.e;; l1 = this.d)
-    {
-      long l3 = this.f;
-      long l4 = System.currentTimeMillis();
-      long l5 = this.jdField_a_of_type_Long;
-      if (QLog.isColorLevel()) {
-        QLog.d("ARFaceDataCollector", 2, "printStepDuration preprocessTotalCost  = " + this.b + ",preprocessFaceDetectCost = " + this.c + ",picUploadCost = " + this.d + ",preprocessFeatureExtrctCost = " + this.e + ",preprocessFaceCount = " + this.jdField_a_of_type_Int + ",firstDrawUICost = " + this.f + ",totalCost = " + (l1 + l2 + l3) + ",starTime = " + this.jdField_a_of_type_Long + ",realCost = " + (l4 - l5));
-      }
-      return;
+      return false;
+      label45:
+      i = 127;
+      break;
+      label51:
+      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aksp
  * JD-Core Version:    0.7.0.1
  */

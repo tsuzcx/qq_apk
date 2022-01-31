@@ -2,8 +2,8 @@ package com.tencent.mobileqq.highway;
 
 public final class R$style
 {
-  public static final int AppBaseTheme = 2131689503;
-  public static final int AppTheme = 2131689514;
+  public static final int AppBaseTheme = 2131755039;
+  public static final int AppTheme = 2131755050;
 }
 
 

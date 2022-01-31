@@ -1,22 +1,45 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pushdialog.AIOPushDialogHelper.1.1;
-import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class audr
-  implements audx
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  audr(audq paramaudq) {}
+  public audr(ScanOcrView paramScanOcrView, audt paramaudt) {}
   
-  public void a(List<PushDialogTemplate> paramList)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ThreadManager.getUIHandler().post(new AIOPushDialogHelper.1.1(this, paramList));
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int j = (int)(this.jdField_a_of_type_Audt.a * f);
+    int i = (int)(f * this.jdField_a_of_type_Audt.jdField_b_of_type_Int);
+    int m = j - this.jdField_a_of_type_Audt.a;
+    int k = i - this.jdField_a_of_type_Audt.jdField_b_of_type_Int;
+    j = (int)(paramValueAnimator.getAnimatedFraction() * 255.0F);
+    i = j;
+    if (j > 255) {
+      i = 255;
+    }
+    j = i;
+    if (i < 0) {
+      j = 0;
+    }
+    i = this.jdField_a_of_type_Audt.jdField_b_of_type_AndroidGraphicsRect.left;
+    int n = m / 2;
+    int i1 = this.jdField_a_of_type_Audt.jdField_b_of_type_AndroidGraphicsRect.top;
+    int i2 = k / 2;
+    int i3 = this.jdField_a_of_type_Audt.jdField_b_of_type_AndroidGraphicsRect.right;
+    m /= 2;
+    int i4 = this.jdField_a_of_type_Audt.jdField_b_of_type_AndroidGraphicsRect.bottom;
+    k /= 2;
+    this.jdField_a_of_type_Audt.e = j;
+    this.jdField_a_of_type_Audt.c.set(i - n, i1 - i2, m + i3, k + i4);
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     audr
  * JD-Core Version:    0.7.0.1
  */

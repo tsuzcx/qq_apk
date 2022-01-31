@@ -1,8 +1,19 @@
-import android.graphics.Bitmap;
+import android.app.Activity;
+import android.os.Bundle;
+import java.lang.ref.WeakReference;
 
-public abstract interface bjbp
+public class bjbp
 {
-  public abstract void a(Bitmap paramBitmap);
+  public Bundle a;
+  public bjbs a;
+  public WeakReference<Activity> a;
+  
+  public bjbp(bjbs parambjbs, Bundle paramBundle, Activity paramActivity)
+  {
+    this.jdField_a_of_type_Bjbs = parambjbs;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+  }
 }
 
 

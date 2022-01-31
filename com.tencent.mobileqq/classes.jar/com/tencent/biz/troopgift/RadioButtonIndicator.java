@@ -11,12 +11,12 @@ import android.view.View.OnClickListener;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import com.tencent.common.config.AppSetting;
-import wmw;
-import woj;
+import xbz;
+import xdm;
 
 public class RadioButtonIndicator
   extends RadioGroup
-  implements ViewPager.OnPageChangeListener, View.OnClickListener, woj
+  implements ViewPager.OnPageChangeListener, View.OnClickListener, xdm
 {
   protected int a;
   protected ViewPager a;
@@ -30,19 +30,19 @@ public class RadioButtonIndicator
   public RadioButtonIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2130839348;
+    this.jdField_a_of_type_Int = 2130839377;
   }
   
   public RadioButton a(int paramInt)
   {
-    wmw localwmw = new wmw(this, getContext());
-    localwmw.setButtonDrawable(this.jdField_a_of_type_Int);
-    localwmw.setPadding(10, 0, 10, 0);
-    localwmw.setClickable(true);
-    if ((AppSetting.c) && (Build.VERSION.SDK_INT > 16)) {
-      ViewCompat.setImportantForAccessibility(localwmw, 2);
+    xbz localxbz = new xbz(this, getContext());
+    localxbz.setButtonDrawable(this.jdField_a_of_type_Int);
+    localxbz.setPadding(10, 0, 10, 0);
+    localxbz.setClickable(true);
+    if ((AppSetting.d) && (Build.VERSION.SDK_INT > 16)) {
+      ViewCompat.setImportantForAccessibility(localxbz, 2);
     }
-    return localwmw;
+    return localxbz;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)

@@ -1,117 +1,111 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.Interpolator;
 
 public class weh
+  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener, wei
 {
-  public static final String a;
-  private static weh jdField_a_of_type_Weh;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  protected final float a;
+  protected final Interpolator a;
+  protected final weg a;
+  protected final weo a;
+  protected final float b;
   
-  static
+  public weh(weo paramweo, float paramFloat)
   {
-    jdField_a_of_type_JavaLangString = weh.class.getSimpleName();
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new DecelerateInterpolator();
+    this.jdField_a_of_type_Weo = paramweo;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.b = (2.0F * paramFloat);
+    this.jdField_a_of_type_Weg = new weg();
   }
   
-  private String a(String paramString1, String paramString2, String paramString3)
+  protected Animator a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      localStringBuilder.append(paramString1);
-      if (TextUtils.isEmpty(paramString2)) {
-        break label78;
-      }
-      localStringBuilder.append("&&").append(paramString2);
-      label42:
-      if (TextUtils.isEmpty(paramString3)) {
-        break label94;
-      }
-      localStringBuilder.append("&&").append(paramString3);
+    float f1 = 0.0F;
+    Object localObject1 = this.jdField_a_of_type_Weo.a();
+    Object localObject2 = this.jdField_a_of_type_Weo.jdField_a_of_type_Wej;
+    Object localObject3 = this.jdField_a_of_type_Weo.jdField_a_of_type_Wen;
+    float f3 = this.jdField_a_of_type_Weo.jdField_a_of_type_Float;
+    ((wej)localObject2).a((View)localObject1, this.jdField_a_of_type_Weg);
+    if ((f3 == 0.0F) || ((f3 < 0.0F) && (((wen)localObject3).jdField_a_of_type_Boolean)) || ((f3 > 0.0F) && (!((wen)localObject3).jdField_a_of_type_Boolean))) {
+      return a(this.jdField_a_of_type_Weg.jdField_a_of_type_Float);
     }
+    float f2 = -f3 / this.jdField_a_of_type_Float;
+    if (f2 < 0.0F) {}
     for (;;)
     {
-      return localStringBuilder.toString();
-      localStringBuilder.append("0");
-      break;
-      label78:
-      localStringBuilder.append("&&").append("0");
-      break label42;
-      label94:
-      localStringBuilder.append("&&").append("0");
+      f2 = -f3 * f3 / this.b + this.jdField_a_of_type_Weg.jdField_a_of_type_Float;
+      localObject1 = a((View)localObject1, (int)f1, f2);
+      localObject2 = a(f2);
+      localObject3 = new AnimatorSet();
+      ((AnimatorSet)localObject3).playSequentially(new Animator[] { localObject1, localObject2 });
+      return localObject3;
+      f1 = f2;
     }
   }
   
-  public static weh a()
+  protected ObjectAnimator a(float paramFloat)
   {
-    if (jdField_a_of_type_Weh == null) {}
-    try
-    {
-      if (jdField_a_of_type_Weh == null) {
-        jdField_a_of_type_Weh = new weh();
-      }
-      return jdField_a_of_type_Weh;
-    }
-    finally {}
+    Object localObject = this.jdField_a_of_type_Weo.a();
+    wen localwen = this.jdField_a_of_type_Weo.jdField_a_of_type_Wen;
+    paramFloat = Math.abs(paramFloat) / this.jdField_a_of_type_Weg.b;
+    localObject = ObjectAnimator.ofFloat(localObject, this.jdField_a_of_type_Weg.jdField_a_of_type_AndroidUtilProperty, new float[] { localwen.jdField_a_of_type_Float });
+    ((ObjectAnimator)localObject).setDuration(Math.max((int)(paramFloat * 800.0F), 200));
+    ((ObjectAnimator)localObject).setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
+    ((ObjectAnimator)localObject).addUpdateListener(this);
+    return localObject;
   }
   
-  private void a(String paramString1, String paramString2)
+  protected ObjectAnimator a(View paramView, int paramInt, float paramFloat)
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "storeComment storeKey: " + paramString1 + " comment: " + paramString2);
-    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+    paramView = ObjectAnimator.ofFloat(paramView, this.jdField_a_of_type_Weg.jdField_a_of_type_AndroidUtilProperty, new float[] { paramFloat });
+    paramView.setDuration(paramInt);
+    paramView.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
+    paramView.addUpdateListener(this);
+    return paramView;
   }
   
-  private String b(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
+  public void a(wei paramwei)
   {
-    if (paramStFeed != null)
-    {
-      paramStFeed = paramStFeed.id.get();
-      if (paramStComment == null) {
-        break label50;
-      }
-      paramStComment = paramStComment.id.get();
-      label24:
-      if (paramStReply == null) {
-        break label56;
-      }
-    }
-    label50:
-    label56:
-    for (paramStReply = paramStReply.id.get();; paramStReply = "")
-    {
-      return a(paramStFeed, paramStComment, paramStReply);
-      paramStFeed = "";
-      break;
-      paramStComment = "";
-      break label24;
-    }
+    paramwei = a();
+    paramwei.addListener(this);
+    paramwei.start();
   }
   
-  public String a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    paramStFeed = b(paramStFeed, paramStComment, paramStReply);
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramStFeed))
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "getComment storeKey: " + paramStFeed + " preCommentText: " + (String)this.jdField_a_of_type_JavaUtilMap.get(paramStFeed));
-      return (String)this.jdField_a_of_type_JavaUtilMap.get(paramStFeed);
-    }
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "getComment storeKey: " + paramStFeed + " preCommentText doesn't exit");
-    return "";
+    return true;
   }
   
-  public void a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply, String paramString)
+  public boolean b(MotionEvent paramMotionEvent)
   {
-    a(b(paramStFeed, paramStComment, paramStReply), paramString);
+    return true;
   }
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Weo.a(this.jdField_a_of_type_Weo.jdField_a_of_type_Wek);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     weh
  * JD-Core Version:    0.7.0.1
  */

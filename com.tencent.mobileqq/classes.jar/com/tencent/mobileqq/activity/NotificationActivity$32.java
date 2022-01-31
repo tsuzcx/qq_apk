@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import baua;
+import bbwu;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
@@ -11,19 +11,21 @@ class NotificationActivity$32
   
   public void run()
   {
-    boolean bool = NotificationActivity.a(this.this$0).a();
-    QLog.e("LhHelper", 1, "receiveLhCard result = " + bool);
-    if (bool)
+    int i = NotificationActivity.a(this.this$0).c();
+    QLog.e("LhHelper", 1, "handleLhExpire userStatus = " + i);
+    if (i == 1) {
+      NotificationActivity.a(this.this$0).sendEmptyMessage(1);
+    }
+    do
     {
-      if (NotificationActivity.a(this.this$0).b())
+      return;
+      if (i == 2)
       {
-        NotificationActivity.a(this.this$0).sendEmptyMessage(5);
+        NotificationActivity.a(this.this$0).sendEmptyMessage(2);
         return;
       }
-      NotificationActivity.a(this.this$0).sendEmptyMessage(6);
-      return;
-    }
-    NotificationActivity.a(this.this$0).sendEmptyMessage(6);
+    } while (i != 3);
+    NotificationActivity.a(this.this$0).sendEmptyMessage(3);
   }
 }
 

@@ -1,26 +1,47 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.dataline.activities.LiteActivity;
-import com.dataline.activities.LiteActivity.9.1;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
 
 public class bx
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public bx(LiteActivity paramLiteActivity) {}
+  public bx(LiteActivity paramLiteActivity, long paramLong, Context paramContext) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(LiteActivity.jdField_a_of_type_JavaLangString, 2, "ontouch--fcc----: " + paramMotionEvent.getAction());
+    if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().getIntExtra("forward_type", -1) == 11) {
+      bded.a().a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), "", String.valueOf(this.jdField_a_of_type_Long), "1000", "51", "0", false);
     }
-    this.a.q();
-    LiteActivity.a(this.a, false);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.postDelayed(new LiteActivity.9.1(this), 200L);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.onTouch(paramView, paramMotionEvent);
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.i(LiteActivity.a, 2, "qbShowShareResultDialog back");
+    }
+    if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().getBooleanExtra("MigSdkShareNotDone", false))
+    {
+      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().putExtra("MigSdkShareNotDone", false);
+      aqfb.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, true, "sendToMyComputer", this.jdField_a_of_type_Long);
+    }
+    for (;;)
+    {
+      nax.a(this.jdField_a_of_type_AndroidContentContext, 0, "", "");
+      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.finish();
+      if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().getBooleanExtra("show_share_result_dialog_return_thirdapp", true)) {}
+      try
+      {
+        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getActivity().moveTaskToBack(true);
+        return;
+        aqfb.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, true, "shareToQQ", this.jdField_a_of_type_Long);
+      }
+      catch (Throwable paramDialogInterface)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.e(LiteActivity.a, 2, "qbShowShareResultDialog ", paramDialogInterface);
+      }
+    }
   }
 }
 

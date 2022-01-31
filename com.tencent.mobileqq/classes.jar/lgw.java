@@ -1,6 +1,13 @@
 public class lgw
 {
-  lgr a;
+  public byte[] a;
+  public byte[] b;
+  
+  public lgw(int paramInt1, int paramInt2)
+  {
+    this.a = new byte[paramInt1];
+    this.b = new byte[paramInt2];
+  }
 }
 
 

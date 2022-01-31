@@ -1,27 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.widget.RelativeLayout;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.data.LockedCategory;
 
-public class bjce
-  implements ValueAnimator.AnimatorUpdateListener
+public final class bjce
+  implements Parcelable.Creator<LockedCategory>
 {
-  public bjce(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public LockedCategory a(Parcel paramParcel)
   {
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
-      if ((this.a.a.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
-        this.a.a.setAlpha(f);
-      }
-      if ((this.a.c.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
-        this.a.c.setAlpha(Float.valueOf(f).floatValue());
-      }
-    }
+    return new LockedCategory(paramParcel);
+  }
+  
+  public LockedCategory[] a(int paramInt)
+  {
+    return new LockedCategory[paramInt];
   }
 }
 

@@ -1,29 +1,53 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.graphics.drawable.Animatable;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
+import com.tencent.mobileqq.activity.aio.item.PttAudioPlayView;
+import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.TriangleView;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.doutu.DuiButtonImageView;
 
-class aduu
-  implements View.OnTouchListener
+public class aduu
+  extends acun
 {
-  aduu(aduq paramaduq) {}
+  public long a;
+  public FrameLayout a;
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public aobk a;
+  public BreathAnimationLayout a;
+  public PttAudioPlayView a;
+  public PttAudioWaveView a;
+  public TriangleView a;
+  EmoticonPackage jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
+  DuiButtonImageView jdField_a_of_type_ComTencentMobileqqDoutuDuiButtonImageView;
+  public boolean a;
+  ImageView b;
+  public RelativeLayout b;
+  public boolean b;
+  ImageView c;
+  ImageView d;
+  public int e = -1;
+  public ImageView e;
+  public ImageView f;
+  ImageView g;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView.a();
     }
-    for (;;)
-    {
-      return false;
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        if (Build.VERSION.SDK_INT >= 11) {
-          paramView.setAlpha(1.0F);
-        }
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.b();
+    }
+    if ((this.g != null) && ((this.g.getDrawable() instanceof Animatable))) {
+      ((Animatable)this.g.getDrawable()).stop();
     }
   }
 }

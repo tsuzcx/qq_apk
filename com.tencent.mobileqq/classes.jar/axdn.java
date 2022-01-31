@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.teamwork.DocsGrayTipsInfo;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public final class axdn
-  implements Parcelable.Creator<DocsGrayTipsInfo>
+public abstract interface axdn
 {
-  public DocsGrayTipsInfo a(Parcel paramParcel)
-  {
-    return new DocsGrayTipsInfo(paramParcel);
-  }
+  public abstract MessageRecord a(axdt paramaxdt);
   
-  public DocsGrayTipsInfo[] a(int paramInt)
-  {
-    return new DocsGrayTipsInfo[paramInt];
-  }
+  public abstract MessageRecord a(axew paramaxew);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axdn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import apdc;
+import apuw;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public final class FileManagerUtil$1
@@ -10,7 +10,7 @@ public final class FileManagerUtil$1
   
   public void run()
   {
-    apdc.a(this.a);
+    apuw.a(this.a);
   }
 }
 

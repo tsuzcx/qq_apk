@@ -1,173 +1,290 @@
-import android.content.ContentResolver;
-import android.content.Context;
-import android.os.Looper;
-import android.provider.Settings.System;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.util.MD5Coding;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadConfig;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
-import java.util.HashMap;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class ahcw
 {
-  private static ahcw jdField_a_of_type_Ahcw;
-  private long jdField_a_of_type_Long;
-  public agjc a;
-  private String jdField_a_of_type_JavaLangString = "yyyy-MM-dd";
-  private StringBuffer jdField_a_of_type_JavaLangStringBuffer = new StringBuffer(25);
-  private HashMap<String, HashMap<String, String>> jdField_a_of_type_JavaUtilHashMap;
-  private HashMap<String, Boolean> b = new HashMap();
-  
-  private ahcw()
+  public static int a(String paramString, int paramInt)
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    d();
-    Object localObject3 = null;
-    Object localObject1 = localObject3;
-    if (localBaseApplicationImpl != null) {
-      localObject1 = localBaseApplicationImpl.getContentResolver();
-    }
-    try
+    int i = 0;
+    SharedPreferences localSharedPreferences = a(paramInt);
+    paramInt = i;
+    if (localSharedPreferences != null)
     {
-      localObject1 = Settings.System.getString((ContentResolver)localObject1, "date_format");
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-      for (this.jdField_a_of_type_JavaLangString = ((String)localObject1);; this.jdField_a_of_type_JavaLangString = "yyyy-MM-dd")
+      paramInt = i;
+      if (!TextUtils.isEmpty(paramString)) {
+        paramInt = localSharedPreferences.getInt("url_abnormal_retry_times" + paramString, 0);
+      }
+    }
+    return paramInt;
+  }
+  
+  public static long a(int paramInt)
+  {
+    long l = 0L;
+    SharedPreferences localSharedPreferences = a(paramInt);
+    if (localSharedPreferences != null) {
+      l = localSharedPreferences.getLong("check_surplus_res_time", 0L);
+    }
+    return l;
+  }
+  
+  public static long a(String paramString, int paramInt)
+  {
+    long l2 = 0L;
+    SharedPreferences localSharedPreferences = a(paramInt);
+    long l1 = l2;
+    if (localSharedPreferences != null)
+    {
+      l1 = l2;
+      if (!TextUtils.isEmpty(paramString)) {
+        l1 = localSharedPreferences.getLong("url_abnormal_retry_last_time" + paramString, 0L);
+      }
+    }
+    return l1;
+  }
+  
+  public static long a(String paramString, long paramLong, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = a(paramInt);
+    long l = paramLong;
+    if (localSharedPreferences != null)
+    {
+      l = paramLong;
+      if (!TextUtils.isEmpty(paramString)) {
+        l = localSharedPreferences.getLong("url_doneTime" + paramString, paramLong);
+      }
+    }
+    return l;
+  }
+  
+  private static SharedPreferences a(int paramInt)
+  {
+    if (BaseApplicationImpl.getApplication() != null)
+    {
+      if (paramInt == 1) {
+        return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_utilinner", 4);
+      }
+      return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_util", 4);
+    }
+    return null;
+  }
+  
+  public static ResourceInfo a(String paramString, boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    ResourceInfo localResourceInfo = new ResourceInfo();
+    localResourceInfo.url = paramString;
+    String str = ahbv.a(paramString, paramInt2);
+    if (!TextUtils.isEmpty(str))
+    {
+      localResourceInfo.filePath = str;
+      localResourceInfo.fileMd5 = b(paramString, str, paramInt2);
+      localResourceInfo.doneTime = a(paramString, 0L, paramInt2);
+      if ((paramBoolean) || (PreloadResource.isNeedAutoUnzip(paramString, paramInt1)))
       {
-        this.jdField_a_of_type_Agjc = new agjc(Looper.getMainLooper());
-        return;
+        paramString = PreloadResource.getFolderPathByMD5AndUrl(localResourceInfo.fileMd5, paramString, paramInt2);
+        if (!PreloadResource.isFolderPathValid(paramString)) {
+          break label99;
+        }
+        localResourceInfo.folderPath = paramString;
       }
     }
-    catch (Exception localException)
+    label99:
+    while (!PreloadResource.unzipAtomically(localResourceInfo.filePath, paramString)) {
+      return localResourceInfo;
+    }
+    localResourceInfo.folderPath = paramString;
+    return localResourceInfo;
+  }
+  
+  public static String a(String paramString1, String paramString2, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = a(paramInt);
+    String str = paramString2;
+    if (localSharedPreferences != null)
     {
-      for (;;)
+      str = paramString2;
+      if (!TextUtils.isEmpty(paramString1)) {
+        str = localSharedPreferences.getString("url_md5" + paramString1, paramString2);
+      }
+    }
+    return str;
+  }
+  
+  public static List<ahcx> a(int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = a(paramInt);
+    if (localObject != null)
+    {
+      localObject = ((SharedPreferences)localObject).getAll().entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Object localObject2 = localObject3;
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+        String str = (String)localEntry.getKey();
+        if (str.startsWith("url_last_use_time")) {
+          localArrayList.add(new ahcx(str.substring("url_last_use_time".length(), str.length()), ((Long)localEntry.getValue()).longValue(), paramInt));
+        }
       }
     }
+    return localArrayList;
   }
   
-  public static ahcw a()
+  public static void a(int paramInt, PreloadConfig paramPreloadConfig)
   {
-    if (jdField_a_of_type_Ahcw == null) {}
-    try
+    if (paramPreloadConfig == null) {}
+    long l1;
+    do
     {
-      if (jdField_a_of_type_Ahcw == null) {
-        jdField_a_of_type_Ahcw = new ahcw();
+      return;
+      l1 = NetConnInfoCenter.getServerTimeMillis();
+      if (l1 - a(paramInt) >= 86400000L) {
+        break;
       }
-      return jdField_a_of_type_Ahcw;
+    } while (!QLog.isColorLevel());
+    QLog.d("ResUtil", 2, "removeSurplusRes already Check Today:" + paramInt);
+    return;
+    Object localObject = ahbv.a(paramInt);
+    long l2 = System.currentTimeMillis();
+    long l3 = bbdj.b((String)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("ResUtil", 2, "resFolderPathSize:" + l3 + "|" + 209715200L + "|" + (System.currentTimeMillis() - l2));
     }
-    finally {}
-  }
-  
-  private boolean a()
-  {
-    if (System.currentTimeMillis() >= this.jdField_a_of_type_Long)
+    if (l3 > 209715200L)
     {
-      d();
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      return false;
+      localObject = a(paramInt).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        ahcx localahcx = (ahcx)((Iterator)localObject).next();
+        if ((localahcx != null) && (!TextUtils.isEmpty(localahcx.jdField_a_of_type_JavaLangString)) && (l1 - localahcx.jdField_a_of_type_Long > 2592000000L) && (!paramPreloadConfig.isUrlInConfig(localahcx.jdField_a_of_type_JavaLangString)))
+        {
+          ResourceInfo localResourceInfo = a(localahcx.jdField_a_of_type_JavaLangString, false, 0, localahcx.jdField_a_of_type_Int);
+          if (localResourceInfo != null)
+          {
+            b(localahcx.jdField_a_of_type_JavaLangString, localahcx.jdField_a_of_type_Int);
+            ahiy.a(localResourceInfo.filePath);
+            ahiy.a(localResourceInfo.folderPath);
+            ahcv.a(localahcx.jdField_a_of_type_JavaLangString, 8, localahcx.jdField_a_of_type_Int);
+          }
+        }
+      }
     }
-    return true;
+    a(l1, paramInt);
   }
   
-  private void d()
+  public static void a(long paramLong, int paramInt)
   {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.add(5, 1);
-    localCalendar.set(10, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    this.jdField_a_of_type_Long = localCalendar.getTimeInMillis();
+    SharedPreferences localSharedPreferences = a(paramInt);
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putLong("check_surplus_res_time", paramLong).apply();
+    }
   }
   
-  public String a()
+  public static void a(String paramString, int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    int i = a(paramString, paramInt);
+    SharedPreferences localSharedPreferences = a(paramInt);
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
+      localSharedPreferences.edit().putInt("url_abnormal_retry_times" + paramString, i + 1).putLong("url_abnormal_retry_last_time" + paramString, NetConnInfoCenter.getServerTimeMillis()).apply();
+    }
   }
   
-  public String a(String arg1, long paramLong)
+  public static void a(String paramString, int paramInt, long paramLong)
   {
-    HashMap localHashMap = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(???);
-    if ((localHashMap == null) || (!a()))
+    SharedPreferences localSharedPreferences = a(paramInt);
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
+      localSharedPreferences.edit().putLong("url_last_use_time" + paramString, paramLong).apply();
+    }
+  }
+  
+  public static void a(String paramString, long paramLong, int paramInt)
+  {
+    int i = 1;
+    SharedPreferences localSharedPreferences = a(paramInt);
+    if (localSharedPreferences != null)
     {
-      localHashMap = new HashMap();
-      this.jdField_a_of_type_JavaUtilHashMap.put(???, localHashMap);
-      ??? = null;
+      paramInt = 1;
+      if (TextUtils.isEmpty(paramString)) {
+        break label73;
+      }
     }
     for (;;)
     {
-      String str = ???;
-      if (??? == null) {}
-      synchronized (this.jdField_a_of_type_JavaLangStringBuffer)
-      {
-        str = baiu.a(this.jdField_a_of_type_JavaLangStringBuffer, 1000L * paramLong, true, this.jdField_a_of_type_JavaLangString);
-        if (QLog.isDevelopLevel()) {
-          QLog.i("Q.recent", 4, "getMsgDisplayTime, " + this.jdField_a_of_type_JavaLangStringBuffer.toString() + "," + str);
-        }
-        localHashMap.put(String.valueOf(paramLong), str);
-        return str;
-        ??? = (String)localHashMap.get(String.valueOf(paramLong));
-        if (??? == null) {
-          localHashMap.clear();
-        }
+      if ((paramInt & i) != 0) {
+        localSharedPreferences.edit().putLong("url_doneTime" + paramString, paramLong).apply();
       }
+      return;
+      paramInt = 0;
+      break;
+      label73:
+      i = 0;
     }
   }
   
-  public void a()
+  public static void a(String paramString1, String paramString2, int paramInt)
   {
-    if (this.jdField_a_of_type_Agjc != null) {
-      this.jdField_a_of_type_Agjc.g();
+    SharedPreferences localSharedPreferences = a(paramInt);
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+      localSharedPreferences.edit().putString("url_md5" + paramString1, paramString2).apply();
     }
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public static void a(String paramString1, String paramString2, long paramLong, int paramInt)
   {
-    this.b.put(paramString, Boolean.valueOf(paramBoolean));
+    a(paramString1, paramString2, paramInt);
+    a(paramString1, paramLong, paramInt);
+    a(paramString1, paramInt, NetConnInfoCenter.getServerTimeMillis());
   }
   
-  public boolean a(String paramString)
+  public static String b(String paramString1, String paramString2, int paramInt)
   {
-    boolean bool = false;
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)) {
-      if (TextUtils.isEmpty(paramString)) {
-        break label43;
-      }
-    }
-    label43:
-    for (this.jdField_a_of_type_JavaLangString = paramString;; this.jdField_a_of_type_JavaLangString = "yyyy-MM-dd")
+    String str2 = a(paramString1, "", paramInt);
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2))
     {
-      bool = true;
-      if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
+      str1 = str2;
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        str1 = str2;
+        if (new File(paramString2).exists())
+        {
+          str1 = MD5Coding.encodeFile2HexStr(paramString2);
+          a(paramString1, str1, paramInt);
+        }
       }
-      return bool;
     }
+    return str1;
   }
   
-  public void b()
+  public static void b(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_Agjc != null) {
-      this.jdField_a_of_type_Agjc.d();
-    }
-  }
-  
-  public boolean b(String paramString)
-  {
-    return this.b.containsKey(paramString);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Agjc != null) {
-      this.jdField_a_of_type_Agjc.e();
+    SharedPreferences localSharedPreferences = a(paramInt);
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      localSharedPreferences.edit().remove("url_doneTime" + paramString);
+      localSharedPreferences.edit().remove("url_md5" + paramString);
+      localSharedPreferences.edit().remove("url_last_use_time" + paramString);
+      localSharedPreferences.edit().remove("url_abnormal_retry_times" + paramString).apply();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahcw
  * JD-Core Version:    0.7.0.1
  */

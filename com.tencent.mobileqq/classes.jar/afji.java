@@ -1,32 +1,38 @@
-import android.app.Activity;
-import android.os.Bundle;
-import mqq.os.MqqHandler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.AddRequestSuspiciousMsgFragment;
+import com.tencent.mobileqq.data.SysSuspiciousMsg;
+import com.tencent.qphone.base.util.QLog;
 
-class afji
-  extends mmn
+public class afji
+  extends ajxl
 {
-  afji(afiu paramafiu) {}
+  public afji(AddRequestSuspiciousMsgFragment paramAddRequestSuspiciousMsgFragment) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onAgreeSuspiciousMsg(boolean paramBoolean, int paramInt, long paramLong)
   {
-    if ((afiu.a(this.a).isFinishing()) || (this.a.a)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AddRequestSuspiciousMsgFragment", 2, "onAgreeSuspiciousMsg " + paramBoolean + " " + paramInt + " " + paramLong);
     }
-    this.a.c();
-    if (afiu.a(this.a) != null) {
-      afiu.a(this.a).removeCallbacks(afiu.b(this.a));
-    }
-    if (paramInt == 16)
+    if ((AddRequestSuspiciousMsgFragment.a(this.a) != null) && (AddRequestSuspiciousMsgFragment.a(this.a).uin == paramLong))
     {
-      this.a.d();
+      AddRequestSuspiciousMsgFragment.a(this.a);
+      if (paramBoolean)
+      {
+        bcpw.a(this.a.getActivity(), ajyc.a(2131699866), 0).a();
+        AddRequestSuspiciousMsgFragment.b(this.a);
+        this.a.getActivity().finish();
+      }
+    }
+    else
+    {
       return;
     }
-    afiu.a(this.a, afiu.b(this.a));
+    bcpw.a(this.a.getActivity(), ajyc.a(2131699867), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afji
  * JD-Core Version:    0.7.0.1
  */

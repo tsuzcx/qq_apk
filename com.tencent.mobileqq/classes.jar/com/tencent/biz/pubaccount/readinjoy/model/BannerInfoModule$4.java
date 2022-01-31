@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
-import ohb;
-import oox;
+import osm;
+import ozy;
 
 public class BannerInfoModule$4
   implements Runnable
 {
-  public BannerInfoModule$4(oox paramoox, TopBannerInfo paramTopBannerInfo) {}
+  public BannerInfoModule$4(ozy paramozy, TopBannerInfo paramTopBannerInfo) {}
   
   public void run()
   {
-    ohb.a().a(this.a);
+    osm.a().a(this.a);
   }
 }
 

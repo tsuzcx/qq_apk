@@ -1,6 +1,6 @@
 package com.tencent.bugly.crashreport.crash;
 
-import com.tencent.bugly.proguard.an;
+import com.tencent.bugly.proguard.aq;
 import com.tencent.bugly.proguard.t;
 import java.util.List;
 
@@ -11,9 +11,9 @@ final class b$1
   
   public final void a(int paramInt) {}
   
-  public final void a(int paramInt, an paraman, long paramLong1, long paramLong2, boolean paramBoolean, String paramString)
+  public final void a(int paramInt, aq paramaq, long paramLong1, long paramLong2, boolean paramBoolean, String paramString)
   {
-    paraman = this.b;
+    paramaq = this.b;
     b.a(paramBoolean, this.a);
   }
 }

@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.DynamicPhotoData;
+import android.graphics.Canvas;
 
-public final class bfwb
-  implements Parcelable.Creator<DynamicPhotoData>
+public abstract interface bfwb
 {
-  public DynamicPhotoData a(Parcel paramParcel)
-  {
-    return new DynamicPhotoData(paramParcel);
-  }
+  public abstract void a(Canvas paramCanvas);
   
-  public DynamicPhotoData[] a(int paramInt)
-  {
-    return new DynamicPhotoData[paramInt];
-  }
+  public abstract int getHeight();
+  
+  public abstract int getWidth();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfwb
  * JD-Core Version:    0.7.0.1
  */

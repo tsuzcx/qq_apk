@@ -1,73 +1,42 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.io.File;
-import java.util.Map;
+import com.tribe.async.async.JobContext;
 
 class upk
-  extends sie
+  implements syt<upx, upy>
 {
-  public upk(uph paramuph)
-  {
-    super("Q.qqstory.download.preload.FeedVideoPreloader");
-  }
+  upk(upj paramupj, JobContext paramJobContext, String paramString) {}
   
-  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, shp paramshp)
+  public void a(@NonNull upx paramupx, @Nullable upy paramupy, @NonNull ErrorMessage paramErrorMessage)
   {
-    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramshp);
-    a(paramString, paramInt1, paramErrorMessage, paramshp);
-  }
-  
-  protected void a(String paramString, int paramInt, ErrorMessage paramErrorMessage, shp paramshp)
-  {
-    upj localupj = this.a.jdField_a_of_type_Upj;
-    if (localupj == null) {}
-    label14:
-    label168:
-    do
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      break label14;
-      do
+      veg.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
+      return;
+    }
+    if ((paramupy == null) || (paramErrorMessage.isFail()))
+    {
+      veg.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for like request");
+      upj.a(this.jdField_a_of_type_Upj, paramErrorMessage);
+      return;
+    }
+    if (this.jdField_a_of_type_Upj.a == 0) {}
+    for (boolean bool = false;; bool = true)
+    {
+      ((tco)tdc.a(15)).a(paramupy.a, this.jdField_a_of_type_JavaLangString, bool, true);
+      paramupx = new upf(bool, paramupy.a, paramupy.b, paramupy.c);
+      try
       {
-        return;
-      } while (!TextUtils.equals(paramString, localupj.jdField_a_of_type_JavaLangString));
-      if (paramErrorMessage.isFail()) {
-        if (!TextUtils.isEmpty(localupj.b)) {
-          break label135;
-        }
-      }
-      for (paramErrorMessage = paramErrorMessage.errorMsg;; paramErrorMessage = paramErrorMessage.errorMsg + " | " + paramErrorMessage.errorMsg)
-      {
-        localupj.b = paramErrorMessage;
-        localupj.jdField_a_of_type_Int = (paramInt + 1000);
-        if ((!paramshp.a.containsKey("handleCallback")) || (localupj.jdField_a_of_type_Boolean)) {
-          break;
-        }
-        localupj.jdField_a_of_type_Boolean = true;
-        if (!this.a.a(paramString)) {
-          break label168;
-        }
-        if (this.a.jdField_a_of_type_Upl == null) {
-          break;
-        }
-        this.a.jdField_a_of_type_Upl.a(paramString, paramshp.d);
+        upj.a(this.jdField_a_of_type_Upj, paramupx);
         return;
       }
-    } while (this.a.jdField_a_of_type_Upl == null);
-    label135:
-    this.a.jdField_a_of_type_Upl.a(paramString, paramshp.d, localupj.a());
-  }
-  
-  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, shp paramshp)
-  {
-    super.b(paramString, paramInt1, paramFile, paramInt2, paramshp);
-    a(paramString, paramInt1, new ErrorMessage(), paramshp);
-  }
-  
-  public void b(String paramString, int paramInt, shp paramshp)
-  {
-    super.b(paramString, paramInt, paramshp);
-    if ((this.a.jdField_a_of_type_Upl != null) && ((paramInt == 0) || (paramInt == 1))) {
-      this.a.jdField_a_of_type_Upl.b(paramString, paramshp.d);
+      catch (NullPointerException paramupx)
+      {
+        veg.c("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "notifyResult error :%s", paramupx);
+        upj.b(this.jdField_a_of_type_Upj, new ErrorMessage());
+        return;
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import android.os.Process;
+import com.tencent.mobileqq.triton.sdk.ITTEngine;
 
 class GameActivity$16
   implements Runnable
@@ -9,7 +9,7 @@ class GameActivity$16
   
   public void run()
   {
-    Process.killProcess(Process.myPid());
+    GameActivity.access$1100(this.this$0).onDestroy();
   }
 }
 

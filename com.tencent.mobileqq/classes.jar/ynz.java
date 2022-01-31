@@ -1,160 +1,112 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.gdtad.aditem.GdtBaseAdItem;
-import com.tencent.gdtad.ipc.AppInstallerReceiver;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gamecenter.appointment.GameCenterCheck;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class ynz
-  extends ajfb
+  implements INetEventHandler
 {
-  public ynz(AppInterface paramAppInterface)
+  public static int a;
+  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private static ynz jdField_a_of_type_Ynz;
+  public static boolean a;
+  public static boolean b;
+  boolean c = false;
+  boolean d = false;
+  
+  static
   {
-    super(paramAppInterface);
+    jdField_a_of_type_Int = 100;
   }
   
-  private void b(Context paramContext, GdtBaseAdItem paramGdtBaseAdItem)
+  public static void a()
   {
-    if ((paramContext != null) && (!TextUtils.isEmpty(paramGdtBaseAdItem.c)))
+    if (QLog.isColorLevel()) {
+      QLog.d("GameCenterBroadcastReceiver", 2, "registerReceiver");
+    }
+    if (jdField_a_of_type_Ynz == null) {
+      jdField_a_of_type_Ynz = new ynz();
+    }
+    if (jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
+      jdField_a_of_type_AndroidContentBroadcastReceiver = new yoa();
+    }
+    if (!jdField_a_of_type_Boolean)
     {
-      AppInstallerReceiver.a().a(paramContext);
-      AppInstallerReceiver.a().a(paramGdtBaseAdItem);
+      jdField_a_of_type_Boolean = true;
+      AppNetConnInfo.registerNetChangeReceiver(BaseApplicationImpl.getApplication(), jdField_a_of_type_Ynz);
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.BATTERY_CHANGED");
+      localIntentFilter.addAction("android.intent.action.ACTION_POWER_CONNECTED");
+      localIntentFilter.addAction("android.intent.action.ACTION_POWER_DISCONNECTED");
+      BaseApplicationImpl.getContext().registerReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
     }
   }
   
-  @Deprecated
-  public void a(Context paramContext, GdtBaseAdItem paramGdtBaseAdItem)
+  public static void b()
   {
-    if ((paramContext == null) || (paramGdtBaseAdItem == null)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("GameCenterBroadcastReceiver", 2, "unRegisterReceiver");
     }
-    if (TextUtils.isEmpty(paramGdtBaseAdItem.f)) {
-      paramGdtBaseAdItem.g(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString);
-    }
-    if (amom.a(paramGdtBaseAdItem.jdField_a_of_type_JavaLangString, paramContext))
+    if (jdField_a_of_type_Ynz != null)
     {
-      yoh.a(paramGdtBaseAdItem.f);
+      AppNetConnInfo.unregisterNetEventHandler(jdField_a_of_type_Ynz);
+      jdField_a_of_type_Ynz = null;
+    }
+    if (jdField_a_of_type_AndroidContentBroadcastReceiver != null)
+    {
+      BaseApplicationImpl.getContext().unregisterReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver);
+      jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+    }
+    jdField_a_of_type_Boolean = false;
+  }
+  
+  public void onNetChangeEvent(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
       if (QLog.isColorLevel()) {
-        QLog.d("GdtAdHandler", 2, "doAppJump isApkInstalled " + paramGdtBaseAdItem.jdField_a_of_type_JavaLangString);
+        QLog.i("GameCenterBroadcastReceiver", 2, "no net");
       }
-      if (paramGdtBaseAdItem.jdField_b_of_type_Boolean)
-      {
-        yox.b(paramContext, paramGdtBaseAdItem);
-        return;
-      }
-      yox.a(paramContext, paramGdtBaseAdItem);
-      return;
     }
-    if (!TextUtils.isEmpty(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString))
+    do
     {
-      b(paramContext, paramGdtBaseAdItem);
-      label133:
-      String str;
-      if ((yox.a()) && (paramGdtBaseAdItem.jdField_a_of_type_Boolean))
+      return;
+      if (!AppNetConnInfo.isMobileConn()) {
+        break;
+      }
+    } while (this.d);
+    if (QLog.isColorLevel()) {
+      bdoe.b("GameCenterBroadcastReceiver", "mobile connect");
+    }
+    for (;;)
+    {
+      this.c = false;
+      return;
+      if (AppNetConnInfo.isWifiConn())
       {
-        localObject = "1";
+        if (this.c) {
+          break;
+        }
+        this.c = true;
         if (QLog.isColorLevel()) {
-          QLog.d("GdtAdHandler", 2, "doAppJump autoDownload  " + (String)localObject);
+          bdoe.b("GameCenterBroadcastReceiver", "wifi connect");
         }
-        if (!yox.a(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString)) {
-          break label576;
-        }
-        if (("1".equals(localObject)) && (TextUtils.isEmpty((String)yox.a(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString).get("acttype")))) {
-          paramGdtBaseAdItem.jdField_b_of_type_JavaLangString += "&acttype=42";
-        }
-        if (TextUtils.isEmpty((String)yox.a(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString).get("wv"))) {
-          paramGdtBaseAdItem.jdField_b_of_type_JavaLangString += "&wv=1";
-        }
-        str = (String)yox.a(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString).get("_autodownload");
-        if (TextUtils.isEmpty(str)) {
-          break label516;
-        }
-        if (!"1".equals(localObject)) {
-          break label480;
-        }
-        paramGdtBaseAdItem.jdField_b_of_type_JavaLangString = paramGdtBaseAdItem.jdField_b_of_type_JavaLangString.replace("_autodownload=" + str, "_autodownload=" + (String)localObject);
-        label361:
-        if (paramGdtBaseAdItem.jdField_a_of_type_JavaLangClass != null) {
-          break label568;
-        }
-      }
-      label516:
-      label568:
-      for (Object localObject = QQBrowserActivity.class;; localObject = paramGdtBaseAdItem.jdField_a_of_type_JavaLangClass)
-      {
-        localObject = new Intent(paramContext, (Class)localObject);
-        ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-        ((Intent)localObject).putExtra("url", paramGdtBaseAdItem.jdField_b_of_type_JavaLangString);
-        ((Intent)localObject).addFlags(268435456);
-        ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_ads");
-        if (paramGdtBaseAdItem.jdField_a_of_type_AndroidOsBundle != null) {
-          ((Intent)localObject).putExtras(paramGdtBaseAdItem.jdField_a_of_type_AndroidOsBundle);
-        }
-        paramContext.startActivity((Intent)localObject);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("GdtAdHandler", 2, "doAppJump isApkInstalled not : custom H5 " + paramGdtBaseAdItem.jdField_a_of_type_JavaLangString);
-        return;
-        localObject = "0";
-        break label133;
-        label480:
-        paramGdtBaseAdItem.jdField_b_of_type_JavaLangString = paramGdtBaseAdItem.jdField_b_of_type_JavaLangString.replace("&_autodownload=" + str, "");
-        break label361;
-        if (!"1".equals(localObject)) {
-          break label361;
-        }
-        paramGdtBaseAdItem.jdField_b_of_type_JavaLangString = (paramGdtBaseAdItem.jdField_b_of_type_JavaLangString + "&" + "_autodownload" + "=" + (String)localObject);
-        break label361;
-      }
-      label576:
-      yoh.a(paramGdtBaseAdItem.f);
-      paramContext = (String)bcax.a(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString).get("auto_download");
-      if (!TextUtils.isEmpty(paramContext)) {
-        if ("1".equals(localObject)) {
-          paramGdtBaseAdItem.jdField_b_of_type_JavaLangString = paramGdtBaseAdItem.jdField_b_of_type_JavaLangString.replace("auto_download=" + paramContext, "auto_download=" + (String)localObject);
-        }
-      }
-      for (;;)
-      {
-        paramContext = new Bundle();
-        paramContext.putInt("process_id", 1);
-        paramContext.putString("schemaUrl", paramGdtBaseAdItem.jdField_b_of_type_JavaLangString);
-        paramContext.putBoolean("is_can_open_yyb_native", false);
-        paramContext.putString("big_brother_source_key", "biz_src_ads");
-        paramContext.putAll(paramGdtBaseAdItem.jdField_a_of_type_AndroidOsBundle);
-        yox.a(paramContext);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("GdtAdHandler", 2, "doAppJump isApkInstalled not : yingyongbao H5 " + paramGdtBaseAdItem.jdField_a_of_type_JavaLangString);
-        return;
-        paramGdtBaseAdItem.jdField_b_of_type_JavaLangString = paramGdtBaseAdItem.jdField_b_of_type_JavaLangString.replace("&auto_download=" + paramContext, "");
+        GameCenterCheck.b();
         continue;
-        if ("1".equals(localObject)) {
-          paramGdtBaseAdItem.jdField_b_of_type_JavaLangString = (paramGdtBaseAdItem.jdField_b_of_type_JavaLangString + "&" + "auto_download" + "=" + (String)localObject);
-        }
+      }
+      if (QLog.isColorLevel()) {
+        bdoe.b("GameCenterBroadcastReceiver", "no connect");
       }
     }
-    QLog.e("GdtAdHandler", 1, "doAppJump download_url null " + paramGdtBaseAdItem.jdField_a_of_type_JavaLangString);
   }
-  
-  protected Class<? extends ajfe> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ynz
  * JD-Core Version:    0.7.0.1
  */

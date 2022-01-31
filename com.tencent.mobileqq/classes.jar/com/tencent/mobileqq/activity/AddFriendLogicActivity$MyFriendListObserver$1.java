@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
+import aagv;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import zxd;
 
 public class AddFriendLogicActivity$MyFriendListObserver$1
   implements Runnable
 {
-  public AddFriendLogicActivity$MyFriendListObserver$1(zxd paramzxd, String paramString) {}
+  public AddFriendLogicActivity$MyFriendListObserver$1(aagv paramaagv, String paramString) {}
   
   public void run()
   {
-    ((FriendListHandler)this.jdField_a_of_type_Zxd.a.app.a(1)).a(this.jdField_a_of_type_JavaLangString, 0, 3999, "", true, false, -1L);
+    ((FriendListHandler)this.jdField_a_of_type_Aagv.a.app.a(1)).a(this.jdField_a_of_type_JavaLangString, 0, 3999, "", true, false, -1L);
   }
 }
 

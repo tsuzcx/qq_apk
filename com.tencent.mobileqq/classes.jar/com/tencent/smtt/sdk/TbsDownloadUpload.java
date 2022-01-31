@@ -532,8 +532,8 @@ public class TbsDownloadUpload
     //   15: getfield 51	com/tencent/smtt/sdk/TbsDownloadUpload:mAppContext	Landroid/content/Context;
     //   18: ldc 141
     //   20: invokestatic 143	com/tencent/smtt/sdk/TbsDownloadUpload:getTbsFile	(Landroid/content/Context;Ljava/lang/String;)Ljava/io/File;
-    //   23: astore 8
-    //   25: aload 8
+    //   23: astore 7
+    //   25: aload 7
     //   27: ifnonnull +51 -> 78
     //   30: iconst_0
     //   31: ifeq +11 -> 42
@@ -567,7 +567,7 @@ public class TbsDownloadUpload
     //   81: dup
     //   82: new 151	java/io/FileInputStream
     //   85: dup
-    //   86: aload 8
+    //   86: aload 7
     //   88: invokespecial 154	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   91: invokespecial 157	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   94: astore_2
@@ -582,11 +582,11 @@ public class TbsDownloadUpload
     //   111: getfield 37	com/tencent/smtt/sdk/TbsDownloadUpload:mSyncMap	Ljava/util/Map;
     //   114: invokeinterface 201 1 0
     //   119: invokeinterface 207 1 0
-    //   124: astore 7
-    //   126: aload 7
+    //   124: astore 6
+    //   126: aload 6
     //   128: invokeinterface 212 1 0
     //   133: ifeq +127 -> 260
-    //   136: aload 7
+    //   136: aload 6
     //   138: invokeinterface 216 1 0
     //   143: checkcast 171	java/lang/String
     //   146: astore_1
@@ -594,7 +594,7 @@ public class TbsDownloadUpload
     //   148: getfield 37	com/tencent/smtt/sdk/TbsDownloadUpload:mSyncMap	Ljava/util/Map;
     //   151: aload_1
     //   152: invokeinterface 220 2 0
-    //   157: astore 6
+    //   157: astore 8
     //   159: aload 5
     //   161: aload_1
     //   162: new 222	java/lang/StringBuilder
@@ -602,7 +602,7 @@ public class TbsDownloadUpload
     //   166: invokespecial 223	java/lang/StringBuilder:<init>	()V
     //   169: ldc 165
     //   171: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   174: aload 6
+    //   174: aload 8
     //   176: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   179: invokevirtual 234	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   182: invokevirtual 238	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
@@ -617,7 +617,7 @@ public class TbsDownloadUpload
     //   201: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   204: ldc 242
     //   206: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   209: aload 6
+    //   209: aload 8
     //   211: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   214: invokevirtual 234	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   217: invokestatic 197	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
@@ -649,7 +649,7 @@ public class TbsDownloadUpload
     //   272: dup
     //   273: new 249	java/io/FileOutputStream
     //   276: dup
-    //   277: aload 8
+    //   277: aload 7
     //   279: invokespecial 250	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   282: invokespecial 253	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   285: astore_1
@@ -724,12 +724,12 @@ public class TbsDownloadUpload
     //   406: astore_2
     //   407: goto -178 -> 229
     //   410: astore_3
-    //   411: aload_1
+    //   411: aload_2
     //   412: astore 4
-    //   414: aload_2
-    //   415: astore_1
+    //   414: aload_1
+    //   415: astore_2
     //   416: aload 4
-    //   418: astore_2
+    //   418: astore_1
     //   419: goto -190 -> 229
     // Local variable table:
     //   start	length	slot	name	signature
@@ -744,13 +744,13 @@ public class TbsDownloadUpload
     //   328	2	1	localException5	java.lang.Exception
     //   336	20	1	localObject3	Object
     //   373	7	1	localObject4	Object
-    //   383	33	1	localObject5	Object
+    //   383	36	1	localObject5	Object
     //   94	204	2	localObject6	Object
     //   320	2	2	localException6	java.lang.Exception
     //   338	6	2	localObject7	Object
     //   357	2	2	localException7	java.lang.Exception
     //   365	29	2	localException8	java.lang.Exception
-    //   397	22	2	localObject8	Object
+    //   397	19	2	localObject8	Object
     //   1	1	3	localObject9	Object
     //   223	129	3	localThrowable1	java.lang.Throwable
     //   380	1	3	localObject10	Object
@@ -762,9 +762,9 @@ public class TbsDownloadUpload
     //   377	5	4	localObject14	Object
     //   389	28	4	localObject15	Object
     //   102	185	5	localProperties	java.util.Properties
-    //   157	53	6	localObject16	Object
-    //   124	13	7	localIterator	java.util.Iterator
-    //   23	255	8	localFile	File
+    //   124	13	6	localIterator	java.util.Iterator
+    //   23	255	7	localFile	File
+    //   157	53	8	localObject16	Object
     // Exception table:
     //   from	to	target	type
     //   34	42	57	java/lang/Exception
@@ -810,7 +810,7 @@ public class TbsDownloadUpload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsDownloadUpload
  * JD-Core Version:    0.7.0.1
  */

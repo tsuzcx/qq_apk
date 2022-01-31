@@ -1,58 +1,81 @@
-import com.tencent.ark.open.ArkAppConfigMgr;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 
-public class ambd
-  extends amay
+class ambd
+  extends Drawable
 {
-  public int a()
+  public int a;
+  public Bitmap a;
+  private Paint a;
+  public boolean a;
+  public int b = -1;
+  
+  public ambd(Bitmap paramBitmap)
   {
-    return 380;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_Int = paramBitmap.getWidth();
+    this.b = paramBitmap.getHeight();
   }
   
-  public amas a(String paramString)
+  public void draw(Canvas paramCanvas)
   {
-    QLog.d("ArkPlatformConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
-    try
+    Rect localRect = super.getBounds();
+    if (this.jdField_a_of_type_Boolean)
     {
-      ambm localambm = (ambm)amaf.a(paramString, ambm.class);
-      return new amax(paramString, localambm);
+      paramCanvas.save();
+      paramCanvas.scale(-1.0F, 1.0F, localRect.centerX(), localRect.centerY());
     }
-    catch (QStorageInstantiateException localQStorageInstantiateException)
-    {
-      for (;;)
-      {
-        QLog.i("ArkPlatformConfProcessor", 1, "readJsonOrXml:" + paramString + "fail", localQStorageInstantiateException);
-        Object localObject = null;
-      }
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, super.getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.jdField_a_of_type_Boolean) {
+      paramCanvas.restore();
     }
   }
   
-  public void a(amas paramamas)
+  public int getIntrinsicHeight()
   {
-    super.a(paramamas);
-    if (paramamas == null) {
-      QLog.i("ArkPlatformConfProcessor", 1, "newConf is null");
-    }
-    do
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.b;
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
     {
-      return;
-      QLog.d("ArkPlatformConfProcessor", 1, "[onUpdate] type=" + a() + ", content = " + paramamas.a());
-      paramamas = paramamas.a();
-      aleo.a();
-    } while ((paramamas == null) || (paramamas.a() == null));
-    paramamas = paramamas.a();
-    if (paramamas == null)
-    {
-      QLog.i("ArkPlatformConfProcessor", 2, "ArkSafe.updateUrlCheckAndCleanAppUpdateTime error config is null");
-      return;
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      super.invalidateSelf();
     }
-    ArkAppConfigMgr.getInstance().updateUrlCheckAndCleanAppUpdateTime(paramamas.jdField_a_of_type_Boolean, paramamas.b, paramamas.jdField_a_of_type_JavaUtilArrayList);
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    super.invalidateSelf();
+  }
+  
+  public void setDither(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
+    super.invalidateSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ambd
  * JD-Core Version:    0.7.0.1
  */

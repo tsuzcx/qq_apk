@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.bless;
 
 import android.text.TextUtils;
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class BlessWording
-  extends atmo
+  extends aukm
 {
   private String editingWording;
-  @atoc
+  @auma
   public String wording;
   
   public BlessWording() {}

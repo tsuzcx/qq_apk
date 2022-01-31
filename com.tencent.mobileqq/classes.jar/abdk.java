@@ -1,17 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 
 public class abdk
-  implements View.OnClickListener
+  extends VasQuickUpdateManager.CallBacker
 {
-  public void onClick(View paramView)
+  public abdk(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    MainFragment.b(true);
-    paramView = (ViewGroup)paramView.getParent();
-    if (!MainFragment.a()) {
-      paramView.callOnClick();
+    if ((VipProfileCardDiyActivity.a(paramLong, paramString1, this.a.a.a.diyTextFontId)) && (paramInt1 == 0))
+    {
+      paramString1 = this.a.b.obtainMessage();
+      paramString1.what = 5;
+      paramString1.obj = this.a.a.a;
+      paramString1.arg1 = 0;
+      paramString1.arg2 = 17;
+      this.a.b.sendMessage(paramString1);
+      paramVasQuickUpdateManager.removeCallBacker(this);
     }
   }
 }

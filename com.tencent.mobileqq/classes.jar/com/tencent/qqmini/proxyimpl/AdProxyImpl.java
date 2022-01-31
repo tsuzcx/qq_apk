@@ -3,9 +3,10 @@ package com.tencent.qqmini.proxyimpl;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdyg;
+import bffm;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtAppReceiver;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
 import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.minigame.ui.GameBannerAdFragment;
@@ -13,27 +14,28 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsBannerAdView;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsBoxAdView;
+import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsInterstitialAdView;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsRewardVideoAdView;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.IBannerAdListener;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.IBoxADLisener;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.ICmdListener;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.IRewardVideoAdListener;
+import com.tencent.qqmini.sdk.core.proxy.AdProxy.InterstitialADLisener;
 import java.lang.ref.WeakReference;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import yjs;
-import ykt;
-import yku;
-import ykv;
-import ynv;
+import ytu;
+import ytv;
+import ytw;
+import yxr;
 
 public class AdProxyImpl
   extends AdProxy
 {
   private final String TAG = "AdProxyImpl";
   
-  private yku createGdtBannerView(Activity paramActivity, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo, int paramInt1, int paramInt2)
+  private ytv createGdtBannerView(Activity paramActivity, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo, int paramInt1, int paramInt2)
   {
     QLog.i("AdProxyImpl", 1, "createBannerAdView width = " + paramInt1 + ", height = " + paramInt2);
     if (paramAdInfo == null) {
@@ -42,14 +44,14 @@ public class AdProxyImpl
     try
     {
       QLog.i("AdProxyImpl", 1, "createBannerAd");
-      ykt localykt = new ykt();
-      localykt.jdField_a_of_type_Yjs = getBannerClickParams(paramActivity, paramAdInfo);
-      localykt.jdField_a_of_type_Int = 0;
-      localykt.b = paramInt1;
-      localykt.c = paramInt2;
-      paramActivity = ykv.a(localykt);
+      ytu localytu = new ytu();
+      localytu.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = getBannerClickParams(paramActivity, paramAdInfo);
+      localytu.jdField_a_of_type_Int = 0;
+      localytu.b = paramInt1;
+      localytu.c = paramInt2;
+      paramActivity = ytw.a(localytu);
       if (paramActivity != null) {
-        localykt.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick = new GdtDwellTimeStatisticsAfterClick(new GdtAd(paramAdInfo), new WeakReference(paramActivity.a()));
+        localytu.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick = new GdtDwellTimeStatisticsAfterClick(new GdtAd(paramAdInfo), new WeakReference(paramActivity.a()));
       } else {
         QLog.e("AdProxyImpl", 1, "build Ad error");
       }
@@ -62,24 +64,24 @@ public class AdProxyImpl
     return paramActivity;
   }
   
-  private yjs getBannerClickParams(Activity paramActivity, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
+  private GdtHandler.Params getBannerClickParams(Activity paramActivity, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
   {
     if ((paramActivity == null) || (paramAdInfo == null)) {
       return null;
     }
     GdtAppReceiver localGdtAppReceiver = new GdtAppReceiver();
-    yjs localyjs = new yjs();
-    localyjs.jdField_a_of_type_Int = 11;
-    localyjs.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    localyjs.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(paramAdInfo);
-    localyjs.jdField_a_of_type_Boolean = true;
-    localyjs.jdField_b_of_type_Boolean = true;
-    localyjs.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(localGdtAppReceiver);
-    localyjs.jdField_b_of_type_JavaLangClass = GameBannerAdFragment.class;
+    GdtHandler.Params localParams = new GdtHandler.Params();
+    localParams.c = 11;
+    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(paramAdInfo);
+    localParams.jdField_a_of_type_Boolean = true;
+    localParams.jdField_b_of_type_Boolean = true;
+    localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(localGdtAppReceiver);
+    localParams.jdField_b_of_type_JavaLangClass = GameBannerAdFragment.class;
     paramActivity = new Bundle();
     paramActivity.putString("big_brother_ref_source_key", "biz_src_miniapp");
-    localyjs.jdField_a_of_type_AndroidOsBundle = paramActivity;
-    return localyjs;
+    localParams.jdField_a_of_type_AndroidOsBundle = paramActivity;
+    return localParams;
   }
   
   private String mockAdJson(String paramString)
@@ -107,7 +109,7 @@ public class AdProxyImpl
   {
     try
     {
-      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(ynv.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString)));
+      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString)));
       return localAdInfo;
     }
     catch (Exception localException)
@@ -128,7 +130,7 @@ public class AdProxyImpl
         if (TextUtils.isEmpty((CharSequence)localObject)) {
           return;
         }
-        bdyg.a(paramInt, (String)localObject);
+        bffm.a(paramInt, (String)localObject);
         QLog.i("AdProxyImpl", 1, "parseAndSaveCookie save key success, adType = " + paramInt + ", value = " + (String)localObject);
         return;
       }
@@ -153,6 +155,14 @@ public class AdProxyImpl
       return null;
     }
     return new AdProxyImpl.SDKBoxAdView(this, paramActivity, paramString1, paramString2, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramIBoxADLisener);
+  }
+  
+  public AdProxy.AbsInterstitialAdView createInterstitialAdView(Activity paramActivity, String paramString1, String paramString2, AdProxy.InterstitialADLisener paramInterstitialADLisener, Bundle paramBundle)
+  {
+    if ((paramActivity == null) || (paramBundle == null)) {
+      return null;
+    }
+    return new AdProxyImpl.SDKInterstitialAdView(this, paramActivity, paramString1, paramString2, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramInterstitialADLisener);
   }
   
   public AdProxy.AbsRewardVideoAdView createRewardVideoAdView(Activity paramActivity, String paramString1, String paramString2, AdProxy.IRewardVideoAdListener paramIRewardVideoAdListener, Bundle paramBundle)

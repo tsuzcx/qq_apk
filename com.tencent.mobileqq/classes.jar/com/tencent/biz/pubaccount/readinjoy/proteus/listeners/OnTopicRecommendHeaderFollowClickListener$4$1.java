@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.listeners;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import ogy;
-import oxq;
-import oxu;
+import osj;
+import pji;
+import pjm;
 
 public class OnTopicRecommendHeaderFollowClickListener$4$1
   implements Runnable
 {
-  public OnTopicRecommendHeaderFollowClickListener$4$1(oxu paramoxu) {}
+  public OnTopicRecommendHeaderFollowClickListener$4$1(pjm parampjm) {}
   
   public void run()
   {
-    ogy.a().a((int)oxq.a(this.a.a).businessId, 0);
+    osj.a().a((int)pji.a(this.a.a).businessId, 0);
   }
 }
 

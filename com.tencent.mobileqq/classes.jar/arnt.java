@@ -1,21 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import mqq.app.QQPermissionCallback;
 
-public class arnt
-  extends bats
+class arnt
+  implements QQPermissionCallback
 {
-  public arnt(ChatBackgroundManager paramChatBackgroundManager, String paramString, int paramInt1, int paramInt2) {}
+  arnt(arnp paramarnp, String paramString) {}
   
-  public void a(long paramLong, int paramInt, Bundle paramBundle)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super.a(paramLong, paramInt, paramBundle);
-    paramBundle = ChatBackgroundManager.a(true, paramLong + "");
-    if (new File(paramBundle).exists()) {
-      ackc.a(this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a.c(), this.jdField_a_of_type_JavaLangString, paramBundle, this.jdField_a_of_type_Int, this.b);
-    }
+    this.jdField_a_of_type_Arnp.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{'result':-10, 'msg': 'no permission to read contact number'}" });
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    arnp.a(this.jdField_a_of_type_Arnp, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,16 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 
 public class abxo
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public abxo(TroopInfoActivity paramTroopInfoActivity) {}
+  public abxo(QQTranslucentBrowserActivity paramQQTranslucentBrowserActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
-    this.a.i();
+    this.a.finish();
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.activateFriend.biz;
 
 import Wallet.AcsMsg;
-import acic;
-import bace;
+import acsr;
+import bbdj;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class ReminderDataManager$4
   implements Runnable
 {
-  public ReminderDataManager$4(acic paramacic) {}
+  public ReminderDataManager$4(acsr paramacsr) {}
   
   public void run()
   {
-    File[] arrayOfFile = acic.b(this.this$0, acic.a(this.this$0));
+    File[] arrayOfFile = acsr.b(this.this$0, acsr.a(this.this$0));
     if (arrayOfFile.length > 0)
     {
       int j = arrayOfFile.length;
@@ -22,13 +22,13 @@ public class ReminderDataManager$4
       {
         File localFile = arrayOfFile[i];
         if (QLog.isColorLevel()) {
-          QLog.i(acic.a(), 2, "delete file name: " + localFile.getName());
+          QLog.i(acsr.a(), 2, "delete file name: " + localFile.getName());
         }
         if ((localFile != null) && (localFile.isFile()) && (localFile.exists()))
         {
           AcsMsg localAcsMsg = this.this$0.a(localFile);
-          if (bace.d(localFile.getAbsolutePath())) {
-            acic.a(this.this$0, localAcsMsg);
+          if (bbdj.d(localFile.getAbsolutePath())) {
+            acsr.a(this.this$0, localAcsMsg);
           }
         }
         i += 1;

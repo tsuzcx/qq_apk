@@ -1,23 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
+import android.os.Handler;
+import android.os.Message;
+import java.util.List;
 
-public final class anrk
-  implements Parcelable.Creator<ExtendFriendProfileEditFragment.ExtendFriendInfo>
+class anrk
+  extends ajwb
 {
-  public ExtendFriendProfileEditFragment.ExtendFriendInfo a(Parcel paramParcel)
+  anrk(anrh paramanrh) {}
+  
+  public void a(boolean paramBoolean)
   {
-    return new ExtendFriendProfileEditFragment.ExtendFriendInfo(paramParcel);
+    anrh.a(this.a).clear();
   }
   
-  public ExtendFriendProfileEditFragment.ExtendFriendInfo[] a(int paramInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    return new ExtendFriendProfileEditFragment.ExtendFriendInfo[paramInt];
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.e();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramObject != null) && ((paramObject instanceof Integer)) && (anrh.a(this.a) != null)) {
+      anrh.a(this.a).obtainMessage(208, paramObject).sendToTarget();
+    }
+    if ((this.a.a != null) && (paramBoolean)) {
+      this.a.a.e();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anrk
  * JD-Core Version:    0.7.0.1
  */

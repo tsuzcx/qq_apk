@@ -1,26 +1,34 @@
-import android.support.v7.widget.RecyclerView;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import com.tencent.biz.subscribe.network.DoTipOffRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
 
-class wsl
-  implements CompoundButton.OnCheckedChangeListener
+final class wsl
+  implements bfoq
 {
-  wsl(wsj paramwsj) {}
+  wsl(CertifiedAccountMeta.StUser paramStUser, CertifiedAccountMeta.StFeed paramStFeed, wsq paramwsq, wsp paramwsp, bfol parambfol) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramCompoundButton = wsj.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
+    switch (paramInt)
     {
-      paramCompoundButton.setVisibility(i);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
       return;
+      paramView = new DoTipOffRequest(0, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, 2);
+      VSNetworkHelper.a().a(paramView, new wsm(this));
+      if (this.jdField_a_of_type_Wsp != null) {
+        this.jdField_a_of_type_Wsp.a(false);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wsl
  * JD-Core Version:    0.7.0.1
  */

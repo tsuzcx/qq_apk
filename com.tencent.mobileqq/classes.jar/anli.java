@@ -1,18 +1,21 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
-public class anli
+class anli
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public URLDrawable a;
-  public URLImageView a;
+  anli(anlh paramanlh, WindowManager paramWindowManager) {}
   
-  public anli(anlh paramanlh) {}
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_Anlh.a.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anli
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,75 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
 
-class amub
-  implements DialogInterface.OnCancelListener
+public class amub
+  extends ampb<amuc>
 {
-  amub(amua paramamua) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public int a()
   {
-    if (amua.a(this.a).equals("checked corrupt"))
-    {
-      paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
-      String str = paramDialogInterface.getString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, "");
-      paramDialogInterface.edit().putString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, str + "_Cancel").commit();
-      QLog.d(amua.a(), 1, "dialog cancel");
+    return 530;
+  }
+  
+  @NonNull
+  public amuc a(int paramInt)
+  {
+    return new amuc();
+  }
+  
+  @Nullable
+  public amuc a(ampi[] paramArrayOfampi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicShareToWXConfigProcessor", 2, "onParsed");
     }
-    this.a.a();
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    {
+      paramArrayOfampi = paramArrayOfampi[0].a;
+      if (QLog.isColorLevel()) {
+        QLog.d("PicShareToWXConfigProcessor", 2, "onParsed, content:" + paramArrayOfampi);
+      }
+      return amuc.a(paramArrayOfampi);
+    }
+    return new amuc();
+  }
+  
+  public Class a()
+  {
+    return amuc.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicShareToWXConfigProcessor", 2, "onReqFailed");
+    }
+  }
+  
+  public void a(amuc paramamuc)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicShareToWXConfigProcessor", 2, "onUpdate");
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amub
  * JD-Core Version:    0.7.0.1
  */

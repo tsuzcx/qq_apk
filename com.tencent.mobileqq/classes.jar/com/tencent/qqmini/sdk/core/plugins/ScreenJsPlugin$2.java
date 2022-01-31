@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfz;
-import bdnw;
+import beka;
+import besl;
 import org.json.JSONObject;
 
 class ScreenJsPlugin$2
   implements Runnable
 {
-  ScreenJsPlugin$2(ScreenJsPlugin paramScreenJsPlugin, bdfz parambdfz) {}
+  ScreenJsPlugin$2(ScreenJsPlugin paramScreenJsPlugin, beka parambeka) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ class ScreenJsPlugin$2
     }
     catch (Throwable localThrowable)
     {
-      bdnw.d("ScreenJsPlugin", localThrowable.getMessage(), localThrowable);
+      besl.d("ScreenJsPlugin", localThrowable.getMessage(), localThrowable);
     }
   }
 }

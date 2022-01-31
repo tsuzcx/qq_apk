@@ -8,7 +8,6 @@ import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import com.tencent.viola.ui.adapter.VLoopAbleSliderAdapter;
 import com.tencent.viola.ui.component.VSlider;
-import com.tencent.viola.ui.dom.style.FlexConvertUtils;
 import com.tencent.viola.utils.ViolaLogUtils;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
@@ -18,19 +17,13 @@ public class VSliderView
   implements IVView<VSlider>
 {
   public static final String TAG = "VSliderView";
-  int edgeHeight = FlexConvertUtils.dip2px(25);
   private VLoopAbleSliderAdapter mAdapter;
   private VSliderView.AutoSidleTimer mAutoSidleTimer;
   public int mCurrentItemIndex = 0;
-  private boolean mHasSetInitPosition;
   private Boolean mIsAutoMode = Boolean.valueOf(true);
   private boolean mIsScrollable;
-  private float mLastX;
-  private float mLastY;
   private VSliderView.VSliderListener mListener;
   private ViewPager.OnPageChangeListener mPageChangeListener;
-  private float mPreX = 0.0F;
-  private int mStartItemIndex = 0;
   private float mStartRawX = -1.0F;
   private float mStartRawY = -1.0F;
   private int mTimeInterval = 2000;
@@ -59,7 +52,7 @@ public class VSliderView
     if ((this.mIsAutoMode.booleanValue()) && (this.mAdapter != null) && (this.mAutoSidleTimer != null) && (this.mIsScrollable))
     {
       this.mCurrentItemIndex += 1;
-      if ((this.mAdapter.loopDisable()) && (this.mCurrentItemIndex == this.mAdapter.getCount())) {
+      if (this.mCurrentItemIndex == this.mAdapter.getCount()) {
         this.mCurrentItemIndex = 0;
       }
       setCurrentItem(this.mCurrentItemIndex);
@@ -106,11 +99,6 @@ public class VSliderView
     return null;
   }
   
-  public int getCurrentIndex()
-  {
-    return this.mCurrentItemIndex;
-  }
-  
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
@@ -119,15 +107,7 @@ public class VSliderView
       Field localField = ViewPager.class.getDeclaredField("mFirstLayout");
       localField.setAccessible(true);
       localField.set(this, Boolean.valueOf(false));
-      if (this.mAutoSidleTimer != null)
-      {
-        if (!this.mHasSetInitPosition)
-        {
-          setCurrentItem(this.mAdapter.getInitPosition());
-          this.mHasSetInitPosition = true;
-        }
-        startPlay();
-      }
+      startPlay();
       return;
     }
     catch (Exception localException)
@@ -165,7 +145,6 @@ public class VSliderView
       if (getParent() != null) {
         getParent().requestDisallowInterceptTouchEvent(true);
       }
-      this.mPreX = paramMotionEvent.getX();
       this.mStartRawY = paramMotionEvent.getRawY();
       this.mStartRawX = paramMotionEvent.getRawX();
       continue;
@@ -212,16 +191,24 @@ public class VSliderView
     this.mListener = paramVSliderListener;
   }
   
+  public void setStartIndexWithNoAnimate(int paramInt)
+  {
+    if (this.mAdapter == null) {
+      return;
+    }
+    paramInt = this.mAdapter.getInitPosition() + paramInt;
+    setCurrentItem(paramInt, false);
+    this.mCurrentItemIndex = paramInt;
+  }
+  
   public void setStartItemIndex(int paramInt)
   {
     if (this.mAdapter == null) {
       return;
     }
-    this.mStartItemIndex = paramInt;
-    setCurrentItem(this.mAdapter.getInitPosition() + paramInt);
-    this.mCurrentItemIndex = getCurrentItem();
-    this.mAdapter.setStartPosition(paramInt);
-    this.mHasSetInitPosition = true;
+    paramInt = this.mAdapter.getInitPosition() + paramInt;
+    setCurrentItem(paramInt);
+    this.mCurrentItemIndex = paramInt;
   }
   
   public void setTimeInterval(int paramInt)

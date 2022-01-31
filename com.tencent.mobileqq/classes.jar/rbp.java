@@ -1,14 +1,15 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.SquareImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class rbp
+class rbp
+  implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public TextView a;
-  public SquareImageView a;
-  rbr jdField_a_of_type_Rbr;
-  TextView b;
+  rbp(rap paramrap, String paramString) {}
+  
+  public void onClick(View paramView)
+  {
+    noo.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
+  }
 }
 
 

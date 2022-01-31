@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
 import android.text.TextUtils;
-import bbmy;
+import bcpw;
 
 public class BrowserAppInterface$TBSLogRunnable
   implements Runnable
@@ -16,7 +16,7 @@ public class BrowserAppInterface$TBSLogRunnable
   public void run()
   {
     if (!TextUtils.isEmpty(this.a)) {
-      bbmy.a(this.this$0.getApp(), this.a, 1).a();
+      bcpw.a(this.this$0.getApp(), this.a, 1).a();
     }
   }
 }

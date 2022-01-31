@@ -1,208 +1,196 @@
 package com.tencent.mobileqq.app;
 
-import achz;
-import aciy;
-import acjd;
-import acjz;
-import aclk;
-import acnu;
-import acxd;
-import advd;
-import adyt;
-import aemi;
-import aeor;
-import aeqd;
-import aexw;
-import aeyw;
-import afgd;
-import aful;
-import agjk;
-import agkb;
-import agkl;
-import agmq;
-import agqj;
-import agtb;
-import agtd;
-import agtk;
-import agvx;
-import agxk;
-import ahca;
-import ahcq;
-import ahye;
-import aiei;
-import aifc;
-import aifg;
-import aifx;
-import aiga;
-import aigu;
-import aihn;
-import aisi;
-import aiyu;
-import ajal;
-import ajed;
-import ajei;
-import ajex;
-import ajfb;
-import ajfe;
-import ajff;
-import ajfi;
-import ajfp;
-import ajfq;
-import ajfr;
-import ajfs;
-import ajfw;
-import ajgd;
-import ajgg;
-import ajgr;
-import ajgw;
-import ajhe;
-import ajhf;
-import ajhh;
-import ajhm;
-import ajho;
-import ajhq;
-import ajhx;
-import ajjh;
-import ajjj;
-import ajjq;
-import ajjy;
-import ajjz;
-import ajkc;
-import ajkt;
-import ajkz;
-import ajlf;
-import ajlh;
-import ajll;
-import ajls;
-import ajmp;
-import ajmt;
-import ajmu;
-import ajmv;
-import ajmx;
-import ajnb;
-import ajnd;
-import ajnf;
-import ajnm;
-import ajno;
-import ajof;
-import ajom;
-import ajoy;
-import ajph;
-import ajpk;
-import ajpl;
-import ajpm;
-import ajpn;
-import ajpo;
-import ajpp;
-import ajpq;
-import ajpr;
-import ajps;
-import ajpt;
-import ajpu;
-import ajpv;
-import ajqk;
-import ajqm;
-import ajqo;
-import ajqq;
-import ajqs;
-import ajqt;
-import ajqw;
-import ajqy;
-import ajrc;
-import ajrf;
-import ajrk;
-import ajrl;
-import ajrm;
-import ajrq;
-import ajrs;
-import ajrt;
-import ajru;
-import ajrx;
-import ajsb;
-import ajsi;
-import ajso;
-import ajsq;
-import ajsv;
+import aabk;
+import acso;
+import actn;
+import acts;
+import acus;
+import acwd;
+import acyn;
+import adie;
+import aegc;
+import aejs;
+import aexd;
+import aezn;
+import afaz;
+import afhx;
+import afjm;
+import afkm;
+import afsa;
+import aggl;
+import agvz;
+import agwq;
+import agxa;
+import agzf;
+import ahcy;
+import ahfq;
+import ahfs;
+import ahfz;
+import ahim;
+import ahjz;
+import ahop;
+import ahpf;
+import aikx;
+import airb;
+import airv;
+import airz;
+import aisq;
+import aist;
+import aitn;
+import aiug;
+import ajfg;
+import ajmw;
+import ajon;
+import ajsf;
+import ajsk;
+import ajsz;
+import ajtd;
 import ajtg;
-import ajue;
-import ajum;
-import ajuo;
-import ajuq;
-import ajut;
-import ajuv;
-import ajux;
-import ajve;
-import ajvg;
+import ajth;
+import ajtk;
+import ajtr;
+import ajts;
+import ajtt;
+import ajtu;
+import ajty;
+import ajuf;
+import ajui;
+import ajuu;
+import ajuz;
+import ajvh;
 import ajvi;
-import ajvm;
-import ajvq;
+import ajvk;
+import ajvp;
 import ajvr;
-import ajwf;
-import ajws;
-import ajyk;
-import ajyv;
-import ajzj;
+import ajvt;
+import ajwa;
+import ajxl;
+import ajxn;
+import ajxu;
+import ajyc;
+import ajyf;
+import ajyi;
+import ajyz;
+import ajzf;
+import ajzl;
+import ajzo;
 import ajzs;
-import akaq;
-import akbf;
-import akbj;
-import akbl;
+import akaa;
+import akac;
+import akay;
+import akbc;
+import akbd;
+import akbe;
+import akbg;
+import akbk;
 import akbm;
-import akbp;
-import akcl;
+import akbo;
+import akbw;
+import akby;
+import akcp;
+import akcw;
+import akdi;
 import akdr;
-import aken;
-import akep;
+import akdu;
+import akdv;
+import akdw;
+import akdx;
+import akdy;
+import akdz;
+import akea;
+import akeb;
+import akec;
+import aked;
+import akee;
+import akef;
 import akeu;
+import akew;
+import akey;
+import akfa;
+import akfc;
+import akfd;
+import akfg;
+import akfi;
+import akfm;
 import akfp;
-import akft;
 import akfu;
-import akgo;
-import akgu;
-import akgx;
+import akfv;
+import akfw;
+import akga;
+import akgc;
+import akgd;
+import akge;
+import akgh;
+import akgl;
+import akgs;
+import akgy;
+import akha;
 import akhf;
 import akhq;
-import akia;
-import akie;
-import akiu;
-import akkf;
-import aknw;
-import akoa;
-import ales;
-import alie;
-import aljb;
-import alkj;
-import alkl;
-import almc;
-import alms;
-import alov;
-import alrl;
-import alrm;
-import alsm;
-import aluq;
-import alwi;
-import alxv;
-import alxy;
+import akio;
+import akiw;
+import akiy;
+import akja;
+import akjd;
+import akjf;
+import akjh;
+import akjo;
+import akjq;
+import akjs;
+import akjw;
+import akka;
+import akkb;
+import akkp;
+import aklc;
+import akmu;
+import aknh;
+import aknv;
+import akoe;
+import akpc;
+import akpr;
+import akpv;
+import akpx;
+import akpy;
+import akqb;
+import akqx;
+import aksd;
+import aksz;
+import aktb;
+import aktg;
+import akub;
+import akuf;
+import akug;
+import akva;
+import akvg;
+import akvj;
+import akvr;
+import akwc;
+import akwm;
+import akwq;
+import akxg;
+import akyr;
+import alci;
+import alcm;
+import altg;
+import alws;
+import alxp;
+import alyx;
 import alyz;
-import alzb;
-import alzf;
-import alzw;
-import amfd;
-import amnb;
-import amnr;
-import amoa;
+import amaq;
+import ambg;
+import amdk;
+import amgb;
+import amgc;
+import amgg;
+import amhd;
+import amkg;
+import amly;
+import amnl;
+import amno;
+import amop;
 import amor;
-import amvw;
-import amwo;
-import amxv;
-import amyp;
-import anbh;
-import anbo;
-import anbu;
-import ancg;
-import anch;
-import andm;
-import andn;
+import amov;
+import andi;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -247,272 +235,292 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.accessibility.AccessibilityManager;
-import anfj;
-import anho;
-import annz;
+import andy;
+import aneh;
+import aney;
+import anme;
+import anmw;
 import anod;
-import anoe;
-import ansl;
-import aodw;
-import aofe;
-import aofy;
-import aoig;
-import aoii;
-import aoik;
-import aoke;
-import aome;
-import aons;
-import aopn;
-import apbv;
-import apeh;
-import apgl;
-import apha;
-import aply;
-import apqq;
-import apqs;
-import aqae;
-import aqcg;
-import aqdf;
-import aqdy;
-import aqfa;
-import aqiy;
-import aqjb;
-import aqjl;
-import aqjq;
-import aqkz;
-import aqnw;
-import aqod;
-import aqpl;
-import aqpp;
-import aqpq;
-import aqqi;
-import aqun;
-import aqux;
-import aqvd;
+import anox;
+import anrs;
+import anrz;
+import ansf;
+import ansr;
+import anss;
+import antu;
+import antv;
+import anvs;
+import anxx;
+import aoek;
+import aoeo;
+import aoep;
+import aoix;
+import aouq;
+import aovy;
+import aows;
+import aoza;
+import aozc;
+import aoze;
+import apay;
+import apcy;
+import apen;
+import apgw;
+import aptp;
+import apwb;
+import apyo;
+import apzd;
+import aqfm;
+import aqkf;
+import aqkh;
+import aqmt;
+import aqmu;
+import aqug;
+import aqwi;
+import aqxh;
+import aqya;
 import aqzc;
-import ardn;
-import areb;
-import arga;
-import aric;
-import arih;
-import arik;
-import aril;
-import arim;
-import arin;
-import ario;
-import arip;
-import ariq;
-import ariu;
-import ariy;
-import ariz;
-import arjg;
-import armh;
-import arno;
-import arny;
-import arnz;
-import aroj;
-import arom;
-import aroo;
-import artr;
-import arwc;
-import arxh;
-import arxi;
-import arxo;
-import arxt;
-import aryq;
-import asar;
-import asbf;
-import ascu;
-import ascz;
-import asdf;
-import ased;
+import ardd;
+import ardg;
+import ardq;
+import ardv;
+import arfe;
+import arib;
+import arii;
+import arjq;
+import arju;
+import arjv;
+import arkn;
+import arla;
+import arpj;
+import arqn;
+import arqt;
+import aruq;
+import arzl;
+import asac;
+import ascc;
+import asee;
+import asej;
+import asem;
+import asen;
+import aseo;
 import asep;
-import asey;
-import asft;
-import asif;
+import aseq;
+import aser;
+import ases;
+import asew;
+import asfa;
+import asfb;
+import asfj;
+import asik;
+import asjs;
+import askc;
 import askd;
-import aszm;
-import atax;
-import atbd;
-import atdg;
-import atdn;
-import atdp;
-import atgu;
-import atkz;
-import atmp;
-import atmq;
-import atob;
-import atof;
-import atoi;
-import atox;
-import atqb;
-import attv;
-import atvd;
-import atwd;
-import atzi;
-import aucn;
-import audb;
-import audi;
-import auee;
-import auey;
-import aufb;
-import aufl;
-import aufu;
+import askn;
+import askq;
+import asks;
+import aspv;
+import assg;
+import astl;
+import astm;
+import asts;
+import astx;
+import asuu;
+import aswv;
+import asxj;
+import asyy;
+import aszd;
+import aszj;
+import atah;
+import atat;
+import atbc;
+import atbx;
+import atej;
+import atgh;
+import atvq;
+import atxb;
+import atxh;
+import atzk;
+import atzr;
+import atzt;
+import auet;
+import auiy;
+import auja;
+import aukn;
+import auko;
+import aulz;
+import aumd;
+import aumg;
+import aumv;
 import aunz;
-import auoe;
-import auqe;
-import auqh;
-import aurj;
-import avau;
-import avbh;
-import avev;
-import avhb;
-import avhs;
-import avjd;
-import avqe;
-import avyq;
-import avys;
-import avzi;
-import awab;
-import awao;
-import awcj;
-import awcl;
-import awcw;
-import awcz;
-import awdm;
-import awer;
-import awet;
+import aurt;
+import autb;
+import auub;
+import auyo;
+import avbt;
+import avch;
+import avco;
+import avdk;
+import avee;
+import aveh;
+import aver;
+import avfa;
+import avnh;
+import avnm;
+import avpm;
+import avpq;
+import avqs;
+import awan;
+import awba;
+import aweo;
+import awgu;
 import awhl;
-import awnq;
-import awnv;
-import awpw;
-import awpz;
-import awqe;
-import awqx;
-import awrh;
-import awrn;
-import awrv;
-import awsn;
-import awso;
-import awtl;
-import axac;
-import axam;
-import axar;
-import axat;
-import axcy;
-import axcz;
-import axeh;
-import axem;
-import axfb;
-import axff;
-import axfv;
+import awiw;
+import awpx;
+import awyj;
+import awyl;
+import awzj;
+import awzw;
+import axbr;
+import axbt;
+import axce;
+import axch;
+import axcu;
+import axdz;
+import axeb;
 import axgr;
-import axhd;
-import axhu;
-import axil;
-import axkx;
-import axmd;
-import axmt;
-import axnd;
+import axmp;
+import axnq;
+import axpu;
 import axpy;
-import axrr;
-import axso;
-import axvo;
-import axwx;
-import axxj;
-import axxn;
-import ayja;
-import aymm;
+import axqd;
+import axqw;
+import axrl;
+import axrt;
+import axsf;
+import axsm;
+import axsn;
+import axtm;
+import ayae;
+import ayao;
+import ayat;
+import ayav;
+import ayda;
+import aydb;
+import ayej;
+import ayeo;
+import ayfe;
+import ayfi;
+import ayfy;
+import aygv;
+import ayhh;
+import ayhy;
+import ayip;
+import ayld;
+import aymj;
+import ayna;
 import aynk;
-import ayrg;
+import ayqf;
+import ayry;
 import aysv;
-import aytv;
-import ayue;
-import ayuu;
-import azcc;
-import azcd;
-import azfo;
-import azgf;
-import azgp;
-import azgz;
-import azhg;
-import azhi;
-import azhx;
-import azje;
-import azjh;
+import ayvv;
+import ayxe;
+import ayxq;
+import ayxu;
 import azjq;
-import azko;
-import azks;
-import azlf;
-import azlj;
-import azlm;
-import azrx;
-import azvq;
-import azvr;
-import azwz;
-import azxn;
-import azyg;
-import azyk;
-import azzg;
-import azzu;
-import azzz;
-import baan;
-import babh;
-import babp;
-import bace;
-import bach;
-import bacm;
-import bahj;
-import bahr;
-import baig;
-import baip;
-import bamr;
-import banp;
-import baol;
-import baom;
-import baot;
-import baov;
-import bapf;
-import bapw;
-import bara;
-import basg;
-import bato;
-import bavz;
-import bawk;
-import bawm;
+import aznc;
+import azoa;
+import azrw;
+import aztl;
+import azul;
+import azuu;
+import azvk;
+import bacu;
+import bacv;
+import bafd;
+import baff;
+import bagr;
+import bahi;
+import bahs;
+import baic;
+import baij;
+import bail;
+import baja;
+import bakh;
+import bakk;
+import bakt;
+import bals;
+import balw;
+import bamj;
+import bamn;
+import bamq;
+import batb;
+import bawu;
 import bawv;
-import baxz;
-import bbfc;
-import bbmy;
-import bcix;
-import bcpn;
-import bcqp;
-import bcqv;
-import bcqx;
-import beck;
-import beeq;
-import befa;
-import befe;
-import befs;
-import befx;
-import beyy;
-import bezt;
-import bfaw;
-import bfco;
-import bfcz;
-import bfdz;
-import bffc;
-import bffu;
-import bffx;
-import bfhn;
-import bfli;
-import bfml;
-import bfug;
-import bgau;
-import bgmq;
-import bgsw;
-import bgtw;
-import bhfm;
+import bayd;
+import bayr;
+import bazk;
+import bazo;
+import bbak;
+import bbay;
+import bbbd;
+import bbbr;
+import bbcl;
+import bbct;
+import bbdj;
+import bbdm;
+import bbdr;
+import bbio;
+import bbix;
+import bbjn;
+import bbjw;
+import bbon;
+import bbpl;
+import bbqh;
+import bbqi;
+import bbqp;
+import bbqs;
+import bbrc;
+import bbrt;
+import bbtc;
+import bbui;
+import bbwi;
+import bbyt;
+import bbze;
+import bbzg;
+import bbzp;
+import bcat;
+import bcic;
+import bcpw;
+import bdmy;
+import bdto;
+import bduq;
+import bduw;
+import bduy;
+import bfka;
+import bfmk;
+import bfmu;
+import bfmy;
+import bfnm;
+import bfnr;
+import bggp;
+import bghk;
+import bgin;
+import bgkf;
+import bgkq;
+import bglq;
+import bgmt;
+import bgnl;
+import bgno;
+import bgpf;
+import bgth;
+import bguv;
+import bhcq;
+import bhjf;
+import bhvh;
+import biby;
+import bicy;
+import biqb;
+import bjae;
 import com.dataline.activities.LiteActivity;
 import com.tencent.ark.ArkStateCenter;
 import com.tencent.av.gaudio.AVNotifyCenter;
@@ -536,7 +544,6 @@ import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.DialogActivity;
 import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.QQBroadcastActivity;
 import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
@@ -544,6 +551,7 @@ import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.UserguideActivity;
 import com.tencent.mobileqq.activity.VisitorsActivity;
 import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.aio.AudioDeviceManager;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
 import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
@@ -603,7 +611,6 @@ import com.tencent.mobileqq.mini.report.MiniAppReportManager;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.olympic.OlympicManager;
 import com.tencent.mobileqq.openapi.OpenApiManager;
@@ -643,8 +650,7 @@ import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
 import cooperation.qwallet.plugin.QWalletHelper;
 import cooperation.qzone.report.lp.LpReportManager;
 import cooperation.troop.TroopPluginManager;
-import fv;
-import hl;
+import ho;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -669,20 +675,14 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import krx;
-import ktu;
-import kwo;
-import lco;
-import ljw;
-import mhj;
-import mjk;
-import mmr;
-import mmy;
-import mnd;
-import mnw;
+import je;
+import lcl;
+import lej;
+import lhd;
+import lnf;
+import lun;
 import mqq.app.AccountManagerImpl;
 import mqq.app.AppRuntime.Status;
-import mqq.app.Constants.LogoutReason;
 import mqq.app.Constants.PropertiesKey;
 import mqq.app.MSFServlet;
 import mqq.app.MobileQQ;
@@ -695,70 +695,77 @@ import mqq.manager.PushManager;
 import mqq.manager.ServerConfigManager;
 import mqq.manager.ServerConfigManager.ConfigType;
 import mqq.os.MqqHandler;
-import msg;
-import msj;
-import msl;
-import muf;
-import myd;
-import myh;
-import mzv;
-import nau;
-import nbz;
-import ndo;
-import nec;
-import nes;
-import neu;
-import nfp;
-import nft;
-import nfw;
-import ngh;
-import ngr;
+import msi;
+import muj;
+import mxq;
+import mxx;
+import myc;
+import myv;
+import ndh;
+import ndk;
+import ndm;
+import nfg;
+import nje;
 import nji;
-import nny;
-import noc;
-import nof;
-import obz;
-import oci;
-import oeo;
-import ohd;
-import ohp;
-import oie;
+import nkw;
+import nlv;
+import nna;
+import nop;
+import npd;
+import npt;
+import npv;
+import nqq;
+import nqu;
+import nqx;
+import nri;
+import nsb;
+import nut;
+import nzj;
+import nzn;
+import nzq;
+import onk;
+import ont;
+import opz;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
-import png;
-import pnh;
-import pnk;
-import pnn;
+import oso;
+import ota;
+import otp;
+import pzb;
+import pzc;
 import pzf;
-import qdz;
-import qjf;
-import rcx;
-import rdz;
-import rpo;
-import rqn;
-import rrz;
-import rsp;
-import rtr;
-import rwe;
-import sfy;
-import sfz;
-import sga;
+import pzi;
+import qlf;
+import qpx;
+import qvk;
+import rpl;
+import rqm;
+import scg;
+import sdf;
+import ser;
+import sfh;
 import sgj;
-import skt;
+import six;
+import ssu;
+import ssv;
+import ssw;
 import stf;
-import stg;
-import tfk;
-import urp;
-import vju;
-import vuz;
-import vvk;
-import wqe;
-import xrh;
-import xvq;
-import ydt;
-import ynz;
-import yst;
-import zrr;
+import sxp;
+import tgb;
+import tgc;
+import tsg;
+import vel;
+import vwq;
+import whw;
+import wih;
+import xfj;
+import yak;
+import yeu;
+import ymx;
+import yxt;
+import zcl;
 
 public class QQAppInterface
   extends AppInterface
@@ -776,47 +783,48 @@ public class QQAppInterface
   public static int f;
   public int a;
   public long a;
-  private ajfq jdField_a_of_type_Ajfq;
-  private ajfr jdField_a_of_type_Ajfr;
-  private ajjh jdField_a_of_type_Ajjh = new ajps(this);
-  public ajlh a;
-  private ajmt jdField_a_of_type_Ajmt;
-  private ajmu jdField_a_of_type_Ajmu;
-  ajpt jdField_a_of_type_Ajpt = null;
-  private ajpv jdField_a_of_type_Ajpv;
-  private ajwf jdField_a_of_type_Ajwf;
-  volatile akaq jdField_a_of_type_Akaq;
-  private akep jdField_a_of_type_Akep;
-  private akeu jdField_a_of_type_Akeu;
-  public alyz a;
-  private final alzb jdField_a_of_type_Alzb = new alzb();
-  private alzf jdField_a_of_type_Alzf;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ajpp(this);
+  private ajts jdField_a_of_type_Ajts;
+  private ajtt jdField_a_of_type_Ajtt;
+  private ajxl jdField_a_of_type_Ajxl = new akec(this);
+  public ajzo a;
+  private akbc jdField_a_of_type_Akbc;
+  private akbd jdField_a_of_type_Akbd;
+  aked jdField_a_of_type_Aked = null;
+  private akef jdField_a_of_type_Akef;
+  private akkp jdField_a_of_type_Akkp;
+  volatile akpc jdField_a_of_type_Akpc;
+  private aktb jdField_a_of_type_Aktb;
+  private aktg jdField_a_of_type_Aktg;
+  public amop a;
+  private final amor jdField_a_of_type_Amor = new amor();
+  private amov jdField_a_of_type_Amov;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new akdz(this);
   public Intent a;
   SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = null;
   public Handler a;
   private MQLruCache<String, Object> jdField_a_of_type_AndroidSupportV4UtilMQLruCache = BaseApplicationImpl.sImageCache;
-  private aodw jdField_a_of_type_Aodw;
-  private aofe jdField_a_of_type_Aofe;
-  private aoig jdField_a_of_type_Aoig;
-  private aoii jdField_a_of_type_Aoii;
-  private aoik jdField_a_of_type_Aoik;
-  private aoke jdField_a_of_type_Aoke;
-  private arxt jdField_a_of_type_Arxt;
-  private atmp jdField_a_of_type_Atmp;
-  volatile aufl jdField_a_of_type_Aufl;
-  private avhb jdField_a_of_type_Avhb;
-  public avys a;
-  private awao jdField_a_of_type_Awao;
-  private awer jdField_a_of_type_Awer;
-  private awqx jdField_a_of_type_Awqx;
-  private axso jdField_a_of_type_Axso;
-  private axvo jdField_a_of_type_Axvo;
-  private bffc jdField_a_of_type_Bffc;
-  private bffx jdField_a_of_type_Bffx;
+  private aouq jdField_a_of_type_Aouq;
+  private aovy jdField_a_of_type_Aovy;
+  private aoza jdField_a_of_type_Aoza;
+  private aozc jdField_a_of_type_Aozc;
+  private aoze jdField_a_of_type_Aoze;
+  private apay jdField_a_of_type_Apay;
+  private astx jdField_a_of_type_Astx;
+  private aukn jdField_a_of_type_Aukn;
+  volatile aver jdField_a_of_type_Aver;
+  private awgu jdField_a_of_type_Awgu;
+  public awyl a;
+  private awzw jdField_a_of_type_Awzw;
+  private axdz jdField_a_of_type_Axdz;
+  private axqw jdField_a_of_type_Axqw;
+  private aysv jdField_a_of_type_Aysv;
+  private ayvv jdField_a_of_type_Ayvv;
+  private bgmt jdField_a_of_type_Bgmt;
+  private bgno jdField_a_of_type_Bgno;
   private AVNotifyCenter jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter;
   private QQLruCache<String, Setting> jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache;
   private QvipSpecialSoundManager jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager;
+  private BatteryBroadcastReceiver jdField_a_of_type_ComTencentMobileqqAppBatteryBroadcastReceiver;
   private HotChatManager jdField_a_of_type_ComTencentMobileqqAppHotChatManager;
   private MessageHandler jdField_a_of_type_ComTencentMobileqqAppMessageHandler;
   QQAppInterface.RefreshBadgeHelper jdField_a_of_type_ComTencentMobileqqAppQQAppInterface$RefreshBadgeHelper = new QQAppInterface.RefreshBadgeHelper(this);
@@ -835,19 +843,19 @@ public class QQAppInterface
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
   private Hashtable<String, Long> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
-  List<ajfe> jdField_a_of_type_JavaUtilList = new Vector();
+  List<ajtg> jdField_a_of_type_JavaUtilList = new Vector();
   public Set<String> a;
   private ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(4);
   ConcurrentLinkedQueue<Intent> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private ktu jdField_a_of_type_Ktu;
+  private lej jdField_a_of_type_Lej;
   public boolean a;
   private volatile byte[] jdField_a_of_type_ArrayOfByte = new byte[2];
-  private ajfb[] jdField_a_of_type_ArrayOfAjfb = new ajfb['©'];
-  private final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[353];
-  private Manager[] jdField_a_of_type_ArrayOfMqqManagerManager = new Manager[353];
+  private ajtd[] jdField_a_of_type_ArrayOfAjtd = new ajtd['­'];
+  private final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[356];
+  private Manager[] jdField_a_of_type_ArrayOfMqqManagerManager = new Manager[356];
   public long b;
-  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new ajpr(this);
+  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new akeb(this);
   private Intent jdField_b_of_type_AndroidContentIntent;
   private Handler jdField_b_of_type_AndroidOsHandler;
   private Object jdField_b_of_type_JavaLangObject = new Object();
@@ -855,18 +863,18 @@ public class QQAppInterface
   private ArrayList<String> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   private HashMap<ServerConfigManager.ConfigType, Long> jdField_b_of_type_JavaUtilHashMap = new HashMap();
   private Hashtable<ServerConfigManager.ConfigType, HashMap<String, String>> jdField_b_of_type_JavaUtilHashtable = new Hashtable();
-  List<ajfe> jdField_b_of_type_JavaUtilList = new Vector();
+  List<ajtg> jdField_b_of_type_JavaUtilList = new Vector();
   public int c;
   public long c;
-  private BroadcastReceiver jdField_c_of_type_AndroidContentBroadcastReceiver = new ajpo(this);
-  private Handler jdField_c_of_type_AndroidOsHandler = new ajpq(this, ThreadManager.getSubThreadLooper());
+  private BroadcastReceiver jdField_c_of_type_AndroidContentBroadcastReceiver = new akdy(this);
+  private Handler jdField_c_of_type_AndroidOsHandler = new akea(this, ThreadManager.getSubThreadLooper());
   private ArrayList<String> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-  List<ajfe> jdField_c_of_type_JavaUtilList = new Vector();
+  List<ajtg> jdField_c_of_type_JavaUtilList = new Vector();
   public boolean c;
   private volatile long[] jdField_c_of_type_ArrayOfLong = new long[2];
   public int d;
   private ArrayList<String> jdField_d_of_type_JavaUtilArrayList = new ArrayList();
-  private List<ajux> jdField_d_of_type_JavaUtilList = new ArrayList();
+  private List<akjh> jdField_d_of_type_JavaUtilList = new ArrayList();
   public volatile boolean d;
   private long e;
   public boolean e;
@@ -936,11 +944,11 @@ public class QQAppInterface
     this.jdField_k_of_type_Int = 993;
     this.jdField_k_of_type_Boolean = true;
     this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_AndroidOsHandler = new ajpn(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new akdx(this, Looper.getMainLooper());
     this.jdField_g_of_type_Int = -1;
   }
   
-  public static void H()
+  public static void I()
   {
     int i3 = 0;
     i2 = 0;
@@ -992,14 +1000,14 @@ public class QQAppInterface
     }
   }
   
-  private void J()
+  private void M()
   {
     if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache == null) {
       this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new QQLruCache(2001, 4000, 60);
     }
   }
   
-  private void K()
+  private void N()
   {
     if (BaseApplicationImpl.sImageCache != null)
     {
@@ -1008,7 +1016,7 @@ public class QQAppInterface
     }
   }
   
-  private void L()
+  private void O()
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("mqq.intent.action.ACCOUNT_CHANGED");
@@ -1021,14 +1029,14 @@ public class QQAppInterface
     this.app.registerReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
   }
   
-  private void M()
+  private void P()
   {
     if (this.l) {
       return;
     }
     QLog.d("QQAppInterface", 1, "release");
     this.l = true;
-    bakq.jdField_a_of_type_Boolean = false;
+    bbma.jdField_a_of_type_Boolean = false;
     if (GuardManager.jdField_a_of_type_ComTencentMobileqqAppGuardManager != null) {
       GuardManager.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(false);
     }
@@ -1042,20 +1050,20 @@ public class QQAppInterface
         {
           this.jdField_c_of_type_JavaUtilList.clear();
           this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.onDestroy();
-          HeavyTaskExecutor.a(new QQAppInterface.10(this));
+          HeavyTaskExecutor.a(new QQAppInterface.11(this));
         }
       }
     }
-    synchronized (this.jdField_a_of_type_ArrayOfAjfb)
+    synchronized (this.jdField_a_of_type_ArrayOfAjtd)
     {
-      ajfb[] arrayOfajfb = this.jdField_a_of_type_ArrayOfAjfb;
-      int i2 = arrayOfajfb.length;
+      ajtd[] arrayOfajtd = this.jdField_a_of_type_ArrayOfAjtd;
+      int i2 = arrayOfajtd.length;
       int i1 = 0;
       while (i1 < i2)
       {
-        ajfb localajfb = arrayOfajfb[i1];
-        if (localajfb != null) {
-          localajfb.onDestroy();
+        ajtd localajtd = arrayOfajtd[i1];
+        if (localajtd != null) {
+          localajtd.onDestroy();
         }
         i1 += 1;
         continue;
@@ -1070,87 +1078,74 @@ public class QQAppInterface
         a().unregisterCloudScanListener(this.app.getBaseContext(), this.jdField_a_of_type_ComTencentSecuremoduleServiceCloudScanListener);
       }
       VideoBroadcastReceiver.a();
-      ahca.a();
+      ahop.a();
       FaceDecodeTask.b();
       this.jdField_c_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      if (this.jdField_a_of_type_Aodw != null) {
-        this.jdField_a_of_type_Aodw.d();
+      if (this.jdField_a_of_type_Aouq != null) {
+        this.jdField_a_of_type_Aouq.d();
       }
-      if (this.jdField_a_of_type_Akeu != null) {
-        this.jdField_a_of_type_Akeu.e();
+      if (this.jdField_a_of_type_Aktg != null) {
+        this.jdField_a_of_type_Aktg.e();
       }
-      bgtw.b();
+      bicy.b();
       TdsReaderGlobal.b();
       SosoInterface.a();
-      akfu.a();
-      annz.a();
+      akug.a();
+      aoek.a();
       PluginManageHandler.getInstance().setPluginManagerProvider(null, false);
       SessionInfo.clearOldSession();
-      rtr.b();
-      rsp.a(c());
-      ndo.a().a();
+      sgj.b();
+      sfh.a(c());
+      nop.a().a();
       QQIndividualityPluginProxyService.a();
-      avis.jdField_a_of_type_Boolean = false;
-      tfk.a().a(BaseApplication.getContext());
-      akoa.a();
-      aexw.a();
-      HeavyTaskExecutor.a(new QQAppInterface.11(this));
-      ayue.a().b();
-      aysv.a().b();
-      aytv.a().b();
+      awil.jdField_a_of_type_Boolean = false;
+      tsg.a().a(BaseApplication.getContext());
+      alcm.a();
+      afjm.a();
+      HeavyTaskExecutor.a(new QQAppInterface.12(this));
+      azuu.a().b();
+      aztl.a().b();
+      azul.a().b();
       QWalletHelper.release();
-      bgsw.b();
-      aopn.a().a();
+      biby.b();
+      apgw.a().a();
+      arkn.a();
       return;
     }
   }
   
-  private void N()
+  private void Q()
   {
-    Object localObject = (axat)getManager(61);
+    Object localObject = (ayav)getManager(61);
     if (localObject != null) {}
-    for (localObject = ((axat)localObject).a();; localObject = null)
+    for (localObject = ((ayav)localObject).a();; localObject = null)
     {
       if ((localObject == null) || (((ArrayList)localObject).size() == 0)) {
         return;
       }
-      axam.a(this, (byte)0, (ArrayList)localObject);
+      ayao.a(this, (byte)0, (ArrayList)localObject);
       return;
     }
   }
   
-  private void O()
+  private void R()
   {
-    if (this.jdField_a_of_type_Alyz == null)
+    if (this.jdField_a_of_type_Amop == null)
     {
-      this.jdField_a_of_type_Alyz = new alyz(this);
-      this.jdField_a_of_type_Alyz.a();
+      this.jdField_a_of_type_Amop = new amop(this);
+      this.jdField_a_of_type_Amop.a();
     }
   }
   
-  private void P()
+  private void S()
   {
-    if ((((WtloginManagerImpl)getManager(1)).GetLocalSig(getCurrentAccountUin(), 16L) == null) && (isLogin()))
-    {
-      Object localObject = (amfd)alzw.a().a(546);
-      if ((localObject != null) && (((amfd)localObject).jdField_c_of_type_Int == 1))
-      {
-        localObject = new Intent(BaseApplicationImpl.sApplication, NotificationActivity.class);
-        ((Intent)localObject).setAction("mqq.intent.action.ACCOUNT_EXPIRED");
-        ((Intent)localObject).putExtra("reason", Constants.LogoutReason.expired);
-        MsfSdkUtils.updateSimpleAccount(getCurrentAccountUin(), false);
-        BaseApplicationImpl.sApplication.setSortAccountList(MsfSdkUtils.getLoginedAccountList());
-        logout(true);
-        ((Intent)localObject).setFlags(872415232);
-        BaseApplicationImpl.sApplication.startActivity((Intent)localObject);
-        QLog.w("QQAppInterface", 1, "showKickOutDialog");
-      }
-      awrn.a(this.app).a(null, "kWtSigAllClear", true, 0L, 0L, null, null);
+    if ((((WtloginManagerImpl)getManager(1)).GetLocalSig(getCurrentAccountUin(), 16L) == null) && (isLogin())) {
+      axrl.a(this.app).a(null, "kWtSigAllClear", true, 0L, 0L, null, null);
     }
   }
   
   @Deprecated
-  private void Q()
+  private void T()
   {
     if (this.jdField_g_of_type_Int != -1) {}
     String str;
@@ -1180,17 +1175,19 @@ public class QQAppInterface
       if (i1 == 0) {
         break;
       }
-      ThreadManager.post(new QQAppInterface.21(this, (StringBuilder)localObject), 8, null, false);
+      ThreadManager.post(new QQAppInterface.22(this, (StringBuilder)localObject), 8, null, false);
       return;
     }
   }
   
   @TargetApi(23)
-  private void R()
+  private void U()
   {
     QLog.d("QQAppInterface", 1, "checkBackgroundRestricWhilteList ENTER " + System.currentTimeMillis());
     localObject = new int[] { 1, 3 };
-    arrayOfInt = new int[] { 4, 7 };
+    arrayOfInt1 = new int[] { 2, 3 };
+    arrayOfInt2 = new int[] { 4, 7 };
+    arrayOfInt3 = new int[] { 5, 14 };
     localBaseApplication = BaseApplicationImpl.getContext();
     ConnectivityManager localConnectivityManager = (ConnectivityManager)localBaseApplication.getSystemService("connectivity");
     try
@@ -1236,7 +1233,7 @@ public class QQAppInterface
             {
               i1 = 5;
             }
-            if (System.currentTimeMillis() >= new int[][] { { 0, 0 }, localObject, { 2, 3 }, { 3, 7 }, arrayOfInt, { 5, 14 } }[i1][1] * 86400000L + l1)
+            if (System.currentTimeMillis() >= new int[][] { { 0, 0 }, localObject, arrayOfInt1, { 3, 7 }, arrayOfInt2, arrayOfInt3 }[i1][1] * 86400000L + l1)
             {
               localObject = localSharedPreferences.edit();
               i1 += 1;
@@ -1290,7 +1287,7 @@ public class QQAppInterface
     }
   }
   
-  private void S()
+  private void V()
   {
     if (QLog.isColorLevel()) {
       QLog.i("Q.qqhead.broadcast", 2, "runNext," + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + "," + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
@@ -1301,14 +1298,14 @@ public class QQAppInterface
       if (localIntent != null)
       {
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-        ThreadManager.excute(new QQAppInterface.22(this, System.currentTimeMillis(), localIntent), 32, null, true);
+        ThreadManager.excute(new QQAppInterface.23(this, System.currentTimeMillis(), localIntent), 32, null, true);
       }
     }
   }
   
-  private void T()
+  private void W()
   {
-    boolean bool = mhj.d(getApp());
+    boolean bool = msi.d(getApp());
     if (QLog.isColorLevel()) {
       QLog.d("QQAppInterface", 2, "checkRamForAvideo isSelfCalling = " + bool);
     }
@@ -1328,15 +1325,15 @@ public class QQAppInterface
         }
         a();
       } while ((AVNotifyCenter.c()) && (!a().d()));
-      l1 = babp.d() / 1024L / 1024L;
+      l1 = bbct.d() / 1024L / 1024L;
       if (QLog.isColorLevel()) {
         QLog.d("QQAppInterface", 2, "checkRamForAvideo memoryTotal = " + l1);
       }
     } while ((!c()) || (l1 == 0L) || (l1 > 2048L));
-    ThreadManager.getUIHandler().post(new QQAppInterface.23(this));
+    ThreadManager.getUIHandler().post(new QQAppInterface.24(this));
   }
   
-  private ajrl a()
+  private akfv a()
   {
     if (!getCurrentAccountUin().equals("0")) {
       return getEntityManagerFactory().build(getCurrentAccountUin());
@@ -1344,7 +1341,7 @@ public class QQAppInterface
     return null;
   }
   
-  private ajrl a(String paramString)
+  private akfv a(String paramString)
   {
     return getEntityManagerFactory(paramString).build(paramString);
   }
@@ -1357,13 +1354,13 @@ public class QQAppInterface
       i1 = 1;
     }
     Object localObject;
-    if (String.valueOf(ajed.H).equals(str))
+    if (String.valueOf(ajsf.H).equals(str))
     {
-      str = paramContext.getString(2131633437);
+      str = paramContext.getString(2131699187);
       localObject = new Intent(paramContext, MsgBoxListActivity.class);
-      paramContext = ajed.H;
-      if (!amwo.a(paramMessage, this)) {
-        paramContext = ajed.I;
+      paramContext = ajsf.H;
+      if (!anmw.a(paramMessage, this)) {
+        paramContext = ajsf.I;
       }
       ((Intent)localObject).putExtra("uin", paramContext);
       ((Intent)localObject).putExtra("uintype", 1001);
@@ -1375,14 +1372,14 @@ public class QQAppInterface
     {
       paramMessage.putExtra("uinname", paramContext);
       return paramMessage;
-      if ((String.valueOf(ajed.M).equals(str)) || (ajed.aw.equals(str)) || (ajed.aD.equals(str)))
+      if ((String.valueOf(ajsf.M).equals(str)) || (ajsf.ax.equals(str)) || (ajsf.aE.equals(str)))
       {
-        localObject = paramContext.getString(2131628967);
+        localObject = paramContext.getString(2131694631);
         localIntent = new Intent(paramContext, NewFriendActivity.class);
-        if (ajed.M.equals(str))
+        if (ajsf.M.equals(str))
         {
           localIntent.putExtra("from", "from_notification");
-          paramInt = aeyw.a(paramMessage);
+          paramInt = afkm.a(paramMessage);
           localIntent.putExtra("fromSubType", paramInt);
           if (paramInt != 6) {
             break label238;
@@ -1401,64 +1398,88 @@ public class QQAppInterface
           }
         }
       }
-      if (String.valueOf(ajed.N).equals(str))
+      if (String.valueOf(ajsf.N).equals(str))
       {
-        str = paramContext.getString(2131654085);
+        str = paramContext.getString(2131719974);
         paramMessage = new Intent(paramContext, TroopActivity.class);
         paramMessage.putExtra("_key_mode", 1);
         paramMessage.putExtra("key_tab_mode", 2);
         paramContext = str;
       }
-      else if (String.valueOf(ajed.J).equals(str))
+      else if (String.valueOf(ajsf.J).equals(str))
       {
         paramMessage = new Intent(paramContext, QQBroadcastActivity.class);
-        paramContext = paramContext.getString(2131654084);
+        paramContext = paramContext.getString(2131719973);
       }
-      else if (String.valueOf(ajed.E).equals(str))
+      else if (String.valueOf(ajsf.E).equals(str))
       {
-        str = paramContext.getString(2131654085);
+        str = paramContext.getString(2131719974);
         paramMessage = new Intent(paramContext, VisitorsActivity.class);
         paramMessage.putExtra("votersOnly", true);
         paramMessage.putExtra("toUin", Long.valueOf(getCurrentAccountUin()));
         paramContext = str;
       }
-      else if (String.valueOf(ajed.z).equals(str))
+      else if (String.valueOf(ajsf.z).equals(str))
       {
         paramMessage = new Intent(paramContext, LiteActivity.class);
-        paramMessage.putExtra("targetUin", ajed.z);
-        paramContext = paramContext.getString(2131628323);
+        paramMessage.putExtra("targetUin", ajsf.z);
+        paramContext = paramContext.getString(2131693964);
       }
-      else if (String.valueOf(ajed.A).equals(str))
+      else if (String.valueOf(ajsf.A).equals(str))
       {
         paramMessage = new Intent(paramContext, LiteActivity.class);
-        paramMessage.putExtra("targetUin", ajed.A);
-        paramContext = paramContext.getString(2131628324);
+        paramMessage.putExtra("targetUin", ajsf.A);
+        paramContext = paramContext.getString(2131693965);
       }
-      else
+      else if (String.valueOf(9973L).equals(str))
       {
-        if (!String.valueOf(9973L).equals(str)) {
-          break;
-        }
         paramMessage = new Intent(paramContext, ActivateFriendActivity.class);
-        paramContext = paramContext.getString(2131624067);
+        paramContext = paramContext.getString(2131689607);
         paramMessage.setFlags(67108864);
         paramMessage.putExtra("af_key_from", 4);
+      }
+      else if (ajsf.Q.equals(str))
+      {
+        str = BaseApplicationImpl.getContext().getString(2131695581);
+        if (bhvh.k())
+        {
+          paramContext = nut.a(paramContext, 6);
+          localObject = "";
+        }
+        try
+        {
+          paramMessage = new JSONObject(paramMessage.extStr).optString("msg_id");
+          paramContext.putExtra("notification_message_id", paramMessage);
+          paramContext.putExtra("uintype", 7225);
+          paramMessage = paramContext;
+          paramContext = str;
+          continue;
+          paramContext = new Intent(paramContext, ReadInJoyNewFeedsActivity.class);
+        }
+        catch (JSONException paramMessage)
+        {
+          for (;;)
+          {
+            QLog.i("QQAppInterface", 1, "getIntentByUin, get readinjoy messageId exception, e=" + paramMessage.toString());
+            paramMessage = (QQMessageFacade.Message)localObject;
+          }
+        }
       }
     }
     if (i1 == 7000)
     {
-      localObject = paramContext.getString(2131653961);
+      localObject = paramContext.getString(2131719845);
       paramMessage = new Intent(paramContext, AssociatedAccountActivity.class);
       paramMessage.putExtra("subAccount", str);
-      paramContext = (axat)getManager(61);
+      paramContext = (ayav)getManager(61);
       if (paramContext == null) {
-        break label1628;
+        break label1765;
       }
     }
-    label1080:
-    label1211:
-    label1366:
-    label1628:
+    label1217:
+    label1348:
+    label1503:
+    label1765:
     for (paramContext = paramContext.b(str);; paramContext = str)
     {
       paramMessage.putExtra("subAccountLatestNick", paramContext);
@@ -1469,11 +1490,11 @@ public class QQAppInterface
       break;
       if ((i1 == 1001) || (i1 == 1010))
       {
-        str = paramContext.getString(2131633437);
+        str = paramContext.getString(2131699187);
         localObject = new Intent(paramContext, MsgBoxListActivity.class);
-        paramContext = ajed.H;
-        if (!amwo.a(paramMessage, this)) {
-          paramContext = ajed.I;
+        paramContext = ajsf.H;
+        if (!anmw.a(paramMessage, this)) {
+          paramContext = ajsf.I;
         }
         ((Intent)localObject).putExtra("uin", paramContext);
         ((Intent)localObject).putExtra("uintype", i1);
@@ -1483,10 +1504,10 @@ public class QQAppInterface
       }
       if (i1 == 1032)
       {
-        str = paramContext.getString(2131632960);
+        str = paramContext.getString(2131698696);
         paramMessage = new Intent(paramContext, PublicFragmentActivity.class);
         paramMessage.putExtra("uintype", 1032);
-        paramMessage.putExtra("uin", ajed.aL);
+        paramMessage.putExtra("uin", ajsf.aM);
         paramMessage.putExtra("public_fragment_class", ConfessMsgListFragment.class.getName());
         paramMessage.addFlags(335544320);
         paramContext = str;
@@ -1497,9 +1518,9 @@ public class QQAppInterface
         localObject = new Intent("android.intent.action.MAIN");
         ((Intent)localObject).addCategory("android.intent.category.LAUNCHER");
         ((Intent)localObject).putExtra("uintype", 1037);
-        paramMessage = (ansl)getManager(292);
+        paramMessage = (aoix)getManager(292);
         if ((paramMessage != null) && (!TextUtils.isEmpty(str)) && (str.equals(paramMessage.a())) && (!TextUtils.isEmpty(paramMessage.a))) {}
-        for (paramMessage = paramMessage.a;; paramMessage = ajjy.a(2131644332))
+        for (paramMessage = paramMessage.a;; paramMessage = ajyc.a(2131710117))
         {
           ((Intent)localObject).setClass(paramContext, SplashActivity.class);
           ((Intent)localObject).addFlags(268435456);
@@ -1511,9 +1532,9 @@ public class QQAppInterface
       if (i1 == 1044)
       {
         if (!TextUtils.isEmpty(str)) {}
-        for (str = babh.b(this, str, false);; str = ajjy.a(2131644332))
+        for (str = bbcl.b(this, str, false);; str = ajyc.a(2131710117))
         {
-          localObject = arjg.a(paramContext);
+          localObject = asfj.a(paramContext);
           ((Intent)localObject).putExtra("key_matchchat_from_notification", true);
           ((Intent)localObject).putExtra("key_matchchat_from_notification_uin", paramMessage.frienduin);
           paramContext = str;
@@ -1523,41 +1544,41 @@ public class QQAppInterface
       }
       if (i1 == 7220)
       {
-        str = rsp.c(this, paramContext);
+        str = sfh.c(this, paramContext);
         paramMessage = (KandianMergeManager)getManager(162);
         if (paramMessage != null)
         {
           paramMessage = paramMessage.b();
-          if (obz.a(paramMessage)) {
-            break label1622;
+          if (onk.a(paramMessage)) {
+            break label1759;
           }
         }
       }
       for (paramInt = 5;; paramInt = 6)
       {
         if (paramInt == 6) {
-          obz.a(true);
+          onk.a(true);
         }
-        if (bgmq.k()) {}
-        for (paramMessage = nji.a(paramContext, paramInt);; paramMessage = paramContext)
+        if (bhvh.k()) {}
+        for (paramMessage = nut.a(paramContext, paramInt);; paramMessage = paramContext)
         {
-          paramMessage.putExtra("uin", ajed.az);
+          paramMessage.putExtra("uin", ajsf.aA);
           paramMessage.putExtra("uintype", i1);
           if (paramInt != 6) {
-            break label1616;
+            break label1753;
           }
-          paramContext = BaseApplicationImpl.getContext().getString(2131629900);
+          paramContext = BaseApplicationImpl.getContext().getString(2131695581);
           break;
           paramMessage = null;
-          break label1080;
+          break label1217;
           paramContext = new Intent(paramContext, ReadInJoyNewFeedsActivity.class);
-          if (!bgmq.a(this)) {
-            break label1211;
+          if (!bhvh.a(this)) {
+            break label1348;
           }
           paramContext.putExtra("readinjoy_show_tab", 0);
           paramContext.putExtra("tab_tab_index", 0);
           paramContext.putExtra("launch_from", paramInt);
-          oci.a(paramContext);
+          ont.a(paramContext);
         }
         localObject = new ArrayList();
         paramMessage = ((KandianMergeManager)getManager(162)).b();
@@ -1598,7 +1619,7 @@ public class QQAppInterface
           paramMessage = null;
           paramContext.putExtra("subscription_all_article_id", paramMessage);
           if (!((ArrayList)localObject).isEmpty()) {
-            break label1418;
+            break label1555;
           }
         }
         for (long l1 = -1L;; l1 = ((Long)((ArrayList)localObject).get(0)).longValue())
@@ -1608,40 +1629,40 @@ public class QQAppInterface
           paramMessage = paramContext;
           break;
           paramMessage = (QQMessageFacade.Message)localObject;
-          break label1366;
+          break label1503;
         }
         paramMessage = new Intent(paramContext, SplashActivity.class);
         if (i1 == 1009) {
-          paramContext = paramContext.getString(2131652982);
+          paramContext = paramContext.getString(2131718809);
         }
         for (;;)
         {
           paramMessage.putExtra("uin", str);
           paramMessage.putExtra("uintype", i1);
-          paramMessage = aciy.a(paramMessage, new int[] { 2 });
+          paramMessage = actn.a(paramMessage, new int[] { 2 });
           paramMessage.setAction("com.tencent.mobileqq.action.MAINACTIVITY");
           break;
           if (String.valueOf(1787740092L).equals(str))
           {
-            paramContext = paramContext.getString(2131624584);
+            paramContext = paramContext.getString(2131690138);
           }
           else if (i1 == 1024)
           {
             paramMessage.putExtra("chat_subType", 1);
-            paramContext = babh.b(this, str, i1);
+            paramContext = bbcl.b(this, str, i1);
           }
           else if (i1 == 9501)
           {
-            paramContext = ((xrh)a(51)).a(Long.parseLong(str));
+            paramContext = ((yak)a(51)).a(Long.parseLong(str));
             if (paramContext != null) {
-              paramContext = ydt.a(paramContext);
+              paramContext = ymx.a(paramContext);
             } else {
               paramContext = str;
             }
           }
           else
           {
-            paramContext = babh.b(this, str, i1);
+            paramContext = bbcl.b(this, str, i1);
           }
         }
         paramContext = str;
@@ -1652,13 +1673,13 @@ public class QQAppInterface
   
   private Intent a(Context paramContext, String paramString, int paramInt, MessageRecord paramMessageRecord)
   {
-    if (String.valueOf(ajed.H).equals(paramString))
+    if (String.valueOf(ajsf.H).equals(paramString))
     {
-      paramString = paramContext.getString(2131627629);
+      paramString = paramContext.getString(2131693270);
       localObject = new Intent(paramContext, MsgBoxListActivity.class);
-      paramContext = ajed.H;
-      if (!amwo.b(paramMessageRecord)) {
-        paramContext = ajed.I;
+      paramContext = ajsf.H;
+      if (!anmw.b(paramMessageRecord)) {
+        paramContext = ajsf.I;
       }
       ((Intent)localObject).putExtra("uin", paramContext);
       ((Intent)localObject).putExtra("uintype", 1001);
@@ -1669,48 +1690,48 @@ public class QQAppInterface
     {
       paramContext.putExtra("uinname", paramMessageRecord);
       return paramContext;
-      if (String.valueOf(ajed.M).equals(paramString))
+      if (String.valueOf(ajsf.M).equals(paramString))
       {
-        paramMessageRecord = paramContext.getString(2131654085);
+        paramMessageRecord = paramContext.getString(2131719974);
         paramContext = new Intent(paramContext, NewFriendActivity.class);
         paramContext.putExtra("from", "from_notification");
         paramContext.putExtra("EntranceId", 1);
       }
-      else if (String.valueOf(ajed.N).equals(paramString))
+      else if (String.valueOf(ajsf.N).equals(paramString))
       {
-        paramMessageRecord = paramContext.getString(2131654085);
+        paramMessageRecord = paramContext.getString(2131719974);
         paramContext = new Intent(paramContext, TroopActivity.class);
         paramContext.putExtra("_key_mode", 1);
         paramContext.putExtra("key_tab_mode", 2);
       }
-      else if (String.valueOf(ajed.J).equals(paramString))
+      else if (String.valueOf(ajsf.J).equals(paramString))
       {
         paramString = new Intent(paramContext, QQBroadcastActivity.class);
-        paramMessageRecord = paramContext.getString(2131654084);
+        paramMessageRecord = paramContext.getString(2131719973);
         paramContext = paramString;
       }
-      else if (String.valueOf(ajed.E).equals(paramString))
+      else if (String.valueOf(ajsf.E).equals(paramString))
       {
-        paramMessageRecord = paramContext.getString(2131654085);
+        paramMessageRecord = paramContext.getString(2131719974);
         paramContext = new Intent(paramContext, VisitorsActivity.class);
         paramContext.putExtra("votersOnly", true);
         paramContext.putExtra("toUin", Long.valueOf(getCurrentAccountUin()));
       }
-      else if (String.valueOf(ajed.z).equals(paramString))
+      else if (String.valueOf(ajsf.z).equals(paramString))
       {
         paramString = new Intent(paramContext, LiteActivity.class);
-        paramString.putExtra("targetUin", ajed.z);
-        paramMessageRecord = paramContext.getString(2131628323);
+        paramString.putExtra("targetUin", ajsf.z);
+        paramMessageRecord = paramContext.getString(2131693964);
         paramContext = paramString;
       }
       else
       {
-        if (!String.valueOf(ajed.A).equals(paramString)) {
+        if (!String.valueOf(ajsf.A).equals(paramString)) {
           break;
         }
         paramString = new Intent(paramContext, LiteActivity.class);
-        paramString.putExtra("targetUin", ajed.A);
-        paramMessageRecord = paramContext.getString(2131628324);
+        paramString.putExtra("targetUin", ajsf.A);
+        paramMessageRecord = paramContext.getString(2131693965);
         paramContext = paramString;
       }
     }
@@ -1720,10 +1741,10 @@ public class QQAppInterface
     ((Intent)localObject).setFlags(335544320);
     if (paramInt == 7000)
     {
-      paramMessageRecord = paramContext.getString(2131653961);
+      paramMessageRecord = paramContext.getString(2131719845);
       ((Intent)localObject).setClass(paramContext, AssociatedAccountActivity.class);
       ((Intent)localObject).putExtra("subAccount", paramString);
-      paramContext = (axat)getManager(61);
+      paramContext = (ayav)getManager(61);
       if (paramContext == null) {
         break label799;
       }
@@ -1741,28 +1762,28 @@ public class QQAppInterface
         break;
         if (paramInt == 1009)
         {
-          paramMessageRecord = paramContext.getString(2131652982);
+          paramMessageRecord = paramContext.getString(2131718809);
           paramContext = (Context)localObject;
         }
         else if (String.valueOf(1787740092L).equals(paramString))
         {
-          paramMessageRecord = paramContext.getString(2131624584);
+          paramMessageRecord = paramContext.getString(2131690138);
           paramContext = (Context)localObject;
         }
         else if (paramInt == 1024)
         {
           ((Intent)localObject).setClass(paramContext, SplashActivity.class);
-          paramContext = aciy.a((Intent)localObject, null);
+          paramContext = actn.a((Intent)localObject, null);
           paramContext.putExtra("chat_subType", 1);
-          paramMessageRecord = babh.b(this, paramString, paramInt);
+          paramMessageRecord = bbcl.b(this, paramString, paramInt);
         }
         else if ((paramInt == 1001) || (paramInt == 1010) || (paramInt == 10002))
         {
-          localObject = paramContext.getString(2131633437);
+          localObject = paramContext.getString(2131699187);
           Intent localIntent = new Intent(paramContext, MsgBoxListActivity.class);
-          paramContext = ajed.H;
-          if (!amwo.b(paramMessageRecord)) {
-            paramContext = ajed.I;
+          paramContext = ajsf.H;
+          if (!anmw.b(paramMessageRecord)) {
+            paramContext = ajsf.I;
           }
           localIntent.putExtra("uin", paramContext);
           localIntent.putExtra("uintype", paramInt);
@@ -1771,15 +1792,15 @@ public class QQAppInterface
         }
         else if (paramInt == 1032)
         {
-          paramMessageRecord = paramContext.getString(2131632960);
+          paramMessageRecord = paramContext.getString(2131698696);
           paramContext = new Intent(paramContext, MsgBoxListActivity.class);
-          paramString = ajed.aL;
+          paramString = ajsf.aM;
           paramContext.putExtra("uin", paramString);
           paramContext.putExtra("uintype", paramInt);
         }
         else
         {
-          paramMessageRecord = babh.b(this, paramString, paramInt);
+          paramMessageRecord = bbcl.b(this, paramString, paramInt);
           paramContext = (Context)localObject;
         }
       }
@@ -1816,14 +1837,14 @@ public class QQAppInterface
         if (!bool) {
           paramInt1 = paramInt2;
         }
-        return bacm.a(paramBitmap, paramInt1, bool, paramInt2, paramInt3);
+        return bbdr.a(paramBitmap, paramInt1, bool, paramInt2, paramInt3);
       }
     }
   }
   
-  public static awsn a()
+  public static axsm a()
   {
-    return awso.a();
+    return axsn.a();
   }
   
   private String a(QQMessageFacade.Message paramMessage)
@@ -1836,25 +1857,25 @@ public class QQAppInterface
       if (paramMessage.msgtype == -2025)
       {
         if (MessageForQQWalletMsg.isRedPacketMsg(a().b(paramMessage.frienduin, 1, paramMessage.uniseq))) {
-          return getApp().getString(2131627378);
+          return getApp().getString(2131693018);
         }
         return "";
       }
       return "";
     case 10: 
-      return getApp().getString(2131633806);
-    case 23: 
-      return getApp().getString(2131631794);
+      return getApp().getString(2131699592);
+    case 24: 
+      return getApp().getString(2131697506);
     case 13: 
-      return getApp().getString(2131631792);
+      return getApp().getString(2131697504);
     case 5: 
-      return getApp().getString(2131631970);
+      return getApp().getString(2131697684);
     case 22: 
-      return getApp().getString(2131632208);
+      return getApp().getString(2131697933);
     case 4: 
-      return getApp().getString(2131631982);
+      return getApp().getString(2131697700);
     }
-    return getApp().getString(2131632780);
+    return getApp().getString(2131698516);
   }
   
   private String a(QQMessageFacade.Message paramMessage, boolean paramBoolean)
@@ -1862,7 +1883,7 @@ public class QQAppInterface
     Object localObject2;
     if ((paramMessage.istroop == 1000) || (paramMessage.istroop == 1020))
     {
-      localObject1 = babh.d(this, paramMessage.frienduin, paramMessage.senderuin);
+      localObject1 = bbcl.d(this, paramMessage.frienduin, paramMessage.senderuin);
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
         localObject2 = localObject1;
@@ -1870,7 +1891,7 @@ public class QQAppInterface
       }
       else
       {
-        localObject2 = ((ajjj)getManager(51)).e(paramMessage.frienduin);
+        localObject2 = ((ajxn)getManager(51)).e(paramMessage.frienduin);
         if (localObject2 != null) {
           if (TextUtils.isEmpty(((Friends)localObject2).remark)) {
             break label242;
@@ -1895,7 +1916,7 @@ public class QQAppInterface
           {
             this.jdField_a_of_type_JavaUtilSet.add(paramMessage.frienduin);
             localObject2 = (FriendListHandler)a(1);
-            addObserver(this.jdField_a_of_type_Ajjh);
+            addObserver(this.jdField_a_of_type_Ajxl);
             if (QLog.isColorLevel()) {
               QLog.d("QQAppInterface_friendListObserver", 2, "addObserver");
             }
@@ -1914,7 +1935,7 @@ public class QQAppInterface
         localObject1 = paramMessage.frienduin;
       }
       return localObject1;
-      localObject1 = babh.c(this, paramMessage.senderuin, paramMessage.frienduin);
+      localObject1 = bbcl.c(this, paramMessage.senderuin, paramMessage.frienduin);
       break;
     }
   }
@@ -1922,8 +1943,8 @@ public class QQAppInterface
   public static String a(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder(128);
-    if (azzu.a()) {
-      localStringBuilder.append(ajed.bA);
+    if (bbay.a()) {
+      localStringBuilder.append(ajsf.bI);
     }
     for (;;)
     {
@@ -1941,7 +1962,7 @@ public class QQAppInterface
     Object localObject;
     if ((paramInt == 1000) || (paramInt == 1020))
     {
-      paramString2 = babh.d(this, paramString1, paramString2);
+      paramString2 = bbcl.d(this, paramString1, paramString2);
       if (!TextUtils.isEmpty(paramString2))
       {
         localObject = paramString2;
@@ -1949,7 +1970,7 @@ public class QQAppInterface
       }
       else
       {
-        localObject = ((ajjj)getManager(51)).e(paramString1);
+        localObject = ((ajxn)getManager(51)).e(paramString1);
         if (localObject != null) {
           if (TextUtils.isEmpty(((Friends)localObject).remark)) {
             break label199;
@@ -1974,7 +1995,7 @@ public class QQAppInterface
           {
             this.jdField_a_of_type_JavaUtilSet.add(paramString1);
             localObject = (FriendListHandler)a(1);
-            addObserver(this.jdField_a_of_type_Ajjh);
+            addObserver(this.jdField_a_of_type_Ajxl);
             if (QLog.isColorLevel()) {
               QLog.d("QQAppInterface_friendListObserver", 2, "addObserver");
             }
@@ -1987,7 +2008,7 @@ public class QQAppInterface
         break label208;
       }
       return paramString1;
-      paramString2 = babh.c(this, paramString2, paramString1);
+      paramString2 = bbcl.c(this, paramString2, paramString1);
       break;
     }
     label208:
@@ -2015,11 +2036,11 @@ public class QQAppInterface
   private void a(Intent paramIntent, MessageRecord paramMessageRecord, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, String paramString4)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("notification", 2, "showNotification. cmd=" + paramString4 + ", ticker=" + azzz.a(paramString1) + ",msgShow:" + azzz.a(paramString3) + ", bitmap=" + paramBitmap);
+      QLog.d("notification", 2, "showNotification. cmd=" + paramString4 + ", ticker=" + bbbd.a(paramString1) + ",msgShow:" + bbbd.a(paramString3) + ", bitmap=" + paramBitmap);
     }
     Bitmap localBitmap = paramBitmap;
     if (paramBitmap == null) {
-      localBitmap = azvq.a(this.app.getResources(), 2130839762);
+      localBitmap = bawu.a(this.app.getResources(), 2130840058);
     }
     if (localBitmap != null)
     {
@@ -2031,10 +2052,10 @@ public class QQAppInterface
       paramIntent.putExtra("param_fromuin", paramMessageRecord.senderuin);
       paramIntent.putExtra("KEY_FRIEND_UIN", paramMessageRecord.frienduin);
       paramIntent.putExtra("param_uinType", paramMessageRecord.istroop);
-      int i2 = arik.a(paramMessageRecord.senderuin, paramMessageRecord.istroop, paramIntent);
+      int i2 = asem.a(paramMessageRecord.senderuin, paramMessageRecord.istroop, paramIntent);
       int i1 = i2;
       if (i2 == 265) {
-        i1 = befx.a().a(paramMessageRecord.frienduin);
+        i1 = bfnr.a().a(paramMessageRecord.frienduin);
       }
       paramIntent.putExtra("param_notifyid", i1);
     }
@@ -2054,2325 +2075,2357 @@ public class QQAppInterface
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 489	com/tencent/mobileqq/app/QQAppInterface:app	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   4: invokevirtual 1643	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
+    //   1: getfield 490	com/tencent/mobileqq/app/QQAppInterface:app	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   4: invokevirtual 1619	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
     //   7: aload_0
-    //   8: invokestatic 1648	azyg:a	(Landroid/content/Context;Lcom/tencent/common/app/AppInterface;)Z
-    //   11: istore 5
+    //   8: invokestatic 1624	bazk:a	(Landroid/content/Context;Lcom/tencent/common/app/AppInterface;)Z
+    //   11: istore 4
     //   13: aload_1
-    //   14: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   14: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
     //   17: aload_0
-    //   18: invokestatic 1653	com/tencent/mobileqq/app/utils/FriendsStatusUtil:a	(Ljava/lang/String;Lcom/tencent/mobileqq/app/QQAppInterface;)Z
-    //   21: istore 6
+    //   18: invokestatic 1629	com/tencent/mobileqq/app/utils/FriendsStatusUtil:a	(Ljava/lang/String;Lcom/tencent/mobileqq/app/QQAppInterface;)Z
+    //   21: istore 5
     //   23: aload_1
-    //   24: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   24: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
     //   27: aload_1
-    //   28: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   28: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
     //   31: aload_0
-    //   32: invokestatic 1658	acxd:a	(Ljava/lang/String;ILcom/tencent/mobileqq/app/QQAppInterface;)Z
-    //   35: istore 7
+    //   32: invokestatic 1634	adie:a	(Ljava/lang/String;ILcom/tencent/mobileqq/app/QQAppInterface;)Z
+    //   35: istore 6
     //   37: aload_0
-    //   38: invokestatic 1663	armh:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Larmh;
+    //   38: invokestatic 1639	asik:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lasik;
     //   41: aload_1
-    //   42: invokevirtual 1666	armh:a	(Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
-    //   45: istore 8
+    //   42: invokevirtual 1642	asik:a	(Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
+    //   45: istore 7
     //   47: aload_0
-    //   48: getfield 489	com/tencent/mobileqq/app/QQAppInterface:app	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   51: invokevirtual 1643	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
+    //   48: getfield 490	com/tencent/mobileqq/app/QQAppInterface:app	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   51: invokevirtual 1619	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
     //   54: aload_0
-    //   55: invokestatic 1668	azyg:b	(Landroid/content/Context;Lcom/tencent/common/app/AppInterface;)Z
-    //   58: istore 9
+    //   55: invokestatic 1644	bazk:b	(Landroid/content/Context;Lcom/tencent/common/app/AppInterface;)Z
+    //   58: istore 8
     //   60: invokestatic 407	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   63: ifeq +75 -> 138
-    //   66: ldc_w 1549
+    //   66: ldc_w 1527
     //   69: iconst_2
-    //   70: new 137	java/lang/StringBuilder
+    //   70: new 138	java/lang/StringBuilder
     //   73: dup
-    //   74: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   77: ldc_w 1670
-    //   80: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   77: ldc_w 1646
+    //   80: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   83: aload_0
-    //   84: getfield 1672	com/tencent/mobileqq/app/QQAppInterface:jdField_j_of_type_Boolean	Z
-    //   87: invokevirtual 897	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   90: ldc_w 1674
-    //   93: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   96: iload 5
-    //   98: invokevirtual 897	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   101: ldc_w 1676
-    //   104: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   107: iload 8
-    //   109: invokevirtual 897	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   112: ldc_w 1678
-    //   115: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: getfield 1648	com/tencent/mobileqq/app/QQAppInterface:jdField_j_of_type_Boolean	Z
+    //   87: invokevirtual 833	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   90: ldc_w 1650
+    //   93: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   96: iload 4
+    //   98: invokevirtual 833	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   101: ldc_w 1652
+    //   104: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   107: iload 7
+    //   109: invokevirtual 833	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   112: ldc_w 1654
+    //   115: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   118: iload_2
-    //   119: invokevirtual 897	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   122: ldc_w 1680
-    //   125: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   119: invokevirtual 833	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   122: ldc_w 1656
+    //   125: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   128: aload_1
-    //   129: invokevirtual 1564	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   132: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   135: invokestatic 500	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   129: invokevirtual 1542	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   132: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   135: invokestatic 501	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   138: aload_0
-    //   139: getfield 1672	com/tencent/mobileqq/app/QQAppInterface:jdField_j_of_type_Boolean	Z
+    //   139: getfield 1648	com/tencent/mobileqq/app/QQAppInterface:jdField_j_of_type_Boolean	Z
     //   142: ifne +28 -> 170
-    //   145: iload 5
+    //   145: iload 4
     //   147: ifeq +23 -> 170
-    //   150: iload 6
+    //   150: iload 5
     //   152: ifne +18 -> 170
-    //   155: iload 7
+    //   155: iload 6
     //   157: ifne +13 -> 170
-    //   160: iload 8
+    //   160: iload 7
     //   162: ifeq +8 -> 170
-    //   165: iload 9
+    //   165: iload 8
     //   167: ifeq +4 -> 171
     //   170: return
     //   171: aload_1
-    //   172: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
-    //   175: invokestatic 1683	azzz:b	(Ljava/lang/String;)Z
+    //   172: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   175: invokestatic 1659	bbbd:b	(Ljava/lang/String;)Z
     //   178: ifeq +117 -> 295
-    //   181: invokestatic 853	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   184: astore 10
-    //   186: aload 10
-    //   188: ldc_w 1685
-    //   191: invokevirtual 861	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   194: checkcast 1687	android/app/ActivityManager
+    //   181: invokestatic 789	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   184: astore 9
+    //   186: aload 9
+    //   188: ldc_w 1661
+    //   191: invokevirtual 797	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   194: checkcast 1663	android/app/ActivityManager
     //   197: iconst_1
-    //   198: invokevirtual 1691	android/app/ActivityManager:getRunningTasks	(I)Ljava/util/List;
-    //   201: astore 11
-    //   203: aload 11
+    //   198: invokevirtual 1667	android/app/ActivityManager:getRunningTasks	(I)Ljava/util/List;
+    //   201: astore 10
+    //   203: aload 10
     //   205: ifnull +90 -> 295
-    //   208: aload 11
-    //   210: invokeinterface 1692 1 0
+    //   208: aload 10
+    //   210: invokeinterface 1668 1 0
     //   215: ifle +80 -> 295
     //   218: invokestatic 407	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   221: ifeq +46 -> 267
     //   224: ldc_w 409
     //   227: iconst_2
-    //   228: new 137	java/lang/StringBuilder
+    //   228: new 138	java/lang/StringBuilder
     //   231: dup
-    //   232: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   235: ldc_w 1694
-    //   238: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   241: aload 11
+    //   232: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   235: ldc_w 1670
+    //   238: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   241: aload 10
     //   243: iconst_0
-    //   244: invokeinterface 1695 2 0
-    //   249: checkcast 1697	android/app/ActivityManager$RunningTaskInfo
-    //   252: getfield 1701	android/app/ActivityManager$RunningTaskInfo:topActivity	Landroid/content/ComponentName;
-    //   255: invokevirtual 1704	android/content/ComponentName:getPackageName	()Ljava/lang/String;
-    //   258: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   261: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   264: invokestatic 500	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   267: aload 10
-    //   269: invokevirtual 1705	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   272: aload 11
+    //   244: invokeinterface 1671 2 0
+    //   249: checkcast 1673	android/app/ActivityManager$RunningTaskInfo
+    //   252: getfield 1677	android/app/ActivityManager$RunningTaskInfo:topActivity	Landroid/content/ComponentName;
+    //   255: invokevirtual 1680	android/content/ComponentName:getPackageName	()Ljava/lang/String;
+    //   258: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   261: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   264: invokestatic 501	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   267: aload 9
+    //   269: invokevirtual 1681	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   272: aload 10
     //   274: iconst_0
-    //   275: invokeinterface 1695 2 0
-    //   280: checkcast 1697	android/app/ActivityManager$RunningTaskInfo
-    //   283: getfield 1701	android/app/ActivityManager$RunningTaskInfo:topActivity	Landroid/content/ComponentName;
-    //   286: invokevirtual 1704	android/content/ComponentName:getPackageName	()Ljava/lang/String;
-    //   289: invokevirtual 135	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   275: invokeinterface 1671 2 0
+    //   280: checkcast 1673	android/app/ActivityManager$RunningTaskInfo
+    //   283: getfield 1677	android/app/ActivityManager$RunningTaskInfo:topActivity	Landroid/content/ComponentName;
+    //   286: invokevirtual 1680	android/content/ComponentName:getPackageName	()Ljava/lang/String;
+    //   289: invokevirtual 136	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   292: ifne -122 -> 170
-    //   295: ldc 205
-    //   297: astore 11
-    //   299: ldc 205
-    //   301: astore 13
+    //   295: ldc 206
+    //   297: astore 10
+    //   299: ldc 206
+    //   301: astore 12
     //   303: aconst_null
-    //   304: astore 16
+    //   304: astore 15
     //   306: aconst_null
-    //   307: astore 17
+    //   307: astore 16
     //   309: aconst_null
-    //   310: astore 12
+    //   310: astore 11
     //   312: aload_1
-    //   313: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
-    //   316: invokestatic 1710	baac:d	(I)Z
+    //   313: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   316: invokestatic 1686	bbbg:d	(I)Z
     //   319: ifeq +841 -> 1160
     //   322: aload_0
-    //   323: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   323: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   326: aload_1
-    //   327: invokestatic 1715	anam:a	(Landroid/content/Context;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
-    //   330: astore 10
+    //   327: invokestatic 1691	anqu:a	(Landroid/content/Context;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
+    //   330: astore 9
     //   332: aload_1
-    //   333: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   333: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   336: sipush -2051
     //   339: if_icmpne +23 -> 362
     //   342: aload_1
-    //   343: invokestatic 1720	azhy:a	(Lcom/tencent/mobileqq/data/MessageRecord;)Lazhz;
-    //   346: astore 11
-    //   348: aload 11
+    //   343: invokestatic 1696	bajb:a	(Lcom/tencent/mobileqq/data/MessageRecord;)Lbajc;
+    //   346: astore 10
+    //   348: aload 10
     //   350: ifnull +12 -> 362
     //   353: aload_1
-    //   354: aload 11
-    //   356: getfield 1724	azhz:c	Ljava/lang/String;
-    //   359: putfield 1727	com/tencent/mobileqq/app/message/QQMessageFacade$Message:nickName	Ljava/lang/String;
+    //   354: aload 10
+    //   356: getfield 1700	bajc:c	Ljava/lang/String;
+    //   359: putfield 1703	com/tencent/mobileqq/app/message/QQMessageFacade$Message:nickName	Ljava/lang/String;
     //   362: aload_0
     //   363: aload_0
-    //   364: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   364: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   367: aload_1
     //   368: iconst_1
-    //   369: invokevirtual 1730	com/tencent/mobileqq/app/QQAppInterface:a	(Landroid/content/Context;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;Z)Landroid/content/Intent;
-    //   372: astore 14
-    //   374: aload 14
-    //   376: ldc_w 1732
+    //   369: invokevirtual 1706	com/tencent/mobileqq/app/QQAppInterface:a	(Landroid/content/Context;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;Z)Landroid/content/Intent;
+    //   372: astore 13
+    //   374: aload 13
+    //   376: ldc_w 1708
     //   379: bipush 6
-    //   381: invokevirtual 920	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   381: invokevirtual 863	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   384: pop
-    //   385: aload 14
-    //   387: ldc_w 1734
+    //   385: aload 13
+    //   387: ldc_w 1710
     //   390: iconst_1
-    //   391: invokevirtual 1149	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   391: invokevirtual 1098	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
     //   394: pop
-    //   395: aload 14
-    //   397: ldc_w 1094
-    //   400: invokevirtual 1737	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   403: astore 15
-    //   405: aload 15
+    //   395: aload 13
+    //   397: ldc_w 1043
+    //   400: invokevirtual 1713	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   403: astore 14
+    //   405: aload 14
     //   407: ifnull +13 -> 420
-    //   410: ldc 205
-    //   412: aload 15
-    //   414: invokevirtual 135	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   417: ifeq +5023 -> 5440
-    //   420: aload 14
-    //   422: ldc_w 1087
-    //   425: invokevirtual 1737	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   428: astore 15
+    //   410: ldc 206
+    //   412: aload 14
+    //   414: invokevirtual 136	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   417: ifeq +5119 -> 5536
+    //   420: aload 13
+    //   422: ldc_w 1036
+    //   425: invokevirtual 1713	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   428: astore 14
     //   430: aload_1
-    //   431: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   431: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
     //   434: lookupswitch	default:+106->540, 1:+1551->1985, 1001:+2195->2629, 1008:+2699->3133, 1010:+2195->2629, 1032:+2453->2887, 1037:+2594->3028, 3000:+1302->1736, 6000:+2157->2591, 7000:+2043->2477, 9002:+2844->3278, 9501:+2900->3334, 10002:+2195->2629
-    //   541: fconst_1
-    //   542: astore 11
+    //   541: fconst_0
+    //   542: astore 10
     //   544: aload_0
-    //   545: getfield 1739	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade	Lcom/tencent/mobileqq/app/message/QQMessageFacade;
-    //   548: getfield 1742	com/tencent/mobileqq/app/message/QQMessageFacade:a	Lakdr;
-    //   551: invokevirtual 1746	akdr:b	()I
+    //   545: getfield 1715	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade	Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   548: getfield 1718	com/tencent/mobileqq/app/message/QQMessageFacade:a	Laksd;
+    //   551: invokevirtual 1722	aksd:b	()I
     //   554: iconst_1
     //   555: if_icmpne +53 -> 608
-    //   558: getstatic 1096	ajed:M	Ljava/lang/String;
+    //   558: getstatic 1045	ajsf:M	Ljava/lang/String;
     //   561: aload_1
-    //   562: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
-    //   565: invokevirtual 135	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   562: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   565: invokevirtual 136	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   568: ifne +29 -> 597
-    //   571: getstatic 1099	ajed:aw	Ljava/lang/String;
+    //   571: getstatic 1048	ajsf:ax	Ljava/lang/String;
     //   574: aload_1
-    //   575: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
-    //   578: invokevirtual 135	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   575: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   578: invokevirtual 136	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   581: ifne +16 -> 597
-    //   584: getstatic 1102	ajed:aD	Ljava/lang/String;
+    //   584: getstatic 1051	ajsf:aE	Ljava/lang/String;
     //   587: aload_1
-    //   588: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
-    //   591: invokevirtual 135	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   588: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   591: invokevirtual 136	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   594: ifeq +2907 -> 3501
     //   597: aload_0
     //   598: aload_1
-    //   599: getfield 1467	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
+    //   599: getfield 1445	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
     //   602: iconst_1
-    //   603: invokevirtual 1749	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/lang/String;Z)Landroid/graphics/Bitmap;
-    //   606: astore 11
-    //   608: new 137	java/lang/StringBuilder
+    //   603: invokevirtual 1725	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/lang/String;Z)Landroid/graphics/Bitmap;
+    //   606: astore 10
+    //   608: new 138	java/lang/StringBuilder
     //   611: dup
-    //   612: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   615: aload 15
-    //   617: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   620: ldc_w 1751
-    //   623: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   626: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   629: astore 13
+    //   612: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   615: aload 14
+    //   617: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   620: ldc_w 1727
+    //   623: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   626: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   629: astore 12
     //   631: aload_0
-    //   632: invokestatic 1754	befx:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lbefx;
-    //   635: aload 15
+    //   632: invokestatic 1730	bfnr:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lbfnr;
+    //   635: aload 14
     //   637: aload_1
-    //   638: invokevirtual 1757	befx:a	(Ljava/lang/String;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
-    //   641: astore 15
+    //   638: invokevirtual 1733	bfnr:a	(Ljava/lang/String;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
+    //   641: astore 14
     //   643: aload_0
-    //   644: invokestatic 1762	alrm:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lalrm;
-    //   647: aload 10
+    //   644: invokestatic 1738	amgc:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lamgc;
+    //   647: aload 9
     //   649: aload_1
-    //   650: invokevirtual 1763	alrm:a	(Ljava/lang/String;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
-    //   653: astore 12
-    //   655: aload 10
-    //   657: astore 16
-    //   659: aload 11
-    //   661: astore 10
-    //   663: aload 16
-    //   665: astore 11
+    //   650: invokevirtual 1739	amgc:a	(Ljava/lang/String;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
+    //   653: astore 11
+    //   655: aload 9
+    //   657: astore 15
+    //   659: aload 10
+    //   661: astore 9
+    //   663: aload 15
+    //   665: astore 10
     //   667: aload_1
-    //   668: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
-    //   671: invokestatic 1765	baac:a	(I)Z
-    //   674: ifeq +4716 -> 5390
+    //   668: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   671: invokestatic 1741	bbbg:a	(I)Z
+    //   674: ifeq +4812 -> 5486
     //   677: aload_1
-    //   678: getfield 1768	com/tencent/mobileqq/app/message/QQMessageFacade$Message:actMsgContentValue	Ljava/lang/String;
+    //   678: getfield 1744	com/tencent/mobileqq/app/message/QQMessageFacade$Message:actMsgContentValue	Ljava/lang/String;
     //   681: ifnull +2834 -> 3515
-    //   684: ldc 205
+    //   684: ldc 206
     //   686: aload_1
-    //   687: getfield 1768	com/tencent/mobileqq/app/message/QQMessageFacade$Message:actMsgContentValue	Ljava/lang/String;
-    //   690: invokevirtual 1771	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   687: getfield 1744	com/tencent/mobileqq/app/message/QQMessageFacade$Message:actMsgContentValue	Ljava/lang/String;
+    //   690: invokevirtual 1747	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   693: ifne +2822 -> 3515
     //   696: invokestatic 407	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   699: ifeq +33 -> 732
     //   702: ldc_w 409
     //   705: iconst_2
-    //   706: new 137	java/lang/StringBuilder
+    //   706: new 138	java/lang/StringBuilder
     //   709: dup
-    //   710: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   713: ldc_w 1773
-    //   716: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   710: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   713: ldc_w 1749
+    //   716: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   719: aload_1
-    //   720: getfield 1768	com/tencent/mobileqq/app/message/QQMessageFacade$Message:actMsgContentValue	Ljava/lang/String;
-    //   723: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   726: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   729: invokestatic 500	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   720: getfield 1744	com/tencent/mobileqq/app/message/QQMessageFacade$Message:actMsgContentValue	Ljava/lang/String;
+    //   723: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   726: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   729: invokestatic 501	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   732: aload_1
-    //   733: getfield 1768	com/tencent/mobileqq/app/message/QQMessageFacade$Message:actMsgContentValue	Ljava/lang/String;
-    //   736: astore 11
-    //   738: aload 11
-    //   740: astore 16
-    //   742: aload 11
-    //   744: astore 12
+    //   733: getfield 1744	com/tencent/mobileqq/app/message/QQMessageFacade$Message:actMsgContentValue	Ljava/lang/String;
+    //   736: astore 10
+    //   738: aload 10
+    //   740: astore 15
+    //   742: aload 10
+    //   744: astore 11
     //   746: aload_1
-    //   747: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   747: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
     //   750: sipush 1008
     //   753: if_icmpne +2868 -> 3621
-    //   756: new 137	java/lang/StringBuilder
+    //   756: new 138	java/lang/StringBuilder
     //   759: dup
-    //   760: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   763: aload 13
-    //   765: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   768: aload 12
-    //   770: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   773: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   776: astore 11
+    //   760: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   763: aload 12
+    //   765: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   768: aload 11
+    //   770: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   773: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   776: astore 10
     //   778: aload_1
-    //   779: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   779: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   782: sipush -2016
-    //   785: if_icmpne +4590 -> 5375
+    //   785: if_icmpne +4686 -> 5471
     //   788: aload_0
-    //   789: getfield 1739	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade	Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   789: getfield 1715	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade	Lcom/tencent/mobileqq/app/message/QQMessageFacade;
     //   792: aload_0
-    //   793: invokevirtual 802	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   793: invokevirtual 738	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
     //   796: aload_1
     //   797: iconst_1
-    //   798: invokevirtual 1776	com/tencent/mobileqq/app/message/QQMessageFacade:b	(Landroid/content/Context;Lcom/tencent/mobileqq/data/MessageRecord;Z)Ljava/lang/String;
-    //   801: astore 12
-    //   803: aload 12
-    //   805: astore 11
-    //   807: aload 15
-    //   809: astore 13
+    //   798: invokevirtual 1752	com/tencent/mobileqq/app/message/QQMessageFacade:b	(Landroid/content/Context;Lcom/tencent/mobileqq/data/MessageRecord;Z)Ljava/lang/String;
+    //   801: astore 11
+    //   803: aload 11
+    //   805: astore 10
+    //   807: aload 14
+    //   809: astore 12
     //   811: aload_1
-    //   812: getfield 1779	com/tencent/mobileqq/app/message/QQMessageFacade$Message:counter	I
+    //   812: getfield 1755	com/tencent/mobileqq/app/message/QQMessageFacade$Message:counter	I
     //   815: iconst_1
     //   816: if_icmple +54 -> 870
     //   819: aload_1
-    //   820: getfield 1779	com/tencent/mobileqq/app/message/QQMessageFacade$Message:counter	I
+    //   820: getfield 1755	com/tencent/mobileqq/app/message/QQMessageFacade$Message:counter	I
     //   823: bipush 100
     //   825: if_icmple +2880 -> 3705
-    //   828: new 137	java/lang/StringBuilder
+    //   828: new 138	java/lang/StringBuilder
     //   831: dup
-    //   832: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   835: aload 15
-    //   837: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   840: ldc_w 1781
-    //   843: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   832: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   835: aload 14
+    //   837: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   840: ldc_w 1757
+    //   843: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   846: aload_0
-    //   847: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   850: ldc_w 1782
-    //   853: invokevirtual 1276	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   856: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   859: ldc_w 1784
-    //   862: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   865: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   868: astore 13
+    //   847: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   850: ldc_w 1758
+    //   853: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   856: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   859: ldc_w 1760
+    //   862: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   865: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   868: astore 12
     //   870: aload_0
-    //   871: invokestatic 1762	alrm:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lalrm;
-    //   874: aload 13
+    //   871: invokestatic 1738	amgc:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lamgc;
+    //   874: aload 12
     //   876: aload_1
-    //   877: invokevirtual 1786	alrm:b	(Ljava/lang/String;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
-    //   880: astore 13
+    //   877: invokevirtual 1762	amgc:b	(Ljava/lang/String;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
+    //   880: astore 12
     //   882: iload_2
-    //   883: ifne +4489 -> 5372
+    //   883: ifne +4585 -> 5468
     //   886: aconst_null
-    //   887: astore 12
+    //   887: astore 11
     //   889: aload_1
-    //   890: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   890: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
     //   893: sipush 1008
     //   896: if_icmpne +2907 -> 3803
     //   899: aload_1
-    //   900: getfield 1789	com/tencent/mobileqq/app/message/QQMessageFacade$Message:extStr	Ljava/lang/String;
+    //   900: getfield 1151	com/tencent/mobileqq/app/message/QQMessageFacade$Message:extStr	Ljava/lang/String;
     //   903: ifnull -733 -> 170
     //   906: aload_1
-    //   907: getfield 1792	com/tencent/mobileqq/app/message/QQMessageFacade$Message:extLong	I
+    //   907: getfield 1765	com/tencent/mobileqq/app/message/QQMessageFacade$Message:extLong	I
     //   910: iconst_1
     //   911: iand
     //   912: ifne +16 -> 928
     //   915: aload_1
-    //   916: getfield 1789	com/tencent/mobileqq/app/message/QQMessageFacade$Message:extStr	Ljava/lang/String;
-    //   919: ldc_w 1794
-    //   922: invokevirtual 1796	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   916: getfield 1151	com/tencent/mobileqq/app/message/QQMessageFacade$Message:extStr	Ljava/lang/String;
+    //   919: ldc_w 1767
+    //   922: invokevirtual 1769	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   925: ifeq -755 -> 170
     //   928: aload_1
-    //   929: getfield 1789	com/tencent/mobileqq/app/message/QQMessageFacade$Message:extStr	Ljava/lang/String;
+    //   929: getfield 1151	com/tencent/mobileqq/app/message/QQMessageFacade$Message:extStr	Ljava/lang/String;
     //   932: ifnull -762 -> 170
     //   935: aload_1
-    //   936: getfield 1792	com/tencent/mobileqq/app/message/QQMessageFacade$Message:extLong	I
+    //   936: getfield 1765	com/tencent/mobileqq/app/message/QQMessageFacade$Message:extLong	I
     //   939: iconst_1
     //   940: iand
     //   941: iconst_1
     //   942: if_icmpne +19 -> 961
     //   945: aload_1
-    //   946: ldc_w 1794
-    //   949: invokevirtual 1799	com/tencent/mobileqq/app/message/QQMessageFacade$Message:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   952: ldc_w 1801
-    //   955: invokevirtual 135	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   946: ldc_w 1767
+    //   949: invokevirtual 1772	com/tencent/mobileqq/app/message/QQMessageFacade$Message:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   952: ldc_w 1774
+    //   955: invokevirtual 136	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   958: ifeq -788 -> 170
-    //   961: aload 14
-    //   963: ldc_w 1803
+    //   961: aload 13
+    //   963: ldc_w 1776
     //   966: iconst_1
-    //   967: invokevirtual 1149	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   967: invokevirtual 1098	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
     //   970: pop
-    //   971: aload 14
-    //   973: ldc_w 1805
+    //   971: aload 13
+    //   973: ldc_w 1778
     //   976: aload_1
-    //   977: getfield 1808	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgUid	J
-    //   980: invokevirtual 1328	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
+    //   977: getfield 1781	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgUid	J
+    //   980: invokevirtual 1302	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
     //   983: pop
-    //   984: aload 14
-    //   986: ldc_w 1810
+    //   984: aload 13
+    //   986: ldc_w 1783
     //   989: aload_1
-    //   990: getfield 1813	com/tencent/mobileqq/app/message/QQMessageFacade$Message:shmsgseq	J
-    //   993: invokevirtual 1328	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
+    //   990: getfield 1786	com/tencent/mobileqq/app/message/QQMessageFacade$Message:shmsgseq	J
+    //   993: invokevirtual 1302	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
     //   996: pop
-    //   997: aload 14
-    //   999: ldc_w 1087
-    //   1002: invokevirtual 1737	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   1005: astore 15
-    //   1007: aload 13
-    //   1009: invokestatic 1219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1012: ifne +4353 -> 5365
-    //   1015: aload 15
-    //   1017: invokestatic 1219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1020: ifne +4345 -> 5365
-    //   1023: aload 13
-    //   1025: aload 15
-    //   1027: ldc 205
-    //   1029: invokevirtual 1817	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   1032: astore 12
-    //   1034: aload 12
-    //   1036: invokestatic 1219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   997: aload 13
+    //   999: ldc_w 1036
+    //   1002: invokevirtual 1713	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   1005: astore 14
+    //   1007: aload 12
+    //   1009: invokestatic 1206	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1012: ifne +4449 -> 5461
+    //   1015: aload 14
+    //   1017: invokestatic 1206	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1020: ifne +4441 -> 5461
+    //   1023: aload 12
+    //   1025: aload 14
+    //   1027: ldc 206
+    //   1029: invokevirtual 1790	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   1032: astore 11
+    //   1034: aload 11
+    //   1036: invokestatic 1206	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   1039: ifeq +2718 -> 3757
-    //   1042: getstatic 1820	ajed:u	Ljava/lang/String;
-    //   1045: aload 15
-    //   1047: invokevirtual 135	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1042: getstatic 1793	ajsf:u	Ljava/lang/String;
+    //   1045: aload 14
+    //   1047: invokevirtual 136	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1050: ifeq +2738 -> 3788
     //   1053: aload_0
     //   1054: aload_1
-    //   1055: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   1055: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
     //   1058: iconst_1
-    //   1059: invokevirtual 1749	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/lang/String;Z)Landroid/graphics/Bitmap;
-    //   1062: astore 10
-    //   1064: aload 10
-    //   1066: astore 16
-    //   1068: aload 13
-    //   1070: astore 12
-    //   1072: aload 11
-    //   1074: astore 10
-    //   1076: aload 14
-    //   1078: astore 15
-    //   1080: aload 16
-    //   1082: astore 14
-    //   1084: aload 11
-    //   1086: astore 13
-    //   1088: aload 10
-    //   1090: astore 11
-    //   1092: aload 15
-    //   1094: astore 10
+    //   1059: invokevirtual 1725	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/lang/String;Z)Landroid/graphics/Bitmap;
+    //   1062: astore 9
+    //   1064: aload 9
+    //   1066: astore 15
+    //   1068: aload 12
+    //   1070: astore 11
+    //   1072: aload 10
+    //   1074: astore 9
+    //   1076: aload 13
+    //   1078: astore 14
+    //   1080: aload 15
+    //   1082: astore 13
+    //   1084: aload 10
+    //   1086: astore 12
+    //   1088: aload 9
+    //   1090: astore 10
+    //   1092: aload 14
+    //   1094: astore 9
     //   1096: iload_2
     //   1097: ifeq +36 -> 1133
     //   1100: aload_1
-    //   1101: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   1101: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
     //   1104: sipush 6000
     //   1107: if_icmpeq +26 -> 1133
     //   1110: aload_1
-    //   1111: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   1111: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
     //   1114: sipush 1009
     //   1117: if_icmpeq +16 -> 1133
     //   1120: aload_1
-    //   1121: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
-    //   1124: getstatic 1823	ajed:D	Ljava/lang/String;
-    //   1127: invokevirtual 135	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1130: ifeq +4025 -> 5155
+    //   1121: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   1124: getstatic 1796	ajsf:D	Ljava/lang/String;
+    //   1127: invokevirtual 136	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1130: ifeq +4121 -> 5251
     //   1133: aload_0
-    //   1134: aload 10
+    //   1134: aload 9
     //   1136: aload_1
-    //   1137: aload 11
-    //   1139: aload 12
-    //   1141: aload 13
+    //   1137: aload 10
+    //   1139: aload 11
+    //   1141: aload 12
     //   1143: aload_0
-    //   1144: invokestatic 1762	alrm:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lalrm;
-    //   1147: aload 14
+    //   1144: invokestatic 1738	amgc:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lamgc;
+    //   1147: aload 13
     //   1149: aload_1
-    //   1150: invokevirtual 1826	alrm:a	(Landroid/graphics/Bitmap;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Landroid/graphics/Bitmap;
-    //   1153: ldc_w 1828
-    //   1156: invokespecial 1830	com/tencent/mobileqq/app/QQAppInterface:a	(Landroid/content/Intent;Lcom/tencent/mobileqq/data/MessageRecord;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/graphics/Bitmap;Ljava/lang/String;)V
+    //   1150: invokevirtual 1799	amgc:a	(Landroid/graphics/Bitmap;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Landroid/graphics/Bitmap;
+    //   1153: ldc_w 1801
+    //   1156: invokespecial 1803	com/tencent/mobileqq/app/QQAppInterface:a	(Landroid/content/Intent;Lcom/tencent/mobileqq/data/MessageRecord;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/graphics/Bitmap;Ljava/lang/String;)V
     //   1159: return
     //   1160: aload_1
-    //   1161: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   1161: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   1164: sipush -2009
     //   1167: if_icmpne +21 -> 1188
     //   1170: aload_0
-    //   1171: getfield 1739	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade	Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   1171: getfield 1715	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade	Lcom/tencent/mobileqq/app/message/QQMessageFacade;
     //   1174: aload_0
-    //   1175: invokevirtual 802	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   1175: invokevirtual 738	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
     //   1178: aload_1
     //   1179: iconst_1
-    //   1180: invokevirtual 1776	com/tencent/mobileqq/app/message/QQMessageFacade:b	(Landroid/content/Context;Lcom/tencent/mobileqq/data/MessageRecord;Z)Ljava/lang/String;
-    //   1183: astore 10
+    //   1180: invokevirtual 1752	com/tencent/mobileqq/app/message/QQMessageFacade:b	(Landroid/content/Context;Lcom/tencent/mobileqq/data/MessageRecord;Z)Ljava/lang/String;
+    //   1183: astore 9
     //   1185: goto -853 -> 332
     //   1188: aload_1
-    //   1189: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   1189: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   1192: sipush -2040
     //   1195: if_icmpne +31 -> 1226
-    //   1198: new 1832	com/tencent/mobileqq/data/MessageForApproval
+    //   1198: new 1805	com/tencent/mobileqq/data/MessageForApproval
     //   1201: dup
-    //   1202: invokespecial 1833	com/tencent/mobileqq/data/MessageForApproval:<init>	()V
-    //   1205: astore 10
-    //   1207: aload 10
+    //   1202: invokespecial 1806	com/tencent/mobileqq/data/MessageForApproval:<init>	()V
+    //   1205: astore 9
+    //   1207: aload 9
     //   1209: aload_1
-    //   1210: getfield 1836	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgData	[B
-    //   1213: putfield 1837	com/tencent/mobileqq/data/MessageForApproval:msgData	[B
-    //   1216: aload 10
-    //   1218: invokevirtual 1840	com/tencent/mobileqq/data/MessageForApproval:getFullTitle	()Ljava/lang/String;
-    //   1221: astore 10
+    //   1210: getfield 1809	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgData	[B
+    //   1213: putfield 1810	com/tencent/mobileqq/data/MessageForApproval:msgData	[B
+    //   1216: aload 9
+    //   1218: invokevirtual 1813	com/tencent/mobileqq/data/MessageForApproval:getFullTitle	()Ljava/lang/String;
+    //   1221: astore 9
     //   1223: goto -891 -> 332
     //   1226: aload_1
-    //   1227: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   1227: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   1230: sipush -2041
     //   1233: if_icmpne +58 -> 1291
     //   1236: aload_0
-    //   1237: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1240: ldc_w 1841
-    //   1243: invokevirtual 1276	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   1246: astore 10
+    //   1237: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1240: ldc_w 1814
+    //   1243: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   1246: astore 9
     //   1248: aload_0
-    //   1249: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1252: ldc_w 1842
-    //   1255: invokevirtual 1276	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   1258: astore 11
-    //   1260: new 137	java/lang/StringBuilder
+    //   1249: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1252: ldc_w 1815
+    //   1255: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   1258: astore 10
+    //   1260: new 138	java/lang/StringBuilder
     //   1263: dup
-    //   1264: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   1267: aload 10
-    //   1269: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1272: ldc_w 1844
-    //   1275: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1278: aload 11
-    //   1280: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1283: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1286: astore 10
+    //   1264: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   1267: aload 9
+    //   1269: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1272: ldc_w 1817
+    //   1275: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1278: aload 10
+    //   1280: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1283: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1286: astore 9
     //   1288: goto -956 -> 332
     //   1291: aload_1
-    //   1292: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   1292: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   1295: sipush -2011
     //   1298: if_icmpne +158 -> 1456
     //   1301: aload_1
-    //   1302: getfield 1836	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgData	[B
-    //   1305: invokestatic 1849	awuw:a	([B)Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   1308: astore 10
-    //   1310: aload 10
+    //   1302: getfield 1809	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgData	[B
+    //   1305: invokestatic 1822	axuy:a	([B)Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   1308: astore 9
+    //   1310: aload 9
     //   1312: ifnonnull +30 -> 1342
-    //   1315: aload 11
-    //   1317: astore 10
+    //   1315: aload 10
+    //   1317: astore 9
     //   1319: invokestatic 407	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1322: ifeq +4124 -> 5446
-    //   1325: ldc_w 1851
+    //   1322: ifeq +4220 -> 5542
+    //   1325: ldc_w 1824
     //   1328: iconst_2
-    //   1329: ldc_w 1853
-    //   1332: invokestatic 500	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1335: aload 11
-    //   1337: astore 10
-    //   1339: goto +4107 -> 5446
-    //   1342: aload 10
-    //   1344: getfield 1856	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgServiceID	I
+    //   1329: ldc_w 1826
+    //   1332: invokestatic 501	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1335: aload 10
+    //   1337: astore 9
+    //   1339: goto +4203 -> 5542
+    //   1342: aload 9
+    //   1344: getfield 1829	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgServiceID	I
     //   1347: bipush 61
     //   1349: if_icmpne +21 -> 1370
     //   1352: aload_0
-    //   1353: getfield 489	com/tencent/mobileqq/app/QQAppInterface:app	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   1356: invokevirtual 1388	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
-    //   1359: ldc_w 1857
-    //   1362: invokevirtual 1858	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   1365: astore 10
-    //   1367: goto +4079 -> 5446
-    //   1370: aload 10
-    //   1372: getfield 1856	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgServiceID	I
+    //   1353: getfield 490	com/tencent/mobileqq/app/QQAppInterface:app	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   1356: invokevirtual 1366	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
+    //   1359: ldc_w 1830
+    //   1362: invokevirtual 1831	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   1365: astore 9
+    //   1367: goto +4175 -> 5542
+    //   1370: aload 9
+    //   1372: getfield 1829	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgServiceID	I
     //   1375: bipush 107
     //   1377: if_icmpne +21 -> 1398
     //   1380: aload_0
-    //   1381: getfield 489	com/tencent/mobileqq/app/QQAppInterface:app	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   1384: invokevirtual 1388	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
-    //   1387: ldc_w 1460
-    //   1390: invokevirtual 1858	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   1393: astore 10
-    //   1395: goto +4051 -> 5446
-    //   1398: aload 10
-    //   1400: getfield 1861	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgBrief	Ljava/lang/String;
-    //   1403: astore 10
-    //   1405: goto +4041 -> 5446
-    //   1408: astore 10
+    //   1381: getfield 490	com/tencent/mobileqq/app/QQAppInterface:app	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   1384: invokevirtual 1366	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
+    //   1387: ldc_w 1438
+    //   1390: invokevirtual 1831	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   1393: astore 9
+    //   1395: goto +4147 -> 5542
+    //   1398: aload 9
+    //   1400: getfield 1834	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgBrief	Ljava/lang/String;
+    //   1403: astore 9
+    //   1405: goto +4137 -> 5542
+    //   1408: astore 9
     //   1410: invokestatic 407	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1413: ifeq +36 -> 1449
-    //   1416: ldc_w 1851
+    //   1416: ldc_w 1824
     //   1419: iconst_2
-    //   1420: new 137	java/lang/StringBuilder
+    //   1420: new 138	java/lang/StringBuilder
     //   1423: dup
-    //   1424: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   1427: ldc_w 1863
-    //   1430: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1433: aload 10
-    //   1435: invokevirtual 1866	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1438: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1441: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1444: aload 10
-    //   1446: invokestatic 1868	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1449: ldc 205
-    //   1451: astore 10
+    //   1424: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   1427: ldc_w 1836
+    //   1430: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1433: aload 9
+    //   1435: invokevirtual 1839	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1438: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1441: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1444: aload 9
+    //   1446: invokestatic 1841	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1449: ldc 206
+    //   1451: astore 9
     //   1453: goto -1121 -> 332
     //   1456: aload_1
-    //   1457: invokestatic 1871	ajhz:a	(Lcom/tencent/mobileqq/data/MessageRecord;)Z
+    //   1457: invokestatic 1844	ajwd:a	(Lcom/tencent/mobileqq/data/MessageRecord;)Z
     //   1460: ifeq +18 -> 1478
     //   1463: aload_0
-    //   1464: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1467: ldc_w 1872
-    //   1470: invokevirtual 1276	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   1473: astore 10
+    //   1464: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1467: ldc_w 1845
+    //   1470: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   1473: astore 9
     //   1475: goto -1143 -> 332
     //   1478: aload_1
-    //   1479: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   1479: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   1482: sipush -7001
     //   1485: if_icmpne +18 -> 1503
     //   1488: aload_0
-    //   1489: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1492: ldc_w 1873
-    //   1495: invokevirtual 1276	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   1498: astore 10
+    //   1489: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1492: ldc_w 1846
+    //   1495: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   1498: astore 9
     //   1500: goto -1168 -> 332
     //   1503: aload_1
-    //   1504: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   1504: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   1507: sipush -2052
     //   1510: if_icmpne +36 -> 1546
-    //   1513: new 1875	com/tencent/mobileqq/data/MessageForQQStoryComment
+    //   1513: new 1848	com/tencent/mobileqq/data/MessageForQQStoryComment
     //   1516: dup
-    //   1517: invokespecial 1876	com/tencent/mobileqq/data/MessageForQQStoryComment:<init>	()V
-    //   1520: astore 10
-    //   1522: aload 10
+    //   1517: invokespecial 1849	com/tencent/mobileqq/data/MessageForQQStoryComment:<init>	()V
+    //   1520: astore 9
+    //   1522: aload 9
     //   1524: aload_1
-    //   1525: getfield 1836	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgData	[B
-    //   1528: putfield 1877	com/tencent/mobileqq/data/MessageForQQStoryComment:msgData	[B
-    //   1531: aload 10
-    //   1533: invokevirtual 1878	com/tencent/mobileqq/data/MessageForQQStoryComment:parse	()V
-    //   1536: aload 10
-    //   1538: invokevirtual 1881	com/tencent/mobileqq/data/MessageForQQStoryComment:getSummaryMsg	()Ljava/lang/String;
-    //   1541: astore 10
+    //   1525: getfield 1809	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgData	[B
+    //   1528: putfield 1850	com/tencent/mobileqq/data/MessageForQQStoryComment:msgData	[B
+    //   1531: aload 9
+    //   1533: invokevirtual 1851	com/tencent/mobileqq/data/MessageForQQStoryComment:parse	()V
+    //   1536: aload 9
+    //   1538: invokevirtual 1854	com/tencent/mobileqq/data/MessageForQQStoryComment:getSummaryMsg	()Ljava/lang/String;
+    //   1541: astore 9
     //   1543: goto -1211 -> 332
     //   1546: aload_1
-    //   1547: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   1547: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   1550: sipush -2057
     //   1553: if_icmpne +11 -> 1564
-    //   1556: getstatic 1886	com/tencent/mobileqq/data/MessageForTroopStory:MSG_CONTENT	Ljava/lang/String;
-    //   1559: astore 10
+    //   1556: getstatic 1859	com/tencent/mobileqq/data/MessageForTroopStory:MSG_CONTENT	Ljava/lang/String;
+    //   1559: astore 9
     //   1561: goto -1229 -> 332
     //   1564: aload_1
-    //   1565: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   1565: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   1568: sipush -2059
     //   1571: if_icmpne +36 -> 1607
-    //   1574: new 1888	com/tencent/mobileqq/data/MessageForTroopPobing
+    //   1574: new 1861	com/tencent/mobileqq/data/MessageForTroopPobing
     //   1577: dup
-    //   1578: invokespecial 1889	com/tencent/mobileqq/data/MessageForTroopPobing:<init>	()V
-    //   1581: astore 10
-    //   1583: aload 10
+    //   1578: invokespecial 1862	com/tencent/mobileqq/data/MessageForTroopPobing:<init>	()V
+    //   1581: astore 9
+    //   1583: aload 9
     //   1585: aload_1
-    //   1586: getfield 1836	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgData	[B
-    //   1589: putfield 1890	com/tencent/mobileqq/data/MessageForTroopPobing:msgData	[B
-    //   1592: aload 10
-    //   1594: invokevirtual 1893	com/tencent/mobileqq/data/MessageForTroopPobing:doParse	()V
-    //   1597: aload 10
-    //   1599: invokevirtual 1894	com/tencent/mobileqq/data/MessageForTroopPobing:getSummaryMsg	()Ljava/lang/String;
-    //   1602: astore 10
+    //   1586: getfield 1809	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgData	[B
+    //   1589: putfield 1863	com/tencent/mobileqq/data/MessageForTroopPobing:msgData	[B
+    //   1592: aload 9
+    //   1594: invokevirtual 1866	com/tencent/mobileqq/data/MessageForTroopPobing:doParse	()V
+    //   1597: aload 9
+    //   1599: invokevirtual 1867	com/tencent/mobileqq/data/MessageForTroopPobing:getSummaryMsg	()Ljava/lang/String;
+    //   1602: astore 9
     //   1604: goto -1272 -> 332
     //   1607: aload_1
-    //   1608: invokevirtual 1898	com/tencent/mobileqq/app/message/QQMessageFacade$Message:getMessageText	()Ljava/lang/CharSequence;
-    //   1611: astore 10
+    //   1608: invokevirtual 1871	com/tencent/mobileqq/app/message/QQMessageFacade$Message:getMessageText	()Ljava/lang/CharSequence;
+    //   1611: astore 9
     //   1613: aload_1
-    //   1614: invokestatic 1901	azks:b	(Lcom/tencent/mobileqq/data/MessageRecord;)Z
+    //   1614: invokestatic 1874	balw:b	(Lcom/tencent/mobileqq/data/MessageRecord;)Z
     //   1617: ifeq +66 -> 1683
     //   1620: aload_1
-    //   1621: invokestatic 1903	azks:d	(Lcom/tencent/mobileqq/data/MessageRecord;)Z
+    //   1621: invokestatic 1876	balw:d	(Lcom/tencent/mobileqq/data/MessageRecord;)Z
     //   1624: ifne +7 -> 1631
     //   1627: aload_1
-    //   1628: invokestatic 1906	azks:a	(Lcom/tencent/mobileqq/data/MessageRecord;)V
+    //   1628: invokestatic 1879	balw:a	(Lcom/tencent/mobileqq/data/MessageRecord;)V
     //   1631: aload_1
-    //   1632: invokestatic 1909	azks:b	(Lcom/tencent/mobileqq/data/MessageRecord;)Ljava/lang/String;
-    //   1635: astore 11
-    //   1637: aload 11
-    //   1639: invokestatic 1219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1642: ifne +3801 -> 5443
-    //   1645: aload 11
-    //   1647: astore 10
-    //   1649: aload 10
-    //   1651: astore 11
-    //   1653: aload 10
+    //   1632: invokestatic 1882	balw:b	(Lcom/tencent/mobileqq/data/MessageRecord;)Ljava/lang/String;
+    //   1635: astore 10
+    //   1637: aload 10
+    //   1639: invokestatic 1206	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1642: ifne +3897 -> 5539
+    //   1645: aload 10
+    //   1647: astore 9
+    //   1649: aload 9
+    //   1651: astore 10
+    //   1653: aload 9
     //   1655: ifnonnull +7 -> 1662
-    //   1658: ldc 205
-    //   1660: astore 11
-    //   1662: aload 11
-    //   1664: instanceof 1911
+    //   1658: ldc 206
+    //   1660: astore 10
+    //   1662: aload 10
+    //   1664: instanceof 1884
     //   1667: ifeq +46 -> 1713
-    //   1670: aload 11
-    //   1672: checkcast 1911	axkd
-    //   1675: invokevirtual 1912	axkd:a	()Ljava/lang/String;
-    //   1678: astore 10
+    //   1670: aload 10
+    //   1672: checkcast 1884	ayki
+    //   1675: invokevirtual 1885	ayki:a	()Ljava/lang/String;
+    //   1678: astore 9
     //   1680: goto -1348 -> 332
     //   1683: aload_1
-    //   1684: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   1684: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   1687: sipush -5040
-    //   1690: if_icmpne +3753 -> 5443
+    //   1690: if_icmpne +3849 -> 5539
     //   1693: aload_0
     //   1694: aload_1
-    //   1695: invokestatic 1917	ascj:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
-    //   1698: ifeq +3745 -> 5443
+    //   1695: invokestatic 1890	asyn:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
+    //   1698: ifeq +3841 -> 5539
     //   1701: aload_1
-    //   1702: getfield 1920	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msg	Ljava/lang/String;
-    //   1705: invokestatic 1921	ascj:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   1708: astore 10
+    //   1702: getfield 1893	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msg	Ljava/lang/String;
+    //   1705: invokestatic 1894	asyn:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   1708: astore 9
     //   1710: goto -61 -> 1649
-    //   1713: new 1911	axkd
+    //   1713: new 1884	ayki
     //   1716: dup
-    //   1717: aload 11
-    //   1719: invokeinterface 1924 1 0
+    //   1717: aload 10
+    //   1719: invokeinterface 1897 1 0
     //   1724: iconst_3
-    //   1725: invokespecial 1927	axkd:<init>	(Ljava/lang/CharSequence;I)V
-    //   1728: invokevirtual 1912	axkd:a	()Ljava/lang/String;
-    //   1731: astore 10
+    //   1725: invokespecial 1900	ayki:<init>	(Ljava/lang/CharSequence;I)V
+    //   1728: invokevirtual 1885	ayki:a	()Ljava/lang/String;
+    //   1731: astore 9
     //   1733: goto -1401 -> 332
     //   1736: aload_0
     //   1737: aload_1
-    //   1738: invokespecial 1929	com/tencent/mobileqq/app/QQAppInterface:a	(Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
-    //   1741: astore 11
+    //   1738: invokespecial 1902	com/tencent/mobileqq/app/QQAppInterface:a	(Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
+    //   1741: astore 10
     //   1743: aload_1
-    //   1744: getfield 1727	com/tencent/mobileqq/app/message/QQMessageFacade$Message:nickName	Ljava/lang/String;
+    //   1744: getfield 1703	com/tencent/mobileqq/app/message/QQMessageFacade$Message:nickName	Ljava/lang/String;
     //   1747: ifnull +152 -> 1899
-    //   1750: ldc 205
+    //   1750: ldc 206
     //   1752: aload_1
-    //   1753: getfield 1727	com/tencent/mobileqq/app/message/QQMessageFacade$Message:nickName	Ljava/lang/String;
-    //   1756: invokevirtual 135	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1753: getfield 1703	com/tencent/mobileqq/app/message/QQMessageFacade$Message:nickName	Ljava/lang/String;
+    //   1756: invokevirtual 136	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1759: ifne +140 -> 1899
-    //   1762: new 137	java/lang/StringBuilder
+    //   1762: new 138	java/lang/StringBuilder
     //   1765: dup
-    //   1766: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   1769: aload 11
-    //   1771: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1766: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   1769: aload 10
+    //   1771: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1774: aload_1
-    //   1775: getfield 1727	com/tencent/mobileqq/app/message/QQMessageFacade$Message:nickName	Ljava/lang/String;
-    //   1778: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1781: ldc_w 1931
-    //   1784: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1787: aload 15
-    //   1789: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1792: ldc_w 1933
-    //   1795: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1798: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1801: astore 13
-    //   1803: new 137	java/lang/StringBuilder
+    //   1775: getfield 1703	com/tencent/mobileqq/app/message/QQMessageFacade$Message:nickName	Ljava/lang/String;
+    //   1778: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1781: ldc_w 1904
+    //   1784: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1787: aload 14
+    //   1789: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1792: ldc_w 1906
+    //   1795: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1798: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1801: astore 12
+    //   1803: new 138	java/lang/StringBuilder
     //   1806: dup
-    //   1807: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   1810: aload 11
-    //   1812: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1807: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   1810: aload 10
+    //   1812: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1815: aload_1
-    //   1816: getfield 1727	com/tencent/mobileqq/app/message/QQMessageFacade$Message:nickName	Ljava/lang/String;
-    //   1819: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1822: ldc_w 1751
-    //   1825: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1828: aload 10
-    //   1830: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1833: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1836: astore 11
+    //   1816: getfield 1703	com/tencent/mobileqq/app/message/QQMessageFacade$Message:nickName	Ljava/lang/String;
+    //   1819: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1822: ldc_w 1727
+    //   1825: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1828: aload 9
+    //   1830: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1833: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1836: astore 10
     //   1838: aload_0
-    //   1839: getfield 1739	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade	Lcom/tencent/mobileqq/app/message/QQMessageFacade;
-    //   1842: getfield 1742	com/tencent/mobileqq/app/message/QQMessageFacade:a	Lakdr;
-    //   1845: invokevirtual 1746	akdr:b	()I
+    //   1839: getfield 1715	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade	Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   1842: getfield 1718	com/tencent/mobileqq/app/message/QQMessageFacade:a	Laksd;
+    //   1845: invokevirtual 1722	aksd:b	()I
     //   1848: iconst_1
-    //   1849: if_icmpne +3576 -> 5425
+    //   1849: if_icmpne +3672 -> 5521
     //   1852: aload_0
     //   1853: bipush 6
-    //   1855: invokevirtual 1352	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lajfb;
-    //   1858: checkcast 1935	ajhf
-    //   1861: astore 12
-    //   1863: aload 12
-    //   1865: ifnull +3554 -> 5419
-    //   1868: aload 12
+    //   1855: invokevirtual 1330	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lajtd;
+    //   1858: checkcast 1908	ajvi
+    //   1861: astore 11
+    //   1863: aload 11
+    //   1865: ifnull +3650 -> 5515
+    //   1868: aload 11
     //   1870: aload_1
-    //   1871: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   1871: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
     //   1874: iconst_1
-    //   1875: invokevirtual 1936	ajhf:a	(Ljava/lang/String;Z)Landroid/graphics/Bitmap;
-    //   1878: astore 12
-    //   1880: aload 12
-    //   1882: astore 16
-    //   1884: aload 11
-    //   1886: astore 12
-    //   1888: aload 10
-    //   1890: astore 11
-    //   1892: aload 16
-    //   1894: astore 10
+    //   1875: invokevirtual 1909	ajvi:a	(Ljava/lang/String;Z)Landroid/graphics/Bitmap;
+    //   1878: astore 11
+    //   1880: aload 11
+    //   1882: astore 15
+    //   1884: aload 10
+    //   1886: astore 11
+    //   1888: aload 9
+    //   1890: astore 10
+    //   1892: aload 15
+    //   1894: astore 9
     //   1896: goto -1229 -> 667
     //   1899: aload_0
     //   1900: aload_1
-    //   1901: getfield 1467	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
+    //   1901: getfield 1445	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
     //   1904: iconst_0
-    //   1905: invokestatic 1938	babh:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;I)Ljava/lang/String;
-    //   1908: astore 12
-    //   1910: new 137	java/lang/StringBuilder
+    //   1905: invokestatic 1911	bbcl:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;I)Ljava/lang/String;
+    //   1908: astore 11
+    //   1910: new 138	java/lang/StringBuilder
     //   1913: dup
-    //   1914: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   1917: aload 11
-    //   1919: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1922: aload 12
-    //   1924: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1927: ldc_w 1931
-    //   1930: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1933: aload 15
-    //   1935: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1938: ldc_w 1933
-    //   1941: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1944: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1947: astore 13
-    //   1949: new 137	java/lang/StringBuilder
+    //   1914: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   1917: aload 10
+    //   1919: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1922: aload 11
+    //   1924: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1927: ldc_w 1904
+    //   1930: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1933: aload 14
+    //   1935: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1938: ldc_w 1906
+    //   1941: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1944: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1947: astore 12
+    //   1949: new 138	java/lang/StringBuilder
     //   1952: dup
-    //   1953: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   1956: aload 11
-    //   1958: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1961: aload 12
-    //   1963: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1966: ldc_w 1751
-    //   1969: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1972: aload 10
-    //   1974: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1977: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1980: astore 11
+    //   1953: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   1956: aload 10
+    //   1958: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1961: aload 11
+    //   1963: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1966: ldc_w 1727
+    //   1969: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1972: aload 9
+    //   1974: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1977: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1980: astore 10
     //   1982: goto -144 -> 1838
     //   1985: aload_1
-    //   1986: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   1986: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   1989: sipush -1013
     //   1992: if_icmpeq +23 -> 2015
     //   1995: aload_1
-    //   1996: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   1996: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   1999: sipush -2030
     //   2002: if_icmpeq +13 -> 2015
     //   2005: aload_1
-    //   2006: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   2006: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   2009: sipush -1047
     //   2012: if_icmpne +41 -> 2053
-    //   2015: new 137	java/lang/StringBuilder
+    //   2015: new 138	java/lang/StringBuilder
     //   2018: dup
-    //   2019: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   2022: aload 15
-    //   2024: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2027: ldc_w 1940
-    //   2030: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2033: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2036: astore 13
-    //   2038: aload 10
-    //   2040: astore 11
-    //   2042: aload 10
-    //   2044: astore 12
-    //   2046: aload 16
-    //   2048: astore 10
+    //   2019: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   2022: aload 14
+    //   2024: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2027: ldc_w 1913
+    //   2030: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2033: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2036: astore 12
+    //   2038: aload 9
+    //   2040: astore 10
+    //   2042: aload 9
+    //   2044: astore 11
+    //   2046: aload 15
+    //   2048: astore 9
     //   2050: goto -1383 -> 667
-    //   2053: ldc 205
-    //   2055: astore 11
+    //   2053: ldc 206
+    //   2055: astore 10
     //   2057: aload_1
-    //   2058: invokestatic 1943	mnf:a	(Lcom/tencent/mobileqq/data/MessageRecord;)Z
+    //   2058: invokestatic 1916	mye:a	(Lcom/tencent/mobileqq/data/MessageRecord;)Z
     //   2061: ifeq +324 -> 2385
     //   2064: aload_1
-    //   2065: invokestatic 1946	mnf:a	(Lcom/tencent/mobileqq/data/MessageRecord;)Lmng;
-    //   2068: getfield 1950	mng:b	Ljava/lang/String;
-    //   2071: astore 12
-    //   2073: new 137	java/lang/StringBuilder
+    //   2065: invokestatic 1919	mye:a	(Lcom/tencent/mobileqq/data/MessageRecord;)Lmyf;
+    //   2068: getfield 1923	myf:b	Ljava/lang/String;
+    //   2071: astore 11
+    //   2073: new 138	java/lang/StringBuilder
     //   2076: dup
-    //   2077: invokespecial 140	java/lang/StringBuilder:<init>	()V
+    //   2077: invokespecial 141	java/lang/StringBuilder:<init>	()V
     //   2080: aload_0
-    //   2081: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2084: ldc_w 1951
-    //   2087: invokevirtual 1276	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   2090: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2093: aload 12
-    //   2095: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2098: ldc_w 1931
-    //   2101: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2104: aload 15
-    //   2106: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2109: ldc_w 1933
-    //   2112: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2115: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2081: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2084: ldc_w 1924
+    //   2087: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   2090: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2093: aload 11
+    //   2095: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2098: ldc_w 1904
+    //   2101: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2104: aload 14
+    //   2106: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2109: ldc_w 1906
+    //   2112: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2115: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2118: pop
-    //   2119: new 137	java/lang/StringBuilder
+    //   2119: new 138	java/lang/StringBuilder
     //   2122: dup
-    //   2123: invokespecial 140	java/lang/StringBuilder:<init>	()V
+    //   2123: invokespecial 141	java/lang/StringBuilder:<init>	()V
     //   2126: aload_0
-    //   2127: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2130: ldc_w 1951
-    //   2133: invokevirtual 1276	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   2136: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2139: aload 12
-    //   2141: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2144: ldc_w 1751
-    //   2147: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2150: aload 10
-    //   2152: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2155: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2127: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2130: ldc_w 1924
+    //   2133: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   2136: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2139: aload 11
+    //   2141: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2144: ldc_w 1727
+    //   2147: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2150: aload 9
+    //   2152: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2155: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2158: pop
     //   2159: aload_1
-    //   2160: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   2160: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   2163: sipush -2035
     //   2166: if_icmpeq +17 -> 2183
-    //   2169: aload 10
-    //   2171: astore 12
+    //   2169: aload 9
+    //   2171: astore 11
     //   2173: aload_1
-    //   2174: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   2174: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   2177: sipush -2038
     //   2180: if_icmpne +10 -> 2190
-    //   2183: aload 10
-    //   2185: invokestatic 1956	com/tencent/mobileqq/data/MessageForGrayTips:getOrginMsg	(Ljava/lang/String;)Ljava/lang/String;
-    //   2188: astore 12
-    //   2190: aload 12
-    //   2192: astore 10
+    //   2183: aload 9
+    //   2185: invokestatic 1929	com/tencent/mobileqq/data/MessageForGrayTips:getOrginMsg	(Ljava/lang/String;)Ljava/lang/String;
+    //   2188: astore 11
+    //   2190: aload 11
+    //   2192: astore 9
     //   2194: aload_1
-    //   2195: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   2195: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   2198: sipush -3006
     //   2201: if_icmpne +24 -> 2225
     //   2204: aload_0
     //   2205: aload_1
     //   2206: iconst_0
-    //   2207: invokestatic 1962	com/tencent/mobileqq/data/MessageForPubAccount:getMsgSummary	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/data/MessageRecord;Z)Ljava/lang/String;
-    //   2210: astore 10
+    //   2207: invokestatic 1935	com/tencent/mobileqq/data/MessageForPubAccount:getMsgSummary	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/data/MessageRecord;Z)Ljava/lang/String;
+    //   2210: astore 9
     //   2212: aload_0
     //   2213: aload_0
-    //   2214: invokevirtual 802	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   2217: invokevirtual 1965	mqq/app/MobileQQ:getApplicationContext	()Landroid/content/Context;
-    //   2220: invokestatic 1967	rsp:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Landroid/content/Context;)Ljava/lang/String;
-    //   2223: astore 11
+    //   2214: invokevirtual 738	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   2217: invokevirtual 1938	mqq/app/MobileQQ:getApplicationContext	()Landroid/content/Context;
+    //   2220: invokestatic 1940	sfh:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Landroid/content/Context;)Ljava/lang/String;
+    //   2223: astore 10
     //   2225: aload_1
-    //   2226: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
-    //   2229: invokestatic 1971	akbm:k	(I)Z
+    //   2226: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   2229: invokestatic 1944	akpy:k	(I)Z
     //   2232: ifeq +210 -> 2442
     //   2235: aload_0
     //   2236: aload_1
-    //   2237: invokespecial 1929	com/tencent/mobileqq/app/QQAppInterface:a	(Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
-    //   2240: astore 11
-    //   2242: new 137	java/lang/StringBuilder
+    //   2237: invokespecial 1902	com/tencent/mobileqq/app/QQAppInterface:a	(Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
+    //   2240: astore 10
+    //   2242: new 138	java/lang/StringBuilder
     //   2245: dup
-    //   2246: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   2249: aload 11
-    //   2251: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2254: ldc_w 1931
-    //   2257: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2260: aload 15
-    //   2262: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2265: ldc_w 1933
-    //   2268: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2271: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2274: astore 13
-    //   2276: aload 11
-    //   2278: invokestatic 1219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   2246: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   2249: aload 10
+    //   2251: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2254: ldc_w 1904
+    //   2257: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2260: aload 14
+    //   2262: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2265: ldc_w 1906
+    //   2268: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2271: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2274: astore 12
+    //   2276: aload 10
+    //   2278: invokestatic 1206	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   2281: ifne +189 -> 2470
-    //   2284: new 137	java/lang/StringBuilder
+    //   2284: new 138	java/lang/StringBuilder
     //   2287: dup
-    //   2288: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   2291: aload 11
-    //   2293: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2296: ldc_w 1751
-    //   2299: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2302: aload 10
-    //   2304: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2307: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2310: astore 11
-    //   2312: aload 11
-    //   2314: invokestatic 1974	bami:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   2317: astore 11
-    //   2319: aload 17
-    //   2321: astore 16
+    //   2288: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   2291: aload 10
+    //   2293: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2296: ldc_w 1727
+    //   2299: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2302: aload 9
+    //   2304: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2307: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2310: astore 10
+    //   2312: aload 10
+    //   2314: invokestatic 1947	bboe:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   2317: astore 10
+    //   2319: aload 16
+    //   2321: astore 15
     //   2323: aload_0
-    //   2324: getfield 1739	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade	Lcom/tencent/mobileqq/app/message/QQMessageFacade;
-    //   2327: getfield 1742	com/tencent/mobileqq/app/message/QQMessageFacade:a	Lakdr;
-    //   2330: invokevirtual 1746	akdr:b	()I
+    //   2324: getfield 1715	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade	Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   2327: getfield 1718	com/tencent/mobileqq/app/message/QQMessageFacade:a	Laksd;
+    //   2330: invokevirtual 1722	aksd:b	()I
     //   2333: iconst_1
     //   2334: if_icmpne +16 -> 2350
     //   2337: aload_0
     //   2338: aload_1
-    //   2339: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   2339: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
     //   2342: iconst_3
     //   2343: iconst_0
     //   2344: iconst_0
-    //   2345: invokevirtual 1977	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/lang/String;BZZ)Landroid/graphics/Bitmap;
-    //   2348: astore 16
+    //   2345: invokevirtual 1950	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/lang/String;BZZ)Landroid/graphics/Bitmap;
+    //   2348: astore 15
     //   2350: aload_0
-    //   2351: invokestatic 1754	befx:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lbefx;
-    //   2354: aload 11
+    //   2351: invokestatic 1730	bfnr:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lbfnr;
+    //   2354: aload 10
     //   2356: aload_1
-    //   2357: invokevirtual 1978	befx:b	(Ljava/lang/String;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
-    //   2360: astore 11
+    //   2357: invokevirtual 1951	bfnr:b	(Ljava/lang/String;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
+    //   2360: astore 10
     //   2362: aload_0
-    //   2363: invokestatic 1762	alrm:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lalrm;
-    //   2366: aload 11
+    //   2363: invokestatic 1738	amgc:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lamgc;
+    //   2366: aload 10
     //   2368: aload_1
-    //   2369: invokevirtual 1763	alrm:a	(Ljava/lang/String;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
-    //   2372: astore 12
-    //   2374: aload 10
-    //   2376: astore 11
-    //   2378: aload 16
-    //   2380: astore 10
+    //   2369: invokevirtual 1739	amgc:a	(Ljava/lang/String;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
+    //   2372: astore 11
+    //   2374: aload 9
+    //   2376: astore 10
+    //   2378: aload 15
+    //   2380: astore 9
     //   2382: goto -1715 -> 667
     //   2385: aload_1
-    //   2386: invokestatic 1720	azhy:a	(Lcom/tencent/mobileqq/data/MessageRecord;)Lazhz;
-    //   2389: astore 11
-    //   2391: aload 11
+    //   2386: invokestatic 1696	bajb:a	(Lcom/tencent/mobileqq/data/MessageRecord;)Lbajc;
+    //   2389: astore 10
+    //   2391: aload 10
     //   2393: ifnull +13 -> 2406
-    //   2396: aload 11
-    //   2398: getfield 1724	azhz:c	Ljava/lang/String;
-    //   2401: astore 11
+    //   2396: aload 10
+    //   2398: getfield 1700	bajc:c	Ljava/lang/String;
+    //   2401: astore 10
     //   2403: goto -244 -> 2159
     //   2406: aload_1
-    //   2407: getfield 1727	com/tencent/mobileqq/app/message/QQMessageFacade$Message:nickName	Ljava/lang/String;
-    //   2410: invokestatic 1219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   2407: getfield 1703	com/tencent/mobileqq/app/message/QQMessageFacade$Message:nickName	Ljava/lang/String;
+    //   2410: invokestatic 1206	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   2413: ifne +12 -> 2425
     //   2416: aload_1
-    //   2417: getfield 1727	com/tencent/mobileqq/app/message/QQMessageFacade$Message:nickName	Ljava/lang/String;
-    //   2420: astore 11
+    //   2417: getfield 1703	com/tencent/mobileqq/app/message/QQMessageFacade$Message:nickName	Ljava/lang/String;
+    //   2420: astore 10
     //   2422: goto -263 -> 2159
     //   2425: aload_0
     //   2426: aload_1
-    //   2427: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   2427: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
     //   2430: aload_1
-    //   2431: getfield 1467	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
-    //   2434: invokestatic 1980	babh:h	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   2437: astore 11
+    //   2431: getfield 1445	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
+    //   2434: invokestatic 1953	bbcl:h	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   2437: astore 10
     //   2439: goto -280 -> 2159
-    //   2442: new 137	java/lang/StringBuilder
+    //   2442: new 138	java/lang/StringBuilder
     //   2445: dup
-    //   2446: invokespecial 140	java/lang/StringBuilder:<init>	()V
+    //   2446: invokespecial 141	java/lang/StringBuilder:<init>	()V
     //   2449: aload_0
     //   2450: aload_1
-    //   2451: invokespecial 1929	com/tencent/mobileqq/app/QQAppInterface:a	(Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
-    //   2454: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2457: aload 11
-    //   2459: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2462: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2465: astore 11
+    //   2451: invokespecial 1902	com/tencent/mobileqq/app/QQAppInterface:a	(Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
+    //   2454: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2457: aload 10
+    //   2459: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2462: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2465: astore 10
     //   2467: goto -225 -> 2242
-    //   2470: aload 10
-    //   2472: astore 11
+    //   2470: aload 9
+    //   2472: astore 10
     //   2474: goto -162 -> 2312
-    //   2477: aload 14
-    //   2479: ldc_w 1188
-    //   2482: invokevirtual 1737	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   2485: astore 12
-    //   2487: aload 12
+    //   2477: aload 13
+    //   2479: ldc_w 1174
+    //   2482: invokevirtual 1713	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   2485: astore 11
+    //   2487: aload 11
     //   2489: ifnull +15 -> 2504
-    //   2492: aload 12
-    //   2494: astore 11
-    //   2496: aload 12
-    //   2498: invokevirtual 815	java/lang/String:length	()I
+    //   2492: aload 11
+    //   2494: astore 10
+    //   2496: aload 11
+    //   2498: invokevirtual 751	java/lang/String:length	()I
     //   2501: ifne +9 -> 2510
     //   2504: aload_1
-    //   2505: getfield 1467	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
-    //   2508: astore 11
-    //   2510: new 137	java/lang/StringBuilder
+    //   2505: getfield 1445	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
+    //   2508: astore 10
+    //   2510: new 138	java/lang/StringBuilder
     //   2513: dup
-    //   2514: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   2517: aload 15
-    //   2519: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2522: ldc_w 1982
-    //   2525: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2528: aload 11
-    //   2530: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2533: ldc_w 1940
-    //   2536: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2539: aload 10
-    //   2541: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2544: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2547: astore 13
-    //   2549: new 137	java/lang/StringBuilder
+    //   2514: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   2517: aload 14
+    //   2519: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2522: ldc_w 1955
+    //   2525: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2528: aload 10
+    //   2530: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2533: ldc_w 1913
+    //   2536: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2539: aload 9
+    //   2541: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2544: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2547: astore 12
+    //   2549: new 138	java/lang/StringBuilder
     //   2552: dup
-    //   2553: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   2556: aload 11
-    //   2558: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2561: ldc_w 1940
-    //   2564: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2567: aload 10
-    //   2569: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2572: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2575: astore 12
+    //   2553: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   2556: aload 10
+    //   2558: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2561: ldc_w 1913
+    //   2564: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2567: aload 9
+    //   2569: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2572: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2575: astore 11
     //   2577: aconst_null
-    //   2578: astore 16
-    //   2580: aload 10
-    //   2582: astore 11
-    //   2584: aload 16
-    //   2586: astore 10
+    //   2578: astore 15
+    //   2580: aload 9
+    //   2582: astore 10
+    //   2584: aload 15
+    //   2586: astore 9
     //   2588: goto -1921 -> 667
-    //   2591: new 137	java/lang/StringBuilder
+    //   2591: new 138	java/lang/StringBuilder
     //   2594: dup
-    //   2595: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   2598: aload 15
-    //   2600: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2603: ldc_w 1751
-    //   2606: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2609: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2612: astore 13
-    //   2614: aload 10
-    //   2616: astore 11
-    //   2618: aload 10
-    //   2620: astore 12
-    //   2622: aload 16
-    //   2624: astore 10
+    //   2595: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   2598: aload 14
+    //   2600: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2603: ldc_w 1727
+    //   2606: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2609: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2612: astore 12
+    //   2614: aload 9
+    //   2616: astore 10
+    //   2618: aload 9
+    //   2620: astore 11
+    //   2622: aload 15
+    //   2624: astore 9
     //   2626: goto -1959 -> 667
-    //   2629: getstatic 1068	ajed:H	Ljava/lang/String;
-    //   2632: invokestatic 1072	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   2629: getstatic 1017	ajsf:H	Ljava/lang/String;
+    //   2632: invokestatic 1021	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   2635: aload_1
-    //   2636: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
-    //   2639: invokevirtual 135	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2636: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   2639: invokevirtual 136	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2642: ifeq +158 -> 2800
     //   2645: aload_0
     //   2646: aload_1
-    //   2647: getfield 1467	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
-    //   2650: invokestatic 1985	babh:q	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
-    //   2653: astore 12
-    //   2655: aload 12
-    //   2657: astore 11
-    //   2659: aload 12
-    //   2661: invokestatic 1219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   2647: getfield 1445	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
+    //   2650: invokestatic 1958	bbcl:q	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
+    //   2653: astore 11
+    //   2655: aload 11
+    //   2657: astore 10
+    //   2659: aload 11
+    //   2661: invokestatic 1206	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   2664: ifeq +9 -> 2673
     //   2667: aload_1
-    //   2668: getfield 1467	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
-    //   2671: astore 11
-    //   2673: new 137	java/lang/StringBuilder
+    //   2668: getfield 1445	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
+    //   2671: astore 10
+    //   2673: new 138	java/lang/StringBuilder
     //   2676: dup
-    //   2677: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   2680: aload 11
-    //   2682: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2685: ldc_w 1931
-    //   2688: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2691: aload 15
-    //   2693: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2696: ldc_w 1933
-    //   2699: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2702: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2705: astore 13
+    //   2677: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   2680: aload 10
+    //   2682: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2685: ldc_w 1904
+    //   2688: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2691: aload 14
+    //   2693: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2696: ldc_w 1906
+    //   2699: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2702: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2705: astore 12
     //   2707: aload_1
-    //   2708: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   2708: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   2711: sipush -2053
     //   2714: if_icmpne +117 -> 2831
     //   2717: aload_1
-    //   2718: getfield 1727	com/tencent/mobileqq/app/message/QQMessageFacade$Message:nickName	Ljava/lang/String;
-    //   2721: astore 11
-    //   2723: new 137	java/lang/StringBuilder
+    //   2718: getfield 1703	com/tencent/mobileqq/app/message/QQMessageFacade$Message:nickName	Ljava/lang/String;
+    //   2721: astore 10
+    //   2723: new 138	java/lang/StringBuilder
     //   2726: dup
-    //   2727: invokespecial 140	java/lang/StringBuilder:<init>	()V
+    //   2727: invokespecial 141	java/lang/StringBuilder:<init>	()V
     //   2730: aload_0
-    //   2731: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2734: ldc_w 1986
-    //   2737: invokevirtual 1276	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   2740: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2743: aload 11
-    //   2745: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2748: aload 10
-    //   2750: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2753: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2756: astore 11
+    //   2731: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2734: ldc_w 1959
+    //   2737: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   2740: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2743: aload 10
+    //   2745: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2748: aload 9
+    //   2750: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2753: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2756: astore 10
     //   2758: aload_0
-    //   2759: getfield 1739	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade	Lcom/tencent/mobileqq/app/message/QQMessageFacade;
-    //   2762: getfield 1742	com/tencent/mobileqq/app/message/QQMessageFacade:a	Lakdr;
-    //   2765: invokevirtual 1746	akdr:b	()I
+    //   2759: getfield 1715	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade	Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   2762: getfield 1718	com/tencent/mobileqq/app/message/QQMessageFacade:a	Laksd;
+    //   2765: invokevirtual 1722	aksd:b	()I
     //   2768: iconst_1
-    //   2769: if_icmpne +2635 -> 5404
+    //   2769: if_icmpne +2731 -> 5500
     //   2772: aload_0
     //   2773: aload_1
-    //   2774: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   2774: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
     //   2777: sipush 200
-    //   2780: invokevirtual 1989	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/lang/String;I)Landroid/graphics/Bitmap;
-    //   2783: astore 16
-    //   2785: aload 11
-    //   2787: astore 12
-    //   2789: aload 10
-    //   2791: astore 11
-    //   2793: aload 16
-    //   2795: astore 10
+    //   2780: invokevirtual 1962	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/lang/String;I)Landroid/graphics/Bitmap;
+    //   2783: astore 15
+    //   2785: aload 10
+    //   2787: astore 11
+    //   2789: aload 9
+    //   2791: astore 10
+    //   2793: aload 15
+    //   2795: astore 9
     //   2797: goto -2130 -> 667
     //   2800: aload_0
     //   2801: aload_1
-    //   2802: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
-    //   2805: invokestatic 1985	babh:q	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
-    //   2808: astore 12
-    //   2810: aload 12
-    //   2812: astore 11
-    //   2814: aload 12
-    //   2816: invokestatic 1219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   2802: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   2805: invokestatic 1958	bbcl:q	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
+    //   2808: astore 11
+    //   2810: aload 11
+    //   2812: astore 10
+    //   2814: aload 11
+    //   2816: invokestatic 1206	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   2819: ifeq -146 -> 2673
     //   2822: aload_1
-    //   2823: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
-    //   2826: astore 11
+    //   2823: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   2826: astore 10
     //   2828: goto -155 -> 2673
     //   2831: aload_1
-    //   2832: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   2832: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   2835: sipush -2068
     //   2838: if_icmpne +10 -> 2848
-    //   2841: aload 10
-    //   2843: astore 11
+    //   2841: aload 9
+    //   2843: astore 10
     //   2845: goto -87 -> 2758
-    //   2848: new 137	java/lang/StringBuilder
+    //   2848: new 138	java/lang/StringBuilder
     //   2851: dup
-    //   2852: invokespecial 140	java/lang/StringBuilder:<init>	()V
+    //   2852: invokespecial 141	java/lang/StringBuilder:<init>	()V
     //   2855: aload_0
     //   2856: aload_1
-    //   2857: invokespecial 1929	com/tencent/mobileqq/app/QQAppInterface:a	(Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
-    //   2860: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2863: aload 11
-    //   2865: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2868: ldc_w 1751
-    //   2871: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2874: aload 10
-    //   2876: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2879: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2882: astore 11
+    //   2857: invokespecial 1902	com/tencent/mobileqq/app/QQAppInterface:a	(Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
+    //   2860: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2863: aload 10
+    //   2865: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2868: ldc_w 1727
+    //   2871: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2874: aload 9
+    //   2876: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2879: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2882: astore 10
     //   2884: goto -126 -> 2758
     //   2887: aload_0
-    //   2888: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2891: invokevirtual 1990	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   2894: ldc_w 1991
-    //   2897: invokevirtual 1995	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
-    //   2900: invokestatic 2000	azzg:a	(Landroid/graphics/drawable/Drawable;)Landroid/graphics/Bitmap;
-    //   2903: astore 16
+    //   2888: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2891: invokevirtual 1963	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   2894: ldc_w 1964
+    //   2897: invokevirtual 1968	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   2900: invokestatic 1973	bbak:a	(Landroid/graphics/drawable/Drawable;)Landroid/graphics/Bitmap;
+    //   2903: astore 15
     //   2905: aload_0
-    //   2906: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2909: ldc_w 1191
-    //   2912: invokevirtual 1276	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   2915: astore 15
-    //   2917: new 2002	com/tencent/mobileqq/confess/ConfessInfo
+    //   2906: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2909: ldc_w 1177
+    //   2912: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   2915: astore 14
+    //   2917: new 1975	com/tencent/mobileqq/confess/ConfessInfo
     //   2920: dup
-    //   2921: invokespecial 2003	com/tencent/mobileqq/confess/ConfessInfo:<init>	()V
-    //   2924: astore 11
-    //   2926: aload 11
+    //   2921: invokespecial 1976	com/tencent/mobileqq/confess/ConfessInfo:<init>	()V
+    //   2924: astore 10
+    //   2926: aload 10
     //   2928: aload_1
-    //   2929: ldc_w 2005
-    //   2932: invokevirtual 1799	com/tencent/mobileqq/app/message/QQMessageFacade$Message:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   2935: invokevirtual 2008	com/tencent/mobileqq/confess/ConfessInfo:parseFromJsonStr	(Ljava/lang/String;)V
+    //   2929: ldc_w 1978
+    //   2932: invokevirtual 1772	com/tencent/mobileqq/app/message/QQMessageFacade$Message:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   2935: invokevirtual 1981	com/tencent/mobileqq/confess/ConfessInfo:parseFromJsonStr	(Ljava/lang/String;)V
     //   2938: aload_0
-    //   2939: aload 11
+    //   2939: aload 10
     //   2941: aload_1
-    //   2942: getfield 1467	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
-    //   2945: invokestatic 2013	alyc:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/confess/ConfessInfo;Ljava/lang/String;)Ljava/lang/String;
-    //   2948: astore 11
-    //   2950: new 137	java/lang/StringBuilder
+    //   2942: getfield 1445	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
+    //   2945: invokestatic 1986	amns:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/confess/ConfessInfo;Ljava/lang/String;)Ljava/lang/String;
+    //   2948: astore 10
+    //   2950: new 138	java/lang/StringBuilder
     //   2953: dup
-    //   2954: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   2957: aload 11
-    //   2959: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2962: ldc_w 1931
-    //   2965: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2968: aload 15
-    //   2970: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2973: ldc_w 1933
-    //   2976: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2979: aload 10
-    //   2981: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2984: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2987: astore 13
-    //   2989: new 137	java/lang/StringBuilder
+    //   2954: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   2957: aload 10
+    //   2959: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2962: ldc_w 1904
+    //   2965: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2968: aload 14
+    //   2970: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2973: ldc_w 1906
+    //   2976: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2979: aload 9
+    //   2981: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2984: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2987: astore 12
+    //   2989: new 138	java/lang/StringBuilder
     //   2992: dup
-    //   2993: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   2996: aload 11
-    //   2998: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3001: ldc_w 1940
-    //   3004: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3007: aload 10
-    //   3009: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3012: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3015: astore 12
-    //   3017: aload 10
-    //   3019: astore 11
-    //   3021: aload 16
-    //   3023: astore 10
+    //   2993: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   2996: aload 10
+    //   2998: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3001: ldc_w 1913
+    //   3004: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3007: aload 9
+    //   3009: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3012: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3015: astore 11
+    //   3017: aload 9
+    //   3019: astore 10
+    //   3021: aload 15
+    //   3023: astore 9
     //   3025: goto -2358 -> 667
     //   3028: aload_0
     //   3029: aload_1
-    //   3030: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   3030: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
     //   3033: iconst_1
-    //   3034: invokevirtual 1749	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/lang/String;Z)Landroid/graphics/Bitmap;
-    //   3037: astore 16
+    //   3034: invokevirtual 1725	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/lang/String;Z)Landroid/graphics/Bitmap;
+    //   3037: astore 15
     //   3039: aload_0
-    //   3040: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3043: ldc_w 2014
-    //   3046: invokevirtual 1276	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   3049: astore 11
-    //   3051: new 137	java/lang/StringBuilder
+    //   3040: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   3043: ldc_w 1987
+    //   3046: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   3049: astore 10
+    //   3051: new 138	java/lang/StringBuilder
     //   3054: dup
-    //   3055: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   3058: aload 15
-    //   3060: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3063: ldc_w 1931
-    //   3066: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3069: aload 11
-    //   3071: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3074: ldc_w 2016
-    //   3077: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3080: aload 10
-    //   3082: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3085: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3088: astore 13
-    //   3090: new 137	java/lang/StringBuilder
+    //   3055: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   3058: aload 14
+    //   3060: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3063: ldc_w 1904
+    //   3066: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3069: aload 10
+    //   3071: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3074: ldc_w 1989
+    //   3077: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3080: aload 9
+    //   3082: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3085: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3088: astore 12
+    //   3090: new 138	java/lang/StringBuilder
     //   3093: dup
-    //   3094: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   3097: aload 15
-    //   3099: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3102: ldc_w 1751
-    //   3105: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3108: aload 10
-    //   3110: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3113: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3116: astore 12
-    //   3118: aload 11
-    //   3120: astore 15
-    //   3122: aload 10
-    //   3124: astore 11
-    //   3126: aload 16
-    //   3128: astore 10
+    //   3094: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   3097: aload 14
+    //   3099: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3102: ldc_w 1727
+    //   3105: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3108: aload 9
+    //   3110: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3113: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3116: astore 11
+    //   3118: aload 10
+    //   3120: astore 14
+    //   3122: aload 9
+    //   3124: astore 10
+    //   3126: aload 15
+    //   3128: astore 9
     //   3130: goto -2463 -> 667
     //   3133: aload_0
-    //   3134: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3137: invokevirtual 1990	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   3140: ldc_w 2017
-    //   3143: invokevirtual 1995	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
-    //   3146: invokestatic 2000	azzg:a	(Landroid/graphics/drawable/Drawable;)Landroid/graphics/Bitmap;
-    //   3149: astore 16
+    //   3134: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   3137: invokevirtual 1963	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   3140: ldc_w 1990
+    //   3143: invokevirtual 1968	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   3146: invokestatic 1973	bbak:a	(Landroid/graphics/drawable/Drawable;)Landroid/graphics/Bitmap;
+    //   3149: astore 15
     //   3151: aload_1
-    //   3152: invokestatic 2022	acnu:a	(Lcom/tencent/mobileqq/data/MessageRecord;)Lcom/tencent/mobileqq/data/PAMessage;
-    //   3155: astore 12
-    //   3157: aload 12
-    //   3159: ifnull +2238 -> 5397
-    //   3162: aload 12
-    //   3164: getfield 2027	com/tencent/mobileqq/data/PAMessage:items	Ljava/util/ArrayList;
-    //   3167: invokevirtual 1321	java/util/ArrayList:isEmpty	()Z
-    //   3170: ifne +2227 -> 5397
-    //   3173: aload 12
-    //   3175: getfield 2027	com/tencent/mobileqq/data/PAMessage:items	Ljava/util/ArrayList;
+    //   3152: invokestatic 1995	acyn:a	(Lcom/tencent/mobileqq/data/MessageRecord;)Lcom/tencent/mobileqq/data/PAMessage;
+    //   3155: astore 11
+    //   3157: aload 11
+    //   3159: ifnull +2334 -> 5493
+    //   3162: aload 11
+    //   3164: getfield 2000	com/tencent/mobileqq/data/PAMessage:items	Ljava/util/ArrayList;
+    //   3167: invokevirtual 1295	java/util/ArrayList:isEmpty	()Z
+    //   3170: ifne +2323 -> 5493
+    //   3173: aload 11
+    //   3175: getfield 2000	com/tencent/mobileqq/data/PAMessage:items	Ljava/util/ArrayList;
     //   3178: iconst_0
-    //   3179: invokevirtual 1330	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   3182: checkcast 2029	com/tencent/mobileqq/data/PAMessage$Item
-    //   3185: getfield 2032	com/tencent/mobileqq/data/PAMessage$Item:title	Ljava/lang/String;
-    //   3188: astore 11
-    //   3190: aload 12
-    //   3192: getfield 2027	com/tencent/mobileqq/data/PAMessage:items	Ljava/util/ArrayList;
+    //   3179: invokevirtual 1305	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   3182: checkcast 2002	com/tencent/mobileqq/data/PAMessage$Item
+    //   3185: getfield 2005	com/tencent/mobileqq/data/PAMessage$Item:title	Ljava/lang/String;
+    //   3188: astore 10
+    //   3190: aload 11
+    //   3192: getfield 2000	com/tencent/mobileqq/data/PAMessage:items	Ljava/util/ArrayList;
     //   3195: iconst_0
-    //   3196: invokevirtual 1330	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   3199: checkcast 2029	com/tencent/mobileqq/data/PAMessage$Item
-    //   3202: getfield 2035	com/tencent/mobileqq/data/PAMessage$Item:cover	Ljava/lang/String;
+    //   3196: invokevirtual 1305	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   3199: checkcast 2002	com/tencent/mobileqq/data/PAMessage$Item
+    //   3202: getfield 2008	com/tencent/mobileqq/data/PAMessage$Item:cover	Ljava/lang/String;
     //   3205: ifnonnull +70 -> 3275
-    //   3208: aload 12
-    //   3210: getfield 2027	com/tencent/mobileqq/data/PAMessage:items	Ljava/util/ArrayList;
+    //   3208: aload 11
+    //   3210: getfield 2000	com/tencent/mobileqq/data/PAMessage:items	Ljava/util/ArrayList;
     //   3213: iconst_0
-    //   3214: invokevirtual 1330	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   3217: checkcast 2029	com/tencent/mobileqq/data/PAMessage$Item
-    //   3220: getfield 2038	com/tencent/mobileqq/data/PAMessage$Item:digestList	Ljava/util/List;
+    //   3214: invokevirtual 1305	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   3217: checkcast 2002	com/tencent/mobileqq/data/PAMessage$Item
+    //   3220: getfield 2011	com/tencent/mobileqq/data/PAMessage$Item:digestList	Ljava/util/List;
     //   3223: ifnull +52 -> 3275
-    //   3226: aload 12
-    //   3228: getfield 2027	com/tencent/mobileqq/data/PAMessage:items	Ljava/util/ArrayList;
+    //   3226: aload 11
+    //   3228: getfield 2000	com/tencent/mobileqq/data/PAMessage:items	Ljava/util/ArrayList;
     //   3231: iconst_0
-    //   3232: invokevirtual 1330	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   3235: checkcast 2029	com/tencent/mobileqq/data/PAMessage$Item
-    //   3238: getfield 2038	com/tencent/mobileqq/data/PAMessage$Item:digestList	Ljava/util/List;
+    //   3232: invokevirtual 1305	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   3235: checkcast 2002	com/tencent/mobileqq/data/PAMessage$Item
+    //   3238: getfield 2011	com/tencent/mobileqq/data/PAMessage$Item:digestList	Ljava/util/List;
     //   3241: iconst_0
-    //   3242: invokeinterface 1695 2 0
-    //   3247: checkcast 131	java/lang/String
-    //   3250: astore 12
-    //   3252: aload 11
-    //   3254: astore 15
-    //   3256: aload 12
-    //   3258: astore 11
-    //   3260: aload 11
-    //   3262: astore 12
-    //   3264: aload 10
-    //   3266: astore 11
-    //   3268: aload 16
-    //   3270: astore 10
+    //   3242: invokeinterface 1671 2 0
+    //   3247: checkcast 132	java/lang/String
+    //   3250: astore 11
+    //   3252: aload 10
+    //   3254: astore 14
+    //   3256: aload 11
+    //   3258: astore 10
+    //   3260: aload 10
+    //   3262: astore 11
+    //   3264: aload 9
+    //   3266: astore 10
+    //   3268: aload 15
+    //   3270: astore 9
     //   3272: goto -2605 -> 667
     //   3275: goto -15 -> 3260
     //   3278: aload_0
-    //   3279: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3282: invokevirtual 1990	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   3285: ldc_w 2039
-    //   3288: invokevirtual 1995	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
-    //   3291: invokestatic 2000	azzg:a	(Landroid/graphics/drawable/Drawable;)Landroid/graphics/Bitmap;
-    //   3294: astore 16
-    //   3296: new 137	java/lang/StringBuilder
+    //   3279: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   3282: invokevirtual 1963	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   3285: ldc_w 2012
+    //   3288: invokevirtual 1968	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   3291: invokestatic 1973	bbak:a	(Landroid/graphics/drawable/Drawable;)Landroid/graphics/Bitmap;
+    //   3294: astore 15
+    //   3296: new 138	java/lang/StringBuilder
     //   3299: dup
-    //   3300: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   3303: aload 15
-    //   3305: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3308: ldc_w 1751
-    //   3311: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3314: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3317: astore 13
-    //   3319: aload 10
-    //   3321: astore 11
-    //   3323: aload 10
-    //   3325: astore 12
-    //   3327: aload 16
-    //   3329: astore 10
+    //   3300: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   3303: aload 14
+    //   3305: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3308: ldc_w 1727
+    //   3311: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3314: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3317: astore 12
+    //   3319: aload 9
+    //   3321: astore 10
+    //   3323: aload 9
+    //   3325: astore 11
+    //   3327: aload 15
+    //   3329: astore 9
     //   3331: goto -2664 -> 667
-    //   3334: ldc_w 2041
+    //   3334: ldc_w 2014
     //   3337: aload_1
-    //   3338: getfield 1789	com/tencent/mobileqq/app/message/QQMessageFacade$Message:extStr	Ljava/lang/String;
-    //   3341: invokevirtual 135	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   3338: getfield 1151	com/tencent/mobileqq/app/message/QQMessageFacade$Message:extStr	Ljava/lang/String;
+    //   3341: invokevirtual 136	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   3344: ifeq +142 -> 3486
     //   3347: aload_1
-    //   3348: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   3348: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   3351: sipush -4501
     //   3354: if_icmpeq +13 -> 3367
     //   3357: aload_1
-    //   3358: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   3358: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   3361: sipush -4508
     //   3364: if_icmpne +122 -> 3486
     //   3367: aload_0
     //   3368: aload_1
-    //   3369: getfield 1467	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
+    //   3369: getfield 1445	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
     //   3372: iconst_1
-    //   3373: invokestatic 1239	babh:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Z)Ljava/lang/String;
-    //   3376: astore 12
-    //   3378: aload 12
-    //   3380: astore 11
+    //   3373: invokestatic 1226	bbcl:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Z)Ljava/lang/String;
+    //   3376: astore 11
+    //   3378: aload 11
+    //   3380: astore 10
     //   3382: aload_1
-    //   3383: getfield 1467	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
-    //   3386: invokestatic 1219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   3383: getfield 1445	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
+    //   3386: invokestatic 1206	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   3389: ifne +45 -> 3434
-    //   3392: aload 12
-    //   3394: astore 11
+    //   3392: aload 11
+    //   3394: astore 10
     //   3396: aload_1
-    //   3397: getfield 1467	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
+    //   3397: getfield 1445	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
     //   3400: aload_1
-    //   3401: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
-    //   3404: invokevirtual 135	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   3401: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   3404: invokevirtual 136	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   3407: ifeq +27 -> 3434
     //   3410: aload_0
     //   3411: bipush 51
-    //   3413: invokevirtual 1352	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lajfb;
-    //   3416: checkcast 1354	xrh
+    //   3413: invokevirtual 1330	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lajtd;
+    //   3416: checkcast 1332	yak
     //   3419: aload_1
-    //   3420: getfield 1467	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
-    //   3423: invokestatic 1314	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   3426: invokevirtual 1357	xrh:a	(J)Lcom/tencent/device/datadef/DeviceInfo;
-    //   3429: invokestatic 1362	ydt:a	(Lcom/tencent/device/datadef/DeviceInfo;)Ljava/lang/String;
-    //   3432: astore 11
-    //   3434: aload 11
-    //   3436: astore 12
-    //   3438: aload 11
+    //   3420: getfield 1445	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
+    //   3423: invokestatic 1288	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   3426: invokevirtual 1335	yak:a	(J)Lcom/tencent/device/datadef/DeviceInfo;
+    //   3429: invokestatic 1340	ymx:a	(Lcom/tencent/device/datadef/DeviceInfo;)Ljava/lang/String;
+    //   3432: astore 10
+    //   3434: aload 10
+    //   3436: astore 11
+    //   3438: aload 10
     //   3440: ifnonnull +7 -> 3447
-    //   3443: ldc 205
-    //   3445: astore 12
-    //   3447: new 137	java/lang/StringBuilder
+    //   3443: ldc 206
+    //   3445: astore 11
+    //   3447: new 138	java/lang/StringBuilder
     //   3450: dup
-    //   3451: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   3454: aload 12
-    //   3456: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3459: ldc_w 1751
-    //   3462: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3465: aload 10
-    //   3467: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3470: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3473: astore 12
-    //   3475: aload 10
-    //   3477: astore 11
-    //   3479: aload 16
-    //   3481: astore 10
+    //   3451: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   3454: aload 11
+    //   3456: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3459: ldc_w 1727
+    //   3462: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3465: aload 9
+    //   3467: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3470: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3473: astore 11
+    //   3475: aload 9
+    //   3477: astore 10
+    //   3479: aload 15
+    //   3481: astore 9
     //   3483: goto -2816 -> 667
-    //   3486: aload 10
-    //   3488: astore 11
-    //   3490: aload 10
-    //   3492: astore 12
-    //   3494: aload 16
-    //   3496: astore 10
+    //   3486: aload 9
+    //   3488: astore 10
+    //   3490: aload 9
+    //   3492: astore 11
+    //   3494: aload 15
+    //   3496: astore 9
     //   3498: goto -2831 -> 667
     //   3501: aload_0
     //   3502: aload_1
-    //   3503: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   3503: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
     //   3506: iconst_1
-    //   3507: invokevirtual 1749	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/lang/String;Z)Landroid/graphics/Bitmap;
-    //   3510: astore 11
+    //   3507: invokevirtual 1725	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/lang/String;Z)Landroid/graphics/Bitmap;
+    //   3510: astore 10
     //   3512: goto -2904 -> 608
     //   3515: aload_0
-    //   3516: invokevirtual 2044	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/MessageHandler;
+    //   3516: invokevirtual 2017	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/MessageHandler;
     //   3519: aload_1
-    //   3520: getfield 2047	com/tencent/mobileqq/app/message/QQMessageFacade$Message:shareAppID	J
-    //   3523: invokestatic 2051	baak:a	(J)Ljava/lang/String;
-    //   3526: invokevirtual 2056	com/tencent/mobileqq/app/MessageHandler:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/AppShareID;
-    //   3529: astore 11
-    //   3531: aload 11
+    //   3520: getfield 2020	com/tencent/mobileqq/app/message/QQMessageFacade$Message:shareAppID	J
+    //   3523: invokestatic 2024	bbbo:a	(J)Ljava/lang/String;
+    //   3526: invokevirtual 2029	com/tencent/mobileqq/app/MessageHandler:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/AppShareID;
+    //   3529: astore 10
+    //   3531: aload 10
     //   3533: ifnull +24 -> 3557
-    //   3536: aload 11
-    //   3538: getfield 2061	com/tencent/mobileqq/data/AppShareID:messagetail	Ljava/lang/String;
+    //   3536: aload 10
+    //   3538: getfield 2034	com/tencent/mobileqq/data/AppShareID:messagetail	Ljava/lang/String;
     //   3541: ifnull +16 -> 3557
-    //   3544: ldc 205
-    //   3546: aload 11
-    //   3548: getfield 2061	com/tencent/mobileqq/data/AppShareID:messagetail	Ljava/lang/String;
-    //   3551: invokevirtual 135	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   3544: ldc 206
+    //   3546: aload 10
+    //   3548: getfield 2034	com/tencent/mobileqq/data/AppShareID:messagetail	Ljava/lang/String;
+    //   3551: invokevirtual 136	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   3554: ifeq +18 -> 3572
     //   3557: aload_0
-    //   3558: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3561: ldc_w 2062
-    //   3564: invokevirtual 1276	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   3567: astore 11
+    //   3558: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   3561: ldc_w 2035
+    //   3564: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   3567: astore 10
     //   3569: goto -2831 -> 738
-    //   3572: new 137	java/lang/StringBuilder
+    //   3572: new 138	java/lang/StringBuilder
     //   3575: dup
-    //   3576: invokespecial 140	java/lang/StringBuilder:<init>	()V
+    //   3576: invokespecial 141	java/lang/StringBuilder:<init>	()V
     //   3579: aload_0
-    //   3580: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3583: ldc_w 2063
-    //   3586: invokevirtual 1276	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   3589: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3592: aload 11
-    //   3594: getfield 2061	com/tencent/mobileqq/data/AppShareID:messagetail	Ljava/lang/String;
-    //   3597: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3580: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   3583: ldc_w 2036
+    //   3586: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   3589: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3592: aload 10
+    //   3594: getfield 2034	com/tencent/mobileqq/data/AppShareID:messagetail	Ljava/lang/String;
+    //   3597: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3600: aload_0
-    //   3601: getfield 489	com/tencent/mobileqq/app/QQAppInterface:app	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   3604: ldc_w 2064
-    //   3607: invokevirtual 2065	com/tencent/common/app/BaseApplicationImpl:getString	(I)Ljava/lang/String;
-    //   3610: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3613: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3616: astore 11
+    //   3601: getfield 490	com/tencent/mobileqq/app/QQAppInterface:app	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   3604: ldc_w 2037
+    //   3607: invokevirtual 2038	com/tencent/common/app/BaseApplicationImpl:getString	(I)Ljava/lang/String;
+    //   3610: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3613: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3616: astore 10
     //   3618: goto -2880 -> 738
-    //   3621: aload 13
-    //   3623: astore 11
+    //   3621: aload 12
+    //   3623: astore 10
     //   3625: aload_1
-    //   3626: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   3626: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
     //   3629: sipush 7000
     //   3632: if_icmpeq -2854 -> 778
-    //   3635: aload 13
-    //   3637: astore 11
+    //   3635: aload 12
+    //   3637: astore 10
     //   3639: aload_1
-    //   3640: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
-    //   3643: invokestatic 2068	akbm:a	(I)I
+    //   3640: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   3643: invokestatic 2041	akpy:a	(I)I
     //   3646: sipush 1032
     //   3649: if_icmpeq -2871 -> 778
-    //   3652: aload 13
-    //   3654: astore 11
+    //   3652: aload 12
+    //   3654: astore 10
     //   3656: aload_1
-    //   3657: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   3657: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
     //   3660: sipush 1037
     //   3663: if_icmpeq -2885 -> 778
-    //   3666: aload 13
-    //   3668: astore 11
+    //   3666: aload 12
+    //   3668: astore 10
     //   3670: aload_1
-    //   3671: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   3671: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
     //   3674: sipush 1044
     //   3677: if_icmpeq -2899 -> 778
-    //   3680: new 137	java/lang/StringBuilder
+    //   3680: new 138	java/lang/StringBuilder
     //   3683: dup
-    //   3684: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   3687: aload 13
-    //   3689: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3692: aload 16
-    //   3694: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3697: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3700: astore 11
+    //   3684: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   3687: aload 12
+    //   3689: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3692: aload 15
+    //   3694: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3697: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3700: astore 10
     //   3702: goto -2924 -> 778
-    //   3705: new 137	java/lang/StringBuilder
+    //   3705: new 138	java/lang/StringBuilder
     //   3708: dup
-    //   3709: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   3712: aload 15
-    //   3714: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3717: ldc_w 1781
-    //   3720: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3709: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   3712: aload 14
+    //   3714: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3717: ldc_w 1757
+    //   3720: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3723: aload_1
-    //   3724: getfield 1779	com/tencent/mobileqq/app/message/QQMessageFacade$Message:counter	I
+    //   3724: getfield 1755	com/tencent/mobileqq/app/message/QQMessageFacade$Message:counter	I
     //   3727: invokevirtual 430	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   3730: aload_0
-    //   3731: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3734: ldc_w 2069
-    //   3737: invokevirtual 1276	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   3740: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3743: ldc_w 1784
-    //   3746: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3749: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3752: astore 13
+    //   3731: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   3734: ldc_w 2042
+    //   3737: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   3740: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3743: ldc_w 1760
+    //   3746: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3749: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3752: astore 12
     //   3754: goto -2884 -> 870
-    //   3757: new 137	java/lang/StringBuilder
+    //   3757: new 138	java/lang/StringBuilder
     //   3760: dup
-    //   3761: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   3764: aload 12
-    //   3766: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3769: ldc_w 2071
-    //   3772: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3775: aload 11
-    //   3777: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3780: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3783: astore 11
+    //   3761: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   3764: aload 11
+    //   3766: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3769: ldc_w 2044
+    //   3772: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3775: aload 10
+    //   3777: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3780: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3783: astore 10
     //   3785: goto -2743 -> 1042
     //   3788: aload_0
-    //   3789: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3792: ldc_w 2072
-    //   3795: invokevirtual 1276	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   3798: astore 13
+    //   3789: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   3792: ldc_w 2045
+    //   3795: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   3798: astore 12
     //   3800: goto -2736 -> 1064
     //   3803: aload_1
-    //   3804: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   3804: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
     //   3807: sipush 7220
-    //   3810: if_icmpne +799 -> 4609
+    //   3810: if_icmpne +777 -> 4587
     //   3813: aload_0
     //   3814: aload_1
-    //   3815: invokestatic 2075	obz:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/data/MessageRecord;)Z
+    //   3815: invokestatic 2048	onk:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/data/MessageRecord;)Z
     //   3818: ifeq -3648 -> 170
     //   3821: aload_0
-    //   3822: invokevirtual 1439	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   3822: invokevirtual 1417	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
     //   3825: aload_1
-    //   3826: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   3826: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
     //   3829: aload_1
-    //   3830: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
-    //   3833: invokevirtual 2078	com/tencent/mobileqq/app/message/QQMessageFacade:b	(Ljava/lang/String;I)Lcom/tencent/mobileqq/data/MessageRecord;
-    //   3836: astore 15
-    //   3838: aload 15
+    //   3830: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   3833: invokevirtual 2051	com/tencent/mobileqq/app/message/QQMessageFacade:b	(Ljava/lang/String;I)Lcom/tencent/mobileqq/data/MessageRecord;
+    //   3836: astore 14
+    //   3838: aload 14
     //   3840: ifnull +80 -> 3920
-    //   3843: aload 15
-    //   3845: getfield 2079	com/tencent/mobileqq/data/MessageRecord:extStr	Ljava/lang/String;
-    //   3848: invokestatic 1219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   3851: ifne +654 -> 4505
-    //   3854: new 2081	org/json/JSONObject
+    //   3843: aload 14
+    //   3845: getfield 2052	com/tencent/mobileqq/data/MessageRecord:extStr	Ljava/lang/String;
+    //   3848: invokestatic 1206	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   3851: ifne +639 -> 4490
+    //   3854: new 1148	org/json/JSONObject
     //   3857: dup
-    //   3858: aload 15
-    //   3860: getfield 2079	com/tencent/mobileqq/data/MessageRecord:extStr	Ljava/lang/String;
-    //   3863: invokespecial 2082	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   3866: astore 10
-    //   3868: aload 10
-    //   3870: ldc_w 2084
-    //   3873: invokestatic 2089	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTime	()J
-    //   3876: invokevirtual 2093	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   3858: aload 14
+    //   3860: getfield 2052	com/tencent/mobileqq/data/MessageRecord:extStr	Ljava/lang/String;
+    //   3863: invokespecial 1152	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   3866: astore 9
+    //   3868: aload 9
+    //   3870: ldc_w 2054
+    //   3873: invokestatic 2059	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTime	()J
+    //   3876: invokevirtual 2063	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   3879: pop
-    //   3880: aload 15
-    //   3882: aload 10
-    //   3884: invokevirtual 2094	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   3887: putfield 2079	com/tencent/mobileqq/data/MessageRecord:extStr	Ljava/lang/String;
+    //   3880: aload 14
+    //   3882: aload 9
+    //   3884: invokevirtual 2064	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   3887: putfield 2052	com/tencent/mobileqq/data/MessageRecord:extStr	Ljava/lang/String;
     //   3890: aload_0
-    //   3891: invokevirtual 1439	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
-    //   3894: aload 15
-    //   3896: getfield 1595	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
-    //   3899: aload 15
-    //   3901: getfield 1598	com/tencent/mobileqq/data/MessageRecord:istroop	I
-    //   3904: aload 15
-    //   3906: getfield 2095	com/tencent/mobileqq/data/MessageRecord:uniseq	J
-    //   3909: ldc_w 2096
-    //   3912: aload 15
-    //   3914: getfield 2079	com/tencent/mobileqq/data/MessageRecord:extStr	Ljava/lang/String;
-    //   3917: invokevirtual 2099	com/tencent/mobileqq/app/message/QQMessageFacade:a	(Ljava/lang/String;IJLjava/lang/String;Ljava/lang/Object;)V
-    //   3920: aload 15
-    //   3922: instanceof 1293
-    //   3925: ifeq +1434 -> 5359
-    //   3928: aload 15
-    //   3930: checkcast 1293	com/tencent/mobileqq/data/MessageForStructing
-    //   3933: astore 18
-    //   3935: aload 18
-    //   3937: getfield 1302	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   3940: ifnonnull +1509 -> 5449
-    //   3943: aload 18
-    //   3945: invokevirtual 1305	com/tencent/mobileqq/data/MessageForStructing:parse	()V
-    //   3948: goto +1501 -> 5449
-    //   3951: aload 18
-    //   3953: ifnull +591 -> 4544
-    //   3956: aload 18
-    //   3958: getfield 2100	com/tencent/mobileqq/data/MessageForStructing:extInt	I
-    //   3961: iconst_1
-    //   3962: if_icmpne +582 -> 4544
-    //   3965: aload 18
-    //   3967: getfield 1302	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   3970: ifnull +1336 -> 5306
-    //   3973: aload 18
-    //   3975: getfield 1302	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   3978: getfield 1310	com/tencent/mobileqq/structmsg/AbsStructMsg:mArticleIds	Ljava/lang/String;
-    //   3981: invokestatic 1219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   3984: ifne +1368 -> 5352
-    //   3987: aload 18
-    //   3989: getfield 1302	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   3992: getfield 1310	com/tencent/mobileqq/structmsg/AbsStructMsg:mArticleIds	Ljava/lang/String;
-    //   3995: ldc_w 415
-    //   3998: invokevirtual 419	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   4001: iconst_0
-    //   4002: aaload
-    //   4003: astore 10
-    //   4005: aload 18
-    //   4007: getfield 1302	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   4010: getfield 2103	com/tencent/mobileqq/structmsg/AbsStructMsg:mStrategyIds	Ljava/lang/String;
-    //   4013: ifnull +1331 -> 5344
-    //   4016: aload 18
-    //   4018: getfield 1302	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   4021: getfield 2103	com/tencent/mobileqq/structmsg/AbsStructMsg:mStrategyIds	Ljava/lang/String;
-    //   4024: ldc_w 415
-    //   4027: invokevirtual 419	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   4030: iconst_0
-    //   4031: aaload
-    //   4032: astore 15
-    //   4034: aload 18
-    //   4036: getfield 1302	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   4039: getfield 2106	com/tencent/mobileqq/structmsg/AbsStructMsg:mAlgorithmIds	Ljava/lang/String;
-    //   4042: ifnull +1295 -> 5337
-    //   4045: aload 18
-    //   4047: getfield 1302	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   4050: getfield 2106	com/tencent/mobileqq/structmsg/AbsStructMsg:mAlgorithmIds	Ljava/lang/String;
-    //   4053: ldc_w 415
-    //   4056: invokevirtual 419	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   4059: iconst_0
-    //   4060: aaload
-    //   4061: astore 16
-    //   4063: aload 18
-    //   4065: getfield 1302	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   4068: getfield 2109	com/tencent/mobileqq/structmsg/AbsStructMsg:mExtraData	Ljava/lang/String;
-    //   4071: astore 17
-    //   4073: aload 17
-    //   4075: ifnull +42 -> 4117
-    //   4078: aload 14
-    //   4080: ldc_w 2111
-    //   4083: new 2081	org/json/JSONObject
-    //   4086: dup
-    //   4087: aload 18
-    //   4089: getfield 1302	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   4092: getfield 2109	com/tencent/mobileqq/structmsg/AbsStructMsg:mExtraData	Ljava/lang/String;
-    //   4095: invokespecial 2082	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   4098: ldc_w 2113
-    //   4101: ldc_w 1044
-    //   4104: invokevirtual 2116	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   4107: invokestatic 2119	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   4110: invokevirtual 890	java/lang/Integer:intValue	()I
-    //   4113: invokevirtual 920	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
-    //   4116: pop
-    //   4117: aload 18
-    //   4119: getfield 1302	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   4122: getfield 2122	com/tencent/mobileqq/structmsg/AbsStructMsg:mInnerUniqIds	Ljava/lang/String;
-    //   4125: invokestatic 1219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4128: ifne +1202 -> 5330
-    //   4131: aload 18
-    //   4133: getfield 1302	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   4136: getfield 2122	com/tencent/mobileqq/structmsg/AbsStructMsg:mInnerUniqIds	Ljava/lang/String;
-    //   4139: ldc_w 415
-    //   4142: invokevirtual 419	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   4145: astore 19
-    //   4147: aload 19
-    //   4149: arraylength
-    //   4150: istore 4
-    //   4152: iconst_0
-    //   4153: istore_3
-    //   4154: iload_3
-    //   4155: iload 4
-    //   4157: if_icmpge +1173 -> 5330
-    //   4160: aload 19
-    //   4162: iload_3
-    //   4163: aaload
-    //   4164: astore 17
-    //   4166: aload 17
-    //   4168: invokestatic 1219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4171: ifne +366 -> 4537
-    //   4174: aload 18
-    //   4176: getfield 1302	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   4179: getfield 2125	com/tencent/mobileqq/structmsg/AbsStructMsg:reportEventFolderStatusValue	Ljava/lang/String;
-    //   4182: astore 20
-    //   4184: aload 17
-    //   4186: astore 19
-    //   4188: aload 16
-    //   4190: astore 18
-    //   4192: aload 20
-    //   4194: astore 17
-    //   4196: aload 15
-    //   4198: astore 16
-    //   4200: aload 10
-    //   4202: astore 15
-    //   4204: aload 19
-    //   4206: astore 10
-    //   4208: new 2081	org/json/JSONObject
-    //   4211: dup
-    //   4212: invokespecial 2126	org/json/JSONObject:<init>	()V
-    //   4215: astore 19
-    //   4217: aload 19
-    //   4219: ldc_w 2128
-    //   4222: aload 18
-    //   4224: invokevirtual 2131	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   4227: pop
-    //   4228: aload 19
-    //   4230: ldc_w 2133
-    //   4233: aload 10
-    //   4235: invokevirtual 2131	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   4238: pop
-    //   4239: aload 19
-    //   4241: ldc_w 2135
-    //   4244: aload 17
-    //   4246: invokevirtual 2131	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   4249: pop
-    //   4250: aload 19
-    //   4252: ldc_w 2137
-    //   4255: invokestatic 2140	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTimeMillis	()J
-    //   4258: invokevirtual 2093	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
-    //   4261: pop
-    //   4262: iconst_0
-    //   4263: aload 19
-    //   4265: invokestatic 2143	obz:a	(ZLorg/json/JSONObject;)V
-    //   4268: aconst_null
-    //   4269: ldc_w 2145
-    //   4272: ldc 205
-    //   4274: aload_1
-    //   4275: getfield 1467	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
-    //   4278: ldc_w 2147
-    //   4281: ldc_w 2147
-    //   4284: iconst_0
-    //   4285: iconst_0
-    //   4286: ldc 205
-    //   4288: aload 15
-    //   4290: aload 16
-    //   4292: aload 19
-    //   4294: invokevirtual 2094	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   4297: iconst_0
-    //   4298: invokestatic 2152	ndn:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
-    //   4301: bipush 40
-    //   4303: aload 17
-    //   4305: invokestatic 2119	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   4308: invokevirtual 890	java/lang/Integer:intValue	()I
-    //   4311: aload 18
-    //   4313: invokestatic 2119	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   4316: invokevirtual 890	java/lang/Integer:intValue	()I
-    //   4319: aload 16
-    //   4321: invokestatic 2119	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   4324: invokevirtual 890	java/lang/Integer:intValue	()I
-    //   4327: invokestatic 2157	ohp:a	(IIII)V
-    //   4330: new 2159	com/tencent/biz/pubaccount/readinjoy/struct/ReportInfo
-    //   4333: dup
-    //   4334: invokespecial 2160	com/tencent/biz/pubaccount/readinjoy/struct/ReportInfo:<init>	()V
-    //   4337: astore 10
-    //   4339: aload 10
-    //   4341: invokestatic 2162	obz:a	()J
-    //   4344: putfield 2165	com/tencent/biz/pubaccount/readinjoy/struct/ReportInfo:mUin	J
-    //   4347: aload 10
-    //   4349: new 2167	java/math/BigInteger
-    //   4352: dup
-    //   4353: aload 15
-    //   4355: invokespecial 2168	java/math/BigInteger:<init>	(Ljava/lang/String;)V
-    //   4358: invokevirtual 2169	java/math/BigInteger:longValue	()J
-    //   4361: putfield 2172	com/tencent/biz/pubaccount/readinjoy/struct/ReportInfo:mSourceArticleId	J
-    //   4364: aload 10
-    //   4366: aload 18
-    //   4368: invokestatic 2119	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   4371: invokevirtual 890	java/lang/Integer:intValue	()I
-    //   4374: putfield 2175	com/tencent/biz/pubaccount/readinjoy/struct/ReportInfo:mAlgorithmId	I
-    //   4377: aload 10
-    //   4379: aload 16
-    //   4381: invokestatic 2119	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   4384: invokevirtual 890	java/lang/Integer:intValue	()I
-    //   4387: putfield 2178	com/tencent/biz/pubaccount/readinjoy/struct/ReportInfo:mStrategyId	I
-    //   4390: aload 10
-    //   4392: bipush 54
-    //   4394: putfield 2181	com/tencent/biz/pubaccount/readinjoy/struct/ReportInfo:mOperation	I
-    //   4397: aload 10
-    //   4399: aload 17
-    //   4401: invokestatic 2119	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   4404: invokevirtual 890	java/lang/Integer:intValue	()I
-    //   4407: putfield 2184	com/tencent/biz/pubaccount/readinjoy/struct/ReportInfo:mFolderStatus	I
-    //   4410: new 249	java/util/ArrayList
-    //   4413: dup
-    //   4414: invokespecial 250	java/util/ArrayList:<init>	()V
-    //   4417: astore 15
-    //   4419: aload 15
-    //   4421: aload 10
-    //   4423: invokeinterface 2185 2 0
-    //   4428: pop
-    //   4429: invokestatic 2190	ogy:a	()Logy;
-    //   4432: aload 15
-    //   4434: invokevirtual 2193	ogy:a	(Ljava/util/List;)V
-    //   4437: invokestatic 2196	bacm:e	()Landroid/graphics/Bitmap;
-    //   4440: astore 10
-    //   4442: invokestatic 853	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   4445: invokevirtual 1990	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   4448: ldc_w 2197
-    //   4451: invokevirtual 1995	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
-    //   4454: astore 15
-    //   4456: aload 15
-    //   4458: instanceof 2199
-    //   4461: ifeq +127 -> 4588
-    //   4464: aload 15
-    //   4466: checkcast 2199	android/graphics/drawable/BitmapDrawable
-    //   4469: invokevirtual 2202	android/graphics/drawable/BitmapDrawable:getBitmap	()Landroid/graphics/Bitmap;
-    //   4472: astore 10
-    //   4474: aload 10
-    //   4476: astore 15
-    //   4478: aload 11
-    //   4480: astore 16
-    //   4482: aload 12
-    //   4484: astore 11
-    //   4486: aload 14
-    //   4488: astore 10
-    //   4490: aload 13
-    //   4492: astore 12
-    //   4494: aload 16
-    //   4496: astore 13
-    //   4498: aload 15
-    //   4500: astore 14
-    //   4502: goto -3406 -> 1096
-    //   4505: new 2081	org/json/JSONObject
-    //   4508: dup
-    //   4509: invokespecial 2126	org/json/JSONObject:<init>	()V
-    //   4512: astore 10
-    //   4514: goto -646 -> 3868
-    //   4517: astore 10
-    //   4519: aload 10
-    //   4521: invokevirtual 2203	org/json/JSONException:printStackTrace	()V
-    //   4524: goto -634 -> 3890
-    //   4527: astore 10
-    //   4529: aload 10
-    //   4531: invokevirtual 2203	org/json/JSONException:printStackTrace	()V
-    //   4534: goto -97 -> 4437
-    //   4537: iload_3
-    //   4538: iconst_1
-    //   4539: iadd
-    //   4540: istore_3
-    //   4541: goto -387 -> 4154
-    //   4544: aload 15
-    //   4546: getfield 1298	com/tencent/mobileqq/data/MessageRecord:extInt	I
-    //   4549: iconst_5
-    //   4550: if_icmpne +756 -> 5306
-    //   4553: ldc 205
-    //   4555: astore 17
-    //   4557: ldc 205
-    //   4559: astore 18
-    //   4561: ldc_w 1044
-    //   4564: astore 15
-    //   4566: ldc 205
-    //   4568: astore 10
-    //   4570: ldc_w 1044
-    //   4573: astore 16
-    //   4575: goto -367 -> 4208
-    //   4578: astore 10
-    //   4580: aload 10
-    //   4582: invokevirtual 2204	java/lang/NumberFormatException:printStackTrace	()V
-    //   4585: goto -148 -> 4437
-    //   4588: aload 15
-    //   4590: instanceof 2206
-    //   4593: ifeq +710 -> 5303
-    //   4596: aload 15
-    //   4598: checkcast 2206	com/tencent/theme/SkinnableBitmapDrawable
-    //   4601: invokevirtual 2207	com/tencent/theme/SkinnableBitmapDrawable:getBitmap	()Landroid/graphics/Bitmap;
-    //   4604: astore 10
-    //   4606: goto -132 -> 4474
-    //   4609: aload_1
-    //   4610: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
-    //   4613: sipush 1001
-    //   4616: if_icmpeq +13 -> 4629
-    //   4619: aload_1
-    //   4620: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
-    //   4623: sipush 10002
-    //   4626: if_icmpne +69 -> 4695
-    //   4629: aload_1
-    //   4630: getfield 1436	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
-    //   4633: sipush -3001
-    //   4636: if_icmpne +59 -> 4695
-    //   4639: aload_0
-    //   4640: getfield 489	com/tencent/mobileqq/app/QQAppInterface:app	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   4643: invokevirtual 1643	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
-    //   4646: aload_1
-    //   4647: getfield 2210	com/tencent/mobileqq/app/message/QQMessageFacade$Message:action	Ljava/lang/String;
-    //   4650: aload_1
-    //   4651: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
-    //   4654: aload_1
-    //   4655: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
-    //   4658: invokestatic 2215	com/tencent/open/adapter/OpenAppClient:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;I)Landroid/content/Intent;
-    //   4661: ifnull -4491 -> 170
-    //   4664: aload 10
-    //   4666: astore 15
-    //   4668: aload 14
-    //   4670: astore 10
-    //   4672: aload 11
-    //   4674: astore 14
-    //   4676: aload 12
-    //   4678: astore 11
-    //   4680: aload 13
-    //   4682: astore 12
-    //   4684: aload 14
-    //   4686: astore 13
-    //   4688: aload 15
-    //   4690: astore 14
-    //   4692: goto -3596 -> 1096
-    //   4695: aload_1
-    //   4696: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
-    //   4699: sipush 1037
-    //   4702: if_icmpne +34 -> 4736
-    //   4705: aload 10
-    //   4707: astore 15
-    //   4709: aload 14
-    //   4711: astore 10
-    //   4713: aload 11
-    //   4715: astore 14
-    //   4717: aload 12
-    //   4719: astore 11
-    //   4721: aload 13
-    //   4723: astore 12
-    //   4725: aload 14
-    //   4727: astore 13
-    //   4729: aload 15
-    //   4731: astore 14
-    //   4733: goto -3637 -> 1096
-    //   4736: aload_0
-    //   4737: getfield 1739	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade	Lcom/tencent/mobileqq/app/message/QQMessageFacade;
-    //   4740: getfield 1742	com/tencent/mobileqq/app/message/QQMessageFacade:a	Lakdr;
-    //   4743: invokevirtual 1746	akdr:b	()I
-    //   4746: iconst_1
-    //   4747: if_icmple +304 -> 5051
-    //   4750: aload_1
-    //   4751: invokestatic 2216	befx:a	(Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
-    //   4754: ifne +192 -> 4946
-    //   4757: aload_0
-    //   4758: getfield 1739	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade	Lcom/tencent/mobileqq/app/message/QQMessageFacade;
-    //   4761: getfield 1742	com/tencent/mobileqq/app/message/QQMessageFacade:a	Lakdr;
-    //   4764: iconst_1
-    //   4765: invokevirtual 2219	akdr:a	(Z)I
-    //   4768: istore_3
-    //   4769: new 2221	java/lang/StringBuffer
-    //   4772: dup
-    //   4773: invokespecial 2222	java/lang/StringBuffer:<init>	()V
-    //   4776: astore 11
-    //   4778: aload 11
-    //   4780: aload_0
-    //   4781: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   4784: ldc_w 2223
-    //   4787: invokevirtual 1276	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   4790: iconst_1
-    //   4791: anewarray 211	java/lang/Object
-    //   4794: dup
-    //   4795: iconst_0
-    //   4796: aload_0
-    //   4797: getfield 1739	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade	Lcom/tencent/mobileqq/app/message/QQMessageFacade;
-    //   4800: getfield 1742	com/tencent/mobileqq/app/message/QQMessageFacade:a	Lakdr;
-    //   4803: iconst_1
-    //   4804: invokevirtual 2225	akdr:b	(Z)I
-    //   4807: invokestatic 2228	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   4810: aastore
-    //   4811: invokestatic 2232	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   4814: invokevirtual 2235	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   4817: pop
-    //   4818: iload_3
-    //   4819: ifeq -4649 -> 170
-    //   4822: iload_3
-    //   4823: sipush 1000
-    //   4826: if_icmple +97 -> 4923
-    //   4829: aload 11
-    //   4831: aload_0
-    //   4832: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   4835: ldc_w 2236
-    //   4838: invokevirtual 1276	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   4841: invokevirtual 2235	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   4844: pop
-    //   4845: new 734	android/content/Intent
-    //   4848: dup
-    //   4849: aload_0
-    //   4850: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   4853: ldc_w 1225
-    //   4856: invokespecial 742	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
-    //   4859: astore 10
-    //   4861: aload 10
-    //   4863: ldc_w 1204
-    //   4866: invokevirtual 911	android/content/Intent:addFlags	(I)Landroid/content/Intent;
-    //   4869: pop
-    //   4870: aload 10
-    //   4872: ldc_w 1368
-    //   4875: getstatic 1371	com/tencent/mobileqq/activity/MainFragment:jdField_b_of_type_Int	I
-    //   4878: invokevirtual 920	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
-    //   4881: pop
-    //   4882: aload_0
-    //   4883: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   4886: ldc_w 2237
-    //   4889: invokevirtual 1276	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   4892: astore 13
-    //   4894: aload 11
-    //   4896: invokevirtual 2238	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   4899: astore 14
-    //   4901: aconst_null
-    //   4902: astore 15
-    //   4904: aload 12
-    //   4906: astore 11
-    //   4908: aload 13
-    //   4910: astore 12
-    //   4912: aload 14
-    //   4914: astore 13
-    //   4916: aload 15
-    //   4918: astore 14
-    //   4920: goto -3824 -> 1096
-    //   4923: aload 11
-    //   4925: iload_3
-    //   4926: invokevirtual 2241	java/lang/StringBuffer:append	(I)Ljava/lang/StringBuffer;
-    //   4929: aload_0
-    //   4930: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   4933: ldc_w 2069
-    //   4936: invokevirtual 1276	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   4939: invokevirtual 2235	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   4942: pop
-    //   4943: goto -98 -> 4845
-    //   4946: aload 14
-    //   4948: ldc_w 2243
-    //   4951: ldc_w 2245
-    //   4954: invokevirtual 1090	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   4957: pop
-    //   4958: aload_1
-    //   4959: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
-    //   4962: ifne +41 -> 5003
-    //   4965: aload_0
-    //   4966: aload_1
-    //   4967: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
-    //   4970: iconst_1
-    //   4971: invokevirtual 1749	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/lang/String;Z)Landroid/graphics/Bitmap;
-    //   4974: astore 15
-    //   4976: aload 14
-    //   4978: astore 10
-    //   4980: aload 11
-    //   4982: astore 14
-    //   4984: aload 12
-    //   4986: astore 11
-    //   4988: aload 13
-    //   4990: astore 12
-    //   4992: aload 14
-    //   4994: astore 13
-    //   4996: aload 15
+    //   3891: invokevirtual 1417	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   3894: aload 14
+    //   3896: getfield 1573	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   3899: aload 14
+    //   3901: getfield 1576	com/tencent/mobileqq/data/MessageRecord:istroop	I
+    //   3904: aload 14
+    //   3906: getfield 2065	com/tencent/mobileqq/data/MessageRecord:uniseq	J
+    //   3909: ldc_w 2066
+    //   3912: aload 14
+    //   3914: getfield 2052	com/tencent/mobileqq/data/MessageRecord:extStr	Ljava/lang/String;
+    //   3917: invokevirtual 2069	com/tencent/mobileqq/app/message/QQMessageFacade:a	(Ljava/lang/String;IJLjava/lang/String;Ljava/lang/Object;)V
+    //   3920: aload 14
+    //   3922: instanceof 1267
+    //   3925: ifeq +1530 -> 5455
+    //   3928: aload 14
+    //   3930: checkcast 1267	com/tencent/mobileqq/data/MessageForStructing
+    //   3933: astore 9
+    //   3935: aload 9
+    //   3937: astore 17
+    //   3939: aload 9
+    //   3941: getfield 1276	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   3944: ifnonnull +12 -> 3956
+    //   3947: aload 9
+    //   3949: invokevirtual 1279	com/tencent/mobileqq/data/MessageForStructing:parse	()V
+    //   3952: aload 9
+    //   3954: astore 17
+    //   3956: aload 17
+    //   3958: ifnull +564 -> 4522
+    //   3961: aload 17
+    //   3963: getfield 2070	com/tencent/mobileqq/data/MessageForStructing:extInt	I
+    //   3966: iconst_1
+    //   3967: if_icmpne +555 -> 4522
+    //   3970: aload 17
+    //   3972: getfield 1276	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   3975: ifnull +1427 -> 5402
+    //   3978: aload 17
+    //   3980: getfield 1276	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   3983: getfield 1284	com/tencent/mobileqq/structmsg/AbsStructMsg:mArticleIds	Ljava/lang/String;
+    //   3986: invokestatic 1206	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   3989: ifne +1459 -> 5448
+    //   3992: aload 17
+    //   3994: getfield 1276	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   3997: getfield 1284	com/tencent/mobileqq/structmsg/AbsStructMsg:mArticleIds	Ljava/lang/String;
+    //   4000: ldc_w 415
+    //   4003: invokevirtual 419	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   4006: iconst_0
+    //   4007: aaload
+    //   4008: astore 9
+    //   4010: aload 17
+    //   4012: getfield 1276	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   4015: getfield 2073	com/tencent/mobileqq/structmsg/AbsStructMsg:mStrategyIds	Ljava/lang/String;
+    //   4018: ifnull +1422 -> 5440
+    //   4021: aload 17
+    //   4023: getfield 1276	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   4026: getfield 2073	com/tencent/mobileqq/structmsg/AbsStructMsg:mStrategyIds	Ljava/lang/String;
+    //   4029: ldc_w 415
+    //   4032: invokevirtual 419	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   4035: iconst_0
+    //   4036: aaload
+    //   4037: astore 14
+    //   4039: aload 17
+    //   4041: getfield 1276	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   4044: getfield 2076	com/tencent/mobileqq/structmsg/AbsStructMsg:mAlgorithmIds	Ljava/lang/String;
+    //   4047: ifnull +1386 -> 5433
+    //   4050: aload 17
+    //   4052: getfield 1276	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   4055: getfield 2076	com/tencent/mobileqq/structmsg/AbsStructMsg:mAlgorithmIds	Ljava/lang/String;
+    //   4058: ldc_w 415
+    //   4061: invokevirtual 419	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   4064: iconst_0
+    //   4065: aaload
+    //   4066: astore 15
+    //   4068: aload 17
+    //   4070: getfield 1276	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   4073: getfield 2079	com/tencent/mobileqq/structmsg/AbsStructMsg:mExtraData	Ljava/lang/String;
+    //   4076: astore 16
+    //   4078: aload 16
+    //   4080: ifnull +42 -> 4122
+    //   4083: aload 13
+    //   4085: ldc_w 2081
+    //   4088: new 1148	org/json/JSONObject
+    //   4091: dup
+    //   4092: aload 17
+    //   4094: getfield 1276	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   4097: getfield 2079	com/tencent/mobileqq/structmsg/AbsStructMsg:mExtraData	Ljava/lang/String;
+    //   4100: invokespecial 1152	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   4103: ldc_w 2083
+    //   4106: ldc_w 990
+    //   4109: invokevirtual 2085	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   4112: invokestatic 2088	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   4115: invokevirtual 826	java/lang/Integer:intValue	()I
+    //   4118: invokevirtual 863	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   4121: pop
+    //   4122: aload 17
+    //   4124: getfield 1276	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   4127: getfield 2091	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgActionData	Ljava/lang/String;
+    //   4130: invokestatic 1206	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4133: ifne +1293 -> 5426
+    //   4136: new 1148	org/json/JSONObject
+    //   4139: dup
+    //   4140: aload 17
+    //   4142: getfield 1276	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   4145: getfield 2091	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgActionData	Ljava/lang/String;
+    //   4148: invokespecial 1152	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   4151: ldc_w 2093
+    //   4154: invokevirtual 1158	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   4157: astore 16
+    //   4159: aload 17
+    //   4161: getfield 1276	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   4164: getfield 2096	com/tencent/mobileqq/structmsg/AbsStructMsg:reportEventFolderStatusValue	Ljava/lang/String;
+    //   4167: astore 19
+    //   4169: aload 16
+    //   4171: astore 18
+    //   4173: aload 15
+    //   4175: astore 17
+    //   4177: aload 19
+    //   4179: astore 16
+    //   4181: aload 14
+    //   4183: astore 15
+    //   4185: aload 9
+    //   4187: astore 14
+    //   4189: aload 18
+    //   4191: astore 9
+    //   4193: new 1148	org/json/JSONObject
+    //   4196: dup
+    //   4197: invokespecial 2097	org/json/JSONObject:<init>	()V
+    //   4200: astore 18
+    //   4202: aload 18
+    //   4204: ldc_w 2099
+    //   4207: aload 17
+    //   4209: invokevirtual 2102	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   4212: pop
+    //   4213: aload 18
+    //   4215: ldc_w 2104
+    //   4218: aload 9
+    //   4220: invokevirtual 2102	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   4223: pop
+    //   4224: aload 18
+    //   4226: ldc_w 2106
+    //   4229: aload 16
+    //   4231: invokevirtual 2102	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   4234: pop
+    //   4235: aload 18
+    //   4237: ldc_w 2108
+    //   4240: invokestatic 2111	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTimeMillis	()J
+    //   4243: invokevirtual 2063	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   4246: pop
+    //   4247: iconst_0
+    //   4248: aload 18
+    //   4250: invokestatic 2114	onk:a	(ZLorg/json/JSONObject;)V
+    //   4253: aconst_null
+    //   4254: ldc_w 2116
+    //   4257: ldc 206
+    //   4259: aload_1
+    //   4260: getfield 1445	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
+    //   4263: ldc_w 2118
+    //   4266: ldc_w 2118
+    //   4269: iconst_0
+    //   4270: iconst_0
+    //   4271: ldc 206
+    //   4273: aload 14
+    //   4275: aload 15
+    //   4277: aload 18
+    //   4279: invokevirtual 2064	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   4282: iconst_0
+    //   4283: invokestatic 2123	noo:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
+    //   4286: bipush 40
+    //   4288: aload 16
+    //   4290: invokestatic 2088	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   4293: invokevirtual 826	java/lang/Integer:intValue	()I
+    //   4296: aload 17
+    //   4298: invokestatic 2088	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   4301: invokevirtual 826	java/lang/Integer:intValue	()I
+    //   4304: aload 15
+    //   4306: invokestatic 2088	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   4309: invokevirtual 826	java/lang/Integer:intValue	()I
+    //   4312: invokestatic 2128	ota:a	(IIII)V
+    //   4315: new 2130	com/tencent/biz/pubaccount/readinjoy/struct/ReportInfo
+    //   4318: dup
+    //   4319: invokespecial 2131	com/tencent/biz/pubaccount/readinjoy/struct/ReportInfo:<init>	()V
+    //   4322: astore 9
+    //   4324: aload 9
+    //   4326: invokestatic 2133	onk:a	()J
+    //   4329: putfield 2136	com/tencent/biz/pubaccount/readinjoy/struct/ReportInfo:mUin	J
+    //   4332: aload 9
+    //   4334: new 2138	java/math/BigInteger
+    //   4337: dup
+    //   4338: aload 14
+    //   4340: invokespecial 2139	java/math/BigInteger:<init>	(Ljava/lang/String;)V
+    //   4343: invokevirtual 2140	java/math/BigInteger:longValue	()J
+    //   4346: putfield 2143	com/tencent/biz/pubaccount/readinjoy/struct/ReportInfo:mSourceArticleId	J
+    //   4349: aload 9
+    //   4351: aload 17
+    //   4353: invokestatic 2088	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   4356: invokevirtual 826	java/lang/Integer:intValue	()I
+    //   4359: putfield 2146	com/tencent/biz/pubaccount/readinjoy/struct/ReportInfo:mAlgorithmId	I
+    //   4362: aload 9
+    //   4364: aload 15
+    //   4366: invokestatic 2088	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   4369: invokevirtual 826	java/lang/Integer:intValue	()I
+    //   4372: putfield 2149	com/tencent/biz/pubaccount/readinjoy/struct/ReportInfo:mStrategyId	I
+    //   4375: aload 9
+    //   4377: bipush 54
+    //   4379: putfield 2152	com/tencent/biz/pubaccount/readinjoy/struct/ReportInfo:mOperation	I
+    //   4382: aload 9
+    //   4384: aload 16
+    //   4386: invokestatic 2088	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   4389: invokevirtual 826	java/lang/Integer:intValue	()I
+    //   4392: putfield 2155	com/tencent/biz/pubaccount/readinjoy/struct/ReportInfo:mFolderStatus	I
+    //   4395: new 250	java/util/ArrayList
+    //   4398: dup
+    //   4399: invokespecial 251	java/util/ArrayList:<init>	()V
+    //   4402: astore 14
+    //   4404: aload 14
+    //   4406: aload 9
+    //   4408: invokeinterface 2156 2 0
+    //   4413: pop
+    //   4414: invokestatic 2161	osj:a	()Losj;
+    //   4417: aload 14
+    //   4419: invokevirtual 2164	osj:a	(Ljava/util/List;)V
+    //   4422: invokestatic 2167	bbdr:e	()Landroid/graphics/Bitmap;
+    //   4425: astore 9
+    //   4427: invokestatic 789	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   4430: invokevirtual 1963	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   4433: ldc_w 2168
+    //   4436: invokevirtual 1968	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   4439: astore 14
+    //   4441: aload 14
+    //   4443: instanceof 2170
+    //   4446: ifeq +120 -> 4566
+    //   4449: aload 14
+    //   4451: checkcast 2170	android/graphics/drawable/BitmapDrawable
+    //   4454: invokevirtual 2173	android/graphics/drawable/BitmapDrawable:getBitmap	()Landroid/graphics/Bitmap;
+    //   4457: astore 9
+    //   4459: aload 9
+    //   4461: astore 14
+    //   4463: aload 10
+    //   4465: astore 15
+    //   4467: aload 11
+    //   4469: astore 10
+    //   4471: aload 13
+    //   4473: astore 9
+    //   4475: aload 12
+    //   4477: astore 11
+    //   4479: aload 15
+    //   4481: astore 12
+    //   4483: aload 14
+    //   4485: astore 13
+    //   4487: goto -3391 -> 1096
+    //   4490: new 1148	org/json/JSONObject
+    //   4493: dup
+    //   4494: invokespecial 2097	org/json/JSONObject:<init>	()V
+    //   4497: astore 9
+    //   4499: goto -631 -> 3868
+    //   4502: astore 9
+    //   4504: aload 9
+    //   4506: invokevirtual 2174	org/json/JSONException:printStackTrace	()V
+    //   4509: goto -619 -> 3890
+    //   4512: astore 9
+    //   4514: aload 9
+    //   4516: invokevirtual 2174	org/json/JSONException:printStackTrace	()V
+    //   4519: goto -97 -> 4422
+    //   4522: aload 14
+    //   4524: getfield 1272	com/tencent/mobileqq/data/MessageRecord:extInt	I
+    //   4527: iconst_5
+    //   4528: if_icmpne +874 -> 5402
+    //   4531: ldc 206
+    //   4533: astore 16
+    //   4535: ldc 206
+    //   4537: astore 17
+    //   4539: ldc_w 990
+    //   4542: astore 14
+    //   4544: ldc 206
+    //   4546: astore 9
+    //   4548: ldc_w 990
+    //   4551: astore 15
+    //   4553: goto -360 -> 4193
+    //   4556: astore 9
+    //   4558: aload 9
+    //   4560: invokevirtual 2175	java/lang/NumberFormatException:printStackTrace	()V
+    //   4563: goto -141 -> 4422
+    //   4566: aload 14
+    //   4568: instanceof 2177
+    //   4571: ifeq +828 -> 5399
+    //   4574: aload 14
+    //   4576: checkcast 2177	com/tencent/theme/SkinnableBitmapDrawable
+    //   4579: invokevirtual 2178	com/tencent/theme/SkinnableBitmapDrawable:getBitmap	()Landroid/graphics/Bitmap;
+    //   4582: astore 9
+    //   4584: goto -125 -> 4459
+    //   4587: aload_1
+    //   4588: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   4591: sipush 1001
+    //   4594: if_icmpeq +13 -> 4607
+    //   4597: aload_1
+    //   4598: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   4601: sipush 10002
+    //   4604: if_icmpne +69 -> 4673
+    //   4607: aload_1
+    //   4608: getfield 1414	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
+    //   4611: sipush -3001
+    //   4614: if_icmpne +59 -> 4673
+    //   4617: aload_0
+    //   4618: getfield 490	com/tencent/mobileqq/app/QQAppInterface:app	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   4621: invokevirtual 1619	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
+    //   4624: aload_1
+    //   4625: getfield 2181	com/tencent/mobileqq/app/message/QQMessageFacade$Message:action	Ljava/lang/String;
+    //   4628: aload_1
+    //   4629: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   4632: aload_1
+    //   4633: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   4636: invokestatic 2186	com/tencent/open/adapter/OpenAppClient:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;I)Landroid/content/Intent;
+    //   4639: ifnull -4469 -> 170
+    //   4642: aload 9
+    //   4644: astore 14
+    //   4646: aload 13
+    //   4648: astore 9
+    //   4650: aload 10
+    //   4652: astore 13
+    //   4654: aload 11
+    //   4656: astore 10
+    //   4658: aload 12
+    //   4660: astore 11
+    //   4662: aload 13
+    //   4664: astore 12
+    //   4666: aload 14
+    //   4668: astore 13
+    //   4670: goto -3574 -> 1096
+    //   4673: aload_1
+    //   4674: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   4677: sipush 1037
+    //   4680: if_icmpne +34 -> 4714
+    //   4683: aload 9
+    //   4685: astore 14
+    //   4687: aload 13
+    //   4689: astore 9
+    //   4691: aload 10
+    //   4693: astore 13
+    //   4695: aload 11
+    //   4697: astore 10
+    //   4699: aload 12
+    //   4701: astore 11
+    //   4703: aload 13
+    //   4705: astore 12
+    //   4707: aload 14
+    //   4709: astore 13
+    //   4711: goto -3615 -> 1096
+    //   4714: aload_1
+    //   4715: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   4718: sipush 7225
+    //   4721: if_icmpne +111 -> 4832
+    //   4724: invokestatic 2167	bbdr:e	()Landroid/graphics/Bitmap;
+    //   4727: astore 9
+    //   4729: invokestatic 789	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   4732: invokevirtual 1963	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   4735: ldc_w 2168
+    //   4738: invokevirtual 1968	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   4741: astore 12
+    //   4743: aload 12
+    //   4745: instanceof 2170
+    //   4748: ifeq +63 -> 4811
+    //   4751: aload 12
+    //   4753: checkcast 2170	android/graphics/drawable/BitmapDrawable
+    //   4756: invokevirtual 2173	android/graphics/drawable/BitmapDrawable:getBitmap	()Landroid/graphics/Bitmap;
+    //   4759: astore 9
+    //   4761: aload_0
+    //   4762: sipush 162
+    //   4765: invokevirtual 691	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   4768: checkcast 1240	com/tencent/biz/pubaccount/readinjoy/engine/KandianMergeManager
+    //   4771: astore 12
+    //   4773: invokestatic 789	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   4776: ldc_w 1136
+    //   4779: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   4782: astore 15
+    //   4784: aload 9
+    //   4786: astore 14
+    //   4788: aload 10
+    //   4790: astore 12
+    //   4792: aload 11
+    //   4794: astore 10
+    //   4796: aload 13
+    //   4798: astore 9
+    //   4800: aload 15
+    //   4802: astore 11
+    //   4804: aload 14
+    //   4806: astore 13
+    //   4808: goto -3712 -> 1096
+    //   4811: aload 12
+    //   4813: instanceof 2177
+    //   4816: ifeq -55 -> 4761
+    //   4819: aload 12
+    //   4821: checkcast 2177	com/tencent/theme/SkinnableBitmapDrawable
+    //   4824: invokevirtual 2178	com/tencent/theme/SkinnableBitmapDrawable:getBitmap	()Landroid/graphics/Bitmap;
+    //   4827: astore 9
+    //   4829: goto -68 -> 4761
+    //   4832: aload_0
+    //   4833: getfield 1715	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade	Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   4836: getfield 1718	com/tencent/mobileqq/app/message/QQMessageFacade:a	Laksd;
+    //   4839: invokevirtual 1722	aksd:b	()I
+    //   4842: iconst_1
+    //   4843: if_icmple +304 -> 5147
+    //   4846: aload_1
+    //   4847: invokestatic 2187	bfnr:a	(Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
+    //   4850: ifne +192 -> 5042
+    //   4853: aload_0
+    //   4854: getfield 1715	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade	Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   4857: getfield 1718	com/tencent/mobileqq/app/message/QQMessageFacade:a	Laksd;
+    //   4860: iconst_1
+    //   4861: invokevirtual 2190	aksd:a	(Z)I
+    //   4864: istore_3
+    //   4865: new 2192	java/lang/StringBuffer
+    //   4868: dup
+    //   4869: invokespecial 2193	java/lang/StringBuffer:<init>	()V
+    //   4872: astore 10
+    //   4874: aload 10
+    //   4876: aload_0
+    //   4877: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   4880: ldc_w 2194
+    //   4883: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   4886: iconst_1
+    //   4887: anewarray 212	java/lang/Object
+    //   4890: dup
+    //   4891: iconst_0
+    //   4892: aload_0
+    //   4893: getfield 1715	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade	Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   4896: getfield 1718	com/tencent/mobileqq/app/message/QQMessageFacade:a	Laksd;
+    //   4899: iconst_1
+    //   4900: invokevirtual 2196	aksd:b	(Z)I
+    //   4903: invokestatic 2199	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   4906: aastore
+    //   4907: invokestatic 2203	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   4910: invokevirtual 2206	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   4913: pop
+    //   4914: iload_3
+    //   4915: ifeq -4745 -> 170
+    //   4918: iload_3
+    //   4919: sipush 1000
+    //   4922: if_icmple +97 -> 5019
+    //   4925: aload 10
+    //   4927: aload_0
+    //   4928: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   4931: ldc_w 2207
+    //   4934: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   4937: invokevirtual 2206	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   4940: pop
+    //   4941: new 843	android/content/Intent
+    //   4944: dup
+    //   4945: aload_0
+    //   4946: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   4949: ldc_w 1212
+    //   4952: invokespecial 848	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   4955: astore 9
+    //   4957: aload 9
+    //   4959: ldc_w 1190
+    //   4962: invokevirtual 853	android/content/Intent:addFlags	(I)Landroid/content/Intent;
+    //   4965: pop
+    //   4966: aload 9
+    //   4968: ldc_w 1346
+    //   4971: getstatic 1349	com/tencent/mobileqq/activity/MainFragment:jdField_b_of_type_Int	I
+    //   4974: invokevirtual 863	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   4977: pop
+    //   4978: aload_0
+    //   4979: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   4982: ldc_w 2208
+    //   4985: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   4988: astore 12
+    //   4990: aload 10
+    //   4992: invokevirtual 2209	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   4995: astore 13
+    //   4997: aconst_null
     //   4998: astore 14
-    //   5000: goto -3904 -> 1096
-    //   5003: aload_1
-    //   5004: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
-    //   5007: iconst_1
-    //   5008: if_icmpne +116 -> 5124
-    //   5011: aload_0
-    //   5012: aload_1
-    //   5013: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
-    //   5016: iconst_3
-    //   5017: iconst_0
-    //   5018: iconst_0
-    //   5019: invokevirtual 1977	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/lang/String;BZZ)Landroid/graphics/Bitmap;
-    //   5022: astore 15
-    //   5024: aload 14
-    //   5026: astore 10
-    //   5028: aload 11
-    //   5030: astore 14
-    //   5032: aload 12
-    //   5034: astore 11
-    //   5036: aload 13
-    //   5038: astore 12
-    //   5040: aload 14
-    //   5042: astore 13
-    //   5044: aload 15
-    //   5046: astore 14
-    //   5048: goto -3952 -> 1096
-    //   5051: aload_1
-    //   5052: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
-    //   5055: ifne +69 -> 5124
-    //   5058: aload 14
-    //   5060: ldc_w 1803
-    //   5063: iconst_1
-    //   5064: invokevirtual 1149	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
-    //   5067: pop
-    //   5068: aload 14
-    //   5070: ldc_w 1805
-    //   5073: aload_1
-    //   5074: getfield 1808	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgUid	J
-    //   5077: invokevirtual 1328	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
-    //   5080: pop
-    //   5081: aload 14
-    //   5083: ldc_w 1810
-    //   5086: aload_1
-    //   5087: getfield 1813	com/tencent/mobileqq/app/message/QQMessageFacade$Message:shmsgseq	J
-    //   5090: invokevirtual 1328	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
-    //   5093: pop
-    //   5094: aload 14
-    //   5096: ldc_w 2243
-    //   5099: ldc_w 2245
-    //   5102: invokevirtual 1090	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   5105: pop
-    //   5106: aload_0
-    //   5107: aload_1
-    //   5108: invokestatic 1917	ascj:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
-    //   5111: ifeq +13 -> 5124
-    //   5114: aload 14
-    //   5116: ldc_w 2247
-    //   5119: iconst_1
-    //   5120: invokevirtual 1149	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
-    //   5123: pop
+    //   5000: aload 11
+    //   5002: astore 10
+    //   5004: aload 12
+    //   5006: astore 11
+    //   5008: aload 13
+    //   5010: astore 12
+    //   5012: aload 14
+    //   5014: astore 13
+    //   5016: goto -3920 -> 1096
+    //   5019: aload 10
+    //   5021: iload_3
+    //   5022: invokevirtual 2212	java/lang/StringBuffer:append	(I)Ljava/lang/StringBuffer;
+    //   5025: aload_0
+    //   5026: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   5029: ldc_w 2042
+    //   5032: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   5035: invokevirtual 2206	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   5038: pop
+    //   5039: goto -98 -> 4941
+    //   5042: aload 13
+    //   5044: ldc_w 2214
+    //   5047: ldc_w 2216
+    //   5050: invokevirtual 1039	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   5053: pop
+    //   5054: aload_1
+    //   5055: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   5058: ifne +41 -> 5099
+    //   5061: aload_0
+    //   5062: aload_1
+    //   5063: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   5066: iconst_1
+    //   5067: invokevirtual 1725	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/lang/String;Z)Landroid/graphics/Bitmap;
+    //   5070: astore 14
+    //   5072: aload 13
+    //   5074: astore 9
+    //   5076: aload 10
+    //   5078: astore 13
+    //   5080: aload 11
+    //   5082: astore 10
+    //   5084: aload 12
+    //   5086: astore 11
+    //   5088: aload 13
+    //   5090: astore 12
+    //   5092: aload 14
+    //   5094: astore 13
+    //   5096: goto -4000 -> 1096
+    //   5099: aload_1
+    //   5100: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   5103: iconst_1
+    //   5104: if_icmpne +116 -> 5220
+    //   5107: aload_0
+    //   5108: aload_1
+    //   5109: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   5112: iconst_3
+    //   5113: iconst_0
+    //   5114: iconst_0
+    //   5115: invokevirtual 1950	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/lang/String;BZZ)Landroid/graphics/Bitmap;
+    //   5118: astore 14
+    //   5120: aload 13
+    //   5122: astore 9
     //   5124: aload 10
-    //   5126: astore 15
-    //   5128: aload 14
+    //   5126: astore 13
+    //   5128: aload 11
     //   5130: astore 10
-    //   5132: aload 11
-    //   5134: astore 14
-    //   5136: aload 12
-    //   5138: astore 11
-    //   5140: aload 13
-    //   5142: astore 12
-    //   5144: aload 14
-    //   5146: astore 13
-    //   5148: aload 15
-    //   5150: astore 14
-    //   5152: goto -4056 -> 1096
-    //   5155: aload_0
-    //   5156: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   5159: invokestatic 2251	bahj:a	(Landroid/content/Context;)Z
-    //   5162: ifeq +117 -> 5279
-    //   5165: aload_0
-    //   5166: bipush 72
-    //   5168: invokevirtual 687	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   5171: checkcast 2253	ario
-    //   5174: astore 15
-    //   5176: invokestatic 2256	com/tencent/mobileqq/activity/NotifyPushSettingActivity:a	()Z
-    //   5179: ifeq +71 -> 5250
-    //   5182: iconst_0
-    //   5183: istore_2
-    //   5184: aload_0
-    //   5185: invokestatic 1762	alrm:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lalrm;
-    //   5188: aload_1
-    //   5189: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
-    //   5192: aload_1
-    //   5193: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
-    //   5196: invokevirtual 2259	alrm:a	(Ljava/lang/String;I)Z
-    //   5199: istore 5
-    //   5201: iload_2
-    //   5202: ifeq -4069 -> 1133
-    //   5205: iload 5
-    //   5207: ifeq -4074 -> 1133
-    //   5210: invokestatic 407	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5213: ifeq +13 -> 5226
-    //   5216: ldc_w 2261
-    //   5219: iconst_2
-    //   5220: ldc_w 2263
-    //   5223: invokestatic 500	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   5226: aload 15
-    //   5228: aload_0
-    //   5229: aload_1
-    //   5230: iconst_0
-    //   5231: aload_1
-    //   5232: getfield 1064	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
-    //   5235: aload_1
-    //   5236: getfield 1464	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
-    //   5239: aload 10
-    //   5241: invokestatic 1603	arik:a	(Ljava/lang/String;ILandroid/content/Intent;)I
-    //   5244: invokevirtual 2266	ario:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/data/MessageRecord;ZI)V
-    //   5247: goto -4114 -> 1133
-    //   5250: aload_0
-    //   5251: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   5254: aload_0
-    //   5255: invokevirtual 711	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   5258: aload_0
-    //   5259: invokevirtual 998	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   5262: ldc_w 2267
-    //   5265: invokevirtual 1276	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   5268: ldc_w 2269
-    //   5271: iconst_1
-    //   5272: invokestatic 2272	com/tencent/mobileqq/msf/sdk/SettingCloneUtil:readValue	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Z
-    //   5275: istore_2
-    //   5276: goto -92 -> 5184
-    //   5279: invokestatic 407	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5282: ifeq -4149 -> 1133
-    //   5285: ldc_w 409
-    //   5288: iconst_2
-    //   5289: ldc_w 2274
-    //   5292: invokestatic 500	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   5295: goto -4162 -> 1133
-    //   5298: astore 17
-    //   5300: goto -1183 -> 4117
-    //   5303: goto -829 -> 4474
-    //   5306: ldc 205
-    //   5308: astore 10
-    //   5310: ldc 205
-    //   5312: astore 18
-    //   5314: ldc_w 1044
-    //   5317: astore 16
-    //   5319: ldc 205
-    //   5321: astore 15
-    //   5323: ldc 205
-    //   5325: astore 17
-    //   5327: goto -1119 -> 4208
-    //   5330: ldc 205
-    //   5332: astore 17
-    //   5334: goto -1160 -> 4174
-    //   5337: ldc 205
-    //   5339: astore 16
-    //   5341: goto -1278 -> 4063
-    //   5344: ldc_w 1044
-    //   5347: astore 15
-    //   5349: goto -1315 -> 4034
-    //   5352: ldc 205
-    //   5354: astore 10
-    //   5356: goto -1351 -> 4005
-    //   5359: aconst_null
-    //   5360: astore 18
-    //   5362: goto -1411 -> 3951
-    //   5365: aload 13
-    //   5367: astore 12
-    //   5369: goto -4335 -> 1034
-    //   5372: goto -4483 -> 889
-    //   5375: aload 12
-    //   5377: astore 13
-    //   5379: aload 11
-    //   5381: astore 12
-    //   5383: aload 13
-    //   5385: astore 11
-    //   5387: goto -4580 -> 807
-    //   5390: aload 11
-    //   5392: astore 16
-    //   5394: goto -4648 -> 746
-    //   5397: aload 10
-    //   5399: astore 11
-    //   5401: goto -2141 -> 3260
-    //   5404: aload 11
-    //   5406: astore 12
-    //   5408: aload 10
-    //   5410: astore 11
-    //   5412: aload 16
-    //   5414: astore 10
-    //   5416: goto -4749 -> 667
-    //   5419: aconst_null
-    //   5420: astore 12
-    //   5422: goto -3542 -> 1880
-    //   5425: aload 11
-    //   5427: astore 12
-    //   5429: aload 10
-    //   5431: astore 11
-    //   5433: aload 16
-    //   5435: astore 10
-    //   5437: goto -4770 -> 667
-    //   5440: goto -5010 -> 430
-    //   5443: goto -3794 -> 1649
-    //   5446: goto -5114 -> 332
-    //   5449: goto -1498 -> 3951
+    //   5132: aload 12
+    //   5134: astore 11
+    //   5136: aload 13
+    //   5138: astore 12
+    //   5140: aload 14
+    //   5142: astore 13
+    //   5144: goto -4048 -> 1096
+    //   5147: aload_1
+    //   5148: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   5151: ifne +69 -> 5220
+    //   5154: aload 13
+    //   5156: ldc_w 1776
+    //   5159: iconst_1
+    //   5160: invokevirtual 1098	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   5163: pop
+    //   5164: aload 13
+    //   5166: ldc_w 1778
+    //   5169: aload_1
+    //   5170: getfield 1781	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgUid	J
+    //   5173: invokevirtual 1302	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
+    //   5176: pop
+    //   5177: aload 13
+    //   5179: ldc_w 1783
+    //   5182: aload_1
+    //   5183: getfield 1786	com/tencent/mobileqq/app/message/QQMessageFacade$Message:shmsgseq	J
+    //   5186: invokevirtual 1302	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
+    //   5189: pop
+    //   5190: aload 13
+    //   5192: ldc_w 2214
+    //   5195: ldc_w 2216
+    //   5198: invokevirtual 1039	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   5201: pop
+    //   5202: aload_0
+    //   5203: aload_1
+    //   5204: invokestatic 1890	asyn:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
+    //   5207: ifeq +13 -> 5220
+    //   5210: aload 13
+    //   5212: ldc_w 2218
+    //   5215: iconst_1
+    //   5216: invokevirtual 1098	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   5219: pop
+    //   5220: aload 9
+    //   5222: astore 14
+    //   5224: aload 13
+    //   5226: astore 9
+    //   5228: aload 10
+    //   5230: astore 13
+    //   5232: aload 11
+    //   5234: astore 10
+    //   5236: aload 12
+    //   5238: astore 11
+    //   5240: aload 13
+    //   5242: astore 12
+    //   5244: aload 14
+    //   5246: astore 13
+    //   5248: goto -4152 -> 1096
+    //   5251: aload_0
+    //   5252: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   5255: invokestatic 2222	bbio:a	(Landroid/content/Context;)Z
+    //   5258: ifeq +117 -> 5375
+    //   5261: aload_0
+    //   5262: bipush 72
+    //   5264: invokevirtual 691	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   5267: checkcast 2224	aseq
+    //   5270: astore 14
+    //   5272: invokestatic 2227	com/tencent/mobileqq/activity/NotifyPushSettingActivity:a	()Z
+    //   5275: ifeq +71 -> 5346
+    //   5278: iconst_0
+    //   5279: istore_2
+    //   5280: aload_0
+    //   5281: invokestatic 1738	amgc:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lamgc;
+    //   5284: aload_1
+    //   5285: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   5288: aload_1
+    //   5289: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   5292: invokevirtual 2230	amgc:a	(Ljava/lang/String;I)Z
+    //   5295: istore 4
+    //   5297: iload_2
+    //   5298: ifeq -4165 -> 1133
+    //   5301: iload 4
+    //   5303: ifeq -4170 -> 1133
+    //   5306: invokestatic 407	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5309: ifeq +13 -> 5322
+    //   5312: ldc_w 2232
+    //   5315: iconst_2
+    //   5316: ldc_w 2234
+    //   5319: invokestatic 501	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   5322: aload 14
+    //   5324: aload_0
+    //   5325: aload_1
+    //   5326: iconst_0
+    //   5327: aload_1
+    //   5328: getfield 1012	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
+    //   5331: aload_1
+    //   5332: getfield 1442	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   5335: aload 9
+    //   5337: invokestatic 1581	asem:a	(Ljava/lang/String;ILandroid/content/Intent;)I
+    //   5340: invokevirtual 2237	aseq:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/data/MessageRecord;ZI)V
+    //   5343: goto -4210 -> 1133
+    //   5346: aload_0
+    //   5347: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   5350: aload_0
+    //   5351: invokevirtual 715	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   5354: aload_0
+    //   5355: invokevirtual 944	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   5358: ldc_w 2238
+    //   5361: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   5364: ldc_w 2240
+    //   5367: iconst_1
+    //   5368: invokestatic 2243	com/tencent/mobileqq/msf/sdk/SettingCloneUtil:readValue	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Z
+    //   5371: istore_2
+    //   5372: goto -92 -> 5280
+    //   5375: invokestatic 407	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5378: ifeq -4245 -> 1133
+    //   5381: ldc_w 409
+    //   5384: iconst_2
+    //   5385: ldc_w 2245
+    //   5388: invokestatic 501	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   5391: goto -4258 -> 1133
+    //   5394: astore 16
+    //   5396: goto -1274 -> 4122
+    //   5399: goto -940 -> 4459
+    //   5402: ldc 206
+    //   5404: astore 9
+    //   5406: ldc 206
+    //   5408: astore 17
+    //   5410: ldc_w 990
+    //   5413: astore 15
+    //   5415: ldc 206
+    //   5417: astore 14
+    //   5419: ldc 206
+    //   5421: astore 16
+    //   5423: goto -1230 -> 4193
+    //   5426: ldc 206
+    //   5428: astore 16
+    //   5430: goto -1271 -> 4159
+    //   5433: ldc 206
+    //   5435: astore 15
+    //   5437: goto -1369 -> 4068
+    //   5440: ldc_w 990
+    //   5443: astore 14
+    //   5445: goto -1406 -> 4039
+    //   5448: ldc 206
+    //   5450: astore 9
+    //   5452: goto -1442 -> 4010
+    //   5455: aconst_null
+    //   5456: astore 17
+    //   5458: goto -1502 -> 3956
+    //   5461: aload 12
+    //   5463: astore 11
+    //   5465: goto -4431 -> 1034
+    //   5468: goto -4579 -> 889
+    //   5471: aload 11
+    //   5473: astore 12
+    //   5475: aload 10
+    //   5477: astore 11
+    //   5479: aload 12
+    //   5481: astore 10
+    //   5483: goto -4676 -> 807
+    //   5486: aload 10
+    //   5488: astore 15
+    //   5490: goto -4744 -> 746
+    //   5493: aload 9
+    //   5495: astore 10
+    //   5497: goto -2237 -> 3260
+    //   5500: aload 10
+    //   5502: astore 11
+    //   5504: aload 9
+    //   5506: astore 10
+    //   5508: aload 15
+    //   5510: astore 9
+    //   5512: goto -4845 -> 667
+    //   5515: aconst_null
+    //   5516: astore 11
+    //   5518: goto -3638 -> 1880
+    //   5521: aload 10
+    //   5523: astore 11
+    //   5525: aload 9
+    //   5527: astore 10
+    //   5529: aload 15
+    //   5531: astore 9
+    //   5533: goto -4866 -> 667
+    //   5536: goto -5106 -> 430
+    //   5539: goto -3890 -> 1649
+    //   5542: goto -5210 -> 332
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	5452	0	this	QQAppInterface
-    //   0	5452	1	paramMessage	QQMessageFacade.Message
-    //   0	5452	2	paramBoolean	boolean
-    //   4153	773	3	i1	int
-    //   4150	8	4	i2	int
-    //   11	5195	5	bool1	boolean
-    //   21	130	6	bool2	boolean
-    //   35	121	7	bool3	boolean
-    //   45	116	8	bool4	boolean
-    //   58	108	9	bool5	boolean
-    //   184	1220	10	localObject1	Object
-    //   1408	37	10	localException1	Exception
-    //   1451	3062	10	localObject2	Object
-    //   4517	3	10	localJSONException1	org.json.JSONException
-    //   4527	3	10	localJSONException2	org.json.JSONException
-    //   4568	1	10	str1	String
-    //   4578	3	10	localNumberFormatException	NumberFormatException
-    //   4604	832	10	localObject3	Object
-    //   201	5231	11	localObject4	Object
-    //   310	5118	12	localObject5	Object
-    //   301	5083	13	localObject6	Object
-    //   372	4779	14	localObject7	Object
-    //   403	4945	15	localObject8	Object
-    //   304	5130	16	localObject9	Object
-    //   307	4249	17	localObject10	Object
-    //   5298	1	17	localException2	Exception
-    //   5325	8	17	str2	String
-    //   3933	1428	18	localObject11	Object
-    //   4145	148	19	localObject12	Object
-    //   4182	11	20	str3	String
+    //   0	5545	0	this	QQAppInterface
+    //   0	5545	1	paramMessage	QQMessageFacade.Message
+    //   0	5545	2	paramBoolean	boolean
+    //   4864	158	3	i1	int
+    //   11	5291	4	bool1	boolean
+    //   21	130	5	bool2	boolean
+    //   35	121	6	bool3	boolean
+    //   45	116	7	bool4	boolean
+    //   58	108	8	bool5	boolean
+    //   184	1220	9	localObject1	Object
+    //   1408	37	9	localException1	Exception
+    //   1451	3047	9	localObject2	Object
+    //   4502	3	9	localJSONException1	JSONException
+    //   4512	3	9	localJSONException2	JSONException
+    //   4546	1	9	str1	String
+    //   4556	3	9	localNumberFormatException	NumberFormatException
+    //   4582	950	9	localObject3	Object
+    //   201	5327	10	localObject4	Object
+    //   310	5214	11	localObject5	Object
+    //   301	5179	12	localObject6	Object
+    //   372	4875	13	localObject7	Object
+    //   403	5041	14	localObject8	Object
+    //   304	5226	15	localObject9	Object
+    //   307	4227	16	localObject10	Object
+    //   5394	1	16	localException2	Exception
+    //   5421	8	16	str2	String
+    //   3937	1520	17	localObject11	Object
+    //   4171	107	18	localObject12	Object
+    //   4167	11	19	str3	String
     // Exception table:
     //   from	to	target	type
     //   1301	1310	1408	java/lang/Exception
@@ -4380,41 +4433,41 @@ public class QQAppInterface
     //   1342	1367	1408	java/lang/Exception
     //   1370	1395	1408	java/lang/Exception
     //   1398	1405	1408	java/lang/Exception
-    //   3843	3868	4517	org/json/JSONException
-    //   3868	3890	4517	org/json/JSONException
-    //   4505	4514	4517	org/json/JSONException
-    //   3821	3838	4527	org/json/JSONException
-    //   3890	3920	4527	org/json/JSONException
-    //   3920	3948	4527	org/json/JSONException
-    //   3956	4005	4527	org/json/JSONException
-    //   4005	4034	4527	org/json/JSONException
-    //   4034	4063	4527	org/json/JSONException
-    //   4063	4073	4527	org/json/JSONException
-    //   4078	4117	4527	org/json/JSONException
-    //   4117	4152	4527	org/json/JSONException
-    //   4166	4174	4527	org/json/JSONException
-    //   4174	4184	4527	org/json/JSONException
-    //   4208	4437	4527	org/json/JSONException
-    //   4519	4524	4527	org/json/JSONException
-    //   4544	4553	4527	org/json/JSONException
-    //   3821	3838	4578	java/lang/NumberFormatException
-    //   3843	3868	4578	java/lang/NumberFormatException
-    //   3868	3890	4578	java/lang/NumberFormatException
-    //   3890	3920	4578	java/lang/NumberFormatException
-    //   3920	3948	4578	java/lang/NumberFormatException
-    //   3956	4005	4578	java/lang/NumberFormatException
-    //   4005	4034	4578	java/lang/NumberFormatException
-    //   4034	4063	4578	java/lang/NumberFormatException
-    //   4063	4073	4578	java/lang/NumberFormatException
-    //   4078	4117	4578	java/lang/NumberFormatException
-    //   4117	4152	4578	java/lang/NumberFormatException
-    //   4166	4174	4578	java/lang/NumberFormatException
-    //   4174	4184	4578	java/lang/NumberFormatException
-    //   4208	4437	4578	java/lang/NumberFormatException
-    //   4505	4514	4578	java/lang/NumberFormatException
-    //   4519	4524	4578	java/lang/NumberFormatException
-    //   4544	4553	4578	java/lang/NumberFormatException
-    //   4078	4117	5298	java/lang/Exception
+    //   3843	3868	4502	org/json/JSONException
+    //   3868	3890	4502	org/json/JSONException
+    //   4490	4499	4502	org/json/JSONException
+    //   3821	3838	4512	org/json/JSONException
+    //   3890	3920	4512	org/json/JSONException
+    //   3920	3935	4512	org/json/JSONException
+    //   3939	3952	4512	org/json/JSONException
+    //   3961	4010	4512	org/json/JSONException
+    //   4010	4039	4512	org/json/JSONException
+    //   4039	4068	4512	org/json/JSONException
+    //   4068	4078	4512	org/json/JSONException
+    //   4083	4122	4512	org/json/JSONException
+    //   4122	4159	4512	org/json/JSONException
+    //   4159	4169	4512	org/json/JSONException
+    //   4193	4422	4512	org/json/JSONException
+    //   4504	4509	4512	org/json/JSONException
+    //   4522	4531	4512	org/json/JSONException
+    //   3821	3838	4556	java/lang/NumberFormatException
+    //   3843	3868	4556	java/lang/NumberFormatException
+    //   3868	3890	4556	java/lang/NumberFormatException
+    //   3890	3920	4556	java/lang/NumberFormatException
+    //   3920	3935	4556	java/lang/NumberFormatException
+    //   3939	3952	4556	java/lang/NumberFormatException
+    //   3961	4010	4556	java/lang/NumberFormatException
+    //   4010	4039	4556	java/lang/NumberFormatException
+    //   4039	4068	4556	java/lang/NumberFormatException
+    //   4068	4078	4556	java/lang/NumberFormatException
+    //   4083	4122	4556	java/lang/NumberFormatException
+    //   4122	4159	4556	java/lang/NumberFormatException
+    //   4159	4169	4556	java/lang/NumberFormatException
+    //   4193	4422	4556	java/lang/NumberFormatException
+    //   4490	4499	4556	java/lang/NumberFormatException
+    //   4504	4509	4556	java/lang/NumberFormatException
+    //   4522	4531	4556	java/lang/NumberFormatException
+    //   4083	4122	5394	java/lang/Exception
   }
   
   private void a(QQMessageFacade.Message paramMessage, boolean paramBoolean1, boolean paramBoolean2)
@@ -4423,7 +4476,7 @@ public class QQAppInterface
     if (QLog.isColorLevel()) {
       QLog.d("QQAppInterface", 2, "showMsgNotification: entryA message.frienduin=" + paramMessage.frienduin + ", message.senderuin=" + paramMessage.senderuin + ", needSoundVibrationsTip " + paramBoolean1 + " , isOnline " + paramBoolean2);
     }
-    if (!((befs)a(146)).a(paramMessage.frienduin, paramMessage.istroop)) {}
+    if (!((bfnm)a(146)).a(paramMessage.frienduin, paramMessage.istroop)) {}
     for (int i1 = 0;; i1 = 1)
     {
       if (i1 != 0)
@@ -4479,7 +4532,7 @@ public class QQAppInterface
         if (paramMessage.istroop == 1008)
         {
           i1 = i2;
-          if (ajed.u.equals(paramMessage.senderuin)) {
+          if (ajsf.u.equals(paramMessage.senderuin)) {
             i1 = 1;
           }
         }
@@ -4568,7 +4621,7 @@ public class QQAppInterface
       if (paramMessageRecord.istroop == 1008)
       {
         i2 = i1;
-        if (ajed.u.equals(paramMessageRecord.senderuin)) {
+        if (ajsf.u.equals(paramMessageRecord.senderuin)) {
           i2 = 1;
         }
       }
@@ -4638,7 +4691,7 @@ public class QQAppInterface
     }
   }
   
-  private ajfb b(int paramInt)
+  private ajtd b(int paramInt)
   {
     Object localObject2 = null;
     long l1 = System.currentTimeMillis();
@@ -4661,273 +4714,281 @@ public class QQAppInterface
       continue;
       localObject1 = new FriendListHandler(this);
       continue;
-      localObject1 = new avzi(this);
+      localObject1 = new biqb(this);
       continue;
-      localObject1 = new ajfi(this);
+      localObject1 = new ajtk(this);
       continue;
-      localObject1 = new asar(this);
+      localObject1 = new aswv(this);
       continue;
-      localObject1 = new ajlf(this);
+      localObject1 = new ajzl(this);
       continue;
-      localObject1 = new ajgd(this);
-      continue;
-      localObject1 = new ajrf(this);
-      continue;
-      localObject1 = new ajhf(this);
-      continue;
-      localObject1 = new ajqo(this);
-      continue;
-      localObject1 = new ajgr(this);
-      continue;
-      localObject1 = new ajrc(this);
-      continue;
-      localObject1 = new PublicAccountHandler(this);
-      continue;
-      localObject1 = new ajhm(this);
-      continue;
-      localObject1 = new ajrm(this);
-      continue;
-      localObject1 = new ajsv(this);
-      continue;
-      localObject1 = new ajqq(this);
-      continue;
-      localObject1 = new ajfs(this);
-      continue;
-      localObject1 = new ajsq(this);
-      continue;
-      localObject1 = new ajrx(this);
-      continue;
-      localObject1 = new ajtg(this);
-      continue;
-      localObject1 = new ajho(this);
-      continue;
-      localObject1 = new ajex(this);
-      continue;
-      localObject1 = new ajsi(this);
-      continue;
-      localObject1 = new ajrq(this);
-      continue;
-      localObject1 = new ajpk(this);
-      continue;
-      localObject1 = new ajso(this);
-      continue;
-      localObject1 = new ajve(this);
-      continue;
-      localObject1 = new ajue(this);
-      continue;
-      localObject1 = new ajqw(this);
-      continue;
-      localObject1 = new ajmv(this);
-      continue;
-      localObject1 = new ajru(this);
-      continue;
-      localObject1 = new ajkc(this);
-      continue;
-      localObject1 = new mnw(this);
-      continue;
-      localObject1 = new mjk(this);
-      continue;
-      localObject1 = new SignatureHandler(this);
-      continue;
-      localObject1 = new ajqk(this);
-      continue;
-      localObject1 = new mmr(this);
-      continue;
-      localObject1 = new ajum(this);
-      continue;
-      localObject1 = new bawk(this);
-      continue;
-      localObject1 = new ajpl(this);
-      continue;
-      localObject1 = new RouterHandler(this);
-      continue;
-      localObject1 = new xvq(this);
-      continue;
-      localObject1 = new DeviceFileHandler(this);
-      continue;
-      localObject1 = new xrh(this);
-      continue;
-      localObject1 = new kwo(this);
-      continue;
-      localObject1 = new ajei(this);
-      continue;
-      localObject1 = new ajfp(this);
-      continue;
-      localObject1 = new ajqy(this);
-      continue;
-      localObject1 = new ajnm(this);
-      continue;
-      localObject1 = new ajmx(this);
-      continue;
-      localObject1 = new ajno(this);
-      continue;
-      localObject1 = new akhq(this);
-      continue;
-      localObject1 = new asft(this);
+      localObject1 = new ajuf(this);
       continue;
       localObject1 = new akfp(this);
       continue;
+      localObject1 = new ajvi(this);
+      continue;
+      localObject1 = new akey(this);
+      continue;
+      localObject1 = new ajuu(this);
+      continue;
+      localObject1 = new akfm(this);
+      continue;
+      localObject1 = new PublicAccountHandler(this);
+      continue;
+      localObject1 = new ajvp(this);
+      continue;
+      localObject1 = new akfw(this);
+      continue;
+      localObject1 = new akhf(this);
+      continue;
+      localObject1 = new akfa(this);
+      continue;
+      localObject1 = new ajtu(this);
+      continue;
+      localObject1 = new akha(this);
+      continue;
+      localObject1 = new akgh(this);
+      continue;
+      localObject1 = new akhq(this);
+      continue;
+      localObject1 = new ajvr(this);
+      continue;
+      localObject1 = new ajsz(this);
+      continue;
+      localObject1 = new akgs(this);
+      continue;
+      localObject1 = new akga(this);
+      continue;
+      localObject1 = new akdu(this);
+      continue;
+      localObject1 = new akgy(this);
+      continue;
+      localObject1 = new akjo(this);
+      continue;
+      localObject1 = new akio(this);
+      continue;
+      localObject1 = new akfg(this);
+      continue;
+      localObject1 = new akbe(this);
+      continue;
+      localObject1 = new akge(this);
+      continue;
+      localObject1 = new ajyi(this);
+      continue;
+      localObject1 = new myv(this);
+      continue;
+      localObject1 = new muj(this);
+      continue;
+      localObject1 = new SignatureHandler(this);
+      continue;
+      localObject1 = new akeu(this);
+      continue;
+      localObject1 = new mxq(this);
+      continue;
+      localObject1 = new akiw(this);
+      continue;
+      localObject1 = new bbze(this);
+      continue;
+      localObject1 = new akdv(this);
+      continue;
+      localObject1 = new RouterHandler(this);
+      continue;
+      localObject1 = new yeu(this);
+      continue;
+      localObject1 = new DeviceFileHandler(this);
+      continue;
+      localObject1 = new yak(this);
+      continue;
+      localObject1 = new lhd(this);
+      continue;
+      localObject1 = new ajsk(this);
+      continue;
+      localObject1 = new ajtr(this);
+      continue;
+      localObject1 = new akfi(this);
+      continue;
+      localObject1 = new akbw(this);
+      continue;
+      localObject1 = new akbg(this);
+      continue;
+      localObject1 = new akby(this);
+      continue;
+      localObject1 = new akwc(this);
+      continue;
+      localObject1 = new atbx(this);
+      continue;
+      localObject1 = new akub(this);
+      continue;
       localObject1 = new MSFNetTransportProvider(this);
       continue;
-      localObject1 = new rpo(this);
+      localObject1 = new scg(this);
       continue;
-      localObject1 = new nft(this);
+      localObject1 = new nqu(this);
       continue;
-      localObject1 = new asey(this);
+      localObject1 = new atbc(this);
       continue;
-      localObject1 = new alms(this);
+      localObject1 = new ambg(this);
       continue;
-      localObject1 = new ajhx(this);
+      localObject1 = new ajwa(this);
       continue;
-      localObject1 = new ajuv(this);
+      localObject1 = new akjf(this);
       continue;
-      localObject1 = new ajom(this);
+      localObject1 = new akcw(this);
       continue;
-      localObject1 = new ajqm(this);
+      localObject1 = new akew(this);
       continue;
-      localObject1 = new baot(this);
+      localObject1 = new bbqp(this);
       continue;
-      localObject1 = new auey(this);
+      localObject1 = new avee(this);
       continue;
-      localObject1 = new andm(this);
+      localObject1 = new antu(this);
       continue;
-      localObject1 = new ajjq(this);
+      localObject1 = new ajxu(this);
       continue;
-      localObject1 = new areb(this);
+      localObject1 = new asac(this);
       continue;
-      localObject1 = new bcqv(this);
+      localObject1 = new bduw(this);
       continue;
-      localObject1 = new ajut(this);
+      localObject1 = new akjd(this);
       continue;
-      localObject1 = new ngh(this);
+      localObject1 = new nri(this);
       continue;
-      localObject1 = new ajnd(this);
+      localObject1 = new akbm(this);
       continue;
-      localObject1 = new neu(this);
+      localObject1 = new npv(this);
       continue;
-      localObject1 = new mzv(this);
+      localObject1 = new nkw(this);
       continue;
-      localObject1 = new qdz(this);
+      localObject1 = new qpx(this);
       continue;
-      localObject1 = new atbd(this);
+      localObject1 = new atxh(this);
       continue;
-      localObject1 = new ales(this);
+      localObject1 = new altg(this);
       continue;
-      localObject1 = new nbz(this);
+      localObject1 = new nna(this);
       continue;
-      localObject1 = new atgu(this);
+      localObject1 = new auet(this);
       continue;
-      localObject1 = new ajvg(this);
+      localObject1 = new akjq(this);
       continue;
-      localObject1 = new alkj(this);
+      localObject1 = new alyx(this);
       continue;
-      localObject1 = new nes(this);
+      localObject1 = new npt(this);
       continue;
-      localObject1 = new sfz(this);
+      localObject1 = new ssv(this);
       continue;
-      localObject1 = new alie(this);
+      localObject1 = new alws(this);
       continue;
-      localObject1 = new bapf(this);
+      localObject1 = new bbrc(this);
       continue;
-      localObject1 = new bcqp(this);
+      localObject1 = new bduq(this);
       continue;
-      localObject1 = new bcqx(this);
+      localObject1 = new bduy(this);
       continue;
-      localObject1 = new bbfc(this);
+      localObject1 = new bcic(this);
       continue;
-      localObject1 = new ynz(this);
+      localObject1 = new yxt(this);
       continue;
-      localObject1 = new apgl(this);
+      localObject1 = new apyo(this);
       continue;
-      localObject1 = new ajuq(this);
+      localObject1 = new akja(this);
       continue;
-      localObject1 = new ajuo(this);
+      localObject1 = new akiy(this);
       continue;
-      localObject1 = new atwd(this);
+      localObject1 = new auub(this);
       continue;
-      localObject1 = new atdn(this);
+      localObject1 = new atzr(this);
       continue;
-      localObject1 = new aiei(this);
+      localObject1 = new airb(this);
       continue;
-      localObject1 = new akgx(this);
+      localObject1 = new akvj(this);
       continue;
-      localObject1 = new hl(this);
+      localObject1 = new je(this);
       continue;
       localObject1 = new PokeBigResHandler(this);
       continue;
-      localObject1 = new akia(this);
+      localObject1 = new akwm(this);
       continue;
-      localObject1 = new askd(this);
+      localObject1 = new atgh(this);
       continue;
-      localObject1 = new axem(this);
+      localObject1 = new ayeo(this);
       continue;
-      localObject1 = new axeh(this);
+      localObject1 = new ayej(this);
       continue;
-      localObject1 = new pnk(this);
+      localObject1 = new pzf(this);
       continue;
-      localObject1 = new alxv(this);
+      localObject1 = new amnl(this);
       continue;
-      localObject1 = new axfb(this);
+      localObject1 = new ayfe(this);
       continue;
-      localObject1 = new rwe(this);
+      localObject1 = new six(this);
       continue;
-      localObject1 = new anod(this);
+      localObject1 = new aoeo(this);
       continue;
-      localObject1 = new aqun(this);
+      localObject1 = new arpj(this);
       continue;
-      localObject1 = new msj(this);
+      localObject1 = new ndk(this);
       continue;
-      localObject1 = new atof(this);
+      localObject1 = new aumd(this);
       continue;
-      localObject1 = new ajvi(this);
+      localObject1 = new akjs(this);
       continue;
-      localObject1 = new nfw(this);
+      localObject1 = new nqx(this);
       continue;
-      localObject1 = new axhu(this);
+      localObject1 = new ayhy(this);
       continue;
-      localObject1 = new aqpl(this);
+      localObject1 = new arjq(this);
       continue;
-      localObject1 = new befs(this);
+      localObject1 = new bfnm(this);
       continue;
-      localObject1 = new aful(this);
+      localObject1 = new aggl(this);
       continue;
-      localObject1 = new akie(this);
+      localObject1 = new akwq(this);
       continue;
       localObject1 = new MiniAppEntryHandler(this);
       continue;
-      localObject1 = new aqjl(this);
+      localObject1 = new ardq(this);
       continue;
-      localObject1 = new bcix(this);
+      localObject1 = new bdmy(this);
       continue;
-      localObject1 = new apqq(this);
+      localObject1 = new aqkf(this);
       continue;
-      localObject1 = new awnq(this);
+      localObject1 = new axmp(this);
       continue;
-      localObject1 = new nec(this);
+      localObject1 = new npd(this);
       continue;
-      localObject1 = new aqvd(this);
+      localObject1 = new arqt(this);
       continue;
-      localObject1 = new ajvq(this);
+      localObject1 = new akka(this);
       continue;
-      localObject1 = new axfv(this);
+      localObject1 = new ayfy(this);
       continue;
-      localObject1 = new ajff(this);
+      localObject1 = new ajth(this);
       continue;
-      localObject1 = new axkx(this);
+      localObject1 = new ayld(this);
       continue;
-      localObject1 = new aroo(this);
+      localObject1 = new asks(this);
       continue;
-      localObject1 = new noc(this);
+      localObject1 = new nzn(this);
       continue;
-      localObject1 = new aqzc(this);
+      localObject1 = new aruq(this);
       continue;
-      localObject1 = new axnd(this);
+      localObject1 = new aynk(this);
       continue;
-      localObject1 = new azcc(this);
+      localObject1 = new bacu(this);
       continue;
-      localObject1 = new arxh(this);
+      localObject1 = new astl(this);
       continue;
-      localObject1 = new alsm(this);
+      localObject1 = new amhd(this);
+      continue;
+      localObject1 = new afhx(this);
+      continue;
+      localObject1 = new aqmt(this);
+      continue;
+      localObject1 = new akaa(this);
+      continue;
+      localObject1 = new bafd(this);
     }
   }
   
@@ -4938,7 +4999,7 @@ public class QQAppInterface
     paramContext.putExtra("troop_uin", paramMessage.senderuin);
     paramContext.putExtra("uintype", paramMessage.istroop);
     paramContext.putExtra("uinname", a(paramMessage, paramBoolean));
-    paramContext = aciy.a(paramContext, new int[] { 2 });
+    paramContext = actn.a(paramContext, new int[] { 2 });
     paramContext.setAction("com.tencent.mobileqq.action.CHAT");
     return paramContext;
   }
@@ -4979,7 +5040,7 @@ public class QQAppInterface
       ??? = new ArrayList();
       localArrayList = new ArrayList();
       if (QLog.isColorLevel()) {
-        bahj.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, receive uinList: ", (ArrayList)localObject2);
+        bbio.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, receive uinList: ", (ArrayList)localObject2);
       }
       int i1;
       String str;
@@ -5061,23 +5122,23 @@ public class QQAppInterface
                 if (i3 != 113) {
                   break;
                 }
-                ((ajtg)a(20)).g(str, true);
+                ((akhq)a(20)).g(str, true);
               }
             }
           } while (i3 != 101);
-          ((ajhf)a(6)).a(str, true);
+          ((ajvi)a(6)).a(str, true);
         }
       }
       l2 = System.currentTimeMillis();
     } while (!QLog.isColorLevel());
-    bahj.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, response uinList: ", paramIntent);
-    bahj.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, getQQHead uinList: ", localArrayList);
+    bbio.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, response uinList: ", paramIntent);
+    bbio.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, getQQHead uinList: ", localArrayList);
     QLog.i("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, cost=" + (l2 - l1));
   }
   
   private void b(QQMessageFacade.Message paramMessage, boolean paramBoolean)
   {
-    if ((this.jdField_j_of_type_Boolean) || (!azyg.a(this.app.getApplicationContext(), this)) || (azyg.b(this.app.getApplicationContext(), this)) || (!armh.a(this).a(paramMessage))) {
+    if ((this.jdField_j_of_type_Boolean) || (!bazk.a(this.app.getApplicationContext(), this)) || (bazk.b(this.app.getApplicationContext(), this)) || (!asik.a(this).a(paramMessage))) {
       return;
     }
     Intent localIntent;
@@ -5090,7 +5151,7 @@ public class QQAppInterface
       localIntent.putExtra("entrance", 6);
       localIntent.putExtra("key_notification_click_action", true);
       localStringBuffer = new StringBuffer();
-      localStringBuffer.append(getApp().getString(2131629070));
+      localStringBuffer.append(getApp().getString(2131694735));
       if (paramMessage.istroop == 1037) {
         this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a.a(1037);
       }
@@ -5105,7 +5166,7 @@ public class QQAppInterface
       if (i1 <= 1000) {
         break label335;
       }
-      localStringBuffer.append(getApp().getString(2131629056));
+      localStringBuffer.append(getApp().getString(2131694721));
       label214:
       if (!paramBoolean) {
         break label376;
@@ -5118,7 +5179,7 @@ public class QQAppInterface
     for (String str1 = localStringBuffer.toString();; str1 = null)
     {
       if ((paramMessage.istroop == 1037) || (paramMessage.istroop == 1044)) {}
-      for (String str2 = getApp().getResources().getString(2131633212);; str2 = getApp().getResources().getString(2131629067))
+      for (String str2 = getApp().getResources().getString(2131698948);; str2 = getApp().getResources().getString(2131694732))
       {
         a(localIntent, paramMessage, str1, str2, localStringBuffer.toString(), null, "CMD_SHOW_NOTIFIYCATION");
         return;
@@ -5129,7 +5190,7 @@ public class QQAppInterface
         i1 = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a.a();
         break label187;
         break;
-        localStringBuffer.append(i1).append(getApp().getString(2131628971));
+        localStringBuffer.append(i1).append(getApp().getString(2131694635));
         break label214;
       }
     }
@@ -5156,11 +5217,11 @@ public class QQAppInterface
       if (QLog.isColorLevel()) {
         QLog.d("notification", 2, "previous vibrate time is:" + this.jdField_e_of_type_Long + ",curr time is:" + System.currentTimeMillis());
       }
-      if ((paramMessageRecord == null) || (paramMessageRecord.istroop != 1001) || (amwo.b(paramMessageRecord)) || (this.isBackground_Pause)) {
+      if ((paramMessageRecord == null) || (paramMessageRecord.istroop != 1001) || (anmw.b(paramMessageRecord)) || (this.isBackground_Pause)) {
         break label221;
       }
       if (QLog.isColorLevel()) {
-        QLog.e("SpecialCare", 2, "message.istroop = " + paramMessageRecord.istroop + " MsgBoxUtil.shouldInMsgBox(message) = " + amwo.b(paramMessageRecord));
+        QLog.e("SpecialCare", 2, "message.istroop = " + paramMessageRecord.istroop + " MsgBoxUtil.shouldInMsgBox(message) = " + anmw.b(paramMessageRecord));
       }
     }
     label221:
@@ -5179,7 +5240,7 @@ public class QQAppInterface
     label774:
     label926:
     boolean bool7;
-    alrm localalrm;
+    amgc localamgc;
     label1078:
     label1090:
     label1237:
@@ -5200,17 +5261,17 @@ public class QQAppInterface
         {
           this.jdField_e_of_type_Long = System.currentTimeMillis();
           bool3 = h();
-          bool2 = azyg.a(this.app.getApplicationContext(), this);
-          localObject1 = (armh)getManager(349);
+          bool2 = bazk.a(this.app.getApplicationContext(), this);
+          localObject1 = (asik)getManager(349);
           if (localObject1 == null) {
             break label2030;
           }
-          bool1 = ((armh)localObject1).a(paramMessageRecord);
-          bool4 = azyg.b(this.app.getApplicationContext(), this);
+          bool1 = ((asik)localObject1).a(paramMessageRecord);
+          bool4 = bazk.b(this.app.getApplicationContext(), this);
           if (QLog.isColorLevel()) {
             QLog.d("notification", 2, new Object[] { "isRingerSilent is:" + bool3 + ",canDisturb is:" + bool2, " isMute:", Boolean.valueOf(bool4), " newMsgNotificationEnabled: ", Boolean.valueOf(bool1) });
           }
-          if ((paramMessageRecord == null) || (paramMessageRecord.istroop != 1008) || (!ajed.u.equals(paramMessageRecord.senderuin))) {
+          if ((paramMessageRecord == null) || (paramMessageRecord.istroop != 1008) || (!ajsf.u.equals(paramMessageRecord.senderuin))) {
             continue;
           }
           bool1 = false;
@@ -5237,7 +5298,7 @@ public class QQAppInterface
           if ((!paramBoolean1) || (paramMessageRecord == null)) {
             break;
           }
-          baan.a(paramMessageRecord, false, false);
+          bbbr.a(paramMessageRecord, false, false);
           return;
           if (Math.abs(System.currentTimeMillis() - this.jdField_e_of_type_Long) > 2000L) {
             break label232;
@@ -5313,7 +5374,7 @@ public class QQAppInterface
       {
         bool4 = y();
         bool2 = x();
-        i1 = bahr.a(this);
+        i1 = bbix.a(this);
         if (i1 != 0) {
           break label1243;
         }
@@ -5338,11 +5399,11 @@ public class QQAppInterface
         if (QLog.isColorLevel()) {
           QLog.d("notification", 2, "canVibrator is:" + bool2 + ",isVideoing is:" + bool5 + ",isCallIdle is:" + bool6 + ",notRecordingPtt is:" + bool7);
         }
-        localalrm = alrm.a(this);
+        localamgc = amgc.a(this);
         if (paramMessageRecord == null) {
           break label2016;
         }
-        bool4 = localalrm.a(bool2, paramMessageRecord.frienduin, paramMessageRecord.istroop);
+        bool4 = localamgc.a(bool2, paramMessageRecord.frienduin, paramMessageRecord.istroop);
         if ((!bool2) || (!paramBoolean2)) {
           break label1277;
         }
@@ -5362,12 +5423,12 @@ public class QQAppInterface
         i2 = 0;
         while (i2 < i3)
         {
-          ((ajux)this.jdField_d_of_type_JavaUtilList.get(i2)).q(i1);
+          ((akjh)this.jdField_d_of_type_JavaUtilList.get(i2)).q(i1);
           i2 += 1;
         }
-        if (akbm.a(paramMessageRecord.istroop) == 1032)
+        if (akpy.a(paramMessageRecord.istroop) == 1032)
         {
-          localObject1 = ajed.aL;
+          localObject1 = ajsf.aM;
           break;
         }
         localObject1 = paramMessageRecord.senderuin;
@@ -5398,12 +5459,12 @@ public class QQAppInterface
         }
       }
       if (paramMessageRecord != null) {
-        localalrm.b(bool3, paramMessageRecord.frienduin, paramMessageRecord.istroop);
+        localamgc.b(bool3, paramMessageRecord.frienduin, paramMessageRecord.istroop);
       }
       if (((bool3) && (!bool5) && (!k()) && (!l()) && (bool6) && (bool7)) && (paramMessageRecord == null)) {
         break label2010;
       }
-      paramBoolean1 = localalrm.b(bool1, paramMessageRecord.frienduin, paramMessageRecord.istroop);
+      paramBoolean1 = localamgc.b(bool1, paramMessageRecord.frienduin, paramMessageRecord.istroop);
       if (QLog.isColorLevel()) {
         QLog.d("QQAppInterface", 2, new Object[] { "vibratorAndAudio: invoked. ", " canPlaySound: ", Boolean.valueOf(bool1), " isVideoing: ", Boolean.valueOf(bool5), " isRingerVibrate(): ", Boolean.valueOf(k()), " isRingEqualsZero(): ", Boolean.valueOf(l()), " isCallIdle: ", Boolean.valueOf(bool6), " notRecordingPtt: ", Boolean.valueOf(bool7), " enableSeparateSound: ", Boolean.valueOf(paramBoolean1) });
       }
@@ -5426,13 +5487,13 @@ public class QQAppInterface
             localObject1 = ThemeUtil.getThemeVoiceRootPath();
             if ((localObject1 == null) || (!new File((String)localObject1 + File.separatorChar + "message.mp3").exists())) {}
           }
-          if (((paramMessageRecord != null) && (b(paramMessageRecord.frienduin))) && (!alrm.a(paramMessageRecord))) {
+          if (((paramMessageRecord != null) && (b(paramMessageRecord.frienduin))) && (!amgc.a(paramMessageRecord))) {
             break;
           }
-          localalrm.b(paramMessageRecord);
+          localamgc.b(paramMessageRecord);
           return;
         }
-        localalrm.b();
+        localamgc.b();
         return;
       }
     } while ((bool1) || (bool5) || (k()) || (l()) || (!bool6) || (!bool7));
@@ -5447,8 +5508,8 @@ public class QQAppInterface
     {
       try
       {
-        bool1 = localalrm.b(paramMessageRecord.frienduin, paramMessageRecord.istroop);
-        bool2 = localalrm.a(paramMessageRecord.senderuin);
+        bool1 = localamgc.b(paramMessageRecord.frienduin, paramMessageRecord.istroop);
+        bool2 = localamgc.a(paramMessageRecord.senderuin);
         paramBoolean1 = bool2;
         paramBoolean2 = bool1;
         if (QLog.isColorLevel())
@@ -5466,10 +5527,10 @@ public class QQAppInterface
       {
         return;
       }
-      if (!bara.a(paramMessageRecord)) {
+      if (!bbtc.a(paramMessageRecord)) {
         break;
       }
-      localalrm.b(paramMessageRecord);
+      localamgc.b(paramMessageRecord);
       return;
       label2010:
       paramBoolean1 = bool1;
@@ -5492,7 +5553,7 @@ public class QQAppInterface
   
   private boolean b(String paramString)
   {
-    return (String.valueOf(ajed.G).equals(paramString)) || (String.valueOf(ajed.J).equals(paramString)) || (String.valueOf(ajed.H).equals(paramString));
+    return (String.valueOf(ajsf.G).equals(paramString)) || (String.valueOf(ajsf.J).equals(paramString)) || (String.valueOf(ajsf.H).equals(paramString));
   }
   
   private void c(Intent paramIntent)
@@ -5510,7 +5571,7 @@ public class QQAppInterface
   
   private void c(MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    if ((this.jdField_j_of_type_Boolean) || (!azyg.a(this.app.getApplicationContext(), this))) {
+    if ((this.jdField_j_of_type_Boolean) || (!bazk.a(this.app.getApplicationContext(), this))) {
       if (QLog.isDevelopLevel()) {
         QLog.d("notification", 4, String.format("showNoMsgContetnNotifcationForQAV fail 1, message:%s", new Object[] { paramMessageRecord }));
       }
@@ -5527,14 +5588,14 @@ public class QQAppInterface
         do
         {
           return;
-          localObject = (aufl)getManager(38);
+          localObject = (aver)getManager(38);
           if (localObject != null) {
             break;
           }
         } while (!QLog.isDevelopLevel());
         QLog.d("notification", 4, String.format("showNoMsgContetnNotifcationForQAV fail 2, message:%s", new Object[] { paramMessageRecord }));
         return;
-        i1 = ((aufl)localObject).b();
+        i1 = ((aver)localObject).b();
       } while (i1 == 0);
       if (i1 != 1) {
         break label472;
@@ -5545,12 +5606,12 @@ public class QQAppInterface
       localIntent = a(getApp(), paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord);
       localIntent.putExtra("key_notification_click_action", true);
       localStringBuffer = new StringBuffer();
-      localStringBuffer.append(getApp().getString(2131629070));
-      i2 = ((aufl)localObject).a();
+      localStringBuffer.append(getApp().getString(2131694735));
+      i2 = ((aver)localObject).a();
     } while (i2 == 0);
     if (i2 > 1000)
     {
-      localStringBuffer.append(getApp().getString(2131629057));
+      localStringBuffer.append(getApp().getString(2131694722));
       label228:
       localObject = null;
       if (paramBoolean) {
@@ -5572,7 +5633,7 @@ public class QQAppInterface
     }
     for (;;)
     {
-      a(localIntent, paramMessageRecord, (String)localObject, getApp().getResources().getString(2131629067), localStringBuffer.toString(), null, "CMD_SHOW_NOTIFIYCATION");
+      a(localIntent, paramMessageRecord, (String)localObject, getApp().getResources().getString(2131694732), localStringBuffer.toString(), null, "CMD_SHOW_NOTIFIYCATION");
       return;
       if ((paramMessageRecord.istroop == 1000) || (paramMessageRecord.istroop == 1020) || (paramMessageRecord.istroop == 1004))
       {
@@ -5590,7 +5651,7 @@ public class QQAppInterface
       localIntent.putExtra("conversation_index", 1);
       localIntent.setFlags(335544320);
       break;
-      localStringBuffer.append(i2).append(getApp().getString(2131629060));
+      localStringBuffer.append(i2).append(getApp().getString(2131694725));
       break label228;
       label546:
       if (paramMessageRecord.msgtype == -2009)
@@ -5611,7 +5672,7 @@ public class QQAppInterface
   private void d(Intent paramIntent)
   {
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(paramIntent);
-    S();
+    V();
   }
   
   private void d(MessageRecord paramMessageRecord, boolean paramBoolean)
@@ -5650,20 +5711,20 @@ public class QQAppInterface
   private String f()
   {
     // Byte code:
-    //   0: ldc_w 3109
+    //   0: ldc_w 3094
     //   3: astore 4
     //   5: aload_0
-    //   6: getfield 489	com/tencent/mobileqq/app/QQAppInterface:app	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   9: invokevirtual 3113	com/tencent/common/app/BaseApplicationImpl:getPackageManager	()Landroid/content/pm/PackageManager;
+    //   6: getfield 490	com/tencent/mobileqq/app/QQAppInterface:app	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   9: invokevirtual 3098	com/tencent/common/app/BaseApplicationImpl:getPackageManager	()Landroid/content/pm/PackageManager;
     //   12: astore_3
     //   13: aload 4
     //   15: astore_2
     //   16: aload_3
     //   17: aload_0
-    //   18: getfield 489	com/tencent/mobileqq/app/QQAppInterface:app	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   21: invokevirtual 483	com/tencent/common/app/BaseApplicationImpl:getPackageName	()Ljava/lang/String;
+    //   18: getfield 490	com/tencent/mobileqq/app/QQAppInterface:app	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   21: invokevirtual 484	com/tencent/common/app/BaseApplicationImpl:getPackageName	()Ljava/lang/String;
     //   24: iconst_0
-    //   25: invokevirtual 3119	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
+    //   25: invokevirtual 3104	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
     //   28: astore 5
     //   30: aload 4
     //   32: astore_3
@@ -5674,12 +5735,12 @@ public class QQAppInterface
     //   41: aload 4
     //   43: astore_3
     //   44: aload 5
-    //   46: getfield 3124	android/content/pm/PackageInfo:versionName	Ljava/lang/String;
+    //   46: getfield 3109	android/content/pm/PackageInfo:versionName	Ljava/lang/String;
     //   49: ifnull +85 -> 134
     //   52: aload 4
     //   54: astore_2
     //   55: aload 5
-    //   57: getfield 3124	android/content/pm/PackageInfo:versionName	Ljava/lang/String;
+    //   57: getfield 3109	android/content/pm/PackageInfo:versionName	Ljava/lang/String;
     //   60: astore 4
     //   62: aload 4
     //   64: astore_3
@@ -5688,7 +5749,7 @@ public class QQAppInterface
     //   70: aload 4
     //   72: astore_2
     //   73: aload 4
-    //   75: ldc_w 3126
+    //   75: ldc_w 3111
     //   78: invokevirtual 419	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   81: astore 5
     //   83: iconst_3
@@ -5703,14 +5764,14 @@ public class QQAppInterface
     //   95: if_icmple +39 -> 134
     //   98: aload 4
     //   100: astore_2
-    //   101: new 137	java/lang/StringBuilder
+    //   101: new 138	java/lang/StringBuilder
     //   104: dup
-    //   105: invokespecial 140	java/lang/StringBuilder:<init>	()V
+    //   105: invokespecial 141	java/lang/StringBuilder:<init>	()V
     //   108: aload 4
-    //   110: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   113: ldc_w 3128
-    //   116: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   119: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   110: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: ldc_w 3113
+    //   116: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   119: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   122: astore 4
     //   124: iload_1
     //   125: iconst_1
@@ -5752,7 +5813,7 @@ public class QQAppInterface
   
   private boolean u()
   {
-    return (this.jdField_a_of_type_Ajfq == null) || (!this.jdField_a_of_type_Ajfq.k());
+    return (this.jdField_a_of_type_Ajts == null) || (!this.jdField_a_of_type_Ajts.k());
   }
   
   private boolean v()
@@ -5777,27 +5838,55 @@ public class QQAppInterface
   
   public void A()
   {
-    LeakInspector.a(this, String.format("%d", new Object[] { Long.valueOf(getLongAccountUin()) }));
+    long l2 = 0L;
+    long l1;
+    if ((!this.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) && (this.m))
+    {
+      l1 = l2;
+      if (this.jdField_c_of_type_Long != 0L)
+      {
+        l1 = jdField_e_of_type_Int - (SystemClock.uptimeMillis() - this.jdField_c_of_type_Long);
+        if (l1 >= 0L) {
+          break label116;
+        }
+        l1 = l2;
+      }
+    }
+    label116:
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQAppInterface", 2, "onResume send msg " + l1);
+      }
+      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, new WeakReference(this));
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, l1);
+      return;
+    }
   }
   
   public void B()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a.b();
-    }
-    Object localObject = (axat)getManager(61);
-    if (localObject != null) {
-      ((axat)localObject).b();
-    }
-    localObject = (ajvm)getManager(85);
-    if (localObject != null) {
-      ((ajvm)localObject).d();
-    }
+    LeakInspector.a(this, String.format("%d", new Object[] { Long.valueOf(getLongAccountUin()) }));
   }
   
   public void C()
   {
-    if (((this.isBackground_Pause) || (this.isBackground_Stop)) && (beeq.a(this.app.getApplicationContext())))
+    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a.b();
+    }
+    Object localObject = (ayav)getManager(61);
+    if (localObject != null) {
+      ((ayav)localObject).b();
+    }
+    localObject = (akjw)getManager(85);
+    if (localObject != null) {
+      ((akjw)localObject).d();
+    }
+  }
+  
+  public void D()
+  {
+    if (((this.isBackground_Pause) || (this.isBackground_Stop)) && (bfmk.a(this.app.getApplicationContext())))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQAppInterface", 2, "refreshAppBadge");
@@ -5807,11 +5896,11 @@ public class QQAppInterface
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("QQAppInterface", 2, "refreshAppBadge fail cause isBackground_Pause = " + this.isBackground_Pause + ", isBackground_Stop = " + this.isBackground_Stop + ", isSupportBadge + " + beeq.a(this.app.getApplicationContext()));
+    QLog.d("QQAppInterface", 2, "refreshAppBadge fail cause isBackground_Pause = " + this.isBackground_Pause + ", isBackground_Stop = " + this.isBackground_Stop + ", isSupportBadge + " + bfmk.a(this.app.getApplicationContext()));
   }
   
   @TargetApi(14)
-  public void D()
+  public void E()
   {
     try
     {
@@ -5822,17 +5911,17 @@ public class QQAppInterface
         break label188;
       }
       bool1 = true;
-      AppSetting.jdField_c_of_type_Boolean = bool1;
+      AppSetting.jdField_d_of_type_Boolean = bool1;
       if (QLog.isColorLevel()) {
-        QLog.d("QQAppInterface", 2, "set talkback enable: " + AppSetting.jdField_c_of_type_Boolean);
+        QLog.d("QQAppInterface", 2, "set talkback enable: " + AppSetting.jdField_d_of_type_Boolean);
       }
-      if (AppSetting.jdField_c_of_type_Boolean)
+      if (AppSetting.jdField_d_of_type_Boolean)
       {
         localObject = BaseApplicationImpl.getApplication().getSharedPreferences("Talkback", 0);
         long l1 = ((SharedPreferences)localObject).getLong("LastTime", 0L);
         if (System.currentTimeMillis() - l1 > 86400000L)
         {
-          awrn.a(this.app).a(null, "enableTalkback", true, 0L, 0L, null, null);
+          axrl.a(this.app).a(null, "enableTalkback", true, 0L, 0L, null, null);
           ((SharedPreferences)localObject).edit().putLong("LastTime", System.currentTimeMillis()).commit();
         }
       }
@@ -5844,7 +5933,7 @@ public class QQAppInterface
       label188:
       break label161;
     }
-    if (AppSetting.jdField_c_of_type_Boolean) {
+    if (AppSetting.jdField_d_of_type_Boolean) {
       if (jdField_a_of_type_AndroidSpeechTtsTextToSpeech == null) {
         jdField_a_of_type_AndroidSpeechTtsTextToSpeech = new TextToSpeech(BaseApplicationImpl.sApplication, null);
       }
@@ -5859,18 +5948,18 @@ public class QQAppInterface
     jdField_a_of_type_AndroidSpeechTtsTextToSpeech = null;
   }
   
-  public void E()
+  public void F()
   {
-    int i1 = 2131625671;
+    int i1 = 2131691246;
     if ((this.app != null) && (isLogin()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("raw_photo", 2, "onX2Mobile ");
       }
       localObject1 = a();
-      bool1 = ((axvo)localObject1).c();
-      bool2 = ((axvo)localObject1).a();
-      bool3 = ((axvo)localObject1).b();
+      bool1 = ((ayvv)localObject1).c();
+      bool2 = ((ayvv)localObject1).a();
+      bool3 = ((ayvv)localObject1).b();
       localObject2 = BaseActivity.sTopActivity;
       localObject1 = localObject2;
       if (localObject2 == null) {
@@ -5900,7 +5989,7 @@ public class QQAppInterface
       boolean bool2;
       boolean bool3;
       Object localObject2;
-      i1 = 2131625672;
+      i1 = 2131691247;
       for (;;)
       {
         if (QLog.isColorLevel())
@@ -5915,16 +6004,16 @@ public class QQAppInterface
         return;
         if (!bool1)
         {
-          i1 = 2131625669;
+          i1 = 2131691244;
           continue;
           if (bool3)
           {
             if (!bool1) {
-              i1 = 2131625667;
+              i1 = 2131691242;
             }
           }
           else {
-            i1 = 2131625670;
+            i1 = 2131691245;
           }
         }
       }
@@ -5932,7 +6021,7 @@ public class QQAppInterface
     QLog.d("QQAppInterface", 2, "onX2Mobile app = null,maybe not QQ process");
   }
   
-  public void F()
+  public void G()
   {
     if (this.app != null) {
       if (QLog.isColorLevel()) {
@@ -5945,7 +6034,7 @@ public class QQAppInterface
     QLog.d("QQAppInterface", 2, "onX2Wifi app = null,maybe not QQ process");
   }
   
-  public void G()
+  public void H()
   {
     SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("sp_public_account_with_cuin_" + getCurrentAccountUin(), 0);
     if (localSharedPreferences != null) {
@@ -5953,7 +6042,7 @@ public class QQAppInterface
     }
   }
   
-  public void I()
+  public void J()
   {
     getSecurityUINRootFile();
     SharedPreferences localSharedPreferences = this.app.getSharedPreferences("SecurityFileFrameworkManagerImpl", 4);
@@ -5988,7 +6077,7 @@ public class QQAppInterface
           localHashMap.put("doMigrate", "null");
           localHashMap.put("fileSize", "-1");
           localHashMap.put("fileAmount", "-1");
-          awrn.a(getApp()).a(c(), "SecureFileStep", true, 0L, 0L, localHashMap, "");
+          axrl.a(getApp()).a(c(), "SecureFileStep", true, 0L, 0L, localHashMap, "");
           continue;
           localHashMap.put("BusinessName", arrayOfString[0]);
           localHashMap.put("needMigrate", "true");
@@ -5997,7 +6086,7 @@ public class QQAppInterface
           localHashMap.put("fileAmount", arrayOfString[3]);
           try
           {
-            awrn.a(getApp()).a(c(), "SecureFileStep", true, 0L, 0L, localHashMap, "");
+            axrl.a(getApp()).a(c(), "SecureFileStep", true, 0L, 0L, localHashMap, "");
           }
           catch (NumberFormatException localNumberFormatException) {}
           if (QLog.isColorLevel()) {
@@ -6009,11 +6098,60 @@ public class QQAppInterface
     }
   }
   
+  public void K()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAppInterface", 2, "registerBatteryBroadcastReceiver start");
+    }
+    try
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqAppBatteryBroadcastReceiver == null) && (getOnlineStatus() == AppRuntime.Status.online) && (getExtOnlineStatus() == 1000L))
+      {
+        IntentFilter localIntentFilter = new IntentFilter();
+        localIntentFilter.addAction("android.intent.action.ACTION_POWER_CONNECTED");
+        localIntentFilter.addAction("android.intent.action.ACTION_POWER_DISCONNECTED");
+        this.jdField_a_of_type_ComTencentMobileqqAppBatteryBroadcastReceiver = new BatteryBroadcastReceiver(this);
+        BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_ComTencentMobileqqAppBatteryBroadcastReceiver, localIntentFilter);
+        if (QLog.isColorLevel()) {
+          QLog.d("QQAppInterface", 2, "registerBatteryBroadcastReceiver success");
+        }
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("QQAppInterface", 1, localThrowable, new Object[] { "registerBatteryBroadcastReceiver fail" });
+    }
+  }
+  
+  public void L()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAppInterface", 2, "unRegisterBatteryBroadcastReceiver start");
+    }
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppBatteryBroadcastReceiver != null)
+      {
+        BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqAppBatteryBroadcastReceiver);
+        this.jdField_a_of_type_ComTencentMobileqqAppBatteryBroadcastReceiver = null;
+        if (QLog.isColorLevel()) {
+          QLog.d("QQAppInterface", 2, "unRegisterBatteryBroadcastReceiver success");
+        }
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("QQAppInterface", 1, localThrowable, new Object[] { "unRegisterBatteryBroadcastReceiver fail" });
+    }
+  }
+  
   public int a()
   {
-    bahr localbahr = (bahr)getManager(31);
-    if (localbahr != null) {
-      return localbahr.b("message.group.ring", 0);
+    bbix localbbix = (bbix)getManager(31);
+    if (localbbix != null) {
+      return localbbix.b("message.group.ring", 0);
     }
     return 0;
   }
@@ -6089,71 +6227,71 @@ public class QQAppInterface
     return AppRuntime.Status.offline.getValue();
   }
   
-  public ajfb a(int paramInt)
+  public ajtd a(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfAjfb[paramInt];
+    Object localObject1 = this.jdField_a_of_type_ArrayOfAjtd[paramInt];
     if (localObject1 != null) {
       return localObject1;
     }
-    synchronized (this.jdField_a_of_type_ArrayOfAjfb)
+    synchronized (this.jdField_a_of_type_ArrayOfAjtd)
     {
-      ajfb localajfb = this.jdField_a_of_type_ArrayOfAjfb[paramInt];
-      localObject1 = localajfb;
-      if (localajfb == null)
+      ajtd localajtd = this.jdField_a_of_type_ArrayOfAjtd[paramInt];
+      localObject1 = localajtd;
+      if (localajtd == null)
       {
-        localajfb = b(paramInt);
-        localObject1 = localajfb;
-        if (localajfb != null)
+        localajtd = b(paramInt);
+        localObject1 = localajtd;
+        if (localajtd != null)
         {
-          this.jdField_a_of_type_ArrayOfAjfb[paramInt] = localajfb;
-          localObject1 = localajfb;
+          this.jdField_a_of_type_ArrayOfAjtd[paramInt] = localajtd;
+          localObject1 = localajtd;
         }
       }
       return localObject1;
     }
   }
   
-  public ajfq a()
+  public ajts a()
   {
-    return this.jdField_a_of_type_Ajfq;
+    return this.jdField_a_of_type_Ajts;
   }
   
-  public ajfr a()
+  public ajtt a()
   {
-    return this.jdField_a_of_type_Ajfr;
+    return this.jdField_a_of_type_Ajtt;
   }
   
-  public ajlh a()
+  public ajzo a()
   {
     m();
-    return this.jdField_a_of_type_Ajlh;
+    return this.jdField_a_of_type_Ajzo;
   }
   
-  public ajpv a()
+  public akef a()
   {
-    if (this.jdField_a_of_type_Ajpv == null) {
-      this.jdField_a_of_type_Ajpv = new ajpv(this);
+    if (this.jdField_a_of_type_Akef == null) {
+      this.jdField_a_of_type_Akef = new akef(this);
     }
-    return this.jdField_a_of_type_Ajpv;
+    return this.jdField_a_of_type_Akef;
   }
   
-  public ajwf a()
+  public akkp a()
   {
-    if (this.jdField_a_of_type_Ajwf == null) {
-      this.jdField_a_of_type_Ajwf = ((ajwf)getManager(19));
+    if (this.jdField_a_of_type_Akkp == null) {
+      this.jdField_a_of_type_Akkp = ((akkp)getManager(19));
     }
-    return this.jdField_a_of_type_Ajwf;
+    return this.jdField_a_of_type_Akkp;
   }
   
-  public akaq a()
+  public akpc a()
   {
-    if (this.jdField_a_of_type_Akaq == null) {
-      this.jdField_a_of_type_Akaq = ((akaq)getManager(29));
+    if (this.jdField_a_of_type_Akpc == null) {
+      this.jdField_a_of_type_Akpc = ((akpc)getManager(29));
     }
-    return this.jdField_a_of_type_Akaq;
+    return this.jdField_a_of_type_Akpc;
   }
   
-  public akbj a(int paramInt)
+  public akpv a(int paramInt)
   {
     if (a() != null) {
       return a().a().a(paramInt);
@@ -6161,7 +6299,7 @@ public class QQAppInterface
     return null;
   }
   
-  public akbp a()
+  public akqb a()
   {
     if (a() != null) {
       return a().a();
@@ -6169,69 +6307,69 @@ public class QQAppInterface
     return null;
   }
   
-  public aken a(int paramInt)
+  public aksz a(int paramInt)
   {
     return a().a(paramInt);
   }
   
-  public akep a()
+  public aktb a()
   {
-    if (this.jdField_a_of_type_Akep == null) {
-      this.jdField_a_of_type_Akep = ((akep)getManager(130));
+    if (this.jdField_a_of_type_Aktb == null) {
+      this.jdField_a_of_type_Aktb = ((aktb)getManager(130));
     }
-    return this.jdField_a_of_type_Akep;
+    return this.jdField_a_of_type_Aktb;
   }
   
-  public akeu a()
+  public aktg a()
   {
-    if (this.jdField_a_of_type_Akeu == null) {}
+    if (this.jdField_a_of_type_Aktg == null) {}
     try
     {
-      if (this.jdField_a_of_type_Akeu == null) {
-        this.jdField_a_of_type_Akeu = new akeu(this, a().a());
+      if (this.jdField_a_of_type_Aktg == null) {
+        this.jdField_a_of_type_Aktg = new aktg(this, a().a());
       }
-      return this.jdField_a_of_type_Akeu;
+      return this.jdField_a_of_type_Aktg;
     }
     finally {}
   }
   
-  public alyz a()
+  public amop a()
   {
-    O();
-    return this.jdField_a_of_type_Alyz;
+    R();
+    return this.jdField_a_of_type_Amop;
   }
   
-  public alzb a()
+  public amor a()
   {
-    return this.jdField_a_of_type_Alzb;
+    return this.jdField_a_of_type_Amor;
   }
   
-  public alzf a(String paramString)
+  public amov a(String paramString)
   {
     try
     {
-      if (this.jdField_a_of_type_Alzf == null) {
-        this.jdField_a_of_type_Alzf = new alzf(this, paramString);
+      if (this.jdField_a_of_type_Amov == null) {
+        this.jdField_a_of_type_Amov = new amov(this, paramString);
       }
-      paramString = this.jdField_a_of_type_Alzf;
+      paramString = this.jdField_a_of_type_Amov;
       return paramString;
     }
     finally {}
   }
   
-  public alzf a(String paramString, boolean paramBoolean)
+  public amov a(String paramString, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Alzf == null) && (paramBoolean)) {
+    if ((this.jdField_a_of_type_Amov == null) && (paramBoolean)) {
       a(paramString);
     }
-    return this.jdField_a_of_type_Alzf;
+    return this.jdField_a_of_type_Amov;
   }
   
   public Intent a(Context paramContext, QQMessageFacade.Message paramMessage, boolean paramBoolean)
   {
     if ((paramMessage.istroop == 1000) || (paramMessage.istroop == 1020) || (paramMessage.istroop == 1004))
     {
-      if (ahcq.a(this, paramMessage.frienduin)) {
+      if (ahpf.a(this, paramMessage.frienduin)) {
         return a(getApp(), paramMessage, 0);
       }
       return b(paramContext, paramMessage, paramBoolean);
@@ -6241,13 +6379,13 @@ public class QQAppInterface
   
   public Bitmap a(int paramInt1, String paramString, byte paramByte1, int paramInt2, boolean paramBoolean, byte paramByte2, int paramInt3)
   {
-    if ((paramInt1 == 1) && (paramString != null) && ((paramString.equals(ajed.J)) || (paramString.equals(ajed.H)) || (paramString.equals(ajed.E)) || (paramString.equals(ajed.G)))) {
-      return bacm.i();
+    if ((paramInt1 == 1) && (paramString != null) && ((paramString.equals(ajsf.J)) || (paramString.equals(ajsf.H)) || (paramString.equals(ajsf.E)) || (paramString.equals(ajsf.G)))) {
+      return bbdr.i();
     }
-    if ((paramInt1 == 32) && (ajed.H.equals(paramString))) {
-      return azzg.a(BaseApplicationImpl.getContext().getResources().getDrawable(2130839777));
+    if ((paramInt1 == 32) && (ajsf.H.equals(paramString))) {
+      return bbak.a(BaseApplicationImpl.getContext().getResources().getDrawable(2130840073));
     }
-    if ((paramInt1 == 11) && (!baip.d(paramString))) {
+    if ((paramInt1 == 11) && (!bbjw.d(paramString))) {
       return null;
     }
     if (TextUtils.isEmpty(paramString)) {
@@ -6258,18 +6396,18 @@ public class QQAppInterface
     }
     for (;;)
     {
-      if ((paramInt1 == 4) && (!azlj.a(paramString))) {}
+      if ((paramInt1 == 4) && (!bamn.a(paramString))) {}
       for (paramByte2 = 113;; paramByte2 = paramInt1)
       {
         if (paramByte2 == 113) {
           paramByte1 = 3;
         }
-        paramByte1 = azwz.a(paramByte1);
+        paramByte1 = bayd.a(paramByte1);
         String str1 = a(paramByte2, paramString, paramByte1, paramInt3, paramInt2, false);
         Object localObject1 = a(str1);
         boolean bool;
         String str2;
-        azvr localazvr;
+        bawv localbawv;
         label333:
         Object localObject2;
         if (localObject1 == null) {
@@ -6280,18 +6418,18 @@ public class QQAppInterface
             {
               bool = ((Boolean)((Pair)localObject1).first).booleanValue();
               str2 = a(paramByte2, paramString, paramInt3);
-              localazvr = a(str2);
-              if (localazvr.jdField_a_of_type_Int != 0) {
-                QLog.i("Q.qqhead.qaif", 2, "getFaceBitmap decodeFile fail, faceType=" + paramByte2 + ", uin=" + paramString + ", result=" + localazvr.jdField_a_of_type_Int + ", facePath=" + str2);
+              localbawv = a(str2);
+              if (localbawv.jdField_a_of_type_Int != 0) {
+                QLog.i("Q.qqhead.qaif", 2, "getFaceBitmap decodeFile fail, faceType=" + paramByte2 + ", uin=" + paramString + ", result=" + localbawv.jdField_a_of_type_Int + ", facePath=" + str2);
               }
-              if ((!bool) && (localazvr.jdField_a_of_type_Int == 1)) {
+              if ((!bool) && (localbawv.jdField_a_of_type_Int == 1)) {
                 return null;
               }
-              if (localazvr.jdField_a_of_type_Int != 2)
+              if (localbawv.jdField_a_of_type_Int != 2)
               {
                 paramInt1 = 1;
-                localObject1 = localazvr.jdField_a_of_type_AndroidGraphicsBitmap;
-                if ((localObject1 == null) && (localazvr.jdField_a_of_type_Int != 1) && (paramInt1 != 0))
+                localObject1 = localbawv.jdField_a_of_type_AndroidGraphicsBitmap;
+                if ((localObject1 == null) && (localbawv.jdField_a_of_type_Int != 1) && (paramInt1 != 0))
                 {
                   if (paramByte2 != 4) {
                     break label1025;
@@ -6318,7 +6456,7 @@ public class QQAppInterface
               {
                 paramInt2 += 1;
                 this.jdField_a_of_type_JavaUtilHashMap.put(localObject2, Integer.valueOf(paramInt2));
-                bace.d(str2);
+                bbdj.d(str2);
                 QLog.i("Q.qqhead.qaif", 1, "getFaceBitmap|file is damaged, key = " + (String)localObject2 + ", del the damaged file,nDecodeFailCount=" + paramInt2);
               }
               if (localObject1 == null) {
@@ -6336,7 +6474,7 @@ public class QQAppInterface
               if (QLog.isColorLevel()) {
                 QLog.i("Q.qqhead.", 2, "getFaceBitmap decode success, faceType=" + paramByte2 + ", uin=" + paramString + ", shape=" + paramByte1 + ", path=" + str2 + ", bmp=" + localObject1);
               }
-              a(str1, (Bitmap)localObject1, azwz.a(paramByte2));
+              a(str1, (Bitmap)localObject1, bayd.a(paramByte2));
               if (((localObject1 == null) && (paramBoolean) && (paramInt1 == 0)) || (bool))
               {
                 if (QLog.isColorLevel()) {
@@ -6359,13 +6497,13 @@ public class QQAppInterface
               break;
             }
           }
-          localObject1 = a((Bitmap)localObject1, bacm.a(((Bitmap)localObject1).getWidth()), 50, 50);
+          localObject1 = a((Bitmap)localObject1, bbdr.a(((Bitmap)localObject1).getWidth()), 50, 50);
           continue;
           localObject1 = a((Bitmap)localObject1, 50, 50);
           continue;
           continue;
           label895:
-          if ((QLog.isColorLevel()) && (localazvr.jdField_a_of_type_Int == 0)) {
+          if ((QLog.isColorLevel()) && (localbawv.jdField_a_of_type_Int == 0)) {
             QLog.i("Q.qqhead.qaif", 2, "getFaceBitmap decode shape fail, faceType=" + paramByte2 + ", uin=" + paramString + ", shape=" + paramByte1);
           }
           continue;
@@ -6413,7 +6551,7 @@ public class QQAppInterface
   
   public Bitmap a(Bitmap paramBitmap)
   {
-    return bacm.c(paramBitmap, 50, 50);
+    return bbdr.c(paramBitmap, 50, 50);
   }
   
   public Bitmap a(String paramString)
@@ -6459,14 +6597,14 @@ public class QQAppInterface
     Object localObject = a(4, paramString, paramByte, true, 0);
     paramString = (String)localObject;
     if (localObject == null) {
-      paramString = bacm.f();
+      paramString = bbdr.f();
     }
     localObject = paramString;
     if (paramString != null)
     {
       localObject = paramString;
       if (paramBoolean1) {
-        localObject = bacm.a(paramString);
+        localObject = bbdr.a(paramString);
       }
     }
     paramString = (String)localObject;
@@ -6504,7 +6642,7 @@ public class QQAppInterface
     }
     localObject = paramString;
     if (paramString == null) {
-      localObject = bacm.c();
+      localObject = bbdr.c();
     }
     return localObject;
   }
@@ -6513,7 +6651,7 @@ public class QQAppInterface
   {
     Object localObject = a(1, paramString, paramByte, true, 0);
     if ((localObject != null) && (paramBoolean)) {
-      localObject = bacm.a((Bitmap)localObject);
+      localObject = bbdr.a((Bitmap)localObject);
     }
     for (;;)
     {
@@ -6523,7 +6661,7 @@ public class QQAppInterface
       }
       localObject = paramString;
       if (paramString == null) {
-        localObject = bacm.b();
+        localObject = bbdr.b();
       }
       return localObject;
     }
@@ -6548,10 +6686,10 @@ public class QQAppInterface
       if (!TextUtils.isEmpty(str))
       {
         localObject2 = localObject1;
-        if (this.jdField_a_of_type_Atmp != null)
+        if (this.jdField_a_of_type_Aukn != null)
         {
-          J();
-          localObject1 = (Setting)this.jdField_a_of_type_Atmp.a(Setting.class, str);
+          M();
+          localObject1 = (Setting)this.jdField_a_of_type_Aukn.a(Setting.class, str);
           localObject2 = localObject1;
           if (localObject1 != null)
           {
@@ -6593,7 +6731,7 @@ public class QQAppInterface
     boolean bool = false;
     paramString = a(1, paramString, paramByte, true, 0);
     if (paramString == null) {
-      paramString = bacm.a();
+      paramString = bbdr.a();
     }
     for (;;)
     {
@@ -6602,60 +6740,60 @@ public class QQAppInterface
     }
   }
   
-  public aodw a()
+  public aouq a()
   {
-    if (this.jdField_a_of_type_Aodw == null) {}
+    if (this.jdField_a_of_type_Aouq == null) {}
     try
     {
-      if (this.jdField_a_of_type_Aodw == null) {
-        this.jdField_a_of_type_Aodw = new aodw(this);
+      if (this.jdField_a_of_type_Aouq == null) {
+        this.jdField_a_of_type_Aouq = new aouq(this);
       }
-      return this.jdField_a_of_type_Aodw;
+      return this.jdField_a_of_type_Aouq;
     }
     finally {}
   }
   
-  public aofe a()
+  public aovy a()
   {
-    if (this.jdField_a_of_type_Aofe == null) {
-      this.jdField_a_of_type_Aofe = new aofe(this);
+    if (this.jdField_a_of_type_Aovy == null) {
+      this.jdField_a_of_type_Aovy = new aovy(this);
     }
-    return this.jdField_a_of_type_Aofe;
+    return this.jdField_a_of_type_Aovy;
   }
   
-  public aoig a()
+  public aoza a()
   {
-    if (this.jdField_a_of_type_Aoig == null) {
-      this.jdField_a_of_type_Aoig = new aoig(this);
+    if (this.jdField_a_of_type_Aoza == null) {
+      this.jdField_a_of_type_Aoza = new aoza(this);
     }
-    return this.jdField_a_of_type_Aoig;
+    return this.jdField_a_of_type_Aoza;
   }
   
-  public aoii a()
+  public aozc a()
   {
-    if (this.jdField_a_of_type_Aoii == null) {
-      this.jdField_a_of_type_Aoii = new aoii(this);
+    if (this.jdField_a_of_type_Aozc == null) {
+      this.jdField_a_of_type_Aozc = new aozc(this);
     }
-    return this.jdField_a_of_type_Aoii;
+    return this.jdField_a_of_type_Aozc;
   }
   
-  public aoik a()
+  public aoze a()
   {
-    if (this.jdField_a_of_type_Aoik == null) {
-      this.jdField_a_of_type_Aoik = new aoik(this);
+    if (this.jdField_a_of_type_Aoze == null) {
+      this.jdField_a_of_type_Aoze = new aoze(this);
     }
-    return this.jdField_a_of_type_Aoik;
+    return this.jdField_a_of_type_Aoze;
   }
   
-  public aoke a()
+  public apay a()
   {
-    if (this.jdField_a_of_type_Aoke == null) {
-      this.jdField_a_of_type_Aoke = new aoke(this);
+    if (this.jdField_a_of_type_Apay == null) {
+      this.jdField_a_of_type_Apay = new apay(this);
     }
-    return this.jdField_a_of_type_Aoke;
+    return this.jdField_a_of_type_Apay;
   }
   
-  public aons a()
+  public apen a()
   {
     ProxyManager localProxyManager = a();
     if (localProxyManager != null) {
@@ -6664,7 +6802,7 @@ public class QQAppInterface
     return null;
   }
   
-  public apeh a()
+  public apwb a()
   {
     ProxyManager localProxyManager = a();
     if (localProxyManager != null) {
@@ -6673,123 +6811,123 @@ public class QQAppInterface
     return null;
   }
   
-  public arxt a()
+  public astx a()
   {
-    if (this.jdField_a_of_type_Arxt == null) {}
+    if (this.jdField_a_of_type_Astx == null) {}
     try
     {
-      if (this.jdField_a_of_type_Arxt == null) {
-        this.jdField_a_of_type_Arxt = new arxt(this);
+      if (this.jdField_a_of_type_Astx == null) {
+        this.jdField_a_of_type_Astx = new astx(this);
       }
-      return this.jdField_a_of_type_Arxt;
+      return this.jdField_a_of_type_Astx;
     }
     finally {}
   }
   
-  public asep a()
+  public atat a()
   {
-    return (asep)getManager(116);
+    return (atat)getManager(116);
   }
   
-  public aufl a()
+  public aver a()
   {
-    if (this.jdField_a_of_type_Aufl == null) {
-      this.jdField_a_of_type_Aufl = ((aufl)getManager(38));
+    if (this.jdField_a_of_type_Aver == null) {
+      this.jdField_a_of_type_Aver = ((aver)getManager(38));
     }
-    return this.jdField_a_of_type_Aufl;
+    return this.jdField_a_of_type_Aver;
   }
   
-  public aunz a()
+  public avnh a()
   {
-    return (aunz)getManager(91);
+    return (avnh)getManager(91);
   }
   
-  public avhb a()
+  public awgu a()
   {
-    if (this.jdField_a_of_type_Avhb == null) {
-      this.jdField_a_of_type_Avhb = ((avhb)getManager(136));
+    if (this.jdField_a_of_type_Awgu == null) {
+      this.jdField_a_of_type_Awgu = ((awgu)getManager(136));
     }
-    return this.jdField_a_of_type_Avhb;
+    return this.jdField_a_of_type_Awgu;
   }
   
-  public awao a()
+  public awzw a()
   {
-    if (this.jdField_a_of_type_Awao == null) {}
-    synchronized (this.jdField_a_of_type_ArrayOfAjfb)
+    if (this.jdField_a_of_type_Awzw == null) {}
+    synchronized (this.jdField_a_of_type_ArrayOfAjtd)
     {
-      if (this.jdField_a_of_type_Awao == null) {
-        this.jdField_a_of_type_Awao = new awao(this);
+      if (this.jdField_a_of_type_Awzw == null) {
+        this.jdField_a_of_type_Awzw = new awzw(this);
       }
-      return this.jdField_a_of_type_Awao;
+      return this.jdField_a_of_type_Awzw;
     }
   }
   
-  public awer a()
+  public axdz a()
   {
-    if (this.jdField_a_of_type_Awer == null) {
-      this.jdField_a_of_type_Awer = ((awer)getManager(95));
+    if (this.jdField_a_of_type_Axdz == null) {
+      this.jdField_a_of_type_Axdz = ((axdz)getManager(95));
     }
-    return this.jdField_a_of_type_Awer;
+    return this.jdField_a_of_type_Axdz;
   }
   
-  public awqx a()
+  public axqw a()
   {
-    if (this.jdField_a_of_type_Awqx == null) {}
+    if (this.jdField_a_of_type_Axqw == null) {}
     try
     {
-      if (this.jdField_a_of_type_Awqx == null) {
-        this.jdField_a_of_type_Awqx = ReportControllerImpl.a(this);
+      if (this.jdField_a_of_type_Axqw == null) {
+        this.jdField_a_of_type_Axqw = ReportControllerImpl.a(this);
       }
-      return this.jdField_a_of_type_Awqx;
+      return this.jdField_a_of_type_Axqw;
     }
     finally {}
   }
   
-  public axvo a()
+  public ayvv a()
   {
-    if (this.jdField_a_of_type_Axvo == null) {}
+    if (this.jdField_a_of_type_Ayvv == null) {}
     try
     {
-      if (this.jdField_a_of_type_Axvo == null) {
-        this.jdField_a_of_type_Axvo = new axvo(this);
+      if (this.jdField_a_of_type_Ayvv == null) {
+        this.jdField_a_of_type_Ayvv = new ayvv(this);
       }
-      return this.jdField_a_of_type_Axvo;
+      return this.jdField_a_of_type_Ayvv;
     }
     finally {}
   }
   
   @NonNull
-  public azvr a(String paramString)
+  public bawv a(String paramString)
   {
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inPreferredConfig = jdField_a_of_type_AndroidGraphicsBitmap$Config;
-    azvr localazvr = new azvr();
+    bawv localbawv = new bawv();
     int i1 = 0;
     do
     {
-      azvq.a(paramString, localOptions, localazvr);
-      if (localazvr.jdField_a_of_type_Int == 1) {
-        K();
+      bawu.a(paramString, localOptions, localbawv);
+      if (localbawv.jdField_a_of_type_Int == 1) {
+        N();
       }
       i1 += 1;
-    } while ((i1 < 2) && (localazvr.jdField_a_of_type_Int == 1));
-    return localazvr;
+    } while ((i1 < 2) && (localbawv.jdField_a_of_type_Int == 1));
+    return localbawv;
   }
   
-  public bffc a()
+  public bgmt a()
   {
-    if (this.jdField_a_of_type_Bffc == null) {
-      this.jdField_a_of_type_Bffc = new bffc(this);
+    if (this.jdField_a_of_type_Bgmt == null) {
+      this.jdField_a_of_type_Bgmt = new bgmt(this);
     }
-    return this.jdField_a_of_type_Bffc;
+    return this.jdField_a_of_type_Bgmt;
   }
   
-  public bffx a()
+  public bgno a()
   {
-    if (this.jdField_a_of_type_Bffx == null) {
-      this.jdField_a_of_type_Bffx = new bffx(this);
+    if (this.jdField_a_of_type_Bgno == null) {
+      this.jdField_a_of_type_Bgno = new bgno(this);
     }
-    return this.jdField_a_of_type_Bffx;
+    return this.jdField_a_of_type_Bgno;
   }
   
   public AVNotifyCenter a()
@@ -6818,9 +6956,9 @@ public class QQAppInterface
   
   public SQLiteDatabase a()
   {
-    ajrl localajrl = a();
-    if (localajrl != null) {
-      return localajrl.a();
+    akfv localakfv = a();
+    if (localakfv != null) {
+      return localakfv.a();
     }
     return null;
   }
@@ -6852,18 +6990,18 @@ public class QQAppInterface
   
   public ExtensionInfo a(String paramString, boolean paramBoolean)
   {
-    ajjj localajjj = (ajjj)getManager(51);
-    if ((localajjj != null) && (this.jdField_a_of_type_Atmp != null))
+    ajxn localajxn = (ajxn)getManager(51);
+    if ((localajxn != null) && (this.jdField_a_of_type_Aukn != null))
     {
-      ExtensionInfo localExtensionInfo2 = localajjj.a(paramString, false);
+      ExtensionInfo localExtensionInfo2 = localajxn.a(paramString, false);
       ExtensionInfo localExtensionInfo1 = localExtensionInfo2;
       if (localExtensionInfo2 == null)
       {
         localExtensionInfo1 = localExtensionInfo2;
         if (paramBoolean)
         {
-          localExtensionInfo1 = (ExtensionInfo)this.jdField_a_of_type_Atmp.a(ExtensionInfo.class, paramString);
-          localajjj.a(localExtensionInfo1);
+          localExtensionInfo1 = (ExtensionInfo)this.jdField_a_of_type_Aukn.a(ExtensionInfo.class, paramString);
+          localajxn.a(localExtensionInfo1);
         }
       }
       return localExtensionInfo1;
@@ -6878,7 +7016,7 @@ public class QQAppInterface
   
   public Setting a(String paramString)
   {
-    return (Setting)this.jdField_a_of_type_Atmp.a(Setting.class, paramString);
+    return (Setting)this.jdField_a_of_type_Aukn.a(Setting.class, paramString);
   }
   
   public PicPreDownloader a()
@@ -6918,8 +7056,8 @@ public class QQAppInterface
     paramString = MD5.toMD5((String)localObject + paramString);
     localObject = new StringBuilder(256);
     if (paramInt == 4) {
-      if (azzu.a()) {
-        ((StringBuilder)localObject).append(ajed.bB);
+      if (bbay.a()) {
+        ((StringBuilder)localObject).append(ajsf.bJ);
       }
     }
     for (;;)
@@ -6932,8 +7070,8 @@ public class QQAppInterface
       return ((StringBuilder)localObject).toString();
       ((StringBuilder)localObject).append("/data/data/com.tencent.mobileqq/files/head/_thd/");
       continue;
-      if (azzu.a()) {
-        ((StringBuilder)localObject).append(ajed.bA);
+      if (bbay.a()) {
+        ((StringBuilder)localObject).append(ajsf.bI);
       } else {
         ((StringBuilder)localObject).append("/data/data/com.tencent.mobileqq/files/head/_hd/");
       }
@@ -7012,7 +7150,7 @@ public class QQAppInterface
       return "";
     }
     int i1 = paramSetting.bUsrType;
-    String str = azzz.c(paramSetting.uin);
+    String str = bbbd.c(paramSetting.uin);
     if (TextUtils.isEmpty(str)) {
       return "";
     }
@@ -7039,9 +7177,9 @@ public class QQAppInterface
     }
     paramSetting = new StringBuilder(256);
     if (paramInt1 == 32) {
-      if (azzu.a())
+      if (bbay.a())
       {
-        paramSetting.append(ajed.bC);
+        paramSetting.append(ajsf.bK);
         localObject = a((Setting)localObject, paramString, paramInt1);
         switch (((Integer)localObject[0]).intValue())
         {
@@ -7057,9 +7195,9 @@ public class QQAppInterface
       return paramSetting.toString();
       paramSetting.append("/data/data/com.tencent.mobileqq/files/head/_stranger/");
       break;
-      if (azzu.a())
+      if (bbay.a())
       {
-        paramSetting.append(ajed.bA);
+        paramSetting.append(ajsf.bI);
         break;
       }
       paramSetting.append("/data/data/com.tencent.mobileqq/files/head/_hd/");
@@ -7134,10 +7272,10 @@ public class QQAppInterface
       {
         localObject = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<ServerConfig>" + (String)localObject + "</ServerConfig>";
         XMLReader localXMLReader = SAXParserFactory.newInstance().newSAXParser().getXMLReader();
-        ajpu localajpu = new ajpu(this);
-        localXMLReader.setContentHandler(localajpu);
+        akee localakee = new akee(this);
+        localXMLReader.setContentHandler(localakee);
         localXMLReader.parse(new InputSource(new ByteArrayInputStream(((String)localObject).getBytes("UTF-8"))));
-        localObject = localajpu.a();
+        localObject = localakee.a();
         this.jdField_b_of_type_JavaUtilHashtable.put(paramConfigType, localObject);
         this.jdField_b_of_type_JavaUtilHashMap.put(paramConfigType, Long.valueOf(l1));
         l1 = System.currentTimeMillis() - l1;
@@ -7148,7 +7286,7 @@ public class QQAppInterface
           QLog.d("QQAppInterface", 2, localStringBuilder.toString());
         }
         if (l1 > 2000L) {
-          awrn.a(BaseApplicationImpl.getContext()).a(getCurrentAccountUin(), "getConfigLongCost", true, l1, 0L, null, null);
+          axrl.a(BaseApplicationImpl.getContext()).a(getCurrentAccountUin(), "getConfigLongCost", true, l1, 0L, null, null);
         }
         paramConfigType = (String)((HashMap)localObject).get(paramString);
         return paramConfigType;
@@ -7180,63 +7318,63 @@ public class QQAppInterface
     //   1: astore 6
     //   3: aconst_null
     //   4: astore 4
-    //   6: new 357	java/util/HashMap
+    //   6: new 358	java/util/HashMap
     //   9: dup
-    //   10: invokespecial 358	java/util/HashMap:<init>	()V
+    //   10: invokespecial 359	java/util/HashMap:<init>	()V
     //   13: astore 7
     //   15: aload_0
-    //   16: getfield 489	com/tencent/mobileqq/app/QQAppInterface:app	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   19: invokevirtual 3921	com/tencent/common/app/BaseApplicationImpl:getContentResolver	()Landroid/content/ContentResolver;
-    //   22: new 137	java/lang/StringBuilder
+    //   16: getfield 490	com/tencent/mobileqq/app/QQAppInterface:app	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   19: invokevirtual 3971	com/tencent/common/app/BaseApplicationImpl:getContentResolver	()Landroid/content/ContentResolver;
+    //   22: new 138	java/lang/StringBuilder
     //   25: dup
-    //   26: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   29: ldc_w 3923
-    //   32: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   29: ldc_w 3973
+    //   32: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: aload_0
-    //   36: invokevirtual 711	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   39: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   45: invokestatic 3928	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   36: invokevirtual 715	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   39: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   45: invokestatic 3978	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   48: iconst_1
-    //   49: anewarray 131	java/lang/String
+    //   49: anewarray 132	java/lang/String
     //   52: dup
     //   53: iconst_0
-    //   54: ldc_w 3930
+    //   54: ldc_w 3980
     //   57: aastore
     //   58: aconst_null
     //   59: aconst_null
     //   60: aconst_null
-    //   61: invokevirtual 3936	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   61: invokevirtual 3986	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   64: astore_3
     //   65: aload_3
     //   66: astore 4
     //   68: aload 4
     //   70: ifnull +133 -> 203
     //   73: aload 4
-    //   75: invokeinterface 3941 1 0
+    //   75: invokeinterface 3991 1 0
     //   80: ifle +123 -> 203
     //   83: aload 4
-    //   85: ldc_w 3930
-    //   88: invokeinterface 3944 2 0
+    //   85: ldc_w 3980
+    //   88: invokeinterface 3994 2 0
     //   93: istore_2
-    //   94: new 249	java/util/ArrayList
+    //   94: new 250	java/util/ArrayList
     //   97: dup
-    //   98: invokespecial 250	java/util/ArrayList:<init>	()V
+    //   98: invokespecial 251	java/util/ArrayList:<init>	()V
     //   101: astore 5
     //   103: aload 5
     //   105: astore_3
     //   106: aload 4
-    //   108: invokeinterface 3947 1 0
+    //   108: invokeinterface 3997 1 0
     //   113: ifeq +92 -> 205
     //   116: aload 4
     //   118: iload_2
-    //   119: invokeinterface 3948 2 0
+    //   119: invokeinterface 3998 2 0
     //   124: astore_3
     //   125: aload_3
     //   126: ifnull -23 -> 103
     //   129: aload 5
     //   131: aload_3
-    //   132: invokevirtual 1320	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   132: invokevirtual 1294	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   135: pop
     //   136: goto -33 -> 103
     //   139: astore_3
@@ -7247,25 +7385,25 @@ public class QQAppInterface
     //   146: aload 4
     //   148: ifnull +460 -> 608
     //   151: aload 4
-    //   153: invokeinterface 3951 1 0
+    //   153: invokeinterface 4001 1 0
     //   158: iload_1
     //   159: bipush 254
     //   161: if_icmpne +77 -> 238
     //   164: aload_3
     //   165: ifnull +35 -> 200
     //   168: aload_3
-    //   169: invokevirtual 693	java/util/ArrayList:size	()I
+    //   169: invokevirtual 697	java/util/ArrayList:size	()I
     //   172: ifle +28 -> 200
     //   175: aload 7
     //   177: bipush 254
-    //   179: invokestatic 2228	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   179: invokestatic 2199	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   182: aload_3
     //   183: aload_3
-    //   184: invokevirtual 693	java/util/ArrayList:size	()I
-    //   187: anewarray 131	java/lang/String
-    //   190: invokevirtual 3955	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
-    //   193: checkcast 3957	[Ljava/lang/String;
-    //   196: invokevirtual 3269	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   184: invokevirtual 697	java/util/ArrayList:size	()I
+    //   187: anewarray 132	java/lang/String
+    //   190: invokevirtual 4005	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
+    //   193: checkcast 4007	[Ljava/lang/String;
+    //   196: invokevirtual 3282	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   199: pop
     //   200: aload 7
     //   202: areturn
@@ -7276,51 +7414,51 @@ public class QQAppInterface
     //   208: aload 4
     //   210: ifnull +398 -> 608
     //   213: aload 4
-    //   215: invokeinterface 3951 1 0
+    //   215: invokeinterface 4001 1 0
     //   220: goto -62 -> 158
     //   223: astore_3
     //   224: aload 4
     //   226: ifnull +10 -> 236
     //   229: aload 4
-    //   231: invokeinterface 3951 1 0
+    //   231: invokeinterface 4001 1 0
     //   236: aload_3
     //   237: athrow
     //   238: aload_3
     //   239: ifnull +357 -> 596
     //   242: aload_0
     //   243: aload_3
-    //   244: invokevirtual 3960	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/util/List;)Ljava/util/Map;
+    //   244: invokevirtual 4010	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/util/List;)Ljava/util/Map;
     //   247: astore 8
     //   249: aload 8
     //   251: ifnull +316 -> 567
-    //   254: new 249	java/util/ArrayList
+    //   254: new 250	java/util/ArrayList
     //   257: dup
-    //   258: invokespecial 250	java/util/ArrayList:<init>	()V
+    //   258: invokespecial 251	java/util/ArrayList:<init>	()V
     //   261: astore 6
-    //   263: new 249	java/util/ArrayList
+    //   263: new 250	java/util/ArrayList
     //   266: dup
-    //   267: invokespecial 250	java/util/ArrayList:<init>	()V
+    //   267: invokespecial 251	java/util/ArrayList:<init>	()V
     //   270: astore 4
-    //   272: new 249	java/util/ArrayList
+    //   272: new 250	java/util/ArrayList
     //   275: dup
-    //   276: invokespecial 250	java/util/ArrayList:<init>	()V
+    //   276: invokespecial 251	java/util/ArrayList:<init>	()V
     //   279: astore 5
     //   281: iconst_0
     //   282: istore_2
     //   283: iload_2
     //   284: aload_3
-    //   285: invokevirtual 693	java/util/ArrayList:size	()I
+    //   285: invokevirtual 697	java/util/ArrayList:size	()I
     //   288: if_icmpge +130 -> 418
     //   291: aload_3
     //   292: iload_2
-    //   293: invokevirtual 1330	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   296: checkcast 131	java/lang/String
+    //   293: invokevirtual 1305	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   296: checkcast 132	java/lang/String
     //   299: astore 9
     //   301: aload 8
     //   303: aload 9
-    //   305: invokeinterface 3963 2 0
+    //   305: invokeinterface 4013 2 0
     //   310: checkcast 421	java/lang/Integer
-    //   313: invokevirtual 890	java/lang/Integer:intValue	()I
+    //   313: invokevirtual 826	java/lang/Integer:intValue	()I
     //   316: tableswitch	default:+32 -> 348, 1:+39->355, 2:+60->376, 3:+32->348, 4:+81->397
     //   349: iconst_1
     //   350: iadd
@@ -7334,7 +7472,7 @@ public class QQAppInterface
     //   362: if_icmpne -14 -> 348
     //   365: aload 6
     //   367: aload 9
-    //   369: invokevirtual 1320	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   369: invokevirtual 1294	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   372: pop
     //   373: goto -25 -> 348
     //   376: iload_1
@@ -7345,7 +7483,7 @@ public class QQAppInterface
     //   383: if_icmpne -35 -> 348
     //   386: aload 4
     //   388: aload 9
-    //   390: invokevirtual 1320	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   390: invokevirtual 1294	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   393: pop
     //   394: goto -46 -> 348
     //   397: iload_1
@@ -7356,7 +7494,7 @@ public class QQAppInterface
     //   404: if_icmpne -56 -> 348
     //   407: aload 5
     //   409: aload 9
-    //   411: invokevirtual 1320	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   411: invokevirtual 1294	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   414: pop
     //   415: goto -67 -> 348
     //   418: aload 6
@@ -7364,7 +7502,7 @@ public class QQAppInterface
     //   421: aload_3
     //   422: ifnull +44 -> 466
     //   425: aload_3
-    //   426: invokevirtual 693	java/util/ArrayList:size	()I
+    //   426: invokevirtual 697	java/util/ArrayList:size	()I
     //   429: ifle +37 -> 466
     //   432: iload_1
     //   433: iconst_m1
@@ -7374,19 +7512,19 @@ public class QQAppInterface
     //   439: if_icmpne +27 -> 466
     //   442: aload 7
     //   444: iconst_1
-    //   445: invokestatic 2228	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   445: invokestatic 2199	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   448: aload_3
     //   449: aload_3
-    //   450: invokevirtual 693	java/util/ArrayList:size	()I
-    //   453: anewarray 131	java/lang/String
-    //   456: invokevirtual 3955	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
-    //   459: checkcast 3957	[Ljava/lang/String;
-    //   462: invokevirtual 3269	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   450: invokevirtual 697	java/util/ArrayList:size	()I
+    //   453: anewarray 132	java/lang/String
+    //   456: invokevirtual 4005	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
+    //   459: checkcast 4007	[Ljava/lang/String;
+    //   462: invokevirtual 3282	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   465: pop
     //   466: aload 4
     //   468: ifnull +47 -> 515
     //   471: aload 4
-    //   473: invokevirtual 693	java/util/ArrayList:size	()I
+    //   473: invokevirtual 697	java/util/ArrayList:size	()I
     //   476: ifle +39 -> 515
     //   479: iload_1
     //   480: iconst_m1
@@ -7396,19 +7534,19 @@ public class QQAppInterface
     //   486: if_icmpne +29 -> 515
     //   489: aload 7
     //   491: iconst_2
-    //   492: invokestatic 2228	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   492: invokestatic 2199	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   495: aload 4
     //   497: aload 4
-    //   499: invokevirtual 693	java/util/ArrayList:size	()I
-    //   502: anewarray 131	java/lang/String
-    //   505: invokevirtual 3955	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
-    //   508: checkcast 3957	[Ljava/lang/String;
-    //   511: invokevirtual 3269	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   499: invokevirtual 697	java/util/ArrayList:size	()I
+    //   502: anewarray 132	java/lang/String
+    //   505: invokevirtual 4005	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
+    //   508: checkcast 4007	[Ljava/lang/String;
+    //   511: invokevirtual 3282	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   514: pop
     //   515: aload 5
     //   517: ifnull +47 -> 564
     //   520: aload 5
-    //   522: invokevirtual 693	java/util/ArrayList:size	()I
+    //   522: invokevirtual 697	java/util/ArrayList:size	()I
     //   525: ifle +39 -> 564
     //   528: iload_1
     //   529: iconst_m1
@@ -7418,14 +7556,14 @@ public class QQAppInterface
     //   535: if_icmpne +29 -> 564
     //   538: aload 7
     //   540: iconst_4
-    //   541: invokestatic 2228	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   541: invokestatic 2199	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   544: aload 5
     //   546: aload 5
-    //   548: invokevirtual 693	java/util/ArrayList:size	()I
-    //   551: anewarray 131	java/lang/String
-    //   554: invokevirtual 3955	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
-    //   557: checkcast 3957	[Ljava/lang/String;
-    //   560: invokevirtual 3269	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   548: invokevirtual 697	java/util/ArrayList:size	()I
+    //   551: anewarray 132	java/lang/String
+    //   554: invokevirtual 4005	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
+    //   557: checkcast 4007	[Ljava/lang/String;
+    //   560: invokevirtual 3282	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   563: pop
     //   564: aload 7
     //   566: areturn
@@ -7491,32 +7629,32 @@ public class QQAppInterface
   
   public List<LebaPluginInfo> a()
   {
-    if (this.jdField_a_of_type_Ajlh != null) {
-      return this.jdField_a_of_type_Ajlh.a();
+    if (this.jdField_a_of_type_Ajzo != null) {
+      return this.jdField_a_of_type_Ajzo.a();
     }
     return null;
   }
   
   public Map<String, Integer> a(List<String> paramList)
   {
-    bahr localbahr = (bahr)getManager(31);
-    if (localbahr != null) {
-      return localbahr.a(paramList, 1);
+    bbix localbbix = (bbix)getManager(31);
+    if (localbbix != null) {
+      return localbbix.a(paramList, 1);
     }
     return null;
   }
   
-  public ktu a()
+  public lej a()
   {
-    if (this.jdField_a_of_type_Ktu == null) {
-      this.jdField_a_of_type_Ktu = new ktu(this);
+    if (this.jdField_a_of_type_Lej == null) {
+      this.jdField_a_of_type_Lej = new lej(this);
     }
-    return this.jdField_a_of_type_Ktu;
+    return this.jdField_a_of_type_Lej;
   }
   
-  public msg a()
+  public ndh a()
   {
-    return (msg)getManager(171);
+    return (ndh)getManager(171);
   }
   
   public void a()
@@ -7530,14 +7668,14 @@ public class QQAppInterface
     if (QLog.isColorLevel()) {
       QLog.i("qqfav", 2, "Wifi, tryReuploadQfavItems");
     }
-    bfhn.a(this);
+    bgpf.a(this);
   }
   
   public void a(int paramInt)
   {
     try
     {
-      ((ajfi)a(2)).b(paramInt);
+      ((ajtk)a(2)).b(paramInt);
       return;
     }
     catch (Exception localException)
@@ -7641,7 +7779,7 @@ public class QQAppInterface
   
   public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i1 = 0;
+    int i2 = 0;
     if (QLog.isColorLevel()) {
       QLog.d("notification", 2, "receivedMsgNotification , size is:" + paramInt + ",isOnline is:" + paramBoolean2);
     }
@@ -7651,7 +7789,9 @@ public class QQAppInterface
     label176:
     boolean bool;
     label832:
-    ajvm localajvm;
+    int i1;
+    label961:
+    akjw localakjw;
     do
     {
       do
@@ -7711,24 +7851,24 @@ public class QQAppInterface
                         if (QLog.isColorLevel()) {
                           QLog.d("notification", 2, "receive gamecenter push message " + paramInt);
                         }
-                        ((baot)a(71)).a(1, ((QQMessageFacade)localObject).a("2747277822", 1008, paramInt));
+                        ((bbqp)a(71)).a(1, ((QQMessageFacade)localObject).a("2747277822", 1008, paramInt));
                       }
-                    } while ((1036 == localMessage.istroop) || ((1008 == localMessage.istroop) && (localMessage.senderuin != null) && (rqn.a().a(this, localMessage.senderuin, localMessage.istroop))) || (akbm.d(localMessage.senderuin)) || (localMessage.msgtype == -2058));
+                    } while ((1036 == localMessage.istroop) || ((1008 == localMessage.istroop) && (localMessage.senderuin != null) && (sdf.a().a(this, localMessage.senderuin, localMessage.istroop))) || (akpy.d(localMessage.senderuin)) || (localMessage.msgtype == -2058));
                     if (localMessage.istroop == 1008)
                     {
                       if ((localMessage.extStr == null) || (((localMessage.extLong & 0x1) == 0) && (!localMessage.extStr.contains("lockDisplay"))))
                       {
-                        C();
+                        D();
                         return;
                       }
                       if ((localMessage.extStr == null) || (((localMessage.extLong & 0x1) == 1) && (!localMessage.getExtInfoFromExtStr("lockDisplay").equals("true"))))
                       {
-                        C();
+                        D();
                         return;
                       }
                     }
-                  } while ((aqux.b(localMessage)) && (aqux.a(this, localMessage)));
-                  if ((1008 != localMessage.istroop) || ((!ajed.ay.equals(localMessage.frienduin)) && (!ajed.ax.equals(localMessage.frienduin)))) {
+                  } while ((arqn.b(localMessage)) && (arqn.a(this, localMessage)));
+                  if ((1008 != localMessage.istroop) || ((!ajsf.az.equals(localMessage.frienduin)) && (!ajsf.ay.equals(localMessage.frienduin)))) {
                     break;
                   }
                 } while (!QLog.isColorLevel());
@@ -7740,7 +7880,7 @@ public class QQAppInterface
               } while (!QLog.isColorLevel());
               QLog.d("notification", 2, "receivedMsgNotification, not show message InMsgBox");
               return;
-              if ((7220 != localMessage.istroop) || (!ajed.az.equals(localMessage.frienduin)) || (obz.a(this, localMessage))) {
+              if ((7220 != localMessage.istroop) || (!ajsf.aA.equals(localMessage.frienduin)) || (onk.a(this, localMessage))) {
                 break;
               }
             } while (!QLog.isColorLevel());
@@ -7751,33 +7891,33 @@ public class QQAppInterface
               if (QLog.isColorLevel()) {
                 QLog.d("notification", 2, "receivedMsgNotification, online status is dnd");
               }
-              C();
+              D();
               return;
             }
             if (localMessage.istroop != 1038) {
               break;
             }
-            paramInt = ((agxk)getManager(315)).a(localMessage);
+            paramInt = ((ahjz)getManager(315)).a(localMessage);
             if (QLog.isColorLevel()) {
               QLog.d("notification", 2, "receivedMsgNotification, not show message because unreadFlag is " + paramInt);
             }
           } while (paramInt != 2);
           d(localMessage, paramBoolean2);
-          C();
+          D();
           return;
-        } while ((FriendsStatusUtil.a(localMessage.frienduin, this)) || (acxd.a(localMessage.frienduin, localMessage.istroop, this)));
+        } while ((FriendsStatusUtil.a(localMessage.frienduin, this)) || (adie.a(localMessage.frienduin, localMessage.istroop, this)));
         if (!UserguideActivity.a(getApp(), getCurrentAccountUin())) {
           break;
         }
       } while (!QLog.isColorLevel());
       QLog.d("notification", 2, "receivedMsgNotification , showUserGuide");
       return;
-      if (ajnf.a(localMessage))
+      if (akbo.a(localMessage))
       {
         if (QLog.isColorLevel()) {
           QLog.d("notification", 2, "receivedMsgNotification , isSuspiciousSysMsg");
         }
-        C();
+        D();
         return;
       }
       if (QLog.isColorLevel())
@@ -7792,57 +7932,64 @@ public class QQAppInterface
         GuardManager.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b(0, null);
       }
       bool = ((KeyguardManager)this.app.getApplicationContext().getSystemService("keyguard")).inKeyguardRestrictedInputMode();
-      if (((!this.isBackground_Pause) && (!this.isBackground_Stop) && (!bool)) || ((localMessage.istroop != 6000) && (this.jdField_a_of_type_Int != 0) && (((localMessage.istroop == 1001) || (localMessage.istroop == 10002)) && ((localMessage.msgtype != -3001) && (localMessage.istroop != 1008) && (localMessage.istroop != 9002))))) {
-        break label1338;
+      if ((!ajsf.Q.equals(localMessage.frienduin)) || (!onk.t())) {
+        break label1290;
+      }
+      i1 = 1;
+      if (((!this.isBackground_Pause) && (!this.isBackground_Stop) && (!bool) && (i1 == 0)) || ((localMessage.istroop != 6000) && (this.jdField_a_of_type_Int != 0) && (((localMessage.istroop == 1001) || (localMessage.istroop == 10002)) && ((localMessage.msgtype != -3001) && (localMessage.istroop != 1008) && (localMessage.istroop != 9002) && (localMessage.istroop != 7225))))) {
+        break label1383;
       }
       if (localMessage.istroop != 9002) {
-        break label1266;
+        break label1311;
       }
       if ((localMessage.msgData == null) || (localMessage.msgData.length <= 0)) {
-        break label1251;
+        break label1296;
       }
-      localajvm = (ajvm)getManager(85);
-    } while (!localajvm.a(localMessage.msgData));
-    if (localajvm.b(localMessage.msgData)) {
+      localakjw = (akjw)getManager(85);
+    } while (!localakjw.a(localMessage.msgData));
+    if (localakjw.b(localMessage.msgData)) {
       localMessage.counter += paramInt;
     }
-    label1107:
-    befe.a(this, localMessage.istroop, localMessage.msgUid);
+    label1146:
+    bfmy.a(this, localMessage.istroop, localMessage.msgUid);
     OpenApiManager.getInstance().onReceiveNewMsg(localMessage);
     ((QQMessageFacade)localObject).a.b(localMessage);
     if (QLog.isColorLevel()) {
       QLog.d("notification", 2, "receivedMsgNotification , frienduin " + localMessage.frienduin + ",type " + localMessage.istroop + ",counter:" + localMessage.counter);
     }
     a(localMessage, paramBoolean1, paramBoolean2);
-    label1688:
+    label1290:
+    label1296:
+    label1311:
+    label1733:
     for (;;)
     {
-      ((aful)a(147)).a(localMessage.frienduin, localMessage.istroop, localMessage.msgtype);
-      C();
+      ((aggl)a(147)).a(localMessage.frienduin, localMessage.istroop, localMessage.msgtype);
+      D();
       return;
       bool = false;
       break label832;
-      label1251:
+      i1 = 0;
+      break label961;
       localMessage.counter += paramInt;
-      break label1107;
-      label1266:
+      break label1146;
       if (localMessage.istroop == 7220)
       {
         localMessage.counter = 1;
-        break label1107;
+        break label1146;
       }
-      if ((ajed.M.equals(localMessage.frienduin)) || (ajed.aw.equals(localMessage.frienduin)))
+      if ((ajsf.M.equals(localMessage.frienduin)) || (ajsf.ax.equals(localMessage.frienduin)))
       {
         localMessage.counter = paramInt;
-        break label1107;
+        break label1146;
       }
       localMessage.counter += paramInt;
-      break label1107;
-      label1338:
+      break label1146;
+      label1383:
       if ((localMessage.msgtype == -1013) || (localMessage.msgtype == -2030) || (localMessage.msgtype == -1047) || (localMessage.msgtype == -1019) || (localMessage.msgtype == -1018)) {
         break;
       }
-      if ((localMessage.istroop == 1008) && (ajed.u.equals(localMessage.senderuin)))
+      if ((localMessage.istroop == 1008) && (ajsf.u.equals(localMessage.senderuin)))
       {
         d(localMessage, paramBoolean2);
         return;
@@ -7850,18 +7997,17 @@ public class QQAppInterface
       if ((paramBoolean1) && ((localMessage.istroop == 6000) || (this.jdField_a_of_type_Int == 0) || (((localMessage.istroop != 1001) && (localMessage.istroop != 10002)) || ((localMessage.msgtype == -3001) || (localMessage.istroop == 1008) || (localMessage.istroop == 9002)))))
       {
         if (this.jdField_d_of_type_Boolean) {
-          break label1623;
+          break label1668;
         }
         d(localMessage, paramBoolean2);
       }
       for (;;)
       {
         if ((!paramBoolean1) || ((localMessage.istroop != 6000) && (this.jdField_a_of_type_Int != 0) && (((localMessage.istroop != 1001) && (localMessage.istroop != 10002)) || (localMessage.msgtype != -3001))) || ((localMessage.istroop != 1001) && (localMessage.istroop != 10002)) || (localMessage.msgtype != -3001)) {
-          break label1688;
+          break label1733;
         }
         OpenAppClient.a(this.app.getApplicationContext(), localMessage.action);
         break;
-        label1623:
         if ((this.jdField_c_of_type_ArrayOfLong[0] == localMessage.uniseq) && (this.jdField_c_of_type_ArrayOfLong[1] == 1L))
         {
           d(localMessage, paramBoolean2);
@@ -7870,7 +8016,7 @@ public class QQAppInterface
         {
           this.jdField_a_of_type_ArrayOfByte[0] = 1;
           localObject = this.jdField_a_of_type_ArrayOfByte;
-          paramInt = i1;
+          paramInt = i2;
           if (paramBoolean2) {
             paramInt = 1;
           }
@@ -7919,7 +8065,7 @@ public class QQAppInterface
         } while (!QLog.isColorLevel());
         QLog.d("notification", 2, "receivedMsgNotification ,self message");
         return;
-      } while (((paramMessageRecord.senderuin != null) && (1008 == paramMessageRecord.istroop) && (rqn.a().a(this, paramMessageRecord.senderuin, paramMessageRecord.istroop))) || ((paramMessageRecord.istroop == 1008) && ((paramMessageRecord.extStr == null) || (((paramMessageRecord.extLong & 0x1) == 0) && (!paramMessageRecord.extStr.contains("lockDisplay"))) || (paramMessageRecord.extStr == null) || (((paramMessageRecord.extLong & 0x1) == 1) && (!paramMessageRecord.getExtInfoFromExtStr("lockDisplay").equals("true"))))) || ((String.valueOf(ajed.ay).equals(paramMessageRecord.frienduin)) && (1008 == paramMessageRecord.istroop)) || ((String.valueOf(ajed.az).equals(paramMessageRecord.frienduin)) && (7220 == paramMessageRecord.istroop) && (!obz.a(this, paramMessageRecord))));
+      } while (((paramMessageRecord.senderuin != null) && (1008 == paramMessageRecord.istroop) && (sdf.a().a(this, paramMessageRecord.senderuin, paramMessageRecord.istroop))) || ((paramMessageRecord.istroop == 1008) && ((paramMessageRecord.extStr == null) || (((paramMessageRecord.extLong & 0x1) == 0) && (!paramMessageRecord.extStr.contains("lockDisplay"))) || (paramMessageRecord.extStr == null) || (((paramMessageRecord.extLong & 0x1) == 1) && (!paramMessageRecord.getExtInfoFromExtStr("lockDisplay").equals("true"))))) || ((String.valueOf(ajsf.az).equals(paramMessageRecord.frienduin)) && (1008 == paramMessageRecord.istroop)) || ((String.valueOf(ajsf.aA).equals(paramMessageRecord.frienduin)) && (7220 == paramMessageRecord.istroop) && (!onk.a(this, paramMessageRecord))));
       if (!UserguideActivity.a(getApp(), getCurrentAccountUin())) {
         break;
       }
@@ -7981,47 +8127,47 @@ public class QQAppInterface
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
   }
   
-  public void a(ajfe paramajfe)
+  public void a(ajtg paramajtg)
   {
     synchronized (this.jdField_c_of_type_JavaUtilList)
     {
-      if (!this.jdField_c_of_type_JavaUtilList.contains(paramajfe)) {
-        this.jdField_c_of_type_JavaUtilList.add(paramajfe);
+      if (!this.jdField_c_of_type_JavaUtilList.contains(paramajtg)) {
+        this.jdField_c_of_type_JavaUtilList.add(paramajtg);
       }
       return;
     }
   }
   
-  public void a(ajfq paramajfq)
+  public void a(ajts paramajts)
   {
-    this.jdField_a_of_type_Ajfq = paramajfq;
+    this.jdField_a_of_type_Ajts = paramajts;
   }
   
-  public void a(ajfr paramajfr)
+  public void a(ajtt paramajtt)
   {
-    this.jdField_a_of_type_Ajfr = paramajfr;
+    this.jdField_a_of_type_Ajtt = paramajtt;
   }
   
-  public void a(ajmt paramajmt)
+  public void a(akbc paramakbc)
   {
-    this.jdField_a_of_type_Ajmt = paramajmt;
+    this.jdField_a_of_type_Akbc = paramakbc;
     if (QLog.isColorLevel()) {
-      QLog.i("QQAppInterface", 2, "setMsgTabUnreadListener lis: " + paramajmt);
+      QLog.i("QQAppInterface", 2, "setMsgTabUnreadListener lis: " + paramakbc);
     }
   }
   
-  public void a(ajmu paramajmu)
+  public void a(akbd paramakbd)
   {
-    this.jdField_a_of_type_Ajmu = paramajmu;
+    this.jdField_a_of_type_Akbd = paramakbd;
   }
   
-  public void a(ajux paramajux)
+  public void a(akjh paramakjh)
   {
-    if (paramajux == null) {}
-    while (this.jdField_d_of_type_JavaUtilList.indexOf(paramajux) >= 0) {
+    if (paramakjh == null) {}
+    while (this.jdField_d_of_type_JavaUtilList.indexOf(paramakjh) >= 0) {
       return;
     }
-    this.jdField_d_of_type_JavaUtilList.add(paramajux);
+    this.jdField_d_of_type_JavaUtilList.add(paramakjh);
   }
   
   public void a(Context paramContext)
@@ -8056,14 +8202,14 @@ public class QQAppInterface
       paramClass.addFlags(536870912).addFlags(67108864);
     } while (!e());
     Object localObject1 = getCurrentAccountUin();
-    Friends localFriends = ((ajjj)getManager(51)).e((String)localObject1);
+    Friends localFriends = ((ajxn)getManager(51)).e((String)localObject1);
     Object localObject2;
     if (localFriends != null)
     {
       localObject2 = a(1, localFriends.uin, (byte)3, true, 0);
       paramContext = (Context)localObject2;
       if (localObject2 == null) {
-        paramContext = bacm.a();
+        paramContext = bbdr.a();
       }
       if ((localFriends.name != null) && (localFriends.name.length() > 0))
       {
@@ -8074,7 +8220,7 @@ public class QQAppInterface
     }
     for (;;)
     {
-      a(paramClass, null, "", paramContext, this.app.getString(2131652977), (Bitmap)localObject1, "CMD_IDLE_NOTIFIYCATION");
+      a(paramClass, null, "", paramContext, this.app.getString(2131718804), (Bitmap)localObject1, "CMD_IDLE_NOTIFIYCATION");
       return;
       paramClass = new Intent(this.app.getApplicationContext(), SplashActivity.class);
       break;
@@ -8102,21 +8248,21 @@ public class QQAppInterface
     if (QLog.isColorLevel()) {
       QLog.d("notification", 2, "showReadedMsgNotification, Messages size:" + i1 + ", counter:" + i2);
     }
-    befx localbefx = befx.a(this);
+    bfnr localbfnr = bfnr.a(this);
     if ((paramMessage1 == null) || (i1 == 0) || (i2 == 0)) {
       j();
     }
     for (;;)
     {
       if (f()) {
-        localbefx.a(paramMessage2);
+        localbfnr.a(paramMessage2);
       }
       return;
       if (f())
       {
-        if ((paramMessage2 != null) && (befx.a(paramMessage2)))
+        if ((paramMessage2 != null) && (bfnr.a(paramMessage2)))
         {
-          if (localbefx.d(paramMessage2)) {
+          if (localbfnr.d(paramMessage2)) {
             a(paramMessage2, false);
           }
         }
@@ -8133,7 +8279,7 @@ public class QQAppInterface
   public void a(ResourcePluginListener paramResourcePluginListener)
   {
     m();
-    this.jdField_a_of_type_Ajlh.a(paramResourcePluginListener);
+    this.jdField_a_of_type_Ajzo.a(paramResourcePluginListener);
   }
   
   public void a(MessageRecord paramMessageRecord, boolean paramBoolean)
@@ -8164,7 +8310,7 @@ public class QQAppInterface
       if (1010 != paramMessageRecord.istroop) {
         break label561;
       }
-      localIntent.putExtra("uin", ajed.aa);
+      localIntent.putExtra("uin", ajsf.ab);
       localIntent.putExtra("uintype", paramMessageRecord.istroop);
       localIntent.setAction("com.tencent.mobileqq.action.CHAT");
       localIntent.putExtra("uinname", "");
@@ -8177,19 +8323,19 @@ public class QQAppInterface
       }
       else
       {
-        localBitmap = azzg.a(getApp().getResources().getDrawable(2130839777));
+        localBitmap = bbak.a(getApp().getResources().getDrawable(2130840073));
         localObject = BaseApplicationImpl.getApplication();
         if (paramMessageRecord.istroop != 1001) {
           break label625;
         }
-        i1 = 2131628087;
+        i1 = 2131693728;
         label311:
         str1 = ((BaseApplicationImpl)localObject).getString(i1);
         localObject = BaseApplicationImpl.getApplication();
         if (paramMessageRecord.istroop != 1001) {
           break label632;
         }
-        i1 = 2131628086;
+        i1 = 2131693727;
         label338:
         str2 = ((BaseApplicationImpl)localObject).getString(i1);
         localIntent.putExtra("key_notifycation_oneway_message", true);
@@ -8211,16 +8357,16 @@ public class QQAppInterface
     for (Object localObject = str2;; localObject = str2)
     {
       a(localIntent, paramMessageRecord, (String)localObject, str1, str2, localBitmap, "CMD_SHOW_NOTIFIYCATION");
-      if (bahj.a(getApp()))
+      if (bbio.a(getApp()))
       {
-        paramMessageRecord = (ario)getManager(72);
-        if (SettingCloneUtil.readValue(getApp(), getCurrentAccountUin(), getApp().getString(2131628378), "qqsetting_lock_screen_whenexit_key", true))
+        paramMessageRecord = (aseq)getManager(72);
+        if (SettingCloneUtil.readValue(getApp(), getCurrentAccountUin(), getApp().getString(2131694019), "qqsetting_lock_screen_whenexit_key", true))
         {
           if (1001 != localMessage.istroop) {
             break label639;
           }
-          paramMessageRecord.a(this, ajed.ag, localMessage.istroop, false, arik.a(localMessage.frienduin, localMessage.istroop, localIntent));
-          awqx.b(this, "dc00899", "grp_lbs", "", "msg_box", "notice_msg", 0, 0, "", "", "", "");
+          paramMessageRecord.a(this, ajsf.ah, localMessage.istroop, false, asem.a(localMessage.frienduin, localMessage.istroop, localIntent));
+          axqw.b(this, "dc00899", "grp_lbs", "", "msg_box", "notice_msg", 0, 0, "", "", "", "");
         }
       }
       if (!paramBoolean) {}
@@ -8231,24 +8377,24 @@ public class QQAppInterface
         if ((1001 != paramMessageRecord.istroop) && (10002 != paramMessageRecord.istroop)) {
           break;
         }
-        localObject = ajed.H;
-        if (!amwo.b(paramMessageRecord)) {
-          localObject = ajed.I;
+        localObject = ajsf.H;
+        if (!anmw.b(paramMessageRecord)) {
+          localObject = ajsf.I;
         }
         localIntent.putExtra("uin", (String)localObject);
         localIntent.putExtra("uintype", paramMessageRecord.istroop);
         break;
         label625:
-        i1 = 2131654492;
+        i1 = 2131720388;
         break label311;
         label632:
-        i1 = 2131654491;
+        i1 = 2131720387;
         break label338;
         label639:
         if (1010 != localMessage.istroop) {
           break label546;
         }
-        paramMessageRecord.a(this, ajed.ah, localMessage.istroop, false, arik.a(localMessage.frienduin, localMessage.istroop, localIntent));
+        paramMessageRecord.a(this, ajsf.ai, localMessage.istroop, false, asem.a(localMessage.frienduin, localMessage.istroop, localIntent));
         break label546;
       }
       if (!paramBoolean) {}
@@ -8270,7 +8416,7 @@ public class QQAppInterface
         paramSetting.url = null;
         if (!TextUtils.isEmpty(paramSetting.uin))
         {
-          J();
+          M();
           this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(paramSetting.uin, paramSetting);
         }
       }
@@ -8279,8 +8425,8 @@ public class QQAppInterface
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if (this.jdField_a_of_type_Avys != null) {
-      this.jdField_a_of_type_Avys.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    if (this.jdField_a_of_type_Awyl != null) {
+      this.jdField_a_of_type_Awyl.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
     }
   }
   
@@ -8312,9 +8458,9 @@ public class QQAppInterface
         return;
       } while ((paramInt != 200) && (paramInt != 204) && (paramInt != 202));
       a(32, paramString, paramInt);
-      azxn localazxn = a().a(false);
-      if (localazxn != null) {
-        localazxn.a(32, paramString, paramInt);
+      bayr localbayr = a().a(false);
+      if (localbayr != null) {
+        localbayr.a(32, paramString, paramInt);
       }
       paramString = new File(a(32, paramString, paramInt));
     } while ((paramString == null) || (!paramString.exists()));
@@ -8388,15 +8534,15 @@ public class QQAppInterface
   
   public void a(String paramString, Integer paramInteger)
   {
-    bahr localbahr = (bahr)getManager(31);
-    if (localbahr != null)
+    bbix localbbix = (bbix)getManager(31);
+    if (localbbix != null)
     {
-      String str = bahr.a(paramString, 1);
+      String str = bbix.a(paramString, 1);
       if (QLog.isColorLevel()) {
         QLog.d("RoamSetting", 2, "setTroopMsgFilterToServer, path=" + str + " value=" + paramInteger);
       }
-      localbahr.a(str, paramInteger);
-      ariz.a().c(this, paramString);
+      localbbix.a(str, paramInteger);
+      asfb.a().c(this, paramString);
     }
   }
   
@@ -8404,8 +8550,8 @@ public class QQAppInterface
   {
     this.jdField_e_of_type_Long = System.currentTimeMillis();
     boolean bool1 = h();
-    boolean bool2 = azyg.a(this.app.getApplicationContext(), this);
-    boolean bool3 = azyg.b(this.app.getApplicationContext(), this);
+    boolean bool2 = bazk.a(this.app.getApplicationContext(), this);
+    boolean bool3 = bazk.b(this.app.getApplicationContext(), this);
     if (QLog.isColorLevel()) {
       QLog.d("notification", 2, new Object[] { "isRingerSilent is:" + bool1 + ",canDisturb is:" + bool2, " isMute:", Boolean.valueOf(bool3) });
     }
@@ -8430,7 +8576,7 @@ public class QQAppInterface
         if (b(paramString)) {
           i1 = 2131230759;
         }
-        baan.b(i1, false);
+        bbbr.b(i1, false);
       }
     }
   }
@@ -8452,32 +8598,13 @@ public class QQAppInterface
   
   public void a(boolean paramBoolean)
   {
-    int i1 = 0;
-    int i2 = 0;
-    if (paramBoolean)
-    {
-      int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
-      int i3 = arrayOfInt.length;
-      i1 = i2;
-      while (i1 < i3)
-      {
-        getManager(arrayOfInt[i1]);
-        i1 += 1;
-      }
-    }
-    while (i1 < 353)
-    {
-      if ((i1 != 24) && (i1 != 82)) {
-        getManager(i1);
-      }
-      i1 += 1;
-    }
+    a(paramBoolean, 0L);
   }
   
   public void a(boolean paramBoolean, int paramInt)
   {
-    if (this.jdField_a_of_type_Ajmt != null) {
-      this.jdField_a_of_type_Ajmt.a(paramBoolean, paramInt);
+    if (this.jdField_a_of_type_Akbc != null) {
+      this.jdField_a_of_type_Akbc.a(paramBoolean, paramInt);
     }
     while (!QLog.isColorLevel()) {
       return;
@@ -8485,14 +8612,57 @@ public class QQAppInterface
     QLog.i("QQAppInterface", 2, String.format(Locale.getDefault(), "refreshMsgTabUnreadNum mMsgTabUnreadListener is null, [%b, %d]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
   }
   
+  public void a(boolean paramBoolean, long paramLong)
+  {
+    int i1 = 0;
+    if (paramBoolean)
+    {
+      int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
+      int i2 = arrayOfInt.length;
+      i1 = 0;
+      if (i1 < i2)
+      {
+        int i3 = arrayOfInt[i1];
+        if (i3 == 27)
+        {
+          QLog.d("QQInitHandler", 2, new Object[] { "pluginManageDelayTime=", Long.valueOf(paramLong) });
+          if (paramLong > 0L) {
+            ThreadManager.getSubThreadHandler().postDelayed(new QQAppInterface.3(this), paramLong);
+          }
+        }
+        for (;;)
+        {
+          i1 += 1;
+          break;
+          if (paramLong == 0L)
+          {
+            getManager(27);
+            continue;
+            getManager(i3);
+          }
+        }
+      }
+    }
+    else
+    {
+      while (i1 < 356)
+      {
+        if ((i1 != 24) && (i1 != 82)) {
+          getManager(i1);
+        }
+        i1 += 1;
+      }
+    }
+  }
+  
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramBoolean2)
     {
-      ((ajfi)a(2)).a(paramBoolean1);
+      ((ajtk)a(2)).a(paramBoolean1);
       return;
     }
-    a().edit().putBoolean(getApp().getString(2131629596) + getCurrentAccountUin(), paramBoolean1).commit();
+    a().edit().putBoolean(getApp().getString(2131695277) + getCurrentAccountUin(), paramBoolean1).commit();
   }
   
   public void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
@@ -8583,7 +8753,7 @@ public class QQAppInterface
     boolean bool = false;
     try
     {
-      String str = getApp().getString(2131653552);
+      String str = getApp().getString(2131719381);
       if (str != null) {
         bool = SettingCloneUtil.readValue(getApp(), null, str, "qqsetting_notify_icon_key", false);
       }
@@ -8660,13 +8830,13 @@ public class QQAppInterface
   
   public boolean a(boolean paramBoolean)
   {
-    bahr localbahr = (bahr)getManager(31);
-    if (localbahr != null)
+    bbix localbbix = (bbix)getManager(31);
+    if (localbbix != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQAppInterface", 2, "getAllGeneralSettings , needTroopSettings=" + paramBoolean);
       }
-      localbahr.a(paramBoolean, null);
+      localbbix.a(paramBoolean, null);
       return true;
     }
     if (QLog.isColorLevel()) {
@@ -8690,7 +8860,7 @@ public class QQAppInterface
       i1 = this.jdField_d_of_type_Int;
       this.jdField_d_of_type_Int = (i1 + 1);
     } while (i1 >= 3);
-    ((ajfi)a(2)).a(paramBoolean1, paramBoolean2);
+    ((ajtk)a(2)).a(paramBoolean1, paramBoolean2);
     return true;
   }
   
@@ -8715,29 +8885,29 @@ public class QQAppInterface
     this.jdField_a_of_type_ArrayOfMqqManagerManager[paramInt] = paramManager;
   }
   
-  public void addObserver(ajfe paramajfe)
+  public void addObserver(ajtg paramajtg)
   {
-    addObserver(paramajfe, false);
+    addObserver(paramajtg, false);
   }
   
-  public void addObserver(ajfe paramajfe, boolean paramBoolean)
+  public void addObserver(ajtg paramajtg, boolean paramBoolean)
   {
-    if (paramajfe == null) {
+    if (paramajtg == null) {
       return;
     }
     if (paramBoolean) {
       synchronized (this.jdField_b_of_type_JavaUtilList)
       {
-        if (!this.jdField_b_of_type_JavaUtilList.contains(paramajfe)) {
-          this.jdField_b_of_type_JavaUtilList.add(paramajfe);
+        if (!this.jdField_b_of_type_JavaUtilList.contains(paramajtg)) {
+          this.jdField_b_of_type_JavaUtilList.add(paramajtg);
         }
         return;
       }
     }
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramajfe)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramajfe);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramajtg)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramajtg);
       }
       return;
     }
@@ -8745,9 +8915,9 @@ public class QQAppInterface
   
   public int b()
   {
-    bahr localbahr = (bahr)getManager(31);
-    if (localbahr != null) {
-      return localbahr.b("message.group.vibrate", 0);
+    bbix localbbix = (bbix)getManager(31);
+    if (localbbix != null) {
+      return localbbix.b("message.group.vibrate", 0);
     }
     if (QLog.isColorLevel()) {
       QLog.d("SoundSetting", 2, "rsController is null!");
@@ -8774,7 +8944,7 @@ public class QQAppInterface
   {
     try
     {
-      Bitmap localBitmap = BitmapFactory.decodeResource(this.app.getResources(), 2130849091);
+      Bitmap localBitmap = BitmapFactory.decodeResource(this.app.getResources(), 2130849326);
       if (localBitmap != null) {
         new Canvas(paramBitmap).drawBitmap(localBitmap, paramBitmap.getWidth() - localBitmap.getWidth() - 1, paramBitmap.getHeight() - localBitmap.getHeight() - 1, new Paint());
       }
@@ -8811,9 +8981,9 @@ public class QQAppInterface
   
   public SQLiteDatabase b()
   {
-    ajrl localajrl = a();
-    if (localajrl != null) {
-      return localajrl.b();
+    akfv localakfv = a();
+    if (localakfv != null) {
+      return localakfv.b();
     }
     return null;
   }
@@ -8841,7 +9011,7 @@ public class QQAppInterface
     if (str != null) {
       try
       {
-        str = bach.a(str.getBytes("utf-8"));
+        str = bbdm.a(str.getBytes("utf-8"));
         return str;
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
@@ -8865,9 +9035,9 @@ public class QQAppInterface
   {
     int i3 = 0;
     int i6 = 0;
-    J();
+    M();
     this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.evictAll();
-    Object localObject2 = this.jdField_a_of_type_Atmp.a(Setting.class, new Setting().getTableName(), false, null, null, null, null, "updateTimestamp desc", null);
+    Object localObject2 = this.jdField_a_of_type_Aukn.a(Setting.class, new Setting().getTableName(), false, null, null, null, null, "updateTimestamp desc", null);
     Object localObject1;
     int i2;
     int i1;
@@ -8962,7 +9132,7 @@ public class QQAppInterface
   
   public void b(int paramInt)
   {
-    a(new QQAppInterface.14(this, paramInt));
+    a(new QQAppInterface.15(this, paramInt));
   }
   
   public void b(int paramInt1, String paramString1, int paramInt2, String paramString2)
@@ -8986,39 +9156,39 @@ public class QQAppInterface
     }
   }
   
-  public void b(ajux paramajux)
+  public void b(akjh paramakjh)
   {
-    if (paramajux == null) {
+    if (paramakjh == null) {
       return;
     }
-    this.jdField_d_of_type_JavaUtilList.remove(paramajux);
+    this.jdField_d_of_type_JavaUtilList.remove(paramakjh);
   }
   
   public void b(ResourcePluginListener paramResourcePluginListener)
   {
-    O();
-    this.jdField_a_of_type_Alyz.a(paramResourcePluginListener);
+    R();
+    this.jdField_a_of_type_Amop.a(paramResourcePluginListener);
   }
   
   public void b(MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    boolean bool = azyg.a(this.app.getApplicationContext(), this);
+    boolean bool = bazk.a(this.app.getApplicationContext(), this);
     if (QLog.isColorLevel()) {
       QLog.d("notification", 2, "showInComingMsg ,isFinished=" + this.jdField_j_of_type_Boolean + ", isCanDisturb=" + bool + ", needTicker=" + paramBoolean + ", message=" + paramMessageRecord);
     }
     if ((this.jdField_j_of_type_Boolean) || (!bool)) {}
-    aufl localaufl;
+    aver localaver;
     do
     {
       return;
-      localaufl = (aufl)getManager(38);
-    } while (localaufl == null);
+      localaver = (aver)getManager(38);
+    } while (localaver == null);
     bool = false;
     Object localObject3 = paramMessageRecord.senderuin;
     Object localObject1;
     if ((paramMessageRecord.msgtype == -2016) || (paramMessageRecord.msgtype == -4008))
     {
-      localObject1 = localaufl.a(paramMessageRecord.frienduin, paramMessageRecord.istroop);
+      localObject1 = localaver.a(paramMessageRecord.frienduin, paramMessageRecord.istroop);
       if (localObject1 != null) {
         localObject3 = ((QCallRecent)localObject1).senderUin;
       }
@@ -9027,7 +9197,7 @@ public class QQAppInterface
     label1568:
     for (;;)
     {
-      int i1 = localaufl.b();
+      int i1 = localaver.b();
       if (i1 == 0) {
         break;
       }
@@ -9037,7 +9207,7 @@ public class QQAppInterface
         {
           bool = true;
           localObject4 = a(getApp(), paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord);
-          localObject1 = (ajhf)a(6);
+          localObject1 = (ajvi)a(6);
           if (localObject1 == null) {
             break label1847;
           }
@@ -9046,9 +9216,9 @@ public class QQAppInterface
       label553:
       label1834:
       label1847:
-      for (localObject1 = ((ajhf)localObject1).a(paramMessageRecord.frienduin, true);; localObject1 = null)
+      for (localObject1 = ((ajvi)localObject1).a(paramMessageRecord.frienduin, true);; localObject1 = null)
       {
-        Object localObject2 = babh.a(this, (String)localObject3, 0);
+        Object localObject2 = bbcl.a(this, (String)localObject3, 0);
         Object localObject5;
         Object localObject6;
         Object localObject7;
@@ -9078,7 +9248,7 @@ public class QQAppInterface
           {
             localObject5 = localObject3;
           }
-          localObject5 = localaufl.a((String)localObject5, bool);
+          localObject5 = localaver.a((String)localObject5, bool);
           switch (paramMessageRecord.istroop)
           {
           default: 
@@ -9095,14 +9265,14 @@ public class QQAppInterface
               break label1812;
             }
             localObject5 = null;
-            i2 = localaufl.a();
+            i2 = localaver.a();
             if ((i2 <= 1) || (i1 != 1)) {
               break label1805;
             }
             if (i2 <= 100) {
               break label1568;
             }
-            localObject1 = (String)localObject7 + " (" + getApp().getString(2131629059) + ")";
+            localObject1 = (String)localObject7 + " (" + getApp().getString(2131694724) + ")";
             if ((paramMessageRecord.msgtype != -2016) && (paramMessageRecord.msgtype != -4008)) {
               break label1618;
             }
@@ -9117,7 +9287,7 @@ public class QQAppInterface
               ((Intent)localObject4).putExtra("qav_notify_flag", true);
             }
             label625:
-            if ((paramBoolean) && (paramMessageRecord.istroop != 6000) && (paramMessageRecord.istroop != 1009) && (!paramMessageRecord.frienduin.equals(ajed.D))) {
+            if ((paramBoolean) && (paramMessageRecord.istroop != 6000) && (paramMessageRecord.istroop != 1009) && (!paramMessageRecord.frienduin.equals(ajsf.D))) {
               break label1657;
             }
             a((Intent)localObject4, paramMessageRecord, (String)localObject5, (String)localObject1, (String)localObject2, (Bitmap)localObject3, "CMD_SHOW_NOTIFIYCATION");
@@ -9132,7 +9302,7 @@ public class QQAppInterface
             }
             for (;;)
             {
-              if (!ajed.M.equals(paramMessageRecord.frienduin)) {
+              if (!ajsf.M.equals(paramMessageRecord.frienduin)) {
                 break label841;
               }
               localObject2 = a((String)localObject3, true);
@@ -9167,11 +9337,11 @@ public class QQAppInterface
           ((Intent)localObject4).putExtra("tab_index", MainFragment.jdField_b_of_type_Int);
           ((Intent)localObject4).putExtra("conversation_index", 1);
           ((Intent)localObject4).setFlags(335544320);
-          ((Intent)localObject4).putExtra("uinname", getApp().getString(2131629067));
+          ((Intent)localObject4).putExtra("uinname", getApp().getString(2131694732));
           localObject1 = null;
           localObject2 = "";
           break;
-          localObject2 = babh.a(this, (String)localObject3, 0);
+          localObject2 = bbcl.a(this, (String)localObject3, 0);
           localObject7 = (String)localObject2 + "(" + (String)localObject6 + "):";
           localObject3 = localObject1;
           localObject2 = localObject5;
@@ -9208,7 +9378,7 @@ public class QQAppInterface
               localObject7 = localObject6;
               break;
             }
-            localObject3 = babh.q(this, paramMessageRecord.frienduin);
+            localObject3 = bbcl.q(this, paramMessageRecord.frienduin);
             localObject2 = (String)localObject3 + "(" + (String)localObject6 + "):";
             String str = (String)localObject3 + ": " + (String)localObject5;
             localObject3 = localObject1;
@@ -9216,8 +9386,8 @@ public class QQAppInterface
             localObject7 = localObject6;
             localObject2 = str;
             break;
-            localObject3 = azzg.a(getApp().getResources().getDrawable(2130839779));
-            localObject2 = acnu.a(paramMessageRecord);
+            localObject3 = bbak.a(getApp().getResources().getDrawable(2130840075));
+            localObject2 = acyn.a(paramMessageRecord);
             if ((localObject2 != null) && (!((PAMessage)localObject2).items.isEmpty()))
             {
               localObject1 = ((PAMessage.Item)((PAMessage)localObject2).items.get(0)).title;
@@ -9239,7 +9409,7 @@ public class QQAppInterface
               }
               localObject6 = (String)localObject1 + (String)localObject5;
               break label479;
-              localObject1 = (String)localObject7 + " (" + i2 + getApp().getString(2131628974) + ")";
+              localObject1 = (String)localObject7 + " (" + i2 + getApp().getString(2131694638) + ")";
               break label553;
               label1618:
               if (paramMessageRecord.msgtype != -2009) {
@@ -9251,11 +9421,11 @@ public class QQAppInterface
               ((Intent)localObject4).putExtra("qav_notify_flag", true);
               break label625;
               label1657:
-              if (!bahj.a(getApp())) {
+              if (!bbio.a(getApp())) {
                 break label662;
               }
-              localObject6 = (ario)getManager(72);
-              paramBoolean = SettingCloneUtil.readValue(getApp(), getCurrentAccountUin(), getApp().getString(2131628378), "qqsetting_lock_screen_whenexit_key", true);
+              localObject6 = (aseq)getManager(72);
+              paramBoolean = SettingCloneUtil.readValue(getApp(), getCurrentAccountUin(), getApp().getString(2131694019), "qqsetting_lock_screen_whenexit_key", true);
               if (QLog.isColorLevel()) {
                 QLog.d("QQLSActivity", 2, String.format("videochatting start lsActivity from appinterface  showInComingMsgForQAV, lockScreenMsgWhenExit[%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
               }
@@ -9264,10 +9434,10 @@ public class QQAppInterface
               }
               if (bool)
               {
-                ((ario)localObject6).a(this, paramMessageRecord.frienduin, paramMessageRecord.istroop, true, arik.a(paramMessageRecord.frienduin, paramMessageRecord.istroop, (Intent)localObject4));
+                ((aseq)localObject6).a(this, paramMessageRecord.frienduin, paramMessageRecord.istroop, true, asem.a(paramMessageRecord.frienduin, paramMessageRecord.istroop, (Intent)localObject4));
                 break label662;
               }
-              ((ario)localObject6).a(this, paramMessageRecord.frienduin, paramMessageRecord.istroop, false, arik.a(paramMessageRecord.frienduin, paramMessageRecord.istroop, (Intent)localObject4));
+              ((aseq)localObject6).a(this, paramMessageRecord.frienduin, paramMessageRecord.istroop, false, asem.a(paramMessageRecord.frienduin, paramMessageRecord.istroop, (Intent)localObject4));
               break label662;
               localObject1 = localObject7;
               break label553;
@@ -9293,8 +9463,8 @@ public class QQAppInterface
   
   public void b(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_Ajmu != null) {
-      this.jdField_a_of_type_Ajmu.a(paramString, paramInt);
+    if (this.jdField_a_of_type_Akbd != null) {
+      this.jdField_a_of_type_Akbd.a(paramString, paramInt);
     }
   }
   
@@ -9334,10 +9504,10 @@ public class QQAppInterface
       QLog.d("exit", 2, getCurrentAccountUin() + " qq start to exit ");
     }
     this.jdField_g_of_type_Boolean = true;
-    N();
-    awrv.a().d(getCurrentAccountUin());
-    aqdy.a();
-    M();
+    Q();
+    axrt.a().d(getCurrentAccountUin());
+    aqya.a();
+    P();
     MobileQQ localMobileQQ;
     if (isLogin())
     {
@@ -9395,10 +9565,10 @@ public class QQAppInterface
   {
     if (paramBoolean2)
     {
-      a().edit().putBoolean(getApp().getString(2131629600) + getCurrentAccountUin(), paramBoolean1).commit();
+      a().edit().putBoolean(getApp().getString(2131695281) + getCurrentAccountUin(), paramBoolean1).commit();
       return;
     }
-    ((ajlf)a(3)).a(paramBoolean1);
+    ((ajzl)a(3)).a(paramBoolean1);
   }
   
   public boolean b()
@@ -9418,16 +9588,16 @@ public class QQAppInterface
   public final boolean b(boolean paramBoolean)
   {
     if (paramBoolean) {
-      ((ajfi)a(2)).b();
+      ((ajtk)a(2)).b();
     }
-    return a().getBoolean(getApp().getString(2131629596) + getCurrentAccountUin(), true);
+    return a().getBoolean(getApp().getString(2131695277) + getCurrentAccountUin(), true);
   }
   
   public int c()
   {
-    bahr localbahr = (bahr)getManager(31);
-    if (localbahr != null) {
-      return localbahr.b("message.ring.switch", 1);
+    bbix localbbix = (bbix)getManager(31);
+    if (localbbix != null) {
+      return localbbix.b("message.ring.switch", 1);
     }
     return 1;
   }
@@ -9437,21 +9607,21 @@ public class QQAppInterface
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 1048	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Latmq;
-    //   4: invokevirtual 4706	atmq:createEntityManager	()Latmp;
+    //   1: invokevirtual 994	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lauko;
+    //   4: invokevirtual 4769	auko:createEntityManager	()Laukn;
     //   7: astore_3
     //   8: aload_3
     //   9: astore_2
     //   10: aload_3
-    //   11: ldc_w 2330
+    //   11: ldc_w 2301
     //   14: aload_1
-    //   15: invokevirtual 3593	atmp:a	(Ljava/lang/Class;Ljava/lang/String;)Latmo;
-    //   18: checkcast 2330	com/tencent/mobileqq/data/Setting
+    //   15: invokevirtual 3643	aukn:a	(Ljava/lang/Class;Ljava/lang/String;)Laukm;
+    //   18: checkcast 2301	com/tencent/mobileqq/data/Setting
     //   21: astore_1
     //   22: aload_3
     //   23: ifnull +7 -> 30
     //   26: aload_3
-    //   27: invokevirtual 4707	atmp:a	()V
+    //   27: invokevirtual 4770	aukn:a	()V
     //   30: aload_1
     //   31: areturn
     //   32: astore_1
@@ -9460,11 +9630,11 @@ public class QQAppInterface
     //   35: aload_3
     //   36: astore_2
     //   37: aload_1
-    //   38: invokevirtual 928	java/lang/Exception:printStackTrace	()V
+    //   38: invokevirtual 874	java/lang/Exception:printStackTrace	()V
     //   41: aload_3
     //   42: ifnull +30 -> 72
     //   45: aload_3
-    //   46: invokevirtual 4707	atmp:a	()V
+    //   46: invokevirtual 4770	aukn:a	()V
     //   49: aconst_null
     //   50: areturn
     //   51: astore_1
@@ -9473,7 +9643,7 @@ public class QQAppInterface
     //   54: aload_2
     //   55: ifnull +7 -> 62
     //   58: aload_2
-    //   59: invokevirtual 4707	atmp:a	()V
+    //   59: invokevirtual 4770	aukn:a	()V
     //   62: aload_1
     //   63: athrow
     //   64: astore_1
@@ -9486,8 +9656,8 @@ public class QQAppInterface
     //   start	length	slot	name	signature
     //   0	74	0	this	QQAppInterface
     //   0	74	1	paramString	String
-    //   9	50	2	localatmp1	atmp
-    //   7	39	3	localatmp2	atmp
+    //   9	50	2	localaukn1	aukn
+    //   7	39	3	localaukn2	aukn
     // Exception table:
     //   from	to	target	type
     //   0	8	32	java/lang/Exception
@@ -9516,8 +9686,8 @@ public class QQAppInterface
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator != null)
     {
-      if (this.jdField_a_of_type_Awao != null) {
-        this.jdField_a_of_type_Awao.f();
+      if (this.jdField_a_of_type_Awzw != null) {
+        this.jdField_a_of_type_Awzw.f();
       }
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b();
     }
@@ -9553,7 +9723,7 @@ public class QQAppInterface
           localHashMap.put("lowMem", ((SharedPreferences)localObject3).getString("lowMem", ""));
           localHashMap.put("state", ((SharedPreferences)localObject3).getString("state", ""));
           localHashMap.put("version", "150806");
-          localHashMap.put("build", "4370");
+          localHashMap.put("build", "4440");
           localHashMap.put("proxy", String.valueOf(bool1));
           localHashMap.put("vivo", String.valueOf(bool2));
           localHashMap.put("param_FailCode", String.valueOf(i1));
@@ -9561,7 +9731,7 @@ public class QQAppInterface
           localHashMap.put("sdkver", String.valueOf(localObject1));
           if (Build.VERSION.SDK_INT >= 21)
           {
-            awrn.a(BaseApplicationImpl.getContext()).a(getCurrentAccountUin(), "pullMsfReport_V3", false, 0L, 0L, localHashMap, "");
+            axrl.a(BaseApplicationImpl.getContext()).a(getCurrentAccountUin(), "pullMsfReport_V3", false, 0L, 0L, localHashMap, "");
             localObject3 = ((SharedPreferences)localObject3).edit();
             ((SharedPreferences.Editor)localObject3).clear();
             ((SharedPreferences.Editor)localObject3).commit();
@@ -9586,7 +9756,7 @@ public class QQAppInterface
           ((HashMap)localObject4).put("lowMem", ((SharedPreferences)localObject2).getString("lowMem", ""));
           ((HashMap)localObject4).put("state", ((SharedPreferences)localObject2).getString("state", ""));
           ((HashMap)localObject4).put("version", "150806");
-          ((HashMap)localObject4).put("build", "4370");
+          ((HashMap)localObject4).put("build", "4440");
           ((HashMap)localObject4).put("proxy", String.valueOf(bool1));
           ((HashMap)localObject4).put("vivo", String.valueOf(bool2));
           ((HashMap)localObject4).put("param_FailCode", String.valueOf(i1));
@@ -9595,7 +9765,7 @@ public class QQAppInterface
           if (Build.VERSION.SDK_INT < 21) {
             break label937;
           }
-          awrn.a(BaseApplicationImpl.getContext()).a(getCurrentAccountUin(), "pullMsfReport_succ_V2", false, 0L, 0L, (HashMap)localObject4, "");
+          axrl.a(BaseApplicationImpl.getContext()).a(getCurrentAccountUin(), "pullMsfReport_succ_V2", false, 0L, 0L, (HashMap)localObject4, "");
           localObject1 = ((SharedPreferences)localObject2).edit();
           ((SharedPreferences.Editor)localObject1).clear();
           ((SharedPreferences.Editor)localObject1).commit();
@@ -9607,10 +9777,10 @@ public class QQAppInterface
         QLog.d("QQAppInterface", 1, "Failed to report pull Msf Event");
         return;
       }
-      awrn.a(BaseApplicationImpl.getContext()).a(getCurrentAccountUin(), "pullMsfReportOther_V3", false, 0L, 0L, localHashMap, "");
+      axrl.a(BaseApplicationImpl.getContext()).a(getCurrentAccountUin(), "pullMsfReportOther_V3", false, 0L, 0L, localHashMap, "");
       continue;
       label937:
-      awrn.a(BaseApplicationImpl.getContext()).a(getCurrentAccountUin(), "pullMsfReport_succOther_V2", false, 0L, 0L, (HashMap)localObject4, "");
+      axrl.a(BaseApplicationImpl.getContext()).a(getCurrentAccountUin(), "pullMsfReport_succOther_V2", false, 0L, 0L, (HashMap)localObject4, "");
     }
   }
   
@@ -9619,16 +9789,16 @@ public class QQAppInterface
     if (QLog.isColorLevel()) {
       QLog.d("SoundSetting", 2, "setTroopGeneralSettingRing :" + paramInt);
     }
-    bahr localbahr = (bahr)getManager(31);
-    if (localbahr != null) {
-      localbahr.a("message.group.ring", Integer.valueOf(paramInt));
+    bbix localbbix = (bbix)getManager(31);
+    if (localbbix != null) {
+      localbbix.a("message.group.ring", Integer.valueOf(paramInt));
     }
   }
   
   public void c(ResourcePluginListener paramResourcePluginListener)
   {
-    if (this.jdField_a_of_type_Ajlh != null) {
-      this.jdField_a_of_type_Ajlh.b(paramResourcePluginListener);
+    if (this.jdField_a_of_type_Ajzo != null) {
+      this.jdField_a_of_type_Ajzo.b(paramResourcePluginListener);
     }
   }
   
@@ -9660,14 +9830,14 @@ public class QQAppInterface
       ((FriendListHandler)a(1)).c(paramBoolean1);
       return;
     }
-    a().edit().putBoolean(getApp().getString(2131653731) + getCurrentAccountUin(), paramBoolean1).commit();
+    a().edit().putBoolean(getApp().getString(2131719615) + getCurrentAccountUin(), paramBoolean1).commit();
   }
   
   public boolean c()
   {
     if (AVNotifyCenter.c())
     {
-      krx.c("QQAppInterface", "VideoProcessAlive isBeInvitingOnDoubleVideo");
+      lcl.c("QQAppInterface", "VideoProcessAlive isBeInvitingOnDoubleVideo");
       return true;
     }
     if ((!a().d()) && (a().b() == 0)) {
@@ -9675,7 +9845,7 @@ public class QQAppInterface
     }
     if (QQServiceForAV.a())
     {
-      krx.c("QQAppInterface", "VideoProcessAlive");
+      lcl.c("QQAppInterface", "VideoProcessAlive");
       return true;
     }
     try
@@ -9687,7 +9857,7 @@ public class QQAppInterface
         while (((Iterator)localObject).hasNext()) {
           if (((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName.equals("com.tencent.mobileqq:video"))
           {
-            krx.c("QQAppInterface", "VideoProcessAlive VIDEO_PROCESS_NAME");
+            lcl.c("QQAppInterface", "VideoProcessAlive VIDEO_PROCESS_NAME");
             return true;
           }
         }
@@ -9705,14 +9875,14 @@ public class QQAppInterface
     if (paramBoolean) {
       ((FriendListHandler)a(1)).e();
     }
-    return a().getBoolean(getApp().getString(2131653731) + getCurrentAccountUin(), true);
+    return a().getBoolean(getApp().getString(2131719615) + getCurrentAccountUin(), true);
   }
   
   public int d()
   {
-    bahr localbahr = (bahr)getManager(31);
-    if (localbahr != null) {
-      return localbahr.b("message.vibrate.switch", 1);
+    bbix localbbix = (bbix)getManager(31);
+    if (localbbix != null) {
+      return localbbix.b("message.vibrate.switch", 1);
     }
     return 1;
   }
@@ -9722,7 +9892,7 @@ public class QQAppInterface
     if (QLog.isColorLevel()) {
       QLog.d("QQAppInterface", 2, "onConnOpenAndStartGetMsg");
     }
-    arih.a().a(1);
+    asej.a().a(1);
     MqqHandler localMqqHandler = getHandler(Conversation.class);
     if (localMqqHandler != null) {
       localMqqHandler.obtainMessage(1134014, null).sendToTarget();
@@ -9734,16 +9904,16 @@ public class QQAppInterface
     if (QLog.isColorLevel()) {
       QLog.d("SoundSetting", 2, "setTroopGeneralSettingVibrate :" + paramInt);
     }
-    bahr localbahr = (bahr)getManager(31);
-    if (localbahr != null) {
-      localbahr.a("message.group.vibrate", Integer.valueOf(paramInt));
+    bbix localbbix = (bbix)getManager(31);
+    if (localbbix != null) {
+      localbbix.a("message.group.vibrate", Integer.valueOf(paramInt));
     }
   }
   
   public void d(ResourcePluginListener paramResourcePluginListener)
   {
-    if (this.jdField_a_of_type_Alyz != null) {
-      this.jdField_a_of_type_Alyz.b(paramResourcePluginListener);
+    if (this.jdField_a_of_type_Amop != null) {
+      this.jdField_a_of_type_Amop.b(paramResourcePluginListener);
     }
   }
   
@@ -9758,7 +9928,7 @@ public class QQAppInterface
   public void d(boolean paramBoolean)
   {
     SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit();
-    localEditor.putBoolean(BaseApplication.getContext().getString(2131629615) + getCurrentAccountUin(), paramBoolean);
+    localEditor.putBoolean(BaseApplication.getContext().getString(2131695296) + getCurrentAccountUin(), paramBoolean);
     localEditor.commit();
     if (QLog.isColorLevel()) {
       QLog.d("QQAppInterface", 2, "setLoudSpeakerState:" + paramBoolean);
@@ -9769,10 +9939,10 @@ public class QQAppInterface
   {
     if (paramBoolean2)
     {
-      ((aqjl)a(150)).a(paramBoolean1);
+      ((ardq)a(150)).a(paramBoolean1);
       return;
     }
-    a().edit().putBoolean(getApp().getString(2131653730) + getCurrentAccountUin(), paramBoolean1).apply();
+    a().edit().putBoolean(getApp().getString(2131719614) + getCurrentAccountUin(), paramBoolean1).apply();
   }
   
   public boolean d()
@@ -9793,16 +9963,16 @@ public class QQAppInterface
   public final boolean d(boolean paramBoolean)
   {
     if (paramBoolean) {
-      ((aqjl)a(150)).a();
+      ((ardq)a(150)).a();
     }
-    return a().getBoolean(getApp().getString(2131653730) + getCurrentAccountUin(), false);
+    return a().getBoolean(getApp().getString(2131719614) + getCurrentAccountUin(), false);
   }
   
   public int e()
   {
-    bahr localbahr = (bahr)getManager(31);
-    if (localbahr != null) {
-      return localbahr.b("sync.c2c_message", 1);
+    bbix localbbix = (bbix)getManager(31);
+    if (localbbix != null) {
+      return localbbix.b("sync.c2c_message", 1);
     }
     return 1;
   }
@@ -9811,9 +9981,9 @@ public class QQAppInterface
   
   public void e(int paramInt)
   {
-    bahr localbahr = (bahr)getManager(31);
-    if (localbahr != null) {
-      localbahr.a("message.ring.switch", Integer.valueOf(paramInt));
+    bbix localbbix = (bbix)getManager(31);
+    if (localbbix != null) {
+      localbbix.a("message.ring.switch", Integer.valueOf(paramInt));
     }
   }
   
@@ -9841,7 +10011,7 @@ public class QQAppInterface
     }
     for (;;)
     {
-      ((ajfi)a(2)).a(paramBoolean1, paramBoolean2);
+      ((ajtk)a(2)).a(paramBoolean1, paramBoolean2);
       return;
       this.jdField_d_of_type_Int = 1;
     }
@@ -9857,7 +10027,7 @@ public class QQAppInterface
     if (paramBoolean) {
       ((FriendListHandler)a(1)).a(getCurrentAccountUin(), 1);
     }
-    return a().getBoolean(getApp().getString(2131629032) + getCurrentAccountUin(), false);
+    return a().getBoolean(getApp().getString(2131694696) + getCurrentAccountUin(), false);
   }
   
   public int f()
@@ -9867,14 +10037,14 @@ public class QQAppInterface
     QQMessageFacade localQQMessageFacade = a();
     if (localQQMessageFacade != null)
     {
-      aufl localaufl = a();
+      aver localaver = a();
       i1 = i2;
-      if (localaufl != null)
+      if (localaver != null)
       {
         i1 = i2;
         if (!a().j())
         {
-          i2 = localaufl.a();
+          i2 = localaver.a();
           i1 = i2;
           if (QLog.isColorLevel())
           {
@@ -9884,7 +10054,7 @@ public class QQAppInterface
         }
       }
       i2 = localQQMessageFacade.b();
-      i1 = ((ajnf)getManager(34)).d() + (i2 + i1);
+      i1 = ((akbo)getManager(34)).d() + (i2 + i1);
     }
     return i1;
   }
@@ -9895,7 +10065,7 @@ public class QQAppInterface
       QLog.d("QQAppInterface", 2, "onConnClose");
     }
     this.jdField_e_of_type_Boolean = false;
-    arih.a().a(1);
+    asej.a().a(1);
     MqqHandler localMqqHandler = getHandler(Conversation.class);
     if (localMqqHandler != null) {
       localMqqHandler.obtainMessage(1134014, null).sendToTarget();
@@ -9904,9 +10074,9 @@ public class QQAppInterface
   
   public void f(int paramInt)
   {
-    bahr localbahr = (bahr)getManager(31);
-    if (localbahr != null) {
-      localbahr.a("message.vibrate.switch", Integer.valueOf(paramInt));
+    bbix localbbix = (bbix)getManager(31);
+    if (localbbix != null) {
+      localbbix.a("message.vibrate.switch", Integer.valueOf(paramInt));
     }
   }
   
@@ -9917,12 +10087,12 @@ public class QQAppInterface
       ((FriendListHandler)a(1)).a(paramBoolean1, getCurrentAccountUin(), 1);
       return;
     }
-    a().edit().putBoolean(getApp().getString(2131629032) + getCurrentAccountUin(), paramBoolean1).commit();
+    a().edit().putBoolean(getApp().getString(2131694696) + getCurrentAccountUin(), paramBoolean1).commit();
   }
   
   public boolean f()
   {
-    return SettingCloneUtil.readValue(getApp(), getCurrentAccountUin(), getApp().getString(2131653032), "qqsetting_notify_showcontent_key", true);
+    return SettingCloneUtil.readValue(getApp(), getCurrentAccountUin(), getApp().getString(2131718859), "qqsetting_notify_showcontent_key", true);
   }
   
   public boolean f(boolean paramBoolean)
@@ -9930,7 +10100,7 @@ public class QQAppInterface
     if (paramBoolean) {
       ((FriendListHandler)a(1)).a(getCurrentAccountUin(), 2);
     }
-    return a().getBoolean(getApp().getString(2131653637) + getCurrentAccountUin(), false);
+    return a().getBoolean(getApp().getString(2131719521) + getCurrentAccountUin(), false);
   }
   
   protected void finalize()
@@ -9949,9 +10119,9 @@ public class QQAppInterface
     }
     this.jdField_e_of_type_Boolean = true;
     MqqHandler localMqqHandler = getHandler(Conversation.class);
-    if (!arih.a().c())
+    if (!asej.a().c())
     {
-      arih.a().a(2);
+      asej.a().a(2);
       if (localMqqHandler != null) {
         localMqqHandler.obtainMessage(1134012, null).sendToTarget();
       }
@@ -9966,7 +10136,7 @@ public class QQAppInterface
         localMqqHandler.sendMessage(localMessage);
       }
       return;
-      if ((arih.a().a()) && (localMqqHandler != null)) {
+      if ((asej.a().a()) && (localMqqHandler != null)) {
         localMqqHandler.obtainMessage(1134015, null).sendToTarget();
       }
     }
@@ -9974,9 +10144,9 @@ public class QQAppInterface
   
   public void g(int paramInt)
   {
-    bahr localbahr = (bahr)getManager(31);
-    if (localbahr != null) {
-      localbahr.a("sync.c2c_message", Integer.valueOf(paramInt));
+    bbix localbbix = (bbix)getManager(31);
+    if (localbbix != null) {
+      localbbix.a("sync.c2c_message", Integer.valueOf(paramInt));
     }
   }
   
@@ -9987,7 +10157,7 @@ public class QQAppInterface
       ((FriendListHandler)a(1)).a(paramBoolean1, getCurrentAccountUin(), 2);
       return;
     }
-    a().edit().putBoolean(getApp().getString(2131653637) + getCurrentAccountUin(), paramBoolean1).commit();
+    a().edit().putBoolean(getApp().getString(2131719521) + getCurrentAccountUin(), paramBoolean1).commit();
   }
   
   boolean g()
@@ -10012,9 +10182,9 @@ public class QQAppInterface
       QLog.d("SUB_ACCOUNT", 2, "startAllSubMessageAccountMsg() isFromPush=" + paramBoolean);
     }
     Object localObject1 = null;
-    Object localObject2 = (axat)getManager(61);
+    Object localObject2 = (ayav)getManager(61);
     if (localObject2 != null) {
-      localObject1 = ((axat)localObject2).a();
+      localObject1 = ((ayav)localObject2).a();
     }
     if (localObject1 != null)
     {
@@ -10030,7 +10200,7 @@ public class QQAppInterface
         if ((localObject2 != null) && (((String)localObject2).length() > 4))
         {
           bool1 = true;
-          axam.a(this, (String)localObject2, paramBoolean);
+          ayao.a(this, (String)localObject2, paramBoolean);
         }
         else if (QLog.isColorLevel())
         {
@@ -10045,19 +10215,19 @@ public class QQAppInterface
     if (QLog.isColorLevel()) {
       QLog.d("SUB_ACCOUNT", 2, "startAllSubMessageAccountMsg() result=" + bool2 + " forground=" + BaseActivity.mAppForground);
     }
-    localObject1 = (axam)getManager(62);
+    localObject1 = (ayao)getManager(62);
     if (localObject1 != null)
     {
       if (!bool2) {
         break label258;
       }
       if (BaseActivity.mAppForground) {
-        ((axam)localObject1).b(this);
+        ((ayao)localObject1).b(this);
       }
     }
     return bool2;
     label258:
-    ((axam)localObject1).c(this);
+    ((ayao)localObject1).c(this);
     return bool2;
   }
   
@@ -10071,7 +10241,7 @@ public class QQAppInterface
     return AppSetting.a();
   }
   
-  public List<ajfe> getBusinessObserver(int paramInt)
+  public List<ajtg> getBusinessObserver(int paramInt)
   {
     if (paramInt == 1) {
       return this.jdField_a_of_type_JavaUtilList;
@@ -10092,10 +10262,10 @@ public class QQAppInterface
   
   public String getCurrentNickname()
   {
-    return babh.j(this, getCurrentAccountUin());
+    return bbcl.j(this, getCurrentAccountUin());
   }
   
-  public atmq getEntityManagerFactory()
+  public auko getEntityManagerFactory()
   {
     String str = getAccount();
     if (str == null) {
@@ -10109,7 +10279,7 @@ public class QQAppInterface
       if (this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory = new QQEntityManagerFactory(str);
-        ThreadManager.getSubThreadHandler().postDelayed(new QQAppInterface.6(this), 3000L);
+        ThreadManager.getSubThreadHandler().postDelayed(new QQAppInterface.7(this), 3000L);
       }
       return this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory;
     }
@@ -10117,7 +10287,7 @@ public class QQAppInterface
   }
   
   @Deprecated
-  public atmq getEntityManagerFactory(String paramString)
+  public auko getEntityManagerFactory(String paramString)
   {
     if (!paramString.equals(getAccount())) {
       throw new IllegalStateException(paramString + "!=" + getAccount());
@@ -10143,7 +10313,7 @@ public class QQAppInterface
             i1 += 1;
           }
         }
-        if (!AppSetting.b) {}
+        if (!AppSetting.jdField_c_of_type_Boolean) {}
       }
     }
     for (;;)
@@ -10163,10 +10333,10 @@ public class QQAppInterface
           continue;
         }
         if (!QLog.isColorLevel()) {
-          break label3959;
+          break label4006;
         }
         QLog.d("QQAppInterface", 2, "getManager begin" + paramInt);
-        break label3959;
+        break label4006;
         if (QLog.isColorLevel()) {
           QLog.d("QQAppInterface", 2, "getManager end" + paramInt);
         }
@@ -10182,510 +10352,512 @@ public class QQAppInterface
       continue;
       localObject3 = new ProxyIpManagerImpl(this);
       continue;
-      localObject3 = new awcz(this);
+      localObject3 = new axch(this);
       continue;
       localObject3 = new PhoneContactManagerImp(this);
       continue;
-      localObject3 = new awcl(this);
+      localObject3 = new axbt(this);
       continue;
       localObject3 = new WebProcessManager(this);
       continue;
-      localObject3 = new arnz(this);
+      localObject3 = new askd(this);
       continue;
-      localObject3 = avev.a(this);
+      localObject3 = aweo.a(this);
       continue;
-      localObject3 = new arip(this);
+      localObject3 = new aser(this);
       continue;
-      localObject3 = new axac(this);
+      localObject3 = new ayae(this);
       continue;
       localObject3 = new ProxyManager(this);
       this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = ((ProxyManager)localObject3);
       continue;
-      localObject3 = new ajwf(this);
-      this.jdField_a_of_type_Ajwf = ((ajwf)localObject3);
+      localObject3 = new akkp(this);
+      this.jdField_a_of_type_Akkp = ((akkp)localObject3);
       continue;
       localObject3 = new QQMessageFacade(this);
       this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade = ((QQMessageFacade)localObject3);
       continue;
-      localObject3 = new axso();
-      this.jdField_a_of_type_Axso = ((axso)localObject3);
+      localObject3 = new aysv();
+      this.jdField_a_of_type_Aysv = ((aysv)localObject3);
       continue;
-      localObject3 = new ajqt(this);
+      localObject3 = new akfd(this);
       continue;
-      localObject3 = new aclk(this);
+      localObject3 = new acwd(this);
       continue;
       localObject3 = new MediaPlayerManager(this);
       continue;
-      localObject3 = bfcz.a(this);
+      localObject3 = bgkq.a(this);
       continue;
-      localObject3 = new axar(this);
+      localObject3 = new ayat(this);
       continue;
-      localObject3 = new akaq(this);
-      this.jdField_a_of_type_Akaq = ((akaq)localObject3);
+      localObject3 = new akpc(this);
+      this.jdField_a_of_type_Akpc = ((akpc)localObject3);
       continue;
-      localObject3 = new bahr(this);
+      localObject3 = new bbix(this);
       continue;
-      localObject3 = new aynk(this);
+      localObject3 = new azoa(this);
       continue;
-      localObject3 = new ajqs(this);
+      localObject3 = new akfc(this);
       continue;
-      localObject3 = new ajnf(this);
+      localObject3 = new akbo(this);
       continue;
-      localObject3 = new wqe(this);
+      localObject3 = new xfj(this);
       continue;
-      localObject3 = new auqh(this);
+      localObject3 = new avpq(this);
       continue;
-      localObject3 = new arom(this);
+      localObject3 = new askq(this);
       continue;
-      localObject3 = new aufl(this);
+      localObject3 = new aver(this);
       continue;
       localObject3 = new PicPreDownloader(this);
       continue;
-      localObject3 = new ajrk(this);
+      localObject3 = new akfu(this);
       continue;
-      localObject3 = new amoa(this);
+      localObject3 = new aneh(this);
       continue;
-      localObject3 = new fv(this);
+      localObject3 = new ho(this);
       continue;
-      localObject3 = new anfj(this);
+      localObject3 = new anvs(this);
       continue;
       localObject3 = new BubbleManager(this);
       continue;
-      localObject3 = new bamr(this);
+      localObject3 = new bbon(this);
       continue;
       localObject3 = new AvatarPendantManager(this);
       continue;
-      localObject3 = new bato(this);
+      localObject3 = new bbwi(this);
       continue;
-      localObject3 = new azjh(this);
+      localObject3 = new bakk(this);
       continue;
-      localObject3 = new ajjj(this);
+      localObject3 = new ajxn(this);
       continue;
       localObject3 = new TroopManager(this);
       continue;
-      localObject3 = new ajhh(this);
+      localObject3 = new ajvk(this);
       continue;
-      localObject3 = new ajgg(this);
+      localObject3 = new ajui(this);
       continue;
-      localObject3 = new ajrs(this);
+      localObject3 = new akgc(this);
       continue;
-      localObject3 = new ajoy(this);
+      localObject3 = new akdi(this);
       continue;
-      localObject3 = new muf(this);
+      localObject3 = new nfg(this);
       continue;
       localObject3 = new SignatureManager(this);
       continue;
-      localObject3 = new ajfw(this);
+      localObject3 = new ajty(this);
       continue;
       this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager = new HotChatManager(this);
       localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager;
       continue;
-      localObject3 = new axat(this);
+      localObject3 = new ayav(this);
       continue;
-      localObject3 = new axam(this);
+      localObject3 = new ayao(this);
       continue;
       localObject3 = new ChatBackgroundManager(this);
       continue;
-      localObject3 = new auqe(this);
+      localObject3 = new avpm(this);
       continue;
-      localObject3 = new ajsb(this);
+      localObject3 = new akgl(this);
       continue;
       localObject3 = new DeviceProfileManager.AccountDpcManager(this);
       continue;
-      localObject3 = new ajhq(this);
+      localObject3 = new ajvt(this);
       continue;
-      localObject3 = new mmy(this);
+      localObject3 = new mxx(this);
       continue;
-      localObject3 = new amvw(this);
+      localObject3 = new anme(this);
       continue;
-      localObject3 = new ario(this);
+      localObject3 = new aseq(this);
       continue;
-      localObject3 = new atqb(this);
+      localObject3 = new aunz(this);
       continue;
-      localObject3 = new amnr(this);
+      localObject3 = new andy(this);
       continue;
-      localObject3 = new bawm(this);
+      localObject3 = new bbzg(this);
       continue;
-      localObject3 = new amyp(this);
+      localObject3 = new anox(this);
       continue;
       localObject3 = new PortalManager(this);
       continue;
       localObject3 = new OlympicManager(this);
       continue;
-      localObject3 = new aknw(this);
+      localObject3 = new alci(this);
       continue;
-      localObject3 = new mnd(this);
+      localObject3 = new myc(this);
       continue;
-      localObject3 = new azlf(this);
+      localObject3 = new bamj(this);
       continue;
       localObject3 = new WordMatchManager(this);
       continue;
-      localObject3 = new arga(this);
+      localObject3 = new ascc(this);
       continue;
-      localObject3 = new bavz(this);
+      localObject3 = new bbyt(this);
       continue;
-      localObject3 = new ajvm(this);
+      localObject3 = new akjw(this);
       continue;
-      localObject3 = new nfp(this);
+      localObject3 = new nqq(this);
       continue;
-      localObject3 = new aucn(this);
+      localObject3 = new avbt(this);
       continue;
-      localObject3 = new atzi(this);
+      localObject3 = new auyo(this);
       continue;
-      localObject3 = new aunz(this);
+      localObject3 = new avnh(this);
       continue;
-      localObject3 = new ajmp(this);
+      localObject3 = new akay(this);
       continue;
       localObject3 = new NearbyGrayTipsManager(this);
       continue;
-      localObject3 = new avyq(this);
+      localObject3 = new awyj(this);
       continue;
-      localObject3 = new awet(this);
+      localObject3 = new axeb(this);
       continue;
       localObject3 = new ReadInJoyManager(this);
       continue;
-      localObject3 = new rrz(this);
+      localObject3 = new ser(this);
       continue;
-      localObject3 = new ajof(this);
+      localObject3 = new akcp(this);
       continue;
-      localObject3 = new anch(this);
+      localObject3 = new anss(this);
       continue;
-      localObject3 = new ajyk(this);
+      localObject3 = new akmu(this);
       continue;
-      localObject3 = new aufu(this);
+      localObject3 = new avfa(this);
       continue;
-      localObject3 = new azhi(this);
+      localObject3 = new bail(this);
       continue;
-      localObject3 = new azhg(this);
+      localObject3 = new baij(this);
       continue;
-      localObject3 = new anho(this);
+      localObject3 = new anxx(this);
       continue;
-      localObject3 = new ascz(this);
+      localObject3 = new aszd(this);
       continue;
-      localObject3 = new aqpp(this);
+      localObject3 = new arju(this);
       continue;
-      localObject3 = new azjq(this);
+      localObject3 = new bakt(this);
       continue;
-      localObject3 = new ahye(this);
+      localObject3 = new aikx(this);
       continue;
-      localObject3 = new asep(this);
+      localObject3 = new atat(this);
       continue;
-      localObject3 = new yst(this);
+      localObject3 = new zcl(this);
       continue;
       localObject3 = new TroopPluginManager(this);
       continue;
-      localObject3 = new audi(this);
+      localObject3 = new avco(this);
       continue;
-      localObject3 = new audb(this);
+      localObject3 = new avch(this);
       continue;
       localObject3 = new ArkAppCenter(this);
       continue;
-      localObject3 = new agjk(this);
+      localObject3 = new agvz(this);
       continue;
-      localObject3 = new ajkt(this);
+      localObject3 = new ajyz(this);
       continue;
-      localObject3 = new alov(this);
+      localObject3 = new amdk(this);
       continue;
-      localObject3 = new akep(this);
-      this.jdField_a_of_type_Akep = ((akep)localObject3);
+      localObject3 = new aktb(this);
+      this.jdField_a_of_type_Aktb = ((aktb)localObject3);
       continue;
-      localObject3 = new bfli(this);
+      localObject3 = new bgth(this);
       continue;
-      localObject3 = new ajnb(this);
+      localObject3 = new akbk(this);
       continue;
-      localObject3 = new avhb(this);
+      localObject3 = new awgu(this);
       continue;
-      localObject3 = new ajkz(this);
+      localObject3 = new ajzf(this);
       continue;
-      localObject3 = new azhx(this);
+      localObject3 = new baja(this);
       continue;
-      localObject3 = new aeqd(this);
+      localObject3 = new afaz(this);
       continue;
-      localObject3 = new awpw(this);
+      localObject3 = new axpu(this);
       continue;
-      localObject3 = new agkb(this);
+      localObject3 = new agwq(this);
       continue;
-      localObject3 = new akft(this);
+      localObject3 = new akuf(this);
       continue;
-      localObject3 = new aifg(this);
+      localObject3 = new airz(this);
       continue;
-      localObject3 = new ajal(this);
+      localObject3 = new ajon(this);
       continue;
-      localObject3 = new aiyu(this);
+      localObject3 = new ajmw(this);
       continue;
-      localObject3 = new aufb(this);
+      localObject3 = new aveh(this);
       continue;
-      localObject3 = new andn(this);
+      localObject3 = new antv(this);
       continue;
-      localObject3 = new beyy(this);
+      localObject3 = new bggp(this);
       continue;
-      localObject3 = new azko(this);
+      localObject3 = new bals(this);
       continue;
-      localObject3 = new ancg(this);
+      localObject3 = new ansr(this);
       continue;
-      localObject3 = new anbo(this);
+      localObject3 = new anrz(this);
       continue;
-      localObject3 = new anbu(this);
+      localObject3 = new ansf(this);
       continue;
-      localObject3 = new ardn(this);
+      localObject3 = new arzl(this);
       continue;
-      localObject3 = new aril(this);
+      localObject3 = new asen(this);
       continue;
       localObject3 = new LoginWelcomeManager(this);
       continue;
-      localObject3 = new ascu(this);
+      localObject3 = new asyy(this);
       continue;
-      localObject3 = new bezt(this);
+      localObject3 = new bghk(this);
       continue;
-      localObject3 = new baom(this);
+      localObject3 = new bbqi(this);
       continue;
-      localObject3 = new agvx();
+      localObject3 = new ahim();
       continue;
       localObject3 = new PreloadManager(this);
       continue;
-      localObject3 = new aqae(this);
+      localObject3 = new aqug(this);
       continue;
-      localObject3 = new oeo(this);
+      localObject3 = new amgg(this);
       continue;
-      localObject3 = new ajls(this);
+      localObject3 = new opz(this);
       continue;
-      localObject3 = new atax(this);
+      localObject3 = new akac(this);
       continue;
-      localObject3 = new oie(this);
+      localObject3 = new atxb(this);
+      continue;
+      localObject3 = new otp(this);
       continue;
       localObject3 = new KandianMergeManager(this);
       continue;
-      localObject3 = new ohd(this);
+      localObject3 = new oso(this);
       continue;
-      localObject3 = new azlm(this);
+      localObject3 = new bamq(this);
       continue;
-      localObject3 = new azgz(this);
+      localObject3 = new baic(this);
       continue;
-      localObject3 = new arxo(this);
+      localObject3 = new asts(this);
       continue;
-      localObject3 = new bcpn(this);
+      localObject3 = new bdto(this);
       continue;
-      localObject3 = new msg(this);
+      localObject3 = new ndh(this);
       continue;
       localObject3 = new PhotoPlusManager(this);
       continue;
-      localObject3 = new azwz(this);
+      localObject3 = new bayd(this);
       continue;
-      localObject3 = new armh(this);
+      localObject3 = new asik(this);
       continue;
-      localObject3 = new arno(this);
+      localObject3 = new asjs(this);
       continue;
-      localObject3 = new aurj(this);
+      localObject3 = new avqs(this);
       continue;
-      localObject3 = new aqpq(this);
+      localObject3 = new arjv(this);
       continue;
-      localObject3 = new bgau(this);
+      localObject3 = new bhjf(this);
       continue;
-      localObject3 = new bawv(this);
+      localObject3 = new bbzp(this);
       continue;
-      localObject3 = new banp(this);
+      localObject3 = new bbpl(this);
       continue;
-      localObject3 = new alkl(this);
+      localObject3 = new alyz(this);
       continue;
-      localObject3 = new sga(this);
+      localObject3 = new ssw(this);
       continue;
-      localObject3 = new azgf(this);
+      localObject3 = new bahi(this);
       continue;
-      localObject3 = new avhs(this);
+      localObject3 = new awhl(this);
       continue;
-      localObject3 = new attv(this);
+      localObject3 = new aurt(this);
       continue;
       localObject3 = new VasQuickUpdateManager(this);
       continue;
-      localObject3 = new axmd(this);
+      localObject3 = new aymj(this);
       continue;
-      localObject3 = new ajll(this);
+      localObject3 = new ajzs(this);
       continue;
-      localObject3 = new beck(this);
+      localObject3 = new bfka(this);
       continue;
       localObject3 = new ArtFilterManager(this);
       continue;
-      localObject3 = new akgu(this);
+      localObject3 = new akvg(this);
       continue;
-      localObject3 = new aifx(this);
+      localObject3 = new aisq(this);
       continue;
-      localObject3 = new ayja(this);
+      localObject3 = new azjq(this);
       continue;
-      localObject3 = new aljb(this);
+      localObject3 = new alxp(this);
       continue;
-      localObject3 = new baol(this);
+      localObject3 = new bbqh(this);
       continue;
-      localObject3 = new axxj(this);
+      localObject3 = new ayxq(this);
       continue;
       localObject3 = new MsgBoxInterFollowManager(this);
       continue;
-      localObject3 = new akiu(this);
+      localObject3 = new akxg(this);
       continue;
-      localObject3 = new arny(this);
+      localObject3 = new askc(this);
       continue;
-      localObject3 = new akhf(this);
+      localObject3 = new akvr(this);
       continue;
-      localObject3 = new atob(this);
+      localObject3 = new aulz(this);
       continue;
-      localObject3 = new azks(this);
+      localObject3 = new balw(this);
       continue;
-      localObject3 = new alrm(this);
+      localObject3 = new amgc(this);
       continue;
-      localObject3 = new asdf(this);
+      localObject3 = new aszj(this);
       continue;
       localObject3 = new DBFixManager(this);
       continue;
-      localObject3 = new aqfa(this);
+      localObject3 = new aqzc(this);
       continue;
       localObject3 = new FlashChatManager(this);
       continue;
-      localObject3 = new befx(this);
+      localObject3 = new bfnr(this);
       continue;
-      localObject3 = new ased(this);
+      localObject3 = new atah(this);
       continue;
       localObject3 = new PraiseManager(this);
       continue;
-      localObject3 = new vju(this);
+      localObject3 = new vwq(this);
       continue;
-      localObject3 = new aifc(this);
+      localObject3 = new airv(this);
       continue;
-      localObject3 = new bfaw(this);
+      localObject3 = new bgin(this);
       continue;
-      localObject3 = new amxv(this);
+      localObject3 = new anod(this);
       continue;
-      localObject3 = new adyt();
+      localObject3 = new aejs();
       continue;
-      localObject3 = new azgp(this);
+      localObject3 = new bahs(this);
       continue;
-      localObject3 = new aqdf(this);
+      localObject3 = new aqxh(this);
       continue;
-      localObject3 = new acjd(this);
+      localObject3 = new acts(this);
       continue;
-      localObject3 = new aric(this);
+      localObject3 = new asee(this);
       continue;
-      localObject3 = new azfo(this);
+      localObject3 = new bagr(this);
       continue;
-      localObject3 = new aymm(this);
+      localObject3 = new aznc(this);
       continue;
-      localObject3 = new qjf(this);
+      localObject3 = new qvk(this);
       continue;
-      localObject3 = new aiga(this);
+      localObject3 = new aist(this);
       continue;
-      localObject3 = new atdp(this);
+      localObject3 = new atzt(this);
       continue;
       localObject3 = new ShortVideoResourceManager(this);
       continue;
-      localObject3 = new atvd(this);
+      localObject3 = new autb(this);
       continue;
-      localObject3 = new ayrg(this);
+      localObject3 = new azrw(this);
       continue;
-      localObject3 = new baov(this);
+      localObject3 = new bbqs(this);
       continue;
-      localObject3 = new aigu(this);
+      localObject3 = new aitn(this);
       continue;
-      localObject3 = new axxn(this);
+      localObject3 = new ayxu(this);
       continue;
-      localObject3 = new azrx(this);
+      localObject3 = new batb(this);
       continue;
-      localObject3 = new aqkz(this);
+      localObject3 = new arfe(this);
       continue;
-      localObject3 = new ngr(this);
+      localObject3 = new nsb(this);
       continue;
-      localObject3 = new myh(this);
+      localObject3 = new nji(this);
       continue;
-      localObject3 = new aqjb(this);
+      localObject3 = new ardg(this);
       continue;
-      localObject3 = new avjd(this);
+      localObject3 = new awiw(this);
       continue;
-      localObject3 = new alrl(this);
+      localObject3 = new amgb(this);
       continue;
       localObject3 = new UsingTimeReportManager(this);
       continue;
-      localObject3 = new ariu(this);
+      localObject3 = new asew(this);
       continue;
-      localObject3 = new aisi(this);
+      localObject3 = new ajfg(this);
       continue;
-      localObject3 = new vuz(this);
+      localObject3 = new whw(this);
       continue;
-      localObject3 = new asif(this);
+      localObject3 = new atej(this);
       continue;
-      localObject3 = new ljw(this);
+      localObject3 = new lun(this);
       continue;
-      localObject3 = new ajyv(this);
+      localObject3 = new aknh(this);
       continue;
       localObject3 = new BusinessCommonConfig(this);
       continue;
-      localObject3 = new ariy(this);
+      localObject3 = new asfa(this);
       continue;
-      localObject3 = new agmq(this);
+      localObject3 = new agzf(this);
       continue;
-      localObject3 = new nau(this);
+      localObject3 = new nlv(this);
       continue;
       localObject3 = new MedalWallMng(this);
       continue;
+      localObject3 = new tgb(this);
+      continue;
+      localObject3 = new tgc(this);
+      continue;
+      localObject3 = new ajyf(this);
+      continue;
+      localObject3 = new ssu(this);
+      continue;
       localObject3 = new stf(this);
       continue;
-      localObject3 = new stg(this);
+      localObject3 = new akdr(this);
       continue;
-      localObject3 = new ajjz(this);
-      continue;
-      localObject3 = new sfy(this);
-      continue;
-      localObject3 = new sgj(this);
-      continue;
-      localObject3 = new ajph(this);
-      continue;
-      localObject3 = new basg(this);
+      localObject3 = new bbui(this);
       continue;
       localObject3 = new UpgradeTIMManager(this);
       continue;
-      localObject3 = new aeor(this);
+      localObject3 = new aezn(this);
       continue;
-      localObject3 = new pnn(this);
+      localObject3 = new pzi(this);
       continue;
-      localObject3 = new aszm(this);
+      localObject3 = new atvq(this);
       continue;
-      localObject3 = new atdg(this);
+      localObject3 = new atzk(this);
       continue;
-      localObject3 = new aqnw(this);
+      localObject3 = new arib(this);
       continue;
-      localObject3 = new alxy(this);
+      localObject3 = new amno(this);
       continue;
-      localObject3 = new afgd(this);
+      localObject3 = new afsa(this);
       continue;
-      localObject3 = new pnh(this);
+      localObject3 = new pzc(this);
       continue;
-      localObject3 = new png(this);
+      localObject3 = new pzb(this);
       continue;
-      localObject3 = new axgr(this);
+      localObject3 = new aygv(this);
       continue;
-      localObject3 = new axhd(this);
+      localObject3 = new ayhh(this);
       continue;
-      localObject3 = new anoe(this);
+      localObject3 = new aoep(this);
       continue;
-      localObject3 = new agqj(this);
+      localObject3 = new ahcy(this);
       continue;
       localObject3 = new FeedsManager(this);
       continue;
       localObject3 = new KandianSubscribeManager(this);
       continue;
-      localObject3 = new apbv(this);
+      localObject3 = new aptp(this);
       continue;
-      localObject3 = new acjz(this);
+      localObject3 = new acus(this);
       continue;
-      localObject3 = new apha(this);
+      localObject3 = new apzd(this);
       continue;
-      localObject3 = new axff(this);
+      localObject3 = new ayfi(this);
       continue;
-      localObject3 = new arim(this);
+      localObject3 = new aseo(this);
       continue;
-      localObject3 = new ansl(this);
+      localObject3 = new aoix(this);
       continue;
-      localObject3 = new ayuu(this);
+      localObject3 = new azvk(this);
       continue;
-      localObject3 = new baxz(this);
+      localObject3 = new bcat(this);
       continue;
-      localObject3 = new bfco(this);
+      localObject3 = new bgkf(this);
       continue;
       localObject3 = new com.tencent.mobileqq.microapp.apkg.ApkgConfigManager(this);
       continue;
@@ -10693,109 +10865,115 @@ public class QQAppInterface
       continue;
       localObject3 = new UsedAppListManager(this);
       continue;
-      localObject3 = new ajzj(this);
+      localObject3 = new aknv(this);
       continue;
-      localObject3 = new bfug(this);
+      localObject3 = new bhcq(this);
       continue;
-      localObject3 = new avbh(this);
+      localObject3 = new awba(this);
       continue;
       localObject3 = new KandianDailyManager(this);
       continue;
-      localObject3 = new ajrt(this);
+      localObject3 = new akgd(this);
       continue;
       localObject3 = new FaceDetectForThirdPartyManager(this);
       continue;
-      localObject3 = new ariq(this);
+      localObject3 = new ases(this);
       continue;
-      localObject3 = new akkf(this);
+      localObject3 = new akyr(this);
       continue;
-      localObject3 = new axil(this);
+      localObject3 = new ayip(this);
       continue;
-      localObject3 = new aqod(this);
+      localObject3 = new arii(this);
       continue;
-      localObject3 = new arin(this);
+      localObject3 = new asep(this);
       continue;
-      localObject3 = new nny(this);
+      localObject3 = new nzj(this);
       continue;
       localObject3 = new MiniAppUserAppInfoListManager(this);
       continue;
       localObject3 = new MiniAppLocalSearchManager(this);
       continue;
-      localObject3 = new aqcg();
+      localObject3 = new aqwi();
       continue;
-      localObject3 = new auoe();
+      localObject3 = new avnm();
       continue;
-      localObject3 = new aemi(this);
+      localObject3 = new aexd(this);
       continue;
-      localObject3 = new agxk(this);
+      localObject3 = new ahjz(this);
       continue;
-      localObject3 = new avqe(this);
+      localObject3 = new awpx(this);
       continue;
-      localObject3 = new aqjq(this);
+      localObject3 = new ardv(this);
       continue;
-      localObject3 = new aofy(this);
+      localObject3 = new aows(this);
       continue;
-      localObject3 = new atkz(this);
+      localObject3 = new auiy(this);
       continue;
-      localObject3 = new aryq(this);
+      localObject3 = new asuu(this);
       continue;
-      localObject3 = new avau(this);
+      localObject3 = new awan(this);
       continue;
-      localObject3 = new amor(this);
+      localObject3 = new aney(this);
       continue;
-      localObject3 = new achz(this);
+      localObject3 = new acso(this);
       continue;
       localObject3 = new MiniAppExposureManager(this);
       continue;
-      localObject3 = new apqs(this);
+      localObject3 = new aqkh(this);
       continue;
-      localObject3 = new advd(this);
+      localObject3 = new aegc(this);
       continue;
-      localObject3 = new artr(this);
+      localObject3 = new aspv(this);
       continue;
       localObject3 = new ListenTogetherManager(this);
       continue;
-      localObject3 = new almc(this);
+      localObject3 = new amaq(this);
       continue;
-      localObject3 = new arwc(this);
+      localObject3 = new assg(this);
       continue;
       localObject3 = new MiniAppEntityManager(c());
       continue;
-      localObject3 = new ajvr(this);
+      localObject3 = new akkb(this);
       continue;
-      localObject3 = new anbh(this);
+      localObject3 = new anrs(this);
       continue;
-      localObject3 = new vvk(this);
+      localObject3 = new wih(this);
       continue;
       localObject3 = new DesktopDataManager(this);
       continue;
-      localObject3 = new nof(this);
+      localObject3 = new nzq(this);
       continue;
-      localObject3 = new auee(this);
+      localObject3 = new avdk(this);
       continue;
-      localObject3 = new aqqi(this);
+      localObject3 = new arla(this);
       continue;
-      localObject3 = new bfml();
+      localObject3 = new bguv();
       continue;
-      localObject3 = new axmt(this);
+      localObject3 = new ayna(this);
       continue;
-      localObject3 = new agtb(this);
+      localObject3 = new ahfq(this);
       continue;
-      localObject3 = new agtk(this);
+      localObject3 = new ahfz(this);
       continue;
-      localObject3 = new agtd(this);
+      localObject3 = new ahfs(this);
       continue;
       localObject3 = new SpringHbReportManager(this);
       continue;
-      localObject3 = new asbf(this);
+      localObject3 = new asxj(this);
       continue;
-      localObject3 = new azcd(this);
+      localObject3 = new bacv(this);
       continue;
-      localObject3 = new arxi(this);
+      localObject3 = new astm(this);
       continue;
-      localObject3 = new aply();
+      localObject3 = new aqfm();
       continue;
-      label3959:
+      localObject3 = new aqmu(this);
+      continue;
+      localObject3 = new baff();
+      continue;
+      localObject3 = new AudioDeviceManager(this);
+      continue;
+      label4006:
       localObject3 = localManager;
       switch (paramInt)
       {
@@ -10811,15 +10989,15 @@ public class QQAppInterface
   
   public Class<? extends MSFServlet>[] getMessagePushServlets()
   {
-    return new Class[] { alwi.class, awcj.class, atoi.class };
+    return new Class[] { amly.class, axbr.class, aumg.class };
   }
   
-  public axrr getNetEngine(int paramInt)
+  public ayry getNetEngine(int paramInt)
   {
-    if (this.jdField_a_of_type_Axso == null) {
-      this.jdField_a_of_type_Axso = ((axso)getManager(21));
+    if (this.jdField_a_of_type_Aysv == null) {
+      this.jdField_a_of_type_Aysv = ((aysv)getManager(21));
     }
-    return this.jdField_a_of_type_Axso.a(this, paramInt);
+    return this.jdField_a_of_type_Aysv.a(this, paramInt);
   }
   
   public void h()
@@ -10827,7 +11005,7 @@ public class QQAppInterface
     if (QLog.isColorLevel()) {
       QLog.d("QQAppInterface", 2, "onConnAllFailed");
     }
-    arih.a().a(4);
+    asej.a().a(4);
     MqqHandler localMqqHandler = getHandler(Conversation.class);
     if (localMqqHandler != null) {
       localMqqHandler.obtainMessage(1134013, null).sendToTarget();
@@ -10836,9 +11014,9 @@ public class QQAppInterface
   
   public void h(boolean paramBoolean1, boolean paramBoolean2)
   {
-    bahr localbahr = (bahr)getManager(31);
-    if (localbahr != null) {
-      localbahr.a(paramBoolean1, paramBoolean2);
+    bbix localbbix = (bbix)getManager(31);
+    if (localbbix != null) {
+      localbbix.a(paramBoolean1, paramBoolean2);
     }
   }
   
@@ -10867,7 +11045,7 @@ public class QQAppInterface
   
   public void i()
   {
-    ThreadManager.post(new QQAppInterface.9(this), 10, null, true);
+    ThreadManager.post(new QQAppInterface.10(this), 10, null, true);
     try
     {
       sendToService(new ToServiceMsg("mobileqq.service", getCurrentAccountUin(), "CMD_STOP_NOTIFIYCATION"));
@@ -10878,9 +11056,9 @@ public class QQAppInterface
   
   public void i(boolean paramBoolean1, boolean paramBoolean2)
   {
-    bahr localbahr = (bahr)getManager(31);
-    if (localbahr != null) {
-      localbahr.b(paramBoolean1, paramBoolean2);
+    bbix localbbix = (bbix)getManager(31);
+    if (localbbix != null) {
+      localbbix.b(paramBoolean1, paramBoolean2);
     }
   }
   
@@ -10937,10 +11115,10 @@ public class QQAppInterface
   
   public void k()
   {
-    if (this.jdField_a_of_type_Ktu != null)
+    if (this.jdField_a_of_type_Lej != null)
     {
-      this.jdField_a_of_type_Ktu.a();
-      this.jdField_a_of_type_Ktu = null;
+      this.jdField_a_of_type_Lej.a();
+      this.jdField_a_of_type_Lej = null;
     }
   }
   
@@ -10970,7 +11148,7 @@ public class QQAppInterface
     if (QLog.isColorLevel()) {
       QLog.d("QQAppInterface", 2, "getVideoConfigUpdate");
     }
-    NewIntent localNewIntent = new NewIntent(this.app, awdm.class);
+    NewIntent localNewIntent = new NewIntent(this.app, axcu.class);
     localNewIntent.putExtra("reqType", 11);
     startServlet(localNewIntent);
   }
@@ -10984,11 +11162,11 @@ public class QQAppInterface
   public void logout(boolean paramBoolean)
   {
     if (paramBoolean) {
-      N();
+      Q();
     }
     ((PushManager)getManager(5)).unregistProxyMessagePush(getAppid(), this.app.getPackageName() + ":video");
-    arih.a().a();
-    M();
+    asej.a().a();
+    P();
     if (QLog.isColorLevel()) {
       QLog.d("QQAppInterface", 2, "kickPC in app  do logout");
     }
@@ -10996,7 +11174,7 @@ public class QQAppInterface
     if (str != null) {}
     try
     {
-      bgtw.a(getApp(), Long.parseLong(str));
+      bicy.a(getApp(), Long.parseLong(str));
       super.logout(paramBoolean);
       return;
     }
@@ -11011,10 +11189,10 @@ public class QQAppInterface
   
   public void m()
   {
-    if (this.jdField_a_of_type_Ajlh == null)
+    if (this.jdField_a_of_type_Ajzo == null)
     {
-      this.jdField_a_of_type_Ajlh = new ajlh(this);
-      this.jdField_a_of_type_Ajlh.a();
+      this.jdField_a_of_type_Ajzo = new ajzo(this);
+      this.jdField_a_of_type_Ajzo.a();
     }
   }
   
@@ -11026,14 +11204,14 @@ public class QQAppInterface
   
   public void n()
   {
-    if (this.jdField_a_of_type_Ajlh != null) {
-      this.jdField_a_of_type_Ajlh.c();
+    if (this.jdField_a_of_type_Ajzo != null) {
+      this.jdField_a_of_type_Ajzo.c();
     }
   }
   
   public boolean n()
   {
-    return a().getBoolean(getApp().getString(2131629600) + getCurrentAccountUin(), false);
+    return a().getBoolean(getApp().getString(2131695281) + getCurrentAccountUin(), false);
   }
   
   public void o()
@@ -11051,34 +11229,34 @@ public class QQAppInterface
   
   public boolean o()
   {
-    return ((ascu)getManager(161)).b();
+    return ((asyy)getManager(161)).b();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    startServlet(new NewIntent(getApplication(), awcw.class));
-    this.jdField_a_of_type_Avys = new avys(this);
+    startServlet(new NewIntent(getApplication(), axce.class));
+    this.jdField_a_of_type_Awyl = new awyl(this);
     this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator = new Automator(this);
     if (e())
     {
-      aufl.a(this, System.currentTimeMillis());
-      this.jdField_a_of_type_Atmp = getEntityManagerFactory().createEntityManager();
+      aver.a(this, System.currentTimeMillis());
+      this.jdField_a_of_type_Aukn = getEntityManagerFactory().createEntityManager();
       this.jdField_f_of_type_Long = System.currentTimeMillis();
       if (StartService.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(ajws.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator, "{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,108,44,45,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}"));
+        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(aklc.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator, "{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,108,44,45,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}"));
       }
       if (StartService.jdField_a_of_type_Boolean) {
         ThemeUtil.initTheme(this);
       }
-      Q();
+      T();
     }
     try
     {
       MagnifierSDK.a(Long.parseLong(getAccount()));
       ThreadManager.getSubThreadHandler().post(new QQAppInterface.1(this));
       if (StartService.jdField_a_of_type_Boolean) {
-        azyk.a();
+        bazo.a();
       }
       if (GuardManager.jdField_a_of_type_ComTencentMobileqqAppGuardManager != null) {
         GuardManager.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(this);
@@ -11086,14 +11264,14 @@ public class QQAppInterface
       this.jdField_c_of_type_Boolean = true;
       a().a();
       a().d();
-      aome.a().a(this);
+      apcy.a().a(this);
       a().a();
       PluginManageHandler.getInstance().setPluginManagerProvider(this, false);
-      ayue.a().a();
-      aysv.a().a();
-      aytv.a().a();
-      aopn.a().a(this);
-      skt.a(this);
+      azuu.a().a();
+      aztl.a().a();
+      azul.a().a();
+      apgw.a().a(this);
+      sxp.a(this);
       return;
     }
     catch (Exception paramBundle)
@@ -11108,20 +11286,20 @@ public class QQAppInterface
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Alzb.a();
+    this.jdField_a_of_type_Amor.a();
     BaseApplicationImpl.sShowTime = 0L;
     BaseApplicationImpl.sLaunchTime = 0L;
     BaseApplicationImpl.appStartTime = 0L;
-    axpy.b();
-    M();
+    ayqf.b();
+    P();
     ThemeUiPlugin.destroy(this);
     ChatBackgroundManager.b();
-    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Ajpt);
+    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Aked);
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
-    ThreadManager.getSubThreadHandler().post(new QQAppInterface.17(this));
-    ThreadManager.excute(new QQAppInterface.18(this), 80, null, false);
+    ThreadManager.getSubThreadHandler().post(new QQAppInterface.18(this));
+    ThreadManager.excute(new QQAppInterface.19(this), 80, null, false);
     if (QLog.isColorLevel()) {
       QLog.d("notification", 2, "QQAppInterface onDestroy removeNotification");
     }
@@ -11132,52 +11310,52 @@ public class QQAppInterface
     if (this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter != null) {
       this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a();
     }
-    aome.a().a();
-    if (this.jdField_a_of_type_Axvo != null) {
+    apcy.a().a();
+    if (this.jdField_a_of_type_Ayvv != null) {
       a().c();
     }
-    if (this.jdField_a_of_type_Arxt != null)
+    if (this.jdField_a_of_type_Astx != null)
     {
-      this.jdField_a_of_type_Arxt.a();
-      this.jdField_a_of_type_Arxt = null;
+      this.jdField_a_of_type_Astx.a();
+      this.jdField_a_of_type_Astx = null;
     }
-    alzf.a();
+    amov.a();
     OpenApiManager.getInstance().onRuntimeDestroy(this);
-    awab.a();
-    azje.a(this);
+    awzj.a();
+    bakh.a(this);
     QWalletHelper.clearInstance(this);
-    if (this.jdField_a_of_type_Aoke != null) {
-      this.jdField_a_of_type_Aoke.e();
+    if (this.jdField_a_of_type_Apay != null) {
+      this.jdField_a_of_type_Apay.e();
     }
     if (this.mHwEngine != null) {
       this.mHwEngine.closeEngine();
     }
     if (!TextUtils.isEmpty(getCurrentAccountUin())) {
-      amnb.b();
+      andi.b();
     }
-    if (this.jdField_a_of_type_Aoig != null) {
+    if (this.jdField_a_of_type_Aoza != null) {
       a().e();
     }
-    if (this.jdField_a_of_type_Bffc != null) {
+    if (this.jdField_a_of_type_Bgmt != null) {
       a().c();
     }
     PresendPicMgr localPresendPicMgr = PresendPicMgr.a(null);
     if (localPresendPicMgr != null) {
       localPresendPicMgr.b();
     }
-    if (axwx.a != null) {
-      axwx.a().a();
+    if (ayxe.a != null) {
+      ayxe.a().a();
     }
     if (this.jdField_b_of_type_AndroidOsHandler != null) {
       this.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
-    bhfm.a().a();
+    bjae.a().a();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
   }
   
   public RemotePluginManager.Stub onGetPluginManager()
   {
-    return (bfdz)getManager(27);
+    return (bglq)getManager(27);
   }
   
   public void onProcPause()
@@ -11186,7 +11364,7 @@ public class QQAppInterface
     if (QLog.isColorLevel()) {
       QLog.d("QQAppInterface", 2, "onProcPause");
     }
-    C();
+    D();
   }
   
   public void onProcResume()
@@ -11223,24 +11401,24 @@ public class QQAppInterface
       QLog.d("QQAppInterface", 2, "onRunningBackground");
     }
     super.onRunningBackground();
-    if (rcx.a())
+    if (rpl.a())
     {
-      rcx.a().a();
-      rcx.a().b();
-      rcx.a().a(1);
+      rpl.a().a();
+      rpl.a().b();
+      rpl.a().a(1);
     }
-    C();
+    D();
     if (this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager != null) {
       this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.f();
     }
-    awqx.a(this);
+    axqw.a(this);
     a().b();
-    localObject = (aufu)getManager(104);
+    localObject = (avfa)getManager(104);
     if (localObject != null) {
-      ((aufu)localObject).c();
+      ((avfa)localObject).c();
     }
     localObject = (MediaPlayerManager)this.jdField_a_of_type_ArrayOfMqqManagerManager[24];
-    if ((localObject != null) && (((MediaPlayerManager)localObject).b())) {
+    if ((localObject != null) && (((MediaPlayerManager)localObject).a())) {
       ((MediaPlayerManager)localObject).a(false);
     }
     a(-1L);
@@ -11255,7 +11433,7 @@ public class QQAppInterface
           QLog.d("QQAppInterface", 2, "checkBackgroundRestricWhilteList onRunningBackground topActivity packageName: " + ((ActivityManager.RunningTaskInfo)localList.get(0)).topActivity.getPackageName());
         }
         if (!((Context)localObject).getPackageName().equals(((ActivityManager.RunningTaskInfo)localList.get(0)).topActivity.getPackageName())) {
-          break label439;
+          break label456;
         }
         this.s = false;
       }
@@ -11266,34 +11444,39 @@ public class QQAppInterface
       {
         for (;;)
         {
-          ajzs.a().a();
-          awpz.a().b();
+          akoe.a().a();
+          axpy.a().b();
           UserguideActivity.a();
-          zrr.a().a(this);
+          aabk.a().a(this);
           ArkStateCenter.getInstance().setForeground(false);
-          localObject = (arim)getManager(284);
+          localObject = (aseo)getManager(284);
           if (localObject != null) {
-            ((arim)localObject).a();
+            ((aseo)localObject).a();
           }
-          long l1 = baig.e();
+          long l1 = bbjn.e();
           if (System.currentTimeMillis() - l1 > 14400000L)
           {
             localObject = (WebProcessManager)getManager(13);
             if (localObject != null)
             {
               ((WebProcessManager)localObject).a(204);
-              baig.c(System.currentTimeMillis());
+              bbjn.c(System.currentTimeMillis());
               if (QLog.isColorLevel()) {
                 QLog.d("QQAppInterface", 2, "check update x5");
               }
             }
           }
-          pzf.a();
-          T();
-          rdz.a(true);
+          qlf.a();
+          W();
+          rqm.a(true);
           MiniAppReportManager.onEnterBackground();
-          awtl.a();
-          awqe.b();
+          axtm.a();
+          axsf.a(this);
+          localObject = (akac)getManager(159);
+          if (localObject != null) {
+            ((akac)localObject).j();
+          }
+          axqd.b();
           return;
           this.s = true;
         }
@@ -11308,18 +11491,17 @@ public class QQAppInterface
         }
       }
     }
-    ajhe.a(BaseApplicationImpl.getContext());
-    ajgw.a(BaseApplicationImpl.getContext());
-    awrh.a(BaseApplicationImpl.getContext());
+    ajvh.a(BaseApplicationImpl.getContext());
+    ajuz.a(BaseApplicationImpl.getContext());
     LpReportManager.getInstance().startReportImediately(2);
-    myd.a().a();
-    aqiy.a().b();
-    awhl.a(this);
-    lco.a(this);
-    akbf.a();
-    atox.b();
+    nje.a().a();
+    ardd.a().b();
+    axgr.a(this);
+    lnf.a(this);
+    akpr.a();
+    aumv.b();
     JobReporter.reportThreadPeakCount(getCurrentAccountUin());
-    ohp.i();
+    ota.i();
   }
   
   public void onRunningForeground()
@@ -11328,84 +11510,84 @@ public class QQAppInterface
       QLog.d("QQAppInterface", 2, "onRunningForeground");
     }
     super.onRunningForeground();
-    awqx.b(this, "CliOper", "", "", "0X8004014", "0X8004014", 0, 0, "", "", "", "");
+    axqw.b(this, "CliOper", "", "", "0X8004014", "0X8004014", 0, 0, "", "", "", "");
     Object localObject = a();
     if ((localObject != null) && (((QQMessageFacade)localObject).b() > 1)) {
-      awqx.b(this, "CliOper", "", "", "0X8004015", "0X8004015", 0, 0, "", "", "", "");
+      axqw.b(this, "CliOper", "", "", "0X8004015", "0X8004015", 0, 0, "", "", "", "");
     }
-    if (rcx.a())
+    if (rpl.a())
     {
-      rcx.a().a(this, NetConnInfoCenter.getServerTimeMillis());
-      rcx.a().a(2);
+      rpl.a().a(this, NetConnInfoCenter.getServerTimeMillis());
+      rpl.a().a(2);
     }
-    awqx.a(this, false);
-    bffu.a();
+    axqw.a(this, false);
+    bgnl.a();
     localObject = new Intent("com.tencent.intent.QZONE_PRE_DOWNLOAD_CANCEL");
     BaseApplication.getContext().sendBroadcast((Intent)localObject);
     localObject = (PhoneContactManagerImp)getManager(11);
     if (localObject != null) {
       ((PhoneContactManagerImp)localObject).a(false);
     }
-    localObject = (awcl)getManager(12);
+    localObject = (axbt)getManager(12);
     if (localObject != null)
     {
-      ((awcl)localObject).b();
-      ((auqh)getManager(36)).a();
-      ((ajqy)a(87)).a(false, true);
+      ((axbt)localObject).b();
+      ((avpq)getManager(36)).a();
+      ((akfi)a(87)).a(false, true);
     }
     localObject = (ArkAppCenter)getManager(121);
     if (localObject != null) {
       ((ArkAppCenter)localObject).a();
     }
-    localObject = (aroj)getManager(10);
+    localObject = (askn)getManager(10);
     if (localObject != null)
     {
-      if (((aroj)localObject).a() > 0) {
-        ((aroj)localObject).a(((aroj)localObject).a());
+      if (((askn)localObject).a() > 0) {
+        ((askn)localObject).a(((askn)localObject).a());
       }
-      ((aroj)localObject).a(2);
+      ((askn)localObject).a(2);
     }
     g(false);
-    localObject = (axam)getManager(62);
-    if ((localObject != null) && (((axam)localObject).jdField_a_of_type_Boolean))
+    localObject = (ayao)getManager(62);
+    if ((localObject != null) && (((ayao)localObject).jdField_a_of_type_Boolean))
     {
-      axam.a(this, true);
-      ((axam)localObject).jdField_a_of_type_Boolean = false;
+      ayao.a(this, true);
+      ((ayao)localObject).jdField_a_of_type_Boolean = false;
     }
-    agkl.a(this, false);
-    bahj.a(getApp().getBaseContext());
-    localObject = (ajvm)getManager(85);
+    agxa.a(this, false);
+    bbio.a(getApp().getBaseContext());
+    localObject = (akjw)getManager(85);
     if (localObject != null)
     {
-      ((ajvm)localObject).a();
-      ((ajvm)localObject).e();
+      ((akjw)localObject).a();
+      ((akjw)localObject).e();
     }
-    awrn.a(BaseApplicationImpl.sApplication).a(this);
-    z();
-    bbmy.a(true);
+    axrl.a(BaseApplicationImpl.sApplication).a(this);
+    A();
+    bcpw.a(true);
     QWalletHelper.getPayCode(this);
-    localObject = (agmq)getManager(245);
+    localObject = (agzf)getManager(245);
     if (localObject != null) {
-      ((agmq)localObject).a(4);
+      ((agzf)localObject).a(4);
     }
     if ((isLogin()) && (Build.VERSION.SDK_INT >= 23) && (this.s)) {
-      R();
+      U();
     }
     localObject = a();
-    if ((localObject != null) && (((msg)localObject).jdField_a_of_type_Boolean) && ((BaseActivity.sTopActivity instanceof SplashActivity)) && (SplashActivity.jdField_a_of_type_Int == 1)) {
-      urp.a("story_tab", "exp", 0, ((mmy)getManager(70)).b(), new String[] { "", "", "", "" });
+    if ((localObject != null) && (((ndh)localObject).jdField_a_of_type_Boolean) && ((BaseActivity.sTopActivity instanceof SplashActivity)) && (SplashActivity.jdField_a_of_type_Int == 1)) {
+      vel.a("story_tab", "exp", 0, ((mxx)getManager(70)).b(), new String[] { "", "", "", "" });
     }
-    ohp.f();
-    bapw.a();
-    ((nfw)a(139)).a();
-    ThreadManager.executeOnFileThread(new QQAppInterface.20(this));
+    ota.f();
+    bbrt.a();
+    ((nqx)a(139)).a();
+    ThreadManager.executeOnFileThread(new QQAppInterface.21(this));
     QLog.d("QQAppInterface", 2, "**davorteng**onRunningForeground...");
-    localObject = (xrh)a(51);
+    localObject = (yak)a(51);
     if (localObject != null) {
-      ((xrh)localObject).c();
+      ((yak)localObject).c();
     }
-    aihn.a().a(this);
-    pzf.b();
+    aiug.a().a(this);
+    qlf.b();
     ArkStateCenter.getInstance().setForeground(true);
     MiniAppReportManager.onEnterForeground();
     AppBrandLaunchManager.g().onEnterForeground();
@@ -11445,7 +11627,7 @@ public class QQAppInterface
         }
       }
       if (localStatus1 != AppRuntime.Status.online) {
-        break label482;
+        break label486;
       }
       l2 = getExtOnlineStatus();
       l1 = l2;
@@ -11458,9 +11640,10 @@ public class QQAppInterface
         }
       }
     }
-    label482:
+    label486:
     for (long l1 = l2;; l1 = -1L)
     {
+      q();
       sendOnlineStatusWithExt(localStatus1, bool, l3, false, l1);
       this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTime();
       if (QLog.isColorLevel()) {
@@ -11472,10 +11655,36 @@ public class QQAppInterface
   
   public boolean p()
   {
-    return a().getBoolean(getApp().getString(2131629597) + getCurrentAccountUin(), false);
+    return a().getBoolean(getApp().getString(2131695278) + getCurrentAccountUin(), false);
   }
   
   public void q()
+  {
+    try
+    {
+      int i1 = getBatteryCapacity();
+      int i2 = getPowerConnect();
+      if ((i1 == 0) || (i2 == -1))
+      {
+        i1 = auja.a();
+        i2 = auja.b();
+        setBatteryCapacity(i1);
+        setPowerConnect(i2);
+        if (QLog.isColorLevel()) {
+          QLog.d("QQAppInterface", 2, String.format("checkBatteryStatus, curBattery: %s, powerConnect:%s", new Object[] { Integer.valueOf(i1), Integer.valueOf(i2) }), new RuntimeException("checkBatteryStatus: "));
+        }
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public boolean q()
+  {
+    return (this.jdField_a_of_type_Ajts != null) && (this.jdField_a_of_type_Ajts.k());
+  }
+  
+  public void r()
   {
     boolean bool = true;
     if (QLog.isColorLevel()) {
@@ -11501,16 +11710,6 @@ public class QQAppInterface
       return;
       bool = false;
     }
-  }
-  
-  public boolean q()
-  {
-    return (this.jdField_a_of_type_Ajfq != null) && (this.jdField_a_of_type_Ajfq.k());
-  }
-  
-  public void r()
-  {
-    b(null, false, true);
   }
   
   public boolean r()
@@ -11540,50 +11739,50 @@ public class QQAppInterface
     return bool1;
   }
   
-  public void removeObserver(ajfe paramajfe)
+  public void removeObserver(ajtg paramajtg)
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramajfe);
+      this.jdField_a_of_type_JavaUtilList.remove(paramajtg);
       synchronized (this.jdField_b_of_type_JavaUtilList)
       {
-        this.jdField_b_of_type_JavaUtilList.remove(paramajfe);
+        this.jdField_b_of_type_JavaUtilList.remove(paramajtg);
       }
     }
     synchronized (this.jdField_c_of_type_JavaUtilList)
     {
-      this.jdField_c_of_type_JavaUtilList.remove(paramajfe);
+      this.jdField_c_of_type_JavaUtilList.remove(paramajtg);
       return;
-      paramajfe = finally;
-      throw paramajfe;
-      paramajfe = finally;
-      throw paramajfe;
+      paramajtg = finally;
+      throw paramajtg;
+      paramajtg = finally;
+      throw paramajtg;
     }
   }
   
   public void reportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
   {
-    awqx.b(this, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    axqw.b(this, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
   }
   
   public void reportClickEventRuntime(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
   {
-    awqx.a(this, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    axqw.a(this, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
   }
   
   public void s()
   {
-    ((ajlf)a(3)).a();
+    b(null, false, true);
   }
   
   public boolean s()
   {
     String str1 = getCurrentAccountUin();
-    String str2 = babh.h(this, str1);
+    String str2 = bbcl.h(this, str1);
     Object localObject;
     if ((!TextUtils.isEmpty(str1)) && (str1.equals(str2)))
     {
-      localObject = (ajjj)getManager(51);
+      localObject = (ajxn)getManager(51);
       if (localObject == null)
       {
         localObject = null;
@@ -11604,7 +11803,7 @@ public class QQAppInterface
         QLog.i("QQAppInterface", 4, "checkAndGetSelfNickName, [" + str2 + "," + bool + "]");
       }
       return bool;
-      localObject = ((ajjj)localObject).e(str1);
+      localObject = ((ajxn)localObject).e(str1);
       break;
     }
   }
@@ -11621,8 +11820,8 @@ public class QQAppInterface
   
   public void sendToService(ToServiceMsg paramToServiceMsg)
   {
-    if (this.jdField_a_of_type_Avys != null) {
-      this.jdField_a_of_type_Avys.a(paramToServiceMsg);
+    if (this.jdField_a_of_type_Awyl != null) {
+      this.jdField_a_of_type_Awyl.a(paramToServiceMsg);
     }
   }
   
@@ -11632,7 +11831,24 @@ public class QQAppInterface
     if (!getCurrentAccountUin().equals("0")) {
       str = getCurrentAccountUin();
     }
-    baig.a(getApplication().getApplicationContext(), str, paramBoolean);
+    bbjn.a(getApplication().getApplicationContext(), str, paramBoolean);
+  }
+  
+  public void setBatteryCapacity(int paramInt)
+  {
+    try
+    {
+      super.setBatteryCapacity(paramInt);
+      if (paramInt != 0)
+      {
+        bbjn.w(this.app.getApplicationContext(), paramInt);
+        if (QLog.isColorLevel()) {
+          QLog.d("QQAppInterface", 2, new Object[] { "setBatteryCapacity, capacity:", Integer.valueOf(paramInt) });
+        }
+      }
+      return;
+    }
+    finally {}
   }
   
   public void setExtOnlineStatus(long paramLong)
@@ -11667,67 +11883,79 @@ public class QQAppInterface
     finally {}
   }
   
+  public void setPowerConnect(int paramInt)
+  {
+    try
+    {
+      super.setPowerConnect(paramInt);
+      if (paramInt != -1)
+      {
+        bbjn.x(this.app.getApplicationContext(), paramInt);
+        if (QLog.isColorLevel()) {
+          QLog.d("QQAppInterface", 2, new Object[] { "setPowerConnect, powerConnect: %s", Integer.valueOf(paramInt) });
+        }
+      }
+      return;
+    }
+    finally {}
+  }
+  
   public void start(boolean paramBoolean)
   {
     if ((paramBoolean) && (BaseApplicationImpl.sDirector != null)) {
       return;
     }
-    this.jdField_a_of_type_Ajpt = new ajpt(this);
-    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_Ajpt);
+    this.jdField_a_of_type_Aked = new aked(this);
+    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_Aked);
     super.start(paramBoolean);
   }
   
   public void t()
   {
-    ((ajfi)a(2)).a();
+    ((ajzl)a(3)).a();
   }
   
   public boolean t()
   {
-    return PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).getBoolean(BaseApplication.getContext().getString(2131629615) + getCurrentAccountUin(), true);
+    return PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).getBoolean(BaseApplication.getContext().getString(2131695296) + getCurrentAccountUin(), true);
   }
   
   public void u()
   {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      a().a(ajed.N, 0);
-      a().a().e();
-      return;
-    }
+    ((ajtk)a(2)).a();
   }
   
   public void userLogoutReleaseData()
   {
-    N();
-    akgo.a().a(true);
-    axcy.a().a();
-    axcz.a().a();
-    befa.a().a();
+    Q();
+    akva.a().a(true);
+    ayda.a().a();
+    aydb.a().a();
+    bfmu.a().a();
     ChatActivityUtils.c();
-    beeq.a(this.app, 0);
+    bfmk.a(this.app, 0);
     SharedPreferences.Editor localEditor = this.app.getSharedPreferences("unreadcount", 4).edit();
     localEditor.putInt("unread", 0);
     localEditor.commit();
-    if (this.jdField_a_of_type_Axvo != null)
+    if (this.jdField_a_of_type_Ayvv != null)
     {
-      this.jdField_a_of_type_Axvo.b();
-      this.jdField_a_of_type_Axvo.a();
+      this.jdField_a_of_type_Ayvv.b();
+      this.jdField_a_of_type_Ayvv.a();
     }
     OpenApiManager.getInstance().onUserLogout(this);
     this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.onDestroy();
-    msl.a().c();
-    awnv.a(BaseApplicationImpl.getContext());
+    ndm.a().c();
+    axnq.a(BaseApplicationImpl.getContext());
     MiniAppUtils.updateMiniAppList(100);
-    aluq.a(getApp());
+    amkg.b(getApp());
   }
   
   public void v()
   {
     synchronized (this.jdField_b_of_type_JavaLangObject)
     {
-      a().a(ajed.O, 0);
-      a().a().d();
+      a().a(ajsf.N, 0);
+      a().a().e();
       return;
     }
   }
@@ -11736,21 +11964,31 @@ public class QQAppInterface
   {
     synchronized (this.jdField_b_of_type_JavaLangObject)
     {
-      a().a(ajed.N, 0);
+      a().a(ajsf.O, 0);
+      a().a().d();
       return;
     }
   }
   
   public void x()
   {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      a().a(ajsf.N, 0);
+      return;
+    }
+  }
+  
+  public void y()
+  {
     ISecureModuleService localISecureModuleService = a();
-    if (localISecureModuleService.register(new ProductInfo(6, f(), Integer.parseInt("4370"), 201, null, getAccount())) == 0)
+    if (localISecureModuleService.register(new ProductInfo(6, f(), Integer.parseInt("4440"), 201, null, getAccount())) == 0)
     {
       if (QLog.isColorLevel()) {
         QLog.d("security_scan", 2, "Start Security Scan");
       }
       if (this.jdField_a_of_type_ComTencentSecuremoduleServiceCloudScanListener == null) {
-        this.jdField_a_of_type_ComTencentSecuremoduleServiceCloudScanListener = new ajpm(this);
+        this.jdField_a_of_type_ComTencentSecuremoduleServiceCloudScanListener = new akdw(this);
       }
       localISecureModuleService.registerCloudScanListener(getApp(), this.jdField_a_of_type_ComTencentSecuremoduleServiceCloudScanListener);
       localISecureModuleService.cloudScan();
@@ -11761,37 +11999,9 @@ public class QQAppInterface
     QLog.e("security_scan", 2, "regist security service error");
   }
   
-  public void y()
-  {
-    this.jdField_c_of_type_Long = SystemClock.uptimeMillis();
-  }
-  
   public void z()
   {
-    long l2 = 0L;
-    long l1;
-    if ((!this.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) && (this.m))
-    {
-      l1 = l2;
-      if (this.jdField_c_of_type_Long != 0L)
-      {
-        l1 = jdField_e_of_type_Int - (SystemClock.uptimeMillis() - this.jdField_c_of_type_Long);
-        if (l1 >= 0L) {
-          break label116;
-        }
-        l1 = l2;
-      }
-    }
-    label116:
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQAppInterface", 2, "onResume send msg " + l1);
-      }
-      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, new WeakReference(this));
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, l1);
-      return;
-    }
+    this.jdField_c_of_type_Long = SystemClock.uptimeMillis();
   }
 }
 

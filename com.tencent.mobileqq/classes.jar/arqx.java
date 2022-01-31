@@ -1,76 +1,95 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
+import android.os.Handler;
+import android.os.SystemClock;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager.RunnableShowForKey;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class arqx
-  implements DialogInterface.OnClickListener
+  implements artg
 {
-  public arqx(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
+  public arqx(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString, int paramInt)
   {
-    arsc.a("MsgBackup_MsgBackupPcBaseFragment", "showStopMigrateDialog mextra is not null! %b, isFromPcHandle = %b", new Object[] { Boolean.valueOf(TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)), Boolean.valueOf(this.a.e) });
-    arpa.a().a().c();
-    arpa.a().a().a(null);
-    if (this.a.jdField_a_of_type_Boolean) {
-      if ((!this.a.e) && (this.a.b == 1))
-      {
-        this.a.a(this.a.getActivity());
-        if (!this.a.f)
-        {
-          if (this.a.b != 1) {
-            break label189;
-          }
-          if (this.a.e) {
-            arsa.a("0X800A267", 2);
-          }
-        }
-        label141:
-        if (this.a.f)
-        {
-          if (this.a.b != 1) {
-            break label309;
-          }
-          if (this.a.e) {
-            arsa.a("0X800A267", 3);
-          }
-        }
-      }
-    }
-    label189:
-    while (this.a.b != 2)
+    QLog.i("ListenTogether.Manager", 1, "onPlayStateChanged: " + artb.a(paramInt));
+    HashMap localHashMap = new HashMap();
+    if (paramInt == 8)
     {
-      return;
-      this.a.m();
-      break;
-      if (this.a.b != 2) {
-        break label141;
+      ListenTogetherManager.a(this.a);
+      if (paramInt != 2) {
+        break label244;
       }
-      arsa.a("0X800A289", 1);
-      break label141;
-      if (this.a.e) {
-        if (this.a.getActivity() != null)
-        {
-          this.a.getActivity().setResult(1001);
-          this.a.getActivity().finish();
-        }
+      ListenTogetherManager.a(this.a).k();
+      ListenTogetherManager.a(this.a).m();
+      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
+      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
+      localHashMap.put("status", String.valueOf(paramInt));
+      label145:
+      if (paramInt != 2) {
+        break label323;
       }
-      for (;;)
-      {
-        if ((this.a.f) || (this.a.b != 1) || (!this.a.e)) {
-          break label307;
-        }
-        arsa.a("0X800A267", 1);
-        break;
-        this.a.a(this.a.getActivity());
-      }
-      break label141;
+      ListenTogetherManager.a(this.a).removeMessages(1001);
+      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, arqq.a().a);
     }
-    label307:
-    label309:
-    arsa.a("0X800A289", 2);
+    for (;;)
+    {
+      ListenTogetherManager.a(this.a, paramString, paramInt);
+      if (!localHashMap.isEmpty()) {
+        axrl.a(BaseApplication.getContext()).a("", "listen_together_player_status", true, 0L, 0L, localHashMap, "");
+      }
+      return;
+      if ((paramInt != 5) && (paramInt != 7)) {
+        break;
+      }
+      localHashMap.put("status", String.valueOf(paramInt));
+      break;
+      label244:
+      if ((paramInt != 4) && (paramInt != 5) && (paramInt != 7)) {
+        break label145;
+      }
+      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+      break label145;
+      label323:
+      ListenTogetherManager.a(this.a).removeMessages(1001);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    QLog.i("ListenTogether.Manager", 1, "onNetChanged: " + paramBoolean);
+    if (paramBoolean) {
+      ListenTogetherManager.b(this.a);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    QLog.i("ListenTogether.Manager", 1, "onFocusChanged: " + paramBoolean1 + " isTransient:" + paramBoolean2);
+    ListenTogetherManager.a(this.a, paramBoolean1);
+    if (paramBoolean1)
+    {
+      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
+      ListenTogetherManager.a(this.a, 0L);
+      return;
+    }
+    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
+    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
+    ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
+    ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+    if (paramBoolean2)
+    {
+      ListenTogetherManager.a(this.a, 0L);
+      return;
+    }
+    ListenTogetherManager.a(this.a, SystemClock.elapsedRealtime());
   }
 }
 

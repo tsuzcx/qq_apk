@@ -1,50 +1,24 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import java.util.ArrayList;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
 
-public abstract class wbn<E>
-  extends RecyclerView.Adapter
+public class wbn
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public final ArrayList<E> a = new ArrayList();
+  public wbn(NeoVideoRecordButton paramNeoVideoRecordButton) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.clear();
-  }
-  
-  public void a(ArrayList<E> paramArrayList)
-  {
-    this.a.clear();
-    notifyDataSetChanged();
-    if (paramArrayList == null) {
-      return;
-    }
-    this.a.addAll(paramArrayList);
-    notifyDataSetChanged();
-  }
-  
-  public void a(List<E> paramList)
-  {
-    if (paramList == null) {
-      return;
-    }
-    this.a.addAll(paramList);
-    notifyItemRangeInserted(this.a.size(), paramList.size());
-  }
-  
-  public ArrayList<E> b()
-  {
-    return this.a;
-  }
-  
-  public int getItemCount()
-  {
-    return this.a.size();
+    this.a.a.a(((Integer)paramValueAnimator.getAnimatedValue("border")).intValue(), 0.0F);
+    this.a.a.b(((Integer)paramValueAnimator.getAnimatedValue("ring")).intValue(), 0.0F);
+    this.a.b.a(((Integer)paramValueAnimator.getAnimatedValue("center")).intValue(), 0.0F);
+    this.a.b.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
+    NeoVideoRecordButton.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wbn
  * JD-Core Version:    0.7.0.1
  */

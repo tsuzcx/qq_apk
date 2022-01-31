@@ -1,18 +1,26 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import java.io.File;
 
-public class svj
-  extends DataSetObserver
+class svj
+  implements Comparable<svj>
 {
-  svj(svc paramsvc) {}
+  public final long a;
+  public final File a;
   
-  public void onChanged()
+  public svj(svi paramsvi, File paramFile)
   {
-    if (this.a.a == 0) {
-      ThreadManager.getUIHandler().post(new MsgTabStoryNodeListManager.7.1(this));
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.jdField_a_of_type_Long = paramFile.lastModified();
+  }
+  
+  public int a(svj paramsvj)
+  {
+    if (this.jdField_a_of_type_Long < paramsvj.jdField_a_of_type_Long) {
+      return -1;
     }
+    if (this.jdField_a_of_type_Long == paramsvj.jdField_a_of_type_Long) {
+      return 0;
+    }
+    return 1;
   }
 }
 

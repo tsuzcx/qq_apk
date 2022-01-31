@@ -1,70 +1,27 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.vipav.VipFullScreenVideoView;
-import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
 public class bawh
-  extends Handler
+  implements DownloadParams.DecodeHandler
 {
-  public bawh(VipFunCallPreviewActivity paramVipFunCallPreviewActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  private final int a = 10;
+  private final int b = 20;
   
-  public void handleMessage(Message paramMessage)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    switch (paramMessage.what)
+    try
     {
+      paramDownloadParams = Bitmap.createScaledBitmap(paramBitmap, paramBitmap.getWidth() / 20, paramBitmap.getHeight() / 20, true);
+      bbju.a(paramDownloadParams, 10);
+      return paramDownloadParams;
     }
-    BitmapDrawable localBitmapDrawable;
-    do
+    catch (OutOfMemoryError paramDownloadParams)
     {
-      RelativeLayout localRelativeLayout;
-      do
-      {
-        do
-        {
-          return;
-          if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-          {
-            if (this.a.jdField_a_of_type_Boolean)
-            {
-              if ((this.a.g instanceof Button)) {
-                ((Button)this.a.g).setText(ajjy.a(2131650943));
-              }
-              this.a.g.setEnabled(false);
-              return;
-            }
-            this.a.g.setEnabled(true);
-            return;
-          }
-          if (this.a.jdField_a_of_type_Boolean)
-          {
-            this.a.g.setVisibility(0);
-            this.a.g.setEnabled(true);
-            if ((this.a.g instanceof Button)) {
-              ((Button)this.a.g).setText(ajjy.a(2131650937));
-            }
-            this.a.g.setEnabled(false);
-            this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-            this.a.f.setVisibility(8);
-            return;
-          }
-          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-          return;
-        } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof BitmapDrawable)));
-        localRelativeLayout = (RelativeLayout)this.a.findViewById(2131313429);
-        localBitmapDrawable = (BitmapDrawable)paramMessage.obj;
-      } while ((localBitmapDrawable == null) || (localRelativeLayout == null));
-      localRelativeLayout.setBackgroundDrawable(localBitmapDrawable);
-    } while (paramMessage.arg1 != 1);
-    this.a.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView.setBackgroundDrawable(localBitmapDrawable);
+      return paramBitmap;
+    }
+    catch (Exception paramDownloadParams) {}
+    return paramBitmap;
   }
 }
 

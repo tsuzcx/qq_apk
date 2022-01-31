@@ -24,7 +24,7 @@ public class QQGameHeadLayout
   
   protected int a()
   {
-    return 2131493525;
+    return 2131559094;
   }
   
   public boolean a()

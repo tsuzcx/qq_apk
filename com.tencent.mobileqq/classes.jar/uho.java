@@ -1,16 +1,16 @@
-import android.text.TextUtils;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class uho
-  extends uhj
+class uho
+  implements bfos
 {
-  public uho()
-  {
-    super("memory_publish", null);
-  }
+  uho(uhj paramuhj, AtomicBoolean paramAtomicBoolean, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public static boolean a(uhj paramuhj)
+  public void onDismiss()
   {
-    return TextUtils.equals("memory_publish", paramuhj.a);
+    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null)) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    }
   }
 }
 

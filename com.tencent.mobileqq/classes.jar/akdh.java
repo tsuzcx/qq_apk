@@ -1,10 +1,30 @@
-public abstract interface akdh
+import android.app.Activity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import mqq.app.Foreground;
+
+public class akdh
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4);
-  
-  public abstract void b();
+  public static String a()
+  {
+    Activity localActivity = Foreground.getTopActivity();
+    String str;
+    if (localActivity != null)
+    {
+      str = localActivity.getClass().getName();
+      if ((localActivity instanceof SplashActivity))
+      {
+        if (SplashActivity.a == 1) {
+          return str + "_" + ((SplashActivity)localActivity).a();
+        }
+        return str + "_ChatFragment";
+      }
+    }
+    else
+    {
+      return "Null";
+    }
+    return str;
+  }
 }
 
 

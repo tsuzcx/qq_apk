@@ -1,43 +1,13 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.nativemonitor.NativeMonitorConfigHelper.1.1;
+import com.tencent.mobileqq.nativememorymonitor.library.ExternalProvider;
 
-public class ankb
+public final class ankb
+  implements ExternalProvider
 {
-  public int a;
-  public EmoticonPackage a;
-  public int b;
-  
-  public ankb(int paramInt1, int paramInt2, EmoticonPackage paramEmoticonPackage)
+  public void onSoLoad(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = paramEmoticonPackage;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if (!(paramObject instanceof ankb)) {
-        return false;
-      }
-      paramObject = (ankb)paramObject;
-      if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b)) {
-        break;
-      }
-    } while (((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null) && (paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null)) || ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) && (paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId.equals(paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId))));
-    return false;
-    return false;
-  }
-  
-  public String toString()
-  {
-    String str = "";
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) {
-      str = this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
-    }
-    return "EmotionPanelInfo [type=" + this.jdField_a_of_type_Int + ", columnNum=" + this.b + ", epid=" + str + "]";
+    ThreadManager.excute(new NativeMonitorConfigHelper.1.1(this, paramString1, paramString2), 64, null, false);
   }
 }
 

@@ -10,10 +10,10 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.style.URLSpan;
 import android.view.View;
-import awqx;
-import awus;
-import awvm;
-import bcpn;
+import axqw;
+import axuu;
+import axvo;
+import bdto;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatFragment;
@@ -23,18 +23,18 @@ import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import rtr;
+import sgj;
 
 public class StructMsgForHypertext$HyperSpannable
   extends URLSpan
 {
   long jdField_a_of_type_Long = -1L;
-  private awvm jdField_a_of_type_Awvm;
+  private axvo jdField_a_of_type_Axvo;
   
-  public StructMsgForHypertext$HyperSpannable(StructMsgForHypertext paramStructMsgForHypertext, awvm paramawvm)
+  public StructMsgForHypertext$HyperSpannable(StructMsgForHypertext paramStructMsgForHypertext, axvo paramaxvo)
   {
-    super(paramawvm.b);
-    this.jdField_a_of_type_Awvm = paramawvm;
+    super(paramaxvo.b);
+    this.jdField_a_of_type_Axvo = paramaxvo;
   }
   
   public void onClick(View paramView)
@@ -44,16 +44,16 @@ public class StructMsgForHypertext$HyperSpannable
     {
       return;
       this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    } while ((this.jdField_a_of_type_Awvm == null) || ((paramView != null) && ((paramView instanceof StructMsgForHypertext.HyperTextView)) && (!((StructMsgForHypertext.HyperTextView)paramView).a())));
+    } while ((this.jdField_a_of_type_Axvo == null) || ((paramView != null) && ((paramView instanceof StructMsgForHypertext.HyperTextView)) && (!((StructMsgForHypertext.HyperTextView)paramView).a())));
     label196:
     int m;
     int j;
     int i;
     int k;
     Object localObject1;
-    if (("web".equals(this.jdField_a_of_type_Awvm.b)) || ("auto".equals(this.jdField_a_of_type_Awvm.b)) || ("replyMsg".equals(this.jdField_a_of_type_Awvm.b)) || ("replyCmd".equals(this.jdField_a_of_type_Awvm.b)) || ("plugin".equals(this.jdField_a_of_type_Awvm.b)))
+    if (("web".equals(this.jdField_a_of_type_Axvo.b)) || ("auto".equals(this.jdField_a_of_type_Axvo.b)) || ("replyMsg".equals(this.jdField_a_of_type_Axvo.b)) || ("replyCmd".equals(this.jdField_a_of_type_Axvo.b)) || ("plugin".equals(this.jdField_a_of_type_Axvo.b)))
     {
-      new awus(null, paramView, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message).a(this.jdField_a_of_type_Awvm.b, this.jdField_a_of_type_Awvm.a, this.jdField_a_of_type_Awvm.c, this.jdField_a_of_type_Awvm.d, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.msgseq, new Object[0]);
+      new axuu(null, paramView, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message).a(this.jdField_a_of_type_Axvo.b, this.jdField_a_of_type_Axvo.a, this.jdField_a_of_type_Axvo.c, this.jdField_a_of_type_Axvo.d, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.msgseq, new Object[0]);
       this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.mHyperClick = true;
       if ((!(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message instanceof MessageForStructing)) || (((MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message).structingMsg.mMsgServiceID != 120)) {
         break label766;
@@ -62,10 +62,10 @@ public class StructMsgForHypertext$HyperSpannable
       j = 0;
       i = 0;
       k = 0;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_Awvm.f)) {
+      if (TextUtils.isEmpty(this.jdField_a_of_type_Axvo.f)) {
         break label1170;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.getExtInfoFromExtStr(StructMsgForHypertext.access$000(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext) + this.jdField_a_of_type_Awvm.f);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.getExtInfoFromExtStr(StructMsgForHypertext.access$000(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext) + this.jdField_a_of_type_Axvo.f);
       j = m;
     }
     for (;;)
@@ -78,12 +78,12 @@ public class StructMsgForHypertext$HyperSpannable
           i = Integer.valueOf((String)localObject1).intValue();
         }
         j = i;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_Awvm.g))
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Axvo.g))
         {
           j = i;
-          k = Integer.valueOf(this.jdField_a_of_type_Awvm.g).intValue();
+          k = Integer.valueOf(this.jdField_a_of_type_Axvo.g).intValue();
         }
-        if (((i != 0) && (i >= k)) || (TextUtils.isEmpty(this.jdField_a_of_type_Awvm.b))) {
+        if (((i != 0) && (i >= k)) || (TextUtils.isEmpty(this.jdField_a_of_type_Axvo.b))) {
           break;
         }
         localObject1 = paramView.getContext();
@@ -95,13 +95,13 @@ public class StructMsgForHypertext$HyperSpannable
         if (paramView == null) {
           break;
         }
-        ((bcpn)paramView.getManager(165)).a(this.jdField_a_of_type_Awvm.b, this.jdField_a_of_type_Awvm.d, this.jdField_a_of_type_Awvm.c, this.jdField_a_of_type_Awvm.a, 1, "");
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_Awvm.f))
+        ((bdto)paramView.getManager(165)).a(this.jdField_a_of_type_Axvo.b, this.jdField_a_of_type_Axvo.d, this.jdField_a_of_type_Axvo.c, this.jdField_a_of_type_Axvo.a, 1, "");
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Axvo.f))
         {
           i += 1;
           if (i <= k)
           {
-            this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.saveExtInfoToExtStr(StructMsgForHypertext.access$000(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext) + this.jdField_a_of_type_Awvm.f, "" + i);
+            this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.saveExtInfoToExtStr(StructMsgForHypertext.access$000(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext) + this.jdField_a_of_type_Axvo.f, "" + i);
             paramView.a().a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.frienduin, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.istroop, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.extStr);
           }
         }
@@ -116,7 +116,7 @@ public class StructMsgForHypertext$HyperSpannable
         label766:
         QLog.d("StructMsg", 1, localNumberFormatException.getMessage());
       }
-      if (!"app".equals(this.jdField_a_of_type_Awvm.b)) {
+      if (!"app".equals(this.jdField_a_of_type_Axvo.b)) {
         break label196;
       }
       localContext = paramView.getContext();
@@ -125,11 +125,11 @@ public class StructMsgForHypertext$HyperSpannable
       localObject3 = localObject1;
       try
       {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_Awvm.d)) {
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Axvo.d)) {
           continue;
         }
         localObject3 = localObject1;
-        localObject2 = this.jdField_a_of_type_Awvm.c;
+        localObject2 = this.jdField_a_of_type_Axvo.c;
         localObject3 = localObject1;
         i = ((String)localObject2).indexOf("://");
         if (i != -1) {
@@ -169,10 +169,10 @@ public class StructMsgForHypertext$HyperSpannable
         localIntent.putExtra("url", (String)localObject3);
         localIntent.putExtra("big_brother_source_key", "biz_src_jc_aio");
         localIntent.putExtra("key_isReadModeEnabled", true);
-        rtr.a(localIntent, (String)localObject3);
+        sgj.a(localIntent, (String)localObject3);
         localIntent.putExtra("fromAio", true);
         localContext.startActivity(localIntent);
-        awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, (String)localObject3, "", "", "");
+        axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, (String)localObject3, "", "", "");
         continue;
         localObject3 = localIntent;
         if (TextUtils.isEmpty(localIntent)) {
@@ -195,18 +195,18 @@ public class StructMsgForHypertext$HyperSpannable
         localObject3 = localIntent;
         ((Intent)localObject2).putExtra("key_isReadModeEnabled", true);
         localObject3 = localIntent;
-        rtr.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message, (Intent)localObject2, localIntent);
+        sgj.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message, (Intent)localObject2, localIntent);
         localObject3 = localIntent;
         localContext.startActivity((Intent)localObject2);
         localObject3 = localIntent;
-        awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, localIntent, "", "", "");
+        axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, localIntent, "", "", "");
         continue;
       }
       this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.mHyperClick = true;
       break label196;
       break;
       localObject3 = localObject1;
-      localObject2 = this.jdField_a_of_type_Awvm.d;
+      localObject2 = this.jdField_a_of_type_Axvo.d;
       continue;
       localObject3 = localObject1;
       str = ((String)localObject2).substring(0, i);

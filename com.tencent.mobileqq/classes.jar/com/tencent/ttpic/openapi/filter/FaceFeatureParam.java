@@ -3,7 +3,6 @@ package com.tencent.ttpic.openapi.filter;
 public class FaceFeatureParam
   implements Cloneable
 {
-  public String faceFeatureMergeImage = "beauty_common_merge.png";
   public float faceFeatureMultiplyAdjustValue = 0.8F;
   public String faceFeatureMultiplyImage = "beauty_multiply.png";
   public float faceFeatureNormal2AdjustValue = 0.0F;
@@ -40,7 +39,6 @@ public class FaceFeatureParam
     this.faceFeatureMultiplyAdjustValue = paramFloat2;
     this.faceFeatureSoftlightAdjustValue = paramFloat3;
     this.faceFeatureNormal2AdjustValue = paramFloat4;
-    this.faceFeatureMergeImage = paramString;
   }
   
   public FaceFeatureParam(float paramFloat1, float paramFloat2, float paramFloat3, String paramString1, String paramString2, String paramString3)

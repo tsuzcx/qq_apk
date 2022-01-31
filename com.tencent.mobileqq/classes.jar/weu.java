@@ -1,22 +1,21 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
-class weu
-  implements View.OnClickListener
+public class weu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  weu(wet paramwet, adcg paramadcg) {}
+  public weu(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    wet.a(this.jdField_a_of_type_Wet).removeCallbacks(wet.a(this.jdField_a_of_type_Wet));
-    wet.a(this.jdField_a_of_type_Wet, true);
-    wet.a(this.jdField_a_of_type_Wet, this.jdField_a_of_type_Adcg, this.jdField_a_of_type_Adcg.b);
+    RotateCircleImageView.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     weu
  * JD-Core Version:    0.7.0.1
  */

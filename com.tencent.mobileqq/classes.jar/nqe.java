@@ -1,55 +1,127 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
-class nqe
-  extends BaseAdapter
+public class nqe
+  implements ampd<String>
 {
-  nqe(nqb paramnqb) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private int b;
   
-  public int getCount()
+  public static nqe a(int paramInt, String paramString, boolean paramBoolean)
   {
-    return nqb.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return nqb.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    nqe localnqe = new nqe();
+    localnqe.jdField_a_of_type_Int = paramInt;
+    if (paramBoolean) {}
+    for (paramInt = 1;; paramInt = 0)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131494375, null);
-      paramViewGroup = new nqf(this.a);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312545));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131302905));
-      paramView.setTag(paramViewGroup);
+      localnqe.b = paramInt;
+      localnqe.jdField_a_of_type_JavaLangString = paramString;
+      return localnqe;
     }
-    for (;;)
+  }
+  
+  public static nqe a(String paramString)
+  {
+    try
     {
-      GiftServiceBean localGiftServiceBean = (GiftServiceBean)getItem(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localGiftServiceBean.t);
-      if (nqb.a(this.a) != paramInt) {
-        break;
+      nqe localnqe = (nqe)ampw.a(paramString, nqe.class);
+      return localnqe;
+    }
+    catch (QStorageInstantiateException localQStorageInstantiateException)
+    {
+      QLog.i("PublicAccountCenterUrlConfProcessor", 1, "loadConfig l :" + paramString, localQStorageInstantiateException);
+    }
+    return null;
+  }
+  
+  public static nqe a(ampi[] paramArrayOfampi)
+  {
+    nqe localnqe = null;
+    int i = 0;
+    while (i < paramArrayOfampi.length)
+    {
+      localnqe = a(paramArrayOfampi[i].jdField_a_of_type_JavaLangString);
+      i += 1;
+    }
+    return localnqe;
+  }
+  
+  public void a()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      int i = scu.a((QQAppInterface)localObject);
+      if (this.jdField_a_of_type_Int != i) {
+        break label47;
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842251);
-      return paramView;
-      paramViewGroup = (nqf)paramView.getTag();
+      if (QLog.isColorLevel()) {
+        QLog.d("PaSubscribeRedDotProcessor", 2, "IGNORE THIS ACTION because of SAME VERSION");
+      }
     }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842252);
-    return paramView;
+    label47:
+    do
+    {
+      return;
+      scu.a((QQAppInterface)localObject, this.jdField_a_of_type_Int);
+      scu.a((QQAppInterface)localObject, this.b, this.jdField_a_of_type_JavaLangString);
+      localObject = (WebProcessManager)((QQAppInterface)localObject).getManager(13);
+    } while (localObject == null);
+    ((WebProcessManager)localObject).e();
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig xml: " + paramString);
+    }
+    try
+    {
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramString = paramString.trim();
+        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
+        NodeList localNodeList = paramString.getElementsByTagName("version");
+        Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+        if ((localObject instanceof QQAppInterface))
+        {
+          localObject = (QQAppInterface)localObject;
+          this.jdField_a_of_type_Int = Integer.parseInt(localNodeList.item(0).getFirstChild().getNodeValue());
+          paramString = paramString.getElementsByTagName("public-account-folder");
+          if (paramString.getLength() > 0)
+          {
+            paramString = (Element)paramString.item(0);
+            this.b = Integer.parseInt(paramString.getElementsByTagName("show").item(0).getFirstChild().getNodeValue());
+            this.jdField_a_of_type_JavaLangString = paramString.getElementsByTagName("msg").item(0).getFirstChild().getNodeValue();
+          }
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig xml is empty");
+        return;
+      }
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig error", paramString);
+      }
+      paramString.printStackTrace();
+    }
   }
 }
 

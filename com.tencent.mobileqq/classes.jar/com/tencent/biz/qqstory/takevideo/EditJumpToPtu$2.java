@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import bace;
-import usd;
+import bbdj;
+import vez;
 
 public class EditJumpToPtu$2
   implements Runnable
 {
-  public EditJumpToPtu$2(usd paramusd, String paramString) {}
+  public EditJumpToPtu$2(vez paramvez, String paramString) {}
   
   public void run()
   {
     this.this$0.a(this.a);
-    bace.d(this.a);
+    bbdj.d(this.a);
   }
 }
 

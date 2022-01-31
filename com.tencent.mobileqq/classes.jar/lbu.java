@@ -1,72 +1,39 @@
-import java.util.Random;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import tencent.gdt.qq_ad_get.QQAdGet;
 
-public final class lbu
+public class lbu
 {
-  private static final float jdField_a_of_type_Float;
-  static final int jdField_a_of_type_Int = (int)Math.sqrt(16384.0D);
-  public static Random a;
+  private static lbu a;
   
-  static
+  public static lbu a()
   {
-    jdField_a_of_type_Float = 1.0F / (jdField_a_of_type_Int - 1);
-    jdField_a_of_type_JavaUtilRandom = new Random();
-  }
-  
-  public static final float a()
-  {
-    return jdField_a_of_type_JavaUtilRandom.nextFloat();
-  }
-  
-  public static final float a(float paramFloat)
-  {
-    return lbv.a[((int)(45.511112F * paramFloat) & 0x3FFF)];
-  }
-  
-  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (paramFloat1 < paramFloat2) {
-      return paramFloat2;
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new lbu();
+      }
+      return a;
     }
-    if (paramFloat1 > paramFloat3) {
-      return paramFloat3;
-    }
-    return paramFloat1;
+    finally {}
   }
   
-  public static final int a(int paramInt)
+  public void a(Context paramContext, AppRuntime paramAppRuntime, qq_ad_get.QQAdGet paramQQAdGet, BusinessObserver paramBusinessObserver)
   {
-    return jdField_a_of_type_JavaUtilRandom.nextInt(paramInt + 1);
-  }
-  
-  public static int a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt1 < paramInt2) {
-      return paramInt2;
-    }
-    if (paramInt1 > paramInt3) {
-      return paramInt3;
-    }
-    return paramInt1;
-  }
-  
-  public static final boolean a()
-  {
-    return jdField_a_of_type_JavaUtilRandom.nextBoolean();
-  }
-  
-  public static final float b(float paramFloat)
-  {
-    return lbv.a[((int)((90.0F + paramFloat) * 45.511112F) & 0x3FFF)];
-  }
-  
-  public static final float c(float paramFloat)
-  {
-    return jdField_a_of_type_JavaUtilRandom.nextFloat() * paramFloat;
+    paramContext = new NewIntent(BaseApplicationImpl.getApplication(), lbv.class);
+    paramContext.setObserver(paramBusinessObserver);
+    paramContext.putExtra("GdtLoadAdServletCMD", "QqAd.getAd");
+    paramContext.putExtra("sso_GdtLoadAd_rquest_bytes", paramQQAdGet.toByteArray());
+    paramAppRuntime.startServlet(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     lbu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.weishi_new.download;
 
-import bccu;
+import bdgv;
 import com.tencent.open.downloadnew.DownloadInfo;
-import sai;
+import sne;
 
 public final class WeishiDownloadUtil$3
   implements Runnable
@@ -11,8 +11,8 @@ public final class WeishiDownloadUtil$3
   
   public void run()
   {
-    sai.d("WeishiDownloadUtil", "执行下载重试!!!,downloadUrl: " + this.a.d);
-    bccu.a().b(this.a);
+    sne.d("WeishiDownloadUtil", "执行下载重试!!!,downloadUrl: " + this.a.d);
+    bdgv.a().b(this.a);
   }
 }
 

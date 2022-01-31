@@ -10,7 +10,7 @@ class ReflectController$3
   
   public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    ReflectController.access$1900(this.this$0, paramArrayOfByte, paramCamera);
+    ReflectController.access$2000(this.this$0, paramArrayOfByte, paramCamera);
   }
 }
 

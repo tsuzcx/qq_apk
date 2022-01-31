@@ -1,110 +1,73 @@
-import android.text.TextUtils;
-import com.tencent.gdtad.aditem.GdtAd;
-import java.net.URLEncoder;
-import org.json.JSONObject;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import java.util.Map;
 
 public class yok
+  implements aqso
 {
-  public static String a(int paramInt)
-  {
-    try
-    {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("pp", String.valueOf(paramInt));
-      ((JSONObject)localObject).put("ps", String.valueOf(1));
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
-    }
-    catch (Exception localException) {}
-    return null;
-  }
+  public yok(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  public static String a(long paramLong1, long paramLong2, boolean paramBoolean, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    int k = 1;
-    int i;
-    if ((paramLong1 >= 0L) && (paramLong2 == 0L)) {
-      i = 4;
-    }
-    for (;;)
+    yol localyol;
+    if (paramInt1 == 3)
     {
-      long l = paramLong1;
-      if (paramLong1 <= -1L)
-      {
-        i = 4;
-        l = 0L;
+      localyol = (yol)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+      if (localyol != null) {
+        this.a.callJs(localyol.g + "(" + localyol.a() + ");");
       }
-      if (l >= paramLong2) {
-        i = 4;
-      }
-      try
+    }
+    do
+    {
+      do
       {
-        Object localObject = new JSONObject();
-        ((JSONObject)localObject).put("bt", l + "");
-        ((JSONObject)localObject).put("et", paramLong2 + "");
-        StringBuilder localStringBuilder = new StringBuilder();
-        if (l > 0L)
+        do
         {
-          j = 0;
-          ((JSONObject)localObject).put("bf", j + "");
-          localStringBuilder = new StringBuilder();
-          if (!paramBoolean) {
-            break label249;
+          do
+          {
+            return;
+            if (paramInt1 != 5) {
+              break;
+            }
+            localyol = (yol)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+          } while (localyol == null);
+          this.a.callJs(localyol.f + "(" + localyol.a() + ");");
+          return;
+          if (paramInt1 != 7) {
+            break;
           }
-        }
-        label249:
-        for (int j = k;; j = 0)
-        {
-          ((JSONObject)localObject).put("ef", j + "");
-          ((JSONObject)localObject).put("pp", String.valueOf(paramInt));
-          ((JSONObject)localObject).put("pa", i + "");
-          localObject = ((JSONObject)localObject).toString();
-          return localObject;
-          j = 1;
-          break;
-        }
-        i = 0;
-      }
-      catch (Exception localException)
-      {
-        return null;
-      }
-    }
+          localyol = (yol)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+        } while (localyol == null);
+        this.a.callJs(localyol.h + "(" + localyol.a() + ");");
+        return;
+      } while (paramInt1 != 0);
+      localyol = (yol)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+    } while (localyol == null);
+    this.a.callJs(localyol.i + "(" + localyol.a() + ");");
   }
   
-  public static void a(GdtAd paramGdtAd, String paramString)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if ((paramGdtAd == null) || (TextUtils.isEmpty(paramGdtAd.getUrlForImpression()))) {
-      return;
-    }
-    a(paramGdtAd.getUrlForImpression(), paramString);
-  }
-  
-  public static void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    yol.a(paramString);
-  }
-  
-  private static void a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramString2)) {}
-    for (;;)
+    yol localyol = (yol)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt));
+    if (localyol != null)
     {
-      yol.a(paramString1);
-      return;
-      paramString1 = paramString1 + "&" + "video" + "=" + URLEncoder.encode(paramString2);
+      localyol.c = paramBoolean;
+      this.a.callJs(localyol.d + "(" + localyol.a() + ");");
+    }
+  }
+  
+  public void b(boolean paramBoolean, int paramInt)
+  {
+    yol localyol = (yol)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt));
+    if (localyol != null)
+    {
+      localyol.a = paramBoolean;
+      this.a.callJs(localyol.e + "(" + localyol.a() + ");");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yok
  * JD-Core Version:    0.7.0.1
  */

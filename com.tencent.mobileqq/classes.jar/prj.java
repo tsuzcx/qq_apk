@@ -1,20 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class prj
+class prj
+  implements View.OnTouchListener
 {
-  public int a;
-  public long a;
-  public UrlJumpInfo a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  prj(prf paramprf, LinearLayout paramLinearLayout) {}
   
-  public String toString()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id=").append(this.jdField_a_of_type_Long).append("\n").append("rowKey=").append(this.jdField_a_of_type_JavaLangString).append("\n").append("title=").append(this.jdField_b_of_type_JavaLangString).append("\n").append("picUrl=").append(this.c).append("\n").append("jumpUrl=").append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo).append("\n").append("playCount=").append(this.jdField_a_of_type_Int).append("\n").append("duration=").append(this.jdField_b_of_type_Int);
-    return localStringBuilder.toString();
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    }
+    return false;
   }
 }
 

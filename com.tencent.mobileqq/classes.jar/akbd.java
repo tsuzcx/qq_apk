@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
-
-class akbd
-  implements Comparator<MessageRecord>
+public abstract interface akbd
 {
-  akbd(akbc paramakbc) {}
-  
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
-  }
+  public abstract void a(String paramString, int paramInt);
 }
 
 

@@ -1,20 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.quickat.ui.AtPanelTouchController;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
-class azdf
-  implements View.OnTouchListener
+public class azdf
+  implements InputFilter
 {
-  azdf(azdd paramazdd, View paramView1, View paramView2) {}
+  public azdf(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {}
-    for (int i = 1; (paramMotionEvent.getAction() == 4) && (AtPanelTouchController.a(this.b, paramMotionEvent)) && ((i == 0) || ((i != 0) && (!AtPanelTouchController.a(this.jdField_a_of_type_AndroidViewView, paramMotionEvent)))); i = 0) {
-      return true;
+    if (paramCharSequence != null)
+    {
+      paramCharSequence = paramCharSequence.toString();
+      if (paramCharSequence.contains("\n")) {
+        return paramCharSequence.replaceAll("\n", "");
+      }
     }
-    return false;
+    return null;
   }
 }
 

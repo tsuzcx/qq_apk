@@ -2,7 +2,7 @@ package com.tencent.av.ui.guide;
 
 import android.content.Context;
 import android.os.Handler;
-import bcod;
+import bdse;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
 
@@ -20,7 +20,7 @@ class GuideHelper$DelayTryShowRunnable
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_MqqUtilWeakReference = null;
     this.b = null;
-    bcod.a().removeCallbacks(this);
+    bdse.a().removeCallbacks(this);
   }
   
   public final boolean a(long paramLong1, Context paramContext, GuideHelper paramGuideHelper, long paramLong2)
@@ -28,8 +28,8 @@ class GuideHelper$DelayTryShowRunnable
     this.jdField_a_of_type_Long = paramLong1;
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramContext);
     this.b = new WeakReference(paramGuideHelper);
-    bcod.a().removeCallbacks(this);
-    return bcod.a().postDelayed(this, paramLong2);
+    bdse.a().removeCallbacks(this);
+    return bdse.a().postDelayed(this, paramLong2);
   }
   
   public void run()

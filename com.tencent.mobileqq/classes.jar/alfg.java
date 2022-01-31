@@ -1,123 +1,118 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.ark.ArkEnvironmentManager;
-import com.tencent.ark.ArkPlayer;
-import com.tencent.ark.ark.PlayerStubFactory;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkMediaPlayer.2;
-import com.tencent.mobileqq.ark.ArkMediaPlayer.3;
-import java.lang.ref.WeakReference;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import android.app.Activity;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.huawei.hiar.AREnginesSelector;
+import com.huawei.hiar.AREnginesSelector.AREnginesAvaliblity;
+import com.huawei.hiar.AREnginesSelector.AREnginesType;
+import com.huawei.hiar.exceptions.ARUnSupportedConfigurationException;
+import com.huawei.hiar.exceptions.ARUnavailableClientSdkTooOldException;
+import com.huawei.hiar.exceptions.ARUnavailableDeviceNotCompatibleException;
+import com.huawei.hiar.exceptions.ARUnavailableEmuiNotCompatibleException;
+import com.huawei.hiar.exceptions.ARUnavailableServiceApkTooOldException;
+import com.huawei.hiar.exceptions.ARUnavailableServiceNotInstalledException;
+import com.huawei.hiar.exceptions.ARUnavailableUserDeclinedInstallationException;
+import com.tencent.qphone.base.util.QLog;
 
 public class alfg
-  extends ArkPlayer
+  implements alfd
 {
-  public static final ark.PlayerStubFactory a;
-  private static final Set<WeakReference<alfg>> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int b = 1;
-  private int c = 2;
-  private int d = 3;
-  private int e = 4;
-  private int f = this.jdField_a_of_type_Int;
-  
-  static
+  public static boolean b(Activity paramActivity)
   {
-    jdField_a_of_type_ComTencentArkArk$PlayerStubFactory = new alfh();
-  }
-  
-  protected alfg()
-  {
-    jdField_a_of_type_JavaUtilSet.add(new WeakReference(this));
-    ENV.logI("Ark.ArkMediaPlayer", String.format("ArkMediaPlayer.create.%h", new Object[] { this }));
-  }
-  
-  public static void a()
-  {
-    synchronized (jdField_a_of_type_JavaUtilSet)
+    if (paramActivity == null) {
+      return false;
+    }
+    for (;;)
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
+      try
       {
-        Object localObject2 = (WeakReference)localIterator.next();
-        if (localObject2 != null)
+        if ((AREnginesSelector.checkAllAvailableEngines(paramActivity).ordinal() & AREnginesSelector.AREnginesAvaliblity.HWAR_ENGINE_SUPPORTED.ordinal()) == 0) {
+          continue;
+        }
+        AREnginesSelector.setAREngine(AREnginesSelector.AREnginesType.HWAR_ENGINE);
+        int i = alfh.a[com.huawei.hiar.AREnginesApk.requestInstall(paramActivity, false).ordinal()];
+        switch (i)
         {
-          localObject2 = (alfg)((WeakReference)localObject2).get();
-          if (localObject2 != null) {
-            ((alfg)localObject2).c();
-          }
+        default: 
+          paramActivity = null;
         }
       }
-    }
-  }
-  
-  public static void b()
-  {
-    synchronized (jdField_a_of_type_JavaUtilSet)
-    {
-      Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
+      catch (ARUnavailableServiceNotInstalledException paramActivity)
       {
-        Object localObject2 = (WeakReference)localIterator.next();
-        if (localObject2 != null)
-        {
-          localObject2 = (alfg)((WeakReference)localObject2).get();
-          if (localObject2 != null) {
-            ((alfg)localObject2).d();
-          }
-        }
+        Object localObject2;
+        localObject1 = "Please install HuaweiARService.apk";
+        continue;
+        paramActivity = "This device does not support Huawei AR Engine ";
+        continue;
       }
+      catch (ARUnavailableServiceApkTooOldException paramActivity)
+      {
+        localObject1 = "Please update HuaweiARService.apk";
+        continue;
+      }
+      catch (ARUnavailableClientSdkTooOldException paramActivity)
+      {
+        localObject1 = "Please update this app";
+        continue;
+      }
+      catch (ARUnavailableDeviceNotCompatibleException paramActivity)
+      {
+        localObject1 = "This device does not support Huawei AR Engine ";
+        continue;
+      }
+      catch (ARUnavailableEmuiNotCompatibleException paramActivity)
+      {
+        localObject1 = "Please update EMUI version";
+        continue;
+      }
+      catch (ARUnavailableUserDeclinedInstallationException paramActivity)
+      {
+        localObject1 = "Please agree to install!";
+        continue;
+      }
+      catch (ARUnSupportedConfigurationException paramActivity)
+      {
+        localObject1 = "The configuration is not supported by the device!";
+        continue;
+      }
+      catch (Exception paramActivity)
+      {
+        Object localObject1 = "exception throwed";
+        continue;
+      }
+      localObject2 = null;
+      localObject1 = paramActivity;
+      paramActivity = localObject2;
+      if (localObject1 == null) {
+        break label174;
+      }
+      QLog.e("HuaweiArCoreAbilityManager", 2, "CheckHuaWeiARCoreReady hasException msg = message", paramActivity);
+      return false;
+      QLog.d("HuaweiArCoreAbilityManager", 2, "INSTALL_REQUESTED ");
+      return false;
+      QLog.d("HuaweiArCoreAbilityManager", 2, "INSTALLED ");
     }
+    label174:
+    return true;
   }
   
-  public boolean Pause()
+  public alfe a()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.f = this.d;
-    }
-    return super.Pause();
+    return new alfi();
   }
   
-  public boolean Play()
+  public boolean a()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.f = this.b;
-    }
-    return super.Play();
+    return (("" + Build.MANUFACTURER).equalsIgnoreCase("HUAWEI")) && (akyq.a());
   }
   
-  public boolean Resume()
+  public boolean a(Activity paramActivity)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.f = this.e;
-    }
-    return super.Resume();
-  }
-  
-  public boolean Stop()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.f = this.c;
-    }
-    return super.Stop();
-  }
-  
-  public void c()
-  {
-    ArkAppCenter.a().post(this.mQueueKey, new ArkMediaPlayer.2(this));
-  }
-  
-  public void d()
-  {
-    ArkAppCenter.a().post(this.mQueueKey, new ArkMediaPlayer.3(this));
+    return (Build.VERSION.SDK_INT >= 23) && (b(paramActivity));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alfg
  * JD-Core Version:    0.7.0.1
  */

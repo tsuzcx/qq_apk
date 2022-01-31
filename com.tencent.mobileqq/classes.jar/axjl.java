@@ -1,41 +1,39 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class axjl
-  extends Handler
 {
-  public axjl(ShareAppLogHelper paramShareAppLogHelper, Looper paramLooper)
+  public static void a(int paramInt)
   {
-    super(paramLooper);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("crashKind", "" + paramInt);
+    axrl.a(VideoEnvironment.a()).a(null, "sv_filter_egl_crash_exp", true, 0L, 0L, localHashMap, "");
   }
   
-  public void handleMessage(Message paramMessage)
+  public static void a(String paramString, long paramLong)
   {
-    switch (paramMessage.what)
-    {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("time", "" + paramLong);
+    localHashMap.put("filter_id", axjm.jdField_a_of_type_JavaLangString);
+    localHashMap.put("front_camera", String.valueOf(axjm.jdField_a_of_type_Boolean));
+    axrl.a(VideoEnvironment.a()).a(null, paramString, true, paramLong, axgg.c, localHashMap, "");
+    if (QLog.isColorLevel()) {
+      QLog.d("PerformenceDataTag", 2, "reportPerformance : tag = " + paramString + " ; duration = " + paramLong + " ; filter_id = " + axjm.jdField_a_of_type_JavaLangString + " ; front_camera = " + axjm.jdField_a_of_type_Boolean);
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (ShareAppLogHelper.a(this.a) == null);
-        ShareAppLogHelper.a(this.a).a((String)paramMessage.obj);
-        return;
-      } while (ShareAppLogHelper.a(this.a) == null);
-      ShareAppLogHelper.a(this.a).a(((Integer)paramMessage.obj).intValue());
-      return;
-    } while (ShareAppLogHelper.a(this.a) == null);
-    ShareAppLogHelper.a(this.a).b(((Integer)paramMessage.obj).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axjl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.Comparator;
 
 class ajdb
-  implements DialogInterface.OnClickListener
+  implements Comparator<ajdc>
 {
   ajdb(ajda paramajda) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(ajdc paramajdc1, ajdc paramajdc2)
   {
-    paramDialogInterface.dismiss();
+    if (paramajdc1.a == paramajdc2.a) {
+      return 0;
+    }
+    if (paramajdc1.a > paramajdc2.a) {
+      return -1;
+    }
+    return 1;
   }
 }
 

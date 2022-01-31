@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import akkz;
-import aklc;
+import akzl;
+import akzo;
 
 public class ARVideoRecordUIControllerImpl$2
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$2(akkz paramakkz) {}
+  public ARVideoRecordUIControllerImpl$2(akzl paramakzl) {}
   
   public void run()
   {
-    if (akkz.a(this.this$0) != null)
+    if (akzl.a(this.this$0) != null)
     {
-      akkz.a(this.this$0).a(0);
-      akkz.a(this.this$0).b();
+      akzl.a(this.this$0).a(0);
+      akzl.a(this.this$0).b();
     }
   }
 }

@@ -1,49 +1,29 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.Comparator;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
 
 public class aidg
-  implements Comparator<aidi>
+  extends Handler
 {
-  private int a(aidi paramaidi)
-  {
-    if ((a(paramaidi) == 0L) || (paramaidi.jdField_a_of_type_Int == 4)) {
-      return paramaidi.jdField_a_of_type_Int + 3;
-    }
-    return paramaidi.jdField_a_of_type_Int;
-  }
+  public aidg(FriendListInnerFrame paramFriendListInnerFrame) {}
   
-  private long a(aidi paramaidi)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramaidi.jdField_a_of_type_Atmo instanceof TroopInfo)) {
-      return ((TroopInfo)paramaidi.jdField_a_of_type_Atmo).lastMsgTime;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.a.setPadding(0, 0, 40, 0);
+      return;
     }
-    if ((paramaidi.jdField_a_of_type_Atmo instanceof DiscussionInfo)) {
-      return ((DiscussionInfo)paramaidi.jdField_a_of_type_Atmo).lastMsgTime;
-    }
-    return 0L;
-  }
-  
-  public int a(aidi paramaidi1, aidi paramaidi2)
-  {
-    if ((paramaidi1 == null) && (paramaidi2 == null)) {
-      return 0;
-    }
-    if (paramaidi1 == null) {
-      return -1;
-    }
-    if (paramaidi2 == null) {
-      return 1;
-    }
-    if (a(paramaidi1) == a(paramaidi2)) {
-      return (int)(a(paramaidi2) - a(paramaidi1));
-    }
-    return a(paramaidi1) - a(paramaidi2);
+    this.a.a.setPadding(0, 0, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aidg
  * JD-Core Version:    0.7.0.1
  */

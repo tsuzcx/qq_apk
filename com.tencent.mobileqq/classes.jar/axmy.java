@@ -1,14 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class axmy
-  implements DialogInterface.OnClickListener
+public class axmy
 {
-  axmy(axmt paramaxmt) {}
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean = false;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String a()
   {
-    paramDialogInterface.dismiss();
+    if (axnf.a()) {
+      return this.jdField_b_of_type_JavaLangString;
+    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a(axmy paramaxmy)
+  {
+    if (paramaxmy == null) {}
+    while ((this.jdField_b_of_type_Boolean != paramaxmy.jdField_b_of_type_Boolean) || (!ahiy.c(this.jdField_a_of_type_JavaLangString, paramaxmy.jdField_a_of_type_JavaLangString)) || (!ahiy.c(this.jdField_b_of_type_JavaLangString, paramaxmy.jdField_b_of_type_JavaLangString))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public String toString()
+  {
+    return "LoadOptions{isLoadLastSuccWhenFail=" + this.jdField_b_of_type_Boolean + ", old32Bit='" + this.jdField_a_of_type_JavaLangString + '\'' + ", old64Bit='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 

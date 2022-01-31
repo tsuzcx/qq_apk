@@ -1,52 +1,26 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class azqi
-  implements axbz
+public abstract interface azqi
 {
-  public int a;
-  public long a;
-  public long b;
-  public long c;
+  public abstract void a(int paramInt);
   
-  azqi(azpw paramazpw)
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
+  public abstract void a(azpg paramazpg);
   
-  public void a()
-  {
-    this.c = NetConnInfoCenter.getServerTimeMillis();
-    switch (this.jdField_a_of_type_Int)
-    {
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_giftTroopGiftAnimationController", 2, "animation frame end. requestState:" + this.jdField_a_of_type_Int);
-      }
-      return;
-      this.jdField_a_of_type_Azpw.a(0L);
-      continue;
-      this.jdField_a_of_type_Azpw.a(3000L);
-      continue;
-      long l = this.c - this.b;
-      if (l >= 2000L)
-      {
-        this.jdField_a_of_type_Azpw.a(0L);
-      }
-      else
-      {
-        this.jdField_a_of_type_Azpw.a(2000L - l);
-        continue;
-        this.jdField_a_of_type_Azpw.a(3000L);
-      }
-    }
-  }
+  public abstract void a(azpg paramazpg, String paramString);
+  
+  public abstract void a(List<azpg> paramList, boolean paramBoolean, String paramString, long paramLong);
+  
+  public abstract void b(azpg paramazpg);
+  
+  public abstract void c(azpg paramazpg);
+  
+  public abstract void d(azpg paramazpg);
+  
+  public abstract void e(azpg paramazpg);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azqi
  * JD-Core Version:    0.7.0.1
  */

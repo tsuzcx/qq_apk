@@ -1,13 +1,13 @@
 package com.tencent.biz.videostory.network.cache;
 
-import wxr;
+import xgr;
 
 public class Cache$1
   implements Runnable
 {
   public void run()
   {
-    this.this$0.a();
+    this.this$0.b();
   }
 }
 

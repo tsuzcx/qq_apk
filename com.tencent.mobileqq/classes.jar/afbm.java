@@ -1,22 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
-class afbm
-  implements View.OnClickListener
+public class afbm
+  implements DialogInterface.OnKeyListener
 {
-  afbm(afbk paramafbk) {}
+  public afbm(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramView = (RecommendTroopItem)paramView.getTag(-1);
-    azlj.a(afbk.a(this.a), paramView, 10001);
-    azzx.a("Grp_contacts_news", "notice", "recom_clk_add", 0, 0, new String[] { paramView.uin, paramView.recomAlgol });
+    if (paramInt == 84) {}
+    do
+    {
+      return true;
+      if (paramInt != 4) {
+        break;
+      }
+    } while (BlessSelectMemberActivity.a() == null);
+    BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afbm
  * JD-Core Version:    0.7.0.1
  */

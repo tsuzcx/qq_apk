@@ -1,8 +1,25 @@
-public abstract interface qnt
+import android.os.Bundle;
+
+class qnt
+  extends npw
 {
-  public abstract void a();
+  private qnt(qno paramqno) {}
   
-  public abstract void b();
+  protected void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    qno.b(this.a);
+    if (paramBoolean)
+    {
+      qno.a(this.a, paramBundle.getString("VALUE_COOKIE", null));
+      paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
+      qno.a(this.a, paramBundle);
+      if (qno.a(this.a))
+      {
+        qno.a(this.a);
+        qno.a(this.a, false);
+      }
+    }
+  }
 }
 
 

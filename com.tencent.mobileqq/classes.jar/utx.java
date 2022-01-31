@@ -1,81 +1,34 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class utx
-  implements View.OnTouchListener
+class utx
+  extends QQUIEventReceiver<utu, tkn>
 {
-  private int jdField_a_of_type_Int;
-  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  private utw jdField_a_of_type_Utw;
-  private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int = 5;
-  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
-  private boolean jdField_b_of_type_Boolean;
-  
-  public utx(utw paramutw)
+  public utx(@NonNull utu paramutu)
   {
-    this.jdField_a_of_type_Utw = paramutw;
+    super(paramutu);
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(@NonNull utu paramutu, @NonNull tkn paramtkn)
   {
-    if (this.jdField_a_of_type_Utw == null) {}
-    do
+    if ((paramtkn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtkn.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (TextUtils.equals(paramtkn.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.getUnionId(), paramutu.jdField_a_of_type_JavaLangString)))
     {
-      do
-      {
-        float f;
-        do
-        {
-          do
-          {
-            return true;
-            f = paramMotionEvent.getY();
-            switch (paramMotionEvent.getAction() & 0xFF)
-            {
-            case 3: 
-            case 4: 
-            default: 
-              return true;
-            case 0: 
-              this.jdField_a_of_type_Int = ((int)f);
-              this.jdField_a_of_type_Boolean = false;
-              this.jdField_b_of_type_Boolean = false;
-              this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-              return true;
-            }
-          } while (paramMotionEvent.getPointerCount() > 2);
-          if (this.jdField_b_of_type_Boolean)
-          {
-            this.jdField_a_of_type_Utw.a(paramMotionEvent);
-            return true;
-          }
-          this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-          this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Utw.a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent);
-        } while ((!this.jdField_b_of_type_Boolean) || (!(paramView instanceof ViewParent)));
-        ((ViewParent)paramView).requestDisallowInterceptTouchEvent(true);
-        return true;
-        if (Math.abs((int)(f - this.jdField_a_of_type_Int)) > 5) {
-          this.jdField_a_of_type_Boolean = true;
-        }
-      } while (!this.jdField_b_of_type_Boolean);
-      this.jdField_a_of_type_Utw.a(paramMotionEvent);
-      return true;
-    } while ((paramMotionEvent.getPointerCount() > 2) || (!this.jdField_b_of_type_Boolean));
-    this.jdField_a_of_type_Utw.a(paramMotionEvent);
-    return true;
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Utw.onClick(paramView);
+      veg.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive user info event. %s. from others.", paramtkn);
+      paramutu.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramtkn.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+      utu.a(paramutu).e();
+      utu.a(paramutu).c();
+      utu.a(paramutu).d();
+      utu.a(paramutu).a();
     }
-    if ((this.jdField_b_of_type_Boolean) && ((paramView instanceof ViewParent))) {
-      ((ViewParent)paramView).requestDisallowInterceptTouchEvent(false);
-    }
-    this.jdField_a_of_type_Utw.a(paramMotionEvent);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    return true;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tkn.class;
   }
 }
 

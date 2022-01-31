@@ -1,75 +1,65 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLEncoder;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.component.network.DownloaderFactory;
+import com.tencent.component.network.downloader.Downloader;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.qzonevip.gift.QzoneGiftUtil.1;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import java.io.File;
 
 public class avns
-  implements avom
 {
-  private String jdField_a_of_type_JavaLangString;
-  private List<avon> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public avns(aewb paramaewb, List<avon> paramList, String paramString, boolean paramBoolean)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public String a()
-  {
-    return ajjy.a(2131639557);
-  }
-  
-  public List<avon> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    avwf.a(this.jdField_a_of_type_JavaLangString, 80, 0, paramView);
-    new Intent().putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
-    long l1 = Double.valueOf(NetSearchEngine.a * 1000000.0D).longValue();
-    long l2 = Double.valueOf(NetSearchEngine.b * 1000000.0D).longValue();
-    Object localObject2 = "http://qqweb.qq.com/m/relativegroup/index.html?source=qun_recent_search&keyword=" + URLEncoder.encode(this.jdField_a_of_type_JavaLangString) + "&gpstype=1&sid=AWSAPtjyiVRg92WelXNMAqd0&_bid=165&lon=" + Long.valueOf(l2) + "&lat=" + Long.valueOf(l1);
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Boolean) {
-      localObject1 = (String)localObject2 + "&show_tab=hot";
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("search", 2, "lastKeywords = " + this.jdField_a_of_type_JavaLangString + " jump url is : " + (String)localObject1);
-    }
-    localObject2 = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    ((Intent)localObject2).putExtra("url", (String)localObject1);
-    ((Intent)localObject2).putExtra("uin", ((BaseActivity)paramView.getContext()).app.getCurrentAccountUin());
-    ((Intent)localObject2).putExtra("portraitOnly", true);
-    ((Intent)localObject2).putExtra("hide_more_button", true);
-    ((Intent)localObject2).putExtra("hide_operation_bar", true);
-    ((Intent)localObject2).putExtra("isShowAd", false);
-    paramView.getContext().startActivity((Intent)localObject2);
+    return QzoneZipCacheHelper.getBasePath("qzone_aio_gift", String.valueOf(paramString.hashCode()));
   }
   
-  public String b()
+  public static String a(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if (TextUtils.isEmpty(paramString1)) {
+      return "";
+    }
+    return BaseApplicationImpl.getApplication().getCacheDir() + File.separator + paramString2 + File.separator + Utils.Crc64String(paramString1) + paramString1.substring(paramString1.lastIndexOf("."));
+  }
+  
+  public static void a(avnv paramavnv, String paramString1, String paramString2, String paramString3)
+  {
+    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)))
+    {
+      QLog.e("QzoneGiftUtil", 1, "downloadGiftZip fail with url = null  boxZipUrl = " + paramString1 + " giftZipUrl = " + paramString2 + " giftUrl = " + paramString3);
+      return;
+    }
+    if (TextUtils.isEmpty(paramString1)) {}
+    for (int i = 2;; i = 3)
+    {
+      ThreadManagerV2.executeOnFileThread(new QzoneGiftUtil.1(paramavnv, i, paramString1, paramString2, paramString3));
+      return;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, QzoneZipCacheHelperCallBack paramQzoneZipCacheHelperCallBack)
+  {
+    QLog.i("QzoneGiftUtil", 1, "downloadGiftPhoto");
+    Downloader localDownloader = DownloaderFactory.getInstance(BaseApplicationImpl.getContext()).getCommonDownloader();
+    if (localDownloader != null) {
+      localDownloader.download(paramString1, a(paramString1, paramString2), false, new avnu(paramQzoneZipCacheHelperCallBack));
+    }
+  }
+  
+  private static boolean b(String paramString1, String paramString2)
+  {
+    return apvb.a(a(paramString1, paramString2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avns
  * JD-Core Version:    0.7.0.1
  */

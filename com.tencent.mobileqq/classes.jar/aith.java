@@ -1,17 +1,30 @@
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import org.json.JSONObject;
 
-public class aith
-  extends aimm
+public final class aith
+  implements aabm
 {
-  public aith(ApolloGameActivity paramApolloGameActivity) {}
+  public aith(View paramView, aabp paramaabp, long paramLong, int paramInt, String paramString) {}
   
-  public void a(boolean paramBoolean, long paramLong, Object paramObject)
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    if (ApolloGameActivity.a(this.a) != null) {
-      ApolloGameActivity.a(this.a).a(paramBoolean, paramLong);
-    }
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aabp, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location login failed," + paramString);
   }
+  
+  public void onPermission(int paramInt)
+  {
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aabp, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location login permision code");
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    ApolloRender.getLocationDoLocation(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aabp, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

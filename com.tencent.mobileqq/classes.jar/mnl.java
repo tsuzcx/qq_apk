@@ -1,48 +1,54 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.widget.TextView;
-
 class mnl
-  implements Handler.Callback
 {
-  mnl(mnk parammnk) {}
+  public int a;
+  public mnk a;
+  public boolean a;
   
-  public boolean handleMessage(Message paramMessage)
+  public mnl(mnk parammnk, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Mnk = parammnk;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     int i;
-    if (paramMessage.what == 291) {
-      switch (this.a.jdField_a_of_type_Int)
+    if (this.jdField_a_of_type_Boolean) {
+      for (;;)
       {
-      default: 
-        i = 0;
+        i = paramInt2;
+        if (paramInt1 >= paramInt2) {
+          break;
+        }
+        if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Mnk.a.length) {
+          this.jdField_a_of_type_Int = 0;
+        }
+        i = Math.min(this.jdField_a_of_type_Mnk.a.length - this.jdField_a_of_type_Int, paramInt2 - paramInt1);
+        System.arraycopy(this.jdField_a_of_type_Mnk.a, this.jdField_a_of_type_Int, paramArrayOfByte, paramInt1, i);
+        this.jdField_a_of_type_Int += i;
+        paramInt1 += i;
       }
     }
-    for (;;)
+    if (a())
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(i));
-      paramMessage = this.a;
-      paramMessage.jdField_a_of_type_Int += 1;
-      if (this.a.jdField_a_of_type_Int == 4) {
-        this.a.jdField_a_of_type_Int = 0;
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(291, 1000L);
-      return false;
-      i = 2131630652;
-      continue;
-      i = 2131630653;
-      continue;
-      i = 2131630654;
-      continue;
-      i = 2131630655;
+      i = 0;
+      return i;
     }
+    paramInt2 = Math.min(this.jdField_a_of_type_Mnk.a.length - this.jdField_a_of_type_Int, paramInt2);
+    System.arraycopy(this.jdField_a_of_type_Mnk.a, this.jdField_a_of_type_Int, paramArrayOfByte, paramInt1, paramInt2);
+    this.jdField_a_of_type_Int += paramInt2;
+    return paramInt2;
+  }
+  
+  public boolean a()
+  {
+    return (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Mnk.a.length);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mnl
  * JD-Core Version:    0.7.0.1
  */

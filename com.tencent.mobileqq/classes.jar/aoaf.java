@@ -1,36 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class aoaf
-  implements View.OnClickListener
+class aoaf
+  extends anwf
 {
-  public aoaf(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  aoaf(aoad paramaoad) {}
   
-  public void onClick(View paramView)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    if (paramView == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseCloudFileTabView.b, 2, "qfilebaserecenttabview del error, tag is null");
-      }
-      return;
-    }
-    WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)paramView.getTag();
-    if (localWeiYunFileInfo != null)
-    {
-      if (this.a.a != null) {
-        this.a.a.a(null);
-      }
-      QfileBaseCloudFileTabView.a(this.a).a().a(localWeiYunFileInfo);
-    }
-    this.a.a.a(Integer.valueOf(-1));
-    paramView.setVisibility(4);
-    this.a.setListFooter();
-    this.a.ax_();
+    this.a.b(paramEmoticonPackage);
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  {
+    this.a.a(paramEmoticonPackage, paramInt);
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  {
+    this.a.a(paramEmoticonPackage);
+  }
+  
+  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  {
+    this.a.a(paramEmoticonPackage, paramInt1, paramInt2);
   }
 }
 

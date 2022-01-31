@@ -2,8 +2,8 @@ package cooperation.qqdataline.ipc;
 
 import android.content.Intent;
 import android.content.ServiceConnection;
-import bfcz;
-import bfdi;
+import bgkq;
+import bgkz;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import cooperation.plugin.PluginInfo;
 import mqq.app.AppRuntime;
@@ -15,14 +15,14 @@ public class DatalineProxyService
   {
     Intent localIntent = new Intent(paramAppRuntime.getApplication(), DatalineProxyService.class);
     localIntent.putExtra("useSkinEngine", 1);
-    bfdi localbfdi = new bfdi(0);
-    localbfdi.b = "qqdataline.apk";
-    localbfdi.d = PluginInfo.d;
-    localbfdi.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localbfdi.e = "com.qqdataline.ipc.QQDatalineService";
-    localbfdi.jdField_a_of_type_AndroidContentIntent = localIntent;
-    localbfdi.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    bfcz.c(paramAppRuntime.getApplication(), localbfdi);
+    bgkz localbgkz = new bgkz(0);
+    localbgkz.b = "qqdataline.apk";
+    localbgkz.d = PluginInfo.d;
+    localbgkz.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
+    localbgkz.e = "com.qqdataline.ipc.QQDatalineService";
+    localbgkz.jdField_a_of_type_AndroidContentIntent = localIntent;
+    localbgkz.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    bgkq.c(paramAppRuntime.getApplication(), localbgkz);
   }
 }
 

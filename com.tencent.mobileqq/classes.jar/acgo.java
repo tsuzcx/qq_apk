@@ -1,30 +1,25 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
 public class acgo
-  implements Handler.Callback
+  extends akav
 {
-  public acgo(ActivateFriendActivity paramActivateFriendActivity) {}
+  public acgo(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (ActivateFriendActivity.a(this.a) != null) {
-        ActivateFriendActivity.a(this.a).e();
-      }
-    }
+    this.a.c();
+  }
+  
+  protected void b()
+  {
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acgo
  * JD-Core Version:    0.7.0.1
  */

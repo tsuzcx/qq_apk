@@ -1,6 +1,6 @@
 package com.tencent.av.video.call;
 
-import bcnt;
+import bdru;
 
 public class GAClientLogReport
 {
@@ -16,7 +16,7 @@ public class GAClientLogReport
     }
     catch (Throwable localThrowable)
     {
-      bcnt.a("GAClientLogReport", "cacheMethodIds fail.", localThrowable);
+      bdru.a("GAClientLogReport", "cacheMethodIds fail.", localThrowable);
     }
   }
   
@@ -29,7 +29,7 @@ public class GAClientLogReport
     }
     catch (Throwable localThrowable)
     {
-      bcnt.a("GAClientLogReport", "inti fail.", localThrowable);
+      bdru.a("GAClientLogReport", "inti fail.", localThrowable);
     }
   }
   

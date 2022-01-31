@@ -1,41 +1,141 @@
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.takevideo.CameraFocusView;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.PhotoParam;
 
-class bhet
-  extends auth
+public final class bhet
+  implements Parcelable.Creator<PhotoParam>
 {
-  public bhet(bhes parambhes, CameraFocusView paramCameraFocusView)
+  public PhotoParam a(Parcel paramParcel)
   {
-    super(paramCameraFocusView);
+    boolean bool2 = true;
+    PhotoParam localPhotoParam = new PhotoParam();
+    localPhotoParam.jdField_a_of_type_Long = paramParcel.readLong();
+    localPhotoParam.jdField_b_of_type_Long = paramParcel.readLong();
+    localPhotoParam.jdField_c_of_type_Long = paramParcel.readLong();
+    localPhotoParam.jdField_d_of_type_Long = paramParcel.readLong();
+    localPhotoParam.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localPhotoParam.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localPhotoParam.jdField_a_of_type_Int = paramParcel.readInt();
+    localPhotoParam.jdField_b_of_type_Int = paramParcel.readInt();
+    localPhotoParam.jdField_c_of_type_Int = paramParcel.readInt();
+    localPhotoParam.jdField_d_of_type_Int = paramParcel.readInt();
+    localPhotoParam.jdField_e_of_type_Int = paramParcel.readInt();
+    localPhotoParam.jdField_f_of_type_Int = paramParcel.readInt();
+    localPhotoParam.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readInt() == 1)
+    {
+      bool1 = true;
+      localPhotoParam.jdField_a_of_type_Boolean = bool1;
+      localPhotoParam.jdField_g_of_type_Int = paramParcel.readInt();
+      localPhotoParam.jdField_h_of_type_Int = paramParcel.readInt();
+      localPhotoParam.jdField_d_of_type_JavaLangString = paramParcel.readString();
+      localPhotoParam.jdField_e_of_type_JavaLangString = paramParcel.readString();
+      localPhotoParam.jdField_f_of_type_JavaLangString = paramParcel.readString();
+      localPhotoParam.jdField_g_of_type_JavaLangString = paramParcel.readString();
+      localPhotoParam.jdField_h_of_type_JavaLangString = paramParcel.readString();
+      localPhotoParam.jdField_i_of_type_Int = paramParcel.readInt();
+      localPhotoParam.jdField_a_of_type_JavaUtilMap = paramParcel.readHashMap(getClass().getClassLoader());
+      localPhotoParam.jdField_i_of_type_JavaLangString = paramParcel.readString();
+      if (paramParcel.readInt() != 1) {
+        break label447;
+      }
+      bool1 = true;
+      label251:
+      localPhotoParam.jdField_b_of_type_Boolean = bool1;
+      localPhotoParam.jdField_j_of_type_Int = paramParcel.readInt();
+      if (paramParcel.readInt() != 1) {
+        break label452;
+      }
+      bool1 = true;
+      label276:
+      localPhotoParam.jdField_c_of_type_Boolean = bool1;
+      localPhotoParam.jdField_j_of_type_JavaLangString = paramParcel.readString();
+      if (paramParcel.readInt() != 1) {
+        break label457;
+      }
+      bool1 = true;
+      label301:
+      localPhotoParam.jdField_d_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label462;
+      }
+      bool1 = true;
+      label317:
+      localPhotoParam.jdField_e_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label467;
+      }
+      bool1 = true;
+      label333:
+      localPhotoParam.jdField_f_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label472;
+      }
+      bool1 = true;
+      label349:
+      localPhotoParam.jdField_g_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label477;
+      }
+      bool1 = true;
+      label365:
+      localPhotoParam.jdField_h_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label482;
+      }
+      bool1 = true;
+      label381:
+      localPhotoParam.jdField_i_of_type_Boolean = bool1;
+      localPhotoParam.jdField_k_of_type_Int = paramParcel.readInt();
+      localPhotoParam.jdField_e_of_type_Long = paramParcel.readLong();
+      localPhotoParam.jdField_k_of_type_JavaLangString = paramParcel.readString();
+      localPhotoParam.jdField_f_of_type_Long = paramParcel.readLong();
+      if (paramParcel.readInt() != 1) {
+        break label487;
+      }
+    }
+    label447:
+    label452:
+    label457:
+    label462:
+    label467:
+    label472:
+    label477:
+    label482:
+    label487:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localPhotoParam.jdField_j_of_type_Boolean = bool1;
+      return localPhotoParam;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label251;
+      bool1 = false;
+      break label276;
+      bool1 = false;
+      break label301;
+      bool1 = false;
+      break label317;
+      bool1 = false;
+      break label333;
+      bool1 = false;
+      break label349;
+      bool1 = false;
+      break label365;
+      bool1 = false;
+      break label381;
+    }
   }
   
-  protected void a(CameraCaptureView paramCameraCaptureView, float paramFloat1, float paramFloat2)
+  public PhotoParam[] a(int paramInt)
   {
-    super.a(paramCameraCaptureView, paramFloat1, paramFloat2 - paramCameraCaptureView.getTop());
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("GLGestureListener", 2, "event : (" + paramMotionEvent.getX() + "," + paramMotionEvent.getY() + ")");
-      QLog.d("GLGestureListener", 2, "view : (" + bhes.a(this.a).getLeft() + "," + bhes.a(this.a).getRight() + "," + bhes.a(this.a).getTop() + "," + bhes.a(this.a).getBottom() + ")");
-    }
-    if ((paramMotionEvent.getX() > bhes.a(this.a).getRight() / 2) || (paramMotionEvent.getY() < bhes.a(this.a).getTop()) || (paramMotionEvent.getY() > bhes.a(this.a).getBottom()))
-    {
-      QLog.d("GLGestureListener", 2, "touch out");
-      return false;
-    }
-    QLog.d("GLGestureListener", 2, "touch in");
-    return super.onTouchEvent(paramMotionEvent, paramBoolean);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhet
  * JD-Core Version:    0.7.0.1
  */

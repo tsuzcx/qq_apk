@@ -1,101 +1,42 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.res.Resources;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.adapter.ForwardRecentItemView;
 
 public class aimw
-  extends BaseAdapter
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public Context a;
-  private List<ApolloGameData> a;
-  private List<String> b = new ArrayList();
+  public aimw(ForwardRecentItemView paramForwardRecentItemView, RelativeLayout.LayoutParams paramLayoutParams) {}
   
-  public aimw(aimv paramaimv, Context paramContext)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (paramaimv != null)
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.b - this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_Int);
+    if (AppSetting.d)
     {
-      this.jdField_a_of_type_JavaUtilList = paramaimv.b;
-      this.b = paramaimv.c;
-    }
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject1;
-    if (paramView == null)
-    {
-      paramViewGroup = new aimx(this);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131493232, null);
-      paramView.setPadding(0, 0, 0, 0);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131302941));
-      paramViewGroup.b = ((CornerImageView)paramView.findViewById(2131302942));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312350));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131302943));
-      float f = mjg.a(this.jdField_a_of_type_AndroidContentContext, 5.0F);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(f);
-      paramViewGroup.b.setRadius(new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f, f, f, f });
-      paramView.setTag(paramViewGroup);
-      Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = ((int)mjg.a(this.jdField_a_of_type_AndroidContentContext, 103.0F));
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = ((int)mjg.a(this.jdField_a_of_type_AndroidContentContext, 58.0F));
-      localObject1 = (ApolloGameData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      localObject2 = URLDrawable.getDrawable(((ApolloGameData)localObject1).listCoverUrl, (URLDrawable.URLDrawableOptions)localObject2);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageDrawable((Drawable)localObject2);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setTag(Integer.valueOf(((ApolloGameData)localObject1).gameId));
-      if (!((ApolloGameData)localObject1).isGameApp) {
-        break label333;
+      paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.getResources();
+      if (!this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break label124;
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838315);
     }
-    for (;;)
+    label124:
+    for (int i = 2131690799;; i = 2131720637)
     {
-      localObject1 = (String)this.b.get(paramInt);
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        paramViewGroup.b.setVisibility(0);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-      }
-      return paramView;
-      paramViewGroup = (aimx)paramView.getTag();
-      break;
-      label333:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramValueAnimator = paramValueAnimator.getString(i);
+      this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_JavaLangString + paramValueAnimator);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aimw
  * JD-Core Version:    0.7.0.1
  */

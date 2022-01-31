@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import anad;
-import anah;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.SparseIntArray;
-import azzz;
-import bamr;
-import bavz;
-import bbac;
+import anql;
+import anqp;
+import bbbd;
+import bbon;
+import bbyt;
+import bcdb;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -151,7 +151,7 @@ public class VipFunCallJsPlugin
           localBundle.putInt("callId", i);
           localBundle.putInt("ringId", j);
           localBundle.putInt("feeType", k);
-          sendRemoteReq(anah.a("funcall_set", str, this.mOnRemoteResp.key, localBundle), false, false);
+          sendRemoteReq(anqp.a("funcall_set", str, this.mOnRemoteResp.key, localBundle), false, false);
         }
       }
       catch (JSONException paramJsBridgeListener)
@@ -160,12 +160,12 @@ public class VipFunCallJsPlugin
         break label2317;
         if ("downloadFunCallMedia".equals(paramString3))
         {
-          paramString3 = bamr.a(j, 3);
+          paramString3 = bbon.a(j, 3);
           k = testResStatus(j, paramString3, this.down_ringStatus, this.down_ringProgress, "down_ring");
           if (QLog.isColorLevel()) {
             QLog.d("VipFunCallJsPlugin", 2, "startDownload, ringPath=" + paramString3 + ", ringId=" + j + ", ringUrl in=" + paramVarArgs + ", resStatus:" + k);
           }
-          paramString3 = bavz.a(null, i, bavz.a(), paramJsBridgeListener);
+          paramString3 = bbyt.a(null, i, bbyt.a(), paramJsBridgeListener);
           j = testResStatus(i, paramString3, this.down_status, this.down_progress, "down_fcVideo");
           if (QLog.isColorLevel()) {
             QLog.d("VipFunCallJsPlugin", 2, "startDownload, mediaUrl=" + paramJsBridgeListener + ", fcPath=" + paramString3 + ", callId=" + i + ", resStatus:" + j);
@@ -173,34 +173,34 @@ public class VipFunCallJsPlugin
           if (TextUtils.isEmpty(paramString3))
           {
             QLog.e("VipFunCallJsPlugin", 1, "startDownload queryDownloadInfo no mediaUrl , fcPath=null.");
-            ((JSONObject)localObject1).put("code", bavz.a);
+            ((JSONObject)localObject1).put("code", bbyt.a);
             ((JSONObject)localObject1).put("errorMessage", "no mediaUrl , fcPath=null");
             callJs(str, new String[] { ((JSONObject)localObject1).toString() });
             return true;
           }
-          paramJsBridgeListener = bavz.a(null, i, 9, paramString2);
+          paramJsBridgeListener = bbyt.a(null, i, 9, paramString2);
           j = testResStatus(i, paramJsBridgeListener, this.down_bgstatus, this.down_bgprogress, "down_fuzzpic");
           if (QLog.isColorLevel()) {
             QLog.d("VipFunCallJsPlugin", 2, "startDownload, fuzzUrl=" + paramString2 + ", fuzzPath=" + paramJsBridgeListener + ", callId=" + i + ", resStatus:" + j);
           }
-          if (!azzz.b())
+          if (!bbbd.a())
           {
             QLog.e("VipFunCallJsPlugin", 1, "startDownload SDCard not available.");
-            ((JSONObject)localObject1).put("code", bavz.c);
+            ((JSONObject)localObject1).put("code", bbyt.c);
             ((JSONObject)localObject1).put("errorMessage", "no sdcard");
             callJs(str, new String[] { ((JSONObject)localObject1).toString() });
             return true;
           }
-          long l = azzz.b();
+          long l = bbbd.b();
           if (l < 1048576)
           {
             QLog.e("VipFunCallJsPlugin", 1, "startDownload Insufficient SDCard space, required: reserved:" + 1048576 + "|available:" + l);
-            ((JSONObject)localObject1).put("code", bavz.b);
+            ((JSONObject)localObject1).put("code", bbyt.b);
             ((JSONObject)localObject1).put("errorMessage", "SDCard is full");
             callJs(str, new String[] { ((JSONObject)localObject1).toString() });
             return true;
           }
-          sendRemoteReq(anah.a("funcall_download", str, this.mOnRemoteResp.key, localBundle), false, false);
+          sendRemoteReq(anqp.a("funcall_download", str, this.mOnRemoteResp.key, localBundle), false, false);
           ((JSONObject)localObject1).put("errorMessage", "id is downloading");
           callJs(str, new String[] { ((JSONObject)localObject1).toString() });
         }
@@ -214,7 +214,7 @@ public class VipFunCallJsPlugin
         localObject2 = new JSONObject();
         if (this.down_status.get(i) <= 0)
         {
-          localObject3 = bavz.a(null, i, bavz.a(), paramJsBridgeListener);
+          localObject3 = bbyt.a(null, i, bbyt.a(), paramJsBridgeListener);
           k = testResStatus(i, (String)localObject3, this.down_status, this.down_progress, "query_fcVideo");
           if (QLog.isColorLevel()) {
             QLog.d("VipFunCallJsPlugin", 2, "queryDownloadInfo video, mediaUrl=" + paramJsBridgeListener + ", fcPath=" + (String)localObject3 + ", callId=" + i + ", resStatus:" + k);
@@ -222,7 +222,7 @@ public class VipFunCallJsPlugin
           if (TextUtils.isEmpty((CharSequence)localObject3))
           {
             QLog.e("VipFunCallJsPlugin", 1, "queryDownloadInfo Error no mediaUrl , fcPath=null.");
-            ((JSONObject)localObject1).put("code", bavz.a);
+            ((JSONObject)localObject1).put("code", bbyt.a);
             ((JSONObject)localObject1).put("errorMessage", paramString3 + " no mediaUrl , fcPath=null");
             callJs(str, new String[] { ((JSONObject)localObject1).toString() });
             return true;
@@ -230,7 +230,7 @@ public class VipFunCallJsPlugin
         }
         if (this.down_bgstatus.get(i) <= 0)
         {
-          paramJsBridgeListener = bavz.a(null, i, 9, paramString2);
+          paramJsBridgeListener = bbyt.a(null, i, 9, paramString2);
           k = testResStatus(i, paramJsBridgeListener, this.down_bgstatus, this.down_bgprogress, "query_fuzzpic");
           if (QLog.isColorLevel()) {
             QLog.d("VipFunCallJsPlugin", 2, "queryDownloadInfo bg, fuzzUrl=" + paramString2 + ", fuzzPath=" + paramJsBridgeListener + ", callId=" + i + ", resStatus:" + k);
@@ -238,7 +238,7 @@ public class VipFunCallJsPlugin
         }
         if (this.down_ringStatus.get(j) <= 0)
         {
-          paramJsBridgeListener = bamr.a(j, 3);
+          paramJsBridgeListener = bbon.a(j, 3);
           k = testResStatus(j, paramJsBridgeListener, this.down_ringStatus, this.down_ringProgress, "query_ring");
           if (QLog.isColorLevel()) {
             QLog.d("VipFunCallJsPlugin", 2, "queryDownloadInfo ring, ringPath=" + paramJsBridgeListener + ", ringId=" + j + ", ringUrl=" + paramVarArgs + ", resStatus:" + k + ", callId=" + i);
@@ -282,7 +282,7 @@ public class VipFunCallJsPlugin
         if (QLog.isColorLevel()) {
           QLog.d("VipFunCallJsPlugin", 2, "handleJsRequest delFunCallGroup, url=" + paramString1);
         }
-        sendRemoteReq(anah.a("funcall_delete", str, this.mOnRemoteResp.key, localBundle), false, false);
+        sendRemoteReq(anqp.a("funcall_delete", str, this.mOnRemoteResp.key, localBundle), false, false);
       }
       else
       {

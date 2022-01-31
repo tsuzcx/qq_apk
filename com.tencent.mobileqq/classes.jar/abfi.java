@@ -1,18 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class abfi
-  implements DialogInterface.OnClickListener
+  implements bfsy
 {
-  public abfi(NotifyPCActiveActivity paramNotifyPCActiveActivity, ajfi paramajfi) {}
+  public abfi(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Ajfi.b(true);
-    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity.finish();
+    FriendProfileCardActivity.a(this.a, paramInt1);
+    if ((paramInt1 + paramInt2 != paramInt3) || (paramInt3 <= 0) || (this.a.d()) || (!bbev.d(this.a))) {}
+    while ((this.a.a == null) || (!this.a.a.a())) {
+      return;
+    }
+    this.a.a.a();
+    this.a.d(true);
   }
 }
 

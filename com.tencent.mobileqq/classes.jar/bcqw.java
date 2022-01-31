@@ -1,14 +1,6 @@
-public class bcqw
-{
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public int c;
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcqw
  * JD-Core Version:    0.7.0.1
  */

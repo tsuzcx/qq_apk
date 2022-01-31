@@ -1,77 +1,92 @@
-import android.view.MotionEvent;
+import android.content.Context;
 import android.view.View;
-import android.view.ViewParent;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class vrt
-  implements vrm
+  extends vrw
 {
-  protected final float a;
-  protected int a;
-  protected final vrq a;
-  protected final vrs a;
-  protected final float b;
+  private final int b;
+  private boolean c;
+  private boolean d;
   
-  public vrt(vrs paramvrs, float paramFloat1, float paramFloat2)
+  public vrt(Context paramContext, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Vrs = paramvrs;
-    this.jdField_a_of_type_Vrq = new vrq();
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
+    super(paramContext, paramString, -1);
+    int i = paramInt;
+    if (paramInt < 0) {
+      i = 0;
+    }
+    this.b = i;
   }
   
-  public void a(vrm paramvrm)
+  public int a()
   {
-    if (this.jdField_a_of_type_Vrs.jdField_a_of_type_Vrr.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 2)
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 4;
+  }
+  
+  public View a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = new RelativeLayout(this.a);
+    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.b));
+    paramViewGroup.setBackgroundResource(2130849025);
+    paramInt = -2170912;
+    QQStoryContext.a();
+    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
+      paramInt = -16444373;
+    }
+    View localView = new View(this.a);
+    Object localObject = new RelativeLayout.LayoutParams(-1, vzo.a(this.a, 1.0F));
+    ((RelativeLayout.LayoutParams)localObject).addRule(10);
+    localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localView.setBackgroundColor(paramInt);
+    localObject = new View(this.a);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, vzo.a(this.a, 1.0F));
+    localLayoutParams.addRule(12);
+    ((View)localObject).setLayoutParams(localLayoutParams);
+    ((View)localObject).setBackgroundColor(paramInt);
+    paramViewGroup.addView(localView);
+    paramViewGroup.addView((View)localObject);
+    return paramViewGroup;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, View paramView)
+  {
+    View localView = ((ViewGroup)paramView).getChildAt(0);
+    paramView = ((ViewGroup)paramView).getChildAt(1);
+    if (this.c) {
+      localView.setVisibility(0);
+    }
+    while (this.d)
     {
-      this.jdField_a_of_type_Int = i;
+      paramView.setVisibility(0);
       return;
+      localView.setVisibility(4);
     }
+    paramView.setVisibility(4);
   }
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    vrr localvrr = this.jdField_a_of_type_Vrs.jdField_a_of_type_Vrr;
-    if (localvrr.jdField_a_of_type_Int != paramMotionEvent.getPointerId(0)) {
-      this.jdField_a_of_type_Vrs.a(this.jdField_a_of_type_Vrs.jdField_a_of_type_Vrl);
-    }
-    View localView;
-    vrn localvrn;
-    do
-    {
-      return true;
-      localView = this.jdField_a_of_type_Vrs.a();
-      localvrn = this.jdField_a_of_type_Vrs.jdField_a_of_type_Vrn;
-    } while (!localvrn.a(localView, this.jdField_a_of_type_Vrq, paramMotionEvent));
-    float f2 = this.jdField_a_of_type_Vrq.b;
-    if (this.jdField_a_of_type_Vrq.jdField_a_of_type_Boolean == localvrr.jdField_a_of_type_Boolean) {}
-    for (float f1 = this.jdField_a_of_type_Float;; f1 = this.b)
-    {
-      f1 = f2 / f1;
-      f2 = this.jdField_a_of_type_Vrq.jdField_a_of_type_Float + f1;
-      if (((!localvrr.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Vrq.jdField_a_of_type_Boolean) || (f2 > localvrr.jdField_a_of_type_Float)) && ((localvrr.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Vrq.jdField_a_of_type_Boolean) || (f2 < localvrr.jdField_a_of_type_Float))) {
-        break;
-      }
-      localvrn.a(localView, localvrr.jdField_a_of_type_Float, paramMotionEvent);
-      this.jdField_a_of_type_Vrs.a(this.jdField_a_of_type_Vrs.jdField_a_of_type_Vro);
-      return true;
-    }
-    if (localView.getParent() != null) {
-      localView.getParent().requestDisallowInterceptTouchEvent(true);
-    }
-    long l = paramMotionEvent.getEventTime() - paramMotionEvent.getHistoricalEventTime(0);
-    if (l > 0L) {
-      this.jdField_a_of_type_Vrs.jdField_a_of_type_Float = (f1 / (float)l);
-    }
-    localvrn.a(localView, f2);
-    return true;
+    this.c = paramBoolean1;
+    this.d = paramBoolean2;
   }
   
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    this.jdField_a_of_type_Vrs.a(this.jdField_a_of_type_Vrs.jdField_a_of_type_Vrl);
-    return false;
-  }
+  public void b(boolean paramBoolean) {}
 }
 
 

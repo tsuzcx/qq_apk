@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.os.Handler;
-import anxg;
+import aonz;
 
 public class FilePreviewActivity$10$1
   implements Runnable
 {
-  public FilePreviewActivity$10$1(anxg paramanxg) {}
+  public FilePreviewActivity$10$1(aonz paramaonz) {}
   
   public void run()
   {

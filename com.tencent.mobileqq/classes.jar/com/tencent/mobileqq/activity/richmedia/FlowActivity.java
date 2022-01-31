@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ahhm;
+import ahud;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ public abstract class FlowActivity
     this.jdField_a_of_type_Boolean = true;
   }
   
-  protected ahhm a()
+  protected ahud a()
   {
     return null;
   }
@@ -37,7 +37,7 @@ public abstract class FlowActivity
     if (paramBundle == null) {
       return;
     }
-    this.jdField_a_of_type_Int = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131165878));
+    this.jdField_a_of_type_Int = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131296953));
   }
   
   protected abstract void a(ViewGroup paramViewGroup);
@@ -65,17 +65,17 @@ public abstract class FlowActivity
     getWindow().addFlags(512);
     paramBundle = getIntent().getExtras();
     if (paramBundle == null) {
-      this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131165878));
+      this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131296953));
     }
     a(paramBundle);
-    setContentView(2131492907);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131300883));
+    setContentView(2131558444);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131366492));
     if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
       a(this.jdField_a_of_type_AndroidViewViewGroup);
     }
     paramBundle = a();
     if (paramBundle != null) {
-      paramBundle.a((ViewGroup)a(2131300863));
+      paramBundle.a((ViewGroup)a(2131366472));
     }
   }
   

@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.ECommerceEntranceInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class nei
-  implements Parcelable.Creator<VideoInfo.ECommerceEntranceInfo>
+class nei
+  implements View.OnClickListener
 {
-  public VideoInfo.ECommerceEntranceInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.ECommerceEntranceInfo(paramParcel);
-  }
+  nei(ned paramned) {}
   
-  public VideoInfo.ECommerceEntranceInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new VideoInfo.ECommerceEntranceInfo[paramInt];
+    this.a.d(this.a.b());
   }
 }
 

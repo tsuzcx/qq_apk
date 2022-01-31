@@ -1,18 +1,16 @@
 package com.tencent.biz.subscribe.comment;
 
-import com.tribe.async.dispatch.Dispatcher;
-import sgi;
-import vzr;
-import vzz;
+import bcpw;
+import wnl;
 
 public class CommentPresenter$11
   implements Runnable
 {
-  public CommentPresenter$11(vzz paramvzz) {}
+  public CommentPresenter$11(wnl paramwnl) {}
   
   public void run()
   {
-    sgi.a().dispatch(new vzr(1, new Object[0]));
+    bcpw.a(wnl.r(this.this$0), "评论已被删除", 0).a();
   }
 }
 

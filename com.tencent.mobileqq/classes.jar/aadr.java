@@ -1,41 +1,78 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.BaseChatPie.82;
-import com.tencent.mobileqq.activity.BaseChatPie.82.2.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class aadr
-  implements Animation.AnimationListener
+  implements aabm
 {
-  public aadr(BaseChatPie.82 param82) {}
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<CustomWebView> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public aadr(CustomWebView paramCustomWebView, JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.this$0.jdField_a_of_type_JavaLangString, 2, "animSet onAnimationEnd is called,time is:" + System.currentTimeMillis());
-    }
-    this.a.this$0.jdField_a_of_type_MqqOsMqqHandler.post(new BaseChatPie.82.2.1(this));
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramCustomWebView);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("__nativeAPICallID__");
   }
   
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void onComplete()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.this$0.jdField_a_of_type_JavaLangString, 2, "animSet onAnimationRepeat is called,time is:" + System.currentTimeMillis());
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 4]);");
+      }
     }
   }
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onFailure(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.this$0.jdField_a_of_type_JavaLangString, 2, "animSet onAnimationStart is called,time is:" + System.currentTimeMillis());
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 3, " + paramInt + ", '" + paramString + "']);");
+      }
+    }
+  }
+  
+  public void onPermission(int paramInt)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 1, " + paramInt + "]);");
+      }
+    }
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 2, " + paramJSONObject.toString() + "]);");
+      }
+    }
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 5, " + paramJSONObject.toString() + "]);");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aadr
  * JD-Core Version:    0.7.0.1
  */

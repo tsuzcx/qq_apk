@@ -1,17 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
 
 class xad
-  implements View.OnClickListener
+  implements URLDrawableDownListener
 {
-  xad(xac paramxac, int paramInt, VsMusicItemInfo paramVsMusicItemInfo) {}
+  xad(wzw paramwzw) {}
   
-  public void onClick(View paramView)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if (xac.a(this.jdField_a_of_type_Xac) != null) {
-      xac.a(this.jdField_a_of_type_Xac).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo);
-    }
+    this.a.a(false, "onLoadCancelled");
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    this.a.a(false, "onLoadFailed");
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    this.a.a(false, "onLoadInterrupted");
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.a.a(true, "onLoadSuccessed");
+    this.a.b = true;
   }
 }
 

@@ -1,14 +1,22 @@
 public abstract interface vab
 {
+  public abstract Object a();
+  
+  public abstract String a();
+  
   public abstract void a();
   
-  public abstract void a(int paramInt);
+  public abstract void a(Object paramObject);
   
-  public abstract void a(uyw paramuyw);
+  public abstract void a(vac paramvac);
   
-  public abstract void a(boolean paramBoolean, uyw paramuyw);
+  public abstract void a(vad paramvad);
   
-  public abstract void b(int paramInt);
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

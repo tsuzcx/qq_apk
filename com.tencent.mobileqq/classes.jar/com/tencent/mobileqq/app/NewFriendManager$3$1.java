@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.app;
 
-import ajnf;
-import ajni;
-import ajnk;
+import akbo;
+import akbr;
+import akbu;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class NewFriendManager$3$1
   implements Runnable
 {
-  public NewFriendManager$3$1(ajni paramajni, boolean paramBoolean) {}
+  public NewFriendManager$3$1(akbr paramakbr, boolean paramBoolean) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean) {
-      synchronized (ajnf.a(this.jdField_a_of_type_Ajni.a))
+      synchronized (akbo.a(this.jdField_a_of_type_Akbr.a))
       {
-        Iterator localIterator = ajnf.a(this.jdField_a_of_type_Ajni.a).iterator();
+        Iterator localIterator = akbo.a(this.jdField_a_of_type_Akbr.a).iterator();
         if (localIterator.hasNext()) {
-          ((ajnk)localIterator.next()).aj_();
+          ((akbu)localIterator.next()).ag_();
         }
       }
     }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import awqx;
+import axqw;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -15,7 +15,7 @@ class ScanningSurfaceView$6
     {
       ScanningSurfaceView.b(this.this$0).add(this.a);
       ScanningSurfaceView.a(this.this$0, this.b);
-      awqx.b(null, "dc00898", "", "", "0X8008350", "0X8008350", 0, 0, "", "", "", "");
+      axqw.b(null, "dc00898", "", "", "0X8008350", "0X8008350", 0, 0, "", "", "", "");
       return;
     }
     QLog.d("ScanningSurfaceView", 1, "the dataList is null, cancel the jump action.");

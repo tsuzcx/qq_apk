@@ -1,26 +1,35 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import java.util.ArrayList;
+import java.util.List;
 
 public class acjn
-  extends View.AccessibilityDelegate
+  implements View.OnClickListener
 {
-  public acjn(BaseBubbleBuilder paramBaseBubbleBuilder) {}
+  public acjn(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  @TargetApi(16)
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public void onClick(View paramView)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      paramAccessibilityNodeInfo.setVisibleToUser(false);
+    vxs.a(this.a.a);
+    vxs.a(this.a.a.a);
+    paramView = new ArrayList();
+    int i = 0;
+    while (i < this.a.a.a.size())
+    {
+      paramView.add(((acky)this.a.a.a.get(i)).a);
+      i += 1;
     }
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
+    this.a.setResult(-1, localIntent);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acjn
  * JD-Core Version:    0.7.0.1
  */

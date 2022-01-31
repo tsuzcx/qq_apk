@@ -1,15 +1,18 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
 public class abhl
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
-  public abhl(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public abhl(GeneralSettingActivity paramGeneralSettingActivity, Runnable paramRunnable) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    if ((paramDialogInterface instanceof bbgg)) {
+      ((bbgg)paramDialogInterface).setOnDismissListener(null);
+    }
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

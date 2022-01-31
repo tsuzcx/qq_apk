@@ -1,13 +1,13 @@
-class nhs
-  implements qrs
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+
+public class nhs
+  implements net
 {
-  nhs(nhr paramnhr) {}
+  public nhs(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (this.a.jdField_a_of_type_Qvd != null) {
-      this.a.jdField_a_of_type_Qvd.a(paramInt, this.a.jdField_a_of_type_Int);
-    }
+    this.a.a(this.a.a);
   }
 }
 

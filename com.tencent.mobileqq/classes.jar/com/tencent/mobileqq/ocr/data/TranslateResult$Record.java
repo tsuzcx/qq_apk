@@ -3,12 +3,12 @@ package com.tencent.mobileqq.ocr.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import atfj;
+import auck;
 
 public class TranslateResult$Record
   implements Parcelable
 {
-  public static final Parcelable.Creator<Record> CREATOR = new atfj();
+  public static final Parcelable.Creator<Record> CREATOR = new auck();
   public int a;
   public String a;
   public int b;

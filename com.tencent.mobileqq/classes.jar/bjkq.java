@@ -1,11 +1,24 @@
-class bjkq
-  implements bjko
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.capture.view.ProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
+
+public class bjkq
+  implements Animation.AnimationListener
 {
-  bjkq(bjkp parambjkp) {}
+  public bjkq(QIMProviderContainerView paramQIMProviderContainerView) {}
   
-  public boolean a(double paramDouble)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return bjkp.a(this.a);
+    if (QIMProviderContainerView.a(this.a) != null)
+    {
+      QIMProviderContainerView.a(this.a).setAlpha(1.0F);
+      QIMProviderContainerView.a(this.a).setVisibility(0);
+    }
   }
 }
 

@@ -1,31 +1,35 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.UUID;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
 
 class adsj
-  implements DialogInterface.OnClickListener
+  extends ClickableSpan
 {
-  adsj(adsh paramadsh, long paramLong, UUID paramUUID, ChatMessage paramChatMessage, Activity paramActivity) {}
+  adsj(adqy paramadqy, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if ((this.jdField_a_of_type_Adqy.a instanceof Activity))
     {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface = azih.a(this.jdField_a_of_type_Adsh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
-      paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaUtilUUID));
-      this.jdField_a_of_type_Adsh.h(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      this.jdField_a_of_type_Adsh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_Adsh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adsh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-      return;
+      paramView = bfol.a(this.jdField_a_of_type_Adqy.a);
+      paramView.b(2131691945);
+      paramView.c(2131690596);
+      paramView.a(new adsk(this, paramView));
+      paramView.show();
+      BaseChatPie localBaseChatPie = ((FragmentActivity)this.jdField_a_of_type_Adqy.a).getChatFragment().a();
+      if ((localBaseChatPie instanceof aeoe)) {
+        ((aeoe)localBaseChatPie).a = paramView;
+      }
     }
-    new aypd(this.jdField_a_of_type_Long, this.jdField_a_of_type_Adsh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity).a(this.jdField_a_of_type_JavaUtilUUID);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 

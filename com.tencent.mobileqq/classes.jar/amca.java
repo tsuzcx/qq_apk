@@ -1,42 +1,50 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
 
-public class amca
+class amca
+  extends AnimatorListenerAdapter
 {
-  private boolean a;
+  amca(ambw paramambw, amcg paramamcg) {}
   
-  public static amca a(String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
-    }
-    try
+    if ((this.jdField_a_of_type_Ambw.d != null) && (this.jdField_a_of_type_Ambw.e != null))
     {
-      amca localamca = new amca();
-      if (new JSONObject(paramString).optInt("isDefaultOpen", 1) == 1) {}
-      for (;;)
-      {
-        localamca.a = bool;
-        return localamca;
-        bool = false;
-      }
-      return null;
+      this.jdField_a_of_type_Ambw.d.setVisibility(4);
+      this.jdField_a_of_type_Ambw.e.setVisibility(0);
+      paramAnimator = (AvatarPendantManager)this.jdField_a_of_type_Ambw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
+      paramAnimator.jdField_a_of_type_Long = -1L;
+      this.jdField_a_of_type_Ambw.a("show pendant, " + this.jdField_a_of_type_Ambw.jdField_a_of_type_Long);
+      paramAnimator.b();
     }
-    catch (Exception paramString)
-    {
-      QLog.e("DarkModeConfigProcessor", 2, "DarkModeConfigBean parse error", paramString);
+    if (this.jdField_a_of_type_Ambw.c != null) {
+      this.jdField_a_of_type_Ambw.c.setVisibility(0);
     }
   }
   
-  public boolean a()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return this.a;
+    if ((this.jdField_a_of_type_Ambw.d != null) && (this.jdField_a_of_type_Ambw.e != null))
+    {
+      this.jdField_a_of_type_Ambw.d.setVisibility(0);
+      this.jdField_a_of_type_Ambw.e.setVisibility(4);
+      paramAnimator = (AvatarPendantManager)this.jdField_a_of_type_Ambw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
+      this.jdField_a_of_type_Ambw.a("stop show pendant, " + this.jdField_a_of_type_Ambw.jdField_a_of_type_Long);
+      paramAnimator.jdField_a_of_type_Long = this.jdField_a_of_type_Ambw.jdField_a_of_type_Long;
+      paramAnimator.a();
+    }
+    if ((this.jdField_a_of_type_Ambw.c != null) && (TextUtils.isEmpty(this.jdField_a_of_type_Amcg.e))) {
+      this.jdField_a_of_type_Ambw.c.setVisibility(4);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amca
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import mqq.app.QQPermissionCallback;
 
-class azda
-  implements View.OnClickListener
+public class azda
+  implements QQPermissionCallback
 {
-  azda(azcz paramazcz) {}
+  public azda(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramView = new Intent(azcz.a(this.a), QQBrowserActivity.class);
-    paramView.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
-    azcz.a(this.a).startActivity(paramView);
+    bbcv.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a(this.a, this.a);
   }
 }
 

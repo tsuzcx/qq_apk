@@ -1,41 +1,30 @@
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.view.View.OnClickListener;
 
-public class bbgs
-  implements View.OnTouchListener
+class bbgs
+  implements View.OnClickListener
 {
-  public bbgs(ClearableEditText paramClearableEditText) {}
+  int jdField_a_of_type_Int;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bbgs(bbgg parambbgg, int paramInt)
   {
-    int i = 1;
-    if (this.a.getCompoundDrawables()[2] == null) {}
-    label107:
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {}
-        for (;;)
-        {
-          if (i == 0) {
-            break label107;
-          }
-          this.a.setText("");
-          this.a.setClearButtonVisible(false);
-          if (this.a.jdField_a_of_type_Bbgv == null) {
-            break;
-          }
-          this.a.jdField_a_of_type_Bbgv.m();
-          return false;
-          i = 0;
-        }
-      }
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Bbgg.onArrayItemClick != null) {
+      this.jdField_a_of_type_Bbgg.onArrayItemClick.onClick(this.jdField_a_of_type_Bbgg, this.jdField_a_of_type_Bbgg.customWhichToCallBack(this.jdField_a_of_type_Int));
     }
+    try
+    {
+      if (this.jdField_a_of_type_Bbgg.isShowing()) {
+        this.jdField_a_of_type_Bbgg.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 

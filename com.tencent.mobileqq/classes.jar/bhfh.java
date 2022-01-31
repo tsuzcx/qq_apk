@@ -1,25 +1,27 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraStoryCaptureButtonLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiUserInfo;
 
-class bhfh
-  implements View.OnTouchListener
+public final class bhfh
+  implements Parcelable.Creator<WeishiUserInfo>
 {
-  bhfh(bhff parambhff) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public WeishiUserInfo a(Parcel paramParcel)
   {
-    if (((bhff.a(this.a) instanceof QIMCameraStoryCaptureButtonLayout)) && (((QIMCameraStoryCaptureButtonLayout)bhff.a(this.a)).c())) {
-      return true;
-    }
-    return bhff.a(this.a).a(paramMotionEvent);
+    WeishiUserInfo localWeishiUserInfo = new WeishiUserInfo();
+    localWeishiUserInfo.uin = paramParcel.readLong();
+    localWeishiUserInfo.nickName = paramParcel.readString();
+    localWeishiUserInfo.logo = paramParcel.readString();
+    return localWeishiUserInfo;
+  }
+  
+  public WeishiUserInfo[] a(int paramInt)
+  {
+    return new WeishiUserInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhfh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aede;
+import aeoe;
 import com.tencent.widget.PatchedButton;
 import com.tencent.widget.XEditTextEx;
 
 public class DiscussChatPie$6
   implements Runnable
 {
-  public DiscussChatPie$6(aede paramaede) {}
+  public DiscussChatPie$6(aeoe paramaeoe) {}
   
   public void run()
   {

@@ -1,1090 +1,262 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.Process;
-import android.os.RemoteException;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.subscribe.SubscribeJsPlugin.2;
+import com.tencent.biz.subscribe.SubscribeJsPlugin.3;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class wis
+  extends WebViewPlugin
+  implements alxk
 {
-  static int jdField_a_of_type_Int;
-  private static String jdField_a_of_type_JavaLangString;
-  protected static wis a;
-  ajey jdField_a_of_type_Ajey;
-  protected ServiceConnection a;
-  final Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new wiv(this));
-  SparseArray<ajfe> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  List<ajfe> jdField_a_of_type_JavaUtilList = new ArrayList();
-  Map<Integer, wiu> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  mnm jdField_a_of_type_Mnm;
-  mnp jdField_a_of_type_Mnp;
-  private wiu jdField_a_of_type_Wiu;
-  Messenger jdField_b_of_type_AndroidOsMessenger = null;
-  private HashMap<String, Integer> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  List<Message> jdField_b_of_type_JavaUtilList = new ArrayList();
-  AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private alxg jdField_a_of_type_Alxg;
+  private wxu jdField_a_of_type_Wxu;
   
-  private wis()
+  private void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidContentServiceConnection = new wit(this);
-  }
-  
-  public static String a()
-  {
-    if (jdField_a_of_type_JavaLangString != null) {
-      return jdField_a_of_type_JavaLangString;
-    }
-    int i = Process.myPid();
-    Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
-    if ((localObject == null) || (((List)localObject).size() <= 0)) {
-      return null;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    paramString = new wiu(this, paramString);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("code", paramString.optString("code"));
+    localBundle.putString("location", paramString.optString("location"));
+    if (this.jdField_a_of_type_Wxu == null)
     {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
-      if (localRunningAppProcessInfo.pid == i)
-      {
-        localObject = localRunningAppProcessInfo.processName;
-        jdField_a_of_type_JavaLangString = (String)localObject;
-        return localObject;
-      }
+      this.jdField_a_of_type_Wxu = wxu.a();
+      this.jdField_a_of_type_Wxu.a();
     }
-    return null;
+    this.jdField_a_of_type_Wxu.b(localBundle);
   }
   
-  public static wis a()
+  private void a(String paramString, Bitmap paramBitmap)
   {
-    if (jdField_a_of_type_Wis == null) {}
-    try
-    {
-      if (jdField_a_of_type_Wis == null) {
-        jdField_a_of_type_Wis = new wis();
-      }
-      return jdField_a_of_type_Wis;
+    ThreadManager.post(new SubscribeJsPlugin.3(this, paramBitmap, paramString), 8, null, false);
+  }
+  
+  private void a(String paramString, String[] paramArrayOfString)
+  {
+    if ("opendetail".equals(paramString)) {
+      if (a(paramArrayOfString)) {}
     }
-    finally {}
-  }
-  
-  public int a(wiu paramwiu)
-  {
-    int i = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramwiu);
-    return i;
-  }
-  
-  public mnm a()
-  {
-    if (this.jdField_a_of_type_Mnm == null) {
-      this.jdField_a_of_type_Mnm = new mnm(this);
-    }
-    return this.jdField_a_of_type_Mnm;
-  }
-  
-  public mnp a()
-  {
-    if (this.jdField_a_of_type_Mnp == null) {
-      this.jdField_a_of_type_Mnp = new mnp(this);
-    }
-    return this.jdField_a_of_type_Mnp;
-  }
-  
-  public wiu a(int paramInt)
-  {
-    return (wiu)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndAdd(1) == 0)
-    {
-      BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-      localBaseApplication.bindService(new Intent(localBaseApplication, TroopMemberApiService.class), this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("com.tencent.biz.troop.TroopMemberApiClient", 2, "Binding...");
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("fontSize", paramInt);
-    a(53, localBundle);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("topicId", paramInt1);
-    localBundle.putInt("followInfo", paramInt2);
-    a(106, localBundle);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("subCmd", 1);
-    localBundle.putInt("effectId", paramInt1);
-    localBundle.putInt("svipLevel", paramInt2);
-    localBundle.putInt("svipType", paramInt3);
-    localBundle.putString("effectName", paramString);
-    a(85, localBundle);
-  }
-  
-  public void a(int paramInt1, long paramLong, String paramString1, String paramString2, int paramInt2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("roomid", paramLong);
-    localBundle.putInt("roomType", paramInt1);
-    localBundle.putString("vasname", paramString1);
-    localBundle.putString("userdata", paramString2);
-    localBundle.putInt("fromid", paramInt2);
-    a(32, localBundle);
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    Message localMessage = Message.obtain(null, paramInt);
-    localMessage.replyTo = this.jdField_a_of_type_AndroidOsMessenger;
-    localMessage.setData(paramBundle);
-    if (this.jdField_b_of_type_AndroidOsMessenger == null) {
-      try
-      {
-        this.jdField_b_of_type_JavaUtilList.add(localMessage);
-        return;
-      }
-      finally {}
-    }
-    try
-    {
-      this.jdField_b_of_type_AndroidOsMessenger.send(localMessage);
-      return;
-    }
-    catch (RemoteException paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
-  }
-  
-  public void a(int paramInt, Bundle paramBundle, ajfe paramajfe)
-  {
-    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
-    int i = jdField_a_of_type_Int + 1;
-    jdField_a_of_type_Int = i;
-    localSparseArray.append(i, paramajfe);
-    paramBundle.putString("processName", a());
-    paramBundle.putInt("req_seq", jdField_a_of_type_Int);
-    a(paramInt, paramBundle);
-  }
-  
-  public void a(int paramInt, Bundle paramBundle, wiu paramwiu)
-  {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    localBundle.putInt("seq", a(paramwiu));
-    localBundle.putString("processName", a());
-    a(paramInt, localBundle);
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2, Bundle paramBundle)
-  {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    localBundle.putInt("uploadType", paramInt);
-    localBundle.putString("url", paramString1);
-    localBundle.putString("originUrl", paramString2);
-    a(140, localBundle);
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("callback", paramString4);
-    localBundle.putInt("seq", a(paramwiu));
-    localBundle.putInt("appid", paramInt);
-    localBundle.putString("openGroupId", paramString1);
-    localBundle.putString("token", paramString2);
-    localBundle.putString("url", paramString3);
-    a(28, localBundle);
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("from", paramString1);
-    localBundle.putString("pluginId", paramString2);
-    localBundle.putString("startParam", paramString3);
-    localBundle.putInt("action", paramInt);
-    localBundle.putInt("seq", a(paramwiu));
-    a(79, localBundle);
-  }
-  
-  public void a(int paramInt, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("appId", paramInt);
-    localBundle.putInt("seq", a(paramwiu));
-    a(44, localBundle);
-  }
-  
-  public void a(long paramLong)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("roomId", paramLong);
-    a(88, localBundle);
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("followUin", paramLong);
-    localBundle.putInt("followInfo", paramInt);
-    a(117, localBundle);
-  }
-  
-  public void a(long paramLong1, String paramString1, String paramString2, long paramLong2, int paramInt, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("troopCode", paramLong1);
-    localBundle.putString("filePath", paramString1);
-    localBundle.putString("fileName", paramString2);
-    localBundle.putLong("fileSize", paramLong2);
-    localBundle.putInt("busid", paramInt);
-    localBundle.putInt("seq", a(paramwiu));
-    a(20, localBundle);
-  }
-  
-  public void a(long paramLong, long[] paramArrayOfLong)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLongArray("troopUinList", paramArrayOfLong);
-    localBundle.putLong("troopPubAccountUin", paramLong);
-    a(45, localBundle);
-  }
-  
-  public void a(ajfe paramajfe)
-  {
-    if (paramajfe == null) {}
     do
     {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          return;
+                          paramString = new wiu(this, paramArrayOfString[0]);
+                          QLog.d(this.TAG, 2, paramString.toString());
+                          if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof SubscribeHybirdFragment)))
+                          {
+                            ((SubscribeHybirdFragment)this.mRuntime.a()).a(wiv.a(paramString.getString("feedid"), paramString.getString("uin"), paramString.getInt("type"), paramString.getInt("width"), paramString.getInt("height"), Long.valueOf(paramString.getString("createtime")).longValue()));
+                            return;
+                          }
+                        } while ((this.mRuntime == null) || (this.mRuntime.a() == null));
+                        wiv.a(null, wiv.a(paramString.getString("feedid"), paramString.getString("uin"), paramString.getInt("type"), paramString.getInt("width"), paramString.getInt("height"), Long.valueOf(paramString.getString("createtime")).longValue()));
+                        return;
+                        if (!"sharepersonalpage".equals(paramString)) {
+                          break;
+                        }
+                      } while (!a(paramArrayOfString));
+                      paramString = new wiu(this, paramArrayOfString[0]);
+                    } while ((this.mRuntime == null) || (!(this.mRuntime.a() instanceof SubscribeHybirdFragment)));
+                    QLog.d(this.TAG, 2, paramString.toString());
+                    ((SubscribeHybirdFragment)this.mRuntime.a()).a(paramString.getString("uin"), paramString.getString("nickname"), paramString.getString("icon"), paramString.getString("desc"), paramString.getString("usertype"));
+                    return;
+                    if (!"reloadmainpage".equals(paramString)) {
+                      break;
+                    }
+                  } while ((this.mRuntime == null) || (!(this.mRuntime.a() instanceof SubscribeHybirdFragment)));
+                  ((SubscribeHybirdFragment)this.mRuntime.a()).aa_();
+                  return;
+                  if (!"openpublishpage".equals(paramString)) {
+                    break;
+                  }
+                } while ((!a(paramArrayOfString)) || (this.mRuntime == null) || (this.mRuntime.a() == null));
+                paramString = new wiu(this, paramArrayOfString[0]).optString("puin");
+                new Intent().putExtra("postUin", paramString);
+                bgxy.a(this.mRuntime.a().getActivity(), null, 0);
+                return;
+                if (!"attachGoods".equals(paramString)) {
+                  break;
+                }
+              } while (!a(paramArrayOfString));
+              b(paramArrayOfString[0]);
+              return;
+              if (!"cancelfollow".equals(paramString)) {
+                break;
+              }
+            } while (!a(paramArrayOfString));
+            c(paramArrayOfString[0]);
+            return;
+            if (!"getavatar".equals(paramString)) {
+              break;
+            }
+          } while (!a(paramArrayOfString));
+          d(paramArrayOfString[0]);
+          return;
+          if (!"refreshreturnpage".equals(paramString)) {
+            break;
+          }
+        } while ((this.mRuntime == null) || (!(this.mRuntime.a() instanceof SubscribeHybirdFragment)));
+        ((SubscribeHybirdFragment)this.mRuntime.a()).i();
+        return;
+        if (!"getlbslocation".equals(paramString)) {
+          break;
+        }
+      } while (!a(paramArrayOfString));
+      a(paramArrayOfString[0]);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i("com.tencent.biz.troop.TroopMemberApiClient", 2, "RegisterObserver key:" + paramajfe.hashCode());
+    } while ((!"openhomepage".equals(paramString)) || (!a(paramArrayOfString)));
+    wiv.a(null, new wiu(this, paramArrayOfString[0]).optString("uid"));
+  }
+  
+  private boolean a(String[] paramArrayOfString)
+  {
+    boolean bool = true;
+    if ((paramArrayOfString == null) || (paramArrayOfString.length < 1))
+    {
+      QLog.e(this.TAG, 2, "args is null");
+      bool = false;
+    }
+    return bool;
+  }
+  
+  private void b(String paramString)
+  {
+    paramString = new wiu(this, paramString).getJSONArray("goods");
+    if (paramString != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramString.length())
+      {
+        JSONObject localJSONObject = paramString.getJSONObject(i);
+        if (localJSONObject != null) {
+          localArrayList.add(new CommodityBean(localJSONObject));
+        }
+        i += 1;
       }
-    } while (this.jdField_a_of_type_JavaUtilList.contains(paramajfe));
-    this.jdField_a_of_type_JavaUtilList.add(paramajfe);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    a(114, paramBundle);
-  }
-  
-  public void a(Integer paramInteger1, Integer paramInteger2, Integer paramInteger3, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwiu));
-    localBundle.putInt("start", paramInteger1.intValue());
-    localBundle.putInt("msgType", paramInteger2.intValue());
-    localBundle.putInt("count", paramInteger3.intValue());
-    a(127, localBundle);
-  }
-  
-  public void a(Integer paramInteger1, Integer paramInteger2, String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("clearType", paramInteger1.intValue());
-    localBundle.putInt("msgType", paramInteger2.intValue());
-    localBundle.putString("uin", paramString);
-    a(128, localBundle);
-  }
-  
-  public void a(Integer paramInteger1, String paramString, Integer paramInteger2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("deleteType", paramInteger1.intValue());
-    localBundle.putInt("msgType", paramInteger2.intValue());
-    localBundle.putString("uin", paramString);
-    a(129, localBundle);
-  }
-  
-  public void a(Integer paramInteger, String paramString1, String paramString2, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwiu));
-    localBundle.putInt("appid", paramInteger.intValue());
-    localBundle.putString("openId", paramString1);
-    localBundle.putString("token", paramString2);
-    a(60, localBundle);
-  }
-  
-  public void a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString);
-    localBundle.putString("processName", a());
-    a(39, localBundle);
-  }
-  
-  public void a(String paramString, byte paramByte, long paramLong, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString);
-    localBundle.putByte("cIsGetGroupAlbum", paramByte);
-    localBundle.putLong("dwTimeStamp", paramLong);
-    localBundle.putInt("cStatOption", paramInt);
-    a(37, localBundle);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("TroopMngTest", 4, String.format("getGroupInfoReq [%s]", new Object[] { paramString }));
+      if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof SubscribeHybirdFragment))) {
+        ((SubscribeHybirdFragment)this.mRuntime.a()).a(localArrayList);
+      }
     }
   }
   
-  public void a(String paramString, int paramInt)
+  private void c(String paramString)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("troopUin", Long.parseLong(paramString));
-    localBundle.putInt("flag", paramInt);
-    a(51, localBundle);
-  }
-  
-  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, String paramString5, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("url", paramString1);
-    localBundle.putInt("type", paramInt1);
-    localBundle.putInt("msgfrom", paramInt2);
-    localBundle.putString("senderUin", paramString2);
-    localBundle.putString("chatId", paramString3);
-    localBundle.putString("source", paramString4);
-    localBundle.putString("originUrl", paramString5);
-    a(119, localBundle, paramwiu);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putInt("statOption", paramInt);
-    localBundle.putString("authKey", paramString2);
-    a(69, localBundle);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("roomId", paramString1);
-    localBundle.putInt("isGroupCode", paramInt);
-    localBundle.putString("action", paramString2);
-    localBundle.putString("fromId", paramString3);
-    localBundle.putString("backType", paramString4);
-    localBundle.putString("openType", paramString5);
-    localBundle.putString("extra", paramString6);
-    a(94, localBundle);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, wiu paramwiu1, wiu paramwiu2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("pic_local_path", paramString1);
-    localBundle.putInt("is_showProgress_tips", paramInt);
-    localBundle.putString("pic_puin", paramString2);
-    localBundle.putInt("seq1", a(paramwiu2));
-    localBundle.putInt("seq", a(paramwiu1));
-    localBundle.putBoolean("is_pic_or_voice", paramBoolean);
-    a(21, localBundle);
-  }
-  
-  public void a(String paramString1, long paramLong, int paramInt1, String paramString2, int paramInt2, String paramString3, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putLong("bubbleId", paramLong);
-    localBundle.putInt("headId", paramInt1);
-    localBundle.putString("nickName", paramString2);
-    localBundle.putInt("expireTime", paramInt2);
-    localBundle.putString("rankColor", paramString3);
-    localBundle.putInt("seq", a(paramwiu));
-    a(13, localBundle);
-  }
-  
-  public void a(String paramString1, long paramLong1, String paramString2, String paramString3, long paramLong2, long paramLong3, int paramInt, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("skinId", paramString1);
-    localBundle.putString("skinUrl", paramString2);
-    localBundle.putString("skinName", paramString3);
-    localBundle.putLong("skinSeq", paramLong1);
-    localBundle.putLong("startTime", paramLong2);
-    localBundle.putLong("endTime", paramLong3);
-    localBundle.putInt("volumeIsOn", paramInt);
-    localBundle.putInt("seq", a(paramwiu));
-    if (QLog.isColorLevel()) {
-      QLog.d("Readinjoy", 2, "TroopMemberApiClient setReadinjoySkin skinId = " + paramString1);
-    }
-    a(109, localBundle);
-  }
-  
-  public void a(String paramString1, long paramLong1, String paramString2, String paramString3, long paramLong2, long paramLong3, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("skinId", paramString1);
-    localBundle.putString("skinUrl", paramString2);
-    localBundle.putString("skinName", paramString3);
-    localBundle.putLong("skinSeq", paramLong1);
-    localBundle.putLong("startTime", paramLong2);
-    localBundle.putLong("endTime", paramLong3);
-    localBundle.putInt("seq", a(paramwiu));
-    if (QLog.isColorLevel()) {
-      QLog.d("Readinjoy", 2, "TroopMemberApiClient startLoadReadinjoySkin skinId = " + paramString1);
-    }
-    a(107, localBundle);
-  }
-  
-  public void a(String paramString, AIOImageData paramAIOImageData, int paramInt, wiu paramwiu)
-  {
-    if (paramString == null) {
+    if ((this.mRuntime == null) || (this.mRuntime.a() == null) || (this.mRuntime.a().getActivity() == null)) {
       return;
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString);
-    localBundle.putString("filePath", paramAIOImageData.h);
-    localBundle.putString("fileName", paramAIOImageData.g);
-    localBundle.putInt("busId", paramAIOImageData.c);
-    localBundle.putInt("size", paramInt);
-    int i = a(paramwiu);
-    localBundle.putInt("seq", i);
-    paramString = paramAIOImageData.h + "/" + paramInt;
-    this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(i));
-    a(58, localBundle);
+    Object localObject = new wiu(this, paramString);
+    paramString = ((wiu)localObject).optString("uin");
+    String str = ((wiu)localObject).optString("nick");
+    localObject = ((wiu)localObject).optString("callback");
+    wte.a(this.mRuntime.a().getActivity(), paramString, str, new wit(this, (String)localObject, str));
   }
   
-  public void a(String paramString1, String paramString2)
+  private void d(String paramString)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putString("opn", paramString2);
-    a(31, localBundle);
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putString("memberUin", paramString2);
-    localBundle.putInt("titleId", paramInt);
-    a(29, localBundle);
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt, String paramString3, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("callback", paramString3);
-    localBundle.putInt("seq", a(paramwiu));
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putString("troopName", paramString2);
-    localBundle.putInt("troopTypeId", paramInt);
-    a(19, localBundle);
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("path", paramString1);
-    localBundle.putString("troopUin", paramString2);
-    localBundle.putInt("msgTailType", paramInt);
-    localBundle.putInt("seq", a(paramwiu));
-    a(87, localBundle);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopCode", paramString1);
-    localBundle.putString("uin", paramString2);
-    localBundle.putString("nick", paramString3);
-    a(96, localBundle);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("appType", paramString1);
-    localBundle.putString("openType", paramString2);
-    localBundle.putString("uri", paramString3);
-    localBundle.putString("action", paramString4);
-    localBundle.putString("pluginPackageName", paramString5);
-    localBundle.putString("pluginParams", paramString6);
-    a(67, localBundle);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("packageName", paramString1);
-    localBundle.putString("pluginId", paramString2);
-    localBundle.putString("versionCode", paramString3);
-    localBundle.putInt("seq", a(paramwiu));
-    a(78, localBundle);
-  }
-  
-  public void a(String paramString1, String paramString2, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("groupCode", paramString1);
-    localBundle.putString("groupMemberUin", paramString2);
-    localBundle.putInt("seq", a(paramwiu));
-    a(72, localBundle);
-  }
-  
-  public void a(String paramString, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwiu));
-    localBundle.putString("troopUin", paramString);
-    localBundle.putString("processName", a());
-    a(59, localBundle);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString);
-    localBundle.putBoolean("isChecked", paramBoolean);
-    a(36, localBundle);
-  }
-  
-  public void a(ArrayList<String> paramArrayList)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("subCmd", 2);
-    localBundle.putStringArrayList("statusList", paramArrayList);
-    a(85, localBundle);
-  }
-  
-  public void a(ArrayList<String> paramArrayList, wiu paramwiu)
-  {
-    int i = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArrayList("tinyIdList", paramArrayList);
-    localBundle.putInt("seq", i);
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramwiu);
-    a(102, localBundle);
-  }
-  
-  public void a(wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwiu));
-    localBundle.putString("processName", a());
-    a(81, localBundle);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isTroopAppListChanged", paramBoolean);
-    a(30, localBundle);
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isTroopProfileAppListChanged", paramBoolean);
-    localBundle.putString("profileAppListChangedTroopUin", paramString);
-    a(105, localBundle);
-  }
-  
-  public void a(byte[] paramArrayOfByte, String paramString, int paramInt1, int paramInt2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putByteArray("xmlData", paramArrayOfByte);
-    localBundle.putString("friendUin", paramString);
-    localBundle.putInt("directionFlag", paramInt1);
-    localBundle.putInt("from", paramInt2);
-    a(73, localBundle);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0) {
-      QLog.e("com.tencent.biz.troop.TroopMemberApiClient", 1, "call unbind but didn't bind", new Throwable());
+    if ((this.mRuntime == null) || (this.mRuntime.a() == null) || (this.mRuntime.a().getActivity() == null)) {
+      return;
+    }
+    paramString = new wiu(this, paramString);
+    JSONArray localJSONArray = paramString.optJSONArray("accountList");
+    int i;
+    if ("1".equals(paramString.getString("avatarType")))
+    {
+      i = 4;
+      if (this.jdField_a_of_type_Alxg != null) {
+        break label130;
+      }
+      this.jdField_a_of_type_Alxg = new alxg(this.mRuntime.a(), i);
+      this.jdField_a_of_type_Alxg.a();
+      this.jdField_a_of_type_Alxg.a(this);
     }
     for (;;)
     {
+      ThreadManagerV2.excute(new SubscribeJsPlugin.2(this, localJSONArray), 16, null, false);
       return;
-      BaseApplication localBaseApplication;
-      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(-1) == 0)
-      {
-        localBaseApplication = BaseApplicationImpl.getContext();
-        if (this.jdField_b_of_type_AndroidOsMessenger == null) {}
-      }
+      i = 1;
+      break;
+      label130:
+      this.jdField_a_of_type_Alxg.a(i);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  {
+    a(paramString1, paramBitmap);
+    if (QLog.isColorLevel()) {
+      QLog.i(this.TAG, 4, "handleGetAvatar onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ("qsubscribe".equals(paramString2))
+    {
+      QLog.i(this.TAG, 2, "handleJsRequest:" + paramString1);
       try
       {
-        Message localMessage = Message.obtain(null, 2);
-        localMessage.replyTo = this.jdField_a_of_type_AndroidOsMessenger;
-        Bundle localBundle = new Bundle();
-        localBundle.putString("processName", a());
-        localMessage.obj = localBundle;
-        this.jdField_b_of_type_AndroidOsMessenger.send(localMessage);
-        label94:
-        localBaseApplication.unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-        this.jdField_b_of_type_AndroidOsMessenger = null;
-        try
-        {
-          this.jdField_b_of_type_JavaUtilList.clear();
-          this.jdField_a_of_type_JavaUtilMap.clear();
-          a().a();
-          if (QLog.isColorLevel()) {
-            QLog.i("com.tencent.biz.troop.TroopMemberApiClient", 2, "Unbinding...");
-          }
-          if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= 0) {
-            continue;
-          }
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-          QLog.e("com.tencent.biz.troop.TroopMemberApiClient", 1, "call unbind but didn't bind", new Throwable());
-          return;
-        }
-        finally {}
+        a(paramString3, paramVarArgs);
+        return true;
       }
-      catch (RemoteException localRemoteException)
+      catch (JSONException paramJsBridgeListener)
       {
-        break label94;
+        for (;;)
+        {
+          QLog.d(this.TAG, 2, paramJsBridgeListener, new Object[0]);
+        }
       }
     }
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
   
-  public void b(int paramInt)
+  public void onDestroy()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("reqUserSetEnableAlbumScan", paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("UserEnableAlbumScan", 2, "TroopMemberApiClient setUserEnableAlbumScan value = " + paramInt);
-    }
-    a(123, localBundle);
-  }
-  
-  public void b(ajfe paramajfe)
-  {
-    if (paramajfe == null) {}
-    do
+    super.onDestroy();
+    if (this.jdField_a_of_type_Wxu != null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("com.tencent.biz.troop.TroopMemberApiClient", 2, "unRegisterObserver key:" + paramajfe.hashCode());
-      }
-    } while (!this.jdField_a_of_type_JavaUtilList.contains(paramajfe));
-    this.jdField_a_of_type_JavaUtilList.remove(paramajfe);
-  }
-  
-  public void b(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString);
-    a(34, localBundle);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("uin", paramString);
-    localBundle.putInt("index", paramInt);
-    a(95, localBundle);
-  }
-  
-  public void b(String paramString1, int paramInt, String paramString2, boolean paramBoolean, wiu paramwiu1, wiu paramwiu2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("pic_server_id", paramString1);
-    localBundle.putInt("is_showProgress_tips", paramInt);
-    localBundle.putString("pic_puin", paramString2);
-    localBundle.putBoolean("is_pic_or_voice", paramBoolean);
-    localBundle.putInt("seq1", a(paramwiu2));
-    localBundle.putInt("seq", a(paramwiu1));
-    a(22, localBundle);
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString1))) {
-      return;
+      this.jdField_a_of_type_Wxu.b();
+      this.jdField_a_of_type_Wxu = null;
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("gcode", paramString1);
-    localBundle.putString("anId", paramString2);
-    a(7, localBundle);
-  }
-  
-  public void b(String paramString1, String paramString2, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putString("memUin", paramString2);
-    localBundle.putInt("serviceType", paramInt);
-    a(70, localBundle);
-  }
-  
-  public void b(String paramString1, String paramString2, String paramString3)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopCode", paramString1);
-    localBundle.putString("uin", paramString2);
-    localBundle.putString("nick", paramString3);
-    a(99, localBundle);
-  }
-  
-  public void b(String paramString1, String paramString2, String paramString3, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putString("chatType", paramString2);
-    localBundle.putString("callback", paramString3);
-    localBundle.putInt("seq", a(paramwiu));
-    a(111, localBundle);
-  }
-  
-  public void b(String paramString1, String paramString2, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putString("rewardId", paramString2);
-    localBundle.putInt("seq", a(paramwiu));
-    a(55, localBundle);
-  }
-  
-  public void b(String paramString, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwiu));
-    localBundle.putString("hashName", paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("allen", 2, "此时发送请求");
+    if (this.jdField_a_of_type_Alxg != null)
+    {
+      this.jdField_a_of_type_Alxg.b();
+      this.jdField_a_of_type_Alxg = null;
     }
-    a(66, localBundle);
-  }
-  
-  public void b(String paramString, boolean paramBoolean)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString);
-    localBundle.putBoolean("isChecked", paramBoolean);
-    a(118, localBundle);
-  }
-  
-  public void b(ArrayList<String> paramArrayList)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArrayList("preloadList", paramArrayList);
-    a(103, localBundle);
-  }
-  
-  public void b(wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwiu));
-    a(84, localBundle);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("force_install_new", paramBoolean);
-    a(91, localBundle);
-  }
-  
-  public void c()
-  {
-    a(6, null);
-  }
-  
-  public void c(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString);
-    a(35, localBundle);
-  }
-  
-  public void c(String paramString, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("schoolName", paramString);
-    localBundle.putInt("isValid", paramInt);
-    a(74, localBundle);
-  }
-  
-  public void c(String paramString1, String paramString2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("pluginPackageName", paramString1);
-    localBundle.putString("appType", paramString2);
-    a(71, localBundle);
-  }
-  
-  public void c(String paramString1, String paramString2, String paramString3, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("appid", paramString1);
-    localBundle.putString("openid", paramString2);
-    localBundle.putString("troopuin", paramString3);
-    a(144, localBundle, paramwiu);
-  }
-  
-  public void c(String paramString1, String paramString2, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("path", paramString1);
-    localBundle.putString("photoPath", paramString2);
-    localBundle.putInt("seq", a(paramwiu));
-    a(75, localBundle);
-  }
-  
-  public void c(String paramString, wiu paramwiu)
-  {
-    if (paramwiu == null) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    if (!TextUtils.isEmpty(paramString)) {
-      localBundle.putString("callback", paramString);
-    }
-    localBundle.putInt("seq", a(paramwiu));
-    a(15, localBundle);
-  }
-  
-  public void c(String paramString, boolean paramBoolean)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString);
-    localBundle.putBoolean("isOpen", paramBoolean);
-    a(143, localBundle);
-  }
-  
-  public void c(wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwiu));
-    a(76, localBundle);
-  }
-  
-  public void d()
-  {
-    a(93, new Bundle());
-  }
-  
-  public void d(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopCode", paramString);
-    a(98, localBundle);
-  }
-  
-  public void d(String paramString1, String paramString2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putString("troopCode", paramString2);
-    a(41, localBundle);
-  }
-  
-  public void d(String paramString1, String paramString2, wiu paramwiu)
-  {
-    int i = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopCode", paramString1);
-    localBundle.putString("rid", paramString2);
-    localBundle.putInt("seq", i);
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramwiu);
-    a(101, localBundle);
-  }
-  
-  public void d(String paramString, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwiu));
-    localBundle.putString("content", paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("Readinjoy", 2, "TroopMemberApiClient sendToComputer");
-    }
-    a(120, localBundle);
-  }
-  
-  public void d(wiu paramwiu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("getReadinjoyShareToWxConfig", 2, "get config");
-    }
-    a(113, null, paramwiu);
-  }
-  
-  public void e()
-  {
-    a(77, new Bundle());
-  }
-  
-  public void e(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("from", paramString);
-    a(125, localBundle);
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("localFilePath", paramString1);
-    localBundle.putString("fileDisPlayName", paramString2);
-    a(47, localBundle);
-  }
-  
-  public void e(String paramString1, String paramString2, wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("skinId", paramString1);
-    localBundle.putString("skinUrl", paramString2);
-    localBundle.putInt("seq", a(paramwiu));
-    if (QLog.isColorLevel()) {
-      QLog.d("Readinjoy", 2, "TroopMemberApiClient cancelLoadReadinjoySkin skinId = " + paramString1);
-    }
-    a(108, localBundle);
-  }
-  
-  public void e(wiu paramwiu)
-  {
-    a(126, new Bundle(), paramwiu);
-  }
-  
-  public void f()
-  {
-    a(27, new Bundle());
-  }
-  
-  public void f(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("from", paramString);
-    a(142, localBundle);
-  }
-  
-  public void f(String paramString1, String paramString2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopCode", paramString1);
-    localBundle.putString("uin", paramString2);
-    a(97, localBundle);
-  }
-  
-  public void f(wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwiu));
-    a(52, localBundle);
-  }
-  
-  public void g()
-  {
-    a(92, null);
-  }
-  
-  public void g(String paramString1, String paramString2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopCode", paramString1);
-    localBundle.putString("uin", paramString2);
-    a(100, localBundle);
-  }
-  
-  public void g(wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwiu));
-    a(80, localBundle);
-  }
-  
-  public void h()
-  {
-    this.jdField_a_of_type_Wiu = null;
-  }
-  
-  public void h(String paramString1, String paramString2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putString("type", paramString2);
-    a(115, localBundle);
-  }
-  
-  public void h(wiu paramwiu)
-  {
-    this.jdField_a_of_type_Wiu = paramwiu;
-  }
-  
-  public void i()
-  {
-    a(89, null);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("uin", paramString1);
-    localBundle.putString("nick", paramString2);
-    a(141, localBundle);
-  }
-  
-  public void i(wiu paramwiu)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwiu));
-    if (QLog.isColorLevel()) {
-      QLog.d("Readinjoy", 2, "TroopMemberApiClient getReadinjoyCurrentSkin");
-    }
-    a(110, localBundle);
-  }
-  
-  public void j()
-  {
-    a(104, new Bundle());
-  }
-  
-  public void j(wiu paramwiu)
-  {
-    a(139, new Bundle(), paramwiu);
-    AdReporterForAnalysis.reportForAPIInvoked(BaseApplicationImpl.getApplication(), true, "com.tencent.biz.troop.TroopMemberApiClient#gdtGetCurrentUserInfo(Callback)", "");
-  }
-  
-  public void k()
-  {
-    a(122, new Bundle());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wis
  * JD-Core Version:    0.7.0.1
  */

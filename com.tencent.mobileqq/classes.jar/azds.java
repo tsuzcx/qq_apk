@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.activity.contacts.view.IndexBar;
-import com.tencent.widget.AbsListView;
-import java.util.Arrays;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import com.tencent.widget.AdapterView;
 
-class azds
-  implements begh
+public class azds
+  implements bfpe
 {
-  azds(azdr paramazdr) {}
+  public azds(MediaPreviewActivity paramMediaPreviewActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(AdapterView<?> paramAdapterView) {}
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramInt1 = Arrays.binarySearch(azdr.a(this.a), paramInt1);
-    if ((paramInt1 >= 0) && (azdr.a(this.a).a != null)) {
-      azdr.a(this.a).a.setChooseIndex(paramInt1);
+    if (paramView == null) {
+      return;
     }
+    if (this.a.jdField_a_of_type_Bant != null) {
+      this.a.jdField_a_of_type_Bant.a(false, paramInt);
+    }
+    this.a.jdField_a_of_type_Int = paramInt;
+    paramAdapterView = this.a.jdField_a_of_type_Int + 1 + "/" + this.a.b;
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramAdapterView);
   }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

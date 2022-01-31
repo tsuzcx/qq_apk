@@ -1,8 +1,28 @@
-public abstract interface ubr
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+
+public class ubr
+  extends ubv<StoryVideoItem>
 {
-  public abstract void a();
+  public ubr(VideoViewVideoHolder paramVideoViewVideoHolder)
+  {
+    super(paramVideoViewVideoHolder, null);
+  }
   
-  public abstract void b();
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    veg.d(this.a.a, "VideoStartSegment, error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
+  }
 }
 
 

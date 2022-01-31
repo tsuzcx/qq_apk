@@ -1,23 +1,23 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.widget.ListView;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bbib
-  extends ListView
+class bbib
+  implements View.OnClickListener
 {
-  public bbib(DraggableGridView paramDraggableGridView, Context paramContext)
-  {
-    super(paramContext);
-  }
+  bbib(bbhz parambbhz, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void setOverScrollMode(int paramInt)
+  public void onClick(View paramView)
   {
-    super.setOverScrollMode(2);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bbhz, 1);
+    }
+    this.jdField_a_of_type_Bbhz.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbib
  * JD-Core Version:    0.7.0.1
  */

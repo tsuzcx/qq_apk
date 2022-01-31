@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.1.1;
 
-final class apcr
-  implements apca
+public class apcr
+  implements bgqg
 {
-  apcr(FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface) {}
+  apcr(apcq paramapcq) {}
   
-  public void a()
+  public boolean a(int paramInt, Bundle paramBundle)
   {
-    apck.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    new Handler(Looper.getMainLooper()).post(new QfavFilePreviewController.1.1(this, paramBundle));
+    return true;
   }
-  
-  public void b() {}
 }
 
 

@@ -1,16 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
 public class acnb
 {
   public int a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView b;
+  public long a;
+  
+  public acnb()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acnb
  * JD-Core Version:    0.7.0.1
  */

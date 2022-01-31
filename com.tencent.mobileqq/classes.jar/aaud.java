@@ -1,107 +1,46 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ContactCard;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaud
-  implements begw
+  implements bfoq
 {
-  public aaud(FriendProfileCardActivity paramFriendProfileCardActivity, PhoneContactManagerImp paramPhoneContactManagerImp, boolean paramBoolean, begr parambegr) {}
+  public aaud(ChatSettingForTroop paramChatSettingForTroop, int paramInt, bfol parambfol) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    boolean bool = true;
+    int i = 3;
     switch (paramInt)
     {
+    default: 
+      i = 0;
+      paramInt = -1;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Begr.e();
-      return;
-      Object localObject;
-      if (badq.d(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getApplication().getApplicationContext()))
-      {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ArrayOfJavaLangString[3];
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          paramView = (View)localObject;
-          if (!((String)localObject).equals(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataContactCard.mobileNo)) {}
-        }
-        else
-        {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.k;
-        }
-        if (!TextUtils.isEmpty(paramView))
-        {
-          localObject = paramView;
-          if (!paramView.equals(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataContactCard.mobileNo)) {}
-        }
-        else
-        {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataContactCard.nickName;
-        }
-        localObject = apmn.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataContactCard.bindQQ);
-        paramView = new Bundle();
-        paramView.putString("uin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataContactCard.mobileNo);
-        paramView.putInt("uintype", 1006);
-        paramView.putInt("forward_type", 20);
-        paramView.putInt("structmsg_service_id", ((AbsShareMsg)localObject).mMsgServiceID);
-        paramView.putByteArray("stuctmsg_bytes", ((AbsShareMsg)localObject).getBytes());
-        paramView.putBoolean("k_dataline", false);
-        paramView.putInt("pa_type", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int);
-        localObject = new Intent();
-        ((Intent)localObject).putExtras(paramView);
-        aphp.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, (Intent)localObject, 21);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 53) {
-          awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8007016", "0X8007016", 0, 0, "", "", "", "");
-        } else {
-          awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8007168", "0X8007168", 0, 0, "", "", "", "");
-        }
+      if (paramInt != this.jdField_a_of_type_Int) {
+        ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, paramInt);
       }
-      else
+      try
       {
-        bbmy.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, 1, ajjy.a(2131639127), 1000).a();
+        this.jdField_a_of_type_Bfol.dismiss();
+        bbbb.a("Grp_msg", "grpData_admin", "Close_setmsg", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin, bbbb.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a), String.valueOf(i) });
+        return;
+        i = 3;
+        paramInt = 4;
         continue;
-        if (badq.d(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getApplication().getApplicationContext()))
-        {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp;
-          localObject = FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-          label472:
-          QQAppInterface localQQAppInterface;
-          if (!this.jdField_a_of_type_Boolean)
-          {
-            paramView.a((String)localObject, bool);
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.A();
-            localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app;
-            if (!this.jdField_a_of_type_Boolean) {
-              break label548;
-            }
-            paramView = "0X800603E";
-            label505:
-            if (!this.jdField_a_of_type_Boolean) {
-              break label554;
-            }
-          }
-          label548:
-          label554:
-          for (localObject = "0X800603E";; localObject = "0X800603D")
-          {
-            awqx.b(localQQAppInterface, "CliOper", "", "", paramView, (String)localObject, 0, 0, "", "", "", "");
-            break;
-            bool = false;
-            break label472;
-            paramView = "0X800603D";
-            break label505;
-          }
-        }
-        bbmy.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, 1, ajjy.a(2131639112), 1000).a();
+        i = 1;
+        paramInt = 2;
+        continue;
+        int j = 2;
+        paramInt = i;
+        i = j;
+      }
+      catch (Exception paramView)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.i("Q.chatopttroop", 2, paramView.toString());
       }
     }
   }

@@ -1,31 +1,60 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.qphone.base.util.BaseApplication;
+import protocol.KQQConfig.UpgradeInfo;
 
-public final class aaex
-  implements DialogInterface.OnCancelListener
+public class aaex
+  implements View.OnClickListener
 {
-  public aaex(aagn paramaagn, int paramInt, aagm paramaagm) {}
+  public aaex(AboutActivity paramAboutActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Aagn.a)
+    int i = 2;
+    if (bdlc.a().b())
     {
-      if (this.jdField_a_of_type_Int != 2) {
-        break label59;
+      if (bbiy.a()) {
+        i = 1;
       }
-      awqx.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "3", "", "", "");
+      axqw.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
+      paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
+      paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
+      paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
+      paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
+      paramView.putExtra("activity_type", 4096);
+      if (BaseActivity.sTopActivity != null) {
+        BaseActivity.sTopActivity.startActivity(paramView);
+      }
     }
-    for (;;)
+    do
     {
-      if (this.jdField_a_of_type_Aagm != null) {
-        this.jdField_a_of_type_Aagm.a();
-      }
+      do
+      {
+        return;
+        if ((AboutActivity.a(this.a).jdField_a_of_type_Akvf == null) || (!bbiy.a(AboutActivity.a(this.a).jdField_a_of_type_Akvf.a))) {
+          break;
+        }
+        if (bbiy.a()) {
+          i = 1;
+        }
+        axqw.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
+        paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
+        paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
+        paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
+        paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
+        paramView.putExtra("activity_type", 4096);
+      } while (BaseActivity.sTopActivity == null);
+      BaseActivity.sTopActivity.startActivity(paramView);
       return;
-      label59:
-      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
-        awqx.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "3", "", "", "");
-      }
-    }
+    } while ((AboutActivity.a(this.a) == null) || (AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null));
+    axqw.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", akva.a(), "");
+    UpgradeDetailActivity.a(this.a, akva.a().a(), false, false, true);
   }
 }
 

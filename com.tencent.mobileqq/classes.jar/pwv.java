@@ -1,35 +1,16 @@
-class pwv
-  implements pwp
+import android.text.TextPaint;
+import android.text.style.CharacterStyle;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
+
+public class pwv
+  extends CharacterStyle
 {
-  pwv(pwu parampwu) {}
+  public pwv(ComponentContentUgcOriginalHeader paramComponentContentUgcOriginalHeader) {}
   
-  public void a() {}
-  
-  public void a(float paramFloat) {}
-  
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      pwu.a(this.a, paramString1);
-      pwu.b(this.a, paramString2);
-      pwu.a(this.a, 3);
-      return;
-    case 1001: 
-      pwu.b(this.a, 10);
-      return;
-    case 1002: 
-      pwu.b(this.a, 9);
-      return;
-    case 1003: 
-      pwu.b(this.a, 11);
-      return;
-    }
-    pwu.b(this.a, 13);
-    pwu.c(this.a, 1002);
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(actn.a(2, 14, this.a.getResources()));
   }
 }
 

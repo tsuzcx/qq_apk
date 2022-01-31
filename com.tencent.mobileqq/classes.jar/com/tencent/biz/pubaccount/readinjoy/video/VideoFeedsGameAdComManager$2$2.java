@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import ajjy;
-import bbmy;
+import ajyc;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class VideoFeedsGameAdComManager$2$2
@@ -11,7 +11,7 @@ class VideoFeedsGameAdComManager$2$2
   
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.getApplication(), 1, ajjy.a(2131650438), 0).a();
+    bcpw.a(BaseApplicationImpl.getApplication(), 1, ajyc.a(2131716229), 0).a();
   }
 }
 

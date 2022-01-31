@@ -1,22 +1,26 @@
-import android.os.Bundle;
-import com.tencent.widget.soload.config.SoConfig.SoInfo;
-import eipc.EIPCResult;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class agpz
-  implements beso
+final class agpz
+  implements DialogInterface.OnClickListener
 {
-  agpz(agpt paramagpt, int paramInt) {}
+  agpz(Activity paramActivity, String paramString1, String paramString2) {}
   
-  public void a(SoConfig.SoInfo paramSoInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("res", paramSoInfo);
-    this.jdField_a_of_type_Agpt.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    agpv.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agpz
  * JD-Core Version:    0.7.0.1
  */

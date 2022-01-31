@@ -1,54 +1,46 @@
-import android.view.MotionEvent;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.ConfigClearableEditText;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
 
-public class bbhd
-  implements View.OnTouchListener
+class bbhd
+  implements View.OnClickListener
 {
-  public bbhd(ConfigClearableEditText paramConfigClearableEditText) {}
+  bbhd(bbhb parambbhb, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    paramView = this.a;
-    int i;
-    if (paramMotionEvent.getX() > ConfigClearableEditText.a(this.a))
+    this.jdField_a_of_type_Bbhb.hideSoftInputFromWindow();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
     {
-      i = 1;
-      if (ConfigClearableEditText.a(this.a) != null)
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bbhb, 0);
+      if (this.jdField_a_of_type_Bbhb.c)
       {
-        if ((i == 0) || (paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-          break label102;
+        if (!this.jdField_a_of_type_Bbhb.jdField_a_of_type_Boolean) {
+          break label93;
         }
-        ConfigClearableEditText.a(this.a).b(true);
-      }
-      label66:
-      if ((paramView.getCompoundDrawables()[2] != null) || ((ConfigClearableEditText.a(this.a)) && (ConfigClearableEditText.a(this.a) != null))) {
-        break label118;
+        this.jdField_a_of_type_Bbhb.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bbhb.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
       }
     }
-    label102:
-    label118:
-    do
+    for (;;)
     {
-      do
+      this.jdField_a_of_type_Bbhb.c = false;
+      label93:
+      try
       {
-        return false;
-        i = 0;
-        break;
-        ConfigClearableEditText.a(this.a).b(false);
-        break label66;
-      } while ((paramMotionEvent.getAction() != 1) || (i == 0));
-      this.a.setText("");
-      this.a.setClearButtonVisible(false);
-    } while (this.a.a == null);
-    this.a.a.a();
-    return false;
+        if (this.jdField_a_of_type_Bbhb.isShowing()) {
+          this.jdField_a_of_type_Bbhb.dismiss();
+        }
+        return;
+      }
+      catch (Exception paramView) {}
+      this.jdField_a_of_type_Bbhb.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bbhb.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbhd
  * JD-Core Version:    0.7.0.1
  */

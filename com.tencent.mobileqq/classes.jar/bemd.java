@@ -1,15 +1,11 @@
-import android.view.View;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView;
+import java.util.Queue;
 
 public abstract interface bemd
-{
-  public abstract void a();
-  
-  public abstract void a(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView, View paramView, int paramInt);
-}
+  extends Queue
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bemd
  * JD-Core Version:    0.7.0.1
  */

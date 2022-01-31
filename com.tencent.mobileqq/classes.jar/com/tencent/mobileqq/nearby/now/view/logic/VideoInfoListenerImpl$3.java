@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.nearby.now.view.logic;
 
-import asos;
+import atkw;
 import com.tencent.mobileqq.nearby.now.view.widget.HorizontalBallLoadingView;
 
 public class VideoInfoListenerImpl$3
   implements Runnable
 {
-  public VideoInfoListenerImpl$3(asos paramasos) {}
+  public VideoInfoListenerImpl$3(atkw paramatkw) {}
   
   public void run()
   {
-    if (asos.a(this.this$0) != null) {
-      asos.a(this.this$0).setVisibility(0);
+    if (atkw.a(this.this$0) != null) {
+      atkw.a(this.this$0).setVisibility(0);
     }
   }
 }

@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
 import java.util.Iterator;
 import java.util.List;
-import oov;
+import ozw;
 
 public class ArticleReadInfoModule$2
   implements Runnable
 {
-  public ArticleReadInfoModule$2(oov paramoov, List paramList) {}
+  public ArticleReadInfoModule$2(ozw paramozw, List paramList) {}
   
   public void run()
   {

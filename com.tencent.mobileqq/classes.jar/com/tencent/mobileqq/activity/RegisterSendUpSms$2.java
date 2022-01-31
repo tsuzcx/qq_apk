@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ajjy;
+import ajyc;
 import android.os.Handler;
 import android.widget.Button;
 
@@ -13,7 +13,7 @@ class RegisterSendUpSms$2
   {
     if (RegisterSendUpSms.a(this.this$0) == 1)
     {
-      RegisterSendUpSms.a(this.this$0).setText(ajjy.a(2131647545));
+      RegisterSendUpSms.a(this.this$0).setText(ajyc.a(2131713333));
       RegisterSendUpSms.a(this.this$0).setEnabled(true);
       RegisterSendUpSms.a(this.this$0).setClickable(true);
       RegisterSendUpSms.a(this.this$0, 0);
@@ -21,7 +21,7 @@ class RegisterSendUpSms$2
       return;
     }
     RegisterSendUpSms.b(this.this$0);
-    RegisterSendUpSms.a(this.this$0).setText(ajjy.a(2131647543) + "(" + RegisterSendUpSms.a(this.this$0) + "s)");
+    RegisterSendUpSms.a(this.this$0).setText(ajyc.a(2131713331) + "(" + RegisterSendUpSms.a(this.this$0) + "s)");
     this.this$0.a.postDelayed(this, 1000L);
   }
 }

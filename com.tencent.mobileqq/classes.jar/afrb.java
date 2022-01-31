@@ -1,14 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
 
-class afrb
-  implements DialogInterface.OnClickListener
+public class afrb
+  extends aume
 {
-  afrb(afqi paramafqi) {}
+  private afrb(FriendFragment paramFriendFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    FriendFragment.a(this.a);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.earlydownload;
 
-import amyp;
 import android.content.Context;
 import android.content.Intent;
+import anox;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.AppRuntime;
 import mqq.app.QQBroadcastReceiver;
@@ -16,7 +16,7 @@ public class EarlyDownloadReceiver
     {
       paramAppRuntime = (QQAppInterface)paramAppRuntime;
       if (paramAppRuntime.isLogin()) {
-        ((amyp)paramAppRuntime.getManager(77)).a(paramIntent);
+        ((anox)paramAppRuntime.getManager(77)).a(paramIntent);
       }
     }
     else

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import awrm;
+import axrk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.MobileQQ;
 
@@ -16,7 +16,7 @@ class JumpActivity$4
   {
     String str = this.jdField_a_of_type_AndroidContentIntent.getType();
     Uri localUri = this.jdField_a_of_type_AndroidContentIntent.getData();
-    awrm.a(this.this$0.app.getApplication().getApplicationContext(), this.this$0.app.getCurrentAccountUin(), "dl_open_via_qq");
+    axrk.a(this.this$0.app.getApplication().getApplicationContext(), this.this$0.app.getCurrentAccountUin(), "dl_open_via_qq");
     Intent localIntent = new Intent(this.this$0, ForwardRecentActivity.class);
     if ((str != null) && (str.startsWith("image"))) {}
     for (int i = 1;; i = 0)

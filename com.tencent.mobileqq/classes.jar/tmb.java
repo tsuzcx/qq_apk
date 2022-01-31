@@ -1,19 +1,34 @@
-import android.support.annotation.NonNull;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.MessageMicro;
 
-public abstract interface tmb
+public class tmb<REQ extends MessageMicro>
+  extends syv<tnz>
 {
-  public abstract void a();
+  public final Bundle a;
+  public final REQ a;
+  public final String a;
   
-  public abstract void a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
+  public tmb(String paramString, REQ paramREQ, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramREQ;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
   
-  public abstract void a(@NonNull ucw paramucw, ErrorMessage paramErrorMessage);
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
   
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public syq a(byte[] paramArrayOfByte)
+  {
+    return new tnz(paramArrayOfByte);
+  }
   
-  public abstract void b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
+  protected byte[] a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro.toByteArray();
+  }
 }
 
 

@@ -1,33 +1,33 @@
 package dov.com.tencent.mobileqq.activity.richmedia.state;
 
-import ahhj;
+import ahua;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import awij;
-import biyr;
-import bjao;
+import axhp;
+import bkpd;
+import bkra;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class RMVideoInitState$6
   implements Runnable
 {
-  public RMVideoInitState$6(bjao parambjao) {}
+  public RMVideoInitState$6(bkra parambkra) {}
   
   public void run()
   {
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
     boolean bool1 = localSharedPreferences.getBoolean("sv_has_reported_front_camera_compatibility", false);
     boolean bool2 = localSharedPreferences.getBoolean("sv_has_reported_back_camera_compatibility", false);
-    awij localawij = awij.a();
-    if ((!bool1) && (ahhj.a == 1))
+    axhp localaxhp = axhp.a();
+    if ((!bool1) && (ahua.a == 1))
     {
-      biyr.a(localawij.a(), "front");
+      bkpd.a(localaxhp.a(), "front");
       localSharedPreferences.edit().putBoolean("sv_has_reported_front_camera_compatibility", true).commit();
     }
-    while ((bool2) || (ahhj.a != 2)) {
+    while ((bool2) || (ahua.a != 2)) {
       return;
     }
-    biyr.a(localawij.a(), "back");
+    bkpd.a(localaxhp.a(), "back");
     localSharedPreferences.edit().putBoolean("sv_has_reported_back_camera_compatibility", true).commit();
   }
 }

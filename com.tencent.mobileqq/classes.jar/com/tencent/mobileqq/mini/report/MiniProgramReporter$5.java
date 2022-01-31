@@ -20,7 +20,7 @@ class MiniProgramReporter$5
         this.this$0.add(localSingleDcData);
       }
     }
-    MiniProgramReporter.access$300(this.this$0);
+    MiniProgramReporter.access$400(this.this$0);
   }
 }
 

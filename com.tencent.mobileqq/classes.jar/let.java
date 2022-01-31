@@ -1,70 +1,70 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
 
 public class let
 {
-  private static let a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
   
-  public static let a()
+  public int a()
   {
-    if (a != null) {
-      return a;
+    if (this.a == 1) {
+      return 2;
     }
-    try
-    {
-      a = new let();
-      let locallet = a;
-      return locallet;
+    if (this.a == 4) {
+      return 1;
     }
-    catch (Exception localException) {}
-    return null;
+    if (this.a == 2) {
+      return 4;
+    }
+    if (this.a == 8) {
+      return 3;
+    }
+    return 0;
   }
   
-  public float a()
+  public String a()
   {
-    try
+    lpd locallpd = new lpd('=', ';');
+    locallpd.a("s_path", this.jdField_b_of_type_JavaLangString);
+    if (a())
     {
-      float f1 = Float.parseFloat(kvz.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/videodenoiseratio", "15.0"));
-      float f2;
-      if (f1 <= 0.0D) {
-        f2 = 0.0F;
+      locallpd.a("i_fps", this.jdField_b_of_type_Int);
+      locallpd.a("i_bitrate", this.jdField_c_of_type_Int);
+      locallpd.a("s_outpath", this.d);
+      File localFile = new File(this.d);
+      if (localFile.exists()) {
+        localFile.delete();
       }
-      do
-      {
-        return f2;
-        f2 = f1;
-      } while (f1 < 30.0D);
-      return 30.0F;
     }
-    catch (Exception localException) {}
-    return 15.0F;
+    for (;;)
+    {
+      return locallpd.a();
+      locallpd.a("s_expMd5", this.jdField_c_of_type_JavaLangString);
+    }
   }
   
   public boolean a()
   {
-    return kvz.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/lowlightflag", 0) == 1;
-  }
-  
-  public boolean b()
-  {
-    boolean bool = false;
-    if (kvz.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/lowlightflag", 0) == -1) {
-      bool = true;
+    boolean bool2 = false;
+    boolean bool1;
+    if ((this.a == 2) || (this.a == 8)) {
+      bool1 = true;
     }
-    return bool;
-  }
-  
-  public boolean c()
-  {
-    return kvz.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/videodenoiseflag", 0) == 1;
-  }
-  
-  public boolean d()
-  {
-    boolean bool = false;
-    if (kvz.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/videodenoiseflag", 0) == -1) {
-      bool = true;
-    }
-    return bool;
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (this.a == 1);
+      bool1 = bool2;
+    } while (this.a != 4);
+    return false;
   }
 }
 

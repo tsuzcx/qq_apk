@@ -11,7 +11,7 @@ import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
 import com.tencent.mm.opensdk.modelmsg.WXMiniProgramObject;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.qphone.base.util.QLog;
-import vlc;
+import vxy;
 
 class WxShareHelperFromReadInjoy$1
   implements Runnable
@@ -40,7 +40,7 @@ class WxShareHelperFromReadInjoy$1
       j *= 4;
       if (this.c.startsWith("/pages/index/index?share=1&share_type=1"))
       {
-        localObject1 = vlc.a(vlc.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false, true), BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841220), true);
+        localObject1 = vxy.a(vxy.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false, true), BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841299), true);
         if (localObject1 != null)
         {
           i = ((Bitmap)localObject1).getWidth();
@@ -64,7 +64,7 @@ class WxShareHelperFromReadInjoy$1
       ((SendMessageToWX.Req)localObject1).scene = 0;
       WxShareHelperFromReadInjoy.a(this.this$0).sendReq((BaseReq)localObject1);
       return;
-      localObject1 = vlc.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false, true);
+      localObject1 = vxy.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false, true);
       break;
       if (QLog.isColorLevel()) {
         QLog.e("WxShareHelperFromReadInjoy", 2, "shareToMiniProgramWithPathAndId, error icon == null! title" + this.d + ", description = " + this.e + ", path = " + this.c + ", webPageUrl = " + this.jdField_a_of_type_JavaLangString + ", id = " + this.b);

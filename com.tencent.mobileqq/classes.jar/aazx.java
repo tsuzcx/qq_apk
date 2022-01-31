@@ -1,26 +1,65 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import java.util.Iterator;
+import java.util.List;
 
 public class aazx
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public aazx(JumpActivity paramJumpActivity) {}
+  public aazx(EditActivity paramEditActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (!this.a.isFinishing())
+    this.a.e();
+    if (this.a.jdField_a_of_type_Int == 105)
     {
-      this.a.finish();
-      QLog.i("JumpAction", 1, "JumpActivity has finished by broadcastReceiver.");
+      paramView = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText();
+      if (paramView != null)
+      {
+        paramView = paramView.toString().trim();
+        if (paramView.length() != 0) {
+          break label71;
+        }
+      }
+      label71:
+      anss localanss;
+      CustomEmotionData localCustomEmotionData;
+      do
+      {
+        bcpw.a(this.a, this.a.getString(2131692053), 0).a();
+        return;
+        Object localObject;
+        while (!((Iterator)localObject).hasNext())
+        {
+          do
+          {
+            if (EditActivity.a(this.a, paramView))
+            {
+              bcpw.a(this.a, this.a.getString(2131692054), 0).a();
+              return;
+            }
+            localObject = (ansr)this.a.app.getManager(149);
+            localanss = (anss)this.a.app.getManager(103);
+            localObject = ((ansr)localObject).a();
+          } while ((EditActivity.a(this.a) == -1) || (localObject == null));
+          localObject = ((List)localObject).iterator();
+        }
+        localCustomEmotionData = (CustomEmotionData)((Iterator)localObject).next();
+      } while (EditActivity.a(this.a) != localCustomEmotionData.emoId);
+      EditActivity.c(this.a);
+      localanss.a(localCustomEmotionData, paramView);
+      return;
     }
+    EditActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aazx
  * JD-Core Version:    0.7.0.1
  */

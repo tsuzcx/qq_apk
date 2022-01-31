@@ -1,20 +1,15 @@
-import android.text.TextUtils;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.view.View;
+import com.tencent.mobileqq.widget.ProfileCardVideoCoverShowView;
 
-class bcow
-  implements FilenameFilter
+public abstract interface bcow
 {
-  bcow(bcov parambcov) {}
+  public abstract void a(ProfileCardVideoCoverShowView paramProfileCardVideoCoverShowView);
   
-  public boolean accept(File paramFile, String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.endsWith(".so"));
-  }
+  public abstract void a(ProfileCardVideoCoverShowView paramProfileCardVideoCoverShowView, View paramView, bcox parambcox);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcow
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
 import android.os.Bundle;
-import bbcz;
+import bcfz;
 
 public class SwiftWebAccelerator$2
   implements Runnable
 {
-  public SwiftWebAccelerator$2(bbcz parambbcz, Bundle paramBundle) {}
+  public SwiftWebAccelerator$2(bcfz parambcfz, Bundle paramBundle) {}
   
   public void run()
   {

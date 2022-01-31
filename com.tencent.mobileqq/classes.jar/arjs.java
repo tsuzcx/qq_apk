@@ -1,26 +1,22 @@
-import android.widget.ImageButton;
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
+import java.util.concurrent.Callable;
 
 public class arjs
-  implements PopupWindow.OnDismissListener
+  implements Callable<areh>
 {
-  public arjs(MedalGuideView paramMedalGuideView) {}
+  public arjs(ODLoadingActivity paramODLoadingActivity, String paramString) {}
   
-  public void onDismiss()
+  public areh a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "onDismiss  endOfAnim: %s", new Object[] { Boolean.valueOf(this.a.d) }));
-    }
-    this.a.d = true;
-    this.a.a.performClick();
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    return areq.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoOdODLoadingActivity, this.jdField_a_of_type_JavaLangString, localQQAppInterface.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arjs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,32 @@
-class bhda
-  implements autj
+import java.util.LinkedList;
+import java.util.List;
+
+public class bhda
 {
-  bhda(bhcw parambhcw) {}
+  private final Object jdField_a_of_type_JavaLangObject;
+  private final List<Integer> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  private Object b;
   
-  public void a()
+  public bhda(bhda parambhda, Object paramObject)
   {
-    bgys.a().i();
+    this.jdField_a_of_type_JavaUtilList = parambhda.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Boolean = parambhda.jdField_a_of_type_Boolean;
+    this.b = this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  private bhda(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaUtilList = new LinkedList();
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Boolean = true;
+    this.b = this.jdField_a_of_type_JavaLangObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhda
  * JD-Core Version:    0.7.0.1
  */

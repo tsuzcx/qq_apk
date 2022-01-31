@@ -7,14 +7,14 @@ import android.content.res.Resources;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bfvv;
-import bfvw;
+import bheg;
+import bheh;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class BusinessAlbumInfo
   extends BaseBusinessAlbumInfo
 {
-  public static final Parcelable.Creator<BusinessAlbumInfo> CREATOR = new bfvv();
+  public static final Parcelable.Creator<BusinessAlbumInfo> CREATOR = new bheg();
   
   private BusinessAlbumInfo(Parcel paramParcel)
   {
@@ -154,17 +154,17 @@ public class BusinessAlbumInfo
     while (i == 0)
     {
       return null;
-      i = 2131652122;
+      i = 2131717938;
       continue;
-      i = 2131652123;
+      i = 2131717939;
       continue;
-      i = 2131651897;
+      i = 2131717689;
       continue;
-      i = 2131651895;
+      i = 2131717687;
       continue;
-      i = 2131651900;
+      i = 2131717692;
       continue;
-      i = 2131651896;
+      i = 2131717688;
     }
     return BaseApplication.getContext().getResources().getString(i);
   }
@@ -185,7 +185,7 @@ public class BusinessAlbumInfo
   
   public String c()
   {
-    return bfvw.a(this.jdField_b_of_type_Int);
+    return bheh.a(this.jdField_b_of_type_Int);
   }
   
   public int describeContents()

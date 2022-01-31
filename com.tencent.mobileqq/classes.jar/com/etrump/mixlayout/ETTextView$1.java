@@ -1,10 +1,10 @@
 package com.etrump.mixlayout;
 
 import android.view.View;
-import axkm;
-import bbgc;
+import aykr;
+import bcjc;
 import com.tencent.qphone.base.util.QLog;
-import fh;
+import ha;
 
 public class ETTextView$1
   implements Runnable
@@ -13,27 +13,27 @@ public class ETTextView$1
   
   public void run()
   {
-    if (this.this$0.getTag(2131302152) != null) {}
-    for (boolean bool = ((Boolean)this.this$0.getTag(2131302152)).booleanValue();; bool = false)
+    if (this.this$0.getTag(2131367770) != null) {}
+    for (boolean bool = ((Boolean)this.this$0.getTag(2131367770)).booleanValue();; bool = false)
     {
-      if ((this.this$0.g) && (this.this$0.jdField_a_of_type_Bbgc != null) && (!bool))
+      if ((this.this$0.isSingleClick) && (this.this$0.onSingleClick != null) && (!bool))
       {
-        if (this.this$0.d())
+        if (this.this$0.isUsingHYFont())
         {
-          Object localObject = this.this$0.jdField_a_of_type_Fh.a(this.this$0.d, this.this$0.e);
-          if ((localObject instanceof axkm))
+          Object localObject = this.this$0.mLayout.a(this.this$0.mEmojiX, this.this$0.mEmojiY);
+          if ((localObject instanceof aykr))
           {
-            localObject = (axkm)localObject;
-            this.this$0.b = ((axkm)localObject).e;
-            this.this$0.c = ((axkm)localObject).f;
+            localObject = (aykr)localObject;
+            this.this$0.mClickEpId = ((aykr)localObject).e;
+            this.this$0.mClickcEId = ((aykr)localObject).f;
             if (QLog.isColorLevel()) {
-              QLog.d("ETTextView", 2, "click span: " + this.this$0.b);
+              QLog.d("ETTextView", 2, "click span: " + this.this$0.mClickEpId);
             }
           }
         }
-        this.this$0.jdField_a_of_type_Bbgc.a(this.this$0);
+        this.this$0.onSingleClick.a(this.this$0);
       }
-      this.this$0.setTag(2131302152, Boolean.valueOf(false));
+      this.this$0.setTag(2131367770, Boolean.valueOf(false));
       return;
     }
   }

@@ -1,11 +1,21 @@
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import java.lang.ref.WeakReference;
+
 class qjb
-  implements qpq
+  implements MediaPlayer.OnCompletionListener
 {
-  qjb(qiy paramqiy) {}
+  qjb(qiz paramqiz) {}
   
-  public void a()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.a.e();
+    qiz.a(this.a).a = false;
+    paramMediaPlayer = (qjc)qiz.a(this.a).get();
+    if (paramMediaPlayer != null)
+    {
+      paramMediaPlayer.b(qiz.a(this.a));
+      this.a.a(false, "ugc voice play");
+    }
   }
 }
 

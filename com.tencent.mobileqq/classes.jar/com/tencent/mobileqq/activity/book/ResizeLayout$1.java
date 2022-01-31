@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.book;
 
-import aerc;
+import afby;
 
 class ResizeLayout$1
   implements Runnable

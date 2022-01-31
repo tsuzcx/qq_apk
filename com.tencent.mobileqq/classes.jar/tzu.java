@@ -1,17 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class tzu
-  implements View.OnClickListener
+public abstract interface tzu
 {
-  tzu(tzt paramtzt, String paramString) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Tzt.jdField_a_of_type_Tzn != null) {
-      this.jdField_a_of_type_Tzt.jdField_a_of_type_Tzn.a(null, 0, this.jdField_a_of_type_Tzt.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

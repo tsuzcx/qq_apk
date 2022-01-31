@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
 
-class absf
-  implements axle
+public final class absf
+  implements Parcelable.Creator<ProfileActivity.CardContactInfo>
 {
-  absf(abse paramabse) {}
-  
-  public void onCancel() {}
-  
-  public void onConfirm()
+  public ProfileActivity.CardContactInfo a(Parcel paramParcel)
   {
-    abry.a(this.a.jdField_a_of_type_Absb.a).b();
-    absb.a(this.a.jdField_a_of_type_Absb, this.a.jdField_a_of_type_Int);
+    ProfileActivity.CardContactInfo localCardContactInfo = new ProfileActivity.CardContactInfo(null);
+    localCardContactInfo.a = paramParcel.readString();
+    localCardContactInfo.c = paramParcel.readString();
+    localCardContactInfo.b = paramParcel.readString();
+    return localCardContactInfo;
+  }
+  
+  public ProfileActivity.CardContactInfo[] a(int paramInt)
+  {
+    return new ProfileActivity.CardContactInfo[paramInt];
   }
 }
 

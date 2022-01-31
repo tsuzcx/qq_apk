@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import amtn;
-import amto;
 import android.content.Context;
 import android.text.TextUtils;
-import bfpk;
-import bfpm;
+import anju;
+import anjv;
+import bgxr;
+import bgxt;
 import com.tencent.common.app.BaseApplicationImpl;
 import cooperation.qzone.statistic.StatisticCollector;
 import cooperation.qzone.statistic.access.WnsKeys;
@@ -18,27 +18,27 @@ import mqq.app.Servlet;
 public class QzoneCommonIntent
   extends NewIntent
 {
-  static amto defaultProcessor = new amtn();
-  private amto processor;
-  private bfpm request;
+  static anjv defaultProcessor = new anju();
+  private anjv processor;
+  private bgxt request;
   
   public QzoneCommonIntent(Context paramContext, Class<? extends Servlet> paramClass)
   {
     super(paramContext, paramClass);
   }
   
-  private static void prepareReport(bfpm parambfpm, int paramInt, String paramString)
+  private static void prepareReport(bgxt parambgxt, int paramInt, String paramString)
   {
     StatisticCollector localStatisticCollector = StatisticCollector.getInstance();
     Statistic localStatistic = localStatisticCollector.getStatistic();
     localStatistic.setValue(WnsKeys.AppId, Integer.valueOf(localStatisticCollector.getAppid()));
     localStatistic.setValue(WnsKeys.ReleaseVersion, localStatisticCollector.getReleaseVersion());
-    localStatistic.setValue(WnsKeys.CommandId, parambfpm.getCmdString());
+    localStatistic.setValue(WnsKeys.CommandId, parambgxt.getCmdString());
     localStatistic.setValue(WnsKeys.APN, NetworkState.getAPN());
     localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt));
     localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()));
-    localStatistic.setValue(WnsKeys.Qua, bfpk.a());
-    localStatistic.setValue(WnsKeys.Build, "4370");
+    localStatistic.setValue(WnsKeys.Qua, bgxr.a());
+    localStatistic.setValue(WnsKeys.Build, "4440");
     if ((paramInt != 0) && (!TextUtils.isEmpty(paramString)))
     {
       localStatistic.setValue(WnsKeys.Detail, paramString);
@@ -55,7 +55,7 @@ public class QzoneCommonIntent
     return (paramInt == 0) || ((Math.abs(paramInt) <= 19999) && (Math.abs(paramInt) >= 19000));
   }
   
-  public amto getProcessor()
+  public anjv getProcessor()
   {
     if (this.processor == null) {
       return defaultProcessor;
@@ -63,14 +63,14 @@ public class QzoneCommonIntent
     return this.processor;
   }
   
-  public bfpm getRequest()
+  public bgxt getRequest()
   {
     return this.request;
   }
   
-  public void setRequest(bfpm parambfpm)
+  public void setRequest(bgxt parambgxt)
   {
-    this.request = parambfpm;
+    this.request = parambgxt;
   }
 }
 

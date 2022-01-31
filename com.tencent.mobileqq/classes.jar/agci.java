@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import android.os.Bundle;
 
-public class agci
-  implements DialogInterface.OnClickListener
+class agci
+  extends atzp
 {
-  public agci(PhotoPreviewActivity paramPhotoPreviewActivity, Runnable paramRunnable) {}
+  agci(agch paramagch) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    if ((paramInt == 0) && (paramBoolean == true)) {
+      agch.a(this.a);
+    }
   }
 }
 

@@ -1,33 +1,59 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class rwk
-  implements URLDrawable.URLDrawableListener
+public class rwk
+  implements saf
 {
-  rwk(rwi paramrwi, String paramString, ImageView paramImageView) {}
+  public rwk(ViolaFragment paramViolaFragment) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a()
   {
-    sai.c("813", "onLoadCanceled - " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841183);
+    this.a.a.b();
+    this.a.a.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "initViola success!");
+    }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(int paramInt)
   {
-    sai.d("813", "onLoadFialed - " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841183);
+    this.a.a.b();
+    this.a.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.e("ViolaFragment", 2, "initViola error,error code=" + paramInt);
+    }
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
   {
-    sai.a("813", "onLoadProgressed - " + this.jdField_a_of_type_JavaLangString);
+    if ((this.a.a.b()) && (paramBoolean))
+    {
+      if (Math.abs(paramInt1) < this.a.a.a() / 2) {
+        break label79;
+      }
+      if (!ViolaFragment.a(this.a))
+      {
+        this.a.a(Boolean.valueOf(false));
+        ahir.a(this.a.getActivity(), true);
+        ViolaFragment.a(this.a, true);
+      }
+    }
+    label79:
+    while (!ViolaFragment.a(this.a)) {
+      return;
+    }
+    this.a.a(Boolean.valueOf(true));
+    ahir.a(this.a.getActivity(), false);
+    ViolaFragment.a(this.a, false);
   }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a(String paramString, int paramInt) {}
+  
+  public void b(int paramInt)
   {
-    rwi.a(this.jdField_a_of_type_Rwi, paramURLDrawable, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidWidgetImageView);
-    rxx.b(3);
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "initViola process,process code=" + paramInt);
+    }
   }
 }
 

@@ -1,11 +1,10 @@
-import java.util.List;
-import javax.annotation.Nonnull;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 
 public abstract interface vih
 {
-  public abstract void a(int paramInt, @Nonnull List<vik> paramList, boolean paramBoolean);
+  public abstract void a();
   
-  public abstract void b(int paramInt, @Nonnull List<vik> paramList, boolean paramBoolean);
+  public abstract void a(TroopBarPOI paramTroopBarPOI);
 }
 
 

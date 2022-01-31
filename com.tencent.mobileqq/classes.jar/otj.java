@@ -1,33 +1,39 @@
+import android.util.Pair;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class otj
+class otj
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  public long a;
+  public ArrayList<Pair<BaseArticleInfo, Float>> a;
+  public long b;
+  
+  private otj(ota paramota)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    otl.v(paramBaseArticleInfo, localJSONObject1);
-    localJSONObject1.put("id_content_wrapper", new JSONObject());
-    localJSONObject1.put("id_article_wrapper", new JSONObject());
-    localJSONObject1.put("id_summary_wrapper", new JSONObject());
-    localJSONObject1.put("id_info_wrapper", new JSONObject());
-    otl.b(paramBaseArticleInfo, localJSONObject1);
-    JSONObject localJSONObject2 = new JSONObject();
-    localJSONObject2.put("summary_text", ajjy.a(2131647098));
-    localJSONObject1.put("id_summary", localJSONObject2);
-    localJSONObject1.put("id_image_content", new JSONObject());
-    localJSONObject2 = new JSONObject();
-    localJSONObject2.put("article_small_imge_url", paramBaseArticleInfo.mSinglePicture.getFile());
-    localJSONObject1.put("id_article_small_imge", localJSONObject2);
-    otl.a(paramBaseArticleInfo, localJSONObject1, true);
-    otl.e(paramBaseArticleInfo, localJSONObject1);
-    otl.m(paramBaseArticleInfo, localJSONObject1);
-    otl.B(paramBaseArticleInfo, localJSONObject1);
-    otl.C(paramBaseArticleInfo, localJSONObject1);
-    otl.b(localJSONObject1);
-    localJSONObject1.put("style_ID", "ReadInjoy_topic_recommend_pgc_small_cell");
-    return localJSONObject1;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public ArrayList<Long> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(Long.valueOf(((BaseArticleInfo)((Pair)localIterator.next()).first).mArticleID));
+    }
+    return localArrayList;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("screenInfo : \n");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      Pair localPair = (Pair)localIterator.next();
+      localStringBuilder.append("【").append(((BaseArticleInfo)localPair.first).mTitle).append("】");
+    }
+    return localStringBuilder.toString();
   }
 }
 

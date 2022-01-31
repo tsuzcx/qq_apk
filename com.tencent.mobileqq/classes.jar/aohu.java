@@ -1,30 +1,27 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
+import android.support.v4.app.FragmentActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
 
-class aohu
-  implements DialogInterface.OnClickListener
+public class aohu
+  implements CompoundButton.OnCheckedChangeListener
 {
-  aohu(aoht paramaoht, long paramLong, UUID paramUUID, Activity paramActivity) {}
+  public aohu(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramInt)
+    ExtendFriendProfileEditFragment.a(this.a.getActivity().app, paramBoolean, new aohv(this, paramBoolean));
+    if (paramBoolean) {}
+    for (paramCompoundButton = "0X8009F0F";; paramCompoundButton = "0X8009F10")
     {
-    default: 
-      return;
-    case 0: 
-      TroopFileTransferManager.a(this.jdField_a_of_type_Aoht.a, this.jdField_a_of_type_Long).a(this.jdField_a_of_type_JavaUtilUUID);
+      axqw.b(this.a.getActivity().app, "dc00898", "", "", paramCompoundButton, paramCompoundButton, 0, 0, "", "", "", "");
       return;
     }
-    new aypd(this.jdField_a_of_type_Long, this.jdField_a_of_type_Aoht.a, this.jdField_a_of_type_AndroidAppActivity).b(this.jdField_a_of_type_JavaUtilUUID);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aohu
  * JD-Core Version:    0.7.0.1
  */

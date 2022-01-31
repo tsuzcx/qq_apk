@@ -4,7 +4,7 @@ import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import ndn;
+import noo;
 import org.json.JSONObject;
 
 public final class ReadInJoyUtils$17
@@ -29,7 +29,7 @@ public final class ReadInJoyUtils$17
             JSONObject localJSONObject = new JSONObject();
             localJSONObject.put("tab_status", 3);
             localJSONObject.put("reddot_num", ((KandianMsgBoxRedPntInfo)localObject).mMsgCnt);
-            ndn.a(null, "CliOper", "", "", "0X80091DC", "0X80091DC", 0, 0, "0", "", "", localJSONObject.toString(), false);
+            noo.a(null, "CliOper", "", "", "0X80091DC", "0X80091DC", 0, 0, "0", "", "", localJSONObject.toString(), false);
           }
         }
       }

@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
-public final class aonr
-  implements Parcelable.Creator<FileInfo>
+public class aonr
+  implements View.OnClickListener
 {
-  public FileInfo a(Parcel paramParcel)
-  {
-    return new FileInfo(paramParcel, null);
-  }
+  public aonr(FMActivity paramFMActivity) {}
   
-  public FileInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new FileInfo[paramInt];
+    FMActivity.c(this.a);
   }
 }
 

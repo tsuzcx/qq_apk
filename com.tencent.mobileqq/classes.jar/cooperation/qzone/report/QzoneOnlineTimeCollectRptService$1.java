@@ -1,6 +1,7 @@
 package cooperation.qzone.report;
 
-import bgcf;
+import axmt;
+import bhkr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -12,30 +13,35 @@ import mqq.os.MqqHandler;
 public class QzoneOnlineTimeCollectRptService$1
   implements Runnable
 {
-  public QzoneOnlineTimeCollectRptService$1(bgcf parambgcf) {}
+  public QzoneOnlineTimeCollectRptService$1(bhkr parambhkr) {}
   
   public void run()
   {
-    QLog.d("QzoneOnlineTimeCollectRptService", 1, "beginTrace isForeground:" + bgcf.a(this.this$0));
-    if (!bgcf.a(this.this$0)) {}
+    QLog.d("QzoneOnlineTimeCollectRptService", 1, "beginTrace isForeground:" + bhkr.a(this.this$0));
+    if (!bhkr.a(this.this$0)) {}
     try
     {
       this.this$0.a = Long.parseLong(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-      bgcf.a(this.this$0, QzoneConfig.getInstance().getConfig("ClientReport", "OnlineLocalSaveFrequency", 10000));
+      bhkr.a(this.this$0, QzoneConfig.getInstance().getConfig("ClientReport", "OnlineLocalSaveFrequency", 10000));
       this.this$0.b();
-      bgcf.a(this.this$0);
-      bgcf.a(this.this$0, true);
-      LocalMultiProcConfig.putBool("key_sp_qzone_isforeground", true);
-      if (bgcf.a(this.this$0) != 0) {
-        ThreadManager.getSubThreadHandler().post(bgcf.a(this.this$0));
+      if (!axmt.c())
+      {
+        bhkr.a(this.this$0);
+        bhkr.a(this.this$0, true);
+        LocalMultiProcConfig.putBool("key_sp_qzone_isforeground", true);
+        if (bhkr.a(this.this$0) != 0) {
+          ThreadManager.getSubThreadHandler().post(bhkr.a(this.this$0));
+        }
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
         QLog.e("QzoneOnlineTimeCollectRptService", 2, "beginTrace:" + localException.toString());
+        continue;
+        QLog.w("QzoneOnlineTimeCollectRptService", 1, "qzone is SimpleUI not to get updateTime");
       }
     }
   }

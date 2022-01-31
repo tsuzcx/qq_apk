@@ -1,18 +1,16 @@
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-public class acco
-  implements View.OnClickListener
+class acco
+  extends AccessibilityDelegateCompat
 {
-  public acco(TroopTransferActivity paramTroopTransferActivity) {}
+  acco(accn paramaccn) {}
   
-  public void onClick(View paramView)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
-    this.a.finish();
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramAccessibilityNodeInfoCompat.setSelected(true);
   }
 }
 

@@ -1,35 +1,22 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.map.lib.basemap.data.GeoPoint;
-import com.tencent.mobileqq.troop.widget.AutoLocationMapView;
-import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.BitmapDescriptorFactory;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import com.tencent.tencentmap.mapsdk.maps.model.Marker;
-import com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.TextView;
 
-public class azlw
-  extends Handler
+class azlw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public azlw(AutoLocationMapView paramAutoLocationMapView) {}
+  azlw(azlt paramazlt, azkf paramazkf) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    GeoPoint localGeoPoint = (GeoPoint)paramMessage.obj;
-    this.a.getMap().clear();
-    if (paramMessage.arg1 == 0)
-    {
-      this.a.getMap().moveCamera(CameraUpdateFactory.newLatLng(new LatLng(localGeoPoint.getLatitudeE6() / 1000000.0D, localGeoPoint.getLongitudeE6() / 1000000.0D)));
-      this.a.getMap().moveCamera(CameraUpdateFactory.zoomTo(this.a.getMap().getMaxZoomLevel()));
-      Bitmap localBitmap = azvq.a(this.a.getContext().getResources(), 2130841879);
-      this.a.getMap().addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(localBitmap)).snippet("").position(new LatLng(localGeoPoint.getLatitudeE6() / 1000000.0D, localGeoPoint.getLongitudeE6() / 1000000.0D))).showInfoWindow();
-    }
-    if (this.a.a != null) {
-      this.a.a.a(paramMessage.arg1, localGeoPoint);
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    float f = 1.0F * (100 - i) / 100.0F;
+    this.jdField_a_of_type_Azkf.jdField_b_of_type_AndroidWidgetTextView.setAlpha(f);
+    f = this.jdField_a_of_type_Azkf.jdField_b_of_type_AndroidWidgetTextView.getHeight() / 2.0F * i / 100.0F;
+    this.jdField_a_of_type_Azkf.jdField_b_of_type_AndroidViewView.setTranslationY(f);
+    f = i * -180.0F / 100.0F;
+    this.jdField_a_of_type_Azkf.c.setRotation(f);
   }
 }
 

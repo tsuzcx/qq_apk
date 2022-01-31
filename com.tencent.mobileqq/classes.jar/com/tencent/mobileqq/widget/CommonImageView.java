@@ -5,14 +5,14 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import bbkd;
-import bbke;
+import bcnb;
+import bcnc;
 
 public class CommonImageView
   extends ImageView
-  implements bbke
+  implements bcnc
 {
-  private bbkd a;
+  private bcnb a;
   
   public CommonImageView(Context paramContext)
   {
@@ -59,15 +59,15 @@ public class CommonImageView
     super.onDraw(paramCanvas);
   }
   
-  public void setMosaicEffect(bbkd parambbkd)
+  public void setMosaicEffect(bcnb parambcnb)
   {
-    bbkd localbbkd = this.a;
-    if (localbbkd != null) {
-      localbbkd.a(null);
+    bcnb localbcnb = this.a;
+    if (localbcnb != null) {
+      localbcnb.a(null);
     }
-    this.a = parambbkd;
-    if (parambbkd != null) {
-      parambbkd.a(this);
+    this.a = parambcnb;
+    if (parambcnb != null) {
+      parambcnb.a(this);
     }
     invalidate();
   }

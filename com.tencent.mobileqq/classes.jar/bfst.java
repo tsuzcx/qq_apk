@@ -1,72 +1,39 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import java.io.File;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Rect;
 
-class bfst
-  implements ModuleDownloadListener
+public class bfst
 {
-  bfst(bfss parambfss) {}
+  private int jdField_a_of_type_Int;
+  private Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private int b;
+  private int c;
   
-  public void onDownloadCanceled(String paramString)
+  private bfst(Bitmap paramBitmap, int paramInt)
   {
-    bfss.b(false);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
+    if (paramBitmap != null)
+    {
+      this.b = paramBitmap.getScaledWidth(paramInt);
+      this.c = paramBitmap.getScaledHeight(paramInt);
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_AndroidGraphicsBitmap$Config = paramBitmap.getConfig();
+      return;
+    }
+    this.jdField_a_of_type_Int = 4;
   }
   
-  public void onDownloadFailed(String paramString)
+  private void a(Rect paramRect)
   {
-    bfss.b(false);
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("upload.so")) {
-      return;
-    }
-    bfss.b(false);
-    String str = bfss.a().getAbsolutePath();
-    QLog.d("UploadEnv", 1, "upload so download success : " + str);
-    paramString = QzoneModuleManager.getInstance().getModuleFilePath(paramString);
-    File localFile = new File(str);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    if (!bgfb.b(new File(paramString), localFile))
-    {
-      QLog.d("UploadEnv", 1, "upload so unzip fail");
-      bfss.b(false);
-      return;
-    }
-    if (bfss.a(this.a, str))
-    {
-      QLog.d("UploadEnv", 1, "upload so save success");
-      bfss.a(this.a, true);
-      bfss.a(true);
-    }
-    for (;;)
-    {
-      bfss.b(false);
-      return;
-      try
-      {
-        localFile.delete();
-        bfss.a(this.a, false);
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-        }
-      }
-    }
+    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfst
  * JD-Core Version:    0.7.0.1
  */

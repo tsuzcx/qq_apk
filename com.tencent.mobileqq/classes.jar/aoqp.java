@@ -1,15 +1,53 @@
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploaderRp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 
-public abstract interface aoqp
+public class aoqp
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt, ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp);
+  public aoqp(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public abstract void a(int paramInt, ExcitingTransferUploaderRp paramExcitingTransferUploaderRp);
-  
-  public abstract void a(long paramLong1, long paramLong2, long paramLong3);
-  
-  public abstract void aB_();
+  public void onClick(View paramView)
+  {
+    Object localObject = paramView.getTag();
+    int i;
+    if ((localObject instanceof aorb))
+    {
+      localObject = (aorb)paramView.getTag();
+      i = ((aorb)localObject).c;
+      localObject = (WeiYunFileInfo)((aorb)localObject).a;
+    }
+    for (;;)
+    {
+      QfileBaseCloudFileTabView localQfileBaseCloudFileTabView;
+      if (localObject != null)
+      {
+        if ((paramView.getId() == 2131366211) && (QfileBaseCloudFileTabView.c(this.a))) {
+          axqw.b(QfileBaseCloudFileTabView.c(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
+        }
+        localQfileBaseCloudFileTabView = this.a;
+        if (paramView.getId() != 2131366211) {
+          break label148;
+        }
+      }
+      label148:
+      for (boolean bool = true;; bool = false)
+      {
+        localQfileBaseCloudFileTabView.a((WeiYunFileInfo)localObject, i, bool);
+        return;
+        if (!(localObject instanceof aopv)) {
+          break label153;
+        }
+        localObject = (WeiYunFileInfo)((aopv)paramView.getTag()).a;
+        i = -1;
+        break;
+      }
+      label153:
+      i = 0;
+      localObject = null;
+    }
+  }
 }
 
 

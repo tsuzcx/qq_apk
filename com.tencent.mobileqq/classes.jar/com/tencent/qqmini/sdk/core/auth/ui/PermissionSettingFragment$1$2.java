@@ -1,18 +1,17 @@
 package com.tencent.qqmini.sdk.core.auth.ui;
 
 import android.app.ProgressDialog;
-import bddu;
-import bddv;
+import behv;
 
 public class PermissionSettingFragment$1$2
   implements Runnable
 {
-  public PermissionSettingFragment$1$2(bddv parambddv) {}
+  public PermissionSettingFragment$1$2(behv parambehv) {}
   
   public void run()
   {
-    bddu.a(this.a.jdField_a_of_type_Bddu, this.a.jdField_a_of_type_JavaLangString);
-    bddu.a(this.a.jdField_a_of_type_Bddu).dismiss();
+    PermissionSettingFragment.a(this.a.jdField_a_of_type_ComTencentQqminiSdkCoreAuthUiPermissionSettingFragment, this.a.jdField_a_of_type_JavaLangString);
+    PermissionSettingFragment.a(this.a.jdField_a_of_type_ComTencentQqminiSdkCoreAuthUiPermissionSettingFragment).dismiss();
   }
 }
 

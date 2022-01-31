@@ -1,27 +1,21 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.qphone.base.util.QLog;
+import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
 
 public class aakv
-  extends azhw
+  extends atzn
 {
-  public aakv(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aakv(AuthDevActivity paramAuthDevActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
+  public void a(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
   {
-    if (paramBoolean)
-    {
-      Message localMessage = Message.obtain();
-      localMessage.what = 16;
-      Bundle localBundle = new Bundle();
-      localBundle.putString("uinname", paramAccountDetail.name);
-      localBundle.putString("extra_type", paramAccountDetail.summary);
-      localBundle.putLong("uin", paramLong);
-      localMessage.setData(localBundle);
-      this.a.a.sendMessage(localMessage);
-    }
+    AuthDevActivity.a(this.a, paramSecureCheckResponse);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    bcpw.a(this.a, paramString2, 0).a();
+    QLog.e("Q.devlock.AuthDevActivity", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
   }
 }
 

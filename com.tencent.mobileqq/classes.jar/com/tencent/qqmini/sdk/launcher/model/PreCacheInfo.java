@@ -3,12 +3,12 @@ package com.tencent.qqmini.sdk.launcher.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bdnc;
+import bern;
 
 public class PreCacheInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<PreCacheInfo> CREATOR = new bdnc();
+  public static final Parcelable.Creator<PreCacheInfo> CREATOR = new bern();
   public long a;
   public String a;
   public String b;

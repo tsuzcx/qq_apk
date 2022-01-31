@@ -12,14 +12,14 @@ import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import ndn;
-import obj;
-import obz;
-import opw;
+import noo;
+import omu;
+import onk;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pjg;
-import rvf;
+import pax;
+import pvb;
+import shx;
 import tencent.im.oidb.articlesummary.articlesummary.PackInfo;
 import tencent.im.oidb.articlesummary.articlesummary.SpecialTopicInfo;
 
@@ -85,7 +85,7 @@ public class ComponentHeaderSpecialTopic
           localException.printStackTrace();
           localObject = null;
         }
-        Object localObject = obz.a((String)localObject);
+        Object localObject = onk.a((String)localObject);
         paramArticleInfo.mHeaderIconUrl = ((URL)localObject);
         return localObject;
       }
@@ -97,14 +97,14 @@ public class ComponentHeaderSpecialTopic
   {
     try
     {
-      JSONObject localJSONObject = obz.a();
+      JSONObject localJSONObject = onk.a();
       localJSONObject.put("feeds_source", paramString);
-      localJSONObject.put("kandian_mode", obz.e());
-      String str = obz.d(this.jdField_a_of_type_Pjg.a.a());
-      if (rvf.a(this.jdField_a_of_type_Pjg.a.e())) {}
+      localJSONObject.put("kandian_mode", onk.e());
+      String str = onk.d(this.jdField_a_of_type_Pvb.a.a());
+      if (shx.a(this.jdField_a_of_type_Pvb.a.e())) {}
       for (paramString = "0X8009357";; paramString = "0X800744D")
       {
-        ndn.a(null, "CliOper", "", "", paramString, paramString, 0, 0, str, "", "", localJSONObject.toString(), false);
+        noo.a(null, "CliOper", "", "", paramString, paramString, 0, 0, str, "", "", localJSONObject.toString(), false);
         return;
       }
       return;
@@ -137,15 +137,15 @@ public class ComponentHeaderSpecialTopic
   
   private void d()
   {
-    String str = b(this.jdField_a_of_type_Pjg.a.a());
+    String str = b(this.jdField_a_of_type_Pvb.a.a());
     if (!TextUtils.isEmpty(str)) {
-      obz.a(getContext(), str);
+      onk.a(getContext(), str);
     }
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131494304, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559875, this, true);
   }
   
   public void a()
@@ -159,36 +159,36 @@ public class ComponentHeaderSpecialTopic
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131309015));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131309006));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131374756));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374747));
   }
   
   public void a(Object paramObject)
   {
     super.a(paramObject);
-    if ((paramObject instanceof opw)) {
-      a((opw)paramObject);
+    if ((paramObject instanceof pax)) {
+      a((pax)paramObject);
     }
   }
   
-  public void a(opw paramopw)
+  public void a(pax parampax)
   {
-    if ((paramopw.a()) && (paramopw.c() == 1)) {}
+    if ((parampax.a()) && (parampax.c() == 1)) {}
     ArticleInfo localArticleInfo;
     for (int i = 0;; i = 8)
     {
       setVisibility(i);
-      if ((paramopw.a()) && (paramopw.c() == 1)) {
-        localArticleInfo = paramopw.a();
+      if ((parampax.a()) && (parampax.c() == 1)) {
+        localArticleInfo = parampax.a();
       }
-      switch (paramopw.c())
+      switch (parampax.c())
       {
       default: 
         return;
       }
     }
-    paramopw = a(localArticleInfo);
-    if (paramopw == null) {
+    parampax = a(localArticleInfo);
+    if (parampax == null) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(8);
     }
     for (;;)
@@ -196,7 +196,7 @@ public class ComponentHeaderSpecialTopic
       this.jdField_a_of_type_AndroidWidgetTextView.setText(a(localArticleInfo));
       return;
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(0);
-      obj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramopw, getContext());
+      omu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, parampax, getContext());
     }
   }
   
@@ -212,7 +212,7 @@ public class ComponentHeaderSpecialTopic
     }
     for (;;)
     {
-      a(obz.c(this.jdField_a_of_type_Pjg.a.a()));
+      a(onk.c(this.jdField_a_of_type_Pvb.a.a()));
       return;
       d();
     }

@@ -3,15 +3,15 @@ package com.tencent.mobileqq.filemanager.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aonr;
-import apck;
-import java.io.File;
+import apem;
+import apue;
+import com.tencent.mm.vfs.VFSFile;
 import java.io.FileNotFoundException;
 
 public class FileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FileInfo> CREATOR = new aonr();
+  public static final Parcelable.Creator<FileInfo> CREATOR = new apem();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
@@ -54,7 +54,7 @@ public class FileInfo
     if (paramString == null) {
       throw new FileNotFoundException("file path is null!");
     }
-    paramString = new File(paramString);
+    paramString = new VFSFile(paramString);
     if (!paramString.exists()) {
       throw new FileNotFoundException("file not exist!");
     }
@@ -63,7 +63,7 @@ public class FileInfo
     d(paramString.getName());
     a(paramString.length());
     b(paramString.lastModified());
-    b(apck.a(this.jdField_b_of_type_JavaLangString));
+    b(apue.a(this.jdField_b_of_type_JavaLangString));
     c("");
     a("");
   }
@@ -71,12 +71,12 @@ public class FileInfo
   public static FileInfo a(String paramString)
   {
     if ((paramString == null) || (paramString.length() == 0)) {}
-    File localFile;
+    VFSFile localVFSFile;
     do
     {
       return null;
-      localFile = new File(paramString);
-    } while ((!localFile.exists()) || (localFile.length() == 0L));
+      localVFSFile = new VFSFile(paramString);
+    } while ((!localVFSFile.exists()) || (localVFSFile.length() == 0L));
     try
     {
       paramString = new FileInfo(paramString);

@@ -1,19 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 
-class acpk
-  implements View.OnClickListener
+public class acpk
+  extends Handler
 {
-  acpk(acpj paramacpj) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.b();
-  }
+  public acpk(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acpk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,19 @@
-import com.tencent.av.avgesture.AVGestureWrapper.AVUploadReport;
-import com.tencent.sveffects.Reporter;
-import com.tencent.sveffects.SdkContext;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
-public final class aksx
-  implements AVGestureWrapper.AVUploadReport
+public class aksx
+  extends aksz
 {
-  public void avGestureUploadReport(String paramString1, String paramString2)
+  public aksx(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    SdkContext.getInstance().getReporter().reportToCompass("dc00898", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
+    super(paramQQAppInterface, paramProxyManager);
+    this.a = DataLineMsgRecord.tableName(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aksx
  * JD-Core Version:    0.7.0.1
  */

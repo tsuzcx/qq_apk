@@ -1,21 +1,25 @@
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
 
-class nxm
-  extends nyf
+public class nxm
+  extends qvc
 {
-  nxm(nxd paramnxd, boolean paramBoolean, List paramList)
-  {
-    super(paramnxd, null);
-  }
+  public nxm(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
   
-  void a(nyi paramnyi)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    paramnyi.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, nxd.b(this.jdField_a_of_type_Nxd), 3, 3);
+    if (!paramBoolean1) {
+      ReadInJoyVideoSubChannelActivity.a(this.a, false);
+    }
+    while (!ReadInJoyVideoSubChannelActivity.a(this.a)) {
+      return;
+    }
+    ReadInJoyVideoSubChannelActivity.a(this.a).c();
+    ReadInJoyVideoSubChannelActivity.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nxm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,87 +1,63 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.core.proxy.WnsConfigProxy;
+import com.tencent.open.appstore.js.DownloadInterfaceNew;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bdhg
+  implements bdkw
 {
-  public static int a(String paramString1, String paramString2, int paramInt)
+  public bdhg(DownloadInterfaceNew paramDownloadInterfaceNew, String paramString) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
-    if (localWnsConfigProxy == null) {}
-    do
-    {
-      return paramInt;
-      paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
-    } while (paramString1 == null);
-    try
-    {
-      int i = Integer.valueOf(paramString1).intValue();
-      return i;
-    }
-    catch (Exception paramString1) {}
-    return paramInt;
+    bdht.e("DownloadInterfaceNew", "[innerQuery] [onException] errorCode=" + paramInt + ", errorMsg=" + paramString);
   }
   
-  public static long a(String paramString1, String paramString2, long paramLong)
+  public void a(List<DownloadInfo> paramList)
   {
-    WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
-    if (localWnsConfigProxy == null) {}
-    do
+    bdht.c("DownloadInterfaceNew", "[innerQuery] onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
     {
-      return paramLong;
-      paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
-    } while (paramString1 == null);
-    try
-    {
-      long l = Long.valueOf(paramString1).longValue();
-      return l;
+      if (i < j)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
+        {
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("packagename", localDownloadInfo.e);
+          localJSONObject.put("versioncode", localDownloadInfo.b);
+          localJSONObject.put("url", localDownloadInfo.d);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONObject.put("download_from", localDownloadInfo.h);
+          localJSONObject.put("writecodestate", localDownloadInfo.j);
+          localJSONArray.put(localJSONObject);
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
+      }
     }
-    catch (Exception paramString1) {}
-    return paramLong;
-  }
-  
-  public static final String a(String paramString1, String paramString2)
-  {
-    WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
-    if (localWnsConfigProxy == null) {
-      return null;
-    }
-    return localWnsConfigProxy.getConfig(paramString1, paramString2);
-  }
-  
-  public static final String a(String paramString1, String paramString2, String paramString3)
-  {
-    WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
-    if (localWnsConfigProxy == null) {}
-    do
-    {
-      return paramString3;
-      paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
-    } while (TextUtils.isEmpty(paramString1));
-    return paramString1;
-  }
-  
-  public static boolean a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
-    if (localWnsConfigProxy == null) {}
-    do
-    {
-      return paramBoolean;
-      paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
-    } while (paramString1 == null);
-    try
-    {
-      boolean bool = Boolean.parseBoolean(paramString1);
-      return bool;
-    }
-    catch (Exception paramString1) {}
-    return paramBoolean;
+    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
+    bdht.c("DownloadInterfaceNew", "[innerQuery] querySucess : " + paramList);
+    DownloadInterfaceNew.a(this.jdField_a_of_type_ComTencentOpenAppstoreJsDownloadInterfaceNew, paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdhg
  * JD-Core Version:    0.7.0.1
  */

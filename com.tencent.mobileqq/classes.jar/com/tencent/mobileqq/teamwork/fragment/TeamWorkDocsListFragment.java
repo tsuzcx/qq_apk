@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.teamwork.fragment;
 
-import axfo;
-import axfs;
-import bbaq;
-import bbbt;
-import bbcm;
+import ayfr;
+import ayfv;
+import bcdq;
+import bcet;
+import bcfm;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import xdt;
+import xmt;
 
 public class TeamWorkDocsListFragment
   extends WebViewFragment
 {
   public void c()
   {
-    bbbt localbbbt = (bbbt)this.jdField_a_of_type_Bbaq.a(4);
-    if (localbbbt != null)
+    bcet localbcet = (bcet)this.jdField_a_of_type_Bcdq.a(4);
+    if (localbcet != null)
     {
-      xdt localxdt = b();
-      if ((localxdt != null) && (axfs.a(localxdt.a()))) {
-        localbbbt.a = new axfo(a());
+      xmt localxmt = b();
+      if ((localxmt != null) && (ayfv.a(localxmt.a()))) {
+        localbcet.a = new ayfr(a());
       }
-      localbbbt.a(localxdt, this.jdField_a_of_type_Bbcm.a);
+      localbcet.a(localxmt, this.jdField_a_of_type_Bcfm.a);
     }
   }
 }

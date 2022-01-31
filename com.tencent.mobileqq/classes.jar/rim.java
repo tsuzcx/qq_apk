@@ -1,20 +1,21 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class rim
-  extends AnimatorListenerAdapter
+  implements ohp
 {
-  public rim(ReadInJoyColorBandEntranceButton paramReadInJoyColorBandEntranceButton) {}
+  public rim(FastWebActivity paramFastWebActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.setClickable(true);
-  }
+  public void a() {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.setClickable(true);
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    this.a.a(false, null, null);
   }
 }
 

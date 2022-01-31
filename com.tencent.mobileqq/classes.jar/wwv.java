@@ -1,76 +1,31 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.subscribe.widget.textview.FollowTextView;
 
 public class wwv
-  extends alzl<wwu>
+  implements bfoq
 {
-  public int a()
-  {
-    return 411;
-  }
+  public wwv(FollowTextView paramFollowTextView, bfol parambfol) {}
   
-  public Class<wwu> a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return wwu.class;
-  }
-  
-  @NonNull
-  public wwu a(int paramInt)
-  {
-    return new wwu();
-  }
-  
-  @Nullable
-  public wwu a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
-    {
-      wwu localwwu = wwu.a(paramArrayOfalzs[0].a);
-      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onParsed " + paramArrayOfalzs[0].a);
-      a(localwwu);
-      return localwwu;
+    if (!FollowTextView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView)) {
+      return;
     }
-    QLog.e("Q.videostory.config.VSEntranceProcessor", 2, "onParsed conf content is null!");
-    return null;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(wwu paramwwu)
-  {
-    if (paramwwu != null)
+    FollowTextView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView, false);
+    switch (paramInt)
     {
-      wwt.a().a("mine_videostory_entrance", paramwwu.a());
-      wwt.a().a("enable_click_take_picture", paramwwu.b());
-      wwt.a().a("mine_videostory_drawer_entrance", paramwwu.c());
-      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onUpdate:" + paramwwu.toString());
     }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.a(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wwv
  * JD-Core Version:    0.7.0.1
  */

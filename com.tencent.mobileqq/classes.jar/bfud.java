@@ -1,28 +1,21 @@
-import com.tencent.widget.AbsListView;
-import cooperation.qzone.contentbox.QZoneMsgFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bfud
-  implements begh
+class bfud
+  implements View.OnClickListener
 {
-  public bfud(QZoneMsgFragment paramQZoneMsgFragment) {}
+  bfud(bfuc parambfuc) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return;
+    if (this.a.isShowing()) {
+      this.a.dismiss();
     }
-    QZoneMsgFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfud
  * JD-Core Version:    0.7.0.1
  */

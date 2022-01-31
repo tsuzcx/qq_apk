@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo;
 
-import aife;
-import aiff;
-import ajbi;
+import airx;
+import airy;
+import ajpk;
 
 public class ApolloGameNormalStartHandler$3
   implements Runnable
 {
   public void run()
   {
-    if (aife.a(this.this$0) == null) {
-      aife.a(this.this$0, new ajbi(this.a));
+    if (airx.a(this.this$0) == null) {
+      airx.a(this.this$0, new ajpk(this.a));
     }
-    aife.a(this.this$0).a(new aiff(this));
-    aife.a(this.this$0).show();
+    airx.a(this.this$0).a(new airy(this));
+    airx.a(this.this$0).show();
   }
 }
 

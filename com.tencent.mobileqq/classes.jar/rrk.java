@@ -1,20 +1,22 @@
-import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-class rrk
-  implements View.OnSystemUiVisibilityChangeListener
+final class rrk
+  extends pms
 {
-  rrk(rrh paramrrh) {}
-  
-  public void onSystemUiVisibilityChange(int paramInt)
+  rrk(int paramInt1, int paramInt2, int paramInt3, String paramString, ArticleInfo paramArticleInfo)
   {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (paramInt = 5894;; paramInt = 1799)
+    super(paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void onClick(@NonNull View paramView)
+  {
+    onk.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString, null);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.isPGCShortContent()))
     {
-      rrd.a(this.a.a).getWindow().getDecorView().setSystemUiVisibility(paramInt);
-      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.click_area = 11;
+      onk.b(paramView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
     }
   }
 }

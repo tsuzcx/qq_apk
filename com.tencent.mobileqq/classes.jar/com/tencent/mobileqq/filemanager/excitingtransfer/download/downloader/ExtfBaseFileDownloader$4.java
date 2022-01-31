@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader;
 
-import aops;
-import aopv;
+import aphb;
+import aphe;
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadSpeedInfo;
 
 public class ExtfBaseFileDownloader$4
   implements Runnable
 {
-  public ExtfBaseFileDownloader$4(aops paramaops, ExcitingTransferDownloadSpeedInfo paramExcitingTransferDownloadSpeedInfo) {}
+  public ExtfBaseFileDownloader$4(aphb paramaphb, ExcitingTransferDownloadSpeedInfo paramExcitingTransferDownloadSpeedInfo) {}
   
   public void run()
   {
     if (this.this$0.a) {}
-    while (aops.a(this.this$0) == null) {
+    while (aphb.a(this.this$0) == null) {
       return;
     }
-    aops.a(this.this$0).a(this.a);
+    aphb.a(this.this$0).a(this.a);
   }
 }
 

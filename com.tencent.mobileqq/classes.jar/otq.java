@@ -1,27 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
+import com.tencent.common.app.AppInterface;
+import java.util.HashMap;
 
 public class otq
-  implements owa
+  implements View.OnClickListener
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  public otq(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public void onClick(View paramView)
   {
-    return oss.a(paramBaseArticleInfo);
-  }
-  
-  public void a(int paramInt1, Container paramContainer, opw paramopw, int paramInt2) {}
-  
-  public boolean a(int paramInt, Container paramContainer, opw paramopw, ViewBase paramViewBase)
-  {
-    return false;
+    this.a.f();
+    if (ReadInJoyAdIMAXBrowserFragment.a(this.a)) {
+      return;
+    }
+    ReadInJoyAdIMAXBrowserFragment.a(this.a, true);
+    paramView = new HashMap();
+    paramView.put("stat_src", "5");
+    nmf.a(new nyg().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(nmf.t).b(nmf.ae).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(nmf.a(paramView)).a());
   }
 }
 

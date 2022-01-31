@@ -1,7 +1,11 @@
 package com.tencent.qqmini.sdk.core.proxy;
 
+import java.util.List;
+
 public abstract class WnsConfigProxy
 {
+  public abstract List<String> getApiReportConfig();
+  
   public abstract String getConfig(String paramString1, String paramString2);
 }
 

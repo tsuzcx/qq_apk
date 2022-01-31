@@ -1,30 +1,27 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopNewPageFragment;
 
-class nrz
-  implements DialogInterface.OnClickListener
+public class nrz
+  implements bcsv
 {
-  nrz(nrw paramnrw, boolean paramBoolean) {}
+  public nrz(EcshopNewPageFragment paramEcshopNewPageFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView, int paramInt)
   {
-    paramDialogInterface = new HashMap();
-    paramDialogInterface.put("stat_src", "2");
-    nbe.a(new nmv().a(BaseApplication.getContext()).a(nbe.e).b(nbe.ac).a(npk.a(nrw.a(this.jdField_a_of_type_Nrw))).d(nbe.a(nrw.a(this.jdField_a_of_type_Nrw), paramDialogInterface)).a());
-    if (!this.jdField_a_of_type_Boolean) {
-      if (!nrw.a(this.jdField_a_of_type_Nrw)) {}
-    }
-    while (!(this.jdField_a_of_type_Nrw.a instanceof Activity))
+    if ((paramInt == 5) || (paramInt == 4))
     {
-      return;
-      this.jdField_a_of_type_Nrw.g();
+      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+      paramView.putExtra("uin", "3046055438");
+      paramView.putExtra("from_tab", true);
+      this.a.startActivity(paramView);
+    }
+    while (paramInt != 1) {
       return;
     }
-    rvb.a(this.jdField_a_of_type_Nrw.a);
-    npa.a(this.jdField_a_of_type_Nrw.a, nrw.a(this.jdField_a_of_type_Nrw));
+    this.a.getActivity().finish();
   }
 }
 

@@ -1,99 +1,303 @@
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
-import java.lang.ref.WeakReference;
-import java.net.URL;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.TroopAIONotifyItem;
+import java.util.List;
+import java.util.Observer;
 
-class aznm
-  implements URLDrawableDownListener
+public class aznm
+  extends azmo
 {
-  aznm(aznl paramaznl, ImageProgressCircle paramImageProgressCircle, URLImageView paramURLImageView) {}
+  public long a;
+  protected GestureDetector a;
+  azmq jdField_a_of_type_Azmq = new azmq();
+  azmu jdField_a_of_type_Azmu = new azmu();
+  azng jdField_a_of_type_Azng = new azng();
+  aznj jdField_a_of_type_Aznj = new aznj();
+  aznl jdField_a_of_type_Aznl = new aznl();
+  public long b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public int a()
   {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_Aznj.a();
     }
-    awqx.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_cancel", 0, 1, 0, paramView, "", "", "");
+    return 0;
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public azmu a()
   {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
+    return this.jdField_a_of_type_Azmu;
+  }
+  
+  public azng a()
+  {
+    return this.jdField_a_of_type_Azng;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Azng.a(paramInt);
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Azng.a(paramLong);
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.c = paramBoolean;
+  }
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewGestureDetector != null)) {
+      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    }
+    k();
+  }
+  
+  public void a(List<TroopAIONotifyItem> paramList)
+  {
+    this.jdField_a_of_type_Aznl.a(paramList);
+  }
+  
+  public void a(Observer paramObserver)
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
+      this.jdField_a_of_type_Aznj.jdField_b_of_type_JavaUtilObserver = paramObserver;
+      this.jdField_a_of_type_Azng.jdField_b_of_type_JavaUtilObserver = paramObserver;
+      this.jdField_a_of_type_Aznl.jdField_b_of_type_JavaUtilObserver = paramObserver;
+      this.jdField_a_of_type_Azmq.jdField_b_of_type_JavaUtilObserver = paramObserver;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    Object localObject;
+    RelativeLayout.LayoutParams localLayoutParams;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localObject = null;
+      if (!this.jdField_a_of_type_Azng.a()) {
+        break label65;
+      }
+      localObject = this.jdField_a_of_type_Azng;
+      if (localObject != null)
+      {
+        localObject = ((azmo)localObject).a();
+        if (localObject != null)
+        {
+          localLayoutParams = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
+          if (!paramBoolean) {
+            break label101;
+          }
+          localLayoutParams.addRule(3, 2131377870);
+        }
       }
     }
-    if (paramThrowable == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramThrowable.getMessage())
+    for (;;)
     {
-      awqx.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_failed", 0, 1, 0, paramView, paramURLDrawable, "", "");
+      ((View)localObject).setLayoutParams(localLayoutParams);
       return;
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
+      label65:
+      if (this.jdField_a_of_type_Aznl.a())
+      {
+        localObject = this.jdField_a_of_type_Aznl;
+        break;
+      }
+      if (!this.jdField_a_of_type_Azmu.a()) {
+        break;
+      }
+      localObject = this.jdField_a_of_type_Azmu;
+      break;
+      label101:
+      int i = azng.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, new int[] { 2131372953, 2131373040, 2131373035 });
+      if (i > 0) {
+        localLayoutParams.addRule(3, i);
       }
     }
-    if (paramInterruptedException == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramInterruptedException.getMessage())
-    {
-      awqx.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_interrupt", 0, 1, 0, paramView, paramURLDrawable, "", "");
-      return;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Azng.b();
+  }
+  
+  public int b()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Azng != null)) {
+      return this.jdField_a_of_type_Azng.a();
+    }
+    return -1;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Azng.e();
     }
   }
   
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  public void b(List<ChatMessage> paramList)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.getVisibility() != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setVisibility(0);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setProgress(paramInt / 100);
-    if ((this.jdField_a_of_type_Aznl.a != null) && (this.jdField_a_of_type_Aznl.a.get() != null)) {
-      ((TextView)this.jdField_a_of_type_Aznl.a.get()).setText(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.a());
+    if ((this.jdField_a_of_type_Boolean) && (!this.d)) {
+      this.jdField_a_of_type_Azng.a(paramList);
     }
   }
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public boolean b()
   {
-    this.jdField_a_of_type_Aznl.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_Azng.c();
+    }
+    return false;
+  }
+  
+  protected void c()
+  {
+    this.jdField_a_of_type_Aznj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_Acut, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
+    this.jdField_a_of_type_Azng.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_Acut, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
+    this.jdField_a_of_type_Aznl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_Acut, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
+    this.jdField_a_of_type_Azmq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_Acut, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
+    this.jdField_a_of_type_Azmu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_Acut, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
+    this.jdField_a_of_type_Azmu.a(this);
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidContentContext, new aznn(this));
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.c = false;
+  }
+  
+  public void c(int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Aznj.a(paramInt);
+    }
+  }
+  
+  public boolean c()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_Aznj.a();
+    }
+    return false;
+  }
+  
+  protected void d()
+  {
+    this.jdField_a_of_type_AndroidViewGestureDetector = null;
+    this.jdField_a_of_type_Aznj.a();
+    this.jdField_a_of_type_Azng.a();
+    this.jdField_a_of_type_Aznl.a();
+    this.jdField_a_of_type_Azmq.a();
+    this.jdField_a_of_type_Azmu.a();
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.c = false;
+  }
+  
+  public boolean d()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_Azng.a();
+    }
+    return false;
+  }
+  
+  public void e()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (!this.d)) {
+      this.jdField_a_of_type_Azng.f();
+    }
+  }
+  
+  public boolean e()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_Aznl.a();
+    }
+    return false;
+  }
+  
+  public void f()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (!this.d)) {
+      this.jdField_a_of_type_Aznl.e();
+    }
+  }
+  
+  public boolean f()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_Azmu.a();
+    }
+    return false;
+  }
+  
+  public void g()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Azng.i();
+    }
+  }
+  
+  public boolean g()
+  {
+    return (d()) || (e()) || (f());
+  }
+  
+  public void h()
+  {
+    this.jdField_a_of_type_Aznj.jdField_b_of_type_Boolean = true;
+  }
+  
+  public boolean h()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Boolean) {
+      if ((!d()) && (!c()) && (!this.jdField_a_of_type_Aznl.a()))
+      {
+        bool1 = bool2;
+        if (!this.jdField_a_of_type_Azmq.a()) {}
+      }
+      else
+      {
+        bool1 = true;
       }
     }
-    if ((this.jdField_a_of_type_Aznl.a != null) && (this.jdField_a_of_type_Aznl.a.get() != null)) {
-      ((TextView)this.jdField_a_of_type_Aznl.a.get()).setVisibility(8);
-    }
-    this.jdField_a_of_type_Aznl.a = null;
-    this.jdField_a_of_type_Aznl.c = false;
-    awqx.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_success", 0, 1, 0, paramView, "", "", "");
+    return bool1;
+  }
+  
+  public void i()
+  {
+    this.jdField_a_of_type_Aznj.jdField_b_of_type_Boolean = false;
+  }
+  
+  public void j()
+  {
+    this.jdField_b_of_type_Boolean = false;
+  }
+  
+  public void k()
+  {
+    this.jdField_a_of_type_Azmq.e();
   }
 }
 

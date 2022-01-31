@@ -1,42 +1,16 @@
-import com.tencent.maxvideo.mediadevice.AVCodec;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.capture.view.QIMCircleProgress;
 
 public class bjkk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static bjkk a;
-  public static String a;
-  private bjjm a;
+  public bjkk(QIMCircleProgress paramQIMCircleProgress) {}
   
-  static
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    jdField_a_of_type_Bjkk = new bjkk();
-  }
-  
-  private bjkk()
-  {
-    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-  }
-  
-  public static bjkk a()
-  {
-    return jdField_a_of_type_Bjkk;
-  }
-  
-  public bjjm a()
-  {
-    if (this.jdField_a_of_type_Bjjm == null) {
-      this.jdField_a_of_type_Bjjm = new bjjm(40, awje.c);
-    }
-    return this.jdField_a_of_type_Bjjm;
-  }
-  
-  public bjjo a()
-  {
-    return bjjo.a();
-  }
-  
-  public AVCodec a()
-  {
-    return AVCodec.get();
+    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.c();
   }
 }
 

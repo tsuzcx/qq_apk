@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.msgbackup.data;
 
 import android.text.TextUtils;
-import arsc;
-import atmo;
-import atnz;
+import asog;
+import aukm;
+import aulx;
 
 public class MsgBackupMsgEntity
-  extends atmo
+  extends aukm
 {
   public static final String TABLE_NAME = "msg";
   public int chatType;
   public String chatUin;
   public byte[] extensionData;
   public byte[] extraData;
-  @atnz
+  @aulx
   public String extraDataStr;
   public long msgRandom;
   public long msgSeq;
@@ -28,7 +28,7 @@ public class MsgBackupMsgEntity
   public void postRead()
   {
     super.postRead();
-    arsc.a(this);
+    asog.a(this);
     try
     {
       if (this.extraData != null) {
@@ -38,7 +38,7 @@ public class MsgBackupMsgEntity
     }
     catch (Exception localException)
     {
-      arsc.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
+      asog.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
       this.extraDataStr = "";
     }
   }
@@ -49,7 +49,7 @@ public class MsgBackupMsgEntity
     if (!TextUtils.isEmpty(this.extraDataStr)) {
       this.extraData = this.extraDataStr.getBytes();
     }
-    arsc.b(this);
+    asog.b(this);
   }
 }
 

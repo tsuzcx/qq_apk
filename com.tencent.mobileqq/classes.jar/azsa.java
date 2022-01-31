@@ -1,43 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForTroopEffectPic;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.UUID;
 
 class azsa
-  extends atqo
+  implements akte
 {
-  azsa(azrz paramazrz, atpn paramatpn, aejb paramaejb, MessageForTroopEffectPic paramMessageForTroopEffectPic, boolean paramBoolean) {}
+  azsa(azrx paramazrx, UUID paramUUID) {}
   
-  public void a(int paramInt, atpw paramatpw)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopPicEffectsController", 2, "2g diy gif onDownload");
-    }
-    paramatpw = new File(this.jdField_a_of_type_Atpn.c());
-    azfo localazfo = (azfo)this.jdField_a_of_type_Aejb.a.getManager(223);
-    if ((paramatpw.exists()) && (localazfo != null))
-    {
-      localazfo.a = 1;
-      localazfo.a(this.jdField_a_of_type_Aejb);
-      localazfo.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopEffectPic, this.jdField_a_of_type_Boolean);
-      localazfo.f();
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("TroopPicEffectsController", 2, "[EffectPic] file not exist or isplaying.");
+    azsr.d("TroopFileDataBaseProxy", azsr.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[add]. table:" + paramString);
   }
   
-  public void a_(int paramInt, boolean paramBoolean)
+  public void a(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopPicEffectsController", 2, "2g diy gif onUpdateProgress");
-    }
+    azsr.d("TroopFileDataBaseProxy", azsr.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[up]. table:" + paramString);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    azsr.d("TroopFileDataBaseProxy", azsr.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish. table:" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azsa
  * JD-Core Version:    0.7.0.1
  */

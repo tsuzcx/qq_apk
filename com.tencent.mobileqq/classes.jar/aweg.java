@@ -1,265 +1,220 @@
-import com.tencent.mobileqq.app.MessageHandler;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForBlessPTV;
-import com.tencent.mobileqq.data.MessageForLightVideo;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.app.SignatureHandler.RspGetHistorySig;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.richstatus.HistorySignItem;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class aweg
+  extends akgp
 {
-  public static long a;
-  public static boolean a;
-  public static long b;
+  private aweg(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  static awdt a(int paramInt)
+  protected void d(boolean paramBoolean, Object arg2)
   {
-    switch (paramInt)
+    int i = 0;
+    Object localObject1;
+    Object localObject3;
+    if (paramBoolean)
     {
-    default: 
-      return null;
-    case 0: 
-    case 2: 
-    case 3: 
-    case 5: 
-    case 6: 
-      return new awdq();
-    case 1: 
-      return new xsn();
+      ??? = (Bundle)???;
+      paramBoolean = ???.getBoolean("firstFlag", false);
+      localObject1 = ???.getString("feedid");
+      boolean bool = ???.getBoolean("overFlag", true);
+      localObject3 = ???.getStringArrayList("uins");
+      SignatureHistoryFragment.a(this.a).put(localObject1, Boolean.valueOf(bool));
+      ??? = (ArrayList)SignatureHistoryFragment.b(this.a).get(localObject1);
+      if (localObject3 != null) {}
     }
-    return new xsm();
+    else
+    {
+      return;
+    }
+    SignatureHistoryFragment.b(this.a).put(localObject1, ???);
+    for (;;)
+    {
+      RichStatus localRichStatus;
+      synchronized (SignatureHistoryFragment.b(this.a))
+      {
+        if (i >= SignatureHistoryFragment.b(this.a).size()) {
+          break label246;
+        }
+        localRichStatus = ((HistorySignItem)SignatureHistoryFragment.b(this.a).get(i)).richStatus;
+        if (!localRichStatus.feedsId.equals(localObject1)) {
+          break label299;
+        }
+        if (paramBoolean) {
+          localRichStatus.mUins = null;
+        }
+        if (localRichStatus.mUins != null)
+        {
+          localObject1 = ((ArrayList)localObject3).iterator();
+          if (!((Iterator)localObject1).hasNext()) {
+            break label246;
+          }
+          localObject3 = (String)((Iterator)localObject1).next();
+          if (localRichStatus.mUins.contains(localObject3)) {
+            continue;
+          }
+          localRichStatus.mUins.add(localObject3);
+        }
+      }
+      localRichStatus.mUins = ((List)localObject3);
+      label246:
+      if (SignatureHistoryFragment.a(this.a) != null)
+      {
+        SignatureHistoryFragment.a(this.a).removeMessages(1);
+        Message localMessage = SignatureHistoryFragment.a(this.a).obtainMessage(1);
+        SignatureHistoryFragment.a(this.a).sendMessageDelayed(localMessage, 500L);
+      }
+      return;
+      label299:
+      i += 1;
+    }
   }
   
-  public static awel a(int paramInt, Object paramObject, awey paramawey)
+  protected void g(boolean paramBoolean, Object paramObject)
   {
-    awdt localawdt = a(paramInt);
-    if (localawdt == null) {
-      return null;
+    int i = ((Integer)paramObject).intValue();
+    if (SignatureHistoryFragment.a(this.a) != null)
+    {
+      SignatureHistoryFragment.a(this.a).removeMessages(3);
+      paramObject = SignatureHistoryFragment.a(this.a).obtainMessage(3);
+      paramObject.arg1 = i;
+      SignatureHistoryFragment.a(this.a).sendMessageDelayed(paramObject, 500L);
     }
-    return localawdt.a(paramObject, paramawey);
   }
   
-  public static awey a(int paramInt1, int paramInt2)
+  protected void h(boolean paramBoolean, Object paramObject)
   {
-    awey localawey = new awey();
-    localawey.jdField_a_of_type_Int = paramInt1;
-    localawey.jdField_b_of_type_Int = paramInt2;
-    return localawey;
+    if ((SignatureHistoryFragment.a(this.a) != null) && (SignatureHistoryFragment.a(this.a).isShowing())) {
+      SignatureHistoryFragment.a(this.a).dismiss();
+    }
+    if (paramBoolean)
+    {
+      long l = ((Long)paramObject).longValue();
+      if (SignatureHistoryFragment.a(this.a) != null)
+      {
+        SignatureHistoryFragment.a(this.a).id = l;
+        SignatureHistoryFragment.a(this.a).timeStamp = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
+        SignatureHistoryFragment.a(this.a, SignatureHistoryFragment.a(this.a));
+        SignatureHistoryFragment.a(this.a, null);
+        if (SignatureHistoryFragment.a(this.a) != null) {
+          SignatureHistoryFragment.a(this.a).notifyDataSetChanged();
+        }
+      }
+      return;
+    }
+    paramObject = SignatureHistoryFragment.a(this.a).obtainMessage();
+    paramObject.what = 4;
+    paramObject.arg1 = 1;
+    SignatureHistoryFragment.a(this.a).sendMessage(paramObject);
   }
   
-  public static awey a(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo, int paramInt)
+  protected void i(boolean paramBoolean, Object paramObject)
   {
-    if (paramMessageForShortVideo.videoFileStatus == 5002)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoBusiManager", 2, "createShortVideoReqByMsg expired");
-      }
-      return null;
+    if ((SignatureHistoryFragment.a(this.a) != null) && (SignatureHistoryFragment.a(this.a).isShowing())) {
+      SignatureHistoryFragment.a(this.a).dismiss();
     }
-    awey localawey = a(2, paramMessageForShortVideo.busiType);
-    awej localawej = paramMessageForShortVideo.getDownloadInfo(localawey.jdField_b_of_type_Int);
-    localawej.h = ShortVideoUtils.a(paramMessageForShortVideo, "mp4");
-    localawej.f = paramInt;
-    if ((paramMessageForShortVideo instanceof MessageForLightVideo))
+    if (paramBoolean)
     {
-      localawej.a = false;
-      paramQQAppInterface = paramQQAppInterface.a();
-      if ((!paramQQAppInterface.a()) || (!paramQQAppInterface.a().equals(paramMessageForShortVideo.frienduin))) {
-        break label161;
+      paramBoolean = SignatureHistoryFragment.a(this.a, SignatureHistoryFragment.a(this.a));
+      SignatureHistoryFragment.a(this.a, null);
+      if ((SignatureHistoryFragment.a(this.a) != null) && (paramBoolean)) {
+        SignatureHistoryFragment.a(this.a).notifyDataSetChanged();
       }
-      localawej.g = 2;
-      label107:
-      if ((paramMessageForShortVideo.istroop != 0) && (paramMessageForShortVideo.istroop != 1008)) {
-        break label170;
+      return;
+    }
+    paramObject = SignatureHistoryFragment.a(this.a).obtainMessage();
+    paramObject.what = 4;
+    paramObject.arg1 = 2;
+    SignatureHistoryFragment.a(this.a).sendMessage(paramObject);
+  }
+  
+  protected void j(boolean paramBoolean, Object paramObject)
+  {
+    SignatureHistoryFragment.c(this.a, paramBoolean);
+    int i;
+    if (paramBoolean)
+    {
+      paramObject = (SignatureHandler.RspGetHistorySig)paramObject;
+      boolean bool = paramObject.over;
+      if ((this.a.getActivity() != null) && (this.a.getActivity().app != null)) {
+        this.a.getActivity().app.b(true, true);
       }
-      localawej.e = 1001;
+      if ((paramObject != null) && (paramObject.historySignItems != null))
+      {
+        paramObject = paramObject.historySignItems;
+        if ((SignatureHistoryFragment.c(this.a)) && (SignatureHistoryFragment.b(this.a).size() > 0)) {
+          SignatureHistoryFragment.b(this.a).clear();
+        }
+        if (SignatureHistoryFragment.b(this.a).size() > 0)
+        {
+          Iterator localIterator = paramObject.iterator();
+          RichStatus localRichStatus1 = ((HistorySignItem)SignatureHistoryFragment.b(this.a).get(SignatureHistoryFragment.b(this.a).size() - 1)).richStatus;
+          if (localRichStatus1 != null) {
+            while (localIterator.hasNext())
+            {
+              RichStatus localRichStatus2 = ((HistorySignItem)localIterator.next()).richStatus;
+              if ((localRichStatus2.time <= localRichStatus1.time) && ((localRichStatus2.time != localRichStatus1.time) || (!Arrays.equals(localRichStatus2.encode(), localRichStatus1.encode())))) {
+                break;
+              }
+              localIterator.remove();
+            }
+          }
+        }
+        SignatureHistoryFragment.b(this.a).addAll(SignatureHistoryFragment.b(this.a).size(), paramObject);
+        paramObject = this.a;
+        if (!bool)
+        {
+          i = 1;
+          SignatureHistoryFragment.a(paramObject, i);
+        }
+      }
+      else
+      {
+        label285:
+        if (SignatureHistoryFragment.b(this.a).size() != 0) {
+          break label367;
+        }
+        paramObject = this.a;
+        if (!paramBoolean) {
+          break label362;
+        }
+        i = 3;
+        label309:
+        SignatureHistoryFragment.a(paramObject, i);
+      }
     }
     for (;;)
     {
-      localawey.a(localawej);
-      localawey.a(paramMessageForShortVideo);
-      return localawey;
-      if (paramMessageForShortVideo.busiType != 0) {
-        break;
+      if (SignatureHistoryFragment.a(this.a) != null) {
+        SignatureHistoryFragment.a(this.a).notifyDataSetChanged();
       }
-      localawej.a = true;
+      return;
+      i = 0;
       break;
-      label161:
-      localawej.g = 1;
-      break label107;
-      label170:
-      if (paramMessageForShortVideo.istroop == 3000) {
-        localawej.e = 1005;
-      } else if (paramMessageForShortVideo.istroop == 1) {
-        localawej.e = 1003;
+      if (!SignatureHistoryFragment.c(this.a)) {
+        break label285;
       }
+      SignatureHistoryFragment.a(this.a, 3);
+      break label285;
+      label362:
+      i = 2;
+      break label309;
+      label367:
+      SignatureHistoryFragment.a(this.a).setVisible(false, false);
     }
-  }
-  
-  public static awfo a(int paramInt, Object paramObject, awey paramawey)
-  {
-    awdt localawdt = a(paramInt);
-    if (localawdt == null) {
-      return null;
-    }
-    return localawdt.a(paramObject, paramawey);
-  }
-  
-  public static awfo a(Object paramObject, awey paramawey)
-  {
-    awdt localawdt = a(paramawey.jdField_b_of_type_Int);
-    if (localawdt == null) {
-      return null;
-    }
-    return localawdt.a(paramObject, paramawey);
-  }
-  
-  static BaseShortVideoOprerator a(int paramInt, QQAppInterface paramQQAppInterface)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 0: 
-    case 2: 
-    case 3: 
-    case 5: 
-    case 6: 
-      return new awdq(paramQQAppInterface);
-    case 1: 
-      return new xsn(paramQQAppInterface);
-    }
-    return new xsm(paramQQAppInterface);
-  }
-  
-  public static void a(awey paramawey, QQAppInterface paramQQAppInterface)
-  {
-    if (paramawey == null)
-    {
-      atpg.b("ShortVideoBusiManager", "launch", "error,req == null");
-      return;
-    }
-    BaseShortVideoOprerator localBaseShortVideoOprerator = a(paramawey.jdField_b_of_type_Int, paramQQAppInterface);
-    if (localBaseShortVideoOprerator == null)
-    {
-      atpg.b("ShortVideoBusiManager", "launch", "error,busiInterface == null,req.busiType:" + paramawey.jdField_b_of_type_Int);
-      return;
-    }
-    localBaseShortVideoOprerator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    localBaseShortVideoOprerator.jdField_a_of_type_Awey = paramawey;
-    localBaseShortVideoOprerator.f = paramawey.jdField_a_of_type_JavaLangString;
-    localBaseShortVideoOprerator.g = paramawey.jdField_b_of_type_JavaLangString;
-    localBaseShortVideoOprerator.a(paramawey.jdField_a_of_type_Awfr);
-    atpg.a("ShortVideoBusiManager", "launch", "cmd:" + ShortVideoUtils.c(paramawey.jdField_a_of_type_Int) + ", reqBusiType" + paramawey.jdField_b_of_type_Int + ", uuid:" + paramawey.jdField_a_of_type_JavaLangString);
-    switch (paramawey.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 0: 
-      localBaseShortVideoOprerator.a(paramawey.jdField_a_of_type_Awfo);
-      return;
-    case 2: 
-      localBaseShortVideoOprerator.a(paramawey.jdField_a_of_type_Awej);
-      return;
-    case 1: 
-      localBaseShortVideoOprerator.a(paramawey.jdField_a_of_type_Awfo);
-      return;
-    case 3: 
-      localBaseShortVideoOprerator.a(paramawey.jdField_a_of_type_Awel);
-      return;
-    case 4: 
-      localBaseShortVideoOprerator.a(paramawey.jdField_a_of_type_Awel);
-      return;
-    }
-    localBaseShortVideoOprerator.a(paramawey.jdField_a_of_type_JavaUtilArrayList);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, axqf paramaxqf, axvt paramaxvt)
-  {
-    if ((paramaxqf == null) || (paramaxvt == null)) {
-      atpg.b("ShortVideoBusiManager", "updataMessageDataBaseContent", "fileMsg or req is null");
-    }
-    label497:
-    do
-    {
-      MessageRecord localMessageRecord;
-      MessageForShortVideo localMessageForShortVideo;
-      do
-      {
-        do
-        {
-          return;
-          if (paramaxvt.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) {
-            localMessageRecord = paramaxvt.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-          }
-          while (localMessageRecord == null)
-          {
-            atpg.b("ShortVideoBusiManager", "updataMessageDataBaseContent", "msg null");
-            return;
-            localMessageRecord = paramQQAppInterface.a().a(paramaxvt.c, paramaxvt.jdField_a_of_type_Int, paramaxvt.jdField_a_of_type_Long);
-            atpg.a("ShortVideoBusiManager", "updataMessageDataBaseContent", "findmsgbyMsgId,need fix");
-          }
-        } while (!(localMessageRecord instanceof MessageForShortVideo));
-        localMessageForShortVideo = (MessageForShortVideo)localMessageRecord;
-        if (paramaxqf.jdField_a_of_type_Long == 0L) {}
-        for (int i = 0;; i = (int)(100L * paramaxqf.e / paramaxqf.jdField_a_of_type_Long))
-        {
-          if (localMessageForShortVideo.videoFileProgress < 0) {
-            localMessageForShortVideo.videoFileProgress = 0;
-          }
-          int j = localMessageForShortVideo.videoFileProgress;
-          if (((localMessageForShortVideo.videoFileStatus == 1002) || (localMessageForShortVideo.videoFileStatus == 2002)) && (localMessageForShortVideo.videoFileStatus == paramaxqf.d) && (i - j < 10)) {
-            break;
-          }
-          if (localMessageForShortVideo.videoFileStatus == 1003) {
-            localMessageForShortVideo.videoFileProgress = 100;
-          }
-          if ((paramaxqf.jdField_b_of_type_Int == 6) || (paramaxqf.jdField_b_of_type_Int == 17) || (paramaxqf.jdField_b_of_type_Int == 9) || (paramaxqf.jdField_b_of_type_Int == 20))
-          {
-            if (paramaxqf.d == 2002) {
-              localMessageForShortVideo.transferedSize = ((int)paramaxqf.e);
-            }
-            if (paramaxqf.d == 2003) {
-              localMessageForShortVideo.transferedSize = 0;
-            }
-          }
-          if (((localMessageForShortVideo.videoFileStatus == 2004) || (localMessageForShortVideo.videoFileStatus == 1004)) && ((paramaxqf.d == 1002) || (paramaxqf.d == 2002))) {
-            break;
-          }
-          localMessageForShortVideo.videoFileStatus = paramaxqf.d;
-          localMessageForShortVideo.fileType = paramaxqf.jdField_b_of_type_Int;
-          if ((paramaxqf.jdField_b_of_type_Int != 7) && (paramaxqf.jdField_b_of_type_Int != 16) && (paramaxqf.jdField_b_of_type_Int != 18)) {
-            localMessageForShortVideo.videoFileProgress = i;
-          }
-          if ((localMessageForShortVideo.mPreUpload) && (paramaxqf.d == 1003) && (paramaxvt.f != null)) {
-            localMessageForShortVideo.md5 = paramaxvt.f;
-          }
-          if (paramaxqf.d == 2003) {
-            localMessageForShortVideo.lastModified = new File(paramaxvt.h).lastModified();
-          }
-          localMessageForShortVideo.serial();
-          if ((localMessageForShortVideo.isMultiMsg != true) && (paramaxvt.e != 1010)) {
-            break label497;
-          }
-          if ((localMessageForShortVideo.videoFileStatus == 1002) || (localMessageForShortVideo.videoFileStatus == 2002)) {
-            break;
-          }
-          paramQQAppInterface = paramQQAppInterface.a();
-          if (paramQQAppInterface == null) {
-            break;
-          }
-          paramQQAppInterface.a(localMessageForShortVideo, null);
-          return;
-        }
-      } while ((localMessageForShortVideo instanceof MessageForBlessPTV));
-      paramQQAppInterface.a().a(paramaxvt.c, paramaxvt.jdField_a_of_type_Int, localMessageRecord.uniseq, localMessageForShortVideo.msgData);
-    } while ((paramaxqf.d != 1003) && (paramaxqf.d != 2003));
-    paramQQAppInterface.a().notifyUI(999, true, paramaxvt.c);
-    atpg.a("ShortVideoBusiManager", "updataMessageDataBaseContent", "app.getMsgHandler().notifyUI");
   }
 }
 

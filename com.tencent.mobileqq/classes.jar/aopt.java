@@ -1,106 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
 
 public class aopt
+  extends aouj
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private List<ExcitingTransferHostInfo> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private String b;
-  private String c;
+  public aopt(VerifyPwdView paramVerifyPwdView) {}
   
-  public long a()
+  protected void a(int paramInt, String paramString)
   {
-    return this.jdField_a_of_type_Long;
+    aptv.a(paramString);
   }
   
-  public String a()
+  protected void a(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<ExcitingTransferHostInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(List<ExcitingTransferHostInfo> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public boolean a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!paramBoolean)
     {
-      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "mFilePath is null");
-      return false;
+      VerifyPwdView.a(this.a);
+      return;
     }
-    if (0L == this.jdField_a_of_type_Long)
-    {
-      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "mFileSize is 0");
-      return false;
-    }
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
-    {
-      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "hostList is null");
-      return false;
-    }
-    if (TextUtils.isEmpty(this.b))
-    {
-      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "serverPath is null");
-      return false;
-    }
-    if (TextUtils.isEmpty(this.c))
-    {
-      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "strCookie is null");
-      return false;
-    }
-    return true;
+    VerifyPwdView.b(this.a);
   }
   
-  public byte[] a()
+  protected void b(int paramInt, String paramString)
   {
-    return this.jdField_a_of_type_ArrayOfByte;
+    aptv.a(paramString);
+    VerifyPwdView.c(this.a);
   }
   
-  public String b()
+  protected void e()
   {
-    return this.b;
-  }
-  
-  public void b(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public void c(String paramString)
-  {
-    this.c = paramString;
+    VerifyPwdView.a(this.a);
   }
 }
 

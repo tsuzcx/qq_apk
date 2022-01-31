@@ -1,18 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
 
-class amep
-  implements bhnx
+public final class amep
+  implements Parcelable.Creator<BusinessCard>
 {
-  amep(ameo paramameo) {}
-  
-  public void a(String paramString)
+  public BusinessCard a(Parcel paramParcel)
   {
-    bjac.a(BaseApplicationImpl.getContext(), paramString);
+    return new BusinessCard(paramParcel);
+  }
+  
+  public BusinessCard[] a(int paramInt)
+  {
+    return new BusinessCard[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amep
  * JD-Core Version:    0.7.0.1
  */

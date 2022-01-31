@@ -1,31 +1,28 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.widget.XListView;
+import android.view.View;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
 
-public class alxc
-  implements Handler.Callback
+class alxc
+  implements Animator.AnimatorListener
 {
-  public alxc(SearchResultActivity paramSearchResultActivity) {}
+  alxc(alwx paramalwx, View paramView) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      SearchResultActivity.a(this.a);
-      continue;
-      SearchResultActivity.b(this.a);
-      continue;
-      this.a.a.springBackOverScrollHeaderView();
-      bbmy.a(this.a, 2131628948, 0).b(this.a.getTitleBarHeight());
-      continue;
-      this.a.a.springBackOverScrollHeaderView();
-      continue;
-      this.a.a.springBackOverScrollHeaderView();
+    this.jdField_a_of_type_Alwx.p();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Alwx.p();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Alwx.g) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
   }
 }

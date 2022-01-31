@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.utils;
 
 import android.os.Build.VERSION;
-import babp;
+import bbct;
 import com.tencent.qphone.base.util.QLog;
 
 public class DeviceUtil
@@ -13,15 +13,15 @@ public class DeviceUtil
       if (Build.VERSION.SDK_INT < 18) {
         return 0;
       }
-      int k = babp.b();
+      int k = bbct.b();
       if (k <= 0) {
         return -1;
       }
-      int m = (int)(babp.b() / 100000L);
+      int m = (int)(bbct.b() / 100000L);
       if (m <= 0) {
         return -1;
       }
-      int n = (int)(babp.d() / 1048576L);
+      int n = (int)(bbct.d() / 1048576L);
       if (n <= 0) {
         return -1;
       }

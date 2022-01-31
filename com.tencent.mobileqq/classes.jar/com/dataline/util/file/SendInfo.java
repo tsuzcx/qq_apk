@@ -3,12 +3,12 @@ package com.dataline.util.file;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ez;
+import gs;
 
 public class SendInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<SendInfo> CREATOR = new ez();
+  public static final Parcelable.Creator<SendInfo> CREATOR = new gs();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;

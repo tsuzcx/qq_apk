@@ -11,7 +11,6 @@ import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.facedetect.FaceActionCounterListener;
 import com.tencent.ttpic.facedetect.FaceStatus;
-import com.tencent.ttpic.gameplaysdk.GamePlaySDK;
 import com.tencent.ttpic.openapi.facedetect.FaceDetector;
 import com.tencent.ttpic.openapi.facedetect.FaceDetector.DETECT_TYPE;
 import com.tencent.ttpic.openapi.facedetect.FaceDetector.FaceDetectListener;
@@ -46,6 +45,7 @@ public class VideoPreviewFaceOutlineDetector
   public static final int FACE_CENTER_INDEX = 63;
   private static final String TAG = VideoPreviewFaceOutlineDetector.class.getSimpleName();
   public static TextView expressionTextView;
+  private static float fov = 60.0F;
   private static final float offsetY = -0.05F;
   private static final float xishuX = 1.5F;
   private static final float xishuY = 0.8F;
@@ -171,6 +171,11 @@ public class VideoPreviewFaceOutlineDetector
     return new Random().nextFloat() * 0.2F + 0.8F;
   }
   
+  public static float getFov()
+  {
+    return fov;
+  }
+  
   private boolean isFaceKitValid(List<PointF> paramList, float[] paramArrayOfFloat, int paramInt1, int paramInt2)
   {
     if ((paramList == null) || (paramArrayOfFloat == null) || (paramInt1 == 0) || (paramInt2 == 0)) {
@@ -227,6 +232,11 @@ public class VideoPreviewFaceOutlineDetector
         }
       }
     }
+  }
+  
+  public static void setFov(float paramFloat)
+  {
+    fov = paramFloat;
   }
   
   private void updateExpressionWeights(int paramInt1, int paramInt2, AnimojiSDK paramAnimojiSDK, int paramInt3, FaceInfo paramFaceInfo)
@@ -443,16 +453,16 @@ public class VideoPreviewFaceOutlineDetector
       i = 1;
       this.faceTrackTime = System.currentTimeMillis();
       if (i == 0) {
-        break label1443;
+        break label1440;
       }
       BenchUtil.benchStart("only doTrack");
       if (!this.needDetect3D) {
-        break label369;
+        break label366;
       }
       BenchUtil.benchStart("faceDetect3D");
-      localObject1 = this.mFaceDetect.doTrack3D(paramArrayOfByte, paramInt1, paramInt2, GamePlaySDK.getInstance().getFov());
+      localObject1 = this.mFaceDetect.doTrack3D(paramArrayOfByte, paramInt1, paramInt2, fov);
       BenchUtil.benchEnd("faceDetect3D");
-      label115:
+      label112:
       BenchUtil.benchEnd("only doTrack");
     }
     for (;;)
@@ -462,7 +472,7 @@ public class VideoPreviewFaceOutlineDetector
       if ((localObject1 != null) && (localObject1.length > 0))
       {
         bool = true;
-        label148:
+        label145:
         this.mIsLastFaceDetected = bool;
         if (!bool)
         {
@@ -485,7 +495,7 @@ public class VideoPreviewFaceOutlineDetector
         for (;;)
         {
           if (i >= localObject1.length) {
-            break label1240;
+            break label1237;
           }
           if (i == 0)
           {
@@ -504,13 +514,13 @@ public class VideoPreviewFaceOutlineDetector
                 continue;
                 i = 0;
                 break;
-                label369:
+                label366:
                 BenchUtil.benchStart("faceDetect");
                 localObject1 = this.mFaceDetect.doTrack(paramArrayOfByte, paramInt1, paramInt2);
                 BenchUtil.benchEnd("faceDetect");
-                break label115;
+                break label112;
                 bool = false;
-                break label148;
+                break label145;
               }
             }
             Object localObject3 = new float[68];
@@ -597,7 +607,7 @@ public class VideoPreviewFaceOutlineDetector
           i += 1;
         }
       }
-      label1240:
+      label1237:
       updatePointsAndAngles((FaceStatus[])localObject1);
       if (this.needExpressionWeights) {
         FeatureManager.Features.ANIMOJI.init();
@@ -629,7 +639,7 @@ public class VideoPreviewFaceOutlineDetector
       updateActionStatusChanged();
       notifyFaceDetectListener();
       return bool;
-      label1443:
+      label1440:
       localObject1 = null;
     }
   }
@@ -691,7 +701,7 @@ public class VideoPreviewFaceOutlineDetector
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_0
-    //   5: getfield 88	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mInitSuccess	Z
+    //   5: getfield 93	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mInitSuccess	Z
     //   8: istore_2
     //   9: iload_2
     //   10: ifeq +7 -> 17
@@ -703,26 +713,26 @@ public class VideoPreviewFaceOutlineDetector
     //   18: invokespecial 709	com/tencent/ttpic/openapi/facedetect/FaceDetector:init	()I
     //   21: pop
     //   22: aload_0
-    //   23: getfield 161	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mFaceDetect	Lcom/tencent/ttpic/util/youtu/VideoFaceDetector;
+    //   23: getfield 166	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mFaceDetect	Lcom/tencent/ttpic/util/youtu/VideoFaceDetector;
     //   26: ifnull +14 -> 40
     //   29: aload_0
     //   30: aload_0
-    //   31: getfield 161	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mFaceDetect	Lcom/tencent/ttpic/util/youtu/VideoFaceDetector;
+    //   31: getfield 166	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mFaceDetect	Lcom/tencent/ttpic/util/youtu/VideoFaceDetector;
     //   34: invokevirtual 710	com/tencent/ttpic/util/youtu/VideoFaceDetector:init	()Z
-    //   37: putfield 88	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mInitSuccess	Z
-    //   40: getstatic 71	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:TAG	Ljava/lang/String;
-    //   43: new 261	java/lang/StringBuilder
+    //   37: putfield 93	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mInitSuccess	Z
+    //   40: getstatic 73	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:TAG	Ljava/lang/String;
+    //   43: new 267	java/lang/StringBuilder
     //   46: dup
-    //   47: invokespecial 262	java/lang/StringBuilder:<init>	()V
+    //   47: invokespecial 268	java/lang/StringBuilder:<init>	()V
     //   50: ldc_w 712
-    //   53: invokevirtual 268	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   56: aload_0
-    //   57: getfield 88	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mInitSuccess	Z
+    //   57: getfield 93	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mInitSuccess	Z
     //   60: invokevirtual 715	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   63: invokevirtual 278	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   63: invokevirtual 284	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   66: invokestatic 720	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   69: aload_0
-    //   70: getfield 88	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mInitSuccess	Z
+    //   70: getfield 93	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mInitSuccess	Z
     //   73: istore_2
     //   74: iload_2
     //   75: ifne -62 -> 13

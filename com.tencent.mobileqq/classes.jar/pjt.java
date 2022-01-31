@@ -1,47 +1,52 @@
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil.ProteusLog;
+import com.tencent.qphone.base.util.QLog;
 
 public class pjt
+  implements LogUtil.ProteusLog
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private String jdField_b_of_type_JavaLangString = "";
-  private List<qvs> jdField_b_of_type_JavaUtilList = new ArrayList();
-  
-  private pjt(pju parampju)
+  public void d(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilList = pju.a(parampju);
-    this.jdField_a_of_type_JavaLangString = pju.a(parampju);
-    this.jdField_b_of_type_JavaLangString = pju.b(parampju);
-    this.jdField_b_of_type_JavaUtilList = pju.b(parampju);
-    this.jdField_a_of_type_Int = pju.a(parampju);
+    QLog.d(paramString1, paramInt, paramString2);
   }
   
-  public int a()
+  public void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
   {
-    return this.jdField_a_of_type_Int;
+    QLog.d(paramString1, paramInt, paramString2, paramThrowable);
   }
   
-  public String a()
+  public void e(String paramString1, int paramInt, String paramString2)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    QLog.e(paramString1, paramInt, paramString2);
   }
   
-  public List<qvs> a()
+  public void e(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
   {
-    return this.jdField_b_of_type_JavaUtilList;
+    QLog.e(paramString1, paramInt, paramString2, paramThrowable);
   }
   
-  public String b()
+  public void i(String paramString1, int paramInt, String paramString2)
   {
-    return this.jdField_b_of_type_JavaLangString;
+    QLog.i(paramString1, paramInt, paramString2);
   }
   
-  public List<URL> b()
+  public void i(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    QLog.i(paramString1, paramInt, paramString2, paramThrowable);
+  }
+  
+  public boolean isColorLevel()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public void w(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.w(paramString1, paramInt, paramString2);
+  }
+  
+  public void w(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w(paramString1, paramInt, paramString2, paramThrowable);
   }
 }
 

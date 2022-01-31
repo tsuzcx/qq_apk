@@ -1,15 +1,43 @@
-import android.content.Context;
-import android.os.AsyncTask;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-final class apdy
-  extends cy
+public class apdy
+  extends aozs
 {
-  apdy(Context paramContext) {}
+  aouj jdField_a_of_type_Aouj = null;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
+  public apdy(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    super.a(paramAsyncTask, paramInt);
-    cv.a(this.a, paramAsyncTask, paramInt, new apdz(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    a();
+  }
+  
+  public int a()
+  {
+    return 4;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Aouj = new apdz(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Aouj);
+  }
+  
+  public boolean a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.b);
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Aouj != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aouj);
+    }
   }
 }
 

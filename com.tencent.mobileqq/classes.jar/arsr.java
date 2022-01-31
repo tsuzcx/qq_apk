@@ -1,27 +1,34 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class arsr
-  implements View.OnClickListener
+class arsr
+  implements bfoq
 {
-  public arsr(MultiAIOFragment paramMultiAIOFragment) {}
+  arsr(arsq paramarsq, bfol parambfol, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramView = (TextView)MultiAIOFragment.a(this.a).findViewById(2131312583);
-    artu.a -= 1;
-    if (artu.a < 1) {
-      artu.a = 1;
+    this.jdField_a_of_type_Bfol.dismiss();
+    if (this.jdField_a_of_type_Boolean) {
+      switch (paramInt)
+      {
+      }
     }
-    paramView.setText(ajjy.a(2131641205) + artu.a);
-    MultiAIOFragment.c(this.a);
+    for (;;)
+    {
+      this.jdField_a_of_type_Arsq.b(false);
+      return;
+      arrl.a(BaseActivity.sTopActivity, this.jdField_a_of_type_Arsq.a().e, this.jdField_a_of_type_Arsq.a().b);
+      continue;
+      this.jdField_a_of_type_Arsq.g();
+      continue;
+      this.jdField_a_of_type_Arsq.g();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arsr
  * JD-Core Version:    0.7.0.1
  */

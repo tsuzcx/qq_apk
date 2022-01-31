@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import adcy;
-import aduf;
-import ajjy;
+import adoa;
+import aefe;
+import ajyc;
 import android.graphics.drawable.Drawable.ConstantState;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -32,8 +32,8 @@ public class MessageForPoke
   public int interactType = 0;
   public boolean isPlayed;
   public Drawable.ConstantState mBubbleBgState;
-  public adcy mFrameState = new adcy();
-  public aduf mUnlimitedState = new aduf();
+  public adoa mFrameState = new adoa();
+  public aefe mUnlimitedState = new aefe();
   public String minVersion;
   public String name;
   public int state;
@@ -68,25 +68,25 @@ public class MessageForPoke
     switch (this.interactType)
     {
     default: 
-      this.msg = ajjy.a(2131640834);
+      this.msg = ajyc.a(2131706619);
       return;
     case 1: 
-      this.msg = ajjy.a(2131640829);
+      this.msg = ajyc.a(2131706614);
       return;
     case 2: 
-      this.msg = ajjy.a(2131640808);
+      this.msg = ajyc.a(2131706593);
       return;
     case 3: 
-      this.msg = ajjy.a(2131640809);
+      this.msg = ajyc.a(2131706594);
       return;
     case 4: 
-      this.msg = ajjy.a(2131640796);
+      this.msg = ajyc.a(2131706581);
       return;
     case 5: 
       this.msg = "[666]";
       return;
     case 6: 
-      this.msg = ajjy.a(2131640811);
+      this.msg = ajyc.a(2131706596);
       return;
     }
     this.msg = ("[" + this.name + "]");

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import asuq;
-import atmp;
-import atmq;
+import atqu;
+import aukn;
+import auko;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class NearbyProfileDisplayTribePanel$17
@@ -10,11 +10,11 @@ public class NearbyProfileDisplayTribePanel$17
 {
   public void run()
   {
-    atmp localatmp = this.this$0.a.app.getEntityManagerFactory().createEntityManager();
-    if (localatmp != null)
+    aukn localaukn = this.this$0.a.app.getEntityManagerFactory().createEntityManager();
+    if (localaukn != null)
     {
-      localatmp.a(asuq.a(this.this$0));
-      localatmp.a();
+      localaukn.a(atqu.a(this.this$0));
+      localaukn.a();
     }
   }
 }

@@ -1,16 +1,58 @@
-import android.os.Bundle;
-import android.os.IInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqprotect.qsec.IRuntimeInterface;
+import com.tencent.qqprotect.qsec.QSecFramework;
+import mqq.app.MobileQQ;
 
-public abstract interface bfhh
-  extends IInterface
+public class bfhh
+  implements bfih, IRuntimeInterface
 {
-  public abstract Bundle a(String paramString, Bundle paramBundle);
+  private static volatile bfhh a;
   
-  public abstract void a(String paramString, Bundle paramBundle);
+  private bfhh()
+  {
+    QSecFramework.a(4L, new bfhi(this));
+  }
+  
+  public static bfhh a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new bfhh();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte, bfii parambfii)
+  {
+    try
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if (parambfii != null)
+      {
+        mxi.a(localQQAppInterface, new bfhk(paramArrayOfByte, parambfii), paramArrayOfByte, paramString);
+        return;
+      }
+      mxi.a(localQQAppInterface, new bfhj(this), paramArrayOfByte, paramString);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public String getInterfaceName()
+  {
+    return "CSP";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfhh
  * JD-Core Version:    0.7.0.1
  */

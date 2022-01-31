@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.subscript;
 
 import java.util.Iterator;
 import java.util.List;
-import rql;
+import sdd;
 
 class SubscriptFeedsActivity$10
   implements Runnable
@@ -12,9 +12,9 @@ class SubscriptFeedsActivity$10
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
-      rql localrql = (rql)localIterator.next();
-      if (localrql.b > 0) {
-        localrql.a();
+      sdd localsdd = (sdd)localIterator.next();
+      if (localsdd.b > 0) {
+        localsdd.a();
       }
     }
   }

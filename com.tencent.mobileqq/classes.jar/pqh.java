@@ -1,24 +1,21 @@
+import com.tencent.qphone.base.util.QLog;
+
 public class pqh
-  implements Cloneable
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c = -1;
-  public int d = -1;
-  public int e = -1;
-  public int f = -1;
-  
-  public pqh()
+  public static void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
+    a("0X800A833", "", "", "", new pqi().a("type", paramString2).a("msg", paramString1).a());
   }
   
-  public String toString()
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    return "VideoExtraRepoerData{JumpWayWhich=" + this.jdField_a_of_type_Int + ", InOneThreeSource=" + this.jdField_b_of_type_Int + ", videoTimePosition=" + this.d + ", videoDuration=" + this.e + ", needWhetherClickIn=" + this.jdField_b_of_type_Boolean + ", whetherClickIn=" + this.jdField_a_of_type_Boolean + ", InVideoChannelSource=" + this.c + ", videoFromType=" + this.f + '}';
+    QLog.i("PTSReport", 1, "[reportData], actionName = " + paramString1 + ", r2 = " + paramString2 + ", r3 = " + paramString3 + ", r4 = " + paramString4 + ", r5 = " + paramString5);
+    noo.a(null, "", paramString1, paramString1, 0, 0, paramString2, paramString3, paramString4, paramString5, false);
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    a("0X800A832", "", "", "", new pqi().a("type", paramString2).a("msg", paramString1).a());
   }
 }
 

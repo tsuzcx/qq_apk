@@ -1,47 +1,45 @@
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.biz.videostory.capture.PlayViewPagerAdapter;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
+import android.util.Property;
+import android.widget.ImageView;
 
-class wrx
-  implements bhwg<wsh>
+final class wrx
+  extends Property<ImageView, Matrix>
 {
-  wrx(wru paramwru) {}
-  
-  public void a(@Nullable wsh paramwsh)
+  wrx(Class paramClass, String paramString)
   {
-    if (paramwsh == null) {}
-    do
-    {
+    super(paramClass, paramString);
+  }
+  
+  public Matrix a(ImageView paramImageView)
+  {
+    return null;
+  }
+  
+  public void a(ImageView paramImageView, Matrix paramMatrix)
+  {
+    Drawable localDrawable = paramImageView.getDrawable();
+    if (localDrawable == null) {
       return;
-      if (paramwsh == wsh.a)
-      {
-        if ((wrn.a == null) || (wrn.a != bgxx.a())) {
-          bhcm.a().f("none");
-        }
-        wru.a(this.a).setVisibility(8);
-        return;
-      }
-      if (paramwsh == wsh.c)
-      {
-        wru.a(this.a).setVisibility(8);
-        return;
-      }
-    } while (paramwsh != wsh.b);
-    if (wru.a(this.a) != null)
-    {
-      paramwsh = wru.a(this.a).a();
-      if ((!TextUtils.isEmpty(paramwsh)) && (!"-1".equals(paramwsh))) {
-        bhcm.a().f(paramwsh);
-      }
     }
-    wru.a(this.a).setVisibility(0);
-    wru.b(this.a);
+    if (paramMatrix == null) {
+      localDrawable.setBounds(0, 0, paramImageView.getWidth(), paramImageView.getHeight());
+    }
+    for (;;)
+    {
+      paramImageView.invalidate();
+      return;
+      localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+      if (paramImageView.getImageMatrix() == null) {
+        paramImageView.setImageMatrix(new Matrix());
+      }
+      paramImageView.setImageMatrix(paramMatrix);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wrx
  * JD-Core Version:    0.7.0.1
  */

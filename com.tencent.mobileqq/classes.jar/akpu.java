@@ -1,63 +1,108 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import com.tencent.mobileqq.app.msgcache.MsgLruCache;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract class akpu
-  extends Binder
-  implements akpt
+public class akpu
 {
-  public akpu()
+  private static ConcurrentHashMap<String, akpu> d = new ConcurrentHashMap();
+  private MsgLruCache a;
+  protected ConcurrentHashMap<String, Object> a;
+  private ConcurrentHashMap<String, List<MessageRecord>> b = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, List<MessageRecord>> c = new ConcurrentHashMap();
+  
+  private akpu()
   {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_ComTencentMobileqqAppMsgcacheMsgLruCache = new MsgLruCache();
   }
   
-  public static akpt a(IBinder paramIBinder)
+  public static akpu a(String paramString)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof akpt))) {
-      return (akpt)localIInterface;
-    }
-    return new akpv(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    String str = paramString;
+    if (paramString == null)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      a(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      a(paramParcel1.readInt(), paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
+      paramString = "null";
+      str = paramString;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("MsgPool", 2, "getPoolInstance curUin is null");
+        str = paramString;
+      }
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-    b(paramParcel1.readInt(), paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    paramString = (akpu)d.get(str);
+    if (paramString == null) {
+      synchronized (d)
+      {
+        if (!d.containsKey(str))
+        {
+          paramString = new akpu();
+          d.put(str, paramString);
+          return paramString;
+        }
+        paramString = (akpu)d.get(str);
+      }
+    }
+    return paramString;
+  }
+  
+  public static void a(String arg0)
+  {
+    String str = ???;
+    if (??? == null)
+    {
+      ??? = "null";
+      str = ???;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("MsgPool", 2, "getPoolInstance curUin is null");
+        str = ???;
+      }
+    }
+    synchronized (d)
+    {
+      if (d.containsKey(str)) {
+        ((akpu)d.remove(str)).a().destroy();
+      }
+      return;
+    }
+  }
+  
+  public MsgLruCache a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppMsgcacheMsgLruCache;
+  }
+  
+  public Object a(String arg1, int paramInt)
+  {
+    String str = akpy.a(???, paramInt);
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {}
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    {
+      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, new Object());
+      }
+      return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+    }
+  }
+  
+  public ConcurrentHashMap<String, List<MessageRecord>> a()
+  {
+    if (akrz.a) {
+      return this.jdField_a_of_type_ComTencentMobileqqAppMsgcacheMsgLruCache;
+    }
+    return this.b;
+  }
+  
+  public ConcurrentHashMap<String, List<MessageRecord>> b()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akpu
  * JD-Core Version:    0.7.0.1
  */

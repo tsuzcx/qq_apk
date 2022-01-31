@@ -1,25 +1,36 @@
-import android.view.View;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.manager.Manager;
 
-class ajui
+public class ajui
+  implements Manager
 {
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<ajuh> b;
+  private bayh jdField_a_of_type_Bayh;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public Object a;
   
-  public ajui(ajue paramajue, View paramView, ajuh paramajuh)
+  public ajui(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramajuh);
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public ajuh a()
+  public bayh a()
   {
-    return (ajuh)this.b.get();
+    if (this.jdField_a_of_type_Bayh == null) {}
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Bayh == null) {
+        this.jdField_a_of_type_Bayh = new bayh(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      }
+      return this.jdField_a_of_type_Bayh;
+    }
   }
   
-  public View a()
+  public void onDestroy()
   {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (this.jdField_a_of_type_Bayh != null) {
+      this.jdField_a_of_type_Bayh.a();
+    }
   }
 }
 

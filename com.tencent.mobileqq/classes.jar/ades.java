@@ -1,17 +1,114 @@
-import android.content.Context;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.graphics.Matrix;
+import android.graphics.Path;
 
-class ades
-  implements apca
+public class ades
+  implements adej
 {
-  ades(adeq paramadeq, ChatMessage paramChatMessage, Context paramContext) {}
+  public static final adek<ades> a;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Path jdField_a_of_type_AndroidGraphicsPath;
+  private float b;
   
-  public void a()
+  static
   {
-    apck.a(this.jdField_a_of_type_Adeq.a, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_AndroidContentContext);
+    jdField_a_of_type_Adek = new adet();
   }
   
-  public void b() {}
+  public ades(adeh paramadeh)
+  {
+    paramadeh.a();
+    this.jdField_a_of_type_Float = paramadeh.a();
+    this.jdField_a_of_type_Long = paramadeh.a();
+    this.jdField_a_of_type_Int = paramadeh.a();
+    this.b = paramadeh.a();
+  }
+  
+  public ades(Path paramPath)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public Path a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsPath;
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(adeh paramadeh, int paramInt)
+  {
+    paramadeh.a(1);
+    paramadeh.a(this.jdField_a_of_type_Float);
+    paramadeh.a(this.jdField_a_of_type_Long);
+    paramadeh.a(this.jdField_a_of_type_Int);
+    paramadeh.a(this.b);
+  }
+  
+  public void a(ades paramades)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsPath != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramades.jdField_a_of_type_AndroidGraphicsPath);
+      this.b += paramades.b;
+    }
+  }
+  
+  public void a(Path paramPath)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+  }
+  
+  public float b()
+  {
+    return this.b;
+  }
+  
+  public void b(float paramFloat)
+  {
+    this.b = paramFloat;
+  }
+  
+  public void c(float paramFloat)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
+      return;
+    }
+    Matrix localMatrix = new Matrix();
+    localMatrix.postScale(paramFloat, paramFloat);
+    Path localPath = new Path();
+    localPath.addPath(this.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
+    this.jdField_a_of_type_AndroidGraphicsPath = localPath;
+  }
 }
 
 

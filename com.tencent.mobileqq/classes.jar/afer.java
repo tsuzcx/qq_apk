@@ -1,32 +1,18 @@
-import com.tencent.mobileqq.activity.contacts.fragment.AlphabetFriendFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
 
 public class afer
-  extends ajfo
+  implements ajud
 {
-  private afer(AlphabetFriendFragment paramAlphabetFriendFragment) {}
+  public afer(AddContactsView paramAddContactsView) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void a()
   {
-    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
-      AlphabetFriendFragment.a(this.a, 1400L, true);
-    }
-  }
-  
-  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
-      }
-      AlphabetFriendFragment.a(this.a, 1400L, false);
-    }
+    this.a.c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afer
  * JD-Core Version:    0.7.0.1
  */

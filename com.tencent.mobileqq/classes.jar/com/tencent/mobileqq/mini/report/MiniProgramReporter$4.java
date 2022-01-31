@@ -12,13 +12,13 @@ class MiniProgramReporter$4
   public void run()
   {
     if (this.val$singleDcData.dcid.get() == 7) {
-      MiniProgramReporter.access$400(this.this$0).add(this.val$singleDcData);
+      MiniProgramReporter.access$500(this.this$0).add(this.val$singleDcData);
     }
     for (;;)
     {
-      MiniProgramReporter.access$300(this.this$0);
+      MiniProgramReporter.access$400(this.this$0);
       return;
-      MiniProgramReporter.access$500(this.this$0).add(this.val$singleDcData);
+      MiniProgramReporter.access$600(this.this$0).add(this.val$singleDcData);
     }
   }
 }

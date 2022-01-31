@@ -1,8 +1,24 @@
-import android.support.annotation.NonNull;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.SingleLineTextView;
 
-public abstract interface ahpk
+public class ahpk
+  extends ahoa
 {
-  public abstract void a(@NonNull ahpo paramahpo);
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public DragTextView a;
+  public SingleLineTextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
 }
 
 

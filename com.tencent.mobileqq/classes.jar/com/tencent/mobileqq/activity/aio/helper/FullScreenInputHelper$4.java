@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import acwx;
-import bbmy;
+import adhy;
+import bcpw;
 
 public class FullScreenInputHelper$4
   implements Runnable
 {
-  public FullScreenInputHelper$4(acwx paramacwx) {}
+  public FullScreenInputHelper$4(adhy paramadhy) {}
   
   public void run()
   {
-    bbmy localbbmy = new bbmy(this.this$0.a);
-    localbbmy.a(bbmy.a(1));
-    localbbmy.b(1);
-    localbbmy.d(2000);
-    localbbmy.c(2131628475);
-    localbbmy.a();
+    bcpw localbcpw = new bcpw(this.this$0.a);
+    localbcpw.a(bcpw.a(1));
+    localbcpw.b(1);
+    localbcpw.d(2000);
+    localbcpw.c(2131694117);
+    localbcpw.a();
   }
 }
 

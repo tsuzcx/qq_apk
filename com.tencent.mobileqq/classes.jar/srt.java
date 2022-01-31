@@ -1,43 +1,8 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.utils.JsonORM;
-import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class srt
+public abstract interface srt
 {
-  @vlq(a="gametype")
-  public int a;
-  @vlq(a="gameid")
-  public String a;
-  @vlq(a="name")
-  public String b;
-  @vlq(a="result")
-  public String c;
+  public abstract void a(sqb paramsqb);
   
-  public static srt a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
-    {
-      paramString = (srt)JsonORM.a(new JSONObject(paramString), srt.class);
-      return paramString;
-    }
-    catch (JsonORM.JsonParseException paramString)
-    {
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-    }
-  }
+  public abstract void b(sqb paramsqb);
 }
 
 

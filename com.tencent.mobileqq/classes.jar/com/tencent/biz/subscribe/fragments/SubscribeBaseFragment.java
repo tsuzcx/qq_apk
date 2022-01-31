@@ -2,7 +2,7 @@ package com.tencent.biz.subscribe.fragments;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import alrv;
+import amgo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,11 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import baht;
-import baip;
-import bfhl;
+import bbiz;
+import bbjw;
+import bgpd;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
@@ -28,44 +29,50 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.io.File;
-import vvz;
-import vxn;
-import wcn;
-import wco;
-import wcp;
-import wcq;
-import wfz;
-import wwt;
-import wye;
+import java.util.HashMap;
+import wip;
+import wiw;
+import wkp;
+import wqa;
+import wqb;
+import wqc;
+import wqd;
+import wrt;
+import wsb;
+import wva;
+import xfr;
+import xhe;
 
 public abstract class SubscribeBaseFragment
   extends IphoneTitleBarFragment
+  implements wsb
 {
   public CertifiedAccountMeta.StFeed a;
-  protected alrv a;
+  protected amgo a;
   private Handler a;
   public ExtraTypeInfo a;
-  public wfz a;
+  protected wrt a;
+  public wva a;
   public boolean a;
   protected boolean b;
   
   private void a(int paramInt, ExtraTypeInfo paramExtraTypeInfo)
   {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) && (!baip.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get()))) {
-      wye.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "exp_" + wfz.a(paramExtraTypeInfo), paramInt, 0, new String[0]);
+    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) && (!bbjw.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get()))) {
+      xhe.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "exp_" + wva.a(paramExtraTypeInfo), paramInt, 0, new String[0]);
     }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Alrv != null) {
+    if (this.jdField_a_of_type_Amgo != null) {
       return;
     }
-    this.jdField_a_of_type_Alrv = new alrv(getActivity(), false, true);
-    this.jdField_a_of_type_Alrv.a(getActivity());
-    this.jdField_a_of_type_Alrv.a(new wco(this));
-    this.jdField_a_of_type_Alrv.a(new wcp(this));
-    this.jdField_a_of_type_Alrv.a(new wcq(this));
+    this.jdField_a_of_type_Amgo = new amgo(getActivity(), false, true);
+    this.jdField_a_of_type_Amgo.a(getActivity());
+    this.jdField_a_of_type_Amgo.a(new wqb(this));
+    this.jdField_a_of_type_Amgo.a(new wqc(this));
+    this.jdField_a_of_type_Amgo.a(new wqd(this));
   }
   
   private void c()
@@ -85,7 +92,7 @@ public abstract class SubscribeBaseFragment
     }
     for (;;)
     {
-      wye.a(str, wye.a(0L, System.currentTimeMillis() - l));
+      xhe.a(str, xhe.a(0L, System.currentTimeMillis() - l));
       return;
       str = "subscribe_open_video_detail_page_time";
       continue;
@@ -105,13 +112,47 @@ public abstract class SubscribeBaseFragment
   
   private void e()
   {
-    File localFile = new File(vvz.a());
-    if ((localFile.exists()) || (baht.a() == null))
+    File localFile = new File(wiw.a());
+    if ((localFile.exists()) || (bbiz.a() == null))
     {
       QLog.i("DownLoadZipFile", 1, "DownLoadZipFile Save file is exist");
       return;
     }
-    vvz.a(localFile, (String)wwt.a().a("KEY_SUBSCRIBE_LOADING_VIEW_DOWNLOAD_URL", "http://down.qq.com/video_story/certified_account/certified_account_download_pics.zip"));
+    wiw.a(localFile, (String)xfr.a().a("KEY_SUBSCRIBE_LOADING_VIEW_DOWNLOAD_URL", "https://down.qq.com/video_story/certified_account/certified_account_download_pics.zip"));
+  }
+  
+  private void f()
+  {
+    QLog.i("SubscribeBaseFragment", 1, "downloadAnimationPic");
+    String[] arrayOfString = wip.jdField_a_of_type_ArrayOfJavaLangString;
+    int j = arrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      File localFile;
+      if (i < j)
+      {
+        str1 = arrayOfString[i];
+        str2 = (String)wip.b.get(str1);
+        localFile = new File(str2);
+        if ((localFile.exists()) && (localFile.isDirectory())) {
+          QLog.i("DownLoadZipFile", 1, "DownLoadZipFile " + str2 + " Save file is exist");
+        }
+      }
+      else
+      {
+        return;
+      }
+      String str2 = (String)wip.jdField_c_of_type_JavaUtilHashMap.get(str1);
+      String str1 = (String)wip.jdField_a_of_type_JavaUtilHashMap.get(str1);
+      wiw.a(localFile, (String)xfr.a().a(str2, str1), wip.jdField_c_of_type_JavaLangString);
+      i += 1;
+    }
+  }
+  
+  public int a()
+  {
+    return 0;
   }
   
   public Handler a()
@@ -126,23 +167,9 @@ public abstract class SubscribeBaseFragment
   
   protected abstract TextView a();
   
-  protected String a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) {}
-    switch (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType)
-    {
-    case 7001: 
-    default: 
-      return "certified_account_preload_pic";
-    case 7000: 
-      return "certified_account_preload_video";
-    }
-    return "certified_account_personal_preload_loading";
-  }
-  
   protected void a()
   {
-    if (vvz.a()) {
+    if (wiw.a()) {
       d();
     }
     a(this.mContentView);
@@ -152,25 +179,30 @@ public abstract class SubscribeBaseFragment
   
   protected abstract void a(View paramView);
   
-  public void a(vxn paramvxn)
+  public void a(wkp paramwkp)
   {
-    if (paramvxn != null)
+    if (paramwkp != null)
     {
-      if ((paramvxn.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null)) {
-        paramvxn.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+      if ((paramwkp.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null)) {
+        paramwkp.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
       }
-      if ((paramvxn.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo == null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null)) {
-        paramvxn.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+      if ((paramwkp.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo == null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null)) {
+        paramwkp.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
       }
-      if (this.jdField_a_of_type_Wfz != null)
+      if (this.jdField_a_of_type_Wva != null)
       {
-        a(paramvxn.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
-        this.jdField_a_of_type_Wfz.a(paramvxn, this.jdField_a_of_type_Alrv);
+        a(paramwkp.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
+        this.jdField_a_of_type_Wva.a(paramwkp, this.jdField_a_of_type_Amgo);
       }
-      if ((isNeedMiniMsg()) && (a() != null) && (paramvxn.jdField_a_of_type_Int == 1) && (a().getVisibility() == 0) && (getMiniMsgUser() != null)) {
+      if ((isNeedMiniMsg()) && (a() != null) && (paramwkp.jdField_a_of_type_Int == 1) && (a().getVisibility() == 0) && (getMiniMsgUser() != null)) {
         getMiniMsgUser().onClick(a());
       }
     }
+  }
+  
+  public int[] a(int paramInt1, int paramInt2)
+  {
+    return new int[2];
   }
   
   public void b(CertifiedAccountMeta.StFeed paramStFeed)
@@ -184,6 +216,7 @@ public abstract class SubscribeBaseFragment
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     e();
+    f();
     if (getActivity().getIntent() != null) {
       this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = new CertifiedAccountMeta.StFeed();
     }
@@ -194,10 +227,23 @@ public abstract class SubscribeBaseFragment
       if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo == null) {
         this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = new ExtraTypeInfo();
       }
-      this.jdField_a_of_type_Wfz = new wfz(getActivity(), new wcn(this));
+      this.jdField_a_of_type_Wva = new wva(getActivity(), new wqa(this));
+      if (getActivity().getIntent().hasExtra("bundle_key_parms_extra"))
+      {
+        paramLayoutInflater = getActivity().getIntent().getBundleExtra("bundle_key_parms_extra");
+        if (wrt.a(paramLayoutInflater))
+        {
+          this.jdField_a_of_type_Wrt = new wrt(paramLayoutInflater, this);
+          if (this.jdField_a_of_type_Wrt.a() != null)
+          {
+            paramLayoutInflater = new RelativeLayout.LayoutParams(-1, -1);
+            paramLayoutInflater.addRule(3, 2131375327);
+            this.titleRoot.addView(this.jdField_a_of_type_Wrt.a(), paramLayoutInflater);
+          }
+        }
+      }
       a();
       c();
-      b();
       return;
     }
     catch (Exception paramLayoutInflater)
@@ -255,7 +301,7 @@ public abstract class SubscribeBaseFragment
       a(localStFeed);
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
       return;
-      bfhl.a(super.getActivity(), paramIntent);
+      bgpd.a(super.getActivity(), paramIntent);
       return;
     }
     catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
@@ -270,7 +316,7 @@ public abstract class SubscribeBaseFragment
   public boolean onBackEvent()
   {
     if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) {
-      wye.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_" + wfz.a(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo), "clk_return", 0, 0, new String[] { "", "" });
+      xhe.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_" + wva.a(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo), "clk_return", 0, 0, new String[] { "", "" });
     }
     if ((getActivity() != null) && (getActivity().getIntent() != null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.sourceType == 9001))
     {
@@ -283,29 +329,30 @@ public abstract class SubscribeBaseFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Alrv != null) {
-      this.jdField_a_of_type_Alrv.c();
+    if (this.jdField_a_of_type_Amgo != null) {
+      this.jdField_a_of_type_Amgo.c();
     }
     this.b = true;
     a().removeCallbacksAndMessages(null);
-    if (this.jdField_a_of_type_Wfz != null) {
-      this.jdField_a_of_type_Wfz.b();
+    if (this.jdField_a_of_type_Wva != null) {
+      this.jdField_a_of_type_Wva.b();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Alrv != null) {
-      this.jdField_a_of_type_Alrv.b();
+    if (this.jdField_a_of_type_Amgo != null) {
+      this.jdField_a_of_type_Amgo.b();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Alrv != null) {
-      this.jdField_a_of_type_Alrv.a();
+    b();
+    if (this.jdField_a_of_type_Amgo != null) {
+      this.jdField_a_of_type_Amgo.a();
     }
   }
 }

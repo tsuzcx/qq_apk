@@ -1,17 +1,21 @@
-import android.media.MediaCodec.BufferInfo;
-import java.nio.ByteBuffer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
 
 public class auzi
+  implements View.OnClickListener
 {
-  public int a;
-  public MediaCodec.BufferInfo a;
-  public ByteBuffer a;
+  public auzi(ProfileHeaderView paramProfileHeaderView, View paramView) {}
   
-  public auzi(auzh paramauzh) {}
+  public void onClick(View paramView)
+  {
+    auvq.a().c(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auzi
  * JD-Core Version:    0.7.0.1
  */

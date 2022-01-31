@@ -1,10 +1,11 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.DevlockPushActivity;
-
 public class aaoh
-  extends Handler
 {
-  public aaoh(DevlockPushActivity paramDevlockPushActivity) {}
+  public int a;
+  public long a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public long c;
 }
 
 

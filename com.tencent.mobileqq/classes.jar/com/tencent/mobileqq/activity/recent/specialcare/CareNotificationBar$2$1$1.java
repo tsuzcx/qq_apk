@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.recent.specialcare;
 
-import ahel;
+import ahrb;
 import android.animation.ValueAnimator;
 
 public class CareNotificationBar$2$1$1
   implements Runnable
 {
-  public CareNotificationBar$2$1$1(ahel paramahel) {}
+  public CareNotificationBar$2$1$1(ahrb paramahrb) {}
   
   public void run()
   {

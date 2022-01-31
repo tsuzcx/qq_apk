@@ -1,54 +1,25 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.LikeSettingActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class abbt
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public abbt(LikeSettingActivity paramLikeSettingActivity) {}
+  public abbt(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramCompoundButton == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
+    if (this.a.app != null)
     {
-      ((asey)this.a.app.a(66)).a(paramBoolean);
-      this.a.app.reportClickEvent("CliOper", "0X8006729");
+      paramView = new Intent();
+      paramView.putExtras(this.a.getIntent().getExtras());
+      paramView.putExtra("extra_choose_friend_uin", this.a.app.getAccount());
+      paramView.putExtra("extra_choose_friend_name", this.a.app.getCurrentNickname());
+      this.a.setResult(-1, paramView);
+      this.a.finish();
     }
-    do
-    {
-      return;
-      if (paramCompoundButton == this.a.c.a())
-      {
-        this.a.app.e(true, paramBoolean);
-        return;
-      }
-      if (paramCompoundButton == this.a.b.a())
-      {
-        localQQAppInterface = this.a.app;
-        if (paramBoolean) {}
-        for (paramCompoundButton = "1";; paramCompoundButton = "0")
-        {
-          awqx.b(localQQAppInterface, "dc00898", "", "", "0X8007614", "0X8007614", 0, 0, paramCompoundButton, "", "", "");
-          this.a.jdField_a_of_type_Ajfi.h(paramBoolean);
-          return;
-        }
-      }
-    } while (paramCompoundButton != this.a.d.a());
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean) {}
-    for (paramCompoundButton = "1";; paramCompoundButton = "2")
-    {
-      awqx.b(localQQAppInterface, "dc00898", "", "", "0X800791B", "0X800791B", 0, 0, paramCompoundButton, "", "", "");
-      this.a.jdField_a_of_type_Ajfi.f(paramBoolean);
-      if (paramBoolean) {
-        break;
-      }
-      this.a.b.setVisibility(8);
-      return;
-    }
-    this.a.b.setVisibility(0);
   }
 }
 

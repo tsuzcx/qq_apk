@@ -1,22 +1,6 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.polymeric.EventCallback;
-
-class pcf
-  implements beri
+public abstract interface pcf
 {
-  pcf(pbz parampbz) {}
-  
-  public void a() {}
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder)
-  {
-    int i = pbz.a(this.a).a(pbz.a(this.a).b());
-    paramViewHolder = pbz.a(this.a).getEventCallback();
-    if (paramViewHolder != null) {
-      paramViewHolder.onPagerChange(i);
-    }
-    this.a.a(i);
-  }
+  public abstract void F_();
 }
 
 

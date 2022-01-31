@@ -1,92 +1,118 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Environment;
-import android.os.StatFs;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.1;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.2;
-import java.io.File;
-import java.text.DecimalFormat;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
-public final class akkv
+public class akkv
+  implements Comparator<aukm>
 {
-  public static String a(int paramInt)
+  private boolean a;
+  
+  public akkv(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder(30);
-    localStringBuilder.append("录制中 (");
-    int i = paramInt / 60;
-    paramInt -= i * 60;
-    if (i < 10)
-    {
-      localStringBuilder.append("0").append(i);
-      localStringBuilder.append(":");
-      if (paramInt >= 10) {
-        break label91;
+    this.a = paramBoolean;
+  }
+  
+  public int a(aukm paramaukm1, aukm paramaukm2)
+  {
+    paramaukm1 = (RecentUser)paramaukm1;
+    paramaukm2 = (RecentUser)paramaukm2;
+    long l3 = Math.max(paramaukm1.lastmsgtime, paramaukm1.lastmsgdrafttime);
+    long l2 = Math.max(paramaukm2.lastmsgtime, paramaukm2.lastmsgdrafttime);
+    long l1;
+    if (this.a) {
+      if ((paramaukm1.showUpTime > 0L) && (l3 == 0L))
+      {
+        l1 = Math.max(paramaukm1.opTime, paramaukm1.showUpTime);
+        if ((paramaukm2.showUpTime <= 0L) || (l2 != 0L)) {
+          break label194;
+        }
+        l3 = Math.max(paramaukm2.opTime, paramaukm2.showUpTime);
+        l2 = l1;
+        l1 = l3;
       }
-      localStringBuilder.append("0").append(paramInt);
     }
     for (;;)
     {
-      localStringBuilder.append(")");
-      return localStringBuilder.toString();
-      localStringBuilder.append(i);
-      break;
-      label91:
-      localStringBuilder.append(paramInt);
+      if (l2 > l1)
+      {
+        l1 = 3L;
+        label117:
+        l3 = l1;
+        if (!this.a) {
+          break label280;
+        }
+        l2 = l1;
+        if (paramaukm1.showUpTime > 0L) {
+          l2 = l1 | 0x1000;
+        }
+        l3 = l2;
+        if (paramaukm2.showUpTime <= 0L) {
+          break label280;
+        }
+        l1 = 0x2 | 0x1000;
+        label167:
+        if (l2 >= l1) {
+          break label269;
+        }
+        return 1;
+        l1 = l3;
+        if (l3 != 0L) {
+          break;
+        }
+        l1 = paramaukm1.opTime;
+        break;
+        label194:
+        if (l2 != 0L) {
+          break label310;
+        }
+        l3 = paramaukm2.opTime;
+        l2 = l1;
+        l1 = l3;
+        continue;
+        if (l3 != 0L) {
+          break label304;
+        }
+      }
+      label269:
+      label280:
+      label304:
+      for (l1 = paramaukm1.opTime;; l1 = l3)
+      {
+        if (l2 == 0L)
+        {
+          l3 = paramaukm2.opTime;
+          l2 = l1;
+          l1 = l3;
+          break;
+          if (l2 < l1)
+          {
+            l1 = 1L;
+            break label117;
+          }
+          l1 = 2L;
+          break label117;
+          if (l2 == l1) {
+            return 0;
+          }
+          return -1;
+          l2 = l3;
+          l1 = 2L;
+          break label167;
+        }
+        l3 = l1;
+        l1 = l2;
+        l2 = l3;
+        break;
+      }
+      label310:
+      l3 = l1;
+      l1 = l2;
+      l2 = l3;
     }
-  }
-  
-  public static void a(File paramFile)
-  {
-    vlm.a(BaseApplicationImpl.getContext(), paramFile);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    ThreadManager.getUIHandler().post(new ARRecordUtils.1(paramString1, paramString2));
-  }
-  
-  public static void a(String paramString, boolean paramBoolean)
-  {
-    ThreadManager.getUIHandler().post(new ARRecordUtils.2(paramBoolean, paramString));
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    baig.a(BaseApplicationImpl.getApplication().getSharedPreferences("ARRecordUtils_AR", 4).edit().putBoolean("ARVideoRecordPressKey12", paramBoolean));
-  }
-  
-  public static boolean a()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("ARRecordUtils_AR", 4).getBoolean("ARVideoRecordPressKey12", false);
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath());
-    int i = localStatFs.getAvailableBlocks();
-    long l = localStatFs.getBlockSize();
-    return i * l >= paramLong;
-  }
-  
-  public static String b(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(10);
-    DecimalFormat localDecimalFormat = new DecimalFormat(".00");
-    double d = paramInt / 1024.0F / 1024.0F;
-    if (d < 1.0D) {
-      localStringBuilder.append(0);
-    }
-    localStringBuilder.append(localDecimalFormat.format(d));
-    localStringBuilder.append("M");
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akkv
  * JD-Core Version:    0.7.0.1
  */

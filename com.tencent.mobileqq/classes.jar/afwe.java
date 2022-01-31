@@ -1,22 +1,50 @@
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.widget.AbsListView;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
+import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
 
 public class afwe
-  extends afwj
+  extends apwx
 {
-  public afwe(AvatarPendantActivity paramAvatarPendantActivity)
-  {
-    super(paramAvatarPendantActivity);
-  }
+  public afwe(ChatHistoryBaseTenDocFragment paramChatHistoryBaseTenDocFragment) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(View paramView)
   {
-    if (this.a.e == AvatarPendantActivity.d) {}
-    while (Build.VERSION.SDK_INT < 14) {
+    if (paramView.getId() == 2131365764) {
+      ChatHistoryBaseTenDocFragment.a(this.a);
+    }
+    while ((paramView.getTag() instanceof String)) {
       return;
     }
-    this.a.b();
+    TencentDocItem localTencentDocItem = ((afwb)paramView.getTag()).a;
+    if (this.a.c)
+    {
+      this.a.jdField_a_of_type_Agbf.a(localTencentDocItem);
+      ChatHistoryBaseTenDocFragment.a(this.a).notifyDataSetChanged();
+      return;
+    }
+    paramView = "unknown";
+    if (apef.b(localTencentDocItem.mUrl)) {
+      paramView = "doc";
+    }
+    for (;;)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("url", localTencentDocItem.mUrl);
+      localBundle.putString("tdsourcetag", "s_qq_history_tab");
+      localBundle.putString("tdsourcetype", paramView + ChatHistoryBaseTenDocFragment.a(this.a));
+      TeamWorkDocEditBrowserActivity.a(ChatHistoryBaseTenDocFragment.a(this.a), localBundle, false);
+      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A16B", "0X800A16B", ChatHistoryBaseTenDocFragment.a(this.a), 0, "", "", "s_qq_history_tab", paramView);
+      return;
+      if (apef.e(localTencentDocItem.mUrl)) {
+        paramView = "form";
+      } else if (apef.d(localTencentDocItem.mUrl)) {
+        paramView = "ppt";
+      } else if (apef.c(localTencentDocItem.mUrl)) {
+        paramView = "sheet";
+      }
+    }
   }
 }
 

@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.vip.KCWraperV2.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
 import com.tencent.qphone.base.util.QLog;
-import dualsim.common.ILogPrint;
 
-public class batw
-  implements ILogPrint
+class batw
+  implements DialogInterface.OnDismissListener
 {
-  public batw(KCWraperV2.1 param1) {}
+  batw(batu parambatu) {}
   
-  public void print(String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    String str2 = this.a.this$0.a();
-    String str1 = paramString;
-    if (paramString == null) {
-      str1 = "\n";
+    if ((this.a.jdField_a_of_type_Int == -1) && ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)))
+    {
+      ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopShareUtility", 2, "mShareActionSheet noItemClick, onDismiss");
+      }
     }
-    QLog.e(str2, 1, str1);
   }
 }
 

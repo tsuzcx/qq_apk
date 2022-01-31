@@ -1,22 +1,27 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import com.tencent.qphone.base.util.QLog;
 
-public class akxj
-  implements MessageQueue.IdleHandler
+class akxj
+  implements ServiceConnection
 {
-  public akxj(ARScanEntryView paramARScanEntryView) {}
+  akxj(akxi paramakxi) {}
   
-  public boolean queueIdle()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
+    akxi.a(this.a, alej.a(paramIBinder));
     if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "queueIdle called ");
+      QLog.d("ARGlobalRemoteManager", 2, "onServiceConnected ARGlobalRemoteManager=" + akxi.a(this.a));
     }
-    if ((ARScanEntryView.a(this.a) != null) && (this.a.m)) {
-      ARScanEntryView.a(this.a).c();
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    akxi.a(this.a, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("ARGlobalRemoteManager", 2, "onServiceDisconnected ARGlobalRemoteManager=" + akxi.a(this.a));
     }
-    return false;
   }
 }
 

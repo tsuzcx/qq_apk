@@ -1,18 +1,9 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
-
 public final class aupu
-  implements Parcelable.Creator<ReceiptMessageReadMemberListFragment.MemberInfo>
+  extends aupf
 {
-  public ReceiptMessageReadMemberListFragment.MemberInfo a(Parcel paramParcel)
+  protected int c()
   {
-    return new ReceiptMessageReadMemberListFragment.MemberInfo(paramParcel);
-  }
-  
-  public ReceiptMessageReadMemberListFragment.MemberInfo[] a(int paramInt)
-  {
-    return new ReceiptMessageReadMemberListFragment.MemberInfo[paramInt];
+    return 512;
   }
 }
 

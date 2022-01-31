@@ -1,23 +1,8 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil.10.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
 
-public final class rts
-  implements BusinessObserver
+public abstract interface rts
 {
-  rts(QQAppInterface paramQQAppInterface) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountUtil.10.1(this, paramBoolean, paramBundle), 10L);
-  }
+  public abstract void a(SelectPositionModule.PositionData paramPositionData);
 }
 
 

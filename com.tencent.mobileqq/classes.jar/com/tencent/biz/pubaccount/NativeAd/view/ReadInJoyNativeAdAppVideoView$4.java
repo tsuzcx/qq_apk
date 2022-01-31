@@ -4,9 +4,9 @@ import android.os.Handler;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import nbe;
-import nmv;
-import ypk;
+import nmf;
+import nyg;
+import yze;
 
 class ReadInJoyNativeAdAppVideoView$4
   implements Runnable
@@ -21,8 +21,8 @@ class ReadInJoyNativeAdAppVideoView$4
       ReadInJoyNativeAdAppVideoView.a(this.this$0, ReadInJoyNativeAdAppVideoView.a(this.this$0).getDuration());
       int i = (int)((float)l * 1.0F * ReadInJoyNativeAdAppVideoView.b(this.this$0) / (float)ReadInJoyNativeAdAppVideoView.a(this.this$0) + 0.5D);
       ReadInJoyNativeAdAppVideoView.a(this.this$0).setProgress(i);
-      ReadInJoyNativeAdAppVideoView.a(this.this$0).setText(ypk.a(l));
-      ReadInJoyNativeAdAppVideoView.b(this.this$0).setText(ypk.a(ReadInJoyNativeAdAppVideoView.a(this.this$0)));
+      ReadInJoyNativeAdAppVideoView.a(this.this$0).setText(yze.a(l));
+      ReadInJoyNativeAdAppVideoView.b(this.this$0).setText(yze.a(ReadInJoyNativeAdAppVideoView.a(this.this$0)));
       if (ReadInJoyNativeAdAppVideoView.a(this.this$0) - l >= 50L) {
         break label350;
       }
@@ -30,7 +30,7 @@ class ReadInJoyNativeAdAppVideoView$4
       {
         ReadInJoyNativeAdAppVideoView.a(this.this$0, (int)ReadInJoyNativeAdAppVideoView.a(this.this$0));
         ReadInJoyNativeAdAppVideoView.b(this.this$0, 1);
-        nbe.a(new nmv().a(ReadInJoyNativeAdAppVideoView.a(this.this$0)).a(this.this$0.getContext()).a(nbe.f).b(nbe.O).a(ReadInJoyNativeAdAppVideoView.a(this.this$0)).a(nbe.a(ReadInJoyNativeAdAppVideoView.c(this.this$0), ReadInJoyNativeAdAppVideoView.d(this.this$0), ReadInJoyNativeAdAppVideoView.e(this.this$0), ReadInJoyNativeAdAppVideoView.f(this.this$0), ReadInJoyNativeAdAppVideoView.g(this.this$0), ReadInJoyNativeAdAppVideoView.h(this.this$0), (int)ReadInJoyNativeAdAppVideoView.a(this.this$0), nbe.aF, 0)).a());
+        nmf.a(new nyg().a(ReadInJoyNativeAdAppVideoView.a(this.this$0)).a(this.this$0.getContext()).a(nmf.f).b(nmf.O).a(ReadInJoyNativeAdAppVideoView.a(this.this$0)).a(nmf.a(ReadInJoyNativeAdAppVideoView.c(this.this$0), ReadInJoyNativeAdAppVideoView.d(this.this$0), ReadInJoyNativeAdAppVideoView.e(this.this$0), ReadInJoyNativeAdAppVideoView.f(this.this$0), ReadInJoyNativeAdAppVideoView.g(this.this$0), ReadInJoyNativeAdAppVideoView.h(this.this$0), (int)ReadInJoyNativeAdAppVideoView.a(this.this$0), nmf.aG, 0)).a());
         ReadInJoyNativeAdAppVideoView.c(this.this$0, 0);
         ReadInJoyNativeAdAppVideoView.d(this.this$0, 1);
         ReadInJoyNativeAdAppVideoView.b(this.this$0, 0);

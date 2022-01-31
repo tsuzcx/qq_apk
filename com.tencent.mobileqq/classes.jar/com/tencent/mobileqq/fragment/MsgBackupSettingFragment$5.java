@@ -1,36 +1,29 @@
 package com.tencent.mobileqq.fragment;
 
-import aael;
 import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import asog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msgbackup.transport.MsgBackupEndPoint;
+import com.tencent.mobileqq.msgbackup.transport.MsgBackupJniProxy;
+import com.tencent.mobileqq.msgbackup.transport.MsgBackupNotifier;
+import com.tencent.qphone.base.util.QLog;
 
 class MsgBackupSettingFragment$5
   implements Runnable
 {
-  MsgBackupSettingFragment$5(MsgBackupSettingFragment paramMsgBackupSettingFragment, int paramInt, SessionInfo paramSessionInfo) {}
+  MsgBackupSettingFragment$5(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
   
   public void run()
   {
-    int i = 0;
-    for (;;)
-    {
-      if (i < this.jdField_a_of_type_Int)
-      {
-        aael.b(this.this$0.getActivity().app, this.this$0.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, String.valueOf(i));
-        try
-        {
-          Thread.sleep(20L);
-          i += 1;
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
-          {
-            localInterruptedException.printStackTrace();
-          }
-        }
-      }
-    }
+    QLog.d("MsgBackup", 1, "loadSo start");
+    MsgBackupJniProxy localMsgBackupJniProxy = new MsgBackupJniProxy(this.this$0.getActivity());
+    QLog.d("MsgBackup", 1, "loadSo end");
+    long l = localMsgBackupJniProxy.createSession(1, Long.parseLong(this.this$0.getActivity().app.getCurrentAccountUin()), new MsgBackupNotifier());
+    QLog.d("MsgBackup", 1, "createSession end, session = " + l);
+    MsgBackupSettingFragment.a(this.this$0, new MsgBackupEndPoint());
+    MsgBackupSettingFragment.b(this.this$0, new MsgBackupEndPoint());
+    int i = localMsgBackupJniProxy.start(l, MsgBackupSettingFragment.a(this.this$0), MsgBackupSettingFragment.b(this.this$0));
+    QLog.d("MsgBackup", 1, "after start called with ret = " + i + ", ipv4 = " + asog.a(MsgBackupSettingFragment.a(this.this$0).ipv4) + ", port = " + MsgBackupSettingFragment.a(this.this$0).port);
   }
 }
 

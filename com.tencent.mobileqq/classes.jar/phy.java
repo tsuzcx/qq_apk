@@ -1,22 +1,17 @@
-import android.view.MotionEvent;
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 class phy
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  phy(pht parampht, LinearLayout paramLinearLayout, RelativeLayout paramRelativeLayout) {}
+  phy(phw paramphw, Context paramContext, ArticleInfo paramArticleInfo) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
-    }
-    return false;
+    onk.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2, false, 6, false);
+    rap.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
   }
 }
 

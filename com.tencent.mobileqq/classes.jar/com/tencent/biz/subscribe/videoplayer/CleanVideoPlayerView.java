@@ -2,7 +2,7 @@ package com.tencent.biz.subscribe.videoplayer;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import tqg;
+import udc;
 
 public class CleanVideoPlayerView
   extends VideoPlayerView
@@ -19,9 +19,9 @@ public class CleanVideoPlayerView
     super.a();
   }
   
-  public void a_(tqg paramtqg)
+  public void a_(udc paramudc)
   {
-    super.a_(paramtqg);
+    super.a_(paramudc);
   }
 }
 

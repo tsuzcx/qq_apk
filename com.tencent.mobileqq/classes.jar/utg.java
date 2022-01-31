@@ -1,15 +1,10 @@
-public class utg
+import java.util.List;
+
+public abstract interface utg
 {
-  public final int a;
-  public final CharSequence a;
-  public final int b;
+  public abstract void a(String paramString, List<uuf> paramList);
   
-  public utg(int paramInt1, int paramInt2, CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

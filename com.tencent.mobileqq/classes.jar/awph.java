@@ -1,22 +1,17 @@
-import android.widget.ImageView;
-
-public final class awph
-  implements awny
+public class awph
 {
-  public awph(ImageView paramImageView1, ImageView paramImageView2) {}
+  public int a;
+  public CharSequence a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
   
-  public void a()
-  {
-    if ((this.a != null) && (this.b != null))
-    {
-      this.a.setVisibility(8);
-      this.b.setVisibility(8);
-    }
-  }
+  public awph(awpf paramawpf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awph
  * JD-Core Version:    0.7.0.1
  */

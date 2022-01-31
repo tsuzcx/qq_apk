@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class RecTroopBusinessItem
-  extends atmo
+  extends aukm
 {
   public String btnText;
   public String des;
   public long endTime;
   public String iconUrl;
-  @atoc
+  @auma
   public String id;
   public String jumpParam;
   public int jumpType;

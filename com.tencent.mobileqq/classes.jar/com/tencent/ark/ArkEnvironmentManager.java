@@ -22,7 +22,6 @@ public class ArkEnvironmentManager
   private HashMap<String, Long> _logTimestamp = new HashMap();
   private String mCurUin;
   private ArkEnvironmentManager.IDataReport mDataReport;
-  private String mInnerRootDirectory;
   boolean mIsAccelerationChecked = false;
   boolean mIsDebug = false;
   boolean mIsHardwareAcceleration = false;
@@ -163,12 +162,12 @@ public class ArkEnvironmentManager
   
   public String getAppIconDirectory()
   {
-    return this.mInnerRootDirectory + "/Icon";
+    return this.mRootDirectory + "/Icon";
   }
   
   public String getAppInstallDirectory()
   {
-    return this.mInnerRootDirectory + "/Install";
+    return this.mRootDirectory + "/Install";
   }
   
   public String getAppResPath(String paramString)
@@ -433,11 +432,6 @@ public class ArkEnvironmentManager
   public void setHardwareDisableList(JSONObject paramJSONObject)
   {
     EGLContextHolder.setDeviceMatcher(paramJSONObject);
-  }
-  
-  public void setInnerRootDirectory(String paramString)
-  {
-    this.mInnerRootDirectory = paramString;
   }
   
   public void setLibraryLoader(ArkEnvironmentManager.LibraryLoader paramLibraryLoader)

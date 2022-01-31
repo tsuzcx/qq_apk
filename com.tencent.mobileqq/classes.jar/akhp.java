@@ -1,27 +1,26 @@
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class akhp
+  extends RecyclablePool.Recyclable
 {
-  public static Object a(byte[] paramArrayOfByte)
+  public int a;
+  public long a;
+  ConcurrentHashMap<String, Long> a;
+  long b;
+  
+  public akhp()
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    return new ObjectInputStream(new ByteArrayInputStream(paramArrayOfByte)).readObject();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(4);
   }
   
-  public static byte[] a(Serializable paramSerializable)
+  public void recycle()
   {
-    if (paramSerializable == null) {
-      return null;
-    }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    new ObjectOutputStream(localByteArrayOutputStream).writeObject(paramSerializable);
-    return localByteArrayOutputStream.toByteArray();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    super.recycle();
   }
 }
 

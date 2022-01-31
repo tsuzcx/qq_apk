@@ -1,8 +1,8 @@
 package com.tencent.tmassistantbase.util;
 
-class aa
+public class aa
 {
-  public static Settings a = new Settings(null);
+  public static void a(String paramString) {}
 }
 
 

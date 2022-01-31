@@ -1,20 +1,20 @@
 package dov.com.tencent.mobileqq.activity.richmedia.state;
 
-import bjaq;
-import bjax;
-import urk;
+import bkrc;
+import bkrj;
+import veg;
 
 public class RMVideoRecordState$3
   implements Runnable
 {
-  public RMVideoRecordState$3(bjaq parambjaq) {}
+  public RMVideoRecordState$3(bkrc parambkrc) {}
   
   public void run()
   {
     RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
     if (!localRMVideoStateMgr.a())
     {
-      urk.c("RMRecordState", "run record finish, but state is not right");
+      veg.c("RMRecordState", "run record finish, but state is not right");
       return;
     }
     this.this$0.b();

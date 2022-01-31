@@ -1,16 +1,22 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
 class aswh
-  implements begy
+  extends BroadcastReceiver
 {
-  aswh(asvw paramasvw) {}
+  aswh(aswe paramaswe) {}
   
-  public void onDismiss()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    asvw.a(this.a, this.a.b, false);
+    if ((paramIntent != null) && ("BROAD_CAST_CALL_PAGE_SHARE".equals(paramIntent.getAction()))) {
+      aswe.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aswh
  * JD-Core Version:    0.7.0.1
  */

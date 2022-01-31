@@ -1,17 +1,19 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.VideoControlUI;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class lyu
-  implements DialogInterface.OnClickListener
+class lyu
+  implements DialogInterface.OnDismissListener
 {
-  public lyu(VideoControlUI paramVideoControlUI, long paramLong) {}
+  lyu(lys paramlys) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a != null) {
-      QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c, 1, "showPermissionDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
+    if (QLog.isColorLevel()) {
+      QLog.w("ShareChat", 1, "ShareActionSheetBuilder.onDismiss, mChoosedChannel[" + this.a.jdField_a_of_type_Int + "], mIHandle[" + this.a.jdField_a_of_type_Lyx + "]");
+    }
+    if ((this.a.jdField_a_of_type_Int == -1) && (this.a.jdField_a_of_type_Lyx != null)) {
+      this.a.a(this.a.jdField_a_of_type_Int, this.a.b, 1);
     }
   }
 }

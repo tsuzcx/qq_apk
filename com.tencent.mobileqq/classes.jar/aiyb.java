@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
-import java.util.List;
+import android.util.LruCache;
 
-public abstract interface aiyb
+class aiyb
+  extends LruCache<String, aiyc>
 {
-  public abstract void a(aiyc paramaiyc);
+  aiyb(aiya paramaiya, int paramInt)
+  {
+    super(paramInt);
+  }
   
-  public abstract void a(List<TraceData> paramList);
-  
-  public abstract void b(List<TraceData> paramList);
+  protected int a(String paramString, aiyc paramaiyc)
+  {
+    if ((paramaiyc == null) || (paramaiyc.a == null)) {
+      return 0;
+    }
+    return paramaiyc.a.length;
+  }
 }
 
 

@@ -1,10 +1,23 @@
-public abstract interface aldw
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceActInfo;
+
+public final class aldw
+  implements Parcelable.Creator<ARScanStarFaceActInfo>
 {
-  public abstract void a(aldz paramaldz, boolean paramBoolean, byte[] paramArrayOfByte);
+  public ARScanStarFaceActInfo a(Parcel paramParcel)
+  {
+    return new ARScanStarFaceActInfo(paramParcel);
+  }
+  
+  public ARScanStarFaceActInfo[] a(int paramInt)
+  {
+    return new ARScanStarFaceActInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aldw
  * JD-Core Version:    0.7.0.1
  */

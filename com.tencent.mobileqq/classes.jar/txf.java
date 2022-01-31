@@ -1,26 +1,57 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.ProfileFeedPlayInfo;
+import java.util.Iterator;
+import java.util.List;
 
-class txf
-  extends mmn
+public class txf
+  extends twc<ProfileFeedPlayInfo>
 {
-  txf(txb paramtxb, boolean paramBoolean) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public txf(ProfileFeedPlayInfo paramProfileFeedPlayInfo)
   {
-    if (paramInt != 0)
+    super(paramProfileFeedPlayInfo);
+    paramProfileFeedPlayInfo = (uwa)tdc.a(11);
+    if (paramProfileFeedPlayInfo.b != null) {
+      this.a = paramProfileFeedPlayInfo.b;
+    }
+  }
+  
+  public uvs a(String paramString)
+  {
+    if (this.a == null) {
+      return null;
+    }
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      paramArrayOfByte = this.a;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramArrayOfByte.a(5, bool);
-        this.a.a(0, this.a.a.getString(2131654637));
-        return;
+      uvs localuvs = (uvs)localIterator.next();
+      if (localuvs.a.equals(paramString)) {
+        return localuvs;
       }
     }
-    ((sga)this.a.a.app.getManager(181)).c(this.b);
+    return null;
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, twu paramtwu)
+  {
+    if (this.a == null)
+    {
+      paramtwu.a(new ErrorMessage(940001, "null point"), null, true);
+      return;
+    }
+    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
+    if ((paramBoolean) && (((List)localObject).size() > 0))
+    {
+      List localList = b((List)localObject);
+      paramtwu.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
+      veg.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
+      return;
+    }
+    localObject = new tmt();
+    ((tmt)localObject).a = this.a.a();
+    ((tmt)localObject).b = QQStoryContext.a().b();
+    veg.c("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request with cookie " + ((tmt)localObject).a);
+    syr.a().a((syv)localObject, new txg(this, paramtwu));
   }
 }
 

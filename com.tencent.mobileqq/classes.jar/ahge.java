@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpacketConfBean.TimeInfo;
+import java.util.Comparator;
 
-public class ahge
-  implements DialogInterface.OnClickListener
+class ahge
+  implements Comparator<SpringFestivalRedpacketConfBean.TimeInfo>
 {
-  public ahge(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  ahge(ahfz paramahfz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(SpringFestivalRedpacketConfBean.TimeInfo paramTimeInfo1, SpringFestivalRedpacketConfBean.TimeInfo paramTimeInfo2)
   {
-    this.a.finish();
+    if (paramTimeInfo1.beginTime == paramTimeInfo2.beginTime) {
+      return 0;
+    }
+    if (paramTimeInfo1.beginTime > paramTimeInfo2.beginTime) {
+      return 1;
+    }
+    return -1;
   }
 }
 

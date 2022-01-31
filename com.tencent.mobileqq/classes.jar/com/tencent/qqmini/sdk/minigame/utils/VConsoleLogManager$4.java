@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.minigame.utils;
 
 import android.webkit.WebView;
-import bdrg;
+import bewy;
 
 public class VConsoleLogManager$4
   implements Runnable
 {
-  public VConsoleLogManager$4(bdrg parambdrg, String paramString) {}
+  public VConsoleLogManager$4(bewy parambewy, String paramString) {}
   
   public void run()
   {
-    bdrg.a(this.this$0).loadUrl(this.a);
+    bewy.a(this.this$0).loadUrl(this.a);
   }
 }
 

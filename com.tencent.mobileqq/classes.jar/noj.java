@@ -1,69 +1,39 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import java.util.HashSet;
-import java.util.Set;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import mqq.os.MqqHandler;
 
-public class noj
-  extends qme
+class noj
+  extends BroadcastReceiver
 {
-  private Set<String> a;
-  public nol a;
-  private Handler b = new nok(this, Looper.getMainLooper());
+  noj(nnx paramnnx, boolean paramBoolean, MqqHandler paramMqqHandler) {}
   
-  public noj(nol paramnol, qmi paramqmi, VideoFeedsPlayManager paramVideoFeedsPlayManager, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramqmi, paramVideoFeedsPlayManager, paramBoolean);
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_Nol = paramnol;
-  }
-  
-  public void a(qeq paramqeq)
-  {
-    super.a(paramqeq);
-    Log.d("MultiVideoAd", "onVideoStart");
-    this.b.sendEmptyMessageDelayed(101, 3000L);
-    if ((this.jdField_a_of_type_Nol.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) && (this.jdField_a_of_type_Nol.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.c) && (this.jdField_a_of_type_Nol.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a != null))
+    String str = paramIntent.getStringExtra("com.tencent.biz.pubaccount.scanResultData");
+    int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.scanResultType", 0);
+    if (this.jdField_a_of_type_Boolean)
     {
-      paramqeq = this.jdField_a_of_type_Nol.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.h;
-      if (!this.jdField_a_of_type_JavaUtilSet.contains(paramqeq))
-      {
-        this.jdField_a_of_type_JavaUtilSet.add(paramqeq);
-        paramqeq = nbe.a(this.jdField_a_of_type_Nol.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
-        if (!this.jdField_a_of_type_Nol.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a(this.jdField_a_of_type_Nol.jdField_a_of_type_AndroidAppActivity)) {
-          break label187;
-        }
-        nbe.a(new nmv().a(this.jdField_a_of_type_Nol.jdField_a_of_type_AndroidAppActivity).a(nbe.b).b(nbe.P).a(paramqeq).a(this.jdField_a_of_type_Nol.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a());
+      this.jdField_a_of_type_Nnx.a(str, i, 12, -1, null);
+      if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(19);
       }
     }
-    return;
-    label187:
-    nbe.a(new nmv().a(this.jdField_a_of_type_Nol.jdField_a_of_type_AndroidAppActivity).a(nbe.b).b(nbe.N).a(paramqeq).a(this.jdField_a_of_type_Nol.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a());
-  }
-  
-  public void b(qeq paramqeq)
-  {
-    super.b(paramqeq);
-    Log.d("MultiVideoAd", "onVideoRestart");
-    this.b.removeMessages(101);
-    this.b.sendEmptyMessageDelayed(101, 3000L);
-  }
-  
-  public void c(qeq paramqeq)
-  {
-    super.c(paramqeq);
-    Log.d("MultiVideoAd", "onVideoStop");
-    this.b.removeMessages(101);
-  }
-  
-  public void d(qeq paramqeq)
-  {
-    super.d(paramqeq);
-    Log.d("MultiVideoAd", "onVideoPause");
-    this.b.removeMessages(101);
+    try
+    {
+      for (;;)
+      {
+        paramContext.unregisterReceiver(this.jdField_a_of_type_Nnx.a);
+        label65:
+        this.jdField_a_of_type_Nnx.a = null;
+        return;
+        this.jdField_a_of_type_Nnx.a(str, i, 11, -1, null);
+      }
+    }
+    catch (Exception paramContext)
+    {
+      break label65;
+    }
   }
 }
 

@@ -1,33 +1,33 @@
-import android.os.Bundle;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import java.util.List;
-import mqq.observer.BusinessObserver;
+import android.media.MediaFormat;
 
 public class vtr
-  implements BusinessObserver
 {
-  public vtr(QRDisplayActivity paramQRDisplayActivity) {}
+  public int a;
+  public long a;
+  public MediaFormat a;
+  public String a;
+  public boolean a;
+  public int b = 1;
+  public String b;
+  public String c;
   
-  protected void a(boolean paramBoolean, List<String> paramList1, List<String> paramList2) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public vtr()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    if (paramBoolean)
-    {
-      a(paramBoolean, paramBundle.getStringArrayList("nickname_list"), paramBundle.getStringArrayList("uin_list"));
-      return;
-    }
-    this.b.g();
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    localStringBuilder.append("Image2result.result ").append("src: ").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("result ").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vtr
  * JD-Core Version:    0.7.0.1
  */

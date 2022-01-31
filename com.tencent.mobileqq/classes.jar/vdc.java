@@ -1,37 +1,32 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
 
-public class vdc
-  extends vcy
+class vdc
+  extends ssy
 {
-  @NonNull
-  public final srb a;
-  @NonNull
-  public final String c;
+  vdc(vcs paramvcs) {}
   
-  public vdc(int paramInt1, String paramString1, int paramInt2, @NonNull String paramString2, @NonNull srb paramsrb)
+  public void a(StoryPushMsg paramStoryPushMsg)
   {
-    super(paramInt1, paramString1, paramInt2);
-    this.c = paramString2;
-    this.a = paramsrb;
-  }
-  
-  @NonNull
-  public Class<? extends vcz> a()
-  {
-    return vde.class;
-  }
-  
-  @NonNull
-  public vcz a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new vde(paramContext, paramViewGroup, null);
-  }
-  
-  public boolean a()
-  {
-    return true;
+    if ((vcs.a(this.a) == null) || (vcs.a(this.a).a == null))
+    {
+      veg.e("NewMyStorySegment", "onPushMessage MyStory feed is null!");
+      return;
+    }
+    String str = vcs.a(this.a).a.a;
+    if (!TextUtils.equals(str, paramStoryPushMsg.d))
+    {
+      veg.a("NewMyStorySegment", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, str);
+      return;
+    }
+    switch (paramStoryPushMsg.a)
+    {
+    case 16: 
+    case 17: 
+    default: 
+      return;
+    }
+    this.a.a(new vab[] { new uzw(uze.a(str)), (vab)this.a.b.a(), new uzv(new vdd(this, str)) });
   }
 }
 

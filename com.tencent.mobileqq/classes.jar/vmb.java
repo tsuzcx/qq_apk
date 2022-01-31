@@ -1,6 +1,32 @@
-public abstract interface vmb
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
+import java.util.Collections;
+
+class vmb
+  implements syt<tms, tom>
 {
-  public abstract void a(vmg paramvmg, boolean paramBoolean);
+  vmb(vlv paramvlv, WeakReference paramWeakReference) {}
+  
+  public void a(@NonNull tms paramtms, @Nullable tom paramtom, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if (paramtom == null)
+    {
+      paramtms = (vmi)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramtms != null) {
+        paramtms.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
+      }
+      return;
+    }
+    paramtms = (vmi)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramtms != null)
+    {
+      paramtms.a(0, paramtom.a);
+      return;
+    }
+    veg.c("DoodleEmojiManager", "requestPoiFaces callback is null");
+  }
 }
 
 

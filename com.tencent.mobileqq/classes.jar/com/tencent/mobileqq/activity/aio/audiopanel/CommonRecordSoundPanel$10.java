@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import bbmy;
+import bcpw;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -11,7 +11,7 @@ class CommonRecordSoundPanel$10
   
   public void run()
   {
-    bbmy.a(CommonRecordSoundPanel.a(this.this$0).getApp(), 2131624469, 1).b(this.this$0.a.getTitleBarHeight());
+    bcpw.a(CommonRecordSoundPanel.a(this.this$0).getApp(), 2131690023, 1).b(this.this$0.a.getTitleBarHeight());
     this.this$0.c(this.a);
     this.this$0.b();
   }

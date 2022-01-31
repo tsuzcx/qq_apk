@@ -1,26 +1,30 @@
 public class axdv
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
+  public aunp a;
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if (this.a == null) {
+      this.a = new aunp();
+    }
+    this.a.a = paramString1;
+    this.a.b = paramString2;
+    aune.b(this, paramString1, paramString2);
+  }
+  
+  protected boolean a()
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axdv
  * JD-Core Version:    0.7.0.1
  */

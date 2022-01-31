@@ -1,87 +1,108 @@
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.listentogether.data.ISong;
-import com.tencent.qphone.base.util.QLog;
+import com.etrump.mixlayout.EMEmoticon;
+import com.etrump.mixlayout.ETEngine;
+import com.etrump.mixlayout.ETFont;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
 import java.lang.ref.WeakReference;
 
-class aqxt
+public final class aqxt
   extends Handler
 {
-  private final WeakReference<aqxr> a;
-  
-  aqxt(aqxr paramaqxr, Looper paramLooper)
+  public aqxt(Looper paramLooper)
   {
     super(paramLooper);
-    this.a = new WeakReference(paramaqxr);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void handleMessage(Message arg1)
   {
-    aqxr localaqxr = (aqxr)this.a.get();
-    if (localaqxr == null) {
-      super.handleMessage(paramMessage);
-    }
-    do
+    aqxv localaqxv;
+    int i;
+    ETEngine localETEngine;
+    Object localObject1;
+    switch (???.what)
     {
+    case 259: 
+    default: 
+    case 258: 
       do
       {
-        return;
-        switch (paramMessage.what)
+        do
         {
-        default: 
-          super.handleMessage(paramMessage);
           return;
+          localaqxv = (aqxv)???.obj;
+        } while (localaqxv == null);
+        i = aqxv.a(localaqxv).getWidth();
+        int j = aqxv.a(localaqxv).getHeight();
+        if ((HiBoomTextView.a() != null) && ((HiBoomTextView.a().getWidth() < i) || (HiBoomTextView.a().getHeight() < j)))
+        {
+          HiBoomTextView.a().recycle();
+          HiBoomTextView.a(null);
         }
-      } while (!QLog.isColorLevel());
-      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, "--->handleMessage[MSG_FROM_SERVICE]");
-      return;
-      paramMessage = paramMessage.getData();
-      paramMessage.setClassLoader(ISong.class.getClassLoader());
-      paramMessage = (ISong)paramMessage.getParcelable("key_song");
-      if (QLog.isColorLevel()) {
-        QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_PLAY_SONG_CHANGE] %s", new Object[] { paramMessage.a() }));
+        if (HiBoomTextView.a() != null) {
+          break;
+        }
+        HiBoomTextView.a(Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888));
+        localETEngine = aqwz.a().b;
+        String str = aqxv.a(localaqxv) + aqxv.a(localaqxv).getId() + aqxv.a(localaqxv) + aqxv.a(localaqxv).getSize();
+        localObject1 = (EMEmoticon)HiBoomTextView.a().get(str);
+        ??? = (Message)localObject1;
+        if (localObject1 == null)
+        {
+          localObject1 = EMEmoticon.createEmoticon(localETEngine, aqxv.a(localaqxv), aqxv.a(localaqxv), aqxv.a(localaqxv));
+          ??? = (Message)localObject1;
+          if (localObject1 != null)
+          {
+            HiBoomTextView.a().put(str, localObject1);
+            ??? = (Message)localObject1;
+          }
+        }
+      } while (??? == null);
+      ???.gotoFrame(aqxv.b(localaqxv));
+      ???.drawFrame(HiBoomTextView.a());
+      localObject1 = aqxv.a(localaqxv);
+      if (aqxv.a(localaqxv).get() == null) {
+        break;
       }
-      aqxr.a(localaqxr, paramMessage);
-      return;
-      paramMessage = paramMessage.getData();
-      String str = paramMessage.getString("key_id");
-      i = paramMessage.getInt("key_play_state", -1);
-      if (QLog.isColorLevel()) {
-        QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_PLAY_STATE_CHANGE] %s %s", new Object[] { str, aqxl.a(i) }));
+    }
+    for (;;)
+    {
+      synchronized (((HiBoomTextView)aqxv.a(localaqxv).get()).jdField_a_of_type_Aqxu)
+      {
+        if ((((Bitmap)localObject1).isRecycled()) || (HiBoomTextView.a((HiBoomTextView)aqxv.a(localaqxv).get()) != aqxv.a(localaqxv))) {
+          break label417;
+        }
+        ((Bitmap)localObject1).eraseColor(0);
+        localETEngine.native_cloneBitmap(HiBoomTextView.a(), (Bitmap)localObject1);
+        i = 1;
+        if (i == 0) {
+          break;
+        }
+        new Message().what = 259;
+        HiBoomTextView.jdField_a_of_type_Aqxw.obtainMessage(259, localaqxv).sendToTarget();
+        return;
+        HiBoomTextView.a().eraseColor(0);
       }
-      aqxr.a(localaqxr, str, i);
-    } while ((i != 4) || (!aqxr.a(localaqxr)));
-    aqxr.a(localaqxr);
-    return;
-    boolean bool1 = paramMessage.getData().getBoolean("key_net_state", false);
-    if (QLog.isColorLevel()) {
-      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_NET_STATE_CHANGE] %b", new Object[] { Boolean.valueOf(bool1) }));
+      if (HiBoomTextView.a() == null) {
+        break;
+      }
+      HiBoomTextView.a().recycle();
+      HiBoomTextView.a(null);
+      return;
+      label417:
+      i = 0;
+      continue;
+      i = 0;
     }
-    aqxr.a(localaqxr, bool1);
-    return;
-    paramMessage = paramMessage.getData();
-    bool1 = paramMessage.getBoolean("key_focus_state", false);
-    boolean bool2 = paramMessage.getBoolean("key_focus_transient", false);
-    if (QLog.isColorLevel()) {
-      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_FOCUS_STATE_CHANGE] %b_%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-    }
-    aqxr.a(localaqxr, bool1, bool2);
-    return;
-    paramMessage = paramMessage.getData();
-    int i = paramMessage.getInt("key_position", -1);
-    int j = paramMessage.getInt("key_duration", -1);
-    paramMessage = paramMessage.getString("key_id");
-    if (((i <= 0) || (j <= 0)) && (QLog.isColorLevel())) {
-      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_PROGRESS_CHANGE] [%d/%d] %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), paramMessage }));
-    }
-    aqxr.a(localaqxr, paramMessage, i, j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqxt
  * JD-Core Version:    0.7.0.1
  */

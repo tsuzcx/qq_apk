@@ -1,19 +1,38 @@
-class lav
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+final class lav
+  extends lao
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
-  int c = 0;
-  int d = 0;
-  int e = 0;
-  int f = 0;
-  int g = 0;
-  int h = 0;
+  lav(lam paramlam) {}
   
-  lav(lar paramlar) {}
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
+  {
+    super.a(paramInt, paramArrayOfHeader, paramJSONObject);
+    try
+    {
+      paramJSONObject = paramJSONObject.getString("id");
+      this.a.a(paramInt, paramArrayOfHeader, paramJSONObject);
+      return;
+    }
+    catch (JSONException paramArrayOfHeader)
+    {
+      paramArrayOfHeader.printStackTrace();
+    }
+  }
+  
+  public void a(Throwable paramThrowable, JSONObject paramJSONObject)
+  {
+    super.a(paramThrowable, paramJSONObject);
+    if ((paramThrowable != null) && (paramThrowable.getMessage() != null)) {
+      this.a.a(paramThrowable, paramThrowable.getMessage());
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     lav
  * JD-Core Version:    0.7.0.1
  */

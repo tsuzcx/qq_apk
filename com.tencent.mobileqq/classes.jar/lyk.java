@@ -1,69 +1,47 @@
-import android.content.Context;
-import com.tencent.av.app.VideoAppInterface;
+import android.text.TextUtils;
+import com.tencent.av.share.AVSchema;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class lyk
-  extends lyf
+  extends akim
 {
-  protected lyk(Context paramContext, VideoAppInterface paramVideoAppInterface)
-  {
-    super(paramContext, paramVideoAppInterface);
-  }
+  public String a;
   
-  private void a(ltl paramltl1, ltl paramltl2, int paramInt)
-  {
-    int i = paramInt >> 1;
-    int j = lyg.b(paramInt);
-    paramltl1.a(0, 0, 0, 0);
-    paramltl1.b(i, 0, paramInt, j);
-    paramltl1.d(-15197410);
-    paramltl2.a(0, 0, 0, 0);
-    paramltl2.b(0, 0, i, j);
-    paramltl2.d(-15197410);
-  }
+  private lyk(AVSchema paramAVSchema) {}
   
-  public int a()
+  protected void a(boolean paramBoolean)
   {
-    return 2;
-  }
-  
-  public void a(ltl[] paramArrayOfltl, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
-  
-  public void a(ltl[] paramArrayOfltl, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
-  {
-    boolean bool;
-    if (!this.a.getCurrentAccountUin().equals(paramArrayOfltl[1].a(0)))
-    {
-      bool = true;
-      krx.c("ScreenLayoutSmallUIDouble", "layoutCommon: " + paramBoolean + "|" + bool);
-      if (!bool) {
-        break label112;
-      }
-      if (paramBoolean) {
-        break label94;
-      }
-      paramBoolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onUpdateTroopList, isSuccess[" + paramBoolean + "]");
     }
-    label94:
-    label112:
-    for (;;)
+  }
+  
+  protected void a(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
+  {
+    long l = AudioHelper.b();
+    if (this.jdField_a_of_type_ComTencentAvShareAVSchema.a("onGetSimpleTroopInfoResult", l)) {}
+    do
     {
-      if (paramBoolean)
+      do
       {
-        a(paramArrayOfltl[0], paramArrayOfltl[1], paramInt1);
-        return;
-        bool = false;
-        break;
-        paramBoolean = false;
-        continue;
-      }
-      a(paramArrayOfltl[1], paramArrayOfltl[0], paramInt1);
+        do
+        {
+          return;
+        } while (paramTroopInfo == null);
+        paramString = paramTroopInfo.troopuin;
+      } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)));
+      QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onGetSimpleTroopInfoResult, isSuc[" + paramBoolean + "], enum_verify_status[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lyi.a + "], seq[" + l + "]");
+      this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lyi.b = paramTroopInfo.troopname;
+    } while (this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lyi.a != 0);
+    if (ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvShareAVSchema.getActivity(), true, new lyl(this, l)))
+    {
+      this.jdField_a_of_type_ComTencentAvShareAVSchema.b(l, this.jdField_a_of_type_JavaLangString);
       return;
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
+    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onGetSimpleTroopInfoResult, 等权限确认, seq[" + l + "]");
   }
 }
 

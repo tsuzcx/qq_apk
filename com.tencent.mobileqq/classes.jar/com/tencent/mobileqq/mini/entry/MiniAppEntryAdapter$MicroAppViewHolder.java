@@ -10,7 +10,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
-import beog;
+import bfwa;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.qphone.base.util.QLog;
@@ -34,16 +34,16 @@ class MiniAppEntryAdapter$MicroAppViewHolder
   public MiniAppEntryAdapter$MicroAppViewHolder(View paramView)
   {
     super(paramView);
-    this.imageView = ((ImageView)paramView.findViewById(2131304640));
+    this.imageView = ((ImageView)paramView.findViewById(2131370309));
     if ((this.imageView instanceof ThemeImageView)) {
-      ((ThemeImageView)this.imageView).setMaskShape(beog.c);
+      ((ThemeImageView)this.imageView).setMaskShape(bfwa.c);
     }
-    this.textView = ((TextView)paramView.findViewById(2131304641));
-    this.versionTypeMark = ((TextView)paramView.findViewById(2131304642));
-    this.dividerLine = ((ViewGroup)paramView.findViewById(2131304630));
-    this.recommendBadge = ((ImageView)paramView.findViewById(2131304561));
-    this.viewFlipper = ((ViewFlipper)paramView.findViewById(2131304572));
-    this.redDot = ((TextView)paramView.findViewById(2131304566));
+    this.textView = ((TextView)paramView.findViewById(2131370310));
+    this.versionTypeMark = ((TextView)paramView.findViewById(2131370311));
+    this.dividerLine = ((ViewGroup)paramView.findViewById(2131370303));
+    this.recommendBadge = ((ImageView)paramView.findViewById(2131370243));
+    this.viewFlipper = ((ViewFlipper)paramView.findViewById(2131370253));
+    this.redDot = ((TextView)paramView.findViewById(2131370248));
   }
   
   private void startSwitchAnimation()
@@ -75,7 +75,7 @@ class MiniAppEntryAdapter$MicroAppViewHolder
   public void startAnimation()
   {
     this.isPlayAnim = true;
-    Drawable localDrawable = MiniAppUtils.getIcon(this.imageView.getContext(), this.miniAppInfo.appStoreAnimPicUrl, true, 2130840625, 48);
+    Drawable localDrawable = MiniAppUtils.getIcon(this.imageView.getContext(), this.miniAppInfo.appStoreAnimPicUrl, true, 2130840663, 48);
     this.imageView.setImageDrawable(localDrawable);
     this.imageView.invalidate();
     QLog.d("MiniAppEntryAdapter", 1, "[mini_app_anim].startAnimation, picCount = " + this.picCount + ", pic Url = " + this.miniAppInfo.appStoreAnimPicUrl + ", drawable = " + localDrawable);

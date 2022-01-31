@@ -1,76 +1,198 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import com.tencent.widget.RecentDynamicAvatarView;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class aiku
-  extends aiks
+  extends RecyclerView.Adapter<aikt>
 {
-  public long a;
-  public String a;
-  public WeakReference<QQSettingMe> a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public int f;
-  int g = 7;
-  private int h;
+  List<akrm> jdField_a_of_type_JavaUtilList;
+  Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public aiku(QQAppInterface paramQQAppInterface, JSONObject paramJSONObject, QQSettingMe paramQQSettingMe)
+  public aiku(List<akrm> paramList)
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 98;
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("entry_id", 1);
-    this.jdField_a_of_type_Long = paramJSONObject.optLong("seq", 0L);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("wording");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("jump_url");
-    this.jdField_c_of_type_Int = paramJSONObject.optInt("is_red", 0);
-    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("icon_url");
-    this.jdField_d_of_type_Int = paramJSONObject.optInt("action_id", 0);
-    this.e = paramJSONObject.optInt("bubble_id", 0);
-    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("scheme");
-    this.f = paramJSONObject.optInt("show_sum", 1);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQSettingMe);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public void a(aisu paramaisu, Context paramContext, QQAppInterface paramQQAppInterface)
+  public int a(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+      return ((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramString)).intValue();
+    }
+    return -1;
+  }
+  
+  public aikt a(ViewGroup paramViewGroup, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ExploreDrawerStatus", 2, "[onBubbleClick] " + this.jdField_d_of_type_JavaLangString + "|" + this.jdField_b_of_type_JavaLangString);
+      QLog.d("SessionClearFragment", 2, "onCreateViewHolder");
     }
-    ((aifg)paramQQAppInterface.getManager(153)).a(paramQQAppInterface, paramContext, this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, "drawer");
+    paramViewGroup = SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).getLayoutInflater().inflate(2131562421, paramViewGroup, false);
+    return new aikt(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment, paramViewGroup);
   }
   
-  public void a(aisu paramaisu, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public akrm a(int paramInt)
   {
-    if (this.h >= this.f) {}
-    do
+    return (akrm)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a()
+  {
+    SessionClearFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment, 0);
+    SessionClearFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment, 0);
+    int i = 0;
+    boolean bool = false;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      do
+      if (((akrm)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Boolean)
       {
-        return;
-        this.h += 1;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          aisl.a(paramaisu, this.jdField_a_of_type_JavaLangString, 9, this.e);
+        SessionClearFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment, (int)(SessionClearFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment) + ((akrm)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Long));
+        SessionClearFragment.d(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment);
+        bool = true;
+      }
+      i += 1;
+    }
+    if (SessionClearFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment) == 0)
+    {
+      SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).setVisibility(8);
+      if (SessionClearFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment) != this.jdField_a_of_type_JavaUtilList.size()) {
+        break label222;
+      }
+      SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment, 1);
+    }
+    for (;;)
+    {
+      SessionClearFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).setEnabled(bool);
+      return;
+      SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).setVisibility(0);
+      SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).setText(ajyc.a(2131713849) + akro.a(SessionClearFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment)));
+      break;
+      label222:
+      SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment, 0);
+    }
+  }
+  
+  public void a(aikt paramaikt, int paramInt)
+  {
+    akrm localakrm = a(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("SessionClearFragment", 2, "onBindViewHolder info uin=" + localakrm.jdField_a_of_type_JavaLangString + " pos=" + paramInt);
+    }
+    paramaikt.jdField_a_of_type_AndroidWidgetTextView.setText(localakrm.b);
+    paramaikt.b.setText(localakrm.c);
+    if ((localakrm.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!localakrm.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    {
+      paramaikt.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setImageBitmap(localakrm.jdField_a_of_type_AndroidGraphicsBitmap);
+      if (!((akrm)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Boolean) {
+        break label332;
+      }
+      paramaikt.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+    }
+    for (;;)
+    {
+      paramaikt.itemView.setOnClickListener(new aikv(this, paramaikt, paramInt));
+      return;
+      if (localakrm.d != null)
+      {
+        SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment, localakrm.d, 80, 80, paramaikt.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView, paramInt);
+        break;
+      }
+      Bitmap localBitmap = SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment);
+      this.jdField_a_of_type_JavaUtilMap.put(localakrm.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
+      if ((localakrm.jdField_a_of_type_Int == 0) || (localakrm.jdField_a_of_type_Int == 1000) || (localakrm.jdField_a_of_type_Int == 1004)) {
+        localBitmap = SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).a(localakrm.jdField_a_of_type_JavaLangString, true);
+      }
+      for (;;)
+      {
+        if (localBitmap == null) {
+          break label330;
         }
-      } while ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) || (this.jdField_a_of_type_JavaLangRefWeakReference == null));
-      paramaisu = (QQSettingMe)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (paramaisu == null);
-    paramaisu.a(this.jdField_c_of_type_JavaLangString);
+        paramaikt.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setImageBitmap(localBitmap);
+        break;
+        if (localakrm.jdField_a_of_type_Int == 1) {
+          localBitmap = SessionClearFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).a(localakrm.jdField_a_of_type_JavaLangString, true);
+        } else if (localakrm.jdField_a_of_type_Int == 3000) {
+          localBitmap = SessionClearFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).a(localakrm.jdField_a_of_type_JavaLangString, true);
+        }
+      }
+      label330:
+      break;
+      label332:
+      paramaikt.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+    }
+  }
+  
+  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
+  {
+    int i = a(paramString1);
+    if (i >= 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("SessionClearFragment", 4, "updateImage  uin: " + paramString1 + " pos =" + i);
+      }
+      SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).a(i).d = paramString2;
+      SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).a(i).jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).notifyItemChanged(i);
+    }
+  }
+  
+  public void a(List<akrm> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SessionClearFragment", 2, "setList sessionList size=" + paramList.size());
+    }
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      this.jdField_a_of_type_JavaUtilList.clear();
+    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
+  }
+  
+  public void b()
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      ((akrm)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Boolean = true;
+      i += 1;
+    }
+    notifyDataSetChanged();
+    a();
+    axqw.b(null, "dc00898", "", "", "0X800A0C6", "0X800A0C6", 0, 0, String.valueOf(SessionClearFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment)), String.valueOf(SessionClearFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment)), "", "");
+  }
+  
+  public void c()
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      ((akrm)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Boolean = false;
+      i += 1;
+    }
+    notifyDataSetChanged();
+    a();
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aiku
  * JD-Core Version:    0.7.0.1
  */

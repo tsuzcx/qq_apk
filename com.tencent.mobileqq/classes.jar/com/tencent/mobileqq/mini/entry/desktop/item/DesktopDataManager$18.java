@@ -1,81 +1,60 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import atmo;
-import atmp;
-import atmq;
-import atmr;
+import aukm;
+import aukn;
+import auko;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 class DesktopDataManager$18
   implements Runnable
 {
-  DesktopDataManager$18(DesktopDataManager paramDesktopDataManager, List paramList) {}
+  DesktopDataManager$18(DesktopDataManager paramDesktopDataManager, DesktopItemInfo paramDesktopItemInfo) {}
   
   public void run()
   {
-    Object localObject1 = MiniAppUtils.getAppInterface();
-    if (localObject1 == null) {
+    Object localObject = MiniAppUtils.getAppInterface();
+    if (localObject == null) {
       QLog.e("DesktopDataManager", 1, "insertEntityWithBatch, app is null.");
     }
-    atmp localatmp;
+    aukn localaukn;
     do
     {
       return;
-      localatmp = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
-    } while (localatmp == null);
-    atmr localatmr = localatmp.a();
-    localatmr.a();
+      localaukn = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
+    } while (localaukn == null);
     for (;;)
     {
       try
       {
-        localStringBuilder = new StringBuilder();
-        Iterator localIterator = this.val$appInfoList.iterator();
-        if (!localIterator.hasNext()) {
-          continue;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localObject = null;
+        if (!(this.val$data instanceof DesktopAppInfo)) {
+          break label148;
         }
-        localObject1 = (DesktopItemInfo)localIterator.next();
-        if (!(localObject1 instanceof DesktopAppInfo)) {
-          continue;
+        localObject = new DeskTopAppEntity(((DesktopAppInfo)this.val$data).mMiniAppInfo);
+        if (localObject != null)
+        {
+          ((DeskTopAppEntity)localObject).setStatus(1000);
+          DesktopDataManager.access$3100(this.this$0, localaukn, (aukm)localObject);
+          localStringBuilder.append(((DeskTopAppEntity)localObject).name).append(", ");
         }
-        localObject1 = new DeskTopAppEntity(((DesktopAppInfo)localObject1).mMiniAppInfo);
-      }
-      catch (Exception localException)
-      {
-        StringBuilder localStringBuilder;
         if (!QLog.isColorLevel()) {
-          continue;
+          break;
         }
-        QLog.d("DesktopDataManager", 2, "insertEntityWithBatch exception: ", localException);
-        return;
-        if (!(localException instanceof DesktopSearchInfo)) {
-          break label231;
-        }
-        DeskTopAppEntity localDeskTopAppEntity = new DeskTopAppEntity(((DesktopSearchInfo)localException).mAppInfo);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("DesktopDataManager", 2, new Object[] { "insertEntityWithBatch : ", localStringBuilder.toString() });
-        localatmr.c();
+        QLog.d("DesktopDataManager", 2, new Object[] { "insertEntity : ", localStringBuilder.toString() });
         return;
       }
-      finally
-      {
-        localatmr.b();
+      catch (Exception localException) {}
+      if (!QLog.isColorLevel()) {
+        break;
       }
-      if (localObject1 != null)
-      {
-        ((DeskTopAppEntity)localObject1).setStatus(1000);
-        DesktopDataManager.access$3200(this.this$0, localatmp, (atmo)localObject1);
-        localStringBuilder.append(((DeskTopAppEntity)localObject1).name).append(", ");
-        continue;
-        label231:
-        Object localObject3 = null;
+      QLog.d("DesktopDataManager", 2, "insertEntity exception: ", localException);
+      return;
+      label148:
+      if ((this.val$data instanceof DesktopSearchInfo)) {
+        DeskTopAppEntity localDeskTopAppEntity = new DeskTopAppEntity(((DesktopSearchInfo)this.val$data).mAppInfo);
       }
     }
   }

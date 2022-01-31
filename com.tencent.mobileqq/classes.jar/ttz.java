@@ -1,64 +1,18 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
 
 public class ttz
-  extends QQUIEventReceiver<ttr, tgh>
+  extends uyl
 {
-  public ttz(@NonNull ttr paramttr)
-  {
-    super(paramttr);
-  }
+  public ttz(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void a(@NonNull ttr paramttr, @NonNull tgh paramtgh)
+  public void a(int paramInt, View paramView, Object paramObject, vas paramvas)
   {
-    if (TextUtils.equals(String.valueOf(paramttr.hashCode()), paramtgh.jdField_a_of_type_JavaLangString)) {
-      b(paramttr, paramtgh);
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tgh.class;
-  }
-  
-  public void b(ttr paramttr, tgh paramtgh)
-  {
-    paramttr = ((StoryPlayerGroupHolder)paramttr.a()).a();
-    if (paramttr != null) {
-      paramttr.c(false);
-    }
-    if (paramtgh.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
-      return;
-    }
-    boolean bool = tfy.a(paramtgh.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    switch (paramtgh.jdField_a_of_type_Int)
+    if ((paramObject instanceof QQUserUIItem))
     {
-    case 0: 
-    default: 
-      return;
-    case 1: 
-      bbmy.a(BaseApplicationImpl.getContext(), 1, ajjy.a(2131635380), 0).a();
-      return;
-    case 2: 
-      if (bool) {}
-      for (paramttr = "2";; paramttr = "1")
-      {
-        urp.a("play_video", "down_suc", 0, 0, new String[] { paramttr, "", "", paramtgh.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-        bbmy.a(BaseApplicationImpl.getContext(), 2, skt.a(2131633920), 0).a();
-        return;
-      }
-    }
-    if (bool) {}
-    for (paramttr = "2";; paramttr = "1")
-    {
-      urp.a("play_video", "down_fail", 0, 0, new String[] { paramttr, "", "", paramtgh.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-      bbmy.a(BaseApplicationImpl.getContext(), 1, ajjy.a(2131635381), 0).a();
-      return;
+      paramView = (QQUserUIItem)paramObject;
+      sxp.a(this.a.a, 10, paramView.uid);
     }
   }
 }

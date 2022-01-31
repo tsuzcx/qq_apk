@@ -1,16 +1,21 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-
-public abstract interface uds
+public class uds
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(CommentEntry paramCommentEntry);
-  
-  public abstract void a(CommentEntry paramCommentEntry, int paramInt);
-  
-  public abstract void b(CommentEntry paramCommentEntry);
-  
-  public abstract void c(CommentEntry paramCommentEntry);
+  @vym(a="clipNo")
+  int jdField_a_of_type_Int;
+  @vym(a="fileSize")
+  long jdField_a_of_type_Long;
+  @vym(a="errorMsg")
+  String jdField_a_of_type_JavaLangString;
+  @vym(a="speedKBS")
+  int b;
+  @vym(a="offset")
+  int c;
+  @vym(a="callBackType")
+  int d;
+  @vym(a="errorCode")
+  int e;
+  @vym(a="errorDetailCode")
+  int f;
 }
 
 

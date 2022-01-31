@@ -1,49 +1,51 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.gdtad.api.banner.GdtBannerAd;
+import com.tencent.mobileqq.apollo.process.ads.CmGameBannerAds.4;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
+import java.util.HashMap;
 
-final class ajai
-  implements aiud
+public class ajai
+  implements ytb
 {
-  ajai(String paramString, String[] paramArrayOfString, ajaf paramajaf, int paramInt) {}
+  public ajai(CmGameBannerAds.4 param4, GdtBannerAd paramGdtBannerAd) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  private long a(com.tencent.gdtad.api.GdtAd paramGdtAd)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloHttpUtil", 2, "fakeResource3DUrlRequest onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
+    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null)) {
+      return paramGdtAd.getAd().getAId();
     }
-    if (paramBoolean)
-    {
-      paramArrayOfInt = new File(this.jdField_a_of_type_JavaLangString);
-      if (paramArrayOfInt.exists()) {
-        try
-        {
-          paramString = ajag.a(this.jdField_a_of_type_ArrayOfJavaLangString);
-          if (ajag.a(this.jdField_a_of_type_JavaLangString))
-          {
-            paramArrayOfInt = ajag.a(paramArrayOfInt, paramString);
-            this.jdField_a_of_type_Ajaf.a(0, paramString, paramArrayOfInt);
-          }
-          while (QLog.isColorLevel())
-          {
-            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramString + " id:" + this.jdField_a_of_type_Int });
-            return;
-            this.jdField_a_of_type_Ajaf.a(0, paramString, ApolloRender.readStream(new FileInputStream(paramArrayOfInt)));
-          }
-          this.jdField_a_of_type_Ajaf.a(-1, null, null);
-        }
-        catch (Exception paramString)
-        {
-          QLog.e("ApolloHttpUtil", 1, paramString, new Object[0]);
-          return;
-        }
-      }
-    }
-    else
-    {
-      this.jdField_a_of_type_Ajaf.a(-1, null, null);
-    }
+    return -2147483648L;
+  }
+  
+  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("cmgame_process.CmGameBannerAds", 1, String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+    paramGdtAd = new ajaj();
+    paramGdtAd.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd = this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd;
+    paramGdtAd.b = this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.jdField_a_of_type_Int;
+    paramGdtAd.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.b;
+    ajah.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.this$0).put(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.b), paramGdtAd);
+    ajah.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.this$0, this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.b, 0, 0);
+  }
+  
+  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd, yta paramyta)
+  {
+    QLog.e("cmgame_process.CmGameBannerAds", 1, "onAdFailedToLoad " + paramyta.a());
+    ajah.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.this$0, this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.b, -1, paramyta.a());
+  }
+  
+  public void b(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("cmgame_process.CmGameBannerAds", 1, String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+  }
+  
+  public void c(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("cmgame_process.CmGameBannerAds", 1, String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+  }
+  
+  public void d(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("cmgame_process.CmGameBannerAds", 1, String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
   }
 }
 

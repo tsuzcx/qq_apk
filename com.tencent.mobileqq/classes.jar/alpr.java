@@ -1,21 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.widget.AdapterView;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ.8;
 
 public class alpr
-  implements behj
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public alpr(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  public alpr(ArkAppModuleReg.ModuleQQ.8 param8, bbgg parambbgg) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    this.a.a();
-    return true;
+    if (paramBitmap != null) {
+      ((ImageView)this.jdField_a_of_type_Bbgg.findViewById(2131365106)).setImageBitmap(paramBitmap);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alpr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,33 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.ar.view.ARScanEntryView.4.1;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 
-public class akxu
-  implements atjd
+class akxu
+  implements SoundPool.OnLoadCompleteListener
 {
-  public akxu(ARScanEntryView paramARScanEntryView) {}
+  akxu(akxq paramakxq) {}
   
-  public void a()
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onStart ");
+    if (paramInt2 != 0) {}
+    try
+    {
+      QLog.e("ARMusicController", 2, "load fire music failed. id=" + paramInt1);
+      return;
     }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onEnd  needReportRedDot = " + ARScanEntryView.a(this.a));
+    catch (Exception paramSoundPool)
+    {
+      paramSoundPool.printStackTrace();
     }
-    if (ARScanEntryView.a(this.a) != null) {
-      ARScanEntryView.a(this.a).post(new ARScanEntryView.4.1(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMusicController", 2, "load fire music success. id=" + paramInt1);
+    }
+    akxq.a(this.a).add(Integer.valueOf(paramInt1));
+    if (akxq.b(this.a).contains(Integer.valueOf(paramInt1)))
+    {
+      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
+      return;
     }
   }
 }

@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.app;
 
-import ajno;
-import atmp;
-import atmq;
+import akby;
+import aukn;
+import auko;
 import com.tencent.mobileqq.data.ExtensionInfo;
 
 public class PPCLoginAuthHandler$1
   implements Runnable
 {
-  public PPCLoginAuthHandler$1(ajno paramajno) {}
+  public PPCLoginAuthHandler$1(akby paramakby) {}
   
   public void run()
   {
-    atmp localatmp = this.this$0.a.getEntityManagerFactory(this.this$0.a.getCurrentAccountUin()).createEntityManager();
-    ExtensionInfo localExtensionInfo = (ExtensionInfo)localatmp.a(ExtensionInfo.class, this.this$0.a.getAccount());
+    aukn localaukn = this.this$0.a.getEntityManagerFactory(this.this$0.a.getCurrentAccountUin()).createEntityManager();
+    ExtensionInfo localExtensionInfo = (ExtensionInfo)localaukn.a(ExtensionInfo.class, this.this$0.a.getAccount());
     if (localExtensionInfo != null)
     {
       localExtensionInfo.commingRingId = 0L;
-      localatmp.a(localExtensionInfo);
+      localaukn.a(localExtensionInfo);
     }
     for (;;)
     {
-      localatmp.a();
+      localaukn.a();
       return;
       localExtensionInfo = new ExtensionInfo();
       localExtensionInfo.uin = this.this$0.a.getAccount();
-      localatmp.a(localExtensionInfo);
+      localaukn.a(localExtensionInfo);
     }
   }
 }

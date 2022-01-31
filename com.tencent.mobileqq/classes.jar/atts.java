@@ -1,26 +1,16 @@
-import android.text.TextUtils;
-
-public class atts
+class atts
+  implements bfos
 {
-  public String a;
-  public String b;
+  atts(atte paramatte) {}
   
-  public boolean a()
+  public void onDismiss()
   {
-    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("PrecoverBusinessInfo:");
-    localStringBuilder.append("businessId=").append(this.a);
-    localStringBuilder.append(", name=").append(this.b);
-    return localStringBuilder.toString();
+    atte.a(this.a, this.a.b, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atts
  * JD-Core Version:    0.7.0.1
  */

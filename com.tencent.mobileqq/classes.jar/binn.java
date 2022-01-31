@@ -1,14 +1,36 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.Comparator;
+import android.view.ViewGroup;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
 
 public class binn
-  implements Comparator<bika>
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public binn(DoodleView paramDoodleView) {}
+  public binn(AEBeautyProviderView paramAEBeautyProviderView) {}
   
-  public int a(bika parambika1, bika parambika2)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    return parambika2.i_() - parambika1.i_();
+    if (AEBeautyProviderView.a(this.a) != null)
+    {
+      AEBeautyProviderView.a(this.a).b(paramInt);
+      this.a.b.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
+    }
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    AEBeautyProviderView.a(this.a, AEBeautyProviderView.b(this.a), AEBeautyProviderView.a(this.a));
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if ((AEBeautyProviderView.c(this.a) != null) && ((AEBeautyProviderView.c(this.a) instanceof ViewGroup))) {
+      ((ViewGroup)AEBeautyProviderView.c(this.a)).setMotionEventSplittingEnabled(true);
+    }
+    AEBeautyProviderView.b(this.a, paramSeekBar.getProgress());
+    bizg.a().e(paramSeekBar.getProgress());
+    AEBeautyProviderView.b(this.a, AEBeautyProviderView.b(this.a), AEBeautyProviderView.a(this.a));
   }
 }
 

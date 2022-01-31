@@ -5,7 +5,6 @@ import com.tencent.ttpic.openapi.initializer.AnimojiInitializer;
 import com.tencent.ttpic.openapi.initializer.FaceDetectInitializer;
 import com.tencent.ttpic.openapi.initializer.FaceKitInitializer;
 import com.tencent.ttpic.openapi.initializer.FilamentInitializer;
-import com.tencent.ttpic.openapi.initializer.GamePlayInitializer;
 import com.tencent.ttpic.openapi.initializer.GenderDetectorInitializer;
 import com.tencent.ttpic.openapi.initializer.GpuParticleInitializer;
 import com.tencent.ttpic.openapi.initializer.ImageAlgoInitializer;
@@ -27,7 +26,6 @@ public class FeatureManager$Features
   public static final FaceDetectInitializer FACE_DETECT;
   public static final FaceKitInitializer FACE_KIT;
   public static final FilamentInitializer FILAMENT;
-  public static final GamePlayInitializer GAMEPLAY;
   public static final GenderDetectorInitializer GENDER_DETECTOR;
   public static final GpuParticleInitializer GPU_PARTICLE;
   public static final ImageAlgoInitializer IMAGE_ALGO = new ImageAlgoInitializer();
@@ -48,7 +46,6 @@ public class FeatureManager$Features
     PTU_TOOLS = new PtuToolsInitializer();
     PTU_ALGO = new PtuAlgoInitializer();
     MASK_IMAGES = new MaskImagesInitializer();
-    GAMEPLAY = new GamePlayInitializer();
     FILAMENT = new FilamentInitializer();
     GPU_PARTICLE = new GpuParticleInitializer();
     VOICE_CHANGDER = new VoiceChangerInitializer();

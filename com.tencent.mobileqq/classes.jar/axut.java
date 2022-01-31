@@ -1,96 +1,58 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
+import android.graphics.ColorFilter;
 import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.OutputStream;
-import java.net.URL;
+import android.graphics.drawable.Drawable;
 
 public class axut
-  extends axoa
+  extends Drawable
 {
-  public static Bitmap a(Bitmap paramBitmap, int paramInt)
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int = -16777216;
+  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private int b;
+  private int c;
+  
+  public axut(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    try
-    {
-      Bitmap localBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-      localBitmap.setDensity(160);
-      Canvas localCanvas = new Canvas(localBitmap);
-      Paint localPaint = new Paint();
-      Rect localRect = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-      RectF localRectF = new RectF(new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()));
-      float f = paramInt;
-      localPaint.setAntiAlias(true);
-      localCanvas.drawARGB(0, 0, 0, 0);
-      localPaint.setColor(-16777216);
-      localCanvas.drawRoundRect(localRectF, f, f, localPaint);
-      localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-      localCanvas.drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), localRect, localPaint);
-      return localBitmap;
-    }
-    catch (Exception localException) {}
-    return paramBitmap;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_a_of_type_Float = paramInt4;
   }
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void draw(Canvas paramCanvas)
   {
-    return new File(paramDownloadParams.url.getFile());
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
+    Rect localRect = getBounds();
+    this.jdField_a_of_type_AndroidGraphicsRectF.top = localRect.top;
+    this.jdField_a_of_type_AndroidGraphicsRectF.left = localRect.left;
+    this.jdField_a_of_type_AndroidGraphicsRectF.right = localRect.right;
+    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = localRect.bottom;
+    paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  public boolean a()
+  public int getIntrinsicHeight()
   {
-    return false;
+    return this.c;
   }
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public int getIntrinsicWidth()
   {
-    paramFile = paramFile.getAbsolutePath();
-    if (!bace.b(paramFile))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoThumbDownloader", 2, "decodeFile file not exits. just return");
-      }
-      return null;
-    }
-    paramURLDrawableHandler = new BitmapFactory.Options();
-    paramURLDrawableHandler.inDensity = 160;
-    paramURLDrawableHandler.inTargetDensity = 160;
-    paramURLDrawableHandler.inScreenDensity = 160;
-    paramURLDrawableHandler.inJustDecodeBounds = true;
-    SafeBitmapFactory.decodeFile(paramFile, paramURLDrawableHandler);
-    paramURLDrawableHandler.inJustDecodeBounds = false;
-    paramURLDrawableHandler.inSampleSize = a(paramURLDrawableHandler, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight);
-    try
-    {
-      paramFile = BitmapFactory.decodeStream(new BufferedInputStream(new FileInputStream(paramFile)), null, paramURLDrawableHandler);
-      paramDownloadParams = paramDownloadParams.tag;
-      if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 3))
-      {
-        paramFile = a(paramFile, ((int[])(int[])paramDownloadParams)[2]);
-        return paramFile;
-      }
-    }
-    catch (OutOfMemoryError paramFile)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ShortVideoThumbDownloader", 2, "decodeFile : OutOfMemoryError ", paramFile);
-      }
-      return null;
-    }
-    return paramFile;
+    return this.b;
   }
+  
+  public int getOpacity()
+  {
+    return 0;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

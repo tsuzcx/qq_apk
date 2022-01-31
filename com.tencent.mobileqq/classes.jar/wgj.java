@@ -1,30 +1,80 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
-import com.tencent.biz.subscribe.widget.commodity.CommodityItemView.1.1;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.ImageLoader.Options;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class wgj
-  implements ImageLoader.ImageLoadListener
+  implements View.OnTouchListener
 {
-  public wgj(CommodityItemView paramCommodityItemView) {}
+  public wgj(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onImageCanceled(String paramString, ImageLoader.Options paramOptions) {}
-  
-  public void onImageFailed(String paramString, ImageLoader.Options paramOptions) {}
-  
-  public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (CommodityItemView.a(this.a) != null) {
-      this.a.post(new CommodityItemView.1.1(this, paramDrawable));
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (paramMotionEvent.getAction() == 0)
+      {
+        this.a.b.setImageResource(2130846073);
+      }
+      else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+      {
+        this.a.b.setImageResource(2130846072);
+      }
+      else if (paramMotionEvent.getAction() == 2)
+      {
+        int i = (int)paramMotionEvent.getRawX();
+        int j = (int)paramMotionEvent.getRawY();
+        if (!QRDisplayActivity.a(paramView, i, j))
+        {
+          this.a.b.setImageResource(2130846072);
+          continue;
+          if (paramMotionEvent.getAction() == 0)
+          {
+            this.a.c.setImageResource(2130846075);
+          }
+          else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+          {
+            this.a.c.setImageResource(2130846074);
+          }
+          else if (paramMotionEvent.getAction() == 2)
+          {
+            i = (int)paramMotionEvent.getRawX();
+            j = (int)paramMotionEvent.getRawY();
+            if (!QRDisplayActivity.a(paramView, i, j))
+            {
+              this.a.c.setImageResource(2130846074);
+              continue;
+              if (paramMotionEvent.getAction() == 0)
+              {
+                this.a.d.setImageResource(2130846096);
+              }
+              else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+              {
+                this.a.d.setImageResource(2130846095);
+              }
+              else if (paramMotionEvent.getAction() == 2)
+              {
+                i = (int)paramMotionEvent.getRawX();
+                j = (int)paramMotionEvent.getRawY();
+                if (!QRDisplayActivity.a(paramView, i, j)) {
+                  this.a.d.setImageResource(2130846095);
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
-  
-  public void onImageProgress(String paramString, float paramFloat, ImageLoader.Options paramOptions) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wgj
  * JD-Core Version:    0.7.0.1
  */

@@ -3,19 +3,19 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import pxh;
+import qjf;
 
 public class ADVideoAppDownloadManager$LoadTask
   implements Runnable
 {
   private int jdField_a_of_type_Int;
   private WeakReference<ADVideoAppDownloadManager> jdField_a_of_type_JavaLangRefWeakReference;
-  private pxh jdField_a_of_type_Pxh;
+  private qjf jdField_a_of_type_Qjf;
   
-  public ADVideoAppDownloadManager$LoadTask(ADVideoAppDownloadManager paramADVideoAppDownloadManager, pxh parampxh)
+  public ADVideoAppDownloadManager$LoadTask(ADVideoAppDownloadManager paramADVideoAppDownloadManager, qjf paramqjf)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramADVideoAppDownloadManager);
-    this.jdField_a_of_type_Pxh = parampxh;
+    this.jdField_a_of_type_Qjf = paramqjf;
   }
   
   public void run()
@@ -25,7 +25,7 @@ public class ADVideoAppDownloadManager$LoadTask
       if (QLog.isColorLevel()) {
         QLog.d("ADVideoAppDownloadManager", 2, " mLoadAppJob running... ");
       }
-      if (this.jdField_a_of_type_Pxh != null)
+      if (this.jdField_a_of_type_Qjf != null)
       {
         localADVideoAppDownloadManager = (ADVideoAppDownloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
         if (localADVideoAppDownloadManager == null) {
@@ -33,15 +33,15 @@ public class ADVideoAppDownloadManager$LoadTask
         }
         l = System.currentTimeMillis();
         this.jdField_a_of_type_Int += 1;
-        pxh localpxh = this.jdField_a_of_type_Pxh;
-        if (!localpxh.a()) {
+        qjf localqjf = this.jdField_a_of_type_Qjf;
+        if (!localqjf.a()) {
           break label192;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("ADVideoAppDownloadManager", 2, "mLoadAppJob loader sucess!!! " + localpxh.c);
+          QLog.d("ADVideoAppDownloadManager", 2, "mLoadAppJob loader sucess!!! " + localqjf.c);
         }
-        if ((ADVideoAppDownloadManager.a(localADVideoAppDownloadManager) != null) && (!TextUtils.isEmpty(ADVideoAppDownloadManager.a(localADVideoAppDownloadManager).d)) && (ADVideoAppDownloadManager.a(localADVideoAppDownloadManager).d.equals(localpxh.d))) {
-          localADVideoAppDownloadManager.a(localpxh);
+        if ((ADVideoAppDownloadManager.a(localADVideoAppDownloadManager) != null) && (!TextUtils.isEmpty(ADVideoAppDownloadManager.a(localADVideoAppDownloadManager).d)) && (ADVideoAppDownloadManager.a(localADVideoAppDownloadManager).d.equals(localqjf.d))) {
+          localADVideoAppDownloadManager.a(localqjf);
         }
         ADVideoAppDownloadManager.a(localADVideoAppDownloadManager, true, System.currentTimeMillis() - l);
       }

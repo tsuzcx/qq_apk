@@ -1,76 +1,64 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.os.AsyncTask;
+import android.support.v7.widget.RecyclerView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.videoshelf.model.edit.NodeGroup;
+import com.tencent.ttpic.videoshelf.model.edit.ShelfNode;
+import com.tencent.ttpic.videoshelf.model.template.VideoShelfTemplate;
+import com.tencent.ttpic.videoshelf.utils.TTPTLogger;
+import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+import dov.com.qq.im.ae.play.AEVideoShelfEditFragment.OffscreenCaptureRunnable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nullable;
 
 public class bixl
-  extends BaseAdapter
+  extends AsyncTask<Void, Void, Void>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<vik> jdField_a_of_type_JavaUtilList = new ArrayList();
-  @Nullable
-  private vik jdField_a_of_type_Vik;
+  public bixl(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
   
-  public bixl(Context paramContext)
+  protected Void a(Void... paramVarArgs)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    long l1 = System.currentTimeMillis();
+    AEVideoShelfEditFragment.a(this.a);
+    long l2 = System.currentTimeMillis();
+    if (QLog.isDebugVersion()) {
+      QLog.d("AEVideoShelfEditFrag", 2, new Object[] { "init data doInBackground1---cost: ", Long.valueOf(l2 - l1) });
+    }
+    AEVideoShelfEditFragment.b(this.a);
+    if (QLog.isDebugVersion()) {
+      QLog.d("AEVideoShelfEditFrag", 2, new Object[] { "init data doInBackground2---cost: ", Long.valueOf(System.currentTimeMillis() - l2) });
+    }
+    return null;
   }
   
-  @Nullable
-  public vik a()
+  protected void a(Void paramVoid)
   {
-    return this.jdField_a_of_type_Vik;
-  }
-  
-  public void a(List<vik> paramList)
-  {
-    if (paramList == null)
+    AEVideoShelfEditFragment.c(this.a);
+    if (AEVideoShelfEditFragment.a(this.a).isEmpty())
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      TTPTLogger.w("AEVideoShelfEditFrag", "init NodeGroup Error!");
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public void a(@Nullable vik paramvik)
-  {
-    this.jdField_a_of_type_Vik = paramvik;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    paramVoid = new ArrayList();
+    int i = 0;
+    while (i < AEVideoShelfEditFragment.a(this.a).size())
     {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495789, null);
-      paramView = new bixm(paramViewGroup);
-      paramViewGroup.setTag(paramView);
+      ShelfNode localShelfNode = new ShelfNode();
+      localShelfNode.setCoverUri(((NodeGroup)AEVideoShelfEditFragment.a(this.a).get(i)).nodeCoverImage);
+      paramVoid.add(localShelfNode);
+      i += 1;
     }
-    for (;;)
-    {
-      paramView.a((vik)this.jdField_a_of_type_JavaUtilList.get(paramInt), this.jdField_a_of_type_Vik);
-      return paramView.a;
-      paramView = (bixm)paramView.getTag();
-    }
+    AEVideoShelfEditFragment.a(this.a, new biyt(this.a.getActivity(), paramVoid, AEVideoShelfEditFragment.a(this.a).getVideoWidth(), AEVideoShelfEditFragment.a(this.a).getVideoHeight()));
+    AEVideoShelfEditFragment.a(this.a).a(AEVideoShelfEditFragment.a(this.a).getMaterialPath());
+    AEVideoShelfEditFragment.a(this.a).setAdapter(AEVideoShelfEditFragment.a(this.a));
+    AEVideoShelfEditFragment.d(this.a);
+    AEVideoShelfEditFragment.e(this.a);
+    AEVideoShelfEditFragment.a(this.a, 0);
+    new AEVideoShelfEditFragment.OffscreenCaptureRunnable(this.a, null).run();
+  }
+  
+  protected void onPreExecute()
+  {
+    AEVideoShelfEditFragment.a(this.a, null);
   }
 }
 

@@ -1,48 +1,74 @@
-import android.text.TextUtils;
-import mqq.manager.Manager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class amvv
-  implements Manager
+  extends ampb<amvw>
 {
-  public static long a;
-  public static long b;
-  public static long c;
-  protected atmp a;
-  
-  public static void a(String paramString, long paramLong1, long paramLong2, long paramLong3)
+  public static amvw a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    if (!asfl.c())
-    {
-      asfc.a(paramString, "DatingManager.maplng", Long.valueOf(paramLong1));
-      asfc.a(paramString, "DatingManager.maplat", Long.valueOf(paramLong2));
-      asfc.a(paramString, "DatingManager.timestamp", Long.valueOf(paramLong3));
-      return;
-    }
-    jdField_a_of_type_Long = paramLong1;
-    b = paramLong2;
-    c = paramLong3;
+    return (amvw)ampm.a().a(564);
   }
   
-  public void onDestroy()
+  public int a()
   {
-    if (this.jdField_a_of_type_Atmp != null) {}
-    try
-    {
-      this.jdField_a_of_type_Atmp.a();
-      return;
+    return 564;
+  }
+  
+  @NonNull
+  public amvw a(int paramInt)
+  {
+    return new amvw();
+  }
+  
+  @Nullable
+  public amvw a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi == null) || (paramArrayOfampi.length == 0)) {
+      return null;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    paramArrayOfampi = paramArrayOfampi[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("RichTitleConfProcessor", 2, "RichTitleConfProcessor onParsed, content:" + paramArrayOfampi);
     }
+    return amvw.a(paramArrayOfampi);
+  }
+  
+  public Class<amvw> a()
+  {
+    return amvw.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amvw paramamvw)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichTitleConfProcessor", 2, "RichTitleConfProcessor update.");
+    }
+    if (paramamvw != null) {
+      awbs.a = (int)(paramamvw.a * 60.0D * 60.0D);
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amvv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import java.util.List;
 
-class aiyy
-  implements Comparator<ApolloActionData>
+public class aiyy
 {
-  aiyy(aiyu paramaiyu) {}
+  public int a;
+  public long a;
+  public String a;
+  public List<String> a;
+  public String b;
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public aiyy(List<String> paramList, int paramInt, String paramString1, long paramLong, String paramString2)
   {
-    if (paramApolloActionData2.obtainedTime == paramApolloActionData1.obtainedTime) {
-      return 0;
-    }
-    if (paramApolloActionData2.obtainedTime > paramApolloActionData1.obtainedTime) {
-      return 1;
-    }
-    return -1;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramString2;
   }
 }
 

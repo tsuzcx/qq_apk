@@ -1,22 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.handlers.FrameworkHandler.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
 
-public class omo
+class omo
   implements View.OnClickListener
 {
-  omo(omn paramomn) {}
+  omo(omn paramomn, String paramString1, String paramString2) {}
   
   public void onClick(View paramView)
   {
-    this.a.a(false);
-    ThreadManager.executeOnSubThread(new FrameworkHandler.1.1(this));
+    omn.a(this.jdField_a_of_type_Omn).a(this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     omo
  * JD-Core Version:    0.7.0.1
  */

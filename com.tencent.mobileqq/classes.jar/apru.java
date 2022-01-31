@@ -1,10 +1,23 @@
-import android.os.Build.VERSION;
+import java.util.List;
 
-public class apru
+class apru
+  implements aptu
 {
-  public static boolean a()
+  apru(aprs paramaprs, List paramList, aprx paramaprx) {}
+  
+  public void a()
   {
-    return Build.VERSION.SDK_INT >= 11;
+    apue.a(this.jdField_a_of_type_JavaUtilList, aprs.a(this.jdField_a_of_type_Aprs));
+    if (this.jdField_a_of_type_Aprx != null) {
+      this.jdField_a_of_type_Aprx.a(2, 0);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Aprx != null) {
+      this.jdField_a_of_type_Aprx.a(2, 1);
+    }
   }
 }
 

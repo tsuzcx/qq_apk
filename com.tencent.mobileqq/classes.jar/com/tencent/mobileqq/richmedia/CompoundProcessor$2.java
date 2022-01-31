@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia;
 
-import bbmy;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class CompoundProcessor$2
@@ -8,7 +8,7 @@ public class CompoundProcessor$2
 {
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.sApplication, this.a, 0).b(200);
+    bcpw.a(BaseApplicationImpl.sApplication, this.a, 0).b(200);
   }
 }
 

@@ -2128,6 +2128,27 @@ public class g
     this.j.a(paramFromServiceMsg, paramToServiceMsg);
   }
   
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    String str = q.b(paramToServiceMsg);
+    a locala = (a)this.i.get(str);
+    if (locala != null)
+    {
+      int i1 = ((Integer)paramToServiceMsg.getAttribute("battery_capacity", Integer.valueOf(0))).intValue();
+      if (i1 > 0) {
+        locala.k.batteryCapacity = i1;
+      }
+      int i2 = ((Integer)paramToServiceMsg.getAttribute("power_connect", Integer.valueOf(-1))).intValue();
+      if (i2 != -1) {
+        locala.k.powerConnect = i2;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("MSF.C.PushManager", 2, new Object[] { "updateBatteryStatus batteryCapacity:", Integer.valueOf(i1), " powerConnectStatus:", Integer.valueOf(i2) });
+      }
+      f(str);
+    }
+  }
+  
   public void a(ToServiceMsg paramToServiceMsg, RegPushReason paramRegPushReason)
   {
     if (this.aB.hasMessages(1))
@@ -2148,7 +2169,7 @@ public class g
         QLog.d("MSF.C.PushManager", 2, "recv processName:" + str + " recv regPush  ,regPushReason:" + paramRegPushReason);
       }
       locala = (a)this.i.get(str);
-      if ((locala != null) && (locala.k != null) && (locala.c != 0L) && (locala.k.uin.equals(localPushRegisterInfo.uin)) && (locala.k.iStatus == localPushRegisterInfo.iStatus) && (locala.k.extStatus == localPushRegisterInfo.extStatus) && (locala.k.bKikPC == localPushRegisterInfo.bKikPC) && (locala.k.bKikWeak == localPushRegisterInfo.bKikWeak) && (locala.k.timeStamp == localPushRegisterInfo.timeStamp) && (locala.k.iLargeSeq == localPushRegisterInfo.iLargeSeq))
+      if ((locala != null) && (locala.k != null) && (locala.c != 0L) && (locala.k.uin.equals(localPushRegisterInfo.uin)) && (locala.k.iStatus == localPushRegisterInfo.iStatus) && (locala.k.extStatus == localPushRegisterInfo.extStatus) && (localPushRegisterInfo.extStatus != 1000L) && (locala.k.bKikPC == localPushRegisterInfo.bKikPC) && (locala.k.bKikWeak == localPushRegisterInfo.bKikWeak) && (locala.k.timeStamp == localPushRegisterInfo.timeStamp) && (locala.k.iLargeSeq == localPushRegisterInfo.iLargeSeq))
       {
         if (QLog.isColorLevel()) {
           QLog.e("MSF.C.PushManager", 2, "handlerPush also register Push " + MD5.toMD5(localPushRegisterInfo.uin) + "iStatus:" + localPushRegisterInfo.iStatus + " extStatus:" + localPushRegisterInfo.extStatus);
@@ -2253,15 +2274,15 @@ public class g
     //   51: putfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
     //   54: aload_0
     //   55: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
-    //   58: invokevirtual 1922	android/media/MediaPlayer:reset	()V
+    //   58: invokevirtual 1941	android/media/MediaPlayer:reset	()V
     //   61: aload_0
     //   62: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
-    //   65: new 1924	java/io/FileInputStream
+    //   65: new 1943	java/io/FileInputStream
     //   68: dup
     //   69: aload_1
-    //   70: invokespecial 1925	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   73: invokevirtual 1928	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   76: invokevirtual 1931	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
+    //   70: invokespecial 1944	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   73: invokevirtual 1947	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
+    //   76: invokevirtual 1950	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
     //   79: aload_0
     //   80: aload_0
     //   81: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
@@ -2271,10 +2292,10 @@ public class g
     //   91: invokevirtual 581	android/media/MediaPlayer:prepare	()V
     //   94: aload_0
     //   95: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
-    //   98: new 1933	com/tencent/mobileqq/msf/core/push/j
+    //   98: new 1952	com/tencent/mobileqq/msf/core/push/j
     //   101: dup
     //   102: aload_0
-    //   103: invokespecial 1934	com/tencent/mobileqq/msf/core/push/j:<init>	(Lcom/tencent/mobileqq/msf/core/push/g;)V
+    //   103: invokespecial 1953	com/tencent/mobileqq/msf/core/push/j:<init>	(Lcom/tencent/mobileqq/msf/core/push/g;)V
     //   106: invokevirtual 1525	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   109: aload_0
     //   110: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;

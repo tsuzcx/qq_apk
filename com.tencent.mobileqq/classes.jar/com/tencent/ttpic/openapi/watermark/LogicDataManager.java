@@ -106,6 +106,7 @@ public final class LogicDataManager
   public static final String DATE_yyyy = "[date:yyyy]";
   public static final String DB = "[db]";
   public static final String LOCATION = "[location]";
+  public static final String NUMBER = "[number]";
   public static final String NUMBER_d0 = "[number:0]";
   public static final String NUMBER_d1 = "[number:1]";
   public static final String NUMBER_d2 = "[number:2]";
@@ -225,44 +226,45 @@ public final class LogicDataManager
     this.mProviderMap.put("[date:css]", new LogicDataManager.52(this));
     this.mProviderMap.put("[date:cs0]", new LogicDataManager.53(this));
     this.mProviderMap.put("[date:cs1]", new LogicDataManager.54(this));
-    this.mProviderMap.put("[number:0]", new LogicDataManager.55(this));
-    this.mProviderMap.put("[number:1]", new LogicDataManager.56(this));
-    this.mProviderMap.put("[number:2]", new LogicDataManager.57(this));
-    this.mProviderMap.put("[number:3]", new LogicDataManager.58(this));
-    this.mProviderMap.put("[number:4]", new LogicDataManager.59(this));
-    this.mProviderMap.put("[number:5]", new LogicDataManager.60(this));
-    this.mProviderMap.put("[number:6]", new LogicDataManager.61(this));
-    this.mProviderMap.put("[number:7]", new LogicDataManager.62(this));
-    this.mProviderMap.put("[number:8]", new LogicDataManager.63(this));
-    this.mProviderMap.put("[number:9]", new LogicDataManager.64(this));
-    this.mProviderMap.put("[text]", new LogicDataManager.65(this));
-    this.mProviderMap.put("[date:ss]", new LogicDataManager.66(this));
-    this.mProviderMap.put("[date:s0]", new LogicDataManager.67(this));
-    this.mProviderMap.put("[date:s1]", new LogicDataManager.68(this));
-    this.mProviderMap.put("[db]", new LogicDataManager.69(this));
-    this.mProviderMap.put("[altitude]", new LogicDataManager.70(this));
-    this.mProviderMap.put("[location]", new LogicDataManager.71(this));
+    this.mProviderMap.put("[number]", new LogicDataManager.55(this));
+    this.mProviderMap.put("[number:0]", new LogicDataManager.56(this));
+    this.mProviderMap.put("[number:1]", new LogicDataManager.57(this));
+    this.mProviderMap.put("[number:2]", new LogicDataManager.58(this));
+    this.mProviderMap.put("[number:3]", new LogicDataManager.59(this));
+    this.mProviderMap.put("[number:4]", new LogicDataManager.60(this));
+    this.mProviderMap.put("[number:5]", new LogicDataManager.61(this));
+    this.mProviderMap.put("[number:6]", new LogicDataManager.62(this));
+    this.mProviderMap.put("[number:7]", new LogicDataManager.63(this));
+    this.mProviderMap.put("[number:8]", new LogicDataManager.64(this));
+    this.mProviderMap.put("[number:9]", new LogicDataManager.65(this));
+    this.mProviderMap.put("[text]", new LogicDataManager.66(this));
+    this.mProviderMap.put("[date:ss]", new LogicDataManager.67(this));
+    this.mProviderMap.put("[date:s0]", new LogicDataManager.68(this));
+    this.mProviderMap.put("[date:s1]", new LogicDataManager.69(this));
+    this.mProviderMap.put("[db]", new LogicDataManager.70(this));
+    this.mProviderMap.put("[altitude]", new LogicDataManager.71(this));
+    this.mProviderMap.put("[location]", new LogicDataManager.72(this));
     if (!this.mProviderMap.containsKey("[Country]")) {
-      this.mProviderMap.put("[Country]", new LogicDataManager.72(this));
+      this.mProviderMap.put("[Country]", new LogicDataManager.73(this));
     }
     if (!this.mProviderMap.containsKey("[City]")) {
-      this.mProviderMap.put("[City]", new LogicDataManager.73(this));
+      this.mProviderMap.put("[City]", new LogicDataManager.74(this));
     }
-    this.mProviderMap.put("[weather]", new LogicDataManager.74(this));
-    this.mProviderMap.put("[weatherType]", new LogicDataManager.75(this));
-    this.mProviderMap.put("[temperature]", new LogicDataManager.76(this));
-    this.mProviderMap.put("[temperature_0]", new LogicDataManager.77(this));
-    this.mProviderMap.put("[temperature_1]", new LogicDataManager.78(this));
-    this.mProviderMap.put("[temperature_s]", new LogicDataManager.79(this));
-    this.mProviderMap.put("[speech:all]", new LogicDataManager.80(this));
-    this.mProviderMap.put("[picDate:y0]", new LogicDataManager.81(this));
-    this.mProviderMap.put("[picDate:y1]", new LogicDataManager.82(this));
-    this.mProviderMap.put("[picDate:y2]", new LogicDataManager.83(this));
-    this.mProviderMap.put("[picDate:y3]", new LogicDataManager.84(this));
-    this.mProviderMap.put("[picDate:M0]", new LogicDataManager.85(this));
-    this.mProviderMap.put("[picDate:M1]", new LogicDataManager.86(this));
-    this.mProviderMap.put("[picDate:d0]", new LogicDataManager.87(this));
-    this.mProviderMap.put("[picDate:d1]", new LogicDataManager.88(this));
+    this.mProviderMap.put("[weather]", new LogicDataManager.75(this));
+    this.mProviderMap.put("[weatherType]", new LogicDataManager.76(this));
+    this.mProviderMap.put("[temperature]", new LogicDataManager.77(this));
+    this.mProviderMap.put("[temperature_0]", new LogicDataManager.78(this));
+    this.mProviderMap.put("[temperature_1]", new LogicDataManager.79(this));
+    this.mProviderMap.put("[temperature_s]", new LogicDataManager.80(this));
+    this.mProviderMap.put("[speech:all]", new LogicDataManager.81(this));
+    this.mProviderMap.put("[picDate:y0]", new LogicDataManager.82(this));
+    this.mProviderMap.put("[picDate:y1]", new LogicDataManager.83(this));
+    this.mProviderMap.put("[picDate:y2]", new LogicDataManager.84(this));
+    this.mProviderMap.put("[picDate:y3]", new LogicDataManager.85(this));
+    this.mProviderMap.put("[picDate:M0]", new LogicDataManager.86(this));
+    this.mProviderMap.put("[picDate:M1]", new LogicDataManager.87(this));
+    this.mProviderMap.put("[picDate:d0]", new LogicDataManager.88(this));
+    this.mProviderMap.put("[picDate:d1]", new LogicDataManager.89(this));
   }
   
   private int fetchNumerical(String paramString)
@@ -737,7 +739,7 @@ public final class LogicDataManager
     {
       Map.Entry localEntry = (Map.Entry)paramMap.next();
       if ((!TextUtils.isEmpty((CharSequence)localEntry.getValue())) || (!this.mProviderMap.containsKey("[" + (String)localEntry.getKey() + "]"))) {
-        this.mProviderMap.put("[" + (String)localEntry.getKey() + "]", new LogicDataManager.89(this, localEntry));
+        this.mProviderMap.put("[" + (String)localEntry.getKey() + "]", new LogicDataManager.90(this, localEntry));
       }
     }
   }

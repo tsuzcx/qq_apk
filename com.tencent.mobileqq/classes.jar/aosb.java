@@ -1,48 +1,17 @@
-import android.os.Message;
-import com.tencent.kwstudio.office.base.Log;
-import com.tencent.kwstudio.office.debug.Debugger.IDebugCallback;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsDebugView;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public final class aosb
-  implements Debugger.IDebugCallback
+final class aosb
+  implements aptu
 {
-  private final WeakReference<TdsDebugView> a;
+  aosb(Activity paramActivity, FileManagerEntity paramFileManagerEntity) {}
   
-  private aosb(TdsDebugView paramTdsDebugView)
+  public void a()
   {
-    this.a = new WeakReference(paramTdsDebugView);
+    apue.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
   }
   
-  public void onCleanCache(String paramString, int paramInt)
-  {
-    Log.d("TdsDebugView", "onCleanCache: m=" + paramString + ", r=" + paramInt);
-    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
-    if (localTdsDebugView == null) {
-      return;
-    }
-    Message.obtain(TdsDebugView.a(localTdsDebugView), 3, paramInt, 0, paramString).sendToTarget();
-  }
-  
-  public void onCleanPlugin(String paramString, int paramInt)
-  {
-    Log.d("TdsDebugView", "onCleanPlugin: m=" + paramString + ", r=" + paramInt);
-    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
-    if (localTdsDebugView == null) {
-      return;
-    }
-    Message.obtain(TdsDebugView.a(localTdsDebugView), 1, paramInt, 0, paramString).sendToTarget();
-  }
-  
-  public void onUpgradePlugin(String paramString, int paramInt)
-  {
-    Log.d("TdsDebugView", "onUpgradePlugin: m=" + paramString + ", r=" + paramInt);
-    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
-    if (localTdsDebugView == null) {
-      return;
-    }
-    Message.obtain(TdsDebugView.a(localTdsDebugView), 2, paramInt, 0, paramString).sendToTarget();
-  }
+  public void b() {}
 }
 
 

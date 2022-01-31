@@ -1,18 +1,18 @@
 package com.tencent.av.business.manager.support;
 
-import kyr;
+import ljh;
 
 public class SupportFace$1
   implements Runnable
 {
-  public SupportFace$1(kyr paramkyr) {}
+  public SupportFace$1(ljh paramljh) {}
   
   public void run()
   {
-    if (!kyr.a(this.this$0))
+    if (!ljh.a(this.this$0))
     {
       this.this$0.b();
-      kyr.a(this.this$0, true);
+      ljh.a(this.this$0, true);
     }
   }
 }

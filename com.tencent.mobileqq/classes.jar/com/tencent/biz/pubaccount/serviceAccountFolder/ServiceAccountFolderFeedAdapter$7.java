@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
-import rof;
-import rog;
-import rol;
+import saw;
+import sax;
+import sbc;
 
 public class ServiceAccountFolderFeedAdapter$7
   implements Runnable
 {
-  public ServiceAccountFolderFeedAdapter$7(rog paramrog, rof paramrof) {}
+  public ServiceAccountFolderFeedAdapter$7(sax paramsax, saw paramsaw) {}
   
   public void run()
   {
-    rol.a().a(rog.a(this.this$0), this.a, true);
+    sbc.a().a(sax.a(this.this$0), this.a, true);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import beom;
+import bfwg;
 
 class FrameHelperActivity$3
   implements Runnable
 {
-  FrameHelperActivity$3(FrameHelperActivity paramFrameHelperActivity, beom parambeom) {}
+  FrameHelperActivity$3(FrameHelperActivity paramFrameHelperActivity, bfwg parambfwg) {}
   
   public void run()
   {

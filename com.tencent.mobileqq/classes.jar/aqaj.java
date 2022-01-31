@@ -1,12 +1,30 @@
+import android.app.Activity;
+import android.content.Intent;
+import com.idlefish.flutterboost.containers.BoostFlutterActivity.SerializableMap;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
+import com.tencent.mobileqq.flutter.container.QFlutterContainerFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+
 public class aqaj
 {
-  public int a;
-  public String a;
-  
-  public aqaj(aqae paramaqae, int paramInt, String paramString)
+  public static void a(Activity paramActivity, String paramString, Map<String, Object> paramMap)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.router", 2, String.format("openPage: %s", new Object[] { paramString }));
+    }
+    boolean bool = aqyd.a("com.tencent.mobileqq:tool");
+    Intent localIntent = new Intent();
+    localIntent.putExtra("url", paramString);
+    localIntent.putExtra("click_millis", System.currentTimeMillis());
+    localIntent.putExtra("process_exist", bool);
+    if (paramMap != null)
+    {
+      paramString = new BoostFlutterActivity.SerializableMap();
+      paramString.setMap(paramMap);
+      localIntent.putExtra("params", paramString);
+    }
+    PublicFragmentActivityForTool.b(paramActivity, localIntent, QFlutterContainerFragment.class, 1000);
   }
 }
 

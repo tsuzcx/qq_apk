@@ -6,7 +6,7 @@ import android.net.Uri;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import befm;
+import bfng;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -585,7 +585,7 @@ public class AppBrandUtil
         localStringBuilder.append(str1).append('=').append(str2);
       }
     }
-    return befm.a(localStringBuilder.toString());
+    return bfng.a(localStringBuilder.toString());
   }
   
   public static boolean needUpdate(MiniAppInfo paramMiniAppInfo1, MiniAppInfo paramMiniAppInfo2)

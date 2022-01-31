@@ -1,15 +1,15 @@
 package com.tencent.qidian.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="puin")
 public class PubAccountNavigationMenu
-  extends atmo
+  extends aukm
 {
-  @atoc
+  @auma
   public long puin;
   public int version;
   public String xml = "";

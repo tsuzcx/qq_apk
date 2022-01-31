@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.MainFragment;
 
 public class abni
-  extends ajgf
+  implements View.OnClickListener
 {
-  public abni(QQSettingSettingActivity paramQQSettingSettingActivity) {}
-  
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public void onClick(View paramView)
   {
-    QQSettingSettingActivity.a(this.a, paramUpgradeDetailWrapper);
-    QQSettingSettingActivity.c(this.a);
+    MainFragment.b(true);
+    paramView = (ViewGroup)paramView.getParent();
+    if (!MainFragment.a()) {
+      paramView.callOnClick();
+    }
   }
 }
 

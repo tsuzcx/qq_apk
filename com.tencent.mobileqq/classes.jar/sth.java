@@ -1,31 +1,29 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.IEventReceiver;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class sth
-  implements slx<stm, stn>
+public abstract class sth<T extends IEventReceiver, EVENT extends ssk>
+  extends QQUIEventReceiver<T, EVENT>
 {
-  sth(stg paramstg, sfz paramsfz, sga paramsga) {}
-  
-  public void a(@NonNull stm paramstm, @Nullable stn paramstn, @NonNull ErrorMessage paramErrorMessage)
+  public sth(T paramT)
   {
-    if ((paramErrorMessage.isFail()) || (paramstn == null))
+    super(paramT);
+  }
+  
+  public final void a(@NonNull T paramT, @NonNull EVENT paramEVENT)
+  {
+    if ((paramEVENT.a != null) && (paramEVENT.a.isFail()))
     {
-      QLog.w("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 1, "get active fail" + paramErrorMessage.getErrorMessage());
+      c(paramT, paramEVENT);
       return;
     }
-    if (paramstn.b == 1)
-    {
-      this.jdField_a_of_type_Stg.a(true);
-      this.jdField_a_of_type_Sfz.b(2);
-      this.jdField_a_of_type_Stg.a = 2;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "active value is " + paramstn.b);
-    }
-    this.jdField_a_of_type_Sga.a(paramstn.a);
+    b(paramT, paramEVENT);
   }
+  
+  public abstract void b(@NonNull T paramT, @NonNull EVENT paramEVENT);
+  
+  public abstract void c(@NonNull T paramT, @NonNull EVENT paramEVENT);
 }
 
 

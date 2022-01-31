@@ -1,39 +1,28 @@
-public class axuv
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.ClipboardManager;
+import android.view.View;
+
+final class axuv
+  implements bfoq
 {
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b = "";
-  public int c;
-  public long c;
-  public String c = "";
-  public int d;
-  public long d;
-  public String d = "";
-  public int e;
-  public long e;
-  public String e = "";
-  public long f;
-  public String f = "";
-  public long g;
-  public long h;
-  public long i;
-  public long j;
-  public long k;
-  public long l;
-  public long m;
-  public long n;
-  public long o;
-  public long p;
-  public long q;
+  axuv(String paramString, Context paramContext) {}
   
-  public axuv()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Float = 0.0F;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      axuu.a().dismiss();
+      return;
+      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      continue;
+      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

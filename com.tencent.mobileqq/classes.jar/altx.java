@@ -1,127 +1,85 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.text.TextUtils;
+import com.tencent.ark.ArkAppPanelList.AppDetail;
+import com.tencent.ark.ArkAppPanelList.RespBody;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.1;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class altx
+  implements ajtg
 {
-  private alrw jdField_a_of_type_Alrw = new alrw();
-  private alsb jdField_a_of_type_Alsb;
-  private alsd jdField_a_of_type_Alsd;
-  private boolean jdField_a_of_type_Boolean = true;
+  public altx(ArkMessageServerLogic.1 param1) {}
   
-  public altx()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Alrw.a(new alry());
-    this.jdField_a_of_type_Alsb = new alsb();
-    this.jdField_a_of_type_Alsb.a(this.jdField_a_of_type_Alrw);
-  }
-  
-  private boolean a(int paramInt)
-  {
-    return paramInt == 16908289;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_Alrw != null) && (this.jdField_a_of_type_Alsd != null))
+    if ((paramBoolean) && (paramObject != null))
     {
-      localColorNote = this.jdField_a_of_type_Alsd.getColorNote();
-      if (localColorNote != null)
+      localObject1 = new ArkAppPanelList.RespBody();
+      try
       {
-        this.jdField_a_of_type_Alrw.a(localColorNote.getServiceType(), localColorNote.getSubType(), true);
-        localColorNote = alsr.a(localColorNote);
-        this.jdField_a_of_type_Alrw.a(localColorNote.getServiceType(), localColorNote.getSubType(), true);
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      ColorNote localColorNote;
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.e("ColorNoteStateNotice", 1, "onResume: colorNote is null");
-      return;
-    }
-    QLog.e("ColorNoteStateNotice", 1, "onResume: mColorNoteCurd or mServiceInfo is null");
-  }
-  
-  public void a(alrw paramalrw)
-  {
-    this.jdField_a_of_type_Alrw = paramalrw;
-  }
-  
-  public void a(alry paramalry)
-  {
-    if (this.jdField_a_of_type_Alrw != null) {
-      this.jdField_a_of_type_Alrw.a(paramalry);
-    }
-  }
-  
-  public void a(alsd paramalsd)
-  {
-    this.jdField_a_of_type_Alsd = paramalsd;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Alrw != null) && (this.jdField_a_of_type_Alsd != null))
-    {
-      localColorNote = this.jdField_a_of_type_Alsd.getColorNote();
-      if (localColorNote != null)
-      {
-        this.jdField_a_of_type_Alrw.a(localColorNote.getServiceType(), localColorNote.getSubType(), false);
-        localColorNote = alsr.a(localColorNote);
-        this.jdField_a_of_type_Alrw.a(localColorNote.getServiceType(), localColorNote.getSubType(), false);
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      ColorNote localColorNote;
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.e("ColorNoteStateNotice", 1, "onPause: colorNote is null");
-      return;
-    }
-    QLog.e("ColorNoteStateNotice", 1, "onPause: mColorNoteCurd or mServiceInfo is null");
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_Alsd != null) && (this.jdField_a_of_type_Alrw != null) && (this.jdField_a_of_type_Alsb != null))
-    {
-      int j = 0;
-      ColorNote localColorNote = this.jdField_a_of_type_Alsd.getColorNote();
-      int i = j;
-      if (localColorNote != null)
-      {
-        i = j;
-        if (a(localColorNote.getServiceType())) {
-          i = 1;
+        ((ArkAppPanelList.RespBody)localObject1).mergeFrom((byte[])paramObject);
+        localArrayList = new ArrayList();
+        if (((ArkAppPanelList.RespBody)localObject1).apps.has())
+        {
+          paramObject = ((ArkAppPanelList.RespBody)localObject1).apps.get();
+          if ((paramObject == null) || (paramObject.size() <= 0)) {
+            break label234;
+          }
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext())
+          {
+            localObject2 = (ArkAppPanelList.AppDetail)paramObject.next();
+            if (localObject2 != null)
+            {
+              localObject1 = ((ArkAppPanelList.AppDetail)localObject2).appName.get();
+              str = ((ArkAppPanelList.AppDetail)localObject2).cnName.get();
+              localObject2 = ((ArkAppPanelList.AppDetail)localObject2).iconUrl.get();
+              if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
+              {
+                localArrayList.add(new alth((String)localObject1, str, (String)localObject2));
+                continue;
+                return;
+              }
+            }
+          }
         }
       }
-      if ((i != 0) && (this.jdField_a_of_type_Boolean) && (paramBoolean) && (!this.jdField_a_of_type_Alrw.a(localColorNote.getServiceType(), localColorNote.getSubType())))
+      catch (InvalidProtocolBufferMicroException paramObject)
       {
-        alsr.a(localColorNote);
-        this.jdField_a_of_type_Alsb.a(localColorNote);
+        ArkAppCenter.c("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList mergeFrom exception=" + paramObject);
+        if (this.a.a != null) {
+          this.a.a.b(null);
+        }
       }
     }
-  }
-  
-  public void c()
-  {
-    b(true);
+    label234:
+    while (this.a.a == null)
+    {
+      ArrayList localArrayList;
+      do
+      {
+        for (;;)
+        {
+          Object localObject1;
+          Object localObject2;
+          String str;
+          paramObject = null;
+        }
+      } while (this.a.a == null);
+      this.a.a.b(localArrayList);
+      return;
+    }
+    this.a.a.b(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     altx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,33 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.contentbox.PlusMenuContainer;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.view.View.OnTouchListener;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.PinnedHeaderExpandableListView;
 
 public class bftz
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public bftz(PlusMenuContainer paramPlusMenuContainer) {}
+  public bftz(PinnedHeaderExpandableListView paramPinnedHeaderExpandableListView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof String)))
+    if (paramMotionEvent.getAction() == 1)
     {
-      paramView = (String)paramView.getTag();
-      Intent localIntent = new Intent();
-      localIntent.putExtra("cmd", "Schema");
-      localIntent.putExtra("schema", paramView);
-      bfpr.a((Activity)this.a.a, bfpy.a(), localIntent);
-      if (!paramView.equals(PlusMenuContainer.b[0])) {
-        break label94;
-      }
-      LpReportInfo_pf00064.report(133, 2);
-    }
-    for (;;)
-    {
-      this.a.b();
-      return;
-      label94:
-      if (paramView.equals(PlusMenuContainer.b[1])) {
-        LpReportInfo_pf00064.report(133, 3);
-      } else if (paramView.equals(PlusMenuContainer.b[2])) {
-        LpReportInfo_pf00064.report(133, 4);
+      long l = this.a.a(this.a.getFirstVisiblePosition());
+      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
+      {
+        int i = ExpandableListView.c(l);
+        if ((PinnedHeaderExpandableListView.a(this.a) == null) || (!PinnedHeaderExpandableListView.a(this.a).a(this.a, paramView, i, PinnedHeaderExpandableListView.a(this.a).getGroupId(i)))) {
+          this.a.b(i);
+        }
       }
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bftz
  * JD-Core Version:    0.7.0.1
  */

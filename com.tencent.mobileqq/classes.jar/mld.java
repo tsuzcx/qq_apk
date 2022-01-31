@@ -1,28 +1,25 @@
-import com.tencent.biz.JoinGroupTransitActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.av.widget.RotateLayout;
 
 public class mld
-  implements mlc
+  implements Animation.AnimationListener
 {
-  public mld(JoinGroupTransitActivity paramJoinGroupTransitActivity) {}
+  private mld(VideoLayerUI paramVideoLayerUI) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(1);
+    VideoLayerUI.a(this.a).setVisibility(4);
   }
   
-  public void b()
-  {
-    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(2);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void c()
-  {
-    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(3);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mld
  * JD-Core Version:    0.7.0.1
  */

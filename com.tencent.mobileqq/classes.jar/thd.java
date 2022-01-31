@@ -1,19 +1,65 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqQQStoryGuide;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspQQStoryGuide;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class thd
-  extends ulp
+  extends syv
 {
-  public thd(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  public static String a = sxp.a("StorySvc.new_user_guide");
+  public String b;
+  public String c;
   
-  public void a(int paramInt, View paramView, Object paramObject, unw paramunw)
+  public thd(String paramString1, String paramString2)
   {
-    if ((paramObject instanceof QQUserUIItem))
+    this.b = paramString1;
+    this.c = paramString2;
+  }
+  
+  public String a()
+  {
+    return a;
+  }
+  
+  public syq a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspQQStoryGuide localRspQQStoryGuide = new qqstory_service.RspQQStoryGuide();
+    try
     {
-      paramView = (QQUserUIItem)paramObject;
-      skt.a(this.a.a, 10, paramView.uid);
+      localRspQQStoryGuide.mergeFrom(paramArrayOfByte);
+      return new the(localRspQQStoryGuide);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqQQStoryGuide localReqQQStoryGuide = new qqstory_service.ReqQQStoryGuide();
+    try
+    {
+      localReqQQStoryGuide.to_uid.set(Long.valueOf(this.b).longValue());
+      localReqQQStoryGuide.version.set(this.c);
+      return localReqQQStoryGuide.toByteArray();
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        localReqQQStoryGuide.to_uid.set(0L);
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    return "QQStoryGuideRequest{toUid='" + this.b + '\'' + "version='" + this.c + '\'' + '}';
   }
 }
 

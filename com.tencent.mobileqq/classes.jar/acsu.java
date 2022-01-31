@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-public class acsu
-  implements acuq
+class acsu
+  implements BusinessObserver
 {
-  public acsu(DoodlePanel paramDoodlePanel) {}
+  acsu(acsr paramacsr, acsw paramacsw) {}
   
-  public void a(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (DoodlePanel.a(this.a) != null)
-    {
-      if (DoodlePanel.a(this.a) != null) {
-        DoodlePanel.a(this.a).setTemplateID(paramInt);
-      }
-      DoodlePanel.a(this.a);
-      azzf.a(this.a.getContext(), "aio_doodle_template_picker_select", String.valueOf(paramInt));
+    if ((paramInt == 2003) && (this.jdField_a_of_type_Acsw != null)) {
+      this.jdField_a_of_type_Acsw.a(paramBoolean, paramBundle);
     }
   }
 }

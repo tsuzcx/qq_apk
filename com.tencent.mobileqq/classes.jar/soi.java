@@ -1,33 +1,39 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView.ScaleType;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class soi
+public class soi
+  implements View.OnTouchListener
 {
-  public int a;
-  public String a;
+  public soi(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public soi() {}
-  
-  public soi(qqstory_struct.ErrorInfo paramErrorInfo)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Int = paramErrorInfo.error_code.get();
-    this.jdField_a_of_type_JavaLangString = paramErrorInfo.error_desc.get().toStringUtf8();
+    if (PublicAccountImageCollectionMainActivity.a(this.a))
+    {
+      this.a.jdField_a_of_type_AndroidViewScaleGestureDetector.onTouchEvent(paramMotionEvent);
+      if (QLog.isColorLevel()) {
+        QLog.d("qqBaseActivity", 2, "current operation is" + paramMotionEvent.getAction());
+      }
+      if ((paramMotionEvent.getAction() == 1) && (this.a.b[0] < this.a.jdField_a_of_type_ArrayOfFloat[0]))
+      {
+        PublicAccountImageCollectionMainActivity.a(this.a).setImageMatrix(this.a.c);
+        PublicAccountImageCollectionMainActivity.a(this.a).setScaleType(ImageView.ScaleType.FIT_CENTER);
+      }
+      return true;
+    }
+    this.a.jdField_a_of_type_AndroidViewScaleGestureDetector.onTouchEvent(paramMotionEvent);
+    return false;
   }
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt, Bundle paramBundle);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     soi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,34 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
-import com.tencent.widget.AdapterView;
+import android.net.Uri;
+import com.tencent.qphone.base.util.QLog;
 
-public class rfd
-  implements behi
+final class rfd
+  implements sig
 {
-  public rfd(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(Uri paramUri, String paramString, int paramInt)
   {
-    if ((!this.a.a()) && (this.a.isEnabled()) && (ReadInJoyDynamicGridView.a(this.a) != null)) {
-      ReadInJoyDynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder().append("onDetectScreenshot() path=").append(paramString).append(", channelID=");
+      if (rfc.a(rfc.a()) != null) {
+        break label129;
+      }
+      paramUri = "null";
+      paramString = paramString.append(paramUri).append(", channelType=");
+      if (rfc.b(rfc.a()) != null) {
+        break label139;
+      }
+    }
+    label129:
+    label139:
+    for (paramUri = "null";; paramUri = rfc.b(rfc.a()))
+    {
+      QLog.d("ReadInJoyScreenShotReporter", 2, paramUri);
+      if (rfc.a(rfc.a()) != null) {
+        noo.b(null, "", "0X8008100", "0X8008100", 0, 0, String.valueOf(System.currentTimeMillis() / 1000L), String.valueOf(rfc.b(rfc.a())), String.valueOf(rfc.a(rfc.a())), null, false);
+      }
+      return;
+      paramUri = rfc.a(rfc.a());
+      break;
     }
   }
 }

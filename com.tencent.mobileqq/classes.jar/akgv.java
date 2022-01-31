@@ -1,51 +1,65 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class akgv
-  implements Parcelable.Creator<UpgradeTIMWrapper>
+public class akgv
 {
-  public UpgradeTIMWrapper a(Parcel paramParcel)
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  public String a;
+  long b;
+  public String b;
+  public long c;
+  String c;
+  String d;
+  String e;
+  String f;
+  String g;
+  String h;
+  
+  akgv(akgs paramakgs, String paramString)
   {
-    Object localObject = null;
-    String str2 = paramParcel.readString();
-    String str3 = paramParcel.readString();
-    String str4 = paramParcel.readString();
-    String str5 = paramParcel.readString();
-    String str6 = paramParcel.readString();
-    int j = 0;
-    for (;;)
-    {
-      try
-      {
-        int i = paramParcel.readInt();
-        j = i;
-        String str1 = paramParcel.readString();
-        paramParcel.printStackTrace();
-      }
-      catch (Exception paramParcel)
-      {
-        try
-        {
-          paramParcel = paramParcel.readString();
-          return new UpgradeTIMWrapper(str2, str3, str4, str5, str6, i, str1, paramParcel);
-        }
-        catch (Exception paramParcel)
-        {
-          break label81;
-        }
-        paramParcel = paramParcel;
-        str1 = null;
-        i = j;
-      }
-      label81:
-      paramParcel = localObject;
-    }
+    this.h = paramString;
+    a();
   }
   
-  public UpgradeTIMWrapper[] a(int paramInt)
+  public void a()
   {
-    return null;
+    if (this.h == null) {
+      return;
+    }
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("AppStartedObserver", 0);
+    this.jdField_a_of_type_Long = localSharedPreferences.getLong(this.h + "_timeToWait", 0L);
+    this.jdField_b_of_type_Long = localSharedPreferences.getLong(this.h + "_lastReportTime", 0L);
+    this.jdField_c_of_type_Long = localSharedPreferences.getLong(this.h + "_lastUpdateTime", 0L);
+    this.jdField_a_of_type_JavaLangString = localSharedPreferences.getString(this.h + "_sigHash", "");
+    this.jdField_b_of_type_JavaLangString = localSharedPreferences.getString(this.h + "_md5", "");
+    this.jdField_a_of_type_Int = localSharedPreferences.getInt(this.h + "_serverResult", 0);
+    this.jdField_c_of_type_JavaLangString = localSharedPreferences.getString(this.h + "_dlgTitle", "");
+    this.d = localSharedPreferences.getString(this.h + "_dlgContent", "");
+    this.e = localSharedPreferences.getString(this.h + "_dlgLButton", "");
+    this.f = localSharedPreferences.getString(this.h + "_dlgRButoon", "");
+    this.g = localSharedPreferences.getString(this.h + "_dlgUrl", "");
+  }
+  
+  public void b()
+  {
+    if (this.h == null) {
+      return;
+    }
+    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("AppStartedObserver", 0).edit();
+    localEditor.putLong(this.h + "_timeToWait", this.jdField_a_of_type_Long);
+    localEditor.putLong(this.h + "_lastReportTime", this.jdField_b_of_type_Long);
+    localEditor.putLong(this.h + "_lastUpdateTime", this.jdField_c_of_type_Long);
+    localEditor.putString(this.h + "_sigHash", this.jdField_a_of_type_JavaLangString);
+    localEditor.putString(this.h + "_md5", this.jdField_b_of_type_JavaLangString);
+    localEditor.putInt(this.h + "_serverResult", this.jdField_a_of_type_Int);
+    localEditor.putString(this.h + "_dlgTitle", this.jdField_c_of_type_JavaLangString);
+    localEditor.putString(this.h + "_dlgContent", this.d);
+    localEditor.putString(this.h + "_dlgLButton", this.e);
+    localEditor.putString(this.h + "_dlgRButoon", this.f);
+    localEditor.putString(this.h + "_dlgUrl", this.g);
+    localEditor.commit();
   }
 }
 

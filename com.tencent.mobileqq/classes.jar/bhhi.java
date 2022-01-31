@@ -1,82 +1,41 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.annotation.TargetApi;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import cooperation.qzone.panorama.widget.PanoramaGuideAnimate;
 
 public class bhhi
-  implements Cloneable
+  extends Handler
 {
-  public int a;
-  public String a;
-  public List<MusicItemInfo> a;
-  public boolean a;
-  public boolean b = true;
+  public bhhi(PanoramaGuideAnimate paramPanoramaGuideAnimate) {}
   
-  public bhhi() {}
-  
-  public bhhi(JSONObject paramJSONObject)
+  @TargetApi(11)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramJSONObject.has("categoryName")) {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("categoryName");
-    }
-    if (paramJSONObject.has("tagid")) {
-      this.jdField_a_of_type_Int = paramJSONObject.getInt("tagid");
-    }
-    if (paramJSONObject.has("enabled")) {
-      this.b = paramJSONObject.getBoolean("enabled");
-    }
-    this.jdField_a_of_type_Boolean = "1".equals(paramJSONObject.optString("random_position"));
-    if (paramJSONObject.has("content"))
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      paramJSONObject = paramJSONObject.getJSONArray("content");
-      ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      while (i < paramJSONObject.length())
-      {
-        MusicItemInfo localMusicItemInfo = new MusicItemInfo(paramJSONObject.optString(i));
-        localMusicItemInfo.mTagName = this.jdField_a_of_type_JavaLangString;
-        localArrayList.add(localMusicItemInfo);
-        i += 1;
+    }
+    do
+    {
+      return;
+      PanoramaGuideAnimate.a(this.a).setRotationY(PanoramaGuideAnimate.a(this.a));
+      PanoramaGuideAnimate.a(this.a).setTranslationX(PanoramaGuideAnimate.b(this.a));
+      return;
+      if (PanoramaGuideAnimate.c(this.a) > 0.0F) {
+        break;
       }
-      this.jdField_a_of_type_JavaUtilList = localArrayList;
-    }
-  }
-  
-  public bhhi a()
-  {
-    try
-    {
-      bhhi localbhhi = (bhhi)super.clone();
-      return localbhhi;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      localCloneNotSupportedException.printStackTrace();
-    }
-    return null;
-  }
-  
-  public MusicItemInfo a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        MusicItemInfo localMusicItemInfo = (MusicItemInfo)localIterator.next();
-        if (localMusicItemInfo.mItemId == paramInt) {
-          return localMusicItemInfo;
-        }
-      }
-    }
-    return null;
+    } while (PanoramaGuideAnimate.a(this.a) == null);
+    PanoramaGuideAnimate.a(this.a).a();
+    return;
+    PanoramaGuideAnimate.a(this.a, PanoramaGuideAnimate.c(this.a) - 0.05F);
+    this.a.setAlpha(PanoramaGuideAnimate.c(this.a));
+    PanoramaGuideAnimate.a(this.a).sendEmptyMessage(292);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhhi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
-class ovu
-  implements View.OnClickListener
+public class ovu
+  implements bcjl
 {
-  ovu(ovq paramovq, opw paramopw, qoe paramqoe) {}
+  public ovu(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_Opw.a();
-    qpj localqpj = this.jdField_a_of_type_Qoe.a();
-    if (localqpj != null) {
-      localqpj.a(paramView, this.jdField_a_of_type_Opw.a(), 2);
+    if (ReadInJoySelfFragment.a(this.a))
+    {
+      ReadInJoySelfFragment.a(this.a, false);
+      sgx.a("self_tab_cost", null);
+      sgx.a = 4;
+      sgx.a("KANDIAN_FEEDS_COST", null);
     }
   }
 }

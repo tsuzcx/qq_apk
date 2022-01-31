@@ -1,21 +1,33 @@
-class aexi
-  implements aexj<T>
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+
+public class aexi
+  extends MSFServlet
 {
-  aexi(aexh paramaexh, int paramInt) {}
-  
-  public int a()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    return this.jdField_a_of_type_Int;
+    AppRuntime localAppRuntime = getAppRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof AppInterface))) {
+      aexd.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
+    }
   }
   
-  public void a(aexr paramaexr, T paramT, int paramInt)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    this.jdField_a_of_type_Aexh.a(paramaexr, paramT, paramInt);
-  }
-  
-  public boolean a(T paramT, int paramInt)
-  {
-    return true;
+    if (paramIntent == null)
+    {
+      QLog.e("StickerRecServlet", 1, "onSend : req is null");
+      return;
+    }
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("key_cmd"));
+    paramPacket.putSendData(paramIntent.getByteArrayExtra("key_body"));
+    paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 6000L));
   }
 }
 

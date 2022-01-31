@@ -1,28 +1,36 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.View;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract interface uwe
+public final class uwe
+  extends QQUIEventReceiver<uwa, tjr>
 {
-  @NonNull
-  public abstract Context a();
+  public uwe(@NonNull uwa paramuwa)
+  {
+    super(paramuwa);
+  }
   
-  public abstract Intent a(vfh paramvfh);
+  public void a(@NonNull uwa paramuwa, @NonNull tjr paramtjr)
+  {
+    veg.a(this.TAG, "receive feature event. %s.", paramtjr.toString());
+    if ((paramtjr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtjr.jdField_a_of_type_JavaUtilList != null))
+    {
+      paramtjr = paramtjr.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramtjr.hasNext())
+      {
+        tef localtef = (tef)paramtjr.next();
+        uwa.a(paramuwa).put(localtef.a, localtef);
+      }
+    }
+  }
   
-  @NonNull
-  public abstract View a();
-  
-  public abstract void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3);
-  
-  public abstract void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong);
-  
-  public abstract void b();
-  
-  @Nullable
-  public abstract Activity getActivity();
+  public Class acceptEventClass()
+  {
+    return tjr.class;
+  }
 }
 
 

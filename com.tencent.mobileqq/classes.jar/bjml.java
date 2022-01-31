@@ -1,10 +1,33 @@
-public abstract interface bjml
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
+
+class bjml
+  implements EIPCOnGetConnectionListener
 {
-  public abstract void c();
+  bjml(bjmj parambjmj) {}
   
-  public abstract void d();
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      bjmj.a(this.a, paramEIPCConnection.procName);
+    }
+    bjmj.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakIpcModuleClient", 2, "onConnectBind!");
+    }
+  }
   
-  public abstract void i();
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      bjmj.a(this.a, paramEIPCConnection.procName);
+    }
+    bjmj.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakIpcModuleClient", 2, "onConnectUnbind:" + bjmj.a(this.a));
+    }
+  }
 }
 
 

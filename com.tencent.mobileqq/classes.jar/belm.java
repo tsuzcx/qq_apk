@@ -1,22 +1,19 @@
-import android.text.SpannableString;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask;
 
-public class belm
-  extends benl
+public class belm<Data>
 {
-  public int a;
+  final AsyncTask jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask;
+  final Data[] jdField_a_of_type_ArrayOfJavaLangObject;
   
-  public void a(SpannableString paramSpannableString)
+  public belm(AsyncTask paramAsyncTask, Data... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("spanStyle", 2, "[MarginStyle] start:" + this.b + " end:" + this.c + " marginPix:" + this.a);
-    }
-    paramSpannableString.setSpan(new bell(this.a), this.b, this.c, 17);
+    this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask = paramAsyncTask;
+    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     belm
  * JD-Core Version:    0.7.0.1
  */

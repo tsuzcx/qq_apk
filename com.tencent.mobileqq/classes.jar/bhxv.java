@@ -1,32 +1,30 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
-import dov.com.qq.im.ptv.LightWeightProgress;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
 
-public class bhxv
-  extends AnimatorListenerAdapter
+class bhxv
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  public bhxv(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
+  bhxv(bhxr parambhxr) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActive mProgressView 50ms delay=90ms end");
+    float f = paramScaleGestureDetector.getScaleFactor();
+    if (bhxr.a(this.a) != null) {
+      bhxr.a(this.a).a("onActionScale", new float[] { f });
     }
+    return true;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    this.a.a.setStatus(false);
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActive mProgressView begin");
-    }
+    return true;
   }
+  
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhxv
  * JD-Core Version:    0.7.0.1
  */

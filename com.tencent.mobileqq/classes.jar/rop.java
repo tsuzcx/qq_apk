@@ -1,24 +1,16 @@
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class rop
-  extends wci
+class rop
+  extends BroadcastReceiver
 {
-  public rop(FolderFollowTabFragment paramFolderFollowTabFragment, Bundle paramBundle)
+  rop(rom paramrom) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramBundle);
+    this.a.g();
   }
-  
-  protected BaseWidgetView a(ViewGroup paramViewGroup, wbp paramwbp)
-  {
-    return FolderFollowTabFragment.a(this.a);
-  }
-  
-  public void a(Bundle paramBundle) {}
-  
-  public void a(wca paramwca) {}
 }
 
 

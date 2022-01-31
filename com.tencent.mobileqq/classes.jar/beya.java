@@ -1,235 +1,130 @@
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.common.app.BaseApplicationImpl;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.util.QZLog;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import mqq.app.AppRuntime;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class beya
 {
-  private static beya jdField_a_of_type_Beya;
-  private Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("(\\d+)\\.(\\d+).(\\d+)_(\\d+)");
+  public static boolean b;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public boolean c;
+  public int d;
+  public long d;
+  public boolean d;
+  public long e;
+  public long f;
+  public long g;
   
-  public static beya a()
+  public beya()
   {
-    if (jdField_a_of_type_Beya == null) {}
+    this.jdField_d_of_type_Int = 0;
+  }
+  
+  public String a()
+  {
     try
     {
-      if (jdField_a_of_type_Beya == null) {
-        jdField_a_of_type_Beya = new beya();
-      }
-      return jdField_a_of_type_Beya;
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("appid", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("engineType", this.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("reportType", this.jdField_b_of_type_Int);
+      ((JSONObject)localObject).put("verType", this.jdField_c_of_type_Int);
+      ((JSONObject)localObject).put("launchId", this.jdField_b_of_type_JavaLangString);
+      ((JSONObject)localObject).put("clickTime", this.jdField_a_of_type_Long);
+      ((JSONObject)localObject).put("loadTime", this.jdField_b_of_type_Long);
+      ((JSONObject)localObject).put("launchTime", this.jdField_c_of_type_Long);
+      ((JSONObject)localObject).put("launchResult", this.jdField_d_of_type_Int);
+      ((JSONObject)localObject).put("activeTime", this.jdField_d_of_type_Long);
+      ((JSONObject)localObject).put("showTime", this.e);
+      ((JSONObject)localObject).put("hideTime", this.f);
+      ((JSONObject)localObject).put("jsError", this.jdField_c_of_type_JavaLangString);
+      ((JSONObject)localObject).put("needReportLaunchResult", this.jdField_a_of_type_Boolean);
+      ((JSONObject)localObject).put("hasPkg", this.jdField_c_of_type_Boolean);
+      ((JSONObject)localObject).put("flutterMode", this.jdField_d_of_type_Boolean);
+      ((JSONObject)localObject).put("loadEndTime", this.g);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
-    finally {}
-  }
-  
-  private boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return false;
-      try
-      {
-        Object localObject = paramString.split(",");
-        if (localObject.length >= 2)
-        {
-          paramString = a(localObject[0].trim());
-          localObject = a(localObject[1].trim());
-          if ((paramString != null) && (localObject != null) && (paramString.length >= 4) && (localObject.length >= 4))
-          {
-            long l1 = paramString[0];
-            long l2 = paramString[1] << 24;
-            long l3 = paramString[2] << 16;
-            long l4 = paramString[3];
-            long l5 = localObject[0];
-            long l6 = localObject[1] << 24;
-            long l7 = localObject[2] << 16;
-            long l8 = localObject[3];
-            paramString = this.jdField_a_of_type_JavaUtilRegexPattern.matcher(bfpk.a());
-            if (paramString.find())
-            {
-              long l9 = Long.parseLong(paramString.group(1));
-              long l10 = Long.parseLong(paramString.group(2));
-              long l11 = Long.parseLong(paramString.group(3));
-              long l12 = Long.parseLong(paramString.group(4));
-              l9 = l12 + ((l9 << 32) + (l10 << 24) + (l11 << 16));
-              if ((l9 < (l1 << 32) + l2 + l3 + l4) || (l9 > l8 + ((l5 << 32) + l6 + l7))) {}
-            }
-            else
-            {
-              return true;
-            }
-          }
-        }
-      }
-      catch (Throwable paramString) {}
-    }
-    return false;
-  }
-  
-  private boolean a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {}
-    int i;
-    int j;
-    int k;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return false;
-            localObject = paramJSONObject.optString("appVersionRange");
-          } while ((!TextUtils.isEmpty((CharSequence)localObject)) && (!a((String)localObject)));
-          Object localObject = paramJSONObject.optString("osVersionRange");
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            break;
-          }
-          localObject = ((String)localObject).split(",");
-          i = Integer.parseInt(localObject[0].trim());
-          j = Integer.parseInt(localObject[1].trim());
-        } while ((Build.VERSION.SDK_INT < i) || (Build.VERSION.SDK_INT > j));
-        paramJSONObject = paramJSONObject.optString("uinRange");
-        if (TextUtils.isEmpty(paramJSONObject)) {
-          break;
-        }
-        paramJSONObject = paramJSONObject.split(",");
-        k = paramJSONObject[0].length();
-      } while (k != paramJSONObject[1].length());
-      i = Integer.parseInt(paramJSONObject[0]);
-      j = Integer.parseInt(paramJSONObject[1]);
-      k = (int)Math.pow(10.0D, k);
-      k = (int)(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin() % k);
-    } while ((k < i) || (k > j));
-    return true;
-  }
-  
-  private int[] a(String paramString)
-  {
-    int i = 0;
-    try
-    {
-      paramString = paramString.split("_");
-      if (paramString.length < 2) {
-        return null;
-      }
-      String[] arrayOfString = paramString[0].split("\\.");
-      if (arrayOfString.length >= 3)
-      {
-        int[] arrayOfInt = new int[4];
-        while (i < 3)
-        {
-          arrayOfInt[i] = Integer.parseInt(arrayOfString[i]);
-          i += 1;
-        }
-        arrayOfInt[3] = Integer.parseInt(paramString[1]);
-        return arrayOfInt;
-      }
-    }
-    catch (Throwable paramString) {}
+    catch (Throwable localThrowable) {}
     return null;
   }
   
-  public float a(String paramString1, String paramString2, float paramFloat)
+  public void a()
   {
-    paramString1 = a(paramString1, paramString2);
-    if (paramString1 == null) {
-      return paramFloat;
-    }
-    try
-    {
-      float f = Float.valueOf(paramString1).floatValue();
-      return f;
-    }
-    catch (Exception paramString1) {}
-    return paramFloat;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_Long = 0L;
+    this.jdField_d_of_type_Int = 0;
+    this.e = 0L;
+    this.f = 0L;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_c_of_type_Boolean = false;
+    this.g = 0L;
   }
   
-  public int a(String paramString1, String paramString2, int paramInt)
+  public void a(String paramString)
   {
-    paramString1 = a(paramString1, paramString2);
-    if (paramString1 == null) {
-      return paramInt;
-    }
     try
     {
-      int i = Integer.valueOf(paramString1).intValue();
-      return i;
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_JavaLangString = paramString.getString("appid");
+      this.jdField_a_of_type_Int = paramString.getInt("engineType");
+      this.jdField_b_of_type_Int = paramString.getInt("reportType");
+      this.jdField_c_of_type_Int = paramString.getInt("verType");
+      this.jdField_b_of_type_JavaLangString = paramString.getString("launchId");
+      this.jdField_a_of_type_Long = paramString.getLong("clickTime");
+      this.jdField_b_of_type_Long = paramString.getLong("loadTime");
+      this.jdField_c_of_type_Long = paramString.getLong("launchTime");
+      this.jdField_d_of_type_Int = paramString.getInt("launchResult");
+      this.jdField_d_of_type_Long = paramString.getLong("activeTime");
+      this.e = paramString.getLong("showTime");
+      this.f = paramString.getLong("hideTime");
+      this.jdField_c_of_type_JavaLangString = paramString.getString("jsError");
+      this.jdField_a_of_type_Boolean = paramString.getBoolean("needReportLaunchResult");
+      this.jdField_c_of_type_Boolean = paramString.getBoolean("hasPkg");
+      this.jdField_d_of_type_Boolean = paramString.optBoolean("flutterMode");
+      this.g = paramString.optLong("loadEndTime");
+      return;
     }
-    catch (Exception paramString1) {}
-    return paramInt;
+    catch (Throwable paramString) {}
   }
   
-  public long a(String paramString1, String paramString2, long paramLong)
+  public String b()
   {
-    paramString1 = a(paramString1, paramString2);
-    if (paramString1 == null) {
-      return paramLong;
-    }
-    try
+    StringBuilder localStringBuilder = new StringBuilder().append("SDK_");
+    if (jdField_b_of_type_Boolean)
     {
-      long l = Long.valueOf(paramString1).longValue();
-      return l;
-    }
-    catch (Exception paramString1) {}
-    return paramLong;
-  }
-  
-  public String a(String paramString1, String paramString2)
-  {
-    paramString1 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
-    if (paramString1 == null) {}
-    for (;;)
-    {
-      return null;
-      try
-      {
-        paramString2 = new JSONArray(paramString1);
-        int j = paramString2.length();
-        int i = 0;
-        while (i < j)
-        {
-          JSONObject localJSONObject = paramString2.getJSONObject(i);
-          String str1 = localJSONObject.optString("configId");
-          String str2 = localJSONObject.optString("value");
-          Log.d("QzoneAlphaConfig", "configId=" + str1 + " value=" + str2);
-          boolean bool = a(localJSONObject);
-          if (bool) {
-            return str2;
-          }
-          i += 1;
-        }
-        return null;
-      }
-      catch (JSONException paramString2)
-      {
-        QZLog.e("QzoneAlphaConfig", "failed parsing config:" + paramString1);
+      str = "hasX5";
+      localStringBuilder = localStringBuilder.append(str);
+      if (!this.jdField_c_of_type_Boolean) {
+        break label53;
       }
     }
+    label53:
+    for (String str = "_hasPkg";; str = "")
+    {
+      return str;
+      str = "";
+      break;
+    }
   }
   
-  public String a(String paramString1, String paramString2, String paramString3)
+  public String toString()
   {
-    paramString1 = a(paramString1, paramString2);
-    if (TextUtils.isEmpty(paramString1)) {
-      return paramString3;
-    }
-    return paramString1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("launchId: ").append(this.jdField_b_of_type_JavaLangString).append(", appId: ").append(0);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beya
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,36 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache;
-import java.io.File;
-import java.util.Comparator;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
-public class ajxf
-  implements Comparator<File>
+public final class ajxf
+  implements auhz
 {
-  public ajxf(CleanCache paramCleanCache) {}
+  private WeakReference<FrameHelperActivity> a;
   
-  public int a(File paramFile1, File paramFile2)
+  public ajxf(FrameHelperActivity paramFrameHelperActivity)
   {
-    long l = paramFile1.lastModified() - paramFile2.lastModified();
-    if (l > 0L) {
-      return -1;
-    }
-    if (l < 0L) {
-      return 1;
-    }
-    return 0;
+    this.a = new WeakReference(paramFrameHelperActivity);
+  }
+  
+  public void a()
+  {
+    FrameHelperActivity localFrameHelperActivity = (FrameHelperActivity)this.a.get();
+    if (localFrameHelperActivity == null) {}
+    FragmentActivity localFragmentActivity;
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      do
+      {
+        return;
+        localFragmentActivity = localFrameHelperActivity.getActivity();
+      } while ((localFragmentActivity == null) || (localFragmentActivity.getAppInterface() == null));
+      localQQAppInterface = localFragmentActivity.app;
+    } while ((!aumi.a().a(localQQAppInterface, localFragmentActivity)) || ((FrameHelperActivity.a(localFrameHelperActivity) != null) && (FrameHelperActivity.a(localFrameHelperActivity).isShowing())));
+    FrameHelperActivity.a(localFrameHelperActivity, localQQAppInterface, localFragmentActivity);
+    axqw.b(localQQAppInterface, "dc00898", "", "", "0X800A00D", "0X800A00D", 0, 0, "", "", "", "");
   }
 }
 

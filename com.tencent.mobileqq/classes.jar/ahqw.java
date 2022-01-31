@@ -1,41 +1,25 @@
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.widget.PinnedFooterExpandableListView;
+import android.os.Parcel;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class ahqw
-  implements ayla
+public abstract class ahqw
 {
-  public ahqw(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  public abstract void a(Object paramObject, Parcel paramParcel, ArrayList<Field> paramArrayList);
   
-  public ArrayList<ResultRecord> a()
-  {
-    return this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c();
-  }
+  abstract void a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
   
-  public void a()
+  public boolean a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
   {
-    FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
-    if (FriendTeamListInnerFrame.a(this.a).getGroupCount() > 0)
-    {
-      Groups localGroups1 = FriendTeamListInnerFrame.a(this.a).a(1007L);
-      Groups localGroups2 = FriendTeamListInnerFrame.a(this.a).a(1008L);
-      if ((localGroups1 != null) || (localGroups2 != null))
-      {
-        FriendTeamListInnerFrame.a(this.a).a(0);
-        FriendTeamListInnerFrame.a(this.a).setIsNeedScrollPositionTop(true);
-        FriendTeamListInnerFrame.a(this.a).smoothScrollToPositionFromTop(1, 0, 0);
-        if (localGroups1 != null) {
-          this.a.jdField_a_of_type_Ayky.a();
-        }
-        if (localGroups2 != null) {
-          this.a.jdField_a_of_type_Ayky.c();
-        }
-      }
+    a(paramObject, paramArrayList, paramParcel);
+    if (b(paramObject, paramArrayList, paramParcel)) {
+      b(paramObject, paramArrayList, paramParcel);
     }
+    return false;
   }
+  
+  abstract void b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
+  
+  abstract boolean b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
 }
 
 

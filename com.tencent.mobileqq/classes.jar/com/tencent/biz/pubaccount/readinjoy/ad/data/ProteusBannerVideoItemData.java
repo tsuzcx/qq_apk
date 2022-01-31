@@ -5,12 +5,12 @@ import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import nov;
-import npa;
+import oag;
+import oal;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rdg;
-import rsl;
+import rpu;
+import sfd;
 
 public class ProteusBannerVideoItemData
   extends AdData
@@ -26,8 +26,8 @@ public class ProteusBannerVideoItemData
   private JSONObject a()
   {
     JSONObject localJSONObject1 = new JSONObject();
-    if (npa.a(this)) {
-      return nov.a(localJSONObject1, this);
+    if (oal.a(this)) {
+      return oag.a(localJSONObject1, this);
     }
     for (;;)
     {
@@ -43,7 +43,7 @@ public class ProteusBannerVideoItemData
         JSONObject localJSONObject2;
         if (!TextUtils.isEmpty(this.l))
         {
-          localObject = rsl.a(this.l, 4);
+          localObject = sfd.a(this.l, 4);
           localJSONObject2 = new JSONObject();
           localJSONObject2.put("image_url", ((URL)localObject).toString());
           localJSONObject1.put("id_ad_banner_bottom_imge", localJSONObject2);
@@ -97,10 +97,10 @@ public class ProteusBannerVideoItemData
     this.b = a();
     try
     {
-      rdg localrdg = rdg.a("native_article", true);
+      rpu localrpu = rpu.a("native_article", true);
       localObject1 = localObject3;
-      if (localrdg != null) {
-        localObject1 = localrdg.getTemplateBean(this.b);
+      if (localrpu != null) {
+        localObject1 = localrpu.getTemplateBean(this.b);
       }
     }
     catch (JSONException localJSONException)

@@ -1,75 +1,20 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.PrecoverResource;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
 
-class atue
-  extends QIPCModule
+public class atue
+  implements DialogInterface.OnClickListener
 {
-  atue(atud paramatud, String paramString)
-  {
-    super(paramString);
-  }
+  public atue(NearbyProfileFragment paramNearbyProfileFragment) {}
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PrecoverIPCServer", 2, new Object[] { "onCall, action=" + paramString + ", params=" + paramBundle + ", callbackId=", Integer.valueOf(paramInt) });
-    }
-    if (paramBundle == null) {
-      QLog.d("PrecoverIPCServer", 1, new Object[] { "onCall, params is null!!. action=" + paramString + ", callbackId=", Integer.valueOf(paramInt) });
-    }
-    do
-    {
-      Object localObject;
-      do
-      {
-        do
-        {
-          return null;
-          if (atud.a(this.a) == null)
-          {
-            QLog.d("PrecoverIPCServer", 1, new Object[] { "onCall, mManager is null!!. action=" + paramString + ", callbackId=", Integer.valueOf(paramInt) });
-            return null;
-          }
-          paramBundle.putString("key_action", paramString);
-          if (atuc.a.equals(paramString)) {
-            return atud.a(this.a, paramBundle, paramInt);
-          }
-          if (atuc.b.equals(paramString))
-          {
-            paramString = atud.a(this.a, paramBundle, paramInt);
-            if (paramString.isSuccess())
-            {
-              localObject = (PrecoverResource)paramBundle.getParcelable("resource");
-              if (QLog.isColorLevel()) {
-                QLog.d("PrecoverIPCServer", 2, "onCall, params.getParcelable, res=" + localObject);
-              }
-              if (atud.a(this.a).a().a((PrecoverResource)localObject, new Object[] { "PrecoverIPCServer_MODEL", Integer.valueOf(paramInt) })) {
-                return EIPCResult.createResult(11, paramBundle);
-              }
-              paramBundle.putInt("errCode", -2);
-              paramBundle.putString("errDesc", "args invalid or file already exist!");
-              atud.a(this.a).callbackResult(paramInt, EIPCResult.createResult(-2, paramBundle));
-            }
-            return paramString;
-          }
-        } while (!atuc.c.equals(paramString));
-        paramString = paramBundle.getString("businessId");
-        localObject = paramBundle.getString("md5");
-      } while ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty((CharSequence)localObject)));
-      paramString = atud.a(this.a).a().a((String)localObject);
-    } while (paramString == null);
-    paramBundle.putLong("key_total", paramString.a);
-    paramBundle.putLong("key_loaded", paramString.b);
-    return EIPCResult.createSuccessResult(paramBundle);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atue
  * JD-Core Version:    0.7.0.1
  */

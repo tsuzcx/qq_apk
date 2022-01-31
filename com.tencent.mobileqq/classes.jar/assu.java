@@ -1,28 +1,27 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class assu
-  implements ajga
+  extends akim
 {
-  public assu(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public assu(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    if ((paramBoolean) && (paramInt == 2))
-    {
-      if ((NearbyPeopleProfileActivity.a(this.a) == null) || (this.a.e != 1)) {
-        break label41;
-      }
-      NearbyPeopleProfileActivity.a(this.a).d();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.MultiCardRecommendFragment", 2, "onUpdateTroopGetMemberList（） troopUin =  " + paramString);
     }
-    label41:
-    while (NearbyPeopleProfileActivity.a(this.a) == null) {
-      return;
+    if ((paramInt1 == 9) && (paramString.equals(MultiCardRecommendFragment.a(this.a))) && (this.a.a != null)) {
+      this.a.a.sendEmptyMessage(4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     assu
  * JD-Core Version:    0.7.0.1
  */

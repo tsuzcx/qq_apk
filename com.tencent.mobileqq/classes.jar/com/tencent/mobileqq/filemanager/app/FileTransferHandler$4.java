@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aofe;
-import aonz;
+import aovy;
+import apeu;
 
 public class FileTransferHandler$4
   implements Runnable
 {
-  public FileTransferHandler$4(aofe paramaofe, int paramInt1, String paramString1, String paramString2, long paramLong1, short paramShort, boolean paramBoolean, int paramInt2, String paramString3, aonz paramaonz, long paramLong2, int paramInt3) {}
+  public FileTransferHandler$4(aovy paramaovy, int paramInt1, String paramString1, String paramString2, long paramLong1, short paramShort, boolean paramBoolean, int paramInt2, String paramString3, apeu paramapeu, long paramLong2, int paramInt3) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Short, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Aonz, this.jdField_b_of_type_Long, this.jdField_c_of_type_Int);
+    this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Short, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Apeu, this.jdField_b_of_type_Long, this.jdField_c_of_type_Int);
   }
 }
 

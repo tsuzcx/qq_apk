@@ -1,5 +1,7 @@
 package com.tencent.mfsdk.reporter;
 
+import aaah;
+import aaam;
 import android.os.HandlerThread;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -8,8 +10,6 @@ import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.os.MqqHandler;
-import zqo;
-import zqt;
 
 public class DFObserver
   implements Observer
@@ -18,7 +18,7 @@ public class DFObserver
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    paramObservable = ((zqt)paramObservable).a;
+    paramObservable = ((aaam)paramObservable).a;
     try
     {
       paramObject = new long[6];
@@ -46,7 +46,7 @@ public class DFObserver
         j += 1;
         i += 1;
       }
-      paramObject = new zqo(Long.parseLong((String)paramObservable.get("dropCount")), Long.parseLong((String)paramObservable.get("totalMs")), paramObject);
+      paramObject = new aaah(Long.parseLong((String)paramObservable.get("dropCount")), Long.parseLong((String)paramObservable.get("totalMs")), paramObject);
       paramObject.a = Integer.parseInt(MagnifierSDK.a());
       paramObservable = new DFObserver.InsertRunnable(MagnifierSDK.a, (String)paramObservable.get("scene"), paramObject);
       a.post(paramObservable);

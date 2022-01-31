@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.photo;
 
 import android.content.Intent;
-import awqx;
+import axqw;
 
 class PhotoListActivity$17
   implements Runnable
@@ -15,8 +15,8 @@ class PhotoListActivity$17
     }
     for (;;)
     {
-      awqx.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
-      aweg.b = System.currentTimeMillis();
+      axqw.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
+      axdo.b = System.currentTimeMillis();
       return;
       PhotoUtils.a(this.this$0, this.jdField_a_of_type_AndroidContentIntent, this.this$0.c, this.this$0.m, this.this$0.d);
     }

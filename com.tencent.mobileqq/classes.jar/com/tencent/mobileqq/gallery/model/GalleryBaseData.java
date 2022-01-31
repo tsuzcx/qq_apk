@@ -3,7 +3,7 @@ package com.tencent.mobileqq.gallery.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apst;
+import aqmi;
 import com.tencent.mobileqq.gallery.model.pic.AIOFilePicData;
 import com.tencent.mobileqq.gallery.model.pic.AIOPicData;
 import com.tencent.mobileqq.gallery.model.video.AIOFileVideoData;
@@ -12,7 +12,7 @@ import com.tencent.mobileqq.gallery.model.video.AIOShortVideoData;
 public abstract class GalleryBaseData
   implements Parcelable
 {
-  public static final Parcelable.Creator<GalleryBaseData> CREATOR = new apst();
+  public static final Parcelable.Creator<GalleryBaseData> CREATOR = new aqmi();
   public int a;
   public long a;
   public boolean a;

@@ -1,28 +1,26 @@
-import android.content.Context;
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import java.lang.ref.WeakReference;
 
 public class ahdh
-  extends ahdm
+  implements acvj
 {
-  public ahdh(Context paramContext, String paramString)
-  {
-    a(paramString);
-  }
+  public ahdh(RedPacketManager paramRedPacketManager, RedPacketInfoBase paramRedPacketInfoBase, WeakReference paramWeakReference) {}
   
-  public void a(String paramString)
+  public void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (paramString = "";; paramString = '[' + paramString + ']')
-    {
-      this.a = paramString;
-      this.b = this.a;
-      return;
+    paramRedPacketInfo.isCache = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.isCache;
+    IRedPacket.OnGetSkinListener localOnGetSkinListener = (IRedPacket.OnGetSkinListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localOnGetSkinListener != null) {
+      localOnGetSkinListener.onGetSkin(paramRedPacketInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahdh
  * JD-Core Version:    0.7.0.1
  */

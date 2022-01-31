@@ -1,8 +1,16 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public abstract interface ajyq
+final class ajyq
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(FullMessageSearchResult paramFullMessageSearchResult);
+  ajyq(Activity paramActivity, int paramInt) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(this.jdField_a_of_type_Int);
+  }
 }
 
 

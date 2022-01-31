@@ -1,22 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class agcp
-  implements View.OnClickListener
+class agcp
+  implements DialogInterface.OnDismissListener
 {
-  public agcp(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  agcp(agcm paramagcm) {}
   
-  public void onClick(View paramView)
-  {
-    if (this.a.y)
-    {
-      PhotoPreviewActivity.a(this.a);
-      return;
-    }
-    this.a.a.toggle();
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

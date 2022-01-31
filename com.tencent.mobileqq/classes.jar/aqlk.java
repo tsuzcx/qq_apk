@@ -1,12 +1,22 @@
-import android.os.Bundle;
+import java.io.File;
 
-public abstract interface aqlk
+public class aqlk
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  public static void a(File paramFile)
+  {
+    if ((paramFile == null) || (paramFile.exists())) {}
+    do
+    {
+      return;
+      paramFile = paramFile.getParentFile();
+    } while ((paramFile == null) || (paramFile.exists()));
+    a(paramFile);
+    paramFile.mkdirs();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqlk
  * JD-Core Version:    0.7.0.1
  */

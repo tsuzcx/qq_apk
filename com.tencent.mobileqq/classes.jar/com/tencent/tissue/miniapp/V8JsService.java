@@ -2,8 +2,8 @@ package com.tencent.tissue.miniapp;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bdfx;
-import bdgo;
+import bejy;
+import bekq;
 import com.tencent.qqmini.sdk.core.manager.BaselibLoader;
 import com.tencent.qqmini.sdk.core.service.AbsAppBrandService;
 import com.tencent.qqmini.sdk.core.service.ServiceEventListener;
@@ -128,19 +128,19 @@ public class V8JsService
     Logger.e("V8ServiceRuntime", "evaluateSubscribeJS failed jsRuntime null");
   }
   
-  public String getJSGlobalConfig(bdfx parambdfx)
+  public String getJSGlobalConfig(bejy parambejy)
   {
-    if (parambdfx == null) {
+    if (parambejy == null) {
       return "";
     }
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("appId", parambdfx.d);
-      localJSONObject.put("icon", parambdfx.e);
+      localJSONObject.put("appId", parambejy.d);
+      localJSONObject.put("icon", parambejy.e);
       localJSONObject.put("nickname", "testuser");
-      parambdfx = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s; Object.assign(__qqConfig, __tempConfig); __qqConfig.accountInfo=JSON.parse('%2$s'); __qqConfig.QUA='V1_AND_SQ_8.1.3_0_RDM_B';", new Object[] { parambdfx.b, localJSONObject.toString() });
-      return parambdfx + "if (typeof WeixinJSBridge != 'undefined' && typeof WeixinJSBridge.subscribeHandler == 'function') {WeixinJSBridge.subscribeHandler('onWxConfigReady')};";
+      parambejy = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s; Object.assign(__qqConfig, __tempConfig); __qqConfig.accountInfo=JSON.parse('%2$s'); __qqConfig.QUA='V1_AND_SQ_8.1.3_0_RDM_B';", new Object[] { parambejy.b, localJSONObject.toString() });
+      return parambejy + "if (typeof WeixinJSBridge != 'undefined' && typeof WeixinJSBridge.subscribeHandler == 'function') {WeixinJSBridge.subscribeHandler('onWxConfigReady')};";
     }
     catch (JSONException localJSONException)
     {
@@ -190,25 +190,25 @@ public class V8JsService
     }
   }
   
-  public void setApkgInfo(bdfx parambdfx)
+  public void setApkgInfo(bejy parambejy)
   {
-    if (parambdfx == null) {
+    if (parambejy == null) {
       return;
     }
-    setGlobalConfigJs(getJSGlobalConfig(parambdfx));
+    setGlobalConfigJs(getJSGlobalConfig(parambejy));
     String str = "";
     try
     {
-      parambdfx = bdgo.b(new File(parambdfx.a()));
-      setAppServiceJs(parambdfx);
+      parambejy = bekq.b(new File(parambejy.a()));
+      setAppServiceJs(parambejy);
       return;
     }
-    catch (IOException parambdfx)
+    catch (IOException parambejy)
     {
       for (;;)
       {
-        parambdfx.printStackTrace();
-        parambdfx = str;
+        parambejy.printStackTrace();
+        parambejy = str;
       }
     }
   }

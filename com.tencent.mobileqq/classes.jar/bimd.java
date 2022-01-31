@@ -1,17 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-public class bimd
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bimd<T extends RecyclerView.ViewHolder>
 {
-  public bimd(DoodleEditView paramDoodleEditView, birb parambirb) {}
+  public abstract void a(float paramFloat, int paramInt1, int paramInt2, @Nullable T paramT1, @Nullable T paramT2);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.jdField_a_of_type_Birb.n = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.invalidate();
-  }
+  public abstract void b(@NonNull T paramT, int paramInt);
+  
+  public abstract void c(@NonNull T paramT, int paramInt);
 }
 
 

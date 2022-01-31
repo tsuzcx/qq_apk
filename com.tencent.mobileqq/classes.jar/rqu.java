@@ -1,16 +1,84 @@
-import java.util.Comparator;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
 
-final class rqu
-  implements Comparator<rqz>
+public class rqu
+  extends rqq
 {
-  public int a(rqz paramrqz1, rqz paramrqz2)
+  public rqu(Context paramContext)
   {
-    int j = paramrqz1.a - paramrqz2.a;
-    int i = j;
-    if (j == 0) {
-      i = paramrqz1.b - paramrqz2.b;
+    super(paramContext);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298637);
+  }
+  
+  public View a(ViewGroup paramViewGroup)
+  {
+    if (this.jdField_a_of_type_Xed == null) {
+      this.jdField_a_of_type_Xed = ((PullRefreshHeader)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559459, paramViewGroup, false));
     }
-    return i;
+    return (View)this.jdField_a_of_type_Xed;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Xed == null) {
+      return;
+    }
+    this.jdField_a_of_type_Xed.a(0L);
+    this.jdField_a_of_type_Xed.ao_();
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    super.a(paramInt, paramBoolean);
+    if (this.jdField_a_of_type_Xed == null) {
+      return;
+    }
+    if (paramInt == 100)
+    {
+      this.jdField_a_of_type_Xed.b(0L);
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Xed.ao_();
+      return;
+    }
+    this.jdField_a_of_type_Xed.c(0L);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Xed == null) {
+      return;
+    }
+    this.jdField_a_of_type_Xed.a(0L);
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (this.jdField_a_of_type_Xed == null) {
+      return;
+    }
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    {
+      this.jdField_a_of_type_Xed.a(0, paramString);
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Xed.a(0);
+      return;
+    }
+    this.jdField_a_of_type_Xed.a(2);
   }
 }
 

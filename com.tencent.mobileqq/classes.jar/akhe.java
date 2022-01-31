@@ -1,25 +1,12 @@
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.List;
 
 public class akhe
-  extends avyu
+  implements ajtf
 {
-  BrowserAppInterface a;
-  
-  public akhe(BrowserAppInterface paramBrowserAppInterface)
+  public List<String> a(AppInterface paramAppInterface)
   {
-    this.a = paramBrowserAppInterface;
-  }
-  
-  public AppInterface a()
-  {
-    return this.a;
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    super.b(paramToServiceMsg, null, aquf.class);
+    return null;
   }
 }
 

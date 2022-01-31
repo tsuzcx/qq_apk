@@ -1,45 +1,45 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
 
-class owk
-  implements ViewBase.OnClickListener
+public class owk
+  implements Animator.AnimatorListener
 {
-  owk(owj paramowj, opw paramopw, Container paramContainer) {}
+  public owk(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_Opw.a();
-    Object localObject2 = new ReportModelDC02528().module("all_result").action("clk_Kdfeedsback_list").obj1("2049").ver2("Kdfeedsback").ver3(localArticleInfo.mArticleContentUrl);
-    Object localObject1;
-    String str1;
-    String str2;
-    if ((paramViewBase instanceof par))
+    osm.a().a(null, 110, true, null);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    osm.a().a(null, 110, true, null);
+    if (ReadInjoyIMAXAdFragment.a(this.a) != null)
     {
-      localObject1 = ((par)paramViewBase).getText();
-      avsv.a(null, ((ReportModelDC02528)localObject2).ver4((String)localObject1).ver5(localArticleInfo.mTitle).ver6(ByteStringMicro.copyFromUtf8(localArticleInfo.innerUniqueID).toStringUtf8()).ver7("{jumpurl:" + paramViewBase.getEventAttachedData() + ",clk_index:" + paramViewBase.getClickEvnet().substring("search_word_click_".length()) + "}").session_id(localArticleInfo.mSearchWordSessionId));
-      avwf.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase.getEventAttachedData());
-      localObject1 = (ajuq)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(111);
-      localObject2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      str1 = localArticleInfo.mSearchWordSessionId;
-      str2 = localArticleInfo.mArticleContentUrl;
-      if (!(paramViewBase instanceof par)) {
-        break label261;
+      ReadInjoyIMAXAdFragment.a(this.a).setVisibility(0);
+      ReadInjoyIMAXAdFragment.b(this.a).setVisibility(0);
+      ReadInjoyIMAXAdFragment.c(this.a).setVisibility(0);
+      ReadInjoyIMAXAdFragment.b(this.a).setVisibility(0);
+      if (ReadInjoyIMAXAdFragment.e(this.a) != 1001) {
+        break label90;
       }
+      ReadInjoyIMAXAdFragment.c(this.a).setVisibility(0);
     }
-    label261:
-    for (paramViewBase = ((par)paramViewBase).getText();; paramViewBase = "")
-    {
-      ((ajuq)localObject1).a((QQAppInterface)localObject2, "clk_Kdfeedsback_list", str1, str2, paramViewBase, localArticleInfo.mTitle, ByteStringMicro.copyFromUtf8(localArticleInfo.innerUniqueID).toStringUtf8());
+    label90:
+    while (ReadInjoyIMAXAdFragment.e(this.a) != 1002) {
       return;
-      localObject1 = "";
-      break;
     }
+    ReadInjoyIMAXAdFragment.c(this.a).setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    osm.a().a(null, 110, false, null);
   }
 }
 

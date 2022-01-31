@@ -1,34 +1,52 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.16;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.teamwork.TenDocOCRExportHandler.1;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import mqq.manager.TicketManager;
 
 public class ayfy
-  implements View.OnClickListener
+  extends ajtd
+  implements Handler.Callback
 {
-  public ayfy(TroopBarPublishActivity.16 param16) {}
+  private String[] a = { "docs.qq.com" };
   
-  public void onClick(View paramView)
+  public ayfy(QQAppInterface paramQQAppInterface)
   {
-    paramView = new Intent();
-    paramView.putExtra("path", this.a.a);
-    PublicFragmentActivity.a(this.a.this$0, paramView, TribeVideoPreviewFragment.class);
-    this.a.this$0.overridePendingTransition(2130772304, 2130772305);
-    if ((this.a.this$0.b != null) && (this.a.this$0.b.getVisibility() == 0)) {}
-    for (int i = 2;; i = 1)
-    {
-      awqx.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_full_screen", i, 0, "", "", "", "");
+    super(paramQQAppInterface);
+  }
+  
+  private void a(Runnable paramRunnable)
+  {
+    if (this.app == null) {}
+    while (((TicketManager)this.app.getManager(2)).GetPskey(this.app.getCurrentAccountUin(), 16L, this.a, new ayfz(this, paramRunnable)) == null) {
       return;
     }
+    ThreadManager.executeOnNetWorkThread(paramRunnable);
   }
+  
+  public void a(String paramString)
+  {
+    a(new TenDocOCRExportHandler.1(this, paramString));
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    return false;
+  }
+  
+  protected Class<? extends ajtg> observerClass()
+  {
+    return ayga.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayfy
  * JD-Core Version:    0.7.0.1
  */

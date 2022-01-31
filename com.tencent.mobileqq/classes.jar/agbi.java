@@ -1,16 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import android.os.Bundle;
 
-public class agbi
-  implements DialogInterface.OnClickListener
+class agbi
+  extends ajxl
 {
-  public agbi(PhotoListActivity paramPhotoListActivity) {}
+  agbi(agbh paramagbh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    paramDialogInterface.dismiss();
-    this.a.setResult(8001);
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a(1, paramString);
+    }
+  }
+  
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (paramBoolean) {
+      this.a.a(1, paramString);
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a(2, null);
+    }
   }
 }
 

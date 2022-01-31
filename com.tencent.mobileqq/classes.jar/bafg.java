@@ -1,27 +1,57 @@
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class bafg
-  implements CompoundButton.OnCheckedChangeListener
+public class bafg
+  implements ajtg
 {
-  bafg(bafb parambafb, DialogInterface.OnClickListener paramOnClickListener) {}
+  protected QQAppInterface a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public bafg(QQAppInterface paramQQAppInterface)
   {
-    paramCompoundButton = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-    bafb localbafb = this.jdField_a_of_type_Bafb;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    this.a = paramQQAppInterface;
+  }
+  
+  protected void a(long paramLong) {}
+  
+  protected void a(long paramLong, boolean paramBoolean) {}
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt) {}
+  
+  protected void a(long paramLong1, boolean paramBoolean, long paramLong2, int paramInt) {}
+  
+  protected void b(long paramLong, boolean paramBoolean) {}
+  
+  protected void c(long paramLong, boolean paramBoolean) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
     {
-      paramCompoundButton.onClick(localbafb, i);
+    default: 
+      return;
+    case 2: 
+      b(((Long)((Object[])(Object[])paramObject)[0]).longValue(), paramBoolean);
+      return;
+    case 1: 
+      a(((Long)((Object[])(Object[])paramObject)[0]).longValue(), paramBoolean);
+      return;
+    case 3: 
+      paramObject = (Object[])paramObject;
+      a(((Long)paramObject[0]).longValue(), paramBoolean, ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue());
+      return;
+    case 4: 
+      paramObject = (Object[])paramObject;
+      a(((Long)paramObject[0]).longValue(), paramBoolean, ((Integer)paramObject[1]).intValue());
+      return;
+    case 5: 
+      c(((Long)((Object[])(Object[])paramObject)[0]).longValue(), paramBoolean);
       return;
     }
+    a(((Long)((Object[])(Object[])paramObject)[0]).longValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bafg
  * JD-Core Version:    0.7.0.1
  */

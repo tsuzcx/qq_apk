@@ -1,9 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import obz;
-import rqn;
-
 class KandianMergeManager$1
   implements Runnable
 {
@@ -11,8 +7,7 @@ class KandianMergeManager$1
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)obz.a();
-    rqn.a().j(localQQAppInterface);
+    KandianMergeManager.a(this.this$0);
   }
 }
 

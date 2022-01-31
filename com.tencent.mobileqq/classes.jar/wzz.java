@@ -1,16 +1,31 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
+import android.graphics.Rect;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.qphone.base.util.QLog;
 
 class wzz
-  implements wxx<CLIENT.StSmartMatchMusicRsp>
+  implements bcjn
 {
-  wzz(wzt paramwzt) {}
+  wzz(wzw paramwzw) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StSmartMatchMusicRsp paramStSmartMatchMusicRsp)
+  public void a(float paramFloat1, float paramFloat2) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    long l = System.currentTimeMillis() - wzt.a(this.a);
-    wye.a("edit_smart_music", wye.a(paramLong, l, "", 0L));
-    this.a.a(ajjy.a(2131638114) + l + "ms");
-    wzt.a(this.a, paramBoolean, paramLong, paramString, paramStSmartMatchMusicRsp);
+    if ((this.a.jdField_a_of_type_Azpf != null) && (this.a.d))
+    {
+      Rect localRect = new Rect();
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getHitRect(localRect);
+      if (this.a.jdField_a_of_type_ComTencentImageURLImageView.getLocalVisibleRect(localRect))
+      {
+        this.a.d = false;
+        bair.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, this.a.jdField_a_of_type_Azpf.a, 0, null, null);
+        axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "bulletin_popUp", "exp_ad", 0, 0, this.a.b, String.valueOf(this.a.jdField_a_of_type_Azpe.a), "8020205751015455", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopTipsPopWindow", 2, "onScrollChanged 广告图片可见-------------------------");
+        }
+      }
+    }
   }
 }
 

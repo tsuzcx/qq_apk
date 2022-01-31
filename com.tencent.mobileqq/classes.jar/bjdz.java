@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
+import java.io.File;
 
-public final class bjdz
-  implements Parcelable.Creator<FilterCategoryItem>
+public abstract interface bjdz
 {
-  public FilterCategoryItem a(Parcel paramParcel)
-  {
-    return new FilterCategoryItem(paramParcel);
-  }
+  public abstract void a();
   
-  public FilterCategoryItem[] a(int paramInt)
-  {
-    return new FilterCategoryItem[paramInt];
-  }
+  public abstract void a(File paramFile);
 }
 
 

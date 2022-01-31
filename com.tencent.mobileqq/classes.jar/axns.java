@@ -1,33 +1,34 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.splashad.SplashADView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-class axns
+public class axns
   implements View.OnClickListener
 {
-  axns(axnq paramaxnq) {}
+  public axns(SplashADView paramSplashADView) {}
   
   public void onClick(View paramView)
   {
-    switch (((axnb)paramView.getTag()).b)
+    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
     {
-    default: 
-      return;
-    case 1001: 
-      this.a.d();
-      return;
-    case 1002: 
-      this.a.e();
-      return;
-    case 1003: 
-      this.a.f();
+      if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getOutputMute())
+      {
+        this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(false);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849319);
+      }
+    }
+    else {
       return;
     }
-    this.a.g();
+    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(true);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849320);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axns
  * JD-Core Version:    0.7.0.1
  */

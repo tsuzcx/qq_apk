@@ -1,17 +1,21 @@
-import android.os.Handler;
+import android.support.annotation.IntRange;
 
-class adaq
-  implements ajzp
+public abstract interface adaq
 {
-  adaq(adao paramadao) {}
+  @IntRange(from=0L, to=3L)
+  public abstract int a();
   
-  public void a(int paramInt, xfw paramxfw) {}
+  public abstract void a();
   
-  public void a(long paramLong)
-  {
-    adao.a("onLowMemory");
-    adao.a().sendMessage(adao.a().obtainMessage(5));
-  }
+  public abstract void a(adar paramadar);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

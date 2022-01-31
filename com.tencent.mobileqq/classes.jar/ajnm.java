@@ -1,113 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgReqBody;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgRspBody;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.apollo.utils.ApolloGameInvitation.1;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
 public class ajnm
-  extends ajfb
+  implements bcwh
 {
-  protected QQAppInterface a;
+  public ajnm(ApolloGameInvitation.1 param1) {}
   
-  public ajnm(QQAppInterface paramQQAppInterface)
+  public void a(BaseResp paramBaseResp)
   {
-    super(paramQQAppInterface);
-    this.a = paramQQAppInterface;
-  }
-  
-  protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int i;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
-      i = 1;
+    if (paramBaseResp == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((ajnl.a(this.a.this$0) == null) || (!ajnl.a(this.a.this$0).equals(paramBaseResp.transaction)));
+      QLog.i("ApolloGameInvitation", 1, "[onWXShareResp], resp.errCode:" + paramBaseResp.errCode);
+      if (paramBaseResp.errCode != 0) {
+        break;
+      }
+    } while ((ajnl.a(this.a.this$0) == null) || (ajnl.a(this.a.this$0) == null) || ((AppInterface)ajnl.a(this.a.this$0).get() == null));
+    VipUtils.a(null, "cmshow", "Apollo", "wechat_invite_sent", 0, 0, new String[] { Integer.toString(ajnl.a(this.a.this$0).a) });
+    if (paramBaseResp.errCode == 0) {
+      ajnl.a(this.a.this$0, 0, 2);
     }
     for (;;)
     {
-      paramFromServiceMsg = (auqe)this.a.getManager(65);
-      if (i != 0)
-      {
-        NumRedMsg.NumMsgRspBody localNumMsgRspBody = new NumRedMsg.NumMsgRspBody();
-        try
-        {
-          localNumMsgRspBody.mergeFrom((byte[])paramObject);
-          if (localNumMsgRspBody.i_retcode.get() == 0)
-          {
-            paramFromServiceMsg.a(localNumMsgRspBody, paramToServiceMsg, true);
-            return;
-            i = 0;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramObject)
-        {
-          for (;;)
-          {
-            paramObject.printStackTrace();
-            if (QLog.isColorLevel()) {
-              QLog.i("NumRedMsgHandler", 2, "mergeFrom failed");
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("NumRedMsgHandler", 2, "rsp code != 0 , error msg == " + localNumMsgRspBody.str_errmsg.get());
-          }
-          paramFromServiceMsg.a(localNumMsgRspBody, paramToServiceMsg, false);
-          return;
-        }
+      WXShareHelper.a().b(this);
+      return;
+      if (paramBaseResp.errCode == -2) {
+        ajnl.a(this.a.this$0, 2, 2);
+      } else {
+        ajnl.a(this.a.this$0, 1, 2);
       }
-    }
-    paramFromServiceMsg.a(null, paramToServiceMsg, false);
-  }
-  
-  public void a(List<NumRedMsg.NumMsgBusi> paramList, int paramInt, String paramString, long[] paramArrayOfLong)
-  {
-    NumRedMsg.NumMsgReqBody localNumMsgReqBody = new NumRedMsg.NumMsgReqBody();
-    localNumMsgReqBody.i_proto_ver.set(1);
-    localNumMsgReqBody.ui_plat_id.set(109);
-    localNumMsgReqBody.str_client_ver.set("8.2.6.4370");
-    localNumMsgReqBody.ui64_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(paramList);
-    localNumMsgReqBody.rpt_num_msg.set(localArrayList);
-    paramList = new ToServiceMsg("mobileqq.service", this.a.getCurrentAccountUin(), "red_touch_num_svr.get_num_msg");
-    paramList.putWupBuffer(localNumMsgReqBody.toByteArray());
-    paramList.extraData.putInt("NumMsgListenerKey", paramInt);
-    paramList.extraData.putLongArray("NumMsgIDList", paramArrayOfLong);
-    paramList.extraData.putString("NumMsgListenerCmd", paramString);
-    sendPbReq(paramList);
-    if (QLog.isColorLevel()) {
-      QLog.i("NumRedMsgHandler", 2, "sendPbReq called.");
-    }
-  }
-  
-  protected Class<? extends ajfe> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("red_touch_num_svr.get_num_msg".equals(paramFromServiceMsg.getServiceCmd()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("NumRedMsgHandler", 2, "onReceive called.");
-      }
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajnm
  * JD-Core Version:    0.7.0.1
  */

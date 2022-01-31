@@ -1,31 +1,39 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.biz.subscribe.comment.CommentView;
-import com.tencent.biz.subscribe.comment.ReplyContainer;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
 
-public class waq
-  implements View.OnClickListener
+final class waq
+  extends wad
 {
-  public waq(CommentView paramCommentView) {}
+  waq(wad paramwad, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public void onClick(View paramView)
+  public void onFailure(String paramString)
   {
-    if ((CommentView.a(this.a) != null) && (CommentView.a(this.a).vecReply.size() > 0))
-    {
-      CommentView.a(this.a).a(paramView, 10, CommentView.a(this.a), CommentView.a(this.a));
-      this.a.jdField_a_of_type_War.b.setVisibility(8);
-      this.a.jdField_a_of_type_War.a.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentBizSubscribeCommentReplyContainer.setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
     }
+    this.jdField_a_of_type_Wad.onFailure(paramString);
+    if ((this.jdField_a_of_type_Wad instanceof swk)) {
+      ((swk)this.jdField_a_of_type_Wad).a(941006);
+    }
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getVideoFromMp4 failed msg：" + paramString);
+  }
+  
+  public void onStart()
+  {
+    super.onStart();
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getVideoFromMp4 start");
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = this.b;
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getVideoFromMp4 success cost：" + String.valueOf(l1 - l2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     waq
  * JD-Core Version:    0.7.0.1
  */

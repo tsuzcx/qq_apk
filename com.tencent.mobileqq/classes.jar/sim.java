@@ -1,104 +1,188 @@
-import android.annotation.TargetApi;
-import android.support.annotation.NonNull;
-import java.io.File;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.2;
+import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.3;
+import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.4;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Calendar;
+import mqq.os.MqqHandler;
 
-@TargetApi(14)
 public class sim
-  extends sii
 {
-  protected int a;
-  protected int b;
+  private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private static bcwh jdField_a_of_type_Bcwh = new sin();
+  private static String jdField_a_of_type_JavaLangString;
   
-  public sim(@NonNull String[] paramArrayOfString)
+  public static void a()
   {
-    super(paramArrayOfString);
-    paramArrayOfString = (spz)sqg.a(10);
-    this.a = ((Integer)paramArrayOfString.b("StoryFriendCacheCountMax", Integer.valueOf(300))).intValue();
-    this.jdField_b_of_type_Int = ((Integer)paramArrayOfString.b("StoryFriendCacheCountNormal", Integer.valueOf(200))).intValue();
+    WXShareHelper.a().a(jdField_a_of_type_Bcwh);
   }
   
-  protected void a(String[] paramArrayOfString, sij paramsij)
+  public static void a(Activity paramActivity)
   {
-    int m = paramArrayOfString.length;
-    int i = 0;
-    String str;
-    int j;
-    if (i < m)
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareImageUtils", 2, "launchFriendPicker path = " + jdField_a_of_type_JavaLangString);
+    }
+    if (jdField_a_of_type_JavaLangString == null)
     {
-      str = paramArrayOfString[i];
-      if (paramsij.a)
-      {
-        j = 50;
-        label31:
-        if (!a(str, j)) {
-          break label60;
-        }
-      }
+      QLog.e("ShareImageUtils", 1, "currentPath is null");
+      return;
+    }
+    Intent localIntent = new Intent(paramActivity, ForwardRecentActivity.class);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("key_help_forward_pic", true);
+    localIntent.putExtras(localBundle);
+    localIntent.putExtra("forward_type", 1);
+    localIntent.putExtra("key_allow_multiple_forward_from_limit", false);
+    localIntent.putExtra("key_share_from_screen_shot", true);
+    localIntent.putExtra("key_share_from_screen_need_finish", true);
+    localIntent.setData(Uri.parse(jdField_a_of_type_JavaLangString));
+    paramActivity.startActivityForResult(localIntent, 3);
+  }
+  
+  public static void a(Context paramContext)
+  {
+    if (jdField_a_of_type_AndroidGraphicsBitmap == null)
+    {
+      QLog.e("ShareImageUtils", 1, "bitmap is null");
+      return;
+    }
+    ThreadManager.getFileThreadHandler().post(new ShareImageUtils.2(paramContext));
+  }
+  
+  public static void a(Bitmap paramBitmap)
+  {
+    jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  public static void a(BaseActivity paramBaseActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareImageUtils", 2, "shareToQzone");
+    }
+    if (jdField_a_of_type_JavaLangString == null)
+    {
+      QLog.e("ShareImageUtils", 1, "currentPath is null");
+      return;
+    }
+    paramBaseActivity = (QQAppInterface)paramBaseActivity.getAppRuntime();
+    Bundle localBundle = new Bundle();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(jdField_a_of_type_JavaLangString);
+    localBundle.putStringArrayList("images", localArrayList);
+    bgyu.a(paramBaseActivity, BaseApplicationImpl.getContext(), localBundle, null, 2);
+  }
+  
+  public static void a(String paramString)
+  {
+    jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static void b()
+  {
+    jdField_a_of_type_JavaLangString = null;
+    jdField_a_of_type_AndroidGraphicsBitmap = null;
+    WXShareHelper.a().b(jdField_a_of_type_Bcwh);
+  }
+  
+  public static void b(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareImageUtils", 2, "ScreenShotShareFragment shareToWXFriend");
+    }
+    if ((jdField_a_of_type_JavaLangString == null) || (jdField_a_of_type_AndroidGraphicsBitmap == null))
+    {
+      QLog.e("ShareImageUtils", 1, "currentPath or bitmap is null");
+      return;
+    }
+    int i;
+    if (!WXShareHelper.a().a()) {
+      i = 2131720906;
     }
     for (;;)
     {
-      i += 1;
-      break;
-      j = this.a;
-      break label31;
-      label60:
-      File localFile = new File(str);
-      double d = a(localFile);
-      File[] arrayOfFile = localFile.listFiles();
-      ArrayList localArrayList = new ArrayList();
-      int k = arrayOfFile.length;
-      j = 0;
-      while (j < k)
+      if (i != -1)
       {
-        localArrayList.add(new sin(this, arrayOfFile[j]));
-        j += 1;
-      }
-      Collections.sort(localArrayList);
-      int n = localArrayList.size();
-      k = 0;
-      j = 0;
-      while (j < n)
-      {
-        if (j % 150 == 0) {}
-        try
-        {
-          Thread.sleep(100L);
-          if ((j % 20 == 0) && (a(str, this.jdField_b_of_type_Int))) {
-            return;
-          }
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
-          {
-            localInterruptedException.printStackTrace();
-          }
-          a(((sin)localArrayList.get(j)).a);
-          k += 1;
-          j += 1;
+        bcpw.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(i), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298865));
+        return;
+        if (!WXShareHelper.a().b()) {
+          i = 2131720907;
         }
       }
-      paramsij.jdField_b_of_type_Double = (d - a(localFile) + paramsij.jdField_b_of_type_Double);
-      paramsij.jdField_b_of_type_Int += k;
+      else
+      {
+        WxShareHelperFromReadInjoy.a().a(jdField_a_of_type_JavaLangString, jdField_a_of_type_AndroidGraphicsBitmap, 0, false);
+        return;
+      }
+      i = -1;
     }
   }
   
-  public boolean a(String paramString, int paramInt)
+  public static void c(Activity paramActivity)
   {
-    paramString = new File(paramString).listFiles();
-    if (paramString == null) {}
-    while (paramString.length <= paramInt) {
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareImageUtils", 2, "shareToFriendCircle");
     }
-    return false;
+    if ((jdField_a_of_type_JavaLangString == null) || (jdField_a_of_type_AndroidGraphicsBitmap == null))
+    {
+      QLog.e("ShareImageUtils", 1, "currentPath or bitmap is null");
+      return;
+    }
+    int i;
+    if (!WXShareHelper.a().a()) {
+      i = 2131720906;
+    }
+    for (;;)
+    {
+      if (i != -1)
+      {
+        bcpw.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(i), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298865));
+        return;
+        if (!WXShareHelper.a().b()) {
+          i = 2131720907;
+        }
+      }
+      else
+      {
+        WxShareHelperFromReadInjoy.a().a(jdField_a_of_type_JavaLangString, jdField_a_of_type_AndroidGraphicsBitmap, 1, false);
+        return;
+      }
+      i = -1;
+    }
+  }
+  
+  private static void d()
+  {
+    String str = ajsf.aV + "/Tencent/QQ_Images/" + Calendar.getInstance().getTime() + ".png";
+    if (bbdj.a(jdField_a_of_type_AndroidGraphicsBitmap, str))
+    {
+      QLog.d("ShareImageUtils", 1, "save to sdcard success");
+      bbdr.a(BaseApplicationImpl.getContext(), str);
+      str = BaseApplicationImpl.getContext().getString(2131695190) + " " + str;
+      ThreadManager.getUIHandler().post(new ShareImageUtils.3(str));
+      return;
+    }
+    QLog.d("ShareImageUtils", 1, "save to sdcard fail");
+    ThreadManager.getUIHandler().post(new ShareImageUtils.4());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sim
  * JD-Core Version:    0.7.0.1
  */

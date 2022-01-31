@@ -1,17 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
+import java.util.List;
 
-public class oiy
-  implements View.OnClickListener
+class oiy
+  extends ojq
 {
-  public oiy(ReadInJoyDailyFragment paramReadInJoyDailyFragment) {}
+  oiy(oio paramoio, boolean paramBoolean1, List paramList, boolean paramBoolean2)
+  {
+    super(paramoio, null);
+  }
   
-  public void onClick(View paramView) {}
+  void a(ojt paramojt)
+  {
+    paramojt.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, 3);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oiy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,34 @@
-import android.text.TextUtils;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.view.View;
 
 public class amhb
 {
-  private Map<String, amhc> a = new HashMap();
-  
-  public static amhb a(alzs[] paramArrayOfalzs)
+  public static void a(View paramView, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length <= 0)) {
-      return null;
-    }
-    localamhb = new amhb();
-    try
-    {
-      paramArrayOfalzs = new JSONObject(paramArrayOfalzs[0].a);
-      Iterator localIterator = paramArrayOfalzs.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        JSONObject localJSONObject = paramArrayOfalzs.getJSONObject(str);
-        localamhb.a.put(str, amhc.a(localJSONObject));
-      }
-      return localamhb;
-    }
-    catch (JSONException paramArrayOfalzs) {}
+    paramView.setPivotX(paramView.getWidth());
+    paramView.setPivotY(paramView.getHeight() / 2);
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat1, paramFloat2 });
+    paramView = ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat3, paramFloat4 });
+    localAnimatorSet.setDuration(paramInt);
+    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator, paramView });
+    localAnimatorSet.start();
   }
   
-  public static amhc a(String paramString)
+  public static void a(View paramView, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (amgy.a() != null)) {
-      return (amhc)amgy.a().a().get(paramString);
-    }
-    return null;
-  }
-  
-  public Map<String, amhc> a()
-  {
-    return this.a;
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { paramFloat1, paramFloat2 });
+    localAnimatorSet.setDuration(paramInt);
+    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator, ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat3, paramFloat4 }), ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat5, paramFloat6 }) });
+    localAnimatorSet.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amhb
  * JD-Core Version:    0.7.0.1
  */

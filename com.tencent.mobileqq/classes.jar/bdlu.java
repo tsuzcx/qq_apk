@@ -1,33 +1,25 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.ViewGroup;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface bdlu
+class bdlu
+  implements View.OnClickListener
 {
-  public abstract void onActivityResult(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent);
+  bdlu(bdlq parambdlq, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
   
-  public abstract boolean onBackPressed(Activity paramActivity);
-  
-  public abstract void onCreate(Activity paramActivity, Bundle paramBundle, ViewGroup paramViewGroup);
-  
-  public abstract void onDestroy(Activity paramActivity);
-  
-  public abstract void onNewIntent(Activity paramActivity, Intent paramIntent);
-  
-  public abstract void onPause(Activity paramActivity);
-  
-  public abstract void onRequestPermissionsResult(Activity paramActivity, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt);
-  
-  public abstract void onResume(Activity paramActivity);
-  
-  public abstract void onStart(Activity paramActivity);
-  
-  public abstract void onStop(Activity paramActivity);
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdlq, this.jdField_a_of_type_Int);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Bdlq.dismiss();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdlu
  * JD-Core Version:    0.7.0.1
  */

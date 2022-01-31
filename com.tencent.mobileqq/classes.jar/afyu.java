@@ -1,15 +1,22 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
 
 public class afyu
-  implements begw
+  implements View.OnClickListener
 {
-  public afyu(SettingActivity2 paramSettingActivity2, begr parambegr) {}
+  public afyu(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Begr.cancel();
-    babr.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2, 230, ajjy.a(2131648070), ajjy.a(2131648067), ajjy.a(2131648068), ajjy.a(2131648066), new afyv(this), new afyw(this)).show();
+    switch (paramView.getId())
+    {
+    }
+    do
+    {
+      return;
+    } while (ChatHistoryTroopFileFragment.a(this.a) == null);
+    ChatHistoryTroopFileFragment.a(this.a).setVisibility(8);
   }
 }
 

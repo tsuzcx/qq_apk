@@ -1,14 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoyBiuButton;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.oidb_0xc90.RspBody;
 
-public class oza
-  implements ViewBase.IBuilder
+class oza
+  extends mxj
 {
-  public ViewBase build(VafContext paramVafContext)
+  oza(oyy paramoyy, rog paramrog) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return new ReadInJoyBiuButton(paramVafContext);
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
+    {
+      paramBundle = new oidb_0xc90.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (this.jdField_a_of_type_Rog != null) {
+        this.jdField_a_of_type_Rog.a(true, paramInt, paramBundle);
+      }
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(oyy.a, 2, "requestNewCommunityMsg onResult(), exception = " + QLog.getStackTraceString(paramArrayOfByte));
+    }
   }
 }
 

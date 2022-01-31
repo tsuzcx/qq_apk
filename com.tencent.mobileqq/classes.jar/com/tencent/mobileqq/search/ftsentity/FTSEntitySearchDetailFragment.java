@@ -9,15 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import avlx;
-import avly;
-import avlz;
-import avmb;
-import avmd;
-import avmg;
-import avva;
-import avvo;
-import azwg;
+import awlq;
+import awlr;
+import awls;
+import awlu;
+import awlw;
+import awlz;
+import awut;
+import awvh;
+import baxk;
 import com.tencent.mobileqq.persistence.fts.FTSEntity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
@@ -25,20 +25,20 @@ import java.util.List;
 
 public class FTSEntitySearchDetailFragment
   extends Fragment
-  implements Handler.Callback, avva<avmb>
+  implements Handler.Callback, awut<awlu>
 {
   private static List<FTSEntity> jdField_a_of_type_JavaUtilList;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(this);
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private avlx jdField_a_of_type_Avlx;
-  avlz jdField_a_of_type_Avlz;
-  private azwg jdField_a_of_type_Azwg;
+  private awlq jdField_a_of_type_Awlq;
+  awls jdField_a_of_type_Awls;
+  private baxk jdField_a_of_type_Baxk;
   FTSEntitySearchDetailActivity jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private String jdField_a_of_type_JavaLangString;
   private String jdField_b_of_type_JavaLangString;
   private List<FTSEntity> jdField_b_of_type_JavaUtilList;
-  private List<avmb> c;
+  private List<awlu> c;
   
   public static FTSEntitySearchDetailFragment a(String paramString1, String paramString2, List<FTSEntity> paramList)
   {
@@ -51,29 +51,29 @@ public class FTSEntitySearchDetailFragment
     return paramList;
   }
   
-  private void b(List<avmb> paramList)
+  private void b(List<awlu> paramList)
   {
-    this.jdField_a_of_type_Avlx.a(paramList);
+    this.jdField_a_of_type_Awlq.a(paramList);
   }
   
-  public void a(List<avmb> paramList) {}
+  public void a(List<awlu> paramList) {}
   
-  public void a(List<avmb> paramList, int paramInt)
+  public void a(List<awlu> paramList, int paramInt)
   {
     this.c = paramList;
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(-1);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(-1);
   }
   
-  public void a(List<avmb> paramList, avvo paramavvo)
+  public void a(List<awlu> paramList, awvh paramawvh)
   {
-    if (paramavvo.a(this.jdField_a_of_type_JavaLangString)) {
-      a(paramList, paramavvo.jdField_a_of_type_Int);
+    if (paramawvh.a(this.jdField_a_of_type_JavaLangString)) {
+      a(paramList, paramawvh.jdField_a_of_type_Int);
     }
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("FTSEntitySearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramavvo.jdField_a_of_type_JavaLangString, " keyword2:", this.jdField_a_of_type_JavaLangString });
+    QLog.d("FTSEntitySearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramawvh.jdField_a_of_type_JavaLangString, " keyword2:", this.jdField_a_of_type_JavaLangString });
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -97,22 +97,22 @@ public class FTSEntitySearchDetailFragment
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("original_keyword");
     this.jdField_b_of_type_JavaLangString = paramBundle.getString("segment_keyword");
     this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity = ((FTSEntitySearchDetailActivity)getActivity());
-    this.jdField_a_of_type_Avlz = avmd.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Awls = awlw.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131493641, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131301817));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131303596));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559210, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131367427));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131369266));
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Azwg != null) {
-      this.jdField_a_of_type_Azwg.d();
+    if (this.jdField_a_of_type_Baxk != null) {
+      this.jdField_a_of_type_Baxk.d();
     }
     jdField_a_of_type_JavaUtilList = null;
   }
@@ -122,18 +122,18 @@ public class FTSEntitySearchDetailFragment
     super.onViewCreated(paramView, paramBundle);
     try
     {
-      paramView = avmd.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity, this.jdField_b_of_type_JavaUtilList.size(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int);
+      paramView = awlw.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity, this.jdField_b_of_type_JavaUtilList.size(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
-      this.jdField_a_of_type_Azwg = new azwg(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.app);
-      this.jdField_a_of_type_Avlx = new avly(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Azwg, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Avlx);
-      this.jdField_a_of_type_Avlz.a(this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_JavaUtilList);
-      this.jdField_a_of_type_Avlx.a();
-      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0) && (!avmg.a(this.jdField_a_of_type_JavaLangString)))
+      this.jdField_a_of_type_Baxk = new baxk(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.app);
+      this.jdField_a_of_type_Awlq = new awlr(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Baxk, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity);
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Awlq);
+      this.jdField_a_of_type_Awls.a(this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_JavaUtilList);
+      this.jdField_a_of_type_Awlq.a();
+      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0) && (!awlz.a(this.jdField_a_of_type_JavaLangString)))
       {
-        this.jdField_a_of_type_Avlz.a();
-        paramView = avmd.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, (FTSEntity)this.jdField_b_of_type_JavaUtilList.get(0));
-        this.jdField_a_of_type_Avlz.b(paramView, this);
+        this.jdField_a_of_type_Awls.a();
+        paramView = awlw.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, (FTSEntity)this.jdField_b_of_type_JavaUtilList.get(0));
+        this.jdField_a_of_type_Awls.b(paramView, this);
       }
       return;
     }

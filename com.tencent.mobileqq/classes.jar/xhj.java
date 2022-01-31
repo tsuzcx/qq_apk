@@ -1,33 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.JNICallCenter.DataPoint;
+import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
+import java.util.ArrayList;
 
-public final class xhj
-  implements Parcelable.Creator<DataPoint>
+public abstract interface xhj
 {
-  public DataPoint a(Parcel paramParcel)
-  {
-    DataPoint localDataPoint = new DataPoint();
-    localDataPoint.mDin = paramParcel.readLong();
-    localDataPoint.mSendUinType = paramParcel.readInt();
-    localDataPoint.mApiName = paramParcel.readString();
-    localDataPoint.mProperityId = paramParcel.readInt();
-    localDataPoint.mValueType = paramParcel.readString();
-    localDataPoint.mValue = paramParcel.readString();
-    localDataPoint.mRetCode = paramParcel.readInt();
-    localDataPoint.mErrMsg = paramParcel.readString();
-    localDataPoint.mSeq = paramParcel.readString();
-    return localDataPoint;
-  }
-  
-  public DataPoint[] a(int paramInt)
-  {
-    return new DataPoint[paramInt];
-  }
+  public abstract void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xhj
  * JD-Core Version:    0.7.0.1
  */

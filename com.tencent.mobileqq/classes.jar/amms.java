@@ -1,64 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.widget.XListView;
 
 public class amms
+  implements Handler.Callback
 {
-  private String a = "";
-  private String b = "";
+  public amms(SearchResultActivity paramSearchResultActivity) {}
   
-  public static amms a(alzs[] paramArrayOfalzs)
+  public boolean handleMessage(Message paramMessage)
   {
-    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length <= 0)) {
-      paramArrayOfalzs = null;
+    switch (paramMessage.what)
+    {
     }
-    amms localamms;
     for (;;)
     {
-      return paramArrayOfalzs;
-      localamms = new amms();
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfalzs[0].a);
-        if (localJSONObject.has("AndroidDrawerJumpURL"))
-        {
-          localamms.a = localJSONObject.getString("AndroidDrawerJumpURL");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTencentDocUserConfigCmd AndroidDrawerJumpURL = " + localamms.a);
-          }
-        }
-        paramArrayOfalzs = localamms;
-        if (localJSONObject.has("AndroidAioJumpURL"))
-        {
-          localamms.b = localJSONObject.getString("AndroidAioJumpURL");
-          paramArrayOfalzs = localamms;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTencentDocUserConfigCmd AndroidAioJumpURL = " + localamms.b);
-            return localamms;
-          }
-        }
-      }
-      catch (JSONException paramArrayOfalzs)
-      {
-        paramArrayOfalzs.printStackTrace();
-      }
+      return true;
+      SearchResultActivity.a(this.a);
+      continue;
+      SearchResultActivity.b(this.a);
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+      bcpw.a(this.a, 2131694609, 0).b(this.a.getTitleBarHeight());
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
     }
-    return localamms;
-  }
-  
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.a)) {
-      return null;
-    }
-    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amms
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.open.agent.AuthorityControlFragment;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUiPlugin;
 
 public class bbur
-  implements View.OnClickListener
+  extends VasWebviewUiPlugin
 {
-  public bbur(AuthorityControlFragment paramAuthorityControlFragment) {}
-  
-  public void onClick(View paramView)
+  public long getPluginBusiness()
   {
-    AuthorityControlFragment.a(this.a).c();
-    AuthorityControlFragment.a(this.a, this.a.rightViewText, 2131624723);
-    this.a.rightViewText.setTextColor(AuthorityControlFragment.a(this.a));
-    this.a.rightViewText.setEnabled(true);
-    this.a.setLeftButton("", null);
-    this.a.leftView.setVisibility(0);
-    AuthorityControlFragment.a(this.a).setText(2131624737);
-    AuthorityControlFragment.a(this.a).setOverScrollHeader(AuthorityControlFragment.a(this.a));
+    return 1048576L;
   }
 }
 

@@ -1,31 +1,10 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class alpc
-  extends ContentObserver
+public abstract interface alpc
 {
-  public alpc(BusinessCardEditActivity paramBusinessCardEditActivity, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessCard_EditActivity", 2, "Contact changed selfChange=" + paramBoolean);
-    }
-    if (BusinessCardEditActivity.a(this.a))
-    {
-      this.a.a(2131632898, 2);
-      BusinessCardEditActivity.a(this.a, false);
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alpc
  * JD-Core Version:    0.7.0.1
  */

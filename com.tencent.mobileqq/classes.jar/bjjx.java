@@ -1,43 +1,29 @@
-import android.os.AsyncTask;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
+import android.os.Message;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class bjjx
-  extends AsyncTask<Void, Void, Integer>
+  implements bjdk
 {
-  public bjjx(SVHwEncoder.HwEncode paramHwEncode) {}
+  public bjjx(MusicProviderView paramMusicProviderView) {}
   
-  protected Integer a(Void... paramVarArgs)
+  public void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    long l = System.currentTimeMillis();
-    paramVarArgs = SVHwEncoder.HwEncode.a(this.a) + "shortvideo_thumb.jpg";
-    int j = this.a.a.a(SVHwEncoder.HwEncode.b(this.a), SVHwEncoder.f(this.a.this$0), SVHwEncoder.g(this.a.this$0), SVHwEncoder.a(this.a.this$0), SVHwEncoder.b(this.a.this$0), paramVarArgs);
-    int i = j;
-    String str;
-    if (j == 0)
-    {
-      str = ShortVideoUtils.a(this.a.a.jdField_a_of_type_JavaLangString, "jpg");
-      if (!bace.c(paramVarArgs, str)) {
-        break label177;
-      }
-      this.a.a.b = str;
-      i = j;
+    if (QLog.isColorLevel()) {
+      QLog.d("MusicProviderView", 2, "onStep:" + paramInt + " done:" + paramBoolean);
     }
-    for (;;)
-    {
-      this.a.a.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
-      this.a.a.jdField_a_of_type_Int = i;
-      SVHwEncoder.HwEncode.a(this.a, true);
-      return Integer.valueOf(i);
-      label177:
-      i = j;
-      if (!bace.b(str))
-      {
-        this.a.this$0.a("doInBackground()", "rename failure, mThumbFilePath = " + paramVarArgs + ",thumbPath=" + str);
-        i = -3;
-      }
+    if ((paramInt == 6) || (paramInt == 5) || (paramInt == 4)) {
+      this.a.a.sendEmptyMessage(3);
     }
+  }
+  
+  public void a(MusicItemInfo paramMusicItemInfo)
+  {
+    Message localMessage = this.a.a.obtainMessage();
+    localMessage.obj = paramMusicItemInfo;
+    localMessage.what = 4;
+    this.a.a.sendMessage(localMessage);
   }
 }
 

@@ -10,7 +10,7 @@ public final class DomainUtil$1
   
   public void run()
   {
-    Toast.makeText(MiniAppEnv.g().getContext(), bdyo.a()[this.jdField_a_of_type_Int] + "域名不合法，需使用https或wss协议:" + this.jdField_a_of_type_JavaLangString, 1).show();
+    Toast.makeText(MiniAppEnv.g().getContext(), bffv.a()[this.jdField_a_of_type_Int] + "域名不合法，需使用https或wss协议:" + this.jdField_a_of_type_JavaLangString, 1).show();
   }
 }
 

@@ -1,26 +1,20 @@
-import android.util.Property;
+import android.support.annotation.NonNull;
 
-class biwk
-  extends Property<biwc, Float>
+public class biwk
 {
-  biwk(biwc parambiwc, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public int a;
+  public int b;
+  public int c;
+  public int d;
   
-  public Float a(biwc parambiwc)
-  {
-    if (parambiwc != null) {
-      return Float.valueOf(biwc.d(parambiwc));
-    }
-    return Float.valueOf(0.0F);
-  }
+  public biwk() {}
   
-  public void a(biwc parambiwc, Float paramFloat)
+  public biwk(@NonNull biwk parambiwk)
   {
-    if (parambiwc != null) {
-      biwc.c(parambiwc, paramFloat.floatValue());
-    }
+    this.a = parambiwk.a;
+    this.b = parambiwk.b;
+    this.c = parambiwk.c;
+    this.d = parambiwk.d;
   }
 }
 

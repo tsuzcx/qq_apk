@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.view.widget;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
-import bcdu;
+import bdhv;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -12,26 +12,26 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import obz;
-import rfw;
+import onk;
+import rsm;
 
 public class ReadInJoyFeedbackPopupWindow$3
   implements Runnable
 {
-  public ReadInJoyFeedbackPopupWindow$3(rfw paramrfw) {}
+  public ReadInJoyFeedbackPopupWindow$3(rsm paramrsm) {}
   
   public void run()
   {
-    if (!rfw.a(this.this$0, "reportFeeds")) {}
+    if (!rsm.a(this.this$0, "reportFeeds")) {}
     String str1;
     String str3;
     String str4;
     do
     {
       return;
-      str1 = obz.c(rfw.a(this.this$0));
-      str3 = obz.a();
-      str4 = String.valueOf(rfw.a(this.this$0).publishUin);
+      str1 = onk.c(rsm.a(this.this$0));
+      str3 = onk.a();
+      str4 = String.valueOf(rsm.a(this.this$0).publishUin);
       QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { "reportFeeds, shareUrl = ", str1, ", uin = ", str3, ", publicUin = ", str4 });
     } while (TextUtils.isEmpty(str1));
     if (Pattern.compile("(http|https)://.*.mp.qq.com.*").matcher(str1).matches()) {}
@@ -44,7 +44,7 @@ public class ReadInJoyFeedbackPopupWindow$3
         if (i != 0)
         {
           String str5 = String.valueOf(NetConnInfoCenter.getServerTime());
-          String str2 = bcdu.b(str1 + 200 + str5 + "jubao@article@123");
+          String str2 = bdhv.b(str1 + 200 + str5 + "jubao@article@123");
           localObject2 = str2;
           if (str2 != null)
           {

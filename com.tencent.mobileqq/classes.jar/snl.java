@@ -1,37 +1,42 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class snl
-  extends sfo
+final class snl
+  implements URLDrawable.URLDrawableListener
 {
-  public final int a;
-  public CommentLikeFeedItem a;
-  public final String a;
-  public int b = 0;
-  public int c;
+  snl(String paramString1, ImageView paramImageView, String paramString2) {}
   
-  public snl(int paramInt1, String paramString, int paramInt2)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
+    sne.a("815", "onLoadCanceled - " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841262);
   }
   
-  public snl(int paramInt1, String paramString, int paramInt2, CommentLikeFeedItem paramCommentLikeFeedItem)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
+    sne.a("815", "onLoadFialed - " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841262);
   }
   
-  public String toString()
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    return "InteractionInfoChangeEvent{, feedId=" + this.jdField_a_of_type_JavaLangString + ", what=" + this.b + ", commentLikeFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem + ", commentId=" + this.c + '}';
+    sne.a("815", "onLoadProgressed - " + this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    sne.a("815", "onLoadSuccessed - " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "banner")) {
+      skt.b(2, this.b);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     snl
  * JD-Core Version:    0.7.0.1
  */

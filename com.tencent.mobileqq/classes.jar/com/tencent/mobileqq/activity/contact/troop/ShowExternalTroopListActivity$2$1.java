@@ -12,7 +12,7 @@ class ShowExternalTroopListActivity$2$1
   public void run()
   {
     BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$2.this$0.a.findViewById(2131309736).setBackgroundDrawable(localBitmapDrawable);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$2.this$0.a.findViewById(2131375491).setBackgroundDrawable(localBitmapDrawable);
   }
 }
 

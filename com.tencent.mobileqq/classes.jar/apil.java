@@ -1,71 +1,43 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
 final class apil
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  apil(Intent paramIntent, int paramInt, Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  apil(String paramString, apkm paramapkm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("sdk_mult_share_source_app_id", 0L);
-    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sdk_mult_share_msg_service_id", 0);
-    switch (paramInt)
+    try
     {
-    }
-    do
-    {
-      do
+      paramView = new apim(this);
+      apsz localapsz = apsz.a(this.jdField_a_of_type_JavaLangString);
+      if (localapsz == null)
       {
-        return;
         if (QLog.isColorLevel()) {
-          QLog.i("ForwardDialogMgr", 2, "-->showMultShareDialog--back");
+          QLog.w("FileOperaterUtils", 2, "error. get filemodel null, filepath[ " + this.jdField_a_of_type_JavaLangString + "]");
         }
-        if (this.jdField_a_of_type_Int == 2) {
-          apmf.a(this.jdField_a_of_type_AndroidAppActivity, "shareToQQ", l, 0, apmf.a);
-        }
-        while (this.jdField_a_of_type_Int == 1)
+      }
+      else if (localapsz.a(false))
+      {
+        if (!bbev.e(BaseApplicationImpl.getContext()))
         {
-          ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A740", new String[0]);
-          return;
-          apmf.a(l, i, this.jdField_a_of_type_AndroidAppActivity, null);
-        }
-        if (this.jdField_a_of_type_Int == 0)
-        {
-          ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73C", new String[0]);
+          aptv.a(2131693313);
           return;
         }
-      } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 901503));
-      ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73E", new String[0]);
+        if (bcvm.a(this.jdField_a_of_type_Apkm.getActivity(), 5, new apin(this, paramView))) {
+          aptr.a(this.jdField_a_of_type_Apkm.getActivity(), 2131692672, 2131692675, paramView);
+        }
+      }
+      else
+      {
+        paramView.a();
+      }
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardDialogMgr", 2, "-->showMultShareDialog--stay");
-      }
-      if (this.jdField_a_of_type_Int == 901503) {
-        apmf.a(this.jdField_a_of_type_AndroidAppActivity, "shareToQQ", l, 0, apmf.a);
-      }
-      while (this.jdField_a_of_type_Int == 1)
-      {
-        ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73F", new String[0]);
-        return;
-        if (this.jdField_a_of_type_Int == 3) {
-          apmf.a(l, i, this.jdField_a_of_type_AndroidAppActivity, null);
-        } else {
-          apmf.a(l, i, this.jdField_a_of_type_AndroidAppActivity);
-        }
-      }
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73B", new String[0]);
-        return;
-      }
-    } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 901503));
-    ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73D", new String[0]);
+    }
+    catch (Exception paramView) {}
   }
 }
 

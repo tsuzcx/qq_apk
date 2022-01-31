@@ -1,12 +1,15 @@
-import com.tencent.common.config.AppSetting;
-import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class bgty
+public final class bgty
 {
-  boolean a(LeakInspector.InspectUUID paramInspectUUID)
+  public static int a()
   {
-    if (!AppSetting.d) {}
-    return false;
+    return bgvm.a(BaseApplicationImpl.context);
+  }
+  
+  public static boolean a()
+  {
+    return (bgvm.b(BaseApplicationImpl.context) == 1) || (bgvm.c(BaseApplicationImpl.context));
   }
 }
 

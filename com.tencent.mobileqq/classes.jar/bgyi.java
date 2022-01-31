@@ -1,40 +1,21 @@
-import android.view.ViewGroup;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import dov.com.qq.im.AECamera.View.AEBeautyProviderView;
+import android.net.Proxy;
 
-public class bgyi
-  implements SeekBar.OnSeekBarChangeListener
+final class bgyi
+  extends bgyh
 {
-  public bgyi(AEBeautyProviderView paramAEBeautyProviderView) {}
-  
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public int a()
   {
-    if (AEBeautyProviderView.a(this.a) != null)
-    {
-      AEBeautyProviderView.a(this.a).b(paramInt);
-      this.a.b.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
-    }
+    return Proxy.getDefaultPort();
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public String a()
   {
-    AEBeautyProviderView.a(this.a, AEBeautyProviderView.b(this.a), AEBeautyProviderView.a(this.a));
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((AEBeautyProviderView.c(this.a) != null) && ((AEBeautyProviderView.c(this.a) instanceof ViewGroup))) {
-      ((ViewGroup)AEBeautyProviderView.c(this.a)).setMotionEventSplittingEnabled(true);
-    }
-    AEBeautyProviderView.b(this.a, paramSeekBar.getProgress());
-    AEBeautyProviderView.b(this.a, AEBeautyProviderView.b(this.a), AEBeautyProviderView.a(this.a));
+    return Proxy.getDefaultHost();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgyi
  * JD-Core Version:    0.7.0.1
  */

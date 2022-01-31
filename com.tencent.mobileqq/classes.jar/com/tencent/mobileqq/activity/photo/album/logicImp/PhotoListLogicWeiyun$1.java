@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.photo.album.logicImp;
 
-import agig;
+import agur;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class PhotoListLogicWeiyun$1
   implements Runnable
 {
-  public PhotoListLogicWeiyun$1(agig paramagig, NewPhotoListActivity paramNewPhotoListActivity) {}
+  public PhotoListLogicWeiyun$1(agur paramagur, NewPhotoListActivity paramNewPhotoListActivity) {}
   
   public void run()
   {
     if (this.a.a == null) {
-      this.a.g();
+      this.a.e();
     }
   }
 }

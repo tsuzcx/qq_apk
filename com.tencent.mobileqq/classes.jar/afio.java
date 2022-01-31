@@ -1,26 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-
 class afio
-  implements DialogInterface.OnClickListener
+  implements Comparable<afio>
 {
-  afio(afim paramafim) {}
+  private Long jdField_a_of_type_JavaLangLong;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  afio(afim paramafim, String paramString, Long paramLong)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangLong = paramLong;
+  }
+  
+  public int a(afio paramafio)
+  {
+    if (this.jdField_a_of_type_JavaLangLong.longValue() > paramafio.jdField_a_of_type_JavaLangLong.longValue()) {
+      return -1;
     }
-    if (paramInt == 1) {
-      baoz.a(afim.a(this.a), afim.a(this.a), "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", afim.a(this.a).getApp().getString(2131654075), "");
-    }
+    return 1;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afio
  * JD-Core Version:    0.7.0.1
  */

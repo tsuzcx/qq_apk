@@ -1,44 +1,170 @@
-import NS_KING_INTERFACE.stPostFeedDingRsp;
-import android.os.Handler;
-import android.util.Log;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class rza
-  extends rzc
-  implements ryo
+  extends quc
 {
-  public static String a = "weishi";
+  private rza(VideoPlayManager paramVideoPlayManager) {}
   
-  public static void a(String paramString, boolean paramBoolean, int paramInt, Handler paramHandler)
+  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo, qub paramqub)
   {
-    int i = 1;
-    if (!paramBoolean)
-    {
-      i = 2;
-      Log.e(a, "此次是取消点赞：---------------");
+    if (QLog.isColorLevel()) {
+      QLog.d("Viola.VideoPlayManager", 2, "onTencentVideoDefnInfo(TVK_NetVideoInfo videoInfo, VideoPlayerWrapper videoPLayer) ");
     }
-    paramString = new ryz(new sab(paramString, i), paramHandler, new rzb(paramHandler, paramInt), 4300);
-    rys.a().a(paramString);
   }
   
-  public void a(ryz paramryz)
+  public void a(qub paramqub)
   {
-    if ((paramryz.a instanceof stPostFeedDingRsp))
+    rzd localrzd = VideoPlayManager.a(this.a);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      paramryz = (stPostFeedDingRsp)paramryz.a;
-      if (paramryz == null)
-      {
-        Log.e(a, "服务器失败！！！");
-        return;
+      localStringBuilder = new StringBuilder().append("播放状态回调 onCompletion() vid=");
+      if (localrzd == null) {
+        break label93;
       }
-      if (paramryz.is_ding == 0)
-      {
-        Log.e(a, "没有点赞~~~~~~~~~~~~~~~~");
-        return;
+    }
+    label93:
+    for (paramqub = localrzd.a.a;; paramqub = "param null")
+    {
+      QLog.d("Viola.VideoPlayManager", 2, paramqub);
+      paramqub = VideoPlayManager.a(this.a).iterator();
+      while (paramqub.hasNext()) {
+        ((rze)paramqub.next()).h(localrzd);
       }
-      Log.e(a, "已经点赞~~~~~~~~~~~~~~~~");
+    }
+  }
+  
+  public void a(qub paramqub, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Viola.VideoPlayManager", 2, "onVideoPrepared(VideoPlayerWrapper player, Object tag) ");
+    }
+    paramqub = VideoPlayManager.a(this.a);
+    if ((paramqub != null) && (QLog.isColorLevel())) {
+      QLog.d("Viola.VideoPlayManager", 2, "播放状态回调 onVideoPrepared() vid=" + paramqub.a.a + ", mIsOpenedVideo = " + VideoPlayManager.a(this.a));
+    }
+    if (!VideoPlayManager.a(this.a))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Viola.VideoPlayManager", 2, "onVideoPrepared  return isOpenedVideo false");
+      }
       return;
     }
-    Log.e(a, "真无语！！！");
+    VideoPlayManager.a(this.a, false);
+    VideoPlayManager.a(this.a).removeMessages(0);
+    VideoPlayManager.a(this.a).sendEmptyMessage(0);
+    paramObject = VideoPlayManager.a(this.a).iterator();
+    while (paramObject.hasNext()) {
+      ((rze)paramObject.next()).c(paramqub);
+    }
+    if (VideoPlayManager.b(this.a))
+    {
+      this.a.a();
+      return;
+    }
+    VideoPlayManager.b(this.a, true);
+  }
+  
+  public void a(qub paramqub, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Viola.VideoPlayManager", 2, "onConnectQualityCallback json= " + paramString);
+    }
+  }
+  
+  public boolean a(qub paramqub, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    paramString = new StringBuilder().append("model : ").append(paramInt1).append(" what : ").append(paramInt2).append(" extra : ").append(paramInt3).append("detailInfo : ").append(paramString).append(" obj : ");
+    if (paramObject != null)
+    {
+      paramqub = paramObject.toString();
+      paramqub = paramqub;
+      paramString = VideoPlayManager.a(this.a);
+      if ((paramString != null) && (paramString.a != null) && (QLog.isColorLevel())) {
+        QLog.d("Viola.VideoPlayManager", 2, "播放状态回调 onError() " + paramqub + ", vid=" + paramString.a.a);
+      }
+      ajyc.a(2131716338);
+      if (paramInt1 != 123) {
+        break label290;
+      }
+      if (paramInt2 != 103) {
+        break label250;
+      }
+      paramqub = ajyc.a(2131716318) + paramInt1 + "-" + paramInt2 + ")";
+    }
+    for (;;)
+    {
+      paramObject = VideoPlayManager.a(this.a).iterator();
+      while (paramObject.hasNext()) {
+        ((rze)paramObject.next()).a(paramString, paramInt1, paramInt2, paramqub);
+      }
+      paramqub = "";
+      break;
+      label250:
+      paramqub = ajyc.a(2131716314) + paramInt1 + "-" + paramInt2 + ")";
+      continue;
+      label290:
+      if (paramInt1 == 122)
+      {
+        if (paramInt2 == 204) {
+          paramqub = ajyc.a(2131716334) + paramInt1 + "-" + paramInt2 + ")";
+        } else if (paramInt2 == 202) {
+          paramqub = ajyc.a(2131716331) + paramInt1 + "-" + paramInt2 + ")";
+        } else {
+          paramqub = ajyc.a(2131716342) + paramInt1 + "-" + paramInt2 + ")";
+        }
+      }
+      else if (paramInt1 == 101)
+      {
+        if (paramInt2 == 80) {
+          paramqub = ajyc.a(2131716324) + paramInt1 + "-" + paramInt2 + ")";
+        } else {
+          paramqub = ajyc.a(2131716315) + paramInt1 + "-" + paramInt2 + ")";
+        }
+      }
+      else {
+        paramqub = ajyc.a(2131716339) + paramInt1 + "-" + paramInt2 + ")";
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(qub paramqub, int paramInt, Object paramObject)
+  {
+    paramqub = VideoPlayManager.a(this.a);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("Viola.VideoPlayManager", 2, "播放状态回调 onInfo() PLAYER_INFO_START_BUFFERING");
+      }
+      paramObject = VideoPlayManager.a(this.a).iterator();
+      while (paramObject.hasNext()) {
+        ((rze)paramObject.next()).f(paramqub);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Viola.VideoPlayManager", 2, "播放状态回调 onInfo() PLAYER_INFO_ENDOF_BUFFERING");
+      }
+      paramObject = VideoPlayManager.a(this.a).iterator();
+      while (paramObject.hasNext()) {
+        ((rze)paramObject.next()).g(paramqub);
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Viola.VideoPlayManager", 2, "播放状态回调 onInfo() PLAYER_INFO_DECODER_BLOCK");
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("Viola.VideoPlayManager", 2, "播放状态回调 onInfo() PLAYER_INFO_HW_DECODE_FAILED");
+        }
+      }
+    }
   }
 }
 

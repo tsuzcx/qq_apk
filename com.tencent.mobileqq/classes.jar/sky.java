@@ -1,25 +1,10 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-
-public class sky
+abstract interface sky
 {
-  public static String a(QQUserUIItem paramQQUserUIItem)
-  {
-    return slr.a(paramQQUserUIItem);
-  }
-  
-  public static boolean a()
-  {
-    return true;
-  }
-  
-  public static String b(QQUserUIItem paramQQUserUIItem)
-  {
-    return slr.b(paramQQUserUIItem);
-  }
+  public abstract sji a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sky
  * JD-Core Version:    0.7.0.1
  */

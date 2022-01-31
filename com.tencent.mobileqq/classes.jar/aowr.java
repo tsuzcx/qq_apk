@@ -1,48 +1,31 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import java.util.ArrayList;
-
-public class aowr
-  extends aowv
+class aowr
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  private boolean d;
+  private int jdField_a_of_type_Int;
+  private aowl jdField_a_of_type_Aowl;
   
-  public aowr(Context paramContext, FileManagerEntity paramFileManagerEntity)
+  public aowr(aowp paramaowp, aowl paramaowl)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
-    this.d = false;
+    this.jdField_a_of_type_Aowl = paramaowl;
   }
   
-  public Intent a()
+  public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
-      return null;
-    }
-    ForwardFileInfo localForwardFileInfo = apir.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    localForwardFileInfo.b(10009);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("fileinfo", localForwardFileInfo);
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      localIntent.putStringArrayListExtra("Aio_SessionId_ImageList", this.jdField_a_of_type_JavaUtilArrayList);
-    }
-    localIntent.putExtra("_from_aio_", this.d);
-    return localIntent;
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a(ArrayList<String> paramArrayList)
+  public aowl a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    return this.jdField_a_of_type_Aowl;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aowr
  * JD-Core Version:    0.7.0.1
  */

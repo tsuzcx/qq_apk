@@ -1,29 +1,29 @@
 package com.tencent.device.file;
 
-import atpg;
-import awfo;
+import aune;
+import axew;
 import com.tencent.device.msg.data.MessageForDevShortVideo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
-import xsn;
-import xsp;
-import xvq;
+import ybq;
+import ybs;
+import yeu;
 
 public class DevShortVideoOperator$1
   implements Runnable
 {
-  public DevShortVideoOperator$1(xsn paramxsn, awfo paramawfo) {}
+  public DevShortVideoOperator$1(ybq paramybq, axew paramaxew) {}
   
   public void run()
   {
-    awfo localawfo = this.a;
+    axew localaxew = this.a;
     Object localObject = null;
     int i;
-    if (localawfo.g == 0)
+    if (localaxew.g == 0)
     {
-      localObject = this.this$0.a(localawfo);
+      localObject = this.this$0.a(localaxew);
       i = 1;
     }
     for (;;)
@@ -31,9 +31,9 @@ public class DevShortVideoOperator$1
       if (localObject == null)
       {
         return;
-        if (localawfo.g == 1)
+        if (localaxew.g == 1)
         {
-          localObject = (MessageForShortVideo)localawfo.a;
+          localObject = (MessageForShortVideo)localaxew.a;
           i = 0;
         }
       }
@@ -47,8 +47,8 @@ public class DevShortVideoOperator$1
         if (i != 0) {
           this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((MessageRecord)localObject, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
         }
-        ((xvq)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a(xvq.e, this.a.h, Long.parseLong(this.a.c), ((MessageRecord)localObject).uniseq, ((MessageRecord)localObject).istroop, 0);
-        atpg.a(this.this$0.g, this.this$0.f, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
+        ((yeu)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a(yeu.e, this.a.h, Long.parseLong(this.a.c), ((MessageRecord)localObject).uniseq, ((MessageRecord)localObject).istroop, 0);
+        aune.a(this.this$0.g, this.this$0.f, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
         return;
       }
       i = 0;

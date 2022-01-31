@@ -1,34 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.mobileqq.activity.Leba;
 
 public class abkk
-  extends BroadcastReceiver
+  implements ViewSwitcher.ViewFactory
 {
-  public abkk(QQIdentiferActivity paramQQIdentiferActivity) {}
+  public abkk(Leba paramLeba) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public View makeView()
   {
-    paramContext = paramIntent.getAction();
-    if (("tencent.av.v2q.StartVideoChat".equals(paramContext)) || ("tencent.av.v2q.AvSwitch".equals(paramContext)))
-    {
-      i = paramIntent.getIntExtra("sessionType", 0);
-      QLog.d("qq_Identification.act", 1, "received video chat broadcast: " + i);
-      if ((i == 2) || (i == 4))
-      {
-        QQIdentiferActivity.a(this.a, 204, aqrw.a);
-        QQIdentiferActivity.a(this.a, 204, aqrw.a);
-        this.a.finish();
-      }
-    }
-    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext))
-    {
-      int i;
-      return;
-    }
-    this.a.finish();
+    ImageView localImageView = new ImageView(this.a.a());
+    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    return localImageView;
   }
 }
 

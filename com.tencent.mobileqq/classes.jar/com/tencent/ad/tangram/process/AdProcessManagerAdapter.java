@@ -7,6 +7,8 @@ public abstract interface AdProcessManagerAdapter
 {
   public abstract Boolean isOnMainProcess();
   
+  public abstract Boolean isOnWebProcess();
+  
   public abstract Boolean isWebProcessRunning();
   
   public abstract Boolean isWebProcessRunningForPreloading();

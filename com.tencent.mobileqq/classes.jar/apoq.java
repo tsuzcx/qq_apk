@@ -1,88 +1,58 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.AdapterView;
+import android.graphics.drawable.Drawable;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.DocExportFilePresenter.3.1;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import mqq.os.MqqHandler;
 
 public class apoq
-  implements AdapterView.OnItemClickListener
+  implements apjf
 {
-  public apoq(NearbyHybridFragment paramNearbyHybridFragment) {}
+  private AdapterView.OnItemClickListener a;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  apoq(apoo paramapoo)
   {
-    boolean bool = true;
-    paramAdapterView = (asdn)this.a.jdField_a_of_type_Asdk.a(paramInt);
-    if (paramAdapterView.jdField_a_of_type_Int == 1)
-    {
-      this.a.a(this.a.jdField_a_of_type_Asdk.a());
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a();
+    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new apor(this);
+  }
+  
+  public void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Apoo.jdField_a_of_type_Apkn != null) {
+      this.jdField_a_of_type_Apoo.jdField_a_of_type_Apkn.a(paramBoolean);
     }
-    switch (paramAdapterView.jdField_a_of_type_Int)
-    {
-    default: 
-      label96:
-      asfl.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "click_op_button", paramAdapterView.jdField_a_of_type_Int);
+    if ((this.jdField_a_of_type_Apoo.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a()) && (paramBoolean)) {
+      this.jdField_a_of_type_Apoo.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c();
+    }
+    while ((this.jdField_a_of_type_Apoo.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b() == null) || (paramBoolean)) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.NearbyHybridFragment", 2, "onItemClick:" + paramAdapterView.jdField_c_of_type_JavaLangString + ", " + paramAdapterView.jdField_a_of_type_JavaLangString);
-      }
-      if ((paramAdapterView.jdField_c_of_type_Int == 1) && (!TextUtils.isEmpty(paramAdapterView.e)) && (this.a.getActivity() != null) && (bady.a(this.a.getActivity(), paramAdapterView.e)) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
-        if (TextUtils.isEmpty(paramAdapterView.d)) {
-          break;
-        }
-      }
-      break;
     }
-    for (;;)
+    this.jdField_a_of_type_Apoo.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_Apoo.jdField_a_of_type_Apmx.a());
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.jdField_a_of_type_Apoo.jdField_a_of_type_Apkn != null)) {
+      this.jdField_a_of_type_Apoo.jdField_a_of_type_Apkn.a();
+    }
+    if (paramBoolean)
     {
-      try
+      this.jdField_a_of_type_Apoo.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.jdField_a_of_type_Apoo.jdField_a_of_type_Apmx.c(), this);
+      this.jdField_a_of_type_Apoo.jdField_a_of_type_Boolean = false;
+      if ((this.jdField_a_of_type_Apoo.jdField_a_of_type_AndroidAppActivity instanceof FileBrowserActivity))
       {
-        paramView = new Intent("android.intent.action.VIEW", Uri.parse(paramAdapterView.d));
-        paramView.setFlags(268435456);
-        BaseApplicationImpl.getContext().startActivity(paramView);
-        if (bool) {
-          break;
-        }
-        this.a.a(paramAdapterView);
+        bcpw.a(this.jdField_a_of_type_Apoo.jdField_a_of_type_AndroidAppActivity, 2, 2131692415, 1).a();
+        new MqqHandler().postDelayed(new DocExportFilePresenter.3.1(this), 800L);
       }
-      catch (Exception paramView)
-      {
-        QLog.d("nearby.NearbyHybridFragment", 2, "jump to app with scheme Excepyion e = " + paramView.getMessage());
-        bool = false;
-        continue;
-      }
-      bool = bady.a(this.a.getActivity(), paramAdapterView.e, this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin());
-      continue;
-      paramView.a(39);
-      break label96;
-      paramView.a(25);
-      break label96;
-      paramView.a(23);
-      paramView.a(26);
-      break label96;
-      paramView.a(40);
-      break label96;
-      if (this.a.jdField_a_of_type_Asdk == null) {
-        break label96;
-      }
-      this.a.jdField_a_of_type_Asdk.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
-      break label96;
-      paramView.a(41);
-      break label96;
-      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apoq
  * JD-Core Version:    0.7.0.1
  */

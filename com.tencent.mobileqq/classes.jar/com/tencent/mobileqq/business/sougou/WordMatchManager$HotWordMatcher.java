@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.business.sougou;
 
-import aloq;
-import alor;
-import alos;
-import alou;
+import amdf;
+import amdg;
+import amdh;
+import amdj;
 import android.os.Looper;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -15,56 +15,56 @@ import java.util.Queue;
 import java.util.Set;
 
 class WordMatchManager$HotWordMatcher
-  implements alou
+  implements amdj
 {
   protected int a;
-  protected alos a;
-  protected Queue<alos> a;
+  protected amdh a;
+  protected Queue<amdh> a;
   protected boolean a;
   
   WordMatchManager$HotWordMatcher(WordMatchManager paramWordMatchManager)
   {
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
-    this.jdField_a_of_type_Alos = new alos();
+    this.jdField_a_of_type_Amdh = new amdh();
     onMatchResult(null);
   }
   
   protected native boolean Match(byte[] paramArrayOfByte1, int paramInt, int[] paramArrayOfInt, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5);
   
-  public int a(int paramInt1, String paramString, int paramInt2, alor paramalor)
+  public int a(int paramInt1, String paramString, int paramInt2, amdg paramamdg)
   {
     if (Looper.myLooper() != Looper.getMainLooper()) {
       return -4;
     }
-    if (isRequestExist(paramInt1, paramalor)) {
+    if (isRequestExist(paramInt1, paramamdg)) {
       return -2;
     }
     if (this.jdField_a_of_type_Boolean)
     {
-      localalos = new alos();
+      localamdh = new amdh();
       i = this.jdField_a_of_type_Int + 1;
       this.jdField_a_of_type_Int = i;
-      localalos.jdField_a_of_type_Int = i;
-      localalos.c = paramInt2;
-      localalos.b = paramInt1;
-      localalos.jdField_a_of_type_JavaLangString = paramString;
-      localalos.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramalor);
-      this.jdField_a_of_type_JavaUtilQueue.add(localalos);
-      return localalos.jdField_a_of_type_Int;
+      localamdh.jdField_a_of_type_Int = i;
+      localamdh.c = paramInt2;
+      localamdh.b = paramInt1;
+      localamdh.jdField_a_of_type_JavaLangString = paramString;
+      localamdh.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramamdg);
+      this.jdField_a_of_type_JavaUtilQueue.add(localamdh);
+      return localamdh.jdField_a_of_type_Int;
     }
-    if (this.jdField_a_of_type_Alos == null) {
-      this.jdField_a_of_type_Alos = new alos();
+    if (this.jdField_a_of_type_Amdh == null) {
+      this.jdField_a_of_type_Amdh = new amdh();
     }
-    alos localalos = this.jdField_a_of_type_Alos;
+    amdh localamdh = this.jdField_a_of_type_Amdh;
     int i = this.jdField_a_of_type_Int + 1;
     this.jdField_a_of_type_Int = i;
-    localalos.jdField_a_of_type_Int = i;
-    this.jdField_a_of_type_Alos.c = paramInt2;
-    this.jdField_a_of_type_Alos.b = paramInt1;
-    this.jdField_a_of_type_Alos.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Alos.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramalor);
-    return executeMatchTask(this.jdField_a_of_type_Alos);
+    localamdh.jdField_a_of_type_Int = i;
+    this.jdField_a_of_type_Amdh.c = paramInt2;
+    this.jdField_a_of_type_Amdh.b = paramInt1;
+    this.jdField_a_of_type_Amdh.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Amdh.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramamdg);
+    return executeMatchTask(this.jdField_a_of_type_Amdh);
   }
   
   public void a(int paramInt)
@@ -76,19 +76,19 @@ class WordMatchManager$HotWordMatcher
     for (;;)
     {
       return;
-      if ((this.jdField_a_of_type_Alos != null) && (paramInt == this.jdField_a_of_type_Alos.jdField_a_of_type_Int))
+      if ((this.jdField_a_of_type_Amdh != null) && (paramInt == this.jdField_a_of_type_Amdh.jdField_a_of_type_Int))
       {
-        this.jdField_a_of_type_Alos = null;
+        this.jdField_a_of_type_Amdh = null;
         return;
       }
       Iterator localIterator = this.jdField_a_of_type_JavaUtilQueue.iterator();
       if (localIterator.hasNext())
       {
-        alos localalos = (alos)localIterator.next();
-        if (localalos.jdField_a_of_type_Int != paramInt) {
+        amdh localamdh = (amdh)localIterator.next();
+        if (localamdh.jdField_a_of_type_Int != paramInt) {
           break label92;
         }
-        localObject = localalos;
+        localObject = localamdh;
       }
       for (;;)
       {
@@ -107,25 +107,25 @@ class WordMatchManager$HotWordMatcher
     this.jdField_a_of_type_Boolean = false;
     if (!this.jdField_a_of_type_JavaUtilQueue.isEmpty())
     {
-      this.jdField_a_of_type_Alos = ((alos)this.jdField_a_of_type_JavaUtilQueue.remove());
-      executeMatchTask(this.jdField_a_of_type_Alos);
+      this.jdField_a_of_type_Amdh = ((amdh)this.jdField_a_of_type_JavaUtilQueue.remove());
+      executeMatchTask(this.jdField_a_of_type_Amdh);
       return;
     }
-    this.jdField_a_of_type_Alos = null;
+    this.jdField_a_of_type_Amdh = null;
   }
   
-  protected int executeMatchTask(alos paramalos)
+  protected int executeMatchTask(amdh paramamdh)
   {
     Object localObject5 = null;
     if (!this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.c) {}
-    while ((!this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_Aloq.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_Aloq.b)) {
+    while ((!this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_Amdf.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_Amdf.b)) {
       return -3;
     }
     this.jdField_a_of_type_Boolean = true;
-    int j = paramalos.c;
+    int j = paramamdh.c;
     try
     {
-      arrayOfByte4 = paramalos.jdField_a_of_type_JavaLangString.getBytes("GB2312");
+      arrayOfByte4 = paramamdh.jdField_a_of_type_JavaLangString.getBytes("GB2312");
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException1)
     {
@@ -181,7 +181,7 @@ class WordMatchManager$HotWordMatcher
     {
       break label119;
     }
-    localObject7 = this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_Aloq.jdField_a_of_type_JavaUtilSet;
+    localObject7 = this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_Amdf.jdField_a_of_type_JavaUtilSet;
     localObject6 = new int[((Set)localObject7).size()];
     localObject7 = ((Set)localObject7).iterator();
     i = 0;
@@ -191,19 +191,19 @@ class WordMatchManager$HotWordMatcher
       i += 1;
     }
     ThreadManager.executeOnSubThread(new WordMatchManager.HotWordMatcher.2(this, arrayOfByte4, j, (int[])localObject6, arrayOfByte3, arrayOfByte2, arrayOfByte1, localObject5));
-    return paramalos.jdField_a_of_type_Int;
+    return paramamdh.jdField_a_of_type_Int;
   }
   
-  protected boolean isRequestExist(int paramInt, alor paramalor)
+  protected boolean isRequestExist(int paramInt, amdg paramamdg)
   {
-    if ((this.jdField_a_of_type_Alos != null) && (this.jdField_a_of_type_Alos.b == paramInt) && (this.jdField_a_of_type_Alos.jdField_a_of_type_JavaLangRefWeakReference == paramalor)) {
+    if ((this.jdField_a_of_type_Amdh != null) && (this.jdField_a_of_type_Amdh.b == paramInt) && (this.jdField_a_of_type_Amdh.jdField_a_of_type_JavaLangRefWeakReference == paramamdg)) {
       return true;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilQueue.iterator();
     while (localIterator.hasNext())
     {
-      alos localalos = (alos)localIterator.next();
-      if ((localalos.b == paramInt) && (localalos.jdField_a_of_type_JavaLangRefWeakReference == paramalor)) {
+      amdh localamdh = (amdh)localIterator.next();
+      if ((localamdh.b == paramInt) && (localamdh.jdField_a_of_type_JavaLangRefWeakReference == paramamdg)) {
         return true;
       }
     }

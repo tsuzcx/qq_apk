@@ -1,21 +1,12 @@
-public final class aqri
-  implements axrt
+import android.view.View;
+
+public abstract interface aqri
 {
-  public aqri(axrt paramaxrt) {}
+  public abstract void a(View... paramVarArgs);
   
-  public void onResp(axsq paramaxsq)
-  {
-    if (this.a != null) {
-      this.a.onResp(paramaxsq);
-    }
-  }
+  public abstract void b();
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2)
-  {
-    if (this.a != null) {
-      this.a.onUpdateProgeress(paramaxsp, paramLong1, paramLong2);
-    }
-  }
+  public abstract void c();
 }
 
 

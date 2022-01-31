@@ -1,64 +1,35 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.AIOIconChangeByTimeHelper.TimeChangeReceiver.1;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import java.lang.ref.WeakReference;
-import java.util.Calendar;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeAnimStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public final class acvr
-  extends BroadcastReceiver
+public class acvr
+  implements ahbt
 {
-  private WeakReference<BaseChatPie> jdField_a_of_type_JavaLangRefWeakReference;
-  private Calendar jdField_a_of_type_JavaUtilCalendar;
+  public acvr(CustomizeStrategyFactory.ThemeAnimStrategy.1 param1) {}
   
-  private acvr(BaseChatPie paramBaseChatPie)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
-  }
-  
-  private void a()
-  {
-    BaseChatPie localBaseChatPie = (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localBaseChatPie != null)
+    paramPathResult = paramPathResult.folderPath;
+    if (paramInt == 0) {}
+    try
     {
-      if (this.jdField_a_of_type_JavaUtilCalendar == null) {
-        this.jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
+      this.a.a.animInfo = AnimationView.AnimationInfo.loadFromFolder(paramPathResult);
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "TYPE_AIO_REDPACKET background=" + this.a.a.background + ",animInfo=" + this.a.a.animInfo);
       }
-      this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
-      int i = this.jdField_a_of_type_JavaUtilCalendar.get(11);
-      if ((i < 19) && (i >= 7)) {
-        break label81;
-      }
-    }
-    label81:
-    for (boolean bool = true; Looper.getMainLooper() == Looper.myLooper(); bool = false)
-    {
-      localBaseChatPie.a.b(bool);
+      CustomizeStrategyFactory.a().a(this.a.a);
       return;
     }
-    localBaseChatPie.a().post(new AIOIconChangeByTimeHelper.TimeChangeReceiver.1(this, localBaseChatPie, bool));
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    if ("android.intent.action.TIME_TICK".equals(paramContext)) {
-      a();
-    }
-    do
+    catch (Throwable paramPathResult)
     {
-      return;
-      if ("android.intent.action.TIME_SET".equals(paramContext))
+      for (;;)
       {
-        a();
-        return;
+        paramPathResult.printStackTrace();
       }
-    } while (!"android.intent.action.TIMEZONE_CHANGED".equals(paramContext));
-    a();
+    }
   }
 }
 

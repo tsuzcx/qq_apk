@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adfc;
-import adfd;
+import adqe;
+import adqf;
 import android.view.View;
 
 public class FrameAnimationActor$1
@@ -13,23 +13,23 @@ public class FrameAnimationActor$1
     do
     {
       return;
-      if ((this.this$0.jdField_a_of_type_Int == 0) && (this.this$0.jdField_a_of_type_Adfd != null)) {
-        this.this$0.jdField_a_of_type_Adfd.a();
+      if ((this.this$0.jdField_a_of_type_Int == 0) && (this.this$0.jdField_a_of_type_Adqf != null)) {
+        this.this$0.jdField_a_of_type_Adqf.a();
       }
       if (this.this$0.jdField_a_of_type_Int < this.this$0.jdField_a_of_type_ArrayOfInt.length) {
         break;
       }
       this.this$0.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.this$0.jdField_a_of_type_ArrayOfInt[this.this$0.b]);
-    } while (this.this$0.jdField_a_of_type_Adfd == null);
-    this.this$0.jdField_a_of_type_Adfd.b();
+    } while (this.this$0.jdField_a_of_type_Adqf == null);
+    this.this$0.jdField_a_of_type_Adqf.b();
     return;
     this.this$0.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.this$0.jdField_a_of_type_ArrayOfInt[this.this$0.jdField_a_of_type_Int]);
-    if (this.this$0.jdField_a_of_type_Adfd != null) {
-      this.this$0.jdField_a_of_type_Adfd.a(this.this$0.jdField_a_of_type_Int);
+    if (this.this$0.jdField_a_of_type_Adqf != null) {
+      this.this$0.jdField_a_of_type_Adqf.a(this.this$0.jdField_a_of_type_Int);
     }
-    this.this$0.jdField_a_of_type_AndroidViewView.postDelayed(adfc.a(this.this$0), this.this$0.c);
-    adfc localadfc = this.this$0;
-    localadfc.jdField_a_of_type_Int += 1;
+    this.this$0.jdField_a_of_type_AndroidViewView.postDelayed(adqe.a(this.this$0), this.this$0.c);
+    adqe localadqe = this.this$0;
+    localadqe.jdField_a_of_type_Int += 1;
   }
 }
 

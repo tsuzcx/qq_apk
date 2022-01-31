@@ -1,109 +1,42 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import org.json.JSONArray;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class agqo
+class agqo
+  extends akim
 {
-  private static volatile agqo jdField_a_of_type_Agqo;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { ajjy.a(2131647530), ajjy.a(2131647520), ajjy.a(2131647501) };
-  private static final String[] b = { ajjy.a(2131647526), ajjy.a(2131647521), ajjy.a(2131647506) };
+  agqo(agqk paramagqk) {}
   
-  public static agqo a()
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
   {
-    if (jdField_a_of_type_Agqo == null) {}
-    try
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {}
+    do
     {
-      if (jdField_a_of_type_Agqo == null) {
-        jdField_a_of_type_Agqo = new agqo();
-      }
-      return jdField_a_of_type_Agqo;
-    }
-    finally {}
-  }
-  
-  public int a()
-  {
-    Object localObject = agwj.a();
-    if (localObject != null)
-    {
-      localObject = (agmq)((QQAppInterface)localObject).getManager(245);
-      if (localObject != null) {
-        return ((agmq)localObject).a("hb_exclusive", 1, new String[] { "ani_queue_max" });
-      }
-    }
-    return 1;
-  }
-  
-  public String a(int paramInt)
-  {
-    Object localObject1 = agwj.a();
-    Object localObject2;
-    JSONArray localJSONArray;
-    if (localObject1 != null)
-    {
-      localObject2 = (agmq)((QQAppInterface)localObject1).getManager(245);
-      if (localObject2 != null) {
-        if (paramInt == 0)
-        {
-          localObject1 = "ask_text_list";
-          localJSONArray = ((agmq)localObject2).a("hb_exclusive", new String[] { "aio_red", localObject1 });
-          if (paramInt != 0) {
-            break label110;
-          }
-          localObject1 = jdField_a_of_type_ArrayOfJavaLangString;
-          label59:
-          localObject2 = localObject1;
-          if (localJSONArray != null)
-          {
-            if (localJSONArray.length() != 0) {
-              break label117;
-            }
-            localObject2 = localObject1;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      if ((localObject2 != null) && (localObject2.length > 0))
+      do
       {
-        return localObject2[(new java.util.Random().nextInt(localObject2.length + 0) + 0)];
-        localObject1 = "thx_text_list";
-        break;
-        label110:
-        localObject1 = b;
-        break label59;
-        label117:
-        localObject2 = new String[localJSONArray.length()];
-        paramInt = 0;
+        return;
+      } while ((!paramBoolean) || (!bbbd.a(paramString1, this.a.jdField_a_of_type_JavaLangString)));
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopPhotoController", 2, String.format("onGetTroopAvatar result=%d", new Object[] { Integer.valueOf(paramInt1) }));
       }
-      while (paramInt < localJSONArray.length())
-      {
-        localObject2[paramInt] = localJSONArray.optString(paramInt);
-        paramInt += 1;
-        continue;
-        return null;
-      }
-      continue;
-      localObject2 = null;
-    }
+    } while (paramInt1 != 0);
+    this.a.a(true);
   }
   
-  public boolean a()
+  protected void b(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
   {
-    Object localObject = agwj.a();
-    if (localObject != null)
-    {
-      localObject = (agmq)((QQAppInterface)localObject).getManager(245);
-      if (localObject != null) {
-        return ((agmq)localObject).a("hb_exclusive", 1, new String[] { "is_display_all" }) == 1;
-      }
+    if (!bbbd.a(paramString1, this.a.jdField_a_of_type_JavaLangString)) {
+      return;
     }
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopPhotoController", 2, String.format("onCmdTroopAvatar result=%d", new Object[] { Integer.valueOf(paramInt1) }));
+    }
+    this.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agqo
  * JD-Core Version:    0.7.0.1
  */

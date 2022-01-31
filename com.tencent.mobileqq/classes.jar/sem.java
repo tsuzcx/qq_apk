@@ -1,12 +1,12 @@
-import java.util.ArrayList;
-
-public abstract interface sem
+abstract interface sem
 {
-  public abstract void a(ArrayList<sdg> paramArrayList);
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet;
 
 import Wallet.PfaFriendRsp;
-import agln;
-import agwj;
-import android.content.Context;
-import bace;
+import agyc;
+import ahiy;
+import ahje;
+import bbdj;
 import com.qq.taf.jce.JceOutputStream;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
 
 public final class TopayManager$2
@@ -16,25 +14,25 @@ public final class TopayManager$2
 {
   public void run()
   {
-    if (agln.a == null) {
+    if (agyc.a == null) {
       return;
     }
     Object localObject1 = "";
-    Object localObject2 = agwj.a();
+    Object localObject2 = ahiy.a();
     if (localObject2 != null) {}
     try
     {
       localObject1 = ((QQAppInterface)localObject2).getCurrentAccountUin();
-      localObject2 = BaseApplicationImpl.getContext().getApplicationContext().getFilesDir() + "/QWallet/.tmp/topay_recommends" + (String)localObject1;
+      localObject2 = ahje.e + (String)localObject1;
       localObject1 = localObject2;
-      if (agln.b == 1)
+      if (agyc.b == 1)
       {
         localObject1 = localObject2;
-        if (agln.c > 0)
+        if (agyc.c > 0)
         {
           localObject1 = localObject2;
-          if (agln.c < 3) {
-            localObject1 = (String)localObject2 + "_" + agln.b + "_" + agln.c;
+          if (agyc.c < 3) {
+            localObject1 = (String)localObject2 + "_" + agyc.b + "_" + agyc.c;
           }
         }
       }
@@ -44,8 +42,8 @@ public final class TopayManager$2
       }
       localObject2 = new JceOutputStream();
       ((JceOutputStream)localObject2).setServerEncoding("utf-8");
-      agln.a.writeTo((JceOutputStream)localObject2);
-      bace.a(((JceOutputStream)localObject2).toByteArray(), (String)localObject1);
+      agyc.a.writeTo((JceOutputStream)localObject2);
+      bbdj.a(((JceOutputStream)localObject2).toByteArray(), (String)localObject1);
       return;
     }
     catch (Exception localException)

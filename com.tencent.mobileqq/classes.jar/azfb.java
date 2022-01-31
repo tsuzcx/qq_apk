@@ -1,24 +1,13 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
-class azfb
-  implements azwh
+public class azfb
+  implements DialogInterface.OnClickListener
 {
-  azfb(azez paramazez) {}
+  public azfb(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    if ((paramBitmap != null) && (azez.a(this.a) != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, String.format("onDecodeTaskCompleted uin=%s", new Object[] { paramString }));
-      }
-      if (!TextUtils.isEmpty(paramString)) {
-        azez.a(this.a).b(paramString);
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

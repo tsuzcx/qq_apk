@@ -1,126 +1,66 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.util.WeakReference;
 
-public class bjff
-  extends PagerAdapter
+class bjff
+  implements aysa
 {
-  public final SparseArray<View> a;
-  public ArrayList<FilterCategoryItem> a;
-  public final Map<Class<? extends View>, Queue<View>> a;
+  bjff(bjfe parambjfe) {}
   
-  public bjff(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager)
+  public void onResp(aysx paramaysx)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    if (i > 0) {
-      return paramInt % i;
-    }
-    return -1;
-  }
-  
-  @Nullable
-  public View a(int paramInt)
-  {
-    return (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
-  
-  public FilterCategoryItem a(int paramInt)
-  {
-    paramInt = a(paramInt);
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (FilterCategoryItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager.a);
-    notifyDataSetChanged();
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
+    bkfm localbkfm = (bkfm)paramaysx.a.a();
+    String str1 = localbkfm.e;
     if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "destroyItem position: " + paramInt);
+      QLog.d("QIMInformationPasterManager", 2, "onResp ,url is :" + str1 + " http status:" + paramaysx.c);
     }
-    View localView = (View)paramObject;
-    localView.removeCallbacks((Runnable)localView.getTag());
-    localView.clearAnimation();
-    paramViewGroup.removeView(localView);
-    paramObject = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localView.getClass());
-    paramViewGroup = paramObject;
-    if (paramObject == null)
+    Object localObject;
+    String str2;
+    if (paramaysx.c == 200)
     {
-      paramViewGroup = new LinkedList();
-      this.jdField_a_of_type_JavaUtilMap.put(localView.getClass(), paramViewGroup);
+      localObject = bjfa.a(localbkfm);
+      QLog.d("QIMInformationPasterManager", 1, "info paster path:" + (String)localObject);
+      str2 = bbdj.c((String)localObject);
+      if ((localbkfm.f == null) || (!localbkfm.f.equalsIgnoreCase(str2))) {}
     }
-    paramViewGroup.offer(localView);
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size() * 100;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "instantiateItem position: " + paramInt);
-    }
-    Object localObject1 = a(paramInt);
-    if (localObject1 == null)
+    for (boolean bool = bjfe.a(this.a).c(localbkfm);; bool = false)
     {
       if (QLog.isColorLevel()) {
-        QLog.w("VideoFilterViewPager", 2, "instantiateItem find data is null!");
+        QLog.d("QIMInformationPasterManager", 2, "onResp:" + paramaysx.c + ",isSuccess:" + bool);
       }
-      return null;
-    }
-    localObject1 = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localObject1.getClass());
-    if (localObject1 != null) {}
-    for (localObject1 = (View)((Queue)localObject1).poll();; localObject1 = null)
-    {
-      Object localObject2 = localObject1;
-      if (localObject1 == null)
+      paramaysx = ((ArrayList)bjfe.a(this.a).get(str1)).iterator();
+      while (paramaysx.hasNext())
       {
-        localObject2 = ((LayoutInflater)this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager.getContext().getSystemService("layout_inflater")).inflate(2131493108, null);
-        ((View)localObject2).setVisibility(8);
+        localObject = (WeakReference)paramaysx.next();
+        if (((WeakReference)localObject).get() != null) {
+          ((bjfd)((WeakReference)localObject).get()).a(bool, str1, localbkfm);
+        }
       }
-      paramViewGroup.addView((View)localObject2);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
-      return localObject2;
+      bbdj.a((String)localObject, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMInformationPasterManager", 2, "info paster res md5 error, res md5:" + localbkfm.f + ",file md5:" + str2);
+      }
     }
+    bjfe.a(this.a).remove(str1);
   }
   
-  public boolean isViewFromObject(View paramView, Object paramObject)
+  public void onUpdateProgeress(aysw arg1, long paramLong1, long paramLong2)
   {
-    return ((paramObject instanceof View)) && (paramObject == paramView);
+    String str = ((bkfm)???.a()).e;
+    float f = (float)(100L * paramLong1 / paramLong2);
+    synchronized (bjfe.a(this.a))
+    {
+      Iterator localIterator = ((ArrayList)bjfe.a(this.a).get(str)).iterator();
+      while (localIterator.hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if (localWeakReference.get() != null) {
+          ((bjfd)localWeakReference.get()).a(f, str, 0);
+        }
+      }
+    }
   }
 }
 

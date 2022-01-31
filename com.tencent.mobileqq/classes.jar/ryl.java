@@ -1,8 +1,13 @@
-import com.tencent.qphone.base.remote.FromServiceMsg;
-
-public abstract interface ryl
+class ryl
 {
-  public abstract void a(FromServiceMsg paramFromServiceMsg);
+  public String a;
+  public String b;
+  
+  ryl(ryj paramryj, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
 }
 
 

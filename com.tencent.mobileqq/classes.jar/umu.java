@@ -1,25 +1,24 @@
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.concurrent.atomic.AtomicLong;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tribe.async.dispatch.Dispatcher;
 
-public abstract class umu<T extends Dispatcher.Dispatchable>
-  extends QQUIEventReceiver<uma, T>
-  implements unf
+class umu
+  implements View.OnClickListener
 {
-  protected static AtomicLong a = new AtomicLong(0L);
-  public int a;
-  public long a;
-  public swl a;
-  public unh a;
-  public int b;
+  umu(umt paramumt) {}
   
-  public abstract int a(T paramT);
-  
-  public abstract void a(T paramT);
-  
-  public boolean b()
+  public void onClick(View paramView)
   {
-    return this.b > 0;
+    paramView = new umn();
+    if (this.a.a.a) {
+      this.a.a.a = false;
+    }
+    for (paramView.a = 0;; paramView.a = 1)
+    {
+      ste.a().dispatch(paramView);
+      return;
+      this.a.a.a = true;
+    }
   }
 }
 

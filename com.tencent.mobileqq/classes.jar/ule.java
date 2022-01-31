@@ -1,41 +1,10 @@
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
-import android.widget.ImageView;
+import android.graphics.Bitmap;
 
-public class ule
-  extends vpj<ulh>
+public abstract interface ule
 {
-  private LruCache<ulh, Drawable> a = new ulf(this, 5242880);
+  public abstract void a(String paramString, Bitmap paramBitmap);
   
-  public LruCache<ulh, Drawable> a()
-  {
-    return this.a;
-  }
-  
-  public vpk a(ImageView paramImageView, ulh paramulh)
-  {
-    return new uli(paramImageView, paramulh);
-  }
-  
-  public void a()
-  {
-    super.a();
-    b();
-  }
-  
-  public void b()
-  {
-    super.b();
-    try
-    {
-      this.a.evictAll();
-      return;
-    }
-    catch (Exception localException)
-    {
-      this.a = new ulg(this, 5242880);
-    }
-  }
+  public abstract void a(String paramString, Throwable paramThrowable);
 }
 
 

@@ -1,10 +1,6 @@
-import android.graphics.Bitmap;
-
 public abstract interface uld
 {
-  public abstract Bitmap a(Bitmap paramBitmap);
-  
-  public abstract String a();
+  public abstract void a(String paramString, int paramInt1, int paramInt2, ule paramule);
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.av.ui;
 
 import android.view.View;
-import lsl;
+import mde;
 
 public class EffectSettingBtn$2
   implements Runnable
@@ -10,10 +10,10 @@ public class EffectSettingBtn$2
   {
     if (!this.this$0.b)
     {
-      this.this$0.a.postDelayed(lsl.a(this.this$0), 1000L);
+      this.this$0.a.postDelayed(mde.a(this.this$0), 1000L);
       return;
     }
-    lsl.a(this.this$0);
+    mde.a(this.this$0);
   }
 }
 

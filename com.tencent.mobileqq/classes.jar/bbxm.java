@@ -1,39 +1,35 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.agent.OpenCardContainer;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import java.lang.ref.WeakReference;
 
 public class bbxm
-  implements bbya
+  extends aywl
 {
-  public bbxm(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  private WeakReference<View> a;
   
-  public void a()
+  public bbxm(View paramView)
   {
-    Intent localIntent = new Intent(this.a.getActivity(), Login.class);
-    localIntent.putExtra("key_req_src", 1);
-    localIntent.putExtra("is_first_login", true);
-    this.a.jdField_a_of_type_JavaLangString = null;
-    this.a.getActivity().startActivityForResult(localIntent, 1);
+    this.a = new WeakReference(paramView);
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public static void a(URLDrawable paramURLDrawable, View paramView)
   {
-    this.a.a(paramString, paramBoolean);
+    if (paramURLDrawable.getStatus() != 1) {
+      paramURLDrawable.setURLDrawableListener(new bbxm(paramView));
+    }
   }
   
-  public void b()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.c(this.a.jdField_a_of_type_JavaLangString);
-    if (this.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer != null) {
-      this.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.b();
+    paramURLDrawable = (View)this.a.get();
+    if (paramURLDrawable != null) {
+      paramURLDrawable.invalidate();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbxm
  * JD-Core Version:    0.7.0.1
  */

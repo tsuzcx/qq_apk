@@ -1,28 +1,9 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
-
 public class xbu
-  implements QQPermissionCallback
 {
-  public xbu(NewerGuidePlugin paramNewerGuidePlugin, BaseActivity paramBaseActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "handleSetAvatar deny permissions");
-    }
-    bafb.showPermissionSettingDialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, ajjy.a(2131641642));
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "handleSetAvatar grant permissions");
-    }
-    NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin);
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
 }
 
 

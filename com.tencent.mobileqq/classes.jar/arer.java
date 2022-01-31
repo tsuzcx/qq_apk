@@ -1,24 +1,19 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.loginwelcome.LoginUserGuideHelper;
+import android.content.Context;
+import java.util.concurrent.Callable;
 
-class arer
-  implements View.OnClickListener
+final class arer
+  implements Callable<areh>
 {
-  arer(areo paramareo, Activity paramActivity) {}
+  arer(Context paramContext, String paramString) {}
   
-  public void onClick(View paramView)
+  public areh a()
   {
-    LoginUserGuideHelper.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Areo.a.a, areo.a(this.jdField_a_of_type_Areo));
-    this.jdField_a_of_type_Areo.g();
-    awqx.b(this.jdField_a_of_type_Areo.a.a, "dc00898", "", "", "0X8009F4A", "0X8009F4A", 2, 0, "2", "", "", "");
+    return areq.b(this.jdField_a_of_type_AndroidContentContext, "Now", this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arer
  * JD-Core Version:    0.7.0.1
  */

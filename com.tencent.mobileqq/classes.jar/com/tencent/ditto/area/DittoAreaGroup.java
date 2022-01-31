@@ -171,9 +171,30 @@ public class DittoAreaGroup
           }
           localMotionEvent.recycle();
         }
+        else if ((localDittoArea == this.touchedArea) && (paramMotionEvent.getAction() == 1))
+        {
+          this.touchedArea.dispatchTouchEventOutside();
+          this.touchedArea = null;
+        }
       }
     }
     return super.dispatchTouchEvent(paramMotionEvent);
+  }
+  
+  protected void dispatchTouchEventOutside()
+  {
+    int i = this.mChildren.size() - 1;
+    if (i >= 0)
+    {
+      DittoArea localDittoArea = (DittoArea)this.mChildren.get(i);
+      if ((localDittoArea == null) || (localDittoArea.getVisibility() == 8)) {}
+      for (;;)
+      {
+        i -= 1;
+        break;
+        localDittoArea.dispatchTouchEventOutside();
+      }
+    }
   }
   
   public DittoArea findChildById(String paramString)

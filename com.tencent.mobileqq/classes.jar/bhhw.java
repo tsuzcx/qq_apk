@@ -1,16 +1,12 @@
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import android.content.Context;
 
-public class bhhw
-  extends bhht
+public abstract interface bhhw
 {
-  public bhhw(CaptureModeController paramCaptureModeController)
-  {
-    super(paramCaptureModeController);
-  }
+  public abstract void a(boolean paramBoolean, Context paramContext, bhhx parambhhx);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhhw
  * JD-Core Version:    0.7.0.1
  */

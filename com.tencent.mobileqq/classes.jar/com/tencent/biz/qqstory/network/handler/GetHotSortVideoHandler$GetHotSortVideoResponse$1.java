@@ -2,23 +2,23 @@ package com.tencent.biz.qqstory.network.handler;
 
 import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
-import sgi;
-import spn;
-import sqg;
-import sww;
-import swy;
-import swz;
+import ste;
+import tcj;
+import tdc;
+import tjs;
+import tju;
+import tjv;
 
 public class GetHotSortVideoHandler$GetHotSortVideoResponse$1
   implements Runnable
 {
-  public GetHotSortVideoHandler$GetHotSortVideoResponse$1(swy paramswy, ArrayList paramArrayList, swz paramswz) {}
+  public GetHotSortVideoHandler$GetHotSortVideoResponse$1(tju paramtju, ArrayList paramArrayList, tjv paramtjv) {}
   
   public void run()
   {
-    ((spn)sqg.a(25)).a(this.jdField_a_of_type_JavaUtilArrayList, sww.a(this.jdField_a_of_type_Swy.a), true);
-    this.jdField_a_of_type_Swz.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    sgi.a().dispatch(this.jdField_a_of_type_Swz);
+    ((tcj)tdc.a(25)).a(this.jdField_a_of_type_JavaUtilArrayList, tjs.a(this.jdField_a_of_type_Tju.a), true);
+    this.jdField_a_of_type_Tjv.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ste.a().dispatch(this.jdField_a_of_type_Tjv);
   }
 }
 

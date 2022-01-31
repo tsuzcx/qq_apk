@@ -1,24 +1,31 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import NS_COMM.COMM.StCommonExt;
-import java.util.List;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class wcm
+  extends SimpleJob
 {
-  public CertifiedAccountMeta.StFeed a;
-  public CertifiedAccountMeta.StUser a;
-  public CertifiedAccountRead.StGetMainPageRsp a;
-  public COMM.StCommonExt a;
-  public String a;
-  public List<CertifiedAccountMeta.StFeed> a;
-  public boolean a;
-  public String b;
-  public boolean b;
+  public wcm(SegmentList paramSegmentList, String paramString)
+  {
+    super(paramString);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  {
+    this.a.a.f();
+    if (SegmentList.a(this.a)) {
+      return null;
+    }
+    SegmentList.a(this.a).sendMessage(SegmentList.a(this.a).obtainMessage(2));
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wcm
  * JD-Core Version:    0.7.0.1
  */

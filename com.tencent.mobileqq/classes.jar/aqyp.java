@@ -1,53 +1,42 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.listentogether.ui.MusicPanelView;
+import android.content.Context;
+import com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder;
 
 public class aqyp
-  extends aqyg
 {
-  public aqyp(BaseChatPie paramBaseChatPie)
+  protected Context a;
+  protected aqyn a;
+  protected aqyn b;
+  protected aqyn c;
+  
+  public aqyp(Context paramContext)
   {
-    super(paramBaseChatPie);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public MusicPanelView a()
+  public aqyn a(int paramInt, aqyh paramaqyh)
   {
-    return new MusicPanelView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aedo)) {
-      ((aedo)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).bx();
+    switch (paramInt)
+    {
+    default: 
+      if (this.jdField_a_of_type_Aqyn == null) {
+        this.jdField_a_of_type_Aqyn = new aqyo(this.jdField_a_of_type_AndroidContentContext, 2130845041, paramaqyh);
+      }
+      return this.jdField_a_of_type_Aqyn;
+    case 2: 
+      if (this.c == null) {
+        this.c = new PayLikeFloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130842078, paramaqyh);
+      }
+      return this.c;
     }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public void f()
-  {
-    super.f();
-    this.jdField_a_of_type_Aqyo.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Aqyo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
-    if (this.jdField_a_of_type_Aqyo.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_Aqyo.jdField_a_of_type_JavaLangString = "";
+    if (this.b == null) {
+      this.b = new aqyo(this.jdField_a_of_type_AndroidContentContext, 2130845045, paramaqyh);
     }
-    this.jdField_a_of_type_Aqyn = new aqyn();
-    this.jdField_a_of_type_Aqyn.jdField_a_of_type_JavaLangString = "c2c_AIO";
-    this.jdField_a_of_type_Aqyn.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Aqyn.b = "";
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqyp
  * JD-Core Version:    0.7.0.1
  */

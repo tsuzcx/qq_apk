@@ -1,22 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.NegativeChildrenLayout;
+import android.os.Looper;
 
-public class beln
-  implements View.OnClickListener
+public final class beln
 {
-  public beln(NegativeChildrenLayout paramNegativeChildrenLayout) {}
+  public static final belo a;
   
-  public void onClick(View paramView)
+  static
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramView);
+    if (Looper.getMainLooper() != null) {}
+    for (Looper localLooper = Looper.getMainLooper();; localLooper = Looper.myLooper())
+    {
+      a = new belo(localLooper);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beln
  * JD-Core Version:    0.7.0.1
  */

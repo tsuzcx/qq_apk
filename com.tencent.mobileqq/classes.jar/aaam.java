@@ -1,36 +1,35 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
+import java.util.Observable;
 
 public class aaam
-  implements begw
+  extends Observable
 {
-  public aaam(AssociatedAccountActivity paramAssociatedAccountActivity, begr parambegr) {}
+  private static aaam a;
+  public HashMap<String, String> a;
   
-  public void OnClick(View paramView, int paramInt)
+  public static aaam a()
   {
-    switch (paramInt)
+    if (jdField_a_of_type_Aaam == null) {}
+    try
     {
-    default: 
-      return;
+      if (jdField_a_of_type_Aaam == null) {
+        jdField_a_of_type_Aaam = new aaam();
+      }
+      return jdField_a_of_type_Aaam;
     }
-    this.jdField_a_of_type_Begr.cancel();
-    paramView = (axat)this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app.getManager(61);
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a.iterator();
-    while (localIterator.hasNext()) {
-      paramView.c(((SubAccountInfo)localIterator.next()).subuin);
-    }
-    AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.getString(2131625248));
-    AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
+    finally {}
+  }
+  
+  public void a(HashMap<String, String> paramHashMap)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    setChanged();
+    notifyObservers();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aaam
  * JD-Core Version:    0.7.0.1
  */

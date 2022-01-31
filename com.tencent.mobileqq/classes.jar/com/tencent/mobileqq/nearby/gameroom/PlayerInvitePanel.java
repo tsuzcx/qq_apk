@@ -8,8 +8,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import asia;
-import asib;
+import atee;
+import atef;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class PlayerInvitePanel
   extends AdapterView<BaseAdapter>
 {
   private int jdField_a_of_type_Int = 5;
-  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new asib(this);
+  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new atef(this);
   private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener;
   private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
   private List<View> jdField_a_of_type_JavaUtilList = new LinkedList();
@@ -48,7 +48,7 @@ public class PlayerInvitePanel
     while (i < this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount())
     {
       View localView = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(i, a(), this);
-      localView.setOnClickListener(new asia(this, i));
+      localView.setOnClickListener(new atee(this, i));
       addViewInLayout(localView, i, new ViewGroup.LayoutParams(-2, -2));
       i += 1;
     }

@@ -1,25 +1,49 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
 public class lvg
-  implements View.OnClickListener
+  extends lur
 {
-  public lvg(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
-  
-  public void onClick(View paramView)
+  public void a(long paramLong)
   {
-    if (this.a.g()) {
-      return;
+    paramLong -= this.a;
+    int j = 0;
+    float f2 = 1.0F;
+    int i;
+    float f1;
+    if ((paramLong > 4631L) && (paramLong < 4964L))
+    {
+      i = (int)(255L * (paramLong - 4631L) / 333L);
+      f1 = (0.5F * (float)(paramLong + 4964L) - 4631.0F) / 333.0F;
     }
-    QLog.d(this.a.c, 1, "onClick R.id.qav_btn_accept_video");
-    mga.b(badq.h((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()), this.a.jdField_a_of_type_ComTencentAvVideoController.a().A);
-    this.a.e();
-    this.a.jdField_a_of_type_ComTencentAvVideoController.a().ao = true;
+    for (;;)
+    {
+      a(i);
+      b(f1);
+      return;
+      if ((paramLong >= 4964L) && (paramLong <= 5397L))
+      {
+        i = 255;
+        f1 = f2;
+      }
+      else
+      {
+        f1 = f2;
+        i = j;
+        if (paramLong > 5397L)
+        {
+          f1 = f2;
+          i = j;
+          if (paramLong < 5564L)
+          {
+            i = (int)(255L * (5564L - paramLong) / 167L);
+            f1 = (167.0F - (float)(5397L - paramLong) * 0.5F) / 167.0F;
+          }
+        }
+      }
+    }
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    a(paramInt1 * 361 / 1500, paramInt2 - paramInt1 * 968 / 1500, paramInt1 * 1139 / 1500, paramInt2 - paramInt1 * 536 / 1500);
   }
 }
 

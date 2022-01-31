@@ -1,158 +1,71 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.portal.PortalManager;
-import com.tencent.mobileqq.portal.RedPacketServlet;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class attk
-  extends BroadcastReceiver
+class attk
+  implements View.OnClickListener
 {
-  private attk(PortalManager paramPortalManager) {}
+  attk(atte paramatte) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    int j = 1;
-    int i = 1;
-    int k = paramIntent.getIntExtra("portal_type_key", -1);
-    int m = paramIntent.getIntExtra("bc_seq", -1);
-    paramContext = paramIntent.getStringExtra("portal_agrs");
-    if (QLog.isColorLevel()) {
-      QLog.i("PortalManager", 2, "PortalSwictherReceiver, " + paramIntent.getExtras());
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.getIntExtra("param_mode", 0) == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard == null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.finish();
     }
-    Object localObject;
-    int n;
-    switch (k)
+    do
     {
-    default: 
-    case 1010: 
-    case 1011: 
       do
       {
         return;
-        try
-        {
-          paramContext = new JSONObject();
-          paramIntent = paramContext.put("errorCode", 0);
-          if (this.a.a() != -1)
-          {
-            paramIntent.put("result", i);
-            PortalManager.a(this.a, k, paramContext.toString(), m);
-            return;
-          }
-        }
-        catch (JSONException paramContext)
-        {
-          for (;;)
-          {
-            paramContext.printStackTrace();
-            try
-            {
-              paramContext = new JSONObject();
-              paramContext.put("errorCode", -1);
-              PortalManager.a(this.a, k, paramContext.toString(), m);
-              return;
-            }
-            catch (JSONException paramContext)
-            {
-              paramContext.printStackTrace();
-              return;
-            }
-            i = 0;
-          }
-          if (!TextUtils.isEmpty(paramContext)) {
-            break;
-          }
-          PortalManager.a(this.a, k, m, null, -1, "params is null");
-          return;
-        }
-        catch (Exception paramContext) {}
-      } while (!QLog.isColorLevel());
-      QLog.e("PortalManager", 2, "", paramContext);
-      return;
-      paramContext = new JSONObject(paramContext);
-      paramIntent = paramContext.getString("key");
-      localObject = attn.b(paramIntent);
-      localObject = babh.l(PortalManager.a(this.a), (String)localObject);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        paramContext.put("errorCode", 0).put("result", localObject).put("key", paramIntent);
-      }
-      for (;;)
+      } while (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e != 1);
+      bfmr.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
+      if (!bbev.d(BaseApplication.getContext()))
       {
-        PortalManager.a(this.a, k, paramContext.toString(), m);
-        return;
-        paramContext.put("errorCode", -1).put("key", paramIntent);
-      }
-    case 1008: 
-      if (TextUtils.isEmpty(paramContext))
-      {
-        PortalManager.a(this.a, k, m, null, -1, "params is null");
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getString(2131694609));
         return;
       }
-      paramContext = new JSONObject(paramContext);
-      int i1 = paramContext.getInt("type");
-      n = paramContext.getInt("count");
-      i = j;
-      switch (i1)
-      {
-      }
-      break;
-    }
-    for (;;)
+    } while (!atte.a(this.a));
+    this.a.b();
+    boolean bool1 = this.a.a();
+    boolean bool2 = ((Boolean)atbg.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.getCurrentAccountUin(), "nearby_profile_edit_isFirst", Boolean.valueOf(true))).booleanValue();
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.godFlag) && (bool1))
     {
-      RedPacketServlet.a(PortalManager.a(this.a), i, n, k, m);
+      paramView = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getString(2131694597, new Object[] { this.a.jdField_a_of_type_JavaLangString });
+      paramView = bbcv.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, paramView, 0, 0, null, null);
+      paramView.setPositiveButton(ajyc.a(2131707270), new attl(this, paramView));
+      paramView.setNegativeButton(ajyc.a(2131707265), new attm(this, paramView));
+      paramView.show();
       return;
-      if (TextUtils.isEmpty(paramContext))
-      {
-        PortalManager.a(this.a, k, m, null, -1, "params is null");
-        return;
-      }
-      paramContext = new JSONObject(paramContext).getString("key");
-      if (!TextUtils.isEmpty(paramContext))
-      {
-        paramIntent = attn.b(paramContext);
-        localObject = PortalManager.a(this.a).a(paramIntent, false);
-        if (localObject != null)
-        {
-          paramIntent = attn.a((Bitmap)localObject);
-          localObject = new JSONObject();
-          ((JSONObject)localObject).put("errorCode", 0);
-          ((JSONObject)localObject).put("key", paramContext);
-          ((JSONObject)localObject).put("result", paramIntent);
-          PortalManager.a(this.a, k, ((JSONObject)localObject).toString(), m);
-          return;
-        }
-        localObject = new attj();
-        ((attj)localObject).jdField_a_of_type_JavaLangString = paramContext;
-        ((attj)localObject).b = k;
-        ((attj)localObject).jdField_a_of_type_Int = m;
-        this.a.a.put(paramIntent, localObject);
-        if ((PortalManager.a(this.a).a(paramIntent, true) != null) || (!QLog.isColorLevel())) {
-          break;
-        }
-        paramIntent = babh.j(PortalManager.a(this.a), String.valueOf(paramIntent));
-        QLog.d("PortalManager", 2, "昵称为" + paramIntent + "，本地不存在头像，key = " + paramContext);
-        return;
-      }
-      PortalManager.a(this.a, k, m, null, -1, "key is null");
-      return;
-      i = j;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
     }
+    if ((bool1) && (bool2))
+    {
+      paramView = ajyc.a(2131707294);
+      paramView = bbcv.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, paramView, 0, 0, null, null);
+      paramView.setPositiveButton(ajyc.a(2131707316), new attn(this, paramView));
+      paramView.setNegativeButton(ajyc.a(2131707349), new atto(this, paramView));
+      paramView.show();
+      atbg.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.getCurrentAccountUin(), "nearby_profile_edit_isFirst", Boolean.valueOf(false));
+      return;
+    }
+    if (bool1)
+    {
+      this.a.e();
+      paramView = new Intent("tribe_profile_edit_finish");
+      BaseApplicationImpl.getApplication().sendBroadcast(paramView);
+      return;
+    }
+    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, "", "", "", "");
+    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     attk
  * JD-Core Version:    0.7.0.1
  */

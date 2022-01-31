@@ -1,82 +1,140 @@
-import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.PicMessageExtraData;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadChnConfigInfo;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amye
+  implements ampd<String>, amxq
 {
-  public static void a(Intent paramIntent, atqd paramatqd)
+  static boolean jdField_a_of_type_Boolean = true;
+  static boolean b = true;
+  private long jdField_a_of_type_Long = 20971520L;
+  private ExcitingTransferUploadChnConfigInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
+  public String a;
+  private boolean c;
+  
+  public amye()
   {
-    paramatqd.j = paramIntent.getStringExtra("doutuBigMd5");
-    paramatqd.d = paramIntent.getLongExtra("doutuBigFileSize", 0L);
-    paramatqd.k = paramIntent.getStringExtra("doutuThumbMD5");
-    paramatqd.l = paramIntent.getStringExtra("doutuSupplierName");
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public static void a(axvt paramaxvt, axyp paramaxyp)
+  private void a()
   {
-    if (paramaxvt.p)
+    this.jdField_a_of_type_Long = 20971520L;
+    this.c = false;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
+  }
+  
+  private void a(JSONObject paramJSONObject)
+  {
+    try
     {
-      paramaxyp.jdField_a_of_type_Long = paramaxvt.f;
-      if (paramaxvt.n != null) {
-        paramaxyp.jdField_a_of_type_ArrayOfByte = bach.a(paramaxvt.n);
-      }
-      paramaxyp.e = 2;
-    }
-  }
-  
-  public static void a(MessageRecord paramMessageRecord, atqd paramatqd)
-  {
-    paramMessageRecord.saveExtInfoToExtStr("doutu_big_md5", paramatqd.j);
-    paramMessageRecord.saveExtInfoToExtStr("doutu_big_file_size", String.valueOf(paramatqd.d));
-    paramMessageRecord.saveExtInfoToExtStr("doutu_thumb_md5", String.valueOf(paramatqd.k));
-    paramMessageRecord.saveExtInfoToExtStr("doutu_supplier_name", paramatqd.l);
-  }
-  
-  public static void a(MessageRecord paramMessageRecord, axvt paramaxvt, int paramInt)
-  {
-    PicMessageExtraData localPicMessageExtraData = new PicMessageExtraData();
-    if (paramInt == 1044) {}
-    for (paramInt = 3;; paramInt = 4)
-    {
-      localPicMessageExtraData.imageBizType = paramInt;
-      localPicMessageExtraData.doutuSupplier = paramMessageRecord.getExtInfoFromExtStr("doutu_supplier_name");
-      if ((paramMessageRecord instanceof MessageForPic)) {
-        ((MessageForPic)paramMessageRecord).picExtraData = localPicMessageExtraData;
-      }
-      long l = Long.valueOf(paramMessageRecord.getExtInfoFromExtStr("doutu_big_file_size")).longValue();
-      paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("doutu_big_md5");
-      if ((l > 0L) && (paramMessageRecord != null) && (paramMessageRecord.length() > 0))
+      this.c = paramJSONObject.getBoolean("enableaqq");
+      paramJSONObject = paramJSONObject.getJSONObject("config");
+      if (paramJSONObject != null)
       {
-        paramaxvt.p = true;
-        paramaxvt.f = l;
-        paramaxvt.n = paramMessageRecord;
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uMuliFileSizeLimit = paramJSONObject.getLong("mulifilesizelimit");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uMaxChannelNum = paramJSONObject.getInt("maxchannelnum");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uPieceSize = paramJSONObject.getInt("piecesize");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostTotalUseCount = paramJSONObject.getInt("maxeachhosttotalusecount");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostErrorCount = paramJSONObject.getInt("maxeachhosterrorcount");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostParallelUseCount = paramJSONObject.getInt("maxeachhostparallelusecount");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nConnectTimeout = paramJSONObject.getLong("connecttimeout");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nDataTimeout = paramJSONObject.getLong("datatimeout");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nTotoalDataTimeout = paramJSONObject.getLong("totoaldatatimeout");
+        this.jdField_a_of_type_Long = paramJSONObject.getLong("limitedsize");
       }
-      if (localPicMessageExtraData.imageBizType != 4) {
-        break label180;
-      }
-      paramMessageRecord = BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramMessageRecord instanceof AppInterface))
+      for (;;)
       {
-        paramMessageRecord = aeor.a((AppInterface)paramMessageRecord).b();
-        if (!TextUtils.isEmpty(paramMessageRecord)) {
-          break;
-        }
+        QLog.i("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "parse Exciting-Group-Upload config: enable:" + this.c + " LimitedSize:" + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.toString());
+        return;
+        this.jdField_a_of_type_Long = 20971520L;
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
       }
       return;
     }
-    localPicMessageExtraData.textSummary = ("[" + paramMessageRecord + "]");
-    return;
-    label180:
-    localPicMessageExtraData.textSummary = BaseApplicationImpl.getApplication().getString(2131625713);
+    catch (JSONException paramJSONObject)
+    {
+      QLog.e("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramJSONObject));
+    }
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public ExcitingTransferUploadChnConfigInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    int k = 0;
+    this.jdField_a_of_type_JavaLangString = paramString.toLowerCase();
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      QLog.w("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "configContent is empty, use default value");
+      a();
+      return;
+    }
+    try
+    {
+      paramString = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      if (paramString.length() == 0)
+      {
+        QLog.w("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "configContent is empty json, use default value");
+        a();
+        return;
+      }
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramString));
+      return;
+    }
+    JSONArray localJSONArray = paramString.names();
+    int i = 0;
+    for (;;)
+    {
+      int j = k;
+      if (i < localJSONArray.length())
+      {
+        Object localObject = localJSONArray.getString(i).trim();
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = paramString.optJSONObject((String)localObject).getJSONObject("upload");
+          if (localObject != null)
+          {
+            a((JSONObject)localObject);
+            j = 1;
+          }
+        }
+      }
+      else
+      {
+        if (j != 0) {
+          break;
+        }
+        QLog.w("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "configContent no Exciting-Group-Upload config, use default value");
+        a();
+        return;
+      }
+      i += 1;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amye
  * JD-Core Version:    0.7.0.1
  */

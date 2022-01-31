@@ -1,26 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import java.util.List;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahtp
-  extends ajuc
+  implements axhw
 {
-  public ahtp(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public ahtp(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public void a(Exception paramException)
   {
-    if ((!TextUtils.isEmpty(this.a.b)) && (!this.a.b.equals(paramString))) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("FlowCameraActivity", 2, "[onCameraException]", paramException);
     }
-    ThreadManager.post(new TroopMemberListInnerFrame.7.1(this, paramList), 5, null, true);
+  }
+  
+  public void a(RuntimeException paramRuntimeException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahtp
  * JD-Core Version:    0.7.0.1
  */

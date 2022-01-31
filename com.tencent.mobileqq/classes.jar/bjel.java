@@ -1,16 +1,41 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import java.lang.ref.WeakReference;
 
-public class bjel
-  implements View.OnTouchListener
+class bjel
+  implements bjfd
 {
-  public bjel(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  private float jdField_a_of_type_Float;
+  private WeakReference<bjej> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bjel(bjej parambjej)
   {
-    return this.a.a(paramView, paramMotionEvent);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambjej);
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public void a(float paramFloat, String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(boolean paramBoolean, String paramString, bkfm parambkfm)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Float = 1.0F;
+      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
+        ((bjej)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b();
+      }
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_Float = 0.0F;
+    } while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
+    ((bjej)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(0);
   }
 }
 

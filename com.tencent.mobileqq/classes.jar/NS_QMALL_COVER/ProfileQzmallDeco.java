@@ -8,11 +8,12 @@ public final class ProfileQzmallDeco
   extends JceStruct
 {
   static QzmallAvatar cache_stAvatar;
+  static UserCmShowQzoneTrack cache_stCmShowQzoneTrack = new UserCmShowQzoneTrack();
   static QzmallCustomBanner cache_stCustomBanner;
   static QzmallCustomNavi cache_stCustomNavi = new QzmallCustomNavi();
   static QzmallCustomPlayer cache_stCustomPlayer;
   static QzmallCustomPraise cache_stCustomPraise = new QzmallCustomPraise();
-  static CustomTrackDeco cache_stCustomTrack = new CustomTrackDeco();
+  static CustomTrackDeco cache_stCustomTrack;
   static QzmallCustomVip cache_stCustomVip;
   static QzmallFacade cache_stFacade;
   static FacadeDIY cache_stFacadeDIY;
@@ -23,6 +24,7 @@ public final class ProfileQzmallDeco
   static DataForQboss cache_stQbossData;
   static ActYellowDiamond cache_stYellowDiamond;
   public QzmallAvatar stAvatar;
+  public UserCmShowQzoneTrack stCmShowQzoneTrack;
   public QzmallCustomBanner stCustomBanner;
   public QzmallCustomNavi stCustomNavi;
   public QzmallCustomPlayer stCustomPlayer;
@@ -52,11 +54,12 @@ public final class ProfileQzmallDeco
     cache_stQbossData = new DataForQboss();
     cache_stFeedNavi = new FeedNavi();
     cache_stFacadeDIY = new FacadeDIY();
+    cache_stCustomTrack = new CustomTrackDeco();
   }
   
   public ProfileQzmallDeco() {}
   
-  public ProfileQzmallDeco(QzmallCustomNavi paramQzmallCustomNavi, QzmallCustomPraise paramQzmallCustomPraise, QzmallCustomPlayer paramQzmallCustomPlayer, QzmallCustomBanner paramQzmallCustomBanner, QzmallAvatar paramQzmallAvatar, QzmallFloat paramQzmallFloat, QzmallFeedSkin paramQzmallFeedSkin, QzmallCustomVip paramQzmallCustomVip, QzmallFacade paramQzmallFacade, ActYellowDiamond paramActYellowDiamond, PolymorphicPraise paramPolymorphicPraise, DataForQboss paramDataForQboss, FeedNavi paramFeedNavi, FacadeDIY paramFacadeDIY, CustomTrackDeco paramCustomTrackDeco)
+  public ProfileQzmallDeco(QzmallCustomNavi paramQzmallCustomNavi, QzmallCustomPraise paramQzmallCustomPraise, QzmallCustomPlayer paramQzmallCustomPlayer, QzmallCustomBanner paramQzmallCustomBanner, QzmallAvatar paramQzmallAvatar, QzmallFloat paramQzmallFloat, QzmallFeedSkin paramQzmallFeedSkin, QzmallCustomVip paramQzmallCustomVip, QzmallFacade paramQzmallFacade, ActYellowDiamond paramActYellowDiamond, PolymorphicPraise paramPolymorphicPraise, DataForQboss paramDataForQboss, FeedNavi paramFeedNavi, FacadeDIY paramFacadeDIY, CustomTrackDeco paramCustomTrackDeco, UserCmShowQzoneTrack paramUserCmShowQzoneTrack)
   {
     this.stCustomNavi = paramQzmallCustomNavi;
     this.stCustomPraise = paramQzmallCustomPraise;
@@ -73,6 +76,7 @@ public final class ProfileQzmallDeco
     this.stFeedNavi = paramFeedNavi;
     this.stFacadeDIY = paramFacadeDIY;
     this.stCustomTrack = paramCustomTrackDeco;
+    this.stCmShowQzoneTrack = paramUserCmShowQzoneTrack;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -92,6 +96,7 @@ public final class ProfileQzmallDeco
     this.stFeedNavi = ((FeedNavi)paramJceInputStream.read(cache_stFeedNavi, 12, false));
     this.stFacadeDIY = ((FacadeDIY)paramJceInputStream.read(cache_stFacadeDIY, 13, false));
     this.stCustomTrack = ((CustomTrackDeco)paramJceInputStream.read(cache_stCustomTrack, 14, false));
+    this.stCmShowQzoneTrack = ((UserCmShowQzoneTrack)paramJceInputStream.read(cache_stCmShowQzoneTrack, 15, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -140,6 +145,9 @@ public final class ProfileQzmallDeco
     }
     if (this.stCustomTrack != null) {
       paramJceOutputStream.write(this.stCustomTrack, 14);
+    }
+    if (this.stCmShowQzoneTrack != null) {
+      paramJceOutputStream.write(this.stCmShowQzoneTrack, 15);
     }
   }
 }

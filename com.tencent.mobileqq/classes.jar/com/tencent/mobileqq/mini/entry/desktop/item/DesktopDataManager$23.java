@@ -11,17 +11,17 @@ class DesktopDataManager$23
   
   public void run()
   {
-    Iterator localIterator = DesktopDataManager.access$1300(this.this$0).iterator();
+    Iterator localIterator = DesktopDataManager.access$1500(this.this$0).iterator();
     while (localIterator.hasNext())
     {
       DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)localIterator.next();
-      if (((localDesktopItemInfo instanceof DesktopAppInfo)) && (((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo.appId.equals(this.val$appId))) {
+      if (((localDesktopItemInfo instanceof DesktopAppInfo)) && (localDesktopItemInfo.getModuleType() == 3) && (((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo.appId.equals(this.val$appId))) {
         localIterator.remove();
       }
     }
-    DesktopDataManager.access$1900(DesktopDataManager.access$1300(this.this$0));
-    if (DesktopDataManager.access$1500(this.this$0) != null) {
-      DesktopDataManager.access$1500(this.this$0).onDataChanged();
+    DesktopDataManager.access$1800(DesktopDataManager.access$1500(this.this$0));
+    if (DesktopDataManager.access$1400(this.this$0) != null) {
+      DesktopDataManager.access$1400(this.this$0).onDataChanged();
     }
   }
 }

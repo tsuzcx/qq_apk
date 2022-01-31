@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agem;
+import agqk;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
 
 public class TroopPhotoController$4
   implements Runnable
 {
-  public TroopPhotoController$4(agem paramagem, TroopManager paramTroopManager, TroopInfo paramTroopInfo) {}
+  public TroopPhotoController$4(agqk paramagqk, TroopManager paramTroopManager, TroopInfo paramTroopInfo) {}
   
   public void run()
   {

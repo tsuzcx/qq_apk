@@ -1,18 +1,18 @@
 package com.tencent.qqmini.sdk.minigame;
 
-import bdoy;
-import bdoz;
-import bdpa;
+import beug;
+import beuh;
+import beui;
 
 public class GameRuntime$1$1
   implements Runnable
 {
-  public GameRuntime$1$1(bdpa parambdpa, float paramFloat) {}
+  public GameRuntime$1$1(beui parambeui, float paramFloat) {}
   
   public void run()
   {
-    if (bdoz.a(this.jdField_a_of_type_Bdpa.a) != null) {
-      bdoz.a(this.jdField_a_of_type_Bdpa.a).a(this.jdField_a_of_type_Float);
+    if (beuh.a(this.jdField_a_of_type_Beui.a) != null) {
+      beuh.a(this.jdField_a_of_type_Beui.a).a(this.jdField_a_of_type_Float);
     }
   }
 }

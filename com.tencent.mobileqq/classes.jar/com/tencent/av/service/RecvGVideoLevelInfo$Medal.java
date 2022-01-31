@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.qphone.base.util.QLog;
-import lnh;
+import lxz;
 
 public class RecvGVideoLevelInfo$Medal
   implements Parcelable
 {
-  public static final Parcelable.Creator<Medal> CREATOR = new lnh();
+  public static final Parcelable.Creator<Medal> CREATOR = new lxz();
   public int a;
   public String a;
   public int b;

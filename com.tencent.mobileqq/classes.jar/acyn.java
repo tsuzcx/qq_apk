@@ -1,27 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.PAMessage;
 
 public class acyn
-  implements acxg
 {
-  private BaseChatPie a;
+  public static LruCache<String, PAMessage> a = new LruCache(50);
   
-  public acyn(BaseChatPie paramBaseChatPie)
+  public static PAMessage a(MessageRecord paramMessageRecord)
   {
-    this.a = paramBaseChatPie;
+    return a(paramMessageRecord.frienduin, paramMessageRecord.shmsgseq, paramMessageRecord.msgUid, paramMessageRecord.msgData);
   }
   
-  public void a(int paramInt)
+  public static PAMessage a(String paramString, long paramLong1, long paramLong2, byte[] paramArrayOfByte)
   {
-    String str = this.a.c();
-    if (!TextUtils.isEmpty(str)) {
-      bara.a(this.a.a).a(str);
+    String str = a(paramString, paramLong1, paramLong2);
+    PAMessage localPAMessage = (PAMessage)a.get(str);
+    paramString = localPAMessage;
+    if (localPAMessage == null)
+    {
+      paramArrayOfByte = seq.a(paramArrayOfByte);
+      paramString = paramArrayOfByte;
+      if (paramArrayOfByte != null)
+      {
+        a.put(str, paramArrayOfByte);
+        paramString = paramArrayOfByte;
+      }
     }
+    return paramString;
   }
   
-  public int[] a()
+  private static String a(String paramString, long paramLong1, long paramLong2)
   {
-    return new int[6];
+    return paramString + "&" + paramLong1 + "&" + paramLong2;
   }
 }
 

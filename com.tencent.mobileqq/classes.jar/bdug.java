@@ -1,31 +1,21 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.runtime.app.AppRuntimeLoader;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-public final class bdug
-  implements bdlr<AppRuntimeLoader>
+public class bdug
+  implements View.OnClickListener
 {
-  public AppRuntimeLoader a(Context paramContext, Bundle paramBundle)
-  {
-    return new AppRuntimeLoader(paramContext);
-  }
+  public bdug(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public void a(Bundle paramBundle) {}
-  
-  public boolean a(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    return true;
-  }
-  
-  public boolean a(MiniAppInfo paramMiniAppInfo)
-  {
-    return (paramMiniAppInfo != null) && (paramMiniAppInfo.isEngineTypeMiniApp());
+    bazo.a(this.a, this.a.jdField_a_of_type_AndroidWidgetImageView, this.a.jdField_a_of_type_Auuw.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bdug
  * JD-Core Version:    0.7.0.1
  */

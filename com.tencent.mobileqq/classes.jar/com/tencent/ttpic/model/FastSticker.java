@@ -13,6 +13,7 @@ import com.tencent.aekit.plugin.core.AEDetectorType;
 import com.tencent.aekit.plugin.core.AIActionCounter;
 import com.tencent.aekit.plugin.core.AIActionCounter.AI_TYPE;
 import com.tencent.aekit.plugin.core.AIAttr;
+import com.tencent.aekit.plugin.core.HotAreaActionCounter;
 import com.tencent.aekit.plugin.core.IAIDataClassifier;
 import com.tencent.aekit.plugin.core.PTHandAttr;
 import com.tencent.ttpic.baseutils.audio.PlayerUtil;
@@ -52,6 +53,7 @@ public abstract class FastSticker
   protected int height;
   private ArrayList<RedPacketPosition> hotAreaPositions;
   protected boolean isImageReady;
+  private boolean isItemTriggerCountOnce = false;
   protected StickerItem item;
   private int lastImageIndex = -1;
   private boolean mAudioPause;
@@ -69,7 +71,7 @@ public abstract class FastSticker
   protected RenderParam renderParam = new RenderParam();
   private int[] tex = new int[1];
   protected TriggerCtrlItem triggerCtrlItem;
-  private String triggerState;
+  private ArrayList<String> triggerState;
   private StickerItem.ValueRange triggerStateRange;
   protected boolean triggered = false;
   protected int width;
@@ -417,89 +419,103 @@ public abstract class FastSticker
     PTHandAttr localPTHandAttr = (PTHandAttr)this.aiAttr.getAvailableData(AEDetectorType.HAND.value);
     this.triggerCtrlItem.getTriggeredStatus(paramPTDetectInfo);
     label124:
-    boolean bool1;
-    label145:
-    label159:
     int i;
-    label208:
-    int j;
+    label154:
+    label168:
+    label217:
+    boolean bool2;
+    boolean bool1;
     if (this.item.activateTriggerTotalCount != 0)
     {
+      boolean bool5;
+      boolean bool6;
       if (this.item.preTriggerType != PTFaceAttr.PTExpression.ALWAYS.value)
       {
         if (VideoMaterialUtil.isFaceTriggerType(this.item.preTriggerType)) {
           if (!((Set)localObject2).contains(Integer.valueOf(this.item.preTriggerType))) {
-            break label525;
+            break label605;
           }
         }
       }
       else
       {
-        bool1 = VideoMaterialUtil.isFaceTriggerType(this.item.countTriggerType);
-        if (!bool1) {
-          break label530;
+        bool5 = VideoMaterialUtil.isFaceTriggerType(this.item.countTriggerType);
+        bool6 = VideoMaterialUtil.isHotAreaTriggerItem(this.item);
+        if (!bool5) {
+          break label611;
         }
         localObject2 = localObject1;
         if (localObject2 == null) {
-          break label525;
+          break label605;
         }
-        if (!bool1) {
-          break label537;
+        if (!bool5) {
+          break label618;
         }
         localObject2 = localObject1;
         if (!((Map)localObject2).containsKey(Integer.valueOf(this.item.countTriggerType))) {
-          break label542;
+          break label623;
         }
-        if (!bool1) {
-          break label544;
+        if (!bool5) {
+          break label625;
         }
         i = ((FaceActionCounter)((Map)localObject1).get(Integer.valueOf(this.item.countTriggerType))).count;
         if (i % this.item.activateTriggerTotalCount != this.item.activateTriggerCount) {
-          break label525;
+          break label605;
         }
-        if ((this.item.playCount != 0) && (this.playCount >= this.item.playCount)) {
-          break label571;
+        if (!bool6) {
+          break label664;
         }
-        j = 1;
-        label253:
-        i = j;
+        bool2 = TriggerUtil.isGestureTriggered(localPTHandAttr, this.item.preTriggerType, this.item.triggerHandPoint, this.item.triggerArea, paramPTDetectInfo.aiAttr);
+        bool1 = bool2;
+        if (this.item.activateTriggerCountOnce == 1)
+        {
+          bool1 = bool2;
+          if (!this.isItemTriggerCountOnce)
+          {
+            HotAreaActionCounter.updateCount();
+            this.isItemTriggerCountOnce = true;
+            bool1 = bool2;
+          }
+        }
+        label311:
+        bool2 = bool1;
         if (!VideoFilterList.sIsUseFreezeFrame)
         {
           if (this.playCount >= this.item.playCount) {
-            break label587;
+            break label728;
           }
-          if (!bool1) {
-            break label576;
+          if (!bool5) {
+            break label700;
           }
-          i = j;
+          bool2 = bool1;
           if (paramPTDetectInfo.faceDetector != null)
           {
             paramPTDetectInfo.faceDetector.lockActionCounter();
-            i = j;
+            bool2 = bool1;
           }
         }
       }
       for (;;)
       {
-        label300:
-        if ((i == 0) || (!isRangeValueHit())) {
-          break label977;
+        label364:
+        if ((!bool2) || (!isRangeValueHit())) {
+          break label1161;
         }
         bool1 = true;
-        label314:
+        label379:
         if (this.triggerCtrlItem.isTimeTriggered(paramPTDetectInfo)) {
           bool1 = true;
         }
-        boolean bool2 = bool1;
+        bool2 = bool1;
         if (this.triggerState != null)
         {
           bool2 = bool1;
-          if (!this.triggerState.equals("")) {
+          if (this.triggerState.size() > 0) {
             bool2 = isStateTriggered();
           }
         }
         if (!bool2) {
-          break label983;
+          break label1167;
         }
         bool1 = bool4;
         if (!this.triggered)
@@ -510,53 +526,76 @@ public abstract class FastSticker
           bool1 = true;
         }
         this.triggered = true;
-        label483:
+        label545:
         this.triggerCtrlItem.updateTriggerTime(paramPTDetectInfo.timestamp, this.triggered);
         if (this.triggered) {
-          break label1023;
+          break label1207;
         }
         destroyAudio();
         return;
-        if (TriggerUtil.isGestureTriggered(localPTHandAttr, this.item.preTriggerType)) {
+        if (TriggerUtil.isGestureTriggered(localPTHandAttr, this.item.preTriggerType, this.item.triggerHandPoint, this.item.triggerArea, paramPTDetectInfo.aiAttr)) {
           break label124;
         }
-        label525:
-        i = 0;
+        label605:
+        bool2 = false;
         continue;
-        label530:
+        label611:
         localObject2 = localMap;
-        break label145;
-        label537:
+        break label154;
+        label618:
         localObject2 = localMap;
-        break label159;
-        label542:
+        break label168;
+        label623:
         break;
-        label544:
+        label625:
+        if (bool6)
+        {
+          i = HotAreaActionCounter.getCount();
+          break label217;
+        }
         i = ((Integer)localMap.get(Integer.valueOf(this.item.countTriggerType))).intValue();
-        break label208;
-        label571:
-        j = 0;
-        break label253;
-        label576:
-        AIActionCounter.lockAction(AIActionCounter.AI_TYPE.HAND);
-        i = j;
-        continue;
-        label587:
-        i = j;
-        if (this.item.playCount > 0) {
-          if (bool1)
-          {
-            i = j;
-            if (paramPTDetectInfo.faceDetector != null)
+        break label217;
+        label664:
+        if ((this.item.playCount == 0) || (this.playCount < this.item.playCount))
+        {
+          bool1 = true;
+          break label311;
+        }
+        bool1 = false;
+        break label311;
+        label700:
+        if (bool6)
+        {
+          HotAreaActionCounter.lockUpdate();
+          bool2 = bool1;
+        }
+        else
+        {
+          AIActionCounter.lockAction(AIActionCounter.AI_TYPE.HAND);
+          bool2 = bool1;
+          continue;
+          label728:
+          bool2 = bool1;
+          if (this.item.playCount > 0) {
+            if (bool5)
             {
-              paramPTDetectInfo.faceDetector.clearActionCounter();
-              i = j;
+              bool2 = bool1;
+              if (paramPTDetectInfo.faceDetector != null)
+              {
+                paramPTDetectInfo.faceDetector.clearActionCounter();
+                bool2 = bool1;
+              }
             }
-          }
-          else
-          {
-            AIActionCounter.clearAction(AIActionCounter.AI_TYPE.HAND);
-            i = j;
+            else if (bool6)
+            {
+              HotAreaActionCounter.lockUpdate();
+              bool2 = bool1;
+            }
+            else
+            {
+              AIActionCounter.clearAction(AIActionCounter.AI_TYPE.HAND);
+              bool2 = bool1;
+            }
           }
         }
       }
@@ -570,8 +609,8 @@ public abstract class FastSticker
     {
       if ((bool1) || (this.mIsRenderForBitmap))
       {
-        i = 1;
-        break label300;
+        bool2 = true;
+        break label364;
         if (VideoMaterialUtil.isTouchTriggerType(this.item.getTriggerTypeInt()))
         {
           bool1 = ((Set)localObject2).contains(Integer.valueOf(this.item.getTriggerTypeInt()));
@@ -585,7 +624,7 @@ public abstract class FastSticker
             continue;
           }
           if (localList.isEmpty()) {
-            break label1082;
+            break label1266;
           }
           bool1 = true;
           continue;
@@ -605,11 +644,11 @@ public abstract class FastSticker
           bool1 = false;
           continue;
         }
-        bool1 = TriggerUtil.isGestureTriggered(localPTHandAttr, this.item.getTriggerTypeInt());
+        bool1 = TriggerUtil.isGestureTriggered(localPTHandAttr, this.item.getTriggerTypeInt(), this.item.triggerHandPoint, this.item.triggerArea, paramPTDetectInfo.aiAttr);
         continue;
         localObject1 = this.item.getTriggerTypeString().split("-");
         if (localObject1.length != 2) {
-          break label1082;
+          break label1266;
         }
         localMap = localObject1[0];
         try
@@ -617,9 +656,9 @@ public abstract class FastSticker
           i = Integer.parseInt(localObject1[1]);
           localObject1 = AETriggerAnalyzer.getInstance().getClassifier(localMap);
           if (localObject1 == null) {
-            break label1082;
+            break label1266;
           }
-          j = ((IAIDataClassifier)localObject1).classifyData2Type(paramPTDetectInfo.aiAttr);
+          int j = ((IAIDataClassifier)localObject1).classifyData2Type(paramPTDetectInfo.aiAttr);
           bool1 = ((IAIDataClassifier)localObject1).getClassifierTypeMap().containsValue(Integer.valueOf(j));
           if ((bool1) && (i == j))
           {
@@ -634,23 +673,23 @@ public abstract class FastSticker
         }
         continue;
       }
-      i = 0;
-      break label300;
-      label977:
+      bool2 = false;
+      break label364;
+      label1161:
       bool1 = false;
-      break label314;
-      label983:
+      break label379;
+      label1167:
       if (!this.item.alwaysTriggered)
       {
         bool1 = bool3;
         if (this.playCount < this.item.playCount) {
-          break label483;
+          break label545;
         }
       }
       this.triggered = false;
       bool1 = bool3;
-      break label483;
-      label1023:
+      break label545;
+      label1207:
       if ((!VideoPrefsUtil.getMaterialMute()) && (!this.mAudioPause))
       {
         initAudio();
@@ -667,7 +706,7 @@ public abstract class FastSticker
       }
       PlayerUtil.stopPlayer(this.mPlayer);
       return;
-      label1082:
+      label1266:
       bool1 = false;
     }
   }

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class NeedHandleUserData
-  extends atmo
+  extends aukm
 {
   public int type;
-  @atoc
+  @auma
   public String uin;
 }
 

@@ -1,19 +1,12 @@
 class tqo
-  implements tqj
+  extends tpy
 {
-  public tqj a;
+  tqo(tqk paramtqk, trr paramtrr) {}
   
-  private tqo(tqm paramtqm) {}
-  
-  public boolean a(tqg paramtqg, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public boolean b()
   {
-    if (tqm.a(this.jdField_a_of_type_Tqm) != null) {
-      tqm.a(this.jdField_a_of_type_Tqm).c(tqm.a(this.jdField_a_of_type_Tqm));
-    }
-    if (this.jdField_a_of_type_Tqj != null) {
-      return this.jdField_a_of_type_Tqj.a(paramtqg, paramInt1, paramInt2, paramInt3, paramString, paramObject);
-    }
-    return false;
+    this.jdField_a_of_type_Trr.a = ((String)a("UploadImageJob_out_image_url"));
+    return true;
   }
 }
 

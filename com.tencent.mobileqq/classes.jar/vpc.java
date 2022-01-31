@@ -1,15 +1,53 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.widget.BaseAdapter;
 
-class vpc
-  implements View.OnClickListener
+public abstract class vpc<PACKAGE extends vot>
+  extends BaseAdapter
 {
-  vpc(voy paramvoy) {}
+  public int a;
+  protected Context a;
+  protected PACKAGE a;
+  protected vov a;
   
-  public void onClick(View paramView)
+  public vpc(Context paramContext)
   {
-    urp.a("home_page", "guide_close", 0, 0, new String[0]);
-    this.a.dismiss();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a(PACKAGE paramPACKAGE)
+  {
+    this.jdField_a_of_type_Vot = paramPACKAGE;
+  }
+  
+  public void a(vov paramvov)
+  {
+    this.jdField_a_of_type_Vov = paramvov;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_Vot == null) {
+      return 0;
+    }
+    int i = this.jdField_a_of_type_Vot.b();
+    int j = this.jdField_a_of_type_Vot.a();
+    if (j < 1) {
+      throw new IllegalArgumentException("per item count < 1 :" + j);
+    }
+    if (i % j == 0) {
+      return i / j;
+    }
+    return i / j + 1;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
   }
 }
 

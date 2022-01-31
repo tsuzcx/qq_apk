@@ -1,12 +1,23 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.ShareChatModel;
 
-public abstract interface berr
+public final class berr
+  implements Parcelable.Creator<ShareChatModel>
 {
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  public ShareChatModel a(Parcel paramParcel)
+  {
+    return new ShareChatModel(paramParcel, null);
+  }
+  
+  public ShareChatModel[] a(int paramInt)
+  {
+    return new ShareChatModel[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     berr
  * JD-Core Version:    0.7.0.1
  */

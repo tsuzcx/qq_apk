@@ -1,50 +1,31 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.widget.PinnedDividerListView;
-import com.tencent.open.agent.FriendListOpenFrame;
+import android.text.TextUtils;
+import com.tencent.mobileqq.vip.KCWraperV2.1;
+import dualsim.common.IPhoneInfoBridge;
 
 public class bbwr
-  extends Handler
+  implements IPhoneInfoBridge
 {
-  public bbwr(FriendListOpenFrame paramFriendListOpenFrame) {}
+  public bbwr(KCWraperV2.1 param1) {}
   
-  public void handleMessage(Message paramMessage)
+  public String a(String paramString)
   {
-    switch (paramMessage.what)
-    {
+    if ("imei".equals(paramString)) {
+      return bfmw.a("a4bd32");
     }
-    for (;;)
-    {
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 40, 0);
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
-      return;
-      String str = paramMessage.getData().getString("url");
-      paramMessage = (Bitmap)paramMessage.obj;
-      int j = this.a.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildCount();
-      int i = 0;
-      while (i < j)
-      {
-        bbwt localbbwt = (bbwt)this.a.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildAt(i).getTag();
-        if ((localbbwt != null) && (str.equals(localbbwt.b)))
-        {
-          localbbwt.a.setImageBitmap(paramMessage);
-          return;
-        }
-        i += 1;
-      }
+    if ("imsi".equals(paramString)) {
+      return bfmw.b("a4bd32");
     }
+    return "";
+  }
+  
+  public boolean isAllow(String paramString)
+  {
+    return !TextUtils.isEmpty(a(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbwr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,28 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import android.content.Context;
+import android.util.Size;
+import java.nio.FloatBuffer;
 
-class alfe
-  implements ArkAppCacheMgr.OnGetAppIcon
+public abstract interface alfe
 {
-  alfe(alfd paramalfd) {}
+  public abstract Size a();
   
-  public void callback(String paramString, Bitmap paramBitmap)
-  {
-    if (paramBitmap != null)
-    {
-      this.a.a.b.setVisibility(0);
-      this.a.a.a.setVisibility(0);
-      this.a.a.a.setImageBitmap(paramBitmap);
-      return;
-    }
-    this.a.a.a.setVisibility(8);
-  }
+  public abstract FloatBuffer a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(Context paramContext);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alfe
  * JD-Core Version:    0.7.0.1
  */

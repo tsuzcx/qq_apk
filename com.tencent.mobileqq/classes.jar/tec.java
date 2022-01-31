@@ -1,12 +1,31 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
+
 class tec
-  extends tcu
+  implements syt<ted, tee>
 {
-  tec(tdo paramtdo, tew paramtew) {}
+  private tec(tea paramtea) {}
   
-  public boolean b()
+  public void a(@NonNull ted paramted, @Nullable tee paramtee, @NonNull ErrorMessage paramErrorMessage)
   {
-    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_Tew.d);
-    return true;
+    if ((paramtee != null) && (paramtee.jdField_a_of_type_Int == 0) && (paramErrorMessage.isSuccess()))
+    {
+      this.a.jdField_a_of_type_JavaUtilList.addAll(paramtee.jdField_a_of_type_JavaUtilList);
+      veg.d("VideoFilterManager", "new filter count %d, current total count %d, isEnd=%s, cookie=%s", new Object[] { Integer.valueOf(paramtee.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), Boolean.valueOf(paramtee.jdField_a_of_type_Boolean), paramtee.jdField_a_of_type_JavaLangString });
+      if ((paramtee.jdField_a_of_type_Boolean) || (paramtee.jdField_a_of_type_JavaUtilList.isEmpty()))
+      {
+        veg.d("VideoFilterManager", "get filter full list finish, frequency = %d s", new Object[] { Integer.valueOf(paramtee.b) });
+        this.a.a(true, paramtee.b);
+        return;
+      }
+      this.a.c = paramtee.jdField_a_of_type_JavaLangString;
+      this.a.c();
+      return;
+    }
+    veg.c("VideoFilterManager", "get filter failed %s", paramErrorMessage);
+    this.a.a(false, 0);
   }
 }
 

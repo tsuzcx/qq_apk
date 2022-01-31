@@ -1,28 +1,28 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import qhp;
-import qiy;
-import qoe;
-import qot;
+import qtu;
+import qvd;
+import rap;
+import rbe;
 
 public class ReadInJoyBaseAdapter$29$6
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$29$6(qot paramqot) {}
+  public ReadInJoyBaseAdapter$29$6(rbe paramrbe) {}
   
   public void run()
   {
     this.a.a.notifyDataSetChanged();
-    if (this.a.a.jdField_a_of_type_Qhp.a())
+    if (this.a.a.jdField_a_of_type_Qtu.b())
     {
-      this.a.a.jdField_a_of_type_Qhp.e(true);
-      this.a.a.jdField_a_of_type_Qhp.a().j();
+      this.a.a.jdField_a_of_type_Qtu.e(true);
+      this.a.a.jdField_a_of_type_Qtu.a().j();
     }
-    while ((this.a.a.jdField_a_of_type_Boolean) || (!this.a.a.jdField_a_of_type_Qhp.c())) {
+    while ((this.a.a.jdField_a_of_type_Boolean) || (!this.a.a.jdField_a_of_type_Qtu.d())) {
       return;
     }
-    this.a.a.jdField_a_of_type_Qhp.d(true);
-    this.a.a.jdField_a_of_type_Qhp.a().j();
+    this.a.a.jdField_a_of_type_Qtu.d(true);
+    this.a.a.jdField_a_of_type_Qtu.a().j();
   }
 }
 

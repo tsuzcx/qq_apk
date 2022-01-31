@@ -1,33 +1,28 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.Properties;
 
 public class ahww
-  implements Animation.AnimationListener
 {
-  public ahww(SpecailCareListActivity paramSpecailCareListActivity) {}
+  private static int a = 10000;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static void a(int paramInt)
   {
-    this.a.leftView.clearAnimation();
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.clearAnimation();
-    this.a.leftView.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.a.rightViewText.setClickable(true);
-    this.a.rightViewText.setText(SpecailCareListActivity.jdField_a_of_type_JavaLangString);
-    this.a.rightViewText.setContentDescription(ajjy.a(2131648471));
-    this.a.c = false;
+    a = paramInt;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public static void a(String paramString, Properties paramProperties)
+  {
+    Properties localProperties = paramProperties;
+    if (paramProperties == null) {
+      localProperties = new Properties();
+    }
+    localProperties.setProperty("shortvideo_business_type", "" + a);
+    axql.a(VideoEnvironment.a()).reportKVEvent(paramString, localProperties);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahww
  * JD-Core Version:    0.7.0.1
  */

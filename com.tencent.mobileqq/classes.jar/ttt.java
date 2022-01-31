@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
 class ttt
-  implements DialogInterface.OnDismissListener
+  implements ViewPager.OnPageChangeListener
 {
-  ttt(ttr paramttr, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  ttt(ttr paramttr) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
-    ttr.a(this.jdField_a_of_type_Ttr).a = ttr.a(this.jdField_a_of_type_Ttr).a();
+    this.a.a.setSelectedTab(paramInt, true);
   }
 }
 

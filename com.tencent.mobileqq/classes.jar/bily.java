@@ -1,4 +1,7 @@
-public class bily {}
+public abstract interface bily
+{
+  public abstract int a();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

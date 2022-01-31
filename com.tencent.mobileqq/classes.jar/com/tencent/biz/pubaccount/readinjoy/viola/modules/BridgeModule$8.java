@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
-import aqod;
+import arii;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.AppRuntime;
@@ -14,7 +14,7 @@ class BridgeModule$8
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
-      ((aqod)((QQAppInterface)localAppRuntime).getManager(306)).a();
+      ((arii)((QQAppInterface)localAppRuntime).getManager(306)).a();
     }
   }
 }

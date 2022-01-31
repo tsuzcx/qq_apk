@@ -1,12 +1,57 @@
-public abstract interface uzu
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
+public abstract class uzu
+  implements vab
 {
-  public abstract void a();
+  private Object jdField_a_of_type_JavaLangObject;
+  private vac jdField_a_of_type_Vac;
+  private vad jdField_a_of_type_Vad;
   
-  public abstract void a(int paramInt);
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
   
-  public abstract void a(boolean paramBoolean, uyw paramuyw);
+  public void a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
   
-  public abstract void b(int paramInt);
+  public void a(vac paramvac)
+  {
+    this.jdField_a_of_type_Vac = paramvac;
+  }
+  
+  public void a(vad paramvad)
+  {
+    this.jdField_a_of_type_Vad = paramvad;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  protected void b(ErrorMessage paramErrorMessage)
+  {
+    paramErrorMessage.extraMsg = a();
+    if (this.jdField_a_of_type_Vac != null)
+    {
+      this.jdField_a_of_type_Vac.a(paramErrorMessage);
+      return;
+    }
+    veg.d("SimpleStep", a() + " errorCallBack is null.");
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Vad != null)
+    {
+      this.jdField_a_of_type_Vad.a(a());
+      return;
+    }
+    veg.d("SimpleStep", a() + " finishCallBack is null.");
+  }
 }
 
 

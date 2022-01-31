@@ -1,108 +1,33 @@
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
-import android.view.ViewStub;
-import com.tencent.biz.videostory.capture.widgets.BeautyAndFilterPanelViewStubHolder.1;
-import com.tencent.biz.videostory.capture.widgets.BeautyAndFilterPanelViewStubHolder.2;
-import dov.com.qq.im.AECamera.View.AEProviderContainerView;
+import android.widget.RadioGroup;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseBottomPersonalFragment;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
+import java.util.List;
 
 public class wvz
-  extends wvy
+  implements ViewPager.OnPageChangeListener
 {
-  private AEProviderContainerView a;
+  public wvz(RelativePersonalBottomView paramRelativePersonalBottomView) {}
   
-  public wvz(ViewStub paramViewStub)
-  {
-    super(paramViewStub);
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  protected void a(View paramView)
-  {
-    this.a = ((AEProviderContainerView)paramView.findViewById(2131297572));
-  }
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
   
-  public void a(auti paramauti)
+  public void onPageSelected(int paramInt)
   {
-    a(new BeautyAndFilterPanelViewStubHolder.1(this, paramauti));
-  }
-  
-  public void a(bgxh parambgxh, wus paramwus)
-  {
-    a(new BeautyAndFilterPanelViewStubHolder.2(this, parambgxh, paramwus));
-  }
-  
-  public void a(wsh paramwsh)
-  {
-    if (!a()) {
-      return;
+    
+    if ((RelativePersonalBottomView.a(this.a) != null) && (RelativePersonalBottomView.a(this.a).getChildCount() > paramInt)) {
+      RelativePersonalBottomView.a(this.a).getChildAt(paramInt).performClick();
     }
-    this.a.setCaptureMode(paramwsh);
-  }
-  
-  public void b()
-  {
-    a();
-    this.a.setVisibility(0);
-    this.a.b();
-  }
-  
-  public boolean b()
-  {
-    if (!a()) {
-      return false;
+    if (RelativePersonalBottomView.a(this.a).size() > paramInt) {
+      ((SubscribeBaseBottomPersonalFragment)RelativePersonalBottomView.a(this.a).get(paramInt)).a(paramInt);
     }
-    return this.a.b();
-  }
-  
-  public void c()
-  {
-    if (!a()) {
-      return;
-    }
-    this.a.a();
-  }
-  
-  public void d()
-  {
-    if (!a()) {
-      return;
-    }
-    this.a.d();
-  }
-  
-  public void e()
-  {
-    if (!a()) {
-      return;
-    }
-    this.a.f();
-  }
-  
-  public void f()
-  {
-    if (!a()) {
-      return;
-    }
-    this.a.c();
-  }
-  
-  public void g()
-  {
-    if (!a()) {
-      return;
-    }
-    this.a.g();
-  }
-  
-  public void h()
-  {
-    if (!a()) {
-      return;
-    }
-    this.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wvz
  * JD-Core Version:    0.7.0.1
  */

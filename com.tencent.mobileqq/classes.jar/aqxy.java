@@ -1,37 +1,53 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import com.tencent.mobileqq.hiboom.RichTextPanel;
+import com.tencent.mobileqq.hiboom.RichTextPanelView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aqxy
-  extends BroadcastReceiver
+  extends PagerAdapter
 {
-  private aqxy(QQMusicPlayService paramQQMusicPlayService) {}
+  public aqxy(RichTextPanel paramRichTextPanel) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    if (paramIntent != null)
-    {
-      QLog.d("QQMusicPlay.QQMusicPlayService", 1, "QQMusicPlayBroadcastReceiver onReceive,action:" + paramIntent.getAction());
-      paramContext = paramIntent.getAction();
-      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("QQMusicPlay_exit_action"))))
-      {
-        if (QQMusicPlayService.a(this.a) == null) {
-          break label150;
-        }
-        QQMusicPlayService.a(this.a).sendEmptyMessage(11);
-      }
+    paramViewGroup.removeView((View)paramObject);
+  }
+  
+  public int getCount()
+  {
+    return RichTextPanel.a(this.a).size();
+  }
+  
+  public int getItemPosition(Object paramObject)
+  {
+    return -2;
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichTextPanel", 2, "instantiateItem position = " + paramInt);
     }
-    return;
-    label150:
-    this.a.stopSelf();
+    ViewParent localViewParent = ((RichTextPanelView)RichTextPanel.a(this.a).get(paramInt)).getParent();
+    if (localViewParent != null) {
+      ((ViewGroup)localViewParent).removeView((View)RichTextPanel.a(this.a).get(paramInt));
+    }
+    paramViewGroup.addView((View)RichTextPanel.a(this.a).get(paramInt));
+    return RichTextPanel.a(this.a).get(paramInt);
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqxy
  * JD-Core Version:    0.7.0.1
  */

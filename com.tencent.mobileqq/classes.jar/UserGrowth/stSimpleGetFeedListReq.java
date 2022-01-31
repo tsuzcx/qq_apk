@@ -23,6 +23,7 @@ public final class stSimpleGetFeedListReq
   public stLinkStragegyArgs linkStragetyArgs;
   public ArrayList<String> local_feeds;
   public String push_info = "";
+  public String qqNum = "";
   public Map<String, String> request_ext;
   public String rowkey = "";
   public int scene;
@@ -39,7 +40,7 @@ public final class stSimpleGetFeedListReq
   
   public stSimpleGetFeedListReq() {}
   
-  public stSimpleGetFeedListReq(String paramString1, byte paramByte1, byte paramByte2, String paramString2, Map<String, String> paramMap, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6, stLinkStragegyArgs paramstLinkStragegyArgs)
+  public stSimpleGetFeedListReq(String paramString1, byte paramByte1, byte paramByte2, String paramString2, Map<String, String> paramMap, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6, stLinkStragegyArgs paramstLinkStragegyArgs, String paramString7)
   {
     this.attach_info = paramString1;
     this.isrefresh = paramByte1;
@@ -54,6 +55,7 @@ public final class stSimpleGetFeedListReq
     this.session = paramString5;
     this.push_info = paramString6;
     this.linkStragetyArgs = paramstLinkStragegyArgs;
+    this.qqNum = paramString7;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -71,6 +73,7 @@ public final class stSimpleGetFeedListReq
     this.session = paramJceInputStream.readString(11, false);
     this.push_info = paramJceInputStream.readString(12, false);
     this.linkStragetyArgs = ((stLinkStragegyArgs)paramJceInputStream.read(cache_linkStragetyArgs, 13, false));
+    this.qqNum = paramJceInputStream.readString(14, false);
   }
   
   public String toString()
@@ -112,6 +115,9 @@ public final class stSimpleGetFeedListReq
     }
     if (this.linkStragetyArgs != null) {
       paramJceOutputStream.write(this.linkStragetyArgs, 13);
+    }
+    if (this.qqNum != null) {
+      paramJceOutputStream.write(this.qqNum, 14);
     }
   }
 }

@@ -1,24 +1,89 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusAnimationItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class rlw
-  implements bbsh
+  extends rkj
 {
-  rlw(rlv paramrlv) {}
+  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
   
-  public void a(BaseResp paramBaseResp)
+  public rlw(rlv paramrlv, View paramView, BaseData paramBaseData)
   {
-    if ((rlv.a(this.a) == null) || (!rlv.a(this.a).equals(paramBaseResp.transaction))) {
-      return;
+    super(paramView, paramBaseData);
+    if ((paramView instanceof Container)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = ((Container)paramView);
     }
-    switch (paramBaseResp.errCode)
+  }
+  
+  private void a(Context paramContext, ProteusItemData paramProteusItemData)
+  {
+    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new rlx(this, paramProteusItemData, paramContext));
+  }
+  
+  private void a(View paramView, BaseData paramBaseData)
+  {
+    if ((paramView == null) || (paramBaseData == null)) {}
+    for (;;)
     {
-    case -2: 
-    case -1: 
-    default: 
-      vvp.a(1, 2131653595);
       return;
+      try
+      {
+        ProteusItemData localProteusItemData = (ProteusItemData)paramBaseData;
+        if (((ProteusItemData)paramBaseData).s == 1)
+        {
+          paramView.setOnLongClickListener(new rlz(this, paramView, localProteusItemData));
+          return;
+        }
+      }
+      catch (Exception paramView)
+      {
+        QLog.d("WebProteusViewCreator", 1, "addLongClickListener error,msg:" + paramView.toString());
+      }
     }
-    vvp.a(2, 2131653612);
+  }
+  
+  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null) || (paramBaseData2 == null)) {}
+    for (;;)
+    {
+      return;
+      if (!(paramBaseData2 instanceof ProteusItemData)) {
+        continue;
+      }
+      paramBaseData1 = (ProteusItemData)paramBaseData2;
+      TemplateBean localTemplateBean = paramBaseData1.a;
+      if (localTemplateBean != null) {
+        rlv.a(this.jdField_a_of_type_Rlv, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
+      }
+      try
+      {
+        localTemplateBean.getViewBean().bindData(paramBaseData1.b, localTemplateBean.getViewDataBinding());
+        olr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), paramBaseData1.a.getViewBean());
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData1;
+        label85:
+        a(rlv.a(this.jdField_a_of_type_Rlv), paramBaseData1);
+        a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, paramBaseData2);
+        if (!(paramBaseData2 instanceof ProteusAnimationItemData)) {
+          continue;
+        }
+        ((ProteusAnimationItemData)paramBaseData2).a(this.jdField_a_of_type_AndroidViewView);
+        return;
+      }
+      catch (Exception localException)
+      {
+        break label85;
+      }
+    }
   }
 }
 

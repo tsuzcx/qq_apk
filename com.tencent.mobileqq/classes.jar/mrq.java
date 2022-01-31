@@ -1,27 +1,24 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
-
 public class mrq
-  extends Handler
 {
-  public mrq(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void handleMessage(Message paramMessage)
+  public mrq(long paramLong, int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    paramMessage = (Bundle)paramMessage.obj;
-    this.a.jdField_a_of_type_Wis.a(17, paramMessage, this.a.jdField_a_of_type_Ajfe);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mrq
  * JD-Core Version:    0.7.0.1
  */

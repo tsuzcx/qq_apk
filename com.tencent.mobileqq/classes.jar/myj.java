@@ -1,27 +1,104 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.2;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.anonymous.QQAnonymousDialog.2;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class myj
-  implements TVK_SDKMgr.InstallListener
+  extends Dialog
 {
-  public myj(AdvertisementVideoPreloadManager.2 param2) {}
+  public int a;
+  public Context a;
+  public Handler a;
+  public LayoutInflater a;
+  public View a;
+  public ImageView a;
+  public TextView a;
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public myj(Context paramContext)
   {
-    myh.c("installSDK onInstalledFailed arg0=" + paramInt);
+    super(paramContext, 2131755791);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(new myk(this));
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560297, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369495));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369506));
   }
   
-  public void onInstalledSuccessed()
+  public void a()
   {
-    myh.c("installSDK onInstalledSuccessed");
-    myh.a(this.a.this$0);
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    localLayoutParams.width = ((int)bbdh.a(this.jdField_a_of_type_AndroidContentContext, 44.0F));
+    localLayoutParams.height = ((int)bbdh.a(this.jdField_a_of_type_AndroidContentContext, 44.0F));
+    super.show();
+    this.jdField_a_of_type_AndroidViewView.postDelayed(new QQAnonymousDialog.2(this), 1000L);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    switch (paramInt)
+    {
+    default: 
+    case 1: 
+    case 3: 
+      do
+      {
+        do
+        {
+          return;
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843051);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+        } while (!AppSetting.d);
+        QQAppInterface.f(paramString);
+        return;
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843045);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+      } while (!AppSetting.d);
+      QQAppInterface.f(paramString);
+      return;
+    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843050);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131696358));
+  }
+  
+  public void dismiss()
+  {
+    try
+    {
+      super.dismiss();
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    paramBundle = getWindow();
+    paramBundle.setContentView(this.jdField_a_of_type_AndroidViewView);
+    WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
+    localLayoutParams.width = -2;
+    localLayoutParams.height = -2;
+    localLayoutParams.gravity = 17;
+    paramBundle.setAttributes(localLayoutParams);
+    setCanceledOnTouchOutside(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     myj
  * JD-Core Version:    0.7.0.1
  */

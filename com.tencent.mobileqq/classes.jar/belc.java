@@ -1,17 +1,13 @@
-import android.view.View;
-import com.tencent.widget.ListView;
+import android.content.Context;
+import android.content.Intent;
 
-public class belc
+public abstract interface belc
 {
-  public View a;
-  public Object a;
-  public boolean a;
-  
-  public belc(ListView paramListView) {}
+  public abstract void a(Context paramContext, Intent paramIntent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     belc
  * JD-Core Version:    0.7.0.1
  */

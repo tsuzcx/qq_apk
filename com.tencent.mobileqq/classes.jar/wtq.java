@@ -1,48 +1,27 @@
-public class wtq
+import android.widget.TextView;
+import java.util.Map;
+
+class wtq
+  implements wuo
 {
-  public static bgya a()
-  {
-    bgya localbgya = new bgya();
-    localbgya.c = "http://sqdd.myapp.com/myapp/qqteam/QIM/zhinenglvjingdonghua/AutoAISceneAni.zip";
-    localbgya.e = "AutoAISceneAni";
-    localbgya.d = "6f6632b8106fe070a560abcec6051f0d";
-    localbgya.a = "AutoAISceneAni";
-    return localbgya;
-  }
+  wtq(wto paramwto, adni paramadni) {}
   
-  public static bgya b()
+  public void a(String paramString, long paramLong1, long paramLong2)
   {
-    bgya localbgya = new bgya();
-    localbgya.c = "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/StorySticker/aiScreenAndroid/AISceneLoading.zip";
-    localbgya.d = "da407ead2fb260d6b2570450f2e1bebd";
-    localbgya.e = "AISceneLoading";
-    localbgya.a = "AISceneLoading";
-    return localbgya;
-  }
-  
-  public static bgya c()
-  {
-    bgya localbgya = new bgya();
-    localbgya.c = "https://qd.myapp.com/myapp/qqteam/shenqidegongneng/AISceneGuide19082601Android.zip";
-    localbgya.d = "dcb9d44eb8872db03a17fe57ce231a76";
-    localbgya.e = "AISceneGuide";
-    localbgya.a = "AISceneGuide";
-    return localbgya;
-  }
-  
-  public static bgya d()
-  {
-    bgya localbgya = new bgya();
-    localbgya.c = "https://qd.myapp.com/myapp/qqteam/QIM/zhinenglvjingdonghua/GifGuide.zip";
-    localbgya.d = "3d5ba298a49e3b9051223255d87dc13b";
-    localbgya.e = "GifGuide";
-    localbgya.a = "GifGuide";
-    return localbgya;
+    Long localLong = (Long)wto.b(this.jdField_a_of_type_Wto).get(Integer.valueOf(this.jdField_a_of_type_Adni.b));
+    if ((localLong != null) && (localLong.longValue() > paramLong2) && (paramLong1 != localLong.longValue()) && (Math.abs(paramLong1 - localLong.longValue()) > 100L))
+    {
+      this.jdField_a_of_type_Adni.a.setText((CharSequence)wto.c(this.jdField_a_of_type_Wto).get(Integer.valueOf(this.jdField_a_of_type_Adni.b)));
+      return;
+    }
+    wto.b(this.jdField_a_of_type_Wto).put(Integer.valueOf(this.jdField_a_of_type_Adni.b), Long.valueOf(paramLong2));
+    wto.c(this.jdField_a_of_type_Wto).put(Integer.valueOf(this.jdField_a_of_type_Adni.b), paramString);
+    this.jdField_a_of_type_Adni.a.setText(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wtq
  * JD-Core Version:    0.7.0.1
  */

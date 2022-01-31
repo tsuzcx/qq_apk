@@ -1,17 +1,10 @@
-class aekc
-  implements aaed
+import android.content.Intent;
+
+public abstract interface aekc
 {
-  aekc(aejb paramaejb) {}
+  public abstract void a(Intent paramIntent);
   
-  public void a()
-  {
-    ((aqyr)this.a.a(33)).c(2);
-  }
-  
-  public void b()
-  {
-    ((aqyr)this.a.a(33)).d(2);
-  }
+  public abstract boolean a(int paramInt);
 }
 
 

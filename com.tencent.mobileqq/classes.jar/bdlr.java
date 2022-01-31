@@ -1,20 +1,25 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface bdlr<T>
+class bdlr
+  implements View.OnClickListener
 {
-  public abstract T a(Context paramContext, Bundle paramBundle);
+  bdlr(bdlq parambdlq, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
   
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract boolean a(Bundle paramBundle);
-  
-  public abstract boolean a(MiniAppInfo paramMiniAppInfo);
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdlq, this.jdField_a_of_type_Int);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Bdlq.dismiss();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdlr
  * JD-Core Version:    0.7.0.1
  */

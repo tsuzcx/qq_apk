@@ -3,12 +3,16 @@ package com.tencent.viola.ui.baseComponent;
 import android.animation.Animator;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.LinearGradient;
 import android.graphics.PointF;
+import android.graphics.Shader;
 import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Pair;
+import android.util.Property;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,9 +26,11 @@ import com.tencent.viola.bridge.NativeInvokeHelper;
 import com.tencent.viola.bridge.ViolaBridgeManager;
 import com.tencent.viola.commons.AssocioationEvents;
 import com.tencent.viola.commons.JSParam;
+import com.tencent.viola.compatible.VComponentCompat;
 import com.tencent.viola.core.IActivityState;
 import com.tencent.viola.core.ViolaDomManager;
 import com.tencent.viola.core.ViolaInstance;
+import com.tencent.viola.core.ViolaInstance.ViolaPageListener;
 import com.tencent.viola.core.ViolaSDKManager;
 import com.tencent.viola.ui.action.DOMAction;
 import com.tencent.viola.ui.action.MethodAnimation;
@@ -73,6 +79,7 @@ public abstract class VComponent<T extends View>
   public static final int RETURN_TYPE_PX = 1;
   public static final String TAG = "VComponent";
   private List<VComponent.AnimationInfo> animationInfos = new CopyOnWriteArrayList();
+  private VComponentCompat compat;
   private boolean fixMinHeight = false;
   private ViewPropertyAnimator mAlphaAnimator;
   private AnimationModule.AnimationHolder mAnimationHolder;
@@ -163,16 +170,16 @@ public abstract class VComponent<T extends View>
       {
         i = 0;
         if ((!"cell".equals(localDomObject.getType())) && (!"footer-cell".equals(localDomObject.getType()))) {
-          break label365;
+          break label366;
         }
         ((DomObjectCell)localDomObject).addRegisterDidAppearComponentDyStart(i, getRef());
         ((DomObjectCell)localDomObject).addRegisterDidAppearComponentDyEnd(i + getDomObject().getLayoutHeight(), getRef());
         if (!getDomObject().getAttributes().containsKey("appearScopeTop")) {
-          break label411;
+          break label412;
         }
       }
     }
-    label411:
+    label412:
     for (float f1 = (int)FlexConvertUtils.converPxByViewportToRealPx(getDomObject().getAttributes().get("appearScopeTop"), 750);; f1 = 0.0F)
     {
       if (getDomObject().getAttributes().containsKey("appearScopeBottom")) {
@@ -192,7 +199,7 @@ public abstract class VComponent<T extends View>
       if (getDomObject().getEvents().contains("willAppear")) {
         ((DomObjectCell)localDomObject).addRegisterComponent("willAppear", getRef());
       }
-      label365:
+      label366:
       do
       {
         return;
@@ -200,6 +207,41 @@ public abstract class VComponent<T extends View>
         localDomObject = (DomObject)localDomObject.getParent();
       } while ((localDomObject == null) || (localDomObject.getParent() == null));
       break;
+    }
+  }
+  
+  private void dealFireCommonTouchEvent(View paramView, String paramString, MotionEvent paramMotionEvent)
+  {
+    float f1 = 0.0F;
+    if ((this.mAppendEvents.contains(paramString)) && (!isScrollComponent())) {
+      paramView = new JSONObject();
+    }
+    try
+    {
+      paramView.put("id", getRef());
+      if (getInstance() != null)
+      {
+        paramMotionEvent = getInstance().getLocationOnRenderContainer(new float[] { paramMotionEvent.getRawX(), paramMotionEvent.getRawY() });
+        f2 = paramMotionEvent.x;
+        f1 = paramMotionEvent.y;
+        paramView.put("page_x", FlexConvertUtils.px2dip(f2));
+        paramView.put("page_y", FlexConvertUtils.px2dip(f1));
+        paramView.put("pageX", FlexConvertUtils.px2dip(f2) + "dp");
+        paramView.put("pageY", FlexConvertUtils.px2dip(f1) + "dp");
+        paramView.put("name", paramString);
+        paramView.put("frame", getPositionInfoRelativeToParent(0));
+        fireEvent(paramString, paramView);
+        return;
+      }
+    }
+    catch (JSONException paramMotionEvent)
+    {
+      for (;;)
+      {
+        paramMotionEvent.printStackTrace();
+        continue;
+        float f2 = 0.0F;
+      }
     }
   }
   
@@ -271,6 +313,25 @@ public abstract class VComponent<T extends View>
       label497:
       float f2 = 0.0F;
     }
+  }
+  
+  private void fireCommonTouchEvent(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+      return;
+    case 0: 
+      dealFireCommonTouchEvent(paramView, "touchDown", paramMotionEvent);
+      return;
+    case 1: 
+      dealFireCommonTouchEvent(paramView, "touchUp", paramMotionEvent);
+      return;
+    case 2: 
+      dealFireCommonTouchEvent(paramView, "touchMove", paramMotionEvent);
+      return;
+    }
+    dealFireCommonTouchEvent(paramView, "touchCancel", paramMotionEvent);
   }
   
   private int getLifeCycleConstanceFromEvent(String paramString)
@@ -346,6 +407,16 @@ public abstract class VComponent<T extends View>
     }
   }
   
+  private boolean isContainCommonTouchEvent()
+  {
+    return (this.mAppendEvents.contains("touchDown")) || (this.mAppendEvents.contains("touchUp")) || (this.mAppendEvents.contains("touchMove")) || (this.mAppendEvents.contains("touchCancel"));
+  }
+  
+  private boolean isScrollComponent()
+  {
+    return (getDomObject().getType().equals("list")) || (getDomObject().getType().equals("waterfall-list")) || (getDomObject().getType().equals("smart-header")) || (getDomObject().getType().equals("scroller"));
+  }
+  
   private void resetBackground()
   {
     this.mBackgroundDrawable = null;
@@ -354,10 +425,174 @@ public abstract class VComponent<T extends View>
     }
   }
   
+  private void resetBackgroundImage()
+  {
+    View localView = getHostView();
+    if (localView == null) {
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 16) {
+      localView.setBackground(null);
+    }
+    for (;;)
+    {
+      this.mBackgroundDrawable = null;
+      return;
+      localView.setBackgroundDrawable(null);
+    }
+  }
+  
+  private void resetTransform()
+  {
+    View localView = getHostView();
+    if (localView == null) {
+      return;
+    }
+    setTransformValue(localView, this.mDomObj.getStyle().get("transform_parse"), true);
+  }
+  
+  private void resetTransformOrigin()
+  {
+    View localView = getHostView();
+    if (localView == null) {
+      return;
+    }
+    localView.setPivotX(0.0F);
+    localView.setPivotY(0.0F);
+  }
+  
   private void setBorderStyle(int paramInt, String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
       getOrCreateBorder().setBorderStyle(paramInt, paramString);
+    }
+  }
+  
+  private void setLinearGradient(Object paramObject)
+  {
+    if ((paramObject instanceof LinearGradient)) {
+      getOrCreateBorder().setImage((Shader)paramObject);
+    }
+  }
+  
+  private void setPivot(Object paramObject)
+  {
+    paramObject = (Pair)paramObject;
+    View localView = getHostView();
+    if (localView == null) {
+      return;
+    }
+    localView.setPivotX(((Float)paramObject.first).floatValue());
+    localView.setPivotY(((Float)paramObject.second).floatValue());
+  }
+  
+  private void setTransform(Object paramObject)
+  {
+    View localView = getHostView();
+    if (localView == null) {
+      return;
+    }
+    setTransformValue(localView, paramObject, false);
+  }
+  
+  private void setTransformValue(View paramView, Object paramObject, boolean paramBoolean)
+  {
+    paramObject = ((Map)paramObject).entrySet().iterator();
+    while (paramObject.hasNext())
+    {
+      Object localObject = (Map.Entry)paramObject.next();
+      Property localProperty = (Property)((Map.Entry)localObject).getKey();
+      float f;
+      label68:
+      int i;
+      if ((paramBoolean) && (localProperty.getName().contains("scale")))
+      {
+        f = 1.0F;
+        localObject = localProperty.getName();
+        i = -1;
+        switch (((String)localObject).hashCode())
+        {
+        }
+      }
+      for (;;)
+      {
+        switch (i)
+        {
+        default: 
+          break;
+        case 0: 
+          paramView.setRotation(f);
+          break;
+          if (paramBoolean)
+          {
+            f = 0.0F;
+            break label68;
+          }
+          f = ((Float)((Map.Entry)localObject).getValue()).floatValue();
+          break label68;
+          if (((String)localObject).equals("rotation"))
+          {
+            i = 0;
+            continue;
+            if (((String)localObject).equals("rotationX"))
+            {
+              i = 1;
+              continue;
+              if (((String)localObject).equals("rotationY"))
+              {
+                i = 2;
+                continue;
+                if (((String)localObject).equals("scale"))
+                {
+                  i = 3;
+                  continue;
+                  if (((String)localObject).equals("scaleX"))
+                  {
+                    i = 4;
+                    continue;
+                    if (((String)localObject).equals("scaleY"))
+                    {
+                      i = 5;
+                      continue;
+                      if (((String)localObject).equals("translation"))
+                      {
+                        i = 6;
+                        continue;
+                        if (((String)localObject).equals("translationX"))
+                        {
+                          i = 7;
+                          continue;
+                          if (((String)localObject).equals("translationY")) {
+                            i = 8;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          break;
+        }
+      }
+      paramView.setRotationX(f);
+      continue;
+      paramView.setRotationY(f);
+      continue;
+      paramView.setScaleX(f);
+      paramView.setScaleY(f);
+      continue;
+      paramView.setScaleX(f);
+      continue;
+      paramView.setScaleY(f);
+      continue;
+      paramView.setTranslationX(f);
+      paramView.setTranslationY(f);
+      continue;
+      paramView.setTranslationX(f);
+      continue;
+      paramView.setTranslationY(f);
     }
   }
   
@@ -368,7 +603,7 @@ public abstract class VComponent<T extends View>
   
   public void addClickEvent()
   {
-    if ((getRealView() != null) && ((this.mAppendEvents.contains("click")) || (this.mAppendEvents.contains("doubleClick")) || (this.mAppendEvents.contains("longPress"))))
+    if ((getRealView() != null) && ((this.mAppendEvents.contains("click")) || (this.mAppendEvents.contains("doubleClick")) || (this.mAppendEvents.contains("longPress")) || ((isContainCommonTouchEvent()) && (!isScrollComponent()))))
     {
       if (this.mDetector == null) {
         this.mDetector = new GestureDetector(getContext(), new VComponent.MyGestureListener(this));
@@ -516,6 +751,11 @@ public abstract class VComponent<T extends View>
     return false;
   }
   
+  protected <T extends VComponentCompat> T createCompator()
+  {
+    return new VComponentCompat(this, this.mDomObj);
+  }
+  
   public final void createView()
   {
     if (!isLazy()) {
@@ -567,6 +807,21 @@ public abstract class VComponent<T extends View>
     if ((this.mInstance != null) && (this.mDomObj != null)) {
       ViolaBridgeManager.getInstance().callbackJavascript(this.mInstance.getInstanceId(), "dom", "fireEvent", paramObject1, paramObject2, true);
     }
+  }
+  
+  public void fireEvent(String paramString, JSONObject paramJSONObject)
+  {
+    if (this.mDomObj != null) {
+      this.mDomObj.fireEvent(paramString, paramJSONObject);
+    }
+  }
+  
+  public <T extends VComponentCompat> T getCompator()
+  {
+    if (this.compat == null) {
+      this.compat = createCompator();
+    }
+    return this.compat;
   }
   
   public int getContentHeight()
@@ -936,6 +1191,15 @@ public abstract class VComponent<T extends View>
     }
   }
   
+  protected boolean isCompatMode()
+  {
+    ViolaInstance localViolaInstance = getInstance();
+    if (localViolaInstance == null) {
+      return false;
+    }
+    return localViolaInstance.isCompatMode();
+  }
+  
   public boolean isCreated()
   {
     if ((this.mLifeCycleMap.containsKey(this.mDomObj.getRef())) && ((this.mLifeCycleMap.get(this.mDomObj.getRef()) instanceof Integer))) {
@@ -1087,6 +1351,13 @@ public abstract class VComponent<T extends View>
         }
         catch (JSONException localJSONException) {}
       }
+    }
+  }
+  
+  public void notifyWhenChange(String paramString, DomObject paramDomObject)
+  {
+    if (this.mParent != null) {
+      this.mParent.notifyWhenChange(paramString, paramDomObject);
     }
   }
   
@@ -1267,7 +1538,7 @@ public abstract class VComponent<T extends View>
       while (localIterator.hasNext())
       {
         VComponent.AnimationInfo localAnimationInfo = (VComponent.AnimationInfo)localIterator.next();
-        resetAnimation(VComponent.AnimationInfo.access$200(localAnimationInfo), VComponent.AnimationInfo.access$300(localAnimationInfo));
+        resetAnimation(VComponent.AnimationInfo.access$300(localAnimationInfo), VComponent.AnimationInfo.access$400(localAnimationInfo));
       }
       this.animationInfos.clear();
       if (this.mAlphaAnimator != null)
@@ -1315,144 +1586,176 @@ public abstract class VComponent<T extends View>
     {
       do
       {
-        return bool;
-        if (!paramString.equals("borderWidth")) {
+        do
+        {
+          return bool;
+          if (!paramString.equals("borderWidth")) {
+            break;
+          }
+          i = 0;
           break;
-        }
-        i = 0;
-        break;
-        if (!paramString.equals("borderLeftWidth")) {
+          if (!paramString.equals("borderLeftWidth")) {
+            break;
+          }
+          i = 1;
           break;
-        }
-        i = 1;
-        break;
-        if (!paramString.equals("borderTopWidth")) {
+          if (!paramString.equals("borderTopWidth")) {
+            break;
+          }
+          i = 2;
           break;
-        }
-        i = 2;
-        break;
-        if (!paramString.equals("borderRightWidth")) {
+          if (!paramString.equals("borderRightWidth")) {
+            break;
+          }
+          i = 3;
           break;
-        }
-        i = 3;
-        break;
-        if (!paramString.equals("borderBottomWidth")) {
+          if (!paramString.equals("borderBottomWidth")) {
+            break;
+          }
+          i = 4;
           break;
-        }
-        i = 4;
-        break;
-        if (!paramString.equals("borderColor")) {
+          if (!paramString.equals("borderColor")) {
+            break;
+          }
+          i = 5;
           break;
-        }
-        i = 5;
-        break;
-        if (!paramString.equals("borderLeftColor")) {
+          if (!paramString.equals("borderLeftColor")) {
+            break;
+          }
+          i = 6;
           break;
-        }
-        i = 6;
-        break;
-        if (!paramString.equals("borderTopColor")) {
+          if (!paramString.equals("borderTopColor")) {
+            break;
+          }
+          i = 7;
           break;
-        }
-        i = 7;
-        break;
-        if (!paramString.equals("borderRightColor")) {
+          if (!paramString.equals("borderRightColor")) {
+            break;
+          }
+          i = 8;
           break;
-        }
-        i = 8;
-        break;
-        if (!paramString.equals("borderBottomColor")) {
+          if (!paramString.equals("borderBottomColor")) {
+            break;
+          }
+          i = 9;
           break;
-        }
-        i = 9;
-        break;
-        if (!paramString.equals("borderStyle")) {
+          if (!paramString.equals("borderStyle")) {
+            break;
+          }
+          i = 10;
           break;
-        }
-        i = 10;
-        break;
-        if (!paramString.equals("borderLeftStyle")) {
+          if (!paramString.equals("borderLeftStyle")) {
+            break;
+          }
+          i = 11;
           break;
-        }
-        i = 11;
-        break;
-        if (!paramString.equals("borderTopStyle")) {
+          if (!paramString.equals("borderTopStyle")) {
+            break;
+          }
+          i = 12;
           break;
-        }
-        i = 12;
-        break;
-        if (!paramString.equals("borderRightStyle")) {
+          if (!paramString.equals("borderRightStyle")) {
+            break;
+          }
+          i = 13;
           break;
-        }
-        i = 13;
-        break;
-        if (!paramString.equals("borderBottomStyle")) {
+          if (!paramString.equals("borderBottomStyle")) {
+            break;
+          }
+          i = 14;
           break;
-        }
-        i = 14;
-        break;
-        if (!paramString.equals("backgroundColor")) {
+          if (!paramString.equals("backgroundColor")) {
+            break;
+          }
+          i = 15;
           break;
-        }
-        i = 15;
-        break;
-        if (!paramString.equals("borderRadius")) {
+          if (!paramString.equals("borderRadius")) {
+            break;
+          }
+          i = 16;
           break;
-        }
-        i = 16;
-        break;
-        if (!paramString.equals("borderTopLeftRadius")) {
+          if (!paramString.equals("borderTopLeftRadius")) {
+            break;
+          }
+          i = 17;
           break;
-        }
-        i = 17;
-        break;
-        if (!paramString.equals("borderTopRightRadius")) {
+          if (!paramString.equals("borderTopRightRadius")) {
+            break;
+          }
+          i = 18;
           break;
-        }
-        i = 18;
-        break;
-        if (!paramString.equals("borderBottomLeftRadius")) {
+          if (!paramString.equals("borderBottomLeftRadius")) {
+            break;
+          }
+          i = 19;
           break;
-        }
-        i = 19;
-        break;
-        if (!paramString.equals("borderBottomRightRadius")) {
+          if (!paramString.equals("borderBottomRightRadius")) {
+            break;
+          }
+          i = 20;
           break;
-        }
-        i = 20;
-        break;
-        if (!paramString.equals("opacity")) {
+          if (!paramString.equals("opacity")) {
+            break;
+          }
+          i = 21;
           break;
-        }
-        i = 21;
-        break;
-        if (!paramString.equals("visibility")) {
+          if (!paramString.equals("visibility")) {
+            break;
+          }
+          i = 22;
           break;
-        }
-        i = 22;
-        break;
-        resetBackground();
-        return true;
-        setBorderRadius(0, 0.0F);
-        resetBackground();
-        return true;
-        setBoderTopLeftRadius(0.0F);
-        resetBackground();
-        return true;
-        setBoderTopRightRadius(0.0F);
-        resetBackground();
-        return true;
-        setBoderBottomLeftRadius(0.0F);
-        resetBackground();
-        return true;
-        setBoderBottomRightRadius(0.0F);
-        resetBackground();
+          if (!paramString.equals("transform_origin_parse")) {
+            break;
+          }
+          i = 23;
+          break;
+          if (!paramString.equals("transform_parse")) {
+            break;
+          }
+          i = 24;
+          break;
+          if (!paramString.equals("background_image_parse")) {
+            break;
+          }
+          i = 25;
+          break;
+          if (!paramString.equals("rotation")) {
+            break;
+          }
+          i = 26;
+          break;
+          resetBackground();
+          return true;
+          setBorderRadius(0, 0.0F);
+          resetBackground();
+          return true;
+          setBoderTopLeftRadius(0.0F);
+          resetBackground();
+          return true;
+          setBoderTopRightRadius(0.0F);
+          resetBackground();
+          return true;
+          setBoderBottomLeftRadius(0.0F);
+          resetBackground();
+          return true;
+          setBoderBottomRightRadius(0.0F);
+          resetBackground();
+          return true;
+        } while (this.mHost == null);
+        this.mHost.setAlpha(1.0F);
         return true;
       } while (this.mHost == null);
-      this.mHost.setAlpha(1.0F);
+      getHostView().setVisibility(0);
       return true;
-    } while (this.mHost == null);
-    getHostView().setVisibility(0);
+      resetTransformOrigin();
+      return true;
+      resetTransform();
+      return true;
+      resetBackgroundImage();
+      return true;
+      paramString = getHostView();
+    } while (paramString == null);
+    paramString.setRotation(0.0F);
     return true;
   }
   
@@ -1645,16 +1948,17 @@ public abstract class VComponent<T extends View>
   {
     boolean bool2 = true;
     int i = -1;
+    boolean bool1;
     switch (paramString.hashCode())
     {
     default: 
       switch (i)
       {
+      default: 
+        bool1 = false;
       }
       break;
     }
-    label1540:
-    label1596:
     do
     {
       do
@@ -1663,7 +1967,6 @@ public abstract class VComponent<T extends View>
         {
           do
           {
-            boolean bool1 = false;
             do
             {
               do
@@ -1700,286 +2003,270 @@ public abstract class VComponent<T extends View>
                                             {
                                               do
                                               {
-                                                do
-                                                {
-                                                  return bool1;
-                                                  if (!paramString.equals("backgroundColor")) {
-                                                    break;
-                                                  }
-                                                  i = 0;
+                                                return bool1;
+                                                if (!paramString.equals("backgroundColor")) {
                                                   break;
-                                                  if (!paramString.equals("borderWidth")) {
-                                                    break;
-                                                  }
-                                                  i = 1;
+                                                }
+                                                i = 0;
+                                                break;
+                                                if (!paramString.equals("borderWidth")) {
                                                   break;
-                                                  if (!paramString.equals("borderLeftWidth")) {
-                                                    break;
-                                                  }
-                                                  i = 2;
+                                                }
+                                                i = 1;
+                                                break;
+                                                if (!paramString.equals("borderLeftWidth")) {
                                                   break;
-                                                  if (!paramString.equals("borderTopWidth")) {
-                                                    break;
-                                                  }
-                                                  i = 3;
+                                                }
+                                                i = 2;
+                                                break;
+                                                if (!paramString.equals("borderTopWidth")) {
                                                   break;
-                                                  if (!paramString.equals("borderRightWidth")) {
-                                                    break;
-                                                  }
-                                                  i = 4;
+                                                }
+                                                i = 3;
+                                                break;
+                                                if (!paramString.equals("borderRightWidth")) {
                                                   break;
-                                                  if (!paramString.equals("borderBottomWidth")) {
-                                                    break;
-                                                  }
-                                                  i = 5;
+                                                }
+                                                i = 4;
+                                                break;
+                                                if (!paramString.equals("borderBottomWidth")) {
                                                   break;
-                                                  if (!paramString.equals("borderColor")) {
-                                                    break;
-                                                  }
-                                                  i = 6;
+                                                }
+                                                i = 5;
+                                                break;
+                                                if (!paramString.equals("borderColor")) {
                                                   break;
-                                                  if (!paramString.equals("borderLeftColor")) {
-                                                    break;
-                                                  }
-                                                  i = 7;
+                                                }
+                                                i = 6;
+                                                break;
+                                                if (!paramString.equals("borderLeftColor")) {
                                                   break;
-                                                  if (!paramString.equals("borderTopColor")) {
-                                                    break;
-                                                  }
-                                                  i = 8;
+                                                }
+                                                i = 7;
+                                                break;
+                                                if (!paramString.equals("borderTopColor")) {
                                                   break;
-                                                  if (!paramString.equals("borderRightColor")) {
-                                                    break;
-                                                  }
-                                                  i = 9;
+                                                }
+                                                i = 8;
+                                                break;
+                                                if (!paramString.equals("borderRightColor")) {
                                                   break;
-                                                  if (!paramString.equals("borderBottomColor")) {
-                                                    break;
-                                                  }
-                                                  i = 10;
+                                                }
+                                                i = 9;
+                                                break;
+                                                if (!paramString.equals("borderBottomColor")) {
                                                   break;
-                                                  if (!paramString.equals("borderStyle")) {
-                                                    break;
-                                                  }
-                                                  i = 11;
+                                                }
+                                                i = 10;
+                                                break;
+                                                if (!paramString.equals("borderStyle")) {
                                                   break;
-                                                  if (!paramString.equals("borderLeftStyle")) {
-                                                    break;
-                                                  }
-                                                  i = 12;
+                                                }
+                                                i = 11;
+                                                break;
+                                                if (!paramString.equals("borderLeftStyle")) {
                                                   break;
-                                                  if (!paramString.equals("borderTopStyle")) {
-                                                    break;
-                                                  }
-                                                  i = 13;
+                                                }
+                                                i = 12;
+                                                break;
+                                                if (!paramString.equals("borderTopStyle")) {
                                                   break;
-                                                  if (!paramString.equals("borderRightStyle")) {
-                                                    break;
-                                                  }
-                                                  i = 14;
+                                                }
+                                                i = 13;
+                                                break;
+                                                if (!paramString.equals("borderRightStyle")) {
                                                   break;
-                                                  if (!paramString.equals("borderBottomStyle")) {
-                                                    break;
-                                                  }
-                                                  i = 15;
+                                                }
+                                                i = 14;
+                                                break;
+                                                if (!paramString.equals("borderBottomStyle")) {
                                                   break;
-                                                  if (!paramString.equals("borderRadius")) {
-                                                    break;
-                                                  }
-                                                  i = 16;
+                                                }
+                                                i = 15;
+                                                break;
+                                                if (!paramString.equals("borderRadius")) {
                                                   break;
-                                                  if (!paramString.equals("opacity")) {
-                                                    break;
-                                                  }
-                                                  i = 17;
+                                                }
+                                                i = 16;
+                                                break;
+                                                if (!paramString.equals("opacity")) {
                                                   break;
-                                                  if (!paramString.equals("borderTopLeftRadius")) {
-                                                    break;
-                                                  }
-                                                  i = 18;
+                                                }
+                                                i = 17;
+                                                break;
+                                                if (!paramString.equals("borderTopLeftRadius")) {
                                                   break;
-                                                  if (!paramString.equals("borderTopRightRadius")) {
-                                                    break;
-                                                  }
-                                                  i = 19;
+                                                }
+                                                i = 18;
+                                                break;
+                                                if (!paramString.equals("borderTopRightRadius")) {
                                                   break;
-                                                  if (!paramString.equals("borderBottomLeftRadius")) {
-                                                    break;
-                                                  }
-                                                  i = 20;
+                                                }
+                                                i = 19;
+                                                break;
+                                                if (!paramString.equals("borderBottomLeftRadius")) {
                                                   break;
-                                                  if (!paramString.equals("borderBottomRightRadius")) {
-                                                    break;
-                                                  }
-                                                  i = 21;
+                                                }
+                                                i = 20;
+                                                break;
+                                                if (!paramString.equals("borderBottomRightRadius")) {
                                                   break;
-                                                  if (!paramString.equals("visibility")) {
-                                                    break;
-                                                  }
-                                                  i = 22;
+                                                }
+                                                i = 21;
+                                                break;
+                                                if (!paramString.equals("visibility")) {
                                                   break;
-                                                  if (!paramString.equals("rotation")) {
-                                                    break;
-                                                  }
-                                                  i = 23;
+                                                }
+                                                i = 22;
+                                                break;
+                                                if (!paramString.equals("rotation")) {
                                                   break;
-                                                  if (!paramString.equals("transformOrigin")) {
-                                                    break;
-                                                  }
-                                                  i = 24;
+                                                }
+                                                i = 23;
+                                                break;
+                                                if (!paramString.equals("transform_origin_parse")) {
                                                   break;
-                                                  if (!paramString.equals("transform")) {
-                                                    break;
-                                                  }
-                                                  i = 25;
+                                                }
+                                                i = 24;
+                                                break;
+                                                if (!paramString.equals("transform_parse")) {
                                                   break;
-                                                  paramString = ViolaUtils.getString(paramObject, null);
-                                                  bool1 = bool2;
-                                                } while (paramString == null);
-                                                setBackgroundColor(paramString);
-                                                return true;
-                                                setBorderWidth(0, FlexConvertUtils.getFloatByViewport(paramObject, getDomObject().getViewPortWidth()));
-                                                return true;
-                                                setBorderWidth(1, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
-                                                return true;
-                                                setBorderWidth(2, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
-                                                return true;
-                                                setBorderWidth(3, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
-                                                return true;
-                                                setBorderWidth(4, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
-                                                return true;
+                                                }
+                                                i = 25;
+                                                break;
+                                                if (!paramString.equals("topIndex")) {
+                                                  break;
+                                                }
+                                                i = 26;
+                                                break;
+                                                if (!paramString.equals("background_image_parse")) {
+                                                  break;
+                                                }
+                                                i = 27;
+                                                break;
                                                 paramString = ViolaUtils.getString(paramObject, null);
                                                 bool1 = bool2;
                                               } while (paramString == null);
-                                              setBorderColor(0, paramString);
+                                              setBackgroundColor(paramString);
+                                              return true;
+                                              setBorderWidth(0, FlexConvertUtils.getFloatByViewport(paramObject, getDomObject().getViewPortWidth()));
+                                              return true;
+                                              setBorderWidth(1, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
+                                              return true;
+                                              setBorderWidth(2, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
+                                              return true;
+                                              setBorderWidth(3, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
+                                              return true;
+                                              setBorderWidth(4, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
                                               return true;
                                               paramString = ViolaUtils.getString(paramObject, null);
                                               bool1 = bool2;
                                             } while (paramString == null);
-                                            setBorderColor(1, paramString);
+                                            setBorderColor(0, paramString);
                                             return true;
                                             paramString = ViolaUtils.getString(paramObject, null);
                                             bool1 = bool2;
                                           } while (paramString == null);
-                                          setBorderColor(2, paramString);
+                                          setBorderColor(1, paramString);
                                           return true;
                                           paramString = ViolaUtils.getString(paramObject, null);
                                           bool1 = bool2;
                                         } while (paramString == null);
-                                        setBorderColor(3, paramString);
+                                        setBorderColor(2, paramString);
                                         return true;
                                         paramString = ViolaUtils.getString(paramObject, null);
                                         bool1 = bool2;
                                       } while (paramString == null);
-                                      setBorderColor(4, paramString);
+                                      setBorderColor(3, paramString);
                                       return true;
                                       paramString = ViolaUtils.getString(paramObject, null);
                                       bool1 = bool2;
                                     } while (paramString == null);
-                                    setBorderStyle(0, paramString);
+                                    setBorderColor(4, paramString);
                                     return true;
                                     paramString = ViolaUtils.getString(paramObject, null);
                                     bool1 = bool2;
                                   } while (paramString == null);
-                                  setBorderStyle(1, paramString);
+                                  setBorderStyle(0, paramString);
                                   return true;
                                   paramString = ViolaUtils.getString(paramObject, null);
                                   bool1 = bool2;
                                 } while (paramString == null);
-                                setBorderStyle(2, paramString);
+                                setBorderStyle(1, paramString);
                                 return true;
                                 paramString = ViolaUtils.getString(paramObject, null);
                                 bool1 = bool2;
                               } while (paramString == null);
-                              setBorderStyle(3, paramString);
+                              setBorderStyle(2, paramString);
                               return true;
                               paramString = ViolaUtils.getString(paramObject, null);
                               bool1 = bool2;
                             } while (paramString == null);
-                            setBorderStyle(4, paramString);
+                            setBorderStyle(3, paramString);
                             return true;
                             paramString = ViolaUtils.getString(paramObject, null);
                             bool1 = bool2;
                           } while (paramString == null);
-                          setBorderRadius(0, FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
+                          setBorderStyle(4, paramString);
                           return true;
-                          paramString = Float.valueOf(ViolaUtils.getFloat(paramObject, Float.valueOf(-1.0F)));
+                          paramString = ViolaUtils.getString(paramObject, null);
                           bool1 = bool2;
                         } while (paramString == null);
+                        setBorderRadius(0, FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
+                        return true;
+                        paramString = Float.valueOf(ViolaUtils.getFloat(paramObject, Float.valueOf(-1.0F)));
                         bool1 = bool2;
-                      } while (paramString.equals(Float.valueOf(-1.0F)));
-                      setOpacity(paramString.floatValue());
-                      return true;
-                      paramString = ViolaUtils.getString(paramObject, null);
+                      } while (paramString == null);
                       bool1 = bool2;
-                    } while (paramString == null);
-                    setBoderTopLeftRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
+                    } while (paramString.equals(Float.valueOf(-1.0F)));
+                    setOpacity(paramString.floatValue());
                     return true;
                     paramString = ViolaUtils.getString(paramObject, null);
                     bool1 = bool2;
                   } while (paramString == null);
-                  setBoderTopRightRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
+                  setBoderTopLeftRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
                   return true;
                   paramString = ViolaUtils.getString(paramObject, null);
                   bool1 = bool2;
                 } while (paramString == null);
-                setBoderBottomLeftRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
+                setBoderTopRightRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
                 return true;
                 paramString = ViolaUtils.getString(paramObject, null);
                 bool1 = bool2;
               } while (paramString == null);
-              setBoderBottomRightRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
+              setBoderBottomLeftRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
               return true;
+              paramString = ViolaUtils.getString(paramObject, null);
               bool1 = bool2;
-            } while (getHostView() == null);
-            this.mVisibility = ViolaUtils.getString(paramObject, "visible");
-            if ("visible".equals(this.mVisibility))
-            {
-              getHostView().setVisibility(0);
-              return true;
-            }
-            getHostView().setVisibility(4);
+            } while (paramString == null);
+            setBoderBottomRightRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
             return true;
-            float f = ViolaUtils.getFloat(paramObject, Float.valueOf(90.0F));
-            getHostView().setRotation(f);
+            bool1 = bool2;
+          } while (getHostView() == null);
+          this.mVisibility = ViolaUtils.getString(paramObject, "visible");
+          if ("visible".equals(this.mVisibility))
+          {
+            getHostView().setVisibility(0);
             return true;
-            paramString = FlexConvertUtils.converTransformOriginStringToStringArray(ViolaUtils.getString(paramObject, null));
-            if ((paramString != null) && (paramString.length >= 1))
-            {
-              if (paramString.length == 1)
-              {
-                getHostView().setPivotX(getPivotXResultByStr(paramString[0]));
-                return true;
-              }
-              getHostView().setPivotX(getPivotXResultByStr(paramString[0]));
-              getHostView().setPivotY(getPivotYResultByStr(paramString[1]));
-              return true;
-            }
-            paramString = ViolaUtils.getString(paramObject, " ").trim();
-            if (!paramString.startsWith("scaleY")) {
-              break label1540;
-            }
-            paramString = FlexConvertUtils.converTransFormScaleToStringArray(ViolaUtils.getString(paramObject, null), "scaleY(", ")", "");
-          } while ((paramString == null) || (paramString.length < 1));
-          getHostView().setScaleY(Float.valueOf(paramString[0]).floatValue());
-          return true;
-          if (!paramString.startsWith("scaleX")) {
-            break label1596;
           }
-          paramString = FlexConvertUtils.converTransFormScaleToStringArray(ViolaUtils.getString(paramObject, null), "scaleX(", ")", "");
-        } while ((paramString == null) || (paramString.length < 1));
-        getHostView().setScaleX(Float.valueOf(paramString[0]).floatValue());
-        return true;
-      } while (!paramString.startsWith("scale"));
-      paramString = FlexConvertUtils.converTransFormScaleToStringArray(ViolaUtils.getString(paramObject, null), "scale(", ")", ",");
-    } while ((paramString == null) || (paramString.length < 1));
-    if (paramString.length == 1)
-    {
-      getHostView().setScaleX(Float.valueOf(paramString[0]).floatValue());
-      return true;
-    }
-    getHostView().setScaleX(Float.valueOf(paramString[0]).floatValue());
-    getHostView().setScaleY(Float.valueOf(paramString[1]).floatValue());
+          getHostView().setVisibility(4);
+          return true;
+          float f = ViolaUtils.getFloat(paramObject, Float.valueOf(90.0F));
+          getHostView().setRotation(f);
+          return true;
+          setPivot(paramObject);
+          return true;
+          setTransform(paramObject);
+          return true;
+          bool1 = bool2;
+        } while (!Boolean.valueOf(ViolaUtils.getBoolean(paramObject)).booleanValue());
+        bool1 = bool2;
+      } while (getHostView() == null);
+      bool1 = bool2;
+    } while (getInstance() == null);
+    getInstance().getViolaPageListener().onComponentTopIndex(getHostView(), getDomObject().getLayoutHeight());
+    return true;
+    setLinearGradient(paramObject);
     return true;
   }
   

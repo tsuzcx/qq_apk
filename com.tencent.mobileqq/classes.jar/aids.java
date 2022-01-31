@@ -1,25 +1,27 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import mqq.os.MqqHandler;
 
-class aids
-  implements Animation.AnimationListener
+public class aids
+  extends MqqHandler
 {
-  aids(aidr paramaidr, xrh paramxrh, View paramView) {}
+  public aids(PhoneContactTabView paramPhoneContactTabView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Xrh.a("");
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839104);
+    switch (paramMessage.what)
+    {
+    case 1: 
+    case 2: 
+    default: 
+      return;
+    }
+    this.a.d();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aids
  * JD-Core Version:    0.7.0.1
  */

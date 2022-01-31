@@ -1,24 +1,33 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-class rkh
-  implements Animation.AnimationListener
+public class rkh
 {
-  rkh(rkg paramrkg, FrameLayout paramFrameLayout, ViewGroup paramViewGroup) {}
+  public float a;
+  public int a;
+  public long a;
+  public BaseData a;
+  public Long a;
+  public long b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public rkh(int paramInt, Long paramLong, BaseData paramBaseData)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayerType(0, null);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangLong = paramLong;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData;
+    this.b = 0L;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(rkh paramrkh)
   {
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 0) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+    if (paramrkh != null)
+    {
+      this.jdField_a_of_type_JavaLangLong = paramrkh.jdField_a_of_type_JavaLangLong;
+      this.jdField_a_of_type_Long = paramrkh.jdField_a_of_type_Long;
+      this.jdField_a_of_type_Float = paramrkh.jdField_a_of_type_Float;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramrkh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+      this.b = paramrkh.b;
     }
   }
 }

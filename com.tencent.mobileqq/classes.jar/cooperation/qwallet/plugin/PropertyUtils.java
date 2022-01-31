@@ -10,8 +10,8 @@ import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import bacc;
-import badq;
+import bbdh;
+import bbev;
 
 public class PropertyUtils
 {
@@ -29,7 +29,7 @@ public class PropertyUtils
     if (!TextUtils.isEmpty(mNetworkType)) {
       return mNetworkType;
     }
-    int i = badq.a(paramContext.getApplicationContext());
+    int i = bbev.a(paramContext.getApplicationContext());
     if (i == 1) {
       mNetworkType = "WIFI";
     }
@@ -80,7 +80,7 @@ public class PropertyUtils
     if (mTitleBarHeight > 0) {
       return mTitleBarHeight;
     }
-    mTitleBarHeight = paramActivity.getResources().getDimensionPixelSize(2131167766);
+    mTitleBarHeight = paramActivity.getResources().getDimensionPixelSize(2131298865);
     return mTitleBarHeight;
   }
   
@@ -89,7 +89,7 @@ public class PropertyUtils
     if (mToastOffset > 0) {
       return mToastOffset;
     }
-    mToastOffset = paramContext.getResources().getDimensionPixelSize(2131167766) - (int)bacc.a(paramContext, 5.0F);
+    mToastOffset = paramContext.getResources().getDimensionPixelSize(2131298865) - (int)bbdh.a(paramContext, 5.0F);
     return mToastOffset;
   }
 }

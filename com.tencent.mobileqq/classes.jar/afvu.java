@@ -1,60 +1,80 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.os.AsyncTask;
+import android.view.View;
+import com.tencent.mobileqq.activity.fling.ScreenCapture;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.ref.WeakReference;
 
 public class afvu
-  extends batl
+  extends AsyncTask<String, Void, Boolean>
 {
-  public afvu(AvatarPendantActivity paramAvatarPendantActivity) {}
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onDone(batm parambatm)
+  public afvu(View paramView)
   {
-    super.onDone(parambatm);
-    if (QLog.isColorLevel()) {
-      QLog.d("AvatarPendantActivity", 2, "download onDone status=" + parambatm.a() + ",errCode=" + parambatm.jdField_a_of_type_Int);
-    }
-    int i = parambatm.jdField_a_of_type_JavaLangString.indexOf("?");
-    String str;
-    if (i == -1)
+    if (paramView != null)
     {
-      str = parambatm.jdField_a_of_type_JavaLangString;
-      if (!baau.jdField_a_of_type_JavaLangString.equals(str)) {
-        break label290;
-      }
-      if ((parambatm.jdField_a_of_type_Int != 0) || (parambatm.f != 200)) {
-        break label237;
-      }
-      str = baau.b + "/icon.zip";
-      localFile = new File(baau.c);
-      if (bato.a(new File(str), localFile, false)) {
-        break label215;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantActivity", 2, "unzip avatarPendantMarketIcon fail: " + parambatm.f + ", url: " + parambatm.jdField_a_of_type_JavaLangString);
-      }
-      bace.a(baau.b);
+      Context localContext = paramView.getContext();
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+      paramView.setDrawingCacheEnabled(true);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramView.getDrawingCache();
+      ScreenCapture.setSnapFile(localContext, false);
     }
-    label215:
-    label237:
-    while (!QLog.isColorLevel())
-    {
-      File localFile;
-      return;
-      str = parambatm.jdField_a_of_type_JavaLangString.substring(0, i);
-      break;
-      AvatarPendantActivity.b(this.a);
-      this.a.a.sendEmptyMessage(1000);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantActivity", 2, "download avatarPendantMarketIcon fail: " + parambatm.f + ", url: " + parambatm.jdField_a_of_type_JavaLangString);
-      }
-      bace.a(baau.b);
-      return;
-    }
-    label290:
-    QLog.e("AvatarPendantActivity", 2, "onDone unkonw url: " + parambatm.jdField_a_of_type_JavaLangString + ",errCode:" + parambatm.jdField_a_of_type_Int + ",httpCode:" + parambatm.f);
   }
+  
+  protected Boolean a(String... paramVarArgs)
+  {
+    Boolean localBoolean = Boolean.FALSE;
+    if (isCancelled()) {}
+    while ((this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      return localBoolean;
+    }
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    paramVarArgs = new File(paramVarArgs[0]);
+    File localFile = paramVarArgs.getParentFile();
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    try
+    {
+      paramVarArgs = new FileOutputStream(paramVarArgs);
+      localBitmap.compress(Bitmap.CompressFormat.JPEG, 90, paramVarArgs);
+      paramVarArgs.flush();
+      paramVarArgs.close();
+      paramVarArgs = Boolean.TRUE;
+      return paramVarArgs;
+    }
+    catch (IOException paramVarArgs)
+    {
+      paramVarArgs.printStackTrace();
+    }
+    return localBoolean;
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localView != null)
+      {
+        if (paramBoolean.booleanValue()) {
+          ScreenCapture.setSnapFile(localView.getContext(), true);
+        }
+        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+        localView.setDrawingCacheEnabled(false);
+        localView.destroyDrawingCache();
+      }
+    }
+  }
+  
+  protected void onCancelled() {}
 }
 
 

@@ -1,114 +1,59 @@
-import android.opengl.GLES20;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import android.content.Context;
+import android.support.v4.view.ViewPager.LayoutParams;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import com.tencent.mobileqq.profile.view.QzonePhotoView;
+import com.tencent.qphone.base.util.QLog;
 
 public class avad
-  extends GPUBaseFilter
+  implements bfpg
 {
-  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230755);
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int c;
+  public avad(QzonePhotoView paramQzonePhotoView) {}
   
-  public avad()
+  public AdapterView a(Context paramContext, int paramInt)
   {
-    this("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
-  }
-  
-  public avad(String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-    this.mFilterType = 0;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(boolean paramBoolean, float paramFloat)
-  {
-    float f2 = 1.0F;
-    float f1 = 0.0F;
-    if (paramFloat > 1.0F) {
-      paramFloat = f2;
-    }
-    for (;;)
+    do
     {
-      if (paramFloat < 0.0F) {
-        paramFloat = f1;
-      }
-      for (;;)
+      try
       {
-        this.jdField_b_of_type_Boolean = paramBoolean;
-        this.jdField_a_of_type_Float = paramFloat;
-        return;
+        paramContext = new GridView(paramContext);
+        ViewPager.LayoutParams localLayoutParams;
+        Context localContext = paramContext;
       }
-    }
-  }
-  
-  public void onDrawTexture()
-  {
-    float f2 = 1.0F;
-    int i = this.jdField_b_of_type_Int;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      f1 = 1.0F;
-      GLES20.glUniform1f(i, f1);
-      GLES20.glUniform1f(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float);
-      i = this.c;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label57;
+      catch (OutOfMemoryError localOutOfMemoryError1)
+      {
+        try
+        {
+          paramContext.setNumColumns(4);
+          paramContext.setFadingEdgeLength(0);
+          paramContext.setHorizontalSpacing(QzonePhotoView.a(this.a));
+          paramContext.setVerticalSpacing(QzonePhotoView.a(this.a));
+          paramContext.setStretchMode(2);
+          paramContext.setScrollingCacheEnabled(false);
+          paramContext.setSelector(2131167087);
+          localLayoutParams = new ViewPager.LayoutParams();
+          localLayoutParams.gravity = 17;
+          localLayoutParams.height = -2;
+          localLayoutParams.width = -1;
+          paramContext.setLayoutParams(localLayoutParams);
+          localContext = paramContext;
+          return localContext;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError2)
+        {
+          continue;
+        }
+        localOutOfMemoryError1 = localOutOfMemoryError1;
+        paramContext = null;
       }
-    }
-    label57:
-    for (float f1 = f2;; f1 = 2.0F)
-    {
-      GLES20.glUniform1f(i, f1);
-      return;
-      f1 = 2.0F;
-      break;
-    }
-  }
-  
-  public void onInitialized()
-  {
-    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "percent");
-    this.jdField_b_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "drawPart");
-    this.c = GLES20.glGetUniformLocation(getProgram(), "cutX");
-  }
-  
-  public String toString()
-  {
-    double d2 = 1.0D;
-    int i = this.mFilterType;
-    double d1;
-    float f;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      d1 = 1.0D;
-      f = this.jdField_a_of_type_Float;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label77;
-      }
-    }
-    for (;;)
-    {
-      return String.format("filter type=%s, draw left=%s, draw percent=%s, directionx=%s", new Object[] { Integer.valueOf(i), Double.valueOf(d1), Float.valueOf(f), Double.valueOf(d2) });
-      d1 = 2.0D;
-      break;
-      label77:
-      d2 = 2.0D;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.e("ProfileCard.QzonePhotoView", 2, "new gridview error", localOutOfMemoryError1);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avad
  * JD-Core Version:    0.7.0.1
  */

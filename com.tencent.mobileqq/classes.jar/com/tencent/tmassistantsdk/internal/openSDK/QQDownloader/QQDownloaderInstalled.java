@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 
 public class QQDownloaderInstalled
   extends BroadcastReceiver
@@ -29,23 +29,23 @@ public class QQDownloaderInstalled
   
   public void a(Context paramContext)
   {
-    ac.c(a, "context = " + paramContext);
+    ab.c(a, "context = " + paramContext);
     IntentFilter localIntentFilter;
     if (!this.c)
     {
-      ac.c("QQDownloaderInstalled", "registeReceiver   context" + paramContext + "  receiver:" + this);
+      ab.c("QQDownloaderInstalled", "registeReceiver   context" + paramContext + "  receiver:" + this);
       localIntentFilter = new IntentFilter("com.tencent.assistant.ipc.firststart.action");
     }
     try
     {
       paramContext = paramContext.registerReceiver(this, localIntentFilter);
-      ac.c("QQDownloaderInstalled", "" + paramContext);
+      ab.c("QQDownloaderInstalled", "" + paramContext);
       this.c = true;
       return;
     }
     catch (Throwable paramContext)
     {
-      ac.c("QQDownloaderInstalled", "registeReceiver exception!!!");
+      ab.c("QQDownloaderInstalled", "registeReceiver exception!!!");
       this.c = false;
       paramContext.printStackTrace();
     }
@@ -53,25 +53,25 @@ public class QQDownloaderInstalled
   
   public void a(d paramd)
   {
-    ac.c(a, "listener = " + paramd);
+    ab.c(a, "listener = " + paramd);
     this.d = paramd;
   }
   
   public void b()
   {
-    ac.c(a, "unregisteListener start");
+    ab.c(a, "unregisteListener start");
     this.d = null;
   }
   
   public void b(Context paramContext)
   {
     if ((paramContext == null) || (b == null)) {
-      ac.c(a, "unRegisteReceiver fail! context = " + paramContext + ",mInstance = " + b);
+      ab.c(a, "unRegisteReceiver fail! context = " + paramContext + ",mInstance = " + b);
     }
     while (!this.c) {
       return;
     }
-    ac.c("QQDownloaderInstalled", "realy unRegisteReceiver  context:" + paramContext + "  receiver:" + this);
+    ab.c("QQDownloaderInstalled", "realy unRegisteReceiver  context:" + paramContext + "  receiver:" + this);
     try
     {
       paramContext.unregisterReceiver(this);
@@ -80,7 +80,7 @@ public class QQDownloaderInstalled
     }
     catch (Throwable paramContext)
     {
-      ac.c("QQDownloaderInstalled", "unRegisteReceiver exception!!!");
+      ab.c("QQDownloaderInstalled", "unRegisteReceiver exception!!!");
       this.c = false;
       paramContext.printStackTrace();
     }
@@ -88,7 +88,7 @@ public class QQDownloaderInstalled
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ac.c("QQDownloaderInstalled", "onReceive!");
+    ab.c("QQDownloaderInstalled", "onReceive!");
     new c(this, paramContext).start();
   }
 }

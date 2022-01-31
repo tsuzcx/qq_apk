@@ -1,17 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.Conversation;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.LocalCrashCollector;
+import com.tencent.widget.XEditTextEx;
 
 public class aamm
-  implements DialogInterface.OnDismissListener
+  implements View.OnLongClickListener
 {
-  public aamm(Conversation paramConversation) {}
+  public aamm(BaseChatPie paramBaseChatPie) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onLongClick(View paramView)
   {
-    if (paramDialogInterface == Conversation.a(this.a)) {
-      Conversation.a(this.a, null);
+    if ("//findcrash".equals(this.a.a.getText().toString())) {
+      ThreadManager.post(new LocalCrashCollector(this.a), 8, null, true);
     }
+    return true;
   }
 }
 

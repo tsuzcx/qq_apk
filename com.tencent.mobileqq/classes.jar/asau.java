@@ -1,99 +1,124 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
 public class asau
+  extends ampb<asao>
 {
-  public static void a(QQAppInterface paramQQAppInterface) {}
-  
-  public static void a(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip, int paramInt)
+  public int a()
   {
-    if (paramMessageForUniteGrayTip != null)
+    return 454;
+  }
+  
+  @NonNull
+  public asao a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WelcomeConfigProcessor", 2, "migrateOldOrDefaultContent");
+    }
+    return new asao();
+  }
+  
+  @Nullable
+  public asao a(ampi[] paramArrayOfampi)
+  {
+    int j;
+    int i;
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      String str1 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_id");
-      String str2 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_WillDowngradeSoon");
-      paramMessageForUniteGrayTip = paramMessageForUniteGrayTip.frienduin;
-      if (!TextUtils.isEmpty(str1))
+      QLog.d("WelcomeConfigProcessor", 2, "onParsed :" + paramArrayOfampi);
+      if (paramArrayOfampi != null)
       {
-        long l1 = asbg.b(str1);
-        long l2 = asbg.a(str1);
-        if ((asbg.b(l1)) && (l2 >= 0L)) {
-          awqx.b(paramQQAppInterface, "dc00898", "", paramMessageForUniteGrayTip, "0X800A7E4", asbg.a(l1, l2), (int)(l1 * 10L + l2), 0, "", "", "", "");
+        j = paramArrayOfampi.length;
+        i = 0;
+        while (i < j)
+        {
+          localObject1 = paramArrayOfampi[i];
+          if (localObject1 != null) {
+            QLog.d("WelcomeConfigProcessor", 2, "onParsed item: " + ((ampi)localObject1).jdField_a_of_type_JavaLangString);
+          }
+          i += 1;
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkBusinessLogicHelper", 2, "reportMutualMarkGrayTipExposure id:" + str1 + " willDowngradeSoon:" + str2 + " grayID:" + paramInt);
-      }
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip, int paramInt, String paramString)
-  {
-    if (paramMessageForUniteGrayTip != null)
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
     {
-      paramQQAppInterface = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_id");
-      paramMessageForUniteGrayTip = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_WillDowngradeSoon");
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkBusinessLogicHelper", 2, "reportMutualMarkGrayTipClickWebLink id:" + paramQQAppInterface + " willDowngradeSoon:" + paramMessageForUniteGrayTip + " url:" + paramString);
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, asbx paramasbx)
-  {
-    if (paramasbx != null)
-    {
-      awqx.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E3", asbg.a(paramasbx.a, paramasbx.b), (int)(paramasbx.a * 10L + paramasbx.b), 0, "", "", "", "");
-      switch ((int)paramasbx.a)
+      j = paramArrayOfampi.length;
+      i = 0;
+      while (i < j)
       {
+        Object localObject2 = paramArrayOfampi[i];
+        if ((localObject2 != null) && (!TextUtils.isEmpty(((ampi)localObject2).jdField_a_of_type_JavaLangString))) {
+          try
+          {
+            localObject1 = new asao();
+            localObject2 = new JSONObject(((ampi)localObject2).jdField_a_of_type_JavaLangString);
+            if (((JSONObject)localObject2).has("popup_url")) {
+              ((asao)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).getString("popup_url");
+            }
+            if (((JSONObject)localObject2).has("fixed_entrance_url")) {
+              ((asao)localObject1).b = ((JSONObject)localObject2).getString("fixed_entrance_url");
+            }
+            if (((JSONObject)localObject2).has("request_interval")) {
+              ((asao)localObject1).jdField_a_of_type_Int = ((JSONObject)localObject2).getInt("request_interval");
+            }
+            return localObject1;
+          }
+          catch (Throwable localThrowable)
+          {
+            QLog.e("WelcomeConfigProcessor", 1, localThrowable, new Object[0]);
+          }
+        }
+        i += 1;
       }
     }
-    for (;;)
-    {
-      bajr.a(paramString, paramasbx, paramQQAppInterface, "C2C_click");
-      awqx.b(paramQQAppInterface, "CliOper", "", "", "0X8007602", "0X8007602", 0, 0, "", "", "", "");
-      awqx.b(null, "dc00898", "", "", "0X800A1FA", "0X800A1FA", 0, 0, "", "", "", "");
-      return;
-      awqx.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7A1", "0X800A7A1", 0, 0, "", "", "", "");
-    }
+    return null;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, asbx paramasbx1, asbx paramasbx2)
+  public Class<asao> a()
   {
-    if (paramasbx1 != null) {
-      awqx.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E2", asbg.a(paramasbx1.a, paramasbx1.b), (int)(paramasbx1.a * 10L + paramasbx1.b), 0, "", "", "", "");
-    }
-    if (paramasbx2 != null) {
-      awqx.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E2", asbg.a(paramasbx2.a, paramasbx2.b), (int)(paramasbx2.a * 10L + paramasbx2.b), 0, "", "", "", "");
-    }
-    awqx.b(null, "dc00898", "", "", "0X800A1F9", "0X800A1F9", 0, 0, "", "", "", "");
+    return asao.class;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WelcomeConfigProcessor", 2, "onReqFailed, code = " + paramInt);
+    }
+  }
+  
+  public void a(asao paramasao)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WelcomeConfigProcessor", 2, "onUpdate");
+    }
+    if (paramasao != null) {
+      ((LoginWelcomeManager)BaseApplicationImpl.sApplication.getRuntime().getManager(146)).a(paramasao);
+    }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WelcomeConfigProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public boolean b()
   {
     return false;
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip, int paramInt)
+  public boolean c()
   {
-    if (paramMessageForUniteGrayTip != null)
-    {
-      String str1 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_id");
-      String str2 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_WillDowngradeSoon");
-      paramMessageForUniteGrayTip = paramMessageForUniteGrayTip.frienduin;
-      if (!TextUtils.isEmpty(str1))
-      {
-        long l1 = asbg.b(str1);
-        long l2 = asbg.a(str1);
-        if ((asbg.b(l1)) && (l2 >= 0L)) {
-          awqx.b(paramQQAppInterface, "dc00898", "", paramMessageForUniteGrayTip, "0X800A7E5", asbg.a(l1, l2), (int)(l1 * 10L + l2), 0, "", "", "", "");
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkBusinessLogicHelper", 2, "reportMutualMarkGrayTipClick id:" + str1 + " willDowngradeSoon:" + str2 + " grayID:" + paramInt);
-      }
-    }
+    return true;
   }
 }
 

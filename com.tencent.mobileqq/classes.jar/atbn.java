@@ -1,30 +1,48 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-class atbn
-  implements behk
+public class atbn
 {
-  private atbn(atbj paramatbj) {}
-  
-  public void a(AdapterView<?> paramAdapterView)
+  public static String a(String paramString)
   {
-    behk localbehk = this.a.jdField_a_of_type_Atbi.a();
-    if (localbehk != null) {
-      localbehk.a(paramAdapterView);
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
     }
+    String str = "*S1*" + bawq.a(paramString.getBytes(), 11);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("NearbyURLSafeUtil", 4, "encode:" + paramString + " to:" + str);
+    }
+    return str;
   }
   
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static boolean a(String paramString)
   {
-    if (this.a.jdField_a_of_type_Int != 0)
+    if (paramString == null) {
+      throw new NullPointerException("isBase64 src should not be null");
+    }
+    return paramString.startsWith("*S1*");
+  }
+  
+  public static String b(String paramString)
+  {
+    if (paramString == null) {
+      throw new NullPointerException("decode src should not be null");
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("NearbyURLSafeUtil", 4, "decode src:" + paramString);
+    }
+    String str = paramString;
+    if (a(paramString))
     {
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.a();
+      paramString = new String(bawq.a(paramString.substring("*S1*".length()), 11));
+      str = paramString;
+      if (QLog.isDevelopLevel())
+      {
+        QLog.i("NearbyURLSafeUtil", 4, "decode result:" + paramString);
+        str = paramString;
+      }
     }
-    behk localbehk = this.a.jdField_a_of_type_Atbi.a();
-    if (localbehk != null) {
-      localbehk.a(paramAdapterView, paramView, paramInt, paramLong);
-    }
+    return str;
   }
 }
 

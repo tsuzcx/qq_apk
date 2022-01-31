@@ -1,24 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 
 public class afwt
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public afwt(BindNumberActivity paramBindNumberActivity) {}
+  public afwt(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    BindNumberActivity.a(this.a);
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.a.getIntent();
-    if (paramDialogInterface.getBooleanExtra("kFPhoneChange", false)) {
-      this.a.a("CliOper", "0X8005DE9", 1);
+    if (!this.a.d)
+    {
+      if (bfni.e()) {
+        this.a.startActivity(new Intent("android.settings.SETTINGS"));
+      }
     }
-    if (paramDialogInterface.getBooleanExtra("kUnityOther", false)) {
-      this.a.a("CliOper", "0X8005DE9", 2);
+    else {
+      return;
     }
+    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
   }
 }
 

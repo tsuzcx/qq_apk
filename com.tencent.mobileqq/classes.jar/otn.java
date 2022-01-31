@@ -1,45 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
-
 public class otn
-  implements owa
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  public int a;
+  public long a;
+  float[] a;
+  public int b;
+  long jdField_b_of_type_Long;
+  float[] jdField_b_of_type_ArrayOfFloat;
+  public int c;
+  public int d;
+  int e;
+  int f;
+  int g;
+  int h;
+  int i;
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public String a()
   {
-    return osq.a(paramBaseArticleInfo);
-  }
-  
-  public void a(int paramInt1, Container paramContainer, opw paramopw, int paramInt2)
-  {
-    paramContainer = paramContainer.getVirtualView();
-    if ((paramopw != null) && (paramopw.a() != null) && (AdvertisementInfo.isAdvertisementInfo(paramopw.a())))
-    {
-      Object localObject = paramContainer.findViewBaseByName("id_view_AdDownloadView");
-      if ((localObject != null) && ((localObject instanceof nqv)))
-      {
-        localObject = (nqv)localObject;
-        ((nqv)localObject).a(paramInt1);
-        ((nqv)localObject).a(paramopw, true);
-      }
-      paramContainer = paramContainer.findViewBaseByName("id_article_double_image");
-      if ((paramContainer != null) && ((paramContainer instanceof nrp))) {
-        ((nrp)paramContainer).a(paramopw);
-      }
+    double d1 = this.g * 1.0D / this.h;
+    double d2 = 1000.0D * d1 / this.jdField_a_of_type_Long;
+    double d3 = this.jdField_a_of_type_ArrayOfFloat[0] / this.i;
+    double d4 = this.jdField_a_of_type_ArrayOfFloat[1] / this.h;
+    double d5 = this.b[0] / this.i;
+    double d6 = this.b[1] / this.h;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (int j = 0;; j = 1) {
+      return j + "_" + String.format("%.2f", new Object[] { Double.valueOf(d1) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d2) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d4) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d3) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d6) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d5) });
     }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, opw paramopw, ViewBase paramViewBase)
-  {
-    return false;
   }
 }
 

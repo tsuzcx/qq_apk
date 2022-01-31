@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
-import qeq;
-import qhw;
+import qqo;
+import qub;
 
 class VideoFeedsPlayManager$2$1
   implements Runnable
@@ -15,10 +15,10 @@ class VideoFeedsPlayManager$2$1
     if (QLog.isColorLevel()) {
       QLog.d("VideoFeedsPlayManager.preplay", 2, "VideoFeedsPlayManager innerPlayVideo miss cache");
     }
-    if ((this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Qeq.jdField_a_of_type_AndroidViewView != null)) {
-      this.a.jdField_a_of_type_Qeq.jdField_a_of_type_Qhw.a((IVideoViewBase)this.a.jdField_a_of_type_Qeq.jdField_a_of_type_AndroidViewView);
+    if ((this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Qqo.jdField_a_of_type_AndroidViewView != null)) {
+      this.a.jdField_a_of_type_Qqo.jdField_a_of_type_Qub.a((IVideoViewBase)this.a.jdField_a_of_type_Qqo.jdField_a_of_type_AndroidViewView);
     }
-    VideoFeedsPlayManager.b(this.a.this$0, this.a.jdField_a_of_type_Qeq, this.a.b);
+    VideoFeedsPlayManager.b(this.a.this$0, this.a.jdField_a_of_type_Qqo, this.a.b);
   }
 }
 

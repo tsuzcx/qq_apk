@@ -1,14 +1,19 @@
-import cooperation.plugin.PluginInfo;
+import android.widget.NumberPicker;
+import android.widget.NumberPicker.OnValueChangeListener;
 
-public abstract interface bfei
+class bfei
+  implements NumberPicker.OnValueChangeListener
 {
-  public abstract void a(boolean paramBoolean);
+  bfei(bfeh parambfeh) {}
   
-  public abstract boolean a(PluginInfo paramPluginInfo);
+  public void onValueChange(NumberPicker paramNumberPicker, int paramInt1, int paramInt2)
+  {
+    bfeh.a(this.a, paramInt2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfei
  * JD-Core Version:    0.7.0.1
  */

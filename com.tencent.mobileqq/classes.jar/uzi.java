@@ -1,22 +1,80 @@
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserGuideInfoStep.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class uzi
-  extends sfo
+  extends uzu
 {
-  public final int a;
-  public final long a;
-  @NonNull
-  public final uyy a;
-  public final boolean a;
-  public final long b;
+  private uzk jdField_a_of_type_Uzk;
+  private boolean jdField_a_of_type_Boolean;
   
-  public uzi(@NonNull uyy paramuyy, int paramInt, boolean paramBoolean, long paramLong1, long paramLong2)
+  public uzi(uzk paramuzk)
   {
-    this.jdField_a_of_type_Uyy = paramuyy;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
+    this.jdField_a_of_type_Uzk = paramuzk;
+  }
+  
+  public String a()
+  {
+    return "GetUserGuideInfoStep";
+  }
+  
+  public void a()
+  {
+    veg.d("Q.qqstory.home.GetUserGuideInfoStep", "run");
+    uzl localuzl = new uzl();
+    syr.a().a(localuzl, new uzj(this));
+  }
+  
+  public void a(@NonNull uzl paramuzl, @Nullable uzm paramuzm, @NonNull ErrorMessage paramErrorMessage)
+  {
+    veg.d("Q.qqstory.home.GetUserGuideInfoStep", "onCmdRespond");
+    if (b())
+    {
+      veg.e("Q.qqstory.home.GetUserGuideInfoStep", "GetUserGuideInfoStep was reseted !");
+      d();
+      return;
+    }
+    if (paramErrorMessage.isFail())
+    {
+      veg.c("Q.qqstory.home.GetUserGuideInfoStep", "GetUserGuideInfoStep is failed:%s", paramErrorMessage);
+      b(paramErrorMessage);
+      return;
+    }
+    ThreadManager.getUIHandler().post(new GetUserGuideInfoStep.1(this, paramuzm));
+    d();
+  }
+  
+  public void b() {}
+  
+  public boolean b()
+  {
+    try
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void c()
+  {
+    try
+    {
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

@@ -1,19 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.ChannelInfo;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public final class nef
-  implements Parcelable.Creator<VideoInfo.ChannelInfo>
+class nef
+  implements Animation.AnimationListener
 {
-  public VideoInfo.ChannelInfo a(Parcel paramParcel)
+  nef(ned paramned) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new VideoInfo.ChannelInfo(paramParcel);
+    this.a.a.a.setVisibility(0);
+    this.a.a.a.startAnimation(this.a.b);
   }
   
-  public VideoInfo.ChannelInfo[] a(int paramInt)
-  {
-    return new VideoInfo.ChannelInfo[paramInt];
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

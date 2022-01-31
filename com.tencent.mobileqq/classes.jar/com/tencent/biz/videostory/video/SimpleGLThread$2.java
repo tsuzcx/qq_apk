@@ -1,11 +1,11 @@
 package com.tencent.biz.videostory.video;
 
-import wyq;
+import xhq;
 
 public class SimpleGLThread$2
   implements Runnable
 {
-  public SimpleGLThread$2(wyq paramwyq, Object paramObject) {}
+  public SimpleGLThread$2(xhq paramxhq, Object paramObject) {}
   
   public void run()
   {

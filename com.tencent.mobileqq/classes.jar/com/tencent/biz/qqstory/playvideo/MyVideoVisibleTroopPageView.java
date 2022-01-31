@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import ajjy;
+import ajyc;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
@@ -13,10 +13,10 @@ import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.widget.XListView;
 import java.util.List;
-import thf;
-import thg;
-import thh;
-import thi;
+import tub;
+import tuc;
+import tud;
+import tue;
 
 public class MyVideoVisibleTroopPageView
   extends RelativeLayout
@@ -31,34 +31,34 @@ public class MyVideoVisibleTroopPageView
   {
     super(paramContext);
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidContentContext, new thh(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidContentContext, new tud(this));
     this.jdField_a_of_type_AndroidAppDialog = paramDialog;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2131495848, this, true);
-    paramDialog = new thf(this);
+    LayoutInflater.from(paramContext).inflate(2131561439, this, true);
+    paramDialog = new tub(this);
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      XListView localXListView = (XListView)findViewById(2131303596);
-      paramContext = new thi(this, paramContext);
+      XListView localXListView = (XListView)findViewById(2131369266);
+      paramContext = new tue(this, paramContext);
       this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = paramTroopManager;
       paramContext.a(paramList);
       localXListView.setAdapter(paramContext);
       localXListView.setVisibility(0);
-      localXListView.setOnScrollListener(new thg(this));
+      localXListView.setOnScrollListener(new tuc(this));
       localXListView.setOnTouchListener(paramDialog);
       return;
     }
-    paramContext = (TextView)findViewById(2131313660);
-    paramList = findViewById(2131309715);
-    paramContext.setText(ajjy.a(2131641270));
-    paramContext.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(2130845319), null, null);
+    paramContext = (TextView)findViewById(2131379494);
+    paramList = findViewById(2131375470);
+    paramContext.setText(ajyc.a(2131707055));
+    paramContext.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(2130845503), null, null);
     paramList.setVisibility(0);
     paramList.setOnTouchListener(paramDialog);
   }
   
   public String a()
   {
-    return ajjy.a(2131641269);
+    return ajyc.a(2131707054);
   }
 }
 

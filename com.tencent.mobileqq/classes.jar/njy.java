@@ -1,53 +1,21 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
 public class njy
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends AnimatorListenerAdapter
 {
-  public njy(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  public njy(VideoCoverView paramVideoCoverView) {}
   
-  public void onGlobalLayout()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Rect localRect = new Rect();
-    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.getWindowVisibleDisplayFrame(localRect);
-    int j = this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.getRootView().getHeight();
-    int i = j - localRect.height();
-    if (i > 100) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout screenHeight:" + j + ", ExternalPanelheight:" + i + ", isShowKeybroad:" + bool);
-      }
-      if (bool != this.a.k)
-      {
-        if (i > this.a.e) {
-          this.a.e = i;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout mMAXExternalPanelheight:" + this.a.e);
-        }
-        i = bajq.b(this.a.f);
-        j = j - ImmersiveUtils.getStatusBarHeight(this.a) - this.a.getTitleBarHeight() - this.a.e;
-        int k = j - i;
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout contentHeight:" + j + ", fixedHeight:" + i + ", maxHeight:" + k);
-        }
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setMaxHeight(k);
-      }
-      this.a.k = bool;
-      return;
-    }
+    super.onAnimationEnd(paramAnimator);
+    VideoCoverView.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     njy
  * JD-Core Version:    0.7.0.1
  */

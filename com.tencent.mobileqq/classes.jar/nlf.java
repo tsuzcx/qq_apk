@@ -1,35 +1,38 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import java.util.ArrayList;
 
 public class nlf
-  implements qmz
+  implements ViewPager.OnPageChangeListener
 {
-  public nlf(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public nlf(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void a(int paramInt)
-  {
-    if ((ReadInJoyNewFeedsActivity.a(this.a).a(paramInt) != null) && (ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a() != null)) {
-      ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a().k();
-    }
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (paramInt1 == paramInt2) {
-      rvf.a(false);
+    ReadInJoyNativeAdFragment.a(this.a, Math.max(ReadInJoyNativeAdFragment.a(this.a), paramInt + 1));
+    ((nll)ReadInJoyNativeAdFragment.a(this.a).get(paramInt)).a();
+    if (paramInt + 1 < ReadInJoyNativeAdFragment.a(this.a).size()) {
+      ((nll)ReadInJoyNativeAdFragment.a(this.a).get(paramInt + 1)).b();
     }
-    if (paramInt2 == 1) {
-      this.a.getIntent().putExtra("channel_from", 7);
-    }
-    if ((paramInt1 == paramInt2) && (paramInt2 == 0) && ((this.a.a() instanceof ReadInJoySubChannelFragment)))
+    if ((ReadInJoyNativeAdFragment.a(this.a) != null) && (ReadInJoyNativeAdFragment.a(this.a).a == 1) && ((ReadInJoyNativeAdFragment.b(this.a) == 1) || (ReadInJoyNativeAdFragment.b(this.a) == 2)))
     {
-      this.a.a().f();
-      return;
+      if (paramInt != ReadInJoyNativeAdFragment.a(this.a).size() - 1) {
+        break label155;
+      }
+      ReadInJoyNativeAdFragment.a(this.a).setVisibility(8);
     }
-    this.a.a(paramInt2, 256, null, true);
+    for (;;)
+    {
+      ReadInJoyNativeAdFragment.a(this.a);
+      return;
+      label155:
+      ReadInJoyNativeAdFragment.a(this.a).setVisibility(0);
+    }
   }
 }
 

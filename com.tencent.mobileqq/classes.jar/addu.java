@@ -1,20 +1,8 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.graphics.Bitmap;
 
-class addu
-  implements bbgb
+public abstract interface addu
 {
-  addu(addp paramaddp) {}
-  
-  public void a(View paramView)
-  {
-    aciy.n = true;
-    if (this.a.a()) {
-      return;
-    }
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
-  }
+  public abstract void a(Bitmap paramBitmap, addc paramaddc, int paramInt);
 }
 
 

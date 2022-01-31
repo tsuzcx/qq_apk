@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import atmp;
+import aukn;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import obz;
-import ooq;
-import pde;
-import prv;
-import prx;
+import onk;
+import ozr;
+import pow;
+import qdt;
+import qdv;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.ControlParam;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.ReqBody;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.ReqMsgInfo;
@@ -26,7 +26,7 @@ import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.ReqMsgInfo;
 public class ArticleInfoModule$38
   implements Runnable
 {
-  public ArticleInfoModule$38(ooq paramooq, String paramString, int paramInt1, int paramInt2, boolean paramBoolean) {}
+  public ArticleInfoModule$38(ozr paramozr, String paramString, int paramInt1, int paramInt2, boolean paramBoolean) {}
   
   public void run()
   {
@@ -56,7 +56,7 @@ public class ArticleInfoModule$38
       }
       localObject1 = new ConcurrentHashMap();
       Object localObject2 = new oidb_cmd0x8c8.ReqBody();
-      ((oidb_cmd0x8c8.ReqBody)localObject2).uint64_uin.set(Long.valueOf(obz.a()).longValue());
+      ((oidb_cmd0x8c8.ReqBody)localObject2).uint64_uin.set(Long.valueOf(onk.a()).longValue());
       ((oidb_cmd0x8c8.ReqBody)localObject2).uint32_version.set(1);
       ArrayList localArrayList = new ArrayList();
       localObject3 = ((List)localObject3).iterator();
@@ -78,8 +78,8 @@ public class ArticleInfoModule$38
           Iterator localIterator = localArticleInfo.mTopicRecommendFeedsInfo.a.iterator();
           while (localIterator.hasNext())
           {
-            prx localprx = (prx)localIterator.next();
-            localReqMsgInfo.rpt_topic_id.add(Integer.valueOf(localprx.jdField_a_of_type_Int));
+            qdv localqdv = (qdv)localIterator.next();
+            localReqMsgInfo.rpt_topic_id.add(Integer.valueOf(localqdv.jdField_a_of_type_Int));
           }
         }
         localArrayList.add(localReqMsgInfo);
@@ -88,7 +88,7 @@ public class ArticleInfoModule$38
       ((oidb_cmd0x8c8.ReqBody)localObject2).rpt_msg_info_list.set(localArrayList);
       ((oidb_cmd0x8c8.ReqBody)localObject2).control_req_param.set(new oidb_cmd0x8c8.ControlParam());
       ((oidb_cmd0x8c8.ReqBody)localObject2).control_req_param.uint32_need_follow_status.set(1);
-      localObject2 = pde.a("OidbSvc.0x8c8", 2248, 0, ((oidb_cmd0x8c8.ReqBody)localObject2).toByteArray());
+      localObject2 = pow.a("OidbSvc.0x8c8", 2248, 0, ((oidb_cmd0x8c8.ReqBody)localObject2).toByteArray());
       ((ToServiceMsg)localObject2).addAttribute("0x8c8_retry_times", Integer.valueOf(0));
       ((ToServiceMsg)localObject2).addAttribute("0x8c8_articleMap", localObject1);
       ((ToServiceMsg)localObject2).addAttribute("isUpdateByAccount", Boolean.valueOf(this.jdField_a_of_type_Boolean));

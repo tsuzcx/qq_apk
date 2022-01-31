@@ -1,64 +1,80 @@
-import android.support.annotation.NonNull;
-import java.util.Iterator;
-import java.util.Map.Entry;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-public class bhvz
-  implements bhwb<K, V>, Iterator<Map.Entry<K, V>>
+public abstract class bhvz
+  extends Binder
+  implements bhvy
 {
-  private bhvy<K, V> jdField_a_of_type_Bhvy;
-  private boolean jdField_a_of_type_Boolean = true;
-  
-  public bhvz(bhvv parambhvv) {}
-  
-  public Map.Entry<K, V> a()
+  public bhvz()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Bhvy = bhvv.a(this.jdField_a_of_type_Bhvv);
-      return this.jdField_a_of_type_Bhvy;
-    }
-    if (this.jdField_a_of_type_Bhvy != null) {}
-    for (bhvy localbhvy = this.jdField_a_of_type_Bhvy.jdField_a_of_type_Bhvy;; localbhvy = null)
-    {
-      this.jdField_a_of_type_Bhvy = localbhvy;
-      break;
-    }
+    attachInterface(this, "cooperation.smartdevice.ipc.ISmartDeviceService");
   }
   
-  public void a(@NonNull bhvy<K, V> parambhvy)
+  public static bhvy a(IBinder paramIBinder)
   {
-    if (parambhvy == this.jdField_a_of_type_Bhvy)
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.smartdevice.ipc.ISmartDeviceService");
+    if ((localIInterface != null) && ((localIInterface instanceof bhvy))) {
+      return (bhvy)localIInterface;
+    }
+    return new bhwa(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    String str1 = null;
+    Object localObject = null;
+    switch (paramInt1)
     {
-      this.jdField_a_of_type_Bhvy = this.jdField_a_of_type_Bhvy.b;
-      if (this.jdField_a_of_type_Bhvy != null) {
-        break label34;
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.smartdevice.ipc.ISmartDeviceService");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("cooperation.smartdevice.ipc.ISmartDeviceService");
+      str1 = paramParcel1.readString();
+      if (paramParcel1.readInt() != 0) {
+        localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+      }
+      paramParcel1 = a(str1, (Bundle)localObject);
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+      }
+      for (;;)
+      {
+        return true;
+        paramParcel2.writeInt(0);
       }
     }
-    label34:
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+    paramParcel1.enforceInterface("cooperation.smartdevice.ipc.ISmartDeviceService");
+    String str2 = paramParcel1.readString();
+    localObject = str1;
+    if (paramParcel1.readInt() != 0) {
+      localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
     }
-  }
-  
-  public boolean hasNext()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      if (bhvv.a(this.jdField_a_of_type_Bhvv) == null) {}
-    }
-    while ((this.jdField_a_of_type_Bhvy != null) && (this.jdField_a_of_type_Bhvy.jdField_a_of_type_Bhvy != null))
-    {
-      return true;
-      return false;
-    }
-    return false;
+    a(str2, (Bundle)localObject);
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhvz
  * JD-Core Version:    0.7.0.1
  */

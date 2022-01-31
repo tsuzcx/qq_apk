@@ -1,81 +1,72 @@
 import android.support.annotation.NonNull;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoSpreadGroupList;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.1;
+import com.tencent.map.geolocation.TencentLocation;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.async.JobSegment;
+import com.tribe.async.reactive.Stream;
+import java.util.List;
 
-public class uvu
-  extends uur
+public abstract class uvu<T extends uvv>
+  extends tjh
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private Stream<T> a;
+  public teu a;
+  public uvw a;
+  protected uvy<T> a;
   
-  public uvu(@NonNull uut paramuut)
+  public uvu(@NonNull uvy<T> paramuvy)
   {
-    super(paramuut);
+    this.jdField_a_of_type_Uvw = new uvw();
+    this.jdField_a_of_type_Uvy = paramuvy;
+    vxs.a(this.jdField_a_of_type_Uvy);
   }
   
-  public void a()
+  private void d()
   {
-    super.a();
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Uut.a.a("shareGroupId");
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Uut.a.a("shareGroupName");
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_Uut.a.a("shareGroupType", 0);
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_Uut.a.a("groupUin", -1L);
-    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Uut.a.a("ignorePersonalPublish", false);
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_Uut.a.a("add_video_source", 0);
-    urk.a("EditVideoShareGroup", "shareGroupId=%s, shareGroupName=%s, ignorePersonalPublish=%s, source=%d", this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, Boolean.valueOf(this.jdField_a_of_type_Boolean), Integer.valueOf(this.jdField_b_of_type_Int));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131310237));
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new uvv(this));
-    if (this.jdField_a_of_type_JavaLangString == null)
-    {
-      urk.e("EditVideoShareGroup", "shareGroupId should not be null");
-      a().a(0, null, 0, 0);
-    }
+    a();
+    Bosses.get().postLightWeightJob(new FeedListPageLoaderBase.1(this), 0);
   }
   
-  public void a(int paramInt, @NonNull vfh paramvfh)
+  public abstract JobSegment<uvx, T> a();
+  
+  public abstract JobSegment<Integer, uvx> a(uvw paramuvw);
+  
+  protected abstract T a();
+  
+  protected abstract T a(ErrorMessage paramErrorMessage);
+  
+  public uvw a()
   {
-    if (this.jdField_a_of_type_JavaLangString != null) {}
-    synchronized (this.jdField_a_of_type_Uut)
-    {
-      qqstory_struct.VideoSpreadGroupList localVideoSpreadGroupList = new qqstory_struct.VideoSpreadGroupList();
-      byte[] arrayOfByte = paramvfh.a.spreadGroupBytes;
-      if (arrayOfByte != null) {}
-      try
-      {
-        localVideoSpreadGroupList.mergeFrom(paramvfh.a.spreadGroupBytes);
-        localVideoSpreadGroupList.share_group_list.add(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-        localVideoSpreadGroupList.visibility_sharegroup_type.set(2);
-        localVideoSpreadGroupList.setHasFlag(true);
-        paramvfh.a.spreadGroupBytes = localVideoSpreadGroupList.toByteArray();
-        if (this.jdField_a_of_type_Int == 1) {
-          paramvfh.a.putExtra("groupUin", Long.valueOf(this.jdField_a_of_type_Long));
-        }
-        urk.d("EditVideoShareGroup", "editVideoPrePublish fragment index = %d, share-group %s %s %s %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long) });
-        paramvfh.a.putExtra("ignorePersonalPublish", Boolean.valueOf(this.jdField_a_of_type_Boolean));
-        paramvfh.a.putExtra("add_video_source", Integer.valueOf(this.jdField_b_of_type_Int));
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        for (;;)
-        {
-          urk.c("EditVideoShareGroup", "editVideoPrePublish error", localInvalidProtocolBufferMicroException);
-        }
-      }
-    }
+    return this.jdField_a_of_type_Uvw;
+  }
+  
+  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
+  {
+    super.a(paramTencentLocation, paramInt);
+    this.jdField_a_of_type_Uvw.a();
+    d();
+  }
+  
+  protected abstract void a(List<String> paramList, boolean paramBoolean);
+  
+  public void a(uvw paramuvw)
+  {
+    this.jdField_a_of_type_Uvw = paramuvw;
+    veg.a("Q.qqstory.home.position", "restore last time cache:%s", paramuvw);
+  }
+  
+  public T b()
+  {
+    return a();
+  }
+  
+  public void c()
+  {
+    super.c();
+    d();
   }
 }
 

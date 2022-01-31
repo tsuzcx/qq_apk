@@ -1,19 +1,37 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import java.util.Comparator;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
 public class acar
-  implements Comparator<acam>
+  implements View.OnKeyListener
 {
-  public acar(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public acar(SelectedAndSearchBar paramSelectedAndSearchBar) {}
   
-  public int a(acam paramacam1, acam paramacam2)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    return paramacam1.f.compareToIgnoreCase(paramacam2.f);
+    if (paramInt == 67)
+    {
+      if (paramKeyEvent.getAction() != 0) {
+        break label36;
+      }
+      SelectedAndSearchBar.a(this.a, TextUtils.isEmpty(SelectedAndSearchBar.a(this.a).getText()));
+    }
+    for (;;)
+    {
+      return false;
+      label36:
+      if ((paramKeyEvent.getAction() == 1) && (SelectedAndSearchBar.a(this.a))) {
+        SelectedAndSearchBar.a(this.a).a();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acar
  * JD-Core Version:    0.7.0.1
  */

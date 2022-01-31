@@ -1,29 +1,22 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
+import bcpw;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 
 class CapsuleButton$7$1
-  implements Animator.AnimatorListener
+  implements Runnable
 {
   CapsuleButton$7$1(CapsuleButton.7 param7) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    this.this$1.this$0.updateRedDotVisible();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.this$1.this$0.updateRedDotVisible();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    AppBrandTask.runTaskOnUiThread(new CapsuleButton.7.1.1(this));
+    if (this.this$1.val$miniAppInfo.topType == 1)
+    {
+      bcpw.a(BaseApplicationImpl.getApplication(), 2131719407, 0).a();
+      return;
+    }
+    bcpw.a(BaseApplicationImpl.getApplication(), 2131719408, 0).a();
   }
 }
 

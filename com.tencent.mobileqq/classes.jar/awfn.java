@@ -1,121 +1,124 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.io.File;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
+import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
 
 public class awfn
+  extends awfk
 {
-  private static String a = "Xiaomi;Redmi 4X;23|LGE;Nexus 5X;27|HUAWEI;CAM-UL00;23";
+  public int a;
+  public CheckBox a;
+  QQAppInterface a;
+  public CommentsView a;
+  public LikesView a;
+  public RichStatus b;
   
-  public static int a(ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
+  public awfn(Context paramContext, AppInterface paramAppInterface, View paramView, String paramString)
   {
-    if (paramSVConfigItem.versionCode >= 1) {}
-    for (int i = 0;; i = -4)
+    super(paramContext, paramAppInterface, paramView, paramString);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramAppInterface);
+    this.e = 1;
+  }
+  
+  public View a(RichStatus paramRichStatus)
+  {
+    return super.a(paramRichStatus);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setMinimumHeight(0);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    int i;
+    label49:
+    label77:
+    label98:
+    LikesView localLikesView;
+    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView != null)
     {
-      VideoEnvironment.a("ShortVideoTrackingResourceMgr", "[checkResourceLowLimitVersion]limitVer=1 downVer=" + paramSVConfigItem.versionCode + " errCode=" + i, null);
-      return i;
-    }
-  }
-  
-  public static String a()
-  {
-    String str = BaseApplicationImpl.getApplication().getSharedPreferences("tracking_short_video_mgr_sp", 4).getString("tracking_sv_md5_version_soname_key", "Tracking000_0");
-    boolean bool = awdu.a(str, 1);
-    VideoEnvironment.a("ShortVideoTrackingResourceMgr", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
-    if (bool) {
-      return str;
-    }
-    return "Tracking000_0";
-  }
-  
-  static boolean a()
-  {
-    return awmo.a();
-  }
-  
-  static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
-  {
-    return awlw.i();
-  }
-  
-  static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    boolean bool2 = true;
-    boolean bool1 = false;
-    label349:
-    for (;;)
-    {
-      try
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView;
+      if (paramBoolean)
       {
-        paramQQAppInterface = b();
-        paramQQAppInterface = paramQQAppInterface + paramString1 + File.separator;
-        File localFile = new File(paramQQAppInterface);
-        if (localFile.exists())
-        {
-          if ((a().equals(paramString1)) && (awdu.b(paramQQAppInterface, "tracking_config_file")))
-          {
-            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:[checkUnzipFileListSizeIsOK]success=true", null);
-            return bool1;
-          }
-          bace.a(paramQQAppInterface);
-          VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:[deleteDirectory|already exists]unzipPath=" + paramQQAppInterface, null);
+        i = jdField_a_of_type_ArrayOfInt[14];
+        ((CommentsView)localObject).setNormalTextColor(i);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView;
+        if (!paramBoolean) {
+          break label162;
         }
-        bool1 = localFile.mkdirs();
-        VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:[exists]mkOK=" + bool1, null);
-        try
-        {
-          bace.a(paramString2, paramQQAppInterface, false);
-          boolean bool3 = awdu.b(paramQQAppInterface, "tracking_config_file");
-          VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK success=" + bool3, null);
-          bool1 = bool2;
-          if (bool3)
-          {
-            bool1 = a(paramString1);
-            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK saveOK=" + bool1, null);
-            if (bool1) {
-              break label349;
-            }
-            bool1 = a(paramString1);
-            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK[two]saveOK=" + bool1, null);
-            if (bool1) {
-              break label349;
-            }
-            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK[two] needRestore=true,saveOK=false", null);
-            bool1 = a("Tracking000_0");
-            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK clearMemoryOK=" + bool1 + ",signature=" + paramString1, null);
-            bool1 = bool2;
-          }
-        }
-        catch (Exception paramQQAppInterface)
-        {
-          paramQQAppInterface.printStackTrace();
-          bool1 = bool2;
-          continue;
-        }
-        bool1 = false;
+        i = jdField_a_of_type_ArrayOfInt[13];
+        ((CommentsView)localObject).setItemColor(i);
       }
-      finally {}
+    }
+    else if (this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView != null)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
+      if (!paramBoolean) {
+        break label172;
+      }
+      i = jdField_a_of_type_ArrayOfInt[14];
+      ((LikesView)localObject).setNormalTextColor(i);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
+      if (!paramBoolean) {
+        break label182;
+      }
+      i = jdField_a_of_type_ArrayOfInt[13];
+      ((LikesView)localObject).setItemColor(i);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView.a();
+      if ((this.jdField_a_of_type_AndroidContentContext != null) && (localObject != null))
+      {
+        localLikesView = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
+        if (!paramBoolean) {
+          break label192;
+        }
+      }
+    }
+    label162:
+    label172:
+    label182:
+    label192:
+    for (Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846517);; localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846518))
+    {
+      localLikesView.setLikSpanDrawable((Drawable)localObject);
+      return;
+      i = jdField_a_of_type_ArrayOfInt[16];
+      break;
+      i = jdField_a_of_type_ArrayOfInt[15];
+      break label49;
+      i = jdField_a_of_type_ArrayOfInt[15];
+      break label77;
+      i = jdField_a_of_type_ArrayOfInt[15];
+      break label98;
     }
   }
   
-  private static boolean a(String paramString)
+  protected int b()
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("tracking_short_video_mgr_sp", 4).edit();
-    localEditor.putString("tracking_sv_md5_version_soname_key", paramString);
-    boolean bool = localEditor.commit();
-    VideoEnvironment.a("ShortVideoTrackingResourceMgr", "storeNewPendantUnzipPath commitValue=" + bool + ",pathName=" + paramString, null);
-    return bool;
+    return jdField_a_of_type_ArrayOfInt[12];
   }
   
-  public static String b()
+  protected boolean d()
   {
-    String str = awlw.a(VideoEnvironment.a());
-    return str + "tracking_res_cache" + File.separator;
+    return true;
   }
+  
+  protected boolean e()
+  {
+    return false;
+  }
+  
+  protected void i() {}
 }
 
 

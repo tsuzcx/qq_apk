@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.mini.widget.MapContext;
@@ -11,7 +10,7 @@ import org.json.JSONObject;
 class MapViewJsPlugin$9
   implements Runnable
 {
-  MapViewJsPlugin$9(MapViewJsPlugin paramMapViewJsPlugin, String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt) {}
+  MapViewJsPlugin$9(MapViewJsPlugin paramMapViewJsPlugin, String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt) {}
   
   public void run()
   {
@@ -21,12 +20,12 @@ class MapViewJsPlugin$9
       {
         JSONObject localJSONObject = new JSONObject(this.val$jsonParams);
         i = localJSONObject.optInt("mapId", 0);
-        Object localObject = this.this$0.jsPluginEngine.appBrandRuntime.getCurWebviewContainer();
+        Object localObject = this.this$0.jsPluginEngine.getWebviewContainer(this.val$webview);
         if (localObject != null)
         {
           localObject = ((WebviewContainer)localObject).getMapContext(i);
           if (localObject == null) {
-            break label185;
+            break label186;
           }
           ((MapContext)localObject).translateMapMarker(localJSONObject);
           i = 1;
@@ -37,7 +36,7 @@ class MapViewJsPlugin$9
         else
         {
           QLog.w("[mini] MapViewJsPlugin", 2, "handleNativeRequest eventName=" + this.val$eventName + "，top page not found");
-          break label185;
+          break label186;
         }
         this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$eventName, null, this.val$callbackId);
         return;
@@ -50,7 +49,7 @@ class MapViewJsPlugin$9
         this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$eventName, null, this.val$callbackId);
         return;
       }
-      label185:
+      label186:
       int i = 0;
     }
   }

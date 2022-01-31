@@ -1,28 +1,48 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.Properties;
+import android.support.annotation.IdRes;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ahke
 {
-  private static int a = 10000;
+  private static final Map<String, Integer> a;
+  public static int[] a;
   
-  public static void a(int paramInt)
+  static
   {
-    a = paramInt;
+    jdField_a_of_type_ArrayOfInt = new int[] { 2130838179, 2130838170, 2130838172, 2130838180, 2130838348, 2130840924, 2130838181, 2130838169, 2130838174, 2130838171, 2130838168, 2130838175, 2130838176, 2130838177, 2130838178 };
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_JavaUtilMap.put("m.ke.qq.com", Integer.valueOf(7));
+    jdField_a_of_type_JavaUtilMap.put("ke.qq.com", Integer.valueOf(7));
+    jdField_a_of_type_JavaUtilMap.put("fudao.qq.com", Integer.valueOf(9));
+    jdField_a_of_type_JavaUtilMap.put("buluo.qq.com", Integer.valueOf(10));
+    jdField_a_of_type_JavaUtilMap.put("m.gamecenter.qq.com", Integer.valueOf(2));
+    jdField_a_of_type_JavaUtilMap.put("imgcache.qq.com", Integer.valueOf(2));
   }
   
-  public static void a(String paramString, Properties paramProperties)
+  @IdRes
+  public static int a(int paramInt)
   {
-    Properties localProperties = paramProperties;
-    if (paramProperties == null) {
-      localProperties = new Properties();
+    return jdField_a_of_type_ArrayOfInt[paramInt];
+  }
+  
+  public static int a(String paramString)
+  {
+    Integer localInteger2 = (Integer)jdField_a_of_type_JavaUtilMap.get(paramString);
+    Integer localInteger1 = localInteger2;
+    if (localInteger2 == null) {
+      if (!sgj.d(paramString)) {
+        break label37;
+      }
     }
-    localProperties.setProperty("shortvideo_business_type", "" + a);
-    awqm.a(VideoEnvironment.a()).reportKVEvent(paramString, localProperties);
+    label37:
+    for (localInteger1 = Integer.valueOf(8);; localInteger1 = Integer.valueOf(6)) {
+      return localInteger1.intValue();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahke
  * JD-Core Version:    0.7.0.1
  */

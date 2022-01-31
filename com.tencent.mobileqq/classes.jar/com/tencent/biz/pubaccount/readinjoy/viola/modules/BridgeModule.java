@@ -1,8 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
-import ajed;
-import ajjy;
-import anam;
+import ajsf;
+import ajyc;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipData.Item;
@@ -22,33 +21,36 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.util.ArrayMap;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
-import aphp;
-import aqod;
-import axoa;
-import azcm;
-import azvv;
-import baaf;
-import baaw;
-import babp;
-import babq;
-import bacn;
-import bade;
-import bady;
-import bafb;
-import bahv;
-import bati;
-import batm;
-import bato;
-import batr;
-import bbmy;
-import bccu;
-import bcgn;
+import anqu;
+import aqbc;
+import arii;
+import ayog;
+import badh;
+import bawz;
+import bbbj;
+import bbca;
+import bbct;
+import bbcu;
+import bbds;
+import bbej;
+import bbfd;
+import bbgg;
+import bbjc;
+import bbuv;
+import bbwc;
+import bbwg;
+import bbwi;
+import bbwl;
+import bcpw;
+import bdgv;
+import bdko;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
@@ -73,12 +75,15 @@ import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemb
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
 import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtAppReceiver;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
@@ -96,6 +101,7 @@ import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.startup.step.CheckPermission;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 import com.tencent.open.downloadnew.DownloadInfo;
@@ -126,82 +132,83 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
-import mmi;
-import mof;
-import mpl;
+import mqq.app.AppActivity;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 import mqq.manager.TicketManager;
-import ndn;
-import npj;
-import nsh;
-import nsz;
-import obz;
-import ogy;
-import ohb;
-import ohd;
-import onp;
+import mxh;
+import mze;
+import nam;
+import noo;
+import oau;
+import odr;
+import oej;
+import onk;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pes;
-import pqk;
+import osj;
+import osm;
+import oso;
+import oze;
 import pqm;
-import pre;
-import prf;
-import prg;
-import qfy;
-import qig;
-import qii;
-import qoe;
-import rjb;
-import rkd;
-import rko;
-import rkq;
-import rkr;
-import rkv;
-import rkw;
-import rkx;
-import rky;
-import rkz;
-import rla;
-import rlb;
-import rlc;
-import rld;
-import rle;
-import rlf;
-import rlg;
-import rlh;
-import rli;
-import rlj;
-import rlk;
-import rll;
-import rlm;
-import rln;
-import rlo;
-import rlq;
-import rlr;
-import rls;
-import rlv;
-import rly;
-import rma;
-import rmt;
-import rsv;
-import rtr;
-import rug;
-import rwb;
+import qcg;
+import qcj;
+import qdd;
+import qde;
+import qdf;
+import qrw;
+import qul;
+import qun;
+import qyz;
+import rap;
+import rwa;
+import rwy;
+import rxe;
+import rxg;
+import rxh;
+import rxl;
+import rxm;
+import rxn;
+import rxo;
+import rxp;
+import rxq;
+import rxr;
+import rxs;
+import rxt;
+import rxu;
+import rxv;
+import rxw;
+import rxx;
+import rxy;
+import rxz;
+import rya;
+import ryb;
+import ryc;
+import ryd;
+import rye;
+import ryf;
+import ryh;
+import ryi;
+import ryj;
+import rym;
+import ryp;
+import ryr;
+import rzk;
+import sfn;
+import sgj;
+import sgy;
+import siu;
 import tencent.gdt.landing_page_collect_data.LandingPageCollectData;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import vnd;
-import wis;
-import wiu;
-import yjr;
-import yjs;
-import ynv;
-import yny;
-import yod;
-import yoe;
-import yof;
+import vzz;
+import wxu;
+import wxw;
+import yxr;
+import yxs;
+import yxw;
+import yxx;
+import yxy;
 
 public class BridgeModule
   extends BaseModule
@@ -241,17 +248,17 @@ public class BridgeModule
   public static String TAG = "BridgeModule";
   public static GdtAppReceiver mGdtAppReceiver;
   private boolean hasShareItemClick;
-  private rkr mActionSheetHelper;
-  private rma mBridgeApiHelper;
+  private rxh mActionSheetHelper;
+  private ryr mBridgeApiHelper;
   private String mCallBack;
-  private wis mClient;
-  private rmt mCommentManager;
-  private bcgn mDownloadListener;
-  private rls mEventHelper;
+  private wxu mClient;
+  private rzk mCommentManager;
+  private bdko mDownloadListener;
+  private ryj mEventHelper;
   private Map<String, Object> mObjectMap = new ArrayMap();
-  protected bahv mShareActionSheet;
-  private rug mShareHelper;
-  private rlv mShareUtils = new rlv();
+  protected bbjc mShareActionSheet;
+  private sgy mShareHelper;
+  private rym mShareUtils = new rym();
   private int mState = -100;
   private String mUploadCallBack;
   private VideoPreDownloadMgr mVideoPreDownloadMgr = new VideoPreDownloadMgr();
@@ -348,7 +355,7 @@ public class BridgeModule
         localArrayList.add(i, paramJSONObject.get(i).toString());
         i += 1;
       }
-      mof.a(localArrayList, obz.a(), new rlf(this, paramString), true, false);
+      mze.a(localArrayList, onk.a(), new rxv(this, paramString), true, false);
       return;
     }
     catch (Exception paramJSONObject)
@@ -363,7 +370,7 @@ public class BridgeModule
   {
     if (this.mClient == null)
     {
-      this.mClient = wis.a();
+      this.mClient = wxu.a();
       this.mClient.a();
     }
     return this.mClient.a(createCommentApiCallback(paramString));
@@ -379,7 +386,7 @@ public class BridgeModule
       return;
       localBaseActivity = BaseActivity.sTopActivity;
     } while (localBaseActivity == null);
-    rjb.a(localBaseActivity, paramJSONObject, new rlc(this, paramString));
+    rwa.a(localBaseActivity, paramJSONObject, new rxs(this, paramString));
   }
   
   private AnchorData createAnchorData(JSONObject paramJSONObject)
@@ -419,14 +426,14 @@ public class BridgeModule
     return paramJSONObject;
   }
   
-  private wiu createCommentApiCallback(String paramString)
+  private wxw createCommentApiCallback(String paramString)
   {
-    return new rlh(this, paramString);
+    return new rxx(this, paramString);
   }
   
   private void detailLog(JSONObject paramJSONObject, String paramString)
   {
-    Object localObject = (QQAppInterface)obz.a();
+    Object localObject = (QQAppInterface)onk.a();
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
     if ((localObject == null) || (localBaseActivity == null)) {}
     StringBuilder localStringBuilder1;
@@ -436,16 +443,16 @@ public class BridgeModule
     {
       return;
       localStringBuilder1 = new StringBuilder();
-      StringBuilder localStringBuilder2 = localStringBuilder1.append(paramJSONObject.optString("id")).append("|").append(paramJSONObject.optString("subid")).append("|").append(paramJSONObject.optString("content")).append("|").append("ANDROID").append("|").append("8.2.6.4370").append("|").append(babp.e()).append("|").append(((QQAppInterface)localObject).getCurrentAccountUin()).append("|").append(Build.MODEL).append("|");
-      if (TextUtils.isEmpty(babp.a(localBaseActivity).jdField_c_of_type_JavaLangString))
+      StringBuilder localStringBuilder2 = localStringBuilder1.append(paramJSONObject.optString("id")).append("|").append(paramJSONObject.optString("subid")).append("|").append(paramJSONObject.optString("content")).append("|").append("ANDROID").append("|").append("8.2.8.4440").append("|").append(bbct.e()).append("|").append(((QQAppInterface)localObject).getCurrentAccountUin()).append("|").append(Build.MODEL).append("|");
+      if (TextUtils.isEmpty(bbct.a(localBaseActivity).jdField_c_of_type_JavaLangString))
       {
         localObject = "未知";
         localStringBuilder2 = localStringBuilder2.append((String)localObject).append("|");
-        if (!TextUtils.isEmpty(babp.a(localBaseActivity).jdField_a_of_type_JavaLangString)) {
+        if (!TextUtils.isEmpty(bbct.a(localBaseActivity).jdField_a_of_type_JavaLangString)) {
           break label243;
         }
       }
-      for (localObject = "未知";; localObject = babp.a(localBaseActivity).jdField_a_of_type_JavaLangString)
+      for (localObject = "未知";; localObject = bbct.a(localBaseActivity).jdField_a_of_type_JavaLangString)
       {
         localStringBuilder2.append((String)localObject);
         if (!paramJSONObject.optBoolean("isall", false)) {
@@ -454,7 +461,7 @@ public class BridgeModule
         QLog.w("ViolaLog", 1, localStringBuilder1.toString());
         invokeCallJS(paramString, null);
         return;
-        localObject = babp.a(localBaseActivity).jdField_c_of_type_JavaLangString;
+        localObject = bbct.a(localBaseActivity).jdField_c_of_type_JavaLangString;
         break;
       }
     } while (!QLog.isColorLevel());
@@ -464,15 +471,33 @@ public class BridgeModule
   
   private void doPostShowComment(FragmentActivity paramFragmentActivity, VVideoView paramVVideoView, View paramView, JSONObject paramJSONObject)
   {
-    if (this.mCommentManager == null) {
-      this.mCommentManager = new rmt(paramFragmentActivity, paramFragmentActivity.getSupportFragmentManager());
+    Object localObject;
+    if (this.mCommentManager == null)
+    {
+      localObject = paramFragmentActivity.getSupportFragmentManager();
+      if ((getViolaInstance() == null) || (!((ViolaFragment)getViolaInstance().getFragment()).a()) || (!((ViolaFragment)getViolaInstance().getFragment()).a().c())) {
+        break label214;
+      }
     }
-    this.mCommentManager.a(new rli(this));
-    paramFragmentActivity = createArticleInfo(paramJSONObject);
-    AnchorData localAnchorData = createAnchorData(paramJSONObject);
-    float f = ViolaUtils.getFloat(paramJSONObject.optString("offset"), Float.valueOf(0.0F));
-    this.mCommentManager.a(paramView, f);
-    this.mCommentManager.a(paramVVideoView, paramView, paramFragmentActivity, localAnchorData, -16777216);
+    label214:
+    for (int i = ((ViolaFragment)getViolaInstance().getFragment()).a().a();; i = 0)
+    {
+      this.mCommentManager = new rzk(paramFragmentActivity, (FragmentManager)localObject, i);
+      if ((getViolaInstance() != null) && ((getViolaInstance().getFragment() instanceof ViolaFragment)))
+      {
+        paramFragmentActivity = (ViolaFragment)getViolaInstance().getFragment();
+        if ((paramFragmentActivity.a()) && (paramFragmentActivity.a() != null)) {
+          paramFragmentActivity.a().e();
+        }
+      }
+      this.mCommentManager.a(new rxy(this));
+      paramFragmentActivity = createArticleInfo(paramJSONObject);
+      localObject = createAnchorData(paramJSONObject);
+      float f = ViolaUtils.getFloat(paramJSONObject.optString("offset"), Float.valueOf(0.0F));
+      this.mCommentManager.a(paramView, f);
+      this.mCommentManager.a(paramVVideoView, paramView, paramFragmentActivity, (AnchorData)localObject, -16777216);
+      return;
+    }
   }
   
   private void downloadApk(JSONObject paramJSONObject, String paramString)
@@ -485,11 +510,11 @@ public class BridgeModule
       localDownloadInfo.e = paramJSONObject.optString("packageName", null);
       localDownloadInfo.m = "biz_src_feeds_kandianads";
       if (this.mDownloadListener == null) {
-        this.mDownloadListener = new rky(this, str, paramString);
+        this.mDownloadListener = new rxo(this, str, paramString);
       }
-      bccu.a().a(this.mDownloadListener);
+      bdgv.a().a(this.mDownloadListener);
       localDownloadInfo.a();
-      bccu.a().b(localDownloadInfo);
+      bdgv.a().b(localDownloadInfo);
     }
   }
   
@@ -522,7 +547,7 @@ public class BridgeModule
     if ((paramJSONObject != null) && (!TextUtils.isEmpty(paramJSONObject.optString("apkUrl"))))
     {
       paramJSONObject = paramJSONObject.optString("apkUrl");
-      bccu.a().b(paramJSONObject, true);
+      bdgv.a().b(paramJSONObject, true);
     }
   }
   
@@ -531,7 +556,7 @@ public class BridgeModule
     if ((paramJSONObject != null) && (!TextUtils.isEmpty(paramJSONObject.optString("apkUrl"))))
     {
       paramJSONObject = paramJSONObject.optString("apkUrl");
-      bccu.a().a(paramJSONObject);
+      bdgv.a().a(paramJSONObject);
     }
   }
   
@@ -544,7 +569,7 @@ public class BridgeModule
       localDownloadInfo.d = paramJSONObject;
       localDownloadInfo.m = "biz_src_feeds_kandianads";
       localDownloadInfo.a();
-      bccu.a().b(localDownloadInfo);
+      bdgv.a().b(localDownloadInfo);
     }
   }
   
@@ -555,18 +580,18 @@ public class BridgeModule
     do
     {
       return;
-      Object localObject = rwb.b(paramString);
+      Object localObject = siu.b(paramString);
       if (localObject != null)
       {
         ((DownloadInfo)localObject).a();
-        bccu.a().b((DownloadInfo)localObject);
+        bdgv.a().b((DownloadInfo)localObject);
         return;
       }
       try
       {
         paramString = new JSONObject(paramString);
         localObject = new Intent(localContext, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("big_brother_source_key", obz.f(0));
+        ((Intent)localObject).putExtra("big_brother_source_key", onk.f(0));
         ((Intent)localObject).putExtra("url", paramString.optString("url"));
         localContext.startActivity((Intent)localObject);
         return;
@@ -579,13 +604,13 @@ public class BridgeModule
   private void ensureEventHelper()
   {
     if (this.mEventHelper == null) {
-      this.mEventHelper = new rls(this);
+      this.mEventHelper = new ryj(this);
     }
   }
   
   private void feedsRefreshMessage(JSONObject paramJSONObject)
   {
-    pes.a().a(paramJSONObject);
+    pqm.a().a(paramJSONObject);
   }
   
   private static HashMap<String, Object> generateMapFromInvokeJsUrl(JSONObject paramJSONObject)
@@ -594,19 +619,19 @@ public class BridgeModule
     {
       HashMap localHashMap = new HashMap();
       if (TextUtils.isEmpty(paramJSONObject.optString("bgclr"))) {
-        localHashMap.put(rko.d, paramJSONObject.optString("bgclr"));
+        localHashMap.put(rxe.d, paramJSONObject.optString("bgclr"));
       }
       if (TextUtils.isEmpty(paramJSONObject.optString("txtclr"))) {
-        localHashMap.put(rko.jdField_c_of_type_JavaLangString, paramJSONObject.optString("txtclr"));
+        localHashMap.put(rxe.jdField_c_of_type_JavaLangString, paramJSONObject.optString("txtclr"));
       }
       if (!TextUtils.isEmpty(paramJSONObject.optString("titleclr"))) {
-        localHashMap.put(rko.e, paramJSONObject.optString("titleclr"));
+        localHashMap.put(rxe.e, paramJSONObject.optString("titleclr"));
       }
       if (!TextUtils.isEmpty(paramJSONObject.optString("alpha"))) {
-        localHashMap.put(rko.f, paramJSONObject.optString("alpha"));
+        localHashMap.put(rxe.f, paramJSONObject.optString("alpha"));
       }
       if (!TextUtils.isEmpty(paramJSONObject.optString("statusBarColor"))) {
-        localHashMap.put(rko.g, paramJSONObject.optString("statusBarColor"));
+        localHashMap.put(rxe.g, paramJSONObject.optString("statusBarColor"));
       }
       return localHashMap;
     }
@@ -618,7 +643,7 @@ public class BridgeModule
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("result", bati.a());
+      localJSONObject.put("result", bbwc.a());
       invokeCallJS(paramString, localJSONObject);
       return;
     }
@@ -634,8 +659,8 @@ public class BridgeModule
     if (localObject == null) {
       return;
     }
-    localObject = babp.a((Context)localObject);
-    String str = babp.c();
+    localObject = bbct.a((Context)localObject);
+    String str = bbct.c();
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -674,9 +699,9 @@ public class BridgeModule
   private JSONObject getDeviceInfo()
   {
     JSONObject localJSONObject = new JSONObject();
-    String str1 = babp.b();
-    String str2 = babp.f();
-    String str3 = babp.a();
+    String str1 = bbct.b();
+    String str2 = bbct.f();
+    String str3 = bbct.a();
     try
     {
       localJSONObject.put("imsi", str1);
@@ -699,7 +724,7 @@ public class BridgeModule
     if ((paramJSONObject != null) && (!TextUtils.isEmpty(paramJSONObject.optString("apkUrl"))))
     {
       paramJSONObject = paramJSONObject.optString("apkUrl");
-      localObject = bccu.a().b(paramJSONObject);
+      localObject = bdgv.a().b(paramJSONObject);
       j = -1;
       i = 0;
       if (localObject != null)
@@ -743,7 +768,7 @@ public class BridgeModule
   private JSONObject getUserInfo()
   {
     JSONObject localJSONObject = new JSONObject();
-    Object localObject3 = (QQAppInterface)obz.a();
+    Object localObject3 = (QQAppInterface)onk.a();
     String str;
     if (localObject3 != null)
     {
@@ -757,7 +782,7 @@ public class BridgeModule
     Object localObject2;
     for (Object localObject1 = ((TicketManager)localObject1).getSkey(((QQAppInterface)localObject3).getCurrentAccountUin());; localObject2 = null)
     {
-      localObject3 = rtr.a((QQAppInterface)localObject3, str);
+      localObject3 = sgj.a((QQAppInterface)localObject3, str);
       try
       {
         localJSONObject.put("uin", str);
@@ -800,7 +825,7 @@ public class BridgeModule
   
   private void jumpUrl(Context paramContext, String paramString, Bundle paramBundle)
   {
-    obz.a(paramContext, paramString, paramBundle);
+    onk.a(paramContext, paramString, paramBundle);
   }
   
   private void openPage(JSONObject paramJSONObject, String paramString)
@@ -813,7 +838,7 @@ public class BridgeModule
     if (paramJSONObject.optJSONObject("param") != null) {
       localBundle.putString("param", paramJSONObject.optJSONObject("param").toString());
     }
-    rjb.a(BaseActivity.sTopActivity, "", paramString, localBundle);
+    rwa.a(BaseActivity.sTopActivity, "", paramString, localBundle);
   }
   
   private void openPrivateLetter()
@@ -841,7 +866,7 @@ public class BridgeModule
         }
         paramJSONObject = new Bundle();
         paramJSONObject.putString("big_brother_source_key", str2);
-        paramJSONObject.putString("big_brother_ref_source_key", obz.f(0));
+        paramJSONObject.putString("big_brother_ref_source_key", onk.f(0));
       }
     }
     for (;;)
@@ -930,7 +955,7 @@ public class BridgeModule
     label143:
     for (localObject3 = ((JSONObject)localObject3).toString();; localObject3 = "")
     {
-      ndn.a(null, null, str, str, 0, 0, paramJSONObject, (String)localObject1, (String)localObject2, (String)localObject3, false);
+      noo.a(null, null, str, str, 0, 0, paramJSONObject, (String)localObject1, (String)localObject2, (String)localObject3, false);
       return;
       label125:
       paramJSONObject = "";
@@ -953,16 +978,16 @@ public class BridgeModule
         Object localObject = new StringBuilder();
         ((StringBuilder)localObject).append(paramString);
         ((StringBuilder)localObject).append("?client=androidQQ");
-        ((StringBuilder)localObject).append("&version=8.2.6.4370");
+        ((StringBuilder)localObject).append("&version=8.2.8.4440");
         ((StringBuilder)localObject).append("&system=" + Build.VERSION.RELEASE);
         ((StringBuilder)localObject).append("&device=" + Build.DEVICE);
-        ((StringBuilder)localObject).append("&uin=" + obz.a());
-        paramString = anam.a("VIP_xingying", ((StringBuilder)localObject).toString());
+        ((StringBuilder)localObject).append("&uin=" + onk.a());
+        paramString = anqu.a("VIP_xingying", ((StringBuilder)localObject).toString());
         if (QLog.isColorLevel()) {
           QLog.d(TAG, 2, "saveImageToLocal imageUrl=" + paramString);
         }
         localObject = System.currentTimeMillis() + ".jpg";
-        ThreadManager.executeOnNetWorkThread(new BridgeModule.18(this, paramString, new File(ajed.ba, (String)localObject)));
+        ThreadManager.executeOnNetWorkThread(new BridgeModule.18(this, paramString, new File(bbuv.a(ajsf.bc), (String)localObject)));
         return;
       }
       catch (Exception paramString) {}
@@ -1035,13 +1060,13 @@ public class BridgeModule
     if (paramJSONObject.has("width")) {
       j = paramJSONObject.optInt("width");
     }
-    for (int i = azvv.a(localBaseActivity, j / 2);; i = 640)
+    for (int i = bawz.a(localBaseActivity, j / 2);; i = 640)
     {
       int m;
       if (paramJSONObject.has("height")) {
         m = paramJSONObject.optInt("height");
       }
-      for (int k = azvv.a(localBaseActivity, m / 2);; k = 640)
+      for (int k = bawz.a(localBaseActivity, m / 2);; k = 640)
       {
         selectPhotoFromGallery(1, n, (byte)118, i, k, j, m, paramString);
         return;
@@ -1053,7 +1078,7 @@ public class BridgeModule
   
   private void selectPhotoFromGallery(int paramInt1, int paramInt2, byte paramByte, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString)
   {
-    Object localObject = (QQAppInterface)obz.a();
+    Object localObject = (QQAppInterface)onk.a();
     Activity localActivity = getViolaInstance().getActivity();
     if ((localObject != null) && (localActivity != null))
     {
@@ -1067,7 +1092,7 @@ public class BridgeModule
       ((Intent)localObject).putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", false);
       ((Intent)localObject).putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
       ((Intent)localObject).putExtra("key_from_kandian_uploadimg", true);
-      String str = ajed.aU + "readinjoy_avatar_upload/";
+      String str = bbuv.a(ajsf.aW + "readinjoy_avatar_upload/");
       ((Intent)localObject).putExtra("PhotoConst.TARGET_PATH", str + System.currentTimeMillis() + ".jpg");
       ((Intent)localObject).putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
       ((Intent)localObject).putExtra("PhotoConst.CLIP_WIDTH", paramInt3);
@@ -1079,7 +1104,7 @@ public class BridgeModule
       ((Intent)localObject).putExtra("finish", true);
       ((Intent)localObject).putExtra("callbackId", paramString);
       localActivity.startActivityForResult((Intent)localObject, paramByte);
-      baaf.a(localActivity, false, true);
+      bbbj.a(localActivity, false, true);
     }
   }
   
@@ -1126,7 +1151,7 @@ public class BridgeModule
       invokeCallJS(paramString, new JSONObject());
       return;
     }
-    invokeErrorCallJS(paramString, ajjy.a(2131635407));
+    invokeErrorCallJS(paramString, ajyc.a(2131701191));
   }
   
   private void setTitle(JSONObject paramJSONObject, String paramString)
@@ -1160,7 +1185,7 @@ public class BridgeModule
       return;
       localObject = ((ViolaInstance)localObject).getFragment();
     } while (!(localObject instanceof ViolaFragment));
-    ((ViolaFragment)localObject).a(new rlg(this, paramString));
+    ((ViolaFragment)localObject).a(new rxw(this, paramString));
   }
   
   private void sharePicMessage(JSONObject paramJSONObject, String paramString)
@@ -1178,7 +1203,7 @@ public class BridgeModule
       }
       localJSONObject.put("retCode", 1);
       invokeCallJS(paramString, localJSONObject);
-      bbmy.a(obz.a().getApplication(), 1, ajjy.a(2131635408), 0).a();
+      bcpw.a(onk.a().getApplication(), 1, ajyc.a(2131701192), 0).a();
       return;
     }
     catch (Exception paramJSONObject)
@@ -1206,7 +1231,7 @@ public class BridgeModule
         }
         try
         {
-          localObject2 = new String(baaw.decode((String)localObject1, 0));
+          localObject2 = new String(bbca.decode((String)localObject1, 0));
           localObject1 = localObject2;
         }
         catch (Exception localException1)
@@ -1223,7 +1248,7 @@ public class BridgeModule
         }
         try
         {
-          localObject4 = new String(baaw.decode((String)localObject2, 0));
+          localObject4 = new String(bbca.decode((String)localObject2, 0));
           localObject2 = localObject4;
         }
         catch (Exception localException2)
@@ -1287,20 +1312,20 @@ public class BridgeModule
     {
       return;
     }
-    bafb localbafb = new bafb(localBaseActivity, 2131690181);
-    localbafb.setContentView(2131493323);
-    localbafb.getMessageTextView().setMovementMethod(new ScrollingMovementMethod());
-    localbafb.getMessageTextView().setMaxHeight(azvv.a(localBaseActivity, 200.0F));
-    localbafb.setTitle(paramJSONObject.optString("title"));
-    localbafb.setMessage(paramJSONObject.optString("text"));
-    localbafb.setCanceledOnTouchOutside(false);
+    bbgg localbbgg = new bbgg(localBaseActivity, 2131755791);
+    localbbgg.setContentView(2131558883);
+    localbbgg.getMessageTextView().setMovementMethod(new ScrollingMovementMethod());
+    localbbgg.getMessageTextView().setMaxHeight(bawz.a(localBaseActivity, 200.0F));
+    localbbgg.setTitle(paramJSONObject.optString("title"));
+    localbbgg.setMessage(paramJSONObject.optString("text"));
+    localbbgg.setCanceledOnTouchOutside(false);
     if (paramJSONObject.optBoolean("needOkBtn", true)) {
-      localbafb.setPositiveButton(paramJSONObject.optString("okBtnText", ajjy.a(2131635398)), new rkz(this, paramJSONObject, paramString));
+      localbbgg.setPositiveButton(paramJSONObject.optString("okBtnText", ajyc.a(2131701182)), new rxp(this, paramJSONObject, paramString));
     }
     if (paramJSONObject.optBoolean("needCancelBtn", true)) {
-      localbafb.setNegativeButton(paramJSONObject.optString("cancelBtnText", ajjy.a(2131635394)), new rla(this, paramJSONObject, paramString));
+      localbbgg.setNegativeButton(paramJSONObject.optString("cancelBtnText", ajyc.a(2131701178)), new rxq(this, paramJSONObject, paramString));
     }
-    localbafb.show();
+    localbbgg.show();
   }
   
   private void showMultiBiuEditPage(JSONObject paramJSONObject, String paramString)
@@ -1332,7 +1357,7 @@ public class BridgeModule
           n = paramJSONObject.optInt("hiddenBiuComponent");
           str1 = "";
           if (n == 1) {
-            str1 = new String(baaw.decode(paramJSONObject.optString("newComment"), 2));
+            str1 = new String(bbca.decode(paramJSONObject.optString("newComment"), 2));
           }
           l1 = 0L;
           l3 = 0L;
@@ -1343,7 +1368,7 @@ public class BridgeModule
         }
         try
         {
-          localObject1 = new String(baaw.decode((String)localObject7, 0));
+          localObject1 = new String(bbca.decode((String)localObject7, 0));
         }
         catch (Exception localException4)
         {
@@ -1373,7 +1398,7 @@ public class BridgeModule
         }
         try
         {
-          localObject2 = new String(baaw.decode((String)localObject3, 0));
+          localObject2 = new String(bbca.decode((String)localObject3, 0));
         }
         catch (Exception localException1)
         {
@@ -1508,7 +1533,7 @@ public class BridgeModule
           m = paramJSONObject.optInt("adtag");
           str3 = paramJSONObject.optString("picurl");
           k = paramJSONObject.optInt("duration");
-          str4 = new String(baaw.decode(paramJSONObject.optString("accountDesc"), 0));
+          str4 = new String(bbca.decode(paramJSONObject.optString("accountDesc"), 0));
           i1 = paramJSONObject.optInt("feedsType", 1);
           localObject7 = new ArticleInfo();
           ((ArticleInfo)localObject7).mArticleID = l3;
@@ -1539,10 +1564,10 @@ public class BridgeModule
         {
           localObject5 = paramJSONObject.getJSONArray("biuLevelList");
           ((ArticleInfo)localObject7).mSocialFeedInfo = new SocializeFeedsInfo();
-          ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Pqm = new pqm();
-          ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Pqm.jdField_a_of_type_JavaLangLong = Long.valueOf(l4);
-          ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Pqm.jdField_b_of_type_JavaLangLong = Long.valueOf(l5);
-          ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Pqm.jdField_a_of_type_JavaUtilList = new ArrayList();
+          ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Qcj = new qcj();
+          ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Qcj.jdField_a_of_type_JavaLangLong = Long.valueOf(l4);
+          ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Qcj.jdField_b_of_type_JavaLangLong = Long.valueOf(l5);
+          ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Qcj.jdField_a_of_type_JavaUtilList = new ArrayList();
           if (localObject5 != null)
           {
             k = 0;
@@ -1551,7 +1576,7 @@ public class BridgeModule
               localObject8 = new SocializeFeedsInfo.BiuCommentInfo();
               localObject9 = ((JSONArray)localObject5).getJSONObject(k);
               ((SocializeFeedsInfo.BiuCommentInfo)localObject8).jdField_a_of_type_JavaLangLong = Long.valueOf(((JSONObject)localObject9).optLong("uin"));
-              ((SocializeFeedsInfo.BiuCommentInfo)localObject8).jdField_b_of_type_JavaLangString = new String(baaw.decode(((JSONObject)localObject9).optString("comment"), 0));
+              ((SocializeFeedsInfo.BiuCommentInfo)localObject8).jdField_b_of_type_JavaLangString = new String(bbca.decode(((JSONObject)localObject9).optString("comment"), 0));
               ((SocializeFeedsInfo.BiuCommentInfo)localObject8).jdField_a_of_type_JavaLangString = ((SocializeFeedsInfo.BiuCommentInfo)localObject8).jdField_b_of_type_JavaLangString;
               ((SocializeFeedsInfo.BiuCommentInfo)localObject8).jdField_a_of_type_Int = ((JSONObject)localObject9).optInt("biuTime");
               ((SocializeFeedsInfo.BiuCommentInfo)localObject8).jdField_b_of_type_Int = ((JSONObject)localObject9).optInt("feeds_type", 1);
@@ -1559,7 +1584,7 @@ public class BridgeModule
               localObject10 = ((JSONObject)localObject9).optString("jumpName");
               str5 = ((JSONObject)localObject9).optString("jumpUrl");
               if ((!TextUtils.isEmpty((CharSequence)localObject10)) && (!TextUtils.isEmpty(str5))) {
-                ((SocializeFeedsInfo.BiuCommentInfo)localObject8).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo = new SocializeFeedsInfo.JumpInfo(0L, new String(baaw.decode((String)localObject10, 0)), str5);
+                ((SocializeFeedsInfo.BiuCommentInfo)localObject8).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo = new SocializeFeedsInfo.JumpInfo(0L, new String(bbca.decode((String)localObject10, 0)), str5);
               }
               if (n != 1) {}
             }
@@ -1573,7 +1598,7 @@ public class BridgeModule
             if (!TextUtils.isEmpty((CharSequence)localObject9)) {
               ((SocializeFeedsInfo.BiuCommentInfo)localObject8).jdField_b_of_type_JavaLangLong = Long.valueOf(new BigInteger((String)localObject9).longValue());
             }
-            ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Pqm.jdField_a_of_type_JavaUtilList.add(localObject8);
+            ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Qcj.jdField_a_of_type_JavaUtilList.add(localObject8);
             k += 1;
             continue;
             ((Exception)localObject4).printStackTrace();
@@ -1600,23 +1625,23 @@ public class BridgeModule
             continue;
           }
         }
-        if (qoe.c(i1, l5))
+        if (rap.c(i1, l5))
         {
-          ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Pre = new pre();
+          ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Qdd = new qdd();
           i2 = ((JSONObject)localObject6).optInt("ugcType", 0);
           paramJSONObject = ((JSONObject)localObject6).optString("ugcComment");
           localObject8 = ((JSONObject)localObject6).optJSONArray("ugcAtLevelList");
           if (localObject8 != null)
           {
-            ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Pre.jdField_a_of_type_Pqm = new pqm();
-            ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Pre.jdField_a_of_type_Pqm.jdField_a_of_type_JavaUtilList = new ArrayList();
+            ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Qdd.jdField_a_of_type_Qcj = new qcj();
+            ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Qdd.jdField_a_of_type_Qcj.jdField_a_of_type_JavaUtilList = new ArrayList();
             k = 0;
             if (k < ((JSONArray)localObject8).length())
             {
               localBiuCommentInfo = new SocializeFeedsInfo.BiuCommentInfo();
               localObject10 = ((JSONArray)localObject8).getJSONObject(k);
               localBiuCommentInfo.jdField_a_of_type_JavaLangLong = Long.valueOf(((JSONObject)localObject10).optLong("uin"));
-              localBiuCommentInfo.jdField_b_of_type_JavaLangString = new String(baaw.decode(((JSONObject)localObject10).optString("comment"), 0));
+              localBiuCommentInfo.jdField_b_of_type_JavaLangString = new String(bbca.decode(((JSONObject)localObject10).optString("comment"), 0));
               localBiuCommentInfo.jdField_a_of_type_JavaLangString = localBiuCommentInfo.jdField_b_of_type_JavaLangString;
               localBiuCommentInfo.jdField_a_of_type_Int = ((JSONObject)localObject10).optInt("biuTime");
               localBiuCommentInfo.jdField_b_of_type_Int = ((JSONObject)localObject10).optInt("feeds_type", 1);
@@ -1624,7 +1649,7 @@ public class BridgeModule
               str5 = ((JSONObject)localObject10).optString("jumpName");
               str6 = ((JSONObject)localObject10).optString("jumpUrl");
               if ((!TextUtils.isEmpty(str5)) && (!TextUtils.isEmpty(str6))) {
-                localBiuCommentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo = new SocializeFeedsInfo.JumpInfo(0L, new String(baaw.decode(str5, 0)), str6);
+                localBiuCommentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo = new SocializeFeedsInfo.JumpInfo(0L, new String(bbca.decode(str5, 0)), str6);
               }
               try
               {
@@ -1632,7 +1657,7 @@ public class BridgeModule
                 if (!TextUtils.isEmpty((CharSequence)localObject10)) {
                   localBiuCommentInfo.jdField_b_of_type_JavaLangLong = Long.valueOf(new BigInteger((String)localObject10).longValue());
                 }
-                ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Pre.jdField_a_of_type_Pqm.jdField_a_of_type_JavaUtilList.add(localBiuCommentInfo);
+                ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Qdd.jdField_a_of_type_Qcj.jdField_a_of_type_JavaUtilList.add(localBiuCommentInfo);
                 k += 1;
               }
               catch (Exception localException6)
@@ -1642,31 +1667,31 @@ public class BridgeModule
               }
             }
           }
-          ((ArticleInfo)localObject7).mTitle = new String(baaw.decode(paramJSONObject, 0));
+          ((ArticleInfo)localObject7).mTitle = new String(bbca.decode(paramJSONObject, 0));
           ((ArticleInfo)localObject7).mSummary = "";
           if ((i2 != 3) && (i2 != 2)) {
             break label2376;
           }
-          ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Pre.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-          localObject4 = new prf();
+          ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Qdd.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+          localObject4 = new qde();
           localObject6 = ((JSONObject)localObject6).optJSONArray("ugcPicInfo");
           if ((localObject6 == null) || (((JSONArray)localObject6).length() <= 0)) {
             break label2371;
           }
-          ((prf)localObject4).jdField_c_of_type_JavaLangString = ((JSONArray)localObject6).getJSONObject(0).optString("ugcPicUrl");
-          ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Pre.jdField_a_of_type_JavaUtilArrayList.add(localObject4);
+          ((qde)localObject4).jdField_c_of_type_JavaLangString = ((JSONArray)localObject6).getJSONObject(0).optString("ugcPicUrl");
+          ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Qdd.jdField_a_of_type_JavaUtilArrayList.add(localObject4);
           break label2371;
           if (m == 22)
           {
-            localObject4 = new pqk();
-            ((pqk)localObject4).jdField_a_of_type_JavaLangString = ((String)localObject3);
-            ((pqk)localObject4).jdField_b_of_type_JavaLangString = str3;
-            ((pqk)localObject4).jdField_c_of_type_JavaLangString = str4;
-            ((pqk)localObject4).jdField_a_of_type_Long = l2;
-            ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Pre.jdField_a_of_type_Pqk = ((pqk)localObject4);
+            localObject4 = new qcg();
+            ((qcg)localObject4).jdField_a_of_type_JavaLangString = ((String)localObject3);
+            ((qcg)localObject4).jdField_b_of_type_JavaLangString = str3;
+            ((qcg)localObject4).jdField_c_of_type_JavaLangString = str4;
+            ((qcg)localObject4).jdField_a_of_type_Long = l2;
+            ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Qdd.jdField_a_of_type_Qcg = ((qcg)localObject4);
           }
-          ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Pre.jdField_a_of_type_Int = i2;
-          ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Pre.jdField_a_of_type_JavaLangString = ((ArticleInfo)localObject7).mTitle;
+          ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Qdd.jdField_a_of_type_Int = i2;
+          ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Qdd.jdField_a_of_type_JavaLangString = ((ArticleInfo)localObject7).mTitle;
           ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_JavaLangString = "";
           ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_c_of_type_JavaLangString = "";
           ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_b_of_type_JavaLangString = "";
@@ -1694,16 +1719,16 @@ public class BridgeModule
           {
             QLog.d(TAG, 1, "web page share but core info empty !");
             return;
-            ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Pre.b = new ArrayList();
-            localObject8 = new prg();
+            ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Qdd.b = new ArrayList();
+            localObject8 = new qdf();
             localObject6 = ((JSONObject)localObject6).optJSONObject("ugcVideoInfo");
             if (localObject6 == null) {
               break label2391;
             }
-            ((prg)localObject8).d = ((JSONObject)localObject6).optString("ugcVideoCoverUrl");
-            ((prg)localObject8).jdField_a_of_type_Long = ((JSONObject)localObject6).optInt("ugcVideoDuration");
-            ((prg)localObject8).e = ((String)localObject4);
-            ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Pre.b.add(localObject8);
+            ((qdf)localObject8).d = ((JSONObject)localObject6).optString("ugcVideoCoverUrl");
+            ((qdf)localObject8).jdField_a_of_type_Long = ((JSONObject)localObject6).optInt("ugcVideoDuration");
+            ((qdf)localObject8).e = ((String)localObject4);
+            ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Qdd.b.add(localObject8);
             break label2391;
             if (i2 != 1) {
               break label2396;
@@ -1713,16 +1738,16 @@ public class BridgeModule
           }
           if (n == 1)
           {
-            if ((((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Pqm.jdField_a_of_type_JavaUtilList == null) || (((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Pqm.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+            if ((((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Qcj.jdField_a_of_type_JavaUtilList == null) || (((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Qcj.jdField_a_of_type_JavaUtilList.size() <= 0)) {
               continue;
             }
             paramJSONObject = str1 + "//";
             paramJSONObject = "：" + paramJSONObject;
-            paramString = (QQAppInterface)obz.a();
+            paramString = (QQAppInterface)onk.a();
             if (paramString == null) {
               break;
             }
-            ((ohd)paramString.getManager(163)).a().a(obz.a(), l1, ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Pqm, 0L, paramJSONObject, l3, -1L, i, (String)localObject1, i1, (ArticleInfo)localObject7);
+            ((oso)paramString.getManager(163)).a().a(onk.a(), l1, ((ArticleInfo)localObject7).mSocialFeedInfo.jdField_a_of_type_Qcj, 0L, paramJSONObject, l3, -1L, i, (String)localObject1, i1, (ArticleInfo)localObject7);
             return;
           }
           BaseActivity.sTopActivity.startActivityForResult((Intent)localObject3, 113);
@@ -1797,7 +1822,7 @@ public class BridgeModule
         localObject2 = getViolaInstance().getActivity();
         if (localObject2 != null)
         {
-          azcm.a((Activity)localObject2, j, paramJSONObject, null, null, false, bool, (String)localObject1, 100, null, null, null, null, "", true);
+          badh.a((Activity)localObject2, j, paramJSONObject, null, null, false, bool, (String)localObject1, 100, null, null, null, null, "", true);
           invokeCallJS(paramString, null);
           return;
         }
@@ -1824,7 +1849,7 @@ public class BridgeModule
         String str1 = paramJSONObject.optString("srcID");
         boolean bool1 = paramJSONObject.optBoolean("isNotShowIndex", true);
         boolean bool2 = paramJSONObject.optBoolean("showTitle", false);
-        String str2 = new String(baaw.decode(paramJSONObject.optString("title", ""), 0));
+        String str2 = new String(bbca.decode(paramJSONObject.optString("title", ""), 0));
         String str3 = paramJSONObject.optString("articleUrl", "");
         boolean bool3 = paramJSONObject.optBoolean("isReport", false);
         long l1 = paramJSONObject.optLong("touin");
@@ -1877,8 +1902,8 @@ public class BridgeModule
           localBundle.putString("to_uin", Long.toString(l1));
           localBundle.putString("feeds_id", Long.toString(l2));
           localBundle.putString("article_id", Long.toString(l3));
-          localBundle.putString("scroll_image_r5", obz.a(i, -1, Integer.toString(n), m, "", "", null));
-          localBundle.putString("read_article_r5", obz.a(i, -1, Integer.toString(n), m, "", null));
+          localBundle.putString("scroll_image_r5", onk.a(i, -1, Integer.toString(n), m, "", "", null));
+          localBundle.putString("read_article_r5", onk.a(i, -1, Integer.toString(n), m, "", null));
           if (!TextUtils.isEmpty(str1)) {
             localBundle.putString("src_id", str1);
           }
@@ -1913,9 +1938,9 @@ public class BridgeModule
     for (localObject = ((Fragment)localObject).getActivity(); localObject == null; localObject = getViolaInstance().getActivity()) {
       return;
     }
-    AppInterface localAppInterface = (AppInterface)obz.a();
+    AppInterface localAppInterface = (AppInterface)onk.a();
     JSONObject localJSONObject = paramJSONObject.optJSONObject("shareInfo");
-    String str = paramJSONObject.optString("menu_title", ajjy.a(2131635396));
+    String str = paramJSONObject.optString("menu_title", ajyc.a(2131701180));
     JSONArray localJSONArray = paramJSONObject.optJSONArray("hide_items");
     if (paramJSONObject.optInt("show_diandian", 0) == 1) {}
     for (boolean bool = true;; bool = false)
@@ -1931,15 +1956,15 @@ public class BridgeModule
         i += 1;
       }
     }
-    this.mShareHelper = new rug((Activity)localObject, localAppInterface, null, new rlr(this, false, null, null, localJSONObject, new WeakReference(localObject), paramString));
+    this.mShareHelper = new sgy((Activity)localObject, localAppInterface, null, new ryi(this, false, null, null, localJSONObject, new WeakReference(localObject), paramString));
     this.mShareHelper.a.a(str);
-    this.mShareHelper.a.a(new rlb(this));
-    this.mShareHelper.a(rlv.a(bool, paramJSONObject));
+    this.mShareHelper.a.a(new rxr(this));
+    this.mShareHelper.a(rym.a(bool, paramJSONObject));
   }
   
   private void showTips(JSONObject paramJSONObject, String paramString)
   {
-    Object localObject = (QQAppInterface)obz.a();
+    Object localObject = (QQAppInterface)onk.a();
     if (localObject == null) {
       return;
     }
@@ -1957,7 +1982,7 @@ public class BridgeModule
       }
       for (;;)
       {
-        bbmy.a((Context)localObject, i, str, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131167766));
+        bcpw.a((Context)localObject, i, str, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131298865));
         invokeCallJS(paramString, new JSONObject());
         return;
         i = 0;
@@ -1996,7 +2021,7 @@ public class BridgeModule
       }
       try
       {
-        paramJSONObject = new String(baaw.decode((String)localObject, 0));
+        paramJSONObject = new String(bbca.decode((String)localObject, 0));
         localObject = new Intent(BaseActivity.sTopActivity, ReadInJoyDeliverUGCActivity.class);
         ((Intent)localObject).putExtra("arg_topic_id", str1);
         if ((i != 0) || (j != 0))
@@ -2044,7 +2069,7 @@ public class BridgeModule
   
   private void showUGCVideoRecordPage(JSONObject paramJSONObject, String paramString)
   {
-    Object localObject1 = (AppInterface)obz.a();
+    Object localObject1 = (AppInterface)onk.a();
     localObject1 = getViolaInstance().getFragment();
     if (localObject1 != null) {}
     for (localObject1 = ((Fragment)localObject1).getActivity(); localObject1 == null; localObject1 = getViolaInstance().getActivity()) {
@@ -2061,10 +2086,10 @@ public class BridgeModule
     String str2 = paramJSONObject.optString("cookie");
     try
     {
-      paramJSONObject = new String(baaw.decode((String)localObject2, 0));
-      if (obz.g() >= 2)
+      paramJSONObject = new String(bbca.decode((String)localObject2, 0));
+      if (onk.g() >= 2)
       {
-        bbmy.a((Context)localObject1, 0, ((Activity)localObject1).getString(2131652605), 0).b(((Activity)localObject1).getResources().getDimensionPixelSize(2131167766));
+        bcpw.a((Context)localObject1, 0, ((Activity)localObject1).getString(2131718424), 0).b(((Activity)localObject1).getResources().getDimensionPixelSize(2131298865));
         return;
       }
     }
@@ -2083,8 +2108,39 @@ public class BridgeModule
       ((Bundle)localObject2).putInt("arg_ad_tag", i);
       ((Bundle)localObject2).putString("arg_callback", paramString);
       ((Bundle)localObject2).putString("arg_ugc_edit_cookie", str2);
-      nsz.a((Activity)localObject1, (Bundle)localObject2, (byte)116);
-      obz.a("2", "2");
+      oej.a((Activity)localObject1, (Bundle)localObject2, (byte)116);
+      onk.a("2", "2");
+    }
+  }
+  
+  private void suspensionPopBack(String paramString)
+  {
+    Fragment localFragment = getViolaInstance().getFragment();
+    if (localFragment != null)
+    {
+      if (!(localFragment instanceof ViolaFragment)) {
+        break label81;
+      }
+      if (((ViolaFragment)localFragment).a() == null) {
+        break label71;
+      }
+      if (!((ViolaFragment)localFragment).a().a()) {
+        break label56;
+      }
+      localFragment.getActivity().doOnBackPressed();
+    }
+    for (;;)
+    {
+      invokeCallJS(paramString, null);
+      return;
+      label56:
+      ((ViolaFragment)localFragment).a().a(0, 3);
+      continue;
+      label71:
+      localFragment.getActivity().doOnBackPressed();
+      continue;
+      label81:
+      localFragment.getActivity().doOnBackPressed();
     }
   }
   
@@ -2099,7 +2155,7 @@ public class BridgeModule
   
   private void updateIfNeed(JSONObject paramJSONObject, String paramString)
   {
-    rjb.a(String.valueOf(paramJSONObject.optInt("bid", 3256)), new rle(this, paramString));
+    rwa.a(String.valueOf(paramJSONObject.optInt("bid", 3256)), new rxu(this, paramString));
   }
   
   private void uploadTopicPic(JSONObject paramJSONObject, String paramString)
@@ -2134,7 +2190,7 @@ public class BridgeModule
   @JSMethod
   public void addFavorite(JSONObject paramJSONObject)
   {
-    Object localObject = (QQAppInterface)obz.a();
+    Object localObject = (QQAppInterface)onk.a();
     String str1;
     String str2;
     String str3;
@@ -2164,7 +2220,7 @@ public class BridgeModule
     for (int i = 1;; i = 2)
     {
       localBundle.putInt("videoType", i);
-      onp.a().a(getViolaInstance().getActivity(), (String)localObject, 2, str1, str2, str3, str4, str5, localBundle);
+      oze.a().a(getViolaInstance().getActivity(), (String)localObject, 2, str1, str2, str3, str4, str5, localBundle);
       return;
     }
   }
@@ -2174,13 +2230,13 @@ public class BridgeModule
   {
     try
     {
-      yny.a(TAG, paramJSONObject.toString());
-      yof.a(paramJSONObject.optInt("operationType"), paramJSONObject.optInt("businessType"), (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(ynv.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject.getJSONObject("adInfo"))));
+      yxs.a(TAG, paramJSONObject.toString());
+      yxy.a(paramJSONObject.optInt("operationType"), paramJSONObject.optInt("businessType"), (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject.getJSONObject("adInfo"))));
       return;
     }
     catch (Exception paramJSONObject)
     {
-      yny.d(TAG, "handleJsCallRequest", paramJSONObject);
+      yxs.d(TAG, "handleJsCallRequest", paramJSONObject);
     }
   }
   
@@ -2230,17 +2286,17 @@ public class BridgeModule
     try
     {
       int i = paramJSONObject.optInt("dwellTimeMillis");
-      paramJSONObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(ynv.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject.getJSONObject("adInfo")));
-      yoe localyoe = new yoe();
-      localyoe.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(paramJSONObject);
-      localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(42);
-      localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(i);
-      yod.a(localyoe);
+      paramJSONObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject.getJSONObject("adInfo")));
+      yxx localyxx = new yxx();
+      localyxx.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(paramJSONObject);
+      localyxx.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(42);
+      localyxx.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(i);
+      yxw.a(localyxx);
       return;
     }
     catch (Exception paramJSONObject)
     {
-      yny.d(TAG, "handleJsCallRequest", paramJSONObject);
+      yxs.d(TAG, "handleJsCallRequest", paramJSONObject);
     }
   }
   
@@ -2267,11 +2323,11 @@ public class BridgeModule
     {
       try
       {
-        if (nsh.a() == 1)
+        if (odr.a() == 1)
         {
           paramJSONObject = "fastBiu";
           String str;
-          if (nsh.b() == 1)
+          if (odr.b() == 1)
           {
             str = "fastBiu";
             localJSONObject.put("retCode", 0);
@@ -2352,7 +2408,7 @@ public class BridgeModule
   
   public void getNetType(String paramString, boolean paramBoolean)
   {
-    int i = mpl.a();
+    int i = nam.a();
     if (QLog.isColorLevel()) {
       QLog.d(TAG, 2, "getNetType,netType:" + i);
     }
@@ -2379,10 +2435,10 @@ public class BridgeModule
   
   public JSONObject getNetworkInfo()
   {
-    int k = mpl.a();
-    String str = mpl.a();
+    int k = nam.a();
+    String str = nam.a();
     int j = 0;
-    Object localObject = babp.b();
+    Object localObject = bbct.b();
     int i = j;
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
@@ -2487,7 +2543,7 @@ public class BridgeModule
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
     try
     {
-      yny.b(TAG, paramJSONObject.toString());
+      yxs.b(TAG, paramJSONObject.toString());
       JSONObject localJSONObject = paramJSONObject.getJSONObject("options");
       boolean bool1 = localJSONObject.getBoolean("reportForClick");
       boolean bool2 = localJSONObject.getBoolean("appAutoDownload");
@@ -2509,36 +2565,37 @@ public class BridgeModule
         localRect.right = m;
         localRect.bottom = n;
       }
-      paramJSONObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(ynv.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject.getJSONObject("adInfo")));
-      localObject = new yjs();
-      ((yjs)localObject).jdField_a_of_type_Int = 7;
-      ((yjs)localObject).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localBaseActivity);
-      ((yjs)localObject).jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(paramJSONObject);
-      ((yjs)localObject).jdField_a_of_type_Boolean = bool1;
-      ((yjs)localObject).jdField_b_of_type_Boolean = bool2;
+      paramJSONObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject.getJSONObject("adInfo")));
+      localObject = new GdtHandler.Params();
+      ((GdtHandler.Params)localObject).jdField_c_of_type_Int = 7;
+      ((GdtHandler.Params)localObject).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localBaseActivity);
+      ((GdtHandler.Params)localObject).jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(paramJSONObject);
+      ((GdtHandler.Params)localObject).jdField_a_of_type_Boolean = bool1;
+      ((GdtHandler.Params)localObject).jdField_b_of_type_Boolean = bool2;
       if (mGdtAppReceiver == null)
       {
         mGdtAppReceiver = new GdtAppReceiver();
         mGdtAppReceiver.register(BaseApplicationImpl.getContext());
       }
-      ((yjs)localObject).jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(mGdtAppReceiver);
-      ((yjs)localObject).jdField_a_of_type_JavaLangClass = ReadInJoyVideoCeilingFragment.class;
-      ((yjs)localObject).jdField_c_of_type_Boolean = bool3;
-      ((yjs)localObject).d = bool4;
-      ((yjs)localObject).e = bool5;
-      ((yjs)localObject).jdField_a_of_type_AndroidGraphicsRect = localRect;
-      ((yjs)localObject).jdField_b_of_type_JavaLangClass = ReadInJoyForCanvasFragment.class;
-      ((yjs)localObject).jdField_c_of_type_Int = i;
-      ((yjs)localObject).jdField_a_of_type_AndroidOsBundle = new Bundle();
-      ((yjs)localObject).jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", "biz_src_feeds_kandian");
-      ((yjs)localObject).e = localJSONObject.optBoolean("videoPlayForced", false);
-      ((yjs)localObject).jdField_a_of_type_Long = l;
-      yjr.a((yjs)localObject);
+      ((GdtHandler.Params)localObject).jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(mGdtAppReceiver);
+      ((GdtHandler.Params)localObject).jdField_a_of_type_JavaLangClass = ReadInJoyVideoCeilingFragment.class;
+      ((GdtHandler.Params)localObject).jdField_c_of_type_Boolean = bool3;
+      ((GdtHandler.Params)localObject).d = bool4;
+      ((GdtHandler.Params)localObject).e = bool5;
+      ((GdtHandler.Params)localObject).jdField_a_of_type_AndroidGraphicsRect = localRect;
+      ((GdtHandler.Params)localObject).jdField_b_of_type_JavaLangClass = ReadInJoyForCanvasFragment.class;
+      ((GdtHandler.Params)localObject).jdField_b_of_type_Int = i;
+      ((GdtHandler.Params)localObject).jdField_a_of_type_AndroidOsBundle = new Bundle();
+      ((GdtHandler.Params)localObject).jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", "biz_src_feeds_kandian");
+      bool1 = localJSONObject.optBoolean("videoPlayForced", false);
+      ((GdtHandler.Params)localObject).jdField_a_of_type_Long = l;
+      ((GdtHandler.Params)localObject).f = bool1;
+      GdtHandler.a((GdtHandler.Params)localObject);
       return;
     }
     catch (Throwable paramJSONObject)
     {
-      yny.d(TAG, "handleJsCallRequest error", paramJSONObject);
+      yxs.d(TAG, "handleJsCallRequest error", paramJSONObject);
     }
   }
   
@@ -2557,7 +2614,7 @@ public class BridgeModule
     }
     boolean bool;
     if (("weishi://feed".equals(paramString1)) || ("weishi".equals(paramString1))) {
-      bool = vnd.a(localBaseActivity);
+      bool = vzz.a(localBaseActivity);
     }
     for (;;)
     {
@@ -2580,7 +2637,7 @@ public class BridgeModule
       }
       QLog.e(TAG, 2, "hasApp error" + paramString1.getMessage());
       return;
-      bool = bady.a(localBaseActivity, paramString1);
+      bool = bbfd.a(localBaseActivity, paramString1);
       continue;
       label124:
       i = 0;
@@ -2612,11 +2669,12 @@ public class BridgeModule
     String str2 = paramJSONObject.optString("method");
     if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
     {
-      invokeErrorCallJS(paramString, ajjy.a(2131635406));
+      invokeErrorCallJS(paramString, ajyc.a(2131701190));
       QLog.d(TAG, 1, "ns or method not exists");
     }
     label223:
     label3304:
+    label3325:
     for (;;)
     {
       return;
@@ -2640,9 +2698,9 @@ public class BridgeModule
       for (;;)
       {
         if ((i == 0) || (invokeBridgeApi(paramJSONObject, paramString))) {
-          break label3304;
+          break label3325;
         }
-        invokeErrorCallJS(paramString, "ns:" + str1 + ajjy.a(2131635402) + str2 + ajjy.a(2131635397));
+        invokeErrorCallJS(paramString, "ns:" + str1 + ajyc.a(2131701186) + str2 + ajyc.a(2131701181));
         return;
         localObject1 = " null ";
         break;
@@ -2876,6 +2934,12 @@ public class BridgeModule
                     i = 0;
                     continue;
                   }
+                  if ("suspensionPopBack".equals(str2))
+                  {
+                    suspensionPopBack(paramString);
+                    i = 0;
+                    continue;
+                  }
                   if ("setNavBtn".equals(str2))
                   {
                     setNavBtn(paramJSONObject.optJSONObject("params"), paramString);
@@ -2923,7 +2987,7 @@ public class BridgeModule
                     if ("showActionSheet".equals(str2))
                     {
                       if (this.mActionSheetHelper == null) {
-                        this.mActionSheetHelper = new rkr(this);
+                        this.mActionSheetHelper = new rxh(this);
                       }
                       this.mActionSheetHelper.a(paramJSONObject.optJSONObject("params"), paramString);
                       i = 0;
@@ -2966,7 +3030,7 @@ public class BridgeModule
                         if (TextUtils.isEmpty(((JSONObject)localObject3).optString("callback"))) {}
                         for (localObject1 = paramString;; localObject1 = ((JSONObject)localObject3).optString("callback"))
                         {
-                          rsv.a((JSONObject)localObject3, (String)localObject1, new rln(this));
+                          sfn.a((JSONObject)localObject3, (String)localObject1, new rye(this));
                           break;
                         }
                       }
@@ -3215,17 +3279,17 @@ public class BridgeModule
                         return;
                       }
                       localObject3 = getViolaInstance().getActivity();
-                      localObject4 = (QQAppInterface)obz.a();
+                      localObject4 = (QQAppInterface)onk.a();
                       if ((localObject3 != null) && (localObject4 != null)) {}
                       for (;;)
                       {
                         try
                         {
-                          localObject1 = bade.a((QQAppInterface)localObject4, (Context)localObject3, ((JSONObject)localObject1).getString("schema"));
+                          localObject1 = bbej.a((QQAppInterface)localObject4, (Context)localObject3, ((JSONObject)localObject1).getString("schema"));
                           if (localObject1 != null)
                           {
-                            ((bacn)localObject1).a("viola");
-                            ((bacn)localObject1).c();
+                            ((bbds)localObject1).a("viola");
+                            ((bbds)localObject1).c();
                             invokeCallJS(paramString, null);
                           }
                         }
@@ -3295,7 +3359,7 @@ public class BridgeModule
                           }
                           localObject3 = BaseApplicationImpl.getApplication().getRuntime();
                           if ((localObject3 instanceof QQAppInterface)) {
-                            ((aqod)((QQAppInterface)localObject3).getManager(306)).a((Bundle)localObject2);
+                            ((arii)((QQAppInterface)localObject3).getManager(306)).a((Bundle)localObject2);
                           }
                           i = 0;
                         }
@@ -3314,7 +3378,7 @@ public class BridgeModule
                           i = 0;
                           continue;
                         }
-                        invokeErrorCallJS(paramString, ajjy.a(2131635400) + str2 + ajjy.a(2131635401));
+                        invokeErrorCallJS(paramString, ajyc.a(2131701184) + str2 + ajyc.a(2131701185));
                         i = 0;
                       }
                     }
@@ -3325,12 +3389,12 @@ public class BridgeModule
                         localObject3 = paramJSONObject.optJSONObject("params");
                         if (localObject3 != null) {
                           if (!TextUtils.isEmpty(((JSONObject)localObject3).optString("callback"))) {
-                            break label3283;
+                            break label3304;
                           }
                         }
                         for (localObject2 = paramString;; localObject2 = ((JSONObject)localObject3).optString("callback"))
                         {
-                          rsv.a((JSONObject)localObject3, (String)localObject2, new rlo(this));
+                          sfn.a((JSONObject)localObject3, (String)localObject2, new ryf(this));
                           i = 0;
                           break;
                         }
@@ -3383,7 +3447,7 @@ public class BridgeModule
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        if (bati.a() == 1)
+        if (bbwc.a() == 1)
         {
           localJSONObject.put("value", bool);
           ViolaBridgeManager.getInstance().callbackJavascript(getViolaInstance().getInstanceId(), getModuleName(), "callback", paramString, localJSONObject, true);
@@ -3569,7 +3633,7 @@ public class BridgeModule
               {
                 paramIntent = new JSONObject();
                 paramIntent.put("retCode", 1);
-                paramIntent.put("msg", ajjy.a(2131635395));
+                paramIntent.put("msg", ajyc.a(2131701179));
                 if (QLog.isColorLevel()) {
                   QLog.d(TAG, 2, "selectAndUploadAvatar  result:" + ReadInJoyDeliverUGCActivity.a(paramIntent.toString()));
                 }
@@ -3672,7 +3736,7 @@ public class BridgeModule
               if ((paramInt2 != -1) || (paramInt1 != 21) || (getViolaInstance() == null) || (getViolaInstance().getActivity() == null)) {
                 break;
               }
-              ForwardUtils.a((QQAppInterface)obz.a(), getViolaInstance().getActivity(), getViolaInstance().getActivity(), paramIntent, null);
+              ForwardUtils.a((QQAppInterface)onk.a(), getViolaInstance().getActivity(), getViolaInstance().getActivity(), paramIntent, null);
               QLog.d(TAG, 2, "share video card to aio success。");
               return;
             }
@@ -3730,33 +3794,33 @@ public class BridgeModule
       if (TextUtils.isEmpty(paramString1))
       {
         if (!TextUtils.isEmpty(paramString2)) {
-          invokeErrorCallJS(paramString2, ajjy.a(2131635399));
+          invokeErrorCallJS(paramString2, ajyc.a(2131701183));
         }
       }
       else
       {
         if ((paramString1.contains("weishi")) || (paramString1.contains("weishi://feed"))) {
-          if (vnd.a(localBaseActivity)) {
-            rwb.a(localBaseActivity, "video_type_videopublic");
+          if (vzz.a(localBaseActivity)) {
+            siu.a(localBaseActivity, "video_type_videopublic");
           }
         }
         while (!TextUtils.isEmpty(paramString2))
         {
           invokeCallJS(paramString2, null);
           return;
-          bbmy.a(localBaseActivity, -1, ajjy.a(2131635405), 0).b(localBaseActivity.getResources().getDimensionPixelSize(2131167766));
-          rwb.b(localBaseActivity, "video_type_videopublic");
+          bcpw.a(localBaseActivity, -1, ajyc.a(2131701189), 0).b(localBaseActivity.getResources().getDimensionPixelSize(2131298865));
+          siu.b(localBaseActivity, "video_type_videopublic");
           continue;
-          if (!npj.a(localBaseActivity, paramString1))
+          if (!oau.a(localBaseActivity, paramString1))
           {
             Intent localIntent = new Intent();
             localIntent.setAction("android.intent.action.VIEW");
             String str = paramString3;
             if (TextUtils.isEmpty(paramString3)) {
-              str = obz.f(0);
+              str = onk.f(0);
             }
             localIntent.putExtra("big_brother_source_key", str);
-            localIntent.putExtra("big_brother_ref_source_key", obz.f(0));
+            localIntent.putExtra("big_brother_ref_source_key", onk.f(0));
             localIntent.setData(Uri.parse(paramString1));
             localBaseActivity.startActivity(localIntent);
           }
@@ -3822,7 +3886,7 @@ public class BridgeModule
   {
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
     if (localBaseActivity != null) {
-      rjb.a(localBaseActivity, paramJSONObject);
+      rwa.a(localBaseActivity, paramJSONObject);
     }
   }
   
@@ -3844,11 +3908,25 @@ public class BridgeModule
   public void popFromBottomStateChange(String paramString)
   {
     if ((getViolaInstance() != null) && ((getViolaInstance().getFragment() instanceof ViolaFragment))) {
-      ((ViolaFragment)getViolaInstance().getFragment()).a(new rlm(this, paramString));
+      ((ViolaFragment)getViolaInstance().getFragment()).a(new ryd(this, paramString));
     }
   }
   
   public void saveImage(JSONObject paramJSONObject, String paramString)
+  {
+    Activity localActivity = getViolaInstance().getActivity();
+    if ((localActivity == null) || (localActivity.isFinishing())) {
+      return;
+    }
+    if (!CheckPermission.isHasStoragePermission(localActivity))
+    {
+      CheckPermission.requestSDCardPermission((AppActivity)localActivity, new rxz(this, paramJSONObject, paramString));
+      return;
+    }
+    saveImagePermission(paramJSONObject, paramString);
+  }
+  
+  public void saveImagePermission(JSONObject paramJSONObject, String paramString)
   {
     try
     {
@@ -3856,16 +3934,16 @@ public class BridgeModule
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramJSONObject);
       ((StringBuilder)localObject).append("?client=androidQQ");
-      ((StringBuilder)localObject).append("&version=8.2.6.4370");
+      ((StringBuilder)localObject).append("&version=8.2.8.4440");
       ((StringBuilder)localObject).append("&system=" + Build.VERSION.RELEASE);
       ((StringBuilder)localObject).append("&device=" + Build.DEVICE);
-      ((StringBuilder)localObject).append("&uin=" + obz.a());
-      paramJSONObject = anam.a("VIP_xingying", ((StringBuilder)localObject).toString());
+      ((StringBuilder)localObject).append("&uin=" + onk.a());
+      paramJSONObject = anqu.a("VIP_xingying", ((StringBuilder)localObject).toString());
       if (QLog.isColorLevel()) {
         QLog.d(TAG, 2, "saveImage imageUrl=" + paramJSONObject);
       }
       localObject = System.currentTimeMillis() + ".jpg";
-      ThreadManager.executeOnNetWorkThread(new BridgeModule.26(this, paramJSONObject, new File(ajed.ba, (String)localObject), paramString));
+      ThreadManager.executeOnNetWorkThread(new BridgeModule.27(this, paramJSONObject, new File(ajsf.bc, (String)localObject), paramString));
       return;
     }
     catch (Exception paramJSONObject)
@@ -3894,7 +3972,7 @@ public class BridgeModule
           localObject1 = paramJSONObject.getString("host");
           localObject2 = paramJSONObject.getJSONObject("data");
           str = paramJSONObject.getString("cmd");
-          localQQAppInterface = (QQAppInterface)obz.a();
+          localQQAppInterface = (QQAppInterface)onk.a();
           if ((localObject2 != null) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (localQQAppInterface != null) && (!TextUtils.isEmpty(str)))
           {
             localObject2 = ((JSONObject)localObject2).toString();
@@ -3941,13 +4019,13 @@ public class BridgeModule
       }
       else
       {
-        localObject1 = new NewIntent(localQQAppInterface.getApplication(), mmi.class);
+        localObject1 = new NewIntent(localQQAppInterface.getApplication(), mxh.class);
         ((NewIntent)localObject1).putExtra("cmd", "MQUpdateSvc_" + paramJSONObject + ".web." + str);
         paramJSONObject = new WebSsoBody.WebSsoRequestBody();
         paramJSONObject.type.set(0);
         paramJSONObject.data.set((String)localObject2);
         ((NewIntent)localObject1).putExtra("data", paramJSONObject.toByteArray());
-        ((NewIntent)localObject1).setObserver(new rkx(this, paramString));
+        ((NewIntent)localObject1).setObserver(new rxn(this, paramString));
         if (localQQAppInterface == null) {
           break;
         }
@@ -3980,13 +4058,13 @@ public class BridgeModule
         }
         if (str.equals("right"))
         {
-          ((rkq)localObject).a(paramJSONObject, new rlk(this, paramString));
+          ((rxg)localObject).a(paramJSONObject, new ryb(this, paramString));
           return;
         }
         if (!str.equals("left")) {
           break;
         }
-        ((rkq)localObject).b(paramJSONObject, new rll(this, paramString));
+        ((rxg)localObject).b(paramJSONObject, new ryc(this, paramString));
         return;
       }
     }
@@ -4021,19 +4099,19 @@ public class BridgeModule
     }
     if (!AppNetConnInfo.isNetSupport())
     {
-      bbmy.a(obz.a().getApplication(), 1, ajjy.a(2131635404), 0).a();
+      bcpw.a(onk.a().getApplication(), 1, ajyc.a(2131701188), 0).a();
       return;
     }
-    Object localObject2 = new File(axoa.d(paramString));
+    Object localObject2 = new File(ayog.d(paramString));
     if (((File)localObject2).exists())
     {
       shareImageToAIOInner((File)localObject2);
       return;
     }
     localObject1 = new Bundle();
-    localObject2 = new batm(paramString, (File)localObject2);
-    ((batm)localObject2).d = 60L;
-    ((bato)obz.a().getManager(47)).a(1).a((batm)localObject2, new rlj(this, paramString), (Bundle)localObject1);
+    localObject2 = new bbwg(paramString, (File)localObject2);
+    ((bbwg)localObject2).d = 60L;
+    ((bbwi)onk.a().getManager(47)).a(1).a((bbwg)localObject2, new rya(this, paramString), (Bundle)localObject1);
   }
   
   protected void shareImageToAIOInner(File paramFile)
@@ -4050,7 +4128,7 @@ public class BridgeModule
     paramFile.putString("forward_extra", (String)localObject);
     localObject = new Intent();
     ((Intent)localObject).putExtras(paramFile);
-    aphp.a(localActivity, (Intent)localObject, 18);
+    aqbc.a(localActivity, (Intent)localObject, 18);
   }
   
   @JSMethod
@@ -4074,12 +4152,12 @@ public class BridgeModule
     localVideoInfo.E = paramJSONObject.optString("thirdIcon");
     localVideoInfo.j = paramJSONObject.optString("third_uin");
     localVideoInfo.F = paramJSONObject.optString("third_uin_name");
-    qfy.a(localVideoInfo, getViolaInstance().getActivity(), 1);
+    qrw.a(localVideoInfo, getViolaInstance().getActivity(), 1);
   }
   
   public void showShareReadInJoyMenu(JSONObject paramJSONObject, String paramString)
   {
-    AppInterface localAppInterface = (AppInterface)obz.a();
+    AppInterface localAppInterface = (AppInterface)onk.a();
     Object localObject1 = getViolaInstance().getFragment();
     if (localObject1 != null) {}
     for (localObject1 = ((Fragment)localObject1).getActivity(); localObject1 == null; localObject1 = getViolaInstance().getActivity()) {
@@ -4102,7 +4180,7 @@ public class BridgeModule
       localArrayList = new ArrayList();
       localObject4 = ((List)localObject2).iterator();
       while (((Iterator)localObject4).hasNext()) {
-        localArrayList.add(Integer.valueOf(((rly)((Iterator)localObject4).next()).jdField_a_of_type_Int));
+        localArrayList.add(Integer.valueOf(((ryp)((Iterator)localObject4).next()).jdField_a_of_type_Int));
       }
       localObject2 = this.mShareUtils.a((JSONArray)localObject2, paramJSONObject);
       break;
@@ -4110,12 +4188,12 @@ public class BridgeModule
     Object localObject4 = new ArrayList();
     Iterator localIterator = ((List)localObject3).iterator();
     while (localIterator.hasNext()) {
-      ((List)localObject4).add(Integer.valueOf(((rly)localIterator.next()).jdField_a_of_type_Int));
+      ((List)localObject4).add(Integer.valueOf(((ryp)localIterator.next()).jdField_a_of_type_Int));
     }
-    this.mShareHelper = new rug((Activity)localObject1, localAppInterface, new rlq(this), new rlr(this, true, (List)localObject2, (List)localObject3, paramJSONObject, new WeakReference(localObject1), paramString));
+    this.mShareHelper = new sgy((Activity)localObject1, localAppInterface, new ryh(this), new ryi(this, true, (List)localObject2, (List)localObject3, paramJSONObject, new WeakReference(localObject1), paramString));
     this.mShareHelper.a(new List[] { localArrayList, localObject4 });
     this.mShareHelper.a.a(str);
-    this.mShareHelper.a.a(new rkw(this, paramString));
+    this.mShareHelper.a.a(new rxm(this, paramString));
   }
   
   public void showVisibleUserList(JSONObject paramJSONObject, String paramString)
@@ -4144,7 +4222,7 @@ public class BridgeModule
     {
       String str = paramJSONObject.getString("feeds_id");
       paramJSONObject = paramJSONObject.optString("feeds_type", "1");
-      ogy.a().a(str, Integer.valueOf(paramJSONObject).intValue());
+      osj.a().a(str, Integer.valueOf(paramJSONObject).intValue());
       invokeCallJS(paramString, null);
       return;
     }
@@ -4179,7 +4257,7 @@ public class BridgeModule
       if (paramJSONObject.has("height")) {
         f2 = FlexConvertUtils.converPxByViewportToRealPx(paramJSONObject.opt("height"), 750);
       }
-      paramJSONObject = URLDrawable.getDrawable(str, rkd.a(bool, (int)f1, (int)f2));
+      paramJSONObject = URLDrawable.getDrawable(str, rwy.a(bool, (int)f1, (int)f2));
       QLog.d(TAG, 2, "preload image, ur: " + str + ".isGif:" + bool + ",reqWidth:" + f1 + ",reqHeight:" + f2);
       paramJSONObject.startDownload();
       return;
@@ -4197,7 +4275,7 @@ public class BridgeModule
       while (i < paramJSONObject.length())
       {
         JSONObject localJSONObject = (JSONObject)paramJSONObject.get(i);
-        localArrayList.add(new qig(localJSONObject.optString("videoVid"), localJSONObject.optString("articleID"), localJSONObject.optInt("busitype"), localJSONObject.optInt("duration")));
+        localArrayList.add(new qul(localJSONObject.optString("videoVid"), localJSONObject.optString("articleID"), localJSONObject.optInt("busitype"), localJSONObject.optInt("duration")));
         i += 1;
       }
       return;
@@ -4208,10 +4286,34 @@ public class BridgeModule
       if ((this.mVideoPreDownloadMgr != null) && (getViolaInstance() != null) && (getViolaInstance().getActivity() != null))
       {
         this.mVideoPreDownloadMgr.a(getViolaInstance().getActivity().getApplicationContext());
-        this.mVideoPreDownloadMgr.a = new qii(qii.d, qii.f);
-        this.mVideoPreDownloadMgr.a(new rkv(this, localArrayList));
+        this.mVideoPreDownloadMgr.a = new qun(qun.d, qun.f);
+        this.mVideoPreDownloadMgr.a(new rxl(this, localArrayList));
       }
       this.mVideoPreDownloadMgr.a(0, true);
+    }
+  }
+  
+  @JSMethod
+  public void susCommentViewHide()
+  {
+    if ((getViolaInstance() != null) && ((getViolaInstance().getFragment() instanceof ViolaFragment)))
+    {
+      ViolaFragment localViolaFragment = (ViolaFragment)getViolaInstance().getFragment();
+      if ((localViolaFragment.a()) && (localViolaFragment.a() != null)) {
+        localViolaFragment.a().f();
+      }
+    }
+  }
+  
+  @JSMethod
+  public void susCommentViewShow()
+  {
+    if ((getViolaInstance() != null) && ((getViolaInstance().getFragment() instanceof ViolaFragment)))
+    {
+      ViolaFragment localViolaFragment = (ViolaFragment)getViolaInstance().getFragment();
+      if ((localViolaFragment.a()) && (localViolaFragment.a() != null)) {
+        localViolaFragment.a().e();
+      }
     }
   }
   
@@ -4227,7 +4329,7 @@ public class BridgeModule
         int i = paramJSONObject.getInt("followInfo");
         if ((i == 2) || (i == 1))
         {
-          paramJSONObject = ohb.a();
+          paramJSONObject = osm.a();
           if (i != 2) {
             break label120;
           }
@@ -4253,9 +4355,13 @@ public class BridgeModule
   }
   
   @JSMethod(uiThread=true)
-  public void updateIndepentTabState(int paramInt)
+  public void updateIndepentTabState(JSONObject paramJSONObject)
   {
-    ohb.a().a(paramInt, null);
+    if ((paramJSONObject != null) && (paramJSONObject.has("state")))
+    {
+      int i = paramJSONObject.optInt("state");
+      osm.a().a(i, null);
+    }
   }
   
   public void updateTopicCardFollowInfo(JSONObject paramJSONObject, String paramString)
@@ -4268,8 +4374,8 @@ public class BridgeModule
       if (QLog.isColorLevel()) {
         QLog.d(TAG, 2, "topic id = " + i + "\t follow info =" + j);
       }
-      if (!ogy.a().a(i, j)) {
-        ogy.a().d(i, j);
+      if (!osj.a().a(i, j)) {
+        osj.a().d(i, j);
       }
       invokeCallJS(paramString, null);
       return;
@@ -4288,13 +4394,40 @@ public class BridgeModule
   @JSMethod(uiThread=false)
   public void vaNetworkChange(String paramString)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)obz.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)onk.a();
     if (localQQAppInterface == null) {}
     while (this.netInfoHandler != null) {
       return;
     }
-    this.netInfoHandler = new rld(this, paramString);
+    this.netInfoHandler = new rxt(this, paramString);
     AppNetConnInfo.registerConnectionChangeReceiver(localQQAppInterface.getApplication(), this.netInfoHandler);
+  }
+  
+  @JSMethod
+  public void videoPlayFeedback(JSONObject paramJSONObject, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(TAG, 2, "do videoPlayFeedback start data: " + paramJSONObject.toString());
+    }
+    qyz.a(paramJSONObject);
+    paramJSONObject = getViolaInstance();
+    JSONObject localJSONObject;
+    if (paramJSONObject != null) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("success", 1);
+      ViolaBridgeManager.getInstance().callbackJavascript(paramJSONObject.getInstanceId(), MODULE_NAME, "callback", paramString, localJSONObject, true);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
   }
 }
 

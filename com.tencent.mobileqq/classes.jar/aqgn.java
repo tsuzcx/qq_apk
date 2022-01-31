@@ -1,14 +1,27 @@
-import com.tencent.mobileqq.hotpic.HotVideoData;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface aqgn
+class aqgn
+  implements View.OnClickListener
 {
-  public abstract void a(HotVideoData paramHotVideoData);
+  aqgn(aqgm paramaqgm) {}
   
-  public abstract void b(HotVideoData paramHotVideoData);
+  public void onClick(View paramView)
+  {
+    if (this.a.jdField_a_of_type_Bbgg == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_Bbgg.hideSoftInputFromWindow();
+    paramView = new aqdx(this.a.jdField_a_of_type_Bbgg);
+    paramView.a(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131692760), this.a.jdField_a_of_type_JavaLangString);
+    this.a.jdField_a_of_type_Bbgg.addPreviewView(paramView.b());
+    this.a.D();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqgn
  * JD-Core Version:    0.7.0.1
  */

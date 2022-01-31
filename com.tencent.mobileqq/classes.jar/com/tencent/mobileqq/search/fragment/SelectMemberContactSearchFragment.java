@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ajjy;
+import ajyc;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import avkj;
-import avlv;
-import avlw;
-import avtz;
-import avuz;
-import avwf;
+import awkc;
+import awlo;
+import awlp;
+import awts;
+import awus;
+import awvy;
 import com.tencent.widget.ListView;
 
 public class SelectMemberContactSearchFragment
@@ -24,42 +24,42 @@ public class SelectMemberContactSearchFragment
     return 20;
   }
   
-  protected avkj a()
+  protected awkc a()
   {
-    return new avlw(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Azwg);
+    return new awlp(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Baxk);
   }
   
-  protected avuz a()
+  protected awus a()
   {
-    return new avtz(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, this.jdField_a_of_type_Int, null);
+    return new awts(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, this.jdField_a_of_type_Int, null);
   }
   
   protected String a()
   {
-    return ajjy.a(2131647942);
+    return ajyc.a(2131713729);
   }
   
   protected void a(String paramString, int paramInt)
   {
     super.a(paramString, paramInt);
-    if ((!avwf.a(this.b)) && (this.jdField_a_of_type_AndroidViewView != null))
+    if ((!awvy.a(this.b)) && (this.jdField_a_of_type_AndroidViewView != null))
     {
       if (TextUtils.isEmpty(paramString))
       {
         this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131099832);
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131165374);
       }
     }
     else {
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838503);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838514);
   }
   
   protected boolean a()
   {
-    return avwf.a(this.b);
+    return awvy.a(this.b);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -76,11 +76,11 @@ public class SelectMemberContactSearchFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    if (!avwf.a(this.b))
+    if (!awvy.a(this.b))
     {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131099832);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131165374);
       this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new avlv(this));
+      this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new awlo(this));
     }
   }
 }

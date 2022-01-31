@@ -1,26 +1,39 @@
-import android.util.Property;
-
-class bivz
-  extends Property<bivy, Integer>
+public class bivz
+  extends bjof
 {
-  bivz(bivy parambivy, Class paramClass, String paramString)
+  private bjoa<Boolean> a = new bjoa();
+  private bjoa<Boolean> b = new bjoa();
+  private bjoa<Boolean> c = new bjoa();
+  
+  public bjoa<Boolean> a()
   {
-    super(paramClass, paramString);
+    return this.a;
   }
   
-  public Integer a(bivy parambivy)
+  public boolean a()
   {
-    if (parambivy != null) {
-      return Integer.valueOf(bivy.a(parambivy));
+    if (this.b.a() != null) {
+      return ((Boolean)this.b.a()).booleanValue();
     }
-    return Integer.valueOf(0);
+    return false;
   }
   
-  public void a(bivy parambivy, Integer paramInteger)
+  public bjoa<Boolean> b()
   {
-    if (parambivy != null) {
-      bivy.a(parambivy, paramInteger.intValue());
+    return this.b;
+  }
+  
+  public boolean b()
+  {
+    if (this.c.a() != null) {
+      return ((Boolean)this.c.a()).booleanValue();
     }
+    return false;
+  }
+  
+  public bjoa<Boolean> c()
+  {
+    return this.c;
   }
 }
 

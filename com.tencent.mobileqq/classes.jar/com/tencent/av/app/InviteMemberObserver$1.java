@@ -1,15 +1,15 @@
 package com.tencent.av.app;
 
-import kvf;
+import lfu;
 
 public class InviteMemberObserver$1
   implements Runnable
 {
-  public InviteMemberObserver$1(kvf paramkvf, Object paramObject) {}
+  public InviteMemberObserver$1(lfu paramlfu, Object paramObject) {}
   
   public void run()
   {
-    kvf.a(this.this$0, this.a);
+    lfu.a(this.this$0, this.a);
   }
 }
 

@@ -1,58 +1,58 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import akkv;
-import akkz;
-import aklc;
+import akzh;
+import akzl;
+import akzo;
 
 public class ARVideoRecordUIControllerImpl$8
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$8(akkz paramakkz, int paramInt) {}
+  public ARVideoRecordUIControllerImpl$8(akzl paramakzl, int paramInt) {}
   
   public void run()
   {
-    if (akkz.a(this.this$0) != null) {
-      akkz.a(this.this$0).a(0);
+    if (akzl.a(this.this$0) != null) {
+      akzl.a(this.this$0).a(0);
     }
     if (this.a == 0) {
-      if (akkz.a(this.this$0) != -1) {
-        switch (akkz.a(this.this$0))
+      if (akzl.a(this.this$0) != -1) {
+        switch (akzl.a(this.this$0))
         {
         case 5: 
         default: 
-          akkz.a(this.this$0, -1);
+          akzl.a(this.this$0, -1);
         }
       }
     }
     for (;;)
     {
-      akkz.b(this.this$0, false);
-      if (!akkz.c(this.this$0)) {
-        akkz.a(this.this$0);
+      akzl.b(this.this$0, false);
+      if (!akzl.c(this.this$0)) {
+        akzl.a(this.this$0);
       }
       return;
-      akkz.a("0X8008A56");
-      akkv.a("AR视频已保存", akkz.e);
+      akzl.a("0X8008A56");
+      akzh.a("AR视频已保存", akzl.e);
       break;
-      akkv.a(akkz.h, true);
+      akzh.a(akzl.h, true);
       break;
-      akkz.a("0X8008A56");
-      akkv.a(akkz.h, true);
+      akzl.a("0X8008A56");
+      akzh.a(akzl.h, true);
       break;
-      if (akkz.b(this.this$0) == true)
+      if (akzl.b(this.this$0) == true)
       {
-        akkz.a(this.this$0, false);
+        akzl.a(this.this$0, false);
       }
       else
       {
-        akkz.a("0X8008A56");
-        akkv.a(akkz.h, true);
+        akzl.a("0X8008A56");
+        akzh.a(akzl.h, true);
         continue;
-        akkz.a("0X8008A56");
+        akzl.a("0X8008A56");
         if (this.a == 1) {
-          akkv.a("AR视频已保存", akkz.f);
+          akzh.a("AR视频已保存", akzl.f);
         } else {
-          akkv.a("AR视频已保存", akkz.g);
+          akzh.a("AR视频已保存", akzl.g);
         }
       }
     }

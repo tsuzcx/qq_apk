@@ -1,17 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.SearchDialogDismissRunnable;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
 public class abzs
   implements DialogInterface.OnDismissListener
 {
-  public abzs(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public abzs(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.postDelayed(new TroopMemberListActivity.SearchDialogDismissRunnable(this.a), 150L);
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
   }
 }
 

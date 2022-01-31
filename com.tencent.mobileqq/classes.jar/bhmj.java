@@ -1,19 +1,52 @@
-import android.support.annotation.NonNull;
-
-class bhmj
-  implements bhmf
+public abstract class bhmj
 {
-  bhmj(bhmi parambhmi) {}
+  protected String a;
+  protected boolean a;
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public bhmj(String paramString, boolean paramBoolean)
   {
-    return azjg.b(paramString);
+    a(paramString);
+    a(paramBoolean);
+  }
+  
+  public abstract String a();
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String d()
+  {
+    if (a()) {
+      return a();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhmj
  * JD-Core Version:    0.7.0.1
  */

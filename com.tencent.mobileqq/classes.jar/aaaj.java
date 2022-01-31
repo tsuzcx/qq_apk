@@ -1,87 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SubAccountInfo;
+import android.os.AsyncTask;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class aaaj
-  extends ajss
+class aaaj
+  extends AsyncTask<Void, Void, Void>
 {
-  public aaaj(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  aaaj(aaai paramaaai) {}
   
-  protected void a(boolean paramBoolean, axau paramaxau)
+  protected Void a(Void... paramVarArgs)
   {
-    int j = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountActivity", 2, "onGetBindSubAccount() isSuccess=" + paramBoolean);
+    paramVarArgs = aaai.a(this.a).iterator();
+    while (paramVarArgs.hasNext()) {
+      QLog.d("Q.PerfTrace", 2, (String)paramVarArgs.next());
     }
-    if ((paramaxau == null) || (!TextUtils.equals(paramaxau.b, this.a.app.c()))) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramBoolean);
-      paramaxau = paramaxau.c();
-    } while ((paramaxau == null) || (this.a.a == null));
-    Iterator localIterator = this.a.a.iterator();
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-    } while (paramaxau.contains(((SubAccountInfo)localIterator.next()).subuin));
-    for (int i = 1;; i = 0)
-    {
-      if (paramaxau.size() != this.a.a.size()) {
-        i = j;
-      }
-      while (i != 0)
-      {
-        AssociatedAccountActivity.d(this.a, false);
-        return;
-      }
-      break;
-    }
-  }
-  
-  protected void b(boolean paramBoolean, axau paramaxau)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("AssociatedAccountActivity", 2, "onBindSubAccount() isSuccess=" + paramBoolean);
-      if (paramaxau != null) {
-        QLog.d("AssociatedAccountActivity", 2, "onBindSubAccount() mainAccount=" + paramaxau.b + " subAccount=" + paramaxau.c + " errType=" + paramaxau.jdField_a_of_type_Int + " errMsg=" + paramaxau.jdField_a_of_type_JavaLangString);
-      }
-    }
-    if ((paramaxau == null) || (!TextUtils.equals(paramaxau.b, this.a.app.c()))) {}
-    while (!paramBoolean) {
-      return;
-    }
-    AssociatedAccountActivity.d(this.a, false);
-  }
-  
-  protected void c(boolean paramBoolean, axau paramaxau)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("AssociatedAccountActivity", 2, "onUnBindSubAccount() isSuccess=" + paramBoolean);
-      if (paramaxau != null) {
-        QLog.d("AssociatedAccountActivity", 2, "onUnBindSubAccount() mainAccount=" + paramaxau.b + " subAccount=" + paramaxau.c + " errType=" + paramaxau.jdField_a_of_type_Int + " errMsg=" + paramaxau.jdField_a_of_type_JavaLangString);
-      }
-    }
-    if ((paramaxau == null) || (!TextUtils.equals(paramaxau.b, this.a.app.c()))) {}
-    while (!paramBoolean) {
-      return;
-    }
-    AssociatedAccountActivity.d(this.a, false);
+    aaai.a(this.a).clear();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaaj
  * JD-Core Version:    0.7.0.1
  */

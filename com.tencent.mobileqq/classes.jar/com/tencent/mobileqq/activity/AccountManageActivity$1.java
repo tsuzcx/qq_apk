@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ajjj;
+import ajxn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,9 +15,9 @@ class AccountManageActivity$1
     {
       if (this.this$0.app != null)
       {
-        ajjj localajjj = (ajjj)this.this$0.app.getManager(51);
-        if (localajjj != null) {
-          AccountManageActivity.a(this.this$0, localajjj.b(this.this$0.app.getCurrentAccountUin()));
+        ajxn localajxn = (ajxn)this.this$0.app.getManager(51);
+        if (localajxn != null) {
+          AccountManageActivity.a(this.this$0, localajxn.b(this.this$0.app.getCurrentAccountUin()));
         }
       }
       return;

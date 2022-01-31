@@ -1,4 +1,8 @@
-class bjkt {}
+public abstract interface bjkt
+  extends avvr
+{
+  public abstract void a(boolean paramBoolean);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

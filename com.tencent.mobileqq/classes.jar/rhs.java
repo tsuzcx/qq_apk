@@ -1,33 +1,18 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.AnimationTextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo;
 
-public class rhs
-  extends bafb
+public final class rhs
+  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.EntranceIconInfo>
 {
-  AnimationTextView a;
-  
-  public rhs(Context paramContext, int paramInt)
+  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo a(Parcel paramParcel)
   {
-    super(paramContext, paramInt);
-    a();
+    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo(paramParcel);
   }
   
-  private void a()
+  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo[] a(int paramInt)
   {
-    this.a = ((AnimationTextView)findViewById(2131309994));
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.a != null) {
-      this.a.setText(paramString);
-    }
-  }
-  
-  public void setContentView(int paramInt)
-  {
-    super.setContentView(paramInt);
-    a();
+    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo[paramInt];
   }
 }
 

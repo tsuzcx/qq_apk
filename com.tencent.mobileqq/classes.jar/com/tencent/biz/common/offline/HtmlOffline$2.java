@@ -1,17 +1,17 @@
 package com.tencent.biz.common.offline;
 
-import moc;
-import mof;
 import mqq.app.AppRuntime;
+import mzb;
+import mze;
 
 public final class HtmlOffline$2
   implements Runnable
 {
-  public HtmlOffline$2(String paramString, AppRuntime paramAppRuntime, moc parammoc) {}
+  public HtmlOffline$2(String paramString, AppRuntime paramAppRuntime, mzb parammzb) {}
   
   public void run()
   {
-    mof.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqAppAppRuntime, false, this.jdField_a_of_type_Moc);
+    mze.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqAppAppRuntime, false, this.jdField_a_of_type_Mzb);
   }
 }
 

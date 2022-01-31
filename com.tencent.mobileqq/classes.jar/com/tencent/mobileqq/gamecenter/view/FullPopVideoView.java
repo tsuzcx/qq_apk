@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import airl;
+import ajej;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
-import apyu;
-import befo;
+import aqsw;
+import bfni;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
@@ -26,7 +26,7 @@ public class FullPopVideoView
   implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnSeekCompleteListener, TVK_IMediaPlayer.OnVideoPreparedListener
 {
   private View jdField_a_of_type_AndroidViewView;
-  private apyu jdField_a_of_type_Apyu;
+  private aqsw jdField_a_of_type_Aqsw;
   private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
   private TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
   private TVK_PlayerVideoInfo jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo;
@@ -56,7 +56,7 @@ public class FullPopVideoView
       com.tencent.qphone.base.util.QLog.e("FullPopVideoView", 1, "videoProxyFactory is null.");
       return null;
     }
-    if (befo.d()) {}
+    if (bfni.d()) {}
     for (IVideoViewBase localIVideoViewBase = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createVideoView_Scroll(getContext());; localIVideoViewBase = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createVideoView(getContext()))
     {
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createMediaPlayer(getContext(), localIVideoViewBase);
@@ -70,7 +70,7 @@ public class FullPopVideoView
       return null;
     }
     TVK_SDKMgr.setDebugEnable(false);
-    TVK_SDKMgr.setOnLogListener(new airl());
+    TVK_SDKMgr.setOnLogListener(new ajej());
     this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo = new TVK_UserInfo("", "");
     this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
     this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
@@ -118,8 +118,8 @@ public class FullPopVideoView
     if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
       com.tencent.qphone.base.util.QLog.d("FullPopVideoView", 1, "onCompletion ");
     }
-    if (this.jdField_a_of_type_Apyu != null) {
-      this.jdField_a_of_type_Apyu.d();
+    if (this.jdField_a_of_type_Aqsw != null) {
+      this.jdField_a_of_type_Aqsw.d();
     }
     if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
     {
@@ -151,9 +151,9 @@ public class FullPopVideoView
   
   public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
-  public void setListener(apyu paramapyu)
+  public void setListener(aqsw paramaqsw)
   {
-    this.jdField_a_of_type_Apyu = paramapyu;
+    this.jdField_a_of_type_Aqsw = paramaqsw;
   }
 }
 

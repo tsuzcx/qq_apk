@@ -1,92 +1,64 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.biz.qqstory.network.handler.GetHotSortVideoHandler.GetHotSortVideoResponse.1;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.HotVideoCard;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupHotRankVideo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.annotation.TargetApi;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.app.QQAppInterface;
 
+@TargetApi(14)
 public class swy
-  extends soi
+  extends sxa
 {
-  qqstory_group.RspGetGroupHotRankVideo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo;
-  boolean jdField_a_of_type_Boolean = false;
+  public String a;
+  public swe a;
+  public String b;
   
-  public swy(sww paramsww, qqstory_group.RspGetGroupHotRankVideo paramRspGetGroupHotRankVideo, boolean paramBoolean)
+  public swy(String paramString1, String paramString2)
   {
-    super(paramRspGetGroupHotRankVideo.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo = paramRspGetGroupHotRankVideo;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Swe = new swe();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
   
-  public swy(sww paramsww, boolean paramBoolean)
+  private void c()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    aywa localaywa = new aywa();
+    localaywa.jdField_a_of_type_Auoo = new swz(this);
+    localaywa.i = this.jdField_b_of_type_JavaLangString;
+    localaywa.jdField_a_of_type_Boolean = true;
+    localaywa.jdField_b_of_type_Int = 196609;
+    QQStoryContext.a();
+    localaywa.jdField_b_of_type_JavaLangString = QQStoryContext.a().c();
+    localaywa.c = "";
+    localaywa.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+    QQStoryContext.a();
+    QQStoryContext.a().a().a(localaywa);
   }
   
-  public void a()
+  protected void a()
   {
-    Object localObject = this.jdField_a_of_type_Sww;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.is_end.get() == 1) {}
-    swz localswz;
-    for (boolean bool = true;; bool = false)
+    if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (!vyi.c(this.jdField_b_of_type_JavaLangString)))
     {
-      ((sww)localObject).jdField_a_of_type_Boolean = bool;
-      sww.a(this.jdField_a_of_type_Sww, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.next_cookie.get().toStringUtf8());
-      sww.a(this.jdField_a_of_type_Sww, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.seq.get());
-      localObject = new ArrayList();
-      localswz = new swz();
-      localswz.jdField_a_of_type_Boolean = this.jdField_a_of_type_Sww.jdField_a_of_type_Boolean;
-      localswz.b = this.jdField_a_of_type_Boolean;
-      if ((!this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.has()) || (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.size() <= 0)) {
-        break label203;
+      Object localObject = ((swn)tdc.a(14)).a(this.jdField_a_of_type_JavaLangString);
+      if (((swq)localObject).a.isSuccess())
+      {
+        this.jdField_b_of_type_JavaLangString = ((swq)localObject).jdField_b_of_type_JavaLangString;
+        if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (!vyi.c(this.jdField_b_of_type_JavaLangString)))
+        {
+          veg.d("Q.qqstory.publish.upload:StoryVideoFileObject  ", "end composite success but file not exist:%s", new Object[] { this.jdField_b_of_type_JavaLangString });
+          localObject = new ErrorMessage(940006, String.format("end composite success but file not exist:%s", new Object[] { this.jdField_b_of_type_JavaLangString }));
+          ((ErrorMessage)localObject).extraMsg = "composite";
+          super.notifyResult(localObject);
+        }
       }
-      Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.get().iterator();
-      while (localIterator.hasNext()) {
-        ((ArrayList)localObject).add(HotSortVideoEntry.convertFrom((qqstory_group.HotVideoCard)localIterator.next()));
+      else
+      {
+        ((swq)localObject).a.extraMsg = "composite";
+        super.notifyResult(((swq)localObject).a);
+        return;
       }
     }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      ThreadManager.post(new GetHotSortVideoHandler.GetHotSortVideoResponse.1(this, (ArrayList)localObject, localswz), 5, null, true);
-      return;
-      label203:
-      urk.e("GetHotSortVideoHandler", "GetHotSortVideoResponse Success but video_card_list is empty。");
-    }
-    localswz.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
-    sgi.a().dispatch(localswz);
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    paramBundle = new swz();
-    paramBundle.c = true;
-    sgi.a().dispatch(paramBundle);
-    bbmy.a(BaseApplication.getContext(), 1, ajjy.a(2131639474), 0).a();
-    if (QLog.isColorLevel()) {
-      QLog.e("GetHotSortVideoHandler", 2, "GetUserIconListResponse onNetError errorCode " + paramInt);
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    swz localswz = new swz();
-    localswz.c = true;
-    sgi.a().dispatch(localswz);
-    bbmy.a(BaseApplication.getContext(), 1, ajjy.a(2131639473), 0).a();
-    if (QLog.isColorLevel()) {
-      QLog.e("GetHotSortVideoHandler", 2, "GetUserIconListResponse errorCode:" + paramInt + " errorMsg:" + paramString);
-    }
+    swa.a().b(this.jdField_a_of_type_JavaLangString);
+    c();
   }
 }
 

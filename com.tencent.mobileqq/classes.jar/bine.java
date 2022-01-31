@@ -1,6 +1,22 @@
-public abstract interface bine
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+
+class bine
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void a();
+  bine(bimz parambimz) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    paramCompoundButton = bimz.d(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      paramCompoundButton.setVisibility(i);
+      return;
+    }
+  }
 }
 
 

@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.ExpandableListConnector.GroupMetadata;
-
-public final class bejc
-  implements Parcelable.Creator<ExpandableListConnector.GroupMetadata>
+public class bejc
 {
-  public ExpandableListConnector.GroupMetadata a(Parcel paramParcel)
-  {
-    return ExpandableListConnector.GroupMetadata.a(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readLong());
-  }
+  @beqn(a="roomId")
+  public int a;
+  @beqn(a="tinyId")
+  public long a;
+  @beqn(a="openId")
+  public String a;
   
-  public ExpandableListConnector.GroupMetadata[] a(int paramInt)
+  public String toString()
   {
-    return new ExpandableListConnector.GroupMetadata[paramInt];
+    return "IdResult{openId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tinyId=" + this.jdField_a_of_type_Long + ", roomId=" + this.jdField_a_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bejc
  * JD-Core Version:    0.7.0.1
  */

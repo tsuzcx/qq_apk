@@ -1,20 +1,29 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class ajnw
-  implements Comparator<PhoneContact>
+public final class ajnw
+  implements BusinessObserver
 {
-  public ajnw(PhoneContactManagerImp paramPhoneContactManagerImp) {}
-  
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameUtil", 2, "checkApolloGameRedDot onReceive isSuccess:" + paramBoolean + ",ret:" + paramInt);
+    }
+    if (paramBoolean)
+    {
+      this.a.edit().putLong("apollo_game_reddot_checkTime", System.currentTimeMillis()).commit();
+      ThreadManager.post(new ApolloGameUtil.2.1(this, paramBundle), 5, null, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajnw
  * JD-Core Version:    0.7.0.1
  */

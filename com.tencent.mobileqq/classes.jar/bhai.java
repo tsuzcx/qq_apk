@@ -1,178 +1,49 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import dov.com.qq.im.AECamera.View.AEDownLoadingView;
+import android.os.Handler;
+import android.os.IBinder;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import java.util.Properties;
 
 public class bhai
-  extends RecyclerView.ViewHolder
+  implements OnPluginInstallListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  public ImageView a;
-  public RelativeLayout a;
-  public URLImageView a;
-  public AEDownLoadingView a;
-  public ImageView b;
-  public ImageView c;
+  public bhai(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity, long paramLong) {}
   
-  public bhai(View paramView)
+  public IBinder asBinder()
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131311427));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131310031));
-    this.b = ((ImageView)paramView.findViewById(2131299795));
-    this.c = ((ImageView)paramView.findViewById(2131311803));
-    this.jdField_a_of_type_DovComQqImAECameraViewAEDownLoadingView = ((AEDownLoadingView)paramView.findViewById(2131306333));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131313523));
+    return null;
   }
   
-  private static int a(boolean paramBoolean)
+  public void onInstallBegin(String paramString)
   {
-    if (paramBoolean) {
-      return 0;
-    }
-    return 8;
+    QLog.i("QzoneVerticalVideoDownloadActivity", 1, " qzone_plugin onInstallBegin");
   }
   
-  private void a(bgya parambgya)
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.b.setVisibility(8);
-    this.c.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    QLog.i("QzoneVerticalVideoDownloadActivity", 1, " qzone_plugin onInstallDownloadProgress");
   }
   
-  private void b(bgya parambgya)
+  public void onInstallError(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    c(parambgya);
-    e(parambgya);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(a(parambgya.a));
+    QLog.e("QzoneVerticalVideoDownloadActivity", 1, " qzone_plugin onInstallError");
+    QzoneVerticalVideoDownloadActivity.access$000(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).sendEmptyMessage(1012);
+    paramString = new Properties();
+    paramString.put("status", "installError");
+    QzoneVerticalVideoDownloadActivity.access$1000("vertical_layer_plugin_depend", paramString);
   }
   
-  private void c(bgya parambgya)
+  public void onInstallFinish(String paramString)
   {
-    if (parambgya.a())
-    {
-      this.b.setVisibility(8);
-      this.jdField_a_of_type_DovComQqImAECameraViewAEDownLoadingView.setVisibility(8);
-      return;
-    }
-    if (parambgya.jdField_d_of_type_Boolean)
-    {
-      this.b.setVisibility(8);
-      this.jdField_a_of_type_DovComQqImAECameraViewAEDownLoadingView.setVisibility(8);
-      return;
-    }
-    if (parambgya.e)
-    {
-      this.b.setVisibility(8);
-      this.jdField_a_of_type_DovComQqImAECameraViewAEDownLoadingView.setVisibility(0);
-      this.jdField_a_of_type_DovComQqImAECameraViewAEDownLoadingView.setProgress(parambgya.jdField_d_of_type_Int);
-      return;
-    }
-    this.b.setVisibility(0);
-    this.b.setImageResource(2130843691);
-    this.jdField_a_of_type_DovComQqImAECameraViewAEDownLoadingView.setVisibility(8);
-  }
-  
-  private void d(bgya parambgya)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843759);
-    c(parambgya);
-    e(parambgya);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(a(parambgya.a));
-  }
-  
-  private void e(bgya parambgya)
-  {
-    if (parambgya.a())
-    {
-      this.c.setVisibility(0);
-      this.c.setImageResource(2130845019);
-      return;
-    }
-    if (parambgya.b())
-    {
-      this.c.setVisibility(0);
-      this.c.setImageResource(parambgya.a());
-      return;
-    }
-    this.c.setVisibility(8);
-  }
-  
-  private void f(bgya parambgya)
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      a(parambgya);
-      return;
-    case 0: 
-      a(parambgya);
-      return;
-    case 1: 
-      b(parambgya);
-      g(parambgya);
-      return;
-    }
-    d(parambgya);
-    g(parambgya);
-  }
-  
-  private void g(bgya parambgya)
-  {
-    if (TextUtils.isEmpty(parambgya.b)) {
-      return;
-    }
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    int i = aciy.a(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843690);
-    localURLDrawableOptions.mRequestWidth = i;
-    localURLDrawableOptions.mRequestHeight = i;
-    localURLDrawableOptions.mFailedDrawable = localDrawable;
-    localURLDrawableOptions.mLoadingDrawable = localDrawable;
-    localURLDrawableOptions.mRetryCount = 3;
-    parambgya = URLDrawable.getDrawable(parambgya.b, localURLDrawableOptions);
-    if (parambgya.getStatus() == 2) {
-      parambgya.restartDownload();
-    }
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(parambgya);
-  }
-  
-  public void a(int paramInt, bgya parambgya)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    f(parambgya);
-  }
-  
-  public void a(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    int i = aciy.a(6.0F, paramContext.getResources());
-    int j = aciy.a(2.0F, paramContext.getResources());
-    int k = aciy.a(16.0F, paramContext.getResources());
-    this.jdField_a_of_type_DovComQqImAECameraViewAEDownLoadingView.setBgCorner(k / 2);
-    this.jdField_a_of_type_DovComQqImAECameraViewAEDownLoadingView.setMinimumHeight(k);
-    this.jdField_a_of_type_DovComQqImAECameraViewAEDownLoadingView.setMinimumWidth(k);
-    this.jdField_a_of_type_DovComQqImAECameraViewAEDownLoadingView.setProgressSizeAndMode(i, j, false);
-    this.jdField_a_of_type_DovComQqImAECameraViewAEDownLoadingView.setBgColor(-1);
-    this.jdField_a_of_type_DovComQqImAECameraViewAEDownLoadingView.setProgressColor(-16725252);
-    this.jdField_a_of_type_DovComQqImAECameraViewAEDownLoadingView.a(false);
+    QLog.i("QzoneVerticalVideoDownloadActivity", 1, " qzone_plugin onInstallFinish");
+    QzoneVerticalVideoDownloadActivity.access$000(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).sendEmptyMessage(1011);
+    QzoneVerticalVideoDownloadActivity.access$900("vertical_layer_plugin_depend", "status", "installFinish", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhai
  * JD-Core Version:    0.7.0.1
  */

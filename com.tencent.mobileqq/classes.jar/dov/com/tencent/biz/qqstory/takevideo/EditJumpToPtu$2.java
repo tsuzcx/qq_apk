@@ -1,22 +1,22 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.graphics.Bitmap;
-import bace;
-import bibm;
-import bjac;
+import bbdj;
+import bjsj;
+import bkqo;
 
 public class EditJumpToPtu$2
   implements Runnable
 {
-  public EditJumpToPtu$2(bibm parambibm, String paramString) {}
+  public EditJumpToPtu$2(bjsj parambjsj, String paramString) {}
   
   public void run()
   {
     Bitmap localBitmap = this.this$0.a(this.a);
     if (localBitmap != null) {
-      bjac.a().a(localBitmap);
+      bkqo.a().a(localBitmap);
     }
-    bace.d(this.a);
+    bbdj.d(this.a);
   }
 }
 

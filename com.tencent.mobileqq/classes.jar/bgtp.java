@@ -1,46 +1,148 @@
 import android.text.TextUtils;
+import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal.UploadServerInfoCallback;
-import com.tencent.weiyun.transmission.upload.UploadFile;
-import com.tencent.weiyun.utils.Utils;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskPicBackupRsp;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqreader.QReaderHelper.1;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import mqq.app.AppRuntime;
 
-class bgtp
-  implements bgun<WeiyunPB.DiskPicBackupRsp>
+public class bgtp
 {
-  bgtp(bgto parambgto, WeiyunTransmissionGlobal.UploadServerInfoCallback paramUploadServerInfoCallback, UploadFile paramUploadFile) {}
+  public static int a = 0;
+  public static boolean a;
   
-  public void a(int paramInt, String paramString, WeiyunPB.DiskPicBackupRsp paramDiskPicBackupRsp)
+  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, paramInt, paramString);
+    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
+      return null;
+    }
+    try
+    {
+      paramString = Class.forName("com.qqreader.ReaderRuntime");
+      if (paramString == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QReaderHelper", 2, "createReaderRuntime: load class failed");
+        }
+        return null;
+      }
+    }
+    catch (ClassNotFoundException paramString)
+    {
+      try
+      {
+        ClassLoader localClassLoader = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "qqreaderplugin.apk");
+        paramString = localClassLoader.loadClass("com.qqreader.ReaderRuntime");
+        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
+      }
+      catch (Exception paramBaseApplicationImpl)
+      {
+        return null;
+      }
+      paramBaseApplicationImpl = paramString.getDeclaredConstructor(new Class[] { BaseApplicationImpl.class, String.class }).newInstance(new Object[] { paramBaseApplicationImpl, "Reader" });
+      if ((paramBaseApplicationImpl != null) && ((paramBaseApplicationImpl instanceof AppRuntime)))
+      {
+        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
+        return paramBaseApplicationImpl;
+      }
+    }
+    catch (IllegalArgumentException paramBaseApplicationImpl)
+    {
+      paramBaseApplicationImpl.printStackTrace();
+      return null;
+    }
+    catch (IllegalAccessException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InstantiationException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InvocationTargetException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (NoSuchMethodException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (Exception paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
   }
   
-  public void a(WeiyunPB.DiskPicBackupRsp paramDiskPicBackupRsp)
+  public static void a(int paramInt, QQAppInterface paramQQAppInterface)
   {
-    if (paramDiskPicBackupRsp == null)
+    if (!bbev.g(paramQQAppInterface.getApplication())) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QReaderHelper", 2, "no network. skip update offline pkg.");
+      }
+    }
+    do
     {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, 1828004, ajjy.a(2131649283));
       return;
+      if (a(paramInt))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("QReaderHelper", 1, "entry " + paramInt + " offline preload enabled,update offline package now!");
+        }
+        mze.a();
+        ThreadManager.post(new QReaderHelper.1(paramQQAppInterface), 5, null, true);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("QReaderHelper", 2, "entry " + paramInt + " offline preload is disabled.");
+  }
+  
+  private static boolean a(int paramInt)
+  {
+    boolean bool = true;
+    Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.qr_process_config.name());
+    if ((TextUtils.isEmpty((CharSequence)localObject)) && (QLog.isColorLevel())) {
+      QLog.e("QReaderHelper", 1, "reader dpc is null.");
     }
-    ByteStringMicro localByteStringMicro1 = paramDiskPicBackupRsp.pdir_key.get();
-    ByteStringMicro localByteStringMicro2 = paramDiskPicBackupRsp.ppdir_key.get();
-    if (localByteStringMicro1 != null) {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirKey = bgwl.a(localByteStringMicro1);
+    do
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.e("QReaderHelper", 2, "enableOfflinePreload,dpc=" + (String)localObject);
+      }
+      localObject = ((String)localObject).split("\\|");
+      if (localObject.length >= 7) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("QReaderHelper", 2, "offline preload switch not fount.");
+    return false;
+    if ((Integer.parseInt(localObject[6]) & paramInt) != 0) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
     }
-    if (localByteStringMicro2 != null) {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pPDirKey = bgwl.a(localByteStringMicro2);
-    }
-    if (!TextUtils.isEmpty(paramDiskPicBackupRsp.backup_path.get())) {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirName = paramDiskPicBackupRsp.backup_path.get();
-    }
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.setServerInfo(paramDiskPicBackupRsp.file_exist.get(), paramDiskPicBackupRsp.file_id.get(), paramDiskPicBackupRsp.server_name.get(), paramDiskPicBackupRsp.inside_upload_ip.get(), paramDiskPicBackupRsp.server_port.get(), Utils.bytes2HexStr(paramDiskPicBackupRsp.check_key.get().toByteArray()).toLowerCase(), paramDiskPicBackupRsp.channel_count.get(), Integer.toString(paramDiskPicBackupRsp.file_version.get()));
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, true, 0, null);
-    bgwg.a(BaseApplicationImpl.getApplication().getApplicationContext(), String.valueOf(this.jdField_a_of_type_Bgto.getCurrentUin()), "upload_coupon_count", String.valueOf(paramDiskPicBackupRsp.coupon_count.get()));
   }
 }
 

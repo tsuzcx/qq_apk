@@ -1,22 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
-import com.tencent.widget.XPanelContainer;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aqev
-  implements ValueAnimator.AnimatorUpdateListener
+class aqev
+  implements DialogInterface.OnClickListener
 {
-  public aqev(HotPicMainPanel paramHotPicMainPanel) {}
+  aqev(aqeq paramaqeq) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.requestLayout();
+    this.a.a(false);
+    com.tencent.mobileqq.app.PhoneContactManagerImp.f = false;
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqev
  * JD-Core Version:    0.7.0.1
  */

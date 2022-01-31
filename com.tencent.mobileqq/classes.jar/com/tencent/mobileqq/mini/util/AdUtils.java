@@ -17,8 +17,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import babp;
-import bcdu;
+import bbct;
+import bdhv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -30,9 +30,9 @@ import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo.Location;
-import yoy;
-import yoz;
-import ypa;
+import yys;
+import yyt;
+import yyu;
 
 public class AdUtils
 {
@@ -75,17 +75,17 @@ public class AdUtils
   
   public static MiniAppAd.DeviceInfo getDeviceInfo(Context paramContext, int paramInt)
   {
-    Object localObject1 = new yoz();
-    ((yoz)localObject1).a = "e8d69a";
+    Object localObject1 = new yyt();
+    ((yyt)localObject1).a = "e8d69a";
     long l = System.currentTimeMillis();
-    localObject1 = yoy.a(paramContext, (yoz)localObject1);
+    localObject1 = yys.a(paramContext, (yyt)localObject1);
     boolean bool;
     label75:
     MiniAppAd.DeviceInfo localDeviceInfo;
     Object localObject3;
     if (localObject1 != null)
     {
-      localObject1 = ((ypa)localObject1).a;
+      localObject1 = ((yyu)localObject1).a;
       localObject2 = new StringBuilder().append("get deviceInfo cost：").append(System.currentTimeMillis() - l).append(", result = ");
       if (localObject1 == null) {
         break label693;
@@ -119,18 +119,18 @@ public class AdUtils
         if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.has()) {
           localDeviceInfo.client_ipv4.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.get());
         }
-        localObject3 = babp.a();
+        localObject3 = bbct.a();
         PBStringField localPBStringField = localDeviceInfo.android_imei;
         localObject2 = localObject3;
         if (TextUtils.isEmpty((CharSequence)localObject3)) {
           localObject2 = "";
         }
         localPBStringField.set((String)localObject2);
-        localObject2 = babp.f();
+        localObject2 = bbct.f();
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           localDeviceInfo.android_id.set((String)localObject2);
-          localObject2 = bcdu.d((String)localObject2);
+          localObject2 = bdhv.d((String)localObject2);
           localObject3 = localDeviceInfo.md5_android_id;
           if (!TextUtils.isEmpty((CharSequence)localObject2)) {
             break label699;
@@ -143,11 +143,11 @@ public class AdUtils
     for (Object localObject2 = "";; localObject2 = ((String)localObject2).toLowerCase())
     {
       ((PBStringField)localObject3).set((String)localObject2);
-      paramContext = babp.d(paramContext);
+      paramContext = bbct.d(paramContext);
       if (!TextUtils.isEmpty(paramContext))
       {
         localDeviceInfo.mac.set(paramContext);
-        localObject2 = bcdu.d(paramContext.replace(":", "").toUpperCase()).toLowerCase();
+        localObject2 = bdhv.d(paramContext.replace(":", "").toUpperCase()).toLowerCase();
         localObject3 = localDeviceInfo.md5_mac;
         paramContext = (Context)localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
@@ -166,14 +166,14 @@ public class AdUtils
   
   public static INTERFACE.DeviceInfo getDeviceInfo(Context paramContext)
   {
-    Object localObject1 = new yoz();
-    ((yoz)localObject1).a = "e8d69a";
-    localObject1 = yoy.a(paramContext, (yoz)localObject1);
+    Object localObject1 = new yyt();
+    ((yyt)localObject1).a = "e8d69a";
+    localObject1 = yys.a(paramContext, (yyt)localObject1);
     INTERFACE.DeviceInfo localDeviceInfo;
     Object localObject3;
     if (localObject1 != null)
     {
-      localObject1 = ((ypa)localObject1).a;
+      localObject1 = ((yyu)localObject1).a;
       localDeviceInfo = new INTERFACE.DeviceInfo();
       if (localObject1 != null)
       {
@@ -201,18 +201,18 @@ public class AdUtils
         if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.has()) {
           localDeviceInfo.client_ipv4.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.get());
         }
-        localObject3 = babp.a();
+        localObject3 = bbct.a();
         PBStringField localPBStringField = localDeviceInfo.android_imei;
         localObject2 = localObject3;
         if (TextUtils.isEmpty((CharSequence)localObject3)) {
           localObject2 = "";
         }
         localPBStringField.set((String)localObject2);
-        localObject2 = babp.f();
+        localObject2 = bbct.f();
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           localDeviceInfo.android_id.set((String)localObject2);
-          localObject2 = bcdu.d((String)localObject2);
+          localObject2 = bdhv.d((String)localObject2);
           localObject3 = localDeviceInfo.md5_android_id;
           if (!TextUtils.isEmpty((CharSequence)localObject2)) {
             break label584;
@@ -224,11 +224,11 @@ public class AdUtils
     for (Object localObject2 = "";; localObject2 = ((String)localObject2).toLowerCase())
     {
       ((PBStringField)localObject3).set((String)localObject2);
-      paramContext = babp.d(paramContext);
+      paramContext = bbct.d(paramContext);
       if (!TextUtils.isEmpty(paramContext))
       {
         localDeviceInfo.mac.set(paramContext);
-        localObject2 = bcdu.d(paramContext.replace(":", "").toUpperCase()).toLowerCase();
+        localObject2 = bdhv.d(paramContext.replace(":", "").toUpperCase()).toLowerCase();
         localObject3 = localDeviceInfo.md5_mac;
         paramContext = (Context)localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {

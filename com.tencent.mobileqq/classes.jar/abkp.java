@@ -1,18 +1,32 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.28.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class abkp
-  extends ajmm
+  extends atzl
 {
-  public abkp(QQLSActivity paramQQLSActivity) {}
+  public abkp(Leba paramLeba) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    super.a(paramBoolean, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
+    if ((!paramBoolean1) || (paramInt == 2)) {}
+    for (;;)
+    {
+      return;
+      if (Leba.b(this.a))
+      {
+        ArrayList localArrayList = new ArrayList();
+        ajzq.a(localArrayList, agca.a().a(this.a.a));
+        this.a.a(new Leba.28.1(this, localArrayList));
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.i("Q.lebatab.leba", 2, "onGameCenterMsgReceive, " + Leba.c(this.a));
+        return;
+        agca.a |= 0x2;
+      }
     }
-    QQLSActivity.a(this.a);
   }
 }
 

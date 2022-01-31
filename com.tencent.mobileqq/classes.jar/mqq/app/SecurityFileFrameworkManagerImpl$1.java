@@ -11,7 +11,7 @@ final class SecurityFileFrameworkManagerImpl$1
     if ((paramFile.isDirectory()) && (paramFile.getName().startsWith("NoRename#")))
     {
       paramFile = paramFile.getName().replaceAll("NoRename#", "");
-      return (paramFile.length() == 9) && (paramFile.charAt(0) == SecurityFileFrameworkManagerImpl.access$000(paramFile.substring(1)));
+      return (paramFile.length() == 9) && (paramFile.charAt(0) == SecurityFileFrameworkManagerImpl.generateVerifyChar(paramFile.substring(1)));
     }
     return false;
   }

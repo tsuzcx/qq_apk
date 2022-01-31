@@ -1,19 +1,19 @@
 package com.tencent.av.ui.redbag;
 
 import com.tencent.qphone.base.util.QLog;
-import mdv;
-import mdy;
-import med;
+import mou;
+import mox;
+import mpc;
 
 public class AVRedBag$3$1
   implements Runnable
 {
-  public AVRedBag$3$1(mdy parammdy) {}
+  public AVRedBag$3$1(mox parammox) {}
   
   public void run()
   {
-    med localmed = this.a.a.a();
-    if (localmed == null) {
+    mpc localmpc = this.a.a.a();
+    if (localmpc == null) {
       if (QLog.isDevelopLevel()) {
         QLog.w(this.a.a.i, 1, "onAVActivityResume, AVRedBagMgr为空");
       }
@@ -21,13 +21,13 @@ public class AVRedBag$3$1
     do
     {
       return;
-      if (localmed.a()) {
+      if (localmpc.a()) {
         break;
       }
     } while (!QLog.isDevelopLevel());
     QLog.w("AVRedBag", 1, "onAVActivityResume, 不是GameMode");
     return;
-    localmed.c("onAVActivityResume");
+    localmpc.c("onAVActivityResume");
   }
 }
 

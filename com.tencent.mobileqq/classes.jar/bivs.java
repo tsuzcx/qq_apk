@@ -1,22 +1,36 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
+import android.support.annotation.Nullable;
+import android.support.v4.view.PagerAdapter;
+import android.widget.ImageView;
 
-public class bivs
-  implements ValueAnimator.AnimatorUpdateListener
+class bivs
+  implements bjob<bivx>
 {
-  public bivs(SlideBottomPanel paramSlideBottomPanel, View paramView) {}
+  bivs(bivq parambivq) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(@Nullable bivx parambivx)
   {
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if ((paramValueAnimator instanceof Float))
+    if (parambivx == null) {
+      return;
+    }
+    bivq localbivq = this.a;
+    boolean bool;
+    if (parambivx == bivx.c)
     {
-      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a != null) {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a.fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.b - this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.j));
+      bool = true;
+      bivq.a(localbivq, bool);
+      bivq.a(this.a).notifyDataSetChanged();
+      parambivx = bivq.a(this.a);
+      if (!bivq.a(this.a)) {
+        break label69;
       }
+    }
+    label69:
+    for (int i = 2130837591;; i = 2130837592)
+    {
+      parambivx.setImageResource(i);
+      return;
+      bool = false;
+      break;
     }
   }
 }

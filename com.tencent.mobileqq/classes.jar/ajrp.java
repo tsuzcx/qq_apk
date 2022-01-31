@@ -1,110 +1,88 @@
-import GROUP.MessageRemindRsp;
-import MQQ.GetRoamToastRsp;
-import QC.BubbleRecommendRsp;
-import QC.FaceRsp;
-import QC.FontRecommendRsp;
-import QC.SetFontBubbleRsp;
-import android.os.Bundle;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ajrp
-  implements ajfe
 {
+  public SessionInfo a;
+  public List<ajpz> a;
+  public Context b;
+  public int c = 0;
+  public int d;
+  public int e;
+  protected int f = -1;
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 0;
+  }
+  
+  public ajpz a(String paramString)
+  {
+    return null;
+  }
+  
+  public View a()
+  {
+    return null;
+  }
+  
+  public View a(int paramInt)
+  {
+    View localView = a();
+    a(localView, paramInt);
+    return localView;
+  }
+  
+  public ArrayList<ajpz> a(int paramInt)
+  {
+    return null;
+  }
+  
   public void a() {}
   
-  public void a(int paramInt) {}
+  public void a(View paramView, int paramInt) {}
   
-  public void a(Bundle paramBundle) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean, MessageRemindRsp paramMessageRemindRsp) {}
-  
-  public void a(boolean paramBoolean, GetRoamToastRsp paramGetRoamToastRsp) {}
-  
-  public void a(boolean paramBoolean, BubbleRecommendRsp paramBubbleRecommendRsp) {}
-  
-  public void a(boolean paramBoolean, FaceRsp paramFaceRsp) {}
-  
-  public void a(boolean paramBoolean, FontRecommendRsp paramFontRecommendRsp) {}
-  
-  public void a(boolean paramBoolean, SetFontBubbleRsp paramSetFontBubbleRsp, int paramInt) {}
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void c(boolean paramBoolean, Object paramObject) {}
-  
-  public void d(boolean paramBoolean, Object paramObject) {}
-  
-  public void e(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void b(int paramInt)
   {
-    switch (paramInt)
+    this.c = paramInt;
+  }
+  
+  public void c(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloViewBinder", 2, new Object[] { "[setHighlightItemIndex] highlightItemIndex=", Integer.valueOf(paramInt) });
+    }
+    if ((this.a == null) || (this.a.size() == 0)) {
+      QLog.e("ApolloViewBinder", 1, "[setHighlightItemIndex] no panel data, set failed");
+    }
+    do
     {
-    default: 
-    case 101: 
       do
       {
         return;
-        if ((paramObject instanceof Integer))
-        {
-          a(((Integer)paramObject).intValue());
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("SVIPObserver", 2, "NOTIFY_TYPE_SVIP_BUBBLE_CHANGE param error");
-      return;
-    case 100: 
-      a();
-      return;
-    case 102: 
-      b(paramBoolean, paramObject);
-      return;
-    case 103: 
-      c(paramBoolean, paramObject);
-      return;
-    case 104: 
-      d(paramBoolean, paramObject);
-      return;
-    case 105: 
-      a(paramBoolean, paramObject);
-      return;
-    case 106: 
-      e(paramBoolean, paramObject);
-      return;
-    case 113: 
-      a(paramBoolean, (MessageRemindRsp)paramObject);
-      return;
-    case 107: 
-      a(paramBoolean, (FontRecommendRsp)paramObject);
-      return;
-    case 108: 
-      a(paramBoolean, (BubbleRecommendRsp)paramObject);
-      return;
-    case 109: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (SetFontBubbleRsp)paramObject[0], ((Integer)paramObject[1]).intValue());
-      return;
-    case 110: 
-      a((Bundle)paramObject);
-      return;
-    case 111: 
-      a(paramBoolean, (GetRoamToastRsp)paramObject);
-      return;
-    case 112: 
-      a(paramBoolean, (FaceRsp)paramObject);
-      return;
-    }
-    paramObject = (Object[])paramObject;
-    a((String)paramObject[0], ((Integer)paramObject[1]).intValue());
+      } while ((paramInt < 0) || (paramInt >= this.a.size()));
+      this.f = paramInt;
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloViewBinder", 2, new Object[] { "[setHighlightItemIndex] set success, highlightItemIndex=", Integer.valueOf(paramInt) });
+  }
+  
+  public void c_(List<ajpz> paramList)
+  {
+    this.a = paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajrp
  * JD-Core Version:    0.7.0.1
  */

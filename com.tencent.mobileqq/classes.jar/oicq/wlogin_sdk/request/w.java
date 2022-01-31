@@ -176,7 +176,7 @@ public class w
           break label252;
           localObject1 = new tlv_t(1313);
           localObject2 = new byte[6];
-          util.int32_to_buf((byte[])localObject2, 0, t.ax);
+          util.int32_to_buf((byte[])localObject2, 0, t.az);
           util.int16_to_buf((byte[])localObject2, 4, 0);
           ((tlv_t)localObject1).set_data((byte[])localObject2, 6);
           localObject1 = ((tlv_t)localObject1).get_buf();

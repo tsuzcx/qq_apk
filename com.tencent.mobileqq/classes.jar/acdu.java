@@ -1,15 +1,24 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
-public class acdu
+class acdu
   implements DialogInterface.OnClickListener
 {
-  public acdu(UpgradeActivity paramUpgradeActivity) {}
+  acdu(acdt paramacdt, ayaw paramayaw) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    if ((paramInt == 1) && (!TextUtils.isEmpty(this.jdField_a_of_type_Ayaw.c)))
+    {
+      paramDialogInterface = new Intent(this.jdField_a_of_type_Acdt.a, SubLoginActivity.class);
+      paramDialogInterface.putExtra("subuin", this.jdField_a_of_type_Ayaw.c);
+      paramDialogInterface.putExtra("fromWhere", this.jdField_a_of_type_Acdt.a.b);
+      this.jdField_a_of_type_Acdt.a.startActivity(paramDialogInterface);
+    }
   }
 }
 

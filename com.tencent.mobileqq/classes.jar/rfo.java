@@ -1,21 +1,13 @@
-import android.view.ViewTreeObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
 
 public class rfo
-  implements rfv
+  extends ThreadLocal<Integer>
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public rfo(ReadInJoyXListView paramReadInJoyXListView) {}
   
-  public rfo(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView, int paramInt1, int paramInt2)
+  protected Integer a()
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new rfp(this, paramInt1, paramInt2));
+    return Integer.valueOf(0);
   }
 }
 

@@ -1,22 +1,33 @@
-import com.tencent.mobileqq.apollo.data.CmGamePushItem;
-import java.util.Comparator;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-class aijo
-  implements Comparator<CmGamePushItem>
+public class aijo
+  implements Animation.AnimationListener
 {
-  aijo(aijn paramaijn) {}
+  public aijo(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public int a(CmGamePushItem paramCmGamePushItem1, CmGamePushItem paramCmGamePushItem2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramCmGamePushItem1.start_ts == paramCmGamePushItem2.start_ts) {
-      return paramCmGamePushItem2.send_time - paramCmGamePushItem1.send_time;
-    }
-    return paramCmGamePushItem2.start_ts - paramCmGamePushItem1.start_ts;
+    this.a.leftView.clearAnimation();
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.clearAnimation();
+    this.a.leftView.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.a.rightViewText.setClickable(true);
+    this.a.rightViewText.setText(SpecailCareListActivity.jdField_a_of_type_JavaLangString);
+    this.a.rightViewText.setContentDescription(ajyc.a(2131714260));
+    this.a.c = false;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aijo
  * JD-Core Version:    0.7.0.1
  */

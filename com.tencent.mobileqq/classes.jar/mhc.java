@@ -1,12 +1,8 @@
-public class mhc
+public abstract interface mhc
 {
-  public byte a;
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  public abstract void a(long paramLong);
   
-  public mhc(mgz parammgz) {}
+  public abstract void a(long paramLong, mhw parammhw);
 }
 
 

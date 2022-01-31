@@ -1,26 +1,15 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.Comparator;
 
 class ozo
-  implements Animator.AnimatorListener
+  implements Comparator<AdvertisementInfo>
 {
-  ozo(ozm paramozm) {}
+  ozo(ozn paramozn) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
   {
-    ozm.a(this.a).setSelected(this.a.isSelected());
+    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ozm.a(this.a, false);
-    ozm.a(this.a).setSelected(this.a.isSelected());
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

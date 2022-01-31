@@ -1,36 +1,21 @@
-import android.util.Log;
-import java.util.ArrayList;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.concurrent.Callable;
 
-public class arfg
+class arfg
+  implements Callable<areh>
 {
-  public static arey a(String paramString, boolean paramBoolean)
+  arfg(arfe paramarfe) {}
+  
+  public areh a()
   {
-    if ((paramString != null) && (paramString.length() >= 0))
-    {
-      if (paramBoolean) {}
-      for (;;)
-      {
-        try
-        {
-          paramString = new arfk(paramString).a();
-          if ((paramString == null) || (paramString.a.size() <= 0)) {
-            break;
-          }
-          return paramString;
-        }
-        catch (Exception paramString)
-        {
-          Log.e("LyricParseHelper", "parse exception:", paramString);
-        }
-        paramString = new arfh(paramString).a();
-      }
-    }
-    return null;
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    return areq.b(arfe.a(this.a).getApplication(), "GVideo", localQQAppInterface.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arfg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,140 +1,35 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ThemeImageView;
-import java.util.ArrayList;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public class azmx
+class azmx
+  implements Animation.AnimationListener
 {
-  public final int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public final String a;
-  private int jdField_b_of_type_Int;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int c;
+  azmx(azmu paramazmu, boolean paramBoolean) {}
   
-  public azmx(Context paramContext, String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_JavaLangString = "RobotMemberFormItem";
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    b();
-    a(paramString);
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131495558, null);
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    if (azmu.a(this.jdField_a_of_type_Azmu) != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131303466));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131309552));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131297423));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131309284));
+      azmu.a(this.jdField_a_of_type_Azmu).a.clearAnimation();
+      azmu.a(this.jdField_a_of_type_Azmu).a.setVisibility(8);
     }
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131167555);
-    this.c = this.jdField_b_of_type_Int;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a() {}
-  
-  public void a(AppInterface paramAppInterface, ArrayList<azkr> paramArrayList)
-  {
-    QLog.d("RobotMemberFormItem", 2, "setMemberUinList!");
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      if (this.jdField_b_of_type_AndroidWidgetTextView != null)
-      {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131629013));
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-        if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        }
-      }
-    }
-    do
+    azmu.a(this.jdField_a_of_type_Azmu, false);
+    azmu.a(this.jdField_a_of_type_Azmu, null);
+    azmu.a(this.jdField_a_of_type_Azmu, null);
+    azmu.a(this.jdField_a_of_type_Azmu, -1);
+    if ((!this.jdField_a_of_type_Boolean) && (!azmu.b(this.jdField_a_of_type_Azmu)))
     {
-      return;
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      }
-      int i = 0;
-      while ((i < paramArrayList.size()) && (i < 3))
-      {
-        azkr localazkr = (azkr)paramArrayList.get(i);
-        String str = String.valueOf(localazkr.a());
-        Object localObject = bacm.a();
-        localObject = azwp.a(paramAppInterface, 1, str, 3, (Drawable)localObject, (Drawable)localObject, 4);
-        ThemeImageView localThemeImageView = new ThemeImageView(this.jdField_a_of_type_AndroidContentContext);
-        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.jdField_b_of_type_Int, this.c);
-        localLayoutParams.leftMargin = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131167556);
-        if (localazkr.b()) {
-          ((azwp)localObject).setAlpha(50);
-        }
-        localThemeImageView.setTag(localazkr);
-        localThemeImageView.setLayoutParams(localLayoutParams);
-        localThemeImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        localThemeImageView.setBackgroundDrawable((Drawable)localObject);
-        if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
-        {
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localThemeImageView);
-          QLog.d("RobotMemberFormItem", 2, "add AvatarViews task  " + str);
-        }
-        i += 1;
-      }
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      }
-    } while (this.jdField_b_of_type_AndroidWidgetTextView == null);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      ThreadManager.getUIHandler().post(azmu.a(this.jdField_a_of_type_Azmu));
+      azmu.b(this.jdField_a_of_type_Azmu, true);
+    }
   }
   
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      if (paramString != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
-    {
-      if (paramBoolean) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      }
-      for (;;)
-      {
-        QLog.d("RobotMemberFormItem", 2, "setRobotRedDot" + paramBoolean);
-        return;
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
-    }
-    QLog.d("RobotMemberFormItem", 2, "mImgRobotRedDoterr");
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

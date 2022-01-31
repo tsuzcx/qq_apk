@@ -1,28 +1,29 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
-class ucn
-  extends ParallelJobSegment<String, ucj>
+public class ucn
+  implements Animator.AnimatorListener
 {
-  public int a;
+  public ucn(XViewPager paramXViewPager) {}
   
-  public ucn(uch paramuch, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super("RequestLikeListSegment");
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected void a(JobContext paramJobContext, String paramString)
-  {
-    udb localudb = new udb();
-    localudb.jdField_a_of_type_JavaLangString = paramString;
-    localudb.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Int != -1) {
-      localudb.c = this.jdField_a_of_type_Int;
+    if (XViewPager.a(this.a) != null) {
+      XViewPager.a(this.a).b(0);
     }
-    slv.a().a(localudb, new uco(this, paramJobContext, paramString));
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (XViewPager.a(this.a) != null) {
+      XViewPager.a(this.a).b(0);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

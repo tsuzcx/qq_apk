@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-public final class nek
-  implements Parcelable.Creator<VideoInfo.GameAdComData>
+class nek
+  implements View.OnClickListener
 {
-  public VideoInfo.GameAdComData a(Parcel paramParcel)
-  {
-    return new VideoInfo.GameAdComData(paramParcel);
-  }
+  nek(ned paramned, nep paramnep) {}
   
-  public VideoInfo.GameAdComData[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new VideoInfo.GameAdComData[paramInt];
+    this.jdField_a_of_type_Nep.jdField_a_of_type_AndroidWidgetTextView.setText(2131695584);
+    this.jdField_a_of_type_Nep.b.setVisibility(4);
+    this.jdField_a_of_type_Nep.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    nfh.a(this.jdField_a_of_type_Ned.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.jdField_a_of_type_Ned.jdField_a_of_type_JavaLangString), ((AccountDetailActivity)this.jdField_a_of_type_Ned.jdField_a_of_type_AndroidAppActivity).a());
   }
 }
 

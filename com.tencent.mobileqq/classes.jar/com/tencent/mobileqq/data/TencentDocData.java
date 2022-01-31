@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.text.TextUtils;
 import java.io.UnsupportedEncodingException;
@@ -27,9 +27,9 @@ public class TencentDocData
   public String peerTips;
   public long sendUin;
   public int serviceId = 95;
-  public String sourceAction = ajjy.a(2131649038);
-  public String sourceName = ajjy.a(2131649034);
-  public String summary = ajjy.a(2131649042);
+  public String sourceAction = ajyc.a(2131714827);
+  public String sourceName = ajyc.a(2131714823);
+  public String summary = ajyc.a(2131714831);
   public String title;
   public String url;
   
@@ -86,7 +86,7 @@ public class TencentDocData
   
   public String getBriefDes(Context paramContext)
   {
-    return paramContext.getString(2131627059, new Object[] { getTitle() });
+    return paramContext.getString(2131692697, new Object[] { getTitle() });
   }
   
   public String getTitle()
@@ -96,14 +96,22 @@ public class TencentDocData
       if (TextUtils.isEmpty(this.title)) {
         return "";
       }
+      this.title = this.title.replaceAll("%(?![0-9a-fA-F]{2})", "%25");
       String str = URLDecoder.decode(this.title, "UTF-8");
       return str;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
       localUnsupportedEncodingException.printStackTrace();
+      return "";
     }
-    return "";
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      for (;;)
+      {
+        localIllegalArgumentException.printStackTrace();
+      }
+    }
   }
   
   public JSONObject translate2JsonObject()

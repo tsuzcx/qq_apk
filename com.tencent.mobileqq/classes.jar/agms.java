@@ -1,42 +1,35 @@
-import Wallet.RspWalletConfig;
-import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
-class agms
-  implements BusinessObserver
+public class agms
+  extends Handler
 {
-  agms(agmq paramagmq) {}
+  public agms(PhotoCropActivity paramPhotoCropActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt == 17)
+    switch (paramMessage.what)
     {
-      if (!paramBoolean) {}
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("QWalletConfigManager", 2, "setConfigSession fail get rsp:");
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
-      paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QWalletConfigManager", 2, "setConfigSession RspWalletConfig|" + paramBundle);
-        return;
-      }
     }
+    do
+    {
+      return;
+      this.a.b();
+      this.a.a.sendMessageDelayed(Message.obtain(this.a.a, 1003), 10000L);
+      return;
+    } while (this.a.isFinishing());
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoCropActivity", 2, "LOADING_TIMEOUT");
+    }
+    PhotoCropActivity.a(this.a, 2131717364);
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agms
  * JD-Core Version:    0.7.0.1
  */

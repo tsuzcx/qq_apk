@@ -1,79 +1,111 @@
+import android.os.RemoteException;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Timer;
+import cooperation.qzone.plugin.PluginRecord;
 
 public class aokj
+  implements bhjk
 {
-  private Timer a;
+  public static volatile aokj a;
+  private bhhr jdField_a_of_type_Bhhr;
+  private String jdField_a_of_type_JavaLangString = "qzone_live_video_plugin_hack.apk";
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  private aokj(aoke paramaoke) {}
-  
-  /* Error */
-  void a()
+  public static aokj a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 21	aokj:jdField_a_of_type_JavaUtilTimer	Ljava/util/Timer;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: ifnull +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: new 23	java/util/Timer
-    //   18: dup
-    //   19: invokespecial 24	java/util/Timer:<init>	()V
-    //   22: putfield 21	aokj:jdField_a_of_type_JavaUtilTimer	Ljava/util/Timer;
-    //   25: aload_0
-    //   26: getfield 21	aokj:jdField_a_of_type_JavaUtilTimer	Ljava/util/Timer;
-    //   29: new 26	com/tencent/mobileqq/filemanager/core/OnlineFileSessionCenter$UploadProgressMakeEvtPump$1
-    //   32: dup
-    //   33: aload_0
-    //   34: invokespecial 29	com/tencent/mobileqq/filemanager/core/OnlineFileSessionCenter$UploadProgressMakeEvtPump$1:<init>	(Laokj;)V
-    //   37: ldc2_w 30
-    //   40: ldc2_w 30
-    //   43: invokevirtual 35	java/util/Timer:schedule	(Ljava/util/TimerTask;JJ)V
-    //   46: ldc 37
-    //   48: iconst_1
-    //   49: ldc 39
-    //   51: invokestatic 45	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   54: goto -43 -> 11
-    //   57: astore_1
-    //   58: aload_0
-    //   59: monitorexit
-    //   60: aload_1
-    //   61: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	62	0	this	aokj
-    //   6	2	1	localTimer	Timer
-    //   57	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	57	finally
-    //   14	54	57	finally
-  }
-  
-  void b()
-  {
+    if (jdField_a_of_type_Aokj == null) {}
     try
     {
-      if (this.jdField_a_of_type_JavaUtilTimer != null)
-      {
-        this.jdField_a_of_type_JavaUtilTimer.cancel();
-        this.jdField_a_of_type_JavaUtilTimer = null;
+      if (jdField_a_of_type_Aokj == null) {
+        jdField_a_of_type_Aokj = new aokj();
       }
-      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  progress make  exit. . .");
-      return;
+      return jdField_a_of_type_Aokj;
     }
     finally {}
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      if (bhjq.a() != 1) {}
+    }
+    else
+    {
+      return;
+    }
+    bhji.a(BaseApplicationImpl.getContext(), this);
+  }
+  
+  public void onQzonePluginClientReady(bhhr parambhhr)
+  {
+    QLog.i("ECPreInstallLiveVideoApk", 1, "onQzonePluginClientReady start");
+    if (parambhhr == null) {
+      bhji.a(BaseApplicationImpl.getContext(), this);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      return;
+      QQAppInterface localQQAppInterface2 = (QQAppInterface)QQStoryContext.a();
+      QQAppInterface localQQAppInterface1 = localQQAppInterface2;
+      if (localQQAppInterface2 == null)
+      {
+        QLog.i("ECPreInstallLiveVideoApk", 1, "onQzonePluginClientReady: getAppRuntime return null.");
+        localQQAppInterface1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      }
+      if (localQQAppInterface1 != null) {
+        bhjs.a().a(localQQAppInterface1);
+      }
+      this.jdField_a_of_type_Bhhr = parambhhr;
+      parambhhr = this.jdField_a_of_type_Bhhr.a(this.jdField_a_of_type_JavaLangString);
+      if (parambhhr != null)
+      {
+        if (parambhhr.state == 4)
+        {
+          this.jdField_a_of_type_Boolean = false;
+          QLog.i("ECPreInstallLiveVideoApk", 1, "onQzonePluginClientReady installed");
+          return;
+        }
+        if (parambhhr.state == 2)
+        {
+          try
+          {
+            this.jdField_a_of_type_Bhhr.a(this.jdField_a_of_type_JavaLangString, null, 0);
+          }
+          catch (RemoteException parambhhr)
+          {
+            QLog.e("ECPreInstallLiveVideoApk", 1, parambhhr, new Object[0]);
+          }
+        }
+        else
+        {
+          QLog.d("ECPreInstallLiveVideoApk", 1, " has not installed");
+          if (bhjf.b()) {
+            try
+            {
+              this.jdField_a_of_type_Bhhr.a(this.jdField_a_of_type_JavaLangString, null, 0);
+            }
+            catch (RemoteException parambhhr)
+            {
+              QLog.e("ECPreInstallLiveVideoApk", 1, "installPluginSilence", parambhhr);
+            }
+          }
+        }
+      }
+      else
+      {
+        QLog.d("ECPreInstallLiveVideoApk", 1, "record is null");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aokj
  * JD-Core Version:    0.7.0.1
  */

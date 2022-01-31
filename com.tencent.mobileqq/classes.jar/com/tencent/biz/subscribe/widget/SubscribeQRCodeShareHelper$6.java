@@ -1,20 +1,36 @@
 package com.tencent.biz.subscribe.widget;
 
-import bfpr;
-import bfpy;
-import wfw;
+import android.content.Intent;
+import aqbc;
+import java.io.File;
+import java.net.URI;
+import wuu;
 
 public class SubscribeQRCodeShareHelper$6
   implements Runnable
 {
-  public SubscribeQRCodeShareHelper$6(wfw paramwfw) {}
+  public SubscribeQRCodeShareHelper$6(wuu paramwuu) {}
   
   public void run()
   {
-    if (wfw.a(this.this$0))
+    if (wuu.a(this.this$0))
     {
-      String str = wfw.b(this.this$0);
-      bfpr.a(wfw.a(this.this$0), bfpy.a(), str, "写说说", "", 0);
+      String str = wuu.a(this.this$0, wuu.a(this.this$0));
+      File localFile = new File(str);
+      Intent localIntent = new Intent();
+      localIntent.putExtra("forward_type", 1);
+      localIntent.putExtra("forward_filepath", str);
+      localIntent.putExtra("forward_thumb", str);
+      localIntent.putExtra("forward_urldrawable", true);
+      localIntent.putExtra("forward_urldrawable_big_url", localFile.toURI().toString());
+      localIntent.putExtra("forward_urldrawable_thumb_url", localFile.toURI().toString());
+      localIntent.putExtra("key_help_forward_pic", true);
+      localIntent.putExtra("selection_mode", 1);
+      localIntent.putExtra("forward_ability_entrence_show_in_share", false);
+      localIntent.putExtra("filePath", str);
+      localIntent.putExtra("shareQQType", 13);
+      localIntent.putExtra("reqType", 1);
+      aqbc.a(wuu.a(this.this$0), localIntent, 21);
     }
   }
 }

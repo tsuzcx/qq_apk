@@ -1,28 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 
-class oxj
-  implements oqy
+public class oxj
+  implements Animator.AnimatorListener
 {
-  oxj(oxh paramoxh, ArticleInfo paramArticleInfo) {}
+  public oxj(VideoView paramVideoView) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    QLog.d("OnSocialHeaderFollowClickListener", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
-    if ((paramBoolean) && (paramInt == 2))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = paramInt;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = 2;
-      ogy.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      ogy.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.a, paramInt);
-      ohb.a().b();
-      ohb.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, true);
-      return;
+    if (VideoView.a(this.a) != null) {
+      VideoView.a(this.a).setVisibility(4);
     }
-    bbmy.a(oxh.a(this.jdField_a_of_type_Oxh), ajjy.a(2131642057), 0).a();
+    if (VideoView.b(this.a) != null) {
+      VideoView.b(this.a).setVisibility(4);
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

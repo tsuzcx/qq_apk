@@ -1,15 +1,23 @@
-import android.os.Environment;
-import java.io.File;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
 
 public class wqf
+  implements amkj
 {
-  public static final String a = ajjy.a(2131650605);
-  public static final String b = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Tencent/MobileQQ/dov_ptv_template_dov/ptv_template_usable/AISceneGuide/";
-  public static final String c = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Tencent/MobileQQ/dov_ptv_template_dov/ptv_template_usable/GifGuide/";
+  public wqf(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
+  
+  public void onColorNoteAnimFinish()
+  {
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wqf
  * JD-Core Version:    0.7.0.1
  */

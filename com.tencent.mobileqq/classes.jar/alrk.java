@@ -1,29 +1,17 @@
-import android.content.res.Resources;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.campuscircle.CampusCircleReplyActivity;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.wordsegment.WordSegment.ILogCallback;
 
-public class alrk
-  implements CompoundButton.OnCheckedChangeListener
+final class alrk
+  implements WordSegment.ILogCallback
 {
-  public alrk(CampusCircleReplyActivity paramCampusCircleReplyActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void OnLog(String paramString1, String paramString2)
   {
-    paramCompoundButton = this.a.getResources();
-    TextView localTextView = CampusCircleReplyActivity.a(this.a);
-    if (paramBoolean) {}
-    for (paramCompoundButton = paramCompoundButton.getColorStateList(2131100617);; paramCompoundButton = paramCompoundButton.getColorStateList(2131100619))
-    {
-      localTextView.setTextColor(paramCompoundButton);
-      return;
-    }
+    ArkAppCenter.c("ArkApp.Dict.WordSegment." + paramString1, String.format("%s", new Object[] { paramString2 }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alrk
  * JD-Core Version:    0.7.0.1
  */

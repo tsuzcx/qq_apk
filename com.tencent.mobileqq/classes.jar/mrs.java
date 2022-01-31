@@ -1,25 +1,12 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import android.content.Context;
 
-public class mrs
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface mrs
 {
-  public mrs(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
-  
-  public void onGlobalLayout()
-  {
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    int i = this.a.getWindow().getDecorView().getBottom();
-    int j = this.a.getWindow().getDecorView().getTop();
-    LebaSearchPluginManagerActivity.a(this.a, i - j);
-  }
+  public abstract void a(Context paramContext, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mrs
  * JD-Core Version:    0.7.0.1
  */

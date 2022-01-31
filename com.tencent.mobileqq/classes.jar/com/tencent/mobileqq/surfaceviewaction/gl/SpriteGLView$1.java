@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import axcg;
+import ayci;
 import java.util.List;
 
 public class SpriteGLView$1
@@ -17,8 +17,8 @@ public class SpriteGLView$1
     while (i < j)
     {
       Object localObject = arrayOfObject[i];
-      if ((localObject instanceof axcg)) {
-        ((axcg)localObject).a();
+      if ((localObject instanceof ayci)) {
+        ((ayci)localObject).a();
       }
       i += 1;
     }

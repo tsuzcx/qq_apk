@@ -1,15 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-class uqr
-  implements View.OnClickListener
+public abstract interface uqr
 {
-  uqr(uqq paramuqq) {}
+  public abstract boolean a();
   
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-  }
+  public abstract boolean a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
+  
+  public abstract boolean b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
 }
 
 

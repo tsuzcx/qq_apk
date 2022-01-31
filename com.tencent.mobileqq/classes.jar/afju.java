@@ -1,28 +1,38 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import java.lang.ref.WeakReference;
 
-class afju
-  extends BroadcastReceiver
+public class afju
+  extends Handler
 {
-  afju(afjt paramafjt) {}
+  private WeakReference<NewFriendActivity> a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public afju(NewFriendActivity paramNewFriendActivity)
   {
-    if (paramIntent.getBooleanExtra("recording_time_out", false))
-    {
-      bbmy.a(this.a.mRuntime.a(), 2131633268, 0).a();
-      QLog.e("FaceUnblockCameraJsApiPlugin", 1, "FaceUnlock record timeout!");
+    this.a = new WeakReference(paramNewFriendActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    NewFriendActivity localNewFriendActivity = (NewFriendActivity)this.a.get();
+    if (localNewFriendActivity == null) {
       return;
     }
-    paramContext = paramIntent.getStringExtra("target_media_url");
-    afjt.a(this.a, paramContext);
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      localNewFriendActivity.a(paramMessage.arg1);
+      return;
+    }
+    localNewFriendActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afju
  * JD-Core Version:    0.7.0.1
  */

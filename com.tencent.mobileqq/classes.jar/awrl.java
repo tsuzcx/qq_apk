@@ -1,129 +1,93 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-class awrl
+public class awrl
+  extends awry
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public long f;
-  public String f;
-  public long g;
-  public long h;
-  public long i = 0L;
-  public long j = 4L;
-  public long k = a();
-  public long l = Build.VERSION.SDK_INT;
-  public long m;
-  public long n = 0L;
-  public long o = 0L;
-  public long p = 0L;
-  public long q = 0L;
+  private Drawable a;
   
-  public awrl()
+  public awrl(baxk parambaxk)
   {
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "8.2.6";
-    this.jdField_c_of_type_JavaLangString = Build.MODEL;
+    super(parambaxk);
   }
   
-  public int a()
+  private void a(awwp paramawwp, TextView paramTextView, boolean paramBoolean)
   {
-    int i2 = 0;
-    int i1;
-    if (AppNetConnInfo.isWifiConn()) {
-      i1 = 2;
-    }
-    for (;;)
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreReportController", 2, "getNetType: " + i1);
+      if (this.a == null)
+      {
+        this.a = paramawwp.a().getContext().getResources().getDrawable(2130841313);
+        this.a.setBounds(0, 0, ImmersiveUtils.a(15.0F), ImmersiveUtils.a(15.0F));
       }
-      return i1;
-      i1 = i2;
-      if (AppNetConnInfo.isMobileConn()) {
-        switch (AppNetConnInfo.getMobileInfo())
-        {
-        default: 
-          i1 = i2;
-          break;
-        case 1: 
-          i1 = 3;
-          break;
-        case 2: 
-          i1 = 4;
-          break;
-        case 3: 
-          i1 = 5;
-        }
-      }
+      paramTextView.setCompoundDrawables(null, null, this.a, null);
+      return;
     }
+    paramTextView.setCompoundDrawables(null, null, null, null);
   }
   
-  public String a()
+  private void b(awwp paramawwp, awog paramawog)
   {
-    StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_f_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.g);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.h);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.i);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.j);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.k);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.l);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.m);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.n);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.o);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.p);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.q);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    return localStringBuilder.toString();
+    TextView localTextView = paramawwp.a();
+    Context localContext;
+    boolean bool;
+    if ((localTextView != null) && (paramawog != null))
+    {
+      localContext = localTextView.getContext();
+      if (!(paramawog instanceof awpk)) {
+        break label73;
+      }
+      paramawog = ((awpk)paramawog).a();
+      if ((paramawog != null) && (localContext != null))
+      {
+        if (paramawog.certifiedGrade <= 0L) {
+          break label68;
+        }
+        bool = true;
+        a(paramawwp, localTextView, bool);
+      }
+    }
+    label68:
+    label73:
+    do
+    {
+      do
+      {
+        return;
+        bool = false;
+        break;
+      } while (!(paramawog instanceof awnk));
+      paramawog = (awnk)paramawog;
+    } while ((paramawog == null) || (localContext == null));
+    a(paramawwp, localTextView, paramawog.b());
+  }
+  
+  protected void a(awwp paramawwp, awog paramawog)
+  {
+    super.a(paramawwp, paramawog);
+    if ((paramawog instanceof awpk))
+    {
+      Object localObject = (awpk)paramawog;
+      PublicAccountInfo localPublicAccountInfo = ((awpk)localObject).a();
+      if ((localPublicAccountInfo != null) && (localPublicAccountInfo.displayNumber != null) && (localPublicAccountInfo.displayNumber.equalsIgnoreCase(((awpk)localObject).a())))
+      {
+        localObject = new SpannableString(localPublicAccountInfo.name);
+        ((SpannableString)localObject).setSpan(new ForegroundColorSpan(-16734752), 0, localPublicAccountInfo.name.length(), 33);
+        paramawwp.a().setText((CharSequence)localObject);
+      }
+    }
+    b(paramawwp, paramawog);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awrl
  * JD-Core Version:    0.7.0.1
  */

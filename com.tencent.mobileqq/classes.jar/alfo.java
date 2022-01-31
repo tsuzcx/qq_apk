@@ -1,514 +1,630 @@
 import android.app.Activity;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
+import android.content.pm.ApplicationInfo;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.Message;
-import android.support.v4.app.NotificationCompat.Builder;
-import android.text.TextUtils;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.ark.open.ArkAppCacheMgr;
-import com.tencent.ark.open.ArkAppMgr;
-import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkTipsManager.4;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.widget.TipsBar;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.ar.ARRecognition;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl.1;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl.10;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl.2;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl.3;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl.5;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl.8;
+import com.tencent.mobileqq.ar.model.ArLBSActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.io.File;
+import java.util.ArrayList;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 import mqq.os.MqqHandler;
 
 public class alfo
 {
-  private static volatile alfo jdField_a_of_type_Alfo;
-  private long jdField_a_of_type_Long = -1L;
-  private ajmm jdField_a_of_type_Ajmm = new alfp(this);
-  private alft jdField_a_of_type_Alft;
-  private WeakReference<adai> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private WeakReference<BaseChatPie> b;
-  private WeakReference<QQAppInterface> c;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static boolean jdField_k_of_type_Boolean;
+  private static boolean jdField_l_of_type_Boolean;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  public akup a;
+  aleu jdField_a_of_type_Aleu;
+  private alfu jdField_a_of_type_Alfu;
+  public alfv a;
+  algh jdField_a_of_type_Algh;
+  private algo jdField_a_of_type_Algo;
+  Activity jdField_a_of_type_AndroidAppActivity;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  public ARCommonConfigInfo a;
+  ArLBSActivity jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity;
+  String jdField_a_of_type_JavaLangString;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  private boolean jdField_a_of_type_Boolean = true;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  int jdField_b_of_type_Int;
+  public long b;
+  private volatile boolean jdField_b_of_type_Boolean;
+  int jdField_c_of_type_Int;
+  long jdField_c_of_type_Long;
+  private boolean jdField_c_of_type_Boolean;
+  int jdField_d_of_type_Int;
+  long jdField_d_of_type_Long;
+  private boolean jdField_d_of_type_Boolean = true;
+  int jdField_e_of_type_Int;
+  long jdField_e_of_type_Long;
+  private boolean jdField_e_of_type_Boolean = true;
+  int jdField_f_of_type_Int;
+  long jdField_f_of_type_Long;
+  private boolean jdField_f_of_type_Boolean;
+  int jdField_g_of_type_Int = 10000;
+  long jdField_g_of_type_Long;
+  private boolean jdField_g_of_type_Boolean;
+  int jdField_h_of_type_Int;
+  long jdField_h_of_type_Long;
+  private boolean jdField_h_of_type_Boolean;
+  int jdField_i_of_type_Int;
+  long jdField_i_of_type_Long;
+  private boolean jdField_i_of_type_Boolean;
+  int jdField_j_of_type_Int = -1;
+  long jdField_j_of_type_Long;
+  private boolean jdField_j_of_type_Boolean = true;
+  long jdField_k_of_type_Long = 0L;
+  private long jdField_l_of_type_Long;
+  private long jdField_m_of_type_Long;
+  private boolean jdField_m_of_type_Boolean;
+  private long n;
   
-  public static alfo a()
+  public alfo()
   {
-    if (jdField_a_of_type_Alfo == null) {}
-    try
-    {
-      if (jdField_a_of_type_Alfo == null) {
-        jdField_a_of_type_Alfo = new alfo();
-      }
-      return jdField_a_of_type_Alfo;
-    }
-    finally {}
+    this.jdField_a_of_type_Akup = new alfs(this, 0, true, true, 3000L, true, false, "QQARScan");
   }
   
-  public static String a(MessageForArkApp paramMessageForArkApp)
+  public static void a()
   {
-    if ((paramMessageForArkApp == null) || (paramMessageForArkApp.ark_app_message == null) || (TextUtils.isEmpty(paramMessageForArkApp.ark_app_message.appDesc))) {
-      paramMessageForArkApp = "";
-    }
-    String str;
-    do
+    Object localObject2 = BaseApplicationImpl.sApplication;
+    Object localObject1;
+    if (Build.VERSION.SDK_INT >= 9)
     {
-      return paramMessageForArkApp;
-      str = paramMessageForArkApp.ark_app_message.appDesc;
-      paramMessageForArkApp = str;
-    } while (str.length() <= 4);
-    return str.substring(0, 4);
-  }
-  
-  private void a(Bitmap paramBitmap, Context paramContext)
-  {
-    if ((this.jdField_a_of_type_Alft != null) && (paramContext != null))
-    {
-      paramBitmap = new BitmapDrawable(paramContext.getResources(), paramBitmap);
-      if (this.jdField_a_of_type_Alft.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        paramContext = (TipsBar)this.jdField_a_of_type_Alft.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramContext != null) {
-          paramContext.setTipsIcon(paramBitmap);
-        }
-        awqx.a((QQAppInterface)this.c.get(), "dc00898", "", "", "0X8009EDE", "0X8009EDE", 4, 0, "", "", "", "");
+      localObject1 = ((Context)localObject2).getApplicationInfo().nativeLibraryDir + "/";
+      localObject1 = (String)localObject1 + "libARCloud.so";
+      localObject2 = ((Context)localObject2).getFilesDir() + "libARCloud.so";
+      if (!new File((String)localObject1).exists()) {
+        break label172;
       }
-      if (this.jdField_a_of_type_Alft.jdField_b_of_type_JavaLangRefWeakReference != null)
-      {
-        paramContext = (aemq)this.jdField_a_of_type_Alft.jdField_b_of_type_JavaLangRefWeakReference.get();
-        if (paramContext != null) {
-          paramContext.a(paramBitmap);
-        }
-      }
-    }
-  }
-  
-  private void a(MessageForArkApp paramMessageForArkApp)
-  {
-    if (paramMessageForArkApp != null)
-    {
-      if (paramMessageForArkApp.arkContainer != null) {
-        paramMessageForArkApp.arkContainer.a();
-      }
-      if (paramMessageForArkApp.mExtendMsgArkAppList != null)
-      {
-        Iterator localIterator = paramMessageForArkApp.mExtendMsgArkAppList.iterator();
-        while (localIterator.hasNext())
-        {
-          MessageForArkApp localMessageForArkApp = (MessageForArkApp)localIterator.next();
-          if ((localMessageForArkApp != null) && (localMessageForArkApp.arkContainer != null)) {
-            localMessageForArkApp.arkContainer.a();
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("ArkTipsManager", 2, "msg container has attached:" + paramMessageForArkApp.uniseq + ",c=" + paramMessageForArkApp.arkContainer);
-      }
-    }
-  }
-  
-  private void a(MessageForArkApp paramMessageForArkApp, boolean paramBoolean)
-  {
-    if (paramMessageForArkApp != null)
-    {
-      if (paramMessageForArkApp.arkContainer != null)
-      {
-        paramMessageForArkApp.arkContainer.b();
-        if (paramBoolean) {
-          paramMessageForArkApp.arkContainer.doOnEvent(2);
-        }
-      }
-      if (paramMessageForArkApp.mExtendMsgArkAppList != null)
-      {
-        Iterator localIterator = paramMessageForArkApp.mExtendMsgArkAppList.iterator();
-        while (localIterator.hasNext())
-        {
-          MessageForArkApp localMessageForArkApp = (MessageForArkApp)localIterator.next();
-          if ((localMessageForArkApp != null) && (localMessageForArkApp.arkContainer != null))
-          {
-            localMessageForArkApp.arkContainer.b();
-            localMessageForArkApp.arkContainer.doOnEvent(2);
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("ArkTipsManager", 2, "msg container has dettached:" + paramMessageForArkApp.uniseq + ",destroy:" + paramBoolean + ",c=" + paramMessageForArkApp.arkContainer);
-      }
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    boolean bool2 = true;
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("showMainTip : ref null= :");
-      if (this.c != null) {
-        break label130;
-      }
-      bool1 = true;
-      localObject = ((StringBuilder)localObject).append(bool1).append(", isHide=");
-      if (paramString != null) {
-        break label135;
-      }
-    }
-    label130:
-    label135:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      QLog.d("ArkTipsManager", 2, bool1);
-      if (this.c != null)
-      {
-        localObject = (QQAppInterface)this.c.get();
-        if (localObject != null)
-        {
-          localObject = ((QQAppInterface)localObject).getHandler(Conversation.class);
-          Message localMessage = new Message();
-          localMessage.what = 1052;
-          localMessage.obj = paramString;
-          ((MqqHandler)localObject).sendMessage(localMessage);
-        }
-      }
-      return;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    if ((this.jdField_a_of_type_Alft != null) && (this.jdField_a_of_type_Alft.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Alft.jdField_a_of_type_JavaLangString.equals(paramString1)) && (this.jdField_b_of_type_JavaLangRefWeakReference != null))
-    {
-      paramString1 = (BaseChatPie)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-      if (paramString1 != null)
-      {
-        paramString1 = paramString1.a(paramString2, this.jdField_a_of_type_Alft.jdField_a_of_type_Long);
-        this.jdField_a_of_type_Alft.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramString1);
-      }
-    }
-  }
-  
-  private void d()
-  {
-    a(null);
-  }
-  
-  public adai a()
-  {
-    if (this.jdField_a_of_type_Alft == null) {
-      return null;
-    }
-    return this.jdField_a_of_type_Alft.jdField_a_of_type_Adai;
-  }
-  
-  public MessageForArkApp a()
-  {
-    if (this.jdField_a_of_type_Alft != null) {
-      return this.jdField_a_of_type_Alft.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp;
-    }
-    return null;
-  }
-  
-  public TipsBar a(Context paramContext)
-  {
-    TipsBar localTipsBar = new TipsBar(paramContext);
-    alft localalft = this.jdField_a_of_type_Alft;
-    if ((localalft != null) && (localalft.jdField_b_of_type_JavaLangString != null))
-    {
-      localalft.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localTipsBar);
-      localTipsBar.setTipsText(localalft.jdField_b_of_type_JavaLangString);
-    }
-    a(paramContext);
-    return localTipsBar;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_Alft != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Alft.d)) && (this.c != null))
-    {
-      alep.a((QQAppInterface)this.c.get(), this.jdField_a_of_type_Alft.d, "AIOStatusBarClick", 0, 0, 0L, 0L, 0L, "", "");
-      awqx.a((QQAppInterface)this.c.get(), "dc00898", "", "", "0X8009EE2", "0X8009EE2", 4, 0, "", "", "", "");
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("useq=").append(paramLong);
-      if (this.jdField_a_of_type_Alft != null) {
-        break label66;
-      }
-    }
-    label66:
-    for (String str = "";; str = "<>" + this.jdField_a_of_type_Alft.jdField_a_of_type_Adai + "," + this.jdField_a_of_type_Alft.jdField_b_of_type_Long)
-    {
-      QLog.d("ArkTipsManager", 2, str);
-      ArkAppCenter.a().postToMainThread(new ArkTipsManager.4(this, paramLong));
-      return;
-    }
-  }
-  
-  public void a(adai paramadai, SessionInfo paramSessionInfo, MessageForArkApp paramMessageForArkApp, String paramString, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramSessionInfo == null) || (paramMessageForArkApp == null)) {}
-    long l1;
-    long l2;
-    label92:
-    String str1;
-    Object localObject;
-    boolean bool;
-    do
-    {
-      return;
-      if ((paramMessageForArkApp.istroop == 1) || (paramMessageForArkApp.istroop == 3000)) {}
-      for (l1 = paramMessageForArkApp.shmsgseq;; l1 = paramMessageForArkApp.time)
-      {
-        l2 = paramMessageForArkApp.uniseq;
-        if (l2 != this.jdField_a_of_type_Long) {
-          break label92;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("ArkTipsManager", 2, "showTip deleting:" + l2);
-        return;
-      }
-      str1 = paramSessionInfo.jdField_a_of_type_JavaLangString;
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder().append("showTip sessUin:").append(str1).append(",first Show ? ");
-        if (this.jdField_a_of_type_Alft != null) {
-          break;
-        }
-        bool = true;
-        QLog.i("ArkTipsManager", 2, bool + ", msg=" + paramString);
-      }
-    } while (str1 == null);
-    String str2 = paramSessionInfo.d;
-    this.c = new WeakReference(paramQQAppInterface);
-    if (paramMessageForArkApp.ark_app_message != null)
-    {
-      localObject = paramMessageForArkApp.ark_app_message.appName;
-      label207:
-      if (this.jdField_a_of_type_Alft != null) {
-        break label376;
-      }
-      this.jdField_a_of_type_Alft = new alft(paramadai, str1, l1, l2, str2, paramSessionInfo.jdField_a_of_type_Int, (String)localObject, paramMessageForArkApp);
-    }
-    label376:
-    while ((this.jdField_a_of_type_Alft.jdField_a_of_type_Adai == paramadai) && (l1 == this.jdField_a_of_type_Alft.jdField_a_of_type_Long))
-    {
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface.addObserver(this.jdField_a_of_type_Ajmm);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("ArkTipsManager", 2, "showTip view:" + paramadai + "msgID ? " + l1);
-      }
-      a(paramMessageForArkApp);
-      this.jdField_a_of_type_Alft.jdField_b_of_type_JavaLangString = paramString;
-      a(paramString);
-      a(str1, paramString);
-      if (paramMessageForArkApp.ark_app_message != null) {
-        alep.a(paramQQAppInterface, paramMessageForArkApp.ark_app_message.appName, "AIOStatusBarShow", 0, 0, 0L, 0L, 0L, "", "");
-      }
-      this.jdField_a_of_type_Boolean = true;
-      return;
-      bool = false;
-      break;
-      localObject = "";
-      break label207;
-    }
-    if ((this.jdField_a_of_type_Alft.jdField_a_of_type_Adai != paramadai) && (this.jdField_a_of_type_Alft.jdField_a_of_type_Adai != null))
-    {
-      if (str1.equals(this.jdField_a_of_type_Alft.jdField_a_of_type_JavaLangString)) {
-        break label474;
-      }
-      a(this.jdField_a_of_type_Alft.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, true);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Alft.a(paramadai, str1, l1, l2, str2, paramSessionInfo.jdField_a_of_type_Int, (String)localObject, paramMessageForArkApp);
-      break;
-      label474:
-      a(this.jdField_a_of_type_Alft.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, false);
+      if (!((String)localObject1).equals(""))
+      {
+        try
+        {
+          System.load((String)localObject1);
+          QLog.i("AREngine_ARCloudControl", 1, "load " + (String)localObject1 + " successfully!");
+          jdField_k_of_type_Boolean = true;
+          return;
+        }
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+        {
+          label172:
+          QLog.i("AREngine_ARCloudControl", 1, "load " + (String)localObject1 + " failed! " + localUnsatisfiedLinkError.getMessage());
+        }
+        localObject1 = ((Context)localObject2).getApplicationInfo().dataDir + "/lib/";
+        break;
+        if (!new File((String)localObject2).exists()) {
+          break label248;
+        }
+        localObject1 = localObject2;
+        continue;
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.i("AREngine_ARCloudControl", 2, "loadSo suc");
+      }
+      jdField_k_of_type_Boolean = false;
+      return;
+      label248:
+      localObject1 = "";
     }
   }
   
-  public void a(adaj paramadaj, SessionInfo paramSessionInfo, String paramString)
+  private void a(int paramInt, algo paramalgo)
   {
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Alft == null) || (paramString == null) || (paramadaj != this.jdField_a_of_type_Alft.jdField_a_of_type_Adai)) {
-      break label29;
+    QLog.i("AREngine_ARCloudControl", 1, "requestToCheckLBSLocation.");
+    this.jdField_a_of_type_Algo = paramalgo;
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+      }
+      Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, new ARCloudControl.8(this));
+      localMessage.what = 2;
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_g_of_type_Int);
     }
-    label29:
-    while ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() == paramadaj)) {
+    this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity = algo.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, paramalgo);
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      if (((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)
+      {
+        QLog.d("AREngine_ARCloudControl", 1, "checkSelfPermission. not grant");
+        ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(new alft(this), 1, new String[] { "android.permission.ACCESS_COARSE_LOCATION", "android.permission.ACCESS_FINE_LOCATION" });
+        return;
+      }
+      QLog.d("AREngine_ARCloudControl", 1, "checkSelfPermission. grant");
+      grant();
       return;
     }
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    SosoInterface.a(this.jdField_a_of_type_Akup);
+  }
+  
+  private void a(algt paramalgt)
+  {
+    QLog.i("AREngine_ARCloudControl", 1, "[DEBUG_SCAN_yt_face] requestToUploadImg. : ");
+    long l1 = System.currentTimeMillis();
+    if (this.jdField_a_of_type_Aleu != null)
     {
-      localStringBuilder = new StringBuilder().append("updateCurrentTip : sessionInfo:");
-      if (paramSessionInfo != null) {
-        break label186;
+      this.jdField_d_of_type_Boolean = true;
+      this.jdField_h_of_type_Int += 1;
+    }
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_AndroidOsHandler != null)
+      {
+        if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
+          this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+        }
+        Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, new ARCloudControl.5(this));
+        localMessage.what = 1;
+        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_g_of_type_Int);
+      }
+      this.jdField_a_of_type_Aleu.a(paramalgt, new alfr(this, l1, paramalgt));
+      return;
+    }
+  }
+  
+  private void a(Runnable paramRunnable)
+  {
+    a(paramRunnable, 0L);
+  }
+  
+  private void a(Runnable paramRunnable, long paramLong)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_AndroidOsHandler != null) {
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramRunnable, paramLong);
+      }
+      return;
+    }
+  }
+  
+  private void a(String paramString, int paramInt1, int paramInt2)
+  {
+    QLog.i("AREngine_ARCloudControl", 1, "requestToCheckLBSLocationInternal.");
+    System.currentTimeMillis();
+    if (this.jdField_a_of_type_Aleu != null)
+    {
+      this.jdField_j_of_type_Boolean = true;
+      if (this.jdField_a_of_type_AndroidOsHandler != null)
+      {
+        if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
+          this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+        }
+        Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, new ARCloudControl.10(this));
+        localMessage.what = 2;
+        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_g_of_type_Int);
+      }
+      this.jdField_a_of_type_Aleu.a(paramString, paramInt1, paramInt2, new alfp(this));
+    }
+  }
+  
+  private void a(byte[] paramArrayOfByte, ArrayList<ARRecognition> paramArrayList)
+  {
+    if (this.jdField_a_of_type_Algh != null)
+    {
+      algt localalgt = new algt();
+      this.jdField_a_of_type_Algh.a(paramArrayOfByte, paramArrayList, new alfq(this, localalgt), this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Int);
+    }
+  }
+  
+  public static boolean a()
+  {
+    boolean bool = true;
+    for (;;)
+    {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AREngine_ARCloudControl", 2, "loadNativeLibrary" + jdField_l_of_type_Boolean + ", loadSoSuccess=" + jdField_k_of_type_Boolean);
+        }
+        if (jdField_l_of_type_Boolean)
+        {
+          bool = jdField_k_of_type_Boolean;
+          return bool;
+        }
+        if (albm.a(albm.a()))
+        {
+          jdField_l_of_type_Boolean = true;
+          try
+          {
+            if (albm.a(albm.a()) != 0) {
+              break label167;
+            }
+            jdField_k_of_type_Boolean = bool;
+          }
+          catch (Throwable localThrowable)
+          {
+            jdField_k_of_type_Boolean = false;
+            QLog.i("AREngine_ARCloudControl", 1, "load ARCloud so failed. err msg = " + localThrowable.getMessage());
+            continue;
+          }
+          QLog.d("AREngine_ARCloudControl", 1, "loadArNativeSo");
+          bool = jdField_k_of_type_Boolean;
+          continue;
+        }
+        QLog.i("AREngine_ARCloudControl", 1, "load ARCloud so failed. ARCloud so is not exist!");
+      }
+      finally {}
+      bool = jdField_k_of_type_Boolean;
+      continue;
+      label167:
+      bool = false;
+    }
+  }
+  
+  private void b(byte[] paramArrayOfByte)
+  {
+    QLog.i("AREngine_ARCloudControl", 1, "saveTmpPreviewData should nerver be called ");
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
+    {
+      if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length != paramArrayOfByte.length)) {
+        this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte.length];
+      }
+      System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte.length);
+      this.jdField_m_of_type_Boolean = true;
+      if (this.n <= 0L) {
+        this.n = System.currentTimeMillis();
       }
     }
-    label186:
-    for (String str = "";; str = paramSessionInfo.jdField_a_of_type_JavaLangString)
+  }
+  
+  private void i()
+  {
+    QLog.i("AREngine_ARCloudControl", 1, "startUploadThread.");
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      QLog.d("ArkTipsManager", 2, str + ",tar:" + this.jdField_a_of_type_Alft.jdField_a_of_type_JavaLangString + ",c=" + paramadaj);
-      this.jdField_a_of_type_Alft.jdField_b_of_type_JavaLangString = paramString;
-      a(paramString);
-      if ((paramSessionInfo == null) || (paramSessionInfo.jdField_a_of_type_JavaLangString == null) || (!paramSessionInfo.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Alft.jdField_a_of_type_JavaLangString)) || (paramSessionInfo.jdField_a_of_type_Int != this.jdField_a_of_type_Alft.jdField_a_of_type_Int)) {
+      if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+      {
+        this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("ARCloudEnginePreprocessThread", 0);
+        this.jdField_a_of_type_AndroidOsHandlerThread.start();
+        this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+      }
+      return;
+    }
+  }
+  
+  private void j()
+  {
+    QLog.i("AREngine_ARCloudControl", 1, "stopUploadThread.");
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_AndroidOsHandler != null) {
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      }
+      this.jdField_a_of_type_AndroidOsHandler = null;
+      if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+      {
+        this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+        this.jdField_a_of_type_AndroidOsHandlerThread.interrupt();
+      }
+      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+      return;
+    }
+  }
+  
+  private void k()
+  {
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_m_of_type_Boolean = false;
+    this.n = 0L;
+  }
+  
+  private void l()
+  {
+    QLog.i("AREngine_ARCloudControl", 1, "stopUploadingImg.");
+    if (this.jdField_a_of_type_Aleu != null) {
+      this.jdField_a_of_type_Aleu.a();
+    }
+  }
+  
+  public ArrayList<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Int = paramInt3;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_k_of_type_Long == 0L) {
+      this.jdField_k_of_type_Long = System.currentTimeMillis();
+    }
+    long l1;
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Alfv != null))
+    {
+      l1 = System.currentTimeMillis();
+      bool1 = this.jdField_a_of_type_Alfv.a(paramArrayOfByte);
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_Alfu.c(bool1);
+      QLog.i("AREngine_ARCloudControl", 1, "isSameSceneWithBestImg = " + bool1 + " cost time:" + (System.currentTimeMillis() - l1) + "ms");
+    }
+    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Alfv == null)) {
+      return;
+    }
+    if (this.jdField_e_of_type_Boolean)
+    {
+      QLog.i("AREngine_ARCloudControl", 1, "selectImage start");
+      QLog.i("AREngine_ARCloudControl", 1, String.format("selectImage total time cost:start Time is %s", new Object[] { "firstTimeStart" }));
+      this.jdField_e_of_type_Boolean = false;
+      if (this.jdField_l_of_type_Long == 0L) {
+        this.jdField_l_of_type_Long = System.currentTimeMillis();
+      }
+      if (this.jdField_i_of_type_Boolean) {
+        ThreadManager.getUIHandler().post(new ARCloudControl.1(this));
+      }
+    }
+    if (this.jdField_a_of_type_Alfu != null) {
+      this.jdField_a_of_type_Alfu.b();
+    }
+    this.jdField_c_of_type_Long = System.currentTimeMillis();
+    boolean bool1 = this.jdField_a_of_type_Alfv.a(paramArrayOfByte, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+    if ((bool1) && (this.jdField_m_of_type_Long == 0L)) {
+      this.jdField_m_of_type_Long = System.currentTimeMillis();
+    }
+    int i1;
+    if (this.jdField_a_of_type_Alfu != null)
+    {
+      boolean bool2 = this.jdField_a_of_type_Alfu.a();
+      l1 = this.jdField_a_of_type_Alfu.a();
+      if ((bool1) && (!this.jdField_m_of_type_Boolean) && (bool2))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AREngine_ARCloudControl", 2, "selectImage save tmp preview data");
+        }
+        b(paramArrayOfByte);
+        i1 = 0;
+        bool1 = false;
+        this.jdField_a_of_type_Alfu.a(bool1);
+      }
+    }
+    for (;;)
+    {
+      if (!bool1)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        return;
+        if ((bool1) && (this.jdField_m_of_type_Boolean) && (System.currentTimeMillis() < this.n + l1))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("AREngine_ARCloudControl", 2, "selectImage update tmp preview data");
+          }
+          b(paramArrayOfByte);
+          i1 = 0;
+          bool1 = false;
+          break;
+        }
+        if ((bool1) || (!this.jdField_m_of_type_Boolean) || (System.currentTimeMillis() < l1 + this.n)) {
+          break label675;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("AREngine_ARCloudControl", 2, "selectImage use tmp preview data");
+        }
+        paramArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+        k();
+        i1 = 1;
+        bool1 = true;
         break;
       }
-      a(this.jdField_a_of_type_Alft.jdField_a_of_type_JavaLangString, paramString);
-      return;
-    }
-  }
-  
-  public void a(Activity paramActivity, QQAppInterface paramQQAppInterface)
-  {
-    if ((this.jdField_a_of_type_Alft == null) || (paramActivity == null) || (paramQQAppInterface == null)) {
-      return;
-    }
-    int i = this.jdField_a_of_type_Alft.jdField_a_of_type_Int;
-    String str1 = this.jdField_a_of_type_Alft.jdField_a_of_type_JavaLangString;
-    String str2 = this.jdField_a_of_type_Alft.c;
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("need_jump_to_msg", true);
-    localBundle.putLong("searched_timeorseq", this.jdField_a_of_type_Alft.jdField_a_of_type_Long);
-    ahcq.a(paramActivity, paramQQAppInterface, str1, i, str2, false, localBundle);
-  }
-  
-  public void a(Context paramContext)
-  {
-    if (this.jdField_a_of_type_Alft == null) {
-      return;
-    }
-    String str1 = this.jdField_a_of_type_Alft.d;
-    String str2 = this.jdField_a_of_type_Alft.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appView;
-    if (ArkAppMgr.getInstance().getAppPathByNameFromLocal(str1, str2, null, false) != null)
-    {
-      ArkAppCacheMgr.getAppIcon(str1, new alfq(this, paramContext));
-      return;
-    }
-    ArkAppMgr.getInstance().getAppPathByName(str1, str2, "0.0.0.1", null, new alfr(this, str1, paramContext));
-  }
-  
-  public void a(BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
-    if (this.jdField_a_of_type_Alft != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArkTipsManager", 2, "onEnterAIO");
+      this.jdField_d_of_type_Long = System.currentTimeMillis();
+      QLog.i("AREngine_ARCloudControl", 1, String.format("selectImage total time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.jdField_b_of_type_Long) }) + ":select result is " + bool1);
+      this.jdField_f_of_type_Long = (System.currentTimeMillis() - this.jdField_k_of_type_Long);
+      this.jdField_a_of_type_Boolean = false;
+      if (this.jdField_i_of_type_Boolean) {
+        ThreadManager.getUIHandler().post(new ARCloudControl.2(this));
       }
-      a(paramBaseChatPie.a(), this.jdField_a_of_type_Alft.jdField_b_of_type_JavaLangString);
+      if (i1 != 0) {}
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Alfu != null) {
+          this.jdField_a_of_type_Alfu.b(true);
+        }
+        if ((!this.jdField_f_of_type_Boolean) && (this.jdField_a_of_type_Alfu != null))
+        {
+          l1 = this.jdField_a_of_type_Alfu.b();
+          aldo.a().a(l1, this.jdField_l_of_type_Long, this.jdField_m_of_type_Long, this.jdField_a_of_type_Alfv.jdField_c_of_type_Int);
+          akxb.a().a(l1, this.jdField_m_of_type_Long);
+          this.jdField_f_of_type_Boolean = true;
+        }
+        a(new ARCloudControl.3(this, paramArrayOfByte));
+        return;
+        paramArrayOfByte = this.jdField_a_of_type_Alfv.a();
+      }
+      label675:
+      i1 = 0;
+      break;
+      i1 = 0;
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public boolean a(alfu paramalfu, AppInterface paramAppInterface, Activity paramActivity, int paramInt1, int paramInt2, int paramInt3, ARCommonConfigInfo paramARCommonConfigInfo)
   {
-    if (paramQQAppInterface == null) {}
-    while (QQAppInterface.isAppOnForeground(paramQQAppInterface.getApp())) {
-      return;
-    }
-    QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
-    NotificationCompat.Builder localBuilder = new NotificationCompat.Builder(paramQQAppInterface.getApp());
-    Intent localIntent = new Intent();
-    localIntent.putExtra("param_notifyid", 239);
-    localBuilder.setSmallIcon(2130840948).setWhen(System.currentTimeMillis()).setContentTitle(paramString1).setContentText(paramString2).setContentIntent(PendingIntent.getActivity(paramQQAppInterface.getApp(), 0, localIntent, 0));
-    paramQQAppInterface = localBuilder.build();
-    paramQQAppInterface.flags = 16;
-    localQQNotificationManager.notify("ArkTipsManager", 239, paramQQAppInterface);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Alft == null) {}
-    while (this.jdField_a_of_type_Alft.jdField_b_of_type_Long != paramLong) {
+    long l2 = System.currentTimeMillis();
+    jdField_k_of_type_Boolean = a();
+    aliq.a().b(System.currentTimeMillis() - l2, jdField_k_of_type_Boolean);
+    if (!jdField_k_of_type_Boolean) {
       return false;
     }
-    return true;
+    this.jdField_a_of_type_Alfv = new alfv(alfv.jdField_b_of_type_Int);
+    this.jdField_a_of_type_Algh = new algh();
+    this.jdField_a_of_type_Alfv.a(BaseApplicationImpl.getContext().getApplicationContext());
+    this.jdField_a_of_type_Algh.a();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_e_of_type_Int = paramInt1;
+    this.jdField_d_of_type_Int = paramInt2;
+    this.jdField_f_of_type_Int = paramInt3;
+    this.jdField_a_of_type_Alfu = paramalfu;
+    this.jdField_a_of_type_Aleu = new aleu(paramAppInterface, true);
+    this.jdField_a_of_type_Aleu.a();
+    this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo = paramARCommonConfigInfo;
+    if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null) {}
+    for (long l1 = ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions);; l1 = 0L)
+    {
+      this.jdField_a_of_type_Long = l1;
+      this.jdField_e_of_type_Boolean = true;
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      aliq.a().c(System.currentTimeMillis() - l2, jdField_k_of_type_Boolean);
+      return true;
+    }
   }
   
   public void b()
   {
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("hideTips : mCurrentTip :");
-      if (this.jdField_a_of_type_Alft != null) {
-        break label131;
-      }
-    }
-    label131:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("ArkTipsManager", 2, bool);
-      if (this.jdField_a_of_type_Alft != null)
-      {
-        if (this.c != null)
-        {
-          localObject = (QQAppInterface)this.c.get();
-          if (localObject != null) {
-            ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Ajmm);
-          }
-        }
-        this.jdField_a_of_type_Alft = null;
-        if (this.jdField_b_of_type_JavaLangRefWeakReference != null)
-        {
-          localObject = (BaseChatPie)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-          if (localObject != null) {
-            ((BaseChatPie)localObject).a(null, -1L);
-          }
-        }
-        d();
-        this.jdField_a_of_type_Boolean = false;
-        this.c = null;
-      }
-      return;
-    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_e_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    i();
+    k();
   }
   
-  public void b(BaseChatPie paramBaseChatPie)
+  public void b(boolean paramBoolean)
   {
-    if ((this.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() == paramBaseChatPie))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArkTipsManager", 2, "onExitAIO");
-      }
-      this.jdField_b_of_type_JavaLangRefWeakReference = null;
-    }
+    this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Alft != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArkTipsManager", 2, "onEnterConversation");
-      }
-      a(this.jdField_a_of_type_Alft.jdField_b_of_type_JavaLangString);
+    if (!this.jdField_c_of_type_Boolean) {
+      return;
     }
+    g();
+    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Boolean = true;
+    QLog.i("AREngine_ARCloudControl", 1, String.format("selectImage total time cost:start Time is %s", new Object[] { "resume" }));
+    this.jdField_e_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = false;
+    i();
+    k();
+  }
+  
+  public void d()
+  {
+    if (this.jdField_c_of_type_Boolean) {
+      return;
+    }
+    this.jdField_e_of_type_Long = System.currentTimeMillis();
+    h();
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
+    j();
+    l();
+  }
+  
+  @QQPermissionDenied(1)
+  public void denied()
+  {
+    QLog.d("AREngine_ARCloudControl", 1, "CheckPermission user denied = ");
+    this.jdField_a_of_type_Algo = null;
+  }
+  
+  public void e()
+  {
+    QLog.i("AREngine_ARCloudControl", 1, "stop.");
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
+    j();
+    l();
+  }
+  
+  public void f()
+  {
+    QLog.i("AREngine_ARCloudControl", 1, "uninit");
+    if (this.jdField_a_of_type_Alfv != null)
+    {
+      this.jdField_a_of_type_Alfv.a();
+      this.jdField_a_of_type_Alfv = null;
+    }
+    if (this.jdField_a_of_type_Algh != null)
+    {
+      this.jdField_a_of_type_Algh.b();
+      this.jdField_a_of_type_Algh = null;
+    }
+    this.jdField_a_of_type_Alfu = null;
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    }
+    this.jdField_a_of_type_JavaUtilArrayList = null;
+    this.jdField_a_of_type_Algo = null;
+    if (this.jdField_a_of_type_Aleu != null) {
+      this.jdField_a_of_type_Aleu.b();
+    }
+    this.jdField_a_of_type_AndroidAppActivity = null;
+  }
+  
+  public void g()
+  {
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_e_of_type_Long = 0L;
+    this.jdField_f_of_type_Long = 0L;
+    this.jdField_h_of_type_Int = 0;
+    this.jdField_g_of_type_Long = 0L;
+    this.jdField_h_of_type_Long = 0L;
+    this.jdField_i_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_i_of_type_Int = 0;
+    this.jdField_j_of_type_Int = -1;
+    this.jdField_c_of_type_Long = 0L;
+    this.jdField_d_of_type_Long = 0L;
+    this.jdField_k_of_type_Long = 0L;
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    QLog.d("AREngine_ARCloudControl", 1, "CheckPermission user grant = ");
+    SosoInterface.a(this.jdField_a_of_type_Akup);
+  }
+  
+  public void h()
+  {
+    QLog.d("AREngine_ARCloudControl", 2, "arCloudReport mResult:" + this.jdField_j_of_type_Int);
+    aliq.a().a(this.jdField_f_of_type_Long, this.jdField_g_of_type_Long, this.jdField_h_of_type_Long, this.jdField_h_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_i_of_type_Int, this.jdField_i_of_type_Long, this.jdField_j_of_type_Long, this.jdField_e_of_type_Long - this.jdField_b_of_type_Long, this.jdField_j_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alfo
  * JD-Core Version:    0.7.0.1
  */

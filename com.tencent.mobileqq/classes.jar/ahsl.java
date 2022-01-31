@@ -1,17 +1,13 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew;
 
 public class ahsl
-  extends aiac
+  extends axgh
 {
-  public CheckBox a;
-  public Object a;
-  public TextView d;
-  public TextView e;
+  public ahsl(CameraPreviewNew paramCameraPreviewNew) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahsl
  * JD-Core Version:    0.7.0.1
  */

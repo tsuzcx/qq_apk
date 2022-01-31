@@ -4,7 +4,7 @@ import android.support.v4.view.ViewPager.PageTransformer;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import urk;
+import veg;
 
 public class ThreeDTransformer
   implements ViewPager.PageTransformer
@@ -40,7 +40,7 @@ public class ThreeDTransformer
       if (this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i)) == null)
       {
         this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(0));
-        urk.b("ThreeDTransformer", "mInitMatcher viewId: " + i + " | count: " + 0);
+        veg.b("ThreeDTransformer", "mInitMatcher viewId: " + i + " | count: " + 0);
       }
     }
     else if ((this.jdField_a_of_type_Int != 0) && (paramFloat < 0.0F) && (paramFloat >= -1.0F) && (this.b))
@@ -60,12 +60,12 @@ public class ThreeDTransformer
     label228:
     for (paramView = "toLeft";; paramView = "toRight")
     {
-      urk.b("ThreeDTransformer", paramView);
+      veg.b("ThreeDTransformer", paramView);
       return;
       this.jdField_a_of_type_Int = i;
       this.jdField_a_of_type_Float = paramFloat;
       this.jdField_a_of_type_JavaUtilHashMap.clear();
-      urk.b("ThreeDTransformer", "initDrawingView pos: " + this.jdField_a_of_type_Int);
+      veg.b("ThreeDTransformer", "initDrawingView pos: " + this.jdField_a_of_type_Int);
       return;
       bool = false;
       break;

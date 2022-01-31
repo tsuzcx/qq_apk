@@ -1,29 +1,49 @@
-import android.support.v4.app.FragmentActivity;
+import android.support.annotation.NonNull;
 
 public class afml
-  extends aflu
 {
-  public static final int[] a = { 2131625174 };
-  public static final int[] b = { 2131298540 };
+  public int a;
+  public boolean a;
+  public int b = 0;
   
-  public afml(FragmentActivity paramFragmentActivity)
+  public afml()
   {
-    super(paramFragmentActivity);
+    this.jdField_a_of_type_Int = 23;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  protected int[] a()
+  public void a()
   {
-    return b;
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  protected int[] b()
+  public boolean a()
   {
-    return a;
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Int = 23;
+    this.b = 0;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Int = 23;
+    this.b = 0;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "TabLayoutStatus{tabId=" + this.jdField_a_of_type_Int + ", tabPosition=" + this.b + ", display='" + this.jdField_a_of_type_Boolean + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afml
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,35 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 class azdn
-  implements Comparator<afou>
+  extends BroadcastReceiver
 {
-  private final TroopInfo a;
+  azdn(azdl paramazdl) {}
   
-  azdn(TroopInfo paramTroopInfo)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = paramTroopInfo;
-  }
-  
-  public int a(afou paramafou1, afou paramafou2)
-  {
-    int j = 5;
-    int i;
-    if (azdj.b(paramafou1.jdField_a_of_type_JavaLangString, this.a)) {
-      i = 5;
-    }
-    for (;;)
+    if ("com.tencent.mobileqq.JoinTroopUtil.RET_ACTION".equals(paramIntent.getAction())) {}
+    switch (paramIntent.getIntExtra("ret_action", 1000))
     {
-      if (azdj.b(paramafou2.jdField_a_of_type_JavaLangString, this.a)) {}
-      for (;;)
-      {
-        if (i != j)
-        {
-          return j - i;
-          if (azdj.a(paramafou1.jdField_a_of_type_JavaLangString, this.a))
-          {
-            i = 3;
-            break;
-          }
-          if (!paramafou1.jdField_a_of_type_Boolean) {
-            break label134;
-          }
-          i = 1;
-          break;
-          if (azdj.a(paramafou2.jdField_a_of_type_JavaLangString, this.a))
-          {
-            j = 3;
-            continue;
-          }
-          if (!paramafou2.jdField_a_of_type_Boolean) {
-            break label128;
-          }
-          j = 1;
-          continue;
-        }
-        return ChnToSpell.a(azdj.c(paramafou1), 1).compareToIgnoreCase(ChnToSpell.a(azdj.c(paramafou2), 1));
-        label128:
-        j = 0;
-      }
-      label134:
-      i = 0;
+    default: 
+      azdl.a(this.a, azdl.a(this.a).troopUin, 2);
+      return;
+    case 1000: 
+      azdl.a(this.a, azdl.a(this.a).troopUin, 2);
+      return;
+    case 1001: 
+      azdl.a(this.a, azdl.a(this.a).troopUin, 2);
+      return;
+    case 1002: 
+      azdl.a(this.a, azdl.a(this.a).troopUin, 2);
+      return;
+    case 1003: 
+      azdl.a(this.a, azdl.a(this.a).troopUin, 1);
+      return;
     }
+    azdl.a(this.a, azdl.a(this.a).troopUin, 3);
   }
 }
 

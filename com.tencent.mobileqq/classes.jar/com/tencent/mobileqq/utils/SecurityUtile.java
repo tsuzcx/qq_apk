@@ -6,7 +6,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.SystemClock;
 import android.telephony.TelephonyManager;
-import awpu;
+import axps;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -109,7 +109,7 @@ public class SecurityUtile
     catch (UnsatisfiedLinkError paramString)
     {
       if (paramBoolean) {
-        awpu.a(paramString, "encode str error");
+        axps.a(paramString, "encode str error");
       }
       QLog.e("SecurityUtile", 1, "encode str error", paramString);
       str = null;
@@ -319,7 +319,7 @@ public class SecurityUtile
     }
     catch (UnsatisfiedLinkError paramArrayOfByte)
     {
-      awpu.a(paramArrayOfByte, "encode byte error");
+      axps.a(paramArrayOfByte, "encode byte error");
       QLog.e("SecurityUtile", 1, "encode byte error", paramArrayOfByte);
       arrayOfByte = null;
     }

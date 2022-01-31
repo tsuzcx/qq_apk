@@ -1,15 +1,15 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import dov.com.qq.im.ae.camera.ui.capture.VideoStoryCapturePart.6.1;
 
 public class bimo
-  implements binl
+  implements bims
 {
-  public bimo(DoodleLayout paramDoodleLayout) {}
+  bimo(bimj parambimj) {}
   
-  public void a()
+  public void a(int paramInt1, int paramInt2)
   {
-    if (this.a.a != null) {
-      this.a.a.r();
-    }
+    bimj.a(this.a).setOnSurfaceChangedListener(null);
+    bimj.a(this.a).setOnFrameDraw(new VideoStoryCapturePart.6.1(this));
   }
 }
 

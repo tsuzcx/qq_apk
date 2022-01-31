@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.utils;
 
 import android.os.Bundle;
-import baah;
+import bbbl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import java.io.File;
 
 public class AntiFraudConfigFileUtil$4
   implements Runnable
 {
-  public AntiFraudConfigFileUtil$4(baah parambaah, String paramString1, String paramString2, String paramString3) {}
+  public AntiFraudConfigFileUtil$4(bbbl parambbbl, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class AntiFraudConfigFileUtil$4
     {
       String str2 = SecUtil.getFileMd5(((File)localObject).getAbsolutePath());
       if (!this.c.equalsIgnoreCase(str2)) {
-        baah.b(this.this$0).putInt(this.c, 2);
+        bbbl.b(this.this$0).putInt(this.c, 2);
       }
     }
     else
@@ -32,13 +32,13 @@ public class AntiFraudConfigFileUtil$4
     }
     if (((File)localObject).renameTo(localFile))
     {
-      baah.b(this.this$0).putInt(this.c, 3);
+      bbbl.b(this.this$0).putInt(this.c, 3);
       this.this$0.a(this.a, System.currentTimeMillis());
       this.this$0.a(this.a, this.c);
-      baah.b(this.this$0, str1);
+      bbbl.b(this.this$0, str1);
       return;
     }
-    baah.b(this.this$0).putInt(this.c, 2);
+    bbbl.b(this.this$0).putInt(this.c, 2);
     ((File)localObject).delete();
   }
 }

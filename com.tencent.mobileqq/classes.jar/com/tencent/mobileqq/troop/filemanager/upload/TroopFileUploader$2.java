@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import ayuo;
+import azve;
 
 public class TroopFileUploader$2
   implements Runnable
 {
-  public TroopFileUploader$2(ayuo paramayuo) {}
+  public TroopFileUploader$2(azve paramazve) {}
   
   public void run()
   {
-    if (ayuo.a(this.this$0)) {
+    if (azve.a(this.this$0)) {
       return;
     }
-    ayuo.a(this.this$0, ayuo.a(this.this$0));
+    azve.a(this.this$0, azve.a(this.this$0));
   }
 }
 

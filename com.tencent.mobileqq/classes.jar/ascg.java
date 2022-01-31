@@ -1,26 +1,8 @@
-import java.util.Comparator;
-
-final class ascg
-  implements Comparator<String>
+public abstract interface ascg
 {
-  public int a(String paramString1, String paramString2)
-  {
-    if ((paramString1 != null) && (paramString2 != null)) {
-      if (paramString1.length() <= paramString2.length()) {}
-    }
-    while (paramString1 != null)
-    {
-      return -1;
-      if (paramString1.length() >= paramString2.length()) {
-        break;
-      }
-      return 1;
-    }
-    if (paramString2 != null) {
-      return 1;
-    }
-    return 0;
-  }
+  public abstract void a(aduu paramaduu);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,17 +1,13 @@
-import android.graphics.PointF;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ahik
-  implements agke
 {
-  public ahik(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public static final Set<String> a = new HashSet();
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, double paramDouble, List<List<PointF>> paramList)
+  static
   {
-    if ((this.a.F) && (paramInt1 > 0)) {
-      NewFlowCameraActivity.c = true;
-    }
+    a.add("SoLoadModule");
   }
 }
 

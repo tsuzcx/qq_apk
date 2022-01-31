@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.data;
 
-import amsw;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -8,9 +7,10 @@ import android.graphics.drawable.Drawable.Callback;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import asbg;
-import asbj;
-import bajq;
+import anjd;
+import asxk;
+import asxn;
+import bbkx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.qphone.base.util.QLog;
@@ -35,7 +35,7 @@ public class MessageForGrayTips
     if ((paramHightlightItem.icon.startsWith("http://")) || (paramHightlightItem.icon.startsWith("https://"))) {
       if (paramBoolean)
       {
-        paramSpannableStringBuilder.setSpan(new amsw(paramContext, 0, paramHightlightItem.icon, 32), paramHightlightItem.start, paramHightlightItem.end, 33);
+        paramSpannableStringBuilder.setSpan(new anjd(paramContext, 0, paramHightlightItem.icon, 32), paramHightlightItem.start, paramHightlightItem.end, 33);
         if (QLog.isColorLevel()) {
           QLog.i("MessageForGrayTips", 2, "MessageForGrayTips.getHightlightMsgText Url Image=" + paramHightlightItem.icon);
         }
@@ -46,15 +46,15 @@ public class MessageForGrayTips
     for (;;)
     {
       return;
-      paramSpannableStringBuilder.setSpan(new amsw(paramContext, 0, paramHightlightItem.icon), paramHightlightItem.start, paramHightlightItem.end, 33);
+      paramSpannableStringBuilder.setSpan(new anjd(paramContext, 0, paramHightlightItem.icon), paramHightlightItem.start, paramHightlightItem.end, 33);
       break;
-      if (asbg.a(paramHightlightItem.icon))
+      if (asxk.a(paramHightlightItem.icon))
       {
-        String str = asbg.b(paramHightlightItem.icon);
+        String str = asxk.b(paramHightlightItem.icon);
         if (!TextUtils.isEmpty(str))
         {
           if (paramBoolean) {}
-          for (paramContext = new asbj(paramContext, 0, str, bajq.b(16.0F), paramCallback);; paramContext = new asbj(paramContext, 0, str, paramCallback))
+          for (paramContext = new asxn(paramContext, 0, str, bbkx.b(16.0F), paramCallback);; paramContext = new asxn(paramContext, 0, str, paramCallback))
           {
             paramSpannableStringBuilder.setSpan(paramContext, paramHightlightItem.start, paramHightlightItem.end, 33);
             if (!QLog.isColorLevel()) {
@@ -71,10 +71,10 @@ public class MessageForGrayTips
         if (i != -1)
         {
           paramCallback = paramHightlightItem.icon.substring(0, i);
-          if (!asbg.b.containsKey(paramCallback)) {
+          if (!asxk.b.containsKey(paramCallback)) {
             break label382;
           }
-          i = ((Integer)asbg.b.get(paramCallback)).intValue();
+          i = ((Integer)asxk.b.get(paramCallback)).intValue();
           if (i != 0)
           {
             if (!paramBoolean) {

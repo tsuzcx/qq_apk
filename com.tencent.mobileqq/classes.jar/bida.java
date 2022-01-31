@@ -1,23 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
 
-public final class bida
-  implements Parcelable.Creator<EditTakeGifSource>
+public class bida
 {
-  public EditTakeGifSource a(Parcel paramParcel)
+  boolean a(LeakInspector.InspectUUID paramInspectUUID)
   {
-    return new EditTakeGifSource(paramParcel);
-  }
-  
-  public EditTakeGifSource[] a(int paramInt)
-  {
-    return new EditTakeGifSource[paramInt];
+    if (!AppSetting.e) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bida
  * JD-Core Version:    0.7.0.1
  */

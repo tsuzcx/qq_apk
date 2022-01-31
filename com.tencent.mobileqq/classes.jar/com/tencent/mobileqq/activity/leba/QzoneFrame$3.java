@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.activity.leba;
 
-import afqb;
-import bfpr;
+import bgxy;
 
-public class QzoneFrame$3
+class QzoneFrame$3
   implements Runnable
 {
-  public QzoneFrame$3(afqb paramafqb) {}
+  QzoneFrame$3(QzoneFrame paramQzoneFrame) {}
   
   public void run()
   {
-    bfpr.a(this.this$0.a, "Leba");
+    bgxy.a(this.this$0.a, "Leba");
   }
 }
 

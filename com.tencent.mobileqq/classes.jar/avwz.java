@@ -1,38 +1,32 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import java.util.HashMap;
 
 public class avwz
-  extends avym
+  extends avxa
 {
-  protected TextView a;
-  protected URLImageView a;
+  public int a;
+  public boolean a;
   
-  public avwz(View paramView)
+  public avwz()
   {
-    super(paramView);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public URLImageView a()
+  public HashMap<String, String> a(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentImageURLImageView;
-  }
-  
-  protected void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131310452));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.b.findViewById(2131311607));
-  }
-  
-  public TextView e()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    if ("RealShortVideo.Record".equals(paramString))
+    {
+      paramString = new HashMap();
+      paramString.put("param_cameraID", String.valueOf(this.jdField_a_of_type_Int));
+      paramString.put("param_hasMultiSegments", String.valueOf(this.jdField_a_of_type_Boolean));
+      return paramString;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avwz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package com.tencent.biz.qqstory.utils;
 
-import vme;
-import vmi;
+import vza;
+import vze;
 
 public class PollWidgetUtils$WidgetWrapper$2
   implements Runnable
 {
-  public PollWidgetUtils$WidgetWrapper$2(vmi paramvmi) {}
+  public PollWidgetUtils$WidgetWrapper$2(vze paramvze) {}
   
   public void run()
   {
-    vmi localvmi = this.this$0;
-    if (!vmi.a(this.this$0)) {}
+    vze localvze = this.this$0;
+    if (!vze.a(this.this$0)) {}
     for (boolean bool = true;; bool = false)
     {
-      vmi.a(localvmi, bool);
-      this.this$0.a.a(vmi.a(this.this$0));
+      vze.a(localvze, bool);
+      this.this$0.a.a(vze.a(this.this$0));
       return;
     }
   }

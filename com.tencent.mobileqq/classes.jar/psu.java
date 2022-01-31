@@ -1,22 +1,14 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
-import java.util.List;
-
-public class psu
-  implements AdapterView.OnItemLongClickListener
+class psu
+  implements pvr
 {
-  public psu(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  psu(pst parampst) {}
   
-  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a()
   {
-    if (!ReadInJoyDeliverUGCActivity.a(this.a).a().get(paramInt).equals(ReadInJoyDeliverUGCActivity.a(this.a))) {
-      ReadInJoyDeliverUGCActivity.a(this.a).a(paramInt);
+    rbu localrbu = this.a.jdField_a_of_type_Rap.a();
+    if (localrbu != null) {
+      localrbu.a(null, ((pax)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
     }
-    ReadInJoyDeliverUGCActivity.a(this.a, false);
-    return true;
   }
 }
 

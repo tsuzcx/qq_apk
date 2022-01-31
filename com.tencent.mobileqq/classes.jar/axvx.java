@@ -1,18 +1,14 @@
-public class axvx
+import android.view.View;
+import android.view.View.OnLongClickListener;
+
+class axvx
+  implements View.OnLongClickListener
 {
-  public int a;
-  public axvv a;
-  public boolean a;
-  public boolean b;
+  axvx(axvw paramaxvw) {}
   
-  public String toString()
+  public boolean onLongClick(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mUinType:" + this.jdField_a_of_type_Int);
-    localStringBuilder.append(",mIsRaw:" + this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(",mIsShareAppPic:" + this.b);
-    localStringBuilder.append(",mShareAppInfo:{" + this.jdField_a_of_type_Axvv + "}");
-    return localStringBuilder.toString();
+    return true;
   }
 }
 

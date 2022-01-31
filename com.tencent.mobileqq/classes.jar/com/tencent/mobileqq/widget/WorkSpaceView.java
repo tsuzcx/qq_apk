@@ -12,8 +12,8 @@ import android.view.ViewConfiguration;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
-import bbpd;
-import bbpe;
+import bcsf;
+import bcsg;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class WorkSpaceView
@@ -21,10 +21,10 @@ public class WorkSpaceView
 {
   private float jdField_a_of_type_Float;
   public int a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bbpd(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new bcsf(this);
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext(), new AccelerateDecelerateInterpolator());
-  private bbpe jdField_a_of_type_Bbpe;
+  private bcsg jdField_a_of_type_Bcsg;
   boolean jdField_a_of_type_Boolean = true;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -87,8 +87,8 @@ public class WorkSpaceView
       paramInt = getWidth();
       i = getScrollX();
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, paramInt * j - i, 0, 400);
-      if (this.jdField_a_of_type_Bbpe != null) {
-        this.jdField_a_of_type_Bbpe.a(j);
+      if (this.jdField_a_of_type_Bcsg != null) {
+        this.jdField_a_of_type_Bcsg.a(j);
       }
       invalidate();
       return;
@@ -112,8 +112,8 @@ public class WorkSpaceView
       paramInt = getWidth();
       int j = getScrollX();
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, paramInt * i - j, 0, 400);
-      if (this.jdField_a_of_type_Bbpe != null) {
-        this.jdField_a_of_type_Bbpe.a(i);
+      if (this.jdField_a_of_type_Bcsg != null) {
+        this.jdField_a_of_type_Bcsg.a(i);
       }
       invalidate();
       return;
@@ -454,9 +454,9 @@ public class WorkSpaceView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnScreenChangeListener(bbpe parambbpe)
+  public void setOnScreenChangeListener(bcsg parambcsg)
   {
-    this.jdField_a_of_type_Bbpe = parambbpe;
+    this.jdField_a_of_type_Bcsg = parambcsg;
   }
 }
 

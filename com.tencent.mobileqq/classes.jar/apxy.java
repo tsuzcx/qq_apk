@@ -1,24 +1,28 @@
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePadFaceFragment;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
 public class apxy
-  implements View.OnLayoutChangeListener
+  implements View.OnClickListener
 {
-  public apxy(QQGamePadFaceFragment paramQQGamePadFaceFragment) {}
+  public apxy(SendBottomBar paramSendBottomBar) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onClick(View paramView)
   {
-    if ((!QQGamePadFaceFragment.a(this.a)) && (paramInt3 - paramInt1 > 0) && (paramInt4 - paramInt2 > 0))
+    if (SendBottomBar.a(this.a).isChecked())
     {
-      QQGamePadFaceFragment.a(this.a, true);
-      QQGamePadFaceFragment.a(this.a);
+      SendBottomBar.b(this.a, true);
+      apuc.a("0X800942B");
+      return;
     }
+    SendBottomBar.c(this.a, false);
+    SendBottomBar.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apxy
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ListAdapter;
-import begh;
-import beoj;
+import bfob;
+import bfwd;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.comment.StoryInputBarView;
 import com.tencent.biz.qqstory.database.CommentEntry;
@@ -26,50 +26,50 @@ import com.tencent.mobileqq.widget.ScrollerRunnable;
 import com.tencent.widget.ListView;
 import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.IEventReceiver;
-import mmy;
 import mqq.os.MqqHandler;
-import sgi;
-import skt;
-import sku;
-import smz;
-import spz;
-import sqg;
-import sqs;
-import srk;
+import mxx;
+import ste;
+import sxp;
+import sxq;
+import szv;
+import tcv;
+import tdc;
+import tdo;
+import teg;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
-import uje;
-import ulq;
-import unx;
-import uny;
-import unz;
-import uoa;
-import uob;
-import uoh;
-import upb;
-import urk;
-import urp;
-import vkw;
-import vms;
+import uwa;
+import uym;
+import vat;
+import vau;
+import vav;
+import vaw;
+import vax;
+import vbd;
+import vbx;
+import veg;
+import vel;
+import vxs;
+import vzo;
 
 public class MystoryListView
   extends SegmentList
-  implements IEventReceiver, upb
+  implements IEventReceiver, vbx
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   public Activity a;
   private View jdField_a_of_type_AndroidViewView;
-  private begh jdField_a_of_type_Begh;
+  private bfob jdField_a_of_type_Bfob;
   private ScrollerRunnable jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable;
   Runnable jdField_a_of_type_JavaLangRunnable = null;
-  private spz jdField_a_of_type_Spz;
-  public unx a;
-  private unz jdField_a_of_type_Unz;
-  private uob jdField_a_of_type_Uob;
+  private tcv jdField_a_of_type_Tcv;
+  public vat a;
+  private vav jdField_a_of_type_Vav;
+  private vax jdField_a_of_type_Vax;
   protected boolean a;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
-  private begh jdField_b_of_type_Begh = new uny(this);
+  private bfob jdField_b_of_type_Bfob = new vau(this);
   private boolean c;
   private boolean d;
   private boolean e;
@@ -103,7 +103,7 @@ public class MystoryListView
     Object localObject = QQStoryContext.a();
     if (localObject != null)
     {
-      localObject = ((mmy)((QQAppInterface)localObject).getManager(70)).a();
+      localObject = ((mxx)((QQAppInterface)localObject).getManager(70)).a();
       if ((localObject != null) && (((oidb_0x791.RedDotInfo)localObject).uint32_appid != null) && (((oidb_0x791.RedDotInfo)localObject).uint32_appid.has())) {
         switch (((oidb_0x791.RedDotInfo)localObject).uint32_appid.get())
         {
@@ -117,13 +117,13 @@ public class MystoryListView
       return 2;
       return 3;
       return 4;
-      urk.e("Q.qqstory.home.MyStoryListView", "Get the QQAppInterface is null,we dont know the red point state");
+      veg.e("Q.qqstory.home.MyStoryListView", "Get the QQAppInterface is null,we dont know the red point state");
     }
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super.setOnScrollListener(this.jdField_b_of_type_Begh);
+    super.setOnScrollListener(this.jdField_b_of_type_Bfob);
     this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable = new ScrollerRunnable(this);
   }
   
@@ -131,7 +131,7 @@ public class MystoryListView
   {
     String str1;
     String str2;
-    if (uoh.a(uoh.a(getContext())))
+    if (vbd.a(vbd.a(getContext())))
     {
       str1 = "1";
       if (QQStoryMainActivity.jdField_a_of_type_Long <= 0L) {
@@ -147,8 +147,8 @@ public class MystoryListView
     label110:
     for (String str3 = "2";; str3 = "1")
     {
-      urp.b("story_home_dev", "exp", 0, 0, new String[] { str3, str1, str2 });
-      ulq.b("Q.qqstory.home.MyStoryListView", new Object[] { "listViewExposure auto_play_switch=", str1, ",cost=", str2 });
+      vel.b("story_home_dev", "exp", 0, 0, new String[] { str3, str1, str2 });
+      uym.b("Q.qqstory.home.MyStoryListView", new Object[] { "listViewExposure auto_play_switch=", str1, ",cost=", str2 });
       return;
       str1 = "0";
       break;
@@ -162,33 +162,33 @@ public class MystoryListView
     QQStoryContext.a();
     QQAppInterface localQQAppInterface = QQStoryContext.a();
     if (localQQAppInterface != null) {
-      ((mmy)localQQAppInterface.getManager(70)).a();
+      ((mxx)localQQAppInterface.getManager(70)).a();
     }
   }
   
   public void a()
   {
     super.setActTAG("list_qqstory_home");
-    ((uoa)skt.a(uoa.class, new Object[0])).a(this);
+    ((vaw)sxp.a(vaw.class, new Object[0])).a(this);
     super.setDivider(null);
     super.setVerticalScrollBarEnabled(false);
     super.setHorizontalScrollBarEnabled(false);
     super.setBackgroundColor(-1);
-    super.setContentBackground(2130839099);
+    super.setContentBackground(2130839127);
   }
   
-  public void a(Activity paramActivity, unx paramunx, View paramView)
+  public void a(Activity paramActivity, vat paramvat, View paramView)
   {
-    this.jdField_a_of_type_Unx = paramunx;
+    this.jdField_a_of_type_Vat = paramvat;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Spz = ((spz)sqg.a(10));
-    this.jdField_b_of_type_Int = ((Integer)this.jdField_a_of_type_Spz.b("qqstory_key_story_have_show_click_to_top", Integer.valueOf(0))).intValue();
+    this.jdField_a_of_type_Tcv = ((tcv)tdc.a(10));
+    this.jdField_b_of_type_Int = ((Integer)this.jdField_a_of_type_Tcv.b("qqstory_key_story_have_show_click_to_top", Integer.valueOf(0))).intValue();
   }
   
   public void a(@NonNull String paramString)
   {
-    this.jdField_a_of_type_Unx.a(true);
+    this.jdField_a_of_type_Vat.a(true);
     super.a(paramString);
   }
   
@@ -196,7 +196,7 @@ public class MystoryListView
   {
     if (this.c)
     {
-      int m = vms.a(getContext(), 36.0F);
+      int m = vzo.a(getContext(), 36.0F);
       super.smoothScrollBy(m, m);
     }
   }
@@ -207,9 +207,9 @@ public class MystoryListView
     if (paramBoolean) {
       v();
     }
-    this.jdField_a_of_type_Unx.a(false);
-    if (this.jdField_a_of_type_Uob != null) {
-      this.jdField_a_of_type_Uob.a(paramBoolean, false);
+    this.jdField_a_of_type_Vat.a(false);
+    if (this.jdField_a_of_type_Vax != null) {
+      this.jdField_a_of_type_Vax.a(paramBoolean, false);
     }
     String str;
     if (this.jdField_b_of_type_Long > 0L)
@@ -222,9 +222,9 @@ public class MystoryListView
     label149:
     for (int m = 1;; m = 2)
     {
-      urp.b("story_home_dev", "ref_cost", 2, m, new String[] { String.valueOf(paramInt), str });
+      vel.b("story_home_dev", "ref_cost", 2, m, new String[] { String.valueOf(paramInt), str });
       this.jdField_b_of_type_Long = 0L;
-      ulq.b("Q.qqstory.home.MyStoryListView", new Object[] { "autoRefreshCompleted=", Boolean.valueOf(paramBoolean), ",errorCode=", Integer.valueOf(paramInt), ",cost time=", str });
+      uym.b("Q.qqstory.home.MyStoryListView", new Object[] { "autoRefreshCompleted=", Boolean.valueOf(paramBoolean), ",errorCode=", Integer.valueOf(paramInt), ",cost time=", str });
       return;
     }
   }
@@ -241,8 +241,8 @@ public class MystoryListView
     if (paramInt == 0)
     {
       this.e = true;
-      if (this.jdField_a_of_type_Uob != null) {
-        this.jdField_a_of_type_Uob.i();
+      if (this.jdField_a_of_type_Vax != null) {
+        this.jdField_a_of_type_Vax.i();
       }
     }
     while (paramInt != 1) {
@@ -254,7 +254,7 @@ public class MystoryListView
   public void b()
   {
     ThreadManager.getUIHandler().postDelayed(new MystoryListView.6(this), 300L);
-    this.jdField_a_of_type_Unx.g();
+    this.jdField_a_of_type_Vat.g();
   }
   
   public void b(boolean paramBoolean, int paramInt)
@@ -263,8 +263,8 @@ public class MystoryListView
     if (paramBoolean) {
       v();
     }
-    this.jdField_a_of_type_Unx.a(false);
-    urk.a("Q.qqstory.home.MyStoryListView", "pullRefreshCompleted success=%s,isManualPullRefresh=%s", Boolean.valueOf(paramBoolean), Boolean.valueOf(this.e));
+    this.jdField_a_of_type_Vat.a(false);
+    veg.a("Q.qqstory.home.MyStoryListView", "pullRefreshCompleted success=%s,isManualPullRefresh=%s", Boolean.valueOf(paramBoolean), Boolean.valueOf(this.e));
     String str;
     if (this.e)
     {
@@ -272,13 +272,13 @@ public class MystoryListView
       if (paramBoolean)
       {
         str = "1";
-        urp.a("home_page", "refresh", 0, 0, new String[] { str });
+        vel.a("home_page", "refresh", 0, 0, new String[] { str });
       }
     }
     else
     {
-      if (this.jdField_a_of_type_Uob != null) {
-        this.jdField_a_of_type_Uob.a(paramBoolean, this.e);
+      if (this.jdField_a_of_type_Vax != null) {
+        this.jdField_a_of_type_Vax.a(paramBoolean, this.e);
       }
       if (this.jdField_b_of_type_Long > 0L)
       {
@@ -291,9 +291,9 @@ public class MystoryListView
     label218:
     for (int m = 1;; m = 2)
     {
-      urp.b("story_home_dev", "ref_cost", 1, m, new String[] { String.valueOf(paramInt), str });
+      vel.b("story_home_dev", "ref_cost", 1, m, new String[] { String.valueOf(paramInt), str });
       this.jdField_b_of_type_Long = 0L;
-      ulq.b("Q.qqstory.home.MyStoryListView", new Object[] { "pullToRefreshCompleted=", Boolean.valueOf(paramBoolean), ",errorCode=", Integer.valueOf(paramInt), ",cost time=", str });
+      uym.b("Q.qqstory.home.MyStoryListView", new Object[] { "pullToRefreshCompleted=", Boolean.valueOf(paramBoolean), ",errorCode=", Integer.valueOf(paramInt), ",cost time=", str });
       return;
       str = "2";
       break;
@@ -303,14 +303,14 @@ public class MystoryListView
   public void c()
   {
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_Unx.h();
+    this.jdField_a_of_type_Vat.h();
   }
   
   public void d()
   {
     if (this.c)
     {
-      int m = vms.a(getContext(), 232.0F);
+      int m = vzo.a(getContext(), 232.0F);
       super.smoothScrollBy(-m, -m);
     }
   }
@@ -319,7 +319,7 @@ public class MystoryListView
   {
     if (this.c)
     {
-      int m = vms.a(getContext(), 232.0F);
+      int m = vzo.a(getContext(), 232.0F);
       super.smoothScrollBy(m, m);
     }
   }
@@ -330,9 +330,9 @@ public class MystoryListView
     {
       localObject = String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long);
       int m = getCount();
-      urp.b("story_home_dev", "local_cost", 0, m, new String[] { localObject });
+      vel.b("story_home_dev", "local_cost", 0, m, new String[] { localObject });
       this.jdField_a_of_type_Long = 0L;
-      ulq.b("Q.qqstory.home.MyStoryListView", new Object[] { "onLoadCacheCompile getCount=", Integer.valueOf(m), ",cost time=", localObject });
+      uym.b("Q.qqstory.home.MyStoryListView", new Object[] { "onLoadCacheCompile getCount=", Integer.valueOf(m), ",cost time=", localObject });
     }
     u();
     if (!this.jdField_f_of_type_Boolean)
@@ -340,12 +340,12 @@ public class MystoryListView
       ThreadManager.getUIHandler().postDelayed(new MystoryListView.2(this), 500L);
       return;
     }
-    Object localObject = (uje)sqg.a(11);
-    urk.a("Q.qqstory.home.position", "start auto jump position:%d, offset:%d", Integer.valueOf(((uje)localObject).jdField_a_of_type_Int), Integer.valueOf(((uje)localObject).jdField_b_of_type_Int));
-    if ((((uje)localObject).jdField_a_of_type_Int != 0) && (((uje)localObject).jdField_b_of_type_Int != 0)) {
-      setSelectionFromTop(((uje)localObject).jdField_a_of_type_Int, ((uje)localObject).jdField_b_of_type_Int);
+    Object localObject = (uwa)tdc.a(11);
+    veg.a("Q.qqstory.home.position", "start auto jump position:%d, offset:%d", Integer.valueOf(((uwa)localObject).jdField_a_of_type_Int), Integer.valueOf(((uwa)localObject).jdField_b_of_type_Int));
+    if ((((uwa)localObject).jdField_a_of_type_Int != 0) && (((uwa)localObject).jdField_b_of_type_Int != 0)) {
+      setSelectionFromTop(((uwa)localObject).jdField_a_of_type_Int, ((uwa)localObject).jdField_b_of_type_Int);
     }
-    urk.a("Q.qqstory.home.position", "mDisableAutoRefresh：%b", Boolean.valueOf(this.jdField_f_of_type_Boolean));
+    veg.a("Q.qqstory.home.position", "mDisableAutoRefresh：%b", Boolean.valueOf(this.jdField_f_of_type_Boolean));
     g();
     this.jdField_b_of_type_Boolean = true;
   }
@@ -361,12 +361,12 @@ public class MystoryListView
     int n;
     if (localObject != null)
     {
-      localRedDotInfo = ((mmy)((QQAppInterface)localObject).getManager(70)).a();
-      if (((uoh)a("FeedSegment")).a() <= 0) {
+      localRedDotInfo = ((mxx)((QQAppInterface)localObject).getManager(70)).a();
+      if (((vbd)a("FeedSegment")).a() <= 0) {
         break label278;
       }
       m = 1;
-      String str = urp.a("home_page-exp-d4");
+      String str = vel.a("home_page-exp-d4");
       localObject = str;
       if (str == null)
       {
@@ -375,18 +375,18 @@ public class MystoryListView
         }
         localObject = "2";
       }
-      urp.a("home_page-exp-d4", null);
+      vel.a("home_page-exp-d4", null);
       if (this.jdField_a_of_type_Int != 0) {
         break label289;
       }
       n = a();
       label93:
-      urp.a("home_page", "exp", n, m, new String[] { "", "", "", localObject });
-      urp.a("home_page", "network", 0, 0, new String[] { "", "", urp.a(getContext()) });
+      vel.a("home_page", "exp", n, m, new String[] { "", "", "", localObject });
+      vel.a("home_page", "network", 0, 0, new String[] { "", "", vel.a(getContext()) });
       this.jdField_a_of_type_Int = 0;
       if ((localRedDotInfo != null) && (localRedDotInfo.uint32_appid.get() == 52))
       {
-        localObject = ((sqs)sqg.a(2)).b(QQStoryContext.a().b());
+        localObject = ((tdo)tdc.a(2)).b(QQStoryContext.a().b());
         if ((localObject == null) || (!((QQUserUIItem)localObject).isVip)) {
           break label297;
         }
@@ -404,9 +404,9 @@ public class MystoryListView
     label302:
     for (int m = 1;; m = 2)
     {
-      urp.a("play_video", "exp_grey", m, 0, new String[] { "", "", "", "" });
+      vel.a("play_video", "exp_grey", m, 0, new String[] { "", "", "", "" });
       return;
-      urk.e("Q.qqstory.home.MyStoryListView", "Get the QQAppInterface is null,we dont know the red point state");
+      veg.e("Q.qqstory.home.MyStoryListView", "Get the QQAppInterface is null,we dont know the red point state");
       localRedDotInfo = null;
       break;
       m = 2;
@@ -423,14 +423,14 @@ public class MystoryListView
   public void h()
   {
     this.jdField_b_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Unx.a(true);
+    this.jdField_a_of_type_Vat.a(true);
     super.setSelection(0);
     super.h();
   }
   
   public void i()
   {
-    urk.d("Q.qqstory.home.MyStoryListView", "doUIPulldownRefresh(), mOverScrollHeight %d firstVisiblePostion %d childCount %d", new Object[] { Integer.valueOf(this.mOverScrollHeight), Integer.valueOf(getFirstVisiblePosition()), Integer.valueOf(getChildCount()) });
+    veg.d("Q.qqstory.home.MyStoryListView", "doUIPulldownRefresh(), mOverScrollHeight %d firstVisiblePostion %d childCount %d", new Object[] { Integer.valueOf(this.mOverScrollHeight), Integer.valueOf(getFirstVisiblePosition()), Integer.valueOf(getChildCount()) });
     int[] arrayOfInt1 = new int[7];
     int[] tmp48_47 = arrayOfInt1;
     tmp48_47[0] = 0;
@@ -474,12 +474,12 @@ public class MystoryListView
     if ((arrayOfInt1.length == arrayOfFloat.length) && (arrayOfFloat.length == arrayOfInt2.length)) {}
     for (boolean bool = true;; bool = false)
     {
-      vkw.a(bool);
+      vxs.a(bool);
       this.jdField_a_of_type_JavaLangRunnable = new MystoryListView.3(this, arrayOfInt1, arrayOfInt2, arrayOfFloat);
       if ((getFirstVisiblePosition() == 0) && (getChildCount() > 0))
       {
         int m = getChildAt(0).getTop();
-        urk.d("Q.qqstory.home.MyStoryListView", "doUIPulldownRefresh(), child(0).top = %d", new Object[] { Integer.valueOf(m) });
+        veg.d("Q.qqstory.home.MyStoryListView", "doUIPulldownRefresh(), child(0).top = %d", new Object[] { Integer.valueOf(m) });
         if (m >= 0)
         {
           post(this.jdField_a_of_type_JavaLangRunnable);
@@ -488,7 +488,7 @@ public class MystoryListView
       }
       if (this.jdField_a_of_type_JavaLangRunnable != null)
       {
-        urk.d("Q.qqstory.home.MyStoryListView", "doUIPulldownRefresh(), smoothScrollToPostion(0)!");
+        veg.d("Q.qqstory.home.MyStoryListView", "doUIPulldownRefresh(), smoothScrollToPostion(0)!");
         this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.a(0, 0, new MystoryListView.4(this), 4);
       }
       return;
@@ -505,31 +505,31 @@ public class MystoryListView
     super.j();
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.jdField_a_of_type_Int = a();
-    this.jdField_a_of_type_Unz = new unz(this);
-    sgi.a().registerSubscriber(this.jdField_a_of_type_Unz);
+    this.jdField_a_of_type_Vav = new vav(this);
+    ste.a().registerSubscriber(this.jdField_a_of_type_Vav);
   }
   
   public void k()
   {
     super.k();
     URLDrawable.resume();
-    StoryInputBarView localStoryInputBarView = this.jdField_a_of_type_Unx.a();
-    if (sku.b())
+    StoryInputBarView localStoryInputBarView = this.jdField_a_of_type_Vat.a();
+    if (sxq.b())
     {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       localStoryInputBarView.c();
     }
-    this.jdField_a_of_type_Unx.b(false);
+    this.jdField_a_of_type_Vat.b(false);
   }
   
   public void l()
   {
     super.l();
     URLDrawable.resume();
-    if (this.jdField_a_of_type_Unz != null)
+    if (this.jdField_a_of_type_Vav != null)
     {
-      sgi.a().unRegisterSubscriber(this.jdField_a_of_type_Unz);
-      this.jdField_a_of_type_Unz = null;
+      ste.a().unRegisterSubscriber(this.jdField_a_of_type_Vav);
+      this.jdField_a_of_type_Vav = null;
     }
     if (Build.MANUFACTURER.equalsIgnoreCase("HUAWEI")) {
       this.jdField_a_of_type_AndroidAppActivity = null;
@@ -538,17 +538,17 @@ public class MystoryListView
   
   public void layoutChildren()
   {
-    beoj.a("MystoryList.layoutChildren");
+    bfwd.a("MystoryList.layoutChildren");
     super.layoutChildren();
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = false;
-      uoh localuoh = (uoh)a("FeedSegment");
-      if (localuoh != null) {
-        localuoh.b(0);
+      vbd localvbd = (vbd)a("FeedSegment");
+      if (localvbd != null) {
+        localvbd.b(0);
       }
     }
-    beoj.a();
+    bfwd.a();
   }
   
   public void m()
@@ -556,15 +556,15 @@ public class MystoryListView
     if (this.jdField_b_of_type_Int != 1)
     {
       this.jdField_b_of_type_Int = 1;
-      this.jdField_a_of_type_Spz.b("qqstory_key_story_have_show_click_to_top", Integer.valueOf(1));
+      this.jdField_a_of_type_Tcv.b("qqstory_key_story_have_show_click_to_top", Integer.valueOf(1));
     }
-    this.jdField_a_of_type_Unx.b(false);
+    this.jdField_a_of_type_Vat.b(false);
     super.setSelection(0);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    StoryInputBarView localStoryInputBarView = this.jdField_a_of_type_Unx.a();
+    StoryInputBarView localStoryInputBarView = this.jdField_a_of_type_Vat.a();
     if (localStoryInputBarView.getVisibility() == 0)
     {
       ((InputMethodManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("input_method")).hideSoftInputFromWindow(localStoryInputBarView.getWindowToken(), 0);
@@ -575,7 +575,7 @@ public class MystoryListView
       if (localStoryInputBarView.a != null)
       {
         paramMotionEvent = localStoryInputBarView.a.a;
-        m = urp.a(paramMotionEvent.getOwner());
+        m = vel.a(paramMotionEvent.getOwner());
         if (!paramMotionEvent.getOwner().isMe()) {
           break label129;
         }
@@ -583,7 +583,7 @@ public class MystoryListView
       label129:
       for (paramMotionEvent = "1";; paramMotionEvent = "2")
       {
-        urp.a("home_page", "cancel_reply", m, 0, new String[] { paramMotionEvent, "1", "", "" });
+        vel.a("home_page", "cancel_reply", m, 0, new String[] { paramMotionEvent, "1", "", "" });
         return true;
       }
     }
@@ -622,25 +622,25 @@ public class MystoryListView
     this.c = paramBoolean;
   }
   
-  public void setOnScrollListener(begh parambegh)
+  public void setOnScrollListener(bfob parambfob)
   {
-    this.jdField_a_of_type_Begh = parambegh;
+    this.jdField_a_of_type_Bfob = parambfob;
   }
   
-  public void setPullRefreshListener(uob paramuob)
+  public void setPullRefreshListener(vax paramvax)
   {
-    this.jdField_a_of_type_Uob = paramuob;
+    this.jdField_a_of_type_Vax = paramvax;
   }
   
   public boolean trackMotionScroll(int paramInt1, int paramInt2)
   {
-    uoh localuoh = (uoh)a("FeedSegment");
-    if (localuoh == null) {
+    vbd localvbd = (vbd)a("FeedSegment");
+    if (localvbd == null) {
       return super.trackMotionScroll(paramInt1, paramInt2);
     }
-    localuoh.c(1);
+    localvbd.c(1);
     boolean bool = super.trackMotionScroll(paramInt1, paramInt2);
-    localuoh.c(0);
+    localvbd.c(0);
     return bool;
   }
 }

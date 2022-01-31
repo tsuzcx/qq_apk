@@ -1,25 +1,37 @@
-import com.tencent.mobileqq.data.FlowMusic;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 class bhjm
-  implements bhgl
+  extends Handler
 {
-  bhjm(bhjl parambhjl, String paramString) {}
-  
-  public void a(boolean paramBoolean, Object paramObject)
+  bhjm(bhjl parambhjl, Looper paramLooper)
   {
-    if (paramObject == null) {}
-    do
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePluginPreInstaller", 2, "handleMessage, retryInstallNum=" + bhjl.a());
+    }
+    if (paramMessage.what == 1) {}
+    try
     {
+      paramMessage = (String)paramMessage.obj;
+      bhjl.a(this.a).a(paramMessage, this.a, 2);
       return;
-      paramObject = (FlowMusic)paramObject;
-      bhjl.a(this.jdField_a_of_type_Bhjl, bhjl.a(this.jdField_a_of_type_Bhjl, paramObject, this.jdField_a_of_type_JavaLangString));
-    } while (!bhjl.a(this.jdField_a_of_type_Bhjl).equals(bhjl.a(this.jdField_a_of_type_Bhjl).getClass()));
-    this.jdField_a_of_type_Bhjl.d();
+    }
+    catch (Exception paramMessage)
+    {
+      QLog.e("QZonePluginPreInstaller", 1, paramMessage, new Object[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhjm
  * JD-Core Version:    0.7.0.1
  */

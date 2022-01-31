@@ -1,39 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.activity.GesturePWDManualGuideActivity;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
 public class aayf
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aayf(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
+  public aayf(DialogActivity paramDialogActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131301406: 
-      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 20);
-      this.a.a();
-      return;
-    case 2131301403: 
-      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 21);
-      this.a.a();
-      return;
-    case 2131301407: 
-      paramView = new Intent(this.a, GesturePWDManualGuideActivity.class);
-      this.a.startActivity(paramView);
-      return;
-    }
-    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
-    this.a.startActivityForResult(paramView, 11);
-    this.a.overridePendingTransition(2130771997, 2130771990);
+    paramDialogInterface = this.a.app.a();
+    paramDialogInterface.e();
+    paramDialogInterface.d();
+    this.a.finish();
   }
 }
 

@@ -1,26 +1,15 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class aesv
-  extends RecyclerView.ItemDecoration
+class aesv
+  extends ajxl
 {
-  private int a;
-  private int b;
+  aesv(aerv paramaerv, ImageView paramImageView) {}
   
-  public aesv(int paramInt1, int paramInt2)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    paramRect.right = this.a;
-    if (paramRecyclerView.getChildPosition(paramView) == 0) {
-      paramRect.left = this.b;
+    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_Aerv.a().a))) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(baxt.a(this.jdField_a_of_type_Aerv.a, paramString, (byte)3));
     }
   }
 }

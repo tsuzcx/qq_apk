@@ -24,7 +24,7 @@ public class WordSegment
   
   public static final int getPlatformBuildNumber()
   {
-    return 921;
+    return 171399980;
   }
   
   public static final native int init(String paramString);

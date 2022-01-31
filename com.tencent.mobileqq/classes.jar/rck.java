@@ -1,8 +1,19 @@
-public abstract interface rck
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
+
+public class rck
+  extends osp
 {
-  public abstract void a(pro parampro);
+  public rck(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
   
-  public abstract void b(pro parampro);
+  public void a(boolean paramBoolean, int paramInt, String paramString)
+  {
+    ReadInJoyFastWebBottomSocialView.a(this.a, paramBoolean, paramInt, paramString);
+  }
+  
+  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
+  {
+    ReadInJoyFastWebBottomSocialView.a(this.a, paramBoolean, paramLong, paramInt, paramString);
+  }
 }
 
 

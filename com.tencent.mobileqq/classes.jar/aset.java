@@ -1,31 +1,24 @@
-import android.graphics.Bitmap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
 
 class aset
-  implements azwh
+  implements DialogInterface.OnCancelListener
 {
-  aset(asep paramasep) {}
+  aset(ases paramases, BaseChatPie paramBaseChatPie) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    synchronized (this.a.a)
-    {
-      if (this.a.a.contains(paramString))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NearbyProxy", 2, "onDecodeTaskCompleted: reqUin=" + paramString + ", avatar=" + paramBitmap);
-        }
-        this.a.a.remove(paramString);
-        asep.a(this.a, 4161, new Object[] { Integer.valueOf(paramInt2), paramString, paramBitmap });
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TempMsgManager", 2, "dialog cancel");
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aset
  * JD-Core Version:    0.7.0.1
  */

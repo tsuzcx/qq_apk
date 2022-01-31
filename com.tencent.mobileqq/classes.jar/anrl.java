@@ -1,53 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.data.CustomEmotionData;
 
-public class anrl
+class anrl
+  extends anta<CustomEmotionData>
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList(20);
-  
-  public anrl(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
+  anrl(anrh paramanrh) {}
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-      b();
+    if (this.a.a != null) {
+      this.a.a.e();
     }
   }
   
-  public void a(String paramString)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramString);
-    if (this.jdField_a_of_type_JavaUtilList.size() >= 20) {
-      b();
+    if (this.a.a != null) {
+      this.a.a.e();
     }
   }
   
-  void b()
+  public void a(CustomEmotionData paramCustomEmotionData, int paramInt1, int paramInt2)
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      if (i != 0) {
-        localStringBuffer.append("|");
-      }
-      localStringBuffer.append((String)this.jdField_a_of_type_JavaUtilList.get(i));
-      i += 1;
+    if (((paramInt1 <= 28) || (paramInt2 % 28 == 0)) && (this.a.a != null)) {
+      this.a.a.e();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009324", "0X8009324", 0, 0, "", "", localStringBuffer.toString(), "");
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anrl
  * JD-Core Version:    0.7.0.1
  */

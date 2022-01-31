@@ -1,169 +1,134 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserMiscHandler.2;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserMiscHandler.3;
+import ActionMsg.MsgBody;
+import com.qq.taf.jce.HexUtil;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
 
 public class bbbg
-  extends bbas
-  implements Handler.Callback
 {
-  public Handler a;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private bamt jdField_a_of_type_Bamt;
-  private QQBrowserActivity jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity;
-  private WebViewFragment jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment;
-  public boolean a;
-  
-  public bbbg()
+  public static MsgBody a(String paramString)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new befq(Looper.getMainLooper(), this);
-  }
-  
-  public void a(int paramInt1, int paramInt2, bbbi parambbbi)
-  {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment == null)) {}
-    CustomWebView localCustomWebView;
-    do
+    MsgBody localMsgBody = new MsgBody();
+    try
     {
-      return;
-      localCustomWebView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getWebView();
-      if (localCustomWebView != null) {
-        break;
-      }
-    } while (parambbbi == null);
-    parambbbi.a("");
-    return;
-    ThreadManager.post(new SwiftBrowserMiscHandler.3(this, azyy.a(localCustomWebView, paramInt1, paramInt2), parambbbi), 8, null, true);
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    switch (paramInt)
-    {
+      JceInputStream localJceInputStream = new JceInputStream(HexUtil.hexStr2Bytes(paramString));
+      localJceInputStream.setServerEncoding("utf-8");
+      localMsgBody.readFrom(localJceInputStream);
+      return localMsgBody;
     }
-    do
+    catch (Exception localException)
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (this.jdField_a_of_type_Bamt == null);
-        this.jdField_a_of_type_Bamt.f();
-        return;
-      } while (this.jdField_a_of_type_Bamt == null);
-      this.jdField_a_of_type_Bamt.g();
-      return;
-      if (this.jdField_a_of_type_Bamt != null) {
-        this.jdField_a_of_type_Bamt.e();
-      }
-    } while (!this.jdField_a_of_type_Boolean);
-    ThreadManager.executeOnFileThread(new SwiftBrowserMiscHandler.2(this));
-    this.jdField_a_of_type_Boolean = false;
+      QLog.w("ActionMsgUtil", 2, "decode error msg = " + paramString);
+      QLog.w("ActionMsgUtil", 2, localException.toString());
+      localMsgBody.msg = "";
+      localMsgBody.action = "";
+      localMsgBody.shareAppID = 0L;
+      localMsgBody.actMsgContentValue = "";
+    }
+    return localMsgBody;
   }
   
-  public void b()
+  public static bbbh a(byte[] paramArrayOfByte)
   {
-    if ((this.jdField_a_of_type_Bbat.a() instanceof QQBrowserActivity))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity = ((QQBrowserActivity)this.jdField_a_of_type_Bbat.a());
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment = this.jdField_a_of_type_Bbat.a();
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    int i;
-    boolean bool;
-    switch (paramMessage.what)
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null)
-      {
-        i = paramMessage.arg1;
-        if ((i & 0x1) != 0) {
-          break label102;
-        }
-        bool = true;
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a(bool);
-        if ((i & 0x2) != 0) {
-          break label107;
-        }
-        i = 1;
-        label82:
-        if (i == 0) {
-          break label112;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_Bazb.a.setVisibility(0);
-      }
-      break;
-    }
+    bbbh localbbbh = new bbbh();
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {}
     for (;;)
     {
-      return true;
-      label102:
-      bool = false;
-      break;
-      label107:
-      i = 0;
-      break label82;
-      label112:
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_Bazb.a.setVisibility(8);
-      continue;
-      if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_Bbcj != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_Bbcj.d != null))
+      try
       {
-        if (this.jdField_a_of_type_AndroidViewViewGroup == null)
-        {
-          RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_Bbcj.d.findViewById(2131297873);
-          this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131495895, null));
-          RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-          localLayoutParams.addRule(12);
-          localRelativeLayout.addView(this.jdField_a_of_type_AndroidViewViewGroup, localLayoutParams);
-          this.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(new bbbh(this));
-        }
-        if (this.jdField_a_of_type_Bamt == null) {
-          this.jdField_a_of_type_Bamt = new bamt(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, this.jdField_a_of_type_AndroidViewViewGroup);
-        }
-        this.jdField_a_of_type_Bamt.h();
-        paramMessage = (Bundle)paramMessage.obj;
-        this.jdField_a_of_type_Bamt.a(paramMessage.getLong("id"), paramMessage.getString("type"), paramMessage.getString("callbackId"));
-        continue;
-        paramMessage = (Bundle)paramMessage.obj;
-        if (this.jdField_a_of_type_Bamt != null)
-        {
-          this.jdField_a_of_type_Bamt.a(paramMessage.getLong("id"), paramMessage.getString("type"), paramMessage.getInt("status"), paramMessage.getString("callbackId"));
+        paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
+        localbbbh.jdField_a_of_type_Int = paramArrayOfByte.get();
+        if (paramArrayOfByte.get() != 0) {
           continue;
-          if (this.jdField_a_of_type_Bamt != null)
-          {
-            paramMessage = (Bundle)paramMessage.obj;
-            this.jdField_a_of_type_Bamt.a(paramMessage.getString("callbackId"));
+        }
+        i = -3004;
+        localbbbh.b = i;
+        if (paramArrayOfByte.hasRemaining())
+        {
+          i = paramArrayOfByte.get();
+          byte[] arrayOfByte = new byte[paramArrayOfByte.getShort()];
+          paramArrayOfByte.get(arrayOfByte);
+          localbbbh.c = i;
+          localbbbh.jdField_a_of_type_JavaLangString = new String(arrayOfByte);
+          if (QLog.isColorLevel()) {
+            QLog.d("ActionMsgUtil", 2, "decodeAppShareCookie succes appShareCookie.buissnessType =" + localbbbh.jdField_a_of_type_Int + "appShareCookie.action" + localbbbh.b + "appShareCookie.actionType" + localbbbh.c + "appShareCookie.actionValue" + localbbbh.jdField_a_of_type_JavaLangString);
           }
         }
       }
+      catch (Exception paramArrayOfByte)
+      {
+        int i;
+        paramArrayOfByte.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("ActionMsgUtil", 2, "decodeAppShareCookie", paramArrayOfByte);
+      }
+      return localbbbh;
+      i = -3005;
     }
+    return localbbbh;
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    return a(paramString1, paramString2, 0L, null);
+  }
+  
+  public static String a(String paramString1, String paramString2, long paramLong, String paramString3)
+  {
+    String str = paramString1;
+    if (paramString1 == null)
+    {
+      str = "";
+      QLog.w("ActionMsgUtil", 2, "encode msg is null");
+    }
+    paramString1 = paramString2;
+    if (paramString2 == null)
+    {
+      paramString1 = "";
+      QLog.w("ActionMsgUtil", 2, "encode action is null");
+    }
+    paramString2 = new MsgBody();
+    paramString2.msg = str;
+    paramString2.action = paramString1;
+    paramString2.shareAppID = paramLong;
+    paramString2.actMsgContentValue = paramString3;
+    paramString1 = new JceOutputStream();
+    paramString1.setServerEncoding("utf-8");
+    paramString2.writeTo(paramString1);
+    return HexUtil.bytes2HexStr(paramString1.toByteArray());
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == -3000) || (paramInt == -3004) || (paramInt == -3005);
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == -2009) || (paramInt == -3012);
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    return paramInt == -2016;
+  }
+  
+  public static boolean d(int paramInt)
+  {
+    return paramInt == -2007;
+  }
+  
+  public static boolean e(int paramInt)
+  {
+    return paramInt == -2039;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbbg
  * JD-Core Version:    0.7.0.1
  */

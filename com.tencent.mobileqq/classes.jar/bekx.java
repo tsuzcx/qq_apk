@@ -1,37 +1,28 @@
-import android.app.Activity;
-import android.os.IBinder;
-import android.widget.Button;
+import com.tencent.qqmini.sdk.core.utils.QZipIOException;
+import java.io.File;
+import java.io.InputStream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 public class bekx
-  extends beks
+  extends ZipFile
 {
-  public boolean b = true;
-  
-  public bekx(Activity paramActivity)
+  public bekx(File paramFile)
   {
-    super(paramActivity);
+    super(paramFile);
   }
   
-  public void a()
+  public InputStream getInputStream(ZipEntry paramZipEntry)
   {
-    super.a();
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(ajjy.a(2131640148));
+    if (QZipIOException.isInvalidEntry(paramZipEntry)) {
+      throw new QZipIOException();
     }
-    b();
-  }
-  
-  protected void a(IBinder paramIBinder)
-  {
-    if (this.b) {
-      super.a(paramIBinder);
-    }
+    return super.getInputStream(paramZipEntry);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bekx
  * JD-Core Version:    0.7.0.1
  */

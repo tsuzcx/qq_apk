@@ -1,28 +1,21 @@
-import com.tencent.image.URLDrawableHandler;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 
 class bcoh
-  implements URLDrawableHandler
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bcoh(bcog parambcog) {}
+  bcoh(bcof parambcof) {}
   
-  public void doCancel() {}
-  
-  public boolean isCancelled()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return false;
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    bcof.a(this.a).setAlpha(f);
   }
-  
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
-  
-  public void publishProgress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcoh
  * JD-Core Version:    0.7.0.1
  */

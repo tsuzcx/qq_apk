@@ -1,20 +1,12 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.widget.DynamicGridView;
+import android.content.Intent;
 
-public class beim
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface beim
 {
-  public beim(DynamicGridView paramDynamicGridView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.invalidate();
-  }
+  public abstract boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beim
  * JD-Core Version:    0.7.0.1
  */

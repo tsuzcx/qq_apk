@@ -1,29 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.ui.funchat.zimu.ZimuViewMotion;
-import java.lang.ref.WeakReference;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.qphone.base.util.QLog;
 
-public final class mdl
-  extends Handler
+public class mdl
+  implements View.OnTouchListener
 {
-  WeakReference<ZimuViewMotion> a;
+  public mdl(EffectSettingUi paramEffectSettingUi) {}
   
-  public mdl(ZimuViewMotion paramZimuViewMotion)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = new WeakReference(paramZimuViewMotion);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = (ZimuViewMotion)this.a.get();
-    } while (paramMessage == null);
-    paramMessage.e();
+    EffectSettingUi.a(this.a.a, -1008L);
+    QLog.w("EffectSettingUi", 1, "m_qav_effect_bottom, onTouchEvent[" + paramMotionEvent.getAction() + "]");
+    return false;
   }
 }
 

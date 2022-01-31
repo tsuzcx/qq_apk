@@ -1,18 +1,17 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class thv
-  extends QQUIEventReceiver<StoryPlayerActivity, thu>
+  extends QQUIEventReceiver<thk, thu>
 {
-  public thv(@NonNull StoryPlayerActivity paramStoryPlayerActivity)
+  public thv(@NonNull thk paramthk)
   {
-    super(paramStoryPlayerActivity);
+    super(paramthk);
   }
   
-  public void a(@NonNull StoryPlayerActivity paramStoryPlayerActivity, @NonNull thu paramthu)
+  public void a(@NonNull thk paramthk, @NonNull thu paramthu)
   {
-    paramStoryPlayerActivity.b = paramthu.a;
+    thk.a(paramthk, paramthu.jdField_a_of_type_Two, paramthu.jdField_a_of_type_JavaLangString);
   }
   
   public Class acceptEventClass()

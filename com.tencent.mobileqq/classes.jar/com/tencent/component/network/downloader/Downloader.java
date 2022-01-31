@@ -30,6 +30,7 @@ public abstract class Downloader
   protected ReportHandler pExternalReportHandler;
   protected PriorityThreadPool pExternalThreadPool;
   protected FileHandler pFileHandler;
+  protected boolean pHttpsIpDirectEnable = false;
   protected KeepAliveStrategy pKeepAliveStrategy;
   protected int pMaxConnection = 0;
   protected int pMaxConnectionPerRoute = 0;
@@ -204,6 +205,11 @@ public abstract class Downloader
   {
     this.pMaxConnectionPerRoute = paramInt1;
     this.pMaxConnection = paramInt2;
+  }
+  
+  public void setHttpsIpDirectEnable(boolean paramBoolean)
+  {
+    this.pHttpsIpDirectEnable = paramBoolean;
   }
   
   public void setKeepAliveStrategy(KeepAliveStrategy paramKeepAliveStrategy)

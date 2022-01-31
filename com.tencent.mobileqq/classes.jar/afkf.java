@@ -1,12 +1,12 @@
-import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
+import android.widget.TextView;
 
-public abstract interface afkf
+public class afkf
 {
-  public abstract boolean a(TencentDocItem paramTencentDocItem);
+  public TextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afkf
  * JD-Core Version:    0.7.0.1
  */

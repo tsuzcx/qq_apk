@@ -1,60 +1,18 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.PrecoverResource;
 
-class anjn
-  implements URLDrawable.URLDrawableListener
+public final class anjn
+  implements Parcelable.Creator<PrecoverResource>
 {
-  anjn(anjl paramanjl) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public PrecoverResource a(Parcel paramParcel)
   {
-    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
-    if (QLog.isColorLevel())
-    {
-      paramURLDrawable = paramURLDrawable.getTag();
-      if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
-      {
-        paramURLDrawable = (Emoticon)paramURLDrawable;
-        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener onLoadCanceled eId = " + paramURLDrawable.eId);
-      }
-    }
+    return new PrecoverResource(paramParcel);
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public PrecoverResource[] a(int paramInt)
   {
-    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
-    if (QLog.isColorLevel())
-    {
-      paramURLDrawable = paramURLDrawable.getTag();
-      if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
-      {
-        paramURLDrawable = (Emoticon)paramURLDrawable;
-        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener onLoadFialed eId = " + paramURLDrawable.eId);
-      }
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
-    paramURLDrawable = paramURLDrawable.getTag();
-    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
-    {
-      paramURLDrawable = (Emoticon)paramURLDrawable;
-      if (!this.a.jdField_a_of_type_JavaUtilList.contains(paramURLDrawable)) {
-        this.a.jdField_a_of_type_JavaUtilList.add(paramURLDrawable);
-      }
-      this.a.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener downloadSucess eId = " + paramURLDrawable.eId);
-      }
-    }
+    return new PrecoverResource[paramInt];
   }
 }
 

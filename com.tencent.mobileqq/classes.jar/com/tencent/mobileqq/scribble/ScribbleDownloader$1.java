@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.scribble;
 
-import avgz;
-import avha;
-import avhb;
+import awgs;
+import awgt;
+import awgu;
 import com.tencent.mobileqq.data.MessageForScribble;
 
 public class ScribbleDownloader$1
   implements Runnable
 {
-  public ScribbleDownloader$1(avhb paramavhb, avha paramavha) {}
+  public ScribbleDownloader$1(awgu paramawgu, awgt paramawgt) {}
   
   public void run()
   {
-    avhb.a(this.this$0, "dowmthreak", "start download ,uniseq:" + this.a.a.uniseq);
-    new avgz(this.this$0.a).a(this.a.a, null);
+    awgu.a(this.this$0, "dowmthreak", "start download ,uniseq:" + this.a.a.uniseq);
+    new awgs(this.this$0.a).a(this.a.a, null);
   }
 }
 

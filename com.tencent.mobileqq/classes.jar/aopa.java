@@ -1,53 +1,33 @@
+import android.graphics.Color;
+import android.text.Editable;
 import android.text.TextUtils;
-import android.view.View;
+import android.text.TextWatcher;
 import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aopa
-  implements avri<avon, avww>
+  implements TextWatcher
 {
-  public void a(avon paramavon, avww paramavww)
+  public aopa(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((paramavww.a() != null) && (!TextUtils.isEmpty(paramavon.a())))
-    {
-      paramavww.a().setVisibility(0);
-      paramavww.a().setText(paramavon.a());
+    paramEditable = MPFileVerifyPwdView.a(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramEditable)) && (paramEditable.length() >= 16)) {
+      aptv.a(BaseApplicationImpl.getContext().getString(2131694381));
     }
-    if ((paramavww.b() != null) && (!TextUtils.isEmpty(paramavon.b())))
-    {
-      paramavww.b().setVisibility(0);
-      paramavww.b().setText(paramavon.b());
-    }
-    if ((paramavww.c() != null) && (!TextUtils.isEmpty(paramavon.c())))
-    {
-      paramavww.c().setVisibility(0);
-      paramavww.c().setText(paramavon.c());
-    }
-    if ((paramavon.d() == null) && (paramavww.d() != null)) {
-      paramavww.d().setVisibility(8);
-    }
-    if ((paramavww.d() != null) && (paramavon.d() != null))
-    {
-      paramavww.d().setVisibility(0);
-      paramavww.d().setText(paramavon.d());
-    }
-    AsyncImageView localAsyncImageView = (AsyncImageView)paramavww.b();
-    Object localObject = (aooz)paramavon;
-    String str = ((aooz)localObject).c();
-    localObject = ((aooz)localObject).d();
-    if (bace.b(str)) {
-      apck.a(localAsyncImageView, str, apck.a((String)localObject));
-    }
-    for (;;)
-    {
-      paramavww = paramavww.a();
-      if (paramavww != null) {
-        paramavww.setOnClickListener(new aopb(this, paramavon));
-      }
+    while (TextUtils.isEmpty(paramEditable)) {
       return;
-      localAsyncImageView.setDefaultImage(apck.b((String)localObject));
     }
+    MPFileVerifyPwdView.b(this.a).setEnabled(true);
+    MPFileVerifyPwdView.b(this.a).setTextColor(Color.parseColor("#00a5e0"));
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

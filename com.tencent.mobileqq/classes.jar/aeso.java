@@ -1,17 +1,15 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aeso
-  extends afdh
+class aeso
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public ArrayList<aesp> a;
-  public boolean a;
-  public int b = -1;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  aeso(aerv paramaerv) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView.setVisibility(8);
+  }
 }
 
 

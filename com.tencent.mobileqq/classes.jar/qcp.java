@@ -1,22 +1,18 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.widget.TextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.JumpInfo;
 
-final class qcp
-  extends ClickableSpan
+public final class qcp
+  implements Parcelable.Creator<SocializeFeedsInfo.JumpInfo>
 {
-  qcp(TextView paramTextView) {}
-  
-  public void onClick(View paramView)
+  public SocializeFeedsInfo.JumpInfo a(Parcel paramParcel)
   {
-    this.a.performClick();
+    return new SocializeFeedsInfo.JumpInfo(paramParcel);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public SocializeFeedsInfo.JumpInfo[] a(int paramInt)
   {
-    paramTextPaint.setColor(Color.parseColor("#FF00CAFC"));
+    return new SocializeFeedsInfo.JumpInfo[paramInt];
   }
 }
 

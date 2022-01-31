@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.core.message;
 
 import android.app.ProgressDialog;
-import bdfp;
+import bejp;
 
 public class GetScreenshot$2
   implements Runnable
 {
   public void run()
   {
-    if (bdfp.a(this.this$0) != null)
+    if (bejp.a(this.this$0) != null)
     {
-      bdfp.a(this.this$0).dismiss();
-      bdfp.a(this.this$0, null);
+      bejp.a(this.this$0).dismiss();
+      bejp.a(this.this$0, null);
     }
   }
 }

@@ -1,19 +1,24 @@
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.activity.ChatHistory;
+
 public class nds
+  implements View.OnClickListener
 {
-  public String a;
-  public boolean a;
-  public String b;
+  public nds(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public nds(ndo paramndo, String paramString1, String paramString2, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "PublicAccountSearchRecommendItem->uin:" + this.jdField_a_of_type_JavaLangString + ", name:" + this.b + ", isPublicAccount:" + this.jdField_a_of_type_Boolean;
+    if (this.a.a != null)
+    {
+      paramView = new Intent(this.a, ChatHistory.class);
+      paramView.putExtra("uin", EqqAccountDetailActivity.i(this.a));
+      paramView.putExtra("uintype", 1024);
+      this.a.startActivity(paramView);
+      noo.a(EqqAccountDetailActivity.i(this.a), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.j(this.a), "0X8005A29", "0X8005A29", 0, 0, "", "", "", "", false);
+    }
   }
 }
 

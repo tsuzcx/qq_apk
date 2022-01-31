@@ -1,6 +1,21 @@
-public abstract interface rgt
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class rgt
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  rgt(rgs paramrgs) {}
+  
+  public void onClick(View paramView)
+  {
+    if (rgs.a(this.a) != null) {
+      rgs.a(this.a).onClick(paramView);
+    }
+    paramView = new onr();
+    paramView.h().e().f().b().i().m();
+    paramView.b("message_reddot_style", onk.k());
+    noo.a(null, "", "0X800824B", "0X800824B", 0, 0, "", "", "", paramView.a(), false);
+  }
 }
 
 

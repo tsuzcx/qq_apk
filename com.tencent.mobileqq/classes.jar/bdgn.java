@@ -1,22 +1,22 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.appstore.component.CommonTitleBar;
 
 public class bdgn
+  implements View.OnClickListener
 {
-  public static Uri a(Context paramContext, File paramFile)
+  public bdgn(CommonTitleBar paramCommonTitleBar) {}
+  
+  public void onClick(View paramView)
   {
-    Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-    paramFile = Uri.fromFile(paramFile);
-    localIntent.setData(paramFile);
-    paramContext.sendBroadcast(localIntent);
-    return paramFile;
+    if (CommonTitleBar.a(this.a) != null) {
+      CommonTitleBar.a(this.a).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdgn
  * JD-Core Version:    0.7.0.1
  */

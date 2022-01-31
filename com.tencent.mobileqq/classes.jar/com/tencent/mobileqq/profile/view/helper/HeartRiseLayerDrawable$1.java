@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.profile.view.helper;
 
-import aubq;
-import aubr;
+import avaw;
+import avax;
 
 public class HeartRiseLayerDrawable$1
   implements Runnable
 {
-  public HeartRiseLayerDrawable$1(aubq paramaubq, int paramInt1, int paramInt2, int paramInt3) {}
+  public HeartRiseLayerDrawable$1(avaw paramavaw, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    ((aubr)this.this$0.getDrawable(this.a)).a(this.b, this.c);
+    ((avax)this.this$0.getDrawable(this.a)).a(this.b, this.c);
   }
 }
 

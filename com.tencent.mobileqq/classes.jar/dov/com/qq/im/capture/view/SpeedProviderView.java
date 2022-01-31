@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import bhql;
+import bjld;
 
 public class SpeedProviderView
   extends ProviderView
   implements View.OnClickListener
 {
-  private bhql a;
+  private bjld a;
   protected View c;
   protected View d;
   protected View e;
@@ -24,23 +24,23 @@ public class SpeedProviderView
   
   protected int a()
   {
-    return 2131495003;
+    return 2131560577;
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131495003, this, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560577, this, false);
     }
     a(this.jdField_a_of_type_AndroidViewView);
-    this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131306055);
+    this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131371752);
     this.c.setOnClickListener(this);
-    this.d = this.jdField_a_of_type_AndroidViewView.findViewById(2131306054);
+    this.d = this.jdField_a_of_type_AndroidViewView.findViewById(2131371751);
     this.d.setOnClickListener(this);
-    this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131306056);
+    this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131371753);
     this.e.setOnClickListener(this);
-    this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131306057);
+    this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131371754);
     this.f.setOnClickListener(this);
   }
   
@@ -55,8 +55,8 @@ public class SpeedProviderView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bhql != null) {
-        this.jdField_a_of_type_Bhql.a(i);
+      if (this.jdField_a_of_type_Bjld != null) {
+        this.jdField_a_of_type_Bjld.a(i);
       }
       return;
       i = 2;
@@ -67,9 +67,9 @@ public class SpeedProviderView
     }
   }
   
-  public void setEditSpeedListener(bhql parambhql)
+  public void setEditSpeedListener(bjld parambjld)
   {
-    this.jdField_a_of_type_Bhql = parambhql;
+    this.jdField_a_of_type_Bjld = parambjld;
   }
 }
 

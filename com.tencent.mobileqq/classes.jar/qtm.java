@@ -1,13 +1,15 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import android.view.animation.Animation;
 
 class qtm
+  extends bfmg
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
+  qtm(qtk paramqtk) {}
   
-  private qtm(qtk paramqtk) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.s.setVisibility(8);
+  }
 }
 
 

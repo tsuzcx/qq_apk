@@ -1,42 +1,23 @@
 public class bbrj
 {
-  static
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
   {
-    if (!bbrj.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a = bool;
-      return;
-    }
-  }
-  
-  public static byte[] a(String paramString, int paramInt)
-  {
-    return a(paramString.getBytes(), paramInt);
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt)
-  {
-    return a(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
-  {
-    bbrl localbbrl = new bbrl(paramInt3, new byte[paramInt2 * 3 / 4]);
-    if (!localbbrl.a(paramArrayOfByte, paramInt1, paramInt2, true)) {
-      throw new IllegalArgumentException("bad base-64");
-    }
-    if (localbbrl.jdField_a_of_type_Int == localbbrl.jdField_a_of_type_ArrayOfByte.length) {
-      return localbbrl.jdField_a_of_type_ArrayOfByte;
-    }
-    paramArrayOfByte = new byte[localbbrl.jdField_a_of_type_Int];
-    System.arraycopy(localbbrl.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, 0, localbbrl.jdField_a_of_type_Int);
-    return paramArrayOfByte;
+    paramString6 = new StringBuilder();
+    paramString6.append(paramString1).append("|");
+    paramString6.append(paramString2).append("|");
+    paramString6.append(paramString3).append("|");
+    paramString6.append(paramString4).append("|");
+    paramString6.append(paramString5).append("|");
+    paramString6.append(paramString7).append("|");
+    paramString6.append(paramString8).append("|");
+    paramString6.append(paramString9).append("|");
+    paramString6.append(paramString10);
+    axpw.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_errorcode_report", paramString6.toString(), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbrj
  * JD-Core Version:    0.7.0.1
  */

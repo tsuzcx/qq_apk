@@ -1,49 +1,61 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class amvl
-  extends DataReportViewer
+public class amvl
 {
-  amvl(amvk paramamvk, Context paramContext1, Context paramContext2)
+  public int a;
+  public String a;
+  public String b = "";
+  public String c = "";
+  public String d = "https://sou.qq.com/kandian.html?_bid=2958&_wv=3&keyword=$KEYWORD$";
+  
+  public amvl()
   {
-    super(paramContext1);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public void d()
+  public static amvl a(String paramString)
   {
-    int j = azvv.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (int i = 2038;; i = 2003)
+    amvl localamvl = new amvl();
+    try
     {
-      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(j, -2, i, 776, -2);
-      localLayoutParams.gravity = 51;
-      localLayoutParams.x = 0;
-      localLayoutParams.y = azvv.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
-      amvk.a(this.jdField_a_of_type_Amvk).updateViewLayout(amvk.a(this.jdField_a_of_type_Amvk), localLayoutParams);
-      return;
+      JSONObject localJSONObject = new JSONObject(paramString);
+      localamvl.jdField_a_of_type_JavaLangString = localJSONObject.optString("kQQPASearchDiscoverPageUrl");
+      localamvl.b = localJSONObject.optString("kQQPASearchListTitleIconUrl");
+      localamvl.c = localJSONObject.optString("kQQPAClickAssociationalWordWebUrl");
+      localamvl.jdField_a_of_type_Int = localJSONObject.optInt("kQQPAClickAssociationalWordToWebSearch", 1);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInjoySearchJumpurlConfBean", 2, new Object[] { "loadConfig292Data json = ", paramString });
+      }
+      localamvl.d = localJSONObject.optString("kQQPASearchJumpUrl", "https://sou.qq.com/kandian.html?_bid=2958&_wv=3&keyword=$KEYWORD$");
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInjoySearchJumpurlConfBean", 2, "loadConfig292Data(). readinjoy_search_jump_url=" + localamvl.d + ", discoveryPageUrl = " + localamvl.jdField_a_of_type_JavaLangString);
+      }
     }
+    catch (Exception paramString)
+    {
+      do
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ReadInjoySearchJumpurlConfBean", 2, "loadPublicAccountCenterUrlConfig error", paramString);
+        }
+        localamvl.d = "https://sou.qq.com/kandian.html?_bid=2958&_wv=3&keyword=$KEYWORD$";
+      } while (!QLog.isColorLevel());
+      QLog.d("ReadInjoySearchJumpurlConfBean", 2, "loadConfig292Data(). use the default url. exception=" + paramString.getStackTrace());
+    }
+    return localamvl;
+    return localamvl;
   }
   
-  public void e()
+  public String toString()
   {
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (int i = 2038;; i = 2003)
-    {
-      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -2, i, 776, -2);
-      localLayoutParams.gravity = 51;
-      localLayoutParams.x = 0;
-      localLayoutParams.y = azvv.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
-      amvk.a(this.jdField_a_of_type_Amvk).updateViewLayout(amvk.a(this.jdField_a_of_type_Amvk), localLayoutParams);
-      return;
-    }
+    return "kQQPASearchDiscoverPageUrl = " + this.jdField_a_of_type_JavaLangString + "kQQPASearchListTitleIconUrl = " + this.b + "kQQPAClickAssociationalWordWebUrl = " + this.c + "kQQPAClickAssociationalWordToWebSearch = " + this.jdField_a_of_type_Int + "kQQPASearchJumpUrl = " + this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amvl
  * JD-Core Version:    0.7.0.1
  */

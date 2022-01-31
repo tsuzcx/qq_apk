@@ -1,29 +1,46 @@
+import android.view.MotionEvent;
 import android.view.View;
 
-class wek
-  implements begw
+public class wek
+  implements wei
 {
-  wek(wei paramwei, String paramString1, String paramString2, wes paramwes, begr parambegr) {}
+  protected final wem a;
+  protected final weo a;
   
-  public void OnClick(View paramView, int paramInt)
+  public wek(weo paramweo)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_Wem = new wem();
+    this.jdField_a_of_type_Weo = paramweo;
+  }
+  
+  public void a(wei paramwei) {}
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    View localView = this.jdField_a_of_type_Weo.a();
+    wej localwej = this.jdField_a_of_type_Weo.jdField_a_of_type_Wej;
+    if (!localwej.a(localView, this.jdField_a_of_type_Wem, paramMotionEvent)) {}
+    wen localwen;
+    do
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      do
-      {
-        return;
-      } while (wpl.a("subScribe_delete_draft"));
-      this.jdField_a_of_type_Wei.a(this.jdField_a_of_type_JavaLangString, this.b, new wel(this));
-    }
+      return false;
+      localwen = this.jdField_a_of_type_Weo.jdField_a_of_type_Wen;
+    } while (((!localwej.a(localView)) || (!this.jdField_a_of_type_Wem.jdField_a_of_type_Boolean)) && ((!localwej.b(localView)) || (this.jdField_a_of_type_Wem.jdField_a_of_type_Boolean)));
+    localwen.jdField_a_of_type_Int = paramMotionEvent.getPointerId(0);
+    localwen.jdField_a_of_type_Float = this.jdField_a_of_type_Wem.jdField_a_of_type_Float;
+    localwen.jdField_a_of_type_Boolean = this.jdField_a_of_type_Wem.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Weo.a(this.jdField_a_of_type_Weo.jdField_a_of_type_Wep);
+    return this.jdField_a_of_type_Weo.jdField_a_of_type_Wep.a(paramMotionEvent);
+  }
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wek
  * JD-Core Version:    0.7.0.1
  */

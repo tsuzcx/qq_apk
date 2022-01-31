@@ -1,29 +1,17 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aggg;
-import aggm;
-import android.os.Handler;
-import android.os.Message;
-import baaf;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.util.Map;
+import agsl;
+import com.tencent.widget.GestureSelectGridView;
 import mqq.util.WeakReference;
 
 public class PhotoListLogicDefault$7
   implements Runnable
 {
-  public PhotoListLogicDefault$7(aggm paramaggm, String paramString) {}
+  public PhotoListLogicDefault$7(agsl paramagsl, int paramInt) {}
   
   public void run()
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 3;
-    String str = ((NewPhotoListActivity)this.this$0.a.get()).a(this.a);
-    localMessage.obj = str;
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    baaf.a(localLocalMediaInfo, str);
-    aggg.a.put(str, localLocalMediaInfo);
-    ((NewPhotoListActivity)this.this$0.a.get()).a.sendMessage(localMessage);
+    ((NewPhotoListActivity)this.this$0.a.get()).a.setSelection(this.a);
   }
 }
 

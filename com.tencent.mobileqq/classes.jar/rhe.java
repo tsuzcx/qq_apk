@@ -1,15 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.qphone.base.util.QLog;
 
-class rhe
-  implements View.OnClickListener
+public class rhe
+  implements DialogInterface.OnClickListener
 {
-  rhe(rhd paramrhd) {}
+  public rhe(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    rhd.a(this.a).a(rhd.a(this.a), rhd.a(this.a));
-    this.a.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog remain cancel");
+    }
+    paramDialogInterface = osj.a().a();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.b();
+    }
+    osj.a().b(41695);
   }
 }
 

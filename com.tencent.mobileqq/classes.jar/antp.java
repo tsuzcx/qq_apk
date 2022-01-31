@@ -1,15 +1,17 @@
+import android.graphics.Point;
 import android.view.View;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
 
-public abstract interface antp<V extends View>
+public abstract interface antp
 {
-  public abstract void a(PullToRefreshBase<V> paramPullToRefreshBase);
+  public abstract View a(int paramInt);
   
-  public abstract void b(PullToRefreshBase<V> paramPullToRefreshBase);
+  public abstract void a(View paramView);
+  
+  public abstract void a(View paramView, Point paramPoint1, Point paramPoint2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     antp
  * JD-Core Version:    0.7.0.1
  */

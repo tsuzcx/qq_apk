@@ -1,32 +1,35 @@
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
-import com.tencent.mobileqq.multicard.RecommendPerson;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import android.app.Dialog;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import mqq.app.QQPermissionCallback;
 
 public class arwp
-  extends arxj
+  implements QQPermissionCallback
 {
-  public arwp(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  public arwp(LocationPickFragment paramLocationPickFragment, BaseActivity paramBaseActivity) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt, Map<Integer, List<RecommendPerson>> paramMap)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopMemberRecommend.MultiCardRecommendFragment", 2, "onGetTroopMemRecommendCards, success = " + paramBoolean + ",troopUin = " + paramString + ",notifySource = " + paramInt);
+    paramArrayOfString = bbcv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    if (paramArrayOfString != null) {
+      paramArrayOfString.setOnDismissListener(new arwq(this));
     }
-    if ((MultiCardRecommendFragment.a(this.a) != null) && (MultiCardRecommendFragment.a(this.a).equals(paramString)))
-    {
-      MultiCardRecommendFragment.a(this.a).a.clear();
-      MultiCardRecommendFragment.a(this.a).a.putAll(paramMap);
-      this.a.a.removeMessages(1);
-      this.a.a.sendEmptyMessage(1);
-    }
+    paramArrayOfInt = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
+    paramArrayOfString = paramArrayOfInt.getStringExtra("uin");
+    paramInt = paramArrayOfInt.getIntExtra("uintype", -1);
+    paramArrayOfInt = aruq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
+    paramArrayOfInt.a(paramInt, paramArrayOfString, paramArrayOfInt.a(), 1);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arwp
  * JD-Core Version:    0.7.0.1
  */

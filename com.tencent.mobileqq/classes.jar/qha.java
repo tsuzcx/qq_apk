@@ -1,142 +1,49 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.VideoInfo.SoftAdDownloadBarInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.SimpleAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
 
 public class qha
-  implements qgz
+  extends SimpleAdapter
 {
-  public static final String a;
-  private int jdField_a_of_type_Int = 2147483647;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  private VideoInfo jdField_a_of_type_ComTencentBizPubaccountVideoInfo;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = true;
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131367894, 2131377225, 2131377224 };
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "key_cover_url", "key_title", "key_summary" };
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#E9E9E9"));
   
-  static
+  public qha(Context paramContext, List<Map<String, CharSequence>> paramList)
   {
-    jdField_a_of_type_JavaLangString = qha.class.getSimpleName();
+    super(paramContext, paramList, 2131560039, jdField_a_of_type_ArrayOfJavaLangString, jdField_a_of_type_ArrayOfInt);
   }
   
-  private boolean b()
+  public void setViewImage(ImageView paramImageView, String paramString)
   {
-    return (this.jdField_b_of_type_Boolean) && (this.jdField_b_of_type_Int < this.jdField_a_of_type_Int);
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public CharSequence a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$SoftAdDownloadBarInfo.b;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$SoftAdDownloadBarInfo.d;
-    }
-    return this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$SoftAdDownloadBarInfo.c;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_b_of_type_Int != 0) {
-      qcn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "onDestroy() mTodayShowCount = " + this.jdField_b_of_type_Int);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(VideoInfo paramVideoInfo)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = paramVideoInfo;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(VideoInfo paramVideoInfo, qaq paramqaq)
-  {
-    this.jdField_b_of_type_Int += 1;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, VideoFeedsRecyclerView paramVideoFeedsRecyclerView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    if ((TextUtils.isEmpty(bgmq.a("sp_key_ad_soft_total_area"))) || ("1".equals(bgmq.a("sp_key_ad_soft_total_area")))) {}
-    for (boolean bool = true;; bool = false)
+    if ("create_topic".equals(paramString))
     {
-      this.jdField_b_of_type_Boolean = bool;
-      this.jdField_a_of_type_Int = nbj.a(bgmq.a("sp_key_ad_soft_kd_max"), 2147483647);
-      this.jdField_b_of_type_Int = qcn.a(paramQQAppInterface);
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "onCreate() mConfigIsOpen = " + this.jdField_b_of_type_Boolean + ", mConfigMaxShowCount = " + this.jdField_a_of_type_Int + ", mTodayShowCount = " + this.jdField_b_of_type_Int);
-      }
+      paramImageView.setImageResource(2130848494);
       return;
     }
-  }
-  
-  public void a(qaq paramqaq)
-  {
-    paramqaq.J.setVisibility(0);
-    paramqaq.w.setVisibility(0);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$SoftAdDownloadBarInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$SoftAdDownloadBarInfo.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$SoftAdDownloadBarInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo != null);
-  }
-  
-  public boolean a(VideoInfo paramVideoInfo)
-  {
-    return b();
-  }
-  
-  public boolean a(VideoInfo paramVideoInfo, qaq paramqaq, double paramDouble)
-  {
-    return (paramqaq.u != null) && (paramqaq.u.getVisibility() == 0) && (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$SoftAdDownloadBarInfo != null) && (paramDouble > this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$SoftAdDownloadBarInfo.jdField_a_of_type_Int);
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$SoftAdDownloadBarInfo.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void b(qaq paramqaq) {}
-  
-  public void c(qaq paramqaq) {}
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+    try
     {
-    default: 
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localURLDrawableOptions.mRequestWidth = paramImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramImageView.getLayoutParams().height;
+      paramImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
       return;
     }
-    qcn.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$SoftAdDownloadBarInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo);
-    paramView = new qmv("", "", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g).h(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.e()) {}
-    for (int i = this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructVideoColumnInfo.jdField_a_of_type_Int;; i = 0)
+    catch (IllegalArgumentException localIllegalArgumentException)
     {
-      paramView = paramView.t(i).q(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$SoftAdDownloadBarInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo.e);
-      ndn.b(null, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.j, "0X800A2F7", "0X800A2F7", 0, 0, "0", "", "", paramView.a().a(), false);
-      return;
+      paramImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      QLog.e("ReadInJoyTopicListAdapt", 2, "setViewImage: illegal url  - " + paramString, localIllegalArgumentException);
     }
   }
 }

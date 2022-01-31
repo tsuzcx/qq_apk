@@ -1,57 +1,35 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.View;
 
 class say
-  implements BusinessObserver
+  implements bfoq
 {
-  say(sau paramsau) {}
+  say(sax paramsax, saw paramsaw, int paramInt, bfol parambfol) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramBoolean) {}
-    try
+    switch (paramInt)
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
-        localFollowResponse.mergeFrom(paramBundle);
-        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-        if (paramInt == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
-          }
-          this.a.a = true;
-          sau.a(this.a);
-          return;
-        }
-        if (paramInt == 58)
-        {
-          sau.a(this.a, 2131629884);
-          return;
-        }
-        if (paramInt == 65)
-        {
-          sau.a(this.a, 2131629857);
-          return;
-        }
-        sau.a(this.a, 2131629887);
-        return;
-        sau.a(this.a, 2131629887);
-      }
+    default: 
+      this.jdField_a_of_type_Bfol.dismiss();
       return;
     }
-    catch (Exception paramBundle) {}
+    sax.a(this.jdField_a_of_type_Sax, this.jdField_a_of_type_Saw);
+    paramInt = this.jdField_a_of_type_Saw.b;
+    int i = this.jdField_a_of_type_Saw.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Saw.jdField_a_of_type_Int != 1) {
+      paramInt = 0;
+    }
+    for (;;)
+    {
+      long l = sbc.a().a(this.jdField_a_of_type_Saw);
+      axqw.b(sax.a(this.jdField_a_of_type_Sax), "dc01160", "Pb_account_lifeservice", "" + this.jdField_a_of_type_Saw.jdField_a_of_type_JavaLangString, "0X80067F2", "0X80067F2", 0, 0, "" + (this.jdField_a_of_type_Int + 1), "" + l, "" + i, "" + paramInt);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     say
  * JD-Core Version:    0.7.0.1
  */

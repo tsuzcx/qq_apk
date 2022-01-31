@@ -169,32 +169,32 @@ public class YTCameraSetting
   
   public static int getRotate(Context paramContext, int paramInt1, int paramInt2)
   {
-    return getRotateTag(getVideoRotate(paramContext, paramInt1));
+    return getRotateTag(getVideoRotate(paramContext, paramInt1), paramInt2);
   }
   
-  public static int getRotateTag(int paramInt)
+  public static int getRotateTag(int paramInt1, int paramInt2)
   {
-    if (paramInt == 90) {
-      paramInt = 7;
+    if (paramInt1 == 90) {
+      paramInt1 = 7;
     }
-    while (mCameraFacing == 1)
+    while (paramInt2 == 1)
     {
-      return paramInt;
-      if (paramInt == 180)
+      return paramInt1;
+      if (paramInt1 == 180)
       {
-        paramInt = 3;
+        paramInt1 = 3;
       }
-      else if (paramInt == 270)
+      else if (paramInt1 == 270)
       {
-        paramInt = 5;
+        paramInt1 = 5;
       }
       else
       {
-        YTLogger.i("YTCameraSetting", "camera rotate not 90degree or 180degree, input: " + paramInt);
-        paramInt = 1;
+        YTLogger.i("YTCameraSetting", "camera rotate not 90degree or 180degree, input: " + paramInt1);
+        paramInt1 = 1;
       }
     }
-    return transBackFacingCameraRatateTag(paramInt);
+    return transBackFacingCameraRatateTag(paramInt1);
   }
   
   public static int getVideoRotate(Context paramContext, int paramInt)
@@ -636,7 +636,7 @@ public class YTCameraSetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.youtu.ytcommon.tools.YTCameraSetting
  * JD-Core Version:    0.7.0.1
  */

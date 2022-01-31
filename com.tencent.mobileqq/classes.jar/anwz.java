@@ -1,13 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FMActivity.4.1;
-
-public class anwz
-  implements DialogInterface.OnClickListener
+class anwz
 {
-  public anwz(FMActivity.4.1 param1) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a;
+  public String a;
+  public String b;
 }
 
 

@@ -1,21 +1,8 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import android.view.View;
 
-public class uuj
-  implements Animation.AnimationListener
+public abstract interface uuj
 {
-  public uuj(EditVideoGuide paramEditVideoGuide) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.g();
-    this.a.a.a(0);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(String paramString1, int paramInt, View paramView, String paramString2);
 }
 
 

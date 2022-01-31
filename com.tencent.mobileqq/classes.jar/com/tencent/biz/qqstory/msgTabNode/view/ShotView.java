@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.msgTabNode.view;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -20,9 +20,9 @@ public class ShotView
   public ShotView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(paramContext).inflate(2131495713, this);
-    ((TextView)findViewById(2131311534)).setText(ajjy.a(2131648305));
-    ((ImageView)findViewById(2131301774)).setImageResource(2130845547);
+    LayoutInflater.from(paramContext).inflate(2131561304, this);
+    ((TextView)findViewById(2131377350)).setText(ajyc.a(2131714093));
+    ((ImageView)findViewById(2131367384)).setImageResource(2130845730);
   }
 }
 

@@ -1,13 +1,29 @@
 package com.tencent.mobileqq.activity;
 
+import axqw;
+
 class Conversation$51
   implements Runnable
 {
-  Conversation$51(Conversation paramConversation) {}
+  Conversation$51(Conversation paramConversation, Object paramObject) {}
   
   public void run()
   {
-    this.this$0.g(false);
+    if ((this.a instanceof String)) {}
+    for (;;)
+    {
+      try
+      {
+        i = Integer.parseInt((String)this.a);
+        axqw.b(this.this$0.a, "dc00898", "", "", "0X80087C2", "0X80087C2", i, 0, "1", "", "", "");
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
+      int i = 0;
+    }
   }
 }
 

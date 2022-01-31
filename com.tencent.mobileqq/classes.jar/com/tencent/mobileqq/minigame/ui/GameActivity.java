@@ -1,24 +1,19 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import ajjy;
-import alrv;
-import aluq;
+import ajyc;
+import amgo;
+import amkg;
+import amkh;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.AppTask;
 import android.app.ActivityManager.RecentTaskInfo;
 import android.content.ComponentName;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -30,7 +25,6 @@ import android.os.Process;
 import android.os.ResultReceiver;
 import android.provider.Settings.Global;
 import android.provider.Settings.Secure;
-import android.text.Html;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -48,27 +42,24 @@ import android.webkit.URLUtil;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import android.widget.TextView.BufferType;
-import avwj;
-import avwk;
-import babr;
-import badq;
-import bafb;
-import bajq;
-import bbmy;
-import bbqo;
-import bfpj;
-import bjeh;
+import awwc;
+import awwd;
+import bbev;
+import bbkx;
+import bcpw;
+import bctn;
+import bfng;
+import bgxq;
+import bkur;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtAppReceiver;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
 import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -110,6 +101,7 @@ import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.mini.tfs.BaseTask;
+import com.tencent.mobileqq.mini.ui.MiniAIOEntryView;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
@@ -122,8 +114,10 @@ import com.tencent.mobileqq.minigame.jsapi.GameJsPluginEngine;
 import com.tencent.mobileqq.minigame.jsapi.GameJsRuntime;
 import com.tencent.mobileqq.minigame.jsapi.manager.GameVideoPlayerManager;
 import com.tencent.mobileqq.minigame.jsapi.manager.KeyboardHandler;
+import com.tencent.mobileqq.minigame.jsapi.webaudio.WebAudioManager;
 import com.tencent.mobileqq.minigame.jsapi.widgets.KeyboardLayout;
 import com.tencent.mobileqq.minigame.manager.EngineChannel;
+import com.tencent.mobileqq.minigame.manager.GameCloseManager;
 import com.tencent.mobileqq.minigame.manager.GameGrowthGuardianManager;
 import com.tencent.mobileqq.minigame.manager.GameInfoManager;
 import com.tencent.mobileqq.minigame.manager.GameLoadManager;
@@ -135,6 +129,7 @@ import com.tencent.mobileqq.minigame.task.GameEngineLoadTask;
 import com.tencent.mobileqq.minigame.task.GameJsPluginEngineTask;
 import com.tencent.mobileqq.minigame.task.GpkgLoadAsyncTask;
 import com.tencent.mobileqq.minigame.utils.CPUUtil;
+import com.tencent.mobileqq.minigame.utils.GameActivityStatusWatcher;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
 import com.tencent.mobileqq.minigame.utils.VConsoleLogManager;
 import com.tencent.mobileqq.minigame.utils.VConsoleManager;
@@ -152,7 +147,6 @@ import com.tencent.mobileqq.widget.SquareImageView;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import common.config.service.QzoneConfig;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
@@ -165,10 +159,9 @@ import mqq.os.MqqHandler;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
-import yjs;
-import ykt;
-import yku;
-import ykv;
+import ytu;
+import ytv;
+import ytw;
 
 public class GameActivity
   extends BaseActivity
@@ -177,31 +170,15 @@ public class GameActivity
   private static final int LAUNCH_STATUS_CLICK = 0;
   private static final int LAUNCH_STATUS_FIRST_FRAME = 2;
   private static final int LAUNCH_STATUS_LOAD = 1;
-  private static final int MINI_GAME_CLOSE_CONFIRM_EXPOSURE_TIMES_THRESHOLD;
-  private static final String PREF_KEY_MINI_GAME_CLOSE_CONFIRM_EXPOSURE_TIMES = "pref_key_mini_game_close_confirm_exposure_times";
   private static final String TAG = "[minigame] GameActivity";
   private static final Drawable defaultDrawable;
-  private static int killAllGamesWhenDestroy = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameKillAllGamesWhenDestroy", 0);
-  private static int killAllGamesWhenReuse;
-  private static URLDrawable.URLDrawableOptions sDrawableOptions;
-  public static URLDrawable sGameDrawable;
+  private static boolean killAllGamesWhenDestroy = GameWnsUtils.killAllGamesWhenDestroy();
+  private static boolean killAllGamesWhenReuse;
+  public static boolean mHasStorageReport;
   public static final int sIconSize = DisplayUtil.dip2px(BaseApplicationImpl.getContext(), 100.0F);
-  public static boolean sStorageReport;
-  private RelativeLayout LoadingContainer;
-  private ykt bannerParams;
-  private long beginOnCreate;
-  private long beginOnResume;
-  private ViewGroup contentView;
+  private ytu bannerParams;
   protected boolean doNotMoveTaskToBackThisTime;
-  Runnable execJS = new GameActivity.29(this);
-  private GameBrandRuntime gameBrandRuntime;
-  protected MiniAppConfig gameConfig;
-  private GameJsPluginEngine gameJsPluginEngine;
-  private boolean hasInit;
-  private boolean hasLaunchedGame;
-  private boolean hasReportStepOnResume;
-  private KeyboardLayout keyboardLayout;
-  private long loadGameStartTime;
+  Runnable execJS = new GameActivity.31(this);
   private ApkgInfo mApkgInfo;
   private String mBackPressHint = GameWnsUtils.getBackPressHint();
   protected FrameLayout mBannerAdContainer;
@@ -209,11 +186,15 @@ public class GameActivity
   protected qq_ad_get.QQAdGetRsp.AdInfo mBannerAdOpInfo;
   protected BannerAdPosInfo mBannerAdPosInfo;
   private long mBeginExecJs;
+  private long mBeginOnCreate;
+  private long mBeginOnResume;
   private LinearLayout mBottonLayout;
-  private GameActivity.MonitorBroadcastReceiver mBroadcastReceiver;
+  private GameActivityStatusWatcher mBroadCastWatcher;
   private LinearLayout mCenterLayout;
   private ImageView mCloseView;
-  protected alrv mColorNoteController;
+  protected amgo mColorNoteController;
+  private amkh mColorNoteServiceListenr;
+  private ViewGroup mContentView;
   private TextView mDebuggerEndBtn;
   private View mDebuggerLayer;
   private TextView mDebuggerStatusTv;
@@ -223,26 +204,37 @@ public class GameActivity
   private EngineChannel mEngineChannel;
   private long mFirstBackPressTime;
   private FPSCallback mFpsListener = new GameActivity.1(this);
+  protected MiniAppConfig mGameAppConfig;
+  private GameBrandRuntime mGameBrandRuntime;
   private float mGameDensity = -1.0F;
+  private URLImageView mGameFakeFirstFrame;
   private int mGameHeight;
   private MiniGameInfo mGameInfo;
   private TextView mGameInstruction;
+  private GameJsPluginEngine mGameJsPluginEngine;
   private View mGameSurfaceView;
   private TextView mGameVersionDesc;
   private int mGameWidth;
-  protected yku mGdtBannerView;
+  protected ytv mGdtBannerView;
   protected GdtDwellTimeStatisticsAfterClick mGdtDwellTimeStatisticsAfterClick;
-  private boolean mHasInited;
+  private boolean mHasExecJS;
+  private boolean mHasInitDataMustOnResume;
+  private boolean mHasInitUI;
   protected boolean mHasNewAd;
+  private boolean mHasReportStepOnResume;
   private boolean mIsEngineLoaded;
   private boolean mIsEngineResumed;
   private boolean mIsForground = true;
   private boolean mIsFromSplash;
   private boolean mIsOrientationLandscape;
   private TextView mJumpBtn;
+  private KeyboardLayout mKeyboardLayout;
   private long mLastOnShowReportTime;
+  private int mLaunchResult;
   private int mLaunchStatus = 0;
-  private avwk mListener = new GameActivity.34(this);
+  private awwd mListener = new GameActivity.36(this);
+  private long mLoadGameStartTime;
+  private RelativeLayout mLoadingContainer;
   private SquareImageView mLogoView;
   private String mMenuStyle = "light";
   public MiniAppMonitorInfoView mMiniAppMonitorInfoView;
@@ -263,7 +255,8 @@ public class GameActivity
   private TextView mProgressTxt;
   private QQDebugWebSocket mQQDebugSocket;
   private MqqHandler mReportHandler;
-  private avwj mSoftKeyboardStateHelper;
+  private RelativeLayout mRightContainer;
+  private awwc mSoftKeyboardStateHelper;
   private LinearLayout mSplashLayout;
   private boolean mSplashLoadComplete;
   private ProgressBar mSplashProgressBar;
@@ -272,29 +265,20 @@ public class GameActivity
   private ITTEngine mTTEngine;
   private Handler mUIHandler = new Handler(Looper.getMainLooper());
   private VConsoleLogManager mVConsoleManager;
-  private RelativeLayout rightContainer;
+  private MiniAIOEntryView miniAIOEntryView;
   private VConsoleDragView vConsoleBtn;
   private VConsoleView vConsoleView;
   private boolean vConsoleViewHasInited;
   
   static
   {
-    defaultDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130840829);
-    MINI_GAME_CLOSE_CONFIRM_EXPOSURE_TIMES_THRESHOLD = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_exit_confirm_animation_expoure_times_threshold", 3);
-    killAllGamesWhenReuse = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameKillAllGamesWhenReuse", 0);
+    defaultDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130840894);
+    killAllGamesWhenReuse = GameWnsUtils.killAllGamesWhenReuse();
   }
   
   private void callEngineOnResume()
   {
     runOnUiThread(new GameActivity.8(this));
-  }
-  
-  private void changeWindowInfo(MiniAppConfig paramMiniAppConfig)
-  {
-    if (Build.VERSION.SDK_INT < 21) {
-      return;
-    }
-    ThreadManagerV2.excute(new GameActivity.12(this, paramMiniAppConfig), 16, null, false);
   }
   
   private boolean checkDoubleClick()
@@ -310,12 +294,12 @@ public class GameActivity
   
   private void doRequestByAppid(String paramString1, String paramString2, String paramString3, LaunchParam paramLaunchParam)
   {
-    MiniAppCmdUtil.getInstance().getAppInfoById(null, paramString1, paramString2, paramString3, new GameActivity.20(this, paramLaunchParam));
+    MiniAppCmdUtil.getInstance().getAppInfoById(null, paramString1, paramString2, paramString3, new GameActivity.21(this, paramLaunchParam));
   }
   
   private void doRequestByLink(String paramString1, int paramInt, String paramString2, LaunchParam paramLaunchParam)
   {
-    MiniAppCmdUtil.getInstance().getAppInfoByLink(paramString1, paramInt, new GameActivity.21(this, paramLaunchParam));
+    MiniAppCmdUtil.getInstance().getAppInfoByLink(paramString1, paramInt, new GameActivity.22(this, paramLaunchParam));
   }
   
   private static boolean enableXiaoMiNotch(Activity paramActivity)
@@ -429,31 +413,60 @@ public class GameActivity
     return Math.round(getGameDensity() * paramFloat);
   }
   
-  private yjs getBannerClickParams()
+  private GdtHandler.Params getBannerClickParams()
   {
     if (this.mBannerAdOpInfo == null) {
       return null;
     }
     Object localObject = new GdtAppReceiver();
-    yjs localyjs = new yjs();
-    localyjs.jdField_a_of_type_Int = 11;
-    localyjs.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(getActivity());
-    localyjs.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(this.mBannerAdOpInfo);
-    localyjs.jdField_a_of_type_Boolean = true;
-    localyjs.jdField_b_of_type_Boolean = true;
-    localyjs.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(localObject);
-    localyjs.jdField_b_of_type_JavaLangClass = GameBannerAdFragment.class;
+    GdtHandler.Params localParams = new GdtHandler.Params();
+    localParams.jdField_c_of_type_Int = 11;
+    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(getActivity());
+    localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(this.mBannerAdOpInfo);
+    localParams.jdField_a_of_type_Boolean = true;
+    localParams.jdField_b_of_type_Boolean = true;
+    localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(localObject);
+    localParams.jdField_b_of_type_JavaLangClass = GameBannerAdFragment.class;
     localObject = new Bundle();
     ((Bundle)localObject).putString("big_brother_ref_source_key", "biz_src_miniapp");
-    localyjs.jdField_a_of_type_AndroidOsBundle = ((Bundle)localObject);
-    return localyjs;
+    localParams.jdField_a_of_type_AndroidOsBundle = ((Bundle)localObject);
+    return localParams;
+  }
+  
+  private String getFakeFristFrameUrlByAppid(String paramString1, String paramString2)
+  {
+    int i = 0;
+    try
+    {
+      if (!TextUtils.isEmpty(paramString1))
+      {
+        if (TextUtils.isEmpty(paramString2)) {
+          return null;
+        }
+        paramString1 = paramString1.split(";");
+        if ((paramString1 != null) && (paramString1.length > 0)) {
+          while (i < paramString1.length)
+          {
+            String[] arrayOfString = paramString1[i].split("\\|\\|");
+            if ((arrayOfString != null) && (arrayOfString.length == 2) && (paramString2.equals(arrayOfString[0])))
+            {
+              paramString1 = arrayOfString[1];
+              return paramString1;
+            }
+            i += 1;
+          }
+        }
+      }
+      return null;
+    }
+    catch (Throwable paramString1) {}
   }
   
   private String getGameInfo()
   {
     StringBuilder localStringBuilder = new StringBuilder().append("gameConfig:");
-    if (this.gameConfig != null) {}
-    for (String str = this.gameConfig.getConfigInfo();; str = "null") {
+    if (this.mGameAppConfig != null) {}
+    for (String str = this.mGameAppConfig.toString();; str = "null") {
       return str;
     }
   }
@@ -466,7 +479,7 @@ public class GameActivity
       localGameJsPluginEngine1 = new GameJsPluginEngine();
     }
     localGameJsPluginEngine1.onAttachWindow(this);
-    localGameJsPluginEngine1.setAppBrandRuntime(this.gameBrandRuntime);
+    localGameJsPluginEngine1.setAppBrandRuntime(this.mGameBrandRuntime);
     return localGameJsPluginEngine1;
   }
   
@@ -477,19 +490,19 @@ public class GameActivity
   
   private void hideLoadingLayout()
   {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.LoadingContainer, "alpha", new float[] { 1.0F, 0.0F });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mLoadingContainer, "alpha", new float[] { 1.0F, 0.0F });
     localObjectAnimator.setDuration(300L);
-    localObjectAnimator.addListener(new GameActivity.10(this));
+    localObjectAnimator.addListener(new GameActivity.11(this));
     localObjectAnimator.start();
     localObjectAnimator = ObjectAnimator.ofFloat(this.mGameSurfaceView, "alpha", new float[] { 0.5F, 1.0F });
     localObjectAnimator.setDuration(300L);
     localObjectAnimator.start();
-    if ((!this.mIsOrientationLandscape) && (bjeh.jdField_c_of_type_Int > bjeh.b))
+    if ((!this.mIsOrientationLandscape) && (bkur.jdField_c_of_type_Int > bkur.b))
     {
-      bjeh.jdField_c_of_type_Boolean = false;
-      bjeh.a(this);
-      if (bjeh.b()) {
-        bjeh.c(this);
+      bkur.jdField_c_of_type_Boolean = false;
+      bkur.a(this);
+      if (bkur.b()) {
+        bkur.c(this);
       }
       if (this.mNavBar != null) {
         this.mNavBar.requestPortraitLayout();
@@ -507,73 +520,73 @@ public class GameActivity
       return false;
     }
     this.mEngineChannel = ((EngineChannel)((Intent)localObject1).getParcelableExtra("engineChannel"));
-    if (this.gameConfig == null) {
-      this.gameConfig = loadMiniAppConfig((Intent)localObject1);
+    if (this.mGameAppConfig == null) {
+      this.mGameAppConfig = loadMiniAppConfig((Intent)localObject1);
     }
-    this.mPerformanceStatics.setGameConfig(this.gameConfig);
-    if (this.gameConfig == null)
+    this.mPerformanceStatics.setGameConfig(this.mGameAppConfig);
+    if (this.mGameAppConfig == null)
     {
       QLog.e("[minigame] GameActivity", 1, "initDataMustOnResume gameConfig is null");
       return false;
     }
     if (this.mIsFromSplash) {
-      MiniAppUtils.notityPullDownEntryInMainProcess(this.gameConfig);
+      MiniAppUtils.notityPullDownEntryInMainProcess(this.mGameAppConfig);
     }
-    if (this.gameConfig.isShortcutFakeApp())
+    if (this.mGameAppConfig.isShortcutFakeApp())
     {
       QLog.i("[minigame] GameActivity", 1, "GameActivity doOnCreate gameConfig is from Shortcut.");
-      doRequestByAppid(this.gameConfig.config.appId, "", this.gameConfig.config.getVerTypeStr(), this.gameConfig.launchParam);
+      doRequestByAppid(this.mGameAppConfig.config.appId, "", this.mGameAppConfig.config.getVerTypeStr(), this.mGameAppConfig.launchParam);
       return true;
     }
-    if (this.gameConfig.isFromShowInfo())
+    if (this.mGameAppConfig.isFromShowInfo())
     {
-      if (this.gameConfig.link != null) {
-        doRequestByLink(this.gameConfig.link, this.gameConfig.linkType, this.gameConfig.config.getVerTypeStr(), this.gameConfig.launchParam);
+      if (this.mGameAppConfig.link != null) {
+        doRequestByLink(this.mGameAppConfig.link, this.mGameAppConfig.linkType, this.mGameAppConfig.config.getVerTypeStr(), this.mGameAppConfig.launchParam);
       }
       for (;;)
       {
         return true;
-        doRequestByAppid(this.gameConfig.config.appId, this.gameConfig.entryPath, this.gameConfig.config.getVerTypeStr(), this.gameConfig.launchParam);
+        doRequestByAppid(this.mGameAppConfig.config.appId, this.mGameAppConfig.entryPath, this.mGameAppConfig.config.getVerTypeStr(), this.mGameAppConfig.launchParam);
       }
     }
-    if ((this.gameConfig.config != null) && (!TextUtils.isEmpty(this.gameConfig.config.appId))) {
-      if (this.gameConfig.config.debugInfo == null) {
-        break label799;
+    if ((this.mGameAppConfig.config != null) && (!TextUtils.isEmpty(this.mGameAppConfig.config.appId))) {
+      if (this.mGameAppConfig.config.debugInfo == null) {
+        break label792;
       }
     }
-    label799:
-    for (localObject1 = new GameDebugInfo(this.gameConfig.config.debugInfo.wsUrl, this.gameConfig.config.debugInfo.roomId, 0);; localObject1 = null)
+    label792:
+    for (localObject1 = new GameDebugInfo(this.mGameAppConfig.config.debugInfo.wsUrl, this.mGameAppConfig.config.debugInfo.roomId, 0);; localObject1 = null)
     {
-      if (this.gameConfig.config.miniGamePluginInfo != null) {
-        localObject2 = this.gameConfig.config.miniGamePluginInfo;
+      if (this.mGameAppConfig.config.miniGamePluginInfo != null) {
+        localObject2 = this.mGameAppConfig.config.miniGamePluginInfo;
       }
       for (Object localObject2 = Collections.singletonList(new GamePluginInfo(((MiniGamePluginInfo)localObject2).name, ((MiniGamePluginInfo)localObject2).id, ((MiniGamePluginInfo)localObject2).version, ApkgManager.getGpkgPluginFolderPath((MiniGamePluginInfo)localObject2) + File.separator + "plugin.js"));; localObject2 = null)
       {
-        this.mGameInfo = new MiniGameInfo(this.gameConfig.config.appId, this.gameConfig.config.version, this.gameConfig.config.verType, null, (GameDebugInfo)localObject1, (List)localObject2);
-        this.mApkgInfo = new ApkgInfo(GpkgManager.getGpkgFolderPath(this.mGameInfo), this.gameConfig);
-        if (this.gameBrandRuntime == null)
+        this.mGameInfo = new MiniGameInfo(this.mGameAppConfig.config.appId, ApkgManager.getApkgFolderPath(this.mGameAppConfig.config), null, (GameDebugInfo)localObject1, (List)localObject2);
+        this.mApkgInfo = new ApkgInfo(ApkgManager.getApkgFolderPath(this.mGameAppConfig.config), this.mGameAppConfig);
+        if (this.mGameBrandRuntime == null)
         {
-          this.gameBrandRuntime = new GameBrandRuntime(this, this.mApkgInfo);
-          this.gameBrandRuntime.setAppId(this.mApkgInfo.appId);
+          this.mGameBrandRuntime = new GameBrandRuntime(this, this.mApkgInfo);
+          this.mGameBrandRuntime.setAppId(this.mApkgInfo.appId);
         }
-        if (this.gameJsPluginEngine == null) {
-          this.gameJsPluginEngine = getGameJsPluginEngine();
+        if (this.mGameJsPluginEngine == null) {
+          this.mGameJsPluginEngine = getGameJsPluginEngine();
         }
         l = System.currentTimeMillis() - l;
-        MiniReportManager.reportEventType(this.gameConfig, 1032, null, null, null, 0, "1", l, null);
+        MiniReportManager.reportEventType(this.mGameAppConfig, 1032, null, null, null, 0, "1", l, null);
         QLog.e("[minigame][timecost] ", 1, new Object[] { "step[initDataMustOnResume] cost time ", Long.valueOf(l) });
-        this.loadGameStartTime = System.currentTimeMillis();
+        this.mLoadGameStartTime = System.currentTimeMillis();
         if (this.mIsFromSplash) {
           if (PreloadManager.g().getState() == 2)
           {
-            this.mUIHandler.post(new GameActivity.17(this));
+            this.mUIHandler.post(new GameActivity.18(this));
             this.mSplashLoadComplete = true;
             this.mProgressStr = "100%";
           }
         }
         for (;;)
         {
-          ThreadManagerV2.excute(new GameActivity.18(this), 16, null, false);
+          ThreadManagerV2.excute(new GameActivity.19(this), 16, null, false);
           return true;
           if (PreloadManager.g().getState() == 1)
           {
@@ -582,13 +595,13 @@ public class GameActivity
           }
           else
           {
-            MiniProgramLpReportDC04239.reportPageView(this.gameConfig, "1", null, "load_fail", "splash_exit_when_fail");
-            MiniAppReportManager2.reportPageView("2launch_fail", "splash_exit_when_fail", null, this.gameConfig);
+            MiniProgramLpReportDC04239.reportPageView(this.mGameAppConfig, "1", null, "load_fail", "splash_exit_when_fail");
+            MiniAppReportManager2.reportPageView("2launch_fail", "splash_exit_when_fail", null, this.mGameAppConfig);
             QLog.e("[minigame] GameActivity", 1, "initDataMustOnResume exitWhenFail state=" + PreloadManager.g().getState());
             exitWhenFail();
             continue;
             GameLoadManager.g().setEngineChannel(this.mEngineChannel);
-            GameLoadManager.g().start(this.gameConfig, this, this.gameJsPluginEngine);
+            GameLoadManager.g().start(this.mGameAppConfig, this, this.mGameJsPluginEngine);
           }
         }
       }
@@ -599,20 +612,19 @@ public class GameActivity
   {
     if (this.mDebuggerView == null)
     {
-      this.mDebuggerView = ((DragLinearLayout)((ViewStub)findViewById(2131299388)).inflate());
-      this.mDebuggerLayer = findViewById(2131299384);
-      this.mDebuggerStatusTv = ((TextView)findViewById(2131299387));
-      this.mDebuggerEndBtn = ((TextView)findViewById(2131299385));
-      this.mDebuggerEndBtn.setOnClickListener(new GameActivity.27(this));
+      this.mDebuggerView = ((DragLinearLayout)((ViewStub)findViewById(2131364954)).inflate());
+      this.mDebuggerLayer = findViewById(2131364950);
+      this.mDebuggerStatusTv = ((TextView)findViewById(2131364953));
+      this.mDebuggerEndBtn = ((TextView)findViewById(2131364951));
+      this.mDebuggerEndBtn.setOnClickListener(new GameActivity.29(this));
     }
   }
   
   private void initGameUI()
   {
-    if (this.hasInit) {
+    if (this.mHasInitUI) {
       return;
     }
-    boolean bool;
     if ((this.mGameInfo != null) && (GameLoadManager.g().getMiniGamePkg() != null))
     {
       this.mGameInfo.gameConfigJson = GameLoadManager.g().getMiniGamePkg().mGameConfigJson;
@@ -631,7 +643,7 @@ public class GameActivity
             this.vConsoleBtn.requestLandscapeLayout();
           }
         }
-        bool = this.mGameInfo.gameConfigJson.optBoolean("showStatusBar", false);
+        boolean bool = this.mGameInfo.gameConfigJson.optBoolean("showStatusBar", false);
         QLog.i("[minigame] GameActivity", 1, "initGameUI game config showStatusBar=" + bool);
         if (!bool) {
           getWindow().setFlags(1024, 1024);
@@ -653,19 +665,18 @@ public class GameActivity
       j = ((DisplayMetrics)localObject).widthPixels;
       this.mGameDensity = ((DisplayMetrics)localObject).density;
       if (!Build.MANUFACTURER.equalsIgnoreCase("huawei")) {
-        break label596;
+        break label584;
       }
       k = j;
       if (Settings.Secure.getInt(getContentResolver(), "display_notch_status", 0) == 1)
       {
         k = j;
         if (this.mGameInfo.isOrientationLandscape()) {
-          k = j - bajq.a(this);
+          k = j - bbkx.a(this);
         }
       }
       j = k;
     }
-    label670:
     for (;;)
     {
       int m;
@@ -689,34 +700,31 @@ public class GameActivity
       this.mGameHeight = m;
       QLog.d("[minigame] GameActivity", 1, " createGameView width :" + k + " height:" + m);
       this.mGameSurfaceView = this.mTTEngine.createGameView(this, k, m);
-      this.contentView.addView(this.mGameSurfaceView, 0);
+      this.mGameSurfaceView.setId(2131370270);
+      this.mContentView.addView(this.mGameSurfaceView, 0);
       GameVideoPlayerManager.getInstance().init(this, (ViewGroup)this.mGameSurfaceView);
       localObject = this.mTTEngine.getGameLauncher();
       if (localObject != null) {
         ((IGameLauncher)localObject).setCurrentGame(this.mGameInfo);
       }
       this.mTTEngine.addFPSCallback(this.mFpsListener);
-      this.mTTEngine.setEngineListener(new GameActivity.24(this, l));
-      localObject = this.mTTEngine;
-      if (QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameCodeCacheEnable", 1) == 1) {}
-      for (bool = true;; bool = false)
+      this.mTTEngine.setEngineListener(new GameActivity.26(this, l));
+      this.mTTEngine.setEnableCodeCache(GameWnsUtils.isCodeCacheEnable());
+      this.mHasInitUI = true;
+      return;
+      label584:
+      if ((Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) && (Settings.Global.getInt(getContentResolver(), "force_black", 0) == 1))
       {
-        ((ITTEngine)localObject).setEnableCodeCache(bool);
-        this.hasInit = true;
-        return;
-        label596:
-        if ((!Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) || (Settings.Global.getInt(getContentResolver(), "force_black", 0) != 1)) {
-          break label670;
-        }
         QLog.i("[minigame] GameActivity", 1, "xiaomi has notch");
         if (this.mGameInfo.isOrientationLandscape())
         {
-          j -= bajq.a(this);
-          break;
+          j -= bbkx.a(this);
         }
-        k = bajq.a(this);
-        i -= k;
-        break;
+        else
+        {
+          k = bbkx.a(this);
+          i -= k;
+        }
       }
     }
   }
@@ -724,79 +732,82 @@ public class GameActivity
   private void initJsPluginEngine()
   {
     long l = System.currentTimeMillis();
-    if (this.gameBrandRuntime == null)
+    if (this.mGameBrandRuntime == null)
     {
-      this.gameBrandRuntime = new GameBrandRuntime(this, this.mApkgInfo);
-      this.gameBrandRuntime.setAppId(this.mApkgInfo.appId);
+      this.mGameBrandRuntime = new GameBrandRuntime(this, this.mApkgInfo);
+      this.mGameBrandRuntime.setAppId(this.mApkgInfo.appId);
     }
-    if (this.gameJsPluginEngine == null) {
-      this.gameJsPluginEngine = getGameJsPluginEngine();
+    if (this.mGameJsPluginEngine == null) {
+      this.mGameJsPluginEngine = getGameJsPluginEngine();
     }
-    this.gameJsPluginEngine.init();
-    this.gameJsPluginEngine.onCreate(this);
+    this.mGameJsPluginEngine.init();
+    this.mGameJsPluginEngine.onCreate(this);
     MiniAppClientQIPCModule.registerModule();
-    MiniAppClientQIPCModule.getQIPCModule().attachGameJsPluginEngine(this.gameJsPluginEngine);
+    MiniAppClientQIPCModule.getQIPCModule().attachGameJsPluginEngine(this.mGameJsPluginEngine);
     if (this.mNavBar != null) {
-      this.mNavBar.setGameJsPluginEngine(this.gameJsPluginEngine, this.gameBrandRuntime);
+      this.mNavBar.setGameJsPluginEngine(this.mGameJsPluginEngine, this.mGameBrandRuntime);
     }
     syncForceGroundAndRefreshBadge();
     l = System.currentTimeMillis() - l;
-    MiniReportManager.reportEventType(this.gameConfig, 1038, null, null, null, 0, "1", l, null);
+    MiniReportManager.reportEventType(this.mGameAppConfig, 1038, null, null, null, 0, "1", l, null);
     QLog.e("[minigame][timecost] ", 1, new Object[] { "step[initJsPluginEngine] cost time ", Long.valueOf(l) });
   }
   
   private void initNavBar()
   {
-    this.mNavBar = ((NavigatorBarForMiniGame)findViewById(2131304588));
+    this.mNavBar = ((NavigatorBarForMiniGame)findViewById(2131370269));
     this.mNavBar.setApkgInfoAndInit(this.mApkgInfo);
     this.mNavBar.setWindowInfo(fakeWindowInfo());
   }
   
   private void initUI()
   {
-    setContentView(2131493711);
-    this.contentView = ((ViewGroup)findViewById(2131304586));
-    this.mBannerAdContainer = ((FrameLayout)findViewById(2131304584));
-    this.LoadingContainer = ((RelativeLayout)findViewById(2131301060));
-    this.rightContainer = ((RelativeLayout)findViewById(2131299128));
+    setContentView(2131559278);
+    this.mContentView = ((ViewGroup)findViewById(2131370267));
+    this.mBannerAdContainer = ((FrameLayout)findViewById(2131370265));
+    this.mLoadingContainer = ((RelativeLayout)findViewById(2131366671));
+    this.mRightContainer = ((RelativeLayout)findViewById(2131364688));
     Object localObject = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(this, 80.0F), DisplayUtil.dip2px(this, 30.0F));
     ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
-    if (bjeh.b()) {}
+    if (bkur.b()) {}
     for (int i = ImmersiveUtils.getStatusBarHeight(this);; i = 0)
     {
       ((RelativeLayout.LayoutParams)localObject).topMargin = i;
       ((RelativeLayout.LayoutParams)localObject).rightMargin = DisplayUtil.dip2px(this, 12.5F);
-      this.rightContainer.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.mCenterLayout = ((LinearLayout)findViewById(2131298446));
-      this.mBottonLayout = ((LinearLayout)findViewById(2131297823));
-      this.mSplashLayout = ((LinearLayout)findViewById(2131310605));
-      this.mGameInstruction = ((TextView)findViewById(2131301307));
-      this.mGameVersionDesc = ((TextView)findViewById(2131301331));
-      this.mJumpBtn = ((TextView)findViewById(2131303128));
-      this.mMoreView = ((ImageView)findViewById(2131298036));
+      this.mRightContainer.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.mCenterLayout = ((LinearLayout)findViewById(2131364003));
+      this.mBottonLayout = ((LinearLayout)findViewById(2131363369));
+      this.mSplashLayout = ((LinearLayout)findViewById(2131376398));
+      this.mGameInstruction = ((TextView)findViewById(2131366919));
+      this.mGameVersionDesc = ((TextView)findViewById(2131366940));
+      this.mJumpBtn = ((TextView)findViewById(2131368768));
+      this.mMoreView = ((ImageView)findViewById(2131363586));
       this.mMoreView.setOnLongClickListener(this);
-      this.mCloseView = ((ImageView)findViewById(2131297953));
-      this.mNameView = ((TextView)findViewById(2131301313));
-      this.mDeveloperDescView = ((TextView)findViewById(2131299518));
-      this.mDeveloperDescLayout = ((LinearLayout)findViewById(2131299519));
-      this.mLogoView = ((SquareImageView)findViewById(2131303907));
+      this.mCloseView = ((ImageView)findViewById(2131363501));
+      this.mNameView = ((TextView)findViewById(2131366923));
+      this.mDeveloperDescView = ((TextView)findViewById(2131365086));
+      this.mDeveloperDescLayout = ((LinearLayout)findViewById(2131365087));
+      this.mLogoView = ((SquareImageView)findViewById(2131369583));
       this.mLogoView.setRoundRect(sIconSize);
-      this.mProgressTxt = ((TextView)findViewById(2131312636));
-      this.mSplashProgressTxt = ((TextView)findViewById(2131310607));
-      this.mSplashProgressBar = ((ProgressBar)findViewById(2131310604));
+      this.mGameFakeFirstFrame = ((URLImageView)findViewById(2131366918));
+      this.mProgressTxt = ((TextView)findViewById(2131378460));
+      this.mSplashProgressTxt = ((TextView)findViewById(2131376400));
+      this.mSplashProgressBar = ((ProgressBar)findViewById(2131376397));
       this.mMoreView.setOnClickListener(this);
       this.mCloseView.setOnClickListener(this);
       this.mJumpBtn.setOnClickListener(this);
-      new ImmersionBar(this, 0, findViewById(2131310658));
+      new ImmersionBar(this, 0, findViewById(2131376451));
       if ((!TextUtils.isEmpty(MiniAppGlobal.CAPSULE_CLOSE_URL)) && (!TextUtils.isEmpty(MiniAppGlobal.CAPSULE_CLOSE_DARK_URL)))
       {
-        localObject = MiniAppUtils.getIcon(this, MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130840808, 40, 30);
+        localObject = MiniAppUtils.getIcon(this, MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130840865, 40, 30);
         this.mCloseView.setImageDrawable((Drawable)localObject);
       }
-      this.mColorNoteController = new alrv(this, false, true);
+      this.mColorNoteController = new amgo(this, false, true);
       this.mColorNoteController.a(this);
-      this.mColorNoteController.a(new GameActivity.22(this));
       this.mColorNoteController.a(new GameActivity.23(this));
+      this.mColorNoteController.a(new GameActivity.24(this));
+      this.mColorNoteServiceListenr = new GameActivity.25(this);
+      this.mColorNoteController.a(this.mColorNoteServiceListenr);
       this.mVConsoleManager = new VConsoleLogManager();
       VConsoleManager.getInstance().registerLogManager(Process.myPid(), this.mVConsoleManager);
       return;
@@ -811,7 +822,7 @@ public class GameActivity
     this.vConsoleView = new VConsoleView(this);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
     this.vConsoleView.setLayoutParams(localLayoutParams);
-    this.contentView.addView(this.vConsoleView);
+    this.mContentView.addView(this.vConsoleView);
     this.vConsoleView.setVisibility(8);
     this.vConsoleView.bringToFront();
     this.vConsoleBtn.bringToFront();
@@ -822,24 +833,24 @@ public class GameActivity
   private void initVConsoleView()
   {
     this.vConsoleBtn = new VConsoleDragView(this);
-    this.vConsoleBtn.setImageResource(2130840650);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(bajq.b(90.0F), -2);
+    this.vConsoleBtn.setImageResource(2130840686);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(bbkx.b(90.0F), -2);
     localLayoutParams.addRule(11);
     localLayoutParams.addRule(12);
-    localLayoutParams.setMargins(0, 0, bajq.b(12.0F), bajq.b(12.0F));
+    localLayoutParams.setMargins(0, 0, bbkx.b(12.0F), bbkx.b(12.0F));
     this.vConsoleBtn.setLayoutParams(localLayoutParams);
     this.vConsoleBtn.setListener(this);
-    this.contentView.addView(this.vConsoleBtn);
+    this.mContentView.addView(this.vConsoleBtn);
     this.vConsoleBtn.bringToFront();
     this.vConsoleBtn.setVisibility(0);
-    this.mUIHandler.postDelayed(new GameActivity.13(this), 1500L);
+    this.mUIHandler.postDelayed(new GameActivity.14(this), 1500L);
   }
   
   private void injectAccountInfoConfig()
   {
-    if ((this.gameConfig != null) && (this.gameConfig.config != null))
+    if ((this.mGameAppConfig != null) && (this.mGameAppConfig.config != null))
     {
-      String str = "var __wxConfig = __wxConfig || {}; __wxConfig.accountInfo = __wxConfig.accountInfo || {}; \n__wxConfig.accountInfo.appId = '" + this.gameConfig.config.appId + "';\n__wxConfig.accountInfo.icon = '" + this.gameConfig.config.iconUrl + "'; __wxConfig.deviceinfo='" + bfpj.a().f() + "'; __wxConfig.miniapp_version='" + this.gameConfig.config.version + "';";
+      String str = "var __wxConfig = __wxConfig || {}; __wxConfig.accountInfo = __wxConfig.accountInfo || {}; \n__wxConfig.accountInfo.appId = '" + this.mGameAppConfig.config.appId + "';\n__wxConfig.accountInfo.icon = '" + this.mGameAppConfig.config.iconUrl + "'; __wxConfig.deviceinfo='" + bgxq.a().f() + "'; __wxConfig.miniapp_version='" + this.mGameAppConfig.config.version + "';";
       if (QLog.isColorLevel()) {
         QLog.i("[minigame] GameActivity", 1, "injectAccountInfoConfig:" + str);
       }
@@ -848,66 +859,12 @@ public class GameActivity
     }
   }
   
-  private static boolean isFromDesktop(int paramInt)
-  {
-    return (paramInt >= 3001) && (paramInt <= 3010);
-  }
-  
-  private static boolean isInWnsBlackList(int paramInt)
-  {
-    boolean bool2 = false;
-    try
-    {
-      Object localObject = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_exit_confirm_animation_scene_black_list", "");
-      boolean bool1 = bool2;
-      int j;
-      int i;
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = ((String)localObject).split(",");
-        bool1 = bool2;
-        if (localObject != null)
-        {
-          j = localObject.length;
-          i = 0;
-        }
-      }
-      for (;;)
-      {
-        bool1 = bool2;
-        String str;
-        if (i < j) {
-          str = localObject[i];
-        }
-        try
-        {
-          int k = Integer.parseInt(str);
-          if (k == paramInt)
-          {
-            bool1 = true;
-            return bool1;
-          }
-        }
-        catch (Exception localException)
-        {
-          QLog.e("[minigame] GameActivity", 2, "isInWnsBlackList", localException);
-          i += 1;
-        }
-      }
-      return false;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("[minigame] GameActivity", 2, "isInWnsBlackList", localThrowable);
-    }
-  }
-  
   private void launchGame()
   {
     if (!this.mIsForground)
     {
-      MiniProgramLpReportDC04239.reportPageView(this.gameConfig, "1", null, "load_fail", "not_foreground");
-      MiniAppReportManager2.reportPageView("2launch_fail", "not_foreground", null, this.gameConfig);
+      MiniProgramLpReportDC04239.reportPageView(this.mGameAppConfig, "1", null, "load_fail", "not_foreground");
+      MiniAppReportManager2.reportPageView("2launch_fail", "not_foreground", null, this.mGameAppConfig);
       this.mNeedLaunchGameOnResume = true;
       QLog.e("[minigame] GameActivity", 1, "not in forground, donot lauchGame");
     }
@@ -915,16 +872,16 @@ public class GameActivity
     {
       return;
       this.mNeedLaunchGameOnResume = false;
-    } while (this.hasLaunchedGame);
+    } while (this.mHasExecJS);
     NetworkTimeoutInfo localNetworkTimeoutInfo = this.mApkgInfo.mAppConfigInfo.networkTimeoutInfo;
     MiniOkHttpClientFactory.init(localNetworkTimeoutInfo.request, localNetworkTimeoutInfo.uploadFile, localNetworkTimeoutInfo.downloadFile);
-    runOnUiThread(new GameActivity.28(this));
-    this.hasLaunchedGame = true;
+    runOnUiThread(new GameActivity.30(this));
+    this.mHasExecJS = true;
   }
   
   private void lifecycleReport(String paramString)
   {
-    MiniAppConfig localMiniAppConfig = this.gameConfig;
+    MiniAppConfig localMiniAppConfig = this.mGameAppConfig;
     Object localObject = localMiniAppConfig;
     if (localMiniAppConfig == null) {
       localObject = loadMiniAppConfig(getIntent());
@@ -932,7 +889,7 @@ public class GameActivity
     if (localObject != null)
     {
       localObject = new Bundle();
-      ((Bundle)localObject).putParcelable("app_config", this.gameConfig);
+      ((Bundle)localObject).putParcelable("app_config", this.mGameAppConfig);
       QIPCClientHelper.getInstance().callServer("MiniAppTransferModule", paramString, (Bundle)localObject);
     }
   }
@@ -996,22 +953,13 @@ public class GameActivity
     }
   }
   
-  private void performMiniGameClose()
-  {
-    QLog.e("[minigame] GameActivity", 1, "[btn_close, loading page close]");
-    MiniReportManager.reportEventType(this.gameConfig, 1026, "1");
-    MiniProgramLpReportDC04239.reportPageView(this.gameConfig, "1", null, "close", "loading_page");
-    MiniAppReportManager2.reportPageView("2close", "loading_page", null, this.gameConfig);
-    finishActivity();
-  }
-  
   private void reportBannerAd(String paramString)
   {
     QLog.i("[minigame] GameActivity", 1, "reportBannerAd reportUrl = " + paramString);
     if ((TextUtils.isEmpty(paramString)) || (!URLUtil.isNetworkUrl(paramString))) {
       return;
     }
-    ThreadManager.executeOnNetWorkThread(new GameActivity.33(this, paramString));
+    ThreadManager.executeOnNetWorkThread(new GameActivity.35(this, paramString));
   }
   
   private void reportLaunch()
@@ -1041,7 +989,7 @@ public class GameActivity
   
   private void requestFail(long paramLong, String paramString)
   {
-    runOnUiThread(new GameActivity.19(this, paramString, paramLong));
+    runOnUiThread(new GameActivity.20(this, paramString, paramLong));
   }
   
   private void setAppConfig()
@@ -1066,103 +1014,130 @@ public class GameActivity
   {
     this.mProgressTxt.setText(this.mProgressStr);
     this.mSplashProgressTxt.setText(this.mProgressStr);
-    label95:
-    Object localObject;
-    if (this.gameConfig.config != null)
+    label103:
+    Object localObject1;
+    if (this.mGameAppConfig.config != null)
     {
-      this.mNameView.setText(this.gameConfig.config.name);
-      if (this.gameConfig.config.isReportTypeMiniApp())
+      this.mNameView.setText(this.mGameAppConfig.config.name);
+      this.mNameView.setVisibility(0);
+      if (this.mGameAppConfig.config.isReportTypeMiniApp())
       {
         this.mGameInstruction.setVisibility(4);
-        if (!TextUtils.isEmpty(this.gameConfig.config.developerDesc)) {
-          break label268;
+        if (!TextUtils.isEmpty(this.mGameAppConfig.config.developerDesc)) {
+          break label276;
         }
         this.mDeveloperDescLayout.setVisibility(8);
       }
       for (;;)
       {
-        if ((this.gameConfig.config.qualifications != null) && (this.gameConfig.config.qualifications.size() > 0))
+        if ((this.mGameAppConfig.config.qualifications != null) && (this.mGameAppConfig.config.qualifications.size() > 0))
         {
           this.mDeveloperDescLayout.setVisibility(8);
           this.mGameVersionDesc.setVisibility(0);
-          localObject = new StringBuilder();
+          localObject1 = new StringBuilder();
           int i = 0;
           for (;;)
           {
-            if (i < this.gameConfig.config.qualifications.size())
+            if (i < this.mGameAppConfig.config.qualifications.size())
             {
-              if ((i > 0) && (!TextUtils.isEmpty((CharSequence)this.gameConfig.config.qualifications.get(i - 1)))) {
-                ((StringBuilder)localObject).append("\n");
+              if ((i > 0) && (!TextUtils.isEmpty((CharSequence)this.mGameAppConfig.config.qualifications.get(i - 1)))) {
+                ((StringBuilder)localObject1).append("\n");
               }
-              if (!TextUtils.isEmpty((CharSequence)this.gameConfig.config.qualifications.get(i))) {
-                ((StringBuilder)localObject).append((String)this.gameConfig.config.qualifications.get(i));
+              if (!TextUtils.isEmpty((CharSequence)this.mGameAppConfig.config.qualifications.get(i))) {
+                ((StringBuilder)localObject1).append((String)this.mGameAppConfig.config.qualifications.get(i));
               }
               i += 1;
               continue;
               this.mGameInstruction.setVisibility(0);
               break;
-              label268:
+              label276:
               this.mDeveloperDescLayout.setVisibility(0);
-              this.mDeveloperDescView.setText(ajjy.a(2131639224) + this.gameConfig.config.developerDesc + ajjy.a(2131639223));
-              break label95;
+              this.mDeveloperDescView.setText(ajyc.a(2131705009) + this.mGameAppConfig.config.developerDesc + ajyc.a(2131705008));
+              break label103;
             }
           }
-          this.mGameVersionDesc.setText(((StringBuilder)localObject).toString());
+          this.mGameVersionDesc.setText(((StringBuilder)localObject1).toString());
         }
       }
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(this.gameConfig.config.iconUrl))
+      Object localObject2;
+      if (!TextUtils.isEmpty(this.mGameAppConfig.config.iconUrl))
       {
-        if (sDrawableOptions == null)
-        {
-          sDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-          sDrawableOptions.mRequestWidth = sIconSize;
-          sDrawableOptions.mRequestHeight = sIconSize;
-          sDrawableOptions.mFailedDrawable = defaultDrawable;
-          sDrawableOptions.mLoadingDrawable = defaultDrawable;
-        }
-        localObject = URLDecoder.decode(this.gameConfig.config.iconUrl);
+        URLDrawable.URLDrawableOptions.obtain();
+        localObject2 = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = sIconSize;
+        ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = sIconSize;
+        ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = defaultDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = defaultDrawable;
+        localObject1 = URLDecoder.decode(this.mGameAppConfig.config.iconUrl);
       }
       try
       {
-        sGameDrawable = URLDrawable.getDrawable((String)localObject, sDrawableOptions);
-        sGameDrawable.run();
-        this.mLogoView.setImageDrawable(sGameDrawable);
-        if (this.mIsFromSplash)
-        {
-          this.rightContainer.setVisibility(8);
-          this.mBottonLayout.setVisibility(8);
-          this.mCenterLayout.setVisibility(8);
-          this.mSplashLayout.setVisibility(0);
-          this.mJumpBtn.setVisibility(0);
-          if (Build.VERSION.SDK_INT < 16) {
-            break label641;
-          }
-          this.LoadingContainer.setBackground(new BitmapDrawable(getResources(), PreloadManager.g().mSlashPic));
-          if (PreloadManager.g().mStartBtnPic != null)
-          {
-            this.mStartView = ((ImageView)findViewById(2131298116));
-            this.mStartView.setImageDrawable(new BitmapDrawable(getResources(), PreloadManager.g().mStartBtnPic));
-            this.mStartView.setOnClickListener(this);
-            if (this.mSplashLoadComplete) {
-              showStartView();
-            }
+        localObject2 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
+        ((URLDrawable)localObject2).run();
+        this.mLogoView.setImageDrawable((Drawable)localObject2);
+        this.mLogoView.setVisibility(0);
+        localObject1 = getFakeFristFrameUrlByAppid(GameWnsUtils.getFakeFristFrameUrl(), this.mGameAppConfig.config.appId);
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          if (!bfng.a((String)localObject1)) {
+            break label545;
           }
         }
-        return;
-        this.mDeveloperDescLayout.setVisibility(0);
-        this.mGameVersionDesc.setVisibility(4);
       }
-      catch (Exception localException)
+      catch (Throwable localThrowable1)
       {
-        for (;;)
+        try
         {
-          QLog.e("[minigame] GameActivity", 1, "initDataMustOnResume setGameDrawable error, url = " + (String)localObject, localException);
+          URLDrawable.URLDrawableOptions.obtain();
+          localObject2 = URLDrawable.URLDrawableOptions.obtain();
+          ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.mGameFakeFirstFrame.getWidth();
+          ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.mGameFakeFirstFrame.getHeight();
+          Drawable localDrawable = getResources().getDrawable(2131167087);
+          ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = localDrawable;
+          ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = localDrawable;
+          localObject2 = URLDrawable.getDrawable(URLDecoder.decode((String)localObject1), (URLDrawable.URLDrawableOptions)localObject2);
+          ((URLDrawable)localObject2).run();
+          this.mGameFakeFirstFrame.setImageDrawable((Drawable)localObject2);
+          label545:
+          if (this.mIsFromSplash)
+          {
+            this.mRightContainer.setVisibility(8);
+            this.mBottonLayout.setVisibility(8);
+            this.mCenterLayout.setVisibility(8);
+            this.mSplashLayout.setVisibility(0);
+            this.mJumpBtn.setVisibility(0);
+            if (Build.VERSION.SDK_INT < 16) {
+              break label775;
+            }
+            this.mLoadingContainer.setBackground(new BitmapDrawable(getResources(), PreloadManager.g().mSlashPic));
+            if (PreloadManager.g().mStartBtnPic != null)
+            {
+              this.mStartView = ((ImageView)findViewById(2131363668));
+              this.mStartView.setImageDrawable(new BitmapDrawable(getResources(), PreloadManager.g().mStartBtnPic));
+              this.mStartView.setOnClickListener(this);
+              if (this.mSplashLoadComplete) {
+                showStartView();
+              }
+            }
+          }
+          return;
+          this.mDeveloperDescLayout.setVisibility(0);
+          this.mGameVersionDesc.setVisibility(4);
           continue;
-          label641:
-          this.LoadingContainer.setBackgroundDrawable(new BitmapDrawable(getResources(), PreloadManager.g().mSlashPic));
+          localThrowable1 = localThrowable1;
+          QLog.e("[minigame] GameActivity", 1, "initDataMustOnResume setGameDrawable error, url = " + (String)localObject1, localThrowable1);
+        }
+        catch (Throwable localThrowable2)
+        {
+          for (;;)
+          {
+            QLog.e("[minigame] GameActivity", 1, " wnsFakeFirstFrameDrawable error, url = " + (String)localObject1, localThrowable2);
+            continue;
+            label775:
+            this.mLoadingContainer.setBackgroundDrawable(new BitmapDrawable(getResources(), PreloadManager.g().mSlashPic));
+          }
         }
       }
     }
@@ -1180,18 +1155,18 @@ public class GameActivity
     Object localObject1 = "";
     try
     {
-      Object localObject3 = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_upgrade_url", "https://m.q.qq.com/upgrade/{appid}");
+      Object localObject3 = GameWnsUtils.getQQUpdateUrl();
       Object localObject2 = "";
       Object localObject4 = localObject2;
       localObject1 = localObject3;
-      if (this.gameConfig != null)
+      if (this.mGameAppConfig != null)
       {
         localObject4 = localObject2;
         localObject1 = localObject3;
-        if (this.gameConfig.config != null)
+        if (this.mGameAppConfig.config != null)
         {
           localObject1 = localObject3;
-          localObject4 = this.gameConfig.config.appId;
+          localObject4 = this.mGameAppConfig.config.appId;
         }
       }
       localObject2 = localObject3;
@@ -1239,17 +1214,25 @@ public class GameActivity
   
   private void syncForceGroundAndRefreshBadge()
   {
-    ThreadManagerV2.excute(new GameActivity.35(this), 16, null, true);
+    ThreadManagerV2.excute(new GameActivity.37(this), 16, null, true);
   }
   
   private void updateDebuggerStatus(String paramString1, String paramString2, boolean paramBoolean)
   {
-    runOnUiThread(new GameActivity.26(this, paramString1, paramString2, paramBoolean));
+    runOnUiThread(new GameActivity.28(this, paramString1, paramString2, paramBoolean));
+  }
+  
+  protected void changeWindowInfo(MiniAppConfig paramMiniAppConfig)
+  {
+    if (Build.VERSION.SDK_INT < 21) {
+      return;
+    }
+    ThreadManagerV2.excute(new GameActivity.13(this, paramMiniAppConfig), 16, null, false);
   }
   
   public boolean clickMonitorPanel()
   {
-    if (this.contentView != null)
+    if (this.mContentView != null)
     {
       if (this.mMiniAppMonitorInfoView != null) {
         break label100;
@@ -1258,7 +1241,7 @@ public class GameActivity
       this.mMiniAppMonitorInfoView.setMiniAppType(1);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 53;
-      this.contentView.addView(this.mMiniAppMonitorInfoView, localLayoutParams);
+      this.mContentView.addView(this.mMiniAppMonitorInfoView, localLayoutParams);
       this.mMiniAppMonitorInfoView.setVisibility(0);
       this.mMiniAppMonitorInfoView.startRefreshMonitorUi();
     }
@@ -1287,12 +1270,12 @@ public class GameActivity
       QLog.i("[minigame] GameActivity", 1, "createBannerAd");
       this.mBannerAdPosInfo = paramBannerAdPosInfo;
       this.mBannerAdOpInfo = paramAdInfo;
-      this.bannerParams = new ykt();
-      this.bannerParams.jdField_a_of_type_Yjs = getBannerClickParams();
+      this.bannerParams = new ytu();
+      this.bannerParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = getBannerClickParams();
       this.bannerParams.jdField_a_of_type_Int = 0;
       this.bannerParams.b = gameDpTopx(paramBannerAdPosInfo.mAdRealWidth);
       this.bannerParams.jdField_c_of_type_Int = gameDpTopx(paramBannerAdPosInfo.mAdRealHeight);
-      this.mGdtBannerView = ykv.a(this.bannerParams);
+      this.mGdtBannerView = ytw.a(this.bannerParams);
       if (this.mGdtBannerView != null)
       {
         this.bannerParams.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick = new GdtDwellTimeStatisticsAfterClick(new GdtAd(this.mBannerAdOpInfo), new WeakReference(this.mGdtBannerView.a()));
@@ -1330,7 +1313,7 @@ public class GameActivity
   {
     try
     {
-      runOnUiThread(new GameActivity.32(this));
+      runOnUiThread(new GameActivity.34(this));
       this.mGdtBannerView = null;
       this.mGdtDwellTimeStatisticsAfterClick = null;
       this.mBannerAdPosInfo = null;
@@ -1360,30 +1343,15 @@ public class GameActivity
   public void doOnBackPressed()
   {
     QLog.e("[minigame] GameActivity", 1, "[doOnBackPressed]");
-    if (this.gameConfig != null) {
-      if (getLaunchStatus() == 0) {
-        MiniProgramLpReportDC04239.reportPageView(this.gameConfig, "1", null, "load_fail", "loading_page_back_press");
-      }
-    }
-    for (;;)
+    reportOnBackPressed();
+    quitDebugSocket();
+    notifyGameStop();
+    if (this.mIsFromSplash)
     {
-      if (this.mQQDebugSocket != null) {
-        this.mQQDebugSocket.sendQuitDebugMsgInfo();
-      }
-      if (this.mIsFromSplash)
-      {
-        startMainActivity();
-        this.mUIHandler.postDelayed(new GameActivity.31(this), 300L);
-      }
-      moveTaskToBack(true);
-      return;
-      if (getLaunchStatus() == 1)
-      {
-        MiniProgramLpReportDC04239.reportPageView(this.gameConfig, "1", null, "show_fail", "loading_page_back_press");
-        continue;
-        QLog.e("[minigame] GameActivity", 1, "doOnBackPressed gameConfig=null");
-      }
+      startMainActivity();
+      this.mUIHandler.postDelayed(new GameActivity.33(this), 300L);
     }
+    moveTaskToBack(true);
   }
   
   public void doOnConfigurationChanged(Configuration paramConfiguration)
@@ -1395,12 +1363,15 @@ public class GameActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     QLog.i("[minigame] GameActivity", 1, "doOnCreate " + this);
-    this.beginOnCreate = System.currentTimeMillis();
+    this.mBeginOnCreate = System.currentTimeMillis();
+    this.mBroadCastWatcher = new GameActivityStatusWatcher(this);
+    this.mBroadCastWatcher.setOnHomePressedListener(new GameActivity.10(this));
+    this.mBroadCastWatcher.startWatch();
     Intent localIntent = getIntent();
     MiniAppConfig localMiniAppConfig = loadMiniAppConfig(localIntent);
     long l = localIntent.getLongExtra("startDuration", 0L);
     int i = localIntent.getIntExtra("start_mode", 3);
-    l = this.beginOnCreate - l;
+    l = this.mBeginOnCreate - l;
     if (localMiniAppConfig != null) {
       MiniReportManager.reportEventType(localMiniAppConfig, 1030, null, null, null, i, "1", l, null);
     }
@@ -1412,7 +1383,7 @@ public class GameActivity
         MiniProgramLpReportDC04239.reportPageView(localMiniAppConfig, "1", null, "load_fail", "system_version_limit_fail");
         MiniAppReportManager2.reportPageView("2launch_fail", "system_version_limit_fail", null, localMiniAppConfig);
       }
-      bbmy.a(getApplicationContext(), 2131628635, 1).a();
+      bcpw.a(getApplicationContext(), 2131694285, 1).a();
       finish();
       return false;
     }
@@ -1428,8 +1399,8 @@ public class GameActivity
       reportLaunch();
       this.mTTEngine = GameLoadManager.g().getGameEngine();
       this.mActNeedImmersive = false;
-      bjeh.a(this);
-      if (bjeh.b())
+      bkur.a(this);
+      if (bkur.b())
       {
         if ((Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) && ((Build.VERSION.SDK_INT == 26) || (Build.VERSION.SDK_INT == 27))) {
           enableXiaoMiNotch(this);
@@ -1440,8 +1411,7 @@ public class GameActivity
         boolean bool = super.doOnCreate(paramBundle);
         this.mReportHandler = ThreadManager.getSubThreadHandler();
         initUI();
-        initMonitor();
-        l = System.currentTimeMillis() - this.beginOnCreate;
+        l = System.currentTimeMillis() - this.mBeginOnCreate;
         if (localMiniAppConfig != null) {
           MiniReportManager.reportEventType(localMiniAppConfig, 1031, null, null, null, 0, "1", l, null);
         }
@@ -1455,7 +1425,7 @@ public class GameActivity
       {
         QLog.e("[minigame] GameActivity", 1, "[MiniEng]禁用右滑关闭失败:" + localThrowable.getMessage());
         continue;
-        bjeh.c(this);
+        bkur.c(this);
       }
     }
   }
@@ -1469,30 +1439,29 @@ public class GameActivity
     if (this.mTTEngine != null)
     {
       this.mTTEngine.removeFPSCallback(this.mFpsListener);
-      if (killAllGamesWhenDestroy != 1)
+      if (!killAllGamesWhenDestroy)
       {
         QLog.i("[minigame] GameActivity", 1, "[MiniEng]doOnDestroy killAllGamesWhenDestroy :" + killAllGamesWhenDestroy);
-        ThreadManagerV2.excute(new GameActivity.15(this), 16, null, false);
+        ThreadManagerV2.excute(new GameActivity.16(this), 16, null, false);
       }
     }
-    if ((this.gameJsPluginEngine != null) && (this.gameJsPluginEngine.hasInit())) {
-      this.gameJsPluginEngine.onDestroy();
+    if ((this.mGameJsPluginEngine != null) && (this.mGameJsPluginEngine.hasInit())) {
+      this.mGameJsPluginEngine.onDestroy();
     }
     try
     {
-      if (this.mBroadcastReceiver != null) {
-        unregisterReceiver(this.mBroadcastReceiver);
-      }
-      MiniReportManager.reportEventType(this.gameConfig, 22, "1");
-      if (this.gameConfig != null)
+      this.mBroadCastWatcher.stopWatch();
+      WebAudioManager.getInstance().closeAudioContext(this.mTTEngine);
+      MiniReportManager.reportEventType(this.mGameAppConfig, 22, "1");
+      if (this.mGameAppConfig != null)
       {
         if ((getLaunchStatus() == 0) || (getLaunchStatus() == 1))
         {
-          MiniProgramLpReportDC04239.reportPageView(this.gameConfig, "1", null, "load_fail", "loading_page_kill");
-          MiniAppReportManager2.reportPageView("2launch_fail", "loading_page_kill", null, this.gameConfig);
+          MiniProgramLpReportDC04239.reportPageView(this.mGameAppConfig, "1", null, "load_fail", "loading_page_kill");
+          MiniAppReportManager2.reportPageView("2launch_fail", "loading_page_kill", null, this.mGameAppConfig);
         }
-        MiniProgramLpReportDC04239.reportPageView(this.gameConfig, "1", null, "unload", null);
-        MiniAppReportManager2.reportPageView("2unload", null, null, this.gameConfig);
+        MiniProgramLpReportDC04239.reportPageView(this.mGameAppConfig, "1", null, "unload", null);
+        MiniAppReportManager2.reportPageView("2unload", null, null, this.mGameAppConfig);
         MiniProgramLpReportDC04239.deleteRecordDurationMsg();
         VConsoleManager.getInstance().unRegisterLogManager(Process.myPid());
         if (this.mGdtBannerView != null) {
@@ -1501,11 +1470,11 @@ public class GameActivity
         if (this.mColorNoteController != null) {
           this.mColorNoteController.c();
         }
-        if (killAllGamesWhenDestroy == 1)
+        if (killAllGamesWhenDestroy)
         {
           QLog.i("[minigame] GameActivity", 1, "[MiniEng]doOnDestroy killProcess  :");
           QLog.e("[minigame] GameActivity", 1, "doOnDestroy kill process" + getGameInfo());
-          this.mUIHandler.postDelayed(new GameActivity.16(this), 300L);
+          this.mUIHandler.postDelayed(new GameActivity.17(this), 300L);
         }
         return;
       }
@@ -1559,15 +1528,16 @@ public class GameActivity
       if (l > 0L)
       {
         this.mOnFirstBlackScreenReport = false;
-        MiniReportManager.reportEventType(this.gameConfig, 1018, null, null, null, 0, "1", l, null);
+        MiniReportManager.reportEventType(this.mGameAppConfig, 1018, null, null, null, 0, "1", l, null);
         QLog.e("[minigame] GameActivity", 1, "doOnPause blackTimeDuration " + l);
       }
     }
     this.mIsEngineResumed = false;
     this.mTTEngine.onPause();
-    if ((this.gameJsPluginEngine != null) && (this.gameJsPluginEngine.hasInit())) {
-      this.gameJsPluginEngine.onPause();
+    if ((this.mGameJsPluginEngine != null) && (this.mGameJsPluginEngine.hasInit())) {
+      this.mGameJsPluginEngine.onPause();
     }
+    notifyGameOnHide();
     if (this.mGdtBannerView != null) {
       this.mGdtBannerView.a(this);
     }
@@ -1576,36 +1546,37 @@ public class GameActivity
     if ((this.mOnFirstHide) && (this.mOnShowTime > 0L))
     {
       this.mOnFirstHide = false;
-      MiniReportManager.reportEventType(this.gameConfig, 1016, "1");
+      MiniReportManager.reportEventType(this.mGameAppConfig, 1016, "1");
       l = System.currentTimeMillis() - this.mOnShowTime;
       if (l > 0L) {
-        MiniReportManager.reportEventType(this.gameConfig, 1020, null, null, null, 0, "1", l, null);
+        MiniReportManager.reportEventType(this.mGameAppConfig, 1020, null, null, null, 0, "1", l, null);
       }
     }
     l = System.currentTimeMillis() - this.mOnShowTime;
     if ((l > 0L) && (this.mOnShowTime > 0L)) {
-      MiniReportManager.reportEventType(this.gameConfig, 1021, null, null, null, 0, "1", l, null);
+      MiniReportManager.reportEventType(this.mGameAppConfig, 1021, null, null, null, 0, "1", l, null);
     }
     l = Storage.getCurrentStorageSize(GameInfoManager.g().getAppId());
-    if ((l >= 0L) && (!sStorageReport))
+    if ((l >= 0L) && (!mHasStorageReport))
     {
-      sStorageReport = true;
-      MiniReportManager.reportEventType(this.gameConfig, 639, null, String.valueOf(l), null, 1, "1", 0L, null);
+      mHasStorageReport = true;
+      MiniReportManager.reportEventType(this.mGameAppConfig, 639, null, String.valueOf(l), null, 1, "1", 0L, null);
     }
-    MiniReportManager.reportEventType(this.gameConfig, 20, "1");
+    MiniReportManager.reportEventType(this.mGameAppConfig, 20, "1");
     if (this.mOnShowReported)
     {
       this.mOnShowReported = false;
-      MiniProgramLpReportDC04239.reportPageView(this.gameConfig, "1", null, "hide", null);
+      MiniProgramLpReportDC04239.reportPageView(this.mGameAppConfig, "1", null, "hide", null);
     }
     for (;;)
     {
-      MiniAppReportManager2.reportPageView("2hide", null, null, this.gameConfig);
+      MiniAppReportManager2.reportPageView("2hide", null, null, this.mGameAppConfig);
       MiniProgramLpReportDC04239.deleteRecordDurationMsg();
       if (this.mColorNoteController != null) {
         this.mColorNoteController.b();
       }
-      aluq.a(this, 2, true);
+      WebAudioManager.getInstance().suspendAudioContext(this.mTTEngine);
+      amkg.a(BaseApplicationImpl.getContext(), 2, true);
       return;
       QLog.e("[minigame] GameActivity", 1, "no need report product onHide, mOnShowReported=false");
     }
@@ -1614,28 +1585,28 @@ public class GameActivity
   public void doOnResume()
   {
     super.doOnResume();
-    this.beginOnResume = System.currentTimeMillis();
+    this.mBeginOnResume = System.currentTimeMillis();
     Intent localIntent = getIntent();
-    if ((this.gameConfig == null) && (localIntent != null)) {
-      this.gameConfig = loadMiniAppConfig(localIntent);
+    if ((this.mGameAppConfig == null) && (localIntent != null)) {
+      this.mGameAppConfig = loadMiniAppConfig(localIntent);
     }
-    MiniAppReportManager2.reportPageView("2show", "bring_to_front", null, this.gameConfig);
-    MiniReportManager.reportEventType(this.gameConfig, 1, "1");
-    bbqo.a(this);
+    MiniAppReportManager2.reportPageView("2show", "bring_to_front", null, this.mGameAppConfig);
+    MiniReportManager.reportEventType(this.mGameAppConfig, 1, "1");
+    bctn.a(this);
     lifecycleReport("launch_report_app_resume");
     long l;
-    label245:
+    label249:
     ResultReceiver localResultReceiver;
-    label306:
+    label310:
     int i;
-    if (!this.mHasInited)
+    if (!this.mHasInitDataMustOnResume)
     {
       if (!initDataMustOnResume())
       {
-        if (this.gameConfig != null)
+        if (this.mGameAppConfig != null)
         {
-          MiniProgramLpReportDC04239.reportPageView(this.gameConfig, "1", null, "load_fail", "init_data_fail");
-          MiniAppReportManager2.reportPageView("2launch_fail", "init_data_fail", null, this.gameConfig);
+          MiniProgramLpReportDC04239.reportPageView(this.mGameAppConfig, "1", null, "load_fail", "init_data_fail");
+          MiniAppReportManager2.reportPageView("2launch_fail", "init_data_fail", null, this.mGameAppConfig);
         }
         QLog.e("[minigame] GameActivity", 1, "doOnResume initDataMustOnResume==false finishactivity");
         return;
@@ -1644,16 +1615,17 @@ public class GameActivity
       if ((this.mGameInfo != null) && (getEnableDebug()) && (this.vConsoleBtn == null)) {
         initVConsoleView();
       }
-      this.mHasInited = true;
-      MiniReportManager.reportEventType(this.gameConfig, 1013, "1");
-      AppBrandProxy.g().setMiniAppConfig(this.gameConfig);
-      changeWindowInfo(this.gameConfig);
+      this.mHasInitDataMustOnResume = true;
+      MiniReportManager.reportEventType(this.mGameAppConfig, 1013, "1");
+      AppBrandProxy.g().setMiniAppConfig(this.mGameAppConfig);
+      changeWindowInfo(this.mGameAppConfig);
       callEngineOnResume();
-      if ((this.gameJsPluginEngine != null) && (this.gameJsPluginEngine.hasInit())) {
-        this.gameJsPluginEngine.onResume();
+      if ((this.mGameJsPluginEngine != null) && (this.mGameJsPluginEngine.hasInit())) {
+        this.mGameJsPluginEngine.onResume();
       }
+      notifyGameOnShow();
       if (localIntent == null) {
-        break label680;
+        break label696;
       }
       l = localIntent.getLongExtra("startDuration", 0L);
       if ((l != 0L) && (MiniAppMonitorInfoView.sStartTime != l))
@@ -1665,27 +1637,28 @@ public class GameActivity
         this.mGdtBannerView.b(this);
       }
       if (localIntent == null) {
-        break label685;
+        break label701;
       }
       localResultReceiver = (ResultReceiver)localIntent.getParcelableExtra("receiver");
       if (localResultReceiver != null) {
         localResultReceiver.send(0, new Bundle());
       }
-      if ((this.gameConfig != null) && (this.gameConfig.config != null) && (!TextUtils.isEmpty(this.gameConfig.config.appId)))
+      if ((this.mGameAppConfig != null) && (this.mGameAppConfig.config != null) && (!TextUtils.isEmpty(this.mGameAppConfig.config.appId)))
       {
         if (localIntent == null) {
-          break label691;
+          break label707;
         }
         i = localIntent.getIntExtra("start_mode", 3);
-        label372:
+        label376:
         if (i != 3) {
-          break label696;
+          break label712;
         }
-        MiniAppStartState.setProcessLoad(this.gameConfig.config.appId, false);
+        MiniAppStartState.setProcessLoad(this.mGameAppConfig.config.appId, false);
       }
     }
     for (;;)
     {
+      WebAudioManager.getInstance().resumeAudioContext(this.mTTEngine);
       this.mIsForground = true;
       if (this.mNeedLaunchGameOnResume) {
         launchGame();
@@ -1693,44 +1666,44 @@ public class GameActivity
       if (this.mColorNoteController != null) {
         this.mColorNoteController.a();
       }
-      aluq.a(this, 2, false);
-      l = System.currentTimeMillis() - this.beginOnResume;
-      if (!this.hasReportStepOnResume)
+      amkg.a(BaseApplicationImpl.getContext(), 2, false);
+      l = System.currentTimeMillis() - this.mBeginOnResume;
+      if (!this.mHasReportStepOnResume)
       {
-        this.hasReportStepOnResume = true;
-        MiniReportManager.reportEventType(this.gameConfig, 1035, null, null, null, 0, "1", l, null);
+        this.mHasReportStepOnResume = true;
+        MiniReportManager.reportEventType(this.mGameAppConfig, 1035, null, null, null, 0, "1", l, null);
       }
       QLog.e("[minigame][timecost] ", 1, new Object[] { "step[onResume] cost time ", Long.valueOf(l), ", include steps[initDataMustOnResume, setupUI] " + getGameInfo() });
-      GameGrowthGuardianManager.executeBegin(this, this.gameConfig);
+      GameGrowthGuardianManager.executeBegin(this, this.mGameAppConfig);
       return;
       this.mOnShowTime = System.currentTimeMillis();
-      MiniReportManager.reportEventType(this.gameConfig, 21, "1");
+      MiniReportManager.reportEventType(this.mGameAppConfig, 21, "1");
       if ((getLaunchStatus() == 2) && (this.mOnShowTime - this.mLastOnShowReportTime > this.mOnShowReportInterval))
       {
         this.mOnShowReported = true;
-        MiniProgramLpReportDC04239.reportPageView(this.gameConfig, "1", null, "show", "bring_to_front");
+        MiniProgramLpReportDC04239.reportPageView(this.mGameAppConfig, "1", null, "show", "bring_to_front");
       }
       for (;;)
       {
         if (getLaunchStatus() == 2) {
-          MiniAppReportManager2.reportPageView("2launch", "click_resume", null, this.gameConfig);
+          MiniAppReportManager2.reportPageView("2launch", "click_resume", null, this.mGameAppConfig);
         }
         this.mLastOnShowReportTime = this.mOnShowTime;
         MiniGdtReporter.report(GameInfoManager.g().getMiniAppConfig(), 0);
         break;
         QLog.e("[minigame] GameActivity", 1, "no need report product onShow, less than interval " + this.mOnShowReportInterval + " getLaunchStatus=" + getLaunchStatus());
       }
-      label680:
-      l = 0L;
-      break label245;
-      label685:
-      localResultReceiver = null;
-      break label306;
-      label691:
-      i = 3;
-      break label372;
       label696:
-      MiniAppStartState.setProcessLoad(this.gameConfig.config.appId, true);
+      l = 0L;
+      break label249;
+      label701:
+      localResultReceiver = null;
+      break label310;
+      label707:
+      i = 3;
+      break label376;
+      label712:
+      MiniAppStartState.setProcessLoad(this.mGameAppConfig.config.appId, true);
     }
   }
   
@@ -1742,46 +1715,41 @@ public class GameActivity
     if (localObject == null)
     {
       QLog.e("[minigame] GameActivity", 1, "doOnStart intent==null return....");
-      if (this.gameConfig != null)
+      if (this.mGameAppConfig != null)
       {
-        MiniProgramLpReportDC04239.reportPageView(this.gameConfig, "1", null, "load_fail", "start_no_intent");
-        MiniAppReportManager2.reportPageView("2launch_fail", "start_no_intent", null, this.gameConfig);
+        MiniProgramLpReportDC04239.reportPageView(this.mGameAppConfig, "1", null, "load_fail", "start_no_intent");
+        MiniAppReportManager2.reportPageView("2launch_fail", "start_no_intent", null, this.mGameAppConfig);
       }
       return;
     }
-    if (killAllGamesWhenReuse == 0) {}
-    for (int i = 1;; i = 0)
+    if (killAllGamesWhenReuse)
     {
-      if (i != 0)
+      MiniAppConfig localMiniAppConfig = this.mGameAppConfig;
+      localObject = loadMiniAppConfig((Intent)localObject);
+      if ((localObject != null) && (((MiniAppConfig)localObject).config != null) && (((MiniAppConfig)localObject).config.appId != null) && (localMiniAppConfig != null) && (localMiniAppConfig.config != null) && (!((MiniAppConfig)localObject).config.appId.equals(localMiniAppConfig.config.appId)))
       {
-        MiniAppConfig localMiniAppConfig = this.gameConfig;
-        localObject = loadMiniAppConfig((Intent)localObject);
-        if ((localObject != null) && (((MiniAppConfig)localObject).config != null) && (((MiniAppConfig)localObject).config.appId != null) && (localMiniAppConfig != null) && (localMiniAppConfig.config != null) && (!((MiniAppConfig)localObject).config.appId.equals(localMiniAppConfig.config.appId)))
-        {
-          QLog.e("[minigame] GameActivity", 1, "doOnStart gameConfig exception, kill self current ====> " + localMiniAppConfig + " <=== newGameConfig ====>" + localObject);
-          MiniProgramLpReportDC04239.reportPageView((MiniAppConfig)localObject, "1", null, "load_fail", "appid_conflict");
-          MiniAppReportManager2.reportPageView("2launch_fail", "appid_conflict", null, this.gameConfig);
-          finish();
-          finishMiniProcesses(true);
-          Process.killProcess(Process.myPid());
-        }
+        QLog.e("[minigame] GameActivity", 1, "doOnStart gameConfig exception, kill self current ====> " + localMiniAppConfig + " <=== newGameConfig ====>" + localObject);
+        MiniProgramLpReportDC04239.reportPageView((MiniAppConfig)localObject, "1", null, "load_fail", "appid_conflict");
+        MiniAppReportManager2.reportPageView("2launch_fail", "appid_conflict", null, this.mGameAppConfig);
+        finish();
+        finishMiniProcesses(true);
+        Process.killProcess(Process.myPid());
       }
-      if (this.mApkgInfo != null) {
-        syncForceGroundAndRefreshBadge();
-      }
-      MiniAppBannerIPCModule.notifyEnterForeground(this.mApkgInfo);
-      this.mPerformanceStatics.startReport();
-      return;
     }
+    if (this.mApkgInfo != null) {
+      syncForceGroundAndRefreshBadge();
+    }
+    MiniAppBannerIPCModule.notifyEnterForeground(this.mApkgInfo);
+    this.mPerformanceStatics.startReport();
   }
   
   public void doOnStop()
   {
     super.doOnStop();
-    ThreadManagerV2.excute(new GameActivity.14(this), 16, null, true);
+    ThreadManagerV2.excute(new GameActivity.15(this), 16, null, true);
     MiniAppBannerIPCModule.notifyEnterBackground(this.mApkgInfo);
     this.mPerformanceStatics.stopReport();
-    GameGrowthGuardianManager.executeEnd(this, this.gameConfig);
+    GameGrowthGuardianManager.executeEnd(this, this.mGameAppConfig);
     this.mColorNoteController.o();
   }
   
@@ -1801,7 +1769,7 @@ public class GameActivity
       if (QLog.isColorLevel()) {
         QLog.d("TAG", 2, "gameactivity doRefreshMiniBadge appID : " + str);
       }
-      if (this.gameBrandRuntime.appId.equals(str))
+      if (this.mGameBrandRuntime.appId.equals(str))
       {
         int i = paramBundle.getInt("param_proc_badge_count");
         if (QLog.isColorLevel()) {
@@ -1820,7 +1788,7 @@ public class GameActivity
     if (this.mIsFromSplash)
     {
       startMainActivity();
-      this.mUIHandler.postDelayed(new GameActivity.30(this), 300L);
+      this.mUIHandler.postDelayed(new GameActivity.32(this), 300L);
       return;
     }
     finish();
@@ -1831,7 +1799,7 @@ public class GameActivity
     return this.mBannerAdPosInfo;
   }
   
-  public alrv getColorNoteController()
+  public amgo getColorNoteController()
   {
     return this.mColorNoteController;
   }
@@ -1846,7 +1814,7 @@ public class GameActivity
   
   public GameBrandRuntime getGameBrandRuntime()
   {
-    return this.gameBrandRuntime;
+    return this.mGameBrandRuntime;
   }
   
   public JSONObject getGameConfigJson()
@@ -1869,9 +1837,9 @@ public class GameActivity
       ((WindowManager)getSystemService("window")).getDefaultDisplay().getRealMetrics(localDisplayMetrics);
     }
     this.mGameDensity = localDisplayMetrics.density;
-    QLog.i("[minigame] GameActivity", 1, "density = " + localDisplayMetrics.density + ", ViewUtils.density = " + bajq.a() + ", screenW = " + localDisplayMetrics.widthPixels + ", screenH = " + localDisplayMetrics.heightPixels);
-    if (this.mGameDensity != bajq.a()) {
-      this.mReportHandler.post(new GameActivity.36(this));
+    QLog.i("[minigame] GameActivity", 1, "density = " + localDisplayMetrics.density + ", ViewUtils.density = " + bbkx.a() + ", screenW = " + localDisplayMetrics.widthPixels + ", screenH = " + localDisplayMetrics.heightPixels);
+    if (this.mGameDensity != bbkx.a()) {
+      this.mReportHandler.post(new GameActivity.38(this));
     }
     return this.mGameDensity;
   }
@@ -1893,16 +1861,21 @@ public class GameActivity
   
   public KeyboardLayout getKeyboard()
   {
-    if (this.keyboardLayout == null)
+    if (this.mKeyboardLayout == null)
     {
-      this.keyboardLayout = new KeyboardLayout(this);
+      this.mKeyboardLayout = new KeyboardLayout(this);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
       localLayoutParams.addRule(12);
-      this.contentView.addView(this.keyboardLayout, localLayoutParams);
-      this.mSoftKeyboardStateHelper = new avwj(this.contentView);
+      this.mContentView.addView(this.mKeyboardLayout, localLayoutParams);
+      this.mSoftKeyboardStateHelper = new awwc(this.mContentView);
       this.mSoftKeyboardStateHelper.a(this.mListener);
     }
-    return this.keyboardLayout;
+    return this.mKeyboardLayout;
+  }
+  
+  public String getLaunchResult()
+  {
+    return String.valueOf(this.mLaunchResult);
   }
   
   public String getMenuStyle()
@@ -1912,8 +1885,8 @@ public class GameActivity
   
   public String getMiniGameAppId()
   {
-    if ((this.gameConfig != null) && (this.gameConfig.config != null)) {
-      return this.gameConfig.config.appId;
+    if ((this.mGameAppConfig != null) && (this.mGameAppConfig.config != null)) {
+      return this.mGameAppConfig.config.appId;
     }
     return "";
   }
@@ -1921,46 +1894,6 @@ public class GameActivity
   public NavigatorBarForMiniGame getNavBar()
   {
     return this.mNavBar;
-  }
-  
-  public boolean handleMiniGameCloseButtonClick(DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if ((this.mApkgInfo != null) && (this.mApkgInfo.appConfig != null) && (this.mApkgInfo.appConfig.launchParam != null) && ((this.mApkgInfo.appConfig.launchParam.scene == 2001) || (this.mApkgInfo.appConfig.launchParam.scene == 1001) || (isFromDesktop(this.mApkgInfo.appConfig.launchParam.scene)) || (isInWnsBlackList(this.mApkgInfo.appConfig.launchParam.scene)))) {}
-    int i;
-    do
-    {
-      return false;
-      i = StorageUtil.getPreference().getInt("pref_key_mini_game_close_confirm_exposure_times", 0);
-    } while (i >= MINI_GAME_CLOSE_CONFIRM_EXPOSURE_TIMES_THRESHOLD);
-    bafb localbafb = babr.a(this, 230);
-    Object localObject = new URLImageView(this);
-    ((URLImageView)localObject).setImageDrawable(URLDrawable.getDrawable(QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_exit_confirm_animation_image_url", "https://qzonestyle.gtimg.cn/aoi/sola/20191114160727_AqDlaIYOnx.gif"), true));
-    ((URLImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-    ((URLImageView)localObject).setAdjustViewBounds(true);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    if (getIsOrientationLandscape())
-    {
-      localLayoutParams.width = (getResources().getDisplayMetrics().heightPixels / 2);
-      localLayoutParams.height = ((int)(localLayoutParams.width / 1.05F));
-    }
-    localLayoutParams.gravity = 1;
-    TextView localTextView = new TextView(this);
-    localTextView.setText(Html.fromHtml(getApplicationContext().getString(2131628619)), TextView.BufferType.SPANNABLE);
-    localTextView.setTextColor(Color.parseColor("#02081B"));
-    localTextView.setGravity(17);
-    localTextView.setTypeface(Typeface.DEFAULT, 1);
-    LinearLayout localLinearLayout = new LinearLayout(this);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.addView((View)localObject, localLayoutParams);
-    localLinearLayout.addView(localTextView, new LinearLayout.LayoutParams(-2, -2));
-    localObject = new LinearLayout.LayoutParams(-2, -2);
-    ((LinearLayout.LayoutParams)localObject).gravity = 17;
-    localbafb.setCancelable(false);
-    localbafb.setTitle(null).setMessage(null).addView(localLinearLayout, (LinearLayout.LayoutParams)localObject).setPositiveButton(2131628775, new GameActivity.3(this, paramOnClickListener));
-    localbafb.getBtnight().setTypeface(Typeface.DEFAULT, 1);
-    localbafb.show();
-    StorageUtil.getPreference().edit().putInt("pref_key_mini_game_close_confirm_exposure_times", i + 1).apply();
-    return true;
   }
   
   public boolean hideBannerAd()
@@ -1980,49 +1913,90 @@ public class GameActivity
   
   public void hideKeyBoard()
   {
-    if ((this.keyboardLayout != null) && (this.keyboardLayout.getVisibility() == 0))
+    if ((this.mKeyboardLayout != null) && (this.mKeyboardLayout.getVisibility() == 0))
     {
-      KeyboardHandler.get().hideSoftInput(this, this.keyboardLayout.getInputET());
-      this.keyboardLayout.setVisibility(8);
+      KeyboardHandler.get().hideSoftInput(this, this.mKeyboardLayout.getInputET());
+      this.mKeyboardLayout.setVisibility(8);
     }
   }
   
-  protected void initMonitor()
+  public void hideMiniAIOEntrance()
   {
-    this.mBroadcastReceiver = new GameActivity.MonitorBroadcastReceiver(this);
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("action.qq.miniapp.show.monitorview");
-    registerReceiver(this.mBroadcastReceiver, localIntentFilter);
+    if (this.miniAIOEntryView != null)
+    {
+      this.miniAIOEntryView.setVisibility(8);
+      this.miniAIOEntryView.destroy();
+      this.miniAIOEntryView = null;
+    }
+  }
+  
+  public void notifyGameOnHide()
+  {
+    if ((this.mGameJsPluginEngine != null) && (this.mGameJsPluginEngine.hasInit()))
+    {
+      QLog.e("[minigame] GameActivity", 1, "onHide()");
+      this.mGameJsPluginEngine.callJsApi("onAppEnterBackground", null);
+    }
+  }
+  
+  public void notifyGameOnShow()
+  {
+    JSONObject localJSONObject;
+    StringBuilder localStringBuilder;
+    if ((this.mGameJsPluginEngine != null) && (this.mGameJsPluginEngine.hasInit()))
+    {
+      localJSONObject = GameInfoManager.g().getOnShowParam();
+      localStringBuilder = new StringBuilder().append("onShow(");
+      if (localJSONObject != null) {
+        break label78;
+      }
+    }
+    label78:
+    for (String str = "";; str = localJSONObject.toString())
+    {
+      QLog.e("[minigame] GameActivity", 1, str + ")");
+      this.mGameJsPluginEngine.callJsApi("onAppEnterForeground", localJSONObject);
+      return;
+    }
+  }
+  
+  public void notifyGameStop()
+  {
+    if ((this.mGameJsPluginEngine != null) && (this.mGameJsPluginEngine.hasInit()))
+    {
+      QLog.e("[minigame] GameActivity", 1, "onAppStop()");
+      this.mGameJsPluginEngine.callJsApi("onAppStop", null);
+    }
   }
   
   public void onBaseLibAndGameReady()
   {
-    if (!GameLoadManager.g().isGameReadyStart(this.gameConfig))
+    if (!GameLoadManager.g().isGameReadyStart(this.mGameAppConfig))
     {
       QLog.e("[minigame] GameActivity", 1, "onLoadFail finish game Activity!");
-      MiniProgramLpReportDC04239.reportPageView(this.gameConfig, "1", null, "load_fail", "not_ready");
-      MiniAppReportManager2.reportPageView("2launch_fail", "not_ready", null, this.gameConfig);
+      MiniProgramLpReportDC04239.reportPageView(this.mGameAppConfig, "1", null, "load_fail", "not_ready");
+      MiniAppReportManager2.reportPageView("2launch_fail", "not_ready", null, this.mGameAppConfig);
       return;
     }
-    if (badq.a(getActivity()) == 0)
+    if (bbev.a(getActivity()) == 0)
     {
-      if (!this.gameConfig.config.isSupportOffline)
+      if (!this.mGameAppConfig.config.isSupportOffline)
       {
-        MiniProgramLpReportDC04239.reportPageView(this.gameConfig, "1", null, "load_fail", "offline_not_support");
-        MiniAppReportManager2.reportPageView("2launch_fail", "offline_not_support", null, this.gameConfig);
-        bbmy.a(this, ajjy.a(2131639214), 0).a();
+        MiniProgramLpReportDC04239.reportPageView(this.mGameAppConfig, "1", null, "load_fail", "offline_not_support");
+        MiniAppReportManager2.reportPageView("2launch_fail", "offline_not_support", null, this.mGameAppConfig);
+        bcpw.a(this, ajyc.a(2131704999), 0).a();
         return;
       }
-      if (!GpkgManager.isOfflineResourceReady(this.gameConfig))
+      if (!GpkgManager.isOfflineResourceReady(this.mGameAppConfig))
       {
-        MiniProgramLpReportDC04239.reportPageView(this.gameConfig, "1", null, "load_fail", "offline_not_ready");
-        MiniAppReportManager2.reportPageView("2launch_fail", "offline_not_ready", null, this.gameConfig);
-        bbmy.a(this, ajjy.a(2131639219), 0).a();
+        MiniProgramLpReportDC04239.reportPageView(this.mGameAppConfig, "1", null, "load_fail", "offline_not_ready");
+        MiniAppReportManager2.reportPageView("2launch_fail", "offline_not_ready", null, this.mGameAppConfig);
+        bcpw.a(this, ajyc.a(2131705004), 0).a();
         return;
       }
     }
-    QLog.i("[minigame] GameActivity", 1, "[MiniEng] Start Game! Engine:" + GameLoadManager.g().getEngine());
-    runOnUiThread(new GameActivity.11(this));
+    QLog.i("[minigame] GameActivity", 1, "[MiniEng] Start Game! SO Engine:" + GameLoadManager.g().getEngine());
+    runOnUiThread(new GameActivity.12(this));
   }
   
   public void onClick(View paramView)
@@ -2037,7 +2011,7 @@ public class GameActivity
         do
         {
           return;
-        } while (handleMiniGameCloseButtonClick(new GameActivity.4(this)));
+        } while ((GameCloseManager.showAlertViewForBattleGame(this, this.mGameAppConfig, new GameActivity.3(this))) || (GameCloseManager.showPullDownGuideDialog(this, this.mGameAppConfig, new GameActivity.4(this))));
         performMiniGameClose();
         return;
         QLog.e("[minigame] GameActivity", 1, "[jump_btn, loading page close]");
@@ -2055,8 +2029,8 @@ public class GameActivity
   
   public void onEngineLoad(boolean paramBoolean, String paramString, int paramInt)
   {
-    long l = System.currentTimeMillis() - this.loadGameStartTime;
-    paramString = this.gameConfig;
+    long l = System.currentTimeMillis() - this.mLoadGameStartTime;
+    paramString = this.mGameAppConfig;
     if (paramBoolean) {}
     for (int i = 0;; i = -1)
     {
@@ -2077,8 +2051,8 @@ public class GameActivity
   
   public void onGpkgLoad(boolean paramBoolean, String paramString)
   {
-    long l = System.currentTimeMillis() - this.loadGameStartTime;
-    paramString = this.gameConfig;
+    long l = System.currentTimeMillis() - this.mLoadGameStartTime;
+    paramString = this.mGameAppConfig;
     if (paramBoolean) {}
     for (int i = 0;; i = -1)
     {
@@ -2096,8 +2070,8 @@ public class GameActivity
   
   public void onInitRuntimeDone()
   {
-    long l = System.currentTimeMillis() - this.loadGameStartTime;
-    MiniReportManager.reportEventType(this.gameConfig, 1037, null, null, null, 0, "1", l, null);
+    long l = System.currentTimeMillis() - this.mLoadGameStartTime;
+    MiniReportManager.reportEventType(this.mGameAppConfig, 1037, null, null, null, 0, "1", l, null);
     QLog.e("[minigame][timecost] ", 1, new Object[] { "[MiniEng] step[init runTime] cost time ", Long.valueOf(l), ", include steps[load baseLib, load gpkg]" });
     if (this.mIsFromSplash)
     {
@@ -2110,8 +2084,8 @@ public class GameActivity
   
   public void onJsPluginEngineLoad(boolean paramBoolean, String paramString)
   {
-    long l = System.currentTimeMillis() - this.loadGameStartTime;
-    paramString = this.gameConfig;
+    long l = System.currentTimeMillis() - this.mLoadGameStartTime;
+    paramString = this.mGameAppConfig;
     if (paramBoolean) {}
     for (int i = 0;; i = -1)
     {
@@ -2123,33 +2097,37 @@ public class GameActivity
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt == 4) && (GameWnsUtils.needBackPressHint(GameInfoManager.g().getAppId())))
+    if (paramInt == 4)
     {
-      long l = System.currentTimeMillis();
-      if (l - this.mFirstBackPressTime > 2000L)
+      notifyGameStop();
+      if (GameWnsUtils.needBackPressHint(GameInfoManager.g().getAppId()))
       {
-        if (!TextUtils.isEmpty(this.mBackPressHint)) {
-          bbmy.a(this, 0, this.mBackPressHint, 0).a();
+        long l = System.currentTimeMillis();
+        if (l - this.mFirstBackPressTime > 2000L)
+        {
+          if (!TextUtils.isEmpty(this.mBackPressHint)) {
+            bcpw.a(this, 0, this.mBackPressHint, 0).a();
+          }
+          this.mFirstBackPressTime = l;
+          if ((this.mGameJsPluginEngine != null) && (this.mGameJsPluginEngine.getGameJsRuntime(1) != null)) {
+            this.mGameJsPluginEngine.getGameJsRuntime(1).evaluateSubcribeJS("onPause", "{}", -1);
+          }
+          return true;
         }
-        this.mFirstBackPressTime = l;
-        if ((this.gameJsPluginEngine != null) && (this.gameJsPluginEngine.getGameJsRuntime(1) != null)) {
-          this.gameJsPluginEngine.getGameJsRuntime(1).evaluateSubcribeJS("onPause", "{}", -1);
+      }
+      if (this.mGameAppConfig != null)
+      {
+        if (getLaunchStatus() != 2) {
+          break label141;
         }
-        return true;
+        MiniAppReportManager2.reportPageView("2back_key", "inner_page", null, this.mGameAppConfig);
       }
-    }
-    if (this.gameConfig != null)
-    {
-      if (getLaunchStatus() != 2) {
-        break label137;
-      }
-      MiniAppReportManager2.reportPageView("2back_key", "inner_page", null, this.gameConfig);
     }
     for (;;)
     {
       return super.onKeyUp(paramInt, paramKeyEvent);
-      label137:
-      MiniAppReportManager2.reportPageView("2back_key", "loading_page", null, this.gameConfig);
+      label141:
+      MiniAppReportManager2.reportPageView("2back_key", "loading_page", null, this.mGameAppConfig);
     }
   }
   
@@ -2222,6 +2200,39 @@ public class GameActivity
     this.mVConsoleManager.updateVconsoleView(this.vConsoleView, this.vConsoleBtn, true);
   }
   
+  protected void performMiniGameClose()
+  {
+    QLog.e("[minigame] GameActivity", 1, "[btn_close, loading page close]");
+    MiniReportManager.reportEventType(this.mGameAppConfig, 1026, "1");
+    MiniProgramLpReportDC04239.reportPageView(this.mGameAppConfig, "1", null, "close", "loading_page");
+    MiniAppReportManager2.reportPageView("2close", "loading_page", null, this.mGameAppConfig);
+    notifyGameStop();
+    finishActivity();
+  }
+  
+  protected void quitDebugSocket()
+  {
+    if (this.mQQDebugSocket != null) {
+      this.mQQDebugSocket.sendQuitDebugMsgInfo();
+    }
+  }
+  
+  protected void reportOnBackPressed()
+  {
+    if (this.mGameAppConfig != null)
+    {
+      if (getLaunchStatus() == 0) {
+        MiniProgramLpReportDC04239.reportPageView(this.mGameAppConfig, "1", null, "load_fail", "loading_page_back_press");
+      }
+      while (getLaunchStatus() != 1) {
+        return;
+      }
+      MiniProgramLpReportDC04239.reportPageView(this.mGameAppConfig, "1", null, "show_fail", "loading_page_back_press");
+      return;
+    }
+    QLog.e("[minigame] GameActivity", 1, "reportOnBackPressed gameConfig=null");
+  }
+  
   public void setColorNoteWithOutMoveTaskToBackThisTime()
   {
     this.doNotMoveTaskToBackThisTime = true;
@@ -2286,7 +2297,6 @@ public class GameActivity
       else if ((!this.mHasNewAd) && (this.mBannerAdContainer.getChildCount() > 0))
       {
         this.mBannerAdContainer.setVisibility(0);
-        QLog.e("[minigame] GameActivity", 1, "showBannerAd, just set visible");
         bool = true;
       }
       else
@@ -2313,17 +2323,51 @@ public class GameActivity
     }
   }
   
+  public boolean showMiniAIOEntrance(JSONObject paramJSONObject)
+  {
+    int i = -10;
+    Object localObject = "";
+    int j;
+    if (paramJSONObject != null)
+    {
+      j = (int)(this.mGameDensity * paramJSONObject.optInt("x", -10) + 0.5F);
+      i = (int)(this.mGameDensity * paramJSONObject.optInt("y", -10) + 0.5F);
+    }
+    for (paramJSONObject = paramJSONObject.optString("style");; paramJSONObject = (JSONObject)localObject)
+    {
+      localObject = new RelativeLayout.LayoutParams(-2, -2);
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = j;
+      ((RelativeLayout.LayoutParams)localObject).topMargin = i;
+      if ((j < 0) || (i < 0)) {
+        return false;
+      }
+      if (this.miniAIOEntryView == null)
+      {
+        this.miniAIOEntryView = new MiniAIOEntryView(this, paramJSONObject);
+        this.mContentView.addView(this.miniAIOEntryView, (ViewGroup.LayoutParams)localObject);
+      }
+      for (;;)
+      {
+        return true;
+        this.miniAIOEntryView.setStyle(paramJSONObject);
+        this.miniAIOEntryView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.mContentView.requestLayout();
+      }
+      j = -10;
+    }
+  }
+  
   public void startLoadGame()
   {
     QLog.e("[minigame] GameActivity", 1, "--startLoadGame--");
-    if ((this.mGameInfo != null) && (this.mGameInfo.needOpenDebugSocket()) && (this.gameConfig != null) && (this.gameConfig.launchParam != null) && (this.gameConfig.launchParam.scene == 1011))
+    if ((this.mGameInfo != null) && (this.mGameInfo.needOpenDebugSocket()) && (this.mGameAppConfig != null) && (this.mGameAppConfig.launchParam != null) && (this.mGameAppConfig.launchParam.scene == 1011))
     {
       QLog.e("[minigame] GameActivity", 1, "startLoadGame on ide debug mode");
       this.mQQDebugSocket = new QQDebugWebSocket(this.mGameInfo, GameEngineLoadTask.g(this).getInspectorAgentWrapper());
-      if ((this.gameJsPluginEngine != null) && (this.gameJsPluginEngine.hasInit())) {
-        this.gameJsPluginEngine.registerPlugin(this.mQQDebugSocket.jsPlugin);
+      if ((this.mGameJsPluginEngine != null) && (this.mGameJsPluginEngine.hasInit())) {
+        this.mGameJsPluginEngine.registerPlugin(this.mQQDebugSocket.jsPlugin);
       }
-      this.mQQDebugSocket.startConnectIDE(new GameActivity.25(this));
+      this.mQQDebugSocket.startConnectIDE(new GameActivity.27(this));
       return;
     }
     QLog.e("[minigame] GameActivity", 1, "startLoadGame on real mode");
@@ -2365,7 +2409,7 @@ public class GameActivity
       this.mBannerAdPosInfo.mAdTop = paramInt2;
       continue;
       this.mBannerAdPosInfo.mAdRealWidth = paramInt2;
-      this.mBannerAdPosInfo.mAdRealHeight = ykv.a(0, paramInt2);
+      this.mBannerAdPosInfo.mAdRealHeight = ytw.a(0, paramInt2);
       continue;
       label275:
       bool = true;

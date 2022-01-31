@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark.setting;
 
-import alat;
-import alhx;
+import alpf;
+import alwl;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -18,15 +18,15 @@ public class ArkAuthorityInfoActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131493077);
-    super.setTitle(2131624635);
+    setContentView(2131558629);
+    super.setTitle(2131690189);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("intent_extra_authority_app_name");
-    ((TextView)super.findViewById(2131297233)).setText(getString(2131624647, new Object[] { this.jdField_a_of_type_JavaLangString }));
+    ((TextView)super.findViewById(2131362773)).setText(getString(2131690201, new Object[] { this.jdField_a_of_type_JavaLangString }));
     int i = 0;
     while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
     {
-      paramBundle = (FormSwitchItem)super.findViewById(new int[] { 2131297228, 2131297224, 2131297227, 2131297225, 2131297226 }[i]);
-      int j = alat.a(this.jdField_a_of_type_JavaLangString, jdField_a_of_type_ArrayOfJavaLangString[i], this.app.getCurrentAccountUin());
+      paramBundle = (FormSwitchItem)super.findViewById(new int[] { 2131362768, 2131362764, 2131362767, 2131362765, 2131362766 }[i]);
+      int j = alpf.a(this.jdField_a_of_type_JavaLangString, jdField_a_of_type_ArrayOfJavaLangString[i], this.app.getCurrentAccountUin());
       if (j == 0)
       {
         paramBundle.setVisibility(8);
@@ -39,7 +39,7 @@ public class ArkAuthorityInfoActivity
         for (boolean bool = true;; bool = false)
         {
           paramBundle.setChecked(bool);
-          paramBundle.setOnCheckedChangeListener(new alhx(this, i));
+          paramBundle.setOnCheckedChangeListener(new alwl(this, i));
           break;
         }
       }

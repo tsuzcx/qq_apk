@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import awrn;
+import axrl;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -12,7 +12,7 @@ public class ScanEntranceReport$8
     HashMap localHashMap = new HashMap();
     localHashMap.put("upload_count", String.valueOf(this.jdField_a_of_type_Int));
     localHashMap.put("zoom_count", String.valueOf(this.b));
-    awrn.a(BaseApplication.getContext()).a("", "scanner_qr_success", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+    axrl.a(BaseApplication.getContext()).a("", "scanner_qr_success", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
   }
 }
 

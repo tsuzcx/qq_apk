@@ -1,31 +1,20 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
-import java.lang.ref.WeakReference;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.SeekBar;
+import com.tencent.av.ui.BeautyToolbar;
 
 public class mcb
-  implements Animation.AnimationListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  public mcb(BeautyToolbar paramBeautyToolbar) {}
   
-  public mcb(EffectFilterTextPager paramEffectFilterTextPager, View paramView)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    krx.c("EffectFilterTextPager", "onAnimationEnd :" + localView + "|" + paramAnimation);
-    if (localView != null) {
-      localView.setVisibility(4);
+    if ((this.a.mIs1stShow) && (this.a.mSeek != null) && (this.a.mSeek.getWidth() > 0))
+    {
+      this.a.mIs1stShow = false;
+      this.a.updateTip(this.a.mSeek.getProgress());
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,24 +1,24 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import eipc.EIPCResult;
+import java.util.HashMap;
 
-final class ahcj
-  implements Animation.AnimationListener
+class ahcj
+  implements ahbu
 {
-  ahcj(View paramView, Animation paramAnimation) {}
+  ahcj(ahci paramahci, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, HashMap<String, PreloadManager.PathResult> paramHashMap)
   {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result_code", paramInt);
+    localBundle.putSerializable("path_result", paramHashMap);
+    this.jdField_a_of_type_Ahci.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahcj
  * JD-Core Version:    0.7.0.1
  */

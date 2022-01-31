@@ -1,89 +1,121 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.drawer.IntimateInfoChatDrawer.2;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Vector;
+import mqq.os.MqqHandler;
 
 public class adfv
-  extends VasQuickUpdateManager.CallBacker
+  extends adfs
 {
-  public adfv(adfe paramadfe) {}
+  private acwp jdField_a_of_type_Acwp;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public adfv(BaseChatPie paramBaseChatPie)
   {
-    int i = 1;
-    String str;
-    if (paramLong == 21L)
+    super(paramBaseChatPie);
+  }
+  
+  private void l()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aeoo))
     {
-      paramString3 = "";
-      paramString2 = Integer.valueOf(0);
-      if (!paramString1.startsWith("poke.item.effect.")) {
-        break label245;
+      aeoo localaeoo = (aeoo)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+      if (localaeoo.a != null) {
+        localaeoo.a.d(1);
       }
-      str = paramString1.substring("poke.item.effect.".length(), paramString1.length());
-      paramVasQuickUpdateManager = Integer.valueOf(str);
-      paramString2 = paramVasQuickUpdateManager;
-      paramString3 = str;
-      if (!adll.c.contains(paramVasQuickUpdateManager)) {
-        break label337;
-      }
-      adll.c.remove(paramVasQuickUpdateManager);
-      paramString3 = str;
-      paramString2 = paramVasQuickUpdateManager;
-      paramInt2 = 1;
     }
-    for (;;)
+    ThreadManager.getSubThreadHandler().post(new IntimateInfoChatDrawer.2(this));
+  }
+  
+  protected View a()
+  {
+    this.jdField_a_of_type_Acwp = new adfw(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    if (this.jdField_a_of_type_Acwp.a() == null) {}
+    this.jdField_a_of_type_Acwp.a(1);
+    return this.jdField_a_of_type_Acwp.a();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Acwp != null) {
+      this.jdField_a_of_type_Acwp.a();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (this.jdField_a_of_type_Acwp != null) {
+      this.jdField_a_of_type_Acwp.a(paramInt1, paramInt2, paramIntent);
+    }
+  }
+  
+  public void e()
+  {
+    super.e();
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, String.format("onDrawerOpened, needReqIntimateInfo: %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
+    }
+    if (this.jdField_a_of_type_Acwp != null)
     {
-      if ((!TextUtils.isEmpty(paramString3)) && (paramInt2 != 0) && (!adll.c.contains(paramString2)) && (!adll.c.contains(paramString2)))
+      this.jdField_a_of_type_Acwp.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Acwp.b();
+      if (this.jdField_a_of_type_Boolean)
       {
-        if (adll.a("bubble", paramString2.intValue())) {
-          break label318;
-        }
-        paramInt2 = 1;
-        label142:
-        if (adll.a("/normal.png", paramString2.intValue())) {
-          break label324;
-        }
-        label155:
-        boolean bool = adll.b.contains(paramString2);
-        paramString3 = this.a.a;
-        if ((paramInt2 == 0) || (i == 0) || (!bool)) {
-          break label330;
-        }
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Acwp.d();
+        this.jdField_a_of_type_Acwp.p();
       }
-      label318:
-      label324:
-      label330:
-      for (paramString2 = ajjy.a(2131639495);; paramString2 = "")
+    }
+    l();
+  }
+  
+  public void g()
+  {
+    super.g();
+    if (this.jdField_a_of_type_Acwp != null)
+    {
+      this.jdField_a_of_type_Acwp.b = true;
+      this.jdField_a_of_type_Acwp.f();
+    }
+  }
+  
+  public void h()
+  {
+    super.h();
+    if (this.jdField_a_of_type_Acwp != null)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Acwp.e();
+    }
+  }
+  
+  public void i()
+  {
+    if (this.jdField_a_of_type_Acwp != null)
+    {
+      if (a())
       {
-        bajo.a(paramString3, paramString2);
-        if (QLog.isColorLevel()) {
-          QLog.d("GivingHeart", 2, "vas poke download id: " + paramString1 + " , errorcode: " + paramInt1);
-        }
-        return;
-        label245:
-        if (!paramString1.startsWith("poke.item.res.")) {
-          break label337;
-        }
-        str = paramString1.substring("poke.item.res.".length(), paramString1.length());
-        paramVasQuickUpdateManager = Integer.valueOf(str);
-        paramString2 = paramVasQuickUpdateManager;
-        paramString3 = str;
-        if (!adll.d.contains(paramVasQuickUpdateManager)) {
-          break label337;
-        }
-        adll.d.remove(paramVasQuickUpdateManager);
-        paramString3 = str;
-        paramString2 = paramVasQuickUpdateManager;
-        paramInt2 = 1;
-        break;
-        paramInt2 = 0;
-        break label142;
-        i = 0;
-        break label155;
+        this.jdField_a_of_type_Acwp.d();
+        this.jdField_a_of_type_Acwp.p();
       }
-      label337:
-      paramInt2 = 0;
+      this.jdField_a_of_type_Acwp.h();
+    }
+  }
+  
+  public void j()
+  {
+    if (this.jdField_a_of_type_Acwp != null) {
+      this.jdField_a_of_type_Acwp.i();
+    }
+  }
+  
+  public void k()
+  {
+    if (this.jdField_a_of_type_Acwp != null) {
+      this.jdField_a_of_type_Acwp.g();
     }
   }
 }

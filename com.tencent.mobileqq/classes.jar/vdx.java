@@ -1,11 +1,17 @@
-import android.graphics.Bitmap;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class vdx
+class vdx
+  implements View.OnClickListener
 {
-  public int a;
-  public List<String> a;
-  public List<Bitmap> b;
+  vdx(vdu paramvdu) {}
+  
+  public void onClick(View paramView)
+  {
+    if (vdu.a(this.a) != null) {
+      vdu.a(this.a).h();
+    }
+  }
 }
 
 

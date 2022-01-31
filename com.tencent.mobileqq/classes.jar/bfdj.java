@@ -1,21 +1,54 @@
 import android.content.Context;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.model.RenderInfo;
+import java.util.Map;
 
-final class bfdj
+@begt(a="ApkgLoadAsyncTask")
+public class bfdj
+  extends bfeq
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  bfdg jdField_a_of_type_Bfdg;
-  bfdi jdField_a_of_type_Bfdi;
+  private bejy jdField_a_of_type_Bejy;
+  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+  private boolean jdField_a_of_type_Boolean;
   
-  bfdj(Context paramContext, bfdi parambfdi, bfdg parambfdg)
+  public bfdj(Context paramContext, bepv parambepv)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bfdi = parambfdi;
-    this.jdField_a_of_type_Bfdg = parambfdg;
+    super(paramContext, parambepv);
+  }
+  
+  public bejy a()
+  {
+    return this.jdField_a_of_type_Bejy;
+  }
+  
+  public void a() {}
+  
+  public void a(MiniAppInfo paramMiniAppInfo)
+  {
+    bexz.a(206, "", a().getMiniAppInfoForReport());
+    besl.b("AppRuntimeLoader", "ApkgLoadAsyncTask start loadApkgByConfig");
+    if ((this.jdField_a_of_type_Boolean) && (paramMiniAppInfo != null) && (paramMiniAppInfo.supportNativeRenderMode()))
+    {
+      besl.b("AppRuntimeLoader", "ApkgLoadAsyncTask use flutter url:" + (String)paramMiniAppInfo.renderInfo.a.get(Integer.valueOf(1)));
+      paramMiniAppInfo.downloadUrl = ((String)paramMiniAppInfo.renderInfo.a.get(Integer.valueOf(1)));
+    }
+    beip.a().a(a(), this.jdField_a_of_type_Boolean, paramMiniAppInfo, new bfdk(this, paramMiniAppInfo));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void c()
+  {
+    super.c();
+    bexz.a(207, "", a().getMiniAppInfoForReport());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfdj
  * JD-Core Version:    0.7.0.1
  */

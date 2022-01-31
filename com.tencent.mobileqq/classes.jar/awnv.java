@@ -1,112 +1,55 @@
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.splashad.SplashADUtil.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import java.util.Set;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import java.util.List;
 
 public class awnv
+  implements awof
 {
-  public static long a;
-  private static boolean a;
-  private static long b;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public static int a(Context paramContext)
+  public awnv(String paramString, int paramInt)
   {
-    paramContext = (WindowManager)paramContext.getSystemService("window");
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
-    return paramContext.getDefaultDisplay().getWidth();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static long a(Context paramContext)
+  public int a()
   {
-    if (b == 0L) {
-      b = PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("splash_ad_uin_long", 0L);
-    }
-    return b;
+    return 0;
   }
   
-  private static void a() {}
-  
-  public static void a(int paramInt, String paramString)
+  public String a()
   {
-    ThreadManager.excute(new SplashADUtil.1(paramInt, paramString), 128, null, false);
+    return ajyc.a(2131705369);
   }
   
-  public static void a(Context paramContext)
+  public List<awog> a()
   {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().remove("splash_ad_uin_long").apply();
-    b = 0L;
+    return null;
   }
   
-  public static void a(Context paramContext, long paramLong)
+  public void a(View paramView)
   {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putLong("splash_ad_uin_long", paramLong).apply();
-    b = paramLong;
+    Intent localIntent = new Intent((Activity)paramView.getContext(), SearchContactsActivity.class);
+    localIntent.putExtra("start_search_key", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("jump_src_key", 0);
+    localIntent.putExtra("fromType", this.jdField_a_of_type_Int);
+    ((Activity)paramView.getContext()).startActivity(localIntent);
+    awvy.a(this.jdField_a_of_type_JavaLangString, 0, 0, paramView);
+    axqw.b(null, "CliOper", "", "", "0X80061B7", "0X80061B7", 0, 0, "", "", "", "");
   }
   
-  public static boolean a(Activity paramActivity)
+  public String b()
   {
-    boolean bool2 = false;
-    Object localObject = paramActivity.getIntent();
-    paramActivity = ((Intent)localObject).getCategories();
-    localObject = ((Intent)localObject).getAction();
-    QLog.i("SplashAD", 1, "categories " + paramActivity + " action " + (String)localObject);
-    boolean bool1 = bool2;
-    if (paramActivity != null)
-    {
-      bool1 = bool2;
-      if (paramActivity.contains("android.intent.category.LAUNCHER"))
-      {
-        bool1 = bool2;
-        if (localObject != null)
-        {
-          bool1 = bool2;
-          if (((String)localObject).equals("android.intent.action.MAIN")) {
-            bool1 = true;
-          }
-        }
-      }
-    }
-    bool2 = bool1;
-    if (!bool1)
-    {
-      bool2 = bool1;
-      if (paramActivity == null)
-      {
-        bool2 = bool1;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          bool2 = true;
-        }
-      }
-    }
-    QLog.e("SplashAD", 1, "fromLaucher " + bool2);
-    return bool2;
-  }
-  
-  public static void b(Context paramContext)
-  {
-    if (!a)
-    {
-      TVK_SDKMgr.initSdk(paramContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-      a();
-      a = true;
-    }
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awnv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,10 @@
 package com.google.android.filament.gltfio;
 
 import com.google.android.filament.Engine;
-import java.lang.reflect.Method;
 
 public class MaterialProvider
 {
-  private static Method sEngineGetNativeObject;
   private long mNativeObject;
-  
-  static
-  {
-    try
-    {
-      sEngineGetNativeObject = Engine.class.getDeclaredMethod("getNativeObject", new Class[0]);
-      sEngineGetNativeObject.setAccessible(true);
-      return;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException) {}
-  }
   
   public MaterialProvider(Engine paramEngine)
   {

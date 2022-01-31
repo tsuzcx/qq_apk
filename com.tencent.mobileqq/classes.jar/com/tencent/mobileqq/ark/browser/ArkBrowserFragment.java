@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ark.browser;
 
-import alfx;
-import algb;
+import aadp;
+import aaet;
+import alul;
+import alup;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbaq;
-import bbbt;
-import bbcm;
+import bcdq;
+import bcet;
+import bcfm;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import ztw;
-import zva;
 
 public class ArkBrowserFragment
   extends WebViewFragment
@@ -24,7 +24,7 @@ public class ArkBrowserFragment
     super.a(paramInt1, paramInt2, paramIntent);
     Object localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
     String str = b();
-    if (TextUtils.isEmpty(zva.a(str))) {}
+    if (TextUtils.isEmpty(aaet.a(str))) {}
     do
     {
       do
@@ -32,18 +32,18 @@ public class ArkBrowserFragment
         return;
         localObject = ((WebViewPluginEngine)localObject).a(str);
       } while (localObject == null);
-      localObject = (algb)((ztw)localObject).a(algb.class, false);
+      localObject = (alup)((aadp)localObject).a(alup.class, false);
     } while (localObject == null);
-    ((algb)localObject).a(paramIntent, (byte)paramInt1, paramInt2);
+    ((alup)localObject).a(paramIntent, (byte)paramInt1, paramInt2);
   }
   
   public void c()
   {
-    bbbt localbbbt = (bbbt)this.jdField_a_of_type_Bbaq.a(4);
-    if (localbbbt != null)
+    bcet localbcet = (bcet)this.jdField_a_of_type_Bcdq.a(4);
+    if (localbcet != null)
     {
-      localbbbt.a(new alfx(this));
-      localbbbt.a(b(), this.jdField_a_of_type_Bbcm.a);
+      localbcet.a(new alul(this));
+      localbcet.a(b(), this.jdField_a_of_type_Bcfm.a);
     }
   }
   

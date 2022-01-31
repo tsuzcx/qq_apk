@@ -1,25 +1,75 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class apfk
-  implements apca
+  implements awwp
 {
-  public apfk(QfileEditBottomBar paramQfileEditBottomBar) {}
+  protected int a;
+  protected View a;
+  protected ImageView a;
+  protected TextView a;
+  protected TextView b;
   
-  public void a()
+  public apfk() {}
+  
+  public apfk(ViewGroup paramViewGroup)
   {
-    QfileEditBottomBar.a(this.a).a().a(QfileEditBottomBar.a(this.a));
-    if (this.a.a != null) {
-      this.a.a.c();
-    }
-    aonm.b();
-    QfileEditBottomBar.a(this.a).h();
-    QfileEditBottomBar.a(this.a).f(false);
-    QfileEditBottomBar.a(this.a).b();
+    this.jdField_a_of_type_Int = 2131562390;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, paramViewGroup, false);
+    a();
   }
   
-  public void b() {}
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public View a(String paramString)
+  {
+    return null;
+  }
+  
+  public ImageView a()
+  {
+    return null;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  protected void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367776));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377350));
+    this.jdField_a_of_type_AndroidWidgetTextView.setEditableFactory(ayks.a);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365043));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131377420).setVisibility(8);
+  }
+  
+  public ImageView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView b()
+  {
+    return null;
+  }
+  
+  public TextView c()
+  {
+    return this.b;
+  }
+  
+  public TextView d()
+  {
+    return null;
+  }
 }
 
 

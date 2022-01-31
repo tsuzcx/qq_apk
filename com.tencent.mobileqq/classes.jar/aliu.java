@@ -1,72 +1,66 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.util.LruCache;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 class aliu
-  extends Handler
+  implements aysa
 {
-  aliu(alis paramalis, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  aliu(alit paramalit, alix paramalix, aliw paramaliw) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onResp(aysx paramaysx)
   {
-    if (paramMessage.what == 1000) {
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList.size());
-        paramMessage.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
-        this.a.a(paramMessage);
-      }
-    }
-    Object localObject;
-    String str;
-    do
+    if (paramaysx.jdField_a_of_type_Int == 3)
     {
-      this.a.jdField_a_of_type_JavaUtilArrayList.removeAll(paramMessage);
-      for (;;)
+      QLog.i("AREngine_ARResourceDownload", 1, "Download init. url = " + ((ayrv)paramaysx.jdField_a_of_type_Aysw).jdField_a_of_type_JavaLangString);
+      return;
+    }
+    synchronized (alit.a(this.jdField_a_of_type_Alit))
+    {
+      int i;
+      if (alit.a(this.jdField_a_of_type_Alit) != null)
       {
-        return;
-        if (paramMessage.what == 1002) {
-          try
-          {
-            localObject = (Bundle)paramMessage.obj;
-            paramMessage = (Bitmap)((Bundle)localObject).getParcelable("bmp");
-            str = ((Bundle)localObject).getString("uin");
-            localObject = ((Bundle)localObject).getString("path");
-            if (paramMessage != null) {
-              this.a.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(str, paramMessage);
-            }
-            Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-            while (localIterator.hasNext())
-            {
-              aliw localaliw = (aliw)localIterator.next();
-              if (localaliw != null) {
-                localaliw.a(str, (String)localObject, paramMessage);
-              }
-            }
-            if (!QLog.isColorLevel()) {}
+        i = 0;
+        if (i < alit.a(this.jdField_a_of_type_Alit).size())
+        {
+          if (!((alix)alit.a(this.jdField_a_of_type_Alit).get(i)).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Alix.jdField_a_of_type_JavaLangString)) {
+            break label268;
           }
-          catch (Exception paramMessage) {}
+          alit.a(this.jdField_a_of_type_Alit).remove(i);
         }
       }
-      QLog.e("NonMainAppHeadLoader", 2, "refreshImg, exception:" + paramMessage.toString());
+      if (paramaysx.jdField_a_of_type_Int == 0)
+      {
+        ??? = new File(((ayrv)paramaysx.jdField_a_of_type_Aysw).c);
+        String str = aurl.a(((File)???).getAbsolutePath());
+        if (((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_Alix.b))) && (this.jdField_a_of_type_Alix.jdField_a_of_type_Int != 1))
+        {
+          QLog.i("AREngine_ARResourceDownload", 1, "Download end. MD5 check error. url = " + ((ayrv)paramaysx.jdField_a_of_type_Aysw).jdField_a_of_type_JavaLangString + ", fileName = " + ((File)???).getAbsolutePath() + ", fileMD5 = " + str);
+          this.jdField_a_of_type_Aliw.a(false, this.jdField_a_of_type_Alix);
+          return;
+          label268:
+          i += 1;
+        }
+      }
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Aliw.a(bool, this.jdField_a_of_type_Alix);
       return;
-    } while (!QLog.isColorLevel());
-    QLog.d("NonMainAppHeadLoader", 2, "refreshImg, uin:" + str + ", path=" + (String)localObject);
+    }
+  }
+  
+  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARResourceDownload", 2, "onUpdateProgeress. url = " + ((ayrv)paramaysw).jdField_a_of_type_JavaLangString + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
+    }
+    this.jdField_a_of_type_Aliw.a(paramLong1, paramLong2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aliu
  * JD-Core Version:    0.7.0.1
  */

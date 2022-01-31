@@ -1,122 +1,60 @@
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotSearch;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeBiuCommentView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
 
 public class pjz
-  extends BaseAdapter
+  extends TextBase
 {
-  private List<ppk> jdField_a_of_type_JavaUtilList;
+  private final int jdField_a_of_type_Int = -16578534;
+  private NativeBiuCommentView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView;
+  private final int b = 5;
   
-  public pjz(ComponentContentHotSearch paramComponentContentHotSearch) {}
-  
-  public ppk a(int paramInt)
+  public pjz(VafContext paramVafContext)
   {
-    return (ppk)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    super(paramVafContext);
+    this.mTextSize = Utils.dp2px(16.0D);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView = new NativeBiuCommentView(paramVafContext.getContext());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.setTextColor(-16578534);
   }
   
-  public void a(List<ppk> paramList)
+  public void a(pax parampax)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    notifyDataSetChanged();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.setModel(parampax);
   }
   
-  public int getCount()
+  public int getComMeasuredHeight()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.getComMeasuredHeight();
   }
   
-  public long getItemId(int paramInt)
+  public int getComMeasuredWidth()
   {
-    return paramInt;
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.getComMeasuredWidth();
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public View getNativeView()
   {
-    Object localObject1;
-    if (0 == 0)
-    {
-      paramView = new pka(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch);
-      localObject1 = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131494378, null);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131302452));
-      paramView.b = ((TextView)((View)localObject1).findViewById(2131311622));
-      ((View)localObject1).setOnClickListener(paramView);
-      ((View)localObject1).setTag(paramView);
-      paramViewGroup = paramView;
-      paramView = (View)localObject1;
-    }
-    for (;;)
-    {
-      localObject1 = a(paramInt);
-      if (!TextUtils.isEmpty(((ppk)localObject1).jdField_a_of_type_JavaLangString)) {
-        paramViewGroup.b.setText(((ppk)localObject1).jdField_a_of_type_JavaLangString);
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt + 1 + "");
-      Object localObject2 = paramViewGroup.jdField_a_of_type_AndroidWidgetTextView;
-      int i;
-      if (!TextUtils.isEmpty(((ppk)localObject1).c))
-      {
-        i = Color.parseColor(((ppk)localObject1).c);
-        label161:
-        ((TextView)localObject2).setTextColor(i);
-        localObject2 = new GradientDrawable();
-        ((GradientDrawable)localObject2).setShape(0);
-        ((GradientDrawable)localObject2).setCornerRadius(azvv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch.getContext(), 2.0F));
-        if (TextUtils.isEmpty(((ppk)localObject1).d)) {
-          break label402;
-        }
-        i = Color.parseColor(((ppk)localObject1).d);
-        ((GradientDrawable)localObject2).setColor(i);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable((Drawable)localObject2);
-        paramViewGroup.jdField_a_of_type_Ppk = ((ppk)localObject1);
-        if (!((ppk)localObject1).jdField_a_of_type_Boolean)
-        {
-          ((ppk)localObject1).jdField_a_of_type_Boolean = true;
-          paramViewGroup = obz.a(((ppk)localObject1).jdField_a_of_type_JavaLangString, ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).innerUniqueID, paramInt + 1);
-        }
-      }
-      try
-      {
-        ndn.a(null, "CliOper", "", "", "0X80096DC", "0X80096DC", 0, 0, "", "", "", paramViewGroup.toString(), false);
-        paramViewGroup = new ArrayList();
-        localObject2 = new ReportInfo();
-        ((ReportInfo)localObject2).mUin = obz.a();
-        ((ReportInfo)localObject2).mOperation = 52;
-        ((ReportInfo)localObject2).mInnerId = ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).innerUniqueID;
-        ((ReportInfo)localObject2).mHotWord = ((ppk)localObject1).jdField_a_of_type_JavaLangString;
-        paramViewGroup.add(localObject2);
-        ogy.a().a(paramViewGroup);
-        return paramView;
-        paramViewGroup = (pka)paramView.getTag();
-        continue;
-        i = Color.parseColor("#8C000000");
-        break label161;
-        label402:
-        i = 0;
-      }
-      catch (Exception paramViewGroup)
-      {
-        for (;;)
-        {
-          QLog.e(ComponentContentHotSearch.jdField_a_of_type_JavaLangString, 1, "getView, e = " + paramViewGroup);
-        }
-      }
-    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.setTextSize(0, this.mTextSize);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.setLineSpacing(Utils.rp2px(5.0D), 1.0F);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.setIncludeFontPadding(false);
   }
 }
 

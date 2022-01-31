@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
-
-public class antl
-  implements antq
+public abstract interface antl
 {
-  public antl(PullToRefreshBase paramPullToRefreshBase) {}
-  
-  public void a()
-  {
-    PullToRefreshBase.a(this.a);
-  }
+  public abstract float a(float paramFloat, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     antl
  * JD-Core Version:    0.7.0.1
  */

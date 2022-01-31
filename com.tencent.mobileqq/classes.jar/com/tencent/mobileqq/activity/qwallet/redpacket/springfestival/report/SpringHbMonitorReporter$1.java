@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.report;
 
-import agvn;
-import agvo;
+import ahic;
+import ahid;
 
 public final class SpringHbMonitorReporter$1
   implements Runnable
 {
-  public SpringHbMonitorReporter$1(agvo paramagvo) {}
+  public SpringHbMonitorReporter$1(ahid paramahid) {}
   
   public void run()
   {
-    agvn.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.b, true);
+    ahic.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.b, true);
   }
 }
 

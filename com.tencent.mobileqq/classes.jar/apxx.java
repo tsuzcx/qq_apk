@@ -1,39 +1,130 @@
-import android.annotation.SuppressLint;
-import android.graphics.Outline;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewOutlineProvider;
-import com.tencent.qphone.base.util.QLog;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.RouterHandler;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar.10;
+import cooperation.troop.TroopFileProxyActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-@SuppressLint({"NewApi"})
 public class apxx
-  extends ViewOutlineProvider
+  extends AsyncTask<Void, Void, Void>
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  public apxx(SendBottomBar.10 param10) {}
   
-  public apxx(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected Void a(Void... paramVarArgs)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    paramVarArgs = SendBottomBar.a(this.a.this$0).a();
+    int i = SendBottomBar.a(this.a.this$0).a();
+    Object localObject1 = SendBottomBar.a(this.a.this$0).b();
+    if (i == 5)
+    {
+      TroopFileProxyActivity.a.addAll(apeh.a());
+      return null;
+    }
+    Object localObject2;
+    if (paramVarArgs.equals(ajsf.z))
+    {
+      localObject1 = new ArrayList();
+      ((ArrayList)localObject1).addAll(apeh.a());
+      paramVarArgs = (ajuo)SendBottomBar.a(this.a.this$0).a(8);
+      paramVarArgs.a((ArrayList)localObject1);
+      localObject1 = apeh.b().iterator();
+      i = 0;
+      if (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (FileManagerEntity)((Iterator)localObject1).next();
+        if (((FileManagerEntity)localObject2).nFileType == 13)
+        {
+          int j = i;
+          if (paramVarArgs.a((FileManagerEntity)localObject2) == 0L) {
+            j = i | 0x1;
+          }
+          i = j;
+        }
+      }
+    }
+    for (;;)
+    {
+      break;
+      if ((((FileManagerEntity)localObject2).getCloudType() == 2) && (((FileManagerEntity)localObject2).WeiYunFileId != null))
+      {
+        paramVarArgs.a((FileManagerEntity)localObject2);
+      }
+      else if (!paramVarArgs.a().a((FileManagerEntity)localObject2))
+      {
+        i |= 0x4;
+        continue;
+        localObject1 = apeh.d().iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          paramVarArgs.a((WeiYunFileInfo)((Iterator)localObject1).next());
+        }
+        if ((i & 0x2) != 0) {}
+        label568:
+        for (;;)
+        {
+          return null;
+          if (i == 6002)
+          {
+            localObject1 = new ArrayList();
+            ((ArrayList)localObject1).addAll(apeh.a());
+            ((RouterHandler)SendBottomBar.a(this.a.this$0).a(48)).a((ArrayList)localObject1, null, null, Long.parseLong(paramVarArgs));
+          }
+          else if (i == 9501)
+          {
+            localObject1 = (yeu)SendBottomBar.a(this.a.this$0).a(49);
+            localObject2 = new ArrayList();
+            ((ArrayList)localObject2).addAll(apeh.a());
+            ((yeu)localObject1).a().a(paramVarArgs, (List)localObject2);
+          }
+          else
+          {
+            boolean bool = SendBottomBar.a(this.a.this$0).i();
+            SendBottomBar.a(this.a.this$0).a().a(bool, (String)localObject1, paramVarArgs, i);
+            paramVarArgs = apeh.b().iterator();
+            do
+            {
+              if (!paramVarArgs.hasNext()) {
+                break;
+              }
+            } while (((FileManagerEntity)paramVarArgs.next()).nFileType != 13);
+            for (i = 1;; i = 0)
+            {
+              if (i == 0) {
+                break label568;
+              }
+              if (SendBottomBar.a(this.a.this$0) == 3)
+              {
+                axqw.b(SendBottomBar.a(this.a.this$0).app, "dc00898", "", "", "0X800A088", "0X800A088", 0, 0, "", "", "", "");
+                break;
+              }
+              if (SendBottomBar.a(this.a.this$0) != 21) {
+                break;
+              }
+              axqw.b(SendBottomBar.a(this.a.this$0).app, "dc00898", "", "", "0X800A08D", "0X800A08D", 0, 0, "", "", "", "");
+              break;
+            }
+          }
+        }
+      }
+    }
   }
   
-  public void getOutline(View paramView, Outline paramOutline)
+  protected void a(Void paramVoid)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomOutlineProvider", 1, "----->getOutline");
-    }
-    paramView.getGlobalVisibleRect(new Rect());
-    paramOutline.setRoundRect(new Rect(this.c, this.a, this.d, this.b), 0.0F);
+    super.onPostExecute(paramVoid);
+    this.a.this$0.d();
+    apeh.b();
+    SendBottomBar.d(this.a.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apxx
  * JD-Core Version:    0.7.0.1
  */

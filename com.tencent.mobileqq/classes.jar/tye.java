@@ -1,70 +1,66 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.HashSet;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.MotionEvent;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.OnCommentListViewStateChangeListener.1;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import com.tencent.widget.XEditTextEx;
 
 public class tye
-  implements tyh
+  implements tyx
 {
-  private final HashSet<URLDrawable> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private final ConcurrentHashMap<String, HashSet<tyi>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private tye(txw paramtxw) {}
   
-  private Bitmap a(@NonNull URLDrawable paramURLDrawable, int paramInt1, int paramInt2)
+  public void a()
   {
-    Object localObject = paramURLDrawable.getCurrDrawable();
-    if ((localObject instanceof RegionDrawable))
-    {
-      localObject = ((RegionDrawable)localObject).getBitmap();
-      if (localObject != null) {
-        return localObject;
-      }
+    if (!txw.b(this.a)) {
+      this.a.a();
     }
-    return bacm.a(paramURLDrawable, paramInt1, paramInt2);
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2, tyi paramtyi)
+  public void a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
   {
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(1073741824);
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable;
-    try
-    {
-      URL localURL = new URL(paramString);
-      localObject = URLDrawable.getDrawable(localURL, (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setURLDrawableListener(new tyf(this, paramString, paramInt1, paramInt2, (URLDrawable)localObject));
-      ((URLDrawable)localObject).setAutoDownload(true);
-      if (((URLDrawable)localObject).getStatus() != 1) {
-        break label177;
-      }
-      urk.a("story.icon.ShareGroupIconManager", "download url success directly. %s", paramString);
-      localObject = a((URLDrawable)localObject, paramInt1, paramInt2);
-      if (localObject != null)
-      {
-        paramtyi.a(paramString, (Bitmap)localObject);
-        return;
-      }
+    if (txw.a(this.a) != null) {
+      txw.a(this.a).a(paramCommentEntry, paramInt1, paramInt2);
     }
-    catch (MalformedURLException localMalformedURLException)
+  }
+  
+  public void a(@NonNull ups paramups, ErrorMessage paramErrorMessage)
+  {
+    if (paramErrorMessage.isSuccess())
     {
-      urk.d("story.icon.ShareGroupIconManager", localMalformedURLException, "can not download url. %s", new Object[] { paramString });
-      paramtyi.a(paramString, new Throwable("getBitmapFromDrawable failed"));
+      txw.a(this.a, paramups);
+      txw.a(this.a).setVisibility(0);
+      txw.a(this.a, new uqh(this.a.getContext(), txw.b(this.a), paramups, false, 4444, new tyb(this.a, null)));
+      if (txw.a(this.a).a != null) {
+        txw.a(this.a).a.setText(txw.a(this.a).a);
+      }
+      if (txw.a(this.a))
+      {
+        txw.a(this.a, false);
+        txw.a(this.a).postDelayed(new CommentFloatDialog.OnCommentListViewStateChangeListener.1(this), 100);
+      }
       return;
     }
-    urk.e("story.icon.ShareGroupIconManager", "download url success directly. but OOM occur !");
-    paramtyi.a(paramString, new Throwable("getBitmapFromDrawable failed"));
-    return;
-    label177:
-    urk.a("story.icon.ShareGroupIconManager", "download url pending. %s", paramString);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(paramString, new HashSet());
-    ((HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).add(paramtyi);
-    this.jdField_a_of_type_JavaUtilHashSet.add(localMalformedURLException);
-    localMalformedURLException.startDownload();
+    txw.a(this.a).setVisibility(8);
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    if ((paramMotionEvent.getAction() == 1) && (txw.a(this.a) != null) && (txw.a(this.a).a()))
+    {
+      txw.a(this.a).c();
+      return true;
+    }
+    return false;
+  }
+  
+  public void b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
+  {
+    if (txw.a(this.a) != null) {
+      txw.a(this.a).b(paramCommentEntry, paramInt1, paramInt2);
+    }
   }
 }
 

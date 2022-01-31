@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bbcx;
+import bcfx;
 
 class WebViewFragment$2
   implements Runnable
@@ -9,7 +9,7 @@ class WebViewFragment$2
   
   public void run()
   {
-    bbcx.a(this.this$0.d());
+    bcfx.a(this.this$0.d());
   }
 }
 

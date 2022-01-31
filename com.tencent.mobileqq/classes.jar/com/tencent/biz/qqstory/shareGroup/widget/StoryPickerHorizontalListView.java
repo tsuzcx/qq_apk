@@ -6,21 +6,21 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.BaseAdapter;
-import azvv;
+import bawz;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
-import uan;
-import uaq;
-import uat;
-import uhj;
+import unj;
+import unm;
+import unp;
+import uuf;
 
 @TargetApi(9)
 public class StoryPickerHorizontalListView
   extends HorizontalListView
 {
   int a;
-  public uan a;
-  public uat a;
+  public unj a;
+  public unp a;
   int b;
   
   public StoryPickerHorizontalListView(Context paramContext)
@@ -38,22 +38,22 @@ public class StoryPickerHorizontalListView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.b = azvv.a(paramContext, 105.0F);
-    this.jdField_a_of_type_Uan = new uan(getContext());
-    super.setAdapter(this.jdField_a_of_type_Uan);
-    super.setOnItemClickListener(this.jdField_a_of_type_Uan);
-    super.setOnScrollStateChangedListener(new uaq(this));
+    this.b = bawz.a(paramContext, 105.0F);
+    this.jdField_a_of_type_Unj = new unj(getContext());
+    super.setAdapter(this.jdField_a_of_type_Unj);
+    super.setOnItemClickListener(this.jdField_a_of_type_Unj);
+    super.setOnScrollStateChangedListener(new unm(this));
     setOverScrollMode(1);
   }
   
   public BaseAdapter a()
   {
-    return this.jdField_a_of_type_Uan;
+    return this.jdField_a_of_type_Unj;
   }
   
-  public void setData(List<uhj> paramList, String paramString)
+  public void setData(List<uuf> paramList, String paramString)
   {
-    this.jdField_a_of_type_Uan.a(paramList, paramString);
+    this.jdField_a_of_type_Unj.a(paramList, paramString);
     int i = this.jdField_a_of_type_Int / this.b;
     if (paramList.size() >= i)
     {
@@ -63,9 +63,9 @@ public class StoryPickerHorizontalListView
     setOverScrollMode(1);
   }
   
-  public void setOnHorizontalScrollListener(uat paramuat)
+  public void setOnHorizontalScrollListener(unp paramunp)
   {
-    this.jdField_a_of_type_Uat = paramuat;
+    this.jdField_a_of_type_Unp = paramunp;
   }
 }
 

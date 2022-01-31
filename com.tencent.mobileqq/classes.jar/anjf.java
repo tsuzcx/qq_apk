@@ -1,17 +1,16 @@
-public abstract class anjf
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.GrayTipsSpan;
+import com.tencent.mobileqq.data.MessageForNewGrayTips;
+
+public class anjf
+  implements View.OnClickListener
 {
-  public int b;
+  public anjf(MessageForNewGrayTips paramMessageForNewGrayTips, GrayTipsSpan paramGrayTipsSpan) {}
   
-  public anjf(int paramInt)
+  public void onClick(View paramView)
   {
-    this.b = paramInt;
-  }
-  
-  public void a() {}
-  
-  public int b()
-  {
-    return 0;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForNewGrayTips.click(paramView, this.jdField_a_of_type_ComTencentMobileqqDataGrayTipsSpan.url);
   }
 }
 

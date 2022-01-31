@@ -1,66 +1,92 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class shm
-  implements axrt
+  implements BusinessObserver
 {
-  shm(shl paramshl) {}
+  shm(shk paramshk, Intent paramIntent) {}
   
-  public void onResp(axsq paramaxsq)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramaxsq.jdField_a_of_type_Int == 3) {}
-    shp localshp;
-    do
+    shk.c(this.jdField_a_of_type_Shk);
+    if (paramBoolean) {}
+    for (;;)
     {
-      do
+      try
       {
-        return;
-        localObject = ((axro)paramaxsq.jdField_a_of_type_Axsp).a();
-      } while ((localObject == null) || (!(localObject instanceof shp)));
-      localshp = (shp)localObject;
-      this.a.a.jdField_a_of_type_JavaUtilMap.remove(((shp)localObject).jdField_a_of_type_JavaLangString);
-      localshp.jdField_b_of_type_Long = (System.currentTimeMillis() - localshp.jdField_a_of_type_Long);
-    } while (localshp.jdField_a_of_type_Shi == null);
-    Object localObject = localshp.jdField_a_of_type_Shi;
-    if (paramaxsq.jdField_a_of_type_Int == 0) {}
-    for (paramaxsq = new ErrorMessage(0, "");; paramaxsq = new ErrorMessage(paramaxsq.b, paramaxsq.jdField_a_of_type_JavaLangString))
-    {
-      ((shi)localObject).a(localshp, paramaxsq);
-      return;
-    }
-  }
-  
-  public void onUpdateProgeress(axsp arg1, long paramLong1, long paramLong2)
-  {
-    ??? = ???.a();
-    if ((??? != null) && ((??? instanceof shp)))
-    {
-      shp localshp = (shp)???;
-      int i = (int)(paramLong1 / paramLong2 * 100.0D);
-      synchronized (PreloadDownloader.a)
-      {
-        if (this.a.a.jdField_a_of_type_JavaUtilList != null)
+        Object localObject = paramBundle.getByteArray("data");
+        if (localObject != null)
         {
-          Iterator localIterator = this.a.a.jdField_a_of_type_JavaUtilList.iterator();
-          while (localIterator.hasNext())
+          paramBundle = new GetAppInfoProto.GetAppinfoResponse();
+          paramBundle.mergeFrom((byte[])localObject);
+          if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
           {
-            sht localsht = (sht)((WeakReference)localIterator.next()).get();
-            if (localsht != null) {
-              localsht.a(localshp.jdField_b_of_type_JavaLangString, localshp.jdField_a_of_type_Int, i, localshp);
+            localAndroidInfo = paramBundle.androidInfo;
+            localObject = xmt.a(paramBundle.iconsURL, 16);
+            Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.sourceUrl != null) {
+              continue;
             }
+            paramBundle = "";
+            localIntent.putExtra("struct_share_key_source_url", paramBundle);
+            localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            paramBundle = (Bundle)localObject;
+            if (localObject == null) {
+              paramBundle = "";
+            }
+            localIntent.putExtra("struct_share_key_source_icon", paramBundle);
+            localObject = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.messagetail != null) {
+              continue;
+            }
+            paramBundle = "";
+            ((Intent)localObject).putExtra("struct_share_key_source_name", paramBundle);
+            localObject = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.packName != null) {
+              continue;
+            }
+            paramBundle = "";
+            ((Intent)localObject).putExtra("struct_share_key_source_a_action_data", paramBundle);
           }
         }
       }
+      catch (Exception paramBundle)
+      {
+        GetAppInfoProto.AndroidInfo localAndroidInfo;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("WebShareHelper", 2, paramBundle.getMessage());
+        continue;
+        this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
+        shk.a(this.jdField_a_of_type_Shk).startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
+      }
+      paramBundle = axuy.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
+      if (paramBundle != null) {
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("WebShareHelper", 2, "build struct msg fail");
+      }
+      return;
+      paramBundle = localAndroidInfo.sourceUrl.get();
+      continue;
+      paramBundle = localAndroidInfo.messagetail.get();
+      continue;
+      paramBundle = localAndroidInfo.packName.get();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     shm
  * JD-Core Version:    0.7.0.1
  */

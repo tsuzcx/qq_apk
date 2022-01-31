@@ -29,6 +29,7 @@ public final class mobile_feeds_rsp
   public ArrayList<single_feed> all_feeds_data;
   public String attach_info = "";
   public int auto_load;
+  public boolean bPsvOpenKapu = true;
   public int dailyShuoShuoCount;
   public Map<Integer, String> extendinfo;
   public int gamebar_video_checking_num;
@@ -90,7 +91,7 @@ public final class mobile_feeds_rsp
   
   public mobile_feeds_rsp() {}
   
-  public mobile_feeds_rsp(int paramInt1, String paramString1, ArrayList<single_feed> paramArrayList, long paramLong1, int paramInt2, int paramInt3, long paramLong2, long paramLong3, long paramLong4, String paramString2, st_prefetch paramst_prefetch, int paramInt4, s_cover params_cover, interest_list paraminterest_list, int paramInt5, login_uin_info paramlogin_uin_info, Map<Integer, String> paramMap1, int paramInt6, int paramInt7, String paramString3, Map<String, String> paramMap2, int paramInt8, s_profile_timeline params_profile_timeline, long paramLong5, s_join_list params_join_list, Map<Integer, UnifyRecomStruct> paramMap, s_memory_seal_off params_memory_seal_off, Map<String, String> paramMap3, s_life_moment params_life_moment, Map<Integer, String> paramMap4, FunnySpace paramFunnySpace, byte[] paramArrayOfByte, int paramInt9)
+  public mobile_feeds_rsp(int paramInt1, String paramString1, ArrayList<single_feed> paramArrayList, long paramLong1, int paramInt2, int paramInt3, long paramLong2, long paramLong3, long paramLong4, String paramString2, st_prefetch paramst_prefetch, int paramInt4, s_cover params_cover, interest_list paraminterest_list, int paramInt5, login_uin_info paramlogin_uin_info, Map<Integer, String> paramMap1, int paramInt6, int paramInt7, String paramString3, Map<String, String> paramMap2, int paramInt8, s_profile_timeline params_profile_timeline, long paramLong5, s_join_list params_join_list, Map<Integer, UnifyRecomStruct> paramMap, s_memory_seal_off params_memory_seal_off, Map<String, String> paramMap3, s_life_moment params_life_moment, Map<Integer, String> paramMap4, FunnySpace paramFunnySpace, byte[] paramArrayOfByte, int paramInt9, boolean paramBoolean)
   {
     this.hasmore = paramInt1;
     this.attach_info = paramString1;
@@ -125,6 +126,7 @@ public final class mobile_feeds_rsp
     this.stFunnySpace = paramFunnySpace;
     this.stShangchengInfo = paramArrayOfByte;
     this.dailyShuoShuoCount = paramInt9;
+    this.bPsvOpenKapu = paramBoolean;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -162,6 +164,7 @@ public final class mobile_feeds_rsp
     this.stFunnySpace = ((FunnySpace)paramJceInputStream.read(cache_stFunnySpace, 30, false));
     this.stShangchengInfo = ((byte[])paramJceInputStream.read(cache_stShangchengInfo, 31, false));
     this.dailyShuoShuoCount = paramJceInputStream.read(this.dailyShuoShuoCount, 32, false);
+    this.bPsvOpenKapu = paramJceInputStream.read(this.bPsvOpenKapu, 33, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -237,6 +240,7 @@ public final class mobile_feeds_rsp
       paramJceOutputStream.write(this.stShangchengInfo, 31);
     }
     paramJceOutputStream.write(this.dailyShuoShuoCount, 32);
+    paramJceOutputStream.write(this.bPsvOpenKapu, 33);
   }
 }
 

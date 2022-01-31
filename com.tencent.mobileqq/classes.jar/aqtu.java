@@ -1,64 +1,37 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
 import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView;
+import com.tencent.smtt.sdk.WebView;
 
 public class aqtu
-  implements MiniMsgUser.IMiniMsgActionCallback
+  extends aquc
 {
-  public aqtu(UiApiPlugin paramUiApiPlugin) {}
-  
-  public void onGoToConversation()
+  public aqtu(QQGameFeedWebFragment paramQQGameFeedWebFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      this.a.a("returnMsgList", localJSONObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("UiApiPlugin", 1, localException, new Object[0]);
+    super(paramContext, paramActivity, paramAppInterface, paramTouchWebView);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+    QQGameFeedWebFragment.a(this.a).setVisibility(0);
+    if ((this.a.isAdded()) && (QQGameFeedWebFragment.a(this.a) != null)) {
+      QQGameFeedWebFragment.a(this.a).a(true);
     }
   }
   
-  public void onOpenMiniAIOCallback()
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    WebViewFragment localWebViewFragment = this.a.mRuntime.a();
-    Object localObject1 = localWebViewFragment.r;
-    if (TextUtils.isEmpty(localWebViewFragment.r)) {
-      localObject1 = localWebViewFragment.a.getTitle();
-    }
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      localObject2 = localObject1;
-      if (!"‎".equals(localObject1)) {}
-    }
-    else
-    {
-      localObject2 = ajjy.a(2131650053);
-    }
-    localObject1 = new Bundle();
-    ((Bundle)localObject1).putString("banner_wording", (String)localObject2);
-    Object localObject2 = this.a.a.getParam();
-    ((MiniMsgUserParam)localObject2).backConversationIntent = localWebViewFragment.a((Bundle)localObject1);
-    bbdc.a(((MiniMsgUserParam)localObject2).backConversationIntent);
-    try
-    {
-      localObject1 = new JSONObject();
-      this.a.a("entryClicked", (JSONObject)localObject1);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("UiApiPlugin", 1, localException, new Object[0]);
-    }
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 

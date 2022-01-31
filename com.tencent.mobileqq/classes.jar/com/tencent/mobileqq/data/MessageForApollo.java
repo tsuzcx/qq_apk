@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import akhp;
+import akwb;
 import android.text.TextUtils;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -70,7 +70,7 @@ public class MessageForApollo
   {
     try
     {
-      this.mApolloMessage = ((ApolloMessage)akhp.a(this.msgData));
+      this.mApolloMessage = ((ApolloMessage)akwb.a(this.msgData));
       this.hasPlayed = this.mApolloMessage.isPlayed;
       this.msg = ApolloUtil.a(this);
       if (!TextUtils.isEmpty(this.mApolloMessage.extStr))
@@ -221,7 +221,7 @@ public class MessageForApollo
     try
     {
       this.mApolloMessage.isPlayed = this.hasPlayed;
-      this.msgData = akhp.a(this.mApolloMessage);
+      this.msgData = akwb.a(this.mApolloMessage);
       return;
     }
     catch (Exception localException)

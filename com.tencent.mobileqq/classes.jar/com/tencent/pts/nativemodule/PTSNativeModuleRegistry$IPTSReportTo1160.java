@@ -3,7 +3,7 @@ package com.tencent.pts.nativemodule;
 public abstract interface PTSNativeModuleRegistry$IPTSReportTo1160
   extends PTSNativeModuleRegistry.PTSNativeModule
 {
-  public abstract void reportTo1160(String paramString1, String paramString2);
+  public abstract void reportTo1160(String paramString1, String paramString2, long paramLong, int paramInt, String paramString3, String paramString4);
 }
 
 

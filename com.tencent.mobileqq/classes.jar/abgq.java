@@ -1,33 +1,15 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class abgq
-  extends aqjp
+  implements DialogInterface.OnDismissListener
 {
-  public abgq(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public abgq(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    int i = 1;
-    if (!paramBoolean1)
-    {
-      this.a.a(2131653546, 1);
-      return;
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean2) {
-      i = 2;
-    }
-    awqx.b(localQQAppInterface, "dc00898", "", "", "0X8009D11", "0X8009D11", 0, 0, String.valueOf(i), "", "", "");
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
-    }
+    this.a.a(FriendProfileMoreInfoActivity.a(this.a), false);
   }
 }
 

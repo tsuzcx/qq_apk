@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aebg;
-import azlf;
+import aemf;
+import bamj;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 public class BaseTroopChatPie$3
   implements Runnable
 {
-  public BaseTroopChatPie$3(aebg paramaebg, azlf paramazlf) {}
+  public BaseTroopChatPie$3(aemf paramaemf, bamj parambamj) {}
   
   public void run()
   {

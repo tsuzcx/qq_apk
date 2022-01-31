@@ -2,10 +2,10 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-import bdcz;
-import bdfs;
-import bdfz;
-import bdzf;
+import begz;
+import bejs;
+import beka;
+import bfgv;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,35 +17,35 @@ public class LogJsPlugin
   public static final String TAG = "LogJsPlugin";
   private static final String TAG_MINI_LOG = "miniAppLog";
   
-  public boolean onInterceptJsEvent(bdfz parambdfz)
+  public boolean onInterceptJsEvent(beka parambeka)
   {
-    if ((!this.mIsMiniGame) && ("setEnableDebug".equals(parambdfz)))
+    if ((!this.mIsMiniGame) && ("setEnableDebug".equals(parambeka)))
     {
-      this.mMiniAppContext.a(bdfs.a(parambdfz, 3));
+      this.mMiniAppContext.a(bejs.a(parambeka, 3));
       return true;
     }
-    return super.onInterceptJsEvent(parambdfz);
+    return super.onInterceptJsEvent(parambeka);
   }
   
-  public String setEnableDebug(bdfz parambdfz)
+  public String setEnableDebug(beka parambeka)
   {
     try
     {
-      boolean bool = new JSONObject(parambdfz.b).optBoolean("enableDebug");
-      if (bool != Boolean.valueOf(bdzf.a().getBoolean(this.mMiniAppContext.a().appId + "_debug", false)).booleanValue()) {
+      boolean bool = new JSONObject(parambeka.b).optBoolean("enableDebug");
+      if (bool != Boolean.valueOf(bfgv.a().getBoolean(this.mMiniAppContext.a().appId + "_debug", false)).booleanValue()) {
         this.mMiniAppContext.a().runOnUiThread(new LogJsPlugin.1(this, bool));
       }
       for (;;)
       {
         return "";
-        parambdfz.a();
+        parambeka.a();
       }
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        parambdfz.b();
+        parambeka.b();
       }
     }
   }

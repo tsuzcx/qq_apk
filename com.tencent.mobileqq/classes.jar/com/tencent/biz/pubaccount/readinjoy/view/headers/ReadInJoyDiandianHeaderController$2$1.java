@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.view.headers;
 
-import njd;
+import nuo;
 import org.json.JSONObject;
-import rbi;
+import roa;
 
 public class ReadInJoyDiandianHeaderController$2$1
   implements Runnable
 {
-  public ReadInJoyDiandianHeaderController$2$1(rbi paramrbi, JSONObject paramJSONObject) {}
+  public ReadInJoyDiandianHeaderController$2$1(roa paramroa, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_Rbi.a).a(this.jdField_a_of_type_OrgJsonJSONObject);
+    ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_Roa.a).a(this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

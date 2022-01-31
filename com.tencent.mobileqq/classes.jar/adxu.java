@@ -1,12 +1,34 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.StoryChatVideoView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
-public abstract interface adxu
+public class adxu
+  extends acun
 {
-  public abstract void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean);
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean);
-  
-  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
+  public ViewGroup a;
+  public FrameLayout a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public AutoStartProgressBar a;
+  public URLDrawable a;
+  public QQStoryItemBuilder.StoryChatVideoView a;
+  public BubbleImageView a;
+  public boolean a;
+  public ImageView b;
+  public TextView b;
+  public BubbleImageView b;
+  public String b;
+  public TextView c;
+  public BubbleImageView c;
+  public TextView d;
+  public TextView e;
 }
 
 

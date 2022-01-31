@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
 import mqq.os.MqqHandler;
-import rol;
+import sbc;
 
 class ServiceAccountFolderActivity$1
   implements Runnable
@@ -10,8 +10,8 @@ class ServiceAccountFolderActivity$1
   
   public void run()
   {
-    rol localrol = rol.a();
-    ServiceAccountFolderActivity.a(this.this$0, localrol.a());
+    sbc localsbc = sbc.a();
+    ServiceAccountFolderActivity.a(this.this$0, localsbc.a());
     ServiceAccountFolderActivity.a(this.this$0).sendEmptyMessage(101);
   }
 }

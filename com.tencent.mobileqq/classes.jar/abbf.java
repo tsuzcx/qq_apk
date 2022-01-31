@@ -1,8 +1,23 @@
-import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public abstract interface abbf
+public class abbf
+  extends anwf
 {
-  public abstract void a(int paramInt, String paramString, Drawable paramDrawable, Object... paramVarArgs);
+  public abbf(EmosmActivity paramEmosmActivity) {}
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt) {}
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  {
+    if ((paramEmoticonPackage == null) || (paramInt1 != 2) || (paramInt2 != 0)) {}
+    while (this.a.jdField_a_of_type_JavaUtilArrayList == null) {
+      return;
+    }
+    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
 }
 
 

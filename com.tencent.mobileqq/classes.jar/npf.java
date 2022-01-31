@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.AdTagInfo;
 
-final class npf
-  implements DialogInterface.OnClickListener
+public final class npf
+  implements Parcelable.Creator<VideoInfo.AdTagInfo>
 {
-  npf(DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public VideoInfo.AdTagInfo a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
-    this.a.onClick(paramDialogInterface, paramInt);
+    return new VideoInfo.AdTagInfo(paramParcel);
+  }
+  
+  public VideoInfo.AdTagInfo[] a(int paramInt)
+  {
+    return new VideoInfo.AdTagInfo[paramInt];
   }
 }
 

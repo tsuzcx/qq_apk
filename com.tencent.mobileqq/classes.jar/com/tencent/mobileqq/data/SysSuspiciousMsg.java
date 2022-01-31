@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -10,7 +10,7 @@ import java.io.Serializable;
 import tencent.im.oidb.cmd0xd69.oidb_cmd0xd69.DoubtInfo;
 
 public class SysSuspiciousMsg
-  extends atmo
+  extends aukm
   implements Serializable
 {
   public int age;
@@ -24,7 +24,7 @@ public class SysSuspiciousMsg
   public int sex;
   public String source;
   public long time;
-  @atoc
+  @auma
   public long uin;
   
   public static SysSuspiciousMsg covertFrom(oidb_cmd0xd69.DoubtInfo paramDoubtInfo)

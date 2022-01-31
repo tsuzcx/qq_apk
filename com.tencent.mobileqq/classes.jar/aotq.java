@@ -1,63 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
 
 public class aotq
-  implements alsd
+  extends aouj
 {
-  private FileManagerEntity a;
+  public aotq(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
-  public aotq(FileManagerEntity paramFileManagerEntity)
+  protected void a(apev paramapev)
   {
-    this.a = paramFileManagerEntity;
-  }
-  
-  private String a()
-  {
-    String str = "";
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      if (this.a != null)
-      {
-        localJSONObject.put("file_color_note_peerType", this.a.peerType);
-        localJSONObject.put("file_color_note_peerUin", this.a.peerUin);
-        localJSONObject.put("file_color_note_uniSeq", this.a.uniseq);
-        localJSONObject.put("file_color_note_sessionId", this.a.nSessionId);
-        str = localJSONObject.toString();
-      }
-      return str;
+    super.a(paramapev);
+    if ((paramapev.b != null) && (paramapev.b.length() > 0)) {
+      this.a.i();
     }
-    catch (JSONException localJSONException) {}
-    return "";
-  }
-  
-  public ColorNote getColorNote()
-  {
-    if (this.a == null)
-    {
-      QLog.i("OfflineFileColorNoteServiceInfo", 1, "getColorNote: offline file info is null.");
-      return null;
-    }
-    alsl localalsl = new alsl();
-    localalsl.a(17039360);
-    String str = apdq.b(1, this.a.nSessionId + "");
-    if (QLog.isColorLevel()) {
-      QLog.i("OfflineFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "] fileId[" + this.a.Uuid + "]");
-    }
-    localalsl.a(str);
-    localalsl.b(this.a.fileName);
-    localalsl.c(apdh.a(this.a.fileSize));
-    int i = apck.a(apck.a(this.a.fileName));
-    localalsl.d("resdrawable://" + i);
-    str = a();
-    if (!TextUtils.isEmpty(str)) {
-      localalsl.a(str.getBytes());
-    }
-    return localalsl.a();
   }
 }
 

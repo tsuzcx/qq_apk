@@ -1,32 +1,53 @@
-import java.net.URL;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aovl
+class aovl
+  extends aovs
 {
-  public abstract int a();
+  protected long a;
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  protected String a;
+  private long b;
+  protected String b;
   
-  public abstract String a();
+  public aovl(aouu paramaouu, MessageRecord paramMessageRecord)
+  {
+    super(paramaouu);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
+    paramaouu = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgWidth", paramaouu);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgHeight", paramMessageRecord);
+  }
   
-  public abstract URL a();
+  void a(String paramString, int paramInt) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract int b();
-  
-  public abstract String b();
-  
-  public abstract void b(String paramString);
-  
-  public abstract boolean b();
+  void a(String paramString, int paramInt, aovr paramaovr)
+  {
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileType", "2");
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", paramString);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
+    String str1 = apgp.a(apue.d(this.jdField_b_of_type_JavaLangString));
+    String str2 = apgp.a(apue.a(this.jdField_b_of_type_JavaLangString));
+    this.jdField_a_of_type_Long = apue.a(this.jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Long + "");
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardMd5", str1);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardSha", str2);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardDeadTime", "0");
+    if (QLog.isColorLevel()) {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start DiscUploadTaskExcuter:" + this.jdField_a_of_type_JavaLangString);
+    }
+    aouu.a(this.jdField_a_of_type_Aouu).a().a(str1, str2, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramString, aouu.a(this.jdField_a_of_type_Aouu).getCurrentAccountUin(), new aovm(this, paramaovr, str2));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aovl
  * JD-Core Version:    0.7.0.1
  */

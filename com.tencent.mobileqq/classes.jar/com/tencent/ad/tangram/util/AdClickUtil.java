@@ -15,8 +15,8 @@ import com.tencent.ad.tangram.mini.AdQQMINIProgram;
 import com.tencent.ad.tangram.net.AdNet;
 import com.tencent.ad.tangram.process.AdProcessManager;
 import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.statistics.AdReporterForClick;
 import com.tencent.ad.tangram.statistics.a;
-import com.tencent.ad.tangram.statistics.b;
 import com.tencent.ad.tangram.videoceiling.AdVideoCeiling;
 import com.tencent.ad.tangram.videoceiling.AdVideoSplice;
 import com.tencent.ad.tangram.web.AdBrowser;
@@ -36,6 +36,7 @@ public final class AdClickUtil
   public static final int ACTION_VIDEO_CEILING = 2;
   public static final int ACTION_VIDEO_SPLICE = 7;
   public static final int ACTION_WEB = 1;
+  public static final int ACTION_WEIXIN_MINI_PROGRAM = 9;
   private static final String TAG = "AdClickUtil";
   
   private static String appendUrlWithAutoDownload(String paramString1, String paramString2, AdClickUtil.Params paramParams)
@@ -97,7 +98,7 @@ public final class AdClickUtil
     return appendUrlWithAutoDownload(getUrlForClick(paramParams), "_autodownload", paramParams);
   }
   
-  private static String getUrlForClick(AdClickUtil.Params paramParams)
+  public static String getUrlForClick(AdClickUtil.Params paramParams)
   {
     if ((paramParams == null) || (!paramParams.isValid()))
     {
@@ -319,7 +320,7 @@ public final class AdClickUtil
     }
     AdError localAdError = AdAppUtil.launch((Context)paramParams.activity.get(), paramParams.ad.getAppPackageName(), paramParams.extrasForIntent);
     if ((localAdError != null) && (localAdError.isSuccess()) && (paramParams.reportForClick)) {
-      a.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
+      AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
     }
     return new AdClickUtil.Result(localAdError, 5);
   }
@@ -345,10 +346,10 @@ public final class AdClickUtil
     {
       AdLog.i("AdClickUtil", String.format("handleAppMarket errorCode:%d manufacturer:%s model:%s appMarketPackageName:%s appMarketDeeplink:%s", new Object[] { Integer.valueOf(((AdClickUtil.Result)localObject2).getErrorCode()), Build.MANUFACTURER, Build.MODEL, paramParams.ad.getAppMarketPackageName(), paramParams.ad.getAppMarketDeeplink() }));
       if ((localObject2 != null) && (((AdClickUtil.Result)localObject2).isSuccess()) && (paramParams.reportForClick)) {
-        a.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
+        AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
       }
       if ((localObject2 != null) && (((AdClickUtil.Result)localObject2).isSuccess())) {
-        b.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 285);
+        a.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 285);
       }
       if (localObject1 != null) {
         str = ((AdAppDeeplinkLauncher.Result)localObject1).getActivityName();
@@ -396,9 +397,9 @@ public final class AdClickUtil
     if (bool) {}
     for (int i = 247;; i = 248)
     {
-      b.reportAsync(localWeakReference, localAd, i);
+      a.reportAsync(localWeakReference, localAd, i);
       if (!TextUtils.isEmpty(paramParams.ad.getAppDeeplink())) {
-        b.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 245);
+        a.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 245);
       }
       if (!bool) {
         break;
@@ -501,10 +502,10 @@ public final class AdClickUtil
     ((AdAppDeeplinkLauncher.Params)localObject).addflags = 268435456;
     localObject = AdAppDeeplinkLauncher.launch((Activity)paramParams.activity.get(), (AdAppDeeplinkLauncher.Params)localObject);
     if ((localObject != null) && (((AdAppDeeplinkLauncher.Result)localObject).isSuccess()) && (paramParams.reportForClick) && (!paramBoolean)) {
-      a.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
+      AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
     }
     if ((localObject != null) && (((AdAppDeeplinkLauncher.Result)localObject).isSuccess())) {
-      b.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 246);
+      a.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 246);
     }
     if (localObject != null) {}
     for (localObject = ((AdAppDeeplinkLauncher.Result)localObject).getError();; localObject = new AdError(1))
@@ -524,7 +525,7 @@ public final class AdClickUtil
     }
     AdError localAdError = AdCanvas.show(paramParams.activity, paramParams.ad, paramParams.enableAutoDownload, paramParams.extrasForIntent);
     if ((localAdError != null) && (localAdError.isSuccess()) && (paramParams.reportForClick)) {
-      a.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
+      AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
     }
     return new AdClickUtil.Result(localAdError, 3);
   }
@@ -536,7 +537,7 @@ public final class AdClickUtil
     }
     AdError localAdError = AdQQMINIProgram.show(new WeakReference(paramParams.activity.get()), paramParams.ad);
     if ((localAdError != null) && (localAdError.isSuccess()) && (paramParams.reportForClick)) {
-      a.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
+      AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
     }
     return new AdClickUtil.Result(localAdError, 6);
   }
@@ -552,7 +553,7 @@ public final class AdClickUtil
     if ((paramParams.reportForClick) && (isHitJumpExperiment(paramParams)))
     {
       AdLog.e("AdClickUtil", "handleUrl  params.reportForClick && isHitJumpExperiment(params) clickurl:" + getUrlForClick(paramParams) + ",url:" + paramString);
-      a.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
+      AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
     }
     return new AdClickUtil.Result(AdBrowser.show(paramParams.activity, paramParams.ad, paramString, paramParams.extrasForIntent), 1);
   }
@@ -573,7 +574,7 @@ public final class AdClickUtil
     if ((paramParams.reportForClick) && ((isHitJumpExperiment(paramParams)) || (paramInt == 4)))
     {
       AdLog.e("AdClickUtil", "handleVideoCeiling click url:" + getUrlForClick(paramParams));
-      a.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
+      AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
     }
     return new AdClickUtil.Result(AdVideoCeiling.show(paramParams.activity, paramParams.ad, str, paramParams.ad.getVideoUrl(), paramInt, paramParams.videoPlayForced, false, paramParams.videoStartPositionMillis, paramParams.extrasForIntent, paramParams.enableAutoDownload), 2);
   }
@@ -597,7 +598,7 @@ public final class AdClickUtil
       if (paramParams.reportForClick)
       {
         AdLog.e("AdClickUtil", "handleVideoSplice click url:" + getUrlForClick(paramParams));
-        a.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
+        AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
         i = j;
         localObject1 = localObject2;
       }
@@ -617,7 +618,7 @@ public final class AdClickUtil
           if ((paramParams.reportForClick) && (isHitJumpExperiment(paramParams)))
           {
             AdLog.e("AdClickUtil", "handleVideoSplice click url:" + getUrlForClick(paramParams));
-            a.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
+            AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
           }
           i = 0;
         }
@@ -645,7 +646,7 @@ public final class AdClickUtil
       if ((!isWebProductTypeDeeplinkSupported(paramParams)) || (TextUtils.isEmpty(paramParams.ad.getAppDeeplink()))) {
         break label202;
       }
-      b.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 245);
+      a.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 245);
       if (i != -2147483648) {
         return handleVideoCeiling(paramParams, i);
       }

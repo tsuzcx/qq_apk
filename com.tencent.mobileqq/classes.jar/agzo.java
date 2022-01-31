@@ -1,34 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.text.Editable;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.IdiomHbFragment;
+import java.util.List;
 
-class agzo
-  implements View.OnClickListener
+public class agzo
+  implements agzq
 {
-  private agzn jdField_a_of_type_Agzn;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  public agzo(IdiomHbFragment paramIdiomHbFragment) {}
   
-  agzo(agzn paramagzn, MqqHandler paramMqqHandler)
+  public void a(boolean paramBoolean, List<String> paramList)
   {
-    this.jdField_a_of_type_Agzn = paramagzn;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_Agzn.jdField_a_of_type_JavaLangString + " on close");
-    }
-    paramView = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(201);
-    paramView.obj = this.jdField_a_of_type_Agzn;
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramView);
-    this.jdField_a_of_type_Agzn.jdField_a_of_type_Agzl.onClose();
+    this.a.c.setText(IdiomHbFragment.a(this.a, true));
+    this.a.c.setSelection(this.a.c.getText().length());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agzo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,75 +1,152 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.phone.CountryActivity;
+import com.tencent.widget.ListView;
 
 public class agjv
+  extends Dialog
+  implements TextWatcher, View.OnClickListener, View.OnTouchListener
 {
-  public String a;
-  public Pattern a;
-  public boolean a;
-  public String b;
-  public Pattern b;
-  public boolean b;
-  public String c;
-  public String d;
+  private agju jdField_a_of_type_Agju;
+  private View jdField_a_of_type_AndroidViewView;
+  EditText jdField_a_of_type_AndroidWidgetEditText;
+  ImageButton jdField_a_of_type_AndroidWidgetImageButton;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ListView jdField_a_of_type_ComTencentWidgetListView;
   
-  public static List<agjv> a(String paramString)
+  public agjv(CountryActivity paramCountryActivity, Context paramContext)
   {
-    localArrayList = new ArrayList();
-    try
+    super(paramContext);
+    requestWindowFeature(1);
+    getWindow().setSoftInputMode(36);
+    getWindow().setBackgroundDrawable(new ColorDrawable());
+    setContentView(2131558854);
+    paramContext = getWindow().getAttributes();
+    paramContext.x = 0;
+    paramContext.y = 0;
+    paramContext.width = -1;
+    paramContext.windowAnimations = 16973824;
+    paramContext.gravity = 51;
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365764));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
+    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
+    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131367678));
+    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
+    paramContext = (Button)findViewById(2131363480);
+    paramContext.setVisibility(0);
+    paramContext.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131375187);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370876));
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719076);
+    findViewById(2131375711).setVisibility(8);
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131375733));
+    this.jdField_a_of_type_Agju = new agju(paramCountryActivity, null);
+    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Agju);
+    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(this);
+  }
+  
+  void a(String paramString)
+  {
+    if ((paramString.equals("")) || (paramString.trim().length() == 0))
     {
-      paramString = new JSONArray(paramString);
-      int i = 0;
-      if (i < paramString.length())
-      {
-        JSONObject localJSONObject = paramString.getJSONObject(i);
-        agjv localagjv;
-        if (localJSONObject != null)
-        {
-          localagjv = new agjv();
-          localagjv.jdField_a_of_type_JavaLangString = localJSONObject.optString("sourceURLRegular");
-          localagjv.jdField_b_of_type_JavaLangString = localJSONObject.optString("interceptURLRegular");
-          if (localJSONObject.optInt("shouldReport") != 1) {
-            break label138;
-          }
-          bool = true;
-          label85:
-          localagjv.jdField_a_of_type_Boolean = bool;
-          if (localJSONObject.optInt("shouldIntercept") != 1) {
-            break label143;
-          }
-        }
-        label138:
-        label143:
-        for (boolean bool = true;; bool = false)
-        {
-          localagjv.jdField_b_of_type_Boolean = bool;
-          localagjv.c = localJSONObject.optString("jumpURL");
-          localArrayList.add(localagjv);
-          i += 1;
-          break;
-          bool = false;
-          break label85;
-        }
-      }
-      return localArrayList;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      return;
     }
-    catch (Exception paramString)
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_Agju.a(paramString);
+    if (this.jdField_a_of_type_Agju.getCount() == 0) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
+    for (;;)
     {
-      paramString.printStackTrace();
+      this.jdField_a_of_type_Agju.notifyDataSetChanged();
+      return;
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
   }
   
-  public String toString()
+  public void afterTextChanged(Editable paramEditable)
   {
-    return "InterceptConfig [mSrcUrlRegular=" + this.jdField_a_of_type_JavaLangString + ", mInterceptUrlRegular=" + this.jdField_b_of_type_JavaLangString + ", mIsReport=" + this.jdField_a_of_type_Boolean + ", mIsIntercept=" + this.jdField_b_of_type_Boolean + ", mJumpUrl=" + this.c + "]";
+    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    a(paramEditable);
+    if (paramEditable.equals(""))
+    {
+      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  /* Error */
+  public void dismiss()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokespecial 198	android/app/Dialog:dismiss	()V
+    //   4: aload_0
+    //   5: invokestatic 203	zzs:a	(Landroid/app/Dialog;)V
+    //   8: return
+    //   9: astore_1
+    //   10: aload_0
+    //   11: invokestatic 203	zzs:a	(Landroid/app/Dialog;)V
+    //   14: return
+    //   15: astore_1
+    //   16: aload_0
+    //   17: invokestatic 203	zzs:a	(Landroid/app/Dialog;)V
+    //   20: aload_1
+    //   21: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	22	0	this	agjv
+    //   9	1	1	localException	java.lang.Exception
+    //   15	6	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   0	4	9	java/lang/Exception
+    //   0	4	15	finally
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131363480: 
+      dismiss();
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    ((InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agjv
  * JD-Core Version:    0.7.0.1
  */

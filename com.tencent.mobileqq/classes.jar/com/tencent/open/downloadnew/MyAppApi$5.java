@@ -1,16 +1,16 @@
 package com.tencent.open.downloadnew;
 
-import bcfb;
-import bchb;
+import bdjc;
+import bdlc;
 
 public class MyAppApi$5
   implements Runnable
 {
-  public MyAppApi$5(bchb parambchb, String paramString1, String paramString2) {}
+  public MyAppApi$5(bdlc parambdlc, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bcfb.a("202", bcfb.a(this.a, "NEWYYB"), this.b);
+    bdjc.a("202", bdjc.a(this.a, "NEWYYB"), this.b);
   }
 }
 

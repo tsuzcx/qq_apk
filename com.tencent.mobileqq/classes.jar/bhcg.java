@@ -1,43 +1,69 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.TextView;
-import com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import cooperation.qzone.contentbox.MsgPhotoView;
+import cooperation.qzone.contentbox.model.MQMsg;
+import cooperation.qzone.contentbox.model.MQUserPersonalData;
+import cooperation.qzone.util.QZLog;
 
 public class bhcg
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public FrameLayout a;
-  public ImageView a;
-  public TextView a;
-  public RoundCorneredFrameLayout a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
+  public bhcg(MsgPhotoView paramMsgPhotoView) {}
   
-  public bhcg(bhcd parambhcd, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131313183));
-    this.jdField_a_of_type_ComTencentMobileqqArmapMapRoundCorneredFrameLayout = ((RoundCorneredFrameLayout)paramView.findViewById(2131302702));
-    this.c = ((ImageView)paramView.findViewById(2131302715));
-    this.c.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131302044));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131302718));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131302045));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131302719));
-  }
-  
-  public void a()
-  {
-    this.itemView.performClick();
+    MQUserPersonalData localMQUserPersonalData = this.a.jdField_a_of_type_CooperationQzoneContentboxModelMQMsg.mqUserPersonalData;
+    if (localMQUserPersonalData == null)
+    {
+      QZLog.i("MsgPhotoView", 1, " vip icon click data = null");
+      return;
+    }
+    Object localObject = "";
+    switch (paramView.getId())
+    {
+    default: 
+      paramView = (View)localObject;
+    }
+    for (;;)
+    {
+      if (QZLog.isColorLevel()) {
+        QZLog.i("MsgPhotoView", 2, "MsgVip vip icon click url = " + paramView);
+      }
+      localObject = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", paramView);
+      ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_jc_vip");
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      return;
+      paramView = localMQUserPersonalData.mBVJumpUrl;
+      bhxo.a(12, 2);
+      continue;
+      localObject = localMQUserPersonalData.mYJumpUrl;
+      paramView = paramView.getTag();
+      if ((paramView != null) && ((paramView instanceof Boolean)))
+      {
+        if (((Boolean)paramView).booleanValue()) {}
+        for (int i = 11;; i = 10)
+        {
+          bhxo.a(i, 2);
+          paramView = (View)localObject;
+          break;
+        }
+        paramView = localMQUserPersonalData.mLYJumpUrl;
+        bhxo.a(13, 2);
+      }
+      else
+      {
+        paramView = (View)localObject;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhcg
  * JD-Core Version:    0.7.0.1
  */

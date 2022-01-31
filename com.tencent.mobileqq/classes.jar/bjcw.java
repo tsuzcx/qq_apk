@@ -1,23 +1,11 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import dov.com.qq.im.capture.mode.CaptureModeController;
 
 public class bjcw
-  extends BroadcastReceiver
+  extends bjcl
 {
-  public bjcw(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bjcw(CaptureModeController paramCaptureModeController)
   {
-    if ("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreviewActivity", 2, "ACTION_SCREEN_OFF == >>");
-      }
-      this.a.c();
-    }
+    super(paramCaptureModeController);
   }
 }
 

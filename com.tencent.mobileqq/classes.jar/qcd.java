@@ -1,26 +1,24 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
-
-class qcd
-  implements DialogInterface.OnClickListener
+public class qcd
+  implements Cloneable
 {
-  qcd(qca paramqca, boolean paramBoolean) {}
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c = -1;
+  public int d = -1;
+  public int e = -1;
+  public int f = -1;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public qcd()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      if (!qca.a(this.jdField_a_of_type_Qca)) {}
-    }
-    while (!(qca.a(this.jdField_a_of_type_Qca) instanceof Activity))
-    {
-      return;
-      this.jdField_a_of_type_Qca.b();
-      return;
-    }
-    npj.b(qca.a(this.jdField_a_of_type_Qca));
-    npa.a(qca.a(this.jdField_a_of_type_Qca), qca.a(this.jdField_a_of_type_Qca).o, qca.a(this.jdField_a_of_type_Qca).p, "");
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+  }
+  
+  public String toString()
+  {
+    return "VideoExtraRepoerData{JumpWayWhich=" + this.jdField_a_of_type_Int + ", InOneThreeSource=" + this.jdField_b_of_type_Int + ", videoTimePosition=" + this.d + ", videoDuration=" + this.e + ", needWhetherClickIn=" + this.jdField_b_of_type_Boolean + ", whetherClickIn=" + this.jdField_a_of_type_Boolean + ", InVideoChannelSource=" + this.c + ", videoFromType=" + this.f + '}';
   }
 }
 

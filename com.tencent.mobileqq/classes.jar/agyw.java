@@ -1,57 +1,125 @@
-import android.content.Intent;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager.36.1;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.net.URLEncoder;
-import mqq.os.MqqHandler;
+import Wallet.RedPackGrapInfo;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.ViewGroup;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbListAdapter.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class agyw
-  implements View.OnClickListener
+  extends RecyclerView.Adapter<agyx>
 {
-  agyw(agxq paramagxq) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<RedPackGrapInfo> jdField_a_of_type_JavaUtilList;
   
-  public void onClick(View paramView)
+  public agyw(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList, Context paramContext)
   {
-    if (!agxq.a(this.a)) {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public agyx a(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new agyx(this, new agyy(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList, this.jdField_a_of_type_AndroidContentContext, new adyb(TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), this.jdField_a_of_type_AndroidContentContext, TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList))));
+  }
+  
+  public void a(agyx paramagyx, int paramInt)
+  {
+    RedPackGrapInfo localRedPackGrapInfo = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(paramagyx.getPosition());
+    if (localRedPackGrapInfo == null) {}
+    do
+    {
+      return;
+      paramagyx = paramagyx.a;
+    } while (paramagyx == null);
+    paramagyx.a(localRedPackGrapInfo);
+  }
+  
+  void a(String paramString)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_JavaUtilList == null) {
+          break label233;
+        }
+        if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+          break label234;
+        }
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        RedPackGrapInfo localRedPackGrapInfo;
+        int j;
+        if (!QLog.isColorLevel()) {
+          break label233;
+        }
+        QLog.e(TroopUnAccalimedRedPacketList.b(), 2, "removeHbList occur an exception: " + paramString);
+        return;
+        i += 1;
+        continue;
+        TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList).postDelayed(new TroopUnAccalimedRedPacketList.HbListAdapter.1(this), 300L);
+        return;
+        i = 0;
+        continue;
+      }
+      if (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        localRedPackGrapInfo = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+        if ((localRedPackGrapInfo != null) && (localRedPackGrapInfo.sBiilNo.equals(paramString)))
+        {
+          j = i;
+          if (i == this.jdField_a_of_type_JavaUtilList.size()) {
+            j = i - 1;
+          }
+          this.jdField_a_of_type_JavaUtilList.remove(j);
+          notifyItemRemoved(j);
+          notifyItemRangeChanged(j, this.jdField_a_of_type_JavaUtilList.size());
+          if (TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList) == null) {
+            break label233;
+          }
+          if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
+            continue;
+          }
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList.a == null) {
+            break label233;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList.a.dismiss();
+        }
+      }
+      label233:
+      return;
+      label234:
+      int i = 0;
+    }
+  }
+  
+  void a(List<RedPackGrapInfo> paramList)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
       return;
     }
-    agxq.a(this.a, false);
-    new Handler().postDelayed(new BannerManager.36.1(this), 1000L);
-    paramView = (QQAppInterface)agxq.a(this.a).getAppRuntime();
-    String str = paramView.getCurrentAccountUin();
-    Object localObject = new StringBuilder("http://aq.qq.com/cn2/change_psw/mobile/mobile_change_psw_reg_input_psw");
-    ((StringBuilder)localObject).append("?");
-    ((StringBuilder)localObject).append("uin=");
-    ((StringBuilder)localObject).append(str);
-    ((StringBuilder)localObject).append("&plat=1");
-    ((StringBuilder)localObject).append("&app=1");
-    ((StringBuilder)localObject).append("&version=8.2.6.4370");
-    ((StringBuilder)localObject).append("&device=" + URLEncoder.encode(Build.DEVICE));
-    ((StringBuilder)localObject).append("&system=" + Build.VERSION.RELEASE);
-    ((StringBuilder)localObject).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
-    localObject = ((StringBuilder)localObject).toString();
-    Intent localIntent = new Intent();
-    localIntent.putExtra("portraitOnly", true);
-    localIntent.putExtra("url", (String)localObject);
-    localIntent.putExtra("uin", str);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hide_more_button", true);
-    VasWebviewUtil.openQQBrowserActivity(agxq.a(this.a), (String)localObject, 32768L, localIntent, false, -1);
-    atok.a().a(paramView);
-    agxq.a(this.a).sendEmptyMessageDelayed(4, 1000L);
-    awqx.b(paramView, "CliOper", "", "", "Mobile_signup", "Clk_blue_pw", 0, 0, "", "", "", "");
-    awqx.a(agxq.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 18, 0, "", "", "", "");
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agyw
  * JD-Core Version:    0.7.0.1
  */

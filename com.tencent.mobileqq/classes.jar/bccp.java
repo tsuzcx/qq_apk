@@ -1,31 +1,97 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
 public class bccp
+  implements MiniMsgUser.IMiniMsgActionCallback
 {
-  private android.webkit.CookieManager jdField_a_of_type_AndroidWebkitCookieManager = android.webkit.CookieManager.getInstance();
-  private com.tencent.smtt.sdk.CookieManager jdField_a_of_type_ComTencentSmttSdkCookieManager = com.tencent.smtt.sdk.CookieManager.getInstance();
+  public bccp(WebViewFragment paramWebViewFragment) {}
   
-  public void a(String paramString1, String paramString2)
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie(paramString1, paramString2);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("action", paramString);
+      localJSONObject.put("options", paramJSONObject);
+      paramString = "javascript:mqq.dispatchEvent(\"miniAIOEvent\"," + localJSONObject.toString() + ");";
+      this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.callJs(paramString);
+      return;
     }
-    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
-      this.jdField_a_of_type_AndroidWebkitCookieManager.setCookie(paramString1, paramString2);
+    catch (Exception paramString)
+    {
+      QLog.d("WebLog_WebViewFragment", 1, paramString, new Object[0]);
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void onFromMiniAIOToAIO()
   {
-    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setAcceptCookie(paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "onFromMiniAIOToAIO ");
     }
-    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
-      this.jdField_a_of_type_AndroidWebkitCookieManager.setAcceptCookie(paramBoolean);
+    a("fromMiniAIOToAIO", new JSONObject());
+  }
+  
+  public void onGoToConversation()
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebLog_WebViewFragment", 2, "onGoToConversation ");
+      }
+      a("returnMsgList", new JSONObject());
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("WebLog_WebViewFragment", 1, localException, new Object[0]);
+    }
+  }
+  
+  public void onOpenMiniAIOCallback()
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser == null) {
+      return;
+    }
+    WebViewFragment localWebViewFragment = this.a;
+    Object localObject1 = localWebViewFragment.r;
+    if (TextUtils.isEmpty(localWebViewFragment.r)) {
+      localObject1 = localWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.getTitle();
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject2 = localObject1;
+      if (!"‎".equals(localObject1)) {}
+    }
+    else
+    {
+      localObject2 = ajyc.a(2131716893);
+    }
+    localObject1 = new Bundle();
+    ((Bundle)localObject1).putString("banner_wording", (String)localObject2);
+    Object localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.getParam();
+    ((MiniMsgUserParam)localObject2).backConversationIntent = localWebViewFragment.a((Bundle)localObject1);
+    bcgc.a(((MiniMsgUserParam)localObject2).backConversationIntent);
+    try
+    {
+      a("entryClicked", new JSONObject());
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("WebLog_WebViewFragment", 1, localException, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bccp
  * JD-Core Version:    0.7.0.1
  */

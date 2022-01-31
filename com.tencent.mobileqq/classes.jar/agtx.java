@@ -1,31 +1,18 @@
-import android.graphics.Bitmap;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpakcetPreviewConfBean.BreathLight;
-import java.util.List;
-
-public abstract interface agtx
+class agtx
+  implements bcvx
 {
-  public abstract void a();
+  agtx(agtw paramagtw, Runnable paramRunnable) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(Bitmap paramBitmap, String paramString, List<Bitmap> paramList);
-  
-  public abstract void a(ViewGroup paramViewGroup, Bitmap paramBitmap, String paramString1, String paramString2, String paramString3, String paramString4);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void a(boolean paramBoolean, SpringFestivalRedpakcetPreviewConfBean.BreathLight paramBreathLight);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void a(int paramInt)
+  {
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agtx
  * JD-Core Version:    0.7.0.1
  */

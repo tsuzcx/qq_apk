@@ -1,20 +1,20 @@
-import com.tencent.biz.PoiMapActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public abstract class mmg
+class mmg
+  implements TextWatcher
 {
-  public int a;
-  public int b;
-  public int c;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  mmg(mme parammme) {}
   
-  public mmg(PoiMapActivity paramPoiMapActivity) {}
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mmg
  * JD-Core Version:    0.7.0.1
  */

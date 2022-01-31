@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ajjy;
+import ajyc;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -10,18 +10,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anff;
-import aome;
-import awqx;
-import bacj;
-import badf;
-import badq;
+import anvo;
+import apcy;
+import axqw;
+import bbdo;
+import bbek;
+import bbev;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class SecurityProtectActivity
   extends IphoneTitleBarActivity
-  implements View.OnClickListener, bacj
+  implements View.OnClickListener, bbdo
 {
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -36,23 +36,23 @@ public class SecurityProtectActivity
   
   public SecurityProtectActivity()
   {
-    this.jdField_b_of_type_JavaLangString = ajjy.a(2131647902);
+    this.jdField_b_of_type_JavaLangString = ajyc.a(2131713689);
     this.jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
   }
   
-  public boolean a(anff paramanff)
+  public boolean a(anvo paramanvo)
   {
-    if (paramanff.b == 0)
+    if (paramanvo.b == 0)
     {
-      this.jdField_a_of_type_JavaLangLong = Long.valueOf(paramanff.e);
-      if ((badq.d(getActivity())) && (this.jdField_a_of_type_JavaLangLong.longValue() > 0L))
+      this.jdField_a_of_type_JavaLangLong = Long.valueOf(paramanvo.e);
+      if ((bbev.d(getActivity())) && (this.jdField_a_of_type_JavaLangLong.longValue() > 0L))
       {
-        paramanff = new Bundle();
-        paramanff.putString("_filename_from_dlg", this.jdField_b_of_type_JavaLangString);
-        paramanff.putLong("_filesize_from_dlg", this.jdField_a_of_type_JavaLangLong.longValue());
-        paramanff.putString("big_brother_source_key", "biz_src_safe");
-        paramanff.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_safe");
-        aome.a().b(this.jdField_a_of_type_JavaLangString, paramanff);
+        paramanvo = new Bundle();
+        paramanvo.putString("_filename_from_dlg", this.jdField_b_of_type_JavaLangString);
+        paramanvo.putLong("_filesize_from_dlg", this.jdField_a_of_type_JavaLangLong.longValue());
+        paramanvo.putString("big_brother_source_key", "biz_src_safe");
+        paramanvo.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_safe");
+        apcy.a().b(this.jdField_a_of_type_JavaLangString, paramanvo);
         return true;
       }
     }
@@ -67,15 +67,15 @@ public class SecurityProtectActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131496796);
-    setTitle(2131653331);
+    super.setContentView(2131562396);
+    setTitle(2131719160);
     this.rightViewText.setVisibility(8);
-    this.leftView.setText(2131653337);
+    this.leftView.setText(2131719166);
     this.leftView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131311733));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131301669));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131310180));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131312732));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377547));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367281));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375944));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131378556));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
     this.jdField_a_of_type_AndroidWidgetButton.setFocusable(true);
@@ -90,15 +90,15 @@ public class SecurityProtectActivity
       finish();
       return;
     }
-    this.jdField_a_of_type_Boolean = badf.a(this);
-    this.jdField_b_of_type_Boolean = badf.b(this);
+    this.jdField_a_of_type_Boolean = bbek.a(this);
+    this.jdField_b_of_type_Boolean = bbek.b(this);
     String str;
     if (!this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848352);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131653325);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848584);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719154);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131653319);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131719148);
       if (!this.jdField_b_of_type_Boolean) {
         break label192;
       }
@@ -106,20 +106,20 @@ public class SecurityProtectActivity
     }
     for (;;)
     {
-      awqx.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", str, 0, 0, "", "", "", "");
+      axqw.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", str, 0, 0, "", "", "", "");
       return;
       if (!this.jdField_b_of_type_Boolean)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848353);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131653327);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848585);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719156);
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131653320);
+        this.jdField_a_of_type_AndroidWidgetButton.setText(2131719149);
         break;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848351);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131653321);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848583);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719150);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131653326);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131719155);
       break;
       label192:
       if (this.jdField_a_of_type_Boolean) {
@@ -144,26 +144,26 @@ public class SecurityProtectActivity
     {
     default: 
       return;
-    case 2131312732: 
+    case 2131378556: 
       if (!this.jdField_a_of_type_Boolean)
       {
         ThreadManager.executeOnNetWorkThread(new SecurityProtectActivity.1(this));
         this.c = true;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131653322);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719151);
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-        ((LinearLayout)findViewById(2131299799)).setVisibility(0);
-        awqx.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn download qqpimsecure", 0, 0, "", "", "", "");
+        ((LinearLayout)findViewById(2131365366)).setVisibility(0);
+        axqw.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn download qqpimsecure", 0, 0, "", "", "", "");
         return;
       }
       if (!this.jdField_b_of_type_Boolean)
       {
-        badf.a(this, "mobileqq", 7798785);
-        awqx.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn weakup qqpimsecure", 0, 0, "", "", "", "");
+        bbek.a(this, "mobileqq", 7798785);
+        axqw.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn weakup qqpimsecure", 0, 0, "", "", "", "");
         return;
       }
-      badf.a(this, "mobileqq", 8716289);
-      awqx.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn run_scan", 0, 0, "", "", "", "");
+      bbek.a(this, "mobileqq", 8716289);
+      axqw.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn run_scan", 0, 0, "", "", "", "");
       return;
     }
     finish();

@@ -1,122 +1,49 @@
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.app.Activity;
+import android.text.Editable;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
 
 public class aucr
+  implements aucm
 {
-  private static int jdField_a_of_type_Int = 5;
-  private static long jdField_a_of_type_Long;
-  private static String jdField_a_of_type_JavaLangString = aucr.class.getSimpleName();
-  private static ArrayList<aucs> jdField_a_of_type_JavaUtilArrayList;
+  public aucr(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  static
+  public Activity a()
   {
-    jdField_a_of_type_Long = 60000L;
+    return this.a;
   }
   
-  public static bess a()
+  public void a(View paramView)
   {
-    try
-    {
-      if (jdField_a_of_type_JavaUtilArrayList == null) {
-        jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      Object localObject3 = b();
-      Object localObject1 = localObject3;
-      if (localObject3 == null)
-      {
-        localObject3 = new aucq();
-        ((bess)localObject3).a();
-        jdField_a_of_type_JavaUtilArrayList.add(new aucs((bess)localObject3));
-        localObject1 = localObject3;
-        if (QLog.isColorLevel())
-        {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "can't find sscm object, add new one, size= " + jdField_a_of_type_JavaUtilArrayList.size());
-          localObject1 = localObject3;
-        }
-      }
-      return localObject1;
+    if (paramView == null) {
+      this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
     }
-    finally {}
-  }
-  
-  public static void a()
-  {
-    try
-    {
-      jdField_a_of_type_JavaUtilArrayList = null;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void a(bess parambess)
-  {
     for (;;)
     {
-      aucs localaucs;
-      try
-      {
-        Object localObject = jdField_a_of_type_JavaUtilArrayList;
-        if (localObject == null) {}else {
-          localObject = jdField_a_of_type_JavaUtilArrayList.iterator();
-        }
-        if (!((Iterator)localObject).hasNext()) {
-          continue;
-        }
-        localaucs = (aucs)((Iterator)localObject).next();
-        if (parambess != localaucs.jdField_a_of_type_Bess) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "return sscm, current size=" + jdField_a_of_type_JavaUtilArrayList.size());
-        }
-        if (jdField_a_of_type_JavaUtilArrayList.size() > jdField_a_of_type_Int)
-        {
-          ((Iterator)localObject).remove();
-          continue;
-        }
-        localaucs.jdField_a_of_type_Boolean = false;
-      }
-      finally {}
-      localaucs.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      this.a.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
+      a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      return;
+      this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     }
   }
   
-  private static bess b()
+  public void a(String paramString)
   {
-    if (jdField_a_of_type_JavaUtilArrayList == null) {
-      return null;
-    }
-    Object localObject = jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      aucs localaucs = (aucs)((Iterator)localObject).next();
-      if (!localaucs.jdField_a_of_type_Boolean)
-      {
-        localObject = localaucs.jdField_a_of_type_Bess;
-        localaucs.jdField_a_of_type_Boolean = true;
-        long l = SystemClock.elapsedRealtime();
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "query for sscm, get one expired:" + (l - localaucs.jdField_a_of_type_Long));
-        }
-        if (l - localaucs.jdField_a_of_type_Long > jdField_a_of_type_Long) {
-          localaucs.jdField_a_of_type_Bess.a();
-        }
-        return localObject;
-      }
-    }
-    return null;
+    this.a.a(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.jdField_a_of_type_Aucs.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aucr
  * JD-Core Version:    0.7.0.1
  */

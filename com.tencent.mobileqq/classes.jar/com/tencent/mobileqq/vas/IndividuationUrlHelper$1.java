@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import bant;
+import bbpp;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class IndividuationUrlHelper$1
@@ -8,7 +8,7 @@ public final class IndividuationUrlHelper$1
 {
   public void run()
   {
-    bant.a(BaseApplicationImpl.sApplication.getRuntime());
+    bbpp.a(BaseApplicationImpl.sApplication.getRuntime());
   }
 }
 

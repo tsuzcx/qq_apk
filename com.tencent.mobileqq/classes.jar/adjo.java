@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.MarkFaceMessage;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-class adjo
-  implements arol<MarkFaceMessage, Void>
+public class adjo
+  implements adih
 {
-  adjo(adje paramadje, adjt paramadjt) {}
+  private BaseChatPie a;
   
-  public Void a(MarkFaceMessage paramMarkFaceMessage)
+  public adjo(BaseChatPie paramBaseChatPie)
   {
-    paramMarkFaceMessage = ((arnz)this.jdField_a_of_type_Adje.a.getManager(14)).a(paramMarkFaceMessage);
-    this.jdField_a_of_type_Adjt.jdField_a_of_type_Anla = paramMarkFaceMessage;
-    if ((paramMarkFaceMessage != null) && (paramMarkFaceMessage.a != null)) {
-      this.jdField_a_of_type_Adjt.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = ((arnz)this.jdField_a_of_type_Adje.a.getManager(14)).a(paramMarkFaceMessage.a.epId);
+    this.a = paramBaseChatPie;
+  }
+  
+  public void a(int paramInt)
+  {
+    String str = this.a.c();
+    if (!TextUtils.isEmpty(str)) {
+      bbtc.a(this.a.a).a(str);
     }
-    arhw.a();
-    return null;
+  }
+  
+  public int[] a()
+  {
+    return new int[6];
   }
 }
 

@@ -1,57 +1,27 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-
 public class bdjw
-  implements SeekBar.OnSeekBarChangeListener
 {
-  private long jdField_a_of_type_Long;
+  protected String a;
+  protected String b;
   
-  public bdjw(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
-  
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public bdjw(String paramString1, String paramString2)
   {
-    if ((!paramBoolean) || (MiniAppVideoPlayer.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer) == null)) {
-      return;
-    }
-    this.jdField_a_of_type_Long = (MiniAppVideoPlayer.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).getDuration() * paramInt / paramSeekBar.getMax());
-    MiniAppVideoPlayer.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).setText(MiniAppVideoPlayer.a(this.jdField_a_of_type_Long));
-    MiniAppVideoPlayer.b(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).setText(MiniAppVideoPlayer.a(this.jdField_a_of_type_Long));
+    this.a = paramString1;
+    this.b = paramString2;
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public String a()
   {
-    MiniAppVideoPlayer.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer, true);
-    MiniAppVideoPlayer.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).setVisibility(0);
-    MiniAppVideoPlayer.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).setText("");
-    MiniAppVideoPlayer.c(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer);
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer.u) && ("center".equals(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer.g))) {
-      MiniAppVideoPlayer.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).setVisibility(8);
-    }
+    return this.a;
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public String b()
   {
-    MiniAppVideoPlayer.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer, false);
-    if (MiniAppVideoPlayer.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer) != null) {
-      MiniAppVideoPlayer.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).seekTo((int)this.jdField_a_of_type_Long);
-    }
-    MiniAppVideoPlayer.b(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).setVisibility(0);
-    MiniAppVideoPlayer.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).setVisibility(8);
-    MiniAppVideoPlayer.d(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer);
-    MiniAppVideoPlayer.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer);
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer.u) && ("center".equals(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer.g))) {
-      MiniAppVideoPlayer.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).setVisibility(0);
-    }
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdjw
  * JD-Core Version:    0.7.0.1
  */

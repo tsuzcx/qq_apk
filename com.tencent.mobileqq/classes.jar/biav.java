@@ -1,213 +1,127 @@
-import android.annotation.TargetApi;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
-import android.media.MediaMetadataRetriever;
-import android.view.Surface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import java.util.ArrayList;
 
-@TargetApi(16)
 public class biav
+  extends BaseAdapter
 {
-  private static String jdField_a_of_type_JavaLangString = biav.class.getSimpleName();
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
-  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
-  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString = "";
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long;
-  private int jdField_d_of_type_Int;
-  private long jdField_d_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   
-  private void a(Surface paramSurface)
+  public biav(biaq parambiaq, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
-    label121:
-    MediaFormat localMediaFormat;
-    String str;
-    try
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private LayoutInflater a()
+  {
+    if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
+      this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    }
+    return this.jdField_a_of_type_AndroidViewLayoutInflater;
+  }
+  
+  private View a()
+  {
+    return a().inflate(2131562604, null);
+  }
+  
+  private void a(biaw parambiaw, biax parambiax)
+  {
+    parambiaw = URLDrawable.getDrawable(parambiaw.b, null);
+    parambiax.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(parambiaw);
+    parambiax.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+    parambiax.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_Biaq.a != null) {
+      return this.jdField_a_of_type_Biaq.a.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (this.jdField_a_of_type_Biaq.a != null) {
+      return this.jdField_a_of_type_Biaq.a.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    if (this.jdField_a_of_type_Biaq.a != null) {
+      return this.jdField_a_of_type_Biaq.a.size();
+    }
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.setDataSource(this.jdField_b_of_type_JavaLangString);
-      int j = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackCount();
-      i = 0;
-      if (i < j)
+      paramViewGroup = new biax(this.jdField_a_of_type_Biaq);
+      paramView = a();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369922));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369113));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365412);
+      paramView.setTag(paramViewGroup);
+    }
+    while (paramViewGroup == null)
+    {
+      return paramView;
+      paramViewGroup = (biax)paramView.getTag();
+    }
+    if (getCount() <= 1)
+    {
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      paramView.setBackgroundResource(2130848309);
+    }
+    biaw localbiaw;
+    for (;;)
+    {
+      localbiaw = (biaw)getItem(paramInt);
+      if (localbiaw != null) {
+        break;
+      }
+      return paramView;
+      if (paramInt <= 0)
       {
-        if (this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i).getString("mime").contains("video")) {
-          this.jdField_a_of_type_Int = i;
-        }
+        paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        paramView.setBackgroundResource(2130848309);
+      }
+      else if (paramInt < getCount() - 1)
+      {
+        paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        paramView.setBackgroundResource(2130848308);
       }
       else
       {
-        if (this.jdField_a_of_type_Int != -1) {
-          break label121;
-        }
-        this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
-        return;
+        paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        paramView.setBackgroundResource(2130848307);
       }
     }
-    catch (IOException localIOException1)
-    {
-      for (;;)
-      {
-        int i;
-        QLog.e(jdField_a_of_type_JavaLangString, 4, "video decoder media extractor setDataSource() exception, msg = " + localIOException1.getMessage());
-        continue;
-        i += 1;
-      }
-      localMediaFormat = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(this.jdField_a_of_type_Int);
-      str = localMediaFormat.getString("mime");
-      this.jdField_b_of_type_Int = localMediaFormat.getInteger("max-input-size");
-      this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(this.jdField_b_of_type_Int);
+    paramViewGroup.jdField_a_of_type_Biaw = localbiaw;
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localbiaw.a);
+    if (TextUtils.isEmpty(localbiaw.b)) {
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    try
-    {
-      this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(str);
-      this.jdField_a_of_type_AndroidMediaMediaCodec.configure(localMediaFormat, paramSurface, null, 0);
-      this.jdField_a_of_type_AndroidMediaMediaCodec.start();
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.seekTo(this.jdField_a_of_type_Long, 0);
-      return;
-    }
-    catch (IOException localIOException2)
-    {
-      for (;;)
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 4, "video decoder media codec create exception, msg = " + localIOException2.getMessage());
-      }
-    }
-  }
-  
-  private void a(String paramString, long paramLong1, long paramLong2)
-  {
-    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    try
-    {
-      this.jdField_b_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_Long = paramLong1;
-      this.jdField_b_of_type_Long = paramLong2;
-      localMediaMetadataRetriever.setDataSource(paramString);
-      int i = Integer.parseInt(localMediaMetadataRetriever.extractMetadata(24));
-      this.jdField_c_of_type_Int = Integer.parseInt(localMediaMetadataRetriever.extractMetadata(18));
-      this.jdField_d_of_type_Int = Integer.parseInt(localMediaMetadataRetriever.extractMetadata(19));
-      if ((i == 90) || (i == 270))
-      {
-        i = this.jdField_c_of_type_Int;
-        this.jdField_c_of_type_Int = this.jdField_d_of_type_Int;
-        this.jdField_d_of_type_Int = i;
-      }
-      this.jdField_d_of_type_Long = Long.parseLong(localMediaMetadataRetriever.extractMetadata(9));
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 4, "video decoder init parameters exception, msg = " + paramString.getMessage());
-      return;
-    }
-    finally
-    {
-      localMediaMetadataRetriever.release();
-    }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.unselectTrack(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
-      this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 4, "video decoder exception, msg = " + localException.getMessage());
-    }
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2, Surface paramSurface)
-  {
-    try
-    {
-      a(paramString, paramLong1, paramLong2);
-      a(paramSurface);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 4, "video decoder init exception, msg = " + paramString.getMessage());
-    }
-  }
-  
-  public boolean a()
-  {
-    QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface start");
-    if (!Thread.interrupted())
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface loop");
-      int i;
-      int j;
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(10000L);
-        if (i >= 0)
-        {
-          localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers()[i];
-          j = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData((ByteBuffer)localObject, 0);
-          if (j >= 0) {
-            break label159;
-          }
-          QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface BUFFER_FLAG_END_OF_STREAM");
-          this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, 0, 0L, 4);
-          this.jdField_a_of_type_Boolean = true;
-        }
-      }
-      for (;;)
-      {
-        i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
-        QLog.e(jdField_a_of_type_JavaLangString, 4, new Object[] { "mediaCodec.dequeueOutputBuffer, outputBufferIndex = ", Integer.valueOf(i) });
-        if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) == 0) {
-          break;
-        }
-        QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface decode complete");
-        return false;
-        label159:
-        QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface mediaCodec.queueInputBuffer");
-        this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, j, this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime(), 0);
-        this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
-      }
-      switch (i)
-      {
-      }
-      this.jdField_c_of_type_Long = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
-      QLog.e(jdField_a_of_type_JavaLangString, 4, new Object[] { "mediaCodec.releaseOutputBuffer, outputBufferIndex = ", Integer.valueOf(i), ", timestamp = ", Long.valueOf(this.jdField_c_of_type_Long) });
-      Object localObject = this.jdField_a_of_type_AndroidMediaMediaCodec;
-      if (this.jdField_c_of_type_Long < this.jdField_b_of_type_Long) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ((MediaCodec)localObject).releaseOutputBuffer(i, bool);
-        if (this.jdField_c_of_type_Long >= this.jdField_b_of_type_Long) {
-          break;
-        }
-        return true;
-      }
-      return false;
-    }
-    return false;
+    a(localbiaw, paramViewGroup);
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     biav
  * JD-Core Version:    0.7.0.1
  */

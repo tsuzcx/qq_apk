@@ -1,205 +1,33 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.graphics.Color;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar.1;
-import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar.2;
-import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar.3;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.os.MqqHandler;
 
-public class aenl
-  implements aenz, View.OnClickListener
+class aenl
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  private long jdField_a_of_type_Long;
-  private aeob jdField_a_of_type_Aeob;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
-  private View jdField_a_of_type_AndroidViewView;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public String a;
-  private boolean jdField_a_of_type_Boolean = true;
-  public String b;
+  aenl(aena paramaena, aenn paramaenn) {}
   
-  public aenl(QQAppInterface paramQQAppInterface, aeob paramaeob, SessionInfo paramSessionInfo, Activity paramActivity)
+  public boolean onPreDraw()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aeob = paramaeob;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    ThreadManager.post(new LightalkBlueTipsBar.1(this), 5, null, true);
-  }
-  
-  public static boolean a()
-  {
-    boolean bool = false;
-    if (aenm.a() != null) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public int a()
-  {
-    return 45;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LightalkBlueTipsBar", 2, "getBarView()");
-    }
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    aena.a(this.jdField_a_of_type_Aena).getViewTreeObserver().removeOnPreDrawListener(this);
+    if (this.jdField_a_of_type_Aenn.b == 1)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131493006, null);
-      paramVarArgs = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131303500);
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null)
-      {
-        paramVarArgs.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
-        paramVarArgs = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131303503);
-        if (this.jdField_a_of_type_JavaLangString == null) {
-          break label322;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("LightalkBlueTipsBar", 2, "getBarView() mTextWording =" + this.jdField_a_of_type_JavaLangString);
-        }
-        paramVarArgs.setText(this.jdField_a_of_type_JavaLangString);
-        paramVarArgs.setContentDescription(this.jdField_a_of_type_JavaLangString + ajjy.a(2131640233));
-        paramVarArgs.setOnClickListener(this);
-        paramVarArgs = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131303502);
-        if (AppSetting.c) {
-          paramVarArgs.setContentDescription(ajjy.a(2131640232));
-        }
-        paramVarArgs.setOnClickListener(this);
-      }
+      aena.a(this.jdField_a_of_type_Aena).setBackgroundDrawable(new anov(Color.parseColor("#1fa4fc"), 5.0F, actn.a(14.0F, this.jdField_a_of_type_Aena.a.getResources()), actn.a(14.0F, this.jdField_a_of_type_Aena.a.getResources())));
+      aena.b(this.jdField_a_of_type_Aena).setBackgroundDrawable(new anov(Color.parseColor("#1fa4fc"), 5.0F, aena.b(this.jdField_a_of_type_Aena).getMeasuredWidth(), aena.b(this.jdField_a_of_type_Aena).getMeasuredHeight()));
+      aena.a(this.jdField_a_of_type_Aena).setImageResource(2130838953);
     }
     for (;;)
     {
-      for (;;)
-      {
-        return this.jdField_a_of_type_AndroidViewView;
-        File localFile = new File(aenm.c);
-        if ((localFile != null) && (localFile.exists())) {}
-        try
-        {
-          this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources(), azvq.a(aenm.c));
-          if (QLog.isDevelopLevel()) {
-            QLog.i("LightalkBlueTipsBar", 4, "load icon to bitmap ");
-          }
-          if (this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) {
-            paramVarArgs.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("LightalkBlueTipsBar", 2, "decodeFile Failed!", localThrowable);
-            }
-            this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = ((BitmapDrawable)this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130843947));
-            localThrowable.printStackTrace();
-          }
-        }
-      }
-      return null;
-      label322:
-      return null;
-      this.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    if (paramInt != 1000) {}
-    label7:
-    do
-    {
-      do
-      {
-        do
-        {
-          String str;
-          do
-          {
-            do
-            {
-              break label7;
-              break label7;
-              break label7;
-              do
-              {
-                return;
-              } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0);
-              if (QLog.isColorLevel()) {
-                QLog.d("LightalkBlueTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW");
-              }
-              paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
-            } while (!paramVarArgs.getBoolean("lightalk_tip_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false));
-            str = paramVarArgs.getString("Lightalk_tips_frdUin", null);
-          } while ((str == null) || (!str.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)));
-          paramInt = paramVarArgs.getInt("LT_tip_show_times" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-          if (QLog.isColorLevel()) {
-            QLog.d("LightalkBlueTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====> tipsum = " + paramInt);
-          }
-          if (paramInt < 3) {
-            break;
-          }
-        } while (!(this.jdField_a_of_type_Aeob.a() instanceof aenl));
-        this.jdField_a_of_type_Aeob.a();
-        return;
-      } while (!this.jdField_a_of_type_Aeob.a(this, new Object[0]));
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800510F", "0X800510F", 0, 0, "" + (paramInt + 1), "", "", "");
-    } while (!this.jdField_a_of_type_Boolean);
-    ThreadManager.getSubThreadHandler().post(new LightalkBlueTipsBar.2(this));
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 12;
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aeob.a();
-      ThreadManager.getSubThreadHandler().post(new LightalkBlueTipsBar.3(this));
-      long l;
-      do
-      {
-        return;
-        l = System.currentTimeMillis();
-      } while (l - this.jdField_a_of_type_Long < 200L);
-      this.jdField_a_of_type_Long = l;
-      paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      paramView.putExtra("hide_more_button", true);
-      paramView.putExtra("url", this.b);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005111", "0X8005111", 0, 0, "", "", "", "");
-      continue;
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005110", "0X8005110", 0, 0, "", "", "", "");
+      aena.a(this.jdField_a_of_type_Aena).setBackgroundDrawable(new anov(Color.parseColor("#b2b5bd"), 5.0F, aena.a(this.jdField_a_of_type_Aena).getMeasuredWidth(), aena.a(this.jdField_a_of_type_Aena).getMeasuredHeight()));
+      aena.c(this.jdField_a_of_type_Aena).setBackgroundDrawable(new anov(Color.parseColor("#b2b5bd"), 5.0F, aena.c(this.jdField_a_of_type_Aena).getMeasuredWidth(), aena.c(this.jdField_a_of_type_Aena).getMeasuredHeight()));
+      return true;
+      aena.a(this.jdField_a_of_type_Aena).setBackgroundDrawable(new anov(Color.parseColor("#ff5fb5"), 5.0F, actn.a(14.0F, this.jdField_a_of_type_Aena.a.getResources()), actn.a(14.0F, this.jdField_a_of_type_Aena.a.getResources())));
+      aena.b(this.jdField_a_of_type_Aena).setBackgroundDrawable(new anov(Color.parseColor("#ff5fb5"), 5.0F, aena.b(this.jdField_a_of_type_Aena).getMeasuredWidth(), aena.b(this.jdField_a_of_type_Aena).getMeasuredHeight()));
+      aena.a(this.jdField_a_of_type_Aena).setImageResource(2130838952);
     }
   }
 }

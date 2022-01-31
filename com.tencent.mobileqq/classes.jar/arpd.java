@@ -1,116 +1,170 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.jsp.X5ApiPlugin.1;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.smtt.sdk.WebView;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class arpd
-  implements arow
+public class arpd
+  extends WebViewPlugin
 {
-  arpd(arpa paramarpa) {}
+  private ConcurrentHashMap<String, arpe> a;
+  private ConcurrentHashMap<String, arpe> b;
   
-  public void a(int paramInt1, int paramInt2)
+  public arpd()
   {
-    if (paramInt1 == paramInt2)
-    {
-      arsb.a("total_transport_cost", null);
-      arsb.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "sessionProgress!!! finishedSessions = " + paramInt1 + ", totalSession" + paramInt2);
-    }
-    arpa.a(this.a, paramInt2);
-    arpa.b(this.a, paramInt1);
-    if (paramInt1 != paramInt2) {}
-    for (int i = paramInt1 + 1;; i = paramInt1)
-    {
-      String str1;
-      String str2;
-      if (arpa.a(this.a) == 1)
-      {
-        str1 = BaseApplicationImpl.getApplication().getResources().getString(2131624829);
-        str2 = i + "/" + arpa.b;
-      }
-      for (;;)
-      {
-        str1 = String.format(str1, new Object[] { str2, arsc.a(arpa.a(this.a)) + "B/s" });
-        i = arop.a().a();
-        if (paramInt1 != paramInt2) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup.BackupAndMigrateManager", 2, "sessioncompleted >>>>>>>>>>>>>>>>>");
-        }
-        arpa.m();
-        this.a.a(BaseActivity.sTopActivity, i);
-        return;
-        if (arpa.a(this.a) == 3)
-        {
-          str1 = BaseApplicationImpl.getApplication().getResources().getString(2131624831);
-          str2 = i + "/" + arpa.b;
-        }
-        else
-        {
-          str1 = BaseApplicationImpl.getApplication().getResources().getString(2131624831);
-          str2 = i + "/" + arpa.b;
-        }
-      }
-      this.a.b(i, str1);
-      return;
-    }
+    this.mPluginNameSpace = "x5";
   }
   
-  public void a(long paramLong)
+  private int a(Context paramContext, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "speedState!!! increment = " + paramLong);
-    }
-    arpa.a(this.a, paramLong);
-    int j = arpa.b(this.a);
-    int i = j;
-    if (j != arpa.b) {
-      i = j + 1;
-    }
-    String str1;
-    String str2;
-    if (arpa.a(this.a) == 1)
+    if (bcgc.b())
     {
-      str1 = BaseApplicationImpl.getApplication().getResources().getString(2131624829);
-      str2 = i + "/" + arpa.b;
-    }
-    for (;;)
-    {
-      str1 = String.format(str1, new Object[] { str2, arsc.a(arpa.a(this.a)) + "B/S" });
-      this.a.b(arop.a().a(), str1);
-      return;
-      if (arpa.a(this.a) == 3)
+      if ((!TextUtils.isEmpty(paramString)) && (bcgc.a(paramString)) && (!paramString.contains("asyncMode=3")) && (!paramString.contains("sonic=1")))
       {
-        str1 = BaseApplicationImpl.getApplication().getResources().getString(2131624831);
-        str2 = i + "/" + arpa.b;
+        if ((paramContext != null) && (QbSdk.getTbsVersion(paramContext) >= 43810)) {
+          return 4;
+        }
+        return 3;
       }
-      else
+      return 2;
+    }
+    return 1;
+  }
+  
+  private void a(Context paramContext, WebView paramWebView, arpe paramarpe)
+  {
+    int i = a(paramContext, paramarpe.jdField_a_of_type_JavaLangString);
+    if (i == 4) {
+      a(paramWebView, paramarpe);
+    }
+    b(i, paramarpe.b);
+  }
+  
+  private void a(arpe paramarpe)
+  {
+    this.b.put(paramarpe.jdField_a_of_type_JavaLangString, paramarpe);
+    b(5, paramarpe.b);
+  }
+  
+  private void a(WebView paramWebView, arpe paramarpe)
+  {
+    this.a.put(paramarpe.jdField_a_of_type_JavaLangString, paramarpe);
+    ThreadManager.post(new X5ApiPlugin.1(this, paramarpe, paramWebView), 5, null, true);
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.b != null) && (this.a != null))
+    {
+      Object localObject = this.b.values().iterator();
+      if (((Iterator)localObject).hasNext())
       {
-        str1 = BaseApplicationImpl.getApplication().getResources().getString(2131624831);
-        str2 = i + "/" + arpa.b;
+        localObject = (arpe)((Iterator)localObject).next();
+        this.b.remove(((arpe)localObject).jdField_a_of_type_JavaLangString);
+        this.a.put(((arpe)localObject).jdField_a_of_type_JavaLangString, localObject);
+        a(this.mRuntime.a(), (arpe)localObject);
+        b(4, ((arpe)localObject).b);
       }
     }
   }
   
-  public void a(boolean paramBoolean) {}
-  
-  public void b(int paramInt1, int paramInt2) {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c(boolean paramBoolean)
+  private boolean a()
   {
-    arsc.b("MsgBackup.BackupAndMigrateManager", "transportStart is called! isStart = %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    arsb.b();
-    arsb.a(null, "total_transport_cost");
+    Object localObject = this.mRuntime.a();
+    if (localObject != null)
+    {
+      localObject = (bcfa)((WebViewFragment)localObject).b().a(-2);
+      return (localObject != null) && (!((bcfa)localObject).k);
+    }
+    return false;
+  }
+  
+  private void b()
+  {
+    if (this.a == null) {
+      this.a = new ConcurrentHashMap();
+    }
+    if (this.b == null) {
+      this.b = new ConcurrentHashMap();
+    }
+  }
+  
+  private void b(int paramInt, String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("code", paramInt);
+      callJs(paramString, new String[] { localJSONObject.toString() });
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public void a()
+  {
+    a(true);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (paramInt == 0)
+    {
+      if (this.a.containsKey(paramString)) {
+        b(0, ((arpe)this.a.remove(paramString)).b);
+      }
+      a(a());
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!"x5".equals(paramString2)) {
+      return false;
+    }
+    if (("preload".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      try
+      {
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        paramString1 = new arpe();
+        paramString1.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("url");
+        paramString1.b = paramJsBridgeListener.optString("callback");
+        paramString1.jdField_a_of_type_Boolean = paramJsBridgeListener.optBoolean("doWhenPageFinish", false);
+        b();
+        if (paramString1.jdField_a_of_type_Boolean) {
+          if (a()) {
+            a(this.mRuntime.a(), this.mRuntime.a(), paramString1);
+          } else {
+            a(paramString1);
+          }
+        }
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        paramJsBridgeListener.printStackTrace();
+      }
+      a(this.mRuntime.a(), this.mRuntime.a(), paramString1);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     arpd
  * JD-Core Version:    0.7.0.1
  */

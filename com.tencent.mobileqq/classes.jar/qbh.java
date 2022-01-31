@@ -1,17 +1,30 @@
-class qbh
-  extends ohe
+import java.net.URL;
+
+public abstract interface qbh
 {
-  private qbh(qbe paramqbe) {}
+  public abstract int getCommentCount();
   
-  public void f(int paramInt)
-  {
-    this.a.a(2);
-  }
+  public abstract String getInnerUniqueID();
   
-  public void h()
-  {
-    qbe.a(this.a, true);
-  }
+  public abstract String getShareUrl();
+  
+  public abstract String getSubscribeName();
+  
+  public abstract String getSubscribeUin();
+  
+  public abstract URL getVideoCoverURL();
+  
+  public abstract URL getVideoCoverUrlWithSmartCut(boolean paramBoolean);
+  
+  public abstract URL getVideoCoverWithSmartCut(int paramInt1, int paramInt2);
+  
+  public abstract int getVideoDuration();
+  
+  public abstract int getVideoHeight();
+  
+  public abstract String getVideoVid();
+  
+  public abstract int getVideoWidth();
 }
 
 

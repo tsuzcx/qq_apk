@@ -1,29 +1,18 @@
-import android.support.annotation.NonNull;
-
-public class bhwo
-  implements bhwn
+class bhwo
+  implements ajvb
 {
-  @NonNull
-  public <T extends bhwk> T a(@NonNull Class<T> paramClass)
+  bhwo(bhwn parambhwn) {}
+  
+  public void a(boolean paramBoolean)
   {
-    try
-    {
-      bhwk localbhwk = (bhwk)paramClass.newInstance();
-      return localbhwk;
-    }
-    catch (InstantiationException localInstantiationException)
-    {
-      throw new RuntimeException("Cannot create an instance of " + paramClass, localInstantiationException);
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      throw new RuntimeException("Cannot create an instance of " + paramClass, localIllegalAccessException);
+    if (paramBoolean) {
+      this.a.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhwo
  * JD-Core Version:    0.7.0.1
  */

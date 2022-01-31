@@ -1,30 +1,23 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ayft
-  implements TextWatcher
+class ayft
+  implements View.OnClickListener
 {
-  public ayft(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  ayft(ayfr paramayfr) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.isEmpty(this.a.a.b)) && (paramInt1 > 0) && (paramInt1 < this.a.a.b.length() + this.a.a.c.length() + this.a.a.a.length() + this.a.J.length()) && (paramInt2 > paramInt3))
+    if (ayfr.a(this.a).isShowing())
     {
-      this.a.e(false);
-      return;
+      ayfr.b(this.a).cancel();
+      ayfr.c(this.a).dismiss();
     }
-    TroopBarPublishActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayft
  * JD-Core Version:    0.7.0.1
  */

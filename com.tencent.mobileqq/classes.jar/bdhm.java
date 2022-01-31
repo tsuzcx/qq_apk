@@ -1,48 +1,27 @@
-import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask;
-import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask.SerialExecutor.1;
-import com.tencent.qqmini.sdk.core.utils.thread.internel.ArrayDeque;
-import java.util.concurrent.Executor;
-
 public class bdhm
-  implements Executor
+  extends bdhn
 {
-  final ArrayDeque<Runnable> jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque = new ArrayDeque();
-  Runnable jdField_a_of_type_JavaLangRunnable;
+  private String n;
   
-  public void a()
+  public static bdhm a()
   {
-    try
-    {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque.poll();
-      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
-      if (localRunnable != null) {
-        AsyncTask.a.execute(this.jdField_a_of_type_JavaLangRunnable);
-      }
-      return;
-    }
-    finally {}
+    return new bdhm();
   }
   
-  public void execute(Runnable paramRunnable)
+  public bdhm a(String paramString)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque.offer(new AsyncTask.SerialExecutor.1(this, paramRunnable));
-      if (this.jdField_a_of_type_JavaLangRunnable == null) {
-        a();
-      }
-      return;
-    }
-    finally
-    {
-      paramRunnable = finally;
-      throw paramRunnable;
-    }
+    this.n = paramString;
+    return this;
+  }
+  
+  public String a()
+  {
+    return b() + "|" + c() + "|" + this.n;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdhm
  * JD-Core Version:    0.7.0.1
  */

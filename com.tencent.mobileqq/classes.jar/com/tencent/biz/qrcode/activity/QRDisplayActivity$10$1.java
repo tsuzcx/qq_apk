@@ -2,9 +2,9 @@ package com.tencent.biz.qrcode.activity;
 
 import android.content.Intent;
 import android.net.Uri;
-import bbmy;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
-import vvp;
+import wim;
 
 class QRDisplayActivity$10$1
   implements Runnable
@@ -18,10 +18,10 @@ class QRDisplayActivity$10$1
       Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
       localIntent.setData(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString));
       this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$10.this$0.sendBroadcast(localIntent);
-      bbmy.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$10.this$0.getString(2131651444, new Object[] { this.jdField_a_of_type_JavaLangString }), 1).b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$10.this$0.getTitleBarHeight());
+      bcpw.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$10.this$0.getString(2131717236, new Object[] { this.jdField_a_of_type_JavaLangString }), 1).b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$10.this$0.getTitleBarHeight());
       return;
     }
-    vvp.a(1, 2131651443);
+    wim.a(1, 2131717235);
   }
 }
 

@@ -1,106 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.qcall.QCallDetailActivity.1.1;
-import com.tencent.mobileqq.qcall.QCallDetailActivity.1.2;
-import com.tencent.qphone.base.util.QLog;
-import friendlist.GetOnlineInfoResp;
-import java.util.Map;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
 
 public class aufd
-  extends ajjh
+  implements INetInfoHandler
 {
-  public aufd(QCallDetailActivity paramQCallDetailActivity) {}
+  private aufd(OlympicToolAppInterface paramOlympicToolAppInterface) {}
   
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  public void onNetMobile2None()
   {
-    if ((paramBoolean) && (TextUtils.equals(paramString, QCallDetailActivity.a(this.a))))
-    {
-      QCallDetailActivity.a(this.a);
-      this.a.runOnUiThread(new QCallDetailActivity.1.1(this));
+    if (OlympicToolAppInterface.i(this.a) != null) {
+      OlympicToolAppInterface.j(this.a).onNetMobile2None();
     }
   }
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onNetMobile2Wifi(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead isSuccess | " + paramBoolean + ", uin | " + paramString);
+    if (OlympicToolAppInterface.g(this.a) != null) {
+      OlympicToolAppInterface.h(this.a).onNetMobile2Wifi(paramString);
     }
-    Object localObject;
-    if ((paramBoolean) && (QCallDetailActivity.a(this.a) == 3000) && (!azzz.a(paramString, this.a.app.getCurrentAccountUin())))
-    {
-      localObject = (ajhh)this.a.app.getManager(53);
-      if (localObject != null) {
-        break label109;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead dm is null  ====");
-      }
-    }
-    label109:
-    do
-    {
-      do
-      {
-        return;
-        if (((ajhh)localObject).a(QCallDetailActivity.a(this.a)) != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead info is null ====");
-      return;
-      if (TextUtils.isEmpty(paramString))
-      {
-        QLog.i("QCallDetailActivity", 1, " === onUpdateCustomHead uin is null ====");
-        return;
-      }
-      localObject = ((ajhh)localObject).a(QCallDetailActivity.a(this.a));
-    } while ((localObject == null) || (((Map)localObject).size() <= 0) || (!((Map)localObject).containsKey(paramString)));
-    this.a.a(QCallDetailActivity.a(this.a));
   }
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onNetNone2Mobile(String paramString)
   {
-    Object localObject;
-    if ((paramBoolean) && (QCallDetailActivity.a(this.a) == 3000))
-    {
-      localObject = (ajhh)this.a.app.getManager(53);
-      if (localObject != null) {
-        break label52;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QCallDetailActivity", 2, " === onUpdateFriendInfo dm is null  ====");
-      }
+    if (OlympicToolAppInterface.a(this.a) != null) {
+      OlympicToolAppInterface.b(this.a).onNetNone2Mobile(paramString);
     }
-    label52:
-    do
-    {
-      DiscussionInfo localDiscussionInfo;
-      do
-      {
-        return;
-        localDiscussionInfo = ((ajhh)localObject).a(QCallDetailActivity.a(this.a));
-        if (localDiscussionInfo == null)
-        {
-          QLog.i("QCallDetailActivity", 1, " ===onUpdateFriendInfo info is null ====");
-          return;
-        }
-        if (TextUtils.isEmpty(paramString))
-        {
-          QLog.i("QCallDetailActivity", 1, " === onUpdateFriendInfo uin is null ====");
-          return;
-        }
-      } while (localDiscussionInfo.hasRenamed());
-      localObject = ((ajhh)localObject).a(QCallDetailActivity.a(this.a));
-    } while ((localObject == null) || (((Map)localObject).size() <= 0) || (!((Map)localObject).containsKey(paramString)));
-    this.a.a(QCallDetailActivity.a(this.a));
   }
   
-  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  public void onNetNone2Wifi(String paramString)
   {
-    QCallDetailActivity.a(this.a);
-    this.a.runOnUiThread(new QCallDetailActivity.1.2(this));
+    if (OlympicToolAppInterface.e(this.a) != null) {
+      OlympicToolAppInterface.f(this.a).onNetNone2Wifi(paramString);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (OlympicToolAppInterface.c(this.a) != null) {
+      OlympicToolAppInterface.d(this.a).onNetWifi2Mobile(paramString);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (OlympicToolAppInterface.k(this.a) != null) {
+      OlympicToolAppInterface.l(this.a).onNetWifi2None();
+    }
   }
 }
 

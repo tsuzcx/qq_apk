@@ -1,19 +1,21 @@
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class bhup
-  extends bhus
+class bhup
+  implements View.OnTouchListener
 {
-  private bhwf<List<String>> a = new bhwf();
-  private bhwf<bhso> b = new bhwf();
+  bhup(bhuo parambhuo) {}
   
-  public bhwf<bhso> a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return this.b;
+    this.a.a();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhup
  * JD-Core Version:    0.7.0.1
  */

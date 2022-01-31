@@ -1,130 +1,67 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.recent.BannerManager.37.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.ADView;
+import java.util.LinkedList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class ahlm
-  implements INetInfoHandler
+public class ahlm
+  implements View.OnClickListener
 {
-  ahlm(ahll paramahll) {}
+  ahlm(ahkf paramahkf) {}
   
-  public void onNetMobile2None()
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    synchronized (this.a)
+    ahkf.a(this.a).getSharedPreferences("mobileQQ", 0).edit().putBoolean("push_banner_display" + ahkf.a(this.a).app.getAccount(), false).commit();
+    paramView = ahkf.a(this.a)[21];
+    ADView localADView;
+    if ((paramView != null) && (paramView.a != null))
     {
-      if (ahll.a(this.a) == null) {
-        return;
-      }
-      if (ahll.a(this.a).a == null) {
-        return;
+      localADView = (ADView)paramView.a.findViewById(2131362148);
+      if (localADView == null) {
+        break label292;
       }
     }
-    ahll localahll2 = this.a;
-    if (!ahll.a(this.a).c) {}
-    for (;;)
+    label292:
+    for (paramView = localADView.a(0);; paramView = null)
     {
-      localahll2.a(bool, true);
+      if (paramView != null)
+      {
+        int j = paramView.getChildCount();
+        LinkedList localLinkedList = new LinkedList();
+        int i = 0;
+        while (i < j)
+        {
+          View localView = paramView.getChildAt(i);
+          if (localView != null) {
+            localLinkedList.add((axuh)localView.getTag());
+          }
+          i += 1;
+        }
+        ThreadManager.getFileThreadHandler().post(new BannerManager.37.1(this, j, localLinkedList));
+        if (localADView != null) {
+          localADView.h();
+        }
+      }
+      this.a.a(21, 0);
+      this.a.a(-1, null);
+      this.a.e = false;
+      axqw.b(ahkf.a(this.a).app, "dc00898", "", "", "0X80087C3", "0X80087C3", 0, 0, "", "", "", "");
+      axqw.a(ahkf.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 12, 0, "", "", "", "");
       return;
-      bool = false;
-    }
-  }
-  
-  public void onNetMobile2Wifi(String arg1)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(ahll.a(), 2, "onNetMobile2Wifi, AutoTranslate:  ");
-    }
-    synchronized (this.a)
-    {
-      if (ahll.a(this.a) == null) {
-        return;
-      }
-      if (ahll.a(this.a).a == null) {
-        return;
-      }
-    }
-    this.a.a(false, true);
-    ahll.a(this.a);
-  }
-  
-  public void onNetNone2Mobile(String arg1)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(ahll.a(), 2, "onNetNone2Mobile ");
-    }
-    synchronized (this.a)
-    {
-      if (ahll.a(this.a) == null) {
-        return;
-      }
-      if (ahll.a(this.a).a == null) {
-        return;
-      }
-    }
-    this.a.a(false, true);
-    ahll.a(this.a);
-  }
-  
-  public void onNetNone2Wifi(String arg1)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(ahll.a(), 2, "onNetNone2Wifi, AutoTranslate:  ");
-    }
-    synchronized (this.a)
-    {
-      if (ahll.a(this.a) == null) {
-        return;
-      }
-      if (ahll.a(this.a).a == null) {
-        return;
-      }
-    }
-    this.a.a(false, true);
-    ahll.a(this.a);
-  }
-  
-  public void onNetWifi2Mobile(String arg1)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(ahll.a(), 2, "onNetWifi2Mobile, need restore:  ");
-    }
-    synchronized (this.a)
-    {
-      if (ahll.a(this.a) == null) {
-        return;
-      }
-      if (ahll.a(this.a).a == null) {
-        return;
-      }
-    }
-    this.a.a(false, true);
-    ahll.a(this.a);
-  }
-  
-  public void onNetWifi2None()
-  {
-    boolean bool = true;
-    synchronized (this.a)
-    {
-      if (ahll.a(this.a) == null) {
-        return;
-      }
-      if (ahll.a(this.a).a == null) {
-        return;
-      }
-    }
-    ahll localahll2 = this.a;
-    if (!ahll.a(this.a).c) {}
-    for (;;)
-    {
-      localahll2.a(bool, true);
-      return;
-      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahlm
  * JD-Core Version:    0.7.0.1
  */

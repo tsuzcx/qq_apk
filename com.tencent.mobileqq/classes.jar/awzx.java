@@ -1,250 +1,192 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.annotation.TargetApi;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import java.util.ArrayList;
-import java.util.List;
-import org.xmlpull.v1.XmlSerializer;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class awzx
-  extends awun
+  implements SharedPreferences.Editor
 {
-  public ArrayList<awzy> a;
-  public int i;
-  public int j;
-  public int k;
+  private SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
+  private boolean jdField_a_of_type_Boolean;
   
-  public awzx()
-  {
-    this.jdField_a_of_type_JavaLangString = "checklist";
-    c("12");
-  }
+  public awzx(awzw paramawzw) {}
   
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  private void a()
   {
-    Drawable localDrawable;
-    int m;
-    label75:
-    int i1;
-    if (paramView == null)
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = awzw.a(this.jdField_a_of_type_Awzw).edit();
+    if ((awzw.a(this.jdField_a_of_type_Awzw) != null) && (awzw.a(this.jdField_a_of_type_Awzw).size() > 0))
     {
-      paramView = new LinearLayout(paramContext);
-      paramView.setId(2131312269);
-      paramView.setOrientation(1);
-      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-        break label320;
-      }
-      localDrawable = paramContext.getResources().getDrawable(2130849118);
-      localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      if (!TextUtils.isEmpty(this.V)) {
-        break label184;
-      }
-      m = f();
-      i1 = m / 2;
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() != paramView.getChildCount()) {
-        break label196;
-      }
-      m = 1;
-      label98:
-      if ((m == 0) && (paramView.getChildCount() > 0)) {
-        paramView.removeAllViews();
-      }
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 2) {
-        break label202;
-      }
-    }
-    int n;
-    awzy localawzy;
-    label184:
-    label196:
-    label202:
-    for (paramBundle = this.jdField_a_of_type_JavaUtilArrayList.subList(0, 2);; paramBundle = this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      n = 0;
-      for (;;)
+      Iterator localIterator = awzw.a(this.jdField_a_of_type_Awzw).keySet().iterator();
+      while (localIterator.hasNext())
       {
-        if (n >= paramBundle.size()) {
-          break label320;
+        String str = (String)localIterator.next();
+        Object localObject = awzw.a(this.jdField_a_of_type_Awzw).get(str);
+        if ((localObject instanceof Long)) {
+          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(str, ((Long)localObject).longValue());
+        } else if ((localObject instanceof String)) {
+          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putString(str, (String)localObject);
+        } else if ((localObject instanceof Boolean)) {
+          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putBoolean(str, ((Boolean)localObject).booleanValue());
+        } else if ((localObject instanceof Integer)) {
+          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt(str, ((Integer)localObject).intValue());
+        } else if ((localObject instanceof Float)) {
+          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putFloat(str, ((Float)localObject).floatValue());
         }
-        localawzy = (awzy)paramBundle.get(n);
-        if (localawzy != null) {
-          break;
-        }
-        n += 1;
       }
-      paramView = (LinearLayout)paramView;
-      break;
-      m = Integer.parseInt(this.V);
-      break label75;
-      m = 0;
-      break label98;
-    }
-    if (m != 0) {}
-    for (TextView localTextView = (TextView)paramView.getChildAt(n);; localTextView = new TextView(paramContext))
-    {
-      localTextView.setSingleLine();
-      localTextView.setEllipsize(a());
-      localTextView.setGravity(16);
-      localTextView.setTextSize(i1);
-      localTextView.setCompoundDrawables(localDrawable, null, null, null);
-      localTextView.setText(" " + localawzy.b);
-      if (m != 0) {
-        break;
-      }
-      paramView.addView(localTextView);
-      break;
-    }
-    label320:
-    paramView.setTag(this);
-    return paramView;
-  }
-  
-  public String a()
-  {
-    return "Vote";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.j = paramObjectInput.readInt();
-    this.i = paramObjectInput.readInt();
-    this.k = paramObjectInput.readInt();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(this.k);
-    int m = 0;
-    while (m < this.k)
-    {
-      String str1 = paramObjectInput.readUTF();
-      String str2 = paramObjectInput.readUTF();
-      this.jdField_a_of_type_JavaUtilArrayList.add(new awzy(this, str1, str2));
-      m += 1;
     }
   }
   
-  public void a(ObjectOutput paramObjectOutput)
+  @TargetApi(9)
+  public void apply()
   {
-    super.a(paramObjectOutput);
-    paramObjectOutput.writeInt(this.j);
-    paramObjectOutput.writeInt(this.i);
-    paramObjectOutput.writeInt(this.k);
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() == this.k))
+    if (this.jdField_a_of_type_Boolean)
     {
-      int m = 0;
-      if (m < this.k)
-      {
-        awzy localawzy = (awzy)this.jdField_a_of_type_JavaUtilArrayList.get(m);
-        if (localawzy != null)
+      this.jdField_a_of_type_Boolean = false;
+      if (Build.VERSION.SDK_INT < 9) {
+        try
         {
-          if (localawzy.jdField_a_of_type_JavaLangString != null) {
-            break label127;
+          a();
+          if (this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit())
+          {
+            awzw.a(this.jdField_a_of_type_Awzw).clear();
+            return;
           }
-          str = "";
-          label95:
-          paramObjectOutput.writeUTF(str);
-          if (localawzy.b != null) {
-            break label136;
+          if (!QLog.isColorLevel()) {
+            return;
           }
+          QLog.d(awzw.a(), 2, "AsyncEditor commit fail!");
+          return;
         }
-        label136:
-        for (String str = "";; str = localawzy.b)
-        {
-          paramObjectOutput.writeUTF(str);
-          m += 1;
-          break;
-          label127:
-          str = localawzy.jdField_a_of_type_JavaLangString;
-          break label95;
-        }
-      }
-    }
-    else if (QLog.isColorLevel())
-    {
-      QLog.e("StructMsg", 2, "StructMsgItemVote writeExternal() mOptions is null, or size is error!");
-    }
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "checklist");
-    paramXmlSerializer.attribute(null, "min", String.valueOf(this.j));
-    paramXmlSerializer.attribute(null, "max", String.valueOf(this.i));
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
-    {
-      int m = 0;
-      if (m < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        awzy localawzy = (awzy)this.jdField_a_of_type_JavaUtilArrayList.get(m);
-        if (localawzy != null)
-        {
-          paramXmlSerializer.startTag(null, localawzy.jdField_a_of_type_JavaLangString);
-          if (localawzy.b != null) {
-            break label147;
-          }
-        }
-        label147:
-        for (String str = "";; str = localawzy.b)
-        {
-          paramXmlSerializer.attribute(null, "min", str);
-          paramXmlSerializer.endTag(null, localawzy.jdField_a_of_type_JavaLangString);
-          m += 1;
-          break;
-        }
-      }
-    }
-    paramXmlSerializer.endTag(null, "checklist");
-  }
-  
-  public boolean a(awwc paramawwc)
-  {
-    if (paramawwc == null) {}
-    for (;;)
-    {
-      return true;
-      Object localObject = paramawwc.a("min");
-      String str = paramawwc.a("max");
-      try
-      {
-        this.j = Integer.parseInt((String)localObject);
-        this.i = Integer.parseInt(str);
-        this.k = paramawwc.a();
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(this.k);
-        int m = 0;
-        while (m < this.k)
-        {
-          localObject = paramawwc.a(m);
-          if (localObject != null) {
-            this.jdField_a_of_type_JavaUtilArrayList.add(new awzy(this, (awwc)localObject));
-          }
-          m += 1;
-        }
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        for (;;)
+        catch (OutOfMemoryError localOutOfMemoryError)
         {
           if (QLog.isColorLevel()) {
-            QLog.d("StructMsg", 2, localNumberFormatException.getMessage());
+            QLog.w(awzw.a(), 2, "commit OutOfMemoryError ! ", localOutOfMemoryError);
           }
+          this.jdField_a_of_type_Boolean = true;
+          return;
         }
+        catch (Exception localException)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w(awzw.a(), 2, "commit Exception ! ", localException);
+          }
+          this.jdField_a_of_type_Boolean = true;
+          return;
+        }
+      } else {
+        this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
       }
     }
   }
   
-  protected int c()
+  public SharedPreferences.Editor clear()
   {
-    return 2131312589;
+    this.jdField_a_of_type_Boolean = true;
+    awzw.a(this.jdField_a_of_type_Awzw).clear();
+    return this;
+  }
+  
+  public boolean commit()
+  {
+    boolean bool1;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      try
+      {
+        a();
+        boolean bool2 = this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+        if (bool2)
+        {
+          awzw.a(this.jdField_a_of_type_Awzw).clear();
+          return bool2;
+        }
+        bool1 = bool2;
+        if (!QLog.isColorLevel()) {
+          return bool1;
+        }
+        QLog.d(awzw.a(), 2, "AsyncEditor commit fail!");
+        return bool2;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w(awzw.a(), 2, "commit OutOfMemoryError ! ", localOutOfMemoryError);
+        }
+        this.jdField_a_of_type_Boolean = true;
+        return false;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w(awzw.a(), 2, "commit Exception ! ", localException);
+        }
+        this.jdField_a_of_type_Boolean = true;
+        return false;
+      }
+    }
+    else
+    {
+      bool1 = false;
+    }
+    return bool1;
+  }
+  
+  public SharedPreferences.Editor putBoolean(String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    awzw.a(this.jdField_a_of_type_Awzw).put(paramString, Boolean.valueOf(paramBoolean));
+    return this;
+  }
+  
+  public SharedPreferences.Editor putFloat(String paramString, float paramFloat)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    awzw.a(this.jdField_a_of_type_Awzw).put(paramString, Float.valueOf(paramFloat));
+    return this;
+  }
+  
+  public SharedPreferences.Editor putInt(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    awzw.a(this.jdField_a_of_type_Awzw).put(paramString, Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public SharedPreferences.Editor putLong(String paramString, long paramLong)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    awzw.a(this.jdField_a_of_type_Awzw).put(paramString, Long.valueOf(paramLong));
+    return this;
+  }
+  
+  public SharedPreferences.Editor putString(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    awzw.a(this.jdField_a_of_type_Awzw).put(paramString1, paramString2);
+    return this;
+  }
+  
+  @Deprecated
+  public SharedPreferences.Editor putStringSet(String paramString, Set<String> paramSet)
+  {
+    return this;
+  }
+  
+  public SharedPreferences.Editor remove(String paramString)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    awzw.a(this.jdField_a_of_type_Awzw).remove(paramString);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awzx
  * JD-Core Version:    0.7.0.1
  */

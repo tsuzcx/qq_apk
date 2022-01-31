@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.Doraemon.monitor;
 
-import atmo;
+import aukm;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="type,appid,apiName")
 public class APIQuotaEntity
-  extends atmo
+  extends aukm
 {
   public String apiName;
   public String appid;

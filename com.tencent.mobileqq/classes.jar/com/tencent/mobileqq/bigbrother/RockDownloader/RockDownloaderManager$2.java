@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.bigbrother.RockDownloader;
 
-import almd;
-import alme;
+import amar;
+import amas;
 import com.tencent.mobileqq.data.RockDownloadInfo;
 
 public class RockDownloaderManager$2
@@ -9,7 +9,7 @@ public class RockDownloaderManager$2
 {
   public void run()
   {
-    alme.a(new RockDownloadInfo("biz_src_kandian", "com.tencent.now"), new almd(this));
+    amas.a(new RockDownloadInfo("biz_src_kandian", "com.tencent.now"), new amar(this));
   }
 }
 

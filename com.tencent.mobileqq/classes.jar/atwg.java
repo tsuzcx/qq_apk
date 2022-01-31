@@ -1,19 +1,9 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
+import com.tencent.pb.now.ilive_feeds_read.FeedsInfo;
+import java.util.List;
 
-public final class atwg
-  implements Parcelable.Creator<PersonalityLabelPhoto>
+public abstract interface atwg
 {
-  public PersonalityLabelPhoto a(Parcel paramParcel)
-  {
-    return new PersonalityLabelPhoto(paramParcel);
-  }
-  
-  public PersonalityLabelPhoto[] a(int paramInt)
-  {
-    return new PersonalityLabelPhoto[paramInt];
-  }
+  public abstract void a(boolean paramBoolean1, List<ilive_feeds_read.FeedsInfo> paramList, boolean paramBoolean2, int paramInt);
 }
 
 

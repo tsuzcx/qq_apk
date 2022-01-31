@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.ColorNickTextView;
 
 public class agdj
 {
-  float jdField_a_of_type_Float;
-  String jdField_a_of_type_JavaLangString;
-  
-  public agdj(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity, String paramString, float paramFloat)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
-  }
+  public ImageView a;
+  public TextView a;
+  public ColorNickTextView a;
+  public TextView b;
 }
 
 

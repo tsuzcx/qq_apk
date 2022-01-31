@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.os.Process;
+import android.text.TextUtils;
 import com.tencent.bugly.proguard.x;
 import com.tencent.bugly.proguard.z;
 import java.io.File;
@@ -18,58 +19,60 @@ import java.util.UUID;
 
 public final class a
 {
-  private static a ag = null;
-  public boolean A = false;
-  public boolean B = true;
-  public List<String> C = new ArrayList();
-  public boolean D;
-  public com.tencent.bugly.crashreport.a E = null;
-  public SharedPreferences F;
-  private final Context G;
-  private String H;
-  private String I;
+  private static a ai = null;
+  public String A = "";
+  public boolean B = false;
+  public boolean C = false;
+  public boolean D = true;
+  public List<String> E = new ArrayList();
+  public boolean F;
+  public com.tencent.bugly.crashreport.a G = null;
+  public SharedPreferences H;
+  private final Context I;
   private String J;
-  private String K = "unknown";
-  private String L = "unknown";
-  private String M = "";
-  private String N = null;
-  private String O = null;
+  private String K;
+  private String L;
+  private String M = "unknown";
+  private String N = "unknown";
+  private String O = "";
   private String P = null;
   private String Q = null;
-  private long R = -1L;
-  private long S = -1L;
+  private String R = null;
+  private String S = null;
   private long T = -1L;
-  private String U = null;
-  private String V = null;
-  private Map<String, PlugInBean> W = null;
-  private boolean X = true;
-  private String Y = null;
-  private String Z = null;
+  private long U = -1L;
+  private long V = -1L;
+  private String W = null;
+  private String X = null;
+  private Map<String, PlugInBean> Y = null;
+  private boolean Z = true;
   public final long a = System.currentTimeMillis();
   private final Object aA = new Object();
   private final Object aB = new Object();
-  private Boolean aa = null;
+  private final Object aC = new Object();
+  private final Object aD = new Object();
+  private String aa = null;
   private String ab = null;
-  private String ac = null;
+  private Boolean ac = null;
   private String ad = null;
-  private Map<String, PlugInBean> ae = null;
-  private Map<String, PlugInBean> af = null;
-  private int ah = -1;
-  private int ai = -1;
-  private Map<String, String> aj = new HashMap();
-  private Map<String, String> ak = new HashMap();
+  private String ae = null;
+  private String af = null;
+  private Map<String, PlugInBean> ag = null;
+  private Map<String, PlugInBean> ah = null;
+  private int aj = -1;
+  private int ak = -1;
   private Map<String, String> al = new HashMap();
-  private boolean am;
-  private Boolean an = null;
-  private Boolean ao = null;
-  private HashMap<String, String> ap = new HashMap();
-  private String aq = null;
-  private String ar = null;
+  private Map<String, String> am = new HashMap();
+  private Map<String, String> an = new HashMap();
+  private boolean ao = true;
+  private Boolean ap = null;
+  private Boolean aq = null;
+  private HashMap<String, String> ar = new HashMap();
   private String as = null;
   private String at = null;
   private String au = null;
-  private final Object av = new Object();
-  private final Object aw = new Object();
+  private String av = null;
+  private String aw = null;
   private final Object ax = new Object();
   private final Object ay = new Object();
   private final Object az = new Object();
@@ -78,45 +81,45 @@ public final class a
   public final String d;
   public String e;
   public boolean f = true;
-  public final String g;
+  public String g = "3.1.7";
   public final String h;
   public final String i;
-  public String j;
-  public long k;
-  public String l = null;
+  public final String j;
+  public String k;
+  public long l;
   public String m = null;
   public String n = null;
   public String o = null;
   public String p = null;
-  public List<String> q = null;
-  public String r = "unknown";
-  public long s = 0L;
+  public String q = null;
+  public List<String> r = null;
+  public String s = "unknown";
   public long t = 0L;
   public long u = 0L;
   public long v = 0L;
-  public String w = null;
+  public long w = 0L;
   public String x = null;
   public String y = null;
-  public boolean z = false;
+  public String z = null;
   
   private a(Context paramContext)
   {
-    this.G = z.a(paramContext);
+    this.I = z.a(paramContext);
     this.b = 1;
     Object localObject = AppInfo.b(paramContext);
     if (localObject != null) {}
     try
     {
-      this.l = ((PackageInfo)localObject).versionName;
-      this.w = this.l;
-      this.x = Integer.toString(((PackageInfo)localObject).versionCode);
+      this.m = ((PackageInfo)localObject).versionName;
+      this.x = this.m;
+      this.y = Integer.toString(((PackageInfo)localObject).versionCode);
       this.c = AppInfo.a(paramContext);
       this.d = AppInfo.a(Process.myPid());
-      this.g = b.o();
-      this.h = b.a();
-      this.m = AppInfo.c(paramContext);
-      this.i = ("Android " + b.b() + ",level " + b.c());
-      new StringBuilder().append(this.h).append(";").append(this.i).toString();
+      this.h = b.o();
+      this.i = b.a();
+      this.n = AppInfo.c(paramContext);
+      this.j = ("Android " + b.b() + ",level " + b.c());
+      new StringBuilder().append(this.i).append(";").append(this.j).toString();
       localObject = AppInfo.d(paramContext);
       if (localObject == null) {}
     }
@@ -124,28 +127,36 @@ public final class a
     {
       try
       {
-        this.q = AppInfo.a((Map)localObject);
+        this.r = AppInfo.a((Map)localObject);
         String str = (String)((Map)localObject).get("BUGLY_APPID");
         if (str != null)
         {
-          this.Z = str;
-          c("APP_ID", this.Z);
+          this.ab = str;
+          c("APP_ID", this.ab);
         }
         str = (String)((Map)localObject).get("BUGLY_APP_VERSION");
         if (str != null) {
-          this.l = str;
+          this.m = str;
         }
         str = (String)((Map)localObject).get("BUGLY_APP_CHANNEL");
         if (str != null) {
-          this.n = str;
+          this.o = str;
         }
         str = (String)((Map)localObject).get("BUGLY_ENABLE_DEBUG");
         if (str != null) {
           str.equalsIgnoreCase("true");
         }
-        localObject = (String)((Map)localObject).get("com.tencent.rdm.uuid");
+        str = (String)((Map)localObject).get("com.tencent.rdm.uuid");
+        if (str != null) {
+          this.z = str;
+        }
+        str = (String)((Map)localObject).get("BUGLY_APP_BUILD_NO");
+        if (!TextUtils.isEmpty(str)) {
+          Integer.parseInt(str);
+        }
+        localObject = (String)((Map)localObject).get("BUGLY_AREA");
         if (localObject != null) {
-          this.y = ((String)localObject);
+          this.A = ((String)localObject);
         }
       }
       catch (Throwable localThrowable2)
@@ -156,10 +167,10 @@ public final class a
           {
             if (!paramContext.getDatabasePath("bugly_db_").exists())
             {
-              this.A = true;
+              this.C = true;
               x.c("App is first time to be installed on the device.", new Object[0]);
             }
-            this.F = z.a("BUGLY_COMMON_VALUES", paramContext);
+            this.H = z.a("BUGLY_COMMON_VALUES", paramContext);
             x.c("com info create end", new Object[0]);
             return;
             localThrowable1 = localThrowable1;
@@ -196,10 +207,10 @@ public final class a
   {
     try
     {
-      if (ag == null) {
-        ag = new a(paramContext);
+      if (ai == null) {
+        ai = new a(paramContext);
       }
-      paramContext = ag;
+      paramContext = ai;
       return paramContext;
     }
     finally {}
@@ -209,7 +220,7 @@ public final class a
   {
     try
     {
-      a locala = ag;
+      a locala = ai;
       return locala;
     }
     finally
@@ -226,67 +237,16 @@ public final class a
       x.d("server key&value should not be empty %s %s", new Object[] { paramString1, paramString2 });
       return;
     }
-    synchronized (this.ay)
+    synchronized (this.aA)
     {
-      this.al.put(paramString1, paramString2);
+      this.an.put(paramString1, paramString2);
       return;
     }
   }
   
   public final Map<String, String> A()
   {
-    synchronized (this.ax)
-    {
-      if (this.aj.size() <= 0) {
-        return null;
-      }
-      HashMap localHashMap = new HashMap(this.aj);
-      return localHashMap;
-    }
-  }
-  
-  public final void B()
-  {
-    synchronized (this.ax)
-    {
-      this.aj.clear();
-      return;
-    }
-  }
-  
-  public final int C()
-  {
-    synchronized (this.ax)
-    {
-      int i1 = this.aj.size();
-      return i1;
-    }
-  }
-  
-  public final Set<String> D()
-  {
-    synchronized (this.ax)
-    {
-      Set localSet = this.aj.keySet();
-      return localSet;
-    }
-  }
-  
-  public final Map<String, String> E()
-  {
-    synchronized (this.aB)
-    {
-      if (this.ak.size() <= 0) {
-        return null;
-      }
-      HashMap localHashMap = new HashMap(this.ak);
-      return localHashMap;
-    }
-  }
-  
-  public final Map<String, String> F()
-  {
-    synchronized (this.ay)
+    synchronized (this.az)
     {
       if (this.al.size() <= 0) {
         return null;
@@ -296,27 +256,78 @@ public final class a
     }
   }
   
-  public final int G()
+  public final void B()
   {
     synchronized (this.az)
     {
-      int i1 = this.ah;
+      this.al.clear();
+      return;
+    }
+  }
+  
+  public final int C()
+  {
+    synchronized (this.az)
+    {
+      int i1 = this.al.size();
+      return i1;
+    }
+  }
+  
+  public final Set<String> D()
+  {
+    synchronized (this.az)
+    {
+      Set localSet = this.al.keySet();
+      return localSet;
+    }
+  }
+  
+  public final Map<String, String> E()
+  {
+    synchronized (this.aD)
+    {
+      if (this.am.size() <= 0) {
+        return null;
+      }
+      HashMap localHashMap = new HashMap(this.am);
+      return localHashMap;
+    }
+  }
+  
+  public final Map<String, String> F()
+  {
+    synchronized (this.aA)
+    {
+      if (this.an.size() <= 0) {
+        return null;
+      }
+      HashMap localHashMap = new HashMap(this.an);
+      return localHashMap;
+    }
+  }
+  
+  public final int G()
+  {
+    synchronized (this.aB)
+    {
+      int i1 = this.aj;
       return i1;
     }
   }
   
   public final int H()
   {
-    return this.ai;
+    return this.ak;
   }
   
   public final Map<String, PlugInBean> I()
   {
     try
     {
-      Map localMap = this.ae;
-      if (this.af != null) {
-        localMap.putAll(this.af);
+      Map localMap = this.ag;
+      if (this.ah != null) {
+        localMap.putAll(this.ah);
       }
       return localMap;
     }
@@ -329,87 +340,87 @@ public final class a
   
   public final String K()
   {
-    if (this.aq == null) {
-      this.aq = b.q();
-    }
-    return this.aq;
-  }
-  
-  public final String L()
-  {
-    if (this.ar == null) {
-      this.ar = b.f(this.G);
-    }
-    return this.ar;
-  }
-  
-  public final String M()
-  {
     if (this.as == null) {
-      this.as = b.g(this.G);
+      this.as = b.q();
     }
     return this.as;
   }
   
+  public final String L()
+  {
+    if (this.at == null) {
+      this.at = b.f(this.I);
+    }
+    return this.at;
+  }
+  
+  public final String M()
+  {
+    if (this.au == null) {
+      this.au = b.g(this.I);
+    }
+    return this.au;
+  }
+  
   public final String N()
   {
-    Context localContext = this.G;
+    Context localContext = this.I;
     return b.r();
   }
   
   public final String O()
   {
-    if (this.at == null) {
-      this.at = b.h(this.G);
+    if (this.av == null) {
+      this.av = b.h(this.I);
     }
-    return this.at;
+    return this.av;
   }
   
   public final long P()
   {
-    Context localContext = this.G;
+    Context localContext = this.I;
     return b.s();
   }
   
   public final boolean Q()
   {
-    if (this.an == null)
+    if (this.ap == null)
     {
-      this.an = Boolean.valueOf(b.i(this.G));
-      x.a("Is it a virtual machine? " + this.an, new Object[0]);
+      this.ap = Boolean.valueOf(b.i(this.I));
+      x.a("Is it a virtual machine? " + this.ap, new Object[0]);
     }
-    return this.an.booleanValue();
+    return this.ap.booleanValue();
   }
   
   public final boolean R()
   {
-    if (this.ao == null)
+    if (this.aq == null)
     {
-      this.ao = Boolean.valueOf(b.j(this.G));
-      x.a("Does it has hook frame? " + this.ao, new Object[0]);
+      this.aq = Boolean.valueOf(b.j(this.I));
+      x.a("Does it has hook frame? " + this.aq, new Object[0]);
     }
-    return this.ao.booleanValue();
+    return this.aq.booleanValue();
   }
   
   public final String S()
   {
-    if (this.I == null)
+    if (this.K == null)
     {
-      this.I = AppInfo.g(this.G);
-      x.a("Beacon channel " + this.I, new Object[0]);
+      this.K = AppInfo.g(this.I);
+      x.a("Beacon channel " + this.K, new Object[0]);
     }
-    return this.I;
+    return this.K;
   }
   
   public final void a(int paramInt)
   {
-    synchronized (this.az)
+    synchronized (this.aB)
     {
-      int i1 = this.ah;
+      int i1 = this.aj;
       if (i1 != paramInt)
       {
-        this.ah = paramInt;
-        x.a("user scene tag %d changed to tag %d", new Object[] { Integer.valueOf(i1), Integer.valueOf(this.ah) });
+        this.aj = paramInt;
+        x.a("user scene tag %d changed to tag %d", new Object[] { Integer.valueOf(i1), Integer.valueOf(this.aj) });
       }
       return;
     }
@@ -417,12 +428,12 @@ public final class a
   
   public final void a(Boolean paramBoolean)
   {
-    this.aa = paramBoolean;
+    this.ac = paramBoolean;
   }
   
   public final void a(String paramString)
   {
-    this.Z = paramString;
+    this.ab = paramString;
     c("APP_ID", paramString);
   }
   
@@ -433,9 +444,9 @@ public final class a
       x.d("key&value should not be empty %s %s", new Object[] { paramString1, paramString2 });
       return;
     }
-    synchronized (this.ax)
+    synchronized (this.az)
     {
-      this.aj.put(paramString1, paramString2);
+      this.al.put(paramString1, paramString2);
       return;
     }
   }
@@ -444,7 +455,7 @@ public final class a
   {
     try
     {
-      this.ae = paramMap;
+      this.ag = paramMap;
       return;
     }
     finally
@@ -456,15 +467,15 @@ public final class a
   
   public final void a(boolean paramBoolean)
   {
-    this.am = paramBoolean;
-    if (this.E != null) {
-      this.E.setNativeIsAppForeground(paramBoolean);
+    this.ao = paramBoolean;
+    if (this.G != null) {
+      this.G.setNativeIsAppForeground(paramBoolean);
     }
   }
   
   public final boolean a()
   {
-    return this.am;
+    return this.ao;
   }
   
   public final boolean a(String paramString1, String paramString2, String paramString3)
@@ -478,10 +489,10 @@ public final class a
       return bool;
       try
       {
-        if (this.W == null) {
-          this.W = new HashMap();
+        if (this.Y == null) {
+          this.Y = new HashMap();
         }
-        this.W.put(paramString1, new PlugInBean(paramString1, paramString2, paramString3));
+        this.Y.put(paramString1, new PlugInBean(paramString1, paramString2, paramString3));
         x.a("add %s %s %s", new Object[] { paramString1, paramString2, paramString3 });
       }
       finally {}
@@ -490,14 +501,14 @@ public final class a
   
   public final void b(String paramString)
   {
-    Object localObject = this.aA;
+    Object localObject = this.aC;
     String str = paramString;
     if (paramString == null) {
       str = "10000";
     }
     try
     {
-      this.K = str;
+      this.M = str;
       return;
     }
     finally
@@ -514,9 +525,9 @@ public final class a
       x.d("key&value should not be empty %s %s", new Object[] { paramString1, paramString2 });
       return;
     }
-    synchronized (this.aB)
+    synchronized (this.aD)
     {
-      this.ak.put(paramString1, paramString2);
+      this.am.put(paramString1, paramString2);
       return;
     }
   }
@@ -525,7 +536,7 @@ public final class a
   {
     try
     {
-      this.af = paramMap;
+      this.ah = paramMap;
       return;
     }
     finally
@@ -537,32 +548,33 @@ public final class a
   
   public final void c()
   {
-    synchronized (this.av)
+    synchronized (this.ax)
     {
-      this.H = UUID.randomUUID().toString();
+      this.J = UUID.randomUUID().toString();
       return;
     }
   }
   
   public final void c(String paramString)
   {
-    this.J = paramString;
-    synchronized (this.aB)
+    this.L = paramString;
+    synchronized (this.aD)
     {
-      this.ak.put("E8", paramString);
+      this.am.put("E8", paramString);
       return;
     }
   }
   
   public final String d()
   {
-    synchronized (this.av)
+    synchronized (this.ax)
     {
-      if (this.H == null) {}
-      synchronized (this.av)
+      if (this.J == null) {}
+      synchronized (this.ax)
       {
-        this.H = UUID.randomUUID().toString();
-        return this.H;
+        this.J = UUID.randomUUID().toString();
+        ??? = this.J;
+        return ???;
       }
     }
   }
@@ -571,7 +583,7 @@ public final class a
   {
     try
     {
-      this.L = paramString;
+      this.N = paramString;
       return;
     }
     finally
@@ -586,14 +598,14 @@ public final class a
     if (!z.a(this.e)) {
       return this.e;
     }
-    return this.Z;
+    return this.ab;
   }
   
   public final void e(String paramString)
   {
     try
     {
-      this.M = paramString;
+      this.O = paramString;
       return;
     }
     finally
@@ -605,9 +617,9 @@ public final class a
   
   public final String f()
   {
-    synchronized (this.aA)
+    synchronized (this.aC)
     {
-      String str = this.K;
+      String str = this.M;
       return str;
     }
   }
@@ -621,7 +633,7 @@ public final class a
     //   2: aload_1
     //   3: ifnull +12 -> 15
     //   6: aload_0
-    //   7: getfield 143	com/tencent/bugly/crashreport/common/info/a:W	Ljava/util/Map;
+    //   7: getfield 149	com/tencent/bugly/crashreport/common/info/a:Y	Ljava/util/Map;
     //   10: astore_2
     //   11: aload_2
     //   12: ifnonnull +6 -> 18
@@ -629,9 +641,9 @@ public final class a
     //   16: monitorexit
     //   17: return
     //   18: aload_0
-    //   19: getfield 143	com/tencent/bugly/crashreport/common/info/a:W	Ljava/util/Map;
+    //   19: getfield 149	com/tencent/bugly/crashreport/common/info/a:Y	Ljava/util/Map;
     //   22: aload_1
-    //   23: invokeinterface 533 2 0
+    //   23: invokeinterface 555 2 0
     //   28: pop
     //   29: goto -14 -> 15
     //   32: astore_1
@@ -652,23 +664,23 @@ public final class a
   
   public final String g()
   {
-    if (this.J != null) {
-      return this.J;
+    if (this.L != null) {
+      return this.L;
     }
-    this.J = (j() + "|" + l() + "|" + m());
-    return this.J;
+    this.L = m();
+    return this.L;
   }
   
   public final void g(String paramString)
   {
-    this.Y = paramString;
+    this.aa = paramString;
   }
   
   public final String h()
   {
     try
     {
-      String str = this.L;
+      String str = this.N;
       return str;
     }
     finally
@@ -685,9 +697,9 @@ public final class a
       x.d("key should not be empty %s", new Object[] { paramString });
       return null;
     }
-    synchronized (this.ax)
+    synchronized (this.az)
     {
-      paramString = (String)this.aj.remove(paramString);
+      paramString = (String)this.al.remove(paramString);
       return paramString;
     }
   }
@@ -696,7 +708,7 @@ public final class a
   {
     try
     {
-      String str = this.M;
+      String str = this.O;
       return str;
     }
     finally
@@ -713,110 +725,110 @@ public final class a
       x.d("key should not be empty %s", new Object[] { paramString });
       return null;
     }
-    synchronized (this.ax)
+    synchronized (this.az)
     {
-      paramString = (String)this.aj.get(paramString);
+      paramString = (String)this.al.get(paramString);
       return paramString;
     }
   }
   
   public final String j()
   {
-    if (!this.X) {
-      return "";
-    }
-    if (this.N == null)
-    {
-      Context localContext = this.G;
-      this.N = b.d();
-    }
-    return this.N;
-  }
-  
-  public final String k()
-  {
-    if (!this.X) {
-      return "";
-    }
-    if ((this.O == null) || (!this.O.contains(":")))
-    {
-      Context localContext = this.G;
-      this.O = b.f();
-    }
-    return this.O;
-  }
-  
-  public final String l()
-  {
-    if (!this.X) {
+    if (!this.Z) {
       return "";
     }
     if (this.P == null)
     {
-      Context localContext = this.G;
-      this.P = b.e();
+      Context localContext = this.I;
+      this.P = b.d();
     }
     return this.P;
   }
   
-  public final String m()
+  public final String k()
   {
-    if (!this.X) {
+    if (!this.Z) {
       return "";
     }
-    if (this.Q == null) {
-      this.Q = b.a(this.G);
+    if ((this.Q == null) || (!this.Q.contains(":")))
+    {
+      Context localContext = this.I;
+      this.Q = b.f();
     }
     return this.Q;
   }
   
-  public final long n()
+  public final String l()
   {
-    if (this.R <= 0L) {
-      this.R = b.h();
+    if (!this.Z) {
+      return "";
+    }
+    if (this.R == null)
+    {
+      Context localContext = this.I;
+      this.R = b.e();
     }
     return this.R;
   }
   
-  public final long o()
+  public final String m()
   {
-    if (this.S <= 0L) {
-      this.S = b.j();
+    if (!this.Z) {
+      return "";
+    }
+    if (this.S == null) {
+      this.S = b.a(this.I);
     }
     return this.S;
   }
   
-  public final long p()
+  public final long n()
   {
     if (this.T <= 0L) {
-      this.T = b.l();
+      this.T = b.h();
     }
     return this.T;
   }
   
-  public final String q()
+  public final long o()
   {
-    if (this.U == null) {
-      this.U = b.a(this.G, true);
+    if (this.U <= 0L) {
+      this.U = b.j();
     }
     return this.U;
   }
   
-  public final String r()
+  public final long p()
   {
-    if (this.V == null) {
-      this.V = b.e(this.G);
+    if (this.V <= 0L) {
+      this.V = b.l();
     }
     return this.V;
+  }
+  
+  public final String q()
+  {
+    if (this.W == null) {
+      this.W = b.a(this.I, true);
+    }
+    return this.W;
+  }
+  
+  public final String r()
+  {
+    if (this.X == null) {
+      this.X = b.e(this.I);
+    }
+    return this.X;
   }
   
   public final String s()
   {
     try
     {
-      Object localObject2 = this.G.getSharedPreferences("BuglySdkInfos", 0).getAll();
+      Object localObject2 = this.I.getSharedPreferences("BuglySdkInfos", 0).getAll();
       if (!((Map)localObject2).isEmpty()) {
-        synchronized (this.aw)
+        synchronized (this.ay)
         {
           localObject2 = ((Map)localObject2).entrySet().iterator();
           for (;;)
@@ -826,7 +838,7 @@ public final class a
               Map.Entry localEntry1 = (Map.Entry)((Iterator)localObject2).next();
               try
               {
-                this.ap.put(localEntry1.getKey(), localEntry1.getValue().toString());
+                this.ar.put(localEntry1.getKey(), localEntry1.getValue().toString());
               }
               catch (Throwable localThrowable2)
               {
@@ -846,11 +858,11 @@ public final class a
       x.a(localThrowable1);
       for (;;)
       {
-        if (this.ap.isEmpty()) {
+        if (this.ar.isEmpty()) {
           break label236;
         }
         localStringBuilder = new StringBuilder();
-        localIterator = this.ap.entrySet().iterator();
+        localIterator = this.ar.entrySet().iterator();
         while (localIterator.hasNext())
         {
           localEntry2 = (Map.Entry)localIterator.next();
@@ -868,10 +880,10 @@ public final class a
   
   public final String t()
   {
-    if (this.au == null) {
-      this.au = AppInfo.e(this.G);
+    if (this.aw == null) {
+      this.aw = AppInfo.e(this.I);
     }
-    return this.au;
+    return this.aw;
   }
   
   /* Error */
@@ -881,11 +893,11 @@ public final class a
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 143	com/tencent/bugly/crashreport/common/info/a:W	Ljava/util/Map;
+    //   3: getfield 149	com/tencent/bugly/crashreport/common/info/a:Y	Ljava/util/Map;
     //   6: ifnull +17 -> 23
     //   9: aload_0
-    //   10: getfield 143	com/tencent/bugly/crashreport/common/info/a:W	Ljava/util/Map;
-    //   13: invokeinterface 429 1 0
+    //   10: getfield 149	com/tencent/bugly/crashreport/common/info/a:Y	Ljava/util/Map;
+    //   13: invokeinterface 453 1 0
     //   18: istore_1
     //   19: iload_1
     //   20: ifgt +9 -> 29
@@ -895,17 +907,17 @@ public final class a
     //   26: monitorexit
     //   27: aload_2
     //   28: areturn
-    //   29: new 179	java/util/HashMap
+    //   29: new 185	java/util/HashMap
     //   32: dup
     //   33: aload_0
-    //   34: getfield 143	com/tencent/bugly/crashreport/common/info/a:W	Ljava/util/Map;
-    //   37: invokeinterface 429 1 0
-    //   42: invokespecial 623	java/util/HashMap:<init>	(I)V
+    //   34: getfield 149	com/tencent/bugly/crashreport/common/info/a:Y	Ljava/util/Map;
+    //   37: invokeinterface 453 1 0
+    //   42: invokespecial 637	java/util/HashMap:<init>	(I)V
     //   45: astore_2
     //   46: aload_2
     //   47: aload_0
-    //   48: getfield 143	com/tencent/bugly/crashreport/common/info/a:W	Ljava/util/Map;
-    //   51: invokeinterface 445 2 0
+    //   48: getfield 149	com/tencent/bugly/crashreport/common/info/a:Y	Ljava/util/Map;
+    //   51: invokeinterface 469 2 0
     //   56: goto -31 -> 25
     //   59: astore_2
     //   60: aload_0
@@ -926,48 +938,48 @@ public final class a
   
   public final String v()
   {
-    if (this.Y == null) {
-      this.Y = b.n();
-    }
-    return this.Y;
-  }
-  
-  public final Boolean w()
-  {
     if (this.aa == null) {
-      this.aa = Boolean.valueOf(b.p());
+      this.aa = b.n();
     }
     return this.aa;
   }
   
-  public final String x()
+  public final Boolean w()
   {
-    if (this.ab == null)
-    {
-      this.ab = b.d(this.G);
-      x.a("ROM ID: %s", new Object[] { this.ab });
-    }
-    return this.ab;
-  }
-  
-  public final String y()
-  {
-    if (this.ac == null)
-    {
-      this.ac = b.b(this.G);
-      x.a("SIM serial number: %s", new Object[] { this.ac });
+    if (this.ac == null) {
+      this.ac = Boolean.valueOf(b.p());
     }
     return this.ac;
   }
   
-  public final String z()
+  public final String x()
   {
     if (this.ad == null)
     {
-      this.ad = b.g();
-      x.a("Hardware serial number: %s", new Object[] { this.ad });
+      this.ad = b.d(this.I);
+      x.a("ROM ID: %s", new Object[] { this.ad });
     }
     return this.ad;
+  }
+  
+  public final String y()
+  {
+    if (this.ae == null)
+    {
+      this.ae = b.b(this.I);
+      x.a("SIM serial number: %s", new Object[] { this.ae });
+    }
+    return this.ae;
+  }
+  
+  public final String z()
+  {
+    if (this.af == null)
+    {
+      this.af = b.g();
+      x.a("Hardware serial number: %s", new Object[] { this.af });
+    }
+    return this.af;
   }
 }
 

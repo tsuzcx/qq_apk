@@ -1,8 +1,19 @@
-import android.widget.Button;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar;
 
 public class aezg
+  implements DialogInterface.OnClickListener
 {
-  public Button a;
+  public aezg(VideoStatusTipsBar paramVideoStatusTipsBar) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    mqz.e(false, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 

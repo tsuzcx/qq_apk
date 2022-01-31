@@ -1,34 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
 
-final class asmj
-  implements bbsh
+public class asmj
+  implements DialogInterface.OnClickListener
 {
-  asmj(String paramString, asmo paramasmo) {}
+  public asmj(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label50;
-      }
-      if (this.jdField_a_of_type_Asmo != null) {
-        this.jdField_a_of_type_Asmo.a(true);
-      }
-    }
-    label50:
-    while (this.jdField_a_of_type_Asmo == null) {
-      return;
-    }
-    this.jdField_a_of_type_Asmo.a(false);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asmj
  * JD-Core Version:    0.7.0.1
  */

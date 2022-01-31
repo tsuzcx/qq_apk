@@ -1,15 +1,18 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 public class aomk
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public Bundle a;
-  public String a;
-  public boolean a;
-  public String b;
+  public aomk(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  aomk(aome paramaome) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a = false;
+    this.a.l = false;
+    this.a.doOnBackPressed();
+  }
 }
 
 

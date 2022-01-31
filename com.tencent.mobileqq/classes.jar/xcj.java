@@ -1,50 +1,42 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class xcj
-  implements View.OnClickListener
+public class xcj
 {
-  xcj(xce paramxce) {}
+  public String a;
+  public ArrayList<Integer> a;
+  public ArrayList<Object> b;
   
-  public void onClick(View paramView)
+  public xcj(JSONObject paramJSONObject)
   {
-    paramView = this.a.mRuntime.a();
-    if (paramView == null) {}
-    rrs localrrs;
-    do
+    try
     {
-      do
-      {
-        do
-        {
-          return;
-        } while ((xce.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(xce.a(this.a))));
-        localrrs = (rrs)xce.jdField_a_of_type_JavaUtilHashMap.get(xce.a(this.a));
-      } while (localrrs == null);
-      if (localrrs.b() == 3)
-      {
-        localrrs.a();
-        this.a.b();
-        localrrs.a(4);
-        if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-          this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        }
-        xce.jdField_a_of_type_JavaUtilHashMap.remove(xce.a(this.a));
-        return;
+      if (paramJSONObject.has("name")) {
+        this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
       }
-    } while (localrrs.b() != 0);
-    mof.a(paramView.getApplicationContext(), xce.a(this.a), localrrs.f, localrrs.a, localrrs);
-    localrrs.a(1);
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+      if (paramJSONObject.has("packageIDs"))
+      {
+        paramJSONObject = paramJSONObject.optJSONArray("packageIDs");
+        int j = paramJSONObject.length();
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        this.b = new ArrayList();
+        int i = 0;
+        while (i < j)
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramJSONObject.getInt(i)));
+          i += 1;
+        }
+      }
+      return;
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 2000L);
+    catch (Exception paramJSONObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopGiftAioPanelData", 2, "PersonalTabItemInfo json:", paramJSONObject);
+      }
+    }
   }
 }
 

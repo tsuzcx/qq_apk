@@ -1,4 +1,18 @@
-public abstract interface axvm {}
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
+
+public class axvm
+  extends URLDrawableDownListener.Adapter
+{
+  public axvm(StructMsgForHypertext paramStructMsgForHypertext) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    paramView.setBackgroundDrawable(null);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

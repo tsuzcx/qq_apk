@@ -1,93 +1,117 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.SystemClock;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import tencent.gdt.qq_ad_get.QQAdGetRsp;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.PosAdInfo;
 
 public class ysz
-  extends ysw
+  implements ysr
 {
-  private ArrayList<String> a;
+  public ysz(com.tencent.gdtad.api.GdtAd paramGdtAd) {}
   
-  public ysz(JSONObject paramJSONObject)
+  public void onResponse(ysq paramysq)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    a(paramJSONObject);
-  }
-  
-  public String a()
-  {
-    String str1 = super.a();
-    try
+    if ((paramysq != com.tencent.gdtad.api.GdtAd.access$100(this.a)) || (!this.a.isValid()))
     {
-      JSONObject localJSONObject = new JSONObject(str1);
-      localJSONObject.put("patchName", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("patchUrl", this.b);
-      localJSONObject.put("patchSize", this.jdField_a_of_type_Int);
-      StringBuilder localStringBuilder = new StringBuilder("");
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      yxs.d("GdtAd", "onResponse error");
+      com.tencent.gdtad.api.GdtAd.access$202(this.a, 3);
+      com.tencent.gdtad.api.GdtAd.access$300(this.a, new yta(1));
+      return;
+    }
+    int j;
+    int k;
+    int i;
+    if (paramysq == null)
+    {
+      j = -2147483648;
+      k = -2147483648;
+      i = -2147483648;
+      paramysq = null;
+    }
+    yta localyta;
+    for (;;)
+    {
+      i = this.a.getErrorCode(paramysq, k, j, i);
+      localyta = new yta(i);
+      yxs.b("GdtAd", localyta.a());
+      if (i != 0) {
+        break;
+      }
+      com.tencent.gdtad.api.GdtAd.access$202(this.a, 2);
+      this.a.getParams().a.a = paramysq;
+      com.tencent.gdtad.api.GdtAd.access$402(this.a, SystemClock.elapsedRealtime());
+      com.tencent.gdtad.api.GdtAd.access$500(this.a);
+      return;
+      if (paramysq.a() == null)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
+        j = -2147483648;
+        k = -2147483648;
+        i = -2147483648;
+        paramysq = null;
+      }
+      else
+      {
+        long l = paramysq.a().jdField_a_of_type_Long;
+        i = paramysq.a().jdField_a_of_type_Int;
+        if (paramysq.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp == null)
         {
-          String str3 = (String)localIterator.next();
-          if (!TextUtils.isEmpty(str3)) {
-            localStringBuilder.append(str3).append(";");
+          j = -2147483648;
+          k = i;
+          i = -2147483648;
+          paramysq = null;
+        }
+        else
+        {
+          j = paramysq.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.ret.get();
+          if (j != 0)
+          {
+            k = i;
+            i = -2147483648;
+            paramysq = null;
+          }
+          else if (paramysq.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.size() <= 0)
+          {
+            k = i;
+            i = -2147483648;
+            paramysq = null;
+          }
+          else
+          {
+            k = ((qq_ad_get.QQAdGetRsp.PosAdInfo)paramysq.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.get(0)).ret.get();
+            int m;
+            if (k != 0)
+            {
+              paramysq = null;
+              m = i;
+              i = k;
+              k = m;
+            }
+            else if (((qq_ad_get.QQAdGetRsp.PosAdInfo)paramysq.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.get(0)).ads_info.size() <= 0)
+            {
+              paramysq = null;
+              m = i;
+              i = k;
+              k = m;
+            }
+            else
+            {
+              paramysq = new com.tencent.gdtad.aditem.GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)((qq_ad_get.QQAdGetRsp.PosAdInfo)paramysq.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.get(0)).ads_info.get(0));
+              m = i;
+              i = k;
+              k = m;
+            }
           }
         }
       }
-      localJSONException.put("classIdList", localStringBuilder.toString());
     }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("PatchLogTag", 1, "DexPatchItemConfigDalvik writeToJsonString", localJSONException);
-      return str1;
-    }
-    String str2 = localJSONException.toString();
-    return str2;
-  }
-  
-  public ArrayList<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  protected void a(JSONObject paramJSONObject)
-  {
-    int i = 0;
-    super.a(paramJSONObject);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
-    this.b = paramJSONObject.optString("patchUrl", null);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
-    paramJSONObject = paramJSONObject.optString("classIdList", "").split(";");
-    if ((paramJSONObject != null) && (paramJSONObject.length > 0))
-    {
-      int j = paramJSONObject.length;
-      while (i < j)
-      {
-        CharSequence localCharSequence = paramJSONObject[i];
-        if (!TextUtils.isEmpty(localCharSequence)) {
-          this.jdField_a_of_type_JavaUtilArrayList.add(localCharSequence);
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)
-    {
-      QLog.d("PatchLogTag", 1, "DexPatchItemConfigDalvik isValidConfig classIdList is empty");
-      return false;
-    }
-    return super.a(paramBoolean);
+    com.tencent.gdtad.api.GdtAd.access$202(this.a, 3);
+    com.tencent.gdtad.api.GdtAd.access$300(this.a, localyta);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ysz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,54 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.AdapterView;
+import java.util.List;
 
-public class appg
-  implements CompoundButton.OnCheckedChangeListener
+class appg
+  implements bfpe
 {
-  public appg(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
+  appg(appd paramappd) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(AdapterView<?> paramAdapterView) {}
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    SettingCloneUtil.writeValue(this.a.getActivity(), null, this.a.getString(2131629640), "qqsetting_auto_receive_pic_key", paramBoolean);
-    paramCompoundButton = QQSettingAutoDownloadAndSaveFragment.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    appd.a(this.a, paramInt);
+    paramAdapterView = this.a.jdField_a_of_type_Apqq;
+    if (appd.a(this.a) == appd.b(this.a)) {}
+    for (boolean bool = true;; bool = false)
     {
-      awqx.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
+      paramAdapterView.d(bool);
+      this.a.a(paramInt);
+      if (this.a.jdField_a_of_type_Apkn != null) {
+        this.a.jdField_a_of_type_Apkn.a(paramInt);
+      }
+      paramAdapterView = (apmy)appd.a(this.a).get(paramInt);
+      if (paramAdapterView != null) {
+        break;
+      }
+      aptv.b(BaseApplicationImpl.getContext().getString(2131692482));
       return;
     }
+    this.a.jdField_a_of_type_Apmx.a().a(paramAdapterView);
+    this.a.jdField_a_of_type_Apmx.a(paramInt, paramAdapterView);
+    this.a.jdField_a_of_type_Apqq.c(appd.a(this.a, appd.a(this.a)));
+    this.a.jdField_a_of_type_Apqq.c();
+    if (this.a.jdField_a_of_type_Apkm != null) {
+      this.a.jdField_a_of_type_Apkm.e();
+    }
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_Apkn.a(true);
+      this.a.jdField_a_of_type_Apqq.a(false);
+      appd.a(this.a, true);
+    }
+    this.a.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     appg
  * JD-Core Version:    0.7.0.1
  */

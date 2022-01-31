@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import abne;
+import abxg;
 import com.tencent.mobileqq.apollo.SettingMeApolloViewController;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -39,7 +39,7 @@ public class QQSettingMe$WebPreloadTask
         if (ApolloUtil.a(localQQSettingMe.a, QQSettingMe.a(localQQSettingMe).a))
         {
           i = 100;
-          localWebProcessManager.a(i, new abne(this, localQQSettingMe));
+          localWebProcessManager.a(i, new abxg(this, localQQSettingMe));
           return;
         }
       }

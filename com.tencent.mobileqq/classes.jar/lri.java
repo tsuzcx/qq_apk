@@ -1,45 +1,92 @@
-import android.os.Handler;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.av.ui.BeautySeekView;
+import android.util.Log;
+import java.util.LinkedList;
+import java.util.List;
 
-public class lri
-  implements SeekBar.OnSeekBarChangeListener
+public abstract class lri
 {
-  public lri(BeautySeekView paramBeautySeekView) {}
+  private String jdField_a_of_type_JavaLangString = getClass().getSimpleName() + "-" + Integer.toHexString(hashCode());
+  private List<lrh> jdField_a_of_type_JavaUtilList = new LinkedList();
+  lrk jdField_a_of_type_Lrk;
+  private lrn jdField_a_of_type_Lrn;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public lri()
   {
-    if (BeautySeekView.a(this.a) != paramInt)
+    Log.d(this.jdField_a_of_type_JavaLangString, "ImageSource: ");
+  }
+  
+  public lri a(lrh paramlrh)
+  {
+    Log.d(this.jdField_a_of_type_JavaLangString, "addTarget: " + paramlrh);
+    this.jdField_a_of_type_JavaUtilList.add(paramlrh);
+    paramlrh.a(this.jdField_a_of_type_Lrn);
+    return this;
+  }
+  
+  protected abstract void a();
+  
+  public void a(lrk paramlrk)
+  {
+    this.jdField_a_of_type_Lrk = paramlrk;
+  }
+  
+  protected abstract void b();
+  
+  protected void b(List<lrl> paramList, long paramLong)
+  {
+    int k = 0;
+    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {}
+    for (;;)
     {
-      BeautySeekView.a(this.a, paramInt);
-      if (paramBoolean) {
-        BeautySeekView.a(this.a).setContentDescription(paramInt + "%");
+      return;
+      int i = 0;
+      int j;
+      for (;;)
+      {
+        j = k;
+        if (i >= paramList.size()) {
+          break;
+        }
+        ((lrl)paramList.get(i)).a(this.jdField_a_of_type_JavaUtilList.size());
+        i += 1;
       }
-      BeautySeekView.a(this.a, paramInt);
-      BeautySeekView.b(this.a, BeautySeekView.a(this.a));
-    }
-    if (BeautySeekView.a(this.a) != null) {
-      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 2, paramInt);
-    }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    BeautySeekView.a(this.a).removeCallbacks(this.a.a);
-    BeautySeekView.a(this.a).setVisibility(0);
-    if (BeautySeekView.a(this.a) != null) {
-      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 1, BeautySeekView.a(this.a));
+      while (j < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        ((lrh)this.jdField_a_of_type_JavaUtilList.get(j)).a(paramList, paramLong);
+        j += 1;
+      }
     }
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public void c()
   {
-    BeautySeekView.a(this.a).postDelayed(this.a.a, 300L);
-    if (BeautySeekView.a(this.a) != null) {
-      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 3, BeautySeekView.a(this.a));
+    Log.d(this.jdField_a_of_type_JavaLangString, "isolated: ");
+    this.jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  public void d()
+  {
+    Log.d(this.jdField_a_of_type_JavaLangString, "init");
+    this.jdField_a_of_type_Lrn = new lrn();
+    this.jdField_a_of_type_Lrn.a = this;
+    a();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      ((lrh)this.jdField_a_of_type_JavaUtilList.get(i)).a(this.jdField_a_of_type_Lrn);
+      i += 1;
     }
+  }
+  
+  public void e()
+  {
+    Log.d(this.jdField_a_of_type_JavaLangString, "destroy");
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      ((lrh)this.jdField_a_of_type_JavaUtilList.get(i)).c();
+      i += 1;
+    }
+    b();
   }
 }
 

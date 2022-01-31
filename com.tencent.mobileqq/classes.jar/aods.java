@@ -1,21 +1,14 @@
-class aods
-  extends aoft
+import java.util.List;
+
+public abstract interface aods
 {
-  aods(aodq paramaodq, aodv paramaodv) {}
+  public abstract void a(List<aodo> paramList, aodo paramaodo);
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Aodv.a(paramString2);
-      return;
-    }
-    this.jdField_a_of_type_Aodv.a(paramInt, paramString1);
-  }
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aods
  * JD-Core Version:    0.7.0.1
  */

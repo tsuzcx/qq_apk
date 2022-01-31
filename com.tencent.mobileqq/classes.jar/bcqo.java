@@ -1,58 +1,24 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem;
-import java.util.List;
+import com.tencent.mobileqq.widget.RotateableView;
 
 public class bcqo
   extends Handler
 {
-  public bcqo(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public bcqo(RotateableView paramRotateableView) {}
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
+    RotateableView.a(this.a, RotateableView.a(this.a) + 8.0F);
+    if (RotateableView.a(this.a) >= 360.0F) {
+      RotateableView.a(this.a, RotateableView.a(this.a) - 360.0F);
     }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      try
-      {
-        BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.a.getResources(), this.a.jdField_a_of_type_AndroidGraphicsBitmap);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localBitmapDrawable);
-      }
-      catch (Exception localException) {}
-      continue;
-      Object localObject = (QidianProfileCardActivity.QidianSimpleProfileItem)paramMessage.getData().getParcelable("data");
-      localObject = this.a.a((QidianProfileCardActivity.QidianSimpleProfileItem)localObject);
-      if (localObject != null)
-      {
-        this.a.b.addView((View)localObject);
-        continue;
-        localObject = paramMessage.getData().getParcelableArrayList("data");
-        localObject = this.a.a((List)localObject);
-        if (localObject != null)
-        {
-          LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-          localLayoutParams.leftMargin = this.a.d;
-          ((View)localObject).setPadding(0, this.a.e, this.a.d, this.a.e);
-          this.a.b.addView((View)localObject, localLayoutParams);
-        }
-      }
-    }
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcqo
  * JD-Core Version:    0.7.0.1
  */

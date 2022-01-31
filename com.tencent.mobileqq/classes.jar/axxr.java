@@ -1,309 +1,300 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextPaint;
+import android.text.TextUtils.TruncateAt;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import com.tencent.mobileqq.widget.PAImageView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import tencent.im.cs.cmd0x388.cmd0x388.ReqBody;
-import tencent.im.cs.cmd0x388.cmd0x388.RspBody;
-import tencent.im.cs.cmd0x388.cmd0x388.TryUpImgReq;
-import tencent.im.cs.cmd0x388.cmd0x388.TryUpImgRsp;
-import tencent.im.cs.cmd0x388.cmd0x388.TryUpInfo4Busi;
 
 public class axxr
-  extends axxs
+  extends axuo
 {
-  int a;
+  private TextView a;
   
-  public static boolean a(int paramInt)
+  private void a(Context paramContext, Resources paramResources, RelativeLayout paramRelativeLayout, View paramView, LinearLayout paramLinearLayout, TextView paramTextView1, TextView paramTextView2)
   {
-    return (paramInt != 196) && (paramInt != 194) && (paramInt != 197) && (paramInt != 199) && (paramInt != 200) && (paramInt != 201) && (paramInt != 203) && (paramInt != 202) && (paramInt != 120509) && (paramInt != 400010) && (paramInt != 400011);
+    float f = paramResources.getDisplayMetrics().density;
+    paramRelativeLayout.addView(paramView, new RelativeLayout.LayoutParams(-1, -1));
+    paramResources = new FrameLayout(paramContext);
+    paramResources.setId(2131376303);
+    paramView = new ImageView(paramContext);
+    paramView.setImageResource(2130849349);
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
+    localLayoutParams.gravity = 80;
+    paramResources.addView(paramView, localLayoutParams);
+    paramView = new FrameLayout.LayoutParams(-2, -2);
+    paramView.gravity = 17;
+    paramResources.addView(paramLinearLayout, paramView);
+    paramView = new RelativeLayout.LayoutParams(-2, -2);
+    paramView.addRule(14);
+    paramView.addRule(10);
+    paramView.topMargin = ((int)(32.0F * f));
+    paramRelativeLayout.addView(paramResources, paramView);
+    paramTextView2.setId(2131376304);
+    paramTextView2.setIncludeFontPadding(false);
+    paramTextView2.setSingleLine(false);
+    paramTextView2.setMaxLines(2);
+    paramTextView2.setTextSize(1, 40.0F);
+    paramTextView2.setTextColor(-1);
+    paramTextView2.setGravity(17);
+    paramTextView2.getPaint().setFakeBoldText(true);
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView2;
+    paramResources = new RelativeLayout.LayoutParams((int)(240.0F * f), -2);
+    paramResources.addRule(14);
+    paramResources.addRule(3, 2131376303);
+    paramResources.topMargin = ((int)(5.0F * f));
+    paramResources.bottomMargin = ((int)(5.0F * f));
+    paramRelativeLayout.addView(paramTextView2, paramResources);
+    paramResources = new ImageView(paramContext);
+    paramResources.setId(2131376305);
+    paramResources.setImageResource(2130849351);
+    paramView = new RelativeLayout.LayoutParams(-2, -2);
+    paramView.addRule(14);
+    paramView.addRule(3, 2131376304);
+    paramRelativeLayout.addView(paramResources, paramView);
+    paramResources = new RelativeLayout(paramContext);
+    paramView = new ImageView(paramContext);
+    paramView.setId(2131376307);
+    paramView.setImageResource(2130849352);
+    paramLinearLayout = new RelativeLayout.LayoutParams(-2, -2);
+    paramLinearLayout.addRule(13);
+    paramResources.addView(paramView, paramLinearLayout);
+    paramContext = new ImageView(paramContext);
+    paramContext.setImageResource(2130849348);
+    paramView = new RelativeLayout.LayoutParams(-2, -2);
+    paramView.addRule(15);
+    paramView.addRule(0, 2131376307);
+    paramView.rightMargin = ((int)(6.0F * f));
+    paramResources.addView(paramContext, paramView);
+    paramTextView1.setIncludeFontPadding(false);
+    paramTextView1.setTextSize(1, 22.0F);
+    paramTextView1.setTextColor(-1);
+    paramTextView1.getPaint().setFakeBoldText(true);
+    paramContext = new RelativeLayout.LayoutParams(-2, -2);
+    paramContext.addRule(15);
+    paramContext.addRule(1, 2131376307);
+    paramContext.leftMargin = ((int)(6.0F * f));
+    paramResources.addView(paramTextView1, paramContext);
+    paramContext = new RelativeLayout.LayoutParams((int)(240.0F * f), -2);
+    paramContext.addRule(14);
+    paramContext.addRule(3, 2131376305);
+    paramContext.topMargin = ((int)(f * 10.0F));
+    paramRelativeLayout.addView(paramResources, paramContext);
   }
   
-  void a(int paramInt, axyr paramaxyr, cmd0x388.ReqBody paramReqBody)
+  protected int b()
   {
-    paramaxyr = (axyp)paramaxyr;
-    cmd0x388.TryUpImgReq localTryUpImgReq = new cmd0x388.TryUpImgReq();
-    localTryUpImgReq.setHasFlag(true);
-    localTryUpImgReq.uint64_src_uin.set(Long.valueOf(paramaxyr.jdField_c_of_type_JavaLangString).longValue());
-    localTryUpImgReq.uint64_group_code.set(Long.valueOf(paramaxyr.jdField_d_of_type_JavaLangString).longValue());
-    localTryUpImgReq.uint64_file_id.set(paramInt);
-    localTryUpImgReq.uint64_file_size.set(paramaxyr.jdField_a_of_type_Long);
-    localTryUpImgReq.bytes_file_md5.set(ByteStringMicro.copyFrom(paramaxyr.jdField_a_of_type_ArrayOfByte));
-    localTryUpImgReq.bytes_file_name.set(ByteStringMicro.copyFromUtf8(paramaxyr.jdField_a_of_type_JavaLangString));
-    localTryUpImgReq.uint32_src_term.set(5);
-    localTryUpImgReq.uint32_platform_type.set(9);
-    localTryUpImgReq.uint32_pic_width.set(paramaxyr.jdField_c_of_type_Int);
-    localTryUpImgReq.uint32_pic_height.set(paramaxyr.jdField_d_of_type_Int);
-    localTryUpImgReq.uint32_pic_type.set(paramaxyr.jdField_a_of_type_Int);
-    PBUInt32Field localPBUInt32Field = localTryUpImgReq.uint32_bu_type;
-    if (paramaxyr.f == 1) {}
-    for (paramInt = 1;; paramInt = 2)
-    {
-      localPBUInt32Field.set(paramInt);
-      localTryUpImgReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(axub.a()));
-      if (paramaxyr.jdField_b_of_type_Boolean) {
-        localTryUpImgReq.uint32_original_pic.set(1);
-      }
-      paramReqBody.rpt_msg_tryup_img_req.add(localTryUpImgReq);
-      return;
-    }
+    return 25;
   }
   
-  public void a(axtc paramaxtc, axtb paramaxtb)
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
-    FromServiceMsg localFromServiceMsg = paramaxtc.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-    byte[] arrayOfByte = paramaxtc.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
-    axyg localaxyg = (axyg)paramaxtb.jdField_a_of_type_JavaLangObject;
-    axyv localaxyv = localaxyg.jdField_a_of_type_Axyv;
-    ajmn localajmn = paramaxtc.jdField_a_of_type_Ajmn;
-    if (QLog.isColorLevel()) {
-      QLog.e("BDHCommonUpHandler", 1, "onProtoResp: " + localFromServiceMsg.getResultCode());
-    }
+    Resources localResources = paramContext.getResources();
+    LinearLayout localLinearLayout;
+    RelativeLayout localRelativeLayout;
     int i;
-    if (localFromServiceMsg.getResultCode() != 1000)
+    Object localObject3;
+    Object localObject1;
+    Object localObject4;
+    Object localObject2;
+    label89:
+    Object localObject5;
+    int j;
+    Object localObject6;
+    Object localObject7;
+    if ((paramView != null) && ((paramView instanceof LinearLayout)))
     {
-      paramaxtc = (String)localFromServiceMsg.getAttribute("_tag_socket_connerror", "");
-      if ((paramaxtc.equals("conSucc")) || (paramaxtc.equals("")))
+      localLinearLayout = (LinearLayout)paramView;
+      localLinearLayout.removeAllViews();
+      localRelativeLayout = new RelativeLayout(paramContext);
+      localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, actn.a(290.0F, localResources)));
+      localLinearLayout.addView(localRelativeLayout);
+      i = 0;
+      localObject3 = null;
+      localObject1 = null;
+      localObject4 = null;
+      localObject2 = null;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (!localIterator.hasNext()) {
+        break label531;
+      }
+      paramView = (axun)localIterator.next();
+      localObject5 = paramView.a;
+      if ((!"type".equals(localObject5)) || (!(paramView instanceof axzp))) {
+        break label264;
+      }
+      j = ((axzp)paramView).k;
+      i = j;
+      paramView = (View)localObject4;
+      localObject5 = localObject2;
+      localObject6 = localObject3;
+      localObject7 = localObject1;
+      if (QLog.isColorLevel())
       {
-        i = localFromServiceMsg.getResultCode();
-        if ((i == 1002) || (i == 1013))
-        {
-          localObject1 = MessageHandler.b(localFromServiceMsg);
-          paramaxtb = localFromServiceMsg.getBusinessFailMsg();
-          paramaxtc = paramaxtb;
-          if (paramaxtb == null) {
-            paramaxtc = "";
-          }
-          a(-1, 9311, (String)localObject1, paramaxtc, localajmn, localaxyv.jdField_a_of_type_JavaUtilList);
-        }
+        QLog.d("StructMsgItemLayout25", 2, "getView socialType=" + j);
+        localObject7 = localObject1;
+        localObject6 = localObject3;
+        localObject5 = localObject2;
+        paramView = (View)localObject4;
+        i = j;
       }
     }
     for (;;)
     {
-      axzm.a(localaxyg, localaxyv);
-      return;
-      paramaxtb = localFromServiceMsg.getBusinessFailMsg();
-      paramaxtc = paramaxtb;
-      if (paramaxtb == null) {
-        paramaxtc = "";
-      }
-      a(-1, 9044, String.valueOf(i), paramaxtc, localajmn, localaxyv.jdField_a_of_type_JavaUtilList);
-      continue;
-      a(-1, 9313, paramaxtc, localFromServiceMsg.getBusinessFailMsg(), localajmn, localaxyv.jdField_a_of_type_JavaUtilList);
-      continue;
-      try
+      localObject4 = paramView;
+      localObject2 = localObject5;
+      localObject3 = localObject6;
+      localObject1 = localObject7;
+      break label89;
+      localLinearLayout = new LinearLayout(paramContext);
+      localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+      localLinearLayout.setOrientation(1);
+      break;
+      label264:
+      if (("title".equals(localObject5)) && (localObject3 == null))
       {
-        paramaxtc = ((cmd0x388.RspBody)new cmd0x388.RspBody().mergeFrom(arrayOfByte)).rpt_msg_tryup_img_rsp.get();
-        if ((paramaxtc != null) && (paramaxtc.size() != 0)) {
-          break label349;
+        if ((paramView instanceof StructMsgItemTitle)) {
+          ((StructMsgItemTitle)paramView).a(a(), this.l);
         }
-        throw new Exception("resps null");
+        localObject6 = (TextView)paramView.a(paramContext, null, paramBundle);
+        ((TextView)localObject6).setSingleLine();
+        ((TextView)localObject6).setEllipsize(TextUtils.TruncateAt.END);
+        ((TextView)localObject6).getPaint().setFakeBoldText(true);
+        paramView = (View)localObject4;
+        localObject5 = localObject2;
+        localObject7 = localObject1;
       }
-      catch (Exception paramaxtc)
+      else if (("summary".equals(localObject5)) && (localObject1 == null))
       {
-        a(-1, -9527, axou.a("P", -9529L), paramaxtc.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localajmn, localaxyv.jdField_a_of_type_JavaUtilList);
+        localObject7 = (TextView)paramView.a(paramContext, null, paramBundle);
+        ((TextView)localObject7).setSingleLine();
+        ((TextView)localObject7).setEllipsize(TextUtils.TruncateAt.END);
+        paramView = (View)localObject4;
+        localObject5 = localObject2;
+        localObject6 = localObject3;
       }
-      continue;
-      label349:
-      Iterator localIterator = paramaxtc.iterator();
-      while (localIterator.hasNext())
+      else
       {
-        paramaxtc = (cmd0x388.TryUpImgRsp)localIterator.next();
-        for (;;)
+        if (("picture".equals(localObject5)) && (localObject4 == null))
         {
-          try
+          paramView = paramView.a(paramContext, null, paramBundle);
+          if ((paramView != null) && ((paramView instanceof PAImageView)))
           {
-            for (;;)
-            {
-              localObject1 = (axyw)localaxyv.jdField_a_of_type_JavaUtilList.get((int)paramaxtc.uint64_file_id.get());
-              if (localObject1 == null) {
-                break;
-              }
-              try
-              {
-                if (localFromServiceMsg.getAttributes().containsKey("_attr_send_by_quickHttp")) {
-                  ((axyw)localObject1).jdField_d_of_type_Boolean = ((Boolean)localFromServiceMsg.getAttribute("_attr_send_by_quickHttp", Boolean.valueOf(false))).booleanValue();
-                }
-                if (paramaxtc.msg_info4busi.has())
-                {
-                  localObject2 = (cmd0x388.TryUpInfo4Busi)paramaxtc.msg_info4busi.get();
-                  if (((cmd0x388.TryUpInfo4Busi)localObject2).bytes_down_domain.has()) {
-                    ((axyw)localObject1).jdField_b_of_type_JavaLangString = ((cmd0x388.TryUpInfo4Busi)localObject2).bytes_down_domain.get().toStringUtf8();
-                  }
-                  if (((cmd0x388.TryUpInfo4Busi)localObject2).bytes_big_down_url.has()) {
-                    ((axyw)localObject1).jdField_d_of_type_JavaLangString = ((cmd0x388.TryUpInfo4Busi)localObject2).bytes_big_down_url.get().toStringUtf8();
-                  }
-                  if (((cmd0x388.TryUpInfo4Busi)localObject2).bytes_original_down_url.has()) {
-                    ((axyw)localObject1).e = ((cmd0x388.TryUpInfo4Busi)localObject2).bytes_original_down_url.get().toStringUtf8();
-                  }
-                  if (((cmd0x388.TryUpInfo4Busi)localObject2).bytes_thumb_down_url.has()) {
-                    ((axyw)localObject1).jdField_c_of_type_JavaLangString = ((cmd0x388.TryUpInfo4Busi)localObject2).bytes_thumb_down_url.get().toStringUtf8();
-                  }
-                  if (((cmd0x388.TryUpInfo4Busi)localObject2).bytes_file_resid.has()) {
-                    ((axyw)localObject1).f = ((cmd0x388.TryUpInfo4Busi)localObject2).bytes_file_resid.get().toStringUtf8();
-                  }
-                }
-                i = paramaxtc.uint32_result.get();
-                if (i != 0) {
-                  break label1045;
-                }
-                ((axyw)localObject1).jdField_a_of_type_Long = paramaxtc.uint64_fileid.get();
-                localObject2 = paramaxtc.rpt_uint32_up_ip.get();
-                localObject3 = paramaxtc.rpt_uint32_up_port.get();
-                if ((localObject2 != null) && (((List)localObject2).size() > 0))
-                {
-                  i = 0;
-                  while (i < ((List)localObject2).size())
-                  {
-                    long l1 = ((Integer)((List)localObject2).get(i)).intValue();
-                    long l2 = ((Integer)((List)localObject3).get(i)).intValue();
-                    axuh localaxuh = new axuh();
-                    localaxuh.jdField_a_of_type_JavaLangString = bakz.a(l1 & 0xFFFFFFFF);
-                    localaxuh.jdField_a_of_type_Int = ((int)l2);
-                    ((axyw)localObject1).jdField_a_of_type_JavaUtilArrayList.add(i, localaxuh);
-                    i += 1;
-                  }
-                }
-                if ((!paramaxtc.bool_file_exit.has()) || (!paramaxtc.bool_file_exit.get())) {
-                  break label852;
-                }
-                ((axyw)localObject1).jdField_a_of_type_Boolean = true;
-                a(0, 0, "", "", localajmn, (axzi)localObject1);
-              }
-              catch (Exception paramaxtc) {}
+            float f = localResources.getDimensionPixelSize(2131296351);
+            ((PAImageView)paramView).setUseRadiusRound(true, f);
+            localObject5 = localObject2;
+            localObject6 = localObject3;
+            localObject7 = localObject1;
+          }
+        }
+        else
+        {
+          if (("head".equals(localObject5)) && ((paramView instanceof axwj)) && (localObject2 == null))
+          {
+            ((axwj)paramView).k = i;
+            localObject5 = (LinearLayout)paramView.a(paramContext, null, paramBundle);
+            paramView = (View)localObject4;
+            localObject6 = localObject3;
+            localObject7 = localObject1;
+            continue;
+            label531:
+            paramView = new axyv(paramContext.getString(2131719684)).a(paramContext, null, null);
+            paramBundle = new LinearLayout.LayoutParams(-1, -2);
+            j = actn.a(15.0F, localResources);
+            paramView.setLayoutParams(paramBundle);
+            paramView.setPadding(j, j, j, j);
+            paramBundle = (TextView)paramView.findViewById(2131376579);
+            paramBundle.setSingleLine();
+            paramBundle.setEllipsize(TextUtils.TruncateAt.END);
+            paramBundle.setTextSize(1, 18.0F);
+            localLinearLayout.addView(paramView);
+            if ((localObject3 == null) || (localObject1 == null) || (localObject4 == null) || (localObject2 == null)) {
+              return localLinearLayout;
             }
+            if (i == 4)
+            {
+              a(paramContext, localResources, localRelativeLayout, (View)localObject4, localObject2, localObject3, localObject1);
+              paramBundle.setText(ajyc.a(2131714612));
+              return localLinearLayout;
+            }
+            localRelativeLayout.addView((View)localObject4, new RelativeLayout.LayoutParams(-1, -1));
+            paramView = new RelativeLayout.LayoutParams(-2, -2);
+            paramView.addRule(14);
+            paramView.topMargin = actn.a(25.0F, localResources);
+            localObject3.setLayoutParams(paramView);
+            localObject3.setId(2131376306);
+            localRelativeLayout.addView(localObject3);
+            paramView = new RelativeLayout(paramContext);
+            paramBundle = new RelativeLayout.LayoutParams(-2, -2);
+            paramBundle.addRule(13);
+            localObject1.setLayoutParams(paramBundle);
+            paramView.addView(localObject1);
+            paramBundle = new ImageView(paramContext);
+            paramBundle.setImageResource(2130849342);
+            localObject4 = new RelativeLayout.LayoutParams(-2, -2);
+            ((RelativeLayout.LayoutParams)localObject4).addRule(0, localObject1.getId());
+            ((RelativeLayout.LayoutParams)localObject4).addRule(15);
+            ((RelativeLayout.LayoutParams)localObject4).rightMargin = actn.a(7.0F, localResources);
+            paramView.addView(paramBundle, (ViewGroup.LayoutParams)localObject4);
+            paramContext = new ImageView(paramContext);
+            paramContext.setImageResource(2130849343);
+            paramBundle = new RelativeLayout.LayoutParams(-2, -2);
+            paramBundle.addRule(1, localObject1.getId());
+            paramBundle.addRule(15);
+            paramBundle.leftMargin = actn.a(7.0F, localResources);
+            paramView.addView(paramContext, paramBundle);
+            paramContext = new RelativeLayout.LayoutParams(-1, -2);
+            paramContext.topMargin = actn.a(5.0F, localResources);
+            paramContext.addRule(3, 2131376306);
+            paramView.setLayoutParams(paramContext);
+            paramView.setId(2131376304);
+            localRelativeLayout.addView(paramView);
+            paramContext = new RelativeLayout.LayoutParams(-2, -2);
+            paramContext.addRule(14);
+            paramContext.addRule(3, 2131376304);
+            paramContext.topMargin = actn.a(10.0F, localResources);
+            if (localObject2 != null)
+            {
+              localObject2.setId(2131376303);
+              localObject2.setLayoutParams(paramContext);
+              localRelativeLayout.addView(localObject2);
+            }
+            localObject3.setTextSize(2, 14.0F);
+            localObject3.setTextColor(-1);
+            localObject1.setTextSize(2, 30.0F);
+            localObject1.setTextColor(-1);
+            return localLinearLayout;
           }
-          catch (Exception paramaxtc)
-          {
-            Object localObject2;
-            Object localObject3;
-            label852:
-            localObject1 = null;
-            continue;
-            boolean bool = false;
-            continue;
-          }
-          a(-1, -9527, axou.a("P", -9529L), paramaxtc.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localajmn, (axzi)localObject1);
-          break;
-          localObject3 = HexUtil.bytes2HexStr(paramaxtc.bytes_up_ukey.get().toByteArray());
-          if ((localObject3 == null) || (((String)localObject3).equals("")) || (localObject2 == null) || (((List)localObject2).size() == 0)) {
-            throw new Exception("check ukey,iplist");
-          }
-          ((axyw)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject3);
-          ((axyw)localObject1).jdField_a_of_type_Int = ((int)paramaxtc.uint64_block_size.get());
-          ((axyw)localObject1).jdField_b_of_type_Int = ((int)paramaxtc.uint64_up_offset.get());
-          if (axsr.a().a() == this.jdField_a_of_type_Int) {
-            continue;
-          }
-          bool = true;
-          ((axyw)localObject1).jdField_b_of_type_Boolean = bool;
-          ((axyw)localObject1).jdField_b_of_type_Long = paramaxtc.uint64_up_offset.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("BDH_LOG", 2, " Channel:" + paramaxtc.bool_new_big_chan.get());
-          }
-          if ((paramaxtc.bool_new_big_chan.has()) && (paramaxtc.bool_new_big_chan.get() == true)) {
-            ((axyw)localObject1).jdField_c_of_type_Boolean = true;
-          }
+          paramView = (View)localObject4;
+          localObject5 = localObject2;
+          localObject6 = localObject3;
+          localObject7 = localObject1;
+          continue;
         }
-        label1045:
-        if (a(i))
-        {
-          this.jdField_b_of_type_Int += 1;
-          if (this.jdField_b_of_type_Int < 2)
-          {
-            localaxyg.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.a(paramaxtb);
-            return;
-          }
-        }
-        a(-1, -9527, axou.a(i), "", localajmn, (axzi)localObject1);
+        localObject5 = localObject2;
+        localObject6 = localObject3;
+        localObject7 = localObject1;
       }
     }
   }
   
-  public void a(axyg paramaxyg)
+  public String b()
   {
-    if ((paramaxyg != null) && (paramaxyg.jdField_a_of_type_JavaUtilList != null) && (paramaxyg.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
-    {
-      axtb localaxtb = new axtb();
-      localaxtb.jdField_a_of_type_JavaLangString = "ImgStore.BDHCommonUp";
-      localaxtb.jdField_a_of_type_ArrayOfByte = a(paramaxyg);
-      localaxtb.jdField_a_of_type_JavaLangObject = paramaxyg;
-      localaxtb.jdField_a_of_type_Axta = this;
-      a(paramaxyg, localaxtb);
-    }
-  }
-  
-  byte[] a(axyg paramaxyg)
-  {
-    if (paramaxyg == null) {
-      return null;
-    }
-    List localList = paramaxyg.jdField_a_of_type_JavaUtilList;
-    cmd0x388.ReqBody localReqBody = new cmd0x388.ReqBody();
-    localReqBody.setHasFlag(true);
-    localReqBody.uint32_subcmd.set(1);
-    localReqBody.uint32_command_id.set(paramaxyg.jdField_a_of_type_Int);
-    if (paramaxyg.jdField_a_of_type_ArrayOfByte != null) {
-      localReqBody.bytes_extension.set(ByteStringMicro.copyFrom(paramaxyg.jdField_a_of_type_ArrayOfByte));
-    }
-    int i = 0;
-    while (i < localList.size())
-    {
-      a(i, (axyr)localList.get(i), localReqBody);
-      i += 1;
-    }
-    i = axsr.a().a();
-    this.jdField_a_of_type_Int = i;
-    switch (i)
-    {
-    default: 
-      i = 6;
-    }
-    for (;;)
-    {
-      paramaxyg = axsr.a().a();
-      int j = i;
-      if (paramaxyg != null)
-      {
-        j = i;
-        if (paramaxyg.contains("wap")) {
-          j = 5;
-        }
-      }
-      localReqBody.uint32_net_type.set(j);
-      return localReqBody.toByteArray();
-      i = 3;
-      continue;
-      i = 6;
-      continue;
-      i = 7;
-      continue;
-      i = 8;
-    }
-  }
-  
-  void b(axyg paramaxyg)
-  {
-    axyv localaxyv = paramaxyg.jdField_a_of_type_Axyv;
-    localaxyv.jdField_a_of_type_JavaUtilList.clear();
-    int i = 0;
-    while (i < paramaxyg.jdField_a_of_type_JavaUtilList.size())
-    {
-      axyw localaxyw = new axyw();
-      localaxyv.jdField_a_of_type_JavaUtilList.add(i, localaxyw);
-      i += 1;
-    }
+    return "layout25";
   }
 }
 

@@ -1,30 +1,32 @@
 import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import cooperation.qlink.QlAndQQInterface.WorkState;
+import java.util.ArrayList;
 
-public class bgmw
+class bgmw
+  implements DialogInterface.OnClickListener
 {
-  public static final boolean a(AppInterface paramAppInterface, Context paramContext, Bundle paramBundle, DialogInterface.OnDismissListener paramOnDismissListener, int paramInt)
+  bgmw(bgmt parambgmt, ArrayList paramArrayList, Activity paramActivity, int paramInt, boolean paramBoolean) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBundle == null) {
-      return false;
+    this.jdField_a_of_type_Bgmt.a("0X8004855", 1);
+    this.jdField_a_of_type_Bgmt.a(bgmt.a(this.jdField_a_of_type_Bgmt).mPeerUin, this.jdField_a_of_type_JavaUtilArrayList);
+    Bundle localBundle = new Bundle();
+    localBundle.putStringArrayList("string_filepaths", this.jdField_a_of_type_JavaUtilArrayList);
+    localBundle.putBoolean("STRING_CONTINUE_SEND_TO_", true);
+    bgmt.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, localBundle);
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidAppActivity.finish();
     }
-    paramAppInterface = new Intent();
-    paramAppInterface.putExtra("share_data", paramBundle);
-    paramAppInterface.putExtra("readinjoy_launch_style", 2);
-    paramAppInterface.putExtra("readinjoy_launch_source", 11);
-    paramAppInterface.putExtra("channel_id", 9999);
-    awqx.b(null, "CliOper", "", "", "0X80059F4", "0X80059F4", 0, 0, "", "", "", "");
-    bgmq.a((Activity)paramContext, paramAppInterface, paramInt, paramOnDismissListener);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgmw
  * JD-Core Version:    0.7.0.1
  */

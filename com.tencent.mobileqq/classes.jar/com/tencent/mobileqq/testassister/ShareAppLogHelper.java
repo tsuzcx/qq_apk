@@ -6,10 +6,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.text.format.Time;
-import axjl;
-import axjm;
-import axjn;
-import axjo;
+import ayjp;
+import ayjq;
+import ayjr;
+import ayjs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -21,9 +21,9 @@ import java.util.regex.Pattern;
 
 public class ShareAppLogHelper
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new axjl(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new ayjp(this, Looper.getMainLooper());
   private Time jdField_a_of_type_AndroidTextFormatTime;
-  private axjo jdField_a_of_type_Axjo;
+  private ayjs jdField_a_of_type_Ayjs;
   volatile Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString = BaseApplicationImpl.getLogExternalPath(BaseApplicationImpl.context) + "/tencent/msflogs/com/tencent/mobileqq/";
   private ArrayList<ShareAppLogHelper.LogFile> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -48,7 +48,7 @@ public class ShareAppLogHelper
       return i;
     }
     a();
-    localObject = ((File)localObject).listFiles(new axjm(this));
+    localObject = ((File)localObject).listFiles(new ayjq(this));
     if ((localObject != null) && (localObject.length > 0))
     {
       int k = localObject.length;
@@ -148,7 +148,7 @@ public class ShareAppLogHelper
     Object localObject = new File(this.jdField_b_of_type_JavaLangString);
     if (((File)localObject).exists())
     {
-      localObject = ((File)localObject).listFiles(new axjn(this));
+      localObject = ((File)localObject).listFiles(new ayjr(this));
       if ((localObject != null) && (localObject.length > 0))
       {
         int j = localObject.length;
@@ -500,9 +500,9 @@ public class ShareAppLogHelper
     }
   }
   
-  public void a(axjo paramaxjo)
+  public void a(ayjs paramayjs)
   {
-    this.jdField_a_of_type_Axjo = paramaxjo;
+    this.jdField_a_of_type_Ayjs = paramayjs;
   }
   
   public void a(boolean paramBoolean)

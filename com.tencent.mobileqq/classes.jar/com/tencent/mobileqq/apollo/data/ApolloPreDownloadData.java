@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.data;
 
-import atmo;
+import aukm;
 import java.io.Serializable;
 
 public class ApolloPreDownloadData
-  extends atmo
+  extends aukm
   implements Serializable
 {
   public static final int DOWNLOAD_STATUS_FAILED = 0;

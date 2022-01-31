@@ -1,16 +1,28 @@
 import android.support.annotation.NonNull;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class upr
+  extends SimpleObserver<ups>
 {
-  public List<LocalMediaInfo> a = new ArrayList();
+  public upr(upn paramupn) {}
   
-  private upr(@NonNull List<LocalMediaInfo> paramList)
+  public void a(ups paramups)
   {
-    vkw.a(paramList);
-    this.a = paramList;
+    super.onNext(paramups);
+    upn.a(this.a, paramups, false, new ErrorMessage());
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    veg.d("Q.qqstory.detail.DetailFeedAllInfoPuller", "refresh data cancel");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    upn.a(this.a, null, false, (ErrorMessage)paramError);
   }
 }
 

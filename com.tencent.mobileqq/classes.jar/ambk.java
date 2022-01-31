@@ -1,21 +1,31 @@
-public class ambk
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Pair;
+
+class ambk
+  extends Handler
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  
-  public ambk(String paramString1, String paramString2, long paramLong1, long paramLong2)
+  ambk(ambj paramambj, Looper paramLooper)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = (Pair)paramMessage.obj;
+    this.a.b(((Long)paramMessage.first).longValue(), ((Long)paramMessage.second).longValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ambk
  * JD-Core Version:    0.7.0.1
  */

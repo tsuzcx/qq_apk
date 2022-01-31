@@ -1,71 +1,17 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class llj
+class llj
 {
-  private static mgv a;
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = "";
+  int jdField_b_of_type_Int = 0;
+  String jdField_b_of_type_JavaLangString = "";
+  int c = 0;
+  int d = 0;
+  int e = 0;
+  int f = 0;
+  int g = 0;
+  int h = 0;
   
-  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVPushReport", 2, "onAvReportPush : rspType = " + paramInt + ",rspBody = " + paramString);
-    }
-    if (a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AVPushReport", 2, "ReportTask is running.");
-      }
-      return;
-    }
-    String str;
-    if (a()) {
-      str = "https://play.mobile.qq.com/avreport_test/cgi-bin/report";
-    }
-    try
-    {
-      for (;;)
-      {
-        paramString = new JSONObject(paramString).optJSONObject("attach");
-        JSONObject localJSONObject = new JSONObject();
-        try
-        {
-          localJSONObject.put("uin", paramVideoAppInterface.getLongAccountUin());
-          localJSONObject.put("skey", paramVideoAppInterface.b());
-          localJSONObject.put("qqversion", "8.2.6");
-          localJSONObject.put("time", System.currentTimeMillis());
-          if (paramString != null) {
-            localJSONObject.put("attach", paramString);
-          }
-        }
-        catch (JSONException paramVideoAppInterface)
-        {
-          for (;;)
-          {
-            paramVideoAppInterface.printStackTrace();
-          }
-        }
-        a = new llk(str, localJSONObject.toString(), null);
-        a.execute(new Void[0]);
-        return;
-        str = "https://play.mobile.qq.com/avreport/cgi-bin/report";
-      }
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = null;
-      }
-    }
-  }
-  
-  public static boolean a()
-  {
-    return false;
-  }
+  llj(llh paramllh) {}
 }
 
 

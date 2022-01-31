@@ -1,31 +1,31 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.content.Context;
-import bbmy;
+import bcpw;
 import com.tencent.mobileqq.app.BaseActivity;
 import cooperation.plugin.PluginBaseActivity;
-import qim;
-import qiq;
-import qir;
-import qoe;
+import qur;
+import quv;
+import quw;
+import rap;
 
 public class VideoShareHelper$4$1$1
   implements Runnable
 {
-  public VideoShareHelper$4$1$1(qir paramqir) {}
+  public VideoShareHelper$4$1$1(quw paramquw) {}
   
   public void run()
   {
-    qim.a(this.a.jdField_a_of_type_Qiq.jdField_a_of_type_Qim).a(this.a.jdField_a_of_type_Qiq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-    if ((qim.a(this.a.jdField_a_of_type_Qiq.jdField_a_of_type_Qim) instanceof BaseActivity)) {
-      bbmy.a(qim.a(this.a.jdField_a_of_type_Qiq.jdField_a_of_type_Qim), -1, qim.a(this.a.jdField_a_of_type_Qiq.jdField_a_of_type_Qim).getString(2131633875), 0).b(((BaseActivity)qim.a(this.a.jdField_a_of_type_Qiq.jdField_a_of_type_Qim)).getTitleBarHeight());
+    qur.a(this.a.jdField_a_of_type_Quv.jdField_a_of_type_Qur).a(this.a.jdField_a_of_type_Quv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+    if ((qur.a(this.a.jdField_a_of_type_Quv.jdField_a_of_type_Qur) instanceof BaseActivity)) {
+      bcpw.a(qur.a(this.a.jdField_a_of_type_Quv.jdField_a_of_type_Qur), -1, qur.a(this.a.jdField_a_of_type_Quv.jdField_a_of_type_Qur).getString(2131699663), 0).b(((BaseActivity)qur.a(this.a.jdField_a_of_type_Quv.jdField_a_of_type_Qur)).getTitleBarHeight());
     }
     for (;;)
     {
-      qim.a(this.a.jdField_a_of_type_Qiq.jdField_a_of_type_Qim).a(qim.a(this.a.jdField_a_of_type_Qiq.jdField_a_of_type_Qim), this.a.jdField_a_of_type_Qiq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_JavaUtilArrayList);
+      qur.a(this.a.jdField_a_of_type_Quv.jdField_a_of_type_Qur).a(qur.a(this.a.jdField_a_of_type_Quv.jdField_a_of_type_Qur), this.a.jdField_a_of_type_Quv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_JavaUtilArrayList);
       return;
-      if ((qim.a(this.a.jdField_a_of_type_Qiq.jdField_a_of_type_Qim) instanceof PluginBaseActivity)) {
-        bbmy.a(qim.a(this.a.jdField_a_of_type_Qiq.jdField_a_of_type_Qim), -1, qim.a(this.a.jdField_a_of_type_Qiq.jdField_a_of_type_Qim).getString(2131633875), 0).b(((PluginBaseActivity)qim.a(this.a.jdField_a_of_type_Qiq.jdField_a_of_type_Qim)).g());
+      if ((qur.a(this.a.jdField_a_of_type_Quv.jdField_a_of_type_Qur) instanceof PluginBaseActivity)) {
+        bcpw.a(qur.a(this.a.jdField_a_of_type_Quv.jdField_a_of_type_Qur), -1, qur.a(this.a.jdField_a_of_type_Quv.jdField_a_of_type_Qur).getString(2131699663), 0).b(((PluginBaseActivity)qur.a(this.a.jdField_a_of_type_Quv.jdField_a_of_type_Qur)).g());
       }
     }
   }

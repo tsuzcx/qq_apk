@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.message;
 
-import akai;
+import akou;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class C2CMessageManager$1
   implements Runnable
 {
-  public C2CMessageManager$1(akai paramakai, MessageRecord paramMessageRecord) {}
+  public C2CMessageManager$1(akou paramakou, MessageRecord paramMessageRecord) {}
   
   public void run()
   {

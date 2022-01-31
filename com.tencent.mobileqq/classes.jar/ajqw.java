@@ -1,325 +1,313 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.ApolloPanel.34.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.ReportRspBody;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.data.ApolloActionPackage;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class ajqw
-  extends ajfb
+  implements ajrh
 {
-  public ajqw(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public ajqw(ApolloPanel paramApolloPanel) {}
   
-  /* Error */
-  public void a(String paramString, boolean paramBoolean, long paramLong)
+  public ajrp a(int paramInt)
   {
-    // Byte code:
-    //   0: invokestatic 21	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +53 -> 56
-    //   6: aload_1
-    //   7: invokestatic 27	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   10: ifne +46 -> 56
-    //   13: ldc 29
-    //   15: iconst_2
-    //   16: new 31	java/lang/StringBuilder
-    //   19: dup
-    //   20: invokespecial 34	java/lang/StringBuilder:<init>	()V
-    //   23: ldc 36
-    //   25: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   28: aload_1
-    //   29: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: ldc 42
-    //   34: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: iload_2
-    //   38: invokevirtual 45	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   41: ldc 47
-    //   43: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: lload_3
-    //   47: invokevirtual 50	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   50: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   53: invokestatic 58	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   56: new 60	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody
-    //   59: dup
-    //   60: invokespecial 61	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:<init>	()V
-    //   63: astore 5
-    //   65: aload 5
-    //   67: getfield 65	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   70: aload_0
-    //   71: getfield 69	ajqw:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   74: invokevirtual 74	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   77: invokestatic 80	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   80: invokevirtual 86	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
-    //   83: aload 5
-    //   85: getfield 90	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:clientver	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   88: ldc 92
-    //   90: invokevirtual 97	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
-    //   93: aload 5
-    //   95: getfield 101	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:platid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   98: bipush 109
-    //   100: invokevirtual 106	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   103: aload 5
-    //   105: getfield 109	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:platver	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   108: new 31	java/lang/StringBuilder
-    //   111: dup
-    //   112: invokespecial 34	java/lang/StringBuilder:<init>	()V
-    //   115: getstatic 115	android/os/Build$VERSION:SDK_INT	I
-    //   118: invokevirtual 118	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   121: ldc 120
-    //   123: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   126: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   129: invokevirtual 97	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
-    //   132: aload 5
-    //   134: getfield 123	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:appid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   137: aload_1
-    //   138: invokestatic 128	auqh:a	(Ljava/lang/String;)I
-    //   141: invokevirtual 106	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   144: new 130	org/json/JSONObject
-    //   147: dup
-    //   148: invokespecial 131	org/json/JSONObject:<init>	()V
-    //   151: astore 6
-    //   153: aload 6
-    //   155: ldc 133
-    //   157: iconst_4
-    //   158: invokevirtual 137	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   161: pop
-    //   162: aload 6
-    //   164: ldc 139
-    //   166: iload_2
-    //   167: invokevirtual 142	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
-    //   170: pop
-    //   171: aload 6
-    //   173: ldc 144
-    //   175: lload_3
-    //   176: invokevirtual 147	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
-    //   179: pop
-    //   180: aload 5
-    //   182: getfield 150	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:buffer	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   185: aload 6
-    //   187: invokevirtual 151	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   190: invokevirtual 97	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
-    //   193: aload_0
-    //   194: ldc 153
-    //   196: invokevirtual 157	ajqw:createToServiceMsg	(Ljava/lang/String;)Lcom/tencent/qphone/base/remote/ToServiceMsg;
-    //   199: astore 6
-    //   201: aload 6
-    //   203: getfield 163	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   206: ldc 165
-    //   208: iconst_1
-    //   209: invokevirtual 171	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   212: aload 6
-    //   214: getfield 163	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   217: ldc 173
-    //   219: aload 5
-    //   221: getfield 123	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:appid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   224: invokevirtual 177	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   227: invokevirtual 171	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   230: aload 6
-    //   232: getfield 163	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   235: ldc 179
-    //   237: iload_2
-    //   238: invokevirtual 183	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   241: aload 6
-    //   243: aload 5
-    //   245: invokevirtual 187	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:toByteArray	()[B
-    //   248: invokevirtual 191	com/tencent/qphone/base/remote/ToServiceMsg:putWupBuffer	([B)V
-    //   251: aload_0
-    //   252: aload 6
-    //   254: invokespecial 195	ajfb:sendPbReq	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)V
-    //   257: aload_1
-    //   258: invokestatic 80	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   261: ldc2_w 196
-    //   264: lcmp
-    //   265: ifne +79 -> 344
-    //   268: iload_2
-    //   269: ifeq +50 -> 319
-    //   272: aconst_null
-    //   273: ldc 199
-    //   275: ldc 201
-    //   277: ldc 120
-    //   279: ldc 203
-    //   281: ldc 205
-    //   283: iconst_0
-    //   284: iconst_0
-    //   285: ldc 120
-    //   287: ldc 120
-    //   289: ldc 120
-    //   291: ldc 120
-    //   293: invokestatic 211	awqx:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   296: return
-    //   297: astore 6
-    //   299: invokestatic 21	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   302: ifeq -109 -> 193
-    //   305: ldc 213
-    //   307: iconst_2
-    //   308: aload 6
-    //   310: invokevirtual 214	org/json/JSONException:toString	()Ljava/lang/String;
-    //   313: invokestatic 58	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   316: goto -123 -> 193
-    //   319: aconst_null
-    //   320: ldc 199
-    //   322: ldc 201
-    //   324: ldc 120
-    //   326: ldc 203
-    //   328: ldc 216
-    //   330: iconst_0
-    //   331: iconst_0
-    //   332: ldc 120
-    //   334: ldc 120
-    //   336: ldc 120
-    //   338: ldc 120
-    //   340: invokestatic 211	awqx:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   343: return
-    //   344: aload_1
-    //   345: invokestatic 80	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   348: getstatic 220	msg:a	I
-    //   351: i2l
-    //   352: lcmp
-    //   353: ifne -57 -> 296
-    //   356: iload_2
-    //   357: ifeq +37 -> 394
-    //   360: ldc 222
-    //   362: ldc 224
-    //   364: iconst_0
-    //   365: iconst_0
-    //   366: iconst_4
-    //   367: anewarray 226	java/lang/String
-    //   370: dup
-    //   371: iconst_0
-    //   372: ldc 120
-    //   374: aastore
-    //   375: dup
-    //   376: iconst_1
-    //   377: ldc 120
-    //   379: aastore
-    //   380: dup
-    //   381: iconst_2
-    //   382: ldc 120
-    //   384: aastore
-    //   385: dup
-    //   386: iconst_3
-    //   387: ldc 120
-    //   389: aastore
-    //   390: invokestatic 231	urp:a	(Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
-    //   393: return
-    //   394: ldc 222
-    //   396: ldc 233
-    //   398: iconst_0
-    //   399: iconst_0
-    //   400: iconst_4
-    //   401: anewarray 226	java/lang/String
-    //   404: dup
-    //   405: iconst_0
-    //   406: ldc 120
-    //   408: aastore
-    //   409: dup
-    //   410: iconst_1
-    //   411: ldc 120
-    //   413: aastore
-    //   414: dup
-    //   415: iconst_2
-    //   416: ldc 120
-    //   418: aastore
-    //   419: dup
-    //   420: iconst_3
-    //   421: ldc 120
-    //   423: aastore
-    //   424: invokestatic 231	urp:a	(Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
-    //   427: return
-    //   428: astore_1
-    //   429: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	430	0	this	ajqw
-    //   0	430	1	paramString	String
-    //   0	430	2	paramBoolean	boolean
-    //   0	430	3	paramLong	long
-    //   63	181	5	localReportReqBody	com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.ReportReqBody
-    //   151	102	6	localObject	Object
-    //   297	12	6	localJSONException	org.json.JSONException
-    // Exception table:
-    //   from	to	target	type
-    //   153	193	297	org/json/JSONException
-    //   257	268	428	java/lang/Exception
-    //   272	296	428	java/lang/Exception
-    //   319	343	428	java/lang/Exception
-    //   344	356	428	java/lang/Exception
-    //   360	393	428	java/lang/Exception
-    //   394	427	428	java/lang/Exception
-  }
-  
-  protected Class<? extends ajfe> observerClass()
-  {
-    return ajqx.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((!paramFromServiceMsg.getServiceCmd().equals("RedTouchSvc.EntranceSetting")) || (!paramFromServiceMsg.isSuccess())) {}
-    do
+    switch (paramInt)
     {
-      for (;;)
+    default: 
+      return new ajqg(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    case 0: 
+      return new ajqg(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    case 2: 
+      return new ajpc(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    case 100: 
+      if (airz.c("gamePanelSwitch") != 1)
       {
-        return;
-        paramToServiceMsg = new BusinessInfoCheckUpdate.ReportRspBody();
-        try
-        {
-          paramFromServiceMsg = (BusinessInfoCheckUpdate.ReportRspBody)paramToServiceMsg.mergeFrom((byte[])paramObject);
-          paramToServiceMsg = paramFromServiceMsg;
-          if (paramToServiceMsg.code.get() == 0)
-          {
-            i = paramToServiceMsg.appid.get();
-            paramToServiceMsg = paramToServiceMsg.buffer.get();
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloPanel", 2, "loadPanel gameSwitch is 0 return null");
         }
-        catch (Exception paramFromServiceMsg)
+        return null;
+      }
+      return new ajpn(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+    }
+    return new ajrk(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+  }
+  
+  public void a()
+  {
+    ApolloPanel.a(this.a).post(new ApolloPanel.34.1(this));
+  }
+  
+  public void a(int paramInt)
+  {
+    SharedPreferences.Editor localEditor = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("apollo_sp" + this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0).edit();
+    if (paramInt < 0) {
+      localEditor.remove("sp_key_apollo_current_page_index");
+    }
+    for (;;)
+    {
+      localEditor.apply();
+      return;
+      localEditor.putString("sp_key_apollo_current_page_index", String.valueOf(paramInt));
+    }
+  }
+  
+  public void a(List<ajrp> paramList, List<ApolloActionPackage> paramList1, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] mShouldShowActionFloatView=", Boolean.valueOf(ApolloPanel.c(this.a)), ", refreshByGetUserAction=", Boolean.valueOf(paramBoolean) });
+    }
+    Object localObject1 = ApolloPanel.a(this.a);
+    int i;
+    Object localObject2;
+    int m;
+    int k;
+    if ((localObject1 != null) && (((aiwq)localObject1).jdField_a_of_type_Int > 0) && (!paramList.isEmpty()))
+    {
+      i = 0;
+      if (i < paramList.size())
+      {
+        localObject2 = (ajrp)paramList.get(i);
+        if ((localObject2 instanceof ajpn))
         {
-          try
-          {
-            int i;
-            paramToServiceMsg = new JSONObject(paramToServiceMsg);
-            if (paramToServiceMsg.getInt("cmd") == 4)
-            {
-              boolean bool = paramToServiceMsg.getBoolean("setting");
-              long l1 = paramToServiceMsg.getLong("modify_ts");
-              long l2 = paramToServiceMsg.getLong("server_ts");
-              if ((l1 != l2) && (l2 > 0L)) {
-                afqa.a().a(this.app, i, bool, l1, l2);
-              }
-              if (QLog.isColorLevel()) {
-                QLog.i("Q.lebatab.mgr", 4, "onReceiver, [" + i + "," + bool + "," + l1 + "," + l2 + "]");
-              }
-              notifyUI(2, true, Boolean.valueOf(bool));
-              return;
-            }
+          ApolloPanel.jdField_a_of_type_Int = i;
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloPanel", 2, new Object[] { "[initPanelData] checkGameTab jumpGameId:", Integer.valueOf(((aiwq)localObject1).jdField_a_of_type_Int), ",gameTabIndex:" + ApolloPanel.jdField_a_of_type_Int });
           }
-          catch (Exception paramToServiceMsg)
-          {
-            if (QLog.isColorLevel())
-            {
-              QLog.i("Q.lebatab.mgr", 2, paramToServiceMsg.toString());
-              return;
-              paramFromServiceMsg = paramFromServiceMsg;
-              paramToServiceMsg.code.set(-1);
-              paramToServiceMsg.errmsg.set("prb.mergeFrom exception");
-              paramFromServiceMsg.printStackTrace();
-            }
-          }
-          catch (Throwable paramToServiceMsg) {}
+          ((ajpn)localObject2).a((aiwq)localObject1);
+          m = ApolloPanel.a(this.a, paramList, ApolloPanel.jdField_a_of_type_Int);
+          a(ApolloPanel.jdField_a_of_type_Int);
+          k = 1;
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.lebatab.mgr", 2, paramToServiceMsg.toString());
+    }
+    for (;;)
+    {
+      localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("apollo_sp" + this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0);
+      int j = k;
+      i = m;
+      int n;
+      if (k == 0)
+      {
+        j = k;
+        i = m;
+        if (!paramBoolean)
+        {
+          paramBoolean = false;
+          i = 0;
+          ApolloPanel.a(this.a, -1);
+          if (((airz)this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).o)
+          {
+            j = ((SharedPreferences)localObject1).getInt("key_panel_bubble_tab", -1);
+            i = 0;
+            n = paramList1.size();
+            label343:
+            if (i >= n) {
+              break label1129;
+            }
+            localObject2 = (ApolloActionPackage)paramList1.get(i);
+            if ((localObject2 == null) || (((ApolloActionPackage)localObject2).packageId != j)) {
+              break label681;
+            }
+          }
+        }
+      }
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] bubble pakcageId:", Integer.valueOf(j) });
+        }
+        if ((!paramBoolean) && (ApolloPanel.c(this.a)))
+        {
+          j = 0;
+          n = paramList1.size();
+          label434:
+          if (j < n)
+          {
+            localObject2 = (ApolloActionPackage)paramList1.get(j);
+            if ((localObject2 != null) && (((ApolloActionPackage)localObject2).isUpdate) && (NetConnInfoCenter.getServerTimeMillis() >= ((ApolloActionPackage)localObject2).redStartTime)) {
+              paramBoolean = true;
+            }
+          }
+        }
+        for (n = j;; n = i)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] hasNewAction=", Boolean.valueOf(paramBoolean), ", tabIndex=", Integer.valueOf(n) });
+          }
+          j = k;
+          i = m;
+          if (paramBoolean)
+          {
+            j = k;
+            i = m;
+            if (n < paramList.size())
+            {
+              k = ApolloPanel.a(this.a, paramList, n);
+              m = 1;
+              ApolloPanel.a(this.a, n);
+              j = m;
+              i = k;
+              if (QLog.isColorLevel())
+              {
+                QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] hasNewAction, pagerIndex=", Integer.valueOf(k) });
+                i = k;
+                j = m;
+              }
+            }
+          }
+          n = 0;
+          k = 0;
+          for (;;)
+          {
+            if (k < paramList.size())
+            {
+              n += ((ajrp)paramList.get(k)).a();
+              k += 1;
+              continue;
+              i += 1;
+              break;
+              label681:
+              i += 1;
+              break label343;
+              j += 1;
+              break label434;
+            }
+          }
+          m = j;
+          k = i;
+          if (j == 0)
+          {
+            if ((ApolloPanel.a(this.a) < 0) || (ApolloPanel.a(this.a) >= paramList.size())) {
+              break label1119;
+            }
+            i = ApolloPanel.a(this.a, paramList, ApolloPanel.a(this.a));
+            j = 1;
+          }
+          label1063:
+          label1080:
+          label1095:
+          label1101:
+          label1119:
+          for (;;)
+          {
+            if ((j == 0) && (((SharedPreferences)localObject1).contains("sp_key_apollo_current_page_index")))
+            {
+              localObject1 = ((SharedPreferences)localObject1).getString("sp_key_apollo_current_page_index", null);
+              if (TextUtils.isEmpty((CharSequence)localObject1)) {}
+            }
+            for (;;)
+            {
+              try
+              {
+                k = Integer.parseInt((String)localObject1);
+                if (k >= n) {
+                  break label1101;
+                }
+                m = 1;
+                j = m;
+                i = k;
+              }
+              catch (Exception localException1)
+              {
+                k = i;
+                i = j;
+              }
+              try
+              {
+                if (QLog.isColorLevel())
+                {
+                  QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] from previous saved, pagerIndex=", Integer.valueOf(k) });
+                  i = k;
+                  j = m;
+                }
+                k = j;
+                j = i;
+                i = k;
+                if (i != 0) {
+                  break label1080;
+                }
+                k = 0;
+                m = paramList1.size();
+                if (k >= m) {
+                  break label1095;
+                }
+                localObject1 = (ApolloActionPackage)paramList1.get(k);
+                if ((localObject1 == null) || (((ApolloActionPackage)localObject1).packageId != 0)) {
+                  break label1063;
+                }
+              }
+              catch (Exception localException2)
+              {
+                for (;;)
+                {
+                  i = 1;
+                }
+                k = i;
+                i = j;
+                j = k;
+                continue;
+                k = 0;
+                continue;
+              }
+              if (k < paramList.size())
+              {
+                i = ApolloPanel.a(this.a, paramList, k);
+                if (QLog.isColorLevel()) {
+                  QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] default single action, pagerIndex=", Integer.valueOf(i) });
+                }
+                j = 1;
+                if (j == 0) {
+                  i = 1;
+                }
+                if (i < n)
+                {
+                  ApolloPanel.jdField_a_of_type_Int = i;
+                  if (QLog.isColorLevel()) {
+                    QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] sCurrentIndex= ", Integer.valueOf(ApolloPanel.jdField_a_of_type_Int) });
+                  }
+                }
+                return;
+                QLog.e("ApolloPanel", 1, "parse previousSavedPagerIndexStr error", localException1);
+                m = i;
+                i = m;
+                j = k;
+                continue;
+                k += 1;
+              }
+              else
+              {
+                continue;
+                k = i;
+                i = j;
+                j = k;
+              }
+            }
+          }
+        }
+        label1129:
+        i = 0;
+      }
+      k = 0;
+      m = 1;
+    }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return !ApolloActionPackage.is3DPackage(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajqw
  * JD-Core Version:    0.7.0.1
  */

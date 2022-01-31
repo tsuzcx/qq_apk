@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.form.framework;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -10,17 +10,17 @@ import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
 import com.tencent.gdtad.views.xijing.GdtTextData;
 import java.lang.ref.WeakReference;
-import yny;
-import yqq;
-import yqv;
+import yxs;
+import zai;
+import zan;
 
 public abstract class GdtFormItemView
   extends TableRow
 {
   private GdtFormItemData jdField_a_of_type_ComTencentGdtadViewsFormFrameworkGdtFormItemData;
-  private WeakReference<yqv> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<zan> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public GdtFormItemView(Context paramContext, GdtFormItemData paramGdtFormItemData, WeakReference<yqv> paramWeakReference)
+  public GdtFormItemView(Context paramContext, GdtFormItemData paramGdtFormItemData, WeakReference<zan> paramWeakReference)
   {
     super(paramContext);
     this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
@@ -31,7 +31,7 @@ public abstract class GdtFormItemView
   {
     if ((a() == null) || (!a().isValid()))
     {
-      yny.d("GdtFormItemView", "initViews error");
+      yxs.d("GdtFormItemView", "initViews error");
       return;
     }
     TableRow.LayoutParams localLayoutParams = new TableRow.LayoutParams(-2, -2);
@@ -39,7 +39,7 @@ public abstract class GdtFormItemView
     Object localObject = localView;
     if (localView == null)
     {
-      yny.d("GdtFormItemView", "initViews error");
+      yxs.d("GdtFormItemView", "initViews error");
       localObject = new FrameLayout(paramContext);
     }
     addView((View)localObject, localLayoutParams);
@@ -49,7 +49,7 @@ public abstract class GdtFormItemView
     localObject = localView;
     if (localView == null)
     {
-      yny.d("GdtFormItemView", "initViews error");
+      yxs.d("GdtFormItemView", "initViews error");
       localObject = new FrameLayout(paramContext);
     }
     addView((View)localObject, localLayoutParams);
@@ -60,7 +60,7 @@ public abstract class GdtFormItemView
   {
     if ((paramGdtFormItemData == null) || (!paramGdtFormItemData.isValid()))
     {
-      yny.d("GdtFormItemView", "init error");
+      yxs.d("GdtFormItemView", "init error");
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadViewsFormFrameworkGdtFormItemData = paramGdtFormItemData;
@@ -71,11 +71,11 @@ public abstract class GdtFormItemView
   {
     if ((a() == null) || (!a().isValid()))
     {
-      yny.d("GdtFormItemView", "createTitleView error");
+      yxs.d("GdtFormItemView", "createTitleView error");
       return null;
     }
     if (a().required) {}
-    for (String str = a().title.text;; str = a().title.text + ajjy.a(2131639384))
+    for (String str = a().title.text;; str = a().title.text + ajyc.a(2131705169))
     {
       paramContext = new TextView(paramContext);
       paramContext.setGravity(16);
@@ -90,7 +90,7 @@ public abstract class GdtFormItemView
   {
     if (!(getParent() instanceof TableLayout))
     {
-      yny.d("GdtFormItemView", "getIndex error");
+      yxs.d("GdtFormItemView", "getIndex error");
       return -1;
     }
     return ((TableLayout)TableLayout.class.cast(getParent())).indexOfChild(this);
@@ -105,34 +105,34 @@ public abstract class GdtFormItemView
   
   protected abstract void a();
   
-  public void a(yqq paramyqq)
+  public void a(zai paramzai)
   {
     if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((yqv)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramyqq);
+      ((zan)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramzai);
     }
   }
   
   public boolean a()
   {
     if ((a() == null) || (!a().isValid())) {
-      yny.d("GdtFormItemView", "validate error");
+      yxs.d("GdtFormItemView", "validate error");
     }
-    yqq localyqq;
+    zai localzai;
     do
     {
       return false;
-      localyqq = a().validate();
-      localyqq.b = a();
-      if (localyqq == null)
+      localzai = a().validate();
+      localzai.b = a();
+      if (localzai == null)
       {
-        yny.d("GdtFormItemView", "validate error");
+        yxs.d("GdtFormItemView", "validate error");
         return false;
       }
-      if (localyqq.a == 2) {
+      if (localzai.a == 2) {
         return true;
       }
-    } while (localyqq.a == 5);
-    a(localyqq);
+    } while (localzai.a == 5);
+    a(localzai);
     return false;
   }
 }

@@ -1,19 +1,23 @@
+import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
+import java.util.Comparator;
+
 public class mgr
+  implements Comparator<ldw>
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  public String c;
+  public mgr(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
   
-  public mgr(long paramLong, int paramInt, String paramString1, String paramString2, String paramString3)
+  public int a(ldw paramldw1, ldw paramldw2)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    if ((paramldw2.b) && (paramldw1.b)) {
+      return paramldw2.d - paramldw1.d;
+    }
+    if ((!paramldw2.b) && (!paramldw1.b)) {
+      return paramldw2.d - paramldw1.d;
+    }
+    if ((paramldw2.b) && (!paramldw1.b)) {
+      return 1;
+    }
+    return -1;
   }
 }
 

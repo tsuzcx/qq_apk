@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aycs;
-import beex;
+import azdc;
+import bfmr;
 
 public class AbsPublishActivity$8$2
   implements Runnable
 {
-  public AbsPublishActivity$8$2(aycs paramaycs) {}
+  public AbsPublishActivity$8$2(azdc paramazdc) {}
   
   public void run()
   {
-    beex.a(this.a.a.b);
+    bfmr.a(this.a.a.b);
   }
 }
 

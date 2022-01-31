@@ -1,34 +1,142 @@
 import android.os.Bundle;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileMultiMsgManager.BuddyUploadTaskExcuter.1;
-import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.WtloginObserver;
 
-class aoek
-  implements aofq
+public class aoek
 {
-  aoek(aoej paramaoej, ByteStringMicro paramByteStringMicro, String paramString) {}
+  private static aoek jdField_a_of_type_Aoek;
+  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private ajxl jdField_a_of_type_Ajxl = new aoel(this);
+  private Messenger jdField_a_of_type_AndroidOsMessenger;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new aoem(this);
   
-  public void a(boolean paramBoolean)
+  public static aoek a()
   {
-    aoea.a(this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_Aoea).a().a(aoei.a(this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei));
-    if (paramBoolean)
+    if (jdField_a_of_type_Aoek == null) {}
+    synchronized (jdField_a_of_type_ArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_JavaLangString + " sendLocalFileToBuddyBySHA uploadFile success");
+      if (jdField_a_of_type_Aoek == null) {
+        jdField_a_of_type_Aoek = new aoek();
       }
-      this.jdField_a_of_type_Aoej.jdField_a_of_type_Aofv.a(this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro.toByteArray(), 5000, 3, null);
-      aoei.a(this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei).putString("_m_ForwardUuid", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoex.a(this.jdField_a_of_type_JavaLangString, aoei.a(this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei));
+      return jdField_a_of_type_Aoek;
+    }
+  }
+  
+  public static void a()
+  {
+    if (jdField_a_of_type_Aoek != null) {
+      synchronized (jdField_a_of_type_ArrayOfByte)
+      {
+        if ((jdField_a_of_type_Aoek != null) && (jdField_a_of_type_Aoek.jdField_a_of_type_JavaLangRefWeakReference != null))
+        {
+          QQAppInterface localQQAppInterface = (QQAppInterface)jdField_a_of_type_Aoek.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if (localQQAppInterface != null) {
+            localQQAppInterface.removeObserver(jdField_a_of_type_Aoek.jdField_a_of_type_Ajxl);
+          }
+          jdField_a_of_type_Aoek = null;
+        }
+        return;
+      }
+    }
+  }
+  
+  private void a(int paramInt)
+  {
+    Bundle localBundle1 = new Bundle();
+    localBundle1.putInt("checkDevLockSms_ret", paramInt);
+    Bundle localBundle2 = new Bundle();
+    localBundle2.putString("cmd", "openEquipmentLock");
+    localBundle2.putInt("respkey", -1);
+    localBundle2.putBundle("response", localBundle1);
+    a(localBundle2);
+  }
+  
+  private void a(Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_AndroidOsMessenger != null) {}
+    try
+    {
+      Message localMessage = Message.obtain(null, 4);
+      localMessage.setData(paramBundle);
+      this.jdField_a_of_type_AndroidOsMessenger.send(localMessage);
+      if (QLog.isColorLevel()) {
+        QLog.i("EquipLockWebImpl", 2, "resp to sever: ");
+      }
       return;
     }
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_JavaLangString + " BuddyUploadTaskExcuter faild");
-    this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoex.a(aoea.a(this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_Long, false), true);
+    catch (RemoteException paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    Bundle localBundle1 = new Bundle();
+    localBundle1.putBoolean("isWaiting", paramBoolean);
+    Bundle localBundle2 = new Bundle();
+    localBundle2.putString("cmd", "setWaitingResponse");
+    localBundle2.putInt("respkey", -1);
+    localBundle2.putBundle("response", localBundle1);
+    a(localBundle2);
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    Bundle localBundle1 = new Bundle();
+    localBundle1.putBoolean("setMobileResult", paramBoolean);
+    Bundle localBundle2 = new Bundle();
+    localBundle2.putString("cmd", "setMobileResult");
+    localBundle2.putInt("respkey", -1);
+    localBundle2.putBundle("response", localBundle1);
+    a(localBundle2);
+  }
+  
+  private void c(boolean paramBoolean)
+  {
+    Bundle localBundle1 = new Bundle();
+    localBundle1.putBoolean("isBack", paramBoolean);
+    Bundle localBundle2 = new Bundle();
+    localBundle2.putString("cmd", "closeWeb");
+    localBundle2.putInt("respkey", -1);
+    localBundle2.putBundle("response", localBundle1);
+    a(localBundle2);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Messenger paramMessenger)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_AndroidOsMessenger = paramMessenger;
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Ajxl);
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    QQAppInterface localQQAppInterface;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localQQAppInterface != null) {
+        break label30;
+      }
+    }
+    label30:
+    for (int i = -1;; i = aoen.a().a(localQQAppInterface, localQQAppInterface.getCurrentAccountUin(), null, paramArrayOfByte, this.jdField_a_of_type_MqqObserverWtloginObserver))
+    {
+      a(i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoek
  * JD-Core Version:    0.7.0.1
  */

@@ -7,26 +7,26 @@ import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.Toast;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
 import com.tencent.gdtad.api.GdtAd;
 import com.tencent.gdtad.api.banner.GdtBannerAd;
 import java.lang.ref.WeakReference;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGet;
-import yjs;
-import ykt;
-import yku;
-import ykv;
-import ymz;
-import yny;
-import ypk;
+import ytu;
+import ytv;
+import ytw;
+import ywq;
+import yxs;
+import yze;
 
 public class GdtBannerFragmentForJS
-  extends ymz
+  extends ywq
 {
   private GdtBannerAd jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd;
-  private ykt jdField_a_of_type_Ykt;
-  private yku jdField_a_of_type_Yku;
+  private ytu jdField_a_of_type_Ytu;
+  private ytv jdField_a_of_type_Ytv;
   
   public GdtAd a()
   {
@@ -35,15 +35,15 @@ public class GdtBannerFragmentForJS
   
   public void a()
   {
-    int i = ypk.a(getActivity(), 1080, 1026);
-    int j = ykv.a(this.jdField_a_of_type_Ykt.jdField_a_of_type_Int, i);
-    this.jdField_a_of_type_Yku = this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd.render(getActivity(), i, j);
-    if (this.jdField_a_of_type_Yku == null)
+    int i = yze.a(getActivity(), 1080, 1026);
+    int j = ytw.a(this.jdField_a_of_type_Ytu.jdField_a_of_type_Int, i);
+    this.jdField_a_of_type_Ytv = this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd.render(getActivity(), i, j);
+    if (this.jdField_a_of_type_Ytv == null)
     {
       Toast.makeText(getActivity().getApplicationContext(), "ad is rendered", 0).show();
       return;
     }
-    if (this.jdField_a_of_type_Yku.a() == null)
+    if (this.jdField_a_of_type_Ytv.a() == null)
     {
       Toast.makeText(getActivity().getApplicationContext(), "error", 0).show();
       return;
@@ -52,31 +52,31 @@ public class GdtBannerFragmentForJS
     localLayoutParams.gravity = 1;
     localLayoutParams.topMargin = 100;
     localLayoutParams.bottomMargin = 100;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_Yku.a(), localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_Ytv.a(), localLayoutParams);
   }
   
-  public void a(String paramString, qq_ad_get.QQAdGet paramQQAdGet, yjs paramyjs)
+  public void a(String paramString, qq_ad_get.QQAdGet paramQQAdGet, GdtHandler.Params paramParams)
   {
-    this.jdField_a_of_type_Ykt = new ykt();
-    this.jdField_a_of_type_Ykt.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = paramQQAdGet;
-    this.jdField_a_of_type_Ykt.jdField_a_of_type_Yjs = paramyjs;
+    this.jdField_a_of_type_Ytu = new ytu();
+    this.jdField_a_of_type_Ytu.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = paramQQAdGet;
+    this.jdField_a_of_type_Ytu.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = paramParams;
     try
     {
       int i = new JSONObject(paramString).getInt("style");
-      this.jdField_a_of_type_Ykt.jdField_a_of_type_Int = i;
-      i = ypk.a(getActivity(), 1080, 1026);
-      int j = ykv.a(this.jdField_a_of_type_Ykt.jdField_a_of_type_Int, i);
-      this.jdField_a_of_type_Ykt.b = i;
-      this.jdField_a_of_type_Ykt.c = j;
-      this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd = new GdtBannerAd(this.jdField_a_of_type_Ykt);
-      this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd.setListener(new WeakReference(this.jdField_a_of_type_Yka));
+      this.jdField_a_of_type_Ytu.jdField_a_of_type_Int = i;
+      i = yze.a(getActivity(), 1080, 1026);
+      int j = ytw.a(this.jdField_a_of_type_Ytu.jdField_a_of_type_Int, i);
+      this.jdField_a_of_type_Ytu.b = i;
+      this.jdField_a_of_type_Ytu.c = j;
+      this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd = new GdtBannerAd(this.jdField_a_of_type_Ytu);
+      this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd.setListener(new WeakReference(this.jdField_a_of_type_Ytb));
       return;
     }
     catch (JSONException paramString)
     {
       for (;;)
       {
-        yny.d("GdtBannerFragmentForJS", "createParams error", paramString);
+        yxs.d("GdtBannerFragmentForJS", "createParams error", paramString);
       }
     }
   }
@@ -97,16 +97,16 @@ public class GdtBannerFragmentForJS
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Yku != null) {
-      this.jdField_a_of_type_Yku.c(getActivity());
+    if (this.jdField_a_of_type_Ytv != null) {
+      this.jdField_a_of_type_Ytv.c(getActivity());
     }
     super.onDestroy();
   }
   
   public void onPause()
   {
-    if (this.jdField_a_of_type_Yku != null) {
-      this.jdField_a_of_type_Yku.a(getActivity());
+    if (this.jdField_a_of_type_Ytv != null) {
+      this.jdField_a_of_type_Ytv.a(getActivity());
     }
     super.onPause();
   }
@@ -114,8 +114,8 @@ public class GdtBannerFragmentForJS
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Yku != null) {
-      this.jdField_a_of_type_Yku.b(getActivity());
+    if (this.jdField_a_of_type_Ytv != null) {
+      this.jdField_a_of_type_Ytv.b(getActivity());
     }
   }
 }

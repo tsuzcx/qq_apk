@@ -1,31 +1,21 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
-import java.lang.ref.WeakReference;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.av.ui.BaseToolbar;
 
 public class mby
-  implements Animation.AnimationListener
+  extends AnimatorListenerAdapter
 {
-  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  public mby(BaseToolbar paramBaseToolbar) {}
   
-  public mby(EffectFilterPanel paramEffectFilterPanel, View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    super.onAnimationEnd(paramAnimator);
   }
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    krx.c("EffectFilterPanel", "MyTextAlphaAnimationListener onAnimationEnd :" + localView + "|" + paramAnimation);
-    if (localView != null) {
-      localView.setVisibility(8);
-    }
+    super.onAnimationStart(paramAnimator);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

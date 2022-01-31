@@ -1,48 +1,16 @@
-import android.graphics.Bitmap;
-import org.json.JSONObject;
+import java.util.List;
 
-public class bdnj
-  implements Cloneable
+public abstract interface bdnj
 {
-  public Bitmap a;
-  public String a;
-  public Bitmap b;
-  public String b;
-  public String c;
-  public String d;
+  public abstract void a(int paramInt, String paramString);
   
-  public static bdnj a(JSONObject paramJSONObject)
-  {
-    bdnj localbdnj = new bdnj();
-    if (paramJSONObject != null)
-    {
-      localbdnj.jdField_a_of_type_JavaLangString = paramJSONObject.optString("pagePath");
-      localbdnj.jdField_b_of_type_JavaLangString = paramJSONObject.optString("text");
-      localbdnj.c = paramJSONObject.optString("iconData");
-      localbdnj.d = paramJSONObject.optString("selectedIconData");
-      localbdnj.jdField_a_of_type_AndroidGraphicsBitmap = bdni.a(localbdnj.c);
-      localbdnj.jdField_b_of_type_AndroidGraphicsBitmap = bdni.a(localbdnj.d);
-    }
-    return localbdnj;
-  }
+  public abstract void a(bdnk parambdnk, int paramInt1, String paramString, int paramInt2);
   
-  public bdnj a()
-  {
-    try
-    {
-      bdnj localbdnj = (bdnj)super.clone();
-      return localbdnj;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-    return null;
-  }
+  public abstract void a(List<bdnk> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdnj
  * JD-Core Version:    0.7.0.1
  */

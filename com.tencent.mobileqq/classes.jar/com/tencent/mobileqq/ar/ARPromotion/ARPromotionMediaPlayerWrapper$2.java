@@ -1,44 +1,44 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import akjn;
-import akjo;
-import akmj;
+import akxz;
+import akya;
+import alav;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.filter.RenderBuffer;
 
 public class ARPromotionMediaPlayerWrapper$2
   implements Runnable
 {
-  public ARPromotionMediaPlayerWrapper$2(akjn paramakjn, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2) {}
+  public ARPromotionMediaPlayerWrapper$2(akxz paramakxz, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (akjn.a(this.this$0)) {}
+    if (akxz.a(this.this$0)) {}
     for (;;)
     {
       return;
       try
       {
-        akjn.a(this.this$0);
-        akjn.a(this.this$0);
-        if ((akjn.a(this.this$0) != null) && (akjn.a(this.this$0) != null))
+        akxz.a(this.this$0);
+        akxz.a(this.this$0);
+        if ((akxz.a(this.this$0) != null) && (akxz.a(this.this$0) != null))
         {
-          akjn.a(this.this$0).bind();
-          akjn.a(this.this$0, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, this.c);
-          if (!akjn.a(this.this$0).a())
+          akxz.a(this.this$0).bind();
+          akxz.a(this.this$0, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, this.c);
+          if (!akxz.a(this.this$0).a())
           {
-            akjn.a(this.this$0).a();
-            akmj localakmj = akjn.a(this.this$0);
-            akjn.a(this.this$0);
-            localakmj.a(akmj.f);
+            akxz.a(this.this$0).a();
+            alav localalav = akxz.a(this.this$0);
+            akxz.a(this.this$0);
+            localalav.a(alav.f);
           }
-          akjn.a(this.this$0).a(akjn.a(this.this$0)[0], akjn.a(this.this$0)[1], akjn.a(this.this$0)[2], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-          akjn.a(this.this$0).b();
-          akjn.a(this.this$0).unbind();
+          akxz.a(this.this$0).a(akxz.a(this.this$0)[0], akxz.a(this.this$0)[1], akxz.a(this.this$0)[2], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+          akxz.a(this.this$0).b();
+          akxz.a(this.this$0).unbind();
           QLog.d("ARWorldCupMediaPlayerWrapper", 2, "ARWorldCupGlobalSceneRenderable ARWorldCupMediaPlayerWrapper.drawFrame softWare");
-          if ((akjn.b(this.this$0) == 2L) && (akjn.a(this.this$0) != null))
+          if ((akxz.b(this.this$0) == 2L) && (akxz.a(this.this$0) != null))
           {
-            akjn.a(this.this$0).a(akjn.b(this.this$0), 0, akjn.a(this.this$0).getTexId());
+            akxz.a(this.this$0).a(akxz.b(this.this$0), 0, akxz.a(this.this$0).getTexId());
             return;
           }
         }

@@ -1,17 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class plw
-  implements oqy
+class plw
+  implements Animator.AnimatorListener
 {
-  public plw(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  plw(plp paramplp, boolean paramBoolean) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramBoolean) && (paramInt == 1)) {
-      ogy.a().a((int)ComponentHeaderTopicRecommend.a(this.a).businessId, 0);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      plp.a(this.jdField_a_of_type_Plp).isShowRecommendList = false;
+      plp.a(this.jdField_a_of_type_Plp);
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

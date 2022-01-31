@@ -1,36 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
+import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
+import com.tencent.av.ui.EffectSettingUi.2.1;
+import com.tencent.av.ui.EffectSettingUi.2.2;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class mdi
-  implements lwk
+  implements mph
 {
-  public mdi(ZimuToolbar paramZimuToolbar) {}
+  public mdi(EffectSettingUi paramEffectSettingUi) {}
   
-  public void a(long paramLong)
+  public void a(boolean paramBoolean)
   {
-    EffectSettingUi.a(ZimuToolbar.access$400(this.a), paramLong);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("EffectSettingUi", 4, "onGetConfig, enable[" + paramBoolean + "]");
+    }
+    if (paramBoolean)
+    {
+      Object localObject = this.a.jdField_a_of_type_JavaLangRefWeakReference;
+      if (localObject != null)
+      {
+        localObject = (AVActivity)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((AVActivity)localObject).runOnUiThread(new EffectSettingUi.2.1(this));
+        }
+      }
+      return;
+    }
+    this.a.jdField_a_of_type_Mph = null;
   }
   
-  public void a(long paramLong, lxf paramlxf)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    EffectSettingUi.a(ZimuToolbar.access$000(this.a), paramLong);
-    QLog.w("ZimuToolbar", 1, "onEffectClick, 自己点击了字幕, id[" + paramlxf.a + "], seq[" + paramLong + "]");
-    ZimuToolbar.access$100(this.a, paramLong, paramlxf.a);
-    if ((!TextUtils.isEmpty(paramlxf.a)) && (!"0".equalsIgnoreCase(paramlxf.a)))
-    {
-      kzf.a("0X80085CD", paramlxf.a);
-      if (kzd.a(paramlxf.a))
-      {
-        paramlxf = ZimuToolbar.access$200(this.a).a().a().d;
-        String str = ZimuToolbar.access$300(this.a).getCurrentAccountUin();
-        kzf.a("0X8009191", str, paramlxf);
-        kzf.a("0X8009192", str, paramlxf);
-      }
+    long l = AudioHelper.b();
+    if (QLog.isDevelopLevel()) {
+      QLog.w("EffectSettingUi", 1, "onStatusChanged, seq[" + l + "]");
     }
+    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new EffectSettingUi.2.2(this, l, paramBoolean3, paramBoolean1, paramBoolean2));
   }
 }
 

@@ -2,37 +2,37 @@ package dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
 import android.annotation.TargetApi;
 import android.media.MediaMetadataRetriever;
-import bjbc;
-import bjbg;
-import bjbi;
-import bjbn;
+import bkro;
+import bkrs;
+import bkru;
+import bkrz;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 
 @TargetApi(10)
 public class VideoFramesRetriever
-  implements bjbi
+  implements bkru
 {
   private static long jdField_a_of_type_Long;
   private float jdField_a_of_type_Float;
   private volatile int jdField_a_of_type_Int;
   private MediaMetadataRetriever jdField_a_of_type_AndroidMediaMediaMetadataRetriever;
-  private bjbc jdField_a_of_type_Bjbc;
-  private BlockingQueue<bjbn> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
-  private ConcurrentHashMap<Integer, bjbn> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private bkro jdField_a_of_type_Bkro;
+  private BlockingQueue<bkrz> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
+  private ConcurrentHashMap<Integer, bkrz> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   private volatile boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
   
-  private bjbg b(int paramInt)
+  private bkrs b(int paramInt)
   {
     if (!a()) {
       if (QLog.isColorLevel()) {
         QLog.d("VideoFramesRetriever", 2, "FetchFrameAtTime fail, status=" + this.jdField_a_of_type_Int);
       }
     }
-    bjbn localbjbn2;
+    bkrz localbkrz2;
     do
     {
       return null;
@@ -40,10 +40,10 @@ public class VideoFramesRetriever
       {
         if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt)))
         {
-          bjbn localbjbn1 = (bjbn)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+          bkrz localbkrz1 = (bkrz)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
           l = jdField_a_of_type_Long;
           jdField_a_of_type_Long = 1L + l;
-          localbjbn1.jdField_a_of_type_Long = l;
+          localbkrz1.jdField_a_of_type_Long = l;
           return null;
         }
       }
@@ -54,13 +54,13 @@ public class VideoFramesRetriever
       }
       long l = jdField_a_of_type_Long;
       jdField_a_of_type_Long = 1L + l;
-      localbjbn2 = new bjbn(this, l, paramInt, paramInt + this.b);
+      localbkrz2 = new bkrz(this, l, paramInt, paramInt + this.b);
     } while (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null);
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localbjbn2);
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localbkrz2);
     return null;
   }
   
-  public bjbg a(int paramInt)
+  public bkrs a(int paramInt)
   {
     if ((!a()) || (paramInt < 0))
     {
@@ -69,8 +69,8 @@ public class VideoFramesRetriever
       }
       return null;
     }
-    if (this.jdField_a_of_type_Bjbc.a(paramInt)) {
-      return this.jdField_a_of_type_Bjbc.a(paramInt);
+    if (this.jdField_a_of_type_Bkro.a(paramInt)) {
+      return this.jdField_a_of_type_Bkro.a(paramInt);
     }
     return b(this.b * paramInt);
   }

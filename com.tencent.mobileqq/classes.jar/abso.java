@@ -1,33 +1,40 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class abso
-  implements CompoundButton.OnCheckedChangeListener
+  extends amdl
 {
-  public abso(SoundAndVibrateActivity paramSoundAndVibrateActivity, String paramString) {}
+  public abso(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(boolean paramBoolean, String paramString)
   {
-    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.getString(2131652800), "qqsetting_lock_screen_whenexit_key", paramBoolean);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app;
-    if (paramBoolean) {}
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    super.a(paramBoolean, paramString);
+  }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    super.a(paramBoolean, paramString, paramInt);
+    if (paramBoolean)
     {
-      awqx.b(localQQAppInterface, "CliOper", "", "", "0X80040D9", "0X80040D9", 0, 0, paramCompoundButton, "", "", "");
-      if (QLog.isDevelopLevel()) {
-        QLog.i("qqls", 4, "collectPerformance qqls setting isChecked=" + paramBoolean);
-      }
-      paramCompoundButton = new HashMap();
-      paramCompoundButton.put("param_ls_setting", paramBoolean + "");
-      awrn.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app.getCurrentAccountUin(), "qqlsSettingReprotTag", true, 0L, 0L, paramCompoundButton, "");
+      BusinessCard localBusinessCard = ((amdk)this.a.app.getManager(112)).a(paramString);
+      QLog.i("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo success : cardId = " + paramString);
+      this.a.a(localBusinessCard);
+      this.a.a = localBusinessCard;
       return;
     }
+    QLog.e("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo faild : cardId = " + paramString);
+  }
+  
+  public void b(boolean paramBoolean, String paramString)
+  {
+    super.b(paramBoolean, paramString);
+  }
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt)
+  {
+    super.b(paramBoolean, paramString, paramInt);
   }
 }
 

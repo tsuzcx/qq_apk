@@ -1,21 +1,21 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.widget.HorizontalListView;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class okf
-  extends AnimatorListenerAdapter
+class okf
+  implements PopupWindow.OnDismissListener
 {
-  public okf(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  okf(oke paramoke) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onDismiss()
   {
-    ReadInJoySelfFragment.a(this.a).setVisibility(8);
+    this.a.a(1.0F);
+    if (oke.a(this.a) != null) {
+      oke.a(this.a).a(oke.a(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     okf
  * JD-Core Version:    0.7.0.1
  */

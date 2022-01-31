@@ -1,63 +1,42 @@
-import android.os.Process;
-import android.support.annotation.NonNull;
-import java.io.File;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class vfx
+  implements EIPCResultCallback
 {
-  private static int a;
+  public vfx(EditVideoArtFilter paramEditVideoArtFilter, vkb paramvkb) {}
   
-  public static String a(int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    String str;
-    if (paramInt == 1)
+    if (paramEIPCResult.data == null) {}
+    int j;
+    Object localObject;
+    do
     {
-      bace.c(sfm.e + ".nomedia");
-      str = sfm.e + b(paramInt) + "/";
-    }
-    for (;;)
+      return;
+      int i = paramEIPCResult.data.getInt("param_art_filter_task_id");
+      j = paramEIPCResult.data.getInt("param_art_filter_style_id");
+      localObject = paramEIPCResult.data.getString("param_art_filter_resource_path");
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "QIPCResult: resultFilterTaskId:" + i + " currentFilterTaskId:" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + " currentStyleId:" + EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter) + " resultFilterStyleId:" + j + " resultFilterOriginImgPath:" + (String)localObject);
+      }
+    } while ((EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter) != j) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.d == null) || (!((String)localObject).equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.d)) || (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_Boolean));
+    if (paramEIPCResult.data.getInt("param_art_filter_task_result") == 0)
     {
-      a(str);
-      return str;
-      str = ajed.bl + "edit_video/business_" + paramInt + "/" + b(paramInt) + "/";
-      bace.c(str + ".nomedia");
+      paramEIPCResult = paramEIPCResult.data.getString("param_art_filter_output_path");
+      localObject = EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).obtainMessage(34);
+      ((Message)localObject).obj = paramEIPCResult;
+      ((Message)localObject).arg1 = this.jdField_a_of_type_Vkb.a;
+      EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).sendMessage((Message)localObject);
+      return;
     }
-  }
-  
-  @NonNull
-  public static String a(int paramInt, String paramString1, String paramString2)
-  {
-    if (paramString1 == null) {
-      throw new IllegalArgumentException("folderPath should not be null");
-    }
-    String str = paramString1;
-    if (!paramString1.endsWith("/")) {
-      str = paramString1 + "/";
-    }
-    return str + System.currentTimeMillis() + "_" + b(paramInt) + paramString2;
-  }
-  
-  private static void a(String paramString)
-  {
-    paramString = new File(paramString);
-    boolean bool;
-    if (paramString.isFile())
-    {
-      bool = paramString.delete();
-      urk.d("Q.qqstory.publish.edit.PublishFileManager", "delete file : " + bool);
-    }
-    if (!paramString.exists())
-    {
-      bool = paramString.mkdirs();
-      urk.d("Q.qqstory.publish.edit.PublishFileManager", "create folder : " + bool);
-    }
-  }
-  
-  private static String b(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("T").append(System.currentTimeMillis()).append("B").append(paramInt).append("P").append(Process.myPid()).append("T").append(Process.myTid()).append("I");
-    paramInt = a;
-    a = paramInt + 1;
-    return paramInt;
+    paramEIPCResult = EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).obtainMessage(37);
+    EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).sendMessage(paramEIPCResult);
   }
 }
 

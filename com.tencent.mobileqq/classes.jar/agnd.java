@@ -1,30 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment.2.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
 public class agnd
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public agnd(LingHbFragment paramLingHbFragment) {}
+  public agnd(PhotoListActivity paramPhotoListActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramView instanceof TextView))
-    {
-      paramView = ((TextView)paramView).getText().toString();
-      QLog.i("LingHbFragment", 2, "choice: " + paramView);
-      this.a.c.setText(paramView);
-      this.a.a.post(new LingHbFragment.2.1(this));
-    }
+    paramDialogInterface.dismiss();
+    this.a.setResult(8001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agnd
  * JD-Core Version:    0.7.0.1
  */

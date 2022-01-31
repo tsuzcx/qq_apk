@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.contactsync.syncadapter;
 
-import amok;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.IBinder;
+import aner;
 import mqq.app.MobileQQ;
 
 public class SyncService
   extends Service
 {
-  private static amok jdField_a_of_type_Amok;
+  private static aner jdField_a_of_type_Aner;
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
   
   public static void a(Context paramContext, boolean paramBoolean)
@@ -41,7 +41,7 @@ public class SyncService
   
   public IBinder onBind(Intent paramIntent)
   {
-    return jdField_a_of_type_Amok.getSyncAdapterBinder();
+    return jdField_a_of_type_Aner.getSyncAdapterBinder();
   }
   
   public void onCreate()
@@ -56,8 +56,8 @@ public class SyncService
     }
     synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if (jdField_a_of_type_Amok == null) {
-        jdField_a_of_type_Amok = new amok(getApplicationContext(), true);
+      if (jdField_a_of_type_Aner == null) {
+        jdField_a_of_type_Aner = new aner(getApplicationContext(), true);
       }
       return;
     }

@@ -1,83 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.BaseConstants;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
+import tencent.im.nearfield_discuss.nearfield_discuss.BusiRespHead;
+import tencent.im.nearfield_discuss.nearfield_discuss.UserProfile;
 
 public class akbf
+  implements ajtg
 {
-  private static List<akbg> jdField_a_of_type_JavaUtilList = new ArrayList(32);
-  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public static void a()
+  protected void a(boolean paramBoolean, List<nearfield_discuss.UserProfile> paramList, int paramInt1, int paramInt2, nearfield_discuss.BusiRespHead paramBusiRespHead, int paramInt3, int paramInt4, long paramLong) {}
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    synchronized (jdField_a_of_type_JavaUtilList)
+    switch (paramInt)
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext())
-      {
-        akbg localakbg = (akbg)localIterator.next();
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("param_FailCode", String.valueOf(localakbg.jdField_a_of_type_Int));
-        localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-        localHashMap.put("msgType", String.valueOf(localakbg.b));
-        localHashMap.put("uinType", String.valueOf(localakbg.c));
-        awrn.a(BaseApplication.getContext()).a(localakbg.jdField_a_of_type_JavaLangString, "actBelatedMsg", false, localakbg.jdField_a_of_type_Long, 0L, localHashMap, "");
-      }
     }
-    akbg.a(jdField_a_of_type_JavaUtilList);
-    jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    if (!paramQQAppInterface.c().endsWith("7")) {
-      return;
-    }
-    paramQQAppInterface = new HashMap();
-    paramQQAppInterface.put(BaseConstants.RDM_NoChangeFailCode, "");
-    paramQQAppInterface.put("uinType", String.valueOf(paramInt));
-    paramQQAppInterface.put("convUin", String.valueOf(paramString));
-    awrn.a(BaseApplication.getContext()).a(null, "actNoCachedLastMsg", true, 0L, 0L, paramQQAppInterface, "");
-  }
-  
-  public static void a(MessageRecord arg0, QQAppInterface paramQQAppInterface)
-  {
-    if (!paramQQAppInterface.c().endsWith("77")) {}
-    long l;
     do
     {
       return;
-      l = NetConnInfoCenter.getServerTime() - ???.time;
-    } while ((l < 30L) || ((paramQQAppInterface.b != 0L) && (???.time < paramQQAppInterface.b)));
-    if (???.time < paramQQAppInterface.jdField_a_of_type_Long) {}
-    for (int i = 1;; i = 2)
-    {
-      paramQQAppInterface = akbg.a(i, paramQQAppInterface.c(), l, ???.msgtype, ???.istroop);
-      synchronized (jdField_a_of_type_JavaUtilList)
+      a(paramBoolean, paramObject);
+      return;
+      if (paramBoolean)
       {
-        jdField_a_of_type_JavaUtilList.add(paramQQAppInterface);
-        if (jdField_a_of_type_JavaUtilList.size() >= 32) {
-          a();
-        }
+        paramObject = (Object[])paramObject;
+        a(paramBoolean, (List)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), (nearfield_discuss.BusiRespHead)paramObject[3], ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Long)paramObject[6]).longValue());
         return;
       }
-    }
-  }
-  
-  public static void a(String paramString, long paramLong)
-  {
-    if (Math.abs(jdField_a_of_type_JavaUtilRandom.nextInt() % 10000) < 10)
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-      awrn.a(BaseApplication.getContext()).a(null, paramString, true, paramLong, 0L, localHashMap, "");
-    }
+      a(paramBoolean, null, -1, -1, null, -1, -1, -1L);
+      return;
+    } while (!paramBoolean);
+    b(paramBoolean, paramObject);
   }
 }
 

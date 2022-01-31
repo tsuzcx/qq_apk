@@ -1,46 +1,24 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.LayoutChangeListener.1;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import mqq.os.MqqHandler;
 
-public class biln
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class biln
+  implements Animator.AnimatorListener
 {
-  private biln(bila parambila) {}
+  biln(bilj parambilj) {}
   
-  public void onGlobalLayout()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    int i = this.a.jdField_a_of_type_AndroidViewView.getBottom();
     if (QLog.isColorLevel()) {
-      QLog.i("EditTextDialog", 2, "onGlobalLayout third bottom:" + i + " last:" + this.a.b);
+      QLog.d("AEWaterMarkListPart", 2, "Watermark panel down");
     }
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout != null)
-    {
-      int[] arrayOfInt = new int[2];
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.getLocationOnScreen(arrayOfInt);
-      int j = arrayOfInt[1];
-      int k = j - aciy.a(62.0F, BaseApplicationImpl.getContext().getResources());
-      if (k < bila.b(this.a)) {
-        bila.b(this.a, k);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("EditTextDialog", 2, "max height" + k + "preViewTextMaxHeight" + bila.b(this.a) + "y" + j);
-      }
-    }
-    if (i - this.a.b > this.a.jdField_a_of_type_Int)
-    {
-      this.a.a(false);
-      if (this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem != null) {
-        this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.d = false;
-      }
-      return;
-    }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.post(new EditTextDialog.LayoutChangeListener.1(this));
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

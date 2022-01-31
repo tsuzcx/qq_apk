@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alrv;
+import amgo;
 import android.content.res.Resources;
-import bbmy;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
 class OtherJsPlugin$6
   implements Runnable
 {
-  OtherJsPlugin$6(OtherJsPlugin paramOtherJsPlugin, alrv paramalrv) {}
+  OtherJsPlugin$6(OtherJsPlugin paramOtherJsPlugin, amgo paramamgo) {}
   
   public void run()
   {
     OtherJsPlugin.access$300(this.this$0, this.val$finalColorNoteController);
-    bbmy.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131625289), 5000).a();
+    bcpw.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690852), 5000).a();
   }
 }
 

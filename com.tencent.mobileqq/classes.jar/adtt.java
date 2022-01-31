@@ -1,7 +1,13 @@
+import android.widget.ImageView;
+import android.widget.TextView;
+
 class adtt
-  extends acjc
+  extends acun
 {
-  adtt(adts paramadts) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  adtt(adtp paramadtp) {}
 }
 
 

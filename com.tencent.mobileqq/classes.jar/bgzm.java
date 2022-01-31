@@ -1,26 +1,16 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class bgzm
-  extends RecyclerView.ViewHolder
+class bgzm
+  implements bgzk
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ImageView b;
+  bgzm(bgzl parambgzl, bgzi parambgzi) {}
   
-  public bgzm(View paramView)
+  public void a()
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131302061));
-    this.b = ((ImageView)paramView.findViewById(2131302437));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131300663));
+    this.jdField_a_of_type_Bgzi.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgzm
  * JD-Core Version:    0.7.0.1
  */

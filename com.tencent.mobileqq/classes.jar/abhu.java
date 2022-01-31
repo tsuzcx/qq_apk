@@ -1,56 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.PhoneUnityPhoneLoginActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupWelcomeFragment;
 
 public class abhu
-  extends ajrv
+  implements View.OnClickListener
 {
-  public abhu(PhoneUnityPhoneLoginActivity paramPhoneUnityPhoneLoginActivity) {}
+  public abhu(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
-    {
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
-      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(true);
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      return;
-    }
-    if (paramInt == 39)
-    {
-      awqx.b(this.a.app, "CliOper", "", "", "0X8005BFD", "0X8005BFD", 0, 0, "", "", "", "");
-      babr.a(this.a, 230, this.a.getString(2131629329), this.a.getString(2131629328), null, this.a.getString(2131626553), new abhv(this), null).show();
-      return;
-    }
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = this.a.getString(2131629327);
-    }
-    bbmy.a(this.a, str, 0).b(this.a.getTitleBarHeight());
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
-    {
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
-      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(false);
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      return;
-    }
-    String str;
-    if (paramInt == 36) {
-      str = this.a.getString(2131629333);
-    }
-    for (;;)
-    {
-      bbmy.a(this.a, str, 0).b(this.a.getTitleBarHeight());
-      return;
-      str = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        str = this.a.getString(2131629332);
-      }
-    }
+    asoe.a("0X800A22D");
+    PublicFragmentActivity.a(this.a.getActivity(), MsgBackupWelcomeFragment.class);
   }
 }
 

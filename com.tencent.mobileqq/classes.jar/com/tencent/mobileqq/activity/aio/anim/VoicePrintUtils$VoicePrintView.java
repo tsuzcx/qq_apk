@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import acpb;
-import acpc;
-import almu;
+import aczu;
+import aczv;
+import ambi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -17,8 +17,8 @@ public class VoicePrintUtils$VoicePrintView
   extends ImageView
 {
   public int a;
-  private acpb jdField_a_of_type_Acpb;
-  private almu jdField_a_of_type_Almu;
+  private aczu jdField_a_of_type_Aczu;
+  private ambi jdField_a_of_type_Ambi;
   public BitmapFactory.Options a;
   private VipPngPlayAnimationDrawable jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable;
   private String jdField_a_of_type_JavaLangString;
@@ -46,12 +46,12 @@ public class VoicePrintUtils$VoicePrintView
         localLayoutParams.height = localBitmap.getHeight();
         this.b = localBitmap.getHeight();
       }
-      this.jdField_a_of_type_Acpb.a(localBitmap, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Aczu.a(localBitmap, this.jdField_a_of_type_Int);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.e = this.jdField_a_of_type_Acpb.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.e = this.jdField_a_of_type_Aczu.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.g = this.jdField_a_of_type_Int;
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.h = this.b;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a(this.jdField_a_of_type_Almu.a, this.jdField_a_of_type_Almu.c);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a(this.jdField_a_of_type_Ambi.a, this.jdField_a_of_type_Ambi.c);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.f = -1;
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.c = this.jdField_a_of_type_Boolean;
       return true;
@@ -63,27 +63,27 @@ public class VoicePrintUtils$VoicePrintView
   {
     if (paramBoolean)
     {
-      setImageDrawable(this.jdField_a_of_type_Acpb);
+      setImageDrawable(this.jdField_a_of_type_Aczu);
       return;
     }
     setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable);
   }
   
-  public void setBitmap(almu paramalmu, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
+  public void setBitmap(ambi paramambi, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Acpb = new acpb();
-    this.jdField_a_of_type_Acpb.jdField_a_of_type_Int = (paramInt1 + paramInt3 + paramInt4);
+    this.jdField_a_of_type_Aczu = new aczu();
+    this.jdField_a_of_type_Aczu.jdField_a_of_type_Int = (paramInt1 + paramInt3 + paramInt4);
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
     this.c = paramInt3;
     this.d = paramInt4;
-    this.jdField_a_of_type_JavaLangString = paramalmu.a[0];
-    this.jdField_a_of_type_Almu = paramalmu;
+    this.jdField_a_of_type_JavaLangString = paramambi.a[0];
+    this.jdField_a_of_type_Ambi = paramambi;
     setPadding(paramInt3, 0, paramInt4, 0);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable = new VipPngPlayAnimationDrawable(getResources());
     if (!a()) {
-      new acpc(this).execute(new String[] { this.jdField_a_of_type_JavaLangString });
+      new aczv(this).execute(new String[] { this.jdField_a_of_type_JavaLangString });
     }
   }
 }

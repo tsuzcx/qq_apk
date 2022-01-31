@@ -1,119 +1,197 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
 import java.util.ArrayList;
+import tencent.im.oidb.cmd0x935.oidb_0x935.GPS;
 
-public class afdf
+public abstract class afdf
 {
-  public ArrayList<afdh> a;
-  private boolean a;
-  public int[] a;
-  public String[] a;
+  public afda a;
+  protected afdi a;
+  protected akfd a;
+  private akim jdField_a_of_type_Akim = new afdh(this);
+  protected Context a;
+  protected TextView a;
+  private bfob jdField_a_of_type_Bfob = new afdg(this);
+  protected QQAppInterface a;
+  protected XListView a;
+  public boolean a;
+  protected boolean b = true;
+  protected boolean c = true;
   
-  public afdf(boolean paramBoolean)
+  public afdf()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public afdf(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, afdi paramafdi)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
+    this.jdField_a_of_type_Afdi = paramafdi;
     a();
   }
   
-  public int a(int paramInt)
+  private void f()
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return ((afdh)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).c;
+    g();
+    this.jdField_a_of_type_Afda = a();
+    this.jdField_a_of_type_Afda.a(null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Afda);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setDividerHeight(0);
+    if (this.c) {
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this.jdField_a_of_type_Bfob);
     }
-    return 1;
+  }
+  
+  private void g()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131713258));
+    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 14.0F);
+    int i = actn.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.jdField_a_of_type_AndroidWidgetTextView.setPadding(i, i, i, i);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166931));
+    this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_AndroidWidgetTextView);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+  }
+  
+  private void h()
+  {
+    c();
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    if (a()) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131713259));
+    }
+  }
+  
+  protected abstract afda a();
+  
+  public XListView a()
+  {
+    return this.jdField_a_of_type_ComTencentWidgetXListView;
+  }
+  
+  protected oidb_0x935.GPS a()
+  {
+    Object localObject = akug.a("recommend_troop");
+    double d1;
+    int k;
+    double d2;
+    String str;
+    int i;
+    if (localObject != null)
+    {
+      d1 = ((SosoInterface.SosoLbsInfo)localObject).a.e;
+      k = (int)((SosoInterface.SosoLbsInfo)localObject).a.jdField_a_of_type_Float;
+      d2 = ((SosoInterface.SosoLbsInfo)localObject).a.jdField_a_of_type_Long;
+      str = ((SosoInterface.SosoLbsInfo)localObject).a.f;
+      i = 0;
+    }
+    try
+    {
+      int j = Integer.parseInt(str);
+      i = j;
+    }
+    catch (Exception localException)
+    {
+      label66:
+      double d3;
+      double d4;
+      break label66;
+    }
+    d3 = Double.valueOf(((SosoInterface.SosoLbsInfo)localObject).a.jdField_a_of_type_Double * 1000000.0D).intValue();
+    d4 = Double.valueOf(((SosoInterface.SosoLbsInfo)localObject).a.b * 1000000.0D).intValue();
+    localObject = new oidb_0x935.GPS();
+    ((oidb_0x935.GPS)localObject).uint32_latitude.set((int)d3);
+    ((oidb_0x935.GPS)localObject).uint32_longitude.set((int)d4);
+    ((oidb_0x935.GPS)localObject).uint32_altitude.set((int)d1);
+    ((oidb_0x935.GPS)localObject).uint32_accuracy.set(k);
+    ((oidb_0x935.GPS)localObject).uint32_time.set((int)d2);
+    ((oidb_0x935.GPS)localObject).uint32_cityid.set(i);
+    ((oidb_0x935.GPS)localObject).bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.2.8"));
+    ((oidb_0x935.GPS)localObject).uint32_client.set(2);
+    return localObject;
+    return null;
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(new afdh(0, 2131299094, ajjy.a(2131636777)));
+    if (this.jdField_a_of_type_ComTencentWidgetXListView == null) {
+      this.jdField_a_of_type_ComTencentWidgetXListView = new XListView(this.jdField_a_of_type_AndroidContentContext);
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(new afdh(6, 2131299091, ajjy.a(2131636763)));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new afdh(1, 2131299090, ajjy.a(2131636734)));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new afdh(2, 2131299095, ajjy.a(2131636776)));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new afdh(3, 2131299088, ajjy.a(2131636760)));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new afdh(4, 2131299092, ajjy.a(2131636756)));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new afdh(5, 2131299093, rsp.a()));
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
-    this.jdField_a_of_type_ArrayOfInt = new int[j];
-    int i = 0;
-    while (i < j)
-    {
-      this.jdField_a_of_type_ArrayOfInt[i] = ((afdh)this.jdField_a_of_type_JavaUtilArrayList.get(i)).d;
-      this.jdField_a_of_type_ArrayOfJavaLangString[i] = ((afdh)this.jdField_a_of_type_JavaUtilArrayList.get(i)).f;
-      i += 1;
+    this.jdField_a_of_type_Akfd = ((akfd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(22));
+    f();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akim);
+    if ((this.jdField_a_of_type_Boolean) && (this.b)) {
+      a(false);
     }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Akfd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin(), a());
+  }
+  
+  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3) {}
+  
+  protected void a(boolean paramBoolean1, int paramInt1, String paramString, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3) {}
+  
+  protected void a(boolean paramBoolean1, long paramLong, int paramInt, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList) {}
+  
+  protected boolean a()
+  {
+    return this.jdField_a_of_type_Akfd.a == 1;
+  }
+  
+  public void b()
+  {
+    a(false);
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      h();
+    }
+  }
+  
+  protected void c()
+  {
+    this.jdField_a_of_type_Afda.a(this.jdField_a_of_type_Akfd.b);
+    this.jdField_a_of_type_Afda.notifyDataSetChanged();
+  }
+  
+  public void d()
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("ContactsTabs", 2, "buildData showRecommend:" + this.jdField_a_of_type_Boolean + " tabSize:" + j);
+      QLog.d("RecommendTroopListWrapper", 2, "checkAndLoadMoreRecommList isEnd = " + a());
+    }
+    if (!a()) {
+      a(true);
     }
   }
   
-  public boolean a()
+  public void e()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    boolean bool = false;
-    if (paramBoolean != this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      if (paramBoolean) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(0, new afdh(0, 2131299094, ajjy.a(2131636731)));
-      }
-      for (;;)
-      {
-        j = this.jdField_a_of_type_JavaUtilArrayList.size();
-        this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
-        this.jdField_a_of_type_ArrayOfInt = new int[j];
-        i = 0;
-        while (i < j)
-        {
-          localafdh = (afdh)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-          if (localafdh.c == 5) {
-            localafdh.f = rsp.a();
-          }
-          this.jdField_a_of_type_ArrayOfInt[i] = localafdh.d;
-          this.jdField_a_of_type_ArrayOfJavaLangString[i] = localafdh.f;
-          i += 1;
-        }
-        this.jdField_a_of_type_JavaUtilArrayList.remove(0);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ContactsTabs", 2, "update showRecommend1:" + paramBoolean + " tabSize:" + j);
-      }
-      bool = true;
-    }
-    while (!QLog.isColorLevel())
-    {
-      int j;
-      int i;
-      afdh localafdh;
-      return bool;
-    }
-    QLog.d("ContactsTabs", 2, "update showRecommend2:" + paramBoolean + " tabSize:" + this.jdField_a_of_type_JavaUtilArrayList.size());
-    return false;
-  }
-  
-  public int b(int paramInt)
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      if (((afdh)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c == paramInt) {
-        return i;
-      }
-      i += 1;
-    }
-    return -1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akim);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afdf
  * JD-Core Version:    0.7.0.1
  */

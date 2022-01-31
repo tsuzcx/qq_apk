@@ -1,23 +1,8 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.widget.NumberCheckBox;
-
-public class agfw
+public abstract interface agfw
 {
-  agft jdField_a_of_type_Agft;
-  View jdField_a_of_type_AndroidViewView;
-  public ImageView a;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  public NumberCheckBox a;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  public ImageView c;
-  ImageView d;
+  public abstract void setFrom(boolean paramBoolean);
   
-  public agfw(agfv paramagfv) {}
+  public abstract void setIsShieldTouchForItem(boolean paramBoolean);
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.subscript;
 
-import rpa;
+import sbs;
 
 public class SubscriptFeedsActivity$14$5
   implements Runnable
 {
-  public SubscriptFeedsActivity$14$5(rpa paramrpa) {}
+  public SubscriptFeedsActivity$14$5(sbs paramsbs) {}
   
   public void run()
   {

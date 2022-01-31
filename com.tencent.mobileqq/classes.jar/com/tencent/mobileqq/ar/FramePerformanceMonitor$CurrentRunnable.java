@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar;
 
-import akoh;
-import akoi;
-import akoj;
+import alct;
+import alcu;
+import alcv;
 
 class FramePerformanceMonitor$CurrentRunnable
   implements Runnable
@@ -31,8 +31,8 @@ class FramePerformanceMonitor$CurrentRunnable
       {
         localException.printStackTrace();
       }
-      akoj localakoj = FramePerformanceMonitor.a(this.this$0).a();
-      FramePerformanceMonitor.a(this.this$0).a(localakoj);
+      alcv localalcv = FramePerformanceMonitor.a(this.this$0).a();
+      FramePerformanceMonitor.a(this.this$0).a(localalcv);
       Thread.sleep(FramePerformanceMonitor.a(this.this$0));
     }
   }

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount;
 
 import com.tencent.qphone.base.util.QLog;
-import rqc;
+import scu;
 
 class PublicAccountBrowser$PublicAccountBrowserFragment$5
   implements Runnable
@@ -12,7 +12,7 @@ class PublicAccountBrowser$PublicAccountBrowserFragment$5
   {
     try
     {
-      boolean bool = rqc.a(this.this$0.a, false, this.this$0.h);
+      boolean bool = scu.a(this.this$0.a, false, this.this$0.h);
       if (QLog.isColorLevel()) {
         QLog.d("WebLog_WebViewFragment", 2, "set subscribe full recommend switch = false , result : " + bool);
       }

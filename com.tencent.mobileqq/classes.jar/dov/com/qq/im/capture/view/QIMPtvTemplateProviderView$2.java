@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.view;
 
 import android.widget.ListAdapter;
-import bhfv;
+import bjan;
 import com.tencent.mobileqq.widget.QQViewPager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.GridView;
@@ -20,15 +20,15 @@ class QIMPtvTemplateProviderView$2
     if (localGridView != null)
     {
       localListAdapter = localGridView.a();
-      if ((localListAdapter instanceof bhfv))
+      if ((localListAdapter instanceof bjan))
       {
-        i = ((bhfv)localListAdapter).a(this.a);
-        ((bhfv)localListAdapter).a(this.a, i);
+        i = ((bjan)localListAdapter).a(this.a);
+        ((bjan)localListAdapter).a(this.a, i);
         localGridView.requestFocusFromTouch();
         localGridView.setFocusableInTouchMode(true);
         localGridView.setSelection(i);
         localGridView.smoothScrollToPosition(i / localGridView.c());
-        ((bhfv)localListAdapter).notifyDataSetChanged();
+        ((bjan)localListAdapter).notifyDataSetChanged();
       }
     }
     while (!QLog.isColorLevel())

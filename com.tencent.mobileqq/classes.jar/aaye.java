@@ -1,38 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
-public class aaye
-  implements CompoundButton.OnCheckedChangeListener
+class aaye
+  implements DialogInterface.OnClickListener
 {
-  public aaye(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
+  aaye(aayc paramaayc) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = 1;
-    paramCompoundButton = this.a;
-    String str = this.a.app.getCurrentAccountUin();
-    if (paramBoolean)
-    {
-      i = 2;
-      GesturePWDUtils.setGesturePWDState(paramCompoundButton, str, i);
-      this.a.a(paramBoolean);
-      paramCompoundButton = this.a.app;
-      if (!paramBoolean) {
-        break label93;
-      }
-    }
-    label93:
-    for (int i = j;; i = 0)
-    {
-      awqx.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Setting_Gesture_password", 0, i, "", "", "", "");
-      this.a.a();
-      return;
-      i = 1;
-      break;
-    }
+    this.a.a.a();
+    DevlockQuickLoginActivity.c(this.a.a);
+    DevlockQuickLoginActivity.c(this.a.a, 0, 2130772001);
   }
 }
 

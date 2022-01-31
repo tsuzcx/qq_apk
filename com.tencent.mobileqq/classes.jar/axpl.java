@@ -1,49 +1,31 @@
-import android.content.res.Resources;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.util.DisplayMetrics;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Method;
 
 public class axpl
-  extends axrg
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public static void a()
   {
-    paramDownloadParams.url = new URL(paramDownloadParams.url.getFile());
-    paramDownloadParams.urlStr = paramDownloadParams.url.toString();
-    return super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
-  }
-  
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramURLDrawableHandler = new BitmapFactory.Options();
-    paramURLDrawableHandler.inJustDecodeBounds = true;
-    paramDownloadParams = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramURLDrawableHandler);
-    float f = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().density;
-    paramURLDrawableHandler.inSampleSize = (Math.min(paramURLDrawableHandler.outWidth, paramURLDrawableHandler.outHeight) / (int)(f * 70.0F + 0.5F));
-    paramURLDrawableHandler.inJustDecodeBounds = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIPCEnvironmentInit", 2, "tryConnect");
+    }
     try
     {
-      paramFile = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramURLDrawableHandler);
-      return bacm.c(bacm.b(paramFile), 70, 70);
+      Method localMethod = BaseApplicationImpl.sApplication.getClassLoader().loadClass("com.tencent.mobileqq.qipc.QIPCEnvironmentInit").getDeclaredMethod("initEnvironment", new Class[0]);
+      localMethod.setAccessible(true);
+      localMethod.invoke(null, new Object[0]);
+      return;
     }
-    catch (OutOfMemoryError paramFile)
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        paramFile = paramDownloadParams;
-      }
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QIPCEnvironmentInit", 2, "tryConnect", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axpl
  * JD-Core Version:    0.7.0.1
  */

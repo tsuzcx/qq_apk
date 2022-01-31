@@ -1,49 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.util.HashMap;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
 
 public class acff
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public acff(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public acff(TextPreviewSettingActivity paramTextPreviewSettingActivity, Looper paramLooper)
   {
-    this.a.l();
-    if (bajr.b(this.a.app))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ImageView localImageView = (ImageView)this.a.findViewById(2131366561);
+    switch (paramMessage.what)
     {
-      if (this.a.jdField_a_of_type_Long != 0L) {
-        break label144;
-      }
-      paramDialogInterface = (String)this.a.jdField_a_of_type_JavaUtilHashMap.get(this.a.d);
-      if (!TextUtils.isEmpty(paramDialogInterface)) {
-        this.a.a(this.a.d, paramDialogInterface, false);
-      }
     }
-    else
+    do
     {
-      if ((this.a.jdField_a_of_type_Long != 0L) && (this.a.jdField_a_of_type_Long != 160L)) {
-        break label222;
-      }
-    }
-    label144:
-    label222:
-    for (paramDialogInterface = "3";; paramDialogInterface = "4")
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, mpl.a(), paramDialogInterface, "0");
+      do
+      {
+        return;
+        localImageView.setImageDrawable(TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a)));
+        return;
+      } while (!(paramMessage.obj instanceof Drawable));
+      localImageView.setImageDrawable((Drawable)paramMessage.obj);
       return;
-      this.a.a(this.a.d, false);
-      break;
-      if (((this.a.jdField_a_of_type_Long != 160L) && (this.a.jdField_a_of_type_Long != 1600L)) || (TextUtils.isEmpty(this.a.b))) {
-        break;
-      }
-      paramDialogInterface = atwy.a(this.a, atxe.n, this.a.jdField_a_of_type_Long);
-      this.a.a(paramDialogInterface, this.a.b, false);
-      break;
-    }
+    } while (!(paramMessage.obj instanceof Bitmap));
+    localImageView.setImageBitmap((Bitmap)paramMessage.obj);
   }
 }
 

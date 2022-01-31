@@ -1,25 +1,23 @@
-import com.tencent.biz.qqstory.model.filter.FilterItem;
-import com.tencent.biz.qqstory.model.filter.FilterItem.FilterItemIllegalException;
-
 public class sra
+  extends sqy
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  public String c;
+  public int d = -1;
+  public int e = -1;
   
-  public FilterItem a()
+  public sra() {}
+  
+  public sra(spl paramspl)
   {
-    try
-    {
-      FilterItem localFilterItem = new FilterItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c, null);
-      return localFilterItem;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      throw new FilterItem.FilterItemIllegalException("create FilterItem instance failed", localIllegalArgumentException);
-    }
+    super(paramspl);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("TreeGatherConfig =[");
+    localStringBuilder.append(" mStartGatherLevel=").append(this.d);
+    localStringBuilder.append(" mEndGatherLevel=").append(this.e);
+    localStringBuilder.append("] ");
+    return localStringBuilder.toString() + super.toString();
   }
 }
 

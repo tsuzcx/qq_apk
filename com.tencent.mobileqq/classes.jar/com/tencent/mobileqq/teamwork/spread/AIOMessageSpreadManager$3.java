@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import axgr;
+import aygv;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import java.util.TimerTask;
 public class AIOMessageSpreadManager$3
   extends TimerTask
 {
-  public AIOMessageSpreadManager$3(axgr paramaxgr) {}
+  public AIOMessageSpreadManager$3(aygv paramaygv) {}
   
   public void run()
   {
@@ -23,15 +23,15 @@ public class AIOMessageSpreadManager$3
         if (QLog.isColorLevel()) {
           QLog.i("AIOMessageSpreadManager", 1, "lastInsertTime[" + this.this$0.a + "],now[" + l1 + "], dur[" + l2 + "],timeOut start check!");
         }
-        i = axgr.a(this.this$0).size() - 1;
+        i = aygv.a(this.this$0).size() - 1;
         while (i >= 0)
         {
-          localMessageRecord = (MessageRecord)axgr.a(this.this$0).get(i);
+          localMessageRecord = (MessageRecord)aygv.a(this.this$0).get(i);
           this.this$0.a((ChatMessage)localMessageRecord);
           i -= 1;
         }
         this.this$0.a = 0L;
-        axgr.a(this.this$0).clear();
+        aygv.a(this.this$0).clear();
       }
       while (!QLog.isColorLevel())
       {

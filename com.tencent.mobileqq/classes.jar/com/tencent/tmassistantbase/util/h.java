@@ -1,15 +1,13 @@
 package com.tencent.tmassistantbase.util;
 
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
-
 class h
-  implements FileFilter
+  implements Runnable
 {
-  public boolean accept(File paramFile)
+  h(GlobalUtil paramGlobalUtil) {}
+  
+  public void run()
   {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
+    ab.a(this.a.mContext);
   }
 }
 

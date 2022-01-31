@@ -1,23 +1,33 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.qzonevip.gift.particle.ParticleDropView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.pic.ReportInfo;
 
-class auoj
-  extends AnimatorListenerAdapter
+public final class auoj
+  implements Parcelable.Creator<ReportInfo>
 {
-  auoj(auoi paramauoi) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public ReportInfo a(Parcel paramParcel)
   {
-    if (auoe.a(this.a.a) != null) {
-      auoe.a(this.a.a).c();
-    }
-    auoe.a(this.a.a, 8);
+    ReportInfo localReportInfo = new ReportInfo();
+    localReportInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localReportInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localReportInfo.jdField_c_of_type_Int = paramParcel.readInt();
+    localReportInfo.f = paramParcel.readInt();
+    localReportInfo.d = paramParcel.readInt();
+    localReportInfo.e = paramParcel.readInt();
+    localReportInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localReportInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localReportInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    return localReportInfo;
+  }
+  
+  public ReportInfo[] a(int paramInt)
+  {
+    return new ReportInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auoj
  * JD-Core Version:    0.7.0.1
  */

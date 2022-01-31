@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aklt;
-import akmo;
+import alaf;
+import alba;
 
 public class NormalVideoARRenderable$2
   implements Runnable
@@ -10,7 +10,7 @@ public class NormalVideoARRenderable$2
   {
     this.this$0.f();
     if (this.this$0.a != null) {
-      this.this$0.a.b(1, akmo.c(this.this$0) - akmo.d(this.this$0));
+      this.this$0.a.b(1, alba.c(this.this$0) - alba.d(this.this$0));
     }
   }
 }

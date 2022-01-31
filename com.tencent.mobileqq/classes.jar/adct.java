@@ -1,6 +1,18 @@
-public final class adct
-  extends acjc
-{}
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
+
+class adct
+  implements View.OnClickListener
+{
+  adct(adcs paramadcs) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.a().finish();
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar

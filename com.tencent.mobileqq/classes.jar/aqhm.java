@@ -1,31 +1,24 @@
-import android.view.SurfaceHolder;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.fragment.HotChatFragment;
+import com.tencent.mobileqq.fragment.HotChatFragment.HotChatWebView;
 
-class aqhm
-  implements IVideoViewBase.IVideoViewCallBack
+public class aqhm
+  extends BroadcastReceiver
 {
-  aqhm(aqhl paramaqhl) {}
+  public aqhm(HotChatFragment paramHotChatFragment) {}
   
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + ";broad finish start show here onsurface changed  here");
-  }
-  
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface create ok here");
-  }
-  
-  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
-  {
-    this.a.a = true;
-    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface Destroy  here");
+    if ((paramIntent != null) && ("com.tencent.mobileqq.refresh_hot_chat_list".equals(paramIntent.getAction())) && (this.a.a != null) && (this.a.a.mWebview != null)) {
+      this.a.a.refresh();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqhm
  * JD-Core Version:    0.7.0.1
  */

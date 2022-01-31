@@ -1,16 +1,9 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.graphics.Path;
+import java.util.List;
 
-class adfb
-  extends acjc
+public abstract interface adfb
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  
-  adfb(adez paramadez) {}
+  public abstract void a(int paramInt, boolean paramBoolean, Path paramPath, List<ades> paramList);
 }
 
 

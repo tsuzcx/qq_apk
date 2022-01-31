@@ -1,13 +1,24 @@
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class tjj
-  implements udj
+  extends SimpleJob<Object>
 {
-  tjj(tji paramtji, List paramList) {}
-  
-  public void a(udk paramudk)
+  tjj(tji paramtji, String paramString)
   {
-    tji.a(this.jdField_a_of_type_Tji, this.jdField_a_of_type_JavaUtilList, paramudk);
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    if (this.a.jdField_a_of_type_Tjl == null) {
+      this.a.jdField_a_of_type_Tjl = new tjl(this.a, this.a.d);
+    }
+    this.a.jdField_a_of_type_JavaLangString = "";
+    tji.a(this.a);
+    return null;
   }
 }
 

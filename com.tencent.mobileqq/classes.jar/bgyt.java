@@ -1,19 +1,23 @@
-import android.graphics.Rect;
-import dov.com.qq.im.AECamera.View.AECameraManager.7;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.QZoneShareData;
 
-public class bgyt
-  implements awiw
+public final class bgyt
+  implements Parcelable.Creator<QZoneShareData>
 {
-  public bgyt(AECameraManager.7 param7) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public QZoneShareData a(Parcel paramParcel)
   {
-    bgys.a().a(this.a.jdField_a_of_type_JavaIoFile, new Rect(0, 0, this.a.this$0.jdField_a_of_type_Int, this.a.this$0.b), this.a.jdField_a_of_type_Ahns, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Boolean, 1, this.a.this$0.e);
+    return new QZoneShareData(paramParcel, null);
+  }
+  
+  public QZoneShareData[] a(int paramInt)
+  {
+    return new QZoneShareData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgyt
  * JD-Core Version:    0.7.0.1
  */

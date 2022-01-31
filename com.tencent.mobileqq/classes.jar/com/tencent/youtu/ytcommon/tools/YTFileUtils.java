@@ -103,29 +103,6 @@ public class YTFileUtils
     }
   }
   
-  public static void deleteFile(File paramFile)
-  {
-    if (paramFile.isFile()) {
-      paramFile.delete();
-    }
-    while (!paramFile.isDirectory()) {
-      return;
-    }
-    File[] arrayOfFile = paramFile.listFiles();
-    if ((arrayOfFile == null) || (arrayOfFile.length == 0))
-    {
-      paramFile.delete();
-      return;
-    }
-    int i = 0;
-    while (i < arrayOfFile.length)
-    {
-      deleteFile(arrayOfFile[i]);
-      i += 1;
-    }
-    paramFile.delete();
-  }
-  
   public static Bitmap drawableToBitmap(Drawable paramDrawable)
   {
     if ((paramDrawable instanceof BitmapDrawable))
@@ -160,25 +137,25 @@ public class YTFileUtils
     // Byte code:
     //   0: new 70	java/lang/StringBuilder
     //   3: dup
-    //   4: ldc 183
-    //   6: invokespecial 186	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   4: ldc 166
+    //   6: invokespecial 169	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   9: astore_2
-    //   10: new 188	java/io/BufferedReader
+    //   10: new 171	java/io/BufferedReader
     //   13: dup
-    //   14: new 190	java/io/InputStreamReader
+    //   14: new 173	java/io/InputStreamReader
     //   17: dup
     //   18: aload_0
-    //   19: invokevirtual 196	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   22: invokevirtual 202	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
+    //   19: invokevirtual 179	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   22: invokevirtual 185	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
     //   25: aload_1
     //   26: invokevirtual 22	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   29: invokespecial 205	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   32: invokespecial 208	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   29: invokespecial 188	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   32: invokespecial 191	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   35: astore_1
     //   36: aload_1
     //   37: astore_0
     //   38: aload_1
-    //   39: invokevirtual 211	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   39: invokevirtual 194	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   42: astore_3
     //   43: aload_3
     //   44: ifnull +68 -> 112
@@ -186,13 +163,13 @@ public class YTFileUtils
     //   48: astore_0
     //   49: aload_2
     //   50: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   53: ldc 183
-    //   55: invokevirtual 215	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   53: ldc 166
+    //   55: invokevirtual 198	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   58: ifne +12 -> 70
     //   61: aload_1
     //   62: astore_0
     //   63: aload_2
-    //   64: ldc 217
+    //   64: ldc 200
     //   66: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   69: pop
     //   70: aload_1
@@ -207,11 +184,11 @@ public class YTFileUtils
     //   83: astore_0
     //   84: aload_2
     //   85: astore_1
-    //   86: new 219	java/lang/RuntimeException
+    //   86: new 202	java/lang/RuntimeException
     //   89: dup
-    //   90: ldc 221
+    //   90: ldc 204
     //   92: aload_1
-    //   93: invokespecial 224	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   93: invokespecial 207	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   96: athrow
     //   97: astore_2
     //   98: aload_0
@@ -221,28 +198,28 @@ public class YTFileUtils
     //   102: aload_1
     //   103: ifnull +7 -> 110
     //   106: aload_1
-    //   107: invokevirtual 225	java/io/BufferedReader:close	()V
+    //   107: invokevirtual 208	java/io/BufferedReader:close	()V
     //   110: aload_0
     //   111: athrow
     //   112: aload_1
     //   113: ifnull +7 -> 120
     //   116: aload_1
-    //   117: invokevirtual 225	java/io/BufferedReader:close	()V
+    //   117: invokevirtual 208	java/io/BufferedReader:close	()V
     //   120: aload_2
     //   121: areturn
     //   122: astore_0
-    //   123: new 219	java/lang/RuntimeException
+    //   123: new 202	java/lang/RuntimeException
     //   126: dup
-    //   127: ldc 221
+    //   127: ldc 204
     //   129: aload_0
-    //   130: invokespecial 224	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   130: invokespecial 207	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   133: athrow
     //   134: astore_0
-    //   135: new 219	java/lang/RuntimeException
+    //   135: new 202	java/lang/RuntimeException
     //   138: dup
-    //   139: ldc 221
+    //   139: ldc 204
     //   141: aload_0
-    //   142: invokespecial 224	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   142: invokespecial 207	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   145: athrow
     //   146: astore_0
     //   147: aconst_null
@@ -292,13 +269,13 @@ public class YTFileUtils
     //   12: astore 4
     //   14: new 70	java/lang/StringBuilder
     //   17: dup
-    //   18: ldc 183
-    //   20: invokespecial 186	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   18: ldc 166
+    //   20: invokespecial 169	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   23: astore_3
     //   24: aload 4
     //   26: ifnull +11 -> 37
     //   29: aload 4
-    //   31: invokevirtual 116	java/io/File:isFile	()Z
+    //   31: invokevirtual 212	java/io/File:isFile	()Z
     //   34: ifne +7 -> 41
     //   37: aconst_null
     //   38: astore_0
@@ -306,29 +283,29 @@ public class YTFileUtils
     //   40: areturn
     //   41: aload_1
     //   42: astore_0
-    //   43: new 188	java/io/BufferedReader
+    //   43: new 171	java/io/BufferedReader
     //   46: dup
-    //   47: new 190	java/io/InputStreamReader
+    //   47: new 173	java/io/InputStreamReader
     //   50: dup
-    //   51: new 228	java/io/FileInputStream
+    //   51: new 214	java/io/FileInputStream
     //   54: dup
     //   55: aload 4
-    //   57: invokespecial 230	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   60: invokespecial 205	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   63: invokespecial 208	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   57: invokespecial 217	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   60: invokespecial 188	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   63: invokespecial 191	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   66: astore_1
     //   67: aload_1
-    //   68: invokevirtual 211	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   68: invokevirtual 194	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   71: astore_0
     //   72: aload_0
     //   73: ifnull +62 -> 135
     //   76: aload_3
     //   77: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   80: ldc 183
-    //   82: invokevirtual 215	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   80: ldc 166
+    //   82: invokevirtual 198	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   85: ifne +10 -> 95
     //   88: aload_3
-    //   89: ldc 217
+    //   89: ldc 200
     //   91: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   94: pop
     //   95: aload_3
@@ -341,11 +318,11 @@ public class YTFileUtils
     //   106: astore_0
     //   107: aload_2
     //   108: astore_1
-    //   109: new 219	java/lang/RuntimeException
+    //   109: new 202	java/lang/RuntimeException
     //   112: dup
-    //   113: ldc 221
+    //   113: ldc 204
     //   115: aload_1
-    //   116: invokespecial 224	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   116: invokespecial 207	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   119: athrow
     //   120: astore_2
     //   121: aload_0
@@ -355,7 +332,7 @@ public class YTFileUtils
     //   125: aload_1
     //   126: ifnull +7 -> 133
     //   129: aload_1
-    //   130: invokevirtual 225	java/io/BufferedReader:close	()V
+    //   130: invokevirtual 208	java/io/BufferedReader:close	()V
     //   133: aload_0
     //   134: athrow
     //   135: aload_3
@@ -363,22 +340,22 @@ public class YTFileUtils
     //   137: aload_1
     //   138: ifnull -99 -> 39
     //   141: aload_1
-    //   142: invokevirtual 225	java/io/BufferedReader:close	()V
+    //   142: invokevirtual 208	java/io/BufferedReader:close	()V
     //   145: aload_3
     //   146: areturn
     //   147: astore_0
-    //   148: new 219	java/lang/RuntimeException
+    //   148: new 202	java/lang/RuntimeException
     //   151: dup
-    //   152: ldc 221
+    //   152: ldc 204
     //   154: aload_0
-    //   155: invokespecial 224	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   155: invokespecial 207	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   158: athrow
     //   159: astore_0
-    //   160: new 219	java/lang/RuntimeException
+    //   160: new 202	java/lang/RuntimeException
     //   163: dup
-    //   164: ldc 221
+    //   164: ldc 204
     //   166: aload_0
-    //   167: invokespecial 224	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   167: invokespecial 207	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   170: athrow
     //   171: astore_0
     //   172: goto -47 -> 125
@@ -477,7 +454,7 @@ public class YTFileUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.youtu.ytcommon.tools.YTFileUtils
  * JD-Core Version:    0.7.0.1
  */

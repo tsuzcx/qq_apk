@@ -1,19 +1,11 @@
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+import com.tencent.mobileqq.data.TroopAppInfo;
+import java.util.ArrayList;
 
-public class ncf
-  implements bbau
+public abstract interface ncf
 {
-  public ncf(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
+  public abstract void a();
   
-  public Object a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    }
-    return new nci(this.a);
-  }
+  public abstract void a(ArrayList<TroopAppInfo> paramArrayList);
 }
 
 

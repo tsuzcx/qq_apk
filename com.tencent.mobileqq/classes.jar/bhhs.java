@@ -1,51 +1,36 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.QZLog;
 
-public class bhhs
-  extends bika
+final class bhhs
+  implements bhhw
 {
-  public bhhs(DoodleView paramDoodleView)
+  public void a(boolean paramBoolean, Context paramContext, bhhx parambhhx)
   {
-    super(paramDoodleView);
-  }
-  
-  public String a()
-  {
-    return "PickLayer";
-  }
-  
-  public void a() {}
-  
-  protected void a(Canvas paramCanvas) {}
-  
-  public void a(Canvas paramCanvas, float paramFloat) {}
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return true;
-  }
-  
-  protected boolean a(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public void b(Canvas paramCanvas) {}
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      long l1 = parambhhx.a.getLongExtra("key_launch_time", 0L);
+      if (l1 > 0L)
+      {
+        long l2 = System.currentTimeMillis();
+        QZLog.d("plugin_tag", 1, "IPluginManager onPluginReady Open Plugin Activity timedelay=" + (l2 - l1));
+      }
+      bhhr.b((Activity)paramContext, parambhhx);
+      return;
+    }
+    Toast.makeText(BaseApplicationImpl.getContext(), ajyc.a(2131705846), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhhs
  * JD-Core Version:    0.7.0.1
  */

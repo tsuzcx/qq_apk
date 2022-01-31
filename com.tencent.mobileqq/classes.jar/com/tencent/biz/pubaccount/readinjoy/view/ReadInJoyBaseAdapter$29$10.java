@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import qhp;
-import qoe;
-import qot;
+import qtu;
+import rap;
+import rbe;
 
 public class ReadInJoyBaseAdapter$29$10
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$29$10(qot paramqot) {}
+  public ReadInJoyBaseAdapter$29$10(rbe paramrbe) {}
   
   public void run()
   {
     this.a.a.notifyDataSetChanged();
-    if ((!this.a.a.jdField_a_of_type_Qhp.a()) && (!this.a.a.jdField_a_of_type_Qhp.c())) {
+    if ((!this.a.a.jdField_a_of_type_Qtu.b()) && (!this.a.a.jdField_a_of_type_Qtu.d())) {
       this.a.a.a(this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView, 0);
     }
   }

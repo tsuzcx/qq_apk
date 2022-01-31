@@ -1,22 +1,29 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
+import java.util.Iterator;
+import java.util.List;
 
-class bfbl
-  extends AVAudioCtrl.EnableMicCompleteCallback
+public class bfbl
+  implements View.OnClickListener
 {
-  bfbl(bfbi parambfbi) {}
+  public bfbl(NativeViewContainer paramNativeViewContainer) {}
   
-  public void onComplete(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean, paramInt);
+    paramView = NativeViewContainer.a(this.a).iterator();
+    while (paramView.hasNext())
+    {
+      bfbm localbfbm = (bfbm)paramView.next();
+      if (localbfbm != null) {
+        localbfbm.a();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfbl
  * JD-Core Version:    0.7.0.1
  */

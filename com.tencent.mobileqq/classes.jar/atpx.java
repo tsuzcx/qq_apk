@@ -1,68 +1,12 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pic.PicShareToWX;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class atpx
-  extends QIPCModule
+class atpx
+  implements DialogInterface.OnClickListener
 {
-  private static volatile atpx a;
+  atpx(atpi paramatpi) {}
   
-  public atpx(String paramString)
-  {
-    super(paramString);
-  }
-  
-  public static atpx a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new atpx("PicSTWXQIPCModule");
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicSTWXQIPCModule", 2, "onCall, action = " + paramString);
-    }
-    paramString = paramBundle.getString("param_pic_path", "");
-    if (TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("PicSTWXQIPCModule", 2, "path is empty");
-      }
-    }
-    int i;
-    do
-    {
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.d("PicSTWXQIPCModule", 2, "onCall, path = " + paramString);
-      }
-      i = paramBundle.getInt("param_from_type", 0);
-      if (QLog.isColorLevel()) {
-        QLog.d("PicSTWXQIPCModule", 2, "onCall, fromType = " + i);
-      }
-      paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramBundle instanceof QQAppInterface)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("PicSTWXQIPCModule", 2, "cannot get QQAppInterface.");
-    return null;
-    paramBundle = (QQAppInterface)paramBundle;
-    PicShareToWX.a().a(this, paramInt, paramBundle, paramString, i);
-    return null;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

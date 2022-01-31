@@ -1,18 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.graphics.Bitmap;
 
-public class alxk
-  implements View.OnClickListener
+public abstract interface alxk
 {
-  public alxk(IphonePickerView paramIphonePickerView) {}
-  
-  public void onClick(View paramView)
-  {
-    if (IphonePickerView.a(this.a) != null) {
-      IphonePickerView.a(this.a).a();
-    }
-  }
+  public abstract void a(String paramString1, String paramString2, Bitmap paramBitmap);
 }
 
 

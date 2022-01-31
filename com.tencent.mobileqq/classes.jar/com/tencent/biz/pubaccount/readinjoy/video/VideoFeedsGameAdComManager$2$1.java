@@ -6,14 +6,14 @@ import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.util.Pair;
 import java.util.HashMap;
 import java.util.List;
-import nbe;
-import nmv;
-import nnx;
-import npv;
+import nmf;
+import nyg;
+import nzi;
+import obg;
 import org.json.JSONObject;
-import qca;
-import qcb;
-import qce;
+import qny;
+import qnz;
+import qoc;
 
 public class VideoFeedsGameAdComManager$2$1
   implements Runnable
@@ -24,31 +24,31 @@ public class VideoFeedsGameAdComManager$2$1
   {
     if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())
     {
-      if ((qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0) != null) && (qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).isShowing())) {
-        qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).dismiss();
+      if ((qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0) != null) && (qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).isShowing())) {
+        qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).dismiss();
       }
-      if (qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0) != 2) {
+      if (qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0) != 2) {
         break label93;
       }
-      if (qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0) != null) {
-        qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).dismiss();
+      if (qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0) != null) {
+        qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).dismiss();
       }
     }
     return;
     label93:
-    qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0, new npv(qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0)));
-    qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).a((List)this.jdField_a_of_type_ComTencentUtilPair.first, (List)this.jdField_a_of_type_ComTencentUtilPair.second, qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).d, qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).jdField_a_of_type_JavaLangString, qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).b, qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).g, qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).c);
-    qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).a(qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).jdField_a_of_type_Long);
-    qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).a(qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0));
+    qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0, new obg(qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0)));
+    qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).a((List)this.jdField_a_of_type_ComTencentUtilPair.first, (List)this.jdField_a_of_type_ComTencentUtilPair.second, qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).d, qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).jdField_a_of_type_JavaLangString, qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).b, qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).g, qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).c);
+    qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).a(qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).jdField_a_of_type_Long);
+    qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).a(qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0));
     Object localObject = new HashMap();
-    ((HashMap)localObject).put("vid", qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0));
-    localObject = nbe.a(null, qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).mRowKey, qca.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0), qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).r, qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).d, (HashMap)localObject);
-    qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).a((JSONObject)localObject);
-    qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).a(true);
-    qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0);
-    qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).a(new qcb(this));
-    qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).show();
-    nbe.a(new nmv().a(qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0)).a(nbe.z).b(nbe.ad).c(nbe.ao).d((JSONObject)localObject).a(qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0)).e(nnx.a(qca.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).jdField_a_of_type_Long, nbe.G)).a());
+    ((HashMap)localObject).put("vid", qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0));
+    localObject = nmf.a(null, qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).mRowKey, qny.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0), qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).r, qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).d, (HashMap)localObject);
+    qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).a((JSONObject)localObject);
+    qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).a(true);
+    qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0);
+    qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).a(new qnz(this));
+    qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).show();
+    nmf.a(new nyg().a(qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0)).a(nmf.z).b(nmf.ad).c(nmf.ao).d((JSONObject)localObject).a(qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0)).e(nzi.a(qny.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGameAdComManager$2.this$0).jdField_a_of_type_Long, nmf.G)).a());
   }
 }
 

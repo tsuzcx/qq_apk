@@ -11,7 +11,7 @@
             <TextView android:textSize="@dimen/ayo" android:textColor="#ff000000" android:id="@id/hjx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ggx" />
             <TextView android:textSize="@dimen/aym" android:textColor="#ff585858" android:id="@id/hk0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/na" android:text="@string/ggw" />
         </LinearLayout>
-        <ImageView android:layout_gravity="end|center" android:id="@id/hjq" android:background="@android:color/transparent" android:layout_width="@dimen/n2" android:layout_height="@dimen/n2" android:layout_marginRight="@dimen/ng" android:src="@drawable/c1n" android:scaleType="centerInside" android:contentDescription="@string/a3z" />
+        <ImageView android:layout_gravity="end|center" android:id="@id/hjq" android:background="@android:color/transparent" android:layout_width="@dimen/n2" android:layout_height="@dimen/n2" android:layout_marginRight="@dimen/ng" android:src="@drawable/dfx" android:scaleType="centerInside" android:contentDescription="@string/a3z" />
     </FrameLayout>
     <include android:layout_width="fill_parent" android:layout_height="186.0dip" layout="@layout/bms" />
     <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/hjo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ms" android:layout_marginRight="@dimen/ms" android:layout_marginBottom="@dimen/n1">

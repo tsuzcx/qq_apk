@@ -9,30 +9,30 @@ import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
-import bbkf;
-import bbnz;
-import bboa;
-import bbob;
-import begh;
+import bcnd;
+import bcra;
+import bcrb;
+import bcrc;
+import bfob;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
 
 public class SlideDetectListView
   extends XListView
-  implements bbkf
+  implements bcnd
 {
   float jdField_a_of_type_Float = 0.0F;
   public int a;
   protected GestureDetector.SimpleOnGestureListener a;
   protected GestureDetector a;
   public View a;
-  private bbob jdField_a_of_type_Bbob;
-  private begh jdField_a_of_type_Begh;
+  private bcrc jdField_a_of_type_Bcrc;
+  private bfob jdField_a_of_type_Bfob;
   private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean a;
   public int b;
-  private begh b;
+  private bfob b;
   public boolean b;
   public int c;
   public boolean c;
@@ -51,8 +51,8 @@ public class SlideDetectListView
     this.jdField_c_of_type_Int = 0;
     this.jdField_e_of_type_Int = -1;
     this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new bbnz(this);
-    super.setOnScrollListener(new bboa(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new bcra(this);
+    super.setOnScrollListener(new bcrb(this));
     this.f = (ViewConfiguration.getTouchSlop() + 2);
   }
   
@@ -163,8 +163,8 @@ public class SlideDetectListView
       if (this.jdField_a_of_type_AndroidViewView != null)
       {
         this.jdField_a_of_type_AndroidViewView.setPressed(false);
-        if (this.jdField_a_of_type_Bbob != null) {
-          this.jdField_a_of_type_Bbob.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
+        if (this.jdField_a_of_type_Bcrc != null) {
+          this.jdField_a_of_type_Bcrc.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
         }
       }
       this.jdField_a_of_type_Boolean = false;
@@ -176,7 +176,7 @@ public class SlideDetectListView
   {
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131310229);
+      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131375996);
       if (localView != null) {
         localView.setVisibility(8);
       }
@@ -266,8 +266,8 @@ public class SlideDetectListView
         if (this.jdField_a_of_type_AndroidViewView != null)
         {
           this.jdField_a_of_type_AndroidViewView.setPressed(false);
-          if (this.jdField_a_of_type_Bbob != null) {
-            this.jdField_a_of_type_Bbob.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
+          if (this.jdField_a_of_type_Bcrc != null) {
+            this.jdField_a_of_type_Bcrc.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
           }
         }
         this.jdField_a_of_type_Boolean = false;
@@ -325,21 +325,21 @@ public class SlideDetectListView
     }
   }
   
-  public void setOnScrollGroupFloatingListener(begh parambegh)
+  public void setOnScrollGroupFloatingListener(bfob parambfob)
   {
-    this.jdField_b_of_type_Begh = parambegh;
+    this.jdField_b_of_type_Bfob = parambfob;
   }
   
-  public void setOnScrollListener(begh parambegh) {}
+  public void setOnScrollListener(bfob parambfob) {}
   
-  public void setOnScrollToTopListener(begh parambegh)
+  public void setOnScrollToTopListener(bfob parambfob)
   {
-    this.jdField_a_of_type_Begh = parambegh;
+    this.jdField_a_of_type_Bfob = parambfob;
   }
   
-  public void setOnSlideListener(bbob parambbob)
+  public void setOnSlideListener(bcrc parambcrc)
   {
-    this.jdField_a_of_type_Bbob = parambbob;
+    this.jdField_a_of_type_Bcrc = parambcrc;
   }
 }
 

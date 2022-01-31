@@ -1,163 +1,288 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.av.VideoController;
+import com.tencent.av.gaudio.AVPhoneUserInfo;
+import com.tencent.av.gaudio.AVPhoneUserInfo.TelInfo;
+import com.tencent.av.ui.MultiMembersVideoUI;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
 public class mfi
-  extends mek
+  extends BaseAdapter
 {
-  public mfj a;
-  public int b = 2;
-  public int c = 1;
-  public String g;
+  public mfi(MultiMembersVideoUI paramMultiMembersVideoUI) {}
   
-  mfi(med parammed)
+  mfe a(View paramView)
   {
-    super(parammed);
-  }
-  
-  public void a()
-  {
-    QLog.w(this.i, 1, "SendRedBag, cancel");
-    Intent localIntent = new Intent("com.qwallet.report");
-    localIntent.setPackage(MobileQQ.getContext().getPackageName());
-    Bundle localBundle = new Bundle();
-    localBundle.putString("from", "video");
-    localIntent.putExtra("type", 999);
-    localIntent.putExtra("params", localBundle);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getBaseContext().sendBroadcast(localIntent);
-    this.b = 4;
-    a("cancel");
-  }
-  
-  void a(String paramString)
-  {
-    mey.a(this.c);
-    mey.b(this.b);
-    if (this.b == 0) {}
-    for (boolean bool = true;; bool = false)
+    mfe localmfe = new mfe();
+    localmfe.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131372275));
+    localmfe.d = ((ImageView)paramView.findViewById(2131372272));
+    localmfe.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372288));
+    localmfe.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372290));
+    localmfe.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372274));
+    localmfe.e = ((ImageView)paramView.findViewById(2131372287));
+    localmfe.f = ((ImageView)paramView.findViewById(2131372273));
+    if ((this.a.jdField_b_of_type_Boolean) && (localmfe.jdField_a_of_type_AndroidWidgetTextView != null) && (localmfe.d != null))
     {
-      ljg.a(bool, paramString, String.valueOf(this.b));
-      if (this.jdField_a_of_type_Mfj != null)
-      {
-        this.jdField_a_of_type_Mfj.a(this);
-        this.jdField_a_of_type_Mfj = null;
+      float f = MultiMembersVideoUI.a(this.a).getDisplayMetrics().density;
+      localmfe.jdField_a_of_type_AndroidWidgetTextView.setTextSize(12.0F);
+      int i = (int)(f * 1.5D);
+      localmfe.d.setPadding(i, i, i, i);
+    }
+    if (localmfe.jdField_a_of_type_AndroidWidgetTextView != null)
+    {
+      if (this.a.jdField_a_of_type_Boolean) {
+        localmfe.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131165925));
       }
-      return;
+    }
+    else if (localmfe.jdField_a_of_type_AndroidViewViewGroup != null)
+    {
+      paramView = (RelativeLayout.LayoutParams)localmfe.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break label312;
+      }
+      paramView.width = this.a.getResources().getDimensionPixelSize(2131297653);
+    }
+    for (paramView.height = this.a.getResources().getDimensionPixelSize(2131297652);; paramView.height = this.a.getResources().getDimensionPixelSize(2131297657))
+    {
+      localmfe.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramView);
+      return localmfe;
+      localmfe.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131165925));
+      break;
+      label312:
+      paramView.width = this.a.getResources().getDimensionPixelSize(2131297659);
     }
   }
   
-  public boolean a(int paramInt, Intent paramIntent)
+  public int getCount()
   {
-    boolean bool2 = false;
-    this.b = 3;
-    String str = this.i;
-    Object localObject = new StringBuilder().append("SendRedBag_onResult, resultCode[").append(paramInt).append("], intent[");
-    boolean bool1;
-    if (paramIntent != null)
-    {
-      bool1 = true;
-      QLog.w(str, 1, bool1 + "]");
-      if (paramIntent == null) {
-        break label260;
-      }
-      AudioHelper.a(ajjy.a(2131648038), paramIntent.getExtras());
-      str = String.valueOf(paramIntent.getExtras().get("result"));
-      localObject = paramIntent.getStringExtra("retmsg");
-      paramIntent = paramIntent.getStringExtra("data");
+    if (((this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 2)) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 8)) {
+      return 8;
     }
+    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject1;
+    if ((paramInt == 0) && (paramView != null) && (paramViewGroup.getChildCount() != paramInt))
+    {
+      localObject1 = paramView;
+      return localObject1;
+    }
+    if (paramView == null)
+    {
+      paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559548, null);
+      paramViewGroup = a(paramView);
+      paramView.setTag(paramViewGroup);
+    }
+    label162:
+    label419:
+    label428:
+    label443:
+    label1084:
+    label1221:
     for (;;)
     {
-      try
+      Object localObject2 = (mff)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      if ((((mff)localObject2).jdField_a_of_type_JavaLangString == null) || (((mff)localObject2).jdField_a_of_type_AndroidGraphicsBitmap == null) || (!((mff)localObject2).d))
       {
-        if (!TextUtils.isEmpty(paramIntent)) {
-          this.g = new JSONObject(paramIntent).getString("send_listid");
+        if (((mff)localObject2).jdField_b_of_type_Int != 0) {
+          break label443;
         }
-        if ("-11001".equals(str)) {
-          this.b = 4;
+        localObject1 = String.valueOf(((mff)localObject2).jdField_a_of_type_Long);
+        ((mff)localObject2).jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentAvVideoController.a((String)localObject1, String.valueOf(this.a.jdField_a_of_type_Long), this.a.jdField_a_of_type_Int);
+        if (((mff)localObject2).jdField_a_of_type_JavaLangString.compareTo((String)localObject1) == 0) {
+          break label419;
         }
-        QLog.w(this.i, 1, "SendRedBag_onResult, result[" + str + "], data[" + paramIntent + "], retmsg[" + (String)localObject + "], send_listid[" + this.g + "], mErrorType[" + this.b + "]");
-        bool1 = "0".equals(str);
-        if (bool1) {
-          this.b = 0;
+        ((mff)localObject2).d = true;
+        localObject1 = this.a.jdField_a_of_type_ComTencentAvVideoController.a((String)localObject1, String.valueOf(this.a.jdField_a_of_type_Long), this.a.jdField_a_of_type_Int, false, true);
+        if (localObject1 == null) {
+          break label428;
         }
-        paramIntent = str;
-        a(paramIntent);
-        return bool1;
-        bool1 = false;
+        ((mff)localObject2).jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject1);
       }
-      catch (Exception localException)
-      {
-        continue;
-      }
-      label260:
-      paramIntent = "null";
-      bool1 = bool2;
-    }
-  }
-  
-  public boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, Activity paramActivity, mfj parammfj)
-  {
-    this.b = 2;
-    long l1 = mez.a(paramVideoAppInterface);
-    if (l1 == 0L) {
-      return false;
-    }
-    long l2 = a(paramVideoAppInterface);
-    if (l2 == 0L) {
-      return false;
-    }
-    if (paramActivity == null)
-    {
-      QLog.w(this.i, 1, "SendRedBag, Activity为空");
-      return false;
-    }
-    String str = a(paramVideoAppInterface);
-    paramVideoAppInterface = b(paramVideoAppInterface);
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("recv_uin", l2);
-      localJSONObject.put("recv_name", paramVideoAppInterface);
-      localJSONObject.put("bus_type", 2);
-      localJSONObject.put("channel", "16384");
-      localJSONObject.put("total_num", "2");
-      Intent localIntent = new Intent(BaseApplication.getContext(), SendHbActivity.class);
-      localIntent.putExtra("userId", l1);
-      localIntent.putExtra("userName", str);
-      if (paramInt == 2)
-      {
-        localIntent.putExtra("app_info", "appid#0|bargainor_id#0|channel#bqredpacket2");
-        localIntent.putExtra("come_from", 2);
-        localIntent.putExtra("extra_data", localJSONObject.toString());
-        localIntent.setFlags(536870912);
-        paramActivity.startActivityForResult(localIntent, 801);
-        if (QLog.isDevelopLevel()) {
-          QLog.w(this.i, 4, "SendRedBag, userId[" + l1 + "], userName[" + str + "], recv_name[" + paramVideoAppInterface + "], recv_uin[" + l2 + "], fromType[" + paramInt + "]");
-        }
-        this.jdField_a_of_type_Mfj = parammfj;
-        this.b = 1;
-        this.c = paramInt;
-        mey.i();
-        return true;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
       for (;;)
       {
-        localJSONException.printStackTrace();
+        if (((this.a.jdField_a_of_type_Int != 1) && (this.a.jdField_a_of_type_Int != 2)) || (paramInt != 7) || (this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 8)) {
+          break label694;
+        }
+        paramViewGroup.jdField_b_of_type_Boolean = false;
+        localObject1 = new GradientDrawable();
+        ((GradientDrawable)localObject1).setShape(1);
+        ((GradientDrawable)localObject1).setColor(Color.parseColor("#4C000000"));
+        paramViewGroup.d.setImageDrawable((Drawable)localObject1);
+        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372274));
+        localObject1 = new StringBuilder("");
+        ((StringBuilder)localObject1).append(this.a.jdField_a_of_type_JavaUtilArrayList.size() - 8 + 1);
+        ((StringBuilder)localObject1).append("+");
+        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(((StringBuilder)localObject1).toString());
+        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
+        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText("");
+        paramView.setContentDescription(MultiMembersVideoUI.d(this.a).getString(2131693242));
+        return paramView;
+        paramViewGroup = (mfe)paramView.getTag();
+        if (paramViewGroup != null) {
+          break label1221;
+        }
+        paramViewGroup = a(paramView);
+        break;
+        ((mff)localObject2).d = false;
+        break label162;
+        ((mff)localObject2).jdField_a_of_type_AndroidGraphicsBitmap = null;
+        ((mff)localObject2).d = false;
+      }
+      long l = ((mff)localObject2).jdField_a_of_type_Long;
+      if (((mff)localObject2).jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo != null)
+      {
+        localObject1 = ((mff)localObject2).jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo;
+        label465:
+        if ((localObject1 == null) || (((AVPhoneUserInfo)localObject1).telInfo.mobile == null)) {
+          break label625;
+        }
+        ((mff)localObject2).jdField_a_of_type_JavaLangString = ((AVPhoneUserInfo)localObject1).telInfo.mobile;
+        String str = this.a.jdField_a_of_type_ComTencentAvVideoController.a(((AVPhoneUserInfo)localObject1).telInfo.mobile);
+        if (str == null) {
+          break label599;
+        }
+        ((mff)localObject2).jdField_b_of_type_JavaLangString = bbcl.a(str);
+        ((mff)localObject2).jdField_a_of_type_JavaLangString = str;
+      }
+      for (;;)
+      {
+        ((mff)localObject2).jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)MultiMembersVideoUI.c(this.a).getDrawable(2130841623)).getBitmap();
+        ((mff)localObject2).d = true;
+        break;
+        localObject1 = this.a.jdField_a_of_type_ComTencentAvVideoController.a(l, this.a.jdField_a_of_type_ComTencentAvVideoController.a().f);
+        break label465;
+        label599:
+        ((mff)localObject2).jdField_b_of_type_JavaLangString = null;
+        ((mff)localObject2).jdField_a_of_type_JavaLangString = msp.a(((AVPhoneUserInfo)localObject1).telInfo.mobile, 4);
         continue;
-        localJSONException.putExtra("app_info", "appid#0|bargainor_id#0|channel#bqredpacket1");
+        label625:
+        if ((localObject1 != null) && (QLog.isColorLevel())) {
+          QLog.d("MultiMembersVideoUI", 2, "getView --> can not get Open Id. PhoneInfo = " + ((AVPhoneUserInfo)localObject1).toString());
+        }
+        ((mff)localObject2).jdField_b_of_type_JavaLangString = null;
+        ((mff)localObject2).jdField_a_of_type_JavaLangString = MultiMembersVideoUI.b(this.a).getString(2131693243);
+      }
+      paramViewGroup.jdField_b_of_type_Boolean = true;
+      paramViewGroup.jdField_a_of_type_Long = ((mff)localObject2).jdField_a_of_type_Long;
+      if (((mff)localObject2).jdField_a_of_type_JavaLangString != null)
+      {
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((mff)localObject2).jdField_a_of_type_JavaLangString);
+        label728:
+        if (((mff)localObject2).jdField_a_of_type_AndroidGraphicsBitmap == null) {
+          break label1108;
+        }
+        if ((((mff)localObject2).jdField_b_of_type_Int == 0) || (((mff)localObject2).jdField_b_of_type_JavaLangString == null)) {
+          break label1084;
+        }
+        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(((mff)localObject2).jdField_b_of_type_JavaLangString);
+        localObject1 = ((BitmapDrawable)MultiMembersVideoUI.e(this.a).getDrawable(2130841580)).getBitmap();
+        paramViewGroup.d.setImageBitmap((Bitmap)localObject1);
+        if (((this.a.jdField_a_of_type_ComTencentAvVideoController.a().E == 1) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a().C == 10)) || (this.a.jdField_a_of_type_ComTencentAvVideoController.a().E == 2))
+        {
+          if (!((mff)localObject2).e) {
+            break label1130;
+          }
+          if (paramViewGroup.e.getVisibility() != 0) {
+            paramViewGroup.e.setVisibility(0);
+          }
+          if (paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {
+            paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          }
+          ((mff)localObject2).jdField_a_of_type_Boolean = false;
+        }
+        paramViewGroup.jdField_a_of_type_Boolean = ((mff)localObject2).jdField_a_of_type_Boolean;
+        if (!paramViewGroup.jdField_a_of_type_Boolean) {
+          break label1152;
+        }
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        if (((mff)localObject2).jdField_a_of_type_Int != 2) {
+          break label1164;
+        }
+        paramViewGroup.jdField_a_of_type_Int = 5;
+      }
+      for (;;)
+      {
+        localObject1 = paramView;
+        if (paramViewGroup.d == null) {
+          break;
+        }
+        if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().E != 1) || (this.a.jdField_a_of_type_ComTencentAvVideoController.a().C != 10))
+        {
+          localObject1 = paramView;
+          if (this.a.jdField_a_of_type_Int != 2) {
+            break;
+          }
+        }
+        localObject1 = paramView;
+        if (((mff)localObject2).f) {
+          break;
+        }
+        localObject2 = paramViewGroup.d.getDrawable();
+        localObject1 = paramView;
+        if (localObject2 == null) {
+          break;
+        }
+        localObject1 = paramView;
+        if (!(localObject2 instanceof BitmapDrawable)) {
+          break;
+        }
+        localObject1 = bbdr.a(((BitmapDrawable)localObject2).getBitmap(), true);
+        paramViewGroup.d.setImageBitmap((Bitmap)localObject1);
+        return paramView;
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(((mff)localObject2).jdField_a_of_type_Long));
+        break label728;
+        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+        paramViewGroup.d.setImageBitmap(((mff)localObject2).jdField_a_of_type_AndroidGraphicsBitmap);
+        break label802;
+        label1108:
+        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+        paramViewGroup.d.setImageResource(2130839736);
+        break label802;
+        label1130:
+        if (paramViewGroup.e.getVisibility() != 0) {
+          break label905;
+        }
+        paramViewGroup.e.setVisibility(8);
+        break label905;
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        break label929;
+        if (((mff)localObject2).c) {
+          paramViewGroup.jdField_a_of_type_Int = 3;
+        } else if (((mff)localObject2).jdField_a_of_type_Int == 1) {
+          paramViewGroup.jdField_a_of_type_Int = 2;
+        } else if (((mff)localObject2).jdField_b_of_type_Boolean) {
+          paramViewGroup.jdField_a_of_type_Int = 1;
+        } else {
+          paramViewGroup.jdField_a_of_type_Int = 0;
+        }
       }
     }
   }

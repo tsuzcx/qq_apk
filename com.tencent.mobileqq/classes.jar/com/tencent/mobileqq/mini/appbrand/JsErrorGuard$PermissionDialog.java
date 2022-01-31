@@ -2,10 +2,10 @@ package com.tencent.mobileqq.mini.appbrand;
 
 import android.app.Activity;
 import android.view.View;
-import bafb;
+import bbgg;
 
 class JsErrorGuard$PermissionDialog
-  extends bafb
+  extends bbgg
 {
   private Activity mActivity;
   
@@ -18,8 +18,8 @@ class JsErrorGuard$PermissionDialog
   
   public void initUI()
   {
-    setContentView(2131493336);
-    findViewById(2131303262).setVisibility(8);
+    setContentView(2131558897);
+    findViewById(2131368929).setVisibility(8);
   }
 }
 

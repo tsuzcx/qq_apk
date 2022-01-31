@@ -1,34 +1,113 @@
-import android.content.Context;
+import com.tencent.mobileqq.activity.contact.troop.DiscussionView;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class afmo
+  extends ajvl
 {
-  public ArrayList<afmp> a;
-  public int[] a;
-  public String[] a;
+  private afmo(DiscussionView paramDiscussionView) {}
   
-  public afmo()
+  protected void a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.a.jdField_a_of_type_Aimo.notifyDataSetChanged();
   }
   
-  public void a(Context paramContext, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
+  protected void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt1;
-    String[] arrayOfString = new String[paramArrayOfInt2.length];
-    int i = 0;
-    while (i < paramArrayOfInt2.length)
-    {
-      arrayOfString[i] = paramContext.getString(paramArrayOfInt2[i]);
-      this.jdField_a_of_type_JavaUtilArrayList.add(new afmp(paramArrayOfInt1[i], arrayOfString[i]));
-      i += 1;
+    if (paramBoolean) {
+      this.a.i();
     }
-    this.jdField_a_of_type_ArrayOfJavaLangString = arrayOfString;
+    this.a.jdField_a_of_type_Aimo.notifyDataSetChanged();
+    if (this.a.c)
+    {
+      this.a.c = false;
+      if (paramBoolean)
+      {
+        DiscussionView.a(this.a).a(0);
+        this.a.a(100, 800L);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.springBackOverScrollHeaderView();
+    this.a.b(2131719788);
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_Aimo.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_Aimo.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_Aimo.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DiscussionView", 2, "onUncollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
+    }
+    this.a.jdField_a_of_type_Aimo.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  {
+    this.a.jdField_a_of_type_Aimo.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_Aimo.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_Aimo.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b()
+  {
+    this.a.jdField_a_of_type_Aimo.notifyDataSetChanged();
+  }
+  
+  protected void b(boolean paramBoolean, Long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DiscussionView", 2, "onUncollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
+    }
+    this.a.jdField_a_of_type_Aimo.notifyDataSetChanged();
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_Aimo.notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afmo
  * JD-Core Version:    0.7.0.1
  */

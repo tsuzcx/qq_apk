@@ -1,34 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberAQFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGallery;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public class pvj
-  extends ohe
+  implements View.OnClickListener
 {
-  public pvj(ReadInJoySelectMemberAQFragment paramReadInJoySelectMemberAQFragment) {}
+  public pvj(ComponentContentGallery paramComponentContentGallery, ArticleInfo paramArticleInfo, int paramInt1, String paramString, int paramInt2) {}
   
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if (("OidbSvc.0xbd4_1".equals(paramString)) && (this.a.getActivity() != null))
-    {
-      this.a.a = true;
-      this.a.a();
-      if (paramInt == 0)
-      {
-        ReadInJoySelectMemberAQFragment.a(this.a, 0);
-        ReadInJoySelectMemberAQFragment.a(this.a, false);
-        this.a.c();
-        this.a.getActivity().finish();
-        ReadInJoySelectMemberAQFragment.a(this.a, true);
-      }
-    }
-    else
+    if (ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery) == null) {}
+    do
     {
       return;
-    }
-    ReadInJoySelectMemberAQFragment.a(this.a, true);
-    ReadInJoySelectMemberAQFragment.a(this.a, 2);
-    ReadInJoySelectMemberAQFragment.a(this.a, ajjy.a(2131646958) + paramInt);
-    bbmy.a(this.a.getActivity(), 1, this.a.getString(2131652726), 0).b(ReadInJoySelectMemberAQFragment.a(this.a));
+      paramView = ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery).a();
+    } while (paramView == null);
+    paramView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1, ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery), this.b);
   }
 }
 

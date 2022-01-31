@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.theme.diy;
 
-import axml;
+import ayms;
 
 class ThemeDIYActivity$DataLoading$1
-  implements axml
+  implements ayms
 {
   ThemeDIYActivity$DataLoading$1(ThemeDIYActivity.DataLoading paramDataLoading) {}
   

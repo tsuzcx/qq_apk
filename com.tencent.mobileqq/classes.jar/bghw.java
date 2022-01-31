@@ -1,22 +1,26 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import cooperation.comic.ui.QQComicFragment;
+import java.util.Observable;
+import java.util.Observer;
 
-class bghw
-  implements bfrh
+public class bghw
+  implements Observer
 {
-  bghw(bghv parambghv, String paramString) {}
+  public bghw(QQComicFragment paramQQComicFragment, WebView paramWebView) {}
   
-  public void a()
+  public void update(Observable paramObservable, Object paramObject)
   {
-    if (this.jdField_a_of_type_Bghv.a != null)
+    if (bgij.a != null)
     {
-      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playAnimationFinish:1})";
-      this.jdField_a_of_type_Bghv.a.callJs(str);
+      QLog.d("WebLog_WebViewFragment", 4, "RuntimeCreateObserver update ");
+      bgij.a.a(this.jdField_a_of_type_ComTencentSmttSdkWebView.getContext());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bghw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
-class abcr
-  implements DialogInterface.OnClickListener
+public class abcr
+  extends BroadcastReceiver
 {
-  abcr(abcp paramabcp) {}
+  public abcr(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt == 1) {
-      this.a.b();
+    if (!this.a.isFinishing()) {
+      this.a.finish();
     }
-    while (abcp.a(this.a) == null) {
-      return;
-    }
-    abcp.a(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abcr
  * JD-Core Version:    0.7.0.1
  */

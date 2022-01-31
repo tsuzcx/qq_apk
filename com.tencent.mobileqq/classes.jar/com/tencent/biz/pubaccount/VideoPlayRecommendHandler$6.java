@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount;
 
 import android.text.TextUtils;
-import bgmq;
+import bhvh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -10,16 +10,16 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import neu;
-import nev;
-import obz;
+import npv;
+import npw;
+import onk;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.FeedsIdInfo;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqBody;
 
 public class VideoPlayRecommendHandler$6
   implements Runnable
 {
-  public VideoPlayRecommendHandler$6(neu paramneu, int paramInt1, int paramInt2, VideoInfo paramVideoInfo, String paramString, nev paramnev) {}
+  public VideoPlayRecommendHandler$6(npv paramnpv, int paramInt1, int paramInt2, VideoInfo paramVideoInfo, String paramString, npw paramnpw) {}
   
   public void run()
   {
@@ -27,15 +27,15 @@ public class VideoPlayRecommendHandler$6
     {
       Object localObject1 = new oidb_0x6cf.ReqBody();
       long l = 0L;
-      Object localObject2 = obz.a();
+      Object localObject2 = onk.a();
       if (localObject2 != null) {
         l = ((QQAppInterface)localObject2).getLongAccountUin();
       }
       ((oidb_0x6cf.ReqBody)localObject1).uint64_uin.set(l);
       ((oidb_0x6cf.ReqBody)localObject1).uint32_req_times.set(this.jdField_a_of_type_Int);
-      ((oidb_0x6cf.ReqBody)localObject1).uint32_req_network.set(neu.a(this.this$0));
+      ((oidb_0x6cf.ReqBody)localObject1).uint32_req_network.set(npv.a(this.this$0));
       ((oidb_0x6cf.ReqBody)localObject1).uint32_req_os.set(1);
-      ((oidb_0x6cf.ReqBody)localObject1).uint32_req_sim_type.set(bgmq.c());
+      ((oidb_0x6cf.ReqBody)localObject1).uint32_req_sim_type.set(bhvh.c());
       ((oidb_0x6cf.ReqBody)localObject1).uint32_req_source.set(this.b);
       ((oidb_0x6cf.ReqBody)localObject1).uint32_req_sub_source.set(5);
       if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g))
@@ -59,7 +59,7 @@ public class VideoPlayRecommendHandler$6
       for (;;)
       {
         localObject1 = this.this$0.makeOIDBPkg("OidbSvc.0x6cf", 1743, 0, ((oidb_0x6cf.ReqBody)localObject1).toByteArray());
-        ((ToServiceMsg)localObject1).addAttribute("VALUE_OBSERVER_TAG", Integer.valueOf(this.jdField_a_of_type_Nev.hashCode()));
+        ((ToServiceMsg)localObject1).addAttribute("VALUE_OBSERVER_TAG", Integer.valueOf(this.jdField_a_of_type_Npw.hashCode()));
         this.this$0.sendPbReq((ToServiceMsg)localObject1);
         if (!QLog.isColorLevel()) {
           break;

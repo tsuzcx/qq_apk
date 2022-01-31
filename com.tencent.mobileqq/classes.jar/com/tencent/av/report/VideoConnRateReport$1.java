@@ -1,17 +1,17 @@
 package com.tencent.av.report;
 
-import llm;
+import lwe;
 
 public class VideoConnRateReport$1
   implements Runnable
 {
-  public VideoConnRateReport$1(llm paramllm) {}
+  public VideoConnRateReport$1(lwe paramlwe) {}
   
   public void run()
   {
     synchronized (this.this$0.a)
     {
-      llm.a(this.this$0);
+      lwe.a(this.this$0);
       return;
     }
   }

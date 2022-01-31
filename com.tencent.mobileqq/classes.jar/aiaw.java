@@ -1,31 +1,12 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-import com.tencent.widget.Switch;
-
-class aiaw
-  extends View.AccessibilityDelegate
+public abstract interface aiaw
 {
-  aiaw(aiat paramaiat) {}
+  public abstract int a(CharSequence paramCharSequence, int paramInt1, int paramInt2);
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
-  {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    if (paramView != null)
-    {
-      paramView = (Switch)paramView.findViewById(2131298121);
-      if ((paramView != null) && (paramView.getVisibility() != 8))
-      {
-        paramAccessibilityNodeInfo.setCheckable(true);
-        paramAccessibilityNodeInfo.setChecked(paramView.isChecked());
-        paramAccessibilityNodeInfo.setClassName(Switch.class.getName());
-      }
-    }
-  }
+  public abstract int b(CharSequence paramCharSequence, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aiaw
  * JD-Core Version:    0.7.0.1
  */

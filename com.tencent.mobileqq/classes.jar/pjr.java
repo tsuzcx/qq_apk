@@ -1,22 +1,10 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
-import com.tencent.widget.AdapterView;
+import com.tencent.qphone.base.util.QLog;
 
 public class pjr
-  implements behi
 {
-  public pjr(ComponentContentGridImage paramComponentContentGridImage) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static void a(String paramString1, String paramString2)
   {
-    if ((ComponentContentGridImage.a(this.a) == 62) || (ComponentContentGridImage.a(this.a) == 63) || (ComponentContentGridImage.a(this.a) == 64) || (ComponentContentGridImage.a(this.a) == 65))
-    {
-      if (ComponentContentGridImage.a(this.a) != null) {
-        ComponentContentGridImage.a(this.a).a(paramInt);
-      }
-      return;
-    }
-    ComponentContentGridImage.a(this.a, paramInt, ComponentContentGridImage.a(this.a).a());
+    QLog.d("FluencyLogUtil", 1, "Class : " + paramString1 + " Scene : " + paramString2);
   }
 }
 

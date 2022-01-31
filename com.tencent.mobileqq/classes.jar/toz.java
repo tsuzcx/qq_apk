@@ -1,34 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-public class toz<T>
-  extends SimpleObserver<T>
+public class toz
+  extends syq
 {
-  private toz(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public stm a = new stm();
   
-  public void onCancel()
+  public toz(qqstory_service.RspAuthKey paramRspAuthKey)
   {
-    super.onCancel();
-    urk.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  CANCEL", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    urk.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  ERROR", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
-  }
-  
-  public void onNext(T paramT)
-  {
-    super.onNext(paramT);
-    urk.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s] DONE", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
+    super(paramRspAuthKey.result);
+    this.a.jdField_a_of_type_JavaLangString = paramRspAuthKey.user_ip.get().toStringUtf8();
+    this.a.b = paramRspAuthKey.server_ip1.get().toStringUtf8();
+    this.a.c = paramRspAuthKey.server_ip2.get().toStringUtf8();
+    this.a.d = paramRspAuthKey.backup_server_ip1.get().toStringUtf8();
+    this.a.e = paramRspAuthKey.backup_server_ip2.get().toStringUtf8();
+    this.a.jdField_a_of_type_ArrayOfByte = paramRspAuthKey.auth_key.get().toByteArray();
+    this.a.jdField_a_of_type_Long = (paramRspAuthKey.expire_time.get() * 1000L);
   }
 }
 

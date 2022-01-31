@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.util;
 
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import rrt;
+import sel;
 
 public class OpenWithQQBrowser$1
   implements Runnable
 {
-  public OpenWithQQBrowser$1(rrt paramrrt, String paramString) {}
+  public OpenWithQQBrowser$1(sel paramsel, String paramString) {}
   
   public void run()
   {
-    rrt.a(this.this$0, MsfSdkUtils.insertMtype("Web", this.a), 0);
+    sel.a(this.this$0, MsfSdkUtils.insertMtype("Web", this.a), 0);
   }
 }
 

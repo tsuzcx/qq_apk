@@ -1,12 +1,21 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.view.View;
 
-public final class vhs
-  implements FilenameFilter
+class vhs
+  implements bfoq
 {
-  public boolean accept(File paramFile, String paramString)
+  vhs(vhp paramvhp, bfol parambfol) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    return paramString.endsWith(".mp4");
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      this.jdField_a_of_type_Vhp.c();
+    }
   }
 }
 

@@ -1,22 +1,28 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-
-class aslx
-  extends mmm
+public class aslx
 {
-  aslx(aslv paramaslv, asmc paramasmc) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public aslv a()
   {
-    QLog.i("reportPlay", 1, " reportPlay code:" + paramInt);
-    if (this.jdField_a_of_type_Asmc != null) {
-      this.jdField_a_of_type_Asmc.a(paramInt, paramArrayOfByte, paramBundle);
-    }
+    return new aslv(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, null);
+  }
+  
+  public aslx a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public aslx a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aslx
  * JD-Core Version:    0.7.0.1
  */

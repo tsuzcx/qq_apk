@@ -1,317 +1,64 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.mobileqq.transfile.ScribblePicDownloadProcessor.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-
 public class axud
-  extends axoo
 {
-  MessageForScribble a;
-  private int jdField_c_of_type_Int;
-  private ArrayList<String> jdField_c_of_type_JavaUtilArrayList;
-  String e = "";
-  private int p;
+  private int jdField_a_of_type_Int;
+  private short jdField_a_of_type_Short;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private boolean b;
   
-  public axud(axvo paramaxvo, axvt paramaxvt)
+  axud(int paramInt)
   {
-    super(paramaxvo, paramaxvt);
+    this.jdField_a_of_type_ArrayOfByte = new byte[paramInt];
   }
   
-  private void a(MessageForScribble paramMessageForScribble)
+  public int a()
   {
-    if (paramMessageForScribble != null)
-    {
-      paramMessageForScribble.prewrite();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessageForScribble.frienduin, paramMessageForScribble.istroop, paramMessageForScribble.uniseq, paramMessageForScribble.msgData);
-    }
+    return this.jdField_a_of_type_Int;
   }
   
-  private void g()
+  public short a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble == null) {
-      return;
-    }
-    String str = avhm.a(this.jdField_a_of_type_Axvt.h);
-    if (str.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileMd5))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mCombineFileExist = true;
-      }
-      int i = avhd.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-      if (i == avhd.d)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mDataFileExist = true;
-          this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mInit = true;
-        }
-        e();
-        return;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mDataFileExist = false;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mInit = true;
-      }
-      b(9303, a(new Exception("SpliteCombineFile illegal result: " + i)));
-      d();
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mDataFileExist = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mCombineFileExist = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mInit = true;
-    }
-    b(9041, a(new Exception("SpliteCombineFile illegal md5String: " + str + "  msg.combineFileMd5:  " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileMd5)));
-    d();
+    return this.jdField_a_of_type_Short;
   }
   
-  public void aU_()
+  public void a(int paramInt)
   {
-    super.aU_();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.fileDownloadStatus = 3;
-    }
-    String str;
-    if ((this.e != null) && (!this.e.startsWith("https")))
-    {
-      str = axwx.a(this.e);
-      this.jdField_c_of_type_JavaUtilArrayList = axwx.a().a(str, 1018);
-    }
-    if ((this.jdField_c_of_type_JavaUtilArrayList != null) && (!this.jdField_c_of_type_JavaUtilArrayList.isEmpty()))
-    {
-      str = "ipListFromInnerDns : ";
-      int i = 0;
-      while (i < this.jdField_c_of_type_JavaUtilArrayList.size())
-      {
-        str = str + " " + (String)this.jdField_c_of_type_JavaUtilArrayList.get(i);
-        i += 1;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("ScribblePicDownloadProcessor", 2, str);
-      }
-    }
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945A", "0X800945A", 0, 0, "", "", "", "");
-    f();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public int b()
+  public void a(short paramShort)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScribblePicDownloadProcessor", 2, "resume()");
-    }
-    if (this.k)
-    {
-      this.k = false;
-      this.o = false;
-      this.j = 0;
-      this.i = "";
-      this.jdField_a_of_type_Axos.a.post(new ScribblePicDownloadProcessor.1(this));
-    }
-    return 0;
+    this.jdField_a_of_type_Short = paramShort;
   }
   
-  public int c()
+  public void a(boolean paramBoolean)
   {
-    super.c();
-    b("uiParam", this.jdField_a_of_type_Axvt.toString());
-    if ((this.jdField_a_of_type_Axvt.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && ((this.jdField_a_of_type_Axvt.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForScribble)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble = ((MessageForScribble)this.jdField_a_of_type_Axvt.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      this.e = this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileUrl;
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileUrl.equals("")) || (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileUrl.startsWith("http")))
-    {
-      b(9302, a(new Exception("combineFileUrl illegal " + this.e)));
-      d();
-      return -1;
-    }
-    this.jdField_a_of_type_Axvt.h = avhd.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_Axvt.h))
-    {
-      b(9302, a(new Exception("combineFileMd5 illegal " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileMd5)));
-      d();
-      return -1;
-    }
-    return 0;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  void d()
+  public boolean a()
   {
-    super.d();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.fileDownloadStatus = 2;
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-    d(2005);
-    avhb localavhb = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    if (localavhb != null)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble == null) {
-        break label92;
-      }
-      localavhb.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-    }
-    for (;;)
-    {
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945B", "0X800945B", 0, 0, "", "", "", "");
-      return;
-      label92:
-      localavhb.a(null);
-    }
+    return this.jdField_a_of_type_Boolean;
   }
   
-  void e()
+  public byte[] a()
   {
-    super.e();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.fileDownloadStatus = 1;
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-    d(2003);
-    avhb localavhb = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    if (localavhb != null)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble == null) {
-        break label92;
-      }
-      localavhb.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-    }
-    for (;;)
-    {
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945C", "0X800945C", 0, 0, "", "", "", "");
-      return;
-      label92:
-      localavhb.a(null);
-    }
+    return this.jdField_a_of_type_ArrayOfByte;
   }
   
-  public void f()
+  public void b(boolean paramBoolean)
   {
-    QLog.i("ScribblePicDownloadProcessor", 2, "scribble download start ");
-    this.jdField_b_of_type_Axow.a();
-    String str1 = this.e;
-    d(2001);
-    axro localaxro = new axro();
-    localaxro.jdField_a_of_type_Axrt = this;
-    localaxro.jdField_a_of_type_JavaLangString = str1;
-    localaxro.jdField_a_of_type_Int = 0;
-    localaxro.c = this.jdField_a_of_type_Axvt.h;
-    localaxro.e = String.valueOf(this.jdField_a_of_type_Axvt.jdField_a_of_type_Long);
-    localaxro.g = this.jdField_a_of_type_Axvt.jdField_a_of_type_Int;
-    localaxro.f = this.jdField_a_of_type_Axvt.jdField_b_of_type_Int;
-    localaxro.jdField_a_of_type_Long = 0L;
-    localaxro.k = true;
-    localaxro.l = true;
-    String str2;
-    if ((this.jdField_c_of_type_JavaUtilArrayList != null) && (!this.jdField_c_of_type_JavaUtilArrayList.isEmpty()) && (this.jdField_c_of_type_Int < this.jdField_c_of_type_JavaUtilArrayList.size()))
-    {
-      str2 = (String)this.jdField_c_of_type_JavaUtilArrayList.get(this.jdField_c_of_type_Int);
-      str2 = axwx.a(localaxro.jdField_a_of_type_JavaLangString, str2);
-      if ((str2 != null) && (!str2.equals(localaxro.jdField_a_of_type_JavaLangString))) {
-        localaxro.jdField_a_of_type_JavaLangString = str2;
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945D", "0X800945D", 0, 0, "", "", "", "");
-      }
-      for (;;)
-      {
-        str2 = axub.a(str1);
-        if (QLog.isColorLevel()) {
-          QLog.i("ScribblePicDownloadProcessor", 2, "httpDownRespDomain: " + str2 + "reqUrl : " + str1 + " " + localaxro.jdField_a_of_type_JavaLangString + " uuid:" + this.jdField_a_of_type_Axvt.e + " downOffset:" + localaxro.jdField_a_of_type_Long);
-        }
-        QLog.i("ScribblePicDownloadProcessor", 2, "index:" + this.jdField_c_of_type_Int + str1);
-        if (f()) {
-          break;
-        }
-        return;
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945E", "0X800945E", 0, 0, "", "", "", "");
-      }
-      this.jdField_a_of_type_Axsp = localaxro;
-      n();
-      this.jdField_a_of_type_Axrr.a(localaxro);
-      return;
-    }
+    this.b = paramBoolean;
   }
   
-  public void onResp(axsq paramaxsq)
+  public boolean b()
   {
-    super.onResp(paramaxsq);
-    this.jdField_a_of_type_Axsp = null;
-    Object localObject = new StringBuilder().append(" result:");
-    if (paramaxsq.jdField_a_of_type_Int == 0)
-    {
-      bool = true;
-      b("onHttpResp", bool);
-      localObject = this.jdField_b_of_type_Axow;
-      if (paramaxsq.jdField_a_of_type_Int != 0) {
-        break label179;
-      }
-    }
-    label179:
-    for (boolean bool = true;; bool = false)
-    {
-      a((axow)localObject, paramaxsq, bool);
-      this.jdField_a_of_type_Long = paramaxsq.jdField_a_of_type_Long;
-      if (this.jdField_a_of_type_Long <= 0L) {
-        this.jdField_a_of_type_Long = (paramaxsq.jdField_b_of_type_Long + paramaxsq.jdField_a_of_type_Axsp.jdField_a_of_type_Long);
-      }
-      this.jdField_b_of_type_Long += paramaxsq.c;
-      QLog.i("ScribblePicDownloadProcessor", 2, "scribble download onResp resp.mResult = " + paramaxsq.jdField_a_of_type_Int);
-      if (paramaxsq.jdField_a_of_type_Int != 0) {
-        break label184;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mCombineFileExist = true;
-      }
-      g();
-      return;
-      bool = false;
-      break;
-    }
-    label184:
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mCombineFileExist = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mDataFileExist = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mInit = true;
-    }
-    if (this.p < 5)
-    {
-      this.p += 1;
-      if ((this.jdField_c_of_type_JavaUtilArrayList != null) && (!this.jdField_c_of_type_JavaUtilArrayList.isEmpty()) && (this.jdField_c_of_type_Int < this.jdField_c_of_type_JavaUtilArrayList.size()))
-      {
-        QLog.e("ScribblePicDownloadProcessor", 2, "scribble download  retry by changeIp");
-        m();
-        paramaxsq = axwx.a(this.e);
-        axwx.a().a(paramaxsq, (String)this.jdField_c_of_type_JavaUtilArrayList.get(this.jdField_c_of_type_Int), 1018);
-        this.jdField_c_of_type_Int += 1;
-        f();
-        return;
-      }
-      if ((paramaxsq.jdField_b_of_type_Int == 9364) && (this.l < 3))
-      {
-        b("[netChg]", "failed.but net change detect.so retry");
-        QLog.e("ScribblePicDownloadProcessor", 2, "scribble download  retry");
-        this.l += 1;
-        m();
-        f();
-        return;
-      }
-    }
-    d();
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axud
  * JD-Core Version:    0.7.0.1
  */

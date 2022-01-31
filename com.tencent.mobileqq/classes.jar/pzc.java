@@ -1,110 +1,207 @@
-import java.math.RoundingMode;
-import java.text.NumberFormat;
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Looper;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager.1;
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
+import mqq.app.AppRuntime;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
 public class pzc
+  implements Manager
 {
-  public static HashMap<Integer, Long> a = new HashMap();
-  public static HashMap<Integer, ArrayList<pzd>> b = new HashMap();
+  public static volatile boolean b;
+  protected int a;
+  protected long a;
+  protected bbwl a;
+  protected AppInterface a;
+  protected String a;
+  protected ArrayList<pze> a;
+  protected HashMap<String, String> a;
+  protected boolean a;
+  protected int b;
+  private int c = -1;
   
-  public static JSONArray a()
+  static
   {
-    try
-    {
-      a();
-      JSONArray localJSONArray1 = new JSONArray();
-      Iterator localIterator = b.keySet().iterator();
-      NumberFormat localNumberFormat = NumberFormat.getInstance(Locale.US);
-      localNumberFormat.setMaximumFractionDigits(2);
-      localNumberFormat.setMinimumFractionDigits(2);
-      localNumberFormat.setRoundingMode(RoundingMode.HALF_UP);
-      localNumberFormat.setGroupingUsed(false);
-      while (localIterator.hasNext())
-      {
-        Object localObject = (Integer)localIterator.next();
-        localObject = ((ArrayList)b.get(localObject)).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          pzd localpzd = (pzd)((Iterator)localObject).next();
-          JSONObject localJSONObject = new JSONObject();
-          try
-          {
-            localJSONObject.put("downloadTime", new Float(localNumberFormat.format(Math.round(localpzd.jdField_a_of_type_Float * 100.0F) / 100.0F)));
-            localJSONObject.put("speedList", localpzd.b);
-            localJSONArray1.put(localJSONObject);
-          }
-          catch (JSONException localJSONException)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-      }
-    }
-    finally {}
-    return localJSONArray2;
+    jdField_b_of_type_Boolean = true;
   }
   
-  public static void a()
+  public pzc(AppInterface paramAppInterface)
   {
-    Iterator localIterator = a.keySet().iterator();
-    long l = System.currentTimeMillis();
-    while (localIterator.hasNext())
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Bbwl = ((bbwi)paramAppInterface.getManager(47)).a(1);
+  }
+  
+  public static RefreshData b(Context paramContext, int paramInt)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      Integer localInteger = (Integer)localIterator.next();
-      if (((Long)a.get(localInteger)).longValue() < l - 60000L)
-      {
-        b.remove(localInteger);
-        localIterator.remove();
+      localObject = (pzc)((AppRuntime)localObject).getManager(270);
+      if (localObject != null) {
+        return ((pzc)localObject).a(paramContext, paramInt);
       }
+    }
+    return null;
+  }
+  
+  private void b(int paramInt1, String paramString, long paramLong, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt2;
+    qaa.a(this.jdField_a_of_type_JavaLangString, paramLong);
+    paramInt1 = 0;
+    while (paramInt1 < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      ((pze)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+      paramInt1 += 1;
     }
   }
   
-  public static void a(int paramInt, long paramLong)
+  public int a()
   {
-    if (paramLong == 0L) {
-      return;
-    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public RefreshData a(Context paramContext, int paramInt)
+  {
+    RefreshData localRefreshData = null;
+    paramContext = bbjn.a(paramContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramInt);
+    if (paramContext != null) {}
     for (;;)
     {
-      long l;
       try
       {
-        l = System.currentTimeMillis();
-        a.put(Integer.valueOf(paramInt), Long.valueOf(l));
-        if (b.get(Integer.valueOf(paramInt)) != null)
-        {
-          ArrayList localArrayList1 = (ArrayList)b.get(Integer.valueOf(paramInt));
-          localpzd1 = (pzd)localArrayList1.get(0);
-          pzd localpzd2 = new pzd();
-          localpzd2.b = paramLong;
-          localpzd2.jdField_a_of_type_Long = l;
-          localpzd2.jdField_a_of_type_Float = ((float)(l - localpzd1.jdField_a_of_type_Long) / 1000.0F);
-          localArrayList1.add(localpzd2);
-          b.put(Integer.valueOf(paramInt), localArrayList1);
-          a();
-          return;
+        paramContext = new JSONObject(paramContext);
+        if (paramContext != null) {
+          localRefreshData = new RefreshData(paramContext);
         }
+        return localRefreshData;
       }
-      finally {}
-      ArrayList localArrayList2 = new ArrayList();
-      pzd localpzd1 = new pzd();
-      localpzd1.b = paramLong;
-      localpzd1.jdField_a_of_type_Long = l;
-      localpzd1.jdField_a_of_type_Float = 0.0F;
-      localArrayList2.add(localpzd1);
+      catch (Exception paramContext)
+      {
+        paramContext = null;
+        continue;
+      }
+      paramContext = null;
     }
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void a(int paramInt1, String paramString, long paramLong, int paramInt2)
+  {
+    if (Thread.currentThread() == Looper.getMainLooper().getThread())
+    {
+      b(paramInt1, paramString, paramLong, paramInt2);
+      return;
+    }
+    ThreadManager.getUIHandler().post(new ReadInJoyRefreshManager.1(this, paramInt1, paramString, paramLong, paramInt2));
+  }
+  
+  public void a(pze parampze)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(parampze)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(parampze);
+      }
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return (a() == 1) && (qaa.b() == 1);
+  }
+  
+  public boolean a(RefreshData paramRefreshData, int paramInt)
+  {
+    return a(paramRefreshData, 0, paramInt);
+  }
+  
+  public boolean a(RefreshData paramRefreshData, int paramInt1, int paramInt2)
+  {
+    Object localObject = paramRefreshData.id;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyRefreshManager", 2, "downloadRefreshRes start id = " + (String)localObject);
+    }
+    String str = qaa.a((String)localObject);
+    if (qaa.a((String)localObject)) {
+      return true;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.get("refresh_" + (String)localObject) != null) {
+      return false;
+    }
+    bbdj.a(str);
+    this.jdField_a_of_type_JavaUtilHashMap.put("refresh_" + (String)localObject, paramRefreshData.url);
+    str = str + ".zip";
+    File localFile = new File(str);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("refreshId", (String)localObject);
+    localObject = new bbwg(paramRefreshData.url, localFile);
+    ((bbwg)localObject).jdField_b_of_type_Int = paramInt1;
+    ((bbwg)localObject).d = 60L;
+    ((bbwg)localObject).m = true;
+    this.jdField_a_of_type_Bbwl.a((bbwg)localObject, new pzd(this, str, paramRefreshData, paramInt2), localBundle);
+    return false;
+  }
+  
+  public void b(pze parampze)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(parampze);
+      return;
+    }
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Int = -1;
+    jdField_b_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     pzc
  * JD-Core Version:    0.7.0.1
  */

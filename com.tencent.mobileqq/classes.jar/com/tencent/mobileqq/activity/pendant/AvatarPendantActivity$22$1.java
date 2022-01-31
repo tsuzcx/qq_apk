@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import afwc;
+import agib;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 
 public class AvatarPendantActivity$22$1
   implements Runnable
 {
-  public AvatarPendantActivity$22$1(afwc paramafwc) {}
+  public AvatarPendantActivity$22$1(agib paramagib) {}
   
   public void run()
   {

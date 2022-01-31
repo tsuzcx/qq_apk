@@ -1,50 +1,159 @@
-import android.app.Dialog;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Message;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aama
-  extends Handler
+  extends ajxl
 {
-  public aama(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
+  private aama(AutoRemarkActivity paramAutoRemarkActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onGetAutoInfo(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
   {
-    if (paramMessage.what == 1000)
-    {
-      if (this.a.a()) {
-        break label149;
-      }
-      i = paramMessage.arg1 - 1;
-      if (i != 0) {
-        break label39;
-      }
-      ContactSyncJumpActivity.a(this.a);
-    }
-    label39:
-    while ((this.a.jdField_a_of_type_AndroidAppDialog == null) || (this.a.jdField_a_of_type_Int != 2))
-    {
-      int i;
+    if (!TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramString1)) {
       return;
-      if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_Int == 2))
+    }
+    if (paramBoolean)
+    {
+      if ((!AutoRemarkActivity.a(this.a.b)) && (!this.a.jdField_a_of_type_Boolean))
       {
-        paramMessage = "(" + i + ")";
-        ((TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131299610)).setText(String.format(this.a.getResources().getString(2131632980), new Object[] { paramMessage }));
+        if (QLog.isColorLevel()) {
+          QLog.d("AutoRemarkActivity", 2, "onGetAutoInfo remark = " + paramString2);
+        }
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString2);
       }
-      paramMessage = obtainMessage(1000);
-      paramMessage.arg1 = i;
-      sendMessageDelayed(paramMessage, 1000L);
+      try
+      {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+        if (AppSetting.d) {
+          AutoRemarkActivity.a(this.a).setContentDescription(this.a.getResources().getString(2131693546) + this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
+        }
+        this.a.c = paramInt;
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(AutoRemarkActivity.a(this.a.app, this.a.c));
+        return;
+      }
+      catch (IndexOutOfBoundsException paramString1)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("AutoRemarkActivity", 2, "onGetAutoInfo | IndexOutOfBoundsException");
+          }
+        }
+      }
+    }
+    this.a.c = 0;
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(AutoRemarkActivity.a(this.a.app, this.a.c));
+  }
+  
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  {
+    if ((this.a.jdField_a_of_type_Int == 1) && (TextUtils.equals(paramString1, this.a.jdField_a_of_type_JavaLangString)))
+    {
+      this.a.getIntent().getLongExtra("k_msg_key", 0L);
+      if ((paramBoolean) && (bbev.d(this.a)))
+      {
+        this.a.d = 0;
+        this.a.jdField_a_of_type_JavaLangString = paramString1;
+        this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.b(this.a.jdField_a_of_type_JavaLangString, (byte)this.a.c, (byte)0);
+      }
+    }
+    else
+    {
       return;
     }
-    label149:
-    ((TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131299610)).setText(String.format(this.a.getResources().getString(2131632980), new Object[] { "" }));
+    if ((this.a.d == 2) || (!bbev.d(this.a)))
+    {
+      AutoRemarkActivity.f(this.a);
+      AutoRemarkActivity.a(this.a, this.a.getString(2131718741));
+      return;
+    }
+    paramString2 = this.a;
+    paramString2.d += 1;
+    this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(paramString1, this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), false);
+  }
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  {
+    if (!TextUtils.equals(paramString, this.a.jdField_a_of_type_JavaLangString)) {}
+    do
+    {
+      return;
+      if (paramBoolean1)
+      {
+        if (paramBundle.getInt("resultCode") == 0)
+        {
+          int i = paramBundle.getInt("friend_setting");
+          if (paramBundle.getString("nick_name") == null) {}
+          switch (i)
+          {
+          default: 
+            AutoRemarkActivity.c(this.a);
+            bcpw.a(this.a, 2, 2131719270, 0).b(this.a.getTitleBarHeight());
+            this.a.a();
+          }
+          for (;;)
+          {
+            ((ajsk)this.a.app.a(53)).a(this.a.getIntent());
+            return;
+            AutoRemarkActivity.a(this.a);
+            bcpw.a(this.a, 2, 2131689639, 0).b(this.a.getTitleBarHeight());
+            this.a.a();
+            continue;
+            AutoRemarkActivity.b(this.a);
+            bcpw.a(this.a, 2, 2131719270, 0).b(this.a.getTitleBarHeight());
+            this.a.a();
+          }
+        }
+        AutoRemarkActivity.d(this.a);
+        paramBundle = paramBundle.getString("ErrorString");
+        if (QLog.isColorLevel()) {
+          QLog.d("AutoRemarkActivity", 2, "add friend response error and ErroString = " + paramBundle);
+        }
+        paramString = paramBundle;
+        if (TextUtils.isEmpty(paramBundle)) {
+          paramString = this.a.getString(2131718741);
+        }
+        AutoRemarkActivity.a(this.a, paramString);
+        return;
+      }
+      AutoRemarkActivity.e(this.a);
+      AutoRemarkActivity.a(this.a, this.a.getString(2131718741));
+    } while (!QLog.isColorLevel());
+    QLog.d("AutoRemarkActivity", 2, "add friend response error and isSuccuss = NO");
+  }
+  
+  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
+  {
+    if (this.a.jdField_a_of_type_Int == 1)
+    {
+      if (paramString != null) {
+        break label40;
+      }
+      AutoRemarkActivity.g(this.a);
+      AutoRemarkActivity.a(this.a, this.a.getString(2131718741));
+    }
+    label40:
+    while (!paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    this.a.setResult(-1);
+    this.a.finish();
+    this.a.overridePendingTransition(2130771990, 2130772280);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aama
  * JD-Core Version:    0.7.0.1
  */

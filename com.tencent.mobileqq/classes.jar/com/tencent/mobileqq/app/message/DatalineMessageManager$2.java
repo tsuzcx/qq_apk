@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app.message;
 
-import akau;
+import akpg;
 import com.tencent.mobileqq.data.DataLineMsgSet;
 
 public class DatalineMessageManager$2
   implements Runnable
 {
-  public DatalineMessageManager$2(akau paramakau, DataLineMsgSet paramDataLineMsgSet) {}
+  public DatalineMessageManager$2(akpg paramakpg, DataLineMsgSet paramDataLineMsgSet) {}
   
   public void run()
   {

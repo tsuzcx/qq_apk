@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.graphics.drawable.Drawable;
-import azwp;
+import baxt;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class DevlockQuickLoginActivity$2
@@ -15,7 +15,7 @@ class DevlockQuickLoginActivity$2
       return;
     }
     Object localObject = this.this$0.app.getCurrentAccountUin();
-    localObject = azwp.a(this.this$0.app, 3, (String)localObject);
+    localObject = baxt.a(this.this$0.app, 3, (String)localObject);
     this.this$0.runOnUiThread(new DevlockQuickLoginActivity.2.1(this, (Drawable)localObject));
   }
 }

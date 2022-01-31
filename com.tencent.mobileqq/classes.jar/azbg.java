@@ -1,46 +1,40 @@
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
 public class azbg
-  extends azaz<azaa>
+  extends azbh
+  implements View.OnClickListener
 {
   public View a;
-  public ImageView a;
-  public RoundCornerImageView a;
-  public URLDrawable a;
-  public MessageProgressView a;
-  public ImageView b;
-  public ImageView c;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public azby a;
   
-  public azbg(View paramView)
+  public azbg(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131301950);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131301952));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.a = 1;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(10);
-    this.b = ((ImageView)paramView.findViewById(2131301955));
-    this.c = ((ImageView)paramView.findViewById(2131301953));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131301951));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = ((MessageProgressView)paramView.findViewById(2131301954));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setRadius(10.0F, false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setShowCorner(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDisplayInTextView(aciy.a(17.0F, paramView.getResources()), -1);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(new azbh(this));
+    super(paramTribeVideoListPlayerFragment, paramView);
   }
   
-  protected void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(4);
-    this.b.setVisibility(4);
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a(this.jdField_a_of_type_Azby);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     azbg
  * JD-Core Version:    0.7.0.1
  */

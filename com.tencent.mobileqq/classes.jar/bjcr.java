@@ -1,13 +1,21 @@
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import dov.com.qq.im.capture.mode.CaptureModeController;
 
-public class bjcr
+class bjcr
   implements DialogInterface.OnClickListener
 {
-  public bjcr(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  bjcr(bjcp parambjcp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.b(false);
+    this.a.jdField_a_of_type_Bify.d(false);
+    this.a.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().onBackPressed();
+    avtn.e();
+    avtb.f();
+  }
 }
 
 

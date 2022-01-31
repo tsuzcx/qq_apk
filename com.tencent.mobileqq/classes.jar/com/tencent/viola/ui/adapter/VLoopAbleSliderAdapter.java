@@ -7,16 +7,18 @@ import com.tencent.viola.ui.action.MethodAbsAdd;
 import com.tencent.viola.ui.baseComponent.VComponent;
 import com.tencent.viola.ui.context.DOMActionContext;
 import com.tencent.viola.ui.dom.DomObject;
+import com.tencent.viola.ui.view.VSliderView;
 import java.util.ArrayList;
 
 public class VLoopAbleSliderAdapter
   extends PagerAdapter
 {
+  private static final int PAGE_COUNT = 30000;
   private DOMActionContext context;
   private int mCellExactlyWidth = 0;
   private boolean mLoopDisable;
   private float mMinScale = -1.0F;
-  private int mStartPosition = 0;
+  private VSliderView mSliderView;
   private ArrayList<VComponent> mVComponents = new ArrayList();
   
   public VLoopAbleSliderAdapter(ArrayList<VComponent> paramArrayList, DOMActionContext paramDOMActionContext, boolean paramBoolean)
@@ -56,24 +58,38 @@ public class VLoopAbleSliderAdapter
   
   private void initCellScale(int paramInt, View paramView, VComponent paramVComponent)
   {
-    if (this.mMinScale != -1.0F)
+    if (this.mSliderView == null) {}
+    int i;
+    do
     {
-      if (paramInt != (this.mStartPosition + 1) % this.mVComponents.size()) {
-        break label63;
-      }
+      return;
+      i = this.mSliderView.getCurrentItem();
+    } while (this.mMinScale == -1.0F);
+    if (i - 1 == paramInt)
+    {
+      paramView.setPivotX(this.mCellExactlyWidth);
+      paramView.setPivotY(paramVComponent.getDomObject().getLayoutHeight() / 2.0F);
+      paramView.setScaleX(this.mMinScale);
+      paramView.setScaleY(this.mMinScale);
+      return;
+    }
+    if (i + 1 == paramInt)
+    {
       paramView.setPivotX(0.0F);
       paramView.setPivotY(paramVComponent.getDomObject().getLayoutHeight() / 2.0F);
       paramView.setScaleX(this.mMinScale);
       paramView.setScaleY(this.mMinScale);
-    }
-    label63:
-    while (paramInt == this.mStartPosition) {
       return;
     }
-    paramView.setPivotX(this.mCellExactlyWidth);
-    paramView.setPivotY(paramVComponent.getDomObject().getLayoutHeight() / 2.0F);
-    paramView.setScaleX(this.mMinScale);
-    paramView.setScaleY(this.mMinScale);
+    paramView.setScaleX(1.0F);
+    paramView.setScaleY(1.0F);
+  }
+  
+  private void setAdapterData(ArrayList<VComponent> paramArrayList)
+  {
+    if (paramArrayList != null) {
+      this.mVComponents = paramArrayList;
+    }
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
@@ -86,19 +102,19 @@ public class VLoopAbleSliderAdapter
     if (this.mLoopDisable) {
       return this.mVComponents.size();
     }
-    return 2147483647;
+    return 30000;
   }
   
   public int getInitPosition()
   {
-    int i = 1073741823;
+    int i = 15000;
     if (this.mLoopDisable) {
       i = 0;
     }
     while (this.mVComponents.isEmpty()) {
       return i;
     }
-    return 1073741823 - 1073741823 % this.mVComponents.size();
+    return 15000 - 15000 % this.mVComponents.size();
   }
   
   public int getItemPosition(Object paramObject)
@@ -119,14 +135,18 @@ public class VLoopAbleSliderAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    paramInt = getRealPosition(paramInt);
-    if ((paramInt >= this.mVComponents.size()) || (paramInt < 0)) {
+    int i = getRealPosition(paramInt);
+    if ((i >= this.mVComponents.size()) || (i < 0)) {
       return null;
     }
-    Object localObject1 = (VComponent)this.mVComponents.get(paramInt);
-    Object localObject2 = ((VComponent)this.mVComponents.get(paramInt)).getHostView();
-    if ((localObject2 != null) && (((View)localObject2).getParent() == null)) {
+    Object localObject1 = (VComponent)this.mVComponents.get(i);
+    Object localObject2 = ((VComponent)this.mVComponents.get(i)).getHostView();
+    if ((localObject2 != null) && (((View)localObject2).getParent() == null))
+    {
       paramViewGroup.addView((View)localObject2);
+      ((VComponent)localObject1).applyEvents();
+      ((VComponent)localObject1).applyLayout();
+      ((VComponent)localObject1).bindData();
     }
     for (;;)
     {
@@ -135,7 +155,7 @@ public class VLoopAbleSliderAdapter
       localObject2 = ((VComponent)localObject1).mDomObj;
       VComponent localVComponent = copyComponent((VComponent)localObject1);
       createAndBindHostView(localVComponent, (DomObject)localObject2);
-      this.mVComponents.set(paramInt, localVComponent);
+      this.mVComponents.set(i, localVComponent);
       View localView = localVComponent.getHostView();
       localObject2 = localView;
       localObject1 = localVComponent;
@@ -158,18 +178,6 @@ public class VLoopAbleSliderAdapter
     return paramView == paramObject;
   }
   
-  public boolean loopDisable()
-  {
-    return this.mLoopDisable;
-  }
-  
-  public void setAdapterData(ArrayList<VComponent> paramArrayList)
-  {
-    if (paramArrayList != null) {
-      this.mVComponents = paramArrayList;
-    }
-  }
-  
   public void setCellExactlyWidth(int paramInt)
   {
     this.mCellExactlyWidth = paramInt;
@@ -180,9 +188,9 @@ public class VLoopAbleSliderAdapter
     this.mMinScale = paramFloat;
   }
   
-  public void setStartPosition(int paramInt)
+  public void setSliderView(VSliderView paramVSliderView)
   {
-    this.mStartPosition = paramInt;
+    this.mSliderView = paramVSliderView;
   }
 }
 

@@ -1,22 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForTroopStory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.MessageForText;
 
 class adtr
-  implements begw
+  implements DialogInterface.OnClickListener
 {
-  adtr(adtq paramadtq, MessageForTroopStory paramMessageForTroopStory, begr parambegr) {}
+  adtr(adtp paramadtp, MessageForText paramMessageForText) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      vjx.a(this.jdField_a_of_type_Adtq.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory).f();
-    }
+    aaod.a(this.jdField_a_of_type_Adtp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText);
+    aaod.b(this.jdField_a_of_type_Adtp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adtp.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adtp.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg);
+    this.jdField_a_of_type_Adtp.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
   }
 }
 

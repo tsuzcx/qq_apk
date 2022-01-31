@@ -1,24 +1,28 @@
-import android.net.Uri;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
-
-class axge
-  extends axgh
+public class axge
 {
-  axge(axgc paramaxgc)
+  public float a;
+  public int a;
+  public ahvy a;
+  public boolean a;
+  public float b;
+  public int b;
+  public int c;
+  
+  public axge() {}
+  
+  public axge(boolean paramBoolean)
   {
-    super(paramaxgc);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  public boolean a()
   {
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
+    return (this.jdField_b_of_type_Int > 0) && (this.jdField_a_of_type_Int > 0) && (this.jdField_a_of_type_Ahvy != null) && (this.jdField_a_of_type_Float > 0.01F) && (this.jdField_b_of_type_Float > 0.01F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axge
  * JD-Core Version:    0.7.0.1
  */

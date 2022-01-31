@@ -1,58 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-public class bjex
-  extends Handler
+class bjex
+  extends tez
 {
-  public bjex(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
-  
-  public void handleMessage(Message paramMessage)
+  bjex(bjew parambjew, String paramString)
   {
-    super.handleMessage(paramMessage);
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "handleMessage what:" + paramMessage.what + ", shortVideoShot:" + this.a.a.get());
-    }
-    switch (paramMessage.what)
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    super.onLocationFinish(paramInt, paramSosoLbsInfo);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-    default: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            CameraCaptureButtonLayout.c(this.a);
-            return;
-          } while (CameraCaptureButtonLayout.a(this.a) == null);
-          CameraCaptureButtonLayout.a(this.a).b();
-          return;
-        } while (!this.a.a.get());
-        if (CameraCaptureButtonLayout.a(this.a) != null) {
-          CameraCaptureButtonLayout.a(this.a).c();
-        }
-        this.a.a.set(false);
-        CameraCaptureButtonLayout.d(this.a);
-        return;
-        if (CameraCaptureButtonLayout.a(this.a) != null) {
-          CameraCaptureButtonLayout.a(this.a).a();
-        }
-        CameraCaptureButtonLayout.d(this.a);
-        return;
-      } while (!this.a.a.get());
-      CameraCaptureButtonLayout.e(this.a);
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessageDelayed(5, 50L);
+      veg.b("PasterDataManager", "onLocationUpdate() latitude=" + paramSosoLbsInfo.a.a + " longitude=" + paramSosoLbsInfo.a.b);
+      bjeu.a(this.a.jdField_a_of_type_Bjeu, true);
+      bjeu.a(this.a.jdField_a_of_type_Bjeu, this.a.jdField_a_of_type_Boolean);
+      this.a.jdField_a_of_type_Bjeu.a(null);
       return;
     }
-    this.a.b();
+    veg.b("PasterDataManager", "onLocationUpdate() error");
   }
 }
 

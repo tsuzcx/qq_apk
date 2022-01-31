@@ -1,17 +1,9 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.widget.QQViewPager;
-
-public class aupk
-  implements bbom
+public final class aupk
+  extends aupf
 {
-  public aupk(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
-  
-  public void onTabSelected(int paramInt1, int paramInt2)
+  protected int c()
   {
-    if (paramInt1 == paramInt2) {
-      return;
-    }
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).setCurrentItem(paramInt2);
+    return 516;
   }
 }
 

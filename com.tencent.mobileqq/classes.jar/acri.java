@@ -1,19 +1,43 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
+import com.tencent.mobileqq.data.ActivateFriendItem;
+import java.util.ArrayList;
 
 public class acri
-  implements View.OnClickListener
+  extends ajxl
 {
-  public acri(VoiceTextEditPanel paramVoiceTextEditPanel) {}
+  public acri(ActivateFriendGrid paramActivateFriendGrid) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if ((VoiceTextEditPanel.a(this.a).get() == 1) || (VoiceTextEditPanel.a(this.a).get() == 3)) {
-      bbmy.a(this.a.getContext(), ajjy.a(2131651065), 0).b(this.a.getContext().getResources().getDimensionPixelSize(2131167766));
+    int i = 0;
+    for (;;)
+    {
+      if (i < ActivateFriendGrid.a(this.a).size())
+      {
+        String str = String.valueOf(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin);
+        if (paramString.equals(str))
+        {
+          paramString = bbcl.b(ActivateFriendGrid.a(this.a), str, false);
+          ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setNickName(paramString);
+        }
+      }
+      else
+      {
+        return;
+      }
+      i += 1;
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i = 0;
+    while (i < ActivateFriendGrid.a(this.a).size())
+    {
+      String str = bbcl.j(ActivateFriendGrid.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin));
+      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setNickName(str);
+      i += 1;
     }
   }
 }

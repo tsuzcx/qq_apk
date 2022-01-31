@@ -1,28 +1,23 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
 
-class ahxw
-  implements DialogInterface.OnClickListener
+public class ahxw
 {
-  ahxw(ahxv paramahxv) {}
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private ahxw(RMVideoSwitchCameraPicMgr paramRMVideoSwitchCameraPicMgr)
   {
-    awqx.b(null, "dc00898", "", "", "0X800A0C7", "0X800A0C7", 0, 0, String.valueOf(SessionClearFragment.b(this.a.a)), String.valueOf(SessionClearFragment.c(this.a.a)), "", "");
-    SessionClearFragment.a(this.a.a);
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("extra_delete_total_file_size", SessionClearFragment.a(this.a.a).a());
-    Activity localActivity = SessionClearFragment.a(this.a.a);
-    SessionClearFragment.a(this.a.a);
-    localActivity.setResult(-1, paramDialogInterface);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahxw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,11 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-class twu
-  implements tfu
+public abstract interface twu
 {
-  twu(twt paramtwt) {}
+  public abstract void a(ErrorMessage paramErrorMessage, List<two> paramList, boolean paramBoolean);
   
-  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    return (!paramStoryVideoItem.isBasicInfoOK()) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
-  }
+  public abstract void b(ErrorMessage paramErrorMessage, List<twp> paramList, boolean paramBoolean);
 }
 
 

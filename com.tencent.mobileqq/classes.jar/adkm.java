@@ -1,166 +1,91 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.mobileqq.data.PAMessage.Item;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.view.Gravity;
 
 public class adkm
-  extends acjb
+  extends Drawable
 {
-  View.OnClickListener a;
+  private static final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private static final Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
+  private float jdField_a_of_type_Float;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private Paint jdField_b_of_type_AndroidGraphicsPaint;
   
-  public adkm(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
+  public adkm(int paramInt, float paramFloat)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new adkn(this);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
+    this.jdField_a_of_type_Float = paramFloat;
   }
   
-  protected acjc a()
+  public void a(int paramInt1, int paramInt2)
   {
-    return new adko(this);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(1);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(paramInt1);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramInt2);
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
   }
   
-  protected View a(MessageRecord paramMessageRecord, acjc paramacjc, View paramView, LinearLayout paramLinearLayout, acmv paramacmv)
+  public void draw(Canvas paramCanvas)
   {
-    paramLinearLayout.setPadding(0, aciy.a(11.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, 0);
-    paramLinearLayout = paramView;
-    if (paramView == null) {
-      paramLinearLayout = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131493187, null);
-    }
-    Object localObject2 = (MessageForPubAccount)paramMessageRecord;
-    PAMessage localPAMessage = ((MessageForPubAccount)localObject2).mPAMessage;
-    paramMessageRecord = (adko)paramacjc;
-    Object localObject3 = localPAMessage.items;
-    paramacjc = (ViewGroup)paramLinearLayout.findViewById(2131305512);
-    Object localObject1 = (ImageView)paramLinearLayout.findViewById(2131305515);
-    TextView localTextView1 = (TextView)paramLinearLayout.findViewById(2131305514);
-    TextView localTextView2 = (TextView)paramLinearLayout.findViewById(2131305507);
-    TextView localTextView3 = (TextView)paramLinearLayout.findViewById(2131305508);
-    TextView localTextView4 = (TextView)paramLinearLayout.findViewById(2131305509);
-    TextView localTextView5 = (TextView)paramLinearLayout.findViewById(2131305510);
-    TextView localTextView6 = (TextView)paramLinearLayout.findViewById(2131305511);
-    paramView = new ArrayList();
-    paramView.add(localTextView2);
-    paramView.add(localTextView3);
-    paramView.add(localTextView4);
-    paramView.add(localTextView5);
-    paramView.add(localTextView6);
-    localObject3 = (PAMessage.Item)((ArrayList)localObject3).get(0);
-    paramMessageRecord.jdField_c_of_type_JavaLangString = ((PAMessage.Item)localObject3).url;
-    paramMessageRecord.jdField_c_of_type_Int = localPAMessage.type;
-    paramMessageRecord.jdField_b_of_type_JavaLangString = ((PAMessage.Item)localObject3).actionUrl;
-    paramMessageRecord.jdField_a_of_type_JavaLangString = ((PAMessage.Item)localObject3).nativeJumpString;
-    paramMessageRecord.jdField_b_of_type_Int = 6;
-    paramMessageRecord.jdField_a_of_type_JavaLangObject = Long.valueOf(((MessageForPubAccount)localObject2).uniseq);
-    paramMessageRecord.d = ((PAMessage.Item)localObject3).iconsString;
-    if ((!TextUtils.isEmpty(paramMessageRecord.d)) && (paramMessageRecord.d.contains("1")))
+    float f1 = 0.0F;
+    int i = getLevel();
+    if (i == 0) {}
+    Rect localRect1;
+    Rect localRect2;
+    int j;
+    int k;
+    int m;
+    do
     {
-      i = 1;
-      localObject2 = localTextView1.getLayoutParams();
-      if (i == 0) {
-        break label450;
-      }
-      if ((localObject2 instanceof ViewGroup.MarginLayoutParams))
-      {
-        localObject2 = (ViewGroup.MarginLayoutParams)localObject2;
-        ((ViewGroup.MarginLayoutParams)localObject2).rightMargin = 24;
-        localTextView1.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      }
-      ((ImageView)localObject1).setVisibility(0);
-      label351:
-      localTextView1.setText(((PAMessage.Item)localObject3).title);
-      localObject1 = ((PAMessage.Item)localObject3).digestList;
-      if (localObject1 == null) {
-        break label526;
-      }
-    }
-    label385:
-    label526:
-    for (int i = ((List)localObject1).size();; i = 0)
-    {
-      int j = 0;
-      if (j < paramView.size())
-      {
-        localTextView1 = (TextView)paramView.get(j);
-        if (i > j)
-        {
-          localTextView1.setText((CharSequence)((List)localObject1).get(j));
-          localTextView1.setVisibility(0);
-        }
-        for (;;)
-        {
-          j += 1;
-          break label385;
-          i = 0;
-          break;
-          label450:
-          if ((localObject2 instanceof ViewGroup.MarginLayoutParams))
-          {
-            localObject2 = (ViewGroup.MarginLayoutParams)localObject2;
-            ((ViewGroup.MarginLayoutParams)localObject2).rightMargin = 0;
-            localTextView1.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-          }
-          ((ImageView)localObject1).setVisibility(8);
-          break label351;
-          localTextView1.setVisibility(8);
-        }
-      }
-      paramacjc.setTag(paramMessageRecord);
-      paramacjc.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramacjc.setOnTouchListener(paramacmv);
-      paramacjc.setOnLongClickListener(paramacmv);
-      return paramLinearLayout;
-    }
-  }
-  
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
-  {
-    boolean bool = true;
-    switch (paramInt)
-    {
-    default: 
       return;
+      localRect1 = jdField_b_of_type_AndroidGraphicsRect;
+      localRect2 = getBounds();
+      j = localRect2.width();
+      k = localRect2.height();
+      k -= (10000 - i) * k / 10000;
+      m = paramCanvas.getHeight();
+      Gravity.apply(48, j, k, localRect2, localRect1);
+    } while ((j <= 0) || (k <= 0));
+    this.jdField_a_of_type_JavaLangString = (100 - i / 100 + "%");
+    paramCanvas.save();
+    float f2;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_b_of_type_AndroidGraphicsPaint.getTextBounds(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsRect);
+      f2 = (paramCanvas.getWidth() - this.jdField_a_of_type_AndroidGraphicsRect.width()) / 2;
+      f1 = (this.jdField_a_of_type_AndroidGraphicsRect.height() + m) / 2;
+      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, f2, f1, this.jdField_b_of_type_AndroidGraphicsPaint);
     }
-    paramContext = aael.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    if ((paramContext != null) && (paramContext.uniseq == paramChatMessage.uniseq)) {
-      aael.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    }
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    paramInt = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-    long l = paramChatMessage.uniseq;
-    if (paramChatMessage.issend == 1) {}
     for (;;)
     {
-      rtr.a(paramContext, localContext, str, paramInt, l, bool);
+      paramCanvas.clipRect(localRect1);
+      jdField_a_of_type_AndroidGraphicsRectF.set(localRect2);
+      paramCanvas.drawRoundRect(jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+      if (this.jdField_a_of_type_Boolean) {
+        paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, f2, f1, this.jdField_b_of_type_AndroidGraphicsPaint);
+      }
+      paramCanvas.restore();
       return;
-      bool = false;
+      f2 = 0.0F;
     }
   }
   
-  public bakj[] a(View paramView)
+  public int getOpacity()
   {
-    paramView = new bakh();
-    paramView.a(2131299417, this.jdField_a_of_type_AndroidContentContext.getString(2131625147), 2130838594);
-    return paramView.a();
+    return -3;
   }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

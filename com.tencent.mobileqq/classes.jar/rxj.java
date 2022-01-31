@@ -1,69 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class rxj
-  extends alzl<rxi>
+class rxj
+  implements bfos
 {
-  public int a()
-  {
-    return 447;
-  }
+  rxj(rxh paramrxh, String paramString) {}
   
-  public Class<rxi> a()
+  public void onDismiss()
   {
-    return rxi.class;
-  }
-  
-  @NonNull
-  public rxi a(int paramInt)
-  {
-    return new rxi();
-  }
-  
-  @Nullable
-  public rxi a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      sai.d("WeSeeConfigProcessor", "onParsed:" + paramArrayOfalzs[0].a);
-      rxi localrxi = new rxi();
-      localrxi.a(paramArrayOfalzs[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WeSeeConfigProcessor", 0, "onParsed " + paramArrayOfalzs[0].a);
+      localJSONObject.put("index", -1);
+      localJSONObject.put("type", 1);
+      if (rxh.a(this.jdField_a_of_type_Rxh) != null) {
+        ((BridgeModule)rxh.a(this.jdField_a_of_type_Rxh).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
       }
-      return localrxi;
+      return;
     }
-    return null;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(rxi paramrxi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeSeeConfigProcessor", 0, "onUpdate " + paramrxi);
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    catch (JSONException localJSONException) {}
   }
 }
 

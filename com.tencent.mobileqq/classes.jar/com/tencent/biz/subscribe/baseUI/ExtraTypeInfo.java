@@ -21,7 +21,9 @@ public class ExtraTypeInfo
   public static final int SOURCE_TYPE_FROM_SEARCH = 9005;
   public static final int SOURCE_TYPE_IS_MINI_PROJECT = 9001;
   public static final int SOURCE_TYPE_QZONE = 9002;
+  private String commentId;
   public int pageType;
+  private String replyId;
   public int sourceType;
   
   public ExtraTypeInfo() {}
@@ -35,6 +37,26 @@ public class ExtraTypeInfo
   {
     this.pageType = paramInt1;
     this.sourceType = paramInt2;
+  }
+  
+  public String getCommentId()
+  {
+    return this.commentId;
+  }
+  
+  public String getReplyId()
+  {
+    return this.replyId;
+  }
+  
+  public void setCommentId(String paramString)
+  {
+    this.commentId = paramString;
+  }
+  
+  public void setReplyId(String paramString)
+  {
+    this.replyId = paramString;
   }
 }
 

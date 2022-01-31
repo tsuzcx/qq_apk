@@ -1,7 +1,7 @@
 package com.tencent.gdtad.views.xijing;
 
 import com.tencent.gdtad.aditem.GdtAd;
-import ysn;
+import zcf;
 
 public final class GdtDMPReportUtil$3
   implements Runnable
@@ -10,7 +10,7 @@ public final class GdtDMPReportUtil$3
   
   public void run()
   {
-    ysn.c(this.a);
+    zcf.c(this.a);
   }
 }
 

@@ -1,23 +1,14 @@
-import java.io.File;
-import java.util.Comparator;
-
-final class aqyc
-  implements Comparator<File>
+public class aqyc
+  extends aqyd
 {
-  public int a(File paramFile1, File paramFile2)
+  public aqyc(String paramString)
   {
-    if (paramFile1.lastModified() < paramFile2.lastModified()) {
-      return -1;
-    }
-    if (paramFile1.lastModified() > paramFile2.lastModified()) {
-      return 1;
-    }
-    return 0;
+    super("proc", "QPPHR_" + paramString, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqyc
  * JD-Core Version:    0.7.0.1
  */

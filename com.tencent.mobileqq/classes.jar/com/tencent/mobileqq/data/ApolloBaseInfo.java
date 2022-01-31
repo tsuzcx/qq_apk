@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import aifg;
-import aiju;
-import aijv;
-import aitw;
+import airz;
+import aiwn;
+import aiwo;
+import ajhw;
 import android.text.TextUtils;
-import atmo;
-import atnz;
-import atoc;
-import bcdu;
+import aukm;
+import aulx;
+import auma;
+import bdhv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -25,7 +25,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ApolloBaseInfo
-  extends atmo
+  extends aukm
 {
   public static final int MASK_3D = 1;
   public static final int MASK_3D_WHITELIST = 2;
@@ -33,15 +33,15 @@ public class ApolloBaseInfo
   private static final String TAG = "ApolloBaseInfo";
   public int apolloAISwitch;
   public String apolloDataBuffer;
-  @atnz
-  private aiju apolloDress;
-  @atnz
-  private aiju apolloHistory;
+  @aulx
+  private aiwn apolloDress;
+  @aulx
+  private aiwn apolloHistory;
   public String apolloHistoryDress;
   public long apolloLocalSignTs;
   public long apolloLocalTS;
-  @atnz
-  private aiju apolloPetDress;
+  @aulx
+  private aiwn apolloPetDress;
   public long apolloServerTS;
   public String apolloSignStr;
   public long apolloSignValidTS;
@@ -53,10 +53,10 @@ public class ApolloBaseInfo
   public int cmshow3dFlag;
   public boolean hasPet;
   public String mApollo3DDataBuffer;
-  @atnz
-  private aiju mApolloDress3D;
+  @aulx
+  private aiwn mApolloDress3D;
   public String petNick;
-  @atoc
+  @auma
   public String uin;
   public int uinType;
   
@@ -74,16 +74,16 @@ public class ApolloBaseInfo
     {
       Object localObject2;
       ApolloBaseInfo localApolloBaseInfo;
-      aiju localaiju;
+      aiwn localaiwn;
       try
       {
         long l = new JSONObject(paramString).optLong("ts");
-        localObject2 = (aifg)paramAppInterface.getManager(153);
-        localApolloBaseInfo = ((aifg)localObject2).b(paramAppInterface.getCurrentAccountUin());
-        localaiju = localApolloBaseInfo.getApolloDress();
+        localObject2 = (airz)paramAppInterface.getManager(153);
+        localApolloBaseInfo = ((airz)localObject2).b(paramAppInterface.getCurrentAccountUin());
+        localaiwn = localApolloBaseInfo.getApolloDress();
         localApolloBaseInfo.setApolloDress(l, paramString);
         localObject1 = localApolloBaseInfo.getApolloDress();
-        if (localaiju != null) {
+        if (localaiwn != null) {
           break label218;
         }
         paramString = "";
@@ -93,8 +93,8 @@ public class ApolloBaseInfo
         localApolloBaseInfo.apolloHistoryDress = paramString;
       }
       localApolloBaseInfo.appearAction = null;
-      ((aifg)localObject2).a(localApolloBaseInfo);
-      paramAppInterface = (aifg)paramAppInterface.getManager(153);
+      ((airz)localObject2).a(localApolloBaseInfo);
+      paramAppInterface = (airz)paramAppInterface.getManager(153);
       if (paramAppInterface != null)
       {
         localObject2 = new ArrayList(1);
@@ -112,10 +112,10 @@ public class ApolloBaseInfo
       QLog.e("ApolloBaseInfo", 2, paramAppInterface.getMessage());
       return;
       label218:
-      paramString = localaiju.a();
+      paramString = localaiwn.a();
       while (localObject1 != null)
       {
-        localObject1 = ((aiju)localObject1).a();
+        localObject1 = ((aiwn)localObject1).a();
         break;
       }
       Object localObject1 = "";
@@ -127,19 +127,19 @@ public class ApolloBaseInfo
     return this.apolloAISwitch & 0x3;
   }
   
-  public aiju getApolloDress()
+  public aiwn getApolloDress()
   {
     if ((this.apolloDress == null) && (!TextUtils.isEmpty(this.apolloDataBuffer))) {
-      this.apolloDress = aiju.a(this.apolloDataBuffer);
+      this.apolloDress = aiwn.a(this.apolloDataBuffer);
     }
     return this.apolloDress;
   }
   
-  public aiju[] getApolloDress(boolean paramBoolean)
+  public aiwn[] getApolloDress(boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList(2);
     if ((this.apolloDress == null) && (!TextUtils.isEmpty(this.apolloDataBuffer))) {
-      this.apolloDress = aiju.a(this.apolloDataBuffer);
+      this.apolloDress = aiwn.a(this.apolloDataBuffer);
     }
     if (this.apolloDress != null) {
       localArrayList.add(this.apolloDress);
@@ -149,7 +149,7 @@ public class ApolloBaseInfo
     if ((this.apolloDress != null) && (!paramBoolean) && (!TextUtils.isEmpty(this.apolloHistoryDress))) {
       if (this.apolloHistory == null)
       {
-        this.apolloHistory = new aiju();
+        this.apolloHistory = new aiwn();
         this.apolloHistory.jdField_a_of_type_JavaUtilHashMap = new HashMap();
         arrayOfString = this.apolloHistoryDress.split("\\|");
         i = 0;
@@ -184,17 +184,17 @@ public class ApolloBaseInfo
         return null;
         localArrayList.add(this.apolloHistory);
       }
-      return (aiju[])localArrayList.toArray(new aiju[0]);
+      return (aiwn[])localArrayList.toArray(new aiwn[0]);
       i += 1;
     }
   }
   
-  public aiju getApolloDress3D()
+  public aiwn getApolloDress3D()
   {
     if ((this.mApolloDress3D == null) && (!TextUtils.isEmpty(this.mApollo3DDataBuffer))) {}
     try
     {
-      this.mApolloDress3D = aiju.a(new JSONObject(this.mApollo3DDataBuffer));
+      this.mApolloDress3D = aiwn.a(new JSONObject(this.mApollo3DDataBuffer));
       return this.mApolloDress3D;
     }
     catch (Exception localException)
@@ -206,10 +206,10 @@ public class ApolloBaseInfo
     }
   }
   
-  public aiju getApolloPetDress()
+  public aiwn getApolloPetDress()
   {
     if ((this.apolloPetDress == null) && (!TextUtils.isEmpty(this.apolloDataBuffer))) {
-      this.apolloPetDress = aiju.b(this.apolloDataBuffer);
+      this.apolloPetDress = aiwn.b(this.apolloDataBuffer);
     }
     return this.apolloPetDress;
   }
@@ -233,10 +233,10 @@ public class ApolloBaseInfo
           localArrayList = new ArrayList();
           while (localIterator2.hasNext())
           {
-            aijv localaijv = (aijv)((Map.Entry)localIterator2.next()).getValue();
-            ((JSONArray)localObject).put(String.valueOf(localaijv.jdField_a_of_type_Int));
-            if (!ApolloUtil.b(localaijv.jdField_a_of_type_Int)) {
-              localArrayList.add(Integer.valueOf(localaijv.jdField_a_of_type_Int));
+            aiwo localaiwo = (aiwo)((Map.Entry)localIterator2.next()).getValue();
+            ((JSONArray)localObject).put(String.valueOf(localaiwo.jdField_a_of_type_Int));
+            if (!ApolloUtil.c(localaiwo.jdField_a_of_type_Int)) {
+              localArrayList.add(Integer.valueOf(localaiwo.jdField_a_of_type_Int));
             }
           }
           if (!paramBoolean) {
@@ -263,7 +263,7 @@ public class ApolloBaseInfo
       localObject[i] = ((Integer)localIterator1.next()).intValue();
       i += 1;
     }
-    aitw.b(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), null, -1, (int[])localObject, -1, -1, true);
+    ajhw.b(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), null, -1, (int[])localObject, -1, -1, true);
     return null;
     label272:
     return localObject;
@@ -275,7 +275,7 @@ public class ApolloBaseInfo
     if ((this.mApolloDress3D != null) && (!TextUtils.isEmpty(this.mApolloDress3D.jdField_a_of_type_JavaLangString))) {
       try
       {
-        String str = bcdu.d(this.mApolloDress3D.jdField_a_of_type_JavaLangString);
+        String str = bdhv.d(this.mApolloDress3D.jdField_a_of_type_JavaLangString);
         if (paramBoolean)
         {
           if (ApolloUtil.d(this.mApolloDress3D.jdField_a_of_type_JavaLangString))
@@ -284,7 +284,7 @@ public class ApolloBaseInfo
             paramQQAppInterface.put("path", "/face/" + str + File.separator);
             return paramQQAppInterface;
           }
-          aitw.a(paramQQAppInterface, this.mApolloDress3D.jdField_a_of_type_JavaLangString, null);
+          ajhw.a(paramQQAppInterface, this.mApolloDress3D.jdField_a_of_type_JavaLangString, null);
           return null;
         }
         paramQQAppInterface = new JSONObject();
@@ -320,7 +320,7 @@ public class ApolloBaseInfo
         if (!paramBoolean) {
           break label89;
         }
-        if (!ApolloUtil.c(this.mApolloDress3D.jdField_a_of_type_Int)) {
+        if (!ApolloUtil.d(this.mApolloDress3D.jdField_a_of_type_Int)) {
           break label58;
         }
         i = this.mApolloDress3D.jdField_a_of_type_Int;
@@ -329,7 +329,7 @@ public class ApolloBaseInfo
     return i;
     label58:
     QLog.i("ApolloBaseInfo", 1, "getRole3D checkExistAndDownload but no exist, start download");
-    aitw.b(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), null, this.mApolloDress3D.jdField_a_of_type_Int, null, -1, -1, true);
+    ajhw.b(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), null, this.mApolloDress3D.jdField_a_of_type_Int, null, -1, -1, true);
     return -1;
     label89:
     return this.mApolloDress3D.jdField_a_of_type_Int;
@@ -352,7 +352,7 @@ public class ApolloBaseInfo
   
   public boolean isApolloStatusOpen()
   {
-    return aifg.a(this);
+    return airz.a(this);
   }
   
   public void setApolloDress(long paramLong, String paramString)
@@ -366,8 +366,8 @@ public class ApolloBaseInfo
     this.apolloHistory = null;
     this.apolloDress = null;
     this.apolloUpdateTime = NetConnInfoCenter.getServerTime();
-    this.apolloDress = aiju.a(this.apolloDataBuffer);
-    this.apolloPetDress = aiju.b(this.apolloDataBuffer);
+    this.apolloDress = aiwn.a(this.apolloDataBuffer);
+    this.apolloPetDress = aiwn.b(this.apolloDataBuffer);
     try
     {
       paramString = new JSONObject(this.apolloDataBuffer).optJSONArray("petList");
@@ -403,7 +403,7 @@ public class ApolloBaseInfo
     for (;;)
     {
       this.mApollo3DDataBuffer = paramJSONObject.toString();
-      this.mApolloDress3D = aiju.a(paramJSONObject);
+      this.mApolloDress3D = aiwn.a(paramJSONObject);
       return;
       QLog.e("ApolloBaseInfo", 1, "setApolloDress3D apolloLocalTS > ts apolloLocalTS:" + this.apolloLocalTS + " apolloServerTS:" + this.apolloServerTS + " ts:" + l);
     }

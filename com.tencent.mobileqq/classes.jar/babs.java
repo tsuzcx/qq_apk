@@ -1,50 +1,40 @@
-import android.app.Dialog;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 
-final class babs
-  implements View.OnClickListener
+public class babs
+  extends babo<babt, baav>
 {
-  babs(DialogInterface.OnClickListener paramOnClickListener1, Dialog paramDialog, DialogInterface.OnClickListener paramOnClickListener2) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public void onClick(View paramView)
+  public babs(XMediaEditor paramXMediaEditor, Context paramContext)
   {
-    if (paramView.getId() == 2131299604) {}
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-          this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_AndroidAppDialog, 0);
-        }
-        if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
-          this.jdField_a_of_type_AndroidAppDialog.dismiss();
-        }
-        return;
-      }
-      catch (Exception paramView) {}
-      if (paramView.getId() == 2131299610)
-      {
-        if (this.b != null) {
-          this.b.onClick(this.jdField_a_of_type_AndroidAppDialog, 1);
-        }
-        try
-        {
-          if (this.jdField_a_of_type_AndroidAppDialog.isShowing())
-          {
-            this.jdField_a_of_type_AndroidAppDialog.dismiss();
-            return;
-          }
-        }
-        catch (Exception paramView) {}
-      }
-    }
+    super(paramXMediaEditor);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
   }
+  
+  public babt a(ViewGroup paramViewGroup)
+  {
+    return new babt(this.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(View paramView, babt parambabt) {}
+  
+  public void a(babt parambabt, baav parambaav, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     babs
  * JD-Core Version:    0.7.0.1
  */

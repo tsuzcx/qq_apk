@@ -1,4 +1,15 @@
-public class ajye {}
+class ajye
+  implements ajvb
+{
+  ajye(ajyd paramajyd) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

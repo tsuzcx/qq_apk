@@ -1,71 +1,103 @@
-import android.annotation.TargetApi;
-import android.graphics.PointF;
-import android.opengl.GLES20;
-import android.opengl.GLES30;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.aekit.openrender.util.GlUtil;
-import com.tencent.filter.BaseFilter;
+import android.view.View;
+import android.view.ViewStub;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import dov.com.qq.im.ae.camera.ui.panel.BeautyAndFilterPanelViewStubHolder.1;
+import dov.com.qq.im.ae.camera.ui.panel.BeautyAndFilterPanelViewStubHolder.2;
 
 public class bioi
+  extends bijx
 {
-  public static double a(PointF paramPointF1, PointF paramPointF2)
+  private AEProviderContainerView a;
+  
+  public bioi(ViewStub paramViewStub)
   {
-    return Math.sqrt((paramPointF1.x - paramPointF2.x) * (paramPointF1.x - paramPointF2.x) + (paramPointF1.y - paramPointF2.y) * (paramPointF1.y - paramPointF2.y));
+    super(paramViewStub);
   }
   
-  public static void a()
+  protected void a(View paramView)
   {
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-    GLES20.glClear(16640);
-    GLES20.glFlush();
+    this.a = ((AEProviderContainerView)paramView.findViewById(2131363123));
   }
   
-  @TargetApi(18)
-  public static void a(int paramInt)
+  public void a(avsr paramavsr)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      GLES20.glDisable(3042);
-      return;
-    case 1: 
-      GLES20.glEnable(3042);
-      GLES20.glBlendFunc(1, 771);
-      GLES20.glBlendEquation(32774);
-      return;
-    case 2: 
-      GLES20.glEnable(3042);
-      GLES20.glBlendFunc(770, 771);
-      GLES30.glBlendEquation(32776);
+    a(new BeautyAndFilterPanelViewStubHolder.1(this, paramavsr));
+  }
+  
+  public void a(biju parambiju, biwb parambiwb)
+  {
+    a(new BeautyAndFilterPanelViewStubHolder.2(this, parambiju, parambiwb));
+  }
+  
+  public void a(bivx parambivx)
+  {
+    if (!a()) {
       return;
     }
-    GLES20.glEnable(3042);
-    GLES20.glBlendFuncSeparate(1, 771, 1, 1);
-    GLES20.glBlendEquation(32774);
+    this.a.setCaptureMode(parambivx);
   }
   
-  public static void a(Frame paramFrame, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public void b()
   {
-    paramFrame.bindFrame(paramInt1, paramInt2, paramInt3, 1.0D);
-    GLES20.glBindFramebuffer(36160, paramFrame.getFBO());
-    GLES20.glViewport(0, 0, paramInt2, paramInt3);
-    if (paramBoolean) {
-      a();
+    a();
+    this.a.setVisibility(0);
+    this.a.b();
+  }
+  
+  public boolean b()
+  {
+    if (!a()) {
+      return false;
     }
+    return this.a.b();
   }
   
-  public static void a(BaseFilter paramBaseFilter, Frame paramFrame1, Frame paramFrame2, int paramInt1, int paramInt2, int paramInt3)
+  public void c()
   {
-    Frame localFrame = new Frame(paramFrame1.getFBO(), paramFrame1.getTextureId(), paramInt2, paramInt3);
-    GlUtil.setBlendMode(true);
-    GLES20.glBlendEquation(32774);
-    GLES20.glBindFramebuffer(36160, paramFrame1.getFBO());
-    GLES20.glViewport(0, 0, paramInt2, paramInt3);
-    paramFrame2.bindFrame(paramInt1, paramInt2, paramInt3, 1.0D);
-    paramBaseFilter.RenderProcess(paramFrame2.getTextureId(), paramInt2, paramInt3, paramFrame1.getTextureId(), 1.0D, localFrame);
-    GlUtil.setBlendMode(false);
+    if (!a()) {
+      return;
+    }
+    this.a.a();
+  }
+  
+  public void d()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.d();
+  }
+  
+  public void e()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.f();
+  }
+  
+  public void f()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.c();
+  }
+  
+  public void g()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.g();
+  }
+  
+  public void h()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.h();
   }
 }
 

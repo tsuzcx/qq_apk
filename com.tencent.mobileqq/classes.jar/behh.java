@@ -1,59 +1,19 @@
-import android.database.DataSetObserver;
-import android.os.Parcelable;
-import android.widget.Adapter;
-import com.tencent.widget.AdapterView;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import org.json.JSONObject;
 
-public class behh
-  extends DataSetObserver
+class behh
+  implements AsyncResult
 {
-  private Parcelable jdField_a_of_type_AndroidOsParcelable;
+  behh(behf parambehf) {}
   
-  public behh(AdapterView paramAdapterView) {}
-  
-  public void a()
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_AndroidOsParcelable = null;
-  }
-  
-  public void onChanged()
-  {
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mDataChanged = true;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mOldItemCount = this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount = this.jdField_a_of_type_ComTencentWidgetAdapterView.getAdapter().getCount();
-    if ((this.jdField_a_of_type_ComTencentWidgetAdapterView.getAdapter().hasStableIds()) && (this.jdField_a_of_type_AndroidOsParcelable != null) && (this.jdField_a_of_type_ComTencentWidgetAdapterView.mOldItemCount == 0) && (this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount > 0))
-    {
-      AdapterView.access$000(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidOsParcelable);
-      this.jdField_a_of_type_AndroidOsParcelable = null;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetAdapterView.checkFocus();
-      this.jdField_a_of_type_ComTencentWidgetAdapterView.requestLayout();
-      return;
-      this.jdField_a_of_type_ComTencentWidgetAdapterView.rememberSyncState();
-    }
-  }
-  
-  public void onInvalidated()
-  {
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mDataChanged = true;
-    if (this.jdField_a_of_type_ComTencentWidgetAdapterView.getAdapter().hasStableIds()) {
-      this.jdField_a_of_type_AndroidOsParcelable = AdapterView.access$100(this.jdField_a_of_type_ComTencentWidgetAdapterView);
-    }
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mOldItemCount = this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount = 0;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mSelectedPosition = -1;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mSelectedRowId = -9223372036854775808L;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mNextSelectedPosition = -1;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mNextSelectedRowId = -9223372036854775808L;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mNeedSync = false;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.checkFocus();
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.requestLayout();
+    besl.d("AuthState", "updateUserSetting() onCmdListener isSuccess: " + paramBoolean + "   ; ret: " + paramJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     behh
  * JD-Core Version:    0.7.0.1
  */

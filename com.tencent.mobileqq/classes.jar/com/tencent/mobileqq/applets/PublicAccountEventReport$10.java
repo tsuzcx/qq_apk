@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.applets;
 
-import awqx;
+import axqw;
 
 public final class PublicAccountEventReport$10
   implements Runnable
@@ -9,7 +9,7 @@ public final class PublicAccountEventReport$10
   
   public void run()
   {
-    awqx.b(null, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800A306", "0X800A306", 0, 0, "", "", this.jdField_a_of_type_Long + "", "");
+    axqw.b(null, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800A306", "0X800A306", 0, 0, "", "", this.jdField_a_of_type_Long + "", "");
   }
 }
 

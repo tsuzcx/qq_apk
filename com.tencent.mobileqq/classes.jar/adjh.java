@@ -1,15 +1,87 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.qphone.base.util.QLog;
 
-class adjh
-  implements DialogInterface.OnClickListener
+public class adjh
+  implements adih
 {
-  adjh(adje paramadje, adjt paramadjt) {}
+  private int jdField_a_of_type_Int = 0;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public adjh(BaseChatPie paramBaseChatPie)
   {
-    aael.a(this.jdField_a_of_type_Adje.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adje.b, this.jdField_a_of_type_Adje.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Adjt.jdField_a_of_type_Anla.a, this.jdField_a_of_type_Adjt.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+  }
+  
+  public String a()
+  {
+    String str = null;
+    if (this.jdField_a_of_type_Int == 1) {
+      str = ajyc.a(2131714272);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecWordEmotionThinkHelper", 2, " getSpecKeyWord:  mSpecWordType=" + this.jdField_a_of_type_Int);
+    }
+    return str;
+  }
+  
+  public void a()
+  {
+    b();
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    b();
+  }
+  
+  public void a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecWordEmotionThinkHelper", 2, " beforeTextChanged:  start=" + paramInt1 + " after=" + paramInt3 + " count=" + paramInt2);
+    }
+    if ((paramInt2 > paramInt3) || (paramInt3 == 0)) {
+      b();
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool = true;
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SpecWordEmotionThinkHelper", 2, " needSendMixMsg:  mSpecWordType=" + this.jdField_a_of_type_Int);
+      }
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 11, 16 };
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Int = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecWordEmotionThinkHelper", 2, " clearSpecWordType");
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecWordEmotionThinkHelper", 2, " setSpecWordType:  mSpecWordType=" + this.jdField_a_of_type_Int);
+    }
   }
 }
 

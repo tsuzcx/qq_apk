@@ -1,32 +1,38 @@
-import com.tencent.aladdin.config.utils.AladdinLogger;
-import com.tencent.qphone.base.util.QLog;
-
 public class ocy
-  implements AladdinLogger
 {
-  public void d(String paramString1, String paramString2)
+  public float a;
+  public float b;
+  public float c;
+  public float d;
+  
+  public ocy(float paramFloat1, float paramFloat2)
   {
-    QLog.d(paramString1, 2, paramString2);
+    this.a = paramFloat1;
+    this.b = paramFloat2;
   }
   
-  public void e(String paramString1, String paramString2)
+  public ocy(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    QLog.e(paramString1, 1, paramString2);
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.d = paramFloat4;
   }
   
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  public ocy(ocy paramocy)
   {
-    QLog.e(paramString1, 1, paramString2, paramThrowable);
+    this.a = paramocy.a;
+    this.b = paramocy.b;
   }
   
-  public void i(String paramString1, String paramString2)
+  public void a(ocy paramocy)
   {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public boolean isDebugVersion()
-  {
-    return false;
+    float f = this.a;
+    this.a = paramocy.a;
+    paramocy.a = f;
+    f = this.b;
+    this.b = paramocy.b;
+    paramocy.b = f;
   }
 }
 

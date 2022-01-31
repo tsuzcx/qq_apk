@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.ar.model;
 
-import akqy;
-import akwj;
+import alfk;
+import alkv;
 import com.tencent.qphone.base.util.QLog;
 
 public class CameraProxy$3
   implements Runnable
 {
-  public CameraProxy$3(akwj paramakwj) {}
+  public CameraProxy$3(alkv paramalkv) {}
   
   public void run()
   {
-    if ((akwj.a(this.this$0) != 3) || (akwj.a(this.this$0) == null))
+    if ((alkv.a(this.this$0) != 3) || (alkv.a(this.this$0) == null))
     {
-      QLog.i("CameraProxy", 2, "cancel to close camera. next mCurCameraState = " + akwj.a(this.this$0));
+      QLog.i("CameraProxy", 2, "cancel to close camera. next mCurCameraState = " + alkv.a(this.this$0));
       return;
     }
-    if (akwj.a(this.this$0)) {
-      akwj.a(this.this$0).a();
+    if (alkv.a(this.this$0)) {
+      alkv.a(this.this$0).a();
     }
-    akwj.a(this.this$0, false);
-    akwj.a(this.this$0).a();
-    if (akwj.a(this.this$0) != 3)
+    alkv.a(this.this$0, false);
+    alkv.a(this.this$0).a();
+    if (alkv.a(this.this$0) != 3)
     {
-      QLog.i("CameraProxy", 2, "cancel to close camera. next mCurCameraState = " + akwj.a(this.this$0));
+      QLog.i("CameraProxy", 2, "cancel to close camera. next mCurCameraState = " + alkv.a(this.this$0));
       return;
     }
-    akwj.a(this.this$0, 0);
-    akwj.a(this.this$0, null);
-    akwj.e(this.this$0, 0);
-    QLog.i("CameraProxy", 2, "closeCamera successfully. mCurCameraState = " + akwj.a(this.this$0));
+    alkv.a(this.this$0, 0);
+    alkv.a(this.this$0, null);
+    alkv.e(this.this$0, 0);
+    QLog.i("CameraProxy", 2, "closeCamera successfully. mCurCameraState = " + alkv.a(this.this$0));
   }
 }
 

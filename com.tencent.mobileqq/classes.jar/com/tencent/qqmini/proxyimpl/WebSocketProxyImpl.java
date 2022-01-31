@@ -15,67 +15,67 @@ public class WebSocketProxyImpl
   extends WebSocketProxy
 {
   private static final String TAG = "WebSocketProxyImpl";
-  public ConcurrentHashMap<String, WebSocketProxyImpl.WebSocketTask> taskMap = new ConcurrentHashMap();
+  public ConcurrentHashMap<Integer, WebSocketProxyImpl.WebSocketTask> taskMap = new ConcurrentHashMap();
   
-  public boolean closeSocket(String paramString1, int paramInt, String paramString2)
+  public boolean closeSocket(int paramInt1, int paramInt2, String paramString)
   {
-    WebSocketProxyImpl.WebSocketTask localWebSocketTask = (WebSocketProxyImpl.WebSocketTask)this.taskMap.get(paramString1);
+    WebSocketProxyImpl.WebSocketTask localWebSocketTask = (WebSocketProxyImpl.WebSocketTask)this.taskMap.get(Integer.valueOf(paramInt1));
     if ((localWebSocketTask != null) && (localWebSocketTask.mWebSocket != null)) {}
     try
     {
-      localWebSocketTask.mWebSocket.close(paramInt, paramString2);
-      ThreadManager.getSubThreadHandler().postDelayed(new WebSocketProxyImpl.1(this, localWebSocketTask, paramInt, paramString2), 1000L);
-      this.taskMap.remove(paramString1);
+      localWebSocketTask.mWebSocket.close(paramInt2, paramString);
+      ThreadManager.getSubThreadHandler().postDelayed(new WebSocketProxyImpl.1(this, localWebSocketTask, paramInt1, paramInt2, paramString), 1000L);
+      this.taskMap.remove(Integer.valueOf(paramInt1));
       return false;
     }
-    catch (Exception paramString2)
+    catch (Exception paramString)
     {
       for (;;)
       {
-        QLog.e("WebSocketProxyImpl", 1, "closeSocket error:", paramString2);
+        QLog.e("WebSocketProxyImpl", 1, "closeSocket error:", paramString);
       }
     }
   }
   
-  public boolean connectSocket(String paramString1, Map<String, String> paramMap, String paramString2, int paramInt, WebSocketProxy.WebSocketListener paramWebSocketListener)
+  public boolean connectSocket(int paramInt1, String paramString1, Map<String, String> paramMap, String paramString2, int paramInt2, WebSocketProxy.WebSocketListener paramWebSocketListener)
   {
-    paramMap = new WebSocketProxyImpl.WebSocketTask(this, paramString1, paramMap, paramInt, paramWebSocketListener);
-    this.taskMap.put(paramString1, paramMap);
-    return false;
+    paramString1 = new WebSocketProxyImpl.WebSocketTask(this, paramInt1, paramString1, paramMap, paramInt2, paramWebSocketListener);
+    this.taskMap.put(Integer.valueOf(paramInt1), paramString1);
+    return true;
   }
   
-  public boolean send(String paramString1, String paramString2)
+  public boolean send(int paramInt, String paramString)
   {
-    paramString1 = (WebSocketProxyImpl.WebSocketTask)this.taskMap.get(paramString1);
-    if ((paramString1 != null) && (paramString1.mWebSocket != null)) {
+    WebSocketProxyImpl.WebSocketTask localWebSocketTask = (WebSocketProxyImpl.WebSocketTask)this.taskMap.get(Integer.valueOf(paramInt));
+    if ((localWebSocketTask != null) && (localWebSocketTask.mWebSocket != null)) {
       try
       {
         MediaType localMediaType = MediaType.parse("application/vnd.okhttp.websocket+text; charset=utf-8");
-        paramString1.mWebSocket.sendMessage(RequestBody.create(localMediaType, paramString2));
+        localWebSocketTask.mWebSocket.sendMessage(RequestBody.create(localMediaType, paramString));
         return true;
       }
-      catch (Exception paramString1)
+      catch (Exception paramString)
       {
-        QLog.e("WebSocketProxyImpl", 1, "sendStringMessage error:", paramString1);
+        QLog.e("WebSocketProxyImpl", 1, "sendStringMessage error:", paramString);
         return false;
       }
     }
     return false;
   }
   
-  public boolean send(String paramString, byte[] paramArrayOfByte)
+  public boolean send(int paramInt, byte[] paramArrayOfByte)
   {
-    paramString = (WebSocketProxyImpl.WebSocketTask)this.taskMap.get(paramString);
-    if ((paramString != null) && (paramString.mWebSocket != null)) {
+    WebSocketProxyImpl.WebSocketTask localWebSocketTask = (WebSocketProxyImpl.WebSocketTask)this.taskMap.get(Integer.valueOf(paramInt));
+    if ((localWebSocketTask != null) && (localWebSocketTask.mWebSocket != null)) {
       try
       {
         MediaType localMediaType = MediaType.parse("application/vnd.okhttp.websocket+binary");
-        paramString.mWebSocket.sendMessage(RequestBody.create(localMediaType, paramArrayOfByte));
+        localWebSocketTask.mWebSocket.sendMessage(RequestBody.create(localMediaType, paramArrayOfByte));
         return true;
       }
-      catch (Exception paramString)
+      catch (Exception paramArrayOfByte)
       {
-        QLog.e("WebSocketProxyImpl", 1, "sendBinaryMessage error:", paramString);
+        QLog.e("WebSocketProxyImpl", 1, "sendBinaryMessage error:", paramArrayOfByte);
         return false;
       }
     }

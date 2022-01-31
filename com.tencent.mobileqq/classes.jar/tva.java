@@ -1,16 +1,25 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
-public class tva
-  extends tnm
+class tva
+  implements View.OnClickListener
 {
-  public tva(tuz paramtuz) {}
+  tva(tuw paramtuw) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((paramInt1 == 66666) && (paramInt2 == -1)) {
-      this.a.a.b().finish();
+    paramView = tuw.a(this.a).a();
+    if (!bbev.g(paramView))
+    {
+      bcpw.a(paramView, 1, 2131694607, 0).a();
+      return;
     }
+    veg.d("Q.qqstory.playernew.StoryPlayerImpl", "updateData error, retry, requestGroupData, currentInfo = %s", new Object[] { tuw.a(this.a) });
+    tuw.a(this.a).setVisibility(0);
+    tuw.a(this.a).removeCallbacks(tuw.a(this.a));
+    tuw.a(this.a).postDelayed(tuw.a(this.a), 500L);
   }
 }
 

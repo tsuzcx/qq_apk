@@ -1,51 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import mqq.app.AppActivity;
+import android.media.MediaFormat;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class vut
-  implements DialogInterface.OnClickListener
+public abstract class vut
 {
-  vut(vur paramvur, String paramString) {}
+  protected int a;
+  protected avzm a;
+  protected String a;
+  protected String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(int paramInt, String paramString1, String paramString2, MediaFormat paramMediaFormat, SlideItemInfo paramSlideItemInfo, vus paramvus)
   {
-    paramDialogInterface = this.jdField_a_of_type_JavaLangString.toLowerCase();
-    if (paramDialogInterface.startsWith("www.")) {
-      paramDialogInterface = "http://" + this.jdField_a_of_type_JavaLangString;
-    }
-    for (;;)
+    if (paramvus != null)
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_Vur.jdField_a_of_type_MqqAppAppActivity, QQBrowserDelegationActivity.class);
-      localIntent.putExtra("url", paramDialogInterface);
-      localIntent.putExtra("param_force_internal_browser", true);
-      localIntent.putExtra("key_isReadModeEnabled", true);
-      localIntent.putExtra("fromQrcode", true);
-      localIntent.putExtra("injectrecommend", false);
-      localIntent.putExtra("big_brother_source_key", "biz_src_jc_sacan_qr");
-      this.jdField_a_of_type_Vur.jdField_a_of_type_MqqAppAppActivity.startActivity(localIntent);
-      if (this.jdField_a_of_type_Vur.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e) {
-        this.jdField_a_of_type_Vur.jdField_a_of_type_MqqAppAppActivity.finish();
+      vtr localvtr = new vtr();
+      localvtr.jdField_a_of_type_Long = paramvus.b;
+      localvtr.jdField_a_of_type_Int = paramInt;
+      localvtr.jdField_b_of_type_JavaLangString = paramString2;
+      localvtr.jdField_a_of_type_JavaLangString = paramString1;
+      localvtr.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+      localvtr.c = this.jdField_b_of_type_JavaLangString;
+      localvtr.jdField_a_of_type_Boolean = false;
+      localvtr.jdField_b_of_type_Int = 1;
+      if (paramSlideItemInfo != null)
+      {
+        localvtr.jdField_a_of_type_Boolean = paramSlideItemInfo.jdField_a_of_type_Boolean;
+        localvtr.jdField_b_of_type_Int = paramSlideItemInfo.c;
       }
-      if (this.jdField_a_of_type_Vur.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.b) {
-        this.jdField_a_of_type_Vur.jdField_a_of_type_MqqAppAppActivity.finish();
-      }
-      return;
-      if (paramDialogInterface.startsWith("https:")) {
-        paramDialogInterface = "https" + this.jdField_a_of_type_JavaLangString.substring(5);
-      } else if (paramDialogInterface.startsWith("http:")) {
-        paramDialogInterface = "http" + this.jdField_a_of_type_JavaLangString.substring(4);
-      } else {
-        paramDialogInterface = this.jdField_a_of_type_JavaLangString;
+      if (paramvus.a != null) {
+        paramvus.a.a(localvtr);
       }
     }
+  }
+  
+  protected boolean a(vus paramvus)
+  {
+    if ((!paramvus.d) && (QLog.isColorLevel())) {
+      QLog.d("ToVideoConverter", 2, "run exit:" + paramvus.b + " currContext.isRun:" + paramvus.d);
+    }
+    return !paramvus.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vut
  * JD-Core Version:    0.7.0.1
  */

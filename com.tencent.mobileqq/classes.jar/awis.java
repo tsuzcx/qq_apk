@@ -1,20 +1,31 @@
-class awis
-  implements awgs
+import java.util.Comparator;
+
+final class awis
+  implements Comparator<awih>
 {
-  awis(awir paramawir, awiw paramawiw) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public int a(awih paramawih1, awih paramawih2)
   {
-    if ((paramInt == 1) && (this.jdField_a_of_type_Awiw != null)) {
-      this.jdField_a_of_type_Awiw.a(paramBoolean, true);
+    long l1 = paramawih1.c();
+    long l2 = paramawih2.c();
+    if (l1 < l2) {}
+    do
+    {
+      return 1;
+      if (l1 > l2) {
+        return -1;
+      }
+      l1 = paramawih1.b();
+      l2 = paramawih2.b();
+    } while (l1 < l2);
+    if (l1 > l2) {
+      return -1;
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awis
  * JD-Core Version:    0.7.0.1
  */

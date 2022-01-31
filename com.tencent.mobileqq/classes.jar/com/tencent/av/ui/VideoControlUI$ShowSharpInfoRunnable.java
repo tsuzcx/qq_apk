@@ -6,8 +6,8 @@ import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import kvq;
-import mip;
+import lgf;
+import mto;
 
 class VideoControlUI$ShowSharpInfoRunnable
   implements Runnable
@@ -20,8 +20,8 @@ class VideoControlUI$ShowSharpInfoRunnable
       return;
     }
     Object localObject1 = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
-    if (VideoLayerUIBase.a((kvq)localObject1)) {}
-    for (Object localObject2 = ((kvq)localObject1).b;; localObject2 = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a())
+    if (VideoLayerUIBase.a((lgf)localObject1)) {}
+    for (Object localObject2 = ((lgf)localObject1).b;; localObject2 = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a())
     {
       localObject1 = localObject2;
       if (localObject2 == null) {
@@ -47,7 +47,7 @@ class VideoControlUI$ShowSharpInfoRunnable
       {
         localObject2 = (String)localObject2 + "\r\n";
         localObject1 = localObject2;
-        localObject2 = (String)localObject2 + mip.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a()).a();
+        localObject2 = (String)localObject2 + mto.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a()).a();
         localObject1 = localObject2;
         localObject2 = (String)localObject2 + "\r\n";
         localObject1 = localObject2;

@@ -1,20 +1,23 @@
-import android.util.Log;
-import com.tencent.TMG.sdk.AVRoomMulti.RequestViewListCompleteCallback;
-import com.tencent.TMG.sdk.AVView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class aiok
-  implements AVRoomMulti.RequestViewListCompleteCallback
+  implements DialogInterface.OnClickListener
 {
-  aiok(aioe paramaioe) {}
+  aiok(aiof paramaiof) {}
   
-  public void OnComplete(String[] paramArrayOfString, AVView[] paramArrayOfAVView, int paramInt1, int paramInt2, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Log.d("CmGameAvHandler", "RequestViewListCompleteCallback.OnComplete result: " + paramInt2 + paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("NewFriendMoreSysMsgAdapter", 2, "cancel click");
+    }
+    axqw.b(this.a.a, "dc00898", "", "", "0X800A328", "0X800A328", 1, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aiok
  * JD-Core Version:    0.7.0.1
  */

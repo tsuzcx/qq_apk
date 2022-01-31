@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
-public final class aony
-  implements Parcelable.Creator<OfflineFileInfo>
+public class aony
+  extends ayfb
 {
-  public OfflineFileInfo a(Parcel paramParcel)
+  public aony(FilePreviewActivity paramFilePreviewActivity) {}
+  
+  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    return new OfflineFileInfo(paramParcel);
+    super.a(paramTeamWorkFileImportInfo);
+    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
+      FilePreviewActivity.a(this.a).dismiss();
+    }
   }
   
-  public OfflineFileInfo[] a(int paramInt)
+  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    return new OfflineFileInfo[paramInt];
+    super.a(paramString, paramTeamWorkFileImportInfo);
+    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
+      FilePreviewActivity.a(this.a).dismiss();
+    }
   }
 }
 

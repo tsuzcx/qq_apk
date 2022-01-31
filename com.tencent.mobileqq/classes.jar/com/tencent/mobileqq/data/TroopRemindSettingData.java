@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class TroopRemindSettingData
-  extends atmo
+  extends aukm
 {
   public int isOpenState;
-  @atoc
+  @auma
   public String troopUin;
 }
 

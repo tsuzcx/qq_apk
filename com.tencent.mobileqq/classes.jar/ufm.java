@@ -1,26 +1,6 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-import java.util.List;
-import java.util.Map;
-
-class ufm
-  implements bekd
+public abstract interface ufm
 {
-  ufm(ufl paramufl, StoryHomeHorizontalListView paramStoryHomeHorizontalListView, ufi paramufi) {}
-  
-  public void onScrollStateChanged(int paramInt)
-  {
-    if (paramInt == 4097)
-    {
-      int i = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getFirstVisiblePosition();
-      paramInt = i;
-      if (i < 0) {
-        paramInt = 0;
-      }
-      ufl.a(this.jdField_a_of_type_Ufl).a.put("2_" + this.jdField_a_of_type_Ufl.a.a.feedId, ((StoryVideoItem)this.jdField_a_of_type_Ufi.a.get(paramInt)).mVid);
-    }
-  }
+  public abstract void a(ufk paramufk);
 }
 
 

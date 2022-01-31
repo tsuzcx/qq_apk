@@ -1,41 +1,25 @@
-import com.tencent.mobileqq.activity.bless.BlessTask;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
 
 class aeqe
-  extends batl
+  extends akim
 {
-  aeqe(aeqd paramaeqd, String paramString1, String paramString2) {}
+  aeqe(aeqd paramaeqd) {}
   
-  public void onCancel(batm parambatm)
+  protected void d(boolean paramBoolean, String paramString)
   {
-    aeqd.a(this.jdField_a_of_type_Aeqd).remove(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onDone(batm parambatm)
-  {
-    aeqd.a(this.jdField_a_of_type_Aeqd).remove(this.jdField_a_of_type_JavaLangString);
-    if (parambatm.a() == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessManager", 2, "download finished " + this.b);
-      }
-      if ((this.b != null) && (aeqd.a(this.jdField_a_of_type_Aeqd) != null) && (this.b.equals(aeqd.a(this.jdField_a_of_type_Aeqd).starVideo))) {
-        aeqd.b(this.jdField_a_of_type_Aeqd);
-      }
+    if ((this.a.w != 2) && (paramBoolean) && (this.a.b != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.hasPostRedPoint())) {
+      this.a.b.a(true);
     }
-    while (!QLog.isColorLevel())
-    {
-      return;
-      aeqd.a(this.jdField_a_of_type_Aeqd);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString + "Q.hotchat.aio_post_red_point", 2, "onBuluoHotChatRedPointComing, troopUin:" + paramString);
     }
-    QLog.d("BlessManager", 2, "downloadFile failed: " + parambatm.b + " code=" + parambatm.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeqe
  * JD-Core Version:    0.7.0.1
  */

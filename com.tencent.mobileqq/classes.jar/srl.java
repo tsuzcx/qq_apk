@@ -1,18 +1,64 @@
+import java.util.List;
+
 public class srl
+  extends srm<sqc>
 {
-  public final String a;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
+  private int a = 200;
   
-  public srl(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  protected double a()
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
+    return 0.3D;
+  }
+  
+  protected int a()
+  {
+    return this.a;
+  }
+  
+  protected long a(sqc paramsqc1, sqc paramsqc2)
+  {
+    if ((paramsqc1 != paramsqc2) && (paramsqc1.b == paramsqc2.b)) {
+      return 1L;
+    }
+    return Math.abs(paramsqc1.b - paramsqc2.b);
+  }
+  
+  protected sqc a(List<sqc> paramList)
+  {
+    long l = 0L;
+    int i = 0;
+    while (i < paramList.size())
+    {
+      l += ((sqc)paramList.get(i)).b;
+      i += 1;
+    }
+    sqc localsqc = new sqc();
+    localsqc.b = (l / paramList.size());
+    return localsqc;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  protected boolean a(long paramLong)
+  {
+    int i = b();
+    if (i > 0) {
+      if (paramLong / i >= 1500L) {}
+    }
+    while (paramLong < 200L)
+    {
+      return true;
+      return false;
+    }
+    return false;
+  }
+  
+  protected boolean a(sqc paramsqc1, sqc paramsqc2)
+  {
+    return paramsqc1.b == paramsqc2.b;
   }
 }
 

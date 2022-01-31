@@ -1,165 +1,192 @@
-import android.text.TextUtils;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import cooperation.qzone.util.QZLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.SparseArray;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
+import mqq.manager.Manager;
+import org.json.JSONObject;
 
 public class bggp
+  implements Manager
 {
-  private static bggp jdField_a_of_type_Bggp;
-  private static String jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "xmpcoreUrl", "http://d3g.qq.com/sngapp/app/update/20171220130606_8640/xmpcore.jar");
-  private static String b = QzoneConfig.getInstance().getConfig("QZoneSetting", "XMPcoreJarMD5", "a0c5ac44fc2d0e35187f0c1479db48b2");
-  private ConcurrentHashMap<String, Boolean> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private SparseArray<bggq> jdField_a_of_type_AndroidUtilSparseArray;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public AtomicInteger a;
+  public AtomicReference<bggl> a;
   private boolean jdField_a_of_type_Boolean;
+  public AtomicReference<bggk> b;
   
-  public static bggp a()
+  public bggp(QQAppInterface paramQQAppInterface)
   {
-    if (jdField_a_of_type_Bggp == null) {}
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = new AtomicReference(null);
+    this.b = new AtomicReference(null);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(-1);
+  }
+  
+  public int a()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("qqcomic_preload_profile", bbja.a()).getInt(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_" + "use_times", 0);
+  }
+  
+  public long a()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("qqcomic_preload_profile", bbja.a()).getLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_" + "active_time", 0L);
+  }
+  
+  public bggq a(int paramInt)
+  {
+    bggq localbggq = (bggq)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt, null);
+    if (localbggq == null) {}
+    switch (paramInt)
+    {
+    default: 
+      return localbggq;
+    }
+    localbggq = new bggq(paramInt);
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localbggq);
+    return localbggq;
+  }
+  
+  public void a()
+  {
+    int i = 1;
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
     try
     {
-      if (jdField_a_of_type_Bggp == null) {
-        jdField_a_of_type_Bggp = new bggp();
+      if (this.jdField_a_of_type_Boolean) {
+        return;
       }
-      return jdField_a_of_type_Bggp;
     }
     finally {}
-  }
-  
-  private HashMap<String, Object> a(String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (paramArrayOfString == null) || (paramArrayOfString.length == 0) || (!this.jdField_a_of_type_Boolean)) {
-      paramString1 = null;
-    }
-    Object localObject1;
-    HashMap localHashMap;
-    int j;
-    int i;
-    do
+    localObject2 = new bggl(1113, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    if (((bggl)localObject2).jdField_a_of_type_Int != -1)
     {
-      do
-      {
-        return paramString1;
-        localObject1 = bgfg.a("com.adobe.xmp.XmpUtil", "extractXMPMeta", false, a(new Class[] { String.class }), new Object[] { paramString1 });
-        localHashMap = new HashMap();
-        paramString1 = localHashMap;
-      } while (localObject1 == null);
-      j = paramArrayOfString.length;
-      i = 0;
-      paramString1 = localHashMap;
-    } while (i >= j);
-    paramString1 = paramArrayOfString[i];
-    if (TextUtils.isEmpty(paramString1)) {}
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.set(localObject2);
+      this.jdField_a_of_type_Boolean = true;
+      localObject2 = ((bggl)localObject2).jdField_a_of_type_JavaLangString;
+    }
     for (;;)
     {
-      i += 1;
-      break;
-      Object localObject2 = bgfg.a(localObject1, "getProperty", false, a(new Class[] { String.class, String.class }), new Object[] { paramString2, paramString1 });
-      if (localObject2 != null)
+      try
       {
-        localObject2 = bgfg.a(localObject2, "getValue", false, new Class[0], new Object[0]);
-        if (localObject2 != null) {
-          localHashMap.put(paramString1, localObject2);
+        localObject2 = new JSONObject((String)localObject2);
+        localObject3 = localObject2;
+      }
+      catch (Exception localException2)
+      {
+        Object localObject3;
+        localObject2 = null;
+        continue;
+      }
+      try
+      {
+        if (((JSONObject)localObject2).has("publicaccount"))
+        {
+          localObject3 = ((JSONObject)localObject2).getJSONObject("publicaccount");
+          AtomicInteger localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+          if (((JSONObject)localObject3).getBoolean("switch"))
+          {
+            localAtomicInteger.set(i);
+            localObject3 = localObject2;
+          }
+        }
+        else
+        {
+          if (localObject3 == null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("QQComicPreloadManager", 2, "cannot resolve strategy from server.");
+            }
+            return;
+            return;
+            ((Exception)localObject3).printStackTrace();
+            localObject3 = localObject2;
+            continue;
+          }
+          localObject3 = bggk.a((JSONObject)localObject3);
+          localObject2 = localObject3;
+          if (localObject3 == null)
+          {
+            localObject2 = new bggk();
+            ((bggk)localObject2).jdField_a_of_type_Boolean = true;
+            ((bggk)localObject2).jdField_b_of_type_Int = 127;
+            ((bggk)localObject2).c = 16777215;
+            ((bggk)localObject2).jdField_h_of_type_Boolean = true;
+            ((bggk)localObject2).jdField_b_of_type_Boolean = true;
+            ((bggk)localObject2).d = true;
+            ((bggk)localObject2).jdField_e_of_type_Boolean = true;
+            ((bggk)localObject2).jdField_i_of_type_Boolean = true;
+            ((bggk)localObject2).jdField_e_of_type_Int = 24;
+            ((bggk)localObject2).j = true;
+            ((bggk)localObject2).f = 20;
+            ((bggk)localObject2).k = true;
+            ((bggk)localObject2).g = 6;
+            ((bggk)localObject2).jdField_h_of_type_Int = 1;
+            ((bggk)localObject2).jdField_i_of_type_Int = 3;
+          }
+          this.b.set(localObject2);
+          return;
         }
       }
-    }
-  }
-  
-  private void a()
-  {
-    QZLog.i("XMPCoreUtil", "loadXMPCoreModule");
-    if (b())
-    {
-      QZLog.i("XMPCoreUtil", 4, new Object[] { "xmpCoreModulePath =", QzoneModuleManager.getInstance().getModuleFilePath("xmpcore.jar") });
-      this.jdField_a_of_type_Boolean = QzoneModuleManager.getInstance().loadModule("xmpcore.jar", getClass().getClassLoader(), false, false);
-      if (this.jdField_a_of_type_Boolean) {
-        QZLog.i("XMPCoreUtil", "loadXMPCoreModule success");
-      }
-    }
-    else
-    {
-      return;
-    }
-    QZLog.i("XMPCoreUtil", "loadXMPCoreModule fail");
-  }
-  
-  private boolean a()
-  {
-    String str = LocalMultiProcConfig.getString("xmp_core_file_md5", null);
-    if (TextUtils.isEmpty(str)) {}
-    while (!str.equalsIgnoreCase(b)) {
-      return true;
-    }
-    return false;
-  }
-  
-  private boolean b()
-  {
-    String str = QzoneModuleManager.getInstance().getModuleFilePath("xmpcore.jar");
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "isXMPCoreJarExit path = ", str });
-    if (TextUtils.isEmpty(str)) {
-      return false;
-    }
-    return new File(str).exists();
-  }
-  
-  public void a(bggs parambggs)
-  {
-    if (parambggs == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      parambggs.a(this.jdField_a_of_type_Boolean);
-      return;
-    }
-    if ((a()) || (!b())) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      a();
-      parambggs.a(this.jdField_a_of_type_Boolean);
-      return;
-    }
-    QzoneModuleManager.getInstance().downloadModule("xmpcore.jar", new bggq(this, parambggs));
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString) != null) {
-      return ((Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).booleanValue();
-    }
-    Object localObject = a(paramString, "http://ns.google.com/photos/1.0/panorama/", new String[] { "GPano:UsePanoramaViewer" });
-    if (localObject != null)
-    {
-      localObject = ((HashMap)localObject).get("GPano:UsePanoramaViewer");
-      if ((localObject != null) && ((localObject instanceof String)))
+      catch (Exception localException1)
       {
-        boolean bool = ((String)localObject).equalsIgnoreCase("true");
-        QZLog.i("XMPCoreUtil", 4, new Object[] { "isPanorama: ", Boolean.valueOf(bool) });
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(bool));
-        return bool;
+        continue;
+        i = 0;
       }
     }
-    return false;
   }
   
-  public Class[] a(Class... paramVarArgs)
+  public void a(int paramInt)
   {
-    Class[] arrayOfClass = new Class[paramVarArgs.length];
+    bggm.a(a(paramInt));
+  }
+  
+  public void a(long paramLong)
+  {
+    BaseApplicationImpl.getApplication().getSharedPreferences("qqcomic_preload_profile", bbja.a()).edit().putLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_" + "active_time", paramLong).commit();
+  }
+  
+  public int[] a()
+  {
+    int[] arrayOfInt = new int[24];
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qqcomic_preload_profile", bbja.a());
     int i = 0;
-    while (i < paramVarArgs.length)
+    while (i < 24)
     {
-      arrayOfClass[i] = paramVarArgs[i];
+      arrayOfInt[i] = localSharedPreferences.getInt(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_" + "use_times" + "_" + i, 0);
       i += 1;
     }
-    return arrayOfClass;
+    return arrayOfInt;
+  }
+  
+  public void b()
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qqcomic_preload_profile", bbja.a());
+    int i = a();
+    localSharedPreferences.edit().putInt(str + "_" + "use_times", i + 1).commit();
+    i = Calendar.getInstance().get(11);
+    int j = localSharedPreferences.getInt(str + "_" + "use_times" + "_" + i, 0);
+    localSharedPreferences.edit().putInt(str + "_" + "use_times" + "_" + i, j + 1).commit();
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bggp
  * JD-Core Version:    0.7.0.1
  */

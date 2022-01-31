@@ -1,10 +1,12 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class szr
+public abstract interface szr
 {
-  public String a;
-  public List<vil> a = new ArrayList();
+  public abstract void a(szv paramszv, View paramView, String paramString);
+  
+  public abstract void a(szv paramszv, ViewGroup paramViewGroup, View paramView, int paramInt, CommentEntry paramCommentEntry);
 }
 
 

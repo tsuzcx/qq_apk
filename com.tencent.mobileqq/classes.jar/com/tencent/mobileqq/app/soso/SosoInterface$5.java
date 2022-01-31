@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app.soso;
 
-import akgd;
+import akup;
 
 final class SosoInterface$5
   implements Runnable
 {
-  SosoInterface$5(akgd paramakgd, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
+  SosoInterface$5(akup paramakup, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Akgd.onLocationFinish(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo);
+    this.jdField_a_of_type_Akup.onLocationFinish(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo);
   }
 }
 

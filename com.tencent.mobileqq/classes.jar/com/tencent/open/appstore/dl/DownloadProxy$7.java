@@ -1,16 +1,16 @@
 package com.tencent.open.appstore.dl;
 
-import bccu;
-import bccy;
+import bdgv;
+import bdgz;
 
 public class DownloadProxy$7
   implements Runnable
 {
-  public DownloadProxy$7(bccy parambccy, String paramString, boolean paramBoolean) {}
+  public DownloadProxy$7(bdgz parambdgz, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    bccu.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    bdgv.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
   }
 }
 

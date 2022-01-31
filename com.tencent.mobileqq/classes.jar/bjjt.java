@@ -1,31 +1,30 @@
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import dov.com.qq.im.capture.view.MusicFragmentProviderView;
 
 public class bjjt
+  implements bjbd
 {
-  public static int a;
-  public static boolean a;
+  public bjjt(MusicFragmentProviderView paramMusicFragmentProviderView) {}
   
-  static
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    jdField_a_of_type_Int = 1500;
-  }
-  
-  public static boolean a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
-    }
-    boolean bool = awii.a(awii.r);
-    if (bool) {
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:black=" + bool);
+    Message localMessage;
+    if (this.a.a != null)
+    {
+      localMessage = this.a.a.obtainMessage();
+      if (!paramBoolean) {
+        break label61;
       }
     }
-    while (Build.VERSION.SDK_INT < 18) {
-      return false;
+    label61:
+    for (int i = 1;; i = 0)
+    {
+      localMessage.arg1 = i;
+      localMessage.obj = paramObject;
+      localMessage.what = 7;
+      this.a.a.sendMessage(localMessage);
+      return;
     }
-    return jdField_a_of_type_Boolean;
   }
 }
 

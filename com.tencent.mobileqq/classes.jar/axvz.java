@@ -1,17 +1,11 @@
+import android.widget.TextView;
+import com.tencent.biz.now.NowVideoLayout;
+
 public class axvz
 {
-  public int a;
-  public long a;
-  public axvu a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  NowVideoLayout jdField_a_of_type_ComTencentBizNowNowVideoLayout;
+  TextView b;
 }
 
 

@@ -1,46 +1,35 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 class snc
-  implements soj
+  extends bhic
 {
-  snc(smz paramsmz, int paramInt, CommentEntry paramCommentEntry) {}
+  snc(snb paramsnb) {}
   
-  public void a(int paramInt, Bundle paramBundle)
+  public void a(String paramString)
   {
-    a(-1, ajjy.a(2131638608));
+    snb.a = 1;
+    snb.a(this.a);
+    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk state == STATE_DOWNLOADED onInstallBegin  STATE_PRELOAD_BEGIN sPreloadPluginState = " + snb.a);
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(String paramString, float paramFloat, long paramLong) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    bbmy.a(BaseApplication.getContext(), 1, ajjy.a(2131638631) + paramInt, 0).a();
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
-    this.jdField_a_of_type_Smz.e();
-    if (QLog.isColorLevel()) {
-      QLog.e("FeedCommentLego", 2, new Object[] { "ReqGetLikeList ErrorCode:", Integer.valueOf(paramInt), " | ErrorMsg: ", paramString });
-    }
+    snb.a = -1;
+    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk state == STATE_DOWNLOADED onInstallError  STATE_PRELOAD_ERR sPreloadPluginState = " + snb.a);
   }
   
-  public void a(MessageMicro paramMessageMicro)
+  public void b(String paramString)
   {
-    this.jdField_a_of_type_Smz.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Smz.e();
-    this.jdField_a_of_type_Smz.jdField_a_of_type_Spd.d(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-    snv.a().a();
-    this.jdField_a_of_type_Smz.a(false, null);
-    bbmy.a(BaseApplication.getContext(), 2, ajjy.a(2131638632), 0).a();
-    smz.a(this.jdField_a_of_type_Smz.jdField_a_of_type_Int, 2, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.feedId, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.commentId);
+    snb.a = 2;
+    snb.a(this.a);
+    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk state == STATE_DOWNLOADED onInstallFinish  STATE_PRELOAD_FINISH sPreloadPluginState = " + snb.a);
   }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     snc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,313 +1,191 @@
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.content.ServiceConnection;
+import com.qq.jce.wup.BasicClassTypeUtil;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import cooperation.groupvideo.GVideoPluginInstallerActivity;
+import cooperation.groupvideo.GVideoProxyActivity;
+import cooperation.plugin.PluginInfo;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class bgjy
-  extends bgix
-  implements bgcc
 {
-  private byte jdField_a_of_type_Byte = 115;
-  public int a;
-  private Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
-  public int b;
-  private Map<Integer, bgjz> b;
-  
-  public bgjy()
+  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 4;
-    this.jdField_b_of_type_JavaUtilMap = new HashMap();
+    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
+      return null;
+    }
+    try
+    {
+      paramString = Class.forName("com.gvideo.com.tencent.av.app.GroupVideoAppInterface");
+      paramBaseApplicationImpl = paramString;
+    }
+    catch (ClassNotFoundException paramString)
+    {
+      for (;;)
+      {
+        try
+        {
+          QLog.e("GroupVideoLog", 1, "*createGroupVideoAppInterface load class fail");
+          return null;
+        }
+        catch (ClassNotFoundException paramBaseApplicationImpl)
+        {
+          paramBaseApplicationImpl.printStackTrace();
+        }
+        paramString = paramString;
+        paramString = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "group_video_plugin.apk");
+        paramBaseApplicationImpl = paramString.loadClass("com.gvideo.com.tencent.av.app.GroupVideoAppInterface");
+        BasicClassTypeUtil.setClassLoader(true, paramString);
+      }
+      do
+      {
+        return null;
+        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppInterface)));
+      paramBaseApplicationImpl = (AppInterface)paramBaseApplicationImpl;
+      return paramBaseApplicationImpl;
+    }
+    catch (IllegalArgumentException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (IllegalAccessException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InstantiationException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InvocationTargetException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (NoSuchMethodException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (Exception paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    if (paramBaseApplicationImpl != null) {}
   }
   
-  private void a(bgjz parambgjz)
+  public static void a(AppRuntime paramAppRuntime, ServiceConnection paramServiceConnection)
   {
-    int i = 0;
-    if (TextUtils.isEmpty(parambgjz.jdField_a_of_type_JavaLangString)) {
+    if ((paramAppRuntime == null) || (paramServiceConnection == null)) {
       return;
     }
-    if (TextUtils.isEmpty(parambgjz.jdField_a_of_type_JavaLangString)) {
-      i = 101;
-    }
-    while (i != 0)
+    try
     {
-      QLog.w("js-upload: QzoneUploadPlugin", 1, "call qzone upload ret:" + i);
-      JSONObject localJSONObject1 = new JSONObject();
-      try
+      paramAppRuntime.getApplication().unbindService(paramServiceConnection);
+      return;
+    }
+    catch (IllegalArgumentException paramAppRuntime)
+    {
+      QLog.d("GroupVideoHelper", 2, "unbindService error" + paramAppRuntime.getMessage());
+    }
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, Class paramClass, ServiceConnection paramServiceConnection, String paramString)
+  {
+    if ((paramAppRuntime == null) || (paramServiceConnection == null)) {
+      return;
+    }
+    paramClass = new Intent(paramAppRuntime.getApplication(), paramClass);
+    paramClass.putExtra("useSkinEngine", 1);
+    paramClass.putExtra("userQqResources", 2);
+    bgkz localbgkz = new bgkz(1);
+    localbgkz.b = "group_video_plugin.apk";
+    localbgkz.d = PluginInfo.k;
+    localbgkz.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
+    localbgkz.e = paramString;
+    localbgkz.jdField_a_of_type_AndroidContentIntent = paramClass;
+    localbgkz.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    bgkq.c(paramAppRuntime.getApplication(), localbgkz);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    if (paramContext != null)
+    {
+      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
+      if (paramContext != null)
       {
-        localJSONObject1.put("status", 2);
-        localJSONObject1.put("code", i);
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("id", parambgjz.jdField_a_of_type_Int);
-        localJSONObject2.put("url", "");
-        localJSONObject1.put("data", localJSONObject2);
-        localJSONObject1.put("msg", "");
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(parambgjz.c, new String[] { localJSONObject1.toString() });
-        return;
-      }
-      catch (JSONException parambgjz)
-      {
-        QLog.w("js-upload: QzoneUploadPlugin", 1, "JSONException error !", parambgjz);
-        return;
-        parambgjz.d = bgjx.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), parambgjz.jdField_a_of_type_JavaLangString);
-        if ((!TextUtils.isEmpty(parambgjz.d)) && (new File(parambgjz.d).exists()))
-        {
-          this.jdField_a_of_type_JavaUtilMap.put(parambgjz.d, Integer.valueOf(parambgjz.jdField_a_of_type_Int));
-          if (!bgjx.a(parambgjz.d, parambgjz.b)) {
-            i = 102;
+        paramContext = paramContext.iterator();
+        while (paramContext.hasNext()) {
+          if ("com.tencent.mobileqq:groupvideo".compareTo(((ActivityManager.RunningAppProcessInfo)paramContext.next()).processName) == 0) {
+            return true;
           }
         }
-        else
-        {
-          i = 103;
-        }
-      }
-      catch (Exception parambgjz)
-      {
-        QLog.w("js-upload: QzoneUploadPlugin", 1, "parentPlugin.callJs error !", parambgjz);
       }
     }
+    return false;
   }
   
-  private void b()
+  public static boolean a(AppInterface paramAppInterface, Activity paramActivity, Intent paramIntent, int paramInt)
   {
-    bgbz.a().a(this);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  private void b(String... paramVarArgs)
-  {
-    QLog.i("js-upload: QzoneUploadPlugin", 1, "notify client receive upload task.");
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("cmd", 1);
-      paramVarArgs = new JSONObject(paramVarArgs[0]);
-      QLog.d("js-upload: QzoneUploadPlugin", 1, "callback invoke ... task.jsCallback:" + paramVarArgs.getString("callback"));
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramVarArgs.getString("callback"), new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (JSONException paramVarArgs)
-    {
-      QLog.w("js-upload: QzoneUploadPlugin", 1, "JSONException error !", paramVarArgs);
-      return;
-    }
-    catch (Exception paramVarArgs)
-    {
-      QLog.w("js-upload: QzoneUploadPlugin", 1, "parentPlugin.callJs error !", paramVarArgs);
-    }
-  }
-  
-  public void a(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    super.a(paramIntent, paramByte, paramInt);
-    if (paramByte == this.jdField_a_of_type_Byte) {}
-  }
-  
-  /* Error */
-  protected void a(String... paramVarArgs)
-  {
-    // Byte code:
-    //   0: ldc 50
-    //   2: iconst_1
-    //   3: ldc 195
-    //   5: invokestatic 177	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   8: new 74	org/json/JSONObject
-    //   11: dup
-    //   12: aload_1
-    //   13: iconst_0
-    //   14: aaload
-    //   15: invokespecial 180	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   18: astore_2
-    //   19: new 39	bgjz
-    //   22: dup
-    //   23: aload_0
-    //   24: aload_2
-    //   25: ldc 85
-    //   27: invokevirtual 199	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   30: invokespecial 202	bgjz:<init>	(Lbgjy;I)V
-    //   33: astore_1
-    //   34: aload_1
-    //   35: aload_2
-    //   36: ldc 204
-    //   38: invokevirtual 188	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   41: putfield 42	bgjz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   44: aload_1
-    //   45: aload_2
-    //   46: ldc 206
-    //   48: invokevirtual 188	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   51: putfield 156	bgjz:b	Ljava/lang/String;
-    //   54: aload_1
-    //   55: aload_2
-    //   56: ldc 184
-    //   58: invokevirtual 188	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   61: putfield 103	bgjz:c	Ljava/lang/String;
-    //   64: aload_1
-    //   65: ifnull +26 -> 91
-    //   68: aload_0
-    //   69: getfield 31	bgjy:jdField_b_of_type_JavaUtilMap	Ljava/util/Map;
-    //   72: aload_1
-    //   73: getfield 86	bgjz:jdField_a_of_type_Int	I
-    //   76: invokestatic 149	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   79: aload_1
-    //   80: invokeinterface 154 3 0
-    //   85: pop
-    //   86: aload_0
-    //   87: aload_1
-    //   88: invokespecial 208	bgjy:a	(Lbgjz;)V
-    //   91: return
-    //   92: astore_2
-    //   93: aconst_null
-    //   94: astore_1
-    //   95: ldc 50
-    //   97: iconst_1
-    //   98: ldc 114
-    //   100: aload_2
-    //   101: invokestatic 117	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   104: goto -40 -> 64
-    //   107: astore_2
-    //   108: aconst_null
-    //   109: astore_1
-    //   110: ldc 50
-    //   112: iconst_1
-    //   113: ldc 210
-    //   115: aload_2
-    //   116: invokestatic 117	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   119: goto -55 -> 64
-    //   122: astore_2
-    //   123: goto -13 -> 110
-    //   126: astore_2
-    //   127: goto -32 -> 95
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	130	0	this	bgjy
-    //   0	130	1	paramVarArgs	String[]
-    //   18	38	2	localJSONObject	JSONObject
-    //   92	9	2	localJSONException1	JSONException
-    //   107	9	2	localException1	Exception
-    //   122	1	2	localException2	Exception
-    //   126	1	2	localJSONException2	JSONException
-    // Exception table:
-    //   from	to	target	type
-    //   8	34	92	org/json/JSONException
-    //   8	34	107	java/lang/Exception
-    //   34	64	122	java/lang/Exception
-    //   34	64	126	org/json/JSONException
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!paramString2.equals("QzoneUpload")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {}
-    while (!paramString3.equals("ups")) {
+    if ((paramAppInterface == null) || (paramActivity == null)) {
       return false;
     }
-    if ((paramVarArgs != null) && (paramVarArgs.length > 0))
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        b();
-      }
-      b(paramVarArgs);
-      a(paramVarArgs);
+    if ((paramIntent != null) && (paramIntent.getIntExtra("Type", 0) == 0)) {
+      paramIntent.putExtra("isInviteMode", true);
     }
-    return true;
-  }
-  
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if ((paramLong == 8589934600L) && (Integer.valueOf(String.valueOf(paramMap.get("requestCode"))).intValue() == this.jdField_a_of_type_Byte))
+    for (;;)
     {
-      int i = Integer.valueOf(String.valueOf(paramMap.get("requestCode"))).intValue();
-      paramString = (Intent)paramMap.get("data");
-      int j = Integer.valueOf(String.valueOf(paramMap.get("resultCode"))).intValue();
-      if ((i == this.jdField_a_of_type_Byte) && (j == -1)) {}
+      GVideoProxyActivity.a(paramActivity, paramIntent, GVideoProxyActivity.a(paramActivity), "com.gvideo.com.tencent.av.ui.GroupVideoActivity", paramAppInterface.getCurrentAccountUin(), paramInt);
       return true;
     }
-    return super.a(paramString, paramLong, paramMap);
   }
   
-  public void onWebEvent(String paramString, Bundle paramBundle)
+  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent, int paramInt)
   {
-    if ((paramBundle == null) || (!paramBundle.containsKey("data"))) {}
-    do
-    {
-      return;
-      paramBundle = paramBundle.getBundle("data");
-      if (paramBundle == null)
-      {
-        QLog.e("js-upload: QzoneUploadPlugin", 1, "call js function, bundle is empty");
-        return;
-      }
-    } while (!"cmd.qzoneUploadUps".equals(paramString));
-    int j = paramBundle.getInt("param.uploadStatus", -1);
-    int i = paramBundle.getInt("param.uploadResult", -1);
-    paramString = paramBundle.getString("param.tmpLocalFile");
-    Object localObject = paramBundle.getString("param.uploadResultUrl");
-    QLog.w("js-upload: QzoneUploadPlugin", 1, "onWebEvent status:" + j + " code:" + i + " url:" + (String)localObject);
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.w("js-upload: QzoneUploadPlugin", 1, "localTmpPath == null !!");
-      return;
+    if ((paramQQAppInterface == null) || (!(paramContext instanceof Activity))) {
+      return false;
     }
-    paramBundle = (Integer)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramBundle == null)
-    {
-      QLog.w("js-upload: QzoneUploadPlugin", 1, "ITaskId == null");
-      return;
+    paramContext = (Activity)paramContext;
+    bgkq localbgkq = (bgkq)paramQQAppInterface.getManager(27);
+    if (localbgkq == null) {
+      return false;
     }
-    j = paramBundle.intValue();
-    paramBundle = (bgjz)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(j));
-    if (paramBundle == null)
-    {
-      QLog.w("js-upload: QzoneUploadPlugin", 1, "task == null, id:" + j);
-      return;
+    if (localbgkq.isPlugininstalled("group_video_plugin.apk")) {
+      return a(paramQQAppInterface, paramContext, paramIntent, paramInt);
     }
-    paramBundle.e = ((String)localObject);
-    localObject = new JSONObject();
-    try
-    {
-      ((JSONObject)localObject).put("status", 4);
-      ((JSONObject)localObject).put("code", i);
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("id", paramBundle.jdField_a_of_type_Int);
-      localJSONObject.put("url", paramBundle.e);
-      ((JSONObject)localObject).put("data", localJSONObject);
-      ((JSONObject)localObject).put("msg", "");
-      QLog.d("js-upload: QzoneUploadPlugin", 1, "callback invoke ... task.jsCallback:" + paramBundle.c + " result:" + ((JSONObject)localObject).toString());
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramBundle.c, new String[] { ((JSONObject)localObject).toString() });
-      if (!TextUtils.isEmpty(paramString))
-      {
-        localObject = new File(paramString);
-        if (((File)localObject).exists()) {
-          ((File)localObject).delete();
-        }
-      }
-      this.jdField_b_of_type_JavaUtilMap.remove(Integer.valueOf(j));
-      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-      paramBundle.d = null;
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.w("js-upload: QzoneUploadPlugin", 1, "JSONException error !", localJSONException);
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.w("js-upload: QzoneUploadPlugin", 1, "parentPlugin.callJs error !", localException);
-      }
-    }
+    paramIntent.setClass(paramContext, GVideoPluginInstallerActivity.class);
+    paramContext.startActivityForResult(paramIntent, paramInt);
+    return true;
   }
 }
 

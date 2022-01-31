@@ -1,21 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.VipProfileSimpleView;
+import android.hardware.Camera;
+import android.hardware.Camera.PictureCallback;
 
-public class aubk
-  implements Animation.AnimationListener
+class aubk
+  implements Camera.PictureCallback
 {
-  public aubk(VipProfileSimpleView paramVipProfileSimpleView, atwx paramatwx) {}
+  aubk(aubg paramaubg) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileSimpleView.a = true;
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileSimpleView.g(this.jdField_a_of_type_Atwx);
+    this.a.a(paramArrayOfByte, true);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,83 +1,44 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.SystemClock;
 
 public class avbq
-  implements ajfe
 {
-  protected void a(long paramLong, int paramInt) {}
+  public long a;
+  private int[] a;
   
-  protected void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2) {}
-  
-  protected void a(long paramLong, int paramInt1, int paramInt2, auwq paramauwq) {}
-  
-  protected void b(long paramLong, int paramInt) {}
-  
-  protected void c(long paramLong, int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public avbq()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TransObserver", 2, new Object[] { "onUpdate, type=", Integer.valueOf(paramInt), ", isSuccess=", Boolean.valueOf(paramBoolean) });
-    }
-    switch (paramInt)
+    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 500, 700, 1000, 1500, 2100, 2800, 3500, 4200, 4800, 5000 };
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfInt.length)
     {
-    default: 
-      return;
-    case 0: 
-      if ((paramObject instanceof Object[]))
-      {
-        paramObject = (Object[])paramObject;
-        a(((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), (String)paramObject[4], (String)paramObject[5]);
-        return;
+      if (paramInt < this.jdField_a_of_type_ArrayOfInt[i]) {
+        return i;
       }
-      c(-1L, -1);
-      return;
-    case 1: 
-      if ((paramObject instanceof Object[]))
-      {
-        paramObject = (Object[])paramObject;
-        long l = ((Long)paramObject[0]).longValue();
-        paramInt = ((Integer)paramObject[1]).intValue();
-        int i = ((Integer)paramObject[2]).intValue();
-        if (paramObject[3] != null) {}
-        for (paramObject = (auwq)paramObject[3];; paramObject = null)
-        {
-          a(l, paramInt, i, paramObject);
-          return;
-        }
-      }
-      c(-1L, -1);
-      return;
-    case 2: 
-      if ((paramObject instanceof Object[]))
-      {
-        paramObject = (Object[])paramObject;
-        a(((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue());
-        return;
-      }
-      c(-1L, -1);
-      return;
-    case 3: 
-      if ((paramObject instanceof Object[]))
-      {
-        paramObject = (Object[])paramObject;
-        c(((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue());
-        return;
-      }
-      c(-1L, -1);
-      return;
+      i += 1;
     }
-    if ((paramObject instanceof Object[]))
+    return 1;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Long == 0L) {
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    }
+    while (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long >= 75L)
     {
-      paramObject = (Object[])paramObject;
-      b(((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue());
-      return;
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      return true;
     }
-    c(-1L, -1);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avbq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,82 @@
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
+import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.ListView;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.10.1;
+import java.util.List;
 
 public class atjh
-  extends AccountObserver
+  implements AbsListView.OnScrollListener
 {
-  public atjh(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  public atjh(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountOnlineStateActivity", 2, "onOnlineStatusChanged, isSuccess: " + paramBoolean1 + " , mIsUpdateStatus: " + AccountOnlineStateActivity.a(this.a) + ", isUserSet: " + paramBoolean2);
-    }
-    if (AccountOnlineStateActivity.a(this.a))
+    if (paramInt1 == 0)
     {
-      AccountOnlineStateActivity.a(this.a, false);
-      if (paramBoolean1) {
-        AccountOnlineStateActivity.a(this.a, true, 0);
+      paramAbsListView = ShortVideoCommentsView.a(this.a).getChildAt(0);
+      if ((paramAbsListView != null) && (paramAbsListView.getTop() == 0))
+      {
+        ShortVideoCommentsView.a(this.a, true);
+        return;
       }
-    }
-    else
-    {
+      ShortVideoCommentsView.a(this.a, false);
       return;
     }
-    AccountOnlineStateActivity.a(this.a, false, -1);
+    ShortVideoCommentsView.a(this.a, false);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      if ((paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.a.a.a.size() > 0) && (!ShortVideoCommentsView.b(this.a)) && (!ShortVideoCommentsView.c(this.a))) {
+        ShortVideoCommentsView.c(this.a);
+      }
+      if (ShortVideoCommentsView.a(this.a) == null) {
+        break label269;
+      }
+      paramAbsListView = ShortVideoCommentsView.a(this.a).jdField_a_of_type_JavaLangString;
+      if (ShortVideoCommentsView.a(this.a) != null) {
+        long l = ShortVideoCommentsView.a(this.a).jdField_a_of_type_Long;
+      }
+      paramInt = ShortVideoCommentsView.a(this.a);
+      if ((paramInt < ShortVideoCommentsView.b(this.a)) || (paramInt < muf.a(this.a.getContext(), 40.0F))) {
+        break label272;
+      }
+      if (!ShortVideoCommentsView.d(this.a))
+      {
+        ShortVideoCommentsView.a(this.a, true);
+        if (ShortVideoCommentsView.a(this.a).j != 4) {}
+      }
+      this.a.f();
+    }
+    for (;;)
+    {
+      ShortVideoCommentsView.a(this.a, paramInt);
+      if ((ShortVideoCommentsView.a(this.a) != null) && (ShortVideoCommentsView.a(this.a).getChildCount() > 0) && (ShortVideoCommentsView.a(this.a).getChildAt(0).getTop() == 0) && (!ShortVideoCommentsView.e(this.a)))
+      {
+        ShortVideoCommentsView.b(this.a, true);
+        this.a.postDelayed(new ShortVideoCommentsView.10.1(this), 100L);
+      }
+      return;
+      label269:
+      break;
+      label272:
+      if (!ShortVideoCommentsView.e(this.a))
+      {
+        this.a.j();
+        ShortVideoCommentsView.a(this.a, 2);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atjh
  * JD-Core Version:    0.7.0.1
  */

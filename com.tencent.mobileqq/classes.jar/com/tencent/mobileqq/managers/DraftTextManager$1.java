@@ -1,40 +1,40 @@
 package com.tencent.mobileqq.managers;
 
-import arig;
-import atmp;
-import atmq;
-import atmr;
+import asei;
+import aukn;
+import auko;
+import aukp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DraftTextInfo;
 
 public class DraftTextManager$1
   implements Runnable
 {
-  public DraftTextManager$1(arig paramarig, QQAppInterface paramQQAppInterface, DraftTextInfo paramDraftTextInfo) {}
+  public DraftTextManager$1(asei paramasei, QQAppInterface paramQQAppInterface, DraftTextInfo paramDraftTextInfo) {}
   
   public void run()
   {
-    atmp localatmp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    localatmr = localatmp.a();
+    aukn localaukn = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    localaukp = localaukn.a();
     try
     {
-      localatmr.a();
-      localatmp.b(this.jdField_a_of_type_ComTencentMobileqqDataDraftTextInfo);
-      localatmr.c();
+      localaukp.a();
+      localaukn.b(this.jdField_a_of_type_ComTencentMobileqqDataDraftTextInfo);
+      localaukp.c();
     }
     catch (Exception localException)
     {
       for (;;)
       {
         localException.printStackTrace();
-        localatmr.b();
+        localaukp.b();
       }
     }
     finally
     {
-      localatmr.b();
+      localaukp.b();
     }
-    localatmp.a();
+    localaukn.a();
   }
 }
 

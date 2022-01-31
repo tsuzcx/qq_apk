@@ -1,41 +1,34 @@
-import android.os.Looper;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.wifisdk.TMSDKCustomConfig.IThreadPoolManager;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.qphone.base.util.QLog;
 
-final class bbru
-  implements TMSDKCustomConfig.IThreadPoolManager
+class bbru
+  implements URLDrawableDownListener
 {
-  public void addTask(int paramInt, Runnable paramRunnable, String paramString)
+  bbru(bbrt parambbrt, String paramString, URLImageView paramURLImageView) {}
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    ThreadManagerV2.excute(paramRunnable, 16, null, false);
+    QLog.e("friends_king", 1, "namePlateOfKing drawable fail url = " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
   }
   
-  public void addTypeTask(Runnable paramRunnable, int paramInt)
-  {
-    int i = 16;
-    if (paramInt == 3) {
-      i = 64;
-    }
-    for (;;)
-    {
-      ThreadManagerV2.excute(paramRunnable, i, null, false);
-      return;
-      if (paramInt == 4) {
-        i = 128;
-      } else if (paramInt == 2) {
-        i = 32;
-      }
-    }
-  }
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
   
-  public Looper getSubThreadLooper()
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    return ThreadManagerV2.getSubThreadLooper();
+    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbru
  * JD-Core Version:    0.7.0.1
  */

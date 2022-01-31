@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import akje;
-import akmk;
+import akxq;
+import alaw;
 import android.text.TextUtils;
 
 public class Interactive3DRenderable$10
   implements Runnable
 {
-  public Interactive3DRenderable$10(akmk paramakmk, String paramString) {}
+  public Interactive3DRenderable$10(alaw paramalaw, String paramString) {}
   
   public void run()
   {
-    if ((akmk.a(this.this$0) != null) && (!TextUtils.isEmpty(this.a))) {
-      akmk.a(this.this$0).a(akmk.a(this.this$0) + this.a, true);
+    if ((alaw.a(this.this$0) != null) && (!TextUtils.isEmpty(this.a))) {
+      alaw.a(this.this$0).a(alaw.a(this.this$0) + this.a, true);
     }
   }
 }

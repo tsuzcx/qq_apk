@@ -1,24 +1,24 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import uth;
-import uut;
+import vgd;
+import vhp;
 
 public class EditVideoDoodle$7
   implements Runnable
 {
-  public EditVideoDoodle$7(uth paramuth) {}
+  public EditVideoDoodle$7(vgd paramvgd) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Int == 2) {
-      this.this$0.jdField_a_of_type_Uut.f();
+      this.this$0.jdField_a_of_type_Vhp.f();
     }
     for (;;)
     {
       this.this$0.jdField_a_of_type_Int = 1;
       return;
       if (this.this$0.jdField_a_of_type_Int == 3) {
-        this.this$0.jdField_a_of_type_Uut.r();
+        this.this$0.jdField_a_of_type_Vhp.r();
       }
     }
   }

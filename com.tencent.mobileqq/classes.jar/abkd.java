@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.KPLProfileCardActivity;
+import com.tencent.mobileqq.data.KplCard;
+import com.tencent.qphone.base.util.QLog;
 
 public class abkd
-  implements alut
+  extends ajtq
 {
-  public abkd(QQBrowserActivity paramQQBrowserActivity) {}
+  public abkd(KPLProfileCardActivity paramKPLProfileCardActivity) {}
   
-  public void onColorNoteAnimFinish()
+  protected void onGetKplCard(boolean paramBoolean, Object paramObject)
   {
-    QQBrowserActivity.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("KPLProfileCardActivity", 2, "onGetKplCard, isSuccess=" + paramBoolean);
+    }
+    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof KplCard)))
+    {
+      KPLProfileCardActivity.a(this.a, (KplCard)paramObject);
+      this.a.a = ((KplCard)paramObject);
+    }
   }
 }
 

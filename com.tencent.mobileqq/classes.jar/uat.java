@@ -1,6 +1,20 @@
-public abstract interface uat
+import android.support.annotation.Nullable;
+import java.io.File;
+
+public class uat
+  extends ssk
 {
-  public abstract void a(String paramString);
+  @Nullable
+  public final File a;
+  public final String a;
+  public final boolean a;
+  
+  public uat(String paramString, boolean paramBoolean, File paramFile)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+  }
 }
 
 

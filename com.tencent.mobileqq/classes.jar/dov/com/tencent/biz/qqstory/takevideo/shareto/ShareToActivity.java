@@ -1,19 +1,19 @@
 package dov.com.tencent.biz.qqstory.takevideo.shareto;
 
-import ajjy;
-import akeu;
+import ajyc;
+import aktg;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import bbmy;
-import behi;
-import bivu;
-import bivv;
-import bivw;
-import bivx;
+import bcpw;
+import bfpc;
+import bkmg;
+import bkmh;
+import bkmi;
+import bkmj;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -27,19 +27,19 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import tfy;
-import urp;
+import tsu;
+import vel;
 
 public class ShareToActivity
   extends QQStoryBaseActivity
-  implements View.OnClickListener, behi, bivw
+  implements View.OnClickListener, bfpc, bkmi
 {
-  protected bivv a;
+  protected bkmh a;
   protected XListView a;
   
   private ArrayList<TroopInfo> a()
   {
-    QQAppInterface localQQAppInterface = tfy.a();
+    QQAppInterface localQQAppInterface = tsu.a();
     Object localObject2 = (TroopManager)localQQAppInterface.getManager(52);
     Object localObject1 = ((TroopManager)localObject2).a();
     ArrayList localArrayList = new ArrayList(((ArrayList)localObject1).size());
@@ -53,7 +53,7 @@ public class ShareToActivity
         ((ArrayList)localObject3).add(localRecentUser);
       }
     }
-    Collections.sort((List)localObject3, new bivu(this));
+    Collections.sort((List)localObject3, new bkmg(this));
     localObject3 = ((ArrayList)localObject3).iterator();
     while (((Iterator)localObject3).hasNext())
     {
@@ -89,15 +89,15 @@ public class ShareToActivity
   {
     Object localObject = paramArrayList;
     if (paramArrayList == null) {
-      localObject = this.jdField_a_of_type_Bivv.a();
+      localObject = this.jdField_a_of_type_Bkmh.a();
     }
     int i = ((ArrayList)localObject).size();
     if (i > 0)
     {
-      this.rightViewText.setText(ajjy.a(2131648180) + i + ")");
+      this.rightViewText.setText(ajyc.a(2131713968) + i + ")");
       return;
     }
-    this.rightViewText.setText(ajjy.a(2131648182));
+    this.rightViewText.setText(ajyc.a(2131713970));
   }
   
   public void a(ArrayList<String> paramArrayList)
@@ -105,11 +105,11 @@ public class ShareToActivity
     b(paramArrayList);
   }
   
-  public boolean a(ArrayList<String> paramArrayList, bivx parambivx)
+  public boolean a(ArrayList<String> paramArrayList, bkmj parambkmj)
   {
-    if ((!parambivx.a) && (paramArrayList.size() >= 10))
+    if ((!parambkmj.a) && (paramArrayList.size() >= 10))
     {
-      bbmy.a(tfy.a(), 0, "最多只能选择10个群", 0).a();
+      bcpw.a(tsu.a(), 0, "最多只能选择10个群", 0).a();
       return false;
     }
     return true;
@@ -117,15 +117,15 @@ public class ShareToActivity
   
   public boolean onBackEvent()
   {
-    urp.a("story_grp", "share_return", 0, 0, new String[] { "", "", "", "" });
+    vel.a("story_grp", "share_return", 0, 0, new String[] { "", "", "", "" });
     return super.onBackEvent();
   }
   
   public void onClick(View paramView)
   {
-    urp.a("story_grp", "share_suc", 0, 0, new String[] { String.valueOf(this.jdField_a_of_type_Bivv.a().size()), "", "", "" });
+    vel.a("story_grp", "share_suc", 0, 0, new String[] { String.valueOf(this.jdField_a_of_type_Bkmh.a().size()), "", "", "" });
     paramView = new Intent();
-    paramView.putStringArrayListExtra("share_to_group_key", this.jdField_a_of_type_Bivv.a());
+    paramView.putStringArrayListExtra("share_to_group_key", this.jdField_a_of_type_Bkmh.a());
     setResult(1, paramView);
     finish();
   }
@@ -133,23 +133,23 @@ public class ShareToActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131495751);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131310249));
-    paramBundle = getLayoutInflater().inflate(2131495752, null);
+    setContentView(2131561342);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131376016));
+    paramBundle = getLayoutInflater().inflate(2131561343, null);
     this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(paramBundle);
     paramBundle = getIntent().getStringArrayListExtra("share_to_group_key");
     ArrayList localArrayList = a();
-    this.jdField_a_of_type_Bivv = new bivv(getBaseContext(), localArrayList, paramBundle);
-    this.jdField_a_of_type_Bivv.a(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bivv);
+    this.jdField_a_of_type_Bkmh = new bkmh(getBaseContext(), localArrayList, paramBundle);
+    this.jdField_a_of_type_Bkmh.a(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bkmh);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    super.setTitle(ajjy.a(2131648181));
-    super.a(ajjy.a(2131648175), this);
+    super.setTitle(ajyc.a(2131713969));
+    super.a(ajyc.a(2131713963), this);
     b(null);
     if ((localArrayList == null) || (localArrayList.isEmpty())) {}
     for (paramBundle = "2";; paramBundle = "1")
     {
-      urp.a("story_grp", "exp_share", 0, 0, new String[] { paramBundle, "", "", "" });
+      vel.a("story_grp", "exp_share", 0, 0, new String[] { paramBundle, "", "", "" });
       return;
     }
   }
@@ -161,10 +161,10 @@ public class ShareToActivity
     {
       return;
       paramInt = (int)paramLong;
-      paramAdapterView = (bivx)this.jdField_a_of_type_Bivv.getItem(paramInt);
+      paramAdapterView = (bkmj)this.jdField_a_of_type_Bkmh.getItem(paramInt);
     } while (paramAdapterView == null);
-    this.jdField_a_of_type_Bivv.a(paramAdapterView);
-    urp.a("story_grp", "clk_share", 0, 0, new String[] { "", "", "", "" });
+    this.jdField_a_of_type_Bkmh.a(paramAdapterView);
+    vel.a("story_grp", "clk_share", 0, 0, new String[] { "", "", "", "" });
   }
 }
 

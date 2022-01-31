@@ -1,23 +1,15 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 class ngy
   implements View.OnClickListener
 {
-  ngy(ngv paramngv) {}
+  ngy(nfu paramnfu, String paramString, nmv paramnmv) {}
   
   public void onClick(View paramView)
   {
-    paramView = paramView.getContext();
-    Intent localIntent = new Intent(paramView, AccountDetailActivity.class);
-    localIntent.putExtra("uin", String.valueOf(3434959637L));
-    localIntent.putExtra("uintype", 1008);
-    localIntent.putExtra("source", 121);
-    paramView.startActivity(localIntent);
-    ndn.a(null, "", "0X8009941", "0X8009941", 0, 0, "", "", "", "", false);
+    nfu.c(this.jdField_a_of_type_Nfu, this.jdField_a_of_type_JavaLangString);
+    nfu.a(this.jdField_a_of_type_Nfu, this.jdField_a_of_type_Nmv.jdField_a_of_type_JavaLangString);
   }
 }
 

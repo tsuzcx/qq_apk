@@ -1,13 +1,13 @@
 package com.tencent.biz.publicAccountImageCollection;
 
 import com.tencent.qphone.base.util.QLog;
-import nca;
-import scd;
+import nnb;
+import soz;
 
 class PublicAccountImageCollectionPreloadManager$1
   implements Runnable
 {
-  PublicAccountImageCollectionPreloadManager$1(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, scd paramscd) {}
+  PublicAccountImageCollectionPreloadManager$1(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, soz paramsoz) {}
   
   public void run()
   {

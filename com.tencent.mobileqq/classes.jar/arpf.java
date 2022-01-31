@@ -1,189 +1,407 @@
-import android.util.SparseArray;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Base64;
+import android.view.View;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.jubao.JubaoMsgData;
+import com.tencent.mobileqq.mini.sdk.JsonORM;
+import com.tencent.mobileqq.mini.sdk.JsonORM.JsonParseException;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arpf
+  extends WebViewPlugin
+  implements BusinessObserver
 {
-  private static SparseArray<ArrayList<byte[]>> a = new SparseArray(2000);
-  private static SparseArray<Integer> b = new SparseArray(2000);
+  private String a;
+  private String b;
+  private final String c = "0x800A851";
+  private String d = ajyc.a(2131705888);
   
-  public static void a()
+  public arpf()
   {
+    this.mPluginNameSpace = "jubao";
+  }
+  
+  public static String a(int paramInt, String paramString)
+  {
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      a.clear();
-      b.clear();
-      return;
+      localJSONObject.put("result", paramInt);
+      localJSONObject.put("uuid", paramString);
+      return localJSONObject.toString();
     }
-    finally
+    catch (JSONException paramString)
     {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  /* Error */
-  public static void a(byte[] paramArrayOfByte)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aload_0
-    //   4: arraylength
-    //   5: istore_1
-    //   6: iload_1
-    //   7: sipush 2000
-    //   10: if_icmple +7 -> 17
-    //   13: ldc 2
-    //   15: monitorexit
-    //   16: return
-    //   17: getstatic 19	arpf:a	Landroid/util/SparseArray;
-    //   20: iload_1
-    //   21: invokevirtual 30	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   24: checkcast 32	java/util/ArrayList
-    //   27: astore 4
-    //   29: aload 4
-    //   31: astore_3
-    //   32: aload 4
-    //   34: ifnonnull +24 -> 58
-    //   37: new 32	java/util/ArrayList
-    //   40: dup
-    //   41: bipush 100
-    //   43: invokespecial 33	java/util/ArrayList:<init>	(I)V
-    //   46: astore_3
-    //   47: getstatic 21	arpf:b	Landroid/util/SparseArray;
-    //   50: iload_1
-    //   51: iconst_0
-    //   52: invokestatic 39	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   55: invokevirtual 43	android/util/SparseArray:put	(ILjava/lang/Object;)V
-    //   58: aload_3
-    //   59: invokevirtual 47	java/util/ArrayList:size	()I
-    //   62: bipush 100
-    //   64: if_icmpge -51 -> 13
-    //   67: aload_3
-    //   68: aload_0
-    //   69: invokevirtual 51	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   72: pop
-    //   73: getstatic 19	arpf:a	Landroid/util/SparseArray;
-    //   76: aload_0
-    //   77: arraylength
-    //   78: aload_3
-    //   79: invokevirtual 43	android/util/SparseArray:put	(ILjava/lang/Object;)V
-    //   82: getstatic 21	arpf:b	Landroid/util/SparseArray;
-    //   85: iload_1
-    //   86: invokevirtual 30	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   89: checkcast 35	java/lang/Integer
-    //   92: invokevirtual 54	java/lang/Integer:intValue	()I
-    //   95: istore_2
-    //   96: getstatic 21	arpf:b	Landroid/util/SparseArray;
-    //   99: iload_1
-    //   100: iload_2
-    //   101: iconst_1
-    //   102: iadd
-    //   103: invokestatic 39	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   106: invokevirtual 43	android/util/SparseArray:put	(ILjava/lang/Object;)V
-    //   109: goto -96 -> 13
-    //   112: astore_0
-    //   113: ldc 2
-    //   115: monitorexit
-    //   116: aload_0
-    //   117: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	118	0	paramArrayOfByte	byte[]
-    //   5	95	1	i	int
-    //   95	8	2	j	int
-    //   31	48	3	localArrayList1	ArrayList
-    //   27	6	4	localArrayList2	ArrayList
-    // Exception table:
-    //   from	to	target	type
-    //   3	6	112	finally
-    //   17	29	112	finally
-    //   37	58	112	finally
-    //   58	109	112	finally
-  }
-  
-  /* Error */
-  public static byte[] a(int paramInt)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 19	arpf:a	Landroid/util/SparseArray;
-    //   6: iload_0
-    //   7: invokevirtual 30	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   10: checkcast 32	java/util/ArrayList
-    //   13: astore_2
-    //   14: aload_2
-    //   15: ifnonnull +10 -> 25
-    //   18: aconst_null
-    //   19: astore_2
-    //   20: ldc 2
-    //   22: monitorexit
-    //   23: aload_2
-    //   24: areturn
-    //   25: getstatic 21	arpf:b	Landroid/util/SparseArray;
-    //   28: iload_0
-    //   29: invokevirtual 30	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   32: checkcast 35	java/lang/Integer
-    //   35: invokevirtual 54	java/lang/Integer:intValue	()I
-    //   38: istore_1
-    //   39: iload_1
-    //   40: aload_2
-    //   41: invokevirtual 47	java/util/ArrayList:size	()I
-    //   44: if_icmplt +8 -> 52
-    //   47: aconst_null
-    //   48: astore_2
-    //   49: goto -29 -> 20
-    //   52: aload_2
-    //   53: iload_1
-    //   54: invokevirtual 56	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   57: checkcast 58	[B
-    //   60: astore_2
-    //   61: getstatic 21	arpf:b	Landroid/util/SparseArray;
-    //   64: iload_0
-    //   65: iload_1
-    //   66: iconst_1
-    //   67: iadd
-    //   68: invokestatic 39	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   71: invokevirtual 43	android/util/SparseArray:put	(ILjava/lang/Object;)V
-    //   74: goto -54 -> 20
-    //   77: astore_2
-    //   78: ldc 2
-    //   80: monitorexit
-    //   81: aload_2
-    //   82: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	83	0	paramInt	int
-    //   38	30	1	i	int
-    //   13	48	2	localObject1	Object
-    //   77	5	2	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	14	77	finally
-    //   25	47	77	finally
-    //   52	74	77	finally
-  }
-  
-  public static void b()
-  {
-    int i = 0;
-    try
-    {
-      int j = b.size();
-      while (i < j)
+      for (;;)
       {
-        b.setValueAt(i, Integer.valueOf(0));
-        i += 1;
+        paramString.printStackTrace();
       }
+    }
+  }
+  
+  public static String a(ArrayList<ChatMessage> paramArrayList)
+  {
+    Object localObject2 = "";
+    int j = 0;
+    int i = j;
+    Object localObject1 = localObject2;
+    if (paramArrayList != null)
+    {
+      i = j;
+      localObject1 = localObject2;
+      if (paramArrayList.size() > 0)
+      {
+        i = paramArrayList.size();
+        localObject1 = new JSONArray();
+        paramArrayList = paramArrayList.iterator();
+        while (paramArrayList.hasNext())
+        {
+          localObject2 = JubaoMsgData.transfer((ChatMessage)paramArrayList.next());
+          try
+          {
+            ((JSONArray)localObject1).put(((JubaoMsgData)localObject2).toJson());
+          }
+          catch (JsonORM.JsonParseException localJsonParseException)
+          {
+            localJsonParseException.printStackTrace();
+          }
+        }
+        localObject1 = ((JSONArray)localObject1).toString();
+      }
+    }
+    paramArrayList = new JSONObject();
+    try
+    {
+      paramArrayList.put("msgcount", i);
+      paramArrayList.put("msgs", localObject1);
+      return paramArrayList.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  private void a(String... paramVarArgs)
+  {
+    paramVarArgs = paramVarArgs[0];
+    if (TextUtils.isEmpty(paramVarArgs)) {
       return;
     }
-    finally {}
+    for (;;)
+    {
+      Object localObject2;
+      String str;
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramVarArgs);
+        localObject1 = localJSONObject.optString("chatuin", "");
+        localObject2 = localJSONObject.optString("groupcode", "");
+        j = localJSONObject.optInt("chattype", 0);
+        k = localJSONObject.optInt("topicid", 0);
+        str = localJSONObject.optString("uinname", "");
+        Object localObject3 = localJSONObject.optString("msgs");
+        paramVarArgs = (String[])localObject1;
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          paramVarArgs = xkq.c((String)localObject1, xkq.b(1));
+        }
+        if (TextUtils.isEmpty(str)) {
+          break label437;
+        }
+        str = new String(Base64.decode(str, 0));
+        if (QLog.isColorLevel()) {
+          QLog.i("NewReportPlugin", 2, String.format("jumpChatMsg [%s, %s, %s, %s, %s]", new Object[] { paramVarArgs, Integer.valueOf(j), localObject2, Integer.valueOf(k), str }));
+        }
+        if (TextUtils.isEmpty((CharSequence)localObject3)) {
+          break label440;
+        }
+        JubaoMsgData[] arrayOfJubaoMsgData = (JubaoMsgData[])JsonORM.parseFrom(new JSONArray((String)localObject3), JubaoMsgData.class);
+        localObject3 = new ArrayList();
+        int m = arrayOfJubaoMsgData.length;
+        int i = 0;
+        localObject1 = localObject3;
+        if (i < m)
+        {
+          ((ArrayList)localObject3).add(arrayOfJubaoMsgData[i]);
+          i += 1;
+          continue;
+        }
+        this.a = localJSONObject.optString("callback", "");
+        if (j == 1) {
+          break label446;
+        }
+        if (j != 3000) {
+          break label434;
+        }
+      }
+      catch (JSONException paramVarArgs)
+      {
+        int j;
+        int k;
+        QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
+        return;
+        localObject2 = new Intent(this.mRuntime.a(), ChatActivity.class);
+        ((Intent)localObject2).putExtra("uin", paramVarArgs);
+        ((Intent)localObject2).putExtra("uintype", j);
+        if (TextUtils.isEmpty(str)) {
+          continue;
+        }
+        if ((j != 1033) && (j != 1034)) {
+          break label421;
+        }
+        ((Intent)localObject2).putExtra("key_confessor_nick", str);
+        ((Intent)localObject2).putExtra("key_confess_topicid", k);
+        if (localObject1 == null) {
+          continue;
+        }
+        ((Intent)localObject2).putExtra("msgs", (Serializable)localObject1);
+        ((Intent)localObject2).putExtra("entrance", 9);
+        startActivityForResult((Intent)localObject2, (byte)0);
+        return;
+      }
+      catch (JsonORM.JsonParseException paramVarArgs)
+      {
+        paramVarArgs.printStackTrace();
+        return;
+      }
+      if (TextUtils.isEmpty(paramVarArgs))
+      {
+        QLog.d("jubaoApiPlugin", 1, "jumpChatMsg openChatUin is null");
+        return;
+      }
+      label421:
+      ((Intent)localObject2).putExtra("uinname", str);
+      continue;
+      label434:
+      continue;
+      label437:
+      continue;
+      label440:
+      Object localObject1 = null;
+      continue;
+      label446:
+      paramVarArgs = (String[])localObject2;
+    }
+  }
+  
+  private void b(String... paramVarArgs)
+  {
+    if (!bbev.g(this.mRuntime.a()))
+    {
+      paramVarArgs = a(5, "");
+      callJs(this.b, new String[] { paramVarArgs });
+      return;
+    }
+    paramVarArgs = paramVarArgs[0];
+    if (TextUtils.isEmpty(paramVarArgs))
+    {
+      paramVarArgs = a(0, "");
+      callJs(this.b, new String[] { paramVarArgs });
+      QLog.d("jubaoApiPlugin", 1, "doUploadChatMsg js args is empty ");
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject = new JSONObject(paramVarArgs);
+        paramVarArgs = ((JSONObject)localObject).optString("chatuin", "");
+        str = ((JSONObject)localObject).optString("groupcode", "");
+        j = ((JSONObject)localObject).optInt("chattype", 0);
+        if (!TextUtils.isEmpty(paramVarArgs))
+        {
+          paramVarArgs = xkq.c(paramVarArgs, xkq.b(1));
+          JubaoMsgData[] arrayOfJubaoMsgData = (JubaoMsgData[])JsonORM.parseFrom(new JSONArray(((JSONObject)localObject).optString("msgs")), JubaoMsgData.class);
+          localArrayList = new ArrayList();
+          int k = arrayOfJubaoMsgData.length;
+          int i = 0;
+          if (i < k)
+          {
+            localArrayList.add(arrayOfJubaoMsgData[i]);
+            i += 1;
+          }
+          else
+          {
+            this.b = ((JSONObject)localObject).optString("callback", "");
+            if ((localArrayList == null) || (localArrayList.size() == 0))
+            {
+              QLog.e("jubaoApiPlugin", 2, "ipc upload  to msgServer msg size = 0 ");
+              paramVarArgs = a(1, "");
+              callJs(this.b, new String[] { paramVarArgs });
+              return;
+            }
+          }
+        }
+      }
+      catch (JSONException paramVarArgs)
+      {
+        int j;
+        ArrayList localArrayList;
+        str = a(2, "");
+        callJs(this.b, new String[] { str });
+        QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("jubaoApiPlugin", 2, "ipc upload  msg size = " + localArrayList.size());
+        }
+        Object localObject = new NewIntent(this.mRuntime.a(), arpi.class);
+        ((NewIntent)localObject).putExtra("jubao_chat_uin", paramVarArgs);
+        ((NewIntent)localObject).putExtra("jubao_group_code", str);
+        ((NewIntent)localObject).putExtra("jubao_chat_type", j);
+        ((NewIntent)localObject).putExtra("jubao_msg_list", localArrayList);
+        ((NewIntent)localObject).setObserver(this);
+        BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject);
+        axqw.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 2, 0, "", "", "", "");
+        return;
+      }
+      catch (JsonORM.JsonParseException paramVarArgs)
+      {
+        String str = a(2, "");
+        callJs(this.b, new String[] { str });
+        QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
+        return;
+      }
+    }
+  }
+  
+  public void callJs(String paramString, String... paramVarArgs)
+  {
+    if ((paramString != null) && (this.b != null) && (paramString.equals(this.b))) {
+      axqw.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 4, 0, "", "", "", "");
+    }
+    super.callJs(paramString, paramVarArgs);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    QLog.d("jubaoApiPlugin", 1, "handleJsRequest methodName= " + paramString3);
+    if ("jubao".equals(paramString2))
+    {
+      if ("selectMsgs".equalsIgnoreCase(paramString3))
+      {
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0))
+        {
+          paramJsBridgeListener = (InputMethodManager)this.mRuntime.a().getSystemService("input_method");
+          if (paramJsBridgeListener != null) {
+            paramJsBridgeListener.hideSoftInputFromWindow(this.mRuntime.a().getWindow().getDecorView().getWindowToken(), 0);
+          }
+          a(paramVarArgs);
+          axqw.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 0, 0, "" + 0, "", "", "");
+        }
+        return true;
+      }
+      if ("uploadMsgs".equalsIgnoreCase(paramString3))
+      {
+        if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+          break label248;
+        }
+        b(new String[] { paramVarArgs[0] });
+      }
+    }
+    label248:
+    for (int i = 0;; i = 1)
+    {
+      axqw.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 1, 0, "" + i, "", "", "");
+      return true;
+      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+    }
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    QLog.d("jubaoApiPlugin", 1, "onActivityResult ");
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    if (paramByte == 0)
+    {
+      if (paramInt != -1) {
+        break label81;
+      }
+      paramIntent = paramIntent.getStringExtra("msgs");
+      if (QLog.isDevelopLevel()) {
+        QLog.d("jubaoApiPlugin", 4, "onActivityResult msgs= " + paramIntent);
+      }
+      callJs(this.a, new String[] { paramIntent });
+    }
+    label81:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("jubaoApiPlugin", 2, "onActivityResult user cancel select msg = ");
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    QLog.e("jubaoApiPlugin", 2, "receiver msgServer resp  isSucesss =  " + paramBoolean);
+    int j = 1;
+    int i = 0;
+    axqw.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 3, 0, "", "", "", "");
+    String str;
+    if (paramInt == 0)
+    {
+      str = "";
+      if ((!paramBoolean) || (paramBundle == null)) {
+        break label226;
+      }
+      str = paramBundle.getString("jubao_uuid");
+      paramInt = paramBundle.getInt("jubao_result_code", 0);
+      i = 0;
+      paramBundle = str;
+    }
+    for (;;)
+    {
+      str = a(paramInt, paramBundle);
+      callJs(this.b, new String[] { str });
+      QLog.d("jubaoApiPlugin", 1, "upload resp uuid = " + paramBundle + ",result = " + paramInt);
+      j = i;
+      i = paramInt;
+      axqw.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 2, 0, "" + j, "" + i, "", "");
+      return;
+      label226:
+      if (paramBundle != null)
+      {
+        paramInt = paramBundle.getInt("jubao_result_code", 1);
+        i = 1;
+        paramBundle = str;
+      }
+      else
+      {
+        paramInt = 0;
+        i = 1;
+        paramBundle = str;
+      }
+    }
+  }
+  
+  public void startActivityForResult(Intent paramIntent, byte paramByte)
+  {
+    QLog.e("jubaoApiPlugin", 1, "startActivityForResult ");
+    super.startActivityForResult(paramIntent, paramByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     arpf
  * JD-Core Version:    0.7.0.1
  */

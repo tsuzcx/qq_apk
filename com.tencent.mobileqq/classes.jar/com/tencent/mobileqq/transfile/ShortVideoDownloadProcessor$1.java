@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import axuk;
+import ayur;
 
 public class ShortVideoDownloadProcessor$1
   implements Runnable
 {
-  public ShortVideoDownloadProcessor$1(axuk paramaxuk) {}
+  public ShortVideoDownloadProcessor$1(ayur paramayur) {}
   
   public void run()
   {

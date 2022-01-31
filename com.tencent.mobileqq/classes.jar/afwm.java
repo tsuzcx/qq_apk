@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import mqq.os.MqqHandler;
 
 public class afwm
-  implements View.OnClickListener
+  extends aktf
 {
-  public afwm(BaseActivityView paramBaseActivityView) {}
+  public afwm(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.f();
+    this.a.a.sendEmptyMessage(41);
   }
 }
 

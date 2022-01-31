@@ -1,28 +1,42 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public final class amsa
-  implements Parcelable.Creator
+public class amsa
 {
-  public IPSiteModel.ComicRich a(Parcel paramParcel)
+  private boolean a;
+  
+  public static amsa a(String paramString)
   {
-    IPSiteModel.ComicRich localComicRich = new IPSiteModel.ComicRich();
-    localComicRich.extCover = paramParcel.readString();
-    localComicRich.extName = paramParcel.readString();
-    localComicRich.extTitle = paramParcel.readString();
-    localComicRich.extUrl = paramParcel.readString();
-    return localComicRich;
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      amsa localamsa = new amsa();
+      if (new JSONObject(paramString).optInt("isDefaultOpen", 1) == 1) {}
+      for (;;)
+      {
+        localamsa.a = bool;
+        return localamsa;
+        bool = false;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("DarkModeConfigProcessor", 2, "DarkModeConfigBean parse error", paramString);
+    }
   }
   
-  public IPSiteModel.ComicRich[] a(int paramInt)
+  public boolean a()
   {
-    return new IPSiteModel.ComicRich[paramInt];
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amsa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,82 +1,38 @@
-import KQQ.ReqItem;
-import KQQ.RespItem;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.ArrayList;
-import java.util.Collection;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.List;
 
-public class ajjp
-  extends FriendListHandler
-  implements awbo
+class ajjp
+  implements aiuf
 {
-  private ToServiceMsg a;
+  ajjp(ajjf paramajjf, String paramString, File paramFile, int paramInt) {}
   
-  public ajjp(QQAppInterface paramQQAppInterface)
+  public void a(boolean paramBoolean, String paramString1, List<aiuc> paramList, String paramString2)
   {
-    super(paramQQAppInterface);
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public ReqItem a(int paramInt)
-  {
-    Object localObject2 = new ArrayList(2);
-    ((ArrayList)localObject2).add(this.app.getAccount());
-    Object localObject1 = (axat)this.app.getManager(61);
-    if (localObject1 != null) {}
-    for (localObject1 = ((axat)localObject1).a();; localObject1 = null)
+    QLog.i("ApolloPluginRscLoader", 1, "downloadApolloRes onDownLoadFinish success:" + paramBoolean);
+    paramString1 = ajjf.a(this.jdField_a_of_type_JavaLangString);
+    if (TextUtils.isEmpty(paramString1))
     {
-      if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0)) {
-        ((ArrayList)localObject2).addAll((Collection)localObject1);
-      }
-      localObject1 = new String[((ArrayList)localObject2).size()];
-      ((ArrayList)localObject2).toArray((Object[])localObject1);
-      b((String[])localObject1);
-      if (this.a != null)
+      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    if (paramBoolean)
+    {
+      if (this.jdField_a_of_type_JavaIoFile.exists())
       {
-        localObject2 = this.app.a.a(this.a.getServiceCmd());
-        if (localObject2 != null)
-        {
-          localObject1 = new UniPacket(true);
-          ((UniPacket)localObject1).setEncodeName("utf-8");
-          if (((xfp)localObject2).a(this.a, (UniPacket)localObject1))
-          {
-            localObject2 = new ReqItem();
-            ((ReqItem)localObject2).eServiceID = 119;
-            ((ReqItem)localObject2).vecParam = ((UniPacket)localObject1).encode();
-            return localObject2;
-          }
-        }
+        this.jdField_a_of_type_Ajjf.a(paramString1, 0, this.jdField_a_of_type_Int + ajyc.a(2131700486));
+        return;
       }
-      return null;
+      this.jdField_a_of_type_Ajjf.a(paramString1, 2, this.jdField_a_of_type_Int + ajyc.a(2131700485));
+      return;
     }
-  }
-  
-  public void a(RespItem paramRespItem)
-  {
-    if ((paramRespItem.eServiceID == 119) && (paramRespItem.cResult == 2))
-    {
-      FromServiceMsg localFromServiceMsg = new FromServiceMsg(this.app.getAccount(), "ProfileService.GetRichSig");
-      localFromServiceMsg.setMsgSuccess();
-      localFromServiceMsg.putWupBuffer(paramRespItem.vecUpdate);
-      this.app.a(this.a, localFromServiceMsg);
-    }
-  }
-  
-  public void send(ToServiceMsg paramToServiceMsg)
-  {
-    this.a = paramToServiceMsg;
+    this.jdField_a_of_type_Ajjf.a(paramString1, 2, this.jdField_a_of_type_Int + ajyc.a(2131700480));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajjp
  * JD-Core Version:    0.7.0.1
  */

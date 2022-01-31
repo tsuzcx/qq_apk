@@ -1,114 +1,92 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.FrameLayout;
-import android.widget.TextView;
-import com.dataline.util.widget.NoScrollGridView;
-import com.tencent.mobileqq.apollo.view.FrameGifView;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.LabelInfo;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.TopCardInfo;
-import com.tencent.mobileqq.gamecenter.view.ShadowView;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.os.Handler;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk.4.1;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk.4.2;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk.4.3;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk.4.4;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
 public class apwp
-  extends RecyclerView.ViewHolder
+  implements ITMAssistantDownloadClientListener
 {
-  public Context a;
-  public FrameLayout a;
-  public TextView a;
-  public apvy a;
-  public NoScrollGridView a;
-  public FrameGifView a;
-  public FeedsItemData.TopCardInfo a;
-  public ShadowView a;
+  apwp(apwo paramapwo) {}
   
-  public apwp(View paramView, Context paramContext)
+  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312302));
-    this.jdField_a_of_type_ComDatalineUtilWidgetNoScrollGridView = ((NoScrollGridView)paramView.findViewById(2131301678));
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView = ((FrameGifView)paramView.findViewById(2131309594));
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView.setPlayLoop(true);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131309596));
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewShadowView = ((ShadowView)paramView.findViewById(2131309597));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131644521));
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewShadowView.setShadowProperties(aciy.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0.0F, aciy.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), Color.parseColor("#1A0066FF"));
+    apwo.b(this.a);
+    if (!apwo.a(this.a).post(new UniformDownloaderAppBabySdk.4.1(this, paramString, paramLong1, paramLong2))) {
+      QLog.e(apwo.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
+    }
   }
   
-  public void a(FeedsItemData.TopCardInfo paramTopCardInfo, apvy paramapvy)
+  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    this.jdField_a_of_type_Apvy = paramapvy;
-    Iterator localIterator;
-    int i;
-    if ((paramTopCardInfo != null) && (apvy.a(paramTopCardInfo)))
+    int i = 0;
+    int j = 0;
+    Object localObject2 = null;
+    QLog.i(apwo.a, 1, "[UniformDL] inPDownloadSDKTaskStateChanged  state:[" + paramInt1 + "] errcode:[" + paramInt2 + "] errStr:[" + paramString2 + "] url:[" + paramString1 + "]");
+    String str = "";
+    Object localObject1;
+    if ((paramTMAssistantDownloadClient != null) && (4 == paramInt1))
     {
-      paramapvy = new RecyclerView.LayoutParams(-1, -2);
-      this.itemView.setLayoutParams(paramapvy);
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo = paramTopCardInfo;
-      paramapvy = new HashMap();
-      yez.a(paramapvy, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo.msgId);
-      paramapvy.put(Integer.valueOf(2), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo.msgId);
-      paramapvy.put(Integer.valueOf(4), "8");
-      paramapvy.put(Integer.valueOf(6), this.jdField_a_of_type_Apvy.a().gameAppId);
-      localIterator = this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo.labelInfos.iterator();
-      i = 32;
-    }
-    while (localIterator.hasNext())
-    {
-      paramapvy.put(Integer.valueOf(i), ((FeedsItemData.LabelInfo)localIterator.next()).reportId);
-      i += 1;
-      continue;
-      paramTopCardInfo = new RecyclerView.LayoutParams(-1, 0);
-      this.itemView.setLayoutParams(paramTopCardInfo);
-      return;
-    }
-    yez.a(aing.a(), "769", "205609", this.jdField_a_of_type_Apvy.a().gameAppId, "76903", "1", "160", paramapvy);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo = paramTopCardInfo;
-    if ((this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo.labelInfos != null) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo.labelInfos.size() <= 4)) {
-      this.jdField_a_of_type_ComDatalineUtilWidgetNoScrollGridView.setNumColumns(4);
+      try
+      {
+        localObject1 = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
+        i = 0;
+        paramTMAssistantDownloadClient = str;
+      }
+      catch (Exception paramTMAssistantDownloadClient)
+      {
+        do
+        {
+          for (;;)
+          {
+            paramTMAssistantDownloadClient.printStackTrace();
+            paramTMAssistantDownloadClient = apwh.a(22);
+            localObject1 = null;
+            j = 22;
+            i = 1;
+            continue;
+            localObject1 = ((TMAssistantDownloadTaskInfo)localObject1).mSavePath;
+          }
+        } while ((apwo.a(this.a) == null) || (apwo.a(this.a).post(new UniformDownloaderAppBabySdk.4.3(this, paramString1, paramInt1, paramInt2, paramString2, (String)localObject1))));
+        QLog.e(apwo.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
+        return;
+      }
+      if (localObject1 == null) {
+        localObject1 = localObject2;
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComDatalineUtilWidgetNoScrollGridView.setAdapter(new apwm(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo.labelInfos, this.jdField_a_of_type_AndroidContentContext));
-      this.jdField_a_of_type_ComDatalineUtilWidgetNoScrollGridView.setOnItemClickListener(new apwq(this));
-      long l = NetConnInfoCenter.getServerTime();
-      if ((TextUtils.isEmpty(paramTopCardInfo.bannerIconZip)) || (paramTopCardInfo.bannerBeginTime > l) || (l > paramTopCardInfo.bannerEndTime)) {
-        break label496;
+      apwo.b(this.a);
+      if (i != 0)
+      {
+        if (!apwo.a(this.a).post(new UniformDownloaderAppBabySdk.4.2(this, paramString1, j, paramTMAssistantDownloadClient))) {
+          QLog.e(apwo.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. haveErr and thread error!!");
+        }
+        return;
       }
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-      if ((this.jdField_a_of_type_ComDatalineUtilWidgetNoScrollGridView.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)) {
-        ((ViewGroup.MarginLayoutParams)this.jdField_a_of_type_ComDatalineUtilWidgetNoScrollGridView.getLayoutParams()).topMargin = aciy.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      }
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView.setGifData(paramTopCardInfo.bannerGap, null, paramTopCardInfo.bannerIconZip, ajds.a(paramTopCardInfo.bannerIconZip), true);
-      yez.a(aing.a(), "769", "205646", this.jdField_a_of_type_Apvy.a().gameAppId, "76903", "1", "160", new String[] { "", "", "8" });
-      paramTopCardInfo = paramTopCardInfo.bannerUrl;
-      if (TextUtils.isEmpty(paramTopCardInfo)) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView.setOnClickListener(new apwr(this, paramTopCardInfo));
-      return;
-      this.jdField_a_of_type_ComDatalineUtilWidgetNoScrollGridView.setNumColumns(5);
+      localObject1 = null;
+      paramTMAssistantDownloadClient = "";
+      j = 0;
     }
-    label496:
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView.c();
+  }
+  
+  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
+  {
+    QLog.e(apwo.a, 1, "[UniformDL] ABSdkdownload service invalid ");
+    apwo.b(this.a);
+    if (!apwo.a(this.a).post(new UniformDownloaderAppBabySdk.4.4(this))) {
+      QLog.e(apwo.a, 1, "[UniformDL] OnDwonloadSDKServiceInvalid. thread error!!");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apwp
  * JD-Core Version:    0.7.0.1
  */

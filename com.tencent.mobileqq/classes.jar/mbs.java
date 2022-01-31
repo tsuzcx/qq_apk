@@ -1,29 +1,18 @@
-import java.util.Observable;
-import java.util.Observer;
-import mqq.util.WeakReference;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.ui.AVLoadingDialogActivity;
 
-class mbs
-  implements Observer
+public class mbs
+  extends BroadcastReceiver
 {
-  private final WeakReference<mbo> a;
+  public mbs(AVLoadingDialogActivity paramAVLoadingDialogActivity) {}
   
-  mbs(mbo parammbo)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = new WeakReference(parammbo);
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    paramObservable = (Object[])paramObject;
-    switch (((Integer)paramObservable[0]).intValue())
-    {
+    if (paramIntent.getAction().equals("com.tencent.av.ui.AVLoadingDialogActivity.ACTION_LOADING_FINISH")) {
+      this.a.finish();
     }
-    do
-    {
-      return;
-      paramObject = (mbo)this.a.get();
-    } while ((paramObject == null) || (paramObservable.length < 2) || (!(paramObservable[1] instanceof Boolean)) || (((Boolean)paramObservable[1]).booleanValue()));
-    paramObject.b();
   }
 }
 

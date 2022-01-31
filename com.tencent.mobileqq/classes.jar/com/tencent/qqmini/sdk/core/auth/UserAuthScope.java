@@ -3,7 +3,7 @@ package com.tencent.qqmini.sdk.core.auth;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bddo;
+import behp;
 import java.io.Serializable;
 import org.json.JSONObject;
 
@@ -12,7 +12,7 @@ public class UserAuthScope
 {
   public static final int AUTH_TYPE_ASK_EVERY_TIME = 1;
   public static final int AUTH_TYPE_ASK_ONLY_ONCE = 0;
-  public static final Parcelable.Creator<UserAuthScope> CREATOR = new bddo();
+  public static final Parcelable.Creator<UserAuthScope> CREATOR = new behp();
   public int authType;
   public String desc;
   public String scope;

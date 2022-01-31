@@ -1,19 +1,19 @@
 package com.tencent.biz.subscribe.account_folder.recommend_banner;
 
 import java.util.List;
-import vwd;
-import vwe;
-import vwf;
+import wja;
+import wjb;
+import wjc;
 
 public class FollowedRecommendBannerModel$1$1
   implements Runnable
 {
-  public FollowedRecommendBannerModel$1$1(vwe paramvwe, List paramList, boolean paramBoolean) {}
+  public FollowedRecommendBannerModel$1$1(wjb paramwjb, List paramList, boolean paramBoolean) {}
   
   public void run()
   {
-    if (vwd.a(this.jdField_a_of_type_Vwe.a) != null) {
-      vwd.a(this.jdField_a_of_type_Vwe.a).a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
+    if (wja.a(this.jdField_a_of_type_Wjb.a) != null) {
+      wja.a(this.jdField_a_of_type_Wjb.a).a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
     }
   }
 }

@@ -1,66 +1,88 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class anaj
+  extends ampb<anai>
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c = -1;
-  public int d = -1;
-  public int e = -1;
-  
-  public anaj(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString)
+  public int a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.e = paramInt5;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return 433;
   }
   
-  public static anaj a(Bundle paramBundle)
+  @NonNull
+  public anai a(int paramInt)
   {
-    int j = 0;
-    int n = -1;
-    String str = "";
-    int i;
-    int k;
-    int m;
-    if (paramBundle != null)
-    {
-      i = paramBundle.getInt("result", -1);
-      j = paramBundle.getInt("realSaveNum", 0);
-      k = paramBundle.getInt("payChannel", -1);
-      m = paramBundle.getInt("payState", -1);
-      n = paramBundle.getInt("provideState", -1);
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchHotWordConfProcessor", 2, "migrateOldOrDefaultContent ");
     }
-    for (paramBundle = paramBundle.getString("message");; paramBundle = str)
+    return new anai();
+  }
+  
+  @Nullable
+  public anai a(ampi[] paramArrayOfampi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchHotWordConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
     {
-      return new anaj(i, j, k, m, n, paramBundle);
-      m = -1;
-      k = -1;
-      i = -1;
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchHotWordConfProcessor", 2, "onParsed " + paramArrayOfampi.length);
+      }
+      return anai.a(paramArrayOfampi[0]);
+    }
+    return null;
+  }
+  
+  public Class a()
+  {
+    return anai.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchHotWordConfProcessor", 2, "onReqFailed " + paramInt);
     }
   }
   
-  public Bundle a()
+  public void a(anai paramanai)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result", this.jdField_a_of_type_Int);
-    localBundle.putInt("realSaveNum", this.b);
-    localBundle.putInt("payChannel", this.c);
-    localBundle.putInt("payState", this.d);
-    localBundle.putInt("provideState", this.e);
-    localBundle.putString("message", this.jdField_a_of_type_JavaLangString);
-    return localBundle;
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramanai == null) {
+        break label43;
+      }
+    }
+    label43:
+    for (paramanai = paramanai.toString();; paramanai = " empty")
+    {
+      QLog.d("SearchHotWordConfProcessor", 2, paramanai);
+      return;
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anaj
  * JD-Core Version:    0.7.0.1
  */

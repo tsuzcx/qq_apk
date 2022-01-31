@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import akjn;
-import akma;
-import akmc;
+import akxz;
+import alam;
+import alao;
 
 public class ARTransferPromotionRenderable$12
   implements Runnable
 {
-  public ARTransferPromotionRenderable$12(akma paramakma) {}
+  public ARTransferPromotionRenderable$12(alam paramalam) {}
   
   public void run()
   {
-    if (!akma.a(this.this$0).a.booleanValue())
+    if (!alam.a(this.this$0).a.booleanValue())
     {
-      akma.a(this.this$0, 3, akma.a(this.this$0).c + "360Video.mp4", false, akma.a(this.this$0).d, false);
-      akma.a(this.this$0).a(true);
-      akma.b(this.this$0);
-      akma.c(this.this$0);
+      alam.a(this.this$0, 3, alam.a(this.this$0).c + "360Video.mp4", false, alam.a(this.this$0).d, false);
+      alam.a(this.this$0).a(true);
+      alam.b(this.this$0);
+      alam.c(this.this$0);
     }
   }
 }

@@ -1,30 +1,29 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
+import java.util.HashSet;
 
 public class asng
-  implements begw
+  implements asmt
 {
-  public asng(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, begr parambegr) {}
+  public asng(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean, RecentBaseData paramRecentBaseData)
   {
-    switch (paramInt)
-    {
+    if (paramBoolean) {
+      MsgBackupSelectionFragment.a(this.a).a.add(paramRecentBaseData);
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Begr != null) {
-        this.jdField_a_of_type_Begr.dismiss();
-      }
+      int i = MsgBackupSelectionFragment.a(this.a).a.size();
+      MsgBackupSelectionFragment.a(this.a, i);
       return;
-      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+      MsgBackupSelectionFragment.a(this.a).a.remove(paramRecentBaseData);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asng
  * JD-Core Version:    0.7.0.1
  */

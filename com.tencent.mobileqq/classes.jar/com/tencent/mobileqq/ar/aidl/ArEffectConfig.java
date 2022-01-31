@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import akpp;
+import aleb;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class ArEffectConfig
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArEffectConfig> CREATOR = new akpp();
+  public static final Parcelable.Creator<ArEffectConfig> CREATOR = new aleb();
   public int a;
   public ArrayList<String> a;
   public int b;
@@ -310,7 +310,7 @@ public class ArEffectConfig
     //   144: invokevirtual 287	java/io/BufferedOutputStream:flush	()V
     //   147: aload 7
     //   149: aload 5
-    //   151: invokestatic 292	bace:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   151: invokestatic 292	bbdj:b	(Ljava/io/File;Ljava/io/File;)Z
     //   154: istore_2
     //   155: aload 6
     //   157: invokevirtual 295	android/os/Parcel:recycle	()V

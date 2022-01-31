@@ -1,23 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+import android.database.DataSetObserver;
 
-public class wcp
-  implements alut
+class wcp
+  extends DataSetObserver
 {
-  public wcp(SubscribeBaseFragment paramSubscribeBaseFragment) {}
+  wcp(wco paramwco) {}
   
-  public void onColorNoteAnimFinish()
+  public void onChanged()
   {
-    if (this.a.getActivity() != null)
-    {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
-    }
+    wco.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wcp
  * JD-Core Version:    0.7.0.1
  */

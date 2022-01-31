@@ -1,32 +1,25 @@
-import android.os.FileObserver;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class agan
-  extends FileObserver
+  implements View.OnClickListener
 {
-  private agak jdField_a_of_type_Agak;
-  private final String jdField_a_of_type_JavaLangString = "MediaScannerFileObserver";
-  private String b;
+  public agan(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public agan(agak paramagak, String paramString)
+  public void onClick(View paramView)
   {
-    super(paramString);
-    this.b = paramString;
-    this.jdField_a_of_type_Agak = paramagak;
-  }
-  
-  public void onEvent(int paramInt, String paramString)
-  {
-    if (this.jdField_a_of_type_Agak == null) {}
-    do
-    {
-      return;
-      switch (paramInt)
-      {
-      default: 
-        return;
-      }
-    } while ((paramString == null) || (!paramString.endsWith(".mp4")));
-    this.jdField_a_of_type_Agak.a(paramInt, this.b, paramString);
+    paramView = new Bundle();
+    paramView.putString(bbqw.e, ajyc.a(2131701588));
+    paramView.putString(bbqw.f, "CJCLUBT");
+    paramView.putString(bbqw.d, "1450000516");
+    paramView.putInt(bbqw.b, 3);
+    paramView.putString(bbqw.i, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
+    paramView.putString(bbqw.g, "svip");
+    paramView.putString(bbqw.a, this.a.b.getCurrentAccountUin());
+    bbqw.a(this.a.b, this.a.getActivity(), paramView);
   }
 }
 

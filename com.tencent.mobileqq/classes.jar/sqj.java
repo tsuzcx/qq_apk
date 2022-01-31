@@ -1,188 +1,57 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.TagEntry;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCheckBlackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckBlackList;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Ljava.lang.String;>;
-import java.util.Set;
 
 public class sqj
-  implements spo
+  extends syv<sqk>
 {
-  private long jdField_a_of_type_Long;
-  private atmp jdField_a_of_type_Atmp;
-  private Set<String> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
+  private static final String jdField_a_of_type_JavaLangString = sxp.a("StorySvc.check_location_blacklist");
+  private List<srg> jdField_a_of_type_JavaUtilList;
   
-  private QQStoryContext a()
+  public String a()
   {
-    return QQStoryContext.a();
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public static List<? extends atmo> a(atmp paramatmp, Class<? extends atmo> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
+  public syq a(byte[] paramArrayOfByte)
   {
-    return paramatmp.a(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
-  }
-  
-  public List<vil> a(String paramString)
-  {
-    Object localObject = a(this.jdField_a_of_type_Atmp, TagEntry.class, TagEntry.class.getSimpleName(), "feedId=?", new String[] { paramString });
-    paramString = (String)localObject;
-    if (localObject == null) {
-      paramString = new ArrayList();
-    }
-    localObject = new ArrayList();
-    paramString = paramString.iterator();
-    while (paramString.hasNext()) {
-      ((List)localObject).add(new vil((TagEntry)paramString.next()));
-    }
-    return localObject;
-  }
-  
-  public List<vil> a(String paramString, List<StoryVideoItem> paramList)
-  {
+    qqstory_service.RspCheckBlackList localRspCheckBlackList = new qqstory_service.RspCheckBlackList();
     try
     {
-      paramString = a(paramList, a(paramString));
-      return paramString;
+      localRspCheckBlackList.mergeFrom(paramArrayOfByte);
+      return new sqk(localRspCheckBlackList);
     }
-    finally
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      paramString = finally;
-      throw paramString;
+      paramArrayOfByte.printStackTrace();
     }
+    return null;
   }
   
-  public List<vil> a(List<StoryVideoItem> paramList, List<vil> paramList1)
+  public void a(@NonNull List<srg> paramList)
   {
-    ArrayList localArrayList;
-    HashSet localHashSet;
-    try
-    {
-      localArrayList = new ArrayList();
-      localHashSet = new HashSet();
-      if (paramList != null)
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramList.next();
-          if ((localStoryVideoItem.mTagInfoBase != null) && (!localHashSet.contains(localStoryVideoItem.mTagInfoBase)))
-          {
-            localArrayList.add(localStoryVideoItem.mTagInfoBase);
-            localHashSet.add(localStoryVideoItem.mTagInfoBase);
-          }
-        }
-      }
-      if (paramList1 == null) {
-        break label167;
-      }
-    }
-    finally {}
-    paramList = paramList1.iterator();
-    while (paramList.hasNext())
-    {
-      paramList1 = (vil)paramList.next();
-      if (!localHashSet.contains(paramList1))
-      {
-        localArrayList.add(paramList1);
-        localHashSet.add(paramList1);
-      }
-    }
-    label167:
-    return localArrayList;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public void a()
+  protected byte[] a()
   {
-    this.jdField_a_of_type_Atmp = a().a().createEntityManager();
-  }
-  
-  public void a(String paramString, List<vil> paramList)
-  {
-    if (paramList == null) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Object localObject = a(this.jdField_a_of_type_Atmp, TagEntry.class, TagEntry.class.getSimpleName(), "feedId=?", new String[] { paramString });
-        if (localObject != null)
-        {
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            TagEntry localTagEntry = (TagEntry)((Iterator)localObject).next();
-            localTagEntry.setStatus(1001);
-            this.jdField_a_of_type_Atmp.b(localTagEntry);
-          }
-        }
-      }
-      finally
-      {
-        try
-        {
-          this.jdField_a_of_type_Atmp.a().b();
-          throw paramString;
-        }
-        finally {}
-        this.jdField_a_of_type_Atmp.a().a();
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          localObject = ((vil)paramList.next()).a();
-          ((TagEntry)localObject).feedId = paramString;
-          this.jdField_a_of_type_Atmp.b((atmo)localObject);
-        }
-        this.jdField_a_of_type_Atmp.a().c();
-        this.jdField_a_of_type_Atmp.a().b();
-      }
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      throw new QQStoryCmdHandler.IllegalUinException("req gps list is null");
     }
-  }
-  
-  public void a(List<String> paramList)
-  {
-    if (paramList == null) {
-      return;
-    }
-    Object localObject = new ArrayList();
+    qqstory_service.ReqCheckBlackList localReqCheckBlackList = new qqstory_service.ReqCheckBlackList();
     ArrayList localArrayList = new ArrayList();
-    if (Math.abs(this.jdField_a_of_type_Long - System.currentTimeMillis()) > 60000L) {
-      this.jdField_a_of_type_JavaUtilSet.clear();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(((srg)localIterator.next()).a());
     }
-    for (;;)
-    {
-      if (localArrayList.size() > 0) {
-        urk.d("Q.qqstory:TagManager", "request still waiting , %s", new Object[] { localArrayList });
-      }
-      if (paramList.size() == 0) {
-        break;
-      }
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      localObject = new szq();
-      ((szq)localObject).a = paramList;
-      slv.a().a((slz)localObject, new sqk(this));
-      urk.d("Q.qqstory:TagManager", "request tag list :%s", new Object[] { paramList });
-      return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        String str = (String)paramList.next();
-        if (this.jdField_a_of_type_JavaUtilSet.contains(str)) {
-          localArrayList.add(str);
-        } else {
-          ((List)localObject).add(str);
-        }
-      }
-      paramList = (List<String>)localObject;
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Atmp.a();
+    localReqCheckBlackList.gps_list.addAll(localArrayList);
+    return localReqCheckBlackList.toByteArray();
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import com.tencent.widget.BubblePopupWindow;
-import nsh;
+import odr;
 
 class ReadInJoyFastWebBottomSocialView$8
   implements Runnable
@@ -13,7 +13,7 @@ class ReadInJoyFastWebBottomSocialView$8
     if (ReadInJoyFastWebBottomSocialView.a(this.this$0) != null)
     {
       ReadInJoyFastWebBottomSocialView.a(this.this$0).b(ReadInJoyFastWebBottomSocialView.a(this.this$0));
-      nsh.a();
+      odr.a();
       this.this$0.postDelayed(ReadInJoyFastWebBottomSocialView.a(this.this$0), 5000L);
     }
   }

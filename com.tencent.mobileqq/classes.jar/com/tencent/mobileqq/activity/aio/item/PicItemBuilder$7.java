@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adkt;
+import advu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForPic;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.data.MessageForPic;
 public class PicItemBuilder$7
   implements Runnable
 {
-  public PicItemBuilder$7(adkt paramadkt, MessageForPic paramMessageForPic) {}
+  public PicItemBuilder$7(advu paramadvu, MessageForPic paramMessageForPic) {}
   
   public void run()
   {

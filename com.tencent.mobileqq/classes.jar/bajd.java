@@ -1,207 +1,224 @@
-import android.graphics.Point;
-import android.graphics.PointF;
-import android.graphics.Rect;
+import android.annotation.TargetApi;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.os.Build;
 import android.os.Build.VERSION;
-import android.util.Pair;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.Transformation;
-import java.lang.reflect.Field;
+import android.os.Environment;
+import android.os.StatFs;
+import android.provider.ContactsContract.Contacts;
+import android.provider.MediaStore.Images.Media;
+import android.provider.MediaStore.Video.Media;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Iterator;
+import java.util.List;
 
-public class bajd<T>
-  extends Animation
+public class bajd
 {
-  static final bajk jdField_a_of_type_Bajk = new baje();
-  static final bajk b;
-  static final bajk c;
-  static final bajk d;
-  static final bajk e = new baji();
-  private long jdField_a_of_type_Long;
-  protected bajj<T> a;
-  protected T a;
-  protected boolean a;
-  private Pair[] jdField_a_of_type_ArrayOfAndroidUtilPair;
-  protected T b;
-  protected boolean b;
-  protected boolean c;
-  protected boolean d;
-  protected bajk<T> f;
-  
-  static
+  public static int a(Context paramContext)
   {
-    jdField_b_of_type_Bajk = new bajf();
-    jdField_c_of_type_Bajk = new bajg();
-    jdField_d_of_type_Bajk = new bajh();
-  }
-  
-  public bajd(T paramT1, T paramT2, bajj<T> parambajj)
-  {
-    this(paramT1, paramT2, parambajj, false, false, null);
-  }
-  
-  public bajd(T paramT1, T paramT2, bajj<T> parambajj, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this(paramT1, paramT2, parambajj, paramBoolean1, paramBoolean2, null);
-  }
-  
-  public bajd(T paramT1, T paramT2, bajj<T> parambajj, boolean paramBoolean1, boolean paramBoolean2, bajk<T> parambajk)
-  {
-    Class localClass = paramT1.getClass();
-    if (parambajk != null) {
-      this.f = parambajk;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaLangObject = paramT1;
-      this.jdField_b_of_type_JavaLangObject = paramT2;
-      a(parambajj);
-      this.jdField_a_of_type_Boolean = paramBoolean1;
-      this.jdField_b_of_type_Boolean = paramBoolean2;
-      return;
-      if (localClass == Integer.class)
-      {
-        this.f = jdField_a_of_type_Bajk;
-      }
-      else if (Float.class == localClass)
-      {
-        this.f = jdField_b_of_type_Bajk;
-      }
-      else if (Rect.class == localClass)
-      {
-        this.f = jdField_c_of_type_Bajk;
-      }
-      else if (Point.class == localClass)
-      {
-        this.f = jdField_d_of_type_Bajk;
-      }
-      else
-      {
-        if (PointF.class != localClass) {
-          break;
-        }
-        this.f = e;
-      }
-    }
-    throw new IllegalArgumentException("Can't support type " + paramT1.getClass().getSimpleName());
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_d_of_type_Boolean = true;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(bajj<T> parambajj)
-  {
-    this.jdField_a_of_type_Bajj = parambajj;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    if (this.jdField_a_of_type_Bajj != null) {
-      this.jdField_a_of_type_Bajj.a(this, paramFloat, this.f.a(paramFloat, this.jdField_a_of_type_JavaLangObject, this.jdField_b_of_type_JavaLangObject), paramTransformation);
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_d_of_type_Boolean = false;
-  }
-  
-  public void cancel()
-  {
+    paramContext = paramContext.getPackageManager().getInstalledApplications(0).iterator();
     int i = 0;
-    this.jdField_c_of_type_Boolean = true;
-    if (Build.VERSION.SDK_INT >= 8) {
-      super.cancel();
+    if (paramContext.hasNext())
+    {
+      if ((((ApplicationInfo)paramContext.next()).flags & 0x1) > 0) {
+        break label51;
+      }
+      i += 1;
     }
+    label51:
     for (;;)
     {
-      return;
-      if (this.jdField_a_of_type_ArrayOfAndroidUtilPair == null) {
-        this.jdField_a_of_type_ArrayOfAndroidUtilPair = new Pair[] { new Pair("mEnded", Boolean.valueOf(true)), new Pair("mMore", Boolean.valueOf(false)), new Pair("mOneMoreTime", Boolean.valueOf(false)) };
-      }
+      break;
+      return i;
+    }
+  }
+  
+  public static long a()
+  {
+    StatFs localStatFs = new StatFs(Environment.getDataDirectory().getPath());
+    long l2;
+    if (Build.VERSION.SDK_INT >= 18) {
+      l2 = localStatFs.getBlockSizeLong();
+    }
+    for (long l1 = localStatFs.getAvailableBlocksLong();; l1 = localStatFs.getAvailableBlocks())
+    {
+      return l1 * l2 / 1048576L;
+      l2 = localStatFs.getBlockSize();
+    }
+  }
+  
+  public static boolean a()
+  {
+    return Environment.getExternalStorageState().equals("mounted");
+  }
+  
+  @TargetApi(19)
+  public static boolean a(Context paramContext, int paramInt)
+  {
+    boolean bool1 = true;
+    Object localObject = paramContext.getSystemService("appops");
+    for (;;)
+    {
       try
       {
-        Object localObject1 = getClass().getDeclaredField("mListener");
-        ((Field)localObject1).setAccessible(true);
-        localObject1 = ((Field)localObject1).get(this);
-        if ((localObject1 instanceof Animation.AnimationListener)) {
-          ((Animation.AnimationListener)localObject1).onAnimationEnd(this);
+        paramContext = Class.forName("android.app.AppOpsManager").getMethod("checkOp", new Class[] { Integer.TYPE, Integer.TYPE, String.class }).invoke(localObject, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramContext.getApplicationInfo().uid), paramContext.getPackageName() });
+        if (paramContext == null) {
+          break label223;
         }
-        localObject1 = getClass().getDeclaredField("mStartTime");
-        ((Field)localObject1).setAccessible(true);
-        ((Field)localObject1).setLong(this, -9223372036854775808L);
-        localObject1 = this.jdField_a_of_type_ArrayOfAndroidUtilPair;
-        int j = localObject1.length;
-        while (i < j)
+        paramInt = ((Integer)paramContext).intValue();
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopDeviceUtil", 2, "checkOp mode = " + paramInt);
+        }
+        if ((paramInt != 0) && (3 != paramInt))
         {
-          Object localObject2 = localObject1[i];
-          Field localField = getClass().getDeclaredField((String)localObject2.first);
-          localField.setAccessible(true);
-          localField.setBoolean(this, ((Boolean)localObject2.second).booleanValue());
-          i += 1;
+          boolean bool2 = Build.MANUFACTURER.equals("vivo");
+          if (!bool2) {
+            continue;
+          }
         }
-        return;
+        bool1 = true;
       }
-      catch (NoSuchFieldException localNoSuchFieldException)
+      catch (InvocationTargetException paramContext)
       {
-        localNoSuchFieldException.printStackTrace();
-        return;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("TroopDeviceUtil", 2, "checkOp InvocationTargetException e.getCause() = " + paramContext.getCause());
+        return false;
       }
-      catch (IllegalAccessException localIllegalAccessException)
+      catch (Exception paramContext)
       {
-        localIllegalAccessException.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("TroopDeviceUtil", 2, "checkOp e = " + paramContext);
+        return true;
       }
+      return bool1;
+      bool1 = false;
+      continue;
+      label223:
+      paramInt = 0;
     }
   }
   
-  public boolean getTransformation(long paramLong, Transformation paramTransformation)
+  public static int b(Context paramContext)
   {
-    if (this.jdField_d_of_type_Boolean)
+    paramContext = paramContext.getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
+    if (paramContext != null)
     {
-      if (this.jdField_a_of_type_Long == 0L) {
-        a(paramLong - getStartTime());
-      }
-      setStartTime(paramLong - this.jdField_a_of_type_Long);
+      int i = paramContext.getCount();
+      paramContext.close();
+      return i;
     }
-    return super.getTransformation(paramLong, paramTransformation);
+    return 0;
   }
   
-  public void reset()
+  public static long b()
   {
-    this.jdField_c_of_type_Boolean = false;
-    super.reset();
+    StatFs localStatFs = new StatFs(Environment.getDataDirectory().getPath());
+    long l2;
+    if (Build.VERSION.SDK_INT >= 18) {
+      l2 = localStatFs.getBlockSizeLong();
+    }
+    for (long l1 = localStatFs.getBlockCountLong();; l1 = localStatFs.getBlockCount())
+    {
+      return l1 * l2 / 1048576L;
+      l2 = localStatFs.getBlockSize();
+    }
   }
   
-  public boolean willChangeBounds()
+  public static int c(Context paramContext)
   {
-    return this.jdField_a_of_type_Boolean;
+    int j = 0;
+    Cursor localCursor = paramContext.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "_id" }, null, null, null);
+    int i;
+    if (localCursor != null)
+    {
+      i = localCursor.getCount();
+      localCursor.close();
+    }
+    for (;;)
+    {
+      paramContext = paramContext.getContentResolver().query(MediaStore.Images.Media.INTERNAL_CONTENT_URI, new String[] { "_id" }, null, null, null);
+      if (paramContext != null)
+      {
+        j = paramContext.getCount();
+        paramContext.close();
+      }
+      return i + j;
+      i = 0;
+    }
   }
   
-  public boolean willChangeTransformationMatrix()
+  public static long c()
   {
-    return this.jdField_b_of_type_Boolean;
+    if (a())
+    {
+      StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
+      long l2;
+      if (Build.VERSION.SDK_INT >= 18) {
+        l2 = localStatFs.getBlockSizeLong();
+      }
+      for (long l1 = localStatFs.getAvailableBlocksLong();; l1 = localStatFs.getAvailableBlocks())
+      {
+        return l1 * l2 / 1048576L;
+        l2 = localStatFs.getBlockSize();
+      }
+    }
+    return 0L;
+  }
+  
+  public static int d(Context paramContext)
+  {
+    int j = 0;
+    Cursor localCursor = paramContext.getContentResolver().query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, new String[] { "_id" }, null, null, null);
+    int i;
+    if (localCursor != null)
+    {
+      i = localCursor.getCount();
+      localCursor.close();
+    }
+    for (;;)
+    {
+      paramContext = paramContext.getContentResolver().query(MediaStore.Video.Media.INTERNAL_CONTENT_URI, new String[] { "_id" }, null, null, null);
+      if (paramContext != null)
+      {
+        j = paramContext.getCount();
+        paramContext.close();
+      }
+      return i + j;
+      i = 0;
+    }
+  }
+  
+  public static long d()
+  {
+    if (a())
+    {
+      StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
+      long l2;
+      if (Build.VERSION.SDK_INT >= 18) {
+        l2 = localStatFs.getBlockSizeLong();
+      }
+      for (long l1 = localStatFs.getBlockCountLong();; l1 = localStatFs.getBlockCount())
+      {
+        return l1 * l2 / 1048576L;
+        l2 = localStatFs.getBlockSize();
+      }
+    }
+    return 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bajd
  * JD-Core Version:    0.7.0.1
  */

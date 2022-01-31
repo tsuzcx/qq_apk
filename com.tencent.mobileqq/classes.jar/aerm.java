@@ -1,52 +1,88 @@
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.List;
 
-public class aerm
-  extends BaseAdapter
+class aerm
+  extends akgi
 {
-  public Handler a;
-  public QQAppInterface a;
-  public String[] a;
+  aerm(aerl paramaerl) {}
   
-  public String a(int paramInt)
+  protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    return this.a[paramInt];
-  }
-  
-  public int getCount()
-  {
-    if (this.a == null) {
-      return 0;
-    }
-    return this.a.length;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    String str = a(paramInt);
-    if (paramView == null) {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131493644, paramViewGroup, false);
-    }
-    for (paramViewGroup = new aern(paramView);; paramViewGroup = (aern)paramView.getTag())
+    ChatActivityUtils.b();
+    Object localObject = this.a.jdField_a_of_type_AndroidContentContext;
+    Context localContext = this.a.jdField_a_of_type_AndroidContentContext;
+    int i;
+    if (paramBoolean)
     {
-      paramViewGroup.a.setText(str);
-      return paramView;
+      i = 2131719532;
+      bcpw.a((Context)localObject, 2, localContext.getString(i), 0).b(this.a.a());
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
+        break label69;
+      }
     }
+    label69:
+    do
+    {
+      int k;
+      do
+      {
+        return;
+        i = 2131719520;
+        break;
+        localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+        if (paramList == null) {}
+        for (i = 0;; i = paramList.size())
+        {
+          int j = 0;
+          k = 0;
+          while ((k == 0) && (j < i))
+          {
+            if (bbbd.a(String.valueOf(paramList.get(j)), localObject)) {
+              k = 1;
+            }
+            j += 1;
+          }
+        }
+      } while (k == 0);
+      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, false);
+    } while (!paramBoolean);
+    this.a.m();
+  }
+  
+  protected void b(boolean paramBoolean, List<Long> paramList)
+  {
+    int k = 0;
+    ChatActivityUtils.b();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
+    do
+    {
+      do
+      {
+        return;
+        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+        if (paramList == null) {}
+        for (int i = 0;; i = paramList.size())
+        {
+          int j = 0;
+          while ((k == 0) && (j < i))
+          {
+            if (bbbd.a(String.valueOf(paramList.get(j)), str)) {
+              k = 1;
+            }
+            j += 1;
+          }
+        }
+      } while (k == 0);
+      ChatActivityUtils.b();
+    } while (!paramBoolean);
+    this.a.m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aerm
  * JD-Core Version:    0.7.0.1
  */

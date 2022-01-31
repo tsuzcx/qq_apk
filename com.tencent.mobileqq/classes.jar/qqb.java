@@ -1,30 +1,60 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnticipateInterpolator;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
 
 public class qqb
-  implements Animation.AnimationListener
+  extends OrientationEventListener
 {
-  public qqb(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation)
+  public qqb(VideoFeedsListView paramVideoFeedsListView, Context paramContext, int paramInt)
   {
-    ImageView localImageView = ReadInJoyFastWebBottomSocialView.c(this.a);
-    if (ReadInJoyFastWebBottomSocialView.a(this.a).a) {}
-    for (int i = 2130842221;; i = 2130842223)
-    {
-      localImageView.setImageResource(i);
-      paramAnimation.setInterpolator(new AnticipateInterpolator());
-      return;
-    }
+    super(paramContext, paramInt);
   }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onOrientationChanged(int paramInt)
+  {
+    if (VideoFeedsListView.a(this.a)) {}
+    label10:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                break label10;
+                break label10;
+                break label10;
+                break label10;
+                do
+                {
+                  return;
+                } while ((!VideoFeedsListView.b(this.a)) || (!VideoFeedsListView.c(this.a)) || (VideoFeedsListView.a(this.a) == 1) || (VideoFeedsListView.d(this.a)) || (!VideoFeedsListView.a(this.a, paramInt)) || ((!VideoFeedsListView.e(this.a)) && (VideoFeedsListView.f(this.a))));
+                if ((paramInt < 0) || ((paramInt > 30) && (paramInt < 330))) {
+                  break;
+                }
+              } while ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 0));
+              VideoFeedsListView.a(this.a, -1);
+            } while (VideoFeedsListView.c(this.a) == 0);
+            this.a.a(true);
+            return;
+            if ((paramInt < 70) || (paramInt > 110)) {
+              break;
+            }
+          } while ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 2));
+          VideoFeedsListView.a(this.a, -1);
+        } while (VideoFeedsListView.c(this.a) == 2);
+        VideoFeedsListView.a(this.a, 2, true);
+        return;
+      } while ((paramInt < 250) || (paramInt > 290) || ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 1)));
+      VideoFeedsListView.a(this.a, -1);
+    } while (VideoFeedsListView.c(this.a) == 1);
+    VideoFeedsListView.a(this.a, 1, true);
+  }
 }
 
 

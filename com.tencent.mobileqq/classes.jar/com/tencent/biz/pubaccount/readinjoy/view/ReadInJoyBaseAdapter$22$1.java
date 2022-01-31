@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.util.Pair;
-import ogy;
-import qoe;
-import qop;
+import osj;
+import rap;
+import rba;
 
 public class ReadInJoyBaseAdapter$22$1
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$22$1(qop paramqop, Pair paramPair) {}
+  public ReadInJoyBaseAdapter$22$1(rba paramrba, Pair paramPair) {}
   
   public void run()
   {
-    ogy.a().a(this.jdField_a_of_type_Qop.a.c, 3, ((Integer)this.jdField_a_of_type_AndroidUtilPair.first).intValue(), ((Integer)this.jdField_a_of_type_AndroidUtilPair.second).intValue(), null);
+    osj.a().a(this.jdField_a_of_type_Rba.a.c, 3, ((Integer)this.jdField_a_of_type_AndroidUtilPair.first).intValue(), ((Integer)this.jdField_a_of_type_AndroidUtilPair.second).intValue(), null);
   }
 }
 

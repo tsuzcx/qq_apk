@@ -1,15 +1,23 @@
 package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
-import bfpk;
+import bgxr;
 import com.tencent.common.app.BaseApplicationImpl;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import mqq.app.AppRuntime;
 
 public class LpReportInfo_dc03950
   implements LpReportInfo
 {
+  public static final String AD_ID_ANNIVERSARY = "171624";
+  public static final String AD_ID_COMMENTS = "171620";
+  public static final String AD_ID_EXPIRED = "168604";
+  public static final String AD_ID_LEAVE_COMMENTS = "171617";
+  public static final String AD_ID_LIKE = "171629";
+  public static final String AD_ID_VISTOR = "171621";
   public static final String LOVECHATTING_ACTION_TYPE = "16";
   public static final String LOVECHATTING_OPERATION_TYPE_CLICK = "2";
   public static final String LOVECHATTING_OPERATION_TYPE_EXPOSE = "1";
@@ -22,12 +30,15 @@ public class LpReportInfo_dc03950
   public static final String LOVE_INTIMACY = "2";
   public static final String LOVE_PASSIVE_FEEDS = "7";
   public static final String LOVE_QZONE_FEEDS_TAIL = "5";
+  public static final String LOVE_QZONE_FEEDS_TAIL_GUEST = "9";
   public static final String LOVE_QZONE_HOME_PAGE_PANEL = "3";
   public static final String LOVE_QZONE_HOME_PAGE_PANEL_GUEST = "8";
   public static final String LOVE_QZONE_WIDGET = "4";
+  public static final String LOVE_SETTING_ME = "10";
   public static final String LOVE_SLIDE_RESERVES_C2C = "1";
   public static final String LOVE_SLIDE_SUBACTION_TYPE = "6";
   public static final String LOVE_UNKNOWN = "0";
+  public static final List<String> LOVE_ZONE_SETTING_ME_RESERVES_LIST = Arrays.asList(new String[] { "168604", "171624", "171621", "171620", "171617", "171629" });
   public static final String LOVE_ZONE_STATIONARY_ADDRESS = "25";
   public static String TAG = "LpReport.LpReportInfo_dc03950";
   public String actiontype;
@@ -80,7 +91,7 @@ public class LpReportInfo_dc03950
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    LpReportUtils.safePut(localHashMap, "qua", bfpk.a());
+    LpReportUtils.safePut(localHashMap, "qua", bgxr.a());
     if (this.uin == 0L) {}
     for (String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();; str = String.valueOf(this.uin))
     {

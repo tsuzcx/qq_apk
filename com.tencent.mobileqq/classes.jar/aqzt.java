@@ -1,28 +1,28 @@
-import android.view.View;
+import android.widget.ImageView;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
 
 class aqzt
-  implements begw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aqzt(aqzs paramaqzs, begr parambegr) {}
+  aqzt(aqzr paramaqzr) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramInt)
-    {
+    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+    if (this.a.a.getVisibility() == 0) {
+      this.a.a.setAlpha(f);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.e();
-      return;
-      aqzs.a(this.jdField_a_of_type_Aqzs);
-      continue;
-      aqzs.b(this.jdField_a_of_type_Aqzs);
+    HotVideoMongoliaRelativeLayout localHotVideoMongoliaRelativeLayout = this.a.a();
+    if (localHotVideoMongoliaRelativeLayout != null) {
+      localHotVideoMongoliaRelativeLayout.a(paramValueAnimator);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     aqzt
  * JD-Core Version:    0.7.0.1
  */

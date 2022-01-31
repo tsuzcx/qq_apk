@@ -1,22 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
 class aobw
-  implements View.OnClickListener
+  implements askp<Void, List<aoah>>
 {
-  aobw(aobv paramaobv) {}
+  aobw(aobu paramaobu) {}
   
-  public void onClick(View paramView)
+  public List<aoah> a(Void paramVoid)
   {
-    Object localObject = apck.a((FileInfo)((aobx)paramView.getTag()).a);
-    localObject = new aowq(aobv.a(this.a).app, aobv.a(this.a), (FileManagerEntity)localObject, 10000);
-    localObject = new aows(aobv.a(this.a), (aowv)localObject);
-    ((aows)localObject).a(8);
-    ((aows)localObject).a(xgx.a(paramView));
-    ((aows)localObject).a();
+    paramVoid = ((askd)this.a.a.getManager(14)).a(false, aobu.a(this.a), false);
+    ArrayList localArrayList = new ArrayList();
+    if (paramVoid != null) {
+      localArrayList.addAll(paramVoid);
+    }
+    return localArrayList;
   }
 }
 

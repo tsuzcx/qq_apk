@@ -1,12 +1,16 @@
-import com.tencent.mobileqq.data.ChatMessage;
-
-public abstract interface aerf
+class aerf
+  extends ajxl
 {
-  public abstract void a(ChatMessage paramChatMessage);
+  aerf(aerb paramaerb) {}
+  
+  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
+  {
+    aerb.a(this.a, paramBoolean, paramObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aerf
  * JD-Core Version:    0.7.0.1
  */

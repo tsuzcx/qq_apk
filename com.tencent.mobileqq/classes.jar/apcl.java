@@ -1,43 +1,14 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-final class apcl
-  implements apcx
+class apcl
+  extends apbq
 {
-  apcl(String paramString1, String paramString2) {}
-  
-  public void a(Bitmap paramBitmap)
+  public apcl(apbe paramapbe)
   {
-    if (paramBitmap == null) {
-      return;
-    }
-    try
-    {
-      apdh.a(paramBitmap, this.a);
-      paramBitmap.recycle();
-      int i = ey.a(this.b);
-      ey.a(this.a, i);
-      return;
-    }
-    catch (FileNotFoundException paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail FileNotFoundException:" + paramBitmap.getMessage());
-      return;
-    }
-    catch (IOException paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail IOException:" + paramBitmap.getMessage());
-      return;
-    }
-    catch (OutOfMemoryError paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail OutOfMemoryError:" + paramBitmap.getMessage());
-    }
+    super(paramapbe);
+  }
+  
+  protected String a()
+  {
+    return "StateUploadoneWhenChangeToOff";
   }
 }
 

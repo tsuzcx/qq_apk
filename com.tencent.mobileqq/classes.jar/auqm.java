@@ -1,99 +1,51 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Message;
-import android.text.TextUtils;
+import android.os.CountDownTimer;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.redtouch.VipBannerInfo.2;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.portal.FormalView;
+import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.portal.ProgressViewRed;
 
-public class auqm
-  implements auqi
+class auqm
+  extends CountDownTimer
 {
-  public auqm(VipBannerInfo.2 param2) {}
-  
-  public boolean a(auql paramauql)
+  auqm(auqi paramauqi, long paramLong1, long paramLong2, long[] paramArrayOfLong)
   {
-    if (paramauql == null) {}
-    label385:
-    label390:
-    label396:
-    label400:
-    for (;;)
-    {
-      return false;
-      int i;
-      label86:
-      int j;
-      label163:
-      label187:
-      int k;
-      if (1 == paramauql.jdField_b_of_type_Int)
-      {
-        this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("blue_banner_time_out" + this.a.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getAccount(), System.currentTimeMillis() + paramauql.jdField_a_of_type_Long).commit();
-        paramauql.jdField_b_of_type_Long = paramauql.jdField_a_of_type_Long;
-        i = 1;
-        if (paramauql.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo == null) {
-          break label378;
-        }
-        m = paramauql.jdField_a_of_type_Int;
-        if ((1 != paramauql.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.iNewFlag.get()) || (i == 0) || (TextUtils.isEmpty(paramauql.jdField_b_of_type_JavaLangString)) || (m < 1) || (m > 4)) {
-          continue;
-        }
-        if ((1 != m) || (bajr.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityConversation.a))) {
-          break label380;
-        }
-        i = 1;
-        if ((2 != m) || (bajr.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityConversation.a))) {
-          break label385;
-        }
-        j = 1;
-        if ((3 != m) || (!bajr.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityConversation.a))) {
-          break label390;
-        }
-        k = 1;
-        label212:
-        if ((4 != m) || (!bajr.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityConversation.a))) {
-          break label396;
-        }
-      }
-      for (int m = 1;; m = 0)
-      {
-        if ((i == 0) && (j == 0) && (k == 0) && (m == 0)) {
-          break label400;
-        }
-        this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(9);
-        Message localMessage = this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(8, paramauql);
-        localMessage.obj = paramauql;
-        this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
-        return true;
-        long l = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getLong("blue_banner_time_out" + this.a.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getAccount(), -1L);
-        if (l > System.currentTimeMillis())
-        {
-          paramauql.jdField_b_of_type_Long = (l - System.currentTimeMillis());
-          i = 1;
-          break label86;
-        }
-        i = 0;
-        break label86;
-        label378:
-        break;
-        label380:
-        i = 0;
-        break label163;
-        j = 0;
-        break label187;
-        k = 0;
-        break label212;
-      }
+    super(paramLong1, paramLong2);
+  }
+  
+  public void onFinish()
+  {
+    PortalManager localPortalManager = (PortalManager)this.jdField_a_of_type_Auqi.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getManager(79);
+    if (localPortalManager != null) {
+      localPortalManager.a();
     }
+  }
+  
+  public void onTick(long paramLong)
+  {
+    if (auqi.a(this.jdField_a_of_type_Auqi).getVisibility() == 0)
+    {
+      this.jdField_a_of_type_Auqi.a(paramLong);
+      auqi.a(this.jdField_a_of_type_Auqi).a(paramLong, this.jdField_a_of_type_ArrayOfLong[0], this.jdField_a_of_type_Auqi.jdField_a_of_type_JavaLangStringBuilder);
+    }
+    if (this.jdField_a_of_type_Auqi.jdField_a_of_type_ComTencentMobileqqPortalFormalView.getVisibility() == 0)
+    {
+      this.jdField_a_of_type_Auqi.a(paramLong);
+      this.jdField_a_of_type_Auqi.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a(paramLong, this.jdField_a_of_type_ArrayOfLong[0], this.jdField_a_of_type_Auqi.jdField_b_of_type_JavaLangStringBuilder);
+    }
+    paramLong = System.currentTimeMillis() - this.jdField_a_of_type_Auqi.jdField_b_of_type_Long;
+    if (paramLong > 2000L) {
+      this.jdField_a_of_type_Auqi.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setHBSpeed(1);
+    }
+    while (paramLong <= 1000L) {
+      return;
+    }
+    this.jdField_a_of_type_Auqi.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setHBSpeed(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     auqm
  * JD-Core Version:    0.7.0.1
  */

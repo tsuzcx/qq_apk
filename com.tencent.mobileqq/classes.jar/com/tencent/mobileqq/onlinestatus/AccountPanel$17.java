@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.onlinestatus;
 
 import android.widget.TextView;
-import atjj;
-import banc;
+import auhi;
+import bboy;
 import com.tencent.qphone.base.util.QLog;
 
 public class AccountPanel$17
   implements Runnable
 {
-  public AccountPanel$17(atjj paramatjj, TextView paramTextView) {}
+  public AccountPanel$17(auhi paramauhi, TextView paramTextView) {}
   
   public void run()
   {
-    this.a.setText(banc.a().a());
+    this.a.setText(bboy.a().a());
     if (QLog.isDevelopLevel()) {
       QLog.d("CustomOnlineStatusManager", 4, "panel -> updateCustomOnlineStatus text");
     }

@@ -1,21 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.widget.RedTouchExtendButton.RedInfo;
 
-public class bhur
+public final class bhur
+  implements Parcelable.Creator<RedTouchExtendButton.RedInfo>
 {
-  public static bhwl a(@NonNull bhwq parambhwq)
+  public RedTouchExtendButton.RedInfo a(Parcel paramParcel)
   {
-    return new bhwl(parambhwq, bhwm.a(BaseApplicationImpl.getApplication()));
+    return new RedTouchExtendButton.RedInfo(paramParcel);
   }
   
-  public static bhwl a(@NonNull bhwq parambhwq, bhwn parambhwn)
+  public RedTouchExtendButton.RedInfo[] a(int paramInt)
   {
-    return new bhwl(parambhwq, parambhwn);
+    return new RedTouchExtendButton.RedInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhur
  * JD-Core Version:    0.7.0.1
  */

@@ -3,13 +3,15 @@ package com.tencent.biz.subscribe.event;
 public class PraisedUpdateEvents
   extends SimpleBaseEvent
 {
+  public int mPraisedNum;
   public int mPraisedStatus;
   public String mTargetFeedId;
   
-  public PraisedUpdateEvents(String paramString, int paramInt)
+  public PraisedUpdateEvents(String paramString, int paramInt1, int paramInt2)
   {
-    this.mPraisedStatus = paramInt;
+    this.mPraisedStatus = paramInt1;
     this.mTargetFeedId = paramString;
+    this.mPraisedNum = paramInt2;
   }
 }
 

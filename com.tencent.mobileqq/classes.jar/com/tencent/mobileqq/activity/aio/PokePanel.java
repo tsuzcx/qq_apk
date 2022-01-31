@@ -1,16 +1,14 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aael;
-import acnm;
-import acnn;
-import acno;
-import acnp;
-import adcj;
-import adlh;
-import adll;
-import ajjy;
-import amyp;
-import amzi;
+import aaod;
+import acyf;
+import acyg;
+import acyh;
+import acyi;
+import adnl;
+import adwh;
+import adwl;
+import ajyc;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -25,10 +23,12 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
-import awqx;
-import bacm;
-import baox;
-import begh;
+import anox;
+import anpq;
+import axqw;
+import bbdr;
+import bbqu;
+import bfob;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
@@ -49,39 +49,39 @@ import mqq.os.MqqHandler;
 
 public class PokePanel
   extends RelativeLayout
-  implements adcj, View.OnClickListener, begh
+  implements adnl, View.OnClickListener, bfob
 {
   public static boolean c;
   public int a;
   long jdField_a_of_type_Long = 0L;
-  private acnp jdField_a_of_type_Acnp;
+  private acyi jdField_a_of_type_Acyi;
   HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  baox jdField_a_of_type_Baox = new acnn(this);
+  bbqu jdField_a_of_type_Bbqu = new acyg(this);
   BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  VasQuickUpdateManager.CallBacker jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new acnm(this);
+  VasQuickUpdateManager.CallBacker jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new acyf(this);
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private String jdField_a_of_type_JavaLangString;
   private ArrayList<int[]> jdField_a_of_type_JavaUtilArrayList;
   MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   public boolean a;
-  private final int[] jdField_a_of_type_ArrayOfInt = { 2131655023, 2130838907, 3 };
+  private final int[] jdField_a_of_type_ArrayOfInt = { 2131720921, 2130838928, 3 };
   public int b;
   long jdField_b_of_type_Long = 0L;
   public boolean b;
-  private final int[] jdField_b_of_type_ArrayOfInt = { 2131629552, 2130838792, 1 };
+  private final int[] jdField_b_of_type_ArrayOfInt = { 2131695233, 2130838891, 1 };
   private final int[] c;
   private boolean jdField_d_of_type_Boolean;
-  private final int[] jdField_d_of_type_ArrayOfInt = { 2131627626, 2130838905, 4 };
+  private final int[] jdField_d_of_type_ArrayOfInt = { 2131693267, 2130838926, 4 };
   private boolean jdField_e_of_type_Boolean;
-  private final int[] jdField_e_of_type_ArrayOfInt = { 2131627634, 2130838906, 5 };
-  private final int[] f = { 2131627550, 2130838800, 6 };
+  private final int[] jdField_e_of_type_ArrayOfInt = { 2131693275, 2130838927, 5 };
+  private final int[] f = { 2131693190, 2130838892, 6 };
   
   public PokePanel(Context paramContext)
   {
     super(paramContext);
-    this.jdField_c_of_type_ArrayOfInt = new int[] { 2131627424, 2130838783, 2 };
+    this.jdField_c_of_type_ArrayOfInt = new int[] { 2131693064, 2130838864, 2 };
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = 1;
   }
@@ -89,7 +89,7 @@ public class PokePanel
   public PokePanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_c_of_type_ArrayOfInt = new int[] { 2131627424, 2130838783, 2 };
+    this.jdField_c_of_type_ArrayOfInt = new int[] { 2131693064, 2130838864, 2 };
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = 1;
   }
@@ -101,27 +101,27 @@ public class PokePanel
     }
   }
   
-  private void a(ArrayList<acno> paramArrayList)
+  private void a(ArrayList<acyh> paramArrayList)
   {
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
       int[] arrayOfInt = (int[])this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      acno localacno = new acno();
-      if ((arrayOfInt[2] == 1) && (!adll.b(arrayOfInt[2]))) {
-        localacno.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130837992);
+      acyh localacyh = new acyh();
+      if ((arrayOfInt[2] == 1) && (!adwl.b(arrayOfInt[2]))) {
+        localacyh.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130838001);
       }
       for (;;)
       {
-        localacno.jdField_a_of_type_Int = arrayOfInt[2];
-        localacno.jdField_b_of_type_Int = arrayOfInt[1];
-        localacno.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getContext().getResources().getString(arrayOfInt[0]);
-        localacno.jdField_b_of_type_JavaLangString = (BaseApplicationImpl.getContext().getResources().getString(arrayOfInt[0]) + ajjy.a(2131642542));
-        localacno.jdField_b_of_type_Boolean = false;
-        paramArrayList.add(localacno);
+        localacyh.jdField_a_of_type_Int = arrayOfInt[2];
+        localacyh.jdField_b_of_type_Int = arrayOfInt[1];
+        localacyh.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getContext().getResources().getString(arrayOfInt[0]);
+        localacyh.jdField_b_of_type_JavaLangString = (BaseApplicationImpl.getContext().getResources().getString(arrayOfInt[0]) + ajyc.a(2131708327));
+        localacyh.jdField_b_of_type_Boolean = false;
+        paramArrayList.add(localacyh);
         i += 1;
         break;
-        if ((arrayOfInt[2] != 0) && (adll.b(arrayOfInt[2])))
+        if ((arrayOfInt[2] != 0) && (adwl.b(arrayOfInt[2])))
         {
           String str;
           Object localObject;
@@ -129,11 +129,11 @@ public class PokePanel
           switch (arrayOfInt[2])
           {
           default: 
-            str = adlh.jdField_a_of_type_JavaLangString + "/chuo_icon/chuo_icon_";
+            str = adwh.jdField_a_of_type_JavaLangString + "/chuo_icon/chuo_icon_";
             localObject = new BitmapFactory.Options();
             ((BitmapFactory.Options)localObject).inSampleSize = 1;
             ((BitmapFactory.Options)localObject).inMutable = true;
-            localObject = bacm.a(str + "01.png", (BitmapFactory.Options)localObject);
+            localObject = bbdr.a(str + "01.png", (BitmapFactory.Options)localObject);
             localObject = new CustomFrameAnimationDrawable(BaseApplicationImpl.getContext().getResources(), (Bitmap)localObject, this.jdField_a_of_type_MqqOsMqqHandler);
             j = 0;
             label318:
@@ -149,26 +149,26 @@ public class PokePanel
           {
             j += 1;
             break label318;
-            str = adlh.jdField_a_of_type_JavaLangString + "/chuo_icon/chuo_icon_";
+            str = adwh.jdField_a_of_type_JavaLangString + "/chuo_icon/chuo_icon_";
             break;
-            str = adlh.jdField_a_of_type_JavaLangString + "/bixin_icon/bixin_icon_";
+            str = adwh.jdField_a_of_type_JavaLangString + "/bixin_icon/bixin_icon_";
             break;
-            str = adlh.jdField_a_of_type_JavaLangString + "/zan_icon/zan_icon_";
+            str = adwh.jdField_a_of_type_JavaLangString + "/zan_icon/zan_icon_";
             break;
-            str = adlh.jdField_a_of_type_JavaLangString + "/xinsui_icon/xinsui_icon_";
+            str = adwh.jdField_a_of_type_JavaLangString + "/xinsui_icon/xinsui_icon_";
             break;
-            str = adlh.jdField_a_of_type_JavaLangString + "/dazhao_icon/dazhao_icon_";
+            str = adwh.jdField_a_of_type_JavaLangString + "/dazhao_icon/dazhao_icon_";
             break;
-            str = adlh.jdField_a_of_type_JavaLangString + "/666_icon/666_icon_";
+            str = adwh.jdField_a_of_type_JavaLangString + "/666_icon/666_icon_";
             break;
             ((CustomFrameAnimationDrawable)localObject).a(j, 40, str + (j + 1) + ".png");
           }
           label571:
-          localacno.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)localObject);
+          localacyh.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)localObject);
         }
         else
         {
-          localacno.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(arrayOfInt[1]);
+          localacyh.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(arrayOfInt[1]);
         }
       }
     }
@@ -179,19 +179,19 @@ public class PokePanel
     if (jdField_c_of_type_Boolean) {
       return true;
     }
-    if ((adll.b(2)) && (adll.b(3)) && (adll.b(4)) && (adll.b(5)) && (adll.b(6)) && (PokeBigResHandler.a()))
+    if ((adwl.b(2)) && (adwl.b(3)) && (adwl.b(4)) && (adwl.b(5)) && (adwl.b(6)) && (PokeBigResHandler.a()))
     {
-      adll.a(paramQQAppInterface, null);
+      adwl.a(paramQQAppInterface, null);
       jdField_c_of_type_Boolean = true;
       return true;
     }
-    Object localObject = (amyp)paramQQAppInterface.getManager(77);
+    Object localObject = (anox)paramQQAppInterface.getManager(77);
     if (localObject != null)
     {
-      localObject = (amzi)((amyp)localObject).a("qq.android.poke.res_0625");
+      localObject = (anpq)((anox)localObject).a("qq.android.poke.res_0625");
       paramQQAppInterface = (PokeBigResHandler)paramQQAppInterface.a(117);
       if (localObject != null) {
-        ((amzi)localObject).a(true);
+        ((anpq)localObject).a(true);
       }
       if ((paramQQAppInterface != null) && (!PokeBigResHandler.a())) {
         paramQQAppInterface.a(true);
@@ -229,24 +229,24 @@ public class PokePanel
     do
     {
       return;
-      aael.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 1, "", "");
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X8007F22", "0X8007F22", 1, 0, "", "", "", "");
+      aaod.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 1, "", "");
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X8007F22", "0X8007F22", 1, 0, "", "", "", "");
       break;
-      aael.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 2, "", "");
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X8007F22", "0X8007F22", 2, 0, "", "", "", "");
+      aaod.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 2, "", "");
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X8007F22", "0X8007F22", 2, 0, "", "", "", "");
       break;
-      aael.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 4, "", "");
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X8007F22", "0X8007F22", 4, 0, "", "", "", "");
+      aaod.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 4, "", "");
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X8007F22", "0X8007F22", 4, 0, "", "", "", "");
       break;
-      aael.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 3, "", "");
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X8007F22", "0X8007F22", 3, 0, "", "", "", "");
+      aaod.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 3, "", "");
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X8007F22", "0X8007F22", 3, 0, "", "", "", "");
       break;
       if (this.jdField_a_of_type_Long == 0L) {}
       for (this.jdField_a_of_type_Long = SystemClock.currentThreadTimeMillis();; this.jdField_a_of_type_Long = SystemClock.currentThreadTimeMillis())
       {
         this.jdField_a_of_type_Long = SystemClock.currentThreadTimeMillis();
-        aael.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 5, "", "");
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X8007F22", "0X8007F22", 5, 0, "", "", "", "");
+        aaod.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 5, "", "");
+        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X8007F22", "0X8007F22", 5, 0, "", "", "", "");
         break;
         if (SystemClock.currentThreadTimeMillis() - this.jdField_a_of_type_Long < 500L) {
           break label184;
@@ -255,8 +255,8 @@ public class PokePanel
       if (this.jdField_b_of_type_Long == 0L) {}
       for (this.jdField_b_of_type_Long = SystemClock.currentThreadTimeMillis();; this.jdField_b_of_type_Long = SystemClock.currentThreadTimeMillis())
       {
-        aael.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 6, "", "");
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X8007F22", "0X8007F22", 6, 0, "", "", "", "");
+        aaod.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 6, "", "");
+        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X8007F22", "0X8007F22", 6, 0, "", "", "", "");
         break;
         if (SystemClock.currentThreadTimeMillis() - this.jdField_b_of_type_Long < 500L) {
           break label184;
@@ -264,19 +264,19 @@ public class PokePanel
       }
       if (paramBundle.getBoolean("isShowDownload"))
       {
-        this.jdField_a_of_type_Acnp.a("poke.item.res.", j, true, false);
+        this.jdField_a_of_type_Acyi.a("poke.item.res.", j, true, false);
         paramBundle = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(184);
-        if (!adll.a("effect.gif", j)) {
+        if (!adwl.a("effect.gif", j)) {
           paramBundle.downloadItem(21L, "poke.item.effect." + j, "clickDownload");
         }
         paramBundle.downloadItem(21L, "poke.item.res." + j, "clickDownload");
         paramBundle.addCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
         return;
       }
-    } while (adll.jdField_a_of_type_Boolean);
+    } while (adwl.jdField_a_of_type_Boolean);
     label660:
-    adll.jdField_a_of_type_Boolean = true;
-    adll.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, j, str1, k, str2, 0);
+    adwl.jdField_a_of_type_Boolean = true;
+    adwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, j, str1, k, str2, 0);
   }
   
   private void b(String paramString)
@@ -325,10 +325,10 @@ public class PokePanel
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.a();
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131302087));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131367705));
     this.jdField_a_of_type_ComTencentWidgetListView.setOnScrollListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().addObserver(this.jdField_a_of_type_Baox);
-    paramBaseChatPie = getResources().getDrawable(2130848939);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().addObserver(this.jdField_a_of_type_Bbqu);
+    paramBaseChatPie = getResources().getDrawable(2130849167);
     if ((paramBaseChatPie instanceof BitmapDrawable))
     {
       ((BitmapDrawable)paramBaseChatPie).setTileModeXY(Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
@@ -365,10 +365,10 @@ public class PokePanel
       if (QLog.isColorLevel()) {
         QLog.d("Q.aio.PokePanel", 2, "[pokepanel]reload()");
       }
-      this.jdField_a_of_type_Acnp = new acnp(BaseApplication.getContext());
-      this.jdField_a_of_type_Acnp.a(this);
-      this.jdField_a_of_type_Acnp.a(this);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Acnp);
+      this.jdField_a_of_type_Acyi = new acyi(BaseApplication.getContext());
+      this.jdField_a_of_type_Acyi.a(this);
+      this.jdField_a_of_type_Acyi.a(this);
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Acyi);
       ThreadManager.getFileThreadHandler().post(new PokePanel.2(this, paramString, localArrayList));
       return;
       this.jdField_a_of_type_JavaUtilArrayList.clear();
@@ -393,15 +393,15 @@ public class PokePanel
       this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_AndroidOsHandlerThread.quit();
       this.jdField_a_of_type_AndroidOsHandlerThread = null;
-      Object localObject = this.jdField_a_of_type_Acnp.a();
+      Object localObject = this.jdField_a_of_type_Acyi.a();
       if ((localObject != null) && (((ArrayList)localObject).size() > 0))
       {
         localObject = ((ArrayList)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
-          acno localacno = (acno)((Iterator)localObject).next();
-          if ((localacno.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof CustomFrameAnimationDrawable)) {
-            ((CustomFrameAnimationDrawable)localacno.jdField_a_of_type_AndroidGraphicsDrawableDrawable).j();
+          acyh localacyh = (acyh)((Iterator)localObject).next();
+          if ((localacyh.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof CustomFrameAnimationDrawable)) {
+            ((CustomFrameAnimationDrawable)localacyh.jdField_a_of_type_AndroidGraphicsDrawableDrawable).j();
           }
         }
       }
@@ -410,7 +410,7 @@ public class PokePanel
     catch (Exception localException)
     {
       QLog.d("Q.aio.PokePanel", 1, "ondestroy err " + localException);
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().removeObserver(this.jdField_a_of_type_Baox);
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().removeObserver(this.jdField_a_of_type_Bbqu);
       ((VasQuickUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(184)).removeCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
     }
   }
@@ -420,15 +420,15 @@ public class PokePanel
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = false;
-      Object localObject = this.jdField_a_of_type_Acnp.a();
+      Object localObject = this.jdField_a_of_type_Acyi.a();
       if ((localObject != null) && (((ArrayList)localObject).size() > 0))
       {
         localObject = ((ArrayList)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
-          acno localacno = (acno)((Iterator)localObject).next();
-          if ((localacno.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof CustomFrameAnimationDrawable)) {
-            ((CustomFrameAnimationDrawable)localacno.jdField_a_of_type_AndroidGraphicsDrawableDrawable).l();
+          acyh localacyh = (acyh)((Iterator)localObject).next();
+          if ((localacyh.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof CustomFrameAnimationDrawable)) {
+            ((CustomFrameAnimationDrawable)localacyh.jdField_a_of_type_AndroidGraphicsDrawableDrawable).l();
           }
         }
       }
@@ -438,18 +438,18 @@ public class PokePanel
   
   public void e()
   {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Acnp != null))
+    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Acyi != null))
     {
       this.jdField_a_of_type_Boolean = true;
-      Object localObject = this.jdField_a_of_type_Acnp.a();
+      Object localObject = this.jdField_a_of_type_Acyi.a();
       if ((localObject != null) && (((ArrayList)localObject).size() > 0))
       {
         localObject = ((ArrayList)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
-          acno localacno = (acno)((Iterator)localObject).next();
-          if ((localacno.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof CustomFrameAnimationDrawable)) {
-            ((CustomFrameAnimationDrawable)localacno.jdField_a_of_type_AndroidGraphicsDrawableDrawable).k();
+          acyh localacyh = (acyh)((Iterator)localObject).next();
+          if ((localacyh.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof CustomFrameAnimationDrawable)) {
+            ((CustomFrameAnimationDrawable)localacyh.jdField_a_of_type_AndroidGraphicsDrawableDrawable).k();
           }
         }
       }

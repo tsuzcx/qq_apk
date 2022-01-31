@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
-import bjbb;
+import bkrn;
 
 class FixedSizeVideoView$1
   implements Runnable

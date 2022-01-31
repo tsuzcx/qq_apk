@@ -1,24 +1,32 @@
-import android.opengl.GLES20;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateDiscuss;
+import com.tencent.qphone.base.util.QLog;
 
-class akmp
-  implements akvt
+public class akmp
+  extends ajvl
 {
-  akmp(akmo paramakmo) {}
+  private akmp(UpdateDiscuss paramUpdateDiscuss) {}
   
-  public void a()
+  protected void a(boolean paramBoolean)
   {
-    GLES20.glUniform1i(akmo.a(this.a), akmo.b(this.a));
-  }
-  
-  public void a(int paramInt)
-  {
-    akmo.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
-    akmz.a("glGetUniformLocation uDisplayType");
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "updateDiscussionList: " + paramBoolean);
+    }
+    if (!paramBoolean)
+    {
+      this.a.a(6);
+      return;
+    }
+    this.a.a.a.edit().putBoolean("isDiscussionlistok", true).commit();
+    this.a.a.notifyUI(3, true, Integer.valueOf(3));
+    this.a.a(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akmp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,19 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.QQPhotoInfo;
 
-public class anjs
-  implements Animator.AnimatorListener
+public final class anjs
+  implements Parcelable.Creator<QQPhotoInfo>
 {
-  public anjs(EmotionKeywordLayout paramEmotionKeywordLayout) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public QQPhotoInfo a(Parcel paramParcel)
   {
-    if (paramAnimator == EmotionKeywordLayout.a(this.a)) {
-      this.a.setVisibility(8);
-    }
-    if (EmotionKeywordLayout.a(this.a) != null) {
-      EmotionKeywordLayout.a(this.a).resetCurrentX(0);
-    }
+    return new QQPhotoInfo(paramParcel, null);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public QQPhotoInfo[] a(int paramInt)
+  {
+    return new QQPhotoInfo[paramInt];
+  }
 }
 
 

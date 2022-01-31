@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.Doraemon;
 
-import zsi;
+import aacb;
 
 public final class DoraemonOpenAPI$1
   implements Runnable
 {
   public void run()
   {
-    zsi localzsi = zsi.a();
-    localzsi.a();
-    localzsi.b();
+    aacb localaacb = aacb.a();
+    localaacb.a();
+    localaacb.b();
   }
 }
 

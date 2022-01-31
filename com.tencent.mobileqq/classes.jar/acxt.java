@@ -1,85 +1,77 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class acxt
-  implements acxg
+  extends BaseAdapter
 {
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  Map<Integer, Intent> jdField_a_of_type_JavaUtilMap = new HashMap();
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  ArrayList<acxs> jdField_a_of_type_JavaUtilArrayList;
   
-  acxt(BaseChatPie paramBaseChatPie)
+  public void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
   }
   
-  public Intent a(int paramInt)
+  public void a(ArrayList<acxs> paramArrayList)
   {
-    return (Intent)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
   
-  public void a(int paramInt)
+  public int getCount()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 2: 
-      b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.hashCode());
-      return;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.jdField_a_of_type_JavaUtilArrayList.size();
     }
-    b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.hashCode());
+    return 0;
   }
   
-  public void a(int paramInt, Intent paramIntent)
+  public Object getItem(int paramInt)
   {
-    int j = 0;
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramIntent);
-    if (QLog.isColorLevel())
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = BaseApplication.getContext();
+    acxs localacxs;
+    if (paramView == null)
     {
-      if (paramIntent != null) {
-        break label54;
+      paramView = LayoutInflater.from(paramViewGroup).inflate(2131558762, null);
+      paramViewGroup = new acxu();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367800));
+      paramViewGroup.b = ((ImageView)paramView.findViewById(2131366359));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377044));
+      paramView.setTag(paramViewGroup);
+      localacxs = (acxs)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localacxs.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localacxs.jdField_a_of_type_JavaLangString);
+      if (!localacxs.jdField_a_of_type_Boolean) {
+        break label163;
       }
-      QLog.d("PhotoListHelper", 2, "setSelectedPhotoData null, code=" + paramInt);
+      paramViewGroup.b.setVisibility(0);
     }
-    label54:
-    while (!paramIntent.hasExtra("PhotoConst.SELECTED_PATHS")) {
-      return;
-    }
-    Object localObject = paramIntent.getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
-    paramIntent = paramIntent.getIntegerArrayListExtra("PhotoConst.SELECTED_INDEXS");
-    StringBuilder localStringBuilder = new StringBuilder().append("setSelectedPhotoData checked size=");
-    if (localObject == null)
+    for (;;)
     {
-      i = 0;
-      localObject = localStringBuilder.append(i).append(",checkedIndex size=");
-      if (paramIntent != null) {
-        break label153;
-      }
-    }
-    label153:
-    for (int i = j;; i = paramIntent.size())
-    {
-      QLog.d("PhotoListHelper", 2, i + ", code=" + paramInt);
-      return;
-      i = ((ArrayList)localObject).size();
+      paramViewGroup.jdField_a_of_type_Int = localacxs.jdField_a_of_type_Int;
+      paramView.setContentDescription(localacxs.b);
+      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      return paramView;
+      paramViewGroup = (acxu)paramView.getTag();
       break;
-    }
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 2, 11 };
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoListHelper", 2, "removeSelectedPhotoData code=" + paramInt);
+      label163:
+      paramViewGroup.b.setVisibility(8);
     }
   }
 }

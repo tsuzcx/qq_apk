@@ -1,354 +1,560 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBFixed32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Matrix;
+import android.graphics.Matrix.ScaleToFit;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Shader.TileMode;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.graphics.drawable.LayerDrawable;
+import android.support.annotation.NonNull;
+import android.widget.ImageView.ScaleType;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
-import tencent.im.cs.cmd0x6ff.subcmd0x501.ReqBody;
-import tencent.im.cs.cmd0x6ff.subcmd0x501.RspBody;
-import tencent.im.cs.cmd0x6ff.subcmd0x501.SubCmd0x501ReqBody;
-import tencent.im.cs.cmd0x6ff.subcmd0x501.SubCmd0x501Rspbody;
-import tencent.im.cs.cmd0x6ff.subcmd0x501.SubCmd0x501Rspbody.IpAddr;
-import tencent.im.cs.cmd0x6ff.subcmd0x501.SubCmd0x501Rspbody.SrvAddrs;
+import java.util.Set;
 
 public class bcqp
-  extends ajfb
+  extends Drawable
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private int jdField_b_of_type_Int;
-  private Object jdField_b_of_type_JavaLangObject = new Object();
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private int c;
+  private float jdField_a_of_type_Float;
+  private final int jdField_a_of_type_Int;
+  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(-16777216);
+  private final Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private Shader.TileMode jdField_a_of_type_AndroidGraphicsShader$TileMode = Shader.TileMode.CLAMP;
+  private ImageView.ScaleType jdField_a_of_type_AndroidWidgetImageView$ScaleType = ImageView.ScaleType.FIT_CENTER;
+  private boolean jdField_a_of_type_Boolean = true;
+  private final boolean[] jdField_a_of_type_ArrayOfBoolean = { 1, 1, 1, 1 };
+  private float jdField_b_of_type_Float;
+  private final int jdField_b_of_type_Int;
+  private final Paint jdField_b_of_type_AndroidGraphicsPaint;
+  private final RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
+  private Shader.TileMode jdField_b_of_type_AndroidGraphicsShader$TileMode = Shader.TileMode.CLAMP;
+  private boolean jdField_b_of_type_Boolean;
+  private final RectF c = new RectF();
+  private final RectF d = new RectF();
+  private final RectF e = new RectF();
   
-  public bcqp(QQAppInterface paramQQAppInterface)
+  public bcqp(Bitmap paramBitmap)
   {
-    super(paramQQAppInterface);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_Int = paramBitmap.getWidth();
+    this.jdField_b_of_type_Int = paramBitmap.getHeight();
+    this.c.set(0.0F, 0.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(getState(), -16777216));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Float);
   }
   
-  private static String a(int paramInt1, int paramInt2)
+  public static Bitmap a(Drawable paramDrawable)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt1 & 0xFF).append(".");
-    localStringBuilder.append(paramInt1 >> 8 & 0xFF).append(".");
-    localStringBuilder.append(paramInt1 >> 16 & 0xFF).append(".");
-    localStringBuilder.append(paramInt1 >> 24 & 0xFF);
-    return a(localStringBuilder.toString(), paramInt2);
-  }
-  
-  private static String a(String paramString, int paramInt)
-  {
-    StringBuffer localStringBuffer = new StringBuffer(200);
-    localStringBuffer.append("http://").append(paramString);
-    if (paramInt != 80) {
-      localStringBuffer.append(":").append(paramInt);
+    if ((paramDrawable instanceof BitmapDrawable)) {
+      return ((BitmapDrawable)paramDrawable).getBitmap();
     }
-    localStringBuffer.append("/");
-    return localStringBuffer.toString();
+    int i = Math.max(paramDrawable.getIntrinsicWidth(), 2);
+    int j = Math.max(paramDrawable.getIntrinsicHeight(), 2);
+    try
+    {
+      Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(localBitmap);
+      paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+      paramDrawable.draw(localCanvas);
+      return localBitmap;
+    }
+    catch (Throwable paramDrawable)
+    {
+      QLog.e("RoundedDrawable", 1, "Failed to create bitmap from drawable!");
+    }
+    return null;
   }
   
-  private void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String[] paramArrayOfString)
+  public static Drawable a(Drawable paramDrawable)
   {
-    boolean bool2 = false;
-    boolean bool3 = true;
-    for (;;)
+    if ((paramDrawable == null) || ((paramDrawable instanceof bcqp))) {}
+    Object localObject;
+    do
     {
-      Object localObject;
-      try
+      return paramDrawable;
+      if ((paramDrawable instanceof LayerDrawable))
       {
-        localObject = this.jdField_a_of_type_JavaLangObject;
-        boolean bool1 = bool2;
-        if (paramArrayOfByte1 != null) {
-          bool1 = bool2;
+        localObject = paramDrawable.mutate().getConstantState();
+        if (localObject != null) {
+          paramDrawable = ((Drawable.ConstantState)localObject).newDrawable();
         }
-        try
+        for (;;)
         {
-          if (paramArrayOfByte1.length > 0)
+          paramDrawable = (LayerDrawable)paramDrawable;
+          int j = paramDrawable.getNumberOfLayers();
+          int i = 0;
+          while (i < j)
           {
-            this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
-            bool1 = true;
+            localObject = paramDrawable.getDrawable(i);
+            paramDrawable.setDrawableByLayerId(paramDrawable.getId(i), a((Drawable)localObject));
+            i += 1;
           }
-          bool2 = bool1;
-          if (paramArrayOfByte2 != null)
-          {
-            bool2 = bool1;
-            if (paramArrayOfByte2.length > 0)
-            {
-              this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
-              bool2 = true;
-            }
-          }
-          if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0)) {
-            break label154;
-          }
-          this.jdField_a_of_type_Int = 0;
-          this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-          bool2 = bool3;
         }
-        finally {}
-        if (QLog.isColorLevel()) {
-          QLog.d("BigDataGetIpHandler", 2, "saveSrvParam | changed = " + bool2 + " | usingIndex = " + this.jdField_a_of_type_Int);
-        }
-        return;
+        return paramDrawable;
       }
-      finally {}
-      label154:
-      if (!bool2) {}
-    }
+      localObject = a(paramDrawable);
+    } while (localObject == null);
+    return new bcqp((Bitmap)localObject);
   }
   
-  public String a()
+  public static bcqp a(Bitmap paramBitmap)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      Object localObject2 = this.jdField_a_of_type_ArrayOfJavaLangString;
-      if ((localObject2 != null) && (localObject2.length != 0))
-      {
-        this.jdField_a_of_type_Int %= localObject2.length;
-        if (QLog.isColorLevel()) {
-          QLog.d("BigDataGetIpHandler", 2, "getSrvUrl | usingIndex = " + this.jdField_a_of_type_Int + " | count = " + localObject2.length + " | result = " + localObject2[this.jdField_a_of_type_Int]);
-        }
-        localObject2 = localObject2[this.jdField_a_of_type_Int];
-        return localObject2;
-      }
-      return null;
+    if (paramBitmap != null) {
+      return new bcqp(paramBitmap);
     }
+    return null;
   }
   
-  protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void a()
   {
-    int i;
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    float f1 = 0.0F;
+    switch (bcqq.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()])
     {
-      this.jdField_a_of_type_Boolean = false;
-      if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
-      {
-        i = 1;
-        int j = paramToServiceMsg.extraData.getInt("big_data_cmd", -1);
-        paramToServiceMsg.extraData.getInt("big_data_sub_cmd", -1);
-        int k = paramToServiceMsg.extraData.getInt("big_data_cmd_seq", -1);
-        if (QLog.isColorLevel()) {
-          QLog.d("BigDataGetIpHandler", 1, "handleGetIPList " + j + " handler: " + getClass().getSimpleName() + " reqSeq = " + k);
-        }
-        if (i == 0) {
-          break label456;
-        }
-        if (paramObject == null) {
-          break label402;
-        }
-      }
+    case 4: 
+    default: 
+      this.d.set(this.c);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.jdField_a_of_type_AndroidGraphicsRectF, Matrix.ScaleToFit.CENTER);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.d);
+      this.d.inset(this.jdField_b_of_type_Float / 2.0F, this.jdField_b_of_type_Float / 2.0F);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.d, Matrix.ScaleToFit.FILL);
     }
     for (;;)
     {
-      try
-      {
-        paramToServiceMsg = new subcmd0x501.RspBody();
-        paramToServiceMsg.mergeFrom((byte[])paramObject);
-        paramObject = (subcmd0x501.SubCmd0x501Rspbody)paramToServiceMsg.msg_subcmd_0x501_rsp_body.get();
-        paramToServiceMsg = paramObject.bytes_session_key.get();
-        if ((paramToServiceMsg == null) || (paramToServiceMsg.toByteArray().length <= 0)) {
-          break label533;
-        }
-        paramToServiceMsg = paramToServiceMsg.toByteArray();
-        paramFromServiceMsg = paramObject.bytes_httpconn_sig_session.get();
-        if ((paramFromServiceMsg == null) || (paramFromServiceMsg.toByteArray().length <= 0)) {
-          break label528;
-        }
-        paramFromServiceMsg = paramFromServiceMsg.toByteArray();
-        paramObject = paramObject.rpt_msg_httpconn_addrs.get();
-        if ((paramObject == null) || (paramObject.size() == 0)) {
-          break label523;
-        }
-        paramObject = paramObject.iterator();
-        if (!paramObject.hasNext()) {
-          break label523;
-        }
-        ??? = (subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)paramObject.next();
-        if (((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)???).uint32_service_type.get() != 1) {
-          continue;
-        }
-        ??? = ((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)???).rpt_msg_addrs.get();
-        if ((??? == null) || (((List)???).size() == 0)) {
-          break label523;
-        }
-        paramObject = new String[((List)???).size()];
-        i = 0;
-        if (i < ((List)???).size())
-        {
-          subcmd0x501.SubCmd0x501Rspbody.IpAddr localIpAddr = (subcmd0x501.SubCmd0x501Rspbody.IpAddr)((List)???).get(i);
-          paramObject[i] = a(localIpAddr.uint32_ip.get(), localIpAddr.uint32_port.get());
-          i += 1;
-          continue;
-          paramToServiceMsg = finally;
-          throw paramToServiceMsg;
-          i = 0;
-          break;
-        }
-        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        notifyUI(2001, true, null);
-        return;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        label402:
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("BigDataGetIpHandler", 1, "handleGetIPList fail, because exception", paramToServiceMsg);
-        paramToServiceMsg.printStackTrace();
-        notifyUI(2001, false, null);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("BigDataGetIpHandler", 1, "handleRefreshGetAllTags fail, because data is null");
-      }
-      notifyUI(2001, false, null);
+      this.jdField_b_of_type_AndroidGraphicsRectF.set(this.d);
+      this.jdField_a_of_type_Boolean = true;
       return;
-      label456:
-      if (paramFromServiceMsg == null) {
-        if (QLog.isColorLevel()) {
-          QLog.d("BigDataGetIpHandler", 1, "getAllTags handleGetIPList fail, because res is null");
-        }
+      this.d.set(this.jdField_a_of_type_AndroidGraphicsRectF);
+      this.d.inset(this.jdField_b_of_type_Float / 2.0F, this.jdField_b_of_type_Float / 2.0F);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
+      this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate((int)((this.d.width() - this.jdField_a_of_type_Int) * 0.5F + 0.5F), (int)((this.d.height() - this.jdField_b_of_type_Int) * 0.5F + 0.5F));
+      continue;
+      this.d.set(this.jdField_a_of_type_AndroidGraphicsRectF);
+      this.d.inset(this.jdField_b_of_type_Float / 2.0F, this.jdField_b_of_type_Float / 2.0F);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
+      float f3;
+      float f2;
+      if (this.jdField_a_of_type_Int * this.d.height() > this.d.width() * this.jdField_b_of_type_Int)
+      {
+        f3 = this.d.height() / this.jdField_b_of_type_Int;
+        f2 = (this.d.width() - this.jdField_a_of_type_Int * f3) * 0.5F;
       }
       for (;;)
       {
-        notifyUI(2001, false, null);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("BigDataGetIpHandler", 1, "getAllTags handleGetIPList fail, because res code: " + paramFromServiceMsg.getResultCode());
-        }
+        this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f3, f3);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((int)(f2 + 0.5F) + this.jdField_b_of_type_Float / 2.0F, (int)(f1 + 0.5F) + this.jdField_b_of_type_Float / 2.0F);
+        break;
+        f3 = this.d.width() / this.jdField_a_of_type_Int;
+        f1 = this.d.height();
+        float f4 = this.jdField_b_of_type_Int;
+        f2 = 0.0F;
+        f1 = (f1 - f4 * f3) * 0.5F;
       }
-      label523:
-      paramObject = null;
+      this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
+      if ((this.jdField_a_of_type_Int <= this.jdField_a_of_type_AndroidGraphicsRectF.width()) && (this.jdField_b_of_type_Int <= this.jdField_a_of_type_AndroidGraphicsRectF.height())) {}
+      for (f1 = 1.0F;; f1 = Math.min(this.jdField_a_of_type_AndroidGraphicsRectF.width() / this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsRectF.height() / this.jdField_b_of_type_Int))
+      {
+        f2 = (int)((this.jdField_a_of_type_AndroidGraphicsRectF.width() - this.jdField_a_of_type_Int * f1) * 0.5F + 0.5F);
+        f3 = (int)((this.jdField_a_of_type_AndroidGraphicsRectF.height() - this.jdField_b_of_type_Int * f1) * 0.5F + 0.5F);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f1, f1);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(f2, f3);
+        this.d.set(this.c);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.d);
+        this.d.inset(this.jdField_b_of_type_Float / 2.0F, this.jdField_b_of_type_Float / 2.0F);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.d, Matrix.ScaleToFit.FILL);
+        break;
+      }
+      this.d.set(this.c);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.jdField_a_of_type_AndroidGraphicsRectF, Matrix.ScaleToFit.END);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.d);
+      this.d.inset(this.jdField_b_of_type_Float / 2.0F, this.jdField_b_of_type_Float / 2.0F);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.d, Matrix.ScaleToFit.FILL);
       continue;
-      label528:
-      paramFromServiceMsg = null;
+      this.d.set(this.c);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.jdField_a_of_type_AndroidGraphicsRectF, Matrix.ScaleToFit.START);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.d);
+      this.d.inset(this.jdField_b_of_type_Float / 2.0F, this.jdField_b_of_type_Float / 2.0F);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.d, Matrix.ScaleToFit.FILL);
       continue;
-      label533:
-      paramToServiceMsg = null;
+      this.d.set(this.jdField_a_of_type_AndroidGraphicsRectF);
+      this.d.inset(this.jdField_b_of_type_Float / 2.0F, this.jdField_b_of_type_Float / 2.0F);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
+      this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.c, this.d, Matrix.ScaleToFit.FILL);
     }
   }
   
-  public boolean a(int paramInt1, MessageMicro<?> arg2, int paramInt2, Object paramObject)
+  private void a(Canvas paramCanvas)
   {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    if (b(this.jdField_a_of_type_ArrayOfBoolean)) {}
+    float f1;
+    float f4;
+    float f5;
+    do
     {
-      if (this.jdField_a_of_type_Boolean) {
-        return true;
-      }
-      long l1 = System.currentTimeMillis();
-      if (l1 - this.jdField_a_of_type_Long > 30000L) {
-        this.c = 0;
-      }
-      if (this.c > 5)
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("BigDataGetIpHandler", 2, "req get ip too frequently");
+        return;
+      } while (this.jdField_a_of_type_Float == 0.0F);
+      f1 = this.jdField_b_of_type_AndroidGraphicsRectF.left;
+      float f2 = this.jdField_b_of_type_AndroidGraphicsRectF.top;
+      float f3 = this.jdField_b_of_type_AndroidGraphicsRectF.width() + f1;
+      f4 = this.jdField_b_of_type_AndroidGraphicsRectF.height() + f2;
+      f5 = this.jdField_a_of_type_Float;
+      if (this.jdField_a_of_type_ArrayOfBoolean[0] == 0)
+      {
+        this.e.set(f1, f2, f1 + f5, f2 + f5);
+        paramCanvas.drawRect(this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
+      }
+      if (this.jdField_a_of_type_ArrayOfBoolean[1] == 0)
+      {
+        this.e.set(f3 - f5, f2, f3, f5);
+        paramCanvas.drawRect(this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
+      }
+      if (this.jdField_a_of_type_ArrayOfBoolean[2] == 0)
+      {
+        this.e.set(f3 - f5, f4 - f5, f3, f4);
+        paramCanvas.drawRect(this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
+      }
+    } while (this.jdField_a_of_type_ArrayOfBoolean[3] != 0);
+    this.e.set(f1, f4 - f5, f5 + f1, f4);
+    paramCanvas.drawRect(this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
+  }
+  
+  private static boolean a(boolean[] paramArrayOfBoolean)
+  {
+    boolean bool2 = false;
+    int j = paramArrayOfBoolean.length;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if (paramArrayOfBoolean[i] != 0) {
+          bool1 = true;
         }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  private void b(Canvas paramCanvas)
+  {
+    if (b(this.jdField_a_of_type_ArrayOfBoolean)) {}
+    float f1;
+    float f4;
+    float f5;
+    float f6;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_Float == 0.0F);
+      f1 = this.jdField_b_of_type_AndroidGraphicsRectF.left;
+      float f2 = this.jdField_b_of_type_AndroidGraphicsRectF.top;
+      float f3 = f1 + this.jdField_b_of_type_AndroidGraphicsRectF.width();
+      f4 = f2 + this.jdField_b_of_type_AndroidGraphicsRectF.height();
+      f5 = this.jdField_a_of_type_Float;
+      f6 = this.jdField_b_of_type_Float / 2.0F;
+      if (this.jdField_a_of_type_ArrayOfBoolean[0] == 0)
+      {
+        paramCanvas.drawLine(f1 - f6, f2, f1 + f5, f2, this.jdField_b_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawLine(f1, f2 - f6, f1, f2 + f5, this.jdField_b_of_type_AndroidGraphicsPaint);
+      }
+      if (this.jdField_a_of_type_ArrayOfBoolean[1] == 0)
+      {
+        paramCanvas.drawLine(f3 - f5 - f6, f2, f3, f2, this.jdField_b_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawLine(f3, f2 - f6, f3, f2 + f5, this.jdField_b_of_type_AndroidGraphicsPaint);
+      }
+      if (this.jdField_a_of_type_ArrayOfBoolean[2] == 0)
+      {
+        paramCanvas.drawLine(f3 - f5 - f6, f4, f3 + f6, f4, this.jdField_b_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawLine(f3, f4 - f5, f3, f4, this.jdField_b_of_type_AndroidGraphicsPaint);
+      }
+    } while (this.jdField_a_of_type_ArrayOfBoolean[3] != 0);
+    paramCanvas.drawLine(f1 - f6, f4, f1 + f5, f4, this.jdField_b_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawLine(f1, f4 - f5, f1, f4, this.jdField_b_of_type_AndroidGraphicsPaint);
+  }
+  
+  private static boolean b(boolean[] paramArrayOfBoolean)
+  {
+    int j = paramArrayOfBoolean.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (paramArrayOfBoolean[i] != 0) {
         return false;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("BigDataGetIpHandler", 2, "req get ip list");
+      i += 1;
+    }
+    return true;
+  }
+  
+  public bcqp a(float paramFloat)
+  {
+    this.jdField_b_of_type_Float = paramFloat;
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Float);
+    return this;
+  }
+  
+  public bcqp a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    int j = 1;
+    Object localObject = new HashSet(4);
+    ((Set)localObject).add(Float.valueOf(paramFloat1));
+    ((Set)localObject).add(Float.valueOf(paramFloat2));
+    ((Set)localObject).add(Float.valueOf(paramFloat3));
+    ((Set)localObject).add(Float.valueOf(paramFloat4));
+    ((Set)localObject).remove(Float.valueOf(0.0F));
+    if (((Set)localObject).size() > 1) {
+      throw new IllegalArgumentException("Multiple nonzero corner radii not yet supported.");
+    }
+    if (!((Set)localObject).isEmpty())
+    {
+      float f = ((Float)((Set)localObject).iterator().next()).floatValue();
+      if ((Float.isInfinite(f)) || (Float.isNaN(f)) || (f < 0.0F)) {
+        throw new IllegalArgumentException("Invalid radius value: " + f);
       }
-      long l2;
-      try
-      {
-        l2 = Long.parseLong(this.app.getCurrentAccountUin());
-        if (l2 <= 0L)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("BigDataGetIpHandler", 2, "uin illegal");
-          }
-          return false;
-        }
+      this.jdField_a_of_type_Float = f;
+      localObject = this.jdField_a_of_type_ArrayOfBoolean;
+      if (paramFloat1 <= 0.0F) {
+        break label280;
       }
-      catch (Exception paramObject)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("BigDataGetIpHandler", 2, "req get ip list case long fail");
-        }
-        return false;
+      i = 1;
+      label199:
+      localObject[0] = i;
+      localObject = this.jdField_a_of_type_ArrayOfBoolean;
+      if (paramFloat2 <= 0.0F) {
+        break label286;
       }
-      this.jdField_a_of_type_Long = l1;
-      this.c += 1;
+      i = 1;
+      label220:
+      localObject[1] = i;
+      localObject = this.jdField_a_of_type_ArrayOfBoolean;
+      if (paramFloat3 <= 0.0F) {
+        break label292;
+      }
+      i = 1;
+      label241:
+      localObject[2] = i;
+      localObject = this.jdField_a_of_type_ArrayOfBoolean;
+      if (paramFloat4 <= 0.0F) {
+        break label298;
+      }
+    }
+    label280:
+    label286:
+    label292:
+    label298:
+    for (int i = j;; i = 0)
+    {
+      localObject[3] = i;
+      return this;
+      this.jdField_a_of_type_Float = 0.0F;
+      break;
+      i = 0;
+      break label199;
+      i = 0;
+      break label220;
+      i = 0;
+      break label241;
+    }
+  }
+  
+  public bcqp a(ColorStateList paramColorStateList)
+  {
+    if (paramColorStateList != null) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
+      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(getState(), -16777216));
+      return this;
+      paramColorStateList = ColorStateList.valueOf(0);
+    }
+  }
+  
+  public bcqp a(Shader.TileMode paramTileMode)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsShader$TileMode != paramTileMode)
+    {
+      this.jdField_a_of_type_AndroidGraphicsShader$TileMode = paramTileMode;
       this.jdField_a_of_type_Boolean = true;
-      paramObject = new subcmd0x501.SubCmd0x501ReqBody();
-      paramObject.uint64_uin.set(l2);
-      paramObject.uint32_idc_id.set(0);
-      paramObject.uint32_appid.set(16);
-      paramObject.uint32_login_sig_type.set(1);
-      paramObject.uint32_request_flag.set(3);
-      Object localObject = new ArrayList();
-      ((List)localObject).add(Integer.valueOf(1));
-      paramObject.rpt_uint32_service_types.set((List)localObject);
-      localObject = new subcmd0x501.ReqBody();
-      ((subcmd0x501.ReqBody)localObject).msg_subcmd_0x501_req_body.set(paramObject);
-      paramObject = createToServiceMsg("HttpConn.0x6ff_501");
-      paramObject.putWupBuffer(((subcmd0x501.ReqBody)localObject).toByteArray());
-      paramObject.extraData.putInt("big_data_cmd", paramInt1);
-      paramObject.extraData.putInt("big_data_sub_cmd", paramInt2);
-      paramInt2 = this.jdField_b_of_type_Int;
-      this.jdField_b_of_type_Int = (paramInt2 + 1);
-      paramObject.extraData.putInt("big_data_cmd_seq", paramInt2);
-      sendPbReq(paramObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("BigDataGetIpHandler", 1, "getIPList " + paramInt1 + " handler: " + getClass().getSimpleName() + " reqSeq = " + this.jdField_b_of_type_Int + " curSeq = " + paramInt2);
+      invalidateSelf();
+    }
+    return this;
+  }
+  
+  public bcqp a(ImageView.ScaleType paramScaleType)
+  {
+    ImageView.ScaleType localScaleType = paramScaleType;
+    if (paramScaleType == null) {
+      localScaleType = ImageView.ScaleType.FIT_CENTER;
+    }
+    if (this.jdField_a_of_type_AndroidWidgetImageView$ScaleType != localScaleType)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView$ScaleType = localScaleType;
+      a();
+    }
+    return this;
+  }
+  
+  public bcqp a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public bcqp b(Shader.TileMode paramTileMode)
+  {
+    if (this.jdField_b_of_type_AndroidGraphicsShader$TileMode != paramTileMode)
+    {
+      this.jdField_b_of_type_AndroidGraphicsShader$TileMode = paramTileMode;
+      this.jdField_a_of_type_Boolean = true;
+      invalidateSelf();
+    }
+    return this;
+  }
+  
+  public void draw(@NonNull Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      BitmapShader localBitmapShader = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsShader$TileMode, this.jdField_b_of_type_AndroidGraphicsShader$TileMode);
+      if ((this.jdField_a_of_type_AndroidGraphicsShader$TileMode == Shader.TileMode.CLAMP) && (this.jdField_b_of_type_AndroidGraphicsShader$TileMode == Shader.TileMode.CLAMP)) {
+        localBitmapShader.setLocalMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
       }
+      this.jdField_a_of_type_AndroidGraphicsPaint.setShader(localBitmapShader);
+      this.jdField_a_of_type_Boolean = false;
+    }
+    if (this.jdField_b_of_type_Boolean) {
+      if (this.jdField_b_of_type_Float > 0.0F)
+      {
+        paramCanvas.drawOval(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawOval(this.d, this.jdField_b_of_type_AndroidGraphicsPaint);
+      }
+    }
+    do
+    {
+      return;
+      paramCanvas.drawOval(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      return;
+      if (a(this.jdField_a_of_type_ArrayOfBoolean))
+      {
+        float f = this.jdField_a_of_type_Float;
+        if (this.jdField_b_of_type_Float > 0.0F)
+        {
+          paramCanvas.drawRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, f, f, this.jdField_a_of_type_AndroidGraphicsPaint);
+          paramCanvas.drawRoundRect(this.d, f, f, this.jdField_b_of_type_AndroidGraphicsPaint);
+          a(paramCanvas);
+          b(paramCanvas);
+          return;
+        }
+        paramCanvas.drawRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, f, f, this.jdField_a_of_type_AndroidGraphicsPaint);
+        a(paramCanvas);
+        return;
+      }
+      paramCanvas.drawRect(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+    } while (this.jdField_b_of_type_Float <= 0.0F);
+    paramCanvas.drawRect(this.d, this.jdField_b_of_type_AndroidGraphicsPaint);
+  }
+  
+  public int getAlpha()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha();
+  }
+  
+  public ColorFilter getColorFilter()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsPaint.getColorFilter();
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public boolean isStateful()
+  {
+    return this.jdField_a_of_type_AndroidContentResColorStateList.isStateful();
+  }
+  
+  protected void onBoundsChange(@NonNull Rect paramRect)
+  {
+    super.onBoundsChange(paramRect);
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(paramRect);
+    a();
+  }
+  
+  protected boolean onStateChange(int[] paramArrayOfInt)
+  {
+    int i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(paramArrayOfInt, 0);
+    if (this.jdField_b_of_type_AndroidGraphicsPaint.getColor() != i)
+    {
+      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(i);
       return true;
     }
+    return super.onStateChange(paramArrayOfInt);
   }
   
-  public byte[] a()
+  public void setAlpha(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-      return arrayOfByte;
-    }
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    invalidateSelf();
   }
   
-  public byte[] b()
+  public void setColorFilter(ColorFilter paramColorFilter)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      byte[] arrayOfByte = this.jdField_b_of_type_ArrayOfByte;
-      return arrayOfByte;
-    }
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    invalidateSelf();
   }
   
-  protected Class<? extends ajfe> observerClass()
+  public void setDither(boolean paramBoolean)
   {
-    return bcqu.class;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
+    invalidateSelf();
   }
   
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void setFilterBitmap(boolean paramBoolean)
   {
-    if ("HttpConn.0x6ff_501".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BigDataGetIpHandler", 2, "CMD_GET_IP_LIST");
-      }
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
+    this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(paramBoolean);
+    invalidateSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcqp
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,8 +19,9 @@ public class ProfileCardFavorShowView
   private Context jdField_a_of_type_AndroidContentContext;
   public ViewGroup a;
   public ImageView a;
-  protected LinearLayout a;
+  public LinearLayout a;
   public TextView a;
+  public ViewGroup b;
   
   public ProfileCardFavorShowView(Context paramContext)
   {
@@ -46,7 +48,7 @@ public class ProfileCardFavorShowView
     if (this.jdField_a_of_type_Int > 0) {
       return this.jdField_a_of_type_Int;
     }
-    return 2131493773;
+    return 2131559344;
   }
   
   public View a(int paramInt)
@@ -62,12 +64,13 @@ public class ProfileCardFavorShowView
   protected void a()
   {
     LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(a(), this, true);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131298997));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131311372));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131302196));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131306286));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131101260));
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838988);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((LinearLayout)findViewById(2131375501));
+    this.b = ((ViewGroup)findViewById(2131364557));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377183));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367815));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131371983));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166854));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839016);
   }
   
   public void addView(View paramView)
@@ -92,6 +95,26 @@ public class ProfileCardFavorShowView
     }
   }
   
+  public void setMarginBottomEnable(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      if (!paramBoolean) {
+        break label50;
+      }
+    }
+    label50:
+    for (int i = getResources().getDimensionPixelSize(2131297368);; i = 0)
+    {
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+      if (localLayoutParams != null)
+      {
+        localLayoutParams.bottomMargin = i;
+        this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
+      }
+      return;
+    }
+  }
+  
   public void setShowArrow(boolean paramBoolean)
   {
     ImageView localImageView;
@@ -113,9 +136,9 @@ public class ProfileCardFavorShowView
   public void setShowTitle(boolean paramBoolean)
   {
     ViewGroup localViewGroup;
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+    if (this.b != null)
     {
-      localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+      localViewGroup = this.b;
       if (!paramBoolean) {
         break label24;
       }

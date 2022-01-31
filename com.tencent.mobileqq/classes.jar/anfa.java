@@ -1,47 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 
 class anfa
-  extends WtloginObserver
+  implements TextWatcher
 {
-  anfa(aned paramaned, Bundle paramBundle, MessengerService paramMessengerService) {}
+  anfa(anez paramanez) {}
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    boolean bool2 = true;
-    paramWUserSigInfo = new Bundle();
-    if ((paramInt == 0) && (paramDevlockInfo != null))
-    {
-      if (paramDevlockInfo.DevSetup != 1) {
-        break label90;
-      }
-      bool1 = true;
-      paramWUserSigInfo.putBoolean("auth_dev_open", bool1);
-      if (paramDevlockInfo.AllowSet != 1) {
-        break label96;
-      }
-    }
-    label90:
-    label96:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      paramWUserSigInfo.putBoolean("allow_set", bool1);
-      paramWUserSigInfo.putString("phone_num", paramDevlockInfo.Mobile);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramWUserSigInfo);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      bool1 = false;
-      break;
+    if (!TextUtils.isEmpty(paramCharSequence)) {
+      this.a.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anfa
  * JD-Core Version:    0.7.0.1
  */

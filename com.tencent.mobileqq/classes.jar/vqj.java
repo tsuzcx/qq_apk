@@ -1,14 +1,23 @@
-import android.view.View;
+import android.view.KeyEvent;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 class vqj
-  implements View.OnClickListener
+  implements TextView.OnEditorActionListener
 {
   vqj(vqi paramvqi) {}
   
-  public void onClick(View paramView)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.b(true);
+    if (paramInt == 6)
+    {
+      paramTextView = this.a.jdField_a_of_type_AndroidViewView$OnClickListener;
+      if (paramTextView != null) {
+        paramTextView.onClick(this.a.jdField_a_of_type_AndroidWidgetTextView);
+      }
+    }
+    return false;
   }
 }
 

@@ -344,7 +344,7 @@ public final class QQNotificationManager
   {
     boolean bool;
     StringBuilder localStringBuilder;
-    if ((paramInt >= 232) && (paramInt <= 525))
+    if ((paramInt >= 232) && (paramInt <= 526))
     {
       bool = true;
       if (QLog.isColorLevel())
@@ -370,7 +370,7 @@ public final class QQNotificationManager
     if (QLog.isColorLevel()) {
       QLog.i("QQNotification", 2, paramString + " notify DontUseTag id:" + paramInt + " " + paramNotification);
     }
-    if ((this.mLocalManager != null) && (isIdValid(paramString, paramInt)) && (NotificationLimiterUtil.shouldNotify()))
+    if ((this.mLocalManager != null) && (isIdValid(paramString, paramInt)) && (NotificationLimiterUtil.shouldNotify(paramInt)))
     {
       NotificationReportUtil.reportNotification(paramInt, "", -1);
       this.mLocalManager.notify(paramInt, paramNotification);
@@ -384,7 +384,7 @@ public final class QQNotificationManager
       i = paramBundle.getInt("param_notifyid", -1);
       str = paramBundle.getString("param_fromuin", "");
       j = paramBundle.getInt("param_uinType", -1);
-      if ((isIdValid(paramString, i)) && (NotificationLimiterUtil.shouldNotify()))
+      if ((isIdValid(paramString, i)) && (NotificationLimiterUtil.shouldNotify(i)))
       {
         if (QLog.isColorLevel()) {
           QLog.i("QQNotification", 2, paramString + " notify DontUseTag notifyId:" + i + " " + paramNotification);
@@ -410,7 +410,7 @@ public final class QQNotificationManager
       i = paramBundle.getInt("param_notifyid", -1);
       str = paramBundle.getString("param_fromuin", "");
       j = paramBundle.getInt("param_uinType", -1);
-      if ((isIdValid(paramString1, i)) && (NotificationLimiterUtil.shouldNotify()))
+      if ((isIdValid(paramString1, i)) && (NotificationLimiterUtil.shouldNotify(i)))
       {
         if (QLog.isColorLevel()) {
           QLog.i("QQNotification", 2, paramString1 + " notify UseTag:" + paramString2 + " notifyId:" + i + " notification:" + paramNotification);

@@ -3,12 +3,12 @@ package cooperation.qzone.video;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import bfcz;
-import bfdi;
-import bfzg;
-import bfzm;
-import bgbf;
-import bghg;
+import bgkq;
+import bgkz;
+import bhhr;
+import bhhx;
+import bhjq;
+import bhqa;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.mobileqq.pluginsdk.PluginProxyFragmentActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -22,28 +22,28 @@ public class QzoneWeishiFeedsPluginProxyActivity
   
   public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt)
   {
-    Class localClass = bghg.a("com.qzone.commoncode.module.verticalvideo.WeishiFeedsLayerActivity");
+    Class localClass = bhqa.a("com.qzone.commoncode.module.verticalvideo.WeishiFeedsLayerActivity");
     paramIntent.putExtra("userQqResources", -1);
     paramIntent.putExtra("useSkinEngine", false);
     paramIntent.putExtra("param_plugin_gesturelock", false);
     Object localObject;
     if (QzoneVerticalVideoDownloadActivity.useLocalPlugin("qzone_weishi_feeds_plugin.apk"))
     {
-      localObject = new bfdi(0);
-      ((bfdi)localObject).jdField_a_of_type_JavaLangString = paramString;
-      ((bfdi)localObject).e = "com.qzone.commoncode.module.verticalvideo.WeishiFeedsLayerActivity";
-      ((bfdi)localObject).jdField_a_of_type_JavaLangClass = localClass;
-      ((bfdi)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
-      ((bfdi)localObject).jdField_b_of_type_Int = paramInt;
-      ((bfdi)localObject).c = 15000;
-      ((bfdi)localObject).f = null;
-      ((bfdi)localObject).jdField_b_of_type_Boolean = false;
-      ((bfdi)localObject).jdField_b_of_type_JavaLangString = "qzone_weishi_feeds_plugin.apk";
-      ((bfdi)localObject).d = "QZoneWeishiFeedsVideo";
+      localObject = new bgkz(0);
+      ((bgkz)localObject).jdField_a_of_type_JavaLangString = paramString;
+      ((bgkz)localObject).e = "com.qzone.commoncode.module.verticalvideo.WeishiFeedsLayerActivity";
+      ((bgkz)localObject).jdField_a_of_type_JavaLangClass = localClass;
+      ((bgkz)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
+      ((bgkz)localObject).jdField_b_of_type_Int = paramInt;
+      ((bgkz)localObject).c = 15000;
+      ((bgkz)localObject).f = null;
+      ((bgkz)localObject).jdField_b_of_type_Boolean = false;
+      ((bgkz)localObject).jdField_b_of_type_JavaLangString = "qzone_weishi_feeds_plugin.apk";
+      ((bgkz)localObject).d = "QZoneWeishiFeedsVideo";
       if (QLog.isColorLevel()) {
         QLog.d("PluginDebug", 2, "加载原始插件");
       }
-      bfcz.a(paramActivity, (bfdi)localObject);
+      bgkq.a(paramActivity, (bgkz)localObject);
     }
     for (;;)
     {
@@ -51,23 +51,23 @@ public class QzoneWeishiFeedsPluginProxyActivity
         QLog.d("PluginDebug", 2, "QzoneWeishiFeedsPluginProxyActivity.launchPluginActivityForResult");
       }
       return;
-      if (new File(bgbf.a(paramActivity), "qzone_weishi_feeds_plugin.apk").exists())
+      if (new File(bhjq.a(paramActivity), "qzone_weishi_feeds_plugin.apk").exists())
       {
         if (QLog.isColorLevel()) {
           QLog.d("PluginDebug", 2, "launchPluginActivityForResult 加载动态包:hackPluginID:qzone_weishi_feeds_plugin.apk");
         }
-        localObject = new bfzm(0);
-        ((bfzm)localObject).jdField_a_of_type_JavaLangString = paramString;
-        ((bfzm)localObject).e = "com.qzone.commoncode.module.verticalvideo.WeishiFeedsLayerActivity";
-        ((bfzm)localObject).jdField_a_of_type_JavaLangClass = localClass;
-        ((bfzm)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
-        ((bfzm)localObject).jdField_b_of_type_Int = paramInt;
-        ((bfzm)localObject).c = 15000;
-        ((bfzm)localObject).f = null;
-        ((bfzm)localObject).jdField_a_of_type_Boolean = false;
-        ((bfzm)localObject).jdField_b_of_type_JavaLangString = "qzone_weishi_feeds_plugin.apk";
-        ((bfzm)localObject).d = "QZoneWeishiFeedsVideo";
-        bfzg.a(paramActivity, (bfzm)localObject);
+        localObject = new bhhx(0);
+        ((bhhx)localObject).jdField_a_of_type_JavaLangString = paramString;
+        ((bhhx)localObject).e = "com.qzone.commoncode.module.verticalvideo.WeishiFeedsLayerActivity";
+        ((bhhx)localObject).jdField_a_of_type_JavaLangClass = localClass;
+        ((bhhx)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
+        ((bhhx)localObject).jdField_b_of_type_Int = paramInt;
+        ((bhhx)localObject).c = 15000;
+        ((bhhx)localObject).f = null;
+        ((bhhx)localObject).jdField_a_of_type_Boolean = false;
+        ((bhhx)localObject).jdField_b_of_type_JavaLangString = "qzone_weishi_feeds_plugin.apk";
+        ((bhhx)localObject).d = "QZoneWeishiFeedsVideo";
+        bhhr.a(paramActivity, (bhhx)localObject);
       }
       else if (QLog.isColorLevel())
       {
@@ -88,7 +88,7 @@ public class QzoneWeishiFeedsPluginProxyActivity
   
   public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
-    return bghg.a(paramString);
+    return bhqa.a(paramString);
   }
   
   public int getThemeResId()

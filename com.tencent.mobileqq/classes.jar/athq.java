@@ -1,22 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.MedalItem;
 
-class athq
-  implements ValueAnimator.AnimatorUpdateListener
+public final class athq
+  implements Parcelable.Creator<MedalItem>
 {
-  athq(athi paramathi, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public MedalItem a(Parcel paramParcel)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
-    this.jdField_a_of_type_AndroidViewView.setTranslationY(f * aciy.a(25.0F, athi.a(this.jdField_a_of_type_Athi)));
+    return new MedalItem(paramParcel);
+  }
+  
+  public MedalItem[] a(int paramInt)
+  {
+    return new MedalItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     athq
  * JD-Core Version:    0.7.0.1
  */

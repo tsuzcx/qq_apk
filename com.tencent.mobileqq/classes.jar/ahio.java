@@ -1,15 +1,25 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import VACDReport.ReportRsp;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-public class ahio
-  implements CompoundButton.OnCheckedChangeListener
+class ahio
+  implements BusinessObserver
 {
-  public ahio(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  ahio(ahim paramahim) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    NewFlowCameraActivity.a(this.a, paramBoolean);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    if (paramBundle.containsKey("rsp")) {}
+    for (paramBundle = ((ReportRsp)paramBundle.getSerializable("rsp")).headers;; paramBundle = null)
+    {
+      ahim.a(this.a, paramBundle);
+      return;
+    }
   }
 }
 

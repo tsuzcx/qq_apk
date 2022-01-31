@@ -1,18 +1,11 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.ui.AVLoadingDialogActivity;
+import com.tencent.aekit.openrender.internal.VideoFilterBase;
 
-public class lra
-  extends BroadcastReceiver
+class lra
+  extends VideoFilterBase
 {
-  public lra(AVLoadingDialogActivity paramAVLoadingDialogActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  lra(lqz paramlqz)
   {
-    if (paramIntent.getAction().equals("com.tencent.av.ui.AVLoadingDialogActivity.ACTION_LOADING_FINISH")) {
-      this.a.finish();
-    }
+    super(lqz.a(), lqz.b());
   }
 }
 

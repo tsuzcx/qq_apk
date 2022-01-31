@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -11,8 +11,8 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Icon;
 import android.os.Build.VERSION;
 import android.os.PersistableBundle;
-import baii;
-import bcec;
+import bbjp;
+import bdid;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -35,11 +35,11 @@ final class ShortcutUtils$3
         if (ShortcutUtils.isShortcutCreated_O(this.val$miniAppInfo.appId, localShortcutManager))
         {
           QLog.i("Shortcut", 1, "Shortcut has created before!");
-          bcec.a().a(this.val$miniAppInfo.name + "\"快捷方式已存在");
+          bdid.a().a(this.val$miniAppInfo.name + "\"快捷方式已存在");
           if (this.val$callback == null) {
             break;
           }
-          this.val$callback.onAddResult(0, ajjy.a(2131648226));
+          this.val$callback.onAddResult(0, ajyc.a(2131714014));
           return;
         }
         if (!localShortcutManager.isRequestPinShortcutSupported()) {
@@ -58,7 +58,7 @@ final class ShortcutUtils$3
           if (this.val$callback == null) {
             break;
           }
-          this.val$callback.onAddResult(1, ajjy.a(2131648222));
+          this.val$callback.onAddResult(1, ajyc.a(2131714010));
           return;
         }
       }
@@ -70,17 +70,17 @@ final class ShortcutUtils$3
       if (this.val$callback == null) {
         break;
       }
-      this.val$callback.onAddResult(0, ajjy.a(2131648217));
+      this.val$callback.onAddResult(0, ajyc.a(2131714005));
       return;
       label302:
-      if (baii.a(MiniAppEnv.g().getContext(), new String[] { this.val$miniAppInfo.name }))
+      if (bbjp.a(MiniAppEnv.g().getContext(), new String[] { this.val$miniAppInfo.name }))
       {
         QLog.i("Shortcut", 1, "Shortcut has created before!");
-        bcec.a().a(this.val$miniAppInfo.name + "\"快捷方式已存在");
+        bdid.a().a(this.val$miniAppInfo.name + "\"快捷方式已存在");
         if (this.val$callback == null) {
           break;
         }
-        this.val$callback.onAddResult(0, ajjy.a(2131648214));
+        this.val$callback.onAddResult(0, ajyc.a(2131714002));
         return;
       }
       Intent localIntent = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
@@ -90,20 +90,20 @@ final class ShortcutUtils$3
       localIntent.putExtra("android.intent.extra.shortcut.INTENT", ShortcutUtils.access$000(this.val$activity, this.val$miniAppInfo));
       this.val$activity.sendBroadcast(localIntent);
       Thread.sleep(1000L);
-      if (baii.a(MiniAppEnv.g().getContext(), new String[] { this.val$miniAppInfo.name }))
+      if (bbjp.a(MiniAppEnv.g().getContext(), new String[] { this.val$miniAppInfo.name }))
       {
-        bcec.a().a("已创建\"" + this.val$miniAppInfo.name + "\"快捷方式到桌面");
+        bdid.a().a("已创建\"" + this.val$miniAppInfo.name + "\"快捷方式到桌面");
         if (this.val$callback == null) {
           break;
         }
-        this.val$callback.onAddResult(0, ajjy.a(2131648216));
+        this.val$callback.onAddResult(0, ajyc.a(2131714004));
         return;
       }
       ShortcutUtils.access$200(this.val$activity);
       if (this.val$callback == null) {
         break;
       }
-      this.val$callback.onAddResult(1, ajjy.a(2131648225));
+      this.val$callback.onAddResult(1, ajyc.a(2131714013));
       return;
       label587:
       boolean bool = false;

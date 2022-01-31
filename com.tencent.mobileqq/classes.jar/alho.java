@@ -1,39 +1,52 @@
-import android.os.Bundle;
-import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.graphics.PointF;
 
-class alho
-  implements EIPCResultCallback
+public class alho
 {
-  alho(alhl paramalhl, String paramString, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public PointF[] a;
+  public int b;
+  public int c;
+  public int d = -1;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public alho()
   {
-    QLog.d("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkMultiProc.download url=", this.jdField_a_of_type_JavaLangString, ", ipc call back code=", Integer.valueOf(paramEIPCResult.code) });
-    int j = -1;
-    int i = j;
-    if (paramEIPCResult.code == 0)
-    {
-      paramEIPCResult = paramEIPCResult.data;
-      i = j;
-      if (paramEIPCResult != null)
-      {
-        i = j;
-        if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
-          i = paramEIPCResult.getInt("code");
-        }
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
-      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onDownload(i);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[1000];
+    a();
+  }
+  
+  public alho(int paramInt)
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[paramInt];
+    a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = 0;
+    this.c = 0;
+    this.d = -1;
+  }
+  
+  public String toString()
+  {
+    if (this.b > 0) {}
+    for (String str = "(" + (int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].x + "," + (int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].y + ")";; str = "(-1,-1)") {
+      return "ARGestureResult{, state = " + this.jdField_a_of_type_Int + ", type = " + this.jdField_a_of_type_JavaLangString + ", pointCnt = " + this.b + ", newPoint(x,y) = " + str + ", mode = " + this.d + '}';
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alho
  * JD-Core Version:    0.7.0.1
  */

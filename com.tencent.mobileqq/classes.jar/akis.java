@@ -1,12 +1,30 @@
-import android.view.MotionEvent;
+import android.view.View;
+import java.lang.ref.WeakReference;
 
-public abstract interface akis
+class akis
 {
-  public abstract void a(MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<akir> b;
+  
+  public akis(akio paramakio, View paramView, akir paramakir)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramakir);
+  }
+  
+  public akir a()
+  {
+    return (akir)this.b.get();
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akis
  * JD-Core Version:    0.7.0.1
  */

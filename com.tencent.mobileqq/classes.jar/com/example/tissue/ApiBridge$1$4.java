@@ -97,11 +97,11 @@ class ApiBridge$1$4
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("loadWXSScriptAndReturn runJS: ");
           ((StringBuilder)localObject2).append((String)localObject1);
-          Log.w("ApiBridge", ((StringBuilder)localObject2).toString());
+          Log.w("ApiBridge3", ((StringBuilder)localObject2).toString());
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("loadWXSScriptAndReturn return: ");
           ((StringBuilder)localObject1).append(paramObject);
-          Log.w("ApiBridge", ((StringBuilder)localObject1).toString());
+          Log.w("ApiBridge3", ((StringBuilder)localObject1).toString());
           HashMap localHashMap;
           try
           {
@@ -136,15 +136,15 @@ class ApiBridge$1$4
           {
             return doNext(true, localHashMap);
             if ((localJSONException.startsWith("[")) && (localJSONException.endsWith("]"))) {
-              Logger.w("ApiBridge", "javascript array not handled");
+              Logger.w("ApiBridge3", "javascript array not handled");
             } else if ((localJSONException.equals("true")) || (localJSONException.equals("false"))) {
-              Logger.w("ApiBridge", "javascript boolean not handled");
+              Logger.w("ApiBridge3", "javascript boolean not handled");
             } else if (localJSONException.equals("null")) {
-              Logger.w("ApiBridge", "javascript null not handled");
+              Logger.w("ApiBridge3", "javascript null not handled");
             } else if (localJSONException.matches("^-?\\d+")) {
-              Logger.w("ApiBridge", "javascript number not handled");
+              Logger.w("ApiBridge3", "javascript number not handled");
             } else {
-              Logger.w("ApiBridge", "unknown return data types");
+              Logger.w("ApiBridge3", "unknown return data types");
             }
           }
         }

@@ -1,12 +1,13 @@
 package com.tencent.qqmini.proxyimpl;
 
-import alrv;
-import bdcz;
-import bdfz;
-import bdgi;
+import amgo;
+import begz;
+import beka;
+import beki;
 import com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI;
 import com.tencent.mobileqq.minigame.ui.GameActivity1;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class ColorNotePlugin
   extends BaseJsPlugin
@@ -15,56 +16,59 @@ public class ColorNotePlugin
   
   private void addColorSign(boolean paramBoolean)
   {
-    Object localObject2 = null;
+    if (this.mMiniAppInfo.isLimitedAccessApp()) {}
     Object localObject1;
-    if (this.mIsMiniGame)
-    {
-      localObject1 = localObject2;
-      if (this.mMiniAppContext.a() != null)
-      {
-        localObject1 = localObject2;
-        if ((this.mMiniAppContext.a() instanceof GameActivity1)) {
-          localObject1 = ((GameActivity1)this.mMiniAppContext.a()).getColorNoteController();
-        }
-      }
-    }
     for (;;)
     {
-      if ((localObject1 != null) && (!((alrv)localObject1).c()))
-      {
-        if (!((alrv)localObject1).b()) {
-          break label157;
-        }
-        if (!paramBoolean) {
-          break;
-        }
-        bdgi.a(new ColorNotePlugin.1(this, (alrv)localObject1));
-      }
       return;
-      localObject1 = localObject2;
-      if (this.mMiniAppContext.a() != null)
+      Object localObject2 = null;
+      if (this.mIsMiniGame)
       {
         localObject1 = localObject2;
-        if ((this.mMiniAppContext.a() instanceof AppBrandUI)) {
-          localObject1 = ((AppBrandUI)this.mMiniAppContext.a()).getColorNoteController();
+        if (this.mMiniAppContext.a() != null)
+        {
+          localObject1 = localObject2;
+          if ((this.mMiniAppContext.a() instanceof GameActivity1)) {
+            localObject1 = ((GameActivity1)this.mMiniAppContext.a()).getColorNoteController();
+          }
+        }
+      }
+      while ((localObject1 != null) && (!((amgo)localObject1).c()))
+      {
+        if (!((amgo)localObject1).b()) {
+          break label168;
+        }
+        if (!paramBoolean) {
+          break label155;
+        }
+        beki.a(new ColorNotePlugin.1(this, (amgo)localObject1));
+        return;
+        localObject1 = localObject2;
+        if (this.mMiniAppContext.a() != null)
+        {
+          localObject1 = localObject2;
+          if ((this.mMiniAppContext.a() instanceof AppBrandUI)) {
+            localObject1 = ((AppBrandUI)this.mMiniAppContext.a()).getColorNoteController();
+          }
         }
       }
     }
-    bdgi.a(new ColorNotePlugin.2(this, (alrv)localObject1));
+    label155:
+    beki.a(new ColorNotePlugin.2(this, (amgo)localObject1));
     return;
-    label157:
-    bdgi.a(new ColorNotePlugin.3(this, (alrv)localObject1));
+    label168:
+    beki.a(new ColorNotePlugin.3(this, (amgo)localObject1));
   }
   
-  public void addColorSign(bdfz parambdfz)
+  public void addColorSign(beka parambeka)
   {
-    parambdfz.a();
+    parambeka.a();
     addColorSign(false);
   }
   
-  public void addColorSignDirectly(bdfz parambdfz)
+  public void addColorSignDirectly(beka parambeka)
   {
-    parambdfz.a();
+    parambeka.a();
     addColorSign(true);
   }
 }

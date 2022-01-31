@@ -1,24 +1,69 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-public class bepe
-  implements View.OnFocusChangeListener
+public abstract class bepe
+  extends Binder
+  implements bepd
 {
-  public bepe(XPanelContainer paramXPanelContainer) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public bepe()
   {
-    if ((QLog.isColorLevel()) && ((this.a.getContext() instanceof Activity))) {
-      QLog.d("XPanelContainer", 2, new Object[] { "input focus changed, hasFocus=", Boolean.valueOf(paramBoolean), ", current focus=", ((Activity)this.a.getContext()).getCurrentFocus() });
+    attachInterface(this, "com.tencent.qqmini.sdk.ipc.MiniCmdCallback");
+  }
+  
+  public static bepd a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.qqmini.sdk.ipc.MiniCmdCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof bepd))) {
+      return (bepd)localIInterface;
+    }
+    return new bepf(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.qqmini.sdk.ipc.MiniCmdCallback");
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.qqmini.sdk.ipc.MiniCmdCallback");
+    boolean bool;
+    if (paramParcel1.readInt() != 0)
+    {
+      bool = true;
+      if (paramParcel1.readInt() == 0) {
+        break label101;
+      }
+    }
+    label101:
+    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(bool, paramParcel1);
+      paramParcel2.writeNoException();
+      return true;
+      bool = false;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bepe
  * JD-Core Version:    0.7.0.1
  */

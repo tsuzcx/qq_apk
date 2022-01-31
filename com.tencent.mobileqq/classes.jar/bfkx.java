@@ -1,108 +1,337 @@
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qqpim.QQPimBridgeActivity;
+import android.content.IntentFilter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sharp.jni.AudioDeviceInterface;
+import com.tencent.sharp.jni.TraeAudioManager;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class bfkx
+  extends bfky
 {
-  public static Intent a(Context paramContext)
+  Context jdField_a_of_type_AndroidContentContext = null;
+  bfkz jdField_a_of_type_Bfkz = null;
+  Class<?> jdField_a_of_type_JavaLangClass = null;
+  Object jdField_a_of_type_JavaLangObject = null;
+  Method jdField_a_of_type_JavaLangReflectMethod = null;
+  Class<?> b = null;
+  
+  public bfkx(TraeAudioManager paramTraeAudioManager)
   {
-    try
-    {
-      paramContext = paramContext.getPackageManager().getLaunchIntentForPackage("com.tencent.qqpim");
-      return paramContext;
-    }
-    catch (Throwable paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return null;
+    super(paramTraeAudioManager);
   }
   
-  public static Intent a(Context paramContext, String paramString1, String paramString2)
+  public String a()
   {
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    try
+    return "BluetoohHeadsetCheckFor2x";
+  }
+  
+  public void a()
+  {
+    AudioDeviceInterface.LogTraceEntry("");
+    if (this.jdField_a_of_type_JavaLangObject == null) {}
+    for (;;)
     {
-      if (localPackageManager.getPackageInfo("com.tencent.qqpim", 1).versionCode < 1171)
+      return;
+      try
       {
-        paramContext = a(paramContext);
-        paramContext.putExtra("big_brother_source_key", "biz_src_qqpim");
-        return paramContext;
+        localMethod = this.jdField_a_of_type_JavaLangClass.getDeclaredMethod("close", new Class[0]);
+        if (localMethod == null) {
+          continue;
+        }
       }
-      paramContext = new Intent();
-      paramContext.setPackage("com.tencent.qqpim");
-      paramContext.setAction("com.tencent.qqpim.action_open_qqpim");
-      paramContext.putExtra("product_package", "com.tencent.mobileqq");
-      paramContext.putExtra("model_name", paramString1);
-      if (!TextUtils.isEmpty(paramString2)) {
-        paramContext.putExtra("account_name", paramString2);
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
+        try
+        {
+          Method localMethod;
+          localMethod.invoke(this.jdField_a_of_type_JavaLangObject, new Object[0]);
+          label44:
+          this.jdField_a_of_type_JavaLangClass = null;
+          this.b = null;
+          this.jdField_a_of_type_JavaLangObject = null;
+          this.jdField_a_of_type_JavaLangReflectMethod = null;
+          AudioDeviceInterface.LogTraceExit();
+          return;
+          localNoSuchMethodException = localNoSuchMethodException;
+          if (QLog.isColorLevel()) {
+            QLog.e("TraeAudioManager", 2, "BTLooperThread _uninitHeadsetfor2x method close NoSuchMethodException");
+          }
+          Object localObject = null;
+        }
+        catch (InvocationTargetException localInvocationTargetException)
+        {
+          break label44;
+        }
+        catch (IllegalAccessException localIllegalAccessException)
+        {
+          break label44;
+        }
+        catch (IllegalArgumentException localIllegalArgumentException)
+        {
+          break label44;
+        }
       }
-      paramContext.setFlags(67108864);
-      paramContext.setFlags(268435456);
-      paramContext.putExtra("big_brother_source_key", "biz_src_qqpim");
-      return paramContext;
     }
-    catch (Throwable paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return null;
   }
   
-  public static boolean a(Context paramContext)
+  void a(Context paramContext, Intent paramIntent)
   {
-    boolean bool = true;
-    paramContext = paramContext.getPackageManager();
+    int i;
+    int j;
+    int k;
+    if ("android.bluetooth.headset.action.AUDIO_STATE_CHANGED".equals(paramIntent.getAction()))
+    {
+      i = paramIntent.getIntExtra("android.bluetooth.headset.extra.STATE", -2);
+      j = paramIntent.getIntExtra("android.bluetooth.headset.extra.PREVIOUS_STATE", -2);
+      k = paramIntent.getIntExtra("android.bluetooth.headset.extra.AUDIO_STATE", -2);
+      if (QLog.isColorLevel()) {
+        QLog.w("TraeAudioManager", 2, "++ AUDIO_STATE_CHANGED|  STATE " + i);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("TraeAudioManager", 2, "       PREVIOUS_STATE " + j);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("TraeAudioManager", 2, "       AUDIO_STATE " + k);
+      }
+      if (k != 2) {}
+    }
+    do
+    {
+      do
+      {
+        this.jdField_a_of_type_Bfkz.a("DEVICE_BLUETOOTHHEADSET", true);
+        do
+        {
+          return;
+        } while (k != 0);
+        this.jdField_a_of_type_Bfkz.a("DEVICE_BLUETOOTHHEADSET", false);
+        return;
+      } while (!"android.bluetooth.headset.action.STATE_CHANGED".equals(paramIntent.getAction()));
+      i = paramIntent.getIntExtra("android.bluetooth.headset.extra.STATE", -2);
+      j = paramIntent.getIntExtra("android.bluetooth.headset.extra.PREVIOUS_STATE", -2);
+      k = paramIntent.getIntExtra("android.bluetooth.headset.extra.AUDIO_STATE", -2);
+      if (QLog.isColorLevel()) {
+        QLog.w("TraeAudioManager", 2, "++ STATE_CHANGED|  STATE " + i);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("TraeAudioManager", 2, "       PREVIOUS_STATE " + j);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("TraeAudioManager", 2, "       AUDIO_STATE " + k);
+      }
+      if (k == 2)
+      {
+        this.jdField_a_of_type_Bfkz.a("DEVICE_BLUETOOTHHEADSET", true);
+        return;
+      }
+    } while (k != 0);
+    this.jdField_a_of_type_Bfkz.a("DEVICE_BLUETOOTHHEADSET", false);
+  }
+  
+  void a(IntentFilter paramIntentFilter)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("TraeAudioManager", 2, " " + a() + " _addAction");
+    }
+    paramIntentFilter.addAction("android.bluetooth.headset.action.AUDIO_STATE_CHANGED");
+    paramIntentFilter.addAction("android.bluetooth.headset.action.STATE_CHANGED");
+  }
+  
+  public boolean a()
+  {
+    String str4 = null;
+    if ((this.jdField_a_of_type_JavaLangReflectMethod == null) || (this.jdField_a_of_type_JavaLangReflectMethod == null)) {
+      return false;
+    }
     try
     {
-      paramContext = paramContext.getPackageInfo("com.tencent.qqpim", 1);
-      if (paramContext == null) {
-        bool = false;
+      Object localObject = this.jdField_a_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_JavaLangObject, new Object[0]);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder().append("BTLooperThread BluetoothHeadset method getCurrentHeadset res:");
+        if (localObject != null)
+        {
+          str4 = " Y";
+          QLog.w("TraeAudioManager", 2, str4);
+        }
       }
-      return bool;
+      else
+      {
+        if (localObject == null) {
+          break label152;
+        }
+        return true;
+      }
     }
-    catch (Throwable paramContext)
+    catch (IllegalArgumentException localIllegalArgumentException)
     {
       for (;;)
       {
-        paramContext.printStackTrace();
-        paramContext = null;
+        String str1 = str4;
+        if (QLog.isColorLevel())
+        {
+          QLog.w("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset method getCurrentHeadset IllegalArgumentException");
+          str1 = str4;
+        }
       }
     }
-  }
-  
-  public void a(Activity paramActivity, Bundle paramBundle)
-  {
-    Intent localIntent = new Intent();
-    localIntent.setClass(paramActivity, QQPimBridgeActivity.class);
-    localIntent.putExtras(paramBundle);
-    paramActivity.startActivity(localIntent);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, Bundle paramBundle)
-  {
-    if (a(paramActivity))
+    catch (IllegalAccessException localIllegalAccessException)
     {
-      awqx.b(paramQQAppInterface, "CliOper", "", "", "0X8006711", "0X8006711", 0, 0, "", "", "", "");
-      paramActivity.startActivity(a(paramActivity, bfkr.s, null));
-      return;
+      for (;;)
+      {
+        String str2 = str4;
+        if (QLog.isColorLevel())
+        {
+          QLog.w("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset method getCurrentHeadset IllegalAccessException");
+          str2 = str4;
+        }
+      }
     }
-    awqx.b(paramQQAppInterface, "CliOper", "", "", "0X8006712", "0X8006712", 0, 0, "", "", "", "");
-    paramQQAppInterface = new Intent();
-    paramQQAppInterface.setClass(paramActivity, QQPimBridgeActivity.class);
-    paramQQAppInterface.putExtras(paramBundle);
-    paramActivity.startActivity(paramQQAppInterface);
+    catch (InvocationTargetException localInvocationTargetException)
+    {
+      for (;;)
+      {
+        String str3 = str4;
+        if (QLog.isColorLevel())
+        {
+          QLog.w("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset method getCurrentHeadset InvocationTargetException");
+          str3 = str4;
+          continue;
+          str4 = "N";
+        }
+      }
+    }
+    label152:
+    return false;
+  }
+  
+  public boolean a(Context paramContext, bfkz parambfkz)
+  {
+    AudioDeviceInterface.LogTraceEntry("");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bfkz = parambfkz;
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_Bfkz == null)) {}
+    for (;;)
+    {
+      return false;
+      try
+      {
+        this.jdField_a_of_type_JavaLangClass = Class.forName("android.bluetooth.BluetoothHeadset");
+        if (this.jdField_a_of_type_JavaLangClass == null) {
+          continue;
+        }
+      }
+      catch (Exception parambfkz)
+      {
+        try
+        {
+          this.b = Class.forName("android.bluetooth.BluetoothHeadset$ServiceListener");
+        }
+        catch (Exception parambfkz)
+        {
+          try
+          {
+            this.jdField_a_of_type_JavaLangReflectMethod = this.jdField_a_of_type_JavaLangClass.getDeclaredMethod("getCurrentHeadset", new Class[0]);
+            if (this.jdField_a_of_type_JavaLangReflectMethod == null) {
+              continue;
+            }
+          }
+          catch (NoSuchMethodException parambfkz)
+          {
+            try
+            {
+              do
+              {
+                for (;;)
+                {
+                  this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangClass.getConstructor(new Class[] { Context.class, this.b }).newInstance(new Object[] { paramContext, null });
+                  if (this.jdField_a_of_type_JavaLangObject == null) {
+                    break;
+                  }
+                  this.jdField_a_of_type_Bfkz.a("DEVICE_BLUETOOTHHEADSET", a());
+                  if (!a()) {
+                    break label337;
+                  }
+                  this.jdField_a_of_type_Bfkz.a("DEVICE_BLUETOOTHHEADSET", true);
+                  this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a("DEVICE_BLUETOOTHHEADSET", true);
+                  AudioDeviceInterface.LogTraceExit();
+                  return true;
+                  parambfkz = parambfkz;
+                  if (QLog.isColorLevel())
+                  {
+                    QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset class not found");
+                    continue;
+                    parambfkz = parambfkz;
+                    if (QLog.isColorLevel()) {
+                      QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset.ServiceListener class not found:" + parambfkz);
+                    }
+                  }
+                }
+                parambfkz = parambfkz;
+              } while (!QLog.isColorLevel());
+              QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset method getCurrentHeadset NoSuchMethodException");
+            }
+            catch (IllegalArgumentException paramContext)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset getConstructor IllegalArgumentException");
+                }
+              }
+            }
+            catch (InstantiationException paramContext)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset getConstructor InstantiationException");
+                }
+              }
+            }
+            catch (IllegalAccessException paramContext)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset getConstructor IllegalAccessException");
+                }
+              }
+            }
+            catch (InvocationTargetException paramContext)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset getConstructor InvocationTargetException");
+                }
+              }
+            }
+            catch (NoSuchMethodException paramContext)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel())
+                {
+                  QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset getConstructor NoSuchMethodException");
+                  continue;
+                  label337:
+                  this.jdField_a_of_type_Bfkz.a("DEVICE_BLUETOOTHHEADSET", false);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfkx
  * JD-Core Version:    0.7.0.1
  */

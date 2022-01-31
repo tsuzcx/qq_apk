@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.factory;
 
 import android.content.Context;
-import bgmq;
+import bhvh;
 import com.tencent.commonsdk.cache.QQHashMap;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -10,16 +10,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import rdg;
-import rdj;
-import rdk;
-import rdl;
-import rdz;
+import rpu;
+import rpx;
+import rpy;
+import rpz;
+import rqm;
 
 public class TemplateFactoryCache
-  extends QQHashMap<String, rdl>
+  extends QQHashMap<String, rpz>
 {
-  private volatile rdj mStyleConfigHelper = new rdj();
+  private volatile rpx mStyleConfigHelper = new rpx();
   
   public TemplateFactoryCache()
   {
@@ -42,16 +42,16 @@ public class TemplateFactoryCache
   
   public void clearMemory()
   {
-    if (!bgmq.p()) {
+    if (!bhvh.o()) {
       clear();
     }
   }
   
-  public rdl get(String paramString)
+  public rpz get(String paramString)
   {
     try
     {
-      paramString = (rdl)super.get(paramString);
+      paramString = (rpz)super.get(paramString);
       return paramString;
     }
     finally
@@ -61,16 +61,16 @@ public class TemplateFactoryCache
     }
   }
   
-  public rdg getAutoCreate(Context paramContext, String paramString)
+  public rpu getAutoCreate(Context paramContext, String paramString)
   {
-    rdl localrdl = get(paramString);
-    if ((localrdl != null) && (localrdl.a != null))
+    rpz localrpz = get(paramString);
+    if ((localrpz != null) && (localrpz.a != null))
     {
-      paramContext = rdz.a(this.mStyleConfigHelper.a(paramContext, paramString).a());
-      if ((paramContext != null) && (localrdl.a.a().equals(paramContext.a())) && (localrdl.a.getTemplateId() != paramContext.getTemplateId())) {
+      paramContext = rqm.a(this.mStyleConfigHelper.a(paramContext, paramString).a());
+      if ((paramContext != null) && (localrpz.a.a().equals(paramContext.a())) && (localrpz.a.getTemplateId() != paramContext.getTemplateId())) {
         return paramContext;
       }
-      return localrdl.a;
+      return localrpz.a;
     }
     paramContext = this.mStyleConfigHelper.a(paramContext, paramString);
     if ((paramContext != null) && (paramContext.a != null))
@@ -82,11 +82,11 @@ public class TemplateFactoryCache
     return null;
   }
   
-  public rdl put(String paramString, rdl paramrdl)
+  public rpz put(String paramString, rpz paramrpz)
   {
     try
     {
-      paramString = (rdl)super.put(paramString, paramrdl);
+      paramString = (rpz)super.put(paramString, paramrpz);
       return paramString;
     }
     finally
@@ -96,11 +96,11 @@ public class TemplateFactoryCache
     }
   }
   
-  public rdl remove(String paramString)
+  public rpz remove(String paramString)
   {
     try
     {
-      paramString = (rdl)super.remove(paramString);
+      paramString = (rpz)super.remove(paramString);
       return paramString;
     }
     finally
@@ -113,14 +113,14 @@ public class TemplateFactoryCache
   public void reset()
   {
     Object localObject1 = this.mStyleConfigHelper;
-    rdj localrdj = new rdj();
-    Object localObject2 = ((rdj)localObject1).a();
+    rpx localrpx = new rpx();
+    Object localObject2 = ((rpx)localObject1).a();
     localObject1 = new ArrayList();
     localObject2 = ((Map)localObject2).entrySet().iterator();
     while (((Iterator)localObject2).hasNext())
     {
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-      if (!((rdk)localEntry.getValue()).equals(localrdj.a((String)localEntry.getKey()))) {
+      if (!((rpy)localEntry.getValue()).equals(localrpx.a((String)localEntry.getKey()))) {
         ((List)localObject1).add(localEntry.getKey());
       }
     }
@@ -128,8 +128,8 @@ public class TemplateFactoryCache
     while (((Iterator)localObject1).hasNext()) {
       remove((String)((Iterator)localObject1).next());
     }
-    QLog.d("TemplateFactory", 2, "reset: " + localrdj);
-    this.mStyleConfigHelper = localrdj;
+    QLog.d("TemplateFactory", 2, "reset: " + localrpx);
+    this.mStyleConfigHelper = localrpx;
   }
 }
 

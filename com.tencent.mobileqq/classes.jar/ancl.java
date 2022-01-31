@@ -1,158 +1,53 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionBase;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Map;
+import com.tencent.TMG.utils.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ancl
-  extends anfx
+public class ancl
 {
-  ancl(anch paramanch) {}
+  private boolean a;
+  private boolean b;
+  private boolean c;
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
+  public static ancl a(ampi[] paramArrayOfampi)
   {
-    if (!this.a.jdField_a_of_type_JavaUtilMap.containsKey(paramEmoticonPackage.epId)) {}
-    Object localObject1;
-    ArrayList localArrayList;
-    Object localObject2;
-    int i;
-    do
-    {
-      return;
-      localObject1 = (anfj)anch.l(this.a).getManager(43);
-      if (paramInt != 0) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FavroamingManager", 2, "onJsonComplete, start download fav emoticon: " + paramEmoticonPackage.epId);
-      }
-      paramInt = paramBundle.getInt("jsonType", anfj.c);
-      paramBundle = new File(anjd.r.replace("[epId]", paramEmoticonPackage.epId));
-      localArrayList = new ArrayList();
-      localObject2 = new angh();
-      if (paramBundle.exists()) {}
-      for (paramBundle = bace.a(paramBundle);; paramBundle = null)
-      {
-        paramBundle = anfy.a(anch.m(this.a), paramEmoticonPackage, paramInt, paramBundle, localArrayList, (angh)localObject2);
-        if (paramBundle == null) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("FavroamingManager", 2, "parse Json Error:" + paramBundle);
-        }
-        bapm.a("emotionType", "emotionActionFav", "2", paramEmoticonPackage.epId, "", "", paramBundle, "", "", "");
-        return;
-      }
-      if ((!((angh)localObject2).jdField_a_of_type_Boolean) && (paramEmoticonPackage.jobType != 4))
-      {
-        paramInt = 0;
-        do
-        {
-          ((angh)localObject2).jdField_a_of_type_JavaLangString = null;
-          if (QLog.isColorLevel()) {
-            QLog.d("FavroamingManager", 2, "addEmoticonsTask| fetchEncryptKeys count=" + paramInt);
-          }
-          ((anfj)localObject1).a(paramEmoticonPackage.epId, localArrayList, (angh)localObject2);
-          i = paramInt + 1;
-          if (((angh)localObject2).jdField_a_of_type_Boolean) {
-            break;
-          }
-          paramInt = i;
-        } while (i < 3);
-        if (QLog.isColorLevel()) {
-          QLog.d("FavroamingManager", 2, "addEmoticonsTask| fetchEncryptKeys count=" + i + " encryptKeysSuccess=" + ((angh)localObject2).jdField_a_of_type_Boolean);
-        }
-      }
-      localArrayList = (ArrayList)this.a.jdField_a_of_type_JavaUtilMap.get(paramEmoticonPackage.epId);
-    } while (localArrayList == null);
-    if (paramEmoticonPackage.jobType == 0)
-    {
-      paramInt = 0;
-      label388:
-      if (paramInt < localArrayList.size())
-      {
-        localObject2 = (CustomEmotionData)localArrayList.get(paramInt);
-        if (localObject2 != null) {
-          break label420;
-        }
-      }
-      for (;;)
-      {
-        label413:
-        paramInt += 1;
-        break label388;
-        break;
-        label420:
-        paramBundle = new Emoticon();
-        if (anch.n(this.a) != null) {
-          break label459;
-        }
-        QLog.i("FavroamingManager", 1, "downloadAIOEmoticon|app null");
-        this.a.a((CustomEmotionData)localObject2, false);
-      }
-      label459:
-      arnz localarnz = (arnz)anch.o(this.a).getManager(14);
-      if (localarnz == null) {
-        break label911;
-      }
-      paramBundle = localarnz.a(((CustomEmotionData)localObject2).emoPath, ((CustomEmotionData)localObject2).eId);
+    if ((paramArrayOfampi == null) || (paramArrayOfampi.length <= 0)) {
+      return null;
     }
-    label911:
-    for (;;)
+    ancl localancl = new ancl();
+    try
     {
-      if (paramBundle == null)
-      {
-        QLog.i("FavroamingManager", 1, "downloadAIOEmoticon|cannot find emoticon: epId:" + paramEmoticonPackage.epId + "，eid=" + ((CustomEmotionData)localObject2).eId);
-        ((CustomEmotionData)localObject2).RomaingType = "needDel";
-        ((ancg)anch.p(this.a).getManager(149)).b((CustomEmotionBase)localObject2);
-        this.a.a((CustomEmotionData)localArrayList.get(paramInt), false);
-        break label413;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FavroamingManager", 2, "downloadAIOEmoticon|taskvalue:" + 14 + "，epid:" + paramBundle.epId + "，eid=" + paramBundle.eId);
-      }
-      if (((anfj)localObject1).a(paramBundle, 14))
-      {
-        this.a.a((CustomEmotionData)localArrayList.get(paramInt), true);
-        break label413;
-      }
-      this.a.a((CustomEmotionData)localArrayList.get(paramInt), false);
-      break label413;
-      if ((paramEmoticonPackage.jobType != 3) && (paramEmoticonPackage.jobType != 5)) {
-        break;
-      }
-      anfi.a().a(this.a.jdField_a_of_type_Anfw);
-      ((anfj)localObject1).a(paramEmoticonPackage, false);
-      return;
-      paramBundle = (ArrayList)this.a.jdField_a_of_type_JavaUtilMap.get(paramEmoticonPackage.epId);
-      if (paramBundle != null)
-      {
-        i = 0;
-        while (i < paramBundle.size())
-        {
-          localObject1 = (CustomEmotionData)paramBundle.get(i);
-          if (localObject1 != null) {
-            this.a.a((CustomEmotionData)localObject1, false);
-          }
-          i += 1;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FavroamingManager", 2, "downloadAIOEmoticon fail epId:" + paramEmoticonPackage.epId);
-      }
-      bapm.a("emotionType", "emotionActionFav", "1", paramEmoticonPackage.epId, "", badq.b(anch.q(this.a).getApplication()) + "", paramInt + "", "", "", "");
-      return;
+      paramArrayOfampi = new JSONObject(paramArrayOfampi[0].a);
+      localancl.a = paramArrayOfampi.getBoolean("fastload");
+      localancl.b = paramArrayOfampi.getBoolean("prefetch");
+      localancl.c = paramArrayOfampi.getBoolean("preloadWebView");
+      QLog.v("TencentDocPreloadConfigBean", 0, "fastload = " + localancl.a + ", prefetch = " + localancl.b + ", preloadWebView = " + localancl.c);
+      return localancl;
     }
+    catch (JSONException paramArrayOfampi)
+    {
+      QLog.e("TencentDocPreloadConfigBean", 1, paramArrayOfampi.getLocalizedMessage(), paramArrayOfampi);
+    }
+    return localancl;
+  }
+  
+  public boolean a()
+  {
+    return this.a;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
+  }
+  
+  public boolean c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ancl
  * JD-Core Version:    0.7.0.1
  */

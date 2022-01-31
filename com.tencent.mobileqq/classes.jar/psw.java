@@ -1,19 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.8.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-
-public class psw
-  implements DialogInterface.OnDismissListener
+class psw
+  implements pvr
 {
-  public psw(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  psw(psv parampsv) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    ReadInJoyDeliverUGCActivity.b(this.a, false);
-    ThreadManager.getUIHandler().postDelayed(new ReadInJoyDeliverUGCActivity.8.1(this), 300L);
+    rbu localrbu = this.a.jdField_a_of_type_Rap.a();
+    if (localrbu != null) {
+      localrbu.a(null, ((pax)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
   }
 }
 

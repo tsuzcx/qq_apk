@@ -1,102 +1,30 @@
+import android.media.AudioManager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+
 public class actu
-  implements actq
+  extends Handler
 {
-  public static final actr<actu> a;
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  private float b;
-  private float c;
+  public actu(AudioPlayer paramAudioPlayer) {}
   
-  static
+  public void handleMessage(Message paramMessage)
   {
-    jdField_a_of_type_Actr = new actv();
-  }
-  
-  public actu() {}
-  
-  public actu(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-  }
-  
-  public actu(acto paramacto)
-  {
-    paramacto.a();
-    this.jdField_a_of_type_Float = paramacto.a();
-    this.b = paramacto.a();
-    this.c = paramacto.a();
-    this.jdField_a_of_type_Long = paramacto.a();
-  }
-  
-  public actu(actu paramactu)
-  {
-    if (paramactu != null) {
-      a(paramactu.a(), paramactu.b(), paramactu.c(), 0L);
+    if ((paramMessage.what == 1000) && (AudioPlayer.a(this.a) == 0) && (this.a.a()))
+    {
+      int i = AudioPlayer.a(this.a).getStreamVolume(AudioPlayer.a(this.a).b);
+      int j = AudioPlayer.a(this.a).getStreamMaxVolume(AudioPlayer.a(this.a).b);
+      if (i / j <= 0.18F) {
+        break label126;
+      }
+      AudioPlayer.a(this.a, 1);
+      if (AudioPlayer.a(this.a) != null) {
+        AudioPlayer.a(this.a).c(this.a, AudioPlayer.a(this.a));
+      }
     }
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    this.c = paramFloat3;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(acto paramacto, int paramInt)
-  {
-    paramacto.a(1);
-    paramacto.a(this.jdField_a_of_type_Float);
-    paramacto.a(this.b);
-    paramacto.a(this.c);
-    paramacto.a(this.jdField_a_of_type_Long);
-  }
-  
-  public float b()
-  {
-    return this.b;
-  }
-  
-  public void b(float paramFloat)
-  {
-    this.b = paramFloat;
-  }
-  
-  public float c()
-  {
-    return this.c;
-  }
-  
-  public void c(float paramFloat)
-  {
-    this.c = paramFloat;
-  }
-  
-  public void d(float paramFloat)
-  {
-    this.jdField_a_of_type_Float *= paramFloat;
-    this.b *= paramFloat;
-    this.c *= paramFloat;
+    return;
+    label126:
+    AudioPlayer.a(this.a).sendEmptyMessageDelayed(1000, 200L);
   }
 }
 

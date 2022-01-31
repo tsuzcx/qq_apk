@@ -1,50 +1,38 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class aezj
-  extends aeyf
+class aezj
   implements View.OnClickListener
 {
-  public aezj(Context paramContext, QQAppInterface paramQQAppInterface, aicw paramaicw, atcu paramatcu)
-  {
-    super(paramContext, paramQQAppInterface, paramaicw, paramatcu);
-  }
+  private long jdField_a_of_type_Long;
   
-  public View a(int paramInt, View paramView)
-  {
-    aezk localaezk;
-    if ((paramView == null) || (!(paramView.getTag() instanceof aezk)))
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495543, null);
-      localaezk = new aezk();
-      localaezk.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131301766));
-      paramView.setOnClickListener(this);
-      paramView.setTag(localaezk);
-    }
-    for (;;)
-    {
-      String str = ((atdc)this.jdField_a_of_type_Atcu).b;
-      localaezk.jdField_f_of_type_JavaLangString = str;
-      localaezk.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_Aicw.a(1, str));
-      ajvr.a += 1;
-      return paramView;
-      localaezk = (aezk)paramView.getTag();
-    }
-  }
+  aezj(aezi paramaezi) {}
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerifyBlockedBuilder", 2, "start PhoneLaunchActivity");
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 200L) {
+      return;
     }
-    ajvr.a((Activity)this.jdField_a_of_type_AndroidContentContext);
-    awqx.b(null, "dc00898", "", "", "0X800A3A4", "0X800A3A4", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Long = l;
+    this.jdField_a_of_type_Aezi.jdField_a_of_type_Aeyx.a();
+    paramView = new Intent(aezi.a(this.jdField_a_of_type_Aezi), QQBrowserActivity.class);
+    paramView.putExtra("hide_left_button", false);
+    paramView.putExtra("show_right_close_button", false);
+    paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
+    String str = bbpp.a(aezi.a(this.jdField_a_of_type_Aezi), "call", "mvip.gongneng.anroid.individuation.web");
+    VasWebviewUtil.openQQBrowserWithoutAD(aezi.a(this.jdField_a_of_type_Aezi), str, 524288L, paramView, false, -1);
+    VipUtils.a(this.jdField_a_of_type_Aezi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "QQVIPFUNCALL", "0X8004D8C", "0X8004D8C", 4, 0, new String[0]);
+    paramView = this.jdField_a_of_type_Aezi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
+    paramView.putInt("funcall_tip_" + this.jdField_a_of_type_Aezi.jdField_a_of_type_JavaLangString, 4);
+    paramView.commit();
   }
 }
 

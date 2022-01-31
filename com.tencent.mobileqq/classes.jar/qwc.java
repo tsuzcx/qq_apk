@@ -1,22 +1,23 @@
-import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-public class qwc
-  implements View.OnClickListener
+class qwc
+  implements Animation.AnimationListener
 {
-  public qwc(FastWebActivity paramFastWebActivity, boolean paramBoolean) {}
+  qwc(qwa paramqwa) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity).removeCallbacksAndMessages(null);
-    FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity).setVisibility(4);
-    if (!this.jdField_a_of_type_Boolean) {
-      FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, 2);
-    }
+    paramAnimation = (ImageView)qwa.a(this.a).findViewById(2131378750);
+    ImageView localImageView = (ImageView)qwa.a(this.a).findViewById(2131378751);
+    qwa.a(this.a, localImageView, paramAnimation, 100L, 240L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

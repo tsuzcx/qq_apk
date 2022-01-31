@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aedl;
+import aeol;
 
 public class DiscussChatPie$8$2
   implements Runnable
 {
-  public DiscussChatPie$8$2(aedl paramaedl, String paramString) {}
+  public DiscussChatPie$8$2(aeol paramaeol, String paramString) {}
   
   public void run()
   {
-    aedl.a(this.jdField_a_of_type_Aedl, this.jdField_a_of_type_JavaLangString);
+    aeol.a(this.jdField_a_of_type_Aeol, this.jdField_a_of_type_JavaLangString);
   }
 }
 

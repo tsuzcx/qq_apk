@@ -1,8 +1,8 @@
 package dov.com.tencent.mobileqq.shortvideo.util.videoconverter;
 
 import android.text.TextUtils;
-import atmp;
-import baig;
+import aukn;
+import bbjn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -48,8 +48,8 @@ class ShortVideoTravellerManager$2
         return;
       }
       label140:
-      String str = baig.r(ShortVideoTravellerManager.a(this.this$0).getApp(), ShortVideoTravellerManager.a(this.this$0).getCurrentAccountUin());
-      int i = baig.aG(ShortVideoTravellerManager.a(this.this$0).getApp(), ShortVideoTravellerManager.a(this.this$0).getCurrentAccountUin());
+      String str = bbjn.r(ShortVideoTravellerManager.a(this.this$0).getApp(), ShortVideoTravellerManager.a(this.this$0).getCurrentAccountUin());
+      int i = bbjn.aG(ShortVideoTravellerManager.a(this.this$0).getApp(), ShortVideoTravellerManager.a(this.this$0).getCurrentAccountUin());
       if (!TextUtils.isEmpty(str)) {
         this.this$0.a(str, i);
       }

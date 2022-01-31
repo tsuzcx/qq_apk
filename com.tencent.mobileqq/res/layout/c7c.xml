@@ -9,5 +9,5 @@
         <TextView android:textSize="12.0dip" android:id="@id/mdl" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     </LinearLayout>
     <com.tencent.biz.subscribe.widget.textview.AsyncRichTextView android:textSize="15.0dip" android:textColor="#ff000000" android:id="@id/mcd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:layout_below="@id/lqu" android:lineSpacingExtra="8.0dip" />
-    <View android:id="@id/kmm" android:background="#fff1f1f1" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="18.0dip" android:layout_marginBottom="14.0dip" android:layout_below="@id/mcd" />
+    <View android:id="@id/kmm" android:background="#fff1f1f1" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="18.0dip" android:layout_marginBottom="14.0dip" android:layout_below="@id/mcd" />
 </RelativeLayout>

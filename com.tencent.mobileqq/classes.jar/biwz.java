@@ -1,12 +1,18 @@
-public abstract interface biwz
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment;
+import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+
+public class biwz
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public biwz(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
   
-  public abstract void d(int paramInt);
-  
-  public abstract void e(int paramInt);
-  
-  public abstract void f(int paramInt);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    AETakeFacePhotoPreviewFragment.a(this.a);
+    AEVideoShelfEditFragment.a(this.a.getActivity(), false);
+  }
 }
 
 

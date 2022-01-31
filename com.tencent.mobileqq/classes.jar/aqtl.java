@@ -1,23 +1,45 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.gamecenter.view.ScrollTextView;
+import java.lang.ref.WeakReference;
 
 public class aqtl
-  implements Animation.AnimationListener
+  extends Handler
 {
-  public aqtl(UiApiPlugin paramUiApiPlugin, View paramView, int paramInt1, int paramInt2) {}
+  private WeakReference<ScrollTextView> a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public aqtl(ScrollTextView paramScrollTextView)
   {
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getRight(), this.b);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    super(Looper.getMainLooper());
+    this.a = new WeakReference(paramScrollTextView);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void handleMessage(Message paramMessage)
+  {
+    ScrollTextView localScrollTextView = (ScrollTextView)this.a.get();
+    if (localScrollTextView == null)
+    {
+      removeCallbacksAndMessages(null);
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    if (ScrollTextView.a(localScrollTextView) != null)
+    {
+      localScrollTextView.b();
+      ScrollTextView.a(localScrollTextView);
+      if (ScrollTextView.b(localScrollTextView) >= ScrollTextView.a(localScrollTextView).length) {
+        ScrollTextView.a(localScrollTextView, 0);
+      }
+      localScrollTextView.setText(ScrollTextView.a(localScrollTextView)[ScrollTextView.b(localScrollTextView)]);
+    }
+    removeMessages(9001);
+    sendEmptyMessageDelayed(9001, ScrollTextView.a(localScrollTextView));
+  }
 }
 
 

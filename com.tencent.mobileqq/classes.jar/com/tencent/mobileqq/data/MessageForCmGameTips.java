@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import aimv;
+import aizo;
 
 public class MessageForCmGameTips
   extends ChatMessage
 {
-  public aimv gameInfo;
+  public aizo gameInfo;
   public boolean needTopPadding;
   
   protected void doParse() {}

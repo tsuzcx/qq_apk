@@ -1,29 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
 
-class qfz
-  implements DialogInterface.OnDismissListener
+public class qfz
+  implements View.OnClickListener
 {
-  qfz(qfy paramqfy) {}
+  public qfz(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = this.a;
-    StringBuilder localStringBuilder = new StringBuilder().append("DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
-    if (!qfy.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      qfy.a(paramDialogInterface, bool);
-      if ((qfy.a(this.a) != null) && (qfy.a(this.a).b()) && (qfy.b(this.a)) && (qfy.a(this.a))) {
-        qfy.a(this.a).c();
-      }
-      if (qfy.a(this.a) != null) {
-        qfy.a(this.a).f();
-      }
-      qfy.a(this.a, false);
-      return;
-    }
+    this.a.getActivity().finish();
   }
 }
 

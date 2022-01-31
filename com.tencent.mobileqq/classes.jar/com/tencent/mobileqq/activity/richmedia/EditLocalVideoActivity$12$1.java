@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ahfy;
+import ahsp;
 import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
 public class EditLocalVideoActivity$12$1
   implements Runnable
 {
-  public EditLocalVideoActivity$12$1(ahfy paramahfy) {}
+  public EditLocalVideoActivity$12$1(ahsp paramahsp) {}
   
   public void run()
   {

@@ -1,21 +1,21 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bdfz;
+import beka;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class RewardedVideoAdPlugin$3
   implements Runnable
 {
-  RewardedVideoAdPlugin$3(RewardedVideoAdPlugin paramRewardedVideoAdPlugin, String paramString, boolean paramBoolean, bdfz parambdfz) {}
+  RewardedVideoAdPlugin$3(RewardedVideoAdPlugin paramRewardedVideoAdPlugin, String paramString, boolean paramBoolean, beka parambeka) {}
   
   public void run()
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("state", "load");
+      localJSONObject.put("state", "show");
       if (!TextUtils.isEmpty(this.val$compId)) {
         localJSONObject.put("compId", this.val$compId);
       }

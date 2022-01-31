@@ -1,13 +1,15 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-
-public class trf
-  implements tsp
+class trf
+  extends tqa
 {
-  public trf(TextureVideoView paramTextureVideoView) {}
-  
-  public void a(tso paramtso, int paramInt)
+  trf(tqk paramtqk, String paramString)
   {
-    this.a.f = paramInt;
+    super(paramString);
+  }
+  
+  public boolean b()
+  {
+    a("WeChatImageJob_in_drawable", a("UrlDrawableDownloadJob_dra"));
+    return true;
   }
 }
 

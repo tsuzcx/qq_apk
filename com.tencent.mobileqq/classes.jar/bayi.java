@@ -1,94 +1,114 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 class bayi
-  implements wiu
+  implements bayk
 {
-  bayi(bayh parambayh, String paramString, boolean paramBoolean) {}
+  bayi(bayh parambayh) {}
   
-  public void a(Bundle paramBundle)
+  public void a(int paramInt, List<bayl> paramList)
   {
-    if (this.jdField_a_of_type_Bayh.isDestroy) {}
-    do
-    {
+    if ((paramInt != 1) || (paramList == null) || (paramList.isEmpty())) {
       return;
-      if (TextUtils.equals(this.jdField_a_of_type_Bayh.b, this.jdField_a_of_type_JavaLangString)) {
+    }
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder(200);
+      localStringBuilder.append("fetchInfoBatch size:").append(paramList.size()).append("  [");
+    }
+    for (;;)
+    {
+      ArrayList localArrayList = new ArrayList(paramList.size());
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        bayl localbayl = (bayl)paramList.next();
+        if ((localbayl != null) && (localbayl.jdField_a_of_type_Int == 1) && (localbayl.a()))
+        {
+          if ((localbayl.jdField_a_of_type_JavaLangString != null) && (localbayl.jdField_a_of_type_JavaLangString.length() > 0)) {
+            localArrayList.add(localbayl.jdField_a_of_type_JavaLangString);
+          }
+          if (localStringBuilder != null) {
+            localStringBuilder.append(localbayl.jdField_a_of_type_JavaLangString).append(",");
+          }
+        }
+      }
+      if ((QLog.isColorLevel()) && (localStringBuilder != null))
+      {
+        localStringBuilder.append("]");
+        QLog.i("FetchBuddyAndTroopNameHelper", 2, localStringBuilder.toString());
+      }
+      paramList = (FriendListHandler)bayh.a(this.a).a(1);
+      if (paramList == null) {
         break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("WebSecurityPluginV2", 2, "receive check result but not current url");
-    return;
-    int i = paramBundle.getInt("result", -1);
-    int j;
-    int k;
-    int m;
-    int n;
-    long l;
+      paramList.a(localArrayList, false);
+      return;
+      localStringBuilder = null;
+    }
+  }
+  
+  public void a(bayl parambayl)
+  {
+    if ((parambayl == null) || (!parambayl.a())) {}
     Object localObject;
-    if (i == 0)
+    do
     {
-      j = paramBundle.getInt("jumpResult");
-      k = paramBundle.getInt("level");
-      m = paramBundle.getInt("subLevel");
-      n = paramBundle.getInt("umrType");
-      l = paramBundle.getLong("operationBit");
-      localObject = this.jdField_a_of_type_Bayh;
-      int i1 = ((bayh)localObject).jdField_a_of_type_Boolean;
-      if (k == 15)
+      do
       {
-        i = 1;
-        label116:
-        ((bayh)localObject).jdField_a_of_type_Boolean = (i & i1);
-        if (j != 0) {
-          break label252;
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.d("FetchBuddyAndTroopNameHelper", 2, bbjw.a(new Object[] { "fetchInfo()", parambayl.toString() }));
+              }
+              if (parambayl.jdField_a_of_type_Int != 2) {
+                break;
+              }
+              localObject = (akhq)bayh.a(this.a).a(20);
+            } while (localObject == null);
+            ((akhq)localObject).m(parambayl.jdField_a_of_type_JavaLangString);
+            return;
+            if (parambayl.jdField_a_of_type_Int != 1) {
+              break;
+            }
+            localObject = (FriendListHandler)bayh.a(this.a).a(1);
+          } while (localObject == null);
+          ((FriendListHandler)localObject).b(parambayl.jdField_a_of_type_JavaLangString);
+          return;
+          if (parambayl.jdField_a_of_type_Int != 3) {
+            break;
+          }
+          localObject = (akhq)bayh.a(this.a).a(20);
+        } while (localObject == null);
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(parambayl.jdField_a_of_type_JavaLangString);
+        if ((parambayl.jdField_a_of_type_AndroidOsBundle != null) && (parambayl.jdField_a_of_type_AndroidOsBundle.getInt(bbcl.jdField_a_of_type_JavaLangString) == bbcl.b))
+        {
+          ((akhq)localObject).a(parambayl.b, localArrayList, false, parambayl.jdField_a_of_type_AndroidOsBundle);
+          return;
         }
-        if (this.jdField_a_of_type_Boolean) {
-          break label362;
-        }
-      }
-    }
-    label167:
-    label360:
-    label362:
-    for (paramBundle = this.jdField_a_of_type_JavaLangString;; paramBundle = null)
-    {
-      QLog.i("UrlCheckLog", 1, "check pass l=" + k);
-      this.jdField_a_of_type_Bayh.a(l);
-      for (;;)
-      {
-        if (TextUtils.isEmpty(paramBundle)) {
-          break label360;
-        }
-        localObject = this.jdField_a_of_type_Bayh.mRuntime.a();
-        if (localObject == null) {
-          break;
-        }
-        QLog.i("WebSecurityPluginV2", 1, "now jump url=" + mpw.b(paramBundle, new String[0]));
-        this.jdField_a_of_type_Bayh.jdField_a_of_type_JavaLangString = paramBundle;
-        ((CustomWebView)localObject).loadUrl(paramBundle);
+        ((akhq)localObject).a(parambayl.b, (String)parambayl.jdField_a_of_type_JavaLangObject, localArrayList);
         return;
-        i = 0;
-        break label116;
-        label252:
-        paramBundle = paramBundle.getString("jumpUrl");
-        QLog.i("UrlCheckLog", 1, "check finish jr=" + j + ", l=" + k + ", sl=" + m + ", umr=" + n);
-        break label167;
-        QLog.i("UrlCheckLog", 1, "check fail r=" + i);
-        if (!this.jdField_a_of_type_Boolean) {
-          paramBundle = this.jdField_a_of_type_JavaLangString;
-        } else {
-          paramBundle = null;
-        }
-      }
-      break;
-    }
+      } while (parambayl.jdField_a_of_type_Int != 4);
+      localObject = (FriendListHandler)bayh.a(this.a).a(1);
+    } while (localObject == null);
+    ((FriendListHandler)localObject).a(parambayl.jdField_a_of_type_JavaLangString, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bayi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,27 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-class ubo
-  implements ubr
+public class ubo
+  extends ubv<StoryVideoItem>
 {
-  ubo(ubn paramubn, PublishParam paramPublishParam, String paramString, int paramInt) {}
-  
-  public void a()
+  public ubo(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    urk.c("QQStoryTakeVideoHelper", "generate manifest file success.start publishing.");
-    ubn.a(this.jdField_a_of_type_Ubn, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    super(paramVideoViewVideoHolder, null);
   }
   
-  public void b()
+  public void a(StoryVideoItem paramStoryVideoItem)
   {
-    urk.e("QQStoryTakeVideoHelper", "generate manifest file error. let's exit.");
-    ubn.a(this.jdField_a_of_type_Ubn).finish();
-    ubn.a(this.jdField_a_of_type_Ubn).overridePendingTransition(0, 0);
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    veg.d(this.a.a, "VideoFileSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 

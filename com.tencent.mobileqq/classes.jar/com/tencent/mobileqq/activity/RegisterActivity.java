@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import abnx;
-import abny;
-import abnz;
-import aboa;
-import abob;
-import aboc;
-import abod;
-import aboe;
-import abof;
-import abog;
-import ajjy;
+import abyb;
+import abyc;
+import abyd;
+import abye;
+import abyf;
+import abyg;
+import abyh;
+import abyi;
+import abyj;
+import abyk;
+import ajyc;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -29,9 +29,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import babr;
-import bafb;
-import bbms;
+import bbcv;
+import bbgg;
+import bcpq;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.phone.CountryActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -52,11 +52,11 @@ public class RegisterActivity
   public Handler a;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bbms jdField_a_of_type_Bbms;
+  private bcpq jdField_a_of_type_Bcpq;
   public String a;
   private Timer jdField_a_of_type_JavaUtilTimer;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new aboa(this);
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new abny(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new abye(this);
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new abyc(this);
   private View[] jdField_a_of_type_ArrayOfAndroidViewView;
   private ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView;
   private TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView;
@@ -97,7 +97,7 @@ public class RegisterActivity
     this.jdField_a_of_type_Byte = 0;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_Int = 30;
-    this.jdField_a_of_type_AndroidOsHandler = new abnz(this);
+    this.jdField_a_of_type_AndroidOsHandler = new abyd(this);
   }
   
   private void a(int paramInt)
@@ -150,9 +150,9 @@ public class RegisterActivity
   
   private boolean a()
   {
-    boolean bool = ((CheckBox)findViewById(2131308978)).isChecked();
+    boolean bool = ((CheckBox)findViewById(2131374718)).isChecked();
     if (!bool) {
-      Toast.makeText(getApplicationContext(), 2131651325, 0).show();
+      Toast.makeText(getApplicationContext(), 2131717117, 0).show();
     }
     return bool;
   }
@@ -162,7 +162,7 @@ public class RegisterActivity
     int i2 = paramString.length();
     if ((i2 < 6) || (i2 > 16))
     {
-      Toast.makeText(getApplicationContext(), 2131651317, 0).show();
+      Toast.makeText(getApplicationContext(), 2131717109, 0).show();
       return false;
     }
     try
@@ -179,7 +179,7 @@ public class RegisterActivity
     }
     if ((i2 <= 9) && (i1 != 0))
     {
-      Toast.makeText(getApplicationContext(), 2131651318, 0).show();
+      Toast.makeText(getApplicationContext(), 2131717110, 0).show();
       return false;
     }
     return true;
@@ -187,15 +187,15 @@ public class RegisterActivity
   
   private void b(int paramInt)
   {
-    this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131690181);
-    this.jdField_a_of_type_AndroidAppDialog.setContentView(2131492892);
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131299579)).setText(getString(paramInt));
+    this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131755791);
+    this.jdField_a_of_type_AndroidAppDialog.setContentView(2131558428);
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365147)).setText(getString(paramInt));
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
   
   private boolean b()
   {
-    Editable localEditable = ((EditText)findViewById(2131304689)).getText();
+    Editable localEditable = ((EditText)findViewById(2131370346)).getText();
     boolean bool2 = true;
     int i1;
     if (localEditable != null) {
@@ -233,7 +233,7 @@ public class RegisterActivity
         }
       }
       if (!bool1) {
-        Toast.makeText(getApplicationContext(), 2131651323, 0).show();
+        Toast.makeText(getApplicationContext(), 2131717115, 0).show();
       }
       return bool1;
       bool1 = "886".equals(this.jdField_g_of_type_JavaLangString);
@@ -253,12 +253,12 @@ public class RegisterActivity
   {
     try
     {
-      if (this.jdField_a_of_type_Bbms == null) {
-        this.jdField_a_of_type_Bbms = new bbms(this, getTitleBarHeight());
+      if (this.jdField_a_of_type_Bcpq == null) {
+        this.jdField_a_of_type_Bcpq = new bcpq(this, getTitleBarHeight());
       }
-      this.jdField_a_of_type_Bbms.a(paramString);
-      this.jdField_a_of_type_Bbms.setOnKeyListener(new aboe(this));
-      this.jdField_a_of_type_Bbms.show();
+      this.jdField_a_of_type_Bcpq.a(paramString);
+      this.jdField_a_of_type_Bcpq.setOnKeyListener(new abyi(this));
+      this.jdField_a_of_type_Bcpq.show();
       return;
     }
     catch (Throwable paramString)
@@ -271,7 +271,7 @@ public class RegisterActivity
   {
     try
     {
-      ((AccountManager)this.app.getManager(0)).sendRegistByPhoneNumber(paramString, (byte)2, this.jdField_g_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, null, Long.valueOf(AppSetting.a()), "8.2.6", new Bundle(), this.jdField_a_of_type_MqqObserverAccountObserver);
+      ((AccountManager)this.app.getManager(0)).sendRegistByPhoneNumber(paramString, (byte)2, this.jdField_g_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, null, Long.valueOf(AppSetting.a()), "8.2.8", new Bundle(), this.jdField_a_of_type_MqqObserverAccountObserver);
       return;
     }
     catch (Exception paramString)
@@ -282,20 +282,20 @@ public class RegisterActivity
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298186));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363741));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[3];
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)findViewById(2131313012));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)findViewById(2131310178));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)findViewById(2131309342));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)findViewById(2131378837));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)findViewById(2131375942));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)findViewById(2131375088));
     this.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[2];
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0] = ((ImageView)findViewById(2131313011));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1] = ((ImageView)findViewById(2131310177));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0] = ((ImageView)findViewById(2131378836));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1] = ((ImageView)findViewById(2131375941));
     this.jdField_a_of_type_ArrayOfAndroidViewView = new View[3];
-    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = findViewById(2131313006);
-    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = findViewById(2131310176);
-    this.jdField_a_of_type_ArrayOfAndroidViewView[2] = findViewById(2131309340);
-    TextView localTextView = (TextView)findViewById(2131306346);
+    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = findViewById(2131378831);
+    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = findViewById(2131375940);
+    this.jdField_a_of_type_ArrayOfAndroidViewView[2] = findViewById(2131375086);
+    TextView localTextView = (TextView)findViewById(2131372043);
     localTextView.setMovementMethod(LinkMovementMethod.getInstance());
     localTextView.setOnClickListener(this);
     localTextView.getPaint().setFlags(8);
@@ -306,21 +306,21 @@ public class RegisterActivity
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131303856));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("+" + this.jdField_g_of_type_JavaLangString + ajjy.a(2131647571));
-    findViewById(2131298473).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369531));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("+" + this.jdField_g_of_type_JavaLangString + ajyc.a(2131713359));
+    findViewById(2131364031).setOnClickListener(this);
   }
   
   private void g()
   {
-    bafb localbafb = babr.a(this, 230);
-    localbafb.setTitle(getString(2131651338));
-    localbafb.setMessage(getString(2131651282));
-    abnx localabnx = new abnx(this);
-    abob localabob = new abob(this);
-    localbafb.setPositiveButton(2131629116, localabnx);
-    localbafb.setNegativeButton(2131625035, localabob);
-    localbafb.show();
+    bbgg localbbgg = bbcv.a(this, 230);
+    localbbgg.setTitle(getString(2131717130));
+    localbbgg.setMessage(getString(2131717074));
+    abyb localabyb = new abyb(this);
+    abyf localabyf = new abyf(this);
+    localbbgg.setPositiveButton(2131694793, localabyb);
+    localbbgg.setNegativeButton(2131690596, localabyf);
+    localbbgg.show();
   }
   
   private void h()
@@ -366,7 +366,7 @@ public class RegisterActivity
     try
     {
       ((AccountManager)this.app.getManager(0)).sendRegisterQueryMobile(this.jdField_g_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverAccountObserver);
-      b(2131651369);
+      b(2131717161);
       return;
     }
     catch (Exception localException)
@@ -377,16 +377,16 @@ public class RegisterActivity
   
   private void l()
   {
-    findViewById(2131304690).setVisibility(8);
-    findViewById(2131313010).setVisibility(0);
-    ((TextView)findViewById(2131309317)).setOnClickListener(this);
+    findViewById(2131370347).setVisibility(8);
+    findViewById(2131378835).setVisibility(0);
+    ((TextView)findViewById(2131375063)).setOnClickListener(this);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131651276);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131717068);
   }
   
   private void m()
   {
-    Editable localEditable = ((EditText)findViewById(2131313005)).getText();
+    Editable localEditable = ((EditText)findViewById(2131378830)).getText();
     if (localEditable != null)
     {
       this.jdField_d_of_type_JavaLangString = localEditable.toString();
@@ -398,7 +398,7 @@ public class RegisterActivity
       try
       {
         ((AccountManager)this.app.getManager(0)).sendRegisterByCommitSmsVerifycode(this.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverAccountObserver);
-        b(2131651278);
+        b(2131717070);
         return;
       }
       catch (Exception localException)
@@ -407,23 +407,23 @@ public class RegisterActivity
         return;
       }
     }
-    Toast.makeText(getApplicationContext(), 2131651289, 0).show();
+    Toast.makeText(getApplicationContext(), 2131717081, 0).show();
   }
   
   private void n()
   {
     this.jdField_a_of_type_Int = 0;
-    findViewById(2131304690).setVisibility(8);
-    findViewById(2131313010).setVisibility(8);
-    findViewById(2131305591).setVisibility(0);
+    findViewById(2131370347).setVisibility(8);
+    findViewById(2131378835).setVisibility(8);
+    findViewById(2131371287).setVisibility(0);
     a(1);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131651275);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131717067);
   }
   
   private void o()
   {
     Object localObject3 = null;
-    Object localObject1 = ((EditText)findViewById(2131305584)).getText();
+    Object localObject1 = ((EditText)findViewById(2131371280)).getText();
     Object localObject2;
     if (localObject1 != null)
     {
@@ -439,14 +439,14 @@ public class RegisterActivity
           break label66;
         }
       }
-      Toast.makeText(getApplicationContext(), 2131651326, 0).show();
+      Toast.makeText(getApplicationContext(), 2131717118, 0).show();
     }
     label66:
     do
     {
       return;
       localObject2 = null;
-      localObject1 = ((EditText)findViewById(2131308973)).getText();
+      localObject1 = ((EditText)findViewById(2131374713)).getText();
       if (localObject1 != null)
       {
         localObject3 = localObject1.toString();
@@ -461,7 +461,7 @@ public class RegisterActivity
         }
         else
         {
-          Toast.makeText(getApplicationContext(), 2131651324, 0).show();
+          Toast.makeText(getApplicationContext(), 2131717116, 0).show();
           return;
         }
       }
@@ -472,8 +472,8 @@ public class RegisterActivity
     try
     {
       this.jdField_f_of_type_JavaLangString = ((String)localObject2);
-      ((AccountManager)this.app.getManager(0)).sendRegisterBySetPass((String)localObject2, "nickName", "smsCode", null, true, "8.2.6", this.jdField_a_of_type_MqqObserverAccountObserver);
-      b(2131651277);
+      ((AccountManager)this.app.getManager(0)).sendRegisterBySetPass((String)localObject2, "nickName", "smsCode", null, true, "8.2.8", this.jdField_a_of_type_MqqObserverAccountObserver);
+      b(2131717069);
       return;
     }
     catch (Exception localException)
@@ -481,16 +481,16 @@ public class RegisterActivity
       localException.printStackTrace();
       return;
     }
-    Toast.makeText(getApplicationContext(), 2131651316, 0).show();
+    Toast.makeText(getApplicationContext(), 2131717108, 0).show();
   }
   
   private void p()
   {
-    findViewById(2131305591).setVisibility(8);
-    findViewById(2131309341).setVisibility(0);
+    findViewById(2131371287).setVisibility(8);
+    findViewById(2131375087).setVisibility(0);
     a(2);
-    ((TextView)findViewById(2131304954)).setText(this.jdField_e_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131651296);
+    ((TextView)findViewById(2131370620)).setText(this.jdField_e_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131717088);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 200L);
   }
   
@@ -509,10 +509,10 @@ public class RegisterActivity
     try
     {
       ((AccountManager)this.app.getManager(0)).sendRegistByResendSms(this.jdField_a_of_type_MqqObserverAccountObserver);
-      ((TextView)findViewById(2131311477)).setVisibility(0);
-      ((TextView)findViewById(2131309317)).setVisibility(8);
+      ((TextView)findViewById(2131377290)).setVisibility(0);
+      ((TextView)findViewById(2131375063)).setVisibility(8);
       b();
-      b(2131651278);
+      b(2131717070);
       return;
     }
     catch (Exception localException)
@@ -561,10 +561,10 @@ public class RegisterActivity
     if (!paramString.startsWith("http://")) {
       str = "http://" + paramString;
     }
-    paramString = babr.a(this, 230);
-    paramString.setTitle(2131651391);
-    paramString.setMessage(2131651394);
-    paramString.setPositiveButton(2131629116, new aboc(this, str));
+    paramString = bbcv.a(this, 230);
+    paramString.setTitle(2131717183);
+    paramString.setMessage(2131717186);
+    paramString.setPositiveButton(2131694793, new abyg(this, str));
     paramString.show();
   }
   
@@ -574,11 +574,11 @@ public class RegisterActivity
     while ((paramString2 == null) || (paramString2.length() <= 0)) {
       return;
     }
-    bafb localbafb = babr.a(this, 230);
-    localbafb.setTitle(2131651391);
-    localbafb.setMessage(ajjy.a(2131647576) + paramString2 + ajjy.a(2131647558) + paramString1 + ajjy.a(2131647572));
-    localbafb.setPositiveButton(2131629116, new abod(this, paramString2, paramString1));
-    localbafb.show();
+    bbgg localbbgg = bbcv.a(this, 230);
+    localbbgg.setTitle(2131717183);
+    localbbgg.setMessage(ajyc.a(2131713364) + paramString2 + ajyc.a(2131713346) + paramString1 + ajyc.a(2131713360));
+    localbbgg.setPositiveButton(2131694793, new abyh(this, paramString2, paramString1));
+    localbbgg.show();
   }
   
   public void b()
@@ -586,11 +586,11 @@ public class RegisterActivity
     if (this.jdField_a_of_type_Int <= 0)
     {
       this.jdField_a_of_type_Int = 30;
-      ((TextView)findViewById(2131311477)).setVisibility(8);
-      ((TextView)findViewById(2131309317)).setVisibility(0);
+      ((TextView)findViewById(2131377290)).setVisibility(8);
+      ((TextView)findViewById(2131375063)).setVisibility(0);
       return;
     }
-    ((TextView)findViewById(2131311477)).setText(this.jdField_a_of_type_Int + getResources().getString(2131651381));
+    ((TextView)findViewById(2131377290)).setText(this.jdField_a_of_type_Int + getResources().getString(2131717173));
     this.jdField_a_of_type_Int -= 1;
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(4, 1000L);
   }
@@ -607,14 +607,14 @@ public class RegisterActivity
   
   public void b(String paramString1, String paramString2)
   {
-    bafb localbafb = babr.a(this, 230);
-    localbafb.setTitle(paramString1);
-    localbafb.setMessage(paramString2);
-    paramString1 = new abof(this);
-    paramString2 = new abog(this);
-    localbafb.setPositiveButton(2131629116, paramString1);
-    localbafb.setNegativeButton(2131298297, paramString2);
-    localbafb.show();
+    bbgg localbbgg = bbcv.a(this, 230);
+    localbbgg.setTitle(paramString1);
+    localbbgg.setMessage(paramString2);
+    paramString1 = new abyj(this);
+    paramString2 = new abyk(this);
+    localbbgg.setPositiveButton(2131694793, paramString1);
+    localbbgg.setNegativeButton(2131363852, paramString2);
+    localbbgg.show();
   }
   
   public void c()
@@ -787,23 +787,23 @@ public class RegisterActivity
   public void onClick(View paramView)
   {
     int i1 = paramView.getId();
-    if (i1 == 2131298186) {
+    if (i1 == 2131363741) {
       k();
     }
     do
     {
       return;
-      if (i1 == 2131298473)
+      if (i1 == 2131364031)
       {
         startActivityForResult(new Intent(this, CountryActivity.class), 1);
         return;
       }
-      if (i1 == 2131309317)
+      if (i1 == 2131375063)
       {
         r();
         return;
       }
-    } while (i1 != 2131306346);
+    } while (i1 != 2131372043);
     paramView = new Intent(this, QQBrowserActivity.class);
     paramView.putExtra("uin", this.app.getCurrentAccountUin());
     paramView.putExtra("ba_is_login", false);
@@ -814,9 +814,9 @@ public class RegisterActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131496742);
-    setContentBackgroundResource(2130838503);
-    setTitle(2131651338);
+    super.setContentView(2131562343);
+    setContentBackgroundResource(2130838514);
+    setTitle(2131717130);
     e();
     this.app.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
     getWindow().getDecorView().setDrawingCacheEnabled(true);

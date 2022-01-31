@@ -1,12 +1,12 @@
 package com.tencent.av.ui;
 
-import lxp;
-import lxs;
+import mig;
+import mij;
 
 public class QavPanel$NormalMenuView$1$1
   implements Runnable
 {
-  public QavPanel$NormalMenuView$1$1(lxp paramlxp) {}
+  public QavPanel$NormalMenuView$1$1(mig parammig) {}
   
   public void run()
   {

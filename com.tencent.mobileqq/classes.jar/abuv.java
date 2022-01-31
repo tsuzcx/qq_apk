@@ -1,26 +1,47 @@
-import android.view.KeyEvent;
-import android.widget.EditText;
+import android.os.Handler;
+import android.view.View;
+import android.widget.Adapter;
 import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
 public class abuv
-  implements TextView.OnEditorActionListener
+  implements bfpc
 {
-  public abuv(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public abuv(QQLSActivity paramQQLSActivity) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((paramInt == 6) && (TextPreviewTranslateActivity.a(this.a) != null))
+    paramView = (RecentBaseData)QQLSActivity.a(this.a).getItem(paramInt);
+    paramLong = paramAdapterView.getAdapter().getItemId(paramInt);
+    if ((paramLong == QQLSActivity.a(this.a)) && (Math.abs(QQLSActivity.b(this.a) - System.currentTimeMillis()) < 300L))
     {
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a).getText().toString());
-      TextPreviewTranslateActivity.a(this.a);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a));
-      TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.b(this.a));
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.c(this.a), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
-      return true;
+      if (QLog.isColorLevel()) {
+        QLog.e("QQLSActivity", 2, "mRecentList is double click");
+      }
+      QQLSActivity.a(this.a, -1L);
+      QQLSActivity.b(this.a, 0L);
+      QQLSActivity.a(this.a, paramView);
+      QQLSActivity.a(this.a, true);
+      return;
     }
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.e("QQLSActivity", 2, "mRecentList  click once");
+    }
+    QQLSActivity.a(this.a, paramLong);
+    QQLSActivity.b(this.a, System.currentTimeMillis());
+    if (QQLSActivity.a(this.a)) {
+      QQLSActivity.a(this.a).setText(2131699094);
+    }
+    for (;;)
+    {
+      paramAdapterView = QQLSActivity.a(this.a).obtainMessage(6);
+      QQLSActivity.a(this.a).sendMessageDelayed(paramAdapterView, 500L);
+      return;
+      QQLSActivity.a(this.a).setText(2131699093);
+    }
   }
 }
 

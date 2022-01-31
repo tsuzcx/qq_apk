@@ -1,35 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.widget.BubblePopupWindow;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class bcpr
-  implements View.OnLongClickListener
+class bcpr
+  implements DialogInterface.OnKeyListener
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bcps(this);
-  public BubblePopupWindow a;
-  public String a;
+  bcpr(bcpq parambcpq, boolean paramBoolean) {}
   
-  public bcpr(QidianProfileCardActivity paramQidianProfileCardActivity)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    int i = paramView.getId();
-    this.jdField_a_of_type_JavaLangString = String.valueOf(paramView.getTag());
-    bakh localbakh = new bakh();
-    localbakh.a(i, ajjy.a(2131643960));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = baay.a(paramView, localbakh, this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new bcpt(this));
-    return true;
+    if ((paramInt == 84) || (paramInt == 4)) {
+      return this.jdField_a_of_type_Boolean;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcpr
  * JD-Core Version:    0.7.0.1
  */

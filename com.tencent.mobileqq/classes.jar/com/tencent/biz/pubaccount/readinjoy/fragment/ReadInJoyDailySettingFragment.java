@@ -1,28 +1,28 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import ajjy;
+import ajyc;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import bgmq;
+import bhvh;
 import com.tencent.biz.pubaccount.readinjoy.kandianreport.ReadInJoyMMapKvStorage;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import java.util.ArrayList;
 import java.util.List;
-import obf;
-import oqa;
+import omq;
 import org.json.JSONArray;
 import org.json.JSONException;
+import pbb;
 
 public class ReadInJoyDailySettingFragment
   extends IphoneTitleBarFragment
 {
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private final String jdField_a_of_type_JavaLangString = "ReadInJoyDailySettingFragment";
-  private List<oqa> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private obf jdField_a_of_type_Obf;
-  private List<oqa> b;
+  private List<pbb> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private omq jdField_a_of_type_Omq;
+  private List<pbb> b;
   
   public ReadInJoyDailySettingFragment()
   {
@@ -33,42 +33,42 @@ public class ReadInJoyDailySettingFragment
   {
     if (this.mContentView != null)
     {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.mContentView.findViewById(2131303148));
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.mContentView.findViewById(2131368788));
       LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(getActivity());
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
-      this.jdField_a_of_type_Obf = new obf(getActivity(), this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Obf);
-      setTitle(ajjy.a(2131647311));
+      this.jdField_a_of_type_Omq = new omq(getActivity(), this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Omq);
+      setTitle(ajyc.a(2131713099));
       d();
     }
   }
   
   private void b()
   {
-    oqa localoqa = new oqa();
-    localoqa.jdField_b_of_type_JavaLangString = ajjy.a(2131647267);
-    localoqa.jdField_a_of_type_JavaLangString = "open_reason";
-    localoqa.c = ((String)bgmq.a("readinjoy_show_recommend_reason_in_title_b", ""));
-    String str = (String)bgmq.a("readinjoy_show_recommend_reason_in_title_b", "");
+    pbb localpbb = new pbb();
+    localpbb.jdField_b_of_type_JavaLangString = ajyc.a(2131713055);
+    localpbb.jdField_a_of_type_JavaLangString = "open_reason";
+    localpbb.c = ((String)bhvh.a("readinjoy_show_recommend_reason_in_title_b", ""));
+    String str = (String)bhvh.a("readinjoy_show_recommend_reason_in_title_b", "");
     if ("1".equals(str)) {
-      localoqa.d = ajjy.a(2131647007);
+      localpbb.d = ajyc.a(2131712795);
     }
     for (;;)
     {
-      localoqa.jdField_b_of_type_JavaUtilList = new ArrayList();
-      localoqa.jdField_b_of_type_JavaUtilList.add("");
-      localoqa.jdField_b_of_type_JavaUtilList.add(ajjy.a(2131646926));
-      localoqa.jdField_b_of_type_JavaUtilList.add(ajjy.a(2131646944));
-      localoqa.jdField_a_of_type_JavaUtilList = new ArrayList();
-      localoqa.jdField_a_of_type_JavaUtilList.add("");
-      localoqa.jdField_a_of_type_JavaUtilList.add("1");
-      localoqa.jdField_a_of_type_JavaUtilList.add("0");
-      this.jdField_b_of_type_JavaUtilList.add(localoqa);
+      localpbb.jdField_b_of_type_JavaUtilList = new ArrayList();
+      localpbb.jdField_b_of_type_JavaUtilList.add("");
+      localpbb.jdField_b_of_type_JavaUtilList.add(ajyc.a(2131712714));
+      localpbb.jdField_b_of_type_JavaUtilList.add(ajyc.a(2131712732));
+      localpbb.jdField_a_of_type_JavaUtilList = new ArrayList();
+      localpbb.jdField_a_of_type_JavaUtilList.add("");
+      localpbb.jdField_a_of_type_JavaUtilList.add("1");
+      localpbb.jdField_a_of_type_JavaUtilList.add("0");
+      this.jdField_b_of_type_JavaUtilList.add(localpbb);
       return;
       if ("0".equals(str)) {
-        localoqa.d = ajjy.a(2131647316);
+        localpbb.d = ajyc.a(2131713104);
       } else {
-        localoqa.d = "";
+        localpbb.d = "";
       }
     }
   }
@@ -85,8 +85,8 @@ public class ReadInJoyDailySettingFragment
           int i = 0;
           while (i < ((JSONArray)localObject).length())
           {
-            oqa localoqa = oqa.a(((JSONArray)localObject).optJSONObject(i));
-            this.jdField_a_of_type_JavaUtilList.add(localoqa);
+            pbb localpbb = pbb.a(((JSONArray)localObject).optJSONObject(i));
+            this.jdField_a_of_type_JavaUtilList.add(localpbb);
             i += 1;
           }
         }
@@ -103,12 +103,12 @@ public class ReadInJoyDailySettingFragment
   {
     b();
     c();
-    this.jdField_a_of_type_Obf.notifyDataSetChanged();
+    this.jdField_a_of_type_Omq.notifyDataSetChanged();
   }
   
   public int getContentLayoutId()
   {
-    return 2131494326;
+    return 2131559897;
   }
   
   public void onDestroy()
@@ -122,10 +122,10 @@ public class ReadInJoyDailySettingFragment
       i = 0;
       while (i < this.jdField_b_of_type_JavaUtilList.size())
       {
-        localJSONArray.put(((oqa)this.jdField_b_of_type_JavaUtilList.get(i)).a());
+        localJSONArray.put(((pbb)this.jdField_b_of_type_JavaUtilList.get(i)).a());
         i += 1;
       }
-      bgmq.a("KANDIAN_DAILY_LCAOL_SETTING_CONFIG", localJSONArray.toString());
+      bhvh.a("KANDIAN_DAILY_LCAOL_SETTING_CONFIG", localJSONArray.toString());
     }
     if (this.jdField_a_of_type_JavaUtilList.size() > 0)
     {
@@ -133,12 +133,12 @@ public class ReadInJoyDailySettingFragment
       i = j;
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        localJSONArray.put(((oqa)this.jdField_a_of_type_JavaUtilList.get(i)).a());
+        localJSONArray.put(((pbb)this.jdField_a_of_type_JavaUtilList.get(i)).a());
         i += 1;
       }
       ReadInJoyMMapKvStorage.getInstance().update("KANDIAN_DAILY_SETTING_CONFIG", localJSONArray.toString());
     }
-    oqa.a();
+    pbb.a();
     super.onDestroy();
   }
   

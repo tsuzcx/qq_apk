@@ -1,25 +1,21 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
 class adsi
-  implements DialogInterface.OnClickListener
+  extends ClickableSpan
 {
-  adsi(adsh paramadsh, long paramLong, UUID paramUUID, Activity paramActivity) {}
+  adsi(adqy paramadqy, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      TroopFileTransferManager.a(this.jdField_a_of_type_Adsh.a, this.jdField_a_of_type_Long).a(this.jdField_a_of_type_JavaUtilUUID);
-      return;
-    }
-    new aypd(this.jdField_a_of_type_Long, this.jdField_a_of_type_Adsh.a, this.jdField_a_of_type_AndroidAppActivity).b(this.jdField_a_of_type_JavaUtilUUID);
+    Integer.parseInt(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

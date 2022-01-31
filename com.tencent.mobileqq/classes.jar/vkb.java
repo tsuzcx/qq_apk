@@ -1,18 +1,42 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-
 public class vkb
-  implements View.OnLongClickListener
+  implements Comparable<vkb>
 {
-  public vkb(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
+  public int a;
+  public String a;
+  int b;
+  public String b;
+  public String c;
   
-  public boolean onLongClick(View paramView)
+  public vkb()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
-    }
-    return true;
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public vkb(int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+  }
+  
+  public int a(vkb paramvkb)
+  {
+    if (paramvkb == null) {}
+    do
+    {
+      return -1;
+      if (this.jdField_b_of_type_Int < paramvkb.jdField_b_of_type_Int) {
+        return 1;
+      }
+    } while (this.jdField_b_of_type_Int != paramvkb.jdField_b_of_type_Int);
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return "FilterTemplate{id='" + this.jdField_a_of_type_Int + '\'' + ", thumbPath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", priority=" + this.jdField_b_of_type_Int + ", name='" + this.jdField_b_of_type_JavaLangString + '\'' + ", pron='" + this.c + '\'' + '}';
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.tribe;
 
-import awqx;
-import badq;
+import axqw;
+import bbev;
 import com.tencent.mobileqq.app.BaseActivity;
 import java.lang.ref.WeakReference;
 
@@ -27,7 +27,7 @@ class TribeVideoPlugin$TechReportRunnable
     if (this.jdField_a_of_type_Boolean) {}
     for (int i = 1;; i = 0)
     {
-      awqx.b(null, "dc00899", "BizTechReport", str, "tribe_video", "play", 0, 0, Integer.toString(i), Integer.toString(badq.b(TribeVideoPlugin.a(localTribeVideoPlugin))), "", "");
+      axqw.b(null, "dc00899", "BizTechReport", str, "tribe_video", "play", 0, 0, Integer.toString(i), Integer.toString(bbev.b(TribeVideoPlugin.a(localTribeVideoPlugin))), "", "");
       return;
     }
   }

@@ -1,16 +1,10 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-
-public class alct
+public abstract interface alct
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  
-  public alct(alcr paramalcr) {}
+  public abstract void a(alcv paramalcv);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alct
  * JD-Core Version:    0.7.0.1
  */

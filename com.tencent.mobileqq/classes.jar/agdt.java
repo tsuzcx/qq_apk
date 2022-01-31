@@ -1,28 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 
 class agdt
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  agdt(agdp paramagdp, QQAppInterface paramQQAppInterface) {}
+  agdt(agdn paramagdn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Agdp.a.dismiss();
-      return;
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6C", "0X8009B6C", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Agdp.b();
-      agdp.a(this.jdField_a_of_type_Agdp, agdp.a(this.jdField_a_of_type_Agdp), true, Long.valueOf(agdp.b(this.jdField_a_of_type_Agdp)).longValue(), false);
-      continue;
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6D", "0X8009B6D", 0, 0, "", "", "", "");
-      agdp.a(this.jdField_a_of_type_Agdp, agdp.a(this.jdField_a_of_type_Agdp), true, Long.valueOf(agdp.b(this.jdField_a_of_type_Agdp)).longValue(), true);
-    }
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

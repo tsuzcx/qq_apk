@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import agtk;
+import ahfz;
 import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
@@ -20,8 +20,8 @@ public class MiniAppDesktopAdapter$ModuleGuideViewHolder
   public MiniAppDesktopAdapter$ModuleGuideViewHolder(View paramView)
   {
     super(paramView);
-    this.emptyGuideLayout = ((RelativeLayout)paramView.findViewById(2131304493));
-    this.emptyGuideTextView = ((TextView)paramView.findViewById(2131304494));
+    this.emptyGuideLayout = ((RelativeLayout)paramView.findViewById(2131370175));
+    this.emptyGuideTextView = ((TextView)paramView.findViewById(2131370176));
   }
   
   public void update()
@@ -29,12 +29,12 @@ public class MiniAppDesktopAdapter$ModuleGuideViewHolder
     Object localObject = MiniAppUtils.getAppInterface();
     if (localObject != null)
     {
-      localObject = (agtk)((AppInterface)localObject).getManager(342);
-      if ((localObject == null) || (!((agtk)localObject).h())) {
+      localObject = (ahfz)((AppInterface)localObject).getManager(342);
+      if ((localObject == null) || (!((ahfz)localObject).h())) {
         break label62;
       }
       if (this.emptyGuideLayout != null) {
-        this.emptyGuideLayout.setBackgroundResource(2130840582);
+        this.emptyGuideLayout.setBackgroundResource(2130840629);
       }
       if (this.emptyGuideTextView != null) {
         this.emptyGuideTextView.setTextColor(-1);
@@ -45,10 +45,10 @@ public class MiniAppDesktopAdapter$ModuleGuideViewHolder
     {
       return;
       if (this.emptyGuideLayout != null) {
-        this.emptyGuideLayout.setBackgroundResource(2130840581);
+        this.emptyGuideLayout.setBackgroundResource(2130840628);
       }
     } while (this.emptyGuideTextView == null);
-    this.emptyGuideTextView.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131101336));
+    this.emptyGuideTextView.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131166931));
   }
 }
 

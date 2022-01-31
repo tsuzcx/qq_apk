@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import abgi;
-import sqg;
-import sqs;
+import tdc;
+import tdo;
 
-public class Now$3
+class Now$3
   implements Runnable
 {
-  public Now$3(abgi paramabgi) {}
+  Now$3(Now paramNow) {}
   
   public void run()
   {
-    ((sqs)sqg.a(2)).c();
+    ((tdo)tdc.a(2)).c();
   }
 }
 

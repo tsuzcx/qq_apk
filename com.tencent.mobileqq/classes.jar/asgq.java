@@ -1,28 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.mediafocus.MediaFocusStackItem;
 
-public class asgq
-  implements DialogInterface.OnClickListener
+public final class asgq
+  implements Parcelable.Creator<MediaFocusStackItem>
 {
-  public asgq(GameRoomInviteActivity paramGameRoomInviteActivity, oidb_0x8e4.RspBody paramRspBody) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public MediaFocusStackItem a(Parcel paramParcel)
   {
-    paramDialogInterface = this.jdField_a_of_type_TencentImOidbCmd0x8e4Oidb_0x8e4$RspBody.poi_info;
-    String str = paramDialogInterface.bytes_uid.get().toStringUtf8();
-    ashs.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity, HotChatInfo.createHotChat(paramDialogInterface, false, 0), paramDialogInterface.uint32_group_code.get(), str, paramDialogInterface.bytes_name.get().toStringUtf8());
+    return new MediaFocusStackItem(paramParcel);
+  }
+  
+  public MediaFocusStackItem[] a(int paramInt)
+  {
+    return new MediaFocusStackItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asgq
  * JD-Core Version:    0.7.0.1
  */

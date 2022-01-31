@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.structmsg;
 
 import android.util.Log;
-import awuk;
-import awwc;
+import axum;
+import axwe;
 import java.io.Externalizable;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -16,23 +16,23 @@ public class StructMsgSubImageVideo$ImageItem
   public String schema;
   public String title;
   
-  private static ImageItem a(awwc paramawwc)
+  private static ImageItem a(axwe paramaxwe)
   {
-    Iterator localIterator = paramawwc.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = paramaxwe.jdField_a_of_type_JavaUtilList.iterator();
     Object localObject1 = null;
     Object localObject2 = null;
     Object localObject3;
     if (localIterator.hasNext())
     {
-      localObject3 = (awwc)localIterator.next();
-      if ("title".equals(((awwc)localObject3).b)) {
+      localObject3 = (axwe)localIterator.next();
+      if ("title".equals(((axwe)localObject3).b)) {
         localObject2 = localObject3;
       }
     }
     for (;;)
     {
       break;
-      if ("picture".equals(((awwc)localObject3).b))
+      if ("picture".equals(((axwe)localObject3).b))
       {
         localObject1 = localObject3;
         continue;
@@ -42,11 +42,11 @@ public class StructMsgSubImageVideo$ImageItem
           return null;
         }
         localObject3 = new ImageItem();
-        ((ImageItem)localObject3).schema = paramawwc.a("url");
+        ((ImageItem)localObject3).schema = paramaxwe.a("url");
         if (localObject2 == null) {}
-        for (paramawwc = "";; paramawwc = localObject2.jdField_a_of_type_JavaLangString)
+        for (paramaxwe = "";; paramaxwe = localObject2.jdField_a_of_type_JavaLangString)
         {
-          ((ImageItem)localObject3).title = paramawwc;
+          ((ImageItem)localObject3).title = paramaxwe;
           ((ImageItem)localObject3).imageUrl = localObject1.a("cover");
           return localObject3;
         }
@@ -61,19 +61,19 @@ public class StructMsgSubImageVideo$ImageItem
     this.schema = paramObjectInput.readUTF();
   }
   
-  public void toXml(awuk paramawuk)
+  public void toXml(axum paramaxum)
   {
-    paramawuk.startTag(null, "item");
-    paramawuk.attribute(null, "apptype", "10");
-    paramawuk.attribute(null, "type", "0");
-    paramawuk.attribute(null, "url", this.schema);
-    paramawuk.startTag(null, "title");
+    paramaxum.startTag(null, "item");
+    paramaxum.attribute(null, "apptype", "10");
+    paramaxum.attribute(null, "type", "0");
+    paramaxum.attribute(null, "url", this.schema);
+    paramaxum.startTag(null, "title");
     if (this.title == null)
     {
       str = "";
-      paramawuk.text(str);
-      paramawuk.endTag(null, "title");
-      paramawuk.startTag(null, "picture");
+      paramaxum.text(str);
+      paramaxum.endTag(null, "title");
+      paramaxum.startTag(null, "picture");
       if (this.imageUrl != null) {
         break label124;
       }
@@ -81,9 +81,9 @@ public class StructMsgSubImageVideo$ImageItem
     label124:
     for (String str = "";; str = this.imageUrl)
     {
-      paramawuk.attribute(null, "cover", str);
-      paramawuk.endTag(null, "picture");
-      paramawuk.endTag(null, "item");
+      paramaxum.attribute(null, "cover", str);
+      paramaxum.endTag(null, "picture");
+      paramaxum.endTag(null, "item");
       return;
       str = this.title;
       break;

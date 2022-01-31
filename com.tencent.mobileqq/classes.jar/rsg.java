@@ -1,12 +1,8 @@
-import java.util.Comparator;
-
-public class rsg
-  implements Comparator<rsf>
+public abstract interface rsg
 {
-  public int a(rsf paramrsf1, rsf paramrsf2)
-  {
-    return paramrsf2.a - paramrsf1.a;
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

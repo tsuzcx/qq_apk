@@ -1,20 +1,10 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
-class nnc
-  implements red
+public class nnc
 {
-  nnc(nnb paramnnb, qoe paramqoe) {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (qoe.a() != null)
-    {
-      nny localnny = (nny)qoe.a().getManager(307);
-      if (localnny != null) {
-        localnny.a(this.jdField_a_of_type_Qoe, this.jdField_a_of_type_Qoe.a(), true, paramInt1);
-      }
-    }
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
 }
 
 

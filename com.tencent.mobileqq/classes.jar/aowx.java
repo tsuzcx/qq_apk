@@ -1,99 +1,51 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
-public class aowx
-  extends aowv
+class aowx
+  extends aoxr
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-  private WeiYunFileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo;
-  private ArrayList<WeiYunFileInfo> jdField_a_of_type_JavaUtilArrayList;
+  protected long a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
   
-  public aowx(QQAppInterface paramQQAppInterface, Context paramContext, WeiYunFileInfo paramWeiYunFileInfo)
+  aowx(aowt paramaowt, MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo = paramWeiYunFileInfo;
+    super(paramaowt);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
   }
   
-  public Intent a()
+  void a(String paramString, int paramInt) {}
+  
+  void a(String paramString, int paramInt, aoxp paramaoxp)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localObject1 != null)
+    if ("1".equals(this.f))
     {
-      if (localObject1 != null) {
-        break label103;
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2DiscTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
       }
-      QLog.i("WeiYunFileBrowserParams<FileAssistant>", 1, "");
-      localObject1 = new Intent(this.jdField_a_of_type_AndroidContentContext, FileBrowserActivity.class);
+      paramaoxp.a(aowt.a(this.jdField_a_of_type_Long, false), false);
+      return;
     }
-    Object localObject2;
-    label103:
-    do
+    if ((this.b == null) || (this.b.length() == 0))
     {
-      do
-      {
-        return localObject1;
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo == null) {
-          break;
-        }
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.a);
-        localObject1 = localObject2;
-        if (localObject2 != null) {
-          break;
-        }
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.a);
-        localObject1 = localObject2;
-        if (localObject2 != null) {
-          break;
-        }
-        localObject1 = apck.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo);
-        break;
-        if (QLog.isColorLevel()) {
-          QLog.i("WeiYunFileBrowserParams<FileAssistant>", 1, "open a weiyun file with filebrowser, fileSessionId[" + ((FileManagerEntity)localObject1).nSessionId + "] fileName[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.c + "]fileId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.a + "]");
-        }
-        ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
-        localForwardFileInfo.d(2);
-        localForwardFileInfo.b(10003);
-        localForwardFileInfo.b(((FileManagerEntity)localObject1).nSessionId);
-        localForwardFileInfo.d(((FileManagerEntity)localObject1).fileName);
-        localForwardFileInfo.c(((FileManagerEntity)localObject1).WeiYunFileId);
-        localForwardFileInfo.c(((FileManagerEntity)localObject1).nWeiYunSrcType);
-        localForwardFileInfo.d(((FileManagerEntity)localObject1).fileSize);
-        localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, FileBrowserActivity.class);
-        ((Intent)localObject2).putExtra("fileinfo", localForwardFileInfo);
-        localObject1 = localObject2;
-      } while (this.jdField_a_of_type_JavaUtilArrayList == null);
-      localObject1 = localObject2;
-    } while (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0);
-    ((Intent)localObject2).putParcelableArrayListExtra("local_weiyun_list", this.jdField_a_of_type_JavaUtilArrayList);
-    return localObject2;
-  }
-  
-  public void a(FileManagerEntity paramFileManagerEntity)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
-  }
-  
-  public void a(ArrayList<WeiYunFileInfo> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-  }
-  
-  public void b(Bundle paramBundle) {}
-  
-  public boolean b()
-  {
-    return false;
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter faild,文件不存在或已失效");
+      }
+      paramaoxp.a(aowt.a(this.jdField_a_of_type_Long, true), false);
+      return;
+    }
+    aowt.a(this.jdField_a_of_type_Aowt).a().a().a(paramString, paramInt, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 106, new aowy(this, paramString, paramaoxp));
   }
 }
 

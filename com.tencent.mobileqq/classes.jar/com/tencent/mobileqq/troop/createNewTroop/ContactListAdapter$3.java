@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import ayju;
+import azkk;
 
 public class ContactListAdapter$3
   implements Runnable
 {
-  public ContactListAdapter$3(ayju paramayju) {}
+  public ContactListAdapter$3(azkk paramazkk) {}
   
   public void run()
   {

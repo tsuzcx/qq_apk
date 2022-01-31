@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 
-import ofz;
+import ork;
 
 public class DynamicChannelDataModule$3
   implements Runnable
 {
-  public DynamicChannelDataModule$3(ofz paramofz, int paramInt) {}
+  public DynamicChannelDataModule$3(ork paramork, int paramInt) {}
   
   public void run()
   {
-    ofz.a(this.this$0, this.a, 1);
+    ork.a(this.this$0, this.a, 1);
   }
 }
 

@@ -2,10 +2,10 @@ package cooperation.troop_homework.jsp;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import bgoe;
-import bgof;
+import bhxb;
+import bhxc;
+import com.tencent.mm.vfs.VFSFile;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -24,9 +24,9 @@ class TroopHWJsPlugin$CompressImageJob
   
   public void run()
   {
-    Object localObject1 = new File(TroopHWJsPlugin.jdField_a_of_type_JavaLangString);
-    if (!((File)localObject1).exists()) {
-      ((File)localObject1).mkdirs();
+    Object localObject1 = new VFSFile(TroopHWJsPlugin.jdField_a_of_type_JavaLangString);
+    if (!((VFSFile)localObject1).exists()) {
+      ((VFSFile)localObject1).mkdirs();
     }
     localObject1 = new HashMap();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
@@ -58,10 +58,10 @@ class TroopHWJsPlugin$CompressImageJob
         label207:
         this.this$0.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), localException);
         ((HashMap)localObject1).put(Integer.valueOf(i), localException);
-        bgoe localbgoe = new bgoe(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.e, this.this$0.d);
-        bgof localbgof = this.this$0.a(this.this$0, i, localException, null, localbgoe, 1);
-        this.this$0.jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(i), localbgof);
-        localbgof.a();
+        bhxb localbhxb = new bhxb(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.e, this.this$0.d);
+        bhxc localbhxc = this.this$0.a(this.this$0, i, localException, null, localbhxb, 1);
+        this.this$0.jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(i), localbhxc);
+        localbhxc.a();
       }
       else
       {

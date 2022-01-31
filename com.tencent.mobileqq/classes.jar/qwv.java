@@ -1,16 +1,18 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryBannerInfo;
 
-class qwv
-  extends DataSetObserver
+public final class qwv
+  implements Parcelable.Creator<DiscoveryBannerInfo>
 {
-  qwv(qwu paramqwu) {}
-  
-  public void onChanged()
+  public DiscoveryBannerInfo a(Parcel paramParcel)
   {
-    QLog.d(FastWebActivity.a(this.a.a), 2, "DataSetObserver ");
-    FastWebActivity.a(this.a.a, 100L);
+    return new DiscoveryBannerInfo(paramParcel);
+  }
+  
+  public DiscoveryBannerInfo[] a(int paramInt)
+  {
+    return new DiscoveryBannerInfo[paramInt];
   }
 }
 

@@ -1,117 +1,49 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class txx
-  extends Drawable
+  implements View.OnClickListener
 {
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private String jdField_a_of_type_JavaLangString = "story.icon.ShareGroupIconDrawable";
-  private txs jdField_a_of_type_Txs;
-  private txu jdField_a_of_type_Txu = new txy(this);
-  private Drawable b;
+  txx(txw paramtxw) {}
   
-  txx(@NonNull txs paramtxs, @NonNull Drawable paramDrawable)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Txs = paramtxs;
-    this.jdField_a_of_type_Txs.a(this.jdField_a_of_type_Txu);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.b = paramDrawable;
-    paramtxs = this.jdField_a_of_type_Txs.a();
-    if (paramtxs != null) {
-      a(paramtxs);
-    }
-  }
-  
-  private void a(@NonNull Drawable paramDrawable)
-  {
-    txq.a(this.jdField_a_of_type_JavaLangString, "updateCurrentDrawable view:%s drawable: %s", getCallback(), paramDrawable);
-    if (paramDrawable != this.b)
+    if ((txw.a(this.a) != null) && (txw.a(this.a).a()))
     {
-      paramDrawable.setBounds(getBounds());
-      paramDrawable.setVisible(isVisible(), true);
-      paramDrawable.setState(getState());
-      paramDrawable.setLevel(getLevel());
-      paramDrawable.setCallback(getCallback());
-      if (Build.VERSION.SDK_INT >= 19) {
-        paramDrawable.setAlpha(getAlpha());
+      txw.a(this.a).c();
+      int i;
+      if (txw.a(this.a) != null)
+      {
+        i = vel.a(txw.a(this.a).a);
+        if (!this.a.a()) {
+          break label121;
+        }
       }
-      Drawable localDrawable = this.b;
-      this.b = paramDrawable;
-      if (localDrawable != null) {
-        localDrawable.setCallback(null);
+      label121:
+      for (paramView = "1";; paramView = "2")
+      {
+        vel.a("home_page", "cancel_reply", i, 0, new String[] { paramView, vel.a(txw.a(this.a)), "5", txw.a(this.a) });
+        return;
+        i = 0;
+        break;
       }
-      invalidateSelf();
     }
-  }
-  
-  public void draw(@NonNull Canvas paramCanvas)
-  {
-    this.b.draw(paramCanvas);
-    this.jdField_a_of_type_Txs.b();
-  }
-  
-  public int getOpacity()
-  {
-    return this.b.getOpacity();
-  }
-  
-  public boolean getPadding(@NonNull Rect paramRect)
-  {
-    return this.b.getPadding(paramRect);
-  }
-  
-  @NonNull
-  public Drawable mutate()
-  {
-    this.b.mutate();
-    return super.mutate();
-  }
-  
-  protected void onBoundsChange(Rect paramRect)
-  {
-    super.onBoundsChange(paramRect);
-    this.b.setBounds(paramRect);
-  }
-  
-  protected boolean onLevelChange(int paramInt)
-  {
-    this.b.setLevel(paramInt);
-    return true;
-  }
-  
-  protected boolean onStateChange(int[] paramArrayOfInt)
-  {
-    this.b.setState(paramArrayOfInt);
-    return true;
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    this.b.setAlpha(paramInt);
-  }
-  
-  public void setColorFilter(int paramInt, @NonNull PorterDuff.Mode paramMode)
-  {
-    super.setColorFilter(paramInt, paramMode);
-    this.b.setColorFilter(paramInt, paramMode);
-  }
-  
-  public void setColorFilter(@Nullable ColorFilter paramColorFilter)
-  {
-    this.b.setColorFilter(paramColorFilter);
-  }
-  
-  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
-    this.b.setVisible(paramBoolean1, paramBoolean2);
-    return bool;
+    this.a.a();
+    if (this.a.a())
+    {
+      paramView = "2";
+      if (!this.a.b()) {
+        break label188;
+      }
+    }
+    label188:
+    for (String str = "2";; str = "1")
+    {
+      vel.a("play_video", "close_reply", 0, 3, new String[] { paramView, str });
+      return;
+      paramView = "1";
+      break;
+    }
   }
 }
 

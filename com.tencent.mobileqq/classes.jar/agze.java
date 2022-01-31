@@ -1,30 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-class agze
-  implements View.OnClickListener
+public class agze
 {
-  agze(agxq paramagxq) {}
-  
-  public void onClick(View paramView)
+  public static void a(String paramString1, String paramString2, String paramString3)
   {
-    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim())))
-    {
-      this.a.k();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletConfigHandler", 2, "onReceivePreExec|" + paramString1 + "|" + paramString2 + "|" + paramString3);
     }
-    paramView = new Intent(agxq.a(this.a), QRLoginMgrActivity.class);
-    paramView.putExtra("qrlogin_position", this.a.b);
-    paramView.putExtra("qrlogin_appid", this.a.a);
-    agxq.a(this.a).startActivity(paramView);
+    if ((!TextUtils.isEmpty(paramString2)) && (TextUtils.isEmpty(paramString3))) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agze
  * JD-Core Version:    0.7.0.1
  */

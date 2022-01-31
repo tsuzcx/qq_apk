@@ -1,22 +1,52 @@
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment.9.1;
+import com.tencent.widget.XEditTextEx;
 
-public abstract interface auxv
+public class auxv
+  implements TextWatcher
 {
-  public abstract void a();
+  private int jdField_a_of_type_Int;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private int b;
   
-  public abstract void a(int paramInt);
+  public auxv(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public abstract void a(long paramLong1, long paramLong2);
+  public void afterTextChanged(Editable paramEditable)
+  {
+    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (ayla.a(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 300))
+    {
+      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.getActivity(), 1, 2131690312, 0).a();
+      paramEditable.delete(this.jdField_a_of_type_Int, this.b);
+    }
+    paramEditable = auxd.a(StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment));
+    if ((TextUtils.isEmpty(paramEditable)) || (TextUtils.isEmpty(paramEditable.trim()))) {
+      this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.d(false);
+    }
+    for (;;)
+    {
+      if (StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment) != null) {
+        StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment).post(new StickyNotePublishFragment.9.1(this));
+      }
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.d(true);
+    }
+  }
   
-  public abstract void a(auxr paramauxr, int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener, auxu paramauxu);
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public abstract void b();
-  
-  public abstract void c();
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = (paramInt1 + paramInt3);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auxv
  * JD-Core Version:    0.7.0.1
  */

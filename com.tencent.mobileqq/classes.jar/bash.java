@@ -1,40 +1,19 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
 
 class bash
-  implements SensorEventListener
+  implements aycb
 {
-  bash(basg parambasg, long paramLong, int paramInt1, int paramInt2) {}
+  bash(basg parambasg) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void a()
   {
-    if ((paramSensorEvent.values[0] > 1.0E+008F) || (NetConnInfoCenter.getServerTimeMillis() > this.jdField_a_of_type_Long))
-    {
-      QLog.e("SportManager", 1, "unregister listener:" + paramSensorEvent.values[0]);
-      if (basg.a != null) {
-        basg.a.unregisterListener(this);
-      }
-      return;
+    this.a.a.a.this$0.a();
+    if (this.a.a.a.jdField_a_of_type_Aycb != null) {
+      this.a.a.a.jdField_a_of_type_Aycb.a();
     }
-    if ((basd.jdField_a_of_type_Long == 0L) || (basd.jdField_a_of_type_Int == 0))
-    {
-      QLog.e("SportManager", 1, "lastReportStepTime:" + basd.jdField_a_of_type_Long + ",cur_total:" + basd.jdField_a_of_type_Int);
-      return;
-    }
-    long l = NetConnInfoCenter.getServerTimeMillis() - basd.jdField_a_of_type_Long;
-    int i = (int)(paramSensorEvent.values[0] - basd.jdField_a_of_type_Int);
-    if ((l > this.jdField_a_of_type_Int) && (i > this.b))
-    {
-      this.jdField_a_of_type_Basg.a("timer1 report");
-      return;
-    }
-    QLog.e("SportManager", 1, "sensor event step:" + paramSensorEvent.values[0] + ",cur_total:" + basd.jdField_a_of_type_Int + ",interval time:" + l);
+    this.a.a.a.this$0.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.a.this$0.a, true);
   }
 }
 

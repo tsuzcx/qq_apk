@@ -7,9 +7,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbms;
-import bfcz;
-import bfdi;
+import bcpq;
+import bgkq;
+import bgkz;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.PluginInfo;
@@ -30,21 +30,21 @@ public class DatalinePluginProxyActivity
     return DatalinePluginProxyActivity.class;
   }
   
-  public static void a(Activity paramActivity, String paramString1, Intent paramIntent, String paramString2, int paramInt, bbms parambbms)
+  public static void a(Activity paramActivity, String paramString1, Intent paramIntent, String paramString2, int paramInt, bcpq parambcpq)
   {
     paramIntent.putExtra("userQqResources", 2);
-    bfdi localbfdi = new bfdi(0);
-    localbfdi.jdField_b_of_type_JavaLangString = "qqdataline.apk";
-    localbfdi.d = PluginInfo.d;
-    localbfdi.jdField_a_of_type_JavaLangString = paramString1;
-    localbfdi.e = paramString2;
-    localbfdi.jdField_a_of_type_JavaLangClass = a(paramIntent, paramString2);
-    localbfdi.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbfdi.jdField_b_of_type_Int = paramInt;
-    localbfdi.jdField_a_of_type_AndroidAppDialog = parambbms;
-    localbfdi.c = 10000;
-    localbfdi.f = null;
-    bfcz.a(paramActivity, localbfdi);
+    bgkz localbgkz = new bgkz(0);
+    localbgkz.jdField_b_of_type_JavaLangString = "qqdataline.apk";
+    localbgkz.d = PluginInfo.d;
+    localbgkz.jdField_a_of_type_JavaLangString = paramString1;
+    localbgkz.e = paramString2;
+    localbgkz.jdField_a_of_type_JavaLangClass = a(paramIntent, paramString2);
+    localbgkz.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localbgkz.jdField_b_of_type_Int = paramInt;
+    localbgkz.jdField_a_of_type_AndroidAppDialog = parambcpq;
+    localbgkz.c = 10000;
+    localbgkz.f = null;
+    bgkq.a(paramActivity, localbgkz);
   }
   
   public static boolean a(Context paramContext)

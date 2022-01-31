@@ -1,28 +1,33 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
 
-class tyk
-  implements tyi
+public class tyk
+  extends SimpleObserver<ups>
 {
-  tyk(tyj paramtyj, List paramList, Bitmap[] paramArrayOfBitmap, Handler paramHandler) {}
+  public tyk(tyf paramtyf) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void a(ups paramups)
   {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
-    txq.b(tyj.a(this.jdField_a_of_type_Tyj), "bitmap download success index=%d, url=%s", Integer.valueOf(i), paramString);
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i] = paramBitmap;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 0, this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap), 200L);
+    super.onNext(paramups);
+    tyf.a(this.a, paramups, new ErrorMessage(), true);
   }
   
-  public void a(String paramString, Throwable paramThrowable)
+  public void onCancel()
   {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
-    txq.c(tyj.a(this.jdField_a_of_type_Tyj), "bitmap download failed index=%s, error=%s", Integer.valueOf(i), paramThrowable);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, paramThrowable), 500L);
+    super.onCancel();
+    veg.d("Q.qqstory.player.CommentFloatDialogController", "refresh data cancel");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    if (((ErrorMessage)paramError).errorCode == 2223)
+    {
+      tyf.a(this.a, tyf.a(this.a), new ErrorMessage(), false);
+      return;
+    }
+    tyf.a(this.a, tyf.a(this.a), (ErrorMessage)paramError, false);
   }
 }
 

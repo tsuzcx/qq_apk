@@ -1,34 +1,64 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.data.GrayTipsSpan;
+import com.tencent.mobileqq.data.MessageForGrayTips;
+import com.tencent.mobileqq.data.MessageForNewGrayTips;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+
 public class akoj
 {
-  public int a;
-  public long a;
-  public long[] a;
-  public long b;
-  public long c;
-  public long d;
-  public long e;
-  public long f;
-  
-  public akoj(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, double paramDouble, long[] paramArrayOfLong, int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.c = paramLong3;
-    this.d = paramLong4;
-    this.e = paramLong5;
-    this.f = ((0.9D + paramDouble));
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
+    if (QLog.isColorLevel()) {
+      QLog.d("AddMessageHelper", 2, "-----addDatingSafetyGrayTipsMessage  frienduin:" + paramString1 + " istroop：" + paramInt + " msg:" + bbbd.a(paramString2));
+    }
+    long l = awzw.a();
+    MessageForGrayTips localMessageForGrayTips = (MessageForGrayTips)axaq.a(-1028);
+    localMessageForGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, l, -1028, paramInt, l);
+    localMessageForGrayTips.isread = true;
+    if (!akau.a(paramQQAppInterface, localMessageForGrayTips)) {
+      paramQQAppInterface.a().a(localMessageForGrayTips, paramQQAppInterface.getCurrentAccountUin());
+    }
   }
   
-  public String toString()
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, ArrayList<GrayTipsSpan> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    return "70% :  " + this.c + " --------- 80% : " + this.b + " --------- 90% : " + this.jdField_a_of_type_Long + " --------- min : " + this.d + " --------- max : " + this.e + " --------- num : " + this.jdField_a_of_type_Int + "--------arr" + this.jdField_a_of_type_ArrayOfLong;
+    if (QLog.isColorLevel()) {
+      QLog.d("AddMessageHelper", 2, "-----addGrayTipsMessage  frienduin:" + paramString1 + " istroop：" + paramInt + " msg:" + bbbd.a(paramString2));
+    }
+    if ((paramBoolean1) && (akpy.d(paramInt)) && (QLog.isColorLevel())) {
+      QLog.d("AddMessageHelper", 2, "-----addGrayTipsMessage faild : no troop uin");
+    }
+    long l = awzw.a();
+    if (paramBoolean1) {}
+    for (int i = -5001;; i = -5000)
+    {
+      QQMessageFacade.Message localMessage = paramQQAppInterface.a().a(paramString1, paramInt);
+      MessageForNewGrayTips localMessageForNewGrayTips = (MessageForNewGrayTips)axaq.a(i);
+      localMessageForNewGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, l, i, paramInt, l);
+      if (localMessage != null) {
+        localMessageForNewGrayTips.shmsgseq = localMessage.shmsgseq;
+      }
+      localMessageForNewGrayTips.isread = paramBoolean3;
+      localMessageForNewGrayTips.spans = paramArrayList;
+      localMessageForNewGrayTips.updateMsgData();
+      if ((!paramBoolean2) || (!akau.a(paramQQAppInterface, localMessageForNewGrayTips, false))) {
+        paramQQAppInterface.a().a(localMessageForNewGrayTips, paramQQAppInterface.getCurrentAccountUin());
+      }
+      return;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    a(paramQQAppInterface, paramString1, paramString2, paramInt, null, paramBoolean1, paramBoolean2, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akoj
  * JD-Core Version:    0.7.0.1
  */

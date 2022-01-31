@@ -1,33 +1,24 @@
-import android.os.Bundle;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.mobileqq.activity.bless.BlessActivity.AnimationDrawable2;
 
-class afaq
-  implements begh
+public class afaq
+  implements afav
 {
-  afaq(afak paramafak) {}
+  public afaq(BlessActivity paramBlessActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a()
   {
-    afak.a(this.a, paramInt1 + paramInt2 - 1);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt != 0) {
-      return;
-    }
-    if (afak.b(this.a) >= this.a.getCount() - 2)
+    if (BlessActivity.a(this.a) < this.a.jdField_a_of_type_Afaz.l())
     {
-      paramAbsListView = new Bundle();
-      paramAbsListView.putString("from", "4");
-      afak.a(this.a).b(4, afak.a(this.a), paramAbsListView);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.a();
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.start();
+      BlessActivity.b(this.a);
     }
-    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afaq
  * JD-Core Version:    0.7.0.1
  */

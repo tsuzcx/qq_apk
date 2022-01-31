@@ -1,22 +1,33 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.contentbox.MsgMoreView;
+import android.view.View.OnTouchListener;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.PinnedHeadAndFootExpandableListView;
 
 public class bftu
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public bftu(MsgMoreView paramMsgMoreView) {}
+  public bftu(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (MsgMoreView.a(this.a) != null) {
-      MsgMoreView.a(this.a).a(MsgMoreView.a(this.a), paramView, 5);
+    if (paramMotionEvent.getAction() == 1)
+    {
+      long l = this.a.a(this.a.getFirstVisiblePosition());
+      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
+      {
+        int i = ExpandableListView.c(l);
+        if ((this.a.jdField_a_of_type_Bfrd == null) || (!this.a.jdField_a_of_type_Bfrd.a(this.a, paramView, i, this.a.jdField_a_of_type_Bftw.getGroupId(i)))) {
+          this.a.b(i);
+        }
+      }
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bftu
  * JD-Core Version:    0.7.0.1
  */

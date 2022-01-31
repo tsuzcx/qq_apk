@@ -1,8 +1,18 @@
 public abstract interface ahju
 {
-  public abstract void a();
+  public abstract int a();
   
-  public abstract void b();
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(boolean paramBoolean, String paramString);
+  
+  public abstract boolean c();
+  
+  public abstract void i();
+  
+  public abstract void j();
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.forward;
 
-import ajhh;
+import ajvk;
 import android.text.TextUtils;
 import android.util.Pair;
-import apkm;
+import aqdz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.DiscussionMemberInfo;
@@ -18,11 +18,11 @@ import mqq.os.MqqHandler;
 public class ForwardPreviewTroopMemberController$1
   implements Runnable
 {
-  public ForwardPreviewTroopMemberController$1(apkm paramapkm, String paramString) {}
+  public ForwardPreviewTroopMemberController$1(aqdz paramaqdz, String paramString) {}
   
   public void run()
   {
-    Object localObject1 = ((ajhh)apkm.a(this.this$0).getManager(53)).a(this.a);
+    Object localObject1 = ((ajvk)aqdz.a(this.this$0).getManager(53)).a(this.a);
     ArrayList localArrayList = new ArrayList();
     if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
     {

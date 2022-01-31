@@ -1,11 +1,19 @@
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
 
-abstract interface atbb
+class atbb
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(RedTouchItem paramRedTouchItem, int paramInt);
+  atbb(atba paramatba, URLDrawable paramURLDrawable) {}
   
-  public abstract void a(List<RedTouchItem> paramList);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Atba.a.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    ObjectAnimator.ofFloat(this.jdField_a_of_type_Atba.a, "alpha", new float[] { 0.1F, 1.0F }).setDuration(1500L).start();
+  }
 }
 
 

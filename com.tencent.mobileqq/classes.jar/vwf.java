@@ -1,12 +1,32 @@
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
 
-public abstract interface vwf
+public class vwf
+  implements bfrx
 {
-  public abstract void a(List<vxm> paramList, boolean paramBoolean);
+  public vwf(ScrollFrameSelectBar paramScrollFrameSelectBar) {}
+  
+  public void onScrollStateChanged(int paramInt)
+  {
+    veg.a("Q.qqstory.frameWidget.ScrollFrameSelectBar", "onScrollStateChanged:%s", Integer.valueOf(paramInt));
+    switch (paramInt)
+    {
+    default: 
+    case 4098: 
+    case 4099: 
+      do
+      {
+        return;
+      } while (!ScrollFrameSelectBar.a(this.a).isPlaying());
+      ScrollFrameSelectBar.a(this.a).c();
+      return;
+    }
+    this.a.c();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vwf
  * JD-Core Version:    0.7.0.1
  */

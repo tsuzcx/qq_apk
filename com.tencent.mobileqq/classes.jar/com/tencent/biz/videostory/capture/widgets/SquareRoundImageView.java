@@ -24,21 +24,21 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import awmc;
+import axli;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
-import wwr;
+import xfp;
 
 public class SquareRoundImageView
   extends ImageView
 {
-  private static int jdField_a_of_type_Int = awmc.a(2.0F);
+  private static int jdField_a_of_type_Int = axli.a(2.0F);
   private BitmapShader jdField_a_of_type_AndroidGraphicsBitmapShader;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private PaintFlagsDrawFilter jdField_a_of_type_AndroidGraphicsPaintFlagsDrawFilter;
   protected Path a;
-  private wwr jdField_a_of_type_Wwr;
+  private xfp jdField_a_of_type_Xfp;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = jdField_a_of_type_Int;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
@@ -121,11 +121,11 @@ public class SquareRoundImageView
   
   private void b()
   {
-    if (this.jdField_a_of_type_Wwr == null) {
+    if (this.jdField_a_of_type_Xfp == null) {
       try
       {
-        if (this.jdField_a_of_type_Wwr == null) {
-          this.jdField_a_of_type_Wwr = new wwr(Looper.getMainLooper(), this, null);
+        if (this.jdField_a_of_type_Xfp == null) {
+          this.jdField_a_of_type_Xfp = new xfp(Looper.getMainLooper(), this, null);
         }
         return;
       }
@@ -210,8 +210,8 @@ public class SquareRoundImageView
   public void a()
   {
     b();
-    if (!this.jdField_a_of_type_Wwr.hasMessages(1)) {
-      this.jdField_a_of_type_Wwr.sendEmptyMessage(1);
+    if (!this.jdField_a_of_type_Xfp.hasMessages(1)) {
+      this.jdField_a_of_type_Xfp.sendEmptyMessage(1);
     }
   }
   
@@ -299,8 +299,8 @@ public class SquareRoundImageView
     if (paramDrawable == null)
     {
       b();
-      if (this.jdField_a_of_type_Wwr.hasMessages(1)) {
-        this.jdField_a_of_type_Wwr.removeMessages(1);
+      if (this.jdField_a_of_type_Xfp.hasMessages(1)) {
+        this.jdField_a_of_type_Xfp.removeMessages(1);
       }
       this.jdField_a_of_type_AndroidGraphicsBitmapShader = null;
       this.d = 0;

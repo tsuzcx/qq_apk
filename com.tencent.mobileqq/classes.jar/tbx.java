@@ -1,39 +1,27 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetTagList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 public class tbx
-  extends slu
 {
+  public final int a;
   public final String a;
-  public final List<vik> a;
   public final int b;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
   
-  public tbx(qqstory_service.RspGetTagList paramRspGetTagList)
+  public tbx(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    Object localObject = paramRspGetTagList.tag_list.get();
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        qqstory_struct.TagItem localTagItem = (qqstory_struct.TagItem)((Iterator)localObject).next();
-        this.jdField_a_of_type_JavaUtilList.add(new vik(localTagItem));
-      }
-    }
-    this.b = paramRspGetTagList.is_end.get();
-    this.jdField_a_of_type_JavaLangString = paramRspGetTagList.next_cookie.get();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
   public String toString()
   {
-    return "GetTagListResponse{mTagItems=" + this.jdField_a_of_type_JavaUtilList + ", mIsEnd=" + this.b + ", mNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    return "AddressInfo{country='" + this.jdField_a_of_type_JavaLangString + '\'' + ", province='" + this.jdField_b_of_type_JavaLangString + '\'' + ", city='" + this.c + '\'' + ", district='" + this.d + '\'' + ", street='" + this.e + '\'' + ", longitude=" + this.jdField_a_of_type_Int + ", latitude=" + this.jdField_b_of_type_Int + '}';
   }
 }
 

@@ -1,150 +1,170 @@
-import android.support.annotation.NonNull;
-import java.util.Arrays;
-import java.util.List;
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Environment;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.PlatformInfor.1;
+import cooperation.qzone.util.NetworkState;
 
 public class bgxq
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
+  private static bgxq jdField_a_of_type_Bgxq;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static String e = "";
+  private int jdField_a_of_type_Int = -1;
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+  private TelephonyManager jdField_a_of_type_AndroidTelephonyTelephonyManager = (TelephonyManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("phone");
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
+  private String d;
   
-  private void a()
+  private bgxq()
   {
-    double d4 = this.f * 1.0D / this.e;
-    double d5 = this.jdField_b_of_type_Int * 1.0D / this.jdField_a_of_type_Int;
-    double d2 = this.e;
-    double d3 = this.f;
-    double d1;
-    if (d4 > d5) {
-      d1 = d5 * d2;
-    }
-    for (;;)
+    try
     {
-      this.k = ((int)d2);
-      this.l = ((int)d1);
+      e = this.jdField_a_of_type_AndroidContentContext.getPackageManager().getPackageInfo(this.jdField_a_of_type_AndroidContentContext.getPackageName(), 0).versionName;
       return;
-      d1 = d3;
-      if (d4 < d5)
-      {
-        d2 = 1.0D / d5 * d3;
-        d1 = d3;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  private int a(Context paramContext)
+  {
+    if (this.jdField_a_of_type_Int == -1)
+    {
+      ThreadManager.executeOnSubThread(new PlatformInfor.1(this, paramContext));
+      return 0;
+    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public static bgxq a()
+  {
+    if (jdField_a_of_type_Bgxq == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Bgxq == null) {
+        jdField_a_of_type_Bgxq = new bgxq();
       }
+      return jdField_a_of_type_Bgxq;
     }
-  }
-  
-  private String h()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return i();
-    }
-    return e();
-  }
-  
-  private String i()
-  {
-    if ((this.j != 0) && (this.i != 0)) {
-      return this.j + "*" + this.i;
-    }
-    return "none";
   }
   
   public String a()
   {
-    if ((this.jdField_b_of_type_Int != 0) && (this.jdField_a_of_type_Int != 0)) {
-      return this.jdField_b_of_type_Int + "*" + this.jdField_a_of_type_Int;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_JavaLangString = bfmw.a("52b7f2");
     }
-    return "none";
-  }
-  
-  public List<String> a()
-  {
-    a();
-    return Arrays.asList(new String[] { "取景框大小: " + this.jdField_b_of_type_Int + "*" + this.jdField_a_of_type_Int, "设置的预览分辨率: " + this.d + "*" + this.c, "设置的照片分辨率: " + this.f + "*" + this.e, "普通渲染 & 截帧分辨率: " + this.h + "*" + this.g, "高清渲染 & 截帧分辨率: " + this.j + "*" + this.i, "大图拍照分辨率: " + this.l + "*" + this.k, "视频分辨率: " + this.n + "*" + this.m, "预览帧率: TODO" });
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public String b()
   {
-    if ((this.d != 0) && (this.c != 0)) {
-      return this.d + "*" + this.c;
+    if (TextUtils.isEmpty(this.b)) {
+      this.b = bfmw.b("52b7f2");
     }
-    return "none";
+    return this.b;
   }
   
   public String c()
   {
-    if ((this.f != 0) && (this.e != 0)) {
-      return this.f + "*" + this.e;
+    if ((this.d != null) && (this.d.length() > 0))
+    {
+      localObject1 = new StringBuilder(this.d);
+      ((StringBuilder)localObject1).append("sharpP=").append(a(this.jdField_a_of_type_AndroidContentContext)).append('&');
+      ((StringBuilder)localObject1).append("n=").append(d());
+      return ((StringBuilder)localObject1).toString();
     }
-    return "none";
+    Object localObject2 = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
+    Object localObject1 = new DisplayMetrics();
+    ((WindowManager)localObject2).getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("i=").append(a()).append('&');
+    ((StringBuilder)localObject2).append("imsi=").append(b()).append('&');
+    ((StringBuilder)localObject2).append("mac=").append(e()).append('&');
+    ((StringBuilder)localObject2).append("m=").append(Build.MODEL).append('&');
+    ((StringBuilder)localObject2).append("o=").append(Build.VERSION.RELEASE).append('&');
+    ((StringBuilder)localObject2).append("a=").append(Build.VERSION.SDK_INT).append('&');
+    StringBuilder localStringBuilder = ((StringBuilder)localObject2).append("sc=");
+    if (Environment.getExternalStorageState().equals("mounted")) {}
+    for (int i = 1;; i = 0)
+    {
+      localStringBuilder.append(i).append('&');
+      ((StringBuilder)localObject2).append("sd=").append("0").append('&');
+      ((StringBuilder)localObject2).append("p=").append(((DisplayMetrics)localObject1).widthPixels).append('*').append(((DisplayMetrics)localObject1).heightPixels).append('&');
+      ((StringBuilder)localObject2).append("f=").append(Build.MANUFACTURER).append('&');
+      ((StringBuilder)localObject2).append("mm=").append(bbct.d() / 1048576L).append('&');
+      ((StringBuilder)localObject2).append("cf=").append(bbct.a()).append('&');
+      ((StringBuilder)localObject2).append("cc=").append(bbct.b()).append('&');
+      ((StringBuilder)localObject2).append("aid=").append(bbct.f()).append('&');
+      ((StringBuilder)localObject2).append("qimei=").append(UserAction.getQIMEI()).append('&');
+      this.d = ((StringBuilder)localObject2).toString();
+      ((StringBuilder)localObject2).append("sharpP=").append(a(this.jdField_a_of_type_AndroidContentContext)).append('&');
+      ((StringBuilder)localObject2).append("n=").append(d());
+      return ((StringBuilder)localObject2).toString();
+    }
   }
   
   public String d()
   {
-    if (this.jdField_b_of_type_Boolean) {
-      return h();
+    switch ()
+    {
+    default: 
+      return "wan";
+    case 1: 
+      return "wifi";
+    case 3: 
+      return "3g";
+    case 2: 
+      return "2g";
+    case 4: 
+      return "4g";
     }
-    return f();
+    return "5g";
   }
   
   public String e()
   {
-    if ((this.h != 0) && (this.g != 0)) {
-      return this.h + "*" + this.g;
+    if (TextUtils.isEmpty(this.c)) {
+      this.c = bfmw.c("52b7f2");
     }
-    return "none";
+    return this.c;
   }
   
   public String f()
   {
-    a();
-    if ((this.l != 0) && (this.k != 0)) {
-      return this.l + "*" + this.k;
-    }
-    return "none";
-  }
-  
-  public String g()
-  {
-    if ((this.n != 0) && (this.m != 0)) {
-      return this.n + "*" + this.m;
-    }
-    return "none";
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    List localList = a();
-    int i2 = localList.size();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      localStringBuilder.append((String)localList.get(i1));
-      if (i1 < i2 - 1) {
-        localStringBuilder.append("\n");
-      }
-      i1 += 1;
-    }
-    return localStringBuilder.toString();
+    Object localObject = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
+    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+    ((WindowManager)localObject).getDefaultDisplay().getMetrics(localDisplayMetrics);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("m=").append(Build.MODEL).append('&');
+    ((StringBuilder)localObject).append("o=").append(Build.VERSION.RELEASE).append('&');
+    ((StringBuilder)localObject).append("a=").append(Build.VERSION.SDK_INT).append('&');
+    ((StringBuilder)localObject).append("p=").append(localDisplayMetrics.widthPixels).append('*').append(localDisplayMetrics.heightPixels).append('&');
+    ((StringBuilder)localObject).append("f=").append(Build.MANUFACTURER).append('&');
+    ((StringBuilder)localObject).append("mm=").append(bbct.d() / 1048576L).append('&');
+    ((StringBuilder)localObject).append("cf=").append(bbct.a()).append('&');
+    ((StringBuilder)localObject).append("cc=").append(bbct.b()).append('&');
+    ((StringBuilder)localObject).append("qqversion=").append("8.2.8");
+    return ((StringBuilder)localObject).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgxq
  * JD-Core Version:    0.7.0.1
  */

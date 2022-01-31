@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import ohb;
-import opx;
+import osm;
+import pay;
 
 public class InterestLabelInfoModule$4
   implements Runnable
 {
-  public InterestLabelInfoModule$4(opx paramopx, int paramInt) {}
+  public InterestLabelInfoModule$4(pay parampay, int paramInt) {}
   
   public void run()
   {
-    ohb.a().a(this.a);
+    osm.a().a(this.a);
   }
 }
 

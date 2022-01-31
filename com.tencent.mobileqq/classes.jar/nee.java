@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.AdTagInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.data.AccountDetail;
 
-public final class nee
-  implements Parcelable.Creator<VideoInfo.AdTagInfo>
+class nee
+  implements View.OnClickListener
 {
-  public VideoInfo.AdTagInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.AdTagInfo(paramParcel);
-  }
+  nee(ned paramned) {}
   
-  public VideoInfo.AdTagInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new VideoInfo.AdTagInfo[paramInt];
+    ((AccountDetailActivity)this.a.jdField_a_of_type_AndroidAppActivity).D();
+    String str = this.a.jdField_a_of_type_JavaLangString;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1) {}
+    for (paramView = "02";; paramView = "01")
+    {
+      noo.a(null, str, "0X8007CA4", "0X8007CA4", 0, 0, paramView, String.valueOf(ned.a(this.a)), "", "", false);
+      return;
+    }
   }
 }
 

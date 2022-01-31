@@ -1,42 +1,84 @@
-import android.text.Layout;
-import android.text.SpannedString;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-
-class aybg
-  implements View.OnTouchListener
+public abstract class aybg
 {
-  aybg(aybe paramaybe) {}
+  public float a;
+  public int a;
+  protected long a;
+  private aybh a;
+  public boolean a;
+  public float b;
+  public int b;
+  protected long b;
+  public boolean b;
+  public float c;
+  public int c;
+  public int d;
+  public int e = 0;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aybg(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = paramMotionEvent.getAction();
-    TextView localTextView = (TextView)paramView;
-    CharSequence localCharSequence = localTextView.getText();
-    if (((localCharSequence instanceof SpannedString)) && (i == 1))
+    this.jdField_c_of_type_Float = 1.0F;
+    this.jdField_a_of_type_Int = 255;
+    this.jdField_c_of_type_Int = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  protected void a(int paramInt, float paramFloat)
+  {
+    if ((paramInt >= this.jdField_c_of_type_Int) && (this.jdField_a_of_type_Aybh != null)) {
+      this.jdField_a_of_type_Aybh.a();
+    }
+  }
+  
+  public void a(aybh paramaybh)
+  {
+    this.jdField_a_of_type_Aybh = paramaybh;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_b_of_type_Boolean) {
+      return false;
+    }
+    int i = (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    float f = i / this.jdField_c_of_type_Int;
+    if (this.e == 1) {
+      f = i * i / (this.jdField_c_of_type_Int * this.jdField_c_of_type_Int);
+    }
+    for (;;)
     {
-      i = (int)paramMotionEvent.getX();
-      int j = (int)paramMotionEvent.getY();
-      int k = localTextView.getTotalPaddingLeft();
-      int m = localTextView.getTotalPaddingTop();
-      int n = localTextView.getScrollX();
-      int i1 = localTextView.getScrollY();
-      paramMotionEvent = localTextView.getLayout();
-      i = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(j - m + i1), i - k + n);
-      paramMotionEvent = (ClickableSpan[])((SpannedString)localCharSequence).getSpans(i, i, ClickableSpan.class);
-      if (paramMotionEvent.length != 0) {
-        paramMotionEvent[0].onClick(localTextView);
+      a(i, f);
+      if (i >= this.jdField_c_of_type_Int) {
+        b();
+      }
+      return true;
+      if (this.e == 2)
+      {
+        f = i / this.jdField_c_of_type_Int;
+        f *= (2.0F - f);
       }
     }
-    else
-    {
-      return true;
-    }
-    paramView.performClick();
-    return true;
+  }
+  
+  public void b()
+  {
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void c()
+  {
+    this.jdField_b_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Long += System.currentTimeMillis() - this.jdField_b_of_type_Long;
   }
 }
 

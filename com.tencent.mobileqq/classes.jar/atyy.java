@@ -1,30 +1,31 @@
-import com.tencent.mobileqq.profile.like.PraiseManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class atyy
-  implements atyw
+public abstract class atyy
 {
-  public int a;
-  public atyw a;
-  public int b;
+  public long a;
+  public String a;
+  public boolean b;
   
-  public atyy(PraiseManager paramPraiseManager) {}
-  
-  public void a(int paramInt1, atyv paramatyv, int paramInt2, String paramString)
+  public String a()
   {
-    paramInt1 = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = paramInt1;
-    if (paramInt1 == this.b)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.b(this);
-      if (this.jdField_a_of_type_Atyw != null) {
-        this.jdField_a_of_type_Atyw.a(0, null, 0, "");
-      }
-    }
+    return "";
+  }
+  
+  public String a(QQAppInterface paramQQAppInterface)
+  {
+    return this.a;
+  }
+  
+  public abstract boolean a();
+  
+  public boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     atyy
  * JD-Core Version:    0.7.0.1
  */

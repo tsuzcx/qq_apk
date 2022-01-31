@@ -12,10 +12,11 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.provider.Settings.Secure;
 import android.text.TextUtils;
-import bbtm;
-import bcez;
-import bdgt;
-import bfpk;
+import bbct;
+import bcxm;
+import bdja;
+import bekw;
+import bgxr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.AppConfigInfo;
@@ -41,13 +42,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import mpl;
+import nam;
 
 public class MiniProgramReportHelper
 {
   private static final Map<String, String> APP_ID_LAUNCH_ID_MAP = new HashMap();
   private static final Map<String, String> LAUNCH_ID_MAP_MAIN_PROCESS = new HashMap();
   private static MiniAppConfig MINI_APP_CONFIG_FOR_PRELOAD;
+  public static final String PERF_LEVEL = String.valueOf(bbct.f());
   public static final String PRELOAD_MINI_APP_ID = "0000000000";
   private static final String TAG = "MiniProgramReportHelper";
   
@@ -144,24 +146,12 @@ public class MiniProgramReportHelper
     if (paramMiniAppConfig != null)
     {
       localObject1 = localObject2;
-      if (paramMiniAppConfig.launchParam != null) {
-        localObject1 = paramMiniAppConfig.launchParam.miniAppId;
+      if (paramMiniAppConfig.config != null) {
+        localObject1 = paramMiniAppConfig.config.appId;
       }
     }
-    localObject2 = localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      localObject2 = localObject1;
-      if (paramMiniAppConfig != null)
-      {
-        localObject2 = localObject1;
-        if (paramMiniAppConfig.config != null) {
-          localObject2 = paramMiniAppConfig.config.appId;
-        }
-      }
-    }
-    paramMiniAppConfig = (MiniAppConfig)localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+    paramMiniAppConfig = (MiniAppConfig)localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
       paramMiniAppConfig = "0000000000";
     }
     return paramMiniAppConfig;
@@ -169,7 +159,7 @@ public class MiniProgramReportHelper
   
   public static String getNetworkType()
   {
-    String str = mpl.a();
+    String str = nam.a();
     if (str == null) {
       return "unknown";
     }
@@ -193,7 +183,7 @@ public class MiniProgramReportHelper
   
   public static List<COMM.Entry> newAppQualityEntries(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14)
   {
-    COMM.Entry localEntry1 = newEntry("uid", String.valueOf(bbtm.a().a()));
+    COMM.Entry localEntry1 = newEntry("uid", String.valueOf(bcxm.a().a()));
     COMM.Entry localEntry2 = newEntry("appid", getMiniAppIdSafely(paramMiniAppConfig));
     paramString10 = newEntry("launchid", paramString10);
     label60:
@@ -212,29 +202,29 @@ public class MiniProgramReportHelper
       paramString2 = newEntry("event", paramString2);
       paramString9 = newEntry("timestamp", paramString9);
       if (paramString1 == null) {
-        break label431;
+        break label444;
       }
       localEntry3 = newEntry("page", paramString1);
       if (paramString3 == null) {
-        break label437;
+        break label450;
       }
       paramString3 = newEntry("attachinfo", paramString3);
-      localEntry4 = newEntry("appversion", "8.2.6.4370");
+      localEntry4 = newEntry("appversion", "8.2.8.4440");
       if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
-        break label443;
+        break label456;
       }
       paramString1 = paramMiniAppConfig.config.version;
       localEntry5 = newEntry("miniapp_version", paramString1);
-      localEntry6 = newEntry("qua", bfpk.a());
+      localEntry6 = newEntry("qua", bgxr.a());
       if (paramString4 == null) {
-        break label449;
+        break label462;
       }
       paramString4 = newEntry("cmd", paramString4);
       paramString5 = newEntry("retcode", paramString5);
       paramString7 = newEntry("time_cost", paramString7);
       paramString8 = newEntry("third_url", paramString8);
       if ((paramMiniAppConfig == null) || (paramMiniAppConfig.baseLibInfo == null)) {
-        break label456;
+        break label469;
       }
       paramString1 = paramMiniAppConfig.baseLibInfo.baseLibVersion;
       paramString1 = newEntry("baselib_version", paramString1);
@@ -242,18 +232,18 @@ public class MiniProgramReportHelper
       paramString6 = newEntry("app_type", paramString6);
       localEntry8 = newEntry("network_type", getNetworkType());
       if ((paramMiniAppConfig == null) || (paramMiniAppConfig.launchParam == null)) {
-        break label462;
+        break label475;
       }
     }
-    label431:
-    label437:
-    label443:
-    label449:
+    label444:
+    label450:
     label456:
     label462:
+    label469:
+    label475:
     for (paramMiniAppConfig = String.valueOf(paramMiniAppConfig.launchParam.scene);; paramMiniAppConfig = "")
     {
-      return new ArrayList(Arrays.asList(new COMM.Entry[] { localEntry1, localEntry2, paramString10, paramString2, paramString9, localEntry3, paramString3, localEntry4, localEntry5, localEntry6, paramString4, paramString5, paramString7, paramString8, paramString1, localEntry7, paramString6, localEntry8, newEntry("scene", paramMiniAppConfig), newEntry("reverse1", paramString11), newEntry("reverse2", paramString12), newEntry("reverse3", paramString13), newEntry("reverse4", paramString14) }));
+      return new ArrayList(Arrays.asList(new COMM.Entry[] { localEntry1, localEntry2, paramString10, paramString2, paramString9, localEntry3, paramString3, localEntry4, localEntry5, localEntry6, paramString4, paramString5, paramString7, paramString8, paramString1, localEntry7, paramString6, localEntry8, newEntry("scene", paramMiniAppConfig), newEntry("reverse1", paramString11), newEntry("reverse2", paramString12), newEntry("reverse3", paramString13), newEntry("reverse4", paramString14), newEntry("busiType", PERF_LEVEL) }));
       paramString2 = "";
       break;
       paramString1 = "";
@@ -380,8 +370,8 @@ public class MiniProgramReportHelper
   
   public static List<COMM.Entry> newGenericEntries()
   {
-    ArrayList localArrayList = new ArrayList(Arrays.asList(new COMM.Entry[] { newEntry("device_platform", "Android"), newEntry("device_maker", Build.MANUFACTURER), newEntry("device_model", Build.MODEL), newEntry("device_version", Build.VERSION.RELEASE), newEntry("network_type", getNetworkType()), newEntry("network_gateway_ip", ""), newEntry("network_ssid", bdgt.b(bbtm.a().a())) }));
-    Object localObject = bcez.f();
+    ArrayList localArrayList = new ArrayList(Arrays.asList(new COMM.Entry[] { newEntry("device_platform", "Android"), newEntry("device_maker", Build.MANUFACTURER), newEntry("device_model", Build.MODEL), newEntry("device_version", Build.VERSION.RELEASE), newEntry("network_type", getNetworkType()), newEntry("network_gateway_ip", ""), newEntry("network_ssid", bekw.b(bcxm.a().a())) }));
+    Object localObject = bdja.f();
     if (localObject != null)
     {
       localObject = ((String)localObject).split("\\*");
@@ -475,7 +465,7 @@ public class MiniProgramReportHelper
   
   public static List<COMM.Entry> newUserInfoEntries()
   {
-    return new ArrayList(Arrays.asList(new COMM.Entry[] { newEntry("uin", String.valueOf(bbtm.a().a())), newEntry("touin", ""), newEntry("timestamp", String.valueOf(NetConnInfoCenter.getServerTimeMillis())), newEntry("qqversion", bfpk.a()), newEntry("imei", bcez.c()), newEntry("idfa", ""), newEntry("idfv", ""), newEntry("android_id", Settings.Secure.getString(bbtm.a().a().getContentResolver(), "android_id")) }));
+    return new ArrayList(Arrays.asList(new COMM.Entry[] { newEntry("uin", String.valueOf(bcxm.a().a())), newEntry("touin", ""), newEntry("timestamp", String.valueOf(NetConnInfoCenter.getServerTimeMillis())), newEntry("qqversion", bgxr.a()), newEntry("imei", bdja.c()), newEntry("idfa", ""), newEntry("idfv", ""), newEntry("android_id", Settings.Secure.getString(bcxm.a().a().getContentResolver(), "android_id")) }));
   }
 }
 

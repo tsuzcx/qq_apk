@@ -1,6 +1,19 @@
-public final class atlv
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class atlv
+  implements View.OnTouchListener
 {
-  public static final int[] a = { 12 };
+  atlv(atlu paramatlu) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    this.a.c();
+    atlu.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
+  }
 }
 
 

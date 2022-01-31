@@ -1,30 +1,49 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.VideoInfo.VideoRemark;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.widget.WaveView;
 
-public final class bfwm
-  implements Parcelable.Creator<VideoInfo.VideoRemark>
+public class bfwm
+  implements Handler.Callback
 {
-  public VideoInfo.VideoRemark a(Parcel paramParcel)
-  {
-    VideoInfo.VideoRemark localVideoRemark = new VideoInfo.VideoRemark();
-    localVideoRemark.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localVideoRemark.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localVideoRemark.c = paramParcel.readString();
-    localVideoRemark.jdField_a_of_type_Int = paramParcel.readInt();
-    localVideoRemark.d = paramParcel.readString();
-    localVideoRemark.jdField_b_of_type_Int = paramParcel.readInt();
-    return localVideoRemark;
-  }
+  public bfwm(WaveView paramWaveView) {}
   
-  public VideoInfo.VideoRemark[] a(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    return new VideoInfo.VideoRemark[paramInt];
+    if (paramMessage == null) {
+      return false;
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.invalidate();
+      WaveView.a(this.a, (WaveView.a(this.a) - WaveView.b(this.a)) % WaveView.c(this.a));
+      WaveView.b(this.a, WaveView.d(this.a) + WaveView.b(this.a));
+      if (WaveView.d(this.a) > 0) {
+        WaveView.b(this.a, WaveView.d(this.a) - WaveView.c(this.a));
+      }
+      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
+      continue;
+      this.a.invalidate();
+      WaveView.a(this.a, (WaveView.a(this.a) - WaveView.b(this.a)) % WaveView.c(this.a));
+      WaveView.b(this.a, WaveView.d(this.a) + WaveView.b(this.a));
+      if (WaveView.d(this.a) > 0) {
+        WaveView.b(this.a, WaveView.d(this.a) - WaveView.c(this.a));
+      }
+      WaveView.a(this.a).removeMessages(1002);
+      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
+      continue;
+      WaveView.a(this.a).removeMessages(1001);
+      WaveView.a(this.a).removeMessages(1002);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfwm
  * JD-Core Version:    0.7.0.1
  */

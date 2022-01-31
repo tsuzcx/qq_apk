@@ -1,18 +1,18 @@
 package com.tencent.open.appstore.dl;
 
-import bchb;
-import bchu;
+import bdlc;
+import bdlv;
 
 public class DownloadManagerV2$18
   implements Runnable
 {
   public void run()
   {
-    if (bchu.a()) {
-      bchu.a().a();
+    if (bdlv.a()) {
+      bdlv.a().a();
     }
-    if (bchb.d()) {
-      bchb.a().h();
+    if (bdlc.d()) {
+      bdlc.a().h();
     }
   }
 }

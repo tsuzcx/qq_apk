@@ -1,14 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class rjm
-  implements rkn
+  implements amkq
 {
-  public rjm(ViolaFragment paramViolaFragment) {}
+  public rjm(FastWebActivity paramFastWebActivity) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (ViolaFragment.a(this.a) != null) {
-      ViolaFragment.a(this.a).a(paramInt);
+    FastWebActivity.b(this.a, true);
+    QLog.d(FastWebActivity.a(this.a), 1, "onPageSwipeClose");
+  }
+  
+  public void b()
+  {
+    if (FastWebActivity.a(this.a) == 0L)
+    {
+      FastWebActivity.a(this.a, NetConnInfoCenter.getServerTime());
+      QLog.d(FastWebActivity.a(this.a), 1, "onPageSwipeNotClose time :" + FastWebActivity.a(this.a));
     }
   }
 }

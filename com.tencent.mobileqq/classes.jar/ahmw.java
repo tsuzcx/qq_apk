@@ -1,83 +1,69 @@
-import java.nio.ByteBuffer;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLImageView;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahmw
+class ahmw
+  implements URLDrawable.URLDrawableListener
 {
-  private static void a(int paramInt1, short[] paramArrayOfShort, int paramInt2, int paramInt3, ByteBuffer paramByteBuffer)
+  ahmw(ahmv paramahmv, ahmr paramahmr, ahms paramahms) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    int i = paramInt3 * 16000 / paramInt1;
-    long l1 = 0L;
-    long l2 = (paramInt3 - 2 << 16) / (i - 2);
-    paramInt1 = 0;
-    while (paramInt1 < i - 1)
-    {
-      long l3 = 0xFFFF & l1;
-      int j = paramArrayOfShort[((int)(l1 >> 16) + paramInt2)];
-      int k = paramArrayOfShort[((int)(l1 >> 16) + 1 + paramInt2)];
-      long l4 = j;
-      j = (int)(l3 * k + l4 * (65536L - l3) >> 16);
-      paramByteBuffer.put((byte)(j & 0xFF));
-      paramByteBuffer.put((byte)((j & 0xFF00) >> 8));
-      l1 += l2;
-      paramInt1 += 1;
+    QLog.i("QbossADBannerManager", 1, "showQbossADBanner urlDrawable load failed.");
+    paramURLDrawable = null;
+    if (paramThrowable != null) {
+      paramURLDrawable = paramThrowable.getMessage();
     }
-    paramByteBuffer.put((byte)(paramArrayOfShort[(paramInt3 - 1 + paramInt2)] & 0xFF));
-    paramByteBuffer.put((byte)((paramArrayOfShort[(paramInt3 - 1 + paramInt2)] & 0xFF00) >> 8));
+    try
+    {
+      if (this.jdField_a_of_type_Ahmr != null) {
+        bhkd.a().a(2741, this.jdField_a_of_type_Ahmr.c, 100, "qboss load local photo fail throwable = " + paramURLDrawable + " url = " + this.jdField_a_of_type_Ahms.a + " filePath = " + this.jdField_a_of_type_Ahms.c);
+      }
+      this.jdField_a_of_type_Ahmv.e();
+      return;
+    }
+    catch (Exception paramURLDrawable)
+    {
+      paramURLDrawable.printStackTrace();
+      QLog.e("QbossADBannerManager", 1, "onLoadFailed Exception");
+    }
   }
   
-  public static void a(int paramInt1, short[] paramArrayOfShort, int paramInt2, ByteBuffer paramByteBuffer)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    int i = 0;
-    int j = paramInt1 * 5 / 100;
-    if (paramInt2 <= j) {
-      a(paramInt1, paramArrayOfShort, 0, paramInt2, paramByteBuffer);
-    }
-    int k;
-    do
+    QLog.i("QbossADBannerManager", 1, "showQbossADBanner urlDrawable load success.");
+    try
     {
-      return;
-      k = paramInt2 / j;
-      while (i < k)
+      if ((this.jdField_a_of_type_Ahmv.b != null) && (this.jdField_a_of_type_Ahmv.a != null) && (paramURLDrawable != null))
       {
-        a(paramInt1, paramArrayOfShort, i * j, j, paramByteBuffer);
-        i += 1;
+        this.jdField_a_of_type_Ahmv.b.setVisibility(0);
+        this.jdField_a_of_type_Ahmv.a.setImageDrawable(paramURLDrawable);
+        ahmv.a(this.jdField_a_of_type_Ahmv, this.jdField_a_of_type_Ahmr);
+        this.jdField_a_of_type_Ahmv.a(this.jdField_a_of_type_Ahmr);
+        return;
       }
-    } while (paramInt2 - k * j <= 0);
-    a(paramInt1, paramArrayOfShort, k * j, paramInt2 - j * k, paramByteBuffer);
-  }
-  
-  public static void a(short[] paramArrayOfShort, int paramInt1, int paramInt2)
-  {
-    if ((paramArrayOfShort == null) || (paramInt2 <= 0)) {
-      return;
+      if (this.jdField_a_of_type_Ahmv.b != null)
+      {
+        this.jdField_a_of_type_Ahmv.b.setVisibility(8);
+        return;
+      }
     }
-    int i = 0;
-    label11:
-    int j;
-    if (i < paramInt2)
+    catch (Exception paramURLDrawable)
     {
-      j = paramArrayOfShort[(paramInt1 + i)] * 10;
-      if (j < 32767.0F) {
-        break label50;
-      }
-      paramArrayOfShort[(paramInt1 + i)] = 32767;
-    }
-    for (;;)
-    {
-      i += 1;
-      break label11;
-      break;
-      label50:
-      if (j <= -32768.0F) {
-        paramArrayOfShort[(paramInt1 + i)] = -32768;
-      } else {
-        paramArrayOfShort[(paramInt1 + i)] = ((short)j);
-      }
+      paramURLDrawable.printStackTrace();
+      QLog.e("QbossADBannerManager", 1, "onLoadSuccessed Exception");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahmw
  * JD-Core Version:    0.7.0.1
  */

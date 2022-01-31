@@ -1,19 +1,24 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aege;
-import android.widget.ImageView;
+import acut;
+import aerb;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class MultiForwardChatPie$6
   implements Runnable
 {
-  public MultiForwardChatPie$6(aege paramaege) {}
+  public MultiForwardChatPie$6(aerb paramaerb, CharSequence paramCharSequence) {}
   
   public void run()
   {
-    aege.a(this.this$0).setVisibility(0);
-    aege.a(this.this$0).setText(2131632730);
+    aerb.a(this.this$0).setVisibility(8);
+    aerb.a(this.this$0).setVisibility(0);
+    aerb.a(this.this$0).setVisibility(0);
     this.this$0.e.setText(this.this$0.h);
+    aerb.a(this.this$0).a(aerb.a(this.this$0), this.a);
     this.this$0.E();
   }
 }

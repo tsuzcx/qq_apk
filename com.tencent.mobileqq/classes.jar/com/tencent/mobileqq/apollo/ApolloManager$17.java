@@ -1,40 +1,40 @@
 package com.tencent.mobileqq.apollo;
 
-import aifg;
+import airz;
 
 public class ApolloManager$17
   implements Runnable
 {
-  public ApolloManager$17(aifg paramaifg) {}
+  public ApolloManager$17(airz paramairz) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Laifg;
-    //   4: invokestatic 25	aifg:a	(Laifg;)Latmp;
-    //   7: invokevirtual 30	atmp:a	()Latmr;
+    //   1: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Lairz;
+    //   4: invokestatic 25	airz:a	(Lairz;)Laukn;
+    //   7: invokevirtual 30	aukn:a	()Laukp;
     //   10: astore_1
     //   11: aload_1
-    //   12: invokevirtual 34	atmr:a	()V
+    //   12: invokevirtual 34	aukp:a	()V
     //   15: aload_0
-    //   16: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Laifg;
-    //   19: invokestatic 37	aifg:a	(Laifg;)Ljava/lang/Object;
+    //   16: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Lairz;
+    //   19: invokestatic 37	airz:a	(Lairz;)Ljava/lang/Object;
     //   22: astore_2
     //   23: aload_2
     //   24: monitorenter
     //   25: aload_0
-    //   26: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Laifg;
-    //   29: invokestatic 40	aifg:a	(Laifg;)Ljava/util/List;
+    //   26: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Lairz;
+    //   29: invokestatic 40	airz:a	(Lairz;)Ljava/util/List;
     //   32: ifnull +154 -> 186
     //   35: new 42	java/util/ArrayList
     //   38: dup
     //   39: invokespecial 43	java/util/ArrayList:<init>	()V
     //   42: astore_3
     //   43: aload_0
-    //   44: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Laifg;
-    //   47: invokestatic 40	aifg:a	(Laifg;)Ljava/util/List;
+    //   44: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Lairz;
+    //   47: invokestatic 40	airz:a	(Lairz;)Ljava/util/List;
     //   50: invokeinterface 49 1 0
     //   55: astore 4
     //   57: aload 4
@@ -64,7 +64,7 @@ public class ApolloManager$17
     //   110: aload_2
     //   111: invokestatic 79	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   114: aload_1
-    //   115: invokevirtual 82	atmr:b	()V
+    //   115: invokevirtual 82	aukp:b	()V
     //   118: return
     //   119: aload_3
     //   120: invokeinterface 86 1 0
@@ -80,34 +80,34 @@ public class ApolloManager$17
     //   150: checkcast 61	com/tencent/mobileqq/DrawerPushItem
     //   153: astore 4
     //   155: aload_0
-    //   156: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Laifg;
-    //   159: invokestatic 40	aifg:a	(Laifg;)Ljava/util/List;
+    //   156: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Lairz;
+    //   159: invokestatic 40	airz:a	(Lairz;)Ljava/util/List;
     //   162: aload 4
     //   164: invokeinterface 89 2 0
     //   169: pop
     //   170: aload_0
-    //   171: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Laifg;
-    //   174: invokestatic 25	aifg:a	(Laifg;)Latmp;
+    //   171: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Lairz;
+    //   174: invokestatic 25	airz:a	(Lairz;)Laukn;
     //   177: aload 4
-    //   179: invokevirtual 92	atmp:b	(Latmo;)Z
+    //   179: invokevirtual 92	aukn:b	(Laukm;)Z
     //   182: pop
     //   183: goto -48 -> 135
     //   186: aload_2
     //   187: monitorexit
     //   188: aload_1
-    //   189: invokevirtual 95	atmr:c	()V
+    //   189: invokevirtual 95	aukp:c	()V
     //   192: aload_1
-    //   193: invokevirtual 82	atmr:b	()V
+    //   193: invokevirtual 82	aukp:b	()V
     //   196: return
     //   197: astore_2
     //   198: aload_1
-    //   199: invokevirtual 82	atmr:b	()V
+    //   199: invokevirtual 82	aukp:b	()V
     //   202: aload_2
     //   203: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	204	0	this	17
-    //   10	189	1	localatmr	atmr
+    //   10	189	1	localaukp	aukp
     //   104	83	2	localException	java.lang.Exception
     //   197	6	2	localObject2	Object
     //   42	46	3	localArrayList	java.util.ArrayList

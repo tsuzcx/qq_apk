@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.widget.Button;
-import azzz;
+import bbbd;
 import com.tencent.mobileqq.widget.ClearableEditText;
 
 class AuthDevVerifyCodeActivity$8
@@ -11,7 +11,7 @@ class AuthDevVerifyCodeActivity$8
   
   public void run()
   {
-    String str = azzz.c(this.a, this.b);
+    String str = bbbd.c(this.a, this.b);
     if ((str != null) && (str.length() > 0) && (AuthDevVerifyCodeActivity.a(this.this$0) != null))
     {
       AuthDevVerifyCodeActivity.a(this.this$0).setText(str);

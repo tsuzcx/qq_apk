@@ -1,50 +1,56 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.videoshelf.model.player.IVideoShelfPlayer;
-import com.tencent.ttpic.videoshelf.model.player.IVideoShelfPlayerListener;
-import dov.com.qq.im.AECamera.qudong.AETemplateInfoFragment;
-import java.lang.ref.WeakReference;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
 public class bhat
-  implements IVideoShelfPlayerListener
 {
-  private WeakReference<AETemplateInfoFragment> a;
+  public final int a;
+  public final long a;
+  public String a;
+  public final int b;
+  public final long b;
+  public final int c;
+  public final long c;
+  public final int d;
+  public final long d;
+  public final long e;
+  public final long f;
   
-  public bhat(AETemplateInfoFragment paramAETemplateInfoFragment)
+  private bhat(ByteBuffer paramByteBuffer, int paramInt)
   {
-    this.a = new WeakReference(paramAETemplateInfoFragment);
-  }
-  
-  public void onChangVideoSize(int paramInt1, int paramInt2) {}
-  
-  public void onCompletion()
-  {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---PlayerListener onCompletion");
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AETemplateInfoFragment)this.a.get()).a();
+    switch (paramInt)
+    {
+    default: 
+      throw new IOException("Unexpected elf class: " + paramInt);
+    case 1: 
+      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_a_of_type_Long = paramByteBuffer.getInt();
+      this.jdField_b_of_type_Long = paramByteBuffer.getInt();
+      this.jdField_c_of_type_Long = paramByteBuffer.getInt();
+      this.jdField_d_of_type_Long = paramByteBuffer.getInt();
+      this.jdField_c_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_d_of_type_Int = paramByteBuffer.getInt();
+      this.e = paramByteBuffer.getInt();
     }
-  }
-  
-  public boolean onError(int paramInt, String paramString, Object paramObject)
-  {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---PlayerListener onError errCode=" + paramInt + ", msg=" + paramString);
-    if ((this.a != null) && (this.a.get() != null)) {
-      AETemplateInfoFragment.b((AETemplateInfoFragment)this.a.get());
-    }
-    return true;
-  }
-  
-  public void onPrepared(IVideoShelfPlayer paramIVideoShelfPlayer) {}
-  
-  public void onUpdateRate(long paramLong)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AETemplateInfoFragment)this.a.get()).a(paramLong);
+    for (this.f = paramByteBuffer.getInt();; this.f = paramByteBuffer.getLong())
+    {
+      this.jdField_a_of_type_JavaLangString = null;
+      return;
+      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_a_of_type_Long = paramByteBuffer.getLong();
+      this.jdField_b_of_type_Long = paramByteBuffer.getLong();
+      this.jdField_c_of_type_Long = paramByteBuffer.getLong();
+      this.jdField_d_of_type_Long = paramByteBuffer.getLong();
+      this.jdField_c_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_d_of_type_Int = paramByteBuffer.getInt();
+      this.e = paramByteBuffer.getLong();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhat
  * JD-Core Version:    0.7.0.1
  */

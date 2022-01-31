@@ -1,28 +1,34 @@
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.util.Iterator;
+import java.util.List;
 
-public class auxf
-  extends auxe
+class auxf
+  implements View.OnClickListener
 {
-  public HashMap<String, String> a(String paramString)
+  auxf(auxe paramauxe, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    if ("ShortVideo.Save".equals(paramString))
-    {
-      paramString = new HashMap();
-      paramString.put("param_uinType", this.b + "");
-      paramString.put("param_GroupMemberCount", this.c + "");
-      paramString.put("param_age", this.d + "");
-      paramString.put("param_gender", this.e + "");
-      paramString.put("param_shortVideoType", this.f + "");
-      paramString.put("param_reportHour", this.g + "");
-      paramString.put("param_netType", this.h + "");
-      return paramString;
+    if (auxe.a(this.jdField_a_of_type_Auxe) == this.jdField_a_of_type_Int) {
+      return;
     }
-    return null;
+    paramView = auxe.a(this.jdField_a_of_type_Auxe).iterator();
+    while (paramView.hasNext()) {
+      ((auxi)paramView.next()).a = false;
+    }
+    ((auxi)auxe.a(this.jdField_a_of_type_Auxe).get(this.jdField_a_of_type_Int)).a = true;
+    auxe.a(this.jdField_a_of_type_Auxe, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Auxe.notifyDataSetChanged();
+    if (auxe.a(this.jdField_a_of_type_Auxe) != null) {
+      auxe.a(this.jdField_a_of_type_Auxe).a((auxi)auxe.a(this.jdField_a_of_type_Auxe).get(this.jdField_a_of_type_Int));
+    }
+    axqw.b(null, "dc00898", "", "", "0X800AB2B", "0X800AB2B", 0, 0, "0", "0", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auxf
  * JD-Core Version:    0.7.0.1
  */

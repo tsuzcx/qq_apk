@@ -1,5 +1,6 @@
 package cooperation.qzone.contentbox.model;
 
+import NS_MOBILE_FEEDS.single_feed;
 import NS_QZONE_MQMSG.CommentInfo;
 import NS_QZONE_MQMSG.MsgInteractData;
 import NS_QZONE_MQMSG.ShareInfo;
@@ -11,6 +12,7 @@ public class MQMsgInteractData
   implements Serializable
 {
   public static final String TAG = "QZoneMsgManager.MQMsgInteractData";
+  public single_feed feed;
   public String jumpUrlToDetail = "";
   public MQLikeCell likeCell;
   public MQShareCell shareToFriend;
@@ -53,6 +55,7 @@ public class MQMsgInteractData
     }
     localMQMsgInteractData.shareToFriend = MQShareCell.readFrom(paramMsgInteractData.shareInfo.shareToFriend);
     localMQMsgInteractData.shareToQzone = MQShareCell.readFrom(paramMsgInteractData.shareInfo.shareToQzone);
+    localMQMsgInteractData.feed = paramMsgInteractData.shareInfo.single_feed_data;
     return localMQMsgInteractData;
   }
   

@@ -1,35 +1,46 @@
-import java.util.Calendar;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.richstatus.ActionUrlActivity;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
+import com.tencent.widget.ProtectedWebView;
 
 public class awbr
+  extends WebViewClient
 {
-  public static int a(int paramInt)
+  private awbr(ActionUrlActivity paramActionUrlActivity) {}
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    int i = 0;
-    if (paramInt > 0) {
-      i = Calendar.getInstance().get(1) - ((0xFFFF0000 & paramInt) >> 16);
-    }
-    return i;
+    ActionUrlActivity.a(this.a).setVisibility(8);
+    super.onPageFinished(paramWebView, paramString);
+    this.a.a();
   }
   
-  public static int b(int paramInt)
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    if (paramInt == 0) {
-      return 0;
-    }
-    return (0xFF00 & paramInt) >> 8;
+    ActionUrlActivity.a(this.a).setVisibility(0);
+    ActionUrlActivity.a(this.a).setVisibility(8);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
   }
   
-  public static int c(int paramInt)
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    if (paramInt == 0) {
-      return 0;
-    }
-    return paramInt & 0xFF;
+    ActionUrlActivity.a(this.a).clearView();
+    ActionUrlActivity.a(this.a).setVisibility(8);
+    ActionUrlActivity.a(this.a).setVisibility(0);
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return ActionUrlActivity.a(this.a).a(paramWebView, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     awbr
  * JD-Core Version:    0.7.0.1
  */

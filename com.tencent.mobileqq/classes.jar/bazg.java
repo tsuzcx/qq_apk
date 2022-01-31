@@ -1,51 +1,90 @@
-import android.view.View;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.util.FaceDecodeTask;
+import com.tencent.mobileqq.util.FaceInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
 
-class bazg
-  implements TouchWebView.OnScrollChangedListener
+public class bazg
+  extends baxt
 {
-  int jdField_a_of_type_Int = 0;
+  ajvz jdField_a_of_type_Ajvz = null;
+  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
   
-  bazg(bazb parambazb) {}
+  public bazg(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, byte paramByte, int paramInt3, boolean paramBoolean1, Drawable paramDrawable1, Drawable paramDrawable2, baxu parambaxu, boolean paramBoolean2)
+  {
+    super(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, 100, paramBoolean1, paramDrawable1, paramDrawable2, parambaxu, paramBoolean2);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = ((NearbyAppInterface)paramAppInterface);
+  }
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  protected Bitmap a(boolean paramBoolean)
+  {
+    return b();
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Ajvz != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.jdField_a_of_type_Ajvz);
+      this.jdField_a_of_type_Ajvz = null;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = null;
+    super.a();
+  }
+  
+  protected void a(AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = ((NearbyAppInterface)paramAppInterface);
+  }
+  
+  protected boolean a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("WebLog_SwiftIphoneTitleBarUI", 2, "-->onScrollChanged:" + paramInt1 + "," + paramInt2 + "," + paramInt3 + "," + paramInt4);
+      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "requestDecode.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
     }
-    if (ImmersiveUtils.isSupporImmersive() == 1) {}
-    for (paramInt1 = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());; paramInt1 = 0)
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) {
+      return false;
+    }
+    FaceDecodeTask.a(FaceDecodeTask.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, this));
+    return true;
+  }
+  
+  protected Bitmap b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) {
+      return null;
+    }
+    String str = FaceInfo.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.c);
+    return ((bayd)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(216)).a(str);
+  }
+  
+  protected void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onNeedDownload.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
+    }
+    Bitmap localBitmap = b();
+    if (localBitmap != null)
     {
-      paramInt1 = paramInt1 + azvv.a(BaseApplicationImpl.getApplication(), 50.0F) + 180;
-      if (Math.abs(paramInt2 - this.jdField_a_of_type_Int) > 20) {
-        if (paramInt2 < paramInt1 / 3) {
-          this.jdField_a_of_type_Bazb.a.t = true;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onNeedDownload.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo + ",bitmap is already in cache...");
       }
-      while (paramInt2 >= paramInt1 / 3) {
-        for (;;)
-        {
-          this.jdField_a_of_type_Int = paramInt2;
-          this.jdField_a_of_type_Bazb.g();
-          return;
-          if (paramInt2 >= paramInt1) {
-            this.jdField_a_of_type_Bazb.a.t = false;
-          }
-        }
-      }
-      this.jdField_a_of_type_Bazb.a.t = true;
-      this.jdField_a_of_type_Int = paramInt2;
-      this.jdField_a_of_type_Bazb.g();
+      a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, localBitmap);
       return;
     }
+    if (this.jdField_a_of_type_Ajvz == null)
+    {
+      this.jdField_a_of_type_Ajvz = new bazh(this);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.addObserver(this.jdField_a_of_type_Ajvz);
+    }
+    ((ajvy)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(4)).a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bazg
  * JD-Core Version:    0.7.0.1
  */

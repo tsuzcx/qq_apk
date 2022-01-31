@@ -1,10 +1,15 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import android.text.TextUtils;
-import bace;
+import aukn;
+import auko;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 class DesktopDataManager$30
   implements Runnable
@@ -14,14 +19,22 @@ class DesktopDataManager$30
   public void run()
   {
     Object localObject = MiniAppUtils.getAppInterface();
-    if (localObject != null)
+    if (localObject == null) {
+      QLog.e("DesktopDataManager", 1, "initLocalDataRunnable, app is null.");
+    }
+    for (;;)
     {
-      localObject = ((AppInterface)localObject).getAccount();
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+      return;
+      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager().a(MiniAppRedDotEntity.class, MiniAppRedDotEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+      if ((localObject != null) && (((List)localObject).size() > 0))
       {
-        localObject = "/data/data/com.tencent.mobileqq/shared_prefs/" + (String)localObject + "_mini_app_recommend_exposure.xml";
-        if ((bace.d((String)localObject)) && (QLog.isColorLevel())) {
-          QLog.d("DesktopDataManager", 2, "delete : " + (String)localObject);
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          MiniAppRedDotEntity localMiniAppRedDotEntity = (MiniAppRedDotEntity)((Iterator)localObject).next();
+          if ((localMiniAppRedDotEntity != null) && (!TextUtils.isEmpty(localMiniAppRedDotEntity.appId))) {
+            DesktopDataManager.access$2800(this.this$0).put(localMiniAppRedDotEntity.appId, Integer.valueOf(localMiniAppRedDotEntity.wnsPushRedDotNum));
+          }
         }
       }
     }

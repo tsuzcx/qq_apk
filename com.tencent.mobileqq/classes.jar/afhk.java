@@ -1,38 +1,18 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
 
 public class afhk
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements aftp
 {
-  public afhk(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
+  public afhk(TroopView paramTroopView) {}
   
-  public void onGlobalLayout()
+  public long a()
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
-    {
-      this.a.b(this.a.e);
-      this.a.c(this.a.e);
-      View localView = this.a.a.getChildAt(this.a.e);
-      if (localView != null)
-      {
-        this.a.h = localView.getLeft();
-        this.a.invalidate();
-      }
-      return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
+    return TroopView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afhk
  * JD-Core Version:    0.7.0.1
  */

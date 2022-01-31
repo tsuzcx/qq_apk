@@ -1,19 +1,21 @@
-class aoll
-  extends aokw
+import android.graphics.Rect;
+import android.view.View;
+
+public abstract interface aoll
 {
-  public aoll(aokk paramaokk)
-  {
-    super(paramaokk);
-  }
+  public abstract int a();
   
-  protected String a()
-  {
-    return "StateSenderCancelSend";
-  }
+  public abstract Rect a(int paramInt);
+  
+  public abstract View a(int paramInt);
+  
+  public abstract int b();
+  
+  public abstract int c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aoll
  * JD-Core Version:    0.7.0.1
  */

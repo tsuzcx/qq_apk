@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
 import android.os.Build;
-import bfpk;
+import bgxr;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 import java.util.Map;
@@ -65,7 +65,7 @@ public class LpReport_dc03179
     if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null) && (BaseApplicationImpl.getApplication().getRuntime().getAccount() != null)) {
       LpReportUtils.safePut(localHashMap, "uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
     }
-    LpReportUtils.safePut(localHashMap, "qua", bfpk.a());
+    LpReportUtils.safePut(localHashMap, "qua", bgxr.a());
     LpReportUtils.safePut(localHashMap, "total_photo_count", this.total_photo_count);
     LpReportUtils.safePut(localHashMap, "scan_photo_count", this.scan_photo_count);
     LpReportUtils.safePut(localHashMap, "scanned_exif_count", this.scanned_exif_count);

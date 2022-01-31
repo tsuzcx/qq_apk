@@ -1,16 +1,66 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import GIFT_MALL_PROTOCOL.doufu_piece_rsp;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.manager.MonitorManager;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class axbq
-  implements View.OnClickListener
+public class axbq
+  extends MSFServlet
 {
-  axbq(axbo paramaxbo, axba paramaxba, axaw paramaxaw, String paramString) {}
-  
-  public void onClick(View paramView)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (axbo.a(this.jdField_a_of_type_Axbo) != null) {
-      axbo.a(this.jdField_a_of_type_Axbo).a(this.jdField_a_of_type_Axba, (axbb)this.jdField_a_of_type_Axaw, this.jdField_a_of_type_JavaLangString);
+    if ((paramIntent == null) || (paramFromServiceMsg == null))
+    {
+      MonitorManager.a().a(19, 1, " 请求失败 intent =" + paramIntent + "  respone= " + paramFromServiceMsg, false);
+      return;
     }
+    int i = paramFromServiceMsg.getResultCode();
+    paramIntent = new Bundle();
+    paramIntent.putString("msg", "servlet result code is " + i);
+    if (i == 1000)
+    {
+      paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
+      doufu_piece_rsp localdoufu_piece_rsp = bhbo.a(paramFromServiceMsg, new int[1]);
+      if (localdoufu_piece_rsp != null)
+      {
+        paramIntent.putInt("ret", 0);
+        paramIntent.putSerializable("data", localdoufu_piece_rsp);
+        notifyObserver(null, 1009, true, paramIntent, atzo.class);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("BirthDayNoticeServlet", 2, "GET_BIRTHDAY_DATA fail, decode result is null");
+      }
+      paramIntent.putInt("ret", -2);
+      MonitorManager.a().a(19, 2, " 解包失败 " + paramFromServiceMsg, false);
+      notifyObserver(null, 1009, false, paramIntent, atzo.class);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BirthDayNoticeServlet", 2, "GET_BIRTHDAY_DATA fail, resultCode=" + i);
+    }
+    MonitorManager.a().a(19, 3, " 后台返回失败， 错误码 " + i + " 错误信息 " + paramFromServiceMsg.getBusinessFailMsg(), false);
+    paramIntent.putInt("ret", -3);
+    notifyObserver(null, 1009, false, paramIntent, atzo.class);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    bhbo localbhbo = new bhbo(Long.valueOf(paramIntent.getLongExtra("selfuin", 0L)).longValue(), new HashMap());
+    byte[] arrayOfByte = localbhbo.encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null)
+    {
+      QLog.e("BirthDayNoticeServlet", 1, "onSend request encode result is null.cmd=" + localbhbo.uniKey());
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localbhbo.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

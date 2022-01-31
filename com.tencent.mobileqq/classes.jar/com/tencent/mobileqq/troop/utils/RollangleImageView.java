@@ -15,11 +15,11 @@ import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import apck;
-import azgv;
-import azgy;
-import azjg;
-import bacm;
+import apue;
+import bahy;
+import baib;
+import bakj;
+import bbdr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -28,7 +28,7 @@ public class RollangleImageView
   extends ImageView
 {
   public static MQLruCache<String, Object> a;
-  azgy jdField_a_of_type_Azgy = null;
+  baib jdField_a_of_type_Baib = null;
   public String a;
   boolean jdField_a_of_type_Boolean = false;
   public String b;
@@ -74,24 +74,24 @@ public class RollangleImageView
     }
     try
     {
-      localObject1 = BitmapFactory.decodeResource((Resources)localObject5, 2130841892);
+      localObject1 = BitmapFactory.decodeResource((Resources)localObject5, 2130841985);
       jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put("troopfilerollangleimage://", localObject1);
       localObject3 = localObject1;
       localObject2 = localObject4;
       if (localObject4 == null)
       {
-        localObject2 = BitmapFactory.decodeResource((Resources)localObject5, 2130841891);
+        localObject2 = BitmapFactory.decodeResource((Resources)localObject5, 2130841984);
         jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put("troopfilerollangleimageborder://", localObject2);
         localObject3 = localObject1;
       }
-      localObject1 = bacm.a(new BitmapFactory.Options(), paramString, 128);
+      localObject1 = bbdr.a(new BitmapFactory.Options(), paramString, 128);
       i = paramString.getWidth();
     }
     catch (OutOfMemoryError paramString)
     {
       try
       {
-        paramString = bacm.a(paramString, (BitmapFactory.Options)localObject1);
+        paramString = bbdr.a(paramString, (BitmapFactory.Options)localObject1);
         if (paramString != null) {
           break label181;
         }
@@ -156,37 +156,37 @@ public class RollangleImageView
     if (!TextUtils.isEmpty(this.b))
     {
       if (paramBoolean) {
-        localBitmap = azgv.a().b(this.b, this);
+        localBitmap = bahy.a().b(this.b, this);
       }
     }
     else {
       return localBitmap;
     }
-    return azgv.a().a(this.b, this);
+    return bahy.a().a(this.b, this);
   }
   
   public static void setSuspendLoad(boolean paramBoolean)
   {
-    azgv.a().a(paramBoolean);
+    bahy.a().a(paramBoolean);
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Azgy != null)
+    if (this.jdField_a_of_type_Baib != null)
     {
-      this.jdField_a_of_type_Azgy.cancel(true);
-      this.jdField_a_of_type_Azgy = null;
+      this.jdField_a_of_type_Baib.cancel(true);
+      this.jdField_a_of_type_Baib = null;
     }
-    this.jdField_a_of_type_Azgy = new azgy(this);
-    this.jdField_a_of_type_Azgy.execute(new Boolean[] { Boolean.valueOf(paramBoolean) });
+    this.jdField_a_of_type_Baib = new baib(this);
+    this.jdField_a_of_type_Baib.execute(new Boolean[] { Boolean.valueOf(paramBoolean) });
   }
   
   public void setParams(String paramString1, String paramString2)
   {
-    if ((azjg.a(paramString1, this.jdField_a_of_type_JavaLangString)) && (azjg.a(paramString2, this.b))) {
+    if ((bakj.a(paramString1, this.jdField_a_of_type_JavaLangString)) && (bakj.a(paramString2, this.b))) {
       return;
     }
-    if (azgv.a().jdField_a_of_type_Boolean)
+    if (bahy.a().jdField_a_of_type_Boolean)
     {
       setParamsOnScrolling(paramString1, paramString2);
       return;
@@ -198,10 +198,10 @@ public class RollangleImageView
   
   public void setParamsOnScrolling(String paramString1, String paramString2)
   {
-    Bitmap localBitmap = azgv.a().a(paramString2, this);
+    Bitmap localBitmap = bahy.a().a(paramString2, this);
     if (localBitmap == null)
     {
-      setImageResource(apck.b(paramString1));
+      setImageResource(apue.b(paramString1));
       return;
     }
     this.jdField_a_of_type_JavaLangString = paramString1;

@@ -3,6 +3,7 @@ package com.tencent.mobileqq.activity.miniaio;
 public class MiniChatConstants
 {
   public static final String ACTION_GET_UNREAD = "action_get_unread";
+  public static final String ACTION_MINI_AIO_TO_AIO = "action_mini_aio_to_aio";
   public static final String ACTION_MINI_DIRECT_SHARE_FAIL_CALLBACK = "actionMiniDirectShareFailCallback";
   public static final String ACTION_MINI_DIRECT_SHARE_SUC_CALLBACK = "actionMiniDirectShareSucCallback";
   public static final String ACTION_MINI_MSGTAB_NOTIFY_TO_CONVERSATION = "action_mini_msgtab_notify_to_conversation";
@@ -65,6 +66,7 @@ public class MiniChatConstants
   public static final int MINI_MSG_BUSINESS_KUOLIE = 20;
   public static final int MINI_MSG_BUSINESS_LIMIXIU = 16;
   public static final int MINI_MSG_BUSINESS_MICROGAME = 23;
+  public static final int MINI_MSG_BUSINESS_MINIAPP = 27;
   public static final int MINI_MSG_BUSINESS_NEWS = 9;
   public static final int MINI_MSG_BUSINESS_NOW = 11;
   public static final int MINI_MSG_BUSINESS_PUBLICACCOUNT = 13;
@@ -86,6 +88,7 @@ public class MiniChatConstants
   public static final int MINI_MSG_ENTRY_TYPE_WEB = 3;
   public static final int MINI_MSG_FILTER_TYPE_ALL = 1;
   public static final int MINI_MSG_FILTER_TYPE_UNREAD = 0;
+  public static final int MINI_REQUEST_CODE_FROM_WEB_FRAGMENT = 200;
   public static final String MINI_TAG = "mini_msg_";
   public static final int MINi_AIO_MINMUN_HEIGHT = 300;
   public static final int MSG_EFRESH_FONT_BUBBLE = 8;

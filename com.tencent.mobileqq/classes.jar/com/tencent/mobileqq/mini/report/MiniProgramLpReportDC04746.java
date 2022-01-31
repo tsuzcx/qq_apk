@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.report;
 
 import android.os.Build.VERSION;
-import bbtm;
-import bfpk;
+import bcxm;
+import bgxr;
 import java.util.ArrayList;
 import java.util.List;
-import mpl;
+import nam;
 
 public class MiniProgramLpReportDC04746
 {
@@ -21,15 +21,15 @@ public class MiniProgramLpReportDC04746
   public static void report(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(MiniProgramReportHelper.newEntry("uin", String.valueOf(bbtm.a().a())));
+    localArrayList.add(MiniProgramReportHelper.newEntry("uin", String.valueOf(bcxm.a().a())));
     localArrayList.add(MiniProgramReportHelper.newEntry("touin", ""));
     localArrayList.add(MiniProgramReportHelper.newEntry("actiontype", String.valueOf(paramInt1)));
     localArrayList.add(MiniProgramReportHelper.newEntry("subactiontype", String.valueOf(paramInt2)));
     localArrayList.add(MiniProgramReportHelper.newEntry("action_source", "shanping"));
-    localArrayList.add(MiniProgramReportHelper.newEntry("qua", bfpk.a()));
+    localArrayList.add(MiniProgramReportHelper.newEntry("qua", bgxr.a()));
     localArrayList.add(MiniProgramReportHelper.newEntry("platform", "android"));
     localArrayList.add(MiniProgramReportHelper.newEntry("os_version", Build.VERSION.RELEASE));
-    localArrayList.add(MiniProgramReportHelper.newEntry("network_type", mpl.a()));
+    localArrayList.add(MiniProgramReportHelper.newEntry("network_type", nam.a()));
     localArrayList.add(MiniProgramReportHelper.newEntry("appid", paramString1));
     localArrayList.add(MiniProgramReportHelper.newEntry("app_version", paramString2));
     paramString1 = MiniProgramReportHelper.newSingleDcData(8, String.valueOf(0), localArrayList, null);

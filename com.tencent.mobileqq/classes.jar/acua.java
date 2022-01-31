@@ -1,9 +1,55 @@
-final class acua
-  implements actr<actz>
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.activity.aio.AudioSenorManager;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+
+public class acua
+  implements SensorEventListener
 {
-  public actz a(acto paramacto)
+  public acua(AudioSenorManager paramAudioSenorManager) {}
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    return new actz(paramacto);
+    int i = 1;
+    if (actn.b()) {}
+    label141:
+    label144:
+    for (;;)
+    {
+      return;
+      boolean bool;
+      if (paramSensorEvent.values[0] < AudioSenorManager.c(this.a))
+      {
+        bool = true;
+        label28:
+        QLog.d("AudioSenorManager", 2, "ProximityEventListener$onSensorChanged close =" + bool + " | mIsMoving =" + this.a.a);
+        if ((!AudioHelper.c()) && (bool) && (!this.a.a)) {
+          continue;
+        }
+        if (!bool) {
+          break label141;
+        }
+      }
+      for (;;)
+      {
+        if (i == AudioSenorManager.a(this.a)) {
+          break label144;
+        }
+        AudioSenorManager.a(this.a, i);
+        if (AudioSenorManager.a(this.a) == null) {
+          break;
+        }
+        AudioSenorManager.a(this.a).a(i);
+        return;
+        bool = false;
+        break label28;
+        i = 0;
+      }
+    }
   }
 }
 

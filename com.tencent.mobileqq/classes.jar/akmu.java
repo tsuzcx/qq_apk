@@ -1,128 +1,112 @@
-import android.content.Context;
-import android.opengl.Matrix;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.locks.ReentrantLock;
+import java.lang.ref.SoftReference;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Observable;
+import mqq.manager.Manager;
 
 public class akmu
+  extends Observable
+  implements Manager
 {
-  public static boolean a;
-  public static final float[] a;
-  private akmw jdField_a_of_type_Akmw;
-  private aljf jdField_a_of_type_Aljf;
-  private aljj jdField_a_of_type_Aljj = new akmv(this);
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
-  private boolean jdField_b_of_type_Boolean;
-  private float[] jdField_b_of_type_ArrayOfFloat = new float[16];
-  private float[] c;
-  private float[] d = new float[4];
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<String, SoftReference<akmw>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  static
+  public akmu(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_ArrayOfFloat = new float[16];
-    Matrix.setIdentityM(jdField_a_of_type_ArrayOfFloat, 0);
-    jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public static boolean a()
+  private akmw a(String paramString)
   {
-    String str = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.ARCfg.name());
-    if (!TextUtils.isEmpty(str))
+    for (;;)
     {
-      String[] arrayOfString = new String[1];
-      arrayOfString[0] = "";
-      int i = DeviceProfileManager.a(str, arrayOfString, new ajhb());
-      boolean bool;
-      if (i >= 1) {
-        if (Integer.valueOf(arrayOfString[0]).intValue() == 1) {
-          bool = true;
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      {
+        localObject1 = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        if (localObject1 != null)
+        {
+          localObject1 = (akmw)((SoftReference)localObject1).get();
+          Object localObject2 = localObject1;
+          if (localObject1 == null)
+          {
+            localObject2 = new akmw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new akmv(this));
+            this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new SoftReference(localObject2));
+          }
+          return localObject2;
         }
       }
-      for (;;)
-      {
-        QLog.i("AREngine_SensorTrackManager", 1, "arCfg = " + str + ", size = " + i + ", params[0] = " + arrayOfString[0] + ", isUseGameRotationVector = " + bool);
-        return bool;
-        bool = false;
-        continue;
-        bool = false;
-      }
+      Object localObject1 = null;
     }
-    return false;
+  }
+  
+  public FullMessageSearchResult a(String paramString)
+  {
+    return a(paramString).b();
   }
   
   public void a()
   {
-    a(true);
-  }
-  
-  public void a(Context paramContext, akmw paramakmw)
-  {
-    long l = System.currentTimeMillis();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Akmw = paramakmw;
-    b();
-    jdField_a_of_type_Boolean = this.jdField_a_of_type_Aljf.b();
-    akue.a().c(System.currentTimeMillis() - l);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_b_of_type_Boolean != paramBoolean)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      QLog.d("SensorTrackManager", 2, "enableSensor enabled: " + paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.FullMessageSearch", 2, "stopSearch " + this.jdField_a_of_type_JavaUtilHashMap.size());
     }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aljf == null) {
-      if (!a()) {
-        break label57;
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject2 = (SoftReference)localIterator.next();
+        if (localObject2 != null)
+        {
+          localObject2 = (akmw)((SoftReference)localObject2).get();
+          if (localObject2 != null) {
+            ((akmw)localObject2).b(2);
+          }
+        }
       }
     }
-    label57:
-    for (this.jdField_a_of_type_Aljf = new aljf(this.jdField_a_of_type_AndroidContentContext, 5);; this.jdField_a_of_type_Aljf = new aljf(this.jdField_a_of_type_AndroidContentContext, 4))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SensorTrackManager", 2, "startupSensor");
-      }
-      this.jdField_a_of_type_Aljf.a(this.jdField_a_of_type_Aljj, 1);
-      return;
-    }
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
   }
   
-  public void c()
+  public void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SensorTrackManager", 2, "stopSensor");
+      QLog.d("Q.msg.FullMessageSearch", 2, "pauseSearch " + paramString);
     }
-    if (this.jdField_a_of_type_Aljf != null)
+    for (;;)
     {
-      this.jdField_a_of_type_Aljf.a();
-      this.jdField_a_of_type_Aljf = null;
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      {
+        paramString = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        if (paramString != null)
+        {
+          paramString = (akmw)paramString.get();
+          if (paramString != null) {
+            paramString.a();
+          }
+          return;
+        }
+      }
+      paramString = null;
     }
   }
   
-  public void d()
+  public FullMessageSearchResult b(String paramString)
   {
-    a(false);
+    return a(paramString).c();
   }
   
-  public void e()
+  public void onDestroy()
   {
-    c();
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_b_of_type_Boolean = false;
-    this.c = null;
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akmu
  * JD-Core Version:    0.7.0.1
  */

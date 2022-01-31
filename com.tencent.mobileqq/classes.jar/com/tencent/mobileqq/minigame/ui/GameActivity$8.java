@@ -9,10 +9,10 @@ class GameActivity$8
   
   public void run()
   {
-    if ((this.this$0.isResume()) && (GameActivity.access$1000(this.this$0)) && (!GameActivity.access$1100(this.this$0)))
+    if ((this.this$0.isResume()) && (GameActivity.access$900(this.this$0)) && (!GameActivity.access$1000(this.this$0)))
     {
-      GameActivity.access$1102(this.this$0, true);
-      GameActivity.access$1200(this.this$0).onResume();
+      GameActivity.access$1002(this.this$0, true);
+      GameActivity.access$1100(this.this$0).onResume();
     }
   }
 }

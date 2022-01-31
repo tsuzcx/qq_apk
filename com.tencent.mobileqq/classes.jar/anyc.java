@@ -1,27 +1,45 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.ArrayList;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
 
-class anyc
-  implements View.OnClickListener
+public class anyc
+  extends aoah
 {
-  anyc(anyb paramanyb, View paramView) {}
+  public EmojiStickerManager.StickerInfo a;
+  public boolean a;
+  public int c = -1;
+  public int d;
+  public int e;
+  public int f = 0;
+  public int g;
+  public String h;
+  public String i;
   
-  public void onClick(View paramView)
+  public Drawable a(Context paramContext, float paramFloat)
   {
-    paramView = (aonx)this.jdField_a_of_type_AndroidViewView.getTag();
-    this.jdField_a_of_type_Anyb.a.e = paramView.a;
-    paramView = (FileInfo)this.jdField_a_of_type_Anyb.a.b.get(this.jdField_a_of_type_Anyb.a.e);
-    if ((!apdh.a(paramView.c())) || (apdh.c(paramView.c())))
-    {
-      apck.d(paramView.c());
-      this.jdField_a_of_type_Anyb.a.b.remove(this.jdField_a_of_type_Anyb.a.e);
-      LocalFileBrowserActivity.a(this.jdField_a_of_type_Anyb.a);
-      return;
-    }
-    apcb.a(2131626809);
+    return ayla.a(paramContext.getResources(), this.e);
+  }
+  
+  public Drawable a(Context paramContext, float paramFloat, int paramInt1, int paramInt2)
+  {
+    return ayla.a(paramContext.getResources(), this.e);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo) {}
+  
+  public Drawable b(Context paramContext, float paramFloat)
+  {
+    return a(paramContext, paramFloat);
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "EmoticonInfo[type: " + this.c + "  action: " + this.h + "]";
   }
 }
 

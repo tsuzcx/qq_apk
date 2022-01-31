@@ -11,9 +11,11 @@ public final class PushRegisterInfo
   static ArrayList cache_pushIds;
   public byte bKikPC = 0;
   public byte bKikWeak = 0;
+  public int batteryCapacity = 0;
   public long extStatus = -1L;
   public long iLargeSeq = 0L;
   public int iStatus = 0;
+  public int powerConnect = -1;
   public ArrayList pushIds = null;
   public long timeStamp = 0L;
   public String uin = "";
@@ -47,6 +49,8 @@ public final class PushRegisterInfo
     this.timeStamp = paramJceInputStream.read(this.timeStamp, 6, true);
     this.iLargeSeq = paramJceInputStream.read(this.iLargeSeq, 7, false);
     this.extStatus = paramJceInputStream.read(this.extStatus, 8, false);
+    this.batteryCapacity = paramJceInputStream.read(this.batteryCapacity, 9, false);
+    this.powerConnect = paramJceInputStream.read(this.powerConnect, 10, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -59,6 +63,8 @@ public final class PushRegisterInfo
     paramJceOutputStream.write(this.timeStamp, 6);
     paramJceOutputStream.write(this.iLargeSeq, 7);
     paramJceOutputStream.write(this.extStatus, 8);
+    paramJceOutputStream.write(this.batteryCapacity, 9);
+    paramJceOutputStream.write(this.powerConnect, 10);
   }
 }
 

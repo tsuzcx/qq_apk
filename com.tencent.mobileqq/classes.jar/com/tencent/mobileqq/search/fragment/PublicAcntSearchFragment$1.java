@@ -12,7 +12,7 @@ class PublicAcntSearchFragment$1
   {
     this.this$0.c.setVisibility(0);
     this.this$0.b.setVisibility(8);
-    this.this$0.h_(false);
+    this.this$0.g_(false);
   }
 }
 

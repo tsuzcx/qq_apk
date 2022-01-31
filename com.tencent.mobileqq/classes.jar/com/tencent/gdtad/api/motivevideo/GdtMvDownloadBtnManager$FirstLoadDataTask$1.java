@@ -1,7 +1,7 @@
 package com.tencent.gdtad.api.motivevideo;
 
 import java.lang.ref.WeakReference;
-import yny;
+import yxs;
 
 class GdtMvDownloadBtnManager$FirstLoadDataTask$1
   implements Runnable
@@ -10,7 +10,7 @@ class GdtMvDownloadBtnManager$FirstLoadDataTask$1
   
   public void run()
   {
-    yny.a("FirstLoadDataTask", "run() called");
+    yxs.a("FirstLoadDataTask", "run() called");
     if (GdtMvDownloadBtnManager.FirstLoadDataTask.a(this.this$0)) {}
     GdtMvDownloadBtnManager localGdtMvDownloadBtnManager;
     do

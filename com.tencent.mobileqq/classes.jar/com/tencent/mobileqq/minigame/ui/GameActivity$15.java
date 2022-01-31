@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
 
 class GameActivity$15
   implements Runnable
@@ -9,7 +10,10 @@ class GameActivity$15
   
   public void run()
   {
-    GameActivity.access$1200(this.this$0).onDestroy();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("param_proc_name", BaseApplicationImpl.getApplication().getQQProcessName());
+    localBundle.putString("param_proc_modulename", "mini_app_client_module");
+    this.this$0.onProcessBackground(localBundle);
   }
 }
 

@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
-import java.util.List;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
-class aroa
-  implements arol<Integer, List<EmoticonPackage>>
+public class aroa
+  implements xem
 {
-  aroa(arnz paramarnz) {}
+  public aroa(UiApiPlugin paramUiApiPlugin) {}
   
-  public List<EmoticonPackage> a(Integer paramInteger)
+  public void a()
   {
-    return this.a.a(paramInteger.intValue());
+    this.a.dispatchJsEvent("qbrowserPullDown", null, null);
+    this.a.h = true;
   }
 }
 

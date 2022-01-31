@@ -1,126 +1,58 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.util.Locale;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetLocation;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetLocation;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class tmq
-  extends tog
-  implements IEventReceiver, vma, vmc, vqq, vqr
+  extends syv<tok>
 {
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout = (FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131306141);
-  private tms jdField_a_of_type_Tms;
-  private tmt jdField_a_of_type_Tmt;
-  private vly jdField_a_of_type_Vly;
-  private vqf jdField_a_of_type_Vqf;
-  private boolean c;
+  private static final String a = sxp.a("StorySvc.get_location");
+  public final int c;
+  public final int d;
+  public final int e;
   
-  public tmq(@NonNull ViewGroup paramViewGroup)
+  public tmq(int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramViewGroup);
-    paramViewGroup.setVisibility(4);
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  public String a()
   {
-    return paramViewGroup;
+    return a;
   }
   
-  public void a(int paramInt1, int paramInt2, @NonNull tnz paramtnz, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
+  public syq a(byte[] paramArrayOfByte)
   {
-    super.a(paramInt1, paramInt2, paramtnz, paramStoryPlayerGroupHolder);
-    if (!this.jdField_a_of_type_Tnz.c()) {
-      return;
-    }
-    paramtnz = ((sqd)sqg.a(5)).b(this.jdField_a_of_type_Tnz.a);
-    if ((paramtnz != null) && (paramtnz.isPollVideo()))
+    qqstory_service.RspGetLocation localRspGetLocation = new qqstory_service.RspGetLocation();
+    try
     {
-      if (this.jdField_a_of_type_Vly == null) {
-        this.jdField_a_of_type_Vly = vlx.a(this.jdField_a_of_type_AndroidWidgetFrameLayout.getContext(), 1, 1, null);
-      }
-      tfx.a(this, this, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_Vly, 0, paramtnz);
-      tfx.b(this, this, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_Vly, paramInt2, paramtnz);
-      return;
+      localRspGetLocation.mergeFrom(paramArrayOfByte);
+      return new tok(localRspGetLocation);
     }
-    if ((paramtnz != null) && (paramtnz.isInteractVideo()))
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      if (this.jdField_a_of_type_Vqf == null) {
-        this.jdField_a_of_type_Vqf = new vqp(this.jdField_a_of_type_AndroidWidgetFrameLayout.getContext());
-      }
-      tfw.a(this, this, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_Vqf, paramInt2, paramtnz);
-      tfw.b(this, this, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_Vqf, paramInt2, paramtnz);
-      return;
+      paramArrayOfByte.printStackTrace();
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(4);
+    return null;
   }
   
-  public void a(vly paramvly)
+  protected byte[] a()
   {
-    paramvly = ((sqd)sqg.a(5)).b(this.jdField_a_of_type_Tnz.a);
-    if (paramvly != null)
-    {
-      urp.a("play_video", "vote_detail", 1, 0, new String[0]);
-      Intent localIntent = new Intent(a(), QQBrowserActivity.class);
-      localIntent.putExtra("url", String.format(Locale.getDefault(), "http://story.now.qq.com/m/vote/index.html?_wv=3&_nav_alpha=0&vid=%s", new Object[] { paramvly.mVid }));
-      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-      a().startActivity(localIntent);
-    }
+    qqstory_service.ReqGetLocation localReqGetLocation = new qqstory_service.ReqGetLocation();
+    localReqGetLocation.coordinate.set(this.c);
+    localReqGetLocation.gps.lng.set(this.d);
+    localReqGetLocation.gps.lat.set(this.e);
+    localReqGetLocation.gps.setHasFlag(true);
+    return localReqGetLocation.toByteArray();
   }
   
-  public void a(vly paramvly, vmg paramvmg)
+  public String toString()
   {
-    StoryVideoItem localStoryVideoItem = ((sqd)sqg.a(5)).b(this.jdField_a_of_type_Tnz.a);
-    if (localStoryVideoItem == null) {
-      return;
-    }
-    tfx.a(this, this, paramvly, this.b, this.jdField_a_of_type_Tnz.b, localStoryVideoItem, paramvmg);
-  }
-  
-  public void a(vqp paramvqp)
-  {
-    paramvqp = ((sqd)sqg.a(5)).b(this.jdField_a_of_type_Tnz.a);
-    if (paramvqp != null)
-    {
-      urp.a("play_video", "vote_detail", 2, 0, new String[0]);
-      Intent localIntent = new Intent(a(), QQBrowserActivity.class);
-      localIntent.putExtra("url", String.format(Locale.getDefault(), "http://story.now.qq.com/m/score/index.html?vid=%s&_wv=3&_nav_alpha=0", new Object[] { paramvqp.mVid }));
-      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-      a().startActivity(localIntent);
-    }
-  }
-  
-  public void a(vqp paramvqp, float paramFloat)
-  {
-    StoryVideoItem localStoryVideoItem = ((sqd)sqg.a(5)).b(this.jdField_a_of_type_Tnz.a);
-    if (localStoryVideoItem == null)
-    {
-      urk.e("InteractWidgetPageHolder", "video item is null while rate changed.");
-      return;
-    }
-    tfw.a(this.b, this.jdField_a_of_type_Tnz.b, localStoryVideoItem, paramvqp, paramFloat);
-  }
-  
-  protected void b()
-  {
-    super.b();
-    this.c = true;
-    this.jdField_a_of_type_Tms = new tms(this);
-    this.jdField_a_of_type_Tmt = new tmt(this);
-    sgi.a().registerSubscriber(this.jdField_a_of_type_Tms);
-    sgi.a().registerSubscriber(this.jdField_a_of_type_Tmt);
-    a(new tmr(this));
-  }
-  
-  public boolean isValidate()
-  {
-    return this.c;
+    return "GetLocationRequest{mCoordinate=" + this.c + ", mLng=" + this.d + ", mLat=" + this.e + '}';
   }
 }
 

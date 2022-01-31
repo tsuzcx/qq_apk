@@ -1,27 +1,33 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.annotation.Nullable;
 
 public class twr
-  extends QQUIEventReceiver<twp, sxr>
 {
-  public twr(@NonNull twp paramtwp)
+  @Nullable
+  public String a;
+  public two a;
+  @Nullable
+  public twp a;
+  @Nullable
+  public String b;
+  
+  public twr(@Nullable two paramtwo, @Nullable String paramString1, @Nullable String paramString2)
   {
-    super(paramtwp);
+    this.jdField_a_of_type_Two = paramtwo;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  public void a(@NonNull twp paramtwp, @NonNull sxr paramsxr)
+  public twr(twr paramtwr)
   {
-    if (paramsxr.a.isSuccess())
-    {
-      urk.a(this.TAG, "receive user info event. %s.", paramsxr.toString());
-      paramtwp.i();
-    }
+    this.jdField_a_of_type_Two = paramtwr.jdField_a_of_type_Two;
+    this.jdField_a_of_type_JavaLangString = paramtwr.jdField_a_of_type_JavaLangString;
+    this.b = paramtwr.b;
+    this.jdField_a_of_type_Twp = paramtwr.jdField_a_of_type_Twp;
   }
   
-  public Class acceptEventClass()
+  public String toString()
   {
-    return sxr.class;
+    return "StartInfo{mGroupId=" + this.jdField_a_of_type_Two + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", feedId='" + this.b + '\'' + '}';
   }
 }
 

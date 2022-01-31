@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.applets;
 
-import bgqw;
-import bgqx;
+import bhzv;
+import bhzw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import mqq.app.AppRuntime;
@@ -13,25 +13,25 @@ public final class PublicAccountEventReport$11
   
   public void run()
   {
-    bgqx localbgqx = new bgqx();
+    bhzw localbhzw = new bhzw();
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     String str = "";
     if (localAppRuntime != null) {
       str = localAppRuntime.getAccount();
     }
     long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    localbgqx.jdField_e_of_type_JavaLangString = "vab_push";
-    localbgqx.jdField_f_of_type_JavaLangString = "vab_push";
-    localbgqx.b = (str + "_" + l);
-    localbgqx.jdField_a_of_type_Int = 1;
-    localbgqx.g = this.jdField_a_of_type_JavaLangString;
-    localbgqx.h = "";
-    localbgqx.jdField_a_of_type_Long = l;
-    localbgqx.d = this.jdField_a_of_type_Int;
-    localbgqx.k = Integer.toString(this.b);
-    localbgqx.jdField_e_of_type_Int = 1;
-    localbgqx.jdField_f_of_type_Int = 1;
-    bgqw.a().a(localbgqx);
+    localbhzw.jdField_e_of_type_JavaLangString = "vab_push";
+    localbhzw.jdField_f_of_type_JavaLangString = "vab_push";
+    localbhzw.b = (str + "_" + l);
+    localbhzw.jdField_a_of_type_Int = 1;
+    localbhzw.g = this.jdField_a_of_type_JavaLangString;
+    localbhzw.h = "";
+    localbhzw.jdField_a_of_type_Long = l;
+    localbhzw.d = this.jdField_a_of_type_Int;
+    localbhzw.k = Integer.toString(this.b);
+    localbhzw.jdField_e_of_type_Int = 1;
+    localbhzw.jdField_f_of_type_Int = 1;
+    bhzv.a().a(localbhzw);
   }
 }
 

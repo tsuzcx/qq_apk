@@ -1,6 +1,13 @@
-public abstract interface vgo
+public class vgo
 {
-  public abstract void a(vgv paramvgv);
+  public final String a;
+  public final vih a;
+  
+  public vgo(vih paramvih, String paramString)
+  {
+    this.jdField_a_of_type_Vih = paramvih;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

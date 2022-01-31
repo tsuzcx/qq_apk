@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import android.view.View;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.widget.AdapterView;
 
-public class arwl
-  implements arus
+class arwl
+  implements bfpc
 {
-  public arwl(MultiCardPageIndicator paramMultiCardPageIndicator) {}
+  arwl(arwh paramarwh, PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
   
-  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    MultiCardPageIndicator.a(this.a);
-    return false;
+    arwh.a(this.jdField_a_of_type_Arwh, true);
+    arwh.a(this.jdField_a_of_type_Arwh).a(paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.b()) {
+      axqw.b(null, "CliOper", "", "", "0X800A960", "0X800A960", 0, 0, "0", "0", "0", "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arwl
  * JD-Core Version:    0.7.0.1
  */

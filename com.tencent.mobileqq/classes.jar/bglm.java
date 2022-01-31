@@ -1,28 +1,29 @@
-import com.tencent.biz.ui.TouchWebView;
-import cooperation.qzone.webviewwrapper.IWebviewListener;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 class bglm
-  implements bglj
+  implements bgko
 {
-  bglm(bgll parambgll, IWebviewListener paramIWebviewListener) {}
+  bglm(bglk parambglk) {}
   
-  public void a()
+  public void a(File paramFile1, File paramFile2)
   {
-    if (bgll.a(this.jdField_a_of_type_Bgll) == null) {}
-    do
-    {
-      return;
-      if (bgll.a(this.jdField_a_of_type_Bgll).getVisibility() != 0) {
-        bgll.a(this.jdField_a_of_type_Bgll).setVisibility(0);
-      }
-    } while (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener == null);
-    this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onPageFinished();
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "dex2Oat onStart " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
+    }
   }
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void a(File paramFile1, File paramFile2, File paramFile3)
   {
-    if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener != null) {
-      this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onReceiveError(paramInt, paramString1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "dex2Oat onSuccess " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
+    }
+  }
+  
+  public void a(File paramFile1, File paramFile2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "preDex2Oat onFailed " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
     }
   }
 }

@@ -1,32 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-
 class aris
-  implements DialogInterface.OnClickListener
+  implements arja
 {
-  aris(ariq paramariq, BaseChatPie paramBaseChatPie, short paramShort) {}
+  aris(arii paramarii, arkf paramarkf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(1);
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      if (paramInt == 1)
-      {
-        this.jdField_a_of_type_Ariq.a(this.jdField_a_of_type_Short, true, true);
-        awqx.b(ariq.a(this.jdField_a_of_type_Ariq), "dc00898", "", "", "0X8009978", "0X8009978", this.jdField_a_of_type_Ariq.a(this.jdField_a_of_type_Short), this.jdField_a_of_type_Ariq.a(this.jdField_a_of_type_Short), "", "", "", "");
-      }
-    }
+    this.jdField_a_of_type_Arkf.a(paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aris
  * JD-Core Version:    0.7.0.1
  */

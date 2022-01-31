@@ -2,15 +2,15 @@ package com.tencent.biz.pubaccount.readinjoy.rebuild;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import opw;
-import pez;
-import pfg;
-import qoe;
+import pax;
+import pqt;
+import pra;
+import rap;
 
 public class FeedItemCell$7$1
   implements Runnable
 {
-  public FeedItemCell$7$1(pfg parampfg) {}
+  public FeedItemCell$7$1(pra parampra) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class FeedItemCell$7$1
     int i = 0;
     while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      localArrayList.add(((opw)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
+      localArrayList.add(((pax)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
       i += 1;
     }
     StringBuilder localStringBuilder;
@@ -33,7 +33,7 @@ public class FeedItemCell$7$1
     for (String str = "null";; str = this.a.b.toString())
     {
       QLog.d("FeedItemCell", 2, str);
-      this.a.jdField_a_of_type_Pez.a.a(this.a.jdField_a_of_type_Int, localArrayList, this.a.b, this.a.jdField_a_of_type_JavaLangObject);
+      this.a.jdField_a_of_type_Pqt.a.a(this.a.jdField_a_of_type_Int, localArrayList, this.a.b, this.a.jdField_a_of_type_JavaLangObject);
       return;
     }
   }

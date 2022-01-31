@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bfwr;
+import bhfc;
 
 public class WeishiFeedInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiFeedInfo> CREATOR = new bfwr();
+  public static final Parcelable.Creator<WeishiFeedInfo> CREATOR = new bhfc();
   public static final int FROM_TYPE_ALBUM_VIDEO = 1;
   public static final int FROM_TYPE_DEFAULT = 0;
   public static final int FROM_TYPE_WEISHI_VIDEO = 2;

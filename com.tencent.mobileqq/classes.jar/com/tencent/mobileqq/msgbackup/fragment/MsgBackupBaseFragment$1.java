@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
 import android.os.Message;
-import badq;
+import bbev;
 import mqq.os.MqqHandler;
 
 class MsgBackupBaseFragment$1
@@ -13,7 +13,7 @@ class MsgBackupBaseFragment$1
   {
     int j = 1;
     Message localMessage;
-    if (badq.a(this.this$0.getActivity()) == 1)
+    if (bbev.a(this.this$0.getActivity()) == 1)
     {
       i = 1;
       localMessage = this.this$0.a.obtainMessage(10012);

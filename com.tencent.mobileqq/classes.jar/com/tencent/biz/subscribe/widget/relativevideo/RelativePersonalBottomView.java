@@ -1,6 +1,7 @@
 package com.tencent.biz.subscribe.widget.relativevideo;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.tencent.biz.subscribe.component.base.ComponentPageView;
 import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
 import com.tencent.biz.subscribe.event.SimpleBaseEvent;
 import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
+import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
 import com.tencent.biz.subscribe.fragments.SubscribeBaseBottomPersonalFragment;
 import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomDraftsFragment;
 import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
@@ -22,21 +24,21 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import wbp;
-import wbs;
-import wbv;
-import wcj;
-import wcl;
-import wcm;
-import wei;
-import wgw;
-import wgx;
-import wgy;
-import wye;
+import wpc;
+import wpf;
+import wpi;
+import wpw;
+import wpy;
+import wpz;
+import wsz;
+import wvy;
+import wvz;
+import wwa;
+import xhe;
 
 public class RelativePersonalBottomView
-  extends BaseWidgetView<wbv>
-  implements wcl
+  extends BaseWidgetView<wpi>
+  implements wpy
 {
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   private RadioButton jdField_a_of_type_AndroidWidgetRadioButton;
@@ -45,9 +47,9 @@ public class RelativePersonalBottomView
   private SubscribePersonalBottomOpusFragment jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomOpusFragment;
   private String jdField_a_of_type_JavaLangString;
   private List<SubscribeBaseBottomPersonalFragment> jdField_a_of_type_JavaUtilList;
-  private wbp jdField_a_of_type_Wbp;
-  private wbv jdField_a_of_type_Wbv;
-  private wgy jdField_a_of_type_Wgy;
+  private wpc jdField_a_of_type_Wpc;
+  private wpi jdField_a_of_type_Wpi;
+  private wwa jdField_a_of_type_Wwa;
   private RadioButton b;
   
   public RelativePersonalBottomView(@NonNull Context paramContext)
@@ -55,12 +57,12 @@ public class RelativePersonalBottomView
     super(paramContext);
   }
   
-  public RelativePersonalBottomView(Context paramContext, wbp paramwbp)
+  public RelativePersonalBottomView(Context paramContext, wpc paramwpc)
   {
     this(paramContext);
     setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.jdField_a_of_type_Wbp = paramwbp;
-    wcj.a().a(this);
+    this.jdField_a_of_type_Wpc = paramwpc;
+    wpw.a().a(this);
   }
   
   private void a()
@@ -75,30 +77,31 @@ public class RelativePersonalBottomView
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new wgw(this));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new wgx(this));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new wvy(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new wvz(this));
   }
   
   private void c()
   {
-    if (wei.a().a(this.jdField_a_of_type_JavaLangString))
+    if (wsz.a().a(this.jdField_a_of_type_JavaLangString))
     {
       if (this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment == null)
       {
         this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment = new SubscribePersonalBottomDraftsFragment();
-        if ((this.jdField_a_of_type_Wbv != null) && ((this.jdField_a_of_type_Wbv.a instanceof wcm)))
+        if ((this.jdField_a_of_type_Wpi != null) && ((this.jdField_a_of_type_Wpi.a instanceof wpz)))
         {
-          wcm localwcm = (wcm)this.jdField_a_of_type_Wbv.a;
-          this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment.a(localwcm.jdField_a_of_type_JavaLangString, localwcm);
+          wpz localwpz = (wpz)this.jdField_a_of_type_Wpi.a;
+          this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment.a(localwpz.jdField_a_of_type_JavaLangString, localwpz);
         }
       }
       if (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment))
       {
-        wye.b(this.jdField_a_of_type_JavaLangString, "auth_pubish", "exp_draft", 0, 0, new String[0]);
+        xhe.b(this.jdField_a_of_type_JavaLangString, "auth_pubish", "exp_draft", 0, 0, new String[0]);
         this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment);
         this.b.setVisibility(0);
-        this.jdField_a_of_type_Wgy.notifyDataSetChanged();
+        this.jdField_a_of_type_Wwa.notifyDataSetChanged();
       }
+      this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130838628));
     }
     for (;;)
     {
@@ -109,19 +112,20 @@ public class RelativePersonalBottomView
       {
         this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment);
         this.b.setVisibility(8);
-        this.jdField_a_of_type_Wgy.notifyDataSetChanged();
+        this.jdField_a_of_type_Wwa.notifyDataSetChanged();
+        this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(null);
       }
     }
   }
   
   private void d()
   {
-    if ((this.jdField_a_of_type_Wbv != null) && ((this.jdField_a_of_type_Wbv.a instanceof wcm)))
+    if ((this.jdField_a_of_type_Wpi != null) && ((this.jdField_a_of_type_Wpi.a instanceof wpz)))
     {
-      Object localObject = (wcm)this.jdField_a_of_type_Wbv.a;
-      if (((((wcm)localObject).jdField_a_of_type_JavaUtilList == null) || (((wcm)localObject).jdField_a_of_type_JavaUtilList.size() == 0)) && (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment)) && (this.jdField_a_of_type_Wbp != null))
+      Object localObject = (wpz)this.jdField_a_of_type_Wpi.a;
+      if (((((wpz)localObject).jdField_a_of_type_JavaUtilList == null) || (((wpz)localObject).jdField_a_of_type_JavaUtilList.size() == 0)) && (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment)) && (this.jdField_a_of_type_Wpc != null))
       {
-        localObject = this.jdField_a_of_type_Wbp.a().a().a().getChildAt(0);
+        localObject = this.jdField_a_of_type_Wpc.a().a().a().getChildAt(0);
         ThreadManager.getUIHandler().post(new RelativePersonalBottomView.4(this, (View)localObject));
       }
     }
@@ -133,47 +137,48 @@ public class RelativePersonalBottomView
   
   public int a()
   {
-    return 2131493129;
+    return 2131558680;
   }
   
   public ArrayList<Class> a()
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(SubDraftChangeEvent.class);
+    localArrayList.add(SubscribeFeedsEvent.class);
     return localArrayList;
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131309480));
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131305442));
-    this.b = ((RadioButton)paramView.findViewById(2131299801));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131375228));
+    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131371135));
+    this.b = ((RadioButton)paramView.findViewById(2131365380));
     this.b.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramView.findViewById(2131305698));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramView.findViewById(2131371394));
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOffscreenPageLimit(1);
-    this.jdField_a_of_type_Wgy = new wgy(this, ((PublicFragmentActivity)paramContext).getSupportFragmentManager());
+    this.jdField_a_of_type_Wwa = new wwa(this, ((PublicFragmentActivity)paramContext).getSupportFragmentManager());
     a();
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Wgy);
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Wwa);
     b();
   }
   
   public void a(SimpleBaseEvent paramSimpleBaseEvent)
   {
-    post(new RelativePersonalBottomView.3(this, paramSimpleBaseEvent));
+    ThreadManager.getUIHandler().post(new RelativePersonalBottomView.3(this, paramSimpleBaseEvent));
   }
   
-  public void a(wbv paramwbv)
+  public void a(wpi paramwpi)
   {
-    if ((paramwbv != null) && ((paramwbv.a instanceof wcm)))
+    if ((paramwpi != null) && ((paramwpi.a instanceof wpz)))
     {
-      this.jdField_a_of_type_Wbv = paramwbv;
-      paramwbv = (wcm)paramwbv.a;
+      this.jdField_a_of_type_Wpi = paramwpi;
+      paramwpi = (wpz)paramwpi.a;
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((SubscribeBaseBottomPersonalFragment)localIterator.next()).a(paramwbv.jdField_a_of_type_JavaLangString, paramwbv);
+        ((SubscribeBaseBottomPersonalFragment)localIterator.next()).a(paramwpi.jdField_a_of_type_JavaLangString, paramwpi);
       }
       d();
-      if (paramwbv.b) {
+      if (paramwpi.b) {
         c();
       }
     }
@@ -190,13 +195,13 @@ public class RelativePersonalBottomView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    wcj.a().a(this);
+    wpw.a().a(this);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    wcj.a().b(this);
+    wpw.a().b(this);
   }
 }
 

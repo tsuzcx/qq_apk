@@ -1,23 +1,23 @@
 package com.tencent.open.business.base;
 
 import android.os.Bundle;
-import bcds;
-import bcej;
-import bcfa;
+import bdht;
+import bdik;
+import bdjb;
 import com.tencent.open.base.http.HttpBaseUtil;
 import org.json.JSONObject;
 
 public class OpenConfig$2
   implements Runnable
 {
-  public OpenConfig$2(bcfa parambcfa, Bundle paramBundle) {}
+  public OpenConfig$2(bdjb parambdjb, Bundle paramBundle) {}
   
   public void run()
   {
     try
     {
       JSONObject localJSONObject = HttpBaseUtil.a(HttpBaseUtil.a("https://qappcenterv6.3g.qq.com/cgi-bin/mapp/mapp_policy_config", "GET", this.a).a);
-      bcds.c("OpenConfig", localJSONObject.toString());
+      bdht.c("OpenConfig", localJSONObject.toString());
       this.this$0.a(localJSONObject);
       this.this$0.a = 0;
       return;
@@ -26,7 +26,7 @@ public class OpenConfig$2
     {
       for (;;)
       {
-        bcds.e("OpenConfig", localThrowable.getMessage());
+        bdht.e("OpenConfig", localThrowable.getMessage());
       }
     }
   }

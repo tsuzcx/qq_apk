@@ -12,7 +12,7 @@ class PressToSpeakPanel$12
   public void run()
   {
     PressToSpeakPanel.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam);
-    ListenPanel localListenPanel = (ListenPanel)PressToSpeakPanel.a(this.this$0).findViewById(2131303640);
+    ListenPanel localListenPanel = (ListenPanel)PressToSpeakPanel.a(this.this$0).findViewById(2131369310);
     localListenPanel.setVisibility(0);
     localListenPanel.setAudioPath(this.jdField_a_of_type_JavaLangString, PressToSpeakPanel.a(this.this$0), this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam);
     localListenPanel.setJumpSource(ListenPanel.a);

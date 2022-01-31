@@ -1,39 +1,59 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.ui.VideoInviteActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class lzt
-  extends BroadcastReceiver
 {
-  public lzt(VideoInviteActivity paramVideoInviteActivity) {}
+  public static String a;
+  public static String b;
+  public static String c;
+  public static String d;
+  public static String e;
+  public int a;
+  @Deprecated
+  lle a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  static
   {
-    String str = paramIntent.getAction();
+    jdField_b_of_type_JavaLangString = "sharp/small_window/" + "close_flag";
+    jdField_a_of_type_JavaLangString = "sharp/small_window/" + "version";
+    jdField_c_of_type_JavaLangString = "sharp/small_window/" + "use_textureview";
+    jdField_d_of_type_JavaLangString = "sharp/small_window/" + "close_video";
+    jdField_e_of_type_JavaLangString = "sharp/small_window/" + "close_audio";
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onReceive action = " + str);
+      QLog.d("SmallScreenConfigParser", 2, " SmallScreenConfigParser --> key_open_flag = " + jdField_b_of_type_JavaLangString + " , key_version = " + jdField_a_of_type_JavaLangString + " , key_textureview = " + jdField_c_of_type_JavaLangString + " , key_close_video_flag = " + jdField_d_of_type_JavaLangString + " , key_close_audio_flag = " + jdField_e_of_type_JavaLangString);
     }
-    if ("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO".equals(str)) {
-      this.a.h();
-    }
-    do
+  }
+  
+  public lzt()
+  {
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_Lle = null;
+  }
+  
+  public boolean a(lle paramlle)
+  {
+    try
     {
-      return;
-      if ("tencent.video.q2v.sdk.onRequestVideo".equals(str))
-      {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "onReceive action = " + str);
-        this.a.e();
-        return;
+      this.jdField_a_of_type_Int = paramlle.a(jdField_a_of_type_JavaLangString, 0);
+      this.jdField_b_of_type_Int = paramlle.a(jdField_b_of_type_JavaLangString, 0);
+      this.jdField_c_of_type_Int = paramlle.a(jdField_c_of_type_JavaLangString, -1);
+      this.jdField_d_of_type_Int = paramlle.a(jdField_d_of_type_JavaLangString, 0);
+      this.jdField_e_of_type_Int = paramlle.a(jdField_e_of_type_JavaLangString, 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("SmallScreenConfigParser", 2, "value_version = " + this.jdField_a_of_type_Int + " , value_close_flag = " + this.jdField_b_of_type_Int + " , value_use_textureview = " + this.jdField_c_of_type_Int + " ,value_close_video = " + this.jdField_d_of_type_Int + " , value_close_audio = " + this.jdField_e_of_type_Int);
       }
-      if ("android.intent.action.USER_PRESENT".equals(str))
-      {
-        this.a.a("ACTION_USER_PRESENT");
-        return;
+      return true;
+    }
+    catch (Exception paramlle)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SmallScreenConfigParser", 2, "parseConfig --> Error");
       }
-    } while (this.a.jdField_a_of_type_Lzz == null);
-    this.a.jdField_a_of_type_Lzz.a(paramContext, str, paramIntent);
+    }
+    return false;
   }
 }
 

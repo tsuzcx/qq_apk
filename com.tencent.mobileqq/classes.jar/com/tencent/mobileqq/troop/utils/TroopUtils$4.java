@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.utils;
 
 import android.content.Context;
-import azll;
-import babr;
-import bafb;
+import bamp;
+import bbcv;
+import bbgg;
 
 public final class TroopUtils$4
   implements Runnable
@@ -12,7 +12,7 @@ public final class TroopUtils$4
   
   public void run()
   {
-    babr.a(this.a, 230, null, this.a.getString(2131626399), this.a.getString(2131629116), null, null, new azll(this)).show();
+    bbcv.a(this.a, 230, null, this.a.getString(2131691983), this.a.getString(2131694793), null, null, new bamp(this)).show();
   }
 }
 

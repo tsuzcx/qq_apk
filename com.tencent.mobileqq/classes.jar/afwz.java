@@ -1,17 +1,24 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
+import java.lang.ref.WeakReference;
 
 public class afwz
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  public afwz(BindNumberActivity paramBindNumberActivity) {}
+  private final WeakReference<ChatHistoryC2CDateFragment> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  afwz(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment)
   {
-    if (this.a.a != null) {
-      this.a.a.setText("");
+    this.a = new WeakReference(paramChatHistoryC2CDateFragment);
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    ChatHistoryC2CDateFragment localChatHistoryC2CDateFragment = (ChatHistoryC2CDateFragment)this.a.get();
+    if ((localChatHistoryC2CDateFragment != null) && (localChatHistoryC2CDateFragment.getActivity() != null) && (!localChatHistoryC2CDateFragment.getActivity().isFinishing())) {
+      paramDialogInterface.dismiss();
     }
   }
 }

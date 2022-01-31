@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import ndn;
-import new;
-import pyo;
+import noo;
+import npx;
+import qko;
 
 public class TopicShareHelper$5
   implements Runnable
 {
-  public TopicShareHelper$5(pyo parampyo, String paramString) {}
+  public TopicShareHelper$5(qko paramqko, String paramString) {}
   
   public void run()
   {
-    ndn.a(null, "", "0X80088B4", "0X80088B4", 0, 0, "", this.a, "", new.a(pyo.a(this.this$0).mChannelID, null), false);
+    noo.a(null, "", "0X80088B4", "0X80088B4", 0, 0, "", this.a, "", npx.a(qko.a(this.this$0).mChannelID, null), false);
   }
 }
 

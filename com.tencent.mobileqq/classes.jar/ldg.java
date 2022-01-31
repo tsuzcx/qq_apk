@@ -1,26 +1,27 @@
-import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.gaudio.BaseGaInvite;
-
-@SuppressLint({"HandlerLeak"})
-public class ldg
-  extends Handler
+class ldg
 {
-  public ldg(BaseGaInvite paramBaseGaInvite) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  long b;
+  long c;
+  long d;
+  long e;
+  long f;
   
-  public void handleMessage(Message paramMessage)
+  ldg(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.b();
-      return;
-    }
-    this.a.a("Msg");
-    super.sendEmptyMessageDelayed(1, 2000L);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.c = paramLong3;
+    this.d = paramLong4;
+    this.e = paramLong5;
+    this.f = paramLong6;
+  }
+  
+  boolean a()
+  {
+    return (this.jdField_a_of_type_Long > 0L) && (this.b > 0L) && (this.c > 0L);
   }
 }
 

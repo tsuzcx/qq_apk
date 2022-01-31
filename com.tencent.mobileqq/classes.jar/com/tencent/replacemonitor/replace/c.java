@@ -17,8 +17,8 @@ import com.tencent.replacemonitor.replace.a.h;
 import com.tencent.replacemonitor.replace.a.i;
 import com.tencent.replacemonitor.replace.a.j;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.q;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -49,7 +49,7 @@ public class c
   
   private void b()
   {
-    ac.c("WashMonitor", "ReplaceMonitorTask >>updateLastModifyTime enter lastModifyTime = " + this.a.lastModifedTime);
+    ab.c("WashMonitor", "ReplaceMonitorTask >>updateLastModifyTime enter lastModifyTime = " + this.a.lastModifedTime);
     Object localObject;
     if ((this.b == MonitorStep.DOWNLOADING) || (this.b == MonitorStep.BEFORE_INSTALL))
     {
@@ -61,9 +61,9 @@ public class c
     for (;;)
     {
       com.tencent.replacemonitor.replace.b.a.a().a(this.a);
-      ac.c("WashMonitor", "ReplaceMonitorTask >>updateLastModifyTime exit lastModifyTime = " + this.a.lastModifedTime);
+      ab.c("WashMonitor", "ReplaceMonitorTask >>updateLastModifyTime exit lastModifyTime = " + this.a.lastModifedTime);
       return;
-      localObject = r.c(this.a.packageName);
+      localObject = q.c(this.a.packageName);
       if (localObject != null) {
         this.a.lastModifedTime = ((PackageInfo)localObject).lastUpdateTime;
       }
@@ -72,30 +72,30 @@ public class c
   
   private void c()
   {
-    ac.c("WashMonitor", "ReplaceMonitorTask >>updateAppName enter appName = " + this.a.appName);
-    PackageInfo localPackageInfo2 = r.c(this.a.packageName);
+    ab.c("WashMonitor", "ReplaceMonitorTask >>updateAppName enter appName = " + this.a.appName);
+    PackageInfo localPackageInfo2 = q.c(this.a.packageName);
     PackageInfo localPackageInfo1 = localPackageInfo2;
     if (localPackageInfo2 == null) {
-      localPackageInfo1 = r.b(this.a.filePath);
+      localPackageInfo1 = q.b(this.a.filePath);
     }
     if (localPackageInfo1 != null)
     {
       localPackageInfo1.applicationInfo.sourceDir = this.a.filePath;
       localPackageInfo1.applicationInfo.publicSourceDir = this.a.filePath;
-      this.a.appName = r.a(localPackageInfo1);
-      ac.c("WashMonitor", "ReplaceMonitorTask >>updateAppName success appName = " + this.a.appName);
+      this.a.appName = q.a(localPackageInfo1);
+      ab.c("WashMonitor", "ReplaceMonitorTask >>updateAppName success appName = " + this.a.appName);
       com.tencent.replacemonitor.replace.b.a.a().a(this.a);
     }
   }
   
   private void d()
   {
-    ac.c("WashMonitor", "ReplaceMonitorTask >>updateInstallDir enter installDir = " + this.a.installDir);
-    PackageInfo localPackageInfo = r.c(this.a.packageName);
+    ab.c("WashMonitor", "ReplaceMonitorTask >>updateInstallDir enter installDir = " + this.a.installDir);
+    PackageInfo localPackageInfo = q.c(this.a.packageName);
     if ((localPackageInfo != null) && (localPackageInfo.versionCode == this.a.versionCode))
     {
       this.a.installDir = localPackageInfo.applicationInfo.sourceDir;
-      ac.c("WashMonitor", "ReplaceMonitorTask >>updateInstallDir success installDir = " + this.a.installDir);
+      ab.c("WashMonitor", "ReplaceMonitorTask >>updateInstallDir success installDir = " + this.a.installDir);
       com.tencent.replacemonitor.replace.b.a.a().a(this.a);
     }
   }

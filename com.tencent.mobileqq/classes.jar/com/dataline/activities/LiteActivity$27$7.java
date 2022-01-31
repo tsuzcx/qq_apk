@@ -1,29 +1,29 @@
 package com.dataline.activities;
 
-import akau;
+import akpg;
 import android.content.Context;
 import android.text.ClipboardManager;
-import at;
+import cl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.widget.XListView;
-import dr;
+import fk;
 
 public class LiteActivity$27$7
   implements Runnable
 {
-  public LiteActivity$27$7(at paramat, String paramString, int paramInt) {}
+  public LiteActivity$27$7(cl paramcl, String paramString, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_At.a.jdField_a_of_type_Dr.notifyDataSetChanged();
+    this.jdField_a_of_type_Cl.a.jdField_a_of_type_Fk.notifyDataSetChanged();
     try
     {
-      ((ClipboardManager)this.jdField_a_of_type_At.a.jdField_a_of_type_ComTencentWidgetXListView.getContext().getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
+      ((ClipboardManager)this.jdField_a_of_type_Cl.a.jdField_a_of_type_ComTencentWidgetXListView.getContext().getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
       label41:
-      LiteActivity.a(this.jdField_a_of_type_At.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.jdField_a_of_type_At.a.jdField_a_of_type_ComTencentWidgetXListView);
-      LiteActivity.a(this.jdField_a_of_type_At.a.jdField_a_of_type_ComTencentWidgetXListView);
-      this.jdField_a_of_type_At.a.app.a().a(this.jdField_a_of_type_Int).e();
+      LiteActivity.a(this.jdField_a_of_type_Cl.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.jdField_a_of_type_Cl.a.jdField_a_of_type_ComTencentWidgetXListView);
+      LiteActivity.a(this.jdField_a_of_type_Cl.a.jdField_a_of_type_ComTencentWidgetXListView);
+      this.jdField_a_of_type_Cl.a.app.a().a(this.jdField_a_of_type_Int).e();
       return;
     }
     catch (Exception localException)

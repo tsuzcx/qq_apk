@@ -1,6 +1,10 @@
-public class atei
+import android.view.View;
+
+public abstract interface atei
 {
-  public Object a;
+  public abstract void a(View paramView);
+  
+  public abstract void a(View paramView, atel paramatel);
 }
 
 

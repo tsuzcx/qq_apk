@@ -1,16 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class afra
-  implements DialogInterface.OnClickListener
+public class afra
+  extends ajtq
 {
-  afra(afqi paramafqi) {}
+  private afra(FriendFragment paramFriendFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.finish();
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
+      }
+      FriendFragment.a(this.a, 1400L, false);
+    }
   }
 }
 

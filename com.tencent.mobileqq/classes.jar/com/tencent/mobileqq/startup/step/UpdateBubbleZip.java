@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import afce;
-import bace;
+import afnu;
+import bbdj;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.File;
 
@@ -10,8 +10,8 @@ public class UpdateBubbleZip
 {
   protected boolean doStep()
   {
-    afce.a();
-    bace.a(BaseApplicationImpl.sApplication.getDir("classic_emoticon", 0).getPath());
+    afnu.a();
+    bbdj.a(BaseApplicationImpl.sApplication.getDir("classic_emoticon", 0).getPath());
     return true;
   }
 }

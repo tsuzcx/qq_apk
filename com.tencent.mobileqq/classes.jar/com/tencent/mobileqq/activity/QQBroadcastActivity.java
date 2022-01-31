@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import abjw;
-import abjx;
-import ajed;
-import akbj;
+import abtw;
+import abtx;
+import ajsf;
+import akpv;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -18,12 +18,12 @@ public class QQBroadcastActivity
   extends BaseSystemActivity
   implements Observer
 {
-  public abjx a;
+  public abtx a;
   public Handler a;
   
   public QQBroadcastActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new abjw(this);
+    this.jdField_a_of_type_AndroidOsHandler = new abtw(this);
   }
   
   private void c()
@@ -43,10 +43,10 @@ public class QQBroadcastActivity
     }
     for (;;)
     {
-      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131654133) + "(" + i + ")"));
+      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131720023) + "(" + i + ")"));
       return;
       label79:
-      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131654133)));
+      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131720023)));
       return;
       label99:
       i = j;
@@ -60,20 +60,20 @@ public class QQBroadcastActivity
   
   protected CursorAdapter a()
   {
-    if (this.jdField_a_of_type_Abjx == null) {
-      this.jdField_a_of_type_Abjx = new abjx(this, this, this.app.a(0).a(a(), 0));
+    if (this.jdField_a_of_type_Abtx == null) {
+      this.jdField_a_of_type_Abtx = new abtx(this, this, this.app.a(0).a(a(), 0));
     }
-    return this.jdField_a_of_type_Abjx;
+    return this.jdField_a_of_type_Abtx;
   }
   
   protected CharSequence a()
   {
-    return getString(2131654084);
+    return getString(2131719973);
   }
   
   public String a()
   {
-    return String.valueOf(ajed.J);
+    return String.valueOf(ajsf.J);
   }
   
   protected void a()
@@ -92,8 +92,8 @@ public class QQBroadcastActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Abjx != null) {
-      this.jdField_a_of_type_Abjx.changeCursor(null);
+    if (this.jdField_a_of_type_Abtx != null) {
+      this.jdField_a_of_type_Abtx.changeCursor(null);
     }
   }
   

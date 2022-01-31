@@ -1,8 +1,18 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public abstract interface uhn
+class uhn
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(String paramString1, int paramInt, View paramView, String paramString2);
+  uhn(uhm paramuhm) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (this.a.a != null) {
+      this.a.a.c(false);
+    }
+  }
 }
 
 

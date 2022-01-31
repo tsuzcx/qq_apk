@@ -1,148 +1,136 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Message;
-import android.os.SystemClock;
-import android.widget.Button;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.util.HandlerPlus;
-import mqq.observer.BusinessObserver;
+import android.media.MediaPlayer.OnCompletionListener;
+import java.util.ArrayList;
 
-public class bbub
-  implements BusinessObserver
+public final class bbub
+  implements MediaPlayer.OnCompletionListener
 {
-  public bbub(AuthorityActivity paramAuthorityActivity) {}
+  public bbub(ArrayList paramArrayList) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  /* Error */
+  public void onCompletion(android.media.MediaPlayer paramMediaPlayer)
   {
-    AuthorityActivity.b(this.a).jdField_a_of_type_Long = (System.currentTimeMillis() - AuthorityActivity.b(this.a).jdField_a_of_type_Long);
-    String str = paramBundle.getString("ssoAccount");
-    if (!this.a.jdField_a_of_type_Bciz.jdField_a_of_type_JavaLangString.equals(str)) {
-      return;
-    }
-    this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    if (!this.a.b) {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    }
-    paramInt = paramBundle.getInt("code");
-    if (!this.a.i) {}
-    for (str = "g_a_a_l_emp";; str = "g_a_a_l")
-    {
-      if (paramBoolean)
-      {
-        this.a.c = 0;
-        SdkAuthorize.GetAuthApiListResponse localGetAuthApiListResponse = new SdkAuthorize.GetAuthApiListResponse();
-        for (;;)
-        {
-          try
-          {
-            Object localObject2 = paramBundle.getByteArray("data");
-            localObject1 = localObject2;
-            if (!this.a.i) {
-              localObject1 = bcjy.b((byte[])localObject2, this.a.jdField_a_of_type_Bciz);
-            }
-            if (localObject1 != null)
-            {
-              l1 = localObject1.length;
-              localObject1 = (SdkAuthorize.GetAuthApiListResponse)localGetAuthApiListResponse.mergeFrom((byte[])localObject1);
-              if (localObject1 != null)
-              {
-                localObject2 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-                ((Message)localObject2).what = 0;
-                ((Message)localObject2).obj = localObject1;
-                this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject2);
-                i = ((SdkAuthorize.GetAuthApiListResponse)localObject1).toByteArray().length;
-                l2 = i;
-              }
-            }
-          }
-          catch (Exception paramBundle)
-          {
-            long l1;
-            int i;
-            long l2;
-            Object localObject1 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-            ((Message)localObject1).what = 6;
-            ((Message)localObject1).arg1 = 3001;
-            ((Message)localObject1).obj = this.a.getResources().getString(2131629219);
-            this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject1);
-            localObject1 = (String)((Message)localObject1).obj;
-            QLog.d("AuthorityActivity", 1, "rec | cmd: " + str + " | uin : *" + bcam.a(this.a.jdField_a_of_type_Bciz.jdField_a_of_type_JavaLangString) + " | ret : success | code : " + paramInt, paramBundle);
-            AuthorityActivity.a(this.a, "KEY_GET_AUTH_API_LIST_REQUEST", this.a.c, false);
-            continue;
-          }
-          try
-          {
-            i = ((SdkAuthorize.GetAuthApiListResponse)localObject1).ret.get();
-            localObject1 = new Bundle();
-            ((Bundle)localObject1).putString("report_type", "103");
-            ((Bundle)localObject1).putString("act_type", "11");
-            if (!paramBundle.getBoolean("isShort", false)) {
-              continue;
-            }
-            paramBundle = "2";
-            ((Bundle)localObject1).putString("intext_3", paramBundle);
-            ((Bundle)localObject1).putString("stringext_1", AuthorityActivity.b(this.a).jdField_a_of_type_JavaLangString);
-            ((Bundle)localObject1).putString("intext_2", "" + i);
-            ((Bundle)localObject1).putString("intext_5", "" + AuthorityActivity.b(this.a).jdField_a_of_type_Long);
-            bcad.a().a((Bundle)localObject1, AuthorityActivity.e, this.a.jdField_a_of_type_JavaLangString, false);
-            paramBundle = new Bundle();
-            paramBundle.putString("report_type", "103");
-            paramBundle.putString("act_type", "14");
-            paramBundle.putString("intext_5", "" + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
-            bcad.a().a(paramBundle, AuthorityActivity.e, this.a.jdField_a_of_type_JavaLangString, false);
-            bcfk.a().a("agent_query_authority", this.a.f, l1, l2, 0, Long.parseLong(this.a.jdField_a_of_type_Bciz.jdField_a_of_type_JavaLangString), "1000069", "ret: " + i);
-            bcfn.a().a(0, "LOGIN_GETAUTHLIST_AGENT", this.a.jdField_a_of_type_Bciz.jdField_a_of_type_JavaLangString, AuthorityActivity.e, null, Long.valueOf(SystemClock.elapsedRealtime()), i, 1, null);
-            bcad.a().a(this.a.jdField_a_of_type_Bciz.jdField_a_of_type_JavaLangString, "", AuthorityActivity.e, "1", "2", "0", false);
-            AuthorityActivity.a(this.a, "KEY_GET_AUTH_API_LIST_REQUEST", this.a.c, true);
-          }
-          catch (Exception paramBundle)
-          {
-            bcds.c("AuthorityActivity", "-->report exception cmd: agent_query_authority", paramBundle);
-          }
-        }
-        QLog.d("AuthorityActivity", 1, "rec | cmd: " + str + " | uin : *" + bcam.a(this.a.jdField_a_of_type_Bciz.jdField_a_of_type_JavaLangString) + " | ret : success | code : " + paramInt);
-      }
-      for (;;)
-      {
-        this.a.g = SystemClock.elapsedRealtime();
-        bcds.c("Authority_TimeCost", "<TimeStamp> query authority cost : " + (this.a.g - this.a.f));
-        return;
-        paramBundle = "1";
-        break;
-        QLog.d("AuthorityActivity", 1, "rec | cmd: " + str + " | uin : *" + bcam.a(this.a.jdField_a_of_type_Bciz.jdField_a_of_type_JavaLangString) + " | ret : failed | code : " + paramInt);
-        this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse = null;
-        if ((paramInt == 1002) && (this.a.c < 2))
-        {
-          paramBundle = this.a;
-          paramBundle.c += 1;
-          this.a.i();
-          return;
-        }
-        paramBundle = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-        paramBundle.what = 6;
-        paramBundle.arg1 = 3001;
-        paramBundle.obj = this.a.getResources().getString(2131629219);
-        this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramBundle);
-        AuthorityActivity.a(this.a, "KEY_GET_AUTH_API_LIST_REQUEST", this.a.c, false);
-        paramBundle = this.a.getResources().getString(2131629219);
-        try
-        {
-          bcfk.a().a("agent_query_authority", this.a.f, 0L, 0L, paramInt, Long.parseLong(this.a.jdField_a_of_type_Bciz.jdField_a_of_type_JavaLangString), "1000069", paramBundle);
-          bcfn.a().a(1, "LOGIN_GETAUTHLIST_AGENT", this.a.jdField_a_of_type_Bciz.jdField_a_of_type_JavaLangString, AuthorityActivity.e, null, Long.valueOf(SystemClock.elapsedRealtime()), paramInt, 1, paramBundle);
-          bcad.a().a(this.a.jdField_a_of_type_Bciz.jdField_a_of_type_JavaLangString, "", AuthorityActivity.e, "1", "2", "" + paramInt, false);
-          bcad.a().a(this.a.jdField_a_of_type_Bciz.jdField_a_of_type_JavaLangString, "", AuthorityActivity.e, "1", "6", "" + paramInt, false);
-        }
-        catch (Exception paramBundle) {}
-      }
-    }
+    // Byte code:
+    //   0: invokestatic 28	com/tencent/mobileqq/vashealth/PathTraceManager:c	()I
+    //   3: aload_0
+    //   4: getfield 12	bbub:a	Ljava/util/ArrayList;
+    //   7: invokevirtual 33	java/util/ArrayList:size	()I
+    //   10: iconst_1
+    //   11: isub
+    //   12: if_icmpge +142 -> 154
+    //   15: invokestatic 28	com/tencent/mobileqq/vashealth/PathTraceManager:c	()I
+    //   18: iconst_1
+    //   19: iadd
+    //   20: invokestatic 36	com/tencent/mobileqq/vashealth/PathTraceManager:a	(I)I
+    //   23: pop
+    //   24: getstatic 39	com/tencent/mobileqq/vashealth/PathTraceManager:a	Landroid/media/MediaPlayer;
+    //   27: invokevirtual 44	android/media/MediaPlayer:reset	()V
+    //   30: new 46	java/io/FileInputStream
+    //   33: dup
+    //   34: new 48	java/io/File
+    //   37: dup
+    //   38: aload_0
+    //   39: getfield 12	bbub:a	Ljava/util/ArrayList;
+    //   42: invokestatic 28	com/tencent/mobileqq/vashealth/PathTraceManager:c	()I
+    //   45: invokevirtual 52	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   48: checkcast 54	android/net/Uri
+    //   51: invokevirtual 58	android/net/Uri:getPath	()Ljava/lang/String;
+    //   54: invokespecial 61	java/io/File:<init>	(Ljava/lang/String;)V
+    //   57: invokespecial 64	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   60: astore_2
+    //   61: aload_2
+    //   62: astore_1
+    //   63: getstatic 39	com/tencent/mobileqq/vashealth/PathTraceManager:a	Landroid/media/MediaPlayer;
+    //   66: aload_2
+    //   67: invokevirtual 68	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
+    //   70: invokevirtual 72	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
+    //   73: aload_2
+    //   74: astore_1
+    //   75: getstatic 39	com/tencent/mobileqq/vashealth/PathTraceManager:a	Landroid/media/MediaPlayer;
+    //   78: invokevirtual 75	android/media/MediaPlayer:prepare	()V
+    //   81: aload_2
+    //   82: astore_1
+    //   83: getstatic 39	com/tencent/mobileqq/vashealth/PathTraceManager:a	Landroid/media/MediaPlayer;
+    //   86: invokevirtual 78	android/media/MediaPlayer:start	()V
+    //   89: aload_2
+    //   90: ifnull +7 -> 97
+    //   93: aload_2
+    //   94: invokevirtual 81	java/io/FileInputStream:close	()V
+    //   97: return
+    //   98: astore_1
+    //   99: aload_1
+    //   100: invokevirtual 84	java/io/IOException:printStackTrace	()V
+    //   103: return
+    //   104: astore_3
+    //   105: aconst_null
+    //   106: astore_2
+    //   107: aload_2
+    //   108: astore_1
+    //   109: ldc 86
+    //   111: iconst_1
+    //   112: ldc 88
+    //   114: aload_3
+    //   115: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   118: aload_2
+    //   119: ifnull -22 -> 97
+    //   122: aload_2
+    //   123: invokevirtual 81	java/io/FileInputStream:close	()V
+    //   126: return
+    //   127: astore_1
+    //   128: aload_1
+    //   129: invokevirtual 84	java/io/IOException:printStackTrace	()V
+    //   132: return
+    //   133: astore_2
+    //   134: aconst_null
+    //   135: astore_1
+    //   136: aload_1
+    //   137: ifnull +7 -> 144
+    //   140: aload_1
+    //   141: invokevirtual 81	java/io/FileInputStream:close	()V
+    //   144: aload_2
+    //   145: athrow
+    //   146: astore_1
+    //   147: aload_1
+    //   148: invokevirtual 84	java/io/IOException:printStackTrace	()V
+    //   151: goto -7 -> 144
+    //   154: aload_0
+    //   155: getfield 12	bbub:a	Ljava/util/ArrayList;
+    //   158: invokevirtual 97	java/util/ArrayList:clear	()V
+    //   161: iconst_0
+    //   162: invokestatic 36	com/tencent/mobileqq/vashealth/PathTraceManager:a	(I)I
+    //   165: pop
+    //   166: return
+    //   167: astore_2
+    //   168: goto -32 -> 136
+    //   171: astore_3
+    //   172: goto -65 -> 107
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	175	0	this	bbub
+    //   0	175	1	paramMediaPlayer	android.media.MediaPlayer
+    //   60	63	2	localFileInputStream	java.io.FileInputStream
+    //   133	12	2	localObject1	Object
+    //   167	1	2	localObject2	Object
+    //   104	11	3	localException1	java.lang.Exception
+    //   171	1	3	localException2	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   93	97	98	java/io/IOException
+    //   30	61	104	java/lang/Exception
+    //   122	126	127	java/io/IOException
+    //   30	61	133	finally
+    //   140	144	146	java/io/IOException
+    //   63	73	167	finally
+    //   75	81	167	finally
+    //   83	89	167	finally
+    //   109	118	167	finally
+    //   63	73	171	java/lang/Exception
+    //   75	81	171	java/lang/Exception
+    //   83	89	171	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbub
  * JD-Core Version:    0.7.0.1
  */

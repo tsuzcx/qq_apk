@@ -1,25 +1,15 @@
-import android.graphics.Bitmap;
-import android.media.MediaCodec;
-import android.media.MediaExtractor;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bisw
+class bisw
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public MediaCodec a;
-  public MediaExtractor a;
-  public bist a;
-  public bisx a;
-  public ArrayList<String> a = new ArrayList();
-  public boolean a;
-  public long[] a;
-  public int b;
-  public long b;
-  public ArrayList<Bitmap> b = new ArrayList();
-  public long[] b;
-  public int c;
-  public int d;
+  bisw(biss parambiss) {}
+  
+  public void onClick(View paramView)
+  {
+    biss.a(this.a).a();
+  }
 }
 
 

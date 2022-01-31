@@ -1,86 +1,68 @@
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory.Options;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import java.io.File;
+import android.util.DisplayMetrics;
 
 public class anos
-  extends RecyclerView.ViewHolder
-  implements View.OnTouchListener
+  extends BitmapDrawable
 {
+  private float jdField_a_of_type_Float = 1920.0F;
   private int jdField_a_of_type_Int;
-  RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ansk jdField_a_of_type_Ansk;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private int b;
+  private int c;
   
-  public anos(View paramView, RecyclerView paramRecyclerView, int paramInt1, ansk paramansk, int paramInt2)
+  public anos(Resources paramResources, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    this.b = paramInt2;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131302061));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131311220));
+    super(paramResources, paramBitmap);
     this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Ansk = paramansk;
-    paramView.setOnTouchListener(this);
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Float = (12.0F * (paramResources.getDisplayMetrics().densityDpi / 160.0F));
+    super.setGravity(17);
   }
   
-  public void a(anos paramanos, anpv paramanpv, int paramInt)
+  public void draw(Canvas paramCanvas)
   {
-    paramanpv = paramanos.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    paramanpv.height = (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getHeight() - this.jdField_a_of_type_Int);
-    if ((paramanpv instanceof RecyclerView.LayoutParams)) {
-      ((RecyclerView.LayoutParams)paramanpv).topMargin = this.jdField_a_of_type_Int;
-    }
-    paramanpv = URLDrawable.URLDrawableOptions.obtain();
-    paramanpv.mLoadingDrawable = axwd.a;
-    paramanpv.mFailedDrawable = axwd.a;
-    paramanpv = antz.a("expand_square_blank.png");
-    if (new File(paramanpv).exists())
+    if (this.c >>> 24 != 0)
     {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
-      paramanpv = antz.a(paramanpv, localOptions);
-      paramanos.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new BitmapDrawable(paramanpv));
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
+      paramCanvas.drawRoundRect(new RectF(getBounds()), this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    if (paramInt == 1) {
-      if (this.b == 0) {
-        paramInt = 2131633203;
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
-      return;
-      paramInt = 2131633199;
-      continue;
-      if (this.b == 0) {
-        paramInt = 2131633202;
-      } else {
-        paramInt = 2131633198;
-      }
-    }
+    super.draw(paramCanvas);
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int getIntrinsicHeight()
   {
-    if ((this.jdField_a_of_type_Ansk != null) && (paramMotionEvent.getAction() == 0)) {
-      this.jdField_a_of_type_Ansk.c();
+    if (this.b > 0) {
+      return this.b;
     }
-    return false;
+    return super.getIntrinsicHeight();
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    if (this.jdField_a_of_type_Int > 0) {
+      return this.jdField_a_of_type_Int;
+    }
+    return super.getIntrinsicWidth();
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha()) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    }
+    super.setAlpha(paramInt);
+  }
+  
+  public void setTargetDensity(int paramInt)
+  {
+    this.jdField_a_of_type_Float = (12.0F * (paramInt / 160.0F));
+    super.setTargetDensity(paramInt);
   }
 }
 

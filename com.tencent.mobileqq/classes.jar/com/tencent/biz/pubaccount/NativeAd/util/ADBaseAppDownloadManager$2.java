@@ -1,25 +1,25 @@
 package com.tencent.biz.pubaccount.NativeAd.util;
 
 import android.text.TextUtils;
-import bccu;
+import bdgv;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import nav;
-import pxh;
+import nlw;
+import qjf;
 
 public class ADBaseAppDownloadManager$2
   implements Runnable
 {
-  public ADBaseAppDownloadManager$2(nav paramnav, pxh parampxh, int paramInt) {}
+  public ADBaseAppDownloadManager$2(nlw paramnlw, qjf paramqjf, int paramInt) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_Pxh.c;
+    Object localObject = this.jdField_a_of_type_Qjf.c;
     int i;
     int j;
     if ((!TextUtils.isEmpty((CharSequence)localObject)) && ((this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 3)))
     {
-      localObject = bccu.a().a((String)localObject);
+      localObject = bdgv.a().a((String)localObject);
       if (localObject != null)
       {
         i = (int)((float)((TMAssistantDownloadTaskInfo)localObject).mReceiveDataLen / (float)((TMAssistantDownloadTaskInfo)localObject).mTotalDataLen * 100.0F);
@@ -27,9 +27,9 @@ public class ADBaseAppDownloadManager$2
         if ((this.jdField_a_of_type_Int != 3) || (j != 3)) {
           break label122;
         }
-        this.this$0.c(this.jdField_a_of_type_Pxh);
+        this.this$0.c(this.jdField_a_of_type_Qjf);
         localObject = new DownloadInfo();
-        ((DownloadInfo)localObject).e = this.jdField_a_of_type_Pxh.d;
+        ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qjf.d;
         ((DownloadInfo)localObject).f = i;
         this.this$0.a((DownloadInfo)localObject, 4);
       }
@@ -40,16 +40,16 @@ public class ADBaseAppDownloadManager$2
       return;
       if ((this.jdField_a_of_type_Int == 4) && (j == 2))
       {
-        this.this$0.a(this.jdField_a_of_type_Pxh);
+        this.this$0.a(this.jdField_a_of_type_Qjf);
         localObject = new DownloadInfo();
-        ((DownloadInfo)localObject).e = this.jdField_a_of_type_Pxh.d;
+        ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qjf.d;
         ((DownloadInfo)localObject).f = i;
         this.this$0.a((DownloadInfo)localObject, 3);
         return;
       }
     } while (j != 4);
     localObject = new DownloadInfo();
-    ((DownloadInfo)localObject).e = this.jdField_a_of_type_Pxh.d;
+    ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qjf.d;
     ((DownloadInfo)localObject).f = 100;
     this.this$0.a((DownloadInfo)localObject, 5);
   }

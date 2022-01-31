@@ -1,10 +1,12 @@
-import javax.microedition.khronos.opengles.GL10;
-
-public abstract interface akye
+public class akye
 {
-  public abstract void a(GL10 paramGL10);
-  
-  public abstract void a(GL10 paramGL10, int paramInt1, int paramInt2);
+  public int a = 2;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
 }
 
 

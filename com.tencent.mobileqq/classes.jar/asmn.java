@@ -1,34 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class asmn
-  implements bbsh
+public class asmn
+  implements RadioGroup.OnCheckedChangeListener
 {
-  asmn(asml paramasml) {}
+  public asmn(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label59;
-      }
-      if (this.a.jdField_a_of_type_Asmo != null) {
-        this.a.jdField_a_of_type_Asmo.a(true);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.BackupAndMigrateDateFragment", 2, "checkedId = " + paramInt);
     }
-    label59:
-    while (this.a.jdField_a_of_type_Asmo == null) {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 2131364707: 
+      MsgBackupDateFragment.a(this.a, 1);
       return;
     }
-    this.a.jdField_a_of_type_Asmo.a(false);
+    MsgBackupDateFragment.a(this.a, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asmn
  * JD-Core Version:    0.7.0.1
  */

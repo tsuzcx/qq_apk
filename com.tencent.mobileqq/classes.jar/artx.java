@@ -1,69 +1,74 @@
-import android.view.animation.AnimationUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.CopyOnWriteArrayList;
 
-public class artx
+class artx
+  extends arrf
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = -1L;
-  private String jdField_a_of_type_JavaLangString;
-  private StringBuffer jdField_a_of_type_JavaLangStringBuffer = new StringBuffer();
-  private final CopyOnWriteArrayList<String> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  artx(artw paramartw) {}
   
-  public void a()
+  protected void a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() < 1) {
+    QLog.d("BaseListenTogetherPanel", 1, String.format("onJoinAndEnter [%d,%s] [%d,%s] resumed=[%b] ", new Object[] { Integer.valueOf(paramInt), paramString, Integer.valueOf(this.a.jdField_a_of_type_Aruc.jdField_a_of_type_Int), this.a.jdField_a_of_type_Aruc.jdField_a_of_type_JavaLangString, Boolean.valueOf(this.a.b) }));
+    if ((!this.a.b) || (this.a.jdField_a_of_type_Aruc.jdField_a_of_type_Int != paramInt) || (!this.a.jdField_a_of_type_Aruc.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString))) {
       return;
     }
-    new arty(this).execute(new Void[0]);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaLangString != null)
+    paramString = ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app).a(paramInt, paramString);
+    if ((paramString == null) || (this.a.jdField_a_of_type_Aruc.b == 3))
     {
-      if (paramInt == 2)
-      {
-        this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-        this.jdField_a_of_type_Int = 0;
-      }
-    }
-    else {
+      bcpw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693837, 0).a();
       return;
     }
-    if ((this.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_Int > 0))
+    if (this.a.jdField_a_of_type_Aruc.c != 2)
     {
-      long l = AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long;
-      paramInt = (int)Math.floor(this.jdField_a_of_type_Int * 1000 / ((float)l * 1.0F));
-      this.jdField_a_of_type_JavaLangStringBuffer.setLength(0);
-      this.jdField_a_of_type_JavaLangStringBuffer.append("FPSCalculator ").append(this.jdField_a_of_type_JavaLangString).append(" frameCount :").append(this.jdField_a_of_type_Int).append(",diffTime :").append(l).append(" fps:").append(paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.d("FPSCalculator", 2, this.jdField_a_of_type_JavaLangStringBuffer.toString());
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_JavaLangStringBuffer.toString());
-      if (((paramInt <= 0) || ("".equals(this.jdField_a_of_type_JavaLangString))) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 100)) {
-        a();
-      }
+      bcpw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693839, 0).a();
+      return;
     }
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = 0;
+    if (this.a.jdField_a_of_type_Aruc.b == 4)
+    {
+      bcpw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693842, 0).a();
+      return;
+    }
+    MusicInfo localMusicInfo = paramString.a();
+    ListenTogetherPlayFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString, localMusicInfo, this.a.jdField_a_of_type_Aruc.jdField_a_of_type_Boolean, null);
   }
   
-  public void a(String paramString)
+  protected void a(int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    artw.a(this.a, paramInt, paramString1, paramString2);
   }
   
-  public void b()
+  protected void a(int paramInt, String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      this.jdField_a_of_type_Int += 1;
-    }
+    this.a.a(paramInt, paramString, paramBoolean);
+  }
+  
+  protected void a(ListenTogetherSession paramListenTogetherSession)
+  {
+    this.a.a(paramListenTogetherSession);
+  }
+  
+  protected void a(String paramString, int paramInt1, int paramInt2)
+  {
+    this.a.a(paramString, paramInt1, paramInt2);
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    this.a.a(paramInt, paramString);
+  }
+  
+  protected void h(int paramInt, String paramString)
+  {
+    this.a.b(paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     artx
  * JD-Core Version:    0.7.0.1
  */

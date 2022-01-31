@@ -1,97 +1,67 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.os.Process;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import com.tencent.tmdownloader.TMAssistantDownloadManager;
+import com.tencent.tmdownloader.TMAssistantDownloadSettingClient;
+import cooperation.troop_homework.jsp.TroopHWFileDownloadManager.1;
+import cooperation.troop_homework.jsp.TroopHWFileDownloadManager.2;
+import java.io.File;
 import java.util.HashMap;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
 
 public class bhwt
 {
-  public static HashMap<String, Integer> a = new HashMap();
-  public static HashMap<String, Integer> b;
+  public static final String a;
+  private ITMAssistantDownloadClientListener jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener = new bhwu(this);
+  private TMAssistantDownloadClient jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient;
+  private TMAssistantDownloadSettingClient jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadSettingClient;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private String jdField_b_of_type_JavaLangString;
+  private HashMap<String, bhwv> jdField_b_of_type_JavaUtilHashMap = new HashMap();
   
   static
   {
-    a.put("actLbsSendPoiListFailure", Integer.valueOf(100));
-    a.put("actLbsSendGetPidFailure", Integer.valueOf(100));
-    a.put("actLbsPayBridgeFailure", Integer.valueOf(100));
-    a.put("actLbsPoiListFailure", Integer.valueOf(10000));
-    a.put("actLbsPackListFailure", Integer.valueOf(1000));
-    a.put("actLbsGetPackFailure", Integer.valueOf(100));
-    a.put("actLbsCaiShenResourceFailure", Integer.valueOf(100));
-    b = new HashMap();
-    b.put("actLbsSendPoiListFailure", Integer.valueOf(10000));
-    b.put("actLbsSendGetPidFailure", Integer.valueOf(10000));
-    b.put("actLbsPayBridgeFailure", Integer.valueOf(10000));
-    b.put("actLbsPoiListFailure", Integer.valueOf(100000));
-    b.put("actLbsPackListFailure", Integer.valueOf(10000));
-    b.put("actLbsGetPackFailure", Integer.valueOf(10000));
-    b.put("actLbsCaiShenResourceFailure", Integer.valueOf(10000));
+    jdField_a_of_type_JavaLangString = bhwt.class.getName();
   }
   
-  public static void a(String paramString)
+  public bhwt(Context paramContext)
   {
-    try
+    this.jdField_b_of_type_JavaLangString = (ajsf.aV + "/tencent/TMAssistantSDK/Download/" + paramContext.getPackageName() + "/");
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = TMAssistantDownloadManager.getInstance(paramContext.getApplicationContext()).getDownloadSDKClient(jdField_a_of_type_JavaLangString + Process.myPid());
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadSettingClient = TMAssistantDownloadManager.getInstance(paramContext).getDownloadSDKSettingClient();
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.registerDownloadTaskListener(this.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener);
+  }
+  
+  public void a(String paramString)
+  {
+    ThreadManager.post(new TroopHWFileDownloadManager.2(this, paramString), 5, null, true);
+  }
+  
+  public void a(String paramString1, String paramString2, bhwv parambhwv)
+  {
+    String str = paramString2.substring(paramString2.lastIndexOf("/") + 1);
+    File localFile = new File(paramString2);
+    if (localFile.exists())
     {
-      HashMap localHashMap = new HashMap();
-      String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-      if ((!TextUtils.isEmpty(str)) && (b(paramString)))
+      if (parambhwv != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("LbsPack", 2, "uploadSuccess " + paramString);
-        }
-        awrn.a(MobileQQ.sMobileQQ).a(str, paramString, false, 0L, 0L, localHashMap, null);
+        parambhwv.a(paramString1, localFile.length(), localFile.length());
+        parambhwv.a(paramString1, 3, 0, null, paramString2);
       }
       return;
     }
-    catch (Throwable paramString)
+    if (!this.jdField_b_of_type_JavaUtilHashMap.containsKey(paramString1))
     {
-      paramString.printStackTrace();
+      this.jdField_b_of_type_JavaUtilHashMap.put(paramString1, parambhwv);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
     }
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    try
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_FailCode", String.valueOf(paramInt));
-      String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-      if ((!TextUtils.isEmpty(str)) && (a(paramString)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LbsPack", 2, "uploadFailure " + paramString + " " + paramInt);
-        }
-        awrn.a(MobileQQ.sMobileQQ).a(str, paramString, true, 0L, 0L, localHashMap, null);
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    paramString = (Integer)a.get(paramString);
-    if (paramString == null) {
-      return false;
-    }
-    return (int)(Math.random() * paramString.intValue()) == 1;
-  }
-  
-  public static boolean b(String paramString)
-  {
-    paramString = (Integer)b.get(paramString);
-    if (paramString == null) {
-      return false;
-    }
-    return (int)(Math.random() * paramString.intValue()) == 1;
+    ThreadManager.post(new TroopHWFileDownloadManager.1(this, paramString1, str), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhwt
  * JD-Core Version:    0.7.0.1
  */

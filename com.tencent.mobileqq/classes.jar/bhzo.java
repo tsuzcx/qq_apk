@@ -1,112 +1,148 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import cooperation.vip.qqbanner.QbossADBannerCountDownManager.1;
+import cooperation.vip.qqbanner.QbossADBannerCountDownManager.2;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class bhzo
-  extends BaseAdapter
+  extends ahmv
 {
-  private int jdField_a_of_type_Int;
-  private List<sou> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private int b;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bhzn jdField_a_of_type_Bhzn;
+  private Timer jdField_a_of_type_JavaUtilTimer;
+  private TimerTask jdField_a_of_type_JavaUtilTimerTask;
+  private TextView b;
+  private TextView c;
   
-  public bhzo(List<sou> paramList)
+  private Drawable a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setCornerRadius(bbkx.b(20.0F));
+    localGradientDrawable.setColor(a(paramString));
+    return localGradientDrawable;
   }
   
-  private void a(int paramInt, View paramView)
+  private String a()
   {
-    sou localsou = a(paramInt);
-    TextView localTextView = (TextView)paramView.findViewById(2131311144);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131311134);
-    View localView = paramView.findViewById(2131311142);
-    ProgressBar localProgressBar = (ProgressBar)paramView.findViewById(2131311139);
-    localTextView.setText(localsou.b);
-    if (this.b == 0) {
-      this.b = vms.a(paramView.getContext(), 60.0F);
+    if (this.jdField_a_of_type_Bhzn == null) {
+      return "";
     }
-    vms.a(localImageView, localsou.h, this.b, this.b, paramView.getContext().getResources().getDrawable(2130845665), null);
-    if (paramInt == this.jdField_a_of_type_Int)
+    if (this.jdField_a_of_type_Bhzn.d != 1) {
+      return this.jdField_a_of_type_Bhzn.h;
+    }
+    return a(this.jdField_a_of_type_Bhzn.e, this.jdField_a_of_type_Bhzn.f);
+  }
+  
+  private String a(int paramInt1, int paramInt2)
+  {
+    String str1;
+    String str2;
+    if (paramInt1 > 99)
     {
-      paramInt = 1;
-      if (paramInt == 0) {
-        break label186;
+      str1 = "99";
+      if (paramInt2 <= 59) {
+        break label106;
       }
-      localView.setVisibility(0);
-      paramView.setContentDescription(ajjy.a(2131649090) + localsou.b + "’");
+      str2 = "59";
     }
     for (;;)
     {
-      if (localsou.c) {
-        break label233;
+      return str1 + ":" + str2;
+      if ((paramInt1 >= 10) && (paramInt1 <= 99))
+      {
+        str1 = String.valueOf(paramInt1);
+        break;
       }
-      localProgressBar.setVisibility(0);
-      localTextView.setVisibility(8);
-      return;
-      paramInt = 0;
+      if ((paramInt1 >= 0) && (paramInt1 < 10))
+      {
+        str1 = "0" + String.valueOf(paramInt1);
+        break;
+      }
+      str1 = "00";
       break;
-      label186:
-      localView.setVisibility(8);
-      paramView.setContentDescription(ajjy.a(2131649091) + localsou.b + ajjy.a(2131649089));
+      label106:
+      if ((paramInt2 >= 10) && (paramInt2 <= 59)) {
+        str2 = String.valueOf(paramInt2);
+      } else if ((paramInt2 >= 0) && (paramInt2 < 10)) {
+        str2 = "0" + String.valueOf(paramInt2);
+      } else {
+        str2 = "00";
+      }
     }
-    label233:
-    localProgressBar.setVisibility(8);
-    localTextView.setVisibility(0);
   }
   
-  public int a()
+  private void a(String paramString)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public sou a(int paramInt)
-  {
-    return (sou)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == this.jdField_a_of_type_Int) {
+    if (TextUtils.isEmpty(paramString))
+    {
+      this.c.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
+    this.c.setVisibility(0);
+    this.c.setText(paramString);
   }
   
-  public int getCount()
+  private void i()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    j();
+    this.jdField_a_of_type_JavaUtilTimer = new Timer();
+    this.jdField_a_of_type_JavaUtilTimerTask = new QbossADBannerCountDownManager.2(this);
+    this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_JavaUtilTimerTask, 0L, 1000L);
   }
   
-  public long getItemId(int paramInt)
+  private void j()
   {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131494996, paramViewGroup, false);
-      localView.setFocusable(true);
+    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
+      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
     }
-    a(paramInt, localView);
+    if (this.jdField_a_of_type_JavaUtilTimer != null) {
+      this.jdField_a_of_type_JavaUtilTimer.cancel();
+    }
+    this.jdField_a_of_type_JavaUtilTimer = null;
+    this.jdField_a_of_type_JavaUtilTimerTask = null;
+  }
+  
+  protected int a()
+  {
+    return 2131561527;
+  }
+  
+  public View a()
+  {
+    View localView = super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378252));
+    this.b = ((TextView)localView.findViewById(2131378338));
+    this.c = ((TextView)localView.findViewById(2131378069));
     return localView;
+  }
+  
+  protected void a(ahmr paramahmr)
+  {
+    super.a(paramahmr);
+    ThreadManagerV2.getUIHandlerV2().post(new QbossADBannerCountDownManager.1(this, paramahmr));
+  }
+  
+  public void e()
+  {
+    super.e();
+    j();
+  }
+  
+  public void f()
+  {
+    super.f();
+    j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhzo
  * JD-Core Version:    0.7.0.1
  */

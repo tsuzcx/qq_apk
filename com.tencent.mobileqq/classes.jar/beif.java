@@ -1,50 +1,116 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.widget.CountDownProgressBar;
+import android.text.TextUtils;
+import java.io.Closeable;
+import java.io.File;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.nio.charset.Charset;
+import java.util.Iterator;
+import java.util.Set;
+import org.json.JSONArray;
 
-public class beif
-  extends Handler
+public final class beif
 {
-  public beif(CountDownProgressBar paramCountDownProgressBar) {}
+  static final Charset a = Charset.forName("US-ASCII");
+  static final Charset b = Charset.forName("UTF-8");
   
-  public void handleMessage(Message paramMessage)
+  static String a(Reader paramReader)
   {
-    switch (paramMessage.what)
+    try
     {
-    }
-    do
-    {
-      return;
-      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
-      CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
-      return;
-      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
-      if (CountDownProgressBar.a(this.a) <= (float)CountDownProgressBar.a(this.a)) {
-        break;
+      StringWriter localStringWriter = new StringWriter();
+      char[] arrayOfChar = new char[1024];
+      for (;;)
+      {
+        int i = paramReader.read(arrayOfChar);
+        if (i == -1) {
+          break;
+        }
+        localStringWriter.write(arrayOfChar, 0, i);
       }
-      CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
-      this.a.invalidate();
-    } while (CountDownProgressBar.a(this.a) == null);
-    CountDownProgressBar.a(this.a).a();
-    return;
-    CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
-    if (CountDownProgressBar.b(this.a) >= (float)CountDownProgressBar.b(this.a))
-    {
-      CountDownProgressBar.b(this.a, 0.0F);
-      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) - 1);
+      str = localObject.toString();
     }
-    for (;;)
+    finally
     {
-      this.a.invalidate();
-      CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
+      paramReader.close();
+    }
+    String str;
+    paramReader.close();
+    return str;
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    if (!TextUtils.isEmpty(paramString2)) {
+      return paramString1 + ":" + paramString2;
+    }
+    return null;
+  }
+  
+  public static JSONArray a(Set paramSet)
+  {
+    JSONArray localJSONArray = new JSONArray();
+    if (paramSet != null)
+    {
+      paramSet = paramSet.iterator();
+      while (paramSet.hasNext()) {
+        localJSONArray.put(paramSet.next());
+      }
+    }
+    return localJSONArray;
+  }
+  
+  static void a(Closeable paramCloseable)
+  {
+    if (paramCloseable != null) {}
+    try
+    {
+      paramCloseable.close();
       return;
-      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) + CountDownProgressBar.a(this.a));
     }
+    catch (RuntimeException paramCloseable)
+    {
+      throw paramCloseable;
+    }
+    catch (Exception paramCloseable) {}
+  }
+  
+  static void a(File paramFile)
+  {
+    File[] arrayOfFile = paramFile.listFiles();
+    if (arrayOfFile == null) {
+      throw new IOException("not a readable directory: " + paramFile);
+    }
+    int j = arrayOfFile.length;
+    int i = 0;
+    while (i < j)
+    {
+      paramFile = arrayOfFile[i];
+      if (paramFile.isDirectory()) {
+        a(paramFile);
+      }
+      if (!paramFile.delete()) {
+        throw new IOException("failed to delete file: " + paramFile);
+      }
+      i += 1;
+    }
+  }
+  
+  public static String[] a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      int i = paramString.lastIndexOf(":");
+      if ((i != -1) && (paramString.length() > i + 1)) {
+        return new String[] { paramString.substring(0, i), paramString.substring(i + 1) };
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beif
  * JD-Core Version:    0.7.0.1
  */

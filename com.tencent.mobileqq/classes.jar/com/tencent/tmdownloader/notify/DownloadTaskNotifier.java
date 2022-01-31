@@ -1,6 +1,6 @@
 package com.tencent.tmdownloader.notify;
 
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -43,7 +43,7 @@ public class DownloadTaskNotifier
         WeakReference localWeakReference = (WeakReference)localIterator.next();
         if ((localWeakReference != null) && (localWeakReference.get() == paramDownloadGlobalListener))
         {
-          ac.c("DownloadTaskNotifier_", ">addListener " + paramDownloadGlobalListener + "已经被添加过了，放弃本次添加动作");
+          ab.c("DownloadTaskNotifier_", ">addListener " + paramDownloadGlobalListener + "已经被添加过了，放弃本次添加动作");
           return;
         }
       }

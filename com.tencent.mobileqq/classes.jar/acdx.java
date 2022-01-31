@@ -1,16 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class acdx
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public acdx(UpgradeActivity paramUpgradeActivity) {}
+  public acdx(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    UpgradeActivity.b(this.a);
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onAddAccountClick.onClick:add account");
+    }
+    paramView = (ayav)this.a.app.getManager(61);
+    if (paramView != null) {}
+    for (int i = paramView.a();; i = 0)
+    {
+      if (i < 2)
+      {
+        paramView = new Intent(this.a, SubLoginActivity.class);
+        paramView.putExtra("fromWhere", this.a.b);
+        this.a.startActivity(paramView);
+        return;
+      }
+      ayao.a(this.a.app, this.a);
+      return;
+    }
   }
 }
 

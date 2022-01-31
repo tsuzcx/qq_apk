@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.forward;
 
-import apld;
+import aqeq;
 
 class ForwardSdkBaseOption$9$2
   implements Runnable

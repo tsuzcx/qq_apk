@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
-import arop;
-import arpa;
+import askt;
+import asle;
 
 class MsgBackupQRFragment$7
   implements Runnable
@@ -10,7 +10,7 @@ class MsgBackupQRFragment$7
   
   public void run()
   {
-    arpa.a().a().a(false);
+    asle.a().a().a(false);
   }
 }
 

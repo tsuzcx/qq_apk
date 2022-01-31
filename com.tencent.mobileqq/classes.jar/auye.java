@@ -1,25 +1,38 @@
-import android.opengl.GLSurfaceView.EGLConfigChooser;
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
+import QC.UniBusiGetOneItemWithCheckRsp;
+import com.tencent.qphone.base.util.QLog;
 
-public class auye
-  implements auyj
+class auye
+  implements ajtg
 {
-  public auye(FlowDecodeScreenSurfaceBase paramFlowDecodeScreenSurfaceBase) {}
+  auye(auxz paramauxz, auyg paramauyg) {}
   
-  public GLSurfaceView.EGLConfigChooser a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return new auyk(this.a, true);
-  }
-  
-  public GLSurfaceView.EGLContextFactory a()
-  {
-    return new auyf(this);
+    QLog.d("StickyNoteVasAdapter", 2, " type:" + paramInt + " isSuccess:" + paramBoolean);
+    auyg localauyg;
+    if (this.jdField_a_of_type_Auyg != null)
+    {
+      if (!(paramObject instanceof UniBusiGetOneItemWithCheckRsp)) {
+        break label84;
+      }
+      localauyg = this.jdField_a_of_type_Auyg;
+      if (((UniBusiGetOneItemWithCheckRsp)paramObject).ret != 0) {
+        break label79;
+      }
+    }
+    label79:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      localauyg.a(paramBoolean, (UniBusiGetOneItemWithCheckRsp)paramObject);
+      return;
+    }
+    label84:
+    this.jdField_a_of_type_Auyg.a(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auye
  * JD-Core Version:    0.7.0.1
  */

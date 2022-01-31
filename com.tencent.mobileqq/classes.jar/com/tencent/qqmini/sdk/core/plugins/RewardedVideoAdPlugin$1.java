@@ -1,15 +1,40 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfz;
+import android.app.Activity;
+import android.os.Bundle;
+import beka;
+import com.tencent.qqmini.sdk.core.proxy.AdProxy;
+import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsRewardVideoAdView;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 
 class RewardedVideoAdPlugin$1
   implements Runnable
 {
-  RewardedVideoAdPlugin$1(RewardedVideoAdPlugin paramRewardedVideoAdPlugin, bdfz parambdfz, String paramString1, String paramString2) {}
+  RewardedVideoAdPlugin$1(RewardedVideoAdPlugin paramRewardedVideoAdPlugin, Activity paramActivity, String paramString1, String paramString2, beka parambeka, String paramString3, Bundle paramBundle) {}
   
   public void run()
   {
-    RewardedVideoAdPlugin.access$000(this.this$0, this.val$req, this.val$pos_id, this.val$compId);
+    AdProxy localAdProxy = (AdProxy)ProxyManager.get(AdProxy.class);
+    if (localAdProxy == null)
+    {
+      RewardedVideoAdPlugin.access$002(this.this$0, false);
+      return;
+    }
+    RewardedVideoAdPlugin.access$102(this.this$0, localAdProxy.createRewardVideoAdView(this.val$activity, this.val$appid, this.val$pos_id, new RewardedVideoAdPlugin.1.1(this), this.val$ext));
+    try
+    {
+      if (RewardedVideoAdPlugin.access$100(this.this$0) != null)
+      {
+        RewardedVideoAdPlugin.access$100(this.this$0).loadAD();
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      RewardedVideoAdPlugin.access$002(this.this$0, false);
+      return;
+    }
+    RewardedVideoAdPlugin.access$002(this.this$0, false);
   }
 }
 

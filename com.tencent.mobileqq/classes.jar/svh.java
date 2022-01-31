@@ -1,47 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class svh
-  extends sgc
+  extends SimpleJob<Void>
 {
-  svh(svc paramsvc) {}
-  
-  public void a()
+  svh(svg paramsvg, String paramString)
   {
-    urk.b(svc.b(), "msg: MSG_ON_STORY_MSGTAB_DATA_LOADED");
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      urk.e(svc.b(), "[ERROR] onMsgTabStoryDataLoaded() app is null!");
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    boolean bool = vyi.a(500L);
+    if (this.a.a(bool)) {
+      svg.a(this.a, bool);
     }
-    stf localstf = (stf)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(251);
-    if (localstf.a()) {
-      if (this.a.a()) {
-        this.a.jdField_a_of_type_Suo.a("exp_story", 3);
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (!localstf.b()) {
-          break;
-        }
-      } while (!this.a.a());
-      this.a.jdField_a_of_type_Suo.a("exp_story", 2);
-      return;
-      if (!this.a.jdField_a_of_type_Svm.a()) {
-        break;
-      }
-    } while (!this.a.a());
-    this.a.jdField_a_of_type_Suo.a("exp_story", 5);
-    return;
-    if (localstf.c())
-    {
-      this.a.h();
-      localstf.a();
-      this.a.jdField_a_of_type_Suo.a("exp_hide", 0);
-      return;
-    }
-    this.a.jdField_a_of_type_Suo.a("exp_hide", 0);
+    return null;
+  }
+  
+  public int getJobType()
+  {
+    return 4;
   }
 }
 

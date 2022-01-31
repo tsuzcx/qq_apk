@@ -1,23 +1,43 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.AFCallbackForward.1;
+import android.annotation.TargetApi;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class alqv
-  implements Camera.AutoFocusCallback
+class alqv
+  implements ArkViewImplement.LoadCallback
 {
-  private final alqm jdField_a_of_type_Alqm;
-  private final alqs jdField_a_of_type_Alqs;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
+  alqv(alqu paramalqu, altt paramaltt, altp paramaltp, int paramInt, adlk paramadlk) {}
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.AFCallbackForward.1(this, paramBoolean));
+    onLoadState(paramInt1);
+  }
+  
+  @TargetApi(14)
+  public void onLoadState(int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_Altt.a.setVisibility(0);
+      alqu.a(this.jdField_a_of_type_Alqu, this.jdField_a_of_type_Altp, this.jdField_a_of_type_Altt);
+      this.jdField_a_of_type_Altt.b.setVisibility(0);
+      this.jdField_a_of_type_Altp.a(this.jdField_a_of_type_Altt, this.jdField_a_of_type_Alqu);
+    }
+    for (;;)
+    {
+      QLog.d("ArkAdapterItemForTextMsg", 1, new Object[] { "ArkFold.attachArkView.appName:", this.jdField_a_of_type_Alqu.a.appName, ", position=", Integer.valueOf(this.jdField_a_of_type_Int), ",state=", Integer.valueOf(paramInt) });
+      this.jdField_a_of_type_Altp.a(this.jdField_a_of_type_Adlk, this.jdField_a_of_type_Int);
+      return;
+      this.jdField_a_of_type_Altt.a.setVisibility(8);
+      this.jdField_a_of_type_Altt.b.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alqv
  * JD-Core Version:    0.7.0.1
  */

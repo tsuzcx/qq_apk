@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import acvp;
+import adgn;
 import android.content.Context;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -8,17 +8,17 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class AIOIconChangeByTimeHelper$2
   implements Runnable
 {
-  public AIOIconChangeByTimeHelper$2(acvp paramacvp) {}
+  public AIOIconChangeByTimeHelper$2(adgn paramadgn) {}
   
   public void run()
   {
-    synchronized (acvp.a(this.this$0))
+    synchronized (adgn.a(this.this$0))
     {
-      if ((acvp.a(this.this$0).get() == 1) && (acvp.a(this.this$0) != null) && (acvp.a(this.this$0).a != null) && (acvp.a(this.this$0) != null))
+      if ((adgn.a(this.this$0).get() == 1) && (adgn.a(this.this$0) != null) && (adgn.a(this.this$0).a != null) && (adgn.a(this.this$0) != null))
       {
-        acvp.a(this.this$0).set(0);
-        acvp.a(this.this$0).a.unregisterReceiver(acvp.a(this.this$0));
-        acvp.a(this.this$0, null);
+        adgn.a(this.this$0).set(0);
+        adgn.a(this.this$0).a.unregisterReceiver(adgn.a(this.this$0));
+        adgn.a(this.this$0, null);
       }
       return;
     }

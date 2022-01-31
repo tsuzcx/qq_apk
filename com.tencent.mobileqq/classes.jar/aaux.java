@@ -1,32 +1,33 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.LoginActivity;
 
 public class aaux
-  extends ajrp
+  implements DialogInterface.OnClickListener
 {
-  public aaux(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public aaux(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, "onVipStatusChanged: ");
-    }
-    if ((this.a.app != null) && (bajr.b(this.a.app)))
+    if (paramInt == 1)
     {
-      this.a.a(0L, null, null, false);
-      if (FriendProfileCardActivity.b(this.a).compareAndSet(true, false))
-      {
-        if (FriendProfileCardActivity.a(this.a).get())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("FriendProfileCardActivity", 2, "onVipStatusChanged: showDialog");
-          }
-          babr.a(this.a, 232, null, ajjy.a(2131639102), null, ajjy.a(2131639110), new aauy(this), null).show();
-        }
-        this.a.removeObserver(FriendProfileCardActivity.a(this.a));
-      }
+      paramDialogInterface = new Intent(this.a, LoginActivity.class);
+      paramDialogInterface.putExtra("is_change_account", true);
+      paramDialogInterface.putExtra("if_check_account_same", true);
+      paramDialogInterface.putExtras(this.a.getIntent().getExtras());
+      paramDialogInterface.putExtra("key_action", ChatSettingForTroop.class.getSimpleName());
+      paramDialogInterface.addFlags(268435456);
+      paramDialogInterface.addFlags(67108864);
+      this.a.a.cancel();
+      this.a.startActivity(paramDialogInterface);
+      this.a.finish();
     }
+    while (paramInt != 0) {
+      return;
+    }
+    this.a.finish();
   }
 }
 

@@ -1,14 +1,16 @@
-import android.os.Bundle;
-import android.os.IInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qqpim.QQPimBridgeActivity;
 
-public abstract interface bgsh
-  extends IInterface
+public class bgsh
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(bgsk parambgsk);
+  public bgsh(QQPimBridgeActivity paramQQPimBridgeActivity) {}
   
-  public abstract void a(String paramString, Bundle paramBundle);
-  
-  public abstract void b(bgsk parambgsk);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.finish();
+  }
 }
 
 

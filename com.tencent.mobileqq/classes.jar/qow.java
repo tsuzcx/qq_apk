@@ -1,35 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-class qow
-  extends rrb
+final class qow
+  extends AnimatorListenerAdapter
 {
-  qow(qoe paramqoe) {}
+  qow(View paramView) {}
   
-  public void a(rrc paramrrc)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramrrc != null)
-    {
-      int j = this.a.a.getHeaderViewsCount();
-      new ArrayList();
-      int i = paramrrc.jdField_a_of_type_Int;
-      while (i <= paramrrc.b)
-      {
-        int k = i - j;
-        if (k >= 0)
-        {
-          BaseArticleInfo localBaseArticleInfo = this.a.b(k);
-          if (localBaseArticleInfo != null)
-          {
-            QLog.d("FeedExposureHelper", 2, "onExposure : " + localBaseArticleInfo + " proteusItemsData : " + localBaseArticleInfo.proteusItemsData);
-            rvf.a(localBaseArticleInfo, paramrrc.jdField_a_of_type_Long);
-          }
-        }
-        i += 1;
-      }
-    }
+    this.a.setLayerType(0, null);
   }
 }
 

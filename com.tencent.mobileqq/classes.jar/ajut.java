@@ -1,71 +1,29 @@
-import VIP.AIOKeyWordReq;
-import VIP.AIOSendReq;
-import VIP.AIOSendRes;
-import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
-public class ajut
-  extends ajfb
+class ajut
+  extends akav
 {
-  public static int a;
-  public static String a;
-  public static String b = "AIOSendSvc.getUserKeyWordStips";
+  ajut(ajuo paramajuo) {}
   
-  static
+  protected void a(int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_Int = 1;
-    jdField_a_of_type_JavaLangString = "AIOSendSvc.CheckPopGrayStips";
-  }
-  
-  public ajut(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
-  
-  public void a(AIOSendReq paramAIOSendReq)
-  {
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putSerializable("VIPAioSendRequest", paramAIOSendReq);
-    super.send(localToServiceMsg);
-  }
-  
-  public void a(String paramString)
-  {
-    paramString = new AIOKeyWordReq(this.app.c(), paramString);
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), b);
-    localToServiceMsg.extraData.putSerializable("VIPAioSendRequest", paramString);
-    super.send(localToServiceMsg);
-  }
-  
-  protected Class<? extends ajfe> observerClass()
-  {
-    return ajuu.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null))
+    if ((paramInt1 == 1) && (this.a.a()))
     {
-      notifyUI(jdField_a_of_type_Int, false, null);
-      return;
+      this.a.a(true);
+      ajuo.a(this.a, awzw.a());
+      this.a.app.a().a(0).b();
     }
-    paramToServiceMsg = paramToServiceMsg.getServiceCmd();
-    if (jdField_a_of_type_JavaLangString.equals(paramToServiceMsg))
+    this.a.a.a(this.a);
+  }
+  
+  protected void b(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 == 1) && (this.a.b()))
     {
-      paramToServiceMsg = (AIOSendRes)paramObject;
-      batf.a().a(this.app, paramToServiceMsg);
-    }
-    for (;;)
-    {
-      notifyUI(jdField_a_of_type_Int, true, paramObject);
-      return;
-      if (b.equals(paramToServiceMsg))
-      {
-        paramToServiceMsg = (AIOSendRes)paramObject;
-        batg.a().a(this.app, paramToServiceMsg);
-      }
+      this.a.b(true);
+      ajuo.b(this.a, awzw.a());
+      this.a.app.a().a(1).b();
     }
   }
 }

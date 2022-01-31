@@ -2,8 +2,8 @@ package com.tencent.mobileqq.microapp;
 
 public final class R$style
 {
-  public static int a = 2131689515;
-  public static int b = 2131689823;
+  public static int a = 2131755051;
+  public static int b = 2131755360;
 }
 
 

@@ -10,6 +10,7 @@ public class DomObjectConstant
   public static final String DOM_TYPE_LIST = "list";
   public static final String DOM_TYPE_MODAL = "modal";
   public static final String DOM_TYPE_PAGE = "page";
+  public static final String DOM_TYPE_SCROLL = "scroller";
   public static final String DOM_TYPE_SLIDER = "slider";
   public static final String DOM_TYPE_SMART_HEADER = "smart-header";
   public static final String DOM_TYPE_TEXT = "text";

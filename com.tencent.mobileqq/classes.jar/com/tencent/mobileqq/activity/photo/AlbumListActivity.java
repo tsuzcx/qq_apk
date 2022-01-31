@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.photo;
 
-import afyz;
-import afza;
-import afzb;
-import afzc;
-import afzd;
-import afze;
-import afzf;
-import afzs;
-import afzz;
-import ageh;
-import ajjy;
+import agkx;
+import agky;
+import agkz;
+import agla;
+import aglb;
+import aglc;
+import agld;
+import aglq;
+import aglx;
+import agqf;
+import ajyc;
 import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -24,12 +24,12 @@ import android.text.TextUtils;
 import android.util.SparseArray;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import awcx;
-import baaf;
-import bbmy;
-import bfhn;
-import bfpr;
-import bhfc;
+import axcf;
+import bbbj;
+import bcpw;
+import bgpf;
+import bgxy;
+import bizu;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
@@ -44,16 +44,16 @@ import java.util.HashMap;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
-import vhg;
+import vuc;
 
 public class AlbumListActivity
   extends PeakActivity
 {
   int jdField_a_of_type_Int;
   public long a;
-  private afzd jdField_a_of_type_Afzd = new afzd(this);
-  public afze a;
-  afzz jdField_a_of_type_Afzz;
+  private aglb jdField_a_of_type_Aglb = new aglb(this);
+  public aglc a;
+  aglx jdField_a_of_type_Aglx;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public XListView a;
@@ -103,17 +103,17 @@ public class AlbumListActivity
     this.jdField_f_of_type_Int = localIntent.getIntExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 0);
     this.jdField_a_of_type_Boolean = localIntent.getBooleanExtra("PhotoConst.IS_SHOW_QZONE_ALBUM", false);
     this.jdField_a_of_type_Long = localIntent.getLongExtra("PhotoConst.QZONE_ALBUM_NUM", 0L);
-    this.jdField_a_of_type_Afzz = ((afzz)afzz.a.get(this.jdField_f_of_type_Int));
+    this.jdField_a_of_type_Aglx = ((aglx)aglx.a.get(this.jdField_f_of_type_Int));
     this.g = localIntent.getBooleanExtra("PhotoConst.PHOTOLIST_KEY_FILTER_GIF_VIDEO", false);
     if (this.g)
     {
-      this.jdField_a_of_type_Afzz = new afzs(afzz.d);
+      this.jdField_a_of_type_Aglx = new aglq(aglx.d);
       this.jdField_f_of_type_Int = 1;
     }
     this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("peak.myUin");
     if (this.jdField_a_of_type_JavaLangString == null)
     {
-      this.jdField_a_of_type_JavaLangString = bhfc.a().getCurrentAccountUin();
+      this.jdField_a_of_type_JavaLangString = bizu.a().getCurrentAccountUin();
       if (this.jdField_a_of_type_JavaLangString == null) {
         throw new RuntimeException("must set MY_UIN");
       }
@@ -139,9 +139,9 @@ public class AlbumListActivity
     this.p = localIntent.getBooleanExtra("PhotoConst.IS_JUMPTO_TROOP_ALBUM", false);
     if ((this.jdField_a_of_type_Boolean) && ((!this.q) || (c())))
     {
-      NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), awcx.class);
+      NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), axcf.class);
       localNewIntent.putExtra("selfuin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
-      BaseApplicationImpl.getApplication().getRuntime().registObserver(this.jdField_a_of_type_Afzd);
+      BaseApplicationImpl.getApplication().getRuntime().registObserver(this.jdField_a_of_type_Aglb);
       BaseApplicationImpl.getApplication().getRuntime().startServlet(localNewIntent);
     }
     this.r = localIntent.getBooleanExtra("FROM_ARK_CHOOSE_IMAGE", false);
@@ -155,36 +155,36 @@ public class AlbumListActivity
   @TargetApi(14)
   private void b()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131309736);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131375491);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       localRelativeLayout.setFitsSystemWindows(true);
       localRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.jdField_a_of_type_Afze = new afze(this, this.jdField_a_of_type_Afzz, this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Afze.a(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Afze.a(this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Afze.b(this.m);
+    this.jdField_a_of_type_Aglc = new aglc(this, this.jdField_a_of_type_Aglx, this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Aglc.a(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Aglc.a(this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Aglc.b(this.m);
     if (this.o) {
-      this.jdField_a_of_type_Afze.a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.e, this.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_Aglc.a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.e, this.jdField_a_of_type_JavaUtilArrayList);
     }
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131296903));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Afze);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new afzc(this, null));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131362444));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Aglc);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new agla(this, null));
     if (Build.VERSION.SDK_INT > 8) {
       this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
     }
     int i1 = getIntent().getIntExtra("PhotoConst.photo_selection_index", 0);
     int i2 = getIntent().getIntExtra("PhotoConst.photo_selection_y", 0);
-    Looper.myQueue().addIdleHandler(new afyz(this, i1, i2));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131302804));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131302832));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131302847));
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131653352);
+    Looper.myQueue().addIdleHandler(new agkx(this, i1, i2));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368429));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368457));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368472));
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131719181);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(ajjy.a(2131634402));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new afza(this));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(ajyc.a(2131700190));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new agky(this));
   }
   
   private boolean c()
@@ -196,7 +196,7 @@ public class AlbumListActivity
   {
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new afzb(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new agkz(this);
       IntentFilter localIntentFilter = new IntentFilter("AlbumListActivity_finish");
       registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
     }
@@ -223,12 +223,12 @@ public class AlbumListActivity
     if (localObject1 != null) {}
     for (int i1 = ((ArrayList)localObject1).size();; i1 = 0)
     {
-      ageh.b((Intent)localObject2, i1);
+      agqf.b((Intent)localObject2, i1);
       if (this.i) {
         break label240;
       }
       if (b()) {
-        vhg.a().a(vhg.a().c());
+        vuc.a().a(vuc.a().c());
       }
       if (!this.u) {
         break;
@@ -252,13 +252,13 @@ public class AlbumListActivity
         ((Intent)localObject3).setFlags(getIntent().getFlags() & 0xDFFFFFFF & 0xFBFFFFFF);
         sendBroadcast((Intent)localObject3);
         finish();
-        baaf.a(this, false, false);
+        bbbj.a(this, false, false);
       }
       return;
     }
     finish();
-    baaf.a();
-    baaf.a(this, false, false);
+    bbbj.a();
+    bbbj.a(this, false, false);
     return;
     label240:
     localObject1 = getIntent();
@@ -269,7 +269,7 @@ public class AlbumListActivity
     }
     if (localObject2 == null)
     {
-      bbmy.a(this, "请设置INIT_ACTIVITY_CLASS_NAME ", 0).a();
+      bcpw.a(this, "请设置INIT_ACTIVITY_CLASS_NAME ", 0).a();
       return;
     }
     ((Intent)localObject1).removeExtra("PhotoConst.PHOTO_PATHS");
@@ -279,12 +279,12 @@ public class AlbumListActivity
     {
       QzonePluginProxyActivity.a((Intent)localObject1, (String)localObject2);
       ((Intent)localObject1).putExtra("cleartop", true);
-      bfpr.a(this, this.jdField_a_of_type_JavaLangString, (Intent)localObject1, -1);
+      bgxy.a(this, this.jdField_a_of_type_JavaLangString, (Intent)localObject1, -1);
     }
     for (;;)
     {
       finish();
-      baaf.a(this, false, false);
+      bbbj.a(this, false, false);
       return;
       ((Intent)localObject1).setClassName((String)localObject3, (String)localObject2);
       if (!((Intent)localObject1).getBooleanExtra("PhotoConst.IS_CALL_IN_PLUGIN", false))
@@ -299,11 +299,11 @@ public class AlbumListActivity
         if ("qzone_plugin.apk".equals(localObject3))
         {
           ((Intent)localObject1).putExtra("qzone_plugin_activity_name", (String)localObject2);
-          bfpr.a(this, str, (Intent)localObject1, 2);
+          bgxy.a(this, str, (Intent)localObject1, 2);
         }
         else if ("qqfav.apk".equals(localObject3))
         {
-          bfhn.a(this, this.jdField_a_of_type_JavaLangString, (Intent)localObject1, -1);
+          bgpf.a(this, this.jdField_a_of_type_JavaLangString, (Intent)localObject1, -1);
         }
         else
         {
@@ -317,8 +317,8 @@ public class AlbumListActivity
   {
     super.onCreate(paramBundle);
     super.c();
-    super.setContentView(2131495064);
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131165303);
+    super.setContentView(2131560639);
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131296375);
     this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
     a();
     b();
@@ -327,12 +327,12 @@ public class AlbumListActivity
   
   public void onDestroy()
   {
-    afzf.a(this).a();
+    agld.a(this).a();
     if (!this.t) {
-      baaf.c();
+      bbbj.c();
     }
     if (this.jdField_a_of_type_Boolean) {
-      BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.jdField_a_of_type_Afzd);
+      BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.jdField_a_of_type_Aglb);
     }
     unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
     super.onDestroy();

@@ -7,20 +7,20 @@ import android.content.res.Resources;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewStub;
-import baig;
-import bcod;
+import bbjn;
+import bdse;
 import com.tencent.av.VideoController;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.QavPanel;
 import com.tencent.av.ui.VideoControlUI;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import kvq;
-import mdo;
-import mdp;
-import mdq;
-import mdu;
-import mgd;
+import lgf;
+import mon;
+import moo;
+import mop;
+import mot;
+import mrc;
 
 public class GuideHelper
 {
@@ -31,7 +31,7 @@ public class GuideHelper
   private final int jdField_a_of_type_Int = 2;
   private Context jdField_a_of_type_AndroidContentContext;
   GuideHelper.DelayTryShowRunnable jdField_a_of_type_ComTencentAvUiGuideGuideHelper$DelayTryShowRunnable;
-  public mdu a;
+  public mot a;
   private boolean jdField_a_of_type_Boolean;
   private boolean jdField_b_of_type_Boolean;
   
@@ -43,7 +43,7 @@ public class GuideHelper
   
   public GuideHelper()
   {
-    this.jdField_a_of_type_Mdu = new mdu();
+    this.jdField_a_of_type_Mot = new mot();
   }
   
   private int a(long paramLong, Context paramContext)
@@ -67,7 +67,7 @@ public class GuideHelper
   static long a(Context paramContext)
   {
     if (jdField_a_of_type_Long == -1L) {
-      jdField_a_of_type_Long = baig.a(paramContext).getLong("qav_UserGuide_gesture_had_show", 0L);
+      jdField_a_of_type_Long = bbjn.a(paramContext).getLong("qav_UserGuide_gesture_had_show", 0L);
     }
     return jdField_a_of_type_Long;
   }
@@ -104,7 +104,7 @@ public class GuideHelper
       QLog.w("GuideHelper", 1, "tryShow, initTipsView false, had_show[" + jdField_a_of_type_Long + "], seq[" + paramLong + "]");
       return;
     }
-    if ((this.jdField_a_of_type_Mdu.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null) && (i == 0))
+    if ((this.jdField_a_of_type_Mot.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null) && (i == 0))
     {
       QLog.w("GuideHelper", 1, "tryShow, loadedLottieDrawable, seq[" + paramLong + "]");
       return;
@@ -115,9 +115,9 @@ public class GuideHelper
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Mdu.a(true);
-    mgd.a();
-    bcod.a().postDelayed(new GuideHelper.3(this, paramLong), 5000L);
+    this.jdField_a_of_type_Mot.a(true);
+    mrc.a();
+    bdse.a().postDelayed(new GuideHelper.3(this, paramLong), 5000L);
     if (i == 0)
     {
       a(paramContext, paramLong);
@@ -129,7 +129,7 @@ public class GuideHelper
   static void a(Context paramContext, long paramLong)
   {
     jdField_a_of_type_Long = System.currentTimeMillis();
-    paramContext = baig.a(paramContext).edit();
+    paramContext = bbjn.a(paramContext).edit();
     paramContext.putLong("qav_UserGuide_gesture_had_show", jdField_a_of_type_Long);
     paramContext.apply();
     QLog.w("AVActivity", 1, "qav_UserGuide_gesture, save, time[" + jdField_a_of_type_Long + "], seq[" + paramLong + "]");
@@ -141,11 +141,11 @@ public class GuideHelper
     if (a(paramContext) == 0L)
     {
       paramContext = (AVActivity)paramContext;
-      kvq localkvq = VideoController.a().a();
-      if ((localkvq == null) || (paramContext.a == null)) {
+      lgf locallgf = VideoController.a().a();
+      if ((locallgf == null) || (paramContext.a == null)) {
         return true;
       }
-      boolean bool3 = localkvq.r();
+      boolean bool3 = locallgf.r();
       boolean bool4 = paramContext.a.h();
       boolean bool5 = paramContext.a.a().b(0);
       boolean bool2 = paramContext.a.d(paramLong);
@@ -170,23 +170,23 @@ public class GuideHelper
       if (paramInt == 0)
       {
         i = 1;
-        if (this.jdField_a_of_type_Mdu.jdField_a_of_type_AndroidViewView == null)
+        if (this.jdField_a_of_type_Mot.jdField_a_of_type_AndroidViewView == null)
         {
-          if (this.jdField_a_of_type_Mdu.jdField_a_of_type_AndroidViewViewStub == null)
+          if (this.jdField_a_of_type_Mot.jdField_a_of_type_AndroidViewViewStub == null)
           {
-            this.jdField_a_of_type_Mdu.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)localAVActivity.findViewById(2131306560));
-            if (this.jdField_a_of_type_Mdu.jdField_a_of_type_AndroidViewViewStub != null) {
-              this.jdField_a_of_type_Mdu.jdField_a_of_type_AndroidViewViewStub.inflate();
+            this.jdField_a_of_type_Mot.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)localAVActivity.findViewById(2131372259));
+            if (this.jdField_a_of_type_Mot.jdField_a_of_type_AndroidViewViewStub != null) {
+              this.jdField_a_of_type_Mot.jdField_a_of_type_AndroidViewViewStub.inflate();
             }
           }
-          this.jdField_a_of_type_Mdu.b = localAVActivity.findViewById(2131306714);
-          this.jdField_a_of_type_Mdu.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Mdu.b.findViewById(2131306792);
+          this.jdField_a_of_type_Mot.b = localAVActivity.findViewById(2131372418);
+          this.jdField_a_of_type_Mot.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Mot.b.findViewById(2131372501);
         }
-        this.jdField_a_of_type_Mdu.b.setOnTouchListener(new mdo(this, paramLong));
+        this.jdField_a_of_type_Mot.b.setOnTouchListener(new mon(this, paramLong));
         if (i == 0) {
           break label236;
         }
-        new mdq().a(paramLong, paramContext, jdField_a_of_type_JavaLangString, new mdp(this, paramLong, paramContext, paramInt));
+        new mop().a(paramLong, paramContext, jdField_a_of_type_JavaLangString, new moo(this, paramLong, paramContext, paramInt));
       }
       for (;;)
       {
@@ -197,10 +197,10 @@ public class GuideHelper
         i = 0;
         break;
         label236:
-        paramContext = this.jdField_a_of_type_Mdu.jdField_a_of_type_AndroidViewView.getLayoutParams();
+        paramContext = this.jdField_a_of_type_Mot.jdField_a_of_type_AndroidViewView.getLayoutParams();
         paramContext.width = -2;
         paramContext.height = -2;
-        this.jdField_a_of_type_Mdu.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localAVActivity.getResources().getDrawable(2130841465));
+        this.jdField_a_of_type_Mot.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localAVActivity.getResources().getDrawable(2130841554));
       }
     }
   }
@@ -218,13 +218,13 @@ public class GuideHelper
       if (!bool1)
       {
         paramContext = (AVActivity)paramContext;
-        kvq localkvq = VideoController.a().a();
-        if ((localkvq == null) || (paramContext.a == null))
+        lgf locallgf = VideoController.a().a();
+        if ((locallgf == null) || (paramContext.a == null))
         {
           return true;
           bool1 = false;
         }
-        else if (!localkvq.c())
+        else if (!locallgf.c())
         {
           i = 1;
           bool1 = paramContext.a.h();
@@ -254,20 +254,20 @@ public class GuideHelper
   private static long b(Context paramContext)
   {
     if (jdField_b_of_type_Long == -1L) {
-      jdField_b_of_type_Long = baig.a(paramContext).getLong("qav_UserGuide_textchat_had_show2", 0L);
+      jdField_b_of_type_Long = bbjn.a(paramContext).getLong("qav_UserGuide_textchat_had_show2", 0L);
     }
     return jdField_b_of_type_Long;
   }
   
   private void b(long paramLong)
   {
-    this.jdField_a_of_type_Mdu.a(false);
+    this.jdField_a_of_type_Mot.a(false);
   }
   
   private static void b(Context paramContext, long paramLong)
   {
     jdField_b_of_type_Long = System.currentTimeMillis();
-    paramContext = baig.a(paramContext).edit();
+    paramContext = bbjn.a(paramContext).edit();
     paramContext.putLong("qav_UserGuide_textchat_had_show2", jdField_b_of_type_Long);
     paramContext.apply();
     QLog.w("AVActivity", 1, "qav_UserGuide_gesture, save, time[" + jdField_a_of_type_Long + "], seq[" + paramLong + "]");
@@ -282,7 +282,7 @@ public class GuideHelper
   public void a(long paramLong)
   {
     b(paramLong);
-    this.jdField_a_of_type_Mdu.a();
+    this.jdField_a_of_type_Mot.a();
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Boolean = false;
   }

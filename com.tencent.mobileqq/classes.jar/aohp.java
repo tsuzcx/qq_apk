@@ -1,26 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import com.tencent.widget.RoundBGTextView;
 
-class aohp
-  implements apca
+public class aohp
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  aohp(aohk paramaohk, FileManagerEntity paramFileManagerEntity) {}
+  public RoundBGTextView a;
   
-  public void a()
+  public aohp(ExtendFriendGroupFragment paramExtendFriendGroupFragment, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
-    {
-      this.jdField_a_of_type_Aohk.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      return;
-    }
-    this.jdField_a_of_type_Aohk.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    super(paramViewGroup);
+    this.jdField_a_of_type_ComTencentWidgetRoundBGTextView = ((RoundBGTextView)paramViewGroup.findViewById(2131368872));
+    this.jdField_a_of_type_ComTencentWidgetRoundBGTextView.setRoundCornerSize(2);
   }
   
-  public void b() {}
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aohp
  * JD-Core Version:    0.7.0.1
  */

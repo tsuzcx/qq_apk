@@ -1,17 +1,20 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface aqrf
+class aqrf
+  extends AnimatorListenerAdapter
 {
-  String a();
+  aqrf(aqrd paramaqrd) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    aqrd.a(this.a).sendEmptyMessage(2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqrf
  * JD-Core Version:    0.7.0.1
  */

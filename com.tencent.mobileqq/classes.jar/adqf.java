@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-
-public class adqf
-  implements View.OnClickListener
+public abstract interface adqf
 {
-  public adqf(StructingMsgItemBuilder paramStructingMsgItemBuilder, BaseChatPie paramBaseChatPie, AbsShareMsg paramAbsShareMsg) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    paramView = ((aegy)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg);
-    ((aegy)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(paramView);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

@@ -1,25 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
-class anlm
-  implements arol<Void, List<anjy>>
+public class anlm
+  implements Animation.AnimationListener
 {
-  anlm(anlk paramanlk) {}
+  public anlm(DataReportViewer paramDataReportViewer) {}
   
-  public List<anjy> a(Void paramVoid)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramVoid = ((arnz)this.a.a.getManager(14)).a(false, anlk.a(this.a), false);
-    ArrayList localArrayList = new ArrayList();
-    if (paramVoid != null) {
-      localArrayList.addAll(paramVoid);
-    }
-    return localArrayList;
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anlm
  * JD-Core Version:    0.7.0.1
  */

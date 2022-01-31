@@ -1,40 +1,36 @@
-import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
+import android.app.Activity;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.mini.util.SoftKeyboardStateHelper.SoftKeyboardStateListener;
 
 class ocl
-  implements ocp
+  implements SoftKeyboardStateHelper.SoftKeyboardStateListener
 {
-  ocl(ock paramock) {}
+  ocl(oci paramoci, RelativeLayout.LayoutParams paramLayoutParams) {}
   
-  public void a(ocs paramocs)
+  public void onSoftKeyboardClosed()
   {
-    ock.a(this.a, 2);
-    ock localock = this.a;
-    String str;
-    if (paramocs.jdField_a_of_type_JavaLangString == null)
+    if (System.currentTimeMillis() - oci.a(this.jdField_a_of_type_Oci) > 500L)
     {
-      str = "";
-      ock.a(localock, str);
-      if (paramocs.jdField_a_of_type_Int != 1) {
-        break label78;
-      }
-      ock.b(this.a, 1);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = actn.a(140.5F, oci.a(this.jdField_a_of_type_Oci).getResources());
+      oci.a(this.jdField_a_of_type_Oci).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+      oci.b(this.jdField_a_of_type_Oci, System.currentTimeMillis());
     }
-    for (;;)
+  }
+  
+  public void onSoftKeyboardOpened(int paramInt)
+  {
+    if (System.currentTimeMillis() - oci.a(this.jdField_a_of_type_Oci) > 500L)
     {
-      if (ock.a(this.a) != null) {
-        ock.a(this.a).onPrepared();
-      }
-      return;
-      str = paramocs.jdField_a_of_type_JavaLangString;
-      break;
-      label78:
-      ock.b(this.a, 0);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = actn.a(40.0F, oci.a(this.jdField_a_of_type_Oci).getResources());
+      oci.a(this.jdField_a_of_type_Oci).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+      oci.b(this.jdField_a_of_type_Oci, System.currentTimeMillis());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ocl
  * JD-Core Version:    0.7.0.1
  */

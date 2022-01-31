@@ -1,17 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity.2;
 
 public class qqg
-  implements nyx
+  implements View.OnClickListener
 {
-  public qqg(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, FastWebActivity paramFastWebActivity, ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo) {}
+  public qqg(VideoFeedsPlayActivity.2 param2) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt != 2) {
-      ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
+    qol.a(this.a.this$0, this.a.a.a.d);
+    qze localqze = new qze(this.a.a).h(this.a.a.g).u(this.a.a.a.a);
+    if (this.a.a.a.d != null) {}
+    for (paramView = this.a.a.a.d.e;; paramView = "")
+    {
+      noo.b(null, "", "0X800A18B", "0X800A18B", 0, 0, "", "", "", localqze.p(paramView).a().a(), false);
+      return;
     }
   }
 }

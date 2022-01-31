@@ -1,52 +1,68 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import java.lang.ref.WeakReference;
 
 public class bhpe
-  implements bhip
 {
-  public bhpe(MusicProviderView paramMusicProviderView) {}
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static int jdField_b_of_type_Int;
+  private static bhpe jdField_b_of_type_Bhpe;
+  public int a;
+  private bhpe jdField_a_of_type_Bhpe;
+  public String a;
+  public WeakReference<bhpd> a;
+  public String b;
+  public String c;
+  public String d;
+  
+  public bhpe(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = (paramInt + " " + paramString);
+  }
+  
+  public static bhpe a(int paramInt, String paramString)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_b_of_type_Bhpe != null)
+      {
+        bhpe localbhpe = jdField_b_of_type_Bhpe;
+        jdField_b_of_type_Bhpe = localbhpe.jdField_a_of_type_Bhpe;
+        localbhpe.jdField_a_of_type_Bhpe = null;
+        localbhpe.jdField_a_of_type_JavaLangString = (paramInt + " " + paramString);
+        localbhpe.jdField_a_of_type_Int = paramInt;
+        jdField_b_of_type_Int -= 1;
+        return localbhpe;
+      }
+      return new bhpe(paramInt, paramString);
+    }
+  }
+  
+  private void b()
+  {
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.c = null;
+    this.d = null;
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+  }
   
   public void a()
   {
-    this.a.jdField_a_of_type_Befq.sendEmptyMessage(2);
-  }
-  
-  public void a(int paramInt, MusicItemInfo paramMusicItemInfo) {}
-  
-  public void a(MusicItemInfo paramMusicItemInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView", 2, "requestMusicSuccess mListener= " + this.a.jdField_a_of_type_Bhpp);
-    }
-    if (this.a.jdField_a_of_type_Bhpp != null)
+    b();
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if (paramMusicItemInfo.mType == 2) {
-        this.a.jdField_a_of_type_Bhpp.a(true);
+      if (jdField_b_of_type_Int < 100)
+      {
+        this.jdField_a_of_type_Bhpe = jdField_b_of_type_Bhpe;
+        jdField_b_of_type_Bhpe = this;
+        jdField_b_of_type_Int += 1;
       }
-    }
-    else {
       return;
     }
-    this.a.jdField_a_of_type_Bhpp.a(false);
   }
-  
-  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    if ((paramInt != -1) && (MusicProviderView.a(this.a) != null)) {
-      MusicProviderView.a(this.a).f();
-    }
-  }
-  
-  public void b(MusicItemInfo paramMusicItemInfo) {}
-  
-  public void c(int paramInt, MusicItemInfo paramMusicItemInfo) {}
-  
-  public void d(int paramInt, MusicItemInfo paramMusicItemInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhpe
  * JD-Core Version:    0.7.0.1
  */

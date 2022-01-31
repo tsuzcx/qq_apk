@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import ogy;
-import ort;
+import osj;
+import pcv;
 
 public class ReadInJoyLogicEngine$8
   implements Runnable
 {
-  public ReadInJoyLogicEngine$8(ogy paramogy) {}
+  public ReadInJoyLogicEngine$8(osj paramosj) {}
   
   public void run()
   {
-    ort.a().a();
+    pcv.a().a();
   }
 }
 

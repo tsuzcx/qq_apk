@@ -1,10 +1,16 @@
-public abstract interface bfdx
+final class bfdx
+  implements com.tencent.smtt.sdk.ValueCallback
 {
-  public abstract void a(String paramString1, String paramString2, long paramLong);
+  bfdx(android.webkit.ValueCallback paramValueCallback) {}
+  
+  public void onReceiveValue(Object paramObject)
+  {
+    this.a.onReceiveValue(paramObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfdx
  * JD-Core Version:    0.7.0.1
  */

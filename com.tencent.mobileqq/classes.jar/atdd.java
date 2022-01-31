@@ -1,24 +1,41 @@
-import com.tencent.mobileqq.data.PhoneContactAdd;
+import android.view.View;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
 
 public class atdd
-  extends atcu
+  implements atei
 {
-  public PhoneContactAdd a;
+  public atdd(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public atdd(PhoneContactAdd paramPhoneContactAdd)
+  public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataPhoneContactAdd = paramPhoneContactAdd;
-    this.jdField_a_of_type_Long = paramPhoneContactAdd.timestamp;
+    this.a.f();
+    axqw.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_more", 0, 0, "", "", "", "");
   }
   
-  public boolean a()
+  public void a(View paramView, atel paramatel)
   {
-    return true;
+    if (paramatel.jdField_a_of_type_Boolean) {
+      bcpw.a(this.a, 1, ajyc.a(2131705106), 1).a();
+    }
+    do
+    {
+      return;
+      GameRoomInviteActivity.a(this.a, paramatel.jdField_a_of_type_JavaLangString, paramatel.jdField_a_of_type_Int);
+      paramatel.jdField_a_of_type_Boolean = true;
+      this.a.a.a(paramView, paramatel.jdField_a_of_type_Boolean);
+      if (paramatel.jdField_a_of_type_Int == 1)
+      {
+        axqw.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
+        return;
+      }
+    } while (paramatel.jdField_a_of_type_Int != 0);
+    axqw.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atdd
  * JD-Core Version:    0.7.0.1
  */

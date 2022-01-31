@@ -1,17 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.Comparator;
 
 class afqc
-  extends BroadcastReceiver
+  implements Comparator<MayKnowRecommend>
 {
-  afqc(afqb paramafqb) {}
+  afqc(afqa paramafqa) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
   {
-    if (afqb.a(this.a) != null) {
-      ((bftc)afqb.a(this.a)).updatePublishBox(paramIntent);
+    long l1 = paramMayKnowRecommend1.cardDisplayTimestamp;
+    long l2 = paramMayKnowRecommend2.cardDisplayTimestamp;
+    if (l1 < l2) {
+      return 1;
     }
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
   }
 }
 

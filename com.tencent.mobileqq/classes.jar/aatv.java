@@ -1,26 +1,20 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.os.MessageQueue.IdleHandler;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.widget.XListView;
 
-public class aatv
-  extends atog
+class aatv
+  implements MessageQueue.IdleHandler
 {
-  public aatv(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  aatv(aatu paramaatu) {}
   
-  protected void a(boolean paramBoolean)
+  public boolean queueIdle()
   {
-    this.a.B();
-    if (paramBoolean) {
-      return;
-    }
-    bbmy.a(this.a, 1, ajjy.a(2131639134), 1000).a();
-  }
-  
-  protected void b(boolean paramBoolean, int paramInt)
-  {
-    super.b(paramBoolean, paramInt);
-    if ((this.a.n) && (paramBoolean)) {
-      this.a.a(0L, null, null, false);
-    }
-    this.a.n = false;
+    View localView = this.a.a.jdField_a_of_type_ArrayOfAndroidViewView[40];
+    int i = localView.getTop();
+    int j = (this.a.a.jdField_a_of_type_ComTencentWidgetXListView.getHeight() - localView.getHeight()) / 2;
+    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.smoothScrollBy(i - j, 1000);
+    return false;
   }
 }
 

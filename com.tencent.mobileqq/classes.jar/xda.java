@@ -1,21 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.image.URLImageView;
+import android.widget.TextView;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.image.URLDrawable.DownloadListener;
 
-class xda
-  implements Animation.AnimationListener
+public class xda
+  implements URLDrawable.DownloadListener
 {
-  xda(xcv paramxcv, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  public xda(TroopGiftPanel paramTroopGiftPanel, TextView paramTextView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onFileDownloadFailed(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onFileDownloadStarted() {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 

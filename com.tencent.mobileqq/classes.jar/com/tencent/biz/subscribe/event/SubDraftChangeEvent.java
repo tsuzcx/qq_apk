@@ -4,15 +4,26 @@ public class SubDraftChangeEvent
   extends SimpleBaseEvent
 {
   private String draftID;
+  private boolean mIsSave;
   
   public String getDraftID()
   {
     return this.draftID;
   }
   
+  public boolean getIsSave()
+  {
+    return this.mIsSave;
+  }
+  
   public void setDraftID(String paramString)
   {
     this.draftID = paramString;
+  }
+  
+  public void setIsSave(boolean paramBoolean)
+  {
+    this.mIsSave = paramBoolean;
   }
 }
 

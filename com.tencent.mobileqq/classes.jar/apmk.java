@@ -1,24 +1,28 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class apmk
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  apmk(apmf paramapmf, int paramInt, String paramString) {}
+  apmk(apme paramapme, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
+    if (this.jdField_a_of_type_Apme.a != null)
     {
-      apmf.a(apmf.a(this.jdField_a_of_type_Apmf), "shareToQQ", apmf.a(this.jdField_a_of_type_Apmf), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      mpw.a(apmf.a(this.jdField_a_of_type_Apmf), 0, "", "");
-      if (apmf.a(this.jdField_a_of_type_Apmf) != null) {
-        apmf.a(this.jdField_a_of_type_Apmf).b(1);
+      if (this.jdField_a_of_type_Int != 1) {
+        break label79;
       }
-      apmf.a(this.jdField_a_of_type_Apmf).moveTaskToBack(true);
+      axqw.b(null, "dc00898", "", "", "0X800A745", "0X800A745", apvk.c(this.jdField_a_of_type_Apme.e()), 0, "", "", "", "");
+      if (this.jdField_a_of_type_Apme.a.c()) {
+        this.jdField_a_of_type_Apme.a.b();
+      }
     }
+    label79:
+    while (this.jdField_a_of_type_Int != 2) {
+      return;
+    }
+    this.jdField_a_of_type_Apme.a.f();
   }
 }
 

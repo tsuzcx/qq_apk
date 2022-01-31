@@ -1,20 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class ahuw
-  implements DialogInterface.OnClickListener
+  implements ahvx
 {
-  public ahuw(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public ahuw(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
   {
-    this.a.a();
+    if (this.a.r == 10011)
+    {
+      NewFlowCameraActivity.a(this.a, paramString1);
+      return;
+    }
+    if (paramBoolean)
+    {
+      NewFlowCameraActivity.b(this.a, paramString1);
+      return;
+    }
+    this.a.i(true);
+    bcpw.a(this.a, ajyc.a(2131707477), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahuw
  * JD-Core Version:    0.7.0.1
  */

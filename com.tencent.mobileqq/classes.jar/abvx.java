@@ -1,46 +1,35 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.List;
-import tencent.im.oidb.cmd0x72d.cmd0x72d.RspBody;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
-public class abvx
-  extends mmn
+class abvx
+  implements bfoq
 {
-  public abvx(TroopAssistantActivity paramTroopAssistantActivity, ariz paramariz) {}
+  abvx(abvw paramabvw) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    try
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Ariz.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app, 0L);
-      return;
     }
-    catch (Exception paramArrayOfByte)
+    for (;;)
     {
-      paramArrayOfByte.printStackTrace();
+      this.a.a.jdField_a_of_type_Bfol.dismiss();
       return;
-    }
-    paramBundle = new cmd0x72d.RspBody();
-    paramBundle.mergeFrom(paramArrayOfByte);
-    paramArrayOfByte = paramBundle.rpt_uint64_groupcode.get();
-    if (paramBundle.opt_uint32_ret_code.get() == 0)
-    {
-      this.jdField_a_of_type_Ariz.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app, paramBundle.opt_uint64_timestamp.get());
-      if ((paramArrayOfByte.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.jdField_a_of_type_Aido != null))
+      axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_QQshare", 0, 0, "", "", "", "");
+      xnq.a("share_success");
+      this.a.a.u();
+      continue;
+      if (bgpd.a((float)this.a.a.jdField_a_of_type_Double, (float)this.a.a.b, this.a.a.l, this.a.a.i, null).c(this.a.a.getIntent().getStringExtra("uin")).b(this.a.a, this.a.a.getIntent().getStringExtra("uin"), 1, null))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.jdField_a_of_type_JavaUtilList = paramArrayOfByte;
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.jdField_a_of_type_Aido.a(paramArrayOfByte);
-        return;
+        paramInt = QQMapActivity.a(this.a.a).getDimensionPixelSize(2131298865);
+        bcpw.a(this.a.a, 2, this.a.a.getString(2131692325), 1).b(paramInt);
+        xnq.a("favorite_success");
       }
-      TroopAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
-      return;
+      bgpr.a(null, 65, 7);
+      axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_collect", 0, 0, "", "", "", "");
     }
-    this.jdField_a_of_type_Ariz.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app, 0L);
-    TroopAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
   }
 }
 

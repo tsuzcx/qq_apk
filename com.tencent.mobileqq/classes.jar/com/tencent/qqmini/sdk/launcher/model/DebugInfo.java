@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bdmo;
+import beqx;
 
 public class DebugInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DebugInfo> CREATOR = new bdmo();
+  public static final Parcelable.Creator<DebugInfo> CREATOR = new beqx();
   public String a;
   public String b;
   

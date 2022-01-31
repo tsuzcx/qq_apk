@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.apollo.script;
 
-import aisa;
-import aisd;
+import ajey;
+import ajfb;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class SpriteBridge$3
   implements Runnable
 {
-  public SpriteBridge$3(aisa paramaisa) {}
+  public SpriteBridge$3(ajey paramajey) {}
   
   public void run()
   {
-    if ((aisa.a(this.this$0) != null) && (aisa.a(this.this$0).a() != null)) {
-      aisa.a(this.this$0).a().h();
+    if ((ajey.a(this.this$0) != null) && (ajey.a(this.this$0).a() != null)) {
+      ajey.a(this.this$0).a().h();
     }
   }
 }

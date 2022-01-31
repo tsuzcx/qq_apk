@@ -1,29 +1,43 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import android.util.Log;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class rnx
-  implements View.OnKeyListener
 {
-  private rnx(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  private static String jdField_a_of_type_JavaLangString = "TimeUtil";
+  private static ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap(8));
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public static long a(String paramString)
   {
-    paramView = ReadInJoyNewSearchActivity.a(this.a).getText().toString().trim();
-    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0) && (!TextUtils.isEmpty(paramView)))
+    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
     {
-      paramKeyEvent = (InputMethodManager)this.a.getSystemService("input_method");
-      if (paramKeyEvent != null) {
-        paramKeyEvent.hideSoftInputFromWindow(ReadInJoyNewSearchActivity.a(this.a).getWindowToken(), 2);
-      }
-      ReadInJoyNewSearchActivity.a(this.a, paramView);
-      this.a.a(paramView);
+      long l1 = System.currentTimeMillis();
+      long l2 = l1 - ((Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).longValue();
+      Log.d(jdField_a_of_type_JavaLangString, paramString + " end spent time : " + l2 + "      end time " + l1);
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      return l2;
     }
-    return false;
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
+    Log.d(jdField_a_of_type_JavaLangString, paramString + " start time : " + System.currentTimeMillis());
+    return -1L;
+  }
+  
+  public static long b(String paramString)
+  {
+    paramString = (Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
+    if (paramString == null) {
+      return -1L;
+    }
+    return paramString.longValue();
+  }
+  
+  public static long c(String paramString)
+  {
+    long l = -1L;
+    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
+      l = ((Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString)).longValue();
+    }
+    return l;
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.helper;
 
-import pcj;
+import pob;
 
 public class RecycleViewAdapterHelper$5
   implements Runnable
 {
-  public RecycleViewAdapterHelper$5(pcj parampcj, Runnable paramRunnable) {}
+  public RecycleViewAdapterHelper$5(pob parampob, Runnable paramRunnable) {}
   
   public void run()
   {
-    pcj.a(this.this$0, this.a);
+    pob.a(this.this$0, this.a);
   }
 }
 

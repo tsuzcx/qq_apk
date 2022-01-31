@@ -1,37 +1,60 @@
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import android.app.Dialog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aahh
-  implements acjg
+  implements View.OnClickListener
 {
-  public aahh(ChatHistory paramChatHistory) {}
+  public aahh(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void a(AudioPlayer paramAudioPlayer)
+  public void onClick(View paramView)
   {
-    this.a.p();
-    if (this.a.jdField_a_of_type_Aaic != null) {
-      this.a.jdField_a_of_type_Aaic.d();
+    if (!AddFriendVerifyActivity.a(this.a)) {
+      return;
     }
-    this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+    if (this.a.a != null)
+    {
+      this.a.getWindow().setSoftInputMode(2);
+      this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
+      AddFriendVerifyActivity.a(this.a).clearFocus();
+    }
+    if (AddFriendVerifyActivity.a(this.a).getText().toString().length() > 90)
+    {
+      paramView = new Dialog(this.a, 2131755791);
+      paramView.setContentView(2131562356);
+      ((TextView)paramView.findViewById(2131365147)).setText(this.a.getString(2131691095));
+      ((ProgressBar)paramView.findViewById(2131366570)).setVisibility(8);
+      ((ImageView)paramView.findViewById(2131378673)).setImageResource(2130839317);
+      paramView.show();
+      return;
+    }
+    this.a.a(AddFriendVerifyActivity.a(this.a).getText().toString(), true);
+    if (bbev.d(this.a))
+    {
+      if (AddFriendVerifyActivity.a(this.a) != null) {}
+      for (int i = AddFriendVerifyActivity.a(this.a).a();; i = 2000)
+      {
+        QLog.e("AddFriendVerifyActivity", 1, "joinTroop templateId: " + i);
+        AddFriendVerifyActivity.a(this.a, AddFriendVerifyActivity.a(this.a), AddFriendVerifyActivity.a(this.a).getText().toString(), this.a.getIntent().getIntExtra("stat_option", 0), i);
+        axqw.b(null, "dc00898", "", "", "qq_vip", "0X800A62B", adwb.a(i), 0, "", "", "", "");
+        if (!"d2g".equals(this.a.getIntent().getStringExtra("jump_from"))) {
+          break;
+        }
+        axqw.b(this.a.app, "P_CliOper", "Grp_discuss", "", "discuss_set", "send_ask", 0, 0, AddFriendVerifyActivity.a(this.a), "", "", "");
+        return;
+      }
+    }
+    bcpw.a(this.a, 1, 2131694609, 0).b(this.a.getTitleBarHeight());
   }
-  
-  public void a(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    this.a.b(2131629523);
-    this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
-  }
-  
-  public void b(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    this.a.setVolumeControlStream(paramInt);
-  }
-  
-  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 

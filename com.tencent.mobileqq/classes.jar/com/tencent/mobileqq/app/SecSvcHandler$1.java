@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ajru;
+import akge;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.mobileqq.activity.NotificationActivity;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class SecSvcHandler$1
   implements Runnable
 {
-  public SecSvcHandler$1(ajru paramajru, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3) {}
+  public SecSvcHandler$1(akge paramakge, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {

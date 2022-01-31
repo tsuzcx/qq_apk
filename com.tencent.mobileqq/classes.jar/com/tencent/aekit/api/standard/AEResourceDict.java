@@ -97,11 +97,8 @@ public class AEResourceDict
     resourceTagMap.put("arm64-v8a/libexpression_ttpic.so", "33b5b2655feca11c18e51e3190aeda4013280de0");
     resourceTagMap.put("armeabi/libexpression_ttpic.so", "c031b4af99b61643daec8b6602209e7bcae62243");
     resourceTagMap.put("armeabi-v7a/libsegmentern.so", "b99a8556b38b66a9befad7831b9787215704f058");
-    resourceTagMap.put("armeabi-v7a/libsegmentero.so", "4010409597918832f7156c5fe8ced6ee4736f9cb");
     resourceTagMap.put("arm64-v8a/libsegmentern.so", "b977cb6ea3550aa95c498d8b237123875b7d09df");
-    resourceTagMap.put("arm64-v8a/libsegmentero.so", "1b2f81e23d9cf3ddf8e2f04c174d6220d1b1ee96");
     resourceTagMap.put("armeabi/libsegmentern.so", "b99a8556b38b66a9befad7831b9787215704f058");
-    resourceTagMap.put("armeabi/libsegmentero.so", "4010409597918832f7156c5fe8ced6ee4736f9cb");
   }
   
   public static String getSHA1(String paramString)

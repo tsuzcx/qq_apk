@@ -5,8 +5,8 @@ import com.tencent.tmassistant.common.jce.Response;
 import com.tencent.tmassistant.common.jce.SDKDataReportRequest;
 import com.tencent.tmassistant.common.jce.SDKDataReportResponse;
 import com.tencent.tmassistantbase.network.PostHttpRequest;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.o;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.n;
 
 class e
   extends PostHttpRequest
@@ -29,7 +29,7 @@ class e
     } while (arrayOfByte == null);
     try
     {
-      ac.c("SDKDataReportEngine_", "size:" + arrayOfByte.length + "|" + o.a(String.valueOf(paramSDKDataReportRequest.uin)) + "|" + paramSDKDataReportRequest.qimei + "|" + paramSDKDataReportRequest.qadid);
+      ab.c("SDKDataReportEngine_", "size:" + arrayOfByte.length + "|" + n.a(String.valueOf(paramSDKDataReportRequest.uin)) + "|" + paramSDKDataReportRequest.qimei + "|" + paramSDKDataReportRequest.qadid);
       label85:
       return sendRequest(arrayOfByte);
     }
@@ -43,7 +43,7 @@ class e
   {
     if ((paramArrayOfByte2 == null) || (paramInt != 0))
     {
-      ac.c("SDKDataReportEngine_", "SDKDataReportEngine_ error1");
+      ab.c("SDKDataReportEngine_", "SDKDataReportEngine_ error1");
       if (this.a != null) {
         this.a.a(paramInt);
       }
@@ -62,17 +62,17 @@ class e
             if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.body != null)) {
               break;
             }
-            ac.c("SDKDataReportEngine_", "SDKDataReportEngine_ error2");
+            ab.c("SDKDataReportEngine_", "SDKDataReportEngine_ error2");
           } while (this.a == null);
           this.a.a(paramInt);
           return;
-          ac.c("SDKDataReportEngine_", "SDKDataReportEngine_ onFinished");
+          ab.c("SDKDataReportEngine_", "SDKDataReportEngine_ onFinished");
           paramArrayOfByte1 = ProtocolPackage.unpageageJceResponse(paramArrayOfByte1.body, SDKDataReportResponse.class);
           if (!(paramArrayOfByte1 instanceof SDKDataReportResponse)) {
             break label172;
           }
           paramArrayOfByte1 = (SDKDataReportResponse)paramArrayOfByte1;
-          ac.c("SDKDataReportEngine_", "SDKDataReportEngine_ sdkDataReportRsp.ret=" + paramArrayOfByte1.ret);
+          ab.c("SDKDataReportEngine_", "SDKDataReportEngine_ sdkDataReportRsp.ret=" + paramArrayOfByte1.ret);
           if (paramArrayOfByte1.ret != 0) {
             break;
           }

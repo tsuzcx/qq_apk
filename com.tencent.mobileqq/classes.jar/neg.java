@@ -1,19 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.ClassInfo;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public final class neg
-  implements Parcelable.Creator<VideoInfo.ClassInfo>
+class neg
+  implements Animation.AnimationListener
 {
-  public VideoInfo.ClassInfo a(Parcel paramParcel)
+  neg(ned paramned) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new VideoInfo.ClassInfo(paramParcel);
+    ned.a(this.a, this.a.a.c, this.a.a.d, 100L, 240L);
   }
   
-  public VideoInfo.ClassInfo[] a(int paramInt)
-  {
-    return new VideoInfo.ClassInfo[paramInt];
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

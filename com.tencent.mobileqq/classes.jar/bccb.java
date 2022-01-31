@@ -1,39 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.appcommon.now.download.js.DownloadJSApi.2;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.ui.TouchWebView;
 
-public class bccb
-  implements DialogInterface.OnClickListener
+class bccb
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public bccb(DownloadJSApi.2 param2) {}
+  bccb(bcbv parambcbv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      label6:
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bcgl.b);
-      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bcgl.j);
-      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bcgl.f);
-      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bcgl.i);
-      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bcgl.l);
-      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bcgl.y, true);
-      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
-      bcgo.a().a(10, paramDialogInterface);
-      return;
+    if ((this.a.jdField_a_of_type_Bcgj != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_Bcgj.a))) {
+      this.a.jdField_a_of_type_Bcgj.a(paramInt);
     }
-    catch (Exception paramDialogInterface)
+    TouchWebView localTouchWebView;
+    do
     {
-      break label6;
-    }
+      do
+      {
+        return;
+        localTouchWebView = this.a.jdField_a_of_type_Bcfj.a();
+      } while (localTouchWebView == null);
+      String str = localTouchWebView.getUrl();
+      paramRadioGroup = str;
+      if (TextUtils.isEmpty(str))
+      {
+        paramRadioGroup = str;
+        if (this.a.jdField_a_of_type_AndroidContentIntent != null) {
+          paramRadioGroup = this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("url");
+        }
+      }
+    } while (TextUtils.isEmpty(paramRadioGroup));
+    localTouchWebView.loadUrl(paramRadioGroup.replaceAll("(?<=[?&])subIndex=[^&]*", "subIndex=" + paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bccb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,27 @@
 public class aljh
 {
-  public static float[] a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  public int a()
   {
-    if ((paramArrayOfFloat1 != null) && (paramArrayOfFloat2 != null) && (paramArrayOfFloat1.length == paramArrayOfFloat2.length))
-    {
-      int i = 0;
-      while (i < paramArrayOfFloat1.length)
-      {
-        paramArrayOfFloat1[i] = (paramArrayOfFloat2[i] * 0.9F + paramArrayOfFloat1[i] * 0.1F);
-        i += 1;
-      }
-    }
-    return paramArrayOfFloat1;
+    return 0;
+  }
+  
+  public void a() {}
+  
+  public void a(alji paramalji) {}
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aljh
  * JD-Core Version:    0.7.0.1
  */

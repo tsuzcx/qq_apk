@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bify;
+import bjwt;
 
 public class EditVideoParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<EditVideoParams> CREATOR = new bify();
+  public static final Parcelable.Creator<EditVideoParams> CREATOR = new bjwt();
   public int a;
   public final long a;
   public final Bundle a;

@@ -1,40 +1,38 @@
+import com.tencent.biz.qqstory.network.handler.GetUserIconHandler.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 public class tkg
-  extends tjs
 {
-  public int a;
-  public ssm a;
-  public boolean a;
-  public String c = "";
-  public String d = "";
+  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  public static boolean a;
   
-  public tkg(String paramString)
+  public static void a(String paramString)
   {
-    super(paramString);
-  }
-  
-  static tkg a(ssm paramssm)
-  {
-    tkg localtkg = new tkg(paramssm.jdField_a_of_type_JavaLangString);
-    localtkg.jdField_a_of_type_Ssm = paramssm;
-    if (paramssm.jdField_a_of_type_Int == 12)
+    synchronized (jdField_a_of_type_JavaUtilArrayList)
     {
-      localtkg.d = paramssm.e;
-      localtkg.c = paramssm.i;
+      if (!jdField_a_of_type_JavaUtilSet.contains(paramString))
+      {
+        jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        jdField_a_of_type_JavaUtilSet.add(paramString);
+      }
+      if (!jdField_a_of_type_Boolean)
+      {
+        jdField_a_of_type_Boolean = true;
+        ThreadManager.post(new GetUserIconHandler.1(), 5, null, true);
+      }
+      return;
     }
-    return localtkg;
   }
   
-  public String a()
+  public static void a(ArrayList<String> paramArrayList)
   {
-    if (this.jdField_a_of_type_Ssm != null) {
-      return this.jdField_a_of_type_Ssm.jdField_a_of_type_JavaLangString;
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Ssm != null) && (this.jdField_a_of_type_Ssm.jdField_a_of_type_Int == 12);
+    paramArrayList = new tkh(paramArrayList);
+    tki localtki = new tki();
+    tbb.a().a(paramArrayList, localtki);
   }
 }
 

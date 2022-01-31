@@ -1,60 +1,46 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-public class avxy
-  extends avtt
+class avxy
+  implements GLSurfaceView.EGLContextFactory
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private avxz jdField_a_of_type_Avxz;
+  private int jdField_a_of_type_Int = 12440;
   
-  public avxy(avth paramavth, Context paramContext)
-  {
-    super(paramavth, paramContext);
-  }
+  avxy(avxx paramavxx) {}
   
-  private void a()
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    String str = a();
-    if (!TextUtils.isEmpty(str))
+    int[] arrayOfInt = new int[3];
+    arrayOfInt[0] = this.jdField_a_of_type_Int;
+    arrayOfInt[1] = FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Avxx.a);
+    arrayOfInt[2] = 12344;
+    veg.d("FlowEdit_FlowDecodeScreenSurfaceBase", "createContext, display=%s, config=%s, shaContext=%s", new Object[] { paramEGLDisplay, paramEGLConfig, FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Avxx.a) });
+    EGLContext localEGLContext = FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Avxx.a);
+    if (FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Avxx.a) != 0) {}
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("RichTemplateOneSearchResultView", 2, "data->" + str);
-      }
-      this.jdField_a_of_type_Avxz.a();
-      this.jdField_a_of_type_Avxz.a(str);
-      this.jdField_a_of_type_Avxz.b();
+      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
+      arrayOfInt = null;
     }
-    while (!QLog.isColorLevel()) {
-      return;
+  }
+  
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  {
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
+    {
+      veg.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
+      veg.c("DefaultContextFactory", "tid=" + Thread.currentThread().getId());
+      avyb.a("eglDestroyContex", paramEGL10.eglGetError());
     }
-    QLog.e("RichTemplateOneSearchResultView", 2, "empty data");
-  }
-  
-  private void b(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131494051, null, false);
-    this.jdField_a_of_type_Avxz.a(this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public View a(Context paramContext)
-  {
-    this.jdField_a_of_type_Avxz = new avxz(paramContext);
-    b(paramContext);
-    a();
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void e()
-  {
-    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avxy
  * JD-Core Version:    0.7.0.1
  */

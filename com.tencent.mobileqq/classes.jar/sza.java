@@ -1,62 +1,22 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchFeedLike;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedLike;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
 
-public class sza
-  extends slz
+class sza
+  extends Job<Object, Object, Object>
 {
-  public static final String a;
-  private List<String> a;
-  private int c;
-  
-  static
+  sza(syz paramsyz, String paramString, QQStoryCmdHandler.IllegalUinException paramIllegalUinException)
   {
-    jdField_a_of_type_JavaLangString = skt.a("StorySvc.feed_like_list_batch_715");
+    super(paramString);
   }
   
-  public sza(List<String> paramList, boolean paramBoolean)
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      this.c = i;
-      return;
-    }
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public slu a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspBatchFeedLike localRspBatchFeedLike = new qqstory_service.RspBatchFeedLike();
-    try
-    {
-      localRspBatchFeedLike.mergeFrom(paramArrayOfByte);
-      return new szb(localRspBatchFeedLike);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqBatchFeedLike localReqBatchFeedLike = new qqstory_service.ReqBatchFeedLike();
-    List localList = a(this.jdField_a_of_type_JavaUtilList);
-    localReqBatchFeedLike.feed_id_list.set(localList);
-    localReqBatchFeedLike.source.set(this.c);
-    return localReqBatchFeedLike.toByteArray();
+    veg.d("Q.qqstory.net:QQStoryCmdHandler", "uin convert error");
+    this.jdField_a_of_type_Syz.a.a().a(880002, this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler$IllegalUinException.getMessage(), null);
+    return null;
   }
 }
 

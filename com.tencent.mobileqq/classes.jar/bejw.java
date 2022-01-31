@@ -1,14 +1,32 @@
-public abstract interface bejw
+public class bejw
+  implements beju<String>
 {
-  public abstract void a(int paramInt);
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public static bejw a(String paramString1, String paramString2, int paramInt)
+  {
+    bejw localbejw = new bejw();
+    localbejw.jdField_a_of_type_JavaLangString = paramString1;
+    localbejw.b = paramString2;
+    localbejw.jdField_a_of_type_Int = paramInt;
+    return localbejw;
+  }
   
-  public abstract void g();
+  public String a(begw parambegw)
+  {
+    besl.a("RuntimeMessage", "SubscribeEvent " + "eventName = " + this.jdField_a_of_type_JavaLangString + "sourceWebViewId = " + this.jdField_a_of_type_Int);
+    parambegw = parambegw.a();
+    if (parambegw != null) {
+      parambegw.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bejw
  * JD-Core Version:    0.7.0.1
  */

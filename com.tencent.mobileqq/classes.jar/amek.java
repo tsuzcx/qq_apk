@@ -1,75 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import mqq.app.QQPermissionCallback;
 
 public class amek
-  extends alzl<amej>
+  implements QQPermissionCallback
 {
-  public int a()
+  public amek(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return 390;
+    bbcv.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  @NonNull
-  public amej a(int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return new amej();
-  }
-  
-  @Nullable
-  public amej a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
-    {
-      amej localamej = amej.a(paramArrayOfalzs[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("QConfPushProcessor", 0, "onParsed " + paramArrayOfalzs[0].a);
-      }
-      return localamej;
-    }
-    return new amej();
-  }
-  
-  public Class<amej> a()
-  {
-    return amej.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amej paramamej)
-  {
-    ((arin)BaseApplicationImpl.getApplication().getRuntime().getManager(308)).a(paramamej);
-    if (QLog.isColorLevel()) {
-      QLog.d("QConfPushProcessor", 0, "onUpdate " + paramamej);
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amek
  * JD-Core Version:    0.7.0.1
  */

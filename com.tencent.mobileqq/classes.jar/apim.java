@@ -1,62 +1,30 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.SplashActivity;
-import java.util.Set;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 
-public class apim
-  extends aphp
+class apim
+  implements aptu
 {
-  int c;
+  apim(apil paramapil) {}
   
-  public apim(Intent paramIntent)
+  public void a()
   {
-    super(paramIntent);
-  }
-  
-  protected void a()
-  {
-    if (k()) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    localQQAppInterface.a().a(this.a.jdField_a_of_type_JavaLangString, null, localQQAppInterface.getAccount(), 0, false);
+    apue.a(this.a.jdField_a_of_type_JavaLangString);
+    aptv.d(BaseActivity.sTopActivity.getString(2131692829));
+    if (this.a.jdField_a_of_type_Apkm != null) {
+      this.a.jdField_a_of_type_Apkm.a(1);
     }
-    if (l()) {
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_c_of_type_JavaLangInteger);
-    }
-    if (m()) {
-      this.jdField_a_of_type_JavaUtilSet.add(b);
+    if (this.a.jdField_a_of_type_Apkm.b())
+    {
+      long l = this.a.jdField_a_of_type_Apkm.a().b();
+      apue.a(this.a.jdField_a_of_type_Apkm.a(), l);
     }
   }
   
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    if ((this.jdField_a_of_type_Bafb != null) && (this.jdField_a_of_type_Bafb.isShowing())) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsBundle.putString("uin", paramBundle.getString("uin"));
-    this.jdField_a_of_type_AndroidOsBundle.putInt("uintype", paramBundle.getInt("uintype"));
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("isBack2Root", true);
-    this.jdField_a_of_type_AndroidContentIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-    this.jdField_a_of_type_AndroidContentIntent = aciy.a(this.jdField_a_of_type_AndroidContentIntent, new int[] { 2 });
-    this.jdField_a_of_type_AndroidContentIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_AndroidAppActivity.getSharedPreferences("mobileQQ", 0).edit().putBoolean("FORWARD_EMOPGK_ID", true).commit();
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "Clk_send_nonaio_suc", 0, 0, "", "", "", "FORWARD_EMOPGK_ID");
-  }
-  
-  public boolean a()
-  {
-    super.a();
-    this.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("FORWARD_EMOPGK_ID", -1);
-    return true;
-  }
-  
-  public void c()
-  {
-    super.c();
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "Clk_send_nonaio", 0, 0, "", "", "", this.jdField_a_of_type_AndroidContentIntent.getIntExtra("FORWARD_EMOPGK_ID", -1) + "");
-  }
+  public void b() {}
 }
 
 

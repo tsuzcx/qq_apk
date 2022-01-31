@@ -8,6 +8,10 @@ public abstract interface IFooterCallBack
   
   public abstract boolean isShowing();
   
+  public abstract void onFingerRelease();
+  
+  public abstract void onMove(int paramInt);
+  
   public abstract void onReleaseToLoadMore();
   
   public abstract void onStateFinish(boolean paramBoolean);

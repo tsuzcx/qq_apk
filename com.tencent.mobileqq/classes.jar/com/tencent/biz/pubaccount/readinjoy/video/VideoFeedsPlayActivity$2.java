@@ -4,8 +4,8 @@ import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import azue;
-import azvv;
+import bavi;
+import bawz;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
 import com.tencent.image.URLDrawable;
@@ -13,7 +13,7 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import qei;
+import qqg;
 
 public class VideoFeedsPlayActivity$2
   implements Runnable
@@ -31,11 +31,11 @@ public class VideoFeedsPlayActivity$2
     try
     {
       localObject = URLDrawable.getDrawable(new URL(this.a.a.g), (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setTag(azue.b(0, 0, azvv.a(this.this$0, 3.0F)));
-      ((URLDrawable)localObject).setDecodeHandler(azue.i);
+      ((URLDrawable)localObject).setTag(bavi.b(0, 0, bawz.a(this.this$0, 3.0F)));
+      ((URLDrawable)localObject).setDecodeHandler(bavi.i);
       VideoFeedsPlayActivity.a(this.this$0).setImageDrawable((Drawable)localObject);
       VideoFeedsPlayActivity.a(this.this$0).setText(this.a.a.f);
-      VideoFeedsPlayActivity.a(this.this$0).setOnClickListener(new qei(this));
+      VideoFeedsPlayActivity.a(this.this$0).setOnClickListener(new qqg(this));
       VideoFeedsPlayActivity.a(this.this$0).setVisibility(0);
       return;
     }

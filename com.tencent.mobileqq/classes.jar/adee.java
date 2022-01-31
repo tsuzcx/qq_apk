@@ -1,29 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import java.util.Comparator;
 
-class adee
-  implements begw
+public class adee
+  implements Comparator
 {
-  adee(addx paramaddx, MessageForFile paramMessageForFile, begr parambegr, BaseChatItemLayout paramBaseChatItemLayout, adef paramadef) {}
+  public adee(LoadDataJob paramLoadDataJob) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    paramView = this.jdField_a_of_type_Addx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop);
-    if (paramView != null)
-    {
-      if (paramView.status == 16)
-      {
-        apcb.a(2131627218);
-        this.jdField_a_of_type_Begr.cancel();
-        return;
-      }
-      apck.a(this.jdField_a_of_type_Addx.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Addx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-    }
-    this.jdField_a_of_type_Addx.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Adef, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status);
-    this.jdField_a_of_type_Begr.cancel();
+    paramObject1 = (adeq)paramObject1;
+    paramObject2 = (adeq)paramObject2;
+    return paramObject1.a - paramObject2.a;
   }
 }
 

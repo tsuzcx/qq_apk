@@ -1,18 +1,18 @@
 package dov.com.qq.im.capture.paster;
 
-import bhki;
-import bhkl;
-import bhkm;
-import bior;
+import bjfa;
+import bjfd;
+import bjfe;
+import bkfm;
 
 public class QIMInformationPasterManager$1
   implements Runnable
 {
-  public QIMInformationPasterManager$1(bhki parambhki, bior parambior, bhkl parambhkl) {}
+  public QIMInformationPasterManager$1(bjfa parambjfa, bkfm parambkfm, bjfd parambjfd) {}
   
   public void run()
   {
-    this.this$0.a.a(this.jdField_a_of_type_Bior, this.jdField_a_of_type_Bhkl);
+    this.this$0.a.a(this.jdField_a_of_type_Bkfm, this.jdField_a_of_type_Bjfd);
   }
 }
 

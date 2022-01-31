@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import aing;
-import aioe;
-import aiog;
-import aipx;
-import aixa;
+import ajae;
+import ajbc;
+import ajbe;
+import ajcv;
+import ajlc;
 import android.text.TextUtils;
 import com.tencent.TMG.sdk.AVContext;
 import com.tencent.TMG.sdk.AVRoomMulti;
@@ -16,37 +16,37 @@ import org.json.JSONArray;
 public class CmGameAvHandler$12
   implements Runnable
 {
-  public CmGameAvHandler$12(aioe paramaioe, JSONArray paramJSONArray) {}
+  public CmGameAvHandler$12(ajbc paramajbc, JSONArray paramJSONArray) {}
   
   public void run()
   {
     if (this.a.length() <= 0)
     {
-      aioe.a(this.this$0).clear();
-      aixa.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new aiog(this));
+      ajbc.a(this.this$0).clear();
+      ajlc.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new ajbe(this));
     }
     for (;;)
     {
       return;
-      aioe.a(this.this$0).clear();
+      ajbc.a(this.this$0).clear();
       String[] arrayOfString = new String[this.a.length()];
-      String str3 = aing.a().getCurrentAccountUin();
+      String str3 = ajae.a().getCurrentAccountUin();
       int i = 0;
       while (i < this.a.length())
       {
         try
         {
-          aipx localaipx = aing.a(aioe.a(this.this$0));
-          if (localaipx != null)
+          ajcv localajcv = ajae.a(ajbc.a(this.this$0));
+          if (localajcv != null)
           {
-            String str2 = localaipx.c(this.a.get(i).toString());
+            String str2 = localajcv.c(this.a.get(i).toString());
             String str1 = str2;
             if (TextUtils.isEmpty(str2)) {
-              str1 = localaipx.a(this.a.get(i).toString());
+              str1 = localajcv.a(this.a.get(i).toString());
             }
             arrayOfString[i] = str1;
-            aioe.a(this.this$0).add(str1);
-            aioe.a(this.this$0, arrayOfString, str3);
+            ajbc.a(this.this$0).add(str1);
+            ajbc.a(this.this$0, arrayOfString, str3);
           }
         }
         catch (Exception localException)

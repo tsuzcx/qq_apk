@@ -1,30 +1,40 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qqmini.sdk.core.widget.media.danmu.BarrageView;
+import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
+import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bdkl
-  implements Animation.AnimationListener
+final class bdkl
+  implements ITMAssistantExchangeURLListenner
 {
-  private final View a;
-  
-  private bdkl(BarrageView paramBarrageView, View paramView)
+  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
   {
-    this.a = paramView;
+    bdht.b(bdki.jdField_a_of_type_JavaLangString, "onExchangedURLSucceed --- ");
+    if ((paramBoolean) && (??? != null) && (???.size() > 0))
+    {
+      ??? = ???.iterator();
+      while (???.hasNext())
+      {
+        Object localObject1 = ???.next();
+        if ((localObject1 instanceof AppSimpleDetail))
+        {
+          int i = ((AppSimpleDetail)localObject1).versionCode;
+          if (i > 0) {
+            bdki.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
+          }
+        }
+      }
+    }
+    synchronized (bdki.jdField_a_of_type_JavaLangObject)
+    {
+      bdki.jdField_a_of_type_JavaLangObject.notify();
+      return;
+    }
   }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.b.removeView(this.a);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdkl
  * JD-Core Version:    0.7.0.1
  */

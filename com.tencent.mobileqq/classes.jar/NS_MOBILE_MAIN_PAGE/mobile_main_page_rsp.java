@@ -35,6 +35,7 @@ public final class mobile_main_page_rsp
   static s_mayknow cache_mayknow;
   static s_msgb_festival cache_msgb_festival;
   static s_mainPageTabItem cache_myFriendEntryItem;
+  static ArrayList<s_navigation_item> cache_navigation_order;
   static s_part_error cache_part_error;
   static s_rec_photo_list cache_photos;
   static ArrayList<byte[]> cache_photos_buf;
@@ -48,7 +49,8 @@ public final class mobile_main_page_rsp
   static s_sq_mainpage_switch cache_sq_mainpage_switch;
   static byte[] cache_stShangchengInfo;
   static s_tab_list cache_tab_lst;
-  static s_tab_list cache_tab_lst_mq = new s_tab_list();
+  static s_tab_list cache_tab_lst_mq;
+  static ArrayList<s_space_event> cache_vec_event;
   static s_visit cache_visit;
   static s_visit cache_visit_no_right;
   public FunnySpace StuFunnySpace;
@@ -77,6 +79,7 @@ public final class mobile_main_page_rsp
   public s_msgb_festival msgb_festival;
   public boolean music_can_play = true;
   public s_mainPageTabItem myFriendEntryItem;
+  public ArrayList<s_navigation_item> navigation_order;
   public int no_update;
   public boolean open_msg_board = true;
   public s_part_error part_error;
@@ -97,6 +100,7 @@ public final class mobile_main_page_rsp
   public s_tab_list tab_lst;
   public s_tab_list tab_lst_mq;
   public long uWanBaNew;
+  public ArrayList<s_space_event> vec_event;
   public s_visit visit;
   public s_visit visit_no_right;
   public byte wifi_auto_play;
@@ -154,11 +158,18 @@ public final class mobile_main_page_rsp
     cache_map_entrys.put(Integer.valueOf(0), localObject);
     cache_stShangchengInfo = (byte[])new byte[1];
     ((byte[])cache_stShangchengInfo)[0] = 0;
+    cache_tab_lst_mq = new s_tab_list();
+    cache_navigation_order = new ArrayList();
+    localObject = new s_navigation_item();
+    cache_navigation_order.add(localObject);
+    cache_vec_event = new ArrayList();
+    localObject = new s_space_event();
+    cache_vec_event.add(localObject);
   }
   
   public mobile_main_page_rsp() {}
   
-  public mobile_main_page_rsp(s_main_page params_main_page, s_profile params_profile, s_count params_count, s_visit params_visit1, s_birthday params_birthday, s_gift params_gift, s_friendreq params_friendreq, s_special params_special, s_mayknow params_mayknow, s_part_error params_part_error, s_appinfo params_appinfo, s_rec_photo_list params_rec_photo_list, s_visit params_visit2, ArrayList<byte[]> paramArrayList, ArrayList<single_feed> paramArrayList1, s_read_space params_read_space, String paramString1, int paramInt1, s_flower params_flower, s_game params_game, Map<Integer, s_red_comm> paramMap, long paramLong, s_friend_ship params_friend_ship, byte paramByte1, boolean paramBoolean1, int paramInt2, ArrayList<MusicInfo> paramArrayList2, ArrayList<s_app_acc> paramArrayList3, byte paramByte2, byte paramByte3, ArrayList<QueryADBannerUnit> paramArrayList4, s_msgb_festival params_msgb_festival, s_brandspace_h5 params_brandspace_h5, s_campus_qz params_campus_qz, byte[] paramArrayOfByte1, byte paramByte4, s_tab_list params_tab_list1, String paramString2, String paramString3, boolean paramBoolean2, s_sq_mainpage_switch params_sq_mainpage_switch, s_gamebar_pk_banner params_gamebar_pk_banner, s_limit_page_card params_limit_page_card, s_qzone_reward_data params_qzone_reward_data, s_mainPageTabItem params_mainPageTabItem, FunnySpace paramFunnySpace, Map<Integer, s_mainPageTabItem> paramMap1, byte[] paramArrayOfByte2, s_tab_list params_tab_list2)
+  public mobile_main_page_rsp(s_main_page params_main_page, s_profile params_profile, s_count params_count, s_visit params_visit1, s_birthday params_birthday, s_gift params_gift, s_friendreq params_friendreq, s_special params_special, s_mayknow params_mayknow, s_part_error params_part_error, s_appinfo params_appinfo, s_rec_photo_list params_rec_photo_list, s_visit params_visit2, ArrayList<byte[]> paramArrayList, ArrayList<single_feed> paramArrayList1, s_read_space params_read_space, String paramString1, int paramInt1, s_flower params_flower, s_game params_game, Map<Integer, s_red_comm> paramMap, long paramLong, s_friend_ship params_friend_ship, byte paramByte1, boolean paramBoolean1, int paramInt2, ArrayList<MusicInfo> paramArrayList2, ArrayList<s_app_acc> paramArrayList3, byte paramByte2, byte paramByte3, ArrayList<QueryADBannerUnit> paramArrayList4, s_msgb_festival params_msgb_festival, s_brandspace_h5 params_brandspace_h5, s_campus_qz params_campus_qz, byte[] paramArrayOfByte1, byte paramByte4, s_tab_list params_tab_list1, String paramString2, String paramString3, boolean paramBoolean2, s_sq_mainpage_switch params_sq_mainpage_switch, s_gamebar_pk_banner params_gamebar_pk_banner, s_limit_page_card params_limit_page_card, s_qzone_reward_data params_qzone_reward_data, s_mainPageTabItem params_mainPageTabItem, FunnySpace paramFunnySpace, Map<Integer, s_mainPageTabItem> paramMap1, byte[] paramArrayOfByte2, s_tab_list params_tab_list2, ArrayList<s_navigation_item> paramArrayList5, ArrayList<s_space_event> paramArrayList6)
   {
     this.mainpage = params_main_page;
     this.profile = params_profile;
@@ -209,6 +220,8 @@ public final class mobile_main_page_rsp
     this.map_entrys = paramMap1;
     this.stShangchengInfo = paramArrayOfByte2;
     this.tab_lst_mq = params_tab_list2;
+    this.navigation_order = paramArrayList5;
+    this.vec_event = paramArrayList6;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -262,6 +275,8 @@ public final class mobile_main_page_rsp
     this.map_entrys = ((Map)paramJceInputStream.read(cache_map_entrys, 46, false));
     this.stShangchengInfo = ((byte[])paramJceInputStream.read(cache_stShangchengInfo, 47, false));
     this.tab_lst_mq = ((s_tab_list)paramJceInputStream.read(cache_tab_lst_mq, 48, false));
+    this.navigation_order = ((ArrayList)paramJceInputStream.read(cache_navigation_order, 49, false));
+    this.vec_event = ((ArrayList)paramJceInputStream.read(cache_vec_event, 50, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -394,6 +409,12 @@ public final class mobile_main_page_rsp
     }
     if (this.tab_lst_mq != null) {
       paramJceOutputStream.write(this.tab_lst_mq, 48);
+    }
+    if (this.navigation_order != null) {
+      paramJceOutputStream.write(this.navigation_order, 49);
+    }
+    if (this.vec_event != null) {
+      paramJceOutputStream.write(this.vec_event, 50);
     }
   }
 }

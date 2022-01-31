@@ -1,58 +1,58 @@
-import android.animation.AnimatorSet;
-import android.graphics.drawable.Drawable;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
 class anus
-  implements Animation.AnimationListener
+  implements ajie
 {
-  anus(anup paramanup, AnimatorSet paramAnimatorSet) {}
+  anus(anul paramanul, int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, int paramInt2, boolean paramBoolean, String paramString2, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_Anup.a.size())
-    {
-      paramAnimation = (ImageView)this.jdField_a_of_type_Anup.a.get(i);
-      paramAnimation.clearAnimation();
-      Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject1 != null) && (i < this.jdField_a_of_type_Anup.jdField_b_of_type_JavaUtilList.size()))
+    paramString = new Bundle();
+    int i;
+    if (paramBoolean) {
+      if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
       {
-        Object localObject2 = (String)this.jdField_a_of_type_Anup.jdField_b_of_type_JavaUtilList.get(i);
-        Drawable localDrawable = bacm.a(true);
-        localObject1 = azwp.a((AppInterface)localObject1, 1, (String)localObject2, 4, localDrawable, localDrawable);
-        localObject2 = paramAnimation.getDrawable();
-        if ((localObject2 != null) && (localObject2 != localObject1) && ((localObject2 instanceof azwp))) {
-          ((azwp)localObject2).a();
+        paramArrayOfInt = ((airz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        if (paramArrayOfInt == null) {
+          break label231;
         }
-        paramAnimation.setImageDrawable((Drawable)localObject1);
+        i = paramArrayOfInt.apolloVipFlag;
+        paramInt2 = paramArrayOfInt.apolloVipLevel;
       }
-      i += 1;
     }
-    this.jdField_a_of_type_Anup.c.clearAnimation();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
-    this.jdField_a_of_type_Anup.jdField_b_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
-    this.jdField_a_of_type_Anup.jdField_b_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-    paramAnimation = new AlphaAnimation(1.0F, 0.0F);
-    paramAnimation.setFillAfter(true);
-    paramAnimation.setDuration(200L);
-    paramAnimation.setAnimationListener(new anut(this));
-    this.jdField_a_of_type_Anup.c.startAnimation(paramAnimation);
+    for (;;)
+    {
+      paramString.putInt("apollo_apolloVipFlag", i);
+      paramString.putInt("apollo_apolloVipLevel", paramInt2);
+      paramString.putBoolean("apollo_is_super_yellow", airz.c());
+      paramString.putInt("apollo_result", 0);
+      paramString.putInt("apollo_partnerRoleId", paramInt1);
+      paramString.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
+      paramString.putInt("apollo_previewAction", this.jdField_b_of_type_Int);
+      paramString.putBoolean("apollo_previewOnFrame", this.jdField_a_of_type_Boolean);
+      paramString.putString("apollo_id", this.jdField_b_of_type_JavaLangString);
+      paramString.putString("title", this.c);
+      paramString.putString("subTitle", this.d);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      paramString.putInt("apollo_result", 1);
+      paramString.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      label231:
+      paramInt2 = 0;
+      i = 0;
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anus
  * JD-Core Version:    0.7.0.1
  */

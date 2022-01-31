@@ -4,34 +4,34 @@ import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.util.LruCache;
-import biux;
-import urk;
-import vox;
+import bklj;
+import veg;
+import wbt;
 
 public class StoryFaceDrawableFactory$3
   implements Runnable
 {
-  public StoryFaceDrawableFactory$3(biux parambiux, String paramString1, String paramString2) {}
+  public StoryFaceDrawableFactory$3(bklj parambklj, String paramString1, String paramString2) {}
   
   public void run()
   {
     Bitmap localBitmap = this.this$0.a(this.a);
     if (localBitmap != null)
     {
-      vox localvox = (vox)this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.b);
-      if (localvox != null)
+      wbt localwbt = (wbt)this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.b);
+      if (localwbt != null)
       {
-        localvox.a(localBitmap);
+        localwbt.a(localBitmap);
         this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(1002).sendToTarget();
         return;
       }
-      urk.d("Q.qqstory.record.StoryFaceDrawableFactory", "Find faceDrawable is not in cache after decoding bitmap!");
-      localvox = new vox(this.this$0.jdField_a_of_type_Int, this.this$0.b);
-      localvox.a(localBitmap);
-      this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(this.b, localvox);
+      veg.d("Q.qqstory.record.StoryFaceDrawableFactory", "Find faceDrawable is not in cache after decoding bitmap!");
+      localwbt = new wbt(this.this$0.jdField_a_of_type_Int, this.this$0.b);
+      localwbt.a(localBitmap);
+      this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(this.b, localwbt);
       return;
     }
-    urk.e("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath return null!.");
+    veg.e("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath return null!.");
   }
 }
 

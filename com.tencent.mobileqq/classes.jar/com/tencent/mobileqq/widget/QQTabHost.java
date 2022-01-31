@@ -6,26 +6,26 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.widget.TabHost;
 import android.widget.TabWidget;
-import apnm;
-import baio;
-import bbmw;
+import aqha;
+import bbjv;
+import bcpu;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.qphone.base.util.QLog;
-import ohp;
+import ota;
 
 public class QQTabHost
   extends TabHost
 {
-  private apnm jdField_a_of_type_Apnm;
-  private bbmw jdField_a_of_type_Bbmw;
+  private aqha jdField_a_of_type_Aqha;
+  private bcpu jdField_a_of_type_Bcpu;
   private boolean jdField_a_of_type_Boolean;
   
   public QQTabHost(Context paramContext)
   {
     super(paramContext);
     setWillNotDraw(false);
-    if ((paramContext instanceof apnm)) {
-      this.jdField_a_of_type_Apnm = ((apnm)paramContext);
+    if ((paramContext instanceof aqha)) {
+      this.jdField_a_of_type_Aqha = ((aqha)paramContext);
     }
   }
   
@@ -46,15 +46,15 @@ public class QQTabHost
   public void draw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_Boolean) {
-      baio.a(null, "Recent_Draw");
+      bbjv.a(null, "Recent_Draw");
     }
     super.draw(paramCanvas);
     if (this.jdField_a_of_type_Boolean)
     {
-      baio.a("Recent_Draw", null);
+      bbjv.a("Recent_Draw", null);
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Apnm != null) {
-        this.jdField_a_of_type_Apnm.a();
+      if (this.jdField_a_of_type_Aqha != null) {
+        this.jdField_a_of_type_Aqha.a();
       }
     }
   }
@@ -62,11 +62,11 @@ public class QQTabHost
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (this.jdField_a_of_type_Boolean) {
-      baio.a(null, "Recent_OnLayout");
+      bbjv.a(null, "Recent_OnLayout");
     }
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.jdField_a_of_type_Boolean) {
-      baio.a("Recent_OnLayout", null);
+      bbjv.a("Recent_OnLayout", null);
     }
   }
   
@@ -91,11 +91,11 @@ public class QQTabHost
       return;
       i = getCurrentTab();
       super.setCurrentTab(paramInt);
-      if (this.jdField_a_of_type_Bbmw != null) {
-        this.jdField_a_of_type_Bbmw.a(i, paramInt, this);
+      if (this.jdField_a_of_type_Bcpu != null) {
+        this.jdField_a_of_type_Bcpu.a(i, paramInt, this);
       }
       if (paramInt == 0) {
-        ohp.a().a(1, false);
+        ota.a().a(1, false);
       }
     } while (!QLog.isColorLevel());
     try
@@ -113,14 +113,14 @@ public class QQTabHost
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public void setOnDrawCompleteListener(apnm paramapnm)
+  public void setOnDrawCompleteListener(aqha paramaqha)
   {
-    this.jdField_a_of_type_Apnm = paramapnm;
+    this.jdField_a_of_type_Aqha = paramaqha;
   }
   
-  public void setOnTabSelectionListener(bbmw parambbmw)
+  public void setOnTabSelectionListener(bcpu parambcpu)
   {
-    this.jdField_a_of_type_Bbmw = parambbmw;
+    this.jdField_a_of_type_Bcpu = parambcpu;
   }
 }
 

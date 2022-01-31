@@ -1,25 +1,26 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
 
 class aefs
-  implements moc
+  implements View.OnClickListener
 {
-  aefs(aefe paramaefe) {}
+  aefs(aefp paramaefp) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a + "Q.hotchat.aio_post_list_plugin", 2, "checkUpByBusinessId:2586|param:" + paramString + "|code:" + paramInt);
-    }
-    paramString = this.a;
-    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {}
-    for (boolean bool = true;; bool = false)
+    if (aefp.a(this.a) != null)
     {
-      aefe.b(paramString, bool);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("NavigateBarManager", 2, String.format("onClick barId: %s", new Object[] { Integer.valueOf(aefp.a(this.a).a) }));
+      }
+      paramView = aefp.a(this.a);
+      aefp.a(this.a);
+      if (paramView != null) {
+        paramView.a();
+      }
     }
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

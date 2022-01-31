@@ -1,19 +1,36 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class agbg
-  implements apca
 {
-  public agbg(PhotoListActivity paramPhotoListActivity) {}
-  
-  public void a()
+  public static String a(MessageRecord paramMessageRecord)
   {
-    this.a.j();
-  }
-  
-  public void b()
-  {
-    this.a.c.setClickable(true);
+    if ((paramMessageRecord instanceof MessageForText))
+    {
+      paramMessageRecord = (MessageForText)paramMessageRecord;
+      if (paramMessageRecord.sb != null) {
+        return paramMessageRecord.sb.toString();
+      }
+      return paramMessageRecord.msg;
+    }
+    if ((paramMessageRecord instanceof MessageForMixedMsg)) {
+      return String.valueOf(MessageForMixedMsg.getTextFromMixedMsg((MessageForMixedMsg)paramMessageRecord));
+    }
+    if ((paramMessageRecord instanceof MessageForReplyText))
+    {
+      paramMessageRecord = (MessageForReplyText)paramMessageRecord;
+      if (paramMessageRecord.sb != null) {
+        return paramMessageRecord.sb.toString();
+      }
+      return paramMessageRecord.msg;
+    }
+    if ((paramMessageRecord instanceof MessageForArkApp)) {
+      return ((MessageForArkApp)paramMessageRecord).getJumpUrl();
+    }
+    return "";
   }
 }
 

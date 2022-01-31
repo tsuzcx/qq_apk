@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.widget;
 
-import aciy;
+import actn;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import azvv;
-import bbkn;
+import bawz;
+import bcnl;
 import com.tencent.widget.HorizontalListView;
 
 public class OverScrollCallbackHorizontalListView
@@ -14,7 +14,7 @@ public class OverScrollCallbackHorizontalListView
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private bbkn jdField_a_of_type_Bbkn;
+  private bcnl jdField_a_of_type_Bcnl;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private boolean jdField_b_of_type_Boolean;
@@ -33,7 +33,7 @@ public class OverScrollCallbackHorizontalListView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Int = aciy.a(50.0F, getResources());
+    this.jdField_a_of_type_Int = actn.a(50.0F, getResources());
     setOverScrollMode(0);
   }
   
@@ -55,7 +55,7 @@ public class OverScrollCallbackHorizontalListView
     {
       float f2 = this.jdField_a_of_type_Float;
       f3 -= this.jdField_b_of_type_Float;
-      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > azvv.a(getContext(), 5.0F))) {
+      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > bawz.a(getContext(), 5.0F))) {
         getParent().requestDisallowInterceptTouchEvent(false);
       }
     }
@@ -75,16 +75,16 @@ public class OverScrollCallbackHorizontalListView
     if ((this.jdField_b_of_type_Boolean) && (paramInt3 > this.jdField_a_of_type_Int))
     {
       this.jdField_b_of_type_Boolean = false;
-      if ((this.jdField_a_of_type_Bbkn != null) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Bbkn.a(this);
+      if ((this.jdField_a_of_type_Bcnl != null) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_Bcnl.a(this);
       }
     }
     return super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean);
   }
   
-  public void setListener(bbkn parambbkn)
+  public void setListener(bcnl parambcnl)
   {
-    this.jdField_a_of_type_Bbkn = parambbkn;
+    this.jdField_a_of_type_Bcnl = parambcnl;
   }
 }
 

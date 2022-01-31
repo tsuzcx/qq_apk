@@ -1,19 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.soload.LoadExtResult;
 
 class ahff
-  implements DialogInterface.OnClickListener
+  implements axne
 {
-  ahff(ahfe paramahfe) {}
+  ahff(ahfe paramahfe, ahfg paramahfg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    paramDialogInterface.dismiss();
+    if (paramInt == 0)
+    {
+      ahfe.a(this.jdField_a_of_type_Ahfe, true);
+      if (this.jdField_a_of_type_Ahfg != null) {
+        this.jdField_a_of_type_Ahfg.a(true);
+      }
+    }
+    while (this.jdField_a_of_type_Ahfg == null) {
+      return;
+    }
+    this.jdField_a_of_type_Ahfg.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahff
  * JD-Core Version:    0.7.0.1
  */

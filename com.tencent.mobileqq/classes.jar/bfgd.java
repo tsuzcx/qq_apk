@@ -1,21 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
+import java.io.File;
+import java.util.Comparator;
 
-public class bfgd
-  implements DialogInterface.OnClickListener
+class bfgd
+  implements Comparator<File>
 {
-  public bfgd(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(File paramFile1, File paramFile2)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    return paramFile1.getName().compareTo(paramFile2.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfgd
  * JD-Core Version:    0.7.0.1
  */

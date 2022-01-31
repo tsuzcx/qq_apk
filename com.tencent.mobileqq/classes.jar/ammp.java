@@ -1,69 +1,22 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
 
 public class ammp
-  extends alzl<ammm>
+  extends Handler
 {
-  public static ammm a()
-  {
-    return (ammm)alzw.a().a(346);
-  }
+  public ammp(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public int a()
+  public void handleMessage(Message paramMessage)
   {
-    return 346;
-  }
-  
-  @NonNull
-  public ammm a(int paramInt)
-  {
-    return new ammm();
-  }
-  
-  @Nullable
-  public ammm a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
-      return ammm.a(paramArrayOfalzs);
+    if (paramMessage.what == 1000) {
+      this.a.a(((Boolean)((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[0]).booleanValue(), (String[])((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[1]);
     }
-    return null;
-  }
-  
-  public Class<ammm> a()
-  {
-    return ammm.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(ammm paramammm)
-  {
-    if ((paramammm != null) && (!TextUtils.isEmpty(paramammm.d()))) {
-      ((axgr)BaseApplicationImpl.getApplication().getRuntime().getManager(272)).a(paramammm);
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ammp
  * JD-Core Version:    0.7.0.1
  */

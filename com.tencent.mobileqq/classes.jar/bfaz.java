@@ -1,17 +1,18 @@
-import java.util.Observable;
-
-public class bfaz
-  extends Observable
+public class bfaz<T>
 {
-  public void a()
+  public T a;
+  
+  public bfaz(T paramT)
   {
-    setChanged();
-    notifyObservers();
+    Object localObject;
+    this.jdField_a_of_type_JavaLangObject = localObject;
   }
+  
+  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfaz
  * JD-Core Version:    0.7.0.1
  */

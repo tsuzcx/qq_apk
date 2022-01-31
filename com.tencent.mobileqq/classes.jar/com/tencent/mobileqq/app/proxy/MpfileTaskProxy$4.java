@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.app.proxy;
 
-import akeq;
+import aktc;
 import com.dataline.mpfile.MpfileTaskRecord;
-import eu;
+import gn;
 
 public class MpfileTaskProxy$4
   implements Runnable
 {
-  public MpfileTaskProxy$4(akeq paramakeq, MpfileTaskRecord paramMpfileTaskRecord, eu parameu) {}
+  public MpfileTaskProxy$4(aktc paramaktc, MpfileTaskRecord paramMpfileTaskRecord, gn paramgn) {}
   
   public void run()
   {
     this.this$0.a(this.jdField_a_of_type_ComDatalineMpfileMpfileTaskRecord, null);
-    this.jdField_a_of_type_Eu.a();
+    this.jdField_a_of_type_Gn.a();
   }
 }
 

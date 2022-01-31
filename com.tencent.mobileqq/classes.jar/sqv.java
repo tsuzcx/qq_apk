@@ -1,17 +1,19 @@
+import java.util.Comparator;
+
 class sqv
-  implements ssc
+  implements Comparator<sqc>
 {
   sqv(squ paramsqu) {}
   
-  public void a(boolean paramBoolean, sry paramsry)
+  public int a(sqc paramsqc1, sqc paramsqc2)
   {
-    urk.b("WeatherDataProvider", "WeatherLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
-    if ((paramBoolean) && (paramsry != null))
-    {
-      this.a.a(paramsry.b, paramsry.a);
-      return;
+    if (paramsqc1.b == paramsqc2.b) {
+      return 0;
     }
-    this.a.a(false, null);
+    if (paramsqc1.b > paramsqc2.b) {
+      return 1;
+    }
+    return -1;
   }
 }
 

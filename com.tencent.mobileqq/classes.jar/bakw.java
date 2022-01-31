@@ -1,321 +1,122 @@
+import android.os.Bundle;
+import android.util.SparseArray;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.net.HttpURLConnection;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.cmd0x6c3.oidb_0x6c3.GetExtraDataRsp;
+import tencent.im.oidb.cmd0x6c3.oidb_0x6c3.GetStockRsp;
+import tencent.im.oidb.cmd0x6c3.oidb_0x6c3.ImgShowConfig;
+import tencent.im.oidb.cmd0x6c3.oidb_0x6c3.ImgShowItem;
+import tencent.im.oidb.cmd0x6c3.oidb_0x6c3.RspBody;
+import tencent.im.oidb.cmd0x6c3.oidb_0x6c3.StockInfo;
+import tencent.im.oidb.cmd0x6c3.oidb_0x6c3.StockItem;
 
-public class bakw
+class bakw
+  extends mxl
 {
-  public static String f;
-  public int a;
-  public long a;
-  public axtz a;
-  private final baky jdField_a_of_type_Baky;
-  public Object a;
-  public String a;
-  public HttpURLConnection a;
-  public HashMap<String, String> a;
-  public AtomicBoolean a;
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  public String[] a;
-  public int b;
-  public long b;
-  public String b;
-  public HashMap<String, String> b;
-  public AtomicBoolean b;
-  public final boolean b;
-  private byte[] b;
-  public int c;
-  public long c;
-  public String c;
-  public AtomicBoolean c;
-  public boolean c;
-  public int d;
-  public long d;
-  public String d;
-  public boolean d = true;
-  public int e = -1;
-  public long e;
-  public String e;
-  public boolean e;
-  public int f;
-  public long f;
-  public boolean f;
-  public int g;
-  public long g;
-  private String g;
-  public boolean g;
-  public int h;
-  public long h;
-  private String h;
-  public boolean h;
-  private int jdField_i_of_type_Int;
-  private String jdField_i_of_type_JavaLangString = "GET";
-  public boolean i;
-  public boolean j;
-  public boolean k;
-  public boolean l;
-  private boolean m = true;
+  bakw(bakt parambakt, baks parambaks) {}
   
-  static
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    jdField_f_of_type_JavaLangString = "param_reason";
-  }
-  
-  public bakw(String paramString, byte[] paramArrayOfByte, baky parambaky)
-  {
-    this(paramString, paramArrayOfByte, parambaky, false);
-  }
-  
-  public bakw(String paramString, byte[] paramArrayOfByte, baky parambaky, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Int = 201;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.g = paramString;
-    if (paramString != null)
-    {
-      this.h = paramString.substring(0, paramString.length());
-      this.jdField_a_of_type_Baky = parambaky;
-      if (paramArrayOfByte != null) {
-        break label139;
-      }
-      this.jdField_a_of_type_ArrayOfByte = null;
-    }
-    for (;;)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      return;
-      this.h = null;
-      break;
-      label139:
-      this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte.length];
-      System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte.length);
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_i_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public baky a()
-  {
-    return this.jdField_a_of_type_Baky;
-  }
-  
-  public String a()
-  {
-    return this.g;
-  }
-  
-  public String a(String paramString)
-  {
-    return (String)this.jdField_b_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public HashMap<String, String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    if (this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
-      this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    }
-    this.jdField_a_of_type_JavaNetHttpURLConnection = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_i_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    this.jdField_f_of_type_Int = paramInt1;
-    this.e = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    if ((this.jdField_a_of_type_Baky instanceof axou)) {
-      ((axou)this.jdField_a_of_type_Baky).a(paramInt1, paramInt2, 0L, paramString);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.g = paramString;
-    this.h = this.g.substring(0, this.g.length());
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_b_of_type_ArrayOfByte;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.h;
-  }
-  
-  public void b()
-  {
-    a();
-    this.jdField_f_of_type_Int = 0;
-    this.e = 0;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_b_of_type_ArrayOfByte = null;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (paramInt == 5)
-    {
-      this.jdField_a_of_type_Int = 201;
-      return;
-    }
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_Int = 202;
-      return;
-    }
-    if (paramInt == 10)
-    {
-      this.jdField_a_of_type_Int = 200;
-      return;
-    }
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_i_of_type_JavaLangString = paramString;
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return;
-    }
-    this.jdField_b_of_type_JavaUtilHashMap.put(paramString1, paramString2);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.m = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.m;
-  }
-  
-  public byte[] b()
-  {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public int c()
-  {
-    return this.e;
-  }
-  
-  public String c()
-  {
-    String str2 = a();
-    String str1 = str2;
-    if (!this.d) {
-      str1 = axub.a(str2);
-    }
-    return str1;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.e = paramInt;
-  }
-  
-  public boolean c()
-  {
-    if ((this.jdField_f_of_type_Int == -9527) && (this.e == 404))
-    {
-      String str = (String)this.jdField_b_of_type_JavaUtilHashMap.get(jdField_f_of_type_JavaLangString);
-      if (("H_404_-6101".equals(str)) || ("H_404_-5062".equals(str))) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public String d()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public boolean d()
-  {
-    if ((this.jdField_b_of_type_JavaUtilHashMap.containsKey("X-RtFlag")) && ("0".equals(this.jdField_b_of_type_JavaUtilHashMap.get("X-RtFlag"))))
+    int i = 0;
+    if ((paramInt != 0) || (paramArrayOfByte == null) || (this.jdField_a_of_type_Baks == null))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("Q.richmedia.HttpMsg", 2, "permitRetry : X-RtFlag = 0");
+        QLog.i(".troop.send_gift", 2, "send_oidb_0x6c3. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_Baks);
       }
-      return false;
+      if (this.jdField_a_of_type_Baks != null) {
+        this.jdField_a_of_type_Baks.a(paramInt, "sso request error or callback is null.");
+      }
+      return;
     }
-    if ((this.jdField_f_of_type_Int == -9527) && (this.e == 404))
+    Object localObject1;
+    try
     {
-      String str = (String)this.jdField_b_of_type_JavaUtilHashMap.get(jdField_f_of_type_JavaLangString);
-      return (!"H_404_-6101".equals(str)) && (!"H_404_-5062".equals(str));
+      localObject1 = new oidb_0x6c3.RspBody();
+      ((oidb_0x6c3.RspBody)localObject1).mergeFrom(paramArrayOfByte);
+      paramInt = ((oidb_0x6c3.RspBody)localObject1).int32_ret.get();
+      if ((paramInt != 0) || (paramBundle == null)) {
+        break label681;
+      }
+      paramInt = paramBundle.getInt("subCmd");
+      if (((paramInt == 0) || (paramInt == 2) || (paramInt == 7)) && (((oidb_0x6c3.RspBody)localObject1).msg_get_stock.has()))
+      {
+        paramArrayOfByte = (oidb_0x6c3.GetStockRsp)((oidb_0x6c3.RspBody)localObject1).msg_get_stock.get();
+        paramBundle = new ArrayList(10);
+        Object localObject2;
+        if (paramArrayOfByte.msg_stock.has())
+        {
+          localObject1 = (oidb_0x6c3.StockInfo)paramArrayOfByte.msg_stock.get();
+          if (((oidb_0x6c3.StockInfo)localObject1).msg_stock.has())
+          {
+            localObject1 = ((oidb_0x6c3.StockInfo)localObject1).msg_stock.get();
+            paramInt = 0;
+            while (paramInt < ((List)localObject1).size())
+            {
+              localObject2 = (oidb_0x6c3.StockItem)((List)localObject1).get(paramInt);
+              bald localbald = new bald();
+              localbald.jdField_a_of_type_Int = ((oidb_0x6c3.StockItem)localObject2).int32_productid.get();
+              localbald.b = ((oidb_0x6c3.StockItem)localObject2).int32_amount.get();
+              localbald.c = ((oidb_0x6c3.StockItem)localObject2).int32_free_limit_chance.get();
+              paramBundle.add(localbald);
+              paramInt += 1;
+            }
+          }
+        }
+        this.jdField_a_of_type_Baks.a(paramArrayOfByte.int32_count.get(), paramArrayOfByte.int32_give_count.get(), paramArrayOfByte.bytes_give_info.get().toStringUtf8(), paramBundle);
+        paramBundle = new SparseArray();
+        if (paramArrayOfByte.msg_imgshow_config.has())
+        {
+          int j = paramArrayOfByte.msg_imgshow_config.msg_imgshow_item.size();
+          paramInt = i;
+          while (paramInt < j)
+          {
+            localObject1 = (oidb_0x6c3.ImgShowItem)paramArrayOfByte.msg_imgshow_config.msg_imgshow_item.get(paramInt);
+            localObject2 = new balf();
+            ((balf)localObject2).jdField_a_of_type_Int = ((oidb_0x6c3.ImgShowItem)localObject1).uint32_price.get();
+            ((balf)localObject2).jdField_a_of_type_JavaLangString = ((oidb_0x6c3.ImgShowItem)localObject1).bytes_wording.get().toStringUtf8();
+            ((balf)localObject2).b = ((oidb_0x6c3.ImgShowItem)localObject1).bytes_cut_wording.get().toStringUtf8();
+            paramBundle.put(((oidb_0x6c3.ImgShowItem)localObject1).uint32_productid.get(), localObject2);
+            paramInt += 1;
+          }
+        }
+        this.jdField_a_of_type_Baks.a(paramBundle);
+        return;
+      }
     }
-    return (this.jdField_f_of_type_Int != 9048) && (this.jdField_f_of_type_Int != 9057) && (this.jdField_f_of_type_Int != 9020) && (this.jdField_f_of_type_Int != 9022) && (this.jdField_f_of_type_Int != 9366) && (this.jdField_f_of_type_Int != 9058);
-  }
-  
-  public String e()
-  {
-    return this.jdField_i_of_type_JavaLangString;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "send_oidb_0x6c3. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
+      }
+      this.jdField_a_of_type_Baks.a(-1, "InvalidProtocolBufferMicroException");
+      return;
+    }
+    if (((paramInt == 1) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5) || (paramInt == 6) || (paramInt == 8) || (paramInt == 9) || (paramInt == 10)) && (((oidb_0x6c3.RspBody)localObject1).msg_extra_data.has()))
+    {
+      paramArrayOfByte = (oidb_0x6c3.GetExtraDataRsp)((oidb_0x6c3.RspBody)localObject1).msg_extra_data.get();
+      paramBundle = xcf.a(((oidb_0x6c3.RspBody)localObject1).exclusive_gift_list.get());
+      paramInt = ((oidb_0x6c3.RspBody)localObject1).msg_extra_data.int32_version_seq.get();
+      this.jdField_a_of_type_Baks.a(paramArrayOfByte.bytes_shop_config.get().toStringUtf8(), paramInt);
+      this.jdField_a_of_type_Baks.a(paramArrayOfByte.bytes_shop_config.get().toStringUtf8(), paramInt, paramBundle);
+      return;
+    }
+    this.jdField_a_of_type_Baks.a(-1, "Invalid RspData. subCmd:" + paramInt);
+    return;
+    label681:
+    paramArrayOfByte = ((oidb_0x6c3.RspBody)localObject1).bytes_msg.get().toStringUtf8();
+    this.jdField_a_of_type_Baks.a(paramInt, paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bakw
  * JD-Core Version:    0.7.0.1
  */

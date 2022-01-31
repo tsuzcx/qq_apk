@@ -1,44 +1,183 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 class bagi
-  implements View.OnClickListener
+  implements baho
 {
-  bagi(bagg parambagg, int paramInt, QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString1, String paramString2) {}
+  bagi(bagc parambagc) {}
   
-  public void onClick(View paramView)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    long l2 = System.currentTimeMillis();
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof Long)) {}
-    for (long l1 = ((Long)localObject).longValue();; l1 = 0L)
+    switch (paramInt)
     {
-      if (l2 - l1 < 300L)
-      {
-        QLog.i("QQCustomDialogWithForwardAvatar", 2, "click in 300ms clickTime: " + l1 + " newTime :" + l2);
-        return;
-      }
-      paramView.setTag(Long.valueOf(l2));
-      if ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 3000)) {
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009BE8", "0X8009BE8", 0, 0, "", "", "", "");
-      }
+    }
+    label295:
+    label820:
+    do
+    {
       for (;;)
       {
-        this.jdField_a_of_type_Bagg.hideSoftInputFromWindow();
-        MiniChatActivity.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, 0.86F, this.jdField_a_of_type_Bagg.a(this.jdField_a_of_type_AndroidAppActivity, 0.78F));
         return;
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009BE6", "0X8009BE6", 0, 0, "", "", "", "");
+        if (paramJSONObject != null)
+        {
+          try
+          {
+            paramInt = ((Integer)paramJSONObject.get("retcode")).intValue();
+            paramJSONObject = (JSONObject)paramJSONObject.get("result");
+            if ((paramInt != 0) || (paramJSONObject == null)) {
+              continue;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult. retCode = " + paramInt + "\n");
+            }
+            paramBundle = (JSONObject)paramJSONObject.get("basics");
+            Object localObject2;
+            String str;
+            int i;
+            Object localObject1;
+            if (paramBundle != null)
+            {
+              paramBundle = (JSONArray)paramBundle.get("datas");
+              if (paramBundle != null)
+              {
+                paramInt = 0;
+                if (paramInt < paramBundle.length())
+                {
+                  localObject2 = (JSONObject)paramBundle.get(paramInt);
+                  str = (String)((JSONObject)localObject2).get("name");
+                  i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
+                  localObject1 = (String)((JSONObject)localObject2).get("api");
+                  localObject2 = (String)((JSONObject)localObject2).get("msg");
+                  if (!QLog.isColorLevel()) {
+                    break label1008;
+                  }
+                  QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, basics name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg = " + (String)localObject2 + "\n");
+                  break label1008;
+                }
+              }
+            }
+            paramBundle = (JSONObject)paramJSONObject.get("friendlink");
+            if (paramBundle != null)
+            {
+              paramBundle = (JSONArray)paramBundle.get("datas");
+              if (paramBundle != null)
+              {
+                paramInt = 0;
+                if (paramInt < paramBundle.length())
+                {
+                  localObject2 = (JSONObject)paramBundle.get(paramInt);
+                  str = (String)((JSONObject)localObject2).get("name");
+                  i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
+                  localObject1 = (String)((JSONObject)localObject2).get("api");
+                  localObject2 = (String)((JSONObject)localObject2).get("msg");
+                  if (("add_group".equals(localObject1)) && (i != 1)) {
+                    bagc.a(this.a).b();
+                  }
+                  if (!QLog.isColorLevel()) {
+                    break label1015;
+                  }
+                  QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, friendlink name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg= " + (String)localObject2 + "\n");
+                  break label1015;
+                }
+              }
+            }
+            paramInt = ((Integer)paramJSONObject.get("appid")).intValue();
+            if (QLog.isColorLevel()) {
+              QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, appid =" + paramInt + "\n");
+            }
+            paramJSONObject = (JSONObject)paramJSONObject.get("qqpay");
+            if (paramJSONObject == null) {
+              continue;
+            }
+            paramJSONObject = (JSONArray)paramJSONObject.get("datas");
+            if (paramJSONObject == null) {
+              continue;
+            }
+            paramInt = 0;
+            while (paramInt < paramJSONObject.length())
+            {
+              localObject1 = (JSONObject)paramJSONObject.get(paramInt);
+              paramBundle = (String)((JSONObject)localObject1).get("name");
+              i = ((Integer)((JSONObject)localObject1).get("state")).intValue();
+              str = (String)((JSONObject)localObject1).get("api");
+              localObject1 = (String)((JSONObject)localObject1).get("msg");
+              if (QLog.isColorLevel()) {
+                QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, qqpay name = " + paramBundle + " state = " + i + " api = " + str + " msg= " + (String)localObject1 + "\n");
+              }
+              paramInt += 1;
+            }
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+          }
+          catch (Exception paramJSONObject) {}
+          QLog.d("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult " + paramJSONObject.toString());
+          return;
+          if ((bagc.a(this.a) != null) && (paramJSONObject != null)) {
+            try
+            {
+              paramJSONObject = (JSONObject)paramJSONObject.get("data");
+              if (paramJSONObject != null)
+              {
+                paramJSONObject = (JSONObject)paramJSONObject.get("key");
+                if (paramJSONObject != null)
+                {
+                  paramInt = ((Integer)paramJSONObject.get("retCode")).intValue();
+                  paramBundle = (String)paramJSONObject.get("retMsg");
+                  if (paramInt != 0) {
+                    break label921;
+                  }
+                  if (bagc.a(this.a) != null) {
+                    bagc.a(this.a).a(true);
+                  }
+                  bagj.a(9, new Object());
+                  if (QLog.isColorLevel())
+                  {
+                    QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "joinGroup onResult retCode = " + paramInt + " retMsg = " + paramBundle);
+                    return;
+                  }
+                }
+              }
+            }
+            catch (Exception paramJSONObject)
+            {
+              bagc.a(this.a).d(bagc.a(this.a).getString(2131720470));
+            }
+          }
+        }
       }
+    } while (!QLog.isColorLevel());
+    QLog.e("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "joinGroup onResult " + paramJSONObject.toString());
+    return;
+    label921:
+    paramJSONObject = bagc.a(this.a).getString(2131720470);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      bagc.a(this.a).d(paramJSONObject);
+      break label820;
+      paramJSONObject = bagc.a(this.a).getString(2131720465);
+      continue;
+      paramJSONObject = bagc.a(this.a).getString(2131720471);
+      continue;
+      label1008:
+      paramInt += 1;
+      break;
+      label1015:
+      paramInt += 1;
+      break label295;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bagi
  * JD-Core Version:    0.7.0.1
  */

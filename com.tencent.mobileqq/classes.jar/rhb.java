@@ -1,40 +1,30 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
 import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoySelectPositionHeader;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 import com.tencent.qphone.base.util.QLog;
 
 public class rhb
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public rhb(ReadInJoySelectPositionHeader paramReadInJoySelectPositionHeader, Context paramContext) {}
+  public rhb(ReadinjoyTabFrame paramReadinjoyTabFrame, SelectPositionModule.PositionData paramPositionData) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = ogy.a().a();
-    SelectPositionModule.PositionData localPositionData;
-    if (paramView != null)
-    {
-      localPositionData = paramView.b();
-      if (!paramView.a(localPositionData)) {
-        break label53;
-      }
-      paramView.b(localPositionData);
-      if (ReadInJoySelectPositionHeader.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoySelectPositionHeader) != null) {
-        ReadInJoySelectPositionHeader.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoySelectPositionHeader).a(localPositionData);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog change confirm");
     }
-    label53:
-    do
-    {
-      return;
-      if (localPositionData != null) {
-        bbmy.a(this.jdField_a_of_type_AndroidContentContext, String.format("你当前在%s，暂无本地频道。", new Object[] { localPositionData.cityGPS }), 0).a();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ReadInJoySelectPositionHeader", 2, "onClick not in city white list gpsPosition = " + localPositionData);
+    paramDialogInterface = osj.a().a();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData);
+    }
+    paramDialogInterface = osj.a().a();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.b(41695);
+    }
+    osj.a().a(41695, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData.city);
+    osm.a().g(41695);
   }
 }
 

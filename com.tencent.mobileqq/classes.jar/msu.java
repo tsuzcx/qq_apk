@@ -1,21 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import android.app.PendingIntent;
 
-public class msu
-  implements View.OnClickListener
+class msu
 {
-  public msu(EqqAccountDetailActivity paramEqqAccountDetailActivity, nbu paramnbu) {}
+  public final int a;
+  public final PendingIntent a;
+  public final String a;
   
-  public void onClick(View paramView)
+  public msu(int paramInt, String paramString, PendingIntent paramPendingIntent)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a = this.jdField_a_of_type_Nbu.d;
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_Nbu, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidAppPendingIntent = paramPendingIntent;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     msu
  * JD-Core Version:    0.7.0.1
  */

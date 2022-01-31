@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.SeekBar;
 import java.util.TimerTask;
-import trk;
+import ueg;
 
 class VideoPlayerView$14
   extends TimerTask
@@ -26,7 +26,7 @@ class VideoPlayerView$14
     }
     for (;;)
     {
-      if ((!VideoPlayerView.d(this.this$0)) && (d != 0.0D))
+      if ((!VideoPlayerView.a(this.this$0)) && (d != 0.0D))
       {
         Message localMessage = Message.obtain();
         localMessage.what = 1;
@@ -46,7 +46,7 @@ class VideoPlayerView$14
       this.this$0.a().sendEmptyMessage(2);
       return;
       label177:
-      if ((!VideoPlayerView.d(this.this$0)) && (d != 0.0D)) {
+      if ((!VideoPlayerView.a(this.this$0)) && (d != 0.0D)) {
         this.this$0.a.setProgress((int)(this.this$0.a.getMax() * (d / f)));
       }
     }

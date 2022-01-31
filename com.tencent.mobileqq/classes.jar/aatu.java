@@ -1,67 +1,22 @@
-import SummaryCardTaf.SSummaryCardRsp;
-import android.util.Pair;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.12.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
+import android.os.Looper;
+import android.os.MessageQueue;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class aatu
-  extends ajfo
+  implements View.OnLayoutChangeListener
 {
-  public aatu(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
+  public aatu(ChatSettingForTroop paramChatSettingForTroop) {}
+  
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    for (;;)
+    if (!this.jdField_a_of_type_Boolean)
     {
-      try
-      {
-        if (this.a.isFinishing()) {
-          break;
-        }
-        this.a.jdField_b_of_type_Befq.removeCallbacks(this.a.jdField_b_of_type_JavaLangRunnable);
-        this.a.B();
-        if ((!paramBoolean) || (paramObject == null)) {
-          break;
-        }
-        if ((paramObject instanceof Card))
-        {
-          ThreadManager.post(new FriendProfileCardActivity.12.1(this, (Card)paramObject), 5, null, true);
-          return;
-        }
-        if (!(paramObject instanceof Pair)) {
-          break;
-        }
-        paramObject = (Pair)paramObject;
-        if (((Integer)paramObject.first).intValue() == 101107)
-        {
-          this.a.f = 1;
-          this.a.C();
-          return;
-        }
-      }
-      catch (Exception paramObject)
-      {
-        paramObject.printStackTrace();
-        return;
-      }
-      if (((Integer)paramObject.first).intValue() == 101108)
-      {
-        this.a.f = 2;
-      }
-      else if (((Integer)paramObject.first).intValue() == 101111)
-      {
-        this.a.f = 3;
-      }
-      else if (((Integer)paramObject.first).intValue() == 12002)
-      {
-        this.a.f = 4;
-      }
-      else
-      {
-        this.a.f = 5;
-        this.a.a((SSummaryCardRsp)paramObject.second);
-      }
+      Looper.myQueue().addIdleHandler(new aatv(this));
+      this.jdField_a_of_type_Boolean = true;
     }
   }
 }

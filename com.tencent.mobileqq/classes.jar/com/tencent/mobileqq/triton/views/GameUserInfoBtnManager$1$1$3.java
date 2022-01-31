@@ -1,18 +1,16 @@
 package com.tencent.mobileqq.triton.views;
 
+import com.tencent.mobileqq.triton.api.TTChannel;
 import com.tencent.mobileqq.triton.engine.TTEngine;
-import com.tencent.mobileqq.triton.engine.TTLog;
-import com.tencent.mobileqq.triton.sdk.APICallback;
 
 class GameUserInfoBtnManager$1$1$3
-  implements APICallback
+  implements Runnable
 {
   GameUserInfoBtnManager$1$1$3(GameUserInfoBtnManager.1.1 param1, UserInfoButton.UserInfoButtonParam paramUserInfoButtonParam) {}
   
-  public void onCallback(boolean paramBoolean, String paramString)
+  public void run()
   {
-    TTLog.i("GameGlobalView", "getUserInfo callback " + paramBoolean + " resp=" + paramString);
-    GameUserInfoBtnManager.access$100(this.this$2.this$1.this$0).postRunnable(new GameUserInfoBtnManager.1.1.3.1(this, paramString));
+    GameUserInfoBtnManager.access$100(this.this$2.this$1.this$0).getTTChannel().nativeAuthDialogCallback(this.val$param.address, 1, "");
   }
 }
 

@@ -1,42 +1,50 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.text.TextPaint;
+import android.text.style.ReplacementSpan;
 
 public class avat
+  extends ReplacementSpan
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  ajmm jdField_a_of_type_Ajmm;
-  avaw jdField_a_of_type_Avaw;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  Runnable jdField_a_of_type_JavaLangRunnable;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
-  int c;
+  private float a;
+  private float b = -1.0F;
   
-  public boolean a()
+  public avat(float paramFloat1, float paramFloat2)
   {
-    return (this.a != null) && (this.b == 1);
+    this.a = paramFloat1;
+    this.b = paramFloat2;
   }
   
-  public boolean b()
+  private TextPaint a(Paint paramPaint)
   {
-    return (this.a != null) && (this.b >= 2);
+    paramPaint = new TextPaint(paramPaint);
+    paramPaint.setTextSize(this.a);
+    return paramPaint;
   }
   
-  public boolean c()
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    return (this.a != null) && (this.c == 3);
+    paramCharSequence = paramCharSequence.subSequence(paramInt1, paramInt2);
+    paramPaint = a(paramPaint);
+    Paint.FontMetricsInt localFontMetricsInt = paramPaint.getFontMetricsInt();
+    paramInt1 = localFontMetricsInt.top;
+    float f = (localFontMetricsInt.bottom + (paramInt1 + paramInt4 + paramInt4)) / 2 - (paramInt5 + paramInt3) / 2;
+    if (this.b != 0.0F) {
+      f = this.b;
+    }
+    paramCanvas.drawText(paramCharSequence.toString(), paramFloat, paramInt4 - f, paramPaint);
   }
   
-  public boolean d()
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
-    return (this.a != null) && (this.c >= 4);
+    paramCharSequence = paramCharSequence.subSequence(paramInt1, paramInt2);
+    return (int)a(paramPaint).measureText(paramCharSequence.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avat
  * JD-Core Version:    0.7.0.1
  */

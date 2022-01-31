@@ -1,10 +1,13 @@
-public abstract interface awfg
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
+
+public class awfg
+  implements View.OnClickListener
 {
-  public abstract void I_();
+  public awfg(LikesView paramLikesView) {}
   
-  public abstract void a(String paramString1, int paramInt, String paramString2);
-  
-  public abstract void a(String paramString, long paramLong1, long paramLong2);
+  public void onClick(View paramView) {}
 }
 
 

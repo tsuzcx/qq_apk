@@ -1,16 +1,25 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class abyy
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public abyy(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public abyy(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.g();
-    new awrb(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_more").a(new String[] { this.a.b }).a();
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.7F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

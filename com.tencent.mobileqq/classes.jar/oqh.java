@@ -1,257 +1,52 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.articlesummary.articlesummary.FriendRecommendInfo;
-import tencent.im.oidb.articlesummary.articlesummary.PackInfo;
-import tencent.im.oidb.articlesummary.articlesummary.PackJumpInfo;
-import tencent.im.oidb.articlesummary.articlesummary.SpecialTopicInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.support.annotation.Nullable;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.3;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.3.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class oqh
-  implements opw
+  implements ImageAssetDelegate
 {
-  public int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  private qoe jdField_a_of_type_Qoe;
-  private boolean jdField_a_of_type_Boolean;
-  public int b;
-  private ArticleInfo b;
-  private int c;
-  private int d;
-  private int e;
+  public oqh(ReadInJoyLottieDrawable.3 param3) {}
   
-  public oqh(Context paramContext, ArticleInfo paramArticleInfo1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5, ArticleInfo paramArticleInfo2, qoe paramqoe)
+  @Nullable
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo1;
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.d = paramInt3;
-    this.jdField_b_of_type_Int = paramInt4;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.e = paramInt5;
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo2;
-    this.jdField_a_of_type_Qoe = paramqoe;
-  }
-  
-  private int a(ArticleInfo paramArticleInfo)
-  {
-    if (paramArticleInfo == null) {
-      return 0;
-    }
-    if ((paramArticleInfo.mFeedIndexInGroup == paramArticleInfo.mGroupCount - 1L) && (paramArticleInfo.mPackInfoObj != null) && (paramArticleInfo.mPackInfoObj.pack_type.has()))
+    Object localObject = paramLottieImageAsset.getFileName();
+    paramLottieImageAsset = oqe.a(this.a.this$0, this.a.a, "images");
+    if (paramLottieImageAsset != null) {}
+    for (;;)
     {
-      Object localObject;
-      String str;
-      if (paramArticleInfo.mPackInfoObj.pack_type.get() == 2)
-      {
-        if ((paramArticleInfo.mPackInfoObj.msg_special_topic_info.has()) && (((articlesummary.SpecialTopicInfo)paramArticleInfo.mPackInfoObj.msg_special_topic_info.get()).rpt_jumps.has()))
-        {
-          localObject = ((articlesummary.SpecialTopicInfo)paramArticleInfo.mPackInfoObj.msg_special_topic_info.get()).rpt_jumps.get();
-          if ((localObject != null) && (((List)localObject).size() > 0))
-          {
-            str = ((articlesummary.PackJumpInfo)((List)localObject).get(0)).str_url.get();
-            localObject = ((articlesummary.PackJumpInfo)((List)localObject).get(0)).str_wording.get();
-            if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-              return 2;
-            }
-          }
-        }
+      paramLottieImageAsset = paramLottieImageAsset.getAbsolutePath() + "/" + (String)localObject;
+      localObject = (Bitmap)oqe.b().get(paramLottieImageAsset);
+      if (localObject == null) {
+        break;
       }
-      else if ((paramArticleInfo.mPackInfoObj.pack_type.get() == 3) && (paramArticleInfo.mPackInfoObj.msg_friend_recommend_info.has()) && (((articlesummary.FriendRecommendInfo)paramArticleInfo.mPackInfoObj.msg_friend_recommend_info.get()).rpt_jumps.has()))
-      {
-        localObject = ((articlesummary.FriendRecommendInfo)paramArticleInfo.mPackInfoObj.msg_friend_recommend_info.get()).rpt_jumps.get();
-        if ((localObject != null) && (((List)localObject).size() > 0))
-        {
-          str = ((articlesummary.PackJumpInfo)((List)localObject).get(0)).str_url.get();
-          localObject = ((articlesummary.PackJumpInfo)((List)localObject).get(0)).str_wording.get();
-          if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-            return 3;
-          }
-        }
-      }
+      return localObject;
+      paramLottieImageAsset = this.a.a[0];
     }
-    if ((paramArticleInfo.mGroupId == -1L) && (paramArticleInfo.hasChannelInfo()) && (this.c != 0) && ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) && (this.jdField_a_of_type_Int == 0)) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public int a()
-  {
-    return this.c;
-  }
-  
-  public ArticleInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  }
-  
-  public VafContext a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  }
-  
-  public qoe a()
-  {
-    return this.jdField_a_of_type_Qoe;
-  }
-  
-  public void a(VafContext paramVafContext)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = paramVafContext;
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
-      bool1 = false;
-    }
-    do
+    ThreadManager.excute(new ReadInJoyLottieDrawable.3.1.1(this, paramLottieImageAsset), 64, null, true);
+    try
     {
-      do
-      {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (c() == 3);
-        if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mGroupId == -1L) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedIndexInGroup != 0L) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mGroupCount <= 0L)) {
-          break;
-        }
-        bool1 = bool2;
-      } while (c() == 1);
-      bool1 = bool2;
-    } while (c() == 2);
-    return false;
-  }
-  
-  public int b()
-  {
-    if (this.jdField_b_of_type_Int == this.e - 1) {
-      return 132;
+      localObject = BitmapFactory.decodeFile(paramLottieImageAsset);
+      return localObject;
     }
-    return this.jdField_a_of_type_Qoe.getItemViewType(this.jdField_b_of_type_Int + 1);
-  }
-  
-  public ArticleInfo b()
-  {
-    return this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  }
-  
-  public boolean b()
-  {
-    return d() != 0;
-  }
-  
-  public int c()
-  {
-    return pmu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-  }
-  
-  public boolean c()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {}
-    while ((b()) || (d()) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleFriendLikeText))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public int d()
-  {
-    return a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-  }
-  
-  public boolean d()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {}
-    while ((b()) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mCommentsObj == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mCommentsObj.size() <= 0)) {
-      return false;
-    }
-    return true;
-  }
-  
-  public int e()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public boolean e()
-  {
-    if (this.d == 7) {}
-    while (((this.d == 3) && (((obz.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) && (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.isTwoItemVideoFeed())) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.isTwoItemVideoFeed()))) || ((this.jdField_a_of_type_Int == 0) && (118 == qoe.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))) || (g()) || (this.jdField_b_of_type_Int == this.e - 1)) {
-      return false;
-    }
-    return true;
-  }
-  
-  public int f()
-  {
-    return this.e;
-  }
-  
-  public boolean f()
-  {
-    return d();
-  }
-  
-  public int g()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public boolean g()
-  {
-    if (this.d == 7) {}
-    BaseArticleInfo localBaseArticleInfo;
-    do
+    catch (Exception localException)
     {
-      do
-      {
-        return false;
-      } while ((this.jdField_a_of_type_Int == 41403) || (odm.a(this.jdField_a_of_type_Int)) || (bgmq.a(this.jdField_a_of_type_Int)));
-      localBaseArticleInfo = this.jdField_a_of_type_Qoe.a(this.jdField_a_of_type_Int);
-    } while ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (localBaseArticleInfo == null) || (this.jdField_b_of_type_Int <= 0));
-    if (obz.j(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
+      QLog.e("ReadInJoyLottieDrawable", 2, "loadLottieAnimation path: " + paramLottieImageAsset);
+      return null;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mGroupSubArticleList.iterator();
-      while (localIterator.hasNext()) {
-        if ((BaseArticleInfo)localIterator.next() == localBaseArticleInfo) {
-          return true;
-        }
-      }
+      QLog.e("ReadInJoyLottieDrawable", 2, "loadLottieAnimation oom: " + paramLottieImageAsset);
     }
-    if (localBaseArticleInfo == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  public boolean h()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {}
-    while ((!bgmq.a(this.d)) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mGroupId == -1L) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mGroupCount <= 0L) || ((c() != 1) && (c() != 2))) && (!pmu.b(a()))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public boolean i()
-  {
-    return this.jdField_a_of_type_AndroidContentContext instanceof SplashActivity;
+    return null;
   }
 }
 

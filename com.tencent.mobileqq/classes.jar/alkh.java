@@ -1,72 +1,47 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x74b.oidb_0x74b.HeadInfo;
-
 public class alkh
 {
+  public float a;
   public int a;
   public String a;
-  public ArrayList<alki> a;
-  public int b;
-  public int c;
-  public int d;
+  public float b = 0.0F;
+  public float c = 0.0F;
+  public float d = 0.0F;
+  public float e = 0.0F;
+  public float f = 1.0F;
+  public float g = 0.0F;
+  public float h = 1.0F;
+  public float i = 0.0F;
   
-  public static alkh a(oidb_0x74b.HeadInfo paramHeadInfo)
+  public alkh()
   {
-    Object localObject;
-    if (paramHeadInfo == null) {
-      localObject = null;
-    }
-    alkh localalkh;
-    do
-    {
-      return localObject;
-      localalkh = new alkh();
-      if (paramHeadInfo.uint32_id.has()) {
-        localalkh.jdField_a_of_type_Int = paramHeadInfo.uint32_id.get();
-      }
-      if (paramHeadInfo.str_photohead.has()) {
-        localalkh.jdField_a_of_type_JavaLangString = paramHeadInfo.str_photohead.get();
-      }
-      if (paramHeadInfo.uint32_invalid.has()) {
-        localalkh.b = paramHeadInfo.uint32_invalid.get();
-      }
-      if (paramHeadInfo.uint32_timestamp.has()) {
-        localalkh.c = paramHeadInfo.uint32_timestamp.get();
-      }
-      if (paramHeadInfo.uint32_type.has()) {
-        localalkh.d = paramHeadInfo.uint32_type.get();
-      }
-      localObject = localalkh;
-    } while (!paramHeadInfo.rpt_videoheadlist.has());
-    localalkh.jdField_a_of_type_JavaUtilArrayList = alki.a(paramHeadInfo.rpt_videoheadlist.get());
-    return localalkh;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
   }
   
-  public static ArrayList<alkh> a(List<oidb_0x74b.HeadInfo> paramList)
+  public alkh(int paramInt)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      alkh localalkh = a((oidb_0x74b.HeadInfo)paramList.next());
-      if (localalkh != null) {
-        localArrayList.add(localalkh);
-      }
-    }
-    return localArrayList;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("KeyingParams {keyType: ").append(this.jdField_a_of_type_Int).append(", screenColorR: ").append(this.jdField_a_of_type_Float).append(", screenColorG: ").append(this.b).append(", screenColorB: ").append(this.c).append(", uA: ").append(this.d).append(", uD: ").append(this.e).append(", u_threshold: ").append(this.f).append(", u_clipBlack: ").append(this.g).append(", u_clipWhite: ").append(this.h).append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alkh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,110 +1,22 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.exception.ExceptionTracker;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
+import java.util.Comparator;
 
-public class awpt
+final class awpt
+  implements Comparator<awpv>
 {
-  private static String a(awtq paramawtq)
+  public int a(awpv paramawpv1, awpv paramawpv2)
   {
-    if (paramawtq == null) {
-      return null;
+    int j = Long.signum(paramawpv2.jdField_a_of_type_Int - paramawpv1.jdField_a_of_type_Int);
+    int i = j;
+    if (j == 0) {
+      i = Long.signum(paramawpv2.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.timeStamp - paramawpv1.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.timeStamp);
     }
-    return paramawtq.a();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, awtr paramawtr)
-  {
-    a("dc02181", paramQQAppInterface, paramawtr);
-  }
-  
-  private static void a(String paramString, QQAppInterface paramQQAppInterface, awtq paramawtq)
-  {
-    if (paramawtq == null)
-    {
-      ExceptionTracker.trackException("CaptureReportController", "Capture Report not runtime Tag(" + paramString + ") report item is null");
-      if (!QLog.isColorLevel()) {}
-    }
-    do
-    {
-      return;
-      if (!TextUtils.isEmpty(paramawtq.c)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    return;
-    if (QLog.isColorLevel()) {}
-    QQAppInterface localQQAppInterface = paramQQAppInterface;
-    if (paramQQAppInterface == null)
-    {
-      localQQAppInterface = paramQQAppInterface;
-      if (BaseApplicationImpl.sProcessId == 1)
-      {
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-        localQQAppInterface = paramQQAppInterface;
-        if (localAppRuntime != null)
-        {
-          localQQAppInterface = paramQQAppInterface;
-          if ((localAppRuntime instanceof QQAppInterface)) {
-            localQQAppInterface = (QQAppInterface)localAppRuntime;
-          }
-        }
-      }
-    }
-    if (localQQAppInterface == null)
-    {
-      paramQQAppInterface = a(paramawtq);
-      paramawtq = new Intent();
-      paramawtq.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      paramawtq.putExtra("reporting_tag", paramString);
-      paramawtq.putExtra("reporting_detail", paramQQAppInterface);
-      paramawtq.putExtra("reporting_count", 1);
-      paramawtq.putExtra("is_runtime", 0);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramawtq);
-      return;
-    }
-    b(paramString, localQQAppInterface, a(paramawtq));
-  }
-  
-  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString2)) || (paramQQAppInterface == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CaptureReportController", 2, "app or detail invalid. app : " + paramQQAppInterface + "  detail : " + paramString2);
-      }
-      return;
-    }
-    String str = paramString2;
-    if (paramString2.contains("${count_unknown}")) {
-      str = paramString2.replace("${count_unknown}", "1");
-    }
-    paramString2 = new NewIntent(paramQQAppInterface.getApplication(), awdl.class);
-    paramString2.putExtra("sendType", 2);
-    paramString2.putExtra("tag", paramString1);
-    paramString2.putExtra("content", str);
-    paramString2.setWithouLogin(true);
-    paramQQAppInterface.startServlet(paramString2);
-  }
-  
-  public static void b(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString2)) || (paramQQAppInterface == null)) {}
-    do
-    {
-      return;
-      paramQQAppInterface = paramQQAppInterface.a();
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.a(paramString1, paramString2, 1);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awpt
  * JD-Core Version:    0.7.0.1
  */

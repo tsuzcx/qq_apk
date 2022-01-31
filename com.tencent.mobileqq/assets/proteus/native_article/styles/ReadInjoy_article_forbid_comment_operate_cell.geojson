@@ -23,9 +23,25 @@
                     "type":"match_parent"
                 },
                 "attributes":{
-                    "setBackgroundColorString:":"#D9FFFFFF",
-                    "setBorderWidthString:":"0.5",
-                    "setBorderColorString:":"#E6E6E6"
+                    "setBackgroundColorString:":"#D9FFFFFF"
+                }
+            },
+            {
+                "view_type": "UIView",
+                "view_id": "id_label_separator_line_top",
+                "default_visible":"YES",
+                "margin_left": "0",
+                "margin_top": "0",
+                "height": {
+                    "type": "absolutely",
+                    "value": "0.5"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "attributes":{
+                    "setFrameString:":"-1",
+                    "setBackgroundColorString:":"#E6E6E6"
                 }
             },
             {
@@ -34,14 +50,12 @@
                 "align_parent_center_vertical":"YES",
                 "event_type":"cmd_like_click",
                 "default_visible":"YES",
-                "margin_left":"49",
                 "height":{
-                    "type":"relative",
-                    "value":"24"
+                    "type": "match_parent"
                 },
                 "width":{
                     "type":"relative",
-                    "value":"24"
+                    "value":"125"
                 },
                 "attributes":{
                     "setImages:colors:direction:forStates:":[
@@ -57,7 +71,6 @@
                 "view_id":"id_separate_line1",
                 "right_of_view":"id_like",
                 "align_parent_center_vertical":"YES",
-                "margin_left":"49",
                 "default_visible":"YES",
                 "height":{
                     "type":"relative",
@@ -79,14 +92,13 @@
                 "event_type":"cmd_collect_click",
                 "align_parent_center_vertical":"YES",
                 "align_parent_center_horizontal":"YES",
-                "margin_left":"49",
                 "height":{
-                    "type":"relative",
-                    "value":"24"
-                },
+                          "type":"relative",
+                          "value":"46"
+                 },
                 "width":{
                     "type":"relative",
-                    "value":"24"
+                    "value":"125"
                 },
                 "attributes":{
                     "setImages:colors:direction:forStates:":[
@@ -103,7 +115,6 @@
                 "right_of_view":"id_collect",
                 "align_parent_center_vertical":"YES",
                 "default_visible":"YES",
-                "margin_left":"49",
                 "height":{
                     "type":"relative",
                     "value":"23"
@@ -123,14 +134,13 @@
                 "event_type":"cmd_biu_click",
                 "default_visible":"YES",
                 "align_parent_center_vertical":"YES",
-                "margin_left":"49",
                 "height":{
-                    "type":"relative",
-                    "value":"24"
+                   "type":"relative",
+                   "value":"46"
                 },
                 "width":{
                     "type":"relative",
-                    "value":"24"
+                    "value":"125"
                 },
                 "attributes":{
                     "setImage:": "NativeArticleBiu"

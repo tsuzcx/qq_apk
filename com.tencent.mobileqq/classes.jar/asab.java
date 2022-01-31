@@ -1,63 +1,35 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
-class asab
-  implements ServiceConnection
+public class asab
+  extends akuj
 {
-  asab(asaa paramasaa) {}
+  public int a;
+  public boolean a;
+  public int b;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public asab(String paramString)
   {
-    asaa.a(this.a, arzi.a(paramIBinder));
-    try
-    {
-      asaa.a(this.a).a(asaa.a(this.a));
-      if (asaa.a(this.a) != null)
-      {
-        paramComponentName = new JSONObject();
-        paramComponentName.put("code", "0");
-        asaa.a(this.a).a(paramComponentName);
-        asaa.a(this.a, null);
-      }
-      return;
-    }
-    catch (Exception paramComponentName)
-    {
-      paramComponentName.printStackTrace();
-    }
+    super(paramString);
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    try
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      if (asaa.a(this.a) != null) {
-        asaa.a(this.a).b(asaa.a(this.a));
-      }
-      if (asaa.a(this.a) != null)
-      {
-        paramComponentName = new JSONObject();
-        paramComponentName.put("code", "1");
-        asaa.a(this.a).a(paramComponentName);
-        asaa.a(this.a, null);
-      }
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Int = ((int)(paramSosoLbsInfo.a.b * 1000000.0D));
+      this.b = ((int)(paramSosoLbsInfo.a.a * 1000000.0D));
     }
-    catch (Exception paramComponentName)
-    {
-      for (;;)
-      {
-        paramComponentName.printStackTrace();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("LoginUserGuideHelper", 2, String.format("onLocationFinish [%s, %s, %s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b) }));
     }
-    asaa.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asab
  * JD-Core Version:    0.7.0.1
  */

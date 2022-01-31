@@ -1,9 +1,18 @@
-import android.view.View;
-import com.tencent.av.widget.stageview.StageEffectView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface mks
+class mks
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(StageEffectView paramStageEffectView, View paramView, mkt parammkt);
+  mks(mkr parammkr) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    mqz.e(false, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 

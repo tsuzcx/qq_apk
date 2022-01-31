@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity.history;
 
 import android.os.Handler;
 import android.os.Message;
-import atmp;
-import atmq;
+import aukn;
+import auko;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 import java.util.ArrayList;
@@ -26,8 +26,8 @@ class ChatHistoryTroopMemberFragment$45
         if (localObject3 == null) {
           break label168;
         }
-        Object localObject1 = ((atmp)localObject3).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.this$0.c }, null, null, null, null);
-        ((atmp)localObject3).a();
+        Object localObject1 = ((aukn)localObject3).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.this$0.c }, null, null, null, null);
+        ((aukn)localObject3).a();
         if (localObject1 == null) {
           break label165;
         }

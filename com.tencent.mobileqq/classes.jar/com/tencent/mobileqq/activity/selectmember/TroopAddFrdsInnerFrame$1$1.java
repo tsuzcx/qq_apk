@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import ahsp;
-import akhb;
+import aifh;
+import akvn;
 import java.util.ArrayList;
 
 public class TroopAddFrdsInnerFrame$1$1
   implements Runnable
 {
-  public TroopAddFrdsInnerFrame$1$1(ahsp paramahsp, ArrayList paramArrayList) {}
+  public TroopAddFrdsInnerFrame$1$1(aifh paramaifh, ArrayList paramArrayList) {}
   
   public void run()
   {
-    akhb.a(this.jdField_a_of_type_Ahsp.a.a.app, this.jdField_a_of_type_Ahsp.a.a, this.jdField_a_of_type_Ahsp.a.b, this.jdField_a_of_type_JavaUtilArrayList);
+    akvn.a(this.jdField_a_of_type_Aifh.a.a.app, this.jdField_a_of_type_Aifh.a.a, this.jdField_a_of_type_Aifh.a.b, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

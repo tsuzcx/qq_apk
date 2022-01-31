@@ -1,19 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class muy
-  implements DialogInterface.OnDismissListener
+public abstract interface muy
 {
-  muy(mut parammut) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.f = false;
-  }
+  public abstract void a(int paramInt, long paramLong, String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     muy
  * JD-Core Version:    0.7.0.1
  */

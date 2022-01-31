@@ -1,27 +1,23 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
 
-public final class tuv
-  extends QQUIEventReceiver<tun, ujj>
+public class tuv
+  implements View.OnKeyListener
 {
-  public tuv(@NonNull tun paramtun)
-  {
-    super(paramtun);
-  }
+  public tuv(StoryPlayerFragment paramStoryPlayerFragment) {}
   
-  public void a(@NonNull tun paramtun, @NonNull ujj paramujj)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramujj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramujj.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramtun.a != null) && (TextUtils.equals(paramujj.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramtun.a.b))) {
-      paramtun.i();
+    if (paramInt == 4)
+    {
+      if (paramKeyEvent.getAction() == 1) {
+        this.a.finish();
+      }
+      return true;
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return ujj.class;
+    return false;
   }
 }
 

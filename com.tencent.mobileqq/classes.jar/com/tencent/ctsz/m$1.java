@@ -1,15 +1,15 @@
 package com.tencent.ctsz;
 
-import xhi;
+import xqi;
 
 public class m$1
   extends Thread
 {
-  public m$1(xhi paramxhi) {}
+  public m$1(xqi paramxqi) {}
   
   public void run()
   {
-    xhi.a(this.this$0);
+    xqi.a(this.this$0);
   }
 }
 

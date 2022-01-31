@@ -3,10 +3,14 @@ package com.tencent.youtu.ytagreflectlivecheck.jni;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
+import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.EncodeReflectData;
 import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.FullPack;
 import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.Timeval;
 import com.tencent.youtu.ytcommon.tools.YTLogger;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 public class YTAGReflectLiveCheckJNIInterface
 {
@@ -21,6 +25,8 @@ public class YTAGReflectLiveCheckJNIInterface
   {
     FRNativeConstructor();
   }
+  
+  public static native String FRVersion();
   
   public static void NativeLog(int paramInt, String paramString)
   {
@@ -48,10 +54,42 @@ public class YTAGReflectLiveCheckJNIInterface
     YTLogger.e("NativeLog", "[YTAGReflectLiveCheckJNIInterface.NativeLog] " + paramString);
   }
   
+  public static void compressTest(Bitmap paramBitmap, int paramInt)
+  {
+    try
+    {
+      Object localObject = new File("/sdcard/reflect/");
+      if (!((File)localObject).exists()) {
+        ((File)localObject).mkdirs();
+      }
+      localObject = "/sdcard/reflect/" + paramInt + "/";
+      File localFile = new File((String)localObject);
+      if (!localFile.exists()) {
+        localFile.mkdirs();
+      }
+      localObject = new FileOutputStream(new File((String)localObject, "mytestInJava_" + System.currentTimeMillis() + ".jpg"));
+      paramBitmap.compress(Bitmap.CompressFormat.JPEG, paramInt, (OutputStream)localObject);
+      ((FileOutputStream)localObject).flush();
+      ((FileOutputStream)localObject).close();
+      return;
+    }
+    catch (Exception paramBitmap)
+    {
+      paramBitmap.printStackTrace();
+    }
+  }
+  
   public static byte[] encodeJpeg(Bitmap paramBitmap)
   {
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     paramBitmap.compress(Bitmap.CompressFormat.JPEG, 99, localByteArrayOutputStream);
+    return localByteArrayOutputStream.toByteArray();
+  }
+  
+  public static byte[] encodeJpeg(Bitmap paramBitmap, int paramInt)
+  {
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    paramBitmap.compress(Bitmap.CompressFormat.JPEG, paramInt, localByteArrayOutputStream);
     return localByteArrayOutputStream.toByteArray();
   }
   
@@ -70,12 +108,12 @@ public class YTAGReflectLiveCheckJNIInterface
   
   public static String modelVersion()
   {
-    return "0.0.1_20180605";
+    return "";
   }
   
   public static String sdkVersion()
   {
-    return "0.0.1_20180605";
+    return "";
   }
   
   public native int FRDoDetectionYuvs(boolean paramBoolean, int paramInt);
@@ -89,6 +127,8 @@ public class YTAGReflectLiveCheckJNIInterface
   public native int FRGetConfigBegin();
   
   public native int FRGetConfigEnd();
+  
+  public native EncodeReflectData FRGetEncodeReflectData();
   
   public native double FRGetISObackup();
   

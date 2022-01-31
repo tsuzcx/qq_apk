@@ -6,8 +6,8 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Looper;
 import android.text.TextUtils;
-import babp;
-import bace;
+import bbct;
+import bbdj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -20,8 +20,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
-import mkw;
 import mqq.app.AppRuntime;
+import mvv;
 
 public class FlatBuffersParser
 {
@@ -42,7 +42,7 @@ public class FlatBuffersParser
   public static void a()
   {
     if (!b()) {
-      mkw.a(false).b();
+      mvv.a(false).b();
     }
   }
   
@@ -188,7 +188,7 @@ public class FlatBuffersParser
     if (!bool2)
     {
       QLog.d("FlatBuffersParser", 1, "os.arch: " + System.getProperty("os.arch"));
-      QLog.d("FlatBuffersParser", 1, "DeviceInfoUtil#getCpuType: " + babp.g());
+      QLog.d("FlatBuffersParser", 1, "DeviceInfoUtil#getCpuType: " + bbct.g());
       QLog.d("FlatBuffersParser", 1, "Build.CPU_ABI: " + Build.CPU_ABI);
       QLog.d("FlatBuffersParser", 1, "Build.CPU_ABI2: " + Build.CPU_ABI2);
       QLog.d("FlatBuffersParser", 1, "isX86: " + bool2);
@@ -223,7 +223,7 @@ public class FlatBuffersParser
       QLog.i("FlatBuffersParser", 1, "FlatBuffersParser.unzip real start");
       try
       {
-        bace.a(str3, (String)localObject, false);
+        bbdj.a(str3, (String)localObject, false);
         QLog.i("FlatBuffersParser", 1, "FlatBuffersParser.unzip success");
         localObject = new File((String)localObject + "libFlatBuffersParser.so");
         if (((File)localObject).exists()) {
@@ -290,7 +290,7 @@ public class FlatBuffersParser
       }
     } while (!bool);
     QLog.i("FlatBuffersParser", 1, "loadLibrary: libFlatBuffersParser.so not exist, try to download.");
-    VasQuickUpdateManager.getFileFromLocal(localAppRuntime, 1004L, "libFlatBuffersParser", a() + "libFlatBuffersParser.zip", true, null);
+    VasQuickUpdateManager.getFileFromLocal(localAppRuntime, 1004L, VasQuickUpdateManager.SCID_FLATBUFFERS, a() + "libFlatBuffersParser.zip", true, null);
     return;
     if (Looper.myLooper() != Looper.getMainLooper())
     {

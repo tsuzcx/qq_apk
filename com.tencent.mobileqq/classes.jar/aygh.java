@@ -1,25 +1,24 @@
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.6;
+import android.net.Uri;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
-public class aygh
-  extends AnimatorListenerAdapter
+class aygh
+  extends aygk
 {
-  public aygh(TroopBarPublishActivity.6 param6) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  aygh(aygf paramaygf)
   {
-    if (this.a.a) {
-      this.a.this$0.s();
-    }
-    this.a.this$0.b.requestFocus();
+    super(paramaygf);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aygh
  * JD-Core Version:    0.7.0.1
  */

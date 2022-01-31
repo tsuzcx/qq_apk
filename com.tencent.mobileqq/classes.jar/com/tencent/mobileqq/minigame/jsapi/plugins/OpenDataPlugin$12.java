@@ -14,22 +14,30 @@ class OpenDataPlugin$12
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    GameLog.getInstance().i("OpenDataPlugin", "removeUserCloudStorage callback appid:" + GameInfoManager.g().getAppId() + ", isSuc" + paramBoolean + ", ret:" + String.valueOf(paramJSONObject));
-    paramJSONObject = new JSONObject();
-    if (paramBoolean) {}
-    try
+    GameLog localGameLog = GameLog.getInstance();
+    StringBuilder localStringBuilder = new StringBuilder().append("setUserCloudStorage callback appid:").append(GameInfoManager.g().getAppId()).append(", isSuc").append(paramBoolean).append(", ret:");
+    if (paramJSONObject != null) {}
+    for (paramJSONObject = paramJSONObject.toString();; paramJSONObject = "")
     {
-      paramJSONObject.put("state", "success");
-      this.this$0.jsPluginEngine.callbackJsEventOK(this.val$jsRuntime, "removeUserCloudStorage", paramJSONObject, this.val$callbackId);
-      return;
-    }
-    catch (Throwable paramJSONObject)
-    {
-      GameLog.getInstance().e("OpenDataPlugin", "removeUserCloudStorage error " + paramJSONObject.getMessage());
-      this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "removeUserCloudStorage", null, this.val$callbackId);
+      localGameLog.i("OpenDataPlugin", paramJSONObject);
+      paramJSONObject = new JSONObject();
+      if (!paramBoolean) {
+        break;
+      }
+      try
+      {
+        paramJSONObject.put("state", "success");
+        this.this$0.jsPluginEngine.callbackJsEventOK(this.val$jsRuntime, "setUserCloudStorage", paramJSONObject, this.val$callbackId);
+        return;
+      }
+      catch (Throwable paramJSONObject)
+      {
+        GameLog.getInstance().e("OpenDataPlugin", "setUserCloudStorage error " + paramJSONObject.getMessage());
+        this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "setUserCloudStorage", null, this.val$callbackId);
+      }
     }
     paramJSONObject.put("state", "fail");
-    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "removeUserCloudStorage", paramJSONObject, this.val$callbackId);
+    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "setUserCloudStorage", paramJSONObject, this.val$callbackId);
     return;
   }
 }

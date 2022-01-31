@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app.memory;
 
-import ajzs;
+import akoe;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Environment;
-import awrn;
+import axrl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -21,7 +21,7 @@ import java.util.Set;
 public class QLogReporter$1
   implements Runnable
 {
-  public QLogReporter$1(ajzs paramajzs, SharedPreferences paramSharedPreferences, long paramLong) {}
+  public QLogReporter$1(akoe paramakoe, SharedPreferences paramSharedPreferences, long paramLong) {}
   
   public void run()
   {
@@ -52,9 +52,9 @@ public class QLogReporter$1
         l = System.currentTimeMillis() - 86400000L;
         localObject1 = Calendar.getInstance();
         ((Calendar)localObject1).setTimeInMillis(l);
-        localObject5 = ajzs.a.format(((Calendar)localObject1).getTime());
+        localObject5 = akoe.a.format(((Calendar)localObject1).getTime());
         ((Calendar)localObject1).setTimeInMillis(l - 86400000L);
-        localObject1 = ajzs.a.format(((Calendar)localObject1).getTime());
+        localObject1 = akoe.a.format(((Calendar)localObject1).getTime());
         i = 0;
         if (i < localObject4.length)
         {
@@ -148,7 +148,7 @@ public class QLogReporter$1
           ((HashMap)localObject2).put(((Map.Entry)localObject4).getKey(), String.valueOf(l));
           QLog.i("QLogReporter", 1, (String)((Map.Entry)localObject4).getKey() + " Yesterday log size is " + l);
         }
-        awrn.a(BaseApplicationImpl.getContext()).a("", "YesterdayLogSizeCollection", true, 0L, 0L, (HashMap)localObject2, "");
+        axrl.a(BaseApplicationImpl.getContext()).a("", "YesterdayLogSizeCollection", true, 0L, 0L, (HashMap)localObject2, "");
         localObject2 = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
         ((SharedPreferences.Editor)localObject2).putLong("LastLogSizeReportTime", this.jdField_a_of_type_Long);
         ((SharedPreferences.Editor)localObject2).commit();

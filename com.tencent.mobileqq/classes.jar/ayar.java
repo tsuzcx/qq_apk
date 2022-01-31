@@ -1,22 +1,27 @@
-import android.os.Handler;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.24.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ayar
-  implements TVK_IMediaPlayer.OnErrorListener
+final class ayar
+  implements DialogInterface.OnClickListener
 {
-  public ayar(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  ayar(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "onError");
-    }
-    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.24.1(this));
-    return false;
+    ayan.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ayan.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ayan.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ayan.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, SplashActivity.class);
+    paramDialogInterface.putExtra("tab_index", MainFragment.b);
+    paramDialogInterface.setFlags(67108864);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
   }
 }
 

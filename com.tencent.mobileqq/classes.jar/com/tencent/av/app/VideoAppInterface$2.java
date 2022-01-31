@@ -1,6 +1,6 @@
 package com.tencent.av.app;
 
-import kyh;
+import lix;
 
 class VideoAppInterface$2
   implements Runnable
@@ -9,7 +9,7 @@ class VideoAppInterface$2
   
   public void run()
   {
-    kyh.a(this.this$0.f, this.this$0.g);
+    lix.a(this.this$0.f, this.this$0.g);
   }
 }
 

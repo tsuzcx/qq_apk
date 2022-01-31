@@ -1,87 +1,54 @@
-import android.view.View;
-import com.tencent.mobileqq.search.activity.ContactSearchActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
 
 public class avnx
-  implements avom
 {
-  public static final String a;
-  private int jdField_a_of_type_Int;
-  private avon jdField_a_of_type_Avon;
-  public List<avon> a;
-  private String b;
+  public float a;
+  public int a;
+  public long a;
+  public Bitmap a;
+  public boolean a;
+  public float b;
+  public int b;
+  public long b;
+  public float c;
+  public float d = 1.0F;
   
-  static
+  public avnx()
   {
-    jdField_a_of_type_JavaLangString = ajjy.a(2131639576);
+    this.jdField_a_of_type_Int = 255;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public avnx(List<avon> paramList, String paramString, int paramInt)
+  public void a(Canvas paramCanvas, Paint paramPaint, Matrix paramMatrix)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return avis.a("fts_native_contactor_maxnum", 3);
-  }
-  
-  public avon a()
-  {
-    return this.jdField_a_of_type_Avon;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<avon> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    if (SearchConfigManager.needSeparate) {}
-    for (int i = 1;; i = 0)
-    {
-      ContactSearchActivity.a(paramView.getContext(), this.b, this.jdField_a_of_type_Int, 197437, i);
-      avwf.a(this.b, 20, 0, paramView);
-      if ((paramView.getContext() instanceof UniteSearchActivity))
-      {
-        avwf.a("all_result", "more_contact", new String[] { "" + this.b });
-        if (SearchConfigManager.needSeparate) {
-          avwf.a("search", "contact", "more", 0, 0, new String[] { avwf.a(this.jdField_a_of_type_Int) });
-        }
-        avsv.a(null, 0, this.jdField_a_of_type_Int, "0X8009D39", 0, 0, null, null);
-      }
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
       return;
     }
+    int i = (int)(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.d);
+    int j = (int)(this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.d);
+    Matrix localMatrix = paramMatrix;
+    if (paramMatrix == null) {
+      localMatrix = new Matrix();
+    }
+    paramPaint.setAlpha(this.jdField_a_of_type_Int);
+    localMatrix.reset();
+    localMatrix.setScale(this.d, this.d);
+    localMatrix.postRotate(this.c, i / 2, j / 2);
+    localMatrix.postTranslate(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localMatrix, paramPaint);
   }
   
-  public void a(avon paramavon)
+  public String toString()
   {
-    this.jdField_a_of_type_Avon = paramavon;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    return " mDx = " + this.jdField_a_of_type_Float + " mDy = " + this.jdField_b_of_type_Float + " mScale = " + this.d + " mRotation = " + this.c + " mDuration = " + this.jdField_b_of_type_Long + " mAlpha = " + this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avnx
  * JD-Core Version:    0.7.0.1
  */

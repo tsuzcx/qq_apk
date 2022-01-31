@@ -1,49 +1,79 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import tencent.im.oidb.oidb_0xb60.ClientInfo;
+import tencent.im.oidb.oidb_0xb60.GetPrivilegeReq;
+import tencent.im.oidb.oidb_0xb60.ReqBody;
 
 class aacj
-  implements begw
+  extends JobSegment<asiu, asiu>
 {
-  aacj(aaci paramaaci, begr parambegr) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  protected void a(JobContext paramJobContext, asiu paramasiu)
   {
-    switch (paramInt)
+    if (paramasiu.a())
     {
-    default: 
-      this.jdField_a_of_type_Begr.dismiss();
+      notifyResult(paramasiu);
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "cache is valid");
+      }
     }
     do
     {
-      for (;;)
+      do
       {
         return;
-        awqx.b(this.jdField_a_of_type_Aaci.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Aaci.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "Manage_stranger", "Manage_str_delete", 0, 0, "", "", "", "");
-        paramView = (ajso)this.jdField_a_of_type_Aaci.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(26);
-        ArrayList localArrayList = new ArrayList();
-        try
-        {
-          localArrayList.add(Long.valueOf(Long.parseLong(this.jdField_a_of_type_Aaci.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)));
-          paramView.a(localArrayList);
-          if (this.jdField_a_of_type_Aaci.a.c == null) {
-            this.jdField_a_of_type_Aaci.a.c = new bbms(this.jdField_a_of_type_Aaci.a.jdField_a_of_type_AndroidContentContext, 0);
-          }
-          this.jdField_a_of_type_Aaci.a.c.show();
+        paramJobContext = BaseApplicationImpl.getApplication().getRuntime();
+        if (paramJobContext != null) {
+          break;
         }
-        catch (NumberFormatException paramView) {}
+        notifyError(new AppInfoError(6, "jobApiPermission app is null"));
+      } while (!QLog.isColorLevel());
+      QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "app is null");
+      return;
+      try
+      {
+        int i = Integer.parseInt(paramasiu.jdField_a_of_type_JavaLangString);
+        oidb_0xb60.ReqBody localReqBody = new oidb_0xb60.ReqBody();
+        localReqBody.get_privilege_req.setHasFlag(true);
+        localReqBody.get_privilege_req.appid.set(i);
+        localReqBody.get_privilege_req.app_type.set(paramasiu.jdField_a_of_type_Int);
+        if (paramasiu.jdField_a_of_type_Int == 1)
+        {
+          oidb_0xb60.ClientInfo localClientInfo = new oidb_0xb60.ClientInfo();
+          localClientInfo.platform.set(1);
+          if (!TextUtils.isEmpty(paramasiu.k)) {
+            localClientInfo.sdk_version.set(paramasiu.k);
+          }
+          if (!TextUtils.isEmpty(paramasiu.i)) {
+            localClientInfo.android_package_name.set(paramasiu.i);
+          }
+          if (!TextUtils.isEmpty(paramasiu.j)) {
+            localClientInfo.android_signature.set(paramasiu.j);
+          }
+          localReqBody.client_info.set(localClientInfo);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "send type=" + paramasiu.jdField_a_of_type_Int + ", appid=" + paramasiu.jdField_a_of_type_JavaLangString);
+        }
+        mxi.a(paramJobContext, new aack(this, paramasiu), localReqBody.toByteArray(), "OidbSvc.0xb60_1", 2912, 1, null, 0L);
+        return;
+      }
+      catch (NumberFormatException paramJobContext)
+      {
+        notifyError(new AppInfoError(6, "jobApiPermission parse appid error"));
       }
     } while (!QLog.isColorLevel());
-    QLog.d(this.jdField_a_of_type_Aaci.a.jdField_a_of_type_JavaLangString, 2, "delete Stranger parseLong() error", paramView);
+    QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "parse appid error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aacj
  * JD-Core Version:    0.7.0.1
  */

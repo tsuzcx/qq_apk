@@ -1,20 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAioGuideView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 
-public class qav
-  implements Animation.AnimationListener
+public final class qav
+  implements Parcelable.Creator<DislikeInfo>
 {
-  public qav(VideoFeedsAioGuideView paramVideoFeedsAioGuideView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation)
+  public DislikeInfo a(Parcel paramParcel)
   {
-    VideoFeedsAioGuideView.a(this.a).setStartOffset(360L);
+    return new DislikeInfo(paramParcel);
   }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public DislikeInfo[] a(int paramInt)
+  {
+    return new DislikeInfo[paramInt];
+  }
 }
 
 

@@ -1,40 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
 
-class qoi
-  extends qix
+public class qoi
+  extends Handler
 {
-  qoi(qoe paramqoe, BaseArticleInfo paramBaseArticleInfo) {}
+  private qoi(VideoFeedsGuideView paramVideoFeedsGuideView) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramBoolean3)
+    switch (paramMessage.what)
     {
-      if (paramBoolean4) {
-        this.jdField_a_of_type_Qoe.jdField_a_of_type_Qhp.c();
-      }
-    }
-    else
-    {
-      if (paramBoolean1) {
-        break label77;
-      }
-      this.jdField_a_of_type_Qoe.b = false;
-    }
-    for (;;)
-    {
-      if ((paramBoolean2) && (this.jdField_a_of_type_Qoe.jdField_a_of_type_Qik != null)) {
-        this.jdField_a_of_type_Qoe.jdField_a_of_type_Qik.a(2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, 0L, 0L);
-      }
+    default: 
       return;
-      this.jdField_a_of_type_Qoe.jdField_a_of_type_Qhp.b(2);
-      break;
-      label77:
-      if (this.jdField_a_of_type_Qoe.b)
-      {
-        this.jdField_a_of_type_Qoe.jdField_a_of_type_Qhp.c();
-        this.jdField_a_of_type_Qoe.b = false;
-      }
     }
+    VideoFeedsGuideView.a(this.a);
   }
 }
 

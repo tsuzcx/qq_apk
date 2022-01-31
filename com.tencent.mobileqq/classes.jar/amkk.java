@@ -1,35 +1,42 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.colornote.swipeback.SwipeBackLayout;
 
 public class amkk
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public static int a = 1;
-  public static int b = 2;
-  public int c = b;
+  public amkk(SwipeBackLayout paramSwipeBackLayout) {}
   
-  private static amkk b(String paramString)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    amkk localamkk = new amkk();
-    try
-    {
-      localamkk.c = new JSONObject(paramString).optInt("action", b);
-      return localamkk;
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
-    catch (Throwable paramString)
-    {
-      QLog.e("UinSearchConfProcessor", 1, paramString, new Object[0]);
+    float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
+    if ((!this.a.jdField_a_of_type_Boolean) || (paramFloat1 < 200.0F)) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
-    return localamkk;
-  }
-  
-  public boolean a()
-  {
-    return this.c == a;
+    if ((f1 < 0.0F) && (f2 < 0.5F))
+    {
+      if (!(this.a.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+        break label126;
+      }
+      this.a.c = true;
+      this.a.d();
+    }
+    for (;;)
+    {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      label126:
+      this.a.d();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amkk
  * JD-Core Version:    0.7.0.1
  */

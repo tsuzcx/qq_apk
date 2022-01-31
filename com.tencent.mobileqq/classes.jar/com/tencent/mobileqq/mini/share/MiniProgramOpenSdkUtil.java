@@ -9,10 +9,10 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.webkit.URLUtil;
-import aphp;
-import apmt;
-import baaw;
-import baev;
+import aqbc;
+import aqgh;
+import bbca;
+import bbga;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -131,7 +131,7 @@ public class MiniProgramOpenSdkUtil
     paramHashMap = buildShareInfoRequest((MiniArkShareModel)localObject);
     paramContext = new MiniProgramOpenSdkUtil.3(local2, local1, localTimeOutInfo, str2, str3, str4, str7, ((MiniArkShareModel)localObject).getAppidRich(), str5, str6, paramBundle, paramContext, paramIntent, str1);
     QLog.d("MiniProgramOpenSdkUtil", 1, "forwardShare");
-    apmt.a("KEY_STAGE_1_GET_SHARE_INFO");
+    aqgh.a("KEY_STAGE_1_GET_SHARE_INFO");
     MiniAppCmdUtil.getInstance().getShareInfo(paramHashMap, paramContext);
   }
   
@@ -192,33 +192,38 @@ public class MiniProgramOpenSdkUtil
     String str1 = paramJSONObject.optString("app");
     String str2 = paramJSONObject.optString("view");
     String str4 = paramJSONObject.optString("title");
-    String str3 = paramJSONObject.optJSONObject("meta").toString();
-    int i = j;
-    if (!URLUtil.isHttpUrl(paramString))
+    if (paramJSONObject.optJSONObject("meta") != null)
     {
-      i = j;
-      if (!URLUtil.isHttpsUrl(paramString)) {
-        i = 1;
+      String str3 = paramJSONObject.optJSONObject("meta").toString();
+      int i = j;
+      if (!URLUtil.isHttpUrl(paramString))
+      {
+        i = j;
+        if (!URLUtil.isHttpsUrl(paramString)) {
+          i = 1;
+        }
       }
+      paramString = buildArkConfig(paramJSONObject, str2);
+      paramIntent.putExtra("is_ark_display_share", true).putExtra("forward_ark_app_name", str1).putExtra("forward_ark_app_view", str2).putExtra("forward_ark_app_prompt", str4).putExtra("forward_ark_app_ver", "0.0.0.1").putExtra("forward_ark_app_config", paramString.toString()).putExtra("forward_type", 11).putExtra("forwardDirect", true);
+      paramString = new Bundle();
+      if ((i != 0) && (0 != 0)) {
+        paramString.putString("arkPath", null);
+      }
+      paramString.putString("KEY_MINI_PROGRAM_ARK_JSON", paramJSONObject.toString());
+      paramString.putString("forward_ark_app_name", str1);
+      paramIntent.putExtras(paramString);
+      paramIntent.putExtra("is_share_flag", true);
+      paramIntent.putExtra("req_type", 2147483646);
+      paramIntent.putExtra("forward_mini_program_ark_from_sdk", true);
+      com.tencent.mobileqq.app.PhoneContactManagerImp.f = true;
+      paramIntent.putExtra("KEY_MINI_PROGRAM_SHARE_OBJ", paramOpenSdkShareModel);
+      paramIntent.putExtra("forward_ark_app_meta", str3);
+      paramIntent.putExtras(bbga.a(str1, str2, "0.0.0.1", str3, BaseApplicationImpl.context.getResources().getDisplayMetrics().scaledDensity, null, null));
+      aqbc.a(paramContext, paramIntent);
+      finishJumpActivity(paramContext);
+      return;
     }
-    paramString = buildArkConfig(paramJSONObject, str2);
-    paramIntent.putExtra("is_ark_display_share", true).putExtra("forward_ark_app_name", str1).putExtra("forward_ark_app_view", str2).putExtra("forward_ark_app_prompt", str4).putExtra("forward_ark_app_ver", "0.0.0.1").putExtra("forward_ark_app_config", paramString.toString()).putExtra("forward_type", 11).putExtra("forwardDirect", true);
-    paramString = new Bundle();
-    if ((i != 0) && (0 != 0)) {
-      paramString.putString("arkPath", null);
-    }
-    paramString.putString("KEY_MINI_PROGRAM_ARK_JSON", paramJSONObject.toString());
-    paramString.putString("forward_ark_app_name", str1);
-    paramIntent.putExtras(paramString);
-    paramIntent.putExtra("is_share_flag", true);
-    paramIntent.putExtra("req_type", 2147483646);
-    paramIntent.putExtra("forward_mini_program_ark_from_sdk", true);
-    com.tencent.mobileqq.app.PhoneContactManagerImp.f = true;
-    paramIntent.putExtra("KEY_MINI_PROGRAM_SHARE_OBJ", paramOpenSdkShareModel);
-    paramIntent.putExtra("forward_ark_app_meta", str3);
-    paramIntent.putExtras(baev.a(str1, str2, "0.0.0.1", str3, BaseApplicationImpl.context.getResources().getDisplayMetrics().scaledDensity, null, null));
-    aphp.a(paramContext, paramIntent);
-    finishJumpActivity(paramContext);
+    QLog.e("MiniProgramOpenSdkUtil", 1, "arkJson.optJSONObject(meta) is null");
   }
   
   @NonNull
@@ -229,7 +234,7 @@ public class MiniProgramOpenSdkUtil
     }
     try
     {
-      paramString = new String(baaw.decode(paramString, 0));
+      paramString = new String(bbca.decode(paramString, 0));
       return paramString;
     }
     catch (Exception paramString) {}

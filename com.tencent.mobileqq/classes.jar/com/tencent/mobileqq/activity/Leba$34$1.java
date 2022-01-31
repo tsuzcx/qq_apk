@@ -1,17 +1,26 @@
 package com.tencent.mobileqq.activity;
 
-import abai;
-import abax;
-import aiba;
+import android.widget.TextView;
+import bfqb;
 
-public class Leba$34$1
+class Leba$34$1
   implements Runnable
 {
-  public Leba$34$1(abax paramabax) {}
+  Leba$34$1(Leba.34 param34, int paramInt) {}
   
   public void run()
   {
-    this.a.a.a.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Int > 0)
+    {
+      if (Leba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$34.this$0) != null) {
+        Leba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$34.this$0).setVisibility(0);
+      }
+      bfqb.a(Leba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$34.this$0), 9, this.jdField_a_of_type_Int, 0);
+    }
+    while (Leba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$34.this$0) == null) {
+      return;
+    }
+    Leba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$34.this$0).setVisibility(8);
   }
 }
 

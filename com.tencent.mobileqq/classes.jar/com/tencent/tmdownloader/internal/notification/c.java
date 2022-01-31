@@ -11,7 +11,7 @@ import android.view.WindowManager;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 
 public class c
 {
@@ -51,7 +51,7 @@ public class c
     }
     catch (Exception paramContext)
     {
-      ac.c("SDK_NotificationManager", "" + paramContext.getMessage(), paramContext);
+      ab.c("SDK_NotificationManager", "" + paramContext.getMessage(), paramContext);
     }
   }
   

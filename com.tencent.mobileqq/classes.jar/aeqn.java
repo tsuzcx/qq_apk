@@ -1,41 +1,21 @@
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity.11.1;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-public class aeqn
-  implements ahty
+class aeqn
+  implements xdl
 {
-  public aeqn(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  aeqn(aeqd paramaeqd) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    this.a.runOnUiThread(new BlessSelectMemberActivity.11.1(this));
-    if (BlessSelectMemberActivity.a() != null) {
-      BlessSelectMemberActivity.a().sendEmptyMessage(1);
-    }
-    synchronized (BlessSelectMemberActivity.a())
-    {
-      BlessSelectMemberActivity.a().set(true);
-      BlessSelectMemberActivity.a().notifyAll();
-      this.a.finish();
-      return;
-    }
+    this.a.a.a(false, false, 4);
   }
   
-  public void a(String arg1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  public void b()
   {
-    BlessSelectMemberActivity.a = ???;
-    synchronized (BlessSelectMemberActivity.a())
-    {
-      BlessSelectMemberActivity.a().set(true);
-      BlessSelectMemberActivity.a().notifyAll();
-      return;
-    }
+    this.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeqn
  * JD-Core Version:    0.7.0.1
  */

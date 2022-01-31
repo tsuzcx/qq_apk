@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-
-public final class akpm
-  implements Parcelable.Creator<ArCloudConfigInfo>
+public class akpm
 {
-  public ArCloudConfigInfo a(Parcel paramParcel)
-  {
-    return new ArCloudConfigInfo(paramParcel);
-  }
+  public int a;
+  public String a;
+  public int b;
   
-  public ArCloudConfigInfo[] a(int paramInt)
+  public akpm(String paramString, int paramInt1, int paramInt2)
   {
-    return new ArCloudConfigInfo[paramInt];
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akpm
  * JD-Core Version:    0.7.0.1
  */

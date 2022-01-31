@@ -1,89 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 class arbq
-  implements aqzb
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  arbq(arbp paramarbp) {}
+  arbq(arbn paramarbn) {}
   
-  public void a(aqyw paramaqyw, int paramInt)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, "[LocationShareController] onKickOff: invoked. roomKey: " + paramaqyw + " mRoomKey: " + arbp.a(this.a));
+    this.a.c = 7;
+    if (arbn.a(this.a) != null) {
+      arbn.a(this.a).a(this.a.b, paramTVK_IMediaPlayer, paramInt1, paramInt2, paramInt3, paramString, paramObject);
     }
-    bbmy.a(arbp.a(this.a), "已在其他设备进行共享", 0).a();
-    arbp.a(this.a).finish();
-  }
-  
-  public void a(aqyw paramaqyw, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, new Object[] { "onOperateRoomResponse: invoked. ", " roomKey: ", paramaqyw, " errorCode: ", Integer.valueOf(paramInt1), " operateType: ", Integer.valueOf(paramInt2) });
-    }
-    if (!paramaqyw.equals(arbp.a(this.a))) {}
-    do
-    {
-      do
-      {
-        return;
-        if (paramInt1 != 10100) {
-          break;
-        }
-        if ((paramInt2 == 2) && (arbp.a(this.a).a() == 1))
-        {
-          if (arbp.a(this.a) != null)
-          {
-            arbp.a(this.a).a.a(1, arbp.a(this.a).a(), arbp.a(this.a).a());
-            QLog.d("LocationShareController", 1, new Object[] { "onOperateRoomResponse: invoked. 兜底处理房间关闭状态，在进房失败后创建房间。 ", " errorCode: ", Integer.valueOf(paramInt1) });
-            return;
-          }
-          QLog.e("LocationShareController", 1, "onOperateRoomResponse: failed. not valid room key. ", new RuntimeException());
-          return;
-        }
-      } while ((arbp.a(this.a) == null) || (arbp.a(this.a).isFinishing()));
-      aqzw.a(arbp.a(this.a));
-      return;
-    } while ((paramInt1 != 10101) || (arbp.a(this.a) == null) || (arbp.a(this.a).isFinishing()));
-    aqzw.b(arbp.a(this.a));
-  }
-  
-  public void a(aqyw paramaqyw, LocationRoom.Venue paramVenue, List<aqyu> paramList)
-  {
-    if ((!paramaqyw.equals(arbp.a(this.a))) || (arbp.a(this.a).isFinishing())) {
-      return;
-    }
-    paramVenue = paramList.iterator();
-    while (paramVenue.hasNext())
-    {
-      aqyu localaqyu = (aqyu)paramVenue.next();
-      Bitmap localBitmap = this.a.a(localaqyu.a());
-      if (localBitmap != null)
-      {
-        localBitmap = bacm.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
-        arbp.a(this.a).a(localaqyu.a(), localBitmap);
-      }
-    }
-    arbp.a(this.a).a(paramList);
-    arbp.a(this.a).a(paramaqyw);
-  }
-  
-  public void b(aqyw paramaqyw, int paramInt)
-  {
-    if (!paramaqyw.equals(arbp.a(this.a))) {}
-    while ((paramInt == 2) || (paramInt == 1)) {
-      return;
-    }
-    aqzw.a(arbp.a(this.a));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     arbq
  * JD-Core Version:    0.7.0.1
  */

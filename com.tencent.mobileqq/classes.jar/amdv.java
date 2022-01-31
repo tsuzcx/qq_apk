@@ -1,75 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
 public class amdv
-  extends alzl<amdw>
+  implements View.OnClickListener
 {
-  public int a()
-  {
-    return 530;
-  }
+  public amdv(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  @NonNull
-  public amdw a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new amdw();
-  }
-  
-  @Nullable
-  public amdw a(alzs[] paramArrayOfalzs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicShareToWXConfigProcessor", 2, "onParsed");
-    }
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
+    paramView = (ameb)paramView.getTag();
+    if (!((ajxn)this.a.app.getManager(51)).b(paramView.a)) {}
+    for (int i = 35;; i = 1)
     {
-      paramArrayOfalzs = paramArrayOfalzs[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.d("PicShareToWXConfigProcessor", 2, "onParsed, content:" + paramArrayOfalzs);
-      }
-      return amdw.a(paramArrayOfalzs);
+      paramView = new ProfileActivity.AllInOne(paramView.a, i);
+      ProfileActivity.a(this.a, paramView, 1016);
+      return;
     }
-    return new amdw();
-  }
-  
-  public Class a()
-  {
-    return amdw.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicShareToWXConfigProcessor", 2, "onReqFailed");
-    }
-  }
-  
-  public void a(amdw paramamdw)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicShareToWXConfigProcessor", 2, "onUpdate");
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amdv
  * JD-Core Version:    0.7.0.1
  */

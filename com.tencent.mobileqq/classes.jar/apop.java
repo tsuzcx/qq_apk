@@ -1,21 +1,18 @@
-import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
 
-public class apop
-  implements atcf
+class apop
+  implements aput
 {
-  public apop(NearbyHybridFragment paramNearbyHybridFragment) {}
+  apop(apoo paramapoo) {}
   
-  public void a(Dialog paramDialog, View paramView, atce paramatce)
+  public void onClick(View paramView)
   {
-    atcg.a(this.a.a, paramatce, "home");
-    paramDialog.dismiss();
+    apue.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Apmx.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apop
  * JD-Core Version:    0.7.0.1
  */

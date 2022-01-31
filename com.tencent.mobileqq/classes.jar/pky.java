@@ -1,44 +1,135 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGifView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.qphone.base.util.QLog;
 
 public class pky
-  implements View.OnClickListener
+  extends ViewBase
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RecommendFollowInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
+  private NativeGifView a;
   
-  private pky(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
-  
-  public void onClick(View paramView)
+  public pky(VafContext paramVafContext)
   {
-    switch (paramView.getId())
+    super(paramVafContext);
+    this.a = new NativeGifView(paramVafContext.getContext());
+  }
+  
+  private boolean a()
+  {
+    return this.mParams.mLayoutHeight * this.mParams.mLayoutWidth > 2000000;
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.a.setGifHeight(this.mParams.mLayoutHeight);
+    this.a.setGifWidth(this.mParams.mLayoutWidth);
+    this.a.setIsBigImg(a());
+    this.a.setBackgroundColor(this.mBackground);
+    this.a.a(this.mParams.mLayoutWidth, this.mParams.mLayoutHeight);
+    this.a.invalidate();
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
     {
     default: 
-      return;
-    case 2131300919: 
-      paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList;
-      RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
-      for (boolean bool = true;; bool = false)
+      return super.setAttribute(paramInt, paramObject);
+    case 59: 
+      try
       {
-        paramView.a(localRecommendFollowInfo, bool);
-        return;
+        this.mParams.mLayoutWidth = ((Integer)paramObject).intValue();
+        this.a.requestLayout();
+        return true;
+      }
+      catch (Exception paramObject)
+      {
+        for (;;)
+        {
+          QLog.d("ReadInJoyGifView", 2, paramObject.getMessage());
+        }
       }
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+    try
+    {
+      this.mParams.mLayoutHeight = ((Integer)paramObject).intValue();
+      this.a.requestLayout();
+      return true;
+    }
+    catch (Exception paramObject)
+    {
+      for (;;)
+      {
+        QLog.d("ReadInJoyGifView", 2, paramObject.getMessage());
+      }
+    }
+  }
+  
+  public boolean setAttribute(int paramInt, String paramString)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    switch (paramInt)
+    {
+    default: 
+      bool1 = super.setAttribute(paramInt, paramString);
+    }
+    for (;;)
+    {
+      return bool1;
+      this.a.setGifUrl(paramString);
+      return true;
+      this.a.setCoverUrl(paramString);
+      return true;
+      try
+      {
+        paramString = Utils.toInteger(paramString);
+        bool1 = bool2;
+        if (this.a != null)
+        {
+          bool1 = bool2;
+          if (paramString != null)
+          {
+            this.a.setScaleType(paramString.intValue());
+            return true;
+          }
+        }
+      }
+      catch (Exception paramString)
+      {
+        QLog.d("ReadInJoyGifView", 2, paramString.getMessage());
+      }
+    }
+    return true;
   }
 }
 

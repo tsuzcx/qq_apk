@@ -1,29 +1,48 @@
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.SpecialCareInfo;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONArray;
 
 class ajjl
-  implements Comparator<SpecialCareInfo>
+  implements aiuf
 {
-  ajjl(ajjj paramajjj) {}
+  ajjl(ajjk paramajjk) {}
   
-  private String a(SpecialCareInfo paramSpecialCareInfo)
+  public void a(boolean paramBoolean, String paramString1, List<aiuc> paramList, String paramString2)
   {
-    Friends localFriends = this.a.b(paramSpecialCareInfo.uin);
-    if (localFriends == null) {
-      return paramSpecialCareInfo.uin;
+    QLog.i("ApolloPluginRscLoader", 1, "checkRoomRsc downloadApolloRes onDownLoadFinish success:" + paramBoolean);
+    int i = 0;
+    if (i < this.a.jdField_a_of_type_ArrayOfInt.length)
+    {
+      paramString1 = aiub.a().a(8, this.a.jdField_a_of_type_ArrayOfInt[i]);
+      int j;
+      if (paramString1 != null)
+      {
+        paramList = this.a.jdField_a_of_type_Ajjf;
+        int k = paramString1.b;
+        if (paramString1.a())
+        {
+          j = 0;
+          label88:
+          paramString1 = ajjf.a(paramList, 8, String.valueOf(k), j);
+          this.a.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        j = 2;
+        break label88;
+        paramString1 = ajjf.a(this.a.jdField_a_of_type_Ajjf, 8, String.valueOf(this.a.jdField_a_of_type_ArrayOfInt[i]), 2);
+        this.a.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
+      }
     }
-    return babh.a(localFriends) + localFriends.uin;
-  }
-  
-  public int a(SpecialCareInfo paramSpecialCareInfo1, SpecialCareInfo paramSpecialCareInfo2)
-  {
-    return ajgh.a(a(paramSpecialCareInfo1), a(paramSpecialCareInfo2));
+    this.a.jdField_a_of_type_Ajjf.a(this.a.jdField_a_of_type_JavaLangString, ajyc.a(2131700491), this.a.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajjl
  * JD-Core Version:    0.7.0.1
  */

@@ -6,11 +6,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import bdcz;
-import bdfz;
-import bdnw;
+import begz;
+import beka;
+import besl;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.model.AppMode;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,20 +21,20 @@ public class MiscJsPlugin
 {
   private static final String TAG = "MiscJsPlugin";
   
-  public static void openUrl(JSONObject paramJSONObject, bdcz parambdcz, MiscJsPlugin.OpenUrlCallback paramOpenUrlCallback)
+  public static void openUrl(JSONObject paramJSONObject, begz parambegz, MiscJsPlugin.OpenUrlCallback paramOpenUrlCallback)
   {
-    if (parambdcz != null) {}
+    if (parambegz != null) {}
     for (;;)
     {
       Object localObject;
       try
       {
-        if ((parambdcz.a() == null) || (parambdcz.a().isFinishing()) || (paramJSONObject == null))
+        if ((parambegz.a() == null) || (parambegz.a().isFinishing()) || (paramJSONObject == null))
         {
           if (paramOpenUrlCallback != null) {
             paramOpenUrlCallback.openResult(false, "activity or json error.");
           }
-          bdnw.d("MiscJsPlugin", "openurl error, return.");
+          besl.d("MiscJsPlugin", "openurl error, return.");
           return;
         }
         try
@@ -49,7 +50,7 @@ public class MiscJsPlugin
         }
         catch (Exception paramJSONObject)
         {
-          bdnw.d("MiscJsPlugin", "openUrl error; " + Log.getStackTraceString(paramJSONObject));
+          besl.d("MiscJsPlugin", "openUrl error; " + Log.getStackTraceString(paramJSONObject));
         }
         if (paramOpenUrlCallback == null) {
           continue;
@@ -75,10 +76,10 @@ public class MiscJsPlugin
         {
           localObject = new Intent("android.intent.action.VIEW", Uri.parse((String)localObject));
           ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_miniapp");
-          if (((Intent)localObject).resolveActivity(parambdcz.a().getPackageManager()) != null)
+          if (((Intent)localObject).resolveActivity(parambegz.a().getPackageManager()) != null)
           {
-            bdnw.a("MiscJsPlugin", "openUrl by system webview.");
-            parambdcz.a().startActivity((Intent)localObject);
+            besl.a("MiscJsPlugin", "openUrl by system webview.");
+            parambegz.a().startActivity((Intent)localObject);
           }
         }
         label255:
@@ -95,11 +96,11 @@ public class MiscJsPlugin
             }
             paramOpenUrlCallback.openResult(true, null);
             break;
-            bdnw.a("MiscJsPlugin", "openUrl by system webview error.");
+            besl.a("MiscJsPlugin", "openUrl by system webview error.");
             break label255;
-            parambdcz.a().overridePendingTransition(0, 0);
+            parambegz.a().overridePendingTransition(0, 0);
             continue;
-            parambdcz.a().overridePendingTransition(2130772087, 0);
+            parambegz.a().overridePendingTransition(2130772087, 0);
           }
           continue;
           localBundle = new Bundle();
@@ -107,9 +108,9 @@ public class MiscJsPlugin
           {
             i = paramJSONObject.optInt("style");
             if ((i >= 0) && (i <= 2)) {
-              break label753;
+              break label739;
             }
-            bdnw.d("MiscJsPlugin", "style error, return.");
+            besl.d("MiscJsPlugin", "style error, return.");
             if (paramOpenUrlCallback == null) {
               continue;
             }
@@ -129,8 +130,7 @@ public class MiscJsPlugin
             label399:
             MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
             Intent localIntent = new Intent();
-            localIntent.setClass(parambdcz.a(), localMiniAppProxy.getBrowserClass());
-            if ((parambdcz.a() != null) && (parambdcz.a().isInternalApp())) {
+            if ((parambegz.a() != null) && (parambegz.a().isInternalApp())) {
               localIntent.setFlags(402653184);
             }
             localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
@@ -139,7 +139,7 @@ public class MiscJsPlugin
             i = paramJSONObject.optInt("animation");
             if ((i < 0) || (i > 2))
             {
-              bdnw.d("MiscJsPlugin", "animation error, return.");
+              besl.d("MiscJsPlugin", "animation error, return.");
               if (paramOpenUrlCallback == null) {
                 break;
               }
@@ -165,24 +165,24 @@ public class MiscJsPlugin
               localBundle.putBoolean("isTransparentTitleAndClickable", true);
               continue;
             }
-            parambdcz.a().startActivity(localIntent);
+            localMiniAppProxy.startBrowserActivity(parambegz.a(), localIntent);
             if (paramOpenUrlCallback == null) {
-              break label794;
+              break label782;
             }
             paramOpenUrlCallback.openResult(true, null);
-            break label794;
-            parambdcz.a().overridePendingTransition(0, 0);
+            break label782;
+            parambegz.a().overridePendingTransition(0, 0);
             break;
-            parambdcz.a().overridePendingTransition(2130772087, 0);
+            parambegz.a().overridePendingTransition(2130772087, 0);
             break;
             break label288;
-            label753:
+            label739:
             switch (i)
             {
             }
             break label399;
           }
-          label794:
+          label782:
           switch (i)
           {
           }
@@ -192,26 +192,44 @@ public class MiscJsPlugin
     }
   }
   
-  public void openUrl(bdfz parambdfz)
+  public void openUrl(beka parambeka)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambdfz.b);
+      JSONObject localJSONObject = new JSONObject(parambeka.b);
       String str = localJSONObject.optString("url");
       if ((TextUtils.isEmpty(str)) || ("null".equals(str))) {
-        parambdfz.a("url error");
+        parambeka.a("url error");
       }
-      openUrl(localJSONObject, this.mMiniAppContext, new MiscJsPlugin.1(this, parambdfz));
+      openUrl(localJSONObject, this.mMiniAppContext, new MiscJsPlugin.2(this, parambeka));
       return;
     }
     catch (JSONException localJSONException)
     {
-      bdnw.d("MiscJsPlugin", parambdfz.a + " error,", localJSONException);
-      parambdfz.b();
+      besl.d("MiscJsPlugin", parambeka.a + " error,", localJSONException);
+      parambeka.b();
     }
   }
   
-  public void saveAppToDesktop(bdfz parambdfz) {}
+  public void saveAppToDesktop(beka parambeka)
+  {
+    try
+    {
+      if (this.mMiniAppInfo.appMode.j)
+      {
+        besl.d("MiscJsPlugin", "app is limited access");
+        parambeka.b();
+        return;
+      }
+      ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).addShortcut(this.mMiniAppContext.a(), this.mMiniAppInfo, new MiscJsPlugin.1(this, parambeka));
+      return;
+    }
+    catch (Exception localException)
+    {
+      besl.d("MiscJsPlugin", localException.getMessage(), localException);
+      parambeka.b();
+    }
+  }
 }
 
 

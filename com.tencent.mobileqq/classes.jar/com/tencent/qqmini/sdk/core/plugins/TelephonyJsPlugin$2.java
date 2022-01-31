@@ -1,21 +1,21 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdcz;
-import bdfz;
-import bdje;
+import begz;
+import beka;
+import benh;
 
 class TelephonyJsPlugin$2
   implements Runnable
 {
-  TelephonyJsPlugin$2(TelephonyJsPlugin paramTelephonyJsPlugin, bdfz parambdfz) {}
+  TelephonyJsPlugin$2(TelephonyJsPlugin paramTelephonyJsPlugin, beka parambeka) {}
   
   public void run()
   {
-    bdje localbdje = bdje.a(this.this$0.mMiniAppContext.a());
-    localbdje.a("创建新联系人", 7);
-    localbdje.a("添加到现有联系人", 7);
-    localbdje.a(new TelephonyJsPlugin.2.1(this, localbdje));
-    localbdje.show();
+    benh localbenh = benh.a(this.this$0.mMiniAppContext.a());
+    localbenh.a("创建新联系人", 7);
+    localbenh.a("添加到现有联系人", 7);
+    localbenh.a(new TelephonyJsPlugin.2.1(this, localbenh));
+    localbenh.show();
   }
 }
 

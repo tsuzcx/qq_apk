@@ -14,8 +14,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView.ScaleType;
-import azvv;
-import azyk;
+import bawz;
+import bazo;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -87,7 +87,7 @@ public class RandomCoverView
       super.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
       this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
       return;
-      i = getResources().getColor(2131099860);
+      i = getResources().getColor(2131165419);
     }
   }
   
@@ -117,14 +117,14 @@ public class RandomCoverView
       localLayoutParams = getLayoutParams();
       if (localLayoutParams != null)
       {
-        paramInt = getResources().getDimensionPixelSize(2131167766);
+        paramInt = getResources().getDimensionPixelSize(2131298865);
         int i = ImmersiveUtils.getStatusBarHeight(getContext());
-        int j = getResources().getDimensionPixelSize(2131166299);
+        int j = getResources().getDimensionPixelSize(2131297380);
         localLayoutParams.width = -1;
         localLayoutParams.height = (paramInt + j + i);
         setLayoutParams(localLayoutParams);
       }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131101494));
+      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131167091));
       this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
       return;
     }
@@ -132,10 +132,10 @@ public class RandomCoverView
     if (localLayoutParams != null)
     {
       localLayoutParams.width = -1;
-      localLayoutParams.height = getResources().getDimensionPixelSize(2131166308);
+      localLayoutParams.height = getResources().getDimensionPixelSize(2131297389);
       setLayoutParams(localLayoutParams);
     }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131099860));
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131165419));
     this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
   }
   
@@ -152,13 +152,13 @@ public class RandomCoverView
       }
       if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
       {
-        float f = azvv.a(getContext(), 14.0F);
+        float f = bawz.a(getContext(), 14.0F);
         this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
         this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#4CFFFFFF"));
         this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(f);
       }
-      this.jdField_b_of_type_JavaLangString = getResources().getString(2131629688);
+      this.jdField_b_of_type_JavaLangString = getResources().getString(2131695369);
     }
     label149:
     for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
@@ -189,13 +189,13 @@ public class RandomCoverView
           this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
           this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
           this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-          this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131099864));
+          this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131165423));
           if (!QLog.isColorLevel()) {
             break;
           }
           QLog.i("Q.profilecard.", 2, "updateCover " + paramString);
           return;
-          localDrawable = getResources().getDrawable(2130844815);
+          localDrawable = getResources().getDrawable(2130844896);
           ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
         }
         return;
@@ -230,8 +230,8 @@ public class RandomCoverView
         for (((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();; ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2))
         {
           localObject2 = (Activity)getContext();
-          ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = azyk.d((Activity)localObject2);
-          ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = azyk.c((Activity)localObject2);
+          ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = bazo.d((Activity)localObject2);
+          ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = bazo.c((Activity)localObject2);
           localObject1 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
           this.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject1);
           this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -242,7 +242,7 @@ public class RandomCoverView
           }
           QLog.i("Q.profilecard.", 2, "updateCover " + paramString + " isDef:" + paramBoolean);
           return;
-          localObject2 = getResources().getDrawable(2130844815);
+          localObject2 = getResources().getDrawable(2130844896);
           ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
         }
         return;

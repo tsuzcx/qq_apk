@@ -1,28 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
-import com.tencent.widget.AbsListView;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.17.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class nwi
-  implements begh
+  extends osp
 {
-  public nwi(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
+  public nwi(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-  }
+  public void a(int paramInt1, int paramInt2) {}
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(View paramView)
   {
-    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt);
-    if ((ReadInJoySecondCommentListFragment.a(this.a) != null) && (ReadInJoySecondCommentListFragment.a(this.a).a() != null)) {
-      ReadInJoySecondCommentListFragment.a(this.a).a().a(ReadInJoySecondCommentListFragment.a(this.a).getFirstVisiblePosition(), ReadInJoySecondCommentListFragment.a(this.a).getLastVisiblePosition());
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "onComponentLastReadShow");
     }
+    this.a.runOnUiThread(new ReadInJoyNewFeedsActivity.17.1(this));
   }
+  
+  public void b(int paramInt)
+  {
+    this.a.f(paramInt);
+  }
+  
+  public void c(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nwi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import android.content.res.Resources;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.app.BaseActivity;
+import bbrt;
 import com.tencent.qphone.base.util.QLog;
 
 class QQSettingMe$8
@@ -15,29 +10,10 @@ class QQSettingMe$8
   
   public void run()
   {
-    int i = (int)this.this$0.a.getResources().getDimension(2131165716);
-    Object localObject = new int[2];
-    this.this$0.d.getLocationOnScreen((int[])localObject);
-    int j = this.this$0.g.getWidth();
-    int k = this.this$0.d.getWidth();
-    if ((j != 0) && (k != 0)) {
-      i -= (j - k) / 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "init parse config json");
     }
-    for (;;)
-    {
-      localObject = this.this$0.h.getLayoutParams();
-      if ((i > 0) && ((localObject instanceof RelativeLayout.LayoutParams)))
-      {
-        ((RelativeLayout.LayoutParams)localObject).leftMargin = i;
-        this.this$0.h.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "setBottomBtnMarginLeft, diffMargin = " + i);
-      }
-      return;
-      i = (int)this.this$0.a.getResources().getDimension(2131165720);
-      QLog.e("QQSettingRedesign", 1, "setBottomBtnMarginLeft, but getWidth return 0");
-    }
+    bbrt.a().a(this.this$0.a);
   }
 }
 

@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.ptv.LWMotionEvent;
-
-public final class bhxb
-  implements Parcelable.Creator<LWMotionEvent>
+public class bhxb
 {
-  public LWMotionEvent a(Parcel paramParcel)
-  {
-    return new LWMotionEvent(paramParcel, null);
-  }
+  public String a;
+  public String b;
+  public String c;
   
-  public LWMotionEvent[] a(int paramInt)
+  public bhxb(String paramString1, String paramString2, String paramString3)
   {
-    return new LWMotionEvent[paramInt];
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhxb
  * JD-Core Version:    0.7.0.1
  */

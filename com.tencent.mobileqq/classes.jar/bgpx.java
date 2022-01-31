@@ -1,23 +1,20 @@
-import android.graphics.Color;
-import android.view.View;
-import android.widget.ImageView;
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.net.Uri;
 
-public class bgpx
-  extends bgpv
+public abstract interface bgpx
 {
-  public bgpx(String paramString, View paramView)
-  {
-    super(paramString, paramView);
-  }
+  public abstract int delete(Uri paramUri, String paramString, String[] paramArrayOfString);
   
-  protected void a(String paramString)
-  {
-    ((ImageView)this.a).setBackgroundColor(Color.parseColor(paramString));
-  }
+  public abstract Uri insert(Uri paramUri, ContentValues paramContentValues);
+  
+  public abstract Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2);
+  
+  public abstract int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgpx
  * JD-Core Version:    0.7.0.1
  */

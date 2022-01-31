@@ -1,44 +1,72 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.support.v4.view.accessibility.AccessibilityRecordCompat;
+import android.view.View;
+import android.view.accessibility.AccessibilityEvent;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
-class ucq
-  implements slx<szp, tbm>
+public class ucq
+  extends AccessibilityDelegateCompat
 {
-  ucq(ucp paramucp, JobContext paramJobContext, String paramString) {}
+  public ucq(XViewPager paramXViewPager) {}
   
-  public void a(@NonNull szp paramszp, @Nullable tbm paramtbm, @NonNull ErrorMessage paramErrorMessage)
+  private boolean a()
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    return (XViewPager.a(this.a) != null) && (XViewPager.a(this.a).getCount() > 1);
+  }
+  
+  public void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
+  {
+    super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
+    paramAccessibilityEvent.setClassName(XViewPager.class.getName());
+    paramView = AccessibilityRecordCompat.obtain();
+    paramView.setScrollable(a());
+    if ((paramAccessibilityEvent.getEventType() == 4096) && (XViewPager.a(this.a) != null))
     {
-      urk.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "segment cancel on net respond");
-      return;
+      paramView.setItemCount(XViewPager.a(this.a).getCount());
+      paramView.setFromIndex(XViewPager.a(this.a));
+      paramView.setToIndex(XViewPager.a(this.a));
     }
-    if ((paramtbm == null) || (paramErrorMessage.isFail()))
-    {
-      urk.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for feature request");
-      ucp.a(this.jdField_a_of_type_Ucp, paramErrorMessage);
-      return;
+  }
+  
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  {
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramAccessibilityNodeInfoCompat.setClassName(XViewPager.class.getName());
+    paramAccessibilityNodeInfoCompat.setScrollable(a());
+    if (this.a.canScrollHorizontally(1)) {
+      paramAccessibilityNodeInfoCompat.addAction(4096);
     }
-    if (paramtbm.a != null)
+    if (this.a.canScrollHorizontally(-1)) {
+      paramAccessibilityNodeInfoCompat.addAction(8192);
+    }
+  }
+  
+  public boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
+  {
+    if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
+      return true;
+    }
+    switch (paramInt)
     {
-      paramszp = paramtbm.a.iterator();
-      do
+    default: 
+      return false;
+    case 4096: 
+      if (this.a.canScrollHorizontally(1))
       {
-        if (!paramszp.hasNext()) {
-          break;
-        }
-        paramtbm = (srj)paramszp.next();
-      } while (!paramtbm.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString));
+        this.a.setCurrentItem(XViewPager.a(this.a) + 1);
+        return true;
+      }
+      return false;
     }
-    for (int i = paramtbm.c;; i = 0)
+    if (this.a.canScrollHorizontally(-1))
     {
-      ucp.a(this.jdField_a_of_type_Ucp, Integer.valueOf(i));
-      return;
+      this.a.setCurrentItem(XViewPager.a(this.a) - 1);
+      return true;
     }
+    return false;
   }
 }
 

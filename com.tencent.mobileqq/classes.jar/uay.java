@@ -1,30 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.dispatch.Subscriber;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 import java.util.List;
 
-public class uay
-  implements Subscriber
+class uay
+  implements tvt
 {
-  private WeakReference<QQStoryBaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  uay(uax paramuax) {}
   
-  public uay(QQStoryBaseActivity paramQQStoryBaseActivity1, QQStoryBaseActivity paramQQStoryBaseActivity2)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQStoryBaseActivity2);
-  }
-  
-  public void accept(@NonNull List<Class<? extends Dispatcher.Dispatchable>> paramList)
-  {
-    paramList.add(vle.class);
-  }
-  
-  public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
-  {
-    paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramDispatchable != null) {
-      paramDispatchable.c();
+    int i = 0;
+    while (i < this.a.a.size())
+    {
+      if (TextUtils.equals(paramString, ((uav)this.a.a.get(i)).a)) {
+        ((StoryPlayerGroupHolder)this.a.a()).a.setCurrentItem(i);
+      }
+      i += 1;
     }
   }
 }

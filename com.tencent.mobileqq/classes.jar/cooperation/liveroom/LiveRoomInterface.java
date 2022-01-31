@@ -1,7 +1,7 @@
 package cooperation.liveroom;
 
 import android.os.Bundle;
-import atmq;
+import auko;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.pluginsdk.PluginRuntime;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pluginsdk.PluginRuntime;
 public class LiveRoomInterface
   extends PluginRuntime
 {
-  private atmq emFactoryQQ;
+  private auko emFactoryQQ;
   public AppInterface mAppInterface;
   
   public String getModuleId()
@@ -17,7 +17,7 @@ public class LiveRoomInterface
     return "LiveRoomPlugin.apk";
   }
   
-  public atmq getQQEntityManagerFactory()
+  public auko getQQEntityManagerFactory()
   {
     Object localObject1 = getAccount();
     if (localObject1 == null) {
@@ -29,7 +29,7 @@ public class LiveRoomInterface
       {
         localObject1 = new QQEntityManagerFactory((String)localObject1);
         ((QQEntityManagerFactory)localObject1).verifyAuthentication();
-        this.emFactoryQQ = ((atmq)localObject1);
+        this.emFactoryQQ = ((auko)localObject1);
       }
       return this.emFactoryQQ;
     }

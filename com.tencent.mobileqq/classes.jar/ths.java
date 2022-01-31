@@ -1,15 +1,22 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class ths
-  extends AnimatorListenerAdapter
+public final class ths
+  extends QQUIEventReceiver<thk, tfh>
 {
-  ths(thr paramthr) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public ths(@NonNull thk paramthk)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.a.a.a = false;
+    super(paramthk);
+  }
+  
+  public void a(@NonNull thk paramthk, @NonNull tfh paramtfh)
+  {
+    paramthk.a.a(paramtfh.a);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tfh.class;
   }
 }
 

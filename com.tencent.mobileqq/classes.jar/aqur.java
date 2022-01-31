@@ -1,62 +1,77 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader;
-import mqq.os.MqqHandler;
-
-class aqur
-  implements Handler.Callback
+public class aqur
 {
-  aqur(aquq paramaquq) {}
+  aqus a;
   
-  private void a()
+  public aqur(int paramInt)
   {
-    if (aquq.a(this.a) != null) {
-      aquq.a(this.a).setRefreshing(false);
-    }
-    if (aquq.a(this.a) != null) {
-      aquq.a(this.a).setRefresh(false);
-    }
+    this.a = new aqus(paramInt);
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public static String a(int paramInt)
   {
-    switch (paramMessage.what)
+    switch (paramInt)
     {
     default: 
-      return false;
+      return "";
+    case 1: 
+      return "graytip";
+    case 2: 
+      return "nor_text";
     case 3: 
-      bbmy.a(this.a.a(), 1, 2131653904, 0).b(aquq.a(this.a));
-      a();
-      return false;
+      return "url";
     case 4: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label134;
-        }
-        aquq.a(this.a);
-        if (aquq.a(this.a) == null) {
-          break;
-        }
-        aquq.a(this.a).a(0);
-        this.a.a.sendEmptyMessageDelayed(5, 800L);
-        return false;
-      }
-      label134:
-      a();
-      bbmy.a(this.a.a(), 1, 2131653904, 0).b(aquq.a(this.a));
-      return false;
+      return "qq";
+    case 5: 
+      return "img";
+    case 6: 
+      return "dialog";
+    case 7: 
+      return "title";
+    case 8: 
+      return "alter";
+    case 9: 
+      return "btn";
     }
-    a();
-    return false;
+    return "item";
+  }
+  
+  public static String b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 1: 
+      return "align";
+    case 2: 
+      return "text";
+    case 3: 
+      return "size";
+    case 4: 
+      return "jump";
+    case 5: 
+      return "color";
+    case 6: 
+      return "uin";
+    case 7: 
+      return "name";
+    }
+    return "src";
+  }
+  
+  public aqus a()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    return aqus.a(this.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqur
  * JD-Core Version:    0.7.0.1
  */

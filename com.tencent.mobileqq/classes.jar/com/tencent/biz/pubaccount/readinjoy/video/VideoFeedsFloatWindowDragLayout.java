@@ -9,10 +9,10 @@ import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
-import pyc;
-import qbm;
-import qbn;
-import qcn;
+import qkb;
+import qnk;
+import qnl;
+import qol;
 
 public class VideoFeedsFloatWindowDragLayout
   extends FrameLayout
@@ -21,8 +21,8 @@ public class VideoFeedsFloatWindowDragLayout
   private long jdField_a_of_type_Long;
   private Point jdField_a_of_type_AndroidGraphicsPoint;
   private PointF jdField_a_of_type_AndroidGraphicsPointF;
-  private pyc jdField_a_of_type_Pyc;
-  private qbn jdField_a_of_type_Qbn;
+  private qkb jdField_a_of_type_Qkb;
+  private qnl jdField_a_of_type_Qnl;
   public boolean a;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
@@ -55,17 +55,17 @@ public class VideoFeedsFloatWindowDragLayout
   
   private void a(int paramInt1, int paramInt2)
   {
-    ValueAnimator localValueAnimator = ValueAnimator.ofObject(this.jdField_a_of_type_Pyc, new Object[] { this.jdField_a_of_type_AndroidGraphicsPoint, this.jdField_b_of_type_AndroidGraphicsPoint });
-    localValueAnimator.addUpdateListener(new qbm(this, paramInt1, paramInt2));
+    ValueAnimator localValueAnimator = ValueAnimator.ofObject(this.jdField_a_of_type_Qkb, new Object[] { this.jdField_a_of_type_AndroidGraphicsPoint, this.jdField_b_of_type_AndroidGraphicsPoint });
+    localValueAnimator.addUpdateListener(new qnk(this, paramInt1, paramInt2));
     localValueAnimator.start();
   }
   
   private void a(Context paramContext)
   {
-    int[] arrayOfInt = qcn.a(paramContext);
+    int[] arrayOfInt = qol.a(paramContext);
     this.jdField_a_of_type_Long = arrayOfInt[0];
     this.jdField_b_of_type_Long = arrayOfInt[1];
-    this.jdField_a_of_type_Pyc = new pyc();
+    this.jdField_a_of_type_Qkb = new qkb();
     this.jdField_a_of_type_AndroidGraphicsPoint = new Point();
     this.jdField_b_of_type_AndroidGraphicsPoint = new Point();
     int i = ViewConfiguration.get(paramContext).getScaledTouchSlop();
@@ -101,10 +101,10 @@ public class VideoFeedsFloatWindowDragLayout
     paramMotionEvent = (WindowManager.LayoutParams)getLayoutParams();
     paramMotionEvent.x -= i;
     paramMotionEvent.y -= j;
-    if (this.jdField_a_of_type_Qbn != null)
+    if (this.jdField_a_of_type_Qnl != null)
     {
-      this.jdField_a_of_type_Qbn.b();
-      this.jdField_a_of_type_Qbn.a();
+      this.jdField_a_of_type_Qnl.b();
+      this.jdField_a_of_type_Qnl.a();
     }
     this.jdField_c_of_type_Boolean = true;
     return true;
@@ -114,8 +114,8 @@ public class VideoFeedsFloatWindowDragLayout
   {
     if (this.jdField_c_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_Qbn != null) {
-        this.jdField_a_of_type_Qbn.c();
+      if (this.jdField_a_of_type_Qnl != null) {
+        this.jdField_a_of_type_Qnl.c();
       }
       a();
       return true;
@@ -201,9 +201,9 @@ public class VideoFeedsFloatWindowDragLayout
     }
   }
   
-  public void setDragListener(qbn paramqbn)
+  public void setDragListener(qnl paramqnl)
   {
-    this.jdField_a_of_type_Qbn = paramqbn;
+    this.jdField_a_of_type_Qnl = paramqnl;
   }
   
   public void setEdge(int paramInt)

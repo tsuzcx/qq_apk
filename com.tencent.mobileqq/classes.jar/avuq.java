@@ -1,19 +1,14 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
 
-public final class avuq
-  implements ThreadFactory
+public abstract interface avuq
 {
-  private final AtomicInteger a = new AtomicInteger(1);
+  public abstract void a(FilterCategoryItem paramFilterCategoryItem);
   
-  public Thread newThread(Runnable paramRunnable)
-  {
-    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avuq
  * JD-Core Version:    0.7.0.1
  */

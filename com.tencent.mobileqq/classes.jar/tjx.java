@@ -1,10 +1,12 @@
-public abstract class tjx
-  implements tjw
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import java.util.List;
+
+public class tjx
+  extends ssk
 {
-  public boolean a(tjt paramtjt)
-  {
-    return true;
-  }
+  public ShareGroupItem a;
+  public String a;
+  public List<ShareGroupItem> a;
 }
 
 

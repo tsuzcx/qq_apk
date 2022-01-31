@@ -1,43 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
-class abgu
-  extends mmn
+public class abgu
+  implements ajuc
 {
-  abgu(abgt paramabgt, boolean paramBoolean) {}
+  public abgu(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    int i = 0;
-    boolean bool;
-    if (paramInt != 0)
+    if ((this.a.a == 1) || (this.a.a == 2))
     {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetFormMultiLineSwitchItem.setOnCheckedChangeListener(null);
-      paramArrayOfByte = this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetFormMultiLineSwitchItem;
-      if (!this.b)
-      {
-        bool = true;
-        paramArrayOfByte.setChecked(bool);
-        this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetFormMultiLineSwitchItem.setOnCheckedChangeListener(this.a.a.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+      if (paramBoolean) {
+        break label55;
       }
+      FriendProfileMoreInfoActivity.a(this.a);
+      bcpw.a(this.a, 2131691028, 0).b(this.a.getTitleBarHeight());
     }
-    do
-    {
-      return;
-      bool = false;
-      break;
-      paramArrayOfByte = (ajjj)this.a.a.app.getManager(51);
-      paramBundle = paramArrayOfByte.e(this.a.a.app.getCurrentAccountUin());
-    } while (paramBundle == null);
-    if (this.b) {}
-    for (paramInt = i;; paramInt = 1)
-    {
-      paramBundle.isHideBigClub = paramInt;
-      paramArrayOfByte.a(paramBundle);
+    label55:
+    while (paramInt != 2) {
       return;
     }
+    FriendProfileMoreInfoActivity.a(this.a);
+    FriendProfileMoreInfoActivity.a(this.a, this.a.a);
   }
 }
 

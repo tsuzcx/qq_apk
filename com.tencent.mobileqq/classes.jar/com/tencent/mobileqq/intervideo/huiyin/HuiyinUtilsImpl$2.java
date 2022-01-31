@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.intervideo.huiyin;
 
 import android.util.Log;
-import aqnd;
+import arhi;
 import com.tencent.common.app.AppInterface;
 
 public class HuiyinUtilsImpl$2
   implements Runnable
 {
-  public HuiyinUtilsImpl$2(aqnd paramaqnd, AppInterface paramAppInterface) {}
+  public HuiyinUtilsImpl$2(arhi paramarhi, AppInterface paramAppInterface) {}
   
   public void run()
   {
     this.this$0.b = false;
-    if (!aqnd.a(this.this$0))
+    if (!arhi.a(this.this$0))
     {
-      aqnd.a(this.this$0, true);
+      arhi.a(this.this$0, true);
       this.this$0.b(this.a);
       Log.i("huiyin.login", "retry login");
     }

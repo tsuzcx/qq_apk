@@ -1,28 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Set;
 
 class azsj
-  extends mmn
+  extends azuw
 {
-  azsj(azsi paramazsi, TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity) {}
+  azsj(azsi paramazsi) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void a(Set<Long> paramSet)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopPicEffectsEditActivity", 2, "payForPhoto. onResult. errorCode=" + paramInt);
+    this.a.a = 1;
+    if ((paramSet != null) && (paramSet.contains(Long.valueOf(azsi.a(this.a))))) {
+      this.a.a = 2;
     }
-    if (paramInt == 0)
+    azsr.c("TroopFileTransferMgr", azsr.a, "onW2MPausedUpload mW2MPausedUploadState:" + this.a.a + " mW2MPausedDownloadState:" + this.a.b);
+    if (this.a.b > 0)
     {
-      bbmy.a(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity, 2, ajjy.a(2131649908), 0).a();
-      return;
+      if ((this.a.b == 2) || (this.a.a == 2)) {
+        bajf.a(azsi.a(this.a), azsi.b(this.a), 107);
+      }
+      this.a.a = 0;
+      this.a.b = 0;
     }
-    bbmy.a(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity, 1, ajjy.a(2131649915), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azsj
  * JD-Core Version:    0.7.0.1
  */

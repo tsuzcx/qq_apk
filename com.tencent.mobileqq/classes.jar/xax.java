@@ -1,44 +1,43 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.os.Build.VERSION;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetSpaceRspBody;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
 
-public class xax
-  implements SensorEventListener
+public abstract class xax
+  extends mxm
 {
-  protected byte a;
-  protected String a;
-  
-  public xax(xaw paramxaw, byte paramByte, String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Byte = paramByte;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    switch (this.jdField_a_of_type_Byte)
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-    }
-    do
-    {
+      a(false, 0L, 0L, 0);
       return;
-      float[] arrayOfFloat = new float[4];
-      if (Build.VERSION.SDK_INT >= 9)
+    }
+    paramBundle = new oidb_0x6d8.RspBody();
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (!paramBundle.group_space_rsp.has())
       {
-        SensorManager localSensorManager = this.jdField_a_of_type_Xaw.a;
-        SensorManager.getQuaternionFromVector(arrayOfFloat, paramSensorEvent.values);
-        xaw.a(this.jdField_a_of_type_Xaw)[0] = arrayOfFloat[1];
-        xaw.a(this.jdField_a_of_type_Xaw)[1] = arrayOfFloat[2];
-        xaw.a(this.jdField_a_of_type_Xaw)[2] = arrayOfFloat[3];
-        xaw.a(this.jdField_a_of_type_Xaw)[3] = arrayOfFloat[0];
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopFileProtocol", 2, "no group_space_rsp rsp.");
+        }
+        a(false, 0L, 0L, 0);
+        return;
       }
-    } while ((!xaw.a()) || (!xaw.b()));
-    this.jdField_a_of_type_Xaw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(xaw.a(this.jdField_a_of_type_Xaw)[0]), String.valueOf(xaw.a(this.jdField_a_of_type_Xaw)[1]), String.valueOf(xaw.a(this.jdField_a_of_type_Xaw)[2]), String.valueOf(xaw.a(this.jdField_a_of_type_Xaw)[3]) });
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, 0L, 0L, 0);
+      return;
+    }
+    paramArrayOfByte = (oidb_0x6d8.GetSpaceRspBody)paramBundle.group_space_rsp.get();
+    a(true, paramArrayOfByte.uint64_total_space.get(), paramArrayOfByte.uint64_used_space.get(), paramInt);
   }
+  
+  public abstract void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt);
 }
 
 

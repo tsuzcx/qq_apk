@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import asax;
+import asxb;
 
 class ProfileCardMoreActivity$1
   implements Runnable
@@ -10,7 +10,7 @@ class ProfileCardMoreActivity$1
   public void run()
   {
     this.this$0.h();
-    this.this$0.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(asax.a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, true));
+    this.this$0.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(asxb.a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, true));
   }
 }
 

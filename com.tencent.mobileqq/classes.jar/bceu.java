@@ -1,34 +1,36 @@
-public class bceu
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+
+class bceu
+  implements wxw
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
+  bceu(bcet parambcet) {}
   
-  public bceu()
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Long = 259200L;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    paramObject = (bceu)paramObject;
-    if (paramObject != null) {
-      return paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
+    boolean bool;
+    if (paramBundle.getInt("type") == 73)
+    {
+      bool = paramBundle.getBoolean("isSuccess");
+      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.i)) {}
     }
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_JavaLangString.hashCode();
+    else
+    {
+      return;
+    }
+    if (Boolean.valueOf(bool).booleanValue())
+    {
+      bcpw.a(BaseApplicationImpl.getApplication(), 2, 2131720399, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
+      return;
+    }
+    bcpw.a(BaseApplicationImpl.getApplication(), 1, 2131720396, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bceu
  * JD-Core Version:    0.7.0.1
  */

@@ -2,31 +2,31 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
 import android.view.View;
-import anhs;
-import anmg;
+import anyb;
+import aocq;
 
 public class SystemAndEmojiEmoticonPanelWithActionBar
   extends SystemAndEmojiEmoticonPanel
 {
   protected View a;
-  public anhs a;
+  public anyb a;
   
-  public SystemAndEmojiEmoticonPanelWithActionBar(Context paramContext, anhs paramanhs)
+  public SystemAndEmojiEmoticonPanelWithActionBar(Context paramContext, anyb paramanyb)
   {
-    super(paramContext, paramanhs);
+    super(paramContext, paramanyb);
   }
   
   protected int a()
   {
-    return 2131493469;
+    return 2131559032;
   }
   
-  protected void a(Context paramContext, anhs paramanhs)
+  protected void a(Context paramContext, anyb paramanyb)
   {
-    super.a(paramContext, paramanhs);
-    this.jdField_a_of_type_Anhs = paramanhs;
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131310076);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new anmg(this));
+    super.a(paramContext, paramanyb);
+    this.jdField_a_of_type_Anyb = paramanyb;
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131375840);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aocq(this));
   }
 }
 

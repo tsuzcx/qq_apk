@@ -7,8 +7,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.text.TextUtils;
-import bdfz;
-import bdnw;
+import beka;
+import besl;
+import bexy;
 import org.json.JSONObject;
 
 class InternalJSPlugin$5$1
@@ -31,8 +32,9 @@ class InternalJSPlugin$5$1
             {
               paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(paramDialogInterface.optString("path")));
               if (paramDialogInterface == null) {
-                break label289;
+                break label320;
               }
+              paramDialogInterface.setPackage(this.this$1.val$packageName);
               paramDialogInterface.addFlags(67108864);
               paramDialogInterface.putExtra("big_brother_source_key", "biz_src_miniapp");
               if (paramDialogInterface.resolveActivity(this.this$1.val$activity.getPackageManager()) == null) {
@@ -40,6 +42,7 @@ class InternalJSPlugin$5$1
               }
               this.this$1.val$activity.startActivity(paramDialogInterface);
               this.this$1.val$req.a();
+              bexy.a(this.this$1.this$0.mMiniAppInfo, null, "launchapp", "openapp", null);
               return;
             }
             localIntent = this.this$1.val$pm.getLaunchIntentForPackage(this.this$1.val$packageName);
@@ -53,7 +56,7 @@ class InternalJSPlugin$5$1
           }
           catch (Throwable paramDialogInterface)
           {
-            bdnw.d("InternalJSPlugin", "parameter error,", paramDialogInterface);
+            besl.d("InternalJSPlugin", "parameter error,", paramDialogInterface);
             Intent localIntent = this.this$1.val$pm.getLaunchIntentForPackage(this.this$1.val$packageName);
             paramDialogInterface = localIntent;
             if (localIntent == null) {
@@ -68,14 +71,14 @@ class InternalJSPlugin$5$1
       }
       catch (Throwable paramDialogInterface)
       {
-        bdnw.d("InternalJSPlugin", "dialog click error,", paramDialogInterface);
+        besl.d("InternalJSPlugin", "dialog click error,", paramDialogInterface);
         this.this$1.val$req.b();
         return;
       }
     }
     this.this$1.val$req.b();
     return;
-    label289:
+    label320:
     this.this$1.val$req.b();
   }
 }

@@ -1,21 +1,16 @@
-import java.util.Comparator;
-
-class vvl
-  implements Comparator<vvj>
+public abstract interface vvl
 {
-  vvl(vvk paramvvk) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, String paramString);
   
-  public int a(vvj paramvvj1, vvj paramvvj2)
-  {
-    if (paramvvj1.d > paramvvj2.d) {
-      return 1;
-    }
-    return -1;
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, String paramString);
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vvl
  * JD-Core Version:    0.7.0.1
  */

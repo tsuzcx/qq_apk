@@ -1,8 +1,17 @@
-import android.widget.ImageView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
 
-public abstract interface rpt
+public class rpt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract boolean a(ImageView paramImageView);
+  public rpt(ZImageView paramZImageView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.setAlpha(i);
+  }
 }
 
 

@@ -3,36 +3,36 @@ package dov.com.qq.im.story.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import bhff;
-import vms;
-import wus;
+import biwb;
+import bizx;
+import vzo;
 
 public class BeautyProviderView
   extends FrameLayout
 {
   private float jdField_a_of_type_Float = 1.0F;
   public int a;
-  private bhff jdField_a_of_type_Bhff;
-  private wus jdField_a_of_type_Wus;
+  private biwb jdField_a_of_type_Biwb;
+  private bizx jdField_a_of_type_Bizx;
   private int b = 500;
   private final int c = 300;
   
   public BeautyProviderView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = vms.a(getContext(), 242.0F);
+    this.jdField_a_of_type_Int = vzo.a(getContext(), 242.0F);
   }
   
   public BeautyProviderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = vms.a(getContext(), 242.0F);
+    this.jdField_a_of_type_Int = vzo.a(getContext(), 242.0F);
   }
   
-  public void setControllerAndManager(bhff parambhff, wus paramwus)
+  public void setControllerAndManager(bizx parambizx, biwb parambiwb)
   {
-    this.jdField_a_of_type_Bhff = parambhff;
-    this.jdField_a_of_type_Wus = paramwus;
+    this.jdField_a_of_type_Bizx = parambizx;
+    this.jdField_a_of_type_Biwb = parambiwb;
   }
 }
 

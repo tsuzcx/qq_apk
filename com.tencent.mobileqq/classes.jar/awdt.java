@@ -1,8 +1,21 @@
-public abstract interface awdt
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextPaint;
+import android.widget.EditText;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+
+public class awdt
+  extends Editable.Factory
 {
-  public abstract awel a(Object paramObject, awey paramawey);
+  public awdt(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public abstract awfo a(Object paramObject, awey paramawey);
+  public Editable newEditable(CharSequence paramCharSequence)
+  {
+    if ((paramCharSequence instanceof ayks)) {
+      return (Editable)paramCharSequence;
+    }
+    return new ayks(paramCharSequence, 3, (int)(SignatureHistoryFragment.a(this.a).getTextSize() / SignatureHistoryFragment.a(this.a).getPaint().density));
+  }
 }
 
 

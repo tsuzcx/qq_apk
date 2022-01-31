@@ -3,8 +3,8 @@ package com.tencent.tmdownloader;
 import com.tencent.tmassistant.common.PackageInstallReceiver;
 import com.tencent.tmassistant.st.b;
 import com.tencent.tmassistantbase.util.GlobalUtil;
+import com.tencent.tmassistantbase.util.aa;
 import com.tencent.tmassistantbase.util.ab;
-import com.tencent.tmassistantbase.util.ac;
 import com.tencent.tmdownloader.internal.downloadservice.ApkDownloadManager;
 import com.tencent.tmdownloader.internal.downloadservice.a.c;
 import com.tencent.tmdownloader.internal.storage.a;
@@ -34,8 +34,8 @@ class v
         PackageInstallReceiver.a().a(this.a);
         b.a();
         label89:
-        ab.a("Load downloadInfo end, timeCost = " + (System.currentTimeMillis() - l));
-        ac.c("TMADownloadSDKService", "<onCreate>exit");
+        aa.a("Load downloadInfo end, timeCost = " + (System.currentTimeMillis() - l));
+        ab.c("TMADownloadSDKService", "<onCreate>exit");
         return;
       }
       catch (Throwable localThrowable1)

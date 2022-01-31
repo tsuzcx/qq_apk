@@ -1,48 +1,94 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.VoiceResStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import java.util.Comparator;
 
 public class aclb
-  implements ackp
+  implements Comparator<acky>
 {
-  public agmq a;
-  public PreloadManager a;
-  private QQAppInterface a;
+  int jdField_a_of_type_Int = -1;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public aclb(QQAppInterface paramQQAppInterface)
+  public aclb(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
-    this.jdField_a_of_type_Agmq = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
-      this.jdField_a_of_type_Agmq = ((agmq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245));
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a() {}
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  public int a(acky paramacky1, acky paramacky2)
   {
-    ThreadManager.post(new CustomizeStrategyFactory.VoiceResStrategy.1(this, paramRedPacketInfo), 5, null, true);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, aeav paramaeav)
-  {
-    if ((paramRedPacketInfo != null) && ((paramaeav instanceof aebc)))
-    {
-      paramaeav = (aebc)paramaeav;
-      paramRedPacketInfo.icon = paramaeav.a;
-      paramRedPacketInfo.resPath = paramaeav.b;
+    int i = -1;
+    int k = 1;
+    int j = 1;
+    if (this.jdField_a_of_type_Int == 0) {
+      i = paramacky1.c.compareToIgnoreCase(paramacky2.c);
     }
+    label89:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return i;
+            if (this.jdField_a_of_type_Int != 2) {
+              break label89;
+            }
+            if (paramacky1.jdField_b_of_type_Long == paramacky2.jdField_b_of_type_Long) {
+              return 0;
+            }
+            if (paramacky1.jdField_b_of_type_Long <= paramacky2.jdField_b_of_type_Long) {
+              break;
+            }
+          } while (this.jdField_a_of_type_Boolean);
+          return 1;
+          if (this.jdField_a_of_type_Boolean) {}
+          for (i = j;; i = -1) {
+            return i;
+          }
+          if (this.jdField_a_of_type_Int != 3) {
+            break label149;
+          }
+          if (paramacky1.a == paramacky2.a) {
+            return 0;
+          }
+          if (paramacky1.a <= paramacky2.a) {
+            break;
+          }
+        } while (this.jdField_a_of_type_Boolean);
+        return 1;
+        if (this.jdField_a_of_type_Boolean) {}
+        for (i = k;; i = -1) {
+          return i;
+        }
+        if (this.jdField_a_of_type_Int != 1) {
+          break label208;
+        }
+        if (paramacky1.d != paramacky2.d) {
+          break;
+        }
+        j = paramacky1.jdField_b_of_type_JavaLangString.compareToIgnoreCase(paramacky2.jdField_b_of_type_JavaLangString);
+        if (j == 0) {
+          return 0;
+        }
+      } while (j <= 0);
+      return 1;
+    } while (paramacky1.d >= paramacky2.d);
+    label149:
+    return 1;
+    label208:
+    if (this.jdField_a_of_type_Int == 8)
+    {
+      if (paramacky1.l == paramacky2.l) {
+        return paramacky1.c.compareToIgnoreCase(paramacky2.c);
+      }
+      return paramacky2.l - paramacky1.l;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aclb
  * JD-Core Version:    0.7.0.1
  */

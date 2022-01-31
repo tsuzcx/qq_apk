@@ -3,8 +3,8 @@ package cooperation.qzone;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
-import android.os.Environment;
 import android.os.Process;
+import bhbz;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
 import java.util.Iterator;
@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ServerListProvider
 {
-  private static String SERVER_DIR = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Tencent/com/tencent/mobileqq";
+  private static String SERVER_DIR = bhbz.l;
   private static final String TAG = "ServerListProvider";
   public static final int VALUE_DB2 = 13;
   public static final int VALUE_DB3 = 86;
@@ -91,7 +91,7 @@ public class ServerListProvider
   {
     try
     {
-      File localFile = new File(SERVER_DIR + "/testserver");
+      File localFile = new File(bhbz.m);
       if ((localFile != null) && (localFile.exists())) {
         localFile.delete();
       }
@@ -117,178 +117,171 @@ public class ServerListProvider
     //   1: astore_3
     //   2: aconst_null
     //   3: astore_2
-    //   4: invokestatic 222	cooperation/qzone/ServerListProvider:isServerFileExits	()Z
+    //   4: invokestatic 206	cooperation/qzone/ServerListProvider:isServerFileExits	()Z
     //   7: ifeq +4 -> 11
     //   10: return
-    //   11: new 167	java/io/File
+    //   11: new 170	java/io/File
     //   14: dup
-    //   15: getstatic 182	cooperation/qzone/ServerListProvider:SERVER_DIR	Ljava/lang/String;
-    //   18: invokespecial 192	java/io/File:<init>	(Ljava/lang/String;)V
+    //   15: getstatic 161	cooperation/qzone/ServerListProvider:SERVER_DIR	Ljava/lang/String;
+    //   18: invokespecial 176	java/io/File:<init>	(Ljava/lang/String;)V
     //   21: astore_0
     //   22: aload_0
-    //   23: invokevirtual 196	java/io/File:exists	()Z
+    //   23: invokevirtual 180	java/io/File:exists	()Z
     //   26: ifne +8 -> 34
     //   29: aload_0
-    //   30: invokevirtual 225	java/io/File:mkdirs	()Z
+    //   30: invokevirtual 209	java/io/File:mkdirs	()Z
     //   33: pop
-    //   34: new 167	java/io/File
+    //   34: new 170	java/io/File
     //   37: dup
-    //   38: new 156	java/lang/StringBuilder
-    //   41: dup
-    //   42: invokespecial 159	java/lang/StringBuilder:<init>	()V
-    //   45: getstatic 182	cooperation/qzone/ServerListProvider:SERVER_DIR	Ljava/lang/String;
-    //   48: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   51: ldc 189
-    //   53: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: invokevirtual 180	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   59: invokespecial 192	java/io/File:<init>	(Ljava/lang/String;)V
-    //   62: astore_0
+    //   38: getstatic 173	bhbz:m	Ljava/lang/String;
+    //   41: invokespecial 176	java/io/File:<init>	(Ljava/lang/String;)V
+    //   44: astore_0
+    //   45: aload_0
+    //   46: invokevirtual 180	java/io/File:exists	()Z
+    //   49: ifne -39 -> 10
+    //   52: aload_0
+    //   53: invokevirtual 212	java/io/File:createNewFile	()Z
+    //   56: ifeq +165 -> 221
+    //   59: new 214	java/io/FileWriter
+    //   62: dup
     //   63: aload_0
-    //   64: invokevirtual 196	java/io/File:exists	()Z
-    //   67: ifne -57 -> 10
-    //   70: aload_0
-    //   71: invokevirtual 228	java/io/File:createNewFile	()Z
-    //   74: ifeq +165 -> 239
-    //   77: new 230	java/io/FileWriter
-    //   80: dup
-    //   81: aload_0
-    //   82: invokespecial 233	java/io/FileWriter:<init>	(Ljava/io/File;)V
-    //   85: astore_0
-    //   86: new 235	java/io/BufferedWriter
-    //   89: dup
-    //   90: aload_0
-    //   91: invokespecial 238	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
-    //   94: astore_1
-    //   95: aload_1
-    //   96: ldc 240
-    //   98: invokevirtual 243	java/io/BufferedWriter:write	(Ljava/lang/String;)V
-    //   101: aload_1
-    //   102: invokevirtual 246	java/io/BufferedWriter:close	()V
-    //   105: aload_1
-    //   106: ifnull +7 -> 113
-    //   109: aload_1
-    //   110: invokevirtual 246	java/io/BufferedWriter:close	()V
-    //   113: aload_0
-    //   114: ifnull -104 -> 10
-    //   117: aload_0
-    //   118: invokevirtual 247	java/io/FileWriter:close	()V
-    //   121: return
-    //   122: astore_0
-    //   123: aload_0
-    //   124: invokevirtual 250	java/lang/Exception:printStackTrace	()V
-    //   127: return
-    //   128: astore_1
-    //   129: aload_1
-    //   130: invokevirtual 250	java/lang/Exception:printStackTrace	()V
-    //   133: goto -20 -> 113
-    //   136: astore_0
-    //   137: aconst_null
-    //   138: astore_0
-    //   139: aload_2
-    //   140: astore_1
-    //   141: aload_1
-    //   142: ifnull +7 -> 149
-    //   145: aload_1
-    //   146: invokevirtual 246	java/io/BufferedWriter:close	()V
-    //   149: aload_0
-    //   150: ifnull -140 -> 10
-    //   153: aload_0
-    //   154: invokevirtual 247	java/io/FileWriter:close	()V
-    //   157: return
-    //   158: astore_0
-    //   159: aload_0
-    //   160: invokevirtual 250	java/lang/Exception:printStackTrace	()V
-    //   163: return
-    //   164: astore_1
-    //   165: aload_1
-    //   166: invokevirtual 250	java/lang/Exception:printStackTrace	()V
-    //   169: goto -20 -> 149
-    //   172: astore_0
-    //   173: aconst_null
-    //   174: astore_1
-    //   175: aload_3
-    //   176: astore_2
-    //   177: aload_1
-    //   178: ifnull +7 -> 185
-    //   181: aload_1
-    //   182: invokevirtual 246	java/io/BufferedWriter:close	()V
-    //   185: aload_2
-    //   186: ifnull +7 -> 193
-    //   189: aload_2
-    //   190: invokevirtual 247	java/io/FileWriter:close	()V
-    //   193: aload_0
-    //   194: athrow
+    //   64: invokespecial 217	java/io/FileWriter:<init>	(Ljava/io/File;)V
+    //   67: astore_0
+    //   68: new 219	java/io/BufferedWriter
+    //   71: dup
+    //   72: aload_0
+    //   73: invokespecial 222	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
+    //   76: astore_1
+    //   77: aload_1
+    //   78: ldc 224
+    //   80: invokevirtual 227	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   83: aload_1
+    //   84: invokevirtual 230	java/io/BufferedWriter:close	()V
+    //   87: aload_1
+    //   88: ifnull +7 -> 95
+    //   91: aload_1
+    //   92: invokevirtual 230	java/io/BufferedWriter:close	()V
+    //   95: aload_0
+    //   96: ifnull -86 -> 10
+    //   99: aload_0
+    //   100: invokevirtual 231	java/io/FileWriter:close	()V
+    //   103: return
+    //   104: astore_0
+    //   105: aload_0
+    //   106: invokevirtual 234	java/lang/Exception:printStackTrace	()V
+    //   109: return
+    //   110: astore_1
+    //   111: aload_1
+    //   112: invokevirtual 234	java/lang/Exception:printStackTrace	()V
+    //   115: goto -20 -> 95
+    //   118: astore_0
+    //   119: aconst_null
+    //   120: astore_0
+    //   121: aload_2
+    //   122: astore_1
+    //   123: aload_1
+    //   124: ifnull +7 -> 131
+    //   127: aload_1
+    //   128: invokevirtual 230	java/io/BufferedWriter:close	()V
+    //   131: aload_0
+    //   132: ifnull -122 -> 10
+    //   135: aload_0
+    //   136: invokevirtual 231	java/io/FileWriter:close	()V
+    //   139: return
+    //   140: astore_0
+    //   141: aload_0
+    //   142: invokevirtual 234	java/lang/Exception:printStackTrace	()V
+    //   145: return
+    //   146: astore_1
+    //   147: aload_1
+    //   148: invokevirtual 234	java/lang/Exception:printStackTrace	()V
+    //   151: goto -20 -> 131
+    //   154: astore_0
+    //   155: aconst_null
+    //   156: astore_1
+    //   157: aload_3
+    //   158: astore_2
+    //   159: aload_1
+    //   160: ifnull +7 -> 167
+    //   163: aload_1
+    //   164: invokevirtual 230	java/io/BufferedWriter:close	()V
+    //   167: aload_2
+    //   168: ifnull +7 -> 175
+    //   171: aload_2
+    //   172: invokevirtual 231	java/io/FileWriter:close	()V
+    //   175: aload_0
+    //   176: athrow
+    //   177: astore_1
+    //   178: aload_1
+    //   179: invokevirtual 234	java/lang/Exception:printStackTrace	()V
+    //   182: goto -15 -> 167
+    //   185: astore_1
+    //   186: aload_1
+    //   187: invokevirtual 234	java/lang/Exception:printStackTrace	()V
+    //   190: goto -15 -> 175
+    //   193: astore_3
+    //   194: aconst_null
     //   195: astore_1
-    //   196: aload_1
-    //   197: invokevirtual 250	java/lang/Exception:printStackTrace	()V
-    //   200: goto -15 -> 185
-    //   203: astore_1
-    //   204: aload_1
-    //   205: invokevirtual 250	java/lang/Exception:printStackTrace	()V
-    //   208: goto -15 -> 193
-    //   211: astore_3
-    //   212: aconst_null
+    //   196: aload_0
+    //   197: astore_2
+    //   198: aload_3
+    //   199: astore_0
+    //   200: goto -41 -> 159
+    //   203: astore_3
+    //   204: aload_0
+    //   205: astore_2
+    //   206: aload_3
+    //   207: astore_0
+    //   208: goto -49 -> 159
+    //   211: astore_1
+    //   212: aload_2
     //   213: astore_1
-    //   214: aload_0
-    //   215: astore_2
-    //   216: aload_3
-    //   217: astore_0
-    //   218: goto -41 -> 177
-    //   221: astore_3
-    //   222: aload_0
-    //   223: astore_2
-    //   224: aload_3
-    //   225: astore_0
-    //   226: goto -49 -> 177
-    //   229: astore_1
-    //   230: aload_2
-    //   231: astore_1
-    //   232: goto -91 -> 141
-    //   235: astore_2
-    //   236: goto -95 -> 141
-    //   239: aconst_null
-    //   240: astore_0
-    //   241: aconst_null
-    //   242: astore_1
-    //   243: goto -138 -> 105
+    //   214: goto -91 -> 123
+    //   217: astore_2
+    //   218: goto -95 -> 123
+    //   221: aconst_null
+    //   222: astore_0
+    //   223: aconst_null
+    //   224: astore_1
+    //   225: goto -138 -> 87
     // Local variable table:
     //   start	length	slot	name	signature
-    //   21	97	0	localObject1	Object
-    //   122	2	0	localException1	Exception
-    //   136	1	0	localException2	Exception
-    //   138	16	0	localObject2	Object
-    //   158	2	0	localException3	Exception
-    //   172	43	0	localObject3	Object
-    //   217	24	0	localObject4	Object
-    //   94	16	1	localBufferedWriter	java.io.BufferedWriter
-    //   128	2	1	localException4	Exception
-    //   140	6	1	localObject5	Object
-    //   164	2	1	localException5	Exception
-    //   174	8	1	localObject6	Object
-    //   195	2	1	localException6	Exception
-    //   203	2	1	localException7	Exception
-    //   213	1	1	localObject7	Object
-    //   229	1	1	localException8	Exception
-    //   231	12	1	localObject8	Object
-    //   3	228	2	localObject9	Object
-    //   235	1	2	localException9	Exception
-    //   1	175	3	localObject10	Object
-    //   211	6	3	localObject11	Object
-    //   221	4	3	localObject12	Object
+    //   21	79	0	localObject1	Object
+    //   104	2	0	localException1	Exception
+    //   118	1	0	localException2	Exception
+    //   120	16	0	localObject2	Object
+    //   140	2	0	localException3	Exception
+    //   154	43	0	localObject3	Object
+    //   199	24	0	localObject4	Object
+    //   76	16	1	localBufferedWriter	java.io.BufferedWriter
+    //   110	2	1	localException4	Exception
+    //   122	6	1	localObject5	Object
+    //   146	2	1	localException5	Exception
+    //   156	8	1	localObject6	Object
+    //   177	2	1	localException6	Exception
+    //   185	2	1	localException7	Exception
+    //   195	1	1	localObject7	Object
+    //   211	1	1	localException8	Exception
+    //   213	12	1	localObject8	Object
+    //   3	210	2	localObject9	Object
+    //   217	1	2	localException9	Exception
+    //   1	157	3	localObject10	Object
+    //   193	6	3	localObject11	Object
+    //   203	4	3	localObject12	Object
     // Exception table:
     //   from	to	target	type
-    //   117	121	122	java/lang/Exception
-    //   109	113	128	java/lang/Exception
-    //   70	86	136	java/lang/Exception
-    //   153	157	158	java/lang/Exception
-    //   145	149	164	java/lang/Exception
-    //   70	86	172	finally
-    //   181	185	195	java/lang/Exception
-    //   189	193	203	java/lang/Exception
-    //   86	95	211	finally
-    //   95	105	221	finally
-    //   86	95	229	java/lang/Exception
-    //   95	105	235	java/lang/Exception
+    //   99	103	104	java/lang/Exception
+    //   91	95	110	java/lang/Exception
+    //   52	68	118	java/lang/Exception
+    //   135	139	140	java/lang/Exception
+    //   127	131	146	java/lang/Exception
+    //   52	68	154	finally
+    //   163	167	177	java/lang/Exception
+    //   171	175	185	java/lang/Exception
+    //   68	77	193	finally
+    //   77	87	203	finally
+    //   68	77	211	java/lang/Exception
+    //   77	87	217	java/lang/Exception
   }
   
   public static String getCmdPrefix()
@@ -465,7 +458,7 @@ public class ServerListProvider
     boolean bool2 = false;
     try
     {
-      File localFile = new File(SERVER_DIR + "/testserver");
+      File localFile = new File(bhbz.m);
       boolean bool1 = bool2;
       if (localFile.exists())
       {

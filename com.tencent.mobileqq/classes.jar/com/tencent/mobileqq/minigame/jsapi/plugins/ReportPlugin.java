@@ -12,7 +12,7 @@ import com.tencent.mobileqq.mini.util.JSONUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.jsapi.GameBrandRuntime;
 import com.tencent.mobileqq.minigame.manager.GameInfoManager;
-import com.tencent.mobileqq.minigame.manager.GameLoadManager;
+import com.tencent.mobileqq.minigame.manager.GameLibVersionManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 import org.json.JSONObject;
@@ -99,7 +99,7 @@ public class ReportPlugin
               this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
               return "";
             }
-            localJSONObject2.put("version", GameLoadManager.g().getEngineVersion());
+            localJSONObject2.put("version", GameLibVersionManager.g().getGameEngineVersion());
             localJSONObject1.put("actionData", localJSONObject2);
             paramString2 = localJSONObject1.toString();
           }

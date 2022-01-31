@@ -8,23 +8,23 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import beht;
+import bfpn;
 import com.tencent.mobileqq.R.styleable;
 
 public class AuthorizationItem
   extends LinearLayout
 {
-  public static final beht a;
-  public static final beht b = new beht("手机号", "key_authorize_phone", 1);
-  public static final beht c = new beht("省市区", "key_authorize_place", 2);
-  public static final beht d = new beht("", "", -1);
+  public static final bfpn a;
+  public static final bfpn b = new bfpn("手机号", "key_authorize_phone", 1);
+  public static final bfpn c = new bfpn("省市区", "key_authorize_place", 2);
+  public static final bfpn d = new bfpn("", "", -1);
   private int jdField_a_of_type_Int;
   private String jdField_a_of_type_JavaLangString;
-  private beht e;
+  private bfpn e;
   
   static
   {
-    jdField_a_of_type_Beht = new beht("昵称  ", "key_authorize_user_name", 0);
+    jdField_a_of_type_Bfpn = new bfpn("昵称  ", "key_authorize_user_name", 0);
   }
   
   public AuthorizationItem(Context paramContext, @Nullable AttributeSet paramAttributeSet)
@@ -39,10 +39,10 @@ public class AuthorizationItem
     a(paramContext, paramAttributeSet);
   }
   
-  public AuthorizationItem(Context paramContext, String paramString, beht parambeht, int paramInt)
+  public AuthorizationItem(Context paramContext, String paramString, bfpn parambfpn, int paramInt)
   {
     super(paramContext);
-    this.e = parambeht;
+    this.e = parambfpn;
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaLangString = paramString;
     a(paramContext, null);
@@ -50,12 +50,12 @@ public class AuthorizationItem
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    LayoutInflater.from(paramContext).inflate(2131495086, this, true);
+    LayoutInflater.from(paramContext).inflate(2131560661, this, true);
     if (paramAttributeSet != null)
     {
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.AuthorizationItem);
       this.jdField_a_of_type_Int = paramContext.getInteger(1, -1);
-      this.e = beht.a(paramContext.getInteger(2, -1));
+      this.e = bfpn.a(paramContext.getInteger(2, -1));
       this.jdField_a_of_type_JavaLangString = paramContext.getString(0);
       paramContext.recycle();
     }
@@ -67,35 +67,35 @@ public class AuthorizationItem
   public void setContent(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      ((TextView)findViewById(2131312400)).setText(paramString);
+      ((TextView)findViewById(2131378226)).setText(paramString);
     }
   }
   
-  public void setItemType(beht parambeht)
+  public void setItemType(bfpn parambfpn)
   {
-    ((TextView)findViewById(2131312401)).setText(parambeht.jdField_a_of_type_JavaLangString);
+    ((TextView)findViewById(2131378227)).setText(parambfpn.jdField_a_of_type_JavaLangString);
   }
   
   public void setPositionType(int paramInt)
   {
     if (paramInt == 0) {
-      setBackgroundResource(2130844025);
+      setBackgroundResource(2130844105);
     }
     do
     {
       return;
       if (paramInt == 1)
       {
-        setBackgroundResource(2130844024);
+        setBackgroundResource(2130844104);
         return;
       }
       if (paramInt == 2)
       {
-        setBackgroundResource(2130844022);
+        setBackgroundResource(2130844102);
         return;
       }
     } while (paramInt != 3);
-    setBackgroundResource(2130844021);
+    setBackgroundResource(2130844101);
   }
 }
 

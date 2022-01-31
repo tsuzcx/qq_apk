@@ -1,53 +1,37 @@
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import android.text.TextUtils;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-class awrp
+public class awrp
+  implements awrb<awoe, awwo>
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  
-  public awrp(long paramLong, String paramString1, String paramString2)
+  public void a(awoe paramawoe, awwo paramawwo)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    int i;
-    if (paramString1 == null)
+    paramawwo = (awxz)paramawwo;
+    if ((paramawoe instanceof awno))
     {
-      i = 0;
-      if (paramString2 != null) {
-        break label67;
+      paramawoe = (awno)paramawoe;
+      if (TextUtils.isEmpty(paramawoe.a)) {
+        break label81;
       }
+      paramawwo.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      paramawwo.jdField_a_of_type_AndroidWidgetTextView.setText(paramawoe.a);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Int = (j + (i + 19 + 1) + 1);
+      paramawwo.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new awrq(this, paramawoe));
+      if (TextUtils.isEmpty(paramawoe.b)) {
+        paramawwo.jdField_a_of_type_AndroidWidgetLinearLayout.setEnabled(false);
+      }
       return;
-      i = paramString1.getBytes().length;
-      break;
-      label67:
-      j = paramString2.getBytes().length;
+      label81:
+      paramawwo.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(128);
-    Date localDate = new Date(this.jdField_a_of_type_Long);
-    localStringBuilder.append(awrn.a().format(localDate));
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append("\n");
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awrp
  * JD-Core Version:    0.7.0.1
  */

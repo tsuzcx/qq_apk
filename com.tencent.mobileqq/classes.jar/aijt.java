@@ -1,37 +1,35 @@
+import android.view.View;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+
 public class aijt
+  implements Animation.AnimationListener
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public aijt(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public boolean equals(Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramObject == null) || (!(paramObject instanceof aijt))) {}
-    do
+    this.a.c.clearAnimation();
+    ((FrameLayout)this.a.getWindow().getDecorView()).removeView(this.a.c);
+    this.a.c = null;
+    if (this.a.a != null)
     {
-      return false;
-      paramObject = (aijt)paramObject;
-    } while ((this.a != paramObject.a) || (this.b != paramObject.b) || (this.c != paramObject.c) || (this.d != paramObject.d) || (this.e != paramObject.e));
-    return true;
+      this.a.a.a();
+      this.a.a = null;
+    }
   }
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("{");
-    localStringBuilder.append("positionX:").append(this.a);
-    localStringBuilder.append(", positionY:").append(this.b);
-    localStringBuilder.append(", width:").append(this.c);
-    localStringBuilder.append(", height:").append(this.d);
-    localStringBuilder.append(", align:").append(this.e);
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aijt
  * JD-Core Version:    0.7.0.1
  */

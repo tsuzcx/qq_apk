@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.fileviewer;
 
 import android.view.View;
-import aora;
+import apij;
 
 public class FileBrowserMiniAIOHelper$1
   implements Runnable
 {
-  public FileBrowserMiniAIOHelper$1(aora paramaora) {}
+  public FileBrowserMiniAIOHelper$1(apij paramapij) {}
   
   public void run()
   {
-    if (aora.a(this.this$0) != null) {
-      aora.a(this.this$0).setVisibility(0);
+    if (apij.a(this.this$0) != null) {
+      apij.a(this.this$0).setVisibility(0);
     }
   }
 }

@@ -1,37 +1,24 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
 
 class aeon
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  private long jdField_a_of_type_Long;
+  aeon(aeol paramaeol, String paramString) {}
   
-  aeon(aeom paramaeom) {}
-  
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 200L) {
-      return;
+    ((ajvk)this.jdField_a_of_type_Aeol.a.a.getManager(53)).c(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_Aeol.a.a.a().a();
+    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
+    if (localRecentUser != null) {
+      paramDialogInterface.b(localRecentUser);
     }
-    this.jdField_a_of_type_Long = l;
-    this.jdField_a_of_type_Aeom.jdField_a_of_type_Aeob.a();
-    paramView = new Intent(aeom.a(this.jdField_a_of_type_Aeom), QQBrowserActivity.class);
-    paramView.putExtra("hide_left_button", false);
-    paramView.putExtra("show_right_close_button", false);
-    paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
-    String str = bant.a(aeom.a(this.jdField_a_of_type_Aeom), "call", "mvip.gongneng.anroid.individuation.web");
-    VasWebviewUtil.openQQBrowserWithoutAD(aeom.a(this.jdField_a_of_type_Aeom), str, 524288L, paramView, false, -1);
-    bajr.a(this.jdField_a_of_type_Aeom.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "QQVIPFUNCALL", "0X8004D8C", "0X8004D8C", 4, 0, new String[0]);
-    paramView = this.jdField_a_of_type_Aeom.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
-    paramView.putInt("funcall_tip_" + this.jdField_a_of_type_Aeom.jdField_a_of_type_JavaLangString, 4);
-    paramView.commit();
+    ((ajvi)this.jdField_a_of_type_Aeol.a.a.a(6)).a();
+    this.jdField_a_of_type_Aeol.a.H();
   }
 }
 

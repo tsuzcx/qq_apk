@@ -1,24 +1,20 @@
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2.1;
+import com.tencent.image.URLDrawable;
 
-class wuv
-  implements bhou
+public class wuv
+  extends wuq
 {
-  wuv(wut paramwut) {}
+  public wuv(SubscribeQRCodeShareHelper.2.1 param1) {}
   
-  public void a()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    wut.a(this.a).setTouchEnable(true);
-  }
-  
-  public void b()
-  {
-    wut.a(this.a).l();
-    wut.a(this.a).setTouchEnable(true);
+    wuu.a(this.a.a.this$0, wuu.b(this.a.a.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wuv
  * JD-Core Version:    0.7.0.1
  */

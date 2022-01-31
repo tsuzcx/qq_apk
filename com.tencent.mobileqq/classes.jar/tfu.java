@@ -1,9 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.ArrayList;
 
 public abstract interface tfu
 {
-  public abstract boolean a(@NonNull StoryVideoItem paramStoryVideoItem);
+  public abstract void a();
+  
+  public abstract void a(ArrayList<tfi> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
+  
+  public abstract void a(tfi paramtfi, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

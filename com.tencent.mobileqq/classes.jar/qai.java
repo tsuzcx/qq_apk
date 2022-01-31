@@ -1,34 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnticipateInterpolator;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.VideoInfo;
+import java.util.Deque;
+import java.util.LinkedList;
 
 class qai
-  implements Animation.AnimationListener
 {
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  Deque<qak> jdField_a_of_type_JavaUtilDeque = new LinkedList();
+  int b;
+  int c = 0;
+  private final int d = 50;
+  
   qai(qah paramqah) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  boolean a(qak paramqak)
   {
-    if ((pzs.a(this.a.c) == qah.a(this.a)) && (pzs.a(this.a.c) != null)) {
-      pzs.a(this.a.c).a(qah.a(this.a));
+    if (this.jdField_a_of_type_JavaUtilDeque.size() >= 50) {
+      this.jdField_a_of_type_JavaUtilDeque.poll();
     }
+    return this.jdField_a_of_type_JavaUtilDeque.offer(paramqak);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if ((qah.a(this.a).a != null) && (qah.a(this.a).a.a != null))
-    {
-      boolean bool = qah.a(this.a).a.a.l;
-      if (qah.a(this.a).i != null) {
-        qah.a(this.a).i.setImageDrawable(pzs.a(this.a.c, this.a.a(bool)));
-      }
-    }
-    paramAnimation.setInterpolator(new AnticipateInterpolator());
-  }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

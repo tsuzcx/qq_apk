@@ -1,10 +1,17 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.video.multivideo.MultiVideoFragment;
+
 public class qxl
+  implements qxp<RecyclerView.ViewHolder>
 {
-  public float a;
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  public qxl(MultiVideoFragment paramMultiVideoFragment, qxp paramqxp) {}
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder)
+  {
+    if ((paramViewHolder instanceof qxs)) {
+      this.jdField_a_of_type_Qxp.a((qxs)paramViewHolder);
+    }
+  }
 }
 
 

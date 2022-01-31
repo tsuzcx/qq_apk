@@ -1,13 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 
-public class bjdk
-  implements DialogInterface.OnClickListener
+public abstract interface bjdk
 {
-  public bjdk(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public abstract void a(int paramInt, boolean paramBoolean, Object paramObject);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(MusicItemInfo paramMusicItemInfo);
 }
 
 

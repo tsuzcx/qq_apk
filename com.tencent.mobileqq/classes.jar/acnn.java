@@ -1,104 +1,39 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.PokePanel;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.Window;
+import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class acnn
-  extends baox
+  implements DialogInterface.OnDismissListener
 {
-  public acnn(PokePanel paramPokePanel) {}
+  public acnn(TroopTransferActivity paramTroopTransferActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
   
-  protected void onPokeAuth(boolean paramBoolean, Object paramObject)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Object localObject = (Bundle)paramObject;
-    if (((Bundle)localObject).getInt("fromType") != 0) {
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+      paramDialogInterface = (InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getSystemService("input_method");
+      if (paramDialogInterface != null) {
+        paramDialogInterface.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getWindow().peekDecorView().getWindowToken(), 0);
+      }
       return;
     }
-    int j = ((Bundle)localObject).getInt("id");
-    int i = ((Bundle)localObject).getInt("feeType");
-    String str1 = "free";
-    if (i == 4)
+    catch (Exception paramDialogInterface)
     {
-      str1 = "vip";
-      label47:
-      if (!paramBoolean) {
-        break label160;
-      }
-      paramObject = ((Bundle)localObject).getString("name");
-      localObject = ((Bundle)localObject).getString("minVersion");
-      aael.a(PokePanel.a(this.a), BaseApplicationImpl.getContext(), PokePanel.a(this.a), 126, j, paramObject, (String)localObject);
-      if (true == adll.a) {
-        adll.a = false;
-      }
-      label106:
-      if (!paramBoolean) {
-        break label421;
-      }
-    }
-    label160:
-    label419:
-    label421:
-    for (i = 0;; i = 1)
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "poke", "send", "", 0, i, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
-      return;
-      if (i != 5) {
-        break label47;
-      }
-      str1 = "svip";
-      break label47;
-      long l = ((Bundle)localObject).getLong("result");
-      localObject = ((Bundle)localObject).getString("msg");
-      paramObject = (Bundle)paramObject;
-      this.a.a = paramObject.getInt("id", 0);
-      String str2 = ajjy.a(2131642538);
-      if (l == 0L)
-      {
-        this.a.b = 1;
-        if (true != adll.a) {
-          break;
-        }
-        adll.a = false;
-        return;
-      }
-      if (l == 4002L)
-      {
-        this.a.b = 2;
-        paramObject = ajjy.a(2131642541);
-        localObject = str2;
-      }
-      for (;;)
-      {
-        if (l == 0L) {
-          break label419;
-        }
-        adll.a(PokePanel.a(this.a), (Activity)this.a.getContext(), paramObject, (String)localObject, this.a.a, this.a.b);
-        VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTip", "", 0, 0, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
-        break;
-        if (l == 5002L)
-        {
-          this.a.b = 4;
-          paramObject = ajjy.a(2131642540);
-          localObject = str2;
-        }
-        else
-        {
-          this.a.b = 1;
-          str2 = ajjy.a(2131642539);
-          QLog.e("Q.aio.PokePanel", 1, "vas poke auth fail, result: " + l);
-          paramObject = localObject;
-          localObject = str2;
-        }
-      }
-      break label106;
+      paramDialogInterface.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acnn
  * JD-Core Version:    0.7.0.1
  */

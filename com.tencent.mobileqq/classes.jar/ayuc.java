@@ -1,50 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadFeedsSender.1.1;
-import java.util.UUID;
-
 public class ayuc
-  extends wmb
+  extends ayud
 {
-  ayuc(ayub paramayub) {}
+  private int a = 420000;
+  private int b = 9;
+  private int c = 3;
+  private int d = 15000;
+  private int e = 30000;
+  private int f = 4000;
   
-  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
+  public int a()
   {
-    if (!paramBoolean) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramString = paramBundle.getString("itemKey");
-        } while (paramString == null);
-        paramString = UUID.fromString(paramString);
-      } while (!paramString.equals(this.a.a()));
-      aysb.c("TroopFileUploadFeedsSender", aysb.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult retCode:" + paramInt1);
-      paramBundle = paramBundle.getString("fileId");
-      azih localazih = ayrz.a(this.a.d);
-      if (localazih == null)
-      {
-        aysb.a("TroopFileUploadFeedsSender", aysb.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult getTroopFileMgr()=null");
-        return;
-      }
-      paramString = localazih.a(paramString);
-      if (paramString == null)
-      {
-        aysb.a("TroopFileUploadFeedsSender", aysb.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult getFileInfo()=null");
-        return;
-      }
-    } while (paramInt1 != 0);
-    aysb.c("TroopFileUploadFeedsSender", aysb.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult refreshOneFile");
-    wln.a(ayrz.a(), this.a.d, paramString.a, paramString.b, this.a.jdField_a_of_type_Wlv);
-    ThreadManager.executeOnSubThread(new TroopFileUploadFeedsSender.1.1(this, paramBundle, paramString));
+    return this.d;
+  }
+  
+  public int b()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayuc
  * JD-Core Version:    0.7.0.1
  */

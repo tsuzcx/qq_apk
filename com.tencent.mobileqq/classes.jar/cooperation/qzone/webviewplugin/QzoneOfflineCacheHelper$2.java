@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
-import apdh;
-import bgfz;
+import apvb;
+import bhor;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -22,7 +22,7 @@ final class QzoneOfflineCacheHelper$2
         QLog.i("QzoneOfflineCacheHelper", 4, String.format("delay 10s,url:%s ,path:%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
       }
       ??? = new File(this.b);
-      boolean bool = bgfz.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, (File)???, this.c, this.jdField_a_of_type_Int);
+      boolean bool = bhor.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, (File)???, this.c, this.jdField_a_of_type_Int);
       if (bool)
       {
         QzoneOfflineCacheHelper.updateLruFileInNewThread(this.b);
@@ -54,7 +54,7 @@ final class QzoneOfflineCacheHelper$2
         try
         {
           if (localException.exists()) {
-            apdh.a(localException);
+            apvb.a(localException);
           }
           if (!QLog.isDevelopLevel()) {
             continue;

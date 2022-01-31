@@ -1,53 +1,21 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedComment;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedCommentInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
 
 public class syy
-  extends slu
+  extends Job<Object, Object, Object>
 {
-  public List<syz> a;
-  public List<uiv> b = new ArrayList(0);
-  
-  public syy(ErrorMessage paramErrorMessage)
+  public syy(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, syv paramsyv)
   {
-    super(paramErrorMessage.errorCode, paramErrorMessage.errorMsg);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    super(paramString);
   }
   
-  public syy(qqstory_service.RspBatchFeedComment paramRspBatchFeedComment)
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    super(paramRspBatchFeedComment.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramRspBatchFeedComment = paramRspBatchFeedComment.feed_comment_info_list.get().iterator();
-    while (paramRspBatchFeedComment.hasNext())
-    {
-      Object localObject = (qqstory_struct.FeedCommentInfo)paramRspBatchFeedComment.next();
-      syz localsyz = new syz();
-      localsyz.jdField_a_of_type_JavaLangString = ((qqstory_struct.FeedCommentInfo)localObject).feed_id.get().toStringUtf8();
-      localsyz.jdField_a_of_type_Int = ((qqstory_struct.FeedCommentInfo)localObject).comment_total_num.get();
-      localsyz.jdField_b_of_type_JavaLangString = ((qqstory_struct.FeedCommentInfo)localObject).next_cookie.get().toStringUtf8();
-      localsyz.jdField_b_of_type_Int = ((qqstory_struct.FeedCommentInfo)localObject).is_end.get();
-      if (localsyz.jdField_b_of_type_Int != 1) {
-        this.b.add(new uiv(localsyz.jdField_a_of_type_JavaLangString, 1, ((qqstory_struct.FeedCommentInfo)localObject).next_cookie.get().toStringUtf8()));
-      }
-      localObject = ((qqstory_struct.FeedCommentInfo)localObject).comment_list.get().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)((Iterator)localObject).next());
-        localCommentEntry.feedId = localsyz.jdField_a_of_type_JavaLangString;
-        localsyz.jdField_a_of_type_JavaUtilList.add(localCommentEntry);
-      }
-      this.jdField_a_of_type_JavaUtilList.add(localsyz);
-    }
+    this.jdField_a_of_type_Syv.a().a(880001, "no network", null);
+    return null;
   }
 }
 

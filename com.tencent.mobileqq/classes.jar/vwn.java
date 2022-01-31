@@ -1,17 +1,18 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.content.DialogInterface;
 
-public class vwn
-  extends RecyclerView.ViewHolder
+class vwn
+  extends bbdf
 {
-  public vwn(vwm paramvwm, View paramView)
+  vwn(vwm paramvwm) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramView);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vwn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.anim.friendship.impl;
 
-import acpj;
-import acqj;
+import adac;
+import adbc;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
@@ -12,14 +12,14 @@ import com.tencent.mobileqq.dinifly.LottieDrawable;
 public class FriendShipAnimDirector$4
   implements Runnable
 {
-  public FriendShipAnimDirector$4(acpj paramacpj) {}
+  public FriendShipAnimDirector$4(adac paramadac) {}
   
   public void run()
   {
-    if (acpj.a(this.this$0) != null) {
-      acpj.a(this.this$0).a(acpj.a(this.this$0) + "icon_close.png");
+    if (adac.a(this.this$0) != null) {
+      adac.a(this.this$0).a(adac.a(this.this$0) + "icon_close.png");
     }
-    if ((acpj.a(this.this$0) == null) || (acpj.a(this.this$0).isAnimating())) {
+    if ((adac.a(this.this$0) == null) || (adac.a(this.this$0).isAnimating())) {
       return;
     }
     FriendShipLayout localFriendShipLayout = this.this$0.a();
@@ -29,26 +29,26 @@ public class FriendShipAnimDirector$4
         localFriendShipLayout.removeAllViews();
       }
       this.this$0.a(0);
-      acpj.a(this.this$0, new ImageView(this.this$0.a()));
-      acpj.a(this.this$0).setScaleType(ImageView.ScaleType.CENTER_CROP);
+      adac.a(this.this$0, new ImageView(this.this$0.a()));
+      adac.a(this.this$0).setScaleType(ImageView.ScaleType.CENTER_CROP);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
       localLayoutParams.gravity = 81;
       View localView = new View(this.this$0.a());
       localView.setBackgroundColor(-16777216);
       localFriendShipLayout.addView(localView, localLayoutParams);
-      localFriendShipLayout.addView(acpj.a(this.this$0), localLayoutParams);
-      acpj.a(this.this$0).setImageDrawable(acpj.a(this.this$0));
-      acpj.a(this.this$0).a(localView);
-      acpj.a(this.this$0).a(localFriendShipLayout);
+      localFriendShipLayout.addView(adac.a(this.this$0), localLayoutParams);
+      adac.a(this.this$0).setImageDrawable(adac.a(this.this$0));
+      adac.a(this.this$0).a(localView);
+      adac.a(this.this$0).a(localFriendShipLayout);
     }
-    if (acpj.a(this.this$0).isAnimating()) {
-      acpj.a(this.this$0).cancelAnimation();
+    if (adac.a(this.this$0).isAnimating()) {
+      adac.a(this.this$0).cancelAnimation();
     }
-    if (acpj.a(this.this$0).a()) {
-      acpj.a(this.this$0).b();
+    if (adac.a(this.this$0).a()) {
+      adac.a(this.this$0).b();
     }
-    acpj.a(this.this$0).playAnimation();
-    acpj.a(this.this$0).a();
+    adac.a(this.this$0).playAnimation();
+    adac.a(this.this$0).a();
   }
 }
 

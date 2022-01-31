@@ -3,9 +3,12 @@ package com.tencent.qqmini.sdk.core.plugins;
 class FileJsPlugin$18
   implements Runnable
 {
-  FileJsPlugin$18(FileJsPlugin paramFileJsPlugin) {}
+  FileJsPlugin$18(FileJsPlugin paramFileJsPlugin, FileJsPlugin.FileTask paramFileTask) {}
   
-  public void run() {}
+  public void run()
+  {
+    this.val$task.run();
+  }
 }
 
 

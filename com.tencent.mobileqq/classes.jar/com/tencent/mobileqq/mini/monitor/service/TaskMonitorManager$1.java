@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.monitor.service;
 
-import ajou;
+import akde;
 
 class TaskMonitorManager$1
   implements Runnable
@@ -10,13 +10,13 @@ class TaskMonitorManager$1
   public void run()
   {
     this.this$0.mAppLastUsage = this.this$0.mAppCurUsage;
-    this.this$0.mAppCurUsage = ajou.a("-1");
+    this.this$0.mAppCurUsage = akde.a("-1");
     long l2 = this.this$0.mAppCurUsage;
     long l3 = this.this$0.mAppLastUsage;
     if (this.this$0.isCalcDeviceUsageOk)
     {
       this.this$0.mDeviceLastUsage = this.this$0.mDeviceCurUsage;
-      this.this$0.mDeviceCurUsage = ajou.a("-2");
+      this.this$0.mDeviceCurUsage = akde.a("-2");
     }
     for (long l1 = this.this$0.mDeviceCurUsage - this.this$0.mDeviceLastUsage;; l1 = 0L)
     {

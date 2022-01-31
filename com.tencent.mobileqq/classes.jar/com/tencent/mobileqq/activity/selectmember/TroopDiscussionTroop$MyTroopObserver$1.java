@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import ahtb;
+import aift;
 
 public class TroopDiscussionTroop$MyTroopObserver$1
   implements Runnable
 {
-  public TroopDiscussionTroop$MyTroopObserver$1(ahtb paramahtb) {}
+  public TroopDiscussionTroop$MyTroopObserver$1(aift paramaift) {}
   
   public void run()
   {

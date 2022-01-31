@@ -1,30 +1,24 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import java.util.ArrayList;
 
-public abstract interface aktw
+class aktw
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  aktw(aktv paramaktv, ArrayList paramArrayList, String paramString) {}
   
-  public abstract void a(boolean paramBoolean, int paramInt, ArCloudConfigInfo paramArCloudConfigInfo);
-  
-  public abstract void a(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void c(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
+  public void onClick(View paramView)
+  {
+    paramView = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString), 120);
+    paramView.a();
+    tvf.a(this.jdField_a_of_type_Aktv.a.a, paramView.a(), null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aktw
  * JD-Core Version:    0.7.0.1
  */

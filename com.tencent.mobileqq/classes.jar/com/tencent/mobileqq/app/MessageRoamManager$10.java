@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import ajmp;
+import akay;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bajr;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -16,7 +16,7 @@ import mqq.app.MobileQQ;
 public class MessageRoamManager$10
   implements Runnable
 {
-  public MessageRoamManager$10(ajmp paramajmp) {}
+  public MessageRoamManager$10(akay paramakay) {}
   
   public void run()
   {
@@ -38,12 +38,12 @@ public class MessageRoamManager$10
       long l4 = localSharedPreferences.getInt("blue_banner_show_time", 0);
       if (((!bool) && ((l3 - l1 > l2 * 3600000L) || (l3 < l1))) || ((i == 0) && (l4 * 1000L != 0L)))
       {
-        if (!bajr.b(this.this$0.a)) {
+        if (!VipUtils.b(this.this$0.a)) {
           break label446;
         }
         localObject = localSharedPreferences.getString("blue_banner_svip_text", null);
         if (i == 0) {
-          localObject = this.this$0.a.getApp().getResources().getString(2131628478);
+          localObject = this.this$0.a.getApp().getResources().getString(2131694120);
         }
         String str2 = localSharedPreferences.getString("blue_banner_go_url", null);
         if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str2)))
@@ -68,7 +68,7 @@ public class MessageRoamManager$10
       this.this$0.e(bool);
       return;
       label446:
-      if (bajr.c(this.this$0.a))
+      if (VipUtils.c(this.this$0.a))
       {
         localObject = localSharedPreferences.getString("blue_banner_vip_text", null);
         break;

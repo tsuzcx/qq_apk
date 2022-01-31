@@ -1,213 +1,428 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.view.accessibility.AccessibilityEvent;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQProgressDialog.1;
-
 public class bbms
-  extends Dialog
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Animatable jdField_a_of_type_AndroidGraphicsDrawableAnimatable;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bbmu jdField_a_of_type_Bbmu;
-  String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int = 48;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private int c = -2;
+  private static bbms a;
   
-  public bbms(Context paramContext)
+  public static bbms a()
   {
-    this(paramContext, 0);
-  }
-  
-  public bbms(Context paramContext, int paramInt)
-  {
-    this(paramContext, paramInt, 2131495445, 48);
-  }
-  
-  public bbms(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramContext, 2131690181);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt2, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131304797));
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt3;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131311529));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131311530));
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_b_of_type_AndroidWidgetImageView.getDrawable());
-  }
-  
-  public void a(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public void a(bbmu parambbmu)
-  {
-    this.jdField_a_of_type_Bbmu = parambbmu;
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new bbms();
+      }
+      return a;
+    }
+    finally {}
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      return;
-    }
-    if (paramBoolean)
+    if (paramString.equalsIgnoreCase("SCH-N719"))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      return;
+      bbmr.b = false;
+      bbmn.jdField_a_of_type_Int = 3;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (this.jdField_b_of_type_AndroidWidgetImageView == null) {
-      return;
-    }
-    if (paramBoolean)
+    do
     {
-      if (!this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.isRunning()) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.start();
+      return;
+      if (paramString.equalsIgnoreCase("GT-I9103"))
+      {
+        bbmr.c = false;
+        return;
       }
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      if (paramString.equalsIgnoreCase("SCH-I779"))
+      {
+        bbmr.f = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("GT-S5830"))
+      {
+        bbmr.j = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("SCH-I739"))
+      {
+        bbmr.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("GT-I9082"))
+      {
+        bbmr.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("SCH-I759"))
+      {
+        bbmr.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("GT-S7562C"))
+      {
+        bbmr.i = false;
+        return;
+      }
+    } while (!paramString.equalsIgnoreCase("i7562"));
+    bbmr.l = true;
+  }
+  
+  public void b(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("HTC T328w"))
+    {
+      bbmr.b = false;
+      bbmn.jdField_a_of_type_Int = 5;
+    }
+  }
+  
+  public void c(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("MOT-XT788"))
+    {
+      bbmr.jdField_a_of_type_Boolean = false;
+      bbmr.b = false;
+      bbmn.jdField_a_of_type_Int = 2;
+      bbmn.jdField_a_of_type_JavaLangString = "subscription";
+    }
+  }
+  
+  public void d(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("HUAWEI C8812")) {
+      bbmr.d = false;
+    }
+    do
+    {
+      return;
+      if (paramString.equalsIgnoreCase("HUAWEI C8813"))
+      {
+        bbmr.d = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("HUAWEI U8825D"))
+      {
+        bbmr.d = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("HUAWEI C8812E"))
+      {
+        bbmr.d = false;
+        return;
+      }
+    } while (!paramString.equalsIgnoreCase("HUAWEI G520-0000"));
+    bbmr.d = false;
+  }
+  
+  public void e(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("ZTE V889D"))
+    {
+      bbmr.b = false;
+      bbmn.jdField_a_of_type_Int = 2;
+    }
+    do
+    {
+      return;
+      if (paramString.equalsIgnoreCase("ZTE-T U960s"))
+      {
+        bbmr.k = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("ZTE-U V880"))
+      {
+        bbmr.d = false;
+        return;
+      }
+    } while (!paramString.equalsIgnoreCase("ZTE U930"));
+    bbmr.i = false;
+  }
+  
+  public void f(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("M032")) {
+      bbmr.e = false;
+    }
+    do
+    {
+      return;
+      if (paramString.equalsIgnoreCase("M030"))
+      {
+        bbmr.e = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("M040"))
+      {
+        bbmr.e = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("M351"))
+      {
+        bbmr.e = false;
+        return;
+      }
+    } while (!paramString.equalsIgnoreCase("M9"));
+    bbmr.e = false;
+  }
+  
+  public void g(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("U701")) {
+      bbmr.g = false;
+    }
+  }
+  
+  public void h(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("T580")) {
+      bbmr.h = false;
+    }
+    do
+    {
+      return;
+      if (paramString.equalsIgnoreCase("K-Touch T619"))
+      {
+        bbmr.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("K-Touch T621"))
+      {
+        bbmr.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("K-Touch T619+"))
+      {
+        bbmr.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("K-Touch C666t"))
+      {
+        bbmr.i = false;
+        return;
+      }
+    } while (!paramString.equalsIgnoreCase("Haier_HT-I600"));
+    bbmr.i = false;
+  }
+  
+  public void i(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("8022")) {
+      bbmr.h = false;
+    }
+    do
+    {
+      return;
+      if (paramString.equalsIgnoreCase("8150D"))
+      {
+        bbmr.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("Coolpad 8079"))
+      {
+        bbmr.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("Coolpad W706"))
+      {
+        bbmr.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("8190"))
+      {
+        bbmr.i = false;
+        return;
+      }
+    } while (!paramString.equalsIgnoreCase("Coolpad 8076D"));
+    bbmr.i = false;
+  }
+  
+  public void j(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("Lenovo A278t")) {
+      bbmr.h = false;
+    }
+    do
+    {
+      return;
+      if (paramString.equalsIgnoreCase("Lenovo P700"))
+      {
+        bbmr.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("Lenovo A750"))
+      {
+        bbmr.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("Lenovo S880"))
+      {
+        bbmr.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("Lenovo A390t"))
+      {
+        bbmr.m = true;
+        return;
+      }
+    } while (!paramString.equalsIgnoreCase("Lenovo S890"));
+    bbmr.m = true;
+  }
+  
+  public void k(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("vivo S11t")) {
+      bbmr.l = true;
+    }
+    do
+    {
+      return;
+      if (paramString.equalsIgnoreCase("vivo S7"))
+      {
+        bbmr.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo Y11"))
+      {
+        bbmr.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo S9"))
+      {
+        bbmr.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo Y19t"))
+      {
+        bbmr.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo S12"))
+      {
+        bbmr.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo X1"))
+      {
+        bbmr.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo S3+"))
+      {
+        bbmr.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo E5"))
+      {
+        bbmr.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo S6"))
+      {
+        bbmr.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo S11"))
+      {
+        bbmr.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo E1"))
+      {
+        bbmr.i = false;
+        return;
+      }
+    } while (!paramString.equalsIgnoreCase("vivo V1"));
+    bbmr.jdField_a_of_type_Int = 90;
+  }
+  
+  public void l(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("GN800")) {
+      bbmr.l = true;
+    }
+    do
+    {
+      return;
+      if (paramString.equalsIgnoreCase("E3T"))
+      {
+        bbmr.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("V182"))
+      {
+        bbmr.l = true;
+        return;
+      }
+      if ((paramString.equalsIgnoreCase("GN700W")) || (paramString.equalsIgnoreCase("GiONEE GN700W")))
+      {
+        bbmr.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("GN137"))
+      {
+        bbmr.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("GN700T"))
+      {
+        bbmr.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("X805"))
+      {
+        bbmr.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("Q1"))
+      {
+        bbmr.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("GN708T"))
+      {
+        bbmr.l = true;
+        return;
+      }
+    } while (!paramString.equalsIgnoreCase("E6mini"));
+    bbmr.l = true;
+  }
+  
+  public void m(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("T730")) {
+      bbmr.i = false;
+    }
+  }
+  
+  public void n(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("DOOV S1")) {
+      bbmr.l = true;
+    }
+    while (!paramString.equalsIgnoreCase("DOOV D360")) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.isRunning()) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
+    bbmr.l = true;
+  }
+  
+  public void o(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("LT26i")) {
+      bbmr.m = true;
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    setOnKeyListener(new bbmt(this, paramBoolean));
-  }
-  
-  public void d(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
+    while (!paramString.equalsIgnoreCase("LT18i")) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(paramInt);
+    bbmr.m = true;
   }
   
-  /* Error */
-  public void dismiss()
+  public void p(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokespecial 142	android/app/Dialog:dismiss	()V
-    //   4: aload_0
-    //   5: invokestatic 147	zqa:a	(Landroid/app/Dialog;)V
-    //   8: return
-    //   9: astore_1
-    //   10: aload_0
-    //   11: invokestatic 147	zqa:a	(Landroid/app/Dialog;)V
-    //   14: return
-    //   15: astore_1
-    //   16: aload_0
-    //   17: invokestatic 147	zqa:a	(Landroid/app/Dialog;)V
-    //   20: aload_1
-    //   21: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	22	0	this	bbms
-    //   9	1	1	localException	java.lang.Exception
-    //   15	6	1	localObject	java.lang.Object
-    // Exception table:
-    //   from	to	target	type
-    //   0	4	9	java/lang/Exception
-    //   0	4	15	finally
-  }
-  
-  public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return super.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent);
+    if ("MI PAD".equalsIgnoreCase(paramString)) {
+      bbmr.i = false;
     }
-    if (AppSetting.c) {
-      QQAppInterface.f(this.jdField_a_of_type_JavaLangString);
-    }
-    return true;
-  }
-  
-  public void onBackPressed()
-  {
-    super.onBackPressed();
-    if (this.jdField_a_of_type_Bbmu != null) {
-      this.jdField_a_of_type_Bbmu.a();
-    }
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    paramBundle = getWindow();
-    paramBundle.setContentView(this.jdField_a_of_type_AndroidViewView);
-    WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
-    localLayoutParams.width = -1;
-    localLayoutParams.height = this.c;
-    localLayoutParams.gravity = this.jdField_b_of_type_Int;
-    localLayoutParams.y += this.jdField_a_of_type_Int;
-    paramBundle.setAttributes(localLayoutParams);
-    setCanceledOnTouchOutside(false);
-  }
-  
-  protected void onStart()
-  {
-    this.jdField_b_of_type_AndroidWidgetImageView.postDelayed(new QQProgressDialog.1(this), 50L);
-    super.onStart();
-  }
-  
-  protected void onStop()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.isRunning()) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
-    }
-    super.onStop();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbms
  * JD-Core Version:    0.7.0.1
  */

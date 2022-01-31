@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.l;
-import com.tencent.tmassistantbase.util.t;
+import com.tencent.tmassistantbase.util.k;
+import com.tencent.tmassistantbase.util.s;
 
 public class RemoteOpService
   extends Service
@@ -20,9 +20,9 @@ public class RemoteOpService
   
   public void onCreate()
   {
-    t.c();
+    s.c();
     GlobalUtil.getInstance().setContext(this);
-    l.a().post(new e(this));
+    k.a().post(new e(this));
     super.onCreate();
   }
 }

@@ -1,72 +1,84 @@
-import android.app.Activity;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.mobileqq.mini.sdk.LaunchParam;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
-import com.tencent.widget.ThemeImageView;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QQDingdongSoundData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
 
-class anpt
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+public class anpt
+  extends anpi
 {
-  int jdField_a_of_type_Int;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  MiniAppRecommInfo.MiniApp jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp;
-  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public anpt(Activity paramActivity, View paramView)
+  public anpt(QQAppInterface paramQQAppInterface)
   {
-    super(paramView);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131304640));
-    if ((this.jdField_a_of_type_AndroidWidgetImageView instanceof ThemeImageView)) {
-      ((ThemeImageView)this.jdField_a_of_type_AndroidWidgetImageView).setMaskShape(beog.c);
+    super("qq.android.dingdong.ring", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10050;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return QQDingdongSoundData.class;
+  }
+  
+  public String a()
+  {
+    return "dingdongDownloadAudioSoundDuration";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQDingdongSoundHandler", 2, "download success: " + paramString);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131304641));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(MiniAppRecommInfo.MiniApp paramMiniApp)
-  {
-    if (paramMiniApp == null) {
+    try
+    {
+      bbdj.a(paramString, mrd.a(), false);
+      super.a(paramString);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp = paramMiniApp;
-    Drawable localDrawable = MiniAppUtils.getIcon(this.jdField_a_of_type_AndroidWidgetImageView.getContext(), paramMiniApp.c, true, 2130847244, 48);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramMiniApp.b);
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
   }
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp != null) && (this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo != null))
+    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)a();
+    if ((localQQDingdongSoundData != null) && (!localQQDingdongSoundData.autoDownload))
     {
-      paramView = new MiniAppConfig(this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo);
-      paramView.launchParam = new LaunchParam();
-      paramView.launchParam.scene = 2065;
-      MiniAppController.startApp((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramView, null);
-      anps.a(102, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp.jdField_a_of_type_Int);
+      localQQDingdongSoundData.autoDownload = true;
+      anow.a(localQQDingdongSoundData, new String[] { "autoDownload" });
     }
+    super.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean h()
+  {
+    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)a();
+    if (localQQDingdongSoundData == null) {
+      return super.h();
+    }
+    return localQQDingdongSoundData.autoDownload;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     anpt
  * JD-Core Version:    0.7.0.1
  */

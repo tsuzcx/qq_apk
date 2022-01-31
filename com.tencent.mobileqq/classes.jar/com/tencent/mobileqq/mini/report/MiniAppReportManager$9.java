@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.report;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bbtm;
+import bcxm;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,7 +16,7 @@ final class MiniAppReportManager$9
   {
     try
     {
-      long l = bbtm.a().a();
+      long l = bcxm.a().a();
       Object localObject = MiniAppReportManager.access$1100(this.val$miniAppConfig);
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {

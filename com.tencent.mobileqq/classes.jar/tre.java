@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import android.graphics.Bitmap;
 
 class tre
-  implements DialogInterface.OnClickListener
+  extends tqc
 {
-  tre(trd paramtrd) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  tre(tqk paramtqk, boolean paramBoolean1, boolean paramBoolean2, trt paramtrt)
   {
-    if (this.a.a.jdField_a_of_type_Tsq != null) {
-      this.a.a.jdField_a_of_type_Tsq.a(this.a.a.jdField_a_of_type_Tso);
-    }
+    super(paramBoolean1, paramBoolean2);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Trt.a = ((Bitmap)a("WeChatImageJob_out_bitmap"));
+    return true;
   }
 }
 

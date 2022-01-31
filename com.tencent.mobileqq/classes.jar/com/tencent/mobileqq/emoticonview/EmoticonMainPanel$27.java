@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import ankb;
+import aoak;
 import java.util.List;
 
 class EmoticonMainPanel$27
@@ -11,18 +11,18 @@ class EmoticonMainPanel$27
   public void run()
   {
     List localList = this.this$0.jdField_a_of_type_JavaUtilList;
-    ankb localankb;
+    aoak localaoak;
     int i;
     if (localList != null)
     {
-      localankb = null;
+      localaoak = null;
       i = 0;
       int j = localList.size();
       if (i >= j) {
         break label98;
       }
-      localankb = (ankb)localList.get(i);
-      if ((localankb == null) || (localankb.a != 9)) {
+      localaoak = (aoak)localList.get(i);
+      if ((localaoak == null) || (localaoak.a != 9)) {
         break label62;
       }
     }
@@ -36,7 +36,7 @@ class EmoticonMainPanel$27
         i += 1;
         break;
       }
-      this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.a(localankb);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.a(localaoak);
       return;
       label98:
       i = -1;

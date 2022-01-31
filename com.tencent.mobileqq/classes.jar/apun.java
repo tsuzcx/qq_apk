@@ -1,17 +1,14 @@
-import android.content.Context;
-import com.tencent.widget.AdapterView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract class apun
+final class apun
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(Context paramContext, apui paramapui, int paramInt);
-  
-  public abstract void a(AdapterView paramAdapterView, int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apun
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,22 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
 
-class uym
-  extends AnimatorListenerAdapter
+public class uym
 {
-  uym(uyj paramuyj) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public static void a(String paramString, Object... paramVarArgs)
   {
-    urk.b("TextLayer", "scaleAnimator cancel!");
+    veg.e(paramString, uyo.a(paramVarArgs));
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public static void b(String paramString, Object... paramVarArgs)
   {
-    urk.b("TextLayer", "scaleAnimator end!");
-    this.a.p = 1.0F;
-    this.a.c = false;
-    this.a.a.g();
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString, 2, uyo.a(paramVarArgs));
+    }
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public static void c(String paramString, Object... paramVarArgs)
   {
-    urk.b("TextLayer", "scaleAnimator start!");
-    this.a.c = true;
+    veg.d(paramString, uyo.a(paramVarArgs));
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo;
 
-import aifg;
-import aitw;
+import airz;
+import ajhw;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
@@ -31,7 +31,7 @@ public final class ApolloManager$3
       if (QLog.isColorLevel()) {
         QLog.d("ApolloManager", 2, "check default res cost: " + (l2 - l1) + " ms, unzip: " + bool);
       }
-      if ((bool) && (aifg.a()))
+      if ((bool) && (airz.a()))
       {
         localObject2 = localObject1;
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -41,7 +41,7 @@ public final class ApolloManager$3
           localSharedPreferences.edit().putString("inner_res_md5", (String)localObject2).commit();
         }
       }
-      aifg.a().set(false);
+      airz.a().set(false);
       if (QLog.isColorLevel()) {
         QLog.d("ApolloManager", 2, "check default ready scene file cost: " + (System.currentTimeMillis() - l2));
       }
@@ -52,7 +52,7 @@ public final class ApolloManager$3
         QLog.d("ApolloManager", 2, "local md5: " + (String)localObject2 + ", newMd5: " + (String)localObject1);
         bool = true;
       }
-      else if (!ApolloUtil.c(0))
+      else if (!ApolloUtil.d(0))
       {
         if (QLog.isColorLevel()) {
           QLog.d("ApolloManager", 2, "role res is invalid");
@@ -61,7 +61,7 @@ public final class ApolloManager$3
       }
       else
       {
-        localObject2 = aitw.a(0);
+        localObject2 = ajhw.a(0);
         if ((localObject2 == null) || (localObject2.length == 0))
         {
           StringBuilder localStringBuilder;
@@ -88,7 +88,7 @@ public final class ApolloManager$3
             break label429;
           }
           int k = localObject2[i];
-          if (!ApolloUtil.b(k))
+          if (!ApolloUtil.c(k))
           {
             if (QLog.isColorLevel()) {
               QLog.d("ApolloManager", 2, "dress is invalid id: " + k);

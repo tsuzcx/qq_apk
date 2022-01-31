@@ -1,18 +1,34 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import java.nio.ByteBuffer;
 
 class aznv
-  extends aznw
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public final long a;
+  public final long b;
+  public final long c;
+  public final long d;
   
-  aznv(aznu paramaznu)
+  public aznv(long paramLong)
   {
-    super(paramaznu.a);
+    this.a = 2882377846L;
+    this.b = 1007L;
+    this.c = 0L;
+    this.d = paramLong;
+  }
+  
+  public aznv(ByteBuffer paramByteBuffer)
+  {
+    this.a = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.b = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.c = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.d = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+  }
+  
+  public void a(ByteBuffer paramByteBuffer)
+  {
+    paramByteBuffer.putInt((int)(this.a & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.b & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.c & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.d & 0xFFFFFFFF));
   }
 }
 

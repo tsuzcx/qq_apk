@@ -2,13 +2,13 @@ package com.tencent.ad.tangram.net;
 
 import android.os.Bundle;
 import com.tencent.ad.tangram.ipc.AdIPCManager;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Handler;
 import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
 import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
-import com.tencent.ad.tangram.ipc.AdIPCManager.a;
 import com.tencent.ad.tangram.process.AdProcessManager;
 
 final class AdIPV4$b
-  implements AdIPCManager.a
+  implements AdIPCManager.Handler
 {
   static final String ACTION = "GET_IPV4";
   static final String KEY_IPV4_ADDRESS = "IPV4_ADDRESS";

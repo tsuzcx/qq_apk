@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
 import java.io.File;
-import nhr;
-import nhu;
-import nhv;
-import pnc;
+import ntb;
+import nte;
+import ntf;
+import pyx;
 
 public class KanDianViewController$PullRefreshCompleteListener$2
   implements Runnable
 {
-  public KanDianViewController$PullRefreshCompleteListener$2(nhu paramnhu) {}
+  public KanDianViewController$PullRefreshCompleteListener$2(nte paramnte) {}
   
   public void run()
   {
-    String str = pnc.e();
+    String str = pyx.f();
     if ((str != null) && (new File(str).exists()))
     {
-      nhr.a(this.a.a, str);
-      nhr.a(this.a.a).removeMessages(3);
-      nhr.a(this.a.a).sendEmptyMessage(2);
+      ntb.a(this.a.a, str);
+      ntb.a(this.a.a).removeMessages(3);
+      ntb.a(this.a.a).sendEmptyMessage(2);
     }
   }
 }

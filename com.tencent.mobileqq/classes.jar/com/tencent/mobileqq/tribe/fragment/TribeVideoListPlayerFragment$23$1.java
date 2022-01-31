@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.tribe.fragment;
 
 import android.view.View;
-import ayaq;
-import ayay;
+import azay;
+import azbg;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class TribeVideoListPlayerFragment$23$1
   implements Runnable
 {
-  public TribeVideoListPlayerFragment$23$1(ayaq paramayaq) {}
+  public TribeVideoListPlayerFragment$23$1(azay paramazay) {}
   
   public void run()
   {
     if (((TribeVideoListPlayerFragment.a(this.a.a) != null) && (TribeVideoListPlayerFragment.a(this.a.a).isVisible())) || (this.a.a.e))
     {
-      if ((((View)this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag() instanceof ayay))
+      if ((((View)this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag() instanceof azbg))
       {
-        this.a.a.a(((ayay)((View)this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag()).a, this.a.a.jdField_a_of_type_Long, this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion(), true);
+        this.a.a.a(((azbg)((View)this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag()).a, this.a.a.jdField_a_of_type_Long, this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion(), true);
         this.a.a.jdField_a_of_type_Long = 0L;
       }
       this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();

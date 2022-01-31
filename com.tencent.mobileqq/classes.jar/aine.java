@@ -1,24 +1,14 @@
-import android.os.Bundle;
-import eipc.EIPCResult;
+import android.widget.TextView;
 
-class aine
-  implements nsy
+public class aine
 {
-  aine(aind paramaind, int paramInt) {}
-  
-  public void a(int paramInt)
-  {
-    aind.b = false;
-    if (paramInt == 1)
-    {
-      EIPCResult localEIPCResult = EIPCResult.createResult(0, new Bundle());
-      this.jdField_a_of_type_Aind.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
-    }
-  }
+  public int a;
+  public TextView a;
+  public TextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aine
  * JD-Core Version:    0.7.0.1
  */

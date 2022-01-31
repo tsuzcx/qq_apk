@@ -1,14 +1,6 @@
-public final class aizr
-  implements ajac
+public abstract interface aizr
 {
-  public aizr(ajab paramajab) {}
-  
-  public void a(int paramInt)
-  {
-    if (this.a != null) {
-      this.a.a(paramInt);
-    }
-  }
+  public abstract void a(aizs paramaizs);
 }
 
 

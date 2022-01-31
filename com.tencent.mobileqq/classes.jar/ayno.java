@@ -1,104 +1,110 @@
-import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic.4.1;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import java.util.Map;
+import javax.annotation.Nullable;
 
 public class ayno
-  extends ajey
+  implements aynp
 {
-  ayno(aynk paramaynk) {}
+  arla jdField_a_of_type_Arla;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  protected void h(boolean paramBoolean, Object paramObject)
+  public ayno(QQAppInterface paramQQAppInterface)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Ajey);
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    for (Activity localActivity = null;; localActivity = (Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get())
-    {
-      this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
-      if (this.a.jdField_a_of_type_Aynt != null) {
-        break;
-      }
-      aynk.a(this.a);
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Arla = ((arla)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(338));
+  }
+  
+  public int a()
+  {
+    return 7;
+  }
+  
+  public bbgg a()
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return aymz.b;
+  }
+  
+  public void a() {}
+  
+  public void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, @Nullable Map<String, aynm> paramMap, @Nullable Bundle paramBundle)
+  {
+    QLog.i("WatchTogetherManager", 1, "notifySessionChange  serviceType = " + paramInt1 + " from = " + paramInt3);
+  }
+  
+  public void a(Context paramContext, SessionInfo paramSessionInfo, int paramInt)
+  {
+    if (paramInt == 4) {
+      this.jdField_a_of_type_Arla.a();
     }
-    int i = -1;
-    if (paramObject == null)
+  }
+  
+  public void a(aynm paramaynm, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject)
+  {
+    QLog.i("WatchTogetherManager", 1, "onPushMessageReceive");
+    this.jdField_a_of_type_Arla.a((WatchTogetherSession)paramaynm, paramInt);
+  }
+  
+  public boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, Map<String, aynm> paramMap, @Nullable Bundle paramBundle)
+  {
+    if (paramInt2 == 0) {}
+    for (paramContext = "2";; paramContext = "")
     {
-      QLog.i("TroopCreateLogic", 1, "onGetTroopCreate data null");
-      aynk.a(this.a);
-      this.a.jdField_a_of_type_Aynt.a(-1, "");
-      this.a.jdField_a_of_type_Aynt = null;
-      return;
-    }
-    if (!paramBoolean) {}
-    try
-    {
-      int j = ((aynv)paramObject).jdField_a_of_type_Int;
-      i = j;
-    }
-    catch (Exception paramObject)
-    {
-      label135:
-      String str;
-      break label135;
-    }
-    QLog.i("TroopCreateLogic", 1, "onGetTroopCreate retCode:" + i + "  currentUin:" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-    aynk.a(this.a);
-    this.a.jdField_a_of_type_Aynt.a(i, "");
-    return;
-    paramObject = (TroopInfo)paramObject;
-    str = paramObject.troopuin;
-    if (TextUtils.isEmpty(str))
-    {
-      QLog.i("TroopCreateLogic", 1, "onGetTroopCreate troopUin:" + str);
-      aynk.a(this.a);
-      this.a.jdField_a_of_type_Aynt.a(-1, "");
-      this.a.jdField_a_of_type_Aynt = null;
-      return;
-    }
-    this.a.jdField_a_of_type_Aynu.f = str;
-    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_create", "", "new_create", "number", 0, 0, str, Integer.toString(this.a.jdField_a_of_type_Aynu.jdField_a_of_type_Int), "", "");
-    if (this.a.jdField_a_of_type_Aynu.jdField_a_of_type_JavaUtilArrayList == null)
-    {
-      i = 1;
-      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_create_new", "", "suc_create", "person_create", 0, 0, str, "" + this.a.jdField_a_of_type_Aynu.d, "" + i, "");
-      QLog.i("TroopCreateLogic", 1, "onGetTroopCreate success troopUin:" + str + " number:" + i + "  createFrom:" + this.a.jdField_a_of_type_Aynu.d);
-      ThreadManager.post(new TroopCreateLogic.4.1(this, str, paramObject, i), 8, null, true);
-      if (this.a.jdField_a_of_type_Aynu.b)
+      QLog.i("WatchTogetherManager", 1, "start  groupuin = " + paramString + " miniapp_from = " + paramContext);
+      WatchTogetherSession localWatchTogetherSession = (WatchTogetherSession)paramMap.get("2_1_" + paramString);
+      paramMap = localWatchTogetherSession;
+      if (localWatchTogetherSession == null) {}
+      try
       {
-        paramObject = localActivity;
-        if (localActivity == null) {
-          paramObject = BaseApplicationImpl.getContext();
+        paramMap = (WatchTogetherSession)aynn.a(2, 1, paramString);
+        this.jdField_a_of_type_Arla.a(paramContext, paramMap, paramBundle);
+        return false;
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          paramMap = localWatchTogetherSession;
         }
-        this.a.a(paramObject, str);
       }
-      this.a.jdField_a_of_type_Aynt.a(0, str);
-      if (this.a.jdField_a_of_type_Aynu.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
-        break label630;
-      }
-      ((ajtg)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).b(str, this.a.jdField_a_of_type_Aynu.jdField_a_of_type_JavaUtilArrayList, "");
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a.jdField_a_of_type_Ajuc);
     }
-    for (;;)
-    {
-      aynk.a(this.a);
-      return;
-      i = this.a.jdField_a_of_type_Aynu.jdField_a_of_type_JavaUtilArrayList.size();
-      break;
-      label630:
-      this.a.jdField_a_of_type_Aynt = null;
+  }
+  
+  public boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, Map<String, aynm> paramMap, @Nullable Bundle paramBundle)
+  {
+    return true;
+  }
+  
+  public boolean b(Context paramContext, String paramString, int paramInt1, int paramInt2, Map<String, aynm> paramMap, @Nullable Bundle paramBundle)
+  {
+    paramContext = (WatchTogetherSession)paramMap.get("2_1_" + paramString);
+    QLog.i("WatchTogetherManager", 1, "join  groupuin = " + paramString + " from = " + paramInt2);
+    if (paramInt2 == 2) {
+      this.jdField_a_of_type_Arla.a("4", paramContext, paramBundle);
     }
+    while (((paramInt2 != 1) && (paramInt2 != 8)) || (paramContext == null)) {
+      return false;
+    }
+    if ((!TextUtils.isEmpty(paramContext.a)) && (!paramContext.a.contains("fromid"))) {
+      paramContext.a = (paramContext.a + "&fromid=" + "10011");
+    }
+    this.jdField_a_of_type_Arla.a(paramContext, paramBundle);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayno
  * JD-Core Version:    0.7.0.1
  */

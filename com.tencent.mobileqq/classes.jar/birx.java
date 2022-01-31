@@ -1,34 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class birx
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  static
+  birx(biru parambiru) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!birw.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
+    biru.a(this.a).setVisibility(8);
+    biru.a(this.a).setAlpha(1.0F);
+    biru.a(this.a, false);
   }
   
-  birx(birw parambirw) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Bundle();
-    bijy localbijy = this.jdField_a_of_type_Birw.a().a;
-    if ((!jdField_a_of_type_Boolean) && (localbijy == null)) {
-      throw new AssertionError();
-    }
-    bihm.a(paramDialogInterface, localbijy);
-    paramDialogInterface.putInt("interact_type", birw.a(this.jdField_a_of_type_Birw));
-    this.jdField_a_of_type_Birw.a.a(38, paramDialogInterface);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

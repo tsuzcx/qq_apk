@@ -1,12 +1,14 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import afce;
-import ajed;
-import aome;
-import awao;
-import axam;
-import bace;
-import bbfc;
+import afnu;
+import ajsf;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import apcy;
+import awzw;
+import ayao;
+import bbdj;
+import bcic;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -16,7 +18,7 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import mnf;
+import mye;
 
 public class ActiveAccount
   extends AsyncStep
@@ -28,35 +30,57 @@ public class ActiveAccount
     }
     this.a.jdField_a_of_type_Long = System.currentTimeMillis();
     this.a.jdField_a_of_type_AndroidContentSharedPreferences = this.a.app.getApp().getSharedPreferences("acc_info" + this.a.app.getAccount(), 0);
-    Object localObject = this.a.app;
+    localObject = this.a.app;
     ThemeUtil.initTheme((QQAppInterface)localObject);
-    ((QQAppInterface)localObject).a(true);
-    axam.a((QQAppInterface)localObject);
+    try
+    {
+      ((QQAppInterface)localObject).a(true, this.a.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PREF_PLUGIN_DELAY_TIME", 0L));
+      bool = false;
+    }
+    catch (Throwable localThrowable1)
+    {
+      for (;;)
+      {
+        boolean bool;
+        ((QQAppInterface)localObject).a(true);
+        try
+        {
+          this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("PREF_PLUGIN_DELAY_TIME", 0L).apply();
+          bool = true;
+        }
+        catch (Throwable localThrowable2)
+        {
+          bool = true;
+        }
+      }
+    }
+    ayao.a((QQAppInterface)localObject);
     ((QQAppInterface)localObject).b();
-    aome.a().b();
+    apcy.a().b();
     UnifiedMonitor.a().a();
     OpenApiManager.getInstance().onRuntimeActive((QQAppInterface)localObject);
-    if (afce.a(((QQAppInterface)localObject).getCurrentAccountUin()))
+    if (afnu.a(((QQAppInterface)localObject).getCurrentAccountUin()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "addSystemMsgSeq:0");
       }
       ((QQAppInterface)localObject).a().e("last_group_seq", 0L);
       ((QQAppInterface)localObject).a().e("last_group_suspicious_seq", 0L);
-      afce.a(((QQAppInterface)localObject).getCurrentAccountUin(), false);
+      afnu.a(((QQAppInterface)localObject).getCurrentAccountUin(), false);
       ((QQAppInterface)localObject).a().e("last_friend_seq_47", 0L);
     }
-    if (mnf.a != null) {
-      mnf.a().a();
+    if (mye.a != null) {
+      mye.a().a();
     }
-    if ((((QQAppInterface)localObject).a(107) instanceof bbfc)) {
-      ((bbfc)((QQAppInterface)localObject).a(107)).a();
+    if ((((QQAppInterface)localObject).a(107) instanceof bcic)) {
+      ((bcic)((QQAppInterface)localObject).a(107)).a();
     }
-    localObject = new File(ajed.aU);
-    if (!bace.a(ajed.aU)) {
+    localObject = new File(ajsf.aW);
+    if (!bbdj.a(ajsf.aW)) {
       ((File)localObject).mkdirs();
     }
-    CleanCache.a(ajed.aU);
+    CleanCache.a(ajsf.aW);
+    QLog.d("QQInitHandler", 2, new Object[] { "pluginManageDelayTime=", Long.valueOf(this.a.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PREF_PLUGIN_DELAY_TIME", 0L)), " hasCrashInAddManager=", Boolean.valueOf(bool) });
     return 7;
   }
   

@@ -1,31 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import Wallet.RspWalletConfig;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class agzh
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  agzh(agxq paramagxq, int paramInt) {}
+  agzh(agzf paramagzf) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (BaseActivity.sTopActivity != null) {
-      arpa.a().a(BaseActivity.sTopActivity, this.jdField_a_of_type_Int);
-    }
-    for (;;)
+    if (paramInt == 17)
     {
-      arpa.m();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
+      if (!paramBoolean) {}
+      try
+      {
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("QWalletConfigManager", 2, "setConfigSession fail get rsp:");
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+      }
+      paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
+      if (QLog.isColorLevel())
+      {
+        QLog.d("QWalletConfigManager", 2, "setConfigSession RspWalletConfig|" + paramBundle);
+        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agzh
  * JD-Core Version:    0.7.0.1
  */

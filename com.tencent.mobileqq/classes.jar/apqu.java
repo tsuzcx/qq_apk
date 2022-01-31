@@ -1,31 +1,19 @@
-import java.util.HashMap;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.3;
 
 class apqu
-  implements axrs
+  implements ayeg
 {
-  apqu(apqs paramapqs) {}
+  apqu(apqt paramapqt) {}
   
-  public void a(axsp paramaxsp, axsq paramaxsq)
+  public void a(bcpq parambcpq)
   {
-    if ((paramaxsp != null) && (paramaxsq != null) && ((paramaxsp instanceof axro)))
-    {
-      paramaxsp = (axro)paramaxsp;
-      paramaxsp.jdField_a_of_type_Long += paramaxsq.c;
-      paramaxsq.c = 0L;
-      paramaxsq = "bytes=" + paramaxsp.jdField_a_of_type_Long + "-";
-      paramaxsp.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaxsq);
-      paramaxsq = paramaxsp.jdField_a_of_type_JavaLangString;
-      if (paramaxsq.contains("range="))
-      {
-        paramaxsq = paramaxsq.substring(0, paramaxsq.lastIndexOf("range="));
-        paramaxsp.jdField_a_of_type_JavaLangString = (paramaxsq + "range=" + paramaxsp.jdField_a_of_type_Long);
-      }
-    }
+    SimpleFileViewer.a(this.a.a.this$0, parambcpq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apqu
  * JD-Core Version:    0.7.0.1
  */

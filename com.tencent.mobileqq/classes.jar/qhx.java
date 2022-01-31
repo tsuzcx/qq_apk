@@ -1,38 +1,73 @@
-import android.graphics.Bitmap;
-import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
+import java.util.List;
 
-public abstract class qhx
+public class qhx
 {
-  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private int jdField_b_of_type_Int = 10;
+  private String jdField_b_of_type_JavaLangString = "";
+  private int c = 30;
   
-  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo, qhw paramqhw)
+  public int a()
   {
-    a(paramTVK_NetVideoInfo);
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a(qhw paramqhw) {}
-  
-  public abstract void a(qhw paramqhw, Object paramObject);
-  
-  public void a(qhw paramqhw, String paramString) {}
-  
-  public void a(qhw paramqhw, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap) {}
-  
-  public boolean a(qhw paramqhw, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public String a()
   {
-    return false;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public boolean a(qhw paramqhw, int paramInt, Object paramObject)
+  public List<String> a()
   {
-    return false;
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public void b(qhw paramqhw) {}
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public void b(qhw paramqhw, String paramString) {}
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
   
-  public void d(qhw paramqhw) {}
+  public void a(List<String> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public int c()
+  {
+    return this.c;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.c = paramInt;
+  }
 }
 
 

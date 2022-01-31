@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import bheo;
+import bihe;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class ReadInJoyListViewGroup$4
@@ -11,7 +11,7 @@ class ReadInJoyListViewGroup$4
   public void run()
   {
     if (BaseApplicationImpl.sProcessId != 9) {
-      bheo.a(BaseApplicationImpl.getContext());
+      bihe.a(BaseApplicationImpl.getContext());
     }
   }
 }

@@ -1,44 +1,52 @@
 package com.tencent.mobileqq.minigame.jsapi.plugins;
 
+import android.app.Activity;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import bbgg;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.mobileqq.minigame.manager.GameInfoManager;
+import com.tencent.mobileqq.mini.util.ColorUtils;
+import com.tencent.mobileqq.minigame.ui.GameActivity;
 import com.tencent.mobileqq.minigame.utils.GameLog;
-import org.json.JSONObject;
 
 class OpenDataPlugin$8
-  implements MiniAppCmdInterface
+  implements Runnable
 {
-  OpenDataPlugin$8(OpenDataPlugin paramOpenDataPlugin, JsRuntime paramJsRuntime, int paramInt) {}
+  OpenDataPlugin$8(OpenDataPlugin paramOpenDataPlugin, String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener1, Boolean paramBoolean, String paramString4, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public void run()
   {
-    GameLog.getInstance().i("OpenDataPlugin", "getUserCloudStorage callback appid:" + GameInfoManager.g().getAppId() + ", isSuc" + paramBoolean + ", ret:" + String.valueOf(paramJSONObject));
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBoolean) {
+    if ((this.this$0.jsPluginEngine.getActivityContext() != null) && (this.this$0.jsPluginEngine.getActivityContext().getActivity() != null) && (!this.this$0.jsPluginEngine.getActivityContext().getActivity().isFinishing())) {
       try
       {
-        localJSONObject.put("state", "success");
-        if ((paramJSONObject != null) && (paramJSONObject.has("KVDataList"))) {
-          localJSONObject.put("KVDataList", paramJSONObject.get("KVDataList"));
-        }
-        for (;;)
+        bbgg localbbgg = new bbgg(this.this$0.jsPluginEngine.getActivityContext(), 2131755791);
+        localbbgg.setContentView(2131559251);
+        if (TextUtils.isEmpty(this.val$title)) {}
+        for (String str = null;; str = this.val$title)
         {
-          this.this$0.jsPluginEngine.callbackJsEventOK(this.val$jsRuntime, "getUserCloudStorage", localJSONObject, this.val$callbackId);
+          localbbgg.setTitle(str).setMessage(this.val$content);
+          localbbgg.setPositiveButton(this.val$positiveButtonText, ColorUtils.parseColor("#3CC51F"), this.val$positiveButtonListener);
+          if (this.val$showCancel.booleanValue()) {
+            localbbgg.setNegativeButton(this.val$cancelButtonText, ColorUtils.parseColor("#000000"), this.val$negativeButtonListener);
+          }
+          localbbgg.setCanceledOnTouchOutside(true);
+          localbbgg.setOnCancelListener(this.val$onCancelListener);
+          localbbgg.show();
+          if (!(this.this$0.jsPluginEngine.getActivityContext().getActivity() instanceof GameActivity)) {
+            break;
+          }
+          ((GameActivity)this.this$0.jsPluginEngine.getActivityContext().getActivity()).hideKeyBoard();
           return;
-          localJSONObject.put("KVDataList", "[]");
         }
-        localJSONObject.put("state", "fail");
-      }
-      catch (Throwable paramJSONObject)
-      {
-        GameLog.getInstance().e("OpenDataPlugin", "getUserCloudStorage error " + paramJSONObject.getMessage());
-        this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "getUserCloudStorage", null, this.val$callbackId);
         return;
       }
+      catch (Throwable localThrowable)
+      {
+        GameLog.getInstance().e("OpenDataPlugin", "showQQCustomModel error " + localThrowable.getMessage());
+      }
     }
-    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "getUserCloudStorage", localJSONObject, this.val$callbackId);
   }
 }
 

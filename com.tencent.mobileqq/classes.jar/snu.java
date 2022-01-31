@@ -1,62 +1,57 @@
-import android.view.View;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class snu
-  extends smt
+class snu
+  implements BusinessObserver
 {
-  ShareGroupItem jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  snu(snq paramsnq) {}
   
-  public snu(smz paramsmz, ShareGroupItem paramShareGroupItem)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramsmz);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = paramShareGroupItem;
-    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isOwner();
-    this.b = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isPublic();
-  }
-  
-  protected void a(View paramView, CommentEntry paramCommentEntry, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem == null) {
-      super.a(paramView, paramCommentEntry, paramInt);
-    }
-    paramView = QQStoryContext.a().b();
-    begr localbegr = begr.a(this.jdField_a_of_type_Smz.a);
-    if (paramCommentEntry.authorUnionId.equals(paramView)) {
-      if (paramCommentEntry.status == 2)
-      {
-        localbegr.c(ajjy.a(2131648144));
-        localbegr.a(ajjy.a(2131648138), 3);
-      }
-    }
-    for (;;)
+    if (paramBoolean) {}
+    try
     {
-      localbegr.d(ajjy.a(2131648120));
-      localbegr.a(new smw(this, localbegr, paramCommentEntry, paramInt));
-      localbegr.show();
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+        localFollowResponse.mergeFrom(paramBundle);
+        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        if (paramInt == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
+          }
+          this.a.a = true;
+          snq.a(this.a);
+          return;
+        }
+        if (paramInt == 58)
+        {
+          snq.a(this.a, 2131695565);
+          return;
+        }
+        if (paramInt == 65)
+        {
+          snq.a(this.a, 2131695538);
+          return;
+        }
+        snq.a(this.a, 2131695568);
+        return;
+        snq.a(this.a, 2131695568);
+      }
       return;
-      localbegr.c(ajjy.a(2131648121));
-      break;
-      if ((this.b) && (this.jdField_a_of_type_Boolean))
-      {
-        localbegr.c(ajjy.a(2131648132));
-        localbegr.a(ajjy.a(2131648141), 3);
-        localbegr.c(ajjy.a(2131648148));
-      }
-      else
-      {
-        localbegr.c(ajjy.a(2131648131));
-        localbegr.c(ajjy.a(2131648139));
-      }
     }
+    catch (Exception paramBundle) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     snu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.filemanager.activity.fileassistant;
 
-import amgz;
+import amxd;
 
 class FileAssistantActivity$CheckAlbumRunnable$1
   implements Runnable
 {
-  FileAssistantActivity$CheckAlbumRunnable$1(FileAssistantActivity.CheckAlbumRunnable paramCheckAlbumRunnable, amgz paramamgz, int paramInt) {}
+  FileAssistantActivity$CheckAlbumRunnable$1(FileAssistantActivity.CheckAlbumRunnable paramCheckAlbumRunnable, amxd paramamxd, int paramInt) {}
   
   public void run()
   {
-    FileAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantFileAssistantActivity$CheckAlbumRunnable.this$0, this.jdField_a_of_type_Amgz.c(), this.jdField_a_of_type_Amgz.d(), this.jdField_a_of_type_Int, this.jdField_a_of_type_Amgz.a(), this.jdField_a_of_type_Amgz.b(), this.jdField_a_of_type_Amgz.e());
+    FileAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantFileAssistantActivity$CheckAlbumRunnable.this$0, this.jdField_a_of_type_Amxd.c(), this.jdField_a_of_type_Amxd.d(), this.jdField_a_of_type_Int, this.jdField_a_of_type_Amxd.a(), this.jdField_a_of_type_Amxd.b(), this.jdField_a_of_type_Amxd.e());
   }
 }
 

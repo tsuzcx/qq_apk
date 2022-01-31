@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.app.Dialog;
-import bigz;
+import bjxu;
 
 public class EditVideoStoryButton$2
   implements Runnable
 {
-  public EditVideoStoryButton$2(bigz parambigz) {}
+  public EditVideoStoryButton$2(bjxu parambjxu) {}
   
   public void run()
   {
-    bigz.a(this.this$0).show();
+    bjxu.a(this.this$0).show();
   }
 }
 

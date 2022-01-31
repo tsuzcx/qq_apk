@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.account_folder.passive_bubble;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import awqx;
-import vvy;
+import axqw;
+import wiv;
 
 public class PassiveBubbleView
   extends LinearLayout
@@ -37,12 +37,12 @@ public class PassiveBubbleView
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    awqx.b(null, "dc00898", "", "", paramString1, paramString2, 0, 0, paramString3, paramString4, paramString5, paramString6);
+    axqw.b(null, "dc00898", "", "", paramString1, paramString2, 0, 0, paramString3, paramString4, paramString5, paramString6);
   }
   
   protected void a()
   {
-    vvy.a("https://h5.qzone.qq.com/subscription/messagelist?_proxy=1&_wv=1&_wwv=4");
+    wiv.a("https://h5.qzone.qq.com/subscription/messagelist?_proxy=1&_wv=1&_wwv=4");
     setVisibility(8);
   }
   
@@ -50,7 +50,7 @@ public class PassiveBubbleView
   {
     if (this.a != null)
     {
-      String str = paramInt + ajjy.a(2131642105);
+      String str = paramInt + ajyc.a(2131707890);
       this.a.setText(str);
       a("auth_page", "msg_exp", "", "", "", "");
     }
@@ -60,9 +60,9 @@ public class PassiveBubbleView
   {
     setOrientation(0);
     setGravity(16);
-    setBackgroundResource(2130838660);
-    inflate(paramContext, 2131493127, this);
-    this.a = ((TextView)findViewById(2131304264));
+    setBackgroundResource(2130838670);
+    inflate(paramContext, 2131558678, this);
+    this.a = ((TextView)findViewById(2131369944));
     setOnClickListener(this);
   }
   

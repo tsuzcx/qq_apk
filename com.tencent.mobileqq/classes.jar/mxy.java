@@ -1,36 +1,71 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
-
 public class mxy
-  implements View.OnTouchListener
 {
-  public mxy(VideoCoverFragment paramVideoCoverFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static int a()
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      VideoCoverFragment.a(this.a).b();
-      if (!this.a.a())
-      {
-        if (!VideoCoverFragment.a(this.a)) {
-          break label47;
-        }
-        this.a.a(false);
-      }
+    amwz localamwz = (amwz)ampm.a().a(207);
+    if (localamwz != null) {
+      return localamwz.jdField_a_of_type_Int;
     }
-    return false;
-    label47:
-    this.a.a(true);
-    return false;
+    return 0;
+  }
+  
+  public static String a()
+  {
+    amwz localamwz = (amwz)ampm.a().a(207);
+    if (localamwz != null) {
+      return localamwz.jdField_a_of_type_JavaLangString;
+    }
+    return null;
+  }
+  
+  public static int b()
+  {
+    amwz localamwz = (amwz)ampm.a().a(207);
+    if (localamwz != null) {
+      return localamwz.b;
+    }
+    return -1;
+  }
+  
+  public static String b()
+  {
+    amwz localamwz = (amwz)ampm.a().a(207);
+    if (localamwz != null) {
+      return localamwz.c;
+    }
+    return null;
+  }
+  
+  public static String c()
+  {
+    amwz localamwz = (amwz)ampm.a().a(207);
+    if (localamwz != null) {
+      return localamwz.d;
+    }
+    return null;
+  }
+  
+  public static String d()
+  {
+    amwz localamwz = (amwz)ampm.a().a(207);
+    if (localamwz != null) {
+      return localamwz.e;
+    }
+    return null;
+  }
+  
+  public static String e()
+  {
+    amwz localamwz = (amwz)ampm.a().a(207);
+    if (localamwz != null) {
+      return localamwz.f;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     mxy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.businessCard.activity;
 
-import alov;
+import amdk;
 
 class BusinessCardEditActivity$1
   implements Runnable
@@ -9,7 +9,7 @@ class BusinessCardEditActivity$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard = this.this$0.jdField_a_of_type_Alov.d(this.this$0.jdField_a_of_type_JavaLangString);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard = this.this$0.jdField_a_of_type_Amdk.d(this.this$0.jdField_a_of_type_JavaLangString);
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard != null) {
       this.this$0.runOnUiThread(new BusinessCardEditActivity.1.1(this));
     }

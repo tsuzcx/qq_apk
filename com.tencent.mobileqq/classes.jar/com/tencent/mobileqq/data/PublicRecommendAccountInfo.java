@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 import com.tencent.mobileqq.mp.publicaccount_recommend.BusinessRecommend;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class PublicRecommendAccountInfo
-  extends atmo
+  extends aukm
 {
   private static final String TAG = "PublicRecommendAccountInfo";
   public int accountflag = -1;
@@ -23,7 +23,7 @@ public class PublicRecommendAccountInfo
   public int mFilter;
   public String mIconLinkAddr;
   public String mIsVerified;
-  @atoc
+  @auma
   public int mListid;
   public String mPublicaccount;
   public String mPublicdesc;

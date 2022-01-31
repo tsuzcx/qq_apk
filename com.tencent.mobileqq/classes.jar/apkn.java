@@ -1,27 +1,10 @@
-import android.util.Pair;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-
-class apkn
-  extends ajuc
+public abstract interface apkn
 {
-  apkn(apkm paramapkm) {}
+  public abstract void a();
   
-  protected void a(String paramString, List<Pair<String, String>> paramList)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
-    if (paramList == null) {}
-    for (int i = 0;; i = paramList.size())
-    {
-      QLog.i("Forward.Preview.Dialog", 2, i);
-      if ((apkm.a(this.a).equals(paramString)) && (apkm.a(this.a) != null))
-      {
-        this.a.e();
-        apkm.a(this.a).a(paramList);
-      }
-      return;
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

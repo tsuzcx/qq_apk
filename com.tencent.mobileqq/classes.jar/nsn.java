@@ -1,23 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class nsn
-  implements View.OnClickListener
+class nsn
+  extends osp
 {
-  public nsn(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  nsn(nsf paramnsf) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if ((ReadInJoyDeliverBiuActivity.c(this.a)) && ((!ReadInJoyDeliverBiuActivity.d(this.a)) || (ReadInJoyDeliverBiuActivity.k(this.a) != -1)))
+    QLog.i("DailyHeaderViewController", 1, "[onDailyDynamicHeaderDataUpdated] " + paramBoolean);
+    if (!paramBoolean)
     {
-      this.a.d(ReadInJoyDeliverBiuActivity.l(this.a));
+      if ((nsf.a(this.a) == -1) || (nsf.a(this.a) == 0))
+      {
+        nsf.a(this.a, 0);
+        return;
+      }
+      nsf.a(this.a, 4);
       return;
     }
-    ndn.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.l(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
-    this.a.finish();
-    ReadInJoyDeliverBiuActivity.a(this.a, false);
+    nsf.a(this.a, 1);
   }
 }
 

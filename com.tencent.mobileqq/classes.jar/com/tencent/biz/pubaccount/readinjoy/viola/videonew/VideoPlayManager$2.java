@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.videonew;
 
-import qhw;
+import qub;
 
 class VideoPlayManager$2
   implements Runnable
 {
-  VideoPlayManager$2(VideoPlayManager paramVideoPlayManager, qhw paramqhw) {}
+  VideoPlayManager$2(VideoPlayManager paramVideoPlayManager, qub paramqub) {}
   
   public void run()
   {

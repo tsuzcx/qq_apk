@@ -1,18 +1,28 @@
-import android.view.View;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.HashMap;
 
-class wuj
-  implements wpx
+public class wuj
+  implements www
 {
-  wuj(wuh paramwuh) {}
+  public wuj(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a()
+  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    wuh.a(this.a).setVisibility(0);
+    if (VideoPlayerView.a(this.a) != null)
+    {
+      xhe.a(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "half_follow", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).id.get(), VideoPlayerView.a(this.a).title.get() });
+      VideoPlayerView.a(this.a).poster.followState.set(1);
+      VideoPlayerView.a(this.a).put(VideoPlayerView.a(this.a).poster.id.get(), Boolean.valueOf(true));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wuj
  * JD-Core Version:    0.7.0.1
  */

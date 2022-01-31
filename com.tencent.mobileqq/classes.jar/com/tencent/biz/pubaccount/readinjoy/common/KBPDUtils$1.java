@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import amom;
 import android.content.Context;
 import android.text.TextUtils;
+import anet;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
 import cooperation.qzone.util.NetworkState;
-import nzy;
-import obz;
-import oer;
+import olj;
+import onk;
+import oqc;
 
 public final class KBPDUtils$1
   implements Runnable
@@ -26,7 +26,7 @@ public final class KBPDUtils$1
     }
     try
     {
-      if (amom.a("com.tencent.reading", (Context)localObject))
+      if (anet.a("com.tencent.reading", (Context)localObject))
       {
         QLog.i("KBPreDownloadUtils", 1, "won't download since app is already installed.");
         return;
@@ -39,27 +39,27 @@ public final class KBPDUtils$1
     }
     if (!NetworkState.isWifiConn())
     {
-      AppNetConnInfo.registerConnectionChangeReceiver((Context)localObject, nzy.a());
+      AppNetConnInfo.registerConnectionChangeReceiver((Context)localObject, olj.a());
       QLog.i("KBPreDownloadUtils", 1, "won't download since wifi not connected. register NetInfoHandler");
       return;
     }
-    if (!nzy.a(obz.a(), "sp_key_enable_pre_download"))
+    if (!olj.a(onk.a(), "sp_key_enable_pre_download"))
     {
       QLog.i("KBPreDownloadUtils", 1, "won't download since predownload is disabled");
       return;
     }
-    String str = nzy.a(obz.a(), "sp_key_kb_download_url");
+    String str = olj.a(onk.a(), "sp_key_kb_download_url");
     if (TextUtils.isEmpty(str))
     {
       QLog.e("KBPreDownloadUtils", 1, "won't download since url is null");
       return;
     }
-    if (nzy.a((Context)localObject))
+    if (olj.a((Context)localObject))
     {
       QLog.i("KBPreDownloadUtils", 1, "won't download since current apk is up to date");
       return;
     }
-    nzy.b();
+    olj.b();
     localObject = new DownloadInfo();
     ((DownloadInfo)localObject).c = "101480433";
     ((DownloadInfo)localObject).g = 2;
@@ -70,9 +70,9 @@ public final class KBPDUtils$1
     ((DownloadInfo)localObject).i = TMAssistantDownloadConst.SHOW_NOTIFICATION_FALSE;
     ((DownloadInfo)localObject).jdField_d_of_type_Boolean = false;
     ((DownloadInfo)localObject).m = "biz_src_feeds_kandian";
-    nzy.a(System.currentTimeMillis());
-    oer.a().a(nzy.a());
-    oer.a().a((DownloadInfo)localObject);
+    olj.a(System.currentTimeMillis());
+    oqc.a().a(olj.a());
+    oqc.a().a((DownloadInfo)localObject);
     QLog.d("KBPreDownloadUtils", 2, "[maybePDKB] startDownload");
   }
 }

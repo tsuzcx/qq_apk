@@ -5,22 +5,22 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.opengl.EGL14;
 import android.opengl.GLES20;
-import auxr;
-import auxu;
-import auxx;
-import auya;
-import auyb;
-import auyn;
-import auyo;
-import auyp;
-import auyr;
-import auzc;
-import auzf;
-import auzk;
-import auzr;
-import avab;
-import avag;
-import avaj;
+import avxk;
+import avxn;
+import avxq;
+import avxt;
+import avxu;
+import avyg;
+import avyh;
+import avyi;
+import avyk;
+import avyv;
+import avyy;
+import avzd;
+import avzk;
+import avzu;
+import avzz;
+import awac;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
 import com.tencent.ttpic.openapi.filter.RenderBuffer;
@@ -31,26 +31,26 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @TargetApi(18)
 public class Mp4FlowReEncoder
-  implements auxu, auyb, auyp, auzr
+  implements avxn, avxu, avyi, avzk
 {
   private int jdField_a_of_type_Int = -1;
   private long jdField_a_of_type_Long = 9223372036854775807L;
-  private auxr jdField_a_of_type_Auxr;
-  private auyo jdField_a_of_type_Auyo = new auyo();
-  private auzc jdField_a_of_type_Auzc = new auzc();
-  private auzf jdField_a_of_type_Auzf;
-  private auzk jdField_a_of_type_Auzk;
-  private auzr jdField_a_of_type_Auzr;
-  private avaj jdField_a_of_type_Avaj;
+  private avxk jdField_a_of_type_Avxk;
+  private avyh jdField_a_of_type_Avyh = new avyh();
+  private avyv jdField_a_of_type_Avyv = new avyv();
+  private avyy jdField_a_of_type_Avyy;
+  private avzd jdField_a_of_type_Avzd;
+  private avzk jdField_a_of_type_Avzk;
+  private awac jdField_a_of_type_Awac;
   private GPUBaseFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter;
   private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-  private Comparator<auxx> jdField_a_of_type_JavaUtilComparator = new auyr(this);
+  private Comparator<avxq> jdField_a_of_type_JavaUtilComparator = new avyk(this);
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
   
-  private void a(List<auxx> paramList)
+  private void a(List<avxq> paramList)
   {
     if ((paramList == null) || (paramList.size() == 0)) {
       QLog.e("FlowEdit_Mp4FlowReEncoder", 1, "handleFrameListAvailable : frameList is null or size is 0!");
@@ -58,46 +58,46 @@ public class Mp4FlowReEncoder
     for (;;)
     {
       return;
-      QLog.d("FlowEdit_Mp4FlowReEncoder", 1, "handleFrameListAvailable : size " + paramList.size() + ", range [" + ((auxx)paramList.get(0)).a() + " - " + ((auxx)paramList.get(paramList.size() - 1)).a() + "]");
+      QLog.d("FlowEdit_Mp4FlowReEncoder", 1, "handleFrameListAvailable : size " + paramList.size() + ", range [" + ((avxq)paramList.get(0)).a() + " - " + ((avxq)paramList.get(paramList.size() - 1)).a() + "]");
       Collections.sort(paramList, this.jdField_a_of_type_JavaUtilComparator);
       if (this.jdField_a_of_type_Long == 9223372036854775807L)
       {
-        this.jdField_a_of_type_Long = ((auxx)paramList.get(0)).a();
+        this.jdField_a_of_type_Long = ((avxq)paramList.get(0)).a();
         QLog.d("FlowEdit_Mp4FlowReEncoder", 2, "handleFrameAvailable. firstFrameTimeStamp = " + this.jdField_a_of_type_Long);
       }
       int i = 0;
       while (i < paramList.size())
       {
-        auxx localauxx = (auxx)paramList.get(i);
+        avxq localavxq = (avxq)paramList.get(i);
         RenderBuffer localRenderBuffer = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
         this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
-        int k = localauxx.a();
+        int k = localavxq.a();
         int j = k;
-        if (this.jdField_a_of_type_Avaj != null)
+        if (this.jdField_a_of_type_Awac != null)
         {
           this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-          this.jdField_a_of_type_Avaj.drawTexture(k, null, null);
-          localRenderBuffer = this.jdField_a_of_type_Avaj.a();
+          this.jdField_a_of_type_Awac.drawTexture(k, null, null);
+          localRenderBuffer = this.jdField_a_of_type_Awac.a();
           localRenderBuffer.bind();
           j = localRenderBuffer.getTexId();
         }
         if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter != null)
         {
-          float[] arrayOfFloat = GPUBaseFilter.caculateCenterCropMvpMatrix(this.jdField_a_of_type_Auzf.jdField_a_of_type_Int, this.jdField_a_of_type_Auzf.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.c);
+          float[] arrayOfFloat = GPUBaseFilter.caculateCenterCropMvpMatrix(this.jdField_a_of_type_Avyy.jdField_a_of_type_Int, this.jdField_a_of_type_Avyy.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.c);
           GLES20.glEnable(3042);
           GLES20.glBlendFunc(770, 771);
           this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.drawTexture(this.jdField_a_of_type_Int, null, arrayOfFloat);
           GLES20.glDisable(3042);
         }
-        if (this.jdField_a_of_type_Auzk != null) {
-          this.jdField_a_of_type_Auzk.a();
+        if (this.jdField_a_of_type_Avzd != null) {
+          this.jdField_a_of_type_Avzd.a();
         }
         localRenderBuffer.unbind();
-        long l = (localauxx.a() - this.jdField_a_of_type_Long) * 1000L;
+        long l = (localavxq.a() - this.jdField_a_of_type_Long) * 1000L;
         QLog.i("FlowEdit_Mp4FlowReEncoder", 2, "handleFrameAvailable. textureId = " + j + ", timeStampOfFrameNano = " + l);
-        this.jdField_a_of_type_Auyo.b(3553, j, localauxx.a, null, l);
+        this.jdField_a_of_type_Avyh.b(3553, j, localavxq.a, null, l);
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-        localauxx.b();
+        localavxq.b();
         i += 1;
       }
     }
@@ -105,8 +105,8 @@ public class Mp4FlowReEncoder
   
   private void c()
   {
-    if (this.jdField_a_of_type_Avaj != null) {
-      this.jdField_a_of_type_Avaj.destroy();
+    if (this.jdField_a_of_type_Awac != null) {
+      this.jdField_a_of_type_Awac.destroy();
     }
     if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter != null) {
       this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.destroy();
@@ -118,16 +118,16 @@ public class Mp4FlowReEncoder
     return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
   }
   
-  public int a(List<auxx> paramList)
+  public int a(List<avxq> paramList)
   {
     if ((paramList == null) || (paramList.size() == 0))
     {
       QLog.e("FlowEdit_Mp4FlowReEncoder", 1, "onFrameReached : frameList is null or size is 0!");
       return 0;
     }
-    QLog.i("FlowEdit_Mp4FlowReEncoder", 1, "onFrameReached : size " + paramList.size() + ", range [" + ((auxx)paramList.get(0)).a() + " - " + ((auxx)paramList.get(paramList.size() - 1)).a() + "]");
+    QLog.i("FlowEdit_Mp4FlowReEncoder", 1, "onFrameReached : size " + paramList.size() + ", range [" + ((avxq)paramList.get(0)).a() + " - " + ((avxq)paramList.get(paramList.size() - 1)).a() + "]");
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(paramList.size());
-    this.jdField_a_of_type_Auyo.a(new Mp4FlowReEncoder.HandleFrameListRunable(this, paramList));
+    this.jdField_a_of_type_Avyh.a(new Mp4FlowReEncoder.HandleFrameListRunable(this, paramList));
     return paramList.size();
   }
   
@@ -135,49 +135,49 @@ public class Mp4FlowReEncoder
   {
     try
     {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.jdField_a_of_type_Auzf.jdField_a_of_type_Int, this.jdField_a_of_type_Auzf.jdField_b_of_type_Int, 33984);
-      if ((avab.a(this.jdField_a_of_type_Auzf.f)) || (this.jdField_a_of_type_Auzf.c != null))
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.jdField_a_of_type_Avyy.jdField_a_of_type_Int, this.jdField_a_of_type_Avyy.jdField_b_of_type_Int, 33984);
+      if ((avzu.a(this.jdField_a_of_type_Avyy.f)) || (this.jdField_a_of_type_Avyy.c != null))
       {
-        this.jdField_a_of_type_Avaj = new avaj();
-        if (avab.a(this.jdField_a_of_type_Auzf.f)) {
-          this.jdField_a_of_type_Avaj.a(avab.a(this.jdField_a_of_type_Auzf.f));
+        this.jdField_a_of_type_Awac = new awac();
+        if (avzu.a(this.jdField_a_of_type_Avyy.f)) {
+          this.jdField_a_of_type_Awac.a(avzu.a(this.jdField_a_of_type_Avyy.f));
         }
-        if (this.jdField_a_of_type_Auzf.c != null)
+        if (this.jdField_a_of_type_Avyy.c != null)
         {
-          localObject = avab.a(106);
-          ((avag)localObject).a(this.jdField_a_of_type_Auzf.c);
-          this.jdField_a_of_type_Avaj.a((GPUBaseFilter)localObject);
+          localObject = avzu.a(106);
+          ((avzz)localObject).a(this.jdField_a_of_type_Avyy.c);
+          this.jdField_a_of_type_Awac.a((GPUBaseFilter)localObject);
         }
-        this.jdField_a_of_type_Avaj.onOutputSizeChanged(this.jdField_a_of_type_Auzf.jdField_a_of_type_Int, this.jdField_a_of_type_Auzf.jdField_b_of_type_Int);
-        this.jdField_a_of_type_Avaj.init();
+        this.jdField_a_of_type_Awac.onOutputSizeChanged(this.jdField_a_of_type_Avyy.jdField_a_of_type_Int, this.jdField_a_of_type_Avyy.jdField_b_of_type_Int);
+        this.jdField_a_of_type_Awac.init();
       }
-      Object localObject = this.jdField_a_of_type_Auzf.jdField_b_of_type_JavaLangString;
+      Object localObject = this.jdField_a_of_type_Avyy.jdField_b_of_type_JavaLangString;
       if (localObject != null) {}
       try
       {
-        localObject = BitmapFactory.decodeFile(this.jdField_a_of_type_Auzf.jdField_b_of_type_JavaLangString);
-        this.jdField_a_of_type_Int = auyn.a(3553, (Bitmap)localObject);
+        localObject = BitmapFactory.decodeFile(this.jdField_a_of_type_Avyy.jdField_b_of_type_JavaLangString);
+        this.jdField_a_of_type_Int = avyg.a(3553, (Bitmap)localObject);
         this.jdField_b_of_type_Int = ((Bitmap)localObject).getWidth();
         this.c = ((Bitmap)localObject).getHeight();
         ((Bitmap)localObject).recycle();
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = avab.a(101);
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.onOutputSizeChanged(this.jdField_a_of_type_Auzf.jdField_a_of_type_Int, this.jdField_a_of_type_Auzf.jdField_b_of_type_Int);
+        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = avzu.a(101);
+        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.onOutputSizeChanged(this.jdField_a_of_type_Avyy.jdField_a_of_type_Int, this.jdField_a_of_type_Avyy.jdField_b_of_type_Int);
         this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.init();
-        localObject = new auya(this.jdField_a_of_type_Auxr);
-        ((auya)localObject).b = false;
-        ((auya)localObject).a = EGL14.eglGetCurrentContext();
-        ((auya)localObject).c = 2;
-        this.jdField_a_of_type_Auzc.a((auya)localObject, this, this);
-        if (this.jdField_a_of_type_Auzr != null)
+        localObject = new avxt(this.jdField_a_of_type_Avxk);
+        ((avxt)localObject).b = false;
+        ((avxt)localObject).a = EGL14.eglGetCurrentContext();
+        ((avxt)localObject).c = 2;
+        this.jdField_a_of_type_Avyv.a((avxt)localObject, this, this);
+        if (this.jdField_a_of_type_Avzk != null)
         {
-          this.jdField_a_of_type_Auzr.a();
+          this.jdField_a_of_type_Avzk.a();
           return;
         }
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("FlowEdit_Mp4FlowReEncoder", 2, "Decode bitmap failed when onEncodeStart(). encodeConfig.watermarkPath= " + this.jdField_a_of_type_Auzf.jdField_b_of_type_JavaLangString, localOutOfMemoryError);
+          QLog.e("FlowEdit_Mp4FlowReEncoder", 2, "Decode bitmap failed when onEncodeStart(). encodeConfig.watermarkPath= " + this.jdField_a_of_type_Avyy.jdField_b_of_type_JavaLangString, localOutOfMemoryError);
         }
         a_(1, localOutOfMemoryError);
         return;
@@ -198,43 +198,43 @@ public class Mp4FlowReEncoder
   
   public void a(long paramLong) {}
   
-  public void a(auxr paramauxr, auzf paramauzf, auzr paramauzr, auzk paramauzk)
+  public void a(avxk paramavxk, avyy paramavyy, avzk paramavzk, avzd paramavzd)
   {
-    this.jdField_a_of_type_Auxr = paramauxr;
-    this.jdField_a_of_type_Auzf = paramauzf;
-    this.jdField_a_of_type_Auzr = paramauzr;
-    this.jdField_a_of_type_Auzk = paramauzk;
-    this.jdField_a_of_type_Auyo.a(paramauzf, this);
+    this.jdField_a_of_type_Avxk = paramavxk;
+    this.jdField_a_of_type_Avyy = paramavyy;
+    this.jdField_a_of_type_Avzk = paramavzk;
+    this.jdField_a_of_type_Avzd = paramavzd;
+    this.jdField_a_of_type_Avyh.a(paramavyy, this);
     this.jdField_a_of_type_Boolean = false;
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_Auzr != null) {
-      this.jdField_a_of_type_Auzr.a(paramString);
+    if (this.jdField_a_of_type_Avzk != null) {
+      this.jdField_a_of_type_Avzk.a(paramString);
     }
     if (this.jdField_a_of_type_Int != -1)
     {
-      auyn.b(this.jdField_a_of_type_Int);
+      avyg.b(this.jdField_a_of_type_Int);
       this.jdField_a_of_type_Int = -1;
     }
     c();
     this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
-    auxx.a();
+    avxq.a();
   }
   
   public void a_(int paramInt, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_Auzc.a();
-    if (this.jdField_a_of_type_Auzr != null) {
-      this.jdField_a_of_type_Auzr.a_(paramInt, paramThrowable);
+    this.jdField_a_of_type_Avyv.a();
+    if (this.jdField_a_of_type_Avzk != null) {
+      this.jdField_a_of_type_Avzk.a_(paramInt, paramThrowable);
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Auzr != null) {
-      this.jdField_a_of_type_Auzr.b();
+    if (this.jdField_a_of_type_Avzk != null) {
+      this.jdField_a_of_type_Avzk.b();
     }
   }
   
@@ -256,7 +256,7 @@ public class Mp4FlowReEncoder
     if (QLog.isColorLevel()) {
       QLog.d("FlowEdit_Mp4FlowReEncoder", 2, "onDecodeFinish");
     }
-    this.jdField_a_of_type_Auyo.b();
+    this.jdField_a_of_type_Avyh.b();
   }
   
   public void i()
@@ -264,7 +264,7 @@ public class Mp4FlowReEncoder
     if (QLog.isColorLevel()) {
       QLog.d("FlowEdit_Mp4FlowReEncoder", 2, "onDecodeCancel");
     }
-    this.jdField_a_of_type_Auyo.b();
+    this.jdField_a_of_type_Avyh.b();
   }
   
   public void l() {}

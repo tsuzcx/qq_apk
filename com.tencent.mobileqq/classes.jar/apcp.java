@@ -1,17 +1,12 @@
-final class apcp
-  implements batk
+class apcp
 {
-  apcp(apca paramapca) {}
+  int jdField_a_of_type_Int = 0;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = 0;
+  boolean jdField_b_of_type_Boolean = false;
+  boolean c = false;
   
-  public void callback(int paramInt)
-  {
-    if ((paramInt == 1) || (paramInt == 2))
-    {
-      this.a.a();
-      return;
-    }
-    this.a.b();
-  }
+  apcp(apbe paramapbe) {}
 }
 
 

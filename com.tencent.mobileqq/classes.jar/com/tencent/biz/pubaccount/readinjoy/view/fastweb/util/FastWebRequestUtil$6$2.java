@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import rgc;
+import rss;
 
 class FastWebRequestUtil$6$2
   implements Runnable

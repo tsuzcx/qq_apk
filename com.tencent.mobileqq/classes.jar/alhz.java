@@ -1,14 +1,15 @@
-import org.json.JSONObject;
-
-public abstract interface alhz
+public class alhz
 {
-  public abstract boolean needProcess(JSONObject paramJSONObject);
-  
-  public abstract void process(JSONObject paramJSONObject, alia paramalia, Object paramObject);
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alhz
  * JD-Core Version:    0.7.0.1
  */

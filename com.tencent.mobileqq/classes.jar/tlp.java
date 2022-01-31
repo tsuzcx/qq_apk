@@ -1,52 +1,58 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class tlp
-  extends JobSegment<String, ucw>
+  extends tjh
+  implements syt<tnt, tpc>
 {
-  public tlp(tlj paramtlj) {}
+  public static int a = 20;
+  private long c;
   
-  protected void a(JobContext paramJobContext, String paramString)
+  public tnt a(int paramInt, ArrayList<tct> paramArrayList)
   {
-    if ((tlj.a(this.a).a != null) && (TextUtils.equals(tlj.a(this.a).a.feedId, paramString)))
-    {
-      urk.d("Q.qqstory.player.CommentFloatDialogController", "feed item already exist , no need to pull again");
-      notifyError(new ErrorMessage(2223, "feed item already exist"));
-      return;
+    if (paramArrayList.size() > a) {
+      veg.d("Q.qqstory:WatchVideoBatchHandler", "too much data");
     }
-    paramString = new ucw();
-    Object localObject1 = (CommentLikeFeedItem)((uje)sqg.a(11)).a(tlj.a(this.a));
-    if (localObject1 != null)
+    tnt localtnt = new tnt();
+    localtnt.c = paramInt;
+    localtnt.a = paramArrayList;
+    syr.a().a(localtnt, this);
+    this.c = System.currentTimeMillis();
+    return localtnt;
+  }
+  
+  public void a(@NonNull tnt paramtnt, @Nullable tpc paramtpc, @NonNull ErrorMessage paramErrorMessage)
+  {
+    tcs localtcs = (tcs)tdc.a(13);
+    if ((paramtpc == null) || (paramErrorMessage.isFail()))
     {
-      if ((localObject1 instanceof VideoListFeedItem))
+      veg.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. errorInfo=%s", new Object[] { paramErrorMessage.toString() });
+      paramtpc = paramtnt.a.iterator();
+    }
+    while (paramtpc.hasNext())
+    {
+      localtcs.a((tct)paramtpc.next(), false);
+      continue;
+      localtcs.a(paramtpc.a);
+      veg.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. succList.size=%d. requestList.size=%d", new Object[] { Integer.valueOf(paramtpc.a.size()), Integer.valueOf(paramtnt.a.size()) });
+      paramErrorMessage = paramtnt.a.iterator();
+      while (paramErrorMessage.hasNext())
       {
-        paramJobContext = (VideoListFeedItem)localObject1;
-        localObject2 = ((ujk)sqg.a(12)).a(tlj.a(this.a), paramJobContext.mVideoPullType);
-        if (localObject2 != null)
-        {
-          paramJobContext.mVideoNextCookie = ((FeedVideoInfo)localObject2).mVideoNextCookie;
-          paramJobContext.mIsVideoEnd = ((FeedVideoInfo)localObject2).mIsVideoEnd;
-          paramJobContext.mVideoPullType = ((FeedVideoInfo)localObject2).mVideoPullType;
-          paramJobContext.mVideoSeq = ((FeedVideoInfo)localObject2).mVideoSeq;
-          paramString.a(((FeedVideoInfo)localObject2).mVideoItemList, true);
+        tct localtct = (tct)paramErrorMessage.next();
+        if (!paramtpc.a.contains(localtct)) {
+          localtcs.a(localtct, false);
         }
       }
-      paramString.a = ((CommentLikeFeedItem)localObject1);
-      notifyResult(paramString);
-      return;
+      if (paramtnt.a.size() > paramtpc.a.size()) {
+        vel.b("home_page", "batch_watch_video", 0, paramtnt.a.size() - paramtpc.a.size(), new String[] { "", String.valueOf(System.currentTimeMillis() - this.c), vel.a(BaseApplication.getContext()) });
+      }
     }
-    localObject1 = new szd();
-    ((szd)localObject1).a = new ArrayList();
-    Object localObject2 = new uiw(tlj.a(this.a), 0, "", "");
-    ((szd)localObject1).a.add(localObject2);
-    slv.a().a((slz)localObject1, new tlq(this, paramJobContext, paramString));
+    localtcs.a(paramtnt);
   }
 }
 

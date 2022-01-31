@@ -1,26 +1,12 @@
-class anaa
-  extends ajfh
+import java.util.HashMap;
+
+public class anaa
 {
-  anaa(amzx paramamzx) {}
-  
-  protected void a(boolean paramBoolean, int paramInt)
-  {
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-  }
-  
-  protected void b(int paramInt)
-  {
-    amzx.a(this.a, false);
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-  }
+  public HashMap<String, String> a = new HashMap();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anaa
  * JD-Core Version:    0.7.0.1
  */

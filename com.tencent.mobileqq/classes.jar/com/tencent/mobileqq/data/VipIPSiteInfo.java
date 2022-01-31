@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import amtr;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anjz;
 import java.util.List;
 
 public class VipIPSiteInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VipIPSiteInfo> CREATOR = new amtr();
+  public static final Parcelable.Creator<VipIPSiteInfo> CREATOR = new anjz();
   public int extId;
   public String extStr;
   public String ipContent;

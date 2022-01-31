@@ -1,21 +1,19 @@
-class aphy
-  implements apib
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploaderRp;
+
+public abstract interface aphy
 {
-  aphy(aphp paramaphp) {}
+  public abstract void a(int paramInt, ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp);
   
-  public void a()
-  {
-    this.a.a.setProgressBarVisibility(0);
-  }
+  public abstract void a(int paramInt, ExcitingTransferUploaderRp paramExcitingTransferUploaderRp);
   
-  public void b()
-  {
-    this.a.a.setProgressBarVisibility(8);
-  }
+  public abstract void a(long paramLong1, long paramLong2, long paramLong3);
+  
+  public abstract void ay_();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aphy
  * JD-Core Version:    0.7.0.1
  */

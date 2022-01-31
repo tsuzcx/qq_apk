@@ -1,52 +1,41 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajrf
-  extends ajfb
 {
-  public static String a = "Add_friend_to_desktop|";
-  public static String b = "Click_desktop_friend|";
-  private String c = "FuMeiTiCeSu|";
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d = 3;
+  public int e;
   
-  public ajrf(QQAppInterface paramQQAppInterface)
+  public void a()
   {
-    super(paramQQAppInterface);
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    return "PLUG|" + paramString1 + "|" + paramString2 + "|internal|" + paramString3 + "|PB|" + paramString4 + "||";
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if ((paramBundle != null) && (paramBundle.containsKey("data")))
+    if (QLog.isColorLevel())
     {
-      ToServiceMsg localToServiceMsg = createToServiceMsg("CliLogSvc.UploadReq");
-      localToServiceMsg.extraData.putAll(paramBundle);
-      super.send(localToServiceMsg);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("gameId:").append(this.jdField_a_of_type_Int).append(",roomId:").append(this.jdField_a_of_type_Long).append(",actionId:").append(this.jdField_b_of_type_Int).append(",gameName:").append(this.jdField_b_of_type_JavaLangString).append(",wording:").append(",imgType:");
+      QLog.d("ApolloPanel", 2, localStringBuilder.toString());
     }
   }
   
-  public void a(String[] paramArrayOfString)
+  public void b()
   {
-    ToServiceMsg localToServiceMsg = createToServiceMsg("CliLogSvc.UploadReq");
-    localToServiceMsg.extraData.putStringArray("data", paramArrayOfString);
-    super.send(localToServiceMsg);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.d = 3;
   }
-  
-  protected Class<? extends ajfe> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajrf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,34 @@
-import android.os.Bundle;
+import android.content.Context;
 
-public abstract class bbss
+public class bbss
+  extends bbso
 {
-  protected Bundle a;
+  public static final bbss a = new bbss();
   
-  public bbss(Bundle paramBundle)
+  public void cleanCache(Context paramContext)
   {
-    this.a = paramBundle;
+    super.cleanCache(paramContext);
+    ayls.a().b();
+  }
+  
+  public long getBID()
+  {
+    return 38L;
+  }
+  
+  protected String getRootDir()
+  {
+    return "musicTheme";
+  }
+  
+  protected String getScidPrefix()
+  {
+    return "musicTheme.";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbss
  * JD-Core Version:    0.7.0.1
  */

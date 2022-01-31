@@ -1,22 +1,45 @@
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.IdiomHbFragment;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
 
 public class agmz
-  implements agnb
+  implements View.OnClickListener
 {
-  public agmz(IdiomHbFragment paramIdiomHbFragment) {}
+  public agmz(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity) {}
   
-  public void a(boolean paramBoolean, List<String> paramList)
+  public void onClick(View paramView)
   {
-    this.a.c.setText(IdiomHbFragment.a(this.a, true));
-    this.a.c.setSelection(this.a.c.getText().length());
+    int i = 1;
+    paramView = this.a.a;
+    boolean bool;
+    String str;
+    if (!this.a.a.isChecked())
+    {
+      bool = true;
+      paramView.setChecked(bool);
+      this.a.d = this.a.a.isChecked();
+      this.a.i = 2;
+      paramView = this.a;
+      str = this.a.getCurrentAccountUin();
+      if (!this.a.d) {
+        break label92;
+      }
+    }
+    for (;;)
+    {
+      bbjn.D(paramView, str, i);
+      return;
+      bool = false;
+      break;
+      label92:
+      i = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agmz
  * JD-Core Version:    0.7.0.1
  */

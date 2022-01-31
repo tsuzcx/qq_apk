@@ -1,33 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.filedownload.ApkFileDownloadFragment;
+import com.tencent.open.filedownload.ApkFileDownloadFragment.2.1;
+import mqq.os.MqqHandler;
 
-public final class bdmn
-  implements Parcelable.Creator<BaseLibInfo>
+public class bdmn
+  extends bdmx
 {
-  public BaseLibInfo a(Parcel paramParcel)
-  {
-    BaseLibInfo localBaseLibInfo = new BaseLibInfo();
-    try
-    {
-      paramParcel = new BaseLibInfo(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt());
-      return paramParcel;
-    }
-    catch (Throwable paramParcel)
-    {
-      bdnw.d("BaseLibInfo", "BaseLibInfo createFromParcel exception!", paramParcel);
-    }
-    return localBaseLibInfo;
-  }
+  public bdmn(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
   
-  public BaseLibInfo[] a(int paramInt)
+  public void a()
   {
-    return new BaseLibInfo[paramInt];
+    ThreadManager.getUIHandler().post(new ApkFileDownloadFragment.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdmn
  * JD-Core Version:    0.7.0.1
  */

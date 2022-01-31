@@ -1,27 +1,24 @@
-public class belb
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
+class belb
+  extends BroadcastReceiver
 {
-  private int a;
-  private int b;
+  belb(bela parambela) {}
   
-  public int a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return this.a;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public int b()
-  {
-    return this.b;
+    if (belh.a(paramIntent.getAction())) {}
+    while (bela.a(this.a) == null) {
+      return;
+    }
+    bela.a(this.a).a(paramContext, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     belb
  * JD-Core Version:    0.7.0.1
  */

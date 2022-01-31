@@ -1,57 +1,120 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.GamePKCommentReceiver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.graphics.Bitmap;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.settings.QQStoryShieldListActivity;
+import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class ukf
-  extends QQUIEventReceiver<ujx, snt>
+  extends BaseAdapter
 {
-  public ukf(@NonNull ujx paramujx)
+  List<QQStoryUserInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  
+  public ukf(List<QQStoryUserInfo> paramList)
   {
-    super(paramujx);
+    Collection localCollection;
+    if (localCollection != null)
+    {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList(localCollection);
+      Collections.sort(this.jdField_a_of_type_JavaUtilList);
+    }
   }
   
-  public void a(@NonNull ujx paramujx, @NonNull snt paramsnt)
+  public void a(List<QQStoryUserInfo> paramList)
   {
-    if ((TextUtils.isEmpty(paramsnt.jdField_a_of_type_JavaLangString)) || (paramsnt.jdField_a_of_type_Int == 0) || (paramsnt.jdField_a_of_type_Long == 0L) || (TextUtils.isEmpty(paramsnt.b)))
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      Collections.sort(this.jdField_a_of_type_JavaUtilList);
+    }
+    super.notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView == null)
     {
-      urk.d("Q.qqstory.home.data.HomeFeedPresenter", "receive not eligible gamepk event. event.feedId = %s, event.commentId = %d, event.commentFakeId = %d, event.content = %s.", new Object[] { paramsnt.jdField_a_of_type_JavaLangString, Integer.valueOf(paramsnt.jdField_a_of_type_Int), Long.valueOf(paramsnt.jdField_a_of_type_Long), paramsnt.b });
-      return;
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity).inflate(2131561364, null);
+      paramViewGroup = new ukg(this);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365824));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370647));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.a.widthPixels - actn.a(175.0F, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.getResources()));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131365002));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity);
+      paramView.setTag(paramViewGroup);
+      localObject = (QQStoryUserInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramViewGroup.jdField_a_of_type_JavaLangString = ((QQStoryUserInfo)localObject).uin;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((QQStoryUserInfo)localObject).nick);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTag(localObject);
+      if (this.jdField_a_of_type_JavaUtilList.size() <= 2) {
+        break label258;
+      }
+      if (paramInt != 0) {
+        break label225;
+      }
+      paramView.setBackgroundResource(2130839185);
     }
-    Object localObject1 = paramujx.a(paramsnt.jdField_a_of_type_JavaLangString);
-    if ((localObject1 == null) || (!(localObject1 instanceof ukv)))
-    {
-      urk.d("Q.qqstory.home.data.HomeFeedPresenter", "storyHomeFeed is null or it's not a VideoListHomeFeed. feedId = %s", new Object[] { paramsnt.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    Object localObject2 = (ukv)localObject1;
-    localObject1 = udl.a(paramsnt.jdField_a_of_type_JavaLangString, paramsnt.jdField_a_of_type_Int, paramsnt.jdField_a_of_type_Long, paramsnt.b, paramsnt.c, paramsnt.d, paramsnt.e, paramsnt.f);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(localObject1);
-    ((ukv)localObject2).a(localArrayList, false);
-    localObject2 = (CommentLikeFeedItem)((ukv)localObject2).a;
-    ((CommentLikeFeedItem)localObject2).mCommentCount += 1;
-    if (ujx.a((CommentLikeFeedItem)localObject2)) {
-      ((CommentLikeFeedItem)localObject2).mFriendCommentCount += 1;
-    }
+    label258:
     for (;;)
     {
-      ujx.a(paramujx).b(paramsnt.jdField_a_of_type_JavaLangString);
-      ThreadManager.post(new HomeFeedPresenter.GamePKCommentReceiver.1(this, (CommentLikeFeedItem)localObject2, (CommentEntry)localObject1, paramsnt), 5, null, false);
-      ujx.a((CommentLikeFeedItem)localObject2, (CommentEntry)localObject1);
-      return;
-      ((CommentLikeFeedItem)localObject2).mFanCommentCount += 1;
+      localObject = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.app.a(((QQStoryUserInfo)localObject).uin, true);
+      if (localObject == null) {
+        break label315;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
+      return paramView;
+      paramViewGroup = (ukg)paramView.getTag();
+      break;
+      label225:
+      if (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1)
+      {
+        paramView.setBackgroundResource(2130839176);
+      }
+      else
+      {
+        paramView.setBackgroundResource(2130839179);
+        continue;
+        if (this.jdField_a_of_type_JavaUtilList.size() == 2)
+        {
+          if (paramInt == 0) {
+            paramView.setBackgroundResource(2130839185);
+          } else {
+            paramView.setBackgroundResource(2130839176);
+          }
+        }
+        else if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
+          paramView.setBackgroundResource(2130839176);
+        }
+      }
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return snt.class;
+    label315:
+    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bbdr.a());
+    return paramView;
   }
 }
 

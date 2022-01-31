@@ -1,46 +1,28 @@
-import android.os.Bundle;
-import com.tencent.biz.webviewplugin.Share.6.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout.LayoutParams;
 
-public class xdw
-  implements BusinessObserver
+class xdw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  xdw(xdt paramxdt) {}
+  xdw(xdt paramxdt, View paramView) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!paramBoolean) {}
-    byte[] arrayOfByte;
-    do
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    if ((localLayoutParams instanceof LinearLayout.LayoutParams))
     {
-      return;
-      arrayOfByte = paramBundle.getByteArray("data");
-    } while (arrayOfByte == null);
-    paramBundle = new GetAppInfoProto.GetAppinfoResponse();
-    try
-    {
-      paramBundle.mergeFrom(arrayOfByte);
-      ThreadManager.post(new Share.6.1(this, paramBundle), 5, null, true);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(xdt.a, 2, localInvalidProtocolBufferMicroException.getMessage());
-        }
-      }
+      ((LinearLayout.LayoutParams)localLayoutParams).topMargin = paramValueAnimator.intValue();
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xdw
  * JD-Core Version:    0.7.0.1
  */

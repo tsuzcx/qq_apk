@@ -1,21 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
-public class aepv
-  implements View.OnClickListener
+class aepv
+  extends BroadcastReceiver
 {
-  public aepv(BlessActivity paramBlessActivity) {}
+  aepv(aepg paramaepg) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    awqx.b(this.a.app, "CliOper", "", "", "0X800632F", "0X800632F", 0, 0, "", "", "", "");
-    BlessActivity.a(this.a, true);
+    paramIntent.getStringExtra("peerUin");
+    paramIntent.getIntExtra("sessionType", -1);
+    paramContext = paramIntent.getStringExtra("sessionId");
+    if (TextUtils.isEmpty(paramContext)) {}
+    while (!paramContext.startsWith("10-")) {
+      return;
+    }
+    this.a.jdField_a_of_type_Atcf.c();
+    this.a.l.setEnabled(true);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onBind enter room setSoundDisable");
+    }
+    this.a.jdField_a_of_type_Atcf.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aepv
  * JD-Core Version:    0.7.0.1
  */

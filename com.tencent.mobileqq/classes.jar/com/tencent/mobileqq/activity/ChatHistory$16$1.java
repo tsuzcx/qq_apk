@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aagz;
+import aaqr;
 import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -9,7 +9,7 @@ import mqq.os.MqqHandler;
 public class ChatHistory$16$1
   implements Runnable
 {
-  public ChatHistory$16$1(aagz paramaagz) {}
+  public ChatHistory$16$1(aaqr paramaaqr) {}
   
   public void run()
   {

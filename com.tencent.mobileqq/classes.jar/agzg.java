@@ -1,29 +1,44 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import Wallet.RspWalletConfig;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
 class agzg
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  agzg(agxq paramagxq, String paramString) {}
+  agzg(agzf paramagzf, long paramLong, agzi paramagzi, WeakReference paramWeakReference) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "click move to url:" + this.jdField_a_of_type_JavaLangString);
+    if ((paramInt != 10) || (!paramBoolean)) {}
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletConfigManager", 2, "fail get rsp:" + this.jdField_a_of_type_Long);
+      }
+      agzf.a(this.jdField_a_of_type_Agzf, -1L);
+      return;
     }
-    paramView = new Intent(agxq.a(this.jdField_a_of_type_Agxq), QQBrowserDelegationActivity.class);
-    paramView.putExtra("injectrecommend", true);
-    agxq.a(this.jdField_a_of_type_Agxq).startActivity(paramView.putExtra("url", this.jdField_a_of_type_JavaLangString));
-    awqx.a(agxq.a(this.jdField_a_of_type_Agxq).app, "CliOper", "", "", "0X8004029", "0X8004029", 0, 0, "", "", "", "");
+    catch (Throwable paramBundle)
+    {
+      for (;;)
+      {
+        paramBundle.printStackTrace();
+      }
+    }
+    paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletConfigManager", 2, "RspWalletConfig|" + paramBundle);
+    }
+    agzf.a(this.jdField_a_of_type_Agzf).handleRsp(paramBundle, this.jdField_a_of_type_Long, this.jdField_a_of_type_Agzi, (agzf)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    agzf.a(this.jdField_a_of_type_Agzf, -1L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agzg
  * JD-Core Version:    0.7.0.1
  */

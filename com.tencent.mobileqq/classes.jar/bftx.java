@@ -1,39 +1,15 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.widget.ImageView;
-import cooperation.qzone.contentbox.MsgPhotoView.WeakVipResourcesListener.1;
-import cooperation.vip.vipcomponent.util.VipResourcesListener;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.widget.PinnedHeadAndFootExpandableListView;
 
-public class bftx
-  implements VipResourcesListener
+public abstract interface bftx
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<Handler> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private WeakReference<ImageView> b;
+  public abstract void a();
   
-  public bftx(Handler paramHandler, ImageView paramImageView, int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHandler);
-    this.b = new WeakReference(paramImageView);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onFailed() {}
-  
-  public void onLoaded(Drawable paramDrawable)
-  {
-    Handler localHandler = (Handler)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((paramDrawable != null) && (localHandler != null)) {
-      localHandler.post(new MsgPhotoView.WeakVipResourcesListener.1(this, paramDrawable));
-    }
-  }
+  public abstract void a(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView, View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bftx
  * JD-Core Version:    0.7.0.1
  */

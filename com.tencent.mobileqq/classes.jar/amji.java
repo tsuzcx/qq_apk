@@ -1,89 +1,137 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class amji
 {
-  private String a;
-  public boolean a;
-  private String b;
-  public boolean b;
-  private String c = "https://mc.vip.qq.com/group/create2k?_wwv=4&_wv=1027&_wvx=3";
-  private String d = "https://mc.vip.qq.com/group/create3k?_wwv=4&_wv=1027&_wvx=3";
+  private amgp jdField_a_of_type_Amgp = new amgp();
+  private amgu jdField_a_of_type_Amgu;
+  private amgw jdField_a_of_type_Amgw;
+  private boolean jdField_a_of_type_Boolean = true;
   
   public amji()
   {
-    this.jdField_a_of_type_JavaLangString = "https://club.vip.qq.com/grouphaoma/home?_wv=131072&_fv=0&_proxy=1&from={from}";
-    this.jdField_b_of_type_JavaLangString = "https://club.vip.qq.com/grouphaoma/mine?_wv=131072&_fv=0&_proxy=1&from={from}&groupnum={groupnum}";
+    this.jdField_a_of_type_Amgp.a(new amgr());
+    this.jdField_a_of_type_Amgu = new amgu();
+    this.jdField_a_of_type_Amgu.a(this.jdField_a_of_type_Amgp);
   }
   
-  @NonNull
-  public static amji a(String paramString)
+  private boolean a(int paramInt)
   {
-    boolean bool2 = false;
-    amji localamji = new amji();
-    if (TextUtils.isEmpty(paramString)) {
-      return localamji;
-    }
-    for (;;)
+    return paramInt == 16908289;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Amgp != null) && (this.jdField_a_of_type_Amgw != null))
     {
-      try
+      localColorNote = this.jdField_a_of_type_Amgw.getColorNote();
+      if (localColorNote != null)
       {
-        paramString = new JSONObject(paramString);
-        if (paramString.optInt("showCreateIcon") == 1)
-        {
-          bool1 = true;
-          localamji.jdField_b_of_type_Boolean = bool1;
-          localamji.jdField_a_of_type_JavaLangString = paramString.optString("pretty_home", "https://club.vip.qq.com/grouphaoma/home?_wv=131072&_fv=0&_proxy=1&from={from}");
-          localamji.jdField_b_of_type_JavaLangString = paramString.optString("pretty_mine", "https://club.vip.qq.com/grouphaoma/mine?_wv=131072&_fv=0&_proxy=1&from={from}&groupnum={groupnum}");
-          localamji.c = paramString.optString("2k", "https://mc.vip.qq.com/group/create2k?_wwv=4&_wv=1027&_wvx=3");
-          localamji.d = paramString.optString("3k", "https://mc.vip.qq.com/group/create3k?_wwv=4&_wv=1027&_wvx=3");
-          bool1 = bool2;
-          if (paramString.optInt("limit_off", 0) == 1) {
-            bool1 = true;
-          }
-          localamji.jdField_a_of_type_Boolean = bool1;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("vip_pretty.ConfigProcessor", 1, localamji.toString());
-          return localamji;
-        }
+        this.jdField_a_of_type_Amgp.a(localColorNote.getServiceType(), localColorNote.getSubType(), true);
+        localColorNote = amhi.a(localColorNote);
+        this.jdField_a_of_type_Amgp.a(localColorNote.getServiceType(), localColorNote.getSubType(), true);
       }
-      catch (JSONException paramString)
+    }
+    while (!QLog.isColorLevel())
+    {
+      ColorNote localColorNote;
+      do
       {
-        QLog.e("vip_pretty.ConfigProcessor", 1, "json parse error:" + paramString);
-        return localamji;
-      }
-      boolean bool1 = false;
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.e("ColorNoteStateNotice", 1, "onResume: colorNote is null");
+      return;
+    }
+    QLog.e("ColorNoteStateNotice", 1, "onResume: mColorNoteCurd or mServiceInfo is null");
+  }
+  
+  public void a(amgp paramamgp)
+  {
+    this.jdField_a_of_type_Amgp = paramamgp;
+  }
+  
+  public void a(amgr paramamgr)
+  {
+    if (this.jdField_a_of_type_Amgp != null) {
+      this.jdField_a_of_type_Amgp.a(paramamgr);
     }
   }
   
-  public String a()
+  public void a(amgw paramamgw)
   {
-    return this.c;
+    this.jdField_a_of_type_Amgw = paramamgw;
   }
   
-  public String a(String paramString)
+  public void a(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_JavaLangString.replace("{from}", paramString);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public String a(String paramString1, String paramString2)
+  public void b()
   {
-    return this.jdField_b_of_type_JavaLangString.replace("{from}", paramString1).replace("{groupnum}", paramString2);
+    if ((this.jdField_a_of_type_Amgp != null) && (this.jdField_a_of_type_Amgw != null))
+    {
+      localColorNote = this.jdField_a_of_type_Amgw.getColorNote();
+      if (localColorNote != null)
+      {
+        this.jdField_a_of_type_Amgp.a(localColorNote.getServiceType(), localColorNote.getSubType(), false);
+        localColorNote = amhi.a(localColorNote);
+        this.jdField_a_of_type_Amgp.a(localColorNote.getServiceType(), localColorNote.getSubType(), false);
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      ColorNote localColorNote;
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.e("ColorNoteStateNotice", 1, "onPause: colorNote is null");
+      return;
+    }
+    QLog.e("ColorNoteStateNotice", 1, "onPause: mColorNoteCurd or mServiceInfo is null");
   }
   
-  public String b()
+  public void b(boolean paramBoolean)
   {
-    return this.d;
+    Object localObject;
+    if ((this.jdField_a_of_type_Amgw != null) && (this.jdField_a_of_type_Amgp != null) && (this.jdField_a_of_type_Amgu != null)) {
+      localObject = null;
+    }
+    try
+    {
+      ColorNote localColorNote = this.jdField_a_of_type_Amgw.getColorNote();
+      localObject = localColorNote;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("ColorNoteStateNotice", 1, localException, new Object[0]);
+        continue;
+        int i = 0;
+      }
+    }
+    if ((localObject != null) && (a(localObject.getServiceType())))
+    {
+      i = 1;
+      if ((localObject != null) && (i != 0) && (this.jdField_a_of_type_Boolean) && (paramBoolean) && (!this.jdField_a_of_type_Amgp.a(localObject.getServiceType(), localObject.getSubType())))
+      {
+        amhi.a(localObject);
+        this.jdField_a_of_type_Amgu.a(localObject);
+      }
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amji
  * JD-Core Version:    0.7.0.1
  */

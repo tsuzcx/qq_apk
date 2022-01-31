@@ -1,30 +1,66 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import android.os.Bundle;
 
 public class anqr
-  implements View.OnTouchListener
 {
-  public anqr(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c = -1;
+  public int d = -1;
+  public int e = -1;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public anqr(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString)
   {
-    switch (paramMotionEvent.getAction())
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.e = paramInt5;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static anqr a(Bundle paramBundle)
+  {
+    int j = 0;
+    int n = -1;
+    String str = "";
+    int i;
+    int k;
+    int m;
+    if (paramBundle != null)
     {
+      i = paramBundle.getInt("result", -1);
+      j = paramBundle.getInt("realSaveNum", 0);
+      k = paramBundle.getInt("payChannel", -1);
+      m = paramBundle.getInt("payState", -1);
+      n = paramBundle.getInt("provideState", -1);
     }
-    for (;;)
+    for (paramBundle = paramBundle.getString("message");; paramBundle = str)
     {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+      return new anqr(i, j, k, m, n, paramBundle);
+      m = -1;
+      k = -1;
+      i = -1;
     }
+  }
+  
+  public Bundle a()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", this.jdField_a_of_type_Int);
+    localBundle.putInt("realSaveNum", this.b);
+    localBundle.putInt("payChannel", this.c);
+    localBundle.putInt("payState", this.d);
+    localBundle.putInt("provideState", this.e);
+    localBundle.putString("message", this.jdField_a_of_type_JavaLangString);
+    return localBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anqr
  * JD-Core Version:    0.7.0.1
  */

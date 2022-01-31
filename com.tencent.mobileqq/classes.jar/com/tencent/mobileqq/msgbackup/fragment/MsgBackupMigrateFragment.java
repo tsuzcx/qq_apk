@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import arqq;
-import arsa;
+import asmu;
+import asoe;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
@@ -21,19 +21,19 @@ public class MsgBackupMigrateFragment
   protected void b()
   {
     super.b();
-    setTitle(getActivity().getString(2131624802));
-    this.vg.setOnItemSelectListener(new arqq(this));
+    setTitle(getActivity().getString(2131690363));
+    this.vg.setOnItemSelectListener(new asmu(this));
   }
   
   protected void c()
   {
     super.c();
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131624774);
-    if (AppSetting.c) {
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131624774));
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131690335);
+    if (AppSetting.d) {
+      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131690335));
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131624800));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690361));
     this.c.setVisibility(0);
     this.jdField_b_of_type_MqqOsMqqHandler.post(this.jdField_a_of_type_JavaLangRunnable);
   }
@@ -64,24 +64,24 @@ public class MsgBackupMigrateFragment
         }
         if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!isDetached()))
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131100170));
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131624799));
+          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165760));
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690360));
         }
         if ((this.jdField_b_of_type_AndroidWidgetTextView == null) || (isDetached())) {
           break;
         }
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131624827));
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690388));
         break;
         bool = false;
       }
       label141:
       if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!isDetached()))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131101260));
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131624800));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166854));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690361));
       }
       if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (!isDetached())) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131624828));
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690389));
       }
     }
   }
@@ -97,7 +97,7 @@ public class MsgBackupMigrateFragment
     if (QLog.isColorLevel()) {
       QLog.d("MsgBackup.MsgBackupMigrateFragment", 2, "migrate_btn onclick");
     }
-    arsa.a("0X800A230");
+    asoe.a("0X800A230");
   }
   
   public void onDestroyView()

@@ -1,94 +1,24 @@
-import QMF_PROTOCAL.QmfDownstream;
-import QzoneCombine.ClientOnlineNotfiyRsp;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.WNSStream;
-import java.io.IOException;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class awdd
-  extends MSFServlet
+  implements DialogInterface.OnClickListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramFromServiceMsg == null) {
-      QLog.e("NotifyQZoneServer", 1, "fromServiceMsg==null");
-    }
-    for (;;)
-    {
-      return;
-      if (paramFromServiceMsg.getResultCode() != 1000) {
-        break label192;
-      }
-      Object localObject = new WNSStream();
-      paramFromServiceMsg = bakc.b(paramFromServiceMsg.getWupBuffer());
-      try
-      {
-        paramFromServiceMsg = ((WNSStream)localObject).unpack(paramFromServiceMsg);
-        if (paramFromServiceMsg != null)
-        {
-          paramFromServiceMsg = (ClientOnlineNotfiyRsp)beye.a(ClientOnlineNotfiyRsp.class, paramFromServiceMsg.BusiBuff);
-          if (paramFromServiceMsg != null)
-          {
-            localObject = paramFromServiceMsg.AttachInfo;
-            paramFromServiceMsg = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).edit();
-            localObject = bach.a((byte[])localObject);
-            paramIntent = paramIntent.getStringExtra("key_uin");
-            paramFromServiceMsg.putString("key_attach_info" + paramIntent, (String)localObject);
-            if (QLog.isDevelopLevel()) {
-              QLog.d("NotifyQZoneServer", 4, "onReceive attachinfo:" + (String)localObject);
-            }
-            if (Build.VERSION.SDK_INT >= 9)
-            {
-              paramFromServiceMsg.apply();
-              return;
-            }
-          }
-        }
-      }
-      catch (IOException paramIntent)
-      {
-        QLog.e("NotifyQZoneServer", 1, paramIntent, new Object[0]);
-        return;
-      }
-    }
-    paramFromServiceMsg.commit();
-    return;
-    label192:
-    QLog.e("NotifyQZoneServer", 1, "onReceive fromServiceMsg.getResultCode():" + paramFromServiceMsg.getResultCode());
-  }
+  public awdd(SignatureEditFragment paramSignatureEditFragment) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l = paramIntent.getLongExtra("lastPushMsgTime", 0L);
-    paramIntent = paramIntent.getStringExtra("key_uin");
-    paramIntent = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).getString("key_attach_info" + paramIntent, "");
-    byte[] arrayOfByte = bach.a(paramIntent);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("NotifyQZoneServer", 4, "onSend lastPushMsgTime:" + l + ",attachinfo:" + paramIntent);
-    }
-    bfoo localbfoo = new bfoo(l, arrayOfByte);
-    arrayOfByte = localbfoo.encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null)
-    {
-      QLog.e("NotifyQZoneServer", 1, "onSend request encode result is null.cmd=" + localbfoo.uniKey());
-      paramIntent = new byte[4];
-    }
-    paramPacket.setTimeout(30000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localbfoo.uniKey());
-    paramPacket.putSendData(paramIntent);
+    paramDialogInterface.dismiss();
+    this.a.getActivity().finish();
+    VasWebviewUtil.reportCommercialDrainage("signature_update", "click_close", "click_close", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     awdd
  * JD-Core Version:    0.7.0.1
  */

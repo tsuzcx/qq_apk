@@ -1,96 +1,46 @@
-import android.os.IBinder;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+import java.util.Map;
 
 class bdlb
-  implements bdkz
+  extends ajuh
 {
-  private IBinder a;
+  private bdlb(bdkz parambdkz) {}
   
-  bdlb(IBinder paramIBinder)
+  protected void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    this.a = paramIBinder;
-  }
-  
-  /* Error */
-  public void a(boolean paramBoolean, android.os.Bundle paramBundle)
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   5: astore 4
-    //   7: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   10: astore 5
-    //   12: aload 4
-    //   14: ldc 25
-    //   16: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   19: iload_1
-    //   20: ifeq +58 -> 78
-    //   23: aload 4
-    //   25: iload_3
-    //   26: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   29: aload_2
-    //   30: ifnull +53 -> 83
-    //   33: aload 4
-    //   35: iconst_1
-    //   36: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   39: aload_2
-    //   40: aload 4
-    //   42: iconst_0
-    //   43: invokevirtual 39	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
-    //   46: aload_0
-    //   47: getfield 15	bdlb:a	Landroid/os/IBinder;
-    //   50: iconst_1
-    //   51: aload 4
-    //   53: aload 5
-    //   55: iconst_0
-    //   56: invokeinterface 45 5 0
-    //   61: pop
-    //   62: aload 5
-    //   64: invokevirtual 48	android/os/Parcel:readException	()V
-    //   67: aload 5
-    //   69: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   72: aload 4
-    //   74: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   77: return
-    //   78: iconst_0
-    //   79: istore_3
-    //   80: goto -57 -> 23
-    //   83: aload 4
-    //   85: iconst_0
-    //   86: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   89: goto -43 -> 46
-    //   92: astore_2
-    //   93: aload 5
-    //   95: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   98: aload 4
-    //   100: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   103: aload_2
-    //   104: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	105	0	this	bdlb
-    //   0	105	1	paramBoolean	boolean
-    //   0	105	2	paramBundle	android.os.Bundle
-    //   1	79	3	i	int
-    //   5	94	4	localParcel1	android.os.Parcel
-    //   10	84	5	localParcel2	android.os.Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   12	19	92	finally
-    //   23	29	92	finally
-    //   33	46	92	finally
-    //   46	67	92	finally
-    //   83	89	92	finally
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
+    bdht.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver onGetAuthCode isSuccess|" + paramBoolean + " code|" + paramString1 + " reqId|" + paramString2);
+    if (paramString2 == null) {
+      return;
+    }
+    Bundle localBundle = (Bundle)bdkz.a(this.a).get(paramString2);
+    if (localBundle == null)
+    {
+      bdht.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver reqId|" + paramString2 + "  but params context is null");
+      return;
+    }
+    int i = localBundle.getInt("CallbackId");
+    paramString2 = new Bundle();
+    paramString2.putString("PackageName", localBundle.getString("PackageName"));
+    paramString2.putInt("VersionCode", localBundle.getInt("VersionCode"));
+    if (paramBoolean)
+    {
+      paramString2.putBoolean("IsSuccess", true);
+      paramString2.putString("Code", paramString1);
+    }
+    for (;;)
+    {
+      bdht.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver callbackId|" + i + " result|" + paramString2);
+      bdkz.a(this.a).callbackResult(i, EIPCResult.createSuccessResult(paramString2));
+      return;
+      paramString2.putBoolean("IsSuccess", false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdlb
  * JD-Core Version:    0.7.0.1
  */

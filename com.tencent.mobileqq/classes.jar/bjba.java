@@ -1,19 +1,20 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import android.support.annotation.NonNull;
+import dov.com.qq.im.capture.control.CaptureAsyncAutomator;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class bjba
-  implements MediaPlayer.OnCompletionListener
+  implements ThreadFactory
 {
-  public bjba(FixedSizeVideoView paramFixedSizeVideoView) {}
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  private bjba(CaptureAsyncAutomator paramCaptureAsyncAutomator) {}
+  
+  public Thread newThread(@NonNull Runnable paramRunnable)
   {
-    if (this.a.a != null)
-    {
-      this.a.removeCallbacks(FixedSizeVideoView.a(this.a));
-      this.a.a.a(paramMediaPlayer);
-    }
+    paramRunnable = new Thread(paramRunnable, "CaptureAsyncAutomator_" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
+    paramRunnable.setPriority(4);
+    return paramRunnable;
   }
 }
 

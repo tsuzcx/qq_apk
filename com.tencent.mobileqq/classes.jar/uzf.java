@@ -1,31 +1,61 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
-import java.util.Collections;
+import java.util.List;
 
-class uzf
-  implements slx<szw, tbq>
+public class uzf
+  extends uzu
+  implements syt<uzg, uzh>
 {
-  uzf(uyz paramuyz, WeakReference paramWeakReference) {}
+  private boolean a;
   
-  public void a(@NonNull szw paramszw, @Nullable tbq paramtbq, @NonNull ErrorMessage paramErrorMessage)
+  public String a()
   {
-    if (paramtbq == null)
+    return "GetPhotographyGuideInfoStep";
+  }
+  
+  public void a()
+  {
+    veg.d("Q.qqstory.home.GetPhotographyGuideInfoStep", "run");
+    uzg localuzg = new uzg();
+    syr.a().a(localuzg, this);
+  }
+  
+  public void a(@NonNull uzg paramuzg, @Nullable uzh paramuzh, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if ((paramErrorMessage.isSuccess()) && (paramuzh != null))
     {
-      paramszw = (uzm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramszw != null) {
-        paramszw.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
+      veg.b("Q.qqstory.home.GetPhotographyGuideInfoStep", "onCmdRespond success.");
+      paramuzg = (tcv)tdc.a(10);
+      paramuzh = paramuzh.a;
+      if ((paramuzh != null) && (paramuzh.size() > 0)) {
+        paramuzg.b("StorySvc.get_photography_guide.word", paramuzh.get(0));
       }
-      return;
+      for (;;)
+      {
+        d();
+        return;
+        paramuzg.b("StorySvc.get_photography_guide.word", ajyc.a(2131705260));
+      }
     }
-    paramszw = (uzm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramszw != null)
+    veg.d("Q.qqstory.home.GetPhotographyGuideInfoStep", "onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramuzg });
+    b(paramErrorMessage);
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    try
     {
-      paramszw.a(0, paramtbq.a);
+      this.a = true;
       return;
     }
-    urk.c("DoodleEmojiManager", "requestPoiFaces callback is null");
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

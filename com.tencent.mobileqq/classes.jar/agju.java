@@ -1,225 +1,133 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebBackForwardList;
-import com.tencent.smtt.sdk.WebView;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.security.KeyFactory;
-import java.security.spec.X509EncodedKeySpec;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.phone.CountryActivity;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.crypto.Cipher;
-import mqq.app.AppRuntime;
-import org.json.JSONArray;
 
 public class agju
+  extends BaseAdapter
 {
-  private static volatile agju jdField_a_of_type_Agju;
-  private List<agjv> jdField_a_of_type_JavaUtilList;
+  private String jdField_a_of_type_JavaLangString = "";
+  private ArrayList<agjs> jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_JavaUtilArrayList;
   
-  private agju()
-  {
-    a(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin() + "");
-  }
+  private agju(CountryActivity paramCountryActivity) {}
   
-  public static agju a()
+  private int a(agjs paramagjs)
   {
-    if (jdField_a_of_type_Agju == null) {}
-    try
-    {
-      if (jdField_a_of_type_Agju == null) {
-        jdField_a_of_type_Agju = new agju();
-      }
-      return jdField_a_of_type_Agju;
+    if (paramagjs.a) {
+      return 0;
     }
-    finally {}
-  }
-  
-  private String a(String paramString)
-  {
-    Object localObject2 = null;
-    Object localObject3 = BaseApplicationImpl.getApplication();
-    Object localObject1 = localObject2;
-    if (localObject3 != null)
-    {
-      localObject3 = ((BaseApplicationImpl)localObject3).getSharedPreferences("qwallet_intercept", 4);
-      localObject1 = localObject2;
-      if (localObject3 != null) {
-        localObject1 = ((SharedPreferences)localObject3).getString("InterceptAppOpenConfig" + paramString, null);
-      }
+    if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.equals(""))) {
+      return 0;
     }
-    return localObject1;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
-      try
-      {
-        paramString2 = new X509EncodedKeySpec(Base64.decode(paramString2, 0));
-        paramString2 = KeyFactory.getInstance("RSA").generatePublic(paramString2);
-        paramString1 = Base64.decode(paramString1, 0);
-        Cipher localCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-        localCipher.init(2, paramString2);
-        paramString1 = new String(localCipher.doFinal(paramString1));
-        return paramString1;
-      }
-      catch (Exception paramString1)
-      {
-        paramString1.printStackTrace();
-      }
+    String str2 = paramagjs.c;
+    String str3 = paramagjs.b;
+    String str1 = paramagjs.d;
+    paramagjs = str1;
+    if (str1 != null) {
+      paramagjs = str1.toLowerCase();
     }
-    return null;
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject != null)
-    {
-      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("qwallet_intercept", 4);
-      if (localObject != null) {
-        ((SharedPreferences)localObject).edit().putString("InterceptAppOpenConfig" + paramString2, paramString1).commit();
-      }
+    str1 = ChnToSpell.a(str3, 1);
+    String str4 = ChnToSpell.a(str3, 2);
+    if ((str2.equals(this.jdField_a_of_type_JavaLangString)) || (str3.equals(this.jdField_a_of_type_JavaLangString)) || (str1.equals(this.jdField_a_of_type_JavaLangString)) || (str4.equals(this.jdField_a_of_type_JavaLangString)) || ((paramagjs != null) && (paramagjs.equals(this.jdField_a_of_type_JavaLangString)))) {
+      return 3;
     }
+    if ((str2.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str3.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str1.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str4.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || ((paramagjs != null) && (paramagjs.indexOf(this.jdField_a_of_type_JavaLangString) == 0))) {
+      return 2;
+    }
+    if ((str2.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str3.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str1.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str4.indexOf(this.jdField_a_of_type_JavaLangString) > 0)) {
+      return 1;
+    }
+    return 0;
   }
   
   public void a(String paramString)
   {
-    paramString = a(paramString);
-    if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_JavaUtilList = agjv.a(paramString);
+    int j = 0;
+    Object localObject = paramString.toLowerCase();
+    paramString = (String)localObject;
+    if (((String)localObject).equals("hk")) {
+      paramString = "xianggang";
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PayInterceptHelper", 2, "loadConfigFromSP|" + this.jdField_a_of_type_JavaUtilList);
+    localObject = paramString;
+    if (paramString.equals("uk")) {
+      localObject = "united kingdom";
     }
+    int i;
+    label81:
+    agjs localagjs;
+    int k;
+    if (((String)localObject).startsWith(this.jdField_a_of_type_JavaLangString))
+    {
+      paramString = this.jdField_a_of_type_JavaUtilArrayList;
+      this.jdField_a_of_type_JavaLangString = ((String)localObject);
+      localObject = new ArrayList(8);
+      paramString = paramString.iterator();
+      i = 0;
+      if (!paramString.hasNext()) {
+        break label181;
+      }
+      localagjs = (agjs)paramString.next();
+      k = a(localagjs);
+      if (k != 3) {
+        break label141;
+      }
+      ((ArrayList)localObject).add(j, localagjs);
+      j += 1;
+    }
+    for (;;)
+    {
+      break label81;
+      paramString = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_JavaUtilArrayList;
+      break;
+      label141:
+      if (k == 2)
+      {
+        ((ArrayList)localObject).add(i + j, localagjs);
+        i += 1;
+      }
+      else if (k == 1)
+      {
+        ((ArrayList)localObject).add(localagjs);
+      }
+    }
+    label181:
+    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+    notifyDataSetChanged();
   }
   
-  public void a(JSONArray paramJSONArray, String paramString)
+  public int getCount()
   {
-    if (paramJSONArray != null) {
-      a(paramJSONArray.toString(), paramString);
-    }
-    a(paramString);
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public boolean a(String paramString, WebViewFragment paramWebViewFragment)
+  public Object getItem(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (TextUtils.isEmpty(paramString)) || (paramWebViewFragment == null)) {}
-    CustomWebView localCustomWebView;
-    agjv localagjv;
-    do
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null)
     {
-      do
-      {
-        while (!((Iterator)localObject1).hasNext())
-        {
-          do
-          {
-            do
-            {
-              return false;
-              if (QLog.isColorLevel()) {
-                QLog.d("PayInterceptHelper", 2, "handleIntercept:" + paramString);
-              }
-              localCustomWebView = paramWebViewFragment.getWebView();
-            } while (localCustomWebView == null);
-            localObject1 = localCustomWebView.copyBackForwardList();
-          } while ((localObject1 == null) || (((WebBackForwardList)localObject1).getCurrentIndex() != ((WebBackForwardList)localObject1).getSize() - 1));
-          localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-        }
-        localagjv = (agjv)((Iterator)localObject1).next();
-      } while (TextUtils.isEmpty(localagjv.jdField_b_of_type_JavaLangString));
-      if (localagjv.jdField_a_of_type_JavaUtilRegexPattern == null) {
-        localagjv.jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile(localagjv.jdField_b_of_type_JavaLangString);
-      }
-    } while (!localagjv.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString).matches());
-    Object localObject1 = "";
-    Object localObject2 = paramWebViewFragment.a;
-    paramWebViewFragment = (WebViewFragment)localObject1;
-    if (localObject2 != null)
-    {
-      localObject2 = ((bbca)localObject2).jdField_a_of_type_JavaUtilList;
-      paramWebViewFragment = (WebViewFragment)localObject1;
-      if (localObject2 != null)
-      {
-        paramWebViewFragment = (WebViewFragment)localObject1;
-        if (((List)localObject2).size() > 0) {
-          paramWebViewFragment = (String)((List)localObject2).get(0);
-        }
-      }
+      localView = CountryActivity.a(paramViewGroup, this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.getLayoutInflater(), true);
+      localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity);
     }
-    boolean bool;
-    if (TextUtils.isEmpty(localagjv.jdField_a_of_type_JavaLangString)) {
-      bool = true;
-    }
-    while (bool)
-    {
-      if (localagjv.jdField_a_of_type_Boolean) {
-        VACDReportUtil.a("originURL=" + paramWebViewFragment + "|interceptURL=" + paramString, "qqwallet", "InterceptOpenOtherApp", null, null, 0, null);
-      }
-      if (!localagjv.jdField_b_of_type_Boolean) {
-        break;
-      }
-      if (!TextUtils.isEmpty(localagjv.c))
-      {
-        if (TextUtils.isEmpty(localagjv.d)) {
-          localagjv.d = a(localagjv.c, "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDsE3WI7sDFUi6QWV/oK8qozDvS\nTlxmu1a3NSFxeOrjlVEVtOx8yIMVFYIixq/Fv1XgUlyvL7bGJbaLLKaqlYruGd2z\nNbaIz90Zm4H0pMFHx4vCYhsRP1HXbVMo2ZDiHEDbnSm/99uzFPPiXqLi8jE9t4if\n0GuYdSZfe5o+SIKT5QIDAQAB");
-        }
-        paramWebViewFragment = localagjv.d;
-        if (QLog.isColorLevel()) {
-          QLog.d("PayInterceptHelper", 2, "jumpUrl:" + paramWebViewFragment);
-        }
-        if (TextUtils.isEmpty(paramWebViewFragment)) {
-          break;
-        }
-        if (!paramWebViewFragment.contains("?")) {
-          break label515;
-        }
-        paramWebViewFragment = paramWebViewFragment + "&j=";
-      }
-      try
-      {
-        for (;;)
-        {
-          paramString = paramWebViewFragment + URLEncoder.encode(paramString, "UTF-8");
-          if (QLog.isColorLevel()) {
-            QLog.d("PayInterceptHelper", 2, "jumpUrl with params:" + paramString);
-          }
-          localCustomWebView.loadUrl(paramString);
-          return true;
-          if (localagjv.jdField_b_of_type_JavaUtilRegexPattern == null) {
-            localagjv.jdField_b_of_type_JavaUtilRegexPattern = Pattern.compile(localagjv.jdField_a_of_type_JavaLangString);
-          }
-          bool = localagjv.jdField_b_of_type_JavaUtilRegexPattern.matcher(paramWebViewFragment).matches();
-          break;
-          label515:
-          paramWebViewFragment = paramWebViewFragment + "?j=";
-        }
-      }
-      catch (UnsupportedEncodingException paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-          paramString = paramWebViewFragment;
-        }
-      }
-    }
+    CountryActivity.a(localView, (agjs)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agju
  * JD-Core Version:    0.7.0.1
  */

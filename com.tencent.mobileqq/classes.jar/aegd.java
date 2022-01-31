@@ -1,29 +1,28 @@
-import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 class aegd
-  extends anoj
+  implements URLDrawable.URLDrawableListener
 {
-  aegd(aefv paramaefv) {}
+  aegd(aegc paramaegc, String paramString) {}
   
-  protected void a(boolean paramBoolean, anor paramanor)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetUnLimitFriendInfo " + paramBoolean);
-    }
-    if ((paramBoolean) && (paramanor != null)) {
-      aefv.a(this.a, paramanor);
-    }
+    QLog.e("AioPanelMiniAppManager", 1, "onLoadFialed: failed. ", paramThrowable);
   }
   
-  protected void a(boolean paramBoolean, anpv paramanpv, int paramInt)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((paramBoolean) && (paramanpv != null))
-    {
-      bajr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramanpv, this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO, this.a.g, this.a.L);
-      aefv.a(this.a, paramanpv.mNickName);
-      this.a.e.setText(paramanpv.mNickName);
+    if (QLog.isColorLevel()) {
+      QLog.i("AioPanelMiniAppManager", 2, "onLoadSuccessed: invoked.  url: " + this.jdField_a_of_type_JavaLangString);
     }
+    aegc.a(this.jdField_a_of_type_Aegc).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
   }
 }
 

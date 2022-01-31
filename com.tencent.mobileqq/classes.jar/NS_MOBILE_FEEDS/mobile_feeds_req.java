@@ -32,6 +32,7 @@ public final class mobile_feeds_req
   public Map<Integer, String> rank_param;
   public int refresh_type;
   public int relation_type;
+  public int scene;
   public Map<String, String> stMapExtendinfo;
   public String tlv_attach_info = "";
   
@@ -57,7 +58,7 @@ public final class mobile_feeds_req
   
   public mobile_feeds_req() {}
   
-  public mobile_feeds_req(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, Map<Integer, String> paramMap1, long paramLong, String paramString3, Map<String, String> paramMap2, String paramString4, byte paramByte, s_gps params_gps, Map<String, String> paramMap3, Map<String, String> paramMap4, Map<Integer, String> paramMap5, Map<Integer, String> paramMap6, Map<String, byte[]> paramMap)
+  public mobile_feeds_req(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, Map<Integer, String> paramMap1, long paramLong, String paramString3, Map<String, String> paramMap2, String paramString4, byte paramByte, s_gps params_gps, Map<String, String> paramMap3, Map<String, String> paramMap4, Map<Integer, String> paramMap5, Map<Integer, String> paramMap6, Map<String, byte[]> paramMap, int paramInt4)
   {
     this.refresh_type = paramInt1;
     this.relation_type = paramInt2;
@@ -76,6 +77,7 @@ public final class mobile_feeds_req
     this.rank_param = paramMap5;
     this.mapDesc = paramMap6;
     this.mapBinaryExtendInfo = paramMap;
+    this.scene = paramInt4;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -97,6 +99,7 @@ public final class mobile_feeds_req
     this.rank_param = ((Map)paramJceInputStream.read(cache_rank_param, 14, false));
     this.mapDesc = ((Map)paramJceInputStream.read(cache_mapDesc, 15, false));
     this.mapBinaryExtendInfo = ((Map)paramJceInputStream.read(cache_mapBinaryExtendInfo, 16, false));
+    this.scene = paramJceInputStream.read(this.scene, 17, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -142,6 +145,7 @@ public final class mobile_feeds_req
     if (this.mapBinaryExtendInfo != null) {
       paramJceOutputStream.write(this.mapBinaryExtendInfo, 16);
     }
+    paramJceOutputStream.write(this.scene, 17);
   }
 }
 

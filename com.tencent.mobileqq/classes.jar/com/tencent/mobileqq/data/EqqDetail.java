@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import ajjy;
-import atmo;
-import atnz;
-import atoc;
+import ajyc;
+import aukm;
+import aulx;
+import auma;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.EqqAccountInfo;
@@ -17,15 +17,15 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import mqb;
+import nbc;
 
 public class EqqDetail
-  extends atmo
+  extends aukm
 {
   public byte[] accountData;
   public String address = "";
-  @atnz
-  public String certifiedDescription = ajjy.a(2131638401);
+  @aulx
+  public String certifiedDescription = ajyc.a(2131704186);
   public int certifiedGrade;
   public String displayNumber = "";
   public long eqqAccountFlag;
@@ -39,12 +39,12 @@ public class EqqDetail
   public boolean mIsSyncLbs;
   public boolean mIsSyncLbsSelected;
   public int mShowMsgFlag = -1;
-  public String name = ajjy.a(2131638402);
+  public String name = ajyc.a(2131704187);
   public String phoneNumber = "";
   public String realSummary = "";
   public int seqno;
-  public String summary = ajjy.a(2131638400);
-  @atoc
+  public String summary = ajyc.a(2131704185);
+  @auma
   public String uin;
   
   public EqqDetail() {}
@@ -225,7 +225,7 @@ public class EqqDetail
   
   public boolean hasIvrAbility()
   {
-    if (!mqb.a) {
+    if (!nbc.a) {
       if (QLog.isDevelopLevel()) {
         QLog.d("EqqDetail", 4, "Don't support sharp");
       }

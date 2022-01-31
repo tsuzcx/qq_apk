@@ -1,24 +1,42 @@
-import android.net.Uri;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
-class bbaj
-  extends bbam
+public class bbaj
 {
-  bbaj(bbah parambbah)
+  public static String a(Context paramContext, String paramString)
   {
-    super(parambbah);
+    if (paramContext != null) {
+      return paramContext.getSharedPreferences("c_profile_sharepreference", 0).getString(paramString, "");
+    }
+    return "";
   }
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  public static void a(Context paramContext, String paramString)
   {
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
+    if (paramContext != null)
+    {
+      paramContext = paramContext.getSharedPreferences("c_profile_sharepreference", 0).edit();
+      paramContext.remove(paramString);
+      paramContext.commit();
+    }
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    b(paramContext, paramString1, paramString2);
+  }
+  
+  private static void b(Context paramContext, String paramString1, String paramString2)
+  {
+    paramContext = paramContext.getSharedPreferences("c_profile_sharepreference", 0).edit();
+    paramContext.putString(paramString1, paramString2);
+    paramContext.commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbaj
  * JD-Core Version:    0.7.0.1
  */

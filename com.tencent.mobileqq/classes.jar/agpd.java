@@ -1,41 +1,12 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import java.util.HashMap;
-import java.util.List;
+import android.view.MotionEvent;
 
-class agpd
-  implements agpe
+public abstract interface agpd
 {
-  agpd(agpc paramagpc) {}
-  
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
-  {
-    int i = 1;
-    agpc localagpc = this.a;
-    localagpc.jdField_a_of_type_Int += 1;
-    if (paramInt == 0)
-    {
-      this.a.jdField_a_of_type_JavaUtilHashMap.put(paramPathResult.url, paramPathResult);
-      if ((this.a.jdField_a_of_type_Int >= this.a.jdField_a_of_type_JavaUtilList.size()) && (this.a.jdField_a_of_type_Agpf != null))
-      {
-        paramPathResult = this.a.jdField_a_of_type_Agpf;
-        if (!this.a.jdField_a_of_type_Boolean) {
-          break label118;
-        }
-      }
-    }
-    label118:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramPathResult.a(paramInt, this.a.jdField_a_of_type_JavaUtilHashMap);
-      return;
-      this.a.jdField_a_of_type_Boolean = true;
-      break;
-    }
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agpd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-
-class mun
-  extends BroadcastReceiver
+class mun<Data>
 {
-  mun(mui parammui) {}
+  final mul jdField_a_of_type_Mul;
+  final Data[] jdField_a_of_type_ArrayOfJavaLangObject;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  mun(mul parammul, Data... paramVarArgs)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailVideoManager", 2, "onReceive ===>" + paramContext);
-    }
-    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext))) {
-      this.a.a();
-    }
+    this.jdField_a_of_type_Mul = parammul;
+    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mun
  * JD-Core Version:    0.7.0.1
  */

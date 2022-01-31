@@ -1,102 +1,123 @@
-import android.support.annotation.NonNull;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerBigPicItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerTriplePicItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerVideoItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusInnerData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendAdData;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class rnn
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
+  private static bfsr a;
   
-  public rnn(@NonNull String paramString1, @NonNull JSONObject paramJSONObject, String paramString2)
+  public static void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && ((this.jdField_a_of_type_JavaLangString.contains("v_present=1")) || (this.jdField_a_of_type_JavaLangString.contains("v_present=2")))) {
-      this.jdField_a_of_type_Int = 1;
+    if ((a != null) && (a.isShowing())) {
+      a.dismiss();
     }
-    paramString1 = (QQAppInterface)obz.a();
-    if (paramString1 != null) {
-      this.c = paramString1.getAccount();
+    a = null;
+  }
+  
+  public static void a(Activity paramActivity, AdData paramAdData)
+  {
+    if (paramAdData.jdField_b_of_type_Boolean) {
+      a(paramActivity, paramAdData.r);
     }
-  }
-  
-  public rnn(@NonNull String paramString1, @NonNull JSONObject paramJSONObject, String paramString2, int paramInt)
-  {
-    this(paramString1, paramJSONObject, paramString2);
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public String a()
-  {
-    return a().toString();
-  }
-  
-  public JSONObject a()
-  {
-    int i = 0;
-    JSONObject localJSONObject1 = new JSONObject();
-    try
+    for (;;)
     {
-      localJSONObject1.put("url", this.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_OrgJsonJSONObject != null)
+      paramActivity = (QQAppInterface)onk.a();
+      if (paramActivity != null) {
+        nmf.c(paramActivity, paramAdData);
+      }
+      return;
+      if (paramAdData.d == 12) {
+        a(paramActivity, paramAdData.p, paramAdData.n);
+      } else {
+        a(paramActivity, paramAdData.n);
+      }
+    }
+  }
+  
+  public static void a(Activity paramActivity, String paramString)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("param_ad_json", paramString);
+    PublicTransFragmentActivity.b(paramActivity, localIntent, ReadInJoyNativeAdFragment.class);
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    String str = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      str = paramString;
+      if (bbev.h(paramContext)) {
+        str = paramString + "&acttype=42";
+      }
+    }
+    onk.a(paramContext, str);
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    String str = paramString2;
+    if (!TextUtils.isEmpty(paramString2)) {
+      if (!paramString2.contains("?")) {
+        break label70;
+      }
+    }
+    label70:
+    for (str = paramString2 + "?"; nmf.a(paramContext, paramString1); str = paramString2 + "&")
+    {
+      onk.a(paramContext, str + "_wv=33554437");
+      return;
+    }
+    a(paramContext, str + "_wv=1");
+  }
+  
+  public static void a(BaseData paramBaseData, View paramView, Context paramContext)
+  {
+    Object localObject;
+    if ((paramBaseData != null) && ((paramBaseData.p == 10) || (paramBaseData.p == 17) || (paramBaseData.p == 22) || (paramBaseData.p == 24) || (paramBaseData.p == 9)))
+    {
+      if (paramBaseData.p != 17) {
+        break label147;
+      }
+      localObject = (ProteusBannerVideoItemData)paramBaseData;
+    }
+    for (;;)
+    {
+      if (a == null) {
+        a = new bfsr((Activity)paramContext);
+      }
+      if (!a.a()) {
+        a.a();
+      }
+      paramBaseData = new rno(paramContext, paramBaseData, (AdData)localObject);
+      if (a.a(0, ((AdData)localObject).jdField_b_of_type_JavaUtilArrayList))
       {
-        JSONObject localJSONObject2 = this.jdField_a_of_type_OrgJsonJSONObject;
-        if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-          i = 1;
-        }
-        localJSONObject2.put("isNightMode", i);
+        a.a(paramView, paramBaseData);
+        a.a(new rnp(paramContext, (AdData)localObject));
       }
-      localJSONObject1.put("param", this.jdField_a_of_type_OrgJsonJSONObject);
-      localJSONObject1.put("cache", this.jdField_b_of_type_JavaLangString);
-      localJSONObject1.put("uin", this.c);
-      localJSONObject1.put("isPresent", this.jdField_a_of_type_Int);
-      localJSONObject1.put("isChannel", this.jdField_b_of_type_Int);
-      return localJSONObject1;
-    }
-    catch (JSONException localJSONException) {}
-    return localJSONObject1;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ViolaCreactPageObject : url:");
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      str = "null";
-      localStringBuilder.append(str);
-      localStringBuilder.append("; ");
-      if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
-        break label100;
+      return;
+      label147:
+      if (paramBaseData.p == 10) {
+        localObject = (ProteusBannerBigPicItemData)paramBaseData;
+      } else if (paramBaseData.p == 24) {
+        localObject = (ProteusBannerTriplePicItemData)paramBaseData;
+      } else if (paramBaseData.p == 9) {
+        localObject = (RecommendAdData)paramBaseData;
+      } else {
+        localObject = (ProteusInnerData)paramBaseData;
       }
-      str = "null";
-      label51:
-      localStringBuilder.append(str);
-      localStringBuilder.append("; ");
-      if (this.jdField_b_of_type_JavaLangString != null) {
-        break label111;
-      }
-    }
-    label100:
-    label111:
-    for (String str = "null";; str = this.jdField_b_of_type_JavaLangString.toString())
-    {
-      localStringBuilder.append(str);
-      localStringBuilder.append("; ");
-      return localStringBuilder.toString();
-      str = this.jdField_a_of_type_JavaLangString;
-      break;
-      str = this.jdField_a_of_type_OrgJsonJSONObject.toString();
-      break label51;
     }
   }
 }

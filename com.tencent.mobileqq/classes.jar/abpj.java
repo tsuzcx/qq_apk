@@ -1,25 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
-class abpj
-  implements Animation.AnimationListener
+public class abpj
+  implements DialogInterface.OnClickListener
 {
-  abpj(abpi paramabpi) {}
+  public abpj(NotifyPCActiveActivity paramNotifyPCActiveActivity, ajtk paramajtk) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.a.a.b.setVisibility(8);
-    this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.a.a.c();
+    this.jdField_a_of_type_Ajtk.b(true);
+    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity.finish();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

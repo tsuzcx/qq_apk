@@ -1,16 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
 
-class adjx
-  implements View.OnClickListener
+public abstract interface adjx
 {
-  adjx(adjv paramadjv) {}
+  public abstract View a();
   
-  public void onClick(View paramView)
-  {
-    adjv.a(this.a, true, this.a.a.getCurrentAccountUin());
-  }
+  public abstract void a();
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void d();
+  
+  public abstract void i();
+  
+  public abstract void o();
 }
 
 

@@ -1,36 +1,17 @@
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class aazj
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  public aazj(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
+  public aazj(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    paramEditable = paramEditable.toString();
-    int i = 0;
-    if (!TextUtils.isEmpty(paramEditable)) {
-      i = paramEditable.getBytes().length / 3;
-    }
-    if (i <= 40) {
-      this.a.a.setTextColor(this.a.getResources().getColor(2131101333));
-    }
-    for (;;)
-    {
-      this.a.a.setText("" + (40 - i));
-      return;
-      this.a.a.setTextColor(-65536);
-    }
+    this.a.a.setText("");
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

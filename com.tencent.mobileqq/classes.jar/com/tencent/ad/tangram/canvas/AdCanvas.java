@@ -1,11 +1,15 @@
 package com.tencent.ad.tangram.canvas;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Keep;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.AdError;
 import com.tencent.ad.tangram.log.AdLog;
+import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
+import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForCanvas;
+import com.tencent.ad.tangram.settings.AdSettingsUtil;
 import java.lang.ref.WeakReference;
 
 @Keep
@@ -24,6 +28,18 @@ public enum AdCanvas
       return (AdCanvasAdapter)INSTANCE.adapter.get();
     }
     return null;
+  }
+  
+  public static int getQueueLength(WeakReference<Context> paramWeakReference)
+  {
+    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {
+      return -2147483648;
+    }
+    paramWeakReference = AdSettingsUtil.INSTANCE.getSettingsCache((Context)paramWeakReference.get());
+    if (paramWeakReference != null) {
+      return paramWeakReference.settingsForCanvas.queueLength;
+    }
+    return -2147483648;
   }
   
   public static void setAdapter(WeakReference<AdCanvasAdapter> paramWeakReference)

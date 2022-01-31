@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.Timer;
 import java.util.TimerTask;
-import kvq;
+import lgf;
 
 class DoubleVideoCtrlUI$5
   extends TimerTask
@@ -18,13 +18,13 @@ class DoubleVideoCtrlUI$5
   public void run()
   {
     if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController == null) || (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null)) {}
-    kvq localkvq;
+    lgf locallgf;
     do
     {
       return;
-      localkvq = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
-    } while (localkvq == null);
-    if (localkvq.P <= 0)
+      locallgf = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
+    } while (locallgf == null);
+    if (locallgf.R <= 0)
     {
       if (this.this$0.jdField_a_of_type_JavaUtilTimer != null)
       {
@@ -48,8 +48,8 @@ class DoubleVideoCtrlUI$5
           break;
         }
         l3 = l2 - l1;
-        QLog.w(this.this$0.c, 1, "StartGlassCheck, interval[" + l3 + "], mCheck[" + this.a + "], mCurrentDoubleVideoGlassSwitch[" + this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().O + "]");
-        if ((l3 > this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().P * 1000) && (this.a))
+        QLog.w(this.this$0.c, 1, "StartGlassCheck, interval[" + l3 + "], mCheck[" + this.a + "], mCurrentDoubleVideoGlassSwitch[" + this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().Q + "]");
+        if ((l3 > this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().R * 1000) && (this.a))
         {
           this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new DoubleVideoCtrlUI.5.1(this, l2, l1));
           return;
@@ -61,7 +61,7 @@ class DoubleVideoCtrlUI$5
         l1 = 0L;
         continue;
       }
-      if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().O == 0) || (l3 >= 1000L)) {
+      if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().Q == 0) || (l3 >= 1000L)) {
         break;
       }
       this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new DoubleVideoCtrlUI.5.2(this));

@@ -1,26 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class nwj
-  implements nyh
+  implements mzb
 {
-  public nwj(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
+  public nwj(ReadInJoyNewFeedsActivity.2 param2) {}
   
-  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<nwx> paramList, boolean paramBoolean2, int paramInt2, int paramInt3) {}
-  
-  public void onCommentStateError(int paramInt)
+  public void loaded(String paramString, int paramInt)
   {
-    if (paramInt == 1002) {
-      ReadInJoySecondCommentListFragment.a(this.a, true);
-    }
-    if (paramInt == 1003) {
-      vvp.a(1, 2131652539);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2378 html web resource finish");
     }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nwj
  * JD-Core Version:    0.7.0.1
  */

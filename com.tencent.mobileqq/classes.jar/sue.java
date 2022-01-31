@@ -1,15 +1,8 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Comparator;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class sue
-  implements Comparator<tfv>
+public abstract interface sue
 {
-  sue(sud paramsud) {}
-  
-  public int a(tfv paramtfv1, tfv paramtfv2)
-  {
-    return suk.a(paramtfv1.a.mCreateTime, paramtfv2.a.mCreateTime);
-  }
+  public abstract void a(sul paramsul, ErrorMessage paramErrorMessage);
 }
 
 

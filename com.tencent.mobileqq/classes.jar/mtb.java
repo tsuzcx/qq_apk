@@ -1,77 +1,167 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.AccountDetail.activity.PubAccountMoreInfoActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.av.business.manager.EffectConfigBase;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse;
+import org.json.JSONObject;
 
 public class mtb
-  implements BusinessObserver
 {
-  public mtb(PubAccountMoreInfoActivity paramPubAccountMoreInfoActivity) {}
+  protected static ayrz a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PubAccountMoreInfoActivity", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean)
+    jdField_a_of_type_Ayrz = new mtd();
+  }
+  
+  public static long a(String paramString)
+  {
+    long[] arrayOfLong = new long[4];
+    paramString = paramString.split("\\.");
+    int k = paramString.length;
+    int i = 0;
+    int j = 0;
+    while (i < k)
     {
-      this.a.a(2131629887);
+      arrayOfLong[j] = Long.parseLong(paramString[i]);
+      j += 1;
+      i += 1;
+    }
+    return (arrayOfLong[0] << 24) + (arrayOfLong[1] << 16) + (arrayOfLong[2] << 8) + arrayOfLong[3];
+  }
+  
+  public static String a()
+  {
+    String str = EffectConfigBase.a(270, EffectConfigBase.c).getString("scoreInfos", null);
+    if (QLog.isColorLevel()) {
+      QLog.i("ScoreManager", 2, "getScoreInfos:" + str);
+    }
+    return str;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    b(paramQQAppInterface, paramString1, paramString2);
+  }
+  
+  public static void a(String paramString)
+  {
+    if (paramString == null) {
+      lcl.c("ScoreManager", "saveAVChatInfosForScore error ");
+    }
+    do
+    {
       return;
+      if (lcy.a(270) != 0) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w("ScoreManager", 1, "saveAVChatInfosForScore, 没有配置, infos[" + paramString + "]");
+    return;
+    SharedPreferences.Editor localEditor = EffectConfigBase.a(270, EffectConfigBase.c).edit();
+    localEditor.putString("scoreInfos", paramString);
+    localEditor.commit();
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, mte parammte)
+  {
+    paramQQAppInterface = paramQQAppInterface.getNetEngine(0);
+    if (QLog.isColorLevel()) {
+      QLog.i("ScoreManager", 2, "requestToDownload");
+    }
+    if (parammte == null) {
+      return false;
+    }
+    mtc localmtc = new mtc(parammte);
+    ayrv localayrv = new ayrv();
+    localayrv.jdField_a_of_type_Aysa = localmtc;
+    localayrv.jdField_a_of_type_JavaLangString = parammte.jdField_a_of_type_JavaLangString;
+    localayrv.jdField_a_of_type_Int = 0;
+    localayrv.c = parammte.c;
+    localayrv.e = 1;
+    localayrv.jdField_a_of_type_Ayrz = jdField_a_of_type_Ayrz;
+    paramQQAppInterface.a(localayrv);
+    parammte.jdField_a_of_type_Ayrv = localayrv;
+    if (QLog.isColorLevel()) {
+      QLog.i("ScoreManager", 1, "submitDownloadTask. url = " + parammte.jdField_a_of_type_JavaLangString);
+    }
+    return true;
+  }
+  
+  static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      lcl.c("ScoreManager", "parse config: " + paramString1 + ", curUin : " + paramString2);
+      paramString2 = bbjn.e(paramString2);
     }
     for (;;)
     {
-      byte[] arrayOfByte;
-      oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse;
       try
       {
-        arrayOfByte = paramBundle.getByteArray("data");
-        paramInt = paramBundle.getInt("type", 0);
-        if (arrayOfByte == null) {
-          break;
-        }
-        paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-        localGetPublicAccountDetailInfoResponse = new oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse();
-        if (paramInt == 0)
+        Object localObject = new JSONObject(paramString1);
+        int i;
+        if (((JSONObject)localObject).has("scoreSwitch"))
         {
-          paramBundle.mergeFrom(arrayOfByte);
-          paramBoolean = true;
-          if (!paramBoolean) {
-            break;
-          }
-          if (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() != 0) {
-            break label259;
-          }
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) && ((!paramBundle.seqno.has()) || (paramBundle.seqno.get() == this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.seqno))) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("PubAccountMoreInfoActivity", 2, "sendPublicAccountDetailInfoRequest: need update local data , new seqno = " + paramBundle.seqno.get());
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse = paramBundle;
-          this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = new AccountDetail(this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse);
-          PubAccountMoreInfoActivity.a(this.a);
-          return;
+          i = ((JSONObject)localObject).getInt("scoreSwitch");
+          paramString2.edit().putInt("qav_score_switch", i).commit();
         }
-      }
-      catch (Exception paramBundle)
-      {
-        this.a.a(2131629887);
+        if (((JSONObject)localObject).has("scoreTime"))
+        {
+          i = ((JSONObject)localObject).getInt("scoreTime");
+          paramString2.edit().putInt("qav_score_time", i).commit();
+        }
+        if (((JSONObject)localObject).has("scoreRate"))
+        {
+          i = ((JSONObject)localObject).getInt("scoreRate");
+          paramString2.edit().putInt("qav_score_rate", i).commit();
+        }
+        if (!((JSONObject)localObject).has("scoreIconUrl")) {
+          break label393;
+        }
+        paramString1 = ((JSONObject)localObject).getString("scoreIconUrl");
+        paramString2 = "";
+        if (((JSONObject)localObject).has("scoreIconMd5")) {
+          paramString2 = ((JSONObject)localObject).getString("scoreIconMd5");
+        }
+        if ((paramString1 != null) && (!paramString1.isEmpty()))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("ScoreManager", 2, "parse|down load icons!");
+          }
+          localObject = new mte();
+          ((mte)localObject).jdField_a_of_type_JavaLangString = paramString1;
+          ((mte)localObject).c = (mrv.b() + ((mte)localObject).jdField_a_of_type_JavaLangString.substring(((mte)localObject).jdField_a_of_type_JavaLangString.lastIndexOf(".")));
+          ((mte)localObject).b = paramString2;
+          a(paramQQAppInterface, (mte)localObject);
+        }
         return;
       }
-      paramBoolean = rtr.a(arrayOfByte, localGetPublicAccountDetailInfoResponse, paramBundle);
+      catch (Exception paramQQAppInterface)
+      {
+        paramQQAppInterface.printStackTrace();
+        lcl.c("ScoreManager", "parse exception: " + paramQQAppInterface.toString());
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("ScoreManager", 2, "parse exception: " + paramQQAppInterface.toString());
+        return;
+      }
+      lcl.c("ScoreManager", "parse|config is empty!");
+      if (QLog.isColorLevel())
+      {
+        QLog.i("ScoreManager", 2, "parse|config is empty!");
+        return;
+        label393:
+        paramString1 = "";
+      }
     }
-    label259:
-    this.a.a(2131629887);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mtb
  * JD-Core Version:    0.7.0.1
  */

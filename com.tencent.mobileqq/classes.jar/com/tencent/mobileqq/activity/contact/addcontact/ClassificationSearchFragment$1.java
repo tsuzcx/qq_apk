@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import aewb;
+import afgx;
 
 public class ClassificationSearchFragment$1
   implements Runnable
 {
-  ClassificationSearchFragment$1(ClassificationSearchFragment paramClassificationSearchFragment, aewb paramaewb) {}
+  ClassificationSearchFragment$1(ClassificationSearchFragment paramClassificationSearchFragment, afgx paramafgx) {}
   
   public void run()
   {

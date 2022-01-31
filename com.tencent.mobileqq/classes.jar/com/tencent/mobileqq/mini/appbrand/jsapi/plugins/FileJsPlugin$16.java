@@ -1,36 +1,37 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.text.TextUtils;
+import com.tencent.mm.vfs.VFSFile;
+import com.tencent.mobileqq.mini.appbrand.utils.FileUtils;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mpx;
+import org.json.JSONObject;
 
 class FileJsPlugin$16
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$16(FileJsPlugin paramFileJsPlugin, String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt, String paramString3, long paramLong) {}
+  FileJsPlugin$16(FileJsPlugin paramFileJsPlugin, String paramString1, JSONObject paramJSONObject, JsRuntime paramJsRuntime, String paramString2, int paramInt, boolean paramBoolean) {}
   
   public String run()
   {
-    if ((MiniAppFileManager.getInstance().getWxFileType(this.val$zipFilePath) == 9999) && (!MiniAppFileManager.getInstance().isPackageRelativePath(this.val$zipFilePath))) {
-      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "permission denied, open " + this.val$zipFilePath, this.val$callbackId);
+    if ((TextUtils.isEmpty(this.val$dirPath)) || (this.val$params.isNull("dirPath"))) {
+      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "fail parameter error: parameter.dirPath should be String instead of Null;", this.val$callbackId);
     }
-    if (MiniAppFileManager.getInstance().getWxFileType(this.val$targetPath) != 2) {
-      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "permission denied, open " + this.val$targetPath, this.val$callbackId);
+    if (MiniAppFileManager.getInstance().getWxFileType(this.val$dirPath) != 2) {
+      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "permission denied, open " + this.val$dirPath, this.val$callbackId);
     }
-    String str1 = MiniAppFileManager.getInstance().getAbsolutePath(this.val$zipFilePath);
-    String str2 = MiniAppFileManager.getInstance().getUsrPath(this.val$targetPath);
-    if ((TextUtils.isEmpty(str1)) || (!new File(str1).exists())) {
-      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "no such file or directory, open " + this.val$zipFilePath, this.val$callbackId);
+    String str = MiniAppFileManager.getInstance().getUsrPath(this.val$dirPath);
+    if (!new VFSFile(str).exists()) {
+      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "no such file or directory, open " + this.val$dirPath, this.val$callbackId);
     }
-    int i = mpx.a(str1, str2);
-    QLog.d("[mini] FileJsPlugin", 1, "unzip [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], zipPath:" + str1 + ", target:" + str2);
-    if (i == 0) {
+    if (this.val$recursive) {
+      FileUtils.deleteDirectory(str);
+    }
+    for (;;)
+    {
       return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, this.val$callbackId);
+      FileUtils.deleteFilesInDirectory(str);
     }
-    return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "read zip data", this.val$callbackId);
   }
 }
 

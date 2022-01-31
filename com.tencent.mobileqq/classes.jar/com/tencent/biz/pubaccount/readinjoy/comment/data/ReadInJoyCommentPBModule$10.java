@@ -1,25 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.comment.data;
 
-import nvt;
-import nyj;
+import ohe;
+import oju;
 
 public class ReadInJoyCommentPBModule$10
   implements Runnable
 {
-  public ReadInJoyCommentPBModule$10(nyj paramnyj, int paramInt) {}
+  public ReadInJoyCommentPBModule$10(oju paramoju, int paramInt) {}
   
   public void run()
   {
-    if (nyj.a(this.this$0) != null)
+    if (oju.a(this.this$0) != null)
     {
       if (this.a == 10003) {
-        nyj.a(this.this$0).a(1002);
+        oju.a(this.this$0).a(1002);
       }
     }
     else {
       return;
     }
-    nyj.a(this.this$0).a(1003);
+    oju.a(this.this$0).a(1003);
   }
 }
 

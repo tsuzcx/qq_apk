@@ -1,27 +1,43 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.VipIPSiteInfo;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.graphics.Canvas;
+import android.text.TextPaint;
 
-class angy
-  implements View.OnClickListener
+public class angy
+  extends angv
 {
-  angy(angw paramangw, VipIPSiteInfo paramVipIPSiteInfo, String paramString1, String paramString2) {}
+  private TextPaint a = new TextPaint();
   
-  public void onClick(View paramView)
+  private String a(anfv paramanfv)
   {
-    paramView = new Intent(this.jdField_a_of_type_Angw.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Angw.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataVipIPSiteInfo.ipUrl, -1L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Angw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_enterclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
+    return String.valueOf(paramanfv.a());
+  }
+  
+  public anht a(anfv paramanfv)
+  {
+    angu localangu = ange.a();
+    float f1 = anhw.a(localangu.c(), a(paramanfv)) + localangu.f() + localangu.f();
+    float f2 = anhw.a(localangu.c());
+    f2 = localangu.e() * 2.0F + f2;
+    paramanfv.a(f2);
+    paramanfv.b(f1);
+    return new anht(f1, f2);
+  }
+  
+  public boolean a(anfv paramanfv)
+  {
+    return true;
+  }
+  
+  public void b(Canvas paramCanvas, anfv paramanfv, ange paramange, float paramFloat1, float paramFloat2)
+  {
+    paramange = ange.a();
+    this.a.setTextSize(paramange.c());
+    this.a.setColor(-1);
+    paramCanvas.drawText(a(paramanfv), paramange.f() + paramFloat1, paramange.e() + paramFloat2 - this.a.ascent(), this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     angy
  * JD-Core Version:    0.7.0.1
  */

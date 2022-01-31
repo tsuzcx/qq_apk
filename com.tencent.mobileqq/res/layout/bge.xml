@@ -6,5 +6,5 @@
         <include android:id="@id/f4m" layout="@layout/bg4" />
         <include android:id="@id/f4o" layout="@layout/bg9" />
     </LinearLayout>
-    <FrameLayout android:id="@id/hkg" android:background="@color/a72" android:paddingTop="14.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="284.0dip" />
+    <FrameLayout android:id="@id/hkg" android:paddingTop="14.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="284.0dip" />
 </com.qzone.widget.FillLinearLayout>

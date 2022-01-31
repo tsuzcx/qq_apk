@@ -1,36 +1,115 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupStoryInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.BaseApplicationImpl;
 
+@TargetApi(9)
 public class tbu
-  extends slu
+  extends tcb<tbx>
 {
-  public List<StoryVideoItem> a;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private tey jdField_a_of_type_Tey = new tbv(this);
+  protected boolean a;
   
-  public tbu(qqstory_service.RspBatchGetVideoInfo paramRspBatchGetVideoInfo)
+  public tbu()
   {
-    super(paramRspBatchGetVideoInfo.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (paramRspBatchGetVideoInfo.vid_info_list.has())
-    {
-      paramRspBatchGetVideoInfo = paramRspBatchGetVideoInfo.vid_info_list.get().iterator();
-      while (paramRspBatchGetVideoInfo.hasNext())
-      {
-        qqstory_struct.GroupStoryInfo localGroupStoryInfo = (qqstory_struct.GroupStoryInfo)paramRspBatchGetVideoInfo.next();
-        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-        localStoryVideoItem.convertFrom("Q.qqstory.shareGroup:GetShareGroupVideoInfoResponse", localGroupStoryInfo);
-        this.jdField_a_of_type_JavaUtilList.add(localStoryVideoItem);
-      }
+    BaseApplicationImpl localBaseApplicationImpl = QQStoryContext.a().a();
+    if (localBaseApplicationImpl == null) {
+      throw new IllegalArgumentException("Context should not be null");
     }
+    this.jdField_a_of_type_AndroidContentSharedPreferences = localBaseApplicationImpl.getSharedPreferences("poi_filter_perferences", 0);
   }
   
-  public String toString()
+  public int a()
   {
-    return "GetShareGroupVideoInfoResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", mVideoItemList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("longitude", 0);
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("time", 0L);
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("country", "");
+  }
+  
+  protected void a(int paramInt1, int paramInt2)
+  {
+    tmq localtmq = new tmq(1, paramInt1, paramInt2);
+    syr.a().a(localtmq, new tbw(this));
+  }
+  
+  protected void a(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramString, paramInt).apply();
+  }
+  
+  protected void a(String paramString, long paramLong)
+  {
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong(paramString, paramLong).apply();
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(paramString1, paramString2).apply();
+  }
+  
+  protected void a(teu paramteu)
+  {
+    veg.b("AddressDataProvider", "requestAddress.");
+    if (this.jdField_a_of_type_Boolean)
+    {
+      veg.d("AddressDataProvider", "is request address ing....");
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    tev localtev = (tev)tdc.a(9);
+    teu localteu = paramteu;
+    if (paramteu == null) {
+      localteu = localtev.b();
+    }
+    if (localteu != null)
+    {
+      a(localteu.b, localteu.a);
+      return;
+    }
+    localtev.a(this.jdField_a_of_type_Tey);
+    localtev.c();
+  }
+  
+  public boolean a(tbx paramtbx)
+  {
+    return (paramtbx != null) && (!TextUtils.isEmpty(paramtbx.a)) && (!ajyc.a(2131699869).equals(paramtbx.a));
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("latitude", 0);
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("province", "");
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("city", "");
+  }
+  
+  public String d()
+  {
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("district", "");
+  }
+  
+  public String e()
+  {
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("street", "");
   }
 }
 

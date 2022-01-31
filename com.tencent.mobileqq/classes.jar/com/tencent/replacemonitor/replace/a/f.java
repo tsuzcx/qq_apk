@@ -7,9 +7,9 @@ import com.tencent.replacemonitor.MonitorResult;
 import com.tencent.replacemonitor.MonitorStep;
 import com.tencent.replacemonitor.MonitorTask;
 import com.tencent.replacemonitor.MonitorType;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.o;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.n;
+import com.tencent.tmassistantbase.util.q;
 import java.io.File;
 import java.io.IOException;
 
@@ -18,14 +18,14 @@ public class f
 {
   private void a(MonitorTask paramMonitorTask, String paramString, MonitorResult paramMonitorResult, MonitorStep paramMonitorStep)
   {
-    ac.c("WashMonitor", "MD5MonitorAction>>checkMd5 " + paramMonitorTask.appName + " task.fileMD5 = " + paramMonitorTask.fileMd5 + " filePath = " + paramString);
+    ab.c("WashMonitor", "MD5MonitorAction>>checkMd5 " + paramMonitorTask.appName + " task.fileMD5 = " + paramMonitorTask.fileMd5 + " filePath = " + paramString);
     if ((paramMonitorTask.fileMd5 != null) && (!TextUtils.isEmpty(paramString)))
     {
       File localFile = new File(paramString);
       if (localFile.exists())
       {
-        String str = o.b(paramString);
-        ac.c("WashMonitor", "MD5MonitorAction>>checkMd5 " + paramMonitorTask.appName + " task.fileMD5 = " + paramMonitorTask.fileMd5 + " file.md5() = " + str);
+        String str = n.b(paramString);
+        ab.c("WashMonitor", "MD5MonitorAction>>checkMd5 " + paramMonitorTask.appName + " task.fileMD5 = " + paramMonitorTask.fileMd5 + " file.md5() = " + str);
         if (paramMonitorTask.fileMd5.equals(str))
         {
           paramMonitorResult.resultCode = 0;
@@ -43,10 +43,10 @@ public class f
           try
           {
             paramMonitorResult.replaceChannelId = a.a(paramString);
-            paramString = r.b(paramMonitorTask.filePath);
+            paramString = q.b(paramMonitorTask.filePath);
             if ((paramMonitorStep == MonitorStep.INSTALLING) || (paramMonitorStep == MonitorStep.AFTER_INSTALL))
             {
-              paramMonitorTask = r.c(paramMonitorTask.packageName);
+              paramMonitorTask = q.c(paramMonitorTask.packageName);
               paramString = paramMonitorTask;
               if (paramMonitorTask != null)
               {
@@ -78,7 +78,7 @@ public class f
   
   public MonitorResult a(MonitorTask paramMonitorTask, MonitorStep paramMonitorStep)
   {
-    ac.c("WashMonitor", "MD5MonitorAction>>" + paramMonitorTask.appName + "开始通过MD5比较检测洗包 step =" + paramMonitorStep);
+    ab.c("WashMonitor", "MD5MonitorAction>>" + paramMonitorTask.appName + "开始通过MD5比较检测洗包 step =" + paramMonitorStep);
     MonitorResult localMonitorResult = new MonitorResult(paramMonitorStep, 0, paramMonitorStep + " MD5检测通过", a());
     if ((TextUtils.isEmpty(paramMonitorTask.fileMd5)) || (TextUtils.isEmpty(paramMonitorTask.filePath)))
     {

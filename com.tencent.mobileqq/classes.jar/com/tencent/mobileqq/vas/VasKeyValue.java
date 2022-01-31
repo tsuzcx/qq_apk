@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vas;
 
-import atmo;
+import aukm;
 
 public class VasKeyValue
-  extends atmo
+  extends aukm
 {
   public static final String COLUMN_KEY = "key";
   public static final String COLUMN_VALUE = "value";

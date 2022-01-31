@@ -1,7 +1,7 @@
 package com.tencent.common.app;
 
 import android.content.Context;
-import xfs;
+import xos;
 
 public final class SafeModeUtil$1
   implements Runnable
@@ -10,7 +10,7 @@ public final class SafeModeUtil$1
   
   public void run()
   {
-    xfs.a(this.a, 2);
+    xos.a(this.a, 2);
   }
 }
 

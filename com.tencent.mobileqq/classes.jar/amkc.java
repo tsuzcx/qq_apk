@@ -1,79 +1,132 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class amkc
+  extends BroadcastReceiver
 {
-  private int a;
-  private int b = 1;
-  private int c = 1;
+  public amkc(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
   
-  public amkc()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public static amkc a(alzs paramalzs)
-  {
-    amkc localamkc = new amkc();
-    if (paramalzs != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchBusinessConfBean", 2, "parse taskid->" + paramalzs.jdField_a_of_type_Int + " content->" + paramalzs.jdField_a_of_type_JavaLangString);
+    int j = 0;
+    paramContext = paramIntent.getAction();
+    String str = paramIntent.getStringExtra("process_name");
+    if (QLog.isDevelopLevel()) {
+      QLog.w("ColorNoteSmallScreenService", 1, "mReceiver action : " + paramContext + ", process_name :" + str);
+    }
+    for (;;)
+    {
+      try
+      {
+        if (this.a.b == null) {
+          break label541;
+        }
+        this.a.a().removeCallbacks(this.a.b);
+        if (!paramContext.equals("action_update_cn_smallscreen_state")) {
+          break label405;
+        }
+        i = paramIntent.getIntExtra("param_from", -1);
+        if (!QLog.isDevelopLevel()) {
+          break label546;
+        }
+        QLog.w("ColorNoteSmallScreenService", 1, "mReceiver from : " + i);
+      }
+      catch (Throwable paramContext)
+      {
+        if (!QLog.isColorLevel()) {
+          break label589;
+        }
+      }
+      if (i == 0) {
+        break label589;
+      }
+      this.a.a().removeCallbacks(this.a.b);
+      this.a.a().postDelayed(this.a.b, 200L);
+      return;
+      this.a.e = paramIntent.getBooleanExtra("param_not_in_colornote_list", true);
+      break label584;
+      QLog.d("ColorNoteSmallScreenService", 2, "mReceiver fail", paramContext);
+      return;
+      ColorNoteSmallScreenService.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("param_shoule_show_smallscreen", true);
+      if (!QLog.isDevelopLevel()) {
+        break label584;
+      }
+      QLog.w("ColorNoteSmallScreenService", 1, "mReceiver from : FromType_BusinessLimit mShouldShow = " + ColorNoteSmallScreenService.jdField_a_of_type_Boolean);
+      break label584;
+      paramContext = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a();
+      this.a.jdField_a_of_type_Int = paramContext.size();
+      this.a.jdField_a_of_type_Amjm.a(paramContext);
+      this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.a(paramContext);
+      break label584;
+      paramContext = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a();
+      if ((amgu.a()) || (((paramContext.size() != 1) || (!amhi.b((ColorNote)paramContext.get(0)))) && (paramContext.size() != 0))) {
+        break label584;
+      }
+      this.a.f();
+      break label584;
+      boolean bool = paramIntent.getBooleanExtra("param_custom_night_mode", false);
+      this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.setCustomNightMode(bool);
+      break label584;
+      label405:
+      if (!"mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) {
+        break;
+      }
+      this.a.d = false;
+      this.a.f = false;
+      i = 1;
+    }
+    if ("mqq.intent.action.QQ_FOREGROUND".equals(paramContext)) {
+      if ((str == null) || (!str.contains("openSdk"))) {
+        break label590;
       }
     }
-    try
+    label541:
+    label546:
+    label584:
+    label589:
+    label590:
+    for (int i = 1;; i = 0)
     {
-      paramalzs = new JSONObject(paramalzs.jdField_a_of_type_JavaLangString);
-      localamkc.a(paramalzs.optInt("business_switch_message", 1));
-      localamkc.b(paramalzs.optInt("business_switch_contact", 1));
-      localamkc.c(paramalzs.optInt("business_switch_dongtai", 1));
-      return localamkc;
+      if (i == 0)
+      {
+        this.a.d = true;
+        this.a.f = false;
+        i = 1;
+        break;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a() > 0)
+      {
+        this.a.f = true;
+        i = j;
+        break;
+      }
+      this.a.d = true;
+      this.a.f = false;
+      i = j;
+      break;
+      i = 1;
+      break;
+      switch (i)
+      {
+      }
+      i = 1;
+      break;
+      return;
     }
-    catch (Exception paramalzs)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("SearchBusinessConfBean", 2, "parse error->" + paramalzs.toString());
-    }
-    return localamkc;
-  }
-  
-  void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  void b(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public boolean b()
-  {
-    return this.b == 1;
-  }
-  
-  void c(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public boolean c()
-  {
-    return this.c == 1;
-  }
-  
-  public String toString()
-  {
-    return String.format("mBusinessSwitchTabMessage:%d, mBusinessSwitchTabContact:%d, mBusinessSwitchTabDongtai:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amkc
  * JD-Core Version:    0.7.0.1
  */

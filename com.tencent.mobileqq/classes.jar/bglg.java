@@ -1,6 +1,8 @@
-public abstract interface bglg
+class bglg
 {
-  public abstract void a();
+  private ayrv jdField_a_of_type_Ayrv;
+  private ayxn jdField_a_of_type_Ayxn;
+  private bglh jdField_a_of_type_Bglh;
 }
 
 

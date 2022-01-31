@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfz;
-import bdnw;
+import beka;
+import besl;
 import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,7 +9,7 @@ import org.json.JSONObject;
 class BannerAdPlugin$2
   implements Runnable
 {
-  BannerAdPlugin$2(BannerAdPlugin paramBannerAdPlugin, bdfz parambdfz) {}
+  BannerAdPlugin$2(BannerAdPlugin paramBannerAdPlugin, beka parambeka) {}
   
   public void run()
   {
@@ -31,10 +31,10 @@ class BannerAdPlugin$2
       {
         String str;
         BannerAdPlugin.access$300(this.this$0, this.val$req, 1003, (String)BannerAdPlugin.access$700().get(Integer.valueOf(1003)), 0);
-        bdnw.b("BannerAdPlugin", "handle operateBannerAd show error", localJSONException);
+        besl.b("BannerAdPlugin", "handle operateBannerAd show error", localJSONException);
         continue;
       }
-      bdnw.b("BannerAdPlugin", "showBannerAd " + bool);
+      besl.b("BannerAdPlugin", "showBannerAd " + bool);
       return;
       str = "error";
     }

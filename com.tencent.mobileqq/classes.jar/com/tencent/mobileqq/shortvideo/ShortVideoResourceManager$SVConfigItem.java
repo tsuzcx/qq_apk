@@ -1,7 +1,12 @@
 package com.tencent.mobileqq.shortvideo;
 
+import axfp;
+import bbjw;
+
 public class ShortVideoResourceManager$SVConfigItem
 {
+  public String arm64v8a_md5;
+  public String arm64v8a_url;
   public String arm_md5;
   public String arm_url;
   public String armv7a_md5;
@@ -14,8 +19,16 @@ public class ShortVideoResourceManager$SVConfigItem
   public String x86_md5;
   public String x86_url;
   
+  public boolean check64BitReady()
+  {
+    return (!bbjw.a(this.arm64v8a_md5)) && (!bbjw.a(this.arm64v8a_url));
+  }
+  
   public String getSignature()
   {
+    if ((axfp.a()) && (check64BitReady())) {
+      return this.arm64v8a_md5 + '_' + this.versionCode;
+    }
     return this.armv7a_md5 + '_' + this.versionCode;
   }
 }

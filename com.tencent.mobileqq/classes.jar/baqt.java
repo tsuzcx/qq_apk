@@ -1,34 +1,56 @@
-import android.content.Context;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class baqt
-  extends baqp
+class baqt
+  implements ITransactionCallback
 {
-  public static final baqt a = new baqt();
+  baqt(baqs parambaqs) {}
   
-  public void cleanCache(Context paramContext)
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    super.cleanCache(paramContext);
-    axlm.a().b();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "upload onFailed errn:" + paramInt);
+    }
+    this.a.e();
   }
   
-  public long getBID()
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    return 38L;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "upload onSuccess");
+    }
+    paramHashMap = new Bdh_extinfo.CommFileExtRsp();
+    try
+    {
+      paramHashMap.mergeFrom(paramArrayOfByte);
+      this.a.b = paramHashMap.bytes_download_url.get().toStringUtf8();
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.b();
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
   }
   
-  protected String getRootDir()
-  {
-    return "musicTheme";
-  }
+  public void onSwitch2BackupChannel() {}
   
-  protected String getScidPrefix()
-  {
-    return "musicTheme.";
-  }
+  public void onTransStart() {}
+  
+  public void onUpdateProgress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     baqt
  * JD-Core Version:    0.7.0.1
  */

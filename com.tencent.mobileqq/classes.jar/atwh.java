@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelZan;
-
-public final class atwh
-  implements Parcelable.Creator<PersonalityLabelZan>
+public abstract interface atwh
 {
-  public PersonalityLabelZan a(Parcel paramParcel)
-  {
-    return new PersonalityLabelZan(paramParcel);
-  }
-  
-  public PersonalityLabelZan[] a(int paramInt)
-  {
-    return new PersonalityLabelZan[paramInt];
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

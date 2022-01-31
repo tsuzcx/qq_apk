@@ -1,28 +1,102 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.pb.troop.bindgame.GCBindGroup.GCBindGroupSsoServerRsp;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class abxj
-  extends mmn
+  extends akgf
 {
-  public abxj(TroopInfoActivity paramTroopInfoActivity) {}
+  public abxj(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void a(Object paramObject)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
+    if (QLog.isColorLevel()) {
+      QLog.i("QQSetting2Activity", 2, String.format(Locale.getDefault(), "onGetPhoneUnityLocalData data: %s, create: %s, count: %s", new Object[] { paramObject, Boolean.valueOf(this.a.jdField_a_of_type_Boolean), Integer.valueOf(this.a.jdField_a_of_type_Int) }));
+    }
+    boolean bool1;
+    if (paramObject == null)
     {
-      paramBundle = new GCBindGroup.GCBindGroupSsoServerRsp();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.a.a(paramBundle);
+      bool1 = true;
+      boolean bool2 = bool1;
+      if (!bool1)
+      {
+        bool2 = bool1;
+        if ((paramObject instanceof akco)) {
+          bool2 = ((akco)paramObject).b;
+        }
+      }
+      paramObject = this.a.findViewById(2131373194);
+      if (paramObject != null)
+      {
+        if (!bool2) {
+          break label190;
+        }
+        paramObject.setVisibility(0);
+        if (!this.a.jdField_a_of_type_Boolean) {
+          break label138;
+        }
+        this.a.a(true);
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Boolean = false;
       return;
+      bool1 = false;
+      break;
+      label138:
+      if (this.a.jdField_a_of_type_Int == 0)
+      {
+        this.a.a(false);
+      }
+      else
+      {
+        paramObject = (akcp)this.a.app.getManager(102);
+        QQSettingSettingActivity.a(this.a, true, paramObject.a);
+        continue;
+        label190:
+        paramObject.setVisibility(8);
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString)
+  {
+    boolean bool = true;
+    if (this.a.isFinishing()) {}
+    do
     {
-      QLog.e("Q.troopinfo", 1, "parse game bind status failed");
+      return;
+      if (paramBoolean)
+      {
+        paramString = this.a;
+        if (paramInt == 1) {}
+        for (paramBoolean = bool;; paramBoolean = false)
+        {
+          QQSettingSettingActivity.a(paramString, paramBoolean);
+          return;
+        }
+      }
+    } while (!this.a.isResume());
+    paramString = this.a.getString(2131692153);
+    bcpw.a(this.a.getApplicationContext(), paramString, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QQSetting2Activity", 2, "onGetPhoneUnityInfo isSuc: " + paramBoolean);
     }
+    if (this.a.isFinishing()) {}
+    do
+    {
+      return;
+      QQSettingSettingActivity.a(this.a, paramBoolean, paramBundle);
+    } while (!this.a.isResume());
+    paramBundle = this.a;
+    paramBundle.jdField_a_of_type_Int -= 1;
   }
 }
 

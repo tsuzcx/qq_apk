@@ -2,7 +2,7 @@ package com.tencent.mobileqq.troop.widget;
 
 import android.util.Pair;
 import android.widget.ImageView;
-import azmo;
+import bans;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.freshnews.feed.NearbyImgLoader;
 import java.util.HashMap;
@@ -12,7 +12,7 @@ import mqq.os.MqqHandler;
 public class HotChatPostItemView$1$1
   implements Runnable
 {
-  public HotChatPostItemView$1$1(azmo paramazmo) {}
+  public HotChatPostItemView$1$1(bans parambans) {}
   
   public void run()
   {

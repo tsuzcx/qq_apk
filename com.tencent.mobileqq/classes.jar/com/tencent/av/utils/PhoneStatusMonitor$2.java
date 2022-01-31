@@ -2,20 +2,20 @@ package com.tencent.av.utils;
 
 import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
-import mhf;
-import mhj;
+import mse;
+import msi;
 
 public class PhoneStatusMonitor$2
   implements Runnable
 {
-  public PhoneStatusMonitor$2(mhf parammhf) {}
+  public PhoneStatusMonitor$2(mse parammse) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged isCallingRunnable run");
     }
-    if ((this.this$0.jdField_a_of_type_AndroidContentContext != null) && (!mhj.d(this.this$0.jdField_a_of_type_AndroidContentContext)) && (this.this$0.jdField_a_of_type_AndroidOsHandler != null)) {
+    if ((this.this$0.jdField_a_of_type_AndroidContentContext != null) && (!msi.d(this.this$0.jdField_a_of_type_AndroidContentContext)) && (this.this$0.jdField_a_of_type_AndroidOsHandler != null)) {
       this.this$0.jdField_a_of_type_AndroidOsHandler.post(new PhoneStatusMonitor.2.1(this));
     }
   }

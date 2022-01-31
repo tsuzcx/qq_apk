@@ -1,48 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.image.Utils;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.OutputStream;
-import org.apache.http.Header;
+import java.util.List;
 
-public class ajjo
-  extends axoa
+class ajjo
+  implements aiuf
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof String)))
-    {
-      paramOutputStream = (String)paramDownloadParams.tag;
-      paramDownloadParams = ajed.bf;
-      paramDownloadParams = new File(paramDownloadParams + Utils.Crc64String(paramOutputStream));
-      if (paramDownloadParams.exists()) {
-        return paramDownloadParams;
-      }
-      if (bato.a(new batm(paramOutputStream, paramDownloadParams), null) == 0) {
-        return paramDownloadParams;
-      }
-    }
-    return null;
-  }
+  ajjo(ajjn paramajjn, String paramString) {}
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void a(boolean paramBoolean, String paramString1, List<aiuc> paramList, String paramString2)
   {
-    paramURLDrawableHandler = paramDownloadParams.getHeader("funnypic_type");
-    if (paramURLDrawableHandler != null)
+    QLog.i("ApolloPluginRscLoader", 1, "downloadApolloRes onDownLoadFinish success:" + paramBoolean);
+    if (paramBoolean)
     {
-      paramURLDrawableHandler = paramURLDrawableHandler.getValue();
-      float f = paramDownloadParams.mGifRoundCorner;
-      if ((!TextUtils.isEmpty(paramURLDrawableHandler)) && (Integer.valueOf(paramURLDrawableHandler).intValue() == 2)) {
-        return new banv(paramFile, true, f, 3);
+      if (this.jdField_a_of_type_Ajjn.jdField_a_of_type_JavaIoFile.exists())
+      {
+        this.jdField_a_of_type_Ajjn.jdField_a_of_type_Ajjf.a(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_Ajjn.jdField_a_of_type_Int + ajyc.a(2131700489));
+        return;
       }
+      this.jdField_a_of_type_Ajjn.jdField_a_of_type_Ajjf.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Ajjn.jdField_a_of_type_Int + ajyc.a(2131700500));
+      return;
     }
-    return null;
+    this.jdField_a_of_type_Ajjn.jdField_a_of_type_Ajjf.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Ajjn.jdField_a_of_type_Int + ajyc.a(2131700497));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajjo
  * JD-Core Version:    0.7.0.1
  */

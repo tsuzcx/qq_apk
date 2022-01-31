@@ -4,13 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import azvv;
+import bawz;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class RadiusLinerLayout
   extends LinearLayout
 {
-  public static final int a = azvv.a(BaseApplicationImpl.context, 8.0F);
+  public static final int a = bawz.a(BaseApplicationImpl.context, 8.0F);
   private int b = a;
   
   public RadiusLinerLayout(Context paramContext)

@@ -1,59 +1,54 @@
-import com.dataline.activities.LiteActivity;
-import com.dataline.activities.PrinterActivity;
-import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileInputStream;
 
-class ajok
-  extends ajgs
+final class ajok
+  implements ajie
 {
-  ajok(ajoj paramajoj) {}
+  ajok(String paramString, String[] paramArrayOfString, ajoh paramajoh, int paramInt) {}
   
-  protected void a(Session paramSession)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    this.a.a(3, paramSession, 0.0D, false);
-    if (this.a.a != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloHttpUtil", 2, "fakeResource3DUrlRequest onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
+    }
+    if (paramBoolean)
     {
-      this.a.a.c();
-      this.a.a.notifyDataSetChanged();
-      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
-      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
+      paramArrayOfInt = new File(this.jdField_a_of_type_JavaLangString);
+      if (paramArrayOfInt.exists()) {
+        try
+        {
+          paramString = ajoi.a(this.jdField_a_of_type_ArrayOfJavaLangString);
+          if (ajoi.a(this.jdField_a_of_type_JavaLangString))
+          {
+            paramArrayOfInt = ajoi.a(paramArrayOfInt, paramString);
+            this.jdField_a_of_type_Ajoh.a(0, paramString, paramArrayOfInt);
+          }
+          while (QLog.isColorLevel())
+          {
+            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramString + " id:" + this.jdField_a_of_type_Int });
+            return;
+            this.jdField_a_of_type_Ajoh.a(0, paramString, ApolloRender.readStream(new FileInputStream(paramArrayOfInt)));
+          }
+          this.jdField_a_of_type_Ajoh.a(-1, null, null);
+        }
+        catch (Exception paramString)
+        {
+          QLog.e("ApolloHttpUtil", 1, paramString, new Object[0]);
+          return;
+        }
+      }
     }
-  }
-  
-  protected void a(Session paramSession, float paramFloat)
-  {
-    this.a.a(1, paramSession, paramFloat, false);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(Session paramSession, boolean paramBoolean)
-  {
-    this.a.a(2, paramSession, 0.0D, paramBoolean);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong)
-  {
-    this.a.a(paramLong, paramBoolean);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void b(Session paramSession)
-  {
-    this.a.a(0, paramSession, 0.0D, false);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
+    else
+    {
+      this.jdField_a_of_type_Ajoh.a(-1, null, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajok
  * JD-Core Version:    0.7.0.1
  */

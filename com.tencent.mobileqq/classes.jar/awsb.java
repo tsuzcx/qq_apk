@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.statistics.UEC.UECItem;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface awsb
+class awsb
+  implements View.OnClickListener
 {
-  public abstract void a(ArrayList<UEC.UECItem> paramArrayList);
+  awsb(awsa paramawsa, awop paramawop) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Awop.a(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awsb
  * JD-Core Version:    0.7.0.1
  */

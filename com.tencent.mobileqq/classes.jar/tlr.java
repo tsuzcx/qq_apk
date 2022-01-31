@@ -1,30 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
 public class tlr
-  extends QQUIEventReceiver<tlj, sxr>
+  extends ssk
 {
-  public tlr(@NonNull tlj paramtlj)
-  {
-    super(paramtlj);
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void a(@NonNull tlj paramtlj, @NonNull sxr paramsxr)
+  public String toString()
   {
-    if (paramsxr.a.isSuccess())
-    {
-      urk.a(this.TAG, "receive user info event. %s.", paramsxr.toString());
-      paramtlj = paramtlj.a();
-      if (paramtlj != null) {
-        paramtlj.a();
-      }
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return sxr.class;
+    return "WatchVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin=" + this.b + ", isLiveVideo=" + this.jdField_a_of_type_Boolean + ", unReadCount=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

@@ -1,40 +1,60 @@
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
+import android.content.IntentFilter;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-class lfe
-  implements axrt
+public class lfe
 {
-  public void onResp(axsq paramaxsq)
+  public static String a;
+  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  lff jdField_a_of_type_Lff;
+  boolean jdField_a_of_type_Boolean = false;
+  
+  static
   {
-    Object localObject = (lff)paramaxsq.jdField_a_of_type_Axsp.a();
-    krx.c("EffectBeautyTools", "download file call back. file = " + ((lff)localObject).a);
-    if (paramaxsq.jdField_a_of_type_Int != 0)
+    jdField_a_of_type_JavaLangString = "GAudioMsgReceiver";
+  }
+  
+  public lfe(VideoAppInterface paramVideoAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_Lff = new lff(paramVideoAppInterface);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      krx.c("EffectBeautyTools", "download file faild. errcode = " + paramaxsq.b);
-      return;
-    }
-    if (!((lff)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(paramaxsq.jdField_a_of_type_Axsp.c)))
-    {
-      krx.c("EffectBeautyTools", "download file faild : md5 is not match.");
-      bace.d(paramaxsq.jdField_a_of_type_Axsp.c);
-      return;
-    }
-    krx.c("EffectBeautyTools", "download file successed.");
-    try
-    {
-      localObject = lfd.a();
-      bace.a(paramaxsq.jdField_a_of_type_Axsp.c, (String)localObject, false);
-      bace.d(paramaxsq.jdField_a_of_type_Axsp.c);
-      return;
-    }
-    catch (IOException paramaxsq)
-    {
-      paramaxsq.printStackTrace();
-      krx.c("EffectBeautyTools", "unzip file faild.");
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_Lff);
+      this.jdField_a_of_type_Boolean = false;
     }
   }
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "regist QQGAudioMsg Receiver");
+    }
+    IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.MultiVideo");
+    localIntentFilter.addAction("tencent.video.q2v.AddDiscussMember");
+    localIntentFilter.addAction("tencent.video.q2v.SwitchToMultiAudo");
+    localIntentFilter.addAction("tencent.video.q2v.GroupSystemMsg");
+    localIntentFilter.addAction("tencent.video.q2v.SelectMember");
+    localIntentFilter.addAction("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED");
+    localIntentFilter.addAction("tencent.video.q2v.GvideoGift");
+    localIntentFilter.addAction("tencent.video.q2v.GvideoLevelUpgrade");
+    localIntentFilter.addAction("tencent.video.q2v.GvideoMemUntInvite");
+    localIntentFilter.addAction("tencent.video.q2v.close_invite_msg_box_by_invite_id");
+    localIntentFilter.addAction("tencent.video.q2v.randomMultiOwnerOnlinePush");
+    localIntentFilter.addAction("tencent.video.q2v.random1V1OnlinePush");
+    localIntentFilter.addAction("tencent.video.q2v.avreportOnlinePush");
+    localIntentFilter.addAction("tencent.video.q2v.AudioTransPush");
+    localIntentFilter.addAction("tencent.video.q2v.AudioEngineReady");
+    localIntentFilter.addAction("tencent.video.q2v.GroupInfoChanged");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_Lff, localIntentFilter) != null) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
 }
 
 

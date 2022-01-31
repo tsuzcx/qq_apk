@@ -1,36 +1,9 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserVidList;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-
-public class umi
+public abstract interface umi
+  extends uuh
 {
-  public int a;
-  public final PBRepeatMessageField<qqstory_struct.UserVidList> a;
-  public String a;
-  public final ArrayList<String> a;
-  public srj a;
-  public boolean a;
+  public abstract void b();
   
-  public umi()
-  {
-    this(0, null);
-  }
-  
-  public umi(int paramInt, PBRepeatMessageField<qqstory_struct.UserVidList> paramPBRepeatMessageField)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Srj = new srj();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField = paramPBRepeatMessageField;
-  }
-  
-  public static umi a(String paramString)
-  {
-    umi localumi = new umi();
-    localumi.jdField_a_of_type_JavaLangString = paramString;
-    return localumi;
-  }
+  public abstract void c();
 }
 
 

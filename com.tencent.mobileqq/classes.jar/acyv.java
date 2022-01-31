@@ -1,22 +1,10 @@
-import android.view.View;
-
-public abstract interface acyv
+public class acyv
 {
-  public abstract View a();
-  
-  public abstract void a();
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void d();
-  
-  public abstract void i();
-  
-  public abstract void o();
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

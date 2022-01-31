@@ -1,40 +1,26 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 
-public class lul
+class lul
+  implements SoundPool.OnLoadCompleteListener
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup = null;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  boolean jdField_a_of_type_Boolean = false;
-  public int b;
-  public ImageView b;
-  public TextView b;
-  public boolean b;
-  public ImageView c;
-  public boolean c;
-  public ImageView d;
-  public boolean d;
-  public ImageView e = null;
-  public ImageView f;
+  lul(luk paramluk, lum paramlum) {}
   
-  public lul()
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_b_of_type_AndroidWidgetImageView = null;
-    this.jdField_c_of_type_AndroidWidgetImageView = null;
-    this.jdField_d_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_b_of_type_AndroidWidgetTextView = null;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_d_of_type_Boolean = true;
+    paramSoundPool = this.jdField_a_of_type_Luk;
+    paramSoundPool.c += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("SoundPoolHelper", 2, "loadMusic onLoadComplete,sampleId = " + paramInt1 + ",status = " + paramInt2 + ",loadedCount = " + this.jdField_a_of_type_Luk.c + ",musicCount = " + this.jdField_a_of_type_Luk.b);
+    }
+    if (paramInt2 == 0) {
+      this.jdField_a_of_type_Luk.a.add(Integer.valueOf(paramInt1));
+    }
+    if (this.jdField_a_of_type_Luk.c == this.jdField_a_of_type_Luk.b) {
+      this.jdField_a_of_type_Lum.a();
+    }
   }
 }
 

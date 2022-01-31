@@ -1,85 +1,80 @@
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import java.util.Arrays;
+import org.json.JSONObject;
 
 public class beol
 {
-  private TypedArray a;
+  public final int a;
+  public final long a;
+  public final String a;
   
-  public beol(TypedArray paramTypedArray)
+  public beol(String paramString, int paramInt, long paramLong)
   {
-    this.a = paramTypedArray;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public int a(int paramInt1, int paramInt2)
+  public static beol a(JSONObject paramJSONObject)
   {
-    int i = paramInt2;
-    if (paramInt1 >= 0) {
-      i = this.a.getInt(paramInt1, paramInt2);
+    if (paramJSONObject == null) {}
+    String str;
+    long l;
+    do
+    {
+      do
+      {
+        return null;
+        str = paramJSONObject.optString("text");
+      } while (TextUtils.isEmpty(str));
+      l = paramJSONObject.optLong("time", -1L);
+    } while (l < 0L);
+    paramJSONObject = paramJSONObject.optString("color");
+    if (TextUtils.isEmpty(paramJSONObject)) {}
+    for (int i = -1;; i = bffq.a(paramJSONObject)) {
+      return new beol(str, i, l);
     }
-    return i;
   }
   
-  public Drawable a(int paramInt)
+  public boolean equals(Object paramObject)
   {
-    if (paramInt >= 0) {
-      return this.a.getDrawable(paramInt);
+    boolean bool2 = false;
+    boolean bool1;
+    if (this == paramObject) {
+      bool1 = true;
     }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.a.recycle();
-  }
-  
-  public boolean a(int paramInt, boolean paramBoolean)
-  {
-    boolean bool = paramBoolean;
-    if (paramInt >= 0) {
-      bool = this.a.getBoolean(paramInt, paramBoolean);
-    }
-    return bool;
-  }
-  
-  public CharSequence[] a(int paramInt)
-  {
-    if (paramInt >= 0) {
-      return this.a.getTextArray(paramInt);
-    }
-    return null;
-  }
-  
-  public int b(int paramInt1, int paramInt2)
-  {
-    int i = paramInt2;
-    if (paramInt1 >= 0) {
-      i = this.a.getColor(paramInt1, paramInt2);
-    }
-    return i;
-  }
-  
-  public int c(int paramInt1, int paramInt2)
-  {
-    int i = paramInt2;
-    if (paramInt1 >= 0) {
-      i = this.a.getDimensionPixelSize(paramInt1, paramInt2);
-    }
-    return i;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return bool1;
+            bool1 = bool2;
+          } while (paramObject == null);
+          bool1 = bool2;
+        } while (getClass() != paramObject.getClass());
+        paramObject = (beol)paramObject;
+        if ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) && (this.jdField_a_of_type_JavaLangString == null) && (paramObject.jdField_a_of_type_JavaLangString == null)) {
+          break;
+        }
+        bool1 = bool2;
+      } while (this.jdField_a_of_type_JavaLangString == null);
+      bool1 = bool2;
+    } while (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
+    return true;
   }
   
   public int hashCode()
   {
-    return this.a.hashCode();
-  }
-  
-  public String toString()
-  {
-    return this.a.toString();
+    return Arrays.hashCode(new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beol
  * JD-Core Version:    0.7.0.1
  */

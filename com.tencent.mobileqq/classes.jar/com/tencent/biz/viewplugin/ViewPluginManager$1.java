@@ -1,7 +1,7 @@
 package com.tencent.biz.viewplugin;
 
-import awqx;
-import mof;
+import axqw;
+import mze;
 
 public final class ViewPluginManager$1
   implements Runnable
@@ -10,7 +10,7 @@ public final class ViewPluginManager$1
   
   public void run()
   {
-    awqx.b(null, "P_CliOper", "BizTechReport", "", "leba_search", "leba_search_set_data", 0, 0, mof.a("1002"), this.a.getClass().getSimpleName(), null, null);
+    axqw.b(null, "P_CliOper", "BizTechReport", "", "leba_search", "leba_search_set_data", 0, 0, mze.a("1002"), this.a.getClass().getSimpleName(), null, null);
   }
 }
 

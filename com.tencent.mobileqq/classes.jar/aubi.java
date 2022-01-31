@@ -1,144 +1,22 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.profile.view.VipPhotoViewForSimple;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.net.URL;
-import java.util.List;
+import android.hardware.Camera.Size;
+import java.util.Comparator;
 
-public class aubi
-  extends BaseAdapter
+class aubi
+  implements Comparator<Camera.Size>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  List<aubb> jdField_a_of_type_JavaUtilList;
+  aubi(aubg paramaubg) {}
   
-  public aubi(VipPhotoViewForSimple paramVipPhotoViewForSimple, Context paramContext)
+  public int a(Camera.Size paramSize1, Camera.Size paramSize2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-  }
-  
-  public void a(List<aubb> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    int i = paramList.size();
-    if (i < 16) {
-      if (VipPhotoViewForSimple.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple)) {
-        this.jdField_a_of_type_JavaUtilList.add(new aubb(paramList.size(), 101, null));
-      }
+    int i = paramSize1.height * paramSize1.width;
+    int j = paramSize2.height * paramSize2.width;
+    if (j < i) {
+      return 1;
     }
-    for (;;)
-    {
-      notifyDataSetChanged();
-      return;
-      paramList = (aubb)this.jdField_a_of_type_JavaUtilList.get(i - 1);
-      paramList.d = 102;
-      this.jdField_a_of_type_JavaUtilList.set(i - 1, paramList);
-    }
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+    if (j > i) {
+      return -1;
     }
     return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  @TargetApi(16)
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject = null;
-    aubb localaubb = (aubb)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    View localView;
-    if (paramView == null)
-    {
-      paramViewGroup = new aubj(this);
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131496035, null);
-      localView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple.c, this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple.d));
-      paramViewGroup.a = ((URLImageView)localView.findViewById(2131307946));
-      localView.setTag(paramViewGroup);
-      paramViewGroup.a.setTag(new atuw(25, Integer.valueOf(paramInt)));
-      paramViewGroup.a.setOnClickListener(VipPhotoViewForSimple.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple));
-      paramView = (RelativeLayout.LayoutParams)paramViewGroup.a.getLayoutParams();
-      if (localaubb != null)
-      {
-        if ((localaubb.d != 100) && (localaubb.d != 102)) {
-          break label320;
-        }
-        if (Build.VERSION.SDK_INT < 16) {
-          break label283;
-        }
-        localView.setBackground(null);
-        label173:
-        paramViewGroup.a.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        paramView = localaubb.a();
-        if (paramView == null) {
-          break label376;
-        }
-        paramView = new URL("qzone_cover", "original", paramView);
-      }
-      catch (Exception localException)
-      {
-        label283:
-        paramView = localObject;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("Q.qzonecover.", 2, localException.toString());
-        paramView = localObject;
-        continue;
-      }
-      if (paramView != null) {
-        paramViewGroup.a.setImageDrawable(URLDrawable.getDrawable(paramView, this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple.c, this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple.d));
-      }
-      paramViewGroup.a.setContentDescription(ajjy.a(2131650972) + (paramInt + 1));
-      return localView;
-      paramViewGroup = (aubj)paramView.getTag();
-      localView = paramView;
-      break;
-      localView.setBackgroundDrawable(null);
-      break label173;
-      label320:
-      if (localException.d == 101)
-      {
-        paramViewGroup.a.setScaleType(ImageView.ScaleType.CENTER);
-        atxe.a(paramViewGroup.a, "src", VipPhotoViewForSimple.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple).a, "simpleGridAddSrc");
-        paramViewGroup.a.setContentDescription(ajjy.a(2131650973));
-        return localView;
-        label376:
-        paramView = null;
-      }
-    }
   }
 }
 

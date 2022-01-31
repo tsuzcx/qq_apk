@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.CardMobileInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter;
+import com.tencent.qphone.base.util.QLog;
 
-public final class alqa
-  implements Parcelable.Creator<CardMobileInfo>
+public class alqa
+  extends BroadcastReceiver
 {
-  public CardMobileInfo a(Parcel paramParcel)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new CardMobileInfo(paramParcel);
-  }
-  
-  public CardMobileInfo[] a(int paramInt)
-  {
-    return new CardMobileInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.i("ark.ArkAppNotifyCenter", 2, "--VolumeReceiver---" + paramIntent.getAction());
+    }
+    ArkAppNotifyCenter.access$100("com.tencent.gouwu.video");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alqa
  * JD-Core Version:    0.7.0.1
  */

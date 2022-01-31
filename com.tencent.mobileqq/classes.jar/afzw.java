@@ -1,68 +1,39 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public final class afzw
-  implements Parcelable.Creator<LocalMediaInfo>
+public class afzw
+  extends baks
 {
-  public LocalMediaInfo a(Parcel paramParcel)
+  public afzw(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    boolean bool2 = true;
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    localLocalMediaInfo._id = paramParcel.readLong();
-    localLocalMediaInfo.path = paramParcel.readString();
-    localLocalMediaInfo.fileSize = paramParcel.readLong();
-    localLocalMediaInfo.addedDate = paramParcel.readLong();
-    localLocalMediaInfo.modifiedDate = paramParcel.readLong();
-    localLocalMediaInfo.orientation = paramParcel.readInt();
-    localLocalMediaInfo.rotation = paramParcel.readInt();
-    localLocalMediaInfo.mDuration = paramParcel.readLong();
-    if (paramParcel.readByte() == 1)
-    {
-      bool1 = true;
-      localLocalMediaInfo.mChecked = bool1;
-      localLocalMediaInfo.selectStatus = paramParcel.readInt();
-      localLocalMediaInfo.thumbWidth = paramParcel.readInt();
-      localLocalMediaInfo.thumbHeight = paramParcel.readInt();
-      localLocalMediaInfo.index = paramParcel.readInt();
-      localLocalMediaInfo.position = Integer.valueOf(paramParcel.readInt());
-      localLocalMediaInfo.mMimeType = paramParcel.readString();
-      localLocalMediaInfo.mMediaType = paramParcel.readInt();
-      localLocalMediaInfo.mediaWidth = paramParcel.readInt();
-      localLocalMediaInfo.mediaHeight = paramParcel.readInt();
-      if (paramParcel.readByte() != 1) {
-        break label291;
-      }
-      bool1 = true;
-      label193:
-      localLocalMediaInfo.isSystemMeidaStore = bool1;
-      if (paramParcel.readByte() != 1) {
-        break label296;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList error");
     }
-    label291:
-    label296:
-    for (boolean bool1 = bool2;; bool1 = false)
+    ChatHistoryTroopMemberFragment.a(this.a, true);
+    if (ChatHistoryTroopMemberFragment.b(this.a))
     {
-      localLocalMediaInfo.isRegionThumbUseNewDecoder = bool1;
-      localLocalMediaInfo.longitude = paramParcel.readInt();
-      localLocalMediaInfo.latitude = paramParcel.readInt();
-      localLocalMediaInfo.panoramaPhotoType = paramParcel.readInt();
-      localLocalMediaInfo.mCloudPhotoOwnerUin = paramParcel.readLong();
-      localLocalMediaInfo.mCloudPhotoOwnerAlbumId = paramParcel.readString();
-      localLocalMediaInfo.mCloudPhotoId = paramParcel.readString();
-      localLocalMediaInfo.mTransferPosList = paramParcel.readArrayList(Long.class.getClassLoader());
-      return localLocalMediaInfo;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label193;
+      paramString = this.a.b.obtainMessage(12, null);
+      this.a.b.sendMessage(paramString);
     }
   }
   
-  public LocalMediaInfo[] a(int paramInt)
+  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
   {
-    return new LocalMediaInfo[0];
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList");
+    }
+    ChatHistoryTroopMemberFragment.a(this.a, paramArrayOfLong1);
+    ChatHistoryTroopMemberFragment.b(this.a, paramArrayOfLong2);
+    ChatHistoryTroopMemberFragment.c(this.a, paramArrayOfLong3);
+    ChatHistoryTroopMemberFragment.a(this.a, true);
+    if (ChatHistoryTroopMemberFragment.b(this.a))
+    {
+      paramArrayOfLong1 = this.a.b.obtainMessage(12, null);
+      this.a.b.sendMessage(paramArrayOfLong1);
+    }
   }
 }
 

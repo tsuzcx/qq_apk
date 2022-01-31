@@ -1,25 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity.5.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class rnw
-  implements DialogInterface.OnClickListener
+class rnw
+  implements wxw
 {
-  public rnw(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  rnw(rnu paramrnu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      ThreadManager.post(new ReadInJoyNewSearchActivity.5.1(this), 10, null, true);
-      return;
+    int i = paramBundle.getInt("readinjoy_to_wx_config");
+    if (QLog.isColorLevel()) {
+      QLog.d("", 2, "config = " + i);
     }
-    paramDialogInterface.dismiss();
+    if (i == 0) {
+      WxShareHelperFromReadInjoy.a().a(rnu.b(this.a), rnu.a(this.a), 1, false);
+    }
+    for (;;)
+    {
+      rnu.a(this.a).recycle();
+      rnu.a(this.a, null);
+      return;
+      WXShareHelper.a().a(rnu.b(this.a), rnu.a(this.a), 1, false);
+    }
   }
 }
 

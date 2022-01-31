@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.app;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class QQAppInterface$18
@@ -12,16 +9,21 @@ class QQAppInterface$18
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.this$0.getApp()).edit();
-    localEditor.putString("LastScreenShotUri", "");
-    localEditor.commit();
-    this.this$0.n();
     try
     {
-      QQAppInterface.i(this.this$0).unregisterReceiver(QQAppInterface.c(this.this$0));
-      return;
+      QQAppInterface.g(this.this$0).unregisterReceiver(QQAppInterface.b(this.this$0));
+      try
+      {
+        label17:
+        QQAppInterface.h(this.this$0).unregisterReceiver(QQAppInterface.a(this.this$0));
+        return;
+      }
+      catch (Exception localException1) {}
     }
-    catch (Exception localException) {}
+    catch (Exception localException2)
+    {
+      break label17;
+    }
   }
 }
 

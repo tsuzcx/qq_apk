@@ -1,12 +1,17 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.Map;
 
 public class rdd
-  extends BitmapDrawable
+  extends oyg
 {
-  public rdd(Bitmap paramBitmap)
+  public rdd(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, Map paramMap)
   {
-    super(paramBitmap);
+    super(paramString);
+  }
+  
+  public void a(oya paramoya)
+  {
+    paramoya.a(this.jdField_a_of_type_JavaUtilMap);
   }
 }
 

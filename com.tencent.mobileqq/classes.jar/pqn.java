@@ -1,11 +1,4 @@
-public class pqn
-{
-  public long a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-}
+class pqn {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

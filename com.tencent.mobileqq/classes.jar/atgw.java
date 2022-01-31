@@ -1,24 +1,12 @@
-import com.tencent.mobileqq.olympic.ShuayishuaConfig;
-import java.util.Comparator;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-public final class atgw
-  implements Comparator<ShuayishuaConfig>
+public abstract interface atgw
 {
-  public int a(ShuayishuaConfig paramShuayishuaConfig1, ShuayishuaConfig paramShuayishuaConfig2)
-  {
-    long l = paramShuayishuaConfig1.realBegin - paramShuayishuaConfig2.realBegin;
-    if (l > 0L) {
-      return 1;
-    }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
-  }
+  public abstract void a(Comments.Comment paramComment, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atgw
  * JD-Core Version:    0.7.0.1
  */

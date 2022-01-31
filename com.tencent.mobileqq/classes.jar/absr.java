@@ -1,24 +1,21 @@
-import android.provider.Settings.System;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class absr
   implements View.OnClickListener
 {
-  public absr(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public absr(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.b(2);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.a);
-    if (this.a.a().booleanValue())
+    paramView = this.a.getIntent().getStringExtra("uin");
+    if ((paramView != null) && (paramView.equals(this.a.app.getCurrentAccountUin())))
     {
-      paramView = Settings.System.DEFAULT_NOTIFICATION_URI;
-      this.a.b();
-      this.a.a(paramView);
+      ProfileLabelEditorActivity.a(this.a);
+      axqw.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "4", "", "", "");
     }
   }
 }

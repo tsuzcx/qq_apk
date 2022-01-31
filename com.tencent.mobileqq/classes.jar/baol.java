@@ -1,183 +1,118 @@
-import android.content.Intent;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vas.SonicTemplateUpdateManager.1;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.mobileqq.webprocess.WebProcessReceiver;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
+import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.sonic.sdk.SonicEngine;
-import java.io.File;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import mqq.app.MobileQQ;
-import mqq.manager.Manager;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 public class baol
-  implements Manager
+  implements bame
 {
-  QQAppInterface a;
+  public baol(TroopAIORobotLayout paramTroopAIORobotLayout, int paramInt, String paramString1, String paramString2, String paramString3, baoe parambaoe) {}
   
-  public baol(QQAppInterface paramQQAppInterface)
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  private JSONObject a()
-  {
-    File localFile = new File(this.a.getApplication().getFilesDir() + File.separator + "sonicTemplateUpdate.json");
-    if (localFile.exists()) {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(bace.a(localFile));
-        return localJSONObject;
-      }
-      catch (Throwable localThrowable)
+    boolean bool = true;
+    if (paramInt == 0)
+    {
+      balw localbalw = RobotPanelLayoutBase.a();
+      if (localbalw == null)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("SonicTemplateUpdateManager", 2, "getJsonOOM,json_name:sonicTemplateUpdate.json", localThrowable);
+          QLog.e("TroopAIORobotLayout", 2, "troopRobotManager = null");
         }
-        localFile.delete();
-      }
-    }
-    for (;;)
-    {
-      return null;
-      ((VasQuickUpdateManager)this.a.getManager(184)).downloadItem(1001L, "sonicTemplateUpdate.json", "getJSONFromLocal");
-    }
-  }
-  
-  private boolean a(JSONObject paramJSONObject)
-  {
-    boolean bool = bapw.a().a(this.a, paramJSONObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("SonicTemplateUpdateManager", 2, "isConfigValid isValid = " + bool);
-    }
-    return bool;
-  }
-  
-  public void a()
-  {
-    if (Looper.getMainLooper() == Looper.myLooper()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SonicTemplateUpdateManager", 2, "parseJson isMainThread = " + bool);
-      }
-      if (!bool) {
-        break;
-      }
-      ThreadManager.post(new SonicTemplateUpdateManager.1(this), 5, null, true);
-      return;
-    }
-    b();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SonicTemplateUpdateManager", 2, "parseJson begin");
-    }
-    Object localObject1 = a();
-    if (localObject1 == null)
-    {
-      QLog.e("SonicTemplateUpdateManager", 1, "parseJson rootObj = null");
-      return;
-    }
-    Object localObject4 = ((JSONObject)localObject1).optJSONArray("sonicTemplateUpdate");
-    if ((localObject4 == null) || (((JSONArray)localObject4).length() < 1))
-    {
-      QLog.e("SonicTemplateUpdateManager", 1, "parseJson configs = null or len < 1");
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        int j = ((JSONArray)localObject4).length();
-        localObject3 = new HashMap();
-        i = 0;
-        if (i >= j) {
-          break label222;
-        }
-        localObject5 = ((JSONArray)localObject4).getJSONObject(i);
-        if (!a((JSONObject)localObject5)) {
-          break label429;
-        }
-        String str = ((JSONObject)localObject5).optString("url");
-        if (TextUtils.isEmpty(str)) {
-          break label429;
-        }
-        localObject1 = null;
-        if (WebAccelerateHelper.getSonicEngine() != null) {
-          localObject1 = SonicEngine.makeSessionId(str, true);
-        }
-        if (localObject1 == null) {
-          QLog.e("SonicTemplateUpdateManager", 1, "parseJsonRunnable sonicSessionId = null, url = " + str);
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("SonicTemplateUpdateManager", 1, "parseJsonRunnable exception e = " + localException.getMessage());
         return;
       }
-      ((Map)localObject3).put(localException, Long.valueOf(((JSONObject)localObject5).optLong("templateUpdateTime")));
-      break label429;
-      label222:
-      if (((Map)localObject3).size() <= 0) {
-        break;
-      }
+      paramInt = paramRspBody.version.get();
       if (QLog.isColorLevel()) {
-        QLog.d("SonicTemplateUpdateManager", 2, "parseJsonRunnable ready remove expire sonic template");
+        QLog.d("TroopAIORobotLayout", 2, "initData->reqPanelList oldVer:" + this.jdField_a_of_type_Int + " newVer:" + paramInt);
       }
-      if (!WebProcessManager.c())
+      if ((this.jdField_a_of_type_Int != paramInt) && (paramRspBody.robot_uin.get() == Long.parseLong(this.jdField_a_of_type_JavaLangString)))
       {
-        localObject2 = WebAccelerateHelper.getSonicEngine();
-        if (localObject2 == null) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.c = this.b;
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.b = this.c;
+        localbalw.a(this.b, this.jdField_a_of_type_JavaLangString, paramRspBody);
+        paramRspBody = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.a(paramRspBody);
+        if ((paramRspBody != null) && (paramRspBody.size() > 0))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.a(false);
+          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.a(paramRspBody, true);
+          if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.b() > 0) {
+            TroopAIORobotLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.c, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.b, localbalw, true);
+          }
+          paramRspBody = this.jdField_a_of_type_Baoe;
+          if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.b() <= 0) {
+            break label468;
+          }
+        }
+      }
+      for (;;)
+      {
+        paramRspBody.a(bool, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.jdField_a_of_type_JavaLangString);
+        return;
+        if (!QLog.isColorLevel()) {
           break;
         }
-        ((SonicEngine)localObject2).removeExpiredSessionCache((Map)localObject3);
-        return;
-      }
-      QLog.d("SonicTemplateUpdateManager", 1, "parseJsonRunnable WebProcess Exist");
-      Object localObject2 = new Intent(BaseApplicationImpl.getApplication(), WebProcessReceiver.class);
-      ((Intent)localObject2).setAction("action_delete_sonic_templateinfo");
-      localObject4 = ((Map)localObject3).keySet();
-      Object localObject3 = ((Map)localObject3).values();
-      localObject4 = (String[])((Set)localObject4).toArray(new String[((Set)localObject4).size()]);
-      Object localObject5 = new long[((Collection)localObject3).size()];
-      localObject3 = ((Collection)localObject3).iterator();
-      int i = 0;
-      while (((Iterator)localObject3).hasNext()) {
-        if (i < localObject5.length)
+        QLog.d("TroopAIORobotLayout", 2, "listDatas is null in new version");
+        break;
+        if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.b() == 0)
         {
-          localObject5[i] = ((Long)((Iterator)localObject3).next()).longValue();
-          i += 1;
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopAIORobotLayout", 2, "item count == 0");
+          }
+          byte[] arrayOfByte = localbalw.a(this.b, this.jdField_a_of_type_JavaLangString);
+          if (arrayOfByte != null) {
+            for (;;)
+            {
+              try
+              {
+                paramRspBody.mergeFrom(arrayOfByte);
+                paramRspBody = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.a(paramRspBody);
+                if ((paramRspBody == null) || (paramRspBody.size() <= 0)) {
+                  break label424;
+                }
+                this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.a(false);
+                this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.a(paramRspBody, true);
+                this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.c = this.b;
+                this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+                this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.b = this.c;
+              }
+              catch (InvalidProtocolBufferMicroException paramRspBody) {}
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("TroopAIORobotLayout", 2, paramRspBody.getMessage());
+              break;
+              label424:
+              if (QLog.isColorLevel()) {
+                QLog.d("TroopAIORobotLayout", 2, "listDatas is null");
+              }
+            }
+          }
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("TroopAIORobotLayout", 2, "data is null");
+          break;
         }
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.c();
+        break;
+        label468:
+        bool = false;
       }
-      ((Intent)localObject2).putExtra("com.tencent.mobileqq.webprocess.sonic_template_delete_sessionId", (String[])localObject4);
-      ((Intent)localObject2).putExtra("com.tencent.mobileqq.webprocess.sonic_template_delete_updateTime", (long[])localObject5);
-      BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject2, "com.tencent.msg.permission.pushnotify");
-      return;
-      label429:
-      i += 1;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopAIORobotLayout", 2, "initData->reqPanelList: errorCode = " + paramInt);
+    }
+    this.jdField_a_of_type_Baoe.a(false, "");
   }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baol
  * JD-Core Version:    0.7.0.1
  */

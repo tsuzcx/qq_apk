@@ -1,8 +1,17 @@
-public class azka
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class azka
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public int b;
-  public int c;
+  azka(azjy paramazjy) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
+  }
 }
 
 

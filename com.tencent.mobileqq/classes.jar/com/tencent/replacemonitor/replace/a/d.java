@@ -7,8 +7,8 @@ import com.tencent.replacemonitor.MonitorResult;
 import com.tencent.replacemonitor.MonitorStep;
 import com.tencent.replacemonitor.MonitorTask;
 import com.tencent.replacemonitor.MonitorType;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.q;
 import java.io.File;
 import java.io.IOException;
 
@@ -17,7 +17,7 @@ public class d
 {
   private void a(MonitorTask paramMonitorTask, MonitorStep paramMonitorStep, MonitorResult paramMonitorResult, String paramString)
   {
-    ac.c("WashMonitor", "FileSizeMonitorAction>>commonFileSizeCheck " + paramMonitorTask.appName + " task.fileSize = " + paramMonitorTask.fileSize + " filePath = " + paramString);
+    ab.c("WashMonitor", "FileSizeMonitorAction>>commonFileSizeCheck " + paramMonitorTask.appName + " task.fileSize = " + paramMonitorTask.fileSize + " filePath = " + paramString);
     if ((TextUtils.isEmpty(paramString)) || (paramMonitorTask.fileSize <= 0L)) {
       paramMonitorResult.resultMsg = (paramMonitorStep + " filePath is " + paramString + " fileSize is " + paramMonitorTask.fileSize);
     }
@@ -27,7 +27,7 @@ public class d
       File localFile = new File(paramString);
       if (localFile.exists())
       {
-        ac.c("WashMonitor", "FileSizeMonitorAction>>commonFileSizeCheck " + paramMonitorTask.appName + " task.fileSize = " + paramMonitorTask.fileSize + " file.length() = " + localFile.length());
+        ab.c("WashMonitor", "FileSizeMonitorAction>>commonFileSizeCheck " + paramMonitorTask.appName + " task.fileSize = " + paramMonitorTask.fileSize + " file.length() = " + localFile.length());
         if (localFile.length() == paramMonitorTask.fileSize) {
           continue;
         }
@@ -39,9 +39,9 @@ public class d
         try
         {
           paramMonitorResult.replaceChannelId = a.a(paramString);
-          paramMonitorTask = r.c(paramMonitorTask.packageName);
+          paramMonitorTask = q.c(paramMonitorTask.packageName);
           if ((paramMonitorStep == MonitorStep.DOWNLOADING) || (paramMonitorStep == MonitorStep.BEFORE_INSTALL)) {
-            paramMonitorTask = r.b(paramString);
+            paramMonitorTask = q.b(paramString);
           }
           if (paramMonitorTask != null)
           {
@@ -68,7 +68,7 @@ public class d
   
   public MonitorResult a(MonitorTask paramMonitorTask, MonitorStep paramMonitorStep)
   {
-    ac.c("WashMonitor", "FileSizeMonitorAction>>" + paramMonitorTask.appName + "开始通过FileSize比较检测洗包 step = " + paramMonitorStep);
+    ab.c("WashMonitor", "FileSizeMonitorAction>>" + paramMonitorTask.appName + "开始通过FileSize比较检测洗包 step = " + paramMonitorStep);
     MonitorResult localMonitorResult = new MonitorResult(paramMonitorStep, 0, paramMonitorStep + "通过filesize检测通过", a());
     if (TextUtils.isEmpty(paramMonitorTask.filePath)) {
       localMonitorResult.resultMsg = (paramMonitorStep + " 通过filesize检测通过，因为task.filePath为空， task.filePath = " + paramMonitorTask.filePath);

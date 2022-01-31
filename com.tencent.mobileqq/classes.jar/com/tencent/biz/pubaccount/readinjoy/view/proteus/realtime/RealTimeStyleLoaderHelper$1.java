@@ -4,12 +4,12 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
-import rdv;
+import rqi;
 
 public class RealTimeStyleLoaderHelper$1
   implements Runnable
 {
-  public RealTimeStyleLoaderHelper$1(rdv paramrdv, List paramList) {}
+  public RealTimeStyleLoaderHelper$1(rqi paramrqi, List paramList) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class RealTimeStyleLoaderHelper$1
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        File localFile = new File(rdv.a(this.this$0) + "/" + str);
+        File localFile = new File(rqi.a(this.this$0) + "/" + str);
         if ((localFile.exists()) && (localFile.isFile()))
         {
           boolean bool = localFile.delete();

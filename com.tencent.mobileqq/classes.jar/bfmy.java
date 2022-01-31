@@ -1,19 +1,172 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import cooperation.qqreader.ui.ReaderHomePageActivity;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.qphone.base.util.QLog;
 
 public class bfmy
-  implements alsd
 {
-  public bfmy(ReaderHomePageActivity paramReaderHomePageActivity, String paramString1, String paramString2, String paramString3) {}
-  
-  public ColorNote getColorNote()
+  private static int a(int paramInt)
   {
-    return new alsl().d("https://qzonestyle.gtimg.cn/aoi/sola/20191105163912_ONRjyZUKh8.png").b(this.jdField_a_of_type_JavaLangString).c(this.b).a(16908289).a(this.c + "_PUPUReader").a();
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 0: 
+      return 2;
+    case 1: 
+      return 3;
+    case 2: 
+      return 1;
+    case 3: 
+      return 6;
+    }
+    return 7;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, long paramLong)
+  {
+    if (paramInt == 7220) {}
+    try
+    {
+      a(paramQQAppInterface, "0X80098E4", "" + paramLong, "", "", "");
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, andx paramandx, int paramInt1, int paramInt2)
+  {
+    try
+    {
+      if (paramandx.a.strPkgName.equals("com.android.ReadInJoy")) {
+        a(paramQQAppInterface, "0X80098E6", "" + a(paramInt1), "" + paramInt2, "", "");
+      }
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MainFragment paramMainFragment, ajwm paramajwm, int paramInt)
+  {
+    try
+    {
+      if ((((paramajwm instanceof ReadinjoyTabFrame)) || (paramInt == MainFragment.h)) && ((ReadinjoyTabFrame)paramMainFragment.a(ReadinjoyTabFrame.class) != null) && (paramInt == MainFragment.h) && (paramMainFragment.getActivity().getIntent().getIntExtra("launch_from", 5) == 6)) {
+        a(paramQQAppInterface, "0X80098E2", "", "", "", "");
+      }
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
+  {
+    try
+    {
+      if (((paramBaseActivity instanceof ReadInJoyNewFeedsActivity)) && (paramBaseActivity.getIntent().getIntExtra("launch_from", 5) == 6)) {
+        a(paramQQAppInterface, "0X80098E2", "", "", "", "");
+      }
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    try
+    {
+      if ((paramMessageRecord.istroop == 7220) || ((paramMessageRecord.istroop == 1008) && (ajsf.az.equals(paramMessageRecord.frienduin)))) {
+        a(paramQQAppInterface, "0X80098E5", "" + paramMessageRecord.msgUid, "", "", "");
+      }
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
+  {
+    if (paramRecentUser != null) {}
+    try
+    {
+      if (paramRecentUser.getType() == 7220) {
+        a(paramQQAppInterface, "0X80098E3", "", "", "", "");
+      }
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser, RecentBaseData paramRecentBaseData)
+  {
+    if (paramRecentUser != null) {
+      try
+      {
+        if (paramRecentUser.getType() == 1008)
+        {
+          if (!"2173223560".equals(paramRecentBaseData.a())) {
+            break label145;
+          }
+          a(paramQQAppInterface, "0X80098E0", "" + paramRecentBaseData.mUnreadFlag, "" + paramRecentBaseData.mUnreadNum, "", "");
+        }
+        while (paramRecentUser.getType() == 7220)
+        {
+          a(paramQQAppInterface, "0X80098DF", "" + paramRecentBaseData.mUnreadFlag, "" + paramRecentBaseData.mUnreadNum, "", "");
+          return;
+          label145:
+          if (ajsf.aR.equals(paramRecentBaseData.a())) {
+            a(paramQQAppInterface, "0X80098F2", "" + paramRecentBaseData.mUnreadFlag, "" + paramRecentBaseData.mUnreadNum, "", "");
+          }
+        }
+        return;
+      }
+      catch (Throwable paramQQAppInterface)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+        }
+      }
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    axqw.b(paramQQAppInterface, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, paramString4, paramString5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfmy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,22 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
 
-class bafs
-  implements View.OnClickListener
+public class bafs
+  implements DialogInterface.OnClickListener
 {
-  bafs(bafp parambafp, DialogInterface.OnClickListener paramOnClickListener) {}
+  public bafs(VisitorTroopCardFragment paramVisitorTroopCardFragment, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bafp, 0);
+    if (this.jdField_a_of_type_Boolean) {
+      bagj.a(2, new Object());
     }
-    this.jdField_a_of_type_Bafp.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bafs
  * JD-Core Version:    0.7.0.1
  */

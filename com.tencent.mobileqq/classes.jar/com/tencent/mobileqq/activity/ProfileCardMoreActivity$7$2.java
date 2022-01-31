@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import abin;
+import absn;
 
 public class ProfileCardMoreActivity$7$2
   implements Runnable
 {
-  public ProfileCardMoreActivity$7$2(abin paramabin, boolean paramBoolean1, boolean paramBoolean2) {}
+  public ProfileCardMoreActivity$7$2(absn paramabsn, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Abin.a.a(this.jdField_a_of_type_Boolean, this.b);
+    this.jdField_a_of_type_Absn.a.a(this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

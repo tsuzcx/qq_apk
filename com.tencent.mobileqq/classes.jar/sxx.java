@@ -1,6 +1,12 @@
-public abstract interface sxx
+import android.graphics.drawable.Drawable;
+import java.util.List;
+
+public class sxx
 {
-  public abstract void a();
+  public static Drawable a(List<String> paramList)
+  {
+    return ((ukv)tdc.a(24)).a(paramList);
+  }
 }
 
 

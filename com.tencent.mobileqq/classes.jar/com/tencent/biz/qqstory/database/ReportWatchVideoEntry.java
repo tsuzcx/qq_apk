@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.database;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class ReportWatchVideoEntry
-  extends atmo
+  extends aukm
 {
   public long createTime;
   public boolean isLiveVideo;
   public int source;
-  @atoc
+  @auma
   public String vid;
   public int vidType;
   public String videoUnionId;

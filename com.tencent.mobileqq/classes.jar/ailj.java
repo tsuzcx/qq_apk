@@ -1,75 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.AvatarPendantAdapter.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class ailj
+  implements View.OnLayoutChangeListener
 {
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public String b;
+  ailj(ailh paramailh) {}
   
-  public WebResourceResponse a()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    try
-    {
-      if (this.b != null)
-      {
-        if ((this.jdField_a_of_type_ArrayOfByte != null) && (!this.jdField_a_of_type_Boolean)) {
-          return new WebResourceResponse(this.jdField_a_of_type_JavaLangString, "utf-8", new ByteArrayInputStream(this.jdField_a_of_type_ArrayOfByte));
-        }
-        if (!bace.a(this.b)) {
-          break label102;
-        }
-        WebResourceResponse localWebResourceResponse = new WebResourceResponse(this.jdField_a_of_type_JavaLangString, "utf-8", new FileInputStream(this.b));
-        return localWebResourceResponse;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloGameResManager", 1, localThrowable, new Object[] { "[getResponse]" });
-    }
-    return null;
-    label102:
-    return null;
-  }
-  
-  public String a()
-  {
-    return "file://" + this.b;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (bace.a(this.b)))
-      {
-        if (bace.b(this.b) <= 8388608L) {
-          break label84;
-        }
-        this.jdField_a_of_type_Boolean = true;
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d("ApolloGameResManager", 2, "[initData] " + this.b);
-        return;
-        label84:
-        this.jdField_a_of_type_ArrayOfByte = bace.a(this.b);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloGameResManager", 1, localThrowable, new Object[] { "[initData]" });
+    View localView = paramView.findViewById(2131365290);
+    TextView localTextView = (TextView)paramView.findViewById(2131365289);
+    paramInt1 = ((ImageView)paramView.findViewById(2131376734)).getRight() - localView.getWidth();
+    if (paramInt1 > 0) {
+      ThreadManager.getUIHandler().post(new AvatarPendantAdapter.2.1(this, localTextView, paramInt1));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ailj
  * JD-Core Version:    0.7.0.1
  */

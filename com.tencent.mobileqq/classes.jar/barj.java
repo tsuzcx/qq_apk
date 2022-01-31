@@ -1,31 +1,14 @@
-import android.os.Handler;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5.5;
 
 public class barj
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements aycf
 {
-  public barj(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  public barj(TroopGiftAnimationController.5.5 param5) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void a(ayck paramayck)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "onVideoPrepared video");
-    }
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      paramTVK_IMediaPlayer.pause();
-      this.a.jdField_a_of_type_AndroidOsHandler.post(this.a.b);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
-      return;
-      paramTVK_IMediaPlayer.start();
-    }
+    this.a.a.this$0.a();
   }
 }
 

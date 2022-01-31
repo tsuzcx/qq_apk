@@ -36,6 +36,9 @@ public class LayoutAttrSet
   public boolean centerHorizontal;
   public boolean centerInParent;
   public boolean centerVertical;
+  public String gradientDirection;
+  public int gradientEndColor;
+  public int gradientStartColor;
   public int height = -2;
   public String id;
   public int layout_gravity = 3;
@@ -45,6 +48,7 @@ public class LayoutAttrSet
   public int leftShadowSize;
   public Map<String, Object> mAttrs = new ConcurrentHashMap();
   public int orientation = 1;
+  public int pressedAlpha;
   public int right;
   public int rightMargin;
   public int rightPadding;
@@ -96,6 +100,20 @@ public class LayoutAttrSet
     }
   }
   
+  private int parseColor(String paramString)
+  {
+    try
+    {
+      int i = DittoResourcesUtil.parseColor(paramString);
+      return i;
+    }
+    catch (Throwable localThrowable)
+    {
+      DittoLog.e("DITTO_UI", "the text " + paramString + " can't be parsed as color string", localThrowable);
+    }
+    return 0;
+  }
+  
   public void addLayoutAttr(String paramString, Object paramObject)
   {
     parseContent(paramString, paramObject);
@@ -138,6 +156,14 @@ public class LayoutAttrSet
       localLayoutAttrSet.below = this.below;
       localLayoutAttrSet.toLeftOf = this.toLeftOf;
       localLayoutAttrSet.toRightOf = this.toRightOf;
+      localLayoutAttrSet.topLeftRadius = this.topLeftRadius;
+      localLayoutAttrSet.bottomLeftRadius = this.bottomLeftRadius;
+      localLayoutAttrSet.topRightRadius = this.topRightRadius;
+      localLayoutAttrSet.bottomRightRadius = this.bottomRightRadius;
+      localLayoutAttrSet.gradientDirection = this.gradientDirection;
+      localLayoutAttrSet.gradientStartColor = this.gradientStartColor;
+      localLayoutAttrSet.gradientEndColor = this.gradientEndColor;
+      localLayoutAttrSet.pressedAlpha = this.pressedAlpha;
       return localLayoutAttrSet;
     }
     finally
@@ -320,18 +346,10 @@ public class LayoutAttrSet
       parseShadowSize(paramObject.toString());
       return;
     }
-    boolean bool = "bg_color".equals(paramString);
-    if (bool) {
-      try
-      {
-        this.bg_color = DittoResourcesUtil.parseColor(paramObject.toString());
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        DittoLog.e("DITTO_UI", "the text " + paramObject + " can't be parsed as color string", localThrowable);
-        return;
-      }
+    if ("bg_color".equals(paramString))
+    {
+      this.bg_color = parseColor(paramObject.toString());
+      return;
     }
     if ("centerVertical".equals(paramString))
     {
@@ -458,8 +476,28 @@ public class LayoutAttrSet
       this.shadowResourceId = DittoUIEngine.g().getResourceId(paramObject.toString());
       return;
     }
-    if ("border_radii4".equals(paramString)) {
+    if ("border_radii4".equals(paramString))
+    {
       parseRadii4(paramObject.toString());
+      return;
+    }
+    if ("bgGradientDir".equals(paramString))
+    {
+      this.gradientDirection = paramObject.toString();
+      return;
+    }
+    if ("bgGradientStartColor".equals(paramString))
+    {
+      this.gradientStartColor = parseColor(paramObject.toString());
+      return;
+    }
+    if ("bgGradientEndColor".equals(paramString))
+    {
+      this.gradientEndColor = parseColor(paramObject.toString());
+      return;
+    }
+    if ("pressedAlpha".equals(paramString)) {
+      this.pressedAlpha = parseInteger(paramObject.toString());
     }
   }
   

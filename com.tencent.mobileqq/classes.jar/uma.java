@@ -1,23 +1,26 @@
-import com.tribe.async.dispatch.IEventReceiver;
+import java.util.List;
 
 public class uma
-  implements IEventReceiver
+  extends uth
 {
-  protected ulj a;
+  protected final int a;
+  protected final String a;
   
-  public ulj a()
+  public uma(String paramString1, int paramInt, String paramString2)
   {
-    return this.a;
+    super(paramString1, paramString2);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(Runnable paramRunnable)
+  protected tjg a(String paramString, List<String> paramList)
   {
-    urk.b("Q.qqstory.home.Repository", "executeRunnableOnWorkThread");
+    return new tlm(paramString, paramList);
   }
   
-  public boolean isValidate()
+  protected tjh a()
   {
-    return false;
+    return new umb(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.c);
   }
 }
 

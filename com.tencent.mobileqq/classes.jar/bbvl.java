@@ -1,65 +1,34 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.open.agent.BindGroupFragment;
+import android.os.SystemClock;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 public class bbvl
-  extends ajuc
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public bbvl(BindGroupFragment paramBindGroupFragment) {}
+  public bbvl(VipVideoPlayActivity paramVipVideoPlayActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    QLog.i("TroopAbility.BindGroup.Fragment", 1, "onBindTroopForThirdApp, isSuccess: " + paramBoolean + " bindFlag: " + paramInt + "  troopUin: " + paramLong);
-    BindGroupFragment.a(this.a);
-    if (paramBoolean)
+    if (QLog.isColorLevel())
     {
-      BindGroupFragment.c(this.a, ajjy.a(2131635321));
-      BindGroupFragment.a(this.a, String.valueOf(paramLong), 1);
-      BindGroupFragment.a(this.a).finish();
-      return;
+      paramTVK_IMediaPlayer = new StringBuilder();
+      paramTVK_IMediaPlayer.append("video player error model=" + paramInt1);
+      paramTVK_IMediaPlayer.append(",what=" + paramInt2);
+      paramTVK_IMediaPlayer.append(",extra=" + paramInt3);
+      paramTVK_IMediaPlayer.append(",detailInfo=" + paramString);
+      QLog.d("VipVideoPlayActivity", 2, paramTVK_IMediaPlayer.toString());
     }
-    BindGroupFragment.b(this.a, ajjy.a(2131635327));
-  }
-  
-  protected void c(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    QLog.i("TroopAbility.BindGroup.Fragment", 1, "onGetOnePageTroopInfo, isSuccess: " + paramBoolean1 + " isLastPage: " + paramBoolean2);
-    if (paramBoolean1)
-    {
-      if (paramBoolean2)
-      {
-        BindGroupFragment.a(this.a);
-        if (BindGroupFragment.a(this.a) != null) {
-          BindGroupFragment.a(this.a).notifyDataSetChanged();
-        }
-        return;
-      }
-      BindGroupFragment.b(this.a);
-      return;
-    }
-    BindGroupFragment.a(this.a);
-    BindGroupFragment.b(this.a, ajjy.a(2131635330));
-  }
-  
-  protected void g(boolean paramBoolean, String paramString)
-  {
-    QLog.i("TroopAbility.BindGroup.Fragment", 1, "onGetCreateTroopTokenForThirdApp isSuccess: " + paramBoolean + " url: " + paramString);
-    BindGroupFragment.a(this.a);
-    if (paramBoolean)
-    {
-      Intent localIntent = new Intent(BindGroupFragment.a(this.a), QQBrowserActivity.class);
-      localIntent.putExtra("url", befm.a(paramString, "gname", BindGroupFragment.c(this.a)));
-      this.a.startActivity(localIntent);
-      return;
-    }
-    BindGroupFragment.b(this.a, ajjy.a(2131635316));
+    long l1 = SystemClock.elapsedRealtime();
+    long l2 = VipVideoPlayActivity.b(this.a);
+    this.a.a("play_error", paramInt1, paramInt2, l1 - l2, paramString);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbvl
  * JD-Core Version:    0.7.0.1
  */

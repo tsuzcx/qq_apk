@@ -1,12 +1,10 @@
-class anjv
-  extends anfz
+import com.tencent.mobileqq.data.QzoneCommonIntent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+
+public abstract interface anjv
 {
-  anjv(anju paramanju) {}
-  
-  public void a(int paramInt)
-  {
-    this.a.a(paramInt);
-  }
+  public abstract void a(MSFServlet paramMSFServlet, QzoneCommonIntent paramQzoneCommonIntent, FromServiceMsg paramFromServiceMsg);
 }
 
 

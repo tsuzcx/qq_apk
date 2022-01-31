@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.applets;
 
-import akig;
-import akii;
+import akws;
+import akwu;
 
 public class NewPublicAccountServlet$2
   implements Runnable
 {
-  public NewPublicAccountServlet$2(akii paramakii, akig paramakig) {}
+  public NewPublicAccountServlet$2(akwu paramakwu, akws paramakws) {}
   
   public void run()
   {

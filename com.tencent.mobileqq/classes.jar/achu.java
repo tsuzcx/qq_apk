@@ -1,35 +1,52 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.List;
+import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.GbarInfo;
+import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.RspBody;
+import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.RspInfo;
 
 public class achu
-  extends RecyclerView.ItemDecoration
+  extends mxm
 {
-  private achu(ReminderListFragment paramReminderListFragment) {}
+  public achu(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    paramRect.left = aciy.a(16.0F, this.a.getResources());
-    paramRect.right = aciy.a(16.0F, this.a.getResources());
-    int i = paramRecyclerView.getChildAdapterPosition(paramView);
-    int j = ReminderListFragment.a(this.a).getItemCount();
-    if (QLog.isColorLevel()) {
-      QLog.i(ReminderListFragment.a(), 2, "position: " + i + ", totalCnt: " + j);
-    }
-    paramRect.top = aciy.a(12.0F, this.a.getResources());
-    if (i == j - 1) {
-      paramRect.bottom = aciy.a(12.0F, this.a.getResources());
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramBundle = new oidb_cmd0x6f6.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = paramBundle.rpt_msg_rsp_info.get();
+        if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
+        {
+          paramArrayOfByte = (oidb_cmd0x6f6.RspInfo)paramArrayOfByte.get(0);
+          if ((paramArrayOfByte != null) && (paramArrayOfByte.uint32_result.get() == 0))
+          {
+            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId = paramArrayOfByte.stgbarinfo.uint32_bid.get();
+            this.a.c = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId;
+            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeName = paramArrayOfByte.stgbarinfo.str_name.get().toStringUtf8();
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(7);
+            return;
+          }
+        }
+      }
+      catch (Exception paramArrayOfByte) {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     achu
  * JD-Core Version:    0.7.0.1
  */

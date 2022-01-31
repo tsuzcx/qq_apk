@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import abvd;
-import abve;
-import abvf;
-import ajjy;
+import acfp;
+import acfq;
+import acfr;
+import ajyc;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Window;
-import babr;
-import bafb;
+import bbcv;
+import bbgg;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 
 public class TranslucentTRansferFragment
@@ -29,16 +29,16 @@ public class TranslucentTRansferFragment
   private void b()
   {
     if (getActivity() == null) {}
-    bafb localbafb;
+    bbgg localbbgg;
     do
     {
       return;
-      localbafb = babr.a(getActivity(), 0, null, "你是否要去注册QQ？", null, null, null, null);
-      localbafb.setPositiveButton(ajjy.a(2131649281), new abvd(this, localbafb));
-      localbafb.setNegativeButton(ajjy.a(2131649279), new abve(this, localbafb));
-      localbafb.setOnDismissListener(new abvf(this));
+      localbbgg = bbcv.a(getActivity(), 0, null, "你是否要去注册QQ？", null, null, null, null);
+      localbbgg.setPositiveButton(ajyc.a(2131715070), new acfp(this, localbbgg));
+      localbbgg.setNegativeButton(ajyc.a(2131715068), new acfq(this, localbbgg));
+      localbbgg.setOnDismissListener(new acfr(this));
     } while (getActivity().isFinishing());
-    localbafb.show();
+    localbbgg.show();
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)

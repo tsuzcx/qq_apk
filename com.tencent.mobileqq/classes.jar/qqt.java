@@ -1,17 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.Map;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import java.util.List;
 
 public class qqt
-  extends omr
+  extends AnimatorListenerAdapter
 {
-  public qqt(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, Map paramMap, boolean paramBoolean)
-  {
-    super(paramString);
-  }
+  public qqt(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment, List paramList) {}
   
-  public void a(oml paramoml)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramoml.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean);
+    paramAnimator = new Bundle();
+    paramAnimator.putLong("ARGS_VIDEO_START_POSITION", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment.a() + 300L);
+    paramAnimator.putInt("VIDEO_FROM_TYPE", VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment));
+    qno.a().a(this.jdField_a_of_type_JavaUtilList, paramAnimator);
   }
 }
 

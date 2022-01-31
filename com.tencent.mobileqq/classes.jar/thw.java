@@ -1,19 +1,23 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgNodeShotView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class thw
-  implements ViewTreeObserver.OnPreDrawListener
+  extends QQUIEventReceiver<thk, tgh>
 {
-  public thw(StoryPlayerFragment paramStoryPlayerFragment, View paramView) {}
-  
-  public boolean onPreDraw()
+  public thw(@NonNull thk paramthk)
   {
-    tmf.b((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerFragment.a(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerFragment.a, new thx(this));
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
-    return false;
+    super(paramthk);
+  }
+  
+  public void a(@NonNull thk paramthk, @NonNull tgh paramtgh)
+  {
+    paramthk.a.a.d();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tgh.class;
   }
 }
 

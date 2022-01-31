@@ -1,25 +1,63 @@
-import android.os.Build.VERSION;
-import com.dataline.activities.LiteActivity;
-import com.tencent.widget.XListView;
+import com.dataline.activities.DLFilesViewerActivity;
+import com.dataline.activities.DLFilesViewerActivity.2.1;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.DataLineMsgSet;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bu
-  implements akeo
+  extends ajuv
 {
-  public bu(LiteActivity paramLiteActivity) {}
+  public bu(DLFilesViewerActivity paramDLFilesViewerActivity) {}
   
-  public void a(int paramInt)
+  protected void a(long paramLong, float paramFloat)
   {
-    if (this.a.isFinishing()) {}
-    while ((Build.VERSION.SDK_INT >= 17) && (this.a.isDestroyed())) {
-      return;
-    }
-    if (paramInt > 0)
+    super.a(paramLong, paramFloat);
+    this.a.runOnUiThread(new DLFilesViewerActivity.2.1(this, paramLong, paramFloat));
+  }
+  
+  protected void a(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  {
+    super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
+    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
+    DLFilesViewerActivity.b(this.a);
+  }
+  
+  protected void a(String paramString)
+  {
+    super.a(paramString);
+    Iterator localIterator = DLFilesViewerActivity.a(this.a).values().iterator();
+    while (localIterator.hasNext())
     {
-      this.a.jdField_a_of_type_Dr.b();
-      this.a.jdField_a_of_type_Dr.notifyDataSetChanged();
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setSelectionFromBottom(paramInt, 0);
+      DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
+      if (paramString.equals(localDataLineMsgRecord.strMoloKey))
+      {
+        localDataLineMsgRecord.nAppStatus = 1;
+        DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
+      }
     }
-    this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
+    DLFilesViewerActivity.b(this.a);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.a(paramBoolean, paramLong, paramString);
+    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
+    DLFilesViewerActivity.b(this.a);
+  }
+  
+  protected void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  {
+    super.b(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
+    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
+    DLFilesViewerActivity.b(this.a);
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.a(paramBoolean, paramLong, paramString);
+    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
+    DLFilesViewerActivity.b(this.a);
   }
 }
 

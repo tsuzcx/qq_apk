@@ -1,39 +1,35 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
-class wjq
-  implements mrn
+public class wjq
+  extends RecyclerView.ItemDecoration
 {
-  wjq(wjk paramwjk, Bundle paramBundle, int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("state", paramInt2);
-    this.jdField_a_of_type_AndroidOsBundle.putInt("percentage", paramInt3);
-    this.jdField_a_of_type_AndroidOsBundle.putLong("errCode", 0L);
-    if ((paramInt2 == 6) && (this.jdField_a_of_type_Int == 2)) {
-      this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
-    }
-    for (;;)
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    int i = paramRecyclerView.getChildAdapterPosition(paramView);
+    if (i == 0)
     {
-      this.jdField_a_of_type_Wjk.a.a(79, this.jdField_a_of_type_AndroidOsBundle);
+      paramRect.left = bawz.a(paramView.getContext(), 3.0F);
+      paramRect.right = 0;
       return;
-      if ((paramInt2 == 4) && (this.jdField_a_of_type_Int == 1)) {
-        this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
-      }
     }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_AndroidOsBundle.putLong("errCode", paramInt);
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
-    this.jdField_a_of_type_Wjk.a.a(79, this.jdField_a_of_type_AndroidOsBundle);
+    paramRecyclerView = paramRecyclerView.getAdapter();
+    if ((paramRecyclerView != null) && (i == paramRecyclerView.getItemCount() - 1)) {}
+    for (paramRect.right = bawz.a(paramView.getContext(), 3.0F);; paramRect.right = 0)
+    {
+      paramRect.left = (-bawz.a(paramView.getContext(), 6.0F));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wjq
  * JD-Core Version:    0.7.0.1
  */

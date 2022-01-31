@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadSpeedInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
-public abstract interface aopv
+public class aopv
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo);
-  
-  public abstract void a(int paramInt, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete);
-  
-  public abstract void a(long paramLong1, long paramLong2, long paramLong3);
-  
-  public abstract void a(ExcitingTransferDownloadSpeedInfo paramExcitingTransferDownloadSpeedInfo);
+  public int a;
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public AsyncImageView a;
+  public Object a;
+  public boolean a;
+  public int b;
+  public ImageView b;
+  public ImageView c;
 }
 
 

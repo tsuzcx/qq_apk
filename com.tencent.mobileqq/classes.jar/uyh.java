@@ -1,348 +1,237 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import android.os.Build;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import android.text.TextUtils;
-import android.view.MotionEvent;
-import android.view.ViewConfiguration;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONArray;
 
-@TargetApi(14)
 public class uyh
-  extends uyn
+  implements Handler.Callback, IEventReceiver, tjf, vch
 {
-  public static int a;
-  public static final int b;
-  public static int c;
-  public static int d = 270;
-  public final long a;
-  public Paint a;
-  public uyi a;
-  public uyj a;
-  public vcv a;
-  public boolean a;
-  private uyj b;
-  public int e;
-  public int f;
-  public int g;
-  public int h = jdField_b_of_type_Int;
-  public int i;
-  public int j;
-  public int k;
+  private int jdField_a_of_type_Int = 1;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(paramLooper, this);
+  private ConcurrentHashMap<String, StoryVideoItem> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private tcz jdField_a_of_type_Tcz = (tcz)tdc.a(5);
+  private tje jdField_a_of_type_Tje;
+  private uyi jdField_a_of_type_Uyi;
+  private uyj jdField_a_of_type_Uyj;
+  protected vcd a;
+  private boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int = 0;
+  private ConcurrentHashMap<String, String> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private tje jdField_b_of_type_Tje;
   
-  static
+  public uyh(Looper paramLooper)
   {
-    jdField_b_of_type_Int = Color.parseColor("#80000000");
-  }
-  
-  public uyh(DoodleView paramDoodleView)
-  {
-    super(paramDoodleView);
-    this.jdField_a_of_type_Long = 270L;
-    e();
-  }
-  
-  private void b(int paramInt)
-  {
-    urk.b("TextLayer", "setMode:" + paramInt + ",preMode:" + this.f);
-    this.f = this.e;
-    this.e = paramInt;
-  }
-  
-  private boolean c()
-  {
-    return ("vivo Xplay3S".equalsIgnoreCase(Build.MODEL)) || ("G3226".equalsIgnoreCase(Build.MODEL));
-  }
-  
-  private void e()
-  {
-    this.i = aciy.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.g = vct.a(this.jdField_a_of_type_AndroidContentContext);
-    this.f = 1;
-    this.e = 1;
+    this.jdField_a_of_type_Vcd = new vcd();
+    this.jdField_a_of_type_Vcd.a(this);
     this.jdField_a_of_type_Uyj = new uyj(this);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
-    this.jdField_a_of_type_Vcv = new vcv();
-    vcv localvcv = this.jdField_a_of_type_Vcv;
-    if (c()) {}
-    for (float f1 = 3.0F;; f1 = 6.0F)
-    {
-      localvcv.a(f1);
-      this.jdField_a_of_type_Vcv.b(0.2F);
-      this.jdField_a_of_type_Vcv.a(true);
-      c = ViewConfiguration.get(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.getContext()).getScaledTouchSlop();
-      return;
-    }
+    this.jdField_a_of_type_Uyi = new uyi(this, this);
+    ste.a().registerSubscriber(this.jdField_a_of_type_Uyj);
+    ste.a().registerSubscriber(this.jdField_a_of_type_Uyi);
   }
   
-  private void j()
+  private boolean a(String paramString)
   {
-    b(6);
-    this.jdField_b_of_type_Uyj = new uyj(this, this.jdField_a_of_type_Uyj);
-    uyj.a(this.jdField_b_of_type_Uyj);
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString) != null) {}
+    do
+    {
+      return true;
+      paramString = this.jdField_a_of_type_Tcz.a(paramString);
+    } while ((paramString != null) && (a(paramString)));
+    return false;
   }
   
   public int a()
   {
-    if (b()) {
-      return 1;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public StoryVideoItem a(String paramString)
+  {
+    StoryVideoItem localStoryVideoItem2 = (StoryVideoItem)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    StoryVideoItem localStoryVideoItem1;
+    if ((localStoryVideoItem2 != null) && (!TextUtils.isEmpty(localStoryVideoItem2.mVideoUrl)) && (localStoryVideoItem2.mVideoDuration >= 0L))
+    {
+      localStoryVideoItem1 = localStoryVideoItem2;
+      if (localStoryVideoItem2.mSourceType != -1) {}
     }
-    return 0;
-  }
-  
-  public String a()
-  {
-    return "TextLayer";
-  }
-  
-  public uyw a()
-  {
-    return this.jdField_a_of_type_Uyj.a();
+    else
+    {
+      localStoryVideoItem1 = this.jdField_a_of_type_Tcz.a(paramString);
+    }
+    return localStoryVideoItem1;
   }
   
   public void a()
   {
-    this.e = 1;
-    this.f = 1;
-    this.h = jdField_b_of_type_Int;
-    this.k = 0;
-    this.jdField_a_of_type_Uyj.d();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
-    this.jdField_a_of_type_Vcv.b(this.jdField_a_of_type_Uyj);
-    d();
-    urk.b("TextLayer", "clear over");
-    if (this.jdField_a_of_type_Uyi != null) {
-      this.jdField_a_of_type_Uyi.b();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    ste.a().unRegisterSubscriber(this.jdField_a_of_type_Uyj);
+    ste.a().unRegisterSubscriber(this.jdField_a_of_type_Uyi);
+    this.jdField_a_of_type_Vcd.a();
+    if (this.jdField_a_of_type_Tje != null) {
+      this.jdField_a_of_type_Tje.a();
+    }
+    if (this.jdField_b_of_type_Tje != null) {
+      this.jdField_b_of_type_Tje.a();
     }
   }
   
   public void a(int paramInt)
   {
-    if (paramInt < 0)
-    {
-      urk.e("TextLayer", "setTextTop:" + paramInt);
-      return;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(QQStoryAutoPlayView paramQQStoryAutoPlayView, List<uxp> paramList)
+  {
+    StoryVideoItem localStoryVideoItem = paramQQStoryAutoPlayView.a();
+    if (localStoryVideoItem == null) {
+      vel.b("story_home_dev", "feed_play_req", 0, 3, new String[0]);
     }
-    urk.b("TextLayer", "setTextTop:" + paramInt);
-    this.k = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    super.a(paramInt1, paramInt2);
-    this.jdField_a_of_type_Uyj.jdField_a_of_type_AndroidGraphicsRect.set(0, this.jdField_a_of_type_AndroidGraphicsRect.height() / 2 - this.i / 2, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.height() / 2 + this.i / 2);
-    this.jdField_a_of_type_Uyj.jdField_a_of_type_AndroidGraphicsPointF.x = (paramInt1 / 2);
-    this.jdField_a_of_type_Uyj.jdField_a_of_type_AndroidGraphicsPointF.y = (0.42F * paramInt2);
-    jdField_a_of_type_Int = (int)(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a() * 0.04F);
-  }
-  
-  protected void a(Canvas paramCanvas)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
+    boolean bool;
     do
     {
       return;
-      if ((this.e == 6) && (this.jdField_b_of_type_Uyj != null))
-      {
-        this.jdField_b_of_type_Uyj.a(paramCanvas);
-        return;
+      this.jdField_a_of_type_Vcd.a(this.jdField_a_of_type_Tcz.a(localStoryVideoItem.mVid), paramList);
+      bool = StoryVideoItem.isPlayable(localStoryVideoItem.mVid, false);
+      paramList = null;
+      if (bool) {
+        paramList = sum.a(localStoryVideoItem.mVid, 0, false, false);
       }
-    } while ((this.e != 4) && (this.e != 3));
-    this.jdField_a_of_type_Uyj.a(paramCanvas);
-  }
-  
-  public void a(Canvas paramCanvas, float paramFloat)
-  {
-    paramCanvas.save();
-    paramCanvas.scale(paramFloat, paramFloat);
-    this.jdField_a_of_type_Uyj.a(paramCanvas);
-    paramCanvas.restore();
-  }
-  
-  public void a(uyi paramuyi)
-  {
-    this.jdField_a_of_type_Uyi = paramuyi;
-  }
-  
-  public void a(uyw paramuyw)
-  {
-    if (paramuyw == null)
+      if (a(localStoryVideoItem)) {
+        break;
+      }
+      veg.a("Q.qqstory.home.AutoPlayManager", "AutoPlayManager that need to req the storyVideoItem vid=%s cover=%s", localStoryVideoItem.mVid, localStoryVideoItem.getThumbUrl());
+    } while (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(localStoryVideoItem.mVid) != null);
+    paramQQStoryAutoPlayView = new ArrayList();
+    paramQQStoryAutoPlayView.add(localStoryVideoItem.mVid);
+    a(paramQQStoryAutoPlayView);
+    vel.b("story_home_dev", "feed_play_req", 0, 2, new String[] { localStoryVideoItem.mVid });
+    return;
+    if ((bool) && (paramList != null))
     {
-      urk.e("TextLayer", "textInfo is null.");
+      veg.b("Q.qqstory.home.AutoPlayManager", "AutoPlayManager that have the mp4 file,do play now vid+" + localStoryVideoItem.mVid + " cover=" + localStoryVideoItem.getThumbUrl());
+      if (localStoryVideoItem.mErrorCode != 0) {
+        veg.e("Q.qqstory.home.AutoPlayManager", "AutoPlayManager request the error video to auto play error code=" + localStoryVideoItem.mErrorCode);
+      }
+      File localFile = sum.a(localStoryVideoItem.mVid, 1, false, false);
+      vxs.a(paramList);
+      paramQQStoryAutoPlayView.a(paramList, localFile);
+      vel.b("story_home_dev", "feed_play_req", 1, 0, new String[] { localStoryVideoItem.mVid });
       return;
     }
-    urk.b("TextLayer", "setTextInfo:" + paramuyw.a);
-    this.jdField_a_of_type_Uyj.a(paramuyw);
-    super.g();
+    vel.b("story_home_dev", "feed_play_req", 0, 1, new String[] { localStoryVideoItem.mVid });
   }
   
-  public void a(boolean paramBoolean)
+  public void a(String paramString1, String paramString2)
   {
-    urk.b("TextLayer", "setKeyboardState:" + paramBoolean);
-    if (paramBoolean) {}
-    for (;;)
+    veg.b("Q.qqstory.home.AutoPlayManager", "AutoPlayManager onSuccess = " + paramString1);
+    paramString2 = new vbz();
+    paramString2.a = paramString1;
+    ste.a().dispatch(paramString2);
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
+    vel.b("auto_play", "rsp_down", 0, 0, new String[] { paramString1 });
+  }
+  
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage)
+  {
+    veg.b("Q.qqstory.home.AutoPlayManager", "AutoPlayManager onError = " + paramString1);
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
+    vel.b("auto_play", "rsp_down", 1, 0, new String[] { paramString1 });
+  }
+  
+  public void a(List<String> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
     {
-      super.g();
-      return;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_Uyj.jdField_a_of_type_Uyw.a)) {
-        b(1);
-      } else {
-        b(4);
+      String str = (String)localIterator.next();
+      if (!a(str)) {
+        localArrayList.add(str);
       }
     }
-  }
-  
-  public boolean a()
-  {
-    return this.e == 1;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    boolean bool = false;
-    int m;
-    int n;
-    if (b())
+    veg.a("Q.qqstory.home.AutoPlayManager", "fetchStoryVideoItemByVid, request=%s, original=%s", new JSONArray(localArrayList), new JSONArray(paramList));
+    if (localArrayList.size() > 0)
     {
-      m = (int)paramMotionEvent.getY();
-      n = Math.abs(m - this.j);
-      switch (paramMotionEvent.getAction() & 0xFF)
-      {
-      case 3: 
-      case 4: 
-      default: 
-        this.jdField_a_of_type_Vcv.a(paramMotionEvent, false);
-        if (this.jdField_a_of_type_Uyj != null) {
-          this.jdField_a_of_type_Uyi.a(this.jdField_a_of_type_Uyj.f, this.jdField_a_of_type_Uyj.k, (int)this.jdField_a_of_type_Uyj.l, (int)this.jdField_a_of_type_Uyj.m, this.jdField_a_of_type_Uyj.jdField_a_of_type_AndroidGraphicsPointF, this.jdField_a_of_type_Uyj.e, 2);
-        }
-        break;
-      }
-    }
-    for (;;)
-    {
-      bool = true;
-      return bool;
-      if (this.jdField_a_of_type_Uyj != null)
-      {
-        this.jdField_a_of_type_Uyj.e = false;
-        this.jdField_a_of_type_Uyj.f = false;
-        this.jdField_a_of_type_Uyj.b();
-      }
-      this.jdField_a_of_type_Vcv.a(this.jdField_a_of_type_Uyj);
-      this.j = m;
-      break;
-      if (this.jdField_a_of_type_Uyj == null) {
-        break;
-      }
-      this.jdField_a_of_type_Uyj.e = true;
-      this.jdField_a_of_type_Uyj.c();
-      break;
-      if (this.jdField_a_of_type_Uyj != null)
-      {
-        this.jdField_a_of_type_Uyj.f = true;
-        if (this.e == 3) {
-          this.jdField_a_of_type_Uyj.c();
-        }
-      }
-      if (n <= c) {
-        break;
-      }
-      b(3);
-      break;
-      if (this.jdField_a_of_type_Uyj != null)
-      {
-        this.jdField_a_of_type_Uyj.f = false;
-        this.jdField_a_of_type_Uyj.c();
-      }
-      a(this, false);
-      if (n < c)
-      {
-        b();
-        break;
-      }
-      if (this.e != 3) {
-        break;
-      }
-      b(4);
-      break;
-      if (this.jdField_a_of_type_Uyj == null) {
-        break;
-      }
-      this.jdField_a_of_type_Uyj.e = false;
-      break;
-      this.jdField_a_of_type_Uyi.a(false, 0.0F, 0, 0, null, false, 0);
+      this.jdField_a_of_type_Tje = tje.a(localArrayList);
+      this.jdField_a_of_type_Tje.a("Q.qqstory.home.AutoPlayManager");
+      this.jdField_a_of_type_Tje.a(this);
+      this.jdField_a_of_type_Tje.b();
     }
   }
   
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Uyi != null) && (this.jdField_a_of_type_Uyi.a(this.jdField_a_of_type_Uyj))) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
+  public void a(boolean paramBoolean) {}
   
-  public void b(Canvas paramCanvas)
+  public boolean a(StoryVideoItem paramStoryVideoItem)
   {
-    a(paramCanvas, this.jdField_a_of_type_Float);
-  }
-  
-  public boolean b()
-  {
-    return (this.e == 4) || (this.e == 3);
-  }
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    boolean bool2 = false;
-    float f1 = paramMotionEvent.getX(0);
-    float f2 = paramMotionEvent.getY(0);
-    boolean bool1 = bool2;
-    if (b())
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_Vcv.a(this.jdField_a_of_type_Uyj, f1, f2, false)) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public void c()
-  {
-    if (!a()) {
-      j();
-    }
-    while (this.jdField_a_of_type_Uyi == null) {
-      return;
-    }
-    this.jdField_a_of_type_Uyi.a(1.0F);
-  }
-  
-  public boolean c(MotionEvent paramMotionEvent)
-  {
-    if (!b()) {}
-    while (paramMotionEvent.getPointerCount() < 2) {
+    if (paramStoryVideoItem == null) {}
+    while ((TextUtils.isEmpty(paramStoryVideoItem.getVideoUrl())) || (paramStoryVideoItem.mSourceType == -1) || (paramStoryVideoItem.mVideoDuration < 0L)) {
       return false;
     }
-    float f1 = paramMotionEvent.getX(0);
-    float f2 = paramMotionEvent.getY(0);
-    float f3 = paramMotionEvent.getX(1);
-    float f4 = paramMotionEvent.getY(1);
-    return this.jdField_a_of_type_Vcv.a(this.jdField_a_of_type_Uyj, f1, f2, f3, f4);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramStoryVideoItem.mVid, paramStoryVideoItem);
+    return true;
   }
   
-  public void d()
+  public int b()
   {
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Uyj != null) {
-      this.jdField_a_of_type_Uyj.d = false;
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    veg.b("Q.qqstory.home.AutoPlayManager", "AutoPlayManager onPause = " + paramString1);
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
+    vel.b("auto_play", "rsp_down", 2, 0, new String[] { paramString1 });
+  }
+  
+  public void b(List<StoryVideoItem> paramList)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramList));
     }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      paramMessage = ((List)paramMessage.obj).iterator();
+      while (paramMessage.hasNext())
+      {
+        StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramMessage.next();
+        if ((localStoryVideoItem.mErrorCode == 0) && ((TextUtils.isEmpty(localStoryVideoItem.mVideoUrl)) || (localStoryVideoItem.mVideoDuration < 0L) || (localStoryVideoItem.mSourceType == -1))) {
+          vxs.a("handleMessage is illegal debug info=%s", new Object[] { localStoryVideoItem });
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localStoryVideoItem.mVid, localStoryVideoItem);
+        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localStoryVideoItem.mVid);
+      }
+    }
+  }
+  
+  public boolean isValidate()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.doutu;
 
-import amxv;
-import atmp;
+import anod;
+import aukn;
 
 public class DoutuManager$10
   implements Runnable
 {
-  public DoutuManager$10(amxv paramamxv) {}
+  public DoutuManager$10(anod paramanod) {}
   
   public void run()
   {
-    if (amxv.a(this.this$0) != null) {
-      amxv.a(this.this$0).a(DoutuData.class);
+    if (anod.a(this.this$0) != null) {
+      anod.a(this.this$0).a(DoutuData.class);
     }
   }
 }

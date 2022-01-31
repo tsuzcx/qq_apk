@@ -1,23 +1,39 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Text;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class aclr
-  implements Parcelable.Creator<ForwardUtils.Section_Text>
+public class aclr
+  implements View.OnClickListener
 {
-  public ForwardUtils.Section_Text a(Parcel paramParcel)
-  {
-    return new ForwardUtils.Section_Text(paramParcel);
-  }
+  public aclr(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public ForwardUtils.Section_Text[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ForwardUtils.Section_Text[paramInt];
+    paramView = (akgy)this.a.app.a(26);
+    ArrayList localArrayList = new ArrayList();
+    try
+    {
+      if (!TextUtils.isEmpty(this.a.b)) {
+        localArrayList.add(Long.valueOf(Long.parseLong(this.a.b)));
+      }
+      paramView.a(localArrayList);
+      return;
+    }
+    catch (NumberFormatException paramView)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.systemmsg.TroopRequestActivity", 2, "delete Stranger parseLong() error", paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aclr
  * JD-Core Version:    0.7.0.1
  */

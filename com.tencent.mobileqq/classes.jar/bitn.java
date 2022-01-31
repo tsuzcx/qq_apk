@@ -1,8 +1,23 @@
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.ttpic.baseutils.device.DeviceUtils;
+
 class bitn
+  extends RecyclerView.ItemDecoration
 {
-  int jdField_a_of_type_Int;
-  bitl jdField_a_of_type_Bitl;
-  bitm jdField_a_of_type_Bitm;
+  bitn(bitj parambitj) {}
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    int i = paramRecyclerView.getChildAdapterPosition(paramView) % 2;
+    int j = (int)(DeviceUtils.getScreenWidth(bitj.a(this.a)) * 0.04F);
+    paramRect.left = (j - i * j / 2);
+    paramRect.right = ((i + 1) * j / 2);
+    paramRect.bottom = j;
+  }
 }
 
 

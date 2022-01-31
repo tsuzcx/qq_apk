@@ -1,26 +1,33 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
 public class ajss
-  implements ajfe
+  implements EIPCResultCallback
 {
-  protected void a(boolean paramBoolean, axau paramaxau) {}
+  public ajss(BaseActivity paramBaseActivity) {}
   
-  protected void b(boolean paramBoolean, axau paramaxau) {}
-  
-  protected void c(boolean paramBoolean, axau paramaxau) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    switch (paramInt)
+    if (paramEIPCResult.data == null) {}
+    do
     {
-    default: 
       return;
-    case 0: 
-      b(paramBoolean, (axau)paramObject);
-      return;
-    case 1: 
-      c(paramBoolean, (axau)paramObject);
-      return;
+      switch (paramEIPCResult.data.getInt("param_cmd"))
+      {
+      default: 
+        return;
+      }
+    } while (paramEIPCResult.code != 0);
+    paramEIPCResult = paramEIPCResult.data;
+    if (QLog.isDevelopLevel())
+    {
+      int i = paramEIPCResult.getInt("param_proc_badge_count");
+      QLog.i("MiniMsgIPCServer", 2, "doRefreshMiniBadge COUNT = " + i);
     }
-    a(paramBoolean, (axau)paramObject);
+    this.a.doRefreshMiniBadge(paramEIPCResult);
   }
 }
 

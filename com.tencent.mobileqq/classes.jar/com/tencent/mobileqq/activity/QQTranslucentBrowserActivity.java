@@ -1,11 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import abnl;
+import abxn;
+import abxo;
+import abxp;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import arkn;
 import com.tencent.smtt.sdk.WebView;
 
 public class QQTranslucentBrowserActivity
@@ -24,14 +27,14 @@ public class QQTranslucentBrowserActivity
     super.a(paramWebView, paramString);
   }
   
-  public void av_()
+  public void as_()
   {
     if (isFinishing()) {}
     do
     {
       return;
       if (this.jdField_a_of_type_AndroidAppDialog == null) {
-        this.jdField_a_of_type_AndroidAppDialog = new abnl(this);
+        this.jdField_a_of_type_AndroidAppDialog = new abxp(this);
       }
     } while (this.jdField_a_of_type_AndroidAppDialog == null);
     this.jdField_a_of_type_AndroidAppDialog.show();
@@ -50,14 +53,35 @@ public class QQTranslucentBrowserActivity
   {
     boolean bool = super.doOnCreate(paramBundle);
     paramBundle = super.getIntent();
-    getWindow().setBackgroundDrawableResource(2131101491);
-    View localView = findViewById(2131297873);
+    getWindow().setBackgroundDrawableResource(2131167087);
+    View localView = findViewById(2131363419);
     if (localView != null) {
-      localView.setBackgroundResource(2131101491);
+      localView.setBackgroundResource(2131167087);
     }
-    if ((paramBundle != null) && (paramBundle.getBooleanExtra("flag_show_loading_dialog", false))) {
-      av_();
+    int i;
+    if (paramBundle != null)
+    {
+      i = paramBundle.getIntExtra("key_dialog_type", -1);
+      if (!paramBundle.getBooleanExtra("flag_show_loading_dialog", false)) {
+        break label68;
+      }
+      as_();
     }
+    label68:
+    do
+    {
+      return bool;
+      if (i == 4)
+      {
+        this.jdField_a_of_type_AndroidAppDialog = arkn.a(this);
+        this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new abxn(this));
+        as_();
+        return bool;
+      }
+    } while (i != 5);
+    this.jdField_a_of_type_AndroidAppDialog = arkn.a(this, paramBundle);
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new abxo(this));
+    as_();
     return bool;
   }
   

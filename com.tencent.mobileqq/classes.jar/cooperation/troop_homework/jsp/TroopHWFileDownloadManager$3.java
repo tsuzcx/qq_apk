@@ -1,6 +1,6 @@
 package cooperation.troop_homework.jsp;
 
-import bgnz;
+import bhwt;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
 public class TroopHWFileDownloadManager$3
@@ -8,7 +8,7 @@ public class TroopHWFileDownloadManager$3
 {
   public void run()
   {
-    bgnz.a(this.this$0).cancelDownloadTask(this.a);
+    bhwt.a(this.this$0).cancelDownloadTask(this.a);
   }
 }
 

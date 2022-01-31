@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import ajtg;
+import akhq;
 import android.os.Bundle;
-import azrx;
+import batb;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBBoolField;
@@ -15,17 +15,17 @@ import tencent.im.oidb.cmd0xa2a.oidb_0xa2a.ReqBody;
 public class TroopHandler$7
   implements Runnable
 {
-  public TroopHandler$7(ajtg paramajtg, String paramString) {}
+  public TroopHandler$7(akhq paramakhq, String paramString) {}
   
   public void run()
   {
-    Object localObject = (azrx)this.this$0.app.getManager(234);
-    if (NetConnInfoCenter.getServerTime() < ((azrx)localObject).d(this.a))
+    Object localObject = (batb)this.this$0.app.getManager(234);
+    if (NetConnInfoCenter.getServerTime() < ((batb)localObject).d(this.a))
     {
       if (QLog.isColorLevel()) {
         QLog.i("TroopHandler", 2, "getAllGameOnlineMemberList, too frequency");
       }
-      localObject = ((azrx)localObject).c(this.a);
+      localObject = ((batb)localObject).c(this.a);
       this.this$0.notifyUI(102, true, new Object[] { this.a, localObject });
       return;
     }

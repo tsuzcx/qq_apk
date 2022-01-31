@@ -219,11 +219,11 @@ public class SoUtil
     //   3: iconst_0
     //   4: istore 6
     //   6: iconst_0
-    //   7: istore 8
+    //   7: istore 9
     //   9: iconst_0
     //   10: istore 7
     //   12: iconst_0
-    //   13: istore 9
+    //   13: istore 8
     //   15: ldc 130
     //   17: astore 24
     //   19: iconst_0
@@ -281,9 +281,9 @@ public class SoUtil
     //   131: aconst_null
     //   132: astore 27
     //   134: aconst_null
-    //   135: astore 25
+    //   135: astore 26
     //   137: aconst_null
-    //   138: astore 26
+    //   138: astore 25
     //   140: aconst_null
     //   141: astore 28
     //   143: aconst_null
@@ -294,15 +294,15 @@ public class SoUtil
     //   150: astore 22
     //   152: aload 16
     //   154: astore 18
-    //   156: aload 25
+    //   156: aload 26
     //   158: astore 20
     //   160: aload 24
     //   162: astore 21
-    //   164: iload 8
+    //   164: iload 9
     //   166: istore_1
     //   167: aload 15
     //   169: astore 17
-    //   171: aload 26
+    //   171: aload 25
     //   173: astore 19
     //   175: new 76	java/io/File
     //   178: dup
@@ -311,30 +311,30 @@ public class SoUtil
     //   184: astore 23
     //   186: aload 16
     //   188: astore 18
-    //   190: aload 25
+    //   190: aload 26
     //   192: astore 20
     //   194: aload 24
     //   196: astore 21
-    //   198: iload 8
+    //   198: iload 9
     //   200: istore_1
     //   201: aload 15
     //   203: astore 17
-    //   205: aload 26
+    //   205: aload 25
     //   207: astore 19
     //   209: aload 23
     //   211: invokevirtual 109	java/io/File:exists	()Z
     //   214: ifne +42 -> 256
     //   217: aload 16
     //   219: astore 18
-    //   221: aload 25
+    //   221: aload 26
     //   223: astore 20
     //   225: aload 24
     //   227: astore 21
-    //   229: iload 8
+    //   229: iload 9
     //   231: istore_1
     //   232: aload 15
     //   234: astore 17
-    //   236: aload 26
+    //   236: aload 25
     //   238: astore 19
     //   240: aload 23
     //   242: invokevirtual 267	java/io/File:mkdir	()Z
@@ -345,29 +345,29 @@ public class SoUtil
     //   253: ifeq +933 -> 1186
     //   256: aload 16
     //   258: astore 18
-    //   260: aload 25
+    //   260: aload 26
     //   262: astore 20
     //   264: aload 24
     //   266: astore 21
-    //   268: iload 8
+    //   268: iload 9
     //   270: istore_1
     //   271: aload 15
     //   273: astore 17
-    //   275: aload 26
+    //   275: aload 25
     //   277: astore 19
     //   279: invokestatic 51	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   282: ifeq +61 -> 343
     //   285: aload 16
     //   287: astore 18
-    //   289: aload 25
+    //   289: aload 26
     //   291: astore 20
     //   293: aload 24
     //   295: astore 21
-    //   297: iload 8
+    //   297: iload 9
     //   299: istore_1
     //   300: aload 15
     //   302: astore 17
-    //   304: aload 26
+    //   304: aload 25
     //   306: astore 19
     //   308: ldc 20
     //   310: iconst_0
@@ -385,15 +385,15 @@ public class SoUtil
     //   340: invokestatic 96	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   343: aload 16
     //   345: astore 18
-    //   347: aload 25
+    //   347: aload 26
     //   349: astore 20
     //   351: aload 24
     //   353: astore 21
-    //   355: iload 8
+    //   355: iload 9
     //   357: istore_1
     //   358: aload 15
     //   360: astore 17
-    //   362: aload 26
+    //   362: aload 25
     //   364: astore 19
     //   366: getstatic 31	com/tencent/TMG/utils/SoUtil:ctx	Landroid/content/Context;
     //   369: invokevirtual 276	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
@@ -410,19 +410,19 @@ public class SoUtil
     //   398: astore 16
     //   400: aload 16
     //   402: astore 15
-    //   404: iload 9
+    //   404: iload 8
     //   406: istore 7
     //   408: aload 16
     //   410: astore 18
-    //   412: aload 25
+    //   412: aload 26
     //   414: astore 20
     //   416: aload 24
     //   418: astore 21
-    //   420: iload 8
+    //   420: iload 9
     //   422: istore_1
     //   423: aload 16
     //   425: astore 17
-    //   427: aload 26
+    //   427: aload 25
     //   429: astore 19
     //   431: invokestatic 285	com/tencent/TMG/utils/SoUtil:getAvailableInternalMemorySize	()J
     //   434: aload 16
@@ -431,60 +431,60 @@ public class SoUtil
     //   440: lcmp
     //   441: ifge +163 -> 604
     //   444: iconst_1
-    //   445: istore 4
+    //   445: istore 5
     //   447: iconst_1
-    //   448: istore 5
+    //   448: istore 4
     //   450: aload 16
     //   452: astore 18
-    //   454: aload 25
+    //   454: aload 26
     //   456: astore 20
     //   458: aload 24
     //   460: astore 21
-    //   462: iload 8
+    //   462: iload 9
     //   464: istore_1
     //   465: aload 16
     //   467: astore 17
-    //   469: aload 26
+    //   469: aload 25
     //   471: astore 19
-    //   473: iload 4
+    //   473: iload 5
     //   475: istore_3
     //   476: sipush 10101
     //   479: putstatic 35	com/tencent/TMG/utils/SoUtil:extractSoError	I
-    //   482: iload 5
+    //   482: iload 4
     //   484: istore_2
     //   485: aload 16
     //   487: astore 15
-    //   489: iload 9
+    //   489: iload 8
     //   491: istore 7
     //   493: aload 16
     //   495: astore 18
-    //   497: aload 25
+    //   497: aload 26
     //   499: astore 20
     //   501: aload 24
     //   503: astore 21
-    //   505: iload 8
+    //   505: iload 9
     //   507: istore_1
     //   508: aload 16
     //   510: astore 17
-    //   512: aload 26
+    //   512: aload 25
     //   514: astore 19
-    //   516: iload 4
+    //   516: iload 5
     //   518: istore_3
     //   519: invokestatic 51	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   522: ifeq +82 -> 604
     //   525: aload 16
     //   527: astore 18
-    //   529: aload 25
+    //   529: aload 26
     //   531: astore 20
     //   533: aload 24
     //   535: astore 21
-    //   537: iload 8
+    //   537: iload 9
     //   539: istore_1
     //   540: aload 16
     //   542: astore 17
-    //   544: aload 26
+    //   544: aload 25
     //   546: astore 19
-    //   548: iload 4
+    //   548: iload 5
     //   550: istore_3
     //   551: ldc 20
     //   553: iconst_0
@@ -502,11 +502,11 @@ public class SoUtil
     //   584: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   587: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   590: invokestatic 96	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   593: iload 9
+    //   593: iload 8
     //   595: istore 7
     //   597: aload 16
     //   599: astore 15
-    //   601: iload 5
+    //   601: iload 4
     //   603: istore_2
     //   604: aload 15
     //   606: astore 22
@@ -530,7 +530,7 @@ public class SoUtil
     //   643: ifnull +58 -> 701
     //   646: aload 15
     //   648: astore 18
-    //   650: aload 25
+    //   650: aload 26
     //   652: astore 20
     //   654: aload 24
     //   656: astore 21
@@ -538,7 +538,7 @@ public class SoUtil
     //   660: istore_1
     //   661: aload 15
     //   663: astore 17
-    //   665: aload 26
+    //   665: aload 25
     //   667: astore 19
     //   669: new 296	java/io/FileOutputStream
     //   672: dup
@@ -756,14 +756,14 @@ public class SoUtil
     //   1091: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1094: astore 24
     //   1096: iconst_0
-    //   1097: istore 8
+    //   1097: istore 7
     //   1099: iconst_0
-    //   1100: istore 7
+    //   1100: istore 8
     //   1102: aload 15
     //   1104: astore 22
     //   1106: aload 16
     //   1108: astore 23
-    //   1110: iload 7
+    //   1110: iload 8
     //   1112: istore 6
     //   1114: aload 15
     //   1116: astore 18
@@ -771,7 +771,7 @@ public class SoUtil
     //   1120: astore 20
     //   1122: aload 24
     //   1124: astore 21
-    //   1126: iload 8
+    //   1126: iload 7
     //   1128: istore_1
     //   1129: aload 15
     //   1131: astore 17
@@ -785,7 +785,7 @@ public class SoUtil
     //   1149: astore 20
     //   1151: aload 24
     //   1153: astore 21
-    //   1155: iload 8
+    //   1155: iload 7
     //   1157: istore_1
     //   1158: aload 15
     //   1160: astore 17
@@ -795,7 +795,7 @@ public class SoUtil
     //   1168: iconst_0
     //   1169: aload 24
     //   1171: invokestatic 96	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1174: iload 7
+    //   1174: iload 8
     //   1176: istore 6
     //   1178: aload 16
     //   1180: astore 23
@@ -849,14 +849,14 @@ public class SoUtil
     //   1286: aload_0
     //   1287: athrow
     //   1288: iconst_1
-    //   1289: istore 8
+    //   1289: istore 7
     //   1291: iconst_1
-    //   1292: istore 7
+    //   1292: istore 8
     //   1294: aload 15
     //   1296: astore 22
     //   1298: aload 16
     //   1300: astore 23
-    //   1302: iload 7
+    //   1302: iload 8
     //   1304: istore 6
     //   1306: aload 15
     //   1308: astore 18
@@ -864,7 +864,7 @@ public class SoUtil
     //   1312: astore 20
     //   1314: aload 24
     //   1316: astore 21
-    //   1318: iload 8
+    //   1318: iload 7
     //   1320: istore_1
     //   1321: aload 15
     //   1323: astore 17
@@ -878,7 +878,7 @@ public class SoUtil
     //   1341: astore 20
     //   1343: aload 24
     //   1345: astore 21
-    //   1347: iload 8
+    //   1347: iload 7
     //   1349: istore_1
     //   1350: aload 15
     //   1352: astore 17
@@ -901,7 +901,7 @@ public class SoUtil
     //   1392: astore 22
     //   1394: aload 16
     //   1396: astore 23
-    //   1398: iload 7
+    //   1398: iload 8
     //   1400: istore 6
     //   1402: goto -216 -> 1186
     //   1405: astore 15
@@ -1027,12 +1027,12 @@ public class SoUtil
     //   0	1659	1	paramBoolean	boolean
     //   22	1628	2	i	int
     //   20	1606	3	j	int
-    //   445	104	4	k	int
-    //   448	154	5	m	int
+    //   448	154	4	k	int
+    //   445	104	5	m	int
     //   4	1638	6	bool1	boolean
     //   10	1645	7	bool2	boolean
-    //   7	1341	8	bool3	boolean
-    //   13	581	9	bool4	boolean
+    //   13	1386	8	bool3	boolean
+    //   7	531	9	bool4	boolean
     //   33	3	10	bool5	boolean
     //   702	561	11	l1	long
     //   113	1152	13	l2	long
@@ -1060,8 +1060,8 @@ public class SoUtil
     //   150	1243	22	localObject9	Object
     //   184	1213	23	localObject10	Object
     //   17	1327	24	str2	String
-    //   135	516	25	localObject11	Object
-    //   138	528	26	localObject12	Object
+    //   138	528	25	localObject11	Object
+    //   135	516	26	localObject12	Object
     //   132	493	27	localObject13	Object
     //   141	497	28	localObject14	Object
     //   78	967	29	localFile	File

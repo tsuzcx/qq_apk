@@ -1,14 +1,22 @@
+import android.graphics.drawable.Drawable;
+
 public abstract interface aojv
 {
-  public abstract void a();
+  public abstract void setLastUpdatedLabel(CharSequence paramCharSequence);
   
-  public abstract void a(aoju paramaoju);
+  public abstract void setLoadingDrawable(Drawable paramDrawable);
   
-  public abstract boolean a(String paramString, long paramLong, byte[] paramArrayOfByte);
+  public abstract void setPullLabel(CharSequence paramCharSequence);
+  
+  public abstract void setRefreshResultLabel(CharSequence paramCharSequence);
+  
+  public abstract void setRefreshingLabel(CharSequence paramCharSequence);
+  
+  public abstract void setReleaseLabel(CharSequence paramCharSequence);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aojv
  * JD-Core Version:    0.7.0.1
  */

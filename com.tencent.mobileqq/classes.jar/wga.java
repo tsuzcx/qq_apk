@@ -1,20 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.subscribe.event.SharePanelShowStateEvent;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-class wga
-  implements DialogInterface.OnDismissListener
+public class wga
+  implements bcwh
 {
-  wga(wfz paramwfz) {}
+  public wga(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(BaseResp paramBaseResp)
   {
-    wcj.a().a(new SharePanelShowStateEvent(false));
+    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      wim.a(1, 2131719476);
+      return;
+    }
+    wim.a(2, 2131719495);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wga
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,33 @@
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.window.FloatMapWidget;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
+import java.io.File;
 
 class ardl
-  implements arcu
+  implements TVK_ICacheMgr.IPreloadCompleteCallback
 {
-  ardl(ardi paramardi) {}
+  private ardl(ardg paramardg) {}
   
-  public void a(LocationRoom.Venue paramVenue) {}
-  
-  public void a(LatLng paramLatLng) {}
-  
-  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList)
+  public void onComplete(String paramString1, String paramString2)
   {
-    if (paramList != null)
+    synchronized (ardg.a(this.a))
     {
-      paramLatLng = paramList.iterator();
-      while (paramLatLng.hasNext())
-      {
-        paramList = (String)paramLatLng.next();
-        Bitmap localBitmap = this.a.a(paramList);
-        if (localBitmap != null)
-        {
-          localBitmap = bacm.c(localBitmap, 16, 16);
-          ardi.a(this.a).a(paramList, localBitmap);
-        }
+      String str = ardg.a(paramString1);
+      ardf.b("onComplete path:" + str);
+      ardf.b("onComplete vid:" + paramString1 + ", detail:" + paramString2);
+      ardg.a(this.a, paramString1);
+      paramString2 = new File(ardg.b(paramString1));
+      if (paramString2.exists()) {
+        paramString2.renameTo(new File(str));
       }
+      ardg.b(this.a, paramString1);
+      ardg.b(this.a, ardg.a(this.a));
+      ardg.b(this.a);
+      return;
     }
   }
-  
-  public void a(boolean paramBoolean, Point paramPoint) {}
-  
-  public void a(boolean paramBoolean, arcv paramarcv) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ardl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adsh;
+import aedg;
 import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.data.ChatMessage;
 public class TroopFileItemBuilder$6
   implements Runnable
 {
-  public TroopFileItemBuilder$6(adsh paramadsh, ChatMessage paramChatMessage) {}
+  public TroopFileItemBuilder$6(aedg paramaedg, ChatMessage paramChatMessage) {}
   
   public void run()
   {

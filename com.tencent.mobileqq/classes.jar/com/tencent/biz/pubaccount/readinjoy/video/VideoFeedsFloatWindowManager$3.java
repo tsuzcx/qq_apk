@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.pubaccount.VideoInfo;
 import java.util.List;
-import pqb;
-import qbq;
+import qbx;
+import qno;
 
 public class VideoFeedsFloatWindowManager$3
   implements Runnable
 {
-  public VideoFeedsFloatWindowManager$3(qbq paramqbq, VideoInfo paramVideoInfo1, VideoInfo paramVideoInfo2, List paramList, pqb parampqb, long paramLong, int paramInt) {}
+  public VideoFeedsFloatWindowManager$3(qno paramqno, VideoInfo paramVideoInfo1, VideoInfo paramVideoInfo2, List paramList, qbx paramqbx, long paramLong, int paramInt) {}
   
   public void run()
   {
-    qbq.a(this.this$0, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.b, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Pqb, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    qno.a(this.this$0, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.b, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Qbx, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,101 +1,75 @@
-import dov.com.qq.im.story.SessionWrap;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 
 public class bhyv
+  extends bhyx
 {
-  public int a;
-  private SessionWrap a;
-  public String a;
-  public boolean a;
-  public int b;
-  private String b;
-  public boolean b;
-  private int c;
-  public boolean c;
-  private int jdField_d_of_type_Int = 11;
-  private boolean jdField_d_of_type_Boolean = true;
-  private int jdField_e_of_type_Int = 1;
-  private boolean jdField_e_of_type_Boolean;
-  private int jdField_f_of_type_Int;
-  private boolean jdField_f_of_type_Boolean;
-  
-  private bhyv(bhyx parambhyx)
+  public bhyv(String paramString, View paramView)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_DovComQqImStorySessionWrap = bhyx.a(parambhyx);
-    this.jdField_b_of_type_JavaLangString = bhyx.a(parambhyx);
-    this.jdField_c_of_type_Int = bhyx.a(parambhyx);
-    this.jdField_d_of_type_Int = bhyx.b(parambhyx);
-    this.jdField_e_of_type_Int = bhyx.c(parambhyx);
-    this.jdField_d_of_type_Boolean = bhyx.a(parambhyx);
-    this.jdField_a_of_type_JavaLangString = bhyx.b(parambhyx);
-    this.jdField_f_of_type_Int = bhyx.d(parambhyx);
-    this.jdField_e_of_type_Boolean = bhyx.b(parambhyx);
-    this.jdField_a_of_type_Boolean = parambhyx.jdField_a_of_type_Boolean;
-    this.jdField_f_of_type_Boolean = parambhyx.jdField_b_of_type_Boolean;
-    this.jdField_b_of_type_Boolean = parambhyx.jdField_c_of_type_Boolean;
-    this.jdField_c_of_type_Boolean = parambhyx.jdField_d_of_type_Boolean;
-    this.jdField_b_of_type_Int = parambhyx.jdField_a_of_type_Int;
+    super(paramString, paramView);
   }
   
-  public int a()
+  private int b(String paramString)
   {
-    return this.jdField_c_of_type_Int;
+    if (TextUtils.isEmpty(paramString)) {
+      throw new RuntimeException(getClass().getName() + " setGravity value can not be null");
+    }
+    if ("center".equals(paramString)) {
+      return 13;
+    }
+    if ("center_horizontal".equals(paramString)) {
+      return 14;
+    }
+    if ("center_vertical".equals(paramString)) {
+      return 15;
+    }
+    return 9;
   }
   
-  public SessionWrap a()
+  protected ViewGroup.LayoutParams a(int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_DovComQqImStorySessionWrap;
+    return new RelativeLayout.LayoutParams(paramInt1, paramInt2);
   }
   
-  public String a()
+  protected void a(String paramString1, String paramString2)
   {
-    return this.jdField_b_of_type_JavaLangString;
+    super.a(paramString1, paramString2);
+    if (!(this.a instanceof RelativeLayout)) {}
   }
   
-  public boolean a()
+  protected void a(String paramString1, String paramString2, ViewGroup.LayoutParams paramLayoutParams)
   {
-    return this.jdField_d_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int c()
-  {
-    return this.jdField_e_of_type_Int;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_f_of_type_Boolean;
-  }
-  
-  public int d()
-  {
-    return this.jdField_f_of_type_Int;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_b_of_type_Boolean;
+    super.a(paramString1, paramString2, paramLayoutParams);
+    paramLayoutParams = (RelativeLayout.LayoutParams)paramLayoutParams;
+    if ("gravity".equals(paramString1)) {
+      paramLayoutParams.addRule(b(paramString2));
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (!"relative".equals(paramString1));
+        paramString1 = paramString2.split(" ");
+      } while ((paramString1 == null) || (paramString1.length != 2));
+      if ("bottom".equals(paramString1[1]))
+      {
+        paramLayoutParams.addRule(3, Integer.parseInt(paramString1[0]));
+        paramLayoutParams.addRule(5, Integer.parseInt(paramString1[0]));
+        return;
+      }
+    } while (!"right".equals(paramString1[1]));
+    paramLayoutParams.addRule(6, Integer.parseInt(paramString1[0]));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhyv
  * JD-Core Version:    0.7.0.1
  */

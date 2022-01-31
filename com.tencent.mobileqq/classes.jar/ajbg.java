@@ -1,38 +1,13 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
 
 class ajbg
-  implements View.OnClickListener
+  extends AVVideoCtrl.EnableCameraCompleteCallback
 {
-  ajbg(ajbe paramajbe) {}
+  ajbg(ajbc paramajbc) {}
   
-  public void onClick(View paramView)
+  public void onComplete(boolean paramBoolean, int paramInt)
   {
-    if ((!TextUtils.isEmpty(ajbe.a(this.a))) && (!ajbe.a(this.a).equals("0")))
-    {
-      QQAppInterface localQQAppInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
-      int i = this.a.a.jdField_a_of_type_Int;
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData != null) {}
-      for (paramView = Integer.toString(this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameId);; paramView = "")
-      {
-        bajr.a(localQQAppInterface, "cmshow", "Apollo", "clk_fuwuhao", i, 0, new String[] { paramView });
-        paramView = new Intent(this.a.a.getActivity(), AccountDetailActivity.class);
-        paramView.putExtra("uin", ajbe.a(this.a));
-        paramView.putExtra("uintype", 1008);
-        this.a.a.getActivity().startActivity(paramView);
-        return;
-      }
-    }
-    QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[setPubAccountInfo] uin is null or = 0");
+    if (paramInt == 0) {}
   }
 }
 

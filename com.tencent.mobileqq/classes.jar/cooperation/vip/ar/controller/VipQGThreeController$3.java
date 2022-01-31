@@ -1,8 +1,8 @@
 package cooperation.vip.ar.controller;
 
 import android.text.TextUtils;
-import bgpb;
-import bgpf;
+import bhxy;
+import bhyc;
 import cooperation.qzone.util.QZLog;
 import cooperation.vip.ar.widget.VipQGGLSurfaceView;
 import java.io.File;
@@ -10,18 +10,18 @@ import java.io.File;
 public class VipQGThreeController$3
   implements Runnable
 {
-  public VipQGThreeController$3(bgpb parambgpb) {}
+  public VipQGThreeController$3(bhxy parambhxy) {}
   
   public void run()
   {
-    if ((bgpb.a(this.this$0) != null) && (!TextUtils.isEmpty(bgpb.a(this.this$0).b)) && (bgpb.a(this.this$0) != null))
+    if ((bhxy.a(this.this$0) != null) && (!TextUtils.isEmpty(bhxy.a(this.this$0).b)) && (bhxy.a(this.this$0) != null))
     {
       if (QZLog.isColorLevel()) {
-        QZLog.i("VipARQGThreeController", 2, "js model runnable path = " + bgpb.a(this.this$0).b);
+        QZLog.i("VipARQGThreeController", 2, "js model runnable path = " + bhxy.a(this.this$0).b);
       }
-      bgpb.a(this.this$0).setExtResPath(bgpb.a(this.this$0).b);
-      bgpb.a(this.this$0).addJavaScriptFileFromSDCard(bgpb.a(this.this$0).b + File.separator + "qg.js");
-      bgpb.a(this.this$0).addJavaScriptFileFromSDCard(bgpb.a(this.this$0).b + File.separator + "index.js");
+      bhxy.a(this.this$0).setExtResPath(bhxy.a(this.this$0).b);
+      bhxy.a(this.this$0).addJavaScriptFileFromSDCard(bhxy.a(this.this$0).b + File.separator + "qg.js");
+      bhxy.a(this.this$0).addJavaScriptFileFromSDCard(bhxy.a(this.this$0).b + File.separator + "index.js");
     }
   }
 }

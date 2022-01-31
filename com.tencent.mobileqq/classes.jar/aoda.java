@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 
 public class aoda
-  implements View.OnClickListener
+  implements bcur
 {
-  public aoda(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
+  public aoda(AIOEmotionFragment paramAIOEmotionFragment) {}
   
-  public void onClick(View paramView)
+  public void a(bbje parambbje, bcuq parambcuq)
   {
-    QfileRecentPicFileTabView.a(this.a, paramView, false);
+    this.a.a.b();
+    int i = parambbje.c;
+    this.a.a(i, parambbje);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aoda
  * JD-Core Version:    0.7.0.1
  */

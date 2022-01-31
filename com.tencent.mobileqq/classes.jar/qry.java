@@ -1,30 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
-import java.lang.ref.WeakReference;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class qry
-  extends Handler
+class qry
+  implements rci
 {
-  private WeakReference<ReadInJoyNavigationGridview> a;
+  qry(qrw paramqrw, VideoInfo paramVideoInfo) {}
   
-  public qry(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview)
+  public void a()
   {
-    this.a = new WeakReference(paramReadInJoyNavigationGridview);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ReadInJoyNavigationGridview localReadInJoyNavigationGridview = (ReadInJoyNavigationGridview)this.a.get();
-    if ((localReadInJoyNavigationGridview == null) || (ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview))) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsShareController", 2, "onDislikeDialogViewForAdComplain");
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    Intent localIntent = new Intent();
+    localIntent.putExtra("key_from_type", 2);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) {
+      localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
     }
-    ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview);
+    PublicFragmentActivity.a(qrw.a(this.jdField_a_of_type_Qrw), localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+    qrw.a(this.jdField_a_of_type_Qrw).dismiss();
   }
 }
 

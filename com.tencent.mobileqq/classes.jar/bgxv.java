@@ -1,65 +1,53 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import NS_MOBILE_MAIN_PAGE.PhotoWall;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_del_photo_wall_req;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
-class bgxv
-  implements axrt
+public class bgxv
+  extends QzoneExternalRequest
 {
-  private bgxw jdField_a_of_type_Bgxw;
-  private bgya jdField_a_of_type_Bgya;
-  private String jdField_a_of_type_JavaLangString;
+  public JceStruct a;
   
-  public bgxv(bgya parambgya, String paramString, bgxw parambgxw)
+  public bgxv(long paramLong1, long paramLong2, String paramString, Long paramLong)
   {
-    this.jdField_a_of_type_Bgya = parambgya;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bgxw = parambgxw;
+    super.setHostUin(paramLong1);
+    super.setLoginUserId(paramLong2);
+    mobile_sub_del_photo_wall_req localmobile_sub_del_photo_wall_req = new mobile_sub_del_photo_wall_req();
+    PhotoWall localPhotoWall = new PhotoWall();
+    localPhotoWall.photoId = paramString;
+    localPhotoWall.ctime = paramLong.longValue();
+    localmobile_sub_del_photo_wall_req.vecUrls = new ArrayList();
+    localmobile_sub_del_photo_wall_req.vecUrls.add(localPhotoWall);
+    this.a = localmobile_sub_del_photo_wall_req;
   }
   
-  public void onResp(axsq paramaxsq)
+  public static JceStruct a(byte[] paramArrayOfByte)
   {
-    long l2 = 0L;
-    if (QLog.isColorLevel()) {
-      QLog.i(bgxu.a(), 2, "onResp url: " + this.jdField_a_of_type_Bgya.c + " resultcode: " + paramaxsq.c);
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    this.jdField_a_of_type_Bgya.jdField_d_of_type_Boolean = bgxx.a(this.jdField_a_of_type_Bgya);
-    this.jdField_a_of_type_Bgya.jdField_e_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Bgxw != null) {
-      this.jdField_a_of_type_Bgxw.a(this.jdField_a_of_type_Bgya, this.jdField_a_of_type_Bgya.jdField_d_of_type_Boolean);
-    }
-    if (paramaxsq.b != 0)
-    {
-      bhci.a().a(this.jdField_a_of_type_Bgya.jdField_a_of_type_JavaLangString, paramaxsq.b, paramaxsq.h, 0L, this.jdField_a_of_type_Bgya.jdField_d_of_type_JavaLangString);
-      return;
-    }
-    if ((paramaxsq.b == 0) && (!this.jdField_a_of_type_Bgya.jdField_d_of_type_Boolean))
-    {
-      bhci.a().a(this.jdField_a_of_type_Bgya.jdField_a_of_type_JavaLangString, 1111, paramaxsq.h, 0L, this.jdField_a_of_type_Bgya.jdField_d_of_type_JavaLangString);
-      return;
-    }
-    File localFile = new File(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bgya.jdField_e_of_type_JavaLangString);
-    long l1 = l2;
-    if (localFile.exists())
-    {
-      l1 = l2;
-      if (localFile.isFile()) {
-        l1 = localFile.length();
-      }
-    }
-    bhci.a().a(this.jdField_a_of_type_Bgya.jdField_a_of_type_JavaLangString, paramaxsq.b, paramaxsq.h, l1, this.jdField_a_of_type_Bgya.jdField_d_of_type_JavaLangString);
+    return decode(paramArrayOfByte, "delPhotoWall");
   }
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2)
+  public String getCmdString()
   {
-    this.jdField_a_of_type_Bgya.b = paramLong2;
-    this.jdField_a_of_type_Bgya.jdField_d_of_type_Int = ((int)(100L * paramLong1 / paramLong2));
-    if (this.jdField_a_of_type_Bgxw != null) {
-      this.jdField_a_of_type_Bgxw.a(this.jdField_a_of_type_Bgya, this.jdField_a_of_type_Bgya.jdField_d_of_type_Int);
-    }
+    return "QzoneNewService.delPhotoWall";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "delPhotoWall";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgxv
  * JD-Core Version:    0.7.0.1
  */

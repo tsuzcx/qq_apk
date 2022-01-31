@@ -1,73 +1,58 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.ar.ArConfigService.5.1;
+import com.tencent.mobileqq.ar.ArConfigService.5.2;
+import com.tencent.mobileqq.ar.ArConfigService.5.3;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import org.json.JSONObject;
 
 public class albr
-  implements albq
+  implements alio
 {
-  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
+  public albr(ArConfigService paramArConfigService) {}
+  
+  public void a()
   {
-    if (paramLong != 0L) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, "mARSDK2ResourceDownloadCallback");
     }
-    paramString2 = BaseActivity.sTopActivity;
-    if (paramString2 == null) {
-      return false;
-    }
-    if (paramString1.startsWith("open/")) {
-      try
-      {
-        int j = Integer.parseInt(paramString1.substring("open/".length(), paramString1.indexOf("?")));
-        paramJSONObject = (String)befm.a(paramString1).get("url");
-        int i = j;
-        if (j != 1007)
-        {
-          i = j;
-          if (j != 1008)
-          {
-            i = j;
-            if (j != 1014)
-            {
-              i = j;
-              if (j != 1036)
-              {
-                i = j;
-                if (j != 2061)
-                {
-                  i = j;
-                  if (j != 2072)
-                  {
-                    i = j;
-                    if (j != 2075)
-                    {
-                      i = j;
-                      if (j != 2085) {
-                        i = 2059;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        MiniAppLauncher.startMiniApp(paramString2, paramJSONObject, i, albn.a(), null);
-        return true;
-      }
-      catch (Exception paramString2)
-      {
-        QLog.e("ArkApp", 1, "parse miniapp scheme failed:" + paramString1, paramString2);
-        return false;
-      }
-    }
-    return false;
   }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+    }
+    ArConfigService.b(this.a, (int)(100L * paramLong1 / paramLong2));
+    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
+    if (!ArConfigService.e(this.a)) {
+      ArConfigService.a(this.a).post(new ArConfigService.5.1(this, i));
+    }
+  }
+  
+  public void a(boolean paramBoolean, alip paramalip)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadComplete mARSDK2ResourceDownloadCallback result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if (paramBoolean)
+    {
+      ArConfigService.c(this.a, true);
+      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
+        ArConfigService.a(this.a).post(new ArConfigService.5.2(this));
+      }
+    }
+    while (ArConfigService.e(this.a)) {
+      return;
+    }
+    ArConfigService.a(this.a).post(new ArConfigService.5.3(this));
+    ArConfigService.a(this.a, true);
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     albr
  * JD-Core Version:    0.7.0.1
  */

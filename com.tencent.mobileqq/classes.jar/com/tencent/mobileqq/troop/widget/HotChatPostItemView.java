@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -22,7 +22,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import azmo;
+import bans;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
@@ -244,22 +244,22 @@ public class HotChatPostItemView
     Calendar.getInstance().setTimeInMillis(this.jdField_a_of_type_Long);
     paramLong = this.jdField_a_of_type_Long - paramLong;
     if (paramLong <= 59L) {
-      return ajjy.a(2131639791);
+      return ajyc.a(2131705576);
     }
     if (paramLong <= 60L) {
       return "1分钟前";
     }
     if (paramLong < 3600L) {
-      return (int)Math.floor(paramLong / 60L) + ajjy.a(2131639783);
+      return (int)Math.floor(paramLong / 60L) + ajyc.a(2131705568);
     }
     if (paramLong < 86400L) {
-      return (int)Math.floor(paramLong / 3600L) + ajjy.a(2131639779);
+      return (int)Math.floor(paramLong / 3600L) + ajyc.a(2131705564);
     }
     if ((paramLong >= 86400L) && (paramLong < 172800L)) {
-      return ajjy.a(2131639800);
+      return ajyc.a(2131705585);
     }
     if (paramLong < 2592000L) {
-      return (int)Math.ceil(paramLong / 86400L) + ajjy.a(2131639790);
+      return (int)Math.ceil(paramLong / 86400L) + ajyc.a(2131705575);
     }
     if ((paramLong >= 2592000L) && (paramLong < 31104000L)) {
       return new SimpleDateFormat("MM-dd").format(localDate);
@@ -307,7 +307,7 @@ public class HotChatPostItemView
         localURLDrawable = URLDrawable.getDrawable(paramString);
       }
       paramImageView.setImageDrawable(a(localURLDrawable, paramFloat));
-      localURLDrawable.setURLDrawableListener(new azmo(paramImageView, paramInt6, paramInt4, paramInt5, paramString, localURLDrawable, paramFloat, paramInt3));
+      localURLDrawable.setURLDrawableListener(new bans(paramImageView, paramInt6, paramInt4, paramInt5, paramString, localURLDrawable, paramFloat, paramInt3));
       return;
     }
     catch (OutOfMemoryError paramImageView)
@@ -346,19 +346,19 @@ public class HotChatPostItemView
   
   public View a()
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131494160, null);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559732, null);
     addView(localView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131305157));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131311534));
-    this.d = ((TextView)localView.findViewById(2131299132));
-    this.e = ((TextView)localView.findViewById(2131298948));
-    this.f = ((TextView)localView.findViewById(2131308982));
-    this.c = ((TextView)localView.findViewById(2131311478));
-    this.g = ((TextView)localView.findViewById(2131313744));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131301795));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131299248));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370830));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377350));
+    this.d = ((TextView)localView.findViewById(2131364692));
+    this.e = ((TextView)localView.findViewById(2131364508));
+    this.f = ((TextView)localView.findViewById(2131374722));
+    this.c = ((TextView)localView.findViewById(2131377291));
+    this.g = ((TextView)localView.findViewById(2131379581));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131367405));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131364811));
     this.jdField_a_of_type_AndroidViewView = localView;
-    setBackgroundResource(2130841725);
+    setBackgroundResource(2130841819);
     return this;
   }
   

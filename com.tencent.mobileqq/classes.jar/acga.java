@@ -1,19 +1,28 @@
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import mqq.os.MqqHandler;
 
 public class acga
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends akim
 {
-  public acga(VisitorsActivity paramVisitorsActivity) {}
+  public acga(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onGlobalLayout()
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    this.a.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    int[] arrayOfInt = new int[2];
-    this.a.b.getLocationInWindow(arrayOfInt);
-    this.a.i = arrayOfInt[1];
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.a.sendEmptyMessage(1);
+      }
+    }
+    while ((paramInt1 != 2) || (paramInt2 != 0)) {
+      return;
+    }
+    asfb.a().b(paramString, this.a.app);
+    this.a.c();
+  }
+  
+  protected void b(String paramString)
+  {
+    this.a.c();
   }
 }
 

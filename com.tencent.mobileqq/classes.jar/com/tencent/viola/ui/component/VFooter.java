@@ -60,7 +60,10 @@ public class VFooter
   public void destroy()
   {
     super.destroy();
-    ((VFooterLayout)getHostView()).destroy();
+    VFooterLayout localVFooterLayout = (VFooterLayout)getHostView();
+    if (localVFooterLayout != null) {
+      localVFooterLayout.destroy();
+    }
   }
   
   public void footerFireEvent(String paramString, JSONArray paramJSONArray, JSONObject paramJSONObject)

@@ -1,105 +1,191 @@
-class aghg
-  implements behi
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.util.BaseApplication;
+
+public class aghg
+  extends aggy
 {
-  aghg(aggx paramaggx) {}
+  private bdto a;
   
-  /* Error */
-  @android.annotation.TargetApi(11)
-  public void onItemClick(com.tencent.widget.AdapterView<?> paramAdapterView, android.view.View paramView, int paramInt, long paramLong)
+  public aghg(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: invokevirtual 29	com/tencent/widget/AdapterView:getAdapter	()Landroid/widget/Adapter;
-    //   4: iload_3
-    //   5: invokeinterface 35 2 0
-    //   10: checkcast 37	java/lang/String
-    //   13: astore 6
-    //   15: aload_0
-    //   16: getfield 12	aghg:a	Laggx;
-    //   19: getfield 42	aggx:jdField_a_of_type_MqqUtilWeakReference	Lmqq/util/WeakReference;
-    //   22: invokevirtual 48	mqq/util/WeakReference:get	()Ljava/lang/Object;
-    //   25: checkcast 50	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity
-    //   28: aload 6
-    //   30: invokevirtual 53	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity:a	(Ljava/lang/String;)I
-    //   33: iconst_1
-    //   34: if_icmpne +101 -> 135
-    //   37: aload_0
-    //   38: getfield 12	aghg:a	Laggx;
-    //   41: getfield 56	aggx:jdField_a_of_type_Aggf	Laggf;
-    //   44: invokevirtual 61	aggf:a	()Z
-    //   47: ifeq +42 -> 89
-    //   50: new 63	android/media/MediaMetadataRetriever
-    //   53: dup
-    //   54: invokespecial 64	android/media/MediaMetadataRetriever:<init>	()V
-    //   57: astore_1
-    //   58: aload_1
-    //   59: aload 6
-    //   61: invokevirtual 68	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
-    //   64: aload_1
-    //   65: bipush 9
-    //   67: invokevirtual 72	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
-    //   70: pop
-    //   71: aload_1
-    //   72: invokevirtual 75	android/media/MediaMetadataRetriever:release	()V
-    //   75: return
-    //   76: astore_2
-    //   77: aload_1
-    //   78: invokevirtual 75	android/media/MediaMetadataRetriever:release	()V
-    //   81: return
-    //   82: astore_2
-    //   83: aload_1
-    //   84: invokevirtual 75	android/media/MediaMetadataRetriever:release	()V
-    //   87: aload_2
-    //   88: athrow
-    //   89: aload_0
-    //   90: getfield 12	aghg:a	Laggx;
-    //   93: getfield 42	aggx:jdField_a_of_type_MqqUtilWeakReference	Lmqq/util/WeakReference;
-    //   96: invokevirtual 48	mqq/util/WeakReference:get	()Ljava/lang/Object;
-    //   99: checkcast 50	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity
-    //   102: getfield 78	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity:a	Lagew;
-    //   105: ifnull -30 -> 75
-    //   108: aload_2
-    //   109: invokevirtual 84	android/view/View:getContext	()Landroid/content/Context;
-    //   112: ifnull -37 -> 75
-    //   115: aload_0
-    //   116: getfield 12	aghg:a	Laggx;
-    //   119: getfield 42	aggx:jdField_a_of_type_MqqUtilWeakReference	Lmqq/util/WeakReference;
-    //   122: invokevirtual 48	mqq/util/WeakReference:get	()Ljava/lang/Object;
-    //   125: checkcast 50	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity
-    //   128: getfield 78	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity:a	Lagew;
-    //   131: invokevirtual 89	agew:f	()V
-    //   134: return
-    //   135: aload_0
-    //   136: getfield 12	aghg:a	Laggx;
-    //   139: getfield 92	aggx:jdField_a_of_type_Aggs	Laggs;
-    //   142: getfield 97	aggs:a	Z
-    //   145: ifeq +20 -> 165
-    //   148: aload_0
-    //   149: getfield 12	aghg:a	Laggx;
-    //   152: getfield 42	aggx:jdField_a_of_type_MqqUtilWeakReference	Lmqq/util/WeakReference;
-    //   155: invokevirtual 48	mqq/util/WeakReference:get	()Ljava/lang/Object;
-    //   158: checkcast 50	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity
-    //   161: invokevirtual 100	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity:b	()V
-    //   164: return
-    //   165: aload_0
-    //   166: getfield 12	aghg:a	Laggx;
-    //   169: getfield 42	aggx:jdField_a_of_type_MqqUtilWeakReference	Lmqq/util/WeakReference;
-    //   172: invokevirtual 48	mqq/util/WeakReference:get	()Ljava/lang/Object;
-    //   175: checkcast 50	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity
-    //   178: invokevirtual 103	com/tencent/mobileqq/activity/photo/album/NewPhotoPreviewActivity:d	()V
-    //   181: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	182	0	this	aghg
-    //   0	182	1	paramAdapterView	com.tencent.widget.AdapterView<?>
-    //   0	182	2	paramView	android.view.View
-    //   0	182	3	paramInt	int
-    //   0	182	4	paramLong	long
-    //   13	47	6	str	java.lang.String
-    // Exception table:
-    //   from	to	target	type
-    //   58	71	76	java/lang/Exception
-    //   58	71	82	finally
+    super(paramContext, paramSessionInfo, paramQQAppInterface);
+    if (paramQQAppInterface.a(165)) {
+      this.jdField_a_of_type_Bdto = ((bdto)paramQQAppInterface.getManager(165));
+    }
+    this.c = true;
+  }
+  
+  private void A()
+  {
+    if ((this.jdField_a_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidContentContext == null)) {}
+    label176:
+    for (;;)
+    {
+      return;
+      Object localObject1 = this.jdField_a_of_type_AndroidWidgetTextView.getParent();
+      if ((localObject1 instanceof ViewGroup)) {}
+      for (localObject1 = (ViewGroup)localObject1;; localObject1 = null)
+      {
+        if (localObject1 == null) {
+          break label176;
+        }
+        if (bahx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+        {
+          int i = ((ViewGroup)localObject1).indexOfChild(this.jdField_a_of_type_AndroidWidgetTextView);
+          localObject2 = awgb.a(this.jdField_a_of_type_AndroidContentContext);
+          if (localObject2 == null) {
+            break;
+          }
+          ((View)localObject2).setId(2131375480);
+          ((View)localObject2).setPadding(actn.a(4.0F, this.jdField_a_of_type_AndroidWidgetTextView.getResources()), actn.a(6.0F, this.jdField_a_of_type_AndroidWidgetTextView.getResources()), 0, 0);
+          RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+          localLayoutParams.addRule(1, 2131377350);
+          localLayoutParams.addRule(6, 2131377350);
+          ((View)localObject2).setLayoutParams(localLayoutParams);
+          ((ViewGroup)localObject1).addView((View)localObject2, i);
+          return;
+        }
+        Object localObject2 = ((ViewGroup)localObject1).findViewById(2131375480);
+        if (localObject2 == null) {
+          break;
+        }
+        ((ViewGroup)localObject1).removeView((View)localObject2);
+        return;
+      }
+    }
+  }
+  
+  protected boolean b()
+  {
+    return true;
+  }
+  
+  protected void f()
+  {
+    if (!this.d) {}
+    label592:
+    do
+    {
+      Object localObject;
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Boolean = false;
+                this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b = false;
+                if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0)
+                {
+                  aekr.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+                  aexk.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+                }
+                if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f)) {
+                  break;
+                }
+                this.b.setTextColor(-1);
+                this.b.setAlpha(0.8F);
+                localObject = ((ajxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).e(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+                if ((localObject != null) && ((bbcl.a(((Friends)localObject).detalStatusFlag, ((Friends)localObject).iTermType) != 0) || (!TextUtils.isEmpty(((Friends)localObject).strTermDesc))))
+                {
+                  localObject = bbcl.b((Friends)localObject);
+                  this.b.setCompoundDrawablePadding(actn.a(2.0F, BaseApplicationImpl.getContext().getResources()));
+                  this.b.setCompoundDrawables(aekr.a().b(5), null, null, null);
+                  this.b.setOnClickListener(null);
+                  this.b.setText((CharSequence)localObject);
+                  e(true);
+                  return;
+                }
+              } while (this.b.getVisibility() != 0);
+              e(false);
+              return;
+              if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b) || (!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e)) {
+                break;
+              }
+              this.b.setTextColor(-1);
+              this.b.setAlpha(0.8F);
+              localObject = ((ajxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).e(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+              if ((localObject != null) && ((bbcl.a(((Friends)localObject).detalStatusFlag, ((Friends)localObject).iTermType) != 0) || (!TextUtils.isEmpty(((Friends)localObject).strTermDesc))))
+              {
+                localObject = bbcl.b((Friends)localObject);
+                this.b.setCompoundDrawablePadding(actn.a(2.0F, BaseApplicationImpl.getContext().getResources()));
+                this.b.setCompoundDrawables(aexk.a().b(5), null, null, null);
+                this.b.setText((CharSequence)localObject);
+                e(true);
+                return;
+              }
+            } while (this.b.getVisibility() != 0);
+            e(false);
+            return;
+            this.b.setTextColor(-1);
+            this.b.setAlpha(0.8F);
+            this.b.setCompoundDrawables(null, null, null, null);
+            this.b.setOnClickListener(null);
+            System.currentTimeMillis();
+          } while ((!this.c) || ((this.jdField_a_of_type_Bdto != null) && (this.jdField_a_of_type_Bdto.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))));
+          localObject = (ajxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+        } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1008);
+        localObject = ((ajxn)localObject).e(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        if ((localObject == null) || ((bbcl.a(((Friends)localObject).detalStatusFlag, ((Friends)localObject).iTermType) == 0) && ((TextUtils.isEmpty(((Friends)localObject).strTermDesc)) || (!((Friends)localObject).strTermDesc.contains("TIM"))))) {
+          break label592;
+        }
+        localObject = bbcl.b((Friends)localObject);
+        if ((TextUtils.isEmpty((CharSequence)localObject)) || (bbbd.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+          break;
+        }
+        this.b.setText((CharSequence)localObject);
+        e(true);
+      } while (!AppSetting.d);
+      this.b.setContentDescription((CharSequence)localObject);
+      return;
+      e(false);
+      return;
+    } while (this.b.getVisibility() != 0);
+    e(false);
+  }
+  
+  protected void g()
+  {
+    this.e = true;
+    super.g();
+    if (this.d)
+    {
+      f();
+      if (!TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) {
+        bbkx.b(this.jdField_a_of_type_AndroidWidgetImageView, 0);
+      }
+    }
+    A();
+  }
+  
+  protected void u()
+  {
+    super.u();
+  }
+  
+  protected void v()
+  {
+    super.v();
+  }
+  
+  protected void y()
+  {
+    this.jdField_a_of_type_JavaLangString = "MiniPieForC2C";
   }
 }
 

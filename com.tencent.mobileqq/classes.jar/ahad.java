@@ -1,30 +1,28 @@
 import android.text.TextUtils;
-import cooperation.qzone.util.QZLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
+import org.json.JSONObject;
 
 public class ahad
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
+  public ahad(SendHbMainFragment paramSendHbMainFragment, JSONObject paramJSONObject) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QZLog.isColorLevel()) {
-      QZLog.i("QbossADBannerConfigInfo", 2, " qboss resources down response resUrl = " + this.a + " isSuccess = " + paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (TextUtils.isEmpty(this.c)) {
-      return false;
-    }
-    return apdh.a(this.c);
+    if (bgwk.a()) {}
+    do
+    {
+      return;
+      paramView = this.jdField_a_of_type_OrgJsonJSONObject.optString("url");
+    } while (TextUtils.isEmpty(paramView));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentSendHbMainFragment.openUrl(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahad
  * JD-Core Version:    0.7.0.1
  */

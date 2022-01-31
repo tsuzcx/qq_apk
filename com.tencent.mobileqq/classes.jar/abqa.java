@@ -1,16 +1,44 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class abqa
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  public abqa(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public abqa(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.getActivity().finish();
+    for (;;)
+    {
+      try
+      {
+        int i = paramMessage.what;
+        switch (i)
+        {
+        default: 
+          bool = false;
+          return bool;
+        }
+      }
+      finally {}
+      boolean bool = ((Boolean)paramMessage.obj).booleanValue();
+      NotifyPushSettingActivity.g(this.a).setChecked(bool);
+      break label163;
+      paramMessage = (String)paramMessage.obj;
+      NotifyPushSettingActivity.a(this.a, paramMessage);
+      break label163;
+      paramMessage = (String)paramMessage.obj;
+      NotifyPushSettingActivity.b(this.a, paramMessage);
+      break label163;
+      bool = ((Boolean)paramMessage.obj).booleanValue();
+      NotifyPushSettingActivity.h(this.a).setChecked(bool);
+      break label163;
+      NotifyPushSettingActivity.i(this.a).setChecked(((Boolean)paramMessage.obj).booleanValue());
+      label163:
+      bool = true;
+    }
   }
 }
 

@@ -7,12 +7,12 @@ import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuComment
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import oqe;
+import pbf;
 
 public class ReadInJoyDraftboxItem$ReadInJoyDraftboxContent
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<ReadInJoyDraftboxContent> CREATOR = new oqe();
+  public static final Parcelable.Creator<ReadInJoyDraftboxContent> CREATOR = new pbf();
   private static final long serialVersionUID = 1L;
   public int adTag;
   public ArrayList<ReadInJoyDraftboxItem.PicData> adapterList;

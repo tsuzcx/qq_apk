@@ -1,49 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.text.TextUtils;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import java.util.HashMap;
 
-public class qvy
-  implements alsd
+class qvy
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public qvy(FastWebActivity paramFastWebActivity) {}
+  qvy(qvw paramqvw) {}
   
-  public ColorNote getColorNote()
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (FastWebActivity.a(this.a) != null)
+    if (qvw.a(this.a) != null)
     {
-      str1 = str2;
-      if (FastWebActivity.a(this.a).g != null) {
-        str1 = FastWebActivity.a(this.a).g;
+      paramString2 = (String)qvw.a(this.a).get(paramString1);
+      if (!TextUtils.isEmpty(paramString2)) {
+        qvw.a(this.a).a(paramString1, paramInt, paramString2);
       }
     }
-    alsl localalsl = new alsl().a(16908290);
-    StringBuilder localStringBuilder = new StringBuilder().append("mainFeeds:");
-    if (FastWebActivity.a(this.a) == null)
+  }
+  
+  public void onPreLoadSucess(String paramString1, String paramString2)
+  {
+    if (qvw.a(this.a) != null)
     {
-      str2 = "";
-      localalsl = localalsl.a(str2);
-      if (FastWebActivity.a(this.a) != null) {
-        break label164;
+      paramString2 = (String)qvw.a(this.a).get(paramString1);
+      if (!TextUtils.isEmpty(paramString2)) {
+        qvw.a(this.a).a(paramString1, 1, paramString2);
       }
-      str2 = "";
-      label108:
-      localalsl = localalsl.b(str2);
-      if (FastWebActivity.a(this.a) != null) {
-        break label178;
-      }
-    }
-    label164:
-    label178:
-    for (str2 = "";; str2 = FastWebActivity.a(this.a).mSubscribeName)
-    {
-      return localalsl.c(str2).d(str1).a(FastWebActivity.a(this.a)).a();
-      str2 = FastWebActivity.a(this.a).innerUniqueID;
-      break;
-      str2 = FastWebActivity.a(this.a).mTitle;
-      break label108;
     }
   }
 }

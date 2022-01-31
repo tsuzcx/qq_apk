@@ -2,10 +2,10 @@ package cooperation.qqindividuality.ipc;
 
 import android.content.Intent;
 import android.content.ServiceConnection;
-import bfcz;
-import bfdi;
-import bfke;
-import bfkl;
+import bgkq;
+import bgkz;
+import bgrw;
+import bgsd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
@@ -16,41 +16,41 @@ import mqq.app.MobileQQ;
 public class QQIndividualityPluginProxyService
   extends PluginProxyService
 {
-  private static bfke jdField_a_of_type_Bfke;
-  private static bfkl jdField_a_of_type_Bfkl;
+  private static bgrw jdField_a_of_type_Bgrw;
+  private static bgsd jdField_a_of_type_Bgsd;
   
-  public static bfke a()
+  public static bgrw a()
   {
-    if (jdField_a_of_type_Bfke == null) {}
+    if (jdField_a_of_type_Bgrw == null) {}
     try
     {
-      if (jdField_a_of_type_Bfke == null) {
-        jdField_a_of_type_Bfke = new bfke(BaseApplicationImpl.getApplication().getRuntime());
+      if (jdField_a_of_type_Bgrw == null) {
+        jdField_a_of_type_Bgrw = new bgrw(BaseApplicationImpl.getApplication().getRuntime());
       }
-      return jdField_a_of_type_Bfke;
+      return jdField_a_of_type_Bgrw;
     }
     finally {}
   }
   
-  public static bfkl a()
+  public static bgsd a()
   {
-    if (jdField_a_of_type_Bfkl == null) {}
+    if (jdField_a_of_type_Bgsd == null) {}
     try
     {
-      if (jdField_a_of_type_Bfkl == null) {
-        jdField_a_of_type_Bfkl = new bfkl(BaseApplicationImpl.getApplication().getRuntime());
+      if (jdField_a_of_type_Bgsd == null) {
+        jdField_a_of_type_Bgsd = new bgsd(BaseApplicationImpl.getApplication().getRuntime());
       }
-      return jdField_a_of_type_Bfkl;
+      return jdField_a_of_type_Bgsd;
     }
     finally {}
   }
   
   public static void a()
   {
-    if (jdField_a_of_type_Bfkl != null)
+    if (jdField_a_of_type_Bgsd != null)
     {
-      jdField_a_of_type_Bfkl.b("qqindividuality_signature");
-      jdField_a_of_type_Bfkl = null;
+      jdField_a_of_type_Bgsd.b("qqindividuality_signature");
+      jdField_a_of_type_Bgsd = null;
     }
   }
   
@@ -63,22 +63,22 @@ public class QQIndividualityPluginProxyService
   {
     Intent localIntent = new Intent(paramAppRuntime.getApplication(), QQIndividualityPluginProxyService.class);
     localIntent.putExtra("useSkinEngine", 1);
-    bfdi localbfdi = new bfdi(0);
-    localbfdi.b = "qqindividuality_plugin.apk";
-    localbfdi.d = PluginInfo.m;
-    localbfdi.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localbfdi.e = paramString;
-    localbfdi.jdField_a_of_type_AndroidContentIntent = localIntent;
-    localbfdi.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    bfcz.c(paramAppRuntime.getApplication(), localbfdi);
+    bgkz localbgkz = new bgkz(0);
+    localbgkz.b = "qqindividuality_plugin.apk";
+    localbgkz.d = PluginInfo.m;
+    localbgkz.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
+    localbgkz.e = paramString;
+    localbgkz.jdField_a_of_type_AndroidContentIntent = localIntent;
+    localbgkz.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    bgkq.c(paramAppRuntime.getApplication(), localbgkz);
   }
   
   public static boolean a()
   {
-    bfke localbfke = a();
-    if (!PluginCommunicationHandler.getInstance().containsCmd(localbfke.getCmd()))
+    bgrw localbgrw = a();
+    if (!PluginCommunicationHandler.getInstance().containsCmd(localbgrw.getCmd()))
     {
-      PluginCommunicationHandler.getInstance().register(localbfke);
+      PluginCommunicationHandler.getInstance().register(localbgrw);
       return true;
     }
     return false;

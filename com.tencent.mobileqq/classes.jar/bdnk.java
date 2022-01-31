@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.UserAuthScope;
-
-public final class bdnk
-  implements Parcelable.Creator<UserAuthScope>
+public class bdnk
 {
-  public UserAuthScope a(Parcel paramParcel)
-  {
-    return new UserAuthScope(paramParcel);
-  }
-  
-  public UserAuthScope[] a(int paramInt)
-  {
-    return new UserAuthScope[paramInt];
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdnk
  * JD-Core Version:    0.7.0.1
  */

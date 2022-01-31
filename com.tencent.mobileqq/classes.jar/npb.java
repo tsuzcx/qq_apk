@@ -1,51 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoyBiuButton;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoAdInfo;
 
-public class npb
+public final class npb
+  implements Parcelable.Creator<VideoAdInfo>
 {
-  public static int a(int paramInt)
+  public VideoAdInfo a(Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    default: 
-      return -1;
-    case 11: 
-      return 1;
-    case 12: 
-      return 2;
-    case 13: 
-      return 3;
-    }
-    return 4;
+    return new VideoAdInfo(paramParcel);
   }
   
-  public static void a(ViewBase paramViewBase, ArticleInfo paramArticleInfo, boolean paramBoolean)
+  public VideoAdInfo[] a(int paramInt)
   {
-    if ((!rvb.a(paramArticleInfo)) || (paramViewBase == null)) {}
-    do
-    {
-      return;
-      if ((paramViewBase instanceof ozm))
-      {
-        nbe.a(new nmv().a(BaseApplication.getContext()).a(11).b(3).a((AdvertisementInfo)paramArticleInfo).a());
-        return;
-      }
-      if ((paramViewBase instanceof ReadInJoyBiuButton))
-      {
-        nbe.a(new nmv().a(BaseApplication.getContext()).a(13).b(3).a((AdvertisementInfo)paramArticleInfo).a());
-        return;
-      }
-    } while (!(paramViewBase instanceof NativeButton));
-    if (paramBoolean)
-    {
-      nbe.a(new nmv().a(BaseApplication.getContext()).a(14).b(3).a((AdvertisementInfo)paramArticleInfo).a());
-      return;
-    }
-    nbe.a(new nmv().a(BaseApplication.getContext()).a(12).b(3).a((AdvertisementInfo)paramArticleInfo).a());
+    return new VideoAdInfo[paramInt];
   }
 }
 

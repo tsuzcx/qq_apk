@@ -1,20 +1,6 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
-
-class vad
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface vad
 {
-  private vad(uzx paramuzx) {}
-  
-  public void onGlobalLayout()
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getBottom() - this.a.c > this.a.b)
-    {
-      this.a.dismiss();
-      return;
-    }
-    this.a.jdField_a_of_type_Vab.a(this.a.a());
-  }
+  public abstract void a(String paramString);
 }
 
 

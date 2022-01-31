@@ -1,16 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityControlFragment;
-import java.util.List;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
 
 public class bbus
-  implements DialogInterface.OnClickListener
+  extends QWalletPayJsPlugin
 {
-  public bbus(AuthorityControlFragment paramAuthorityControlFragment, List paramList) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bbus()
   {
-    AuthorityControlFragment.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlFragment).a(this.jdField_a_of_type_JavaUtilList);
+    this.mPluginNameSpace = "qw_pay";
   }
 }
 

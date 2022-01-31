@@ -1,22 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.PhoneFrame;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
 
 public class afyn
-  implements View.OnClickListener
+  implements agbx
 {
-  public afyn(PhoneFrameActivity paramPhoneFrameActivity) {}
+  public afyn(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
   
-  public void onClick(View paramView)
+  public void a(MotionEvent paramMotionEvent)
   {
-    paramView = this.a.a.a();
-    if (paramView != null) {
-      paramView.a(false);
-    }
-    com.tencent.mobileqq.app.PhoneContactManagerImp.f = false;
-    this.a.setResult(1);
-    this.a.finish();
+    this.a.a.a(paramMotionEvent);
   }
 }
 

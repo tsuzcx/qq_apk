@@ -3,29 +3,29 @@ package com.tencent.biz.qqstory.playvideo.playerwidget;
 import com.tencent.biz.qqstory.database.LikeEntry;
 import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 import com.tribe.async.dispatch.Dispatcher;
-import sgi;
-import snl;
-import sps;
-import ttr;
-import uje;
+import ste;
+import tah;
+import tco;
+import ugn;
+import uwa;
 
 public class BottomVideoInfoWidget$3
   implements Runnable
 {
-  public BottomVideoInfoWidget$3(ttr paramttr, boolean paramBoolean, LikeEntry paramLikeEntry, VideoListFeedItem paramVideoListFeedItem) {}
+  public BottomVideoInfoWidget$3(ugn paramugn, boolean paramBoolean, LikeEntry paramLikeEntry, VideoListFeedItem paramVideoListFeedItem) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean) {
-      ttr.a(this.this$0).b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
+      ugn.a(this.this$0).b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
     }
     for (;;)
     {
-      ttr.a(this.this$0).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
-      snl localsnl = new snl(1, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.feedId, 3, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
-      sgi.a().dispatch(localsnl);
+      ugn.a(this.this$0).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
+      tah localtah = new tah(1, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.feedId, 3, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
+      ste.a().dispatch(localtah);
       return;
-      ttr.a(this.this$0).a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
+      ugn.a(this.this$0).a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
     }
   }
 }

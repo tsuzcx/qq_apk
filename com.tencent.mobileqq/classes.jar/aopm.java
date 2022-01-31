@@ -1,33 +1,16 @@
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
 public class aopm
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  private int c;
-  public long c;
-  public long d;
+  public aopm(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public aopm()
+  public void onClick(View paramView)
   {
-    this.jdField_c_of_type_Int = 3;
-  }
-  
-  public HashMap<String, String> a()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_Result", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("param_SubReason", String.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("param_XTFReceiverType", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("param_Suffix", String.valueOf(this.jdField_a_of_type_JavaLangString));
-    localHashMap.put("param_TargetUin", String.valueOf(this.jdField_c_of_type_Long));
-    localHashMap.put("param_TargetType", String.valueOf(this.jdField_b_of_type_Int));
-    localHashMap.put("param_FileSize", String.valueOf(this.d));
-    localHashMap.put("param_TranferPlatform", String.valueOf(this.jdField_c_of_type_Int));
-    return localHashMap;
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 

@@ -1,16 +1,23 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.dataline.activities.LiteActivity;
 import com.dataline.activities.LiteAdvanceActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.MobileQQ;
 
 public class cf
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public cf(LiteAdvanceActivity paramLiteAdvanceActivity) {}
+  public cf(LiteActivity paramLiteActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    LiteAdvanceActivity.c(this.a, paramBoolean);
-    LiteAdvanceActivity.a(this.a, LiteAdvanceActivity.a(this.a));
+    actn.n = true;
+    axrk.a(this.a.app.getApplication().getApplicationContext(), this.a.app.getCurrentAccountUin(), "dl_ckadv");
+    paramView = new Intent(this.a, LiteAdvanceActivity.class);
+    paramView.putExtra("targetUin", this.a.b);
+    this.a.startActivityForResult(paramView, 7);
   }
 }
 

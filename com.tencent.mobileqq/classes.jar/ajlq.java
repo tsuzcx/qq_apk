@@ -1,62 +1,95 @@
-import android.os.HandlerThread;
-import android.os.Looper;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqMessageQueue;
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
-
-final class ajlq
-  implements AbstractUnifiedMonitor.ThreadMonitorCallback
+public class ajlq
 {
-  public void onThreadMonitorEnd(int paramInt)
+  public static void a(int paramInt)
   {
-    if (paramInt == 0)
+    a(paramInt, "");
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    a(paramInt1, null, paramInt2, -100, 0L, 0, 0L, new Object[] { "" });
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3, long paramLong, Object... paramVarArgs)
+  {
+    a(paramInt1, null, paramInt2, paramInt3, paramLong, 0, 0L, paramVarArgs);
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3, Object... paramVarArgs)
+  {
+    a(paramInt1, null, paramInt2, paramInt3, 0L, 0, 0L, paramVarArgs);
+  }
+  
+  public static void a(int paramInt1, int paramInt2, Object... paramVarArgs)
+  {
+    a(paramInt1, null, paramInt2, -100, 0L, 0, 0L, paramVarArgs);
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    a(paramInt, paramString, null);
+  }
+  
+  public static void a(int paramInt1, String paramString, int paramInt2)
+  {
+    a(paramInt1, paramString, paramInt2, -100, 0L, 0, 0L, new Object[] { "" });
+  }
+  
+  public static void a(int paramInt1, String paramString, int paramInt2, int paramInt3, long paramLong1, int paramInt4, long paramLong2, Object... paramVarArgs)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
+    int i = 0;
+    while (i < paramVarArgs.length)
     {
-      Looper.getMainLooper().setMessageLogging(null);
-      MqqMessageQueue.getSubMainThreadQueue().setMessageLogging(null);
+      localStringBuilder.append(paramVarArgs[i]);
+      i += 1;
     }
-    do
-    {
-      Object localObject;
-      do
-      {
-        return;
-        if (paramInt == 4)
-        {
-          ThreadManager.getSubThreadLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt == 5)
-        {
-          ThreadManager.getFileThreadLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt == 14)
-        {
-          Looper.getMainLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt != 18) {
-          break;
-        }
-        localObject = MsfCore.sCore;
-        if (localObject == null)
-        {
-          QLog.e("AutoMonitor", 1, "msf core hasnot init");
-          return;
-        }
-        localObject = ((MsfCore)localObject).getNetworkHandlerThread();
-      } while ((localObject == null) || (((HandlerThread)localObject).getLooper() == null));
-      ((HandlerThread)localObject).getLooper().setMessageLogging(null);
-      return;
-    } while (paramInt != 19);
-    Looper.getMainLooper().setMessageLogging(null);
+    ajlx.a(paramInt1, paramString, paramInt2, paramInt3, paramLong1, paramInt4, paramLong2, new Object[] { localStringBuilder.toString() });
+  }
+  
+  public static void a(int paramInt1, String paramString, int paramInt2, int paramInt3, Object... paramVarArgs)
+  {
+    a(paramInt1, paramString, paramInt2, paramInt3, 0L, 0, 0L, paramVarArgs);
+  }
+  
+  public static void a(int paramInt1, String paramString, int paramInt2, Object... paramVarArgs)
+  {
+    a(paramInt1, paramString, paramInt2, -100, 0L, 0, 0L, paramVarArgs);
+  }
+  
+  public static void a(int paramInt, String paramString1, String paramString2)
+  {
+    ajlx.a(paramInt, paramString1, paramString2);
+  }
+  
+  public static void a(int paramInt, String paramString, int... paramVarArgs)
+  {
+    ajlx.a(paramInt, paramString, paramVarArgs);
+  }
+  
+  public static void a(int paramInt, boolean paramBoolean)
+  {
+    ajlx.a(paramInt, paramBoolean);
+  }
+  
+  public static void a(ajlr paramajlr)
+  {
+    ajlx.a(paramajlr);
+  }
+  
+  public static void b(int paramInt)
+  {
+    b(paramInt, null);
+  }
+  
+  public static void b(int paramInt, String paramString)
+  {
+    ajlx.a(paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajlq
  * JD-Core Version:    0.7.0.1
  */

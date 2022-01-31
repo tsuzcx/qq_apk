@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import pxh;
-import pxj;
+import qjf;
+import qjh;
 
 public class ADVideoAppUIPresenter$4
   implements Runnable
 {
-  public ADVideoAppUIPresenter$4(pxj parampxj, pxh parampxh) {}
+  public ADVideoAppUIPresenter$4(qjh paramqjh, qjf paramqjf) {}
   
   public void run()
   {

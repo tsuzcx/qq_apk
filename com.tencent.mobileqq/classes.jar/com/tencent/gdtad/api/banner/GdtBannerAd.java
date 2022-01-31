@@ -4,23 +4,23 @@ import android.content.Context;
 import android.view.View;
 import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
 import java.lang.ref.WeakReference;
-import ykq;
-import ykt;
-import yku;
-import ykv;
-import yny;
-import yok;
+import ytr;
+import ytu;
+import ytv;
+import ytw;
+import yxs;
+import yyd;
 
 public final class GdtBannerAd
   extends com.tencent.gdtad.api.GdtAd
 {
-  private ykt params;
+  private ytu params;
   private boolean rendered;
   
-  public GdtBannerAd(ykt paramykt)
+  public GdtBannerAd(ytu paramytu)
   {
-    super(paramykt);
-    this.params = paramykt;
+    super(paramytu);
+    this.params = paramytu;
   }
   
   public int getErrorCode(com.tencent.gdtad.aditem.GdtAd paramGdtAd, int paramInt1, int paramInt2, int paramInt3)
@@ -31,7 +31,7 @@ public final class GdtBannerAd
     }
     if ((paramGdtAd == null) || (!isValid()))
     {
-      yny.d("GdtBannerAd", "getErrorCode error");
+      yxs.d("GdtBannerAd", "getErrorCode error");
       return 1;
     }
     paramInt1 = paramGdtAd.getCreativeSize();
@@ -41,32 +41,32 @@ public final class GdtBannerAd
     return 7;
   }
   
-  protected ykt getParams()
+  protected ytu getParams()
   {
     return this.params;
   }
   
-  public yku render(Context paramContext, int paramInt1, int paramInt2)
+  public ytv render(Context paramContext, int paramInt1, int paramInt2)
   {
     if ((paramContext == null) || (paramInt1 < 0) || (paramInt2 < 0) || (!isLoaded()) || (this.rendered))
     {
-      yny.d("GdtBannerAd", "render error");
+      yxs.d("GdtBannerAd", "render error");
       return null;
     }
-    paramContext = new ykt();
-    paramContext.jdField_a_of_type_Yjs = this.params.jdField_a_of_type_Yjs;
+    paramContext = new ytu();
+    paramContext.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = this.params.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params;
     paramContext.jdField_a_of_type_Int = this.params.jdField_a_of_type_Int;
     paramContext.b = paramInt1;
     paramContext.c = paramInt2;
-    paramContext = ykv.a(paramContext);
-    if ((paramContext == null) || (paramContext.a() == null) || (yku.a == null))
+    paramContext = ytw.a(paramContext);
+    if ((paramContext == null) || (paramContext.a() == null) || (ytv.a == null))
     {
-      yny.d("GdtBannerAd", "render error");
+      yxs.d("GdtBannerAd", "render error");
       return null;
     }
     this.params.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick = new GdtDwellTimeStatisticsAfterClick(getAd(), new WeakReference(paramContext.a()));
-    paramContext.a().setOnClickListener(new ykq(this, paramContext));
-    yok.a(getAd().getUrlForImpression());
+    paramContext.a().setOnClickListener(new ytr(this, paramContext));
+    yyd.a(getAd().getUrlForImpression());
     notifyImpression();
     this.rendered = true;
     return paramContext;

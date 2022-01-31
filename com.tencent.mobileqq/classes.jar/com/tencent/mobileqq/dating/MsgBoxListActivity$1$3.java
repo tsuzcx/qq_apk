@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.dating;
 
-import amwe;
+import anmm;
 
 public class MsgBoxListActivity$1$3
   implements Runnable
 {
-  public MsgBoxListActivity$1$3(amwe paramamwe) {}
+  public MsgBoxListActivity$1$3(anmm paramanmm) {}
   
   public void run()
   {

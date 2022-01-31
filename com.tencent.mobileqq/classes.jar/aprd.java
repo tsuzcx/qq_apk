@@ -1,66 +1,66 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.widget.ThemeImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
-public class aprd
-  extends RecyclerView.ViewHolder
+class aprd
+  implements bfqd
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private ThemeImageView jdField_a_of_type_ComTencentWidgetThemeImageView;
-  private TextView b;
-  private TextView c;
+  aprd(apqx paramapqx) {}
   
-  aprd(View paramView)
+  public void F()
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131302626));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131302628));
-    this.b = ((TextView)paramView.findViewById(2131302631));
-    this.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131302624));
-    this.c = ((TextView)paramView.findViewById(2131302630));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131302629));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131302625);
+    apqx.a(this.a, false);
+    this.a.jdField_a_of_type_Apqo.o();
+    this.a.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
   }
   
-  View a()
+  public void G()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    apqx.a(this.a, false);
+    if (apqx.a(this.a)) {
+      this.a.g(true);
+    }
+    if (apqx.b(this.a)) {
+      this.a.h(true);
+    }
+    if (apqx.c(this.a)) {
+      this.a.b(true);
+    }
   }
   
-  Button a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetButton;
-  }
+  public void H() {}
   
-  TextView a()
+  public void a(float paramFloat)
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  URLImageView a()
-  {
-    return this.jdField_a_of_type_ComTencentImageURLImageView;
-  }
-  
-  public ThemeImageView a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetThemeImageView;
-  }
-  
-  TextView b()
-  {
-    return this.c;
+    apqx.a(this.a, true);
+    Drawable localDrawable;
+    if (apqx.a(this.a) != null)
+    {
+      localDrawable = apqx.a(this.a).getBackground();
+      if (localDrawable != null) {
+        localDrawable.mutate().setAlpha(0);
+      }
+    }
+    if (apqx.b(this.a) != null)
+    {
+      localDrawable = apqx.b(this.a).getBackground();
+      if (localDrawable != null) {
+        localDrawable.mutate().setAlpha((int)(255.0F * paramFloat));
+      }
+    }
+    if (paramFloat < 0.8F)
+    {
+      apqx.a(this.a).setVisibility(8);
+      apqx.c(this.a).setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aprd
  * JD-Core Version:    0.7.0.1
  */

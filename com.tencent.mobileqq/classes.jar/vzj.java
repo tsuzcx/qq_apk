@@ -1,22 +1,29 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoReplyRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tribe.async.dispatch.Dispatcher;
-
-class vzj
-  implements wxx<CertifiedAccountWrite.StDoReplyRsp>
+public class vzj
 {
-  vzj(vzf paramvzf, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoReplyRsp paramStDoReplyRsp)
+  public static Throwable a(String paramString)
   {
-    sgi.a().dispatch(this.jdField_a_of_type_Vzf.a(new Object[] { Integer.valueOf(4), Long.valueOf(paramLong), paramString, paramStDoReplyRsp, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.id.get(), Integer.valueOf(this.jdField_a_of_type_Vzf.hashCode()) }));
+    return new NullPointerException(paramString);
+  }
+  
+  public static Throwable a(String paramString, Throwable paramThrowable)
+  {
+    if (paramThrowable == null) {
+      return new IllegalStateException(paramString);
+    }
+    return new IllegalStateException(paramString, paramThrowable);
+  }
+  
+  public static Throwable b(String paramString, Throwable paramThrowable)
+  {
+    if (paramThrowable == null) {
+      return new Throwable(paramString);
+    }
+    return new Throwable(paramString, paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vzj
  * JD-Core Version:    0.7.0.1
  */

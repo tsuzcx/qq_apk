@@ -1,20 +1,25 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.open.agent.BragActivity;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.mobileqq.video.VipVideoPlayActivity.VideoPlayerPreparedListener.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 public class bbvm
-  implements bcab
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public bbvm(BragActivity paramBragActivity) {}
+  public bbvm(VipVideoPlayActivity paramVipVideoPlayActivity) {}
   
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.a.a.setImageBitmap(paramBitmap);
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player prepared");
+    }
+    this.a.runOnUiThread(new VipVideoPlayActivity.VideoPlayerPreparedListener.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbvm
  * JD-Core Version:    0.7.0.1
  */

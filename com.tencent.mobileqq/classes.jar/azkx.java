@@ -1,14 +1,14 @@
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
 
-class azkx
-  implements azla
+public class azkx
+  implements bcpl
 {
-  azkx(azks paramazks, String paramString) {}
+  public azkx(NewTroopContactView paramNewTroopContactView) {}
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
-  {
-    if (paramInt == 0) {}
-  }
+  public void a(Bundle paramBundle) {}
+  
+  public void b(Bundle paramBundle) {}
 }
 
 

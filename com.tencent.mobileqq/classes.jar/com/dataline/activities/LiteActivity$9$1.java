@@ -1,11 +1,11 @@
 package com.dataline.activities;
 
-import bx;
+import dq;
 
 public class LiteActivity$9$1
   implements Runnable
 {
-  public LiteActivity$9$1(bx parambx) {}
+  public LiteActivity$9$1(dq paramdq) {}
   
   public void run()
   {

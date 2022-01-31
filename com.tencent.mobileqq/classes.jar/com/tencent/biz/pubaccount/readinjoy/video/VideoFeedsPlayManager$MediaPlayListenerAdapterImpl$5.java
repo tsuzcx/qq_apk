@@ -2,15 +2,15 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import pxw;
-import qen;
-import qeq;
-import qes;
+import qjv;
+import qql;
+import qqo;
+import qqq;
 
 public class VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$5
   implements Runnable
 {
-  public VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$5(qen paramqen) {}
+  public VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$5(qql paramqql) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$5
     {
       Iterator localIterator = VideoFeedsPlayManager.a(this.a.a).iterator();
       while (localIterator.hasNext()) {
-        ((qes)localIterator.next()).c(VideoFeedsPlayManager.b(this.a.a));
+        ((qqq)localIterator.next()).c(VideoFeedsPlayManager.b(this.a.a));
       }
     }
   }

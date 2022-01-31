@@ -1,17 +1,26 @@
-import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import java.util.List;
 
 public class azmy
-  implements azla
+  extends aznf
 {
-  public azmy(RobotPanelLayoutBase paramRobotPanelLayoutBase, aznc paramaznc) {}
+  public azmy(TroopAioKeywordTipBar.4 param4, List paramList, aznc paramaznc) {}
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
   {
-    if (paramInt == 0) {
+    if (!this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0.a) {}
+    do
+    {
       return;
-    }
-    bbmy.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRobotPanelLayoutBase.getContext(), 1, ajjy.a(2131647691) + "", 0).a();
+      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
+        break;
+      }
+    } while ((this.jdField_a_of_type_JavaUtilList.size() <= 0) || (azmu.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0)));
+    this.jdField_a_of_type_Aznc.a(this.jdField_a_of_type_JavaUtilList, null, 2, new azmz(this));
+    return;
+    azmu.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
   }
 }
 

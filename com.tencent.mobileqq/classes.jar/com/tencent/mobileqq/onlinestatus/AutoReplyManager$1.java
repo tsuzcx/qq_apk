@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import atkz;
-import atmp;
+import auiy;
+import aukn;
 import com.tencent.mobileqq.data.AutoReplyText;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -10,23 +10,23 @@ import java.util.List;
 public class AutoReplyManager$1
   implements Runnable
 {
-  public AutoReplyManager$1(atkz paramatkz) {}
+  public AutoReplyManager$1(auiy paramauiy) {}
   
   public void run()
   {
     for (;;)
     {
-      synchronized (atkz.a(this.this$0))
+      synchronized (auiy.a(this.this$0))
       {
-        if (atkz.a(this.this$0) == null)
+        if (auiy.a(this.this$0) == null)
         {
-          List localList = atkz.a(this.this$0).a(AutoReplyText.class);
+          List localList = auiy.a(this.this$0).a(AutoReplyText.class);
           if ((localList != null) && (localList.size() > 0))
           {
-            if (atkz.a(this.this$0) == null)
+            if (auiy.a(this.this$0) == null)
             {
-              atkz.a(this.this$0, new ArrayList());
-              atkz.a(this.this$0).addAll(localList);
+              auiy.a(this.this$0, new ArrayList());
+              auiy.a(this.this$0).addAll(localList);
             }
           }
           else
@@ -36,7 +36,7 @@ public class AutoReplyManager$1
             }
             return;
           }
-          atkz.a(this.this$0).clear();
+          auiy.a(this.this$0).clear();
         }
       }
       if (QLog.isColorLevel()) {

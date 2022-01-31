@@ -5,8 +5,8 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import bgou;
-import bgph;
+import bhxr;
+import bhye;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.app.AppActivity;
 import mqq.app.QQPermissionCallback;
@@ -17,7 +17,7 @@ public class VipARShowActivity
   implements QQPermissionCallback
 {
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private bgou jdField_a_of_type_Bgou;
+  private bhxr jdField_a_of_type_Bhxr;
   
   private void a()
   {
@@ -39,21 +39,21 @@ public class VipARShowActivity
   private void b()
   {
     if ("value_refer_aio".equalsIgnoreCase(getIntent().getStringExtra("key_refer"))) {
-      bgph.a("ar_aio_click", "1");
+      bhye.a("ar_aio_click", "1");
     }
   }
   
   private void c()
   {
-    this.jdField_a_of_type_Bgou = new bgou(this, this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_Bgou.a();
+    this.jdField_a_of_type_Bhxr = new bhxr(this, this.jdField_a_of_type_AndroidViewViewGroup);
+    this.jdField_a_of_type_Bhxr.a();
     Intent localIntent = getIntent();
-    this.jdField_a_of_type_Bgou.a(localIntent.getStringExtra("modelResUrl"), localIntent.getStringExtra("modelResMd5"));
+    this.jdField_a_of_type_Bhxr.a(localIntent.getStringExtra("modelResUrl"), localIntent.getStringExtra("modelResMd5"));
   }
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Toast.makeText(this, 2131630257, 0).show();
+    Toast.makeText(this, 2131695950, 0).show();
     ThreadManager.getUIHandler().postDelayed(new VipARShowActivity.1(this), 2000L);
   }
   
@@ -62,8 +62,8 @@ public class VipARShowActivity
     super.doOnCreate(paramBundle);
     a();
     b();
-    setContentView(2131492921);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131297177));
+    setContentView(2131558459);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131362717));
     c();
     return true;
   }
@@ -71,38 +71,38 @@ public class VipARShowActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bgou != null) {
-      this.jdField_a_of_type_Bgou.f();
+    if (this.jdField_a_of_type_Bhxr != null) {
+      this.jdField_a_of_type_Bhxr.f();
     }
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Bgou != null) {
-      this.jdField_a_of_type_Bgou.c();
+    if (this.jdField_a_of_type_Bhxr != null) {
+      this.jdField_a_of_type_Bhxr.c();
     }
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_Bgou != null) {
-      this.jdField_a_of_type_Bgou.d();
+    if (this.jdField_a_of_type_Bhxr != null) {
+      this.jdField_a_of_type_Bhxr.d();
     }
   }
   
   public void doOnStop()
   {
     super.doOnStop();
-    if (this.jdField_a_of_type_Bgou != null) {
-      this.jdField_a_of_type_Bgou.e();
+    if (this.jdField_a_of_type_Bhxr != null) {
+      this.jdField_a_of_type_Bhxr.e();
     }
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Bgou.b();
+    this.jdField_a_of_type_Bhxr.b();
   }
 }
 

@@ -1,22 +1,20 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
 
-class aoje
-  implements TVK_SDKMgr.InstallListener
+public class aoje
+  implements DialogInterface.OnClickListener
 {
-  aoje(aojd paramaojd, aoji paramaoji) {}
+  public aoje(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt) {}
-  
-  public void onInstalledSuccessed()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Aoji.b();
+    ExtendFriendLimitChatMatchFragment.a(this.a, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aoje
  * JD-Core Version:    0.7.0.1
  */

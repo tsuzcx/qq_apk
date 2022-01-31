@@ -1,33 +1,21 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import java.util.List;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
 public class abuy
-  implements PopupWindow.OnDismissListener
+  implements Comparator<ChatMessage>
 {
-  public abuy(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public abuy(QQLSActivity paramQQLSActivity) {}
   
-  public void onDismiss()
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    this.a.b = null;
-    Object localObject;
-    if ((TextPreviewTranslateActivity.a(this.a) != null) && (TextPreviewTranslateActivity.a(this.a).size() > 1))
-    {
-      localObject = this.a.getResources();
-      if (!TextPreviewTranslateActivity.a(this.a)) {
-        break label76;
-      }
+    if (paramChatMessage1.time == paramChatMessage2.time) {
+      return 0;
     }
-    label76:
-    for (int i = 2130844711;; i = 2130845209)
-    {
-      localObject = ((Resources)localObject).getDrawable(i);
-      TextPreviewTranslateActivity.a(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
-      return;
+    if (paramChatMessage1.time > paramChatMessage2.time) {
+      return 1;
     }
+    return -1;
   }
 }
 

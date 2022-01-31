@@ -1,53 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.widget.AbsListView;
 
 public class rcy
-  extends BroadcastReceiver
+  implements bfob
 {
-  private String jdField_a_of_type_JavaLangString;
+  public rcy(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  private rcy(rcx paramrcx) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_ON".equals(this.jdField_a_of_type_JavaLangString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyGlobalReporter", 2, "ScreenBroadcastReceiver ACTION_SCREEN_ON appstatus=" + rcx.a(this.jdField_a_of_type_Rcx));
-      }
+    if ((ReadInJoyListViewGroup.a(this.a) != null) && (ReadInJoyListViewGroup.a(this.a).getVisibility() != 4)) {
+      ReadInJoyListViewGroup.a(this.a).setVisibility(4);
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
-              break;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadInJoyGlobalReporter", 2, "ScreenBroadcastReceiver ACTION_SCREEN_OFF appstatus = " + rcx.a(this.jdField_a_of_type_Rcx));
-            }
-          } while (rcx.a(this.jdField_a_of_type_Rcx) != 2);
-          this.jdField_a_of_type_Rcx.a();
-          this.jdField_a_of_type_Rcx.c();
-          return;
-        } while (!"android.intent.action.USER_PRESENT".equals(this.jdField_a_of_type_JavaLangString));
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyGlobalReporter", 2, "ScreenBroadcastReceiver ACTION_USER_PRESENT app status=" + rcx.a(this.jdField_a_of_type_Rcx));
-        }
-      } while ((rcx.a(this.jdField_a_of_type_Rcx) != 2) || (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)));
-      paramContext = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    } while (paramContext == null);
-    this.jdField_a_of_type_Rcx.a(paramContext, NetConnInfoCenter.getServerTimeMillis());
+    this.a.a(new rda(this, "onListViewScroll", paramAbsListView, paramInt1, paramInt2, paramInt3));
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    this.a.a(new rcz(this, "onScrollStateChanged", paramAbsListView, paramInt));
   }
 }
 

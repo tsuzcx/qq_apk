@@ -1,27 +1,41 @@
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCConfirmFragment;
 
-public abstract interface asmy
+public class asmy
+  implements bcsv
 {
-  public abstract void a();
+  public asmy(MsgBackupPCConfirmFragment paramMsgBackupPCConfirmFragment) {}
   
-  public abstract void a(Comments.Comment paramComment);
-  
-  public abstract void a(Comments.Comment paramComment, int paramInt, String paramString);
-  
-  public abstract void a(Comments paramComments);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void b(Comments.Comment paramComment);
-  
-  public abstract void c();
+  public void a(View paramView, int paramInt)
+  {
+    if ((paramInt == 1) || (paramInt == 2))
+    {
+      asog.a("MsgBackupMsgBackupPCConfirmFragment", "click cancel btn bizType = %d, pcHandler %b", new Object[] { Integer.valueOf(this.a.b), Boolean.valueOf(asle.c) });
+      asnx.a().c();
+      if (!TextUtils.isEmpty(this.a.a)) {
+        break label93;
+      }
+      this.a.a(this.a.getActivity());
+      if (this.a.b != 2) {
+        break label104;
+      }
+      asoe.a("0X800A282");
+    }
+    label93:
+    label104:
+    while (!asle.c)
+    {
+      return;
+      this.a.onBackEvent();
+      break;
+    }
+    asoe.a("0X800A266", 4);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asmy
  * JD-Core Version:    0.7.0.1
  */

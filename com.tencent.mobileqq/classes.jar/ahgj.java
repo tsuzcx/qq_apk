@@ -1,18 +1,20 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-
 public class ahgj
-  implements begw
 {
-  public ahgj(EditLocalVideoActivity paramEditLocalVideoActivity, Bundle paramBundle) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static String a(int paramInt)
   {
-    paramView = "[Actvity]" + getClass().getSimpleName() + " QQCustomDialog click :" + ajjy.a(2131637875);
-    bfsg.a().c(paramView);
-    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).dismiss();
-    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, this.jdField_a_of_type_AndroidOsBundle);
+    switch (paramInt)
+    {
+    case 1: 
+    default: 
+      return "";
+    case 0: 
+      return "status_before_config_ready";
+    case 2: 
+      return "status_in_party";
+    case 4: 
+      return "status_beyong_party";
+    }
+    return "status_after_party";
   }
 }
 

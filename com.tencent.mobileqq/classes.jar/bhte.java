@@ -1,40 +1,37 @@
-import android.graphics.Color;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.util.QZLog;
 
-class bhte
-  implements View.OnClickListener
+public class bhte
+  extends bhrq
 {
-  bhte(bhtd parambhtd, int paramInt, bhtf parambhtf) {}
+  public static String a;
+  public static String b = "setPGCNavViewSetting";
   
-  public void onClick(View paramView)
+  static
   {
-    if (this.jdField_a_of_type_Int != bhtd.a(this.jdField_a_of_type_Bhtd))
-    {
-      paramView = (bhtf)bhtd.a(this.jdField_a_of_type_Bhtd).findViewHolderForAdapterPosition(bhtd.a(this.jdField_a_of_type_Bhtd));
-      if (paramView == null) {
-        break label94;
-      }
-      paramView.a(false);
+    jdField_a_of_type_JavaLangString = "Qzone";
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!paramString2.equals(jdField_a_of_type_JavaLangString)) || (!b.equals(paramString3))) {
+      return false;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhtf.a(true);
-      this.jdField_a_of_type_Bhtd.a(this.jdField_a_of_type_Int);
-      if (bhtd.a(this.jdField_a_of_type_Bhtd) != null) {
-        bhtd.a(this.jdField_a_of_type_Bhtd).setTextColor(Color.parseColor(bhtd.a(this.jdField_a_of_type_Bhtd)));
-      }
-      return;
-      label94:
-      this.jdField_a_of_type_Bhtd.notifyDataSetChanged();
+    QZLog.i("QzoneHomePageJsPlugin", 4, "navigation url:" + paramString1 + " pkgName:" + paramString2 + " method:" + paramString3 + " jsonString:" + paramVarArgs[0]);
+    paramJsBridgeListener = new Intent("JsCallReflushNavigationBar");
+    paramJsBridgeListener.putExtra("navigationBar", paramVarArgs[0]);
+    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().sendBroadcast(paramJsBridgeListener);
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhte
  * JD-Core Version:    0.7.0.1
  */

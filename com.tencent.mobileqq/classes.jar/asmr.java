@@ -1,153 +1,302 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.text.TextUtils;
+import android.util.Pair;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupMsgUserData;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
 
 public class asmr
+  extends RecyclerView.Adapter<asms>
+  implements baxl
 {
-  public static int a;
-  public static long a;
-  public static String a;
-  public static String b;
-  public static String c;
-  public static String d;
-  boolean a;
-  protected int b;
-  boolean b;
-  protected int c;
-  protected int d;
-  protected String e = "";
-  protected String f = "";
-  protected String g = "";
-  protected String h = "";
-  protected String i = "";
-  protected String j = "";
-  protected String k = "";
-  protected String l = "";
-  protected String m = "";
-  protected String n = "";
-  protected String o = "";
-  protected String p = "";
+  private long jdField_a_of_type_Long;
+  protected ahnt a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private SparseArray<Boolean> jdField_a_of_type_AndroidUtilSparseArray;
+  private final LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private asmt jdField_a_of_type_Asmt;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Hashtable<String, Bitmap> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
+  private List<RecentBaseData> jdField_a_of_type_JavaUtilList;
   
-  static
+  public asmr(Context paramContext, QQAppInterface paramQQAppInterface, RecyclerView paramRecyclerView)
   {
-    jdField_a_of_type_JavaLangString = "";
-    jdField_b_of_type_JavaLangString = "";
-    jdField_c_of_type_JavaLangString = "";
-    jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_Ahnt = new ahnt(paramQQAppInterface, this, false);
   }
   
-  public asmr()
+  private void a(asms paramasms, int paramInt, Drawable paramDrawable)
   {
-    this.jdField_c_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public asmr a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    return this;
-  }
-  
-  public asmr a(String paramString)
-  {
-    this.e = paramString;
-    return this;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("charm_level", 0));
-    }
-    if (this.jdField_b_of_type_Boolean) {
-      this.m = ("" + asfc.a(paramQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)));
-    }
-    long l1 = System.currentTimeMillis() - jdField_a_of_type_Long;
-    if (l1 % 1000L > 500L) {}
-    for (l1 = (int)l1 / 1000 + 1;; l1 = (int)l1 / 1000)
+    boolean bool = true;
+    RecentBaseData localRecentBaseData = (RecentBaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    MsgBackupMsgUserData localMsgBackupMsgUserData;
+    if ((localRecentBaseData instanceof MsgBackupMsgUserData))
     {
-      this.e = (l1 + "");
-      this.f = jdField_c_of_type_JavaLangString;
-      this.g = jdField_b_of_type_JavaLangString;
-      this.h = jdField_a_of_type_JavaLangString;
-      this.i = (mpl.a() + "");
-      awqx.b(paramQQAppInterface, "dc02676", "grp_lbs", this.l, this.j, this.k, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.m, this.n, this.o, this.p + "|" + this.e + "|" + this.f + "|" + this.g + "|" + this.h + "|" + this.i);
+      localMsgBackupMsgUserData = (MsgBackupMsgUserData)localRecentBaseData;
+      QQAppInterface localQQAppInterface = null;
+      if (paramDrawable != null) {
+        break label224;
+      }
+      paramDrawable = localQQAppInterface;
+      if (this.jdField_a_of_type_Ahnt != null) {
+        paramDrawable = this.jdField_a_of_type_Ahnt.a(localRecentBaseData);
+      }
+      if (!a(localRecentBaseData)) {
+        break label233;
+      }
+      localQQAppInterface = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app;
+      int j = ((Integer)ahnt.a(localQQAppInterface, localRecentBaseData.a(), localRecentBaseData.a()).first).intValue();
+      int i = j;
+      if (j == 103) {
+        i = 1;
+      }
+      RecentDynamicAvatarView localRecentDynamicAvatarView = paramasms.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView;
+      String str = localRecentBaseData.a();
+      if (localQQAppInterface.a.a() != 1) {
+        break label227;
+      }
+      label146:
+      localRecentDynamicAvatarView.setFaceDrawable(localQQAppInterface, paramDrawable, i, str, 100, false, bool, 0);
+    }
+    for (;;)
+    {
+      paramasms.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setImageDrawable(paramDrawable);
+      paramasms.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(localRecentBaseData.mTitleName);
+      asms.a(paramasms).setChecked(((Boolean)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(paramInt)).booleanValue());
+      if (AppSetting.d) {
+        paramasms.jdField_a_of_type_AndroidViewView.setContentDescription(localMsgBackupMsgUserData.name);
+      }
       return;
+      label224:
+      break;
+      label227:
+      bool = false;
+      break label146;
+      label233:
+      paramasms.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setImageDrawable(paramDrawable);
     }
   }
   
-  public asmr b()
+  private void b(asms paramasms, int paramInt, Drawable paramDrawable)
   {
-    this.jdField_b_of_type_Boolean = true;
-    return this;
-  }
-  
-  public asmr b(String paramString)
-  {
-    this.f = paramString;
-    return this;
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface)
-  {
-    if ((this.jdField_a_of_type_Boolean) && (paramQQAppInterface != null)) {
-      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("charm_level", 0));
-    }
-    if ((this.jdField_b_of_type_Boolean) && (paramQQAppInterface != null))
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {}
+    RecentBaseData localRecentBaseData;
+    do
     {
-      this.jdField_b_of_type_Boolean = true;
-      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("gender", 0));
+      return;
+      localRecentBaseData = (RecentBaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    } while ((paramasms == null) || (localRecentBaseData == null));
+    Drawable localDrawable = paramDrawable;
+    if (paramDrawable == null)
+    {
+      int i = localRecentBaseData.a();
+      localDrawable = this.jdField_a_of_type_Ahnt.a(i, localRecentBaseData.a());
     }
-    this.i = (mpl.a() + "");
-    awqx.b(paramQQAppInterface, "dc02676", "grp_lbs", this.l, this.j, this.k, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.m, this.n, this.o, this.p + "|" + this.e + "|" + this.f + "|" + this.g + "|" + this.h + "|" + this.i);
+    a(paramasms, paramInt, localDrawable);
   }
   
-  public asmr c(String paramString)
+  public asms a(ViewGroup paramViewGroup, int paramInt)
   {
-    this.g = paramString;
-    return this;
+    return new asms(this, this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562323, paramViewGroup, false), this.jdField_a_of_type_Asmt);
   }
   
-  public asmr d(String paramString)
+  public void a()
   {
-    this.h = paramString;
-    return this;
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    int i = 0;
+    while (i < j)
+    {
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, Boolean.valueOf(false));
+      i += 1;
+    }
   }
   
-  public asmr e(String paramString)
+  protected void a(View paramView)
   {
-    this.m = paramString;
-    return this;
+    if ((paramView instanceof DynamicAvatarView))
+    {
+      paramView = (DynamicAvatarView)paramView;
+      if (paramView.a == null) {
+        paramView.a = new bfwa();
+      }
+      paramView.a.a(true);
+    }
   }
   
-  public asmr f(String paramString)
+  public void a(asms paramasms, int paramInt)
   {
-    this.n = paramString;
-    return this;
+    a(paramasms, paramInt, null);
   }
   
-  public asmr g(String paramString)
+  public void a(asmt paramasmt)
   {
-    this.p = paramString;
-    return this;
+    this.jdField_a_of_type_Asmt = paramasmt;
   }
   
-  public asmr h(String paramString)
+  public void a(List<RecentBaseData> paramList)
   {
-    this.j = paramString;
-    return this;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
   }
   
-  public asmr i(String paramString)
+  protected boolean a(RecentBaseData paramRecentBaseData)
   {
-    this.k = paramString;
-    return this;
+    int i = paramRecentBaseData.a();
+    return (i == 0) || (i == 1000) || (i == 1004) || (i == 1003) || (i == 10004) || (i == 1021) || (i == 1022) || (i == 1023);
+  }
+  
+  public void b()
+  {
+    int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
+    int i = 0;
+    while (i < j)
+    {
+      this.jdField_a_of_type_AndroidUtilSparseArray.setValueAt(i, Boolean.valueOf(true));
+      i += 1;
+    }
+    notifyDataSetChanged();
+  }
+  
+  public void c()
+  {
+    int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
+    int i = 0;
+    while (i < j)
+    {
+      this.jdField_a_of_type_AndroidUtilSparseArray.setValueAt(i, Boolean.valueOf(false));
+      i += 1;
+    }
+    notifyDataSetChanged();
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Ahnt != null) {
+      this.jdField_a_of_type_Ahnt.a();
+    }
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String arg3, Bitmap paramBitmap)
+  {
+    if (TextUtils.isEmpty(???)) {}
+    long l;
+    for (;;)
+    {
+      return;
+      if ((paramBitmap != null) || (paramInt1 <= 0))
+      {
+        if (paramBitmap != null) {}
+        try
+        {
+          this.jdField_a_of_type_JavaUtilHashtable.put(paramInt2 + ":" + ???, paramBitmap);
+          l = System.currentTimeMillis();
+          if ((this.jdField_a_of_type_Long > 0L) && (l - this.jdField_a_of_type_Long > 300L))
+          {
+            paramInt2 = 1;
+            if ((paramInt1 > 0) && (paramInt2 == 0)) {
+              continue;
+            }
+            synchronized (this.jdField_a_of_type_JavaUtilHashtable)
+            {
+              if (this.jdField_a_of_type_JavaUtilHashtable.size() == 0) {
+                return;
+              }
+            }
+          }
+        }
+        catch (OutOfMemoryError ???)
+        {
+          for (;;)
+          {
+            System.gc();
+            ???.printStackTrace();
+            QLog.i("MsgBackup.BackupAndMigrateListAdapter", 1, "onDecodeTaskCompleted error:" + ???.getMessage());
+            continue;
+            paramInt2 = 0;
+          }
+        }
+      }
+    }
+    boolean bool;
+    if (paramInt1 == 0)
+    {
+      this.jdField_a_of_type_Long = 0L;
+      paramInt2 = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildCount();
+      paramInt1 = 0;
+      bool = false;
+    }
+    for (;;)
+    {
+      if (paramInt1 < paramInt2)
+      {
+        paramBitmap = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(paramInt1);
+        paramBitmap = (asms)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder(paramBitmap);
+        int i = paramBitmap.getAdapterPosition();
+        Object localObject = (RecentBaseData)this.jdField_a_of_type_JavaUtilList.get(i);
+        if (localObject == null)
+        {
+          break label438;
+          this.jdField_a_of_type_Long = l;
+          break;
+        }
+        int j = ((RecentBaseData)localObject).a();
+        j = ((Integer)ahnt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, j, ((RecentBaseData)localObject).a()).first).intValue();
+        if (j == -2147483648) {
+          break label438;
+        }
+        localObject = j + ":" + ((RecentBaseData)localObject).a();
+        localObject = (Bitmap)this.jdField_a_of_type_JavaUtilHashtable.get(localObject);
+        if (localObject == null) {
+          break label438;
+        }
+        b(paramBitmap, i, new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject));
+        bool = true;
+        break label438;
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.i("MsgBackup.BackupAndMigrateListAdapter", 4, "decodecomplete|faceCache size = " + this.jdField_a_of_type_JavaUtilHashtable.size() + ", isNeedUpdateAvatar=" + bool);
+      }
+      this.jdField_a_of_type_JavaUtilHashtable.clear();
+      return;
+      label438:
+      paramInt1 += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asmr
  * JD-Core Version:    0.7.0.1
  */

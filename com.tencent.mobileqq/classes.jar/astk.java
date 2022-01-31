@@ -1,23 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.LinkedList;
+import java.util.List;
 
-public class astk
-  implements View.OnClickListener
+public class astk<T>
 {
-  astk(aste paramaste) {}
+  private List<T> a = new LinkedList();
   
-  public void onClick(View paramView)
+  public int a()
   {
-    paramView = begr.a(this.a.a);
-    paramView.a(2131652233, 1);
-    paramView.c(2131625035);
-    paramView.a(new astl(this, paramView));
-    paramView.show();
+    return this.a.size();
+  }
+  
+  public T a()
+  {
+    if (this.a.size() == 0) {
+      return null;
+    }
+    return this.a.remove(0);
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(T paramT)
+  {
+    if (!this.a.contains(paramT)) {
+      this.a.add(paramT);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     astk
  * JD-Core Version:    0.7.0.1
  */

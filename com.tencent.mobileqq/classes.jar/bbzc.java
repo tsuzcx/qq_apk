@@ -1,53 +1,21 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
 
 public class bbzc
-  extends Handler
+  implements View.OnTouchListener
 {
-  public bbzc(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bbzc(VipFunCallPreviewActivity paramVipFunCallPreviewActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramMessage = (Bitmap)paramMessage.obj;
-          } while (paramMessage == null);
-          this.a.a.a("", "", paramMessage, true);
-          return;
-          paramMessage = (Bitmap)paramMessage.obj;
-        } while (paramMessage == null);
-        this.a.a.a("", paramMessage);
-        return;
-        paramMessage = (String)paramMessage.obj;
-      } while (TextUtils.isEmpty(paramMessage));
-      this.a.a.setAppType(paramMessage);
-      return;
-    } while (this.a.a.a == null);
-    this.a.a.a.d();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbzc
  * JD-Core Version:    0.7.0.1
  */

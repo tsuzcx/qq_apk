@@ -1,17 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class abfh
-  implements DialogInterface.OnClickListener
+  implements aqha
 {
-  public abfh(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
+  public abfh(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
-    this.a.finish();
+    bfmv localbfmv = bfmv.a;
+    if ((localbfmv != null) && (localbfmv.a()))
+    {
+      if (!localbfmv.a(1)) {
+        localbfmv.b(1);
+      }
+      if ((!localbfmv.a(8)) && (localbfmv.a(5)) && (localbfmv.a(7))) {
+        localbfmv.b(8);
+      }
+      if ((!localbfmv.a(9)) && (localbfmv.a(6)) && (localbfmv.a(7))) {
+        localbfmv.b(9);
+      }
+    }
   }
 }
 

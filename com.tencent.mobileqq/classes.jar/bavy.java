@@ -1,9 +1,24 @@
-import java.io.File;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bavy
+final class bavy
+  implements DownloadParams.DecodeHandler
 {
-  public static final String a = ajed.aU + "funcall";
-  public static final String b = a + File.separator + "config.json";
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    if (paramBitmap == null) {
+      return null;
+    }
+    paramDownloadParams = paramDownloadParams.tag;
+    int i;
+    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1)) {
+      i = ((int[])(int[])paramDownloadParams)[0];
+    }
+    for (paramDownloadParams = bbdr.a(paramBitmap, i, i, i);; paramDownloadParams = null) {
+      return paramDownloadParams;
+    }
+  }
 }
 
 

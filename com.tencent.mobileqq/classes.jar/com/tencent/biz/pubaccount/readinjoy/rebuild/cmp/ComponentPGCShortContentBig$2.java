@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
 import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaVideoView;
-import omb;
-import omc;
+import oxp;
+import oxq;
 
 class ComponentPGCShortContentBig$2
   implements Runnable
 {
-  ComponentPGCShortContentBig$2(ComponentPGCShortContentBig paramComponentPGCShortContentBig, omb paramomb) {}
+  ComponentPGCShortContentBig$2(ComponentPGCShortContentBig paramComponentPGCShortContentBig, oxp paramoxp) {}
   
   public void run()
   {
-    ((MediaVideoView)ComponentPGCShortContentBig.a(this.this$0)).a(omc.a(), this.a);
+    ((MediaVideoView)ComponentPGCShortContentBig.a(this.this$0)).a(oxq.a(), this.a);
   }
 }
 

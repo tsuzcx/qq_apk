@@ -1,7 +1,5 @@
 package com.google.android.filament;
 
-import android.support.annotation.NonNull;
-
 public class SwapChain
 {
   public static final long CONFIG_DEFAULT = 0L;
@@ -10,7 +8,7 @@ public class SwapChain
   private long mNativeObject;
   private final Object mSurface;
   
-  SwapChain(long paramLong, @NonNull Object paramObject)
+  SwapChain(long paramLong, Object paramObject)
   {
     this.mNativeObject = paramLong;
     this.mSurface = paramObject;
@@ -29,7 +27,6 @@ public class SwapChain
     return this.mNativeObject;
   }
   
-  @NonNull
   public Object getNativeWindow()
   {
     return this.mSurface;

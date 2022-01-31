@@ -1,31 +1,29 @@
 package com.tencent.biz.subscribe.widget;
 
-import android.graphics.Color;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import awmc;
-import bahv;
-import bjeh;
-import wfw;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import axli;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import wiw;
+import wuu;
 
 public class SubscribeQRCodeShareHelper$2
   implements Runnable
 {
-  public SubscribeQRCodeShareHelper$2(wfw paramwfw, SubscribeSharedCardView paramSubscribeSharedCardView) {}
+  public SubscribeQRCodeShareHelper$2(wuu paramwuu) {}
   
   public void run()
   {
-    int j = this.this$0.a.a.getHeight();
-    int k = this.this$0.a.b.getHeight();
-    if (!awmc.a(wfw.a(this.this$0))) {}
-    for (int i = awmc.c(wfw.a(this.this$0));; i = awmc.b)
+    Bitmap localBitmap = wiw.a(wuu.b(this.this$0), axli.a(50.0F), -16777216, -1, Bitmap.Config.ARGB_8888);
+    if ((localBitmap == null) || (localBitmap.isRecycled()))
     {
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, i - bjeh.a(wfw.a(this.this$0)) - (k + j));
-      this.this$0.a.d(Color.parseColor("#00000000"));
-      this.this$0.a.a(this.a, localLayoutParams);
+      QLog.d("SubscribeQRCodeShareHelper", 4, "failed to create card code");
       return;
     }
+    ThreadManager.getUIHandler().post(new SubscribeQRCodeShareHelper.2.1(this, localBitmap));
+    QLog.d("SubscribeQRCodeShareHelper", 4, " create card code success");
   }
 }
 

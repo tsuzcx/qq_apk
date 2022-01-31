@@ -1,123 +1,310 @@
-import java.util.LinkedList;
+import appoint.define.appoint_define.LBSInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import tencent.im.nearfield_group.nearfield_group.BusiReqHead;
+import tencent.im.nearfield_group.nearfield_group.BusiRespHead;
+import tencent.im.nearfield_group.nearfield_group.GroupProfile;
+import tencent.im.nearfield_group.nearfield_group.ReqExit;
+import tencent.im.nearfield_group.nearfield_group.ReqGetGroupList;
+import tencent.im.nearfield_group.nearfield_group.ReqJoinGroup;
+import tencent.im.nearfield_group.nearfield_group.RespExit;
+import tencent.im.nearfield_group.nearfield_group.RespGetGroupList;
+import tencent.im.nearfield_group.nearfield_group.RespJoinGroup;
+import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.NewComeinUserNotify;
+import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.NewGroup;
+import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.NewGroupUser;
 
 public class akbg
+  extends ajtd
 {
-  private static LinkedList<akbg> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  int b;
-  int c;
-  
-  /* Error */
-  public static akbg a(int paramInt1, String paramString, long paramLong, int paramInt2, int paramInt3)
+  public akbg(QQAppInterface paramQQAppInterface)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 21	akbg:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   6: invokevirtual 28	java/util/LinkedList:size	()I
-    //   9: ifle +53 -> 62
-    //   12: getstatic 21	akbg:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   15: iconst_0
-    //   16: invokevirtual 32	java/util/LinkedList:remove	(I)Ljava/lang/Object;
-    //   19: checkcast 2	akbg
-    //   22: astore 6
-    //   24: aload 6
-    //   26: iload_0
-    //   27: putfield 34	akbg:jdField_a_of_type_Int	I
-    //   30: aload 6
-    //   32: aload_1
-    //   33: putfield 36	akbg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   36: aload 6
-    //   38: lload_2
-    //   39: putfield 38	akbg:jdField_a_of_type_Long	J
-    //   42: aload 6
-    //   44: iload 4
-    //   46: putfield 40	akbg:b	I
-    //   49: aload 6
-    //   51: iload 5
-    //   53: putfield 42	akbg:c	I
-    //   56: ldc 2
-    //   58: monitorexit
-    //   59: aload 6
-    //   61: areturn
-    //   62: new 2	akbg
-    //   65: dup
-    //   66: invokespecial 43	akbg:<init>	()V
-    //   69: astore 6
-    //   71: goto -47 -> 24
-    //   74: astore_1
-    //   75: ldc 2
-    //   77: monitorexit
-    //   78: aload_1
-    //   79: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	80	0	paramInt1	int
-    //   0	80	1	paramString	String
-    //   0	80	2	paramLong	long
-    //   0	80	4	paramInt2	int
-    //   0	80	5	paramInt3	int
-    //   22	48	6	localakbg	akbg
-    // Exception table:
-    //   from	to	target	type
-    //   3	24	74	finally
-    //   24	56	74	finally
-    //   62	71	74	finally
+    super(paramQQAppInterface);
   }
   
-  /* Error */
-  public static void a(java.util.List<akbg> paramList)
+  public void a(int paramInt, SubMsgType0x27.NewComeinUserNotify paramNewComeinUserNotify)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 21	akbg:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   6: invokevirtual 28	java/util/LinkedList:size	()I
-    //   9: istore_1
-    //   10: iload_1
-    //   11: bipush 100
-    //   13: if_icmplt +7 -> 20
-    //   16: ldc 2
-    //   18: monitorexit
-    //   19: return
-    //   20: aload_0
-    //   21: invokeinterface 50 1 0
-    //   26: astore_0
-    //   27: aload_0
-    //   28: invokeinterface 56 1 0
-    //   33: ifeq -17 -> 16
-    //   36: aload_0
-    //   37: invokeinterface 60 1 0
-    //   42: checkcast 2	akbg
-    //   45: astore_2
-    //   46: getstatic 21	akbg:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   49: aload_2
-    //   50: invokevirtual 64	java/util/LinkedList:add	(Ljava/lang/Object;)Z
-    //   53: pop
-    //   54: getstatic 21	akbg:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   57: invokevirtual 28	java/util/LinkedList:size	()I
-    //   60: istore_1
-    //   61: iload_1
-    //   62: bipush 100
-    //   64: if_icmplt -37 -> 27
-    //   67: goto -51 -> 16
-    //   70: astore_0
-    //   71: ldc 2
-    //   73: monitorexit
-    //   74: aload_0
-    //   75: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	76	0	paramList	java.util.List<akbg>
-    //   9	56	1	i	int
-    //   45	5	2	localakbg	akbg
-    // Exception table:
-    //   from	to	target	type
-    //   3	10	70	finally
-    //   20	27	70	finally
-    //   27	61	70	finally
+    if (QLog.isColorLevel()) {
+      QLog.d("NearFieldTroopHandler", 2, "handleNewComeinPush, msgType:" + paramInt);
+    }
+    if (paramInt == 2) {
+      if (paramNewComeinUserNotify.msg_new_group.has())
+      {
+        localObject2 = (SubMsgType0x27.NewGroup)paramNewComeinUserNotify.msg_new_group.get();
+        l1 = ((SubMsgType0x27.NewGroup)localObject2).uint64_group_code.get();
+        paramNewComeinUserNotify = ((SubMsgType0x27.NewGroup)localObject2).bytes_group_name.get().toStringUtf8();
+        l2 = ((SubMsgType0x27.NewGroup)localObject2).uint64_owner_uin.get();
+        localObject1 = ((SubMsgType0x27.NewGroup)localObject2).bytes_owner_nick.get().toStringUtf8();
+        localObject2 = ((SubMsgType0x27.NewGroup)localObject2).bytes_distance.get().toStringUtf8();
+        notifyUI(4, true, new Object[] { new aonh(l1 + "", paramNewComeinUserNotify, l2 + "", (String)localObject1, (String)localObject2) });
+      }
+    }
+    while ((paramInt != 3) || (!paramNewComeinUserNotify.msg_new_group_user.has()))
+    {
+      Object localObject2;
+      long l2;
+      return;
+    }
+    Object localObject1 = (SubMsgType0x27.NewGroupUser)paramNewComeinUserNotify.msg_new_group_user.get();
+    long l1 = ((SubMsgType0x27.NewGroupUser)localObject1).uint64_uin.get();
+    paramNewComeinUserNotify = ((SubMsgType0x27.NewGroupUser)localObject1).str_nick.get();
+    paramInt = ((SubMsgType0x27.NewGroupUser)localObject1).int32_sex.get();
+    int i = ((SubMsgType0x27.NewGroupUser)localObject1).int32_age.get();
+    localObject1 = ((SubMsgType0x27.NewGroupUser)localObject1).bytes_distance.get().toStringUtf8();
+    notifyUI(5, true, new Object[] { new aonl(l1 + "", paramNewComeinUserNotify, paramInt, i, (String)localObject1) });
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "NearfieldGroupSvr.ReqExit");
+    nearfield_group.BusiReqHead localBusiReqHead = new nearfield_group.BusiReqHead();
+    localBusiReqHead.int32_seq.set(paramInt);
+    localBusiReqHead.int32_version.set(1);
+    nearfield_group.ReqExit localReqExit = new nearfield_group.ReqExit();
+    localReqExit.msg_head.set(localBusiReqHead);
+    localReqExit.uint64_group_code.set(paramLong);
+    localToServiceMsg.putWupBuffer(localReqExit.toByteArray());
+    localToServiceMsg.setTimeout(10000L);
+    sendPbReq(localToServiceMsg);
+    if (QLog.isColorLevel()) {
+      QLog.d("NearFieldTroopHandler", 2, "closeFace2faceTroop, troopCode:" + paramLong + ", seqNo:" + paramInt);
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "NearfieldGroupSvr.ReqJoinGroup");
+    nearfield_group.BusiReqHead localBusiReqHead = new nearfield_group.BusiReqHead();
+    localBusiReqHead.int32_seq.set(paramInt);
+    localBusiReqHead.int32_version.set(1);
+    nearfield_group.ReqJoinGroup localReqJoinGroup = new nearfield_group.ReqJoinGroup();
+    localReqJoinGroup.msg_head.set(localBusiReqHead);
+    localReqJoinGroup.uint64_group_code.set(paramLong1);
+    localReqJoinGroup.uint64_owner_uin.set(paramLong2);
+    localReqJoinGroup.bytes_distance.set(ByteStringMicro.copyFromUtf8(paramString));
+    localToServiceMsg.putWupBuffer(localReqJoinGroup.toByteArray());
+    localToServiceMsg.setTimeout(10000L);
+    sendPbReq(localToServiceMsg);
+    if (QLog.isColorLevel()) {
+      QLog.d("NearFieldTroopHandler", 2, "joinTroop, troopCode:" + paramLong1 + ", ownerUin=" + paramLong2 + ", distance=" + paramString + ", seqNo:" + paramInt);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NearFieldTroopHandler", 2, "handleOpenFace2faceTroop:" + paramBoolean);
+    }
+    Object localObject1;
+    if (paramBoolean)
+    {
+      localObject1 = new nearfield_group.RespGetGroupList();
+      try
+      {
+        ((nearfield_group.RespGetGroupList)localObject1).mergeFrom((byte[])paramObject);
+        paramObject = localObject1;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ArrayList localArrayList;
+          int i;
+          boolean bool = false;
+          localObject1 = null;
+          paramObject = localObject1;
+          paramBoolean = bool;
+          if (QLog.isColorLevel())
+          {
+            QLog.e("NearFieldTroopHandler", 2, "handleOpenFace2faceTroop:" + localException.toString());
+            paramObject = localObject1;
+            paramBoolean = bool;
+          }
+        }
+        notifyUI(1, paramBoolean, new Object[] { localObject1, localException });
+        return;
+      }
+      if ((paramBoolean) && (paramObject != null))
+      {
+        localObject1 = (nearfield_group.BusiRespHead)paramObject.msg_head.get();
+        paramObject = paramObject.rpt_msg_group_list.get();
+        localArrayList = new ArrayList();
+        if (paramObject != null)
+        {
+          i = 0;
+          while (i < paramObject.size())
+          {
+            Object localObject2 = (nearfield_group.GroupProfile)paramObject.get(i);
+            long l1 = ((nearfield_group.GroupProfile)localObject2).uint64_group_code.get();
+            String str1 = ((nearfield_group.GroupProfile)localObject2).bytes_group_name.get().toStringUtf8();
+            long l2 = ((nearfield_group.GroupProfile)localObject2).uint64_owner_uin.get();
+            String str2 = ((nearfield_group.GroupProfile)localObject2).bytes_owner_nick.get().toStringUtf8();
+            localObject2 = ((nearfield_group.GroupProfile)localObject2).bytes_distance.get().toStringUtf8();
+            localArrayList.add(new aonh(l1 + "", str1, l2 + "", str2, (String)localObject2));
+            i += 1;
+          }
+        }
+      }
+    }
+    notifyUI(1, false, null);
+  }
+  
+  public boolean a(long paramLong, int paramInt)
+  {
+    boolean bool = true;
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "NearfieldGroupSvr.ReqGetGroupList");
+    appoint_define.LBSInfo localLBSInfo = asyx.a(getClass().getSimpleName());
+    if (localLBSInfo == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NearFieldTroopHandler", 2, "openFace2faceTroop, lbsInfo==null");
+      }
+      bool = false;
+    }
+    do
+    {
+      return bool;
+      nearfield_group.BusiReqHead localBusiReqHead = new nearfield_group.BusiReqHead();
+      localBusiReqHead.int32_seq.set(paramInt);
+      localBusiReqHead.int32_version.set(1);
+      nearfield_group.ReqGetGroupList localReqGetGroupList = new nearfield_group.ReqGetGroupList();
+      localReqGetGroupList.msg_head.set(localBusiReqHead);
+      localReqGetGroupList.uint64_group_code.set(paramLong);
+      localReqGetGroupList.msg_lbs_info.set(localLBSInfo);
+      localToServiceMsg.putWupBuffer(localReqGetGroupList.toByteArray());
+      localToServiceMsg.setTimeout(10000L);
+      sendPbReq(localToServiceMsg);
+    } while (!QLog.isColorLevel());
+    QLog.d("NearFieldTroopHandler", 2, "openFace2faceTroop, troopCode:" + paramLong + ", seqNo:" + paramInt);
+    return true;
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NearFieldTroopHandler", 2, "handleCloseFace2faceTroop:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      nearfield_group.RespExit localRespExit = new nearfield_group.RespExit();
+      try
+      {
+        localRespExit.mergeFrom((byte[])paramObject);
+        paramObject = localRespExit;
+      }
+      catch (Exception paramObject)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("NearFieldTroopHandler", 2, "handleCloseFace2faceTroop:" + paramObject.toString());
+          }
+          paramObject = null;
+          paramBoolean = false;
+        }
+      }
+      if ((paramBoolean) && (paramObject != null))
+      {
+        notifyUI(2, paramBoolean, new Object[] { (nearfield_group.BusiRespHead)paramObject.msg_head.get() });
+        return;
+      }
+    }
+    notifyUI(2, false, null);
+  }
+  
+  protected void c(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NearFieldTroopHandler", 2, "handleJoinTroopResp:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      nearfield_group.RespJoinGroup localRespJoinGroup = new nearfield_group.RespJoinGroup();
+      try
+      {
+        localRespJoinGroup.mergeFrom((byte[])paramObject);
+        paramObject = localRespJoinGroup;
+      }
+      catch (Exception paramObject)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("NearFieldTroopHandler", 2, "handleJoinTroopResp:" + paramObject.toString());
+          }
+          paramObject = null;
+          paramBoolean = false;
+        }
+      }
+      if ((paramBoolean) && (paramObject != null))
+      {
+        notifyUI(3, paramBoolean, new Object[] { (nearfield_group.BusiRespHead)paramObject.msg_head.get(), String.valueOf(paramObject.uint64_group_code.get()) });
+        return;
+      }
+    }
+    notifyUI(3, false, null);
+  }
+  
+  protected boolean msgCmdFilter(String paramString)
+  {
+    if (this.allowCmdSet == null)
+    {
+      this.allowCmdSet = new HashSet();
+      this.allowCmdSet.add("NearfieldGroupSvr.ReqGetGroupList");
+      this.allowCmdSet.add("NearfieldGroupSvr.ReqExit");
+      this.allowCmdSet.add("NearfieldGroupSvr.ReqJoinGroup");
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  protected Class<? extends ajtg> observerClass()
+  {
+    return akbh.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    paramToServiceMsg = "";
+    if (paramFromServiceMsg != null) {
+      paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("NearFieldTroopHandler", 2, "onReceive:" + paramToServiceMsg);
+    }
+    if (msgCmdFilter(paramToServiceMsg)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("NearFieldTroopHandler", 2, "cmdfilter error=" + paramToServiceMsg);
+      }
+    }
+    boolean bool;
+    do
+    {
+      return;
+      if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramObject != null)) {}
+      for (bool = true; "NearfieldGroupSvr.ReqGetGroupList".equalsIgnoreCase(paramToServiceMsg); bool = false)
+      {
+        a(bool, paramObject);
+        return;
+      }
+      if ("NearfieldGroupSvr.ReqExit".equalsIgnoreCase(paramToServiceMsg))
+      {
+        b(bool, paramObject);
+        return;
+      }
+    } while (!"NearfieldGroupSvr.ReqJoinGroup".equalsIgnoreCase(paramToServiceMsg));
+    c(bool, paramObject);
   }
 }
 

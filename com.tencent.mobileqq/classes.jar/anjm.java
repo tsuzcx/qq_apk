@@ -1,27 +1,18 @@
-import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.PrecoverConfig;
 
-class anjm
-  implements URLDrawableDownListener
+public final class anjm
+  implements Parcelable.Creator<PrecoverConfig>
 {
-  anjm(anjl paramanjl) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public PrecoverConfig a(Parcel paramParcel)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof ProgressBar))) {
-      ((ProgressBar)paramView).setVisibility(4);
-    }
+    return new PrecoverConfig(paramParcel);
+  }
+  
+  public PrecoverConfig[] a(int paramInt)
+  {
+    return new PrecoverConfig[paramInt];
   }
 }
 

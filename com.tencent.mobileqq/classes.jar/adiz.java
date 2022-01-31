@@ -1,51 +1,37 @@
-import android.support.v4.app.FragmentActivity;
+import android.text.Editable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageForLongMsg;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 class adiz
   implements View.OnClickListener
 {
-  adiz(adiu paramadiu) {}
+  adiz(adiy paramadiy, String paramString1, String paramString2) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.a()) {}
-    BaseChatPie localBaseChatPie;
-    do
+    try
     {
-      do
+      if (!this.jdField_a_of_type_JavaLangString.equals("0"))
       {
-        do
-        {
-          return;
-          paramView = aciy.a(paramView);
-          if ((paramView instanceof MessageForLongMsg)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForLongMsg");
-        return;
-        paramView = (MessageForLongMsg)paramView;
-      } while ((paramView.mSourceMsgInfo == null) || (!(this.a.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)));
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: isReplyMsg = true");
+        adiy.a(this.jdField_a_of_type_Adiy).a.getText().clear();
+        adiy.a(this.jdField_a_of_type_Adiy).c(adiy.a(this.jdField_a_of_type_Adiy));
       }
-      localBaseChatPie = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 0) && ((localBaseChatPie instanceof aedo)))
-      {
-        ((aedo)localBaseChatPie).a(22, paramView.mSourceMsgInfo.origUid, paramView.mSourceMsgInfo.mSourceMsgTime, null);
-        return;
-      }
-    } while (!localBaseChatPie.j());
-    localBaseChatPie.a(22, paramView.mSourceMsgInfo.mSourceMsgSeq, (int)(paramView.shmsgseq - paramView.mSourceMsgInfo.mSourceMsgSeq), paramView);
-    MessageForReplyText.reportReplyMsg(null, "replyMsg_bubble", "clk_original", paramView.frienduin, paramView);
+      int i = adiy.a(this.jdField_a_of_type_Adiy).a.getSelectionStart();
+      paramView = adiy.a(this.jdField_a_of_type_Adiy).a.getText();
+      this.jdField_a_of_type_Adiy.a = true;
+      paramView.insert(i, this.b);
+      this.jdField_a_of_type_Adiy.a = false;
+      adiy.a(this.jdField_a_of_type_Adiy).a.setSelection(paramView.length());
+      this.jdField_a_of_type_Adiy.a();
+      return;
+    }
+    catch (Throwable paramView)
+    {
+      QLog.e("QWalletAIOLifeCycleHelper", 1, "onclick  PasswdRedBagTips throw an exception: " + paramView);
+    }
   }
 }
 

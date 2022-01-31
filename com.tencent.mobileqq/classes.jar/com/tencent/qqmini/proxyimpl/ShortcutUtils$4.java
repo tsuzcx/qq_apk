@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 
 final class ShortcutUtils$4
@@ -11,7 +11,7 @@ final class ShortcutUtils$4
   public void run()
   {
     if (ShortcutUtils.PermissionDialog.canShowDialog()) {
-      ShortcutUtils.PermissionDialog.createPermissionDialog(this.val$activity, ajjy.a(2131648224), ajjy.a(2131648230), ajjy.a(2131648211), new ShortcutUtils.4.1(this), new ShortcutUtils.4.2(this)).show();
+      ShortcutUtils.PermissionDialog.createPermissionDialog(this.val$activity, ajyc.a(2131714012), ajyc.a(2131714018), ajyc.a(2131713999), new ShortcutUtils.4.1(this), new ShortcutUtils.4.2(this)).show();
     }
   }
 }

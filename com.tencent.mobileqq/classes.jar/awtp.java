@@ -1,77 +1,43 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.msf.sdk.utils.MonitorHttpInfo;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-
-public class awtp
-  extends QIPCModule
+class awtp
 {
-  private static awtp a;
+  boolean jdField_a_of_type_Boolean;
   
-  private awtp(String paramString)
+  public awtp(awtn paramawtn, boolean paramBoolean)
   {
-    super(paramString);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static awtp a()
+  public void a(boolean paramBoolean)
   {
-    if (a == null) {}
     try
     {
-      if (a == null) {
-        a = new awtp("NetworkMonitorIPCModule");
-      }
-      return a;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      return;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NetworkMonitorIPCModule", 2, new Object[] { "NetworkMonitorIPCModule : " + paramString + ", " + paramBundle.toString(), ", " + paramInt });
-    }
-    if ("ACTION_REPORT_DOWNLOAD_URL".equalsIgnoreCase(paramString))
+    try
     {
-      paramString = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_URL", "");
-      awtm.a().a(paramString);
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
     }
-    for (;;)
+    finally
     {
-      return new EIPCResult();
-      if ("ACTION_REPORT_HTTPINFO".equalsIgnoreCase(paramString))
-      {
-        try
-        {
-          paramString = (MonitorHttpInfo)paramBundle.getSerializable("BUNDLE_KEY_REPORT_HTTP_INFO_INFO");
-          String str = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_PROCESS_NAME", "");
-          paramBundle = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_TOP_ACTIVITY", "");
-          if (paramString != null)
-          {
-            try
-            {
-              awtm.a().a(paramString, str, paramBundle);
-            }
-            catch (Throwable paramString) {}
-            continue;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("NetworkMonitorIPCModule", 2, "MonitorHttpInfo == null");
-        }
-        catch (Exception paramString) {}
-        if (QLog.isColorLevel()) {
-          QLog.d("NetworkMonitorIPCModule", 2, new Object[] { "ClassCastException", paramString.toString() });
-        }
-      }
+      localObject = finally;
+      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awtp
  * JD-Core Version:    0.7.0.1
  */

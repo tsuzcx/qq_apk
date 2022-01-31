@@ -1,22 +1,21 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
 
 public class atex
   implements View.OnClickListener
 {
-  public atex(ScanOcrActivity paramScanOcrActivity) {}
+  public atex(NearbyGuideActivity paramNearbyGuideActivity) {}
   
   public void onClick(View paramView)
   {
-    if ((ScanOcrActivity.a(this.a) == 1) && ((ScanOcrActivity.b(this.a) == 0) || (ScanOcrActivity.b(this.a) == 4)))
+    if ((this.a.a != null) && (!this.a.isFinishing()))
     {
-      ScanOcrActivity.a(this.a).a();
-      ScanOcrActivity.a(this.a, false);
-      ScanOcrActivity.b(this.a);
-      return;
+      this.a.a.dismiss();
+      this.a.a = null;
+      this.a.e("0X800590A");
     }
-    this.a.finish();
   }
 }
 

@@ -1,272 +1,53 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.os.Looper;
-import android.text.SpannableString;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import mqq.manager.Manager;
 
 public class aric
-  implements Manager
 {
-  public static final String[] a;
-  final arie a;
-  
-  static
+  public static long a(Bundle paramBundle)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "entry_setting", "entry_aio_video", "entry_file", "entry_chat_audio", "entry_chat_video", "entry_kandian_video" };
-  }
-  
-  public aric(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_Arie = new arie(paramQQAppInterface.getAccount());
-  }
-  
-  public static CharSequence a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString)
-  {
-    if (paramQQAppInterface != null) {}
-    for (;;)
+    if (paramBundle == null) {}
+    do
     {
-      try
-      {
-        localObject1 = (aric)paramQQAppInterface.getManager(221);
-        if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-          if (((aric)localObject1).a())
-          {
-            localObject1 = ((aric)localObject1).a(paramInt);
-            i = 0;
-            j = i;
-            localObject2 = paramString;
-            if (localObject1 != null)
-            {
-              j = i;
-              localObject2 = paramString;
-            }
-          }
-        }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        Object localObject1;
-        i = 0;
-      }
-      try
-      {
-        if (!TextUtils.isEmpty(((arif)localObject1).jdField_a_of_type_JavaLangString))
-        {
-          j = i;
-          localObject2 = paramString;
-          if (!TextUtils.isEmpty(((arif)localObject1).b))
-          {
-            j = i;
-            localObject2 = paramString;
-            if (((arif)localObject1).jdField_a_of_type_JavaLangString.contains(((arif)localObject1).b))
-            {
-              j = i;
-              localObject2 = paramString;
-              if (!TextUtils.isEmpty(((arif)localObject1).c))
-              {
-                String str = String.format("%s\n%s", new Object[] { paramString, ((arif)localObject1).jdField_a_of_type_JavaLangString });
-                localObject2 = new SpannableString(str);
-                j = str.indexOf(((arif)localObject1).b);
-                int k = ((arif)localObject1).b.length();
-                ((SpannableString)localObject2).setSpan(new arid(paramContext, ((arif)localObject1).c, paramQQAppInterface.c(), paramInt), j, k + j, 17);
-                j = i;
-              }
-            }
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("CUOpenCardGuideMng", 2, String.format(Locale.getDefault(), "getGuideEntry entry: %d retCode: %d context: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(j), paramContext }));
-        }
-        return localObject2;
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        break label301;
-      }
-      localObject1 = null;
-      int i = 3;
-      continue;
-      localObject1 = ((aric)localObject1).a(paramInt);
-      i = 0;
-      continue;
-      label301:
-      int j = i;
-      Object localObject2 = paramString;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("CUOpenCardGuideMng", 2, "getGuideEnty", paramQQAppInterface);
-        j = i;
-        localObject2 = paramString;
-        continue;
-        j = 0;
-        localObject2 = paramString;
-      }
-    }
+      return 0L;
+      paramBundle = paramBundle.getString("roomid", "");
+    } while (TextUtils.isEmpty(paramBundle));
+    return Long.parseLong(paramBundle);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, boolean paramBoolean, String paramString2)
+  public static String a(Bundle paramBundle)
   {
-    int i = badq.a(BaseApplicationImpl.getApplication().getApplicationContext());
-    Object localObject1 = null;
-    long l2 = 0L;
-    long l1 = 0L;
-    batj localbatj;
-    if (i != 1)
+    if (paramBundle == null) {
+      paramBundle = "";
+    }
+    String str;
+    do
     {
-      l2 = baig.e(paramQQAppInterface.getApp(), paramQQAppInterface.c());
-      l1 = System.currentTimeMillis();
-      localbatj = bati.a(paramString2, true, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("CUOpenCardGuideMng", 2, "WL_DEBUG addCallGrayTip info.mPopUpType = " + localbatj.jdField_a_of_type_Int + ", info.mGuideJumpUrl = " + localbatj.jdField_a_of_type_JavaLangString);
-      }
-      paramString2 = (aric)paramQQAppInterface.getManager(221);
-      if (paramString2 == null) {
-        break label620;
-      }
-      if (!paramBoolean) {
-        break label577;
-      }
-      paramString2 = paramString2.a(4);
-    }
-    for (;;)
-    {
-      String[] arrayOfString2;
-      String[] arrayOfString1;
-      Bundle localBundle;
-      Object localObject3;
-      Object localObject2;
-      if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString2.b)) && (!TextUtils.isEmpty(localbatj.jdField_a_of_type_JavaLangString)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("CUOpenCardGuideMng", 2, "WL_DEBUG addCallGrayTip entry.tip = " + paramString2.jdField_a_of_type_JavaLangString + ", entry.keyWord = " + paramString2.b);
-        }
-        arrayOfString2 = paramString2.jdField_a_of_type_JavaLangString.split("\\|");
-        arrayOfString1 = paramString2.b.split("\\|");
-        localBundle = null;
-        localObject3 = null;
-        localObject1 = localObject3;
-        localObject2 = localBundle;
-        if (arrayOfString2.length >= 2)
-        {
-          localObject1 = localObject3;
-          localObject2 = localBundle;
-          if (arrayOfString1.length >= 2)
-          {
-            if (localbatj.jdField_a_of_type_Int != 2) {
-              break label588;
-            }
-            localObject2 = arrayOfString2[0];
-            localObject1 = arrayOfString1[0];
-          }
-        }
-      }
-      for (;;)
-      {
-        if ((localObject2 != null) && (localObject1 != null))
-        {
-          localBundle = new Bundle();
-          localBundle.putInt("key_action", 1);
-          localBundle.putString("textColor", "#40A0FF");
-          localBundle.putString("key_action_DATA", localbatj.jdField_a_of_type_JavaLangString);
-          int j = ((String)localObject2).indexOf((String)localObject1);
-          int k = ((String)localObject1).length();
-          localObject1 = new aqax(paramString1, paramQQAppInterface.c(), (String)localObject2, paramInt, -5020, 3145729, awao.a());
-          localObject2 = new MessageForUniteGrayTip();
-          if (j >= 0) {
-            ((aqax)localObject1).a(j, k + j, localBundle);
-          }
-          ((MessageForUniteGrayTip)localObject2).initGrayTipMsg(paramQQAppInterface, (aqax)localObject1);
-          aqay.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject2);
-          awqx.b(null, "dc00898", "", "", "0X800812A", "0X800812A", 0, 0, "", "", "", "");
-          baig.e(paramQQAppInterface.getApp(), paramQQAppInterface.c(), System.currentTimeMillis());
-        }
-        localObject1 = paramString2;
-        if (QLog.isColorLevel()) {
-          QLog.i("CUOpenCardGuideMng", 2, "addCallGrayTip, friendUin= " + paramString1 + ",isVideoMsg=" + paramBoolean + ",netType=" + i + ",uinType=" + paramInt + ",lastAlertTime=" + l2 + ",currentTime=" + l1 + ",entry=" + localObject1);
-        }
-        return;
-        label577:
-        paramString2 = paramString2.a(3);
-        break;
-        label588:
-        localObject1 = localObject3;
-        localObject2 = localBundle;
-        if (localbatj.jdField_a_of_type_Int == 3)
-        {
-          localObject2 = arrayOfString2[1];
-          localObject1 = arrayOfString1[1];
-        }
-      }
-      label620:
-      paramString2 = null;
-    }
+      return paramBundle;
+      str = paramBundle.getString("roomtype");
+      paramBundle = str;
+    } while (!TextUtils.isEmpty(str));
+    return "0";
   }
   
-  public arif a(int paramInt)
+  public static String b(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CUOpenCardGuideMng", 2, String.format(Locale.getDefault(), "getGuideEntry entry: %d, isInit: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.jdField_a_of_type_Arie.jdField_a_of_type_Boolean) }));
+    if (paramBundle == null) {
+      return "";
     }
-    this.jdField_a_of_type_Arie.a();
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Arie.b)
-    {
-      localObject1 = localObject2;
-      if (paramInt >= 0)
-      {
-        localObject1 = localObject2;
-        if (paramInt < this.jdField_a_of_type_Arie.jdField_a_of_type_ArrayOfArif.length) {
-          localObject1 = this.jdField_a_of_type_Arie.jdField_a_of_type_ArrayOfArif[paramInt];
-        }
-      }
-    }
-    return localObject1;
+    return paramBundle.getString("fromid", "");
   }
   
-  public void a()
+  public static String c(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Arie.a();
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CUOpenCardGuideMng", 2, String.format(Locale.getDefault(), "onGetConfig isInit: %b, config: %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Arie.jdField_a_of_type_Boolean), paramString }));
+    if (paramBundle == null) {
+      return "";
     }
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    paramString = BaseApplicationImpl.getApplication().getSharedPreferences("ChinaUnicomPhoneCard" + this.jdField_a_of_type_Arie.jdField_a_of_type_JavaLangString, 4).edit();
-    paramString.putString("config_content", str);
-    paramString.commit();
-    this.jdField_a_of_type_Arie.a(str);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Arie.jdField_a_of_type_Boolean;
-  }
-  
-  public void onDestroy()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CUOpenCardGuideMng", 2, "onDestroy");
-    }
+    return paramBundle.getString("shakespearetime", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aric
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.multiaio.presenter;
 
-import artn;
+import aspr;
 
 class MultiAioContext$1$1
   implements Runnable

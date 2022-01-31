@@ -1,25 +1,24 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLikeFeed;
 
 public class tam
-  extends slt
+  extends tbe
 {
-  public List<uiw> a = new ArrayList();
+  qqstory_service.RspLikeFeed a;
   
-  public tam(qqstory_group.RspGroupStoryFeedIdList paramRspGroupStoryFeedIdList)
+  public tam() {}
+  
+  public tam(qqstory_service.RspLikeFeed paramRspLikeFeed)
   {
-    super(paramRspGroupStoryFeedIdList.result, paramRspGroupStoryFeedIdList.is_end, paramRspGroupStoryFeedIdList.next_cookie);
-    paramRspGroupStoryFeedIdList = paramRspGroupStoryFeedIdList.feed_seq_info_list.get().iterator();
-    while (paramRspGroupStoryFeedIdList.hasNext())
-    {
-      qqstory_struct.FeedSeqInfo localFeedSeqInfo = (qqstory_struct.FeedSeqInfo)paramRspGroupStoryFeedIdList.next();
-      this.a.add(new uiw(localFeedSeqInfo));
-    }
+    super(paramRspLikeFeed.result);
+    this.a = paramRspLikeFeed;
   }
+  
+  public void a() {}
+  
+  public void a(int paramInt, Bundle paramBundle) {}
+  
+  public void a(int paramInt, String paramString) {}
 }
 
 

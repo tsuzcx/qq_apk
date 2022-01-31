@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.startup.step;
 
-import ajed;
+import ajsf;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import android.text.TextUtils;
-import awon;
-import awoo;
-import awop;
-import awoq;
-import awos;
-import axmp;
-import axpv;
+import axok;
+import axol;
+import axom;
+import axon;
+import axop;
+import aymw;
+import ayqc;
+import bbuv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.JpegExifReader;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.Utils;
 import com.tencent.mobileqq.dinifly.DiniFlyLog;
 import com.tencent.mobileqq.dinifly.IDiniFlyQLog;
 import com.tencent.mobileqq.theme.effect.QEffectApngImageView;
@@ -30,8 +30,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class InitUrlDrawable
   extends Step
 {
-  public static axpv a;
-  private static IDiniFlyQLog jdField_a_of_type_ComTencentMobileqqDiniflyIDiniFlyQLog = new awon();
+  public static ayqc a;
+  private static IDiniFlyQLog jdField_a_of_type_ComTencentMobileqqDiniflyIDiniFlyQLog = new axok();
   private static List<String> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   public static volatile boolean a;
   
@@ -127,8 +127,8 @@ public class InitUrlDrawable
     }
     jdField_a_of_type_Boolean = true;
     DiniFlyLog.setLog(jdField_a_of_type_ComTencentMobileqqDiniflyIDiniFlyQLog);
-    QEffectEngine.getInstance().setJsonConvert(new awoq());
-    QEffectEngine.getInstance().registerLoad(new axmp());
+    QEffectEngine.getInstance().setJsonConvert(new axon());
+    QEffectEngine.getInstance().registerLoad(new aymw());
     QEffectEngine.getInstance().registerEffect(2, "a.png", QEffectApngImageView.class);
     QEffectEngine.getInstance().registerEffect(3, "lottie", QEffectLottieImageView.class);
     QEffectEngine.getInstance().registerEffect(8, "gif", QEffectGifImageView.class);
@@ -136,24 +136,20 @@ public class InitUrlDrawable
     URLDrawable.DEBUG = false;
     File localFile;
     if ("mounted".equals(Environment.getExternalStorageState())) {
-      localFile = new File(ajed.aU);
+      localFile = new File(bbuv.a(ajsf.aW));
     }
     try
     {
       for (;;)
       {
-        URLDrawable.init(localBaseApplicationImpl, new awos(localBaseApplicationImpl));
+        URLDrawable.init(localBaseApplicationImpl, new axop(localBaseApplicationImpl));
         if (Build.VERSION.SDK_INT >= 11) {
-          URLDrawable.setDebuggableCallback(new awoo());
+          URLDrawable.setDebuggableCallback(new axol());
         }
         localFile = new File(localFile, "diskcache");
-        if (localFile != null) {
-          break;
-        }
-        localFile = Utils.getExternalCacheDir(localBaseApplicationImpl);
-        jdField_a_of_type_Axpv = new axpv(localFile);
-        axwd.a = localFile;
-        JpegExifReader.initJpegExifReader(new awop());
+        jdField_a_of_type_Ayqc = new ayqc(localFile);
+        aywk.a = localFile;
+        JpegExifReader.initJpegExifReader(new axom());
         return true;
         localFile = localBaseApplicationImpl.getCacheDir();
       }

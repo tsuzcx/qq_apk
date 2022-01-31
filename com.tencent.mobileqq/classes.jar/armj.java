@@ -1,25 +1,27 @@
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
 
 class armj
-  extends ClickableSpan
+  implements annn
 {
-  armj(armh paramarmh, BaseActivity paramBaseActivity) {}
+  armj(armi paramarmi) {}
   
-  public void onClick(View paramView)
+  public void a(annm paramannm)
   {
-    armh.a(this.jdField_a_of_type_Armh, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setColor(this.jdField_a_of_type_Armh.a.getApp().getResources().getColor(2131101268));
+    try
+    {
+      paramannm.dismiss();
+      this.a.mRuntime.a().finish();
+      axqw.b(null, "CliOper", "", "", "0X80094EB", "0X80094EB", 0, 0, "", "", "", "");
+      return;
+    }
+    catch (Throwable paramannm)
+    {
+      for (;;)
+      {
+        QLog.e("DocxApiPlugin", 1, "handleEvent", paramannm);
+      }
+    }
   }
 }
 

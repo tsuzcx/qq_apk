@@ -1,144 +1,106 @@
-import android.app.Dialog;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tribe.async.dispatch.Subscriber;
+import android.support.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class twp
-  extends AbsVideoInfoWidget
-  implements View.OnClickListener
+  implements Cloneable
 {
-  private TextView a;
-  private String c = "";
-  private boolean e;
+  public int a;
+  @Nullable
+  public String a;
+  public List<String> a;
+  public Map<String, String> a;
+  public two a;
+  private boolean a;
   
-  public twp(View paramView)
+  public twp(two paramtwo)
   {
-    super(paramView);
-  }
-  
-  public String a()
-  {
-    return "WeishiTagVideoInfoWidget";
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-  }
-  
-  public void a(@NonNull Map<Subscriber, String> paramMap)
-  {
-    paramMap.put(new twr(this), "");
-  }
-  
-  public void a(@NonNull tnz paramtnz, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    paramtnz = paramtnz.a();
-    if (paramtnz == null)
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Two = paramtwo;
+    vxs.a(paramtwo);
+    if ((paramtwo instanceof txc))
     {
-      k();
-      return;
-    }
-    if (TextUtils.equals(this.c, paramStoryVideoItem.mVid))
-    {
-      this.e = false;
-      int i = paramtnz.mSourceTagType;
-      if (i != 1) {
-        break label123;
-      }
-      j();
-      awqx.b(null, "dc00898", "", "", "weishi_share_videoplay", "story_entry_exp", 0, 0, "", "", "", "");
-      paramStoryVideoItem = vmz.b(i);
-      switch (i)
-      {
-      default: 
-        paramtnz = paramStoryVideoItem;
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramtnz);
-      return;
-      this.e = true;
-      this.c = paramStoryVideoItem.mVid;
-      break;
-      label123:
-      k();
-      return;
-      paramtnz = paramStoryVideoItem;
-      if (TextUtils.isEmpty(paramStoryVideoItem)) {
-        paramtnz = "来自微视APP";
+      paramtwo = ((txc)paramtwo).a;
+      if ((paramtwo != null) && (paramtwo.jdField_a_of_type_Int == 12)) {
+        this.jdField_a_of_type_Boolean = false;
       }
     }
   }
   
-  public boolean a(@NonNull tnz paramtnz, @NonNull StoryVideoItem paramStoryVideoItem)
+  public twp a()
   {
-    if ((paramtnz.a != null) && (paramtnz.a.a == 13)) {}
-    while (paramStoryVideoItem.mSourceTagType != 1) {
-      return false;
+    twp localtwp = new twp(this.jdField_a_of_type_Two);
+    localtwp.jdField_a_of_type_JavaUtilMap.putAll(this.jdField_a_of_type_JavaUtilMap);
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      localtwp.jdField_a_of_type_JavaUtilList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
     }
-    return true;
+    localtwp.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    return localtwp;
   }
   
-  public int b()
+  public void a(String paramString)
   {
-    return -1;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
+    }
   }
   
-  public void f() {}
-  
-  public void g() {}
-  
-  public void onClick(View paramView)
+  public boolean b()
   {
-    if (this.jdField_a_of_type_Tnz != null) {}
-    for (paramView = this.jdField_a_of_type_Tnz.a(); paramView == null; paramView = null)
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_a_of_type_JavaUtilList != null;
+  }
+  
+  public boolean e()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      urk.e(this.b, "click error , video info not found");
-      return;
-    }
-    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)a()).a();
-    vmz.a(paramView.mSourceTagType);
-    switch (paramView.mSourceTagType)
-    {
-    default: 
-      return;
-    }
-    Dialog localDialog = vpg.a(b(), paramView.mOwnerUid, "4", paramView.mVid, 3, paramView.mWsSchema);
-    if (localDialog != null)
-    {
-      localDialog.setOnDismissListener(new twq(this, localVideoViewVideoHolder));
-      if (localVideoViewVideoHolder != null) {
-        localVideoViewVideoHolder.c(true);
+      return true;
+      paramObject = (twp)paramObject;
+      if (this.jdField_a_of_type_Two != null) {
+        return this.jdField_a_of_type_Two.equals(paramObject.jdField_a_of_type_Two);
       }
+    } while (paramObject.jdField_a_of_type_Two == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_Two != null) {
+      return this.jdField_a_of_type_Two.hashCode();
     }
-    int i;
-    if (vnd.a(b()))
-    {
-      i = 2;
-      urp.a("weishi_share", "tag_clk", 0, i, new String[] { "4", paramView.mOwnerUid, "weishi", paramView.mVid });
-      if (!vnd.a(b())) {
-        break label220;
-      }
+    return 0;
+  }
+  
+  public String toString()
+  {
+    if ("gi{g=" + this.jdField_a_of_type_Two + ", fv=" + this.jdField_a_of_type_JavaLangString + ", vlist=" + this.jdField_a_of_type_JavaUtilList != null) {
+      return String.valueOf(this.jdField_a_of_type_JavaUtilList.size());
     }
-    label220:
-    for (paramView = "story_clk_ws";; paramView = "story_dl_ws")
-    {
-      awqx.b(null, "dc00898", "", "", "weishi_share_videoplay", paramView, 0, 0, "", "", "", "");
-      return;
-      i = 1;
-      break;
-    }
+    return "}";
   }
 }
 

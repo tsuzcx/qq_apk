@@ -1,12 +1,108 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import android.text.SpannableStringBuilder;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.text.style.StyleSpan;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract interface atvb
+public class atvb
+  extends BaseAdapter
 {
-  public abstract void a();
+  private int jdField_a_of_type_Int;
+  private atvd jdField_a_of_type_Atvd;
+  private List<atwt> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public abstract void a(PersonalityLabel paramPersonalityLabel, boolean paramBoolean1, boolean paramBoolean2);
+  public void a(atvd paramatvd)
+  {
+    this.jdField_a_of_type_Atvd = paramatvd;
+  }
   
-  public abstract void setNick(String paramString);
+  public void a(List<atwt> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int i = 0;
+    TextView localTextView = (TextView)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560894, paramViewGroup, false);
+    atwt localatwt = (atwt)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject = localatwt.a;
+    paramView = (View)localObject;
+    if (localObject != null)
+    {
+      paramView = (View)localObject;
+      if (((String)localObject).length() > 9) {
+        paramView = ((String)localObject).substring(0, 8) + "...";
+      }
+    }
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramView);
+    localSpannableStringBuilder.setSpan(new StyleSpan(1), 0, localSpannableStringBuilder.length(), 33);
+    localObject = localatwt.b;
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localSpannableStringBuilder.append(" 回复 ");
+      paramView = (View)localObject;
+      if (((String)localObject).length() > 9) {
+        paramView = ((String)localObject).substring(0, 8) + "...";
+      }
+      localSpannableStringBuilder.append(paramView);
+      localSpannableStringBuilder.setSpan(new StyleSpan(1), localSpannableStringBuilder.length() - paramView.length(), localSpannableStringBuilder.length(), 33);
+    }
+    localSpannableStringBuilder.append("：").append(localatwt.c);
+    paramView = localTextView.getPaint();
+    localObject = new ArrayList();
+    if (this.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Int = (vzo.a(localTextView.getContext()) - vzo.a(localTextView.getContext(), 85.0F));
+    }
+    paramInt = 0;
+    while (paramInt < localSpannableStringBuilder.length())
+    {
+      int j = i;
+      if (paramView.measureText(localSpannableStringBuilder.subSequence(i, paramInt).toString()) > this.jdField_a_of_type_Int)
+      {
+        ((List)localObject).add(Integer.valueOf(paramInt - 1));
+        j = paramInt;
+      }
+      paramInt += 1;
+      i = j;
+    }
+    paramView = ((List)localObject).iterator();
+    while (paramView.hasNext())
+    {
+      localObject = (Integer)paramView.next();
+      if (((Integer)localObject).intValue() < localSpannableStringBuilder.length() - 1) {
+        localSpannableStringBuilder.insert(((Integer)localObject).intValue(), "\n");
+      }
+    }
+    localTextView.setText(localSpannableStringBuilder);
+    localTextView.setMovementMethod(LinkMovementMethod.getInstance());
+    localTextView.setOnClickListener(new atvc(this, paramViewGroup));
+    return localTextView;
+  }
 }
 
 

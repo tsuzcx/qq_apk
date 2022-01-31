@@ -1,16 +1,16 @@
 package com.tencent.av.ui;
 
-import maa;
+import mkr;
 
 public class VideoInviteUIFull$1
   implements Runnable
 {
-  public VideoInviteUIFull$1(maa parammaa) {}
+  public VideoInviteUIFull$1(mkr parammkr) {}
   
   public void run()
   {
     if (this.this$0.a.a != null) {
-      this.this$0.a.a.setViewVisibility(2131306514, 4);
+      this.this$0.a.a.setViewVisibility(2131372211, 4);
     }
   }
 }

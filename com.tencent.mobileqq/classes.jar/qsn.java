@@ -1,14 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
+
 class qsn
-  extends omr
+  implements DialogInterface.OnShowListener
 {
-  qsn(qsm paramqsm, String paramString)
-  {
-    super(paramString);
-  }
+  qsn(qsk paramqsk) {}
   
-  public void a(oml paramoml)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    paramoml.g();
+    qrw.a(this.a.a, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
+    qrw.a(this.a.a).getWindow().clearFlags(8);
   }
 }
 

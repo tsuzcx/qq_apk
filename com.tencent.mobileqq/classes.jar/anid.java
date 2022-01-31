@@ -1,55 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.FeedsManager;
+import com.tencent.mobileqq.data.FeedsManager.2.1;
 
 public class anid
-  extends ajfh
+  implements ThreadExcutor.IThreadListener
 {
-  public anid(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public anid(FeedsManager paramFeedsManager) {}
   
-  protected void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "CameraEmo, onCameraEmoInsert");
-    }
-    this.a.o();
-    if ((this.a.a != null) && (((anbo)this.a.a.getManager(333)).a() > 0)) {
-      EmoticonMainPanel.c(this.a);
-    }
-  }
+  public void onAdded() {}
   
-  public void a(int paramInt)
+  public void onPostRun()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "CameraEmo, doOnGetEmoListResult");
-    }
-    if (paramInt == 0)
+    FeedsManager.access$102(this.a, true);
+    ThreadManagerV2.getUIHandlerV2().post(new FeedsManager.2.1(this));
+    if (FeedsManager.access$300(this.a))
     {
-      if ((this.a.a != null) && (((anbo)this.a.a.getManager(333)).a() > 0)) {
-        EmoticonMainPanel.c(this.a);
-      }
-      this.a.o();
+      FeedsManager.access$302(this.a, false);
+      this.a.updateQzoneFeeds();
     }
   }
   
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "CameraEmo, onCameraEmoSend");
-    }
-    this.a.o();
-    EmoticonMainPanel.a(this.a, paramInt);
-  }
-  
-  protected void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "CameraEmo, doOnDeleteEmoResult");
-    }
-    if (paramInt == 0) {
-      this.a.o();
-    }
-  }
+  public void onPreRun() {}
 }
 
 

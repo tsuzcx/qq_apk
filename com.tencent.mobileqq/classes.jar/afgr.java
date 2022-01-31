@@ -1,24 +1,25 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.data.RecentRecommendTroopItem;
-import com.tencent.widget.SingleLineTextView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
 
-class afgr
-  extends aiac
+public class afgr
+  implements afik
 {
-  public View a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public RecentRecommendTroopItem a;
-  public SingleLineTextView a;
-  public SingleLineTextView b;
+  public afgr(SearchContactsFragment paramSearchContactsFragment) {}
+  
+  public void a(String paramString)
+  {
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Int = 80000001;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_history", 0, 0, "", "", paramString, "");
+      this.a.a(paramString, false);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afgr
  * JD-Core Version:    0.7.0.1
  */

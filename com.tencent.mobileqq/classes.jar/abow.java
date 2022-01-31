@@ -1,22 +1,20 @@
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.View;
-import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class abow
-  implements View.OnCreateContextMenuListener
+  implements DialogInterface.OnClickListener
 {
-  public abow(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public abow(NotificationActivity paramNotificationActivity) {}
   
-  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContextMenu.clear();
+    NotificationActivity.a(this.a, NotificationActivity.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abow
  * JD-Core Version:    0.7.0.1
  */

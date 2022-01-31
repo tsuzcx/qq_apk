@@ -1,27 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import java.io.File;
+import java.util.Comparator;
 
-public class ahiz
-  implements Animation.AnimationListener
+final class ahiz
+  implements Comparator<File>
 {
-  public ahiz(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  private int a(String paramString)
   {
-    NewFlowCameraActivity.a(this.a).setVisibility(4);
-    NewFlowCameraActivity.a(this.a).setEnabled(false);
-    this.a.e.setVisibility(4);
-    ahhk.a("", "0X8007C05", this.a.c + "", "", "", "");
+    try
+    {
+      int i = paramString.lastIndexOf('.');
+      if (i == -1) {
+        return Integer.parseInt(paramString);
+      }
+      i = Integer.parseInt(paramString.substring(0, i));
+      return i;
+    }
+    catch (Exception paramString) {}
+    return 0;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public int a(File paramFile1, File paramFile2)
   {
-    NewFlowCameraActivity.a(this.a).setEnabled(false);
+    return a(paramFile1.getName()) - a(paramFile2.getName());
   }
 }
 

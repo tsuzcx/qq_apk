@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
 
 public class aavk
   implements DialogInterface.OnClickListener
 {
-  public aavk(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public aavk(ContactBindedActivity paramContactBindedActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.D();
+    ContactBindedActivity.a(this.a, null);
   }
 }
 

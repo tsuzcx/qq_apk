@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adni;
-import adnt;
-import akbm;
-import amrx;
+import adyh;
+import adys;
+import akpy;
 import android.content.Context;
 import android.os.Bundle;
-import badq;
+import anie;
+import bbev;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -25,7 +25,7 @@ import mqq.os.MqqHandler;
 public final class ReplyTextItemBuilder$5
   implements Runnable
 {
-  public ReplyTextItemBuilder$5(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, adnt paramadnt, Context paramContext, ChatThumbView paramChatThumbView) {}
+  public ReplyTextItemBuilder$5(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, adys paramadys, Context paramContext, ChatThumbView paramChatThumbView) {}
   
   public void run()
   {
@@ -33,11 +33,11 @@ public final class ReplyTextItemBuilder$5
     Object localObject1;
     Object localObject4;
     boolean bool;
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof amrx))
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof anie))
     {
-      localObject1 = (amrx)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      localObject4 = ((amrx)localObject1).getSourceMsgInfo();
-      bool = ((amrx)localObject1).getHasPulledSourceMsg();
+      localObject1 = (anie)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      localObject4 = ((anie)localObject1).getSourceMsgInfo();
+      bool = ((anie)localObject1).getHasPulledSourceMsg();
     }
     for (;;)
     {
@@ -52,8 +52,8 @@ public final class ReplyTextItemBuilder$5
         Object localObject5;
         if ((localObject1 == null) && (!bool) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin != null))
         {
-          if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof amrx)) {
-            ((amrx)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).setPulledSourceMsg();
+          if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof anie)) {
+            ((anie)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).setPulledSourceMsg();
           }
           Bundle localBundle = new Bundle();
           QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
@@ -63,8 +63,8 @@ public final class ReplyTextItemBuilder$5
           localBundle.putBoolean("success", false);
           localQQMessageFacade.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(j), localObject5);
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, ((MessageForReplyText.SourceMsgInfo)localObject4).mSourceMsgSeq, ((MessageForReplyText.SourceMsgInfo)localObject4).mSourceMsgSeq, true, localBundle, 0);
-          localQQMessageFacade.b.put(akbm.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop), Boolean.valueOf(false));
-          if (!badq.g(BaseApplication.getContext())) {}
+          localQQMessageFacade.b.put(akpy.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop), Boolean.valueOf(false));
+          if (!bbev.g(BaseApplication.getContext())) {}
         }
         label458:
         label468:
@@ -83,7 +83,7 @@ public final class ReplyTextItemBuilder$5
                 break label458;
               }
               localObject5 = new StringBuilder();
-              localObject4 = adni.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (MessageRecord)localObject1, (StringBuilder)localObject5);
+              localObject4 = adyh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (MessageRecord)localObject1, (StringBuilder)localObject5);
               if (localObject4 == null) {
                 break label458;
               }

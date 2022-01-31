@@ -1,16 +1,11 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-
 public class svf
-  extends atdi
 {
-  svf(svc paramsvc) {}
-  
-  protected void a(Object paramObject)
-  {
-    ThreadManager.post(new MsgTabStoryNodeListManager.2.1(this, paramObject), 5, null, true);
-    urk.b(svc.b(), "freshRedPoint, showStoryNode");
-  }
+  public double a;
+  public int a;
+  public long a;
+  public boolean a;
+  public double b;
+  public int b;
 }
 
 

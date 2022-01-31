@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.apollo.script;
 
-import airv;
-import aisa;
-import aisd;
+import ajet;
+import ajey;
+import ajfb;
 
 public class SpriteBridge$2
   implements Runnable
 {
-  public SpriteBridge$2(aisa paramaisa, airv paramairv, aisd paramaisd) {}
+  public SpriteBridge$2(ajey paramajey, ajet paramajet, ajfb paramajfb) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Airv != null) && (this.jdField_a_of_type_Aisd != null))
+    if ((this.jdField_a_of_type_Ajet != null) && (this.jdField_a_of_type_Ajfb != null))
     {
-      this.jdField_a_of_type_Airv.a(this.jdField_a_of_type_Aisd.b, false);
-      this.jdField_a_of_type_Airv.a(this.jdField_a_of_type_Aisd.a, false);
+      this.jdField_a_of_type_Ajet.a(this.jdField_a_of_type_Ajfb.b, false);
+      this.jdField_a_of_type_Ajet.a(this.jdField_a_of_type_Ajfb.a, false);
     }
   }
 }

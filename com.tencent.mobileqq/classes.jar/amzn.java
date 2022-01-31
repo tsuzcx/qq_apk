@@ -1,83 +1,42 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavImageData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-
 public class amzn
-  extends amza
 {
-  QQAppInterface b = null;
-  
-  public amzn(QQAppInterface paramQQAppInterface)
-  {
-    super("qq.android.qav.image2", paramQQAppInterface);
-    this.b = paramQQAppInterface;
-  }
-  
-  public int a()
-  {
-    return 10047;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return QavImageData.class;
-  }
+  private String jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/qzone/visitor/";
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
   public String a()
   {
-    return "qavDownloadImageDuration";
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavImageHandler", 2, "download success: " + paramString);
-    }
-    try
-    {
-      bace.a(paramString, mgw.b(), false);
-      super.a(paramString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    QavImageData localQavImageData = (QavImageData)a();
-    if ((localQavImageData != null) && (!localQavImageData.autoDownload))
-    {
-      localQavImageData.autoDownload = true;
-      amyo.a(localQavImageData, new String[] { "autoDownload" });
-    }
-    super.a(paramBoolean);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public boolean a()
   {
-    return true;
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public String b()
+  public void b(boolean paramBoolean)
   {
-    return null;
+    this.b = paramBoolean;
   }
   
-  public boolean h()
+  public boolean b()
   {
-    return ((QavImageData)a()).autoDownload;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amzn
  * JD-Core Version:    0.7.0.1
  */

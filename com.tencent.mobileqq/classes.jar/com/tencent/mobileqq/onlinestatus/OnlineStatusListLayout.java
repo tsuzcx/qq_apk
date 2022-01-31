@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import aciy;
+import actn;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import atlj;
+import aujh;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import mqq.app.AppRuntime.Status;
@@ -53,27 +53,27 @@ public class OnlineStatusListLayout
   
   private void a()
   {
-    this.e = aciy.a(12.0F, getResources());
-    this.f = aciy.a(16.0F, getResources());
+    this.e = actn.a(12.0F, getResources());
+    this.f = actn.a(16.0F, getResources());
     setPadding(this.e, this.f, this.e, 0);
-    this.c = aciy.a(16.0F, getResources());
+    this.c = actn.a(16.0F, getResources());
     this.a = ((getResources().getDisplayMetrics().widthPixels - this.e * 2 - this.c * 2) / 3);
-    this.d = aciy.a(20.0F, getResources());
-    this.b = aciy.a(32.0F, getResources());
+    this.d = actn.a(20.0F, getResources());
+    this.b = actn.a(32.0F, getResources());
   }
   
-  private boolean a(atlj paramatlj1, atlj paramatlj2)
+  private boolean a(aujh paramaujh1, aujh paramaujh2)
   {
-    if ((paramatlj1 == null) || (paramatlj2 == null) || (paramatlj1.jdField_a_of_type_MqqAppAppRuntime$Status.getValue() != paramatlj2.jdField_a_of_type_MqqAppAppRuntime$Status.getValue())) {}
-    while (paramatlj1.jdField_a_of_type_Long != paramatlj2.jdField_a_of_type_Long) {
+    if ((paramaujh1 == null) || (paramaujh2 == null) || (paramaujh1.jdField_a_of_type_MqqAppAppRuntime$Status.getValue() != paramaujh2.jdField_a_of_type_MqqAppAppRuntime$Status.getValue())) {}
+    while (paramaujh1.jdField_a_of_type_Long != paramaujh2.jdField_a_of_type_Long) {
       return false;
     }
     return true;
   }
   
-  public void a(atlj paramatlj)
+  public void a(aujh paramaujh)
   {
-    if (paramatlj == null) {}
+    if (paramaujh == null) {}
     for (;;)
     {
       return;
@@ -85,23 +85,23 @@ public class OnlineStatusListLayout
         if ((localObject instanceof OnlineStatusItemView))
         {
           localObject = (OnlineStatusItemView)localObject;
-          ((OnlineStatusItemView)localObject).a(a(((OnlineStatusItemView)localObject).a, paramatlj));
+          ((OnlineStatusItemView)localObject).a(a(((OnlineStatusItemView)localObject).a, paramaujh));
         }
         i += 1;
       }
     }
   }
   
-  public void a(List<atlj> paramList, View.OnClickListener paramOnClickListener)
+  public void a(List<aujh> paramList, View.OnClickListener paramOnClickListener)
   {
     int j = paramList.size();
     int i = 0;
     while (i < j)
     {
-      atlj localatlj = (atlj)paramList.get(i);
+      aujh localaujh = (aujh)paramList.get(i);
       OnlineStatusItemView localOnlineStatusItemView = new OnlineStatusItemView(getContext());
-      localOnlineStatusItemView.a(localatlj);
-      localOnlineStatusItemView.setTag(localatlj);
+      localOnlineStatusItemView.a(localaujh);
+      localOnlineStatusItemView.setTag(localaujh);
       localOnlineStatusItemView.setOnClickListener(paramOnClickListener);
       addView(localOnlineStatusItemView);
       i += 1;

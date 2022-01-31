@@ -11,8 +11,8 @@ import com.tencent.hlyyb.downloader.DownloaderTask;
 import com.tencent.hlyyb.downloader.DownloaderTaskCategory;
 import com.tencent.hlyyb.downloader.DownloaderTaskListener;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.l;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.k;
 import com.tencent.tmdownloader.notify.DownloadTaskInfo;
 import java.io.File;
 import java.util.HashMap;
@@ -142,7 +142,7 @@ public class c
     {
       for (;;)
       {
-        ac.a("_DownloadInfo", ">buildInfo parseInt error!", paramDownloaderTask);
+        ab.a("_DownloadInfo", ">buildInfo parseInt error!", paramDownloaderTask);
       }
     }
   }
@@ -218,14 +218,14 @@ public class c
   private boolean d(String paramString)
   {
     Object localObject = HalleyAgent.getDownloader().getAllTasks();
-    ac.e("_DownloadInfo", "isSavePathExisted " + paramString + ",taskList=" + localObject);
+    ab.e("_DownloadInfo", "isSavePathExisted " + paramString + ",taskList=" + localObject);
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       DownloaderTask localDownloaderTask = (DownloaderTask)((Iterator)localObject).next();
       if ((TextUtils.equals(localDownloaderTask.getSavePath(), paramString)) && (!TextUtils.equals(localDownloaderTask.getUrl(), this.b)))
       {
-        ac.e("_DownloadInfo", "Task " + localDownloaderTask.getUrl() + " has same path:" + paramString);
+        ab.e("_DownloadInfo", "Task " + localDownloaderTask.getUrl() + " has same path:" + paramString);
         return true;
       }
     }
@@ -238,7 +238,7 @@ public class c
     {
       try
       {
-        ac.c("_DownloadInfo", "halleytest updateStatus status=" + paramInt + ", mStatus = " + this.g);
+        ab.c("_DownloadInfo", "halleytest updateStatus status=" + paramInt + ", mStatus = " + this.g);
         boolean bool = b();
         if (bool) {
           return;
@@ -254,7 +254,7 @@ public class c
           if ((this.g != 4) || (!this.F)) {
             continue;
           }
-          ac.c("_DownloadInfo", "Download status is succeed, start to install");
+          ab.c("_DownloadInfo", "Download status is succeed, start to install");
           a.a(com.tencent.tmdownloader.internal.storage.d.a(this.j));
           continue;
         }
@@ -268,7 +268,7 @@ public class c
   public void a(int paramInt, DownloaderTask paramDownloaderTask)
   {
     if (paramDownloaderTask == null) {
-      ac.e("_DownloadInfo", "<downloadReport> task is null ,return");
+      ab.e("_DownloadInfo", "<downloadReport> task is null ,return");
     }
     long l1 = System.currentTimeMillis() / 1000L;
     String str1 = paramDownloaderTask.getUniqueKey();
@@ -284,8 +284,8 @@ public class c
       long l3 = paramDownloaderTask.getCostTime();
       long l4 = paramDownloaderTask.getTotalLength();
       paramDownloaderTask = l1 + "|" + this.q + "|" + this.s + "|" + this.r + "|" + this.B + "|" + paramInt + "|" + str1 + "|" + str2 + "|" + i1 + "|" + i2 + "|" + l2 + "|" + l3 + "|" + l4 + "|" + this.x;
-      ac.c("_DownloadInfo", "<downloadReport> reportLog type=8,postReport.data: " + paramDownloaderTask);
-      l.a().post(new e(this, paramDownloaderTask));
+      ab.c("_DownloadInfo", "<downloadReport> reportLog type=8,postReport.data: " + paramDownloaderTask);
+      k.a().post(new e(this, paramDownloaderTask));
       return;
     }
   }
@@ -301,21 +301,21 @@ public class c
   
   public void a(String paramString)
   {
-    ac.c(paramString, "--------dump DownloadInfo-----------");
-    ac.c(paramString, "mContentType: " + this.a);
-    ac.c(paramString, "mURL: " + this.b);
-    ac.c(paramString, "mBakUrl: " + this.J);
-    ac.c(paramString, "mTotalBytes: " + this.i);
-    ac.c(paramString, "mUUID: " + this.d);
-    ac.c(paramString, "mStatus: " + this.g);
-    ac.c(paramString, "mReceivedBytes: " + this.h);
-    ac.c(paramString, "mFileName: " + this.j);
-    ac.c(paramString, "mDownloadFailedErrCode: " + this.l);
-    ac.c(paramString, "mNetType:" + this.m);
-    ac.c(paramString, "mDownloadFailedTime:" + this.n);
-    ac.c(paramString, "mHeaderParamString:" + this.p);
-    ac.c(paramString, "mAppid:" + this.q + " mpackageName:" + this.r + " mVersioncode:" + this.s + " via:" + this.x);
-    ac.c(paramString, "mChannelid:" + this.y + " traceId:" + this.z + " extraData:" + this.A + " downloadType:" + this.B + " mIconUrl:" + this.D + " mAppName:" + this.E + " showNotification:" + this.K + " isAutoInstallBySDK:" + this.F);
+    ab.c(paramString, "--------dump DownloadInfo-----------");
+    ab.c(paramString, "mContentType: " + this.a);
+    ab.c(paramString, "mURL: " + this.b);
+    ab.c(paramString, "mBakUrl: " + this.J);
+    ab.c(paramString, "mTotalBytes: " + this.i);
+    ab.c(paramString, "mUUID: " + this.d);
+    ab.c(paramString, "mStatus: " + this.g);
+    ab.c(paramString, "mReceivedBytes: " + this.h);
+    ab.c(paramString, "mFileName: " + this.j);
+    ab.c(paramString, "mDownloadFailedErrCode: " + this.l);
+    ab.c(paramString, "mNetType:" + this.m);
+    ab.c(paramString, "mDownloadFailedTime:" + this.n);
+    ab.c(paramString, "mHeaderParamString:" + this.p);
+    ab.c(paramString, "mAppid:" + this.q + " mpackageName:" + this.r + " mVersioncode:" + this.s + " via:" + this.x);
+    ab.c(paramString, "mChannelid:" + this.y + " traceId:" + this.z + " extraData:" + this.A + " downloadType:" + this.B + " mIconUrl:" + this.D + " mAppName:" + this.E + " showNotification:" + this.K + " isAutoInstallBySDK:" + this.F);
   }
   
   public void a(HashMap<String, String> paramHashMap)
@@ -356,7 +356,7 @@ public class c
     }
     for (;;)
     {
-      ac.e("_DownloadInfo", "halleytest convertHalleyFailCodeToDownloadFailedErrCode halley failCode = " + paramInt + ",mDownloadFailedErrCode = " + this.l);
+      ab.e("_DownloadInfo", "halleytest convertHalleyFailCodeToDownloadFailedErrCode halley failCode = " + paramInt + ",mDownloadFailedErrCode = " + this.l);
       return;
       if (paramInt == -23) {
         this.l = 601;
@@ -413,7 +413,7 @@ public class c
   
   public int c()
   {
-    ac.c("_DownloadInfo", "url: " + this.b);
+    ab.c("_DownloadInfo", "url: " + this.b);
     Object localObject1;
     Object localObject2;
     if ((!TextUtils.isEmpty(this.p)) && ((this.o == null) || (this.o.size() <= 0)))
@@ -435,7 +435,7 @@ public class c
       }
       catch (JSONException localJSONException)
       {
-        ac.b("_DownloadInfo", "exception: ", localJSONException);
+        ab.b("_DownloadInfo", "exception: ", localJSONException);
         localJSONException.printStackTrace();
       }
     }
@@ -464,14 +464,14 @@ public class c
         this.g = 0;
         this.l = 0;
       }
-      ac.c("_DownloadInfo", "startDownloadIfReady...");
+      ab.c("_DownloadInfo", "startDownloadIfReady...");
       a("_DownloadInfo");
       localDownloaderTask = b(this.b);
       if (localDownloaderTask == null) {
         break label798;
       }
-      ac.c("_DownloadInfo", "halleyTest getIncompleteTask dt = " + localDownloaderTask + ",download %=" + localDownloaderTask.getPercentage());
-      ac.c("_DownloadInfo", "halleyTest getIncompleteTask dt = " + localDownloaderTask + ",download length=" + localDownloaderTask.getReceivedLength());
+      ab.c("_DownloadInfo", "halleyTest getIncompleteTask dt = " + localDownloaderTask + ",download %=" + localDownloaderTask.getPercentage());
+      ab.c("_DownloadInfo", "halleyTest getIncompleteTask dt = " + localDownloaderTask + ",download length=" + localDownloaderTask.getReceivedLength());
       label332:
       if (localDownloaderTask != null) {
         break label918;
@@ -481,12 +481,12 @@ public class c
     {
       try
       {
-        ac.c("_DownloadInfo", "mFileSize = " + this.I);
-        ac.c("_DownloadInfo", "mFileNameB = " + this.j);
+        ab.c("_DownloadInfo", "mFileSize = " + this.I);
+        ab.c("_DownloadInfo", "mFileNameB = " + this.j);
         if (d(com.tencent.tmdownloader.internal.storage.d.b(this.j) + File.separator + this.j)) {
           this.j = b.a(this.b, this.a);
         }
-        ac.c("_DownloadInfo", "mFileNameA = " + this.j);
+        ab.c("_DownloadInfo", "mFileNameA = " + this.j);
         if (this.I <= 0L) {
           continue;
         }
@@ -508,12 +508,12 @@ public class c
         a(1);
         HalleyAgent.getDownloader().addNewTask(localDownloaderTask);
         a(100, localDownloaderTask);
-        ac.c("_DownloadInfo", "halleyTest createNewTask mURL=" + this.b + ",saveFilePath=" + com.tencent.tmdownloader.internal.storage.d.a(this.j) + ",fileName=" + this.j);
+        ab.c("_DownloadInfo", "halleyTest createNewTask mURL=" + this.b + ",saveFilePath=" + com.tencent.tmdownloader.internal.storage.d.a(this.j) + ",fileName=" + this.j);
       }
       catch (Exception localException)
       {
         label798:
-        ac.c("_DownloadInfo", "startDownloadIfReady HalleyAgent createNewTask Exception", localException);
+        ab.c("_DownloadInfo", "startDownloadIfReady HalleyAgent createNewTask Exception", localException);
         continue;
       }
       return 0;
@@ -566,7 +566,7 @@ public class c
   
   public void d()
   {
-    ac.c("_DownloadInfo", "DownloadInfo::pauseDownload url: " + this.b);
+    ab.c("_DownloadInfo", "DownloadInfo::pauseDownload url: " + this.b);
     DownloaderTask localDownloaderTask = b(this.b);
     if (localDownloaderTask != null)
     {
@@ -574,12 +574,12 @@ public class c
       a(3);
       return;
     }
-    ac.d("_DownloadInfo", "DownloadInfo::pauseDownload task == null");
+    ab.d("_DownloadInfo", "DownloadInfo::pauseDownload task == null");
   }
   
   public void e()
   {
-    ac.c("_DownloadInfo", "DownloadInfo::stopDownload url: " + this.b);
+    ab.c("_DownloadInfo", "DownloadInfo::stopDownload url: " + this.b);
     DownloaderTask localDownloaderTask = b(this.b);
     if (localDownloaderTask != null)
     {
@@ -587,12 +587,12 @@ public class c
       a(6);
       return;
     }
-    ac.d("_DownloadInfo", "DownloadInfo::stopDownload task == null");
+    ab.d("_DownloadInfo", "DownloadInfo::stopDownload task == null");
   }
   
   public void f()
   {
-    ac.c("_DownloadInfo", "DownloadInfo::deleteDownload url: " + this.b + ",mFileName: " + this.j);
+    ab.c("_DownloadInfo", "DownloadInfo::deleteDownload url: " + this.b + ",mFileName: " + this.j);
     DownloaderTask localDownloaderTask = c(this.b);
     Object localObject = com.tencent.tmdownloader.internal.storage.d.a(localDownloaderTask.getRealSaveName());
     if (localObject != null)

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import abxk;
-import azli;
+import achw;
+import bamm;
 
 public class TroopInfoActivity$29$1
   implements Runnable
 {
-  public TroopInfoActivity$29$1(abxk paramabxk, azli paramazli) {}
+  public TroopInfoActivity$29$1(achw paramachw, bamm parambamm) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Azli.d == 0)
+    if (this.jdField_a_of_type_Bamm.d == 0)
     {
-      TroopInfoActivity.b(this.jdField_a_of_type_Abxk.a);
+      TroopInfoActivity.b(this.jdField_a_of_type_Achw.a);
       return;
     }
-    TroopInfoActivity.i(this.jdField_a_of_type_Abxk.a);
+    TroopInfoActivity.i(this.jdField_a_of_type_Achw.a);
   }
 }
 

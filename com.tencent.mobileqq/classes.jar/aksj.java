@@ -1,30 +1,35 @@
-import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class aksj
+final class aksj
+  extends bbwf
 {
-  public String a;
-  public String b;
-  public String c;
+  aksj(String paramString) {}
   
-  public String a()
+  public void onCancel(bbwg parambbwg)
   {
-    if (TextUtils.isEmpty(this.b)) {
-      return "";
-    }
-    return this.b;
+    aksf.jdField_a_of_type_Bbwg = null;
+    QLog.d(aksf.jdField_a_of_type_JavaLangString, 1, "downloadZipFile cancel");
   }
   
-  public String b()
+  public void onDone(bbwg parambbwg)
   {
-    if (TextUtils.isEmpty(this.c)) {
-      return "";
+    aksf.jdField_a_of_type_Bbwg = null;
+    if (parambbwg.a() == 3)
+    {
+      QLog.d(aksf.jdField_a_of_type_JavaLangString, 1, "download finished " + aksf.f);
+      parambbwg = new File(this.jdField_a_of_type_JavaLangString);
+      if ((parambbwg.exists()) && (aksf.a(parambbwg))) {
+        QLog.d(aksf.jdField_a_of_type_JavaLangString, 1, "downloadZipFile suc and zip succ");
+      }
+      return;
     }
-    return this.c;
+    QLog.d(aksf.jdField_a_of_type_JavaLangString, 1, new Object[] { "downloadZipFile failed: ", parambbwg.b, " code=", Integer.valueOf(parambbwg.a) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aksj
  * JD-Core Version:    0.7.0.1
  */

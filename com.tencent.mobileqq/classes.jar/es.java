@@ -1,153 +1,273 @@
-import com.tencent.litetransfersdk.ReportItem;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.DataLineMsgSet;
+import com.tencent.mobileqq.data.DataLineMsgSetList;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class es
 {
-  public static int a = 19;
-  public static int b = 1;
-  public static int c = 21;
-  public static int d = 9;
+  ajuo jdField_a_of_type_Ajuo;
+  private bdnj jdField_a_of_type_Bdnj = new et(this);
   
-  public static short a()
+  public es(ajuo paramajuo)
   {
-    if (badq.h(BaseApplication.getContext())) {
-      return 18;
-    }
-    if (badq.c(BaseApplication.getContext())) {
-      return 19;
-    }
-    if (badq.g(BaseApplication.getContext())) {
-      return 20;
-    }
-    return 17;
+    this.jdField_a_of_type_Ajuo = paramajuo;
+    bdni.a().a(this.jdField_a_of_type_Bdnj);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, ReportItem paramReportItem, int paramInt)
+  private long a(String paramString)
   {
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    String str;
-    boolean bool;
-    label62:
-    long l2;
-    long l3;
-    long l4;
-    long l1;
-    label129:
-    HashMap localHashMap;
-    if (paramReportItem.bSend)
+    try
     {
-      str = "actFAFileUp";
-      if ((paramReportItem.emResult != 2) && (paramReportItem.emResult != 26) && (paramReportItem.emResult != 30) && (paramReportItem.emResult != 31) && (paramReportItem.emResult != 34)) {
-        break label663;
+      paramString = paramString.toUpperCase();
+      int i = paramString.indexOf('G');
+      if (i != -1) {
+        return (Float.parseFloat(paramString.substring(0, i)) * 1024.0F * 1024.0F * 1024.0F);
       }
-      bool = true;
-      l2 = paramReportItem.uDuration;
-      l3 = paramReportItem.uFileSize;
-      l4 = paramReportItem.uStartPos;
-      l1 = paramInt;
-      if ((paramQQAppInterface != null) && (paramInt == b)) {
-        ((ajrc)paramQQAppInterface.a(10)).a();
+      i = paramString.indexOf('M');
+      if (i != -1) {
+        return (Float.parseFloat(paramString.substring(0, i)) * 1024.0F * 1024.0F);
       }
-      l1 = 1L;
-      if ((paramReportItem.uDevType != 0) && (paramReportItem.uDevType != 1)) {
-        break label668;
+      i = paramString.indexOf('K');
+      if (i != -1) {
+        return (Float.parseFloat(paramString.substring(0, i)) * 1024.0F);
       }
-      l1 = 1L;
-      if (!paramReportItem.bSend) {
-        paramReportItem.uSessionID &= 0xFFFFFFFF;
-      }
-      localHashMap = new HashMap();
-      localHashMap.put("sessionid", String.valueOf(paramReportItem.uSessionID));
-      localHashMap.put("mobileterm", String.valueOf(a));
-      localHashMap.put("otherterm", String.valueOf(l1));
-      localHashMap.put("channeltype", String.valueOf(paramReportItem.uChannelType));
-      localHashMap.put("networktype", String.valueOf(a()));
-      localHashMap.put("filesize", String.valueOf(paramReportItem.uFileSize));
-      if (!paramReportItem.bFileExist) {
-        break label684;
-      }
-      paramInt = 1;
-      label252:
-      localHashMap.put("fileexist", String.valueOf(paramInt));
-      localHashMap.put("startpos", String.valueOf(paramReportItem.uStartPos));
-      localHashMap.put("duration", String.valueOf(paramReportItem.uDuration));
-      localHashMap.put("suffix", paramReportItem.sSuffix);
-      localHashMap.put("result", String.valueOf(paramReportItem.emResult));
-      localHashMap.put("failcode", String.valueOf(paramReportItem.nFailCode));
-      localHashMap.put("usercode", String.valueOf(paramReportItem.nUserCode));
-      localHashMap.put("filetye", String.valueOf(paramReportItem.uFileType));
-      if (!paramQQAppInterface.e) {
-        break label689;
-      }
-      paramInt = 2;
-      label375:
-      localHashMap.put("qqstate", String.valueOf(paramInt));
-      if (paramReportItem.dwClientIP < 0) {
-        break label694;
-      }
-      l1 = paramReportItem.dwClientIP;
-      label401:
-      localHashMap.put("clientip", String.valueOf(l1));
-      if (paramReportItem.dwServerIP < 0) {
-        break label708;
-      }
-      l1 = paramReportItem.dwServerIP;
-      label428:
-      localHashMap.put("serverip", String.valueOf(l1));
-      if (paramReportItem.wServerPort < 0) {
-        break label722;
-      }
-      paramInt = paramReportItem.wServerPort;
-      label453:
-      localHashMap.put("serverport", String.valueOf(paramInt));
-      localHashMap.put("taskstart", String.valueOf(paramReportItem.uTaskStart / 1000L));
-      localHashMap.put("taskend", String.valueOf(paramReportItem.uTaskEnd / 1000L));
-      localHashMap.put("notifytime", String.valueOf(paramReportItem.uNotifyTime / 1000L));
-      if (!paramReportItem.bUserRetry) {
-        break label733;
+      i = paramString.indexOf('B');
+      if (i != -1)
+      {
+        float f = Float.parseFloat(paramString.substring(0, i));
+        return f;
       }
     }
-    label663:
-    label668:
-    label684:
-    label689:
-    label694:
-    label708:
-    label722:
-    label733:
-    for (paramInt = 1;; paramInt = 0)
+    catch (Exception paramString) {}
+    return 0L;
+  }
+  
+  public int a(String paramString)
+  {
+    fc.j(this.jdField_a_of_type_Ajuo.app);
+    int i = bdni.a().a(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("dataline.MoloHandler", 2, "PCPushProxy open(" + paramString + "):" + i);
+    }
+    return i;
+  }
+  
+  public DataLineMsgRecord a(byte[] paramArrayOfByte)
+  {
+    boolean bool2 = true;
+    Object localObject = null;
+    bdni.a().a(this.jdField_a_of_type_Bdnj);
+    for (;;)
     {
-      localHashMap.put("userretry", String.valueOf(paramInt));
-      if (QLog.isColorLevel()) {
-        QLog.d("StatisticCollector", 2, "dataline event report: " + str + "session id = " + (String)localHashMap.get("sessionid") + " FILEASSISTANT_MOBILETERM = " + (String)localHashMap.get("mobileterm") + "  Report FILEASSISTANT_OTHERTERM  =  " + (String)localHashMap.get("otherterm"));
+      try
+      {
+        bdnk localbdnk = bdni.a().a(paramArrayOfByte);
+        paramArrayOfByte = localObject;
+        if (localbdnk != null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("dataline.MoloHandler", 2, "dealWith new pkgEntry:" + localbdnk.e);
+          }
+          long l = this.jdField_a_of_type_Ajuo.a(0).longValue();
+          paramArrayOfByte = new DataLineMsgRecord();
+          paramArrayOfByte.msg = this.jdField_a_of_type_Ajuo.a().getApp().getString(2131693898);
+          paramArrayOfByte.msgtype = -2335;
+          paramArrayOfByte.sessionid = l;
+          paramArrayOfByte.isread = false;
+          paramArrayOfByte.path = null;
+          paramArrayOfByte.thumbPath = null;
+          paramArrayOfByte.filename = localbdnk.e;
+          paramArrayOfByte.filesize = a(localbdnk.h);
+          paramArrayOfByte.issuc = false;
+          paramArrayOfByte.vipBubbleID = this.jdField_a_of_type_Ajuo.b();
+          paramArrayOfByte.time = awzw.a();
+          paramArrayOfByte.strMoloKey = localbdnk.a;
+          paramArrayOfByte.strMoloSource = localbdnk.i;
+          paramArrayOfByte.strMoloIconUrl = localbdnk.g;
+          paramArrayOfByte.strMoloSrcIconUrl = localbdnk.j;
+          if (localbdnk.b != 1) {
+            break label299;
+          }
+          bool1 = true;
+          paramArrayOfByte.bIsApkFile = bool1;
+          if (apue.a(paramArrayOfByte.filename) != 0) {
+            break label304;
+          }
+          bool1 = bool2;
+          paramArrayOfByte.bIsMoloImage = bool1;
+          paramArrayOfByte.fileMsgStatus = 1L;
+        }
       }
-      awrn.a(BaseApplication.getContext()).a(paramQQAppInterface.getCurrentAccountUin(), str, bool, l2, l3 - l4, localHashMap, null);
-      return;
-      str = "actFAFileDown";
-      break;
-      bool = false;
-      break label62;
-      if (paramReportItem.uDevType != 3) {
-        break label129;
+      catch (Exception localException)
+      {
+        paramArrayOfByte = localObject;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("dataline.MoloHandler", 2, "PCPushProxy.parse Exception:" + localException.toString());
+        return null;
       }
-      l1 = 21L;
-      break label129;
-      paramInt = 0;
-      break label252;
-      paramInt = 1;
-      break label375;
-      l1 = paramReportItem.dwClientIP + 4294967295L;
-      break label401;
-      l1 = paramReportItem.dwServerIP + 4294967295L;
-      break label428;
-      paramInt = paramReportItem.wServerPort + 65535;
-      break label453;
+      return paramArrayOfByte;
+      label299:
+      boolean bool1 = false;
+      continue;
+      label304:
+      bool1 = false;
     }
+  }
+  
+  public void a()
+  {
+    bdni.a().b(this.jdField_a_of_type_Bdnj);
+  }
+  
+  public void a(int paramInt)
+  {
+    bdni.a().a(paramInt);
+  }
+  
+  public boolean a()
+  {
+    Object localObject2 = this.jdField_a_of_type_Ajuo.a().a().a(0).a();
+    Object localObject1 = this.jdField_a_of_type_Ajuo.a().a().a(0).a(true);
+    localObject2 = ((DataLineMsgSetList)localObject2).iterator();
+    Object localObject3;
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject3 = ((DataLineMsgSet)((Iterator)localObject2).next()).values().iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject3).next();
+        if (localDataLineMsgRecord.strMoloKey != null) {
+          c(localDataLineMsgRecord.strMoloKey);
+        }
+      }
+    }
+    if (localObject1 != null)
+    {
+      localObject1 = ((DataLineMsgSetList)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = ((DataLineMsgSet)((Iterator)localObject1).next()).values().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (DataLineMsgRecord)((Iterator)localObject2).next();
+          if (((DataLineMsgRecord)localObject3).strMoloKey != null) {
+            c(((DataLineMsgRecord)localObject3).strMoloKey);
+          }
+        }
+      }
+    }
+    return true;
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool = bdni.a().a(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("dataline.MoloHandler", 2, "PCPushProxy start(" + paramString + "):" + bool);
+    }
+    if (bool)
+    {
+      paramString = this.jdField_a_of_type_Ajuo.app.a(0).a(paramString);
+      if (paramString == null) {
+        return bool;
+      }
+      paramString = paramString.iterator();
+      while (paramString.hasNext())
+      {
+        DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)paramString.next();
+        localDataLineMsgRecord.issuc = true;
+        localDataLineMsgRecord.fileMsgStatus = 0L;
+        this.jdField_a_of_type_Ajuo.app.a().a(0).c(localDataLineMsgRecord.msgId);
+        this.jdField_a_of_type_Ajuo.a(6, true, new Object[] { Long.valueOf(0L), Long.valueOf(localDataLineMsgRecord.sessionid), localDataLineMsgRecord.path, Byte.valueOf(0), Boolean.valueOf(false), Boolean.valueOf(true), Long.valueOf(localDataLineMsgRecord.filesize) });
+      }
+    }
+    return bool;
+  }
+  
+  public void b(int paramInt)
+  {
+    bdni.a().b(paramInt);
+  }
+  
+  public boolean b()
+  {
+    Object localObject2 = this.jdField_a_of_type_Ajuo.a().a().a(0).a();
+    Object localObject1 = this.jdField_a_of_type_Ajuo.a().a().a(0).a(true);
+    localObject2 = ((DataLineMsgSetList)localObject2).iterator();
+    Object localObject3;
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject3 = ((DataLineMsgSet)((Iterator)localObject2).next()).values().iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject3).next();
+        if (localDataLineMsgRecord.strMoloKey != null) {
+          d(localDataLineMsgRecord.strMoloKey);
+        }
+      }
+    }
+    if (localObject1 != null)
+    {
+      localObject1 = ((DataLineMsgSetList)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = ((DataLineMsgSet)((Iterator)localObject1).next()).values().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (DataLineMsgRecord)((Iterator)localObject2).next();
+          if (((DataLineMsgRecord)localObject3).strMoloKey != null) {
+            d(((DataLineMsgRecord)localObject3).strMoloKey);
+          }
+        }
+      }
+    }
+    return true;
+  }
+  
+  public boolean b(String paramString)
+  {
+    fc.h(this.jdField_a_of_type_Ajuo.app);
+    bdni.a().b(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("dataline.MoloHandler", 2, "PCPushProxy install : " + paramString);
+    }
+    return true;
+  }
+  
+  public boolean c(String paramString)
+  {
+    bdni.a().a(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("dataline.MoloHandler", 2, "PCPushProxy pause(" + paramString + ")");
+    }
+    return true;
+  }
+  
+  public boolean d(String paramString)
+  {
+    bdni.a().c(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("dataline.MoloHandler", 2, "PCPushProxy delete(" + paramString + ")");
+    }
+    return true;
+  }
+  
+  public boolean e(String paramString)
+  {
+    boolean bool = bdni.a().b(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("dataline.MoloHandler", 2, "PCPushProxy isInstalled(" + paramString + "):" + bool);
+    }
+    return bool;
   }
 }
 

@@ -1,91 +1,50 @@
-import android.annotation.TargetApi;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.animation.AlphaAnimation;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.List;
 
-@TargetApi(14)
-public class uwv
+final class uwv
+  implements syt<tlt, tlu>
 {
-  private static float jdField_a_of_type_Float;
-  private static int jdField_a_of_type_Int;
-  private static int b;
+  uwv(uxr paramuxr) {}
   
-  public static float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void a(@NonNull tlt paramtlt, @Nullable tlu paramtlu, @NonNull ErrorMessage paramErrorMessage)
   {
-    paramFloat1 -= paramFloat3;
-    paramFloat2 -= paramFloat4;
-    return (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
-  }
-  
-  public static float a(Resources paramResources)
-  {
-    if ((b == 0) || (jdField_a_of_type_Int == 0))
+    veg.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, refresh comment.");
+    if (paramtlu == null)
     {
-      paramResources = paramResources.getDisplayMetrics();
-      jdField_a_of_type_Int = paramResources.widthPixels;
-      b = paramResources.heightPixels;
-      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
+      veg.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, response is null.");
+      new tlu(paramErrorMessage);
     }
-    return jdField_a_of_type_Float;
-  }
-  
-  public static int a(Resources paramResources)
-  {
-    if (jdField_a_of_type_Int == 0)
+    do
     {
-      paramResources = paramResources.getDisplayMetrics();
-      jdField_a_of_type_Int = paramResources.widthPixels;
-      b = paramResources.heightPixels;
-      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
-    }
-    return jdField_a_of_type_Int;
-  }
-  
-  public static void a(View paramView, boolean paramBoolean)
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(500L);
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new uww(paramView));
-    paramView.setVisibility(8);
-    paramView.startAnimation(localAlphaAnimation);
-  }
-  
-  public static boolean a(View paramView, int paramInt1, int paramInt2)
-  {
-    Rect localRect = new Rect();
-    int[] arrayOfInt = new int[2];
-    paramView.getDrawingRect(localRect);
-    paramView.getLocationOnScreen(arrayOfInt);
-    localRect.offset(arrayOfInt[0], arrayOfInt[1]);
-    return localRect.contains(paramInt1, paramInt2);
-  }
-  
-  public static int b(Resources paramResources)
-  {
-    if (b == 0)
+      do
+      {
+        return;
+        if (paramErrorMessage.isFail()) {
+          veg.d("Q.qqstory.home.data.HomeFeedPresenter", "request fail for comment request");
+        }
+      } while ((paramtlu.jdField_a_of_type_JavaUtilList == null) || (paramtlu.jdField_a_of_type_JavaUtilList.isEmpty()));
+      paramtlt = (tbz)tdc.a(17);
+      paramtlu = (tlv)paramtlu.jdField_a_of_type_JavaUtilList.get(0);
+    } while (paramtlu.jdField_a_of_type_JavaUtilList == null);
+    veg.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, commentFeedId:%s, commentSize:%s, entryListSize:%s", new Object[] { paramtlu.jdField_a_of_type_JavaLangString, Integer.valueOf(paramtlu.jdField_a_of_type_Int), Integer.valueOf(paramtlu.jdField_a_of_type_JavaUtilList.size()) });
+    paramtlt.a(paramtlu.jdField_a_of_type_JavaUtilList, this.a.a.feedId, true, true);
+    paramtlt = new upb(paramErrorMessage, paramtlu.jdField_a_of_type_JavaLangString, 1);
+    paramtlt.jdField_a_of_type_JavaUtilList = paramtlu.jdField_a_of_type_JavaUtilList;
+    paramtlt.c = true;
+    if (((CommentLikeFeedItem)this.a.a).mCommentIsEnd == 1) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramResources = paramResources.getDisplayMetrics();
-      jdField_a_of_type_Int = paramResources.widthPixels;
-      b = paramResources.heightPixels;
-      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
+      paramtlt.jdField_a_of_type_Boolean = bool;
+      paramtlt.jdField_b_of_type_JavaLangString = ((CommentLikeFeedItem)this.a.a).mCommentLastCookie;
+      paramtlt.jdField_b_of_type_Int = paramtlu.jdField_a_of_type_Int;
+      ste.a().dispatch(paramtlt);
+      return;
     }
-    return b;
-  }
-  
-  public static void b(View paramView, boolean paramBoolean)
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation.setDuration(500L);
-    if (paramBoolean) {
-      localAlphaAnimation.setStartOffset(500L);
-    }
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new uwx(paramView));
-    paramView.setVisibility(0);
-    paramView.startAnimation(localAlphaAnimation);
   }
 }
 

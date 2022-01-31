@@ -1,7 +1,7 @@
 package com.tencent.ad.tangram.analysis;
 
 import android.content.Context;
-import com.tencent.ad.tangram.settings.a;
+import com.tencent.ad.tangram.settings.AdSettingsUtil;
 import java.lang.ref.WeakReference;
 
 class AdAnalysis$1
@@ -11,7 +11,7 @@ class AdAnalysis$1
   
   public void run()
   {
-    a.INSTANCE.update((Context)this.val$weakContext.get());
+    AdSettingsUtil.INSTANCE.update((Context)this.val$weakContext.get());
   }
 }
 

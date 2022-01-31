@@ -12,14 +12,13 @@ import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.thread.HandlerThreadManager;
 import com.tencent.ttpic.baseutils.thread.HandlerThreadTag;
-import com.tencent.ttpic.openapi.offlineset.OfflineConfig;
+import com.tencent.ttpic.video.AECoderFactory;
+import com.tencent.ttpic.video.AEEncoder;
 import com.tencent.ttpic.videoshelf.model.edit.NodeGroup;
 import com.tencent.ttpic.videoshelf.model.processor.IVideoShelfProcessor;
 import com.tencent.ttpic.videoshelf.model.processor.PagVideoShelfProcessor;
 import com.tencent.ttpic.videoshelf.model.processor.WeSeeVideoShelfProcessor;
 import com.tencent.ttpic.videoshelf.model.template.VideoFrameItem;
-import com.tencent.vbox.VboxFactory;
-import com.tencent.vbox.encode.VboxEncoder;
 import com.tencent.view.FilterContext;
 import com.tencent.view.RendererUtils;
 import java.util.ArrayList;
@@ -56,7 +55,7 @@ public class VideoShelfEngine
   private List<NodeGroup> mNodeGroupList = new ArrayList();
   private String mOutputVideo;
   private boolean mRequestCancel;
-  private VboxEncoder mVideoEncoder;
+  private AEEncoder mVideoEncoder;
   private List<VideoFrameItem> mVideoFrameItemList = new ArrayList();
   private IVideoShelfProcessor mVideoShelfProcessor;
   private Bitmap watermarkBmp = null;
@@ -261,41 +260,16 @@ public class VideoShelfEngine
   
   public void init()
   {
-    init(null);
-  }
-  
-  public void init(VboxEncoder paramVboxEncoder)
-  {
-    int i = 1;
-    Object localObject = new int[2];
-    GlUtil.glGenTextures(localObject.length, (int[])localObject, 0);
-    this.decodeTexture = localObject[0];
-    this.encodeTexture = localObject[1];
+    int[] arrayOfInt = new int[2];
+    GlUtil.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
+    this.decodeTexture = arrayOfInt[0];
+    this.encodeTexture = arrayOfInt[1];
     if (this.mVideoShelfProcessor != null) {
-      this.mVideoShelfProcessor.init((int[])localObject, this.mVideoFrameItemList, this.mNodeGroupList);
+      this.mVideoShelfProcessor.init(arrayOfInt, this.mVideoFrameItemList, this.mNodeGroupList);
     }
-    localObject = paramVboxEncoder;
-    int j;
-    int k;
-    if (paramVboxEncoder == null)
-    {
-      paramVboxEncoder = this.mOutputVideo;
-      j = this.canvasW;
-      k = this.canvasH;
-      if (!OfflineConfig.isCouldHardEncode()) {
-        break label125;
-      }
-    }
-    for (;;)
-    {
-      localObject = VboxFactory.createEncoder(paramVboxEncoder, j, k, i);
-      this.mVideoEncoder = ((VboxEncoder)localObject);
-      this.watermarkFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
-      this.watermarkFilter.apply();
-      return;
-      label125:
-      i = 2;
-    }
+    this.mVideoEncoder = AECoderFactory.createEncoder(this.mOutputVideo, this.canvasW, this.canvasH);
+    this.watermarkFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+    this.watermarkFilter.apply();
   }
   
   public void save(int paramInt1, int paramInt2)

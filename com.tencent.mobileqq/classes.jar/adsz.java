@@ -1,13 +1,26 @@
-import android.widget.TextView;
+import android.animation.ValueAnimator;
+import android.widget.Scroller;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
-class adsz
-  extends acjc
+public class adsz
 {
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public float a;
+  public int a;
+  public ValueAnimator a;
+  public Scroller a;
+  public boolean a;
+  public float b;
+  public int b;
+  public Scroller b;
+  public boolean b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
   
-  adsz(adsy paramadsy) {}
+  public adsz(HeartCombolEffectView paramHeartCombolEffectView) {}
 }
 
 

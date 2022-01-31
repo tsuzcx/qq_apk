@@ -1,30 +1,49 @@
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.ui.WebViewTopTabView;
+import android.app.Activity;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.view.Display;
+import android.view.WindowManager;
 
-class bazm
-  implements RadioGroup.OnCheckedChangeListener
+public class bazm
 {
-  bazm(bazl parambazl) {}
-  
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public static void a(Activity paramActivity)
   {
-    paramInt = this.a.a(paramRadioGroup);
-    if (((QQBrowserActivity)this.a.a.a).b != paramInt)
+    if (paramActivity == null) {
+      return;
+    }
+    int i = ((WindowManager)paramActivity.getSystemService("window")).getDefaultDisplay().getOrientation();
+    switch (paramActivity.getResources().getConfiguration().orientation)
     {
-      paramRadioGroup = QQBrowserActivity.a(paramInt, (QQBrowserActivity)this.a.a.a);
-      ((QQBrowserActivity)this.a.a.a).b = paramInt;
-      if ((paramRadioGroup.a != null) && (paramRadioGroup.a.a != null)) {
-        paramRadioGroup.a.a.setSelectedTab(paramInt);
+    default: 
+      i = 0;
+    }
+    for (;;)
+    {
+      paramActivity.setRequestedOrientation(i);
+      return;
+      if ((i == 0) || (i == 1) || (!bfni.c())) {
+        break;
       }
+      i = 8;
+      continue;
+      if ((i != 0) && (i != 3) && (bfni.c())) {
+        i = 9;
+      } else {
+        i = 1;
+      }
+    }
+  }
+  
+  public static void b(Activity paramActivity)
+  {
+    if (paramActivity != null) {
+      paramActivity.setRequestedOrientation(-1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bazm
  * JD-Core Version:    0.7.0.1
  */

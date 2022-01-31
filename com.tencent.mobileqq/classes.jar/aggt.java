@@ -1,71 +1,29 @@
+import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import mqq.util.WeakReference;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
 
-public abstract class aggt
+class aggt
+  implements Animation.AnimationListener
 {
-  protected static volatile aggt a;
-  public aggf a;
-  public aggs a;
-  aggu a;
-  public aggv a;
-  public aggw a;
-  public WeakReference<NewPhotoPreviewActivity> a;
+  aggt(aggs paramaggs, Activity paramActivity) {}
   
-  protected aggt(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Aggw = null;
-    this.jdField_a_of_type_Aggu = null;
-    this.jdField_a_of_type_Aggv = null;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramNewPhotoPreviewActivity);
-    this.jdField_a_of_type_Aggf = aggf.a(paramNewPhotoPreviewActivity.getIntent().getBooleanExtra("NEED_NEW_PHOTO_COMMON_DATA", true));
-    paramNewPhotoPreviewActivity.getIntent().putExtra("NEED_NEW_PHOTO_COMMON_DATA", false);
-    this.jdField_a_of_type_Aggf.a();
-    this.jdField_a_of_type_Aggs = new aggs();
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, "PhotoPreviewLogic new，activity = " + paramNewPhotoPreviewActivity + ",PhotoCommonData = " + this.jdField_a_of_type_Aggf);
+    if ((this.jdField_a_of_type_Aggs.a.a.getCount() == 1) && (!MiniMsgTabFragment.a(this.jdField_a_of_type_Aggs.a)))
+    {
+      paramAnimation = MiniMsgTabFragment.a(this.jdField_a_of_type_Aggs.a);
+      paramAnimation.putExtra("miniAppID", MiniMsgTabFragment.a(this.jdField_a_of_type_Aggs.a));
+      paramAnimation.putExtra("clickID", -1);
+      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramAnimation);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
     }
   }
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, "PhotoPreviewLogic close，activity = " + this.jdField_a_of_type_MqqUtilWeakReference.get() + ",PhotoCommonData = " + this.jdField_a_of_type_Aggf);
-    }
-    this.jdField_a_of_type_Aggf.b();
-    jdField_a_of_type_Aggt = null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(Intent paramIntent);
-  
-  abstract void a(View paramView);
-  
-  abstract void a(View paramView, int paramInt1, Bundle paramBundle, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(TextView paramTextView);
-  
-  abstract void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  abstract boolean c();
-  
-  abstract void d();
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

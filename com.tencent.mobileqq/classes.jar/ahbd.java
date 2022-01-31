@@ -1,104 +1,129 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.database.Cursor;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ahbd
-  extends ahbj
 {
-  private int a;
-  private int b;
-  private int c;
+  public int a;
+  public long a;
+  public String a;
+  public JSONObject a;
+  public int b;
+  public long b;
+  protected String b;
   
-  public View a(int paramInt, Object paramObject, ahbe paramahbe, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahdb paramahdb)
+  protected ahbd(int paramInt1, long paramLong1, int paramInt2, String paramString1, long paramLong2, String paramString2)
   {
-    if (paramView != null)
-    {
-      paramahbe = paramView;
-      if ("R.layout.conversation_no_chat".equals(paramView.getTag(2131493311))) {}
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+  }
+  
+  protected static ahbd a(Cursor paramCursor)
+  {
+    if (paramCursor == null) {
+      return null;
     }
-    else
-    {
-      paramahbe = View.inflate(paramContext, 2131493311, null);
-      this.b = paramContext.getResources().getDimensionPixelSize(2131167512);
-      this.a = paramContext.getResources().getDimensionPixelSize(2131167515);
-      this.c = paramContext.getResources().getDimensionPixelSize(2131167519);
+    int i1 = paramCursor.getColumnIndexOrThrow("no");
+    int m = paramCursor.getColumnIndexOrThrow("uin");
+    int n = paramCursor.getColumnIndexOrThrow("btype");
+    int i = paramCursor.getColumnIndexOrThrow("bid");
+    int j = paramCursor.getColumnIndexOrThrow("create_time");
+    int k = paramCursor.getColumnIndexOrThrow("ext");
+    i1 = paramCursor.getInt(i1);
+    long l1 = paramCursor.getLong(m);
+    m = paramCursor.getInt(n);
+    String str = paramCursor.getString(i);
+    long l2 = paramCursor.getLong(j);
+    paramCursor = paramCursor.getString(k);
+    if (QLog.isColorLevel()) {
+      QLog.i("NotifyMsgDBHelper", 2, "fromCursorOrThrow bId:" + str + " extJson:" + paramCursor);
     }
-    int i = paramViewGroup.getHeight() - this.a * 2 - this.b;
-    if (i > this.c)
-    {
-      paramView = new AbsListView.LayoutParams(-1, -1);
-      paramView.width = -1;
-      paramView.height = i;
-      paramahbe.setLayoutParams(paramView);
-      paramahbe.setTag(Boolean.valueOf(true));
-      paramView = (TextView)paramahbe.findViewById(2131305178);
-      paramViewGroup = (Button)paramahbe.findViewById(2131297905);
-      if (!(paramObject instanceof Integer)) {
-        break label382;
-      }
-      i = ((Integer)paramObject).intValue();
-      if (i != 1) {
-        break label263;
-      }
-      paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130840935, 0, 0);
-      paramView.setVisibility(0);
-      paramView.setText(2131629447);
-      paramView.setTextColor(paramContext.getResources().getColorStateList(2131101338));
-      paramViewGroup.setVisibility(8);
-      paramViewGroup.setOnClickListener(null);
+    return new ahbd(i1, l1, m, str, l2, paramCursor);
+  }
+  
+  public int a(String paramString, int paramInt)
+  {
+    a(false);
+    if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
+      return paramInt;
     }
-    for (;;)
+    return this.jdField_a_of_type_OrgJsonJSONObject.optInt(paramString, paramInt);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    a(true);
+    try
     {
-      paramahbe.setTag(-1, Integer.valueOf(paramInt));
-      paramahbe.setTag(2131493311, "R.layout.conversation_no_chat");
-      return paramahbe;
-      i = this.c;
-      break;
-      label263:
-      if (i == 0)
+      this.jdField_a_of_type_OrgJsonJSONObject.put(paramString, paramInt);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      paramString.printStackTrace();
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    a(true);
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put(paramString1, paramString2);
+      return;
+    }
+    catch (JSONException paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      paramString1.printStackTrace();
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_OrgJsonJSONObject != null) {}
+    label65:
+    do
+    {
+      do
       {
-        if ((paramContext instanceof MsgBoxListActivity))
+        for (;;)
         {
-          if (((MsgBoxListActivity)paramContext).f)
-          {
-            paramView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-            paramView.setVisibility(0);
-            paramView.setText("");
+          return;
+          if ((this.jdField_b_of_type_JavaLangString == null) || (this.jdField_b_of_type_JavaLangString.length() <= 0)) {
+            break label65;
           }
+          try
+          {
+            this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(this.jdField_b_of_type_JavaLangString);
+            return;
+          }
+          catch (JSONException localJSONException)
+          {
+            if (QLog.isColorLevel())
+            {
+              localJSONException.printStackTrace();
+              return;
+            }
+          }
+          catch (Throwable localThrowable) {}
         }
-        else
-        {
-          paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130840935, 0, 0);
-          paramView.setVisibility(0);
-          paramView.setText(2131628994);
-          paramView.setTextColor(paramContext.getResources().getColorStateList(2131101338));
-          paramViewGroup.setVisibility(8);
-          paramViewGroup.setOnClickListener(null);
-        }
-      }
-      else
-      {
-        paramView.setVisibility(4);
-        paramView.setText("");
-        continue;
-        label382:
-        paramView.setVisibility(8);
-        paramView.setText("");
-        paramViewGroup.setVisibility(8);
-      }
-    }
+      } while (!QLog.isColorLevel());
+      localThrowable.printStackTrace();
+      return;
+    } while ((!paramBoolean) || (this.jdField_a_of_type_OrgJsonJSONObject != null));
+    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahbd
  * JD-Core Version:    0.7.0.1
  */

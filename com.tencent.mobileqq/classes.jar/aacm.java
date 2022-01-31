@@ -1,27 +1,16 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
 
 public class aacm
-  implements View.OnClickListener
+  extends aabw
 {
-  public aacm(BaseChatPie paramBaseChatPie) {}
-  
-  public void onClick(View paramView)
+  public aacm(Activity paramActivity, int paramInt, String paramString)
   {
-    this.a.jdField_a_of_type_Aeob.a();
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
-    paramView.putInt("funcall_tip_" + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 4);
-    paramView.commit();
+    super(paramActivity, paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aacm
  * JD-Core Version:    0.7.0.1
  */

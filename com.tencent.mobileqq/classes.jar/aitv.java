@@ -1,10 +1,22 @@
+import android.view.SurfaceHolder;
+
 public class aitv
 {
   public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
+  public SurfaceHolder a;
+  public int b;
+  public int c;
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("SurfaceCallBackData{");
+    localStringBuffer.append("holder=").append(this.jdField_a_of_type_AndroidViewSurfaceHolder);
+    localStringBuffer.append(", format=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", w=").append(this.b);
+    localStringBuffer.append(", h=").append(this.c);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
+  }
 }
 
 

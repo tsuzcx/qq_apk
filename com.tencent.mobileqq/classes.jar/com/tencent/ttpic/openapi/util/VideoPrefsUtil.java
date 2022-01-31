@@ -119,6 +119,15 @@ public class VideoPrefsUtil
     return mSoPrefs;
   }
   
+  public static String getStringParam(String paramString)
+  {
+    String str = null;
+    if (getDefaultPrefs() != null) {
+      str = getDefaultPrefs().getString(paramString, null);
+    }
+    return str;
+  }
+  
   public static boolean getUseHardwareDecoder()
   {
     boolean bool = true;
@@ -236,6 +245,16 @@ public class VideoPrefsUtil
       return;
     }
     LogUtils.e("VideoPrefsUtil", "getDefaultPrefs is null, setNormalEncodeWidth failed!!");
+  }
+  
+  public static void setStringParam(String paramString1, String paramString2)
+  {
+    if ((paramString1 != null) && (getDefaultPrefs() != null))
+    {
+      getDefaultPrefs().edit().putString(paramString1, paramString2).apply();
+      return;
+    }
+    LogUtils.e("VideoPrefsUtil", "getDefaultPrefs is null, setStringParam failed:" + paramString2);
   }
   
   public static void setUseHardWareDecoder(boolean paramBoolean)

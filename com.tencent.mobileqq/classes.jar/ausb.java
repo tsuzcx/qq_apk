@@ -1,207 +1,109 @@
-import android.content.Context;
-import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.richmedia.capture.adapter.FilterProviderPagerAdapter;
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-import com.tencent.mobileqq.richmedia.capture.view.CaptureCommonLoadingView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PrecoverResource;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import eipc.EIPCResult;
 
 public class ausb
-  extends BaseAdapter
+  implements aurs
 {
-  int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  public String a;
-  List<FilterCategoryItem> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  boolean jdField_a_of_type_Boolean = true;
-  int b;
+  private static ausb jdField_a_of_type_Ausb;
+  private aurt jdField_a_of_type_Aurt;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new ausc(this, "PrecoverIPCServer_MODEL");
   
-  public ausb(Context paramContext, boolean paramBoolean)
+  private ausb()
   {
-    this.jdField_a_of_type_JavaLangString = "FilterProviderGridAdapter";
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+      this.jdField_a_of_type_Aurt = ((aurt)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(179));
+      this.jdField_a_of_type_Aurt.a().a(this);
+    }
   }
   
-  public void a(List<FilterCategoryItem> paramList)
+  public static ausb a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    if (jdField_a_of_type_Ausb == null) {}
+    try
+    {
+      if (jdField_a_of_type_Ausb == null) {
+        jdField_a_of_type_Ausb = new ausb();
+      }
+      return jdField_a_of_type_Ausb;
+    }
+    finally {}
+  }
+  
+  private EIPCResult a(Bundle paramBundle, int paramInt)
+  {
+    Object localObject1 = null;
+    Object localObject2 = paramBundle.getString("businessId");
+    String str = paramBundle.getString("md5");
+    if (TextUtils.isEmpty(str))
+    {
+      localObject1 = EIPCResult.createResult(10, paramBundle);
+      if (QLog.isColorLevel()) {
+        QLog.d("PrecoverIPCServer", 2, "getResource, md5 emtpy");
+      }
+      paramBundle.putInt("callbackId", paramInt);
+      return localObject1;
+    }
+    if (this.jdField_a_of_type_Aurt != null)
+    {
+      localObject1 = this.jdField_a_of_type_Aurt.a((String)localObject2, str);
+      if (localObject1 == null) {
+        break label100;
+      }
+      paramBundle.putParcelable("resource", (Parcelable)localObject1);
+      localObject1 = EIPCResult.createSuccessResult(paramBundle);
     }
     for (;;)
     {
-      notifyDataSetChanged();
-      if ((paramList != null) && (QLog.isColorLevel())) {
-        QLog.d("CapturePtvTemplateManager", 2, "FilterProviderGridAdapter setData size = " + paramList.size());
-      }
-      return;
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
+      paramBundle.putInt("callbackId", paramInt);
+      return localObject1;
+      label100:
+      localObject2 = EIPCResult.createResult(12, paramBundle);
+      localObject1 = localObject2;
+      if (QLog.isColorLevel())
       {
-        FilterCategoryItem localFilterCategoryItem = (FilterCategoryItem)localIterator.next();
-        if (!localFilterCategoryItem.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_JavaUtilList.add(localFilterCategoryItem);
-        }
+        QLog.d("PrecoverIPCServer", 2, "getResource, RESULT_RESOURCE_NOT_FOUND");
+        localObject1 = localObject2;
       }
     }
   }
   
-  public int getCount()
+  public QIPCModule a()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
   }
   
-  public Object getItem(int paramInt)
+  public void a(int paramInt, String paramString, PrecoverResource paramPrecoverResource, Object paramObject)
   {
-    if (paramInt > this.jdField_a_of_type_JavaUtilList.size()) {
-      return null;
-    }
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if ((this.jdField_a_of_type_Int <= 0) && (paramViewGroup != null))
+    if ((paramObject != null) && ((paramObject instanceof Object[])) && ("PrecoverIPCServer_MODEL".equals(((Object[])(Object[])paramObject)[0])))
     {
-      this.jdField_a_of_type_Int = paramViewGroup.getMeasuredWidth();
-      this.jdField_b_of_type_Int = ((int)((this.jdField_a_of_type_Int - FilterProviderPagerAdapter.jdField_b_of_type_Int * 3 - paramViewGroup.getPaddingLeft() - paramViewGroup.getPaddingRight()) / 4 + 0.5F));
-    }
-    View localView = paramView;
-    if (paramView == null) {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495110, paramViewGroup, false);
-    }
-    TextView localTextView = (TextView)localView.findViewById(2131300663);
-    ImageView localImageView3 = (ImageView)localView.findViewById(2131302437);
-    ImageView localImageView1 = (ImageView)localView.findViewById(2131302061);
-    ImageView localImageView2 = (ImageView)localView.findViewById(2131299217);
-    URLImageView localURLImageView = (URLImageView)localView.findViewById(2131296606);
-    CaptureCommonLoadingView localCaptureCommonLoadingView = (CaptureCommonLoadingView)localView.findViewById(2131300666);
-    FilterCategoryItem localFilterCategoryItem = (FilterCategoryItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramView = ausu.a().a();
-    boolean bool = false;
-    if (paramView != null) {
-      bool = TextUtils.equals(paramView.jdField_a_of_type_JavaLangString, localFilterCategoryItem.jdField_a_of_type_JavaLangString);
-    }
-    if (!bool) {
-      if (((paramView == null) || (paramView.a())) && (localFilterCategoryItem.a())) {
-        bool = true;
+      int i = ((Integer)((Object[])(Object[])paramObject)[1]).intValue();
+      paramObject = new Bundle();
+      paramObject.putString("key_action", ausa.b);
+      paramObject.putParcelable("resource", paramPrecoverResource);
+      paramObject.putInt("errCode", paramInt);
+      paramObject.putString("errDesc", paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("PrecoverIPCServer", 2, "onDownloadFinish, errCode=" + paramInt + ", errDesc=" + paramString + ", resource" + paramPrecoverResource);
       }
-    }
-    for (;;)
-    {
-      localView.setTag(localFilterCategoryItem);
-      paramViewGroup = (AbsListView.LayoutParams)localView.getLayoutParams();
-      paramView = paramViewGroup;
-      if (paramViewGroup == null)
-      {
-        paramView = new AbsListView.LayoutParams(-1, -1);
-        localView.setLayoutParams(paramView);
-      }
-      paramView.height = this.jdField_b_of_type_Int;
-      if (localFilterCategoryItem.a())
-      {
-        localImageView1.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845009));
-        if (bool)
-        {
-          localImageView3.setVisibility(0);
-          label297:
-          localImageView2.setVisibility(8);
-          localTextView.setText(ajjy.a(2131638814));
-          localImageView1.setContentDescription(ajjy.a(2131638817));
-          localTextView.setContentDescription(ajjy.a(2131638818));
-        }
-      }
-      label590:
-      do
-      {
-        return localView;
-        bool = false;
-        break;
-        localImageView3.setVisibility(8);
-        break label297;
-        if (bool)
-        {
-          localImageView3.setVisibility(0);
-          localTextView.setShadowLayer(0.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131101213));
-          paramView = URLDrawable.URLDrawableOptions.obtain();
-          paramView.mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845005);
-          paramView.mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845005);
-          localCaptureCommonLoadingView.setMax(10000);
-          localCaptureCommonLoadingView.setVisibility(8);
-          paramView = URLDrawable.getDrawable(localFilterCategoryItem.d, URLDrawable.URLDrawableOptions.obtain());
-          paramView.startDownload();
-          localImageView1.setImageDrawable(paramView);
-          localTextView.setText(localFilterCategoryItem.jdField_b_of_type_JavaLangString);
-          localImageView1.setContentDescription(localFilterCategoryItem.jdField_b_of_type_JavaLangString);
-          localTextView.setContentDescription(localFilterCategoryItem.jdField_b_of_type_JavaLangString);
-          if (!localFilterCategoryItem.jdField_a_of_type_Boolean) {
-            break label658;
-          }
-          localImageView2.setVisibility(8);
-          if (!baip.a(localFilterCategoryItem.j)) {
-            break label590;
-          }
-          localURLImageView.setVisibility(8);
-        }
-        for (;;)
-        {
-          awqx.b(null, "dc00898", "", "", "0X800859E", "0X800859E", 2, 0, "", "", localFilterCategoryItem.jdField_a_of_type_JavaLangString, "");
-          return localView;
-          localImageView3.setVisibility(8);
-          localTextView.setShadowLayer(3.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131101213));
-          break;
-          try
-          {
-            localURLImageView.setVisibility(0);
-            localURLImageView.setImageDrawable(URLDrawable.getDrawable(localFilterCategoryItem.j));
-            paramView = localURLImageView.getLayoutParams();
-            paramView.height = 42;
-            paramView.width = 42;
-            localURLImageView.setLayoutParams(paramView);
-          }
-          catch (Exception paramView)
-          {
-            QLog.e("PtvTemplateItemView", 1, "PtvTemplateItemView bindData mBadgeImg.setImageDrawable(URLDrawable.getDrawable(info.badgeurl)) catch an Exception.", paramView);
-            localURLImageView.setVisibility(8);
-          }
-        }
-        bool = ausu.a().a(3, localFilterCategoryItem.jdField_b_of_type_Int, localFilterCategoryItem.jdField_a_of_type_JavaLangString);
-        if (!bool) {
-          break label704;
-        }
-        localImageView2.setVisibility(0);
-      } while (!bool);
-      label658:
-      localImageView2.setImageResource(2130845013);
-      return localView;
-      label704:
-      localImageView2.setVisibility(8);
-      return localView;
+      this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule.callbackResult(i, EIPCResult.createSuccessResult(paramObject));
     }
   }
+  
+  public void a(PrecoverResource paramPrecoverResource, Object paramObject, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ausb
  * JD-Core Version:    0.7.0.1
  */

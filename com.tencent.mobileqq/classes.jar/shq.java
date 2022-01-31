@@ -1,324 +1,159 @@
-import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.io.File;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
 
-@TargetApi(14)
-public class shq
+class shq
+  extends shb
 {
-  protected static sfq<String, shr> a = new sfq(200);
+  shq(shk paramshk) {}
   
-  public static File a(String paramString, int paramInt)
+  protected boolean a(Integer paramInteger)
   {
-    Object localObject2 = null;
-    QQStoryContext.a();
-    paramString = vjw.a(QQStoryContext.a(), paramString);
-    if ((paramString instanceof MessageForShortVideo)) {}
-    for (paramString = (MessageForShortVideo)paramString;; paramString = null)
-    {
-      Object localObject1 = localObject2;
-      if (paramString != null)
-      {
-        if (paramInt != 0) {
-          break label74;
-        }
-        paramString = ShortVideoUtils.a(paramString, "mp4");
-      }
-      for (;;)
-      {
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty(paramString))
-        {
-          paramString = new File(paramString);
-          localObject1 = localObject2;
-          if (paramString.exists()) {
-            localObject1 = paramString;
-          }
-        }
-        return localObject1;
-        label74:
-        if (paramInt == 2) {
-          paramString = ShortVideoUtils.a(paramString.thumbMD5, "jpg");
-        } else {
-          paramString = null;
-        }
-      }
-    }
-  }
-  
-  public static File a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    StoryVideoItem localStoryVideoItem = ((sqd)sqg.a(5)).a(paramString);
-    if ((localStoryVideoItem != null) && (localStoryVideoItem.isMine())) {}
-    for (Object localObject = a(paramString, localStoryVideoItem.mCreateTime, paramInt, false, paramBoolean2);; localObject = a(paramString, paramInt, false, paramBoolean2))
-    {
-      File localFile = new File((String)localObject);
-      if (!localFile.exists()) {
-        break;
-      }
-      if (localStoryVideoItem != null) {
-        a(localStoryVideoItem, (String)localObject, paramInt);
-      }
-      return localFile;
-    }
-    if (localStoryVideoItem != null) {
-      switch (paramInt)
-      {
-      }
-    }
-    while ((vjw.a(paramString)) && (a(paramString, paramInt) != null))
-    {
-      return a(paramString, paramInt);
-      if (!TextUtils.isEmpty(localStoryVideoItem.mLocalVideoPath))
-      {
-        localObject = new File(localStoryVideoItem.mLocalVideoPath);
-        if (((File)localObject).exists())
-        {
-          return localObject;
-          if (!TextUtils.isEmpty(localStoryVideoItem.mVideoLocalThumbnailPath))
-          {
-            localObject = new File(localStoryVideoItem.mVideoLocalThumbnailPath);
-            if (((File)localObject).exists())
-            {
-              return localObject;
-              if (!TextUtils.isEmpty(localStoryVideoItem.mLocalMaskPath))
-              {
-                localObject = new File(localStoryVideoItem.mLocalMaskPath);
-                if (((File)localObject).exists()) {
-                  return localObject;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    if (paramBoolean1)
-    {
-      if ((localStoryVideoItem != null) && (localStoryVideoItem.isMine())) {}
-      for (paramString = a(paramString, localStoryVideoItem.mCreateTime, paramInt, true, paramBoolean2);; paramString = a(paramString, paramInt, true, paramBoolean2)) {
-        return new File(paramString);
-      }
-    }
-    return null;
-  }
-  
-  protected static String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 4: 
-    default: 
-      return ".file";
-    case 0: 
-      return ".mp4";
-    case 3: 
-      return ".png";
-    case 2: 
-      return "thumb.jpeg";
-    case 1: 
-      return "mask.png";
-    }
-    return "at.png";
-  }
-  
-  public static String a(File paramFile)
-  {
-    if (paramFile.exists())
-    {
-      String str3 = paramFile.getParentFile().getAbsolutePath();
-      String str2 = paramFile.getName();
-      String str1;
-      if (str2.endsWith(".tmp")) {
-        str1 = str2.substring(0, str2.length() - ".tmp".length());
-      }
-      for (;;)
-      {
-        str1 = str3 + "/" + str1;
-        paramFile.renameTo(new File(str1));
-        return str1;
-        str1 = str2;
-        if (str2.endsWith(".stmp")) {
-          str1 = str2.substring(0, str2.length() - ".stmp".length());
-        }
-      }
-    }
-    return "";
-  }
-  
-  public static String a(String paramString)
-  {
-    try
-    {
-      paramString = a(MessageDigest.getInstance("MD5").digest(paramString.getBytes()));
-      return paramString;
-    }
-    catch (NoSuchAlgorithmException paramString)
-    {
-      throw new IllegalStateException(paramString);
-    }
-  }
-  
-  public static String a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    return sfm.h + a(paramString, false, 0L) + "/" + b(paramString, paramInt, paramBoolean1, paramBoolean2);
-  }
-  
-  public static String a(String paramString, long paramLong, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (vjw.a(paramString)) {}
-    for (String str = sfm.h;; str = sfm.i) {
-      return str + a(paramString, true, paramLong) + "/" + b(paramString, paramLong, paramInt, paramBoolean1, paramBoolean2);
-    }
-  }
-  
-  public static String a(String paramString, boolean paramBoolean, long paramLong)
-  {
-    if (vjw.a(paramString)) {
-      localObject = StoryVideoItem.getCacheKey(paramString);
-    }
-    String str;
-    do
-    {
-      return localObject;
-      if (paramBoolean) {
-        return String.valueOf(paramLong);
-      }
-      str = b(paramString);
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
-    Object localObject = a(paramString);
-    a(paramString, (String)localObject);
-    return localObject;
-  }
-  
-  private static String a(byte[] paramArrayOfByte)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    int j = paramArrayOfByte.length;
-    int i = 0;
-    while (i < j)
-    {
-      localStringBuffer.append(String.format("%02x", new Object[] { Byte.valueOf(paramArrayOfByte[i]) }));
-      i += 1;
-    }
-    return localStringBuffer.toString();
-  }
-  
-  public static void a(StoryVideoItem paramStoryVideoItem, String paramString, int paramInt)
-  {
-    a(paramStoryVideoItem, paramString, paramInt, "");
-  }
-  
-  public static void a(StoryVideoItem paramStoryVideoItem, String paramString1, int paramInt, String paramString2)
-  {
-    sqd localsqd = (sqd)sqg.a(5);
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (TextUtils.equals(paramStoryVideoItem.mLocalVideoPath, paramString1));
-        paramStoryVideoItem.mLocalVideoPath = paramString1;
-        if (!TextUtils.isEmpty(paramString2)) {
-          paramStoryVideoItem.mDownloadNetType = paramString2;
-        }
-        localsqd.a(paramStoryVideoItem.mVid, paramStoryVideoItem);
-        return;
-      } while (TextUtils.equals(paramStoryVideoItem.mVideoLocalThumbnailPath, paramString1));
-      paramStoryVideoItem.mVideoLocalThumbnailPath = paramString1;
-      if (!TextUtils.isEmpty(paramString2)) {
-        paramStoryVideoItem.mDownloadNetType = paramString2;
-      }
-      localsqd.a(paramStoryVideoItem.mVid, paramStoryVideoItem);
-      return;
-    } while (TextUtils.equals(paramStoryVideoItem.mLocalMaskPath, paramString1));
-    paramStoryVideoItem.mLocalMaskPath = paramString1;
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramStoryVideoItem.mDownloadNetType = paramString2;
-    }
-    localsqd.a(paramStoryVideoItem.mVid, paramStoryVideoItem);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    shr localshr = new shr();
-    localshr.a = paramString2;
-    a.a(paramString1, localshr);
-  }
-  
-  public static boolean a(File paramFile)
-  {
-    if (!paramFile.exists()) {}
-    while ((paramFile.getName().endsWith(".tmp")) || (paramFile.getName().endsWith(".stmp"))) {
+    shp localshp = shk.a(this.a, paramInteger.intValue());
+    if (localshp == null) {
       return false;
     }
-    return true;
-  }
-  
-  public static String b(String paramString)
-  {
-    paramString = (shr)a.a(paramString);
-    if (paramString != null) {
-      return paramString.a;
-    }
-    return null;
-  }
-  
-  public static String b(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    String str = a(paramInt);
-    if (TextUtils.isEmpty(str)) {}
-    for (paramString = a(paramString, false, 0L);; paramString = a(paramString, false, 0L) + str)
+    if (localshp.jdField_a_of_type_Boolean)
     {
-      str = paramString;
-      if (paramBoolean1)
+      this.a.b(localshp.jdField_a_of_type_JavaLangString);
+      return true;
+    }
+    if (paramInteger.intValue() == 1) {
+      this.a.b(localshp.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      return super.a(paramInteger);
+      if (paramInteger.intValue() == 2)
       {
-        if (!paramBoolean2) {
-          break;
+        shk.a(this.a, paramInteger.intValue());
+      }
+      else if (paramInteger.intValue() == 3)
+      {
+        shk.a(this.a, paramInteger.intValue());
+      }
+      else if (paramInteger.intValue() == 4)
+      {
+        shk.a(this.a, paramInteger.intValue());
+      }
+      else if (paramInteger.intValue() == 5)
+      {
+        shk.a(this.a, paramInteger.intValue());
+      }
+      else if (paramInteger.intValue() == 6)
+      {
+        shk.a(this.a, paramInteger.intValue());
+      }
+      else if (paramInteger.intValue() == 7)
+      {
+        shk.a(this.a).a(shk.a(this.a).c);
+        shk.a(this.a, localshp.jdField_a_of_type_JavaLangString, true);
+      }
+      else if (paramInteger.intValue() == 8)
+      {
+        shk.a(this.a).b(shk.a(this.a).c);
+        shk.a(this.a, localshp.jdField_a_of_type_JavaLangString, true);
+      }
+      else if (paramInteger.intValue() == 9)
+      {
+        shk.a(this.a).c();
+        shk.a(this.a, localshp.jdField_a_of_type_JavaLangString, true);
+      }
+      else if (paramInteger.intValue() == 10)
+      {
+        shk.a(this.a).a(this.a);
+        shk.a(this.a, localshp.jdField_a_of_type_JavaLangString, true);
+      }
+      else if (paramInteger.intValue() == 12)
+      {
+        shk.a(this.a);
+        shk.a(this.a, localshp.jdField_a_of_type_JavaLangString, true);
+      }
+      else if (paramInteger.intValue() == 28)
+      {
+        if (!TextUtils.isEmpty(shk.a(this.a).c))
+        {
+          ayec.a(1, 3);
+          ayec.a(shk.a(this.a).c, shk.a(this.a).jdField_a_of_type_JavaLangString);
+          shk.a(this.a, localshp.jdField_a_of_type_JavaLangString, true);
         }
-        str = paramString + ".stmp";
       }
-      return str;
-    }
-    return paramString + ".tmp";
-  }
-  
-  public static String b(String paramString, long paramLong, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    String str2 = a(paramInt);
-    String str1 = a(paramString, true, paramLong);
-    paramString = str1;
-    if (!TextUtils.isEmpty(str2)) {
-      paramString = str1 + str2;
-    }
-    str1 = paramString;
-    if (paramBoolean1)
-    {
-      if (paramBoolean2) {
-        str1 = paramString + ".stmp";
+      else if (paramInteger.intValue() == 13)
+      {
+        if (!TextUtils.isEmpty(shk.a(this.a).c)) {
+          this.a.a.d(shk.a(this.a).c, new shr(this, localshp));
+        }
+      }
+      else if (paramInteger.intValue() == 14)
+      {
+        shk.a(this.a).c(shk.a(this.a).c);
+        shk.a(this.a, localshp.jdField_a_of_type_JavaLangString, true);
+      }
+      else if (paramInteger.intValue() == 20)
+      {
+        shk.b(this.a);
+        shk.a(this.a, localshp.jdField_a_of_type_JavaLangString, true);
+      }
+      else if (paramInteger.intValue() == 19)
+      {
+        this.a.b("not_care");
+      }
+      else
+      {
+        Intent localIntent;
+        if (paramInteger.intValue() == 17)
+        {
+          if (!TextUtils.isEmpty(shk.a(this.a).e))
+          {
+            localIntent = AddFriendLogicActivity.a(this.a.a(), 1, shk.a(this.a).e + "", null, 3096, 1, shk.a(this.a).f, null, null, null, null);
+            this.a.a().startActivity(localIntent);
+          }
+          shk.a(this.a, localshp.jdField_a_of_type_JavaLangString, true);
+        }
+        else if (paramInteger.intValue() == 16)
+        {
+          if (!TextUtils.isEmpty(shk.a(this.a).e))
+          {
+            localIntent = actn.a(new Intent(this.a.a(), SplashActivity.class), null);
+            localIntent.putExtra("uin", shk.a(this.a).e);
+            localIntent.putExtra("uintype", 0);
+            this.a.a().startActivity(localIntent);
+            shk.a(this.a, localshp.jdField_a_of_type_JavaLangString, true);
+          }
+        }
+        else if (paramInteger.intValue() == 21)
+        {
+          if (!TextUtils.isEmpty(shk.a(this.a).e))
+          {
+            localIntent = new Intent(this.a.a(), AccountDetailActivity.class);
+            localIntent.putExtra("uin", shk.a(this.a).e);
+            localIntent.putExtra("from_js", true);
+            this.a.a().startActivity(localIntent);
+            shk.a(this.a, localshp.jdField_a_of_type_JavaLangString, true);
+          }
+        }
+        else if (paramInteger.intValue() == 22)
+        {
+          this.a.b("personal_c2c");
+        }
+        else if (paramInteger.intValue() == 23)
+        {
+          this.a.b("unfollow");
+        }
+        else
+        {
+          this.a.b(localshp.jdField_a_of_type_JavaLangString);
+        }
       }
     }
-    else {
-      return str1;
-    }
-    return paramString + ".tmp";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     shq
  * JD-Core Version:    0.7.0.1
  */

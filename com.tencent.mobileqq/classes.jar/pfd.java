@@ -1,22 +1,21 @@
-import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class pfd
-  implements PopupWindow.OnDismissListener
+  implements ViewBase.OnClickListener
 {
-  pfd(pez parampez, beko parambeko) {}
+  pfd(pfb parampfb, pax parampax, Container paramContainer) {}
   
-  public void onDismiss()
+  public void onClick(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_Beko.a(1.0F);
-    if (this.jdField_a_of_type_Pez.a.b)
-    {
-      qhp localqhp = this.jdField_a_of_type_Pez.a.a();
-      if (localqhp != null)
-      {
-        localqhp.c();
-        this.jdField_a_of_type_Pez.a.b = false;
-      }
-    }
+    paramViewBase = this.jdField_a_of_type_Pax.a();
+    String str = paramViewBase.mSocialFeedInfo.a.f;
+    onk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
+    rap.a(paramViewBase, (int)paramViewBase.mChannelID);
+    shx.a(paramViewBase);
   }
 }
 

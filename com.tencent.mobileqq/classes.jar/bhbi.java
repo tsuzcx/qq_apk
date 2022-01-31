@@ -1,17 +1,28 @@
-import dov.com.qq.im.AECamera.qudong.AEVideoShelfPreviewFragment;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import cooperation.qzone.util.QZLog;
+import mqq.util.WeakReference;
 
-public class bhbi
-  implements bbmj
+final class bhbi
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  public bhbi(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
+  bhbi(long paramLong) {}
   
-  public void a(bbmh parambbmh) {}
-  
-  public void a(bbmh parambbmh, int paramInt1, int paramInt2) {}
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("onPluginManagerLoaded: ");
+    if (paramPluginManagerClient != null) {}
+    for (Object localObject = Boolean.valueOf(paramPluginManagerClient.isPluginInstalled("qzone_plugin.apk"));; localObject = "null")
+    {
+      QZLog.i("QZoneApiProxy", localObject + " cost " + (System.nanoTime() - this.a));
+      bhbh.a(new WeakReference(paramPluginManagerClient));
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhbi
  * JD-Core Version:    0.7.0.1
  */

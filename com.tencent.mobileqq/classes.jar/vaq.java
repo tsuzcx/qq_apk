@@ -1,25 +1,11 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-
-public class vaq
-  implements uye
+class vaq
+  implements uzz
 {
-  public vaq(DoodleLayout paramDoodleLayout) {}
+  vaq(vaf paramvaf) {}
   
-  public void a(Bitmap paramBitmap, boolean paramBoolean)
+  public void a()
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBitmap, paramBoolean);
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (this.a.a != null)
-    {
-      urk.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
-      this.a.a.a(paramArrayOfByte);
-    }
+    veg.d("Q.qqstory.home.StoryListPresenter", "ParallelStepExecutor finish requestAllDataFromNet steps");
   }
 }
 

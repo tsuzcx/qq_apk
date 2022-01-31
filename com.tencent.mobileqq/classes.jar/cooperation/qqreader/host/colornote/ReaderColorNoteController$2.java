@@ -1,10 +1,10 @@
 package cooperation.qqreader.host.colornote;
 
-import alsd;
+import amgw;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 
 class ReaderColorNoteController$2
-  implements alsd
+  implements amgw
 {
   ReaderColorNoteController$2(ReaderColorNoteController paramReaderColorNoteController, IReaderServiceInfo paramIReaderServiceInfo) {}
   

@@ -1,56 +1,41 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.widget.DraggableGridView;
+import android.text.Layout;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.TextView;
 
-public abstract class bbgj
+class bbgj
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public DraggableGridView a;
+  bbgj(bbgg parambbgg, int paramInt, String paramString) {}
   
-  public abstract int a();
-  
-  public abstract int a(int paramInt);
-  
-  public abstract View a(LayoutInflater paramLayoutInflater, int paramInt1, int paramInt2, ViewGroup paramViewGroup);
-  
-  public abstract View a(LayoutInflater paramLayoutInflater, int paramInt, ViewGroup paramViewGroup);
-  
-  public abstract Object a(int paramInt);
-  
-  public abstract Object a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void a(View paramView, int paramInt);
-  
-  public abstract void a(View paramView, int paramInt1, int paramInt2);
-  
-  public int b()
+  public void onGlobalLayout()
   {
-    return 1;
-  }
-  
-  public int b(int paramInt)
-  {
-    return 0;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.a.a(paramInt1, paramInt2);
-  }
-  
-  public void c()
-  {
-    ((bbif)this.a.a()).notifyDataSetChanged();
+    this.jdField_a_of_type_Bbgg.text.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    int i;
+    if (this.jdField_a_of_type_Bbgg.text.getLineCount() > this.jdField_a_of_type_Int)
+    {
+      i = this.jdField_a_of_type_Bbgg.text.getLayout().getLineEnd(this.jdField_a_of_type_Int - 1);
+      if (this.jdField_a_of_type_JavaLangString != null) {
+        break label134;
+      }
+    }
+    label134:
+    for (String str = "";; str = this.jdField_a_of_type_JavaLangString)
+    {
+      boolean bool1 = ayki.a(str);
+      boolean bool2 = ayki.b(str);
+      if ((!bool1) && (!bool2))
+      {
+        str = this.jdField_a_of_type_Bbgg.text.getText().subSequence(0, i - 3) + "...";
+        this.jdField_a_of_type_Bbgg.text.setText(str);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbgj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,20 @@
-import android.graphics.Bitmap;
-import android.view.View;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
-public abstract interface azsl
+class azsl
+  implements apac
 {
-  public abstract View a();
+  azsl(azsi paramazsi, TroopFileTransferManager.Item paramItem) {}
   
-  public abstract void a();
+  public void a() {}
   
-  public abstract void b();
-  
-  public abstract void setBitmap(Bitmap paramBitmap);
+  public void b()
+  {
+    aozx.a(new aplq(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(azsi.e(this.jdField_a_of_type_Azsi))));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azsl
  * JD-Core Version:    0.7.0.1
  */

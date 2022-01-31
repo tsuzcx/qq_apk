@@ -1,34 +1,22 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aylj
+final class aylj
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public ArrayList<aylj> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  aylj(aylk paramaylk) {}
   
-  public aylj() {}
-  
-  public aylj(String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = ((Integer)ayli.a().get(paramString)).intValue();
+    aylf.a("0X800A5CA");
+    if (this.a != null) {
+      this.a.onCancel();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aylj
  * JD-Core Version:    0.7.0.1
  */

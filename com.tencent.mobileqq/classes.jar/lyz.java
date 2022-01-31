@@ -1,32 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.VideoControlUI;
-import java.lang.ref.WeakReference;
+import android.telephony.PhoneStateListener;
+import com.tencent.av.smallscreen.BaseSmallScreenService;
 
 public class lyz
-  implements View.OnTouchListener
+  extends PhoneStateListener
 {
-  WeakReference<VideoControlUI> a;
+  public lyz(BaseSmallScreenService paramBaseSmallScreenService) {}
   
-  public lyz(VideoControlUI paramVideoControlUI)
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    this.a = new WeakReference(paramVideoControlUI);
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    paramView = (VideoControlUI)this.a.get();
-    if (paramView != null) {
-      switch (paramMotionEvent.getAction())
-      {
-      }
-    }
-    for (;;)
-    {
-      return false;
-      paramView.y(0L);
-    }
+    super.onCallStateChanged(paramInt, paramString);
+    this.a.a(paramInt, paramString);
   }
 }
 

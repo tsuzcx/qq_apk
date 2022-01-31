@@ -1,39 +1,61 @@
-import android.app.Dialog;
-import android.content.Context;
 import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.annotation.Nullable;
 
 public class amxe
-  extends Dialog
-  implements View.OnClickListener
+  extends ampb<amxd>
 {
-  private amxf a;
-  
-  public amxe(@NonNull Context paramContext)
+  public static amxd a()
   {
-    super(paramContext, 2131690339);
-    super.setContentView(2131493104);
-    super.setCanceledOnTouchOutside(false);
-    super.setCancelable(false);
-    super.findViewById(2131298186).setOnClickListener(this);
+    return (amxd)ampm.a().a(484);
   }
   
-  public void a(amxf paramamxf)
+  public int a()
   {
-    this.a = paramamxf;
+    return 484;
   }
   
-  public void onClick(View paramView)
+  @NonNull
+  public amxd a(int paramInt)
   {
-    if (this.a != null) {
-      this.a.a(this);
+    return new amxd();
+  }
+  
+  @Nullable
+  public amxd a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
+      return amxd.a(paramArrayOfampi);
     }
+    return null;
+  }
+  
+  public Class<amxd> a()
+  {
+    return amxd.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amxd paramamxd) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amxe
  * JD-Core Version:    0.7.0.1
  */

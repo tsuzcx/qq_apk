@@ -1,39 +1,22 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.MessageForMarketFace;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class adjj
-  implements begw
+  implements aoac
 {
-  adjj(adje paramadje, anla paramanla, begr parambegr, MessageForMarketFace paramMessageForMarketFace) {}
+  adjj(adji paramadji) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      if (this.jdField_a_of_type_Anla.a.jobType != 1) {
-        break;
-      }
+    if (paramInt == 8) {
+      adji.a(this.a).b();
     }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (this.jdField_a_of_type_Anla.a.jobType == 3) {}
-      for (boolean bool2 = true;; bool2 = false)
-      {
-        EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Adje.b, this.jdField_a_of_type_Adje.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_Anla.a.epId, bool1, bool2);
-        this.jdField_a_of_type_Begr.cancel();
-        return;
-      }
-      aael.a(this.jdField_a_of_type_Adje.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adje.b, this.jdField_a_of_type_Adje.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Anla.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.uniseq);
-      this.jdField_a_of_type_Begr.cancel();
+    while ((paramInt != 0) || (adji.a(this.a) == 0L)) {
       return;
     }
+    long l1 = System.currentTimeMillis();
+    long l2 = adji.a(this.a);
+    axrl.a(BaseApplication.getContext()).a(null, "StickerRecShowCost", true, l1 - l2, 0L, null, "");
+    adji.a(this.a, 0L);
   }
 }
 

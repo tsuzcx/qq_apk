@@ -1,62 +1,31 @@
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class amdr
+  extends ContentObserver
 {
-  public int a = -1;
-  
-  public static amdr a(alzs[] paramArrayOfalzs)
+  public amdr(BusinessCardEditActivity paramBusinessCardEditActivity, Handler paramHandler)
   {
-    amdr localamdr = new amdr();
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
+    super(paramHandler);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_EditActivity", 2, "Contact changed selfChange=" + paramBoolean);
+    }
+    if (BusinessCardEditActivity.a(this.a))
     {
-      int j = paramArrayOfalzs.length;
-      int i = 0;
-      if (i < j)
-      {
-        Object localObject = paramArrayOfalzs[i];
-        if (localObject == null) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          localObject = ((alzs)localObject).a;
-          try
-          {
-            a(new JSONObject((String)localObject), localamdr);
-            if (QLog.isColorLevel()) {
-              QLog.i("PhotoListPanelBean", 2, "parse: " + (String)localObject + " bean:" + localamdr);
-            }
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              localJSONException.printStackTrace();
-            }
-          }
-        }
-      }
+      this.a.a(2131698634, 2);
+      BusinessCardEditActivity.a(this.a, false);
     }
-    return localamdr;
-  }
-  
-  private static void a(JSONObject paramJSONObject, amdr paramamdr)
-  {
-    if (paramJSONObject.has("showMode")) {
-      paramamdr.a = paramJSONObject.optInt("showMode");
-    }
-  }
-  
-  public String toString()
-  {
-    return "PhotoListPanelBean{showMode=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amdr
  * JD-Core Version:    0.7.0.1
  */

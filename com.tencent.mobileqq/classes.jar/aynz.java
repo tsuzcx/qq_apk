@@ -1,22 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class aynz
-  implements azgl
+  implements View.OnClickListener
 {
-  aynz(ayny paramayny, azhx paramazhx, int paramInt) {}
+  aynz(aynx paramaynx) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if ((paramJSONObject != null) && (paramJSONObject.optInt("retcode", -1) == 0)) {
-      this.jdField_a_of_type_Azhx.a(this.jdField_a_of_type_Ayny.a.a.a, 0, this.jdField_a_of_type_Int);
+    switch (((ayni)paramView.getTag()).b)
+    {
+    default: 
+      return;
+    case 1001: 
+      this.a.d();
+      return;
+    case 1002: 
+      this.a.e();
+      return;
+    case 1003: 
+      this.a.f();
+      return;
     }
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aynz
  * JD-Core Version:    0.7.0.1
  */

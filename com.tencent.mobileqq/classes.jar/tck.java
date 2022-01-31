@@ -1,41 +1,8 @@
-import android.app.Activity;
-
-class tck
-  implements tcm
+public abstract interface tck
 {
-  tck(tci paramtci) {}
+  public abstract void a();
   
-  public void a(tet paramtet)
-  {
-    tci.a(this.a).c();
-    Activity localActivity = tci.a(this.a).a();
-    if (localActivity == null)
-    {
-      c(paramtet);
-      return;
-    }
-    tff.a(localActivity, paramtet, tci.a(this.a));
-  }
-  
-  public void b(tet paramtet)
-  {
-    tci.a(this.a).c();
-    if (tci.a(this.a) != null)
-    {
-      tci.a(this.a).c(paramtet.a);
-      tci.a(this.a).a();
-    }
-  }
-  
-  public void c(tet paramtet)
-  {
-    tci.a(this.a).c();
-    if (tci.a(this.a) != null)
-    {
-      tci.a(this.a).d(paramtet.a);
-      tci.a(this.a).a();
-    }
-  }
+  public abstract void b();
 }
 
 

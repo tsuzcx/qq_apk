@@ -1,17 +1,10 @@
-import android.content.Context;
-import com.tencent.wifisdk.TMSDKCustomConfig.IInstaller;
-
-final class bbrv
-  implements TMSDKCustomConfig.IInstaller
+public abstract interface bbrv
 {
-  public boolean installApp(Context paramContext, String paramString)
-  {
-    return bcev.a(paramContext, paramString, "biz_src_wifi");
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbrv
  * JD-Core Version:    0.7.0.1
  */

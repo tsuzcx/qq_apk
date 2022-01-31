@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.model;
 
-import arom;
+import askq;
 
 public class TroopInfoManager$1
   implements Runnable
 {
-  public TroopInfoManager$1(arom paramarom) {}
+  public TroopInfoManager$1(askq paramaskq) {}
   
   public void run()
   {

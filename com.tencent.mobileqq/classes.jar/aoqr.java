@@ -1,21 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.2.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class aoqr
-  implements alur
+class aoqr
+  implements aptu
 {
-  public aoqr(FileBrowserActivity paramFileBrowserActivity) {}
+  aoqr(aoqq paramaoqq, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    if (QLog.isDebugVersion()) {
-      QLog.i("FileBrowserActivity<FileAssistant>", 4, "color note update.");
-    }
-    ThreadManagerV2.getUIHandlerV2().post(new FileBrowserActivity.2.1(this));
+    QfileBaseCloudFileTabView.e(this.jdField_a_of_type_Aoqq.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
+  
+  public void b() {}
 }
 
 

@@ -1,61 +1,47 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
 
 public class ammt
-  extends alzl<amms>
+  implements bftk
 {
-  public static amms a()
+  public ammt(SearchResultActivity paramSearchResultActivity) {}
+  
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    return (amms)alzw.a().a(344);
+    SearchResultActivity.a(this.a).c(SearchResultActivity.a(this.a));
   }
   
-  public int a()
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    return 344;
-  }
-  
-  @NonNull
-  public amms a(int paramInt)
-  {
-    return new amms();
-  }
-  
-  @Nullable
-  public amms a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
-      return amms.a(paramArrayOfalzs);
+    SearchResultActivity.a(this.a).a(SearchResultActivity.a(this.a));
+    if (bbev.d(this.a)) {
+      SearchResultActivity.c(this.a);
     }
-    return null;
+    for (;;)
+    {
+      SearchResultActivity.a(this.a, System.currentTimeMillis());
+      return true;
+      SearchResultActivity.a(this.a).a(1);
+      paramView = Message.obtain();
+      paramView.what = 3;
+      SearchResultActivity.a(this.a).sendMessageDelayed(paramView, 1000L);
+    }
   }
   
-  public Class<amms> a()
+  public void b(int paramInt, View paramView, ListView paramListView)
   {
-    return amms.class;
+    SearchResultActivity.a(this.a).b(SearchResultActivity.a(this.a));
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(amms paramamms) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
-  }
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ammt
  * JD-Core Version:    0.7.0.1
  */

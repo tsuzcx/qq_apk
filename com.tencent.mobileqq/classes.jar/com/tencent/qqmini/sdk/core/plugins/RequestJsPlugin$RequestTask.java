@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.os.SystemClock;
-import bdgr;
+import beku;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -26,10 +26,10 @@ public class RequestJsPlugin$RequestTask
       if (paramJSONObject.has("url")) {
         this.mUrl = paramJSONObject.optString("url");
       }
-      Object localObject1 = bdgr.a(paramRequestJsPlugin.mMiniAppContext, paramJSONObject, "data");
+      Object localObject1 = beku.a(paramRequestJsPlugin.mMiniAppContext, paramJSONObject, "data");
       if (localObject1 != null)
       {
-        localObject1 = ((bdgr)localObject1).a;
+        localObject1 = ((beku)localObject1).a;
         this.mBody = ((byte[])localObject1);
         if ((this.mBody == null) && (paramJSONObject.has("data")))
         {

@@ -1,38 +1,46 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Context;
+import android.view.View;
+import com.tencent.common.app.AppInterface;
 
-public class ajeq
-  implements EIPCResultCallback
+public abstract interface ajeq
 {
-  public ajeq(BaseActivity paramBaseActivity) {}
+  public abstract int a();
   
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    if (paramEIPCResult.data == null) {}
-    do
-    {
-      return;
-      switch (paramEIPCResult.data.getInt("param_cmd"))
-      {
-      default: 
-        return;
-      }
-    } while (paramEIPCResult.code != 0);
-    paramEIPCResult = paramEIPCResult.data;
-    if (QLog.isDevelopLevel())
-    {
-      int i = paramEIPCResult.getInt("param_proc_badge_count");
-      QLog.i("MiniMsgIPCServer", 2, "doRefreshMiniBadge COUNT = " + i);
-    }
-    this.a.doRefreshMiniBadge(paramEIPCResult);
-  }
+  public abstract long a();
+  
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract void a(ajep paramajep);
+  
+  public abstract void a(Context paramContext, AppInterface paramAppInterface);
+  
+  public abstract void a(String paramString1, String paramString2, int paramInt);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void b(ajep paramajep);
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajeq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,17 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Comparator;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.Stream;
+import java.util.List;
 
-public class uky
-  implements Comparator<StoryVideoItem>
+class uky
+  implements uks<Bitmap>
 {
-  private boolean a;
+  uky(ukv paramukv, List paramList, String paramString) {}
   
-  public uky(boolean paramBoolean)
+  @NonNull
+  public Stream<Bitmap> a(uko paramuko)
   {
-    this.a = paramBoolean;
-  }
-  
-  public int a(StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2)
-  {
-    int j = 1;
-    int i = -1;
-    if (paramStoryVideoItem1.isUploadFail() == paramStoryVideoItem2.isUploadFail()) {
-      if (paramStoryVideoItem1.mCreateTime == paramStoryVideoItem2.mCreateTime) {
-        i = 0;
-      }
-    }
-    do
-    {
-      do
-      {
-        return i;
-        if (paramStoryVideoItem1.mCreateTime <= paramStoryVideoItem2.mCreateTime) {
-          break;
-        }
-        i = j;
-      } while (this.a);
-      return -1;
-      if (this.a) {}
-      for (;;)
-      {
-        return i;
-        i = 1;
-      }
-      if (!paramStoryVideoItem1.isUploadFail()) {
-        break;
-      }
-      i = j;
-    } while (this.a);
-    return -1;
-    if (paramStoryVideoItem2.isUploadFail())
-    {
-      if (this.a) {}
-      for (;;)
-      {
-        return i;
-        i = 1;
-      }
-    }
-    return 0;
+    return ukv.a(this.jdField_a_of_type_Ukv, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
   }
 }
 

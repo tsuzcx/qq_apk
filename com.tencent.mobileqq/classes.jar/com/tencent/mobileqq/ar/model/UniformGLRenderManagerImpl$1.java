@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.model;
 
-import aklr;
-import akwv;
+import alad;
+import allh;
 
 public class UniformGLRenderManagerImpl$1
   implements Runnable
 {
-  public UniformGLRenderManagerImpl$1(akwv paramakwv, aklr paramaklr) {}
+  public UniformGLRenderManagerImpl$1(allh paramallh, alad paramalad) {}
   
   public void run()
   {

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajed;
+import ajsf;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import apdh;
-import apdl;
-import ayoq;
-import ayqd;
+import apvb;
+import apvf;
+import azpg;
+import azqt;
 import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -45,30 +45,31 @@ public class TroopFileTransferManager$Item
   public transient boolean genThumb_Middle_OnGettedLargeOrOrigPic;
   public transient boolean isFileExist;
   public transient String mExcitingSpeed;
-  public apdl mForwardCallback;
+  public apvf mForwardCallback;
   public transient int retryTimes;
   public transient String rspHeadStr;
+  public transient int thumbInvalidCode;
   public transient long transferBeginTime;
   public transient long transferedSize;
   public transient String uploadUrl;
   
   public TroopFileTransferManager$Item() {}
   
-  public TroopFileTransferManager$Item(ayoq paramayoq)
+  public TroopFileTransferManager$Item(azpg paramazpg)
   {
-    this.Id = paramayoq.jdField_a_of_type_JavaUtilUUID;
-    this.LocalFile = paramayoq.jdField_h_of_type_JavaLangString;
-    this.Status = paramayoq.jdField_e_of_type_Int;
-    this.FilePath = paramayoq.jdField_b_of_type_JavaLangString;
-    this.FileName = paramayoq.jdField_c_of_type_JavaLangString;
-    this.ProgressTotal = paramayoq.jdField_a_of_type_Long;
-    this.UploadTime = paramayoq.a();
-    this.BusId = paramayoq.jdField_a_of_type_Int;
-    if ((paramayoq.i != null) && (paramayoq.i.length() > 0))
+    this.Id = paramazpg.jdField_a_of_type_JavaUtilUUID;
+    this.LocalFile = paramazpg.jdField_h_of_type_JavaLangString;
+    this.Status = paramazpg.jdField_e_of_type_Int;
+    this.FilePath = paramazpg.jdField_b_of_type_JavaLangString;
+    this.FileName = paramazpg.jdField_c_of_type_JavaLangString;
+    this.ProgressTotal = paramazpg.jdField_a_of_type_Long;
+    this.UploadTime = paramazpg.a();
+    this.BusId = paramazpg.jdField_a_of_type_Int;
+    if ((paramazpg.jdField_i_of_type_JavaLangString != null) && (paramazpg.jdField_i_of_type_JavaLangString.length() > 0))
     {
       bool1 = true;
       this.HasThumbnailFile_Small = bool1;
-      if ((paramayoq.j == null) || (paramayoq.j.length() <= 0)) {
+      if ((paramazpg.j == null) || (paramazpg.j.length() <= 0)) {
         break label140;
       }
     }
@@ -76,8 +77,8 @@ public class TroopFileTransferManager$Item
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.HasThumbnailFile_Large = bool1;
-      this.NickName = paramayoq.n;
-      this.mParentId = paramayoq.f;
+      this.NickName = paramazpg.n;
+      this.mParentId = paramazpg.f;
       return;
       bool1 = false;
       break;
@@ -192,60 +193,63 @@ public class TroopFileTransferManager$Item
     new File(getThumbnailFile(paramLong, 640)).delete();
   }
   
-  public final ayqd getInfo(long paramLong)
+  public final azqt getInfo(long paramLong)
   {
-    ayqd localayqd = new ayqd();
-    localayqd.jdField_b_of_type_Long = paramLong;
-    localayqd.jdField_a_of_type_JavaUtilUUID = this.Id;
-    localayqd.jdField_d_of_type_Long = this.ProgressValue;
-    localayqd.jdField_b_of_type_Int = this.Status;
-    localayqd.jdField_a_of_type_Boolean = this.IsNewStatus;
-    localayqd.jdField_c_of_type_Int = this.ErrorCode;
-    localayqd.jdField_h_of_type_Int = this.BusId;
+    azqt localazqt = new azqt();
+    localazqt.jdField_b_of_type_Long = paramLong;
+    localazqt.jdField_a_of_type_JavaUtilUUID = this.Id;
+    localazqt.jdField_d_of_type_Long = this.ProgressValue;
+    localazqt.jdField_b_of_type_Int = this.Status;
+    localazqt.jdField_a_of_type_Boolean = this.IsNewStatus;
+    localazqt.jdField_c_of_type_Int = this.ErrorCode;
+    localazqt.jdField_h_of_type_Int = this.BusId;
     if (this.HasThumbnailFile_Small)
     {
       str = getThumbnailFile(paramLong, 128);
-      localayqd.jdField_b_of_type_JavaLangString = str;
+      localazqt.jdField_b_of_type_JavaLangString = str;
       if (!this.HasThumbnailFile_Large) {
-        break label331;
+        break label349;
       }
       str = getThumbnailFile(paramLong, 640);
       label107:
-      localayqd.jdField_c_of_type_JavaLangString = str;
+      localazqt.jdField_c_of_type_JavaLangString = str;
       if (!this.HasThumbnailFile_Middle) {
-        break label353;
+        break label371;
       }
       str = getThumbnailFile(paramLong, 383);
       label129:
-      localayqd.jdField_d_of_type_JavaLangString = str;
-      localayqd.jdField_c_of_type_Long = this.ProgressTotal;
-      localayqd.jdField_d_of_type_Int = this.UploadTime;
-      localayqd.jdField_e_of_type_JavaLangString = this.FilePath;
+      localazqt.jdField_d_of_type_JavaLangString = str;
+      localazqt.jdField_c_of_type_Long = this.ProgressTotal;
+      localazqt.jdField_d_of_type_Int = this.UploadTime;
+      localazqt.jdField_e_of_type_JavaLangString = this.FilePath;
       if ((TextUtils.isEmpty(this.NameForSave)) || (this.SafeCheckRes != 2)) {
-        break label375;
+        break label393;
       }
-      localayqd.jdField_g_of_type_JavaLangString = this.NameForSave;
+      localazqt.jdField_g_of_type_JavaLangString = this.NameForSave;
       label189:
-      localayqd.jdField_a_of_type_JavaLangString = this.LocalFile;
-      localayqd.jdField_h_of_type_JavaLangString = this.NickName;
-      localayqd.jdField_e_of_type_Long = this.entrySessionID;
+      localazqt.jdField_a_of_type_JavaLangString = this.LocalFile;
+      localazqt.jdField_h_of_type_JavaLangString = this.NickName;
+      localazqt.jdField_e_of_type_Long = this.entrySessionID;
       if (!TextUtils.isEmpty(this.mParentId)) {
-        break label387;
+        break label405;
       }
     }
-    label387:
+    label393:
+    label405:
     for (String str = "/";; str = this.mParentId)
     {
-      localayqd.i = str;
-      localayqd.jdField_b_of_type_Boolean = this.ThumbnailDownloading_Middle_Fail;
-      if ((localayqd.jdField_b_of_type_Boolean) && (!apdh.b(localayqd.jdField_d_of_type_JavaLangString))) {
-        localayqd.jdField_d_of_type_JavaLangString = null;
+      localazqt.jdField_i_of_type_JavaLangString = str;
+      localazqt.jdField_b_of_type_Boolean = this.ThumbnailDownloading_Middle_Fail;
+      if ((localazqt.jdField_b_of_type_Boolean) && (!apvb.b(localazqt.jdField_d_of_type_JavaLangString))) {
+        localazqt.jdField_d_of_type_JavaLangString = null;
       }
-      localayqd.jdField_e_of_type_Int = this.width;
-      localayqd.f = this.height;
-      localayqd.jdField_g_of_type_Int = this.duration;
-      localayqd.j = this.mExcitingSpeed;
-      return localayqd;
+      localazqt.jdField_e_of_type_Int = this.width;
+      localazqt.f = this.height;
+      localazqt.jdField_g_of_type_Int = this.duration;
+      localazqt.j = this.mExcitingSpeed;
+      localazqt.jdField_i_of_type_Int = this.thumbInvalidCode;
+      localazqt.jdField_c_of_type_Boolean = this.genThumb_Middle_OnGettedLargeOrOrigPic;
+      return localazqt;
       if (canFetchThumbnailFile(128))
       {
         str = null;
@@ -253,7 +257,7 @@ public class TroopFileTransferManager$Item
       }
       str = "";
       break;
-      label331:
+      label349:
       if (canFetchThumbnailFile(640))
       {
         str = null;
@@ -261,7 +265,7 @@ public class TroopFileTransferManager$Item
       }
       str = "";
       break label107;
-      label353:
+      label371:
       if (canFetchThumbnailFile(383))
       {
         str = null;
@@ -269,8 +273,7 @@ public class TroopFileTransferManager$Item
       }
       str = "";
       break label129;
-      label375:
-      localayqd.jdField_g_of_type_JavaLangString = this.FileName;
+      localazqt.jdField_g_of_type_JavaLangString = this.FileName;
       break label189;
     }
   }
@@ -278,12 +281,12 @@ public class TroopFileTransferManager$Item
   public final String getThumbnailFile(long paramLong, int paramInt)
   {
     if (paramInt == 128) {
-      return ajed.bm + "[Thumb]" + paramLong + "-" + this.Id.toString();
+      return ajsf.bo + "[Thumb]" + paramLong + "-" + this.Id.toString();
     }
     if (paramInt == 383) {
-      return ajed.bm + "[Thumb]" + 320 + paramLong + "-" + this.Id.toString();
+      return ajsf.bo + "[Thumb]" + 320 + paramLong + "-" + this.Id.toString();
     }
-    return ajed.bm + "[Thumb]" + paramInt + paramLong + "-" + this.Id.toString();
+    return ajsf.bo + "[Thumb]" + paramInt + paramLong + "-" + this.Id.toString();
   }
 }
 

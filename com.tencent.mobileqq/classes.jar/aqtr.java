@@ -1,48 +1,24 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
-import com.tencent.smtt.sdk.WebView;
-import java.util.concurrent.atomic.AtomicLong;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment.1.1;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public class aqtr
-  extends BroadcastReceiver
+  implements EIPCResultCallback
 {
-  public aqtr(UiApiPlugin paramUiApiPlugin) {}
+  public aqtr(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    paramContext = (ResultReceiver)paramIntent.getParcelableExtra("receiver");
-    long l = paramIntent.getLongExtra("seq", 0L);
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("seq", l);
-    if (UiApiPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get() != -1L) {
-      paramContext.send(-1, localBundle);
-    }
-    String str = paramIntent.getStringExtra("date");
-    paramIntent = paramIntent.getStringExtra("id");
-    Object localObject = this.a.mRuntime.a();
-    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
+    if (paramEIPCResult.code == 0)
     {
-      localObject = this.a.mRuntime.a();
-      if ((localObject == null) || (((WebView)localObject).getX5WebViewExtension() == null))
-      {
-        paramContext.send(-2, localBundle);
-        return;
+      paramEIPCResult = paramEIPCResult.data;
+      if (paramEIPCResult != null) {
+        ThreadManagerV2.getUIHandlerV2().post(new QQGameFeedWebFragment.1.1(this, paramEIPCResult));
       }
-      localBundle = new Bundle();
-      localBundle.putString("date", str);
-      localBundle.putString("id", paramIntent);
-      UiApiPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(l);
-      UiApiPlugin.jdField_a_of_type_AndroidOsResultReceiver = paramContext;
-      ((WebView)localObject).getX5WebViewExtension().invokeMiscMethod("uploadX5CoreLiveLog", localBundle);
-      return;
     }
-    paramContext.send(-2, localBundle);
   }
 }
 

@@ -1,27 +1,36 @@
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Point;
+import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
+import java.util.Comparator;
+import java.util.Random;
 
 public class auup
-  implements awiw
+  implements Comparator<auul>
 {
-  public auup(CameraCaptureView paramCameraCaptureView) {}
+  int jdField_a_of_type_Int;
+  Random jdField_a_of_type_JavaUtilRandom;
+  int b;
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public auup(TagCloudView paramTagCloudView, Random paramRandom, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 2, "onAutoFocusCallback single tap focus " + paramBoolean1 + ", camera2:" + paramBoolean2);
+    this.jdField_a_of_type_JavaUtilRandom = paramRandom;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt1;
+  }
+  
+  public int a(auul paramauul1, auul paramauul2)
+  {
+    if ((paramauul1.b.y > this.jdField_a_of_type_Int) || (paramauul2.b.y > this.jdField_a_of_type_Int)) {
+      return -(paramauul1.b.y - paramauul2.b.y);
     }
-    if (paramBoolean1)
-    {
-      CameraCaptureView.a(this.a, true);
-      return;
+    if ((paramauul1.b.x > this.b) || (paramauul2.b.x > this.b)) {
+      return -(paramauul1.b.x - paramauul2.b.x);
     }
-    CameraCaptureView.a.g();
+    return this.jdField_a_of_type_JavaUtilRandom.nextInt(3) - 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auup
  * JD-Core Version:    0.7.0.1
  */

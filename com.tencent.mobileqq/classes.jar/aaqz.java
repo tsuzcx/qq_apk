@@ -1,23 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
 
 public class aaqz
-  implements View.OnClickListener
+  implements actw
 {
-  public aaqz(EditInfoActivity paramEditInfoActivity) {}
+  public aaqz(ChatHistory paramChatHistory) {}
   
-  public void onClick(View paramView)
+  public void a(AudioPlayer paramAudioPlayer)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846792);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajjy.a(2131637841));
-    this.a.jdField_a_of_type_Boolean = false;
+    this.a.p();
+    if (this.a.jdField_a_of_type_Aaru != null) {
+      this.a.jdField_a_of_type_Aaru.d();
+    }
+    this.a.setVolumeControlStream(3);
+    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
   }
+  
+  public void a(AudioPlayer paramAudioPlayer, int paramInt)
+  {
+    this.a.b(2131695204);
+    this.a.setVolumeControlStream(3);
+    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+  }
+  
+  public void b(AudioPlayer paramAudioPlayer, int paramInt)
+  {
+    this.a.setVolumeControlStream(paramInt);
+  }
+  
+  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
+  
+  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 

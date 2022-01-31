@@ -3,13 +3,13 @@ package com.tencent.biz.viewplugin;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import mof;
-import xam;
+import mze;
+import xjm;
 
 public class ViewPluginManager$3
   implements Runnable
 {
-  public ViewPluginManager$3(xam paramxam) {}
+  public ViewPluginManager$3(xjm paramxjm) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class ViewPluginManager$3
     if (QLog.isColorLevel()) {
       QLog.i("ViewPluginManager", 2, "checkOfflineUpNotCallback.");
     }
-    mof.b(str, this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime());
+    mze.b(str, this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime());
   }
 }
 

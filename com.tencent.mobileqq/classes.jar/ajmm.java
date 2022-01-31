@@ -1,686 +1,323 @@
-import QQService.RespTmpChatPicDownload;
 import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageForDanceMachine;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class ajmm
-  implements ajfe
+  implements ajmo, ajmp
 {
-  protected void a() {}
-  
-  protected void a(int paramInt) {}
-  
-  protected void a(int paramInt1, int paramInt2) {}
-  
-  protected void a(int paramInt1, int paramInt2, int paramInt3) {}
-  
-  protected void a(int paramInt, byte[] paramArrayOfByte) {}
-  
-  public void a(long paramLong, int paramInt) {}
-  
-  public void a(long paramLong1, int paramInt, long paramLong2) {}
-  
-  public void a(MessageForDanceMachine paramMessageForDanceMachine) {}
-  
-  protected void a(String paramString) {}
-  
-  protected void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2) {}
-  
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2, int paramInt3) {}
-  
-  public void a(List<MessageRecord> paramList) {}
-  
-  protected void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2) {}
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2) {}
-  
-  public void a(boolean paramBoolean, long paramLong, ajmn paramajmn) {}
-  
-  protected void a(boolean paramBoolean, RespTmpChatPicDownload paramRespTmpChatPicDownload) {}
-  
-  protected void a(boolean paramBoolean, away paramaway) {}
-  
-  protected void a(boolean paramBoolean, away paramaway, ajmn paramajmn) {}
-  
-  protected void a(boolean paramBoolean, awba paramawba) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject) {}
-  
-  protected void a(boolean paramBoolean, String paramString) {}
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt) {}
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt1, long paramLong, int paramInt2) {}
-  
-  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2) {}
-  
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4) {}
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong) {}
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong, ajmj paramajmj) {}
-  
-  public void a(boolean paramBoolean, String paramString, axau paramaxau) {}
-  
-  public void a(boolean paramBoolean, String paramString, axav paramaxav) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4) {}
-  
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, String paramString3, String paramString4, ArrayList<String> paramArrayList) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList) {}
-  
-  protected void a(boolean paramBoolean, byte[] paramArrayOfByte, ajmn paramajmn) {}
-  
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
-  
-  protected void a(boolean paramBoolean, String[] paramArrayOfString) {}
-  
-  protected void b() {}
-  
-  public void b(int paramInt) {}
-  
-  protected void b(int paramInt1, int paramInt2) {}
-  
-  public void b(String paramString) {}
-  
-  protected void b(boolean paramBoolean) {}
-  
-  protected void b(boolean paramBoolean, int paramInt) {}
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  protected void b(boolean paramBoolean, String paramString) {}
-  
-  public void b(boolean paramBoolean, String paramString, axau paramaxau) {}
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList) {}
-  
-  protected void c() {}
-  
-  protected void c(int paramInt1, int paramInt2) {}
-  
-  public void c(String paramString) {}
-  
-  protected void c(boolean paramBoolean) {}
-  
-  protected void c(boolean paramBoolean, Object paramObject) {}
-  
-  protected void c(boolean paramBoolean, String paramString) {}
-  
-  public void d() {}
-  
-  protected void d(boolean paramBoolean) {}
-  
-  protected void e() {}
-  
-  protected void e(boolean paramBoolean) {}
-  
-  protected void f() {}
-  
-  protected void f(boolean paramBoolean) {}
-  
-  protected void g() {}
-  
-  protected void g(boolean paramBoolean) {}
-  
-  protected void h(boolean paramBoolean) {}
-  
-  protected void i(boolean paramBoolean) {}
-  
-  protected void j(boolean paramBoolean) {}
-  
-  protected void k(boolean paramBoolean) {}
-  
-  protected void l(boolean paramBoolean) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  private int jdField_a_of_type_Int = 0;
+  private ajlr jdField_a_of_type_Ajlr;
+  private ajmn jdField_a_of_type_Ajmn;
+  private TraceData jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData = new TraceData();
+  private ConcurrentHashMap<Integer, ajmk> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private boolean jdField_a_of_type_Boolean;
+  
+  public ajmm(int paramInt)
   {
-    if ((paramObject instanceof Object[])) {}
-    for (Object localObject1 = (Object[])paramObject;; localObject1 = null)
+    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.featureId = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.version = "8.2.8";
+    this.jdField_a_of_type_Ajmn = new ajmn(this);
+    this.jdField_a_of_type_Ajlr = ajlu.a().a();
+    this.jdField_a_of_type_Ajmn.a(this.jdField_a_of_type_Ajlr.b(), this);
+  }
+  
+  private long a()
+  {
+    return (System.currentTimeMillis() & 0xFFFFFFFF) << 10 | (int)(Math.random() * 1000.0D) & 0x3FF;
+  }
+  
+  private int b(Bundle paramBundle)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.traceId = a();
+    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.timestamp = paramBundle.getLong("timestamp");
+    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.startTime = paramBundle.getLong("startTime");
+    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.serverTime = paramBundle.getLong("serverTime");
+    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.featureKey = paramBundle.getString("featureKey");
+    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.isSampleFocus = paramBundle.getBoolean("isSampleFocus");
+    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.initJavaHeap = paramBundle.getInt("initJavaHeap");
+    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.initNativeHeap = paramBundle.getInt("initNativeHeap");
+    return -1;
+  }
+  
+  private int c(Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("spanId");
+    int j = paramBundle.getInt("errCode", -100);
+    Object localObject = paramBundle.getString("msg");
+    long l1 = paramBundle.getLong("timestamp");
+    long l2 = paramBundle.getLong("serverTime");
+    long l3 = paramBundle.getLong("startTime");
+    int k = paramBundle.getInt("extKey");
+    long l4 = paramBundle.getLong("extValue");
+    paramBundle = (ajmk)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
+    if (paramBundle == null)
     {
-      String str1 = null;
-      String str2 = null;
-      Object localObject2 = null;
-      int i;
-      long l1;
-      switch (paramInt)
+      paramBundle = new ajmk(i);
+      paramBundle.c = l3;
+      paramBundle.jdField_a_of_type_Long = l1;
+      paramBundle.b = l2;
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(i), paramBundle);
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-      default: 
-      case 6008: 
-      case 999: 
-      case 6005: 
-      case 6004: 
-      case 6006: 
-      case 1000: 
-      case 1003: 
-      case 1004: 
-      case 8015: 
-      case 1005: 
-      case 2000: 
-      case 2001: 
-      case 2002: 
-      case 3001: 
-      case 3002: 
-      case 3008: 
-      case 3013: 
-      case 6000: 
-      case 6009: 
-      case 6010: 
-      case 6012: 
-      case 6013: 
-      case 7000: 
-      case 8002: 
-      case 8005: 
-      case 8006: 
-      case 8010: 
-      case 8012: 
-      case 8014: 
-      case 8028: 
-      case 8032: 
-      case 1002: 
-      case 4003: 
-      case 3012: 
-      case 4005: 
-      case 4019: 
-      case 4006: 
-      case 4011: 
-      case 4012: 
-      case 4001: 
-      case 4004: 
-      case 4016: 
-      case 4017: 
-      case 4018: 
-      case 6003: 
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              e(paramBoolean);
-              return;
-              if ((paramObject instanceof String))
-              {
-                c(paramBoolean, (String)paramObject);
-                return;
-              }
-              c(paramBoolean, "");
-              return;
-              d(paramBoolean);
-              return;
-              a(paramBoolean, paramObject);
-              return;
-              l(paramBoolean);
-              return;
-              g();
-              return;
-              b(paramBoolean);
-              return;
-              b(paramBoolean, paramObject);
-              return;
-              c(paramBoolean, paramObject);
-              return;
-              c(paramBoolean);
-              return;
-              f();
-              return;
-              a();
-              b();
-              return;
-              b();
-              return;
-            } while ((localObject1 == null) || (localObject1.length <= 2));
-            str1 = (String)localObject1[0];
-            paramInt = ((Integer)localObject1[1]).intValue();
-            i = ((Integer)localObject1[2]).intValue();
-            if (localObject1.length >= 6)
-            {
-              paramObject = (SendMessageHandler)localObject1[3];
-              l1 = ((Long)localObject1[4]).longValue();
-            }
-            for (long l2 = ((Long)localObject1[5]).longValue();; l2 = 0L)
-            {
-              localObject2 = "";
-              if (localObject1.length >= 7) {
-                localObject2 = (String)localObject1[6];
-              }
-              a(str1, paramInt, i, paramObject, l1, l2, (String)localObject2);
-              return;
-              paramObject = null;
-              l1 = 96000L;
-            }
-          } while ((localObject1 == null) || (localObject1.length <= 2));
-          a((String)localObject1[0], ((Integer)localObject1[1]).intValue(), ((Integer)localObject1[2]).intValue());
-          return;
-          if ((localObject1 != null) && (localObject1.length > 0))
-          {
-            paramObject = new String[localObject1.length];
-            paramInt = 0;
-            while (paramInt < paramObject.length)
-            {
-              paramObject[paramInt] = ((String)localObject1[paramInt]);
-              paramInt += 1;
-            }
-            a(paramBoolean, paramObject);
-            return;
-          }
-          a(paramBoolean, null);
-          return;
-          if (paramBoolean)
-          {
-            localObject2 = null;
-            paramObject = localObject2;
-            if (localObject1 != null)
-            {
-              paramObject = localObject2;
-              if (localObject1.length > 0) {
-                paramObject = (RespTmpChatPicDownload)localObject1[0];
-              }
-            }
-            a(paramBoolean, paramObject);
-            return;
-          }
-          a(paramBoolean, null);
-          return;
-          a(paramBoolean, false, (List)paramObject);
-          return;
-          b(paramBoolean, false, (List)paramObject);
-          return;
-          a(false, true, null);
-          return;
-          paramObject = (ToServiceMsg)paramObject;
-          str2 = (String)paramObject.getAttribute("_tag_LOGSTR");
-          paramInt = paramObject.extraData.getInt("system_msg_action_type");
-          localObject1 = paramObject.extraData.getString("system_msg_action_resp_key");
-          localObject2 = paramObject.extraData.getString("system_msg_action_resp_error_key");
-          i = paramObject.extraData.getInt("system_msg_action_resp_result_code_key");
-          int j = paramObject.extraData.getInt("system_msg_action_resp_type_key");
-          str1 = paramObject.extraData.getString("system_msg_action_resp_invalid_decided_key");
-          int k = paramObject.extraData.getInt("system_msg_action_resp_remark_result_key");
-          paramObject = localObject1;
-          if (localObject1 == null) {
-            paramObject = "";
-          }
-          localObject1 = localObject2;
-          if (localObject2 == null) {
-            localObject1 = "";
-          }
-          localObject2 = str1;
-          if (str1 == null) {
-            localObject2 = "";
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("MessageObserver", 2, "sendSystemMsgActionResult logStr=" + str2 + ";actionType=" + paramInt + ";msgDetail=" + paramObject + ";resultCode=" + i + ";respType=" + j + ";msgFail=" + (String)localObject1 + ";msgInvalidDecided=" + (String)localObject2 + ";remarkRet=" + k);
-          }
-          a(paramBoolean, str2, paramInt, paramObject, i, j, (String)localObject1, (String)localObject2, k);
-          return;
-          a((String)((ToServiceMsg)paramObject).getAttribute("_tag_LOGSTR"));
-          return;
-          f(paramBoolean);
-          return;
-          g(paramBoolean);
-          return;
-          a(paramBoolean);
-          return;
-          i(paramBoolean);
-          return;
-          j(paramBoolean);
-          return;
-        } while (localObject1 == null);
-        if (localObject1.length >= 3) {
-          a(paramBoolean, (String)localObject1[0], Long.parseLong((String)localObject1[1]), (ajmj)localObject1[2]);
+        if (paramBundle.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null) {
+          paramBundle.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
         }
-        a(paramBoolean, (String)localObject1[0], Long.parseLong((String)localObject1[1]));
-        return;
-      case 5002: 
-        k(paramBoolean);
-        return;
-      case 5003: 
-        if (paramBoolean) {
-          if ((localObject1 == null) || (localObject1.length < 1)) {
-            break label3303;
-          }
-        }
-        break;
+        localObject = a((String)localObject, l1, l2);
+        paramBundle.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localObject);
       }
-      label3292:
-      label3303:
-      for (paramObject = (byte[])localObject1[0];; paramObject = null)
+      if (k > 0)
       {
-        if ((localObject1 != null) && (localObject1.length >= 2)) {}
-        for (localObject1 = (ajmn)localObject1[1];; localObject1 = null)
-        {
-          a(paramBoolean, paramObject, (ajmn)localObject1);
-          return;
-          paramObject = localObject2;
-          if (localObject1 != null)
-          {
-            paramObject = localObject2;
-            if (localObject1.length >= 2) {
-              paramObject = (ajmn)localObject1[1];
-            }
-          }
-          a(paramBoolean, null, paramObject);
-          return;
-          if (paramBoolean) {
-            if ((localObject1 == null) || (localObject1.length < 1)) {
-              break label3292;
-            }
-          }
-          for (paramObject = (away)localObject1[0];; paramObject = null)
-          {
-            localObject2 = str1;
-            if (localObject1 != null)
-            {
-              localObject2 = str1;
-              if (localObject1.length >= 2) {
-                localObject2 = (ajmn)localObject1[1];
-              }
-            }
-            a(paramBoolean, paramObject, (ajmn)localObject2);
-            return;
-            paramObject = str2;
-            if (localObject1 != null)
-            {
-              paramObject = str2;
-              if (localObject1.length >= 2) {
-                paramObject = (ajmn)localObject1[1];
-              }
-            }
-            a(paramBoolean, null, paramObject);
-            return;
-            if (paramBoolean)
-            {
-              localObject2 = null;
-              paramObject = localObject2;
-              if (localObject1 != null)
-              {
-                paramObject = localObject2;
-                if (localObject1.length >= 1) {
-                  paramObject = (away)localObject1[0];
-                }
-              }
-              a(paramBoolean, paramObject);
-              return;
-            }
-            a(paramBoolean, null);
-            return;
-            h(paramBoolean);
-            return;
-            if ((localObject1 != null) && (localObject1.length >= 2))
-            {
-              a(paramBoolean, ((Long)localObject1[0]).longValue(), ((Long)localObject1[1]).longValue());
-              return;
-            }
-            a(paramBoolean, 0L, 0L);
-            return;
-            if ((localObject1 != null) && (localObject1.length >= 1))
-            {
-              a(paramBoolean, (awba)localObject1[0]);
-              return;
-            }
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            if ("Stream ptt:UploadStreamStruct : arrayLength:" + localObject1 == null) {}
-            for (paramObject = "null";; paramObject = localObject1.length + "")
-            {
-              QLog.d("streamptt.send", 2, paramObject);
-              return;
-            }
-            if (!(paramObject instanceof String)) {
-              break;
-            }
-            a(paramBoolean, (String)paramObject);
-            return;
-            if (!(paramObject instanceof Object[])) {
-              break;
-            }
-            a(paramBoolean, (Object[])paramObject);
-            return;
-            paramObject = (Object[])paramObject;
-            if ((paramObject == null) || (paramObject.length != 2)) {
-              break;
-            }
-            b(paramBoolean, (String)paramObject[0]);
-            a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
-            return;
-            if ((localObject1 == null) || (localObject1.length <= 1)) {
-              break;
-            }
-            a(((Byte)localObject1[0]).byteValue(), ((Byte)localObject1[1]).byteValue());
-            return;
-            if ((localObject1 == null) || (localObject1.length <= 1)) {
-              break;
-            }
-            b(((Byte)localObject1[0]).byteValue(), ((Byte)localObject1[1]).byteValue());
-            return;
-            if ((localObject1 == null) || (localObject1.length < 1)) {
-              break;
-            }
-            a(((Byte)localObject1[0]).byteValue());
-            return;
-            if ((localObject1 != null) && (localObject1.length >= 2))
-            {
-              l1 = ((Long)localObject1[0]).longValue();
-              paramObject = (ajmn)localObject1[1];
-            }
-            for (;;)
-            {
-              a(paramBoolean, l1, paramObject);
-              return;
-              paramObject = null;
-              l1 = 0L;
-            }
-            if ((localObject1 == null) || (localObject1.length < 2)) {
-              break;
-            }
-            paramObject = (Integer)localObject1[0];
-            localObject2 = (String)localObject1[1];
-            localObject1 = (String)localObject1[2];
-            a(paramBoolean, (String)localObject2, paramObject.intValue(), (String)localObject1);
-            return;
-            c();
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("MessageObserver", 2, "onUpdate NOTIFY_TYPE_SUBACCOUNT_GET_MSG");
-            }
-            localObject1 = null;
-            if (paramObject != null) {
-              localObject1 = ((axau)paramObject).c;
-            }
-            b(paramBoolean, (String)localObject1, (axau)paramObject);
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("MessageObserver", 2, "onUpdate NOTIFY_TYPE_SUBACCOUNT_MSG_NUM_READED_CONFIRM isSucc=" + paramBoolean + " data=" + String.valueOf(paramObject));
-            }
-            str1 = null;
-            str2 = null;
-            localObject2 = str2;
-            localObject1 = str1;
-            if ((paramObject instanceof String[]))
-            {
-              paramObject = (String[])paramObject;
-              localObject2 = str2;
-              localObject1 = str1;
-              if (paramObject.length == 2)
-              {
-                localObject1 = paramObject[0];
-                localObject2 = paramObject[1];
-              }
-            }
-            a(paramBoolean, (String)localObject1, (String)localObject2);
-            return;
-            localObject1 = null;
-            if (paramObject != null) {
-              localObject1 = ((axau)paramObject).c;
-            }
-            a(paramBoolean, (String)localObject1, (axau)paramObject);
-            return;
-            localObject1 = null;
-            if (paramObject != null) {
-              localObject1 = ((axav)paramObject).a;
-            }
-            a(paramBoolean, (String)localObject1, (axav)paramObject);
-            return;
-            if ((localObject1 == null) || (localObject1.length != 6)) {
-              break;
-            }
-            paramObject = (Boolean)localObject1[0];
-            localObject2 = (String)localObject1[1];
-            str1 = (String)localObject1[2];
-            str2 = (String)localObject1[3];
-            String str3 = (String)localObject1[4];
-            localObject1 = (ArrayList)localObject1[5];
-            a(paramBoolean, paramObject.booleanValue(), (String)localObject2, str1, str2, str3, (ArrayList)localObject1);
-            return;
-            if ((localObject1 == null) || (localObject1.length != 4)) {
-              break;
-            }
-            a(paramBoolean, (String)localObject1[0], (String)localObject1[1], (String)localObject1[2], (String)localObject1[3]);
-            return;
-            a(paramBoolean, false);
-            return;
-            e();
-            return;
-            localObject2 = null;
-            boolean bool2 = true;
-            boolean bool1 = bool2;
-            paramObject = localObject2;
-            if (localObject1 != null)
-            {
-              bool1 = bool2;
-              paramObject = localObject2;
-              if (localObject1.length == 2)
-              {
-                paramObject = (List)localObject1[0];
-                bool1 = ((Boolean)localObject1[1]).booleanValue();
-              }
-            }
-            a(paramBoolean, paramObject, bool1);
-            return;
-            i = 0;
-            paramInt = i;
-            if (localObject1 != null)
-            {
-              paramInt = i;
-              if (localObject1.length == 1) {
-                paramInt = ((Integer)localObject1[0]).intValue();
-              }
-            }
-            a(paramBoolean, paramInt);
-            return;
-            if ((localObject1 == null) || (localObject1.length != 3)) {
-              break;
-            }
-            a(paramBoolean, ((Integer)localObject1[0]).intValue(), ((Long)localObject1[1]).longValue(), ((Boolean)localObject1[2]).booleanValue());
-            return;
-            if ((paramObject == null) || (!(paramObject instanceof List))) {
-              break;
-            }
-            a((List)paramObject);
-            return;
-            if ((localObject1 == null) || (localObject1.length != 1)) {
-              break;
-            }
-            b((String)localObject1[0]);
-            return;
-            d();
-            return;
-            if ((!paramBoolean) || (localObject1 == null) || (localObject1.length != 1)) {
-              break;
-            }
-            c((String)localObject1[0]);
-            return;
-            b(((Integer)paramObject).intValue());
-            return;
-            paramObject = (Long[])paramObject;
-            if (paramObject[0].longValue() == 1L)
-            {
-              a(paramObject[1].longValue(), 0);
-              return;
-            }
-            a(paramObject[1].longValue(), 0, paramObject[2].longValue());
-            return;
-            paramObject = (Long[])paramObject;
-            if (paramObject[0].longValue() == 1L)
-            {
-              a(paramObject[1].longValue(), paramObject[2].intValue());
-              return;
-            }
-            a(paramObject[1].longValue(), paramObject[2].intValue(), 0L);
-            return;
-            if ((localObject1 == null) || (localObject1.length <= 1)) {
-              break;
-            }
-            c(((Byte)localObject1[0]).byteValue(), ((Byte)localObject1[1]).byteValue());
-            return;
-            if ((localObject1 == null) || (localObject1.length <= 2)) {
-              break;
-            }
-            a(((Byte)localObject1[0]).byteValue(), ((Byte)localObject1[1]).byteValue(), ((Integer)localObject1[2]).intValue());
-            return;
-            if (!(paramObject instanceof MessageForDanceMachine)) {
-              break;
-            }
-            a((MessageForDanceMachine)paramObject);
-            return;
-            if (paramBoolean)
-            {
-              if ((localObject1 != null) && (localObject1.length >= 8))
-              {
-                a((String)localObject1[0], ((Integer)localObject1[1]).intValue(), ((Integer)localObject1[2]).intValue(), (SendMessageHandler)localObject1[3], ((Long)localObject1[4]).longValue(), ((Long)localObject1[5]).longValue(), (String)localObject1[6], ((Integer)localObject1[7]).intValue());
-                return;
-              }
-              if ((localObject1 == null) || (localObject1.length < 4)) {
-                break;
-              }
-              a(true, (String)localObject1[0], ((Integer)localObject1[1]).intValue(), ((Long)localObject1[2]).longValue(), ((Integer)localObject1[3]).intValue());
-              return;
-            }
-            if ((localObject1 == null) || (localObject1.length < 8)) {
-              break;
-            }
-            a((String)localObject1[0], ((Integer)localObject1[1]).intValue(), ((Integer)localObject1[2]).intValue(), (SendMessageHandler)localObject1[3], ((Long)localObject1[4]).longValue(), ((Long)localObject1[5]).longValue(), (String)localObject1[6], ((Integer)localObject1[7]).intValue());
-            return;
-            if ((localObject1 == null) || (localObject1.length < 2) || (!(localObject1[0] instanceof Integer)) || (!(localObject1[1] instanceof byte[]))) {
-              break;
-            }
-            a(((Integer)localObject1[0]).intValue(), (byte[])localObject1[1]);
-            return;
-            if ((localObject1 == null) || (localObject1.length < 1)) {
-              break;
-            }
-            b(paramBoolean, ((Integer)localObject1[0]).intValue());
-            return;
-          }
+        if (paramBundle.jdField_a_of_type_JavaUtilMap == null) {
+          paramBundle.jdField_a_of_type_JavaUtilMap = new HashMap();
         }
+        paramBundle.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(k), Long.valueOf(l4));
+      }
+      if (j != -100)
+      {
+        this.jdField_a_of_type_Int = 2;
+        return 0;
+      }
+      return -1;
+    }
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_Ajmn.b();
+    this.jdField_a_of_type_Ajmn.a();
+    this.jdField_a_of_type_Ajmn = null;
+  }
+  
+  private int d(Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("spanId");
+    int j = paramBundle.getInt("errCode");
+    long l = paramBundle.getLong("endTime");
+    paramBundle = paramBundle.getString("featureKey");
+    ajlu.a().a(this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.featureId, paramBundle);
+    paramBundle = (ajmk)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
+    if (paramBundle == null) {
+      throw new IllegalArgumentException("illegal span");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.mSpanQueue == null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.mSpanQueue = new LinkedBlockingQueue();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.mSpanQueue.contains(paramBundle)) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.mSpanQueue.remove(paramBundle);
+    }
+    paramBundle.jdField_a_of_type_Ajmj = a(j, paramBundle.c, l);
+    paramBundle.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.mSpanQueue.offer(paramBundle);
+    if (j != 0)
+    {
+      this.jdField_a_of_type_Int = 3;
+      return 0;
+    }
+    return -1;
+  }
+  
+  private void d()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    while (localIterator.hasNext())
+    {
+      ajmk localajmk = (ajmk)localIterator.next();
+      if (!localajmk.jdField_a_of_type_Boolean)
+      {
+        if (localajmk.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null) {
+          localajmk.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
+        }
+        ajmh localajmh = a("timeout fail", 0L, 0L);
+        localajmk.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localajmh);
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.mSpanQueue == null) {
+          this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.mSpanQueue = new LinkedBlockingQueue();
+        }
+        localajmk.jdField_a_of_type_Ajmj = a(-101, localajmk.c, localajmk.c);
+        localajmk.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.mSpanQueue.offer(localajmk);
       }
     }
+  }
+  
+  private int e(Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    int j = paramBundle.getInt("featureId");
+    String str2 = paramBundle.getString("featureKey");
+    int i = j;
+    if (j == 0) {
+      i = this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.featureId;
+    }
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.featureKey;
+    }
+    j = ajlu.a().a(i, str1);
+    if (((i < 0) || (!TextUtils.isEmpty(str1))) && (QLog.isColorLevel())) {
+      QLog.d("TraceReport" + this.jdField_a_of_type_Ajlr.a(j), 1, new Object[] { "featureId:", Integer.valueOf(j), ",traceId:", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.traceId), ",mappingFeatureId:", Integer.valueOf(i), ",featureKey:", str1 });
+    }
+    i = paramBundle.getInt("errCode", 0);
+    long l = paramBundle.getLong("endTime");
+    if (i == -101) {
+      d();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.featureId = j;
+    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.result = a(i, this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.startTime, l);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.isSampleFocus)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.endJavaHeap = paramBundle.getInt("endJavaHeap");
+      this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.endNativeHeap = paramBundle.getInt("endNativeHeap");
+      if ((this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.endJavaHeap == 0) && (this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.endNativeHeap == 0))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.endJavaHeap = ajlz.c();
+        this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.endNativeHeap = ajlz.d();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.result.f = (this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.endJavaHeap - this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.initJavaHeap);
+      this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.result.g = (this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.endNativeHeap - this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.initNativeHeap);
+    }
+    if (i != 0) {
+      QLog.e("TraceReport" + this.jdField_a_of_type_Ajlr.a(j), 1, new Object[] { "traceEnd:", this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.toString() });
+    }
+    for (;;)
+    {
+      ajlu.a().a(this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData);
+      this.jdField_a_of_type_Int = 4;
+      return 0;
+      QLog.i("TraceReport" + this.jdField_a_of_type_Ajlr.a(j), 1, "traceEnd:" + this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.toString());
+    }
+  }
+  
+  public int a(Bundle paramBundle)
+  {
+    int i = this.jdField_a_of_type_Int;
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      c();
+      return -1;
+    case 0: 
+      return b(paramBundle);
+    case 3: 
+      return e(paramBundle);
+    case 1: 
+      return c(paramBundle);
+    }
+    return d(paramBundle);
+  }
+  
+  public ajmh a(String paramString, long paramLong1, long paramLong2)
+  {
+    return new ajmh(paramString, paramLong1, paramLong2);
+  }
+  
+  public ajmj a(int paramInt, long paramLong1, long paramLong2)
+  {
+    long l = 0L;
+    ajmj localajmj = new ajmj();
+    localajmj.jdField_a_of_type_Int = paramInt;
+    localajmj.e = bbev.a(null);
+    if (paramLong2 > 0L)
+    {
+      paramLong1 = paramLong2 - paramLong1;
+      if (paramLong1 >= 0L) {
+        break label83;
+      }
+      paramLong1 = l;
+    }
+    label83:
+    for (;;)
+    {
+      if (paramLong1 > 2147483647L) {}
+      for (paramInt = 2147483647;; paramInt = (int)paramLong1)
+      {
+        localajmj.b = paramInt;
+        return localajmj;
+        paramLong2 = SystemClock.uptimeMillis();
+        break;
+      }
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {}
+    while (this.jdField_a_of_type_Int == 4) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 4;
+    this.jdField_a_of_type_Ajmn.a(new Bundle());
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Ajmn.a(paramBundle);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Int = 3;
+    Bundle localBundle = new Bundle();
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0) {
+      localBundle.putInt("errCode", -101);
+    }
+    this.jdField_a_of_type_Ajmn.a(localBundle);
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Ajmn.a(paramBundle);
+  }
+  
+  public void c(Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Int = 3;
+    this.jdField_a_of_type_Ajmn.a(paramBundle);
+  }
+  
+  public void d(Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData == null) {}
+    do
+    {
+      return;
+      String str = paramBundle.getString("tuid");
+      this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.extra1 = paramBundle.getInt("extra1");
+      this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.extra2 = paramBundle.getInt("extra2");
+      this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.extra3 = paramBundle.getInt("extra3");
+      if (!TextUtils.isEmpty(str)) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.tUid = str;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("TraceReport" + this.jdField_a_of_type_Ajlr.a(this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.featureId), 2, new Object[] { "updateTraceData:", paramBundle.toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajmm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,62 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.text.TextUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class ske
-  extends JobSegment<ErrorMessage, ErrorMessage>
+public class ske
 {
-  protected AtomicInteger a;
-  public skf a;
+  public skg a;
+  public skh a;
   
   public ske()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_a_of_type_Skh = new skh(null);
+    this.jdField_a_of_type_Skg = new skg(null);
   }
   
-  protected abstract void a();
-  
-  protected void a(JobContext paramJobContext, ErrorMessage paramErrorMessage)
+  private static JSONObject a(String paramString)
   {
-    a();
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        return paramString;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+    return null;
   }
   
-  public void a(skf paramskf)
+  public static ske a()
   {
-    this.jdField_a_of_type_Skf = paramskf;
+    return (ske)ampm.a().a(447);
   }
   
-  protected void b()
+  public void a(String paramString)
   {
-    if (this.jdField_a_of_type_Skf != null) {
-      this.jdField_a_of_type_Skf.a(this);
+    sne.b("WeSeeConfigBean", "WeSeeConfigBean content = " + paramString);
+    paramString = a(paramString);
+    if (paramString == null) {
+      return;
+    }
+    this.jdField_a_of_type_Skh = skh.a(paramString.optJSONObject("video_plugin_threshold"));
+    this.jdField_a_of_type_Skg = skg.a(paramString.optJSONObject("trends_tab_strategy"));
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("WeSeeConfigBean{mPluginConfigInfo=").append(this.jdField_a_of_type_Skh).append(", mStrategyConfig=");
+    if (this.jdField_a_of_type_Skg != null) {}
+    for (String str = this.jdField_a_of_type_Skg.a;; str = "null") {
+      return str + '}';
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ske
  * JD-Core Version:    0.7.0.1
  */

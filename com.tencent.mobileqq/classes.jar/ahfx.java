@@ -1,16 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.support.v4.util.SparseArrayCompat;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ahfx
-  implements DialogInterface.OnClickListener
 {
-  public ahfx(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public int a;
+  public SparseArrayCompat<ArrayList<String>> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ahfx()
   {
-    this.a.a("608", "7", "2", true);
-    EditLocalVideoActivity.a(this.a, "an_yuanshipin");
+    this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
+  }
+  
+  public static ahfx a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    ahfx localahfx = new ahfx();
+    Object localObject = new JSONObject(paramString);
+    localahfx.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("avoid_peak_interval");
+    paramString = new SparseArrayCompat();
+    localObject = ((JSONObject)localObject).optJSONArray("regions");
+    if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+    {
+      int i = 0;
+      while (i < ((JSONArray)localObject).length())
+      {
+        paramString.put(i, ahfn.a(((JSONArray)localObject).optJSONArray(i)));
+        i += 1;
+      }
+    }
+    localahfx.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = paramString;
+    return localahfx;
   }
 }
 

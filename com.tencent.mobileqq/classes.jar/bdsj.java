@@ -1,65 +1,96 @@
-import NS_COMM.COMM.Entry;
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qg.sdk.log.IQLog;
 
 public class bdsj
+  implements IQLog
 {
-  private static List<COMM.Entry> a(String paramString1, String paramString2)
+  private static String a(String paramString, Object... paramVarArgs)
   {
-    ArrayList localArrayList = new ArrayList();
-    for (;;)
-    {
-      try
-      {
-        paramString2 = new JSONObject(new JSONObject(paramString2).optString("actionData"));
-        String str1 = paramString2.optString("business");
-        if ("mmbizwxamonitor".equals(str1))
-        {
-          localArrayList.add(bdsq.a(paramString2.optString("name"), String.valueOf(paramString2.optInt("value"))));
-          Iterator localIterator = paramString2.keys();
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          String str2 = (String)localIterator.next();
-          if ((("mmbizwxamonitor".equals(str1)) && (("name".equals(str2)) || ("value".equals(str2)))) || (("mmbizwxaanalytics".equals(str1)) && (("eventID".equals(str2)) || ("data".equals(str2))))) {
-            continue;
-          }
-          localArrayList.add(bdsq.a(str2, paramString2.optString(str2)));
-          continue;
-        }
-        if (!"mmbizwxaanalytics".equals(str1)) {
-          continue;
-        }
-      }
-      catch (JSONException paramString1)
-      {
-        paramString1.printStackTrace();
-        return localArrayList;
-      }
-      localArrayList.add(bdsq.a(paramString2.optString("eventID"), paramString2.optString("data")));
-    }
-    localArrayList.add(bdsq.a("appid", paramString1));
-    return localArrayList;
+    return String.format(null, paramString, paramVarArgs);
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void a(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString2)) || (paramString2.contains("mmbizwxajsapi")) || (paramString2.contains("mmbizwxaservicequality")))
-    {
-      bdnw.c("MiniProgramLpReportDC04", "handleReportRealTimeAction not handle data " + paramString2);
-      return;
-    }
-    paramString1 = bdsq.a(4, String.valueOf(3), a(paramString1, paramString2), null);
-    bdsr.a().a(paramString1);
+    veg.c(paramString1, paramString2);
+  }
+  
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    veg.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    veg.b(paramString1, paramString2);
+  }
+  
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    veg.a(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void d(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    veg.b(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    veg.e(paramString1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    veg.c(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    veg.c(paramString1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    veg.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    veg.c(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void v(String paramString1, String paramString2)
+  {
+    veg.a(paramString1, paramString2);
+  }
+  
+  public void v(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    veg.a(paramString1, paramString2, new Object[] { paramThrowable });
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    veg.c(paramString1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    veg.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void w(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    veg.d(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void w(String paramString, Throwable paramThrowable)
+  {
+    veg.b(paramString, "", paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdsj
  * JD-Core Version:    0.7.0.1
  */

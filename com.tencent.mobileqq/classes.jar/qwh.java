@@ -1,19 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.net.ConnectivityManager.NetworkCallback;
+import android.net.Network;
+import android.os.Handler;
+import android.support.annotation.RequiresApi;
+import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkCallbackImpl.1;
+import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkCallbackImpl.2;
+import org.jetbrains.annotations.Nullable;
 
-public class qwh
-  implements alut
+@RequiresApi(21)
+public final class qwh
+  extends ConnectivityManager.NetworkCallback
 {
-  public qwh(FastWebActivity paramFastWebActivity) {}
+  private qwh(qwf paramqwf) {}
   
-  public void onColorNoteAnimFinish()
+  public void onAvailable(@Nullable Network paramNetwork)
   {
-    FastWebActivity.a(this.a);
-    FastWebActivity.b(this.a);
-    if ((FastWebActivity.a(this.a) != null) && (FastWebActivity.a(this.a).c())) {
-      this.a.overridePendingTransition(0, 0);
-    }
-    QLog.d(FastWebActivity.a(this.a), 2, "mColorNoteController ：onColorNoteAnimFinish");
+    qwf.a(this.a).post(new BandwidthPredictor.NetworkCallbackImpl.1(this));
+  }
+  
+  public void onLost(@Nullable Network paramNetwork)
+  {
+    qwf.a(this.a).post(new BandwidthPredictor.NetworkCallbackImpl.2(this));
   }
 }
 

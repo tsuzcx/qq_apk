@@ -1,119 +1,63 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.AutoLoginHelper.4.1;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import mqq.observer.AccountObserver;
 
 public class aalv
-  extends BaseAdapter
-  implements azwh
+  extends AccountObserver
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_a_of_type_Boolean;
+  aalv(aals paramaals) {}
   
-  public aalv(ContactBindedActivity paramContactBindedActivity, Context paramContext)
+  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130844056);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public PhoneContact a(int paramInt)
-  {
-    return (PhoneContact)ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).get(paramInt);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
+    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte, paramInt2);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AutoLoginHelper", 4, String.format(Locale.getDefault(), "onLoginFailed, ret: %s, uin: %s, msg: %s, alias: %s", new Object[] { Integer.valueOf(paramInt1), aals.a(this.a), paramString2, paramString1 }));
+    }
+    this.a.c = false;
+    aals.a(this.a);
+    if (aals.a(this.a) != null)
     {
-      if ((ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity) != null) && (ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).size() > 0))
-      {
-        PhoneContact localPhoneContact = (PhoneContact)ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).get(ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).size() - 1);
-        ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity, localPhoneContact, false);
-      }
-      this.jdField_a_of_type_Boolean = false;
-      return;
+      paramString1 = new Intent(aals.a(this.a), LoginActivity.class);
+      paramString1.putExtra("uin", aals.a(this.a));
+      paramString1.putExtra("tab_index", MainFragment.b);
+      paramString1.addFlags(131072);
+      aals.a(this.a).startActivity(paramString1);
+      aals.a(this.a).finish();
     }
-    this.jdField_a_of_type_Boolean = true;
-    super.notifyDataSetChanged();
   }
   
-  public int getCount()
+  public void onLoginSuccess(String paramString1, String paramString2)
   {
-    return ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).size();
+    super.onLoginSuccess(paramString1, paramString2);
+    this.a.c = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onLoginSuccess ");
+    }
   }
   
-  public long getItemId(int paramInt)
+  public void onLoginTimeout(String paramString)
   {
-    return 0L;
+    super.onLoginTimeout(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onLoginTimeout ");
+    }
+    this.a.c = false;
+    aals.a(this.a);
+    aals.a(this.a).a.post(new AutoLoginHelper.4.1(this));
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void onUserCancel(String paramString)
   {
-    Bitmap localBitmap = null;
-    PhoneContact localPhoneContact = a(paramInt);
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity.getLayoutInflater().inflate(2131493590, null);
-    }
-    paramViewGroup.setTag(localPhoneContact);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131300226);
-    paramView = localBitmap;
-    if (paramInt == getCount() - 1)
-    {
-      paramView = localBitmap;
-      if (this.jdField_a_of_type_Boolean) {
-        paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      }
-    }
-    localImageView.setImageDrawable(paramView);
-    localBitmap = ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).a(11, localPhoneContact.unifiedCode);
-    paramView = localBitmap;
-    if (localBitmap == null)
-    {
-      ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).a(localPhoneContact.unifiedCode, 11, true, (byte)0);
-      paramView = ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity);
-    }
-    localImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramView));
-    if (AppSetting.c) {
-      localImageView.setContentDescription(localPhoneContact.name);
-    }
-    return paramViewGroup;
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    super.notifyDataSetChanged();
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    if (ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity) == null) {}
-    for (;;)
-    {
-      return;
-      paramInt1 = 0;
-      while (paramInt1 < ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).getChildCount())
-      {
-        View localView = ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).getChildAt(paramInt1);
-        Object localObject = localView.getTag();
-        if ((localObject != null) && ((localObject instanceof PhoneContact)) && (paramString.equals(((PhoneContact)localObject).unifiedCode))) {
-          ((ImageView)localView.findViewById(2131300226)).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
-        }
-        paramInt1 += 1;
-      }
+    super.onUserCancel(paramString);
+    this.a.c = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onUserCancel ");
     }
   }
 }

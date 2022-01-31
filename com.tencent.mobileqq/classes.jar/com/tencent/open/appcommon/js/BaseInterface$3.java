@@ -1,6 +1,6 @@
 package com.tencent.open.appcommon.js;
 
-import bcds;
+import bdht;
 import com.tencent.smtt.sdk.WebView;
 
 class BaseInterface$3
@@ -11,7 +11,7 @@ class BaseInterface$3
   public void run()
   {
     String str = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('batchCallback',{guid:" + this.jdField_a_of_type_Long + ",'r':-2,'data':['" + this.jdField_a_of_type_JavaLangString + "']})};";
-    bcds.e("Response<callBatch>", str);
+    bdht.e("Response<callBatch>", str);
     try
     {
       this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(str);

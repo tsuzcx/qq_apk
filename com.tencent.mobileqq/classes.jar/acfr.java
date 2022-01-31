@@ -1,20 +1,16 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
 
 public class acfr
-  extends beem
+  implements DialogInterface.OnDismissListener
 {
-  public acfr(VisitorsActivity paramVisitorsActivity) {}
+  public acfr(TranslucentTRansferFragment paramTranslucentTRansferFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.f = false;
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.c.setVisibility(0);
+    this.a.getActivity().finish();
   }
 }
 

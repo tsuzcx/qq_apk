@@ -1,13 +1,37 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface vlq
+public class vlq
 {
-  String a();
+  private int jdField_a_of_type_Int;
+  private vlm jdField_a_of_type_Vlm = new vll();
+  private int b;
+  
+  public vlo a()
+  {
+    return new vlo(this, null);
+  }
+  
+  public vlq a(int paramInt)
+  {
+    if (paramInt > 0) {
+      this.jdField_a_of_type_Int = paramInt;
+    }
+    return this;
+  }
+  
+  public vlq a(vlm paramvlm)
+  {
+    if (paramvlm != null) {
+      this.jdField_a_of_type_Vlm = paramvlm;
+    }
+    return this;
+  }
+  
+  public vlq b(int paramInt)
+  {
+    if (paramInt > 0) {
+      this.b = paramInt;
+    }
+    return this;
+  }
 }
 
 

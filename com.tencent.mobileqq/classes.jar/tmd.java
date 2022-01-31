@@ -1,21 +1,55 @@
-import android.content.Intent;
-import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDeleteVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDeleteVideo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract interface tmd
+public class tmd
+  extends syv<tob>
 {
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  private static final String b = sxp.a("StorySvc.video_show_delete");
+  public String a;
   
-  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
+  public tmd(String paramString)
+  {
+    this.a = paramString;
+  }
   
-  public abstract void c();
+  public String a()
+  {
+    return b;
+  }
   
-  public abstract void d();
+  public tob a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspDeleteVideo localRspDeleteVideo = new qqstory_service.RspDeleteVideo();
+    try
+    {
+      localRspDeleteVideo.mergeFrom(paramArrayOfByte);
+      return new tob(localRspDeleteVideo);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
   
-  public abstract void e();
+  protected byte[] a()
+  {
+    qqstory_service.ReqDeleteVideo localReqDeleteVideo = new qqstory_service.ReqDeleteVideo();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(ByteStringMicro.copyFromUtf8(this.a));
+    localReqDeleteVideo.vid_list.addAll(localArrayList);
+    return localReqDeleteVideo.toByteArray();
+  }
   
-  public abstract void f();
-  
-  public abstract void g();
+  public String toString()
+  {
+    return "DeleteVideoRequest{vid='" + this.a + '\'' + '}';
+  }
 }
 
 

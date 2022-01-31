@@ -1,354 +1,255 @@
 import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
+import android.text.Editable;
+import android.text.Editable.Factory;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewStub;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.XListView;
-import dov.com.qq.im.capture.poi.FacePoiUI.2;
-import dov.com.qq.im.capture.poi.FacePoiUI.4;
 import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import java.util.Iterator;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class bhkz
-  implements View.OnClickListener, behi, bhkt
 {
-  long jdField_a_of_type_Long = 0L;
-  View jdField_a_of_type_AndroidViewView;
-  ViewStub jdField_a_of_type_AndroidViewViewStub;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  private bhkq jdField_a_of_type_Bhkq = new bhkq(this);
-  private bhlc jdField_a_of_type_Bhlc;
-  bitv jdField_a_of_type_Bitv = null;
-  PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
-  public XListView a;
-  View jdField_b_of_type_AndroidViewView = null;
-  LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  View c = null;
-  View d = null;
-  View e;
-  
-  public bhkz()
+  public static int a(EditText paramEditText, ArrayList<ResultRecord> paramArrayList, List<bhky> paramList, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = null;
-  }
-  
-  private void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader != null)
+    int i;
+    if (paramArrayList == null)
     {
-      aamg localaamg = (aamg)this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.getTag();
-      if (localaamg != null)
-      {
-        localaamg.a = false;
-        new Handler(Looper.getMainLooper()).postDelayed(new FacePoiUI.4(this), 800L);
-        if (paramInt == 0) {
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-        }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(paramInt);
-      }
+      i = paramInt;
+      return i;
     }
-  }
-  
-  private void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
+    paramArrayList = paramArrayList.iterator();
+    for (;;)
     {
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(4);
-    if (paramBoolean2)
-    {
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-  }
-  
-  public bhkq a()
-  {
-    return this.jdField_a_of_type_Bhkq;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null)
-    {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131302804));
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131309933);
-      this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131309956);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131300081));
-      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131300082));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-      this.c.setOnClickListener(this);
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131302847)).setText(ajjy.a(2131638511));
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131306113));
-      b();
-      c();
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new bhla(this));
-      this.jdField_a_of_type_Bitv = new bitv(this.e.getContext());
-      this.jdField_a_of_type_Bitv.a(this.jdField_a_of_type_Bhkq.a(), this.jdField_a_of_type_Bhkq.a());
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bitv);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-  }
-  
-  public void a(int paramInt, String... paramVarArgs)
-  {
-    switch (paramInt)
-    {
-    default: 
-    case 0: 
-    case 3: 
-      do
-      {
-        return;
-        this.e.getContext().getString(2131652096);
-        return;
-        this.e.getContext().getString(2131652097);
-        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-          bbmy.a(this.e.getContext(), paramVarArgs[0], 1).a();
-        }
-      } while ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0));
-      a(false, false);
-      return;
-    case 2: 
-      this.e.getContext().getString(2131652098);
-      return;
-    }
-    if ((paramVarArgs != null) && (paramVarArgs.length > 0) && (!TextUtils.isEmpty(paramVarArgs[0])))
-    {
-      if (TextUtils.isEmpty(paramVarArgs[0]))
-      {
-        a(3, new String[0]);
-        return;
-      }
-      paramVarArgs = paramVarArgs[0];
-      return;
-    }
-    a(0, new String[0]);
-  }
-  
-  public void a(View paramView)
-  {
-    if (paramView == null) {
-      throw new IllegalStateException("FacePoiUI rootView can't be null");
-    }
-    this.e = paramView;
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)this.e.findViewById(2131307634));
-  }
-  
-  public void a(bhlc parambhlc)
-  {
-    this.jdField_a_of_type_Bhlc = parambhlc;
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (this.d == null) {
-      return;
-    }
-    TextView localTextView = (TextView)this.d.findViewById(2131309308);
-    if (paramBoolean)
-    {
-      localTextView.setText(2131653911);
-      return;
-    }
-    localTextView.setText(2131653906);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      b(paramBoolean1, paramBoolean2);
-      return;
-    }
-    ThreadManager.getUIHandler().post(new FacePoiUI.2(this, paramBoolean1, paramBoolean2));
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, ArrayList<TroopBarPOI> paramArrayList, TroopBarPOI paramTroopBarPOI)
-  {
-    if (paramBoolean1)
-    {
-      a(paramBoolean2);
-      if (this.jdField_a_of_type_Bitv != null)
-      {
-        this.jdField_a_of_type_Bitv.a(paramArrayList, paramTroopBarPOI);
-        this.jdField_a_of_type_Bitv.notifyDataSetChanged();
-        if (paramArrayList.isEmpty()) {
-          a(false, false);
-        }
-      }
-      else
-      {
-        if (paramTroopBarPOI == null) {
-          break label100;
-        }
-        if (!TextUtils.isEmpty(paramTroopBarPOI.c)) {
-          break label91;
-        }
-      }
-      label91:
-      for (paramArrayList = paramTroopBarPOI.d;; paramArrayList = paramTroopBarPOI.c)
-      {
-        a(1, new String[] { paramArrayList });
-        return;
-        a(true, false);
+      label15:
+      i = paramInt;
+      if (!paramArrayList.hasNext()) {
         break;
       }
-      label100:
-      a(0, new String[0]);
-      return;
-    }
-    a(3, new String[0]);
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0);
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this.e.getContext()).inflate(2131493891, null, false));
-    }
-    aamg localaamg = new aamg();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setTag(localaamg);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "setOverScrollHeader----------------------");
-    }
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new bhlb(this));
-  }
-  
-  protected void c()
-  {
-    if (this.d == null)
-    {
-      this.d = LayoutInflater.from(this.e.getContext()).inflate(2131493891, null);
-      ImageView localImageView = (ImageView)this.d.findViewById(2131309306);
-      TextView localTextView1 = (TextView)this.d.findViewById(2131309308);
-      TextView localTextView2 = (TextView)this.d.findViewById(2131309314);
-      ProgressBar localProgressBar = (ProgressBar)this.d.findViewById(2131309309);
-      localTextView1.setTextColor(-8355712);
-      localTextView1.setText(2131653906);
-      localTextView2.setVisibility(8);
-      localImageView.setVisibility(8);
-      localProgressBar.setVisibility(8);
-    }
-    if (this.jdField_a_of_type_ComTencentWidgetXListView.getFooterViewsCount() > 0) {
-      this.jdField_a_of_type_ComTencentWidgetXListView.removeFooterView(this.d);
-    }
-    this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.d);
-  }
-  
-  public void d()
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Bitv != null)
-    {
-      this.jdField_a_of_type_Bitv.a(this.jdField_a_of_type_Bhkq.a(), this.jdField_a_of_type_Bhkq.a());
-      this.jdField_a_of_type_Bitv.notifyDataSetChanged();
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-    case 2131302804: 
-    case 2131309933: 
-    case 2131309956: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_Bhkq.c();
-        if (this.jdField_a_of_type_Bhlc != null)
+      Object localObject = (ResultRecord)paramArrayList.next();
+      bhky localbhky = new bhky();
+      if (!TextUtils.isEmpty(((ResultRecord)localObject).b)) {}
+      for (localbhky.jdField_a_of_type_JavaLangString = ((ResultRecord)localObject).b;; localbhky.jdField_a_of_type_JavaLangString = ((ResultRecord)localObject).jdField_a_of_type_JavaLangString) {
+        try
         {
-          this.jdField_a_of_type_Bhlc.bc_();
-          return;
+          long l = Long.valueOf(((ResultRecord)localObject).jdField_a_of_type_JavaLangString).longValue();
+          localbhky.jdField_a_of_type_Long = l;
+          if ((localbhky.jdField_a_of_type_JavaLangString == null) || (localbhky.jdField_a_of_type_Long == 0L)) {
+            break label15;
+          }
+          i = paramInt;
+          if (paramList == null) {
+            break;
+          }
+          paramList.add(localbhky);
+          localObject = "@" + localbhky.jdField_a_of_type_JavaLangString + " ";
+          i = paramInt;
+          if (paramInt < ((String)localObject).length()) {
+            i = ((String)localObject).length();
+          }
+          a((String)localObject, paramEditText.getSelectionStart(), paramEditText);
+          paramInt = i;
         }
-        d();
-        return;
-      } while (this.jdField_a_of_type_Bhlc == null);
-      this.jdField_a_of_type_Bhlc.b();
-      return;
+        catch (NumberFormatException localNumberFormatException) {}
+      }
     }
-    this.jdField_a_of_type_Bhkq.a();
-    a(false, true);
   }
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static int a(CharSequence paramCharSequence, int paramInt1, int paramInt2, List<bhky> paramList, int paramInt3, int paramInt4, String paramString)
   {
-    if ((this.jdField_a_of_type_Bhkq.a(paramInt)) || (this.jdField_a_of_type_Bitv == null)) {
-      return;
+    if ((paramCharSequence == null) || (paramCharSequence.length() <= 1)) {
+      return -1;
     }
-    paramView = (TroopBarPOI)this.jdField_a_of_type_Bhkq.a().get(paramInt);
-    this.jdField_a_of_type_Bhkq.a(paramView);
-    e();
-    bign localbign = this.jdField_a_of_type_Bhkq.a();
-    if (paramView != null) {
-      if (TextUtils.isEmpty(paramView.c))
-      {
-        paramAdapterView = paramView.d;
-        a(1, new String[] { paramAdapterView });
-        if (localbign != null) {
-          localbign.a(paramView);
-        }
-      }
+    int j;
+    int i;
+    if (paramCharSequence.length() > paramInt1)
+    {
+      j = paramInt1 - 1;
+      i = 1;
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bhlc == null) {
-        break label150;
+      if ((j < 0) || (i > paramInt2)) {
+        break label112;
       }
-      this.jdField_a_of_type_Bhlc.c();
-      return;
-      paramAdapterView = paramView.c;
-      break;
-      a(0, new String[0]);
-      if (localbign != null) {
-        localbign.a(null);
+      if ((paramCharSequence.charAt(j) == '@') && (a(paramCharSequence.toString().substring(j, paramInt1), false, paramList, paramInt3, paramInt4, paramString)))
+      {
+        return j;
+        paramInt1 = paramCharSequence.length();
+        break;
+      }
+      j -= 1;
+      i += 1;
+    }
+    label112:
+    return -1;
+  }
+  
+  public static SystemEmoticonPanel a(Context paramContext, EditText paramEditText)
+  {
+    try
+    {
+      paramContext = new SystemEmoticonPanel(paramContext, new bhla(paramEditText));
+      return paramContext;
+    }
+    catch (Throwable paramContext)
+    {
+      QLog.e("QZoneShareActivity", 1, paramContext.getStackTrace());
+    }
+    return null;
+  }
+  
+  public static String a(EditText paramEditText)
+  {
+    if (paramEditText != null)
+    {
+      if ((paramEditText.getText() instanceof ayks))
+      {
+        ayks localayks = (ayks)paramEditText.getText();
+        if (localayks != null) {
+          return localayks.a();
+        }
+      }
+      if ((paramEditText != null) && (paramEditText.getEditableText() != null)) {
+        return paramEditText.getEditableText().toString();
       }
     }
-    label150:
-    d();
+    return null;
+  }
+  
+  public static String a(EditText paramEditText, List<bhky> paramList)
+  {
+    if (paramEditText != null)
+    {
+      paramEditText = a(paramEditText);
+      if (!TextUtils.isEmpty(paramEditText)) {
+        return a(paramEditText, paramList).replaceAll(ajyc.a(2131705788), ajyc.a(2131705792)).replaceAll(ajyc.a(2131705789), "/MM");
+      }
+    }
+    return "";
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3)
+  {
+    try
+    {
+      String str = Pattern.compile(paramString1, 16).matcher(paramString2).replaceFirst(paramString3);
+      return str;
+    }
+    catch (Exception localException) {}
+    return b(paramString2, paramString1, paramString3);
+  }
+  
+  public static String a(String paramString, List<bhky> paramList)
+  {
+    return b(paramString, paramList);
+  }
+  
+  public static void a(String paramString, int paramInt, EditText paramEditText)
+  {
+    if ((paramEditText == null) || (TextUtils.isEmpty(paramString)) || (paramInt < 0)) {
+      return;
+    }
+    Editable localEditable = aykx.c.newEditable(paramEditText.getText());
+    localEditable.insert(paramInt, paramString);
+    try
+    {
+      paramEditText.setText(localEditable);
+      paramEditText.setSelection(paramString.length() + paramInt);
+      return;
+    }
+    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+    {
+      for (;;)
+      {
+        localEditable.append(" ");
+        paramEditText.setText(localEditable);
+      }
+    }
+  }
+  
+  public static boolean a(int paramInt1, int paramInt2, String paramString)
+  {
+    return (paramInt1 != -1) && (paramInt2 != -1) && (paramString != null) && (paramString.length() > 0);
+  }
+  
+  public static boolean a(String paramString1, boolean paramBoolean, List<bhky> paramList, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (((a(paramInt1, paramInt2, paramString2)) || (!paramBoolean)) && (paramList != null))
+    {
+      paramInt2 = paramList.size();
+      paramInt1 = 0;
+      while (paramInt1 < paramInt2)
+      {
+        paramString2 = (bhky)paramList.get(paramInt1);
+        if ((paramString2 != null) && (paramString2.jdField_a_of_type_JavaLangString != null) && (paramString1 != null) && ((paramString1.equalsIgnoreCase("@" + paramString2.jdField_a_of_type_JavaLangString)) || (paramString1.equalsIgnoreCase("@" + paramString2.jdField_a_of_type_JavaLangString + " "))))
+        {
+          if (paramBoolean) {
+            paramList.remove(paramInt1);
+          }
+          return true;
+        }
+        paramInt1 += 1;
+      }
+    }
+    return false;
+  }
+  
+  public static String b(String paramString1, String paramString2, String paramString3)
+  {
+    int i = paramString1.indexOf(paramString2, 0);
+    if (i == -1) {
+      return paramString1;
+    }
+    paramString1 = new StringBuilder(paramString1);
+    paramString1.replace(i, paramString2.length() + i, paramString3);
+    return paramString1.toString();
+  }
+  
+  public static String b(String paramString, List<bhky> paramList)
+  {
+    String str;
+    if (paramString == null) {
+      str = null;
+    }
+    do
+    {
+      do
+      {
+        return str;
+        str = paramString;
+      } while (paramList == null);
+      str = paramString;
+    } while (paramList.size() == 0);
+    Iterator localIterator = paramList.iterator();
+    for (;;)
+    {
+      str = paramString;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      bhky localbhky = (bhky)localIterator.next();
+      str = localbhky.jdField_a_of_type_JavaLangString;
+      paramList = str;
+      if (str == null) {
+        paramList = localbhky.jdField_a_of_type_Long + "";
+      }
+      paramList = paramList.replace("%", "%25").replace(",", "%2C").replace("}", "%7D");
+      paramList = "@{uin:" + localbhky.jdField_a_of_type_Long + ",nick:" + paramList + "}";
+      str = "@" + localbhky.jdField_a_of_type_JavaLangString;
+      if ((!TextUtils.isEmpty(localbhky.jdField_a_of_type_JavaLangString)) && (paramString.contains(str))) {
+        paramString = a(str, paramString, paramList);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhkz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.danmaku.core;
 
-import ampo;
-import amro;
+import anfv;
+import anhv;
 import java.io.Serializable;
 import java.util.Comparator;
 
 public final class DanmakuManager$DanmakuComparator
-  implements Serializable, Comparator<ampo>
+  implements Serializable, Comparator<anfv>
 {
-  public int compare(ampo paramampo1, ampo paramampo2)
+  public int compare(anfv paramanfv1, anfv paramanfv2)
   {
-    return amro.a(paramampo1, paramampo2);
+    return anhv.a(paramanfv1, paramanfv2);
   }
 }
 

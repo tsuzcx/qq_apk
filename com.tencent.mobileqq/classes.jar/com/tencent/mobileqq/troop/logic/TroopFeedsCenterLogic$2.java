@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.logic;
 
-import azct;
+import bado;
 
 public class TroopFeedsCenterLogic$2
   implements Runnable
 {
-  public TroopFeedsCenterLogic$2(azct paramazct) {}
+  public TroopFeedsCenterLogic$2(bado parambado) {}
   
   public void run()
   {

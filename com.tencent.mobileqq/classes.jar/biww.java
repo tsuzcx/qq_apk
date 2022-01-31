@@ -1,26 +1,19 @@
-import android.util.Property;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.PeakAppInterface;
 
 class biww
-  extends Property<biwt, Float>
+  implements View.OnClickListener
 {
-  biww(biwt parambiwt, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  biww(biwr parambiwr) {}
   
-  public Float a(biwt parambiwt)
+  public void onClick(View paramView)
   {
-    if (parambiwt != null) {
-      return Float.valueOf(biwt.a(parambiwt));
-    }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(biwt parambiwt, Float paramFloat)
-  {
-    if (parambiwt != null) {
-      biwt.a(parambiwt, paramFloat.floatValue());
-    }
+    biwr.e(this.a);
+    biwr.b(this.a).setVisibility(8);
+    bizj.a().a("CameraModuleSvc.GetPlayShowCatMatTree", "", 4);
+    PeakAppInterface.a.a(1010);
   }
 }
 

@@ -1,83 +1,44 @@
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.music.QQPlayerService;
 
 public class amhp
-  implements alzn<String>
+  implements amhn
 {
-  public String a;
-  public HashMap<String, amhq> a;
-  
-  public amhp()
+  private void a(Intent paramIntent, ColorNote paramColorNote)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilHashMap.put("*", new amhq(this));
-    this.jdField_a_of_type_JavaLangString = "";
+    String str = paramIntent.getStringExtra("url");
+    if ((!TextUtils.isEmpty(str)) && (str.matches("^https?://fm\\.qzone\\.qq\\.com/.*")))
+    {
+      paramColorNote = paramColorNote.getReserve();
+      if ((paramColorNote != null) && (paramColorNote.length > 0)) {
+        paramIntent.putExtra("url", new String(paramColorNote));
+      }
+    }
   }
   
-  public void a(String paramString)
+  public void a(Context paramContext, ColorNote paramColorNote)
   {
-    int i;
-    Object localObject2;
-    amhq localamhq;
-    try
+    if (paramColorNote == null) {}
+    Intent localIntent;
+    do
     {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      if (localJSONObject.length() == 0) {
+      do
+      {
         return;
-      }
-      this.jdField_a_of_type_JavaLangString = paramString;
-      paramString = localJSONObject.names();
-      i = 0;
-      if (i >= paramString.length()) {
-        break label212;
-      }
-      localObject1 = paramString.getString(i).trim().toLowerCase();
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label213;
-      }
-      localObject2 = localJSONObject.optJSONObject((String)localObject1);
-      localamhq = new amhq(this);
-      localamhq.c = ((JSONObject)localObject2).getInt("CellNetAutoDownloadSize");
-      localamhq.b = ((JSONObject)localObject2).getInt("CellNetWarningSize");
-      localamhq.a = ((JSONObject)localObject2).getInt("WiFiNetAutoDownloadSize");
-      if (!((String)localObject1).contains(",")) {
-        this.jdField_a_of_type_JavaUtilHashMap.put(localObject1, localamhq);
-      }
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("", 1, QLog.getStackTraceString(paramString));
-      return;
-    }
-    Object localObject1 = ((String)localObject1).split(",");
-    int j = 0;
-    for (;;)
-    {
-      if (j < localObject1.length)
-      {
-        localObject2 = localObject1[j].trim().toLowerCase();
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          this.jdField_a_of_type_JavaUtilHashMap.put(localObject2, localamhq);
-        }
-      }
-      else
-      {
-        label212:
-        label213:
-        i += 1;
-        break;
-      }
-      j += 1;
-    }
+      } while (paramColorNote.getServiceType() != 16973824);
+      localIntent = QQPlayerService.a();
+    } while (localIntent == null);
+    a(localIntent, paramColorNote);
+    localIntent.addFlags(268435456);
+    paramContext.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amhp
  * JD-Core Version:    0.7.0.1
  */

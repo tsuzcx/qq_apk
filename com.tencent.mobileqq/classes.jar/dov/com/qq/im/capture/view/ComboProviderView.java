@@ -12,24 +12,24 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListAdapter;
-import behi;
-import bhfm;
-import bhgs;
-import bhgv;
-import bhgy;
-import bhhh;
-import bhhk;
-import bhhr;
-import bhkc;
-import bhlf;
-import bhor;
-import bhpp;
-import bhpu;
-import bhqh;
-import bhqi;
-import bjac;
-import bjad;
+import bfpc;
 import bjae;
+import bjbk;
+import bjbn;
+import bjbq;
+import bjbz;
+import bjcc;
+import bjcj;
+import bjeu;
+import bjfx;
+import bjjj;
+import bjkh;
+import bjkm;
+import bjkz;
+import bjla;
+import bkqo;
+import bkqp;
+import bkqq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.widget.QQViewPager;
 import com.tencent.qphone.base.util.QLog;
@@ -44,17 +44,17 @@ import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import vhg;
-import vnd;
+import vuc;
+import vzz;
 
 public class ComboProviderView
   extends ProviderView
-  implements Handler.Callback, ViewPager.OnPageChangeListener, behi, bhgv, bhqh
+  implements Handler.Callback, ViewPager.OnPageChangeListener, bfpc, bjbn, bjkz
 {
   public int a;
   public Handler a;
-  bhgy jdField_a_of_type_Bhgy = new bhor(this);
-  public bjae a;
+  bjbq jdField_a_of_type_Bjbq = new bjjj(this);
+  public bkqq a;
   QQViewPager jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
   ComboProviderPagerAdapter jdField_a_of_type_DovComQqImCaptureAdapterComboProviderPagerAdapter;
   ArrayList<FilterCategory> jdField_a_of_type_JavaUtilArrayList;
@@ -79,13 +79,13 @@ public class ComboProviderView
         if (QLog.isColorLevel()) {
           QLog.d("ComboProviderView", 2, "restore " + paramBundle.jdField_a_of_type_JavaLangString);
         }
-        localObject = (bhgs)bhfm.a(5);
-        if (((this.g == 2) || (this.g == 1)) && (bjac.a().a[this.g] == null)) {
-          bjac.a().a[this.g] = ((bhgs)localObject).a(paramBundle);
+        localObject = (bjbk)bjae.a(5);
+        if (((this.g == 2) || (this.g == 1)) && (bkqo.a().a[this.g] == null)) {
+          bkqo.a().a[this.g] = ((bjbk)localObject).a(paramBundle);
         }
-        paramBundle = ((bhgs)localObject).a;
+        paramBundle = ((bjbk)localObject).a;
         if (paramBundle != null) {
-          this.jdField_a_of_type_Bjae = paramBundle.a(this.g);
+          this.jdField_a_of_type_Bkqq = paramBundle.a(this.g);
         }
       }
     }
@@ -93,13 +93,13 @@ public class ComboProviderView
   
   protected int a()
   {
-    return 2131494987;
+    return 2131560561;
   }
   
   protected Bundle a()
   {
     Bundle localBundle = new Bundle();
-    QIMFilterCategoryItem localQIMFilterCategoryItem1 = bjac.a().a(this.g);
+    QIMFilterCategoryItem localQIMFilterCategoryItem1 = bkqo.a().a(this.g);
     if (localQIMFilterCategoryItem1 != null)
     {
       if (QLog.isColorLevel()) {
@@ -129,22 +129,22 @@ public class ComboProviderView
     return localBundle;
   }
   
-  public ArrayList<bhqi> a()
+  public ArrayList<bjla> a()
   {
     ArrayList localArrayList = new ArrayList();
-    int j = bjac.a().b();
+    int j = bkqo.a().b();
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      bhqi localbhqi = new bhqi();
-      localbhqi.jdField_a_of_type_JavaLangString = ((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString;
-      bjac.a();
-      localbhqi.jdField_a_of_type_Boolean = bjac.a(2, ((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int, "");
-      localArrayList.add(localbhqi);
+      bjla localbjla = new bjla();
+      localbjla.jdField_a_of_type_JavaLangString = ((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString;
+      bkqo.a();
+      localbjla.jdField_a_of_type_Boolean = bkqo.a(2, ((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int, "");
+      localArrayList.add(localbjla);
       if ((j != -1) && (j == ((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int))
       {
         this.jdField_a_of_type_Int = i;
-        bjac.a().a(7, 0, null);
+        bkqo.a().a(7, 0, null);
       }
       i += 1;
     }
@@ -160,10 +160,10 @@ public class ComboProviderView
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
     if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Bhgy);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Bjbq);
     }
-    if (bhfm.a().a(5)) {
-      ((bhgs)bhfm.a(5)).b(this);
+    if (bjae.a().a(5)) {
+      ((bjbk)bjae.a(5)).b(this);
     }
   }
   
@@ -176,7 +176,7 @@ public class ComboProviderView
       k();
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(paramInt);
-    bjac.a().a(2, ((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int, "");
+    bkqo.a().a(2, ((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int, "");
   }
   
   public void a(int paramInt, String paramString1, String paramString2)
@@ -220,7 +220,7 @@ public class ComboProviderView
         }
         if (paramString1.f())
         {
-          vnd.a(this.jdField_a_of_type_AndroidContentContext, paramString1);
+          vzz.a(this.jdField_a_of_type_AndroidContentContext, paramString1);
           return;
           if ((paramString1 != null) && (paramString1.equals(((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString)))
           {
@@ -233,13 +233,13 @@ public class ComboProviderView
           break label171;
         }
         postDelayed(new ComboProviderView.2(this, i), 500L);
-        paramString2 = (bhgs)bhfm.a(5);
+        paramString2 = (bjbk)bjae.a(5);
         localObject = new Bundle();
         ((Bundle)localObject).putInt("apply_source", 1);
         ((Bundle)localObject).putInt("capture_scene", this.g);
-        bhhh localbhhh = paramString2.a(paramString1);
-        if ((localbhhh.jdField_a_of_type_Int == 1) || (localbhhh.jdField_a_of_type_Int == 2)) {
-          bhpu.a(localbhhh).a();
+        bjbz localbjbz = paramString2.a(paramString1);
+        if ((localbjbz.jdField_a_of_type_Int == 1) || (localbjbz.jdField_a_of_type_Int == 2)) {
+          bjkm.a(localbjbz).a();
         }
         paramString2.a(paramString1, (Activity)getContext(), (Bundle)localObject);
         g();
@@ -260,7 +260,7 @@ public class ComboProviderView
     super.a(paramBundle);
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.setTabCheckListener(this);
     if (this.jdField_a_of_type_AndroidViewView == null) {}
-    for (this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)LayoutInflater.from(getContext()).inflate(2131494987, this, false));; this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)this.jdField_a_of_type_AndroidViewView))
+    for (this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)LayoutInflater.from(getContext()).inflate(2131560561, this, false));; this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)this.jdField_a_of_type_AndroidViewView))
     {
       this.jdField_a_of_type_DovComQqImCaptureAdapterComboProviderPagerAdapter = new ComboProviderPagerAdapter(this.jdField_a_of_type_AndroidContentContext, this.g);
       this.jdField_a_of_type_DovComQqImCaptureAdapterComboProviderPagerAdapter.a(this);
@@ -268,8 +268,8 @@ public class ComboProviderView
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setOnPageChangeListener(this);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_DovComQqImCaptureAdapterComboProviderPagerAdapter);
       a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Bhgy);
-      paramBundle = (bhgs)bhfm.a(5);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Bjbq);
+      paramBundle = (bjbk)bjae.a(5);
       paramBundle.a(this);
       paramBundle.a().a(this.g);
       if (QLog.isColorLevel()) {
@@ -279,27 +279,27 @@ public class ComboProviderView
       if (paramBundle != null) {
         setup(paramBundle.a(this.g));
       }
-      paramBundle = (bhkc)bhfm.a().c(4);
-      paramBundle.g();
+      paramBundle = (bjeu)bjae.a().c(4);
+      paramBundle.i();
       paramBundle.a(true, (Activity)getContext());
       return;
     }
   }
   
-  public void a(bhhh parambhhh) {}
+  public void a(bjbz parambjbz) {}
   
-  public void a(bhhh parambhhh, boolean paramBoolean, int paramInt, Bundle paramBundle)
+  public void a(bjbz parambjbz, boolean paramBoolean, int paramInt, Bundle paramBundle)
   {
     g();
   }
   
-  public void a(bhhk parambhhk, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
+  public void a(bjcc parambjcc, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
   
-  public void a(bhhr parambhhr, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
+  public void a(bjcj parambjcj, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
   
-  public void a(bjad parambjad)
+  public void a(bkqp parambkqp)
   {
-    setup(parambjad.a(this.g));
+    setup(parambkqp.a(this.g));
   }
   
   public void a(QIMFilterCategoryItem paramQIMFilterCategoryItem)
@@ -348,15 +348,15 @@ public class ComboProviderView
   public void b()
   {
     super.b();
-    if (this.jdField_a_of_type_Bjae != null)
+    if (this.jdField_a_of_type_Bkqq != null)
     {
-      bhgs localbhgs = (bhgs)bhfm.a(5);
+      bjbk localbjbk = (bjbk)bjae.a(5);
       Activity localActivity = (Activity)getContext();
-      bjae localbjae = localbhgs.a.a(this.g);
-      if (localbjae.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem != null) {
-        localbhgs.a(localbjae.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem).a(localActivity, this.g);
+      bkqq localbkqq = localbjbk.a.a(this.g);
+      if (localbkqq.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem != null) {
+        localbjbk.a(localbkqq.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem).a(localActivity, this.g);
       }
-      bjac.a().a(localbjae.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem, localActivity, this.g);
+      bkqo.a().a(localbkqq.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem, localActivity, this.g);
       g();
     }
   }
@@ -370,7 +370,7 @@ public class ComboProviderView
   public void c()
   {
     super.c();
-    QIMFilterCategoryItem localQIMFilterCategoryItem = ((bhgs)bhfm.a(5)).a().jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem;
+    QIMFilterCategoryItem localQIMFilterCategoryItem = ((bjbk)bjae.a(5)).a().jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem;
     if (localQIMFilterCategoryItem != null) {
       a(localQIMFilterCategoryItem);
     }
@@ -379,22 +379,22 @@ public class ComboProviderView
   public void e()
   {
     super.e();
-    bhgs localbhgs = (bhgs)bhfm.a(5);
-    if (localbhgs.a().c)
+    bjbk localbjbk = (bjbk)bjae.a(5);
+    if (localbjbk.a().c)
     {
-      localbhgs.a().c = false;
-      ((QIMProviderContainerView)((Activity)getContext()).findViewById(2131306351)).b(0);
+      localbjbk.a().c = false;
+      ((QIMProviderContainerView)((Activity)getContext()).findViewById(2131372048)).b(0);
     }
     g();
   }
   
   public void f()
   {
-    bjac.a();
-    bjac.a(true);
+    bkqo.a();
+    bkqo.a(true);
     super.f();
-    if (bhfm.a().a(5)) {
-      ((bhgs)bhfm.a(5)).a(this.g, (Activity)getContext());
+    if (bjae.a().a(5)) {
+      ((bjbk)bjae.a(5)).a(this.g, (Activity)getContext());
     }
   }
   
@@ -431,35 +431,35 @@ public class ComboProviderView
     int i = b();
     paramAdapterView = (QIMFilterCategoryItem)((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaUtilList.get(paramInt);
     if (paramAdapterView.f()) {
-      vnd.a(this.jdField_a_of_type_AndroidContentContext, paramAdapterView);
+      vzz.a(this.jdField_a_of_type_AndroidContentContext, paramAdapterView);
     }
     do
     {
       return;
-      if ((paramLong > 0L) && (this.jdField_a_of_type_Bhpp != null)) {
-        this.jdField_a_of_type_Bhpp.a(-1, paramAdapterView);
+      if ((paramLong > 0L) && (this.jdField_a_of_type_Bjkh != null)) {
+        this.jdField_a_of_type_Bjkh.a(-1, paramAdapterView);
       }
-      paramView = (bhgs)bhfm.a(5);
-      ((bhlf)bhfm.a(14)).a(paramAdapterView.jdField_a_of_type_JavaLangString, 0);
+      paramView = (bjbk)bjae.a(5);
+      ((bjfx)bjae.a(14)).a(paramAdapterView.jdField_a_of_type_JavaLangString, 0);
       localObject = paramAdapterView.jdField_a_of_type_JavaLangString;
     } while (paramView.a().a((String)localObject, getContext()));
     Object localObject = new Bundle();
     ((Bundle)localObject).putInt("apply_source", 1);
     ((Bundle)localObject).putInt("capture_scene", this.g);
-    bhhh localbhhh = paramView.a(paramAdapterView);
-    if ((localbhhh.jdField_a_of_type_Int == 1) || (localbhhh.jdField_a_of_type_Int == 2)) {
-      bhpu.a(localbhhh).a();
+    bjbz localbjbz = paramView.a(paramAdapterView);
+    if ((localbjbz.jdField_a_of_type_Int == 1) || (localbjbz.jdField_a_of_type_Int == 2)) {
+      bjkm.a(localbjbz).a();
     }
     paramView.a(paramAdapterView, (Activity)getContext(), (Bundle)localObject);
-    if ((vhg.a().b() == 22) && (paramAdapterView.f != null) && (paramAdapterView.f.isEmpty())) {
+    if ((vuc.a().b() == 22) && (paramAdapterView.f != null) && (paramAdapterView.f.isEmpty())) {
       LpReportInfo_pf00064.allReport(680, 6, 1);
     }
-    if ((vhg.a().b() == 22) && (paramAdapterView.f != null) && (!paramAdapterView.f.isEmpty())) {
+    if ((vuc.a().b() == 22) && (paramAdapterView.f != null) && (!paramAdapterView.f.isEmpty())) {
       LpReportInfo_pf00064.allReport(680, 6, 2);
     }
     g();
     if (QLog.isColorLevel()) {
-      QLog.i("QCombo", 2, "onItemClick combo " + i + "," + paramInt + ", combo " + localbhhh);
+      QLog.i("QCombo", 2, "onItemClick combo " + i + "," + paramInt + ", combo " + localbjbz);
     }
     if (QLog.isColorLevel()) {
       QLog.i("QCombo", 2, "onItemClick state = " + paramAdapterView);
@@ -476,10 +476,10 @@ public class ComboProviderView
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.a(paramInt);
   }
   
-  public void setup(bjae parambjae)
+  public void setup(bkqq parambkqq)
   {
-    this.jdField_a_of_type_Bjae = parambjae;
-    this.jdField_a_of_type_JavaUtilArrayList = parambjae.jdField_a_of_type_JavaUtilArrayList;
+    this.jdField_a_of_type_Bkqq = parambkqq;
+    this.jdField_a_of_type_JavaUtilArrayList = parambkqq.jdField_a_of_type_JavaUtilArrayList;
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.a(a());
     this.jdField_a_of_type_DovComQqImCaptureAdapterComboProviderPagerAdapter = new ComboProviderPagerAdapter(this.jdField_a_of_type_AndroidContentContext, this.g);
     this.jdField_a_of_type_DovComQqImCaptureAdapterComboProviderPagerAdapter.a(this);

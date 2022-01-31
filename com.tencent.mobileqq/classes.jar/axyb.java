@@ -1,263 +1,303 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import java.net.Inet6Address;
-import java.net.InetAddress;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.text.Layout;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import tencent.im.longconn.multimsg.MultiMsg.ExternMsg;
-import tencent.im.longconn.multimsg.MultiMsg.MultiMsgApplyDownReq;
-import tencent.im.longconn.multimsg.MultiMsg.MultiMsgApplyDownRsp;
-import tencent.im.longconn.multimsg.MultiMsg.ReqBody;
-import tencent.im.longconn.multimsg.MultiMsg.RspBody;
 
 public class axyb
-  extends axxs
+  extends axwu
 {
-  int a;
-  
-  private void a(int paramInt, axyr paramaxyr, MultiMsg.ReqBody paramReqBody)
+  private TextView a(Context paramContext, List<axun> paramList)
   {
-    paramaxyr = (axym)paramaxyr;
-    MultiMsg.MultiMsgApplyDownReq localMultiMsgApplyDownReq = new MultiMsg.MultiMsgApplyDownReq();
-    localMultiMsgApplyDownReq.setHasFlag(true);
-    localMultiMsgApplyDownReq.bytes_msg_resid.set(ByteStringMicro.copyFrom(paramaxyr.jdField_a_of_type_ArrayOfByte));
-    localMultiMsgApplyDownReq.uint32_msg_type.set(axyc.b(paramaxyr.f));
-    localMultiMsgApplyDownReq.uint64_src_uin.set(Long.valueOf(paramaxyr.c).longValue());
-    paramReqBody.rpt_multimsg_applydown_req.add(localMultiMsgApplyDownReq);
-    if ((paramaxyr.jdField_a_of_type_Int == 0) && (aryb.b)) {
-      paramReqBody.uint32_bu_type.set(2);
-    }
-  }
-  
-  private byte[] a(List<axyr> paramList)
-  {
-    int i = axsr.a().a();
-    this.jdField_a_of_type_Int = i;
-    switch (i)
+    paramContext = new TextView(paramContext);
+    if (paramList != null) {}
+    for (int i = paramList.size();; i = 0)
     {
-    default: 
-      i = 255;
-    }
-    Object localObject;
-    for (;;)
-    {
-      localObject = axsr.a().a();
-      int j = i;
-      if (localObject != null)
+      if ((paramList != null) && (i > 2))
       {
-        j = i;
-        if (((String)localObject).contains("wap")) {
-          j = 5;
+        paramList = (axun)paramList.get(i - 1);
+        if ((paramList instanceof axup))
+        {
+          paramContext.setText(((axup)paramList).b());
+          paramContext.setGravity(16);
+          paramContext.setSingleLine(true);
         }
       }
-      localObject = new MultiMsg.ReqBody();
-      ((MultiMsg.ReqBody)localObject).setHasFlag(true);
-      ((MultiMsg.ReqBody)localObject).uint32_subcmd.set(2);
-      ((MultiMsg.ReqBody)localObject).uint32_term_type.set(5);
-      ((MultiMsg.ReqBody)localObject).uint32_platform_type.set(9);
-      ((MultiMsg.ReqBody)localObject).uint32_net_type.set(j);
-      ((MultiMsg.ReqBody)localObject).bytes_build_ver.set(ByteStringMicro.copyFromUtf8(axub.a()));
-      ((MultiMsg.ReqBody)localObject).uint32_req_channel_type.set(2);
-      i = 0;
-      while (i < paramList.size())
-      {
-        a(i, (axyr)paramList.get(i), (MultiMsg.ReqBody)localObject);
-        i += 1;
-      }
-      i = 3;
-      continue;
-      i = 6;
-      continue;
-      i = 7;
-      continue;
-      i = 8;
+      return paramContext;
     }
-    return ((MultiMsg.ReqBody)localObject).toByteArray();
   }
   
-  public void a(axtc paramaxtc, axtb paramaxtb)
+  private void a(LinearLayout paramLinearLayout)
   {
-    localObject1 = paramaxtc.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-    byte[] arrayOfByte = paramaxtc.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
-    axyg localaxyg = (axyg)paramaxtb.jdField_a_of_type_JavaLangObject;
-    axyv localaxyv = localaxyg.jdField_a_of_type_Axyv;
-    ajmn localajmn = paramaxtc.jdField_a_of_type_Ajmn;
-    if (((FromServiceMsg)localObject1).getResultCode() != 1000)
+    if (paramLinearLayout.getWidth() > 0)
     {
-      i = ((FromServiceMsg)localObject1).getResultCode();
-      if ((i == 1002) || (i == 1013)) {
-        a(-1, 9311, MessageHandler.a((FromServiceMsg)localObject1), "", localajmn, localaxyv.jdField_a_of_type_JavaUtilList);
-      }
-    }
-    List localList;
-    for (;;)
-    {
-      axzm.a(localaxyg, localaxyv);
+      b(paramLinearLayout);
       return;
-      a(-1, 9044, MessageHandler.a((FromServiceMsg)localObject1), "", localajmn, localaxyv.jdField_a_of_type_JavaUtilList);
-      continue;
-      try
-      {
-        localList = ((MultiMsg.RspBody)new MultiMsg.RspBody().mergeFrom(arrayOfByte)).rpt_multimsg_applydown_rsp.get();
-        if ((localList != null) && (localList.size() != 0)) {
-          break;
-        }
-        throw new Exception("resps null");
+    }
+    paramLinearLayout.getViewTreeObserver().addOnGlobalLayoutListener(new axyc(this, paramLinearLayout));
+  }
+  
+  private void b(LinearLayout paramLinearLayout)
+  {
+    int k = paramLinearLayout.getChildCount();
+    int i = 4;
+    int j = 1;
+    Object localObject;
+    if (j < k)
+    {
+      localObject = paramLinearLayout.getChildAt(j);
+      if (!(localObject instanceof TextView)) {
+        break label107;
       }
-      catch (Exception paramaxtc)
+      localObject = (TextView)localObject;
+      Layout localLayout = ((TextView)localObject).getLayout();
+      if (localLayout == null) {
+        break label107;
+      }
+      int m = localLayout.getLineCount();
+      if (i > 0)
       {
-        a(-1, -9527, axou.a("P", -9529L), paramaxtc.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localajmn, localaxyv.jdField_a_of_type_JavaUtilList);
+        ((TextView)localObject).setVisibility(0);
+        if (i < m)
+        {
+          ((TextView)localObject).setMaxLines(i);
+          ((TextView)localObject).requestLayout();
+        }
+        label84:
+        i -= m;
       }
     }
+    label107:
+    for (;;)
+    {
+      j += 1;
+      break;
+      ((TextView)localObject).setVisibility(8);
+      break label84;
+      return;
+    }
+  }
+  
+  protected int a(Resources paramResources, int paramInt, axun paramaxun)
+  {
+    int i = 4;
+    if (paramInt == 1) {
+      i = 7;
+    }
+    return actn.a(i, paramResources);
+  }
+  
+  protected ArrayList<axun> a(ArrayList<axun> paramArrayList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = new ArrayList();
+    int m = paramArrayList.size();
+    int j = 0;
     int i = 0;
-    label231:
     Object localObject2;
-    if (i < localList.size()) {
-      localObject2 = (MultiMsg.MultiMsgApplyDownRsp)localList.get(i);
-    }
-    try
+    int k;
+    if (j < m)
     {
-      localObject1 = (axze)localaxyv.jdField_a_of_type_JavaUtilList.get(i);
-      try
+      localObject2 = (axun)paramArrayList.get(j);
+      if ((j == 0) && ((localObject2 instanceof StructMsgItemTitle)))
       {
-        j = ((MultiMsg.MultiMsgApplyDownRsp)localObject2).uint32_result.get();
-        if (j != 0) {
-          break label891;
+        StructMsgItemTitle localStructMsgItemTitle = (StructMsgItemTitle)localObject2;
+        if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.hasTSum()) && (localStructMsgItemTitle.b().endsWith(ajyc.a(2131714617))))
+        {
+          k = 1;
+          label92:
+          if (k == 0) {
+            break label314;
+          }
+          i = 1;
+          label99:
+          if (!(localObject2 instanceof axws)) {
+            break label254;
+          }
         }
-        if (((MultiMsg.MultiMsgApplyDownRsp)localObject2).bytes_thumb_down_para.has()) {
-          break label367;
-        }
-        throw new Exception("bytes_thumb_down_para NOT exists");
       }
-      catch (Exception paramaxtc) {}
     }
-    catch (Exception paramaxtc)
+    for (;;)
     {
+      if (i == 0) {
+        paramArrayList = new StructMsgItemTitle(ajyc.a(2131714603));
+      }
       for (;;)
       {
-        int j;
-        localObject1 = null;
+        paramArrayList.f("34");
+        paramArrayList.g("12");
+        paramArrayList.h("2");
+        paramArrayList.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+        localArrayList.add(paramArrayList);
+        paramArrayList = ((List)localObject1).iterator();
+        while (paramArrayList.hasNext())
+        {
+          localObject1 = (axun)paramArrayList.next();
+          if ((localObject1 instanceof axup))
+          {
+            localObject2 = (axup)localObject1;
+            ((axup)localObject2).f("26");
+            ((axup)localObject2).e("#777777");
+            ((axup)localObject2).g("12");
+            ((axup)localObject2).h("2");
+            ((axun)localObject1).jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+            localArrayList.add(localObject1);
+          }
+        }
+        k = 0;
+        break label92;
+        label254:
+        if (((localObject2 instanceof StructMsgItemTitle)) || ((localObject2 instanceof axzh))) {
+          ((List)localObject1).add(localObject2);
+        }
+        j += 1;
+        break;
+        paramArrayList = (StructMsgItemTitle)((List)localObject1).get(0);
+        ((List)localObject1).remove(0);
+      }
+      return localArrayList;
+      label314:
+      break label99;
+    }
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    int k = 0;
+    int j = 0;
+    Resources localResources = paramContext.getResources();
+    int i = localResources.getDimensionPixelSize(2131298796);
+    int m = localResources.getDimensionPixelSize(2131298797);
+    int n = localResources.getDimensionPixelSize(2131298795);
+    LinearLayout localLinearLayout1;
+    LinearLayout localLinearLayout2;
+    Object localObject1;
+    View localView;
+    if ((paramView != null) && ((paramView instanceof LinearLayout)))
+    {
+      localLinearLayout1 = (LinearLayout)paramView;
+      localLinearLayout2 = (LinearLayout)localLinearLayout1.getChildAt(0);
+      paramView = (TextView)localLinearLayout1.getChildAt(1);
+      localObject1 = a(this.jdField_a_of_type_JavaUtilArrayList);
+      if (localLinearLayout2.getChildCount() != ((ArrayList)localObject1).size()) {
+        break label484;
+      }
+      k = ((ArrayList)localObject1).size();
+      i = j;
+      if (i >= k) {
+        break label670;
+      }
+      localObject2 = (axun)((ArrayList)localObject1).get(i);
+      ((axun)localObject2).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if ((localObject2 instanceof StructMsgItemTitle)) {
+        ((StructMsgItemTitle)localObject2).a(a(), this.l);
+      }
+      localView = ((axun)localObject2).a(paramContext, localLinearLayout2.getChildAt(i), paramBundle);
+      if (localView != null) {
+        break label390;
       }
     }
-    a(-1, -9527, axou.a("P", -9529L), paramaxtc.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localajmn, (axzi)localObject1);
+    label390:
+    label484:
+    do
+    {
+      return localLinearLayout2;
+      localLinearLayout1 = new LinearLayout(paramContext);
+      localLinearLayout1.setOrientation(1);
+      localLinearLayout2 = new LinearLayout(paramContext);
+      localLinearLayout2.setOrientation(1);
+      paramView = new LinearLayout.LayoutParams(-1, -2);
+      localLinearLayout2.setPadding(i, m, m, n);
+      localLinearLayout2.setLayoutParams(paramView);
+      paramView = a(paramContext, this.jdField_a_of_type_JavaUtilArrayList);
+      paramView.setBackgroundResource(2130849355);
+      paramView.setPadding(i, 0, 0, 0);
+      paramView.setTextSize(1, 13.0F);
+      paramView.setGravity(16);
+      if (Build.VERSION.SDK_INT > 22) {}
+      for (i = localResources.getColor(2131165583, paramContext.getTheme());; i = localResources.getColor(2131165583))
+      {
+        paramView.setTextColor(i);
+        localObject1 = new LinearLayout.LayoutParams(-1, actn.a(30.0F, localResources));
+        ((LinearLayout.LayoutParams)localObject1).leftMargin = actn.a(2.0F, localResources);
+        ((LinearLayout.LayoutParams)localObject1).rightMargin = actn.a(2.0F, localResources);
+        paramView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        localLinearLayout1.addView(localLinearLayout2);
+        localLinearLayout1.addView(paramView);
+        break;
+      }
+      actn.a(10.0F, localResources);
+      localObject3 = new LinearLayout.LayoutParams(-1, -2);
+      if (i > 0) {
+        ((LinearLayout.LayoutParams)localObject3).topMargin = a(localResources, i, (axun)localObject2);
+      }
+      localObject2 = ((axun)localObject2).jdField_a_of_type_JavaLangString;
+      if ("title".equals(localObject2)) {
+        localView.setId(-1);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        if ("summary".equals(localObject2)) {
+          localView.setId(-1);
+        }
+      }
+      localLinearLayout2.removeAllViews();
+      j = ((ArrayList)localObject1).size();
+      i = k;
+      if (i >= j) {
+        break label670;
+      }
+      localObject3 = (axun)((ArrayList)localObject1).get(i);
+      ((axun)localObject3).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if ((localObject3 instanceof StructMsgItemTitle)) {
+        ((StructMsgItemTitle)localObject3).a(a(), this.l);
+      }
+      localView = ((axun)localObject3).a(paramContext, null, paramBundle);
+    } while (localView == null);
+    actn.a(10.0F, localResources);
+    Object localObject2 = new LinearLayout.LayoutParams(-1, -2);
+    if (i > 0) {
+      ((LinearLayout.LayoutParams)localObject2).topMargin = a(localResources, i, (axun)localObject3);
+    }
+    Object localObject3 = ((axun)localObject3).jdField_a_of_type_JavaLangString;
+    if ("title".equals(localObject3)) {
+      localView.setId(-1);
+    }
     for (;;)
     {
+      localLinearLayout2.addView(localView, (ViewGroup.LayoutParams)localObject2);
       i += 1;
-      break label231;
       break;
-      label367:
-      paramaxtc = ((MultiMsg.MultiMsgApplyDownRsp)localObject2).bytes_thumb_down_para.get();
-      if (paramaxtc == null) {}
-      for (paramaxtc = null; (paramaxtc == null) || (paramaxtc.equals("")); paramaxtc = paramaxtc.toStringUtf8()) {
-        throw new Exception("urlParam == null || empty");
+      if ("summary".equals(localObject3)) {
+        localView.setId(-1);
       }
-      if (!((MultiMsg.MultiMsgApplyDownRsp)localObject2).bytes_msg_resid.has()) {
-        throw new Exception("bytes_msg_resid NOT exists");
-      }
-      Object localObject3 = ((MultiMsg.MultiMsgApplyDownRsp)localObject2).bytes_msg_resid.get().toByteArray();
-      if ((localObject3 == null) || (localObject3.length <= 0)) {
-        throw new Exception("resid_bs == null || empty");
-      }
-      if (!((MultiMsg.MultiMsgApplyDownRsp)localObject2).bytes_msg_key.has()) {
-        throw new Exception("bytes_msg_key NOT exists");
-      }
-      Object localObject4 = ((MultiMsg.MultiMsgApplyDownRsp)localObject2).bytes_msg_key.get().toByteArray();
-      if ((localObject4 == null) || (localObject4.length <= 0)) {
-        throw new Exception("ukey_bs == null || empty");
-      }
-      j = 0;
-      if (((MultiMsg.MultiMsgApplyDownRsp)localObject2).msg_extern_info.has()) {
-        j = ((MultiMsg.ExternMsg)((MultiMsg.MultiMsgApplyDownRsp)localObject2).msg_extern_info.get()).uint32_channel_type.get();
-      }
-      ((axze)localObject1).jdField_a_of_type_Int = j;
-      ((axze)localObject1).jdField_a_of_type_JavaLangString = paramaxtc;
-      ((axze)localObject1).jdField_a_of_type_ArrayOfByte = ((byte[])localObject3);
-      ((axze)localObject1).jdField_b_of_type_ArrayOfByte = ((byte[])localObject4);
-      paramaxtc = ((MultiMsg.MultiMsgApplyDownRsp)localObject2).rpt_uint32_down_ip.get();
-      localObject3 = ((MultiMsg.MultiMsgApplyDownRsp)localObject2).rpt_uint32_down_port.get();
-      if ((paramaxtc == null) || (paramaxtc.size() == 0)) {
-        throw new Exception("check iplist");
-      }
-      if ((paramaxtc != null) && (paramaxtc.size() > 0))
-      {
-        j = 0;
-        while (j < paramaxtc.size())
-        {
-          long l1 = ((Integer)paramaxtc.get(j)).intValue();
-          long l2 = ((Integer)((List)localObject3).get(j)).intValue();
-          localObject4 = new axuh();
-          ((axuh)localObject4).jdField_a_of_type_JavaLangString = bakz.a(l1 & 0xFFFFFFFF);
-          ((axuh)localObject4).jdField_a_of_type_Int = ((int)l2);
-          ((axze)localObject1).jdField_a_of_type_JavaUtilArrayList.add(j, localObject4);
-          j += 1;
-        }
-      }
-      paramaxtc = ((MultiMsg.MultiMsgApplyDownRsp)localObject2).rpt_bytes_down_ip_v6.get();
-      localObject2 = ((MultiMsg.MultiMsgApplyDownRsp)localObject2).rpt_uint32_down_v6_port.get();
-      if ((paramaxtc != null) && (paramaxtc.size() > 0))
-      {
-        j = 0;
-        while (j < paramaxtc.size())
-        {
-          localObject3 = new axuh();
-          ((axuh)localObject3).jdField_a_of_type_JavaLangString = Inet6Address.getByAddress(((ByteStringMicro)paramaxtc.get(j)).toByteArray()).getHostAddress();
-          ((axuh)localObject3).jdField_a_of_type_Int = ((int)((Integer)((List)localObject2).get(j)).intValue());
-          ((axuh)localObject3).jdField_a_of_type_Boolean = true;
-          ((axze)localObject1).jdField_b_of_type_JavaUtilArrayList.add(j, localObject3);
-          j += 1;
-        }
-      }
-      a(0, 0, "", "", localajmn, (axzi)localObject1);
-      continue;
-      label891:
-      if (j == 196) {
-        awqx.b(null, "CliOper", "", "", "0X8006627", "0X8006627", 0, 1, 0, "", "", "", "");
-      }
-      if (axxy.a(j))
-      {
-        this.b += 1;
-        if (this.b < 2)
-        {
-          localaxyg.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.a(paramaxtb);
-          return;
-        }
-      }
-      a(-1, -9527, axou.a(j), "", localajmn, (axzi)localObject1);
     }
+    label670:
+    a(localLinearLayout2);
+    i = this.jdField_a_of_type_JavaUtilArrayList.size();
+    paramContext = (axun)this.jdField_a_of_type_JavaUtilArrayList.get(i - 1);
+    if ((paramContext instanceof axup)) {
+      paramView.setText(((axup)paramContext).Y);
+    }
+    return localLinearLayout1;
   }
   
-  public void a(axyg paramaxyg)
+  public String b()
   {
-    if ((paramaxyg != null) && (paramaxyg.jdField_a_of_type_JavaUtilList != null) && (paramaxyg.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
-    {
-      axtb localaxtb = new axtb();
-      localaxtb.jdField_a_of_type_JavaLangString = "MultiMsg.ApplyDown";
-      localaxtb.jdField_a_of_type_ArrayOfByte = a(paramaxyg.jdField_a_of_type_JavaUtilList);
-      localaxtb.jdField_a_of_type_JavaLangObject = paramaxyg;
-      localaxtb.jdField_a_of_type_Axta = this;
-      a(paramaxyg, localaxtb);
-    }
-  }
-  
-  void b(axyg paramaxyg)
-  {
-    axyv localaxyv = paramaxyg.jdField_a_of_type_Axyv;
-    localaxyv.jdField_a_of_type_JavaUtilList.clear();
-    int i = 0;
-    while (i < paramaxyg.jdField_a_of_type_JavaUtilList.size())
-    {
-      axze localaxze = new axze();
-      localaxyv.jdField_a_of_type_JavaUtilList.add(i, localaxze);
-      i += 1;
-    }
+    return "Layout30";
   }
 }
 

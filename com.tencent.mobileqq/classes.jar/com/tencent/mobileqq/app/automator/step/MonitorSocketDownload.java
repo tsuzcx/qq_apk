@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import ajxw;
+import akmg;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import axro;
-import axrr;
-import axrs;
-import axrt;
-import axsp;
-import axsq;
+import ayrv;
+import ayry;
+import ayrz;
+import aysa;
+import aysw;
+import aysx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -20,9 +20,9 @@ import java.io.InputStreamReader;
 
 public class MonitorSocketDownload
   extends AsyncStep
-  implements axrt
+  implements aysa
 {
-  protected static axrs a;
+  protected static ayrz a;
   private long a;
   private final String b = "http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorconfig.txt";
   private final String c = "http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorversion.txt";
@@ -30,7 +30,7 @@ public class MonitorSocketDownload
   
   static
   {
-    jdField_a_of_type_Axrs = new ajxw();
+    jdField_a_of_type_Ayrz = new akmg();
   }
   
   private int b()
@@ -47,14 +47,14 @@ public class MonitorSocketDownload
         }
         String str = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath() + "/com.tencent.mobileqq_checkurl";
         localObject = ((QQAppInterface)localObject).getNetEngine(0);
-        axro localaxro = new axro();
-        localaxro.jdField_a_of_type_Axrt = this;
-        localaxro.jdField_a_of_type_JavaLangString = "http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorversion.txt";
-        localaxro.jdField_a_of_type_Int = 0;
-        localaxro.c = str;
-        localaxro.e = 0;
-        localaxro.jdField_a_of_type_Axrs = jdField_a_of_type_Axrs;
-        ((axrr)localObject).a(localaxro);
+        ayrv localayrv = new ayrv();
+        localayrv.jdField_a_of_type_Aysa = this;
+        localayrv.jdField_a_of_type_JavaLangString = "http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorversion.txt";
+        localayrv.jdField_a_of_type_Int = 0;
+        localayrv.c = str;
+        localayrv.e = 0;
+        localayrv.jdField_a_of_type_Ayrz = jdField_a_of_type_Ayrz;
+        ((ayry)localObject).a(localayrv);
         if (QLog.isColorLevel()) {
           QLog.d("MonitorSocketDownload", 2, "send request to check version and decide whether to download MS config");
         }
@@ -77,14 +77,14 @@ public class MonitorSocketDownload
     {
       String str = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath() + "/monitor_config.properties";
       localObject = ((QQAppInterface)localObject).getNetEngine(0);
-      axro localaxro = new axro();
-      localaxro.jdField_a_of_type_Axrt = this;
-      localaxro.jdField_a_of_type_JavaLangString = "http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorconfig.txt";
-      localaxro.jdField_a_of_type_Int = 0;
-      localaxro.c = str;
-      localaxro.e = 0;
-      localaxro.jdField_a_of_type_Axrs = jdField_a_of_type_Axrs;
-      ((axrr)localObject).a(localaxro);
+      ayrv localayrv = new ayrv();
+      localayrv.jdField_a_of_type_Aysa = this;
+      localayrv.jdField_a_of_type_JavaLangString = "http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorconfig.txt";
+      localayrv.jdField_a_of_type_Int = 0;
+      localayrv.c = str;
+      localayrv.e = 0;
+      localayrv.jdField_a_of_type_Ayrz = jdField_a_of_type_Ayrz;
+      ((ayry)localObject).a(localayrv);
       if (QLog.isColorLevel()) {
         QLog.d("MonitorSocketDownload", 2, "download MS config");
       }
@@ -101,24 +101,24 @@ public class MonitorSocketDownload
     return b();
   }
   
-  public void onResp(axsq paramaxsq)
+  public void onResp(aysx paramaysx)
   {
-    if (paramaxsq.jdField_a_of_type_Int == 0) {}
+    if (paramaysx.jdField_a_of_type_Int == 0) {}
     for (int i = 1;; i = 0)
     {
-      Object localObject = (axro)paramaxsq.jdField_a_of_type_Axsp;
-      File localFile = new File(((axro)localObject).c);
+      Object localObject = (ayrv)paramaysx.jdField_a_of_type_Aysw;
+      File localFile = new File(((ayrv)localObject).c);
       if (i != 0)
       {
-        if (((axro)localObject).jdField_a_of_type_JavaLangString.equals("http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorversion.txt"))
+        if (((ayrv)localObject).jdField_a_of_type_JavaLangString.equals("http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorversion.txt"))
         {
           if (QLog.isColorLevel()) {
             QLog.d("MonitorSocketDownload", 2, "file exists " + localFile.exists());
           }
           try
           {
-            paramaxsq = new BufferedReader(new InputStreamReader(new FileInputStream(localFile)));
-            localObject = paramaxsq.readLine();
+            paramaysx = new BufferedReader(new InputStreamReader(new FileInputStream(localFile)));
+            localObject = paramaysx.readLine();
             if (localObject != null)
             {
               if (QLog.isColorLevel()) {
@@ -134,19 +134,19 @@ public class MonitorSocketDownload
             }
             for (;;)
             {
-              paramaxsq.close();
+              paramaysx.close();
               return;
               label208:
               b();
               this.d = i;
             }
-            if (!((axro)localObject).jdField_a_of_type_JavaLangString.equals("http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorconfig.txt")) {
+            if (!((ayrv)localObject).jdField_a_of_type_JavaLangString.equals("http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorconfig.txt")) {
               break label471;
             }
           }
-          catch (Exception paramaxsq)
+          catch (Exception paramaysx)
           {
-            QLog.d("MonitorSocketDownload", 1, "" + paramaxsq);
+            QLog.d("MonitorSocketDownload", 1, "" + paramaysx);
             return;
           }
         }
@@ -158,25 +158,25 @@ public class MonitorSocketDownload
         try
         {
           localObject = new BufferedReader(new InputStreamReader(new FileInputStream(localFile)));
-          for (paramaxsq = ((BufferedReader)localObject).readLine(); paramaxsq != null; paramaxsq = ((BufferedReader)localObject).readLine()) {
-            QLog.d("MonitorSocketDownload", 2, "Banlist: " + paramaxsq + ", used " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + "ms");
+          for (paramaysx = ((BufferedReader)localObject).readLine(); paramaysx != null; paramaysx = ((BufferedReader)localObject).readLine()) {
+            QLog.d("MonitorSocketDownload", 2, "Banlist: " + paramaysx + ", used " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + "ms");
           }
           ((BufferedReader)localObject).close();
           return;
         }
-        catch (Exception paramaxsq)
+        catch (Exception paramaysx)
         {
-          QLog.d("MonitorSocketDownload", 1, "" + paramaxsq);
+          QLog.d("MonitorSocketDownload", 1, "" + paramaysx);
           return;
         }
       }
-      QLog.d("MonitorSocketDownload", 1, "result: " + paramaxsq.jdField_a_of_type_Int);
+      QLog.d("MonitorSocketDownload", 1, "result: " + paramaysx.jdField_a_of_type_Int);
       label471:
       return;
     }
   }
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
+  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
 }
 
 

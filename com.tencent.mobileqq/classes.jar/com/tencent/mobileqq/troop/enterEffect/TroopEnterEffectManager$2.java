@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
-import ayrg;
+import azrw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import tencent.qun.group_effect.group_effect_commu.TGetMyEffectRsp0x2;
 public class TroopEnterEffectManager$2
   implements Runnable
 {
-  public TroopEnterEffectManager$2(ayrg paramayrg, group_effect_commu.TGetMyEffectRsp0x2 paramTGetMyEffectRsp0x2) {}
+  public TroopEnterEffectManager$2(azrw paramazrw, group_effect_commu.TGetMyEffectRsp0x2 paramTGetMyEffectRsp0x2) {}
   
   public void run()
   {

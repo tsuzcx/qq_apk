@@ -1,16 +1,29 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel.32;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
 
-public class anik
-  implements baxq
+public final class anik
+  implements Parcelable.Creator
 {
-  public anik(EmoticonMainPanel.32 param32) {}
-  
-  public void a(boolean paramBoolean)
+  public IPSiteModel.Goods a(Parcel paramParcel)
   {
-    if (paramBoolean) {
-      this.a.this$0.a.a();
-    }
+    IPSiteModel.Goods localGoods = new IPSiteModel.Goods();
+    localGoods.cover = paramParcel.readString();
+    localGoods.goodsTags = paramParcel.readString();
+    localGoods.id = paramParcel.readString();
+    localGoods.name = paramParcel.readString();
+    localGoods.price = paramParcel.readString();
+    localGoods.saleTags = paramParcel.readString();
+    localGoods.svipPrice = paramParcel.readString();
+    localGoods.url = paramParcel.readString();
+    localGoods.moreUrl = paramParcel.readString();
+    localGoods.saleNum = paramParcel.readString();
+    return localGoods;
+  }
+  
+  public IPSiteModel.Goods[] a(int paramInt)
+  {
+    return new IPSiteModel.Goods[paramInt];
   }
 }
 

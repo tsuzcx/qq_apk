@@ -1,30 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 
-class uxw
-  implements Animator.AnimatorListener
+public abstract interface uxw
 {
-  uxw(uxu paramuxu) {}
+  public abstract void a();
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.a = false;
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a = false;
-  }
+  public abstract void a(@NonNull Activity paramActivity);
   
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    this.a.a = true;
-  }
+  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a = true;
-  }
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

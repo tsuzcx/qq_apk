@@ -1,26 +1,43 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import java.util.List;
+import com.tencent.qg.sdk.invoke.BaseJsModule;
+import com.tencent.qg.sdk.invoke.InvokeCallback;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-class bdss
-  implements AsyncResult
+public class bdss
+  extends BaseJsModule
 {
-  bdss(bdsr parambdsr, List paramList) {}
-  
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public String getModuleName()
   {
-    if (paramBoolean)
-    {
-      bdnw.a("MiniProgramReporter", "onDcReport() called with: isSuc = [true], ret = [" + paramJSONObject + "]");
-      return;
+    return "mqq";
+  }
+  
+  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
+  {
+    boolean bool = false;
+    if ("getQQVersion".equals(paramString)) {
+      paramString = new JSONObject();
     }
-    bdnw.d("MiniProgramReporter", "performReportViaSSO onDcReport: sso command failed, try again");
-    this.jdField_a_of_type_Bdsr.a(this.jdField_a_of_type_JavaUtilList);
+    while (!"getQQVersionSync".equals(paramString)) {
+      try
+      {
+        paramString.putOpt("version", "8.2.8");
+        bool = paramInvokeCallback.exec(0, paramString);
+        return bool;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        for (;;)
+        {
+          paramJSONObject.printStackTrace();
+        }
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdss
  * JD-Core Version:    0.7.0.1
  */

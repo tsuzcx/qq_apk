@@ -1,30 +1,8 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import android.view.MotionEvent;
 
-public class lsi
-  implements lxc
+public abstract interface lsi
 {
-  public lsi(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI, long paramLong) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.j = true;
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.L();
-  }
-  
-  public void b()
-  {
-    miu.a().b(this.jdField_a_of_type_Long);
-    if (!this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().Q) {
-      DoubleVideoMeetingCtrlUI.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI, this.jdField_a_of_type_Long);
-    }
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.jdField_a_of_type_Long, true, 0);
-    DoubleVideoMeetingCtrlUI.b(this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI, this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.b(true);
-    awqx.b(null, "CliOper", "", "", "0X8005206", "0X8005206", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.j = false;
-  }
+  public abstract boolean a(lsh paramlsh, MotionEvent paramMotionEvent);
 }
 
 

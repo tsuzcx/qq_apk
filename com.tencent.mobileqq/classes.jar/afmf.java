@@ -1,63 +1,19 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
-import java.util.List;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.Comparator;
 
-public class afmf
-  implements aryo
+class afmf
+  implements Comparator<MayKnowRecommend>
 {
-  public afmf(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment, aryh paramaryh, aryq paramaryq, List paramList) {}
+  afmf(afma paramafma) {}
   
-  public void a()
+  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
   {
-    this.jdField_a_of_type_Aryh.a(new afmg(this));
-    this.jdField_a_of_type_Aryh.show();
-  }
-  
-  public void a(arym paramarym)
-  {
-    if ((paramarym != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity().isFinishing())) {
-      switch (paramarym.a)
-      {
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Aryh.isShowing()) {
-        this.jdField_a_of_type_Aryh.dismiss();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.v();
-      this.jdField_a_of_type_Aryq.b();
-      return;
-      aryn.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity());
-      continue;
-      aryn.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity());
-      continue;
-      aryn.c(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity());
-    }
-  }
-  
-  public void a(arym paramarym, int paramInt)
-  {
-    this.jdField_a_of_type_Aryh.a(paramInt);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aryh.isShowing()) {
-      this.jdField_a_of_type_Aryh.dismiss();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.v();
-    this.jdField_a_of_type_Aryq.b();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Aryq.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity(), this.jdField_a_of_type_JavaUtilList);
+    return paramMayKnowRecommend2.timestamp - paramMayKnowRecommend1.timestamp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afmf
  * JD-Core Version:    0.7.0.1
  */

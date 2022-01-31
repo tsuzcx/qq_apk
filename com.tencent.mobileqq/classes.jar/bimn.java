@@ -1,15 +1,18 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 
-public class bimn
-  implements binl
+class bimn
+  implements bjob<Boolean>
 {
-  public bimn(DoodleLayout paramDoodleLayout) {}
+  bimn(bimj parambimj) {}
   
-  public void a()
+  public void a(@Nullable Boolean paramBoolean)
   {
-    if (this.a.a != null) {
-      this.a.a.r();
+    if (paramBoolean == null) {}
+    while (bimj.a(this.a) == null) {
+      return;
     }
+    bimj.a(this.a).a(paramBoolean.booleanValue());
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atnz;
+import aukm;
+import aulx;
 
 public class MayKnowExposure
-  extends atmo
+  extends aukm
 {
   public static final int EXPOSE_ACTION_CLICK_ADD = 3;
   public static final int EXPOSE_ACTION_CLICK_PROFILE = 2;
@@ -36,7 +36,7 @@ public class MayKnowExposure
   public int exposeCnt;
   public int exposeTime;
   public int pageId;
-  @atnz
+  @aulx
   public long startExploseTime;
   public String uin;
   

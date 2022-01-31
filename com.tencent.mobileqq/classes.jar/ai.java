@@ -1,21 +1,75 @@
-import android.os.AsyncTask;
-import com.dataline.activities.LiteActivity;
+import android.os.IInterface;
+import android.telephony.SubscriptionInfo;
+import java.util.List;
 
-public class ai
-  implements apca
+public abstract interface ai
+  extends IInterface
 {
-  public ai(LiteActivity paramLiteActivity, AsyncTask paramAsyncTask, int paramInt) {}
+  public abstract int a();
   
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-  }
+  public abstract int a(int paramInt);
   
-  public void b() {}
+  public abstract int a(int paramInt1, int paramInt2);
+  
+  public abstract int a(String paramString);
+  
+  public abstract int a(String paramString, int paramInt);
+  
+  public abstract int a(String paramString, int paramInt, long paramLong);
+  
+  public abstract SubscriptionInfo a(int paramInt, String paramString);
+  
+  public abstract SubscriptionInfo a(String paramString1, String paramString2);
+  
+  public abstract String a(int paramInt, String paramString1, String paramString2);
+  
+  public abstract List<SubscriptionInfo> a(String paramString);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, String paramString1, String paramString2);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract int[] a();
+  
+  public abstract int[] a(int paramInt);
+  
+  public abstract int b();
+  
+  public abstract int b(int paramInt);
+  
+  public abstract int b(int paramInt1, int paramInt2);
+  
+  public abstract int b(String paramString);
+  
+  public abstract int b(String paramString, int paramInt);
+  
+  public abstract SubscriptionInfo b(int paramInt, String paramString);
+  
+  public abstract List<SubscriptionInfo> b(String paramString);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract int c();
+  
+  public abstract int c(int paramInt);
+  
+  public abstract int c(String paramString, int paramInt);
+  
+  public abstract void c(int paramInt);
+  
+  public abstract int d();
+  
+  public abstract int e();
+  
+  public abstract int f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ai
  * JD-Core Version:    0.7.0.1
  */

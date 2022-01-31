@@ -1,80 +1,21 @@
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class aeoj
-  implements aenz, View.OnClickListener
+class aeoj
+  implements DialogInterface.OnClickListener
 {
-  public static String a;
-  private aeob jdField_a_of_type_Aeob;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String b;
+  aeoj(aeoi paramaeoi, Context paramContext) {}
   
-  static
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = "https://imgcache.qq.com/club/client/group/release/index.html?_bid=199&groupId=";
-  }
-  
-  public aeoj(QQAppInterface paramQQAppInterface, Context paramContext, aeob paramaeob)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aeob = paramaeob;
-  }
-  
-  public int a()
-  {
-    return 25;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131493039, null);
-    paramVarArgs.setOnClickListener(this);
-    return paramVarArgs;
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  public void a(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 21;
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeBigTroopTipsBar", 2, "click tips, jump");
-    }
-    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("url", jdField_a_of_type_JavaLangString + this.b + "&from=aio");
-    paramView.putExtra("hide_operation_bar", true);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a(this.b, 3);
-    this.jdField_a_of_type_Aeob.a();
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_up", "", "Grp_AIO", "clk", 0, 0, this.b, "", "", "");
+    paramDialogInterface = actn.a(new Intent(this.jdField_a_of_type_AndroidContentContext, SplashActivity.class), null);
+    paramDialogInterface.putExtra("uin", this.jdField_a_of_type_Aeoi.a.a.a);
+    paramDialogInterface.putExtra("uintype", 3000);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
   }
 }
 

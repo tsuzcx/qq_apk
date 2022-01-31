@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
-import baiq;
-import bair;
+import bbjx;
+import bbjy;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -14,11 +14,11 @@ class SyncLoadTask$1$1
   {
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
-      ((baiq)localIterator.next()).setComplete(true);
+      ((bbjx)localIterator.next()).setComplete(true);
     }
     localIterator = this.b.iterator();
     for (boolean bool = true; localIterator.hasNext(); bool = false) {
-      ((baiq)localIterator.next()).setComplete(false);
+      ((bbjx)localIterator.next()).setComplete(false);
     }
     this.this$0.a.a(bool, this.this$0.b);
   }

@@ -1,19 +1,40 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.CustomViewPager;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
+import com.tencent.qphone.base.util.QLog;
 
 public class atgk
-  extends AnimatorListenerAdapter
+  implements atki
 {
-  public atgk(ScanOcrView paramScanOcrView, int paramInt) {}
+  public atgk(SmallVideoFragment paramSmallVideoFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.b) {
-      ScanOcrView.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView, this.jdField_a_of_type_Int + 1);
+    Object localObject;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a() != null)
+    {
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a().jdField_a_of_type_JavaLangString;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a() == null) {
+        break label168;
+      }
     }
-    if (this.jdField_a_of_type_Int == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.c();
+    label168:
+    for (long l = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a().jdField_a_of_type_Long;; l = 0L)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Native_ShortVideo_Report", 2, "onClickClose report module=short_video, action=view_click, obj1=6, res2=" + (String)localObject + ", anchor=" + l);
+      }
+      localObject = (VideoPlayerPagerAdapter)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getAdapter();
+      if ((((VideoPlayerPagerAdapter)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getCurrentItem()) instanceof ShortVideoCommentsView)) {
+        ((ShortVideoCommentsView)((VideoPlayerPagerAdapter)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getCurrentItem())).j();
+      }
+      this.a.d();
+      return;
+      localObject = "0";
+      break;
     }
   }
 }

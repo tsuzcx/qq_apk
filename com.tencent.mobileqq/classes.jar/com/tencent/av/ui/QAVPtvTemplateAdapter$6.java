@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import lwf;
+import mgx;
 
 public class QAVPtvTemplateAdapter$6
   implements Runnable
 {
-  public QAVPtvTemplateAdapter$6(lwf paramlwf, String paramString, int paramInt) {}
+  public QAVPtvTemplateAdapter$6(mgx parammgx, String paramString, int paramInt) {}
   
   public void run()
   {

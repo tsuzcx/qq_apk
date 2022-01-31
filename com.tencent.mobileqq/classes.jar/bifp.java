@@ -1,138 +1,71 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewStub;
-import android.widget.TextView;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.weiyun.utils.ILog;
 
-public class bifp
-  extends bifz
-  implements View.OnClickListener
+public final class bifp
+  implements ILog
 {
-  protected ViewStub a;
-  protected TextView a;
-  protected bisg a;
-  protected String a;
+  private static bifp a;
   
-  public bifp(@NonNull bigb parambigb)
+  public static bifp a()
   {
-    super(parambigb);
-  }
-  
-  private void d()
-  {
-    k();
-    if (this.jdField_a_of_type_Bisg.a() != 0)
-    {
-      this.jdField_a_of_type_Bisg.a(0);
-      this.jdField_a_of_type_Bisg.a.requestFocus();
-      beex.a(this.jdField_a_of_type_Bisg.a);
+    if (a == null) {
+      a = new bifp();
     }
+    return a;
   }
   
-  private void j()
+  public void d(String paramString1, String paramString2)
   {
-    if ((this.jdField_a_of_type_Bisg != null) && (this.jdField_a_of_type_Bisg.a() == 0))
-    {
-      this.jdField_a_of_type_Bisg.a(4);
-      beex.b(this.jdField_a_of_type_Bisg.a);
-      this.jdField_a_of_type_Bisg.a.clearFocus();
-    }
+    QLog.d(paramString1, 2, paramString2);
   }
   
-  private void k()
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (this.jdField_a_of_type_Bisg == null)
-    {
-      this.jdField_a_of_type_Bisg = new bisg(this.jdField_a_of_type_AndroidViewViewStub.inflate());
-      this.jdField_a_of_type_Bisg.a(new bifr(this));
-      this.jdField_a_of_type_Bisg.b(new bifs(this));
-    }
+    d(paramString1, paramString2);
   }
   
-  @Nullable
-  public String a()
+  public void e(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    QLog.e(paramString1, 1, paramString2);
   }
   
-  public void a()
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131296568));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(new bifq(this));
+    e(paramString1, paramString2);
   }
   
-  public void a(int paramInt, @NonNull bitz parambitz)
+  public int getLogLevel()
   {
-    super.a(paramInt, parambitz);
-    parambitz.a.videoLabel = a();
-    bigb localbigb;
-    String str;
-    if (!TextUtils.isEmpty(a()))
-    {
-      paramInt = 1;
-      if (paramInt != 0)
-      {
-        localbigb = this.jdField_a_of_type_Bigb;
-        str = a();
-        if (!this.jdField_a_of_type_Bigb.a()) {
-          break label89;
-        }
-      }
-    }
-    label89:
-    for (parambitz = "2";; parambitz = "1")
-    {
-      localbigb.a("pub_tag", 0, 0, new String[] { "1", str, parambitz });
-      return;
-      paramInt = 0;
-      break;
-    }
+    return 1;
   }
   
-  public boolean a()
+  public void i(String paramString1, String paramString2)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Bisg != null)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_Bisg.a() == 0)
-      {
-        this.jdField_a_of_type_Bigb.a(0);
-        bool1 = true;
-      }
-    }
-    return bool1;
+    QLog.i(paramString1, 1, paramString2);
   }
   
-  public void a_(int paramInt, Object paramObject)
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    switch (paramInt)
-    {
-    default: 
-      j();
-      return;
-    case 0: 
-      j();
-      return;
-    }
-    d();
+    i(paramString1, paramString2);
   }
   
-  public void g() {}
+  public void v(String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void v(String paramString1, String paramString2, Throwable paramThrowable) {}
+  
+  public void w(String paramString1, String paramString2)
   {
-    paramView.getId();
+    QLog.w(paramString1, 1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    w(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bifp
  * JD-Core Version:    0.7.0.1
  */

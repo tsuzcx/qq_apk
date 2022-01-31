@@ -1,21 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import java.util.List;
 
-public class atjb
-  implements ValueAnimator.AnimatorUpdateListener
+class atjb
+  implements View.OnClickListener
 {
-  public atjb(ScanIconAnimateView paramScanIconAnimateView) {}
+  atjb(atiz paramatiz) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.a.e = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    atiz.a(this.a).a.clear();
+    atiz.a(this.a).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atjb
  * JD-Core Version:    0.7.0.1
  */

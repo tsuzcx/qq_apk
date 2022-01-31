@@ -1,25 +1,22 @@
-class aefm
-  implements azna
+import android.graphics.Bitmap;
+
+public class aefm
 {
-  aefm(aefe paramaefe) {}
+  public float a;
+  public int a;
+  public Bitmap a;
+  public float b;
+  public int b;
+  public float c = 0.0F;
+  public float d = 0.0F;
+  public float e;
   
-  public void a(boolean paramBoolean, String paramString)
+  private aefm()
   {
-    if ((paramBoolean) && (this.a.g.equals(paramString)))
-    {
-      this.a.X = true;
-      paramString = (acyp)this.a.a(23);
-      if (paramString != null) {
-        paramString.a(true);
-      }
-    }
-    do
-    {
-      return;
-      this.a.X = false;
-      paramString = (acyp)this.a.a(23);
-    } while (paramString == null);
-    paramString.a(false);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
   }
 }
 

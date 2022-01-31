@@ -12,7 +12,8 @@ class VComponent$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    VComponent.access$000(this.this$0).onTouchEvent(paramMotionEvent);
+    VComponent.access$000(this.this$0, paramView, paramMotionEvent);
+    VComponent.access$100(this.this$0).onTouchEvent(paramMotionEvent);
     return true;
   }
 }

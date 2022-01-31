@@ -1,19 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-class bbbx
-  implements DialogInterface.OnClickListener
+final class bbbx
+  implements MediaPlayer.OnCompletionListener
 {
-  bbbx(bbbt parambbbt, int paramInt, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    bbbt.a(this.jdField_a_of_type_Bbbt, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    paramMediaPlayer.release();
+    bbbr.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbbx
  * JD-Core Version:    0.7.0.1
  */

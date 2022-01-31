@@ -1,100 +1,308 @@
-import android.support.annotation.NonNull;
-import java.io.File;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public abstract class sii
+public class sii
 {
-  protected sii a;
-  protected String[] a;
+  public static int a;
+  private static sii a;
+  public static int b;
   
-  public sii(@NonNull String[] paramArrayOfString)
+  static
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    jdField_a_of_type_Int = 800;
+    jdField_b_of_type_Int = 700;
   }
   
-  public static double a(File paramFile)
+  public static String a(AbsStructMsg paramAbsStructMsg)
   {
-    double d1 = 0.0D;
-    double d2;
-    if (paramFile.isDirectory())
+    if (((paramAbsStructMsg instanceof StructMsgForGeneralShare)) && (((StructMsgForGeneralShare)paramAbsStructMsg).mIsPAVideoStructMsg))
     {
-      paramFile = paramFile.listFiles();
-      d2 = d1;
-      if (paramFile != null)
-      {
-        int j = paramFile.length;
-        int i = 0;
-        for (;;)
-        {
-          d2 = d1;
-          if (i >= j) {
-            break;
-          }
-          d2 = a(paramFile[i]);
-          i += 1;
-          d1 = d2 + d1;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("ShareStructLongMessageManager", 2, "is video struct msg");
+      }
+      return null;
+    }
+    if (!TextUtils.isEmpty(paramAbsStructMsg.mMsgUrl)) {
+      return paramAbsStructMsg.mMsgUrl;
+    }
+    if (aehv.b(paramAbsStructMsg.mMsgActionData))
+    {
+      paramAbsStructMsg = aehv.b(paramAbsStructMsg.mMsgActionData);
+      if ((paramAbsStructMsg != null) && (paramAbsStructMsg.length > 2)) {
+        return paramAbsStructMsg[1];
       }
     }
-    else
+    return null;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
     {
-      d2 = paramFile.length() / 1024.0D / 1024.0D;
+      if (QLog.isColorLevel()) {
+        QLog.d("ShareStructLongMessageManager", 2, "url is empty");
+      }
+      return null;
     }
-    return d2;
-  }
-  
-  public sii a(sii paramsii)
-  {
-    this.jdField_a_of_type_Sii = paramsii;
-    return this.jdField_a_of_type_Sii;
-  }
-  
-  public void a(File paramFile)
-  {
     try
     {
-      vlm.d(paramFile.getPath());
-      return;
+      paramString = Uri.parse(paramString).getQueryParameter("article_id");
+      return paramString;
     }
-    catch (Exception paramFile)
-    {
-      urk.d("Q.qqstory.cleaner:AbsCleanStep", "delete failed : " + paramFile);
-    }
+    catch (Exception paramString) {}
+    return null;
   }
   
-  public void a(sij paramsij)
+  private static String a(byte[] paramArrayOfByte)
   {
-    a(this.jdField_a_of_type_ArrayOfJavaLangString, paramsij);
-    if (this.jdField_a_of_type_Sii != null) {}
-    long l;
-    do
+    String str1 = "";
+    int i = 0;
+    while (i < paramArrayOfByte.length)
     {
-      try
-      {
-        Thread.sleep(100L);
-        this.jdField_a_of_type_Sii.a(paramsij);
-        return;
+      String str3 = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
+      String str2 = str3;
+      if (str3.length() == 1) {
+        str2 = "0" + str3;
       }
-      catch (InterruptedException localInterruptedException)
+      str1 = str1 + " " + str2;
+      i += 1;
+    }
+    return str1;
+  }
+  
+  public static sii a()
+  {
+    if (jdField_a_of_type_Sii == null) {
+      jdField_a_of_type_Sii = new sii();
+    }
+    return jdField_a_of_type_Sii;
+  }
+  
+  private boolean a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, String paramString1, String paramString2, String paramString3, int paramInt1, long paramLong, int paramInt2, auoo paramauoo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareStructLongMessageManager", 2, "[sendLongTextMsg]data.length = " + paramArrayOfByte.length);
+    }
+    aywa localaywa = new aywa();
+    localaywa.jdField_a_of_type_Boolean = true;
+    localaywa.jdField_b_of_type_Int = 131078;
+    localaywa.h = 1;
+    localaywa.jdField_b_of_type_ArrayOfByte = paramArrayOfByte;
+    localaywa.jdField_b_of_type_JavaLangString = paramString1;
+    localaywa.c = paramString2;
+    localaywa.d = paramString3;
+    localaywa.jdField_a_of_type_Int = paramInt1;
+    localaywa.jdField_a_of_type_Long = paramLong;
+    localaywa.e = paramInt2;
+    localaywa.jdField_a_of_type_Auoo = paramauoo;
+    paramQQAppInterface.a().a(localaywa);
+    return true;
+  }
+  
+  public static boolean a(AbsStructMsg paramAbsStructMsg)
+  {
+    boolean bool;
+    if ((paramAbsStructMsg instanceof StructMsgForGeneralShare))
+    {
+      if ("micro_app".equals(paramAbsStructMsg.mMsg_A_ActionData)) {
+        return true;
+      }
+      if (((StructMsgForGeneralShare)paramAbsStructMsg).needSendLongMsgWhenFailed) {
+        return true;
+      }
+      if (((StructMsgForGeneralShare)paramAbsStructMsg).mIsPAVideoStructMsg)
       {
-        for (;;)
+        if (QLog.isColorLevel()) {
+          QLog.d("ShareStructLongMessageManager", 2, "matches!");
+        }
+        return true;
+      }
+      if (((StructMsgForGeneralShare)paramAbsStructMsg).mMsgServiceID == 118)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ShareStructLongMessageManager", 2, "tribe matches!");
+        }
+        return true;
+      }
+      if (((StructMsgForGeneralShare)paramAbsStructMsg).mMsgServiceID == 35)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ShareStructLongMessageManager", 2, "MULTI_MSG matches!");
+        }
+        return true;
+      }
+      if (((StructMsgForGeneralShare)paramAbsStructMsg).mMsgServiceID == 83)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ShareStructLongMessageManager", 2, "gallery matches!");
+        }
+        return true;
+      }
+      if (((StructMsgForGeneralShare)paramAbsStructMsg).mMsgServiceID == 123)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ShareStructLongMessageManager", 2, "confess general share msg matches!");
+        }
+        return true;
+      }
+      if ((((StructMsgForGeneralShare)paramAbsStructMsg).mMsgServiceID == 151) || (((StructMsgForGeneralShare)paramAbsStructMsg).mMsgServiceID == 156))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ShareStructLongMessageManager", 2, "STRUCT_TYPE_NEW_SUBSCRIBE_ACCOUNT_NEWS share msg matches!");
+        }
+        return true;
+      }
+      if (!TextUtils.isEmpty(paramAbsStructMsg.mMsgUrl))
+      {
+        String str = paramAbsStructMsg.mMsgUrl;
+        try
         {
-          urk.e("Q.qqstory.cleaner:AbsCleanStep", "sleep error ,InterruptedException");
+          Uri localUri = Uri.parse(str);
+          if (bbrw.a().a(localUri.getHost())) {
+            return true;
+          }
+          bool = bgfp.c(localUri.getHost());
+          if (bool) {
+            return true;
+          }
+        }
+        catch (Exception localException)
+        {
+          QLog.e("ShareStructLongMessageManager", 1, "shouldShareStructLongMessage vip url exception, url = " + str, localException);
         }
       }
-      l = vlm.a() / 1024L;
-      urk.d("Q.qqstory.cleaner:AbsCleanStep", "clean cache over , spend time = %d , free size = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - paramsij.jdField_a_of_type_Long), Long.valueOf(l) });
-      if (paramsij.jdField_a_of_type_Int != 0) {
-        urp.b("story_cache", "clear_cache", 0, 0, new String[] { String.valueOf(0), String.valueOf(paramsij.jdField_a_of_type_Int), String.valueOf(paramsij.jdField_a_of_type_Double), String.valueOf(l) });
+    }
+    if (!TextUtils.isEmpty(paramAbsStructMsg.mMsgUrl))
+    {
+      if (Pattern.compile("http://.*.mp.qq.com.*").matcher(paramAbsStructMsg.mMsgUrl).matches())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ShareStructLongMessageManager", 2, "matches!");
+        }
+        return true;
       }
-    } while (paramsij.jdField_b_of_type_Int == 0);
-    urp.b("story_cache", "clear_cache", 0, 0, new String[] { String.valueOf(1), String.valueOf(paramsij.jdField_b_of_type_Int), String.valueOf(paramsij.jdField_b_of_type_Double), String.valueOf(l) });
+      if (Pattern.compile("https://.*.mp.qq.com.*").matcher(paramAbsStructMsg.mMsgUrl).matches())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ShareStructLongMessageManager", 2, "matches!");
+        }
+        return true;
+      }
+    }
+    try
+    {
+      bool = sfh.b(new URL(paramAbsStructMsg.mMsgUrl).getHost());
+      if (!bool) {
+        break label407;
+      }
+      return true;
+    }
+    catch (Exception paramAbsStructMsg) {}
+    if (!TextUtils.isEmpty(paramAbsStructMsg.mMsgActionData)) {
+      return b(paramAbsStructMsg);
+    }
+    label407:
+    return false;
   }
   
-  protected abstract void a(String[] paramArrayOfString, sij paramsij);
+  public static boolean b(AbsStructMsg paramAbsStructMsg)
+  {
+    if (aehv.b(paramAbsStructMsg.mMsgActionData))
+    {
+      paramAbsStructMsg = aehv.b(paramAbsStructMsg.mMsgActionData);
+      if ((paramAbsStructMsg != null) && (paramAbsStructMsg.length > 2))
+      {
+        paramAbsStructMsg = paramAbsStructMsg[1];
+        if (!TextUtils.isEmpty(paramAbsStructMsg))
+        {
+          if (Pattern.compile("http://.*.mp.qq.com.*").matcher(paramAbsStructMsg).matches()) {
+            if (QLog.isColorLevel()) {
+              QLog.d("ShareStructLongMessageManager", 2, "matches!");
+            }
+          }
+          do
+          {
+            return true;
+            if (!Pattern.compile("https://.*.mp.qq.com.*").matcher(paramAbsStructMsg).matches()) {
+              break;
+            }
+          } while (!QLog.isColorLevel());
+          QLog.d("ShareStructLongMessageManager", 2, "matches!");
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    paramMessageRecord.extraflag = 32768;
+    paramQQAppInterface.a().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
+    String str = paramMessageRecord.frienduin;
+    int i = paramMessageRecord.istroop;
+    long l = paramMessageRecord.uniseq;
+    ((MessageHandler)paramQQAppInterface.a(0)).notifyUI(MessageHandler.a(paramMessageRecord.istroop), false, new Object[] { str, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, akav paramakav, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareStructLongMessageManager", 2, "step2: sendShareStructLongMessage saveMessage end and pack ShareStructLongMessage start currenttime:" + System.currentTimeMillis());
+    }
+    if (!(paramMessageRecord instanceof MessageForStructing)) {
+      QLog.d("ShareStructLongMessageManager", 2, "is not MessageForStructing");
+    }
+    do
+    {
+      return;
+      byte[] arrayOfByte = ((MessageForStructing)paramMessageRecord).structingMsg.getXmlBytes();
+      if (QLog.isColorLevel()) {
+        QLog.d("ShareStructLongMessageManager", 2, "buff is " + arrayOfByte);
+      }
+      String str = a(arrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.d("ShareStructLongMessageManager", 2, "buffer is " + str);
+      }
+      if (arrayOfByte == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ShareStructLongMessageManager", 2, "step2: sendShareStructLongMessage pack failed! packData is null.............................");
+        }
+        paramMessageRecord.extraflag = 32768;
+        paramQQAppInterface.a().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
+        paramakav = paramMessageRecord.frienduin;
+        int i = paramMessageRecord.istroop;
+        long l = paramMessageRecord.uniseq;
+        ((MessageHandler)paramQQAppInterface.a(0)).notifyUI(MessageHandler.a(paramMessageRecord.istroop), false, new Object[] { paramakav, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
+        return;
+      }
+      paramBoolean = a(paramQQAppInterface, arrayOfByte, paramQQAppInterface.getCurrentAccountUin(), paramMessageRecord.frienduin, paramMessageRecord.selfuin, paramMessageRecord.istroop, paramMessageRecord.uniseq + 1L, 1035, new sij(this, paramMessageRecord, paramQQAppInterface, paramakav, paramBoolean));
+      if (!paramBoolean) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ShareStructLongMessageManager", 2, "sendShareStructLongMessage successful, uploadShareStructLongMessagePkg start!");
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareStructLongMessageManager", 2, "sendShareStructLongMessage failed! isSuccess:" + paramBoolean);
+    }
+    a(paramQQAppInterface, paramMessageRecord);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sii
  * JD-Core Version:    0.7.0.1
  */

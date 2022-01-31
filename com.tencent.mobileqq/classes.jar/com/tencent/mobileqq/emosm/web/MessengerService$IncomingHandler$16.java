@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.emosm.web;
 
-import ance;
-import ancg;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.TextUtils;
-import aned;
+import ansp;
+import ansr;
+import anul;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.CustomEmotionData;
@@ -25,7 +25,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$16
   extends IPicDownloadListener
 {
-  public MessengerService$IncomingHandler$16(aned paramaned, Bundle paramBundle, QQAppInterface paramQQAppInterface, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$16(anul paramanul, Bundle paramBundle, QQAppInterface paramQQAppInterface, MessengerService paramMessengerService) {}
   
   public void onDone(List<CustomEmotionData> paramList1, List<CustomEmotionData> paramList2)
   {
@@ -121,9 +121,9 @@ public class MessengerService$IncomingHandler$16
         if ((paramList1 == null) || (paramList1.isEmpty())) {
           continue;
         }
-        paramList2 = (ancg)this.val$qqApp.getManager(149);
+        paramList2 = (ansr)this.val$qqApp.getManager(149);
         localObject = paramList2.a();
-        i2 = ance.a;
+        i2 = ansp.a;
         i = 0;
         localHashSet = new HashSet();
         if (localObject == null) {

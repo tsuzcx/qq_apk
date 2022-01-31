@@ -1,15 +1,15 @@
-import android.support.annotation.NonNull;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.capture.VideoStoryCapturePart.11.1;
 
 public class bimm
-  implements bixu
+  implements bijh
 {
-  public bimm(DoodleLayout paramDoodleLayout) {}
+  bimm(bimj parambimj) {}
   
-  public void a(@NonNull biyb parambiyb)
+  public void a(Bitmap paramBitmap)
   {
-    this.a.a(parambiyb.a, parambiyb.b);
-    urq.b("0X80075CD");
+    ThreadManager.excute(new VideoStoryCapturePart.11.1(this, paramBitmap), 64, null, false);
   }
 }
 

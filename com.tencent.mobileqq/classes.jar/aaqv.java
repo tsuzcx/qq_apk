@@ -1,15 +1,26 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aaqv
-  implements View.OnLongClickListener
+  extends Handler
 {
-  public aaqv(EditInfoActivity paramEditInfoActivity) {}
+  public aaqv(ChatHistory paramChatHistory) {}
   
-  public boolean onLongClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    return true;
+    if (paramMessage.what == 1)
+    {
+      if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = new bcpq(this.a, this.a.getTitleBarHeight());
+      this.a.a.setCancelable(false);
+      this.a.a.c(2131691528);
+      if (!this.a.isFinishing()) {
+        this.a.a.show();
+      }
+    }
   }
 }
 

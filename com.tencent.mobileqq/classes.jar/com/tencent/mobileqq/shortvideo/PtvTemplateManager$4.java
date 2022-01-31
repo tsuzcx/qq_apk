@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo;
 
-import awlw;
+import axlc;
 import com.tencent.common.app.AppInterface;
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ class PtvTemplateManager$4
   
   public void run()
   {
-    if (awlw.c()) {
+    if (axlc.c()) {
       this.this$0.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaUtilArrayList);
     }
   }

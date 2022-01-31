@@ -2,12 +2,13 @@ package com.tencent.mobileqq.app.automator.step;
 
 import QC.Hamlet;
 import QC.UniBusinessItem;
-import ajjj;
-import ajrm;
-import ajwu;
+import ajxn;
+import akfw;
+import akle;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
+import bbsz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -49,15 +50,15 @@ public class ChatBackgroundAuth
     return null;
   }
   
-  private ArrayList<Hamlet> a(HashMap<String, Integer> paramHashMap1, HashMap<String, Integer> paramHashMap2, ajjj paramajjj, int paramInt1, int paramInt2)
+  private ArrayList<Hamlet> a(HashMap<String, Integer> paramHashMap1, HashMap<String, Integer> paramHashMap2, ajxn paramajxn, int paramInt1, int paramInt2)
   {
     ArrayList localArrayList = new ArrayList();
-    a(paramajjj, paramHashMap1, localArrayList, paramInt1);
-    a(paramajjj, paramHashMap2, localArrayList, paramInt2);
+    a(paramajxn, paramHashMap1, localArrayList, paramInt1);
+    a(paramajxn, paramHashMap2, localArrayList, paramInt2);
     return localArrayList;
   }
   
-  private void a(ajjj paramajjj, HashMap<String, Integer> paramHashMap, ArrayList<Hamlet> paramArrayList, int paramInt)
+  private void a(ajxn paramajxn, HashMap<String, Integer> paramHashMap, ArrayList<Hamlet> paramArrayList, int paramInt)
   {
     Iterator localIterator = paramHashMap.keySet().iterator();
     Object localObject3;
@@ -104,7 +105,7 @@ public class ChatBackgroundAuth
       {
         ((Hamlet)localObject1).itemlist.add(localUniBusinessItem);
         break;
-        if (paramajjj.b((String)localObject1))
+        if (paramajxn.b((String)localObject1))
         {
           i = 2;
           break label115;
@@ -149,8 +150,11 @@ public class ChatBackgroundAuth
       Object localObject = (ChatBackgroundManager)this.a.app.getManager(63);
       HashMap localHashMap = ((ChatBackgroundManager)localObject).a();
       localObject = ((ChatBackgroundManager)localObject).c();
-      ((ajrm)this.a.app.a(13)).a(a(localHashMap, (HashMap)localObject, (ajjj)this.a.app.getManager(51), 8, 35), new ajwu(this.a.app), true);
+      ((akfw)this.a.app.a(13)).a(a(localHashMap, (HashMap)localObject, (ajxn)this.a.app.getManager(51), 8, 35), new akle(this.a.app), true);
       localSharedPreferences.edit().putLong("lastChabgAuthTime", System.currentTimeMillis()).apply();
+    }
+    if (!bbsz.a.a(this.a.app, "namePlate_UrlConfig")) {
+      bbsz.a.download(null, "namePlate_UrlConfig", null, false);
     }
     return 7;
   }

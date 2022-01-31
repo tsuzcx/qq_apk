@@ -15,7 +15,7 @@ final class WebSoService$13
   {
     try
     {
-      View localView = ((Activity)this.a.getContext()).findViewById(2131304131);
+      View localView = ((Activity)this.a.getContext()).findViewById(2131369804);
       localView.animate().alpha(0.0F).setDuration(300L);
       localView.postDelayed(new WebSoService.13.1(this, localView), 300L);
       return;

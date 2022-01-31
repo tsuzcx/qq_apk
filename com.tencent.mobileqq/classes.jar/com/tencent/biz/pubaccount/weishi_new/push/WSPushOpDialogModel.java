@@ -7,12 +7,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import org.json.JSONObject;
-import rzj;
+import smf;
 
 public class WSPushOpDialogModel
   implements Parcelable
 {
-  public static final Parcelable.Creator<WSPushOpDialogModel> CREATOR = new rzj();
+  public static final Parcelable.Creator<WSPushOpDialogModel> CREATOR = new smf();
   public stPopWindowsConfig mStPopWindowsConfig;
   
   public WSPushOpDialogModel() {}

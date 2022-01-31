@@ -1,21 +1,26 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.AlbumListActivity;
 
 public class agky
-  implements MediaPlayer.OnCompletionListener
+  implements View.OnClickListener
 {
-  public agky(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  public agky(AlbumListActivity paramAlbumListActivity) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onClick(View paramView)
   {
-    RedPacketKSongFragment.a(this.a, false);
-    paramMediaPlayer.release();
+    if (this.a.r) {
+      alvk.a().a("callbackArk", null, null);
+    }
+    if (this.a.s) {
+      axqw.b(null, "dc00898", "", "", "0X800A6E0", "0X800A6E0", 0, 0, "", "", "", "");
+    }
+    this.a.onBackPressed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agky
  * JD-Core Version:    0.7.0.1
  */

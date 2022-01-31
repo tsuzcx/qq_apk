@@ -1,37 +1,17 @@
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
 import com.tencent.qphone.base.util.QLog;
 
 class mfc
-  extends lru
+  implements View.OnLayoutChangeListener
 {
-  mfc(mfb parammfb) {}
+  mfc(mfa parammfa) {}
   
-  protected void b(lry paramlry)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (paramlry.jdField_b_of_type_Boolean) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.e("MemberPagerAdapter", 2, String.format("container : left[%s], top[%s], right[%s], bottom[%s], oldLeft[%s], oldTop[%s], oldRight[%s], oldBottom[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8) }));
     }
-    paramlry.jdField_b_of_type_Boolean = this.a.a("onAVActivityPreBackPressed");
-    if (paramlry.jdField_b_of_type_Boolean) {
-      paramlry.jdField_b_of_type_JavaLangString = "AVRegbagResultUI";
-    }
-    QLog.w(this.a.i, 1, "onAVActivityPreBackPressed, BlockSystemBack[" + paramlry.jdField_b_of_type_Boolean + "]");
-  }
-  
-  protected void e(String paramString)
-  {
-    if (this.a.a() != null)
-    {
-      QLog.w(this.a.i, 1, "onActivityOnResume, peerUin[" + paramString + "], mStarter[" + this.a.a.jdField_b_of_type_Boolean + "], mPlayUin[" + this.a.a.jdField_b_of_type_JavaLangString + "], mStartUin[" + this.a.a.a + "]");
-      if (((this.a.a.jdField_b_of_type_Boolean) && (TextUtils.equals(this.a.a.jdField_b_of_type_JavaLangString, paramString))) || ((!this.a.a.jdField_b_of_type_Boolean) && (TextUtils.equals(this.a.a.a, paramString)))) {
-        this.a.c();
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.a.a();
   }
 }
 

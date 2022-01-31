@@ -1,74 +1,31 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.graphics.Matrix;
+import android.graphics.PointF;
+import android.view.View;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.ProfileTagView;
+import com.tencent.mobileqq.widget.RatioLayout;
 
 public class auzv
-  extends Handler
+  implements bbkq<Float>
 {
-  protected WeakReference<auzt> a;
+  public auzv(ProfileTagView paramProfileTagView, View paramView, PointF paramPointF) {}
   
-  public auzv(auzt paramauzt1, Looper paramLooper, auzt paramauzt2)
+  public void a(bbkk<Float> parambbkk, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramauzt2);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.what;
-    auzt localauzt = (auzt)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localauzt == null) {
-      if (QLog.isColorLevel()) {
-        QLog.w("HWVideoRecorder", 2, "RecodeHandler.handleMessage: encoder is null");
-      }
-    }
-    label187:
-    do
-    {
-      do
-      {
-        return;
-        switch (i)
-        {
-        default: 
-          throw new RuntimeException("Unhandled msg what=" + i);
-        case 0: 
-          if (paramMessage.obj != null)
-          {
-            auzt.a(localauzt, (auzw)paramMessage.obj);
-            return;
-          }
-          throw new RuntimeException("bundle == null");
-        case 1: 
-          if ((auzt.a(this.jdField_a_of_type_Auzt)) || (auzt.a(this.jdField_a_of_type_Auzt) == null) || (!auzt.a(this.jdField_a_of_type_Auzt).a)) {
-            break label187;
-          }
-          sendEmptyMessageDelayed(1, 100L);
-        }
-      } while ((!QLog.isColorLevel()) || (!QLog.isColorLevel()));
-      QLog.d("HWVideoRecorder", 2, "Thumbnail is not ready. Wait 100ms and retry.");
-      return;
-      auzt.a(localauzt);
-      return;
-      if (paramMessage.obj != null)
-      {
-        paramMessage = (Object[])paramMessage.obj;
-        if ((paramMessage == null) || (paramMessage.length != 5)) {
-          throw new IllegalArgumentException("args == null || args.length != 6");
-        }
-        localauzt.b(((Integer)paramMessage[0]).intValue(), ((Integer)paramMessage[1]).intValue(), (float[])paramMessage[2], (float[])paramMessage[3], ((Long)paramMessage[4]).longValue());
-        return;
-      }
-      throw new RuntimeException("bundle == null");
-    } while (auzt.a(this.jdField_a_of_type_Auzt) == null);
-    auzt.a(this.jdField_a_of_type_Auzt).a();
+    paramTransformation.getMatrix().setScale(paramFloat1.floatValue(), paramFloat1.floatValue(), this.jdField_a_of_type_AndroidViewView.getWidth() * 0.5F, this.jdField_a_of_type_AndroidViewView.getHeight() * 0.5F);
+    paramFloat = this.jdField_a_of_type_AndroidGraphicsPointF.x;
+    float f1 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_AndroidGraphicsPointF.x;
+    float f2 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.getWidth();
+    float f3 = this.jdField_a_of_type_AndroidGraphicsPointF.y;
+    float f4 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_AndroidGraphicsPointF.y;
+    float f5 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.getHeight();
+    paramTransformation.getMatrix().postTranslate((paramFloat - f1) * f2 * paramFloat1.floatValue(), (f3 - f4) * f5 * paramFloat1.floatValue());
+    paramTransformation.getMatrix().postRotate(paramFloat1.floatValue() * 120.0F - 120.0F, this.jdField_a_of_type_AndroidViewView.getWidth() * 0.5F, this.jdField_a_of_type_AndroidViewView.getHeight() * 0.5F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auzv
  * JD-Core Version:    0.7.0.1
  */

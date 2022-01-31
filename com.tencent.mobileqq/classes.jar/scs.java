@@ -1,35 +1,22 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class scs
-  implements moc
+  implements View.OnClickListener
 {
-  scs(scq paramscq, boolean paramBoolean) {}
+  scs(sco paramsco, scn paramscn) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    urk.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource loaded code = %d ", Integer.valueOf(paramInt));
-    switch (paramInt)
-    {
-    case -1: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      scq.a(this.jdField_a_of_type_Scq);
-    }
-    urk.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource download success", Integer.valueOf(paramInt));
+    noo.a(this.jdField_a_of_type_Sco.jdField_a_of_type_Scn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B6F", "0X8005B6F", 0, 0, "", "", "", "", false);
+    axqw.b(this.jdField_a_of_type_Sco.jdField_a_of_type_Scn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800642D", "0X800642D", 0, 0, "", "", "", "");
+    abtt.a(this.jdField_a_of_type_Sco.jdField_a_of_type_Scn.jdField_a_of_type_AndroidAppActivity, sfh.a(this.jdField_a_of_type_Sco.jdField_a_of_type_Scn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Sco.jdField_a_of_type_Scn.jdField_a_of_type_AndroidAppActivity), null, null);
+    scu.b(this.jdField_a_of_type_Sco.jdField_a_of_type_Scn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     scs
  * JD-Core Version:    0.7.0.1
  */

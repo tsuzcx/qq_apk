@@ -1,14 +1,15 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
 public class atdl
-  implements BusinessObserver
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public String a;
+  public boolean a;
+  
+  atdl(GameRoomInviteActivity paramGameRoomInviteActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atdl
  * JD-Core Version:    0.7.0.1
  */

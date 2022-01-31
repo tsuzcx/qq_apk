@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.trooponline.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 import java.util.List;
 
 public class TroopAllOnlineData
-  extends atmo
+  extends aukm
 {
   public static final String TAG = "TroopAllOnlineData";
   public List<String> memberUinList;
   public long nextReqTime;
-  @atoc
+  @auma
   public String troopUin;
   public byte[] uinData;
   
@@ -19,7 +19,7 @@ public class TroopAllOnlineData
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 29	atmo:postRead	()V
+    //   1: invokespecial 29	aukm:postRead	()V
     //   4: aload_0
     //   5: getfield 31	com/tencent/mobileqq/trooponline/data/TroopAllOnlineData:uinData	[B
     //   8: ifnull +11 -> 19
@@ -182,7 +182,7 @@ public class TroopAllOnlineData
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 80	atmo:prewrite	()V
+    //   1: invokespecial 80	aukm:prewrite	()V
     //   4: aload_0
     //   5: getfield 49	com/tencent/mobileqq/trooponline/data/TroopAllOnlineData:memberUinList	Ljava/util/List;
     //   8: ifnull +15 -> 23

@@ -1,28 +1,48 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class nrs
-  implements npr
+public class nrs
+  extends akup
 {
-  nrs(nrp paramnrp) {}
-  
-  public void a()
+  public nrs(ShopWebViewFragment paramShopWebViewFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (nrp.a(this.a).booleanValue())
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentCommonAppAppInterface == null) || (this.a.jdField_a_of_type_JavaUtilList == null)) {}
+    ArrayList localArrayList;
+    double d1;
+    double d2;
+    do
     {
-      if ((nrp.a(this.a).isShown()) && (nrp.a(this.a).getWindowVisibility() == 0))
+      do
       {
-        nrp.a(this.a, nrp.a(this.a));
-        nrp.a(this.a).removeCallbacks(nrp.a(this.a));
-        nrp.a(this.a).postDelayed(nrp.a(this.a), nrp.a(this.a).mAdvertisementExtInfo.n);
+        return;
+      } while ((paramInt != 0) || (paramSosoLbsInfo == null));
+      localArrayList = new ArrayList();
+      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        RecentShopParcel localRecentShopParcel = (RecentShopParcel)localIterator.next();
+        if (localRecentShopParcel.c != 1) {
+          try
+          {
+            localArrayList.add(Long.valueOf(Long.valueOf(localRecentShopParcel.a).longValue()));
+          }
+          catch (Exception localException) {}
+        }
       }
-    }
-    else {
-      return;
-    }
-    nrp.a(this.a, Boolean.valueOf(false));
-    nrp.a(this.a, nrp.a(this.a));
+      d1 = paramSosoLbsInfo.a.a;
+      d2 = paramSosoLbsInfo.a.b;
+    } while (this.a.jdField_a_of_type_Nrg == null);
+    this.a.jdField_a_of_type_Nrg.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, localArrayList, d2, d1);
   }
 }
 

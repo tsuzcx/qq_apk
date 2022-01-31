@@ -1,20 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.gaudio.GaInviteDialogActivity;
 
-class loc
-  implements DialogInterface.OnDismissListener
+public class loc
+  implements aaqd
 {
-  loc(loa paramloa) {}
+  public loc(GaInviteDialogActivity paramGaInviteDialogActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("ShareChat", 1, "ShareActionSheetBuilder.onDismiss, mChoosedChannel[" + this.a.jdField_a_of_type_Int + "], mIHandle[" + this.a.jdField_a_of_type_Lof + "]");
-    }
-    if ((this.a.jdField_a_of_type_Int == -1) && (this.a.jdField_a_of_type_Lof != null)) {
-      this.a.a(this.a.jdField_a_of_type_Int, this.a.b, 1);
-    }
+    this.a.g = paramInt1;
+    this.a.h = paramInt2;
+    GaInviteDialogActivity.a(this.a);
   }
 }
 

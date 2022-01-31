@@ -1,91 +1,72 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class ozq
-  extends ViewBase
+class ozq
+  implements BusinessObserver
 {
-  ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new ozr(this);
-  private NativeReadInjoyImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView;
-  private oet jdField_a_of_type_Oet;
-  private boolean jdField_a_of_type_Boolean;
+  ozq(ozn paramozn, AdvertisementInfo paramAdvertisementInfo) {}
   
-  public ozq(VafContext paramVafContext)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramVafContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = new NativeReadInjoyImageView(paramVafContext.getContext());
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getViewTreeObserver() != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+    int i = -1;
+    if (QLog.isColorLevel()) {
+      QLog.d("AdvertisementInfoModule", 2, "type = " + paramInt + " is success:" + paramBoolean);
     }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Oet != null) {
-      this.jdField_a_of_type_Oet.resumeAnimation();
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Oet != null) {
-      this.jdField_a_of_type_Oet.pauseAnimation();
-    }
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setBackgroundColor(this.mBackground);
-  }
-  
-  public boolean setAttribute(int paramInt, String paramString)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return super.setAttribute(paramInt, paramString);
-    }
+    if (paramBoolean) {}
     try
     {
-      this.jdField_a_of_type_Oet = oet.a(paramString);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageDrawable(this.jdField_a_of_type_Oet);
-      return true;
+      paramBundle = paramBundle.getByteArray("data");
+      WebSsoBody.WebSsoResponseBody localWebSsoResponseBody;
+      if (paramBundle != null)
+      {
+        localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        if (!localWebSsoResponseBody.ret.has()) {
+          break label253;
+        }
+      }
+      label253:
+      for (paramInt = localWebSsoResponseBody.ret.get();; paramInt = -1)
+      {
+        if (paramInt == 0)
+        {
+          paramBundle = localWebSsoResponseBody.data.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("AdvertisementInfoModule", 2, "back json " + paramBundle);
+          }
+          paramBundle = new JSONObject(paramBundle);
+          paramInt = i;
+          if (paramBundle.has("ret")) {
+            paramInt = paramBundle.getInt("ret");
+          }
+          if (paramInt == 0)
+          {
+            paramBundle = paramBundle.optJSONArray("data");
+            if ((paramBundle != null) && (paramBundle.length() > 0))
+            {
+              this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAppJson = paramBundle.getJSONObject(0).toString();
+              if (QLog.isColorLevel()) {
+                QLog.d("AdvertisementInfoModule", 2, "back  data json " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAppJson);
+              }
+              this.jdField_a_of_type_Ozn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
+            }
+          }
+        }
+        return;
+      }
+      return;
     }
-    catch (Exception paramString)
+    catch (Exception paramBundle)
     {
-      QLog.d("ReadInJoyLottieView", 1, paramString.getMessage());
+      paramBundle.printStackTrace();
     }
-    return true;
   }
 }
 

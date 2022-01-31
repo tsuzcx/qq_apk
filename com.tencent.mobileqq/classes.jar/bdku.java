@@ -1,26 +1,26 @@
-import android.os.Bundle;
-import android.os.IInterface;
-import android.os.ResultReceiver;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadLogInfo;
+import com.tencent.tmdownloader.ITMAssistantDownloadLogListener;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
-public abstract interface bdku
-  extends IInterface
+class bdku
+  implements ITMAssistantDownloadLogListener
 {
-  public abstract Bundle a(String paramString1, String paramString2, Bundle paramBundle);
+  SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
   
-  public abstract void a();
+  bdku(bdkp parambdkp) {}
   
-  public abstract void a(int paramInt, String paramString, MiniAppInfo paramMiniAppInfo, Bundle paramBundle);
-  
-  public abstract void a(MiniAppInfo paramMiniAppInfo);
-  
-  public abstract void a(MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver);
-  
-  public abstract void a(String paramString1, String paramString2, Bundle paramBundle, bdkz parambdkz);
+  public void onLog(ArrayList<TMAssistantDownloadLogInfo> paramArrayList)
+  {
+    if ((paramArrayList == null) && (QLog.isColorLevel())) {
+      QLog.i("DownloadManager_", 2, "logList is null");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdku
  * JD-Core Version:    0.7.0.1
  */

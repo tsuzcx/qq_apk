@@ -1,22 +1,14 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.List;
 
-class bbcg
-  implements View.OnClickListener
+public class bbcg
 {
-  bbcg(bbce parambbce) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.a != null) {
-      this.a.a.dismiss();
-    }
-  }
+  public int a;
+  public String a;
+  public List<Integer> a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbcg
  * JD-Core Version:    0.7.0.1
  */

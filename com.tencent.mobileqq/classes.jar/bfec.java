@@ -1,73 +1,28 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.Dex2Oat;
+import android.widget.DatePicker;
+import android.widget.DatePicker.OnDateChangedListener;
 
 class bfec
-  implements DialogInterface.OnClickListener
+  implements DatePicker.OnDateChangedListener
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  bfdg jdField_a_of_type_Bfdg;
-  bfdi jdField_a_of_type_Bfdi;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  bfec(bfeb parambfeb) {}
   
-  private bfec(bfdz parambfdz, bfdg parambfdg, boolean paramBoolean1, Context paramContext, bfdi parambfdi, boolean paramBoolean2, String paramString)
+  public void onDateChanged(DatePicker paramDatePicker, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Bfdg = parambfdg;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bfdi = parambfdi;
-    this.b = paramBoolean2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    int i = 0;
-    switch (paramInt)
+    if (paramDatePicker != null)
     {
-    default: 
-      return;
-    case -1: 
-      bfdz.a(this.jdField_a_of_type_Bfdz, 1, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bfdi, this.jdField_a_of_type_Bfdg);
+      bfeb.a(this.a, paramDatePicker.getYear());
+      bfeb.b(this.a, paramDatePicker.getMonth());
+      bfeb.c(this.a, paramDatePicker.getDayOfMonth());
       return;
     }
-    if (this.jdField_a_of_type_Boolean) {
-      paramInt = i;
-    }
-    for (;;)
-    {
-      bfdz.a(this.jdField_a_of_type_Bfdz, paramInt, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bfdi, this.jdField_a_of_type_Bfdg);
-      return;
-      paramInt = i;
-      if (this.b)
-      {
-        if (bfdz.a())
-        {
-          boolean bool = Dex2Oat.a(this.jdField_a_of_type_JavaLangString);
-          if (bool) {}
-          for (i = 4;; i = 2)
-          {
-            paramInt = i;
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("plugin_tag", 2, "dialog needOTA :" + bool);
-            paramInt = i;
-            break;
-          }
-        }
-        paramInt = 2;
-      }
-    }
+    bfeb.a(this.a, paramInt1);
+    bfeb.b(this.a, paramInt2);
+    bfeb.c(this.a, paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfec
  * JD-Core Version:    0.7.0.1
  */

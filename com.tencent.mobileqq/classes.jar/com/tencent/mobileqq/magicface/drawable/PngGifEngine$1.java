@@ -5,14 +5,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import argi;
-import argj;
+import asck;
+import ascl;
 import com.tencent.qphone.base.util.QLog;
 
 public class PngGifEngine$1
   implements Runnable
 {
-  public PngGifEngine$1(argi paramargi) {}
+  public PngGifEngine$1(asck paramasck) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public class PngGifEngine$1
       return;
     }
     long l2 = SystemClock.uptimeMillis();
-    Object localObject2 = argi.a((String)localObject1);
+    Object localObject2 = asck.a((String)localObject1);
     if (QLog.isColorLevel()) {
       QLog.d("PngGifEngine", 2, "func run, bitmap:" + localObject2);
     }
@@ -38,7 +38,7 @@ public class PngGifEngine$1
         if ((!((Bitmap)localObject2).isRecycled()) && (this.this$0.jdField_a_of_type_AndroidOsHandler != null))
         {
           l1 = SystemClock.uptimeMillis();
-          l2 += this.this$0.jdField_a_of_type_Argj.b;
+          l2 += this.this$0.jdField_a_of_type_Ascl.b;
           localObject2 = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, localObject2);
           if (l1 > l2) {
             this.this$0.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);

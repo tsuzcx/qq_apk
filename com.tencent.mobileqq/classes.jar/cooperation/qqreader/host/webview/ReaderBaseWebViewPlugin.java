@@ -2,14 +2,15 @@ package cooperation.qqreader.host.webview;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import bbac;
+import bcdb;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public abstract class ReaderBaseWebViewPlugin
   extends WebViewPlugin
 {
-  private JsBridgeListener a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private JsBridgeListener jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener;
   
   public ReaderBaseWebViewPlugin()
   {
@@ -20,6 +21,9 @@ public abstract class ReaderBaseWebViewPlugin
   {
     if (this.mRuntime != null) {
       return this.mRuntime.a();
+    }
+    if (this.jdField_a_of_type_AndroidContentContext != null) {
+      return this.jdField_a_of_type_AndroidContentContext;
     }
     return null;
   }
@@ -44,30 +48,39 @@ public abstract class ReaderBaseWebViewPlugin
     if ((paramString2 == null) || (!paramString2.equalsIgnoreCase(getNamespace()))) {
       return false;
     }
-    this.a = paramJsBridgeListener;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener = paramJsBridgeListener;
     return handleJsRequest(paramString1, paramString2, paramString3, paramVarArgs);
   }
   
   protected abstract boolean handleJsRequest(String paramString1, String paramString2, String paramString3, String... paramVarArgs);
   
-  public void init(bbac parambbac, JsBridgeListener paramJsBridgeListener)
+  public void init(Context paramContext, JsBridgeListener paramJsBridgeListener)
   {
-    this.mRuntime = parambbac;
-    this.a = paramJsBridgeListener;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener = paramJsBridgeListener;
+    this.mRuntime = null;
+    onCreate();
+  }
+  
+  public void init(bcdb parambcdb, JsBridgeListener paramJsBridgeListener)
+  {
+    this.mRuntime = parambcdb;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener = paramJsBridgeListener;
+    this.jdField_a_of_type_AndroidContentContext = null;
     onCreate();
   }
   
   protected void onJsComplete(Object paramObject)
   {
-    if (this.a != null) {
-      this.a.a(paramObject);
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener.a(paramObject);
     }
   }
   
   protected void onJsError(String paramString)
   {
-    if (this.a != null) {
-      this.a.a(paramString);
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener.a(paramString);
     }
   }
 }

@@ -1,15 +1,88 @@
-import android.view.View;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.dataline.activities.LiteActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
+import java.util.ArrayList;
+import java.util.List;
 
-class du
-  implements apcz
+public class du
+  extends AsyncTask<Bundle, Integer, Void>
 {
-  du(dr paramdr, DataLineMsgRecord paramDataLineMsgRecord) {}
+  public du(LiteActivity paramLiteActivity) {}
   
-  public void onClick(View paramView)
+  DataLineMsgRecord a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    ((axhd)this.jdField_a_of_type_Dr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(305)).a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, this.jdField_a_of_type_Dr.jdField_a_of_type_AndroidContentContext);
+    DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
+    localDataLineMsgRecord.path = paramString;
+    localDataLineMsgRecord.msgtype = -2000;
+    localDataLineMsgRecord.groupId = paramInt1;
+    localDataLineMsgRecord.groupSize = paramInt2;
+    localDataLineMsgRecord.groupIndex = paramInt3;
+    return localDataLineMsgRecord;
+  }
+  
+  protected Void a(Bundle... paramVarArgs)
+  {
+    paramVarArgs = paramVarArgs[0].getStringArrayList("PhotoConst.PHOTO_PATHS");
+    if (paramVarArgs == null) {
+      return null;
+    }
+    a(paramVarArgs);
+    return null;
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    this.a.a(false);
+  }
+  
+  void a(List<String> paramList)
+  {
+    ajuo localajuo = (ajuo)this.a.app.a(8);
+    for (;;)
+    {
+      int j = paramList.size();
+      if (j <= 3)
+      {
+        i = 0;
+        while (i < j)
+        {
+          localajuo.a(a((String)paramList.get(i), 0, 0, 0), false);
+          i += 1;
+        }
+      }
+      if ((j > 3) && (j < 50))
+      {
+        localArrayList = new ArrayList();
+        int k = localajuo.a();
+        i = 0;
+        while (i < j)
+        {
+          localArrayList.add(a((String)paramList.get(i), k, j, i));
+          i += 1;
+        }
+        fc.n(this.a.app);
+        localajuo.a(localArrayList, false);
+        return;
+      }
+      ArrayList localArrayList = new ArrayList();
+      j = localajuo.a();
+      int i = 0;
+      while (i < 50)
+      {
+        localArrayList.add(a((String)paramList.get(i), j, 50, i));
+        i += 1;
+      }
+      fc.n(this.a.app);
+      localajuo.a(localArrayList, false);
+      i = 0;
+      while (i < 50)
+      {
+        paramList.remove(0);
+        i += 1;
+      }
+    }
   }
 }
 

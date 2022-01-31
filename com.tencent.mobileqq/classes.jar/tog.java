@@ -1,105 +1,67 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetEmoticonPackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.EmoticonPack;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class tog
-  extends tno
+public class tog
+  extends syq
 {
-  public int a;
-  @NonNull
-  public final View a;
-  public StoryPlayerGroupHolder a;
-  public String a;
-  public tnz a;
-  protected toh a;
-  protected boolean a;
-  public int b;
-  private final String b;
-  protected boolean b;
+  public final long a;
+  public final String a;
+  public final List<toh> a;
+  public final boolean a;
+  public final byte[] a;
   
-  public tog(@NonNull ViewGroup paramViewGroup)
+  public tog(qqstory_service.RspGetEmoticonPackList paramRspGetEmoticonPackList, byte[] paramArrayOfByte, long paramLong)
   {
-    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.playernew." + getClass().getSimpleName());
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this));
-    this.jdField_a_of_type_AndroidViewView = a(paramViewGroup);
-  }
-  
-  protected abstract View a(ViewGroup paramViewGroup);
-  
-  public tog a(Class<? extends tog> paramClass)
-  {
-    if (this.jdField_a_of_type_Toh != null) {
-      return this.jdField_a_of_type_Toh.b(paramClass);
-    }
-    return null;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
-    urk.a(this.jdField_a_of_type_JavaLangString, "onPositionChanged, oldVer=%d, oldHor=%d, newVer=%d, newHor=%d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2, @NonNull tnz paramtnz, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
-  {
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Tnz = paramtnz;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = paramStoryPlayerGroupHolder;
-  }
-  
-  void a(toh paramtoh)
-  {
-    this.jdField_a_of_type_Toh = paramtoh;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_b_of_type_Boolean != paramBoolean)
+    super(paramRspGetEmoticonPackList.result);
+    boolean bool;
+    ArrayList localArrayList;
+    if (paramRspGetEmoticonPackList.is_end.get() != 0)
     {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      b(this.jdField_b_of_type_Boolean);
-      return;
+      bool = true;
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_JavaLangString = paramRspGetEmoticonPackList.next_cookie.get().toStringUtf8();
+      localArrayList = new ArrayList();
+      paramRspGetEmoticonPackList = paramRspGetEmoticonPackList.pack_list.get();
+      if (paramRspGetEmoticonPackList != null) {
+        paramRspGetEmoticonPackList = paramRspGetEmoticonPackList.iterator();
+      }
     }
-    urk.e(this.jdField_a_of_type_JavaLangString, "onSelected donot changed !");
-  }
-  
-  protected void b() {}
-  
-  protected void b(boolean paramBoolean)
-  {
-    urk.b(this.jdField_a_of_type_JavaLangString, "onSelectedChanged (ver=%d, hor=%d) , => %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(paramBoolean));
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Tnz = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = null;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Boolean;
+    else
+    {
+      for (;;)
+      {
+        if (!paramRspGetEmoticonPackList.hasNext()) {
+          break label151;
+        }
+        toh localtoh = new toh((qqstory_struct.EmoticonPack)paramRspGetEmoticonPackList.next());
+        if (localtoh.a())
+        {
+          localArrayList.add(localtoh);
+          continue;
+          bool = false;
+          break;
+        }
+        veg.d("GetEmojiPackInfoListResponse", "found invalid data we ignore it : " + localtoh);
+      }
+    }
+    label151:
+    this.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(localArrayList);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte.length];
+    System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte.length);
   }
   
   public String toString()
   {
-    return "VideoHolderBase{, GroupPos=" + this.jdField_a_of_type_Int + ", VideoPos=" + this.jdField_b_of_type_Int + ", mData=" + this.jdField_a_of_type_Tnz + '}';
+    return "GetEmojiPackInfoListResponse{mEmojiPackList.size=" + this.jdField_a_of_type_JavaUtilList.size() + ", mIsEnd=" + this.jdField_a_of_type_Boolean + ", mNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 

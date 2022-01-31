@@ -1,62 +1,57 @@
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
-import java.io.File;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.GamePKCommentReceiver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.ArrayList;
+import java.util.List;
 
 public class uxb
-  implements Cloneable
+  extends QQUIEventReceiver<uwt, tap>
 {
-  public static final String a;
-  public int a;
-  public int b;
-  public String b;
-  public String c;
-  
-  static
+  public uxb(@NonNull uwt paramuwt)
   {
-    jdField_a_of_type_JavaLangString = ArtFilterManager.jdField_b_of_type_JavaLangString + "loading" + File.separator;
+    super(paramuwt);
   }
   
-  public static uxb a(JSONObject paramJSONObject)
+  public void a(@NonNull uwt paramuwt, @NonNull tap paramtap)
   {
-    uxb localuxb = new uxb();
-    localuxb.jdField_b_of_type_Int = paramJSONObject.getInt("version");
-    localuxb.jdField_a_of_type_Int = paramJSONObject.getInt("picNum");
-    localuxb.c = paramJSONObject.getString("url");
-    localuxb.jdField_b_of_type_JavaLangString = paramJSONObject.getString("md5");
-    return localuxb;
-  }
-  
-  public String a()
-  {
-    Object localObject = new File(c());
-    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
+    if ((TextUtils.isEmpty(paramtap.jdField_a_of_type_JavaLangString)) || (paramtap.jdField_a_of_type_Int == 0) || (paramtap.jdField_a_of_type_Long == 0L) || (TextUtils.isEmpty(paramtap.b)))
     {
-      localObject = ((File)localObject).listFiles();
-      if ((localObject != null) && (localObject.length == this.jdField_a_of_type_Int)) {
-        return c();
-      }
+      veg.d("Q.qqstory.home.data.HomeFeedPresenter", "receive not eligible gamepk event. event.feedId = %s, event.commentId = %d, event.commentFakeId = %d, event.content = %s.", new Object[] { paramtap.jdField_a_of_type_JavaLangString, Integer.valueOf(paramtap.jdField_a_of_type_Int), Long.valueOf(paramtap.jdField_a_of_type_Long), paramtap.b });
+      return;
     }
-    return null;
+    Object localObject1 = paramuwt.a(paramtap.jdField_a_of_type_JavaLangString);
+    if ((localObject1 == null) || (!(localObject1 instanceof uxr)))
+    {
+      veg.d("Q.qqstory.home.data.HomeFeedPresenter", "storyHomeFeed is null or it's not a VideoListHomeFeed. feedId = %s", new Object[] { paramtap.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    Object localObject2 = (uxr)localObject1;
+    localObject1 = uqh.a(paramtap.jdField_a_of_type_JavaLangString, paramtap.jdField_a_of_type_Int, paramtap.jdField_a_of_type_Long, paramtap.b, paramtap.c, paramtap.d, paramtap.e, paramtap.f);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(localObject1);
+    ((uxr)localObject2).a(localArrayList, false);
+    localObject2 = (CommentLikeFeedItem)((uxr)localObject2).a;
+    ((CommentLikeFeedItem)localObject2).mCommentCount += 1;
+    if (uwt.a((CommentLikeFeedItem)localObject2)) {
+      ((CommentLikeFeedItem)localObject2).mFriendCommentCount += 1;
+    }
+    for (;;)
+    {
+      uwt.a(paramuwt).b(paramtap.jdField_a_of_type_JavaLangString);
+      ThreadManager.post(new HomeFeedPresenter.GamePKCommentReceiver.1(this, (CommentLikeFeedItem)localObject2, (CommentEntry)localObject1, paramtap), 5, null, false);
+      uwt.a((CommentLikeFeedItem)localObject2, (CommentEntry)localObject1);
+      return;
+      ((CommentLikeFeedItem)localObject2).mFanCommentCount += 1;
+    }
   }
   
-  public String b()
+  public Class acceptEventClass()
   {
-    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + ".zip";
-  }
-  
-  public String c()
-  {
-    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + File.separator;
-  }
-  
-  public Object clone()
-  {
-    return super.clone();
-  }
-  
-  public String d()
-  {
-    return "loading" + File.separator + this.jdField_b_of_type_Int + ".zip";
+    return tap.class;
   }
 }
 

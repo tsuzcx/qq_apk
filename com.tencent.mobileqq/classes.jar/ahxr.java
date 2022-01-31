@@ -1,23 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 
 public class ahxr
-  implements aliw
+  extends ahxt
 {
-  public ahxr(SessionClearFragment paramSessionClearFragment) {}
-  
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForUser onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (localRMVideoStateMgr.a != null) {
+      localRMVideoStateMgr.a.r();
     }
-    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
+  }
+  
+  public void b()
+  {
+    RMVideoStateMgr.a().a(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahxr
  * JD-Core Version:    0.7.0.1
  */

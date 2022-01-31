@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfz;
-import bdit;
-import bdjb;
+import beka;
+import bemw;
+import bene;
 
 class UIJsPlugin$2
   implements Runnable
 {
-  UIJsPlugin$2(UIJsPlugin paramUIJsPlugin, bdfz parambdfz) {}
+  UIJsPlugin$2(UIJsPlugin paramUIJsPlugin, beka parambeka) {}
   
   public void run()
   {

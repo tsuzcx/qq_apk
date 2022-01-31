@@ -1,61 +1,28 @@
 import android.support.annotation.NonNull;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
+import java.util.Map;
 
 class sud
-  extends SimpleObserver<List<tfv>>
+  extends Job<Object, Object, Object>
 {
-  sud(suc paramsuc, sug paramsug, ssm paramssm) {}
-  
-  public void a(List<tfv> paramList)
+  sud(suc paramsuc, String paramString, sul paramsul)
   {
-    super.onNext(paramList);
-    ArrayList localArrayList;
-    int i;
-    tfv localtfv;
-    if (this.jdField_a_of_type_Sug != null)
-    {
-      localArrayList = new ArrayList();
-      if ((paramList != null) && (!paramList.isEmpty()))
-      {
-        Collections.sort(paramList, new sue(this));
-        paramList = paramList.iterator();
-        i = 0;
-        if (paramList.hasNext())
-        {
-          localtfv = (tfv)paramList.next();
-          if (i < suc.a(this.jdField_a_of_type_Suc)) {
-            break label100;
-          }
-        }
-      }
-      this.jdField_a_of_type_Sug.a(this.jdField_a_of_type_Ssm, localArrayList);
-    }
-    else
-    {
-      return;
-    }
-    label100:
-    if ((localtfv != null) && (!localtfv.jdField_a_of_type_Boolean) && (localtfv.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null))
-    {
-      localArrayList.add(localtfv.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      i += 1;
-    }
-    for (;;)
-    {
-      break;
-    }
+    super(paramString);
   }
   
-  public void onError(@NonNull Error paramError)
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    super.onError(paramError);
-    if (this.jdField_a_of_type_Sug != null) {
-      this.jdField_a_of_type_Sug.a(this.jdField_a_of_type_Ssm, paramError);
-    }
+    this.jdField_a_of_type_Sul.jdField_a_of_type_Suk.a(this.jdField_a_of_type_Sul);
+    this.jdField_a_of_type_Suc.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Sul.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Suc.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_Sul.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Sul);
+    return null;
+  }
+  
+  public int getJobType()
+  {
+    return 16;
   }
 }
 

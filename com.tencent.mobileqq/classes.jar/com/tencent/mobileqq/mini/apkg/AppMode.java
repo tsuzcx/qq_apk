@@ -16,6 +16,7 @@ public class AppMode
   public boolean interMode;
   public boolean isAppStore;
   public boolean isInterLoading;
+  public boolean isLimitedAccess;
   public boolean isWangKa;
   public boolean keepOffPullList;
   public boolean openNativeApi;
@@ -34,6 +35,7 @@ public class AppMode
       localAppMode.isAppStore = paramStAppMode.isAppStore.get();
       localAppMode.isWangKa = paramStAppMode.isWangKa.get();
       localAppMode.isInterLoading = paramStAppMode.interLoading.get();
+      localAppMode.isLimitedAccess = paramStAppMode.isLimitedAccess.get();
     }
     return localAppMode;
   }
@@ -51,59 +53,66 @@ public class AppMode
       paramInt = 1;
       paramParcel.writeInt(paramInt);
       if (!this.authoritySilent) {
-        break label134;
+        break label148;
       }
       paramInt = 1;
       label25:
       paramParcel.writeInt(paramInt);
       if (!this.keepOffPullList) {
-        break label139;
+        break label153;
       }
       paramInt = 1;
       label39:
       paramParcel.writeInt(paramInt);
       if (!this.closeTopRightCapsule) {
-        break label144;
+        break label158;
       }
       paramInt = 1;
       label53:
       paramParcel.writeInt(paramInt);
       if (!this.openNativeApi) {
-        break label149;
+        break label163;
       }
       paramInt = 1;
       label67:
       paramParcel.writeInt(paramInt);
       if (!this.hideAppSearch) {
-        break label154;
+        break label168;
       }
       paramInt = 1;
       label81:
       paramParcel.writeInt(paramInt);
       if (!this.isAppStore) {
-        break label159;
+        break label173;
       }
       paramInt = 1;
       label95:
       paramParcel.writeInt(paramInt);
       if (!this.isWangKa) {
-        break label164;
+        break label178;
       }
       paramInt = 1;
       label109:
       paramParcel.writeInt(paramInt);
       if (!this.isInterLoading) {
-        break label169;
+        break label183;
+      }
+      paramInt = 1;
+      label123:
+      paramParcel.writeInt(paramInt);
+      if (!this.isLimitedAccess) {
+        break label188;
       }
     }
-    label134:
-    label139:
-    label144:
-    label149:
-    label154:
-    label159:
-    label164:
-    label169:
+    label148:
+    label153:
+    label158:
+    label163:
+    label168:
+    label173:
+    label178:
+    label183:
+    label188:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
@@ -124,6 +133,8 @@ public class AppMode
       break label95;
       paramInt = 0;
       break label109;
+      paramInt = 0;
+      break label123;
     }
   }
 }

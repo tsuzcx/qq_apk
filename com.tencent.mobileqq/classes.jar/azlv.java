@@ -1,26 +1,37 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 class azlv
-  extends RecyclerView.ViewHolder
+  extends AnimatorListenerAdapter
 {
-  protected ImageView a;
-  protected TextView a;
-  protected String a;
-  protected ImageView b;
-  protected TextView b;
-  protected ImageView c;
+  azlv(azlt paramazlt, boolean paramBoolean, View paramView, int paramInt) {}
   
-  public azlv(azlu paramazlu, View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramView);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131299373));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131301766));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131304981));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131301784));
-    this.c = ((ImageView)paramView.findViewById(2131309284));
+    boolean bool = false;
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      paramAnimator = new int[2];
+      this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(paramAnimator);
+      i = vzo.d(this.jdField_a_of_type_Azlt.jdField_a_of_type_AndroidContentContext) - paramAnimator[1];
+      if (i >= this.jdField_a_of_type_Int) {}
+    }
+    for (int i = this.jdField_a_of_type_Int - i;; i = 0)
+    {
+      if (this.jdField_a_of_type_Azlt.jdField_a_of_type_Azlx != null)
+      {
+        paramAnimator = this.jdField_a_of_type_Azlt.jdField_a_of_type_Azlx;
+        if (!this.jdField_a_of_type_Boolean) {
+          bool = true;
+        }
+        paramAnimator.a(bool, i);
+      }
+      return;
+    }
   }
 }
 

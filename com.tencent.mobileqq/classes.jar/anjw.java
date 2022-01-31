@@ -1,28 +1,20 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.Setting;
 
-class anjw
-  extends anfw
+public final class anjw
+  implements Parcelable.Creator<Setting>
 {
-  anjw(anju paramanju) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public Setting a(Parcel paramParcel)
   {
-    this.a.b(paramEmoticonPackage);
+    Setting localSetting = new Setting();
+    localSetting.readFromParcel(paramParcel);
+    return localSetting;
   }
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  public Setting[] a(int paramInt)
   {
-    this.a.a(paramEmoticonPackage, paramInt);
-  }
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
-  {
-    this.a.a(paramEmoticonPackage);
-  }
-  
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
-  {
-    this.a.a(paramEmoticonPackage, paramInt1, paramInt2);
+    return new Setting[paramInt];
   }
 }
 

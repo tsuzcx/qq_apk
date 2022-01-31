@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import ndn;
-import qmu;
-import qmv;
+import noo;
+import qzd;
+import qze;
 
 public final class ReadInJoyUtils$5
   implements Runnable
@@ -11,11 +11,11 @@ public final class ReadInJoyUtils$5
   
   public void run()
   {
-    String str = new qmv(null, null, null, null).e(this.jdField_a_of_type_Boolean).H(this.jdField_a_of_type_Int).a(this.jdField_b_of_type_Int).G(this.c).g(this.jdField_a_of_type_Long).i(this.jdField_a_of_type_JavaLangString).a().a();
+    String str = new qze(null, null, null, null).e(this.jdField_a_of_type_Boolean).I(this.jdField_a_of_type_Int).a(this.jdField_b_of_type_Int).H(this.c).g(this.jdField_a_of_type_Long).i(this.jdField_a_of_type_JavaLangString).a().a();
     if (this.jdField_b_of_type_Boolean) {}
     for (int i = 1;; i = 0)
     {
-      ndn.a(null, "", "0X80094FD", "0X80094FD", 0, i, "", "", this.jdField_b_of_type_JavaLangString, str, false);
+      noo.a(null, "", "0X80094FD", "0X80094FD", 0, i, "", "", this.jdField_b_of_type_JavaLangString, str, false);
       return;
     }
   }

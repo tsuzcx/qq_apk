@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.gallery.view;
 
-import apug;
+import aqog;
 
 public class AIOGalleryScene$1
   implements Runnable
 {
-  public AIOGalleryScene$1(apug paramapug) {}
+  public AIOGalleryScene$1(aqog paramaqog) {}
   
   public void run()
   {

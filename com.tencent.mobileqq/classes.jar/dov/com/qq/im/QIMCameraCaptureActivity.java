@@ -1,7 +1,7 @@
 package dov.com.qq.im;
 
-import ajjy;
-import aluq;
+import ajyc;
+import amkg;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -10,57 +10,62 @@ import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.SparseIntArray;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import autt;
-import awdp;
-import awii;
-import bbmy;
-import bbqo;
-import bgww;
-import bgxb;
-import bhdr;
-import bheb;
-import bhfc;
-import bhfm;
-import bhzb;
-import bhzc;
-import bhzd;
-import bjeh;
-import bjin;
+import avtc;
+import axcx;
+import axho;
+import bcpw;
+import bctn;
+import bigh;
+import bigr;
+import biqz;
+import birc;
+import biwd;
+import bizj;
+import bizq;
+import bizu;
+import bjae;
+import bjqt;
+import bjqu;
+import bjqv;
+import bkur;
+import bkyy;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
-import wed;
-import xfz;
+import wsu;
+import xoz;
 
 @TargetApi(14)
 public class QIMCameraCaptureActivity
   extends PeakActivity
-  implements bhzb, bhzc
+  implements bjqt, bjqu
 {
-  private static long jdField_a_of_type_Long;
-  private static final String jdField_a_of_type_JavaLangString = QIMCameraCaptureActivity.class.getSimpleName();
+  private static SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
-  private bhzd jdField_a_of_type_Bhzd;
+  private bjqv jdField_a_of_type_Bjqv;
   private boolean jdField_a_of_type_Boolean;
-  private int b;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private int c;
   
   public static Intent a(Context paramContext, Bundle paramBundle)
   {
     if (QLog.isDevelopLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "in getLaunchIntent");
+      QLog.d("QIMCameraCaptureActivity", 4, "in getLaunchIntent");
     }
     paramContext = new Intent(paramContext, QIMCameraCaptureActivity.class);
     if (paramBundle != null)
     {
-      int i = paramBundle.getInt("VIDEO_STORY_FROM_TYPE", bgww.a.a());
-      if ((bgww.k.a(i)) || (bgww.j.a(i))) {
+      int i = paramBundle.getInt("VIDEO_STORY_FROM_TYPE", birc.a.a());
+      if ((birc.l.a(i)) || (birc.k.a(i))) {
         paramContext.setFlags(268435456);
       }
     }
@@ -71,41 +76,75 @@ public class QIMCameraCaptureActivity
   
   public static void a(Activity paramActivity, Bundle paramBundle, int paramInt)
   {
-    if (b()) {
+    long l = System.currentTimeMillis();
+    if (axcx.a != 0L)
+    {
+      axcx.c = l;
+      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_START_ACTIVITY ", Long.valueOf(axcx.c) });
+      paramBundle.putLong("TIMESTAMP_PRELOAD_PEAK", axcx.a);
+      paramBundle.putLong("TIMESTAMP_CLICK_CAMERA", axcx.b);
+      paramBundle.putLong("TIMESTAMP_START_ACTIVITY", axcx.c);
+    }
+    paramBundle.putLong("ACTIVITY_START_TIME", l);
+    paramBundle.putLong("intent_key_launch_begin_time", l);
+    Object localObject = bizu.a();
+    if (localObject != null) {}
+    for (localObject = ((AppInterface)localObject).getCurrentAccountUin();; localObject = "none")
+    {
+      paramBundle.putString("intent_key_uid_for_report", (String)localObject);
+      paramActivity.startActivityForResult(a(paramActivity, paramBundle), paramInt);
+      biwd.a().a("startActivityForResult");
       return;
     }
-    if (awdp.jdField_a_of_type_Long != 0L)
-    {
-      awdp.c = System.currentTimeMillis();
-      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_START_ACTIVITY ", Long.valueOf(awdp.c) });
-      paramBundle.putLong("TIMESTAMP_PRELOAD_PEAK", awdp.jdField_a_of_type_Long);
-      paramBundle.putLong("TIMESTAMP_CLICK_CAMERA", awdp.b);
-      paramBundle.putLong("TIMESTAMP_START_ACTIVITY", awdp.c);
-    }
-    paramBundle.putLong("ACTIVITY_START_TIME", System.currentTimeMillis());
-    if (QLog.isDevelopLevel()) {
-      QLog.d("CameraLaunchPerf", 4, "startLaunchActivity time=" + System.currentTimeMillis());
-    }
-    paramActivity.startActivityForResult(a(paramActivity, paramBundle), paramInt);
   }
   
   public static void a(Context paramContext, Bundle paramBundle)
   {
-    paramBundle.putLong("ACTIVITY_START_TIME", System.currentTimeMillis());
-    paramContext.startActivity(a(paramContext, paramBundle));
+    long l = System.currentTimeMillis();
+    paramBundle.putLong("ACTIVITY_START_TIME", l);
+    paramBundle.putLong("intent_key_launch_begin_time", l);
+    Object localObject = bizu.a();
+    if (localObject != null) {}
+    for (localObject = ((AppInterface)localObject).getCurrentAccountUin();; localObject = "none")
+    {
+      paramBundle.putString("intent_key_uid_for_report", (String)localObject);
+      paramContext.startActivity(a(paramContext, paramBundle));
+      return;
+    }
   }
   
-  private static boolean b()
+  private void b()
   {
-    long l = System.currentTimeMillis();
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "pre: " + jdField_a_of_type_Long + " cur: " + l);
-    if (Math.abs(l - jdField_a_of_type_Long) < 500L)
+    if (jdField_a_of_type_AndroidUtilSparseIntArray.indexOfKey(this.jdField_a_of_type_Int) >= 0)
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "isFastClick.");
-      jdField_a_of_type_Long = l;
+      int i = jdField_a_of_type_AndroidUtilSparseIntArray.get(this.jdField_a_of_type_Int);
+      bizq.a("QIMCameraCaptureActivity", "decreaseFrom key: " + this.jdField_a_of_type_Int + " value: " + i);
+      if (i <= 1)
+      {
+        jdField_a_of_type_AndroidUtilSparseIntArray.delete(this.jdField_a_of_type_Int);
+        return;
+      }
+      jdField_a_of_type_AndroidUtilSparseIntArray.put(this.jdField_a_of_type_Int, i - 1);
+      return;
+    }
+    bizq.a("QIMCameraCaptureActivity", "decreaseFrom2 key: " + this.jdField_a_of_type_Int);
+    jdField_a_of_type_AndroidUtilSparseIntArray.delete(this.jdField_a_of_type_Int);
+  }
+  
+  private boolean b()
+  {
+    if (jdField_a_of_type_AndroidUtilSparseIntArray.indexOfKey(this.jdField_a_of_type_Int) >= 0)
+    {
+      int j = jdField_a_of_type_AndroidUtilSparseIntArray.get(this.jdField_a_of_type_Int);
+      SparseIntArray localSparseIntArray = jdField_a_of_type_AndroidUtilSparseIntArray;
+      int i = this.jdField_a_of_type_Int;
+      j += 1;
+      localSparseIntArray.put(i, j);
+      bizq.a("QIMCameraCaptureActivity", "isRepeatLaunch key: " + this.jdField_a_of_type_Int + " value: " + j);
       return true;
     }
-    jdField_a_of_type_Long = l;
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(this.jdField_a_of_type_Int, 1);
+    bizq.a("QIMCameraCaptureActivity", "isRepeatLaunch2 key: " + this.jdField_a_of_type_Int + " value: " + 1);
     return false;
   }
   
@@ -121,7 +160,7 @@ public class QIMCameraCaptureActivity
   
   public AppInterface a()
   {
-    return bhfc.a();
+    return bizu.a();
   }
   
   public void a()
@@ -142,7 +181,9 @@ public class QIMCameraCaptureActivity
   public void finish()
   {
     super.finish();
-    this.jdField_a_of_type_Bhzd.p();
+    if (this.jdField_a_of_type_Bjqv != null) {
+      this.jdField_a_of_type_Bjqv.s();
+    }
   }
   
   public boolean isLatecyWaitRuntime()
@@ -153,29 +194,29 @@ public class QIMCameraCaptureActivity
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.jdField_a_of_type_Bhzd.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Bjqv.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void onBackPressed()
   {
-    this.jdField_a_of_type_Bhzd.a();
-    bbqo.a(BaseApplicationImpl.getContext(), true, 51);
-    aluq.a(BaseApplicationImpl.getContext(), 2, true);
+    this.jdField_a_of_type_Bjqv.a();
+    bctn.a(BaseApplicationImpl.getContext(), true, 51);
+    amkg.a(BaseApplicationImpl.getContext(), 2, true);
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    if (awii.e())
+    if (axho.e())
     {
-      DisplayMetrics localDisplayMetrics = autt.a(this);
-      if ((localDisplayMetrics != null) && ((this.jdField_a_of_type_Int != localDisplayMetrics.widthPixels) || (this.b != localDisplayMetrics.heightPixels)))
+      DisplayMetrics localDisplayMetrics = avtc.a(this);
+      if ((localDisplayMetrics != null) && ((this.jdField_b_of_type_Int != localDisplayMetrics.widthPixels) || (this.c != localDisplayMetrics.heightPixels)))
       {
-        this.jdField_a_of_type_Int = localDisplayMetrics.widthPixels;
-        this.b = localDisplayMetrics.heightPixels;
-        this.jdField_a_of_type_Bhzd.b_(this.jdField_a_of_type_Int, this.b);
+        this.jdField_b_of_type_Int = localDisplayMetrics.widthPixels;
+        this.c = localDisplayMetrics.heightPixels;
+        this.jdField_a_of_type_Bjqv.b_(this.jdField_b_of_type_Int, this.c);
       }
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "onConfigurationChanged width:" + localDisplayMetrics.widthPixels + ", hight:" + localDisplayMetrics.heightPixels);
+        QLog.i("QIMCameraCaptureActivity", 2, "onConfigurationChanged width:" + localDisplayMetrics.widthPixels + ", hight:" + localDisplayMetrics.heightPixels);
       }
     }
     super.onConfigurationChanged(paramConfiguration);
@@ -183,35 +224,41 @@ public class QIMCameraCaptureActivity
   
   public void onCreate(Bundle paramBundle)
   {
+    bizq.b("QIMCameraCaptureActivity", "[onCreate] + BEGIN");
     long l1 = System.currentTimeMillis();
-    if (QLog.isDevelopLevel())
-    {
-      QLog.d("CameraLaunchPerf", 4, "activityOnCreate time=" + l1);
-      l2 = a().getIntent().getLongExtra("intent_key_launch_begin_time", 0L);
-      if (l2 > 0L) {
-        QLog.d("CameraLaunchPerf", 4, "IPC cost=" + (l1 - l2));
-      }
-    }
-    bhgj.c = false;
+    long l2 = a().getIntent().getLongExtra("intent_key_launch_begin_time", 0L);
+    bizq.a("QIMCameraCaptureActivity", "[onCreate] from startActivity to onCreate, time cost = " + (l1 - l2));
+    this.jdField_a_of_type_Int = birc.a(getIntent());
+    biwd.a().b();
+    biwd.a().a("mainProcessLaunch", l2);
+    biwd.a().a("activityOnCreateBegin", l1);
+    biwd.a().a(l2);
+    bjbb.c = false;
     super.getWindow().addFlags(256);
     super.getWindow().addFlags(512);
     super.getWindow().addFlags(128);
-    if (awii.e()) {
-      bjeh.c(this);
+    if (axho.e()) {
+      bkur.c(this);
     }
-    bjeh.a(this);
-    if (bjeh.c()) {
-      bjeh.b(this);
+    bkur.a(this);
+    if (bkur.c()) {
+      bkur.b(this);
     }
-    Object localObject = autt.a(this);
+    Object localObject = avtc.a(this);
     if (localObject != null)
     {
-      this.jdField_a_of_type_Int = ((DisplayMetrics)localObject).widthPixels;
-      this.b = ((DisplayMetrics)localObject).heightPixels;
+      this.jdField_b_of_type_Int = ((DisplayMetrics)localObject).widthPixels;
+      this.c = ((DisplayMetrics)localObject).heightPixels;
     }
     this.ac = true;
     this.ad = false;
     super.onCreate(paramBundle);
+    if (b())
+    {
+      bizq.d("QIMCameraCaptureActivity", "repeat launch from: " + this.jdField_a_of_type_Int);
+      finish();
+      return;
+    }
     int j = getIntent().getIntExtra("edit_video_type", 10002);
     int i = j;
     if (getIntent().getExtras() != null)
@@ -221,133 +268,142 @@ public class QIMCameraCaptureActivity
       {
         int k = getIntent().getExtras().getInt("VIDEO_STORY_FROM_TYPE");
         i = j;
-        if (bgww.d.a(k))
+        if (birc.e.a(k))
         {
-          localObject = bgxb.a().a("app_alg_aio_camera_type_id", "", 4);
-          QLog.d(jdField_a_of_type_JavaLangString, 4, "aio camera type: " + (String)localObject);
+          localObject = bizj.a().a("app_alg_aio_camera_type_id", "", 4);
+          QLog.d("QIMCameraCaptureActivity", 4, "aio camera type: " + (String)localObject);
           if ((!"NEWCAMERA".equals(localObject)) && (!"NEWCAMERA20".equals(localObject))) {
-            break label658;
+            break label504;
           }
           i = 10024;
-          getIntent().putExtra("VIDEO_STORY_FROM_TYPE", bgww.d.a());
+          getIntent().putExtra("VIDEO_STORY_FROM_TYPE", birc.e.a());
         }
       }
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("CameraLaunchPerf", 4, "buildCaptureUnit start time=" + System.currentTimeMillis());
-    }
-    this.jdField_a_of_type_Bhzd = bheb.a(i, this, this);
-    long l3 = System.currentTimeMillis();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("CameraLaunchPerf", 4, "buildCaptureUnit end time=" + l3);
-    }
-    this.jdField_a_of_type_Bhzd.a(paramBundle);
-    long l2 = System.currentTimeMillis();
-    if (QLog.isDevelopLevel())
+    for (;;)
     {
-      QLog.d("CameraLaunchPerf", 4, "CaptureUnit onCreateDone time=" + l2);
-      QLog.d("CameraLaunchPerf", 4, "unitOnCreate cost=" + (l2 - l3));
-    }
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Bhzd.a();
-    if (QLog.isDevelopLevel())
-    {
-      l3 = System.currentTimeMillis();
-      QLog.d("CameraLaunchPerf", 4, "CaptureUnit onCreateViewDone time=" + l3);
-      QLog.d("CameraLaunchPerf", 4, "unitOnCreateView cost=" + (l3 - l2));
-    }
-    setContentView(this.jdField_a_of_type_AndroidViewView);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("CameraLaunchPerf", 4, "activitySetContentViewDone time=" + System.currentTimeMillis());
-    }
-    if (g())
-    {
-      bbmy.a(this, ajjy.a(2131643976), 0).a();
+      biwd.a().a("buildCaptureUnit-begin");
+      this.jdField_a_of_type_Bjqv = bigr.a(i, this, this);
+      biwd.a().a("buildCaptureUnit-end");
+      this.jdField_a_of_type_Bjqv.a(paramBundle);
+      biwd.a().a("unitOnCreateView-begin");
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Bjqv.a();
+      biwd.a().a("unitOnCreateView-end");
+      setContentView(this.jdField_a_of_type_AndroidViewView);
+      if (!g()) {
+        break;
+      }
+      bcpw.a(this, ajyc.a(2131709761), 0).a();
       finish();
-    }
-    label658:
-    do
-    {
       return;
+      label504:
       i = 10000;
-      getIntent().putExtra("VIDEO_STORY_FROM_TYPE", bgww.o.a());
-      break;
-      ThreadManagerV2.excute(new QIMCameraCaptureActivity.1(this, i), 16, null, true);
-    } while (!QLog.isDevelopLevel());
-    l2 = System.currentTimeMillis();
-    QLog.d("CameraLaunchPerf", 4, "activityOnCreateDone time=" + l2);
-    QLog.d("CameraLaunchPerf", 4, "activityOnCreateDone cost=" + (l2 - l1));
+      getIntent().putExtra("VIDEO_STORY_FROM_TYPE", birc.p.a());
+    }
+    biqz.a().a(true);
+    ThreadManagerV2.excute(new QIMCameraCaptureActivity.1(this, i), 16, null, true);
+    biwd.a().a("activityOnCreateEnd");
+    bizq.b("QIMCameraCaptureActivity", "[onCreate] + END, time cost = " + (System.currentTimeMillis() - l1));
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Bhzd.e();
-    xfz.a().j = 0;
-    bjin localbjin = (bjin)bhfm.a(3);
-    bjin.jdField_a_of_type_Int = 0;
-    ((bhdr)bhfm.a(13)).d(0);
-    bbqo.a(BaseApplicationImpl.getContext(), true, 51);
-    aluq.a(BaseApplicationImpl.getContext(), 2, true);
+    bizq.a("QIMCameraCaptureActivity", "onDestroy from: " + this.jdField_a_of_type_Int);
+    b();
+    if (this.jdField_a_of_type_Bjqv != null)
+    {
+      this.jdField_a_of_type_Bjqv.e();
+      xoz.a().j = 0;
+      bkyy localbkyy = (bkyy)bjae.a(3);
+      bkyy.jdField_a_of_type_Int = 0;
+      ((bigh)bjae.a(13)).d(0);
+      bctn.a(BaseApplicationImpl.getContext(), true, 51);
+      amkg.a(BaseApplicationImpl.getContext(), 2, true);
+      biqz.a().a(false);
+    }
+    biwd.a().a(true);
+    biwd.a().c();
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    return this.jdField_a_of_type_Bhzd.a(paramInt, paramKeyEvent, super.onKeyDown(paramInt, paramKeyEvent));
+    return this.jdField_a_of_type_Bjqv.a(paramInt, paramKeyEvent, super.onKeyDown(paramInt, paramKeyEvent));
   }
   
   protected void onNewIntent(Intent paramIntent)
   {
     super.onNewIntent(paramIntent);
     getIntent().putExtras(paramIntent);
-    this.jdField_a_of_type_Bhzd.a(paramIntent);
+    this.jdField_a_of_type_Bjqv.a(paramIntent);
   }
   
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Bhzd.d();
+    if (this.jdField_a_of_type_Bjqv != null) {
+      this.jdField_a_of_type_Bjqv.d();
+    }
   }
   
   public void onResume()
   {
-    super.onResume();
-    this.jdField_a_of_type_Bhzd.f();
-    ((bhdr)bhfm.a(13)).c(0);
-    if (Build.VERSION.SDK_INT >= 29) {
-      wed.a(getWindow());
+    bizq.b("QIMCameraCaptureActivity", "[onResume] + BEGIN");
+    long l = System.currentTimeMillis();
+    if (!this.jdField_a_of_type_Boolean) {
+      biwd.a().a("activityOnResumeBegin");
     }
-    bbqo.a(BaseApplicationImpl.getContext(), false, 51);
-    aluq.a(BaseApplicationImpl.getContext(), 2, false);
-    if ((!this.jdField_a_of_type_Boolean) && (QLog.isDevelopLevel())) {
-      QLog.d("CameraLaunchPerf", 4, "activityOnResumeDone time=" + System.currentTimeMillis());
+    super.onResume();
+    this.jdField_a_of_type_Bjqv.f();
+    ((bigh)bjae.a(13)).c(0);
+    if (Build.VERSION.SDK_INT >= 29) {
+      wsu.a(getWindow());
+    }
+    bctn.a(BaseApplicationImpl.getContext(), false, 51);
+    amkg.a(BaseApplicationImpl.getContext(), 2, false);
+    if (!this.jdField_a_of_type_Boolean) {
+      biwd.a().a("activityOnResumeEnd");
     }
     this.jdField_a_of_type_Boolean = true;
+    bizq.b("QIMCameraCaptureActivity", "[onResume] + END, time cost = " + (System.currentTimeMillis() - l));
   }
   
   protected void onSaveInstanceState(Bundle paramBundle)
   {
     super.onSaveInstanceState(paramBundle);
-    this.jdField_a_of_type_Bhzd.b(paramBundle);
+    this.jdField_a_of_type_Bjqv.b(paramBundle);
   }
   
   public void onStart()
   {
+    bizq.b("QIMCameraCaptureActivity", "[onStart] + BEGIN");
+    if (!this.jdField_b_of_type_Boolean) {
+      biwd.a().a("activityOnStartBegin");
+    }
     long l = System.currentTimeMillis();
     waitAppRuntime();
-    QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "waitAppRuntime, cost: ", Long.valueOf(System.currentTimeMillis() - l) });
+    bizq.a("QIMCameraCaptureActivity", "[onStart] waitAppRuntime, cost = " + (System.currentTimeMillis() - l));
     super.onStart();
-    this.jdField_a_of_type_Bhzd.q();
+    this.jdField_a_of_type_Bjqv.p();
+    if (!this.jdField_b_of_type_Boolean) {
+      biwd.a().a("activityOnStartEnd");
+    }
+    this.jdField_b_of_type_Boolean = true;
+    bizq.b("QIMCameraCaptureActivity", "[onStart] + END, time cost = " + (System.currentTimeMillis() - l));
   }
   
   public void onStop()
   {
     super.onStop();
-    this.jdField_a_of_type_Bhzd.r();
+    bizq.a("QIMCameraCaptureActivity", "onStop from: " + this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Bjqv != null) {
+      this.jdField_a_of_type_Bjqv.t();
+    }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    return this.jdField_a_of_type_Bhzd.a(paramMotionEvent, super.onTouchEvent(paramMotionEvent));
+    return this.jdField_a_of_type_Bjqv.a(paramMotionEvent, super.onTouchEvent(paramMotionEvent));
   }
 }
 

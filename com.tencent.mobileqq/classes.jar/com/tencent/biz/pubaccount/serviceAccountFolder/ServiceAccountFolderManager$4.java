@@ -4,23 +4,23 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import rof;
-import rol;
+import saw;
+import sbc;
 
 public class ServiceAccountFolderManager$4
   implements Runnable
 {
-  public ServiceAccountFolderManager$4(rol paramrol, QQAppInterface paramQQAppInterface, long paramLong) {}
+  public ServiceAccountFolderManager$4(sbc paramsbc, QQAppInterface paramQQAppInterface, long paramLong) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(rol.a(this.this$0));
+    localArrayList.addAll(sbc.a(this.this$0));
     Iterator localIterator = localArrayList.iterator();
     while (localIterator.hasNext())
     {
-      rof localrof = (rof)localIterator.next();
-      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localrof, false);
+      saw localsaw = (saw)localIterator.next();
+      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localsaw, false);
     }
     localArrayList.clear();
     this.this$0.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);

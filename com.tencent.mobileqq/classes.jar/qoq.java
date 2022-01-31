@@ -1,24 +1,12 @@
-import com.tencent.widget.AbsListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class qoq
-  implements begh
+final class qoq
+  implements DialogInterface.OnClickListener
 {
-  qoq(qoe paramqoe) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return;
-    }
-    this.a.g();
-    qoe.b(this.a);
-    this.a.h();
+    paramDialogInterface.dismiss();
   }
 }
 

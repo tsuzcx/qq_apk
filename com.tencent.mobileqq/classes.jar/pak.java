@@ -1,14 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import com.tencent.biz.pubaccount.readinjoy.struct.FusionBiuInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 public class pak
-  implements ViewBase.IBuilder
 {
-  public ViewBase build(VafContext paramVafContext)
-  {
-    return new paj(paramVafContext);
-  }
+  public void a(int paramInt, String paramString) {}
+  
+  public void a(long paramLong, String paramString) {}
+  
+  public void a(FusionBiuInfo paramFusionBiuInfo) {}
+  
+  public void a(FastWebArticleInfo paramFastWebArticleInfo, int paramInt, String paramString) {}
+  
+  public void a(FastWebArticleInfo paramFastWebArticleInfo, String paramString) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(boolean paramBoolean, int paramInt, rna paramrna) {}
+  
+  public void a(boolean paramBoolean, String paramString) {}
 }
 
 

@@ -1,49 +1,43 @@
-import android.util.Pair;
+import android.util.SparseArray;
+import com.tencent.mobileqq.troop.data.TroopGiftBagInfo;
+import java.util.List;
+import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
 
-public class baks
+public abstract class baks
 {
-  public int a;
-  public Pair<CharSequence, CharSequence> a;
-  public String a;
+  public void a(int paramInt) {}
   
-  public baks(String paramString, int paramInt, Pair<CharSequence, CharSequence> paramPair)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidUtilPair = paramPair;
-  }
+  public void a(int paramInt1, int paramInt2, String paramString, List<bald> paramList) {}
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder1 = new StringBuilder().append("MsgSearchContactInfo{uin='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", uinType=").append(this.jdField_a_of_type_Int).append(", matchTitle=[");
-    if (this.jdField_a_of_type_AndroidUtilPair == null)
-    {
-      localObject = "null";
-      return (String)localObject + "]" + '}';
-    }
-    StringBuilder localStringBuilder2 = new StringBuilder();
-    if (this.jdField_a_of_type_AndroidUtilPair.first == null)
-    {
-      localObject = "null";
-      label92:
-      localStringBuilder2 = localStringBuilder2.append(localObject).append(", ");
-      if (this.jdField_a_of_type_AndroidUtilPair.second != null) {
-        break label142;
-      }
-    }
-    label142:
-    for (Object localObject = "null";; localObject = (CharSequence)this.jdField_a_of_type_AndroidUtilPair.second)
-    {
-      localObject = localObject;
-      break;
-      localObject = (CharSequence)this.jdField_a_of_type_AndroidUtilPair.first;
-      break label92;
-    }
-  }
+  public void a(int paramInt, String paramString) {}
+  
+  public void a(int paramInt, oidb_0x962.RspBody paramRspBody) {}
+  
+  public void a(long paramLong) {}
+  
+  public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString) {}
+  
+  public void a(SparseArray<balf> paramSparseArray) {}
+  
+  public void a(TroopGiftBagInfo paramTroopGiftBagInfo) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString1, int paramInt, String paramString2) {}
+  
+  public void a(List<bale> paramList, xch paramxch) {}
+  
+  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3) {}
+  
+  public void b(int paramInt) {}
+  
+  public void b(int paramInt, String paramString) {}
+  
+  public void c(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baks
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
 public class abja
-  extends ajjh
+  implements View.OnClickListener
 {
-  public abja(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public abja(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      this.a.c();
-    }
+    HongbaoShowerActivity.a(this.a);
   }
 }
 

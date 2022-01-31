@@ -1,303 +1,92 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneClickReport;
-import cooperation.qzone.QzonePluginProxyActivity;
-import cooperation.vip.manager.MonitorManager;
-import java.util.Map;
-import mqq.manager.TicketManager;
-import org.json.JSONObject;
-
 public class bgkc
-  extends bgix
 {
-  private String a;
+  public static final byte[] a;
+  private static final char[] a;
+  public static final byte[] b;
+  public static final byte[] c;
+  public static final byte[] d;
   
-  private int a(int paramInt)
+  static
   {
-    bazo localbazo = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a());
-    int i = paramInt;
-    if ((localbazo instanceof bbad)) {
-      i = ((bbad)localbazo).switchRequestCode(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, (byte)paramInt);
-    }
-    return i;
+    jdField_a_of_type_ArrayOfByte = b("00A40400");
+    b = b("6A82");
+    c = b("9000");
+    d = b("0000");
+    jdField_a_of_type_ArrayOfChar = "0123456789ABCDEF".toCharArray();
   }
   
-  private String a(String paramString1, String paramString2)
+  public static String a(byte[] paramArrayOfByte)
   {
-    return "qq_m_qq" + "-" + "2013" + "-" + paramString1.replaceAll("-", "_") + "-" + "2013" + "-" + paramString2.replaceAll("-", "_");
+    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
+    int i = 0;
+    while (i < paramArrayOfByte.length)
+    {
+      int j = paramArrayOfByte[i] & 0xFF;
+      arrayOfChar[(i * 2)] = jdField_a_of_type_ArrayOfChar[(j >>> 4)];
+      arrayOfChar[(i * 2 + 1)] = jdField_a_of_type_ArrayOfChar[(j & 0xF)];
+      i += 1;
+    }
+    return new String(arrayOfChar);
   }
   
-  private void a(Activity paramActivity, int paramInt1, String paramString, int paramInt2, int paramInt3, Intent paramIntent)
+  public static byte[] a(String paramString)
   {
-    switch (paramInt1)
-    {
-    default: 
-      paramString = paramIntent;
-      if (paramIntent == null) {
-        paramString = new Intent();
-      }
-      paramString.putExtra("key_qzone_vip_open_back_need_check_vipinfo", false);
-      paramActivity.setResult(0, paramString);
-      paramActivity.finish();
-    case 0: 
-      return;
-    case -5: 
-      paramActivity.finish();
-      return;
-    }
-    paramActivity.setResult(0, paramIntent);
+    byte[] arrayOfByte = b(String.format("%02X", new Object[] { Integer.valueOf(paramString.length() / 2) }));
+    paramString = b(paramString);
+    return a(jdField_a_of_type_ArrayOfByte, new byte[][] { arrayOfByte, paramString });
   }
   
-  private void a(String paramString1, String paramString2)
+  private static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-    if ((localObject == null) || (((Activity)localObject).isFinishing())) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        localObject = new JSONObject(paramString1);
-        a(((JSONObject)localObject).optString("openUin"), ((JSONObject)localObject).optString("openMonth"), ((JSONObject)localObject).optString("openVipType"), ((JSONObject)localObject).getBoolean("isAuto"), ((JSONObject)localObject).optString("aid"));
-        MonitorManager.a().a(1, 2, "native 支付", "js 回调 native 支付" + paramString1);
-        this.jdField_a_of_type_JavaLangString = paramString2;
-        if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() == null) {
-          continue;
-        }
-        paramString1 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getAccount();
-        paramString2 = new bfpl();
-        paramString2.a("328");
-        paramString2.a(Long.parseLong(paramString1));
-        paramString2.b("10");
-        paramString2.c("1");
-        QZoneClickReport.startReportImediately(paramString1, paramString2);
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      }
+    if (paramInt1 > paramInt2) {
+      throw new IllegalArgumentException();
     }
+    int i = paramArrayOfByte.length;
+    if ((paramInt1 < 0) || (paramInt1 > i)) {
+      throw new ArrayIndexOutOfBoundsException();
+    }
+    paramInt2 -= paramInt1;
+    i = Math.min(paramInt2, i - paramInt1);
+    byte[] arrayOfByte = new byte[paramInt2];
+    System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, i);
+    return arrayOfByte;
   }
   
-  private void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4)
+  public static byte[] a(byte[] paramArrayOfByte, byte[]... paramVarArgs)
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-    if ((localObject2 == null) || (((Activity)localObject2).isFinishing())) {}
-    AppInterface localAppInterface;
-    do
+    int j = paramArrayOfByte.length;
+    int k = paramVarArgs.length;
+    int i = 0;
+    while (i < k)
     {
-      return;
-      localAppInterface = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-    } while (localAppInterface == null);
-    Intent localIntent = new Intent(BaseApplication.getContext(), PayBridgeActivity.class);
-    String str2 = bajr.a(paramString4);
-    String str1 = ((Activity)localObject2).getString(2131652454);
-    String str3 = ((Activity)localObject2).getString(2131652455);
-    paramString4 = "";
-    Object localObject1 = "";
-    if ("1".equals(paramString3))
-    {
-      paramString4 = "xxjzgw";
-      str1 = ((Activity)localObject2).getString(2131652454);
-      localObject1 = "1450000153";
+      j += paramVarArgs[i].length;
+      i += 1;
     }
-    for (;;)
+    byte[] arrayOfByte = a(paramArrayOfByte, 0, j);
+    j = paramArrayOfByte.length;
+    k = paramVarArgs.length;
+    i = 0;
+    while (i < k)
     {
-      try
-      {
-        paramString3 = new JSONObject();
-        paramString3.put("offerId", localObject1);
-        localObject1 = (TicketManager)localAppInterface.getManager(2);
-        localObject2 = localAppInterface.getAccount();
-        paramString3.put("userId", localObject2);
-        paramString3.put("skey", ((TicketManager)localObject1).getSkey((String)localObject2));
-        paramString3.put("serviceCode", paramString4);
-        paramString3.put("serviceName", str1);
-        paramString3.put("channel", "");
-        paramString3.put("uint", str3);
-        paramString3.put("openMonth", paramString2);
-        paramString3.put("isCanChange", false);
-        paramString3.put("autoPay", paramBoolean);
-        paramString3.put("aid", str2);
-        paramString3.put("pf", a(bfpk.a(), str2));
-        if ((!paramString1.equals(localAppInterface.getCurrentAccountUin())) && (!paramString1.equals("0")))
-        {
-          paramString3.put("provideUin", paramString1);
-          paramString3.put("provideType", "uin");
-        }
-        paramString3.put("discountId", "");
-        paramString3.put("other", "");
-        paramString1 = new Bundle();
-        paramString1.putInt("pay_requestcode", 4);
-        paramString1.putString("json", paramString3.toString());
-        localIntent.putExtras(paramString1);
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.startActivityForResult(localIntent, (byte)16);
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        paramString1.printStackTrace();
-        return;
-      }
-      if ("2".equals(paramString3))
-      {
-        paramString4 = "XXJZGHH";
-        str1 = ((Activity)localObject2).getString(2131652091);
-        localObject1 = "1450001557";
-      }
+      paramArrayOfByte = paramVarArgs[i];
+      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, j, paramArrayOfByte.length);
+      j += paramArrayOfByte.length;
+      i += 1;
     }
+    return arrayOfByte;
   }
   
-  private void b()
+  public static byte[] b(String paramString)
   {
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
-      return;
-    }
-    localActivity.finish();
-  }
-  
-  public void a(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    super.a(paramIntent, paramByte, paramInt);
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
-      break label32;
-    }
-    label32:
-    while (paramByte != 16) {
-      return;
-    }
-    Object localObject;
-    if (paramIntent != null)
+    int j = paramString.length();
+    byte[] arrayOfByte = new byte[j / 2];
+    int i = 0;
+    while (i < j)
     {
-      localObject = paramIntent.getExtras();
-      if (localObject != null)
-      {
-        localActivity.setResult(paramInt, paramIntent);
-        localObject = ((Bundle)localObject).getString("result");
-      }
+      arrayOfByte[(i / 2)] = ((byte)((Character.digit(paramString.charAt(i), 16) << 4) + Character.digit(paramString.charAt(i + 1), 16)));
+      i += 2;
     }
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject((String)localObject);
-        paramInt = localJSONObject.getInt("resultCode");
-        String str = localJSONObject.getString("resultMsg");
-        int i = localJSONObject.getInt("payState");
-        int j = localJSONObject.getInt("provideState");
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localObject });
-        }
-        a(localActivity, paramInt, str, i, j, paramIntent);
-        paramInt = 0;
-        paramIntent = (Intent)localObject;
-      }
-      catch (Exception paramIntent)
-      {
-        paramIntent.printStackTrace();
-        paramInt = 1;
-        paramIntent = (Intent)localObject;
-        continue;
-      }
-      MonitorManager.a().a(1, 3, "米大师支付结果回调", " 回调黄钻结果通知js " + paramIntent);
-      if (paramInt == 0) {
-        break;
-      }
-      paramIntent = new Intent();
-      paramIntent.putExtra("key_qzone_vip_open_back_need_check_vipinfo", false);
-      localActivity.setResult(0, paramIntent);
-      localActivity.finish();
-      return;
-      paramIntent = "";
-      paramInt = 1;
-      continue;
-      paramIntent = "";
-      paramInt = 1;
-    }
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
-      bool1 = false;
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return bool1;
-              if ((paramString3.equals("payVipDirectly")) && (paramVarArgs != null) && (paramVarArgs.length >= 1)) {
-                try
-                {
-                  paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-                  a(paramVarArgs[0], paramJsBridgeListener.optString("callback"));
-                  return true;
-                }
-                catch (Exception paramJsBridgeListener)
-                {
-                  paramJsBridgeListener.printStackTrace();
-                  return true;
-                }
-              }
-              if ((paramString3.equals("closePayDialog")) || (paramString3.equals("closeFloatingWebView")))
-              {
-                b();
-                return true;
-              }
-              if (!paramString3.equals("SetNaviDeco")) {
-                break;
-              }
-              bool1 = bool2;
-            } while (paramVarArgs == null);
-            bool1 = bool2;
-          } while (TextUtils.isEmpty(paramVarArgs[0]));
-          paramJsBridgeListener = new Intent();
-          QzonePluginProxyActivity.a(paramJsBridgeListener, "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity");
-          paramJsBridgeListener.putExtra("open_what", 7);
-          paramJsBridgeListener.putExtra("navi_deco", paramVarArgs[0]);
-          bool1 = bool2;
-        } while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null);
-        bool1 = bool2;
-      } while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() == null);
-      bool1 = bool2;
-    } while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() == null);
-    QzonePluginProxyActivity.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getAccount(), paramJsBridgeListener, a(9));
-    return true;
-    return false;
-  }
-  
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if ((paramLong == 8589934595L) && (paramMap != null))
-    {
-      ((Integer)paramMap.get("errorCode")).intValue();
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneVipPaymentJsPlugin", 2, "VasWebReport:EVENT_LOAD_ERROR");
-      }
-    }
-    return false;
+    return arrayOfByte;
   }
 }
 

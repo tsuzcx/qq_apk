@@ -1,109 +1,322 @@
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.ProteusRecycleView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.helper.ProteusPagerSnapHelper.1;
-import com.tencent.widget.pull2refresh.RecyclerViewCompat;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.widget.Toast;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.math.BigInteger;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class pci
-  extends berd
-  implements pbx
+  extends WebViewPlugin
 {
-  private int jdField_a_of_type_Int = 20;
-  private ProteusRecycleView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPolymericProteusRecycleView;
-  public Runnable a;
-  private boolean jdField_a_of_type_Boolean;
-  private int b = 3000;
-  private int c = 1000;
+  public Bundle a;
+  private String jdField_a_of_type_JavaLangString;
+  shk jdField_a_of_type_Shk;
+  wxu jdField_a_of_type_Wxu = null;
   
   public pci()
   {
-    this.jdField_a_of_type_JavaLangRunnable = new ProteusPagerSnapHelper.1(this);
+    this.mPluginNameSpace = "readinjoy";
   }
   
-  public int a()
+  private void b()
   {
-    return this.b;
-  }
-  
-  @Nullable
-  public View a(LinearLayoutManager paramLinearLayoutManager)
-  {
-    int i = paramLinearLayoutManager.getChildCount();
-    Object localObject;
-    if (i == 0) {
-      localObject = null;
-    }
-    OrientationHelper localOrientationHelper;
-    do
-    {
-      View localView;
-      do
-      {
-        return localObject;
-        localOrientationHelper = a(paramLinearLayoutManager);
-        localView = paramLinearLayoutManager.getChildAt(0);
-        localObject = localView;
-      } while (Math.abs(localOrientationHelper.getDecoratedStart(localView)) < this.jdField_a_of_type_Int);
-      if (i <= 1) {
-        break;
-      }
-      localObject = paramLinearLayoutManager.getChildAt(i - 1);
-      i = localOrientationHelper.getDecoratedEnd((View)localObject);
-    } while (Math.abs(localOrientationHelper.getTotalSpace() - i) < this.jdField_a_of_type_Int);
-    return super.a(paramLinearLayoutManager);
+    Intent localIntent = new Intent(this.mRuntime.a(), ReadInJoyMessagesActivity.class);
+    localIntent.setFlags(67108864);
+    startActivityForResult(localIntent, (byte)0);
   }
   
   public void a()
   {
-    a(this.b);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPolymericProteusRecycleView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPolymericProteusRecycleView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramLong);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPolymericProteusRecycleView.b(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPolymericProteusRecycleView.a(this);
-  }
-  
-  public void a(MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyWebviewPlugin", 2, "do updateSocialFeedsInfo all");
     }
-    do
+    this.jdField_a_of_type_AndroidOsBundle.putLong("feeds_id", -1L);
+    this.jdField_a_of_type_AndroidOsBundle.putLong("feeds_type", 1L);
+    a(anqp.a("ipc_kandian_socialfeeds_update", "", 0, this.jdField_a_of_type_AndroidOsBundle), false, false);
+  }
+  
+  protected void a(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!anvl.a().a())
     {
+      if (paramBoolean2) {
+        Toast.makeText(this.mRuntime.a().getApplicationContext(), ajyc.a(2131712816), 0).show();
+      }
       return;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPolymericProteusRecycleView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    }
+    if (paramBoolean1)
+    {
+      anvl.a().b(paramBundle);
       return;
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPolymericProteusRecycleView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.b);
+    }
+    anvl.a().a(paramBundle);
   }
   
-  public void a(@Nullable RecyclerViewCompat paramRecyclerViewCompat)
+  public void callJs(String paramString, String... paramVarArgs)
   {
-    super.a(paramRecyclerViewCompat);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPolymericProteusRecycleView = ((ProteusRecycleView)paramRecyclerViewCompat);
+    super.callJs(paramString, paramVarArgs);
   }
   
-  public void b()
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPolymericProteusRecycleView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyWebviewPlugin", 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
+    }
+    if ((paramString1 == null) || (!"readinjoy".equals(paramString2)) || (paramString3 == null)) {
+      return false;
+    }
+    if ("showShareReadInJoyMenu".equals(paramString3))
+    {
+      if (this.jdField_a_of_type_Shk == null) {
+        this.jdField_a_of_type_Shk = new shk(this, this.jdField_a_of_type_Wxu);
+      }
+      if (paramVarArgs == null) {
+        return false;
+      }
+      this.jdField_a_of_type_Shk.a(paramVarArgs[0]);
+    }
+    for (;;)
+    {
+      return true;
+      paramVarArgs = WebViewPlugin.getJsonFromJSBridge(paramString1);
+      if (paramVarArgs == null) {
+        return true;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyWebviewPlugin", 2, "handleJsRequest JSON = " + paramVarArgs.toString());
+      }
+      long l1;
+      int i;
+      if ((TextUtils.equals("socialize_feeds_update", paramString3)) || (TextUtils.equals("openPrivateLetter", paramString3)))
+      {
+        paramJsBridgeListener = null;
+        try
+        {
+          paramString1 = paramVarArgs.optString("callback");
+          if (paramString1 == null)
+          {
+            paramJsBridgeListener = paramString1;
+            throw new Exception("need callback");
+          }
+        }
+        catch (Exception paramString1)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramString1.printStackTrace();
+            QLog.e("ReadInJoyWebviewPlugin", 2, paramString1.getMessage());
+          }
+        }
+        try
+        {
+          paramString2 = new JSONObject();
+          paramString2.put("result", 1);
+          paramString2.put("msg", paramString1.getMessage());
+          super.callJs(paramJsBridgeListener + "(" + paramString2.toString() + ");");
+          for (;;)
+          {
+            return true;
+            paramJsBridgeListener = paramString1;
+            if (TextUtils.equals("socialize_feeds_update", paramString3))
+            {
+              paramJsBridgeListener = paramString1;
+              this.jdField_a_of_type_AndroidOsBundle.clear();
+              paramJsBridgeListener = paramString1;
+              l1 = new BigInteger(paramVarArgs.getString("feeds_id")).longValue();
+              paramJsBridgeListener = paramString1;
+              this.jdField_a_of_type_AndroidOsBundle.putLong("feeds_id", Long.valueOf(l1).longValue());
+              paramJsBridgeListener = paramString1;
+              i = paramVarArgs.optInt("feeds_type", 1);
+              paramJsBridgeListener = paramString1;
+              this.jdField_a_of_type_AndroidOsBundle.putInt("feeds_type", Integer.valueOf(i).intValue());
+              paramJsBridgeListener = paramString1;
+              a(anqp.a("ipc_kandian_socialfeeds_update", paramString1, 0, this.jdField_a_of_type_AndroidOsBundle), false, false);
+            }
+            else
+            {
+              paramJsBridgeListener = paramString1;
+              if (TextUtils.equals("openPrivateLetter", paramString3))
+              {
+                paramJsBridgeListener = paramString1;
+                this.jdField_a_of_type_JavaLangString = paramString1;
+                paramJsBridgeListener = paramString1;
+                b();
+              }
+            }
+          }
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("ReadInJoyWebviewPlugin", 2, paramString1.getMessage());
+            }
+          }
+        }
+      }
+      if ("readSkinAndSound".equals(paramString3))
+      {
+        paramJsBridgeListener = null;
+        try
+        {
+          paramString1 = paramVarArgs.getString("callback");
+          paramJsBridgeListener = paramString1;
+          this.jdField_a_of_type_Wxu.i(new pcj(this, paramString1));
+        }
+        catch (JSONException paramString1)
+        {
+          QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramString1.toString());
+          callJs(paramJsBridgeListener, new String[] { "{\"retCode\":-1}" });
+        }
+      }
+      else if ("notifyLoadSkin".equals(paramString3))
+      {
+        paramString2 = null;
+      }
+      try
+      {
+        paramString1 = paramVarArgs.getString("callback");
+        try
+        {
+          paramJsBridgeListener = paramVarArgs.getString("skinId");
+          paramString2 = paramVarArgs.getString("skinUrl");
+          paramString3 = paramVarArgs.getString("skinName");
+          l1 = paramVarArgs.getLong("seq");
+          l2 = paramVarArgs.getLong("startTime");
+          l3 = paramVarArgs.getLong("endTime");
+          this.jdField_a_of_type_Wxu.a(paramJsBridgeListener, l1, paramString2, paramString3, l2, l3, new pck(this, paramString1));
+          QLog.d("ReadInJoyWebviewPlugin", 4, "send notifyLoadSkin cmd to service");
+        }
+        catch (JSONException paramJsBridgeListener) {}
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        for (;;)
+        {
+          long l2;
+          long l3;
+          paramString1 = paramString2;
+        }
+      }
+      QLog.w("ReadInJoyWebviewPlugin", 1, "notifyLoadSkin error " + paramJsBridgeListener.toString());
+      callJs(paramString1, new String[] { "{\"retCode\":-1}" });
+      continue;
+      if ("cancelLoadSkin".equals(paramString3))
+      {
+        paramJsBridgeListener = null;
+        try
+        {
+          paramString2 = paramVarArgs.getString("callback");
+          paramJsBridgeListener = paramString2;
+          paramString3 = paramVarArgs.getString("skinId");
+          paramString1 = "";
+          paramJsBridgeListener = paramString2;
+          if (paramVarArgs.has("skinUrl"))
+          {
+            paramJsBridgeListener = paramString2;
+            paramString1 = paramVarArgs.optString("skinUrl");
+          }
+          paramJsBridgeListener = paramString2;
+          this.jdField_a_of_type_Wxu.e(paramString3, paramString1, new pcl(this, paramString2));
+          paramJsBridgeListener = paramString2;
+          QLog.d("ReadInJoyWebviewPlugin", 4, "send cancelLoadSkin cmd to service");
+        }
+        catch (Exception paramString1)
+        {
+          QLog.w("ReadInJoyWebviewPlugin", 1, "cancelLoadSkin error " + paramString1.toString());
+          callJs(paramJsBridgeListener, new String[] { "{\"retCode\":-1}" });
+        }
+      }
+      else if ("setSkinAndSound".equals(paramString3))
+      {
+        paramString1 = null;
+      }
+      try
+      {
+        paramString2 = paramVarArgs.getString("callback");
+      }
+      catch (Exception paramJsBridgeListener)
+      {
+        label1078:
+        break label1078;
+      }
+      try
+      {
+        paramString3 = paramVarArgs.getString("skinId");
+        paramJsBridgeListener = "";
+        if (paramVarArgs.has("skinUrl")) {
+          paramJsBridgeListener = paramVarArgs.optString("skinUrl");
+        }
+        paramString1 = "";
+        if (paramVarArgs.has("skinName")) {
+          paramString1 = paramVarArgs.optString("skinName");
+        }
+        l1 = 0L;
+        if (paramVarArgs.has("seq")) {
+          l1 = paramVarArgs.optLong("seq");
+        }
+        l2 = 0L;
+        if (paramVarArgs.has("startTime")) {
+          l2 = paramVarArgs.optLong("startTime");
+        }
+        l3 = 0L;
+        if (paramVarArgs.has("endTime")) {
+          l3 = paramVarArgs.optLong("endTime");
+        }
+        i = 0;
+        if (paramVarArgs.has("volumeIsOn")) {
+          i = paramVarArgs.optInt("volumeIsOn");
+        }
+        this.jdField_a_of_type_Wxu.a(paramString3, l1, paramJsBridgeListener, paramString1, l2, l3, i, new pcm(this, paramString2));
+        QLog.d("ReadInJoyWebviewPlugin", 4, "send set skin cmd to service");
+      }
+      catch (Exception paramJsBridgeListener)
+      {
+        paramString1 = paramString2;
+        QLog.w("ReadInJoyWebviewPlugin", 1, "setSkinAndSound error " + paramJsBridgeListener.toString());
+        callJs(paramString1, new String[] { "{\"retCode\":-1}" });
+      }
+    }
   }
   
-  public void b(int paramInt)
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
-    this.c = paramInt;
+    Log.d("ReadInJoyWebviewPlugin", "onActivityResult()");
+    if ((paramByte == 0) && (paramIntent != null))
+    {
+      paramInt = paramIntent.getIntExtra("extra_private_letter_count", 0);
+      callJs(this.jdField_a_of_type_JavaLangString, new String[] { Integer.toString(paramInt) });
+    }
+    while (((paramByte != 1) && (paramByte != 2)) || (this.jdField_a_of_type_Shk == null)) {
+      return;
+    }
+    this.jdField_a_of_type_Shk.a(paramIntent, paramByte, paramInt);
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_a_of_type_Wxu = wxu.a();
+    this.jdField_a_of_type_Wxu.a();
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    a();
+    this.jdField_a_of_type_Wxu.b();
+    if (this.jdField_a_of_type_Shk != null) {
+      this.jdField_a_of_type_Shk.a();
+    }
   }
 }
 

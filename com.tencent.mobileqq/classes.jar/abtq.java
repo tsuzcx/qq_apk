@@ -1,20 +1,16 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.Comparator;
 
 public class abtq
-  extends MqqHandler
+  implements Comparator<abtm>
 {
-  public abtq(SubAccountUgActivity paramSubAccountUgActivity) {}
+  public abtq(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(abtm paramabtm1, abtm paramabtm2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
+    long l = paramabtm1.a.certifiedGrade;
+    return (int)(paramabtm2.a.certifiedGrade - l);
   }
 }
 

@@ -1,219 +1,146 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.lang.reflect.Array;
+import mqq.util.WeakReference;
 
-public class awez
-  implements awfi
+public final class awez<T>
 {
-  private static ConcurrentHashMap<Integer, awez> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
-  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  public int a;
-  private awfb jdField_a_of_type_Awfb;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString = "ShortVideoResDownload_";
-  boolean jdField_a_of_type_Boolean;
-  public boolean b;
+  private int jdField_a_of_type_Int = -1;
+  private WeakReference<T>[] jdField_a_of_type_ArrayOfMqqUtilWeakReference;
   
-  private awez(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  public awez()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-    this.jdField_a_of_type_JavaLangString += this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Awfb = new awfb(this.jdField_a_of_type_JavaLangString, this);
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this(16);
   }
   
-  public static void a()
+  public awez(int paramInt)
   {
-    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
+    this.jdField_a_of_type_ArrayOfMqqUtilWeakReference = ((WeakReference[])Array.newInstance(WeakReference.class, paramInt));
   }
   
-  private boolean a()
+  /* Error */
+  public T a()
   {
-    boolean bool = badq.g(null);
-    if (bool)
-    {
-      VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, ajjy.a(2131648302), null);
-      ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
-      return bool;
-    }
-    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, ajjy.a(2131648241), null);
-    return bool;
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: aload_0
+    //   4: monitorenter
+    //   5: aload 4
+    //   7: astore_3
+    //   8: aload_0
+    //   9: getfield 19	awez:jdField_a_of_type_Int	I
+    //   12: iconst_m1
+    //   13: if_icmpeq +22 -> 35
+    //   16: aload_0
+    //   17: getfield 19	awez:jdField_a_of_type_Int	I
+    //   20: istore_1
+    //   21: aload_0
+    //   22: getfield 30	awez:jdField_a_of_type_ArrayOfMqqUtilWeakReference	[Lmqq/util/WeakReference;
+    //   25: arraylength
+    //   26: istore_2
+    //   27: iload_1
+    //   28: iload_2
+    //   29: if_icmple +10 -> 39
+    //   32: aload 4
+    //   34: astore_3
+    //   35: aload_0
+    //   36: monitorexit
+    //   37: aload_3
+    //   38: areturn
+    //   39: aload_0
+    //   40: getfield 30	awez:jdField_a_of_type_ArrayOfMqqUtilWeakReference	[Lmqq/util/WeakReference;
+    //   43: aload_0
+    //   44: getfield 19	awez:jdField_a_of_type_Int	I
+    //   47: aaload
+    //   48: invokevirtual 34	mqq/util/WeakReference:get	()Ljava/lang/Object;
+    //   51: astore_3
+    //   52: aload_0
+    //   53: getfield 30	awez:jdField_a_of_type_ArrayOfMqqUtilWeakReference	[Lmqq/util/WeakReference;
+    //   56: aload_0
+    //   57: getfield 19	awez:jdField_a_of_type_Int	I
+    //   60: aconst_null
+    //   61: aastore
+    //   62: aload_0
+    //   63: aload_0
+    //   64: getfield 19	awez:jdField_a_of_type_Int	I
+    //   67: iconst_1
+    //   68: isub
+    //   69: putfield 19	awez:jdField_a_of_type_Int	I
+    //   72: goto -37 -> 35
+    //   75: astore_3
+    //   76: aload_0
+    //   77: monitorexit
+    //   78: aload_3
+    //   79: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	80	0	this	awez
+    //   20	10	1	i	int
+    //   26	4	2	j	int
+    //   7	45	3	localObject1	Object
+    //   75	4	3	localObject2	Object
+    //   1	32	4	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   8	27	75	finally
+    //   39	72	75	finally
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  /* Error */
+  public boolean a(T paramT)
   {
-    return a(paramQQAppInterface, true);
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    try
-    {
-      paramBoolean = a(paramQQAppInterface, paramBoolean, false);
-      return paramBoolean;
-    }
-    finally
-    {
-      paramQQAppInterface = finally;
-      throw paramQQAppInterface;
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    boolean bool = false;
-    for (;;)
-    {
-      try
-      {
-        if (!VideoEnvironment.c(paramQQAppInterface))
-        {
-          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-          paramBoolean1 = bool;
-          return paramBoolean1;
-        }
-        if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() >= 3)
-        {
-          VideoEnvironment.a("ShortVideoResDownload", "reach to max session size=" + jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size(), null);
-          paramBoolean1 = bool;
-          continue;
-        }
-        paramQQAppInterface = new awez(paramQQAppInterface, paramBoolean1);
-      }
-      finally {}
-      paramQQAppInterface.b = paramBoolean2;
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int), paramQQAppInterface);
-      bool = paramQQAppInterface.a();
-      if (!bool) {
-        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int));
-      }
-      paramBoolean1 = bool;
-      if (paramBoolean2)
-      {
-        awgh.a().b(1, null);
-        paramBoolean1 = bool;
-      }
-    }
-  }
-  
-  private static void b(awez paramawez)
-  {
-    if (paramawez != null) {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramawez.jdField_a_of_type_Int));
-    }
-  }
-  
-  private boolean b()
-  {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "startDownloadConfigNoLogin");
-    boolean bool = badq.g(null);
-    if (bool)
-    {
-      VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, ajjy.a(2131648302), null);
-      ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new awfa(this));
-      return bool;
-    }
-    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, ajjy.a(2131648241), null);
-    return bool;
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface)
-  {
-    try
-    {
-      boolean bool = a(paramQQAppInterface, false, true);
-      return bool;
-    }
-    finally
-    {
-      paramQQAppInterface = finally;
-      throw paramQQAppInterface;
-    }
-  }
-  
-  public static boolean c(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool1 = false;
-    if (!VideoEnvironment.c(paramQQAppInterface)) {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
-    boolean bool2;
-    do
-    {
-      return bool1;
-      if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() >= 3)
-      {
-        VideoEnvironment.a("startDownloadResourceNoLogin", "reach to max session size=" + jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size(), null);
-        return false;
-      }
-      paramQQAppInterface = new awez(paramQQAppInterface, true);
-      paramQQAppInterface.b = false;
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int), paramQQAppInterface);
-      bool2 = paramQQAppInterface.b();
-      bool1 = bool2;
-    } while (bool2);
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int));
-    return bool2;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult | result=" + paramInt1 + ",serverError=" + paramInt2, null);
-    if ((paramInt1 == 1) || (paramInt1 == 0))
-    {
-      if (paramInt2 != 0)
-      {
-        VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| uncompress config error=" + paramInt2, null);
-        b(this);
-        return;
-      }
-      ArrayList localArrayList = new ArrayList(1);
-      paramInt1 = ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList);
-      if (paramInt1 == 0)
-      {
-        VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| check config success...", null);
-        this.jdField_a_of_type_Awfb.jdField_a_of_type_Boolean = false;
-        ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Awfb);
-        VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| mDownloadFilterSo=false", null);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          if (awlw.a(VideoEnvironment.a()) == 0) {
-            break label239;
-          }
-          ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Awfb);
-          this.jdField_a_of_type_Awfb.b = false;
-        }
-        for (;;)
-        {
-          if (awlw.f())
-          {
-            this.jdField_a_of_type_Awfb.c = false;
-            ShortVideoResourceManager.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Awfb);
-          }
-          if (awlw.i())
-          {
-            this.jdField_a_of_type_Awfb.e = false;
-            ShortVideoResourceManager.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Awfb);
-          }
-          this.jdField_a_of_type_Awfb.a();
-          return;
-          label239:
-          VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| getFilterSoState != 2", null);
-        }
-      }
-      VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| check config error=" + paramInt1, null);
-      b(this);
-      return;
-    }
-    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| result= RESULT_FAILED error=" + paramInt2, null);
-    b(this);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 19	awez:jdField_a_of_type_Int	I
+    //   6: iconst_m1
+    //   7: if_icmpeq +17 -> 24
+    //   10: aload_0
+    //   11: getfield 19	awez:jdField_a_of_type_Int	I
+    //   14: aload_0
+    //   15: getfield 30	awez:jdField_a_of_type_ArrayOfMqqUtilWeakReference	[Lmqq/util/WeakReference;
+    //   18: arraylength
+    //   19: iconst_1
+    //   20: isub
+    //   21: if_icmpge +36 -> 57
+    //   24: aload_0
+    //   25: aload_0
+    //   26: getfield 19	awez:jdField_a_of_type_Int	I
+    //   29: iconst_1
+    //   30: iadd
+    //   31: putfield 19	awez:jdField_a_of_type_Int	I
+    //   34: aload_0
+    //   35: getfield 30	awez:jdField_a_of_type_ArrayOfMqqUtilWeakReference	[Lmqq/util/WeakReference;
+    //   38: aload_0
+    //   39: getfield 19	awez:jdField_a_of_type_Int	I
+    //   42: new 21	mqq/util/WeakReference
+    //   45: dup
+    //   46: aload_1
+    //   47: invokespecial 40	mqq/util/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   50: aastore
+    //   51: iconst_1
+    //   52: istore_2
+    //   53: aload_0
+    //   54: monitorexit
+    //   55: iload_2
+    //   56: ireturn
+    //   57: iconst_0
+    //   58: istore_2
+    //   59: goto -6 -> 53
+    //   62: astore_1
+    //   63: aload_0
+    //   64: monitorexit
+    //   65: aload_1
+    //   66: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	67	0	this	awez
+    //   0	67	1	paramT	T
+    //   52	7	2	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   2	24	62	finally
+    //   24	51	62	finally
   }
 }
 

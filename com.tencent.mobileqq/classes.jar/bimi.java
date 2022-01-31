@@ -1,48 +1,96 @@
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.graphics.Point;
+import android.view.View;
 
 public class bimi
-  implements bijx
+  implements bimg
 {
-  public bimi(DoodleLayout paramDoodleLayout) {}
-  
-  public void a()
+  public float a(Point paramPoint, int paramInt1, int paramInt2)
   {
-    urk.b("DoodleLayout", "deleteVote.");
-    if (DoodleLayout.a(this.a) != null)
-    {
-      bihq localbihq = (bihq)DoodleLayout.a(this.a).a(bihq.class);
-      if (localbihq != null) {
-        localbihq.d();
-      }
-    }
+    return paramInt1 - paramPoint.x;
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
+  public int a(int paramInt)
   {
-    this.a.a(paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5);
+    return paramInt;
   }
   
-  public boolean a(bijy parambijy)
+  public int a(int paramInt1, int paramInt2)
   {
-    if (this.a.a != null)
-    {
-      this.a.a.setVisibility(0);
-      DoodleLayout.b(this.a);
-      this.a.a.a.a(parambijy);
-      parambijy.k = true;
-      parambijy = parambijy.a;
-      if (!this.a.a.a()) {}
-      for (boolean bool = true;; bool = false)
-      {
-        parambijy.lockData(bool);
-        this.a.a.requestLayout();
-        urp.a("video_shoot_new", "qa_edit", 1, 0, new String[0]);
-        return true;
-      }
-    }
+    return paramInt1;
+  }
+  
+  public void a(int paramInt, xfl paramxfl)
+  {
+    paramxfl.a(paramInt);
+  }
+  
+  public void a(Point paramPoint1, int paramInt, Point paramPoint2)
+  {
+    paramPoint2.set(paramPoint1.x - paramInt, paramPoint1.y);
+  }
+  
+  public void a(bijy parambijy, int paramInt, Point paramPoint)
+  {
+    paramPoint.set(paramPoint.x + parambijy.a(paramInt), paramPoint.y);
+  }
+  
+  public boolean a()
+  {
     return false;
+  }
+  
+  public boolean a(Point paramPoint, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    paramInt2 = paramPoint.x;
+    int i = paramPoint.x;
+    return (paramInt2 - paramInt1 < paramInt3 + paramInt4) && (i + paramInt1 > -paramInt4);
+  }
+  
+  public boolean a(bilw parambilw)
+  {
+    boolean bool = false;
+    View localView1 = parambilw.a();
+    View localView2 = parambilw.b();
+    int i = -parambilw.c();
+    int j = parambilw.getWidth();
+    int k = parambilw.c();
+    if ((parambilw.getDecoratedLeft(localView1) > i) && (parambilw.getPosition(localView1) > 0))
+    {
+      i = 1;
+      if ((parambilw.getDecoratedRight(localView2) >= j + k) || (parambilw.getPosition(localView2) >= parambilw.getItemCount() - 1)) {
+        break label102;
+      }
+    }
+    label102:
+    for (j = 1;; j = 0)
+    {
+      if ((i != 0) || (j != 0)) {
+        bool = true;
+      }
+      return bool;
+      i = 0;
+      break;
+    }
+  }
+  
+  public int b(int paramInt)
+  {
+    return 0;
+  }
+  
+  public int b(int paramInt1, int paramInt2)
+  {
+    return paramInt1;
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public int c(int paramInt1, int paramInt2)
+  {
+    return paramInt1;
   }
 }
 

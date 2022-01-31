@@ -1,76 +1,40 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.extendfriend.limitchat.limitchatstatehandler.IdleStateHandler.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
-public class antf
-  extends ante
+class antf
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public final String b = "ExtendFriendLimitChatIdleStateHandler";
+  antf(ante paramante) {}
   
-  antf(antg paramantg, int paramInt)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    super(paramantg, paramInt);
+    if ((!this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) && (this.a.d != -1)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setTapPos(this.a.d);
+    }
+    return false;
   }
   
-  private void c(anpe paramanpe)
+  public final boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    ThreadManager.getSubThreadHandler().post(new IdleStateHandler.1(this, paramanpe));
+    return false;
   }
   
-  public void a()
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "requestMatch");
-    this.a.a(101, null);
-    anod localanod = (anod)this.a.a.a(127);
-    if (localanod != null)
-    {
-      int i = ansl.a(this.a.a);
-      localanod.a(this.a.a.getCurrentAccountUin(), i);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) || (Math.abs(paramFloat1) <= Math.abs(paramFloat2)) || (this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c()) || (this.a.c) || (Math.abs(paramFloat1) <= this.a.jdField_a_of_type_Float) || ((paramFloat1 < 0.0F) && (this.a.jdField_a_of_type_Int == 2))) {}
+    while ((paramFloat1 > 0.0F) && (this.a.jdField_a_of_type_Int == 1)) {
+      return false;
     }
-  }
-  
-  void a(boolean paramBoolean)
-  {
-    QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "onCancelMatchMsg 取消匹配: " + paramBoolean);
-  }
-  
-  void a(boolean paramBoolean, int paramInt, anpe paramanpe, String paramString)
-  {
-    if ((paramBoolean) && (paramanpe != null))
-    {
-      QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "onCSRequestMsg 请求匹配 " + paramInt + paramanpe.toString());
-      return;
-    }
-    paramanpe = paramString;
-    if (paramString == null) {
-      paramanpe = "";
-    }
-    QLog.e("ExtendFriendLimitChatIdleStateHandler", 2, "onCSRequestMsg 请求匹配失败 suc:" + paramBoolean + " ret:" + paramInt + " errMsg : " + paramanpe);
-  }
-  
-  void a(boolean paramBoolean, anpe paramanpe)
-  {
-    if (paramanpe == null)
-    {
-      QLog.e("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg null indo");
-      return;
-    }
-    QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg ");
-    if (paramBoolean)
-    {
-      a(paramanpe.b, paramanpe.jdField_a_of_type_JavaLangString, paramanpe.jdField_a_of_type_ArrayOfByte);
-      c(paramanpe);
-      a(paramanpe.b, paramanpe.e);
-      return;
-    }
-    QLog.e("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg ");
+    int i = this.a.d;
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setSrcPos(i);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     antf
  * JD-Core Version:    0.7.0.1
  */

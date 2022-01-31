@@ -1,22 +1,132 @@
-import com.tencent.mobileqq.app.msgcache.MsgLruCache;
-import java.util.Comparator;
-import java.util.Map.Entry;
+import com.tencent.biz.pubaccount.AccountDetail.jce.SetRecvMsgStateRsp;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class akdo
-  implements Comparator<Map.Entry<String, Integer>>
+  implements ajtg
 {
-  public akdo(MsgLruCache paramMsgLruCache) {}
+  public void a(int paramInt) {}
   
-  public int a(Map.Entry<String, Integer> paramEntry1, Map.Entry<String, Integer> paramEntry2)
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo) {}
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void a(boolean paramBoolean, int paramInt, long paramLong) {}
+  
+  public void a(boolean paramBoolean, long paramLong, int paramInt) {}
+  
+  public void a(boolean paramBoolean, SetRecvMsgStateRsp paramSetRecvMsgStateRsp) {}
+  
+  public void a(boolean paramBoolean, String paramString) {}
+  
+  public void a(boolean paramBoolean, ArrayList<Long> paramArrayList) {}
+  
+  public void a(boolean paramBoolean, nmv paramnmv) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo) {}
+  
+  public void b(boolean paramBoolean, int paramInt) {}
+  
+  public void b(boolean paramBoolean, String paramString) {}
+  
+  public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (((Integer)paramEntry1.getValue()).intValue() < ((Integer)paramEntry2.getValue()).intValue()) {
-      return 1;
+    if (100 == paramInt)
+    {
+      paramObject = (akdq)paramObject;
+      a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean);
     }
-    if (paramEntry1.getValue() == paramEntry2.getValue()) {
-      return 0;
-    }
-    return -1;
+    do
+    {
+      return;
+      if (101 == paramInt)
+      {
+        if ((paramObject instanceof akdp))
+        {
+          paramObject = (akdp)paramObject;
+          b(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+          return;
+        }
+        if ((paramObject instanceof Integer))
+        {
+          b(paramBoolean, ((Integer)paramObject).intValue());
+          return;
+        }
+        a(paramBoolean, String.valueOf(paramObject));
+        return;
+      }
+      if (102 == paramInt)
+      {
+        if ((paramObject instanceof akdp))
+        {
+          paramObject = (akdp)paramObject;
+          a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+          return;
+        }
+        b(paramBoolean, String.valueOf(paramObject));
+        return;
+      }
+      if (103 == paramInt)
+      {
+        t_();
+        return;
+      }
+      if (104 == paramInt)
+      {
+        a(paramBoolean);
+        return;
+      }
+      if (105 == paramInt)
+      {
+        a(((Integer)paramObject).intValue());
+        return;
+      }
+      if (106 == paramInt)
+      {
+        a(paramBoolean, ((Boolean)paramObject).booleanValue());
+        return;
+      }
+      if (109 == paramInt)
+      {
+        a(paramBoolean, (nmv)paramObject);
+        return;
+      }
+      if (108 == paramInt)
+      {
+        paramObject = (HashMap)paramObject;
+        a(paramBoolean, ((Integer)paramObject.get("seq")).intValue(), ((Long)paramObject.get("uin")).longValue());
+        return;
+      }
+      if (110 == paramInt)
+      {
+        a(paramBoolean, (ArrayList)paramObject);
+        return;
+      }
+      if (111 == paramInt)
+      {
+        paramObject = (HashMap)paramObject;
+        long l = 0L;
+        paramInt = 0;
+        if (paramObject != null)
+        {
+          l = ((Long)paramObject.get("uin")).longValue();
+          paramInt = ((Integer)paramObject.get("status")).intValue();
+        }
+        a(paramBoolean, l, paramInt);
+        return;
+      }
+    } while ((112 != paramInt) || (!(paramObject instanceof SetRecvMsgStateRsp)));
+    a(paramBoolean, (SetRecvMsgStateRsp)paramObject);
   }
+  
+  public void t_() {}
 }
 
 

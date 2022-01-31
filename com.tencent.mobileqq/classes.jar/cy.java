@@ -1,32 +1,20 @@
-import android.os.AsyncTask;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.dataline.activities.LiteActivity;
+import com.tencent.widget.XPanelContainer;
 
 public class cy
+  implements View.OnTouchListener
 {
-  public boolean a;
+  public cy(LiteActivity paramLiteActivity) {}
   
-  protected void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    cv.a(2131628260, 1);
-  }
-  
-  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
-  {
-    this.a = true;
-  }
-  
-  protected void b()
-  {
-    cv.a(ajjy.a(2131637541), 1);
-  }
-  
-  protected void c()
-  {
-    cv.a(ajjy.a(2131637539), 1);
-  }
-  
-  protected void d()
-  {
-    cv.a(ajjy.a(2131637538), 1);
+    if (paramMotionEvent.getAction() == 0) {
+      this.a.a.a();
+    }
+    return false;
   }
 }
 

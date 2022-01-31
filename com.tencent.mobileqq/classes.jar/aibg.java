@@ -1,45 +1,37 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager.3.1;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-class aibg
-  extends Animation
+public class aibg
+  implements INetInfoHandler
 {
-  aibg(aibc paramaibc, View paramView, int paramInt) {}
+  aibg(aibf paramaibf) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString)
   {
-    paramFloat = (float)(paramFloat * (0.5D + Math.sqrt(paramFloat) / 2.0D));
-    this.jdField_a_of_type_AndroidViewView.getLayoutParams().width = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
-    if (paramFloat <= 0.4F) {
-      this.jdField_a_of_type_AndroidViewView.setAlpha((0.4F - Math.min(paramFloat, 0.4F)) / 0.4F);
+    long l = Thread.currentThread().getId();
+    if (aibf.a(this.a) == l) {
+      aibf.a(this.a);
     }
-    do
-    {
-      do
-      {
-        return;
-        if (paramFloat > 0.99F) {
-          break;
-        }
-      } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+    while (aibf.a(this.a) == null) {
       return;
-    } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+    }
+    aibf.a(this.a).post(new LbsFilterStatusManager.3.1(this));
   }
   
-  public boolean willChangeBounds()
-  {
-    return true;
-  }
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aibg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,126 @@
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
 
-class axkb
-  extends axkc
+public class axkb
 {
-  private axkm a;
+  private static volatile axkb a;
   
-  axkb(@NonNull String paramString, int paramInt1, int paramInt2)
+  public static axkb a()
   {
-    super(3, paramString);
-    if (paramString.length() >= 6)
+    if (a == null) {}
+    try
     {
-      char[] arrayOfChar = new char[3];
-      arrayOfChar[0] = paramString.charAt(3);
-      arrayOfChar[1] = paramString.charAt(4);
-      arrayOfChar[2] = ((char)(paramString.charAt(5) & 0xFF));
-      int i = 0;
-      if (i < 3)
-      {
-        if (arrayOfChar[i] == 'ú') {
-          arrayOfChar[i] = '\n';
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (arrayOfChar[i] == 'þ') {
-            arrayOfChar[i] = '\r';
-          }
-        }
+      if (a == null) {
+        a = new axkb();
       }
-      if (paramInt1 == 511) {
-        bool = true;
-      }
-      this.a = new axkm(arrayOfChar, paramInt2, true, bool);
+      return a;
     }
+    finally {}
   }
   
-  float a(@NonNull Paint paramPaint)
+  public Bundle a(String paramString, Bundle paramBundle)
   {
-    if (this.a != null)
+    Object localObject2 = null;
+    Object localObject1;
+    if ("CMD_GET_NICK_NAME_BY_UIN".equals(paramString))
     {
-      paramPaint = this.a.a();
-      if (paramPaint != null)
+      paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_GET_NICK_NAME_BY_UIN", paramBundle);
+      localObject1 = localObject2;
+      if (paramString != null)
       {
-        float f = paramPaint.getBounds().width();
-        if (QLog.isColorLevel()) {
-          QLog.d("NickWrapper", 2, "getWidth small span width " + f);
+        localObject1 = localObject2;
+        if (paramString.isSuccess()) {
+          localObject1 = paramString.data;
         }
-        return f;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("NickWrapper", 2, "getWidth with error drawable");
-    }
-    return 0.0F;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            do
+                            {
+                              return localObject1;
+                              if (!"CMD_GET_CURRENT_NICK_NAME".equals(paramString)) {
+                                break;
+                              }
+                              paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_GET_CURRENT_NICK_NAME", paramBundle);
+                              localObject1 = localObject2;
+                            } while (paramString == null);
+                            localObject1 = localObject2;
+                          } while (!paramString.isSuccess());
+                          return paramString.data;
+                          if (!"CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT".equals(paramString)) {
+                            break;
+                          }
+                          paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT", paramBundle);
+                          localObject1 = localObject2;
+                        } while (paramString == null);
+                        localObject1 = localObject2;
+                      } while (!paramString.isSuccess());
+                      return paramString.data;
+                      if (!"CMD_QUERY_VIDEO_REDBAG_STAT".equals(paramString)) {
+                        break;
+                      }
+                      paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_QUERY_VIDEO_REDBAG_STAT", paramBundle);
+                      localObject1 = localObject2;
+                    } while (paramString == null);
+                    localObject1 = localObject2;
+                  } while (!paramString.isSuccess());
+                  return paramString.data;
+                  if (!"CMD_GET_CURRENT_USER_HEAD".equals(paramString)) {
+                    break;
+                  }
+                  paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_GET_CURRENT_USER_HEAD", paramBundle);
+                  localObject1 = localObject2;
+                } while (paramString == null);
+                localObject1 = localObject2;
+              } while (!paramString.isSuccess());
+              return paramString.data;
+              if (!"CMD_DOWNLOAD_PTU_RES".equals(paramString)) {
+                break;
+              }
+              paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_DOWNLOAD_PTU_RES", paramBundle);
+              localObject1 = localObject2;
+            } while (paramString == null);
+            localObject1 = localObject2;
+          } while (!paramString.isSuccess());
+          return paramString.data;
+          localObject1 = localObject2;
+        } while (!"CMD_QUERY_STATUS_PTU_RES".equals(paramString));
+        paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_QUERY_STATUS_PTU_RES", paramBundle);
+        localObject1 = localObject2;
+      } while (paramString == null);
+      localObject1 = localObject2;
+    } while (!paramString.isSuccess());
+    return paramString.data;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axkb
  * JD-Core Version:    0.7.0.1
  */

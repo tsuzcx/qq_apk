@@ -1,90 +1,25 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.widget.ImageAnimationView;
+import com.tencent.widget.Gallery;
+
 public class azfg
+  implements Animation.AnimationListener
 {
-  public static void a(int paramInt, Object paramObject)
+  public azfg(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      try
-      {
-        awqx.b(null, "dc00898", "", "", "qq_vip", "0X8009E37", 2, 0, "", "", "", "");
-        return;
-      }
-      catch (ClassCastException paramObject)
-      {
-        paramObject.printStackTrace();
-        return;
-      }
-    case 2: 
-      awqx.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
-      return;
-    case 3: 
-      paramObject = (Object[])paramObject;
-      str = (String)paramObject[0];
-      if (((Boolean)paramObject[1]).booleanValue()) {
-        paramObject = "0";
-      }
-      break;
-    }
-    for (;;)
-    {
-      awqx.b(null, "dc00899", "Grp_set_new", "", "grpData_admin", "clk_image", 0, 0, str, "0", paramObject, "");
-      return;
-      if (((Boolean)paramObject[2]).booleanValue())
-      {
-        paramObject = "1";
-        continue;
-        awqx.b(null, "P_CliOper", "Grp_set", "", "Grp_Admin_data", "nonmber_Clk_head", 0, 0, (String)paramObject, "", "", "");
-        return;
-        paramObject = (Object[])paramObject;
-        awqx.b(null, "dc00898", "", "", "0X800A526", "0X800A526", ((Integer)paramObject[0]).intValue(), 0, (String)paramObject[1], "", "", "");
-        return;
-        awqx.b(null, "P_CliOper", "Grp_discuss", "", "discuss_AIO", "Clk_grpaio", 0, 0, (String)paramObject, "", "", "");
-        return;
-        awqx.b(null, "P_CliOper", "Grp_payjoin", "", "join_grp", "Clk_data", 0, 0, (String)paramObject, "", "", "");
-        return;
-        awqx.b(null, "CliOper", "", "", "0x80084B4", "0x80084B4", 0, 0, "", "", "", "");
-        return;
-        awqx.b(null, "CliOper", "", "", "0x80084B5", "0x80084B5", 0, 0, "", "", "", "");
-        return;
-        paramObject = (Object[])paramObject;
-        awqx.b(null, "dc00898", "", "", "0X800A527", "0X800A527", ((Integer)paramObject[0]).intValue(), 0, (String)paramObject[1], "", "", "");
-        return;
-        awqx.b(null, "dc00898", "", "", "kuolie", "0X80097DC", 0, 0, "", "", "", "");
-        return;
-        awqx.b(null, "dc00898", "", "", "0X80092D7", "0X80092D7", 0, 0, "", "", "", "");
-        return;
-        paramObject = (Object[])paramObject;
-        azzx.a("Grp_set_new", "grpData_visitor", "clk_join", 0, 0, new String[] { (String)paramObject[0], (String)paramObject[1] });
-        return;
-        awqx.b(null, "dc00898", "", "", "0X8007246", "0X8007246", 0, 0, "", "", "", "");
-        return;
-        paramObject = (Object[])paramObject;
-        awqx.b(null, "dc00899", "Grp_recom", "", "set_page", "page_exp", 0, 0, (String)paramObject[0], "", (String)paramObject[1], "");
-        return;
-        paramObject = (Object[])paramObject;
-        awqx.b(null, "dc00899", "Grp_recom", "", "set_page", "recom_exp", 0, 0, (String)paramObject[0], "", (String)paramObject[1], "");
-        return;
-        paramObject = (Object[])paramObject;
-        awqx.b(null, "P_CliOper", "Grp_set", "", "Grp_Visdata", "Clk_data", 0, 0, (String)paramObject[0], (String)paramObject[1], "", "");
-        return;
-        awqx.b(null, "P_CliOper", "Grp_discuss", "", "discuss_AIO", "Clk_objgrp", 0, 0, (String)paramObject, "", "", "");
-        return;
-        paramObject = (Object[])paramObject;
-        awqx.b(null, "dc00898", "", "", "0X800A525", "0X800A525", ((Integer)paramObject[0]).intValue(), 0, (String)paramObject[1], "", "", "");
-        return;
-        awqx.b(null, "P_CliOper", "Grp_rank", "", "Grp_data", "Clk_grprank", 0, 0, (String)paramObject, "", "", "");
-        return;
-        awqx.b(null, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
-      }
-      else
-      {
-        paramObject = "2";
-      }
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.setVisibility(4);
+    this.a.finish();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
   }
 }
 

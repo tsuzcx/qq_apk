@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.utils;
 
-import ajjy;
+import ajyc;
 import android.content.res.Resources;
-import bbmy;
+import bcpw;
 import com.tencent.qphone.base.util.BaseApplication;
 
 final class FriendsStatusUtil$1
@@ -10,7 +10,7 @@ final class FriendsStatusUtil$1
 {
   public void run()
   {
-    bbmy.a(BaseApplication.getContext(), ajjy.a(2131639156), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131167766));
+    bcpw.a(BaseApplication.getContext(), ajyc.a(2131704941), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
   }
 }
 

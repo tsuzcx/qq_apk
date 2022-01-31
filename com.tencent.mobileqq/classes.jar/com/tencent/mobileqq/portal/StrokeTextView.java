@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.portal;
 
-import aciy;
+import actn;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -43,7 +43,7 @@ public class StrokeTextView
   {
     this.jdField_a_of_type_AndroidTextTextPaint = getPaint();
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = aciy.a(2.0F, getResources());
+    this.jdField_c_of_type_Int = actn.a(2.0F, getResources());
     if (Build.VERSION.SDK_INT > 11) {
       setLayerType(1, null);
     }

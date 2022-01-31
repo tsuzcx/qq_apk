@@ -1,66 +1,75 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
 import java.util.ArrayList;
-import java.util.List;
 
 public class azke
+  extends BaseAdapter
 {
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, List<String> paramList, long paramLong)
+  public static final String a;
+  public static final String b = ajyc.a(2131701455);
+  protected Context a;
+  protected LayoutInflater a;
+  protected QQAppInterface a;
+  protected NewTroopCateView a;
+  protected ArrayList<azlz> a;
+  
+  static
   {
-    long l = LocalMultiProcConfig.getLong4Uin("aio_qzone_troop_gray_tips", 0L, Long.parseLong(paramString2));
-    if (System.currentTimeMillis() <= l * 1000L) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopGrayTipUtils", 2, "Unable to display gray tips during cool down");
-      }
-    }
-    do
+    jdField_a_of_type_JavaLangString = ajyc.a(2131701454);
+  }
+  
+  public azke(NewTroopCateView paramNewTroopCateView, QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_AndroidContentContext = paramNewTroopCateView.a;
+    this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCateView = paramNewTroopCateView;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void a(ArrayList<azlz> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    super.notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
     {
-      return;
-      i = QzoneConfig.getInstance().getConfig("aio_qzone_troop_gray_tips", "troop_gray_tips_min_photo_count", 9);
-      if (paramList.size() >= i) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopGrayTipUtils", 2, "Unable to display gray tips, current photos count: " + paramList.size() + " required min photos count: " + i);
-    return;
-    Object localObject = ajjy.a(2131654596);
-    String str2 = ajjy.a(2131654594);
-    String str1 = ajjy.a(2131654595);
-    str2 = (String)localObject + " " + str2 + " " + str1;
-    paramString1 = new aqax(paramString1, paramString2, str2, 1, -5040, 131086, System.currentTimeMillis() / 1000L);
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    if (i < paramList.size())
-    {
-      if (i != paramList.size() - 1) {
-        localStringBuilder.append((String)paramList.get(i)).append(",");
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localStringBuilder.append((String)paramList.get(i));
-      }
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560316, null);
+      paramView = new azkh(this, localView);
+      localView.setTag(paramView);
+      paramViewGroup = paramView;
     }
-    paramList = new ArrayList();
-    i = BaseApplicationImpl.getApplication().getResources().getColor(2131101512);
-    localObject = new MessageForGrayTips.HightlightItem(0, ((String)localObject).length(), Long.parseLong(paramString2), 0, 50, localStringBuilder.toString(), "", "", "", i);
-    paramString2 = new MessageForGrayTips.HightlightItem(str2.length() - str1.length(), str2.length(), Long.parseLong(paramString2), 0, 51, "", "", "", "", i);
-    paramList.add(localObject);
-    paramList.add(paramString2);
-    paramString1.a = paramList;
-    paramString2 = new MessageForUniteGrayTip();
-    paramString2.initGrayTipMsg(paramQQAppInterface, paramString1);
-    paramString2.saveExtInfoToExtStr("grayLastUniseq", paramLong + "");
-    aqay.a(paramQQAppInterface, paramString2);
-    LpReportInfo_pf00064.allReport(40, 3, 1);
+    for (;;)
+    {
+      paramViewGroup.a((azlz)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+      return localView;
+      paramViewGroup = (azkh)paramView.getTag();
+      localView = paramView;
+    }
   }
 }
 

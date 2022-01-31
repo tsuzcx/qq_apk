@@ -1,23 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.subscribe.widget.comment.component.richtext.element.ContentElement;
+import android.os.CountDownTimer;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class wgh
-  implements Parcelable.Creator<ContentElement>
+public class wgh
+  extends CountDownTimer
 {
-  public ContentElement a(Parcel paramParcel)
+  public wgh(QRDisplayActivity paramQRDisplayActivity, long paramLong1, long paramLong2)
   {
-    return new ContentElement();
+    super(paramLong1, paramLong2);
   }
   
-  public ContentElement[] a(int paramInt)
+  public void onFinish()
   {
-    return new ContentElement[paramInt];
+    QRDisplayActivity.a(this.a, true);
+    if (QRDisplayActivity.a(this.a) == null)
+    {
+      QRDisplayActivity.b(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("QRDisplayActivity", 4, "enter longclick");
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (QRDisplayActivity.a(this.a) == null);
+      QRDisplayActivity.c(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("QRDisplayActivity", 4, "enter longclickstop");
   }
+  
+  public void onTick(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wgh
  * JD-Core Version:    0.7.0.1
  */

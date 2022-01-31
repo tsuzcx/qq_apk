@@ -1,14 +1,18 @@
-class qov
-  extends omr
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Point;
+import android.view.View;
+
+final class qov
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  qov(qoe paramqoe, String paramString)
-  {
-    super(paramString);
-  }
+  qov(View paramView1, View paramView2) {}
   
-  public void a(oml paramoml)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramoml.h();
+    paramValueAnimator = (Point)paramValueAnimator.getAnimatedValue();
+    qol.a(this.a, paramValueAnimator);
+    qol.a(this.b, paramValueAnimator);
   }
 }
 

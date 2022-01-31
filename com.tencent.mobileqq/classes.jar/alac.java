@@ -1,13 +1,23 @@
-import cooperation.wadl.ipc.WadlResult;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.ARRelationShipAIOMsg;
 
-abstract interface alac
+public final class alac
+  implements Parcelable.Creator<ARRelationShipAIOMsg>
 {
-  public abstract void a(ArrayList<WadlResult> paramArrayList);
+  public ARRelationShipAIOMsg a(Parcel paramParcel)
+  {
+    return new ARRelationShipAIOMsg(paramParcel);
+  }
+  
+  public ARRelationShipAIOMsg[] a(int paramInt)
+  {
+    return new ARRelationShipAIOMsg[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alac
  * JD-Core Version:    0.7.0.1
  */

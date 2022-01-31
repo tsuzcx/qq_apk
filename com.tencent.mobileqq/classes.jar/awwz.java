@@ -1,55 +1,61 @@
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.animation.DecelerateInterpolator;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.SquareImageView;
 
-class awwz
-  implements View.OnTouchListener
+public class awwz
+  extends awww
 {
-  awwz(awwx paramawwx, View paramView) {}
+  public int a;
+  public FrameLayout a;
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public SquareImageView a;
+  public ImageView b;
+  public LinearLayout b;
+  public TextView b;
+  public URLImageView b;
+  public TextView c;
+  public ImageView d;
+  public TextView d;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public awwz(ViewGroup paramViewGroup, int paramInt)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (!this.jdField_a_of_type_Awwx.b)
-      {
-        this.jdField_a_of_type_Awwx.b = true;
-        ObjectAnimator localObjectAnimator = (ObjectAnimator)paramView.getTag(2131307359);
-        paramMotionEvent = localObjectAnimator;
-        if (localObjectAnimator == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("StructMsgItemLayout12", 2, "animator is null");
-          }
-          paramMotionEvent = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewView, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 0.9F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 0.95F }) });
-          paramMotionEvent.setInterpolator(new DecelerateInterpolator(2.0F));
-          paramMotionEvent.setDuration(100L);
-          paramView.setTag(2131307359, paramMotionEvent);
-        }
-        paramMotionEvent.start();
-      }
-      return true;
-      this.jdField_a_of_type_Awwx.a.onClick(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Awwx.b = false;
-      paramView = (ObjectAnimator)paramView.getTag(2131307359);
-      if (paramView != null) {
-        paramView.reverse();
-      }
-    }
+    super(paramViewGroup, paramInt);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    View localView = a(this.jdField_c_of_type_Int);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364811));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367679));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376878));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131371647));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131376236));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131367872));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131368889));
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131365429));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131365441));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131374722));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131379584));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379586));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131364485));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364515));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awwz
  * JD-Core Version:    0.7.0.1
  */

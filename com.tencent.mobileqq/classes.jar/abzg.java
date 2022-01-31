@@ -1,22 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import mqq.os.MqqHandler;
 
 public class abzg
-  implements View.OnTouchListener
+  extends MqqHandler
 {
-  public abzg(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public abzg(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramMotionEvent.getAction() == 1)
+    switch (paramMessage.what)
     {
-      this.a.j();
-      paramView = this.a.n;
-      this.a.a("Clk_find", paramView, "");
+    default: 
+      return;
     }
-    return true;
+    this.a.finish();
   }
 }
 

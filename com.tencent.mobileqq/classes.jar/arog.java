@@ -1,14 +1,32 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
-class arog
-  implements arol<Pair<String, Integer>, EmoticonPackage>
+public class arog
+  implements DialogInterface.OnClickListener
 {
-  arog(arnz paramarnz) {}
+  public arog(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public EmoticonPackage a(Pair<String, Integer> paramPair)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a.a((String)paramPair.first, ((Integer)paramPair.second).intValue());
+    if (paramInt == 0) {
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: 1})");
+      }
+    }
+    while (paramInt != 1)
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs4OpenApiIfNeeded("showDialog", 0, "({button: 1})");
+      return;
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: 0})");
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs4OpenApiIfNeeded("showDialog", 0, "({button: 0})");
   }
 }
 

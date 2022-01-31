@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bbaq;
-import bbce;
+import bcdq;
+import bcfe;
 
 class WebViewFragment$8$1
   implements Runnable
@@ -10,9 +10,9 @@ class WebViewFragment$8$1
   
   public void run()
   {
-    bbce localbbce = (bbce)this.a.this$0.a.a(16);
-    if (localbbce != null) {
-      localbbce.a();
+    bcfe localbcfe = (bcfe)this.a.this$0.a.a(16);
+    if (localbcfe != null) {
+      localbcfe.a();
     }
   }
 }

@@ -1,40 +1,14 @@
-import android.content.Context;
-import android.opengl.GLES20;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.ARGlobalConfigService;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
 public class akxh
+  extends alej
 {
-  public static int a(String paramString1, Context paramContext, int paramInt, String paramString2)
-  {
-    int i = 0;
-    paramInt = GLES20.glCreateShader(paramInt);
-    GLES20.glShaderSource(paramInt, paramString2);
-    GLES20.glCompileShader(paramInt);
-    paramContext = new int[1];
-    GLES20.glGetShaderiv(paramInt, 35713, paramContext, 0);
-    if (paramContext[0] == 0)
-    {
-      QLog.e(paramString1, 1, "Error compiling shader: " + GLES20.glGetShaderInfoLog(paramInt));
-      GLES20.glDeleteShader(paramInt);
-      paramInt = i;
-    }
-    for (;;)
-    {
-      if (paramInt == 0) {}
-      return paramInt;
-    }
-  }
+  public akxh(ARGlobalConfigService paramARGlobalConfigService) {}
   
-  public static void a(String paramString1, String paramString2)
+  public ARScanStarFaceConfigInfo a()
   {
-    for (;;)
-    {
-      int i = GLES20.glGetError();
-      if (i == 0) {
-        break;
-      }
-      QLog.e(paramString1, 1, paramString2 + ": glError " + i);
-    }
+    return this.a.a.a();
   }
 }
 

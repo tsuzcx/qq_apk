@@ -1,22 +1,54 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import java.util.Iterator;
-import java.util.List;
+import cooperation.qqreader.net.BaseCgiTask;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bgvf
-  implements ThreadPool.Job<Void>
+public class bgvf
+  extends bgut
 {
-  bgvf(bguw parambguw, List paramList) {}
+  public bgvf(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
   
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public void a(bgus parambgus)
   {
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramJobContext.hasNext())
+    boolean bool = false;
+    JSONObject localJSONObject = parambgus.a();
+    if (localJSONObject == null) {}
+    try
     {
-      long l = ((Long)paramJobContext.next()).longValue();
-      this.jdField_a_of_type_Bguw.a(l);
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore response json is null");
+      return;
     }
-    return null;
+    catch (JSONException parambgus)
+    {
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore parse failed: " + parambgus.getMessage());
+      return;
+    }
+    int i = localJSONObject.getInt("ret");
+    parambgus = localJSONObject.getString("msg");
+    localJSONObject = localJSONObject.getJSONObject("data");
+    if ((i != 0) || (localJSONObject == null) || (localJSONObject.length() == 0))
+    {
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore ret=" + i + "|msg=" + parambgus);
+      return;
+    }
+    i = localJSONObject.optInt("err_code", 0);
+    parambgus = localJSONObject.optString("err_msg");
+    if (i == 0) {
+      bool = true;
+    }
+    bgvm.b(ForceUserUpdateActivity.a(this.a), bool);
+    if (bool)
+    {
+      bgvo.d("ForceUserUpdateActivity", "onReceiveData: UpdateToQQBookstore succeed");
+      ForceUserUpdateActivity.c(this.a);
+      return;
+    }
+    ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore errMsg=" + parambgus);
+  }
+  
+  public void a(BaseCgiTask paramBaseCgiTask, String paramString)
+  {
+    ForceUserUpdateActivity.a(this.a, "onConnectionError: UpdateToQQBookstore error: " + paramString);
   }
 }
 

@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
-class abht
-  extends atog
+public class abht
+  implements View.OnClickListener
 {
-  abht(abhs paramabhs) {}
+  public abht(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  protected void b(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    super.b(paramBoolean);
-    PhoneUnityChangeActivity.a(this.a.a.a);
-    this.a.a.a.app.unRegistObserver(this);
-    if (paramBoolean)
-    {
-      ((ajof)this.a.a.a.app.getManager(102)).a(null);
-      this.a.a.a.setResult(4001);
-      this.a.a.a.finish();
-    }
+    paramView = new Intent(this.a, FontSettingActivity.class);
+    this.a.startActivity(paramView);
+    axqw.b(this.a.app, "CliOper", "", "", "Setting_tab", "0X8004FA2", 0, 0, "", "", "", "");
   }
 }
 

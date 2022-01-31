@@ -8,10 +8,10 @@ import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.gdtad.views.canvas.components.GdtCanvasComponentView;
 import com.tencent.gdtad.views.xijing.GdtButtonView;
 import java.lang.ref.WeakReference;
-import yny;
-import ypm;
-import ypy;
-import yqo;
+import yxs;
+import yzg;
+import yzs;
+import zag;
 
 public class GdtCanvasButtonComponentView
   extends GdtCanvasComponentView
@@ -28,7 +28,7 @@ public class GdtCanvasButtonComponentView
     super(paramContext, paramAttributeSet);
   }
   
-  public GdtCanvasButtonComponentView(Context paramContext, WeakReference<yqo> paramWeakReference, GdtCanvasButtonComponentData paramGdtCanvasButtonComponentData)
+  public GdtCanvasButtonComponentView(Context paramContext, WeakReference<zag> paramWeakReference, GdtCanvasButtonComponentData paramGdtCanvasButtonComponentData)
   {
     super(paramContext, paramWeakReference);
     a(paramContext, paramGdtCanvasButtonComponentData);
@@ -37,7 +37,7 @@ public class GdtCanvasButtonComponentView
   private void a(String paramString1, boolean paramBoolean, String paramString2, String paramString3)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((yqo)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramString1, paramBoolean, paramString2, paramString3);
+      ((zag)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramString1, paramBoolean, paramString2, paramString3);
     }
   }
   
@@ -46,9 +46,9 @@ public class GdtCanvasButtonComponentView
     return this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsButtonGdtCanvasButtonComponentData;
   }
   
-  public ypm a()
+  public yzg a()
   {
-    return this.jdField_a_of_type_Ypm;
+    return this.jdField_a_of_type_Yzg;
   }
   
   public void a(Context paramContext, GdtCanvasButtonComponentData paramGdtCanvasButtonComponentData)
@@ -56,7 +56,7 @@ public class GdtCanvasButtonComponentView
     g();
     if ((paramGdtCanvasButtonComponentData == null) || (!paramGdtCanvasButtonComponentData.isValid()) || (getResources() == null))
     {
-      yny.d("GdtCanvasButtonComponentView", "init error");
+      yxs.d("GdtCanvasButtonComponentView", "init error");
       a(false);
       return;
     }
@@ -80,8 +80,8 @@ public class GdtCanvasButtonComponentView
     {
       addView(paramContext, (ViewGroup.LayoutParams)localObject);
       localObject = paramGdtCanvasButtonComponentData.actionUrl;
-      paramContext.setOnClickListener(new ypy(this, paramGdtCanvasButtonComponentData.linkType, paramGdtCanvasButtonComponentData.isFixed, (String)localObject, paramGdtCanvasButtonComponentData.formModId));
-      this.jdField_a_of_type_Ypm = new ypm(new WeakReference(paramContext), new WeakReference(this));
+      paramContext.setOnClickListener(new yzs(this, paramGdtCanvasButtonComponentData.linkType, paramGdtCanvasButtonComponentData.isFixed, (String)localObject, paramGdtCanvasButtonComponentData.formModId));
+      this.jdField_a_of_type_Yzg = new yzg(new WeakReference(paramContext), new WeakReference(this));
       a(true);
       return;
       setLayoutParams(new FrameLayout.LayoutParams(-1, -2));

@@ -1,17 +1,12 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class atal
-  extends asyu
+class atal
+  implements DialogInterface.OnClickListener
 {
-  public ImageView e;
-  public ImageView f;
-  public TextView g;
+  atal(atah paramatah) {}
   
-  public atal(atak paramatak)
-  {
-    super(paramatak);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

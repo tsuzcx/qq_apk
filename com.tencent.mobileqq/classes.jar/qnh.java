@@ -1,12 +1,18 @@
-public abstract interface qnh
+import android.view.View;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
+
+class qnh
+  extends URLDrawableDownListener.Adapter
 {
-  public abstract String a();
+  qnh(qng paramqng) {}
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract String b();
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.a.a.setScaleType(ImageView.ScaleType.CENTER_CROP);
+  }
 }
 
 

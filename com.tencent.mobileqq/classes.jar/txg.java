@@ -1,25 +1,22 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 class txg
-  extends mmn
+  implements syt<tmt, tmu>
 {
-  txg(txb paramtxb, boolean paramBoolean) {}
+  txg(txf paramtxf, twu paramtwu) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(@NonNull tmt paramtmt, @Nullable tmu paramtmu, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (paramInt != 0)
+    if ((paramErrorMessage.isFail()) || (paramtmu == null))
     {
-      paramArrayOfByte = this.a;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramArrayOfByte.a(7, bool);
-        this.a.a(0, this.a.a.getString(2131654637));
-        return;
-      }
+      veg.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+      this.jdField_a_of_type_Twu.a(paramErrorMessage, null, false);
+      return;
     }
-    ((spz)sqg.a(10)).b("story_publish_flag_compress", Boolean.valueOf(this.b));
+    this.jdField_a_of_type_Txf.a.a(paramtmu.jdField_a_of_type_JavaUtilList, paramtmu.jdField_a_of_type_JavaLangString, paramtmu.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Twu.a(paramErrorMessage, twc.b(paramtmu.jdField_a_of_type_JavaUtilList), paramtmu.jdField_a_of_type_Boolean);
   }
 }
 

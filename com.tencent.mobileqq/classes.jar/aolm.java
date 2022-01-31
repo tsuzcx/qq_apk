@@ -1,34 +1,66 @@
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
 import com.tencent.qphone.base.util.QLog;
 
-class aolm
-  extends aoko
+public class aolm
+  extends LinearLayoutManager
 {
-  public aolm(aokk paramaokk)
+  public aolm(Context paramContext)
   {
-    super(paramaokk);
+    super(paramContext);
   }
   
-  protected String a()
+  public aolm(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    return "StateSenderCancelSendWhenPause";
+    super(paramContext, paramInt, paramBoolean);
   }
   
-  protected void a()
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
   {
-    if (this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    try
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      super.onLayoutChildren(paramRecycler, paramState);
       return;
     }
-    aokk.b(this.jdField_a_of_type_Aokk, 11, 8);
-    aokk.c(this.jdField_a_of_type_Aokk, 11, 8);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateSenderCancelSend)");
-    this.jdField_a_of_type_Aoko = new aoll(this.jdField_a_of_type_Aokk);
+    catch (IndexOutOfBoundsException paramRecycler)
+    {
+      QLog.e("WrapContentLinearLayoutManager", 1, "onLayoutChildren fail!", paramRecycler);
+    }
+  }
+  
+  public int scrollHorizontallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      paramInt = super.scrollHorizontallyBy(paramInt, paramRecycler, paramState);
+      return paramInt;
+    }
+    catch (IndexOutOfBoundsException paramRecycler)
+    {
+      QLog.e("WrapContentLinearLayoutManager", 1, "scrollHorizontallyBy fail!", paramRecycler);
+    }
+    return 0;
+  }
+  
+  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
+      return paramInt;
+    }
+    catch (IndexOutOfBoundsException paramRecycler)
+    {
+      QLog.e("WrapContentLinearLayoutManager", 1, "scrollVerticallyBy fail!", paramRecycler);
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aolm
  * JD-Core Version:    0.7.0.1
  */

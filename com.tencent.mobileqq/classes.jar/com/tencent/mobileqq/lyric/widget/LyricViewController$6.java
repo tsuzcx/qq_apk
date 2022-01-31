@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.lyric.widget;
 
-import arfr;
+import asbt;
 
 public class LyricViewController$6
   implements Runnable
@@ -9,7 +9,7 @@ public class LyricViewController$6
   {
     this.this$0.a.a(this.a);
     this.this$0.a.a();
-    arfr.a(this.this$0).b(this.this$0.a.a());
+    asbt.a(this.this$0).b(this.this$0.a.a());
   }
 }
 

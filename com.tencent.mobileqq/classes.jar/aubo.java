@@ -1,16 +1,10 @@
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
-public class aubo
-  implements bajj<Float>
+public abstract interface aubo
 {
-  public aubo(VipTagView paramVipTagView) {}
+  public abstract void a();
   
-  public void a(bajd<Float> parambajd, float paramFloat, Float paramFloat1, Transformation paramTransformation)
-  {
-    VipTagView.a(this.a, paramFloat1.floatValue());
-    this.a.invalidate();
-  }
+  public abstract void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong);
 }
 
 

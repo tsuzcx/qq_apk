@@ -1,32 +1,17 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelMediaTabView.1;
+import java.util.Comparator;
 
-final class aorn
-  implements View.OnClickListener
+public class aorn
+  implements Comparator<Long>
 {
-  aorn(aotc paramaotc, FileManagerEntity paramFileManagerEntity) {}
+  public aorn(QfileLocalFileDelMediaTabView.1 param1) {}
   
-  public void onClick(View paramView)
+  public int a(Long paramLong1, Long paramLong2)
   {
-    try
-    {
-      paramView = azjg.a(this.jdField_a_of_type_Aotc.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      if (paramView.e == null) {
-        return;
-      }
-      if (badq.a(this.jdField_a_of_type_Aotc.getActivity()) == 0)
-      {
-        azic.a(this.jdField_a_of_type_Aotc.getActivity(), this.jdField_a_of_type_Aotc.getActivity().getString(2131632133));
-        return;
-      }
-      azic.a(this.jdField_a_of_type_Aotc.getActivity(), this.jdField_a_of_type_Aotc.getActivity().getString(2131627191), 0);
-      TroopFileTransferManager.a(this.jdField_a_of_type_Aotc.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin).a(paramView.e, paramView.g, paramView.c, paramView.h);
-      return;
+    if (paramLong1.equals(paramLong2)) {
+      return 1;
     }
-    catch (Exception paramView) {}
+    return (int)(paramLong1.longValue() - paramLong2.longValue());
   }
 }
 

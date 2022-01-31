@@ -1,26 +1,28 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
+import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
 
 public class agkp
-  extends axwe
+  implements agjx
 {
-  public agkp(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
+  public agkp(PhoneLaunchActivity paramPhoneLaunchActivity) {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    super.onLoadFialed(paramURLDrawable, paramThrowable);
-    this.a.b();
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    super.onLoadSuccessed(paramURLDrawable);
-    this.a.d();
+    PhoneLaunchActivity.a(this.a).setEnabled(true);
+    if ((!paramBoolean) && (paramContext != null))
+    {
+      Intent localIntent = new Intent(paramContext, GuideBindPhoneActivity.class);
+      localIntent.putExtra("fromKeyForContactBind", 2);
+      paramContext.startActivity(localIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agkp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,23 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.widget.RotateableView;
 
-class aecm
-  implements ViewTreeObserver.OnPreDrawListener
+public class aecm
+  extends aecg
 {
-  aecm(aecb paramaecb, aeco paramaeco) {}
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  RotateableView jdField_a_of_type_ComTencentMobileqqWidgetRotateableView;
+  boolean jdField_a_of_type_Boolean = false;
+  public long b;
+  String b;
+  long jdField_c_of_type_Long;
+  View jdField_c_of_type_AndroidViewView;
+  String jdField_c_of_type_JavaLangString;
+  int e;
+  int f;
+  int g;
   
-  public boolean onPreDraw()
-  {
-    aecb.a(this.jdField_a_of_type_Aecb).getViewTreeObserver().removeOnPreDrawListener(this);
-    if (this.jdField_a_of_type_Aeco.b == 1)
-    {
-      aecb.a(this.jdField_a_of_type_Aecb).setBackgroundDrawable(new amyn(Color.parseColor("#1fa4fc"), 5.0F, aciy.a(14.0F, this.jdField_a_of_type_Aecb.a.getResources()), aciy.a(14.0F, this.jdField_a_of_type_Aecb.a.getResources())));
-      aecb.b(this.jdField_a_of_type_Aecb).setBackgroundDrawable(new amyn(Color.parseColor("#1fa4fc"), 5.0F, aecb.b(this.jdField_a_of_type_Aecb).getMeasuredWidth(), aecb.b(this.jdField_a_of_type_Aecb).getMeasuredHeight()));
-      aecb.a(this.jdField_a_of_type_Aecb).setImageResource(2130838932);
-    }
-    for (;;)
-    {
-      aecb.a(this.jdField_a_of_type_Aecb).setBackgroundDrawable(new amyn(Color.parseColor("#b2b5bd"), 5.0F, aecb.a(this.jdField_a_of_type_Aecb).getMeasuredWidth(), aecb.a(this.jdField_a_of_type_Aecb).getMeasuredHeight()));
-      aecb.c(this.jdField_a_of_type_Aecb).setBackgroundDrawable(new amyn(Color.parseColor("#b2b5bd"), 5.0F, aecb.c(this.jdField_a_of_type_Aecb).getMeasuredWidth(), aecb.c(this.jdField_a_of_type_Aecb).getMeasuredHeight()));
-      return true;
-      aecb.a(this.jdField_a_of_type_Aecb).setBackgroundDrawable(new amyn(Color.parseColor("#ff5fb5"), 5.0F, aciy.a(14.0F, this.jdField_a_of_type_Aecb.a.getResources()), aciy.a(14.0F, this.jdField_a_of_type_Aecb.a.getResources())));
-      aecb.b(this.jdField_a_of_type_Aecb).setBackgroundDrawable(new amyn(Color.parseColor("#ff5fb5"), 5.0F, aecb.b(this.jdField_a_of_type_Aecb).getMeasuredWidth(), aecb.b(this.jdField_a_of_type_Aecb).getMeasuredHeight()));
-      aecb.a(this.jdField_a_of_type_Aecb).setImageResource(2130838931);
-    }
-  }
+  public aecm(aeci paramaeci) {}
 }
 
 

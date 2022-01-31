@@ -1,8 +1,17 @@
-public abstract interface van
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class van
+  implements View.OnClickListener
 {
-  public abstract void a();
+  van(vaf paramvaf, vdm paramvdm) {}
   
-  public abstract void a(Runnable paramRunnable);
+  public void onClick(View paramView)
+  {
+    vel.a("home_page", "guide_shoot", 0, 0, new String[0]);
+    this.jdField_a_of_type_Vaf.a.a(false, true, 13, null);
+    this.jdField_a_of_type_Vdm.dismiss();
+  }
 }
 
 

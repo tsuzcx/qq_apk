@@ -1,32 +1,26 @@
 import android.content.Context;
+import android.content.SharedPreferences;
 
-public abstract class bdnm
+public class bdnm
 {
-  public static final String TAG = "BaselibLoader";
-  protected bdnn mBaselibContent;
-  
-  public bdnn getBaselib()
+  public static SharedPreferences a(Context paramContext, String paramString)
   {
-    return this.mBaselibContent;
-  }
-  
-  public boolean isBaseLibInit()
-  {
-    return (this.mBaselibContent != null) && (this.mBaselibContent.a());
-  }
-  
-  public abstract void loadBaselib(Context paramContext, bdno parambdno);
-  
-  public void setBaselib(bdnn parambdnn)
-  {
-    if ((parambdnn != null) && (parambdnn.a())) {
-      this.mBaselibContent = parambdnn;
+    String str;
+    if (paramString != null)
+    {
+      str = paramString;
+      if (paramString.length() != 0) {}
     }
+    else
+    {
+      str = "sdk_preference";
+    }
+    return paramContext.getSharedPreferences(str, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdnm
  * JD-Core Version:    0.7.0.1
  */

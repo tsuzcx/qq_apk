@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.jsp;
 
-import aqrl;
+import arme;
 
 public class DataApiPlugin$2
   implements Runnable
 {
-  public DataApiPlugin$2(aqrl paramaqrl, String paramString1, String paramString2) {}
+  public DataApiPlugin$2(arme paramarme, String paramString1, String paramString2) {}
   
   public void run()
   {

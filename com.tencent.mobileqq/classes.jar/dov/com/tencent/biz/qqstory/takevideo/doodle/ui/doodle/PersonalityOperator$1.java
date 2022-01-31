@@ -1,13 +1,13 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import bioh;
+import bkfc;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
-import urk;
+import veg;
 
 public class PersonalityOperator$1
   implements Runnable
 {
-  public PersonalityOperator$1(bioh parambioh, VideoMaterial paramVideoMaterial) {}
+  public PersonalityOperator$1(bkfc parambkfc, VideoMaterial paramVideoMaterial) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class PersonalityOperator$1
     this.this$0.a(this.a.getId());
     this.this$0.a(this.this$0.a, this.this$0.b, 1.0D);
     long l2 = System.currentTimeMillis();
-    urk.b("PersonalityOperator", "setVideoFilter " + this.a.getId() + " t:" + (l2 - l1));
+    veg.b("PersonalityOperator", "setVideoFilter " + this.a.getId() + " t:" + (l2 - l1));
   }
 }
 

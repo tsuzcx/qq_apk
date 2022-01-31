@@ -1,8 +1,14 @@
 public abstract interface aory
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void d();
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void e();
+  
+  public abstract void n();
+  
+  public abstract void p();
+  
+  public abstract void q();
 }
 
 

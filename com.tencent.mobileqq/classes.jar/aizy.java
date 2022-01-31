@@ -1,13 +1,49 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import java.util.List;
 
 class aizy
-  extends ajad
+  implements bbqr
 {
-  aizy(aizv paramaizv) {}
+  aizy(aizw paramaizw, List paramList, String paramString1, String paramString2, int paramInt) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public boolean a(String paramString, ApolloBaseInfo paramApolloBaseInfo)
   {
-    QLog.d("ApolloGameUtil", 2, " onFailure  the http retcode = " + paramInt);
+    this.jdField_a_of_type_JavaUtilList.remove(paramString);
+    QLog.i("cmgame_process.CmGameServerQIPCModule", 1, "CmShow ACTION_RENDER_VIEW_INIT_CMSHOW_DATA onGetBaseInfo uin:" + ApolloUtil.d(paramString));
+    if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      int i = airz.a(ApolloUtil.a(), this.jdField_a_of_type_JavaLangString, true);
+      int j = airz.a(ApolloUtil.a(), this.b, true);
+      paramString = new Bundle();
+      paramString.putInt("selfUinStatus", i);
+      paramString.putInt("friendUinStatus", j);
+      paramString = EIPCResult.createSuccessResult(paramString);
+      this.jdField_a_of_type_Aizw.callbackResult(this.jdField_a_of_type_Int, paramString);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean b(String paramString, ApolloBaseInfo paramApolloBaseInfo)
+  {
+    this.jdField_a_of_type_JavaUtilList.remove(paramString);
+    QLog.i("cmgame_process.CmGameServerQIPCModule", 1, "CmShow ACTION_RENDER_VIEW_INIT_CMSHOW_DATA onDressUpdated uin:" + ApolloUtil.d(paramString));
+    if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      int i = airz.a(ApolloUtil.a(), this.jdField_a_of_type_JavaLangString, true);
+      int j = airz.a(ApolloUtil.a(), this.b, true);
+      paramString = new Bundle();
+      paramString.putInt("selfUinStatus", i);
+      paramString.putInt("friendUinStatus", j);
+      paramString = EIPCResult.createSuccessResult(paramString);
+      this.jdField_a_of_type_Aizw.callbackResult(this.jdField_a_of_type_Int, paramString);
+      return true;
+    }
+    return false;
   }
 }
 

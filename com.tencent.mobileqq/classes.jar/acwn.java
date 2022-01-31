@@ -1,18 +1,44 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.AdapterView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class acwn
-  implements behi
+  implements AdapterView.OnItemClickListener
 {
   acwn(acwm paramacwm) {}
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (afss)acwm.a(this.a).a.getItem(paramInt - 1);
-    acwm.a(this.a, paramAdapterView);
-    acwm.a(this.a).dismiss();
-    awqx.b(acwm.a(this.a).a, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
+    int j = ((bbje)acwm.a(this.a)[0].get(paramInt)).c;
+    acwm.a(this.a).b();
+    int i = 0;
+    switch (j)
+    {
+    }
+    for (;;)
+    {
+      if (i != 0) {
+        axqw.b(null, "dc00898", "", "", "0X800A11B", "0X800A11B", i, 0, "", "", "", "");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("IntimateInfoShareHelper", 2, "intimate shareAction: " + paramInt + "," + j);
+      }
+      this.a.a(j, acwm.a(this.a));
+      return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
+      continue;
+      i = 5;
+      continue;
+      i = 6;
+    }
   }
 }
 

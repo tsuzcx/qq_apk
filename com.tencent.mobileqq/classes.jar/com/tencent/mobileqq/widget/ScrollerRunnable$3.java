@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.widget;
 
-import android.graphics.Color;
+import android.content.res.Resources;
 import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class ScrollerRunnable$3
   implements Runnable
@@ -13,7 +15,7 @@ class ScrollerRunnable$3
     if (ScrollerRunnable.a(this.this$0) != null) {
       ScrollerRunnable.a(this.this$0).setBackgroundColor(0);
     }
-    this.a.setBackgroundColor(Color.parseColor("#7FFFFFFF"));
+    this.a.setBackgroundColor(BaseApplicationImpl.getContext().getResources().getColor(2131166879));
     ScrollerRunnable.a(this.this$0, this.a);
   }
 }

@@ -1,29 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.TencentDocData;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity.8.1.1;
 
-class aaiv
-  implements View.OnClickListener
+public class aaiv
+  implements DialogInterface.OnClickListener
 {
-  aaiv(aait paramaait) {}
+  public aaiv(ArkFullScreenAppActivity.8.1.1 param1) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramView.getTag() instanceof String)) {}
-    do
-    {
-      return;
-      paramView = (ahzk)paramView.getTag();
-      if ((paramView.a instanceof FileManagerEntity))
-      {
-        paramView = (FileManagerEntity)paramView.a;
-        this.a.a(paramView);
-        return;
-      }
-    } while (!(paramView.a instanceof TencentDocData));
-    paramView = (TencentDocData)paramView.a;
-    this.a.a(paramView);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,640 +1,162 @@
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
-import android.provider.Settings.SettingNotFoundException;
-import android.provider.Settings.System;
-import android.text.TextUtils;
-import android.text.format.Time;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class baiu
+  extends akim
 {
-  private static int jdField_a_of_type_Int;
-  private static StringBuffer jdField_a_of_type_JavaLangStringBuffer;
-  private static java.text.DateFormat jdField_a_of_type_JavaTextDateFormat;
-  private static Calendar jdField_a_of_type_JavaUtilCalendar;
-  private static int jdField_b_of_type_Int;
-  private static java.text.DateFormat jdField_b_of_type_JavaTextDateFormat;
+  public baiu(TroopBatchAddFriendMgr paramTroopBatchAddFriendMgr) {}
   
-  private static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    GregorianCalendar localGregorianCalendar1 = new GregorianCalendar(paramInt1, paramInt2, paramInt3);
-    GregorianCalendar localGregorianCalendar2 = new GregorianCalendar(paramInt4, paramInt5, paramInt6);
-    return (int)((localGregorianCalendar1.getTimeInMillis() - localGregorianCalendar2.getTimeInMillis()) / 1000L / 60L / 60L / 24L);
-  }
-  
-  public static int a(long paramLong)
-  {
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(jdField_b_of_type_Int + paramLong);
-    return jdField_a_of_type_JavaUtilCalendar.get(11);
-  }
-  
-  public static int a(long paramLong, Calendar paramCalendar)
-  {
-    paramCalendar = new Time();
-    paramCalendar.set(paramLong);
-    long l = System.currentTimeMillis();
-    Time localTime = new Time();
-    localTime.set(l);
-    int i = localTime.yearDay - 1;
-    int j = localTime.yearDay;
-    if (paramCalendar.year == localTime.year) {
-      if (localTime.yearDay >= paramCalendar.yearDay) {}
+    Object localObject = (Long)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if ((localObject == null) || (((Long)localObject).longValue() == 0L)) {
+      break label31;
     }
+    label31:
+    while (!baqn.a(paramInt2)) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      paramInt1 = 1;
+      label47:
+      if (paramList != null) {
+        break label224;
+      }
+    }
+    label224:
+    for (int i = 0;; i = paramList.size())
+    {
+      QLog.i("troopBatchAddFrd.TroopBatchAddFriendMgr", 1, String.format("onUpdateTroopGetMemberList suc_troopUin_type_ts=%d_%s_%d_%d_%d", new Object[] { Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramInt2), Long.valueOf(paramLong), Integer.valueOf(i) }));
+      if (((Long)localObject).longValue() != paramLong) {
+        break;
+      }
+      paramList = (Long)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      if (!paramBoolean) {
+        break label235;
+      }
+      paramList = PreferenceManager.getDefaultSharedPreferences(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+      localObject = String.format(Locale.getDefault(), "%s_%s_%s", new Object[] { "sp_baf_data_check_flag_members", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString });
+      paramList.edit().putLong((String)localObject, paramLong).apply();
+      TroopBatchAddFriendMgr.a(this.a, paramString, true, paramLong, 2);
+      return;
+      paramInt1 = 0;
+      break label47;
+    }
+    label235:
+    this.a.a(paramString, paramLong, paramInt2);
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("troopBatchAddFrd.TroopBatchAddFriendMgr", 2, String.format("onBAFSecurityCheckResult suc_result_troopUin_type_ts=%b_%d_%s_%d_%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), paramString1, Integer.valueOf(paramInt2), Long.valueOf(paramLong) }));
+    }
+    if (!baqn.a(paramInt2)) {
+      return;
+    }
+    if ((paramBoolean) && (paramInt1 == 1))
+    {
+      TroopBatchAddFriendMgr.a(this.a, paramString1, true, paramLong, 1);
+      return;
+    }
+    this.a.a(paramString1, paramLong, paramInt2);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong, int paramInt)
+  {
+    if (!baqn.a(paramInt)) {}
+    Long localLong;
+    do
+    {
+      return;
+      localLong = (Long)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      TroopBatchAddFriendMgr.a(this.a, paramString, false, paramLong, 0);
+    } while (!QLog.isColorLevel());
+    if (localLong == null) {}
+    for (long l = 0L;; l = localLong.longValue())
+    {
+      QLog.i("troopBatchAddFrd.TroopBatchAddFriendMgr", 2, String.format("onTroopBatchAddFrdsDataPrepareErr troopUin_ts_type_reqTs=%s_%d_%d_%d", new Object[] { paramString, Long.valueOf(l), Integer.valueOf(paramInt), Long.valueOf(paramLong) }));
+      return;
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, long paramLong, int paramInt, boolean paramBoolean2)
+  {
+    Object localObject = (Long)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if ((localObject == null) || (((Long)localObject).longValue() == 0L)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!baqn.a(paramInt));
+      if (QLog.isColorLevel()) {
+        QLog.i("troopBatchAddFrd.TroopBatchAddFriendMgr", 2, String.format("onTroopBatchGetMemberRemark suc_troopUin_type_ts_curTs_bInc=%b_%s_%d_%d_%d_%b", new Object[] { Boolean.valueOf(paramBoolean1), paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong), Long.valueOf(((Long)localObject).longValue()), Boolean.valueOf(paramBoolean2) }));
+      }
+    } while (paramLong != ((Long)localObject).longValue());
+    localObject = (Long)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    if (paramBoolean1)
+    {
+      localObject = PreferenceManager.getDefaultSharedPreferences(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+      String str = String.format(Locale.getDefault(), "%s_%s_%s", new Object[] { "sp_baf_data_check_flag_remarks", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString });
+      ((SharedPreferences)localObject).edit().putLong(str, paramLong).apply();
+    }
+    TroopBatchAddFriendMgr.a(this.a, paramString, true, paramLong, 5);
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString1, String paramString2, long paramLong, int paramInt, boolean paramBoolean2, boolean paramBoolean3, HashMap<String, Integer> paramHashMap, List<String> paramList)
+  {
+    paramString2 = (Long)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
+    if ((paramString2 == null) || (paramString2.longValue() == 0L)) {}
     do
     {
       do
       {
         do
         {
-          return -1;
-          if (localTime.yearDay == paramCalendar.yearDay) {
-            return 2131654440;
-          }
-          if (paramCalendar.yearDay == i) {
-            return 2131655021;
-          }
-        } while ((paramCalendar.yearDay >= i) || (paramCalendar.yearDay <= j - 7));
-        switch (paramCalendar.weekDay)
-        {
-        default: 
-          return -1;
-        case 0: 
-          return 2131654072;
-        case 1: 
-          return 2131628650;
-        case 2: 
-          return 2131654699;
-        case 3: 
-          return 2131654963;
-        case 4: 
-          return 2131654347;
-        case 5: 
-          return 2131627141;
+          return;
+        } while (!baqn.a(paramInt));
+        if (QLog.isColorLevel()) {
+          QLog.i("troopBatchAddFrd.TroopBatchAddFriendMgr", 2, String.format("onTroopBatchReqMemberCmnFrds suc_troopUin_type_ts_curTs_bInc=%b_%s_%d_%d_%d_%b", new Object[] { Boolean.valueOf(paramBoolean1), paramString1, Integer.valueOf(paramInt), Long.valueOf(paramLong), Long.valueOf(paramString2.longValue()), Boolean.valueOf(paramBoolean3) }));
         }
-        return 2131652984;
-      } while (paramCalendar.year + 1 != localTime.year);
-      paramLong = (l - paramLong + 86400000L - 1L) / 86400000L;
-    } while ((paramLong <= 0L) || (paramLong > 7L));
-    if (paramLong == 1L) {
-      return 2131655021;
-    }
-    switch (paramCalendar.weekDay)
-    {
-    default: 
-      return -1;
-    case 0: 
-      return 2131654072;
-    case 1: 
-      return 2131628650;
-    case 2: 
-      return 2131654699;
-    case 3: 
-      return 2131654963;
-    case 4: 
-      return 2131654347;
-    case 5: 
-      return 2131627141;
-    }
-    return 2131652984;
-  }
-  
-  public static long a(long paramLong)
-  {
-    long l = paramLong;
-    if (paramLong == 0L) {
-      l = System.currentTimeMillis();
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(l / 1000L * 1000L);
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    return localCalendar.getTimeInMillis();
-  }
-  
-  public static CharSequence a(Context paramContext, int paramInt, long paramLong)
-  {
-    return a(paramContext, paramInt, paramLong, true);
-  }
-  
-  public static CharSequence a(Context paramContext, int paramInt, long paramLong, boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    try
-    {
-      SimpleDateFormat localSimpleDateFormat1 = (SimpleDateFormat)a();
-      if (paramInt == 0)
+      } while (paramLong != paramString2.longValue());
+      if ((paramBoolean2) || (!paramBoolean1)) {
+        paramString2 = (Long)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
+      }
+      if (!paramBoolean1)
       {
-        localStringBuilder.append(localSimpleDateFormat1.toLocalizedPattern());
-        return android.text.format.DateFormat.format(localStringBuilder.append(" ").toString(), paramLong) + b().format(Long.valueOf(paramLong));
+        this.a.a(paramString1, paramLong, paramInt);
+        return;
       }
-    }
-    catch (Resources.NotFoundException localNotFoundException)
-    {
-      SimpleDateFormat localSimpleDateFormat2;
-      for (;;)
-      {
-        localSimpleDateFormat2 = new SimpleDateFormat("HH:mm");
-      }
-      return a(paramContext, paramLong, localStringBuilder, localSimpleDateFormat2, paramInt, paramBoolean);
-    }
+    } while ((!paramBoolean1) || (!paramBoolean2));
+    paramString2 = PreferenceManager.getDefaultSharedPreferences(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+    paramHashMap = String.format(Locale.getDefault(), "%s_%s_%s", new Object[] { "sp_baf_data_check_flag_cmnfrds", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString1 });
+    paramString2.edit().putLong(paramHashMap, paramLong).apply();
+    TroopBatchAddFriendMgr.a(this.a, paramString1, true, paramLong, 3);
   }
   
-  public static CharSequence a(Context paramContext, long paramLong)
+  protected void a(boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2)
   {
-    if (jdField_a_of_type_JavaUtilCalendar == null) {
-      jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
+    if (!Long.toString(101509131L).equalsIgnoreCase(paramString2)) {}
+    while (!QLog.isColorLevel()) {
+      return;
     }
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
-    int i = jdField_a_of_type_JavaUtilCalendar.get(2);
-    int j = jdField_a_of_type_JavaUtilCalendar.get(5);
-    return String.format("%s%s%s%s", new Object[] { Integer.valueOf(i + 1), paramContext.getString(2131628651), Integer.valueOf(j), paramContext.getString(2131625883) });
-  }
-  
-  private static CharSequence a(Context paramContext, long paramLong, StringBuilder paramStringBuilder, SimpleDateFormat paramSimpleDateFormat, int paramInt, boolean paramBoolean)
-  {
-    Time localTime1 = new Time();
-    localTime1.set(paramLong);
-    Time localTime2 = new Time();
-    localTime2.setToNow();
-    int i;
-    int j;
-    if ((paramInt & 0x2) != 0)
-    {
-      i = 1;
-      if ((paramInt & 0x1) == 0) {
-        break label118;
-      }
-      j = 1;
-      label49:
-      if ((paramInt & 0x4) == 0) {
-        break label124;
-      }
-      paramInt = 1;
-      label59:
-      if (localTime1.year == localTime2.year) {
-        break label130;
-      }
-      paramStringBuilder.append(paramSimpleDateFormat.toLocalizedPattern()).append(" ");
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      if ((paramInt == 0) && (!paramBoolean))
-      {
-        return android.text.format.DateFormat.format(paramStringBuilder.toString().trim(), paramLong);
-        i = 0;
-        break;
-        label118:
-        j = 0;
-        break label49;
-        label124:
-        paramInt = 0;
-        break label59;
-        label130:
-        if (localTime1.yearDay == localTime2.yearDay) {
-          break label472;
-        }
-        int m = Math.abs(localTime2.yearDay - localTime1.yearDay);
-        if (localTime2.yearDay > localTime1.yearDay) {}
-        for (int k = 1;; k = 0)
-        {
-          if (k != 0) {
-            break label207;
-          }
-          paramStringBuilder.append(paramSimpleDateFormat.toLocalizedPattern()).append(" ");
-          paramInt = 0;
-          break;
-        }
-        label207:
-        if ((m == 1) && (j != 0))
-        {
-          paramStringBuilder.append(paramContext.getString(2131624463)).append(" ");
-          if (!paramBoolean) {
-            return paramStringBuilder.toString().trim();
-          }
-          return paramStringBuilder.toString() + b().format(Long.valueOf(paramLong));
-        }
-        if ((m == 2) && (paramInt != 0))
-        {
-          paramStringBuilder.append(paramContext.getString(2131624895)).append(" ");
-          if (!paramBoolean) {
-            return paramStringBuilder.toString().trim();
-          }
-          return paramStringBuilder.toString() + b().format(Long.valueOf(paramLong));
-        }
-        if ((m > 1) && (m < 7) && (i != 0))
-        {
-          paramStringBuilder.append("EEEE").append(" ");
-          paramInt = 0;
-          continue;
-        }
-        if (localTime1.year == localTime2.year)
-        {
-          paramStringBuilder.append("MM-dd").append(" ");
-          paramInt = 0;
-          continue;
-        }
-        paramStringBuilder.append(paramSimpleDateFormat.toLocalizedPattern()).append(" ");
-        paramInt = 0;
-        continue;
-      }
-      return android.text.format.DateFormat.format(paramStringBuilder.toString(), paramLong) + b().format(Long.valueOf(paramLong));
-      label472:
-      paramInt = 1;
-    }
-  }
-  
-  public static String a(long paramLong)
-  {
-    int i = (int)((System.currentTimeMillis() + jdField_a_of_type_Int) / 86400000L);
-    int j = (int)((jdField_a_of_type_Int + paramLong) / 86400000L);
-    if (i - j > 365) {
-      return (i - j) / 365 + ajjy.a(2131649145);
-    }
-    if (i - j > 30) {
-      return (i - j) / 30 + ajjy.a(2131649150);
-    }
-    if (i - j >= 1) {
-      return i - j + ajjy.a(2131649149);
-    }
-    try
-    {
-      String str = a(paramLong, "HH:mm");
-      return str;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TimeFormatterUtils", 2, localException.getMessage());
-      }
-    }
-    return "";
-  }
-  
-  public static String a(long paramLong, String paramString)
-  {
-    if (paramLong <= 0L) {
-      return null;
-    }
-    Date localDate = new Date(paramLong);
-    return new SimpleDateFormat(paramString).format(localDate);
-  }
-  
-  public static String a(long paramLong, boolean paramBoolean, String paramString)
-  {
-    return a(jdField_a_of_type_JavaLangStringBuffer, paramLong, paramBoolean, paramString);
-  }
-  
-  public static String a(Context paramContext, long paramLong)
-  {
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
-    int i = jdField_a_of_type_JavaUtilCalendar.get(1);
-    int j = jdField_a_of_type_JavaUtilCalendar.get(2);
-    int k = jdField_a_of_type_JavaUtilCalendar.get(5);
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
-    i = a(i, j, k, jdField_a_of_type_JavaUtilCalendar.get(1), jdField_a_of_type_JavaUtilCalendar.get(2), jdField_a_of_type_JavaUtilCalendar.get(5));
-    if (i == 0)
-    {
-      try
-      {
-        i = Settings.System.getInt(paramContext.getContentResolver(), "time_12_24");
-        if (i == 12) {
-          if (jdField_a_of_type_JavaUtilCalendar.get(11) < 12)
-          {
-            i = 2131653577;
-            String str = paramContext.getString(i);
-            paramContext = new SimpleDateFormat("hh:mm", paramContext.getResources().getConfiguration().locale);
-            if (!ajlo.a()) {
-              break label186;
-            }
-            return String.format("%s %s", new Object[] { str, paramContext.format(new Date(paramLong)) });
-          }
-        }
-      }
-      catch (Settings.SettingNotFoundException localSettingNotFoundException)
-      {
-        for (;;)
-        {
-          i = 0;
-          continue;
-          i = 2131624314;
-        }
-        label186:
-        return String.format("%s %s", new Object[] { paramContext.format(new Date(paramLong)), localSettingNotFoundException });
-      }
-      return new SimpleDateFormat("HH:mm", paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
-    }
-    if (i == 1) {
-      return paramContext.getString(2131655021);
-    }
-    if ((i < 7) && (i > 1)) {
-      return new SimpleDateFormat("E", paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
-    }
-    return a().format(new Date(paramLong));
-  }
-  
-  public static String a(Context paramContext, long paramLong, boolean paramBoolean)
-  {
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
-    int i = jdField_a_of_type_JavaUtilCalendar.get(1);
-    int j = jdField_a_of_type_JavaUtilCalendar.get(2);
-    int k = jdField_a_of_type_JavaUtilCalendar.get(6);
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
-    switch (b(i, j, k, jdField_a_of_type_JavaUtilCalendar.get(1), jdField_a_of_type_JavaUtilCalendar.get(2), jdField_a_of_type_JavaUtilCalendar.get(6)))
-    {
-    default: 
-      return null;
-    case 1: 
-      if (paramBoolean) {}
-      for (str = "HH:mm:ss";; str = "HH:mm") {
-        return new SimpleDateFormat(str, paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
-      }
-    case 2: 
-      if (paramBoolean) {}
-      for (str = "HH:mm:ss";; str = "HH:mm")
-      {
-        paramContext = new SimpleDateFormat(str, paramContext.getResources().getConfiguration().locale);
-        return String.format("%s %s", new Object[] { ajjy.a(2131649152), paramContext.format(new Date(paramLong)) });
-      }
-    case 3: 
-      if (paramBoolean) {}
-      for (str = "HH:mm:ss";; str = "HH:mm")
-      {
-        paramContext = new SimpleDateFormat(str, paramContext.getResources().getConfiguration().locale);
-        return String.format("%s %s", new Object[] { ajjy.a(2131649158), paramContext.format(new Date(paramLong)) });
-      }
-    case 4: 
-      if (paramBoolean) {}
-      for (str = "MM-dd HH:mm:ss";; str = "MM-dd HH:mm") {
-        return new SimpleDateFormat(str, paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
-      }
-    }
-    if (paramBoolean) {}
-    for (String str = "yyyy-MM-dd HH:mm:ss";; str = "yyyy-MM-dd HH:mm") {
-      return new SimpleDateFormat(str, paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
-    }
-  }
-  
-  public static String a(StringBuffer paramStringBuffer, long paramLong, boolean paramBoolean, String paramString)
-  {
-    int i = 0;
-    Object localObject2;
-    int j;
-    int m;
-    if (paramStringBuffer != null)
-    {
-      paramStringBuffer.setLength(0);
-      localObject2 = Calendar.getInstance();
-      ((Calendar)localObject2).setTimeInMillis(paramLong);
-      int k = a(paramLong, (Calendar)localObject2);
-      if (k != -1)
-      {
-        j = 1;
-        i = j;
-        if (k != 2131654440)
-        {
-          paramStringBuffer.append(BaseApplication.getContext().getString(k));
-          i = j;
-        }
-      }
-      m = ((Calendar)localObject2).get(11);
-      j = ((Calendar)localObject2).get(12);
-      if (i != 0)
-      {
-        boolean bool = android.text.format.DateFormat.is24HourFormat(BaseApplication.getContext());
-        if (k == 2131654440) {
-          if (!bool)
-          {
-            paramString = BaseApplication.getContext().getString(2131624314);
-            if ((m < 0) || (m >= 12)) {
-              break label470;
-            }
-            paramString = BaseApplication.getContext().getString(2131653577);
-          }
-        }
-      }
-    }
-    label257:
-    label470:
-    for (;;)
-    {
-      Object localObject1;
-      if (m == 12)
-      {
-        i = 12;
-        localObject2 = String.valueOf(j);
-        localObject1 = localObject2;
-        if (j < 10) {
-          localObject1 = "0" + (String)localObject2;
-        }
-        localObject1 = i + ":" + (String)localObject1;
-        if (!ajlo.a()) {
-          break label257;
-        }
-        paramStringBuffer.append(paramString).append((String)localObject1);
-      }
-      for (;;)
-      {
-        return paramStringBuffer.toString();
-        i = m % 12;
-        break;
-        paramStringBuffer.append((String)localObject1).append(paramString);
-        continue;
-        paramStringBuffer.append(m);
-        paramStringBuffer.append(':');
-        if (j < 10) {
-          paramStringBuffer.append('0');
-        }
-        paramStringBuffer.append(j);
-        continue;
-        if (!paramBoolean)
-        {
-          paramStringBuffer.append(' ');
-          paramStringBuffer.append(m);
-          paramStringBuffer.append(':');
-          if (j < 10) {
-            paramStringBuffer.append('0');
-          }
-          paramStringBuffer.append(j);
-          continue;
-          localObject1 = paramString;
-          if (TextUtils.isEmpty(paramString)) {
-            localObject1 = "yyyy-MM-dd";
-          }
-          try
-          {
-            paramString = new SimpleDateFormat((String)localObject1);
-            paramStringBuffer.append(paramString.format(((Calendar)localObject2).getTime()));
-            if (!paramBoolean)
-            {
-              paramStringBuffer.append(' ');
-              paramStringBuffer.append(m);
-              paramStringBuffer.append(':');
-              if (j < 10) {
-                paramStringBuffer.append('0');
-              }
-              paramStringBuffer.append(j);
-            }
-          }
-          catch (Exception paramString)
-          {
-            for (;;)
-            {
-              paramString = new SimpleDateFormat("yyyy-MM-dd");
-            }
-          }
-        }
-      }
-      return null;
-    }
-  }
-  
-  private static java.text.DateFormat a()
-  {
-    try
-    {
-      if (jdField_b_of_type_JavaTextDateFormat == null) {
-        jdField_b_of_type_JavaTextDateFormat = android.text.format.DateFormat.getDateFormat(BaseApplicationImpl.getApplication().getApplicationContext());
-      }
-      java.text.DateFormat localDateFormat = jdField_b_of_type_JavaTextDateFormat;
-      return localDateFormat;
-    }
-    finally {}
-  }
-  
-  public static void a()
-  {
-    TimeZone localTimeZone1 = TimeZone.getTimeZone("GMT+8");
-    TimeZone localTimeZone2 = TimeZone.getDefault();
-    jdField_a_of_type_Int = localTimeZone1.getRawOffset();
-    int i = localTimeZone2.getRawOffset();
-    jdField_b_of_type_Int = jdField_a_of_type_Int - i;
-    jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
-    jdField_a_of_type_JavaLangStringBuffer = new StringBuffer();
-  }
-  
-  private static int b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
-  {
-    if (paramInt1 != paramInt4) {
-      return 5;
-    }
-    if (paramInt3 == paramInt6) {
-      return 1;
-    }
-    if (paramInt3 == paramInt6 + 1) {
-      return 2;
-    }
-    if (paramInt3 == paramInt6 + 2) {
-      return 3;
-    }
-    return 4;
-  }
-  
-  public static int b(long paramLong)
-  {
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(jdField_b_of_type_Int + paramLong);
-    return jdField_a_of_type_JavaUtilCalendar.get(12);
-  }
-  
-  public static String b(long paramLong)
-  {
-    return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(paramLong));
-  }
-  
-  public static String b(Context paramContext, long paramLong)
-  {
-    return a(paramContext, paramLong, false);
-  }
-  
-  private static java.text.DateFormat b()
-  {
-    try
-    {
-      if (jdField_a_of_type_JavaTextDateFormat == null) {
-        jdField_a_of_type_JavaTextDateFormat = android.text.format.DateFormat.getTimeFormat(BaseApplicationImpl.getApplication().getApplicationContext());
-      }
-      java.text.DateFormat localDateFormat = jdField_a_of_type_JavaTextDateFormat;
-      return localDateFormat;
-    }
-    finally {}
-  }
-  
-  public static int c(long paramLong)
-  {
-    int i = -1;
-    int j = (int)((System.currentTimeMillis() + jdField_a_of_type_Int) / 86400000L);
-    int k = (int)((jdField_a_of_type_Int + paramLong) / 86400000L);
-    if (k == j) {
-      i = 2131654440;
-    }
-    do
-    {
-      return i;
-      if (k == j - 1) {
-        return 2131655021;
-      }
-    } while (k != j - 2);
-    return 2131624895;
-  }
-  
-  public static String c(Context paramContext, long paramLong)
-  {
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
-    int i = jdField_a_of_type_JavaUtilCalendar.get(1);
-    int j = jdField_a_of_type_JavaUtilCalendar.get(2);
-    int k = jdField_a_of_type_JavaUtilCalendar.get(6);
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
-    switch (b(i, j, k, jdField_a_of_type_JavaUtilCalendar.get(1), jdField_a_of_type_JavaUtilCalendar.get(2), jdField_a_of_type_JavaUtilCalendar.get(6)))
-    {
-    default: 
-      return null;
-    case 1: 
-      paramContext = new SimpleDateFormat("HH:mm", paramContext.getResources().getConfiguration().locale);
-      return String.format("%s %s", new Object[] { ajjy.a(2131649153), paramContext.format(new Date(paramLong)) });
-    case 2: 
-      paramContext = new SimpleDateFormat("HH:mm", paramContext.getResources().getConfiguration().locale);
-      return String.format("%s %s", new Object[] { ajjy.a(2131649160), paramContext.format(new Date(paramLong)) });
-    case 3: 
-      paramContext = new SimpleDateFormat("HH:mm", paramContext.getResources().getConfiguration().locale);
-      return String.format("%s %s", new Object[] { ajjy.a(2131649154), paramContext.format(new Date(paramLong)) });
-    case 4: 
-      return new SimpleDateFormat("MM-dd HH:mm", paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
-    }
-    return new SimpleDateFormat("yyyy-MM-dd HH:mm", paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
-  }
-  
-  public static int d(long paramLong)
-  {
-    try
-    {
-      jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
-      int i = jdField_a_of_type_JavaUtilCalendar.get(1);
-      int j = jdField_a_of_type_JavaUtilCalendar.get(2);
-      int k = jdField_a_of_type_JavaUtilCalendar.get(6);
-      jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
-      i = b(i, j, k, jdField_a_of_type_JavaUtilCalendar.get(1), jdField_a_of_type_JavaUtilCalendar.get(2), jdField_a_of_type_JavaUtilCalendar.get(6));
-      return i;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("calTimeInterval", 2, localException.getMessage());
-    }
-    return -1;
+    QLog.i("troopBatchAddFrd.TroopBatchAddFriendMgr", 2, String.format("onChangeTroopAIORedPoint clear active suc_troopUin_appid_from0x8c2 %b_%s_%s_%b", new Object[] { Boolean.valueOf(paramBoolean1), paramString1, paramString2, Boolean.valueOf(paramBoolean2) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baiu
  * JD-Core Version:    0.7.0.1
  */

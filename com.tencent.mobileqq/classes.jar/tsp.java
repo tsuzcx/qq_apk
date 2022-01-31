@@ -1,6 +1,11 @@
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.ArrayList;
+
 public abstract interface tsp
 {
-  public abstract void a(tso paramtso, int paramInt);
+  public abstract void a();
+  
+  public abstract void a(ArrayList<StoryVideoItem> paramArrayList);
 }
 
 

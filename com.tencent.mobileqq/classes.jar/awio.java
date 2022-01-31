@@ -1,296 +1,231 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import android.hardware.Camera;
-import android.hardware.Camera.Size;
+import android.annotation.TargetApi;
 import android.os.AsyncTask;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class awio
-  extends AsyncTask<Void, Void, String>
+  extends AsyncTask<Void, Void, Void>
 {
-  awin jdField_a_of_type_Awin;
+  private static Comparator<awih> jdField_a_of_type_JavaUtilComparator = new awir();
+  private static final ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(0, 3, 5L, TimeUnit.SECONDS, new LinkedBlockingQueue(128), new awip());
+  private static Comparator<awih> jdField_b_of_type_JavaUtilComparator = new awis();
+  private final int jdField_a_of_type_Int = 300;
+  private awit jdField_a_of_type_Awit;
+  private String jdField_a_of_type_JavaLangString;
+  private List<? extends awih> jdField_a_of_type_JavaUtilList;
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
+  boolean jdField_a_of_type_Boolean = false;
+  private String jdField_b_of_type_JavaLangString;
+  private List<Future<List<awih>>> jdField_b_of_type_JavaUtilList;
+  private List<awih> c;
   
-  public awio(awij paramawij, awin paramawin)
+  public awio(String paramString1, String paramString2, List<? extends awih> paramList, awit paramawit)
   {
-    this.jdField_a_of_type_Awin = paramawin;
-    badi.a();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Awit = paramawit;
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(20);
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.c = new ArrayList();
   }
   
-  private String a()
+  private void a(List<awih> paramList, String paramString)
   {
-    boolean bool2 = false;
-    Object localObject4 = this.jdField_a_of_type_Awin.jdField_a_of_type_ArrayOfByte;
-    Object localObject1 = this.jdField_a_of_type_Awin.jdField_a_of_type_JavaIoFile;
-    badi.a();
-    if (localObject1 == null) {
-      return null;
-    }
-    int i;
-    if (localObject4 != null)
+    if (paramList.size() > 20) {}
+    for (int i = 20;; i = paramList.size())
     {
-      i = alrg.a(this.jdField_a_of_type_Awij.jdField_a_of_type_Alqk, this.jdField_a_of_type_Awij.jdField_a_of_type_Int, this.jdField_a_of_type_Awin.jdField_a_of_type_Int);
+      int j = 0;
+      while (j < i)
+      {
+        awig localawig = (awig)paramList.get(j);
+        if (QLog.isColorLevel()) {
+          QLog.d("SearchTask", 2, "printSearchResultData " + paramString + "matchDegree : " + localawig.c() + " message time : " + localawig.Y);
+        }
+        j += 1;
+      }
+    }
+  }
+  
+  protected Void a(Void... paramVarArgs)
+  {
+    int j;
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
       if (QLog.isColorLevel()) {
-        QLog.i(awij.b, 2, "[onPictureTaken] mirror=" + this.jdField_a_of_type_Awin.jdField_a_of_type_Boolean + " frontFlip=" + this.jdField_a_of_type_Awij.jdField_a_of_type_Alqk.a().b() + " jpegRotation=" + i);
+        QLog.d("SearchTask", 2, "Start doInBackground , keyword = " + this.jdField_a_of_type_JavaLangString);
       }
-    }
-    for (;;)
-    {
-      try
+      int k = this.jdField_a_of_type_JavaUtilList.size();
+      int m = k / 300;
+      int i = 0;
+      int n;
+      if (i < m + 1)
       {
-        boolean bool3 = awij.a(this.jdField_a_of_type_Awij, this.jdField_a_of_type_Awin.jdField_a_of_type_AndroidHardwareCamera$Size.width, this.jdField_a_of_type_Awin.jdField_a_of_type_AndroidHardwareCamera$Size.height, this.jdField_a_of_type_Awin.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_Awin.jdField_a_of_type_AndroidGraphicsRect.height());
-        boolean bool1 = bool2;
-        if (this.jdField_a_of_type_Awin.jdField_a_of_type_Boolean)
+        n = i * 300;
+        if (n + 300 <= k) {
+          break label168;
+        }
+        j = k;
+        label91:
+        if ((!isCancelled()) && (!this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown())) {
+          break label178;
+        }
+      }
+      for (;;)
+      {
+        try
         {
-          bool1 = bool2;
-          if (!this.jdField_a_of_type_Awij.jdField_a_of_type_Alqk.a().b()) {
-            bool1 = true;
+          this.c.clear();
+          l1 = System.currentTimeMillis();
+          i = 0;
+          if ((i >= this.jdField_b_of_type_JavaUtilList.size()) || (isCancelled()))
+          {
+            this.jdField_b_of_type_JavaUtilList.clear();
+            boolean bool = isCancelled();
+            if (!bool) {
+              continue;
+            }
+            return null;
+            label168:
+            j = n + 300;
+            break label91;
+            label178:
+            paramVarArgs = this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new awiq(this, n, j));
+            this.jdField_b_of_type_JavaUtilList.add(paramVarArgs);
+            i += 1;
+            break;
           }
-        }
-        localObject4 = alrg.b((byte[])localObject4, this.jdField_a_of_type_Awin.jdField_a_of_type_AndroidGraphicsRect, bool1, i);
-        ahji.a("clip_rotate;");
-        bacm.b((Bitmap)localObject4, this.jdField_a_of_type_Awin.c, (File)localObject1);
-        ahji.a(false, this.jdField_a_of_type_Awin.jdField_a_of_type_AndroidHardwareCamera$Size.width, this.jdField_a_of_type_Awin.jdField_a_of_type_AndroidHardwareCamera$Size.height, this.jdField_a_of_type_Awin.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_Awin.jdField_a_of_type_AndroidGraphicsRect.height(), bool3, i, bool1);
-        ahji.a("save jpg;");
-        if (0 == 0) {}
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        QLog.e(awij.b, 2, "[onPictureTaken] createBitmap failed orientation:" + this.jdField_a_of_type_Awin.jdField_a_of_type_Int + ", " + localOutOfMemoryError.getMessage(), localOutOfMemoryError);
-        alrg.a(null);
-        if (0 == 0) {
-          continue;
-        }
-        try
-        {
-          throw new NullPointerException();
-        }
-        catch (IOException localIOException2)
-        {
-          localIOException2.printStackTrace();
-        }
-        continue;
-      }
-      catch (IOException localIOException3)
-      {
-        localIOException3.printStackTrace();
-        alrg.a(null);
-        if (0 == 0) {
-          continue;
-        }
-        try
-        {
-          throw new NullPointerException();
-        }
-        catch (IOException localIOException4)
-        {
-          localIOException4.printStackTrace();
-        }
-        continue;
-      }
-      finally
-      {
-        if (0 == 0) {
-          continue;
-        }
-        try
-        {
-          throw new NullPointerException();
-          throw localObject2;
-        }
-        catch (IOException localIOException5)
-        {
-          localIOException5.printStackTrace();
-          continue;
-        }
-        alrg.a(null);
-        continue;
-      }
-      try
-      {
-        throw new NullPointerException();
-        if ((localObject1 != null) && (0 != 0)) {}
-        try
-        {
-          bacm.a(BaseApplicationImpl.getContext(), ((File)localObject1).getAbsolutePath());
-          if (QLog.isColorLevel()) {
-            QLog.i(awij.b, 2, "[onPictureTaken] saveBitmapFileAsJPEG to " + ((File)localObject1).getPath());
-          }
-          if (!((File)localObject1).exists()) {
+          paramVarArgs = (List)((Future)this.jdField_b_of_type_JavaUtilList.get(i)).get();
+          if (i == 0)
+          {
+            this.c.addAll(paramVarArgs);
+            paramVarArgs.clear();
+            i += 1;
             continue;
           }
-          BaseApplicationImpl.sImageCache.put(((File)localObject1).getAbsolutePath() + "#short_video_camera_preview_cache", null);
+          localIterator = paramVarArgs.iterator();
         }
-        catch (Exception localException)
+        catch (InterruptedException paramVarArgs)
         {
-          QLog.e(awij.b, 2, "[onPictureTaken] saveBitmapFileAsJPEG failed: " + localException.getMessage());
-          if (!localObject2.exists()) {
-            break label660;
+          Iterator localIterator;
+          awih localawih;
+          paramVarArgs.printStackTrace();
+          if (!QLog.isColorLevel()) {
+            continue;
           }
-          BaseApplicationImpl.sImageCache.put(localObject2.getAbsolutePath() + "#short_video_camera_preview_cache", null);
-          continue;
-          alrg.a(null);
+          QLog.d("SearchTask", 2, "InterruptedException happens, keyword = " + this.jdField_a_of_type_JavaLangString + " : ");
+          this.jdField_a_of_type_Boolean = false;
+          return null;
+          if (((awih)this.c.get(j)).c() >= localawih.c()) {
+            continue;
+          }
+          this.c.set(j, localawih);
           continue;
         }
-        finally
+        catch (ExecutionException paramVarArgs)
         {
-          if (!localObject2.exists()) {
-            break label712;
+          long l1;
+          paramVarArgs.printStackTrace();
+          if (!QLog.isColorLevel()) {
+            continue;
           }
-          BaseApplicationImpl.sImageCache.put(localObject2.getAbsolutePath() + "#short_video_camera_preview_cache", null);
-          for (;;)
+          QLog.d("SearchTask", 2, "InterruptedException happens, keyword = " + this.jdField_a_of_type_JavaLangString + " : ");
+          continue;
+          a(this.c);
+          l2 = System.currentTimeMillis();
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("SearchTask", 2, "SearchTask ======= doInBackground time = " + (l2 - l1) + " , keyword = " + this.jdField_a_of_type_JavaLangString);
+          continue;
+        }
+        if (localIterator.hasNext())
+        {
+          localawih = (awih)localIterator.next();
+          if (!isCancelled())
           {
-            throw localObject5;
-            alrg.a(null);
+            j = this.c.indexOf(localawih);
+            if (-1 != j) {
+              continue;
+            }
+            this.c.add(localawih);
           }
-          Object localObject3 = null;
-          continue;
-        }
-        badi.a(awij.b, "TakePictureTask_writeTmpFile_needClip");
-        if (((File)localObject1).exists())
-        {
-          localObject1 = ((File)localObject1).getAbsolutePath();
-          return localObject1;
         }
       }
-      catch (IOException localIOException1)
-      {
-        localIOException1.printStackTrace();
-      }
-    }
-  }
-  
-  private void a(File paramFile, byte[] paramArrayOfByte)
-  {
-    do
-    {
-      try
-      {
-        localFileOutputStream = new FileOutputStream(paramFile);
-        paramFile.printStackTrace();
-      }
-      catch (Exception paramFile)
-      {
-        try
-        {
-          localFileOutputStream.write(paramArrayOfByte);
-          localFileOutputStream.flush();
-          localFileOutputStream.close();
-          return;
-        }
-        catch (Exception paramFile)
-        {
-          FileOutputStream localFileOutputStream;
-          paramArrayOfByte = localFileOutputStream;
-          continue;
-        }
-        paramFile = paramFile;
-        paramArrayOfByte = null;
-      }
-    } while (paramArrayOfByte == null);
-    try
-    {
-      paramArrayOfByte.close();
-      return;
-    }
-    catch (IOException paramFile)
-    {
-      paramFile.printStackTrace();
-      return;
-    }
-  }
-  
-  private String b()
-  {
-    int j = 0;
-    byte[] arrayOfByte = this.jdField_a_of_type_Awin.jdField_a_of_type_ArrayOfByte;
-    Object localObject = this.jdField_a_of_type_Awin.jdField_a_of_type_AndroidGraphicsRect;
-    localObject = this.jdField_a_of_type_Awin.jdField_a_of_type_JavaIoFile;
-    if (QLog.isColorLevel()) {
-      QLog.i(awij.b, 2, "Do not clip photo");
-    }
-    badi.a();
-    a((File)localObject, arrayOfByte);
-    if (awii.d(awii.j)) {
-      bacm.a(((File)localObject).getAbsolutePath(), "Orientation", String.valueOf(6));
-    }
-    while (!awii.d(awii.k))
-    {
-      badi.a(awij.b, "TakePictureTask_writePhotoFile");
-      if (!((File)localObject).exists()) {
-        break;
-      }
-      return ((File)localObject).getAbsolutePath();
-    }
-    int i = j;
-    switch (this.jdField_a_of_type_Awin.jdField_a_of_type_Int % 360)
-    {
-    default: 
-      i = j;
     }
     for (;;)
     {
-      bacm.a(((File)localObject).getAbsolutePath(), "Orientation", String.valueOf(i));
-      break;
-      i = 6;
-      continue;
-      i = 3;
-      continue;
-      i = 8;
-    }
-    return null;
-  }
-  
-  protected String a(Void... paramVarArgs)
-  {
-    if (this.jdField_a_of_type_Awin.d == 0) {
-      return b();
-    }
-    if (this.jdField_a_of_type_Awin.d == 1) {
-      return a();
-    }
-    return null;
-  }
-  
-  protected void a(String paramString)
-  {
-    
-    if (this.jdField_a_of_type_Awin.jdField_a_of_type_Ahns != null)
-    {
-      this.jdField_a_of_type_Awin.jdField_a_of_type_Ahns.a_(paramString);
-      if ((paramString == null) && (QLog.isColorLevel())) {
-        QLog.i(awij.b, 2, "Picture bitmap data error or output file not exist");
-      }
-    }
-    badi.a(awij.b, "TakePictureTask_onPictureTokenCb");
-    if (this.jdField_a_of_type_Awij.jdField_a_of_type_AndroidHardwareCamera != null) {}
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_Awij.jdField_a_of_type_AndroidHardwareCamera.startPreview();
-        this.jdField_a_of_type_Awij.jdField_a_of_type_Boolean = true;
-        badi.a(awij.b, "TakePictureTask");
-        return;
-      }
-      catch (RuntimeException paramString)
-      {
-        paramString.printStackTrace();
-        continue;
-      }
+      long l2;
+      this.jdField_a_of_type_Boolean = true;
       if (QLog.isColorLevel()) {
-        QLog.i(awij.b, 2, "[onPostExecute]mCamera is " + null);
+        QLog.d("SearchTask", 2, "doInBackground:: inputSet is null.");
       }
+    }
+  }
+  
+  @TargetApi(11)
+  public void a()
+  {
+    executeOnExecutor(jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor, new Void[0]);
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchTask", 2, "Start execute , keyword = " + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    if (isCancelled())
+    {
+      this.c.clear();
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.shutdown();
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchTask", 2, "onPostExecute:: isCancelled.");
+      }
+    }
+    while (this.jdField_a_of_type_Awit == null) {
+      return;
+    }
+    int i = 1;
+    if (this.jdField_a_of_type_Boolean) {
+      i = 0;
+    }
+    this.jdField_a_of_type_Awit.a(i, this.c);
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.shutdown();
+  }
+  
+  protected void a(List<awih> paramList)
+  {
+    long l = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchTask", 2, "start sortResultSet(), keyword = " + this.jdField_a_of_type_JavaLangString);
+    }
+    Collections.sort(paramList, jdField_a_of_type_JavaUtilComparator);
+    int i = Math.min(paramList.size(), 30);
+    List localList = paramList.subList(0, i);
+    Collections.sort(localList, jdField_b_of_type_JavaUtilComparator);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(localList);
+    localArrayList.addAll(paramList.subList(i, paramList.size()));
+    a(paramList, "after sort ");
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchTask", 2, "sortResultSet() time = " + (System.currentTimeMillis() - l) + " , keyword = " + this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awio
  * JD-Core Version:    0.7.0.1
  */

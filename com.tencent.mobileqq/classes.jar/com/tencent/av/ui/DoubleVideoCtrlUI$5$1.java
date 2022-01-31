@@ -2,7 +2,7 @@ package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
-import kvq;
+import lgf;
 
 class DoubleVideoCtrlUI$5$1
   implements Runnable
@@ -13,9 +13,9 @@ class DoubleVideoCtrlUI$5$1
   {
     if ((this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$5.this$0.a != null) && (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$5.this$0.a.a() != null))
     {
-      kvq localkvq = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$5.this$0.a.a();
-      QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$5.this$0.c, 1, "StartGlassCheck, lCurrent[" + this.jdField_a_of_type_Long + "], lLastTickFinal[" + this.b + "], VideoGlassWaitTime[" + localkvq.P + "], DefaultTimeOutRule[" + localkvq.Q + "], GlassSwitch[" + localkvq.O + "]");
-      if ((this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$5.this$0.a(localkvq.Q)) && (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$5.this$0.a.a().O != 0)) {
+      lgf locallgf = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$5.this$0.a.a();
+      QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$5.this$0.c, 1, "StartGlassCheck, lCurrent[" + this.jdField_a_of_type_Long + "], lLastTickFinal[" + this.b + "], VideoGlassWaitTime[" + locallgf.R + "], DefaultTimeOutRule[" + locallgf.S + "], GlassSwitch[" + locallgf.Q + "]");
+      if ((this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$5.this$0.a(locallgf.S)) && (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$5.this$0.a.a().Q != 0)) {
         DoubleVideoCtrlUI.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$5.this$0, false);
       }
     }

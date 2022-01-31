@@ -1,18 +1,8 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-
-class akya
-  implements Animator.AnimatorListener
+public abstract interface akya
 {
-  akya(akxy paramakxy) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void a(Runnable paramRunnable);
 }
 
 

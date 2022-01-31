@@ -23,7 +23,6 @@ import com.tencent.ttpic.facedetect.GenderType;
 import com.tencent.ttpic.filament.FilamentFilter;
 import com.tencent.ttpic.filament.FilamentParticleFilter;
 import com.tencent.ttpic.filter.ActFilters;
-import com.tencent.ttpic.filter.Audio3DFilter;
 import com.tencent.ttpic.filter.CameraARFilterGesture;
 import com.tencent.ttpic.filter.CrazyFaceFilters;
 import com.tencent.ttpic.filter.CustomVideoFilter;
@@ -43,12 +42,12 @@ import com.tencent.ttpic.filter.FacialFeatureFilter;
 import com.tencent.ttpic.filter.FastBlurFilter;
 import com.tencent.ttpic.filter.FastParticleFilter;
 import com.tencent.ttpic.filter.FastStickerFilter;
-import com.tencent.ttpic.filter.GameFilter;
 import com.tencent.ttpic.filter.HairCos;
 import com.tencent.ttpic.filter.HairDecolor;
 import com.tencent.ttpic.filter.HairSticker;
 import com.tencent.ttpic.filter.HeadCropFilter;
 import com.tencent.ttpic.filter.LutItemsFilter;
+import com.tencent.ttpic.filter.MaterialLoadFinishListener;
 import com.tencent.ttpic.filter.MultiViewerFilter;
 import com.tencent.ttpic.filter.NormalVideoFilter;
 import com.tencent.ttpic.filter.PhantomFilter;
@@ -140,7 +139,6 @@ public class VideoFilterList
   public static boolean sIsUseFreezeFrame = false;
   private AIAttr aiAttr;
   private CameraARFilterGesture arFilterGesture;
-  private Audio3DFilter audio3DFilter;
   private List<VideoFilterBase> bgDynamicStickerFilters;
   private List<VideoFilterBase> bgStaticStickerFilters;
   private List<NormalVideoFilter> bodyFilters = new ArrayList();
@@ -177,7 +175,6 @@ public class VideoFilterList
   public int filterWidth = 0;
   private List<VideoFilterBase> filters = new ArrayList();
   private Frame freezeFrameSnapshotFrame;
-  private GameFilter gameFilter;
   private GaussianBlurFilterCompose gaussianCompose;
   private List<NormalVideoFilter> gestureFilters = new ArrayList();
   private List<GPUParticleFilter> gestureGpuParticleFilters = new ArrayList();
@@ -252,58 +249,6 @@ public class VideoFilterList
   private List<VideoFilterBase> starParticleFilters = new ArrayList();
   public List<StaticCountFilter> staticCountFilters;
   private VoiceTextFilter voiceTextFilter;
-  
-  private Frame RenderProcessForAudio3DFilter(Frame paramFrame1, Frame paramFrame2, List<Face> paramList, int paramInt, PTFaceAttr paramPTFaceAttr, PersonParam paramPersonParam)
-  {
-    if (paramFrame2 == null)
-    {
-      paramFrame2 = this.audio3DFilter;
-      if (!paramPTFaceAttr.isPhoneFlatHorizontal()) {
-        break label171;
-      }
-    }
-    label171:
-    for (int i = paramPTFaceAttr.getLastFaceDetectedPhoneRotation();; i = paramPTFaceAttr.getRotation())
-    {
-      paramFrame2.updateGameFilterRotation(i);
-      this.audio3DFilter.setFaceCount(paramInt);
-      this.audio3DFilter.addSrcTexture(this.multiViewerSrcTexture);
-      if (paramInt > 0) {
-        break label181;
-      }
-      paramFrame2 = paramPTFaceAttr.getTriggeredExpression();
-      paramList = (PTHandAttr)this.aiAttr.getAvailableData(AEDetectorType.HAND.value);
-      if (paramList != null) {
-        paramFrame2.add(Integer.valueOf(paramList.getHandType()));
-      }
-      paramFrame2 = new PTDetectInfo.Builder().aiAttr(this.aiAttr).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).triggeredExpression(paramFrame2).timestamp(paramPTFaceAttr.getTimeStamp()).faceDetector(paramPTFaceAttr.getFaceDetector()).build();
-      this.audio3DFilter.updatePreview(paramFrame2);
-      this.audio3DFilter.render(paramFrame1, this.aiAttr, paramPTFaceAttr);
-      return paramFrame1;
-      paramFrame1 = paramFrame2;
-      break;
-    }
-    label181:
-    PTHandAttr localPTHandAttr = (PTHandAttr)this.aiAttr.getAvailableData(AEDetectorType.HAND.value);
-    if (localPTHandAttr != null) {}
-    for (paramFrame2 = localPTHandAttr.getHandPointList();; paramFrame2 = null)
-    {
-      i = 0;
-      while ((i < paramInt) && (i < paramList.size()))
-      {
-        Object localObject = (Face)paramList.get(i);
-        Set localSet = paramPTFaceAttr.getTriggeredExpression();
-        if (localPTHandAttr != null) {
-          localSet.add(Integer.valueOf(localPTHandAttr.getHandType()));
-        }
-        localObject = new PTDetectInfo.Builder().facePoints(((Face)localObject).facePoints).faceAngles(((Face)localObject).faceAngles).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).handPoints(paramFrame2).handActionCounter(AIActionCounter.getActions(AIActionCounter.AI_TYPE.HAND)).aiAttr(this.aiAttr).triggeredExpression(localSet).phoneAngle(paramPTFaceAttr.getRotation()).timestamp(paramPTFaceAttr.getTimeStamp()).faceDetector(paramPTFaceAttr.getFaceDetector()).build();
-        this.audio3DFilter.updatePreview(localObject);
-        this.audio3DFilter.setRenderParams(paramPersonParam);
-        i += 1;
-      }
-      break;
-    }
-  }
   
   private Frame RenderProcessForComicEffectFilters(int paramInt, Frame paramFrame, List<ComicEffectFilter> paramList)
   {
@@ -783,9 +728,6 @@ public class VideoFilterList
     if (this.fastBodyStickerFilter != null) {
       this.fastBodyStickerFilter.destroyAudio();
     }
-    if (this.audio3DFilter != null) {
-      this.audio3DFilter.destroyAudio();
-    }
     if (this.bodyFilters != null)
     {
       localIterator = this.bodyFilters.iterator();
@@ -976,7 +918,7 @@ public class VideoFilterList
         {
           localObject2 = (NormalVideoFilter)this.gestureFilters.get(0);
           if ((localObject2 != null) && (((NormalVideoFilter)localObject2).getStickerItem() != null)) {
-            return TriggerUtil.isGestureTriggered(paramPTHandAttr, ((NormalVideoFilter)localObject2).getStickerItem().getTriggerTypeInt());
+            return TriggerUtil.isGestureTriggered(paramPTHandAttr, ((NormalVideoFilter)localObject2).getStickerItem().getTriggerTypeInt(), 0, null, null);
           }
         }
       }
@@ -1950,47 +1892,240 @@ public class VideoFilterList
       GLES20.glViewport(0, 0, paramFrame.width, paramFrame.height);
       paramFrame = updateAndRenderBeforeEffectTriggerFilters(updateAndRenderBeforeComicEffectFilters(paramFrame, paramPTFaceAttr), paramPTFaceAttr);
       if (!VideoMaterialUtil.isFaceCopyMaterial(getMaterial())) {
-        break;
+        break label194;
       }
-      paramAIAttr = this.filters.iterator();
-      for (;;)
+      paramPTFaceAttr = this.filters.iterator();
+      while (paramPTFaceAttr.hasNext())
       {
-        paramPTFaceAttr = paramFrame;
-        if (!paramAIAttr.hasNext()) {
-          break;
-        }
-        paramPTFaceAttr = (VideoFilterBase)paramAIAttr.next();
-        if ((paramPTFaceAttr instanceof FaceCopyFilter))
+        paramAIAttr = (VideoFilterBase)paramPTFaceAttr.next();
+        if ((paramAIAttr instanceof FaceCopyFilter))
         {
-          paramPTFaceAttr = (FaceCopyFilter)paramPTFaceAttr;
-          paramPTFaceAttr.setFaceParams(localList1, paramFrame.getTextureId());
-          paramPTFaceAttr.renderProcess(localSet);
+          paramAIAttr = (FaceCopyFilter)paramAIAttr;
+          paramAIAttr.setFaceParams(localList1, paramFrame.getTextureId());
+          paramAIAttr.renderProcess(localSet);
         }
       }
     }
-    if (VideoMaterialUtil.isFaceSwitchMaterial(getMaterial()))
+    Object localObject1;
+    for (;;)
     {
-      this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.copyFrame[0]);
+      GlUtil.setBlendMode(false);
+      localObject1 = paramFrame;
+      label191:
+      return localObject1;
+      label194:
+      if (VideoMaterialUtil.isFaceSwitchMaterial(getMaterial()))
+      {
+        this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.copyFrame[0]);
+        GLES20.glBindFramebuffer(36160, paramFrame.getFBO());
+        GLES20.glViewport(0, 0, paramFrame.width, paramFrame.height);
+        paramPTFaceAttr = this.filters.iterator();
+        while (paramPTFaceAttr.hasNext())
+        {
+          paramAIAttr = (VideoFilterBase)paramPTFaceAttr.next();
+          if ((paramAIAttr instanceof SwitchFaceFilter))
+          {
+            paramAIAttr = (SwitchFaceFilter)paramAIAttr;
+            paramAIAttr.setFaceParams(localList1, this.copyFrame[0].getTextureId());
+            paramAIAttr.renderProcess(localSet);
+          }
+        }
+      }
+      else
+      {
+        if (getMaterial().getShaderType() != VideoMaterialUtil.SHADER_TYPE.DOODLE.value) {
+          break;
+        }
+        paramPTFaceAttr = this.filters.iterator();
+        while (paramPTFaceAttr.hasNext())
+        {
+          paramAIAttr = (VideoFilterBase)paramPTFaceAttr.next();
+          if ((paramAIAttr instanceof DoodleFilter))
+          {
+            paramAIAttr = (DoodleFilter)paramAIAttr;
+            paramAIAttr.setTouchPoints(localList1, this.mTouchPoints, paramFrame.width, paramFrame.height, this.mScaleFace);
+            paramAIAttr.renderProcess();
+          }
+        }
+      }
+    }
+    int j = Math.min(localList1.size(), getMaterial().getMaxFaceCount());
+    Object localObject2 = new ArrayList();
+    if (VideoMaterialUtil.isBodyDetectMaterial(this.material)) {
+      localObject2 = getBodyPoints(paramAIAttr);
+    }
+    for (;;)
+    {
+      Object localObject4;
+      Object localObject5;
+      if ((this.crazyFaceFilters != null) && (j > 0))
+      {
+        localObject4 = (float[])localList2.get(0);
+        localObject5 = (List)localList1.get(0);
+        localObject1 = paramFrame;
+        if (!PTFaceAttr.isPositiveFace((float[])localObject4, (List)localObject5, paramFrame.width, paramFrame.height, this.mFaceDetScale)) {
+          break label191;
+        }
+      }
+      for (localObject1 = this.crazyFaceFilters.updateAndRender(paramFrame, paramFrame.width, paramFrame.height, (List)localObject5, (float[])localObject4);; localObject1 = paramFrame)
+      {
+        paramFrame = (Frame)localObject1;
+        if (j <= 0)
+        {
+          setCurPersonId(-1);
+          setCurGender(0);
+          localObject4 = new PTDetectInfo.Builder().triggeredExpression(localSet).phoneAngle(paramPTFaceAttr.getRealPhoneRotation()).timestamp(l).aiAttr(paramAIAttr).build();
+          updateFilters((PTDetectInfo)localObject4, this.fgDynamicFilters);
+          paramFrame = RenderProcessForFilters((Frame)localObject1, this.fgDynamicFilters);
+          updateFilters((PTDetectInfo)localObject4, this.faceParticleDynamicFilters);
+          paramFrame = RenderProcessForFilters(paramFrame, this.faceParticleDynamicFilters);
+          updateFilters((PTDetectInfo)localObject4, this.faceGpuParticleDynamicFilters);
+          localObject1 = RenderProcessForGpuParticleFilters(paramFrame, this.faceGpuParticleDynamicFilters);
+          paramFrame = (Frame)localObject1;
+          if (this.mMaskStickerFilterList != null)
+          {
+            localObject5 = this.mMaskStickerFilterList.iterator();
+            for (;;)
+            {
+              paramFrame = (Frame)localObject1;
+              if (!((Iterator)localObject5).hasNext()) {
+                break;
+              }
+              paramFrame = (VideoFilterBase)((Iterator)localObject5).next();
+              if ((paramFrame instanceof DynamicMaskFilter)) {
+                paramFrame.updatePreview(localObject4);
+              }
+            }
+          }
+        }
+        resetPersonParam(paramPTFaceAttr);
+        localObject1 = paramFrame;
+        if (this.fastFaceStickerFilter != null)
+        {
+          BenchUtil.benchStart("[showPreview]RenderProcessForFastFaceStickerFilter");
+          localObject1 = RenderProcessForFastFaceStickerFilter(paramFrame, this.multiViewerOutFrame, this.mFaceList, j, paramPTFaceAttr, this.mCurPersonParam, paramAIAttr);
+          BenchUtil.benchEnd("[showPreview]RenderProcessForFastFaceStickerFilter");
+        }
+        hitStaticFaceRandomGroupItem();
+        paramFrame = new PTDetectInfo.Builder().phoneAngle(paramPTFaceAttr.getRealPhoneRotation()).timestamp(l).aiAttr(paramAIAttr).build();
+        updateFilters(paramFrame, this.qqGestureDynamicFilters);
+        localObject1 = RenderProcessForFilters((Frame)localObject1, this.multiViewerOutFrame, this.qqGestureDynamicFilters);
+        updateFilters(paramFrame, this.qqGestureStaticFilters);
+        paramFrame = RenderProcessForFilters((Frame)localObject1, this.multiViewerOutFrame, this.qqGestureStaticFilters);
+        int i = 0;
+        label851:
+        if ((i < j) && (i < this.mFaceList.size()))
+        {
+          localObject4 = (Face)this.mFaceList.get(i);
+          setCurPersonId(((Face)localObject4).faceIndex);
+          setCurGender(((Face)localObject4).gender);
+          hitCharmRangeItem(((Face)localObject4).faceIndex);
+          hitDynamicFaceRandomGroupItem(((Face)localObject4).faceIndex);
+          hitAgeRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject4).faceIndex);
+          hitGenderRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject4).faceIndex);
+          hitPopularRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject4).faceIndex);
+          hitCpRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject4).faceIndex, j);
+          BenchUtil.benchStart("[showPreview]RenderProcess");
+          localObject1 = ((Face)localObject4).facePoints;
+          localObject4 = ((Face)localObject4).faceAngles;
+          if ((!needShookHeadCount()) || (this.currentFaceInfo == null) || (this.selectFaceIndex < 0) || (this.selectFaceIndex >= localList1.size())) {
+            break label1587;
+          }
+          setCurPersonId(i);
+          localObject1 = (List)localList1.get(this.selectFaceIndex);
+          localObject4 = (float[])localList2.get(this.selectFaceIndex);
+        }
+        label1575:
+        label1587:
+        for (;;)
+        {
+          localObject1 = new PTDetectInfo.Builder().facePoints((List)localObject1).faceAngles((float[])localObject4).phoneAngle(paramPTFaceAttr.getRealPhoneRotation()).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).triggeredExpression(localSet).timestamp(l).faceDetector(paramPTFaceAttr.getFaceDetector()).aiAttr(paramAIAttr).build();
+          updateFilters((PTDetectInfo)localObject1, this.fgDynamicFilters);
+          paramFrame = RenderProcessForFilters(paramFrame, this.multiViewerOutFrame, this.fgDynamicFilters);
+          updateFilters((PTDetectInfo)localObject1, this.faceParticleDynamicFilters);
+          paramFrame = RenderProcessForFilters(paramFrame, this.multiViewerOutFrame, this.faceParticleDynamicFilters);
+          updateFilters((PTDetectInfo)localObject1, this.faceGpuParticleDynamicFilters);
+          paramFrame = RenderProcessForGpuParticleFilters(paramFrame, this.multiViewerOutFrame, this.faceGpuParticleDynamicFilters);
+          BenchUtil.benchEnd("[showPreview]RenderProcess");
+          i += 1;
+          break label851;
+          resetPersonParam(paramPTFaceAttr);
+          if (this.mPhantomFilter != null)
+          {
+            GlUtil.setBlendMode(false);
+            this.mPhantomFilter.updatePreview(paramPTFaceAttr.getTimeStamp());
+            this.mPhantomFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.mPhantomFrame);
+            paramFrame = this.mPhantomFrame;
+            GlUtil.setBlendMode(true);
+          }
+          for (;;)
+          {
+            if (localObject3 != null) {}
+            for (localObject1 = ((PTHandAttr)localObject3).getHandPointList();; localObject1 = null)
+            {
+              localObject3 = AIActionCounter.getActions(AIActionCounter.AI_TYPE.HAND);
+              localObject4 = new PTDetectInfo.Builder().handPoints((List)localObject1).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).phoneAngle(paramPTFaceAttr.getRealPhoneRotation()).handActionCounter((Map)localObject3).triggeredExpression(localSet).timestamp(l).faceDetector(paramPTFaceAttr.getFaceDetector());
+              if (localList2.size() > 0)
+              {
+                localObject3 = (float[])localList2.get(0);
+                label1372:
+                localObject3 = ((PTDetectInfo.Builder)localObject4).faceAngles((float[])localObject3).aiAttr(paramAIAttr).build();
+                if (!isHandPointsValid((List)localObject1)) {
+                  break label1575;
+                }
+                updateFilters((PTDetectInfo)localObject3, this.gestureFilters);
+                paramFrame = RenderProcessForFilters(paramFrame, this.gestureFilters);
+              }
+              for (;;)
+              {
+                updateFilters((PTDetectInfo)localObject3, this.gestureParticleFilters);
+                paramFrame = RenderProcessForFilters(paramFrame, this.gestureParticleFilters);
+                updateFilters((PTDetectInfo)localObject3, this.gestureGpuParticleFilters);
+                localObject1 = RenderProcessForGpuParticleFilters(paramFrame, this.gestureGpuParticleFilters);
+                paramPTFaceAttr = new PTDetectInfo.Builder().triggeredExpression(localSet).phoneAngle(paramPTFaceAttr.getRealPhoneRotation()).bodyPoints((List)localObject2).timestamp(l).aiAttr(paramAIAttr).build();
+                paramFrame = (Frame)localObject1;
+                if (this.fastBodyStickerFilter != null)
+                {
+                  BenchUtil.benchStart("[showPreview]RenderProcessForFastBodyStickerFilter");
+                  paramFrame = RenderProcessForFastBodyStickerFilter((Frame)localObject1, null, paramPTFaceAttr);
+                  BenchUtil.benchEnd("[showPreview]RenderProcessForFastBodyStickerFilter");
+                }
+                updateFilters(paramPTFaceAttr, this.bodyFilters);
+                paramFrame = RenderProcessForFilters(paramFrame, this.bodyFilters);
+                updateFilters(paramPTFaceAttr, this.bodyParticleFilters);
+                paramFrame = RenderProcessForFastParticleFilter(paramFrame, this.bodyParticleFilters);
+                break;
+                localObject3 = null;
+                break label1372;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  private Frame updateAndRenderPluggable(Frame paramFrame, PTFaceAttr paramPTFaceAttr, AIAttr paramAIAttr)
+  {
+    List localList1 = paramPTFaceAttr.getAllFacePoints();
+    Set localSet = paramPTFaceAttr.getTriggeredExpression();
+    if (paramAIAttr == null) {}
+    List localList2;
+    long l;
+    for (Object localObject2 = null;; localObject2 = (PTHandAttr)paramAIAttr.getAvailableData(AEDetectorType.HAND.value))
+    {
+      if (localObject2 != null) {
+        localSet.add(Integer.valueOf(((PTHandAttr)localObject2).getHandType()));
+      }
+      paramPTFaceAttr.getBodyPoints();
+      localList2 = paramPTFaceAttr.getAllFaceAngles();
+      l = paramPTFaceAttr.getTimeStamp();
+      GlUtil.setBlendMode(true);
       GLES20.glBindFramebuffer(36160, paramFrame.getFBO());
       GLES20.glViewport(0, 0, paramFrame.width, paramFrame.height);
-      paramAIAttr = this.filters.iterator();
-      for (;;)
-      {
-        paramPTFaceAttr = paramFrame;
-        if (!paramAIAttr.hasNext()) {
-          break;
-        }
-        paramPTFaceAttr = (VideoFilterBase)paramAIAttr.next();
-        if ((paramPTFaceAttr instanceof SwitchFaceFilter))
-        {
-          paramPTFaceAttr = (SwitchFaceFilter)paramPTFaceAttr;
-          paramPTFaceAttr.setFaceParams(localList1, this.copyFrame[0].getTextureId());
-          paramPTFaceAttr.renderProcess(localSet);
-        }
+      if (getMaterial().getShaderType() != VideoMaterialUtil.SHADER_TYPE.DOODLE.value) {
+        break;
       }
-    }
-    if (getMaterial().getShaderType() == VideoMaterialUtil.SHADER_TYPE.DOODLE.value)
-    {
       paramAIAttr = this.filters.iterator();
       for (;;)
       {
@@ -2007,177 +2142,114 @@ public class VideoFilterList
         }
       }
     }
-    int i;
-    if (getMaterial().getShaderType() == VideoMaterialUtil.SHADER_TYPE.AUDIO3D.value)
-    {
-      paramPTFaceAttr.getRotation();
-      if (this.audio3DFilter == null) {
-        break label1682;
-      }
-      BenchUtil.benchStart("[showPreview]RenderProcessForAudio3DFilter");
-      i = Math.min(localList1.size(), getMaterial().getMaxFaceCount());
-      paramFrame = RenderProcessForAudio3DFilter(paramFrame, this.multiViewerOutFrame, this.mFaceList, i, paramPTFaceAttr, this.mCurPersonParam);
-      BenchUtil.benchEnd("[showPreview]RenderProcessForAudio3DFilter");
+    int j = Math.min(localList1.size(), getMaterial().getMaxFaceCount());
+    Object localObject1 = new ArrayList();
+    if (VideoMaterialUtil.isBodyDetectMaterial(this.material)) {
+      localObject1 = getBodyPoints(paramAIAttr);
     }
-    label1670:
-    label1682:
     for (;;)
     {
-      paramPTFaceAttr = paramFrame;
-      GlUtil.setBlendMode(false);
-      Object localObject1 = paramPTFaceAttr;
-      label491:
-      return localObject1;
-      int j = Math.min(localList1.size(), getMaterial().getMaxFaceCount());
-      Object localObject2 = new ArrayList();
-      if (VideoMaterialUtil.isBodyDetectMaterial(this.material)) {
-        localObject2 = getBodyPoints(paramAIAttr);
-      }
-      for (;;)
+      Object localObject4;
+      if (j <= 0)
       {
-        Object localObject4;
-        Object localObject5;
-        if ((this.crazyFaceFilters != null) && (j > 0))
+        setCurPersonId(-1);
+        setCurGender(0);
+        localObject4 = new PTDetectInfo.Builder().triggeredExpression(localSet).timestamp(l).aiAttr(paramAIAttr).build();
+        updateFilters((PTDetectInfo)localObject4, this.fgDynamicFilters);
+        localObject3 = RenderProcessForFilters(paramFrame, this.fgDynamicFilters);
+        paramFrame = (Frame)localObject3;
+        if (this.mMaskStickerFilterList != null)
         {
-          localObject4 = (float[])localList2.get(0);
-          localObject5 = (List)localList1.get(0);
-          localObject1 = paramFrame;
-          if (!PTFaceAttr.isPositiveFace((float[])localObject4, (List)localObject5, paramFrame.width, paramFrame.height, this.mFaceDetScale)) {
-            break label491;
+          Iterator localIterator = this.mMaskStickerFilterList.iterator();
+          for (;;)
+          {
+            paramFrame = (Frame)localObject3;
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            paramFrame = (VideoFilterBase)localIterator.next();
+            if ((paramFrame instanceof DynamicMaskFilter)) {
+              paramFrame.updatePreview(localObject4);
+            }
           }
         }
-        for (localObject1 = this.crazyFaceFilters.updateAndRender(paramFrame, paramFrame.width, paramFrame.height, (List)localObject5, (float[])localObject4);; localObject1 = paramFrame)
+      }
+      resetPersonParam(paramPTFaceAttr);
+      Object localObject3 = paramFrame;
+      if (this.fastFaceStickerFilter != null)
+      {
+        BenchUtil.benchStart("[showPreview]RenderProcessForFastFaceStickerFilter");
+        localObject3 = RenderProcessForFastFaceStickerFilter(paramFrame, this.multiViewerOutFrame, this.mFaceList, j, paramPTFaceAttr, this.mCurPersonParam, paramAIAttr);
+        BenchUtil.benchEnd("[showPreview]RenderProcessForFastFaceStickerFilter");
+      }
+      hitStaticFaceRandomGroupItem();
+      paramFrame = new PTDetectInfo.Builder().timestamp(l).aiAttr(paramAIAttr).build();
+      updateFilters(paramFrame, this.qqGestureDynamicFilters);
+      localObject3 = RenderProcessForFilters((Frame)localObject3, this.multiViewerOutFrame, this.qqGestureDynamicFilters);
+      updateFilters(paramFrame, this.qqGestureStaticFilters);
+      paramFrame = RenderProcessForFilters((Frame)localObject3, this.multiViewerOutFrame, this.qqGestureStaticFilters);
+      int i = 0;
+      if ((i < j) && (i < this.mFaceList.size()))
+      {
+        localObject4 = (Face)this.mFaceList.get(i);
+        setCurPersonId(((Face)localObject4).faceIndex);
+        setCurGender(((Face)localObject4).gender);
+        hitCharmRangeItem(((Face)localObject4).faceIndex);
+        hitDynamicFaceRandomGroupItem(((Face)localObject4).faceIndex);
+        hitAgeRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject4).faceIndex);
+        hitGenderRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject4).faceIndex);
+        hitPopularRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject4).faceIndex);
+        hitCpRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject4).faceIndex, j);
+        BenchUtil.benchStart("[showPreview]RenderProcess");
+        localObject3 = ((Face)localObject4).facePoints;
+        localObject4 = ((Face)localObject4).faceAngles;
+        if ((!needShookHeadCount()) || (this.currentFaceInfo == null) || (this.selectFaceIndex < 0) || (this.selectFaceIndex >= localList1.size())) {
+          break label1015;
+        }
+        setCurPersonId(i);
+        localObject3 = (List)localList1.get(this.selectFaceIndex);
+        localObject4 = (float[])localList2.get(this.selectFaceIndex);
+      }
+      label1006:
+      label1015:
+      for (;;)
+      {
+        updateFilters(new PTDetectInfo.Builder().facePoints((List)localObject3).faceAngles((float[])localObject4).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).triggeredExpression(localSet).timestamp(l).faceDetector(paramPTFaceAttr.getFaceDetector()).aiAttr(paramAIAttr).build(), this.fgDynamicFilters);
+        paramFrame = RenderProcessForFilters(paramFrame, this.multiViewerOutFrame, this.fgDynamicFilters);
+        i += 1;
+        break;
+        resetPersonParam(paramPTFaceAttr);
+        if (localObject2 != null) {}
+        for (localObject2 = ((PTHandAttr)localObject2).getHandPointList();; localObject2 = null)
         {
-          paramFrame = (Frame)localObject1;
-          if (j <= 0)
+          localObject3 = AIActionCounter.getActions(AIActionCounter.AI_TYPE.HAND);
+          localObject3 = new PTDetectInfo.Builder().handPoints((List)localObject2).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).handActionCounter((Map)localObject3).triggeredExpression(localSet).timestamp(l).faceDetector(paramPTFaceAttr.getFaceDetector());
+          if (localList2.size() > 0)
           {
-            setCurPersonId(-1);
-            setCurGender(0);
-            localObject4 = new PTDetectInfo.Builder().triggeredExpression(localSet).phoneAngle(paramPTFaceAttr.getRealPhoneRotation()).timestamp(l).aiAttr(paramAIAttr).build();
-            updateFilters((PTDetectInfo)localObject4, this.fgDynamicFilters);
-            paramFrame = RenderProcessForFilters((Frame)localObject1, this.fgDynamicFilters);
-            updateFilters((PTDetectInfo)localObject4, this.faceParticleDynamicFilters);
-            paramFrame = RenderProcessForFilters(paramFrame, this.faceParticleDynamicFilters);
-            updateFilters((PTDetectInfo)localObject4, this.faceGpuParticleDynamicFilters);
-            localObject1 = RenderProcessForGpuParticleFilters(paramFrame, this.faceGpuParticleDynamicFilters);
-            paramFrame = (Frame)localObject1;
-            if (this.mMaskStickerFilterList != null)
-            {
-              localObject5 = this.mMaskStickerFilterList.iterator();
-              for (;;)
-              {
-                paramFrame = (Frame)localObject1;
-                if (!((Iterator)localObject5).hasNext()) {
-                  break;
-                }
-                paramFrame = (VideoFilterBase)((Iterator)localObject5).next();
-                if ((paramFrame instanceof DynamicMaskFilter)) {
-                  paramFrame.updatePreview(localObject4);
-                }
-              }
+            paramPTFaceAttr = (float[])localList2.get(0);
+            paramPTFaceAttr = ((PTDetectInfo.Builder)localObject3).faceAngles(paramPTFaceAttr).aiAttr(paramAIAttr).build();
+            if (!isHandPointsValid((List)localObject2)) {
+              break label1006;
             }
-          }
-          resetPersonParam(paramPTFaceAttr);
-          localObject1 = paramFrame;
-          if (this.fastFaceStickerFilter != null)
-          {
-            BenchUtil.benchStart("[showPreview]RenderProcessForFastFaceStickerFilter");
-            localObject1 = RenderProcessForFastFaceStickerFilter(paramFrame, this.multiViewerOutFrame, this.mFaceList, j, paramPTFaceAttr, this.mCurPersonParam, paramAIAttr);
-            BenchUtil.benchEnd("[showPreview]RenderProcessForFastFaceStickerFilter");
-          }
-          hitStaticFaceRandomGroupItem();
-          paramFrame = new PTDetectInfo.Builder().phoneAngle(paramPTFaceAttr.getRealPhoneRotation()).timestamp(l).aiAttr(paramAIAttr).build();
-          updateFilters(paramFrame, this.qqGestureDynamicFilters);
-          localObject1 = RenderProcessForFilters((Frame)localObject1, this.multiViewerOutFrame, this.qqGestureDynamicFilters);
-          updateFilters(paramFrame, this.qqGestureStaticFilters);
-          paramFrame = RenderProcessForFilters((Frame)localObject1, this.multiViewerOutFrame, this.qqGestureStaticFilters);
-          i = 0;
-          label934:
-          if ((i < j) && (i < this.mFaceList.size()))
-          {
-            localObject4 = (Face)this.mFaceList.get(i);
-            setCurPersonId(((Face)localObject4).faceIndex);
-            setCurGender(((Face)localObject4).gender);
-            hitCharmRangeItem(((Face)localObject4).faceIndex);
-            hitDynamicFaceRandomGroupItem(((Face)localObject4).faceIndex);
-            hitAgeRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject4).faceIndex);
-            hitGenderRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject4).faceIndex);
-            hitPopularRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject4).faceIndex);
-            hitCpRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject4).faceIndex, j);
-            BenchUtil.benchStart("[showPreview]RenderProcess");
-            localObject1 = ((Face)localObject4).facePoints;
-            localObject4 = ((Face)localObject4).faceAngles;
-            if ((!needShookHeadCount()) || (this.currentFaceInfo == null) || (this.selectFaceIndex < 0) || (this.selectFaceIndex >= localList1.size())) {
-              break label1670;
-            }
-            setCurPersonId(i);
-            localObject1 = (List)localList1.get(this.selectFaceIndex);
-            localObject4 = (float[])localList2.get(this.selectFaceIndex);
+            updateFilters(paramPTFaceAttr, this.gestureFilters);
+            paramFrame = RenderProcessForFilters(paramFrame, this.gestureFilters);
           }
           for (;;)
           {
-            localObject1 = new PTDetectInfo.Builder().facePoints((List)localObject1).faceAngles((float[])localObject4).phoneAngle(paramPTFaceAttr.getRealPhoneRotation()).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).triggeredExpression(localSet).timestamp(l).faceDetector(paramPTFaceAttr.getFaceDetector()).aiAttr(paramAIAttr).build();
-            updateFilters((PTDetectInfo)localObject1, this.fgDynamicFilters);
-            paramFrame = RenderProcessForFilters(paramFrame, this.multiViewerOutFrame, this.fgDynamicFilters);
-            updateFilters((PTDetectInfo)localObject1, this.faceParticleDynamicFilters);
-            paramFrame = RenderProcessForFilters(paramFrame, this.multiViewerOutFrame, this.faceParticleDynamicFilters);
-            updateFilters((PTDetectInfo)localObject1, this.faceGpuParticleDynamicFilters);
-            paramFrame = RenderProcessForGpuParticleFilters(paramFrame, this.multiViewerOutFrame, this.faceGpuParticleDynamicFilters);
-            BenchUtil.benchEnd("[showPreview]RenderProcess");
-            i += 1;
-            break label934;
-            resetPersonParam(paramPTFaceAttr);
-            if (this.mPhantomFilter != null)
+            paramAIAttr = new PTDetectInfo.Builder().triggeredExpression(localSet).bodyPoints((List)localObject1).timestamp(l).aiAttr(paramAIAttr).build();
+            paramPTFaceAttr = paramFrame;
+            if (this.fastBodyStickerFilter != null)
             {
-              GlUtil.setBlendMode(false);
-              this.mPhantomFilter.updatePreview(paramPTFaceAttr.getTimeStamp());
-              this.mPhantomFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.mPhantomFrame);
-              paramFrame = this.mPhantomFrame;
-              GlUtil.setBlendMode(true);
+              BenchUtil.benchStart("[showPreview]RenderProcessForFastBodyStickerFilter");
+              paramPTFaceAttr = RenderProcessForFastBodyStickerFilter(paramFrame, null, paramAIAttr);
+              BenchUtil.benchEnd("[showPreview]RenderProcessForFastBodyStickerFilter");
             }
-            for (;;)
-            {
-              if (localObject3 != null) {}
-              for (localObject1 = ((PTHandAttr)localObject3).getHandPointList();; localObject1 = null)
-              {
-                localObject3 = AIActionCounter.getActions(AIActionCounter.AI_TYPE.HAND);
-                localObject4 = new PTDetectInfo.Builder().handPoints((List)localObject1).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).phoneAngle(paramPTFaceAttr.getRealPhoneRotation()).handActionCounter((Map)localObject3).triggeredExpression(localSet).timestamp(l).faceDetector(paramPTFaceAttr.getFaceDetector());
-                if (localList2.size() > 0)
-                {
-                  localObject3 = (float[])localList2.get(0);
-                  label1455:
-                  localObject3 = ((PTDetectInfo.Builder)localObject4).faceAngles((float[])localObject3).aiAttr(paramAIAttr).build();
-                  if (!isHandPointsValid((List)localObject1)) {
-                    break label1658;
-                  }
-                  updateFilters((PTDetectInfo)localObject3, this.gestureFilters);
-                  paramFrame = RenderProcessForFilters(paramFrame, this.gestureFilters);
-                }
-                label1658:
-                for (;;)
-                {
-                  updateFilters((PTDetectInfo)localObject3, this.gestureParticleFilters);
-                  paramFrame = RenderProcessForFilters(paramFrame, this.gestureParticleFilters);
-                  updateFilters((PTDetectInfo)localObject3, this.gestureGpuParticleFilters);
-                  localObject1 = RenderProcessForGpuParticleFilters(paramFrame, this.gestureGpuParticleFilters);
-                  paramPTFaceAttr = new PTDetectInfo.Builder().triggeredExpression(localSet).phoneAngle(paramPTFaceAttr.getRealPhoneRotation()).bodyPoints((List)localObject2).timestamp(l).aiAttr(paramAIAttr).build();
-                  paramFrame = (Frame)localObject1;
-                  if (this.fastBodyStickerFilter != null)
-                  {
-                    BenchUtil.benchStart("[showPreview]RenderProcessForFastBodyStickerFilter");
-                    paramFrame = RenderProcessForFastBodyStickerFilter((Frame)localObject1, null, paramPTFaceAttr);
-                    BenchUtil.benchEnd("[showPreview]RenderProcessForFastBodyStickerFilter");
-                  }
-                  updateFilters(paramPTFaceAttr, this.bodyFilters);
-                  paramFrame = RenderProcessForFilters(paramFrame, this.bodyFilters);
-                  updateFilters(paramPTFaceAttr, this.bodyParticleFilters);
-                  paramPTFaceAttr = RenderProcessForFastParticleFilter(paramFrame, this.bodyParticleFilters);
-                  break;
-                  localObject3 = null;
-                  break label1455;
-                }
-              }
-            }
+            updateFilters(paramAIAttr, this.bodyFilters);
+            paramPTFaceAttr = RenderProcessForFilters(paramPTFaceAttr, this.bodyFilters);
+            GlUtil.setBlendMode(false);
+            return paramPTFaceAttr;
+            paramPTFaceAttr = null;
+            break;
           }
         }
       }
@@ -2360,9 +2432,6 @@ public class VideoFilterList
         }
       }
     }
-    if (this.gameFilter != null) {
-      this.gameFilter.applyGLSLFilter();
-    }
     if (this.filamentFilter != null) {
       this.filamentFilter.initial();
     }
@@ -2370,13 +2439,14 @@ public class VideoFilterList
     {
       this.fabbyExtractFilter = new FabbyExtractFilter();
       if ((this.material == null) || ((this.material.getSegmentBorderType() != VideoMaterialUtil.SEGMENT_BORDER_TYPE.BORDER_FLOW_LINES.type) && (this.material.getSegmentBorderType() != VideoMaterialUtil.SEGMENT_BORDER_TYPE.BORDER_TRIGGER.type))) {
-        break label1085;
+        break label1057;
       }
       if (this.material.getSegmentStrokeItem() == null) {
-        break label1040;
+        break label1012;
       }
       this.fabbyStrokeFilter = new FabbyStrokeFilter(this.material.getSegmentStrokeItem());
     }
+    label1057:
     for (;;)
     {
       this.fastBlurFilter = new FastBlurFilter();
@@ -2396,14 +2466,11 @@ public class VideoFilterList
       if (this.fastBodyStickerFilter != null) {
         this.fastBodyStickerFilter.ApplyGLSLFilter();
       }
-      if (this.audio3DFilter != null) {
-        this.audio3DFilter.ApplyGLSLFilter();
-      }
       localIterator = this.mEffectTriggerFilters.iterator();
       while (localIterator.hasNext()) {
         ((EffectTriggerFilter)localIterator.next()).ApplyGLSLFilter();
       }
-      label1040:
+      label1012:
       if (this.material.getSegmentStrokeTriggerItems() != null)
       {
         this.fabbyStrokeFilter = new FabbyStrokeFilterExt(this.material.getSegmentStrokeTriggerItems());
@@ -2412,7 +2479,6 @@ public class VideoFilterList
       {
         this.fabbyStrokeFilter = new FabbyStrokeFilter();
         continue;
-        label1085:
         this.fabbyStrokeFilter = new FabbyStrokeFilter();
       }
     }
@@ -2538,7 +2604,7 @@ public class VideoFilterList
     if (this.arFilterGesture == null) {
       this.arFilterGesture = new CameraARFilterGesture(this);
     }
-    GLGestureProxy.getInstance().setListener(this.arFilterGesture);
+    GLGestureProxy.getInstance().addListener(this.arFilterGesture);
   }
   
   public void addMaskTouchPoint(PointF paramPointF)
@@ -2806,9 +2872,6 @@ public class VideoFilterList
         ((MultiViewerFilter)((Iterator)localObject).next()).clear();
       }
     }
-    if (this.gameFilter != null) {
-      this.gameFilter.clear();
-    }
     this.mFaceOffNoseOcclusionFilter.clearGLSLSelf();
     if (this.filamentFilter != null) {
       this.filamentFilter.destroy();
@@ -2907,9 +2970,6 @@ public class VideoFilterList
     }
     if (this.fastBodyStickerFilter != null) {
       this.fastBodyStickerFilter.clearGLSLSelf();
-    }
-    if (this.audio3DFilter != null) {
-      this.audio3DFilter.clearGLSLSelf();
     }
     if (this.fabbyOriginCopyFrame != null) {
       this.fabbyOriginCopyFrame.clear();
@@ -3217,12 +3277,6 @@ public class VideoFilterList
     if (this.fastBodyStickerFilter != null) {
       this.fastBodyStickerFilter.reset();
     }
-    if (this.audio3DFilter != null) {
-      this.audio3DFilter.reset();
-    }
-    if (this.gameFilter != null) {
-      this.gameFilter.reset();
-    }
     localIterator = this.multiViewerFilters.iterator();
     while (localIterator.hasNext()) {
       ((MultiViewerFilter)localIterator.next()).reset();
@@ -3257,14 +3311,17 @@ public class VideoFilterList
     }
   }
   
+  public boolean exportFilamentParams()
+  {
+    if (this.filamentFilter != null) {
+      return this.filamentFilter.exportParams();
+    }
+    return false;
+  }
+  
   public AIAttr getAiAttr()
   {
     return this.aiAttr;
-  }
-  
-  public Audio3DFilter getAudio3DFilter()
-  {
-    return this.audio3DFilter;
   }
   
   public CrazyFaceFilters getCrazyFaceFilters()
@@ -3295,6 +3352,70 @@ public class VideoFilterList
   public List<VideoFilterBase> getFgStaticStickerFilters()
   {
     return this.fgStaticStickerFilters;
+  }
+  
+  public String getFilamentDirectionColor()
+  {
+    if (this.filamentFilter != null) {
+      return this.filamentFilter.getDirectionColor();
+    }
+    return null;
+  }
+  
+  public int getFilamentDirectionIntensity()
+  {
+    if (this.filamentFilter != null) {
+      return this.filamentFilter.getDirectionIntensity();
+    }
+    return 0;
+  }
+  
+  public int getFilamentIblIntensity()
+  {
+    if (this.filamentFilter != null) {
+      return this.filamentFilter.getIblIntensity();
+    }
+    return 0;
+  }
+  
+  public int getFilamentIblRotation()
+  {
+    if (this.filamentFilter != null) {
+      return this.filamentFilter.getIblRotation();
+    }
+    return 0;
+  }
+  
+  public float[] getFilamentLightDirection()
+  {
+    if (this.filamentFilter != null) {
+      return this.filamentFilter.getLightDirection();
+    }
+    return null;
+  }
+  
+  public float[] getFilamentPosition()
+  {
+    if (this.filamentFilter != null) {
+      return this.filamentFilter.getPosition();
+    }
+    return null;
+  }
+  
+  public float[] getFilamentRotation()
+  {
+    if (this.filamentFilter != null) {
+      return this.filamentFilter.getRotation();
+    }
+    return null;
+  }
+  
+  public float[] getFilamentScale()
+  {
+    if (this.filamentFilter != null) {
+      return this.filamentFilter.getScale();
+    }
+    return null;
   }
   
   public List<VideoFilterBase> getFilters()
@@ -3461,6 +3582,14 @@ public class VideoFilterList
     return false;
   }
   
+  public boolean isFilamentModelReady()
+  {
+    if (this.filamentFilter != null) {
+      return this.filamentFilter.isModelReady();
+    }
+    return false;
+  }
+  
   public boolean isFreezeFrame()
   {
     if (this.inputFreezeFrameFilter == null) {
@@ -3560,11 +3689,6 @@ public class VideoFilterList
   public boolean needDetectGesture()
   {
     return (this.needDetectGesture) || (multiViewNeedDetectGesture());
-  }
-  
-  public boolean needExpressionWeights()
-  {
-    return (this.gameFilter != null) && (this.gameFilter.isAnimoji());
   }
   
   public boolean needFaceInfo(int paramInt)
@@ -3955,11 +4079,6 @@ public class VideoFilterList
     }
   }
   
-  public void setAudio3DFilter(Audio3DFilter paramAudio3DFilter)
-  {
-    this.audio3DFilter = paramAudio3DFilter;
-  }
-  
   public void setAudioPause(boolean paramBoolean)
   {
     if (this.fastFaceStickerFilter != null) {
@@ -3967,9 +4086,6 @@ public class VideoFilterList
     }
     if (this.fastBodyStickerFilter != null) {
       this.fastBodyStickerFilter.setAudioPause(paramBoolean);
-    }
-    if (this.audio3DFilter != null) {
-      this.audio3DFilter.setAudioPause(paramBoolean);
     }
     Iterator localIterator = this.filters.iterator();
     while (localIterator.hasNext())
@@ -4094,6 +4210,20 @@ public class VideoFilterList
     this.fastFaceStickerFilter = paramFastStickerFilter;
   }
   
+  public void setFilamentDirectionColor(String paramString)
+  {
+    if (this.filamentFilter != null) {
+      this.filamentFilter.setDirectionColor(paramString);
+    }
+  }
+  
+  public void setFilamentDirectionIntensity(int paramInt)
+  {
+    if (this.filamentFilter != null) {
+      this.filamentFilter.setDirectionIntensity(paramInt);
+    }
+  }
+  
   public void setFilamentFilter(FilamentFilter paramFilamentFilter)
   {
     this.filamentFilter = paramFilamentFilter;
@@ -4113,6 +4243,13 @@ public class VideoFilterList
     }
   }
   
+  public void setFilamentLightDirection(float paramFloat1, float paramFloat2)
+  {
+    if (this.filamentFilter != null) {
+      this.filamentFilter.setLightDirection(paramFloat1, paramFloat2);
+    }
+  }
+  
   public void setFilamentLightIntensity(int paramInt)
   {
     if (this.filamentFilter != null) {
@@ -4123,6 +4260,27 @@ public class VideoFilterList
   public void setFilamentParticleFilter(FilamentParticleFilter paramFilamentParticleFilter)
   {
     this.filamentParticleFilter = paramFilamentParticleFilter;
+  }
+  
+  public void setFilamentPosition(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (this.filamentFilter != null) {
+      this.filamentFilter.setPosition(paramFloat1, paramFloat2, paramFloat3);
+    }
+  }
+  
+  public void setFilamentRotation(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (this.filamentFilter != null) {
+      this.filamentFilter.setRotation(paramFloat1, paramFloat2, paramFloat3);
+    }
+  }
+  
+  public void setFilamentScale(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (this.filamentFilter != null) {
+      this.filamentFilter.setScale(paramFloat1, paramFloat2, paramFloat3);
+    }
   }
   
   public void setFilters(List<VideoFilterBase> paramList1, List<VideoFilterBase> paramList2, List<VideoFilterBase> paramList3)
@@ -4141,11 +4299,6 @@ public class VideoFilterList
     this.mFaceOffFilters = paramList2;
     this.mTransformFilters = paramList3;
     this.staticCountFilters = getStaticCountFilters(this.fgStaticStickerFilters);
-  }
-  
-  public void setGameFilter(GameFilter paramGameFilter)
-  {
-    this.gameFilter = paramGameFilter;
   }
   
   public void setGestureFilters(List<NormalVideoFilter> paramList)
@@ -4346,6 +4499,13 @@ public class VideoFilterList
     this.needDetectGestureBonePoint = paramBoolean;
   }
   
+  public void setOnLoadFinishListener(MaterialLoadFinishListener paramMaterialLoadFinishListener)
+  {
+    if (this.filamentFilter != null) {
+      this.filamentFilter.setOnLoadFinishListener(paramMaterialLoadFinishListener);
+    }
+  }
+  
   public void setOnlyDetectOneGesture(int paramInt)
   {
     this.onlyDetectOneGesture = paramInt;
@@ -4384,9 +4544,6 @@ public class VideoFilterList
     }
     if (this.fastBodyStickerFilter != null) {
       this.fastBodyStickerFilter.setRatio(paramFloat);
-    }
-    if (this.audio3DFilter != null) {
-      this.audio3DFilter.setRatio(paramFloat);
     }
     if (this.multiViewerFilters != null)
     {
@@ -4663,41 +4820,6 @@ public class VideoFilterList
     updateFilters(paramPTDetectInfo, this.filters);
   }
   
-  public Frame updateAndRender3DFilter(Frame paramFrame, PTFaceAttr paramPTFaceAttr)
-  {
-    PTFaceAttr localPTFaceAttr = paramPTFaceAttr;
-    if (this.inputFreezeFrameFilter != null)
-    {
-      localPTFaceAttr = paramPTFaceAttr;
-      if (this.inputFreezeFrameFilter.isFreezeFrame()) {
-        localPTFaceAttr = this.inputFreezeFrameFilter.getPTFaceSnapshot(paramPTFaceAttr);
-      }
-    }
-    paramPTFaceAttr = paramFrame;
-    int j;
-    int k;
-    if (this.gameFilter != null)
-    {
-      paramPTFaceAttr = paramFrame;
-      if (getMaterial().getShaderType() != VideoMaterialUtil.SHADER_TYPE.AUDIO3D.value)
-      {
-        paramPTFaceAttr = this.gameFilter;
-        j = paramFrame.width;
-        k = paramFrame.height;
-        if (!localPTFaceAttr.isPhoneFlatHorizontal()) {
-          break label117;
-        }
-      }
-    }
-    label117:
-    for (int i = localPTFaceAttr.getLastFaceDetectedPhoneRotation();; i = localPTFaceAttr.getRotation())
-    {
-      paramPTFaceAttr.updateVideoSize(j, k, i);
-      paramPTFaceAttr = this.gameFilter.updateAndRender(paramFrame, this.aiAttr, localPTFaceAttr);
-      return paramPTFaceAttr;
-    }
-  }
-  
   public Frame updateAndRenderActMaterial(Frame paramFrame, List<List<PointF>> paramList, List<float[]> paramList1, int paramInt, long paramLong)
   {
     Object localObject;
@@ -4907,8 +5029,108 @@ public class VideoFilterList
     }
   }
   
+  public Frame updateAndRenderBlingFilter(Frame paramFrame, PTFaceAttr paramPTFaceAttr, PTDetectInfo paramPTDetectInfo, List<PointF> paramList)
+  {
+    GlUtil.setBlendMode(true);
+    if (paramPTFaceAttr.getStarMaskFrame() != null)
+    {
+      this.starOverlayFilter.setTexture2(paramPTFaceAttr.getStarMaskFrame().getTextureId());
+      this.starOverlayFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.starOverlayFrame);
+      paramFrame = this.starOverlayFrame;
+      paramPTFaceAttr.getStarMaskFrame().unlock();
+      paramPTFaceAttr = paramFrame;
+    }
+    for (;;)
+    {
+      GlUtil.setBlendMode(false);
+      return paramPTFaceAttr;
+      paramPTFaceAttr = paramFrame;
+      if (paramList != null)
+      {
+        paramPTFaceAttr = paramFrame;
+        if (paramList.size() > 0)
+        {
+          updateFilters(paramPTDetectInfo, this.starParticleFilters.subList(0, Math.min(paramList.size(), this.starParticleFilters.size())));
+          paramPTFaceAttr = RenderProcessForFastParticleFilter(paramFrame, this.starParticleFilters.subList(0, Math.min(paramList.size(), this.starParticleFilters.size())));
+        }
+      }
+    }
+  }
+  
+  public Frame updateAndRenderComicEffectFilters(int paramInt, Frame paramFrame, PTFaceAttr paramPTFaceAttr)
+  {
+    Object localObject2 = paramPTFaceAttr.getAllFacePoints();
+    Object localObject1 = paramFrame;
+    int j;
+    if (this.mComicEffectFilters != null)
+    {
+      j = Math.min(((List)localObject2).size(), getMaterial().getMaxFaceCount());
+      clearComicEffectFiltersRenderStatus(this.mComicEffectFilters);
+      if (j > 0) {
+        break label125;
+      }
+      updateComicEffectFilters(paramInt, new PTDetectInfo.Builder().aiAttr(this.aiAttr).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).triggeredExpression(paramPTFaceAttr.getTriggeredExpression()).timestamp(paramPTFaceAttr.getTimeStamp()).faceDetector(paramPTFaceAttr.getFaceDetector()).build(), this.mComicEffectFilters, paramFrame.width, paramFrame.height);
+      localObject1 = RenderProcessForComicEffectFilters(paramInt, paramFrame, this.mComicEffectFilters);
+    }
+    label125:
+    int i;
+    do
+    {
+      do
+      {
+        return localObject1;
+        i = 0;
+        localObject1 = paramFrame;
+      } while (i >= j);
+      localObject1 = paramFrame;
+    } while (i >= this.mFaceList.size());
+    Face localFace = (Face)this.mFaceList.get(i);
+    localObject2 = new ArrayList();
+    if (this.aiAttr == null)
+    {
+      localObject1 = null;
+      label190:
+      if (localObject1 == null) {
+        break label343;
+      }
+    }
+    label343:
+    for (localObject1 = ((PTHandAttr)localObject1).getHandPointList();; localObject1 = localObject2)
+    {
+      updateComicEffectFilters(paramInt, new PTDetectInfo.Builder().facePoints(localFace.facePoints).faceAngles(localFace.faceAngles).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).handPoints((List)localObject1).handActionCounter(AIActionCounter.getActions(AIActionCounter.AI_TYPE.HAND)).aiAttr(this.aiAttr).triggeredExpression(paramPTFaceAttr.getTriggeredExpression()).phoneAngle(paramPTFaceAttr.getRotation()).timestamp(paramPTFaceAttr.getTimeStamp()).faceDetector(paramPTFaceAttr.getFaceDetector()).build(), this.mComicEffectFilters, paramFrame.width, paramFrame.height);
+      paramFrame = RenderProcessForComicEffectFilters(paramInt, paramFrame, this.mComicEffectFilters);
+      i += 1;
+      break;
+      localObject1 = (PTHandAttr)this.aiAttr.getAvailableData(AEDetectorType.HAND.value);
+      break label190;
+    }
+  }
+  
+  public Frame updateAndRenderCrazyFace(Frame paramFrame, List<List<PointF>> paramList, List<float[]> paramList1)
+  {
+    int i = Math.min(paramList.size(), getMaterial().getMaxFaceCount());
+    Frame localFrame = paramFrame;
+    if (this.crazyFaceFilters != null)
+    {
+      localFrame = paramFrame;
+      if (i > 0)
+      {
+        paramList1 = (float[])paramList1.get(0);
+        paramList = (List)paramList.get(0);
+        localFrame = paramFrame;
+        if (PTFaceAttr.isPositiveFace(paramList1, paramList, paramFrame.width, paramFrame.height, this.mFaceDetScale)) {
+          localFrame = this.crazyFaceFilters.updateAndRender(paramFrame, paramFrame.width, paramFrame.height, paramList, paramList1);
+        }
+      }
+    }
+    return localFrame;
+  }
+  
   public Frame updateAndRenderDynamicStickers(Frame paramFrame, PTFaceAttr paramPTFaceAttr, AIAttr paramAIAttr)
   {
+    if (paramFrame == null) {
+      return paramFrame;
+    }
     PTFaceAttr localPTFaceAttr = paramPTFaceAttr;
     if (this.inputFreezeFrameFilter != null)
     {
@@ -4931,6 +5153,79 @@ public class VideoFilterList
     return paramFrame;
   }
   
+  public Frame updateAndRenderDynamicStickersPluggable(Frame paramFrame, PTFaceAttr paramPTFaceAttr, AIAttr paramAIAttr)
+  {
+    PTFaceAttr localPTFaceAttr = paramPTFaceAttr;
+    if (this.inputFreezeFrameFilter != null)
+    {
+      localPTFaceAttr = paramPTFaceAttr;
+      if (this.inputFreezeFrameFilter.isFreezeFrame()) {
+        localPTFaceAttr = this.inputFreezeFrameFilter.getPTFaceSnapshot(paramPTFaceAttr);
+      }
+    }
+    if ((localPTFaceAttr.isLandscape()) && (!getMaterial().isSupportLandscape()))
+    {
+      destroyNormalAudio();
+      return paramFrame;
+    }
+    if (localPTFaceAttr.getFaceCount() > 0) {
+      setImageData(localPTFaceAttr.getData());
+    }
+    BenchUtil.benchStart("[VideoFilterList] updateAndRender");
+    paramFrame = updateAndRenderPluggable(paramFrame, localPTFaceAttr, paramAIAttr);
+    BenchUtil.benchEnd("[VideoFilterList] updateAndRender");
+    return paramFrame;
+  }
+  
+  public Frame updateAndRenderEffectTriggerFilters(int paramInt, Frame paramFrame, PTFaceAttr paramPTFaceAttr)
+  {
+    Object localObject2 = paramPTFaceAttr.getAllFacePoints();
+    Object localObject1 = paramFrame;
+    int j;
+    if (this.mEffectTriggerFilters != null)
+    {
+      j = Math.min(((List)localObject2).size(), getMaterial().getMaxFaceCount());
+      clearEffectTriggerFiltersRenderStatus(this.mEffectTriggerFilters);
+      if (j > 0) {
+        break label108;
+      }
+      updateEffectTriggerFilters(paramInt, new PTDetectInfo.Builder().faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).triggeredExpression(paramPTFaceAttr.getTriggeredExpression()).timestamp(paramPTFaceAttr.getTimeStamp()).faceDetector(paramPTFaceAttr.getFaceDetector()).aiAttr(this.aiAttr).build(), this.mEffectTriggerFilters);
+      localObject1 = paramFrame;
+    }
+    label108:
+    int i;
+    do
+    {
+      do
+      {
+        return localObject1;
+        i = 0;
+        localObject1 = paramFrame;
+      } while (i >= j);
+      localObject1 = paramFrame;
+    } while (i >= this.mFaceList.size());
+    Face localFace = (Face)this.mFaceList.get(i);
+    localObject2 = new ArrayList();
+    if (this.aiAttr == null)
+    {
+      localObject1 = null;
+      label173:
+      if (localObject1 == null) {
+        break label318;
+      }
+    }
+    label318:
+    for (localObject1 = ((PTHandAttr)localObject1).getHandPointList();; localObject1 = localObject2)
+    {
+      updateEffectTriggerFilters(paramInt, new PTDetectInfo.Builder().facePoints(localFace.facePoints).faceAngles(localFace.faceAngles).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).handPoints((List)localObject1).handActionCounter(AIActionCounter.getActions(AIActionCounter.AI_TYPE.HAND)).aiAttr(this.aiAttr).triggeredExpression(paramPTFaceAttr.getTriggeredExpression()).phoneAngle(paramPTFaceAttr.getRotation()).timestamp(paramPTFaceAttr.getTimeStamp()).faceDetector(paramPTFaceAttr.getFaceDetector()).build(), this.mEffectTriggerFilters);
+      paramFrame = RenderProcessForEffectTriggerFilters(paramInt, paramFrame, this.mEffectTriggerFilters);
+      i += 1;
+      break;
+      localObject1 = (PTHandAttr)this.aiAttr.getAvailableData(AEDetectorType.HAND.value);
+      break label173;
+    }
+  }
+  
   public Frame updateAndRenderFabbyMV(Frame paramFrame, AIAttr paramAIAttr, Map<Integer, Frame> paramMap, Map<Integer, FaceActionCounter> paramMap1, Set<Integer> paramSet, long paramLong)
   {
     if (this.fabbyMvFilters != null)
@@ -4951,6 +5246,44 @@ public class VideoFilterList
       return this.fabbyMvFilters.updateAndRender(paramFrame, paramMap, paramMap1, paramSet, paramLong);
       return (Frame)paramMap.values().iterator().next();
     }
+  }
+  
+  public Frame updateAndRenderFaceSwitch(Frame paramFrame, List<List<PointF>> paramList, Set<Integer> paramSet)
+  {
+    Iterator localIterator;
+    Object localObject;
+    if (VideoMaterialUtil.isFaceCopyMaterial(getMaterial()))
+    {
+      localIterator = this.filters.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (VideoFilterBase)localIterator.next();
+        if ((localObject instanceof FaceCopyFilter))
+        {
+          localObject = (FaceCopyFilter)localObject;
+          ((FaceCopyFilter)localObject).setFaceParams(paramList, paramFrame.getTextureId());
+          ((FaceCopyFilter)localObject).renderProcess(paramSet);
+        }
+      }
+    }
+    if (VideoMaterialUtil.isFaceSwitchMaterial(getMaterial()))
+    {
+      this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.copyFrame[0]);
+      GLES20.glBindFramebuffer(36160, paramFrame.getFBO());
+      GLES20.glViewport(0, 0, paramFrame.width, paramFrame.height);
+      localIterator = this.filters.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (VideoFilterBase)localIterator.next();
+        if ((localObject instanceof SwitchFaceFilter))
+        {
+          localObject = (SwitchFaceFilter)localObject;
+          ((SwitchFaceFilter)localObject).setFaceParams(paramList, this.copyFrame[0].getTextureId());
+          ((SwitchFaceFilter)localObject).renderProcess(paramSet);
+        }
+      }
+    }
+    return paramFrame;
   }
   
   public Frame updateAndRenderFilamentFilter(Frame paramFrame, PTFaceAttr paramPTFaceAttr)
@@ -5124,38 +5457,59 @@ public class VideoFilterList
       {
         j = localMultiViewerFilter.getRenderId();
         if (paramPTSegAttr.scaleMap.get(Integer.valueOf(j)) == null) {
-          break label426;
+          break label445;
+        }
+        paramPTFaceAttr = (PointF)paramPTSegAttr.scaleMap.get(Integer.valueOf(j));
+        label203:
+        float f = Math.max(paramPTFaceAttr.x, paramPTFaceAttr.y);
+        if (localMultiViewerFilter.hasZoomFilter()) {
+          f = 1.0F;
+        }
+        int k = (int)(paramFrame.width * f);
+        int m = (int)(paramFrame.height * f);
+        localMultiViewerFilter.updateVideoSize(k, m, this.mFaceDetScale / f);
+        if (!this.multiViewerFrameMap.containsKey(Integer.valueOf(j)))
+        {
+          paramPTFaceAttr = new Frame();
+          this.multiViewerFrameMap.put(Integer.valueOf(j), paramPTFaceAttr);
+        }
+        paramPTFaceAttr = (Frame)this.multiViewerFrameMap.get(Integer.valueOf(j));
+        paramPTFaceAttr.bindFrame(-1, k, m, 0.0D);
+        BenchUtil.benchStart("updateAndRenderMultiViewerMaterial - clearFrame");
+        FrameUtil.clearFrame(paramPTFaceAttr, 0.0F, 0.0F, 0.0F, 0.0F, paramPTFaceAttr.width, paramPTFaceAttr.height);
+        BenchUtil.benchEnd("updateAndRenderMultiViewerMaterial - clearFrame");
+        BenchUtil.benchStart("updateAndRenderMultiViewerMaterial - multiViewerFilter.render");
+        if ((localMultiViewerFilter.getStickersMap() == null) || (!localMultiViewerFilter.getStickersMap().isChangeRenderOrder())) {
+          break label459;
         }
       }
     }
-    label426:
-    for (paramPTFaceAttr = (PointF)paramPTSegAttr.scaleMap.get(Integer.valueOf(j));; paramPTFaceAttr = new PointF(1.0F, 1.0F))
+    label445:
+    label459:
+    for (paramPTFaceAttr = localMultiViewerFilter.renderPlugin(paramFrame, paramPTFaceAttr, paramAIAttr, localPTFaceAttr, localPTSegAttr, paramPTHairAttr);; paramPTFaceAttr = localMultiViewerFilter.render(paramFrame, paramPTFaceAttr, paramAIAttr, localPTFaceAttr, localPTSegAttr, paramPTHairAttr))
     {
-      float f = Math.max(paramPTFaceAttr.x, paramPTFaceAttr.y);
-      if (localMultiViewerFilter.hasZoomFilter()) {
-        f = 1.0F;
-      }
-      int k = (int)(paramFrame.width * f);
-      int m = (int)(paramFrame.height * f);
-      localMultiViewerFilter.updateVideoSize(k, m, this.mFaceDetScale / f);
-      if (!this.multiViewerFrameMap.containsKey(Integer.valueOf(j)))
-      {
-        paramPTFaceAttr = new Frame();
-        this.multiViewerFrameMap.put(Integer.valueOf(j), paramPTFaceAttr);
-      }
-      paramPTFaceAttr = (Frame)this.multiViewerFrameMap.get(Integer.valueOf(j));
-      paramPTFaceAttr.bindFrame(-1, k, m, 0.0D);
-      BenchUtil.benchStart("updateAndRenderMultiViewerMaterial - clearFrame");
-      FrameUtil.clearFrame(paramPTFaceAttr, 0.0F, 0.0F, 0.0F, 0.0F, paramPTFaceAttr.width, paramPTFaceAttr.height);
-      BenchUtil.benchEnd("updateAndRenderMultiViewerMaterial - clearFrame");
-      BenchUtil.benchStart("updateAndRenderMultiViewerMaterial - multiViewerFilter.render");
-      paramPTFaceAttr = localMultiViewerFilter.render(paramFrame, paramPTFaceAttr, paramAIAttr, localPTFaceAttr, localPTSegAttr, paramPTHairAttr);
       BenchUtil.benchEnd("updateAndRenderMultiViewerMaterial - multiViewerFilter.render");
       paramMap.put(Integer.valueOf(j), paramPTFaceAttr);
       i += 1;
       break label110;
       break;
+      paramPTFaceAttr = new PointF(1.0F, 1.0F);
+      break label203;
     }
+  }
+  
+  public Frame updateAndRenderPhantomFilter(Frame paramFrame, PTFaceAttr paramPTFaceAttr)
+  {
+    Frame localFrame = paramFrame;
+    if (this.mPhantomFilter != null)
+    {
+      GlUtil.setBlendMode(false);
+      this.mPhantomFilter.updatePreview(paramPTFaceAttr.getTimeStamp());
+      this.mPhantomFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.mPhantomFrame);
+      localFrame = this.mPhantomFrame;
+      GlUtil.setBlendMode(true);
+    }
+    return localFrame;
   }
   
   public Frame updateAndRenderRapidNet(Frame paramFrame, PTFaceAttr paramPTFaceAttr)
@@ -5478,6 +5832,113 @@ public class VideoFilterList
     }
   }
   
+  public Frame updateAndRenderStaticStickersPluggable(Frame paramFrame, PTFaceAttr paramPTFaceAttr)
+  {
+    if ((this.inputFreezeFrameFilter != null) && (this.inputFreezeFrameFilter.isFreezeFrame())) {
+      paramPTFaceAttr = this.inputFreezeFrameFilter.getPTFaceSnapshot(paramPTFaceAttr);
+    }
+    for (;;)
+    {
+      int i = (paramPTFaceAttr.getRotation() + 360) % 360;
+      if (((i == 90) || (i == 270)) && (!this.material.isSupportLandscape())) {
+        return paramFrame;
+      }
+      List localList1 = paramPTFaceAttr.getAllFacePoints();
+      Object localObject2 = paramPTFaceAttr.getFaceActionCounter();
+      Object localObject3 = paramPTFaceAttr.getTriggeredExpression();
+      Object localObject1;
+      long l;
+      int j;
+      int k;
+      if (this.aiAttr == null)
+      {
+        localObject1 = null;
+        if (localObject1 != null) {
+          ((Set)localObject3).add(Integer.valueOf(((PTHandAttr)localObject1).getHandType()));
+        }
+        localObject1 = paramPTFaceAttr.getAllFaceAngles();
+        l = paramPTFaceAttr.getTimeStamp();
+        GlUtil.setBlendMode(true);
+        if (localList1.size() > 0) {
+          break label413;
+        }
+        localObject1 = paramPTFaceAttr.getStarPoints();
+        localObject1 = new PTDetectInfo.Builder().faceActionCounter((Map)localObject2).aiAttr(this.aiAttr).triggeredExpression((Set)localObject3).timestamp(l).phoneAngle(i).faceDetector(paramPTFaceAttr.getFaceDetector()).starPoints((List)localObject1).build();
+        this.snapShotFrameToSticker.updateTextureWithSticker(this.fgStaticStickerFilters, paramFrame, (PTDetectInfo)localObject1);
+        if (this.mZoomFilter != null)
+        {
+          localObject2 = this.mZoomFilter;
+          j = paramFrame.width;
+          k = paramFrame.height;
+          if (this.fabbyMvFilters != null) {
+            break label356;
+          }
+        }
+      }
+      label356:
+      for (i = this.mCurMVPart;; i = this.fabbyMvFilters.getCurPartIndex())
+      {
+        ((ZoomFilter)localObject2).updateZoomParams(paramPTFaceAttr, (PTDetectInfo)localObject1, j, k, i);
+        if (this.mMaskStickerFilterList == null) {
+          break label367;
+        }
+        localObject2 = this.mMaskStickerFilterList.iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (VideoFilterBase)((Iterator)localObject2).next();
+          if ((localObject3 instanceof NormalVideoFilter))
+          {
+            ((VideoFilterBase)localObject3).updateVideoSize(paramFrame.width, paramFrame.height, paramPTFaceAttr.getFaceDetectScale());
+            ((VideoFilterBase)localObject3).updatePreview(localObject1);
+          }
+        }
+        localObject1 = (PTHandAttr)this.aiAttr.getAvailableData(AEDetectorType.HAND.value);
+        break;
+      }
+      label367:
+      updateFilters((PTDetectInfo)localObject1, this.fgStaticStickerFilters);
+      paramFrame = RenderProcessForFilters(paramFrame, this.fgStaticStickerFilters);
+      updateFilters((PTDetectInfo)localObject1, this.faceParticleStaticFilters);
+      for (paramFrame = RenderProcessForFilters(paramFrame, this.faceParticleStaticFilters);; paramFrame = RenderProcessForFilters(paramFrame, this.fgStaticStickerFilters))
+      {
+        GlUtil.setBlendMode(false);
+        return paramFrame;
+        label413:
+        List localList2 = paramPTFaceAttr.getStarPoints();
+        localObject1 = new PTDetectInfo.Builder().facePoints((List)localList1.get(0)).faceAngles((float[])((List)localObject1).get(0)).phoneAngle(i).faceActionCounter((Map)localObject2).aiAttr(this.aiAttr).handActionCounter(AIActionCounter.getActions(AIActionCounter.AI_TYPE.HAND)).triggeredExpression((Set)localObject3).timestamp(l).faceDetector(paramPTFaceAttr.getFaceDetector()).starPoints(localList2).build();
+        this.snapShotFrameToSticker.updateTextureWithSticker(this.fgStaticStickerFilters, paramFrame, (PTDetectInfo)localObject1);
+        if (this.mZoomFilter != null)
+        {
+          localObject2 = this.mZoomFilter;
+          j = paramFrame.width;
+          k = paramFrame.height;
+          if (this.fabbyMvFilters != null) {
+            break label646;
+          }
+        }
+        label646:
+        for (i = this.mCurMVPart;; i = this.fabbyMvFilters.getCurPartIndex())
+        {
+          ((ZoomFilter)localObject2).updateZoomParams(paramPTFaceAttr, (PTDetectInfo)localObject1, j, k, i);
+          if (this.mMaskStickerFilterList == null) {
+            break;
+          }
+          localObject2 = this.mMaskStickerFilterList.iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (VideoFilterBase)((Iterator)localObject2).next();
+            if ((localObject3 instanceof NormalVideoFilter))
+            {
+              ((VideoFilterBase)localObject3).updateVideoSize(paramFrame.width, paramFrame.height, paramPTFaceAttr.getFaceDetectScale());
+              ((VideoFilterBase)localObject3).updatePreview(localObject1);
+            }
+          }
+        }
+        updateFilters((PTDetectInfo)localObject1, this.fgStaticStickerFilters);
+      }
+    }
+  }
+  
   public void updateComicEffectFilters(int paramInt1, PTDetectInfo paramPTDetectInfo, List<ComicEffectFilter> paramList, int paramInt2, int paramInt3)
   {
     if (paramList == null) {}
@@ -5640,6 +6101,32 @@ public class VideoFilterList
     }
   }
   
+  public void updateIntensity(float paramFloat, int paramInt1, int paramInt2)
+  {
+    if (this.filamentFilter != null) {
+      this.filamentFilter.updateIntensity(paramFloat, paramInt1, paramInt2);
+    }
+  }
+  
+  public Frame updateParticleStatic(Frame paramFrame, PTDetectInfo paramPTDetectInfo, List<PointF> paramList)
+  {
+    GlUtil.setBlendMode(true);
+    updateFilters(paramPTDetectInfo, this.faceParticleStaticFilters);
+    paramFrame = RenderProcessForFilters(paramFrame, this.faceParticleStaticFilters);
+    updateFilters(paramPTDetectInfo, this.faceParticleDynamicFilters);
+    paramFrame = RenderProcessForFilters(paramFrame, this.multiViewerOutFrame, this.faceParticleDynamicFilters);
+    updateFilters(paramPTDetectInfo, this.bodyParticleFilters);
+    Frame localFrame = RenderProcessForFastParticleFilter(paramFrame, this.bodyParticleFilters);
+    paramFrame = localFrame;
+    if (isHandPointsValid(paramList))
+    {
+      updateFilters(paramPTDetectInfo, this.gestureParticleFilters);
+      paramFrame = RenderProcessForFilters(localFrame, this.gestureParticleFilters);
+    }
+    GlUtil.setBlendMode(false);
+    return paramFrame;
+  }
+  
   public void updateTextureParam(Map<Integer, FaceActionCounter> paramMap, Set<Integer> paramSet, long paramLong, AIAttr paramAIAttr)
   {
     if (this.multiViewerFilters != null)
@@ -5747,9 +6234,6 @@ public class VideoFilterList
     }
     if (this.fastBodyStickerFilter != null) {
       this.fastBodyStickerFilter.updateVideoSize(paramInt1, paramInt2, paramDouble);
-    }
-    if (this.audio3DFilter != null) {
-      this.audio3DFilter.updateVideoSize(paramInt1, paramInt2, paramDouble);
     }
     if (this.mBlurMaskFilter != null) {
       this.mBlurMaskFilter.updateVideoSize(paramInt1, paramInt2, paramDouble);

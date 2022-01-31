@@ -1,13 +1,9 @@
-public class atuj
+import android.view.View;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+
+public abstract interface atuj
 {
-  public final String a;
-  public final String b;
-  
-  private atuj(String paramString1, String paramString2)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
+  public abstract void a(View paramView, int paramInt, InterestTagInfo paramInterestTagInfo);
 }
 
 

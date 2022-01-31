@@ -1,64 +1,55 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
 
 public class afkz
-  extends AccountObserver
+  extends afjv
+  implements View.OnClickListener
 {
-  public afkz(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment, boolean paramBoolean) {}
-  
-  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
+  public afkz(Context paramContext, QQAppInterface paramQQAppInterface, aipp paramaipp, atyy paramatyy)
   {
-    int j = 1;
-    if (QLog.isColorLevel())
+    super(paramContext, paramQQAppInterface, paramaipp, paramatyy);
+  }
+  
+  public View a(int paramInt, View paramView)
+  {
+    afla localafla;
+    if ((paramView == null) || (!(paramView.getTag() instanceof afla)))
     {
-      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
-      if (paramString2 == null)
-      {
-        i = 0;
-        QLog.d("Q.history.C2CAllFragment", 2, i);
-      }
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561131, null);
+      localafla = new afla();
+      localafla.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367376));
+      paramView.setOnClickListener(this);
+      paramView.setTag(localafla);
     }
-    else
+    for (;;)
     {
-      if ((!paramBoolean) || (TextUtils.isEmpty(paramString2))) {
-        break label133;
-      }
-      i = 1;
-      label67:
-      paramString1 = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.obtainMessage(39);
-      if (i == 0) {
-        break label139;
-      }
-      i = 1;
-      label88:
-      paramString1.arg1 = i;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label145;
-      }
+      String str = ((atzg)this.jdField_a_of_type_Atyy).b;
+      localafla.jdField_f_of_type_JavaLangString = str;
+      localafla.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_Aipp.a(1, str));
+      akkb.a += 1;
+      return paramView;
+      localafla = (afla)paramView.getTag();
     }
-    label133:
-    label139:
-    label145:
-    for (int i = j;; i = 0)
-    {
-      paramString1.arg2 = i;
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.sendMessage(paramString1);
-      return;
-      i = paramString2.length();
-      break;
-      i = 0;
-      break label67;
-      i = 0;
-      break label88;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendVerifyBlockedBuilder", 2, "start PhoneLaunchActivity");
     }
+    akkb.a((Activity)this.jdField_a_of_type_AndroidContentContext);
+    axqw.b(null, "dc00898", "", "", "0X800A3A4", "0X800A3A4", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afkz
  * JD-Core Version:    0.7.0.1
  */

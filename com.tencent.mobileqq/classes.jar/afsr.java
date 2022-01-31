@@ -1,18 +1,22 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class afsr
-  implements behj
+  implements View.OnClickListener
 {
-  afsr(afsj paramafsj) {}
+  afsr(afsp paramafsp) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
-    }
-    return true;
+    paramView = (akac)this.a.a.getManager(159);
+    Intent localIntent = new Intent(afsp.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("url", paramView.a);
+    afsp.b(this.a).startActivity(localIntent);
+    axqw.b(null, "dc00899", "Grp_recom", "", "link_top", "clk_skip_page", 0, 0, "", "", "", "");
   }
 }
 

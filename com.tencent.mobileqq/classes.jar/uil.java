@@ -1,31 +1,65 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class uil
-  extends QQUIEventReceiver<StoryMessageListActivity, sxr>
+  extends QQUIEventReceiver<uhz, ttd>
 {
-  public uil(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
+  public uil(@NonNull uhz paramuhz)
   {
-    super(paramStoryMessageListActivity);
+    super(paramuhz);
   }
   
-  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull sxr paramsxr)
+  public void a(@NonNull uhz paramuhz, @NonNull ttd paramttd)
   {
-    if (paramsxr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i(this.TAG, 2, "get userinfo come back. >>>>>> " + paramsxr.jdField_a_of_type_JavaUtilList);
-      }
-      paramStoryMessageListActivity.g();
+    if (TextUtils.equals(String.valueOf(paramuhz.hashCode()), paramttd.jdField_a_of_type_JavaLangString)) {
+      b(paramuhz, paramttd);
     }
   }
   
   public Class acceptEventClass()
   {
-    return sxr.class;
+    return ttd.class;
+  }
+  
+  public void b(uhz paramuhz, ttd paramttd)
+  {
+    paramuhz = ((StoryPlayerGroupHolder)paramuhz.a()).a();
+    if (paramuhz != null) {
+      paramuhz.c(false);
+    }
+    if (paramttd.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
+      return;
+    }
+    boolean bool = tsu.a(paramttd.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    switch (paramttd.jdField_a_of_type_Int)
+    {
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131706879), 0).a();
+      return;
+    case 2: 
+      if (bool) {}
+      for (paramuhz = "2";; paramuhz = "1")
+      {
+        vel.a("play_video", "down_suc", 0, 0, new String[] { paramuhz, "", "", paramttd.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+        bcpw.a(BaseApplicationImpl.getContext(), 2, sxp.a(2131699708), 0).a();
+        return;
+      }
+    }
+    if (bool) {}
+    for (paramuhz = "2";; paramuhz = "1")
+    {
+      vel.a("play_video", "down_fail", 0, 0, new String[] { paramuhz, "", "", paramttd.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131706883), 0).a();
+      return;
+    }
   }
 }
 

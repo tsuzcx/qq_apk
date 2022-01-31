@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 
 public abstract class d
   extends SQLiteOpenHelper
@@ -16,7 +16,7 @@ public abstract class d
   
   private void a(SQLiteDatabase paramSQLiteDatabase)
   {
-    ac.c("SqliteHelper", "tables count:" + b().length);
+    ab.c("SqliteHelper", "tables count:" + b().length);
     Class[] arrayOfClass = b();
     int j = arrayOfClass.length;
     int i = 0;
@@ -32,13 +32,13 @@ public abstract class d
         if ((localObject != null) && (((String)localObject).length() > 0)) {
           paramSQLiteDatabase.execSQL((String)localObject);
         }
-        ac.c("SqliteHelper", "sql=" + (String)localObject);
+        ab.c("SqliteHelper", "sql=" + (String)localObject);
       }
       catch (InstantiationException localInstantiationException)
       {
         for (;;)
         {
-          ac.c("SqliteHelper", "exception: ", localInstantiationException);
+          ab.c("SqliteHelper", "exception: ", localInstantiationException);
           localInstantiationException.printStackTrace();
         }
       }
@@ -46,7 +46,7 @@ public abstract class d
       {
         for (;;)
         {
-          ac.c("SqliteHelper", "exception: ", localIllegalAccessException);
+          ab.c("SqliteHelper", "exception: ", localIllegalAccessException);
           localIllegalAccessException.printStackTrace();
         }
       }
@@ -73,7 +73,7 @@ public abstract class d
         {
           for (;;)
           {
-            ac.c("SqliteHelper", "exception: ", localInstantiationException);
+            ab.c("SqliteHelper", "exception: ", localInstantiationException);
             localInstantiationException.printStackTrace();
           }
         }
@@ -81,7 +81,7 @@ public abstract class d
         {
           for (;;)
           {
-            ac.c("SqliteHelper", "exception: ", localIllegalAccessException);
+            ab.c("SqliteHelper", "exception: ", localIllegalAccessException);
             localIllegalAccessException.printStackTrace();
           }
         }
@@ -117,7 +117,7 @@ public abstract class d
     //   33: ldc 17
     //   35: ldc 72
     //   37: aload_2
-    //   38: invokestatic 75	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   38: invokestatic 75	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   41: aload_2
     //   42: invokevirtual 108	java/lang/Exception:printStackTrace	()V
     //   45: aload_1
@@ -182,7 +182,7 @@ public abstract class d
     //   33: ldc 17
     //   35: ldc 72
     //   37: aload_2
-    //   38: invokestatic 75	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   38: invokestatic 75	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   41: aload_2
     //   42: invokevirtual 108	java/lang/Exception:printStackTrace	()V
     //   45: aload_1
@@ -238,7 +238,7 @@ public abstract class d
   {
     super.onOpen(paramSQLiteDatabase);
     int i = paramSQLiteDatabase.getVersion();
-    ac.c("SqliteHelper", " dbversion:" + i + " newVersion:" + a());
+    ab.c("SqliteHelper", " dbversion:" + i + " newVersion:" + a());
     if (i == 0) {
       return;
     }
@@ -270,7 +270,7 @@ public abstract class d
           try
           {
             localObject = ((c)((Class)localObject).newInstance()).getAlterSQL(paramInt1, paramInt1 + 1);
-            ac.c("sqliteHelper", " upgrade:" + localObject);
+            ab.c("sqliteHelper", " upgrade:" + localObject);
             if (localObject != null)
             {
               int j = 0;
@@ -283,7 +283,7 @@ public abstract class d
           }
           catch (Exception localException)
           {
-            ac.c("SqliteHelper", "exception: ", localException);
+            ab.c("SqliteHelper", "exception: ", localException);
             localException.printStackTrace();
             i += 1;
           }

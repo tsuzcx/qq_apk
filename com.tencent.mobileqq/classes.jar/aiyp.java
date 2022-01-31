@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.apollo.utils.ApolloConfigDataReport.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.game.WebGameFakeView;
 
 public class aiyp
-  implements aifv
+  implements View.OnClickListener
 {
-  public aiyp(ApolloConfigDataReport.1 param1) {}
+  public aiyp(WebGameFakeView paramWebGameFakeView, ImageView paramImageView) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloConfigDataReport", 2, new Object[] { "checkReportConfigJson errorCode:", Integer.valueOf(paramInt1), ", httpCode:", Integer.valueOf(paramInt2) });
-    }
-    if ((paramInt1 == 0) && (paramInt2 == 200)) {
-      aiyo.b();
+    aixs.a().a(null);
+    if (aixs.a().a() <= 1) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
   }
 }

@@ -9,8 +9,8 @@ import android.view.ViewConfiguration;
 import android.widget.RelativeLayout;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.gdtad.views.canvas.framework.GdtCanvasView;
-import yny;
-import yrw;
+import yxs;
+import zbo;
 
 public class GdtVideoCeilingLandView
   extends RelativeLayout
@@ -19,7 +19,7 @@ public class GdtVideoCeilingLandView
   public int a;
   private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
   private GdtCanvasView jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasView;
-  private yrw jdField_a_of_type_Yrw;
+  private zbo jdField_a_of_type_Zbo;
   public boolean a;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -55,7 +55,7 @@ public class GdtVideoCeilingLandView
   {
     if ((!this.e) && (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null))
     {
-      yny.b("GdtVideoCeilingView", "noCanvasViewScrollY mWebView.getWebScrollY() -> " + this.jdField_a_of_type_ComTencentBizUiTouchWebView.getWebScrollY());
+      yxs.b("GdtVideoCeilingView", "noCanvasViewScrollY mWebView.getWebScrollY() -> " + this.jdField_a_of_type_ComTencentBizUiTouchWebView.getWebScrollY());
       if (Math.abs(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getWebScrollY()) >= 1) {}
     }
     do
@@ -65,7 +65,7 @@ public class GdtVideoCeilingLandView
       if ((!this.e) || (this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasView == null)) {
         break;
       }
-      yny.b("GdtVideoCeilingView", "noCanvasViewScrollY mNativeView.getPageViewScrollY() -> " + this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasView.a());
+      yxs.b("GdtVideoCeilingView", "noCanvasViewScrollY mNativeView.getPageViewScrollY() -> " + this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasView.a());
     } while (Math.abs(this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasView.a()) < 1);
     return false;
     return false;
@@ -118,18 +118,18 @@ public class GdtVideoCeilingLandView
           if ((this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean)) {
             return true;
           }
-          yny.b("GdtVideoCeilingView", "onInterceptTouchEvent mState " + this.jdField_a_of_type_Int);
+          yxs.b("GdtVideoCeilingView", "onInterceptTouchEvent mState " + this.jdField_a_of_type_Int);
           switch (MotionEventCompat.getActionMasked(paramMotionEvent))
           {
           default: 
             return false;
           case 0: 
-            yny.b("GdtVideoCeilingView", "onInterceptTouchEvent ACTION_DOWN mBeingDrag " + this.jdField_b_of_type_Boolean);
+            yxs.b("GdtVideoCeilingView", "onInterceptTouchEvent ACTION_DOWN mBeingDrag " + this.jdField_b_of_type_Boolean);
             this.jdField_b_of_type_Float = paramMotionEvent.getRawX();
             this.jdField_a_of_type_Float = paramMotionEvent.getRawY();
             return false;
           case 2: 
-            yny.b("GdtVideoCeilingView", "onInterceptTouchEvent ACTION_MOVE mBeingDrag " + this.jdField_b_of_type_Boolean);
+            yxs.b("GdtVideoCeilingView", "onInterceptTouchEvent ACTION_MOVE mBeingDrag " + this.jdField_b_of_type_Boolean);
             f1 = paramMotionEvent.getRawX();
             f3 = paramMotionEvent.getRawY();
             f2 = this.jdField_b_of_type_Float;
@@ -142,7 +142,7 @@ public class GdtVideoCeilingLandView
       if (this.jdField_a_of_type_Int == 0)
       {
         this.jdField_b_of_type_Boolean = true;
-        yny.b("GdtVideoCeilingView", "onInterceptTouchEvent ACTION_MOVE mState -> BOTTOM_WEBVIEW_STATE ");
+        yxs.b("GdtVideoCeilingView", "onInterceptTouchEvent ACTION_MOVE mState -> BOTTOM_WEBVIEW_STATE ");
         return true;
       }
       bool1 = bool3;
@@ -161,9 +161,9 @@ public class GdtVideoCeilingLandView
       this.jdField_b_of_type_Boolean = true;
       bool1 = true;
     }
-    yny.b("GdtVideoCeilingView", "onInterceptTouchEvent ACTION_MOVE mState -> TOP_WEBVIEW_STATE, result -> " + bool1 + ", noCanvasViewScrollY -> " + a() + ", isScrollUp -> " + a(f3));
+    yxs.b("GdtVideoCeilingView", "onInterceptTouchEvent ACTION_MOVE mState -> TOP_WEBVIEW_STATE, result -> " + bool1 + ", noCanvasViewScrollY -> " + a() + ", isScrollUp -> " + a(f3));
     return bool1;
-    yny.b("GdtVideoCeilingView", "onInterceptTouchEvent  ACTION_UP");
+    yxs.b("GdtVideoCeilingView", "onInterceptTouchEvent  ACTION_UP");
     this.jdField_b_of_type_Float = 0.0F;
     this.jdField_a_of_type_Float = 0.0F;
     this.jdField_b_of_type_Boolean = false;
@@ -195,8 +195,8 @@ public class GdtVideoCeilingLandView
         {
           this.jdField_d_of_type_Float = paramMotionEvent.getRawX();
           this.jdField_c_of_type_Float = paramMotionEvent.getRawY();
-          if (this.jdField_a_of_type_Yrw != null) {
-            this.jdField_a_of_type_Yrw.a(this.jdField_a_of_type_Int);
+          if (this.jdField_a_of_type_Zbo != null) {
+            this.jdField_a_of_type_Zbo.a(this.jdField_a_of_type_Int);
           }
         }
         switch (MotionEventCompat.getActionMasked(paramMotionEvent))
@@ -204,10 +204,10 @@ public class GdtVideoCeilingLandView
         default: 
           return true;
         case 0: 
-          yny.c("GdtVideoCeilingView", "onTouchEvent  ACTION_DOWN");
+          yxs.c("GdtVideoCeilingView", "onTouchEvent  ACTION_DOWN");
           return true;
         case 2: 
-          yny.c("GdtVideoCeilingView", "onTouchEvent  ACTION_MOVE");
+          yxs.c("GdtVideoCeilingView", "onTouchEvent  ACTION_MOVE");
           f1 = paramMotionEvent.getRawX();
           f2 = paramMotionEvent.getRawY();
           f3 = f2 - this.jdField_c_of_type_Float;
@@ -215,34 +215,34 @@ public class GdtVideoCeilingLandView
           bool1 = bool2;
         }
       } while (Math.abs(f3) <= Math.abs(f1 - f4));
-      if (this.jdField_a_of_type_Yrw != null)
+      if (this.jdField_a_of_type_Zbo != null)
       {
-        yny.c("GdtVideoCeilingView", "onTouchEvent  onDrag");
-        this.jdField_a_of_type_Yrw.b((int)f3);
+        yxs.c("GdtVideoCeilingView", "onTouchEvent  onDrag");
+        this.jdField_a_of_type_Zbo.b((int)f3);
       }
       this.jdField_d_of_type_Float = f1;
       this.jdField_c_of_type_Float = f2;
       return true;
-      yny.c("GdtVideoCeilingView", "onTouchEvent  ACTION_UP");
+      yxs.c("GdtVideoCeilingView", "onTouchEvent  ACTION_UP");
       this.jdField_d_of_type_Float = 0.0F;
       this.jdField_c_of_type_Float = 0.0F;
       bool1 = bool2;
-    } while (this.jdField_a_of_type_Yrw == null);
-    this.jdField_a_of_type_Yrw.c(this.jdField_a_of_type_Int);
+    } while (this.jdField_a_of_type_Zbo == null);
+    this.jdField_a_of_type_Zbo.c(this.jdField_a_of_type_Int);
     this.jdField_b_of_type_Boolean = false;
     return true;
   }
   
-  public void setGdtVideoCeilingListeners(yrw paramyrw, TouchWebView paramTouchWebView)
+  public void setGdtVideoCeilingListeners(zbo paramzbo, TouchWebView paramTouchWebView)
   {
-    this.jdField_a_of_type_Yrw = paramyrw;
+    this.jdField_a_of_type_Zbo = paramzbo;
     this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
     this.e = false;
   }
   
-  public void setGdtVideoCeilingNativeListeners(yrw paramyrw, GdtCanvasView paramGdtCanvasView)
+  public void setGdtVideoCeilingNativeListeners(zbo paramzbo, GdtCanvasView paramGdtCanvasView)
   {
-    this.jdField_a_of_type_Yrw = paramyrw;
+    this.jdField_a_of_type_Zbo = paramzbo;
     this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasView = paramGdtCanvasView;
     this.e = true;
   }

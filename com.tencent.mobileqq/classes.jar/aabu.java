@@ -1,80 +1,90 @@
-import android.content.Intent;
-import android.util.Base64;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.activity.QQIdentiferLegacyActivity;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.Doraemon.DoraemonOpenAPI.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0x87a.RspBody;
-import tencent.im.oidb.oidb_0x87c.RspBody;
 
 public class aabu
-  extends atdj
 {
-  public aabu(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
-  
-  public void a(String paramString1, int paramInt, String paramString2)
+  public static aabp a(@NonNull Activity paramActivity, int paramInt, String paramString)
   {
-    QLog.e("Q.devlock.AuthDevVerifyCodeActivity", 1, "set face data onRecvVerifyCode error, code : " + this.a.b + " ");
-    if (paramInt != -1) {}
+    return a(paramActivity, paramInt, paramString, null);
+  }
+  
+  public static aabp a(@NonNull Activity paramActivity, int paramInt, String paramString, Bundle paramBundle)
+  {
+    String str = null;
+    aabw localaabw = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI", 2, "createAPIManager type=" + paramInt + ", appid=" + paramString);
+    }
+    if (paramActivity == null)
+    {
+      QLog.e("DoraemonOpenAPI", 1, "can not create APIManager activity == null");
+      return null;
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("DoraemonOpenAPI", 1, "can not create APIManager appid is empty");
+    }
+    Object localObject = localaabw;
+    switch (paramInt)
+    {
+    default: 
+      localObject = localaabw;
+    case 2: 
+    case 0: 
+    case 1: 
+    case 3: 
+    case 4: 
+    case 5: 
+      while (localObject == null)
+      {
+        QLog.e("DoraemonOpenAPI", 1, "can not create APIManager type=" + paramInt + ", appid=" + paramString);
+        return localObject;
+        if (paramBundle == null) {}
+        for (paramBundle = null; TextUtils.isEmpty(paramBundle); paramBundle = paramBundle.getString("urlSummary", ""))
+        {
+          QLog.e("DoraemonOpenAPI", 1, "can not create APIManger url is empty");
+          return null;
+        }
+        localObject = new aadp(paramActivity, paramInt, paramString, paramBundle);
+        continue;
+        localaabw = new aabw(paramActivity, paramInt, paramString);
+        if (paramBundle == null) {
+          break label305;
+        }
+        localObject = paramBundle.getString("sdkVersion");
+        str = paramBundle.getString("pkgName");
+        paramActivity = paramBundle.getString("signature");
+        paramBundle = str;
+      }
+    }
     for (;;)
     {
-      this.a.a(paramString2, 1);
-      return;
-      paramString2 = this.a.getString(2131651340);
+      ((aabw)localaabw).a((String)localObject, paramBundle, paramActivity);
+      localObject = localaabw;
+      break;
+      localObject = new aacm(paramActivity, paramInt, paramString);
+      break;
+      ((aabp)localObject).a();
+      return localObject;
+      label305:
+      paramBundle = null;
+      localObject = null;
+      paramActivity = str;
     }
   }
   
-  public void a(String paramString1, String paramString2)
+  public static void a()
   {
-    Intent localIntent = new Intent(this.a, QQIdentiferLegacyActivity.class);
-    localIntent.putExtra("platformAppId", 101810106);
-    localIntent.putExtra("srcAppId", 101810106);
-    localIntent.putExtra("srcOpenId", paramString1);
-    localIntent.putExtra("key", paramString2);
-    localIntent.putExtra("method", "setFaceData");
-    localIntent.putExtra("serviceType", 2);
-    this.a.startActivityForResult(localIntent, 2);
-  }
-  
-  public void a(oidb_0x87a.RspBody paramRspBody)
-  {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.c();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "Set face data onRecvVerifyCode");
-    }
-    AuthDevVerifyCodeActivity.b(this.a).setVisibility(0);
-    int i = 60;
-    if (paramRspBody.uint32_resend_interval.get() > 0) {
-      i = paramRspBody.uint32_resend_interval.get();
-    }
-    AuthDevVerifyCodeActivity.a(this.a, i);
-  }
-  
-  public void a(oidb_0x87c.RspBody paramRspBody)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose ret = ");
-    }
-    if (this.a.isFinishing())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose activity is finishing.");
-      }
-      return;
-    }
-    this.a.c();
-    AuthDevVerifyCodeActivity.a(this.a);
-    paramRspBody = Base64.encodeToString(paramRspBody.toByteArray(), 11);
-    awcq.a(101810106, this.a.getCurrentAccountUin(), "sms", paramRspBody, AuthDevVerifyCodeActivity.a(this.a));
+    ThreadManager.post(new DoraemonOpenAPI.1(), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aabu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,83 +1,40 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
-import java.util.List;
-import mqq.manager.TicketManager;
+import com.qq.taf.jce.HexUtil;
+import java.util.ArrayList;
 
 public class ayzq
+  extends ayzp
 {
-  public azgm a(QQAppInterface paramQQAppInterface, azgl paramazgl, String paramString, int paramInt)
+  public int a;
+  public String a;
+  public ArrayList<ayuo> a;
+  public byte[] a;
+  public String b;
+  public ArrayList<ayuo> b;
+  public byte[] b;
+  public String c;
+  
+  public ayzq()
   {
-    Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    if (localObject != null) {}
-    for (localObject = ((TicketManager)localObject).getSkey(str);; localObject = null)
-    {
-      HashMap localHashMap = new HashMap();
-      Bundle localBundle = new Bundle();
-      localBundle.putString("bkn", "5381");
-      localBundle.putString("gid", paramString);
-      localBundle.putString("Cookie", String.format("uin=%s;skey=%s", new Object[] { str, localObject }));
-      localBundle.putString("Referer", "http://qun.qq.com");
-      localHashMap.put("BUNDLE", localBundle);
-      localHashMap.put("CONTEXT", paramQQAppInterface.getApp().getApplicationContext());
-      paramQQAppInterface = new azgm("http://qun.qq.com/cgi-bin/qun/web/kewen/get_search_keywords", "POST", paramazgl, paramInt, localBundle);
-      paramQQAppInterface.a(localHashMap);
-      return paramQQAppInterface;
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public azgm a(QQAppInterface paramQQAppInterface, azgl paramazgl, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public String toString()
   {
-    Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    if (localObject != null) {}
-    for (localObject = ((TicketManager)localObject).getSkey(str);; localObject = null)
-    {
-      HashMap localHashMap = new HashMap();
-      Bundle localBundle = new Bundle();
-      localBundle.putString("bkn", "5381");
-      localBundle.putString("key", paramString);
-      localBundle.putString("start", String.valueOf(paramInt1));
-      localBundle.putString("num", String.valueOf(paramInt2));
-      localBundle.putString("Cookie", String.format("uin=%s;skey=%s", new Object[] { str, localObject }));
-      localBundle.putString("Referer", "http://qun.qq.com");
-      localHashMap.put("BUNDLE", localBundle);
-      localHashMap.put("CONTEXT", paramQQAppInterface.getApp().getApplicationContext());
-      paramQQAppInterface = new azgm("http://qun.qq.com/cgi-bin/qun/web/kewen/search", "POST", paramazgl, paramInt3, localBundle);
-      paramQQAppInterface.a(localHashMap);
-      return paramQQAppInterface;
-    }
-  }
-  
-  public azgm a(QQAppInterface paramQQAppInterface, azgl paramazgl, String paramString, List<Integer> paramList, int paramInt)
-  {
-    Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    if (localObject != null) {}
-    for (localObject = ((TicketManager)localObject).getSkey(str);; localObject = null)
-    {
-      HashMap localHashMap = new HashMap();
-      Bundle localBundle = new Bundle();
-      localBundle.putString("bkn", "5381");
-      localBundle.putString("kid", paramString);
-      if ((paramList != null) && (!paramList.isEmpty())) {
-        localBundle.putString("pid_list", paramList.toString());
-      }
-      localBundle.putString("Cookie", String.format("uin=%s;skey=%s", new Object[] { str, localObject }));
-      localBundle.putString("Referer", "http://qun.qq.com");
-      localHashMap.put("BUNDLE", localBundle);
-      localHashMap.put("CONTEXT", paramQQAppInterface.getApp().getApplicationContext());
-      paramQQAppInterface = new azgm("http://qun.qq.com/cgi-bin/qun/web/kewen/get_kewen_info", "POST", paramazgl, paramInt, localBundle);
-      paramQQAppInterface.a(localHashMap);
-      return paramQQAppInterface;
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" mUkey:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" mIpList:").append(this.jdField_a_of_type_JavaUtilArrayList.toString());
+    localStringBuilder.append(" mIpv6List:").append(this.jdField_b_of_type_JavaUtilArrayList.toString());
+    localStringBuilder.append(" md5:").append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
+    localStringBuilder.append(" aesKey:").append(HexUtil.bytes2HexStr(this.jdField_b_of_type_ArrayOfByte));
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayzq
  * JD-Core Version:    0.7.0.1
  */

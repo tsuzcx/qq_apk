@@ -1,17 +1,9 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.voicechanger.common.audio.VoiceTextRecognizer.VRErrorListener;
+import dov.com.qq.im.capture.view.ComboProviderView;
 
-class bjjj
-  implements VoiceTextRecognizer.VRErrorListener
+public class bjjj
+  extends bjbq
 {
-  bjjj(bjji parambjji) {}
-  
-  public void onError(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShortVideoVoiceRecognizer", 1, "VoiceTextRecognizer error! errorCode = " + paramInt);
-    }
-  }
+  public bjjj(ComboProviderView paramComboProviderView) {}
 }
 
 

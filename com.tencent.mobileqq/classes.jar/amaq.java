@@ -1,79 +1,109 @@
+import android.content.pm.PackageInfo;
+import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.1;
+import com.tencent.mobileqq.data.RockDownloadInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import org.json.JSONObject;
+import java.util.List;
+import mqq.manager.Manager;
 
 public class amaq
+  implements Manager
 {
-  private Map<String, String> a = new HashMap();
+  private QQAppInterface a;
   
-  public static amaq a(alzs[] paramArrayOfalzs)
+  public amaq(QQAppInterface paramQQAppInterface)
   {
-    Object localObject;
-    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length <= 0))
+    this.a = paramQQAppInterface;
+    ThreadManagerV2.executeOnFileThread(new RockDownloaderManager.1(this));
+  }
+  
+  private void a()
+  {
+    long l = System.currentTimeMillis();
+    Object localObject2 = bbio.a(this.a.getApp());
+    Object localObject1 = new HashMap();
+    Object localObject3;
+    if (localObject2 != null)
     {
-      localObject = null;
-      return localObject;
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (PackageInfo)((Iterator)localObject2).next();
+        ((HashMap)localObject1).put(((PackageInfo)localObject3).packageName, Integer.valueOf(((PackageInfo)localObject3).versionCode));
+      }
     }
-    for (;;)
+    localObject2 = aman.a().a(RockDownloadInfo.class);
+    if (localObject2 != null)
     {
-      int i;
-      try
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        amaq localamaq = new amaq();
-        i = 0;
-        localObject = localamaq;
-        if (i >= paramArrayOfalzs.length) {
-          break;
+        localObject3 = (RockDownloadInfo)((Iterator)localObject2).next();
+        Object localObject4;
+        if (((RockDownloadInfo)localObject3).endTime + 604800L < l / 1000L)
+        {
+          localObject4 = new VFSFile(((RockDownloadInfo)localObject3).localPath);
+          if (((VFSFile)localObject4).exists()) {
+            ((VFSFile)localObject4).delete();
+          }
+          aman.a().b((aukm)localObject3);
+          if (QLog.isColorLevel()) {
+            QLog.d("RockDownloaderManager", 2, new Object[] { "remove info because has overdue", localObject3 });
+          }
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloConfig_GrayProcessor", 2, new Object[] { "parse conf taskId:", Integer.valueOf(paramArrayOfalzs[i].jdField_a_of_type_Int) });
-        }
-        localObject = new JSONObject(paramArrayOfalzs[i].jdField_a_of_type_JavaLangString);
-        if (((JSONObject)localObject).has("grayUrlConfig")) {
-          localamaq.a.put("apolloGrayUrlWhite", paramArrayOfalzs[i].jdField_a_of_type_JavaLangString);
-        } else if (((JSONObject)localObject).has("traceConfig")) {
-          localamaq.a.put("apolloTraceConfig", paramArrayOfalzs[i].jdField_a_of_type_JavaLangString);
+        else if (((HashMap)localObject1).containsKey(((RockDownloadInfo)localObject3).getPackageName()))
+        {
+          localObject4 = (Integer)((HashMap)localObject1).get(((RockDownloadInfo)localObject3).getPackageName());
+          if ((localObject4 != null) && (((RockDownloadInfo)localObject3).realVersionCode > 0) && (((Integer)localObject4).intValue() >= ((RockDownloadInfo)localObject3).realVersionCode))
+          {
+            localObject4 = new VFSFile(((RockDownloadInfo)localObject3).localPath);
+            if (((VFSFile)localObject4).exists()) {
+              ((VFSFile)localObject4).delete();
+            }
+            aman.a().b((aukm)localObject3);
+            if (QLog.isColorLevel()) {
+              QLog.d("RockDownloaderManager", 2, new Object[] { "remove info because has install", localObject3 });
+            }
+          }
         }
       }
-      catch (Exception paramArrayOfalzs)
+    }
+    localObject1 = new VFSFile(aman.a());
+    if (((VFSFile)localObject1).exists())
+    {
+      localObject1 = ((VFSFile)localObject1).listFiles();
+      if ((localObject1 != null) && (localObject1.length > 0))
       {
-        QLog.e("ApolloConfig_GrayProcessor", 1, paramArrayOfalzs, new Object[0]);
-        return null;
+        int j = localObject1.length;
+        int i = 0;
+        while (i < j)
+        {
+          localObject2 = localObject1[i];
+          if (((VFSFile)localObject2).lastModified() + 604800000L < l)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("RockDownloaderManager", 2, new Object[] { "remove file", ((VFSFile)localObject2).getAbsolutePath() });
+            }
+            ((VFSFile)localObject2).delete();
+          }
+          i += 1;
+        }
       }
-      i += 1;
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, amaq paramamaq)
+  public void onDestroy()
   {
-    if ((paramQQAppInterface == null) || (paramamaq == null)) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = paramamaq.a.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str1 = (String)localIterator.next();
-        String str2 = (String)paramamaq.a.get(str1);
-        if ((paramBoolean) && (QLog.isColorLevel())) {
-          QLog.d("ApolloConfig_GlobalProcessor", 2, new Object[] { "parseApolloGrayConfBean content:", str2 });
-        }
-        if ("apolloGrayUrlWhite".equals(str1)) {
-          aiyr.a(paramQQAppInterface, str2, paramBoolean);
-        } else if ("apolloTraceConfig".equals(str1)) {
-          aiyr.a(paramQQAppInterface, str2);
-        }
-      }
-    }
+    this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amaq
  * JD-Core Version:    0.7.0.1
  */

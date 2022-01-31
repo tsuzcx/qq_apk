@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import amli;
-import axhb;
+import anbm;
+import ayhf;
 
 public class ConfigSettingForDataLine$1
   implements Runnable
 {
-  public ConfigSettingForDataLine$1(axhb paramaxhb, amli paramamli) {}
+  public ConfigSettingForDataLine$1(ayhf paramayhf, anbm paramanbm) {}
   
   public void run()
   {
-    axhb.a(this.this$0, this.a);
+    ayhf.a(this.this$0, this.a);
   }
 }
 

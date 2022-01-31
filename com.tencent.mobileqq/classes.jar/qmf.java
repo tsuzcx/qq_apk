@@ -1,30 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-class qmf
-  extends Handler
+public abstract interface qmf
 {
-  qmf(qme paramqme, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a(long paramLong);
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsVideoUIDelegate", 2, "mUiHandler.postDelayed() innerChangePlayButton(SHOW_LOADING_BTN) mIsNeedShowLoading = " + qme.a(this.a));
-      }
-    } while (!qme.a(this.a));
-    this.a.a(1);
-  }
+  public abstract void a(VideoInfo paramVideoInfo, boolean paramBoolean);
+  
+  public abstract void a(qms paramqms);
+  
+  public abstract void d();
 }
 
 

@@ -1,75 +1,46 @@
-import android.widget.TextView;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.util.BinderWarpper;
 
-public class avrf
-  extends avsf
+class avrf
+  implements ServiceConnection
 {
-  public avrf(azwg paramazwg)
-  {
-    super(paramazwg);
-  }
+  avrf(avre paramavre) {}
   
-  public void b(avon paramavon, avww paramavww)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    super.b(paramavon, paramavww);
-    TextView localTextView;
-    CharSequence localCharSequence;
-    if ((paramavon instanceof avmc))
+    avrd.a("PTV.RichmediaClient", "onServiceConnected");
+    this.a.b = new Messenger(paramIBinder);
+    paramComponentName = Message.obtain(null, 1);
+    paramComponentName.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
+    paramIBinder = new BinderWarpper(this.a.jdField_a_of_type_Avra.asBinder());
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("ICallBack_BinderWrapper", paramIBinder);
+    paramComponentName.setData(localBundle);
+    try
     {
-      avmc localavmc = (avmc)paramavon;
-      localTextView = ((avws)paramavww).e();
-      paramavon = ((avws)paramavww).f();
-      paramavww = ((avws)paramavww).g();
-      if (localTextView != null)
-      {
-        localCharSequence = localavmc.e();
-        if (localCharSequence != null) {
-          break label96;
-        }
-        localTextView.setText("");
-        if (paramavww != null) {
-          paramavww.setVisibility(8);
-        }
-      }
-      if (paramavon != null)
-      {
-        paramavww = localavmc.f();
-        if (paramavww != null) {
-          break label115;
-        }
-        paramavon.setText("");
-      }
-    }
-    label96:
-    label115:
-    do
-    {
-      do
-      {
-        return;
-        localTextView.setText(localCharSequence);
-        if (paramavww == null) {
-          break;
-        }
-        paramavww.setVisibility(0);
-        break;
-        paramavon.setText(paramavww);
-        return;
-      } while (!(paramavon instanceof avmb));
-      paramavon = (avmb)paramavon;
-      paramavww = ((avws)paramavww).h();
-    } while (paramavww == null);
-    paramavon = paramavon.e();
-    if (paramavon == null)
-    {
-      paramavww.setText("");
+      this.a.b.send(paramComponentName);
       return;
     }
-    paramavww.setText(paramavon);
+    catch (RemoteException paramComponentName)
+    {
+      avrd.b("PTV.RichmediaClient", "MSG_C2S_REGISTER_CLIENT send failed. e = " + paramComponentName);
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    this.a.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avrf
  * JD-Core Version:    0.7.0.1
  */

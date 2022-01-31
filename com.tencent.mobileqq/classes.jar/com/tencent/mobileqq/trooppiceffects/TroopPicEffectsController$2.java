@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.trooppiceffects;
 
-import azrz;
-import azsb;
+import batd;
+import batf;
 
 public class TroopPicEffectsController$2
   implements Runnable
 {
-  public TroopPicEffectsController$2(azrz paramazrz, azsb paramazsb) {}
+  public TroopPicEffectsController$2(batd parambatd, batf parambatf) {}
   
   public void run()
   {

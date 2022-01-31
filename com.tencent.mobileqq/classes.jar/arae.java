@@ -1,23 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.16;
+import android.widget.TextView;
+import com.tencent.mobileqq.hotpic.HotPicTab;
 
 public class arae
-  implements DialogInterface.OnClickListener
 {
-  public arae(LocationDialogUtil.16 param16) {}
+  public TextView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = ardn.a(this.a.a.app);
-    paramDialogInterface.a(3);
-    paramDialogInterface.a = false;
-  }
+  arae(HotPicTab paramHotPicTab) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     arae
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,11 @@
-import android.app.Activity;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.apollo.game.ApolloWebViewFragment;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-
 public class ailt
-  implements View.OnLayoutChangeListener
 {
-  public ailt(ApolloWebViewFragment paramApolloWebViewFragment) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    paramView = this.a.a();
-    if (paramView == null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramView = paramView.findViewById(16908290);
-      } while (paramView == null);
-      paramView.getWindowVisibleDisplayFrame(ApolloWebViewFragment.a(this.a));
-      paramInt1 = ApolloWebViewFragment.a(this.a).right - ApolloWebViewFragment.a(this.a).left;
-      paramInt2 = ApolloWebViewFragment.a(this.a).bottom - ApolloWebViewFragment.a(this.a).top;
-    } while ((ApolloWebViewFragment.a(this.a) == paramInt1) && (ApolloWebViewFragment.b(this.a) == paramInt2));
-    ThreadManager.getUIHandler().post(this.a.a);
-    ApolloWebViewFragment.a(this.a, paramInt1);
-    ApolloWebViewFragment.b(this.a, paramInt2);
-  }
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private boolean jdField_a_of_type_Boolean;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ailt
  * JD-Core Version:    0.7.0.1
  */

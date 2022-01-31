@@ -1,23 +1,34 @@
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.EditInfoActivity.11.1;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aaql
-  extends ajfo
+  implements View.OnClickListener
 {
-  public aaql(EditInfoActivity paramEditInfoActivity) {}
+  public aaql(ChatHistory paramChatHistory) {}
   
-  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
+  public void onClick(View paramView)
   {
-    if (!this.a.j) {}
-    do
+    if (this.a.d < this.a.c)
     {
-      return;
-      this.a.j = false;
-      this.a.runOnUiThread(new EditInfoActivity.11.1(this, paramBoolean, paramCard));
-    } while (!QLog.isColorLevel());
-    QLog.d("EditInfoActivity", 2, String.format("onGetDetailInfo, isSuccess: %s, resultCode:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838766);
+      paramView = this.a;
+      paramView.d += 1;
+      if (this.a.d >= this.a.c)
+      {
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130848543);
+      }
+      this.a.e = ((this.a.d - 1) * 8);
+      this.a.jdField_a_of_type_Aarj.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      this.a.t();
+    }
   }
 }
 

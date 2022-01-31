@@ -1,57 +1,41 @@
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class sai
 {
-  private static final String a = "weishi" + "8.2.6".replaceAll("\\.", "");
+  private static final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   
-  public static void a(String paramString)
+  public static void a()
   {
-    b(a, 4, paramString);
+    if ((jdField_a_of_type_JavaUtilList != null) && (jdField_a_of_type_JavaUtilList.size() <= 0)) {}
   }
   
-  public static void a(String paramString1, int paramInt, String paramString2)
+  public static void a(String paramString1, String paramString2, double paramDouble)
   {
-    QLog.i(paramString1, paramInt, paramString2);
+    if (!a(paramDouble)) {}
   }
   
-  public static void a(String paramString1, String paramString2)
+  public static void a(String paramString1, String paramString2, String paramString3, double paramDouble)
   {
-    a(a + "-" + paramString1, 4, paramString2);
+    if (!a(paramDouble)) {}
   }
   
-  public static void b(String paramString)
+  private static boolean a(double paramDouble)
   {
-    d(a, 1, paramString);
+    return false;
   }
   
-  public static void b(String paramString1, int paramInt, String paramString2)
+  public static void b()
   {
-    QLog.d(paramString1, paramInt, paramString2);
+    if (jdField_a_of_type_JavaUtilList != null) {
+      jdField_a_of_type_JavaUtilList.clear();
+    }
   }
   
-  public static void b(String paramString1, String paramString2)
+  private static void b(String paramString)
   {
-    b(a + "-" + paramString1, 4, paramString2);
-  }
-  
-  public static void c(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.w(paramString1, paramInt, paramString2);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    c(a + "-" + paramString1, 4, paramString2);
-  }
-  
-  public static void d(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.e(paramString1, paramInt, paramString2);
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    d(a + "-" + paramString1, 1, paramString2);
+    noo.a(onk.a(), "", "0X800A064", "0X800A064", 0, 0, "", "", "", paramString, false);
   }
 }
 

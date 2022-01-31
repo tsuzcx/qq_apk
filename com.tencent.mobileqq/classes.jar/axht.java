@@ -1,25 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Rect;
+import android.hardware.Camera.Size;
+import java.io.File;
 
-class axht
-  implements View.OnClickListener
+public class axht
 {
-  axht(axhs paramaxhs) {}
+  public int a;
+  public aiak a;
+  public Rect a;
+  public Camera.Size a;
+  public File a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void onClick(View paramView)
-  {
-    if ((paramView.getTag() instanceof axhn))
-    {
-      axhn localaxhn = (axhn)paramView.getTag();
-      if ((this.a.a != null) && (localaxhn.a.isClickable())) {
-        this.a.a.onClick(paramView);
-      }
-    }
-  }
+  private axht(axhp paramaxhp) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axht
  * JD-Core Version:    0.7.0.1
  */

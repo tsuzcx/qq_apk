@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aygn;
+import azgy;
 
 public class TroopBarPublishLocationSelectActivity$2$2
   implements Runnable
 {
-  public TroopBarPublishLocationSelectActivity$2$2(aygn paramaygn) {}
+  public TroopBarPublishLocationSelectActivity$2$2(azgy paramazgy) {}
   
   public void run()
   {

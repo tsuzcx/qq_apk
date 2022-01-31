@@ -1,21 +1,17 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
 
 public class asnj
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public asnj(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public asnj(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
   
-  public void onClick(View paramView)
-  {
-    ((Activity)this.a.getContext()).finish();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asnj
  * JD-Core Version:    0.7.0.1
  */

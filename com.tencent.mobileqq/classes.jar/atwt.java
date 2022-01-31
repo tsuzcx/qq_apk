@@ -1,13 +1,9 @@
-import android.util.Pair;
-import java.util.Comparator;
-
-class atwt
-  implements Comparator<Pair<Long, String>>
+public class atwt
 {
-  public int a(Pair<Long, String> paramPair1, Pair<Long, String> paramPair2)
-  {
-    return atws.a((CharSequence)paramPair1.second) - atws.a((CharSequence)paramPair2.second);
-  }
+  public long a;
+  public String a;
+  public String b;
+  public String c;
 }
 
 

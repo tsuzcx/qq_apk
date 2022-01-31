@@ -1,28 +1,9 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
+import java.util.List;
 
 public class lrm
 {
-  public static void a(String paramString)
-  {
-    awqx.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static void b(String paramString)
-  {
-    int i = 0;
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof VideoAppInterface)) {
-      i = ((VideoAppInterface)localObject).b("BEAUTY_SKIN");
-    }
-    if (i > 0) {}
-    for (localObject = "0X80076B4";; localObject = "0X80076B3")
-    {
-      a((String)localObject);
-      krx.c("BeautyToolbar", "DataReport onUserBeauty:" + paramString + "|" + i);
-      return;
-    }
-  }
+  public List<TTFaceOriginDataModel> a;
 }
 
 

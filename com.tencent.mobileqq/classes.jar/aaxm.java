@@ -1,41 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.FormSwitchSimpleItem;
-import com.tencent.widget.Switch;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.fpsreport.FPSSwipListView;
 
 public class aaxm
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnLayoutChangeListener
 {
-  public aaxm(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public aaxm(Conversation paramConversation) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    boolean bool1 = this.a.a.a().isChecked();
-    boolean bool2 = ThemeUtil.isNowThemeIsNight(this.a.app, false, null);
-    int j = awnu.c();
-    int i;
-    if ((bool1) && (bool2)) {
-      i = awnu.b;
-    }
-    while (paramBoolean)
-    {
-      String str = awnp.b[i];
-      if (!axkz.a(this.a, str, new aaxn(this, paramCompoundButton, bool1, i))) {
-        GeneralSettingActivity.a(this.a, paramCompoundButton, true, bool1, i);
-      }
-      return;
-      i = j;
-      if (bool1)
-      {
-        i = j;
-        if (ThemeUtil.isNowThemeIsNight(this.a.app, false, awnp.b[j])) {
-          i = awnu.d();
-        }
-      }
-    }
-    GeneralSettingActivity.a(this.a, paramCompoundButton, false, bool1, i);
+    Conversation.a(this.a).removeOnLayoutChangeListener(this);
+    Conversation.f(this.a);
   }
 }
 

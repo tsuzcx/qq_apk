@@ -1,61 +1,103 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.GroupListOpenFrame;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbwv
-  extends bbzt
 {
-  public bbwv(GroupListOpenFrame paramGroupListOpenFrame) {}
-  
-  public int getCount()
+  public static int a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, int paramInt)
   {
-    return this.a.jdField_a_of_type_Bbzv.b();
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
+    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
+    paramInt = localSharedPreferences.getInt(paramQQAppInterface, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("QVip.ConfigManager", 1, "get sp key:" + paramQQAppInterface + " value=" + paramInt);
+    }
+    return paramInt;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public static long a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, long paramLong)
   {
-    String str;
-    int i;
-    if (paramView == null)
-    {
-      paramViewGroup = new bbwx(this);
-      paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131493923, this.a.jdField_a_of_type_ComTencentWidgetXListView, false);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297884));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131301577));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131301576));
-      paramView.setTag(paramViewGroup);
-      str = this.a.jdField_a_of_type_Bbzv.a(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      paramViewGroup.b.setText(String.valueOf(this.a.jdField_a_of_type_Bbzv.a(paramInt)));
-      i = (int)(10.0F * this.a.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a);
-      if (paramInt != 0) {
-        break label194;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839160);
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
+    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
+    paramLong = localSharedPreferences.getLong(paramQQAppInterface, paramLong);
+    if (QLog.isColorLevel()) {
+      QLog.d("QVip.ConfigManager", 1, "get sp key:" + paramQQAppInterface + " value=" + paramLong);
     }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(i, 0, i, 0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bbww(this, paramInt, str));
-      return paramView;
-      paramViewGroup = (bbwx)paramView.getTag();
-      break;
-      label194:
-      if (paramInt == getCount() - 1) {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839151);
-      } else {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839154);
-      }
+    return paramLong;
+  }
+  
+  public static String a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString1, String paramString2)
+  {
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
+    paramQQAppInterface = paramString1 + "_" + paramQQAppInterface.getCurrentAccountUin();
+    paramString1 = localSharedPreferences.getString(paramQQAppInterface, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("QVip.ConfigManager", 1, "get sp key:" + paramQQAppInterface + " value=" + paramString1);
     }
+    return paramString1;
+  }
+  
+  public static boolean a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
+    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
+    boolean bool = localSharedPreferences.edit().putInt(paramQQAppInterface, paramInt).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("QVip.ConfigManager", 1, "set sp key:" + paramQQAppInterface + " value=" + bool);
+    }
+    return bool;
+  }
+  
+  public static boolean a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, long paramLong)
+  {
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
+    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
+    boolean bool = localSharedPreferences.edit().putLong(paramQQAppInterface, paramLong).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("QVip.ConfigManager", 1, "set sp key:" + paramQQAppInterface + " value=" + bool);
+    }
+    return bool;
+  }
+  
+  public static boolean a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString1, String paramString2)
+  {
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
+    paramQQAppInterface = paramString1 + "_" + paramQQAppInterface.getCurrentAccountUin();
+    boolean bool = localSharedPreferences.edit().putString(paramQQAppInterface, paramString2).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("QVip.ConfigManager", 1, "set sp key:" + paramQQAppInterface + " value=" + paramString2);
+    }
+    return bool;
+  }
+  
+  public static boolean a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, boolean paramBoolean)
+  {
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
+    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
+    paramBoolean = localSharedPreferences.getBoolean(paramQQAppInterface, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("QVip.ConfigManager", 1, "get sp key:" + paramQQAppInterface + " value=" + paramBoolean);
+    }
+    return paramBoolean;
+  }
+  
+  public static boolean b(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, boolean paramBoolean)
+  {
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
+    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
+    paramBoolean = localSharedPreferences.edit().putBoolean(paramQQAppInterface, paramBoolean).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("QVip.ConfigManager", 1, "set sp key:" + paramQQAppInterface + " value=" + paramBoolean);
+    }
+    return paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbwv
  * JD-Core Version:    0.7.0.1
  */

@@ -4,9 +4,9 @@ import android.os.Build.VERSION;
 import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
-import bbcj;
+import bcfj;
 import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
-import njo;
+import nuz;
 
 public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$2
   implements Runnable
@@ -15,14 +15,14 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$2
   
   public void run()
   {
-    if ((IPluginAdapterProxy.getProxy().isNightMode()) && (this.this$0.jdField_a_of_type_Bbcj.c != null)) {
-      this.this$0.jdField_a_of_type_Bbcj.c.setBackgroundColor(-1);
+    if ((IPluginAdapterProxy.getProxy().isNightMode()) && (this.this$0.jdField_a_of_type_Bcfj.c != null)) {
+      this.this$0.jdField_a_of_type_Bcfj.c.setBackgroundColor(-1);
     }
     if (this.this$0.jdField_a_of_type_AndroidWidgetImageView != null)
     {
       if (Build.VERSION.SDK_INT >= 14)
       {
-        this.this$0.jdField_a_of_type_AndroidWidgetImageView.animate().alpha(0.0F).setDuration(200L).setListener(new njo(this));
+        this.this$0.jdField_a_of_type_AndroidWidgetImageView.animate().alpha(0.0F).setDuration(200L).setListener(new nuz(this));
         this.this$0.jdField_a_of_type_AndroidWidgetImageView.animate().start();
       }
     }

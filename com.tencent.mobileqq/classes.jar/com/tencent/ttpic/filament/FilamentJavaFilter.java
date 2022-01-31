@@ -551,7 +551,6 @@ public class FilamentJavaFilter
         FilamentJavaUtil.setMorphWeights((FilamentAsset)this.filamentAssetList.get(paramInt), paramArrayOfFloat3, paramArrayOfFloat4);
       }
     }
-    ((Animator)this.animatorList.get(paramInt)).applyAnimation();
     this.needRender = true;
     BenchUtil.benchEnd("[filament] updateGlbParams 2");
     BenchUtil.benchEnd("[filament] updateGlbParams");

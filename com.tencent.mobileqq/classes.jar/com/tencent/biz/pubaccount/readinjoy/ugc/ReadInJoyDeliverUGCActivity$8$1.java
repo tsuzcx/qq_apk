@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import psw;
+import qeu;
 
 public class ReadInJoyDeliverUGCActivity$8$1
   implements Runnable
 {
-  public ReadInJoyDeliverUGCActivity$8$1(psw parampsw) {}
+  public ReadInJoyDeliverUGCActivity$8$1(qeu paramqeu) {}
   
   public void run()
   {

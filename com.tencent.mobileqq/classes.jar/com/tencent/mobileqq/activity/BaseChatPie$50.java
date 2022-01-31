@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import aaed;
 import android.view.View;
 import android.widget.TextView;
 
@@ -16,9 +15,6 @@ class BaseChatPie$50
     }
     if (BaseChatPie.a(this.this$0) != null) {
       BaseChatPie.a(this.this$0).setVisibility(8);
-    }
-    if ((this.this$0.a != null) && (!this.this$0.w())) {
-      this.this$0.a.b();
     }
   }
 }

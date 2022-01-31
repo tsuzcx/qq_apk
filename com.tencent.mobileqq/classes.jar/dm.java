@@ -1,84 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.util.file.DLFileInfo;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.FrameLayout.LayoutParams;
+import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.DataLineMsgSet;
+import com.tencent.widget.XEditTextEx;
+import mqq.app.MobileQQ;
 
-class dm
-  implements View.OnClickListener
+public class dm
+  implements Animator.AnimatorListener
 {
-  dm(dk paramdk) {}
+  public dm(LiteActivity paramLiteActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    boolean bool = true;
-    Object localObject = (do)paramView.getTag();
-    int i = DataLineMsgRecord.getDevTypeBySeId(((do)localObject).a.jdField_a_of_type_Long);
-    paramView = dk.a(this.a).a().a(i).a(((do)localObject).a.jdField_a_of_type_Long);
-    if (paramView == null) {
-      return;
-    }
-    DLFileInfo localDLFileInfo = ((do)localObject).a;
-    switch (localDLFileInfo.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 0: 
-    case 3: 
-      localObject = (ajgm)dk.a(this.a).a(8);
-      if ((paramView.strMoloKey != null) && (!paramView.isReportPause))
-      {
-        paramView.isReportPause = true;
-        dj.m(dk.a(this.a));
-      }
-      ((ajgm)localObject).a(paramView.groupId, paramView.sessionid, false);
-      if (paramView.isSendFromLocal())
-      {
-        localDLFileInfo.jdField_a_of_type_Int = 1;
-        return;
-      }
-      break;
-    case 1: 
-    case 2: 
-    case 4: 
-      if (badq.d(dk.a(this.a)))
-      {
-        if ((apck.a()) && (localDLFileInfo.b > 3145728L))
-        {
-          if (localDLFileInfo.jdField_a_of_type_Int == 1) {}
-          for (;;)
-          {
-            apck.a(bool, dk.a(this.a), new dn(this, paramView, (do)localObject));
-            return;
-            bool = false;
-          }
-        }
-        i = DataLineMsgRecord.getDevTypeBySeId(paramView.sessionid);
-        DataLineMsgSet localDataLineMsgSet = dk.a(this.a).a(i).a(paramView.sessionid);
-        if (localDataLineMsgSet != null) {
-          localDataLineMsgSet.setPaused(false);
-        }
-        if (localDLFileInfo.jdField_a_of_type_Int != 1)
-        {
-          if ((paramView.fileMsgStatus == 1L) && (paramView.strMoloKey != null)) {
-            dj.e(dk.a(this.a));
-          }
-          dk.a(this.a, (do)localObject, paramView);
-          return;
-        }
-        dk.b(this.a, (do)localObject, paramView);
-        return;
-      }
-      apcb.a(2131629008);
-      return;
-    case 5: 
-      dk.a(this.a, paramView);
-      return;
-    }
-    localDLFileInfo.jdField_a_of_type_Int = 4;
+    LiteActivity.a(this.a).setPadding(0, 0, 0, 0);
+    ((FrameLayout.LayoutParams)this.a.a.getLayoutParams()).setMargins(0, 0, 0, 0);
+    this.a.a.setPadding(actn.a(24.0F, this.a.app.getApplication().getResources()), actn.a(10.0F, this.a.app.getApplication().getResources()), actn.a(24.0F, this.a.app.getApplication().getResources()), 0);
+    LiteActivity.a(this.a).getLayoutParams().height = -1;
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

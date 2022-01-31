@@ -1,84 +1,75 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.pb.now.ilive_feeds_near_anchor.NearAnchorInfo;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.List;
 
-class aqii
-  implements axrt
+public class aqii
+  extends akbn
 {
-  aqii(aqif paramaqif, String paramString1, String paramString2, String paramString3) {}
+  public aqii(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void onResp(axsq paramaxsq)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, String paramString1, String paramString2, String paramString3)
   {
-    int i = 1;
-    if (paramaxsq.jdField_a_of_type_Int == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("qqidentification_server", 2, "identification res download repeating ");
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.NearbyHybridFragment", 2, "onSetFilterList");
     }
-    boolean bool;
-    if (paramaxsq.jdField_a_of_type_Int == 0)
-    {
-      paramaxsq = paramaxsq.jdField_a_of_type_Axsp.c;
-      String str1 = bace.c(paramaxsq);
-      String str2 = this.jdField_a_of_type_JavaLangString;
-      if ((str1 != null) && (str1.equalsIgnoreCase(this.b)))
-      {
-        try
-        {
-          bace.a(paramaxsq, str2, false);
-          bool = true;
-        }
-        catch (IOException localIOException)
-        {
-          for (;;)
-          {
-            label78:
-            QLog.d("qqidentification_server", 1, "downloadRes.onResp download succ but unzip is failed");
-            bool = false;
-          }
-        }
-        bace.d(paramaxsq);
-      }
+    asyz localasyz = new asyz();
+    localasyz.jdField_a_of_type_Int = paramInt1;
+    localasyz.jdField_b_of_type_Int = paramInt2;
+    localasyz.jdField_c_of_type_Int = paramInt3;
+    localasyz.jdField_d_of_type_Int = paramInt4;
+    localasyz.e = paramInt9;
+    localasyz.f = paramInt5;
+    localasyz.jdField_d_of_type_ArrayOfJavaLangString[0] = String.valueOf(paramInt6);
+    localasyz.jdField_d_of_type_ArrayOfJavaLangString[1] = String.valueOf(paramInt7);
+    localasyz.jdField_d_of_type_ArrayOfJavaLangString[2] = String.valueOf(paramInt8);
+    localasyz.jdField_b_of_type_JavaLangString = paramString1;
+    localasyz.jdField_c_of_type_JavaLangString = paramString2;
+    localasyz.jdField_d_of_type_JavaLangString = paramString3;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (!TextUtils.isEmpty(paramString1)) {
+      localStringBuilder.append(paramString1);
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("qqidentification_server", 2, "downloadRes.onResp download succ isSuccess = " + this.jdField_a_of_type_JavaLangString);
-      }
-      if (bool)
-      {
-        QLog.d("qqidentification_server", 1, "no res,download success");
-        baig.c(this.jdField_a_of_type_JavaLangString);
-      }
-      paramaxsq = new EIPCResult();
-      if (bool) {
-        i = 0;
-      }
-      paramaxsq.code = i;
-      this.jdField_a_of_type_Aqif.callbackResult(aqif.b(this.jdField_a_of_type_Aqif), paramaxsq);
-      aqif.a(this.jdField_a_of_type_Aqif).set(false);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("qqidentification_server", 2, "downloadRes.onResp download result = " + bool);
-      return;
-      QLog.d("qqidentification_server", 1, "downloadRes.onResp download succ but md5 is mismatched ");
-      if (QLog.isColorLevel()) {
-        QLog.d("qqidentification_server", 2, "downloadRes.onResp download succ but md5 is mismatched,fileSize = " + bace.a(paramaxsq) + ",md5 = " + localIOException + ",url = " + this.c);
-      }
-      bool = false;
-      break label78;
-      if (QLog.isColorLevel()) {
-        QLog.d("qqidentification_server", 2, "downloadRes.onResp failed ");
-      }
-      bool = false;
+    if (!TextUtils.isEmpty(paramString2)) {
+      localStringBuilder.append("-").append(paramString2);
+    }
+    if (!TextUtils.isEmpty(paramString3)) {
+      localStringBuilder.append("-").append(paramString3);
+    }
+    paramString2 = localStringBuilder.toString();
+    paramString1 = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString1 = "不限";
+    }
+    localasyz.jdField_a_of_type_JavaLangString = paramString1;
+    if (!localasyz.equals(this.a.jdField_a_of_type_Asyz)) {
+      localasyz.jdField_a_of_type_Boolean = true;
+    }
+    this.a.jdField_a_of_type_Asyz = localasyz;
+    if ((((ampe)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(210)).a() == 0) && (this.a.jdField_a_of_type_Asyz != null) && (this.a.jdField_a_of_type_Asyz.jdField_a_of_type_Boolean)) {
+      asyz.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_Asyz);
     }
   }
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
+  protected void a(boolean paramBoolean, List<ilive_feeds_near_anchor.NearAnchorInfo> paramList)
+  {
+    QLog.e("nearby.NearbyHybridFragment", 2, "onNearbyLiveFeedAnchor isSucc:" + paramBoolean);
+    if ((paramBoolean) && (paramList.size() > 0))
+    {
+      this.a.jdField_a_of_type_Aszo.b(paramList);
+      return;
+    }
+    this.a.jdField_a_of_type_Aszo.b(null);
+  }
+  
+  public void b()
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.finish();
+    this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.overridePendingTransition(0, 0);
+  }
 }
 
 

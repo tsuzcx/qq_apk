@@ -1,17 +1,19 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
 
-public class aaot
+public final class aaot
   implements DialogInterface.OnClickListener
 {
-  public aaot(DialogActivity paramDialogActivity) {}
+  public aaot(aaqe paramaaqe) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    axfs.a(this.a.app, this.a);
-    this.a.finish();
-    awqx.b(this.a.app, "dc00898", "", "", "0X800906A", "0X800906A", 0, 0, "", "", "", "");
+    if (this.a != null) {
+      this.a.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

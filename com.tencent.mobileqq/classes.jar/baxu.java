@@ -1,26 +1,10 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
-
-class baxu
-  extends baxx
+public abstract interface baxu
 {
-  baxu(baxr parambaxr)
-  {
-    super(parambaxr, null);
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "old shouldInterceptRequest");
-    }
-    return a(paramWebView, paramString);
-  }
+  public abstract void onLoadingStateChanged(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     baxu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.apollo.ApolloGameNormalStartHandler.3;
 
-class airy
-  implements aiuf
+public class airy
+  implements View.OnClickListener
 {
-  airy(airv paramairv, boolean paramBoolean, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2) {}
+  public airy(ApolloGameNormalStartHandler.3 param3) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Airv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, this.b);
-    }
+    airx.a(this.a.this$0).dismiss();
+    airx.a(this.a.this$0, true);
   }
 }
 

@@ -1,244 +1,408 @@
-import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.app.ActivityManager.RunningTaskInfo;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.os.Build.VERSION;
-import android.os.Process;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import common.config.service.QZoneConfigHelper.1;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import cooperation.qzone.util.QZLog;
 
 public class bgfp
 {
   public static int a;
   public static String a;
-  public static WeakReference<Activity> a;
-  private static List<String> a;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "";
+    jdField_a_of_type_Int = 180000;
+    jdField_a_of_type_JavaLangString = "qapp://detail?param=";
   }
   
   public static int a()
   {
-    return jdField_a_of_type_Int;
+    return QzoneConfig.getInstance().getConfig("WNSSettting", "AccReportSamples", 10);
+  }
+  
+  public static long a()
+  {
+    return bgfr.a().a("contentboxlaunch", "gocontentboxminiprogram", 0);
   }
   
   public static String a()
   {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return d();
-    }
-    return b();
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "GdtCgiReportHost", "ttc.gdt.qq.com#c.gdt.qq.com#xc.gdt.qq.com");
   }
   
-  public static String a(Context paramContext)
+  public static void a(bgfq parambgfq)
   {
-    int i = Process.myPid();
-    paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
-    if (paramContext == null)
+    if (parambgfq != null) {
+      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new QZoneConfigHelper.1(parambgfq));
+    }
+  }
+  
+  public static boolean a()
+  {
+    int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "ShowFeedOpLayer", 0);
+    if (QZLog.isColorLevel()) {
+      QZLog.d("config", 2, "ShowFeedOpLayer :" + Integer.toString(i));
+    }
+    return i == 1;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    try
     {
-      QLog.e("ProcessUtils", 1, "getCurProcessName: processInfos is null.");
-      return null;
+      boolean bool = ((askn)paramQQAppInterface.getManager(10)).b();
+      return bool;
     }
-    paramContext = paramContext.iterator();
-    while (paramContext.hasNext())
+    catch (Throwable paramQQAppInterface)
     {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-      if (localRunningAppProcessInfo.pid == i) {
-        return localRunningAppProcessInfo.processName;
-      }
+      QZLog.e("QZoneMsgManager.enableQZoneContextBox", 2, paramQQAppInterface, new Object[0]);
     }
-    return null;
-  }
-  
-  private static List<String> a()
-  {
-    if (jdField_a_of_type_JavaUtilList != null) {
-      return jdField_a_of_type_JavaUtilList;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = BaseApplicationImpl.getContext().getPackageManager();
-    Intent localIntent = new Intent("android.intent.action.MAIN");
-    localIntent.addCategory("android.intent.category.HOME");
-    localObject = ((PackageManager)localObject).queryIntentActivities(localIntent, 65536).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      localArrayList.add(((ResolveInfo)((Iterator)localObject).next()).activityInfo.packageName);
-    }
-    jdField_a_of_type_JavaUtilList = localArrayList;
-    return localArrayList;
-  }
-  
-  public static void a(Activity paramActivity, String paramString)
-  {
-    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    jdField_a_of_type_Int = jdField_a_of_type_JavaLangRefWeakReference.hashCode();
-    jdField_a_of_type_JavaLangString = paramString;
+    return false;
   }
   
   public static boolean a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    List localList;
-    do
+    boolean bool2 = false;
+    Object localObject = QzoneConfig.getInstance().getConfig("QZoneSetting", "famousWhiteList", "1696127668,536264505,622000659,622009484,1872005011");
+    boolean bool1 = bool2;
+    int j;
+    int i;
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      return false;
-      localList = a();
-      if (localList.contains(paramString)) {
-        return true;
+      localObject = ((String)localObject).split(",");
+      j = localObject.length;
+      i = 0;
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i < j)
+      {
+        if (localObject[i].equals(paramString)) {
+          bool1 = true;
+        }
       }
-      paramString = paramString.split("/");
-    } while (paramString.length < 2);
-    return localList.contains(paramString[0]);
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  public static String[] a()
+  {
+    return QzoneConfig.getInstance().getConfig("QzoneCover", "UploadQuality", "70,70,70").split(",");
+  }
+  
+  public static int b()
+  {
+    return QzoneConfig.getInstance().getConfig("WNSSettting", "ActivitySwitchAccReportSamples", 10);
   }
   
   public static String b()
   {
-    Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningTasks(1);
-    if ((localObject == null) || (((List)localObject).get(0) == null) || (((ActivityManager.RunningTaskInfo)((List)localObject).get(0)).topActivity == null)) {
-      return null;
+    return QzoneConfig.getInstance().getConfig("WNSSettting", "YingyongbaoSwitchPrefix", jdField_a_of_type_JavaLangString);
+  }
+  
+  public static boolean b()
+  {
+    int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "use_new_command", 1);
+    if (QZLog.isColorLevel()) {
+      QZLog.d("config", 2, "use_new_command:" + i);
     }
-    localObject = ((ActivityManager.RunningTaskInfo)((List)localObject).get(0)).topActivity;
-    return ((ComponentName)localObject).getPackageName() + "/" + ((ComponentName)localObject).getClassName();
+    return i != 0;
   }
   
   public static boolean b(String paramString)
   {
-    boolean bool = true;
     if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return false;
-      if ("com.tencent.mobileqq:qzone".equals(paramString)) {
-        return true;
-      }
-      paramString = paramString.split("/");
-    } while ((paramString.length < 2) || (!"com.tencent.mobileqq".equals(paramString[0])) || (TextUtils.isEmpty(paramString[1])));
-    paramString = paramString[1].toLowerCase().split("\\.");
-    if ((paramString.length > 0) && (paramString[(paramString.length - 1)].startsWith("qzone")) && (paramString[(paramString.length - 1)].endsWith("proxyactivity"))) {}
     for (;;)
     {
-      return bool;
-      bool = false;
+      return false;
+      Object localObject = QzoneConfig.getInstance().getConfig("QZoneSetting", "sharewhitelist", "100733645,1101218289,100497308,1103394134,1106611629,1105705811,1104466820");
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = ((String)localObject).split(",");
+        int j = localObject.length;
+        int i = 0;
+        while (i < j)
+        {
+          if (localObject[i].equals(paramString)) {
+            return true;
+          }
+          i += 1;
+        }
+      }
     }
+  }
+  
+  public static String[] b()
+  {
+    return QzoneConfig.getInstance().getConfig("QzoneCover", "UploadResolution", "640*640,640*640,640*640").replace("*", ",").split(",");
+  }
+  
+  public static int c()
+  {
+    return QzoneConfig.getInstance().getConfig("WNSSettting", "AccReportCount", 50);
   }
   
   public static String c()
   {
-    return jdField_a_of_type_JavaLangString;
+    String str = QzoneConfig.getInstance().getConfig("HomepageBar", "bar_schema", "https://h5.qzone.qq.com/giftv2/vuemall?_wv=131075&_fv=0&_wwv=128&uin={UIN}&_proxy=1");
+    if (QZLog.isColorLevel()) {
+      QZLog.d("config", 2, "getUserhomeBarSchema:" + str);
+    }
+    return str;
+  }
+  
+  public static boolean c()
+  {
+    boolean bool = false;
+    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "can_report_task_run_at_front", 0) != 0) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean c(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (("com.tencent.mobileqq:tool".equals(paramString)) || ("com.tencent.mobileqq/com.tencent.mobileqq.activity.QQBrowserActivity".equals(paramString)));
-  }
-  
-  private static String d()
-  {
-    Object localObject3 = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ProcessUtils", 4, "processInfos.size()=" + ((List)localObject3).size());
-    }
+    if (TextUtils.isEmpty(paramString)) {}
     for (;;)
     {
-      try
+      return false;
+      Object localObject = QzoneConfig.getInstance().getConfig("QZoneSetting", "canShareStructLongMessage", "qzone.qq.com");
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        Object localObject1 = ActivityManager.RunningAppProcessInfo.class.getDeclaredField("processState");
-        if (localObject1 != null)
+        localObject = ((String)localObject).split(",");
+        int j = localObject.length;
+        int i = 0;
+        while (i < j)
         {
-          Iterator localIterator = ((List)localObject3).iterator();
-          if (localIterator.hasNext())
-          {
-            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localIterator.next();
-            if (QLog.isDevelopLevel()) {
-              QLog.d("ProcessUtils", 4, "processInfo: processName=" + localRunningAppProcessInfo.processName + " importance=" + localRunningAppProcessInfo.importance + " importanceReasonCode=" + localRunningAppProcessInfo.importanceReasonCode);
-            }
-            if ((localRunningAppProcessInfo.importance != 100) || (localRunningAppProcessInfo.importanceReasonCode != 0)) {
-              continue;
-            }
-            try
-            {
-              int i = ((Field)localObject1).getInt(localRunningAppProcessInfo);
-              localObject3 = Integer.valueOf(i);
-            }
-            catch (IllegalAccessException localIllegalAccessException)
-            {
-              QLog.w("ProcessUtils", 1, "IllegalAccessException", localIllegalAccessException);
-              Object localObject4 = null;
-              continue;
-            }
-            if (QLog.isDevelopLevel()) {
-              QLog.d("ProcessUtils", 4, "processInfo: state=" + localObject3);
-            }
-            if ((localObject3 == null) || (((Integer)localObject3).intValue() != 2)) {
-              continue;
-            }
-            localObject1 = localRunningAppProcessInfo;
-            if (QLog.isDevelopLevel()) {
-              QLog.d("ProcessUtils", 4, "===============");
-            }
-            if (localObject1 == null) {
-              return null;
-            }
+          if (paramString.endsWith(localObject[i])) {
+            return true;
           }
+          i += 1;
         }
       }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        QLog.w("ProcessUtils", 1, "NoSuchFieldException: processState", localNoSuchFieldException);
-        localObject2 = null;
-        continue;
-        return localObject2.processName;
-      }
-      Object localObject2 = null;
     }
   }
   
-  public static boolean d(String paramString)
+  public static int d()
   {
-    return (!TextUtils.isEmpty(paramString)) && (("com.tencent.mobileqq:peak".equals(paramString)) || ("com.tencent.mobileqq/com.tencent.mobileqq.activity.photo.PhotoListActivity".equals(paramString)) || ("com.tencent.mobileqq/com.tencent.mobileqq.activity.photo.AlbumListActivity".equals(paramString)));
+    return QzoneConfig.getInstance().getConfig("WNSSettting", "AccReportInterval", 600) * 1000;
   }
   
-  public static boolean e(String paramString)
+  public static String d()
   {
-    return (!TextUtils.isEmpty(paramString)) && (("com.tencent.mobileqq:picture".equals(paramString)) || ("com.tencent.mobileqq/cooperation.qzone.QzonePicturePluginProxyActivity".equals(paramString)));
+    String str = QzoneConfig.getInstance().getConfig("H5Url", "FeedLoveDiamond", "https://h5.qzone.qq.com/lover/vipDialog?_wv=16777219&_proxy=1&qzUseTransparentNavBar=1&friendUin={friendUin}");
+    if (QZLog.isColorLevel()) {
+      QZLog.d("config", 2, "getFeedLoverIconUrl:" + str);
+    }
+    return str;
   }
   
-  public static boolean f(String paramString)
+  public static boolean d()
   {
-    return (!TextUtils.isEmpty(paramString)) && (("com.tencent.mobileqq:qzonelive".equals(paramString)) || ("com.tencent.mobileqq/cooperation.qzone.video.QzoneLiveVideoGpuProxyActivity".equals(paramString)));
+    int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "passiveBannerSwitch", 1);
+    if (QZLog.isColorLevel()) {
+      QZLog.d("config", 2, "getIsBubbleStyle:" + i);
+    }
+    return i == 1;
   }
   
-  public static boolean g(String paramString)
+  public static int e()
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    return QzoneConfig.getInstance().getConfig("PhotoView", "DelayShowLoading", 200);
+  }
+  
+  public static String e()
+  {
+    String str = QzoneConfig.getInstance().getConfig("H5Url", "PersonalizeMainPage", "https://h5.qzone.qq.com/show/home?_wv=131072&_fv=0&_wwv=128&_proxy=1&reddot={reddot}");
+    if (QZLog.isColorLevel()) {
+      QZLog.d("config", 2, "getPersonalizeSettingPage:" + str);
+    }
+    return str;
+  }
+  
+  public static boolean e()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "enableExtendFeeds", 1) == 1;
+  }
+  
+  public static int f()
+  {
+    return QzoneConfig.getInstance().getConfig("PhotoView", "RestrictBeginTime", 1170) * 60000;
+  }
+  
+  public static String f()
+  {
+    String str = QzoneConfig.getInstance().getConfig("H5Url", "CustomVipMall", "https://h5.qzone.qq.com/personalVipStore/index?_wv=2098179&refresh=1&qua={qua}&_proxy=1");
+    if (QZLog.isColorLevel()) {
+      QZLog.d("config", 2, "getPersonalizeVipHomePage:" + str);
+    }
+    return str;
+  }
+  
+  public static boolean f()
+  {
+    return (QzoneConfig.getInstance().getConfig("K_QZKuolieEnterance", "SK_QZKuoliePartyEnteranceConfig", 0) == 1) && (Build.VERSION.SDK_INT > 20);
+  }
+  
+  public static int g()
+  {
+    return QzoneConfig.getInstance().getConfig("PhotoView", "RestrictEndTime", 1440) * 60000;
+  }
+  
+  public static String g()
+  {
+    String str = QzoneConfig.getInstance().getConfig("H5Url", "CustomVipPreview", "https://h5.qzone.qq.com/personalVipStore/detail/{id}?_wv=2098179&qua={qua}&router=detail&id={id}&_proxy=1");
+    if (QZLog.isColorLevel()) {
+      QZLog.d("config", 2, "getPersonalizePreview:" + str);
+    }
+    return str;
+  }
+  
+  public static boolean g()
+  {
+    return QzoneConfig.getInstance().getConfigSync("QZoneSetting", "timecapsule_default_expand", 0) == 1;
+  }
+  
+  public static int h()
+  {
+    try
     {
-      return false;
-      if ("com.tencent.mobileqq".equals(paramString)) {
-        return true;
-      }
-      paramString = paramString.split("/");
-    } while ((paramString.length < 2) || (!"com.tencent.mobileqq".equals(paramString[0])) || (TextUtils.isEmpty(paramString[1])));
-    return true;
+      int i = Integer.valueOf(QzoneConfig.getInstance().getConfig("QZoneSetting", "FriendMaxSelectCount", 30)).intValue();
+      return i;
+    }
+    catch (NumberFormatException localNumberFormatException) {}
+    return 30;
+  }
+  
+  public static String h()
+  {
+    String str = QzoneConfig.getInstance().getConfig("H5Url", "PassivePraisePreview", "https://h5.qzone.qq.com/show/passivelike/preview?id={id}&prevPath=mall&_proxy=1&_wv=2098179");
+    if (QZLog.isColorLevel()) {
+      QZLog.d("config", 2, "getPersonalizePreview:" + str);
+    }
+    return str;
+  }
+  
+  public static int i()
+  {
+    try
+    {
+      int i = Integer.valueOf(QzoneConfig.getInstance().getConfig("QZoneSetting", "FeedBannerDuration", 7000)).intValue();
+      return i;
+    }
+    catch (NumberFormatException localNumberFormatException) {}
+    return 10000;
+  }
+  
+  public static String i()
+  {
+    return QzoneConfig.getInstance().getConfig("H5Url", "DressUpGroupUrl", "https://h5.qzone.qq.com/show/record/{uin}/{type}?_wv=2&_proxy=1");
+  }
+  
+  public static int j()
+  {
+    try
+    {
+      int i = Integer.valueOf(QzoneConfig.getInstance().getConfig("QZoneSetting", "FeedBannerActiveMaxCount", 5)).intValue();
+      return i;
+    }
+    catch (NumberFormatException localNumberFormatException) {}
+    return 5;
+  }
+  
+  public static String j()
+  {
+    String str = QzoneConfig.getInstance().getConfig("QZoneSetting", "passiveText", "消息");
+    if (QZLog.isColorLevel()) {
+      QZLog.d("config", 2, "getPassiveTabName:" + str);
+    }
+    return str;
+  }
+  
+  public static int k()
+  {
+    try
+    {
+      int i = Integer.valueOf(QzoneConfig.getInstance().getConfig("QZoneSetting", "FriendMaxSelectCountComment", 10)).intValue();
+      return i;
+    }
+    catch (NumberFormatException localNumberFormatException) {}
+    return 10;
+  }
+  
+  public static int l()
+  {
+    return QzoneConfig.getInstance().getConfig("PhotoView", "RestrictFlag", 0);
+  }
+  
+  public static int m()
+  {
+    int i = QzoneConfig.getInstance().getConfig("HomepageBar", "bar_music_visiable", 0);
+    if (QZLog.isColorLevel()) {
+      QZLog.d("config", 2, "getUserhomeMusicBarShow:" + i);
+    }
+    return i;
+  }
+  
+  public static int n()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "maxUgcTextCount", 2000);
+  }
+  
+  public static int o()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "maxCommentBubbleTextCount", 40);
+  }
+  
+  public static int p()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "maxUgcTextVisibleLineCount", 7);
+  }
+  
+  public static int q()
+  {
+    int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "DetailMaxPicShowNum", 18);
+    if (QZLog.isColorLevel()) {
+      QZLog.d("config", 2, "getPersonalizeSettingPage:" + i);
+    }
+    return i;
+  }
+  
+  public static int r()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "max_pending_report_task_num", 1000);
+  }
+  
+  public static int s()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "max_report_task_pengding_day", 3);
+  }
+  
+  public static int t()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "avatar_timeout", 1500);
+  }
+  
+  public static int u()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "FeedsShowPhotoBubble", 0);
+  }
+  
+  public static int v()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "FeedsShowMoodEntry", 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgfp
  * JD-Core Version:    0.7.0.1
  */

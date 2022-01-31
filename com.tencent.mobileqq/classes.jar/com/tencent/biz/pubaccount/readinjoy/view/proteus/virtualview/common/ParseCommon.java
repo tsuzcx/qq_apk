@@ -21,6 +21,7 @@ public class ParseCommon
   public static final String LAYOUT_TYPE = "layout_type";
   public static final String LINEAR_LAYOUT = "LinearLayout";
   public static final String READINJOY_ASYN_IMAGEVIEW = "ReadInjoyAsynImageView";
+  public static final String READINJOY_ASYN_IMAGE_ICON = "ReadInjoyAsynImageIcon";
   public static final String RELATIVE_LAYOUT = "RelativeLayout";
   public static final String STYLE_ID = "style_ID";
   public static final String SUB_VIEWS = "subviews";

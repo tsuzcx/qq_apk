@@ -1,7 +1,6 @@
 package com.tencent.ttpic.openapi.initializer;
 
 import com.google.android.filament.Filament;
-import com.google.android.filament.gltfio.AssetLoader;
 import com.tencent.aekit.api.standard.GLCapabilities;
 import com.tencent.ttpic.baseutils.device.GpuScopeAttrs;
 import com.tencent.ttpic.baseutils.device.GpuScopeAttrs.GpuBean.GpuModel;
@@ -16,7 +15,7 @@ public class FilamentInitializer
   private static boolean isFilamentInited = false;
   private static boolean isGltfioInited = false;
   private static final ModelInfo[] modelFiles;
-  private static final SharedLibraryInfo[] sharedLibraries = { new SharedLibraryInfo("filament-jni_11081930"), new SharedLibraryInfo("gltfio-jni_11262100") };
+  private static final SharedLibraryInfo[] sharedLibraries = { new SharedLibraryInfo("filament-jni_01061518"), new SharedLibraryInfo("gltfio-jni_01061518") };
   
   static
   {
@@ -61,7 +60,6 @@ public class FilamentInitializer
       }
       isGltfioInited = loadSoFile(sharedLibraries[1]);
     } while (!isGltfioInited);
-    AssetLoader.initAfterSoLoaded();
     if ((isFilamentInited) && (isGltfioInited)) {}
     for (;;)
     {

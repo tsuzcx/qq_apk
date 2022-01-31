@@ -1,41 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.MsgTabWorkThreadHandler.1;
-import java.util.ArrayList;
-import java.util.Set;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class ssx
-  extends Handler
+class ssx
+  extends SimpleJob<Object>
 {
-  public ssx(ssr paramssr, Looper paramLooper)
+  ssx(ssw paramssw, String paramString, boolean paramBoolean)
   {
-    super(paramLooper);
+    super(paramString);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        removeMessages(1);
-        urk.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_LOAD_USER_ITEM_FROM_UI");
-        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilSet);
-        this.a.jdField_a_of_type_JavaUtilSet.clear();
-      } while (!ssr.a(this.a, paramMessage, false));
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.MsgTabWorkThreadHandler.1(this));
-      return;
-      urk.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_SCHEDULE_REQUIRE_USER_ITEM");
-      paramMessage = (String)paramMessage.obj;
-    } while (this.a.jdField_a_of_type_JavaUtilSet.contains(paramMessage));
-    this.a.jdField_a_of_type_JavaUtilSet.add(paramMessage);
-    sendEmptyMessageDelayed(1, 2500L);
+    this.jdField_a_of_type_Ssw.b(this.jdField_a_of_type_Boolean);
+    return null;
   }
 }
 

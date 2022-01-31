@@ -1,19 +1,52 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.os.RemoteException;
+import com.tencent.qphone.base.util.QLog;
 
-public class atga
-  extends atfx
+class atga
+  implements ServiceConnection
 {
-  public View a(int paramInt, View paramView, ViewGroup paramViewGroup, atft paramatft, atfv paramatfv)
+  atga(atfz paramatfz) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    paramViewGroup = paramViewGroup.getContext();
-    if ((paramView != null) && (((atfv)paramView.getTag()).a == paramatfv.a)) {
-      return paramView;
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.msgbox.tab", 2, "onServiceConnected");
     }
-    paramView = LayoutInflater.from(paramViewGroup).inflate(2131494043, null);
-    paramView.setTag(paramatfv);
-    return paramView;
+    this.a.jdField_a_of_type_Atfu = atfv.a(paramIBinder);
+    try
+    {
+      this.a.jdField_a_of_type_Atfu.a(this.a.jdField_a_of_type_Atgc);
+      if (QLog.isColorLevel()) {
+        QLog.i("nearby_ipc_log_tag", 2, "nearbyProcess onServiceConnected.");
+      }
+      return;
+    }
+    catch (RemoteException paramComponentName)
+    {
+      for (;;)
+      {
+        if (QLog.isDevelopLevel()) {
+          paramComponentName.printStackTrace();
+        }
+      }
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName arg1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.msgbox.tab", 2, "onServiceDisconnected");
+    }
+    synchronized (atfz.a(this.a))
+    {
+      this.a.jdField_a_of_type_Atfu = null;
+      if (QLog.isColorLevel()) {
+        QLog.i("nearby_ipc_log_tag", 2, "nearbyProcess onServiceDisConnected.");
+      }
+      return;
+    }
   }
 }
 

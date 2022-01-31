@@ -1,10 +1,10 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import axvo;
-import axvt;
-import bjia;
-import bjiy;
-import bjjd;
+import ayvv;
+import aywa;
+import bkyl;
+import bkzj;
+import bkzo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -16,10 +16,10 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
   implements Runnable
 {
   public int a;
-  public ArrayList<bjiy> a;
-  public ArrayList<bjjd> b;
+  public ArrayList<bkzj> a;
+  public ArrayList<bkzo> b;
   
-  public BaseShortVideoOprerator$MultiForwardShortVideoTask(ArrayList<bjiy> paramArrayList)
+  public BaseShortVideoOprerator$MultiForwardShortVideoTask(ArrayList<bkzj> paramArrayList)
   {
     this.jdField_a_of_type_Int = 0;
     Object localObject;
@@ -37,7 +37,7 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
         Iterator localIterator = this.b.iterator();
         if (localIterator.hasNext())
         {
-          if (((bjjd)localIterator.next()).jdField_a_of_type_Int == -2) {
+          if (((bkzo)localIterator.next()).jdField_a_of_type_Int == -2) {
             i += 1;
           }
         }
@@ -57,7 +57,7 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
     int i;
     int j;
     label105:
-    bjiy localbjiy;
+    bkzj localbkzj;
     if (this.jdField_a_of_type_Int + BaseShortVideoOprerator.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
       i = this.jdField_a_of_type_Int + BaseShortVideoOprerator.jdField_a_of_type_Int;
@@ -68,13 +68,13 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
       if (j >= i) {
         break label515;
       }
-      localbjiy = (bjiy)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-      if (localbjiy.jdField_a_of_type_JavaLangObject == null) {
+      localbkzj = (bkzj)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+      if (localbkzj.jdField_a_of_type_JavaLangObject == null) {
         break label178;
       }
     }
     label178:
-    for (Object localObject = (MessageForShortVideo)localbjiy.jdField_a_of_type_JavaLangObject;; localObject = this.this$0.a(localbjiy))
+    for (Object localObject = (MessageForShortVideo)localbkzj.jdField_a_of_type_JavaLangObject;; localObject = this.this$0.a(localbkzj))
     {
       if (localObject != null) {
         break label192;
@@ -90,33 +90,33 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
     label192:
     this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject);
     long l = System.currentTimeMillis();
-    axvt localaxvt = new axvt();
-    localaxvt.jdField_b_of_type_JavaLangString = ((MessageRecord)localObject).selfuin;
-    localaxvt.c = ((MessageRecord)localObject).frienduin;
-    localaxvt.jdField_a_of_type_Int = ((MessageRecord)localObject).istroop;
+    aywa localaywa = new aywa();
+    localaywa.jdField_b_of_type_JavaLangString = ((MessageRecord)localObject).selfuin;
+    localaywa.c = ((MessageRecord)localObject).frienduin;
+    localaywa.jdField_a_of_type_Int = ((MessageRecord)localObject).istroop;
     if ((((MessageRecord)localObject).istroop == 0) || (((MessageRecord)localObject).istroop == 1008)) {
-      localaxvt.jdField_b_of_type_Int = 6;
+      localaywa.jdField_b_of_type_Int = 6;
     }
     for (;;)
     {
-      localaxvt.jdField_a_of_type_JavaLangObject = localbjiy;
-      localaxvt.jdField_a_of_type_Long = ((MessageRecord)localObject).uniseq;
-      localaxvt.jdField_a_of_type_Boolean = true;
-      localaxvt.e = 1010;
-      localaxvt.f = localbjiy.e;
-      localaxvt.i = (localbjiy.h + "QQ_&_MoblieQQ_&_QQ" + localbjiy.i + "QQ_&_MoblieQQ_&_QQ" + localbjiy.j + "QQ_&_MoblieQQ_&_QQ" + localbjiy.g);
-      localaxvt.jdField_a_of_type_Atqq = new bjia(this, j);
-      localaxvt.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localaxvt);
+      localaywa.jdField_a_of_type_JavaLangObject = localbkzj;
+      localaywa.jdField_a_of_type_Long = ((MessageRecord)localObject).uniseq;
+      localaywa.jdField_a_of_type_Boolean = true;
+      localaywa.e = 1010;
+      localaywa.f = localbkzj.e;
+      localaywa.i = (localbkzj.h + "QQ_&_MoblieQQ_&_QQ" + localbkzj.i + "QQ_&_MoblieQQ_&_QQ" + localbkzj.j + "QQ_&_MoblieQQ_&_QQ" + localbkzj.g);
+      localaywa.jdField_a_of_type_Auoo = new bkyl(this, j);
+      localaywa.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localaywa);
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.d("BaseShortVideoOprerator", 2, "MultiForwardShortVideo req" + j + ": " + localaxvt.toString() + " ,cost:" + (System.currentTimeMillis() - l));
+      QLog.d("BaseShortVideoOprerator", 2, "MultiForwardShortVideo req" + j + ": " + localaywa.toString() + " ,cost:" + (System.currentTimeMillis() - l));
       break;
       if (((MessageRecord)localObject).istroop == 3000) {
-        localaxvt.jdField_b_of_type_Int = 17;
+        localaywa.jdField_b_of_type_Int = 17;
       } else if (((MessageRecord)localObject).istroop == 1) {
-        localaxvt.jdField_b_of_type_Int = 9;
+        localaywa.jdField_b_of_type_Int = 9;
       }
     }
     label515:
@@ -138,10 +138,10 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (bjiy)localIterator.next();
-      localObject = new bjjd();
-      ((bjjd)localObject).jdField_a_of_type_Int = -2;
-      ((bjjd)localObject).jdField_a_of_type_Bjjc = this.this$0.jdField_a_of_type_Bjjc;
+      Object localObject = (bkzj)localIterator.next();
+      localObject = new bkzo();
+      ((bkzo)localObject).jdField_a_of_type_Int = -2;
+      ((bkzo)localObject).jdField_a_of_type_Bkzn = this.this$0.jdField_a_of_type_Bkzn;
       this.b.add(localObject);
     }
     a();

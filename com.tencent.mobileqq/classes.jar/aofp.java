@@ -1,145 +1,101 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.NewFileUploader.1;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.Executor;
+import android.text.TextUtils;
 
 public class aofp
-  implements aojb, aopj
 {
-  private long jdField_a_of_type_Long;
-  private aofq jdField_a_of_type_Aofq;
-  private aoiz jdField_a_of_type_Aoiz;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final File jdField_a_of_type_JavaIoFile;
-  private final String jdField_a_of_type_JavaLangString = "NewFileUploader";
-  private boolean jdField_a_of_type_Boolean = true;
-  private long b = apck.a().longValue();
+  public int a;
+  public long a;
+  public aofc a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public String c = "";
+  public String d = "";
+  public String e = "0";
+  public String f = "";
   
-  public aofp(QQAppInterface paramQQAppInterface, String paramString1, long paramLong, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, aofq paramaofq)
+  public aofp()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaIoFile = new File(paramString1);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Aoiz = aoiz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, 0, 0, paramString1, paramString2, paramString3, paramString4, paramBoolean, paramString5);
-    if (this.jdField_a_of_type_Aoiz != null) {
-      this.jdField_a_of_type_Aoiz.a(this);
-    }
-    this.jdField_a_of_type_Aofq = paramaofq;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = 30;
+    this.jdField_b_of_type_Int = 1;
   }
   
-  public int a()
+  public aofp a()
   {
-    return 41;
+    aofp localaofp = new aofp();
+    localaofp.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localaofp.jdField_a_of_type_ArrayOfByte = ((byte[])this.jdField_a_of_type_ArrayOfByte.clone());
+    localaofp.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localaofp.c = this.c;
+    localaofp.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    localaofp.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localaofp.e = this.e;
+    return localaofp;
   }
   
-  public long a()
+  public void a()
   {
-    return this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfByte = bbbd.a("");
+    this.jdField_b_of_type_JavaLangString = "";
+    this.c = "";
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = -1;
+    this.e = "0";
+    this.jdField_b_of_type_Int = 0;
+    this.f = "";
+    this.jdField_a_of_type_Aofc = null;
   }
-  
-  public FileManagerEntity a()
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void a(Object paramObject, int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    QLog.i("FileMultiMsg", 1, "sendBuddyFile NotifyUIError:" + paramInt);
-    this.jdField_a_of_type_Aofq.a(false);
-  }
-  
-  public void a(String paramString) {}
-  
-  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2)
-  {
-    QLog.i("FileMultiMsg", 1, "sendBuddyFile onError bFinished[" + paramBoolean + "], errCode[" + paramInt + "], errMsg[" + paramString1 + "]");
-    this.jdField_a_of_type_Aofq.a(false);
-  }
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2) {}
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    String str = bbbd.a(this.jdField_a_of_type_ArrayOfByte);
+    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(str));
   }
   
-  public byte[] a(Bundle paramBundle)
+  public boolean equals(Object paramObject)
   {
-    return null;
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {}
+    do
+    {
+      do
+      {
+        return false;
+      } while (!(paramObject instanceof aofp));
+      paramObject = (aofp)paramObject;
+    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (!this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
+    return true;
   }
   
-  public void az_()
+  public String toString()
   {
-    this.jdField_a_of_type_Boolean = false;
-    apcw.a().execute(new NewFileUploader.1(this));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{uin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
+    String str = bbbd.a(this.jdField_a_of_type_ArrayOfByte);
+    int i = 0;
+    if (str != null) {
+      i = str.length();
+    }
+    localStringBuilder.append("{sig: ").append(i).append("}");
+    localStringBuilder.append("{matchUin: ").append(this.jdField_b_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{tipsWording: ").append(this.c).append("}");
+    localStringBuilder.append("{timeStamp: ").append(this.jdField_a_of_type_Long).append("}");
+    localStringBuilder.append("{nickName: ").append(this.d).append("}");
+    localStringBuilder.append("{algorithmID: ").append(this.e).append("}");
+    localStringBuilder.append("{tagId: ").append(this.jdField_b_of_type_Int).append("}");
+    localStringBuilder.append("{tagName: ").append(this.f).append("}");
+    if (this.jdField_a_of_type_Aofc != null) {
+      localStringBuilder.append(this.jdField_a_of_type_Aofc.toString());
+    }
+    return localStringBuilder.toString();
   }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    QLog.i("FileMultiMsg", 1, "sendBuddyFile networkBroken");
-    this.jdField_a_of_type_Aofq.a(false);
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    QLog.i("FileMultiMsg", 1, "sendBuddyFile userCancel");
-    this.jdField_a_of_type_Aofq.a(false);
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    QLog.i("FileMultiMsg", 1, "sendBuddyFile exceptBroken");
-    this.jdField_a_of_type_Aofq.a(false);
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_Aofq.a(true);
-    QLog.i("FileMultiMsg", 1, "sendBuddyFile upload onHit");
-  }
-  
-  public void g()
-  {
-    this.jdField_a_of_type_Aofq.a(true);
-    QLog.i("FileMultiMsg", 1, "sendBuddyFile upload success");
-  }
-  
-  public void h() {}
-  
-  public void i() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aofp
  * JD-Core Version:    0.7.0.1
  */

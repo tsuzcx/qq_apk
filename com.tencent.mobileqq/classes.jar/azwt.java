@@ -1,18 +1,14 @@
-public abstract interface azwt
+import android.widget.CheckBox;
+import android.widget.TextView;
+
+class azwt
 {
-  public abstract void a(boolean paramBoolean, String paramString);
-  
-  public abstract void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2);
-  
-  public abstract void b(boolean paramBoolean, String paramString);
-  
-  public abstract void b(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2);
-  
-  public abstract void c(boolean paramBoolean, String paramString);
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azwt
  * JD-Core Version:    0.7.0.1
  */

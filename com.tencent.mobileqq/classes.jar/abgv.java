@@ -1,25 +1,40 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.data.NowShowVideoInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.ilive.photo.NowLiveGallary.RspBody.PhotoInfo;
 
 public class abgv
-  implements avcn
+  extends ajtp
 {
-  public abgv(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public abgv(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(int paramInt, List<NowLiveGallary.RspBody.PhotoInfo> paramList)
   {
-    PermisionPrivacyActivity.a(this.a, this.a.h.a(), paramBoolean);
-  }
-  
-  public void b(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == -1) {
-      PermisionPrivacyActivity.a(this.a, 2131653546);
+    if (paramInt != 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendProfileMoreInfoActivity", 2, "onGetNowOnliveGallay errorCode:" + paramInt);
+      }
+      return;
     }
-    PermisionPrivacyActivity.a(this.a, this.a.h.a(), PermisionPrivacyActivity.a(this.a).b());
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileMoreInfoActivity", 2, "onGetNowOnliveGallay size:" + paramList.size());
+    }
+    FriendProfileMoreInfoActivity.a(this.a).clear();
+    paramInt = 0;
+    while (paramInt < paramList.size())
+    {
+      Object localObject = (NowLiveGallary.RspBody.PhotoInfo)paramList.get(paramInt);
+      localObject = new NowShowVideoInfo(((NowLiveGallary.RspBody.PhotoInfo)localObject).cover.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).video.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).timestamp.get());
+      FriendProfileMoreInfoActivity.a(this.a).add(localObject);
+      paramInt += 1;
+    }
+    this.a.a.sendEmptyMessage(1003);
   }
 }
 

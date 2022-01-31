@@ -1,37 +1,96 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.copyprompt.LiteCopyPromptHelper.4;
+import com.tencent.widget.XEditTextEx;
 
-class anez
-  extends BroadcastReceiver
+public class anez
+  implements View.OnClickListener
 {
-  anez(aned paramaned, MessengerService paramMessengerService, Bundle paramBundle) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new anfa(this);
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private XEditTextEx jdField_a_of_type_ComTencentWidgetXEditTextEx;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new LiteCopyPromptHelper.4(this);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public anez(Context paramContext, ViewGroup paramViewGroup, QQAppInterface paramQQAppInterface, XEditTextEx paramXEditTextEx)
   {
-    paramContext = paramIntent.getAction();
-    if ((TextUtils.isEmpty(paramContext)) || (!TextUtils.equals(paramContext, "mqq.intent.action.DEVLOCK_ROAM"))) {
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = paramXEditTextEx;
+  }
+  
+  private View a(String paramString)
+  {
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559405, this.jdField_a_of_type_AndroidViewViewGroup, false);
+    ((TextView)localView.findViewById(2131372038)).setText(new ayki(paramString, 3, 16));
+    paramString = new RelativeLayout.LayoutParams(-2, -2);
+    paramString.addRule(9);
+    paramString.addRule(2, 2131368187);
+    paramString.leftMargin = actn.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364076)).addView(localView, paramString);
+    return localView;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)
+    {
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.a(this);
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     }
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext();
-    if (paramContext != null) {
-      paramContext.unregisterReceiver(this);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_JavaLangRunnable.run();
+    if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.emoji.web.MessengerService", 2, "openDevLock unregisterReceiver context: " + paramContext);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_JavaLangRunnable.run();
+  }
+  
+  public void onClick(View paramView)
+  {
+    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(320);
+    if ((paramView instanceof aney))
+    {
+      paramView = ((aney)paramView).a();
+      if (!TextUtils.isEmpty(paramView))
+      {
+        c();
+        this.jdField_a_of_type_AndroidViewView = a(paramView);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);
+        mxn[] arrayOfmxn = new mxn[1];
+        arrayOfmxn[0] = new mxn(this.jdField_a_of_type_AndroidViewViewGroup, new anfb(this, arrayOfmxn));
+        this.jdField_a_of_type_AndroidViewView.setOnClickListener(new anfc(this, paramView));
+      }
     }
-    paramContext = new Bundle(paramIntent.getExtras());
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anez
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,8 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class INTERFACE$StUserAppInfo
   extends MessageMicro<StUserAppInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 58, 64, 74, 82 }, new String[] { "appInfo", "useTime", "putTop", "doLike", "likeNum", "enablePush", "openid", "tinyid", "bgPic", "motionPics" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Long.valueOf(0L), "", null }, StUserAppInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 58, 64, 74, 82, 90 }, new String[] { "appInfo", "useTime", "putTop", "doLike", "likeNum", "enablePush", "openid", "tinyid", "bgPic", "motionPics", "apngUrl" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Long.valueOf(0L), "", null, "" }, StUserAppInfo.class);
+  public final PBStringField apngUrl = PBField.initString("");
   public INTERFACE.StApiAppInfo appInfo = new INTERFACE.StApiAppInfo();
   public final PBStringField bgPic = PBField.initString("");
   public final PBUInt32Field doLike = PBField.initUInt32(0);

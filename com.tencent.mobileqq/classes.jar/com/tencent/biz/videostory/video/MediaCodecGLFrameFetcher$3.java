@@ -3,27 +3,27 @@ package com.tencent.biz.videostory.video;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLES20;
-import wyk;
-import wyl;
-import wyp;
+import xhk;
+import xhl;
+import xhp;
 
 public class MediaCodecGLFrameFetcher$3
   implements Runnable
 {
-  public MediaCodecGLFrameFetcher$3(wyl paramwyl) {}
+  public MediaCodecGLFrameFetcher$3(xhl paramxhl) {}
   
   public void run()
   {
-    if (wyl.a(this.this$0) == null) {
+    if (xhl.a(this.this$0) == null) {
       return;
     }
-    wyl.a(this.this$0).updateTexImage();
-    GLES20.glViewport(0, 0, wyl.a(this.this$0), wyl.b(this.this$0));
-    wyl.a(this.this$0).a(wyl.a(this.this$0), wyl.c(this.this$0));
-    if ((wyl.a(this.this$0) != null) && (!wyl.a(this.this$0).isRecycled())) {
-      wyl.a(this.this$0).recycle();
+    xhl.a(this.this$0).updateTexImage();
+    GLES20.glViewport(0, 0, xhl.a(this.this$0), xhl.b(this.this$0));
+    xhl.a(this.this$0).a(xhl.a(this.this$0), xhl.c(this.this$0));
+    if ((xhl.a(this.this$0) != null) && (!xhl.a(this.this$0).isRecycled())) {
+      xhl.a(this.this$0).recycle();
     }
-    wyl.a(this.this$0, wyk.a(wyl.c(this.this$0), wyl.a(this.this$0), wyl.b(this.this$0)));
+    xhl.a(this.this$0, xhk.a(xhl.c(this.this$0), xhl.a(this.this$0), xhl.b(this.this$0)));
   }
 }
 

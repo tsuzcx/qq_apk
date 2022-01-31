@@ -1,7 +1,7 @@
 package com.tencent.tmassistantsdk.internal.logreport;
 
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 
 class g
   implements Runnable
@@ -10,10 +10,10 @@ class g
   
   public void run()
   {
-    ac.c("LogReportManager", "run");
+    ab.c("LogReportManager", "run");
     if ((GlobalUtil.isNetworkConncted()) && (GlobalUtil.getNetStatus().equalsIgnoreCase("wifi")))
     {
-      ac.c("LogReportManager", "<reportLog>");
+      ab.c("LogReportManager", "<reportLog>");
       this.a.a.c();
     }
   }

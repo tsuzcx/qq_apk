@@ -1,34 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import android.media.AudioManager.OnAudioFocusChangeListener;
 
 class aokn
-  extends aoko
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public aokn(aokk paramaokk)
-  {
-    super(paramaokk);
-  }
+  aokn(aokm paramaokm) {}
   
-  protected String a()
+  public void onAudioFocusChange(int paramInt)
   {
-    return "StateAcceptByPCWhenToOffFailed";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+    if ((aokm.a(this.a) != null) && (paramInt == -1) && (aokm.a(this.a) != null)) {
+      aokm.a(this.a).c(false);
     }
-    aokk.b(this.jdField_a_of_type_Aokk, 11, 5);
-    aokk.c(this.jdField_a_of_type_Aokk, 11, 5);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateAcceptByPC)");
-    this.jdField_a_of_type_Aoko = new aokl(this.jdField_a_of_type_Aokk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aokn
  * JD-Core Version:    0.7.0.1
  */

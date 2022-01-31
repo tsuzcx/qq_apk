@@ -1,17 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
-import java.util.List;
-
 public class ppa
 {
   public int a;
-  public long a;
-  public String a;
-  public ArrayList<DislikeInfo> a;
-  public List<Long> a;
-  public long b;
-  public long c;
-  public long d;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
+  public boolean k;
+  public boolean l;
 }
 
 

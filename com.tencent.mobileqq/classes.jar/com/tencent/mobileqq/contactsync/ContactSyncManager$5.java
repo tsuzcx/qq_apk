@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.contactsync;
 
-import amoa;
 import android.accounts.Account;
 import android.accounts.AccountManager;
+import aneh;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.locks.Lock;
 
 public class ContactSyncManager$5
   implements Runnable
 {
-  public ContactSyncManager$5(amoa paramamoa, Account[] paramArrayOfAccount) {}
+  public ContactSyncManager$5(aneh paramaneh, Account[] paramArrayOfAccount) {}
   
   public void run()
   {
-    amoa.a(this.this$0).lock();
+    aneh.a(this.this$0).lock();
     int i = 1;
     try
     {
@@ -22,14 +22,14 @@ public class ContactSyncManager$5
         if (QLog.isColorLevel()) {
           QLog.d("ContactSync.Manager", 2, "initSyncAccount | delAccount = " + this.a[i]);
         }
-        amoa.a(this.this$0).removeAccount(this.a[i], null, null);
+        aneh.a(this.this$0).removeAccount(this.a[i], null, null);
         i += 1;
       }
       return;
     }
     catch (Throwable localThrowable) {}finally
     {
-      amoa.a(this.this$0).unlock();
+      aneh.a(this.this$0).unlock();
     }
   }
 }

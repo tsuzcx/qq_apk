@@ -1,34 +1,23 @@
-import android.view.View;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qlink.QlAndQQInterface.DailogClickInfo;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class bgoc
-  implements begw
+  implements DialogInterface.OnClickListener
 {
-  public bgoc(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, begr parambegr) {}
+  public bgoc(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.e();
-      return;
-      TroopHWJsPlugin localTroopHWJsPlugin = this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin;
-      if (this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.mRuntime == null) {}
-      for (paramView = null;; paramView = this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.mRuntime.a())
-      {
-        localTroopHWJsPlugin.c = TroopHWJsPlugin.a(paramView, 2);
-        break;
-      }
-      this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.jdField_a_of_type_Int);
-    }
+    this.a.app.a().a(new QlAndQQInterface.DailogClickInfo(4));
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgoc
  * JD-Core Version:    0.7.0.1
  */

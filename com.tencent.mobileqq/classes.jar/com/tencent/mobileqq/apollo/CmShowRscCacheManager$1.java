@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo;
 
-import aihi;
+import aiub;
 
 public class CmShowRscCacheManager$1
   implements Runnable
 {
-  public CmShowRscCacheManager$1(aihi paramaihi) {}
+  public CmShowRscCacheManager$1(aiub paramaiub) {}
   
   public void run()
   {
-    aihi.a(this.this$0);
+    aiub.a(this.this$0);
   }
 }
 

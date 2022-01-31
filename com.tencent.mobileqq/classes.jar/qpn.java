@@ -1,62 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
+import com.tencent.mobileqq.app.QQAppInterface;
+import org.json.JSONObject;
 
-public class qpn
-  implements begh
+class qpn
+  implements View.OnClickListener
 {
-  List<begh> a = new ArrayList();
+  qpn(qpl paramqpl) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.clear();
-  }
-  
-  public void a(begh parambegh)
-  {
-    if (!this.a.contains(parambegh)) {
-      this.a.add(parambegh);
-    }
-  }
-  
-  public void b(begh parambegh)
-  {
-    this.a.remove(parambegh);
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    qol.a(qpl.a(this.a), qpl.a(this.a).a);
+    paramView = new JSONObject();
+    try
     {
-      begh localbegh = (begh)localIterator.next();
-      try
-      {
-        localbegh.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-      }
-      catch (Throwable localThrowable) {}
-      if (QLog.isColorLevel()) {
-        QLog.e("ReadInJoyBaseListView", 2, "onScroll exp", localThrowable);
-      }
+      paramView.put("uin", qpl.a(this.a).getCurrentAccountUin());
+      label45:
+      noo.a(null, null, "0X8009BF2", "0X8009BF2", 0, 0, "", "", "", npx.a(null, null, qpl.a(this.a).a.a.a, qpl.a(this.a).a.a.g, paramView), false);
+      return;
     }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    catch (Exception localException)
     {
-      begh localbegh = (begh)localIterator.next();
-      try
-      {
-        localbegh.onScrollStateChanged(paramAbsListView, paramInt);
-      }
-      catch (Throwable localThrowable) {}
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseListView", 2, "onScrollStateChanged exp", localThrowable);
-      }
+      break label45;
     }
   }
 }

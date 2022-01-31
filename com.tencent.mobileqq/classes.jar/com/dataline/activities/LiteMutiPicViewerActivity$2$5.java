@@ -1,11 +1,11 @@
 package com.dataline.activities;
 
-import cj;
+import ec;
 
 public class LiteMutiPicViewerActivity$2$5
   implements Runnable
 {
-  public LiteMutiPicViewerActivity$2$5(cj paramcj) {}
+  public LiteMutiPicViewerActivity$2$5(ec paramec) {}
   
   public void run()
   {

@@ -1,14 +1,24 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.playvideo.playerwidget.BottomVideoInfoWidget.8.1;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.qphone.base.util.QLog;
 
 public class tty
-  implements tug
+  extends ssy
 {
-  public tty(BottomVideoInfoWidget.8.1 param1, Activity paramActivity) {}
+  public tty(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void a()
+  public void a(boolean paramBoolean, sst paramsst)
   {
-    ttr.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_Ttr, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.b, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.c, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.d, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.e, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.f, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d("MyVideoVisiblePersonPageView", 2, "onGetVideoReaderConfig: isSuccess " + paramBoolean + ", QQStoryBanInfo = " + paramsst);
+    }
+    if (paramBoolean)
+    {
+      if (paramsst != null) {
+        this.a.a(paramsst.a);
+      }
+      return;
+    }
+    this.a.e();
   }
 }
 

@@ -2,23 +2,23 @@ package com.tencent.mobileqq.activity.qwallet.preload;
 
 import Wallet.JudgeDownloadReq;
 import Wallet.ResInfo;
-import agkg;
-import agkn;
-import agmq;
-import agos;
-import agpg;
-import agpm;
-import agpn;
-import agpo;
-import agqg;
-import agqh;
-import agwj;
+import agwv;
+import agxc;
+import agzf;
+import ahbh;
+import ahbv;
+import ahcb;
+import ahcc;
+import ahcd;
+import ahcv;
+import ahcw;
+import ahiy;
 import android.os.Bundle;
 import android.text.TextUtils;
-import awmr;
-import bace;
-import batl;
-import batm;
+import axlx;
+import bbdj;
+import bbwf;
+import bbwg;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -106,16 +106,16 @@ public class PreloadResource
     this.mFilePos = paramPreloadResource.mFilePos;
   }
   
-  private void a(batl parambatl, PreloadModule paramPreloadModule, PreloadManager paramPreloadManager)
+  private void a(bbwf parambbwf, PreloadModule paramPreloadModule, PreloadManager paramPreloadManager)
   {
-    if (parambatl == null) {
+    if (parambbwf == null) {
       return;
     }
     paramPreloadManager = getResDownloadUrl(paramPreloadModule);
-    paramPreloadManager = new batm(paramPreloadManager, new File(PreloadManager.b(paramPreloadManager, getFilePos())));
+    paramPreloadManager = new bbwg(paramPreloadManager, new File(PreloadManager.b(paramPreloadManager, getFilePos())));
     paramPreloadManager.a = 0;
     paramPreloadManager.a(getDownloadParams(paramPreloadModule));
-    parambatl.onDoneFile(paramPreloadManager);
+    parambbwf.onDoneFile(paramPreloadManager);
   }
   
   private static boolean a(String paramString)
@@ -127,7 +127,7 @@ public class PreloadResource
     long l1 = 0L;
     if (!TextUtils.isEmpty(paramString))
     {
-      long l2 = awmr.a(paramString);
+      long l2 = axlx.a(paramString);
       l1 = l2;
       if (l2 > 52428800L)
       {
@@ -160,7 +160,7 @@ public class PreloadResource
   
   public static boolean isFolderPathValid(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (new File(paramString).exists()) && (bace.b(paramString) > 0L);
+    return (!TextUtils.isEmpty(paramString)) && (new File(paramString).exists()) && (bbdj.b(paramString) > 0L);
   }
   
   public static boolean isNeedAutoUnzip(String paramString, int paramInt)
@@ -271,7 +271,7 @@ public class PreloadResource
     //   36: ifeq -11 -> 25
     //   39: aload_0
     //   40: aload_1
-    //   41: invokestatic 311	agwj:a	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   41: invokestatic 311	ahiy:a	(Ljava/lang/String;Ljava/lang/String;)Z
     //   44: istore_2
     //   45: goto -20 -> 25
     //   48: astore_0
@@ -323,7 +323,7 @@ public class PreloadResource
     //   39: aload_0
     //   40: aload_1
     //   41: iconst_1
-    //   42: invokestatic 315	agwj:a	(Ljava/lang/String;Ljava/lang/String;Z)Z
+    //   42: invokestatic 315	ahiy:a	(Ljava/lang/String;Ljava/lang/String;Z)Z
     //   45: istore_2
     //   46: goto -21 -> 25
     //   49: astore_0
@@ -345,11 +345,11 @@ public class PreloadResource
   
   public void deleteResFile(PreloadModule paramPreloadModule, PreloadManager paramPreloadManager, int paramInt)
   {
-    bace.d(PreloadFlowControlConfig.getConfigPath(this.mResId, paramPreloadManager.a));
+    bbdj.d(PreloadFlowControlConfig.getConfigPath(this.mResId, paramPreloadManager.a));
     paramPreloadModule = getResDownloadUrl(paramPreloadModule);
     paramPreloadManager = PreloadManager.b(paramPreloadModule, getFilePos());
     if (paramInt == 9) {
-      agqg.a(paramPreloadModule, getFilePos());
+      ahcv.a(paramPreloadModule, getFilePos());
     }
     for (;;)
     {
@@ -357,13 +357,13 @@ public class PreloadResource
       {
         String str = getFolderPath(this.url, paramPreloadManager);
         if (!TextUtils.isEmpty(str)) {
-          bace.a(str, false);
+          bbdj.a(str, false);
         }
       }
-      bace.d(paramPreloadManager);
-      agqh.b(paramPreloadModule, getFilePos());
+      bbdj.d(paramPreloadManager);
+      ahcw.b(paramPreloadModule, getFilePos());
       return;
-      agqg.a(paramPreloadModule, paramInt, getFilePos());
+      ahcv.a(paramPreloadModule, paramInt, getFilePos());
     }
   }
   
@@ -372,7 +372,7 @@ public class PreloadResource
     if ((paramObject != null) && ((paramObject instanceof PreloadResource)))
     {
       paramObject = (PreloadResource)paramObject;
-      if (agwj.c(this.mResId, paramObject.mResId)) {
+      if (ahiy.c(this.mResId, paramObject.mResId)) {
         return true;
       }
     }
@@ -389,21 +389,21 @@ public class PreloadResource
   
   public int getFilePos()
   {
-    if (agpg.b) {
+    if (ahbv.b) {
       return 1;
     }
     return this.mFilePos;
   }
   
-  public batl getFlowControlDownloadListener(long paramLong, batl parambatl, PreloadManager paramPreloadManager, int paramInt)
+  public bbwf getFlowControlDownloadListener(long paramLong, bbwf parambbwf, PreloadManager paramPreloadManager, int paramInt)
   {
-    return new agpm(this, paramInt, new WeakReference(paramPreloadManager), parambatl, paramLong);
+    return new ahcb(this, paramInt, new WeakReference(paramPreloadManager), parambbwf, paramLong);
   }
   
   public String getFolderPath(String paramString1, String paramString2)
   {
     if (isNeedAutoUnzip(paramString1, this.type)) {
-      return getFolderPathByMD5AndUrl(agqh.b(paramString1, paramString2, getFilePos()), paramString1, getFilePos());
+      return getFolderPathByMD5AndUrl(ahcw.b(paramString1, paramString2, getFilePos()), paramString1, getFilePos());
     }
     return null;
   }
@@ -447,7 +447,7 @@ public class PreloadResource
     if (!this.mIsNeedUnzip) {}
     for (boolean bool = true;; bool = false)
     {
-      paramPreloadModule = agqh.a(paramPreloadModule, bool, this.type, getFilePos());
+      paramPreloadModule = ahcw.a(paramPreloadModule, bool, this.type, getFilePos());
       paramPreloadModule.type = this.type;
       paramPreloadModule.resId = this.mResId;
       return paramPreloadModule;
@@ -456,8 +456,8 @@ public class PreloadResource
   
   public boolean handleAbnormalRetry(PreloadModule paramPreloadModule)
   {
-    int i = agqh.a(getResDownloadUrl(paramPreloadModule), getFilePos());
-    long l = agqh.a(getResDownloadUrl(paramPreloadModule), getFilePos());
+    int i = ahcw.a(getResDownloadUrl(paramPreloadModule), getFilePos());
+    long l = ahcw.a(getResDownloadUrl(paramPreloadModule), getFilePos());
     if (QLog.isColorLevel()) {
       QLog.d("PreloadResource", 2, "[handleAbnormalRetry]:" + this.url + "|" + i + "|" + l + "|" + paramPreloadModule.mRetryTimeInterval + "|" + paramPreloadModule.mRetryCount);
     }
@@ -481,7 +481,7 @@ public class PreloadResource
     return false;
   }
   
-  public void handleFlowConfig(PreloadManager paramPreloadManager, PreloadModule paramPreloadModule, batl parambatl)
+  public void handleFlowConfig(PreloadManager paramPreloadManager, PreloadModule paramPreloadModule, bbwf parambbwf)
   {
     for (;;)
     {
@@ -493,8 +493,8 @@ public class PreloadResource
           if (isNeedUnzip(paramPreloadModule, paramPreloadManager)) {
             unzip(PreloadManager.b(getResDownloadUrl(paramPreloadModule), getFilePos()), getResDownloadUrl(paramPreloadModule));
           }
-          if (parambatl != null) {
-            a(parambatl, paramPreloadModule, paramPreloadManager);
+          if (parambbwf != null) {
+            a(parambbwf, paramPreloadModule, paramPreloadManager);
           }
           paramPreloadManager.c();
           return;
@@ -511,7 +511,7 @@ public class PreloadResource
         case -1: 
           paramPreloadManager.c();
           continue;
-          startFlowControlReq(JudgeDownloadReq.createReq(getMyResInfos(), l1, 0), paramPreloadManager, paramPreloadModule, parambatl);
+          startFlowControlReq(JudgeDownloadReq.createReq(getMyResInfos(), l1, 0), paramPreloadManager, paramPreloadModule, parambbwf);
         }
       }
       finally {}
@@ -527,19 +527,19 @@ public class PreloadResource
           if (QLog.isColorLevel()) {
             QLog.d("PreloadResource", 2, this.mResId + "begin download");
           }
-          startDownloadRes(paramPreloadModule, paramPreloadManager, getFlowControlDownloadListener(l1, parambatl, paramPreloadManager, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadFlowControlConfig.mRetryDownloadTimes), true);
+          startDownloadRes(paramPreloadModule, paramPreloadManager, getFlowControlDownloadListener(l1, parambbwf, paramPreloadManager, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadFlowControlConfig.mRetryDownloadTimes), true);
         }
         else
         {
           paramPreloadManager.c();
-          if (parambatl != null) {
-            notifyListenerDownloadFailInFlowControl(parambatl, paramPreloadModule, paramPreloadManager);
+          if (parambbwf != null) {
+            notifyListenerDownloadFailInFlowControl(parambbwf, paramPreloadModule, paramPreloadManager);
           }
         }
       }
       else
       {
-        startFlowControlReq(JudgeDownloadReq.createReq(getMyResInfos(), l1, 0), paramPreloadManager, paramPreloadModule, parambatl);
+        startFlowControlReq(JudgeDownloadReq.createReq(getMyResInfos(), l1, 0), paramPreloadManager, paramPreloadModule, parambbwf);
         continue;
         l2 = NetConnInfoCenter.getServerTimeMillis();
         if (QLog.isColorLevel()) {
@@ -547,14 +547,14 @@ public class PreloadResource
         }
         if (l2 > this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadFlowControlConfig.mNextCanReqTime)
         {
-          startFlowControlReq(JudgeDownloadReq.createReq(getMyResInfos(), l1, 0), paramPreloadManager, paramPreloadModule, parambatl);
+          startFlowControlReq(JudgeDownloadReq.createReq(getMyResInfos(), l1, 0), paramPreloadManager, paramPreloadModule, parambbwf);
         }
         else
         {
           paramPreloadManager.c();
-          if (parambatl != null)
+          if (parambbwf != null)
           {
-            notifyListenerDownloadFailInFlowControl(parambatl, paramPreloadModule, paramPreloadManager);
+            notifyListenerDownloadFailInFlowControl(parambbwf, paramPreloadModule, paramPreloadManager);
             continue;
             l2 = NetConnInfoCenter.getServerTimeMillis();
             long l3 = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadFlowControlConfig.mNextRetryReqTime - l2;
@@ -567,7 +567,7 @@ public class PreloadResource
               PreloadFlowControlConfig localPreloadFlowControlConfig = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadFlowControlConfig;
               int i = localPreloadFlowControlConfig.mRetryReqTimes + 1;
               localPreloadFlowControlConfig.mRetryReqTimes = i;
-              startFlowControlReq(JudgeDownloadReq.createReq(localArrayList, l1, i), paramPreloadManager, paramPreloadModule, parambatl);
+              startFlowControlReq(JudgeDownloadReq.createReq(localArrayList, l1, i), paramPreloadManager, paramPreloadModule, parambbwf);
             }
             else
             {
@@ -577,8 +577,8 @@ public class PreloadResource
                 ThreadManager.getTimer().schedule(this.mReqTask, l3);
               }
               paramPreloadManager.c();
-              if (parambatl != null) {
-                notifyListenerDownloadFailInFlowControl(parambatl, paramPreloadModule, paramPreloadManager);
+              if (parambbwf != null) {
+                notifyListenerDownloadFailInFlowControl(parambbwf, paramPreloadModule, paramPreloadManager);
               }
             }
           }
@@ -590,23 +590,23 @@ public class PreloadResource
   public boolean isChosenToReport()
   {
     int i = 10000;
-    QQAppInterface localQQAppInterface = agwj.a();
+    QQAppInterface localQQAppInterface = ahiy.a();
     if (localQQAppInterface == null) {
       return false;
     }
-    agmq localagmq = (agmq)localQQAppInterface.getManager(245);
-    if (localagmq == null) {}
+    agzf localagzf = (agzf)localQQAppInterface.getManager(245);
+    if (localagzf == null) {}
     while (i == 0)
     {
       return false;
-      i = localagmq.a("report", 10000, new String[] { "preDownSampleBase" });
+      i = localagzf.a("report", 10000, new String[] { "preDownSampleBase" });
     }
-    int k = agkn.a(localQQAppInterface.c(), "download_report_random", 0);
+    int k = agxc.a(localQQAppInterface.c(), "download_report_random", 0);
     int j = k;
     if (k == 0)
     {
       j = new Random(localQQAppInterface.getLongAccountUin()).nextInt();
-      agkn.a(localQQAppInterface.c(), "download_report_random", j);
+      agxc.a(localQQAppInterface.c(), "download_report_random", j);
     }
     if (QLog.isColorLevel()) {
       QLog.d("PreloadResource", 2, "isChosenToReport|" + j + "|" + i);
@@ -616,7 +616,7 @@ public class PreloadResource
   
   public boolean isInValidTime()
   {
-    long l1 = agwj.a(this.mInvalidTime);
+    long l1 = ahiy.a(this.mInvalidTime);
     long l2 = NetConnInfoCenter.getServerTimeMillis();
     if ((l1 != -1L) && (l1 < l2))
     {
@@ -639,7 +639,7 @@ public class PreloadResource
       }
       paramPreloadModule = getResDownloadUrl(paramPreloadModule);
       paramPreloadManager = PreloadManager.b(paramPreloadModule, getFilePos());
-    } while ((!TextUtils.isEmpty(paramPreloadResource.md5)) && (!paramPreloadResource.md5.equalsIgnoreCase(agqh.b(paramPreloadModule, paramPreloadManager, getFilePos()))));
+    } while ((!TextUtils.isEmpty(paramPreloadResource.md5)) && (!paramPreloadResource.md5.equalsIgnoreCase(ahcw.b(paramPreloadModule, paramPreloadManager, getFilePos()))));
     return false;
     return false;
   }
@@ -652,13 +652,13 @@ public class PreloadResource
     if (!this.mIsFromLocal) {
       return true;
     }
-    Object localObject1 = agwj.a();
+    Object localObject1 = ahiy.a();
     if (localObject1 != null)
     {
-      Object localObject2 = (agmq)((QQAppInterface)localObject1).getManager(245);
+      Object localObject2 = (agzf)((QQAppInterface)localObject1).getManager(245);
       if (localObject2 != null)
       {
-        localObject2 = ((agmq)localObject2).a("preload");
+        localObject2 = ((agzf)localObject2).a("preload");
         if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).contains(paramString))) {
           return true;
         }
@@ -681,8 +681,8 @@ public class PreloadResource
   
   public boolean isResChange(PreloadResource paramPreloadResource)
   {
-    if (!agwj.c(this.url, paramPreloadResource.url)) {}
-    while ((!agwj.c(this.urlPath, paramPreloadResource.urlPath)) || (this.type != paramPreloadResource.type) || (!agwj.c(this.md5, paramPreloadResource.md5)) || (!agwj.c(this.mDownloadTime, paramPreloadResource.mDownloadTime)) || (!agwj.c(this.mInvalidTime, paramPreloadResource.mInvalidTime)) || (!agwj.c(this.netType, paramPreloadResource.netType)) || (this.size != paramPreloadResource.size) || (this.mFlowControl != paramPreloadResource.mFlowControl) || (!agwj.c(this.mResId, paramPreloadResource.mResId)) || (this.mIsFromLocal != paramPreloadResource.mIsFromLocal) || (this.mIsTemp != paramPreloadResource.mIsTemp) || (this.mRetryTime != paramPreloadResource.mRetryTime) || (this.mIsNeedUnzip != paramPreloadResource.mIsNeedUnzip) || (this.mIsUnzipInside != paramPreloadResource.mIsUnzipInside) || (!agwj.c(this.mUnzipPrefix, paramPreloadResource.mUnzipPrefix)) || (this.mHasUnzip != paramPreloadResource.mHasUnzip) || (this.mFromType != paramPreloadResource.mFromType) || (this.mFilePos != paramPreloadResource.mFilePos)) {
+    if (!ahiy.c(this.url, paramPreloadResource.url)) {}
+    while ((!ahiy.c(this.urlPath, paramPreloadResource.urlPath)) || (this.type != paramPreloadResource.type) || (!ahiy.c(this.md5, paramPreloadResource.md5)) || (!ahiy.c(this.mDownloadTime, paramPreloadResource.mDownloadTime)) || (!ahiy.c(this.mInvalidTime, paramPreloadResource.mInvalidTime)) || (!ahiy.c(this.netType, paramPreloadResource.netType)) || (this.size != paramPreloadResource.size) || (this.mFlowControl != paramPreloadResource.mFlowControl) || (!ahiy.c(this.mResId, paramPreloadResource.mResId)) || (this.mIsFromLocal != paramPreloadResource.mIsFromLocal) || (this.mIsTemp != paramPreloadResource.mIsTemp) || (this.mRetryTime != paramPreloadResource.mRetryTime) || (this.mIsNeedUnzip != paramPreloadResource.mIsNeedUnzip) || (this.mIsUnzipInside != paramPreloadResource.mIsUnzipInside) || (!ahiy.c(this.mUnzipPrefix, paramPreloadResource.mUnzipPrefix)) || (this.mHasUnzip != paramPreloadResource.mHasUnzip) || (this.mFromType != paramPreloadResource.mFromType) || (this.mFilePos != paramPreloadResource.mFilePos)) {
       return true;
     }
     return false;
@@ -718,21 +718,21 @@ public class PreloadResource
     {
       return false;
       l1 = NetConnInfoCenter.getServerTimeMillis();
-      l2 = agwj.a(this.mDownloadTime);
+      l2 = ahiy.a(this.mDownloadTime);
     } while (((l2 != -1L) && (l2 >= l1)) || (!paramPreloadManager.a(this.netType)));
     return true;
   }
   
-  public void notifyListenerDownloadFailInFlowControl(batl parambatl, PreloadModule paramPreloadModule, PreloadManager paramPreloadManager)
+  public void notifyListenerDownloadFailInFlowControl(bbwf parambbwf, PreloadModule paramPreloadModule, PreloadManager paramPreloadManager)
   {
-    if (parambatl == null) {
+    if (parambbwf == null) {
       return;
     }
     paramPreloadManager = getResDownloadUrl(paramPreloadModule);
-    paramPreloadManager = new batm(paramPreloadManager, new File(PreloadManager.b(paramPreloadManager, getFilePos())));
+    paramPreloadManager = new bbwg(paramPreloadManager, new File(PreloadManager.b(paramPreloadManager, getFilePos())));
     paramPreloadManager.a = -5;
     paramPreloadManager.a(getDownloadParams(paramPreloadModule));
-    parambatl.onDoneFile(paramPreloadManager);
+    parambbwf.onDoneFile(paramPreloadManager);
   }
   
   public void reportDownload(String paramString, int paramInt, PreloadModule paramPreloadModule)
@@ -761,17 +761,17 @@ public class PreloadResource
     }
   }
   
-  public void startDownload(PreloadManager paramPreloadManager, PreloadModule paramPreloadModule, batl parambatl, boolean paramBoolean)
+  public void startDownload(PreloadManager paramPreloadManager, PreloadModule paramPreloadModule, bbwf parambbwf, boolean paramBoolean)
   {
     if (this.mFlowControl)
     {
-      paramPreloadManager.a(this, paramPreloadModule, parambatl);
+      paramPreloadManager.a(this, paramPreloadModule, parambbwf);
       return;
     }
-    startDownloadRes(paramPreloadModule, paramPreloadManager, parambatl, paramBoolean);
+    startDownloadRes(paramPreloadModule, paramPreloadManager, parambbwf, paramBoolean);
   }
   
-  public void startDownloadRes(PreloadModule paramPreloadModule, PreloadManager paramPreloadManager, batl parambatl, boolean paramBoolean)
+  public void startDownloadRes(PreloadModule paramPreloadModule, PreloadManager paramPreloadManager, bbwf parambbwf, boolean paramBoolean)
   {
     String str1 = getResDownloadUrl(paramPreloadModule);
     String str2 = PreloadManager.b(str1, getFilePos());
@@ -781,7 +781,7 @@ public class PreloadResource
       if (isNeedUnzip(paramPreloadModule, paramPreloadManager)) {
         unzip(str2, str1);
       }
-      a(parambatl, paramPreloadModule, paramPreloadManager);
+      a(parambbwf, paramPreloadModule, paramPreloadManager);
     }
     while (TextUtils.isEmpty(str1)) {
       return;
@@ -790,12 +790,12 @@ public class PreloadResource
     paramPreloadModule.url = str1;
     paramPreloadModule.filePath = str2;
     paramPreloadModule.isPreDownload = paramBoolean;
-    agos.a().a(paramPreloadModule, new agpo(this, parambatl), localBundle);
+    ahbh.a().a(paramPreloadModule, new ahcd(this, parambbwf), localBundle);
   }
   
-  public void startFlowControlReq(JudgeDownloadReq paramJudgeDownloadReq, PreloadManager paramPreloadManager, PreloadModule paramPreloadModule, batl parambatl)
+  public void startFlowControlReq(JudgeDownloadReq paramJudgeDownloadReq, PreloadManager paramPreloadManager, PreloadModule paramPreloadModule, bbwf parambbwf)
   {
-    agkg.a(paramJudgeDownloadReq, new agpn(this, new WeakReference(paramPreloadManager), parambatl, paramPreloadModule), 1);
+    agwv.a(paramJudgeDownloadReq, new ahcc(this, new WeakReference(paramPreloadManager), parambbwf, paramPreloadModule), 1);
   }
   
   public String toString()

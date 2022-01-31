@@ -42,7 +42,6 @@ final class FileJsPlugin$1
     add("fs_renameSync");
     add("stat");
     add("statSync");
-    add("createLoadSubPackageTask");
   }
 }
 

@@ -1,55 +1,53 @@
-import android.app.Activity;
-import android.app.KeyguardManager;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class apuc
-  extends BroadcastReceiver
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  boolean jdField_a_of_type_Boolean = true;
-  
-  public apuc(Activity paramActivity)
+  public static void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    boolean bool = true;
-    paramIntent = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_ON".equals(paramIntent)) {
-      if (!a(paramContext)) {
-        this.jdField_a_of_type_Boolean = bool;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject != null) && ((localObject instanceof QQAppInterface))) {}
+    for (localObject = (QQAppInterface)localObject;; localObject = null)
+    {
+      if (localObject == null) {
+        return;
+      }
+      apud localapud = new apud();
+      localapud.jdField_b_of_type_JavaLangString = paramString;
+      localapud.jdField_a_of_type_JavaLangString = paramString;
+      if (localapud.jdField_a_of_type_Boolean) {}
+      for (int i = 0;; i = 1)
+      {
+        axqw.b((QQAppInterface)localObject, "CliOper", "", "", localapud.jdField_a_of_type_JavaLangString, localapud.jdField_b_of_type_JavaLangString, localapud.jdField_a_of_type_Int, localapud.jdField_b_of_type_Int, i, String.valueOf(localapud.jdField_b_of_type_Long), localapud.d, apud.a(localapud), localapud.c);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.i("FileManagerReporter<FileAssistant>", 2, "report key:" + paramString);
+        return;
       }
     }
-    for (;;)
+  }
+  
+  public static void a(String paramString, apud paramapud)
+  {
+    BaseApplicationImpl.getContext();
+    paramString = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramString != null) && ((paramString instanceof QQAppInterface))) {}
+    for (paramString = (QQAppInterface)paramString;; paramString = null)
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (paramapud.jdField_a_of_type_Boolean) {}
+      for (int i = 0;; i = 1)
       {
-        this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this);
-        this.jdField_a_of_type_AndroidAppActivity.finish();
-      }
-      return;
-      bool = false;
-      break;
-      if ("android.intent.action.SCREEN_OFF".equals(paramIntent)) {
-        this.jdField_a_of_type_Boolean = false;
-      } else if ("android.intent.action.USER_PRESENT".equals(paramIntent)) {
-        this.jdField_a_of_type_Boolean = true;
+        axqw.b(paramString, "CliOper", "", "", paramapud.jdField_a_of_type_JavaLangString, paramapud.jdField_b_of_type_JavaLangString, paramapud.jdField_a_of_type_Int, paramapud.jdField_b_of_type_Int, i, String.valueOf(paramapud.jdField_b_of_type_Long), paramapud.d, apud.a(paramapud), paramapud.c);
+        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apuc
  * JD-Core Version:    0.7.0.1
  */

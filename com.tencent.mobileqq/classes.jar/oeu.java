@@ -1,14 +1,28 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class oeu
-  implements FileFilter
+  implements View.OnTouchListener
 {
-  oeu(oet paramoet) {}
+  oeu(oes paramoes, Context paramContext) {}
   
-  public boolean accept(File paramFile)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return paramFile.getName().endsWith(".json");
+    if (paramMotionEvent.getAction() == 1) {
+      if ((this.jdField_a_of_type_AndroidContentContext == null) || (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) || (((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent() == null)) {
+        break label67;
+      }
+    }
+    label67:
+    for (int i = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getIntExtra("channel_from", -1);; i = 0)
+    {
+      oes.a("0X8007BE7", null, null, null, null, i);
+      return false;
+    }
   }
 }
 

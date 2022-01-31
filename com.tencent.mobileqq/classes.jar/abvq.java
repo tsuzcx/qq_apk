@@ -1,32 +1,27 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class abvq
-  implements bemm
+  implements View.OnClickListener
 {
-  public abvq(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public abvq(QQMapActivity paramQQMapActivity) {}
   
-  public void a(beml parambeml)
+  public void onClick(View paramView)
   {
-    boolean bool = false;
-    switch (parambeml.a)
-    {
-    default: 
-      return;
-    case 0: 
-      parambeml = this.a;
-      if (!this.a.d) {
-        bool = true;
-      }
-      parambeml.d = bool;
-      ariz.a().b(this.a.app, this.a.d);
-      return;
+    if (!bbev.d(this.a)) {
+      this.a.x();
     }
-    parambeml = new Intent(this.a, TroopAssisSettingActivity.class);
-    parambeml.setFlags(67108864);
-    this.a.startActivity(parambeml);
-    awqx.b(this.a.app, "P_CliOper", "Grp_msg", "", "help_list", "Clk_set", 0, 0, "", "", "", "");
+    for (;;)
+    {
+      xnq.a("see_streetview");
+      return;
+      if (bbev.a(this.a)) {
+        this.a.p();
+      } else {
+        bbcv.a(this.a, 230).setTitle(this.a.getString(2131690024)).setMessage(2131694899).setPositiveButton(2131691036, new abvs(this)).setNegativeButton(2131690596, new abvr(this)).show();
+      }
+    }
   }
 }
 

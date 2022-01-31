@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class EqqConfig
-  extends atmo
+  extends aukm
 {
-  @atoc
+  @auma
   public String data;
   
   public EqqConfig() {}

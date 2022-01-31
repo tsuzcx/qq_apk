@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import amsf;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anim;
 
 public class IPSiteModel$Video
   implements Parcelable
 {
-  public static final Parcelable.Creator<Video> CREATOR = new amsf();
+  public static final Parcelable.Creator<Video> CREATOR = new anim();
   public String buttonDesc;
   public String content;
   public String cover;

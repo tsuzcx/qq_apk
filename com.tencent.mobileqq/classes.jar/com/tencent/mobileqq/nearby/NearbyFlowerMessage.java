@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby;
 
-import ajjy;
+import ajyc;
 import android.os.Bundle;
 import android.text.TextUtils;
-import awwx;
+import axwz;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForStructing;
@@ -67,9 +67,9 @@ public class NearbyFlowerMessage
       if ((paramMessageForStructing.mMsgServiceID == 52) && (paramMessageForStructing.getItemCount() > 0))
       {
         paramMessageForStructing = paramMessageForStructing.getItemByIndex(0);
-        if ((paramMessageForStructing instanceof awwx))
+        if ((paramMessageForStructing instanceof axwz))
         {
-          paramMessageForStructing = (awwx)paramMessageForStructing;
+          paramMessageForStructing = (axwz)paramMessageForStructing;
           if (!paramMessageForStructing.jdField_a_of_type_Boolean) {
             paramMessageForStructing.a();
           }
@@ -107,10 +107,10 @@ public class NearbyFlowerMessage
         continue;
       }
       paramMessageForStructing = paramMessageForStructing.getItemByIndex(0);
-      if (!(paramMessageForStructing instanceof awwx)) {
+      if (!(paramMessageForStructing instanceof axwz)) {
         continue;
       }
-      paramMessageForStructing = (awwx)paramMessageForStructing;
+      paramMessageForStructing = (axwz)paramMessageForStructing;
       if (!paramMessageForStructing.jdField_a_of_type_Boolean)
       {
         if (QLog.isColorLevel()) {
@@ -189,7 +189,7 @@ public class NearbyFlowerMessage
           if (!this.isSend) {
             break label875;
           }
-          this.brief = (ajjy.a(2131641359) + this.toName + ajjy.a(2131641364));
+          this.brief = (ajyc.a(2131707144) + this.toName + ajyc.a(2131707149));
           if (QLog.isColorLevel()) {
             QLog.i("NearbyFlowerMessage", 2, paramMessageForStructing.jdField_a_of_type_AndroidOsBundle.toString());
           }
@@ -218,12 +218,12 @@ public class NearbyFlowerMessage
             if ((TextUtils.isEmpty(this.fromName)) || (TextUtils.equals(this.fromName, "null"))) {
               this.fromName = paramQQAppInterface.a().a(this.sUin);
             }
-            this.brief = (this.fromName + ajjy.a(2131641363) + ajjy.a(2131641356));
+            this.brief = (this.fromName + ajyc.a(2131707148) + ajyc.a(2131707141));
             continue;
-            this.brief = (this.fromName + ajjy.a(2131641355) + this.toName + ajjy.a(2131641360));
+            this.brief = (this.fromName + ajyc.a(2131707140) + this.toName + ajyc.a(2131707145));
             continue;
             label1011:
-            this.brief = (this.sNick + ajjy.a(2131641362) + this.rNick + ajjy.a(2131641365));
+            this.brief = (this.sNick + ajyc.a(2131707147) + this.rNick + ajyc.a(2131707150));
           }
         }
       }

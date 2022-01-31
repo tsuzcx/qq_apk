@@ -1,81 +1,194 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.view.MusicFragmentProviderView;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.support.annotation.NonNull;
+import com.tencent.commonsdk.pool.ByteArrayPool;
+import java.io.FilterOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 public class bhpa
-  implements bhip
+  extends FilterOutputStream
 {
-  public bhpa(MusicFragmentProviderView paramMusicFragmentProviderView) {}
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static bhpa jdField_b_of_type_Bhpa;
+  private static int c;
+  protected int a;
+  private bhpa jdField_a_of_type_Bhpa;
+  private boolean jdField_a_of_type_Boolean;
+  protected byte[] a;
+  private final int jdField_b_of_type_Int = 4;
   
-  public void a()
+  private bhpa(@NonNull OutputStream paramOutputStream)
   {
-    this.a.i();
+    this(paramOutputStream, 8192);
   }
   
-  public void a(int paramInt, MusicItemInfo paramMusicItemInfo)
+  private bhpa(@NonNull OutputStream paramOutputStream, int paramInt)
   {
-    if (paramInt != -1)
-    {
-      this.a.a(paramInt);
-      MusicFragmentProviderView.a(this.a).set(-1);
-      this.a.j();
-      return;
-    }
-    this.a.i();
+    super(paramOutputStream);
+    this.jdField_a_of_type_ArrayOfByte = ByteArrayPool.getGenericInstance().getBuf(paramInt);
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public void a(MusicItemInfo paramMusicItemInfo)
+  public static bhpa a(@NonNull OutputStream paramOutputStream)
   {
-    if (this.a.a != null)
+    bhpa localbhpa = null;
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if (paramMusicItemInfo.mType == 2) {
-        this.a.a.a(true);
+      if (jdField_b_of_type_Bhpa != null)
+      {
+        localbhpa = jdField_b_of_type_Bhpa;
+        jdField_b_of_type_Bhpa = localbhpa.jdField_a_of_type_Bhpa;
+        localbhpa.jdField_a_of_type_Bhpa = null;
+        c -= 1;
+      }
+      if (localbhpa != null)
+      {
+        localbhpa.out = paramOutputStream;
+        localbhpa.jdField_a_of_type_Boolean = true;
+        return localbhpa;
       }
     }
-    else {
-      return;
-    }
-    this.a.a.a(false);
+    return new bhpa(paramOutputStream);
   }
   
-  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
+  private void a()
   {
-    this.a.a(paramInt);
-    if (paramInt != -1)
+    c();
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      MusicFragmentProviderView.a(this.a).set(-1);
-      this.a.j();
+      if (c < 4)
+      {
+        this.jdField_a_of_type_Bhpa = jdField_b_of_type_Bhpa;
+        jdField_b_of_type_Bhpa = this;
+        c += 1;
+      }
+      return;
+    }
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (((paramInt2 | paramInt3) < 0) || (paramInt2 > paramInt1) || (paramInt1 - paramInt2 < paramInt3)) {
+      throw new IndexOutOfBoundsException("length=" + paramInt1 + "; regionStart=" + paramInt2 + "; regionLength=" + paramInt3);
+    }
+  }
+  
+  private void b()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new IOException("BufferedOutputStream is closed");
+    }
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.out = null;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_Int > 0)
+    {
+      this.out.write(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int = 0;
+    }
+  }
+  
+  public void close()
+  {
+    try
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      if (bool) {
+        break label14;
+      }
+    }
+    finally
+    {
+      try
+      {
+        for (;;)
+        {
+          label14:
+          super.close();
+          a();
+        }
+      }
+      finally
+      {
+        a();
+      }
+      localObject1 = finally;
+    }
+  }
+  
+  public void flush()
+  {
+    try
+    {
+      b();
+      d();
+      this.out.flush();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void write(int paramInt)
+  {
+    try
+    {
+      b();
+      if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfByte.length)
+      {
+        this.out.write(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Int = 0;
+      }
+      byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+      int i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = (i + 1);
+      arrayOfByte[i] = ((byte)paramInt);
+      return;
+    }
+    finally {}
+  }
+  
+  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    try
+    {
+      b();
+      if (paramArrayOfByte == null) {
+        throw new NullPointerException("buffer == null");
+      }
+    }
+    finally {}
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    if (paramInt2 >= arrayOfByte.length)
+    {
+      d();
+      this.out.write(paramArrayOfByte, paramInt1, paramInt2);
     }
     for (;;)
     {
-      if (MusicFragmentProviderView.a(this.a) != null) {
-        MusicFragmentProviderView.a(this.a).f();
+      return;
+      a(paramArrayOfByte.length, paramInt1, paramInt2);
+      if (paramInt2 > arrayOfByte.length - this.jdField_a_of_type_Int) {
+        d();
       }
-      return;
-      this.a.i();
+      System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, this.jdField_a_of_type_Int, paramInt2);
+      this.jdField_a_of_type_Int += paramInt2;
     }
-  }
-  
-  public void b(MusicItemInfo paramMusicItemInfo) {}
-  
-  public void c(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    if (paramInt != -1)
-    {
-      this.a.j();
-      return;
-    }
-    this.a.i();
-  }
-  
-  public void d(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    this.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhpa
  * JD-Core Version:    0.7.0.1
  */

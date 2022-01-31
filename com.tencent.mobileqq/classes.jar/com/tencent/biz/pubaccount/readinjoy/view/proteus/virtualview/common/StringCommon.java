@@ -58,7 +58,8 @@ public class StringCommon
   public static final int STR_ID_SET_ENABLE_MARQUEE_TEXT = 67;
   public static final int STR_ID_SET_FONT_FILE_PATH = 64;
   public static final int STR_ID_SET_HEIGHT_STRING = 58;
-  public static final int STR_ID_SET_MAX_WIDTH = 68;
+  public static final int STR_ID_SET_LINKSPAN_CLICKABLE = 68;
+  public static final int STR_ID_SET_MAX_WIDTH = 69;
   public static final int STR_ID_SET_RELATIVE_HEIGHT_STRING = 60;
   public static final int STR_ID_SET_RELATIVE_WIDTH_STRING = 61;
   public static final int STR_ID_SET_RICH_DATA = 66;
@@ -152,7 +153,8 @@ public class StringCommon
     mString2Index.put("setAlphaString:", Integer.valueOf(65));
     mString2Index.put("setRichData:", Integer.valueOf(66));
     mString2Index.put("setMarqueeEnable", Integer.valueOf(67));
-    mString2Index.put("setMaxWidth:type:", Integer.valueOf(68));
+    mString2Index.put("setMaxWidth:type:", Integer.valueOf(69));
+    mString2Index.put("setLinkClickable", Integer.valueOf(68));
   }
   
   public static int getStrIdFromString(String paramString)

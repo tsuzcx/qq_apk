@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ar.model;
 
-import aklt;
-import akso;
-import akwn;
+import alaf;
+import alha;
+import alkz;
 
 public class QQARSession$25
   implements Runnable
 {
-  public QQARSession$25(akwn paramakwn, ArVideoResourceInfo paramArVideoResourceInfo, aklt paramaklt) {}
+  public QQARSession$25(alkz paramalkz, ArVideoResourceInfo paramArVideoResourceInfo, alaf paramalaf) {}
   
   public void run()
   {
-    if ((akwn.b(this.this$0)) && (this.this$0.a == 2) && (akwn.a(this.this$0) != null)) {
-      akwn.a(this.this$0).a(this.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo, this.jdField_a_of_type_Aklt);
+    if ((alkz.b(this.this$0)) && (this.this$0.a == 2) && (alkz.a(this.this$0) != null)) {
+      alkz.a(this.this$0).a(this.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo, this.jdField_a_of_type_Alaf);
     }
   }
 }

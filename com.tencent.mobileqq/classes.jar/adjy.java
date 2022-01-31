@@ -1,22 +1,13 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
 
-class adjy
-  extends acjc
+public class adjy
 {
-  public long a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  public String a;
-  TextView b;
-  TextView c;
-  TextView d;
-  TextView e;
-  
-  adjy(adjv paramadjv) {}
+  public static View a(Context paramContext)
+  {
+    return LayoutInflater.from(paramContext).inflate(2131559150, null);
+  }
 }
 
 

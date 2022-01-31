@@ -7,8 +7,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import berm;
-import berr;
+import bfzg;
+import bfzl;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
@@ -16,20 +16,20 @@ import com.tencent.widget.pull2refresh.XRecyclerView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ofa;
-import ofb;
-import ofc;
-import ofe;
-import ofh;
-import ofi;
-import ofj;
-import ofz;
-import ogd;
-import rdg;
+import oql;
+import oqm;
+import oqn;
+import oqp;
+import oqs;
+import oqt;
+import oqu;
+import ork;
+import oro;
+import rpu;
 
 public abstract class ReadInJoyDynamicChannelBaseFragment
   extends ReadInJoyBaseFragment
-  implements berr, ofa, ofe
+  implements bfzl, oql, oqp
 {
   protected int a;
   public XRecyclerView a;
@@ -58,14 +58,14 @@ public abstract class ReadInJoyDynamicChannelBaseFragment
     return "dynamic_feeds_" + paramInt;
   }
   
-  public static rdg a(String paramString)
+  public static rpu a(String paramString)
   {
-    rdg localrdg2 = rdg.a(paramString, false);
-    rdg localrdg1 = localrdg2;
-    if (localrdg2 == null) {
-      localrdg1 = rdg.a(paramString, true);
+    rpu localrpu2 = rpu.a(paramString, false);
+    rpu localrpu1 = localrpu2;
+    if (localrpu2 == null) {
+      localrpu1 = rpu.a(paramString, true);
     }
-    return localrdg1;
+    return localrpu1;
   }
   
   private void l()
@@ -76,7 +76,7 @@ public abstract class ReadInJoyDynamicChannelBaseFragment
     localStaggeredGridLayoutManager.setGapStrategy(0);
     this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().setLayoutManager(localStaggeredGridLayoutManager);
     this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().setOnBindHeaderObserver(this);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().addOnScrollListener(new ofh(this, localStaggeredGridLayoutManager));
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().addOnScrollListener(new oqs(this, localStaggeredGridLayoutManager));
     c();
     d();
   }
@@ -89,64 +89,64 @@ public abstract class ReadInJoyDynamicChannelBaseFragment
       QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "initOfflineConfig failed, templateFactory is null.");
       return;
     }
-    if (((rdg)localObject1).a() > 0) {
-      this.jdField_a_of_type_Int = ((rdg)localObject1).a();
+    if (((rpu)localObject1).a() > 0) {
+      this.jdField_a_of_type_Int = ((rpu)localObject1).a();
     }
-    localObject1 = ((rdg)localObject1).a();
+    localObject1 = ((rpu)localObject1).a();
     if (localObject1 != null)
     {
-      String str1 = ((ofb)localObject1).a("expose_t_name");
-      String str2 = ((ofb)localObject1).a("click_t_name");
+      String str1 = ((oqm)localObject1).a("expose_t_name");
+      String str2 = ((oqm)localObject1).a("click_t_name");
       if (!TextUtils.isEmpty(str1)) {
         this.jdField_c_of_type_JavaLangString = str1;
       }
       if (!TextUtils.isEmpty(str2)) {
         this.d = str2;
       }
-      str1 = ((ofb)localObject1).a("is_support_pull_refresh");
+      str1 = ((oqm)localObject1).a("is_support_pull_refresh");
       if (!TextUtils.isEmpty(str1)) {
         this.jdField_b_of_type_Boolean = str1.equals("1");
       }
-      str1 = ((ofb)localObject1).b("is_need_id_list");
+      str1 = ((oqm)localObject1).b("is_need_id_list");
       boolean bool = false;
       if (!TextUtils.isEmpty(str1)) {
         bool = str1.equals("1");
       }
-      str1 = ((ofb)localObject1).b("cgi");
-      str2 = ((ofb)localObject1).b("request_pre_process");
-      String str3 = ((ofb)localObject1).b("receive_pre_process");
-      Object localObject2 = new ofi();
-      ((ofi)localObject2).jdField_a_of_type_JavaLangString = str1;
-      ((ofi)localObject2).jdField_a_of_type_Boolean = bool;
-      ((ofi)localObject2).jdField_b_of_type_JavaLangString = str2;
-      ((ofi)localObject2).jdField_c_of_type_JavaLangString = str3;
-      Object localObject3 = ofz.a();
+      str1 = ((oqm)localObject1).b("cgi");
+      str2 = ((oqm)localObject1).b("request_pre_process");
+      String str3 = ((oqm)localObject1).b("receive_pre_process");
+      Object localObject2 = new oqt();
+      ((oqt)localObject2).jdField_a_of_type_JavaLangString = str1;
+      ((oqt)localObject2).jdField_a_of_type_Boolean = bool;
+      ((oqt)localObject2).jdField_b_of_type_JavaLangString = str2;
+      ((oqt)localObject2).jdField_c_of_type_JavaLangString = str3;
+      Object localObject3 = ork.a();
       if (localObject3 != null) {
-        ((ofz)localObject3).a(this.jdField_b_of_type_Int, (ofi)localObject2);
+        ((ork)localObject3).a(this.jdField_b_of_type_Int, (oqt)localObject2);
       }
-      int j = ((ofb)localObject1).a();
+      int j = ((oqm)localObject1).a();
       localObject2 = new ArrayList();
       if (j > 0)
       {
         int i = 0;
         while (i < j)
         {
-          localObject3 = ((ofb)localObject1).a(i);
+          localObject3 = ((oqm)localObject1).a(i);
           if (localObject3 != null)
           {
-            ofj localofj = new ofj();
-            localofj.jdField_a_of_type_JavaLangString = ((ofc)localObject3).jdField_a_of_type_JavaLangString;
-            localofj.jdField_b_of_type_JavaLangString = ((ofc)localObject3).jdField_b_of_type_JavaLangString;
-            localofj.jdField_c_of_type_JavaLangString = ((ofb)localObject1).a(i, "cgi");
-            localofj.d = ((ofb)localObject1).a(i, "request_pre_process");
-            localofj.e = ((ofb)localObject1).a(i, "receive_pre_process");
-            ((List)localObject2).add(localofj);
+            oqu localoqu = new oqu();
+            localoqu.jdField_a_of_type_JavaLangString = ((oqn)localObject3).jdField_a_of_type_JavaLangString;
+            localoqu.jdField_b_of_type_JavaLangString = ((oqn)localObject3).jdField_b_of_type_JavaLangString;
+            localoqu.jdField_c_of_type_JavaLangString = ((oqm)localObject1).a(i, "cgi");
+            localoqu.d = ((oqm)localObject1).a(i, "request_pre_process");
+            localoqu.e = ((oqm)localObject1).a(i, "receive_pre_process");
+            ((List)localObject2).add(localoqu);
           }
           i += 1;
         }
-        localObject1 = ogd.a();
+        localObject1 = oro.a();
         if (localObject1 != null) {
-          ((ogd)localObject1).a(this.jdField_b_of_type_Int, (List)localObject2);
+          ((oro)localObject1).a(this.jdField_b_of_type_Int, (List)localObject2);
         }
       }
       QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "initOfflineConfig \n", "mSpanCount = ", Integer.valueOf(this.jdField_a_of_type_Int), "\n", "mExposedTName = ", this.jdField_c_of_type_JavaLangString, "\n", "mClickTName = ", this.d, "\n", "isSupportPullRefresh = ", Boolean.valueOf(this.jdField_b_of_type_Boolean), "\n", "bodyIsNeedIDList = ", Boolean.valueOf(bool), "\n", "bodyCGI = ", str1, "\n", "bodyReqJSMethod = ", str2, "\n", "bodyRecJSMethod = ", str3, "\n", "headerConfigSize = ", Integer.valueOf(j), "\n" });
@@ -181,9 +181,9 @@ public abstract class ReadInJoyDynamicChannelBaseFragment
     if (!((RecyclerViewWithHeaderFooter)localObject).a(paramView)) {
       ((RecyclerViewWithHeaderFooter)localObject).a(paramView);
     }
-    localObject = (berm)((RecyclerViewWithHeaderFooter)localObject).getAdapter();
-    if (!((berm)localObject).a(paramView)) {
-      ((berm)localObject).a(paramView);
+    localObject = (bfzg)((RecyclerViewWithHeaderFooter)localObject).getAdapter();
+    if (!((bfzg)localObject).a(paramView)) {
+      ((bfzg)localObject).a(paramView);
     }
     b();
   }
@@ -215,7 +215,7 @@ public abstract class ReadInJoyDynamicChannelBaseFragment
     QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "removeHeader.");
     RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a();
     localRecyclerViewWithHeaderFooter.b(paramView);
-    ((berm)localRecyclerViewWithHeaderFooter.getAdapter()).b(paramView);
+    ((bfzg)localRecyclerViewWithHeaderFooter.getAdapter()).b(paramView);
     b();
   }
   

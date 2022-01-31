@@ -1,15 +1,17 @@
-import java.io.File;
-import java.io.FileFilter;
-
-class bioy
-  implements FileFilter
+public class bioy
+  extends bjof
 {
-  bioy(biox parambiox) {}
+  private bjoa<bioz> a = new bjoa();
+  private bjoa<Boolean> b = new bjoa();
   
-  public boolean accept(File paramFile)
+  public bjoa<bioz> a()
   {
-    paramFile = paramFile.getName();
-    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp")) || (paramFile.endsWith(".apng")) || (paramFile.endsWith(".gif"));
+    return this.a;
+  }
+  
+  public bjoa<Boolean> b()
+  {
+    return this.b;
   }
 }
 

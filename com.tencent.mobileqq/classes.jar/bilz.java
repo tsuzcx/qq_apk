@@ -1,8 +1,14 @@
 public abstract interface bilz
 {
-  public abstract void a(int paramInt);
+  public abstract void a();
+  
+  public abstract void a(float paramFloat);
+  
+  public abstract void b();
   
   public abstract void c();
+  
+  public abstract void d();
 }
 
 

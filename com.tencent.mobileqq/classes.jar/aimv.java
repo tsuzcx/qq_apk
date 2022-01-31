@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.data.ApolloGameData;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.ImageView;
 
 public class aimv
+  extends bfvn
 {
   public String a;
-  public List<Integer> a;
-  public String b;
-  public List<ApolloGameData> b = new ArrayList();
-  public List<String> c = new ArrayList();
-  
-  public aimv(aimr paramaimr)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public int c = 1;
+  public ImageView c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aimv
  * JD-Core Version:    0.7.0.1
  */

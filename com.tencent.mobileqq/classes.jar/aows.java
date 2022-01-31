@@ -1,169 +1,243 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Rect;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.mobileqq.filemanager.app.QFileConfigManager.1;
+import com.tencent.mobileqq.filemanager.app.QFileConfigManager.2;
+import com.tencent.mobileqq.filemanager.app.QFileConfigManager.3;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class aows
+  implements Manager
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private aowv jdField_a_of_type_Aowv;
-  private Class<?> jdField_a_of_type_JavaLangClass;
-  private String jdField_a_of_type_JavaLangString;
+  private amxm jdField_a_of_type_Amxm;
+  private amxn jdField_a_of_type_Amxn;
+  private amxo jdField_a_of_type_Amxo;
+  private amxp jdField_a_of_type_Amxp;
+  private amxq jdField_a_of_type_Amxq;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<String, amxu> jdField_a_of_type_JavaUtilHashMap;
   private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean b;
+  private boolean c;
+  private boolean d;
   
-  public aows(Context paramContext, aowv paramaowv)
+  public aows(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aowv = paramaowv;
-    this.jdField_a_of_type_JavaLangClass = FileBrowserActivity.class;
-    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    c();
+    a();
+    b();
+    d();
+    e();
+    f();
+    g();
+    h();
   }
   
-  private boolean a()
+  private void a()
   {
-    return (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 5) || (this.jdField_a_of_type_Int == 3);
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("file_config_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0);
+    this.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean("troop_video_preivew", false);
+    this.b = localSharedPreferences.getBoolean("troop_video_preivew_for_svip", false);
+    this.c = localSharedPreferences.getBoolean("troop_video_preivew_for_yearsvip", false);
+    QLog.i("QFileConfigManager", 1, "initTroopFileVideoPreviewConfig: load common config. enableTroopVidePreview[" + this.jdField_a_of_type_Boolean + "] enableTroopVidePreviewForSVIP[" + this.b + "] enableTroopVidePreviewForYearSVIP[" + this.c + "]");
+  }
+  
+  private void a(String paramString)
+  {
+    try
+    {
+      amxt localamxt = (amxt)ampw.a(paramString, amxt.class);
+      if (localamxt != null)
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.clear();
+        this.jdField_a_of_type_JavaUtilHashMap.putAll(localamxt.jdField_a_of_type_JavaUtilHashMap);
+      }
+      if (TextUtils.isEmpty(paramString)) {
+        QLog.i("QFileConfigManager", 1, "loadFileDownloadConfig: load download config. " + paramString);
+      }
+      return;
+    }
+    catch (QStorageInstantiateException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
   private void b()
   {
-    if ((this.jdField_a_of_type_Aowv.d()) && (b())) {}
-    do
-    {
-      return;
-      Intent localIntent = this.jdField_a_of_type_Aowv.a();
-      if (localIntent == null)
-      {
-        QLog.i("FileBrowserCreator<FileAssistant>", 1, "openFileBrowser error, intent params is null.");
-        return;
-      }
-      if (this.jdField_b_of_type_Int != -1) {
-        localIntent.setFlags(this.jdField_b_of_type_Int);
-      }
-      localIntent.setClass(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangClass);
-      localIntent.putExtra("file_enter_file_browser_type", this.jdField_a_of_type_Int);
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("file_enter_file_browser_type", this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_AndroidGraphicsRect != null) {
-        localBundle.putParcelable("file_browser_params_thumb_bound", this.jdField_a_of_type_AndroidGraphicsRect);
-      }
-      this.jdField_a_of_type_Aowv.b(localBundle);
-      localIntent.putExtra("file_browser_extra_params", localBundle);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        localIntent.putExtra("selfSet_leftViewText", this.jdField_a_of_type_JavaLangString);
-      }
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    } while (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity));
-    ((Activity)this.jdField_a_of_type_AndroidContentContext).overridePendingTransition(2130772036, 2130772038);
-  }
-  
-  private boolean b()
-  {
-    if (!a()) {
-      if (QLog.isColorLevel()) {
-        QLog.w("FileBrowserCreator<FileAssistant>", 1, "processNewFileVideoBrowser isFromAIO return false, mEntranceType:" + this.jdField_a_of_type_Int);
-      }
-    }
-    ChatMessage localChatMessage;
-    SessionInfo localSessionInfo;
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          localChatMessage = this.jdField_a_of_type_Aowv.a();
-          if (localChatMessage != null) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.w("FileBrowserCreator<FileAssistant>", 1, "processNewFileVideoBrowser getChatMessage return falase");
-        return false;
-        localSessionInfo = this.jdField_a_of_type_Aowv.a();
-        if (localSessionInfo != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.w("FileBrowserCreator<FileAssistant>", 1, "processNewFileVideoBrowser getSessionInfo return falase");
-      return false;
-      if (this.jdField_a_of_type_Aowv.c())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("FileBrowserCreator<FileAssistant>", 1, "processNewFileVideoBrowser set video resume, return true");
-        }
-        return true;
-      }
-      if (this.jdField_a_of_type_Aowv.d()) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w("FileBrowserCreator<FileAssistant>", 1, "processNewFileVideoBrowser canUseNewVideoBrowser is false, don't start new video browser");
-    return false;
-    adeg.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidGraphicsRect, localChatMessage, localSessionInfo, this.jdField_a_of_type_Aowv.a(), this.jdField_a_of_type_Aowv.e(), this.jdField_a_of_type_Aowv.f(), null);
-    return true;
+    this.d = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("file_config_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0).getBoolean("ipv6_all_switch", false);
   }
   
   private void c()
   {
-    aowu localaowu = new aowu(this);
-    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131627035);
-    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131627037);
-    apbx.a(this.jdField_a_of_type_AndroidContentContext, str1, str2, localaowu);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("file_config_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0).getString("qfile_file_auto_download", "{}");
+    QLog.i("QFileConfigManager", 1, "initFileDownloadConfig: load download config [" + str + "]");
+    a(str);
   }
   
-  public void a()
+  @Deprecated
+  private void d()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aowv.b()))
-    {
-      if (apdq.a(this.jdField_a_of_type_AndroidContentContext, false, new aowt(this))) {
-        c();
-      }
-      return;
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("file_exciting_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0).getString("qfile_file_exciting", "{}");
+    QLog.i("QFileConfigManager", 1, "initExcitingConfig: load download config [" + str + "]");
+    amya localamya = new amya();
+    localamya.a(str);
+    this.jdField_a_of_type_Amxo = localamya;
+  }
+  
+  private void e()
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("c2cfile_excitingupload_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0).getString("qfile_c2cfile_excitingupload", "{}");
+    QLog.i("QFileConfigManager", 1, "load Exciting-C2C-Upload Config [" + str + "]");
+    amxy localamxy = new amxy();
+    localamxy.a(str);
+    this.jdField_a_of_type_Amxn = localamxy;
+  }
+  
+  private void f()
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("c2cfile_excitingdownload_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0).getString("qfile_c2cfile_excitingdownload", "{}");
+    QLog.i("QFileConfigManager", 1, "load Exciting-C2C-Download Config [" + str + "]");
+    amxw localamxw = new amxw();
+    localamxw.a(str);
+    this.jdField_a_of_type_Amxm = localamxw;
+  }
+  
+  private void g()
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("groupfile_excitingupload_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0).getString("qfile_groupfile_excitingupload", "{}");
+    QLog.i("QFileConfigManager", 1, "load Exciting-Group-Upload Config [" + str + "]");
+    amye localamye = new amye();
+    localamye.a(str);
+    this.jdField_a_of_type_Amxq = localamye;
+  }
+  
+  private void h()
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("groupfile_excitingdownload_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0).getString("qfile_groupfile_excitingdownload", "{}");
+    QLog.i("QFileConfigManager", 1, "load Exciting-Group-Download Config [" + str + "]");
+    amyc localamyc = new amyc();
+    localamyc.a(str);
+    this.jdField_a_of_type_Amxp = localamyc;
+  }
+  
+  public amxm a()
+  {
+    return this.jdField_a_of_type_Amxm;
+  }
+  
+  public amxn a()
+  {
+    return this.jdField_a_of_type_Amxn;
+  }
+  
+  @Deprecated
+  public amxo a()
+  {
+    return this.jdField_a_of_type_Amxo;
+  }
+  
+  public amxp a()
+  {
+    return this.jdField_a_of_type_Amxp;
+  }
+  
+  public amxq a()
+  {
+    return this.jdField_a_of_type_Amxq;
+  }
+  
+  public amxu a(String paramString)
+  {
+    Object localObject = paramString;
+    if (!TextUtils.isEmpty(paramString)) {
+      localObject = paramString.toLowerCase();
     }
-    b();
+    localObject = (amxu)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+    paramString = (String)localObject;
+    if (localObject == null) {
+      paramString = (amxu)this.jdField_a_of_type_JavaUtilHashMap.get("*");
+    }
+    localObject = paramString;
+    if (paramString == null)
+    {
+      a("{}");
+      localObject = (amxu)this.jdField_a_of_type_JavaUtilHashMap.get("*");
+    }
+    return localObject;
   }
   
-  public void a(int paramInt)
+  public void a(amxm paramamxm)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Amxm = paramamxm;
   }
   
-  public void a(Rect paramRect)
+  public void a(amxn paramamxn)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+    this.jdField_a_of_type_Amxn = paramamxn;
   }
   
-  public void a(Class<?> paramClass)
+  @Deprecated
+  public void a(amxo paramamxo)
   {
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.jdField_a_of_type_Amxo = paramamxo;
   }
   
-  public void a(String paramString) {}
-  
-  public void a(boolean paramBoolean)
+  public void a(amxp paramamxp)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Amxp = paramamxp;
   }
   
-  public void b(int paramInt)
+  public void a(amxq paramamxq)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_Amxq = paramamxq;
   }
   
-  public void b(boolean paramBoolean)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    ThreadManager.getUIHandler().post(new QFileConfigManager.2(this, paramBundle));
   }
+  
+  public void a(HashMap<String, amxu> paramHashMap)
+  {
+    ThreadManager.getUIHandler().post(new QFileConfigManager.1(this, paramHashMap));
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    ThreadManager.getUIHandler().post(new QFileConfigManager.3(this, paramBundle));
+  }
+  
+  public boolean b()
+  {
+    return this.b;
+  }
+  
+  public boolean c()
+  {
+    return this.c;
+  }
+  
+  public boolean d()
+  {
+    return this.d;
+  }
+  
+  public void onDestroy() {}
 }
 
 

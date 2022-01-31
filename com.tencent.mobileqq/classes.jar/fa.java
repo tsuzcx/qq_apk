@@ -1,30 +1,36 @@
-import com.dataline.util.widget.AsyncImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.dataline.mpfile.MpfileTaskInfo;
 
-public class fa
-  implements URLDrawable.URLDrawableListener
+public final class fa
+  implements Parcelable.Creator<MpfileTaskInfo>
 {
-  public fa(AsyncImageView paramAsyncImageView) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public MpfileTaskInfo a(Parcel paramParcel)
   {
-    QLog.d("AsyncImageView", 1, "canceled ");
+    MpfileTaskInfo localMpfileTaskInfo = new MpfileTaskInfo();
+    localMpfileTaskInfo.jdField_f_of_type_Int = paramParcel.readInt();
+    localMpfileTaskInfo.jdField_g_of_type_Int = paramParcel.readInt();
+    localMpfileTaskInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.h = paramParcel.readString();
+    localMpfileTaskInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localMpfileTaskInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localMpfileTaskInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    localMpfileTaskInfo.jdField_d_of_type_Long = paramParcel.readLong();
+    localMpfileTaskInfo.jdField_e_of_type_Long = paramParcel.readLong();
+    localMpfileTaskInfo.jdField_f_of_type_Long = paramParcel.readLong();
+    localMpfileTaskInfo.jdField_g_of_type_Long = paramParcel.readLong();
+    return localMpfileTaskInfo;
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public MpfileTaskInfo[] a(int paramInt)
   {
-    QLog.d("AsyncImageView", 1, "urldrawable load failed ");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.a.setImageDrawable(null);
-    this.a.setImageDrawable(paramURLDrawable);
-    QLog.d("AsyncImageView", 1, "successed ");
+    return new MpfileTaskInfo[paramInt];
   }
 }
 

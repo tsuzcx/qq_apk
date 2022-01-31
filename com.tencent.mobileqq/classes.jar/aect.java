@@ -1,29 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.AppGuideTipsConfig;
 
 class aect
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  aect(aecs paramaecs) {}
+  aect(aecs paramaecs, AppGuideTipsConfig paramAppGuideTipsConfig) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (aecp.a(this.a.a.this$0) != null) {
-      aecp.a(this.a.a.this$0).setVisibility(0);
-    }
-    if (aecp.a(this.a.a.this$0) != null) {
-      aecp.a(this.a.a.this$0).setVisibility(4);
-    }
+    paramView = new Intent(this.jdField_a_of_type_Aecs.a, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.tipsUrl);
+    this.jdField_a_of_type_Aecs.a.startActivity(paramView);
+    axqw.b(null, "dc00898", "", "", this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.opkey, this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.opkey, 0, 0, "", "", "", "");
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

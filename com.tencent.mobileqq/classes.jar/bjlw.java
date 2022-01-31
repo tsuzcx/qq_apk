@@ -1,78 +1,21 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
 public class bjlw
+  implements View.OnTouchListener
 {
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private bjlt[] jdField_a_of_type_ArrayOfBjlt;
+  public bjlw(CropVideoActivity paramCropVideoActivity) {}
   
-  private boolean b()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1;
-  }
-  
-  public bjlt a()
-  {
-    if (!b()) {
-      return null;
-    }
-    int i = 0;
-    bjlt localbjlt;
-    if (i < this.jdField_a_of_type_ArrayOfBjlt.length) {
-      if (this.jdField_a_of_type_ArrayOfBjlt[i].b() == 0)
-      {
-        localbjlt = this.jdField_a_of_type_ArrayOfBjlt[i];
-        localbjlt.c();
-      }
-    }
-    for (;;)
-    {
-      return localbjlt;
-      i += 1;
-      break;
-      localbjlt = null;
-    }
-  }
-  
-  public boolean a()
-  {
-    if (!b()) {}
-    for (;;)
-    {
-      return false;
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfBjlt.length)
-      {
-        if (this.jdField_a_of_type_ArrayOfBjlt[i].a() == 3) {
-          return true;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public bjlt b()
-  {
-    if (!b()) {
-      return null;
-    }
-    int i = 0;
-    bjlt localbjlt;
-    if (i < this.jdField_a_of_type_ArrayOfBjlt.length)
-    {
-      if (this.jdField_a_of_type_ArrayOfBjlt[i].c() == 0) {}
-      while (this.jdField_a_of_type_ArrayOfBjlt[i].a() != 0)
-      {
-        i += 1;
-        break;
-      }
-      localbjlt = this.jdField_a_of_type_ArrayOfBjlt[i];
-      localbjlt.c();
-    }
-    for (;;)
-    {
-      return localbjlt;
-      localbjlt = null;
-    }
+    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
+    CropVideoActivity.a(this.a).a(paramMotionEvent);
+    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

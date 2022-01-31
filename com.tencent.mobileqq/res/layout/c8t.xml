@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/b67"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.ThemeImageView android:layout_gravity="center_vertical" android:id="@id/l_i" android:layout_width="50.0dip" android:layout_height="50.0dip" />
-    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip">
-        <TextView android:textSize="15.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/lrw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
-        <com.tencent.mobileqq.extendfriend.wiget.LabelLayout android:id="@id/lp2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
-    </LinearLayout>
-</LinearLayout>

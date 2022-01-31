@@ -1,36 +1,35 @@
 package com.tencent.mobileqq.app;
 
-import android.net.Uri;
-import android.text.TextUtils;
-import baan;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.theme.SkinEngine;
 import java.io.File;
 
 class QQAppInterface$14
   implements Runnable
 {
-  QQAppInterface$14(QQAppInterface paramQQAppInterface, int paramInt) {}
-  
   public void run()
   {
-    boolean bool1 = this.this$0.c();
-    boolean bool2 = this.this$0.g();
-    if ((!this.this$0.h()) && (bool2) && (!bool1) && (!this.this$0.k()) && (!this.this$0.l()) && (this.this$0.m()) && (QQAppInterface.b(this.this$0)))
+    boolean bool = HttpDownloadUtil.a(this.this$0, MsfSdkUtils.insertMtype("lingyin", this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_JavaIoFile);
+    if (QLog.isColorLevel()) {
+      QLog.d("notification", 2, "-->SpecialSound download result:" + bool);
+    }
+    File localFile;
+    if (bool)
     {
-      Object localObject = SkinEngine.getInstances().getSkinRootPath();
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = new StringBuilder((String)localObject);
-        ((StringBuilder)localObject).append(File.separatorChar).append("voice").append(File.separatorChar).append("tab").append(this.a).append(".mp3");
-        File localFile = new File(((StringBuilder)localObject).toString());
-        if (QLog.isColorLevel()) {
-          QLog.d("playThemeVoice", 2, "Uri:" + ((StringBuilder)localObject).toString());
-        }
-        if (localFile.exists()) {
-          baan.a(Uri.fromFile(localFile), false, false);
-        }
+      localFile = new File(QQAppInterface.d(this.this$0).getApplicationContext().getFilesDir(), this.jdField_a_of_type_JavaLangString);
+      if (localFile == null) {
+        break label105;
       }
+    }
+    label105:
+    for (long l = localFile.length();; l = 0L)
+    {
+      QQAppInterface.a(this.this$0).a(l);
+      return;
     }
   }
 }

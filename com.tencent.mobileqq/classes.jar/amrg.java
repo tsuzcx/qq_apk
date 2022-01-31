@@ -1,32 +1,23 @@
+import java.util.ArrayList;
+
 public class amrg
 {
-  private long a;
-  private long b;
+  public int a;
+  public String a;
+  public ArrayList<amrq> a;
+  public int b;
   
-  public amrg(long paramLong)
+  public amrg(int paramInt1, int paramInt2, String paramString, ArrayList<amrq> paramArrayList)
   {
-    this.b = paramLong;
-    this.a = this.b;
-  }
-  
-  public long a()
-  {
-    return this.b;
-  }
-  
-  public amrg a()
-  {
-    return new amrg(this.b);
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.b = (((float)this.b * paramFloat));
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amrg
  * JD-Core Version:    0.7.0.1
  */

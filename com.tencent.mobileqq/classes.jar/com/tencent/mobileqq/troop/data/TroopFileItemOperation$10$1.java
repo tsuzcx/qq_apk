@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.troop.data;
 
 import android.app.Activity;
-import ayoq;
-import aypd;
-import aypf;
-import aypg;
-import azjg;
-import babr;
-import bafb;
+import azpg;
+import azpt;
+import azpv;
+import azpw;
+import bakj;
+import bbcv;
+import bbgg;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
 public class TroopFileItemOperation$10$1
   implements Runnable
 {
-  public TroopFileItemOperation$10$1(aypf paramaypf) {}
+  public TroopFileItemOperation$10$1(azpv paramazpv) {}
   
   public void run()
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.a.jdField_a_of_type_Ayoq.a);
+    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.a.jdField_a_of_type_Azpg.a);
     if ((localObject != null) && (((TroopFileTransferManager.Item)localObject).ErrorCode == -136))
     {
-      this.a.jdField_a_of_type_Aypd.a(this.a.jdField_a_of_type_Ayoq, this.a.jdField_a_of_type_Aypd.a.getString(2131632279), this.a.jdField_a_of_type_Aypd.a.getString(2131632280));
+      this.a.jdField_a_of_type_Azpt.a(this.a.jdField_a_of_type_Azpg, this.a.jdField_a_of_type_Azpt.a.getString(2131698004), this.a.jdField_a_of_type_Azpt.a.getString(2131698005));
       return;
     }
-    int i = aypd.a(this.a.jdField_a_of_type_Aypd, false);
-    aypg localaypg = new aypg(this);
+    int i = azpt.a(this.a.jdField_a_of_type_Azpt, false);
+    azpw localazpw = new azpw(this);
     if (i == 1) {}
-    for (localObject = aypd.a(2131631937, new Object[] { azjg.a(this.a.jdField_a_of_type_Ayoq.c), this.a.jdField_a_of_type_Ayoq.a() });; localObject = aypd.a(2131632216, new Object[] { azjg.a(this.a.jdField_a_of_type_Ayoq.c) }))
+    for (localObject = azpt.a(2131697651, new Object[] { bakj.a(this.a.jdField_a_of_type_Azpg.c), this.a.jdField_a_of_type_Azpg.a() });; localObject = azpt.a(2131697941, new Object[] { bakj.a(this.a.jdField_a_of_type_Azpg.c) }))
     {
-      babr.a(this.a.jdField_a_of_type_Aypd.a, 230, aypd.a(2131632218), (String)localObject, 2131625035, 2131632217, localaypg, localaypg).show();
+      bbcv.a(this.a.jdField_a_of_type_Azpt.a, 230, azpt.a(2131697943), (String)localObject, 2131690596, 2131697942, localazpw, localazpw).show();
       return;
     }
   }

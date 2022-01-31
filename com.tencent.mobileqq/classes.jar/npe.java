@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-final class npe
-  implements DialogInterface.OnClickListener
+public final class npe
+  implements Parcelable.Creator<VideoInfo>
 {
-  npe(DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public VideoInfo a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
-    this.a.onClick(paramDialogInterface, paramInt);
+    return new VideoInfo(paramParcel);
+  }
+  
+  public VideoInfo[] a(int paramInt)
+  {
+    return new VideoInfo[paramInt];
   }
 }
 

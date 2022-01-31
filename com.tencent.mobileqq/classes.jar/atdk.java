@@ -1,105 +1,36 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.observer.QZoneObserver.1;
-import com.tencent.mobileqq.observer.QZoneObserver.2;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 public class atdk
-  implements BusinessObserver
+  implements bcij<oidb_0x8e4.RspBody>
 {
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
+  public atdk(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong) {}
-  
-  public void b(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void c(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void d(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void e(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void f(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void g(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void h(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void i(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void j(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    if (paramInt == 1000)
+    if (paramInt == 0)
     {
-      boolean bool = paramBundle.getBoolean("new");
-      long l = paramBundle.getLong("notify_type", 0L);
-      if (QLog.isColorLevel())
-      {
-        if ((l >>> 17 & 1L) != 0L) {
-          QLog.d("ZebraAlbum.UndealCount.QZoneObserver", 2, "onReceive QZONE_GET_UNREAD hasNew: " + bool + "type:" + l + "and then call onGetQZoneFeedCountFin");
-        }
-        QLog.d("UndealCount.UndealCount.QZoneObserver", 2, "qzone redtypeinfo:onReceive QZONE_GET_UNREAD hasNew: " + bool + ",type:" + l + " and then call onGetQZoneFeedCountFin");
-      }
-      a(paramBoolean, bool, l);
+      paramRspBody = paramRspBody.poi_info;
+      String str = paramRspBody.bytes_uid.get().toStringUtf8();
+      this.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
     }
     do
     {
       return;
-      if (paramInt == 1001)
-      {
-        ThreadManagerV2.executeOnSubThread(new QZoneObserver.1(this, paramBoolean, paramBundle));
-        return;
-      }
-      if (paramInt == 1002)
-      {
-        c(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1003)
-      {
-        d(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1004)
-      {
-        e(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1005)
-      {
-        f(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1006)
-      {
-        g(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1007)
-      {
-        ThreadManagerV2.executeOnSubThread(new QZoneObserver.2(this, paramBoolean, paramBundle));
-        return;
-      }
-      if (paramInt == 1008)
-      {
-        i(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1009)
-      {
-        j(paramBoolean, paramBundle);
-        return;
-      }
-    } while (paramInt != 1010);
-    a(paramBoolean, paramBundle);
+      this.a.a(paramInt, paramRspBody, ajyc.a(2131705128));
+    } while (!QLog.isColorLevel());
+    QLog.d("GameRoomInviteActivity", 2, "start game failed! code = " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atdk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,19 @@
 public class amrh
 {
-  private long a;
+  public String a;
+  public String b;
+  public String c;
   
-  public long a()
+  public amrh(String paramString1, String paramString2, String paramString3)
   {
-    return this.a;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.a = paramLong;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amrh
  * JD-Core Version:    0.7.0.1
  */

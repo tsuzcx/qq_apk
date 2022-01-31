@@ -1,14 +1,31 @@
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.subscribe.comment.EmoView;
 
-public abstract interface wog
+public class wog
+  extends Handler
 {
-  public abstract void a(int paramInt);
+  public wog(EmoView paramEmoView) {}
   
-  public abstract void a(List<azka> paramList);
+  public void handleMessage(Message paramMessage)
+  {
+    int i;
+    if (paramMessage.what == 0)
+    {
+      i = EmoView.a(this.a) + 1;
+      if ((i <= 4) && (EmoView.a(this.a)[EmoView.a(this.a)] == 0)) {}
+    }
+    else
+    {
+      return;
+    }
+    EmoView.a(this.a, i);
+    EmoView.a(this.a)[EmoView.a(this.a)] = 1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wog
  * JD-Core Version:    0.7.0.1
  */

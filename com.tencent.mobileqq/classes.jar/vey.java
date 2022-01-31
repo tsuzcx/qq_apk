@@ -1,142 +1,35 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.qqstory.takevideo.EditGifImage;
+import com.tencent.image.NativeGifImage;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.widget.FastAnimationDrawable;
 
-public class vey
-  extends BaseAdapter
-  implements AdapterView.OnItemClickListener, vfb
+class vey
+  implements SeekBar.OnSeekBarChangeListener
 {
-  private int jdField_a_of_type_Int;
-  private List<vfa> jdField_a_of_type_JavaUtilList = new ArrayList();
+  vey(vex paramvex) {}
   
-  public vey(@NonNull List<vfa> paramList)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if (paramList.isEmpty()) {
-      urk.d("Q.qqstory.publish.editPermissionListAdapter", "part list is empty.");
-    }
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    a();
-    paramList = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramList.hasNext()) {
-      ((vfa)paramList.next()).a(this);
-    }
-  }
-  
-  @NonNull
-  private vez a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int j;
-    for (int i = 0; localIterator.hasNext(); i = j)
+    if (paramBoolean)
     {
-      vfa localvfa = (vfa)localIterator.next();
-      j = localvfa.a() + i;
-      if (paramInt <= j - 1) {
-        return new vez(localvfa, paramInt - i);
+      NativeGifImage.QZONE_DELAY = (int)(this.a.jdField_a_of_type_Double * paramInt + this.a.g);
+      if (this.a.jdField_a_of_type_Vhp.a.a != null) {
+        this.a.jdField_a_of_type_Vhp.a.a.a(NativeGifImage.QZONE_DELAY);
+      }
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.e = NativeGifImage.QZONE_DELAY;
+      this.a.d = paramInt;
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "onProgressChanged | delayTime:" + this.a.e + " barPosition:" + this.a.d);
       }
     }
-    throw new IllegalStateException("unable find PermissionPart, position:" + paramInt);
   }
   
-  private void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    for (int i = 0; localIterator.hasNext(); i = ((vfa)localIterator.next()).a() + i) {}
-    this.jdField_a_of_type_Int = i;
-  }
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
   
-  @Nullable
-  public vfa a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      vfa localvfa = (vfa)localIterator.next();
-      if (localvfa.a) {
-        return localvfa;
-      }
-    }
-    return null;
-  }
-  
-  public void a(vfa paramvfa)
-  {
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    vez localvez = a(paramInt);
-    return localvez.jdField_a_of_type_Vfa.a(localvez.jdField_a_of_type_Int);
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject = a(paramInt);
-    vfa localvfa = ((vez)localObject).jdField_a_of_type_Vfa;
-    paramInt = ((vez)localObject).jdField_a_of_type_Int;
-    localObject = paramView;
-    if (paramView == null) {
-      localObject = localvfa.a(paramInt, paramViewGroup);
-    }
-    localvfa.a(paramInt, (View)localObject);
-    return localObject;
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 5;
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    a();
-    super.notifyDataSetChanged();
-  }
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramView = a(paramInt);
-    paramAdapterView = paramView.jdField_a_of_type_Vfa;
-    paramAdapterView.a(paramView.jdField_a_of_type_Int);
-    if ((paramAdapterView instanceof vex)) {
-      return;
-    }
-    paramAdapterView.b(true);
-    paramView = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramView.hasNext())
-    {
-      vfa localvfa = (vfa)paramView.next();
-      if (localvfa != paramAdapterView)
-      {
-        localvfa.b(false);
-        localvfa.a(false);
-      }
-    }
-    notifyDataSetChanged();
-  }
+  public void onStopTrackingTouch(SeekBar paramSeekBar) {}
 }
 
 

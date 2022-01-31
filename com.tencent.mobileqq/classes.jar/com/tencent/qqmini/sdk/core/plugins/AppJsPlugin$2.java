@@ -1,26 +1,26 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdcy;
-import bdfz;
-import bdgg;
+import begy;
+import beka;
+import bekg;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class AppJsPlugin$2
   implements AsyncResult
 {
-  AppJsPlugin$2(AppJsPlugin paramAppJsPlugin, bdfz parambdfz) {}
+  AppJsPlugin$2(AppJsPlugin paramAppJsPlugin, beka parambeka) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
     if (paramBoolean)
     {
-      paramJSONObject = bdgg.a(this.val$req.jdField_a_of_type_JavaLangString, paramJSONObject);
-      this.val$req.jdField_a_of_type_Bdcy.a(this.val$req.b, paramJSONObject.toString());
+      paramJSONObject = bekg.a(this.val$req.jdField_a_of_type_JavaLangString, paramJSONObject);
+      this.val$req.jdField_a_of_type_Begy.a(this.val$req.b, paramJSONObject.toString());
       return;
     }
-    paramJSONObject = bdgg.b(this.val$req.jdField_a_of_type_JavaLangString, paramJSONObject);
-    this.val$req.jdField_a_of_type_Bdcy.a(this.val$req.b, paramJSONObject.toString());
+    paramJSONObject = bekg.b(this.val$req.jdField_a_of_type_JavaLangString, paramJSONObject);
+    this.val$req.jdField_a_of_type_Begy.a(this.val$req.b, paramJSONObject.toString());
   }
 }
 

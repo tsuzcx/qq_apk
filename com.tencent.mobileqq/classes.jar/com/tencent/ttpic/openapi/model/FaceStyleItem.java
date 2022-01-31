@@ -1,6 +1,7 @@
 package com.tencent.ttpic.openapi.model;
 
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
+import java.util.ArrayList;
 
 public class FaceStyleItem
 {
@@ -9,7 +10,7 @@ public class FaceStyleItem
   public String id;
   public int[] imageSize = { 320, 320 };
   public String modelName;
-  public String triggerState;
+  public ArrayList<String> triggerState;
   private String triggerType;
   
   public int getTriggerTypeInt()

@@ -6,7 +6,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
-import mpl;
+import nam;
 import org.json.JSONObject;
 
 public final class ScannerUtils$1
@@ -20,7 +20,7 @@ public final class ScannerUtils$1
     Object localObject = "http://qm.qq.com/cgi-bin/check_orientation?product=" + Build.PRODUCT + "&os=" + Build.VERSION.RELEASE + "&" + "mType" + "=" + "qb_qrcode";
     try
     {
-      String str = mpl.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject, "GET", null, null);
+      String str = nam.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject, "GET", null, null);
       if (QLog.isColorLevel()) {
         QLog.d("QRHttpUtil", 2, "open :" + (String)localObject + ", result: " + str);
       }

@@ -1,24 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.fragment.ShieldFriendsListFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class aqjk
+public class aqjk
+  extends ajxl
 {
-  public boolean a;
+  public aqjk(ShieldFriendsListFragment paramShieldFriendsListFragment) {}
   
-  private void a(String paramString)
+  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
+    super.onUpdateFriendShieldFlag(paramLong, paramBoolean1, paramBoolean2, paramBoolean3, paramString);
+    if (!paramBoolean2)
     {
-      this.a = new JSONObject(paramString).optBoolean("input_status_gray_switch", false);
+      paramString = this.a;
+      if (!paramBoolean1)
+      {
+        paramBoolean1 = true;
+        if (ShieldFriendsListFragment.a(paramString, paramLong, paramBoolean1)) {
+          bcpw.a(BaseApplication.getContext(), ajyc.a(2131713992), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
+        }
+      }
+    }
+    do
+    {
       return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("InputStatusConfig", 1, paramString, new Object[0]);
-    }
+      paramBoolean1 = false;
+      break;
+      if (ShieldFriendsListFragment.a(this.a).a(String.valueOf(paramLong)))
+      {
+        ShieldFriendsListFragment.a(this.a, paramLong, paramBoolean1);
+        return;
+      }
+      paramString = ((ajxn)this.a.getActivity().app.getManager(51)).e(String.valueOf(paramLong));
+    } while ((paramString == null) || (paramString.isShield()));
+    ShieldFriendsListFragment.a(this.a).a(paramString);
+    ShieldFriendsListFragment.a(this.a);
   }
 }
 

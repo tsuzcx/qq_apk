@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ajuo;
+import akiy;
 import com.tencent.qphone.base.util.QLog;
 
 class HotWordsForSubBussFragment$2$1
@@ -13,7 +13,7 @@ class HotWordsForSubBussFragment$2$1
     if (this.jdField_a_of_type_ArrayOfByte != null)
     {
       QLog.d(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 1, "UnifySearchHandler use cache!");
-      this.jdField_a_of_type_ComTencentMobileqqSearchFragmentHotWordsForSubBussFragment$2.this$0.jdField_a_of_type_Ajuo.a(null, 1000, this.jdField_a_of_type_ArrayOfByte);
+      this.jdField_a_of_type_ComTencentMobileqqSearchFragmentHotWordsForSubBussFragment$2.this$0.jdField_a_of_type_Akiy.a(null, 1000, this.jdField_a_of_type_ArrayOfByte);
     }
     while (this.jdField_a_of_type_ComTencentMobileqqSearchFragmentHotWordsForSubBussFragment$2.a) {
       return;
@@ -21,7 +21,7 @@ class HotWordsForSubBussFragment$2$1
     if (QLog.isColorLevel()) {
       QLog.d(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "UnifySearchHandler hot word list cache is null！");
     }
-    this.jdField_a_of_type_ComTencentMobileqqSearchFragmentHotWordsForSubBussFragment$2.this$0.jdField_a_of_type_Ajuo.a();
+    this.jdField_a_of_type_ComTencentMobileqqSearchFragmentHotWordsForSubBussFragment$2.this$0.jdField_a_of_type_Akiy.a();
   }
 }
 

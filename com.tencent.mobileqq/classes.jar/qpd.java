@@ -1,14 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+import java.util.Iterator;
+import java.util.List;
 
 class qpd
-  implements View.OnClickListener
+  extends QIPCModule
 {
-  qpd(qoe paramqoe, String paramString) {}
-  
-  public void onClick(View paramView)
+  qpd(qpc paramqpc, String paramString)
   {
-    ndn.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    synchronized (qpc.a(this.a))
+    {
+      Iterator localIterator = qpc.a(this.a).iterator();
+      if (localIterator.hasNext()) {
+        ((qpe)localIterator.next()).a(paramString, paramBundle);
+      }
+    }
+    return null;
   }
 }
 

@@ -1,22 +1,14 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import android.graphics.Paint;
 
-public class avuu
-  extends avuy
+public abstract interface avuu
 {
-  public avuu(GroupSearchEngine paramGroupSearchEngine, avuz paramavuz, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramavuz, paramString, paramInt);
-  }
+  public abstract String a(float paramFloat1, float paramFloat2, float paramFloat3);
   
-  public avom a(List<avon> paramList, String paramString)
-  {
-    return new avof(paramList, paramString, GroupSearchEngine.a(this.a));
-  }
+  public abstract void a(Paint paramPaint, float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avuu
  * JD-Core Version:    0.7.0.1
  */

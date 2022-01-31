@@ -1,24 +1,24 @@
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
+import com.tencent.image.URLDrawable.DownloadListener;
+
 public class pmx
+  implements URLDrawable.DownloadListener
 {
-  public double a;
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public int c = -2019;
-  public int d = -2019;
-  public int e = -2019;
+  public pmx(NativeAwesomeCommentView paramNativeAwesomeCommentView, SpannableString paramSpannableString) {}
   
-  public pmx(pmv parampmv)
+  public void onFileDownloadFailed(int paramInt)
   {
-    this.jdField_b_of_type_Int = -2019;
+    xds localxds = new xds(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getResources().getDrawable(2130842194));
+    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(localxds, 0, 1, 17);
+    NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
   }
   
-  public String toString()
-  {
-    return "\nFeedScrollStateInfo{feedID='" + this.jdField_a_of_type_JavaLangString + '\'' + ", viewHeight=" + this.jdField_a_of_type_Int + ", starTopOffset=" + this.jdField_b_of_type_Int + ", endTopOffset=" + this.c + ", startBottomOffset=" + this.d + ", endBottomOffset=" + this.e + ", enterAZSpeed=" + this.jdField_a_of_type_Double + ", enterAZTime=" + this.jdField_a_of_type_Long + ", exitAZTime=" + this.jdField_b_of_type_Long + "}";
-  }
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 

@@ -1,33 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-class behc
-  implements DialogInterface.OnDismissListener
+public abstract interface behc
 {
-  private WeakReference<DialogInterface.OnDismissListener> a;
+  public abstract void a(MiniAppInfo paramMiniAppInfo, boolean paramBoolean);
   
-  public behc(DialogInterface.OnDismissListener paramOnDismissListener)
-  {
-    this.a = new WeakReference(paramOnDismissListener);
-  }
+  public abstract void c();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.a.get();
-    if (localOnDismissListener != null) {
-      localOnDismissListener.onDismiss(paramDialogInterface);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("Q.dating", 2, "CustomDismissListener, lis is null");
-  }
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract boolean g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     behc
  * JD-Core Version:    0.7.0.1
  */

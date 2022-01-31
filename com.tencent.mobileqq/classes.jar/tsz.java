@@ -1,14 +1,35 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 
-class tsz
-  implements MediaPlayer.OnPreparedListener
+final class tsz
+  implements bfoq
 {
-  tsz(tsy paramtsy, tst paramtst) {}
+  tsz(QQUserUIItem paramQQUserUIItem, bfol parambfol) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Tst.a_(this.jdField_a_of_type_Tsy);
+    switch (paramInt)
+    {
+    default: 
+      paramView = "16384";
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq))) {
+        new tky().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isFriend(), paramView);
+      }
+      break;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      paramView = "2";
+      break;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      veg.d("Q.qqstory.player.PlayModeUtils", "report user error because evil uin is empty.");
+    }
   }
 }
 

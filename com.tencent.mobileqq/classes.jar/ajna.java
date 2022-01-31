@@ -1,26 +1,25 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-final class ajna
-  extends akfx
+class ajna
+  implements Comparator<ApolloActionData>
 {
-  ajna(String paramString, ToServiceMsg paramToServiceMsg)
-  {
-    super(paramString);
-  }
+  ajna(ajmw paramajmw) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo arg2)
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    synchronized (this.a)
-    {
-      this.a.notify();
-      return;
+    if (paramApolloActionData2.obtainedTime == paramApolloActionData1.obtainedTime) {
+      return 0;
     }
+    if (paramApolloActionData2.obtainedTime > paramApolloActionData1.obtainedTime) {
+      return 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajna
  * JD-Core Version:    0.7.0.1
  */

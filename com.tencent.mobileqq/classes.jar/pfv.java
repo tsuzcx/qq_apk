@@ -1,16 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class pfv
-  implements View.OnClickListener
+  implements ViewBase.OnClickListener
 {
-  pfv(pfu parampfu) {}
+  pfv(pfs parampfs, int paramInt, pax parampax, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2) {}
   
-  public void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    paramView = this.a.jdField_a_of_type_Qoe.a();
-    if (paramView != null) {
-      paramView.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    int i;
+    rap localrap;
+    if (this.jdField_a_of_type_Int == 1152)
+    {
+      i = 1;
+      localrap = this.jdField_a_of_type_Pax.a();
+      if (i == 0) {
+        break label42;
+      }
+    }
+    label42:
+    for (paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;; paramViewBase = this.b)
+    {
+      localrap.b(paramViewBase);
+      return;
+      i = 0;
+      break;
     }
   }
 }

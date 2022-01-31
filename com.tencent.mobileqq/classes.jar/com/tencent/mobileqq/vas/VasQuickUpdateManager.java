@@ -1,16 +1,18 @@
 package com.tencent.mobileqq.vas;
 
-import ajed;
+import ajsf;
 import android.text.TextUtils;
-import bace;
-import baoa;
-import baot;
-import baox;
-import baqp;
-import baqy;
+import bbdj;
+import bbpw;
+import bbqp;
+import bbqu;
+import bbso;
+import bbsy;
+import bbuv;
 import com.google.gson.stream.JsonReader;
 import com.tencent.biz.flatbuffers.FlatBuffersParser;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -53,8 +55,8 @@ public class VasQuickUpdateManager
   public static final long BID_SONIC_TEMPLATE_UPDATE = 1001L;
   public static final long BID_STICKER_GUIDE_MATERIAL = 1004L;
   public static final long BID_TROOP_ENTER_EFFECT = 25L;
-  public static final String QUICKUPDATE_TEST_DIR = ajed.aU + ".vas_quickupdate_test/";
-  public static final String SCID_APNG_SO = "libAPNG_813";
+  public static final String QUICKUPDATE_TEST_DIR;
+  public static final String SCID_APNG_SO;
   public static final String SCID_AVATARIN_PENDANT_JSON = "avatarInPendant_json";
   public static final String SCID_BLESS_VOICECHANGE = "blessVoiceList.json";
   public static final String SCID_BUBBLE_PASTER_PREFIX = "bubble.paster.";
@@ -62,13 +64,13 @@ public class VasQuickUpdateManager
   public static final String SCID_CARD_PREFIX = "card.";
   public static final String SCID_CHANGEVOICE = "changeVoice_json";
   public static final String SCID_CHATBG_PREFIX = "chatbg.";
-  public static final String SCID_COLORFONT_SO = "libColorFont_818";
+  public static final String SCID_COLORFONT_SO;
   public static final String SCID_COLOR_NICK_PREFIX = "groupnickitem.";
   public static final String SCID_COLOR_SCREEN_PREFIX = "colorScreen.android.";
   public static final String SCID_COMIC_CONFIG = "vipComic_config_v2.json";
   public static final String SCID_COMIC_NAV_CONFIG = "vipComic_nav_config.json";
   public static final String SCID_COMIC_NAV_ICON = "vipComic_nav_tabIcon.zip";
-  public static final String SCID_COMIC_PLAYER_SO = "libqgplayer_765";
+  public static final String SCID_COMIC_PLAYER_SO;
   public static final String SCID_DEFAULT_CARD_CFG_PREFIX = "profileitem.";
   public static final String SCID_DEFAULT_FONT = "defaultFont_775";
   public static final String SCID_DIY_CARD_CONFIG = "card.diyFontConfig.json";
@@ -79,7 +81,7 @@ public class VasQuickUpdateManager
   public static final String SCID_ENTER_EFFECT_VIP_ICONS = "enterEffectVipIcons";
   public static final String SCID_FACE_PREFIX = "face.";
   public static final String SCID_FLASH_CHAT_PREFIX = "flashchat.";
-  public static final String SCID_FLATBUFFERS = "libFlatBuffersParser";
+  public static final String SCID_FLATBUFFERS;
   public static final String SCID_FONT_EFFECT = "magicFontConfig.json";
   public static final String SCID_FONT_FZ_PREFIX = "font.fzfont.android.";
   public static final String SCID_FONT_PREFIX = "font.main.android.";
@@ -88,7 +90,7 @@ public class VasQuickUpdateManager
   public static final String SCID_HIBOOM_CONFIG_PREFIX = "font.hiFontQQ.json.";
   public static final String SCID_HIBOOM_FONT_PREFIX = "font.hifont.android.";
   public static final String SCID_HIBOOM_TAG = "font.hiFontQQ.tags";
-  public static final String SCID_HYFONT_SO = "libVipFont_808";
+  public static final String SCID_HYFONT_SO;
   public static final String SCID_KANDIAN_RECOMMENT_EMOTICON = "watch_focus.json";
   public static final String SCID_MAGIC_FACE_ENTRY_CONFIG = "emoji_app_vip_emoji_aio_android_config.json";
   public static final String SCID_PENDANT_FONT_PREFIX = "faceAddon.stickerFont.android.";
@@ -127,10 +129,58 @@ public class VasQuickUpdateManager
   private static final String TAG = "VasQuickUpdateManager";
   public QQAppInterface app;
   ConcurrentHashMap<Integer, VasQuickUpdateManager.CallBacker> callBackers = new ConcurrentHashMap();
-  private baqp defaultCallback = new VasQuickUpdateManager.2(this);
+  private bbso defaultCallback = new VasQuickUpdateManager.2(this);
   VasQuickUpdateEngine mEngine;
   AtomicInteger mKey = new AtomicInteger(0);
-  baox mQuickUpdateObserver = new VasQuickUpdateManager.1(this);
+  bbqu mQuickUpdateObserver = new VasQuickUpdateManager.1(this);
+  
+  static
+  {
+    if (AppSetting.b)
+    {
+      str = "libFlatBuffersParser_64";
+      SCID_FLATBUFFERS = str;
+      if (!AppSetting.b) {
+        break label106;
+      }
+      str = "libColorFont_818_64";
+      label24:
+      SCID_COLORFONT_SO = str;
+      if (!AppSetting.b) {
+        break label113;
+      }
+      str = "libVipFont_808_64";
+      label38:
+      SCID_HYFONT_SO = str;
+      if (!AppSetting.b) {
+        break label120;
+      }
+      str = "libAPNG_813_64";
+      label52:
+      SCID_APNG_SO = str;
+      if (!AppSetting.b) {
+        break label127;
+      }
+    }
+    label106:
+    label113:
+    label120:
+    label127:
+    for (String str = "libqgplayer_765_64";; str = "libqgplayer_765")
+    {
+      SCID_COMIC_PLAYER_SO = str;
+      QUICKUPDATE_TEST_DIR = bbuv.a(ajsf.aW + ".vas_quickupdate_test/");
+      return;
+      str = "libFlatBuffersParser";
+      break;
+      str = "libColorFont_818";
+      break label24;
+      str = "libVipFont_808";
+      break label38;
+      str = "libAPNG_813";
+      break label52;
+    }
+  }
   
   public VasQuickUpdateManager(QQAppInterface paramQQAppInterface)
   {
@@ -145,23 +195,23 @@ public class VasQuickUpdateManager
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: invokestatic 370	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   3: invokestatic 402	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   6: astore_0
     //   7: aload_0
     //   8: ifnull +20 -> 28
-    //   11: ldc 165
-    //   13: invokestatic 374	com/tencent/mobileqq/vas/VasQuickUpdateManager:deleteJSON	(Ljava/lang/String;)V
+    //   11: ldc 157
+    //   13: invokestatic 406	com/tencent/mobileqq/vas/VasQuickUpdateManager:deleteJSON	(Ljava/lang/String;)V
     //   16: aload_0
-    //   17: invokestatic 380	com/tencent/mobileqq/theme/ThemeCleaner:a	(Landroid/content/Context;)V
+    //   17: invokestatic 411	com/tencent/mobileqq/theme/ThemeCleaner:a	(Landroid/content/Context;)V
     //   20: aload_0
-    //   21: invokestatic 383	baqy:a	(Landroid/content/Context;)V
+    //   21: invokestatic 414	bbsy:a	(Landroid/content/Context;)V
     //   24: ldc 2
     //   26: monitorexit
     //   27: return
-    //   28: ldc_w 288
+    //   28: ldc_w 278
     //   31: iconst_1
-    //   32: ldc_w 385
-    //   35: invokestatic 391	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   32: ldc_w 416
+    //   35: invokestatic 422	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   38: goto -14 -> 24
     //   41: astore_0
     //   42: ldc 2
@@ -266,7 +316,7 @@ public class VasQuickUpdateManager
     if (((File)localObject).exists()) {
       try
       {
-        JSONObject localJSONObject = new JSONObject(bace.a((File)localObject));
+        JSONObject localJSONObject = new JSONObject(bbdj.a((File)localObject));
         return localJSONObject;
       }
       catch (Throwable localThrowable)
@@ -343,8 +393,8 @@ public class VasQuickUpdateManager
       return;
       QLog.e("VasQuickUpdateManager", 1, "initEngine: " + this);
       this.mEngine = VasQuickUpdateEngine.getInstance();
-      baqy.a(this.defaultCallback);
-      this.mEngine.mWeakHandler = new WeakReference((baot)this.app.a(71));
+      bbsy.a(this.defaultCallback);
+      this.mEngine.mWeakHandler = new WeakReference((bbqp)this.app.a(71));
     } while ((this.mEngine.mUpdateManagerInstance == 0L) || (!this.mEngine.engineReady.get()));
     this.mEngine.nativeupdateAllItem(this.mEngine.mUpdateManagerInstance);
   }
@@ -425,7 +475,7 @@ public class VasQuickUpdateManager
     QLog.e("VasQuickUpdateManager", 1, "onDestroy: " + this);
     this.app.removeObserver(this.mQuickUpdateObserver);
     if (this.mEngine != null) {
-      baqy.b(this.defaultCallback);
+      bbsy.b(this.defaultCallback);
     }
     this.callBackers.clear();
   }
@@ -445,18 +495,18 @@ public class VasQuickUpdateManager
     }
   }
   
-  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, long paramLong, baoa parambaoa)
+  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, long paramLong, bbpw parambbpw)
   {
     if (this.mEngine != null)
     {
-      parambaoa = new VasQuickUpdateManager.TimeoutWrapper(parambaoa, paramBoolean2, null);
+      parambbpw = new VasQuickUpdateManager.TimeoutWrapper(parambbpw, paramBoolean2, null);
       if (paramLong > 0L) {
-        ThreadManager.getSubThreadHandler().postDelayed(parambaoa, paramLong);
+        ThreadManager.getSubThreadHandler().postDelayed(parambbpw, paramLong);
       }
-      this.mEngine.queryItemVersion(paramInt, paramString, paramBoolean1, parambaoa);
+      this.mEngine.queryItemVersion(paramInt, paramString, paramBoolean1, parambbpw);
       return;
     }
-    parambaoa.a(2, "", "");
+    parambbpw.a(2, "", "");
   }
   
   public void removeCallBacker(VasQuickUpdateManager.CallBacker paramCallBacker)

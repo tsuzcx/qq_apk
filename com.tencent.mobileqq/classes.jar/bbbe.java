@@ -1,98 +1,91 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
-import java.io.File;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CardProfile;
+import com.tencent.qphone.base.util.QLog;
 
-class bbbe
-  implements begx
+public class bbbe
 {
-  bbbe(bbbd parambbbd) {}
-  
-  public void a(View paramView, int paramInt, String paramString)
+  public static CardProfile a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
   {
-    if (paramString != null)
+    boolean bool = true;
+    CardProfile localCardProfile = null;
+    aukn localaukn = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    paramQQAppInterface = localCardProfile;
+    if (localaukn != null)
     {
-      if (this.a.jdField_a_of_type_Bbms == null)
+      localCardProfile = (CardProfile)localaukn.a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(paramInt) });
+      paramQQAppInterface = localCardProfile;
+      if (QLog.isColorLevel())
       {
-        this.a.jdField_a_of_type_Bbms = new bbms(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int);
-        this.a.jdField_a_of_type_Bbms.c(2131628457);
+        paramQQAppInterface = new StringBuilder().append("readFromDb. uin:").append(paramLong).append(" find:");
+        if (localCardProfile == null) {
+          break label111;
+        }
       }
-      this.a.jdField_a_of_type_Bbms.show();
-      if (!paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131625002))) {
-        break label165;
-      }
-      if (!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) {
-        break label115;
-      }
-      this.a.jdField_b_of_type_Int = 0;
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Begr.dismiss();
+      QLog.i("VoteUtil", 2, bool);
+      paramQQAppInterface = localCardProfile;
+      return paramQQAppInterface;
+      label111:
+      bool = false;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  {
+    Object localObject = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    CardProfile localCardProfile;
+    if (localObject != null)
+    {
+      paramQQAppInterface = (CardProfile)((aukn)localObject).a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(2) });
+      if (paramQQAppInterface != null)
+      {
+        paramQQAppInterface.bAvailableCnt -= paramInt;
+        paramQQAppInterface.bTodayVotedCnt += paramInt;
+        if (paramQQAppInterface.getStatus() != 1000) {
+          break label238;
+        }
+        ((aukn)localObject).b(paramQQAppInterface);
+      }
+      localCardProfile = (CardProfile)((aukn)localObject).a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(3) });
+      if (localCardProfile != null)
+      {
+        localCardProfile.bAvailableCnt -= paramInt;
+        localCardProfile.bTodayVotedCnt += paramInt;
+        localCardProfile.bVoteCnt = ((short)(int)localCardProfile.bTodayVotedCnt);
+        if (localCardProfile.getStatus() != 1000) {
+          break label248;
+        }
+        ((aukn)localObject).b(localCardProfile);
+      }
+      label180:
+      ((aukn)localObject).a();
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder().append("updateProfileCardVote. uin:").append(paramLong).append(" find:");
+        if (paramQQAppInterface == null) {
+          break label259;
+        }
+      }
+    }
+    label259:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.i("VoteUtil", 2, bool);
       return;
-      label115:
-      if ((this.a.jdField_a_of_type_Bbms != null) && (this.a.jdField_a_of_type_Bbms.isShowing())) {
-        this.a.jdField_a_of_type_Bbms.dismiss();
-      }
-      this.a.b(this.a.jdField_b_of_type_JavaLangString);
-      continue;
-      label165:
-      if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131625001)))
-      {
-        if (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) {
-          this.a.jdField_b_of_type_Int = 1;
-        } else {
-          this.a.a(this.a.jdField_b_of_type_JavaLangString);
-        }
-      }
-      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131627750)))
-      {
-        if ((this.a.jdField_a_of_type_Bbms != null) && (this.a.jdField_a_of_type_Bbms.isShowing())) {
-          this.a.jdField_a_of_type_Bbms.dismiss();
-        }
-        this.a.a(this.a.jdField_b_of_type_JavaLangString, 1);
-      }
-      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131627749)))
-      {
-        if ((this.a.jdField_a_of_type_Bbms != null) && (this.a.jdField_a_of_type_Bbms.isShowing())) {
-          this.a.jdField_a_of_type_Bbms.dismiss();
-        }
-        this.a.a(this.a.jdField_b_of_type_JavaLangString, 2);
-      }
-      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131625004)))
-      {
-        if (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
-        {
-          this.a.jdField_b_of_type_Int = 2;
-        }
-        else
-        {
-          if ((this.a.jdField_a_of_type_Bbms != null) && (this.a.jdField_a_of_type_Bbms.isShowing())) {
-            this.a.jdField_a_of_type_Bbms.dismiss();
-          }
-          this.a.c(this.a.jdField_b_of_type_JavaLangString);
-        }
-      }
-      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131627740)))
-      {
-        if ((this.a.jdField_a_of_type_Bbms != null) && (this.a.jdField_a_of_type_Bbms.isShowing())) {
-          this.a.jdField_a_of_type_Bbms.dismiss();
-        }
-        if (!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
-        {
-          paramView = new File(this.a.jdField_b_of_type_JavaLangString);
-          paramString = ((TeamWorkDocEditBrowserActivity)this.a.jdField_a_of_type_AndroidAppActivity).a.getCurrentAccountUin();
-          bfhl.b(paramView.getAbsolutePath()).a(this.a.jdField_a_of_type_AndroidAppActivity, paramString);
-        }
-      }
+      label238:
+      ((aukn)localObject).a(paramQQAppInterface);
+      break;
+      label248:
+      ((aukn)localObject).a(localCardProfile);
+      break label180;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbbe
  * JD-Core Version:    0.7.0.1
  */

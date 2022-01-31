@@ -1,25 +1,23 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.IPSiteModel.Book;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class anxl
-  implements apee
+class anxl
+  implements View.OnClickListener
 {
-  public anxl(FilePreviewActivity paramFilePreviewActivity) {}
+  anxl(anxf paramanxf, IPSiteModel.Book paramBook, String paramString1, String paramString2) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      FilePreviewActivity.a(this.a, axea.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131654243), false));
-      return;
-    }
-    axea.a(this.a.app, this.a, "<FileAssistant>FilePreviewActivity", FilePreviewActivity.a(this.a));
+    paramView = new Intent(this.jdField_a_of_type_Anxf.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("hide_operation_bar", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Anxf.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Book.jumpUrl, -1L, paramView, false, -1);
+    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Anxf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_bookclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
   }
-  
-  public void a(ImageView paramImageView) {}
 }
 
 

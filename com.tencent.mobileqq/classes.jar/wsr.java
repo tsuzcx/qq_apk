@@ -1,47 +1,75 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import java.util.LinkedList;
-import java.util.List;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.view.View;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import java.util.ArrayList;
 
 public class wsr
-  extends RecyclerView.Adapter<wss>
+  extends FlingGestureHandler
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<wst> jdField_a_of_type_JavaUtilList;
+  private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+  private CertifiedAccountMeta.StUser jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser;
+  private ArrayList<View> jdField_a_of_type_JavaUtilArrayList;
   
-  public wsr(@NonNull Context paramContext)
+  public wsr(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
+    super(paramActivity);
+    paramActivity = new TopGestureLayout(paramActivity);
+    paramActivity.setInterceptScrollRLFlag(true);
+    setTopLayout(paramActivity);
+    if (this.mTopLayout != null)
+    {
+      paramActivity = new Rect();
+      this.mTopLayout.setInterceptTouchEventListener(new wss(this, paramActivity));
+    }
+    onStart();
   }
   
-  public wss a(ViewGroup paramViewGroup, int paramInt)
+  public void a(CertifiedAccountMeta.StUser paramStUser)
   {
-    return new wss(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131492937, paramViewGroup, false));
+    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = paramStUser;
   }
   
-  public void a(@NonNull List<wst> paramList)
+  public void a(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    notifyDataSetChanged();
+    if (paramView == null) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+    } while (this.jdField_a_of_type_JavaUtilArrayList.contains(paramView));
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramView);
   }
   
-  public void a(wss paramwss, int paramInt)
+  public boolean a()
   {
-    paramwss.a((wst)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    return true;
   }
   
-  public int getItemCount()
+  public void flingRToL()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    if (this.mTopLayout != null)
+    {
+      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser == null) {
+        break label29;
+      }
+      wiv.a(this.mTopLayout.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
+    }
+    label29:
+    while (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) {
+      return;
+    }
+    wiv.a(this.mTopLayout.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wsr
  * JD-Core Version:    0.7.0.1
  */

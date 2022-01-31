@@ -1,17 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class uqz
-  implements View.OnClickListener
+  implements ure
 {
   uqz(uqy paramuqy) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    uqy.a(this.a, false);
-    this.a.notifyDataSetChanged();
-    if (uqy.a(this.a) != null) {
-      uqy.a(this.a).f();
+    if (uqy.a(this.a) == null) {
+      return;
+    }
+    if (paramInt == 1) {
+      uqy.a(this.a);
+    }
+    for (;;)
+    {
+      this.a.h();
+      return;
+      if (paramInt == 2) {
+        uqy.b(this.a);
+      }
     }
   }
 }

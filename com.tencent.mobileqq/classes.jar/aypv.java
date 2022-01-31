@@ -1,94 +1,227 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody.Item;
-import tencent.im.cs.cmd0x383.cmd0x383.ApplyGetFileListRspBody.FileInfo;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
 
 public class aypv
+  extends ayog
 {
-  public long a;
-  public ayoq a;
-  public String a;
-  public ArrayList<String> a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
+  protected BaseApplicationImpl a;
   
-  public aypv(QQAppInterface paramQQAppInterface, cmd0x383.ApplyFileSearchRspBody.Item paramItem)
+  public aypv(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    if (paramItem == null) {
-      return;
-    }
-    this.jdField_a_of_type_Long = paramItem.uint64_group_code.get();
-    this.jdField_a_of_type_JavaLangString = paramItem.bytes_group_name.get().toStringUtf8();
-    this.jdField_b_of_type_Long = paramItem.uint64_upload_uin.get();
-    this.jdField_b_of_type_JavaLangString = paramItem.bytes_uploader_nick_name.get().toStringUtf8();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    List localList = paramItem.bytes_match_word.get();
-    if (localList != null)
-    {
-      int i = 0;
-      while (i < localList.size())
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(((ByteStringMicro)localList.get(i)).toStringUtf8());
-        i += 1;
-      }
-    }
-    this.jdField_c_of_type_Long = paramItem.uint64_match_uin.get();
-    if (this.jdField_c_of_type_Long > 0L)
-    {
-      paramQQAppInterface = ((ajjj)paramQQAppInterface.getManager(51)).e(String.valueOf(this.jdField_c_of_type_Long));
-      if (paramQQAppInterface != null)
-      {
-        this.jdField_c_of_type_JavaLangString = paramQQAppInterface.name;
-        this.d = paramQQAppInterface.remark;
-      }
-    }
-    this.jdField_a_of_type_Ayoq = new ayoq((cmd0x383.ApplyGetFileListRspBody.FileInfo)paramItem.file_info.get());
+    this.a = paramBaseApplicationImpl;
   }
   
-  public String toString()
+  public static Bitmap a(Drawable paramDrawable)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("groupCode = " + this.jdField_a_of_type_Long);
-    localStringBuilder.append(", groupName = " + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", uploaderUin = " + this.jdField_b_of_type_Long);
-    localStringBuilder.append(", uploaderNickName = " + this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", matchUin = " + this.jdField_c_of_type_Long);
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    if ((paramDrawable instanceof BitmapDrawable)) {
+      return ((BitmapDrawable)paramDrawable).getBitmap();
+    }
+    Bitmap localBitmap = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), Bitmap.Config.RGB_565);
+    Canvas localCanvas = new Canvas(localBitmap);
+    paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+    paramDrawable.draw(localCanvas);
+    return localBitmap;
+  }
+  
+  private Bitmap a(aypw paramaypw)
+  {
+    int j = 0;
+    Object localObject2;
+    if (paramaypw == null) {
+      localObject2 = null;
+    }
+    for (;;)
     {
-      localStringBuilder.append(", matchWord: = ");
-      int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-      int i = 0;
-      if (i < j)
+      return localObject2;
+      int i = paramaypw.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbWidth;
+      int k = paramaypw.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbHeight;
+      try
       {
-        if (i == j - 1) {
-          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilArrayList.get(i) + ", ");
+        BitmapFactory.Options localOptions = new BitmapFactory.Options();
+        localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
+        localOptions.inDensity = 160;
+        localOptions.inTargetDensity = 160;
+        localOptions.inScreenDensity = 160;
+        localOptions.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(paramaypw.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path, localOptions);
+        localOptions.inJustDecodeBounds = false;
+        localOptions.inSampleSize = b(localOptions, i, k);
+        Object localObject1 = apuw.a(paramaypw.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path, localOptions);
+        k = actn.a(135.0F, BaseApplicationImpl.getContext().getResources());
+        if (localOptions.outHeight > localOptions.outWidth * 2.0F)
+        {
+          i = (int)((localOptions.outHeight - localOptions.outWidth * 2.0F) / 2.0F);
+          localOptions.outHeight = ((int)(localOptions.outWidth * 2.0F));
         }
         for (;;)
         {
-          i += 1;
-          break;
-          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilArrayList.get(i)).append("、 ");
+          localObject2 = Bitmap.createBitmap((Bitmap)localObject1, j, i, localOptions.outWidth, localOptions.outHeight);
+          if (localOptions.outWidth <= k)
+          {
+            localObject1 = localObject2;
+            if (localOptions.outHeight <= k) {}
+          }
+          else
+          {
+            localObject1 = bbdr.a((Bitmap)localObject2, k);
+          }
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            break;
+          }
+          return new aywy(paramaypw.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path).a((Bitmap)localObject1);
+          if (localOptions.outWidth <= localOptions.outHeight * 2.0F) {
+            break label361;
+          }
+          j = (int)((localOptions.outWidth - localOptions.outHeight * 2.0F) / 2.0F);
+          localOptions.outWidth = ((int)(localOptions.outHeight * 2.0F));
+          i = 0;
+        }
+      }
+      catch (Exception paramaypw)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("_dataline_file", 2, "make Thumb ", paramaypw);
+        }
+        return null;
+      }
+      catch (OutOfMemoryError paramaypw)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel())
+          {
+            QLog.d("_dataline_file", 2, "make Thumb OOM ", paramaypw);
+            continue;
+            label361:
+            i = 0;
+          }
         }
       }
     }
-    if (this.jdField_a_of_type_Ayoq != null) {
-      localStringBuilder.append(", fileInfo = " + this.jdField_a_of_type_Ayoq.toString());
+  }
+  
+  public aypw a(URL paramURL)
+  {
+    try
+    {
+      aypw localaypw = new aypw(this);
+      paramURL = paramURL.getFile().split("\\|");
+      localaypw.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = new LocalMediaInfo();
+      localaypw.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path = paramURL[0];
+      localaypw.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbWidth = Integer.parseInt(paramURL[1]);
+      localaypw.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbHeight = Integer.parseInt(paramURL[2]);
+      localaypw.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.modifiedDate = Long.parseLong(paramURL[3]);
+      localaypw.jdField_a_of_type_Boolean = Boolean.parseBoolean(paramURL[4]);
+      return localaypw;
     }
-    return localStringBuilder.toString();
+    catch (Exception paramURL) {}
+    return null;
+  }
+  
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramOutputStream = a(paramDownloadParams.url);
+    if (paramOutputStream != null) {
+      return new File(paramOutputStream.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path);
+    }
+    return new File(ajsf.aV);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
+  {
+    int i = 1;
+    int j = 1;
+    if ((paramInt1 == 0) || (paramInt2 == 0) || (paramInt1 == -1) || (paramInt2 == -1)) {
+      if (paramOptions.outWidth * paramOptions.outHeight > 5000000)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("_dataline_file", 2, "calculateInSampleSize options.outWidth*options.outHeight=" + paramOptions.outWidth * paramOptions.outHeight);
+        }
+        j = 2;
+      }
+    }
+    int k;
+    int m;
+    label95:
+    do
+    {
+      do
+      {
+        return j;
+        k = paramOptions.outHeight;
+        m = paramOptions.outWidth;
+        j = i;
+      } while (k <= paramInt2);
+      j = i;
+    } while (m <= paramInt1);
+    int n = Math.round(k / paramInt2);
+    j = Math.round(m / paramInt1);
+    if (n < j) {}
+    for (;;)
+    {
+      j = i;
+      if (n < 2) {
+        break;
+      }
+      m /= 2;
+      k /= 2;
+      i *= 2;
+      break label95;
+      n = j;
+    }
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramURLDrawableHandler = agld.a(BaseApplicationImpl.getContext());
+    Object localObject = new aypx(this);
+    localObject = paramURLDrawableHandler.a(paramDownloadParams.url, (ayww)localObject);
+    paramURLDrawableHandler = (URLDrawableHandler)localObject;
+    if (localObject == null)
+    {
+      paramURLDrawableHandler = BaseApplicationImpl.getContext();
+      int i = apue.a(paramFile.getPath());
+      paramURLDrawableHandler = a(paramURLDrawableHandler.getResources().getDrawable(apue.a(i)));
+    }
+    paramDownloadParams = a(paramDownloadParams.url);
+    paramFile = paramURLDrawableHandler;
+    if (paramDownloadParams != null)
+    {
+      paramFile = paramURLDrawableHandler;
+      if (paramDownloadParams.jdField_a_of_type_Boolean)
+      {
+        paramFile = bbdr.a(paramURLDrawableHandler, actn.a(12.0F, BaseApplicationImpl.getContext().getResources()));
+        paramURLDrawableHandler.recycle();
+      }
+    }
+    return paramFile;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aypv
  * JD-Core Version:    0.7.0.1
  */

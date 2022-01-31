@@ -1,132 +1,104 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.os.SystemClock;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import tencent.im.cs.smartptt.Smartptt.PttTransRsp;
+import tencent.im.cs.smartptt.Smartptt.RspBody;
 
-public class aytn
-  extends aytc
+class aytn
+  implements ITransactionCallback
 {
-  protected boolean c;
-  protected boolean d;
-  protected long g = 2000L;
+  aytn(aytm paramaytm, long paramLong) {}
   
-  protected aytn(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, long paramLong2, List<String> paramList, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4)
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    super(paramQQAppInterface, paramLong1, paramString1, paramLong2, paramList, paramString2, paramString3, paramBoolean2, paramString4);
-    this.c = paramBoolean1;
+    long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("PttSliceUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms retCode=" + paramInt);
+    }
+    if ((aytm.a(this.jdField_a_of_type_Aytm) != null) && (aytm.a(this.jdField_a_of_type_Aytm).jdField_b_of_type_JavaLangString != null)) {
+      new File(aytm.a(this.jdField_a_of_type_Aytm).jdField_b_of_type_JavaLangString).delete();
+    }
+    this.jdField_a_of_type_Aytm.d(2005);
+    this.jdField_a_of_type_Aytm.jdField_a_of_type_Ayqm.a = paramArrayOfByte;
+    this.jdField_a_of_type_Aytm.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Aytm.b);
+    this.jdField_a_of_type_Aytm.d();
   }
   
-  public static aytn a(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, long paramLong2, List<String> paramList, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4)
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    String str = "";
-    if (paramString1 == null) {
-      str = "strSavePath is null";
+    boolean bool2 = true;
+    long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("PttSliceUploadProcessor", 2, "onSuccess SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms");
     }
-    while (!TextUtils.isEmpty(str))
+    if ((aytm.a(this.jdField_a_of_type_Aytm) != null) && (aytm.a(this.jdField_a_of_type_Aytm).jdField_b_of_type_JavaLangString != null)) {
+      new File(aytm.a(this.jdField_a_of_type_Aytm).jdField_b_of_type_JavaLangString).delete();
+    }
+    paramHashMap = new Smartptt.RspBody();
+    try
     {
-      aysb.a("TroopFileThumbDownloader", aysb.a, "getFileDownloader " + str);
-      return null;
-      if (paramString1.length() == 0) {
-        str = "strSavePath is empty";
-      } else if (paramList == null) {
-        str = "lstUrl is null";
-      } else if (paramList.size() == 0) {
-        str = "lstUrl is empty";
-      } else if (paramString2 == null) {
-        str = "urlParams is null";
-      } else if (paramString2.length() == 0) {
-        str = "urlParams is empty";
+      paramHashMap.mergeFrom(paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.d("PttSliceUploadProcessor", 2, "onSuccess  text =" + paramHashMap.msg_ptttrans_rsp.str_text.get() + " id=" + paramHashMap.msg_ptttrans_rsp.str_voice_id.get() + " pos=" + this.jdField_a_of_type_Aytm.jdField_a_of_type_Aywa.p + " uint32_is_final=" + paramHashMap.msg_ptttrans_rsp.uint32_is_final.get());
       }
-    }
-    return new aytn(paramQQAppInterface, paramLong1, paramString1, paramLong2, paramList, paramString2, paramString3, paramBoolean1, paramBoolean2, paramString4);
-  }
-  
-  public void a(bakw parambakw)
-  {
-    int k = 0;
-    if (!this.c) {
-      break label10;
-    }
-    label10:
-    while (this.d) {
-      return;
-    }
-    parambakw = parambakw.a("Set-Cookie");
-    i = k;
-    for (;;)
-    {
-      try
-      {
-        if (!TextUtils.isEmpty(parambakw))
-        {
-          i = k;
-          if (parambakw.contains("duration"))
-          {
-            parambakw = parambakw.trim().split(";");
-            i = k;
-            if (parambakw != null)
-            {
-              i = k;
-              if (parambakw.length > 0)
-              {
-                j = 0;
-                i = k;
-                if (j < parambakw.length)
-                {
-                  String[] arrayOfString = parambakw[j].split("=");
-                  if ((arrayOfString == null) || (arrayOfString.length != 2) || (!"duration".equals(arrayOfString[0]))) {
-                    continue;
-                  }
-                  i = Integer.parseInt(arrayOfString[1]);
-                }
-              }
-            }
-          }
+      this.jdField_a_of_type_Aytm.jdField_a_of_type_Ayqm.b = 327696;
+      this.jdField_a_of_type_Aytm.jdField_a_of_type_Ayqm.A = (aytm.a(this.jdField_a_of_type_Aytm) + paramHashMap.msg_ptttrans_rsp.str_text.get());
+      this.jdField_a_of_type_Aytm.jdField_a_of_type_Ayqm.c = 68;
+      this.jdField_a_of_type_Aytm.jdField_a_of_type_Ayqm.i = this.jdField_a_of_type_Aytm.jdField_a_of_type_Aywa.p;
+      paramArrayOfByte = this.jdField_a_of_type_Aytm;
+      boolean bool1 = bool2;
+      if (paramHashMap.msg_ptttrans_rsp.uint32_is_final.get() != 1) {
+        if (!aytm.a(this.jdField_a_of_type_Aytm).jdField_b_of_type_Boolean) {
+          break label355;
         }
       }
-      catch (Exception parambakw)
+      label355:
+      for (bool1 = bool2;; bool1 = false)
       {
-        int j;
-        i = 0;
-        continue;
+        aytm.a(paramArrayOfByte, bool1, true);
+        this.jdField_a_of_type_Aytm.b.b();
+        this.jdField_a_of_type_Aytm.b.a = 1;
+        return;
       }
-      if ((i == 0) || (this.jdField_a_of_type_Aysu == null) || (!(this.jdField_a_of_type_Aysu instanceof ayto))) {
-        break;
-      }
-      ((ayto)this.jdField_a_of_type_Aysu).a(i);
       return;
-      j += 1;
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public long b()
-  {
-    if (this.g <= 6000L)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      long l = this.g;
-      this.g = (2000L + this.g);
-      return l;
+      paramArrayOfByte.printStackTrace();
+      return;
     }
-    return 2000L;
+    catch (IOException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
   }
   
-  public void b(boolean paramBoolean)
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart()
   {
-    this.d = paramBoolean;
+    if (QLog.isColorLevel()) {
+      QLog.d("PttSliceUploadProcessor", 2, "<BDH_LOG> onTransStart()");
+    }
+    this.jdField_a_of_type_Aytm.b.a();
   }
   
-  public void i()
+  public void onUpdateProgress(int paramInt)
   {
-    this.jdField_a_of_type_Ayrw.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("PttSliceUploadProcessor", 2, "onUpdateProgress transferedSize:" + paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aytn
  * JD-Core Version:    0.7.0.1
  */

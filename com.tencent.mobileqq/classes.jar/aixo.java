@@ -1,90 +1,32 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public class aixo
+  extends aixl
 {
-  public static void a(int paramInt)
+  public aixo(QQAppInterface paramQQAppInterface)
   {
-    a(paramInt, "");
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public static void a(int paramInt1, int paramInt2)
-  {
-    a(paramInt1, null, paramInt2, -100, 0L, 0, 0L, new Object[] { "" });
-  }
+  public void a(ajfs paramajfs, Context paramContext, QQAppInterface paramQQAppInterface) {}
   
-  public static void a(int paramInt1, int paramInt2, int paramInt3, long paramLong, Object... paramVarArgs)
+  public void a(ajfs paramajfs, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    a(paramInt1, null, paramInt2, paramInt3, paramLong, 0, 0L, paramVarArgs);
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, Object... paramVarArgs)
-  {
-    a(paramInt1, null, paramInt2, paramInt3, 0L, 0, 0L, paramVarArgs);
-  }
-  
-  public static void a(int paramInt1, int paramInt2, Object... paramVarArgs)
-  {
-    a(paramInt1, null, paramInt2, -100, 0L, 0, 0L, paramVarArgs);
-  }
-  
-  public static void a(int paramInt, String paramString)
-  {
-    a(paramInt, paramString, null);
-  }
-  
-  public static void a(int paramInt1, String paramString, int paramInt2)
-  {
-    a(paramInt1, paramString, paramInt2, -100, 0L, 0, 0L, new Object[] { "" });
-  }
-  
-  public static void a(int paramInt1, String paramString, int paramInt2, int paramInt3, long paramLong1, int paramInt4, long paramLong2, Object... paramVarArgs)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
-    int i = 0;
-    while (i < paramVarArgs.length)
+    if ((this.jdField_a_of_type_Boolean) || (!this.c)) {}
+    SharedPreferences localSharedPreferences;
+    do
     {
-      localStringBuilder.append(paramVarArgs[i]);
-      i += 1;
-    }
-    aixv.a(paramInt1, paramString, paramInt2, paramInt3, paramLong1, paramInt4, paramLong2, new Object[] { localStringBuilder.toString() });
-  }
-  
-  public static void a(int paramInt1, String paramString, int paramInt2, int paramInt3, Object... paramVarArgs)
-  {
-    a(paramInt1, paramString, paramInt2, paramInt3, 0L, 0, 0L, paramVarArgs);
-  }
-  
-  public static void a(int paramInt1, String paramString, int paramInt2, Object... paramVarArgs)
-  {
-    a(paramInt1, paramString, paramInt2, -100, 0L, 0, 0L, paramVarArgs);
-  }
-  
-  public static void a(int paramInt, String paramString1, String paramString2)
-  {
-    aixv.a(paramInt, paramString1, paramString2);
-  }
-  
-  public static void a(int paramInt, String paramString, int... paramVarArgs)
-  {
-    aixv.a(paramInt, paramString, paramVarArgs);
-  }
-  
-  public static void a(int paramInt, boolean paramBoolean)
-  {
-    aixv.a(paramInt, paramBoolean);
-  }
-  
-  public static void a(aixp paramaixp)
-  {
-    aixv.a(paramaixp);
-  }
-  
-  public static void b(int paramInt)
-  {
-    b(paramInt, null);
-  }
-  
-  public static void b(int paramInt, String paramString)
-  {
-    aixv.a(paramInt, paramString);
+      return;
+      this.b = true;
+      localSharedPreferences = paramContext.getSharedPreferences("apollo_sp", 0);
+    } while (!localSharedPreferences.getBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", true));
+    ajfj.a(paramajfs, ajyc.a(2131704604), 7, 0);
+    localSharedPreferences.edit().putBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", false).commit();
+    a(paramContext, paramQQAppInterface);
   }
 }
 

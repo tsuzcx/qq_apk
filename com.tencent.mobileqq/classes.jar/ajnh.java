@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ajnh
-  implements Comparator<SysSuspiciousMsg>
+final class ajnh
+  implements ajie
 {
-  ajnh(ajnf paramajnf) {}
+  ajnh(ajnj paramajnj, long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, aiwn paramaiwn, int[] paramArrayOfInt) {}
   
-  public int a(SysSuspiciousMsg paramSysSuspiciousMsg1, SysSuspiciousMsg paramSysSuspiciousMsg2)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if ((paramSysSuspiciousMsg1 != null) && (paramSysSuspiciousMsg2 != null)) {
-      return (int)(paramSysSuspiciousMsg2.time - paramSysSuspiciousMsg1.time);
+    if (this.jdField_a_of_type_Ajnj != null) {
+      this.jdField_a_of_type_Ajnj.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Aiwn.a, this.jdField_a_of_type_ArrayOfInt, 22);
     }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajnh
  * JD-Core Version:    0.7.0.1
  */

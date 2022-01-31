@@ -12,10 +12,10 @@ class LogicDataManager$83
   
   public String getValue()
   {
-    if ((!TextUtils.isEmpty(LogicDataManager.access$5300(this.this$0))) && (LogicDataManager.access$5300(this.this$0).length() > 2)) {
-      return LogicDataManager.access$5300(this.this$0).substring(2, 3);
+    if ((!TextUtils.isEmpty(LogicDataManager.access$5300(this.this$0))) && (LogicDataManager.access$5300(this.this$0).length() > 1)) {
+      return LogicDataManager.access$5300(this.this$0).substring(1, 2);
     }
-    return LogicDataManager.access$400(this.this$0, 2);
+    return LogicDataManager.access$400(this.this$0, 1);
   }
 }
 

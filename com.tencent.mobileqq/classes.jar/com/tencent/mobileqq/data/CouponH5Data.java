@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
+import aukm;
 
 public class CouponH5Data
-  extends atmo
+  extends aukm
 {
   public String mData;
   public String mHost;

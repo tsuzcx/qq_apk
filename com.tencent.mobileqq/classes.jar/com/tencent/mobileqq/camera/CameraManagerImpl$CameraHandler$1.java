@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.camera;
 
-import alqu;
-import alqx;
+import amfk;
+import amfn;
 import android.hardware.Camera;
 import com.tencent.qphone.base.util.QLog;
 
@@ -12,12 +12,12 @@ public class CameraManagerImpl$CameraHandler$1
   {
     try
     {
-      alqu.a(this.jdField_a_of_type_Alqx.a).takePicture(this.jdField_a_of_type_AndroidHardwareCamera$ShutterCallback, this.jdField_a_of_type_AndroidHardwareCamera$PictureCallback, this.b, this.c);
+      amfk.a(this.jdField_a_of_type_Amfn.a).takePicture(this.jdField_a_of_type_AndroidHardwareCamera$ShutterCallback, this.jdField_a_of_type_AndroidHardwareCamera$PictureCallback, this.b, this.c);
       return;
     }
     catch (RuntimeException localRuntimeException)
     {
-      QLog.e(alqx.a(this.jdField_a_of_type_Alqx), 2, "take picture failed.");
+      QLog.e(amfn.a(this.jdField_a_of_type_Amfn), 2, "take picture failed.");
       throw localRuntimeException;
     }
   }

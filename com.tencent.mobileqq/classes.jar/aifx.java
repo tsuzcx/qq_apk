@@ -1,24 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.data.CommonlyUsedTroop;
+import java.util.Comparator;
 
 public class aifx
-  implements Manager
+  implements Comparator<CommonlyUsedTroop>
 {
-  public static String a = "ApolloNativeSSOReqMgr";
+  protected aifx(aifu paramaifu) {}
   
-  public aifx(QQAppInterface paramQQAppInterface)
+  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "[ApolloNativeSSOReqMgr]");
+    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
+      return 1;
     }
+    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
+      return -1;
+    }
+    return 0;
   }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aifx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,56 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Message;
-import android.widget.EditText;
-import com.tencent.qqconnect.wtlogin.Login;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback.1;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bdck
-  extends MqqHandler
+  implements bdip
 {
-  public bdck(Login paramLogin) {}
+  protected bdck(bdcj parambdcj) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(Exception paramException)
   {
-    Bundle localBundle = paramMessage.getData();
-    this.a.d();
-    switch (paramMessage.what)
+    bdht.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramException.getMessage(), paramException);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    try
     {
-    }
-    do
-    {
-      return;
-      this.a.a(String.format(this.a.getResources().getString(2131631069), new Object[] { this.a.getResources().getString(2131629228), Integer.valueOf(3100) }));
-      paramMessage = new HashMap();
-      paramMessage.put("error", "3100");
-      awrn.a(this.a).a("0", "connect_sso_authfail", false, 0L, 0L, paramMessage, "");
-      return;
-      localBundle.getInt("ret");
-      int i = localBundle.getInt("code");
-      paramMessage = localBundle.getString("OTHER_ERROR");
-      if (localBundle.getBoolean("pwdblank", false)) {
-        this.a.b.setText("");
+      int i = paramJSONObject.getInt("ret");
+      Object localObject = paramJSONObject.getString("msg");
+      if (i == 0)
+      {
+        localObject = paramJSONObject.getJSONArray("update_list");
+        i = ((JSONArray)localObject).length();
+        if (i > 0) {
+          ThreadManager.executeOnSubThread(new OpenSdkFriendService.CheckAvatarUpdateCallback.1(this, i, (JSONArray)localObject));
+        }
+        localObject = bdnm.a(bcxm.a().a(), "prefer_last_avatar_update_time").edit();
+        ((SharedPreferences.Editor)localObject).putString(this.a.b, paramJSONObject.getString("time"));
+        ((SharedPreferences.Editor)localObject).commit();
+        if (this.a.a != null) {
+          this.a.a.a();
+        }
       }
-      this.a.a(String.format(this.a.getResources().getString(2131631069), new Object[] { paramMessage, Integer.valueOf(i) }));
-      paramMessage = new HashMap();
-      paramMessage.put("error", "3101");
-      awrn.a(this.a).a("0", "connect_sso_authfail", false, 0L, 0L, paramMessage, "");
-      return;
-    } while (this.a.isFinishing());
-    this.a.d();
+      else
+      {
+        bdht.e("OpenSdkFriendService", "CheckAvatarUpdateCallback error. ret=" + i + ", msg=" + (String)localObject);
+        return;
+      }
+    }
+    catch (JSONException paramJSONObject)
+    {
+      bdht.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramJSONObject.getMessage(), paramJSONObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdck
  * JD-Core Version:    0.7.0.1
  */

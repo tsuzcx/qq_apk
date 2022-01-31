@@ -1,21 +1,31 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-
 public class anrp
-  implements anuk
 {
-  public anrp(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  public static int a = 300;
   
-  public void a(String paramString, int paramInt)
+  public static String a(String paramString)
   {
-    this.a.a.setText(paramString);
-    this.a.a.setSelection(this.a.a.length());
-    this.a.a(paramString);
+    if (bbjw.a(paramString)) {
+      return "";
+    }
+    paramString = paramString.split("_");
+    if (paramString.length > 2) {
+      return paramString[1];
+    }
+    return "";
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    if ((bbjw.a(paramString1)) || (bbjw.a(paramString2))) {
+      return "";
+    }
+    paramString2 = bdhu.a(paramString2);
+    return ajsf.bi + paramString2 + paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anrp
  * JD-Core Version:    0.7.0.1
  */

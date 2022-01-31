@@ -1,313 +1,367 @@
-import android.app.Activity;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import dov.com.qq.im.capture.paster.CaptureComboNormalPaster.1;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class bhjv
-  extends bhgn
-  implements IEventReceiver
+class bhjv
+  implements bhjt
 {
-  public static HashMap<String, Drawable> a;
-  private float jdField_a_of_type_Float;
-  private bhjx jdField_a_of_type_Bhjx;
-  public biox a;
-  private final String jdField_a_of_type_JavaLangString;
-  private float jdField_b_of_type_Float;
-  private String jdField_b_of_type_JavaLangString;
-  private float c;
-  int d = 2;
+  private IBinder a;
   
-  static
+  bhjv(IBinder paramIBinder)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.a = paramIBinder;
   }
   
-  public bhjv(biox parambiox, String paramString1, String paramString2, float paramFloat1, float paramFloat2, float paramFloat3)
+  /* Error */
+  public cooperation.qzone.plugin.PluginRecord a(String paramString)
   {
-    super(null);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Biox = parambiox;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.c = paramFloat3;
-    if (QLog.isColorLevel()) {
-      QLog.d("QComboNPaster", 2, "create id=" + paramString1 + " name=" + paramString2);
-    }
+    // Byte code:
+    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   7: astore_3
+    //   8: aload_2
+    //   9: ldc 25
+    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   14: aload_2
+    //   15: aload_1
+    //   16: invokevirtual 32	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   19: aload_0
+    //   20: getfield 15	bhjv:a	Landroid/os/IBinder;
+    //   23: bipush 6
+    //   25: aload_2
+    //   26: aload_3
+    //   27: iconst_0
+    //   28: invokeinterface 38 5 0
+    //   33: pop
+    //   34: aload_3
+    //   35: invokevirtual 41	android/os/Parcel:readException	()V
+    //   38: aload_3
+    //   39: invokevirtual 45	android/os/Parcel:readInt	()I
+    //   42: ifeq +26 -> 68
+    //   45: getstatic 51	cooperation/qzone/plugin/PluginRecord:CREATOR	Landroid/os/Parcelable$Creator;
+    //   48: aload_3
+    //   49: invokeinterface 57 2 0
+    //   54: checkcast 47	cooperation/qzone/plugin/PluginRecord
+    //   57: astore_1
+    //   58: aload_3
+    //   59: invokevirtual 60	android/os/Parcel:recycle	()V
+    //   62: aload_2
+    //   63: invokevirtual 60	android/os/Parcel:recycle	()V
+    //   66: aload_1
+    //   67: areturn
+    //   68: aconst_null
+    //   69: astore_1
+    //   70: goto -12 -> 58
+    //   73: astore_1
+    //   74: aload_3
+    //   75: invokevirtual 60	android/os/Parcel:recycle	()V
+    //   78: aload_2
+    //   79: invokevirtual 60	android/os/Parcel:recycle	()V
+    //   82: aload_1
+    //   83: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	84	0	this	bhjv
+    //   0	84	1	paramString	String
+    //   3	76	2	localParcel1	Parcel
+    //   7	68	3	localParcel2	Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   8	58	73	finally
   }
   
-  private static Drawable a(String paramString, URLDrawable.URLDrawableListener paramURLDrawableListener)
+  public void a()
   {
-    new File(paramString).getName();
-    URLDrawable localURLDrawable = baop.a(BaseApplicationImpl.sApplication.getRuntime(), paramString, "-Dynamic-", null, new int[] { 13 }, "-Dynamic-", null);
-    if (localURLDrawable != null)
-    {
-      int i = localURLDrawable.getStatus();
-      if (i == 1) {
-        return localURLDrawable;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("QComboNPaster", 2, "urlDrawable is not  SUCCESSED :" + i);
-      }
-      localURLDrawable.setURLDrawableListener(paramURLDrawableListener);
-      if (i != 2) {
-        break label107;
-      }
-      localURLDrawable.restartDownload();
-    }
-    for (;;)
-    {
-      jdField_a_of_type_JavaUtilHashMap.put(paramString, localURLDrawable);
-      return null;
-      label107:
-      localURLDrawable.startDownload();
-    }
-    return localURLDrawable;
-  }
-  
-  public static void a(biox parambiox, String paramString, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper, bhhl parambhhl)
-  {
-    if (parambhhl == null) {
-      throw new IllegalStateException("applyNormalPaster listener is null!");
-    }
-    int i = parambiox.a(paramString);
-    paramString = parambiox.a(paramString);
-    if (TextUtils.isEmpty(paramString)) {}
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
     try
     {
-      vlm.d(parambiox.g);
-      label43:
-      if (QLog.isColorLevel()) {
-        QLog.e("QComboNPaster", 2, "applyNormalPaster uriString error!");
-      }
-      for (;;)
-      {
-        return;
-        paramString = Uri.parse(paramString).getPath();
-        String str = new File(paramString).getName();
-        bhjw localbhjw = new bhjw(str, paramString, parambiox, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramSegmentKeeper, parambhhl, i);
-        if (i != 1) {
-          try
-          {
-            b(Drawable.createFromPath(paramString), str, paramString, parambiox, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramSegmentKeeper, parambhhl, i);
-            return;
-          }
-          catch (OutOfMemoryError parambiox)
-          {
-            urk.c("QComboNPaster", "createFromPath error", parambiox);
-            return;
-          }
-        }
-        File localFile = new File(paramString);
-        try
-        {
-          if (!ApngDrawable.isApngFile(localFile))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("QComboNPaster", 2, "applyNormalPaster isApngFile not valid path=" + paramString);
-            return;
-          }
-        }
-        catch (IOException localIOException)
-        {
-          localIOException.printStackTrace();
-          b(a(paramString, localbhjw), str, paramString, parambiox, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramSegmentKeeper, parambhhl, i);
-          return;
-        }
-      }
-    }
-    catch (Exception parambiox)
-    {
-      break label43;
-    }
-  }
-  
-  private static void b(Drawable paramDrawable, String paramString1, String paramString2, biox parambiox, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper, bhhl parambhhl, int paramInt3)
-  {
-    if (paramDrawable != null)
-    {
-      paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
-      int i = paramDrawable.getIntrinsicWidth();
-      paramFloat3 = paramInt1 * paramFloat3 / i;
-      if (QLog.isColorLevel()) {
-        QLog.d("QComboNPaster", 2, "applyNormalPaster w=" + i + " scale=" + paramFloat3 + " px=" + paramFloat1 + " py=" + paramFloat2);
-      }
-      parambhhl.a(new bikj(parambiox.jdField_b_of_type_JavaLangString, paramString1, paramDrawable, paramInt3), paramInt1 * paramFloat1, paramInt2 * paramFloat2, paramFloat3, paramString2, paramSegmentKeeper);
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.QZoneRemotePluginManager");
+      this.a.transact(8, localParcel1, localParcel2, 0);
+      localParcel2.readException();
       return;
     }
-    urk.e("QComboNPaster", "can not create drawable from name:" + paramString1);
-  }
-  
-  public float a()
-  {
-    float f = 1.0F;
-    for (;;)
+    finally
     {
-      try
-      {
-        if (!baip.a(this.jdField_a_of_type_Biox.g))
-        {
-          a();
-          return f;
-        }
-        if ((this.jdField_a_of_type_Biox.c != 100.0F) && (this.jdField_a_of_type_Biox.c > 0.0F))
-        {
-          f = this.jdField_a_of_type_Biox.d;
-          int i = this.jdField_a_of_type_Biox.c;
-          f = 1.0F * f / i;
-        }
-        else
-        {
-          f = 0.0F;
-        }
-      }
-      finally {}
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
   
   /* Error */
-  public int a()
+  public void a(bhhy parambhhy, int paramInt)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 39	bhjv:jdField_a_of_type_Biox	Lbiox;
-    //   6: getfield 166	biox:g	Ljava/lang/String;
-    //   9: invokestatic 255	baip:a	(Ljava/lang/String;)Z
-    //   12: ifne +17 -> 29
-    //   15: aload_0
-    //   16: iconst_3
-    //   17: putfield 33	bhjv:d	I
-    //   20: aload_0
-    //   21: getfield 33	bhjv:d	I
-    //   24: istore_1
-    //   25: aload_0
-    //   26: monitorexit
-    //   27: iload_1
-    //   28: ireturn
-    //   29: aload_0
-    //   30: getfield 39	bhjv:jdField_a_of_type_Biox	Lbiox;
-    //   33: getfield 264	biox:jdField_b_of_type_Boolean	Z
-    //   36: ifeq -16 -> 20
-    //   39: aload_0
-    //   40: iconst_1
-    //   41: putfield 33	bhjv:d	I
-    //   44: goto -24 -> 20
-    //   47: astore_2
-    //   48: aload_0
-    //   49: monitorexit
-    //   50: aload_2
-    //   51: athrow
+    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_3
+    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   7: astore 4
+    //   9: aload_3
+    //   10: ldc 25
+    //   12: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   15: aload_1
+    //   16: ifnull +51 -> 67
+    //   19: aload_1
+    //   20: invokeinterface 67 1 0
+    //   25: astore_1
+    //   26: aload_3
+    //   27: aload_1
+    //   28: invokevirtual 70	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
+    //   31: aload_3
+    //   32: iload_2
+    //   33: invokevirtual 74	android/os/Parcel:writeInt	(I)V
+    //   36: aload_0
+    //   37: getfield 15	bhjv:a	Landroid/os/IBinder;
+    //   40: bipush 7
+    //   42: aload_3
+    //   43: aload 4
+    //   45: iconst_0
+    //   46: invokeinterface 38 5 0
+    //   51: pop
+    //   52: aload 4
+    //   54: invokevirtual 41	android/os/Parcel:readException	()V
+    //   57: aload 4
+    //   59: invokevirtual 60	android/os/Parcel:recycle	()V
+    //   62: aload_3
+    //   63: invokevirtual 60	android/os/Parcel:recycle	()V
+    //   66: return
+    //   67: aconst_null
+    //   68: astore_1
+    //   69: goto -43 -> 26
+    //   72: astore_1
+    //   73: aload 4
+    //   75: invokevirtual 60	android/os/Parcel:recycle	()V
+    //   78: aload_3
+    //   79: invokevirtual 60	android/os/Parcel:recycle	()V
+    //   82: aload_1
+    //   83: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	52	0	this	bhjv
-    //   24	4	1	i	int
-    //   47	4	2	localObject	Object
+    //   0	84	0	this	bhjv
+    //   0	84	1	parambhhy	bhhy
+    //   0	84	2	paramInt	int
+    //   3	76	3	localParcel1	Parcel
+    //   7	67	4	localParcel2	Parcel
     // Exception table:
     //   from	to	target	type
-    //   2	20	47	finally
-    //   20	25	47	finally
-    //   29	44	47	finally
+    //   9	15	72	finally
+    //   19	26	72	finally
+    //   26	57	72	finally
   }
   
-  public int a(Activity paramActivity, int paramInt)
+  /* Error */
+  public boolean a()
   {
-    if ((this.jdField_a_of_type_Biox.a == null) || (this.jdField_a_of_type_Biox.a.size() == 0)) {
-      this.jdField_a_of_type_Biox.a(this.jdField_a_of_type_Biox.a());
-    }
-    ThreadManager.excute(new CaptureComboNormalPaster.1(this, paramInt), 64, null, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("QComboNPaster", 2, "apply id=" + this.jdField_a_of_type_JavaLangString + " name=" + this.jdField_b_of_type_JavaLangString);
-    }
-    return 0;
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_2
+    //   2: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   5: astore_3
+    //   6: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   9: astore 4
+    //   11: aload_3
+    //   12: ldc 25
+    //   14: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   17: aload_0
+    //   18: getfield 15	bhjv:a	Landroid/os/IBinder;
+    //   21: iconst_1
+    //   22: aload_3
+    //   23: aload 4
+    //   25: iconst_0
+    //   26: invokeinterface 38 5 0
+    //   31: pop
+    //   32: aload 4
+    //   34: invokevirtual 41	android/os/Parcel:readException	()V
+    //   37: aload 4
+    //   39: invokevirtual 45	android/os/Parcel:readInt	()I
+    //   42: istore_1
+    //   43: iload_1
+    //   44: ifeq +14 -> 58
+    //   47: aload 4
+    //   49: invokevirtual 60	android/os/Parcel:recycle	()V
+    //   52: aload_3
+    //   53: invokevirtual 60	android/os/Parcel:recycle	()V
+    //   56: iload_2
+    //   57: ireturn
+    //   58: iconst_0
+    //   59: istore_2
+    //   60: goto -13 -> 47
+    //   63: astore 5
+    //   65: aload 4
+    //   67: invokevirtual 60	android/os/Parcel:recycle	()V
+    //   70: aload_3
+    //   71: invokevirtual 60	android/os/Parcel:recycle	()V
+    //   74: aload 5
+    //   76: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	77	0	this	bhjv
+    //   42	2	1	i	int
+    //   1	59	2	bool	boolean
+    //   5	66	3	localParcel1	Parcel
+    //   9	57	4	localParcel2	Parcel
+    //   63	12	5	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   11	43	63	finally
   }
   
-  public void a(Activity paramActivity, int paramInt)
+  public boolean a(String paramString)
   {
-    if ((this.jdField_a_of_type_Biox.a == null) || (this.jdField_a_of_type_Biox.a.size() == 0)) {
-      this.jdField_a_of_type_Biox.a(this.jdField_a_of_type_Biox.a());
-    }
-    paramActivity = this.jdField_a_of_type_Biox.a(this.jdField_b_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("QComboNPaster", 2, "unApply id=" + this.jdField_a_of_type_JavaLangString + " name=" + this.jdField_b_of_type_JavaLangString + "url=" + paramActivity);
-    }
-    if (TextUtils.isEmpty(paramActivity)) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramActivity = new File(Uri.parse(paramActivity).getPath()).getName();
-        DoodleLayout localDoodleLayout = bhnz.a().a(paramInt);
-        if (localDoodleLayout != null)
-        {
-          localDoodleLayout.a().a(this.jdField_a_of_type_Biox.jdField_b_of_type_JavaLangString, paramActivity);
-          return;
-        }
-      }
-      catch (Exception paramActivity)
-      {
-        paramActivity.printStackTrace();
-      }
-    }
-  }
-  
-  public int b()
-  {
+    boolean bool = false;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
     try
     {
-      ((bikm)sqg.a(39)).a(this.jdField_a_of_type_JavaLangString, false);
-      a();
-      Dispatcher localDispatcher = sgi.a();
-      bhjx localbhjx = new bhjx(this);
-      this.jdField_a_of_type_Bhjx = localbhjx;
-      localDispatcher.registerSubscriber(localbhjx);
-      this.d = 1;
-      if (QLog.isColorLevel()) {
-        QLog.d("QComboNPaster", 2, "create mState=" + this.d + " id=" + this.jdField_a_of_type_JavaLangString);
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.QZoneRemotePluginManager");
+      localParcel1.writeString(paramString);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      if (i != 0) {
+        bool = true;
       }
-      int i = this.d;
-      return i;
+      return bool;
     }
-    finally {}
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
   
-  public String b()
+  /* Error */
+  public boolean a(String paramString, bhib parambhib, int paramInt)
   {
-    return this.jdField_a_of_type_Biox.a(this.jdField_b_of_type_JavaLangString);
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore 4
+    //   3: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   6: astore 5
+    //   8: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   11: astore 6
+    //   13: aload 5
+    //   15: ldc 25
+    //   17: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   20: aload 5
+    //   22: aload_1
+    //   23: invokevirtual 32	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   26: aload_2
+    //   27: ifnull +69 -> 96
+    //   30: aload_2
+    //   31: invokeinterface 80 1 0
+    //   36: astore_1
+    //   37: aload 5
+    //   39: aload_1
+    //   40: invokevirtual 70	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
+    //   43: aload 5
+    //   45: iload_3
+    //   46: invokevirtual 74	android/os/Parcel:writeInt	(I)V
+    //   49: aload_0
+    //   50: getfield 15	bhjv:a	Landroid/os/IBinder;
+    //   53: iconst_3
+    //   54: aload 5
+    //   56: aload 6
+    //   58: iconst_0
+    //   59: invokeinterface 38 5 0
+    //   64: pop
+    //   65: aload 6
+    //   67: invokevirtual 41	android/os/Parcel:readException	()V
+    //   70: aload 6
+    //   72: invokevirtual 45	android/os/Parcel:readInt	()I
+    //   75: istore_3
+    //   76: iload_3
+    //   77: ifeq +6 -> 83
+    //   80: iconst_1
+    //   81: istore 4
+    //   83: aload 6
+    //   85: invokevirtual 60	android/os/Parcel:recycle	()V
+    //   88: aload 5
+    //   90: invokevirtual 60	android/os/Parcel:recycle	()V
+    //   93: iload 4
+    //   95: ireturn
+    //   96: aconst_null
+    //   97: astore_1
+    //   98: goto -61 -> 37
+    //   101: astore_1
+    //   102: aload 6
+    //   104: invokevirtual 60	android/os/Parcel:recycle	()V
+    //   107: aload 5
+    //   109: invokevirtual 60	android/os/Parcel:recycle	()V
+    //   112: aload_1
+    //   113: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	114	0	this	bhjv
+    //   0	114	1	paramString	String
+    //   0	114	2	parambhib	bhib
+    //   0	114	3	paramInt	int
+    //   1	93	4	bool	boolean
+    //   6	102	5	localParcel1	Parcel
+    //   11	92	6	localParcel2	Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   13	26	101	finally
+    //   30	37	101	finally
+    //   37	76	101	finally
   }
   
-  public boolean isValidate()
+  public IBinder asBinder()
   {
-    return this.d == 1;
+    return this.a;
   }
   
-  public String toString()
+  public boolean b(String paramString)
   {
-    return "NP@" + this.jdField_a_of_type_JavaLangString + "@" + hashCode();
+    boolean bool = false;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.QZoneRemotePluginManager");
+      localParcel1.writeString(paramString);
+      this.a.transact(4, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      if (i != 0) {
+        bool = true;
+      }
+      return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public boolean c(String paramString)
+  {
+    boolean bool = false;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.QZoneRemotePluginManager");
+      localParcel1.writeString(paramString);
+      this.a.transact(5, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      if (i != 0) {
+        bool = true;
+      }
+      return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhjv
  * JD-Core Version:    0.7.0.1
  */

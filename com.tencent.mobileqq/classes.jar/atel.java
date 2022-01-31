@@ -1,25 +1,29 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-
-class atel
-  extends OrientationEventListener
+public class atel
 {
-  atel(atek paramatek, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void onOrientationChanged(int paramInt)
+  public atel(atej paramatej) {}
+  
+  public boolean equals(Object paramObject)
   {
-    if (paramInt == -1) {
-      this.a.b = 0;
-    }
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof atel))
     {
-      return;
-      this.a.b = ((paramInt + 45) / 90 * 90);
-    } while (this.a.b >= 0);
-    this.a.b = 0;
+      paramObject = (atel)paramObject;
+      bool1 = bool2;
+      if (paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
+      {
+        bool1 = bool2;
+        if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
 }
 

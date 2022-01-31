@@ -1,20 +1,22 @@
-class law
+import com.tencent.qphone.base.util.Cryptor;
+
+public class law
 {
-  byte jdField_a_of_type_Byte = 1;
-  byte b = 0;
-  byte c = 1;
-  byte d = 1;
-  byte e = 1;
-  byte f = 0;
-  byte g = 0;
-  byte h = 0;
-  byte i = 0;
+  private final String a = "ZaDA32%dkn_vs4dAjg";
   
-  law(lar paramlar) {}
+  protected String a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    return new String(new Cryptor().decrypt(paramArrayOfByte1, paramArrayOfByte2));
+  }
+  
+  protected byte[] a()
+  {
+    return "ZaDA32%dkn_vs4dAjg".getBytes();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     law
  * JD-Core Version:    0.7.0.1
  */

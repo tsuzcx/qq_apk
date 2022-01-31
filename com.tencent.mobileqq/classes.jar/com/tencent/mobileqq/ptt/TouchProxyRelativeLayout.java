@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import aucw;
+import avcc;
 
 public class TouchProxyRelativeLayout
   extends RelativeLayout
 {
-  public aucw a;
+  public avcc a;
   
   public TouchProxyRelativeLayout(Context paramContext)
   {
@@ -28,10 +28,10 @@ public class TouchProxyRelativeLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    aucw localaucw = this.a;
+    avcc localavcc = this.a;
     boolean bool1 = false;
-    if (localaucw != null) {
-      bool1 = localaucw.a(paramMotionEvent);
+    if (localavcc != null) {
+      bool1 = localavcc.a(paramMotionEvent);
     }
     boolean bool2 = bool1;
     if (!bool1) {

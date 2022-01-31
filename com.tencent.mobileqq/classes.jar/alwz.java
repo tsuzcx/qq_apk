@@ -1,18 +1,11 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import android.view.animation.Animation;
 
-public class alwz
-  extends Handler
+class alwz
+  extends bfmg
 {
-  public alwz(LocationSelectActivity paramLocationSelectActivity) {}
+  alwz(alwx paramalwx) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1000) {
-      this.a.a(((Boolean)((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[0]).booleanValue(), (String[])((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[1]);
-    }
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
 }
 
 

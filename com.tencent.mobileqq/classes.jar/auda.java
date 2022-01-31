@@ -1,22 +1,29 @@
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
+import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
+import com.tencent.mobileqq.ocr.ui.SearchResultViewPagerAdapter;
+
 public class auda
+  implements ViewPager.OnPageChangeListener
 {
-  public int a;
-  public final audf a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public auda(SearchResultFragment paramSearchResultFragment) {}
   
-  public auda(int paramInt)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    this.jdField_a_of_type_Audf = new audf();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Audf.jdField_a_of_type_Int = -2147483648;
+    this.a.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setCurrentTab(paramInt);
+    if (this.a.jdField_a_of_type_Int != paramInt) {
+      this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter.a(paramInt);
+    }
+    this.a.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auda
  * JD-Core Version:    0.7.0.1
  */

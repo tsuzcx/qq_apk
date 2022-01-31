@@ -20,12 +20,12 @@ class OpenAuthorityAccountView$5$1
       return;
       try
       {
-        this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView$5.a.setImageBitmap(BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView$5.this$0.getResources(), 2130840243));
+        this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView$5.a.setImageBitmap(BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView$5.this$0.getResources(), 2130840291));
         return;
       }
       catch (OutOfMemoryError localOutOfMemoryError) {}
     } while (!QLog.isColorLevel());
-    QLog.d("AuthorityAccountView", 2, "-->updateAccountFace oom");
+    QLog.d("OpenAuthorityAccountView", 2, "-->updateAccountFace oom");
   }
 }
 

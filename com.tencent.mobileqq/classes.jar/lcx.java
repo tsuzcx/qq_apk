@@ -1,24 +1,22 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-
 public class lcx
 {
   public int a;
-  public long a;
+  public String a;
   
-  public lcx(AVNotifyCenter paramAVNotifyCenter, long paramLong, int paramInt)
+  public lcx()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public String toString()
+  public void a(int paramInt, String paramString)
   {
-    return "OtherTerChatingRoomInfo:mRoomId=" + this.jdField_a_of_type_Long + ", mSessionType=" + this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lcx
  * JD-Core Version:    0.7.0.1
  */

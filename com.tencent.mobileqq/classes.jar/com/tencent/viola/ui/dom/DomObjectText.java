@@ -128,13 +128,17 @@ public class DomObjectText
       {
         paramInt2 = i | 0x2;
       }
-      if (paramString != null) {
-        localTypeface = getOrCreateTypeface(paramString, paramInt2);
+      VComponentAdapter localVComponentAdapter = ViolaSDKManager.getInstance().getComponentAdapter();
+      if ((localVComponentAdapter == null) || (!localVComponentAdapter.useCustomFont(this.mTextPaint, paramString, paramInt2)))
+      {
+        if (paramString != null) {
+          localTypeface = getOrCreateTypeface(paramString, paramInt2);
+        }
+        if (localTypeface == null) {
+          break;
+        }
+        this.mTextPaint.setTypeface(Typeface.create(localTypeface, paramInt2));
       }
-      if (localTypeface == null) {
-        break;
-      }
-      this.mTextPaint.setTypeface(Typeface.create(localTypeface, paramInt2));
       return;
     }
     this.mTextPaint.setTypeface(Typeface.defaultFromStyle(paramInt2));
@@ -166,7 +170,7 @@ public class DomObjectText
         }
         localSpannableString.setSpan(new ForegroundColorSpan(i), 0, localSpannableString.length(), 33);
         if ((localObject1 == null) || (!((Style)localObject1).containsKey("lineHeight"))) {
-          break label323;
+          break label324;
         }
         localSpannableString.setSpan(new VLineHeightSpan(((Style)localObject1).getLineHeight(getViewPortWidth())), 0, localSpannableString.length(), 33);
       }
@@ -184,7 +188,7 @@ public class DomObjectText
         }
         localSpannableString.setSpan(new AbsoluteSizeSpan(this.mFontSize), 0, localSpannableString.length(), 33);
         break;
-        label323:
+        label324:
         if (this.mLineHeight != -1) {
           localSpannableString.setSpan(new VLineHeightSpan(this.mLineHeight), 0, localSpannableString.length(), 33);
         } else if ((localObject1 != null) && (((Style)localObject1).getFontSize(getViewPortWidth()) > 0)) {

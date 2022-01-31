@@ -1,91 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.open.wadl.WadlJsBridge;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.wadl.ipc.WadlParams;
-import cooperation.wadl.ipc.WadlResult;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public class bckp
+class bckp
+  extends Animation
 {
-  private bckq jdField_a_of_type_Bckq = new bckq();
-  private WadlJsBridge jdField_a_of_type_ComTencentOpenWadlWadlJsBridge = new WadlJsBridge(null, null, this.jdField_a_of_type_Bckq);
+  private int jdField_a_of_type_Int;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
+  private View jdField_a_of_type_AndroidViewView;
+  private int b;
   
-  public void a()
+  public bckp(View paramView)
   {
-    this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.doOnDestroy();
-    this.jdField_a_of_type_Bckq = null;
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  public void a(bckr parambckr)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    this.jdField_a_of_type_Bckq.a(parambckr);
+    super.applyTransformation(paramFloat, paramTransformation);
+    paramFloat = 90.0F * paramFloat;
+    this.jdField_a_of_type_AndroidGraphicsCamera.save();
+    this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(paramFloat);
+    this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.jdField_a_of_type_AndroidGraphicsCamera.restore();
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - paramFloat / 90.0F);
+      this.jdField_a_of_type_AndroidViewView.invalidate();
+    }
+    this.jdField_a_of_type_AndroidGraphicsMatrix.preTranslate(-this.jdField_a_of_type_Int, -this.b);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Int, this.b);
+    paramTransformation.getMatrix().postConcat(this.jdField_a_of_type_AndroidGraphicsMatrix);
   }
   
-  public void a(String paramString)
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    try
-    {
-      JSONArray localJSONArray = new JSONArray();
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("appid", paramString);
-      localJSONArray.put(localJSONObject);
-      this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.a().a(localJSONArray.toString(), null);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("WadlMainBridge", 1, paramString, new Object[0]);
-    }
-  }
-  
-  public void a(JSONObject paramJSONObject, int paramInt)
-  {
-    if (paramJSONObject == null) {
-      return;
-    }
-    if (paramInt == 2) {}
-    try
-    {
-      String str = paramJSONObject.optString("appId");
-      if (!TextUtils.isEmpty(str)) {
-        bgsw.a().c(7, str);
-      }
-      paramJSONObject.put("actionCode", paramInt);
-      this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.a().a(paramJSONObject.toString(), false, 7, null);
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      QLog.e("WadlMainBridge", 1, paramJSONObject, new Object[0]);
-    }
-  }
-  
-  public boolean a(String paramString1, String paramString2, int paramInt, ArrayList<WadlResult> paramArrayList)
-  {
-    boolean bool2;
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramArrayList == null) || (paramArrayList.size() == 0)) {
-      bool2 = true;
-    }
-    boolean bool1;
-    do
-    {
-      return bool2;
-      paramArrayList = paramArrayList.iterator();
-      bool1 = true;
-      bool2 = bool1;
-    } while (!paramArrayList.hasNext());
-    WadlResult localWadlResult = (WadlResult)paramArrayList.next();
-    WadlParams localWadlParams = localWadlResult.a;
-    if ((paramString1.equals(localWadlParams.a)) && (paramString2.equals(localWadlParams.b)) && (paramInt == localWadlParams.f) && (!TextUtils.isEmpty(localWadlResult.b)) && (apdh.a(localWadlResult.b))) {
-      bool1 = false;
-    }
-    for (;;)
-    {
-      break;
-    }
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

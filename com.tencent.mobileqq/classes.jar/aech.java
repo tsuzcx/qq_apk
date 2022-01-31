@@ -1,35 +1,47 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class aech
-  implements Handler.Callback
+  implements bcjb
 {
-  aech(aecb paramaecb) {}
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<Activity> b;
   
-  public boolean handleMessage(Message paramMessage)
+  aech(aebz paramaebz, QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "[handleMessage] handle message mStoped = " + aecb.a(this.a));
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramActivity);
+  }
+  
+  public void a(View paramView)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Activity localActivity = (Activity)this.b.get();
+    if ((localActivity == null) || (localQQAppInterface == null)) {
+      QLog.e("ChatItemBuilder", 1, "TextItemBuilder  onDoubleClick  app null fa null");
     }
-    switch (paramMessage.what)
+    do
     {
-    }
-    for (;;)
+      return;
+      actn.n = true;
+    } while ((this.jdField_a_of_type_Aebz.a()) || (amns.a(actn.a(paramView))) || (arqn.a(this.jdField_a_of_type_Aebz.a)) || (paramView.getId() == 2131377246) || (paramView.getId() == 2131370453) || (paramView.getId() == 2131364138));
+    Object localObject = (FragmentActivity)paramView.getContext();
+    if (localObject != null) {}
+    for (localObject = ((FragmentActivity)localObject).getChatFragment();; localObject = null)
     {
-      return false;
-      Object localObject = (aifg)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
-      paramMessage = (String)paramMessage.obj;
-      if (!aecb.a(this.a)) {
-        ((aifg)localObject).a().e(paramMessage);
+      if (localObject == null)
+      {
+        ChatActivityUtils.a(localQQAppInterface, paramView, localActivity);
+        return;
       }
-      localObject = Message.obtain();
-      ((Message)localObject).what = 1;
-      ((Message)localObject).obj = paramMessage;
-      aecb.a(this.a).removeMessages(1);
-      aecb.a(this.a).sendMessageDelayed((Message)localObject, 30000L);
+      ChatActivityUtils.a(localQQAppInterface, paramView, localActivity, this.jdField_a_of_type_Aebz.a.a);
+      return;
     }
   }
 }

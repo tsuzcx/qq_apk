@@ -1,26 +1,32 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class uln
-  extends QQUIEventReceiver<ull, syp>
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, tjm>
 {
-  public uln(@NonNull ull paramull)
+  public uln(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    super(paramull);
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public void a(@NonNull ull paramull, @NonNull syp paramsyp)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull tjm paramtjm)
   {
-    if ((paramsyp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramsyp.jdField_a_of_type_JavaUtilList == null)) {
+    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramtjm.jdField_a_of_type_JavaLangString)) {}
+    while ((paramtjm.b) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean)) {
       return;
     }
-    paramull.b(paramsyp.jdField_a_of_type_JavaUtilList);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "onGetShareGroupVideos: 是否来自缓存=" + paramtjm.b + " groupId=" + paramQQStoryShareGroupProfileActivity.b + ", event=" + paramtjm.toString());
+    }
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramtjm);
   }
   
   public Class acceptEventClass()
   {
-    return syp.class;
+    return tjm.class;
   }
 }
 

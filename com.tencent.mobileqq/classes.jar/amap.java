@@ -1,92 +1,134 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderTask;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class amap
-  extends alzl<amao>
+final class amap
+  implements bdko
 {
-  public static void b()
-  {
-    amao localamao = (amao)alzw.a().a(67);
-    amao.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), false, localamao);
-  }
+  amap(RockDownloaderTask paramRockDownloaderTask, boolean paramBoolean) {}
   
-  public static void c()
-  {
-    int i = alzw.a().a(67, "");
-    QLog.w("ApolloConfig_GlobalProcessor", 1, "resetApolloConfVersion localVersion:" + i);
-    alzw.a().a(67, 0);
-  }
-  
-  public int a()
-  {
-    return 67;
-  }
-  
-  @NonNull
-  public amao a(int paramInt)
-  {
-    QLog.w("ApolloConfig_GlobalProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
-    if (paramInt == 1) {
-      return new amao();
-    }
-    return amao.a();
-  }
-  
-  @Nullable
-  public amao a(alzs[] paramArrayOfalzs)
-  {
-    return amao.a(paramArrayOfalzs);
-  }
-  
-  public Class<amao> a()
-  {
-    return amao.class;
-  }
-  
-  public void a()
+  public void installSucceed(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloConfig_GlobalProcessor", 2, "onReqNoReceive");
+      QLog.d("RockDownloader", 2, new Object[] { "installSucceed: appid=", paramString1, " packageName=", paramString2 });
     }
   }
   
-  public void a(int paramInt)
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    QLog.e("ApolloConfig_GlobalProcessor", 1, "onReqFailed: " + paramInt);
+    if ((paramDownloadInfo.e == null) || (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName()))) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloader", 2, new Object[] { "onDownloadCancel: info=", paramDownloadInfo });
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getRockDownloadListener().onDownloadCancel(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo());
+      this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getRockDownloadListener().onDownloadFinish(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo());
+    }
+    bdgv.a().b(this);
   }
   
-  public void a(amao paramamao)
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
-    QLog.w("ApolloConfig_GlobalProcessor", 1, "onUpdate");
-    amao.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, paramamao);
+    if ((paramDownloadInfo.e == null) || (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName()))) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloader", 2, new Object[] { "onDownloadError: info=", paramDownloadInfo, " errorMsg=", paramString, " state=", Integer.valueOf(paramInt2) });
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (paramInt1 != 6) {
+        break label200;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getRockDownloadListener().onDownloadFail(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo(), ajyc.a(2131713491), 10010);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getRockDownloadListener().onDownloadFinish(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo());
+      paramString = (DownloadInfo)bdgv.a().a().remove(paramDownloadInfo.b);
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloader", 2, new Object[] { "onDownloadError removedDownload=", paramString });
+      }
+      bdgt.a().a(paramDownloadInfo.b);
+      aman.a(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask, "0x800A1E6");
+      bdgv.a().b(this);
+      return;
+      label200:
+      this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getRockDownloadListener().onDownloadFail(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo(), paramString, paramInt1);
+    }
   }
   
-  public boolean a()
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
-    return false;
+    if ((paramDownloadInfo.e == null) || (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName()))) {
+      return;
+    }
+    aman.a(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask, paramDownloadInfo, this.jdField_a_of_type_Boolean);
+    bdgv.a().b(this);
   }
   
-  public int b()
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
   {
-    return 0;
+    if ((paramDownloadInfo.e == null) || (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName()))) {}
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("RockDownloader", 2, new Object[] { "onDownloadPause: info=", paramDownloadInfo });
   }
   
-  public boolean b()
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
   {
-    return true;
+    if (!this.jdField_a_of_type_Boolean) {}
+    DownloadInfo localDownloadInfo;
+    do
+    {
+      return;
+      while (!paramList.hasNext()) {
+        paramList = paramList.iterator();
+      }
+      localDownloadInfo = (DownloadInfo)paramList.next();
+    } while ((localDownloadInfo.e == null) || (!localDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName())));
+    this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getRockDownloadListener().onDownloadProceedOn(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo(), localDownloadInfo.f);
   }
   
-  public boolean c()
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
   {
-    return false;
+    if ((paramDownloadInfo.e == null) || (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName()))) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloader", 2, new Object[] { "onDownloadWait: info=", paramDownloadInfo });
+      }
+    } while (!this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getRockDownloadListener().onDownloadWait(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo());
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloader", 2, new Object[] { "packageReplaced: appid=", paramString1, " packageName=", paramString2 });
+    }
+  }
+  
+  public void uninstallSucceed(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloader", 2, new Object[] { "uninstallSucceed: appid=", paramString1, " packageName=", paramString2 });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amap
  * JD-Core Version:    0.7.0.1
  */

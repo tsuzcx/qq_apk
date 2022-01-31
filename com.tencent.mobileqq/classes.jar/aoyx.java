@@ -1,55 +1,104 @@
-import android.graphics.drawable.Drawable;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
-class aoyx
-  implements beij
+public class aoyx
+  extends aoyq
 {
-  aoyx(aoyw paramaoyw) {}
+  private aouj a;
   
-  public void F()
+  public aoyx(QQAppInterface paramQQAppInterface)
   {
-    aoyw.a(this.a, false);
-    this.a.jdField_a_of_type_Aoyu.o();
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_Aouj = new aoyy(this);
+    paramQQAppInterface.a().addObserver(this.jdField_a_of_type_Aouj);
   }
   
-  public void G()
+  private aoyz a(long paramLong, boolean paramBoolean)
   {
-    aoyw.a(this.a, false);
-    if (aoyw.a(this.a)) {
-      this.a.b(true);
+    aoyr localaoyr = a(paramLong);
+    if (localaoyr == null) {
+      return null;
     }
-    if (aoyw.b(this.a)) {
-      this.a.a(true);
+    if ((localaoyr instanceof aoyz)) {
+      return (aoyz)localaoyr;
     }
+    return null;
   }
   
-  public void H() {}
-  
-  public void a(float paramFloat)
+  public String a(FileManagerEntity paramFileManagerEntity, int paramInt)
   {
-    aoyw.a(this.a, true);
-    if (aoyw.a(this.a) != null)
+    if (paramFileManagerEntity.Uuid == null)
     {
-      Drawable localDrawable = aoyw.a(this.a).getBackground();
-      if (localDrawable != null) {
-        localDrawable.mutate().setAlpha((int)(255.0F * paramFloat));
-      }
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  download. uuid = null nSession[" + paramFileManagerEntity.nSessionId + "]");
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 50, new Object[] { paramFileManagerEntity });
+      return null;
     }
-    if (paramFloat < 0.8F)
+    int i = a(paramFileManagerEntity.fileName);
+    if (-1 == i)
     {
-      if (aoyw.a(this.a) != null) {
-        aoyw.a(this.a).setVisibility(8);
-      }
-      if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      }
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  download. can not getThumb of file:" + paramFileManagerEntity.fileName);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 50, new Object[] { paramFileManagerEntity });
+      return null;
     }
+    String str = paramFileManagerEntity.Uuid.replace("/", "");
+    a();
+    str = apti.a().d() + a(paramInt, str);
+    if (bbdj.b(str) == true)
+    {
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb] Id[" + paramFileManagerEntity.nSessionId + "] thumb Downloaded:" + str);
+      return str;
+    }
+    aoyz localaoyz = new aoyz(paramFileManagerEntity);
+    localaoyz.jdField_a_of_type_Int = paramInt;
+    localaoyz.b = i;
+    a(localaoyz, str);
+    QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb] download  nSession[" + paramFileManagerEntity.nSessionId + "], ThumbDownloadId[" + localaoyz.jdField_a_of_type_Long + "]");
+    return null;
   }
+  
+  public void a(long paramLong, apcw paramapcw) {}
+  
+  public void a(long paramLong, bbmg parambbmg)
+  {
+    parambbmg.c = 0;
+  }
+  
+  public void a(long paramLong, boolean paramBoolean, int paramInt, String paramString, apcw paramapcw)
+  {
+    aoyz localaoyz = a(paramLong, false);
+    if (localaoyz == null)
+    {
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onDownloadCompleted no this session");
+      return;
+    }
+    if (paramBoolean)
+    {
+      localaoyz.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath = paramString;
+      apue.e(localaoyz.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localaoyz.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramBoolean, 50, new Object[] { localaoyz.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, Integer.valueOf(localaoyz.jdField_a_of_type_Int) });
+    super.a(paramLong, paramBoolean, paramInt, paramString, paramapcw);
+  }
+  
+  public boolean a(long paramLong, apcw paramapcw)
+  {
+    paramapcw = a(paramLong, false);
+    if (paramapcw == null)
+    {
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onGetDownloadUrl no this session");
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramapcw.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramapcw.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramLong);
+    return true;
+  }
+  
+  public void b(long paramLong, apcw paramapcw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoyx
  * JD-Core Version:    0.7.0.1
  */

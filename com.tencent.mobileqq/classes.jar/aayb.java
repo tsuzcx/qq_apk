@@ -1,16 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
 public class aayb
-  implements View.OnClickListener
+  extends Handler
 {
-  public aayb(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.finish();
-  }
+  public aayb(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
 }
 
 

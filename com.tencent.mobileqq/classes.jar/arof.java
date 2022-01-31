@@ -1,14 +1,16 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.Emoticon;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
-class arof
-  implements arol<Pair<String, String>, Emoticon>
+public class arof
+  implements View.OnClickListener
 {
-  arof(arnz paramarnz) {}
+  public arof(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2) {}
   
-  public Emoticon a(Pair<String, String> paramPair)
+  public void onClick(View paramView)
   {
-    return this.a.a((String)paramPair.first, (String)paramPair.second);
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

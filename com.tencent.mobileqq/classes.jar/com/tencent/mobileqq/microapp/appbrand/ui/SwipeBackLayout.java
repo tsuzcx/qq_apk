@@ -13,7 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
-import babp;
+import bbct;
 import com.tencent.mobileqq.microapp.R.drawable;
 
 public class SwipeBackLayout
@@ -126,7 +126,7 @@ public class SwipeBackLayout
         break label153;
       }
       return this.mViewDragHelper.a(paramMotionEvent);
-      if (Math.abs(j) >= babp.a() * 30.0F)
+      if (Math.abs(j) >= bbct.a() * 30.0F)
       {
         i = 0;
         continue;

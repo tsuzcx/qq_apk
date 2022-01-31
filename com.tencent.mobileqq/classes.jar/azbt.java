@@ -1,25 +1,25 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
 
 public class azbt
-  extends azbg
+  implements View.OnTouchListener
 {
-  public azbt(View paramView)
-  {
-    super(paramView);
-  }
+  public azbt(TribeVideoPreviewFragment paramTribeVideoPreviewFragment) {}
   
-  protected void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.setVisibility(4);
-    this.c.setVisibility(0);
-    this.b.setVisibility(4);
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.getActivity().finish();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     azbt
  * JD-Core Version:    0.7.0.1
  */

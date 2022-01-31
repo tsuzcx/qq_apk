@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
-public class accr
-  implements DialogInterface.OnClickListener
+class accr
+  implements aylk
 {
-  public accr(TroopTransferActivity paramTroopTransferActivity, bafb parambafb) {}
+  accr(accq paramaccq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel() {}
+  
+  public void onConfirm()
   {
-    this.jdField_a_of_type_Bafb.cancel();
+    acck.a(this.a.jdField_a_of_type_Accn.a).b();
+    accn.a(this.a.jdField_a_of_type_Accn, this.a.jdField_a_of_type_Int);
   }
 }
 

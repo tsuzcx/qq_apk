@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.ark.API;
 
-import albi;
+import alpw;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
 import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForArk;
 import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
-import rtr;
+import sgj;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import yjr;
-import yjs;
-import ynv;
+import yxr;
 
 public class ArkAppNotifyCenter$GdtNotify$2
   implements Runnable
 {
-  public ArkAppNotifyCenter$GdtNotify$2(albi paramalbi, String paramString1, WeakReference paramWeakReference, String paramString2) {}
+  public ArkAppNotifyCenter$GdtNotify$2(alpw paramalpw, String paramString1, WeakReference paramWeakReference, String paramString2) {}
   
   public void run()
   {
@@ -34,33 +34,33 @@ public class ArkAppNotifyCenter$GdtNotify$2
         int i = ((JSONObject)localObject3).optInt("clickScene");
         int j = ((JSONObject)localObject3).optInt("clickPosition");
         localObject3 = ((JSONObject)localObject3).optString("gdtRefsid");
-        localObject1 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(ynv.a(new qq_ad_get.QQAdGetRsp.AdInfo(), ((JSONObject)localObject1).getJSONObject("adInfo")));
-        yjs localyjs = new yjs();
-        localyjs.jdField_a_of_type_Int = 7;
-        localyjs.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-        localyjs.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1);
-        localyjs.jdField_a_of_type_Boolean = bool1;
-        localyjs.jdField_b_of_type_Boolean = bool2;
+        localObject1 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo(), ((JSONObject)localObject1).getJSONObject("adInfo")));
+        GdtHandler.Params localParams = new GdtHandler.Params();
+        localParams.jdField_c_of_type_Int = 7;
+        localParams.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+        localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1);
+        localParams.jdField_a_of_type_Boolean = bool1;
+        localParams.jdField_b_of_type_Boolean = bool2;
         if (bool3)
         {
           localObject1 = GdtVideoCeilingFragmentForJS.class;
-          localyjs.jdField_a_of_type_JavaLangClass = ((Class)localObject1);
-          localyjs.jdField_c_of_type_Boolean = bool3;
-          localyjs.jdField_b_of_type_JavaLangClass = GdtCanvasFragmentForArk.class;
-          localyjs.jdField_b_of_type_Int = i;
-          localyjs.jdField_c_of_type_Int = j;
+          localParams.jdField_a_of_type_JavaLangClass = ((Class)localObject1);
+          localParams.jdField_c_of_type_Boolean = bool3;
+          localParams.jdField_b_of_type_JavaLangClass = GdtCanvasFragmentForArk.class;
+          localParams.jdField_a_of_type_Int = i;
+          localParams.jdField_b_of_type_Int = j;
           if (!TextUtils.isEmpty((CharSequence)localObject3))
           {
-            localyjs.jdField_a_of_type_AndroidOsBundle = new Bundle();
-            localyjs.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", (String)localObject3);
-            yjr.a(localyjs);
+            localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
+            localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", (String)localObject3);
+            GdtHandler.a(localParams);
             return;
           }
           if ((TextUtils.isEmpty(this.b)) || (!this.b.equals("com.tencent.yundong"))) {
             continue;
           }
-          localyjs.jdField_a_of_type_AndroidOsBundle = new Bundle();
-          localyjs.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", rtr.b("3026775809"));
+          localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
+          localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", sgj.b("3026775809"));
           continue;
         }
         Object localObject2 = null;

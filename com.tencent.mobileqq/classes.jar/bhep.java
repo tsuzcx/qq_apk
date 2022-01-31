@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.KingCardInfo;
 
-final class bhep
-  extends baca
+public final class bhep
+  implements Parcelable.Creator<KingCardInfo>
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public KingCardInfo a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
+    return new KingCardInfo(paramParcel);
+  }
+  
+  public KingCardInfo[] a(int paramInt)
+  {
+    return new KingCardInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhep
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,23 @@
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.widget.ReboundLayout;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.ViewPropertyAnimator;
+import com.tencent.qqmini.sdk.core.widget.TabBar;
 
 public class benb
-  extends Animation
+  extends AnimatorListenerAdapter
 {
-  private float jdField_a_of_type_Float;
-  private float b = 1.0F;
+  public benb(TabBar paramTabBar) {}
   
-  private benb(ReboundLayout paramReboundLayout)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ReboundLayout.a(paramReboundLayout, true);
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    paramFloat = (this.b - this.jdField_a_of_type_Float) * paramFloat + this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_ComTencentWidgetReboundLayout.scrollBy((int)((400 - this.jdField_a_of_type_ComTencentWidgetReboundLayout.getScrollX()) * paramFloat), 0);
-    if (paramFloat == 1.0F) {
-      ReboundLayout.a(this.jdField_a_of_type_ComTencentWidgetReboundLayout, false);
-    }
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    setDuration(260L);
-    setInterpolator(new AccelerateInterpolator());
+    super.onAnimationEnd(paramAnimator);
+    this.a.setVisibility(8);
+    this.a.animate().setListener(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     benb
  * JD-Core Version:    0.7.0.1
  */

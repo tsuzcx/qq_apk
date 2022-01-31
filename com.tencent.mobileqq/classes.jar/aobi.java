@@ -1,45 +1,9 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import android.widget.RelativeLayout;
 
 public class aobi
-  extends apdj
+  extends anxe
 {
-  public aobi(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
-  
-  public void a()
-  {
-    this.a.a.a().c();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().k();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().l();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().m();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().n();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().o();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().F();
-  }
+  RelativeLayout[] a;
 }
 
 

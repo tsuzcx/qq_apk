@@ -1,18 +1,23 @@
-import android.view.View.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.EntryModel;
 
-public abstract interface beqz
+public final class beqz
+  implements Parcelable.Creator<EntryModel>
 {
-  public abstract int a();
+  public EntryModel a(Parcel paramParcel)
+  {
+    return new EntryModel(paramParcel, null);
+  }
   
-  public abstract boolean a(int paramInt);
-  
-  public abstract boolean b(int paramInt);
-  
-  public abstract void setOnClickListener(View.OnClickListener paramOnClickListener);
+  public EntryModel[] a(int paramInt)
+  {
+    return new EntryModel[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beqz
  * JD-Core Version:    0.7.0.1
  */

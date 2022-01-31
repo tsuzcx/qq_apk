@@ -1,17 +1,21 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.telephony.PhoneStateListener;
+import android.telephony.SignalStrength;
 
 class mtq
+  extends PhoneStateListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  mtq(mto parammto) {}
   
-  mtq(mtc parammtc) {}
+  public void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
+  {
+    super.onSignalStrengthsChanged(paramSignalStrength);
+    this.a.c = this.a.a(paramSignalStrength);
+    this.a.d = this.a.b(paramSignalStrength);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mtq
  * JD-Core Version:    0.7.0.1
  */

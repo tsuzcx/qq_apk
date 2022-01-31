@@ -1,24 +1,54 @@
-import com.tribe.async.async.ThreadOffFunction;
-import com.tribe.async.reactive.Stream;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqIconPostfix;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class tkh
-  implements tjz
+  extends tbd
 {
-  private final tkg a;
+  private ArrayList<String> a;
   
-  public tkh(tkg paramtkg)
+  public tkh(ArrayList<String> paramArrayList)
   {
-    this.a = paramtkg;
+    this.a = paramArrayList;
   }
   
-  public void a(tka paramtka)
+  public String a()
   {
-    Stream localStream2 = Stream.of(this.a.a).map(new ThreadOffFunction("Q.qqstory.player.data.MsgTabPlayPageLoader", 2)).map(new stc("Q.qqstory.player.data.MsgTabPlayPageLoader", this.a.c, this.a.d, this.a));
-    Stream localStream1 = localStream2;
-    if (this.a.a.a == 5) {
-      localStream1 = localStream2.map(new ssz()).map(new ssp(this.a.a));
+    return sxp.a("StorySvc.batch_get_user_icon_info");
+  }
+  
+  public tbe a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspIconPostfix localRspIconPostfix = new qqstory_service.RspIconPostfix();
+    try
+    {
+      localRspIconPostfix.mergeFrom(paramArrayOfByte);
+      return new tki(localRspIconPostfix);
     }
-    localStream1.subscribe(new tki(this, paramtka));
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      veg.d("GetUserIconHandler", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqIconPostfix localReqIconPostfix = new qqstory_service.ReqIconPostfix();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (!TextUtils.isEmpty(str)) {
+        localReqIconPostfix.union_id_list.add(ByteStringMicro.copyFromUtf8(str));
+      }
+    }
+    return localReqIconPostfix.toByteArray();
   }
 }
 

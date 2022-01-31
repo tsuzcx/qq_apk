@@ -1,20 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class aevv
-  implements aewu
+  implements aevs
 {
-  public aevv(SearchContactsFragment paramSearchContactsFragment) {}
+  aevv(aevt paramaevt) {}
   
-  public void a(String paramString)
+  public void a()
   {
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Int = 80000001;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_history", 0, 0, "", "", paramString, "");
-      this.a.a(paramString, false);
-    }
+    aevt.a(this.a, aevt.b(this.a));
+    ThreadManager.getUIHandler().post(new StickerBubbleAnimationViewHolder.2.1(this));
+  }
+  
+  public void b()
+  {
+    aevt.b(this.a, aevt.b(this.a));
   }
 }
 

@@ -1,23 +1,25 @@
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedLog;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
 
 class aqoq
-  implements CustomizedLog
+  implements Animation.AnimationListener
 {
-  aqoq(aqod paramaqod) {}
+  aqoq(aqoo paramaqoo) {}
   
-  public void onFlushLogs() {}
-  
-  public void onLog(int paramInt, String paramString1, String paramString2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QLog.i(paramString1, 1, paramString2);
+    this.a.a.clearAnimation();
+    this.a.a.setVisibility(4);
   }
   
-  public void onUploadLogs() {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqoq
  * JD-Core Version:    0.7.0.1
  */

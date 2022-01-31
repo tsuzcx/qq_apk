@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
 public class anyo
-  extends aodp
+  implements DialogInterface.OnClickListener
 {
-  public anyo(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity) {}
+  public anyo(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.notifyDataSetChanged();
-    }
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent(this.a.a, FavEmosmManageActivity.class);
+    paramDialogInterface.putExtra("camera_emo_mode", 1);
+    this.a.a.startActivity(paramDialogInterface);
+    axqw.b(((BaseActivity)this.a.a).app, "dc00898", "", "", "0X800A36F", "0X800A36F", 0, 0, "", "", "", "");
   }
 }
 

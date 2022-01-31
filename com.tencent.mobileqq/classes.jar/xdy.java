@@ -1,19 +1,35 @@
-import com.tencent.mobileqq.pb.PBStringField;
+import android.os.Handler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.biz.ui.CustomMenuBar;
 
-public final class xdy
+public class xdy
+  implements View.OnTouchListener
 {
-  public PBStringField a;
-  public PBStringField b;
+  public xdy(CustomMenuBar paramCustomMenuBar, ImageView paramImageView) {}
   
-  public xdy(PBStringField paramPBStringField1, PBStringField paramPBStringField2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = paramPBStringField1;
-    this.b = paramPBStringField2;
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b)
+      {
+        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
+        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidViewView.setVisibility(4);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842655);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xdy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import agpt;
+import ahci;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -9,7 +9,7 @@ import mqq.app.AppRuntime;
 public class QWalletIPCModule$1
   implements Runnable
 {
-  public QWalletIPCModule$1(agpt paramagpt, Bundle paramBundle, int paramInt, AppRuntime paramAppRuntime) {}
+  public QWalletIPCModule$1(ahci paramahci, Bundle paramBundle, int paramInt, AppRuntime paramAppRuntime) {}
   
   public void run()
   {

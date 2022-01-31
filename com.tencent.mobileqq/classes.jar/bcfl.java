@@ -1,36 +1,36 @@
-public class bcfl
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+
+class bcfl
+  implements TouchWebView.OnScrollChangedListener
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
+  bcfl(bcfj parambcfj) {}
   
-  public bcfl(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    this.a = (paramString1 + "");
-    this.b = (paramString2 + "");
-    this.c = (paramString3 + "");
-    this.d = (paramString4 + "");
-    this.e = (paramString5 + "");
-    this.f = (paramString6 + "");
-    this.g = (paramString7 + "");
-    this.h = paramString8;
-    this.i = paramString9;
-    this.j = (paramString10 + "");
-    this.k = (paramString11 + "");
-    bcds.b("report_debug", "reportItem apn=" + this.a + ",frequency=" + this.b + ",commandid=" + this.c + ",resultcode=" + this.d + "timecost" + this.e + ",reqsize=" + this.f + ",rspsize=" + this.g + ",uin=" + this.h + ",deviceinfo=" + this.i + ",detail=" + this.j + ",appid=" + paramString11);
+    if (System.currentTimeMillis() - this.a.a > 1000L)
+    {
+      paramInt1 = paramInt2 - paramInt4;
+      if (paramInt1 <= 0) {
+        break label55;
+      }
+      if (Math.abs(paramInt1) > 50)
+      {
+        this.a.b(false);
+        this.a.a = System.currentTimeMillis();
+      }
+    }
+    label55:
+    while (Math.abs(paramInt1) <= 50) {
+      return;
+    }
+    this.a.b(true);
+    this.a.a = System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcfl
  * JD-Core Version:    0.7.0.1
  */

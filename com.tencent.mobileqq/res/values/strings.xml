@@ -20,6 +20,7 @@
     <string name="q">分钟前</string>
     <string name="r">月</string>
     <string name="s">月前</string>
+    <string name="q3">Google Play版本不支持进入直播间</string>
     <string name="t">双鱼座</string>
     <string name="u">聊天</string>
     <string name="v">朋友</string>
@@ -56,6 +57,8 @@
     <string name="ap">群应用</string>
     <string name="aq">群支付</string>
     <string name="ar">群活动</string>
+    <string name="q4">管理员</string>
+    <string name="q5">群主</string>
     <string name="as">处女座</string>
     <string name="au">年</string>
     <string name="av">年前</string>
@@ -99,6 +102,7 @@
     <string name="bw">帐号设置</string>
     <string name="bx">帐号身份过期，需要重新登录</string>
     <string name="by">|</string>
+    <string name="q6">被骚扰了？去设置好友克隆。</string>
     <string name="bz">被骚扰了？举报该用户</string>
     <string name="c0">被骚扰了？举报该群</string>
     <string name="c1"><u>举报用户</u></string>
@@ -305,7 +309,9 @@
     <string name="ha">创建新联系人</string>
     <string name="hb">地址</string>
     <string name="hc">更改有效期</string>
-    <string name="q3">未定位到同款素材，请稍后再试。</string>
+    <string name="q7">资源下载中,请稍候...</string>
+    <string name="q8">828版本不再支持gameplay素材</string>
+    <string name="q9">未定位到同款素材，请稍后再试。</string>
     <string name="xc">拍照出现异常，请重试</string>
     <string name="xz">录制出现异常，请重试</string>
     <string name="a3y">拍摄时间过短，请重新拍摄。</string>
@@ -315,6 +321,8 @@
     <string name="a9t">素材解析异常</string>
     <string name="a9u">最多只能选择%d张图片</string>
     <string name="a9v">请选择%d张图片</string>
+    <string name="b_">当前拉取到的config版本异常</string>
+    <string name="b5l">当前拉取到的config为null</string>
     <string name="a9w">换张图片</string>
     <string name="a9x">敏感检测耗时：</string>
     <string name="ady">抱歉，该素材无法在当前设备上使用</string>
@@ -326,6 +334,7 @@
     <string name="av8">服务器繁忙</string>
     <string name="avf">需拍摄一张正脸照</string>
     <string name="bbj">未识别到人脸，请拍摄正脸照</string>
+    <string name="dbr">未识别到人脸</string>
     <string name="bhf">拍照制作</string>
     <string name="bn9">最多允许输入%d个字哦</string>
     <string name="bn_">正在生成文字...</string>
@@ -333,7 +342,7 @@
     <string name="bnb">请检查网络设置</string>
     <string name="bqy">系统繁忙，请稍后再试</string>
     <string name="bqz">立刻制作</string>
-    <string name="q4">正在生成视频..</string>
+    <string name="dbt">正在生成视频..</string>
     <string name="ihu">长按屏幕唤起滤镜助手</string>
     <string name="br0">拍个微笑试试吧</string>
     <string name="br1">拍个皱眉试试吧</string>
@@ -401,6 +410,8 @@
     <string name="ii6">正在搜索群成员</string>
     <string name="il">%1$s 按钮</string>
     <string name="im">取消</string>
+    <string name="dcb">已选中过大的图片或视频将以文件形式发送</string>
+    <string name="fyi">已选中过大的图片或视频将无法发送</string>
     <string name="in">关闭</string>
     <string name="io">折叠更多功能面板</string>
     <string name="ip">折叠更多功能面板，拉起输入框</string>
@@ -430,7 +441,7 @@
     <string name="br7">删除</string>
     <string name="j_">查看更多原创表情</string>
     <string name="br8">网络异常，语音无法播放。</string>
-    <string name="q5">文件损坏，语音无法播放。</string>
+    <string name="fyj">文件损坏，语音无法播放。</string>
     <string name="ja">来自：{0}表情包</string>
     <string name="jb">来自：魔法表情</string>
     <string name="jc">你可能要发送的照片:</string>
@@ -442,6 +453,7 @@
     <string name="ji">退出了语音通话</string>
     <string name="jj">修改消息设置，收入群助手或实时接收此群消息</string>
     <string name="jk">你可以在这里设置“群消息提醒方式”</string>
+    <string name="fyk">%d人正在参与群课堂</string>
     <string name="jl">等99+人正在视频聊天</string>
     <string name="jm">网络出问题了，保存失败</string>
     <string name="jn">保存嗨爆字体失败</string>
@@ -470,8 +482,10 @@
     <string name="k_">重新发送</string>
     <string name="ka">%d条消息</string>
     <string name="kb">语音通话中 (%d人)</string>
+    <string name="fyl">99+人正在参与群课堂</string>
     <string name="kc">99+人正在视频聊天</string>
     <string name="kd">预约的语音通话开始了</string>
+    <string name="fym">%d人正在参与群课堂</string>
     <string name="ke">你已被移出多人聊天</string>
     <string name="kf">你正在语音通话</string>
     <string name="kg">语音通话中 (%d人)</string>
@@ -489,6 +503,8 @@
     <string name="ks">开通超级会员</string>
     <string name="kt">开通会员</string>
     <string name="ku">素材包损坏，请重新下载~</string>
+    <string name="ktb">图片大小超过%1$sM将以文件形式发送</string>
+    <string name="ktd">图片大小超过%1$sM将无法发送</string>
     <string name="iia">图片已过期</string>
     <string name="iib">图片下载失败</string>
     <string name="iic">图片加载失败，请重启QQ或者手机。</string>
@@ -528,6 +544,8 @@
     <string name="lp">转发文字</string>
     <string name="lq">收藏</string>
     <string name="lr">松开结束</string>
+    <string name="q42">视频大小超过%1$s%2$s将以文件形式发送</string>
+    <string name="tjy">视频大小超过%1$sM将无法发送</string>
     <string name="ls">昨天</string>
     <string name="lt">相册</string>
     <string name="lu">正在上传图片，请稍候</string>
@@ -590,13 +608,13 @@
     <string name="ne">参与活动</string>
     <string name="nf">参加活动，马上领取专属动作</string>
     <string name="ng">该动作已下架，试试其他动作吧~</string>
-    <string name="nh">开通超级会员</string>
-    <string name="ni">该动作为超级会员专属，开通超级会员可立即使用。</string>
+    <string name="nh">开通豪华黄钻</string>
+    <string name="ni">该动作为豪华黄钻专属，开通豪华黄钻可立即使用。</string>
     <string name="nj">提升等级</string>
     <string name="nk">成为厘米LVX会员，使用LVX专属动作</string>
     <string name="nl">了解详情</string>
     <string name="nm">该动作为小钻LV%1$d专属，开通小钻并成长到LV%1$d等级可使用，现在开通立即成长吧！</string>
-    <string name="nn">超级会员专属动作</string>
+    <string name="nn">豪华黄钻专属动作</string>
     <string name="np">重新发送</string>
     <string name="nq">该动作需消耗%1$d金币，当前帐户余额%2$d金币，余额不足，充值更多金币再来购买吧~</string>
     <string name="nr">该动作需消耗%1$d金币，当前帐户余额%2$d金币，确认购买？</string>
@@ -770,10 +788,17 @@
     <string name="sf">收起界面并保持通话</string>
     <string name="sg">摄像头</string>
     <string name="sh">麦克风</string>
+    <string name="fox">麦克风已关闭</string>
+    <string name="imv">扬声器已关闭</string>
+    <string name="jjt">蓝牙已连接</string>
+    <string name="jk6">听筒已开启</string>
+    <string name="jk7">耳机已连接</string>
     <string name="si">发起通话时暂不能打开摄像头</string>
     <string name="sj">结束语音通话</string>
     <string name="sk">摄像头</string>
     <string name="sl">麦克风</string>
+    <string name="jm8">麦克风已开启</string>
+    <string name="t3j">扬声器已开启</string>
     <string name="sm">正在呼叫你</string>
     <string name="sn">语音通话 对方已拒绝</string>
     <string name="so">拒绝语音通话</string>
@@ -1358,7 +1383,9 @@
     <string name="a3z">关闭按钮</string>
     <string name="a40">收起多人聊天等功能</string>
     <string name="a41">关闭微云相册</string>
+    <string name="vyy">关闭分享面板</string>
     <string name="a42">请先关闭当前视频会话后再试</string>
+    <string name="vyz">结束一起看</string>
     <string name="a43">你可在此文件夹内新建和管理群在线文档，多人同时在线编辑，协作更方便。</string>
     <string name="a44">聊天文件已停止备份，可至设置里开启。</string>
     <string name="a45">删除</string>
@@ -1370,26 +1397,35 @@
     <string name="a4a">开通</string>
     <string name="a4b">续费超级会员，炫彩昵称不褪色</string>
     <string name="a4c">续费</string>
-    <string name="im8">打开彩签列表，共%1$d条彩签</string>
+    <string name="im8">打开彩签列表，共%1$d条彩签。</string>
     <string name="im9">添加到彩签</string>
     <string name="im_">彩签已添加</string>
     <string name="brh">用户取消添加彩签</string>
     <string name="ima">取消彩签</string>
     <string name="imb">添加彩签</string>
     <string name="imc">彩签已取消</string>
+    <string name="vz0">取消</string>
+    <string name="vz1">请在设置中打开QQ的悬浮窗权限，以正常显示添加的彩签。</string>
+    <string name="vz2">设置</string>
+    <string name="vz3">悬浮窗权限获取</string>
     <string name="imd">删除全部彩签</string>
     <string name="ime">删除彩签</string>
     <string name="imf">我知道了</string>
     <string name="img">彩签已满，管理后可新增。</string>
     <string name="imh">彩签已满</string>
     <string name="imi">打开浮窗</string>
+    <string name="vw1">设置</string>
     <string name="bri">我知道了</string>
-    <string name="brj">悬浮窗权限获取失败，暂无法使用最近浏览自动加彩签功能。如需继续使用，请在设置-辅助功能中重新开启。</string>
+    <string name="brj">悬浮窗权限获取失败，暂无法展示添加的彩签。如需继续使用，请在设置中打开QQ的悬浮窗权限。</string>
     <string name="brk">我知道了</string>
     <string name="brl">如需关闭最近浏览自动加彩签功能，可点击右上角按钮进行设置。</string>
     <string name="brm">最近浏览内容</string>
     <string name="bs7">最近浏览内容自动添加彩签</string>
-    <string name="c67">开启后，最近一条浏览内容将自动添加到彩签</string>
+    <string name="c67">默认添加最近一条浏览内容至彩签（PUPU阅读）</string>
+    <string name="vz4">添加彩签</string>
+    <string name="vz5">已添加彩签</string>
+    <string name="vz6">最近浏览内容</string>
+    <string name="vz7">彩签设置</string>
     <string name="a4d">了这首《%s》来电，喜欢的话赶快去设置吧</string>
     <string name="a4e">已设置</string>
     <string name="a4f">取消下载</string>
@@ -1692,6 +1728,9 @@
     <string name="abl">精选照片</string>
     <string name="abm">精选照片</string>
     <string name="abn">点击更换背景</string>
+    <string name="vz8">随心贴</string>
+    <string name="vz9">写一张随心贴留下我想对{TA}说的话</string>
+    <string name="vz_">写一张随心贴留下我想说的话</string>
     <string name="abo">查看大头像</string>
     <string name="abp">头像，查看大头像或编辑头像</string>
     <string name="abq">语音</string>
@@ -1713,7 +1752,7 @@
     <string name="ac4">个性名片</string>
     <string name="ac5">QQ空间</string>
     <string name="ac6">快捷入口</string>
-    <string name="q6">匹配聊天</string>
+    <string name="vza">匹配聊天</string>
     <string name="ac7">拍摄</string>
     <string name="ac8">最新照片</string>
     <string name="ac9">最近在玩</string>
@@ -1763,6 +1802,7 @@
     <string name="adf">隐藏</string>
     <string name="adg">隐藏后，该模块30天内不会再次出现。</string>
     <string name="adh">语音通话</string>
+    <string name="vzb">取消隐藏</string>
     <string name="adi">取消置顶</string>
     <string name="adj">标为已读</string>
     <string name="adk">标为未读</string>
@@ -2169,10 +2209,17 @@
 享受省流量极速下载，速度更快!"</string>
     <string name="ao1">关闭后将无法收到包括游戏在内的所有应用更新信息，建议保持开启状态。</string>
     <string name="ao2">下载暂停%d%%</string>
+    <string name="vzc">QQ内更新</string>
+    <string name="vzd">%s市场更新</string>
+    <string name="vze">华为</string>
+    <string name="vzf">推荐使用%s应用市场更新，畅享极速、省流量下载体验。</string>
+    <string name="vzg">OPPO</string>
+    <string name="vzh">温馨提示</string>
+    <string name="vzi">VIVO</string>
+    <string name="vzj">小米</string>
     <string name="ao3">取消</string>
     <string name="ao4">取消</string>
     <string name="ao5">确认关闭</string>
-    <string name="imv">应用商店更新</string>
     <string name="ao6">立即体验</string>
     <string name="ao7">下载应用宝</string>
     <string name="ao8">温馨提示</string>
@@ -2470,6 +2517,7 @@
     <string name="aw0">发现</string>
     <string name="aw1">进入购物号发现页面按钮</string>
     <string name="aw2">购物号</string>
+    <string name="vzk">QQ购物</string>
     <string name="aw3">编辑</string>
     <string name="aw4">已智能选中%1$s张照片，可一键发送到好友微视。</string>
     <string name="aw5">输入好友备注姓名</string>
@@ -2492,7 +2540,7 @@
     <string name="awf">已生成过腾讯文档</string>
     <string name="awg">评论将在腾讯文档中进行</string>
     <string name="awh">编辑修改不会影响原文件</string>
-    <string name="q7">您还不是管理员，没有编辑资料的权限。</string>
+    <string name="vzl">您还不是管理员，没有编辑资料的权限。</string>
     <string name="awi">编辑</string>
     <string name="imx">设置日期</string>
     <string name="imy">设置起始日期</string>
@@ -2504,6 +2552,7 @@
     <string name="in2">自拍表情</string>
     <string name="in3">我的自拍表情</string>
     <string name="cl5">自拍表情%s</string>
+    <string name="vzm">自拍表情</string>
     <string name="in4">整理表情</string>
     <string name="in5">添加本地图片为表情</string>
     <string name="awk">取消</string>
@@ -2512,6 +2561,7 @@
     <string name="in7">删除的表情无法恢复</string>
     <string name="awm">编辑</string>
     <string name="in8">收藏表情%s</string>
+    <string name="vzn">收藏表情</string>
     <string name="in9">移到最前</string>
     <string name="in_">移动成功</string>
     <string name="awn">已超过收藏额度，请至少删除%d个收藏</string>
@@ -2606,7 +2656,7 @@
     <string name="ayc">通过登录验证的设备</string>
     <string name="ayd">未启用</string>
     <string name="aye">开启登录保护</string>
-    <string name="ayf">开启登录保护可保障QQ安全。在未验证的设备登录QQ，需密保手机短信验证，即使密码泄露他人也无法登录。</string>
+    <string name="ayf">开启登录保护后，在新设备登录QQ，需要通过登录验证。即使密码泄露他人也无法登录，保障QQ安全。</string>
     <string name="ayg">关于登录保护</string>
     <string name="ayh">安全登录，远离盗号</string>
     <string name="ayi">需要前往QQ安全中心重新设置你的密保手机号码</string>
@@ -2762,7 +2812,8 @@
     <string name="b2a">下载</string>
     <string name="b2b">你当前处于非Wifi环境下，继续下载将会产生手机流量，确定继续？</string>
     <string name="b2c">已下载</string>
-    <string name="b2d">编辑</string>
+    <string name="b2d">选择</string>
+    <string name="vzo">已选择(%d)</string>
     <string name="b2e">完成</string>
     <string name="b2f">永久有效</string>
     <string name="b2g">子表情损坏，请稍后重试</string>
@@ -2786,15 +2837,32 @@
     <string name="b2x">使用面对面分享群，可以让进入面对面的人快速查找到该群，并申请加入。退出此页面即搜索不到。</string>
     <string name="b2y">发起群聊</string>
     <string name="b2z">文件快传</string>
-    <string name="io8">已设置</string>
+    <string name="io8">已启用</string>
     <string name="io9">当前环境光线较暗，请在光线充足的条件下尝试。</string>
     <string name="io_">取消</string>
     <string name="ioa">删除</string>
-    <string name="iob">删除人脸识别</string>
-    <string name="ioc">删除将失去人脸安全保护，请谨慎操作。</string>
+    <string name="iob">删除已录入的人脸</string>
+    <string name="ioc">删除后，将无法继续使用人脸识别验证，请谨慎操作。</string>
     <string name="iod">人脸识别</string>
-    <string name="ioe">未设置</string>
+    <string name="ioe">未启用</string>
     <string name="iof">请在密保手机生效后，再设置人脸识别</string>
+    <string name="vzp">面对面加好友</string>
+    <string name="vzq">和朋友输入相同数字，可以自动添加为QQ好友。</string>
+    <string name="vzr">我知道了</string>
+    <string name="vzs">这里可以多人共同加好友哦</string>
+    <string name="vzt">继续发送</string>
+    <string name="vzu">“发消息”将退出面对面加好友，建议完成所有好友添加后再发消息。</string>
+    <string name="vzv">正在为你匹配好友</string>
+    <string name="vzw">你已和 %1$d 位朋友成为QQ好友</string>
+    <string name="vzx">"输入数字和身边的朋友
+自动成为QQ好友"</string>
+    <string name="vzy">5分钟内未匹配到好友</string>
+    <string name="vzz">未找到同样密码的好友</string>
+    <string name="w00">停留时间过长，已自动退出。</string>
+    <string name="w01">“请勿频繁操作”</string>
+    <string name="w02">"地理位置权限已关闭，如需使用“面对面加好友”功能，
+请先打开位置权限。"</string>
+    <string name="w03">验证失败,请重试</string>
     <string name="b30">飞翔的秋秋</string>
     <string name="b31">好友头像</string>
     <string name="b32">好友状态</string>
@@ -2898,7 +2966,6 @@
     <string name="b5i">本地应用</string>
     <string name="b5j">取消</string>
     <string name="b5k">微云文件</string>
-    <string name="b5l">微云文件</string>
     <string name="b5m">网络文件</string>
     <string name="b5n">确认</string>
     <string name="b5o">继续</string>
@@ -2951,6 +3018,18 @@
     <string name="b6x">全部(手机内存/SD卡)</string>
     <string name="b6y">扩展卡内存</string>
     <string name="b6z">SD卡</string>
+    <string name="w04">来自</string>
+    <string name="w05">来自多人聊天:</string>
+    <string name="w06">来自群:</string>
+    <string name="w07">存到</string>
+    <string name="w08">发给</string>
+    <string name="w09">发给多人聊天:</string>
+    <string name="w0_">发给群:</string>
+    <string name="w0a">搜索本机QQ文件</string>
+    <string name="w0b">搜索最近文件</string>
+    <string name="w0c">相关的同名文件记录</string>
+    <string name="w0d">搜索微信文件</string>
+    <string name="w0e">搜索微云文件</string>
     <string name="b70">选择文件</string>
     <string name="b71">已选</string>
     <string name="b72">，微云为你节省</string>
@@ -2984,6 +3063,7 @@
     <string name="b7p">查看更多</string>
     <string name="b7q">图片</string>
     <string name="b7r">已选中</string>
+    <string name="w0f">微信文件</string>
     <string name="b7s">微云文件</string>
     <string name="b7t">(免流量)</string>
     <string name="iop">继续下载</string>
@@ -2994,6 +3074,7 @@
     <string name="iou">发给好友</string>
     <string name="iov">用其他应用打开</string>
     <string name="iow">打印</string>
+    <string name="w0g">导入阅读器</string>
     <string name="iox">保存到手机</string>
     <string name="ioy">发给电脑</string>
     <string name="ioz">存到微云</string>
@@ -3006,6 +3087,10 @@
     <string name="ip5">发出图片文件</string>
     <string name="ip6">发出视频文件</string>
     <string name="ip7">进度,百分之</string>
+    <string name="w0h">"图片过大
+请查看原图"</string>
+    <string name="w0i">图片过大，请查看原图</string>
+    <string name="w0j">加载中...</string>
     <string name="ip8">文件已失效，无法查看。</string>
     <string name="b7v">文件保存失败</string>
     <string name="b7w">文件保存成功。</string>
@@ -3091,6 +3176,25 @@
     <string name="b9j">获取位置不成功，请刷新试试。</string>
     <string name="b9k">位置获取失败</string>
     <string name="b9l">定点漫游</string>
+    <string name="w0k">请眨眨眼</string>
+    <string name="w0l">请按提示做出正确动作</string>
+    <string name="w0m">请点点头</string>
+    <string name="w0n">请张张嘴</string>
+    <string name="w0o">请摇摇头</string>
+    <string name="w0p">请勿遮挡下巴</string>
+    <string name="w0q">请把脸移到镜头内</string>
+    <string name="w0r">请勿遮挡左眼</string>
+    <string name="w0s">请正脸面向手机</string>
+    <string name="w0t">请勿遮挡嘴巴</string>
+    <string name="w0u">请勿遮挡鼻子</string>
+    <string name="w0v">请勿遮挡右眼</string>
+    <string name="w0w">请正脸面向手机</string>
+    <string name="w0x">请离手机近一点</string>
+    <string name="w0y">请离手机远一点</string>
+    <string name="w0z">请尽量保持不动</string>
+    <string name="w10">请保持脸在镜头内</string>
+    <string name="w11">请睁大双眼</string>
+    <string name="w12">请保持一个人脸在镜头内</string>
     <string name="b9m">文件传输错误</string>
     <string name="b9n">拍摄</string>
     <string name="b9o">● 3● 这是个傲娇的特效，只能搭配音乐使用。</string>
@@ -3153,6 +3257,7 @@
     <string name="ba7">暂停</string>
     <string name="ba8">继续</string>
     <string name="ba9">查看</string>
+    <string name="w13">文件发送失败，请稍后重试。</string>
     <string name="ba_">全部</string>
     <string name="baa">应用</string>
     <string name="bab">文档</string>
@@ -3386,7 +3491,7 @@
     <string name="bga">保存</string>
     <string name="ipq">微信</string>
     <string name="bgb">微云</string>
-    <string name="bgc">转发到</string>
+    <string name="bgc">分享到</string>
     <string name="bgd">定位到聊天位置</string>
     <string name="ipr">更多操作</string>
     <string name="ips">查看聊天图片/视频</string>
@@ -3447,6 +3552,8 @@
     <string name="ipx">%d秒后可领取奖励</string>
     <string name="ipy">关闭声音</string>
     <string name="ipz">打开声音</string>
+    <string name="w14">你还没有安装微信，请先安装微信。</string>
+    <string name="w15">你的微信版本较低，请先升级微信。</string>
     <string name="bhr">个</string>
     <string name="bhs">地理位置</string>
     <string name="bht">路线</string>
@@ -3730,6 +3837,7 @@
     <string name="bp2">推荐口令</string>
     <string name="iqb">文字口令</string>
     <string name="iqc">语音口令</string>
+    <string name="w16">他</string>
     <string name="bp3">Ta</string>
     <string name="bp4">操作失败</string>
     <string name="bp5">已完成</string>
@@ -4201,19 +4309,19 @@
     <string name="c0w">Ta是我校友</string>
     <string name="c0x">定位失败，请确保打开并允许QQ使用定位服务</string>
     <string name="c0y">数据获取失败</string>
-    <string name="q8">本服务由%s提供。相关服务和责任将由第三方承担。如有问题请咨询该公司客服。</string>
-    <string name="q9">知道了</string>
-    <string name="dbr">免责声明</string>
+    <string name="w17">本服务由%s提供。相关服务和责任将由第三方承担。如有问题请咨询该公司客服。</string>
+    <string name="w18">知道了</string>
+    <string name="w19">免责声明</string>
     <string name="c0z">传文件/照片到我的电脑</string>
     <string name="c10">传文件/照片到我的路由</string>
-    <string name="dbt">58同城</string>
-    <string name="dcb">大众点评</string>
-    <string name="fyi">京东</string>
-    <string name="fyj">同城服务</string>
-    <string name="fyk">吃喝玩乐</string>
-    <string name="fyl">购物</string>
-    <string name="fym">吃喝玩乐</string>
-    <string name="ktb">京喜购物</string>
+    <string name="w1_">58同城</string>
+    <string name="w1a">大众点评</string>
+    <string name="w1b">京东</string>
+    <string name="w1c">同城服务</string>
+    <string name="w1d">吃喝玩乐</string>
+    <string name="w1e">购物</string>
+    <string name="w1f">吃喝玩乐</string>
+    <string name="w1g">京喜购物</string>
     <string name="c11">游戏</string>
     <string name="c12">个性装扮</string>
     <string name="c13">展开更多</string>
@@ -4334,7 +4442,7 @@
     <string name="ftc">和好友一起听歌</string>
     <string name="gfy">和群友一起听歌</string>
     <string name="isq">人正在听歌</string>
-    <string name="isr">%s发起一起听歌</string>
+    <string name="isr">发起一起听歌</string>
     <string name="iss">[已暂停]</string>
     <string name="ist">结束</string>
     <string name="isu">结束一起听歌</string>
@@ -4465,10 +4573,10 @@
     <string name="hgs">驾车</string>
     <string name="hgt">步行</string>
     <string name="hgu">集合点选取失败，请稍后重试</string>
-    <string name="ktd">展开位置列表</string>
+    <string name="w1h">展开位置列表</string>
     <string name="hgv">当前地图位置: %s</string>
-    <string name="q42">收起位置列表</string>
-    <string name="tjy">查找集合地点</string>
+    <string name="w1i">收起位置列表</string>
+    <string name="w1j">查找集合地点</string>
     <string name="hh5">网络不可用，请稍后重试</string>
     <string name="hh6">全程%.1f公里</string>
     <string name="hh7">全程%d米</string>
@@ -4513,6 +4621,7 @@
     <string name="c6h">设置QQ帐号</string>
     <string name="it8">服务协议</string>
     <string name="c6i">资金管理</string>
+    <string name="w1k">去处理</string>
     <string name="c6j">取消</string>
     <string name="c6k">帐号无法登录</string>
     <string name="c6l">解除保护</string>
@@ -4684,12 +4793,16 @@
     <string name="hi5">"玩过的小游戏可以在首页“&lt;font color='#00c9ff'>下拉&lt;/font>”找到哦"</string>
     <string name="hi6">"抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。
 适当游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。"</string>
+    <string name="w1l">离开游戏</string>
+    <string name="w1m">游戏正在进行，确定要离开吗？</string>
     <string name="hi7">版号信息</string>
     <string name="itd">前往</string>
     <string name="ite">下一个</string>
     <string name="itf">完成</string>
     <string name="itg">搜索</string>
     <string name="ith">发送</string>
+    <string name="w1n">腾讯王卡正在为您免流</string>
+    <string name="w1o">打开</string>
     <string name="iti">确定</string>
     <string name="itj">允许该小程序向我发起加好友请求</string>
     <string name="itk">申请获取你的通讯地址</string>
@@ -4726,12 +4839,16 @@
     <string name="iud">小程序订阅消息</string>
     <string name="iue">用户信息</string>
     <string name="iuf">位置信息</string>
+    <string name="w1p">实名认证</string>
+    <string name="w1q">提示</string>
     <string name="iug">申请</string>
     <string name="c_v">取消置顶</string>
     <string name="c_w">删除</string>
     <string name="hi9">小游戏活动通告</string>
     <string name="iuh">"玩过的小游戏可以在首页“&lt;font color='#00c9ff'>下拉&lt;/font>”找到哦"</string>
     <string name="hi_">恢复正常模式</string>
+    <string name="w1r">离开游戏</string>
+    <string name="w1s">游戏正在进行，确定要离开吗？</string>
     <string name="hm6">任何途径进入小游戏都会使用本地debug包</string>
     <string name="hoo">no binding Phone number</string>
     <string name="iui">腾讯王卡正在为您免流</string>
@@ -4770,7 +4887,9 @@
     <string name="cai">添加失败，最多只能添加%d张</string>
     <string name="caj">猜你想传</string>
     <string name="cak">我知道了</string>
-    <string name="cal">同步到暖说说的动态不受空间权限约束可被任何人看到</string>
+    <string name="w1t">同步暖说说失败，需要公开权限</string>
+    <string name="cal">同步到暖说说，可以让更多人看到你的内容。</string>
+    <string name="w1u">公开权限</string>
     <string name="cam">去下载</string>
     <string name="can">正在下载微视</string>
     <string name="cao">同步到微视,需要下载微视APP</string>
@@ -4865,6 +4984,7 @@
     <string name="cd0">[送你礼物]</string>
     <string name="cd1">颜值配对通知</string>
     <string name="cd2">人喜欢了你</string>
+    <string name="w1v">摄像头未开启</string>
     <string name="cd3">来自\"兴趣部落\"</string>
     <string name="cd4">没有更早的消息记录</string>
     <string name="cd5">你可以撤回2分钟内发送的消息(部分旧版本QQ不支持消息撤回)。</string>
@@ -4875,8 +4995,15 @@
     <string name="cd_">来自QQ：“%1$s”和“%2$s”的聊天记录</string>
     <string name="cda">来自QQ：“%s”的聊天记录</string>
     <string name="cdb">选择的消息中，语音/文件/商城表情/相册/闪照/支付相关（转账/红包）类消息不能转发到微信。</string>
+    <string name="w1w">识别失败</string>
+    <string name="w1x">系统错误，请重试</string>
     <string name="cdc">看点</string>
     <string name="cdd">字数超出上限，超出部分被截断</string>
+    <string name="w1y">当前光线较亮</string>
+    <string name="w1z">当前光线较暗</string>
+    <string name="w20">当前光线适中</string>
+    <string name="w21">网络异常，请检查网络连接</string>
+    <string name="w22">系统错误，请重试</string>
     <string name="iur">消息免打扰</string>
     <string name="cde">撤回</string>
     <string name="cdf">发送时间超过两分钟的消息，不能被撤回。</string>
@@ -4890,6 +5017,7 @@
     <string name="cdm">该消息不支持收藏</string>
     <string name="cdn">我知道了</string>
     <string name="cdo">确定</string>
+    <string name="w23">已取消识别</string>
     <string name="iut">消息清理</string>
     <string name="iuu">消息清理</string>
     <string name="iuv">本地消息生成文本</string>
@@ -5070,6 +5198,9 @@
     <string name="ci7">网络错误</string>
     <string name="ci8">网络不给力，请检查网络设置。</string>
     <string name="ci9">网络连接失败</string>
+    <string name="w24">启动中，请稍候</string>
+    <string name="w25">获取配置失败</string>
+    <string name="w26">数据传输，请稍候</string>
     <string name="ci_">连网超时，请检查网络设置！</string>
     <string name="cia">网络已经中断!</string>
     <string name="cib">当前网络不可用，请检查网络设置</string>
@@ -5173,6 +5304,7 @@
     <string name="cku">网络连接失败，已暂停下载</string>
     <string name="ckv">退出</string>
     <string name="ckw">有 %1$d 个联系人给你发过来</string>
+    <string name="w27">(共 %1$d 条未读)</string>
     <string name="ckx">1000条以上新消息</string>
     <string name="cky">1000条以上未接来电</string>
     <string name="ckz">100条以上新消息</string>
@@ -5205,6 +5337,18 @@
     <string name="clm">%1$s可能是QQ号或电话号码，你可以</string>
     <string name="cln">%1$s可能是电话号码，你可以</string>
     <string name="clo">张图片</string>
+    <string name="w28">自动捕获成功，请等待验证结果</string>
+    <string name="w29">自动捕获超时</string>
+    <string name="w2_">自动调整焦距</string>
+    <string name="w2a">焦距模糊</string>
+    <string name="w2b">调整焦距结束</string>
+    <string name="w2c">请靠近一些</string>
+    <string name="w2d">请离远一些</string>
+    <string name="w2e">手动捕获成功，请等待验证结果</string>
+    <string name="w2f">请放入卡片</string>
+    <string name="w2g">请保持卡片在框内</string>
+    <string name="w2h">自动捕获</string>
+    <string name="w2i">手动捕获模式，请点击拍照按钮</string>
     <string name="clp">添加失败！</string>
     <string name="clq">添加成功！</string>
     <string name="clr">审批</string>
@@ -5338,7 +5482,7 @@
     <string name="cos">查看邮箱</string>
     <string name="cot">登录授权失败(错误码: %d)</string>
     <string name="cou">查看收藏</string>
-    <string name="vyy">查看好友资料卡</string>
+    <string name="w2j">查看好友资料卡</string>
     <string name="cov">重新拉取授权信息</string>
     <string name="cow">正在获取权限信息，请稍候...</string>
     <string name="cox">智能硬件</string>
@@ -5362,7 +5506,7 @@
     <string name="cpe">切换帐号</string>
     <string name="cpf">正在切换帐号...</string>
     <string name="cpg">登录失效，请重新登录</string>
-    <string name="vyz">查看群资料卡</string>
+    <string name="w2k">查看群资料卡</string>
     <string name="cph">设备主人:%s</string>
     <string name="cpi">立即开通</string>
     <string name="cpj">查看微博</string>
@@ -5420,8 +5564,8 @@
     <string name="cqy">设置失败，请稍后再试。</string>
     <string name="cqz">正在电脑上使用%s</string>
     <string name="cr0">附近的人</string>
-    <string name="cr1">展示连续登录天数</string>
-    <string name="cr2">关闭后，他人将不可以和你PK连续登录天数。</string>
+    <string name="cr1">展示QQ达人及连续登录天数</string>
+    <string name="cr2">关闭后，资料卡将不再展示QQ达人，他人也无法和你PK连续登录天数。</string>
     <string name="cr3">需要通讯录权限，请到设置中设置</string>
     <string name="cr4">超级会员可设置更多好友</string>
     <string name="cr5">个人介绍:</string>
@@ -5542,7 +5686,11 @@
     <string name="ivf">暂不支持精美配图</string>
     <string name="cu8">暂不支持趣味配图</string>
     <string name="cu9">暂不支持视频格式</string>
-    <string name="cu_">最多只能选择%d张图片\\视频</string>
+    <string name="w2l">最多只能选择%d张图片</string>
+    <string name="cu_">最多只能选择%d张图片/视频</string>
+    <string name="w2m">已达%d张上限</string>
+    <string name="w2n">最多只能选择%d张照片/视频</string>
+    <string name="w2o">最多只能选择%d个视频</string>
     <string name="cua">视频合成失败</string>
     <string name="cub">不能上传超过%d个视频</string>
     <string name="ivg">长图</string>
@@ -5611,7 +5759,7 @@
     <string name="cvy">本地相册</string>
     <string name="cvz">照相机</string>
     <string name="cw0">上传图片</string>
-    <string name="vz0">图片发送给</string>
+    <string name="w2p">图片发送给</string>
     <string name="cw1">请上传小于%dM的图片</string>
     <string name="cw2">图片上传失败!</string>
     <string name="cw3">开启手机防盗，下载手机管家</string>
@@ -6022,7 +6170,7 @@
     <string name="d6k">订阅号升级为QQ看点啦~在QQ看点里发现更多精彩订阅内容</string>
     <string name="d6l">QQ看点</string>
     <string name="d6m">合并QQ看点</string>
-    <string name="vz1">腾讯看点·QQ</string>
+    <string name="w2q">腾讯看点·QQ</string>
     <string name="d6n">腾讯官方号</string>
     <string name="d6o">精品推荐</string>
     <string name="d6p">加载中，请稍候...</string>
@@ -6146,6 +6294,8 @@
     <string name="iw4">亮眼</string>
     <string name="iw5">显示更多美颜菜单项</string>
     <string name="iw6">嘴型</string>
+    <string name="w2r">无</string>
+    <string name="w2s">无妆容</string>
     <string name="iw7">瘦鼻</string>
     <string name="iw8">确定恢复默认效果吗？</string>
     <string name="d9l">美颜度</string>
@@ -6153,6 +6303,10 @@
     <string name="iw_">美肤</string>
     <string name="d9m">发起视频</string>
     <string name="d9n">发起视频</string>
+    <string name="w2t">美颜</string>
+    <string name="w2u">美妆</string>
+    <string name="w2v">妆容</string>
+    <string name="w2w">选择以下妆容</string>
     <string name="iwa">白牙</string>
     <string name="d9o">美颜</string>
     <string name="d9p">接收画面</string>
@@ -6290,7 +6444,7 @@
     <string name="dc6">退出了语音通话</string>
     <string name="dc7">重新发起</string>
     <string name="dc8">正在加载画面，请稍候…</string>
-    <string name="vu_">全员静音状态，无法自己解除</string>
+    <string name="vu_">全员静音中，暂无法开启麦克风</string>
     <string name="dc9">全员静音状态已解除，可主动开启麦克风</string>
     <string name="vua">已解除静音，该成员可自行开麦</string>
     <string name="vub">您已被静音，无法自己解除</string>
@@ -6307,6 +6461,9 @@
     <string name="dci">等待大家加入</string>
     <string name="dcj">等待大家加入…</string>
     <string name="dck">的视频画面</string>
+    <string name="w2x">1080P模式</string>
+    <string name="w2y">高清模式</string>
+    <string name="w2z">网络状况良好，可切换到</string>
     <string name="dcl">知道了</string>
     <string name="dcm">被邀请的QQ好友同时会加入此QQ群，确定继续？</string>
     <string name="dcn">加入了语音通话</string>
@@ -6315,13 +6472,16 @@
     <string name="dcq">你的设备无法进行语音通话</string>
     <string name="dcr">加入语音通话失败</string>
     <string name="dcs">网络异常，语音通话中断</string>
+    <string name="w30">当前网络不可用，请检查你的网络设置。</string>
     <string name="dct">查看当前语音通话的成员</string>
     <string name="dcu">退出了语音通话</string>
+    <string name="w31">当前服务使用人数较多，请稍后重试。由此带来的不便，敬请谅解。</string>
     <string name="dcv">发起了视频聊天</string>
     <string name="dcw">发起了语音通话</string>
     <string name="dcx">你发起了语音通话</string>
     <string name="dcy">:[语音通话]</string>
     <string name="dcz">语音通话</string>
+    <string name="w32">发起了群课堂</string>
     <string name="dd0">邀请失败，请稍后重试。</string>
     <string name="dd1">邀请已发送</string>
     <string name="dd2">邀请人数已达上限</string>
@@ -6390,6 +6550,8 @@
     <string name="dep">邀请你观看远程演示</string>
     <string name="deq">来自群聊：</string>
     <string name="der">来自\"附近的人\"</string>
+    <string name="w33">请打开手机设置中QQ的存储权限。</string>
+    <string name="w34">录屏文件无法存入相册</string>
     <string name="des">请打开手机设置中QQ的录音权限。</string>
     <string name="det">麦克风没有声音</string>
     <string name="deu">立即设置</string>
@@ -6446,6 +6608,8 @@
     <string name="dg8">对方QQ通知已关闭</string>
     <string name="dg9">电话通话中，请结束后再拨打。</string>
     <string name="dg_">当前为按键说话模式，手机侧无法发言。</string>
+    <string name="w35">全员静音中，暂无法开启摄像头</string>
+    <string name="w36">您已被静音，暂无法开启摄像头</string>
     <string name="dga">请绑定手机号再回拨</string>
     <string name="dgb">当前网络质量不佳</string>
     <string name="dgc">当前信号良好</string>
@@ -6511,11 +6675,14 @@
     <string name="dhy">录制视频 按钮</string>
     <string name="dhz">停止录制视频 按钮</string>
     <string name="di0">录制时间过短，请重新录制。</string>
+    <string name="w37">使用文字聊天功能时，暂不支持录制视频。</string>
     <string name="di1">使用互动表情时暂不支持录制视频</string>
     <string name="di2">使用魔法贴纸时暂不支持录制视频</string>
     <string name="di3">使用字幕功能时暂不支持录制视频</string>
     <string name="di4">录制中(00:00)</string>
     <string name="di5">你中止了对方录制，录制内容将不会被存储。</string>
+    <string name="w38">网络状况良好，已达1080P画质</string>
+    <string name="w39">网络状况良好，已达720P画质</string>
     <string name="di6">你刚发送的视频通话红包对方没有领取，将在24小时后退回。</string>
     <string name="di7">正在游戏中，请稍后再发红包。</string>
     <string name="di8">对方的设备型号不支持抢红包。</string>
@@ -6608,6 +6775,9 @@
     <string name="dkk">自拍</string>
     <string name="dkl">正在启动...</string>
     <string name="dkm">通话中，请结束通话后再试。</string>
+    <string name="w3_">直播中，请结束群直播后再试。</string>
+    <string name="w3a">当前群正在通话中，暂无法发起群直播。</string>
+    <string name="w3b">当前群正在直播中，暂无法发起群通话。</string>
     <string name="dkn">"呃...我们暂不支持你的手机机型。
 借朋友的手机试试？(๑•ㅂ•)و✧"</string>
     <string name="dko">对方邀请其他人加入，将转为多人电话。</string>
@@ -6925,6 +7095,15 @@
     <string name="dsy">共享位置信息</string>
     <string name="dsz">设置共享位置失败</string>
     <string name="dt0">已开启位置共享</string>
+    <string name="w3c">未启用</string>
+    <string name="w3d">已启用</string>
+    <string name="w3e">管理</string>
+    <string name="w3f">消息</string>
+    <string name="vw2">设置快捷栏失败</string>
+    <string name="w3g">启用快捷栏</string>
+    <string name="w3h">选择快捷栏使用的功能</string>
+    <string name="w3i">开启后，在群聊中展示快捷栏的功能。</string>
+    <string name="w3j">快捷栏管理</string>
     <string name="dt1">群可见设置</string>
     <string name="dt2">展示在我的资料卡</string>
     <string name="dt3">打开开关后，该群在个人资料中可见。</string>
@@ -7976,6 +8155,8 @@ www.tenpay.com找回支付密码"</string>
     <string name="eju">继续下载</string>
     <string name="ejv">继续传输</string>
     <string name="ejw">继续上传</string>
+    <string name="w3k">群课堂</string>
+    <string name="w3l">课程回放</string>
     <string name="ejx">邀请好友</string>
     <string name="ejy">分享群</string>
     <string name="ejz">"群创建成功！
@@ -8115,6 +8296,10 @@ www.tenpay.com找回支付密码"</string>
     <string name="eng">正在加载作业，请稍候…</string>
     <string name="enh">正在加载...</string>
     <string name="eni">声音太小，请大点声～</string>
+    <string name="vyf">取消后，你修改的内容将不会保存，确定要取消修改作业吗？</string>
+    <string name="vyg">发布的作业包含敏感词，请重新输入</string>
+    <string name="w8q">作业修改成功</string>
+    <string name="w8r">修改作业</string>
     <string name="enj" formatted="false">%d月%d日%s作业</string>
     <string name="enk">网络异常，请检查网络设置。</string>
     <string name="enl">未检测到储存卡，无法背诵。</string>
@@ -8139,6 +8324,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="eo4">发布</string>
     <string name="eo5">作业发布成功</string>
     <string name="eo6">布置作业</string>
+    <string name="w8s">正在拉回作业...</string>
     <string name="eo7">背诵被打断，请选择退出背诵或继续背诵？</string>
     <string name="eo8">正在准备</string>
     <string name="eo9">正在录音</string>
@@ -8164,6 +8350,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="eos">%s上传失败</string>
     <string name="eot">重新上传</string>
     <string name="eou">%s正在上传，请稍后再试</string>
+    <string name="w8t">未知错误</string>
     <string name="eov">为方便沟通，请完善你在群内的身份信息。</string>
     <string name="eow">使用作业功能，方便家长学生查看、提交作业。</string>
     <string name="eox">使用公告发布通知，家长学生查看更及时。</string>
@@ -8276,7 +8463,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="ert">上传了照片</string>
     <string name="eru">上传了文件</string>
     <string name="erv">新建文件夹</string>
-    <string name="erw">"bbb没有文件？
+    <string name="erw">"没有文件？
 上传此群的第一个文件"</string>
     <string name="erx">暂无群文件</string>
     <string name="ery">非会员</string>
@@ -8291,7 +8478,9 @@ www.tenpay.com找回支付密码"</string>
     <string name="es7">广告图片</string>
     <string name="es8">广告</string>
     <string name="es9">我已阅读新公告</string>
+    <string name="w3m">群公告</string>
     <string name="es_">来源</string>
+    <string name="w3n">前往确认</string>
     <string name="esa">我知道了</string>
     <string name="esb">本群暂无群公告</string>
     <string name="esc">未设置</string>
@@ -8299,7 +8488,10 @@ www.tenpay.com找回支付密码"</string>
     <string name="ese">订阅号</string>
     <string name="esf">QQ等级</string>
     <string name="esg">查看全部群公告</string>
+    <string name="w3o">查看详情</string>
     <string name="esh">%1$s新公告,发布人%2$s,发布时间%3$s,%4$s.</string>
+    <string name="w3p">待确认的群公告</string>
+    <string name="w3q">待确认的群公告</string>
     <string name="esi">电脑端的消息提醒方式将与手机端保持同步。</string>
     <string name="esj">屏蔽群消息</string>
     <string name="esk">屏蔽消息的群</string>
@@ -8442,6 +8634,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="ew7">不再接受该用户加群申请</string>
     <string name="ew8">请填写拒绝理由</string>
     <string name="ew9">群文件</string>
+    <string name="w3r">消息太久远啦，无法定位到上下文。</string>
     <string name="ew_">无网络连接，消息拉取失败</string>
     <string name="ewa">上传</string>
     <string name="ewb">上传列表</string>
@@ -8491,6 +8684,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="exi">你确定要发送快捷方式到桌面？</string>
     <string name="exj">添加桌面快捷方式失败。</string>
     <string name="exk">添加桌面快捷方式成功。</string>
+    <string name="w3s">离线包目录已被清空</string>
     <string name="exl">取消按钮，点击返回会话</string>
     <string name="exm">拍照按钮，点击拍摄照片</string>
     <string name="exn">闪光灯按钮，当前状态%s</string>
@@ -8554,6 +8748,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="ez4">分组</string>
     <string name="ez5">(%1$d条收藏)</string>
     <string name="qfav_group_entry">收藏分组</string>
+    <string name="w3t">群号：</string>
     <string name="ez7">最多只能操作%1$d个分组</string>
     <string name="ez8">请输入收藏分组名称</string>
     <string name="ez9">请输入新的收藏分组名称</string>
@@ -8606,6 +8801,10 @@ www.tenpay.com找回支付密码"</string>
     <string name="f0d">视频</string>
     <string name="f0e">%1$d秒</string>
     <string name="f0f">下载TIM可将文件长期存云端，更省空间。</string>
+    <string name="w3u">查看收集详情</string>
+    <string name="w3v">无需反复传文件，自动汇总填写结果</string>
+    <string name="w3w">试试看</string>
+    <string name="w3x">填写</string>
     <string name="f0g">仅支持将word和excel文件转为腾讯文档形式发送。</string>
     <string name="f0h">超过20M的文件无法以腾讯文档形式发送。</string>
     <string name="f0i">微云文件无法以腾讯文档形式发送。</string>
@@ -8627,7 +8826,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="vuw">生成分享链接失败(%1$d)</string>
     <string name="vux">微云存储空间不足</string>
     <string name="vuy">转存到微云失败，无法生成分享链接。建议升级微云存储空间后重试。</string>
-    <string name="vz2">转存到微云失败，无法生成分享二维码。建议升级微云存储空间后重试。</string>
+    <string name="w3y">转存到微云失败，无法生成分享二维码。建议升级微云存储空间后重试。</string>
     <string name="vuz">升级存储</string>
     <string name="vv0">"扫码获取微云文件
 %1$s"</string>
@@ -8639,12 +8838,16 @@ www.tenpay.com找回支付密码"</string>
     <string name="vv6">30天</string>
     <string name="vv7">7天</string>
     <string name="vv8">永久有效</string>
-    <string name="vz3">二维码有效期</string>
+    <string name="w3z">二维码有效期</string>
     <string name="vv9">密码</string>
     <string name="vv_">链接生成后可在微云中再次修改分享设置</string>
-    <string name="vz4">二维码生成后可在微云中再次修改分享设置</string>
+    <string name="w40">二维码生成后可在微云中再次修改分享设置</string>
     <string name="vva">链接分享</string>
+    <string name="w41">共%1$d个文件(%2$s容量已满)，新增文件将临时保存。</string>
+    <string name="w42">容量已满</string>
+    <string name="w43">共%1$d个文件(已使用%2$s/%3$s)</string>
     <string name="f0j">已挂失</string>
+    <string name="w44">注意：当前使用的是本地Flutter产物</string>
     <string name="f0k">语音通话</string>
     <string name="f0l">不再接收</string>
     <string name="f0m">出错了，请重试</string>
@@ -9362,6 +9565,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="fin">确认要离开对面的小可爱吗？</string>
     <string name="fio">QQ扩列</string>
     <string name="fip">只有%1$ds的时间哦，开始聊天吧</string>
+    <string name="w45">...</string>
     <string name="fiq">你们已成为好友，回到消息列表开启聊天吧。</string>
     <string name="fir">限时聊天已结束， 加好友 继续聊天吧。</string>
     <string name="fis">加好友</string>
@@ -9379,7 +9583,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="fj4">限时聊天</string>
     <string name="fj5">匹配聊天</string>
     <string name="fj6">%d人在线等待和你相遇</string>
-    <string name="ix_">立即匹配</string>
+    <string name="ix_">随缘匹配</string>
     <string name="ixa">取消</string>
     <string name="ixb">匹配聊天</string>
     <string name="ixc">匹配设置</string>
@@ -9395,9 +9599,15 @@ www.tenpay.com找回支付密码"</string>
     <string name="ixm">勿扰模式</string>
     <string name="ixn">开启后，你将不被他人匹配到。</string>
     <string name="ixo">匹配</string>
+    <string name="w46">话题匹配</string>
+    <string name="w47">随缘匹配</string>
     <string name="ixp">在线等你相遇</string>
     <string name="ixq">人在线等你相遇</string>
-    <string name="vz5">人</string>
+    <string name="w48">人</string>
+    <string name="w49">在线</string>
+    <string name="w4_">扩列帖</string>
+    <string name="w4a">暂无更多资料</string>
+    <string name="w4b">个性签名</string>
     <string name="fj7">还有%s人在玩QQ扩列</string>
     <string name="fj8">编辑QQ扩列资料</string>
     <string name="fj9">开始答题</string>
@@ -9408,10 +9618,16 @@ www.tenpay.com找回支付密码"</string>
     <string name="fjc">嘤嘤嘤加载失败了(/▽＼)</string>
     <string name="fjd">加载成功 (｡･∀･)ﾉﾞ</string>
     <string name="fje">正在加载...</string>
+    <string name="w4c">发送</string>
     <string name="ixr">扩列</string>
     <string name="fjf">嘤嘤嘤刷新失败了(/▽＼)</string>
     <string name="fjg">正在刷新...</string>
     <string name="fjh">刷新成功 (｡･∀･)ﾉﾞ</string>
+    <string name="w4d">删除已录入人脸</string>
+    <string name="w4e">你已启用人脸识别</string>
+    <string name="w4f">可通过人脸识别，进行新设备登录验证。</string>
+    <string name="w4g">将进行人脸录入</string>
+    <string name="w4h">请先绑定密保手机，再录入人脸</string>
     <string name="fji">仅显示添加好友</string>
     <string name="fjj">显示全部</string>
     <string name="ixs">请朗读数字</string>
@@ -9420,6 +9636,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="ixv">录制时间超过十秒，请重新录制。</string>
     <string name="ixw">完成</string>
     <string name="ixx">提交</string>
+    <string name="w4i">重新识别</string>
     <string name="fjk">最多同时选择9个聊天会话</string>
     <string name="fjl">QQ好友</string>
     <string name="fjm">取消全选</string>
@@ -9624,10 +9841,14 @@ www.tenpay.com找回支付密码"</string>
     <string name="fnx">图片裁剪</string>
     <string name="fny">重新提取</string>
     <string name="iyv">导出文档</string>
+    <string name="w4j">转发图片</string>
+    <string name="w4k">转发全文</string>
     <string name="fnz">更多</string>
     <string name="fo0">文字提取</string>
-    <string name="fo1">原文</string>
     <string name="iyw">划重点</string>
+    <string name="w4l">裁剪</string>
+    <string name="w4m">图片异常</string>
+    <string name="w4n">拍下需要提取的文字</string>
     <string name="fo2">搜题</string>
     <string name="fo3">搜题失败，请稍候再试。</string>
     <string name="fo4">没有搜索到任何题目。</string>
@@ -9663,7 +9884,14 @@ www.tenpay.com找回支付密码"</string>
     <string name="fou">翻译失败，请稍后再试。</string>
     <string name="fov">下拉列表</string>
     <string name="fow">翻译中...</string>
-    <string name="fox">拍下需要翻译的文字</string>
+    <string name="w8u">对照原图</string>
+    <string name="w4o">复制</string>
+    <string name="w4q">提取全文</string>
+    <string name="w8v">点击这里提取文字</string>
+    <string name="w4r">全文</string>
+    <string name="w8w">双指可滑动图片</string>
+    <string name="w8x">点击/拖动选择需要的文字</string>
+    <string name="w4s">选中</string>
     <string name="foy">开通会员</string>
     <string name="foz">激活会员</string>
     <string name="fp0">我的超级会员</string>
@@ -9705,6 +9933,11 @@ www.tenpay.com找回支付密码"</string>
     <string name="fpw">更换封面</string>
     <string name="fpx">更换背景</string>
     <string name="fpy">该联系人未启用通讯录</string>
+    <string name="w4u">输入想说的话</string>
+    <string name="w4v">发布失败。</string>
+    <string name="w4w">无装扮权限，发布失败。</string>
+    <string name="w4x">随心贴发布成功</string>
+    <string name="w4y">请检查网络，稍后再试</string>
     <string name="fpz">完善资料，让好友了解与众不同的我。</string>
     <string name="fq0">QQ：%s</string>
     <string name="fq1">每天最多给%d个好友点赞哦。</string>
@@ -9753,6 +9986,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="fr2">删除失败，请稍候再试</string>
     <string name="fr3">删除个性签名</string>
     <string name="fr4">正在删除…</string>
+    <string name="w4z">登录验证方式</string>
     <string name="vvf">长图生成中...</string>
     <string name="fr5">查看更多</string>
     <string name="fr6">请说出你要搜索的联系人</string>
@@ -9772,6 +10006,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="fri">厘米秀</string>
     <string name="frj">轻应用设置</string>
     <string name="frk">辅助功能</string>
+    <string name="w8y">大数据通道环境设置：</string>
     <string name="frl">BRIDGE_PLUGIN</string>
     <string name="frn">我的名片夹</string>
     <string name="fro">腾讯文档</string>
@@ -9791,6 +10026,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="fs2">加我为好友时的验证设置</string>
     <string name="fs3">亲密关系</string>
     <string name="fs4">已绑定%d位好友</string>
+    <string name="w50">我的情侣空间</string>
     <string name="fs5">我</string>
     <string name="vvh">收到%d个新通知</string>
     <string name="fs6">我的视频</string>
@@ -9834,8 +10070,9 @@ www.tenpay.com找回支付密码"</string>
     <string name="qq_setting_shoucang">我的收藏</string>
     <string name="ft2">可通过系统通讯录发起QQ聊天</string>
     <string name="ft3">可通过手机号码搜索到我</string>
+    <string name="w51">去设置</string>
     <string name="ft4">在QQ所有场景展示大会员身份标识</string>
-    <string name="ft5">QQ大会员身份</string>
+    <string name="ft5">QQ大会员身份标识显示</string>
     <string name="iz5">展示靓号群群主身份</string>
     <string name="ft6">群聊场景展示大会员专属铭牌</string>
     <string name="ft7">群聊QQ大会员铭牌</string>
@@ -9892,6 +10129,18 @@ www.tenpay.com找回支付密码"</string>
     <string name="fuh">特别关心好友设置</string>
     <string name="fui">开启后，好友将收藏到[特别关心]列表中，好友消息、空间动态和小视频通知将有特别提醒。</string>
     <string name="fuj">状态</string>
+    <string name="w52">背景</string>
+    <string name="w53">开通超级会员即可使用该</string>
+    <string name="w54">开通QQ会员即可使用该</string>
+    <string name="w55">字体</string>
+    <string name="w56">贴一个</string>
+    <string name="w57">写一张随心贴</string>
+    <string name="w58">留下我想对他说的话</string>
+    <string name="w59">留下我想对她说的话</string>
+    <string name="w5_">留下我想说的话</string>
+    <string name="w5a">全部好友可见</string>
+    <string name="w5b">仅对方可见</string>
+    <string name="w5c">仅自己可见</string>
     <string name="fuk">进入小视频</string>
     <string name="ful">转发自 @%s</string>
     <string name="fum">查看全部小视频</string>
@@ -9960,6 +10209,10 @@ www.tenpay.com找回支付密码"</string>
     <string name="j06">无聊的时候最需要，kill time!</string>
     <string name="j07">这么多小伙伴，看看谁才是麦霸</string>
     <string name="vvm">人正在</string>
+    <string name="w5d">刷新</string>
+    <string name="w5e">视频加载中…</string>
+    <string name="w5f">悬浮窗开启失败</string>
+    <string name="w5g">一起看悬浮窗</string>
     <string name="j08">赛事电竞和直播，一起来看更嗨</string>
     <string name="fvb">群头像</string>
     <string name="fvc">群聊名称已复制到剪切板</string>
@@ -9969,7 +10222,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="fvg">[有人对你坦白说]</string>
     <string name="fvh">[特别关注]</string>
     <string name="j09">群互动标识、群头衔</string>
-    <string name="j0_">群头衔及荣誉标识</string>
+    <string name="j0_">群荣誉</string>
     <string name="j0a">群荣誉</string>
     <string name="fvi">加入</string>
     <string name="fvj">等待验证</string>
@@ -9983,6 +10236,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="vvt">群提醒词</string>
     <string name="vvu">即将到期</string>
     <string name="fvl">群公告</string>
+    <string name="w5h">群主推荐</string>
     <string name="fvm">[有关注的内容]</string>
     <string name="vvv">查看已过滤通知</string>
     <string name="fvn">语音通话</string>
@@ -9996,6 +10250,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="fvq">"将进行人脸识别验证身份
 请确保是%s本人操作"</string>
     <string name="fvr">同意服务提供者及腾讯使用并传送相关数据用于身份核验。&lt;font color=#25b8f1>&lt;a href=https://ti.qq.com/agreement/qqface.html>查看协议详情&lt;/a>&lt;/font></string>
+    <string name="w5i">已阅读并同意 &lt;font color=#25b8f1>&lt;a href=https://ti.qq.com/agreement/qqface.html>人脸识别功能服务协议&lt;/a>&lt;/font></string>
     <string name="fvs">我的等级</string>
     <string name="fvt">请重新登录</string>
     <string name="fvu">跳转到应用宝抢号</string>
@@ -10843,7 +11098,6 @@ www.tenpay.com找回支付密码"</string>
     <string name="jjq">购买</string>
     <string name="jjr">取消</string>
     <string name="jjs">立即购买</string>
-    <string name="jjt">开通超级会员</string>
     <string name="jju">立即发送</string>
     <string name="jjv">余额不足</string>
     <string name="jjw">下载提示</string>
@@ -10856,8 +11110,6 @@ www.tenpay.com找回支付密码"</string>
     <string name="jk3">购买</string>
     <string name="jk4">立即参加</string>
     <string name="jk5">启动厘米秀失败，请重试！</string>
-    <string name="jk6">超级会员专属动作</string>
-    <string name="jk7">超级会员专属动作</string>
     <string name="jk8">下载失败</string>
     <string name="jk9">已经下载完成</string>
     <string name="jk_">下载失败</string>
@@ -10932,7 +11184,6 @@ www.tenpay.com找回支付密码"</string>
     <string name="jm5">替换</string>
     <string name="jm6">[动作消息]</string>
     <string name="jm7">获取参数失败</string>
-    <string name="jm8">超级会员专属动作</string>
     <string name="jm9">角色素材下载不完整</string>
     <string name="jm_">资源不完整</string>
     <string name="jma">角色素材下载不完整</string>
@@ -11033,7 +11284,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="jow">连接已经建立...</string>
     <string name="jox">删除词典并开始更新</string>
     <string name="joy">轻应用设置</string>
-    <string name="joz">已经开启监听，可以连接调试...</string>
+    <string name="joz">已就绪，可以连接调试...</string>
     <string name="jp0">[应用]%s</string>
     <string name="jp1">失败</string>
     <string name="jp2">成功</string>
@@ -11043,7 +11294,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="jp6">测试异步分享--异步回调(已经添加)</string>
     <string name="jp7">缺少msgKey</string>
     <string name="jp8">(监听超时)</string>
-    <string name="jp9">已经开启监听，可以连接调试...</string>
+    <string name="jp9">已就绪，可以连接调试...</string>
     <string name="jp_">无效的坐标值</string>
     <string name="jpa">指定为城市%s</string>
     <string name="jpb">应用创建成功...</string>
@@ -11866,7 +12117,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="kae">重播</string>
     <string name="kaf">作品</string>
     <string name="kag">回复</string>
-    <string name="kah">为你推荐</string>
+    <string name="kah">你可能喜欢</string>
     <string name="kai">说点什么...</string>
     <string name="kaj">评论</string>
     <string name="kak">购买</string>
@@ -13455,6 +13706,7 @@ www.tenpay.com找回支付密码"</string>
     <string name="lgb">[好友：</string>
     <string name="lgc">抽屉返回模式--返回tab界面</string>
     <string name="lgd">核身</string>
+    <string name="w5j">广点通测试页面入口</string>
     <string name="lge">确认</string>
     <string name="lgf">播放调试</string>
     <string name="lgg">复制</string>
@@ -18327,9 +18579,9 @@ QQ使用定位服务。"</string>
     <string name="p10">设置</string>
     <string name="p11">允许</string>
     <string name="p12">请选择分组</string>
-    <string name="vz6">访问存储空间</string>
-    <string name="vz7">为保证你正常使用该功能，请前往系统设置开启存储访问权限。</string>
-    <string name="vz8">访问存储空间</string>
+    <string name="w5k">访问存储空间</string>
+    <string name="w5l">为保证你正常使用该功能，请前往系统设置开启存储访问权限。</string>
+    <string name="w5m">访问存储空间</string>
     <string name="p13">上传图片失败</string>
     <string name="p14">取消</string>
     <string name="p15">删除</string>
@@ -19115,7 +19367,7 @@ QQ使用定位服务。"</string>
     <string name="pl7">语音消息无文本内容</string>
     <string name="pl8">秒</string>
     <string name="pl9">设置成功,ppt播放倍速为</string>
-    <string name="pl_">当前为非WIFI环境，该挂件及资源约13M，是否继续下载</string>
+    <string name="pl_">当前为非WIFI环境，该挂件及资源约21.1M，是否继续下载</string>
     <string name="pla">该功能无法在分屏模式下使用。</string>
     <string name="plb">系统版本过低，不支持短视频功能</string>
     <string name="plc">该功能无法在分屏模式下使用。</string>
@@ -20751,13 +21003,13 @@ QQ使用定位服务。"</string>
     <string name="qs3">请%s</string>
     <string name="qs4">未检测到人脸</string>
     <string name="qs5">人脸识别系统出错，请稍后重试</string>
-    <string name="qs6">正在检测，请稍等...</string>
+    <string name="qs6">正在识别，请稍等</string>
     <string name="qs7">人脸识别</string>
     <string name="qs8">正在识别，请保持姿势不变</string>
     <string name="qs9">网络连接失败，请检查手机网络后重试。</string>
     <string name="qs_">相机打开失败</string>
     <string name="qsa">确定</string>
-    <string name="qsb">正在准备人脸识别系统...</string>
+    <string name="qsb">启动中</string>
     <string name="qsc">人脸识别系统出错，请稍后重试</string>
     <string name="qsd">张嘴</string>
     <string name="qse">当前设备不支持人脸识别功能，请使用有前置摄像头的设备尝试。</string>
@@ -20985,6 +21237,9 @@ QQ使用定位服务。"</string>
     <string name="qyc">完成</string>
     <string name="qyd">完成</string>
     <string name="qye">没有你的订阅信息</string>
+    <string name="w5n">对照</string>
+    <string name="w5o">对照翻译</string>
+    <string name="w5p">只看译文</string>
     <string name="qyf">翻译</string>
     <string name="qyg">英语</string>
     <string name="qyh">中文</string>
@@ -22616,7 +22871,7 @@ QQ使用定位服务。"</string>
     <string name="s54">的照片</string>
     <string name="s55">我的空间</string>
     <string name="s56">定时</string>
-    <string name="s57">这里发表的暖说说可被任何人看到</string>
+    <string name="s57">内容将发表到暖说说和QQ空间</string>
     <string name="s58">我</string>
     <string name="s59">上传成功</string>
     <string name="s5_">上传高清图片</string>
@@ -23924,7 +24179,6 @@ QQ使用定位服务。"</string>
     <string name="t3g">扫码</string>
     <string name="t3h">二维码</string>
     <string name="t3i">本机型无法支持穿越，请换其它手机穿越。</string>
-    <string name="t3j">翻译</string>
     <string name="t3k">相机启动失败，请退出后重试。</string>
     <string name="t3l">正在加载...</string>
     <string name="t3m">普通人</string>
@@ -24252,6 +24506,7 @@ QQ使用定位服务。"</string>
     <string name="tbc">切换环境失败</string>
     <string name="tbd">返回消息</string>
     <string name="tbe">发现</string>
+    <string name="w5q">智能搜索</string>
     <string name="tbf">数据返回为空</string>
     <string name="tbg">服务异常:</string>
     <string name="tbh">全选</string>
@@ -24589,6 +24844,7 @@ QQ使用定位服务。"</string>
     <string name="tkj">加号</string>
     <string name="tkk">浅葱绿</string>
     <string name="tkl">文字</string>
+    <string name="w5r">精典蓝</string>
     <string name="tkm">加号</string>
     <string name="tkn">发送</string>
     <string name="tko">盛夏黄</string>
@@ -24725,7 +24981,7 @@ QQ使用定位服务。"</string>
     <string name="to8">这是我的小钻出场动作哦~</string>
     <string name="to9">这是我的炫物出场动作哦~</string>
     <string name="to_">这是我的小钻出场动作哦~</string>
-    <string name="toa">我的超级会员出场动作哦~</string>
+    <string name="toa">我的豪华黄钻出场动作哦~</string>
     <string name="tob">此动作本地json不存在，尝试更新。</string>
     <string name="toc">这是我的炫物出场动作哦~</string>
     <string name="tod">此动作本地json不存在，尝试更新。</string>
@@ -25544,6 +25800,7 @@ QQ使用定位服务。"</string>
     <string name="u_c">参数错误。</string>
     <string name="u_d">返回应用</string>
     <string name="u_e">鉴权失败，请稍后重试！</string>
+    <string name="w5s">请先输入文字</string>
     <string name="u_f">鉴权失败，请稍后重试！</string>
     <string name="u_g">正在拉取验证信息</string>
     <string name="u_h">切换账号</string>
@@ -25930,6 +26187,7 @@ QQ使用定位服务。"</string>
     <string name="ujs">你已被移出群聊</string>
     <string name="ujt">取消</string>
     <string name="uju">群信用星级</string>
+    <string name="w5t">快捷工具栏</string>
     <string name="ujv">举朵小花欢迎你！</string>
     <string name="ujw">共</string>
     <string name="ujx">允许群内使用坦白说</string>
@@ -27478,6 +27736,7 @@ QQ使用定位服务。"</string>
     <string name="fyq">我有邀请码，注册获得QQ会员3天。</string>
     <string name="fyr">已阅读并同意</string>
     <string name="vo7">音视频通话邀请</string>
+    <string name="w5u">PUPU读书</string>
     <string name="fys">提交密码</string>
     <string name="fyt">提交验证码</string>
     <string name="fyu">正在提交信息</string>
@@ -28078,7 +28337,7 @@ QQ使用定位服务。"</string>
     <string name="gb7">%1$d张  %2$d赞</string>
     <string name="gb8">%d张</string>
     <string name="gb9">%d个</string>
-    <string name="vz9">网络图片</string>
+    <string name="w5v">网络图片</string>
     <string name="vxc">月</string>
     <string name="vxd">那年今日</string>
     <string name="gb_">手账日志</string>
@@ -28181,6 +28440,7 @@ QQ使用定位服务。"</string>
     <string name="gd4">你的相机无法启动</string>
     <string name="gd5">取消</string>
     <string name="gd6">放弃上传</string>
+    <string name="w5w">取消</string>
     <string name="gd7">取消置顶失败</string>
     <string name="gd8">取消置顶成功</string>
     <string name="vq0">手机系统版本过低，暂不支持该功能。</string>
@@ -28258,6 +28518,7 @@ QQ使用定位服务。"</string>
     <string name="gf5">一年内可在我的空间-设置-照片回收站中恢复已删除照片</string>
     <string name="gf6">确认删除这条分享吗？</string>
     <string name="gf7">确认删除这条说说吗？</string>
+    <string name="w5x">确认删除这条随心贴吗？</string>
     <string name="gf8">删除这段视频吗？</string>
     <string name="gf9">确认删除这条动态吗？不会删除相册里的视频</string>
     <string name="gf_">取消置顶</string>
@@ -28307,10 +28568,32 @@ QQ使用定位服务。"</string>
     <string name="ggi">查看背景音乐</string>
     <string name="ggj">查看资料卡</string>
     <string name="ggk">定位权限申请</string>
+    <string name="w5y">爱心</string>
+    <string name="w5z">拍打</string>
+    <string name="w60">击掌</string>
     <string name="ggl">豪华贵族</string>
+    <string name="w61">切2D</string>
+    <string name="w62">切3D</string>
+    <string name="w63">装扮</string>
+    <string name="w64">小窝</string>
+    <string name="w65">动作</string>
     <string name="ggm">主人设置了权限</string>
     <string name="ggn">投屏小贴士</string>
     <string name="ggo">你的号码被举报违规，已禁止发言</string>
+    <string name="w66">开始使用</string>
+    <string name="w67">原踩空间互动已升级为厘米秀, 可与好友进行更多有趣的互动啦！</string>
+    <string name="w68">更新提醒：</string>
+    <string name="w69">开启厘米秀互动</string>
+    <string name="w6_">给你发送了</string>
+    <string name="w6a">个</string>
+    <string name="w6b">卡哩+%d</string>
+    <string name="w6c">今日获得卡哩达上限</string>
+    <string name="w8z">卡哩+%d, 已达总上限</string>
+    <string name="w90">卡哩+%d, 已达上限</string>
+    <string name="w6d">厘米石+%d</string>
+    <string name="w6e">今日获得厘米石达上限</string>
+    <string name="w91">厘米石+%d, 已达总上限</string>
+    <string name="w92">厘米石+%d, 已达上限</string>
     <string name="ggp">使用此文字发表</string>
     <string name="ggq">显示所在位置</string>
     <string name="ggr">定位失败</string>
@@ -28368,7 +28651,7 @@ QQ使用定位服务。"</string>
     <string name="gi3">不保存</string>
     <string name="gi4">为待整理照片添加拍摄时间</string>
     <string name="gi5">待整理照片</string>
-    <string name="vz_">暂不支持本地视频背景</string>
+    <string name="w6f">暂不支持本地视频背景</string>
     <string name="gi6">对该内容不感兴趣</string>
     <string name="vxe">已取消同步订阅号</string>
     <string name="gi7">暖友的说说</string>
@@ -28490,7 +28773,10 @@ QQ使用定位服务。"</string>
     <string name="gla">同步开关已默认关闭</string>
     <string name="vq5">我的</string>
     <string name="glb">说点什么吧...</string>
+    <string name="w6g">发表暖说说，让更多人看到你...</string>
     <string name="glc">分享新鲜事...</string>
+    <string name="w6h">评论</string>
+    <string name="w6i">回复</string>
     <string name="gld">说说重复发表</string>
     <string name="gle">转发理由...</string>
     <string name="glf">放弃</string>
@@ -28867,9 +29153,13 @@ QQ使用定位服务。"</string>
     <string name="gv1">内容更新成功</string>
     <string name="vxq">来自栏目</string>
     <string name="gv2">点击查看图集</string>
+    <string name="w6j">获取Native详情页UI参数</string>
+    <string name="w6k">看过了</string>
     <string name="gv3">参与话题</string>
     <string name="gv4">查看问答</string>
     <string name="gv5">屏蔽看点的消息推送</string>
+    <string name="w6l">直播结束</string>
+    <string name="w6m">直播中</string>
     <string name="gv6">搜索</string>
     <string name="gv7">消息通知设置</string>
     <string name="vqb" formatted="false">%s播放 %s</string>
@@ -28904,6 +29194,7 @@ QQ使用定位服务。"</string>
     <string name="vqd">需要打开麦克风权限哦～点击打开</string>
     <string name="vqe">点击打开麦克风权限，吹出更多纸条～</string>
     <string name="vqf">允许麦克风权限，体验“吹一吹”纸条哦</string>
+    <string name="w6n">播放反馈</string>
     <string name="gvy">私密</string>
     <string name="gvz">公开</string>
     <string name="gw0">部分可见</string>
@@ -28961,6 +29252,7 @@ QQ使用定位服务。"</string>
     <string name="gxd">我的消息</string>
     <string name="gxe">设置</string>
     <string name="gxf">我的话题</string>
+    <string name="w6o">点击更多精彩内容^▽^</string>
     <string name="gxg">贴纸设置</string>
     <string name="gxh">已订阅公众号管理</string>
     <string name="gxi">系统消息</string>
@@ -29186,7 +29478,7 @@ QQ使用定位服务。"</string>
     <string name="h39">人脸识别插件下载失败，请连接网络后重试</string>
     <string name="h3_">人脸识别插件验证失败，请连接网络后重试</string>
     <string name="h3a">短视频</string>
-    <string name="h3b">最多只能选择%d张图片\\视频</string>
+    <string name="h3b">最多只能选择%d张图片/视频</string>
     <string name="h3c">最多只能选择%d个视频</string>
     <string name="h3d">将会耗费2M流量来显示，请问是否下载</string>
     <string name="h3e">下载组件</string>
@@ -29200,6 +29492,8 @@ QQ使用定位服务。"</string>
     <string name="vqm">机器人请求用户的头像和昵称等权限。</string>
     <string name="h3j">暂无可添加的机器人</string>
     <string name="vqn">机器人</string>
+    <string name="w6p">识别失败</string>
+    <string name="w6q">识别成功</string>
     <string name="h3k">QQ正在后台运行</string>
     <string name="h3l">被骚扰了？举报</string>
     <string name="h3m">共同好友%d个</string>
@@ -29293,6 +29587,7 @@ QQ使用定位服务。"</string>
     <string name="h5y">操作超时！</string>
     <string name="h5z">请输入验证码</string>
     <string name="h60">未在图中发现小程序码</string>
+    <string name="w6r">转文字</string>
     <string name="h61">文字提取</string>
     <string name="h62">拍照提取文字</string>
     <string name="h63">扫一扫</string>
@@ -29460,6 +29755,7 @@ QQ使用定位服务。"</string>
     <string name="h_b">搜索收藏列表</string>
     <string name="h_c">添加到表情</string>
     <string name="h_d">搜索指定内容</string>
+    <string name="w6s">名片</string>
     <string name="vxw">邮箱</string>
     <string name="vxx">位置</string>
     <string name="vxy">聊天记录</string>
@@ -29503,7 +29799,7 @@ QQ使用定位服务。"</string>
     <string name="haa">正在查找群</string>
     <string name="hab">你的帐号在不常用地点登录并发送垃圾消息。请尽快确认帐号是否存在被盗风险，若非本人操作请立即修改密码。</string>
     <string name="hac">是我本人操作</string>
-    <string name="had">http://aq.qq.com/cn2/change_psw/mobile/mobile_change_psw_way?source_id=3259</string>
+    <string name="had">https://aq.qq.com/cn2/change_psw/mobile/mobile_change_psw_way?source_id=3259</string>
     <string name="hae">修改密码</string>
     <string name="haf">异常提醒</string>
     <string name="hag">取消</string>
@@ -29806,6 +30102,8 @@ QQ使用定位服务。"</string>
     <string name="hid">抖了你一下</string>
     <string name="hie">你抖了%1$s一下</string>
     <string name="hif">上午</string>
+    <string name="w6t">添加到我的成功</string>
+    <string name="w6u">从我的移除成功</string>
     <string name="hig">搜索 搜索栏</string>
     <string name="hih">返回</string>
     <string name="hii">留在QQ</string>
@@ -29821,6 +30119,56 @@ QQ使用定位服务。"</string>
     <string name="hio">取消分享</string>
     <string name="hip">[名片]你的QQ暂不支持查看名片，请升级手机QQ最新版查看。</string>
     <string name="hiq">选择联系人</string>
+    <string name="w6v">二维码</string>
+    <string name="w6w">QQ浏览器</string>
+    <string name="w6x">QQ好友</string>
+    <string name="w6y">QQ空间</string>
+    <string name="w6z">空间相册</string>
+    <string name="w70">截屏分享</string>
+    <string name="w71">关于</string>
+    <string name="w72">添加到桌面</string>
+    <string name="w73">添加到表情</string>
+    <string name="w74">加好友</string>
+    <string name="w75">添加到我的</string>
+    <string name="w76">调整字体</string>
+    <string name="w77">定位聊天</string>
+    <string name="w78">关闭调试</string>
+    <string name="w79">关性能窗口</string>
+    <string name="w7_">打开调试</string>
+    <string name="w7a">开性能窗口</string>
+    <string name="w7b">导出vconsole</string>
+    <string name="w7c">回到首页</string>
+    <string name="w7d">收藏</string>
+    <string name="w7e">添加至彩签</string>
+    <string name="w7f">取消彩签</string>
+    <string name="w7g">复制链接</string>
+    <string name="w7h">debug</string>
+    <string name="w7i">群相册</string>
+    <string name="w7j">看点</string>
+    <string name="w7k">截长图</string>
+    <string name="w7l">更多好友</string>
+    <string name="w7m">屏蔽</string>
+    <string name="w7n">发起会话</string>
+    <string name="w7o">其他应用</string>
+    <string name="w7p">提取文字</string>
+    <string name="w7q">设置</string>
+    <string name="w7r">企点</string>
+    <string name="w7s">企业QQ</string>
+    <string name="w7t">从我的移除</string>
+    <string name="w7u">举报</string>
+    <string name="w7v">转载照片</string>
+    <string name="w7w">保存到手机</string>
+    <string name="w7x">扫描小程序</string>
+    <string name="w7y">扫描二维码</string>
+    <string name="w7z">查看表情</string>
+    <string name="w80">我的电脑</string>
+    <string name="w81">浏览器</string>
+    <string name="w82">不感兴趣</string>
+    <string name="w83">导出为文档</string>
+    <string name="w84">微信</string>
+    <string name="w85">朋友圈</string>
+    <string name="w86">新浪微博</string>
+    <string name="w87">微云</string>
     <string name="hir">分享到</string>
     <string name="his">面对面分享群</string>
     <string name="hit">分享失败</string>
@@ -29830,6 +30178,8 @@ QQ使用定位服务。"</string>
     <string name="hix">分享失败</string>
     <string name="hiy">文件不存在!</string>
     <string name="hiz">分享受限</string>
+    <string name="w88">我知道了</string>
+    <string name="w89">存储权限获取失败，暂无法进行分享。</string>
     <string name="hj0">该应用未通过安全校验，无法操作。</string>
     <string name="hj1">新鲜事</string>
     <string name="hj2">来自%1$s的分享</string>
@@ -29861,6 +30211,7 @@ QQ使用定位服务。"</string>
     <string name="hjq">欢迎加入群聊</string>
     <string name="hjr">分享给好友</string>
     <string name="hjs">[分享]</string>
+    <string name="w8_">她</string>
     <string name="hjt">屏蔽取消</string>
     <string name="hju">取消屏蔽失败</string>
     <string name="hjv">取消屏蔽成功</string>
@@ -30266,16 +30617,19 @@ QQ使用定位服务。"</string>
     <string name="vs_">%s件好物</string>
     <string name="vsa">%s的小店</string>
     <string name="vyd">服务器开小差儿，请稍后再试</string>
+    <string name="w8a">分享给你一个有趣的订阅号</string>
+    <string name="w8b">待填写</string>
     <string name="vye">粉丝</string>
-    <string name="vza">已收藏</string>
+    <string name="w8c">已收藏</string>
     <string name="vsb">订阅</string>
     <string name="vsc">我的订阅</string>
     <string name="vsd">已订阅</string>
     <string name="vse">发现</string>
     <string name="vsf">你可能喜欢</string>
+    <string name="w8d">查看更多推荐</string>
+    <string name="w8e">更多推荐</string>
     <string name="vsg">"订阅帐号后
 对方最新内容将出现在这里"</string>
-    <string name="vyf">没有更多啦 左滑去发现吧</string>
     <string name="vyh">删除草稿</string>
     <string name="vyi">草稿</string>
     <string name="vyj">"发表功能马上就要开放啦
@@ -30287,7 +30641,8 @@ QQ使用定位服务。"</string>
     <string name="vyo">"发布你第一个作品吧
 也可以同步空间状态哦"</string>
     <string name="vyp">同步空间状态</string>
-    <string name="vsh">我在QQ订阅号长按扫码可订阅</string>
+    <string name="w8f">发布了一个作品</string>
+    <string name="vsh">我在QQ订阅号 长按扫码可订阅</string>
     <string name="vsi">不感兴趣操作失败</string>
     <string name="vsj">确认</string>
     <string name="vsk">确认收起吗？%d日内将不再为你推荐</string>
@@ -30297,6 +30652,7 @@ QQ使用定位服务。"</string>
     <string name="vyr">保存失败！</string>
     <string name="vys">已保存</string>
     <string name="vyt">草稿已保存到个人主页</string>
+    <string name="w8g">为你生成了分享图，可分享至</string>
     <string name="vsn">%s条更新</string>
     <string name="vso">次浏览</string>
     <string name="htv">订阅号动态</string>
@@ -30357,6 +30713,7 @@ QQ使用定位服务。"</string>
     <string name="hvc">通话记录</string>
     <string name="hvd">通讯录</string>
     <string name="hve">QQ好友</string>
+    <string name="w8h">TA</string>
     <string name="hvf">Ta的资料</string>
     <string name="hvg">Ta好神秘，什么都没有留下</string>
     <string name="hvh">添加好友</string>
@@ -30483,6 +30840,7 @@ QQ使用定位服务。"</string>
     <string name="hyk">模板预览</string>
     <string name="hyl">选取模板</string>
     <string name="hym">腾讯文档转换失败</string>
+    <string name="w8i">无法解析当前表格，请选择其他表格尝试。</string>
     <string name="hyn">权限修改失败，当前文档权限和提示权限不一致。</string>
     <string name="hyo">我知道了</string>
     <string name="hyp">由%s复制</string>
@@ -30492,6 +30850,9 @@ QQ使用定位服务。"</string>
     <string name="hyt">由%s查看</string>
     <string name="hyu">加载失败，请轻触页面重试。</string>
     <string name="hyv">正在启动编辑</string>
+    <string name="w8j">独立填写,保护隐私</string>
+    <string name="w8k">结果自动汇总到表格</string>
+    <string name="w8l">正在创建收集表...</string>
     <string name="hyw">正在加载，请稍候......</string>
     <string name="hyx">正在加载...</string>
     <string name="hyy">没有更多了</string>
@@ -30615,6 +30976,7 @@ QQ使用定位服务。"</string>
     <string name="i1m">设置挂件，聊天更有范。</string>
     <string name="i1n">将把服务器端的完整聊天记录同步至本地。</string>
     <string name="i1o">[有新公告]</string>
+    <string name="w8m">[有待确认的公告]</string>
     <string name="title">职位</string>
     <string name="i1r">QQIdentiferActivity</string>
     <string name="i1v">分享二维码</string>
@@ -30702,6 +31064,7 @@ QQ使用定位服务。"</string>
     <string name="i42">视频聊天</string>
     <string name="i43">视频通话</string>
     <string name="i44">直播间</string>
+    <string name="w8n">群课堂</string>
     <string name="i45">位置</string>
     <string name="i46">拨打手机</string>
     <string name="i47">语音通话</string>
@@ -30896,8 +31259,10 @@ QQ使用定位服务。"</string>
     <string name="vts">按王者段位</string>
     <string name="vtt">按王者段位排序</string>
     <string name="i8w">超级群主</string>
+    <string name="w8o">管理员</string>
     <string name="i8x">欢迎加入%1$s，群聊号码：%2$s</string>
     <string name="i8y">欢迎加入%1$s</string>
+    <string name="w8p">群主</string>
     <string name="vyv">%1$s可能是QQ群号或电话号码，你可以</string>
     <string name="i8z">已达人数上限</string>
     <string name="i90">邀请人数已达上限</string>
@@ -30979,7 +31344,7 @@ QQ使用定位服务。"</string>
     <string name="ia1">你已取消隐藏该不常用联系人。</string>
     <string name="ia2">不常用联系人动态权限</string>
     <string name="ia3">你已隐藏该不常用联系人</string>
-    <string name="ia4">是否取消隐藏？</string>
+    <string name="ia4">，是否取消隐藏？</string>
     <string name="ia5">收起</string>
     <string name="ia6">取消关注</string>
     <string name="ia7">来自应用分享</string>

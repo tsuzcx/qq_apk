@@ -1,49 +1,8 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class aoaj
-  extends apdj
+public abstract interface aoaj
 {
-  public aoaj(QfileCloudFileTabView paramQfileCloudFileTabView) {}
-  
-  public void a()
-  {
-    this.a.a.a().a();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().g();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().h();
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(QfileBaseCloudFileTabView.b, 2, "wy saveto wy?" + apck.a());
-    }
-  }
-  
-  public void e()
-  {
-    this.a.a.a().i();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().j();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().E();
-  }
+  public abstract void a(List<aoah> paramList);
 }
 
 

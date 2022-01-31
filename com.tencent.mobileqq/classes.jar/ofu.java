@@ -1,17 +1,31 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class ofu
-  extends bequ
+final class ofu
+  implements DialogInterface.OnClickListener
 {
-  ofu(ofs paramofs, View paramView)
+  ofu(ohv paramohv, oii paramoii) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramView);
-    paramView.setTag(this);
+    if (paramInt == 1)
+    {
+      if (this.jdField_a_of_type_Ohv != null)
+      {
+        paramDialogInterface = this.jdField_a_of_type_Ohv.a();
+        if (paramDialogInterface != null)
+        {
+          paramDialogInterface.a(this.jdField_a_of_type_Oii);
+          this.jdField_a_of_type_Ohv.notifyDataSetChanged();
+        }
+      }
+      bhvh.a("family_comment_card_hide_timestamp", Long.valueOf(System.currentTimeMillis()));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ofu
  * JD-Core Version:    0.7.0.1
  */

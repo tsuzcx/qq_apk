@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
-import baiu;
+import bbkb;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
@@ -19,7 +19,7 @@ public class RecentItemVoteData
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super.a(paramQQAppInterface, paramContext);
-    if (AppSetting.c)
+    if (AppSetting.d)
     {
       paramQQAppInterface = new StringBuilder(24);
       paramQQAppInterface.append(this.mTitleName);
@@ -50,7 +50,7 @@ public class RecentItemVoteData
   {
     this.mTitleName = paramString;
     this.time = paramLong;
-    this.mShowTime = baiu.a(paramLong, true, "yyyy-MM-dd");
+    this.mShowTime = bbkb.a(paramLong, true, "yyyy-MM-dd");
   }
 }
 

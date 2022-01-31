@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.dating.widget;
 
-import amwx;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.Layout;
@@ -13,6 +12,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewDebug.ExportedProperty;
 import android.widget.TextView;
+import annf;
 import com.tencent.qphone.base.util.QLog;
 
 public class DatingCommentTextView
@@ -73,8 +73,8 @@ public class DatingCommentTextView
         if ((this.jdField_a_of_type_Int < 0) || (this.b < this.jdField_a_of_type_Int)) {
           break label458;
         }
-        if ((arrayOfClickableSpan[0] instanceof amwx)) {
-          ((amwx)arrayOfClickableSpan[0]).a(true);
+        if ((arrayOfClickableSpan[0] instanceof annf)) {
+          ((annf)arrayOfClickableSpan[0]).a(true);
         } else {
           paramMotionEvent.setSpan(new BackgroundColorSpan(Color.parseColor("#d5d5d5")), this.jdField_a_of_type_Int, this.b, 33);
         }
@@ -92,8 +92,8 @@ public class DatingCommentTextView
       this.jdField_a_of_type_AndroidTextStyleClickableSpan = null;
       if ((this.jdField_a_of_type_Int >= 0) && (this.b >= this.jdField_a_of_type_Int))
       {
-        if ((arrayOfClickableSpan[0] instanceof amwx)) {
-          ((amwx)arrayOfClickableSpan[0]).a(false);
+        if ((arrayOfClickableSpan[0] instanceof annf)) {
+          ((annf)arrayOfClickableSpan[0]).a(false);
         }
         for (;;)
         {
@@ -107,9 +107,9 @@ public class DatingCommentTextView
         if ((this.jdField_a_of_type_Int < 0) || (this.b < this.jdField_a_of_type_Int)) {
           break label460;
         }
-        if ((this.jdField_a_of_type_AndroidTextStyleClickableSpan != null) && ((this.jdField_a_of_type_AndroidTextStyleClickableSpan instanceof amwx)))
+        if ((this.jdField_a_of_type_AndroidTextStyleClickableSpan != null) && ((this.jdField_a_of_type_AndroidTextStyleClickableSpan instanceof annf)))
         {
-          ((amwx)this.jdField_a_of_type_AndroidTextStyleClickableSpan).a(false);
+          ((annf)this.jdField_a_of_type_AndroidTextStyleClickableSpan).a(false);
           this.jdField_a_of_type_AndroidTextStyleClickableSpan = null;
         }
         for (;;)

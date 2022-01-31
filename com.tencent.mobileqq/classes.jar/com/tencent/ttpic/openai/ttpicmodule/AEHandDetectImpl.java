@@ -74,7 +74,7 @@ public class AEHandDetectImpl
       localArrayList.add(new PointF((localPointF1.x + localPointF2.x) / 2.0F, localPointF2.y));
       localArrayList.add(localPointF2);
       i = j;
-      while (i < 24)
+      while (i < 23)
       {
         localArrayList.add(new PointF(paramArrayOfFloat[i], paramArrayOfFloat[(i + 23)]));
         i += 1;

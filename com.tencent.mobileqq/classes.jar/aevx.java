@@ -1,23 +1,9 @@
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.SuppressLint;
 
-public class aevx
-  implements aews
+class aevx
 {
-  public aevx(SearchContactsFragment paramSearchContactsFragment) {}
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchContactsFragment", 2, "guide view | onItemClick type is:" + paramInt + " keyWords is:" + paramString);
-    }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Int = paramInt;
-    if (paramInt == 80000001) {
-      avwf.a("add_page", "search", "clk_search_grp", this.a.d + 1, 0, new String[] { "", "", paramString, "" });
-    }
-    this.a.a(paramString, false);
-  }
+  @SuppressLint({"StaticFieldLeak"})
+  private static aevt a = new aevt(null);
 }
 
 

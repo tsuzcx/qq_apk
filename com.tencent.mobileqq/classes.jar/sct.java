@@ -1,21 +1,38 @@
-import com.tencent.biz.qqstory.album.StoryAlbumResourceDownloader.3;
+import com.tencent.qphone.base.util.QLog;
 
 public class sct
-  implements mod
+  extends akdo
 {
-  public sct(StoryAlbumResourceDownloader.3 param3) {}
+  sco jdField_a_of_type_Sco = null;
   
-  public void loaded(int paramInt, String paramString)
+  public sct(scn paramscn, sco paramsco)
   {
-    scq.a(this.a.this$0);
-    scq.a(this.a.this$0, false);
-    scq.a(this.a.this$0, false);
-    urk.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "unzip success , code = %d", Integer.valueOf(paramInt));
+    this.jdField_a_of_type_Sco = paramsco;
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SubscriptRecommendAdapter", 2, "onFollowPublicAccount isSuccess: " + paramBoolean + " | uin: " + paramString + " | mRecommendItem: " + this.jdField_a_of_type_Sco);
+    }
+    if (this.jdField_a_of_type_Sco != null)
+    {
+      paramString = this.jdField_a_of_type_Sco;
+      if (!paramBoolean) {
+        break label76;
+      }
+    }
+    label76:
+    for (int i = 1;; i = 0)
+    {
+      paramString.a(i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sct
  * JD-Core Version:    0.7.0.1
  */

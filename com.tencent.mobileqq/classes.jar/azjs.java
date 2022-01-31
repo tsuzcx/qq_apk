@@ -1,89 +1,64 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.troop.aioapp.GrayGroupAppsDbHelper.1;
+import com.tencent.mobileqq.troop.aioapp.data.GrayGroupAppEntity;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.EmptyPackagePage;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.GetPackageShopRsp;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.RspBody;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.StockItem;
+import java.util.concurrent.ConcurrentHashMap;
 
-class azjs
-  extends mmm
+public class azjs
 {
-  azjs(azjq paramazjq, azjp paramazjp) {}
+  private final QQAppInterface a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  azjs(QQAppInterface paramQQAppInterface)
   {
-    if (paramInt != 0)
+    this.a = paramQQAppInterface;
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    aukn localaukn = this.a.getEntityManagerFactory().createEntityManager();
+    azjq localazjq = azjq.a(this.a);
+    Object localObject = localaukn.a(GrayGroupAppEntity.class);
+    if (!azjv.a((Collection)localObject))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_Azjp);
-      }
-      this.jdField_a_of_type_Azjp.a(-1, "errorCode=" + paramInt);
-    }
-    do
-    {
-      return;
-      paramBundle = new Oidb_0xcd1.RspBody();
-      if (paramArrayOfByte != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult erro data=" + null);
-    return;
-    for (;;)
-    {
-      try
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (!paramBundle.get_pack_rsp.has()) {
-          break;
-        }
-        paramArrayOfByte = new Oidb_0xcd1.GetPackageShopRsp();
-        paramArrayOfByte.mergeFrom(((Oidb_0xcd1.GetPackageShopRsp)paramBundle.get_pack_rsp.get()).toByteArray());
-        paramBundle = new ArrayList();
-        if (paramArrayOfByte.msg_stock.has())
+        GrayGroupAppEntity localGrayGroupAppEntity = (GrayGroupAppEntity)((Iterator)localObject).next();
+        if (paramBoolean)
         {
-          List localList = paramArrayOfByte.msg_stock.get();
-          paramInt = 0;
-          if (paramInt < localList.size())
-          {
-            Oidb_0xcd1.StockItem localStockItem = (Oidb_0xcd1.StockItem)localList.get(paramInt);
-            azkb localazkb = new azkb();
-            localazkb.a = localStockItem.int32_productid.get();
-            localazkb.b = localStockItem.int32_amount.get();
-            paramBundle.add(localazkb);
-            paramInt += 1;
-            continue;
-          }
+          localGrayGroupAppEntity.updatedTimestamp = 0L;
+          b(localGrayGroupAppEntity);
         }
-        if (paramArrayOfByte.empty_package_page.has())
-        {
-          paramArrayOfByte = (Oidb_0xcd1.EmptyPackagePage)paramArrayOfByte.empty_package_page.get();
-          if (paramArrayOfByte != null)
-          {
-            paramArrayOfByte = new wne(paramArrayOfByte);
-            if (this.jdField_a_of_type_Azjp == null) {
-              break;
-            }
-            this.jdField_a_of_type_Azjp.a(paramBundle, paramArrayOfByte);
-            return;
-          }
-        }
+        localazjq.a.put(Long.valueOf(localGrayGroupAppEntity.groupUin), localGrayGroupAppEntity);
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
-        }
-        this.jdField_a_of_type_Azjp.a(-1, "InvalidProtocolBufferMicroException");
-        return;
-      }
-      paramArrayOfByte = null;
     }
+    localaukn.a();
+  }
+  
+  private void b(GrayGroupAppEntity paramGrayGroupAppEntity)
+  {
+    aukn localaukn = this.a.getEntityManagerFactory().createEntityManager();
+    paramGrayGroupAppEntity.setStatus(1000);
+    localaukn.b(paramGrayGroupAppEntity);
+    localaukn.a();
+  }
+  
+  public void a()
+  {
+    a(false);
+  }
+  
+  void a(GrayGroupAppEntity paramGrayGroupAppEntity)
+  {
+    ThreadManagerV2.excute(new GrayGroupAppsDbHelper.1(this, paramGrayGroupAppEntity), 32, null, false);
+  }
+  
+  public void b()
+  {
+    a(true);
   }
 }
 

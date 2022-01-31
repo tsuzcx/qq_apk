@@ -1,22 +1,14 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 
-public final class aagj
+class aagj
   implements DialogInterface.OnClickListener
 {
-  public aagj(aagn paramaagn, aagm paramaagm) {}
+  aagj(aagh paramaagh) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Aagn.a) {
-      awqx.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
-    }
-    if (this.jdField_a_of_type_Aagm != null) {
-      this.jdField_a_of_type_Aagm.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

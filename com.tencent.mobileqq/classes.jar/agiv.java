@@ -1,22 +1,89 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import mqq.util.WeakReference;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class agiv
-  implements DialogInterface.OnClickListener
+public class agiv
+  extends aume
 {
-  agiv(agiu paramagiu) {}
+  public agiv(BindNumberActivity paramBindNumberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("PhotoConst.readinjoy_delete_pic_position", ((NewPhotoPreviewActivity)this.a.a.a.get()).a());
-    ((NewPhotoPreviewActivity)this.a.a.a.get()).setResult(-1, paramDialogInterface);
-    ((NewPhotoPreviewActivity)this.a.a.a.get()).finish();
-    agit.a(this.a.a).dismiss();
+    this.a.f = false;
+    this.a.a();
+    this.a.b();
+    int i;
+    if (paramBoolean)
+    {
+      String str = bbcl.a();
+      if (!TextUtils.isEmpty(str)) {
+        axqw.b(this.a.app, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+      }
+      i = paramBundle.getInt("k_result");
+      if (paramBundle.getBoolean("k_buto_bind", false)) {
+        this.a.c();
+      }
+    }
+    for (;;)
+    {
+      bbcl.a();
+      this.a.app.unRegistObserver(this.a.a);
+      this.a.a = null;
+      return;
+      if ((i == 104) || (i == 0))
+      {
+        this.a.b();
+      }
+      else
+      {
+        if (i == 107)
+        {
+          this.a.a(paramBundle);
+          return;
+        }
+        if (i == 106)
+        {
+          this.a.a(null, 2);
+        }
+        else if (i == 227)
+        {
+          this.a.d();
+        }
+        else if (i == 226)
+        {
+          this.a.e();
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("BindNumberActivity", 2, "bind error " + i);
+          }
+          this.a.a(a(i));
+          continue;
+          if (QLog.isColorLevel()) {
+            QLog.d("BindNumberActivity", 2, "onBindMobile failed");
+          }
+          this.a.b(2131718737);
+        }
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Bundle paramBundle)
+  {
+    this.a.b();
+    if (paramBoolean) {
+      this.a.b();
+    }
+    for (;;)
+    {
+      this.a.app.unRegistObserver(this.a.a);
+      this.a.a = null;
+      return;
+      this.a.b(2131718737);
+    }
   }
 }
 

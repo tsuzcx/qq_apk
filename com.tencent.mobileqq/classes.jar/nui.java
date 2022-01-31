@@ -1,31 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-final class nui
-  implements DialogInterface.OnClickListener
+class nui
+  implements reh
 {
-  nui(nwk paramnwk, nwx paramnwx) {}
+  private WeakReference<nud> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  nui(nud paramnud)
   {
-    if (paramInt == 1)
+    this.a = new WeakReference(paramnud);
+  }
+  
+  public void a(ChannelCoverInfo paramChannelCoverInfo)
+  {
+    nud localnud = (nud)this.a.get();
+    if (((localnud == null) || (nud.a(localnud).a())) && (QLog.isColorLevel()))
     {
-      if (this.jdField_a_of_type_Nwk != null)
-      {
-        paramDialogInterface = this.jdField_a_of_type_Nwk.a();
-        if (paramDialogInterface != null)
-        {
-          paramDialogInterface.a(this.jdField_a_of_type_Nwx);
-          this.jdField_a_of_type_Nwk.notifyDataSetChanged();
-        }
-      }
-      bgmq.a("family_comment_card_hide_timestamp", Long.valueOf(System.currentTimeMillis()));
+      QLog.d("ReadInJoyNaviController", 2, "ChannelButtonListenerImpl. ReadInJoyNavigationGridview has destoryed");
+      return;
     }
+    localnud.a(paramChannelCoverInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nui
  * JD-Core Version:    0.7.0.1
  */

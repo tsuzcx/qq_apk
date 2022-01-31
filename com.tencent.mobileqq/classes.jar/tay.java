@@ -1,71 +1,139 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqWatchVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public class tay
-  extends slz<tch>
+public abstract class tay<T>
 {
-  public static final String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  public Context a;
+  private HashMap<String, tay> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private List<T> jdField_a_of_type_JavaUtilList;
+  private tay jdField_a_of_type_Tay;
+  protected taz a;
+  protected tba a;
+  private boolean jdField_a_of_type_Boolean;
+  public View b;
   
-  static
+  public tay(Context paramContext, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = skt.a("StorySvc.video_watch_no_expired");
+    this.b = LayoutInflater.from(paramContext).inflate(paramInt, null, true);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public String a()
+  public tay(Context paramContext, View paramView)
   {
-    return jdField_a_of_type_JavaLangString;
+    this.b = paramView;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public tch a(byte[] paramArrayOfByte)
+  public tay a()
   {
-    qqstory_service.RspWatchVideo localRspWatchVideo = new qqstory_service.RspWatchVideo();
-    try
+    return this.jdField_a_of_type_Tay;
+  }
+  
+  public tay a(String paramString)
+  {
+    return (tay)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public abstract taz a();
+  
+  public abstract tba a();
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      localRspWatchVideo.mergeFrom(paramArrayOfByte);
-      return new tch(localRspWatchVideo);
+      String str = (String)localIterator.next();
+      ((tay)this.jdField_a_of_type_JavaUtilHashMap.get(str)).a();
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
   }
   
-  protected byte[] a()
+  public abstract void a(Context paramContext, View paramView);
+  
+  public void a(String paramString, tay paramtay)
   {
-    qqstory_service.ReqWatchVideo localReqWatchVideo = new qqstory_service.ReqWatchVideo();
-    localReqWatchVideo.vid.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    localReqWatchVideo.to_union_id.set(ByteStringMicro.copyFromUtf8(a(this.jdField_c_of_type_JavaLangString)));
-    PBUInt32Field localPBUInt32Field = localReqWatchVideo.is_live_video;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0)
+    paramtay.jdField_a_of_type_Tay = this;
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramtay);
+  }
+  
+  public abstract void a(List<T> paramList);
+  
+  public void a(tba paramtba)
+  {
+    this.jdField_a_of_type_Tba = paramtba;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public abstract void b();
+  
+  public void b(List<T> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void c(List<T> paramList)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.b != null) {
+      this.b.setVisibility(0);
+    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    a(paramList);
+  }
+  
+  public void k()
+  {
+    if (this.b != null) {
+      this.b.setVisibility(8);
+    }
+  }
+  
+  public void l()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    if (this.b != null) {
+      this.b.setVisibility(0);
+    }
+    if (this.jdField_a_of_type_Tba == null) {
+      this.jdField_a_of_type_Tba = a();
+    }
+    if (this.jdField_a_of_type_Taz == null) {
+      this.jdField_a_of_type_Taz = a();
+    }
+    a(this.jdField_a_of_type_AndroidContentContext, this.b);
+    b();
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      a(this.jdField_a_of_type_JavaUtilList);
+    }
+    for (;;)
     {
-      localPBUInt32Field.set(i);
-      localReqWatchVideo.source.set(this.jdField_c_of_type_Int);
-      if (this.jdField_b_of_type_Long > 0L) {
-        localReqWatchVideo.create_time.set(this.jdField_b_of_type_Long / 1000L);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        ((tay)this.jdField_a_of_type_JavaUtilHashMap.get(str)).l();
       }
-      if (this.d > 0) {
-        localReqWatchVideo.vid_type.set(this.d);
+      break;
+      if (this.jdField_a_of_type_Taz != null) {
+        this.jdField_a_of_type_Taz.a();
+      } else {
+        a(null);
       }
-      return localReqWatchVideo.toByteArray();
     }
-  }
-  
-  public String toString()
-  {
-    return "WatchVideoRequest{vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", videoUid=" + this.jdField_c_of_type_JavaLangString + '}';
   }
 }
 

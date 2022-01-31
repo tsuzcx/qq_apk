@@ -1,31 +1,44 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class unz
-  extends QQUIEventReceiver<MystoryListView, siz>
 {
-  public unz(@NonNull MystoryListView paramMystoryListView)
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  
+  public unz(String paramString)
   {
-    super(paramMystoryListView);
+    this.jdField_a_of_type_Int = 3;
+    paramString = (String)((tcv)tdc.a(10)).b(paramString, "");
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_Int = paramString.optInt("show", 3);
+      if (this.jdField_a_of_type_Int >= 0)
+      {
+        this.c = paramString.optString("url");
+        this.jdField_a_of_type_JavaLangString = paramString.optString("icon");
+        this.b = paramString.optString("text");
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      do
+      {
+        this.jdField_a_of_type_Int = 3;
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "ButtonConfig exc: " + QLog.getStackTraceString(paramString));
+    }
   }
   
-  public void a(@NonNull MystoryListView paramMystoryListView, @NonNull siz paramsiz)
+  public String toString()
   {
-    paramMystoryListView.q();
-    paramsiz = (uoh)paramMystoryListView.a("FeedSegment");
-    if (paramsiz != null) {
-      paramsiz.j();
-    }
-    paramMystoryListView = (upw)paramMystoryListView.a("NewMyStorySegment");
-    if (paramMystoryListView != null) {
-      paramMystoryListView.a(false);
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return siz.class;
+    return "ButtonConfig: show = " + this.jdField_a_of_type_Int + ", iconText = " + this.b + ", iconUrl = " + this.jdField_a_of_type_JavaLangString + ", jumpUrl = " + this.c;
   }
 }
 

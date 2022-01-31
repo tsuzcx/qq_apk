@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import ajgd;
-import badc;
+import ajuf;
+import bbeh;
 
 public class ConfigHandler$2
   implements Runnable
 {
-  public ConfigHandler$2(ajgd paramajgd) {}
+  public ConfigHandler$2(ajuf paramajuf) {}
   
   public void run()
   {
-    badc.a().a(this.this$0.app.getApplication());
+    bbeh.a().a(this.this$0.app.getApplication());
   }
 }
 

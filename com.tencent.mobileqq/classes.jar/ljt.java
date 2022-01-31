@@ -1,149 +1,88 @@
-import android.media.SoundPool;
-import android.text.TextUtils;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PointF;
+import android.text.TextPaint;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Random;
 
 public class ljt
 {
-  int jdField_a_of_type_Int;
-  SoundPool jdField_a_of_type_AndroidMediaSoundPool;
-  HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  HashSet<Integer> jdField_a_of_type_JavaUtilHashSet;
-  List<String> jdField_a_of_type_JavaUtilList;
-  int jdField_b_of_type_Int;
-  HashMap<String, Integer> jdField_b_of_type_JavaUtilHashMap;
-  int c;
+  private static int jdField_a_of_type_Int = Color.parseColor("#FFFFFF");
+  private static volatile boolean jdField_a_of_type_Boolean = true;
+  private static final char[] jdField_a_of_type_ArrayOfChar = { 36, 64, 38, 35, 37, 165 };
+  private static int[] jdField_a_of_type_ArrayOfInt = { Color.parseColor("#FFCC00"), Color.parseColor("#FB4D97"), Color.parseColor("#0096FF"), Color.parseColor("#1ACEA6"), Color.parseColor("#4752E7"), Color.parseColor("#22CE53"), Color.parseColor("#B53BF5"), Color.parseColor("#1ACEA6") };
+  private static int[] b = { Color.parseColor("#80690B"), Color.parseColor("#6E3F78"), Color.parseColor("#096AAD"), Color.parseColor("#13A685"), Color.parseColor("#343FD8"), Color.parseColor("#1F9944"), Color.parseColor("#6E3F78"), Color.parseColor("#2E5556") };
   
-  public ljt(List<String> paramList, int paramInt)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_b_of_type_Int = paramList.size();
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoundPoolHelper", 2, "releaseMusic");
-    }
-    if (this.jdField_a_of_type_AndroidMediaSoundPool != null)
+    String str = "";
+    if (paramString.length() > 10)
     {
-      this.jdField_a_of_type_AndroidMediaSoundPool.release();
-      this.jdField_a_of_type_AndroidMediaSoundPool = null;
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      this.jdField_a_of_type_JavaUtilHashSet.clear();
-      this.jdField_b_of_type_JavaUtilHashMap.clear();
-      this.c = 0;
+      str = "";
+      return str;
     }
-  }
-  
-  public void a(String paramString)
-  {
-    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (localInteger == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SoundPoolHelper", 2, "stopMusic fail soundID is null, path = " + paramString);
+    int k = paramString.length();
+    int j = k / 2;
+    int i = j;
+    if (k + j > 13) {
+      i = 13 - k;
+    }
+    Random localRandom = new Random();
+    char c;
+    for (paramString = str;; paramString = paramString + c)
+    {
+      str = paramString;
+      if (paramString.length() >= i) {
+        break;
       }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (this.jdField_a_of_type_JavaUtilHashSet.contains(localInteger)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("SoundPoolHelper", 2, "stopMusic fail soundID is not ready, path = " + paramString);
-        return;
-        localInteger = (Integer)this.jdField_b_of_type_JavaUtilHashMap.get(paramString);
-        if (localInteger != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SoundPoolHelper", 2, "stopMusic fail steamID is null, path = " + paramString);
-      return;
-    } while (this.jdField_a_of_type_AndroidMediaSoundPool == null);
-    this.jdField_a_of_type_AndroidMediaSoundPool.stop(localInteger.intValue());
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoundPoolHelper", 2, "playMusic, path = " + paramString + ",loop = " + paramBoolean);
-    }
-    if (TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SoundPoolHelper", 2, "playMusic fail path is empty ");
-      }
-    }
-    Integer localInteger;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-          if (localInteger != null) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("SoundPoolHelper", 2, "playMusic fail soundID is null, path = " + paramString + ",loop = " + paramBoolean);
-        return;
-        if (this.jdField_a_of_type_JavaUtilHashSet.contains(localInteger)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SoundPoolHelper", 2, "playMusic fail soundID is not ready, path = " + paramString + ",loop = " + paramBoolean);
-      return;
-    } while (this.jdField_a_of_type_AndroidMediaSoundPool == null);
-    SoundPool localSoundPool = this.jdField_a_of_type_AndroidMediaSoundPool;
-    int j = localInteger.intValue();
-    if (paramBoolean) {}
-    for (int i = -1;; i = 0)
-    {
-      i = localSoundPool.play(j, 1.0F, 1.0F, 1, i, 1.0F);
-      this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(i));
-      return;
+      j = localRandom.nextInt(jdField_a_of_type_ArrayOfChar.length);
+      c = jdField_a_of_type_ArrayOfChar[j];
     }
   }
   
-  public void a(ljv paramljv)
+  public static void a(Paint paramPaint, TextPaint paramTextPaint)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoundPoolHelper", 2, "loadMusic ,soundPool = " + this.jdField_a_of_type_AndroidMediaSoundPool);
+    int i = new Random().nextInt(jdField_a_of_type_ArrayOfInt.length);
+    if (paramPaint != null) {
+      paramPaint.setColor(jdField_a_of_type_ArrayOfInt[i]);
     }
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SoundPoolHelper", 2, "loadMusic fail filPathList is empty");
-      }
-    }
-    for (;;)
+    if (paramTextPaint != null)
     {
-      return;
-      if (this.jdField_a_of_type_AndroidMediaSoundPool == null)
-      {
-        this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(this.jdField_a_of_type_JavaUtilList.size(), this.jdField_a_of_type_Int, 0);
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new lju(this, paramljv));
-      }
-      paramljv = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramljv.hasNext())
-      {
-        String str = (String)paramljv.next();
-        int i = this.jdField_a_of_type_AndroidMediaSoundPool.load(str, 1);
-        this.jdField_a_of_type_JavaUtilHashMap.put(str, Integer.valueOf(i));
-      }
+      paramTextPaint.setColor(jdField_a_of_type_Int);
+      paramTextPaint.setShadowLayer(0.1F, 1.3F, 2.0F, b[i]);
     }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    jdField_a_of_type_Boolean = paramBoolean;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("ARZimuUtil", 4, "setIsEnableARZimu, isEnable[" + paramBoolean + "]", new Throwable("setIsEnableARZimu"));
+    }
+  }
+  
+  public static boolean a()
+  {
+    boolean bool = lmz.a();
+    if (QLog.isDevelopLevel()) {
+      QLog.i("ARZimuUtil", 4, "getIsEnableARZimu, isSoEnable[" + bool + "], isEnableARZimu[" + jdField_a_of_type_Boolean + "]");
+    }
+    return (jdField_a_of_type_Boolean) && (bool);
+  }
+  
+  public static boolean a(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3, PointF paramPointF4)
+  {
+    float f = (float)Math.sqrt(Math.pow(paramPointF2.x - paramPointF1.x, 2.0D) + Math.pow(paramPointF2.y - paramPointF1.y, 2.0D));
+    return (float)Math.sqrt(Math.pow(paramPointF4.x - paramPointF3.x, 2.0D) + Math.pow(paramPointF4.y - paramPointF3.y, 2.0D)) >= f * 0.112F;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if ((paramString == null) || (paramString.isEmpty())) {}
+    while (!paramString.equals("spit")) {
+      return false;
+    }
+    return true;
   }
 }
 

@@ -1,17 +1,34 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajjy;
-import babr;
-import bafb;
+import android.os.Bundle;
+import android.os.Parcelable;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzoneVideoSoDownloadModule;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
 
-class VideoJsPlugin$1
+final class VideoJsPlugin$1
   implements Runnable
 {
-  VideoJsPlugin$1(VideoJsPlugin paramVideoJsPlugin, int paramInt, boolean paramBoolean1, boolean paramBoolean2) {}
-  
   public void run()
   {
-    babr.a(this.this$0.jsPluginEngine.getActivityContext(), 230, ajjy.a(2131650505), ajjy.a(2131650506), ajjy.a(2131650509), ajjy.a(2131650507), new VideoJsPlugin.1.1(this), new VideoJsPlugin.1.2(this)).show();
+    Object localObject1 = QzoneVideoSoDownloadModule.a(new VideoJsPlugin.1.1(this));
+    Object localObject2 = new Bundle();
+    ((Bundle)localObject2).putParcelable("key_download_result_receiver", (Parcelable)localObject1);
+    localObject1 = QIPCClientHelper.getInstance().getClient().callServer("QzoneVideoSoDownloadModule", "action_download_avcodec", (Bundle)localObject2);
+    if ((localObject1 != null) && (((EIPCResult)localObject1).code == 0))
+    {
+      QLog.i("VideoJsPlugin", 1, "loadFFmpeg: start");
+      return;
+    }
+    localObject2 = new StringBuilder().append("loadFFmpeg: failed ");
+    if (localObject1 == null) {}
+    for (int i = -1;; i = ((EIPCResult)localObject1).code)
+    {
+      QLog.w("VideoJsPlugin", 1, i);
+      return;
+    }
   }
 }
 

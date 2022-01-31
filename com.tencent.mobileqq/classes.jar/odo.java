@@ -1,41 +1,56 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.common.app.BaseApplicationImpl;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class odo
-  implements AladdinConfigHandler
 {
-  public static String a()
+  private JSONObject a = new JSONObject();
+  
+  public String a()
   {
-    return (String)bgmq.a("double_short_video_font_size", "14");
+    return this.a.toString();
   }
   
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public odo a()
   {
-    QLog.d("DoubleShortVideoFontSize", 2, "[onReceiveConfig] " + paramString);
-    paramString = ocx.a(paramString);
     try
     {
-      paramString = (String)paramString.get("double_videocard_textsize");
-      if (!TextUtils.isEmpty(paramString)) {
-        bgmq.a("double_short_video_font_size", paramString);
-      }
-      label55:
-      return true;
+      this.a.put("network", olg.a(BaseApplicationImpl.getApplication().getApplicationContext()));
+      this.a.put("version", npx.a);
+      this.a.put("os", "1");
+      this.a.put("uin", onk.a());
+      this.a.put("city", olg.b());
+      return this;
     }
-    catch (Exception paramString)
+    catch (JSONException localJSONException)
     {
-      break label55;
+      localJSONException.printStackTrace();
     }
+    return this;
   }
   
-  public void onWipeConfig(int paramInt)
+  public odo a(int paramInt)
   {
-    bgmq.a("double_short_video_font_size", "14");
-    if (QLog.isColorLevel()) {
-      QLog.d("DoubleShortVideoFontSize", 2, "font size: " + paramInt);
+    int i = 0;
+    if (paramInt == 41516) {
+      i = 3;
     }
+    for (;;)
+    {
+      try
+      {
+        this.a.put("source", i);
+        return this;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      if (paramInt == 41522) {
+        i = 16;
+      }
+    }
+    return this;
   }
 }
 

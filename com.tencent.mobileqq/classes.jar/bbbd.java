@@ -1,548 +1,988 @@
-import android.app.Activity;
+import android.annotation.SuppressLint;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.os.Environment;
+import android.os.Process;
+import android.os.StatFs;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.1;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.4;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.7;
+import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
+import com.tencent.mobileqq.pluginsdk.exception.ExceptionTracker;
+import com.tencent.mobileqq.util.Utils.1;
+import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
-import com.tencent.smtt.export.external.interfaces.IX5WebViewBase.HitTestResult;
-import com.tencent.smtt.export.external.interfaces.IX5WebViewBase.HitTestResult.ImageAnchorData;
-import com.tencent.smtt.sdk.CookieManager;
+import java.io.Closeable;
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import mqq.app.MobileQQ;
 
 public class bbbd
-  extends bbas
 {
-  public int a;
-  public final Activity a;
-  public bbms a;
-  public begr a;
-  public CookieManager a;
-  public Object a;
-  String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  private static int jdField_a_of_type_Int;
+  static Boolean jdField_a_of_type_JavaLangBoolean;
+  public static String a;
+  private static StringBuilder jdField_a_of_type_JavaLangStringBuilder;
+  private static final Set<Long> jdField_a_of_type_JavaUtilSet;
+  private static final char[] jdField_a_of_type_ArrayOfChar = { 12290, -225, -255, 33, 63, -244, -229, 44, 32 };
+  public static final String[] a;
   
-  public bbbd(Activity paramActivity)
+  static
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof QQBrowserActivity)) {
-      this.jdField_a_of_type_Int = ((QQBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight();
-    }
-    ThreadManager.postImmediately(new SwiftBrowserLongClickHandler.1(this, paramActivity), null, true);
+    jdField_a_of_type_JavaUtilSet = new Utils.1(100);
+    jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { ajyc.a(2131716009), ajyc.a(2131716006), ajyc.a(2131716025), ajyc.a(2131716013), ajyc.a(2131716030), ajyc.a(2131716011), ajyc.a(2131716004), ajyc.a(2131716020), ajyc.a(2131716019), ajyc.a(2131716032), ajyc.a(2131716005), ajyc.a(2131716012) };
   }
   
-  private void d(String paramString)
+  private static byte a(char paramChar)
   {
-    if (this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      return;
-    }
-    ThreadManager.excute(new SwiftBrowserLongClickHandler.4(this, paramString), 64, null, true);
+    return (byte)"0123456789ABCDEF".indexOf(paramChar);
   }
   
-  public void a(int paramInt, Bundle paramBundle)
+  public static int a(byte paramByte)
   {
-    switch (paramInt)
+    int i = paramByte;
+    if (paramByte < 0) {
+      i = paramByte + 256;
+    }
+    return i;
+  }
+  
+  public static int a(int paramInt)
+  {
+    int i = 2;
+    if (jdField_a_of_type_JavaLangStringBuilder.length() > 560) {}
+    try
     {
-    default: 
-      return;
-    }
-    if ((this.jdField_a_of_type_Begr != null) && (this.jdField_a_of_type_Begr.isShowing())) {
-      this.jdField_a_of_type_Begr.dismiss();
-    }
-    akux.a().a(hashCode(), "SwiftBrowserLongClickHandler");
-  }
-  
-  /* Error */
-  public void a(String paramString)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: new 93	java/io/File
-    //   6: dup
-    //   7: aload_1
-    //   8: invokespecial 95	java/io/File:<init>	(Ljava/lang/String;)V
-    //   11: astore 8
-    //   13: new 97	java/io/FileInputStream
-    //   16: dup
-    //   17: aload 8
-    //   19: invokespecial 100	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   22: astore 5
-    //   24: aload 5
-    //   26: invokevirtual 105	java/io/InputStream:read	()I
-    //   29: istore_2
-    //   30: aload 5
-    //   32: invokevirtual 105	java/io/InputStream:read	()I
-    //   35: istore_3
-    //   36: aload 5
-    //   38: invokevirtual 105	java/io/InputStream:read	()I
-    //   41: istore 4
-    //   43: iload_2
-    //   44: bipush 66
-    //   46: if_icmpne +177 -> 223
-    //   49: iload_3
-    //   50: bipush 77
-    //   52: if_icmpne +171 -> 223
-    //   55: ldc 107
-    //   57: astore_1
-    //   58: aload 5
-    //   60: ifnull +331 -> 391
-    //   63: aload 5
-    //   65: invokevirtual 110	java/io/InputStream:close	()V
-    //   68: aload_1
-    //   69: ifnull +288 -> 357
-    //   72: aload_0
-    //   73: getfield 112	bbbd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   76: invokestatic 118	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   79: invokevirtual 122	android/net/Uri:getLastPathSegment	()Ljava/lang/String;
-    //   82: astore 6
-    //   84: aload 6
-    //   86: invokestatic 128	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   89: ifeq +206 -> 295
-    //   92: ldc 130
-    //   94: astore 5
-    //   96: new 93	java/io/File
-    //   99: dup
-    //   100: getstatic 135	ajed:ba	Ljava/lang/String;
-    //   103: invokespecial 95	java/io/File:<init>	(Ljava/lang/String;)V
-    //   106: invokevirtual 138	java/io/File:mkdirs	()Z
-    //   109: pop
-    //   110: new 140	java/lang/StringBuilder
-    //   113: dup
-    //   114: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   117: getstatic 135	ajed:ba	Ljava/lang/String;
-    //   120: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: aload 5
-    //   125: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   128: aload_1
-    //   129: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   135: astore 7
-    //   137: new 93	java/io/File
-    //   140: dup
-    //   141: aload 7
-    //   143: invokespecial 95	java/io/File:<init>	(Ljava/lang/String;)V
-    //   146: astore 6
-    //   148: iconst_2
-    //   149: istore_2
-    //   150: aload 6
-    //   152: invokevirtual 151	java/io/File:exists	()Z
-    //   155: ifeq +174 -> 329
-    //   158: iload_2
-    //   159: ldc 152
-    //   161: if_icmpge +168 -> 329
-    //   164: new 140	java/lang/StringBuilder
-    //   167: dup
-    //   168: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   171: getstatic 135	ajed:ba	Ljava/lang/String;
-    //   174: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   177: aload 5
-    //   179: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   182: ldc 154
-    //   184: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   187: iload_2
-    //   188: invokevirtual 157	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   191: ldc 159
-    //   193: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   196: aload_1
-    //   197: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   200: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   203: astore 7
-    //   205: new 93	java/io/File
-    //   208: dup
-    //   209: aload 7
-    //   211: invokespecial 95	java/io/File:<init>	(Ljava/lang/String;)V
-    //   214: astore 6
-    //   216: iload_2
-    //   217: iconst_1
-    //   218: iadd
-    //   219: istore_2
-    //   220: goto -70 -> 150
-    //   223: iload_2
-    //   224: sipush 137
-    //   227: if_icmpne +167 -> 394
-    //   230: iload_3
-    //   231: bipush 80
-    //   233: if_icmpne +161 -> 394
-    //   236: ldc 161
-    //   238: astore_1
-    //   239: goto -181 -> 58
-    //   242: ldc 163
-    //   244: astore_1
-    //   245: goto -187 -> 58
-    //   248: astore 5
-    //   250: goto -182 -> 68
-    //   253: astore_1
-    //   254: aconst_null
-    //   255: astore 5
-    //   257: aload 5
-    //   259: ifnull +127 -> 386
-    //   262: aload 5
-    //   264: invokevirtual 110	java/io/InputStream:close	()V
-    //   267: aconst_null
-    //   268: astore_1
-    //   269: goto -201 -> 68
-    //   272: astore_1
-    //   273: aconst_null
-    //   274: astore_1
-    //   275: goto -207 -> 68
-    //   278: astore_1
-    //   279: aload 6
-    //   281: astore 5
-    //   283: aload 5
-    //   285: ifnull +8 -> 293
-    //   288: aload 5
-    //   290: invokevirtual 110	java/io/InputStream:close	()V
-    //   293: aload_1
-    //   294: athrow
-    //   295: aload 6
-    //   297: astore 5
-    //   299: aload 6
-    //   301: aload_1
-    //   302: invokevirtual 169	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   305: ifeq -209 -> 96
-    //   308: aload 6
-    //   310: iconst_0
-    //   311: aload 6
-    //   313: invokevirtual 172	java/lang/String:length	()I
-    //   316: aload_1
-    //   317: invokevirtual 172	java/lang/String:length	()I
-    //   320: isub
-    //   321: invokevirtual 176	java/lang/String:substring	(II)Ljava/lang/String;
-    //   324: astore 5
-    //   326: goto -230 -> 96
-    //   329: aload 8
-    //   331: aload 6
-    //   333: invokevirtual 180	java/io/File:renameTo	(Ljava/io/File;)Z
-    //   336: ifeq +21 -> 357
-    //   339: aload_0
-    //   340: getfield 30	bbbd:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   343: new 182	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$5
-    //   346: dup
-    //   347: aload_0
-    //   348: aload 7
-    //   350: invokespecial 183	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$5:<init>	(Lbbbd;Ljava/lang/String;)V
-    //   353: invokevirtual 187	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
-    //   356: return
-    //   357: aload_0
-    //   358: getfield 30	bbbd:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   361: new 189	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$6
-    //   364: dup
-    //   365: aload_0
-    //   366: invokespecial 192	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$6:<init>	(Lbbbd;)V
-    //   369: invokevirtual 187	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
-    //   372: return
-    //   373: astore 5
-    //   375: goto -82 -> 293
-    //   378: astore_1
-    //   379: goto -96 -> 283
-    //   382: astore_1
-    //   383: goto -126 -> 257
-    //   386: aconst_null
-    //   387: astore_1
-    //   388: goto -320 -> 68
-    //   391: goto -323 -> 68
-    //   394: iload_2
-    //   395: bipush 71
-    //   397: if_icmpne +15 -> 412
-    //   400: iload_3
-    //   401: bipush 73
-    //   403: if_icmpne +9 -> 412
-    //   406: ldc 194
-    //   408: astore_1
-    //   409: goto -351 -> 58
-    //   412: iload_2
-    //   413: sipush 255
-    //   416: if_icmpne +16 -> 432
-    //   419: iload_3
-    //   420: sipush 216
-    //   423: if_icmpne +9 -> 432
-    //   426: ldc 196
-    //   428: astore_1
-    //   429: goto -371 -> 58
-    //   432: bipush 82
-    //   434: iload_2
-    //   435: if_icmpne -193 -> 242
-    //   438: bipush 73
-    //   440: iload_3
-    //   441: if_icmpne -199 -> 242
-    //   444: bipush 70
-    //   446: iload 4
-    //   448: if_icmpne -206 -> 242
-    //   451: ldc 198
-    //   453: astore_1
-    //   454: goto -396 -> 58
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	457	0	this	bbbd
-    //   0	457	1	paramString	String
-    //   29	407	2	i	int
-    //   35	407	3	j	int
-    //   41	408	4	k	int
-    //   22	156	5	localObject1	Object
-    //   248	1	5	localIOException1	java.io.IOException
-    //   255	70	5	localObject2	Object
-    //   373	1	5	localIOException2	java.io.IOException
-    //   1	331	6	localObject3	Object
-    //   135	214	7	str	String
-    //   11	319	8	localFile	java.io.File
-    // Exception table:
-    //   from	to	target	type
-    //   63	68	248	java/io/IOException
-    //   13	24	253	java/io/IOException
-    //   262	267	272	java/io/IOException
-    //   13	24	278	finally
-    //   288	293	373	java/io/IOException
-    //   24	43	378	finally
-    //   24	43	382	java/io/IOException
-  }
-  
-  void a(String paramString, int paramInt)
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, ScannerActivity.class);
-    localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", paramString);
-    localIntent.putExtra("detectType", paramInt);
-    localIntent.putExtra("QRDecode", true);
-    localIntent.putExtra("QRDecodeResult", paramString);
-    String str = this.jdField_a_of_type_JavaLangString;
-    paramString = str;
-    if (!TextUtils.isEmpty(str))
-    {
-      paramString = str;
-      if (str.startsWith("data:")) {
-        paramString = "";
+      int j = jdField_a_of_type_JavaLangStringBuilder.toString().getBytes("utf-8").length;
+      if ((jdField_a_of_type_Int != j) && (QLog.isColorLevel())) {
+        QLog.d("Utils", 2, "calculate byte num not equal byte num returned by getBytes(),totalByteNum is:" + jdField_a_of_type_Int + ",byteNum" + j);
       }
-    }
-    localIntent.putExtra("report_params", vup.a(null, paramString, null, null, null, 5));
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_a_of_type_Bbms != null) && (this.jdField_a_of_type_Bbms.isShowing())) {
-      this.jdField_a_of_type_Bbms.dismiss();
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) || (!this.jdField_c_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString)) || (this.jdField_c_of_type_Int <= 0)) {
-          break label142;
-        }
-        bool2 = vup.a(this.jdField_c_of_type_Int);
-        bool1 = vup.b(this.jdField_c_of_type_Int);
-        if (bool2)
-        {
-          a(this.jdField_b_of_type_JavaLangString, 1);
-          return true;
-        }
+      label76:
+      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
+      jdField_a_of_type_Int = 0;
+      if ((paramInt >= 0) && (paramInt < 128)) {
+        i = 1;
       }
-      if (bool1)
+      for (;;)
       {
-        a(this.jdField_b_of_type_JavaLangString, 2);
-        return true;
-      }
-      bbmy.a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 1, 2131624629, 1).b(this.jdField_a_of_type_Int);
-      return false;
-      label142:
-      boolean bool1 = false;
-      boolean bool2 = false;
-    }
-  }
-  
-  public boolean a(View paramView)
-  {
-    int k = 0;
-    boolean bool1 = false;
-    if ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
-    {
-      bool1 = true;
-      return bool1;
-    }
-    Object localObject;
-    int i;
-    if ((this.jdField_a_of_type_Bbat != null) && (this.jdField_a_of_type_Bbat.a() != null))
-    {
-      localObject = this.jdField_a_of_type_Bbat.a();
-      paramView = ((com.tencent.smtt.sdk.WebView)localObject).getX5HitTestResult();
-      if (paramView != null)
-      {
-        i = paramView.getType();
-        if (i == 8)
-        {
-          if (!(paramView.getData() instanceof IX5WebViewBase.HitTestResult.ImageAnchorData)) {
-            break label525;
+        jdField_a_of_type_JavaLangStringBuilder.append(Character.toChars(paramInt));
+        jdField_a_of_type_Int += i;
+        return i;
+        if ((paramInt < 128) || (paramInt >= 2048)) {
+          if ((paramInt >= 2048) && (paramInt < 65536)) {
+            i = 3;
+          } else if ((paramInt >= 65536) && (paramInt < 2097152)) {
+            i = 4;
+          } else if ((paramInt >= 2097152) && (paramInt < 67108864)) {
+            i = 5;
+          } else {
+            i = 6;
           }
-          paramView = ((IX5WebViewBase.HitTestResult.ImageAnchorData)paramView.getData()).mPicUrl;
         }
       }
     }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      break label76;
+    }
+  }
+  
+  public static int a(int paramInt1, int paramInt2)
+  {
+    Calendar localCalendar1 = Calendar.getInstance();
+    localCalendar1.set(1, paramInt1, paramInt2);
+    Calendar localCalendar2 = Calendar.getInstance();
+    localCalendar2.set(1, 1, 19);
+    Calendar localCalendar3 = Calendar.getInstance();
+    localCalendar3.set(1, 2, 18);
+    Calendar localCalendar4 = Calendar.getInstance();
+    localCalendar4.set(1, 3, 20);
+    Calendar localCalendar5 = Calendar.getInstance();
+    localCalendar5.set(1, 4, 19);
+    Calendar localCalendar6 = Calendar.getInstance();
+    localCalendar6.set(1, 5, 20);
+    Calendar localCalendar7 = Calendar.getInstance();
+    localCalendar7.set(1, 6, 21);
+    Calendar localCalendar8 = Calendar.getInstance();
+    localCalendar8.set(1, 7, 22);
+    Calendar localCalendar9 = Calendar.getInstance();
+    localCalendar9.set(1, 8, 22);
+    Calendar localCalendar10 = Calendar.getInstance();
+    localCalendar10.set(1, 9, 22);
+    Calendar localCalendar11 = Calendar.getInstance();
+    localCalendar11.set(1, 10, 23);
+    Calendar localCalendar12 = Calendar.getInstance();
+    localCalendar12.set(1, 11, 22);
+    Calendar localCalendar13 = Calendar.getInstance();
+    localCalendar13.set(1, 12, 21);
+    if ((localCalendar1.compareTo(localCalendar2) > 0) && (localCalendar1.compareTo(localCalendar3) <= 0)) {
+      return 1;
+    }
+    if ((localCalendar1.compareTo(localCalendar3) > 0) && (localCalendar1.compareTo(localCalendar4) <= 0)) {
+      return 2;
+    }
+    if ((localCalendar1.compareTo(localCalendar4) > 0) && (localCalendar1.compareTo(localCalendar5) <= 0)) {
+      return 3;
+    }
+    if ((localCalendar1.compareTo(localCalendar5) > 0) && (localCalendar1.compareTo(localCalendar6) <= 0)) {
+      return 4;
+    }
+    if ((localCalendar1.compareTo(localCalendar6) > 0) && (localCalendar1.compareTo(localCalendar7) <= 0)) {
+      return 5;
+    }
+    if ((localCalendar1.compareTo(localCalendar7) > 0) && (localCalendar1.compareTo(localCalendar8) <= 0)) {
+      return 6;
+    }
+    if ((localCalendar1.compareTo(localCalendar8) > 0) && (localCalendar1.compareTo(localCalendar9) <= 0)) {
+      return 7;
+    }
+    if ((localCalendar1.compareTo(localCalendar9) > 0) && (localCalendar1.compareTo(localCalendar10) <= 0)) {
+      return 8;
+    }
+    if ((localCalendar1.compareTo(localCalendar10) > 0) && (localCalendar1.compareTo(localCalendar11) <= 0)) {
+      return 9;
+    }
+    if ((localCalendar1.compareTo(localCalendar11) > 0) && (localCalendar1.compareTo(localCalendar12) <= 0)) {
+      return 10;
+    }
+    if ((localCalendar1.compareTo(localCalendar12) > 0) && (localCalendar1.compareTo(localCalendar13) <= 0)) {
+      return 11;
+    }
+    return 12;
+  }
+  
+  public static int a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramInt2 == 0) || (paramInt3 == 0) || (paramInt2 == paramInt3)) {
+      return paramInt1;
+    }
+    return (paramInt1 * paramInt3 + (paramInt2 >> 1)) / paramInt2;
+  }
+  
+  public static int a(long paramLong)
+  {
+    return (int)paramLong;
+  }
+  
+  public static int a(long paramLong1, long paramLong2)
+  {
+    if (paramLong1 < paramLong2) {
+      return -1;
+    }
+    if (paramLong1 == paramLong2) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  @SuppressLint({"NewApi"})
+  public static int a(Bitmap paramBitmap)
+  {
+    if (paramBitmap == null) {
+      return -1;
+    }
+    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
+  }
+  
+  public static int a(String paramString)
+  {
+    return a(paramString)[0];
+  }
+  
+  public static long a()
+  {
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.clear(10);
+    localCalendar.clear(12);
+    localCalendar.clear(13);
+    localCalendar.clear(14);
+    return localCalendar.getTimeInMillis();
+  }
+  
+  public static long a(int paramInt)
+  {
+    return paramInt & 0xFFFFFFFF;
+  }
+  
+  @SuppressLint({"NewApi"})
+  public static long a(File paramFile)
+  {
+    paramFile = new StatFs(paramFile.getPath());
+    long l = paramFile.getBlockSize();
+    return paramFile.getAvailableBlocks() * l;
+  }
+  
+  public static long a(byte[] paramArrayOfByte)
+  {
+    return paramArrayOfByte[0] & 0xFF | (paramArrayOfByte[1] & 0xFF) << 8 | (paramArrayOfByte[2] & 0xFF) << 16 | (paramArrayOfByte[3] & 0xFF) << 24 | (paramArrayOfByte[4] & 0xFF) << 32 | (paramArrayOfByte[5] & 0xFF) << 40 | (paramArrayOfByte[6] & 0xFF) << 48 | (paramArrayOfByte[7] & 0xFF) << 56;
+  }
+  
+  public static long a(byte[] paramArrayOfByte, int paramInt)
+  {
+    return a(paramArrayOfByte[(paramInt + 3)]) | a(paramArrayOfByte[(paramInt + 2)]) << 8 | a(paramArrayOfByte[(paramInt + 1)]) << 16 | a(paramArrayOfByte[paramInt]) << 24;
+  }
+  
+  public static String a(int paramInt)
+  {
+    if ((paramInt >= 1) && (paramInt <= jdField_a_of_type_ArrayOfJavaLangString.length)) {
+      return jdField_a_of_type_ArrayOfJavaLangString[(paramInt - 1)];
+    }
+    return "";
+  }
+  
+  public static String a(int paramInt1, int paramInt2)
+  {
+    return a(a(paramInt1, paramInt2));
+  }
+  
+  @SuppressLint({"NewApi"})
+  public static String a(Context paramContext)
+  {
+    if (Environment.getExternalStorageState().equals("mounted"))
+    {
+      paramContext = "/Android/data/" + paramContext.getPackageName() + "/cache/";
+      return Environment.getExternalStorageDirectory().getPath() + paramContext;
+    }
+    return null;
+  }
+  
+  public static String a(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return "0|0";
+    }
+    return paramString.charAt(0) + "|" + paramString.length();
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    String str;
+    if (paramString == null) {
+      str = paramString;
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return str;
+            str = paramString;
+          } while (paramString.length() == 0);
+          str = paramString;
+        } while (paramString.length() <= paramInt);
+        paramString = paramString.substring(0, paramInt);
+        if (paramString.codePointAt(paramString.length() - 1) == 20) {
+          break;
+        }
+        str = paramString;
+      } while (paramString.length() < 4);
+      str = paramString;
+    } while (paramString.codePointAt(paramString.length() - 4) != 20);
+    return paramString.substring(0, paramString.length() - 1);
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    return a(paramString1, paramString2, new String[] { "106" }, new String[] { "QQ注册验证码" }, 3);
+  }
+  
+  private static String a(String paramString1, String paramString2, String[] paramArrayOfString1, String[] paramArrayOfString2, int paramInt)
+  {
+    if ((paramString1 == null) || (paramString1.length() == 0) || (paramString2 == null) || (paramString2.length() == 0)) {}
+    label138:
+    label191:
+    label328:
+    label334:
     for (;;)
     {
-      label101:
-      localObject = ((com.tencent.smtt.sdk.WebView)localObject).getX5WebViewExtension();
-      boolean bool2;
-      label150:
-      int j;
-      if (localObject != null)
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.d("Utils", 2, "oriAdd=" + paramString1 + "smsbody=" + paramString2);
+      }
+      if (paramArrayOfString1 != null)
       {
-        localObject = (Boolean)((IX5WebViewExtension)localObject).invokeMiscMethod("supportImageQuery", new Bundle());
-        if (localObject != null)
+        int j = paramArrayOfString1.length;
+        int i = 0;
+        if (i < j)
         {
-          bool2 = ((Boolean)localObject).booleanValue();
-          bool1 = bool2;
-          localObject = paramView;
-          j = i;
+          String str = paramArrayOfString1[i];
+          if ((str == null) || (str.length() <= 0) || (!paramString1.startsWith(str))) {}
+        }
+        for (i = 1;; i = 0)
+        {
+          if ((i == 0) || (paramArrayOfString2 == null) || (paramArrayOfString2.length == 0) || (paramString2 == null)) {
+            break label334;
+          }
+          j = paramArrayOfString2.length;
+          i = 0;
+          if (i < j)
+          {
+            paramString1 = paramArrayOfString2[i];
+            if ((paramString1 == null) || (paramString1.length() <= 0) || (!paramString2.contains(paramString1))) {}
+          }
+          for (i = 1;; i = 0)
+          {
+            if (i == 0) {
+              break label328;
+            }
+            paramArrayOfString1 = paramString2.toCharArray();
+            paramString1 = "";
+            j = 0;
+            int k = 0;
+            if (j < paramArrayOfString1.length)
+            {
+              char c = paramArrayOfString1[j];
+              if ((c >= '0') && (c <= '9'))
+              {
+                paramString2 = paramString1 + String.valueOf(c);
+                i = 1;
+              }
+              do
+              {
+                j += 1;
+                paramString1 = paramString2;
+                k = i;
+                break label191;
+                i += 1;
+                break;
+                i += 1;
+                break label138;
+                paramString2 = paramString1;
+                i = k;
+              } while (k == 0);
+              if (paramString1.length() < paramInt) {}
+            }
+            else
+            {
+              if ((paramString1 == null) || (paramString1.length() <= 0)) {
+                break label319;
+              }
+            }
+            for (;;)
+            {
+              return paramString1;
+              paramString2 = "";
+              i = 0;
+              break;
+              paramString1 = null;
+            }
+          }
+          break;
+        }
+      }
+    }
+  }
+  
+  public static String a(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return null;
+    }
+    StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length);
+    int i = 0;
+    while (i < paramArrayOfByte.length)
+    {
+      String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
+      if (str.length() < 2) {
+        localStringBuffer.append(0);
+      }
+      localStringBuffer.append(str.toUpperCase());
+      i += 1;
+    }
+    return localStringBuffer.toString();
+  }
+  
+  public static ArrayList<String> a(String paramString, int paramInt1, int paramInt2, ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList, ArrayList<ArrayList<MessageForText.AtTroopMemberInfo>> paramArrayList1)
+  {
+    ArrayList localArrayList2 = new ArrayList();
+    int i2 = paramString.length();
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    ArrayList localArrayList1 = null;
+    int i1 = 0;
+    int j = 0;
+    int n = 0;
+    int i3;
+    int k;
+    label62:
+    MessageForText.AtTroopMemberInfo localAtTroopMemberInfo;
+    String str1;
+    label171:
+    label195:
+    String str2;
+    int i4;
+    String str3;
+    if (j < i2)
+    {
+      i3 = paramString.codePointAt(j);
+      k = i;
+      if (paramArrayList == null) {
+        break label1123;
+      }
+      k = i;
+      if (i >= paramArrayList.size()) {
+        break label1123;
+      }
+      localAtTroopMemberInfo = (MessageForText.AtTroopMemberInfo)paramArrayList.get(i);
+      if ((localAtTroopMemberInfo != null) && (localAtTroopMemberInfo.isValid()))
+      {
+        if ((localAtTroopMemberInfo == null) || (localAtTroopMemberInfo.startPos != j)) {
+          break label477;
+        }
+        str1 = paramString.substring(localAtTroopMemberInfo.startPos, localAtTroopMemberInfo.startPos + localAtTroopMemberInfo.textLen);
+        k = a(str1);
+        localAtTroopMemberInfo.startPos = ((short)(localAtTroopMemberInfo.startPos + i1));
+        if (localArrayList1 != null) {
+          break label1120;
+        }
+        localArrayList1 = new ArrayList();
+        localArrayList1.add(localAtTroopMemberInfo);
+        k = k + 11 + 8;
+        i += 1;
+        if (n + k <= paramInt1) {
+          break label835;
+        }
+        str2 = localStringBuilder.toString();
+        m = -1;
+        if (localArrayList1 != null) {
+          break label667;
+        }
+        i4 = str2.length() - paramInt2;
+        n = 0;
+      }
+      for (;;)
+      {
+        if (n < jdField_a_of_type_ArrayOfChar.length)
+        {
+          m = str2.lastIndexOf(jdField_a_of_type_ArrayOfChar[n]);
+          if (m <= i4) {}
+        }
+        else
+        {
+          n = str2.lastIndexOf('\024');
+          if ((m <= i4) || (n != -1)) {
+            break label563;
+          }
+          str2 = localStringBuilder.substring(0, m + 1);
+          str3 = localStringBuilder.substring(m + 1);
+          localStringBuilder.setLength(0);
+          m = a(str3);
+          localStringBuilder.append(str3);
+          label326:
+          i4 = str2.length();
+          localArrayList2.add(str2);
+          paramArrayList1.add(localArrayList1);
+          if (str1 == null) {
+            break label679;
+          }
+          localStringBuilder.append(str1);
+          n = localAtTroopMemberInfo.textLen - 1 + j;
+          label374:
+          j = n;
+          if (i3 == 20)
+          {
+            if (n + 1 < i2) {
+              break label720;
+            }
+            j = n;
+            if (QLog.isColorLevel())
+            {
+              QLog.e("Utils", 2, "there is no other char behind EMO_HEAD_CODE,msg is:" + paramString);
+              j = n;
+            }
+          }
+          label434:
+          localArrayList1 = null;
+          m += k;
+          k = i1 - i4;
+          j += 1;
+          i1 = k;
+          n = m;
+          break;
+          i += 1;
+          break label62;
+          label477:
+          if (i3 == 20)
+          {
+            if ((j + 1 < i2) && ((paramString.charAt(j + 1) == 'ÿ') || (paramString.charAt(j + 1) == 'ǿ')))
+            {
+              str1 = null;
+              k = 20;
+              break label195;
+            }
+            str1 = null;
+            k = 12;
+            break label195;
+          }
+          k = a(i3);
+          str1 = null;
+          break label195;
+        }
+        n += 1;
+      }
+      label563:
+      if ((n - 2 < 0) || (str2.charAt(n - 1) != 'ÿ') || (str2.charAt(n - 2) != '\024')) {
+        break label1133;
+      }
+    }
+    label667:
+    label679:
+    label720:
+    label860:
+    label1120:
+    label1123:
+    label1133:
+    for (int m = n - 2;; m = n)
+    {
+      if (m > i4)
+      {
+        str2 = localStringBuilder.substring(0, m);
+        str3 = localStringBuilder.substring(m);
+        localStringBuilder.setLength(0);
+        m = a(str3);
+        localStringBuilder.append(str3);
+        break label326;
+      }
+      localStringBuilder.setLength(0);
+      m = 0;
+      break label326;
+      localStringBuilder.setLength(0);
+      m = 0;
+      break label326;
+      if (i3 > 65535)
+      {
+        localStringBuilder.appendCodePoint(i3);
+        n = j + 1;
+        break label374;
+      }
+      localStringBuilder.append((char)i3);
+      n = j;
+      break label374;
+      if ('ÿ' == paramString.charAt(n + 1))
+      {
+        j = n;
+        if (n + 4 >= i2) {
+          break label434;
+        }
+        localStringBuilder.append(paramString.charAt(n + 1));
+        localStringBuilder.append(paramString.charAt(n + 2));
+        localStringBuilder.append(paramString.charAt(n + 3));
+        localStringBuilder.append(paramString.charAt(n + 4));
+        j = n + 4;
+        break label434;
+      }
+      localStringBuilder.append(paramString.charAt(n + 1));
+      j = n + 1;
+      break label434;
+      if (str1 != null)
+      {
+        localStringBuilder.append(str1);
+        m = localAtTroopMemberInfo.textLen - 1 + j;
+        j = m;
+        if (i3 == 20)
+        {
+          if (m + 1 < i2) {
+            break label975;
+          }
+          j = m;
           if (QLog.isColorLevel())
           {
-            QLog.d("SwiftBrowserLongClickHandler", 2, "isSupportImageQuery:" + bool2);
-            j = i;
-            localObject = paramView;
-            bool1 = bool2;
+            QLog.e("Utils", 2, "there is no other char behind EMO_HEAD_CODE,msg is:" + paramString);
+            j = m;
           }
         }
       }
       for (;;)
       {
-        if ((j != 8) && (j != 5))
+        m = n + k;
+        k = i1;
+        break;
+        if (i3 > 65535)
         {
-          QLog.e("SwiftBrowserLongClickHandler", 1, "the type of HitTestResult is not image type.");
-          return false;
-          paramView = paramView.getExtra();
-          break label101;
-          paramView = ((com.tencent.smtt.sdk.WebView)localObject).getHitTestResult();
-          if (paramView == null) {
-            break;
-          }
-          i = paramView.getType();
-          paramView = paramView.getExtra();
-          break label101;
-          QLog.e("SwiftBrowserLongClickHandler", 1, "X5WebView supportImageQuery invoke result is null.");
-          bool2 = false;
-          break label150;
-          QLog.e("SwiftBrowserLongClickHandler", 1, "X5WebView extension is null. can't get ability of supportImageQuery");
-          bool1 = false;
-          localObject = paramView;
-          j = i;
-          continue;
-          if (!(paramView instanceof android.webkit.WebView)) {
-            break label513;
-          }
-          paramView = ((android.webkit.WebView)paramView).getHitTestResult();
-          if (paramView == null) {
-            break;
-          }
-          j = paramView.getType();
-          localObject = paramView.getExtra();
-          bool1 = false;
-          continue;
+          localStringBuilder.appendCodePoint(i3);
+          m = j + 1;
+          break label860;
         }
-        if (TextUtils.isEmpty((CharSequence)localObject))
+        localStringBuilder.append((char)i3);
+        m = j;
+        break label860;
+        if ('ÿ' == paramString.charAt(m + 1))
         {
-          QLog.e("SwiftBrowserLongClickHandler", 1, "the image url of HitTestResult is empty.");
-          return false;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SwiftBrowserLongClickHandler", 2, "showActionSheet");
-        }
-        this.jdField_a_of_type_JavaLangString = ((String)localObject);
-        i = k;
-        if ((this.jdField_a_of_type_AndroidAppActivity instanceof TeamWorkDocEditBrowserActivity)) {
-          i = 1;
-        }
-        this.jdField_a_of_type_Begr = begr.c(this.jdField_a_of_type_AndroidAppActivity);
-        if (bool1) {
-          this.jdField_a_of_type_Begr.b(2131625004);
-        }
-        this.jdField_a_of_type_Begr.b(2131625002);
-        this.jdField_a_of_type_Begr.b(2131625001);
-        if (i != 0) {
-          this.jdField_a_of_type_Begr.b(2131627740);
-        }
-        this.jdField_a_of_type_Begr.c(2131625035);
-        d(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Begr.a(new bbbe(this));
-        this.jdField_a_of_type_Begr.setOnDismissListener(new bbbf(this));
-        this.jdField_a_of_type_Begr.setCanceledOnTouchOutside(true);
-        try
-        {
-          this.jdField_a_of_type_Begr.show();
-          return true;
-        }
-        catch (Exception paramView)
-        {
-          for (;;)
+          j = m;
+          if (m + 4 < i2)
           {
-            paramView.printStackTrace();
+            localStringBuilder.append(paramString.charAt(m + 1));
+            localStringBuilder.append(paramString.charAt(m + 2));
+            localStringBuilder.append(paramString.charAt(m + 3));
+            localStringBuilder.append(paramString.charAt(m + 4));
+            j = m + 4;
           }
         }
-        label513:
-        localObject = "";
-        j = 0;
-        bool1 = false;
+        else
+        {
+          localStringBuilder.append(paramString.charAt(m + 1));
+          j = m + 1;
+        }
       }
-      label525:
-      paramView = "";
+      if (localStringBuilder.length() > 0)
+      {
+        localArrayList2.add(localStringBuilder.toString());
+        paramArrayList1.add(localArrayList1);
+      }
+      return localArrayList2;
+      break label171;
+      localAtTroopMemberInfo = null;
+      i = k;
+      break;
     }
   }
   
-  public void b(String paramString)
+  public static short a(byte[] paramArrayOfByte, int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("forward_type", 1);
-    localBundle.putString("forward_filepath", paramString);
-    localBundle.putString("forward_extra", paramString);
-    localBundle.putBoolean("not_forward", true);
-    localBundle.putString("forward_thumb", paramString);
-    localBundle.putBoolean("isFromShare", true);
-    localBundle.putBoolean("isJumpAIO", true);
-    paramString = new Intent();
-    paramString.putExtras(localBundle);
-    aphp.a(this.jdField_a_of_type_AndroidAppActivity, paramString, 21);
+    return (short)(a(paramArrayOfByte[(paramInt + 1)]) | a(paramArrayOfByte[paramInt]) << 8);
   }
   
-  public void c(String paramString)
+  public static void a(Closeable paramCloseable)
   {
-    if (this.jdField_a_of_type_Bbat == null)
+    if (paramCloseable != null) {}
+    try
     {
-      QLog.e("SwiftBrowserLongClickHandler", 1, "x5QueryImage. mComponentContext is null");
+      paramCloseable.close();
       return;
     }
-    Object localObject = this.jdField_a_of_type_Bbat.a();
-    if (localObject == null)
+    catch (IOException paramCloseable)
     {
-      QLog.e("SwiftBrowserLongClickHandler", 1, "x5QueryImage. x5WebView is null");
-      return;
+      QLog.e("Utils", 1, paramCloseable, new Object[0]);
     }
-    localObject = ((com.tencent.smtt.sdk.WebView)localObject).getX5WebViewExtension();
-    if (localObject == null)
+  }
+  
+  public static void a(String paramString)
+  {
+    ExceptionTracker.printCallStack(paramString, 1);
+  }
+  
+  public static void a(Throwable paramThrowable) {}
+  
+  public static boolean a()
+  {
+    return (Environment.getExternalStorageState().equals("mounted")) && (Environment.getExternalStorageDirectory().exists());
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    if ((paramContext == null) || (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(jdField_a_of_type_JavaLangString.trim()))) {
+      return false;
+    }
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", jdField_a_of_type_JavaLangString.trim());
+    paramContext.startActivity(localIntent);
+    return true;
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    if ((paramContext == null) || (paramString == null)) {
+      return false;
+    }
+    paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
+    while (paramContext.hasNext())
     {
-      QLog.e("SwiftBrowserLongClickHandler", 1, "x5QueryImage. extension is null");
-      return;
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+      if (localRunningAppProcessInfo.processName.equals(paramString))
+      {
+        Process.killProcess(localRunningAppProcessInfo.pid);
+        return true;
+      }
     }
-    if (TextUtils.isEmpty(paramString))
+    return false;
+  }
+  
+  public static boolean a(Object paramObject1, Object paramObject2)
+  {
+    return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return (paramString == null) || (paramString.equals(ajsf.E)) || (paramString.equals(String.valueOf(ajsf.F))) || (paramString.equals(String.valueOf(ajsf.G))) || (paramString.equals(String.valueOf(ajsf.H))) || (paramString.equals(String.valueOf(ajsf.J))) || (paramString.equals(String.valueOf(ajsf.D))) || (paramString.equals(String.valueOf(ajsf.C))) || (paramString.equals(String.valueOf(ajsf.U))) || (paramString.equals(String.valueOf(ajsf.ac))) || (paramString.equals(String.valueOf(ajsf.aB))) || (paramString.equals(String.valueOf(ajsf.z))) || (paramString.equals(String.valueOf(ajsf.A))) || (paramString.equals(String.valueOf(ajsf.B))) || (paramString.equals(String.valueOf(ajsf.aa))) || (paramString.equals(String.valueOf(ajsf.x))) || (paramString.equals(String.valueOf(ajsf.w))) || (paramString.equals(String.valueOf(ajsf.ab))) || (paramString.equals(String.valueOf(ajsf.W))) || (paramString.equals(String.valueOf(ajsf.Z))) || (paramString.equals(String.valueOf(ajsf.X))) || (paramString.equals(String.valueOf(ajsf.ad))) || (paramString.equals(String.valueOf(ajsf.ae))) || (paramString.equals(String.valueOf(ajsf.ar))) || (paramString.equals(String.valueOf(ajsf.at))) || (paramString.equals(String.valueOf(ajsf.au))) || (paramString.equals(String.valueOf(ajsf.aA))) || (paramString.equals(String.valueOf(66600000L))) || (paramString.equals(String.valueOf(ajsf.aD))) || (paramString.equals(String.valueOf(9946L))) || (paramString.equals(String.valueOf(ajsf.aM)));
+  }
+  
+  public static byte[] a(int paramInt)
+  {
+    int i = (byte)(paramInt & 0xFF);
+    int j = (byte)((0xFF00 & paramInt) >> 8);
+    int k = (byte)((0xFF0000 & paramInt) >> 16);
+    return new byte[] { (byte)((0xFF000000 & paramInt) >> 24), k, j, i };
+  }
+  
+  public static byte[] a(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0))
     {
-      QLog.e("SwiftBrowserLongClickHandler", 1, "x5QueryImage. filePath is null");
-      return;
+      paramString = null;
+      return paramString;
     }
-    ThreadManager.excute(new SwiftBrowserLongClickHandler.7(this, paramString, (IX5WebViewExtension)localObject), 64, null, true);
+    int j = paramString.length() / 2;
+    byte[] arrayOfByte = new byte[j];
+    char[] arrayOfChar = paramString.toUpperCase().toCharArray();
+    int i = 0;
+    for (;;)
+    {
+      paramString = arrayOfByte;
+      if (i >= j) {
+        break;
+      }
+      int k = i * 2;
+      int m = a(arrayOfChar[k]);
+      arrayOfByte[i] = ((byte)(a(arrayOfChar[(k + 1)]) | m << 4));
+      i += 1;
+    }
+  }
+  
+  public static int[] a(String paramString)
+  {
+    int[] arrayOfInt = new int[2];
+    if (paramString == null)
+    {
+      arrayOfInt[1] = 0;
+      arrayOfInt[0] = 0;
+      return arrayOfInt;
+    }
+    int i2 = paramString.length();
+    int k = 0;
+    int m = 0;
+    int i = 0;
+    if (k < i2)
+    {
+      int i3 = paramString.codePointAt(k);
+      int n;
+      int j;
+      if (i3 == 20) {
+        if ((k + 4 < i2) && ((paramString.charAt(k + 1) == 'ÿ') || (paramString.charAt(k + 1) == 'ǿ')))
+        {
+          i += 20;
+          n = m + 1;
+          j = k + 4;
+        }
+      }
+      for (;;)
+      {
+        k = j + 1;
+        m = n;
+        break;
+        i += 12;
+        j = k + 1;
+        n = m;
+        continue;
+        int i1 = i + a(i3);
+        j = k;
+        n = m;
+        i = i1;
+        if (i3 > 255)
+        {
+          j = k + 1;
+          n = m;
+          i = i1;
+        }
+      }
+    }
+    arrayOfInt[0] = i;
+    arrayOfInt[1] = m;
+    return arrayOfInt;
+  }
+  
+  public static int b(long paramLong1, long paramLong2)
+  {
+    return a(paramLong1 - -9223372036854775808L, -9223372036854775808L + paramLong2);
+  }
+  
+  public static long b()
+  {
+    StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
+    int i = localStatFs.getBlockSize();
+    int j = localStatFs.getAvailableBlocks();
+    long l = i;
+    return j * l;
+  }
+  
+  public static String b(String paramString)
+  {
+    int i = 1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramString == null) {
+      localStringBuilder.append("null");
+    }
+    for (;;)
+    {
+      return localStringBuilder.toString();
+      if (paramString.length() == 0)
+      {
+        localStringBuilder.append("");
+      }
+      else
+      {
+        int j = paramString.length();
+        if (j > 10)
+        {
+          localStringBuilder.append(paramString.charAt(0)).append(paramString.charAt(1)).append("***").append(paramString.charAt(j - 1)).append('[').append(j).append(']');
+        }
+        else
+        {
+          localStringBuilder.append(paramString.charAt(0));
+          while (i < paramString.length())
+          {
+            localStringBuilder.append('*');
+            i += 1;
+          }
+        }
+      }
+    }
+  }
+  
+  public static String b(String paramString, int paramInt)
+  {
+    if (paramInt < 0) {
+      throw new IllegalArgumentException("len must be greater than 0,len is:" + paramInt);
+    }
+    if (paramString == null) {}
+    while (paramString.length() <= paramInt) {
+      return paramString;
+    }
+    return paramString.substring(0, paramInt) + "...";
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
+    String str = ajyc.a(2131716031);
+    return a(paramString1, paramString2, new String[] { "106" }, new String[] { str, "Login Verification Code" }, 3);
+  }
+  
+  public static boolean b()
+  {
+    Boolean localBoolean = jdField_a_of_type_JavaLangBoolean;
+    Object localObject = localBoolean;
+    long l1;
+    if (localBoolean == null)
+    {
+      localObject = MobileQQ.sMobileQQ.getFirstSimpleAccount();
+      if (localObject != null)
+      {
+        localObject = ((SimpleAccount)localObject).getUin();
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          l1 = 0L;
+        }
+      }
+    }
+    else
+    {
+      try
+      {
+        long l2 = Long.parseLong((String)localObject);
+        l1 = l2;
+      }
+      catch (Exception localException)
+      {
+        label52:
+        break label52;
+      }
+      if (!jdField_a_of_type_JavaUtilSet.contains(Long.valueOf(l1))) {}
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      localObject = Boolean.valueOf(bool);
+      return ((Boolean)localObject).booleanValue();
+    }
+  }
+  
+  public static boolean b(String paramString)
+  {
+    if (paramString == null) {
+      return false;
+    }
+    return ajsf.aC.equals(paramString);
+  }
+  
+  public static String c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    int i;
+    do
+    {
+      return paramString;
+      i = paramString.lastIndexOf('_');
+    } while (i <= 0);
+    return paramString.substring(i + 1);
+  }
+  
+  public static String c(String paramString1, String paramString2)
+  {
+    String str1 = ajyc.a(2131716023);
+    String str2 = ajyc.a(2131716007);
+    return a(paramString1, paramString2, new String[] { "1062", "1065", "1066", "1069" }, new String[] { str1, str2 }, 3);
+  }
+  
+  public static boolean c()
+  {
+    boolean bool2 = false;
+    List localList = BaseApplicationImpl.sApplication.getAllAccounts();
+    boolean bool1 = bool2;
+    if (localList != null)
+    {
+      bool1 = bool2;
+      if (localList.size() >= 8) {
+        bool1 = true;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Utils", 2, "isAccountNumExceedMax, isExceed=" + bool1);
+    }
+    return bool1;
+  }
+  
+  public static boolean c(String paramString)
+  {
+    long l1 = 0L;
+    try
+    {
+      long l2 = Long.parseLong(paramString);
+      l1 = l2;
+    }
+    catch (NumberFormatException paramString)
+    {
+      label9:
+      break label9;
+    }
+    return ((l1 >= 2726500000L) && (l1 <= 2726511999L)) || ((l1 >= 800000000L) && (l1 <= 800099999L)) || ((l1 >= 938000000L) && (l1 <= 938099999L)) || ((l1 >= 1068660000L) && (l1 <= 1068669960L)) || ((l1 >= 2355000000L) && (l1 <= 2355199999L)) || (l1 == 56268888L);
+  }
+  
+  public static String d(String paramString1, String paramString2)
+  {
+    String str1 = ajyc.a(2131716016);
+    String str2 = ajyc.a(2131716017);
+    return a(paramString1, paramString2, new String[] { "10010", "106" }, new String[] { str1, str2, "QQ" }, 3);
+  }
+  
+  public static boolean d(String paramString)
+  {
+    return (paramString != null) && (paramString.length() > 0) && (!"0".equals(paramString)) && (!"10000".equals(paramString)) && (!"1000000".equals(paramString)) && (!"80000000".equals(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbbd
  * JD-Core Version:    0.7.0.1
  */

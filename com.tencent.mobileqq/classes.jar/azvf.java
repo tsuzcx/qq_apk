@@ -1,22 +1,42 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-import android.widget.EditText;
+import com.tencent.qphone.base.util.BaseApplication;
 
-final class azvf
-  extends View.AccessibilityDelegate
+class azvf
 {
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  private bgam jdField_a_of_type_Bgam = new bgam();
+  
+  public azvf(azve paramazve)
   {
-    EditText localEditText = (EditText)paramView;
-    localEditText.setHint("");
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    paramAccessibilityNodeInfo.setContentDescription(localEditText.getContentDescription());
+    this.jdField_a_of_type_Bgam.a();
+  }
+  
+  public int a(long paramLong1, long paramLong2)
+  {
+    int j = this.jdField_a_of_type_Bgam.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
+    int k = bgap.a(BaseApplication.getContext());
+    int i;
+    if (k != 1)
+    {
+      i = j;
+      if (k != 2) {}
+    }
+    else
+    {
+      i = j;
+      if (j > 16384) {
+        i = 16384;
+      }
+    }
+    return i;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bgam.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azvf
  * JD-Core Version:    0.7.0.1
  */

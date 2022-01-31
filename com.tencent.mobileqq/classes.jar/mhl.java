@@ -1,19 +1,33 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PopupDialog;
+import com.tencent.av.VideoController;
 
-public class mhl
+class mhl
   implements DialogInterface.OnClickListener
 {
-  public mhl(PopupDialog paramPopupDialog) {}
+  mhl(mhf parammhf) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (PopupDialog.a.b != null) {
-      PopupDialog.a.b.onClick(paramDialogInterface, paramInt);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    paramDialogInterface.dismiss();
-    PopupDialog.a();
+    mhf.a(this.a, false);
+    if (paramInt == 1)
+    {
+      axqw.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
+      this.a.c();
+      if (!muf.a(mhf.a(this.a))) {
+        mhf.a(this.a).a(mhf.a(this.a));
+      }
+    }
+    while (paramInt != 0)
+    {
+      return;
+      mhf.a(this.a).b(mhf.a(this.a));
+      return;
+    }
+    mhf.a(this.a, mhf.a(this.a).a().v);
   }
 }
 

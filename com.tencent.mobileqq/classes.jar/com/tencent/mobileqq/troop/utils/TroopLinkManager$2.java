@@ -2,19 +2,19 @@ package com.tencent.mobileqq.troop.utils;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import azkf;
-import bace;
+import bali;
+import bbdj;
 import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppRuntime;
 
 public class TroopLinkManager$2
   implements Runnable
 {
-  public TroopLinkManager$2(azkf paramazkf, String paramString1, String paramString2) {}
+  public TroopLinkManager$2(bali parambali, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if (!bace.a(this.a, this.b)) {
+    if (!bbdj.a(this.a, this.b)) {
       BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt("troop_link_config_version", 0).commit();
     }
   }

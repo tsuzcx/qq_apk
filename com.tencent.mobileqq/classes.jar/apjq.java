@@ -1,38 +1,44 @@
-import android.content.DialogInterface.OnClickListener;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.kwstudio.office.base.IGlobal;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsReaderGlobal;
+import java.io.File;
+import java.io.InputStream;
+import java.util.concurrent.Executor;
 
-class apjq
-  implements View.OnClickListener
+public final class apjq
+  implements IGlobal
 {
-  apjq(apjo paramapjo, DialogInterface.OnClickListener paramOnClickListener) {}
+  private final TdsReaderGlobal a;
   
-  public void onClick(View paramView)
+  private apjq(TdsReaderGlobal paramTdsReaderGlobal)
   {
-    this.jdField_a_of_type_Apjo.hideSoftInputFromWindow();
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Apjo, 1);
+    this.a = paramTdsReaderGlobal;
+  }
+  
+  public Context getApplicationContext()
+  {
+    return TdsReaderGlobal.a(this.a);
+  }
+  
+  public Executor getExecutor()
+  {
+    return TdsReaderGlobal.a(this.a);
+  }
+  
+  public String getFileDir()
+  {
+    Context localContext = getApplicationContext();
+    File localFile2 = localContext.getExternalFilesDir(null);
+    File localFile1 = localFile2;
+    if (localFile2 == null) {
+      localFile1 = localContext.getFilesDir();
     }
-    if (apjo.a(this.jdField_a_of_type_Apjo))
-    {
-      apjo.a(this.jdField_a_of_type_Apjo).removeView(apjo.a(this.jdField_a_of_type_Apjo));
-      apjo.a(this.jdField_a_of_type_Apjo, false);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Apjo.isShowing()) {
-        this.jdField_a_of_type_Apjo.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Forward.NewVersion.Dialog", 2, Log.getStackTraceString(paramView));
-    }
+    return localFile1.getAbsolutePath();
+  }
+  
+  public InputStream getResourceAsStream(String paramString)
+  {
+    return null;
   }
 }
 

@@ -1,424 +1,1375 @@
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.media.MediaCodec;
+import android.media.MediaCodecInfo;
+import android.media.MediaCodecInfo.CodecCapabilities;
+import android.media.MediaCodecList;
+import android.media.MediaFormat;
 import android.os.Build;
-import android.text.TextUtils;
-import android.view.Display;
-import android.view.View;
-import android.view.animation.Animation;
-import android.widget.TextView;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.camera.CameraUtils;
-import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
-import com.tencent.av.smallscreen.SmallScreenService;
-import com.tencent.av.smallscreen.SmallScreenVideoControlUI;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.view.Surface;
+import com.tencent.av.mediacodec.DeviceCheck;
+import com.tencent.av.mediacodec.NativeCodec;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
+import dalvik.system.DexClassLoader;
+import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class low
-  extends lru
+@SuppressLint({"NewApi"})
+public class low
 {
-  low(lou paramlou) {}
+  public static int a;
+  public static String a;
+  protected static Method a;
+  protected static boolean a;
+  public static int b;
+  public static String b;
+  protected static Method b;
+  protected static boolean b;
+  public static int c;
+  public static String c;
+  protected static Method c;
+  public static boolean c;
+  protected static Method d;
+  protected MediaCodec a;
+  protected MediaFormat a;
+  protected ByteBuffer[] a;
+  protected MediaFormat b;
+  protected ByteBuffer[] b;
+  protected int d;
+  final String d;
+  public boolean d;
   
-  protected void a()
+  static
   {
-    if (this.a.jdField_a_of_type_Loz != null) {
-      this.a.jdField_a_of_type_Loz.a(0, 0, true);
+    jdField_a_of_type_Int = 1;
+    jdField_a_of_type_JavaLangString = "video/avc";
+    jdField_b_of_type_JavaLangString = "video/hevc";
+    jdField_c_of_type_JavaLangString = "request-sync";
+    jdField_b_of_type_Boolean = true;
+    jdField_c_of_type_Int = 33000;
+  }
+  
+  @Deprecated
+  public low()
+  {
+    this("unknown");
+  }
+  
+  public low(String paramString)
+  {
+    this.jdField_d_of_type_Int = jdField_b_of_type_Int;
+    this.jdField_d_of_type_JavaLangString = (paramString + "_AndroidCodec");
+    a(this.jdField_d_of_type_JavaLangString);
+    if ((Build.VERSION.SDK_INT >= 19) && (jdField_d_of_type_JavaLangReflectMethod == null)) {}
+    try
+    {
+      jdField_d_of_type_JavaLangReflectMethod = MediaCodec.class.getMethod("setParameters", new Class[] { Bundle.class });
+      return;
+    }
+    catch (NoSuchMethodException paramString)
+    {
+      jdField_d_of_type_JavaLangReflectMethod = null;
     }
   }
   
-  protected void a(long paramLong)
+  public static MediaCodecInfo.CodecCapabilities a(MediaCodecInfo paramMediaCodecInfo, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("double_2_multi", 1, "onChangeUI_DobuleAudio2MultiAudio, isBackground_Stop[" + this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.isBackground_Stop + "], seq[" + paramLong + "]");
+    Object localObject = null;
+    try
+    {
+      paramMediaCodecInfo = paramMediaCodecInfo.getCapabilitiesForType(paramString);
+      return paramMediaCodecInfo;
     }
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {}
-    do
+    catch (Exception localException)
     {
       do
       {
-        return;
-        lou.a(this.a, 1);
-        localObject = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
-      } while (((kvq)localObject).jdField_h_of_type_Int == 11);
-      if (this.a.jdField_a_of_type_Loz != null) {
-        this.a.jdField_a_of_type_Loz.a(((kvq)localObject).jdField_d_of_type_JavaLangString, 1, false, false, false);
-      }
-      if (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI != null)
-      {
-        this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI.a(paramLong);
-        this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI = null;
-      }
-      this.a.jdField_d_of_type_Boolean = false;
-      this.a.c = ((kvq)localObject).jdField_d_of_type_Int;
-      this.a.jdField_d_of_type_Int = ((kvq)localObject).f;
-      if (!lbk.f())
-      {
-        this.a.jdField_a_of_type_Loz.a(false, false);
-        ((kvq)localObject).a(paramLong, false);
-      }
-      this.a.a(true);
-      if (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI != null)
-      {
-        this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI.b();
-        if (this.a.jdField_b_of_type_Int != 2) {
-          this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI.e();
-        }
-      }
-      if (((kvq)localObject).jdField_d_of_type_JavaLangString != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("double_2_multi", 2, "onChangeUI_DobuleAudio2MultiAudio-->Peer uin is null!!!!!!!!!");
-    return;
-    ((kvq)localObject).jdField_h_of_type_Long = Long.valueOf(((kvq)localObject).jdField_d_of_type_JavaLangString).longValue();
-    long l = ((kvq)localObject).g;
-    if (((kvq)localObject).i == 3000) {
-      ((kvq)localObject).a = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(String.valueOf(l));
+        paramMediaCodecInfo = localObject;
+      } while (!QLog.isDevelopLevel());
+      QLog.w("AndroidCodec", 1, "getCodecCapabilities, Exception, mime[" + paramString + "]", localException);
     }
-    ((kvq)localObject).b("onChangeUI_DobuleAudio2MultiAudio", mfs.a(((kvq)localObject).i));
-    this.a.jdField_a_of_type_ComTencentAvVideoController.m(false);
-    this.a.jdField_a_of_type_ComTencentAvVideoController.n(false);
-    this.a.e = ((kvq)localObject).i;
-    if (this.a.c == 4) {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, this.a.c, false, false);
-    }
-    Object localObject = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().jdField_d_of_type_JavaLangString) + "";
-    kxl.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, (String)localObject);
-    kxl.a(2, (String)localObject);
-    kxl.a(2);
+    return null;
   }
   
-  protected void a(long paramLong, ArrayList<leb> paramArrayList)
+  public static MediaCodecInfo a(String paramString)
   {
-    Object localObject;
-    int k;
-    int j;
-    String str1;
-    int m;
-    boolean bool2;
-    int i;
-    label153:
-    String str2;
-    boolean bool1;
-    if ((this.a.jdField_a_of_type_Loz != null) && (paramArrayList != null))
+    try
     {
-      localObject = this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramArrayList);
-      k = this.a.jdField_a_of_type_ComTencentAvVideoController.g();
-      if (QLog.isColorLevel()) {
-        QLog.w("SmallScreenVideoController", 1, "onRequest_ShowVideo, seq[" + paramLong + "], infoLogs[" + (String)localObject + "]");
-      }
-      j = 0;
-      if (j < paramArrayList.size())
+      int j = MediaCodecList.getCodecCount();
+      int i = 0;
+      while (i < j)
       {
-        localObject = (leb)paramArrayList.get(j);
-        str1 = String.valueOf(((leb)localObject).jdField_a_of_type_Long);
-        m = ((leb)localObject).jdField_a_of_type_Int;
-        bool2 = ((leb)localObject).jdField_a_of_type_Boolean;
-        i = -1;
-        if (this.a.e == 3000)
-        {
-          i = 1004;
-          str2 = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(i, str1, String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().g));
-          if ((!((leb)localObject).jdField_b_of_type_Boolean) || (this.a.jdField_a_of_type_ComTencentAvVideoController.o())) {
-            break label694;
-          }
-          if (str1.equals(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin())) {
-            break label499;
-          }
-          loz localloz = this.a.jdField_a_of_type_Loz;
-          if (((leb)localObject).jdField_b_of_type_Long != 5L) {
-            break label493;
-          }
-          bool1 = true;
-          label248:
-          localloz.a(str1, m, true, bool2, bool1);
-          i = 0;
+        MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
+        boolean bool = localMediaCodecInfo.getName().equalsIgnoreCase(paramString);
+        if (bool) {
+          return localMediaCodecInfo;
+        }
+        i += 1;
+      }
+      return null;
+    }
+    catch (Throwable paramString) {}
+  }
+  
+  public static ArrayList<loy> a(String paramString, Context paramContext)
+  {
+    if (Build.VERSION.SDK_INT < 16) {
+      return null;
+    }
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      a(paramString);
+      if (!jdField_b_of_type_Boolean)
+      {
+        QLog.w(paramString, 1, "checkSupportHWCodecAbility, 不是API21");
+        return null;
+      }
+    }
+    if (!new File(paramContext.getApplicationInfo().nativeLibraryDir + "/libhwcodec.so").exists())
+    {
+      QLog.w(paramString, 1, "checkSupportHWCodecAbility,  libhwcodec不存在");
+      return null;
+    }
+    Object localObject2;
+    if (!jdField_a_of_type_Boolean)
+    {
+      b();
+      if (jdField_a_of_type_Boolean)
+      {
+        localObject1 = "PRODUCT=" + Build.PRODUCT.toLowerCase() + ";";
+        localObject1 = (String)localObject1 + "MODEL=" + Build.MODEL.toLowerCase() + ";";
+        localObject1 = (String)localObject1 + "SDK=" + Build.VERSION.SDK_INT + ";";
+        localObject1 = (String)localObject1 + "FINGERPRINT=" + Build.FINGERPRINT.toLowerCase() + ";";
+        localObject2 = (String)localObject1 + "MANUFACTURER=" + Build.MANUFACTURER.toLowerCase() + ";";
+        localObject1 = paramContext.getApplicationInfo();
+        localObject2 = (String)localObject2 + "DATADIR=" + ((ApplicationInfo)localObject1).dataDir + ";";
+        if (Build.VERSION.SDK_INT < 9) {
+          break label358;
+        }
+      }
+    }
+    label358:
+    for (Object localObject1 = (String)localObject2 + "LIBDIR=" + ((ApplicationInfo)localObject1).nativeLibraryDir + ";";; localObject1 = (String)localObject2 + "LIBDIR=" + ((ApplicationInfo)localObject1).dataDir + "/lib;")
+    {
+      NativeCodec.set_device_infos((String)localObject1);
+      if (jdField_a_of_type_Boolean) {
+        break;
+      }
+      QLog.w(paramString, 1, "checkSupportHWCodecAbility, lib失败");
+      return null;
+    }
+    localObject1 = new ArrayList();
+    if (AudioHelper.e()) {
+      QLog.e(paramString, 1, "checkSupportHWCodecAbility start");
+    }
+    if (DeviceCheck.b()) {
+      if (DeviceCheck.e())
+      {
+        ((ArrayList)localObject1).add(new loy(1, true));
+        if (AudioHelper.e()) {
+          QLog.w(paramString, 1, "checkSupportHWCodecAbility, 白名单, 支持H264解码");
+        }
+        if (!DeviceCheck.a()) {
+          break label750;
+        }
+        if (!DeviceCheck.f()) {
+          break label739;
+        }
+        ((ArrayList)localObject1).add(new loy(2, true));
+        if (AudioHelper.e()) {
+          QLog.w(paramString, 1, "checkSupportHWCodecAbility, 白名单, 支持H264编码");
         }
       }
     }
     for (;;)
     {
-      label265:
-      if (i == 0) {
-        if ((!((leb)localObject).jdField_b_of_type_Boolean) && (!((leb)localObject).jdField_a_of_type_Boolean) && (k != 4))
+      jdField_c_of_type_Boolean = a((ArrayList)localObject1);
+      return localObject1;
+      QLog.w(paramString, 1, "checkSupportHWCodecAbility, 白名单, 不支持H264解码");
+      break;
+      localObject2 = new lpc(lgo.a(paramContext));
+      loy localloy = ((lpc)localObject2).c();
+      if ((localloy != null) && (localloy.jdField_a_of_type_Boolean)) {
+        if (DeviceCheck.e())
         {
-          if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().C != 2) {
-            break label530;
+          ((ArrayList)localObject1).add(localloy);
+          if (AudioHelper.e()) {
+            QLog.w(paramString, 1, "checkSupportHWCodecAbility, 支持H264解码. maxW = " + localloy.jdField_b_of_type_Int + ", maxH = " + localloy.jdField_c_of_type_Int);
           }
-          awqx.b(null, "CliOper", "", "", "0X8004CF8", "0X8004CF8", 0, 0, "", "", "", "");
         }
       }
       for (;;)
       {
-        this.a.jdField_a_of_type_Loz.a(str1, m, this.a.jdField_a_of_type_AndroidGraphicsBitmap, ((leb)localObject).jdField_b_of_type_Boolean, ((leb)localObject).jdField_a_of_type_Boolean);
-        if (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().I)
-        {
-          float f = mjg.a(this.a.jdField_a_of_type_AndroidContentContext, 12.0F);
-          if (!str1.equals(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin())) {
-            this.a.jdField_a_of_type_Loz.a(str1, m, str2, f, -1);
-          }
-          this.a.jdField_a_of_type_Loz.a(str1, m);
+        localObject2 = ((lpc)localObject2).a();
+        if ((localObject2 == null) || (!((loy)localObject2).jdField_a_of_type_Boolean)) {
+          break label722;
         }
-        j += 1;
+        if (!DeviceCheck.c()) {
+          break label711;
+        }
+        ((ArrayList)localObject1).add(localObject2);
+        if (!AudioHelper.e()) {
+          break;
+        }
+        QLog.w(paramString, 1, "checkSupportHWCodecAbility, 支持H265解码. maxW = " + ((loy)localObject2).jdField_b_of_type_Int + ", maxH = " + ((loy)localObject2).jdField_c_of_type_Int);
         break;
-        if (this.a.e == 1)
+        QLog.w(paramString, 1, "checkSupportHWCodecAbility, 不支持H264解码");
+        continue;
+        if (QLog.isDevelopLevel()) {
+          QLog.w(paramString, 1, "checkSupportHWCodecAbility, 无H264解码配置");
+        }
+      }
+      label711:
+      QLog.w(paramString, 1, "checkSupportHWCodecAbility, 不支持H265解码");
+      break;
+      label722:
+      if (!QLog.isDevelopLevel()) {
+        break;
+      }
+      QLog.w(paramString, 1, "checkSupportHWCodecAbility, 无H265解码配置");
+      break;
+      label739:
+      QLog.w(paramString, 1, "checkSupportHWCodecAbility, 白名单, 不支持H264编码");
+      continue;
+      label750:
+      paramContext = new lpc(lgo.a(paramContext));
+      localObject2 = paramContext.d();
+      if ((localObject2 != null) && (((loy)localObject2).jdField_a_of_type_Boolean)) {
+        if (DeviceCheck.f())
         {
-          i = 1000;
-          break label153;
+          ((ArrayList)localObject1).add(localObject2);
+          if (AudioHelper.e()) {
+            QLog.w(paramString, 1, "checkSupportHWCodecAbility, 支持H264编码. maxW = " + ((loy)localObject2).jdField_b_of_type_Int + ", maxH = " + ((loy)localObject2).jdField_c_of_type_Int);
+          }
         }
-        if (this.a.e != 0) {
-          break label153;
-        }
-        i = 0;
-        break label153;
-        label493:
-        bool1 = false;
-        break label248;
-        label499:
-        this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils.a(paramLong);
-        this.a.jdField_a_of_type_Loz.a(true, bool2);
-        i = 1;
-        break label265;
-        label530:
-        awqx.b(null, "CliOper", "", "", "0X8004F5C", "0X8004F5C", 0, 0, "", "", "", "");
       }
-      paramArrayList = this.a.jdField_a_of_type_Loz;
-      i = this.a.g;
-      if (this.a.jdField_a_of_type_Lrc == null) {}
-      for (bool1 = true;; bool1 = this.a.jdField_a_of_type_Lrc.jdField_b_of_type_Boolean)
+      for (;;)
       {
-        paramArrayList.a(i, bool1);
-        i = this.a.g;
-        j = this.a.jdField_a_of_type_AndroidViewDisplay.getRotation();
-        if (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI != null) {
-          this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI.b((i + j * 90) % 360);
+        paramContext = paramContext.b();
+        if ((paramContext == null) || (!paramContext.jdField_a_of_type_Boolean)) {
+          break label954;
         }
-        if (this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils != null) {
-          this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils.a(this.a.g);
+        if (!DeviceCheck.d()) {
+          break label943;
         }
-        return;
+        ((ArrayList)localObject1).add(paramContext);
+        if (!AudioHelper.e()) {
+          break;
+        }
+        QLog.w(paramString, 1, "checkSupportHWCodecAbility, 支持H265编码. maxW = " + paramContext.jdField_b_of_type_Int + ", maxH = " + paramContext.jdField_c_of_type_Int);
+        break;
+        QLog.w(paramString, 1, "checkSupportHWCodecAbility, 不支持H264编码");
+        continue;
+        if (QLog.isDevelopLevel()) {
+          QLog.w(paramString, 1, "checkSupportHWCodecAbility, 无H264编码配置");
+        }
       }
-      label694:
-      i = 0;
+      label943:
+      QLog.w(paramString, 1, "checkSupportHWCodecAbility, 不支持H265编码");
+      continue;
+      label954:
+      if (QLog.isDevelopLevel()) {
+        QLog.w(paramString, 1, "checkSupportHWCodecAbility, 无H265编码配置");
+      }
     }
   }
   
-  protected void a(String paramString)
+  @SuppressLint({"NewApi"})
+  public static List<MediaCodecInfo> a(String paramString)
   {
-    if ((paramString != null) && (paramString.equals("1")) && (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().S))
-    {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().a(true);
-      lou.a(this.a, 2);
-    }
-  }
-  
-  protected void a(String paramString1, int paramInt1, String paramString2, int paramInt2) {}
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SmallScreenVideoController", 2, "Qav.Record, onChangeUi_ReceiveRecordMsg, from=" + paramString1 + ", data=" + paramString2);
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {}
+    ArrayList localArrayList = new ArrayList();
     for (;;)
     {
-      return;
+      int i;
       try
       {
-        i = Integer.parseInt(paramString2);
-        if (i == -1)
+        int k = MediaCodecList.getCodecCount();
+        i = 0;
+        if (i < k)
         {
-          QLog.d("SmallScreenVideoController", 1, "onChangeUi_ReceiveRecordMsg, parse int failed, try parse SUPPORT, data=" + paramString2);
-          if (TextUtils.isEmpty(paramString2)) {
-            continue;
+          MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
+          if ((!localMediaCodecInfo.isEncoder()) && (!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE")))
+          {
+            String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
+            int j = 0;
+            if (j < arrayOfString.length)
+            {
+              if (arrayOfString[j].equalsIgnoreCase(paramString)) {
+                localArrayList.add(localMediaCodecInfo);
+              }
+              j += 1;
+              continue;
+            }
           }
-          if (!"SUPPORT_TRUE".equals(paramString2)) {
-            break label288;
-          }
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a().z = true;
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a().t = Math.max(this.a.jdField_a_of_type_ComTencentAvVideoController.a().t, 730);
         }
-        j = this.a.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int;
-        if (QLog.isColorLevel()) {
-          QLog.d("SmallScreenVideoController", 2, "onChangeUi_ReceiveRecordMsg, session type=" + j);
-        }
-        switch (i)
+        else
         {
-        case 2: 
-        case 4: 
-        case 6: 
-        case 7: 
-        default: 
-          d();
-          return;
+          return localArrayList;
         }
       }
-      catch (NumberFormatException paramString1)
+      catch (Throwable paramString) {}
+      i += 1;
+    }
+  }
+  
+  protected static void a()
+  {
+    a("unknown");
+  }
+  
+  protected static void a(String paramString)
+  {
+    if (Build.VERSION.SDK_INT >= 21) {}
+    try
+    {
+      if (jdField_a_of_type_JavaLangReflectMethod == null) {
+        jdField_a_of_type_JavaLangReflectMethod = MediaCodec.class.getMethod("getInputBuffer", new Class[] { Integer.TYPE });
+      }
+      if (jdField_b_of_type_JavaLangReflectMethod == null) {
+        jdField_b_of_type_JavaLangReflectMethod = MediaCodec.class.getMethod("getOutputBuffer", new Class[] { Integer.TYPE });
+      }
+      if (jdField_c_of_type_JavaLangReflectMethod == null) {
+        jdField_c_of_type_JavaLangReflectMethod = MediaCodec.class.getMethod("getOutputFormat", new Class[] { Integer.TYPE });
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        jdField_a_of_type_JavaLangReflectMethod = null;
+        jdField_b_of_type_JavaLangReflectMethod = null;
+        jdField_c_of_type_JavaLangReflectMethod = null;
+        jdField_b_of_type_Boolean = false;
+      }
+    }
+    if ((QLog.isDevelopLevel()) || (!jdField_b_of_type_Boolean)) {
+      QLog.w(paramString, 1, "invoke21Apis, fInvokeAPILevel21[" + jdField_b_of_type_Boolean + "]");
+    }
+  }
+  
+  private static boolean a(ArrayList<loy> paramArrayList)
+  {
+    boolean bool2 = false;
+    int m;
+    int k;
+    int j;
+    int i;
+    int i3;
+    int i2;
+    int i1;
+    int n;
+    loy localloy;
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      paramArrayList = paramArrayList.iterator();
+      m = 0;
+      k = 0;
+      j = 0;
+      i = 0;
+      i3 = m;
+      i2 = k;
+      i1 = j;
+      n = i;
+      if (!paramArrayList.hasNext()) {
+        break label327;
+      }
+      localloy = (loy)paramArrayList.next();
+      if ((localloy.jdField_a_of_type_Int == 1) && (localloy.jdField_a_of_type_Boolean) && (localloy.jdField_b_of_type_Int >= 1920) && (localloy.jdField_c_of_type_Int >= 1080))
+      {
+        n = m;
+        j = k;
+        k = 1;
+        m = i;
+        i = n;
+      }
+    }
+    for (;;)
+    {
+      n = m;
+      i1 = k;
+      m = i;
+      k = j;
+      j = i1;
+      i = n;
+      break;
+      if ((localloy.jdField_a_of_type_Int == 2) && (localloy.jdField_a_of_type_Boolean) && (localloy.jdField_b_of_type_Int >= 1920) && (localloy.jdField_c_of_type_Int >= 1080))
+      {
+        i = m;
+        m = j;
+        n = 1;
+        j = k;
+        k = m;
+        m = n;
+      }
+      else if ((localloy.jdField_a_of_type_Int == 4) && (localloy.jdField_a_of_type_Boolean) && (localloy.jdField_b_of_type_Int >= 1920) && (localloy.jdField_c_of_type_Int >= 1080))
+      {
+        i1 = 1;
+        m = j;
+        n = i;
+        i = i1;
+        j = k;
+        k = m;
+        m = n;
+      }
+      else if ((localloy.jdField_a_of_type_Int == 8) && (localloy.jdField_a_of_type_Boolean) && (localloy.jdField_b_of_type_Int >= 1920) && (localloy.jdField_c_of_type_Int >= 1080))
+      {
+        n = m;
+        k = j;
+        j = 1;
+        m = i;
+        i = n;
+        continue;
+        i3 = 0;
+        i2 = 0;
+        i1 = 0;
+        n = 0;
+        label327:
+        boolean bool1;
+        if ((n == 0) || (i1 == 0))
+        {
+          bool1 = bool2;
+          if (i2 != 0)
+          {
+            bool1 = bool2;
+            if (i3 == 0) {}
+          }
+        }
+        else
+        {
+          bool1 = true;
+        }
+        QLog.i("AndroidCodec", 1, "isSupportHwCodec1080P = " + bool1);
+        return bool1;
+      }
+      else
+      {
+        n = j;
+        i1 = i;
+        i = m;
+        j = k;
+        k = n;
+        m = i1;
+      }
+    }
+  }
+  
+  public static List<MediaCodecInfo> b(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    for (;;)
+    {
+      int i;
+      try
+      {
+        int k = MediaCodecList.getCodecCount();
+        i = 0;
+        if (i < k)
+        {
+          MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
+          if ((localMediaCodecInfo.isEncoder()) && (!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE")))
+          {
+            String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
+            int j = 0;
+            if (j < arrayOfString.length)
+            {
+              if (arrayOfString[j].equalsIgnoreCase(paramString)) {
+                localArrayList.add(localMediaCodecInfo);
+              }
+              j += 1;
+              continue;
+            }
+          }
+        }
+        else
+        {
+          return localArrayList;
+        }
+      }
+      catch (Throwable paramString) {}
+      i += 1;
+    }
+  }
+  
+  public static void b()
+  {
+    if (!jdField_a_of_type_Boolean) {}
+    try
+    {
+      SoLoadUtil.a(BaseApplicationImpl.getContext(), "c++_shared", 0, false);
+      System.loadLibrary("hwcodec");
+      int i = NativeCodec.getVersion();
+      QLog.w("AndroidCodec", 1, "loadCodecLibrarys suc, ver[" + i + "]");
+      jdField_a_of_type_Boolean = true;
+      if (!jdField_a_of_type_Boolean) {
+        QLog.w("AndroidCodec", 1, "loadCodecLibrarys fail");
+      }
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        localUnsatisfiedLinkError.printStackTrace();
+        jdField_a_of_type_Boolean = false;
+      }
+    }
+  }
+  
+  public MediaFormat a(int paramInt)
+  {
+    try
+    {
+      MediaFormat localMediaFormat = (MediaFormat)jdField_c_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_AndroidMediaMediaCodec, new Object[] { Integer.valueOf(paramInt) });
+      return localMediaFormat;
+    }
+    catch (Exception localException)
+    {
+      if (AudioHelper.e()) {
+        QLog.e(this.jdField_d_of_type_JavaLangString, 1, "invoke getOutputFormat exception", localException);
+      }
+    }
+    return null;
+  }
+  
+  public ByteBuffer a(int paramInt)
+  {
+    try
+    {
+      ByteBuffer localByteBuffer = (ByteBuffer)jdField_a_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_AndroidMediaMediaCodec, new Object[] { Integer.valueOf(paramInt) });
+      return localByteBuffer;
+    }
+    catch (Exception localException)
+    {
+      if (AudioHelper.e()) {
+        QLog.e(this.jdField_d_of_type_JavaLangString, 1, "invoke getInputBuffer exception", localException);
+      }
+    }
+    return null;
+  }
+  
+  /* Error */
+  public lox a()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 424	low:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   4: ifnonnull +5 -> 9
+    //   7: aconst_null
+    //   8: areturn
+    //   9: new 454	lox
+    //   12: dup
+    //   13: aload_0
+    //   14: invokespecial 457	lox:<init>	(Llow;)V
+    //   17: astore_2
+    //   18: aload_0
+    //   19: getfield 424	low:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   22: getstatic 39	low:jdField_c_of_type_Int	I
+    //   25: i2l
+    //   26: invokevirtual 461	android/media/MediaCodec:dequeueInputBuffer	(J)I
+    //   29: istore_1
+    //   30: iload_1
+    //   31: iflt -24 -> 7
+    //   34: getstatic 78	android/os/Build$VERSION:SDK_INT	I
+    //   37: bipush 20
+    //   39: if_icmpgt +29 -> 68
+    //   42: aload_0
+    //   43: monitorenter
+    //   44: aload_2
+    //   45: iload_1
+    //   46: putfield 462	lox:jdField_a_of_type_Int	I
+    //   49: aload_2
+    //   50: aload_0
+    //   51: getfield 464	low:jdField_a_of_type_ArrayOfJavaNioByteBuffer	[Ljava/nio/ByteBuffer;
+    //   54: iload_1
+    //   55: aaload
+    //   56: putfield 467	lox:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   59: aload_0
+    //   60: monitorexit
+    //   61: aload_2
+    //   62: areturn
+    //   63: astore_2
+    //   64: aload_0
+    //   65: monitorexit
+    //   66: aload_2
+    //   67: athrow
+    //   68: aload_0
+    //   69: monitorenter
+    //   70: aload_2
+    //   71: iload_1
+    //   72: putfield 462	lox:jdField_a_of_type_Int	I
+    //   75: aload_2
+    //   76: getstatic 345	low:jdField_a_of_type_JavaLangReflectMethod	Ljava/lang/reflect/Method;
+    //   79: aload_0
+    //   80: getfield 424	low:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   83: iconst_1
+    //   84: anewarray 4	java/lang/Object
+    //   87: dup
+    //   88: iconst_0
+    //   89: iload_1
+    //   90: invokestatic 428	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   93: aastore
+    //   94: invokevirtual 434	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   97: checkcast 443	java/nio/ByteBuffer
+    //   100: putfield 467	lox:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   103: aload_0
+    //   104: monitorexit
+    //   105: aload_2
+    //   106: areturn
+    //   107: astore_3
+    //   108: aload_3
+    //   109: invokevirtual 468	java/lang/IllegalAccessException:printStackTrace	()V
+    //   112: aload_2
+    //   113: iconst_0
+    //   114: putfield 469	lox:jdField_a_of_type_Boolean	Z
+    //   117: goto -14 -> 103
+    //   120: astore_2
+    //   121: aload_0
+    //   122: monitorexit
+    //   123: aload_2
+    //   124: athrow
+    //   125: astore_3
+    //   126: aload_3
+    //   127: invokevirtual 470	java/lang/IllegalArgumentException:printStackTrace	()V
+    //   130: aload_2
+    //   131: iconst_0
+    //   132: putfield 469	lox:jdField_a_of_type_Boolean	Z
+    //   135: goto -32 -> 103
+    //   138: astore_3
+    //   139: aload_3
+    //   140: invokevirtual 471	java/lang/reflect/InvocationTargetException:printStackTrace	()V
+    //   143: aload_2
+    //   144: iconst_0
+    //   145: putfield 469	lox:jdField_a_of_type_Boolean	Z
+    //   148: goto -45 -> 103
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	151	0	this	low
+    //   29	61	1	i	int
+    //   17	45	2	locallox1	lox
+    //   63	50	2	locallox2	lox
+    //   120	24	2	localObject	Object
+    //   107	2	3	localIllegalAccessException	IllegalAccessException
+    //   125	2	3	localIllegalArgumentException	IllegalArgumentException
+    //   138	2	3	localInvocationTargetException	InvocationTargetException
+    // Exception table:
+    //   from	to	target	type
+    //   44	61	63	finally
+    //   64	66	63	finally
+    //   75	103	107	java/lang/IllegalAccessException
+    //   70	75	120	finally
+    //   75	103	120	finally
+    //   103	105	120	finally
+    //   108	117	120	finally
+    //   121	123	120	finally
+    //   126	135	120	finally
+    //   139	148	120	finally
+    //   75	103	125	java/lang/IllegalArgumentException
+    //   75	103	138	java/lang/reflect/InvocationTargetException
+  }
+  
+  public lox a(long paramLong)
+  {
+    Object localObject5 = null;
+    lox locallox;
+    long l1;
+    label100:
+    Object localObject3;
+    do
+    {
+      try
+      {
+        Object localObject1;
+        if (this.jdField_a_of_type_AndroidMediaMediaCodec == null)
+        {
+          localObject1 = localObject5;
+          if (AudioHelper.e())
+          {
+            QLog.e(this.jdField_d_of_type_JavaLangString, 1, "dequeueDecoderOutputBuffer mMediaCodec is null");
+            localObject1 = localObject5;
+          }
+        }
+        for (;;)
+        {
+          return localObject1;
+          if (this.jdField_d_of_type_Int == jdField_b_of_type_Int) {
+            break;
+          }
+          localObject1 = localObject5;
+          if (AudioHelper.e())
+          {
+            QLog.e(this.jdField_d_of_type_JavaLangString, 1, "dequeueDecoderOutputBuffer mCodecType isn't Decoder");
+            localObject1 = localObject5;
+          }
+        }
+        locallox = new lox(this);
+      }
+      finally {}
+      l1 = 0L;
+      localObject3 = localObject5;
+    } while (l1 >= paramLong);
+    long l2 = System.nanoTime();
+    int i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(locallox.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 3000L);
+    l2 = l1 + (System.nanoTime() - l2);
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      for (;;)
       {
         for (;;)
         {
-          int j;
-          QLog.d("SmallScreenVideoController", 1, "Qav.Record, onChangeUi_ReceiveRecordMsg, " + paramString1.getMessage());
-          int i = -1;
-          continue;
-          label288:
-          if (paramString2.startsWith("SUPPORT_TRUE_7.3.5"))
-          {
-            this.a.jdField_a_of_type_ComTencentAvVideoController.a().z = true;
-            this.a.jdField_a_of_type_ComTencentAvVideoController.a().t = Math.max(this.a.jdField_a_of_type_ComTencentAvVideoController.a().t, 735);
-            j = mcu.a(paramString2, mcq.a().jdField_h_of_type_Int);
-            QLog.i("SmallScreenVideoController", 1, "onChangeUi_ReceiveRecordMsg, SUPPORT_735 val=" + j);
-            this.a.jdField_a_of_type_ComTencentAvVideoController.a().c = (j * 60 * 1000L);
-            continue;
-            this.a.jdField_a_of_type_ComTencentAvVideoController.a(8, String.valueOf(2));
-            this.a.jdField_a_of_type_ComTencentAvVideoController.E();
-            this.a.jdField_a_of_type_ComTencentAvVideoController.a().B = true;
-            continue;
-            this.a.jdField_a_of_type_ComTencentAvVideoController.a(8, String.valueOf(4));
-            this.a.jdField_a_of_type_ComTencentAvVideoController.a().B = false;
-            continue;
-            this.a.jdField_a_of_type_ComTencentAvVideoController.a(8, String.valueOf(6));
+          localObject3 = localObject5;
+          if (i < 0) {
+            break;
           }
-        }
-      }
-    }
-  }
-  
-  protected void a(ArrayList<leb> paramArrayList)
-  {
-    if ((this.a.jdField_a_of_type_Loz != null) && (paramArrayList != null))
-    {
-      Object localObject = this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramArrayList);
-      if (QLog.isColorLevel()) {
-        QLog.d("SmallScreenVideoController", 2, "onChangeUI_CloseVideo-->infos=" + (String)localObject);
-      }
-      int i = 0;
-      if (i < paramArrayList.size())
-      {
-        localObject = (leb)paramArrayList.get(i);
-        String str = String.valueOf(((leb)localObject).jdField_a_of_type_Long);
-        boolean bool2 = ((leb)localObject).jdField_a_of_type_Boolean;
-        int j = ((leb)localObject).jdField_a_of_type_Int;
-        loz localloz;
-        if (!str.equals(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()))
-        {
-          if (this.a.jdField_a_of_type_Loz.b(str, j))
-          {
-            lqb.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
-            lqb.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1037);
+          if (Build.VERSION.SDK_INT > 20) {
+            break label413;
           }
-          localloz = this.a.jdField_a_of_type_Loz;
-          if (((leb)localObject).jdField_b_of_type_Long != 5L) {
-            break label207;
-          }
-        }
-        label207:
-        for (boolean bool1 = true;; bool1 = false)
-        {
-          localloz.a(str, j, false, bool2, bool1);
-          i += 1;
+          locallox.jdField_a_of_type_JavaNioByteBuffer = this.jdField_b_of_type_ArrayOfJavaNioByteBuffer[i];
+          locallox.jdField_a_of_type_Int = i;
+          locallox.jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_b_of_type_AndroidMediaMediaFormat;
+          localObject3 = locallox;
           break;
+          if (NativeCodec.canLog()) {
+            QLog.e(this.jdField_d_of_type_JavaLangString, 1, "dequeueDecoderOutputBuffer INFO_OUTPUT_BUFFERS_CHANGED");
+          }
+          this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+          locallox.jdField_a_of_type_Int = -3;
+          l1 = l2;
+          break label100;
+          locallox.jdField_a_of_type_Int = -2;
+          this.jdField_b_of_type_AndroidMediaMediaFormat = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
+          localObject3 = this.jdField_b_of_type_AndroidMediaMediaFormat;
+          l1 = l2;
+          if (localObject3 == null) {
+            break label100;
+          }
+          try
+          {
+            i = this.jdField_b_of_type_AndroidMediaMediaFormat.getInteger("color-format");
+            l1 = l2;
+            if (!NativeCodec.canLog()) {
+              break label100;
+            }
+            QLog.e(this.jdField_d_of_type_JavaLangString, 1, "dequeueDecoderOutputBuffer New color format " + i + "[0x" + Integer.toHexString(i) + "]");
+            l1 = l2;
+          }
+          catch (Exception localException)
+          {
+            l1 = l2;
+          }
+        }
+        if (!AudioHelper.e()) {
+          break label100;
+        }
+        QLog.e(this.jdField_d_of_type_JavaLangString, 1, "dequeueDecoderOutputBuffer Exception,INFO_OUTPUT_FORMAT_CHANGED");
+        l1 = l2;
+        break label100;
+        locallox.jdField_a_of_type_Int = -1;
+        Object localObject4 = locallox;
+        break;
+        label413:
+        locallox.jdField_a_of_type_Int = i;
+        try
+        {
+          locallox.jdField_a_of_type_JavaNioByteBuffer = ((ByteBuffer)jdField_b_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_AndroidMediaMediaCodec, new Object[] { Integer.valueOf(i) }));
+          locallox.jdField_a_of_type_AndroidMediaMediaFormat = ((MediaFormat)jdField_c_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_AndroidMediaMediaCodec, new Object[] { Integer.valueOf(i) }));
+          localObject4 = locallox;
+        }
+        catch (IllegalAccessException localIllegalAccessException)
+        {
+          for (;;)
+          {
+            localIllegalAccessException.printStackTrace();
+            locallox.jdField_a_of_type_Boolean = false;
+          }
+        }
+        catch (IllegalArgumentException localIllegalArgumentException)
+        {
+          for (;;)
+          {
+            localIllegalArgumentException.printStackTrace();
+            locallox.jdField_a_of_type_Boolean = false;
+          }
+        }
+        catch (InvocationTargetException localInvocationTargetException)
+        {
+          for (;;)
+          {
+            localInvocationTargetException.printStackTrace();
+            locallox.jdField_a_of_type_Boolean = false;
+          }
         }
       }
     }
   }
   
-  protected void a(boolean paramBoolean, long paramLong)
+  /* Error */
+  public void a(int paramInt)
   {
-    if (this.a.jdField_b_of_type_Int == 2) {}
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 424	low:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   6: astore_2
+    //   7: aload_2
+    //   8: ifnonnull +6 -> 14
+    //   11: aload_0
+    //   12: monitorexit
+    //   13: return
+    //   14: aload_0
+    //   15: getfield 424	low:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   18: iload_1
+    //   19: iconst_0
+    //   20: invokevirtual 527	android/media/MediaCodec:releaseOutputBuffer	(IZ)V
+    //   23: goto -12 -> 11
+    //   26: astore_2
+    //   27: aload_0
+    //   28: monitorexit
+    //   29: aload_2
+    //   30: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	31	0	this	low
+    //   0	31	1	paramInt	int
+    //   6	2	2	localMediaCodec	MediaCodec
+    //   26	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	7	26	finally
+    //   14	23	26	finally
+  }
+  
+  /* Error */
+  public void a(int paramInt1, int paramInt2, long paramLong, int paramInt3)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 424	low:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   6: astore 6
+    //   8: aload 6
+    //   10: ifnonnull +6 -> 16
+    //   13: aload_0
+    //   14: monitorexit
+    //   15: return
+    //   16: aload_0
+    //   17: getfield 424	low:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   20: iload_1
+    //   21: iconst_0
+    //   22: iload_2
+    //   23: lload_3
+    //   24: iload 5
+    //   26: invokevirtual 532	android/media/MediaCodec:queueInputBuffer	(IIIJI)V
+    //   29: goto -16 -> 13
+    //   32: astore 6
+    //   34: invokestatic 226	com/tencent/mobileqq/utils/AudioHelper:e	()Z
+    //   37: ifeq -24 -> 13
+    //   40: aload_0
+    //   41: getfield 71	low:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   44: iconst_1
+    //   45: new 58	java/lang/StringBuilder
+    //   48: dup
+    //   49: invokespecial 59	java/lang/StringBuilder:<init>	()V
+    //   52: ldc_w 534
+    //   55: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: iload_1
+    //   59: invokevirtual 192	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   62: ldc_w 536
+    //   65: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   68: iload_2
+    //   69: invokevirtual 192	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   72: ldc_w 538
+    //   75: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: lload_3
+    //   79: invokevirtual 541	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   82: ldc_w 543
+    //   85: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   88: iload 5
+    //   90: invokevirtual 192	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   93: ldc 113
+    //   95: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   101: aload 6
+    //   103: invokestatic 117	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   106: goto -93 -> 13
+    //   109: astore 6
+    //   111: aload_0
+    //   112: monitorexit
+    //   113: aload 6
+    //   115: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	116	0	this	low
+    //   0	116	1	paramInt1	int
+    //   0	116	2	paramInt2	int
+    //   0	116	3	paramLong	long
+    //   0	116	5	paramInt3	int
+    //   6	3	6	localMediaCodec	MediaCodec
+    //   32	70	6	localException	Exception
+    //   109	5	6	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   16	29	32	java/lang/Exception
+    //   2	8	109	finally
+    //   16	29	109	finally
+    //   34	106	109	finally
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (Build.VERSION.SDK_INT < 19) {}
     do
     {
-      return;
-      if ((this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils != null) && (!this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.c())) {
-        this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils.a(paramLong);
+      for (;;)
+      {
+        return;
+        if ((this.jdField_a_of_type_AndroidMediaMediaCodec != null) && (jdField_d_of_type_JavaLangReflectMethod != null)) {
+          try
+          {
+            jdField_d_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_AndroidMediaMediaCodec, new Object[] { paramBundle });
+            return;
+          }
+          catch (IllegalArgumentException paramBundle)
+          {
+            if (QLog.isDevelopLevel())
+            {
+              QLog.w(this.jdField_d_of_type_JavaLangString, 1, "setParameters, IllegalArgumentException", paramBundle);
+              return;
+            }
+          }
+          catch (IllegalAccessException paramBundle)
+          {
+            if (QLog.isDevelopLevel())
+            {
+              QLog.w(this.jdField_d_of_type_JavaLangString, 1, "setParameters, IllegalAccessException", paramBundle);
+              return;
+            }
+          }
+          catch (InvocationTargetException paramBundle) {}
+        }
       }
-    } while (this.a.jdField_a_of_type_Loz == null);
-    this.a.jdField_a_of_type_Loz.a(true, paramBoolean);
-    this.a.jdField_a_of_type_Loz.c(paramLong, this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils.a());
+    } while (!QLog.isDevelopLevel());
+    QLog.w(this.jdField_d_of_type_JavaLangString, 1, "setParameters, InvocationTargetException", paramBundle);
   }
   
-  protected void b()
+  public boolean a()
   {
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController.n)
+    try
     {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.n = false;
-      this.a.jdField_b_of_type_Boolean = true;
-      this.a.d();
+      if (this.jdField_a_of_type_AndroidMediaMediaCodec != null)
+      {
+        this.jdField_a_of_type_AndroidMediaMediaCodec.start();
+        if (Build.VERSION.SDK_INT <= 20) {
+          try
+          {
+            this.jdField_a_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
+            this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+          }
+          finally {}
+        }
+      }
+      else
+      {
+        return false;
+      }
+    }
+    catch (Exception localException) {}
+    return true;
+  }
+  
+  boolean a(MediaCodec paramMediaCodec, lpa paramlpa)
+  {
+    if ((paramlpa != null) && (DeviceCheck.g()))
+    {
+      DexClassLoader localDexClassLoader = mqy.a();
+      Object localObject = mqy.a(localDexClassLoader, "com.tencent.av.mediacodec.MediaCodecWrapper");
+      if (localObject != null) {
+        try
+        {
+          Object[] arrayOfObject = new Object[1];
+          boolean bool = mqy.a(localDexClassLoader, localObject, "setCallback", new Class[] { MediaCodec.class, lpa.class }, new Object[] { paramMediaCodec, paramlpa }, arrayOfObject);
+          return bool;
+        }
+        catch (Exception paramMediaCodec)
+        {
+          if (AudioHelper.e()) {
+            QLog.w(this.jdField_d_of_type_JavaLangString, 1, "setMediaCodecCallback, Exception", paramMediaCodec);
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  /* Error */
+  public boolean a(MediaFormat paramMediaFormat, int paramInt, lpa paramlpa)
+  {
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore 4
+    //   3: aload_0
+    //   4: aload_1
+    //   5: putfield 581	low:jdField_a_of_type_AndroidMediaMediaFormat	Landroid/media/MediaFormat;
+    //   8: iload_2
+    //   9: getstatic 54	low:jdField_b_of_type_Int	I
+    //   12: if_icmpne +88 -> 100
+    //   15: aload_0
+    //   16: aload_0
+    //   17: getfield 581	low:jdField_a_of_type_AndroidMediaMediaFormat	Landroid/media/MediaFormat;
+    //   20: ldc_w 583
+    //   23: invokevirtual 587	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   26: invokestatic 591	android/media/MediaCodec:createDecoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
+    //   29: putfield 424	low:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   32: aload_0
+    //   33: iload_2
+    //   34: putfield 56	low:jdField_d_of_type_Int	I
+    //   37: aload_0
+    //   38: getfield 424	low:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   41: ifnull +39 -> 80
+    //   44: iload_2
+    //   45: getstatic 22	low:jdField_a_of_type_Int	I
+    //   48: if_icmpne +86 -> 134
+    //   51: iconst_1
+    //   52: istore_2
+    //   53: aload_0
+    //   54: aload_0
+    //   55: aload_0
+    //   56: getfield 424	low:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   59: aload_3
+    //   60: invokevirtual 593	low:a	(Landroid/media/MediaCodec;Llpa;)Z
+    //   63: putfield 595	low:jdField_d_of_type_Boolean	Z
+    //   66: aload_0
+    //   67: getfield 424	low:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   70: aload_0
+    //   71: getfield 581	low:jdField_a_of_type_AndroidMediaMediaFormat	Landroid/media/MediaFormat;
+    //   74: aconst_null
+    //   75: aconst_null
+    //   76: iload_2
+    //   77: invokevirtual 599	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
+    //   80: aload_0
+    //   81: getfield 424	low:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   84: ifnull +6 -> 90
+    //   87: iconst_1
+    //   88: istore 4
+    //   90: iload 4
+    //   92: ireturn
+    //   93: astore_1
+    //   94: aload_1
+    //   95: invokevirtual 600	java/lang/Exception:printStackTrace	()V
+    //   98: iconst_0
+    //   99: ireturn
+    //   100: aload_0
+    //   101: aload_0
+    //   102: getfield 581	low:jdField_a_of_type_AndroidMediaMediaFormat	Landroid/media/MediaFormat;
+    //   105: ldc_w 583
+    //   108: invokevirtual 587	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   111: invokestatic 603	android/media/MediaCodec:createEncoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
+    //   114: putfield 424	low:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   117: goto -85 -> 32
+    //   120: astore_1
+    //   121: aload_1
+    //   122: invokevirtual 600	java/lang/Exception:printStackTrace	()V
+    //   125: iconst_0
+    //   126: ireturn
+    //   127: astore_1
+    //   128: aload_1
+    //   129: invokevirtual 600	java/lang/Exception:printStackTrace	()V
+    //   132: iconst_0
+    //   133: ireturn
+    //   134: iconst_0
+    //   135: istore_2
+    //   136: goto -83 -> 53
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	139	0	this	low
+    //   0	139	1	paramMediaFormat	MediaFormat
+    //   0	139	2	paramInt	int
+    //   0	139	3	paramlpa	lpa
+    //   1	90	4	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   15	32	93	java/lang/Exception
+    //   100	117	120	java/lang/Exception
+    //   37	51	127	java/lang/Exception
+    //   53	80	127	java/lang/Exception
+  }
+  
+  public boolean a(MediaFormat paramMediaFormat, String paramString, Surface paramSurface, lpa paramlpa)
+  {
+    this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createByCodecName(paramString);
+        paramMediaFormat = a(paramString);
+        if ((paramMediaFormat != null) && (paramMediaFormat.isEncoder()))
+        {
+          this.jdField_d_of_type_Int = jdField_a_of_type_Int;
+          i = 1;
+          return false;
+        }
+      }
+      catch (Exception paramMediaFormat)
+      {
+        try
+        {
+          if (this.jdField_a_of_type_AndroidMediaMediaCodec != null)
+          {
+            this.jdField_d_of_type_Boolean = a(this.jdField_a_of_type_AndroidMediaMediaCodec, paramlpa);
+            this.jdField_a_of_type_AndroidMediaMediaCodec.configure(this.jdField_a_of_type_AndroidMediaMediaFormat, paramSurface, null, i);
+          }
+          if (this.jdField_a_of_type_AndroidMediaMediaCodec == null) {
+            break label98;
+          }
+          return true;
+        }
+        catch (Exception paramMediaFormat)
+        {
+          paramMediaFormat.printStackTrace();
+          return false;
+        }
+        paramMediaFormat = paramMediaFormat;
+        paramMediaFormat.printStackTrace();
+        return false;
+      }
+      label98:
+      int i = 0;
     }
   }
   
-  protected void b(long paramLong)
+  public boolean a(MediaFormat paramMediaFormat, String paramString, lpa paramlpa)
   {
-    if (this.a.jdField_a_of_type_Loz != null)
-    {
-      this.a.jdField_a_of_type_Loz.a(false, false);
-      lou.a(this.a, 1);
+    this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+    paramMediaFormat = a(paramString);
+    if ((paramMediaFormat != null) && (paramMediaFormat.isEncoder())) {
+      this.jdField_d_of_type_Int = jdField_a_of_type_Int;
+    }
+    for (int i = 1;; i = 0) {
+      try
+      {
+        this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createByCodecName(paramString);
+        return false;
+      }
+      catch (Exception paramMediaFormat)
+      {
+        try
+        {
+          if (this.jdField_a_of_type_AndroidMediaMediaCodec != null)
+          {
+            this.jdField_d_of_type_Boolean = a(this.jdField_a_of_type_AndroidMediaMediaCodec, paramlpa);
+            this.jdField_a_of_type_AndroidMediaMediaCodec.configure(this.jdField_a_of_type_AndroidMediaMediaFormat, null, null, i);
+          }
+          if (this.jdField_a_of_type_AndroidMediaMediaCodec == null) {
+            continue;
+          }
+          return true;
+        }
+        catch (Exception paramMediaFormat)
+        {
+          paramMediaFormat.printStackTrace();
+          return false;
+        }
+        paramMediaFormat = paramMediaFormat;
+        paramMediaFormat.printStackTrace();
+        return false;
+      }
     }
   }
   
-  protected void c()
+  public ByteBuffer b(int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.b != null) {
-      lbr.a(this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.b);
+    try
+    {
+      ByteBuffer localByteBuffer = (ByteBuffer)jdField_b_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_AndroidMediaMediaCodec, new Object[] { Integer.valueOf(paramInt) });
+      return localByteBuffer;
+    }
+    catch (Exception localException)
+    {
+      if (AudioHelper.e()) {
+        QLog.e(this.jdField_d_of_type_JavaLangString, 1, "invoke getOutputBuffer exception", localException);
+      }
+    }
+    return null;
+  }
+  
+  public lox b()
+  {
+    Object localObject4 = null;
+    for (;;)
+    {
+      int i;
+      try
+      {
+        Object localObject1 = this.jdField_a_of_type_AndroidMediaMediaCodec;
+        if (localObject1 == null)
+        {
+          localObject1 = localObject4;
+          return localObject1;
+        }
+        lox locallox = new lox(this);
+        i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(locallox.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, jdField_c_of_type_Int);
+        switch (i)
+        {
+        case -3: 
+          if (NativeCodec.canLog()) {
+            QLog.w(this.jdField_d_of_type_JavaLangString, 1, "dequeueOutputBuffer, outIndex[" + i + "]");
+          }
+          localObject1 = localObject4;
+          if (i < 0) {
+            continue;
+          }
+          if (Build.VERSION.SDK_INT > 20) {
+            break label461;
+          }
+          locallox.jdField_a_of_type_JavaNioByteBuffer = this.jdField_b_of_type_ArrayOfJavaNioByteBuffer[i];
+          locallox.jdField_a_of_type_Int = i;
+          locallox.jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_b_of_type_AndroidMediaMediaFormat;
+          localObject1 = locallox;
+          continue;
+          this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+          locallox.jdField_a_of_type_Int = -3;
+          localObject1 = localObject4;
+          if (!QLog.isDevelopLevel()) {
+            continue;
+          }
+          QLog.e(this.jdField_d_of_type_JavaLangString, 1, "dequeueOutputBuffer, INFO_OUTPUT_BUFFERS_CHANGED");
+          localObject1 = localObject4;
+          break;
+        case -2: 
+          locallox.jdField_a_of_type_Int = -2;
+        }
+      }
+      finally {}
+      this.jdField_b_of_type_AndroidMediaMediaFormat = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
+      Object localObject3;
+      if (this.jdField_b_of_type_AndroidMediaMediaFormat != null)
+      {
+        i = this.jdField_d_of_type_Int;
+        int j = jdField_b_of_type_Int;
+        if (i == j)
+        {
+          try
+          {
+            i = this.jdField_b_of_type_AndroidMediaMediaFormat.getInteger("color-format");
+            localObject3 = localObject4;
+            if (!NativeCodec.canLog()) {
+              continue;
+            }
+            QLog.w(this.jdField_d_of_type_JavaLangString, 1, "dequeueOutputBuffer, INFO_OUTPUT_FORMAT_CHANGED, colorformat[" + i + "|0x" + Integer.toHexString(i).toUpperCase() + "]");
+            localObject3 = localObject4;
+          }
+          catch (Exception localException)
+          {
+            localObject3 = localObject4;
+          }
+          if (AudioHelper.e())
+          {
+            QLog.e(this.jdField_d_of_type_JavaLangString, 1, "dequeueOutputBuffer, INFO_OUTPUT_FORMAT_CHANGED, Exception", localException);
+            localObject3 = localObject4;
+          }
+        }
+        else
+        {
+          localObject3 = localObject4;
+          if (AudioHelper.e())
+          {
+            QLog.w(this.jdField_d_of_type_JavaLangString, 1, "dequeueOutputBuffer, INFO_OUTPUT_FORMAT_CHANGED, CodecType[" + this.jdField_d_of_type_Int + "]");
+            localObject3 = localObject4;
+          }
+        }
+      }
+      else
+      {
+        localObject3 = localObject4;
+        if (QLog.isDevelopLevel())
+        {
+          QLog.e(this.jdField_d_of_type_JavaLangString, 1, "dequeueOutputBuffer, INFO_OUTPUT_FORMAT_CHANGED, null");
+          localObject3 = localObject4;
+          continue;
+          if (NativeCodec.canLog()) {
+            QLog.e(this.jdField_d_of_type_JavaLangString, 1, "dequeueOutputBuffer, INFO_TRY_AGAIN_LATER");
+          }
+          localException.jdField_a_of_type_Int = -1;
+          localObject3 = localException;
+          continue;
+          label461:
+          localException.jdField_a_of_type_Int = i;
+          try
+          {
+            localException.jdField_a_of_type_JavaNioByteBuffer = ((ByteBuffer)jdField_b_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_AndroidMediaMediaCodec, new Object[] { Integer.valueOf(i) }));
+            localException.jdField_a_of_type_AndroidMediaMediaFormat = ((MediaFormat)jdField_c_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_AndroidMediaMediaCodec, new Object[] { Integer.valueOf(i) }));
+            localObject3 = localException;
+          }
+          catch (IllegalAccessException localIllegalAccessException)
+          {
+            for (;;)
+            {
+              localIllegalAccessException.printStackTrace();
+              localException.jdField_a_of_type_Boolean = false;
+            }
+          }
+          catch (IllegalArgumentException localIllegalArgumentException)
+          {
+            for (;;)
+            {
+              localIllegalArgumentException.printStackTrace();
+              localException.jdField_a_of_type_Boolean = false;
+            }
+          }
+          catch (InvocationTargetException localInvocationTargetException)
+          {
+            for (;;)
+            {
+              localInvocationTargetException.printStackTrace();
+              localException.jdField_a_of_type_Boolean = false;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaCodec != null) {
+      this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
     }
   }
   
   public void d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SmallScreenVideoController", 2, "onChangeUI_RecordStateChange:");
-    }
-    if ((this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService == null) || (this.a.jdField_a_of_type_ComTencentAvVideoController == null) || (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.b == null)) {}
-    View localView;
-    label310:
-    for (;;)
+    try
     {
+      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer = null;
+      this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = null;
+      if (this.jdField_a_of_type_AndroidMediaMediaCodec != null)
+      {
+        this.jdField_a_of_type_AndroidMediaMediaCodec.release();
+        this.jdField_a_of_type_AndroidMediaMediaCodec = null;
+      }
       return;
-      localView = this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.b.findViewById(2131309244);
-      if (localView == null)
-      {
-        QLog.d("SmallScreenVideoController", 1, "onChangeUI_RecordStateChange view is null");
-        return;
-      }
-      localView.clearAnimation();
-      if ((!this.a.jdField_a_of_type_ComTencentAvVideoController.a().B) && (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().A)) {
-        break;
-      }
-      localView.setVisibility(0);
-      Object localObject = new lyc();
-      ((lyc)localObject).setDuration(1000L);
-      ((lyc)localObject).setRepeatCount(-1);
-      localView.findViewById(2131309248).startAnimation((Animation)localObject);
-      int i;
-      if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().A) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a().B))
-      {
-        ((TextView)localView.findViewById(2131309256)).setText(2131630376);
-        i = 1;
-      }
-      for (;;)
-      {
-        if (i == 0) {
-          break label310;
-        }
-        localObject = Build.MANUFACTURER;
-        String str = Build.MODEL;
-        if ((!"Xiaomi".equalsIgnoreCase((String)localObject)) || (!"MI MAX".equalsIgnoreCase(str))) {
-          break;
-        }
-        ((TextView)localView.findViewById(2131309256)).setTextSize(1, 8.0F);
-        return;
-        if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().A)
-        {
-          ((TextView)localView.findViewById(2131309256)).setText(2131630377);
-          i = 0;
-        }
-        else
-        {
-          ((TextView)localView.findViewById(2131309256)).setText(2131630375);
-          i = 1;
-        }
-      }
     }
-    localView.setVisibility(8);
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

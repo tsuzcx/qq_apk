@@ -1,24 +1,24 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import mqq.util.WeakReference;
+import android.view.View;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.widget.AdapterView;
 
-public class mxb
-  extends ajjh
+class mxb
+  implements bfpc
 {
-  WeakReference<AccountDetailActivity> a;
+  mxb(mxa parammxa, PoiMapActivity paramPoiMapActivity) {}
   
-  public mxb(AccountDetailActivity paramAccountDetailActivity)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = new WeakReference(paramAccountDetailActivity);
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    AccountDetailActivity localAccountDetailActivity = (AccountDetailActivity)this.a.get();
-    if (localAccountDetailActivity == null) {}
-    while ((localAccountDetailActivity.h) || (!paramBoolean) || (!paramString.equals(localAccountDetailActivity.d))) {
-      return;
+    this.jdField_a_of_type_Mxa.a(paramInt, true);
+    int i = this.jdField_a_of_type_Mxa.jdField_a_of_type_ComTencentBizPoiMapActivity.a.length;
+    paramInt = 0;
+    while (paramInt < i)
+    {
+      if (this.jdField_a_of_type_Mxa.e != paramInt) {
+        this.jdField_a_of_type_Mxa.jdField_a_of_type_ComTencentBizPoiMapActivity.a[paramInt].a(-1, false);
+      }
+      paramInt += 1;
     }
-    localAccountDetailActivity.P();
   }
 }
 

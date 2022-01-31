@@ -1,19 +1,9 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.addfriendverifi.data.AddFriendBlockedInfo;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.util.FaceInfo;
 
-public final class ajvv
-  implements Parcelable.Creator<AddFriendBlockedInfo>
+public abstract interface ajvv
 {
-  public AddFriendBlockedInfo a(Parcel paramParcel)
-  {
-    return new AddFriendBlockedInfo(paramParcel);
-  }
-  
-  public AddFriendBlockedInfo[] a(int paramInt)
-  {
-    return new AddFriendBlockedInfo[paramInt];
-  }
+  public abstract void a(boolean paramBoolean, FaceInfo paramFaceInfo, Bitmap paramBitmap);
 }
 
 

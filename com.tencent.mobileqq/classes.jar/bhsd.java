@@ -1,24 +1,20 @@
-import com.tencent.common.app.AppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.2.1;
 
-class bhsd
-  extends avzo
+public class bhsd
+  implements DialogInterface.OnClickListener
 {
-  bhsd(bhsc parambhsc, AppInterface paramAppInterface) {}
+  public bhsd(QzoneQunFeedJsPlugin.2.1 param1) {}
   
-  public void a(boolean paramBoolean, bhso parambhso)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
-    if (paramBoolean)
-    {
-      bhsc.a(this.jdField_a_of_type_Bhsc).a(parambhso);
-      return;
-    }
-    bhsc.a(this.jdField_a_of_type_Bhsc).a(new bhso());
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhsd
  * JD-Core Version:    0.7.0.1
  */

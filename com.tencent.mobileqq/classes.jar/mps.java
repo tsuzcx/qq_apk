@@ -1,25 +1,10 @@
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.qphone.base.util.QLog;
-
-public class mps
-  extends ajmm
+public abstract interface mps
 {
-  protected void a(boolean paramBoolean, OpenID paramOpenID) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    QLog.d("openid", 2, "isSuccess=" + paramBoolean + ",data=" + paramObject);
-    a(paramBoolean, (OpenID)paramObject);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mps
  * JD-Core Version:    0.7.0.1
  */

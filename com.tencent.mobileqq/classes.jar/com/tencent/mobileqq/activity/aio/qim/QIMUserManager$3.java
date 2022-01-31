@@ -14,15 +14,15 @@ public final class QIMUserManager$3
   {
     try
     {
-      Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130848527);
-      Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130848528);
-      Drawable localDrawable3 = SkinEngine.getInstances().getDefaultThemeDrawable(2130848577);
+      Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130848770);
+      Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130848771);
+      Drawable localDrawable3 = SkinEngine.getInstances().getDefaultThemeDrawable(2130848820);
       StateListDrawable localStateListDrawable = new StateListDrawable();
-      Drawable localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130848690);
+      Drawable localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130848916);
       localStateListDrawable.addState(new int[] { -16842910 }, localDrawable4);
-      localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130848693);
+      localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130848919);
       localStateListDrawable.addState(new int[] { 16842910 }, localDrawable4);
-      localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130848694);
+      localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130848920);
       localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable4);
       ThreadManager.getUIHandler().post(new QIMUserManager.3.1(this, localDrawable1, localDrawable2, localDrawable3, localStateListDrawable));
       return;

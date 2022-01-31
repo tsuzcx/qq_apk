@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bcig;
+import bdmh;
 
 public class NoticeParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<NoticeParam> CREATOR = new bcig();
+  public static final Parcelable.Creator<NoticeParam> CREATOR = new bdmh();
   public int a;
   public long a;
   public Intent a;

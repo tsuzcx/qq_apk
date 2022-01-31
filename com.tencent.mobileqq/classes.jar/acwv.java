@@ -1,36 +1,13 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
 
-public class acwv
-  implements acxg
+class acwv
+  implements adkf
 {
-  private BaseChatPie a;
+  acwv(acwp paramacwp) {}
   
-  public acwv(BaseChatPie paramBaseChatPie)
+  public void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
   {
-    this.a = paramBaseChatPie;
-  }
-  
-  private void a()
-  {
-    if ((this.a != null) && (this.a.a != null)) {
-      ((aryq)this.a.a.getManager(324)).onDestroy();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 11 };
+    acwp.a(this.a);
   }
 }
 

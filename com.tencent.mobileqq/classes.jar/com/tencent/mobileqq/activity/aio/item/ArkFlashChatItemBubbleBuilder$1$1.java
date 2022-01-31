@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adby;
+import adna;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
 
 public class ArkFlashChatItemBubbleBuilder$1$1
   implements Runnable
 {
-  public ArkFlashChatItemBubbleBuilder$1$1(adby paramadby) {}
+  public ArkFlashChatItemBubbleBuilder$1$1(adna paramadna) {}
   
   public void run()
   {

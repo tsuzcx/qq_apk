@@ -1,25 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class akla
-  implements QQPermissionCallback
+public class akla
+  implements ThreadFactory
 {
-  akla(akkz paramakkz) {}
+  private final AtomicInteger a = new AtomicInteger(1);
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public Thread newThread(Runnable paramRunnable)
   {
-    babr.a(akkz.a(this.a), paramArrayOfString, paramArrayOfInt);
-    QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION deny");
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION allow restart it");
+    paramRunnable = new Thread(paramRunnable, "Automator_" + this.a.getAndIncrement());
+    if (paramRunnable.getPriority() != 10) {
+      paramRunnable.setPriority(10);
+    }
+    return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akla
  * JD-Core Version:    0.7.0.1
  */

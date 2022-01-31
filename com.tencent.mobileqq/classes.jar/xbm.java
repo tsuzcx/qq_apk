@@ -1,29 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-class xbm
+final class xbm
+  implements bcwh
 {
-  xbm(xbl paramxbl, String paramString) {}
+  xbm(String paramString) {}
   
-  @QQPermissionDenied(1)
-  public void denied()
+  public void a(BaseResp paramBaseResp)
   {
-    this.jdField_a_of_type_Xbl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-  }
-  
-  @QQPermissionGrant(1)
-  public void grant()
-  {
-    akfu.a(new xbn(this, "webview"));
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationPlugin", 2, "SosoInterface.startLocation");
+    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      wim.a(1, 2131719476);
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      wim.a(2, 2131719495);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xbm
  * JD-Core Version:    0.7.0.1
  */

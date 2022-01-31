@@ -1,15 +1,32 @@
-public class aaep
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+
+class aaep
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public long c;
+  aaep(aaeo paramaaeo, View.OnClickListener paramOnClickListener) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!bbev.d(aaeo.a(this.jdField_a_of_type_Aaeo)))
+    {
+      bcpw.a(aaeo.a(this.jdField_a_of_type_Aaeo), aaeo.a(this.jdField_a_of_type_Aaeo).getString(2131694607), 0).a();
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null)
+    {
+      QLog.e("SdkAuthDialog", 1, "positiveListener is null");
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    axqw.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "0", "", "", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaep
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,24 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
-final class bbht
-  implements bbgg
+class bbht
+  implements View.OnTouchListener
 {
-  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  bbht(bbhs parambbhs) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Matrix localMatrix = new Matrix();
-    if (paramDrawable == null) {
-      return localMatrix;
-    }
-    paramInt2 = paramDrawable.getIntrinsicWidth();
-    float f = paramInt1 / paramInt2;
-    localMatrix.setScale(f, f);
-    return localMatrix;
+    this.a.a.setImageResource(2130846376);
+    this.a.a.setTag(Integer.valueOf(2130846376));
+    this.a.a();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbht
  * JD-Core Version:    0.7.0.1
  */

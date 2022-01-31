@@ -1,32 +1,43 @@
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import org.json.JSONObject;
 
-class ous
-  implements ViewBase.OnClickListener
+public class ous
+  implements rtw
 {
-  ous(ouq paramouq, int paramInt, opw paramopw, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2) {}
+  public ous(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a(BaseArticleInfo paramBaseArticleInfo, int paramInt)
   {
-    boolean bool;
-    qoe localqoe;
-    if (this.jdField_a_of_type_Int == 1149)
+    this.a.a.a(paramBaseArticleInfo, paramInt);
+    JSONObject localJSONObject = olg.a(this.a.getActivity(), this.a.a(), 3, paramInt, (ArticleInfo)paramBaseArticleInfo);
+    try
     {
-      bool = true;
-      localqoe = this.jdField_a_of_type_Opw.a();
-      if (!bool) {
-        break label43;
+      localJSONObject.put("card_type", 8);
+      oli localoli = new oli(paramBaseArticleInfo);
+      localoli.e = String.valueOf(paramBaseArticleInfo.mArticleID);
+      localoli.f = String.valueOf(paramBaseArticleInfo.mStrategyId);
+      localoli.g = localJSONObject.toString();
+      if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
+        localoli.a = String.valueOf(paramBaseArticleInfo.mSocialFeedInfo.a.a);
       }
-    }
-    label43:
-    for (paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;; paramViewBase = this.b)
-    {
-      localqoe.b(bool, paramViewBase);
+      localoli.b = "0X8009A79";
+      localoli.c = "0X8009A79";
+      olg.a(localoli);
+      localJSONObject = new JSONObject();
+      localJSONObject.put("time", System.currentTimeMillis() / 1000L);
+      localJSONObject.put("channel_id", this.a.a());
+      localJSONObject.put("folder_status", onk.d);
+      localJSONObject.put("kandian_mode", onk.e());
+      localJSONObject.put("feeds_type", "" + onk.a(paramBaseArticleInfo));
+      localJSONObject.put("rowkey", shx.a(paramBaseArticleInfo));
+      paramBaseArticleInfo = localJSONObject.toString();
+      noo.a(null, "", "0X8009990", "0X8009990", 0, 0, "4", "", ajyc.a(2131713135), paramBaseArticleInfo, false);
       return;
-      bool = false;
-      break;
     }
+    catch (Exception paramBaseArticleInfo) {}
   }
 }
 

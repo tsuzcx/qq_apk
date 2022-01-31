@@ -1,302 +1,454 @@
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Pair;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupMsgUserData;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.ExtendFriendUserInfo;
+import com.tencent.mobileqq.data.MessageForLimitChatTopic;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.limitchat.LimitChatUtil.2;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.RecentDynamicAvatarView;
-import com.tencent.widget.SingleLineTextView;
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
+import java.util.Random;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arqn
-  extends RecyclerView.Adapter<arqo>
-  implements azwh
 {
-  private long jdField_a_of_type_Long;
-  protected ahbe a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private SparseArray<Boolean> jdField_a_of_type_AndroidUtilSparseArray;
-  private final LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private arqp jdField_a_of_type_Arqp;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Hashtable<String, Bitmap> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
-  private List<RecentBaseData> jdField_a_of_type_JavaUtilList;
-  
-  public arqn(Context paramContext, QQAppInterface paramQQAppInterface, RecyclerView paramRecyclerView)
+  public static int a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_Ahbe = new ahbe(paramQQAppInterface, this, false);
+    return 16001;
   }
   
-  private void a(arqo paramarqo, int paramInt, Drawable paramDrawable)
+  public static int a(AppInterface paramAppInterface)
   {
-    boolean bool = true;
-    RecentBaseData localRecentBaseData = (RecentBaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    MsgBackupMsgUserData localMsgBackupMsgUserData;
-    if ((localRecentBaseData instanceof MsgBackupMsgUserData))
+    int j = 0;
+    int i;
+    if ((paramAppInterface instanceof QQAppInterface))
     {
-      localMsgBackupMsgUserData = (MsgBackupMsgUserData)localRecentBaseData;
-      QQAppInterface localQQAppInterface = null;
-      if (paramDrawable != null) {
-        break label224;
+      if (QLog.isColorLevel()) {
+        QLog.d("LimitChatUtil", 2, "getLimitChatState in mainprocess");
       }
-      paramDrawable = localQQAppInterface;
-      if (this.jdField_a_of_type_Ahbe != null) {
-        paramDrawable = this.jdField_a_of_type_Ahbe.a(localRecentBaseData);
+      paramAppInterface = (aoix)paramAppInterface.getManager(292);
+      if (paramAppInterface == null) {
+        break label97;
       }
-      if (!a(localRecentBaseData)) {
-        break label233;
-      }
-      localQQAppInterface = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app;
-      int j = ((Integer)ahbe.a(localQQAppInterface, localRecentBaseData.a(), localRecentBaseData.a()).first).intValue();
-      int i = j;
-      if (j == 103) {
-        i = 1;
-      }
-      RecentDynamicAvatarView localRecentDynamicAvatarView = paramarqo.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView;
-      String str = localRecentBaseData.a();
-      if (localQQAppInterface.a.a() != 1) {
-        break label227;
-      }
-      label146:
-      localRecentDynamicAvatarView.setFaceDrawable(localQQAppInterface, paramDrawable, i, str, 100, false, bool, 0);
+      i = paramAppInterface.a();
     }
     for (;;)
     {
-      paramarqo.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setImageDrawable(paramDrawable);
-      paramarqo.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(localRecentBaseData.mTitleName);
-      arqo.a(paramarqo).setChecked(((Boolean)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(paramInt)).booleanValue());
-      if (AppSetting.c) {
-        paramarqo.jdField_a_of_type_AndroidViewView.setContentDescription(localMsgBackupMsgUserData.name);
+      if (QLog.isColorLevel()) {
+        QLog.d("LimitChatUtil", 2, "getLimitChatState :" + i);
       }
-      return;
-      label224:
-      break;
-      label227:
-      bool = false;
-      break label146;
-      label233:
-      paramarqo.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setImageDrawable(paramDrawable);
+      return i;
+      i = j;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("LimitChatUtil", 2, "getLimitChatState in otherprocess,ERROR");
+        i = j;
+        continue;
+        label97:
+        i = 0;
+      }
     }
   }
   
-  private void b(arqo paramarqo, int paramInt, Drawable paramDrawable)
+  public static long a(QQAppInterface paramQQAppInterface, aofp paramaofp, long paramLong, int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {}
-    RecentBaseData localRecentBaseData;
+    if ((paramQQAppInterface == null) || (paramaofp == null)) {
+      return -1L;
+    }
+    int i = -4023;
+    if (paramInt == 1) {
+      i = -4024;
+    }
+    MessageForLimitChatTopic localMessageForLimitChatTopic = (MessageForLimitChatTopic)axaq.a(i);
+    Object localObject = paramQQAppInterface.a().a(paramaofp.jdField_b_of_type_JavaLangString, 1044);
+    if ((localObject != null) && (!((List)localObject).isEmpty())) {}
+    for (long l = ((ChatMessage)((List)localObject).get(((List)localObject).size() - 1)).shmsgseq + 1L;; l = Math.abs(new Random().nextInt()))
+    {
+      paramLong -= 5L;
+      localMessageForLimitChatTopic.init(paramQQAppInterface.getCurrentAccountUin(), paramaofp.jdField_b_of_type_JavaLangString, paramQQAppInterface.getCurrentAccountUin(), paramaofp.c, paramLong, i, 1044, l);
+      localMessageForLimitChatTopic.isread = true;
+      localMessageForLimitChatTopic.shmsgseq = l;
+      localObject = new JSONObject();
+      a((JSONObject)localObject, paramaofp);
+      localMessageForLimitChatTopic.saveExtInfoToExtStr("match_chat_msg_data_key", ((JSONObject)localObject).toString());
+      if (QLog.isDevelopLevel()) {
+        QLog.i("LimitChatUtil", 4, String.format(Locale.getDefault(), "addTopicMessage in seq %s  time %s", new Object[] { Long.valueOf(l), Long.valueOf(paramLong) }));
+      }
+      if (!akau.a(paramQQAppInterface, localMessageForLimitChatTopic, false))
+      {
+        paramQQAppInterface.a().a(localMessageForLimitChatTopic, localMessageForLimitChatTopic.selfuin);
+        if (QLog.isDevelopLevel()) {
+          QLog.i("LimitChatUtil", 4, String.format(Locale.getDefault(), "addTopicMessage in 2", new Object[0]));
+        }
+      }
+      return localMessageForLimitChatTopic.time;
+    }
+  }
+  
+  private static Intent a(Context paramContext, String paramString1, String paramString2, Long paramLong, String paramString3, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUtil", 2, "makeIntent, uin:" + paramString1 + " nick:" + paramString2 + " timestamp:" + paramLong + " topic:" + paramString3);
+    }
+    paramContext = new Intent(paramContext, ChatActivity.class);
+    paramContext.putExtra("uin", paramString1);
+    paramContext.putExtra("uinname", paramString2);
+    paramContext.putExtra("uintype", 1044);
+    if (paramInt == 0) {
+      paramContext.putExtra("entrance", 21);
+    }
+    for (;;)
+    {
+      paramContext.putExtra("key_limitchat_auto_open", true);
+      paramString1 = new Bundle();
+      paramString1.putInt("key_limitchat_from_type", paramInt);
+      paramContext.putExtras(paramString1);
+      return paramContext;
+      paramContext.putExtra("entrance", 20);
+    }
+  }
+  
+  public static String a(AppInterface paramAppInterface)
+  {
+    if ((paramAppInterface instanceof QQAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LimitChatUtil", 2, "getLimitChatUin in mainprocess");
+      }
+      paramAppInterface = (aoix)paramAppInterface.getManager(292);
+      if (paramAppInterface == null) {
+        break label93;
+      }
+      paramAppInterface = paramAppInterface.a();
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LimitChatUtil", 2, "getLimitChatUin :" + paramAppInterface);
+      }
+      return paramAppInterface;
+      if (QLog.isColorLevel()) {
+        QLog.d("LimitChatUtil", 2, "getLimitChatState in otherprocess");
+      }
+      paramAppInterface = null;
+      continue;
+      label93:
+      paramAppInterface = null;
+    }
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2, Long paramLong, String paramString3, int paramInt)
+  {
+    paramActivity.startActivityForResult(a(paramActivity, paramString1, paramString2, paramLong, paramString3, paramInt), a());
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LimitChatUtil", 2, "startAddFriendActivity " + paramString1 + " " + paramString2 + " " + paramString3);
+    }
+    int i = 8;
+    if (String.valueOf(1).equals(paramString3)) {
+      i = 9;
+    }
+    if ((paramContext instanceof Activity))
+    {
+      paramContext = (Activity)paramContext;
+      paramString1 = AddFriendLogicActivity.a(paramContext, 1, paramString1, null, 3094, i, paramString2, null, null, paramContext.getResources().getString(2131690572), null);
+      if (paramString1 != null) {
+        paramString1.putExtra("entrance", 1);
+      }
+      paramContext.startActivityForResult(paramString1, 16002);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (QLog.isColorLevel()) {
+            QLog.d("LimitChatUtil", 2, "tryAddRecentUser begin");
+          }
+          paramQQAppInterface = paramQQAppInterface.a().a();
+        } while (paramQQAppInterface == null);
+        if (!paramQQAppInterface.a(paramString)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("LimitChatUtil", 2, "tryAddRecentUser ,find rencentuser");
+      return;
+      paramString = paramQQAppInterface.a(paramString, 0);
+      long l = NetConnInfoCenter.getServerTime();
+      if (paramString.lastmsgtime < l) {
+        paramString.lastmsgtime = l;
+      }
+      paramQQAppInterface.a(paramString);
+    } while (!QLog.isColorLevel());
+    QLog.d("LimitChatUtil", 2, "tryAddRecentUser end");
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, boolean paramBoolean, MessageRecord paramMessageRecord, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LimitChatUtil", 2, String.format("addGrayTipsMessage frdUin:%s msg:%s ", new Object[] { paramString1, bbbd.a(paramString3) }));
+    }
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString1))) {}
     do
     {
       return;
-      localRecentBaseData = (RecentBaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    } while ((paramarqo == null) || (localRecentBaseData == null));
-    Drawable localDrawable = paramDrawable;
-    if (paramDrawable == null)
-    {
-      int i = localRecentBaseData.a();
-      localDrawable = this.jdField_a_of_type_Ahbe.a(i, localRecentBaseData.a());
-    }
-    a(paramarqo, paramInt, localDrawable);
-  }
-  
-  public arqo a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new arqo(this, this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131496722, paramViewGroup, false), this.jdField_a_of_type_Arqp);
-  }
-  
-  public void a()
-  {
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    int i = 0;
-    while (i < j)
-    {
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, Boolean.valueOf(false));
-      i += 1;
-    }
-  }
-  
-  protected void a(View paramView)
-  {
-    if ((paramView instanceof DynamicAvatarView))
-    {
-      paramView = (DynamicAvatarView)paramView;
-      if (paramView.a == null) {
-        paramView.a = new beog();
+      l = awzw.a();
+      if ((paramBoolean) || (paramMessageRecord == null) || (!a(paramQQAppInterface, paramString1, paramInt1, paramMessageRecord))) {
+        break;
       }
-      paramView.a.a(true);
+    } while (!QLog.isColorLevel());
+    QLog.d("LimitChatUtil", 2, String.format("addGrayTipsMessage last tip message is same", new Object[0]));
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUtil", 2, String.format("addGrayTipsMessage start add tip message", new Object[0]));
     }
-  }
-  
-  public void a(arqo paramarqo, int paramInt)
-  {
-    a(paramarqo, paramInt, null);
-  }
-  
-  public void a(arqp paramarqp)
-  {
-    this.jdField_a_of_type_Arqp = paramarqp;
-  }
-  
-  public void a(List<RecentBaseData> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  protected boolean a(RecentBaseData paramRecentBaseData)
-  {
-    int i = paramRecentBaseData.a();
-    return (i == 0) || (i == 1000) || (i == 1004) || (i == 1003) || (i == 10004) || (i == 1021) || (i == 1022) || (i == 1023);
-  }
-  
-  public void b()
-  {
-    int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
-    int i = 0;
-    while (i < j)
+    paramString1 = new aquz(paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString3, 1044, -5020, paramInt1, l);
+    paramString1.c = paramString3;
+    if (paramMessageRecord != null) {}
+    for (long l = paramMessageRecord.shmsgseq;; l = Math.abs(new Random().nextInt()))
     {
-      this.jdField_a_of_type_AndroidUtilSparseArray.setValueAt(i, Boolean.valueOf(true));
-      i += 1;
-    }
-    notifyDataSetChanged();
-  }
-  
-  public void c()
-  {
-    int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
-    int i = 0;
-    while (i < j)
-    {
-      this.jdField_a_of_type_AndroidUtilSparseArray.setValueAt(i, Boolean.valueOf(false));
-      i += 1;
-    }
-    notifyDataSetChanged();
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Ahbe != null) {
-      this.jdField_a_of_type_Ahbe.a();
-    }
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String arg3, Bitmap paramBitmap)
-  {
-    if (TextUtils.isEmpty(???)) {}
-    long l;
-    for (;;)
-    {
-      return;
-      if ((paramBitmap != null) || (paramInt1 <= 0))
+      if (!TextUtils.isEmpty(paramString4))
       {
-        if (paramBitmap != null) {}
-        try
+        paramMessageRecord = new Bundle();
+        paramInt1 = paramString3.indexOf(paramString4);
+        if (paramInt1 >= 0)
         {
-          this.jdField_a_of_type_JavaUtilHashtable.put(paramInt2 + ":" + ???, paramBitmap);
-          l = System.currentTimeMillis();
-          if ((this.jdField_a_of_type_Long > 0L) && (l - this.jdField_a_of_type_Long > 300L))
-          {
-            paramInt2 = 1;
-            if ((paramInt1 > 0) && (paramInt2 == 0)) {
-              continue;
-            }
-            synchronized (this.jdField_a_of_type_JavaUtilHashtable)
-            {
-              if (this.jdField_a_of_type_JavaUtilHashtable.size() == 0) {
-                return;
-              }
-            }
-          }
+          int i = paramString4.length();
+          paramMessageRecord.putInt("key_action", paramInt2);
+          paramMessageRecord.putString("textColor", "#40A0FF");
+          paramMessageRecord.putString("key_action_DATA", paramString2);
+          paramMessageRecord.putString("key_a_action_DATA", paramInt3 + "");
+          paramString1.a(paramInt1, i + paramInt1, paramMessageRecord);
         }
-        catch (OutOfMemoryError ???)
+      }
+      paramString2 = new MessageForUniteGrayTip();
+      paramString2.initGrayTipMsg(paramQQAppInterface, paramString1);
+      paramString2.isread = true;
+      paramString2.shmsgseq = l;
+      paramString2.mNeedTimeStamp = true;
+      paramString2.updateUniteGrayTipMsgData(paramQQAppInterface);
+      paramQQAppInterface.a().a(paramString2, paramQQAppInterface.getCurrentAccountUin());
+      return;
+    }
+  }
+  
+  public static void a(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    ThreadManager.executeOnSubThread(new LimitChatUtil.2(paramQQAppInterface, paramMessageRecord));
+  }
+  
+  private static void a(JSONObject paramJSONObject, aofp paramaofp)
+  {
+    JSONArray localJSONArray;
+    boolean bool;
+    try
+    {
+      if (paramaofp.c != null) {
+        paramJSONObject.put("topic_msg", paramaofp.c);
+      }
+      if (paramaofp.a != null)
+      {
+        if (paramaofp.a.jdField_b_of_type_JavaLangString != null) {
+          paramJSONObject.put("age", paramaofp.a.jdField_b_of_type_JavaLangString);
+        }
+        paramJSONObject.put("gender", paramaofp.a.jdField_a_of_type_Int);
+        paramJSONObject.put("matchTagId", paramaofp.jdField_b_of_type_Int);
+        paramJSONObject.put("matchTagName", paramaofp.f);
+        if (paramaofp.a.c != null) {
+          paramJSONObject.put("constellation", paramaofp.a.c);
+        }
+        if (paramaofp.a.e != null) {
+          paramJSONObject.put("school", paramaofp.a.e);
+        }
+        if (paramaofp.a.f != null) {
+          paramJSONObject.put("company", paramaofp.a.f);
+        }
+        if (paramaofp.a.d != null) {
+          paramJSONObject.put("city", paramaofp.a.d);
+        }
+        if (paramaofp.a.g != null) {
+          paramJSONObject.put("declaration", paramaofp.a.g);
+        }
+        if (paramaofp.a.h != null) {
+          paramJSONObject.put("voiceUrl", paramaofp.a.h);
+        }
+        paramJSONObject.put("voiceDuration", paramaofp.a.jdField_b_of_type_Int);
+        if (paramaofp.a.i != null) {
+          paramJSONObject.put("signWords", paramaofp.a.i);
+        }
+        if (paramaofp.a.jdField_a_of_type_JavaUtilArrayList != null)
         {
+          localJSONArray = new JSONArray();
+          paramaofp = paramaofp.a.jdField_a_of_type_JavaUtilArrayList.iterator();
           for (;;)
           {
-            System.gc();
-            ???.printStackTrace();
-            QLog.i("MsgBackup.BackupAndMigrateListAdapter", 1, "onDecodeTaskCompleted error:" + ???.getMessage());
-            continue;
-            paramInt2 = 0;
+            if (!paramaofp.hasNext()) {
+              break label429;
+            }
+            aogg localaogg = (aogg)paramaofp.next();
+            if (localaogg.jdField_a_of_type_JavaLangString != null)
+            {
+              JSONObject localJSONObject = new JSONObject();
+              localJSONObject.put("tagName", localaogg.jdField_a_of_type_JavaLangString);
+              if (localaogg.jdField_a_of_type_Int == 0) {
+                break;
+              }
+              bool = true;
+              localJSONObject.put("tagSame", bool);
+              localJSONArray.put(localJSONObject);
+            }
           }
         }
       }
-    }
-    boolean bool;
-    if (paramInt1 == 0)
-    {
-      this.jdField_a_of_type_Long = 0L;
-      paramInt2 = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildCount();
-      paramInt1 = 0;
-      bool = false;
-    }
-    for (;;)
-    {
-      if (paramInt1 < paramInt2)
-      {
-        paramBitmap = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(paramInt1);
-        paramBitmap = (arqo)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder(paramBitmap);
-        int i = paramBitmap.getAdapterPosition();
-        Object localObject = (RecentBaseData)this.jdField_a_of_type_JavaUtilList.get(i);
-        if (localObject == null)
-        {
-          break label438;
-          this.jdField_a_of_type_Long = l;
-          break;
-        }
-        int j = ((RecentBaseData)localObject).a();
-        j = ((Integer)ahbe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, j, ((RecentBaseData)localObject).a()).first).intValue();
-        if (j == -2147483648) {
-          break label438;
-        }
-        localObject = j + ":" + ((RecentBaseData)localObject).a();
-        localObject = (Bitmap)this.jdField_a_of_type_JavaUtilHashtable.get(localObject);
-        if (localObject == null) {
-          break label438;
-        }
-        b(paramBitmap, i, new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject));
-        bool = true;
-        break label438;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("MsgBackup.BackupAndMigrateListAdapter", 4, "decodecomplete|faceCache size = " + this.jdField_a_of_type_JavaUtilHashtable.size() + ", isNeedUpdateAvatar=" + bool);
-      }
-      this.jdField_a_of_type_JavaUtilHashtable.clear();
       return;
-      label438:
-      paramInt1 += 1;
     }
+    catch (JSONException paramJSONObject)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("LimitChatUtil", 4, "initProfileJSON " + paramJSONObject);
+      }
+    }
+    label429:
+    do
+    {
+      bool = false;
+      break;
+    } while (localJSONArray.length() <= 0);
+    paramJSONObject.put("personalTags", localJSONArray);
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 3342337) || (paramInt == 3342338) || (paramInt == 3342339);
+  }
+  
+  @Deprecated
+  public static boolean a(SessionInfo paramSessionInfo)
+  {
+    if (paramSessionInfo == null) {
+      return false;
+    }
+    return c(paramSessionInfo.jdField_a_of_type_Int);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    if ((paramQQAppInterface == null) || (paramMessageRecord == null) || (TextUtils.isEmpty(paramMessageRecord.frienduin))) {}
+    String str;
+    do
+    {
+      return false;
+      int i = a(paramQQAppInterface);
+      str = a(paramQQAppInterface);
+      if (QLog.isColorLevel()) {
+        QLog.d("LimitChatUtil", 2, "checkInterceptMessage, current state:" + i + " uin:" + str);
+      }
+    } while (paramMessageRecord.frienduin.equals(str));
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUtil", 2, "checkInterceptMessage, intercept");
+    }
+    d(paramQQAppInterface, paramMessageRecord.frienduin);
+    return true;
+  }
+  
+  private static boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, MessageRecord paramMessageRecord)
+  {
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
+    while ((paramMessageRecord == null) || (!(paramMessageRecord instanceof MessageForUniteGrayTip)) || (((MessageForUniteGrayTip)paramMessageRecord).tipParam.jdField_b_of_type_Int != paramInt)) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord == null) {}
+    while (!b(paramMessageRecord.istroop)) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    ((aknv)paramQQAppInterface.getManager(285)).a(paramString);
+    aojo.a(paramQQAppInterface, paramString);
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return 1044 == paramInt;
+  }
+  
+  @Deprecated
+  public static boolean b(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord == null) {}
+    while (!c(paramMessageRecord.istroop)) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface = (aoep)paramQQAppInterface.getManager(264);
+    if (paramQQAppInterface.a(paramString, true) == null)
+    {
+      ExtendFriendUserInfo localExtendFriendUserInfo = new ExtendFriendUserInfo();
+      localExtendFriendUserInfo.uin = paramString;
+      localExtendFriendUserInfo.miniProfileMsg = "{}";
+      paramQQAppInterface.a(localExtendFriendUserInfo);
+    }
+  }
+  
+  @Deprecated
+  public static boolean c(int paramInt)
+  {
+    return 1037 == paramInt;
+  }
+  
+  public static void d(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUtil", 2, "getLimitChatState in mainprocess");
+    }
+    arqm.a().a(paramQQAppInterface, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     arqn
  * JD-Core Version:    0.7.0.1
  */

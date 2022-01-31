@@ -95,6 +95,7 @@ public class MethodUpdateElement
               if (i != 0) {
                 localVComponent.notifyChange(1, this.mRef);
               }
+              localVComponent.notifyWhenChange("update", this.mDomObject);
             }
             localVComponent.updateLifeCycle("updated");
             return;

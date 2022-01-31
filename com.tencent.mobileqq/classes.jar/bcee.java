@@ -1,139 +1,98 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.http.AvatarUpdateService.1;
-import com.tencent.qphone.base.util.QLog;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import java.io.File;
 
-public class bcee
-  implements bceq
+class bcee
+  implements bfor
 {
-  private static bcee a;
-  public SharedPreferences a;
-  public HashMap<String, bcef> a;
+  bcee(bced parambced) {}
   
-  protected bcee()
+  public void a(View paramView, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("uin_avatarurl", 0);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public static bcee a()
-  {
-    try
+    if (paramString != null)
     {
-      if (jdField_a_of_type_Bcee == null) {
-        jdField_a_of_type_Bcee = new bcee();
+      if (this.a.jdField_a_of_type_Bcpq == null)
+      {
+        this.a.jdField_a_of_type_Bcpq = new bcpq(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int);
+        this.a.jdField_a_of_type_Bcpq.c(2131694099);
       }
-      return jdField_a_of_type_Bcee;
+      this.a.jdField_a_of_type_Bcpq.show();
+      if (!paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131690563))) {
+        break label165;
+      }
+      if (!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) {
+        break label115;
+      }
+      this.a.jdField_b_of_type_Int = 0;
     }
-    finally {}
-  }
-  
-  public void a(Context paramContext, String paramString1, String paramString2, String paramString3, bceq parambceq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AvatarUpdateService", 2, "-->updateAvatar--uin = " + paramString1);
-    }
-    String str2 = "https://openmobile.qq.com/getface?appid=716027609&imgtype=3&encrytype=0&devtype=0&keytype=0&uin=" + paramString1;
-    for (String str1 = paramString1; str1.length() < 10; str1 = "0" + str1) {}
-    str1 = "o" + str1;
-    ThreadManager.post(new AvatarUpdateService.1(this, str2, "uin=" + str1 + "; skey=" + paramString2, paramString1, paramString3, paramContext, parambceq), 5, null, true);
-  }
-  
-  protected void a(Bitmap paramBitmap, String paramString)
-  {
-    if (paramBitmap == null) {}
-    do
-    {
-      return;
-      paramString = bacm.a(paramString);
-    } while (paramString == null);
-    paramString = new FileOutputStream(paramString);
-    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, paramString);
-    paramString.flush();
-    paramString.close();
-  }
-  
-  public void a(String paramString, Bitmap arg2)
-  {
-    boolean bool2 = true;
-    Object localObject1;
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      this.a.jdField_a_of_type_Bfol.dismiss();
+      return;
+      label115:
+      if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
+        this.a.jdField_a_of_type_Bcpq.dismiss();
+      }
+      this.a.b(this.a.jdField_b_of_type_JavaLangString);
+      continue;
+      label165:
+      if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131690562)))
       {
-        localObject1 = (bcef)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        if (QLog.isColorLevel())
+        if (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) {
+          this.a.jdField_b_of_type_Int = 1;
+        } else {
+          this.a.a(this.a.jdField_b_of_type_JavaLangString);
+        }
+      }
+      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131693391)))
+      {
+        if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
+          this.a.jdField_a_of_type_Bcpq.dismiss();
+        }
+        this.a.a(this.a.jdField_b_of_type_JavaLangString, 1);
+      }
+      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131693390)))
+      {
+        if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
+          this.a.jdField_a_of_type_Bcpq.dismiss();
+        }
+        this.a.a(this.a.jdField_b_of_type_JavaLangString, 2);
+      }
+      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131690565)))
+      {
+        if (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
         {
-          ??? = new StringBuilder().append("-->onTaskCompleted--identifier = ").append(paramString).append(", bitmap = null ? ");
-          if (??? == null)
-          {
-            bool1 = true;
-            ??? = ((StringBuilder)???).append(bool1).append(", task = null ? ");
-            if (localObject1 != null) {
-              break label116;
-            }
-            bool1 = bool2;
-            QLog.d("AvatarUpdateService", 2, bool1);
-          }
+          this.a.jdField_b_of_type_Int = 2;
         }
         else
         {
-          if (localObject1 != null) {
-            break;
+          if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
+            this.a.jdField_a_of_type_Bcpq.dismiss();
           }
-          return;
+          this.a.c(this.a.jdField_b_of_type_JavaLangString);
         }
       }
-      boolean bool1 = false;
-      continue;
-      label116:
-      bool1 = false;
-    }
-    ??? = (Context)((bcef)localObject1).jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((??? != null) && (??? != null))
-    {
-      ??? = bcam.a((Context)???, ???, 63, 63);
-      if (??? == null) {}
-    }
-    try
-    {
-      a(???, ((bcef)localObject1).jdField_b_of_type_JavaLangString);
-      ??? = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      ((SharedPreferences.Editor)???).putString(((bcef)localObject1).jdField_a_of_type_JavaLangString, ((bcef)localObject1).c);
-      ((SharedPreferences.Editor)???).commit();
-      label205:
-      localObject1 = (bceq)((bcef)localObject1).jdField_b_of_type_JavaLangRefWeakReference.get();
-      if (localObject1 != null)
+      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131693381)))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("AvatarUpdateService", 2, "-->onTaskCompleted--callback not null, invoke it");
+        if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
+          this.a.jdField_a_of_type_Bcpq.dismiss();
         }
-        ((bceq)localObject1).a(paramString, ???);
+        if (!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
+        {
+          paramView = new File(this.a.jdField_b_of_type_JavaLangString);
+          paramString = ((TeamWorkDocEditBrowserActivity)this.a.jdField_a_of_type_AndroidAppActivity).a.getCurrentAccountUin();
+          bgpd.b(paramView.getAbsolutePath()).a(this.a.jdField_a_of_type_AndroidAppActivity, paramString);
+        }
       }
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-      {
-        this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-        return;
-      }
-    }
-    catch (IOException localIOException)
-    {
-      break label205;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcee
  * JD-Core Version:    0.7.0.1
  */

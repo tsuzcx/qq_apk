@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import aovh;
-import aovi;
-import aovo;
+import apmu;
+import apmv;
+import apnb;
 
 public class DocsExportFileModel$1$3
   implements Runnable
 {
-  public DocsExportFileModel$1$3(aovi paramaovi, int paramInt) {}
+  public DocsExportFileModel$1$3(apmv paramapmv, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aovi.a.a.a(this.jdField_a_of_type_Int / 2 + 50);
+    this.jdField_a_of_type_Apmv.a.a.a(this.jdField_a_of_type_Int / 2 + 50);
   }
 }
 

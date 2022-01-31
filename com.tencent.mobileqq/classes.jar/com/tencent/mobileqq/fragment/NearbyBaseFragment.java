@@ -11,8 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-import baxr;
-import befq;
+import bcal;
+import bfnk;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
@@ -35,31 +35,31 @@ public class NearbyBaseFragment
   public NearbyBaseFragment()
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo = null;
-    this.jdField_a_of_type_AndroidOsHandler = new befq(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_AndroidOsHandler = new bfnk(Looper.getMainLooper(), this);
   }
   
-  public baxr a()
+  public bcal a()
   {
     return null;
   }
   
   public void a()
   {
-    baxr localbaxr = a();
-    if ((localbaxr == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
+    bcal localbcal = a();
+    if ((localbcal == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
       return;
     }
     try
     {
-      int i = localbaxr.mWebview.getWebScrollY();
-      int j = localbaxr.mWebview.getHeight();
+      int i = localbcal.mWebview.getWebScrollY();
+      int j = localbcal.mWebview.getHeight();
       if (QLog.isColorLevel()) {
         QLog.d("NearbyBaseFragment", 2, "gotoFragmentHead, scrollY=" + i + ", webH=" + j + ", maxV=" + this.c);
       }
       if (i > j)
       {
-        localbaxr.mWebview.getView().scrollTo(0, j);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new NearbyBaseFragment.1(this, localbaxr), 60L);
+        localbcal.mWebview.getView().scrollTo(0, j);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new NearbyBaseFragment.1(this, localbcal), 60L);
         return;
       }
     }
@@ -77,9 +77,9 @@ public class NearbyBaseFragment
     this.jdField_a_of_type_Int = paramTabInfo.tabIndex;
   }
   
-  public void aW_()
+  public void aT_()
   {
-    super.aW_();
+    super.aT_();
     if (!this.e)
     {
       if ((this.jdField_a_of_type_AndroidViewView != null) && (!this.f) && (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(1))) {

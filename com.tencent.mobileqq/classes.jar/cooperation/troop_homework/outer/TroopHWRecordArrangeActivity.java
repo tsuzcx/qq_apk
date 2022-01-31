@@ -5,19 +5,19 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.widget.RelativeLayout;
-import bgon;
+import bhxk;
 import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
 
 public class TroopHWRecordArrangeActivity
   extends TroopHWRecordBaseActivity
 {
   private int jdField_a_of_type_Int = 20;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bgon(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new bhxk(this);
   private String jdField_a_of_type_JavaLangString;
   
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel = ((CommonRecordSoundPanel)LayoutInflater.from(this).inflate(2131494089, null));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel = ((CommonRecordSoundPanel)LayoutInflater.from(this).inflate(2131559661, null));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(this.app, this, this.jdField_a_of_type_AndroidOsHandler);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.b();

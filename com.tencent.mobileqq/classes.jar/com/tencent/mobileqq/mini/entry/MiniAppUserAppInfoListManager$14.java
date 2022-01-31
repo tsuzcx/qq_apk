@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
 import android.util.Log;
-import atmp;
-import atmq;
+import aukn;
+import auko;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -27,7 +27,7 @@ class MiniAppUserAppInfoListManager$14
     try
     {
       localMiniAppRedDotEntity.setStatus(1001);
-      if (((atmp)localObject).a(localMiniAppRedDotEntity, "appId=?", new String[] { localMiniAppRedDotEntity.appId }))
+      if (((aukn)localObject).a(localMiniAppRedDotEntity, "appId=?", new String[] { localMiniAppRedDotEntity.appId }))
       {
         QLog.d("MiniAppUserAppInfoListManager", 2, "deleteRedDotDataFromDB, delete " + localMiniAppRedDotEntity.appId + " success from db");
         return;

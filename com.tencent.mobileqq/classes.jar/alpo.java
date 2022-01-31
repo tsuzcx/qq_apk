@@ -1,22 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.widget.AdapterView;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ.7;
 
 public class alpo
-  implements behk
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public alpo(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  public alpo(ArkAppModuleReg.ModuleQQ.7 param7, bbgg parambbgg) {}
   
-  public void a(AdapterView<?> paramAdapterView) {}
-  
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    this.a.b = paramInt;
+    if (paramBitmap != null) {
+      ((ImageView)this.jdField_a_of_type_Bbgg.findViewById(2131365106)).setImageBitmap(paramBitmap);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alpo
  * JD-Core Version:    0.7.0.1
  */

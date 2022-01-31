@@ -1,38 +1,30 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.SkinRedPacketStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class ackw
-  implements agpe
+  implements View.OnClickListener
 {
-  public ackw(CustomizeStrategyFactory.SkinRedPacketStrategy.1 param1) {}
+  public ackw(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onClick(View paramView)
   {
-    paramPathResult = paramPathResult.filePath;
-    if (paramInt == 0) {}
-    try
-    {
-      this.a.a.resPath = paramPathResult;
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "TYPE_POP_ANIM path=" + paramPathResult);
-      }
-      CustomizeStrategyFactory.a().a(this.a.a);
-      return;
-    }
-    catch (Throwable paramPathResult)
-    {
-      for (;;)
-      {
-        paramPathResult.printStackTrace();
-      }
+    this.a.jdField_d_of_type_Boolean = true;
+    this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.findViewById(2131368431));
+    this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.jdField_d_of_type_AndroidWidgetTextView.setText(ajyc.a(2131715637));
+    this.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new ackx(this));
+    TroopMemberListActivity.a(this.a);
+    if (this.a.a != null) {
+      this.a.a.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ackw
  * JD-Core Version:    0.7.0.1
  */

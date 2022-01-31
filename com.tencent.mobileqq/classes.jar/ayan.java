@@ -1,50 +1,123 @@
 import android.content.Context;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.music.QQPlayerService;
+import cooperation.qwallet.plugin.PatternLockUtils;
+import mqq.os.MqqHandler;
 
 public class ayan
-  implements BusinessObserver
 {
-  public ayan(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    localContext = BaseApplicationImpl.getApplication().getApplicationContext();
-    String str = "";
-    paramInt = -1;
-    if (paramBoolean) {}
-    for (;;)
+    if (paramQQAppInterface == null) {}
+    do
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          continue;
-        }
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        int i = localWebSsoResponseBody.ret.get();
-        paramInt = i;
-        paramBundle = str;
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle = localContext.getString(2131630857, new Object[] { Integer.valueOf(9992) });
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("TribeVideoListPlayerFragment", 2, "reportVV: retCode = " + paramInt + ", errMsg = " + paramBundle);
-      }
       return;
-      paramBundle = localContext.getString(2131630857, new Object[] { Integer.valueOf(9991) });
-      continue;
-      paramBundle = localContext.getString(2131630857, new Object[] { Integer.valueOf(9992) });
+      paramQQAppInterface = paramQQAppInterface.getHandler(SubAccountUgActivity.class);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.sendEmptyMessage(1980);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return;
+      paramQQAppInterface = paramQQAppInterface.getHandler(SubAccountBindActivity.class);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.sendEmptyMessageDelayed(1990, paramLong);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    if ((paramQQAppInterface == null) || (paramContext == null) || (!paramQQAppInterface.isRunning()) || (paramContext.getApplicationContext() == null)) {
+      return;
     }
+    paramContext = paramContext.getApplicationContext();
+    if (QQPlayerService.a())
+    {
+      Intent localIntent = new Intent();
+      localIntent.setAction("qqplayer_exit_action");
+      paramContext.sendBroadcast(localIntent);
+    }
+    PatternLockUtils.setFirstEnterAfterLoginState(paramContext, paramQQAppInterface.getCurrentAccountUin(), true);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
+  {
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    paramQQAppInterface = new Intent(paramContext, AssociatedAccountActivity.class);
+    paramQQAppInterface.putExtra("subAccount", paramString);
+    paramContext.startActivity(paramQQAppInterface);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return;
+      paramQQAppInterface = paramQQAppInterface.getHandler(SubAccountBindActivity.class);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.sendEmptyMessage(1981);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    if ((paramQQAppInterface == null) || (paramContext == null) || (!paramQQAppInterface.isRunning()) || (paramContext.getApplicationContext() == null)) {
+      return;
+    }
+    paramContext = paramContext.getApplicationContext();
+    LoginActivity.a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin());
+    balq.a();
+    aijb.a(true);
+    bcxj.a().a(paramQQAppInterface.getCurrentAccountUin());
+    PatternLockUtils.setFirstEnterAfterLoginState(paramContext, paramQQAppInterface.getCurrentAccountUin(), true);
+    ands.a(paramQQAppInterface, paramContext.getClass(), System.currentTimeMillis(), false);
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return;
+      paramQQAppInterface = paramQQAppInterface.getHandler(SubLoginActivity.class);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.sendEmptyMessage(1982);
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    if ((paramQQAppInterface == null) || (paramContext == null) || (!paramQQAppInterface.isRunning()) || (paramContext.getApplicationContext() == null)) {}
+    do
+    {
+      return;
+      paramQQAppInterface = paramContext.getApplicationContext();
+    } while (!QQPlayerService.a());
+    paramContext = new Intent();
+    paramContext.setAction("qqplayer_exit_action");
+    paramQQAppInterface.sendBroadcast(paramContext);
+  }
+  
+  public static void d(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return;
+      paramQQAppInterface = paramQQAppInterface.getHandler(LoginPhoneNumActivity.class);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.sendEmptyMessage(2014);
   }
 }
 

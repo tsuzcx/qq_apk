@@ -1,73 +1,61 @@
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.1;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.2;
+import java.lang.ref.WeakReference;
 
 public class avov
-  extends avow
+  extends Handler
 {
-  public static final String a;
-  public int a;
-  public CharSequence a;
-  public CharSequence b;
-  public String b;
-  public CharSequence c;
+  private WeakReference<ReceiptMessageReadMemberListContainerFragment> a;
   
-  static
+  private avov(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment)
   {
-    jdField_a_of_type_JavaLangString = "Q.uniteSearch." + avov.class.getSimpleName();
+    this.a = new WeakReference(paramReceiptMessageReadMemberListContainerFragment);
   }
   
-  public avov(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public avov(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = paramInt;
-    switch (paramInt)
+    ReceiptMessageReadMemberListContainerFragment localReceiptMessageReadMemberListContainerFragment = (ReceiptMessageReadMemberListContainerFragment)this.a.get();
+    if ((localReceiptMessageReadMemberListContainerFragment == null) || (!localReceiptMessageReadMemberListContainerFragment.isAdded())) {}
+    do
     {
-    default: 
-      i = 1;
-    }
-    return i;
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.i = paramString.optString("leftImageURL");
-      this.jdField_a_of_type_Int = paramString.optInt("leftImageType", 1);
-      this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int);
-      this.jdField_b_of_type_JavaLangString = avwf.a(paramString.optString("leftImageTagText"));
-      this.jdField_a_of_type_JavaLangCharSequence = avwf.a(paramString.optString("firstLineText"));
-      this.jdField_b_of_type_JavaLangCharSequence = avwf.a(paramString.optString("secondLineText"));
-      this.c = avwf.a(paramString.optJSONArray("thirdLineText"));
       return;
+      switch (paramMessage.what)
+      {
+      case 0: 
+      default: 
+        return;
+      case -1: 
+        localReceiptMessageReadMemberListContainerFragment.stopTitleProgress();
+        ReceiptMessageReadMemberListContainerFragment.g(localReceiptMessageReadMemberListContainerFragment);
+        return;
+      case 1: 
+        ReceiptMessageReadMemberListContainerFragment.b(localReceiptMessageReadMemberListContainerFragment);
+        return;
+      }
+    } while (this.a.get() == null);
+    if (ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment)) {
+      ReceiptMessageReadMemberListContainerFragment.c(localReceiptMessageReadMemberListContainerFragment);
     }
-    catch (JSONException paramString)
+    for (;;)
     {
-      paramString.printStackTrace();
+      ReceiptMessageReadMemberListContainerFragment.d(localReceiptMessageReadMemberListContainerFragment);
+      return;
+      sendEmptyMessage(5);
     }
-  }
-  
-  public boolean b()
-  {
-    return true;
+    ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment, ((Long)paramMessage.obj).longValue());
+    return;
+    ThreadManager.post(new ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.1(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
+    return;
+    ThreadManager.post(new ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.2(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avov
  * JD-Core Version:    0.7.0.1
  */

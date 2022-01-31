@@ -1,12 +1,14 @@
 package com.tencent.av.core;
 
+import lco;
+
 public class SDKConfigInfo
 {
   private static final String TAG = "SDKConfigInfo";
   private boolean isDebugVersion = false;
   private boolean isGrayVersion = false;
   private boolean isPublicVersion = true;
-  private String logDir = "";
+  private String logDir = lco.k();
   private String processName = "";
   private int terminalType = 4;
   

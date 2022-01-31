@@ -1,10 +1,15 @@
-public class nsg
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class nsg
+  implements View.OnClickListener
 {
-  public static void a(int paramInt)
+  nsg(nsf paramnsf) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramInt == 41516) || (paramInt == 41522)) {
-      ndn.a(null, "", "0X8009EF4", "0X8009EF4", 0, 0, "", "", "", new nse().a().a(paramInt).a(), false);
-    }
+    ((Activity)paramView.getContext()).finish();
   }
 }
 

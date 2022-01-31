@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import atnv;
+import ault;
 
 public class MessageForLocationShare
   extends ChatMessage
 {
   private static final String TAG = "MessageForLocationShare";
-  @atnv(a=1)
+  @ault(a=1)
   public boolean isSharingLocation = true;
   
   public MessageForLocationShare()

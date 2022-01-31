@@ -1,36 +1,8 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-
-class adgz
-  extends ClickableSpan
+public abstract interface adgz
 {
-  adgz(adfw paramadfw) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if (badq.d(this.a.jdField_a_of_type_AndroidContentContext))
-    {
-      paramView = (FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      paramView.a((short)1, localArrayList, false);
-      return;
-    }
-    bbmy.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131626719), 1).b(((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
-  }
+  public abstract void b();
 }
 
 

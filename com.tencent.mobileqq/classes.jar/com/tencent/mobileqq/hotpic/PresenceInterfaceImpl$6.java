@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.hotpic;
 
-import aqgx;
+import araz;
 
 public class PresenceInterfaceImpl$6
   implements Runnable
 {
-  public PresenceInterfaceImpl$6(aqgx paramaqgx) {}
+  public PresenceInterfaceImpl$6(araz paramaraz) {}
   
   public void run()
   {

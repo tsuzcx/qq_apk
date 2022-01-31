@@ -1,8 +1,14 @@
-public abstract interface aote
+import android.view.View;
+
+class aote
+  implements bfps
 {
-  public abstract void a(String paramString);
+  aote(aotb paramaotb, View paramView) {}
   
-  public abstract void aC_();
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+  }
 }
 
 

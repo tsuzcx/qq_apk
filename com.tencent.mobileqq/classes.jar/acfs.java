@@ -1,17 +1,26 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 
 public class acfs
-  extends beem
+  extends Handler
 {
-  public acfs(VisitorsActivity paramVisitorsActivity) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public acfs(TroopAssisSettingActivity paramTroopAssisSettingActivity, Looper paramLooper)
   {
-    this.a.d.setVisibility(0);
-    this.a.a.setClipChildren(false);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.jdField_a_of_type_Aiqd.a(this.a.jdField_a_of_type_JavaUtilMap);
+    this.a.jdField_a_of_type_Aiqd.notifyDataSetChanged();
+    this.a.b();
   }
 }
 

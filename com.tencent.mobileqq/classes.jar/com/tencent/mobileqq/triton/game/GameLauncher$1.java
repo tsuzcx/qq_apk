@@ -30,12 +30,12 @@ class GameLauncher$1
     GameLauncher.access$100(this.this$0).getJsRuntime(2).evaluateJs("window = undefined");
     TTLog.i("GameLauncher", "start launch game [" + GameLauncher.access$000(this.this$0).gameId + "]");
     GameLauncher.access$200(this.this$0, GameLauncher.access$000(this.this$0));
-    GameLauncher.access$300(this.this$0, GameLauncher.access$000(this.this$0));
+    int i = GameLauncher.access$300(this.this$0, GameLauncher.access$000(this.this$0));
     l = SystemClock.uptimeMillis() - l;
     TTLog.i("GameLauncher", "launch game [" + GameLauncher.access$000(this.this$0).gameId + "] cost time:" + l + "ms");
     localObject = GameLauncher.access$100(this.this$0).getEngineListener();
     if (localObject != null) {
-      ((ITTEngine.IListener)localObject).onGameLaunched(l);
+      ((ITTEngine.IListener)localObject).onGameLaunched(i, l);
     }
   }
 }

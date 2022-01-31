@@ -1,10 +1,10 @@
 package com.tencent.open.appstore.receiver;
 
 import android.text.TextUtils;
-import bccu;
-import bcds;
-import bcgl;
-import bchb;
+import bdgv;
+import bdht;
+import bdkm;
+import bdlc;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 class InstallStateReceiver$1
@@ -14,14 +14,14 @@ class InstallStateReceiver$1
   
   public void run()
   {
-    bcds.c("InstallStateReceiver", "[onReceive] ACTION_PACKAGE_REMOVED >> " + this.a);
-    if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(bcgl.q)))
+    bdht.c("InstallStateReceiver", "[onReceive] ACTION_PACKAGE_REMOVED >> " + this.a);
+    if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(bdkm.q)))
     {
-      bccu.a().a(true);
-      bchb.a().f();
+      bdgv.a().a(true);
+      bdlc.a().f();
     }
-    DownloadInfo localDownloadInfo = bccu.a().c(this.b);
-    bccu.a().e(localDownloadInfo);
+    DownloadInfo localDownloadInfo = bdgv.a().c(this.b);
+    bdgv.a().d(localDownloadInfo);
   }
 }
 

@@ -1,51 +1,20 @@
-import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
 public class apyl
+  implements aptu
 {
-  private static apyl jdField_a_of_type_Apyl;
-  private GameCenterVideoViewController jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController;
-  
-  public static apyl a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Apyl == null) {
-        jdField_a_of_type_Apyl = new apyl();
-      }
-      apyl localapyl = jdField_a_of_type_Apyl;
-      return localapyl;
-    }
-    finally {}
-  }
-  
-  public GameCenterVideoViewController a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController;
-  }
+  public apyl(SendBottomBar paramSendBottomBar) {}
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.i();
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.l();
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController = null;
-    }
+    SendBottomBar.c(this.a);
   }
   
-  public void a(GameCenterVideoViewController paramGameCenterVideoViewController)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != paramGameCenterVideoViewController) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.i();
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.l();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController = paramGameCenterVideoViewController;
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apyl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.confess;
 
-import alxy;
-import alya;
+import amno;
+import amnq;
 
 public class ConfessManager$5
   implements Runnable
 {
-  public ConfessManager$5(alxy paramalxy, String paramString, alya paramalya) {}
+  public ConfessManager$5(amno paramamno, String paramString, amnq paramamnq) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alya);
+    this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Amnq);
   }
 }
 

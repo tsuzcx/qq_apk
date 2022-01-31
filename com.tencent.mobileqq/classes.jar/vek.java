@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
 
 public class vek
-  implements DialogInterface.OnClickListener
+  extends syq
 {
-  public vek(EditVideoMusicDialog paramEditVideoMusicDialog) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vek(qqstory_service.RspMonitorValue paramRspMonitorValue)
   {
-    paramDialogInterface.dismiss();
+    super(paramRspMonitorValue.result);
+  }
+  
+  public String toString()
+  {
+    return "MonitorValueResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
   }
 }
 

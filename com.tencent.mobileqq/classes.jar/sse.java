@@ -1,9 +1,8 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.List;
-
 public abstract interface sse
 {
-  public abstract void a(int paramInt, ssf paramssf, List<TroopBarPOI> paramList);
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

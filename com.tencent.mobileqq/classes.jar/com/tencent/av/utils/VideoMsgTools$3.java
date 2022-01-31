@@ -1,10 +1,10 @@
 package com.tencent.av.utils;
 
-import aenl;
-import ajrm;
+import aeyg;
+import akfw;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bavz;
+import bbyt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,13 +16,13 @@ final class VideoMsgTools$3
   public void run()
   {
     if ((this.jdField_a_of_type_Int == 12) || (this.jdField_a_of_type_Int == 25) || (this.jdField_a_of_type_Int == 42) || (this.jdField_a_of_type_Int == 43) || (this.jdField_a_of_type_Int == 56)) {
-      bavz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
+      bbyt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
     }
-    int i = ((ajrm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).g();
+    int i = ((akfw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).g();
     Object localObject;
     if (i == 2)
     {
-      if ((this.jdField_a_of_type_Boolean) || ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 24)) || (this.jdField_a_of_type_JavaLangString == null) || (!aenl.a())) {
+      if ((this.jdField_a_of_type_Boolean) || ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 24)) || (this.jdField_a_of_type_JavaLangString == null) || (!aeyg.a())) {
         break label416;
       }
       localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
@@ -40,11 +40,11 @@ final class VideoMsgTools$3
     label416:
     for (i = 1;; i = 0)
     {
-      int j = bavz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      int k = bavz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 6, true, null);
+      int j = bbyt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      int k = bbyt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 6, true, null);
       if ((j != 0) && (j != k))
       {
-        k = bavz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+        k = bbyt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
         if (((j == 0) || (k == 0)) || ((!this.jdField_a_of_type_Boolean) && (i == 0)))
         {
           localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();

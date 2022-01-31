@@ -1,19 +1,45 @@
-import com.tencent.mobileqq.data.ShowExternalTroop;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aicq
+  extends aume
 {
-  public int a;
-  public ShowExternalTroop a;
+  public aicq(ContactsInnerFrame paramContactsInnerFrame) {}
   
-  public aicq(int paramInt, ShowExternalTroop paramShowExternalTroop)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqDataShowExternalTroop = paramShowExternalTroop;
+    this.a.a.unRegistObserver(this);
+    switch (ContactsInnerFrame.a(this.a).d())
+    {
+    case 2: 
+    case 3: 
+    case 4: 
+    case 8: 
+    default: 
+      ContactsInnerFrame.c(this.a);
+      return;
+    case 0: 
+    case 7: 
+    case 9: 
+      ContactsInnerFrame.a(this.a);
+      return;
+    case 1: 
+    case 5: 
+      ContactsInnerFrame.b(this.a);
+      return;
+    }
+    if (ContactsInnerFrame.a(this.a).a().lastUsedFlag == 2L)
+    {
+      ContactsInnerFrame.a(this.a);
+      return;
+    }
+    ContactsInnerFrame.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aicq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.entry;
 
-import akif;
-import amda;
+import akwr;
+import amtc;
 import com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopLayout;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
 
 class MiniAppDesktop$RedDotAppletsObserver
-  extends akif
+  extends akwr
 {
   private WeakReference<MiniAppDesktopLayout> layoutReference;
   
@@ -26,7 +26,7 @@ class MiniAppDesktop$RedDotAppletsObserver
     if (QLog.isColorLevel()) {
       QLog.d("MiniAppDesktop", 2, "updateAppletsSettingSwitchState:  switchState: " + paramInt);
     }
-    if ((amda.l()) && (this.layoutReference != null))
+    if ((amtc.l()) && (this.layoutReference != null))
     {
       MiniAppDesktopLayout localMiniAppDesktopLayout = (MiniAppDesktopLayout)this.layoutReference.get();
       if (localMiniAppDesktopLayout != null) {

@@ -1,100 +1,51 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.troop.activity.TroopCreateBaseActivity;
 
 public class azhy
+  implements View.OnClickListener
 {
-  public static final String a;
+  int jdField_a_of_type_Int = 0;
+  TroopCreateBaseActivity jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity = null;
+  String jdField_a_of_type_JavaLangString;
   
-  static
+  public azhy(TroopCreateBaseActivity paramTroopCreateBaseActivity, int paramInt, String paramString)
   {
-    jdField_a_of_type_JavaLangString = azhy.class.getName();
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity = paramTroopCreateBaseActivity;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static azhz a(MessageRecord paramMessageRecord)
+  public void onClick(View paramView)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramMessageRecord != null)
-    {
-      localObject1 = localObject2;
-      if ("1".equals(paramMessageRecord.getExtInfoFromExtStr("troop_msg_has")))
-      {
-        localObject1 = new azhz();
-        ((azhz)localObject1).jdField_a_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_flag"));
-        ((azhz)localObject1).jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_head_url");
-        ((azhz)localObject1).jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_head_click_url");
-        ((azhz)localObject1).jdField_c_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_nickname");
-        ((azhz)localObject1).jdField_d_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_rank_name");
-      }
-    }
-    try
-    {
-      ((azhz)localObject1).jdField_b_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_nick_color"));
-      ((azhz)localObject1).jdField_c_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_rank_color"));
-      ((azhz)localObject1).jdField_d_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_rank_bg_color"));
-      return localObject1;
-    }
-    catch (Exception paramMessageRecord)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "the color string cannot parse to int. " + paramMessageRecord.getMessage());
-    }
-    return localObject1;
-  }
-  
-  public static void a(AppInterface paramAppInterface, Context paramContext, azhz paramazhz)
-  {
-    try
-    {
-      if (TextUtils.isEmpty(paramazhz.jdField_b_of_type_JavaLangString)) {
-        return;
-      }
-      if (paramazhz.jdField_b_of_type_JavaLangString.startsWith("http"))
-      {
-        paramAppInterface = new Intent(paramContext, QQBrowserActivity.class);
-        paramAppInterface.putExtra("url", paramazhz.jdField_b_of_type_JavaLangString);
-        rtr.a(paramAppInterface, paramazhz.jdField_b_of_type_JavaLangString);
-        paramContext.startActivity(paramAppInterface);
-        return;
-      }
-      if (!paramazhz.jdField_b_of_type_JavaLangString.startsWith("mqqapi")) {
-        return;
-      }
-      if ((paramAppInterface instanceof QQAppInterface))
-      {
-        bade.a((QQAppInterface)paramAppInterface, paramContext, paramazhz.jdField_b_of_type_JavaLangString).c();
-        return;
-      }
-    }
-    catch (Exception paramAppInterface)
-    {
-      paramAppInterface.printStackTrace();
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity == null) {
       return;
     }
-    paramContext.startActivity(new Intent(paramContext, JumpActivity.class).setData(Uri.parse(paramazhz.jdField_b_of_type_JavaLangString)));
-  }
-  
-  public static void a(MessageRecord paramMessageRecord, azhz paramazhz)
-  {
-    if ((paramazhz == null) || (paramMessageRecord == null)) {
-      return;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      if (this.jdField_a_of_type_Int == 0) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.b();
+      }
     }
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_has", "1");
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_flag", String.valueOf(paramazhz.jdField_a_of_type_Int));
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_head_url", paramazhz.jdField_a_of_type_JavaLangString);
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_head_click_url", paramazhz.jdField_b_of_type_JavaLangString);
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_nickname", paramazhz.jdField_c_of_type_JavaLangString);
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_nick_color", String.valueOf(paramazhz.jdField_b_of_type_Int));
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_rank_name", paramazhz.jdField_d_of_type_JavaLangString);
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_rank_color", String.valueOf(paramazhz.jdField_c_of_type_Int));
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_rank_bg_color", String.valueOf(paramazhz.jdField_d_of_type_Int));
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a(this.jdField_a_of_type_Int);
+      return;
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.c();
+      }
+      else if (this.jdField_a_of_type_Int == 2)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.d();
+        continue;
+        paramView = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a;
+        if (paramView != null) {
+          paramView.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+        }
+      }
+    }
   }
 }
 

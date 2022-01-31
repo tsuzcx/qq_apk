@@ -1,31 +1,58 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import java.io.File;
+import java.net.URL;
 
-class snj
-  extends tco
+final class snj
+  implements spd
 {
-  snj(sng paramsng) {}
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = System.currentTimeMillis();
   
-  public void a()
+  snj(KandianUrlImageView paramKandianUrlImageView) {}
+  
+  public void a(URL paramURL, int paramInt) {}
+  
+  public void a(URL paramURL, Throwable paramThrowable)
   {
-    super.a();
-    snf.a(this.a.a, null);
+    sne.d("WeishiUtils", "url = " + paramURL + ", onLoadFailed!!!");
+    if (this.jdField_a_of_type_Int < 2)
+    {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      sne.d("WeishiUtils", "");
+      this.jdField_a_of_type_Int += 1;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.a(paramURL);
+      return;
+    }
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public void a(int paramInt)
+  public void a(URL paramURL, rpg paramrpg)
   {
-    super.a(paramInt);
-    urp.a("home_page", "suc_share", 1, paramInt, new String[] { urp.b(this.a.a.a) + "", urp.a(this.a.a.a) + "", this.a.a.a.feedId });
-  }
-  
-  public void b(int paramInt)
-  {
-    super.b(paramInt);
-    urp.a("home_page", "share_chanel", 1, paramInt, new String[] { urp.b(this.a.a.a) + "", urp.a(this.a.a.a) + "", this.a.a.a.feedId });
+    sne.b("WeishiUtils", "onLoadSuccess!!!");
+    this.jdField_a_of_type_Int = 0;
+    if (this.jdField_a_of_type_Long > 0L)
+    {
+      if (paramURL != null)
+      {
+        skt.b(1, paramURL.toString());
+        long l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+        paramrpg = ayog.a(paramURL.toString());
+        if (paramrpg != null)
+        {
+          String str = paramrpg.getAbsolutePath();
+          long l2 = paramrpg.length();
+          sne.c("actWsFeedPicReqDuration", "--successTime:" + System.currentTimeMillis() + ", downloadCost:" + l1 + ", length:" + l2 + ", url = " + paramURL.toString() + "\n--absolutePath = " + str);
+          smu.a().a(true, l1, l2);
+        }
+      }
+      this.jdField_a_of_type_Long = 0L;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     snj
  * JD-Core Version:    0.7.0.1
  */

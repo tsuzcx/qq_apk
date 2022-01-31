@@ -1,8 +1,29 @@
 package com.tencent.mobileqq.mini.entry;
 
-public abstract interface MiniAppExposureManager$BaseExposureReport
+public abstract class MiniAppExposureManager$BaseExposureReport
 {
+  private volatile boolean hasReport;
+  
+  public void handleReport()
+  {
+    if (hasReport()) {
+      return;
+    }
+    report();
+    setHasReport(true);
+  }
+  
+  public boolean hasReport()
+  {
+    return this.hasReport;
+  }
+  
   public abstract void report();
+  
+  public void setHasReport(boolean paramBoolean)
+  {
+    this.hasReport = paramBoolean;
+  }
 }
 
 

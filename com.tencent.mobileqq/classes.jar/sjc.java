@@ -1,60 +1,55 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import java.util.ArrayList;
+import UserGrowth.stGlobalConfig;
+import UserGrowth.stPopWindowsConfig;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import java.net.URLDecoder;
 
-public final class sjc
-  extends sfo
+class sjc
+  implements snn
 {
-  public StoryVideoItem a;
-  public GeneralFeedItem a;
-  public ArrayList<sjb> a;
-  public final boolean a;
-  public StoryVideoItem b;
-  public boolean b;
-  public boolean c;
+  sjc(sjb paramsjb, Context paramContext) {}
   
-  public sjc(boolean paramBoolean)
+  public void a(String paramString, int paramInt)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    sng.a(sjb.a(this.jdField_a_of_type_Sjb), "biz_src_jc_gzh_weishi", paramString, 1, sjb.a(this.jdField_a_of_type_Sjb).link_strategy_type, sjb.a(this.jdField_a_of_type_Sjb));
+    smq.a(114, sjb.b(this.jdField_a_of_type_Sjb), sjb.c(this.jdField_a_of_type_Sjb), this.jdField_a_of_type_Sjb.a.windowsid);
+    sms.c(114, this.jdField_a_of_type_Sjb.a.type, this.jdField_a_of_type_Sjb.a.windowsid);
+    WSPublicAccReport.getInstance().reportClickRichBlockPop(1000003, this.jdField_a_of_type_Sjb.a.windowsid);
   }
   
-  public static boolean a(int paramInt)
+  public void b(String paramString, int paramInt)
   {
-    return (paramInt == 940006) || (paramInt == 940007) || (paramInt == 940017) || (paramInt == 940018) || (paramInt == 941001) || (paramInt == 941002) || (paramInt == axvg.a(940017)) || (paramInt == axvg.a(9042)) || (paramInt == axvg.a(9070)) || (paramInt == axvg.a(9071)) || (paramInt / 100 == axvg.a(999000) / 100) || ((paramInt >= 5100) && (paramInt <= 5108));
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt == 941001) || (paramInt == 941002);
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
-      return false;
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      paramString = URLDecoder.decode(paramString);
+      onk.e(sjb.a(this.jdField_a_of_type_Sjb), paramString);
+      sne.a("weishi-813", "阻断rich弹窗:" + paramString);
+      smq.a(140, sjb.b(this.jdField_a_of_type_Sjb), sjb.c(this.jdField_a_of_type_Sjb), this.jdField_a_of_type_Sjb.a.windowsid);
+      sms.c(140, this.jdField_a_of_type_Sjb.a.type, this.jdField_a_of_type_Sjb.a.windowsid);
+      WSPublicAccReport.getInstance().reportClickRichBlockPop(1000004, this.jdField_a_of_type_Sjb.a.windowsid);
+      return;
     }
-    return this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isTroopLocalVideoOnly();
+    sne.c("weishi-813", "阻断rich弹窗:context 不是Activity");
   }
   
-  public boolean b()
+  public void c(String paramString, int paramInt)
   {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0);
-  }
-  
-  public String toString()
-  {
-    return "StoryVideoPublishStatusEvent{mFakeStoryVideoItem=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", mSucStoryVideoItem=" + this.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", mCommentLikeFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem + ", mShareGroupFakeItems=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
+    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
+    localWSDownloadParams.mScene = 1;
+    localWSDownloadParams.mLinkStrategyType = sjb.a(this.jdField_a_of_type_Sjb).link_strategy_type;
+    localWSDownloadParams.mEventId = 401;
+    localWSDownloadParams.mTestId = sms.b();
+    localWSDownloadParams.mScheme = paramString;
+    skq.a((Activity)sjb.a(this.jdField_a_of_type_Sjb), localWSDownloadParams, false);
+    sms.c(115, this.jdField_a_of_type_Sjb.a.type, this.jdField_a_of_type_Sjb.a.windowsid);
+    WSPublicAccReport.getInstance().reportClickRichBlockPop(1000002, this.jdField_a_of_type_Sjb.a.windowsid);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sjc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,24 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.redpacket.AVRedPacketManager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
-class mdw
-  extends kzq
+public class mdw
+  implements View.OnTouchListener
 {
-  mdw(mdv parammdv) {}
+  public mdw(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    c();
-  }
-  
-  protected void b(long paramLong, boolean paramBoolean)
-  {
-    c();
-  }
-  
-  void c()
-  {
-    med localmed = this.a.a();
-    if ((localmed != null) && (localmed.a())) {
-      ((AVRedPacketManager)this.a.a.a(6)).c(this.a.a.a().a().j);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }

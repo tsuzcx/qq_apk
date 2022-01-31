@@ -1,25 +1,13 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.view.View;
+import com.tencent.biz.qqstory.view.widget.InnerListView;
 
-public class wcy
-  implements vye
+public abstract interface wcy
 {
-  public wcy(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment) {}
-  
-  public void a(CertifiedAccountMeta.StFeed paramStFeed)
-  {
-    if ((paramStFeed != null) && (paramStFeed.id.get().startsWith("fakeid_")))
-    {
-      bbmy.a(this.a.getActivity(), ajjy.a(2131648853), 0).a();
-      return;
-    }
-    vvy.a(this.a.getActivity(), paramStFeed);
-  }
+  public abstract void a(InnerListView paramInnerListView, View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wcy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.app;
 
-import alut;
+import amkj;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.appbrand.ui.InternalAppBrandUI;
 import com.tencent.mobileqq.mini.util.AnimUtil;
 
 class AppUIProxy$1
-  implements alut
+  implements amkj
 {
   AppUIProxy$1(AppUIProxy paramAppUIProxy, BaseActivity paramBaseActivity) {}
   

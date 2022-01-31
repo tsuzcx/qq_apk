@@ -1,29 +1,89 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.List;
+import com.tencent.mobileqq.webview.webso.HttpRequestPackage;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
+import wns_proxy.HttpRsp;
 
-public abstract interface bcgn
+public class bcgn
 {
-  public abstract void installSucceed(String paramString1, String paramString2);
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  private final String e = "\r\n";
   
-  public abstract void onDownloadCancel(DownloadInfo paramDownloadInfo);
+  public bcgn(HttpRsp paramHttpRsp)
+  {
+    a(paramHttpRsp.rspinfo);
+    this.d = paramHttpRsp.body;
+  }
   
-  public abstract void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2);
+  private void a(String paramString)
+  {
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        paramString = paramString.substring(0, paramString.indexOf("\r\n\r\n") - 1).split("\r\n");
+        int j = paramString.length;
+        if (i < j) {
+          if (i == 0)
+          {
+            b(paramString[i]);
+          }
+          else
+          {
+            Object localObject = paramString[i];
+            int k = localObject.indexOf(":");
+            a(localObject.substring(0, k).trim(), localObject.substring(k + 1, localObject.length()));
+          }
+        }
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("HttpResponsePackage", 1, paramString.toString());
+      }
+      return;
+      i += 1;
+    }
+  }
   
-  public abstract void onDownloadFinish(DownloadInfo paramDownloadInfo);
+  private void a(String paramString1, String paramString2)
+  {
+    if ((paramString2 == null) || (paramString2.length() == 0)) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramString1 = HttpRequestPackage.class.getDeclaredField(paramString1);
+        if (paramString1 != null)
+        {
+          paramString1.set(this, paramString2);
+          return;
+        }
+      }
+      catch (NoSuchFieldException paramString1) {}catch (IllegalArgumentException paramString1) {}catch (IllegalAccessException paramString1) {}
+    }
+  }
   
-  public abstract void onDownloadPause(DownloadInfo paramDownloadInfo);
-  
-  public abstract void onDownloadUpdate(List<DownloadInfo> paramList);
-  
-  public abstract void onDownloadWait(DownloadInfo paramDownloadInfo);
-  
-  public abstract void packageReplaced(String paramString1, String paramString2);
-  
-  public abstract void uninstallSucceed(String paramString1, String paramString2);
+  private void b(String paramString)
+  {
+    if ((paramString != null) && (paramString.length() > 0))
+    {
+      paramString = paramString.split(" ");
+      if ((paramString != null) && (paramString.length == 3))
+      {
+        this.b = paramString[0];
+        this.a = paramString[1];
+        this.c = paramString[2];
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcgn
  * JD-Core Version:    0.7.0.1
  */

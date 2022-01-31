@@ -1,14 +1,10 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-
 public abstract interface auvc
 {
-  public abstract void a(FilterCategoryItem paramFilterCategoryItem);
-  
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auvc
  * JD-Core Version:    0.7.0.1
  */

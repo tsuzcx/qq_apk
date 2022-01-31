@@ -1,35 +1,19 @@
-import android.graphics.Matrix;
-import android.graphics.Path;
+import com.tribe.async.dispatch.Dispatcher.Event;
 
 public class vbu
-  extends vbi
+  implements Dispatcher.Event
 {
-  public Path a;
-  public int b;
-  public int c;
+  public float a;
+  public float b;
+  public float c;
+  public float d;
   
-  public vbu(Path paramPath, int paramInt1, int paramInt2, int paramInt3)
+  public vbu(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    super(paramInt1);
-    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  public vbu(vbi paramvbi, float paramFloat)
-  {
-    super(paramvbi.jdField_a_of_type_Int);
-    if ((paramvbi instanceof vbu))
-    {
-      paramvbi = (vbu)paramvbi;
-      Matrix localMatrix = new Matrix();
-      localMatrix.postScale(paramFloat, paramFloat);
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramvbi.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
-      this.jdField_a_of_type_Int = paramvbi.jdField_a_of_type_Int;
-      this.b = paramvbi.b;
-      this.c = ((int)(paramvbi.c * paramFloat));
-    }
+    this.d = paramFloat4;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.a = paramFloat1;
   }
 }
 

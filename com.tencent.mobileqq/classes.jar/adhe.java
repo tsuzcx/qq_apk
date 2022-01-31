@@ -1,23 +1,28 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class adhe
-  implements apcz
+  implements bfoq
 {
-  adhe(adfw paramadfw, String paramString) {}
+  adhe(adha paramadha, ChatMessage paramChatMessage, bfol parambfol) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramView = new Intent(this.jdField_a_of_type_Adfw.jdField_a_of_type_AndroidContentContext, ChatHistoryFileActivity.class);
-    paramView.putExtra("uin", this.jdField_a_of_type_Adfw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    paramView.putExtra("uintype", this.jdField_a_of_type_Adfw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    paramView.putExtra("uinname", this.jdField_a_of_type_Adfw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-    paramView.putExtra("com.tencent.mobileqq.ChatHistoryFileActivity.initial_tab", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Adfw.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    apci.a("0X800506C");
+    if (paramInt == 0)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop != 3000) {
+        break label41;
+      }
+      apuc.a("0X8005E4F");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Adha.e(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      label41:
+      apuc.a("0X8005E4D");
+    }
   }
 }
 

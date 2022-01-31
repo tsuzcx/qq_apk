@@ -1,16 +1,11 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
-
 class apng
-  extends GridLayoutManager.SpanSizeLookup
+  implements aooz
 {
-  apng(apnf paramapnf) {}
+  apng(apnd paramapnd) {}
   
-  public int getSpanSize(int paramInt)
+  public void a(long paramLong)
   {
-    if (this.a.getItemViewType(paramInt) == apnb.b) {
-      return 5;
-    }
-    return 1;
+    apnd.b(this.a, paramLong);
   }
 }
 

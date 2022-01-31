@@ -1,6 +1,15 @@
-public abstract interface advp
+class advp
+  extends actr
 {
-  public abstract void a(int paramInt);
+  public Object a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  
+  advp(advn paramadvn) {}
 }
 
 

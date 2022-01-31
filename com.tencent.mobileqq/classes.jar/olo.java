@@ -1,80 +1,47 @@
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_UserInfo;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class olo
 {
-  public static void a(String paramString)
+  private static boolean a;
+  
+  public static View a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    Object localObject = TVK_SDKMgr.getProxyFactory();
-    if (localObject != null)
+    if (BaseApplicationImpl.sApplication == null) {
+      return null;
+    }
+    View localView = View.inflate(BaseApplicationImpl.sApplication, 2131562484, null);
+    ((DragTextView)localView.findViewById(2131378601)).setDragViewType(2);
+    ((ReadInjoyTabDragAnimationView)localView.findViewById(2131376808)).setEmotionDrawable(paramInt1, paramInt2, paramInt3, paramInt4, paramInt6, paramInt7);
+    ((TextView)localView.findViewById(2131378367)).setText(paramInt5);
+    return localView;
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    try
     {
-      localObject = ((TVK_IProxyFactory)localObject).getCacheMgr(BaseApplicationImpl.getContext());
-      if (localObject != null)
-      {
-        TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(2, nbe.a(paramString), "");
-        localTVK_PlayerVideoInfo.setConfigMap("cache_duration", "2");
-        localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", qhv.a);
-        ((TVK_ICacheMgr)localObject).preLoadVideoByUrl(BaseApplicationImpl.getContext(), paramString, null, localTVK_PlayerVideoInfo);
-      }
+      a = paramBoolean;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public static boolean a(String paramString)
+  public static boolean a()
   {
-    Object localObject1 = TVK_SDKMgr.getProxyFactory();
-    if (localObject1 == null) {
-      return false;
-    }
-    localObject1 = ((TVK_IProxyFactory)localObject1).getCacheMgr(BaseApplicationImpl.getContext());
-    if (localObject1 == null) {
-      return false;
-    }
-    Object localObject2 = nbe.a(paramString);
-    TVK_UserInfo localTVK_UserInfo = new TVK_UserInfo("", "");
-    localObject2 = new TVK_PlayerVideoInfo(2, (String)localObject2, "");
-    ((TVK_PlayerVideoInfo)localObject2).setConfigMap("cache_duration", "2");
-    ((TVK_PlayerVideoInfo)localObject2).setConfigMap("cache_servers_type", qhv.a);
-    ((TVK_PlayerVideoInfo)localObject2).addExtraParamsMap("shouq_bus_type", "bus_type_kandian_feeds");
-    String[] arrayOfString = new String[6];
-    arrayOfString[0] = "msd";
-    arrayOfString[1] = "hd";
-    arrayOfString[2] = "fhd";
-    arrayOfString[3] = "mp4";
-    arrayOfString[4] = "shd";
-    arrayOfString[5] = "sd";
-    int m = arrayOfString.length;
-    int j = 0;
-    int i = 0;
-    while (j < m)
-    {
-      String str = arrayOfString[j];
-      try
-      {
-        int k = ((TVK_ICacheMgr)localObject1).isVideoCached(BaseApplicationImpl.getContext(), paramString, localTVK_UserInfo, (TVK_PlayerVideoInfo)localObject2, str);
-        i = k;
-      }
-      catch (Exception localException)
-      {
-        label176:
-        break label176;
-        j += 1;
-      }
-      if ((i == 2) || (i == 1)) {
-        return true;
-      }
-    }
-    if (QLog.isColorLevel()) {}
-    return false;
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     olo
  * JD-Core Version:    0.7.0.1
  */

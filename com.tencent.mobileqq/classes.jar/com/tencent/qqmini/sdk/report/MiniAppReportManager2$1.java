@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.report;
 
 import android.os.Bundle;
-import bdkq;
+import beot;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public final class MiniAppReportManager2$1
@@ -17,7 +17,7 @@ public final class MiniAppReportManager2$1
     localBundle.putString("sub_action", this.jdField_a_of_type_JavaLangString);
     localBundle.putString("path", this.b);
     localBundle.putString("reserves", this.c);
-    bdkq.a().a("launch_report2", localBundle, null);
+    beot.a().a("launch_report2", localBundle, null);
   }
 }
 

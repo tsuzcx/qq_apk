@@ -1,21 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.ocr.OCRResultActivity.11.1;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
 
 public class atdu
-  implements ates
+  implements DialogInterface.OnDismissListener
 {
-  public atdu(OCRResultActivity paramOCRResultActivity) {}
+  public atdu(GameRoomTransActivity paramGameRoomTransActivity) {}
   
-  public void a() {}
-  
-  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equals(OCRResultActivity.a(this.a)))) {
-      return;
-    }
-    this.a.runOnUiThread(new OCRResultActivity.11.1(this, paramInt, paramOcrRecogResult));
+    this.a.finish();
   }
 }
 

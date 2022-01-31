@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.activity;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import awqx;
-import azlj;
+import axqw;
+import bamn;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 
@@ -48,9 +48,9 @@ public class ContactSearchActivity
     switch (this.d)
     {
     default: 
-      return ajjy.a(2131636768);
+      return ajyc.a(2131702552);
     }
-    return ajjy.a(2131636751);
+    return ajyc.a(2131702535);
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -60,8 +60,8 @@ public class ContactSearchActivity
       paramIntent = paramIntent.getStringExtra("roomId");
       if (paramIntent != null)
       {
-        azlj.a(this, paramIntent, true);
-        awqx.b(this.app, "CliOper", "", "", "0X8006360", "0X8006360", 0, 0, "", "", "", "");
+        bamn.a(this, paramIntent, true);
+        axqw.b(this.app, "CliOper", "", "", "0X8006360", "0X8006360", 0, 0, "", "", "", "");
       }
     }
   }

@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdcy;
-import bdfb;
-import bdfz;
-import bdnw;
+import begy;
+import bejb;
+import beka;
+import besl;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class VoIPJsPlugin$2$1$1
-  implements bdfb
+  implements bejb
 {
   VoIPJsPlugin$2$1$1(VoIPJsPlugin.2.1 param1) {}
   
@@ -27,7 +27,7 @@ class VoIPJsPlugin$2$1$1
     {
       for (;;)
       {
-        bdnw.d("[mini] VoIPJsPlugin", "JSONException", paramString);
+        besl.d("[mini] VoIPJsPlugin", "JSONException", paramString);
       }
     }
   }
@@ -45,7 +45,7 @@ class VoIPJsPlugin$2$1$1
     {
       for (;;)
       {
-        bdnw.d("[mini] VoIPJsPlugin", "JSONException", paramJSONArray);
+        besl.d("[mini] VoIPJsPlugin", "JSONException", paramJSONArray);
       }
     }
   }
@@ -63,7 +63,7 @@ class VoIPJsPlugin$2$1$1
     {
       for (;;)
       {
-        bdnw.d("[mini] VoIPJsPlugin", "JSONException", paramJSONArray);
+        besl.d("[mini] VoIPJsPlugin", "JSONException", paramJSONArray);
       }
     }
   }

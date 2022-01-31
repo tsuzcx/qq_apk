@@ -1,29 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
+import android.content.Context;
 
-class rch
-  implements Animator.AnimatorListener
+public class rch
 {
-  rch(rcf paramrcf, String paramString) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public static rui a(Context paramContext, String paramString1, String paramString2)
   {
-    rcf.a(this.jdField_a_of_type_Rcf).setText(this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Rcf.a.title);
-    rcf.b(this.jdField_a_of_type_Rcf).setText(this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Rcf.a.title);
-    rcf.a(this.jdField_a_of_type_Rcf).setVisibility(8);
-    rcf.b(this.jdField_a_of_type_Rcf).setVisibility(0);
-    rcf.a(this.jdField_a_of_type_Rcf).setTranslationY(Utils.dp2px(43.0D));
-    rcf.b(this.jdField_a_of_type_Rcf).setTranslationY(0.0F);
+    paramContext = new rui(paramContext, 2131755791);
+    paramContext.setContentView(2131562314);
+    paramContext.setTitle(null);
+    paramContext.setMessage(paramString1);
+    paramContext.a(paramString2);
+    paramContext.setCanceledOnTouchOutside(true);
+    return paramContext;
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

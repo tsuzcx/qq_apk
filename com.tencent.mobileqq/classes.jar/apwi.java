@@ -1,58 +1,130 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 class apwi
-  implements begw
+  implements apwk
 {
   apwi(apwh paramapwh) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    switch (paramInt)
+    boolean bool = this.a.c();
+    QLog.i(apwh.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadStart. start:" + bool + "progress:" + paramInt);
+    if (bool) {}
+    for (;;)
     {
-    default: 
       return;
-    case 0: 
-      paramView = new HashMap();
-      yez.a(paramView, apwh.a(this.a).msgId);
-      paramView.put(Integer.valueOf(2), apwh.a(this.a).msgId);
-      paramView.put(Integer.valueOf(6), apwh.a(this.a).feedId);
-      paramView.put(Integer.valueOf(4), "20");
-      paramView.put(Integer.valueOf(43), apwh.a(this.a).algorithmId);
-      paramView.put(Integer.valueOf(44), apwh.a(this.a).type + "");
-      yez.a(aing.a(), "769", "205027", apwh.a(this.a).a().gameAppId, "76902", "1", "160", paramView);
-      paramView = new arjz(apvy.a(apwh.a(this.a)), apvy.a(apwh.a(this.a)));
-      paramView.a(apwh.a(this.a).title, apwh.a(this.a).a().gameName, apwh.a(this.a).jumpUrl, apwh.a(this.a).coverImgUrl, "QQ手游中心", null);
-      paramView.a(new apwj(this));
+      this.a.a(true);
+      Object localObject = apwh.a(this.a);
+      if (paramBundle != null) {
+        paramBundle.putBundle("_CB_USERDATA", apwh.a(this.a));
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        apwk localapwk = (apwk)((Iterator)localObject).next();
+        if (localapwk != null) {
+          localapwk.a(paramInt, paramBundle);
+        }
+      }
+    }
+  }
+  
+  public void a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    QLog.i(apwh.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadFailed. errcode:" + paramInt + "errStr:" + paramString);
+    if ((apwh.b(this.a) < 1) && (1 == apwh.a(this.a)))
+    {
+      QLog.i(apwh.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadFailed. errorRetry");
+      apwh.c(this.a);
+      apwh.a(this.a, paramInt, paramString, paramBundle);
+    }
+    for (;;)
+    {
       return;
+      if (paramBundle != null) {
+        paramBundle.putBundle("_CB_USERDATA", apwh.a(this.a));
+      }
+      Iterator localIterator = apwh.a(this.a).iterator();
+      while (localIterator.hasNext())
+      {
+        apwk localapwk = (apwk)localIterator.next();
+        if (localapwk != null) {
+          localapwk.a(paramInt, paramString, paramBundle);
+        }
+      }
     }
-    paramView = new HashMap();
-    yez.a(paramView, apwh.a(this.a).msgId);
-    paramView.put(Integer.valueOf(2), apwh.a(this.a).msgId);
-    paramView.put(Integer.valueOf(6), apwh.a(this.a).feedId);
-    paramView.put(Integer.valueOf(4), "20");
-    paramView.put(Integer.valueOf(43), apwh.a(this.a).algorithmId);
-    paramView.put(Integer.valueOf(44), apwh.a(this.a).type + "");
-    yez.a(aing.a(), "769", "205025", apwh.a(this.a).a().gameAppId, "76902", "1", "160", paramView);
-    paramView = (baot)apvy.a(apwh.a(this.a)).a(71);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(apwh.a(this.a).feedId);
-    paramView.a(localArrayList);
-    if (apwh.a(this.a) != null) {
-      apwh.a(this.a).dismiss();
+  }
+  
+  public void a(String paramString, long paramLong, Bundle paramBundle)
+  {
+    QLog.i(apwh.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadSucess. filePath:" + paramString);
+    paramBundle = new Bundle();
+    paramBundle.putInt("_CB_SID", apwh.a(this.a));
+    paramBundle.putString("_CB_URL", apwh.a(this.a));
+    paramBundle.putBundle("_CB_USERDATA", apwh.a(this.a));
+    Iterator localIterator = apwh.a(this.a).iterator();
+    while (localIterator.hasNext())
+    {
+      apwk localapwk = (apwk)localIterator.next();
+      if (localapwk != null) {
+        localapwk.a(paramString, paramLong, paramBundle);
+      }
     }
-    apwh.a(this.a).a(apwh.a(this.a));
+  }
+  
+  public void b(int paramInt, Bundle paramBundle)
+  {
+    if (paramBundle != null) {
+      paramBundle.putBundle("_CB_USERDATA", apwh.a(this.a));
+    }
+    Iterator localIterator = apwh.a(this.a).iterator();
+    while (localIterator.hasNext())
+    {
+      apwk localapwk = (apwk)localIterator.next();
+      if (localapwk != null) {
+        localapwk.b(paramInt, paramBundle);
+      }
+    }
+  }
+  
+  public void c(int paramInt, Bundle paramBundle)
+  {
+    QLog.i(apwh.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadPause. progress:" + paramInt);
+    if (paramBundle != null) {
+      paramBundle.putBundle("_CB_USERDATA", apwh.a(this.a));
+    }
+    Iterator localIterator = apwh.a(this.a).iterator();
+    while (localIterator.hasNext())
+    {
+      apwk localapwk = (apwk)localIterator.next();
+      if (localapwk != null) {
+        localapwk.c(paramInt, paramBundle);
+      }
+    }
+  }
+  
+  public void d(int paramInt, Bundle paramBundle)
+  {
+    QLog.i(apwh.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadResume. progress:" + paramInt);
+    if (paramBundle != null) {
+      paramBundle.putBundle("_CB_USERDATA", apwh.a(this.a));
+    }
+    Iterator localIterator = apwh.a(this.a).iterator();
+    while (localIterator.hasNext())
+    {
+      apwk localapwk = (apwk)localIterator.next();
+      if (localapwk != null) {
+        localapwk.d(paramInt, paramBundle);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apwi
  * JD-Core Version:    0.7.0.1
  */

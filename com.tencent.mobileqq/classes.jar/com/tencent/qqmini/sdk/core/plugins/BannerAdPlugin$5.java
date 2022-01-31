@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdnw;
+import besl;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -21,12 +21,12 @@ class BannerAdPlugin$5
       localHttpURLConnection.setInstanceFollowRedirects(true);
       localHttpURLConnection.connect();
       int i = localHttpURLConnection.getResponseCode();
-      bdnw.b("BannerAdPlugin", "reportBannerAd rspCode" + i);
+      besl.b("BannerAdPlugin", "reportBannerAd rspCode" + i);
       return;
     }
     catch (Throwable localThrowable)
     {
-      bdnw.b("BannerAdPlugin", "reportBannerAd error, url = " + this.val$reportUrl, localThrowable);
+      besl.b("BannerAdPlugin", "reportBannerAd error, url = " + this.val$reportUrl, localThrowable);
     }
   }
 }

@@ -1,24 +1,16 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class apmj
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  apmj(apmf paramapmf) {}
+  apmj(apme paramapme, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
-    {
-      apld.a(apmf.a(this.a), false, "shareToQQ", apmf.a(this.a));
-      mpw.a(apmf.a(this.a), 0, "", "");
-      if (apmf.a(this.a) != null) {
-        apmf.a(this.a).b(1);
-      }
-      apmf.a(this.a).moveTaskToBack(true);
-    }
+    axqw.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
+    apvk.a(this.jdField_a_of_type_Apme.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Apme.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
 }
 

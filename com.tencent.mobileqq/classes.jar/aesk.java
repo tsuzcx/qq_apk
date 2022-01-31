@@ -1,23 +1,22 @@
-import android.widget.TextView;
-import com.tencent.widget.AbsListView;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import org.json.JSONObject;
 
 class aesk
-  implements begh
+  implements baho
 {
-  aesk(aesj paramaesj) {}
+  aesk(aerv paramaerv) {}
   
-  private boolean a(AbsListView paramAbsListView)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    return (paramAbsListView.getChildAt(paramAbsListView.getChildCount() - 1) == this.a.a) && (this.a.a.getBottom() == this.a.a.getBottom());
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) && (a(paramAbsListView))) {
-      this.a.d();
+    if (paramJSONObject == null) {}
+    while (paramJSONObject.optInt("retcode", -1) != 0) {
+      return;
     }
+    paramJSONObject = (baja)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132);
+    paramInt = paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0, paramInt & 0xF);
   }
 }
 

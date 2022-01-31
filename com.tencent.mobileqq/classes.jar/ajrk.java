@@ -1,464 +1,328 @@
-import android.os.Looper;
+import android.content.Context;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.commonsdk.cache.QQHashMap;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.view.ApolloLinearLayout;
+import com.tencent.mobileqq.apollo.view.ApolloSlaveViewBinder.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RoamSettingManager.1;
-import com.tencent.mobileqq.app.RoamSettingManager.2;
-import com.tencent.mobileqq.app.RoamSettingManager.3;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.RoamSetting;
+import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import mqq.manager.Manager;
 
 public class ajrk
-  implements Manager
+  extends ajrp
+  implements View.OnClickListener
 {
-  public atmp a;
-  public QQHashMap<String, RoamSetting> a;
-  RoamSetting a;
-  public Lock a;
-  public boolean a;
-  public QQHashMap<String, RoamSetting> b;
+  private static int g;
+  private static int h;
+  private static int i;
+  private static int j;
+  private int jdField_a_of_type_Int = 2;
+  Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private int b = 2;
   
-  public ajrk(QQAppInterface paramQQAppInterface)
+  public ajrk(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Atmp = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap = new QQHashMap(1003, 0, 60);
-    this.b = new QQHashMap(1004, 0, 60);
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
-    a();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.d = 4;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  private boolean a(String paramString)
+  private void b(View paramView, int paramInt)
   {
-    boolean bool = false;
-    try
-    {
-      int i = Integer.parseInt(paramString);
-      if ((i == -2) || (i == -1) || (i == 1) || (i == 2) || (i == 3) || (i == 4)) {
-        bool = true;
+    if (!(paramView instanceof ApolloLinearLayout)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloPanel", 2, "panel is not apolloLinearLayout");
       }
-      return bool;
     }
-    catch (NumberFormatException localNumberFormatException)
+    label525:
+    label1321:
+    for (;;)
     {
-      QLog.e("RoamSettingManager", 1, paramString + "");
+      return;
+      int i2 = this.jdField_a_of_type_Int;
+      int i3 = this.b;
+      int k = 0;
+      int m = 0;
+      for (;;)
+      {
+        if (m >= this.b) {
+          break label1321;
+        }
+        LinearLayout localLinearLayout = (LinearLayout)((ApolloLinearLayout)paramView).getChildAt(m);
+        int n = 0;
+        if (n < this.jdField_a_of_type_Int)
+        {
+          View localView = localLinearLayout.getChildAt(n);
+          ajqb localajqb = (ajqb)localView.getTag();
+          int i1 = i2 * i3 * paramInt + k;
+          if (this.jdField_a_of_type_JavaUtilList == null) {
+            break;
+          }
+          label311:
+          float f;
+          label362:
+          int i4;
+          Object localObject1;
+          if (i1 < this.jdField_a_of_type_JavaUtilList.size())
+          {
+            ApolloActionData localApolloActionData = ((ajpz)this.jdField_a_of_type_JavaUtilList.get(i1)).a;
+            localajqb.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838419);
+            localajqb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+            localajqb.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(((ajpz)this.jdField_a_of_type_JavaUtilList.get(i1)).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density));
+            localajqb.jdField_a_of_type_AndroidWidgetTextView.setText(localApolloActionData.actionName);
+            localajqb.jdField_a_of_type_Ajpz = ((ajpz)this.jdField_a_of_type_JavaUtilList.get(i1));
+            if (!TextUtils.isEmpty(localApolloActionData.iconUrl))
+            {
+              localajqb.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(ajhu.a(String.valueOf(localApolloActionData.iconUrl.hashCode()), null, localApolloActionData.iconUrl, true));
+              localajqb.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+            }
+            if (!TextUtils.isEmpty(localajqb.jdField_a_of_type_Ajpz.b)) {
+              if (XPanelContainer.d == 0)
+              {
+                i1 = 1;
+                localajqb.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+                localajqb.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+                localajqb.e.setVisibility(0);
+                localajqb.jdField_c_of_type_AndroidWidgetTextView.setText(localajqb.jdField_a_of_type_Ajpz.b);
+                if (i1 == 0) {
+                  break label1011;
+                }
+                f = 3.0F;
+                i4 = actn.a(f, this.jdField_a_of_type_AndroidContentContext.getResources());
+                localObject1 = (RelativeLayout.LayoutParams)localajqb.jdField_c_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+                ((RelativeLayout.LayoutParams)localObject1).topMargin = i4;
+                ((RelativeLayout.LayoutParams)localObject1).width = (ApolloLinearLayout.e - i4 * 2);
+                localajqb.jdField_c_of_type_AndroidWidgetTextView.setMaxHeight(ApolloLinearLayout.e - i4 * 3);
+                localObject1 = (RelativeLayout.LayoutParams)localajqb.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
+                if (i1 == 0) {
+                  break label1018;
+                }
+                f = 2.0F;
+                label444:
+                ((RelativeLayout.LayoutParams)localObject1).topMargin = actn.a(f, this.jdField_a_of_type_AndroidContentContext.getResources());
+                localajqb.e.setBackgroundResource(2130838255);
+                if (localajqb.jdField_a_of_type_Ajpz.d != 1) {
+                  break label1083;
+                }
+                if (i1 == 0) {
+                  break label1025;
+                }
+                localajqb.jdField_c_of_type_AndroidWidgetTextView.setTextSize(8.0F);
+                if (i == 0) {
+                  i = aiwc.a(localajqb.jdField_c_of_type_AndroidWidgetTextView.getPaint());
+                }
+                ((RelativeLayout.LayoutParams)localObject1).width = i;
+                localajqb.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-4473925);
+                localajqb.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(null);
+                localObject1 = localajqb.jdField_c_of_type_AndroidWidgetRelativeLayout;
+                if (i1 == 0) {
+                  break label1223;
+                }
+                f = 3.0F;
+                label559:
+                ((RelativeLayout)localObject1).setPadding(0, 0, 0, actn.a(f, this.jdField_a_of_type_AndroidContentContext.getResources()));
+                localajqb.jdField_c_of_type_AndroidWidgetTextView.setMaxLines(3);
+                label587:
+                ApolloLinearLayout.setApolloActionIcon(localajqb.jdField_a_of_type_Ajpz.g, localajqb.jdField_a_of_type_Ajpz.a, localajqb);
+                if ((localApolloActionData.personNum == 1) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000))) {
+                  localajqb.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+                }
+                i1 = this.b;
+                i4 = this.jdField_a_of_type_Int;
+                int i5 = this.jdField_a_of_type_Int;
+                localObject1 = (RelativeLayout)localView;
+                if ((this.f == -1) || (this.f != i1 * paramInt * i4 + i5 * m + n)) {
+                  break label1272;
+                }
+                if (QLog.isColorLevel()) {
+                  QLog.d("ApolloSlaveViewBinder", 2, new Object[] { "[updateBinderPanel] highlight item, start animation, mHighlightItemIndex=", Integer.valueOf(this.f), ", name=", localApolloActionData.actionName, ",id=", Integer.valueOf(localApolloActionData.actionId), ", pkgId=", Integer.valueOf(this.e) });
+                }
+                if (localajqb.jdField_a_of_type_AndroidViewView != null)
+                {
+                  ((RelativeLayout)localObject1).removeView(localajqb.jdField_a_of_type_AndroidViewView);
+                  localajqb.jdField_a_of_type_AndroidViewView = null;
+                }
+                Object localObject2 = new RelativeLayout.LayoutParams(-1, -1);
+                ((RelativeLayout.LayoutParams)localObject2).addRule(5, 2131362961);
+                ((RelativeLayout.LayoutParams)localObject2).addRule(7, 2131362961);
+                ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131362961);
+                ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131362961);
+                RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+                localRelativeLayout.setId(2131362589);
+                localRelativeLayout.setBackgroundDrawable(null);
+                ((RelativeLayout)localObject1).addView(localRelativeLayout, (ViewGroup.LayoutParams)localObject2);
+                localajqb.jdField_a_of_type_AndroidViewView = localRelativeLayout;
+                localObject2 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+                ((ImageView)localObject2).setImageResource(2130838416);
+                ((ImageView)localObject2).setVisibility(8);
+                localRelativeLayout.addView((View)localObject2, new RelativeLayout.LayoutParams(-1, -1));
+                ((ImageView)localObject2).postDelayed(new ApolloSlaveViewBinder.1(this, (ImageView)localObject2, localRelativeLayout, (RelativeLayout)localObject1, localajqb), 200L);
+                this.f = -1;
+                label980:
+                localView.setContentDescription(localApolloActionData.actionName);
+              }
+            }
+          }
+          for (;;)
+          {
+            k += 1;
+            n += 1;
+            break;
+            i1 = 0;
+            break label311;
+            label1011:
+            f = 5.0F;
+            break label362;
+            label1018:
+            f = 5.0F;
+            break label444;
+            localajqb.jdField_c_of_type_AndroidWidgetTextView.setMaxHeight(ApolloLinearLayout.e - i4 * 2);
+            localajqb.jdField_c_of_type_AndroidWidgetTextView.setTextSize(12.0F);
+            if (g == 0) {
+              g = aiwc.a(localajqb.jdField_c_of_type_AndroidWidgetTextView.getPaint());
+            }
+            ((RelativeLayout.LayoutParams)localObject1).width = g;
+            break label525;
+            label1083:
+            if (i1 != 0)
+            {
+              localajqb.jdField_c_of_type_AndroidWidgetTextView.setTextSize(7.0F);
+              if (j == 0) {
+                j = aiwc.a(localajqb.jdField_c_of_type_AndroidWidgetTextView.getPaint());
+              }
+              ((RelativeLayout.LayoutParams)localObject1).width = j;
+              label1127:
+              localObject1 = localajqb.jdField_c_of_type_AndroidWidgetTextView;
+              if (i1 == 0) {
+                break label1216;
+              }
+            }
+            label1216:
+            for (f = 7.0F;; f = 10.0F)
+            {
+              ((TextView)localObject1).setTextSize(f);
+              localajqb.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-8947849);
+              localajqb.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838256);
+              break;
+              localajqb.jdField_c_of_type_AndroidWidgetTextView.setTextSize(10.0F);
+              if (h == 0) {
+                h = aiwc.a(localajqb.jdField_c_of_type_AndroidWidgetTextView.getPaint());
+              }
+              ((RelativeLayout.LayoutParams)localObject1).width = h;
+              break label1127;
+            }
+            label1223:
+            f = 9.0F;
+            break label559;
+            localajqb.e.setBackgroundDrawable(null);
+            localajqb.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+            localajqb.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+            localajqb.e.setVisibility(8);
+            break label587;
+            label1272:
+            if (localajqb.jdField_a_of_type_AndroidViewView == null) {
+              break label980;
+            }
+            ((RelativeLayout)localObject1).removeView(localajqb.jdField_a_of_type_AndroidViewView);
+            localajqb.jdField_a_of_type_AndroidViewView = null;
+            break label980;
+            localView.setContentDescription(null);
+            localView.setOnClickListener(null);
+          }
+        }
+        m += 1;
+      }
     }
-    return false;
   }
   
   public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting == null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting = ((RoamSetting)this.jdField_a_of_type_Atmp.a(RoamSetting.class, "setting_revision"));
+    int n = this.jdField_a_of_type_Int * this.b;
+    int k;
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      k = 1;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting == null) {
-      return 0;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value == null)
+    int i1;
+    int m;
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting = null;
-      return 0;
-    }
-    try
-    {
-      i = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value);
-      return i;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RoamSetting", 2, "parse revision.value exception, revision.value=" + this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value);
-        }
-        int i = 0;
-      }
-    }
+      return k;
+      i1 = this.jdField_a_of_type_JavaUtilList.size();
+      m = 0 + i1 / n;
+      k = m;
+    } while (i1 % n == 0);
+    return m + 1;
   }
   
-  public int a(String paramString, int paramInt)
+  public int a(int paramInt)
   {
-    RoamSetting localRoamSetting2 = a(paramString);
-    RoamSetting localRoamSetting1 = localRoamSetting2;
-    if (localRoamSetting2 == null)
-    {
-      localRoamSetting1 = localRoamSetting2;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        localRoamSetting1 = new RoamSetting(paramString, Integer.toString(paramInt));
-        a(localRoamSetting1);
-      }
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+      return -1;
     }
-    return RoamSetting.getIntValue(localRoamSetting1, paramInt);
+    return paramInt / (this.b * this.jdField_a_of_type_Int);
   }
   
-  /* Error */
-  public RoamSetting a(String paramString)
+  public ajpz a(String paramString)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: ifnonnull +5 -> 6
-    //   4: aconst_null
-    //   5: areturn
-    //   6: aload_0
-    //   7: getfield 49	ajrk:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   10: invokeinterface 139 1 0
-    //   15: aload_1
-    //   16: invokestatic 143	bahr:a	(Ljava/lang/String;)I
-    //   19: istore_2
-    //   20: iload_2
-    //   21: iconst_1
-    //   22: if_icmpne +106 -> 128
-    //   25: aload_0
-    //   26: getfield 44	ajrk:b	Lcom/tencent/commonsdk/cache/QQHashMap;
-    //   29: aload_1
-    //   30: invokevirtual 147	com/tencent/commonsdk/cache/QQHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   33: checkcast 89	com/tencent/mobileqq/data/RoamSetting
-    //   36: astore_3
-    //   37: aload_3
-    //   38: astore 4
-    //   40: aload_3
-    //   41: ifnonnull +75 -> 116
-    //   44: aload_3
-    //   45: astore 4
-    //   47: aload_0
-    //   48: getfield 21	ajrk:jdField_a_of_type_Boolean	Z
-    //   51: ifne +65 -> 116
-    //   54: aload_0
-    //   55: getfield 35	ajrk:jdField_a_of_type_Atmp	Latmp;
-    //   58: ldc 89
-    //   60: aload_1
-    //   61: invokevirtual 96	atmp:a	(Ljava/lang/Class;Ljava/lang/String;)Latmo;
-    //   64: checkcast 89	com/tencent/mobileqq/data/RoamSetting
-    //   67: astore_1
-    //   68: aload_1
-    //   69: astore 4
-    //   71: aload_1
-    //   72: ifnull +44 -> 116
-    //   75: aload_1
-    //   76: astore 4
-    //   78: aload_1
-    //   79: getfield 150	com/tencent/mobileqq/data/RoamSetting:path	Ljava/lang/String;
-    //   82: ifnull +34 -> 116
-    //   85: aload_1
-    //   86: astore 4
-    //   88: aload_1
-    //   89: getfield 100	com/tencent/mobileqq/data/RoamSetting:value	Ljava/lang/String;
-    //   92: ifnull +24 -> 116
-    //   95: iload_2
-    //   96: iconst_1
-    //   97: if_icmpne +46 -> 143
-    //   100: aload_0
-    //   101: getfield 44	ajrk:b	Lcom/tencent/commonsdk/cache/QQHashMap;
-    //   104: aload_1
-    //   105: getfield 150	com/tencent/mobileqq/data/RoamSetting:path	Ljava/lang/String;
-    //   108: aload_1
-    //   109: invokevirtual 154	com/tencent/commonsdk/cache/QQHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   112: pop
-    //   113: aload_1
-    //   114: astore 4
-    //   116: aload_0
-    //   117: getfield 49	ajrk:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   120: invokeinterface 157 1 0
-    //   125: aload 4
-    //   127: areturn
-    //   128: aload_0
-    //   129: getfield 42	ajrk:jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap	Lcom/tencent/commonsdk/cache/QQHashMap;
-    //   132: aload_1
-    //   133: invokevirtual 147	com/tencent/commonsdk/cache/QQHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   136: checkcast 89	com/tencent/mobileqq/data/RoamSetting
-    //   139: astore_3
-    //   140: goto -103 -> 37
-    //   143: aload_0
-    //   144: getfield 42	ajrk:jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap	Lcom/tencent/commonsdk/cache/QQHashMap;
-    //   147: aload_1
-    //   148: getfield 150	com/tencent/mobileqq/data/RoamSetting:path	Ljava/lang/String;
-    //   151: aload_1
-    //   152: invokevirtual 154	com/tencent/commonsdk/cache/QQHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   155: pop
-    //   156: aload_1
-    //   157: astore 4
-    //   159: goto -43 -> 116
-    //   162: astore_1
-    //   163: aload_0
-    //   164: getfield 49	ajrk:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   167: invokeinterface 157 1 0
-    //   172: aload_1
-    //   173: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	174	0	this	ajrk
-    //   0	174	1	paramString	String
-    //   19	79	2	i	int
-    //   36	104	3	localRoamSetting	RoamSetting
-    //   38	120	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   15	20	162	finally
-    //   25	37	162	finally
-    //   47	68	162	finally
-    //   78	85	162	finally
-    //   88	95	162	finally
-    //   100	113	162	finally
-    //   128	140	162	finally
-    //   143	156	162	finally
+    return new ajqf(paramString);
   }
   
-  public RoamSetting a(String paramString1, String paramString2)
+  public View a()
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
+    return new ApolloLinearLayout(this.jdField_a_of_type_AndroidContentContext, null, this.d, this.jdField_a_of_type_Int, this.b);
+  }
+  
+  public ArrayList<ajpz> a(int paramInt)
+  {
+    if ((this.c != 9) || (this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {}
+    do
+    {
       return null;
-    }
-    RoamSetting localRoamSetting = a(paramString1);
-    if (localRoamSetting == null)
+      k = a();
+    } while ((paramInt < 0) || (paramInt >= k));
+    int k = this.jdField_a_of_type_Int;
+    int m = this.b * k;
+    k = paramInt * m;
+    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_Int * this.b);
+    paramInt = k;
+    while ((paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (paramInt <= m + k - 1))
     {
-      localRoamSetting = new RoamSetting(paramString1, paramString2);
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+      localArrayList.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
+      paramInt += 1;
     }
-    for (;;)
-    {
-      try
-      {
-        if (bahr.a(paramString1) == 1)
-        {
-          if (a(paramString2))
-          {
-            this.b.put(localRoamSetting.path, localRoamSetting);
-            return localRoamSetting;
-            if (paramString2.equals(localRoamSetting.value)) {
-              return null;
-            }
-            localRoamSetting.value = paramString2;
-            break;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e("RoamSettingManager", 2, "isTroopRoamSettingLegal false. path:" + paramString1 + ", value:" + paramString2);
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(localRoamSetting.path, localRoamSetting);
-      }
-      finally
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-      }
-    }
+    return localArrayList;
   }
   
   public void a()
   {
-    ThreadManager.post(new RoamSettingManager.1(this), 8, null, false);
+    this.jdField_a_of_type_JavaUtilList = null;
   }
   
-  public void a(int paramInt)
+  public void a(View paramView, int paramInt)
   {
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting != null)
-    {
-      localObject = Integer.toString(paramInt);
-      if (((String)localObject).equals(this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value)) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value = ((String)localObject);
-    }
-    for (;;)
-    {
-      a(this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting);
-      return;
-      localObject = new RoamSetting();
-      ((RoamSetting)localObject).path = "setting_revision";
-      ((RoamSetting)localObject).value = Integer.toString(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting = ((RoamSetting)localObject);
-    }
+    b(paramView, paramInt);
   }
   
-  public void a(RoamSetting paramRoamSetting)
-  {
-    if ((paramRoamSetting == null) || (paramRoamSetting.path == null) || (paramRoamSetting.value == null)) {
-      return;
-    }
-    int j = bahr.a(paramRoamSetting.path);
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    if (j == 1) {}
-    for (;;)
-    {
-      try
-      {
-        if (a(paramRoamSetting.value))
-        {
-          this.b.put(paramRoamSetting.path, paramRoamSetting);
-          i = 1;
-          this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-          if ((j == 1) && (i == 0)) {
-            break;
-          }
-          if (Looper.myLooper() == Looper.getMainLooper()) {
-            break label182;
-          }
-          a(paramRoamSetting);
-          return;
-        }
-        if (!QLog.isColorLevel()) {
-          break label199;
-        }
-        QLog.e("RoamSettingManager", 2, "isTroopRoamSettingLegal false. path:" + paramRoamSetting.path + ", value:" + paramRoamSetting.value);
-        i = 0;
-        continue;
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(paramRoamSetting.path, paramRoamSetting);
-        i = 1;
-        continue;
-        ThreadManagerV2.excute(new RoamSettingManager.2(this, paramRoamSetting), 32, null, false);
-      }
-      finally
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-      }
-      label182:
-      return;
-      label199:
-      int i = 0;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    RoamSetting localRoamSetting = a(paramString);
-    if ((localRoamSetting == null) || (localRoamSetting.path == null) || (localRoamSetting.value == null)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    try
-    {
-      if (bahr.a(paramString) == 1) {
-        this.b.remove(localRoamSetting.path);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-        if (Looper.getMainLooper().getThread() != Thread.currentThread()) {
-          break;
-        }
-        ThreadManager.post(new RoamSettingManager.3(this, localRoamSetting), 5, null, false);
-        return;
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.remove(localRoamSetting.path);
-      }
-      b(localRoamSetting);
-    }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
-  }
-  
-  public void a(List<RoamSetting> paramList)
-  {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    try
-    {
-      atmr localatmr = this.jdField_a_of_type_Atmp.a();
-      localObject1 = localatmr;
-      localObject2 = localatmr;
-      localatmr.a();
-      if (paramList != null)
-      {
-        int i = 0;
-        for (;;)
-        {
-          localObject1 = localatmr;
-          localObject2 = localatmr;
-          if (i >= paramList.size()) {
-            break;
-          }
-          localObject1 = localatmr;
-          localObject2 = localatmr;
-          a((atmo)paramList.get(i));
-          i += 1;
-        }
-      }
-      localObject1 = localatmr;
-      localObject2 = localatmr;
-      localatmr.c();
-      return;
-    }
-    catch (Exception paramList)
-    {
-      localObject2 = localObject1;
-      paramList.printStackTrace();
-      localObject2 = localObject1;
-      if (QLog.isColorLevel())
-      {
-        localObject2 = localObject1;
-        QLog.w("RoamSettingManager", 2, "insert write exception: " + paramList.getMessage());
-      }
-      return;
-    }
-    finally
-    {
-      if (localObject2 != null) {
-        localObject2.b();
-      }
-    }
-  }
-  
-  public boolean a(atmo paramatmo)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Atmp.a())
-    {
-      if (paramatmo.getStatus() != 1000) {
-        break label48;
-      }
-      this.jdField_a_of_type_Atmp.b(paramatmo);
-      bool1 = bool2;
-      if (paramatmo.getStatus() == 1001) {
-        bool1 = true;
-      }
-    }
-    label48:
-    do
-    {
-      return bool1;
-      if (paramatmo.getStatus() == 1001) {
-        break;
-      }
-      bool1 = bool2;
-    } while (paramatmo.getStatus() != 1002);
-    return this.jdField_a_of_type_Atmp.a(paramatmo);
-  }
-  
-  public boolean b(atmo paramatmo)
-  {
-    if (this.jdField_a_of_type_Atmp.a()) {
-      return this.jdField_a_of_type_Atmp.b(paramatmo);
-    }
-    return false;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.b != null) {
-      this.b.clear();
-    }
-    if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap != null) {
-      this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.clear();
-    }
-    if ((this.jdField_a_of_type_Atmp != null) && (this.jdField_a_of_type_Atmp.a())) {
-      this.jdField_a_of_type_Atmp.a();
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajrk
  * JD-Core Version:    0.7.0.1
  */

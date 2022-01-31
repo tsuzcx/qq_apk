@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import atmo;
+import aukm;
 
 public class StoryAlbumEntry
-  extends atmo
+  extends aukm
 {
   public String albumDesc;
   public long albumId;

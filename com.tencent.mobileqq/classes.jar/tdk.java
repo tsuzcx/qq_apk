@@ -1,128 +1,179 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.model.TroopNickNameManager.2;
+import com.tencent.biz.qqstory.model.TroopNickNameManager.3;
+import com.tencent.biz.qqstory.model.TroopNickNameManager.4;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class tdk
-  extends tel
+  implements tck
 {
   public static final String a;
-  public boolean a;
-  private final int[] a;
+  akhq jdField_a_of_type_Akhq;
+  akim jdField_a_of_type_Akim = new tdl(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public TroopManager a;
+  public Map<String, Long> a;
+  Map<String, Set<String>> b;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "http://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&ptype=%d&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + skt.a(2131633886);
+    jdField_a_of_type_JavaLangString = tsu.b;
   }
   
-  public tdk(StoryVideoItem paramStoryVideoItem, boolean paramBoolean, String paramString)
+  public static String a(String paramString1, String paramString2)
   {
-    QQAppInterface localQQAppInterface = tfy.a();
-    sqs localsqs = (sqs)sqg.a(2);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.c = localQQAppInterface.getCurrentNickname();
-    String str;
-    int i;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isPollVideo())
-    {
-      str = this.c + ajjy.a(2131641262);
-      this.jdField_d_of_type_JavaLangString = str;
-      this.f = paramStoryVideoItem.mOwnerUid;
-      this.e = localsqs.a(this.f, false);
-      this.g = paramStoryVideoItem.mDoodleText;
-      str = paramString;
-      if (paramString == null) {
-        str = "";
-      }
-      this.h = str;
-      if (!paramStoryVideoItem.isMine()) {
-        break label363;
-      }
-      i = 0;
-      label137:
-      this.b = i;
-      this.c = localQQAppInterface.getCurrentNickname();
-      paramStoryVideoItem = localsqs.b(this.f);
-      if ((paramStoryVideoItem != null) && (paramStoryVideoItem.isVip)) {
-        this.c = paramStoryVideoItem.nickName;
-      }
-      this.jdField_d_of_type_JavaLangString = a();
-      this.k = this.jdField_d_of_type_JavaLangString;
-      this.i = b();
-      this.j = ("#" + sfm.jdField_a_of_type_JavaLangString + "# " + a() + "（" + this.i + "）");
-      this.jdField_d_of_type_Int = 11;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label369;
-      }
-    }
-    label363:
-    label369:
-    for (this.jdField_d_of_type_Int = 4;; this.jdField_d_of_type_Int = 1)
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label377;
-      }
-      this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 38, 39, 40, 55, 45 };
-      return;
-      str = this.c + ajjy.a(2131641263) + sfm.jdField_a_of_type_JavaLangString;
-      break;
-      i = 1;
-      break label137;
-    }
-    label377:
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 32, 33, 34, 54, 45 };
+    return paramString1 + '_' + paramString2;
   }
   
-  protected String a(int paramInt)
+  public String a(QQUserUIItem paramQQUserUIItem, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = 3;
-    if (paramInt == 1)
+    if ((paramQQUserUIItem == null) || (!paramQQUserUIItem.isAvailable())) {
+      return jdField_a_of_type_JavaLangString;
+    }
+    if ((paramQQUserUIItem.isVip) && (!paramQQUserUIItem.isFriend())) {
+      return paramQQUserUIItem.nickName;
+    }
+    if ((!TextUtils.isEmpty(paramQQUserUIItem.qq)) && (!TextUtils.isEmpty(paramString)))
     {
-      str1 = this.e;
-      str2 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid;
-      str3 = this.f;
-      str4 = this.h;
-      paramInt = this.b;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (;;)
+      TroopMemberInfo localTroopMemberInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(paramString, paramQQUserUIItem.qq);
+      if (localTroopMemberInfo != null)
       {
-        return String.format("mqqapi://qstory/openVideo?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&ptype=%d", new Object[] { str1, str2, str3, str4, Integer.valueOf(paramInt), Integer.valueOf(i) });
-        i = 1;
+        if (!TextUtils.isEmpty(localTroopMemberInfo.troopnick)) {
+          return localTroopMemberInfo.troopnick;
+        }
+      }
+      else {
+        ThreadManager.post(new TroopNickNameManager.2(this, paramString, paramQQUserUIItem, paramBoolean1, paramBoolean2), 8, null, true);
       }
     }
-    String str1 = jdField_a_of_type_JavaLangString;
-    String str2 = this.e;
-    String str3 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid;
-    String str4 = this.f;
-    String str5 = this.h;
-    int j = this.b;
-    if (this.jdField_a_of_type_Boolean) {}
+    return paramQQUserUIItem.getDisplayName();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    this.b = new ConcurrentHashMap();
+    QQStoryContext.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = QQStoryContext.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52));
+    this.jdField_a_of_type_Akhq = ((akhq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akim);
+  }
+  
+  public void a(QQUserUIItem paramQQUserUIItem, String paramString, boolean paramBoolean)
+  {
+    String str = a(paramString, paramQQUserUIItem.qq);
+    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+      a(paramString, paramQQUserUIItem.qq);
+    }
+    if (paramBoolean) {
+      c();
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    Set localSet = (Set)this.b.get(paramString1);
+    Object localObject = localSet;
+    if (localSet == null)
+    {
+      localObject = new HashSet();
+      this.b.put(paramString1, localObject);
+    }
+    ((Set)localObject).add(paramString2);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akim);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  }
+  
+  public void c()
+  {
+    if (Looper.myLooper() != ThreadManager.getSubThreadLooper())
+    {
+      ThreadManager.executeOnSubThread(new TroopNickNameManager.3(this));
+      return;
+    }
+    long l = System.currentTimeMillis();
+    Iterator localIterator = this.b.entrySet().iterator();
+    int i = 0;
+    Object localObject1;
+    String str1;
+    TroopInfo localTroopInfo;
     for (;;)
     {
-      return String.format(str1, new Object[] { str2, str3, str4, str5, Integer.valueOf(j), Integer.valueOf(i), b(paramInt), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]) });
-      i = 1;
+      if (localIterator.hasNext())
+      {
+        localObject1 = (Map.Entry)localIterator.next();
+        str1 = (String)((Map.Entry)localObject1).getKey();
+        Object localObject2 = (Set)((Map.Entry)localObject1).getValue();
+        localIterator.remove();
+        localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(str1);
+        if (localTroopInfo == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopNickNameManager", 2, "troopInfo not found:" + str1);
+          }
+        }
+        else
+        {
+          localObject1 = new ArrayList(20);
+          localObject2 = ((Set)localObject2).iterator();
+          label167:
+          if (((Iterator)localObject2).hasNext())
+          {
+            String str2 = (String)((Iterator)localObject2).next();
+            this.jdField_a_of_type_JavaUtilMap.put(a(str1, str2), Long.valueOf(l));
+            ((ArrayList)localObject1).add(str2);
+            if (((ArrayList)localObject1).size() < 20) {
+              break label316;
+            }
+            this.jdField_a_of_type_Akhq.a(str1, localTroopInfo.troopcode, (ArrayList)localObject1);
+            localObject1 = new ArrayList(20);
+            i = 1;
+          }
+        }
+      }
     }
-  }
-  
-  protected void a(tet paramtet)
-  {
-    srt localsrt;
-    if ((paramtet instanceof teu))
+    label314:
+    label316:
+    for (;;)
     {
-      localsrt = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoGameInfo();
-      if (localsrt != null) {}
-    }
-    else
-    {
-      return;
-    }
-    paramtet = (teu)paramtet;
-    paramtet.o = localsrt.b;
-    if (localsrt.a == 2) {}
-    for (paramtet.p = ajjy.a(2131641264);; paramtet.p = (localsrt.c + ajjy.a(2131641265)))
-    {
-      paramtet.jdField_d_of_type_JavaLangString = a();
-      return;
+      break label167;
+      if (((ArrayList)localObject1).size() > 0)
+      {
+        this.jdField_a_of_type_Akhq.a(str1, localTroopInfo.troopcode, (ArrayList)localObject1);
+        i = 1;
+      }
+      for (;;)
+      {
+        break;
+        if (i == 0) {
+          break label314;
+        }
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopNickNameManager.4(this), 30000L);
+        return;
+      }
+      break;
     }
   }
 }

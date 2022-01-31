@@ -1,33 +1,15 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class vag
-  implements Animator.AnimatorListener
+class vag
+  implements DialogInterface.OnClickListener
 {
-  vag(vah paramvah, ValueAnimator paramValueAnimator) {}
+  vag(vaf paramvaf) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Vah != null) {
-      this.jdField_a_of_type_Vah.d(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Vah != null) {
-      this.jdField_a_of_type_Vah.c(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Vah != null) {
-      this.jdField_a_of_type_Vah.b(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
+    this.a.a.a(false, true, 12, null);
+    vel.a("home_page", "guide_open", 0, 0, new String[0]);
   }
 }
 

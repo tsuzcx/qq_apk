@@ -1,62 +1,41 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.emosm.Client;
+import com.tencent.qphone.base.util.QLog;
 
 public class anqk
-  extends anoj
+  extends Handler
 {
-  public anqk(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
-  
-  protected void a(boolean paramBoolean)
+  public anqk(Client paramClient, Looper paramLooper)
   {
-    super.a(paramBoolean);
-    if (paramBoolean)
-    {
-      ExtendFriendEditFragment.a(this.a).dismiss();
-      ExtendFriendEditFragment.a(this.a).setResult(8193);
-      if (ExtendFriendEditFragment.a(this.a) != null) {
-        ExtendFriendEditFragment.a(this.a).finish();
-      }
-      return;
-    }
-    ExtendFriendEditFragment.a(this.a).dismiss();
+    super(paramLooper);
   }
   
-  protected void a(boolean paramBoolean, anpv paramanpv, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramBoolean) && (paramanpv != null)) {
-      this.a.a.a(ExtendFriendEditFragment.a(this.a).app, paramanpv);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Card paramCard)
-  {
-    super.a(paramBoolean, paramCard);
-    if (paramBoolean)
+    switch (paramMessage.what)
     {
-      paramCard = new ExtendFriendProfileEditFragment.ExtendFriendInfo(paramCard);
-      if ((TextUtils.isEmpty(paramCard.a)) && (TextUtils.isEmpty(paramCard.b)))
+    default: 
+      super.handleMessage(paramMessage);
+    }
+    do
+    {
+      do
       {
-        ExtendFriendEditFragment.a(this.a, true);
-        this.a.a.a(paramCard);
-      }
-    }
-    for (;;)
-    {
-      ExtendFriendEditFragment.a(this.a).dismiss();
+        return;
+        this.a.onRespFromServer(paramMessage.getData());
+      } while (!QLog.isColorLevel());
+      QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_CLIENT_RESP");
       return;
-      ExtendFriendEditFragment.a(this.a, false);
-      break;
-      bbmy.a(ExtendFriendEditFragment.a(this.a), "获取QQ扩列信息失败", 0).a();
-    }
+      this.a.onPushMsgFromServer(paramMessage.getData());
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_SERVER_DOWNLOAD_STATE");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anqk
  * JD-Core Version:    0.7.0.1
  */

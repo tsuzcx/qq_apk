@@ -1,301 +1,205 @@
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_GetDiyText_Req;
+import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_GetDiyText_Rsp;
+import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_Req;
+import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_Req_Comm;
+import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_Rsp;
+import com.tencent.mobileqq.bubble.BubbleDiyComu.UserTextInfo;
+import com.tencent.mobileqq.bubble.BubbleDiyEntity;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
+import java.util.Iterator;
+import java.util.List;
 import org.json.JSONObject;
 
 public class ambg
-  implements alzn<String>
+  extends ajtd
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<ambn> a;
-  public int b;
-  public String b;
-  public ArrayList<String> b;
-  public int c;
-  public String c;
-  public ArrayList<ambk> c;
-  public int d;
-  public ArrayList<ambj> d;
-  public int e;
-  public ArrayList<String> e;
-  public int f;
-  public ArrayList<String> f;
-  public int g;
-  public ArrayList<ambi> g;
-  public int h;
-  public int i;
-  public int j;
-  
-  public ambg()
+  public ambg(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_d_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_g_of_type_JavaUtilArrayList = new ArrayList();
+    super(paramQQAppInterface);
   }
   
-  public void a(String paramString)
+  public void a(List<String> paramList, ajtg paramajtg)
   {
-    if (TextUtils.isEmpty(paramString))
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    BubbleDiyComu.Bubble_Req_Comm localBubble_Req_Comm;
+    BubbleDiyComu.Bubble_GetDiyText_Req localBubble_GetDiyText_Req;
+    ArrayList localArrayList;
+    label252:
+    do
     {
-      QLog.e("AiKeywordConfig", 1, "onParse,fileOrRes is null");
       return;
-    }
-    int k;
-    Object localObject2;
-    Object localObject3;
-    try
-    {
-      paramString = new JSONObject(paramString);
-      localObject1 = paramString.optJSONArray("ark_server_keyword_configs");
-      if (localObject1 != null)
-      {
-        k = 0;
-        if (k >= ((JSONArray)localObject1).length()) {
-          break label304;
-        }
-        localObject2 = ((JSONArray)localObject1).optJSONObject(k);
-        if (localObject2 == null) {
-          break label1802;
-        }
-        localObject3 = new ambn();
-        ((ambn)localObject3).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("context", "");
-        ((ambn)localObject3).jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).optString("type", "");
-        ((ambn)localObject3).jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(((JSONObject)localObject2).optBoolean("enable", false));
-        ((ambn)localObject3).jdField_c_of_type_JavaLangString = ((JSONObject)localObject2).optString("regex", "");
-        ((ambn)localObject3).d = ((JSONObject)localObject2).optString("tips", "");
-        ArkAppCenter.c("AiKeywordConfig", String.format("onParse, ark_server_keyword_configs, name=%s, type=%s, enable=%s, pattern=%s, tip=%s", new Object[] { ((ambn)localObject3).jdField_a_of_type_JavaLangString, ((ambn)localObject3).jdField_b_of_type_JavaLangString, Boolean.toString(((ambn)localObject3).jdField_a_of_type_JavaLangBoolean.booleanValue()), ((ambn)localObject3).jdField_c_of_type_JavaLangString, ((ambn)localObject3).d }));
-        if ((TextUtils.isEmpty(((ambn)localObject3).jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(((ambn)localObject3).jdField_b_of_type_JavaLangString)) || (!((ambn)localObject3).jdField_a_of_type_JavaLangBoolean.booleanValue()) || (TextUtils.isEmpty(((ambn)localObject3).jdField_c_of_type_JavaLangString)) || (TextUtils.isEmpty(((ambn)localObject3).d))) {
-          break label1802;
-        }
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject3);
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleDiyHandler", 2, "try fetchDiyTexts: " + TextUtils.join(",", paramList));
       }
-    }
-    catch (JSONException paramString)
-    {
-      ArkAppCenter.c("AiKeywordConfig", String.format("onParse AiKeywordConfig onParse, parse json failed, err=%s", new Object[] { paramString.getMessage() }));
-      return;
-    }
-    ArkAppCenter.c("AiKeywordConfig", "onParse, ark_server_keyword_configs is empty");
-    label304:
-    this.jdField_a_of_type_JavaLangString = paramString.optString("ark_ai_match_graytips_visibility");
-    Object localObject1 = paramString.optJSONArray("ark_navi_msg_appnames");
-    if (localObject1 != null)
-    {
-      k = 0;
-      label329:
-      if (k < ((JSONArray)localObject1).length())
-      {
-        localObject2 = ((JSONArray)localObject1).optString(k);
-        if ((TextUtils.isEmpty((CharSequence)localObject2)) || (this.jdField_b_of_type_JavaUtilArrayList.contains(localObject2))) {
-          break label1809;
-        }
-        QLog.d("AiKeywordConfig", 1, new Object[] { "onParse ark_navi_msg_appnames appName = ", localObject2 });
-        this.jdField_b_of_type_JavaUtilArrayList.add(localObject2);
-        break label1809;
-      }
-    }
-    localObject1 = paramString.optJSONArray("ark_module_api_frequency");
-    label414:
-    Object localObject4;
-    if (localObject1 != null)
-    {
-      k = 0;
-      if (k < ((JSONArray)localObject1).length())
-      {
-        localObject2 = ((JSONArray)localObject1).optJSONObject(k);
-        if (localObject2 == null) {
-          break label1816;
-        }
-        localObject3 = ((JSONObject)localObject2).optString("module");
-        localObject4 = ((JSONObject)localObject2).optString("api");
-        long l1 = ((JSONObject)localObject2).optLong("times", -1L);
-        long l2 = ((JSONObject)localObject2).optLong("period", -1L);
-        QLog.d("AiKeywordConfig", 1, new Object[] { "onParse ark_module_api_frequency module = ", localObject3, "api = ", localObject4, "times = ", Long.valueOf(l1), "period = ", Long.valueOf(l2) });
-        if ((TextUtils.isEmpty((CharSequence)localObject3)) || (TextUtils.isEmpty((CharSequence)localObject4)) || (l1 == -1L) || (l2 == -1L)) {
-          break label1816;
-        }
-        localObject2 = new ambk((String)localObject3, (String)localObject4, l1, l2);
-        this.jdField_c_of_type_JavaUtilArrayList.add(localObject2);
-        break label1816;
-      }
-    }
-    QLog.d("AiKeywordConfig", 1, new Object[] { "onParse,mArkModuleApiFrequencyList list size =", Integer.valueOf(this.jdField_c_of_type_JavaUtilArrayList.size()) });
-    localObject1 = paramString.optJSONArray("ark_jsdebugger_download");
-    int m;
-    if (localObject1 != null)
-    {
-      m = ((JSONArray)localObject1).length();
-      k = 0;
-      label650:
-      if (k < m)
-      {
-        localObject4 = ((JSONArray)localObject1).optJSONObject(k);
-        if (localObject4 == null) {
-          break label1823;
-        }
-        localObject2 = ((JSONObject)localObject4).optString("jscmd5");
-        localObject3 = ((JSONObject)localObject4).optString("url");
-        localObject4 = ((JSONObject)localObject4).optString("md5");
-        QLog.d("AiKeywordConfig", 1, new Object[] { "onParse jscomd5 = ", localObject2, "ur = ", localObject3, "md5 = ", localObject4 });
-        if ((localObject2 == null) || (TextUtils.isEmpty((CharSequence)localObject4)) || (TextUtils.isEmpty((CharSequence)localObject3))) {
-          break label1823;
-        }
-        this.jdField_d_of_type_JavaUtilArrayList.add(new ambj((String)localObject2, (String)localObject3, (String)localObject4));
-        break label1823;
-      }
-    }
-    QLog.e("AiKeywordConfig", 1, new Object[] { "mArkJsdebuggerDownloadList list size =", Integer.valueOf(this.jdField_d_of_type_JavaUtilArrayList.size()) });
-    this.jdField_a_of_type_Int = paramString.optInt("singlecontext_singleapp_card_limit", 5);
-    this.jdField_b_of_type_Int = paramString.optInt("ark_app_limit", 3);
-    this.jdField_c_of_type_Int = paramString.optInt("ark_each_app_card_limit", 1);
-    this.jdField_d_of_type_Int = paramString.optInt("ark_input_apps_limit", 3);
-    this.jdField_e_of_type_Int = paramString.optInt("ark_input_each_context_apps_limit", 3);
-    this.jdField_f_of_type_Int = paramString.optInt("ark_babyq_card_limit_total", 10);
-    this.jdField_g_of_type_Int = paramString.optInt("ark_babyq_card_limit_per_app", 1);
-    this.h = paramString.optInt("ark_babyq_guide_count_limit_per_day", 1);
-    this.i = paramString.optInt("ark_babyq_guide_day_limit_total", 3);
-    this.jdField_b_of_type_JavaLangString = paramString.optString("ark_babyq_guide_hint_text");
-    this.jdField_a_of_type_Long = paramString.optLong("ark_babyq_bubble_disappear_duration", 10000L);
-    localObject1 = paramString.optJSONArray("ark_babyq_input_hint_text_list");
-    if (localObject1 != null)
-    {
-      m = ((JSONArray)localObject1).length();
-      k = 0;
-      label964:
-      if (k < m)
-      {
-        localObject2 = ((JSONArray)localObject1).optString(k);
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label1830;
-        }
-        QLog.d("AiKeywordConfig", 1, new Object[] { "onParse ark_babyq_input_hint_text_list itemStr = ", localObject2 });
-        this.jdField_e_of_type_JavaUtilArrayList.add(localObject2);
-        break label1830;
-      }
-    }
-    QLog.d("AiKeywordConfig", 1, new Object[] { "onParse mArkBabyqInputHintTextList list size =", Integer.valueOf(this.jdField_e_of_type_JavaUtilArrayList.size()) });
-    this.jdField_c_of_type_JavaLangString = paramString.optString("ark_babyq_no_result_recommend_title");
-    localObject1 = paramString.optJSONArray("ark_babyq_no_result_recommend_items");
-    if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
-    {
-      k = 0;
-      label1083:
-      if (k < ((JSONArray)localObject1).length())
-      {
-        localObject2 = ((JSONArray)localObject1).optString(k);
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label1837;
-        }
-        QLog.d("AiKeywordConfig", 1, new Object[] { "onParse ark_babyq_no_result_recommend_items itemStr = ", localObject2 });
-        this.jdField_f_of_type_JavaUtilArrayList.add(localObject2);
-        break label1837;
-      }
-    }
-    QLog.d("AiKeywordConfig", 1, new Object[] { "onParse mArkBabyqNoResultRecommendItems list size =", Integer.valueOf(this.jdField_f_of_type_JavaUtilArrayList.size()) });
-    this.j = paramString.optInt("ark_babyq_gray_tip_total_limit", 1);
-    paramString = paramString.optJSONArray("ark_babyq_gray_tip_configs");
-    if ((paramString != null) && (paramString.length() > 0)) {
-      k = 0;
-    }
-    for (;;)
-    {
-      int n;
-      int i1;
-      if (k < paramString.length())
-      {
-        localObject1 = paramString.optJSONObject(k);
-        if (localObject1 == null) {
-          break label1851;
-        }
-        n = ((JSONObject)localObject1).optInt("type");
-        i1 = ((JSONObject)localObject1).optInt("limit");
-        QLog.d("AiKeywordConfig", 1, new Object[] { "onParse tipType =", Integer.valueOf(n), "itemLimit = ", Integer.valueOf(i1) });
-        if (n == 4)
-        {
-          localObject1 = ((JSONObject)localObject1).optJSONArray("tips_array");
-          if ((localObject1 == null) || (((JSONArray)localObject1).length() <= 0)) {
-            break label1851;
-          }
-          localObject2 = new ArrayList();
-          m = 0;
-        }
-      }
+      localBubble_Req_Comm = new BubbleDiyComu.Bubble_Req_Comm();
+      localBubble_Req_Comm.platform.set(109L);
+      localBubble_Req_Comm.osver.set(Build.VERSION.RELEASE);
+      localBubble_Req_Comm.mqqver.set("8.2.8");
+      localBubble_GetDiyText_Req = new BubbleDiyComu.Bubble_GetDiyText_Req();
+      localArrayList = new ArrayList();
+      Iterator localIterator = paramList.iterator();
       for (;;)
       {
-        if (m < ((JSONArray)localObject1).length())
+        if (!localIterator.hasNext()) {
+          break label252;
+        }
+        Object localObject = (String)localIterator.next();
+        BubbleDiyComu.UserTextInfo localUserTextInfo = new BubbleDiyComu.UserTextInfo();
+        localObject = ((String)localObject).split("_");
+        long l1 = 0L;
+        if (localObject.length == 2) {}
+        try
         {
-          Object localObject5 = ((JSONArray)localObject1).optJSONObject(m);
-          if (localObject5 != null)
+          long l2 = Long.parseLong(localObject[0]);
+          l1 = l2;
+          i = Integer.parseInt(localObject[1]);
+          l1 = l2;
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          for (;;)
           {
-            localObject3 = ((JSONObject)localObject5).optString("prefix");
-            localObject4 = ((JSONObject)localObject5).optString("keyword");
-            String str = ((JSONObject)localObject5).optString("postfix");
-            localObject5 = ((JSONObject)localObject5).optString("app");
-            if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty((CharSequence)localObject4)) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject5)))
+            QLog.e("BubbleDiyHandler", 1, "", localNumberFormatException);
+            int i = 0;
+          }
+        }
+        if ((l1 > 0L) && (i > 0))
+        {
+          localUserTextInfo.text_uin.set(l1);
+          localUserTextInfo.text_id.set(i);
+          localArrayList.add(localUserTextInfo);
+        }
+      }
+      if (!localArrayList.isEmpty()) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("BubbleDiyHandler", 2, "no diy id need request: " + TextUtils.join(",", paramList));
+    return;
+    localBubble_GetDiyText_Req.user_text_info.set(localArrayList);
+    paramList = new BubbleDiyComu.Bubble_Req();
+    paramList.cmd.set(1);
+    paramList.packet_seq.set(System.currentTimeMillis());
+    paramList.comm.set(localBubble_Req_Comm);
+    paramList.reqcmd_0x01.set(localBubble_GetDiyText_Req);
+    paramajtg = super.createToServiceMsg("bubble.1", paramajtg);
+    paramajtg.putWupBuffer(paramList.toByteArray());
+    super.sendPbReq(paramajtg);
+  }
+  
+  protected Class<? extends ajtg> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramFromServiceMsg.getServiceCmd().equals("bubble.1"))
+    {
+      bool = paramFromServiceMsg.isSuccess();
+      localObject = String.valueOf(paramToServiceMsg.getAttribute("_tag_LOGSTR"));
+      if (QLog.isColorLevel()) {
+        QLog.d("BubbleDiyHandler", 2, "key_seq=" + (String)localObject + " isSuccess=" + bool + " resultCode=" + paramFromServiceMsg.getResultCode());
+      }
+      if (bool) {
+        paramFromServiceMsg = new BubbleDiyComu.Bubble_Rsp();
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        try
+        {
+          boolean bool;
+          paramFromServiceMsg = (BubbleDiyComu.Bubble_Rsp)paramFromServiceMsg.mergeFrom((byte[])paramObject);
+          if (paramFromServiceMsg != null) {
+            if (paramFromServiceMsg.ret.get() != 0L)
             {
-              QLog.d("AiKeywordConfig", 1, new Object[] { "onParse prefix =", localObject3, "keyword = ", localObject4, "postfix = ", str, "appName = ", localObject5 });
-              ((ArrayList)localObject2).add(new ambs((String)localObject3, (String)localObject4, str, (String)localObject5));
+              if (QLog.isColorLevel()) {
+                QLog.d("BubbleDiyHandler", 2, "DiyText...fetch key 回包 sso 成功 ，server 失败，ret = " + paramFromServiceMsg.ret.get());
+              }
+              super.notifyUI(paramToServiceMsg, 1, false, null);
+              return;
             }
           }
         }
-        else
+        catch (Exception paramFromServiceMsg)
         {
-          this.jdField_g_of_type_JavaUtilArrayList.add(new ambi(n, i1, null, (ArrayList)localObject2));
-          break label1851;
-          if (n <= 0) {
-            break label1851;
+          Object localObject;
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("BubbleDiyHandler", 2, "DiyText bubble_Rsp is null 业务回包 异常");
+            }
+            paramFromServiceMsg = null;
           }
-          localObject1 = ((JSONObject)localObject1).optString("tip");
-          if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label1851;
+          if ((paramFromServiceMsg.rspcmd_0x01.has()) && (paramFromServiceMsg.rspcmd_0x01.user_text_info.has()))
+          {
+            paramObject = paramFromServiceMsg.rspcmd_0x01.user_text_info.get();
+            paramFromServiceMsg = new ArrayList();
+            if (paramObject != null)
+            {
+              paramObject = paramObject.iterator();
+              while (paramObject.hasNext())
+              {
+                localObject = (BubbleDiyComu.UserTextInfo)paramObject.next();
+                if ((((BubbleDiyComu.UserTextInfo)localObject).text.has()) && (((BubbleDiyComu.UserTextInfo)localObject).text_uin.has()) && (((BubbleDiyComu.UserTextInfo)localObject).text_id.has()))
+                {
+                  try
+                  {
+                    JSONObject localJSONObject = new JSONObject(((BubbleDiyComu.UserTextInfo)localObject).text.get());
+                    BubbleDiyEntity localBubbleDiyEntity = new BubbleDiyEntity();
+                    localBubbleDiyEntity.uinAndDiyId = (((BubbleDiyComu.UserTextInfo)localObject).text_uin.get() + "_" + ((BubbleDiyComu.UserTextInfo)localObject).text_id.get());
+                    localBubbleDiyEntity.diyText = localJSONObject.optString("diyText");
+                    localBubbleDiyEntity.bottomLeftId = localJSONObject.optString("bl");
+                    localBubbleDiyEntity.bottomRightId = localJSONObject.optString("br");
+                    localBubbleDiyEntity.topLeftId = localJSONObject.optString("tl");
+                    localBubbleDiyEntity.topRightId = localJSONObject.optString("tr");
+                    paramFromServiceMsg.add(localBubbleDiyEntity);
+                    if (!QLog.isColorLevel()) {
+                      continue;
+                    }
+                    QLog.i("BubbleDiyHandler", 2, "onReceive: uinAndDiyId: " + localBubbleDiyEntity.uinAndDiyId + ",config: " + ((BubbleDiyComu.UserTextInfo)localObject).text.get());
+                  }
+                  catch (Exception localException) {}
+                  if (QLog.isColorLevel()) {
+                    QLog.e("BubbleDiyHandler", 2, "", localException);
+                  }
+                }
+              }
+            }
+            ambf.a().a(this.app, true, paramFromServiceMsg);
+            super.notifyUI(paramToServiceMsg, 1, true, paramFromServiceMsg);
+            return;
           }
-          QLog.d("AiKeywordConfig", 1, new Object[] { "onParse tipText =", localObject1 });
-          this.jdField_g_of_type_JavaUtilArrayList.add(new ambi(n, i1, (String)localObject1, null));
-          break label1851;
-          QLog.d("AiKeywordConfig", 1, new Object[] { "onParse mArkBabyqGrayTipConfigs list size =", Integer.valueOf(this.jdField_g_of_type_JavaUtilArrayList.size()) });
-          QLog.i("AiKeywordConfig", 1, "onParse ark_ai_match_graytips_visibility=" + this.jdField_a_of_type_JavaLangString + ", singlecontext_singleapp_card_limit=" + this.jdField_a_of_type_Int + ", ark_app_limit=" + this.jdField_b_of_type_Int + ", ark_each_app_card_limit=" + this.jdField_c_of_type_Int + ", ark_input_apps_limit=" + this.jdField_d_of_type_Int + ", ark_input_each_context_apps_limit=" + this.jdField_e_of_type_Int + ", ark_babyq_card_limit_total=" + this.jdField_f_of_type_Int + ", ark_babyq_card_limit_total=" + this.jdField_g_of_type_Int + ", ark_babyq_guide_count_limit_per_day=" + this.h + ", ark_babyq_guide_hint_text=" + this.jdField_b_of_type_JavaLangString + ", ark_babyq_bubble_disappear_duration=" + this.jdField_a_of_type_Long + ", ark_babyq_no_result_recommend_title=" + this.jdField_c_of_type_JavaLangString + ", ark_babyq_gray_tip_total_limit=" + this.j);
+          super.notifyUI(paramToServiceMsg, 1, false, null);
           return;
-          label1802:
-          k += 1;
-          break;
-          label1809:
-          k += 1;
-          break label329;
-          label1816:
-          k += 1;
-          break label414;
-          label1823:
-          k += 1;
-          break label650;
-          label1830:
-          k += 1;
-          break label964;
-          label1837:
-          k += 1;
-          break label1083;
         }
-        m += 1;
-      }
-      label1851:
-      k += 1;
+        super.notifyUI(paramToServiceMsg, 1, false, null);
+        return;
+        super.notifyUI(paramToServiceMsg, 1, false, null);
+      } while (!QLog.isColorLevel());
+      QLog.d("BubbleDiyHandler", 2, "DiyText isSuccess is false sso通道  异常");
+      return;
     }
+    QLog.d("BubbleDiyHandler", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ambg
  * JD-Core Version:    0.7.0.1
  */

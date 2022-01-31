@@ -1,19 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.FirstPageInfo;
 
-class berb
-  implements View.OnClickListener
+public final class berb
+  implements Parcelable.Creator<FirstPageInfo>
 {
-  berb(bera parambera) {}
-  
-  public void onClick(View paramView)
+  public FirstPageInfo a(Parcel paramParcel)
   {
-    this.a.b(true);
+    FirstPageInfo localFirstPageInfo = new FirstPageInfo();
+    localFirstPageInfo.a = paramParcel.readString();
+    localFirstPageInfo.b = paramParcel.readString();
+    return localFirstPageInfo;
+  }
+  
+  public FirstPageInfo[] a(int paramInt)
+  {
+    return new FirstPageInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     berb
  * JD-Core Version:    0.7.0.1
  */

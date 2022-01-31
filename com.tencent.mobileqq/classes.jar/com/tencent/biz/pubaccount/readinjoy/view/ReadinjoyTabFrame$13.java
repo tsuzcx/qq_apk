@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import rcx;
+import rpl;
 
 class ReadinjoyTabFrame$13
   implements Runnable
 {
-  ReadinjoyTabFrame$13(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  ReadinjoyTabFrame$13(ReadinjoyTabFrame paramReadinjoyTabFrame, long paramLong, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    rcx.a().b(this.this$0.a);
+    rpl.a().b(this.this$0.a, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
   }
 }
 

@@ -31,11 +31,11 @@ public class QQAioBackgroundPlugin
     //   26: invokevirtual 34	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   29: pop
     //   30: aload_0
-    //   31: getfield 38	com/tencent/mobileqq/vaswebviewplugin/QQAioBackgroundPlugin:mRuntime	Lbbac;
-    //   34: invokevirtual 44	bbac:a	()Landroid/app/Activity;
+    //   31: getfield 38	com/tencent/mobileqq/vaswebviewplugin/QQAioBackgroundPlugin:mRuntime	Lbcdb;
+    //   34: invokevirtual 44	bcdb:a	()Landroid/app/Activity;
     //   37: aload_0
-    //   38: getfield 38	com/tencent/mobileqq/vaswebviewplugin/QQAioBackgroundPlugin:mRuntime	Lbbac;
-    //   41: invokevirtual 47	bbac:a	()Lcom/tencent/common/app/AppInterface;
+    //   38: getfield 38	com/tencent/mobileqq/vaswebviewplugin/QQAioBackgroundPlugin:mRuntime	Lbcdb;
+    //   41: invokevirtual 47	bcdb:a	()Lcom/tencent/common/app/AppInterface;
     //   44: invokevirtual 53	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   47: aload_2
     //   48: invokestatic 59	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
@@ -87,7 +87,7 @@ public class QQAioBackgroundPlugin
     //   139: invokespecial 100	android/graphics/BitmapFactory$Options:<init>	()V
     //   142: aload 7
     //   144: sipush 200
-    //   147: invokestatic 105	bacm:a	(Landroid/graphics/BitmapFactory$Options;Ljava/lang/String;I)Landroid/graphics/BitmapFactory$Options;
+    //   147: invokestatic 105	bbdr:a	(Landroid/graphics/BitmapFactory$Options;Ljava/lang/String;I)Landroid/graphics/BitmapFactory$Options;
     //   150: astore_2
     //   151: aload 7
     //   153: aload_2
@@ -121,7 +121,7 @@ public class QQAioBackgroundPlugin
     //   206: aload_3
     //   207: invokevirtual 137	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   210: iconst_2
-    //   211: invokestatic 143	baaw:encodeToString	([BI)Ljava/lang/String;
+    //   211: invokestatic 143	bbca:encodeToString	([BI)Ljava/lang/String;
     //   214: astore 7
     //   216: aload 4
     //   218: ldc 72

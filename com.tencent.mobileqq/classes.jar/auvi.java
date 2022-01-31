@@ -1,12 +1,12 @@
-import android.graphics.Bitmap;
-
-public abstract interface auvi
+public class auvi
 {
-  public abstract void a(Bitmap paramBitmap);
+  public long a;
+  public long b;
+  public long c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auvi
  * JD-Core Version:    0.7.0.1
  */

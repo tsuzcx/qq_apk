@@ -1,6 +1,7 @@
 package cooperation.qqreader;
 
 import android.content.Intent;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 
@@ -28,6 +29,9 @@ public class QRPluginProxyActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
+    if (Build.VERSION.SDK_INT < 26) {
+      setRequestedOrientation(1);
+    }
     paramBundle = getIntent();
     if (paramBundle != null) {
       paramBundle.putExtra("big_brother_source_key", "biz_src_jc_neirong");

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap;
 
-import awrn;
+import axrl;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 
@@ -30,7 +30,7 @@ public final class ArMapUtil$2
     {
       localHashMap.put("isFelxMapClick", str);
       localHashMap.put("operatorMapCount", String.valueOf(this.jdField_a_of_type_Int));
-      awrn.a(BaseApplicationImpl.getContext()).a("", "ARMAP_DETAIL_GRID_MAP", this.c, 0L, 0L, localHashMap, "", false);
+      axrl.a(BaseApplicationImpl.getContext()).a("", "ARMAP_DETAIL_GRID_MAP", this.c, 0L, 0L, localHashMap, "", false);
       return;
       str = "0";
       break;

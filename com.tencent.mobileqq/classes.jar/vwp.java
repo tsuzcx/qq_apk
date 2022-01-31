@@ -1,24 +1,60 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class vwp
-  implements vxl
+  extends myz
 {
-  public vwp(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
+  public boolean a;
   
-  public void a()
+  public vwp(Context paramContext, String paramString)
   {
-    if (RecommendBannerFeedItemView.a(this.a) == null) {
+    super(paramContext, paramString);
+  }
+  
+  public String a()
+  {
+    return "key_for_troop_dynamic";
+  }
+  
+  public void a(String paramString)
+  {
+    boolean bool = true;
+    this.a = true;
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    wye.a(RecommendBannerFeedItemView.a(this.a).poster.id.get(), "auth_page", "recom_follow_b", 0, 0, new String[] { "", RecommendBannerFeedItemView.a(this.a) + "", RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
+    for (;;)
+    {
+      try
+      {
+        if (new JSONObject(paramString).getInt("isShowTroopDynamic") != 1) {
+          break label56;
+        }
+        this.a = bool;
+        return;
+      }
+      catch (JSONException paramString) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("readQuickShotShareToStoryConfig", 2, paramString.getMessage());
+      return;
+      label56:
+      bool = false;
+    }
+  }
+  
+  public String b()
+  {
+    return "key_for_troop_dynamic_version";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vwp
  * JD-Core Version:    0.7.0.1
  */

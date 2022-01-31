@@ -1,56 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.search.activity.FunctionSearchActivity;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.qzonevip.gift.particle.ParticleExplodeView;
+import java.util.ArrayList;
 
 public class avnw
-  implements avom
+  extends AnimatorListenerAdapter
 {
-  private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  public final List<avon> a;
+  public avnw(ParticleExplodeView paramParticleExplodeView) {}
   
-  public avnw(List<avon> paramList, String paramString, int paramInt)
+  public void onAnimationEnd(Animator arg1)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return avis.a("fts_native_function_maxnum", 3);
-  }
-  
-  public String a()
-  {
-    return avis.a();
-  }
-  
-  public List<avon> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    FunctionSearchActivity.a((BaseActivity)paramView.getContext(), this.jdField_a_of_type_JavaLangString);
-    avsv.a(null, 0, this.jdField_a_of_type_Int, "0X8009D4B", 0, 0, null, null);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    {
+      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avnw
  * JD-Core Version:    0.7.0.1
  */

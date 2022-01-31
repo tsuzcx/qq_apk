@@ -1,26 +1,25 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController.10;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController.10.1.1;
-import com.tencent.biz.widgets.TabLayout;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import mqq.util.WeakReference;
 
 public class nic
-  implements Animator.AnimatorListener
+  extends ajxl
 {
-  public nic(ReadInJoyChannelViewPagerController.10 param10) {}
+  WeakReference<AccountDetailActivity> a;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public nic(AccountDetailActivity paramAccountDetailActivity)
   {
-    nia.b(this.a.this$0, false);
-    nia.a(this.a.this$0, nia.a, 0.0F, 0);
-    nia.a(this.a.this$0).postDelayed(new ReadInJoyChannelViewPagerController.10.1.1(this), 0L);
+    this.a = new WeakReference(paramAccountDetailActivity);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    AccountDetailActivity localAccountDetailActivity = (AccountDetailActivity)this.a.get();
+    if (localAccountDetailActivity == null) {}
+    while ((localAccountDetailActivity.h) || (!paramBoolean) || (!paramString.equals(localAccountDetailActivity.d))) {
+      return;
+    }
+    localAccountDetailActivity.P();
+  }
 }
 
 

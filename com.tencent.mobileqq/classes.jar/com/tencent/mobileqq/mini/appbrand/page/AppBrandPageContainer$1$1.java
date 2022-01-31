@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import ajjy;
+import ajyc;
 import android.text.TextUtils;
-import bbms;
-import bbmy;
+import bcpq;
+import bcpw;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.AppConfigInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -50,7 +50,7 @@ class AppBrandPageContainer$1$1
       {
         ((AppBrandPageContainer)localObject).launch(this.this$1.val$url, "reLaunch");
         continue;
-        bbmy.a(this.this$1.val$dialog.getContext(), ajjy.a(2131634805), 1).a();
+        bcpw.a(this.this$1.val$dialog.getContext(), ajyc.a(2131700589), 1).a();
         QLog.e("AppBrandPageContainer", 1, "Page not found." + this.this$1.val$url);
         if ((this.val$apkgInfo != null) && (this.val$apkgInfo.mAppConfigInfo != null) && (this.val$apkgInfo.appConfig != null) && (this.val$apkgInfo.appConfig.config != null))
         {

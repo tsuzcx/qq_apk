@@ -1,9 +1,13 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
-public abstract interface azgl
+public class azgl
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle);
+  public azgl(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

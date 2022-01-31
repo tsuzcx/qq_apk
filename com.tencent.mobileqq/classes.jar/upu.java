@@ -1,94 +1,37 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.RspStoryMessageList;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.StoryMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
-
-class upu
-  extends mml
+public class upu
 {
-  WeakReference<upt> b;
-  WeakReference<ImageView> c;
+  private int jdField_a_of_type_Int = -1;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
   
-  public upu(upt paramupt, ImageView paramImageView)
+  public upu(String paramString, boolean paramBoolean)
   {
-    this.b = new WeakReference(paramupt);
-    this.c = new WeakReference(paramImageView);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public upu(String paramString, boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch message list result, code=" + paramInt);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) && ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int != 0));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    upx localupx = new upx();
+    localupx.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localupx.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    if (this.jdField_a_of_type_Int != -1) {
+      localupx.c = this.jdField_a_of_type_Int;
     }
-    upt localupt = (upt)this.b.get();
-    paramBundle = (ImageView)this.c.get();
-    if ((localupt == null) || (paramBundle == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "weak reference null.");
-      }
-    }
-    do
-    {
-      for (;;)
-      {
-        return null;
-        if ((paramInt == 0) && (paramArrayOfByte != null)) {
-          try
-          {
-            Object localObject = new qqstory_710_message.RspStoryMessageList();
-            ((qqstory_710_message.RspStoryMessageList)localObject).mergeFrom(paramArrayOfByte);
-            if ((((qqstory_710_message.RspStoryMessageList)localObject).errinfo.error_code.has()) && (((qqstory_710_message.RspStoryMessageList)localObject).errinfo.error_code.get() == 0) && (((qqstory_710_message.RspStoryMessageList)localObject).message_num.get() > 0) && (!((qqstory_710_message.RspStoryMessageList)localObject).message_list.get().isEmpty()))
-            {
-              paramArrayOfByte = ((qqstory_710_message.RspStoryMessageList)localObject).message_list.get().iterator();
-              for (;;)
-              {
-                if (paramArrayOfByte.hasNext())
-                {
-                  localObject = new uhy((qqstory_710_message.StoryMessage)paramArrayOfByte.next());
-                  if (((uhy)localObject).d)
-                  {
-                    paramArrayOfByte = ((uhy)localObject).a;
-                    if (QLog.isColorLevel()) {
-                      QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "set bigV avatar from MessageData. unionId=" + paramArrayOfByte);
-                    }
-                    if (TextUtils.isEmpty(paramArrayOfByte)) {
-                      break;
-                    }
-                    tfy.a(paramBundle, tfy.b(paramArrayOfByte), true, (int)bacc.a(upt.b(localupt), 33.0F));
-                    return null;
-                  }
-                }
-              }
-            }
-          }
-          catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "parse RspStoryMessageList error", paramArrayOfByte);
-            }
-          }
-        }
-      }
-      paramArrayOfByte = bacm.b();
-      QQStoryContext.a();
-      paramArrayOfByte = azwp.a(QQStoryContext.a(), 1, Long.toString(upt.a(localupt)), 3, paramArrayOfByte, paramArrayOfByte);
-      if (paramArrayOfByte != null) {
-        paramBundle.setImageDrawable(paramArrayOfByte);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch message list failed");
-    return null;
+    syr.a().a(localupx, new upv(this, paramBoolean));
   }
 }
 

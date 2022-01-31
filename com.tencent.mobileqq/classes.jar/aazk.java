@@ -1,27 +1,17 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class aazk
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  public aazk(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
+  public aazk(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    paramEditable = paramEditable.toString();
-    if ((paramEditable != null) && (paramEditable.trim().length() > 0))
-    {
-      this.a.b.setEnabled(true);
-      return;
-    }
-    this.a.b.setEnabled(false);
+    this.jdField_a_of_type_AndroidAppDialog.cancel();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,22 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.nearby.now.view.widget.MetaballView;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import com.tencent.qphone.base.util.QLog;
 
 public class asqz
-  extends Animation
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private asqz(MetaballView paramMetaballView) {}
+  public asqz(TabPageIndicator paramTabPageIndicator) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    MetaballView.a(this.a, paramFloat);
-    this.a.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.d("TabPageIndicator", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
+    }
+    if (TabPageIndicator.a(this.a) != null) {
+      this.a.performClick();
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asqz
  * JD-Core Version:    0.7.0.1
  */

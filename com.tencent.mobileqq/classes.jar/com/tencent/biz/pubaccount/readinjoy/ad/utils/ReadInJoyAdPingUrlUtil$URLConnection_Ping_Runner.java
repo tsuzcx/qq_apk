@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.utils;
 
-import ajag;
+import ajoi;
 import android.text.TextUtils;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -14,9 +14,9 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
-import yoy;
-import yoz;
-import ypa;
+import yys;
+import yyt;
+import yyu;
 
 class ReadInJoyAdPingUrlUtil$URLConnection_Ping_Runner
   implements Runnable
@@ -50,7 +50,7 @@ class ReadInJoyAdPingUrlUtil$URLConnection_Ping_Runner
           break label207;
         }
         localObject1 = (HttpsURLConnection)((URL)localObject1).openConnection();
-        localObject2 = ajag.a();
+        localObject2 = ajoi.a();
         localObject3 = new StringBuilder().append(" URLConnection_Ping_Runner https sslContext is not null :");
         if (localObject2 != null) {
           break label202;
@@ -94,11 +94,11 @@ class ReadInJoyAdPingUrlUtil$URLConnection_Ping_Runner
       ((StringBuilder)localObject3).append("sp-cuin=");
       ((StringBuilder)localObject3).append(this.a.get("uin").toString());
     }
-    Object localObject2 = new yoz();
-    ((yoz)localObject2).a = "ce2d9f";
-    localObject2 = yoy.a(BaseApplication.getContext(), (yoz)localObject2);
+    Object localObject2 = new yyt();
+    ((yyt)localObject2).a = "ce2d9f";
+    localObject2 = yys.a(BaseApplication.getContext(), (yyt)localObject2);
     if (localObject2 != null) {}
-    for (localObject2 = ((ypa)localObject2).a;; localObject2 = null)
+    for (localObject2 = ((yyu)localObject2).a;; localObject2 = null)
     {
       if ((localObject2 != null) && (((qq_ad_get.QQAdGet.DeviceInfo)localObject2).client_ipv4.has()))
       {

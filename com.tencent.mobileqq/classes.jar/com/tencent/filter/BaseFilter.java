@@ -93,8 +93,17 @@ public class BaseFilter
   {
     if (paramBoolean) {}
     for (int i = 0;; i = 1) {
-      return nativeGetFilterShader(i, paramInt);
+      try
+      {
+        String str = nativeGetFilterShader(i, paramInt);
+        return str;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      {
+        LogUtils.e(TAG, localUnsatisfiedLinkError.toString());
+      }
     }
+    return "";
   }
   
   public static String getFragmentShader(int paramInt)

@@ -1,28 +1,44 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.app.Activity;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.hiboom.FontBubblePanelView;
-import com.tencent.mobileqq.widget.SquareImageView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqcv
-  extends RecyclerView.ViewHolder
+class aqcv
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public SquareImageView a;
+  aqcv(aqcu paramaqcu) {}
   
-  public aqcv(FontBubblePanelView paramFontBubblePanelView, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131300957));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131304981));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131312727));
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg != null) {
+      if (this.a.jdField_a_of_type_Bbgg != null) {}
+    }
+    while (!QLog.isColorLevel())
+    {
+      return;
+      this.a.jdField_a_of_type_Bbgg.hideSoftInputFromWindow();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.hasReplyText())
+      {
+        ((avqs)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(340)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
+        aqen.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
+      }
+      for (;;)
+      {
+        this.a.D();
+        return;
+        paramView = new aqdv(this.a.jdField_a_of_type_Bbgg, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        paramView.a(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131692760), this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
+        this.a.jdField_a_of_type_Bbgg.addPreviewView(paramView.b());
+      }
+    }
+    QLog.e("ForwardOption.ForwardMixedMsgOption", 2, "no msg not enter preview");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqcv
  * JD-Core Version:    0.7.0.1
  */

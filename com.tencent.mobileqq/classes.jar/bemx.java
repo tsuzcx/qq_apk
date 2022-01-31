@@ -1,51 +1,32 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Point;
-import com.tencent.widget.RangeButtonView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Toast;
 
-public class bemx
+class bemx
+  implements View.OnTouchListener
 {
-  public float a;
-  Point jdField_a_of_type_AndroidGraphicsPoint;
-  String jdField_a_of_type_JavaLangString;
+  bemx(bemw parambemw, Toast paramToast, View.OnTouchListener paramOnTouchListener) {}
   
-  public bemx(String paramString, float paramFloat)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this(paramString, paramFloat, null);
-  }
-  
-  public bemx(String paramString, float paramFloat, Point paramPoint)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return (int)RangeButtonView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Float);
-  }
-  
-  public void a(Canvas paramCanvas, Paint paramPaint, bemu parambemu)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsPoint == null) {
-      return;
+    boolean bool = true;
+    if (paramMotionEvent.getAction() == 0)
+    {
+      besl.a("QQToast", "start to cancel toast");
+      this.jdField_a_of_type_AndroidWidgetToast.cancel();
+      bemw.a(this.jdField_a_of_type_Bemw, true);
+      if (this.jdField_a_of_type_AndroidViewView$OnTouchListener != null) {
+        bool = this.jdField_a_of_type_AndroidViewView$OnTouchListener.onTouch(paramView, paramMotionEvent);
+      }
+      return bool;
     }
-    paramPaint.setTextSize(this.jdField_a_of_type_Float);
-    int i = paramPaint.getColor();
-    paramPaint.setColor(parambemu.a);
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, paramPaint);
-    paramPaint.setColor(i);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bemx
  * JD-Core Version:    0.7.0.1
  */

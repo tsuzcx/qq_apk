@@ -1,133 +1,242 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.util.Log;
+import com.tencent.TMG.channel.AVAppChannel;
+import com.tencent.TMG.channel.AVChannelManager;
+import com.tencent.TMG.logger.AVLoggerChooser;
+import com.tencent.TMG.sdk.AVAudioCtrl;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVContext.StartParam;
+import com.tencent.TMG.sdk.AVCustomSpearEngineCtrl;
+import com.tencent.TMG.sdk.AVRoomMulti.EnterParam;
+import com.tencent.TMG.sdk.AVRoomMulti.EnterParam.Builder;
+import com.tencent.TMG.sdk.AVRoomMulti.EventListener;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ajlc
-  implements Handler.Callback
 {
-  int jdField_a_of_type_Int = 0;
-  bank jdField_a_of_type_Bank;
-  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<ajkz> b;
+  private static ajlc jdField_a_of_type_Ajlc;
+  private static String b = "LimixiuAVManager";
+  ajle jdField_a_of_type_Ajle = null;
+  ajlf jdField_a_of_type_Ajlf = null;
+  ajlg jdField_a_of_type_Ajlg = null;
+  private Context jdField_a_of_type_AndroidContentContext;
+  AVContext jdField_a_of_type_ComTencentTMGSdkAVContext = null;
+  private AVRoomMulti.EventListener jdField_a_of_type_ComTencentTMGSdkAVRoomMulti$EventListener = new ajld(this);
+  String jdField_a_of_type_JavaLangString = null;
   
-  public ajlc(ajkz paramajkz, QQAppInterface paramQQAppInterface, bank parambank)
+  private ajlc(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramajkz);
-    this.jdField_a_of_type_Bank = parambank;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = "user";
+  }
+  
+  public static ajlc a(Context paramContext)
+  {
+    if (jdField_a_of_type_Ajlc == null) {}
+    try
+    {
+      if (jdField_a_of_type_Ajlc == null) {
+        jdField_a_of_type_Ajlc = new ajlc(paramContext);
+      }
+      return jdField_a_of_type_Ajlc;
+    }
+    finally {}
+  }
+  
+  private AVContext.StartParam a()
+  {
+    ajkt localajkt = new ajkt();
+    localajkt.sdkAppId = Integer.parseInt(this.jdField_a_of_type_Ajle.jdField_a_of_type_JavaLangString);
+    localajkt.accountType = this.jdField_a_of_type_Ajle.b;
+    localajkt.appIdAt3rd = this.jdField_a_of_type_Ajle.jdField_a_of_type_JavaLangString;
+    localajkt.identifier = this.jdField_a_of_type_Ajle.c;
+    localajkt.engineCtrlType = 2;
+    localajkt.jdField_a_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Ajle.f).intValue();
+    localajkt.jdField_a_of_type_Long = Long.valueOf(this.jdField_a_of_type_Ajle.g).longValue();
+    QLog.i("AVManager", 1, "getStartParams|param.sdkAppId=" + localajkt.sdkAppId + ", param.accountType=" + localajkt.accountType + ", param.appIdAt3rd=" + localajkt.appIdAt3rd + ", param.identifier=" + localajkt.identifier + ", param.engineCtrlType=" + localajkt.engineCtrlType + ", param.nGameID=" + localajkt.jdField_a_of_type_Int + ", param.lGameRoomID=" + localajkt.jdField_a_of_type_Long);
+    return localajkt;
+  }
+  
+  private AVRoomMulti.EnterParam a(String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    String str = this.jdField_a_of_type_JavaLangString;
+    QLog.e("AVManager", 1, "getEnterRoomParam roomID=" + paramString + ", roomRoleValue=" + str + ", videoRecvMode=" + paramInt + ", screenRecMode=" + 0 + ", mic=" + paramBoolean1 + ", speaker=" + paramBoolean2);
+    return new AVRoomMulti.EnterParam.Builder(Integer.parseInt(paramString)).avControlRole(str).autoCreateRoom(true).videoRecvMode(paramInt).screenRecvMode(0).isEnableMic(paramBoolean1).isEnableSpeaker(paramBoolean2).isEnableHwEnc(true).isEnableHwDec(true).build();
+  }
+  
+  public int a()
+  {
+    int i = 1003;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      i = this.jdField_a_of_type_ComTencentTMGSdkAVContext.stop();
+    }
+    QLog.i("AVManager", 1, "stopContext|ret=" + i);
+    return i;
+  }
+  
+  public AVContext a()
+  {
+    return this.jdField_a_of_type_ComTencentTMGSdkAVContext;
+  }
+  
+  public AVCustomSpearEngineCtrl a()
+  {
+    return a().getCustomSpearEngineCtrl();
   }
   
   public void a()
   {
-    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    ajkz localajkz = (ajkz)this.b.get();
-    if ((localObject == null) || (localajkz == null) || (localajkz.c.get())) {
-      QLog.d(ajkz.b(), 1, "preCreatePersonalFontImg return!");
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      this.jdField_a_of_type_ComTencentTMGSdkAVContext.destroy();
     }
-    while (localajkz.b().getBoolean("font_precreate_finish", false)) {
-      return;
-    }
-    QLog.d(ajkz.b(), 1, "preCreatePersonalFontImg start!");
-    int i = localajkz.b().getInt("font_precreate_index", 0);
-    localObject = localajkz.a.obtainMessage();
-    ((Message)localObject).what = i;
-    localajkz.a.sendMessage((Message)localObject);
+    this.jdField_a_of_type_ComTencentTMGSdkAVContext = null;
+    QLog.e("AVManager", 1, "destroyContext");
   }
   
-  void a(int paramInt)
+  public void a(long paramLong)
   {
-    Object localObject2 = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    ajkz localajkz = (ajkz)this.b.get();
-    if ((localObject2 == null) || (localajkz == null)) {}
-    Object localObject1;
-    do
-    {
-      return;
-      str = this.jdField_a_of_type_Bank.a();
-      if (paramInt >= str.length())
-      {
-        localObject1 = new File(ajkz.a(4)).listFiles();
-        localObject2 = localajkz.b().edit();
-        if ((localObject1 != null) && (localObject1.length >= str.length())) {
-          ((SharedPreferences.Editor)localObject2).putBoolean("font_precreate_finish", true);
-        }
-        for (;;)
-        {
-          paramInt = localajkz.b().getInt("font_precreate_count", 0);
-          ((SharedPreferences.Editor)localObject2).putInt("font_precreate_count", paramInt + 1);
-          ((SharedPreferences.Editor)localObject2).commit();
-          QLog.d(ajkz.b(), 1, "preCreatePersonalFontImg create count = " + paramInt);
-          return;
-          ((SharedPreferences.Editor)localObject2).putInt("font_precreate_index", 0);
-        }
-      }
-      localObject1 = "0";
-      if (localajkz.a()) {
-        localObject1 = "1";
-      }
-    } while ((localajkz.e.get()) || (Thread.currentThread().isInterrupted()));
-    String str = str.substring(paramInt, paramInt + 1);
-    if (new File(ajkz.a("", str, 4, 0, 0)).exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(ajkz.b(), 2, "preCreatePersonalFontImg exists : " + str + " address = " + ajkz.a("", str, 4, 0, 0));
-      }
-      localajkz.b().edit().putInt("font_precreate_index", paramInt + 1).commit();
-      localObject1 = localajkz.a.obtainMessage();
-      ((Message)localObject1).what = (paramInt + 1);
-      localajkz.a.sendMessageDelayed((Message)localObject1, 500L);
-      return;
-    }
-    long l1 = System.currentTimeMillis();
-    Bitmap localBitmap = localajkz.a(str, true);
-    long l2;
-    if (localBitmap != null)
-    {
-      this.jdField_a_of_type_Int = 0;
-      l2 = System.currentTimeMillis();
-      localajkz.b().edit().putInt("font_precreate_index", paramInt + 1).commit();
-      if (paramInt % 100 == 0) {
-        awqx.b((QQAppInterface)localObject2, "CliOper", "", "", "0X8006132", "0X8006132", 0, 0, (String)localObject1, "1", String.valueOf(l2 - l1), str);
-      }
-      if (!localBitmap.isRecycled()) {
-        localBitmap.recycle();
-      }
-    }
-    do
-    {
-      localObject1 = localajkz.a.obtainMessage();
-      ((Message)localObject1).what = (paramInt + 1);
-      localajkz.a.sendMessageDelayed((Message)localObject1, 5000L);
-      return;
-      l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d(ajkz.b(), 2, "preCreatePersonalFontImg " + str + "fail");
-      }
-      if (paramInt % 100 == 0) {
-        awqx.b((QQAppInterface)localObject2, "CliOper", "", "", "0X8006132", "0X8006132", 0, 0, (String)localObject1, "0", String.valueOf(l2 - l1), str);
-      }
-      this.jdField_a_of_type_Int += 1;
-    } while (this.jdField_a_of_type_Int < this.jdField_a_of_type_Bank.b);
-    QLog.e(ajkz.b(), 1, "preCreatePersonalFontImg fail count = " + this.jdField_a_of_type_Int + " max failcount = " + this.jdField_a_of_type_Bank.b);
+    QLog.i("AVManager", 1, "setGameRoomID|lGameRoomID=" + paramLong);
+    this.jdField_a_of_type_Ajle.g = String.valueOf(paramLong);
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(ajle paramajle)
   {
-    a(paramMessage.what);
-    return true;
+    this.jdField_a_of_type_Ajle = paramajle;
+  }
+  
+  public void a(ajlg paramajlg)
+  {
+    this.jdField_a_of_type_Ajlg = paramajlg;
+  }
+  
+  public void a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a(AVCallback paramAVCallback)
+  {
+    int i = 0;
+    AVChannelManager.setIMChannelType(2);
+    com.tencent.TMG.utils.SoUtil.customLibPath = ajll.a();
+    AVLoggerChooser.setUseImsdk(false);
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext == null) {
+      this.jdField_a_of_type_ComTencentTMGSdkAVContext = AVContext.createInstance(this.jdField_a_of_type_AndroidContentContext, false);
+    }
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext == null) {
+      if (AVContext.getSoExtractError() != 0) {
+        i = AVContext.getSoExtractError();
+      }
+    }
+    for (;;)
+    {
+      QLog.i("AVManager", 1, "startContext|ret=" + i);
+      if (i != 0) {
+        paramAVCallback.onComplete(i, "internal error.");
+      }
+      return;
+      i = 1101;
+      continue;
+      this.jdField_a_of_type_ComTencentTMGSdkAVContext.setAppVersion(this.jdField_a_of_type_Ajle.e);
+      AVChannelManager.setAppChannel(new ajlh());
+      AVChannelManager.getAppChannel().loginWithParam(a());
+      this.jdField_a_of_type_ComTencentTMGSdkAVContext.start(a(), null, paramAVCallback);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt, ajlf paramajlf)
+  {
+    QLog.i("AVManager", 1, "enterRoom.");
+    this.jdField_a_of_type_Ajlf = paramajlf;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext == null)
+    {
+      Log.e("AVManager", "enterRoom| enter room faild, because of context not started.");
+      if (this.jdField_a_of_type_Ajlf != null) {
+        this.jdField_a_of_type_Ajlf.a(1101, "context not started.");
+      }
+      return;
+    }
+    AVChannelManager.getAppChannel().loginWithParam(a());
+    this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().startTRAEService();
+    QLog.e("AVManager", 1, "enterRoom| try enter room implement!!!!!!!!!");
+    this.jdField_a_of_type_ComTencentTMGSdkAVContext.enterRoom(this.jdField_a_of_type_ComTencentTMGSdkAVRoomMulti$EventListener, a(paramString, paramBoolean1, paramBoolean2, paramInt));
+  }
+  
+  public void a(boolean paramBoolean, AVAudioCtrl.EnableMicCompleteCallback paramEnableMicCompleteCallback)
+  {
+    AVAudioCtrl localAVAudioCtrl = null;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    }
+    if (localAVAudioCtrl != null) {
+      localAVAudioCtrl.enableMic(paramBoolean, paramEnableMicCompleteCallback);
+    }
+  }
+  
+  public void a(boolean paramBoolean, AVAudioCtrl.EnableSpeakerCompleteCallback paramEnableSpeakerCompleteCallback)
+  {
+    AVAudioCtrl localAVAudioCtrl = null;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    }
+    if (localAVAudioCtrl != null) {
+      localAVAudioCtrl.enableSpeaker(paramBoolean, paramEnableSpeakerCompleteCallback);
+    }
+  }
+  
+  public int b()
+  {
+    int i = 1003;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      i = this.jdField_a_of_type_ComTencentTMGSdkAVContext.exitRoom();
+    }
+    QLog.i("AVManager", 1, "exitRoom|ret=" + i);
+    return i;
+  }
+  
+  public void b()
+  {
+    AVAudioCtrl localAVAudioCtrl = null;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    }
+    if (localAVAudioCtrl != null)
+    {
+      localAVAudioCtrl.PauseAudioByUser();
+      localAVAudioCtrl.stopTRAEService();
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    QLog.i("AVManager", 1, "setGameID|lGameID=" + paramLong);
+    this.jdField_a_of_type_Ajle.f = String.valueOf(paramLong);
+  }
+  
+  public void c()
+  {
+    AVAudioCtrl localAVAudioCtrl = null;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    }
+    if (localAVAudioCtrl != null)
+    {
+      localAVAudioCtrl.ResumeAudioByUser();
+      localAVAudioCtrl.startTRAEService();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajlc
  * JD-Core Version:    0.7.0.1
  */

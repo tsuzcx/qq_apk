@@ -1,16 +1,16 @@
 package com.tencent.biz.videostory.support;
 
-import wyf;
-import wyh;
+import xhf;
+import xhh;
 
 public class VideoStoryPicToVideo$1
   implements Runnable
 {
-  public VideoStoryPicToVideo$1(wyf paramwyf, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, wyh paramwyh) {}
+  public VideoStoryPicToVideo$1(xhf paramxhf, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, xhh paramxhh) {}
   
   public void run()
   {
-    wyf.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_c_of_type_Int, this.jdField_a_of_type_Wyh);
+    xhf.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_c_of_type_Int, this.jdField_a_of_type_Xhh);
   }
 }
 

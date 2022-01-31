@@ -14,7 +14,7 @@ class RewardedVideoAdPlugin$6
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("state", "load");
+      localJSONObject.put("state", "show");
       if (!TextUtils.isEmpty(this.val$compId)) {
         localJSONObject.put("compId", this.val$compId);
       }

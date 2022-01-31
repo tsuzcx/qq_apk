@@ -10,7 +10,7 @@ class ImageJsPlugin$2$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ImageJsPlugin.access$100(this.this$1.this$0, this.this$1.this$0.jsPluginEngine.getActivityContext(), this.this$1.val$count);
+    ImageJsPlugin.access$200(this.this$1.this$0, this.this$1.this$0.jsPluginEngine.getActivityContext(), this.this$1.val$count, ImageJsPlugin.access$100(this.this$1.this$0));
     if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
     }

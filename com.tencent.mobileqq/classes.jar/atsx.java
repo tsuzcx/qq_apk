@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.portal.PortalManager.ComboNumber;
-import java.util.Comparator;
-
-public class atsx
-  implements Comparator<PortalManager.ComboNumber>
+class atsx
+  implements bfos
 {
-  public int a(PortalManager.ComboNumber paramComboNumber1, PortalManager.ComboNumber paramComboNumber2)
+  atsx(atsa paramatsa) {}
+  
+  public void onDismiss()
   {
-    if (paramComboNumber1.number > paramComboNumber2.number) {
-      return 1;
-    }
-    if (paramComboNumber1.number < paramComboNumber2.number) {
-      return -1;
-    }
-    return 0;
+    atsa.a(this.a, this.a.h, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsx
  * JD-Core Version:    0.7.0.1
  */

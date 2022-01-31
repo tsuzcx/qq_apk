@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ahig;
-import ahkg;
+import ahux;
+import ahwy;
 import com.tencent.qphone.base.util.QLog;
 
 public class NewFlowCameraActivity$21
@@ -11,10 +11,10 @@ public class NewFlowCameraActivity$21
   
   public void run()
   {
-    if (ahkg.a(this.this$0.getApplicationContext()))
+    if (ahwy.a(this.this$0.getApplicationContext()))
     {
-      ahkg localahkg = ahkg.a();
-      localahkg.a(this.this$0.getApplicationContext(), new ahig(this, localahkg));
+      ahwy localahwy = ahwy.a();
+      localahwy.a(this.this$0.getApplicationContext(), new ahux(this, localahwy));
       return;
     }
     QLog.w("PTV.NewFlowCameraActivity", 2, "your device don't support video filter!");

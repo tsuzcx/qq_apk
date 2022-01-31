@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import bbmy;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class ARRecordUtils$2
@@ -12,10 +12,10 @@ public final class ARRecordUtils$2
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      bbmy.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, 0).a();
+      bcpw.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, 0).a();
       return;
     }
-    bbmy.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_JavaLangString, 0).a();
+    bcpw.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_JavaLangString, 0).a();
   }
 }
 

@@ -1,27 +1,25 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.IPSiteModel.Video;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.graphics.Canvas;
+import android.view.View.OnTouchListener;
 
-class anhb
-  implements View.OnClickListener
+public abstract interface anhb
 {
-  anhb(angw paramangw, IPSiteModel.Video paramVideo, String paramString1, String paramString2) {}
+  public abstract float a();
   
-  public void onClick(View paramView)
-  {
-    paramView = new Intent(this.jdField_a_of_type_Angw.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Angw.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Video.redirectUrl, -1L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Angw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_movieclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
-  }
+  public abstract Canvas a();
+  
+  public abstract void a();
+  
+  public abstract void a(Canvas paramCanvas);
+  
+  public abstract void a(View.OnTouchListener paramOnTouchListener);
+  
+  public abstract void a(anhc paramanhc);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anhb
  * JD-Core Version:    0.7.0.1
  */

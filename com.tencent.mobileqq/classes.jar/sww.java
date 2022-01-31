@@ -1,27 +1,38 @@
-public class sww
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_body.RichText;
+
+class sww
+  implements auoo
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  private String b;
+  sww(swv paramswv) {}
   
-  public sww(String paramString)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    this.b = paramString;
+    return null;
   }
   
-  public void a()
-  {
-    swx localswx = new swx(this, false);
-    swy localswy = new swy(this, false);
-    sof.a().a(localswx, localswy);
-  }
+  public void a(auop paramauop) {}
   
-  public void b()
+  public void b(auop paramauop)
   {
-    swx localswx = new swx(this, true);
-    swy localswy = new swy(this, true);
-    sof.a().a(localswx, localswy);
+    if (paramauop.jdField_b_of_type_Int == 0)
+    {
+      this.a.jdField_b_of_type_JavaLangString = paramauop.jdField_b_of_type_JavaLangString;
+      this.a.b();
+      swv.a(this.a, new ErrorMessage());
+      return;
+    }
+    if ((paramauop.jdField_b_of_type_Int == ayvn.a(940010)) && (this.a.a.getAndIncrement() < 2))
+    {
+      swv.a(this.a);
+      veg.d("Q.qqstory.publish.upload:ImageFileObject", "retry load file");
+      return;
+    }
+    paramauop = new ErrorMessage(paramauop.jdField_b_of_type_Int, paramauop.a);
+    paramauop.extraMsg = "upload";
+    swv.a(this.a, paramauop);
   }
 }
 

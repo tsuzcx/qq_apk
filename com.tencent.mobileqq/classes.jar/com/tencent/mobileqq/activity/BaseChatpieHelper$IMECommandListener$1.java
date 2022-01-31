@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import aaej;
+import aaob;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import axoy;
-import bace;
-import baws;
-import bawv;
-import bawx;
+import aypf;
+import bbdj;
+import bbzm;
+import bbzp;
+import bbzr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.utils.QQRecorder;
@@ -20,16 +20,16 @@ import java.io.File;
 public class BaseChatpieHelper$IMECommandListener$1
   implements Runnable
 {
-  public BaseChatpieHelper$IMECommandListener$1(aaej paramaaej, QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, Context paramContext, View paramView) {}
+  public BaseChatpieHelper$IMECommandListener$1(aaob paramaaob, QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, Context paramContext, View paramView) {}
   
   public void run()
   {
     long l = 0L;
     Object localObject1 = QQRecorder.a();
-    Object localObject2 = axoy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null, 2, null);
+    Object localObject2 = aypf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null, 2, null);
     localObject2 = MessageForPtt.getLocalFilePath(((QQRecorder.RecorderParam)localObject1).c, (String)localObject2);
     String str = ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf(".")).concat(".pcm");
-    if (!bace.d(this.jdField_a_of_type_JavaLangString, str)) {
+    if (!bbdj.d(this.jdField_a_of_type_JavaLangString, str)) {
       if (QLog.isColorLevel()) {
         QLog.d("sougouptt", 2, "copy failed, return");
       }
@@ -37,7 +37,7 @@ public class BaseChatpieHelper$IMECommandListener$1
     do
     {
       return;
-      aaej.a(this.this$0).b = 0L;
+      aaob.a(this.this$0).b = 0L;
       Object localObject3 = new File(str);
       if (((File)localObject3).exists()) {
         l = ((File)localObject3).length();
@@ -46,9 +46,9 @@ public class BaseChatpieHelper$IMECommandListener$1
       if (QLog.isColorLevel()) {
         QLog.d("sougouptt", 2, "file size = " + l + " timelength = " + d);
       }
-      localObject3 = new baws((String)localObject2, this.jdField_a_of_type_Int, ((QQRecorder.RecorderParam)localObject1).b, ((QQRecorder.RecorderParam)localObject1).c, 0);
-      bawv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), (baws)localObject3, null, null, bawx.a(str));
-      aaej.a(this.this$0).a((String)localObject2, (int)d, (QQRecorder.RecorderParam)localObject1, this.b);
+      localObject3 = new bbzm((String)localObject2, this.jdField_a_of_type_Int, ((QQRecorder.RecorderParam)localObject1).b, ((QQRecorder.RecorderParam)localObject1).c, 0);
+      bbzp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), (bbzm)localObject3, null, null, bbzr.a(str));
+      aaob.a(this.this$0).a((String)localObject2, (int)d, (QQRecorder.RecorderParam)localObject1, this.b);
       localObject1 = (InputMethodManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("input_method");
     } while (localObject1 == null);
     localObject2 = new Bundle();

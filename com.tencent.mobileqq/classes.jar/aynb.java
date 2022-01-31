@@ -1,23 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import java.util.ArrayList;
 
-public final class aynb
-  implements Parcelable.Creator<TroopBarPOI>
+class aynb
+  implements bhzu
 {
-  public TroopBarPOI a(Parcel paramParcel)
-  {
-    return new TroopBarPOI(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
-  }
+  aynb(ayna paramayna) {}
   
-  public TroopBarPOI[] a(int paramInt)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    return null;
+    QLog.d("TogetherControlManager", 2, new Object[] { "ongetAdvs result:", Boolean.valueOf(paramBoolean), " rsp:", paramGetAdsRsp.toString() });
+    if (paramBoolean)
+    {
+      paramGetAdsRsp = aynh.a(paramBoolean, paramGetAdsRsp);
+      if (paramGetAdsRsp != null)
+      {
+        this.a.a.add(paramGetAdsRsp);
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        URLDrawable.getDrawable(paramGetAdsRsp.c, localURLDrawableOptions).startDownload();
+      }
+    }
+    else
+    {
+      return;
+    }
+    QLog.d("TogetherControlManager", 2, "ongetAdvs banner is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aynb
  * JD-Core Version:    0.7.0.1
  */

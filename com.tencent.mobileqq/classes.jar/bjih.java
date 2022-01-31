@@ -1,47 +1,110 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.13;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
-import java.io.File;
-import java.io.IOException;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Paint.Align;
+import android.graphics.Paint.Style;
+import android.graphics.RectF;
+import android.graphics.Typeface;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import dov.com.qq.im.capture.text.DynamicTextItem;
+import java.util.List;
 
 public class bjih
-  implements axrt
+  extends DynamicTextItem
 {
-  public bjih(PtvTemplateManager.13 param13) {}
+  public static final int b;
+  public static final int c;
+  public static final int d;
+  private float jdField_a_of_type_Float;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+  bjii jdField_a_of_type_Bjii;
+  private boolean jdField_a_of_type_Boolean = true;
+  private float b;
+  private int e;
   
-  public void onResp(axsq paramaxsq)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DOV_Doodle_Strokes_PtvTemplateManager", 2, "onResp url: " + this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUrl + " resultcode: " + paramaxsq.c);
+    Resources localResources = BaseApplicationImpl.getContext().getResources();
+    jdField_b_of_type_Int = actn.a(36.0F, localResources);
+    d = actn.a(6.0F, localResources);
+    int i = bkht.a();
+    c = localResources.getDisplayMetrics().widthPixels - vld.a - i * 2;
+  }
+  
+  public bjih(int paramInt, List<String> paramList, Typeface paramTypeface)
+  {
+    super(paramInt, paramList);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
+    if (paramTypeface == null) {
+      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.defaultFromStyle(1));
     }
-    this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUsable = this.a.this$0.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo, false);
-    if (this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUsable) {}
-    try
+    for (;;)
     {
-      mpx.a(new File(PtvTemplateManager.b, this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleName), PtvTemplateManager.c);
-      if (paramaxsq.jdField_a_of_type_Int == 0)
-      {
-        axxj localaxxj = (axxj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193);
-        if (localaxxj.a()) {
-          localaxxj.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUrl, paramaxsq.jdField_a_of_type_Long);
-        }
+      this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
+      this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(jdField_b_of_type_Int);
+      this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
+      if (!paramList.isEmpty()) {
+        a(0, (String)paramList.get(0));
       }
       return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          localIOException.printStackTrace();
-        }
-      }
+      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
     }
   }
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    super.a(paramInt, paramString);
+    String str = super.b(paramInt);
+    paramString = str;
+    if (TextUtils.isEmpty(str)) {
+      paramString = "　　";
+    }
+    this.e = actn.a(18.0F, BaseApplicationImpl.getContext().getResources());
+    this.jdField_a_of_type_Bjii = new bjii(0);
+    this.jdField_a_of_type_Bjii.b(new bjhu(-65536, d));
+    this.jdField_a_of_type_Bjii.a(paramString, c, jdField_b_of_type_Int, this.jdField_a_of_type_AndroidTextTextPaint);
+    this.jdField_a_of_type_Bjii.a(new bjhq(this.e));
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_Bjii.a(1, this.jdField_a_of_type_Bjii.a()).width();
+    this.jdField_b_of_type_Float = this.jdField_a_of_type_Bjii.a(1, this.jdField_a_of_type_Bjii.a()).height();
+    this.jdField_a_of_type_Bjii.a(new bjgq(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float));
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    this.jdField_a_of_type_Bjii.a(paramCanvas, 0, 0);
+    if (super.b(0))
+    {
+      this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_Bjii.a(1, this.jdField_a_of_type_Bjii.a()));
+      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public float b()
+  {
+    return this.jdField_b_of_type_Float;
+  }
 }
 
 

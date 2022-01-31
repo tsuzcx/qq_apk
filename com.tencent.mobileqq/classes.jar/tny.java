@@ -1,34 +1,53 @@
 import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import java.util.LinkedList;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.VideoStoryId;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tribe.async.utils.AssertUtils;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class tny
 {
-  private final SparseArray<LinkedList<Object>> a = new SparseArray();
+  @NonNull
+  public final String a;
+  @NonNull
+  public final Map<String, String> a;
+  @NonNull
+  public String b;
   
-  public <CLASS> CLASS a(@NonNull Class<CLASS> paramClass)
+  public tny(@NonNull qqstory_group.GroupFeed paramGroupFeed)
   {
-    paramClass = (LinkedList)this.a.get(paramClass.hashCode());
-    if (paramClass != null)
+    this.jdField_a_of_type_JavaLangString = paramGroupFeed.union_id.get().toStringUtf8();
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = paramGroupFeed.story_id_list.get().iterator();
+    if (localIterator.hasNext())
     {
-      paramClass = paramClass.poll();
-      if (paramClass != null) {}
-      return paramClass;
+      qqstory_group.VideoStoryId localVideoStoryId = (qqstory_group.VideoStoryId)localIterator.next();
+      String str = localVideoStoryId.story_id.get().toStringUtf8();
+      if (!TextUtils.isEmpty(str)) {}
+      for (boolean bool = true;; bool = false)
+      {
+        AssertUtils.assertTrue(bool);
+        localHashMap.put(localVideoStoryId.vid.get().toStringUtf8(), str);
+        this.b = localVideoStoryId.feed_id.get().toStringUtf8();
+        break;
+      }
     }
-    return null;
+    if (TextUtils.isEmpty(this.b)) {
+      this.b = paramGroupFeed.feed_id.get().toStringUtf8();
+    }
+    this.jdField_a_of_type_JavaUtilMap = Collections.unmodifiableMap(localHashMap);
   }
   
-  public void a(@NonNull Object paramObject)
+  public String toString()
   {
-    int i = paramObject.getClass().hashCode();
-    LinkedList localLinkedList2 = (LinkedList)this.a.get(i);
-    LinkedList localLinkedList1 = localLinkedList2;
-    if (localLinkedList2 == null)
-    {
-      localLinkedList1 = new LinkedList();
-      this.a.put(i, localLinkedList1);
-    }
-    localLinkedList1.offer(paramObject);
+    return "AddGroupFeed[" + this.jdField_a_of_type_JavaLangString + "," + this.b + "," + this.jdField_a_of_type_JavaUtilMap + "]";
   }
 }
 

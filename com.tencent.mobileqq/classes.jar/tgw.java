@@ -1,13 +1,53 @@
-import android.support.v4.view.ViewPager;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 class tgw
-  implements bbom
+  extends sva
 {
-  tgw(tgv paramtgv) {}
+  private final Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public tgw(tgs paramtgs)
   {
-    this.a.a.setCurrentItem(paramInt2);
+    super("MsgTabStoryVideoPreloader");
+  }
+  
+  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, sul paramsul)
+  {
+    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramsul);
+    if (paramInt2 == 2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("MsgTabStoryVideoPreloader", 2, "download error: vid=" + paramString + " fileType=" + paramInt1, paramErrorMessage);
+      }
+      this.jdField_a_of_type_Tgs.a(paramsul.c, true);
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, File paramFile, int paramInt2, sul paramsul)
+  {
+    super.a(paramString, paramInt1, paramFile, paramInt2, paramsul);
+    if (paramInt2 == 2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MsgTabStoryVideoPreloader", 2, "download success before: vid=" + paramString + " fileType=" + paramInt1);
+      }
+      this.jdField_a_of_type_Tgs.a(paramsul.c, true);
+    }
+  }
+  
+  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, sul paramsul)
+  {
+    super.b(paramString, paramInt1, paramFile, paramInt2, paramsul);
+    if (paramInt2 == 2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MsgTabStoryVideoPreloader", 2, "download success: vid=" + paramString + " fileType=" + paramInt1);
+      }
+      this.jdField_a_of_type_Tgs.a(paramsul.c, this.jdField_a_of_type_JavaUtilSet.add(paramString));
+    }
   }
 }
 

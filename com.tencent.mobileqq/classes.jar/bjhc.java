@@ -1,15 +1,55 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import android.text.Spanned;
+import android.text.TextUtils;
 
-public class bjhc
-  extends bjha
+class bjhc
+  extends bkcj
 {
-  private static String a = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230752);
-  
-  public bjhc()
+  bjhc(bjha parambjha, int paramInt)
   {
-    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", a);
-    this.mFilterType = 7;
+    super(paramInt);
+  }
+  
+  public int a(CharSequence paramCharSequence)
+  {
+    return 0;
+  }
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  {
+    Object localObject = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
+    String str1 = bakj.b((String)localObject);
+    String str2 = this.jdField_a_of_type_Bjha.a(str1);
+    this.jdField_a_of_type_Int = (((String)localObject).length() - str1.length() + 20);
+    localObject = str2.split("\n");
+    int m = localObject.length;
+    int j = 0;
+    int i = 0;
+    if (j < m)
+    {
+      int k = localObject[j].length();
+      int n = k / 5;
+      if (k % 5 > 0) {}
+      for (k = 1;; k = 0)
+      {
+        i += k + n;
+        j += 1;
+        break;
+      }
+    }
+    if (TextUtils.equals(paramCharSequence, "\n")) {
+      i += 1;
+    }
+    for (;;)
+    {
+      if (i > bjha.a().length)
+      {
+        if (!TextUtils.equals("", paramCharSequence)) {
+          a();
+        }
+        return "";
+      }
+      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+    }
   }
 }
 

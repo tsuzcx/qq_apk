@@ -1,10 +1,32 @@
-import android.widget.TextView;
+import android.view.View;
+import com.dataline.activities.PrinterSubOptionActivity;
+import com.tencent.widget.XListView;
+import java.util.List;
 
 public class ek
+  implements ez
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public ek(PrinterSubOptionActivity paramPrinterSubOptionActivity) {}
   
-  public ek(ed paramed) {}
+  public void a(int paramInt)
+  {
+    if (this.a.jdField_a_of_type_Ajuo.a != null)
+    {
+      List localList = this.a.jdField_a_of_type_Ajuo.a.a();
+      if ((localList == null) || (localList.size() > 0)) {
+        break label79;
+      }
+      this.a.findViewById(2131365660).setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Ajuo.a.a();
+      return;
+      label79:
+      PrinterSubOptionActivity.a(this.a);
+    }
+  }
 }
 
 

@@ -1,22 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnHoverListener;
 
-final class arad
-  implements DialogInterface.OnClickListener
+class arad
+  implements View.OnHoverListener
 {
-  arad(BaseActivity paramBaseActivity) {}
+  arad(arac paramarac) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
   {
-    bbqn.c();
-    FloatingScreenPermission.requestPermission(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     arad
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import abai;
-import beez;
+import bfmt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 
-public class Leba$8
+class Leba$8
   implements Runnable
 {
-  public Leba$8(abai paramabai) {}
+  Leba$8(Leba paramLeba) {}
   
   public void run()
   {
@@ -20,7 +19,7 @@ public class Leba$8
         if (QLog.isColorLevel()) {
           QLog.d("Q.lebatab.leba", 2, "checkPreloadGameCenter");
         }
-        abai.b(this.this$0);
+        Leba.b(this.this$0);
         return;
       }
       if (QLog.isColorLevel()) {
@@ -29,10 +28,10 @@ public class Leba$8
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
       {
         WebProcessManager localWebProcessManager = (WebProcessManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13);
-        if ((localWebProcessManager != null) && (localWebProcessManager.d()) && (this.this$0.jdField_a_of_type_Beez != null))
+        if ((localWebProcessManager != null) && (localWebProcessManager.d()) && (this.this$0.jdField_a_of_type_Bfmt != null))
         {
-          this.this$0.jdField_a_of_type_Beez.removeMessages(1134010);
-          this.this$0.jdField_a_of_type_Beez.sendEmptyMessageDelayed(1134010, 100L);
+          this.this$0.jdField_a_of_type_Bfmt.removeMessages(1134010);
+          this.this$0.jdField_a_of_type_Bfmt.sendEmptyMessageDelayed(1134010, 100L);
           return;
         }
       }

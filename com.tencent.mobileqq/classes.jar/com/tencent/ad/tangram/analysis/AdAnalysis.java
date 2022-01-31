@@ -3,6 +3,7 @@ package com.tencent.ad.tangram.analysis;
 import android.content.Context;
 import android.support.annotation.Keep;
 import android.text.TextUtils;
+import com.tencent.ad.tangram.analysis.sqlite.b;
 import com.tencent.ad.tangram.analysis.sqlite.d;
 import com.tencent.ad.tangram.json.AdJSON;
 import com.tencent.ad.tangram.log.AdLog;
@@ -12,6 +13,7 @@ import com.tencent.ad.tangram.protocol.gdt_analysis_response;
 import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
 import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForAnalysis;
 import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForAnalysis.Batch;
+import com.tencent.ad.tangram.settings.AdSettingsUtil;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -80,7 +82,7 @@ public enum AdAnalysis
   
   private void reportInternal(WeakReference<Context> paramWeakReference)
   {
-    gdt_settings.Settings localSettings = com.tencent.ad.tangram.settings.a.INSTANCE.getSettingsCache((Context)paramWeakReference.get());
+    gdt_settings.Settings localSettings = AdSettingsUtil.INSTANCE.getSettingsCache((Context)paramWeakReference.get());
     if (localSettings == null) {}
     List localList;
     do
@@ -90,9 +92,9 @@ public enum AdAnalysis
         return;
       } while ((localSettings.settingsForAnalysis.mode != 1) || (!a.isABTestByUIN(getUIN(), localSettings.settingsForAnalysis.abTest)));
       localList = d.query((Context)paramWeakReference.get(), localSettings.settingsForAnalysis.batch.limit);
-    } while ((localList == null) || (localList.isEmpty()) || ((((com.tencent.ad.tangram.analysis.sqlite.b)localList.get(0)).strategy > 101) && (localList.size() < localSettings.settingsForAnalysis.batch.limit) && (System.currentTimeMillis() - ((com.tencent.ad.tangram.analysis.sqlite.b)localList.get(localList.size() - 1)).timeMillis < localSettings.settingsForAnalysis.batch.intervalMillisMax)));
+    } while ((localList == null) || (localList.isEmpty()) || ((((b)localList.get(0)).strategy > 101) && (localList.size() < localSettings.settingsForAnalysis.batch.limit) && (System.currentTimeMillis() - ((b)localList.get(localList.size() - 1)).timeMillis < localSettings.settingsForAnalysis.batch.intervalMillisMax)));
     int i = send(paramWeakReference, localSettings.settingsForAnalysis.urlForReport, localList);
-    com.tencent.ad.tangram.settings.a.INSTANCE.update((Context)paramWeakReference.get());
+    AdSettingsUtil.INSTANCE.update((Context)paramWeakReference.get());
     if ((i <= 100) && (d.delete((Context)paramWeakReference.get(), localList)))
     {
       reportInternal(paramWeakReference);
@@ -101,7 +103,7 @@ public enum AdAnalysis
     AdThreadManager.INSTANCE.postDelayed(new AdAnalysis.3(this, paramWeakReference), 4, localSettings.settingsForAnalysis.batch.intervalMillis);
   }
   
-  private int send(WeakReference<Context> paramWeakReference, String paramString, List<com.tencent.ad.tangram.analysis.sqlite.b> paramList)
+  private int send(WeakReference<Context> paramWeakReference, String paramString, List<b> paramList)
   {
     AdLog.i("AdAnalysis", String.format("send %s", new Object[] { paramString }));
     int j = 100;
@@ -115,9 +117,9 @@ public enum AdAnalysis
         return 100;
       }
       i = j;
-      paramList = b.createBody(paramList);
+      paramList = AdAnalysisUtil.createBody(paramList);
       i = j;
-      paramWeakReference = b.createRequest((Context)paramWeakReference.get(), paramList, getAppVersion());
+      paramWeakReference = AdAnalysisUtil.createRequest((Context)paramWeakReference.get(), paramList, getAppVersion());
       if (paramWeakReference == null) {
         return 100;
       }
@@ -230,7 +232,7 @@ public enum AdAnalysis
       break;
     }
     label144:
-    if (com.tencent.ad.tangram.settings.a.INSTANCE.getSettingsCache((Context)paramWeakReference.get()) == null) {}
+    if (AdSettingsUtil.INSTANCE.getSettingsCache((Context)paramWeakReference.get()) == null) {}
     for (long l = 3000L;; l = 0L)
     {
       AdThreadManager.INSTANCE.postDelayed(new AdAnalysis.2(this, paramWeakReference, paramList), 4, l);

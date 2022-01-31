@@ -1,28 +1,45 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
 import com.tencent.qphone.base.util.QLog;
 
-class ahtu
-  implements sjq
+public class ahtu
+  extends BroadcastReceiver
 {
-  ahtu(ahtt paramahtt, PublishVideoEntry paramPublishVideoEntry, String paramString, long paramLong) {}
+  public ahtu(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (ahtt.a(this.jdField_a_of_type_Ahtt)) {}
-    for (int i = -24;; i = paramInt)
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
     {
       if (QLog.isColorLevel()) {
-        QLog.i("EncodeVideoTask", 2, "onVideoCompositeFinish isCancel:" + ahtt.a(this.jdField_a_of_type_Ahtt) + ", errCode:" + paramInt);
+        QLog.d("FlowCameraActivity", 2, "receive ACTION_START_VIDEO_CHAT.");
       }
-      this.jdField_a_of_type_Ahtt.a = true;
-      ahtt.a(this.jdField_a_of_type_Ahtt).a(i, paramString1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
-      return;
+      paramContext = BaseActivity2.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366389);
+      if (paramContext != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(paramContext);
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.e();
+      }
+      if (this.a.f) {
+        this.a.m();
+      }
+      if ((this.a.g) && (this.a.c)) {
+        this.a.c(false);
+      }
+      this.a.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahtu
  * JD-Core Version:    0.7.0.1
  */

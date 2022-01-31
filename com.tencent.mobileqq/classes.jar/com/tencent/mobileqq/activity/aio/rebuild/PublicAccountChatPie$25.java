@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aegy;
+import aerv;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -8,13 +8,13 @@ import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import ncw;
-import rtr;
+import nnx;
+import sgj;
 
 public class PublicAccountChatPie$25
   implements Runnable
 {
-  public PublicAccountChatPie$25(aegy paramaegy, AccountDetail paramAccountDetail) {}
+  public PublicAccountChatPie$25(aerv paramaerv, AccountDetail paramAccountDetail) {}
   
   public void run()
   {
@@ -23,16 +23,16 @@ public class PublicAccountChatPie$25
     }
     if (this.this$0.aa)
     {
-      int i = rtr.a(this.a.accountFlag);
+      int i = sgj.a(this.a.accountFlag);
       if ((i == -3) || (i == -4)) {
-        ncw.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.uin);
+        nnx.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.uin);
       }
     }
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler != null) {
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.b(this.a);
     }
-    aegy.b(this.this$0, this.a);
-    aegy.a(this.this$0).post(new PublicAccountChatPie.25.1(this));
+    aerv.b(this.this$0, this.a);
+    aerv.a(this.this$0).post(new PublicAccountChatPie.25.1(this));
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 1008);
   }
 }

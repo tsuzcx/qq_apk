@@ -1,24 +1,28 @@
-import com.tencent.mobileqq.data.ContactBinded;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.TextView;
 
-public class atcn
-  extends atcu
+class atcn
+  extends BroadcastReceiver
 {
-  public ContactBinded a;
+  atcn(atci paramatci) {}
   
-  public atcn(ContactBinded paramContactBinded)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataContactBinded = paramContactBinded;
-    this.jdField_a_of_type_Long = paramContactBinded.timestamp;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataContactBinded.isReaded;
+    int i = paramIntent.getIntExtra("SmallScreenState", 0);
+    if (i == 3) {
+      this.a.a.setVisibility(4);
+    }
+    while ((i != 2) && (i != 0)) {
+      return;
+    }
+    this.a.a.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atcn
  * JD-Core Version:    0.7.0.1
  */

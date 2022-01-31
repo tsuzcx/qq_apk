@@ -1,4 +1,10 @@
-public class bjbx {}
+import dov.com.qq.im.capture.data.ComboLockManager;
+
+public class bjbx
+  extends ajtq
+{
+  public bjbx(ComboLockManager paramComboLockManager) {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

@@ -1,202 +1,56 @@
-import android.content.Context;
-import android.net.Uri;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.text.TextUtils;
-import android.util.Pair;
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.ThreadManager;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class vuy
-  implements Handler.Callback
+class vuy
+  implements avzk
 {
-  private akux jdField_a_of_type_Akux;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private String jdField_a_of_type_JavaLangString = "QR_CODE";
-  private xev jdField_a_of_type_Xev;
-  private Handler b;
+  vuy(vux paramvux, vuq paramvuq) {}
   
-  public vuy(Context paramContext, xev paramxev)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Xev = paramxev;
-    this.jdField_a_of_type_Akux = akux.a();
-    this.jdField_a_of_type_Akux.a(paramContext, hashCode(), "QrImageScan");
-  }
+  public void a() {}
   
-  public String a()
+  public void a(String paramString)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    try
+    synchronized (vux.a(this.jdField_a_of_type_Vux))
     {
-      if (this.jdField_a_of_type_AndroidOsHandler != null)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        this.jdField_a_of_type_AndroidOsHandler = null;
+      this.jdField_a_of_type_Vuq.c = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoToVideo", 2, "onEncodeFinish, filePath= " + paramString);
       }
-      if (this.b != null)
-      {
-        this.b.removeCallbacksAndMessages(null);
-        this.b = null;
-      }
-      if (this.jdField_a_of_type_Akux != null) {
-        this.jdField_a_of_type_Akux.a(hashCode(), "QrImageScan");
-      }
-      this.jdField_a_of_type_Xev = null;
-      this.jdField_a_of_type_AndroidContentContext = null;
+      vux.a(this.jdField_a_of_type_Vux).notifyAll();
       return;
     }
-    finally {}
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void a_(int paramInt, Throwable arg2)
   {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
+    synchronized (vux.a(this.jdField_a_of_type_Vux))
+    {
+      this.jdField_a_of_type_Vuq.jdField_a_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoToVideo", 2, "onEncodeError, errorCode= " + paramInt);
+      }
+      vux.a(this.jdField_a_of_type_Vux).notifyAll();
       return;
     }
-    paramString1 = Uri.parse("file://" + paramString1);
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-      this.b = new Handler(this.jdField_a_of_type_AndroidContentContext.getMainLooper(), this);
-      if (TextUtils.isEmpty(paramString2))
-      {
-        this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramInt, 0, paramString1).sendToTarget();
-        return;
-      }
-    }
-    finally {}
-    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, paramInt, 0, paramString2).sendToTarget();
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void b()
   {
-    int j;
-    Object localObject;
-    switch (paramMessage.what)
+    if ((this.jdField_a_of_type_Vuq != null) && (!this.jdField_a_of_type_Vuq.d) && (!this.jdField_a_of_type_Vuq.b))
     {
-    default: 
-      return true;
-    case 1: 
-      j = paramMessage.arg1;
-      localObject = new SparseArray(2);
-      if (!(paramMessage.obj instanceof Uri)) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoToVideo", 2, "cancel mergeVideoTask path : " + this.jdField_a_of_type_Vuq.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.b + " currContext id : " + this.jdField_a_of_type_Vuq + "  mCanceled : " + this.jdField_a_of_type_Vuq.b);
       }
-    }
-    for (int i = vup.a((Uri)paramMessage.obj, this.jdField_a_of_type_AndroidContentContext, j, (SparseArray)localObject);; i = 0)
-    {
-      boolean bool1 = vup.a(i);
-      boolean bool2 = vup.b(i);
-      if ((bool1) || (bool2))
-      {
-        if (bool1)
-        {
-          paramMessage = (Pair)((SparseArray)localObject).get(1);
-          this.jdField_a_of_type_JavaLangString = String.valueOf(paramMessage.second).trim();
-          if (this.b == null) {
-            break;
-          }
-          this.b.obtainMessage(3, 1, j, paramMessage.first).sendToTarget();
-          return true;
-        }
-        paramMessage = (String)((SparseArray)localObject).get(2);
-        if (this.b == null) {
-          break;
-        }
-        this.b.obtainMessage(3, 2, j, paramMessage).sendToTarget();
-        return true;
+      this.jdField_a_of_type_Vux.b(this.jdField_a_of_type_Vuq);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoToVideo", 2, "after cancel : " + this.jdField_a_of_type_Vuq.b);
       }
-      if (this.b == null) {
-        break;
-      }
-      this.b.obtainMessage(4, j, 0).sendToTarget();
-      return true;
-      int k = paramMessage.arg1;
-      localObject = null;
-      if ((paramMessage.obj instanceof String)) {
-        localObject = (String)paramMessage.obj;
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-      for (;;)
-      {
-        try
-        {
-          paramMessage = new JSONObject((String)localObject);
-          if ((!vup.a(k)) || (paramMessage == null)) {
-            break label350;
-          }
-          i = 1;
-          if ((!vup.b(k)) || (paramMessage == null)) {
-            break label355;
-          }
-          j = 1;
-          if ((i == 0) && (j == 0)) {
-            break label391;
-          }
-          if (i == 0) {
-            break label360;
-          }
-          this.jdField_a_of_type_JavaLangString = paramMessage.optString("scannerType");
-          paramMessage = paramMessage.optString("scannerResult");
-          if (this.b == null) {
-            break;
-          }
-          this.b.obtainMessage(3, 1, k, paramMessage).sendToTarget();
-          return true;
-        }
-        catch (Throwable paramMessage)
-        {
-          paramMessage.printStackTrace();
-        }
-        paramMessage = null;
-        continue;
-        label350:
-        i = 0;
-        continue;
-        label355:
-        j = 0;
-      }
-      label360:
-      paramMessage = paramMessage.optString("strMini");
-      if (this.b == null) {
-        break;
-      }
-      this.b.obtainMessage(3, 2, k, paramMessage).sendToTarget();
-      return true;
-      label391:
-      if (this.b == null) {
-        break;
-      }
-      this.b.obtainMessage(4, k, 0).sendToTarget();
-      return true;
-      i = paramMessage.arg1;
-      j = paramMessage.arg2;
-      if (this.jdField_a_of_type_Xev == null) {
-        break;
-      }
-      this.jdField_a_of_type_Xev.a(String.valueOf(paramMessage.obj), i, j);
-      return true;
-      i = paramMessage.arg1;
-      if (this.jdField_a_of_type_Xev == null) {
-        break;
-      }
-      this.jdField_a_of_type_Xev.a(i);
-      return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vuy
  * JD-Core Version:    0.7.0.1
  */

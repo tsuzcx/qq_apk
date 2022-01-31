@@ -1,25 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
-import java.util.List;
+import dov.com.qq.im.capture.paster.QIMInformationPasterManager.2;
 
-public final class bjfb
-  extends BroadcastReceiver
+public class bjfb
+  implements bjfd
 {
-  private bjfb(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
+  public bjfb(QIMInformationPasterManager.2 param2) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(float paramFloat, String paramString, int paramInt) {}
+  
+  public void a(boolean paramBoolean, String paramString, bkfm parambkfm)
   {
-    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
-    {
-      bjds.a().b();
-      bjds.a().a(new bjfc());
-      this.a.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager FilterBroadcastReceiver size=" + this.a.a.size());
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMInformationPasterManager", 2, "isSucess:" + paramBoolean + " url:" + paramString + " item:" + parambkfm);
+    }
+    if (parambkfm.a() != null) {
+      parambkfm.a().a(paramBoolean);
     }
   }
 }

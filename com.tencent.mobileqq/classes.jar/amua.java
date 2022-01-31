@@ -1,121 +1,89 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.database.corrupt.DBFixDialogActivity;
-import com.tencent.mobileqq.database.corrupt.DBFixDialogUI.2;
-import com.tencent.mobileqq.database.corrupt.DBFixDialogUI.8;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.image.SafeBitmapFactory;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
 
 public class amua
-  implements amul
+  extends ampb<amtz>
 {
-  public static Dialog a;
-  public static String b = "0X8007960";
-  public static String c = "0X8007961";
-  public static String d = "0X8007962";
-  public static String e = "0X8007963";
-  public static String f = "0X8007964";
-  private static String g = "DBFix";
-  private int jdField_a_of_type_Int;
-  public Context a;
-  DialogInterface.OnCancelListener jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener = new amub(this);
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private DBFixManager jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixManager;
-  String jdField_a_of_type_JavaLangString;
-  private String h = "";
-  
-  public amua(Context paramContext, QQAppInterface paramQQAppInterface)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixManager = ((DBFixManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(205));
+    return 251;
   }
   
-  private void a(Dialog paramDialog, String paramString)
+  @NonNull
+  public amtz a(int paramInt)
   {
-    QLog.d(g, 1, "DBFixDialogUI showDialog, " + paramString);
-    this.h = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new DBFixDialogUI.2(this, paramDialog));
+    return new amtz();
   }
   
-  private void c()
+  @Nullable
+  public amtz a(ampi[] paramArrayOfampi)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixManager.a(true);
-    jdField_a_of_type_AndroidAppDialog = new amuj(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this);
-    jdField_a_of_type_AndroidAppDialog.setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
-    a(jdField_a_of_type_AndroidAppDialog, "fixing");
-  }
-  
-  private void d()
-  {
-    jdField_a_of_type_AndroidAppDialog = babr.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(ajjy.a(2131637077)).setPositiveButton(ajjy.a(2131637083), new amuf(this));
-    jdField_a_of_type_AndroidAppDialog.setOnKeyListener(new amug(this));
-    jdField_a_of_type_AndroidAppDialog.setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
-    a(jdField_a_of_type_AndroidAppDialog, "fix succ");
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_JavaLangString, e, e, 0, 0, "", "", "", "");
-  }
-  
-  private void e()
-  {
-    jdField_a_of_type_AndroidAppDialog = babr.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(ajjy.a(2131637078)).setPositiveButton("重启QQ", new amuh(this));
-    jdField_a_of_type_AndroidAppDialog.setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
-    a(jdField_a_of_type_AndroidAppDialog, "fix fail");
-  }
-  
-  private void f()
-  {
-    jdField_a_of_type_AndroidAppDialog = babr.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(ajjy.a(2131637080)).setPositiveButton(ajjy.a(2131637076), new amuc(this)).setNegativeButton(ajjy.a(2131637082), new amui(this));
-    jdField_a_of_type_AndroidAppDialog.setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
-    a(jdField_a_of_type_AndroidAppDialog, "memory alert");
-  }
-  
-  public void a()
-  {
-    jdField_a_of_type_AndroidAppDialog = null;
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof DBFixDialogActivity)) {
-      ((DBFixDialogActivity)this.jdField_a_of_type_AndroidContentContext).finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("PicCommonConfProcessor", 2, "onParsed " + paramArrayOfampi.length);
     }
-    this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixManager.a(false);
-    if (this.jdField_a_of_type_Int != amuj.d)
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfampi != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
-      String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      if (((SharedPreferences)localObject).getInt(str + DBFixManager.e, 0) == DBFixManager.jdField_a_of_type_Int)
-      {
-        QLog.d(g, 1, "DBFixDialogUI 2, max count, delete db");
-        this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixManager.b(false);
-        this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixManager.b();
-        localObject = ((SharedPreferences)localObject).edit();
-        ((SharedPreferences.Editor)localObject).remove(str + DBFixManager.d);
-        ((SharedPreferences.Editor)localObject).remove(str + DBFixManager.e);
-        ((SharedPreferences.Editor)localObject).commit();
+      localObject1 = localObject2;
+      if (paramArrayOfampi.length > 0) {
+        localObject1 = amtz.a(paramArrayOfampi);
       }
     }
+    return localObject1;
+  }
+  
+  public Class<amtz> a()
+  {
+    return amtz.class;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new DBFixDialogUI.8(this, paramInt));
+    if (QLog.isColorLevel()) {
+      QLog.d("PicCommonConfProcessor", 2, "onReqFailed " + paramInt);
+    }
   }
   
-  public void b()
+  public void a(amtz paramamtz)
   {
-    jdField_a_of_type_AndroidAppDialog = babr.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(ajjy.a(2131637079)).setPositiveButton(ajjy.a(2131637081), new amue(this)).setNegativeButton("取消", new amud(this));
-    jdField_a_of_type_AndroidAppDialog.setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
-    a(jdField_a_of_type_AndroidAppDialog, "checked corrupt");
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_JavaLangString, b, b, 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("PicCommonConfProcessor", 2, "onUpdate " + paramamtz.toString());
+    }
+    SafeBitmapFactory.setNeedRegionDecode(paramamtz.jdField_a_of_type_Boolean);
+    SafeBitmapFactory.setPxThreshoidToSp(paramamtz.jdField_a_of_type_Long);
+    SafeBitmapFactory.setRamThreshoidToSp(paramamtz.jdField_a_of_type_Int);
+    SafeBitmapFactory.setThreadCountToSp(paramamtz.jdField_b_of_type_Int);
+    ayxc.a(paramamtz.jdField_b_of_type_Long);
+    ayxc.b(paramamtz.jdField_c_of_type_Long);
+    ayxa.a(paramamtz.jdField_c_of_type_Int);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
+  
+  public boolean d()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amua
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,12 @@
-import android.os.IBinder;
-import android.os.IBinder.DeathRecipient;
-
-class bgsq
-  implements IBinder.DeathRecipient
+public abstract interface bgsq
 {
-  bgsq(bgsp parambgsp) {}
+  public abstract void a();
   
-  public void binderDied()
-  {
-    bckd.b("WadlProxyServiceManager", "wadl download process is died!");
-    bgsp.a(this.a).asBinder().unlinkToDeath(bgsp.a(this.a), 0);
-    bgsp.a(this.a, null);
-    if ((bgsp.a(this.a) != null) && (bgsp.a(this.a).a()))
-    {
-      bckd.b("WadlProxyServiceManager", "download process died restart service");
-      this.a.b();
-    }
-  }
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

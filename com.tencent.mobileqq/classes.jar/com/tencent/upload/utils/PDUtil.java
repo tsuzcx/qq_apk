@@ -1,7 +1,5 @@
 package com.tencent.upload.utils;
 
-import java.io.PrintStream;
-
 public class PDUtil
 {
   private static final String TAG = "PDUtil";
@@ -185,7 +183,6 @@ public class PDUtil
   public static void printHexString(String paramString, byte[] paramArrayOfByte)
   {
     UploadLog.e("PDUtil", paramString);
-    System.out.println(paramString);
     int i = 0;
     while (i < paramArrayOfByte.length)
     {
@@ -194,7 +191,7 @@ public class PDUtil
       if (str.length() == 1) {
         paramString = '0' + str;
       }
-      System.out.print(paramString.toUpperCase() + " ");
+      UploadLog.e("PDUtil", "printHexString:" + paramString.toUpperCase());
       i += 1;
     }
   }

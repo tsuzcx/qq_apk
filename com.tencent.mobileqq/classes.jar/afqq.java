@@ -1,12 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.contacts.fragment.AlphabetFriendFragment;
 
-class afqq
-  implements DialogInterface.OnDismissListener
+public class afqq
+  extends akav
 {
-  afqq(afqn paramafqn) {}
+  private afqq(AlphabetFriendFragment paramAlphabetFriendFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  protected void f()
+  {
+    if (AlphabetFriendFragment.b(this.a)) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
 }
 
 

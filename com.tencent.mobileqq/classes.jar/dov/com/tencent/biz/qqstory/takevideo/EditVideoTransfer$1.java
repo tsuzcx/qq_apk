@@ -1,9 +1,9 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bibe;
-import bigb;
-import bigl;
-import bihi;
+import bjsb;
+import bjww;
+import bjxg;
+import bjyd;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
 public class EditVideoTransfer$1
@@ -11,15 +11,15 @@ public class EditVideoTransfer$1
 {
   public void run()
   {
-    if (bihi.a(this.this$0))
+    if (bjyd.a(this.this$0))
     {
-      localObject = (bigl)this.this$0.a(bigl.class);
+      localObject = (bjxg)this.this$0.a(bjxg.class);
       if (localObject != null) {
-        ((bigl)localObject).a(bihi.a(this.this$0));
+        ((bjxg)localObject).a(bjyd.a(this.this$0));
       }
     }
-    bihi.a(this.this$0, ((EditTakeVideoSource)this.this$0.a.a.a).a.mDuration);
-    Object localObject = (bibe)this.this$0.a(bibe.class);
+    bjyd.a(this.this$0, ((EditTakeVideoSource)this.this$0.a.a.a).a.mDuration);
+    Object localObject = (bjsb)this.this$0.a(bjsb.class);
     if (this.this$0.a() != 0) {}
   }
 }

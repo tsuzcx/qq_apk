@@ -1,17 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class tur
-  implements DialogInterface.OnDismissListener
+public class tur
+  extends QQUIEventReceiver<StoryPlayerActivity, tuq>
 {
-  tur(tuq paramtuq) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public tur(@NonNull StoryPlayerActivity paramStoryPlayerActivity)
   {
-    if (this.a.a != null) {
-      this.a.a.c(false);
-    }
+    super(paramStoryPlayerActivity);
+  }
+  
+  public void a(@NonNull StoryPlayerActivity paramStoryPlayerActivity, @NonNull tuq paramtuq)
+  {
+    paramStoryPlayerActivity.b = paramtuq.a;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tuq.class;
   }
 }
 

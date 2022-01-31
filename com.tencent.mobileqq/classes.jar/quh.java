@@ -1,20 +1,45 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 class quh
-  implements View.OnClickListener
+  implements TVK_SDKMgr.OnLogListener
 {
-  quh(qug paramqug) {}
-  
-  public void onClick(View paramView)
+  public int d(String paramString1, String paramString2)
   {
-    if (qug.a(this.a) != null) {
-      qug.a(this.a).onClick(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
-    paramView = new ocg();
-    paramView.h().e().f().b().i().m();
-    paramView.b("message_reddot_style", obz.k());
-    ndn.a(null, "", "0X800824B", "0X800824B", 0, 0, "", "", "", paramView.a(), false);
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
+    }
+    return 0;
   }
 }
 

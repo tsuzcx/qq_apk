@@ -1,31 +1,54 @@
-import android.app.Activity;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.4;
 
-class aptj
-  implements apsk
+public class aptj
+  implements apth
 {
-  aptj(apti paramapti, URLDrawable paramURLDrawable, apsr paramapsr) {}
+  public aptj(FMSettings.4 param4) {}
   
-  public void a(int paramInt, URLDrawable paramURLDrawable) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public void a()
   {
-    this.jdField_a_of_type_Apti.a.b.setVisibility(8);
-    if (paramBoolean)
+    synchronized (this.a.this$0)
     {
-      this.jdField_a_of_type_Apti.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      paramInt = this.jdField_a_of_type_ComTencentImageURLDrawable.getExifOrientation();
-      this.jdField_a_of_type_Apsr.a = paramInt;
-      aptf.a(this.jdField_a_of_type_Apti.a.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
+      apti localapti2 = this.a.this$0;
+      localapti2.jdField_a_of_type_Int += 1;
+      apti.a(1, "onMovedOver,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
+      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
+      {
+        apti.a(1, "moveFileToDefaultPath,move over!");
+        this.a.jdField_a_of_type_Apth.a();
+      }
       return;
     }
-    bbmy.a(this.jdField_a_of_type_Apti.a.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Apti.a.jdField_a_of_type_AndroidAppActivity.getString(2131629659), 0).a();
   }
+  
+  public void a(int paramInt)
+  {
+    synchronized (this.a.this$0)
+    {
+      apti localapti2 = this.a.this$0;
+      localapti2.jdField_a_of_type_Int += 1;
+      apti.a(1, "onMoveFail,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
+      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
+      {
+        apti.a(1, "moveFileToDefaultPath,move over!");
+        this.a.jdField_a_of_type_Apth.a(16);
+      }
+      return;
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    apti localapti = this.a.this$0;
+    localapti.jdField_a_of_type_Long += paramLong1;
+    this.a.jdField_a_of_type_Apth.a(this.a.this$0.jdField_a_of_type_Long, this.a.this$0.b);
+  }
+  
+  public void a(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aptj
  * JD-Core Version:    0.7.0.1
  */

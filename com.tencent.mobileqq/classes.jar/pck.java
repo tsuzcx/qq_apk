@@ -1,35 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class pck
-  implements ViewFactory.FoundClickableViewListener
+class pck
+  implements wxw
 {
-  pck(pcj parampcj, int paramInt, TemplateBean paramTemplateBean) {}
+  pck(pci parampci, String paramString) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void a(Bundle paramBundle)
   {
-    if (pcj.a(this.jdField_a_of_type_Pcj) != null)
+    if (QLog.isDebugVersion()) {
+      QLog.d("ReadInJoyWebviewPlugin", 4, "receive notifyLoadSkin callback resp:" + paramBundle.toString());
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      paramViewBase.setOnClickListener(new pcl(this));
+      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId")).put("rate", paramBundle.getInt("rate"));
+      this.jdField_a_of_type_Pci.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
       return;
     }
-    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    catch (JSONException paramBundle)
     {
-    default: 
-      return;
-    case 1038: 
-      paramViewBase.setOnClickListener(new pco(this));
-      return;
-    case 1116: 
-      paramViewBase.setOnClickListener(new pcm(this));
-      return;
-    case 1040: 
-      paramViewBase.setOnClickListener(new pcn(this));
-      return;
+      QLog.w("ReadInJoyWebviewPlugin", 1, "notifyLoadSkin error " + paramBundle.toString());
+      this.jdField_a_of_type_Pci.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
     }
-    paramViewBase.setOnClickListener(new pcp(this));
   }
 }
 

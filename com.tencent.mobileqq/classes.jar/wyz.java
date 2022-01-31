@@ -1,65 +1,17 @@
-import android.text.TextUtils;
-import java.util.List;
+import com.tencent.biz.troop.VideoCombineHelper.4;
+import com.tencent.qphone.base.util.QLog;
 
 public class wyz
+  extends wzv
 {
-  private static wza jdField_a_of_type_Wza = new wza();
-  private wyu jdField_a_of_type_Wyu = new wyt();
-  private wyu b = new wzc();
-  
-  public static wyz a()
+  public wyz(VideoCombineHelper.4 param4)
   {
-    return (wyz)jdField_a_of_type_Wza.getInstance();
+    super(param4.this$0);
   }
   
-  public arey a(String paramString1, String paramString2)
+  public void b(wzu paramwzu)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    do
-    {
-      return null;
-      if ("LRC".equals(paramString2.toUpperCase())) {
-        return this.jdField_a_of_type_Wyu.a(paramString1);
-      }
-    } while (!"QRC".equals(paramString2.toUpperCase()));
-    return this.b.a(paramString1);
-  }
-  
-  public arfa a(arey paramarey, long paramLong)
-  {
-    Object localObject;
-    if (paramarey == null)
-    {
-      localObject = null;
-      return localObject;
-    }
-    List localList = paramarey.a();
-    if (localList == null) {
-      return null;
-    }
-    int j = localList.size();
-    if (j < 1) {
-      return null;
-    }
-    int i = 0;
-    label43:
-    if (i < j - 1)
-    {
-      paramarey = (arfa)localList.get(i);
-      localObject = (arfa)localList.get(i + 1);
-      if ((paramLong < paramarey.a) || (((arfa)localObject).a < paramLong)) {}
-    }
-    for (;;)
-    {
-      localObject = paramarey;
-      if (paramarey != null) {
-        break;
-      }
-      return (arfa)localList.get(j - 1);
-      i += 1;
-      break label43;
-      paramarey = null;
-    }
+    QLog.d(".troop.VideoCombineHelper", 2, "");
   }
 }
 

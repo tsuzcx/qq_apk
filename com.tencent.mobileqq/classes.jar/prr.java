@@ -1,30 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.MoreChannelItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class prr
+class prr
+  implements View.OnTouchListener
 {
-  public String a;
-  public String b;
+  prr(prp paramprp, LinearLayout paramLinearLayout) {}
   
-  public static prr a(oidb_cmd0xbc9.MoreChannelItem paramMoreChannelItem)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    prr localprr = new prr();
-    localprr.a = paramMoreChannelItem.bytes_title.get().toStringUtf8();
-    localprr.b = paramMoreChannelItem.bytes_link_url.get().toStringUtf8();
-    return localprr;
-  }
-  
-  public oidb_cmd0xbc9.MoreChannelItem a()
-  {
-    oidb_cmd0xbc9.MoreChannelItem localMoreChannelItem = new oidb_cmd0xbc9.MoreChannelItem();
-    if (!TextUtils.isEmpty(this.a))
-    {
-      localMoreChannelItem.bytes_title.set(ByteStringMicro.copyFromUtf8(this.a));
-      localMoreChannelItem.bytes_link_url.set(ByteStringMicro.copyFromUtf8(this.b));
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
     }
-    return localMoreChannelItem;
+    return false;
   }
 }
 

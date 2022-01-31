@@ -1,23 +1,23 @@
 package com.tencent.gdtad.api;
 
 import java.lang.ref.WeakReference;
-import yjz;
-import yka;
-import yny;
+import yta;
+import ytb;
+import yxs;
 
 class GdtAd$1
   implements Runnable
 {
-  GdtAd$1(GdtAd paramGdtAd, WeakReference paramWeakReference, yjz paramyjz) {}
+  GdtAd$1(GdtAd paramGdtAd, WeakReference paramWeakReference, yta paramyta) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (GdtAd.access$000((GdtAd)this.jdField_a_of_type_JavaLangRefWeakReference.get()) == null) || (GdtAd.access$000((GdtAd)this.jdField_a_of_type_JavaLangRefWeakReference.get()).get() == null))
     {
-      yny.d("GdtAd", "notifyFailedToLoad error");
+      yxs.d("GdtAd", "notifyFailedToLoad error");
       return;
     }
-    ((yka)GdtAd.access$000((GdtAd)this.jdField_a_of_type_JavaLangRefWeakReference.get()).get()).a((GdtAd)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_Yjz);
+    ((ytb)GdtAd.access$000((GdtAd)this.jdField_a_of_type_JavaLangRefWeakReference.get()).get()).a((GdtAd)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_Yta);
   }
 }
 

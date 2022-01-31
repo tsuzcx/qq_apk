@@ -2,32 +2,32 @@ package com.tencent.av.business.manager.pendant;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import krx;
-import kyb;
+import lcl;
+import lir;
 
 public final class AVEffectPendantReport$1
   implements Runnable
 {
   public void run()
   {
-    if ((kyb.a() == null) || (kyb.a().isEmpty()))
+    if ((lir.a() == null) || (lir.a().isEmpty()))
     {
-      kyb.d();
+      lir.d();
       return;
     }
-    kyb.a(0);
-    kyb.b(0);
-    Iterator localIterator = kyb.a().iterator();
+    lir.a(0);
+    lir.b(0);
+    Iterator localIterator = lir.a().iterator();
     while (localIterator.hasNext())
     {
       PendantItem localPendantItem = (PendantItem)localIterator.next();
-      kyb.a();
-      if (kyb.a(localPendantItem)) {
-        kyb.b();
+      lir.a();
+      if (lir.a(localPendantItem)) {
+        lir.b();
       }
     }
-    krx.c("AVEffectPendantReport", "refleshAndSetDownloadInfo()  mTotalCount = " + kyb.c() + "  mDownloadCount = " + kyb.d());
-    kyb.a();
+    lcl.c("AVEffectPendantReport", "refleshAndSetDownloadInfo()  mTotalCount = " + lir.c() + "  mDownloadCount = " + lir.d());
+    lir.a();
   }
 }
 

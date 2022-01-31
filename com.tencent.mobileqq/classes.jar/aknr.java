@@ -1,58 +1,36 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.icebreaking.AIOIceBreakView;
+import com.tencent.mobileqq.app.icebreaking.AIOIceBreakView.1.1;
 
-class aknr
-  implements akuc
+public class aknr
+  implements View.OnClickListener
 {
-  aknr(aknp paramaknp, ARCommonConfigInfo.NativeSoRes paramNativeSoRes) {}
+  public aknr(AIOIceBreakView paramAIOIceBreakView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    akuc localakuc = aknp.a(this.jdField_a_of_type_Aknp, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    if (localakuc != null) {
-      localakuc.a();
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    akuc localakuc = aknp.a(this.jdField_a_of_type_Aknp, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    if (localakuc != null) {
-      localakuc.a(paramLong1, paramLong2);
-    }
-  }
-  
-  public void a(boolean paramBoolean, akud paramakud)
-  {
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a + ", filename = " + paramakud.c + ", url = " + paramakud.a);
-    if (paramBoolean) {
-      if (!aknp.a(this.jdField_a_of_type_Aknp, paramakud.c, paramakud.b))
-      {
-        aknp.a(this.jdField_a_of_type_Aknp, paramakud.c);
-        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
+    AIOIceBreakView.a(this.a).u(24);
+    paramView.postDelayed(new AIOIceBreakView.1.1(this), 500L);
+    if (AIOIceBreakView.a(this.a).a.a != 1044) {
+      if (AIOIceBreakView.a(this.a).a.a != 0) {
+        break label126;
       }
     }
-    akuc localakuc;
-    do
+    label126:
+    for (int i = 1;; i = 2)
     {
+      axqw.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CC", "0X800A4CC", i, 0, "", "", "", "");
+      axqw.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CD", "0X800A4CD", i, 0, "", "", "", "");
       return;
-      if (this.jdField_a_of_type_Aknp.a(paramakud.d, paramakud.c, paramakud.b) == 0) {}
-      localakuc = aknp.a(this.jdField_a_of_type_Aknp, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    } while (localakuc == null);
-    localakuc.a(paramBoolean, paramakud);
-  }
-  
-  public void b()
-  {
-    akuc localakuc = aknp.a(this.jdField_a_of_type_Aknp, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    if (localakuc != null) {
-      localakuc.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aknr
  * JD-Core Version:    0.7.0.1
  */

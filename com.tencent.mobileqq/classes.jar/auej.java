@@ -1,143 +1,200 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
+import android.graphics.Matrix;
+import android.graphics.Point;
+import android.graphics.PointF;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import com.tencent.mobileqq.ocr.view.gesture.Settings;
+import com.tencent.mobileqq.ocr.view.gesture.Settings.Fit;
 
 public class auej
 {
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
+  private static final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  private static final Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
+  private static final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private static final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private static final float[] jdField_a_of_type_ArrayOfFloat = new float[2];
+  private float jdField_a_of_type_Float;
+  private final Settings jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings;
+  private float jdField_b_of_type_Float;
+  private final RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
+  private float c;
+  
+  public auej(Settings paramSettings)
   {
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings = paramSettings;
+  }
+  
+  private void a(Rect paramRect)
+  {
+    auep.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings, jdField_a_of_type_AndroidGraphicsPoint);
+    jdField_a_of_type_ArrayOfFloat[0] = jdField_a_of_type_AndroidGraphicsPoint.x;
+    jdField_a_of_type_ArrayOfFloat[1] = jdField_a_of_type_AndroidGraphicsPoint.y;
+    if (!auen.a(this.jdField_a_of_type_Float, 0.0F))
+    {
+      jdField_a_of_type_AndroidGraphicsMatrix.setRotate(-this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c);
+      jdField_a_of_type_AndroidGraphicsMatrix.mapPoints(jdField_a_of_type_ArrayOfFloat);
+    }
+    this.jdField_b_of_type_AndroidGraphicsRectF.left = (jdField_a_of_type_ArrayOfFloat[0] - paramRect.width());
+    this.jdField_b_of_type_AndroidGraphicsRectF.right = jdField_a_of_type_ArrayOfFloat[0];
+    this.jdField_b_of_type_AndroidGraphicsRectF.top = (jdField_a_of_type_ArrayOfFloat[1] - paramRect.height());
+    this.jdField_b_of_type_AndroidGraphicsRectF.bottom = jdField_a_of_type_ArrayOfFloat[1];
+  }
+  
+  private void a(RectF paramRectF, Rect paramRect)
+  {
+    if (paramRectF.width() < paramRect.width())
+    {
+      this.jdField_b_of_type_AndroidGraphicsRectF.left = (paramRectF.left - (paramRect.width() - paramRectF.width()));
+      this.jdField_b_of_type_AndroidGraphicsRectF.right = paramRectF.left;
+    }
+    while (paramRectF.height() < paramRect.height())
+    {
+      this.jdField_b_of_type_AndroidGraphicsRectF.top = (paramRectF.top - (paramRect.height() - paramRectF.height()));
+      this.jdField_b_of_type_AndroidGraphicsRectF.bottom = paramRectF.top;
+      return;
+      localRectF1 = this.jdField_b_of_type_AndroidGraphicsRectF;
+      RectF localRectF2 = this.jdField_b_of_type_AndroidGraphicsRectF;
+      f = paramRect.left;
+      localRectF2.right = f;
+      localRectF1.left = f;
+    }
+    paramRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+    RectF localRectF1 = this.jdField_b_of_type_AndroidGraphicsRectF;
+    float f = paramRect.top;
+    localRectF1.bottom = f;
+    paramRectF.top = f;
+  }
+  
+  private void b(RectF paramRectF, Rect paramRect)
+  {
+    if (paramRectF.width() < paramRect.width()) {
+      this.jdField_b_of_type_AndroidGraphicsRectF.left = (paramRectF.left - (paramRect.width() - paramRectF.width()));
+    }
+    for (this.jdField_b_of_type_AndroidGraphicsRectF.right = paramRectF.left; paramRectF.height() < paramRect.height(); this.jdField_b_of_type_AndroidGraphicsRectF.right = (paramRectF.right - paramRect.width()))
+    {
+      this.jdField_b_of_type_AndroidGraphicsRectF.top = (paramRectF.top - (paramRect.height() - paramRectF.height()));
+      this.jdField_b_of_type_AndroidGraphicsRectF.bottom = paramRectF.top;
+      return;
+      this.jdField_b_of_type_AndroidGraphicsRectF.left = paramRectF.left;
+    }
+    this.jdField_b_of_type_AndroidGraphicsRectF.top = paramRectF.top;
+    this.jdField_b_of_type_AndroidGraphicsRectF.bottom = (paramRectF.bottom - paramRect.height());
+  }
+  
+  private void c(RectF paramRectF, Rect paramRect)
+  {
+    this.jdField_b_of_type_AndroidGraphicsRectF.left = (paramRectF.left - paramRect.width());
+    this.jdField_b_of_type_AndroidGraphicsRectF.right = paramRectF.right;
+    this.jdField_b_of_type_AndroidGraphicsRectF.top = (paramRectF.top - paramRect.height());
+    this.jdField_b_of_type_AndroidGraphicsRectF.bottom = paramRectF.bottom;
+  }
+  
+  public auej a(auen paramauen)
+  {
+    Object localObject = jdField_a_of_type_AndroidGraphicsRectF;
+    auep.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings, jdField_a_of_type_AndroidGraphicsRect);
+    ((RectF)localObject).set(jdField_a_of_type_AndroidGraphicsRect);
+    Rect localRect = jdField_a_of_type_AndroidGraphicsRect;
+    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a() == Settings.Fit.OUTSIDE)
+    {
+      this.jdField_a_of_type_Float = paramauen.d();
+      this.jdField_b_of_type_Float = ((RectF)localObject).centerX();
+      this.c = ((RectF)localObject).centerY();
+      if (!auen.a(this.jdField_a_of_type_Float, 0.0F))
+      {
+        jdField_a_of_type_AndroidGraphicsMatrix.setRotate(-this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c);
+        jdField_a_of_type_AndroidGraphicsMatrix.mapRect((RectF)localObject);
+      }
+      paramauen.a(jdField_a_of_type_AndroidGraphicsMatrix);
+      if (!auen.a(this.jdField_a_of_type_Float, 0.0F)) {
+        jdField_a_of_type_AndroidGraphicsMatrix.postRotate(-this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c);
+      }
+      auep.a(jdField_a_of_type_AndroidGraphicsMatrix, this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings, localRect);
+      switch (auek.a[this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a().ordinal()])
+      {
+      default: 
+        this.jdField_b_of_type_AndroidGraphicsRectF.set(-5.368709E+008F, -5.368709E+008F, 5.368709E+008F, 5.368709E+008F);
+      }
+    }
     for (;;)
     {
-      try
+      if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a() != Settings.Fit.OUTSIDE)
       {
-        axxj localaxxj = (axxj)paramQQAppInterface.getManager(193);
-        if (localaxxj.a())
-        {
-          int i = 2;
-          String str = "qboss_splash_ad_res_png";
-          if (paramInt == 2)
-          {
-            i = 1;
-            str = "qboss_splash_ad_res_video";
-            j = 10082;
-            QLog.i("QSplash@QbossSplashUtil", 1, "downloadPicAGifAVideoRes request adid" + paramString1);
-            HashMap localHashMap = new HashMap();
-            localHashMap.put("qbossSplashresAppid", paramString1);
-            a("qbossSplashrequest", localHashMap);
-            localaxxj.a(j, "vas", paramString2, 0, paramString2, paramString3 + ".splashtemp", i, 0, true, new auek(paramQQAppInterface, str, paramString1, paramString3, paramInt, paramString4, paramString2));
-          }
-        }
-        else
-        {
-          QLog.i("QSplash@QbossSplashUtil", 1, "ctrl.isEnable() = false");
-          return;
-        }
+        paramauen.a(jdField_a_of_type_AndroidGraphicsMatrix);
+        paramauen = jdField_a_of_type_AndroidGraphicsRectF;
+        paramauen.set(0.0F, 0.0F, this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.e(), this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.f());
+        jdField_a_of_type_AndroidGraphicsMatrix.mapRect(paramauen);
+        localObject = jdField_a_of_type_ArrayOfFloat;
+        jdField_a_of_type_ArrayOfFloat[1] = 0.0F;
+        localObject[0] = 0.0F;
+        jdField_a_of_type_AndroidGraphicsMatrix.mapPoints(jdField_a_of_type_ArrayOfFloat);
+        this.jdField_b_of_type_AndroidGraphicsRectF.offset(jdField_a_of_type_ArrayOfFloat[0] - paramauen.left, jdField_a_of_type_ArrayOfFloat[1] - paramauen.top);
       }
-      catch (Exception paramQQAppInterface)
-      {
-        return;
-      }
-      int j = 10081;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Collection<auen> paramCollection)
-  {
-    for (;;)
-    {
-      auen localauen;
-      try
-      {
-        paramCollection = paramCollection.iterator();
-        if (!paramCollection.hasNext()) {
-          break label156;
-        }
-        localauen = (auen)paramCollection.next();
-        if (!localauen.b())
-        {
-          QLog.i("QSplash@QbossSplashDownloadManager", 1, "adEntry should not requestRes");
-          continue;
-        }
-        switch (localauen.a)
-        {
-        }
-      }
-      finally {}
-      a(paramQQAppInterface, localauen.jdField_b_of_type_JavaLangString, localauen.e, localauen.h, 0, localauen.k);
+      return this;
+      this.jdField_a_of_type_Float = 0.0F;
+      this.c = 0.0F;
+      this.jdField_b_of_type_Float = 0.0F;
+      break;
+      a((RectF)localObject, localRect);
       continue;
-      a(paramQQAppInterface, localauen.jdField_b_of_type_JavaLangString, localauen.e, localauen.h, 2, localauen.k);
+      b((RectF)localObject, localRect);
       continue;
-      a(paramQQAppInterface, localauen.jdField_b_of_type_JavaLangString, localauen.e, localauen.h, 1, localauen.k);
+      c((RectF)localObject, localRect);
       continue;
-      label156:
-      return;
+      a(localRect);
     }
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void a(float paramFloat1, float paramFloat2)
   {
-    Object localObject = auei.a(BaseApplicationImpl.getContext(), paramString1);
-    paramString1 = ((SharedPreferences)localObject).edit();
-    QLog.i("QSplash@QbossSplashDownloadManager", 1, "pic or gif download succ! MD5 checkok");
-    boolean bool = ((SharedPreferences)localObject).getBoolean("qboss_exposure_is_low_device_limit_", false);
-    QLog.i("QSplash@QbossSplashDownloadManager", 1, "isLowerDeviceLimit = " + bool);
-    if (!bool)
+    jdField_a_of_type_ArrayOfFloat[0] = paramFloat1;
+    jdField_a_of_type_ArrayOfFloat[1] = paramFloat2;
+    if (this.jdField_a_of_type_Float != 0.0F)
     {
-      paramString1.putBoolean("qboss_splash_ad_is_limited_" + paramString2, true);
-      localObject = auem.a;
-      if ((localObject != null) && (((HashMap)localObject).containsKey(paramString2))) {
-        ((auen)((HashMap)localObject).get(paramString2)).jdField_b_of_type_Boolean = true;
-      }
+      jdField_a_of_type_AndroidGraphicsMatrix.setRotate(-this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c);
+      jdField_a_of_type_AndroidGraphicsMatrix.mapPoints(jdField_a_of_type_ArrayOfFloat);
     }
-    paramString1.apply();
+    this.jdField_b_of_type_AndroidGraphicsRectF.union(jdField_a_of_type_ArrayOfFloat[0], jdField_a_of_type_ArrayOfFloat[1]);
   }
   
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, PointF paramPointF)
   {
-    try
+    jdField_a_of_type_ArrayOfFloat[0] = paramFloat1;
+    jdField_a_of_type_ArrayOfFloat[1] = paramFloat2;
+    if (this.jdField_a_of_type_Float != 0.0F)
     {
-      if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null) && (!TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount())))
-      {
-        awrn.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramString, true, 0L, 0L, paramHashMap, null, false);
-        if (QLog.isColorLevel()) {
-          QLog.i("QSplash@QbossSplashDownloadManager", 2, "reportqbossSplashBeacon, tagName  " + paramString);
-        }
-      }
-      return;
+      jdField_a_of_type_AndroidGraphicsMatrix.setRotate(-this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c);
+      jdField_a_of_type_AndroidGraphicsMatrix.mapPoints(jdField_a_of_type_ArrayOfFloat);
     }
-    catch (Exception paramString) {}
+    jdField_a_of_type_ArrayOfFloat[0] = aueq.a(jdField_a_of_type_ArrayOfFloat[0], this.jdField_b_of_type_AndroidGraphicsRectF.left - paramFloat3, this.jdField_b_of_type_AndroidGraphicsRectF.right + paramFloat3);
+    jdField_a_of_type_ArrayOfFloat[1] = aueq.a(jdField_a_of_type_ArrayOfFloat[1], this.jdField_b_of_type_AndroidGraphicsRectF.top - paramFloat4, this.jdField_b_of_type_AndroidGraphicsRectF.bottom + paramFloat4);
+    if (this.jdField_a_of_type_Float != 0.0F)
+    {
+      jdField_a_of_type_AndroidGraphicsMatrix.setRotate(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c);
+      jdField_a_of_type_AndroidGraphicsMatrix.mapPoints(jdField_a_of_type_ArrayOfFloat);
+    }
+    paramPointF.set(jdField_a_of_type_ArrayOfFloat[0], jdField_a_of_type_ArrayOfFloat[1]);
   }
   
-  private static void b(String paramString1, AppInterface paramAppInterface, String paramString2)
+  public void a(float paramFloat1, float paramFloat2, PointF paramPointF)
   {
-    if (paramAppInterface == null) {
-      return;
-    }
-    try
+    a(paramFloat1, paramFloat2, 0.0F, 0.0F, paramPointF);
+  }
+  
+  public void a(RectF paramRectF)
+  {
+    if (this.jdField_a_of_type_Float == 0.0F)
     {
-      paramAppInterface = (axxj)paramAppInterface.getManager(193);
-      if (paramAppInterface.a()) {
-        paramAppInterface.a(paramString1, -1L);
-      }
-      paramString1 = new HashMap();
-      paramString1.put("qbossSplashresAppid", paramString2);
-      a("qbossSplashDownloadFailed", paramString1);
+      paramRectF.set(this.jdField_b_of_type_AndroidGraphicsRectF);
       return;
     }
-    catch (Exception paramString1) {}
+    jdField_a_of_type_AndroidGraphicsMatrix.setRotate(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c);
+    jdField_a_of_type_AndroidGraphicsMatrix.mapRect(paramRectF, this.jdField_b_of_type_AndroidGraphicsRectF);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auej
  * JD-Core Version:    0.7.0.1
  */

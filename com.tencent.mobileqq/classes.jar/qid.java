@@ -1,28 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearchFragment;
+import com.tencent.widget.ListView;
 
 public class qid
-  implements TVK_ICacheMgr.IPreloadCallback
+  extends awkd<awog, awwp>
 {
-  public qid(VideoPreDownloadMgr paramVideoPreDownloadMgr) {}
-  
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public qid(HybridSearchFragment paramHybridSearchFragment, ListView paramListView, baxk parambaxk)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a) + " ERROR code: " + paramInt);
-    }
-    ThreadManager.post(new VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask(this.a, false), 5, null, true);
+    super(paramListView, parambaxk);
   }
   
-  public void onPreLoadSucess(String paramString1, String paramString2)
+  protected awrb<awog, awwp> a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a) + " SUCCESS");
+    if (((awog)a(paramInt) instanceof awmr)) {
+      return new awsk(this.jdField_a_of_type_Baxk, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment), null);
     }
-    ThreadManager.post(new VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask(this.a, true), 5, null, true);
+    return new qhz(this.jdField_a_of_type_Baxk, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment));
+  }
+  
+  protected awwq a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new awwj(paramViewGroup, 2131562381);
   }
 }
 

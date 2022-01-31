@@ -1,67 +1,346 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONObject;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import android.hardware.Camera.AutoFocusMoveCallback;
+import android.hardware.Camera.ErrorCallback;
+import android.hardware.Camera.OnZoomChangeListener;
+import android.hardware.Camera.Parameters;
+import android.hardware.Camera.PreviewCallback;
+import android.os.Handler;
+import android.os.Message;
+import android.view.SurfaceHolder;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
 
 public class amfn
+  extends Handler
 {
-  public int a;
-  public String a;
-  public HashMap<String, String> a;
-  public String b = "";
+  private String a;
   
-  public amfn()
+  @TargetApi(16)
+  private void a(Camera paramCamera, Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    paramCamera.setAutoFocusMoveCallback((Camera.AutoFocusMoveCallback)paramObject);
   }
   
-  public static amfn a(String paramString)
+  @TargetApi(14)
+  private void a(Object paramObject)
   {
-    if (paramString == null) {
-      return null;
-    }
-    amfn localamfn;
     try
     {
-      localamfn = new amfn();
-      localamfn.jdField_a_of_type_JavaLangString = paramString;
-      paramString = new JSONObject(paramString);
-      localamfn.jdField_a_of_type_Int = paramString.optInt("isShowEntry");
-      localamfn.b = paramString.optString("iconUrl");
-      if (!TextUtils.isEmpty(localamfn.b)) {
-        localamfn.b = localamfn.b.trim();
-      }
-      paramString = paramString.optJSONObject("grayTips");
-      Iterator localIterator = paramString.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        localamfn.jdField_a_of_type_JavaUtilHashMap.put(str, paramString.optString(str));
-      }
-      QLog.d("ConfBean", 0, "confBean = " + localamfn.toString());
+      amfk.a(this.jdField_a_of_type_Amfk).setPreviewTexture((SurfaceTexture)paramObject);
+      return;
     }
-    catch (Exception paramString)
+    catch (IOException paramObject)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("ConfBean", 1, "parse e:", paramString);
-      }
-      return null;
+      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "Could not set preview texture", paramObject);
     }
-    return localamfn;
   }
   
-  public String toString()
+  public void handleMessage(Message paramMessage)
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("configContent:").append(this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    for (;;)
+    {
+      try
+      {
+        switch (paramMessage.what)
+        {
+        case 1: 
+          throw new RuntimeException("Invalid CameraProxy message=" + paramMessage.what);
+        }
+      }
+      catch (RuntimeException localRuntimeException)
+      {
+        localRuntimeException.printStackTrace();
+        QLog.e(this.jdField_a_of_type_JavaLangString, 2, localRuntimeException, new Object[0]);
+        if ((paramMessage.what != 2) && (amfk.a(this.jdField_a_of_type_Amfk) != null))
+        {
+          QLog.e(this.jdField_a_of_type_JavaLangString, 1, "mCamera != null, but RuntimeException");
+          try
+          {
+            amfk.a(this.jdField_a_of_type_Amfk).release();
+            amfk.a(this.jdField_a_of_type_Amfk, null);
+            if (paramMessage.obj != null)
+            {
+              QLog.w(this.jdField_a_of_type_JavaLangString, 1, "相机已经打开，运行时异常 " + paramMessage.what);
+              if ((paramMessage.obj instanceof amff))
+              {
+                ((amff)paramMessage.obj).b(paramMessage.arg1);
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] OPEN_CAMERA " + paramMessage.arg1);
+                }
+                amfk.a(this.jdField_a_of_type_Amfk, Camera.open(paramMessage.arg1));
+                if (amfk.a(this.jdField_a_of_type_Amfk) != null)
+                {
+                  amfk.a(this.jdField_a_of_type_Amfk, true);
+                  if (amfk.a(this.jdField_a_of_type_Amfk) == null)
+                  {
+                    amfk.a(this.jdField_a_of_type_Amfk, amfk.a(this.jdField_a_of_type_Amfk).getParameters());
+                    if (QLog.isColorLevel()) {
+                      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] OPEN_CAMERA, parameter = " + amfk.a(this.jdField_a_of_type_Amfk));
+                    }
+                  }
+                  if (QLog.isColorLevel()) {
+                    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] OPEN_CAMERA, open result mCamera = " + amfk.a(this.jdField_a_of_type_Amfk));
+                  }
+                }
+                else
+                {
+                  if (paramMessage.obj == null) {
+                    continue;
+                  }
+                  ((amff)paramMessage.obj).b(paramMessage.arg1);
+                  continue;
+                }
+                continue;
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] RELEASE");
+                }
+                if (amfk.a(this.jdField_a_of_type_Amfk) != null) {
+                  amfk.a(this.jdField_a_of_type_Amfk).release();
+                }
+                amfk.a(this.jdField_a_of_type_Amfk, null);
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] RECONNECT");
+                }
+                amfk.a(this.jdField_a_of_type_Amfk, null);
+                try
+                {
+                  if (amfk.a(this.jdField_a_of_type_Amfk) == null) {
+                    continue;
+                  }
+                  amfk.a(this.jdField_a_of_type_Amfk).reconnect();
+                  return;
+                }
+                catch (IOException localIOException1)
+                {
+                  amfk.a(this.jdField_a_of_type_Amfk, localIOException1);
+                  return;
+                }
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] UNLOCK");
+                }
+                if (amfk.a(this.jdField_a_of_type_Amfk) == null) {
+                  continue;
+                }
+                amfk.a(this.jdField_a_of_type_Amfk).unlock();
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] LOCK");
+                }
+                if (amfk.a(this.jdField_a_of_type_Amfk) == null) {
+                  continue;
+                }
+                amfk.a(this.jdField_a_of_type_Amfk).lock();
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_PREVIEW_TEXTURE_ASYNC");
+                }
+                a(paramMessage.obj);
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_PREVIEW_DISPLAY");
+                }
+                try
+                {
+                  if (amfk.a(this.jdField_a_of_type_Amfk) == null) {
+                    continue;
+                  }
+                  amfk.a(this.jdField_a_of_type_Amfk).setPreviewDisplay((SurfaceHolder)paramMessage.obj);
+                  return;
+                }
+                catch (IOException localIOException2)
+                {
+                  throw new RuntimeException(localIOException2);
+                }
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] START_PREVIEW_ASYNC");
+                }
+                if (amfk.a(this.jdField_a_of_type_Amfk) == null) {
+                  continue;
+                }
+                amfk.a(this.jdField_a_of_type_Amfk).startPreview();
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] STOP_PREVIEW");
+                }
+                try
+                {
+                  if (amfk.a(this.jdField_a_of_type_Amfk) == null) {
+                    continue;
+                  }
+                  amfk.a(this.jdField_a_of_type_Amfk).stopPreview();
+                  return;
+                }
+                catch (Exception localException1)
+                {
+                  localException1.printStackTrace();
+                  return;
+                }
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_ONE_SHOT_PREVIEW_CALlBACK");
+                }
+                if (amfk.a(this.jdField_a_of_type_Amfk) == null) {
+                  continue;
+                }
+                amfk.a(this.jdField_a_of_type_Amfk).setOneShotPreviewCallback((Camera.PreviewCallback)paramMessage.obj);
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_PREVIEW_CALLBACK, obj = " + paramMessage.obj);
+                }
+                if (amfk.a(this.jdField_a_of_type_Amfk) == null) {
+                  continue;
+                }
+                amfk.a(this.jdField_a_of_type_Amfk).setPreviewCallback((Camera.PreviewCallback)paramMessage.obj);
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_PREVIEW_CALLBACK_WITH_BUFFER, obj = " + paramMessage.obj);
+                }
+                if (amfk.a(this.jdField_a_of_type_Amfk) == null) {
+                  continue;
+                }
+                amfk.a(this.jdField_a_of_type_Amfk).setPreviewCallbackWithBuffer((Camera.PreviewCallback)paramMessage.obj);
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] ADD_CALLBACK_BUFFER");
+                }
+                if (amfk.a(this.jdField_a_of_type_Amfk) == null) {
+                  continue;
+                }
+                amfk.a(this.jdField_a_of_type_Amfk).addCallbackBuffer((byte[])paramMessage.obj);
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] AUTO_FOCUS");
+                }
+                if (amfk.a(this.jdField_a_of_type_Amfk) == null) {
+                  continue;
+                }
+                amfk.a(this.jdField_a_of_type_Amfk).autoFocus((Camera.AutoFocusCallback)paramMessage.obj);
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] CANCEL_AUTO_FOCUS");
+                }
+                if (amfk.a(this.jdField_a_of_type_Amfk) == null) {
+                  continue;
+                }
+                amfk.a(this.jdField_a_of_type_Amfk).cancelAutoFocus();
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_AUTO_FOCUS_MOVE_CALLBACK");
+                }
+                if (amfk.a(this.jdField_a_of_type_Amfk) == null) {
+                  continue;
+                }
+                a(amfk.a(this.jdField_a_of_type_Amfk), paramMessage.obj);
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_DISPLAY_ORIENTATION");
+                }
+                if (amfk.a(this.jdField_a_of_type_Amfk) == null) {
+                  continue;
+                }
+                amfk.a(this.jdField_a_of_type_Amfk).setDisplayOrientation(paramMessage.arg1);
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_ZOOM_CHANGE_LISTENER");
+                }
+                if (amfk.a(this.jdField_a_of_type_Amfk) == null) {
+                  continue;
+                }
+                amfk.a(this.jdField_a_of_type_Amfk).setZoomChangeListener((Camera.OnZoomChangeListener)paramMessage.obj);
+                return;
+                if (!QLog.isColorLevel()) {
+                  continue;
+                }
+                QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_FACE_DETECTION_LISTENER");
+                return;
+                if (!QLog.isColorLevel()) {
+                  continue;
+                }
+                QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] START_FACE_DETECTION");
+                return;
+                if (!QLog.isColorLevel()) {
+                  continue;
+                }
+                QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] STOP_FACE_DETECTION");
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_ERROR_CALLBACK");
+                }
+                if (amfk.a(this.jdField_a_of_type_Amfk) == null) {
+                  continue;
+                }
+                amfk.a(this.jdField_a_of_type_Amfk).setErrorCallback((Camera.ErrorCallback)paramMessage.obj);
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_PARAMETERS");
+                }
+                if (amfk.a(this.jdField_a_of_type_Amfk) == null) {
+                  continue;
+                }
+                amfk.a(this.jdField_a_of_type_Amfk, true);
+                amfk.a(this.jdField_a_of_type_Amfk).unflatten((String)paramMessage.obj);
+                amfk.a(this.jdField_a_of_type_Amfk).setParameters(amfk.a(this.jdField_a_of_type_Amfk));
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] GET_PARAMETERS");
+                }
+                if ((amfk.a(this.jdField_a_of_type_Amfk) == null) || (!amfk.a(this.jdField_a_of_type_Amfk))) {
+                  continue;
+                }
+                amfk.b(this.jdField_a_of_type_Amfk, amfk.a(this.jdField_a_of_type_Amfk).getParameters());
+                amfk.a(this.jdField_a_of_type_Amfk, false);
+                return;
+                if (!QLog.isColorLevel()) {
+                  continue;
+                }
+                QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] ENABLE_SHUTTER_SOUND");
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] REFRESH_PARAMETERS");
+                }
+                amfk.a(this.jdField_a_of_type_Amfk, true);
+                return;
+              }
+            }
+          }
+          catch (Exception localException2)
+          {
+            QLog.e(this.jdField_a_of_type_JavaLangString, 2, "Fail to release the camera.");
+            continue;
+            if (!(paramMessage.obj instanceof amfl)) {
+              continue;
+            }
+            ((amfl)paramMessage.obj).onAutoFocus(false, amfk.a(this.jdField_a_of_type_Amfk));
+            return;
+          }
+          QLog.w(this.jdField_a_of_type_JavaLangString, 1, "相机参数设置错误, 请尝试重启机器 " + paramMessage.what);
+          throw localException1;
+        }
+        if (amfk.a(this.jdField_a_of_type_Amfk) == null) {
+          if (paramMessage.what == 1)
+          {
+            QLog.e(this.jdField_a_of_type_JavaLangString, 1, "mCamera == null Since Camera is disabled");
+            if ((paramMessage.obj != null) && ((paramMessage.obj instanceof amff))) {
+              ((amff)paramMessage.obj).a(paramMessage.arg1);
+            }
+          }
+          else
+          {
+            QLog.e(this.jdField_a_of_type_JavaLangString, 1, "mCamera == null, Cannot handle message, 相机运行异常，请尝试重启机器");
+            throw localException1;
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amfn
  * JD-Core Version:    0.7.0.1
  */

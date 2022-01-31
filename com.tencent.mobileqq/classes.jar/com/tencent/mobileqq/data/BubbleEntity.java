@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
+import aukm;
 
 public class BubbleEntity
-  extends atmo
+  extends aukm
 {
   public int bubble_id;
   public long expire;

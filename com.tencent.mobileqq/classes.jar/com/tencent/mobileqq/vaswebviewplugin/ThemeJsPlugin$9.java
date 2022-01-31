@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import arok;
-import axmb;
+import asko;
+import aymh;
 import org.json.JSONObject;
 
 class ThemeJsPlugin$9
-  implements arok<axmb>
+  implements asko<aymh>
 {
   ThemeJsPlugin$9(ThemeJsPlugin paramThemeJsPlugin, JSONObject paramJSONObject, String paramString) {}
   
-  public void postQuery(axmb paramaxmb)
+  public void postQuery(aymh paramaymh)
   {
-    this.this$0.queryInfo(this.val$json, this.val$callbackId, paramaxmb);
+    this.this$0.queryInfo(this.val$json, this.val$callbackId, paramaymh);
   }
 }
 

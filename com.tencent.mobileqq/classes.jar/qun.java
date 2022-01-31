@@ -1,42 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.22;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.HashMap;
 
 public class qun
-  implements View.OnClickListener
 {
-  public qun(ReadinjoyTabFrame.22 param22, FrameLayout paramFrameLayout) {}
+  public static int a;
+  public static int b = 1;
+  public static int c = 2;
+  public static int d = 3;
+  public static int e = 4;
+  public static int f = 1;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
   
-  public void onClick(View paramView)
+  public qun(int paramInt1, int paramInt2)
   {
-    paramView = (pnh)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$22.this$0.a.getManager(270);
-    if (paramView.a() == 1)
-    {
-      paramView.a(false);
-      paramView = paramView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$22.this$0.a(), 0);
-      if (paramView != null)
-      {
-        paramView.isShown = false;
-        baig.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$22.this$0.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$22.this$0.a.getCurrentAccountUin(), paramView.toJson().toString(), 0);
-      }
-    }
-    ((pnn)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$22.this$0.a.getManager(261)).a(1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$22.a.skinData.id, false);
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$22.this$0).a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$22.this$0));
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$22.this$0, null);
-    baig.r(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$22.this$0.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$22.this$0.a.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$22.a.skinData.toJson().toString());
+    this.m = paramInt1;
+    this.n = paramInt2;
+  }
+  
+  public HashMap<String, String> a()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_hitCount", String.valueOf(this.g));
+    localHashMap.put("param_notHitCount", String.valueOf(this.h));
+    localHashMap.put("param_triggerCount", String.valueOf(this.i));
+    localHashMap.put("param_triggerHitCount", String.valueOf(this.j));
+    localHashMap.put("param_distinctTriggerHitCount", String.valueOf(this.k));
+    localHashMap.put("param_realTriggerHitCount", String.valueOf(this.l));
+    localHashMap.put("param_sceneType", String.valueOf(this.m));
+    localHashMap.put("param_strategy", String.valueOf(this.n));
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyTabFrame", 2, "set skin ：id = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$22.a.skinData.id);
+      QLog.i("wgs", 2, "VideoPreloadReportData getReportMap " + localHashMap.toString());
     }
+    return localHashMap;
   }
 }
 

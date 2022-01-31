@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import ajoy;
+import akdi;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import ndn;
-import new;
+import noo;
+import npx;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,7 +27,7 @@ public class ReadInJoyBaseAdapter$34
         }
         localObject = (QQAppInterface)localObject;
         if (localObject != null) {
-          if (!((ajoy)((AppInterface)localObject).getManager(56)).a(Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeID))) {
+          if (!((akdi)((AppInterface)localObject).getManager(56)).a(Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeID))) {
             break label151;
           }
         }
@@ -41,7 +41,7 @@ public class ReadInJoyBaseAdapter$34
           break;
         }
         localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID;
-        ndn.a(null, str2, "0X80077B9", "0X80077B9", 0, 0, "", "", (String)localObject, new.a(null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoVid, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID, this.jdField_a_of_type_OrgJsonJSONObject), false);
+        noo.a(null, str2, "0X80077B9", "0X80077B9", 0, 0, "", "", (String)localObject, npx.a(null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoVid, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID, this.jdField_a_of_type_OrgJsonJSONObject), false);
         return;
       }
     }

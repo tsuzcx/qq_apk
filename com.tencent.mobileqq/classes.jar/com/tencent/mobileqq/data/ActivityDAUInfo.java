@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class ActivityDAUInfo
-  extends atmo
+  extends aukm
 {
-  @atoc
+  @auma
   public String activityName;
   public int count;
   public int displayCount;

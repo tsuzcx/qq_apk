@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import android.os.Handler;
 
 class aesf
-  implements View.OnClickListener
+  implements nom
 {
   aesf(aese paramaese) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = (RecommendTroopItem)paramView.getTag(-1);
-    azlj.a(aese.a(this.a), paramView, this.a.a());
-    this.a.b(paramView);
+    aerv.b(this.a.a, false);
+    this.a.a.a.sendEmptyMessage(1);
   }
 }
 

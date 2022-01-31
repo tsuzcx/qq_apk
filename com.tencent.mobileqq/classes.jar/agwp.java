@@ -1,9 +1,8 @@
-import cooperation.qwallet.plugin.QWalletHelper;
-
-public class agwp
+public abstract interface agwp
 {
-  public static final String a = ;
-  public static final String b = a + ".tmp/";
+  public abstract void a();
+  
+  public abstract void a(Object paramObject);
 }
 
 

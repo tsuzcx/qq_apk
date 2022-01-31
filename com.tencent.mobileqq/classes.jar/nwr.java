@@ -1,19 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class nwr
-  implements DialogInterface.OnClickListener
+public class nwr
+  implements rel
 {
-  nwr(nwp paramnwp) {}
+  private WeakReference<ReadInJoyNewBaseActivity> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public nwr(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity)
   {
-    paramDialogInterface.dismiss();
+    this.a = new WeakReference(paramReadInJoyNewBaseActivity);
+  }
+  
+  public void a()
+  {
+    ReadInJoyNewFeedsActivity localReadInJoyNewFeedsActivity = (ReadInJoyNewFeedsActivity)this.a.get();
+    if (localReadInJoyNewFeedsActivity == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyNewFeedsActivity", 2, "NaviMaskTouchListenerImpl. activity has destoryed");
+      }
+    }
+    while ((ReadInJoyNewFeedsActivity.a(localReadInJoyNewFeedsActivity) != 0) || (localReadInJoyNewFeedsActivity.a == null)) {
+      return;
+    }
+    localReadInJoyNewFeedsActivity.a.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nwr
  * JD-Core Version:    0.7.0.1
  */

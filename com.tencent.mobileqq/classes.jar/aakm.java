@@ -1,17 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.qphone.base.remote.SimpleAccount;
 
 public class aakm
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aakm(ChatSettingForTroop paramChatSettingForTroop, boolean paramBoolean) {}
+  public aakm(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      awqx.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
-    }
+    if (paramView.getParent() == null) {}
+    do
+    {
+      do
+      {
+        return;
+        paramView = (View)paramView.getParent().getParent();
+      } while ((paramView == null) || (paramView.getTag() == null));
+      axqw.b(this.a.app, "CliOper", "", "", "0X8007147", "0X8007147", 0, 0, "", "", "", "");
+    } while (!(paramView.getTag() instanceof SimpleAccount));
+    this.a.a((SimpleAccount)paramView.getTag());
   }
 }
 

@@ -1,147 +1,85 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.model.KingShareReadInjoyModule.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import java.util.concurrent.ExecutorService;
+import tencent.im.oidb.cmd0xa70.oidb_cmd0xa70.ReqBody;
+import tencent.im.oidb.cmd0xa70.oidb_cmd0xa70.RspBody;
+import tencent.im.oidb.cmd0xa70.oidb_cmd0xa70.VideoReqInfo;
+import tencent.im.oidb.cmd0xa70.oidb_cmd0xa70.VideoRspInfo;
 
 public class paz
+  extends pbh
 {
-  public static CharSequence a(ArticleInfo paramArticleInfo)
+  public paz(AppInterface paramAppInterface, aukn paramaukn, ExecutorService paramExecutorService, pou parampou, Handler paramHandler)
   {
-    Object localObject;
-    String str2;
-    String str1;
-    if (paramArticleInfo != null)
-    {
-      long l2 = paramArticleInfo.mTime;
-      long l1 = l2;
-      if (paramArticleInfo.mSocialFeedInfo != null)
-      {
-        l1 = l2;
-        if (paramArticleInfo.mSocialFeedInfo.e > 0) {
-          l1 = paramArticleInfo.mSocialFeedInfo.e;
-        }
-      }
-      if (l1 > 0L)
-      {
-        localObject = oby.a(l1, true);
-        str2 = "";
-        if ((!otl.b(paramArticleInfo)) || (paramArticleInfo.mSocialFeedInfo == null)) {
-          break label105;
-        }
-        str1 = paramArticleInfo.mSocialFeedInfo.d;
-        label79:
-        if (!TextUtils.isEmpty(str1)) {
-          break label171;
-        }
-      }
-    }
-    for (;;)
-    {
-      return obz.a((String)localObject, 36);
-      localObject = ajjy.a(2131635355);
-      break;
-      label105:
-      str1 = str2;
-      if (paramArticleInfo.mSocialFeedInfo == null) {
-        break label79;
-      }
-      str1 = str2;
-      if (TextUtils.isEmpty(paramArticleInfo.mSocialFeedInfo.d)) {
-        break label79;
-      }
-      str1 = (String)localObject + " · " + paramArticleInfo.mSocialFeedInfo.d;
-      break label79;
-      return "";
-      label171:
-      localObject = str1;
+    super(paramAppInterface, paramaukn, paramExecutorService, parampou, paramHandler);
+    if (QLog.isColorLevel()) {
+      QLog.d("KingShareReadInjoyModule", 2, "construct!");
     }
   }
   
-  public static void a(ViewBase paramViewBase, ArticleInfo paramArticleInfo)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    NativeText localNativeText = (NativeText)paramViewBase.findViewBaseByName("id_biu_time");
-    if ((localNativeText != null) && (paramArticleInfo != null) && (paramArticleInfo.articleViewModel != null)) {
-      if ((paramArticleInfo.mFeedType != 32) || (paramArticleInfo.mSocialFeedInfo == null) || (paramArticleInfo.mSocialFeedInfo.a == null) || (TextUtils.isEmpty(paramArticleInfo.mSocialFeedInfo.a.d))) {
-        break label168;
-      }
-    }
-    label168:
-    for (paramViewBase = " · " + paramArticleInfo.mSocialFeedInfo.a.d;; paramViewBase = "")
-    {
-      localNativeText.setText(paramArticleInfo.articleViewModel.a() + paramViewBase);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.proteus", 2, " " + paramArticleInfo + " time : " + paramArticleInfo.mTime);
-      }
-      return;
+    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xa70")) {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
   }
   
-  public static void a(ViewBase paramViewBase, opw paramopw)
+  public void a(String paramString1, String paramString2)
   {
-    String str = "";
-    ViewBase localViewBase = paramViewBase.findViewBaseByName("id_jump_channel_bar");
-    paramViewBase = str;
-    boolean bool;
-    if (paramopw != null)
-    {
-      paramViewBase = str;
-      if (localViewBase != null)
-      {
-        bool = obz.c();
-        if ((!bool) || (!obz.k(paramopw.a()))) {
-          break label93;
-        }
-        localViewBase.setVisibility(0);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("KingShareReadInjoyModule", 2, "get king moment ,url =" + paramString1);
     }
-    for (paramViewBase = str;; paramViewBase = "no data bind, isintab:" + bool)
+    long l1 = 0L;
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.proteus", 2, "bindJumpChannel,flag" + false + " resong : " + paramViewBase);
-      }
-      return;
-      label93:
-      localViewBase.setVisibility(8);
+      long l2 = Long.parseLong(paramString2);
+      l1 = l2;
     }
+    catch (Exception paramString2)
+    {
+      label42:
+      oidb_cmd0xa70.VideoReqInfo localVideoReqInfo;
+      break label42;
+    }
+    paramString2 = new oidb_cmd0xa70.ReqBody();
+    paramString2.uint64_uin.set(l1);
+    localVideoReqInfo = new oidb_cmd0xa70.VideoReqInfo();
+    localVideoReqInfo.bytes_wangzhe_share_url.set(ByteStringMicro.copyFromUtf8(paramString1));
+    paramString2.msg_video_req_info.set(localVideoReqInfo);
+    a(pow.a("OidbSvc.0xa70", 2672, 0, paramString2.toByteArray()));
   }
   
-  public static void b(ViewBase paramViewBase, opw paramopw)
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    paramViewBase = (ozx)paramViewBase.findViewBaseByName("id_socialize_recommend_follow");
-    if (paramViewBase != null) {
-      paramViewBase.a(paramopw);
+    if (QLog.isColorLevel()) {
+      QLog.d("KingShareReadInjoyModule", 2, "handle 0xa70 get king moment info");
     }
-  }
-  
-  public static void c(ViewBase paramViewBase, opw paramopw)
-  {
-    paramopw = paramopw.a();
-    paramViewBase = paramViewBase.findViewBaseByName("id_flow_guide_separator");
-    if (paramViewBase != null)
-    {
-      try
-      {
-        if (otl.a(paramopw))
-        {
-          if ((paramopw != null) && (paramopw.isPGCShortContent()))
-          {
-            paramViewBase.setVisibility(0);
-            return;
-          }
-          paramViewBase.setVisibility(8);
-          return;
-        }
-      }
-      catch (JSONException paramViewBase)
-      {
-        QLog.e("BindViewHelper", 2, paramViewBase.getMessage());
-        return;
-      }
-      paramViewBase.setVisibility(8);
-    }
+    paramToServiceMsg = new oidb_cmd0xa70.RspBody();
+    int i = pow.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    paramFromServiceMsg = new qbm();
+    paramFromServiceMsg.jdField_a_of_type_Int = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).uint32_business_id.get();
+    paramFromServiceMsg.jdField_a_of_type_JavaLangString = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_business_name.get().toStringUtf8();
+    paramFromServiceMsg.jdField_b_of_type_JavaLangString = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_business_url.get().toStringUtf8();
+    paramFromServiceMsg.jdField_c_of_type_JavaLangString = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_business_name_prefix.get().toStringUtf8();
+    paramFromServiceMsg.jdField_d_of_type_JavaLangString = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_title.get().toStringUtf8();
+    paramFromServiceMsg.jdField_e_of_type_JavaLangString = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_desc.get().toStringUtf8();
+    paramFromServiceMsg.f = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_uuid.get().toStringUtf8();
+    paramFromServiceMsg.g = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_video_url.get().toStringUtf8();
+    paramFromServiceMsg.h = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_pic_url.get().toStringUtf8();
+    paramFromServiceMsg.jdField_c_of_type_Int = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).uint32_pic_width.get();
+    paramFromServiceMsg.jdField_b_of_type_Int = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).uint32_pic_height.get();
+    paramFromServiceMsg.jdField_e_of_type_Int = paramFromServiceMsg.jdField_c_of_type_Int;
+    paramFromServiceMsg.jdField_d_of_type_Int = paramFromServiceMsg.jdField_b_of_type_Int;
+    paramFromServiceMsg.jdField_a_of_type_Long = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).uint64_duration.get();
+    this.a.post(new KingShareReadInjoyModule.1(this, i, paramFromServiceMsg));
   }
 }
 

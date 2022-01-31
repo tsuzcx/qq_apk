@@ -2,24 +2,24 @@ package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
 import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
 import java.util.List;
-import nqb;
-import nqc;
-import nqd;
+import obm;
+import obn;
+import obo;
 
 public class GiftPkgSelectDialog$1$1
   implements Runnable
 {
-  public GiftPkgSelectDialog$1$1(nqc paramnqc, int paramInt) {}
+  public GiftPkgSelectDialog$1$1(obn paramobn, int paramInt) {}
   
   public void run()
   {
     try
     {
-      GiftServiceBean localGiftServiceBean = (GiftServiceBean)nqb.a(this.jdField_a_of_type_Nqc.a).get(this.jdField_a_of_type_Int);
-      if (nqb.a(this.jdField_a_of_type_Nqc.a) != null) {
-        nqb.a(this.jdField_a_of_type_Nqc.a).a(localGiftServiceBean);
+      GiftServiceBean localGiftServiceBean = (GiftServiceBean)obm.a(this.jdField_a_of_type_Obn.a).get(this.jdField_a_of_type_Int);
+      if (obm.a(this.jdField_a_of_type_Obn.a) != null) {
+        obm.a(this.jdField_a_of_type_Obn.a).a(localGiftServiceBean);
       }
-      this.jdField_a_of_type_Nqc.a.dismiss();
+      this.jdField_a_of_type_Obn.a.dismiss();
       return;
     }
     catch (Exception localException) {}

@@ -1,19 +1,40 @@
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class aaon
+public final class aaon
   implements DialogInterface.OnClickListener
 {
-  public aaon(DialogActivity paramDialogActivity) {}
+  public aaon(aaqf paramaaqf, int paramInt, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, aaqe paramaaqe) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.a.app.a();
-    paramDialogInterface.e();
-    paramDialogInterface.d();
-    this.a.finish();
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_Aaqf.a)
+    {
+      if (this.jdField_a_of_type_Int != 2) {
+        break label130;
+      }
+      axqw.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "1", "", "", "");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aaqf.b = false;
+      this.jdField_a_of_type_Aaqf.c = false;
+      this.jdField_a_of_type_Aaqf.e = false;
+      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aaqe, this.jdField_a_of_type_Aaqf);
+      if (QLog.isColorLevel()) {
+        QLog.d("chenlong", 2, "" + (System.currentTimeMillis() - l));
+      }
+      return;
+      label130:
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+        axqw.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "1", "", "", "");
+      }
+    }
   }
 }
 

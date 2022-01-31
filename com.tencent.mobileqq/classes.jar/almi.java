@@ -1,64 +1,42 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.qphone.base.util.QLog;
 
 public class almi
-  extends alzl<almj>
+  implements alld
 {
-  public int a()
-  {
-    return 416;
-  }
+  public almi(ARScanEntryView paramARScanEntryView) {}
   
-  @NonNull
-  public almj a(int paramInt)
+  public void a()
   {
-    return new almj();
-  }
-  
-  @Nullable
-  public almj a(alzs[] paramArrayOfalzs)
-  {
-    almj localalmj = new almj();
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0) && (paramArrayOfalzs[0] != null)) {
-      almj.a(localalmj, paramArrayOfalzs[0].a);
+    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResDownloadComplete ;" + this.a.m);
+    if (!this.a.m) {
+      return;
     }
-    return localalmj;
+    ARScanEntryView.a(this.a, 100);
+    ARScanEntryView.a(this.a).removeMessages(324);
+    ARScanEntryView.a(this.a).sendEmptyMessage(324);
+    this.a.k();
   }
   
-  public Class<almj> a()
+  public void a(int paramInt)
   {
-    return almj.class;
+    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResUpdateProgress " + paramInt + ";" + this.a.m);
+    if (!this.a.m) {
+      return;
+    }
+    ARScanEntryView.a(this.a, paramInt);
+    ARScanEntryView.a(this.a);
   }
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(almj paramalmj) {}
-  
-  public boolean a()
+  public void b()
   {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    this.a.k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     almi
  * JD-Core Version:    0.7.0.1
  */

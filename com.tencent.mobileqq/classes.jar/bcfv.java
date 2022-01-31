@@ -1,27 +1,17 @@
-public class bcfv
+public abstract class bcfv
 {
-  protected String a;
-  protected String b;
+  public final int a;
   
-  public bcfv(String paramString1, String paramString2)
+  public bcfv(int paramInt)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    this.a = paramInt;
   }
   
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
+  public abstract int a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcfv
  * JD-Core Version:    0.7.0.1
  */

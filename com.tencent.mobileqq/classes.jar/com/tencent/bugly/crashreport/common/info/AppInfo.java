@@ -407,7 +407,7 @@ public class AppInfo
       {
         paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128);
         if (paramContext.metaData == null) {
-          break label216;
+          break label270;
         }
         HashMap localHashMap = new HashMap();
         Object localObject = paramContext.metaData.get("BUGLY_DISABLE");
@@ -431,10 +431,18 @@ public class AppInfo
           localHashMap.put("BUGLY_ENABLE_DEBUG", localObject.toString());
         }
         localObject = paramContext.metaData.get("com.tencent.rdm.uuid");
+        if (localObject != null) {
+          localHashMap.put("com.tencent.rdm.uuid", localObject.toString());
+        }
+        localObject = paramContext.metaData.get("BUGLY_APP_BUILD_NO");
+        if (localObject != null) {
+          localHashMap.put("BUGLY_APP_BUILD_NO", localObject.toString());
+        }
+        localObject = paramContext.metaData.get("BUGLY_AREA");
         paramContext = localHashMap;
         if (localObject != null)
         {
-          localHashMap.put("com.tencent.rdm.uuid", localObject.toString());
+          localHashMap.put("BUGLY_AREA", localObject.toString());
           paramContext = localHashMap;
         }
         return paramContext;
@@ -445,7 +453,7 @@ public class AppInfo
       }
       paramContext.printStackTrace();
       return null;
-      label216:
+      label270:
       paramContext = null;
     }
   }
@@ -521,77 +529,77 @@ public class AppInfo
   private static String h(Context paramContext)
   {
     // Byte code:
-    //   0: ldc_w 325
+    //   0: ldc_w 329
     //   3: aload_0
-    //   4: invokestatic 328	com/tencent/bugly/proguard/z:a	(Ljava/lang/String;Landroid/content/Context;)Landroid/content/SharedPreferences;
+    //   4: invokestatic 332	com/tencent/bugly/proguard/z:a	(Ljava/lang/String;Landroid/content/Context;)Landroid/content/SharedPreferences;
     //   7: astore_2
     //   8: aload_2
-    //   9: ldc_w 330
-    //   12: ldc_w 310
-    //   15: invokeinterface 336 3 0
+    //   9: ldc_w 334
+    //   12: ldc_w 314
+    //   15: invokeinterface 340 3 0
     //   20: astore_3
     //   21: aload_3
     //   22: astore_2
     //   23: aload_3
-    //   24: invokestatic 316	com/tencent/bugly/proguard/z:a	(Ljava/lang/String;)Z
+    //   24: invokestatic 320	com/tencent/bugly/proguard/z:a	(Ljava/lang/String;)Z
     //   27: ifeq +7 -> 34
-    //   30: ldc_w 338
+    //   30: ldc_w 342
     //   33: astore_2
     //   34: new 31	java/lang/StringBuilder
     //   37: dup
-    //   38: ldc_w 340
+    //   38: ldc_w 344
     //   41: invokespecial 36	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   44: aload_2
     //   45: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   48: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   51: iconst_0
     //   52: anewarray 4	java/lang/Object
-    //   55: invokestatic 342	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   55: invokestatic 346	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   58: pop
     //   59: aload_2
-    //   60: ldc_w 310
+    //   60: ldc_w 314
     //   63: invokevirtual 216	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   66: ifne +108 -> 174
     //   69: aload_0
-    //   70: invokevirtual 346	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   70: invokevirtual 350	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   73: aload_2
-    //   74: invokevirtual 352	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   74: invokevirtual 356	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   77: astore_0
     //   78: aload_0
     //   79: astore_3
-    //   80: new 354	java/util/Properties
+    //   80: new 358	java/util/Properties
     //   83: dup
-    //   84: invokespecial 355	java/util/Properties:<init>	()V
+    //   84: invokespecial 359	java/util/Properties:<init>	()V
     //   87: astore_2
     //   88: aload_0
     //   89: astore_3
     //   90: aload_2
     //   91: aload_0
-    //   92: invokevirtual 359	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   92: invokevirtual 363	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   95: aload_0
     //   96: astore_3
     //   97: aload_2
-    //   98: ldc_w 361
-    //   101: ldc_w 310
-    //   104: invokevirtual 364	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   98: ldc_w 365
+    //   101: ldc_w 314
+    //   104: invokevirtual 368	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   107: astore_2
     //   108: aload_0
     //   109: astore_3
     //   110: new 31	java/lang/StringBuilder
     //   113: dup
-    //   114: ldc_w 366
+    //   114: ldc_w 370
     //   117: invokespecial 36	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   120: aload_2
     //   121: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   124: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   127: iconst_0
     //   128: anewarray 4	java/lang/Object
-    //   131: invokestatic 342	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   131: invokestatic 346	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   134: pop
     //   135: aload_0
     //   136: astore_3
     //   137: aload_2
-    //   138: invokestatic 316	com/tencent/bugly/proguard/z:a	(Ljava/lang/String;)Z
+    //   138: invokestatic 320	com/tencent/bugly/proguard/z:a	(Ljava/lang/String;)Z
     //   141: istore_1
     //   142: aload_2
     //   143: astore 4
@@ -604,7 +612,7 @@ public class AppInfo
     //   154: aload_0
     //   155: ifnull +9 -> 164
     //   158: aload_0
-    //   159: invokevirtual 369	java/io/InputStream:close	()V
+    //   159: invokevirtual 373	java/io/InputStream:close	()V
     //   162: aload_2
     //   163: astore_3
     //   164: aload_3
@@ -617,14 +625,14 @@ public class AppInfo
     //   173: areturn
     //   174: aconst_null
     //   175: astore 5
-    //   177: ldc_w 310
+    //   177: ldc_w 314
     //   180: astore 4
     //   182: aload 4
     //   184: astore_3
     //   185: aload 5
     //   187: ifnull -23 -> 164
     //   190: aload 5
-    //   192: invokevirtual 369	java/io/InputStream:close	()V
+    //   192: invokevirtual 373	java/io/InputStream:close	()V
     //   195: aload 4
     //   197: areturn
     //   198: astore_0
@@ -636,21 +644,21 @@ public class AppInfo
     //   207: astore_0
     //   208: aconst_null
     //   209: astore_0
-    //   210: ldc_w 310
+    //   210: ldc_w 314
     //   213: astore_2
     //   214: aload_0
     //   215: astore_3
-    //   216: ldc_w 371
+    //   216: ldc_w 375
     //   219: iconst_0
     //   220: anewarray 4	java/lang/Object
-    //   223: invokestatic 373	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   223: invokestatic 377	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   226: pop
     //   227: aload_2
     //   228: astore_3
     //   229: aload_0
     //   230: ifnull -66 -> 164
     //   233: aload_0
-    //   234: invokevirtual 369	java/io/InputStream:close	()V
+    //   234: invokevirtual 373	java/io/InputStream:close	()V
     //   237: aload_2
     //   238: areturn
     //   239: astore_0
@@ -665,7 +673,7 @@ public class AppInfo
     //   250: aload_3
     //   251: ifnull +7 -> 258
     //   254: aload_3
-    //   255: invokevirtual 369	java/io/InputStream:close	()V
+    //   255: invokevirtual 373	java/io/InputStream:close	()V
     //   258: aload_0
     //   259: athrow
     //   260: astore_2
@@ -676,7 +684,7 @@ public class AppInfo
     //   269: astore_0
     //   270: goto -20 -> 250
     //   273: astore_2
-    //   274: ldc_w 310
+    //   274: ldc_w 314
     //   277: astore_2
     //   278: goto -64 -> 214
     //   281: astore_3
@@ -733,7 +741,6 @@ public class AppInfo
     catch (Throwable paramContext)
     {
       x.d("[AppInfo] Failed to read beacon channel from manifest.", new Object[0]);
-      x.a(paramContext);
     }
     return "";
   }

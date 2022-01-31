@@ -1,28 +1,19 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
-
 class oiw
-  implements ViewTreeObserver.OnPreDrawListener
+  extends ojq
 {
-  oiw(oiv paramoiv) {}
-  
-  public boolean onPreDraw()
+  oiw(oio paramoio)
   {
-    View localView = ReadInJoyChannelPanelFragment.a(this.a.a).getChildAt(ReadInJoyChannelPanelFragment.a(this.a.a).getChildCount() - 1);
-    Object localObject = new int[2];
-    localView.getLocationOnScreen((int[])localObject);
-    localObject = this.a.a.a(oiv.a(this.a), (int[])localObject);
-    ReadInJoyChannelPanelFragment.a(localObject[0], 0.0F, localObject[1], 0.0F, localView);
-    ReadInJoyChannelPanelFragment.a(this.a.a).getViewTreeObserver().removeOnPreDrawListener(oiv.a(this.a));
-    return false;
+    super(paramoio, null);
+  }
+  
+  void a(ojt paramojt)
+  {
+    paramojt.onCommentStateError(1001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oiw
  * JD-Core Version:    0.7.0.1
  */

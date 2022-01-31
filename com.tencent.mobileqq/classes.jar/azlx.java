@@ -1,8 +1,6 @@
-import com.tencent.map.lib.basemap.data.GeoPoint;
-
 public abstract interface azlx
 {
-  public abstract void a(int paramInt, GeoPoint paramGeoPoint);
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

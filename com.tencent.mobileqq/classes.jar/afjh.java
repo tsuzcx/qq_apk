@@ -1,74 +1,43 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-class afjh
-  implements zrt
+public class afjh
+  extends RecyclerView.ViewHolder
 {
-  afjh(afiu paramafiu, String paramString) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public void onComplete()
+  public afjh(Context paramContext, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, "check api, onComplete");
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
-  public void onFailure(int paramInt, String paramString)
+  public static afjh a(Context paramContext, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
-    }
-    if ((afiu.a(this.jdField_a_of_type_Afiu).isFinishing()) || (this.jdField_a_of_type_Afiu.b)) {
-      return;
-    }
-    this.jdField_a_of_type_Afiu.c();
-    if (afiu.a(this.jdField_a_of_type_Afiu) != null) {
-      afiu.a(this.jdField_a_of_type_Afiu).removeCallbacks(afiu.a(this.jdField_a_of_type_Afiu));
-    }
-    this.jdField_a_of_type_Afiu.a(ajjy.a(2131647812), this.jdField_a_of_type_JavaLangString);
+    return new afjh(paramContext, paramView);
   }
   
-  public void onPermission(int paramInt)
+  public static afjh a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
-    }
-    if ((afiu.a(this.jdField_a_of_type_Afiu).isFinishing()) || (this.jdField_a_of_type_Afiu.b)) {
-      return;
-    }
-    this.jdField_a_of_type_Afiu.c();
-    if (afiu.a(this.jdField_a_of_type_Afiu) != null) {
-      afiu.a(this.jdField_a_of_type_Afiu).removeCallbacks(afiu.a(this.jdField_a_of_type_Afiu));
-    }
-    this.jdField_a_of_type_Afiu.a(ajjy.a(2131647813), this.jdField_a_of_type_JavaLangString);
+    return new afjh(paramContext, LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false));
   }
   
-  public void onSuccess(JSONObject paramJSONObject)
+  public View a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, "check api, onSuccess");
-    }
-    if ((afiu.a(this.jdField_a_of_type_Afiu).isFinishing()) || (this.jdField_a_of_type_Afiu.b)) {
-      return;
-    }
-    if (afiu.a(this.jdField_a_of_type_Afiu) != null) {
-      afiu.a(this.jdField_a_of_type_Afiu).removeCallbacks(afiu.a(this.jdField_a_of_type_Afiu));
-    }
-    afiu.b(this.jdField_a_of_type_Afiu);
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, "check api, onTrigger");
-    }
+    return this.jdField_a_of_type_AndroidViewView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afjh
  * JD-Core Version:    0.7.0.1
  */

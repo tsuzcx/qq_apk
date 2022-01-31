@@ -1,9 +1,9 @@
 package com.tencent.open.downloadnew;
 
 import android.text.TextUtils;
-import bcds;
-import bchy;
-import bcid;
+import bdht;
+import bdlz;
+import bdme;
 import java.io.File;
 
 public final class YybHandleUtil$1
@@ -11,7 +11,7 @@ public final class YybHandleUtil$1
 {
   public void run()
   {
-    Object localObject = bcid.a().a("com.tencent.android.qqdownloader");
+    Object localObject = bdme.a().a("com.tencent.android.qqdownloader");
     String str = "";
     if (localObject != null) {
       str = ((DownloadInfo)localObject).l;
@@ -19,10 +19,10 @@ public final class YybHandleUtil$1
     if (!TextUtils.isEmpty(str))
     {
       localObject = new File(str);
-      bcds.c(bchy.a, "---localFilePath = " + str);
+      bdht.c(bdlz.a, "---localFilePath = " + str);
       if ((localObject != null) && (((File)localObject).exists()))
       {
-        bcds.c(bchy.a, "---delete apk ");
+        bdht.c(bdlz.a, "---delete apk ");
         ((File)localObject).delete();
       }
     }

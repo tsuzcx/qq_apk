@@ -17,6 +17,7 @@ public class VFooterLayout
   extends FrameLayout
   implements IVView<VFooter>, IFooterCallBack
 {
+  private VFooterLayout.OnFooterStateChangeListener listener;
   private JSONObject mFireEventJsonObject = new JSONObject();
   private boolean mIsRefreshStick = false;
   private boolean mShowing = true;
@@ -77,6 +78,20 @@ public class VFooterLayout
     return this.mShowing;
   }
   
+  public void onFingerRelease()
+  {
+    if (this.listener != null) {
+      this.listener.onFooterFingerRelease();
+    }
+  }
+  
+  public void onMove(int paramInt)
+  {
+    if (this.listener != null) {
+      this.listener.onFooterMove(paramInt);
+    }
+  }
+  
   public void onReleaseToLoadMore()
   {
     JSONArray localJSONArray = new JSONArray();
@@ -93,6 +108,9 @@ public class VFooterLayout
   
   public void onStateFinish(boolean paramBoolean)
   {
+    if (this.listener != null) {
+      this.listener.onFooterFinish();
+    }
     JSONArray localJSONArray = new JSONArray();
     if (getComponent().getDomObject() != null)
     {
@@ -131,6 +149,11 @@ public class VFooterLayout
     }
     localJSONArray.put("refresh");
     getComponent().footerFireEvent("refresh", localJSONArray, this.mFireEventJsonObject);
+  }
+  
+  public void setListener(VFooterLayout.OnFooterStateChangeListener paramOnFooterStateChangeListener)
+  {
+    this.listener = paramOnFooterStateChangeListener;
   }
   
   public void setRefreshStick(boolean paramBoolean)

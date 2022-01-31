@@ -1,47 +1,27 @@
-import android.os.Bundle;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.14;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-class azgg
-  implements azgl
+public class azgg
+  implements swm
 {
-  azgg(azgf paramazgf) {}
+  public azgg(TroopBarPublishActivity.14 param14) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.change_machine", 2, "getChangeMachineFlag result:" + paramJSONObject);
-    }
-    int j = 0;
-    int k = -1;
-    paramInt = k;
-    int i = j;
-    if (paramJSONObject != null)
+    if (paramInt != 0)
     {
-      if (paramJSONObject.has("code")) {
-        break label88;
+      if (QLog.isColorLevel()) {
+        QLog.e("tribe_publish_TroopBarPublishActivity", 2, "compositeVideo: errorCode = " + paramInt);
       }
-      i = j;
-      paramInt = k;
-    }
-    for (;;)
-    {
-      if ((paramInt == 0) && (i != 0))
-      {
-        azgf.a(this.a);
-        this.a.b();
-      }
+      this.a.this$0.a(null, this.a.a);
       return;
-      label88:
-      k = paramJSONObject.optInt("code");
-      paramInt = k;
-      i = j;
-      if (k == 0)
-      {
-        i = paramJSONObject.optInt("flag");
-        paramInt = k;
-      }
     }
+    this.a.this$0.jdField_a_of_type_Azaj.b = this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoWidth;
+    this.a.this$0.jdField_a_of_type_Azaj.c = this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoHeight;
+    this.a.this$0.jdField_a_of_type_Azaj.a = ((int)this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration);
+    this.a.this$0.a(paramString2, this.a.a);
   }
 }
 

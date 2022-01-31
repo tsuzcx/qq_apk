@@ -1,42 +1,41 @@
-import android.content.Context;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.io.File;
+import android.widget.ToggleButton;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import java.util.List;
 
 public class abss
-  implements View.OnClickListener
+  implements auzo
 {
-  public abss(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public abss(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void onClick(View paramView)
+  public void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton, Boolean paramBoolean)
   {
-    this.a.b(3);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.b);
-    if (this.a.a().booleanValue())
+    if (paramBoolean.booleanValue())
     {
-      this.a.b();
-      paramView = ThemeUtil.getThemeVoiceRootPath();
-      if (paramView != null)
+      if ((this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) || (this.a.a(this.a.jdField_a_of_type_JavaUtilList)))
       {
-        paramView = new File(paramView + File.separatorChar + "message.mp3");
-        if (paramView.exists())
-        {
-          this.a.b();
-          this.a.a(Uri.fromFile(paramView));
+        if (this.a.a(this.a.jdField_a_of_type_JavaUtilList)) {
+          this.a.b(2131693552);
         }
+        return;
       }
+      axqw.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "1", "", "", "");
+      this.a.jdField_a_of_type_JavaUtilList.add(paramProfileLabelInfo);
     }
-    else
+    for (;;)
     {
+      this.a.jdField_a_of_type_Auzp.c(paramProfileLabelInfo, paramToggleButton);
+      this.a.a(this.a.jdField_a_of_type_JavaUtilList.size());
+      if (this.a.jdField_a_of_type_Absw == null) {
+        break;
+      }
+      this.a.jdField_a_of_type_Absw.notifyDataSetChanged();
       return;
+      if (!this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) {
+        break;
+      }
+      this.a.a(paramProfileLabelInfo, this.a.jdField_a_of_type_JavaUtilList);
     }
-    this.a.b();
-    this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
   }
 }
 

@@ -1,46 +1,65 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.QbSdk;
-import java.io.File;
-import java.util.HashMap;
+import java.io.IOException;
 
 class FileJsPlugin$8
-  implements Runnable
+  implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$8(FileJsPlugin paramFileJsPlugin, String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt) {}
+  FileJsPlugin$8(FileJsPlugin paramFileJsPlugin, String paramString1, byte[] paramArrayOfByte, JsRuntime paramJsRuntime, String paramString2, int paramInt, String paramString3, String paramString4, long paramLong) {}
   
-  public void run()
+  public String run()
   {
-    Object localObject1 = this.this$0.jsPluginEngine.appBrandRuntime.getCurWebviewContainer();
-    if (localObject1 != null)
+    if ((this.val$data == null) && (this.val$nativeBufferBytes == null)) {
+      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "invalid data ", this.val$callbackId);
+    }
+    if (!FileJsPlugin.access$300(this.this$0, this.val$encoding)) {
+      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "invalid encoding " + this.val$encoding, this.val$callbackId);
+    }
+    if (MiniAppFileManager.getInstance().getWxFileType(this.val$filePath) != 2) {
+      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "permission denied, open " + this.val$filePath, this.val$callbackId);
+    }
+    Object localObject = MiniAppFileManager.getInstance();
+    if (this.val$nativeBufferBytes != null) {}
+    for (long l = this.val$nativeBufferBytes.length; !((MiniAppFileManager)localObject).isFolderCanWrite(2, l); l = this.val$data.length()) {
+      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "the maximum size of the file storage is exceeded", this.val$callbackId);
+    }
+    String str2 = MiniAppFileManager.getInstance().getUsrPath(this.val$filePath);
+    if (!TextUtils.isEmpty(str2)) {}
+    for (;;)
     {
-      ((WebviewContainer)localObject1).swipeRefreshLayout.setEnabled(false);
-      localObject1 = MiniAppFileManager.getInstance().getAbsolutePath(this.val$filePath);
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      try
       {
-        Object localObject2 = new File((String)localObject1);
-        if ((((File)localObject2).exists()) && (((File)localObject2).canRead()))
+        if (!FileJsPlugin.access$400(this.this$0, this.val$nativeBufferBytes, this.val$data, this.val$encoding, str2, false))
         {
-          localObject2 = new HashMap();
-          ((HashMap)localObject2).put("style", "1");
-          ((HashMap)localObject2).put("local", "true");
-          ((HashMap)localObject2).put("topBarBgColor", "#808080");
-          if (QbSdk.openFileReader(this.this$0.jsPluginEngine.getActivityContext(), (String)localObject1, (HashMap)localObject2, new FileJsPlugin.8.1(this)) > 0) {
-            this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
+          StringBuilder localStringBuilder = new StringBuilder().append("writeFile failed! path:").append(str2).append(",encoding:").append(this.val$encoding).append(",nativeBufferBytes:");
+          if (this.val$nativeBufferBytes == null) {
+            break label515;
           }
+          localObject = Integer.valueOf(this.val$nativeBufferBytes.length);
+          localStringBuilder = localStringBuilder.append(localObject).append(",data:");
+          if (this.val$data != null)
+          {
+            localObject = Integer.valueOf(this.val$data.length());
+            QLog.e("[mini] FileJsPlugin", 1, localObject);
+            return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "failed to  write file" + str2, this.val$callbackId);
+          }
+          localObject = "null";
+          continue;
+          return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "the maximum size of the file storage is exceeded", this.val$callbackId);
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.e("[mini] FileJsPlugin", 2, "openDocument fail.");
+      catch (IOException localIOException)
+      {
+        return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, localIOException.getMessage(), this.val$callbackId);
       }
-      this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
+      QLog.d("[mini] FileJsPlugin", 1, "writeFile [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], aboFilePath:" + str2);
+      return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, this.val$callbackId);
+      label515:
+      String str1 = "0";
     }
   }
 }

@@ -1,25 +1,8 @@
-import android.support.annotation.Nullable;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
-
-class bikp
-  extends bikw
+public abstract interface bikp
 {
-  bikp(bikm parambikm, DoodleEmojiItem paramDoodleEmojiItem)
-  {
-    super(paramDoodleEmojiItem);
-  }
+  public abstract void a(bikt parambikt);
   
-  protected void a(@Nullable DoodleEmojiItem arg1)
-  {
-    super.onResult(???);
-    urk.b("DoodleEmojiManager", "startDownload again");
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = null;
-      this.a.d();
-      return;
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 

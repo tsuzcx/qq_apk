@@ -3,12 +3,12 @@ package cooperation.qzone;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bfpc;
+import bgxj;
 
 public class LbsDataV2$WifiInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WifiInfo> CREATOR = new bfpc();
+  public static final Parcelable.Creator<WifiInfo> CREATOR = new bgxj();
   public String mac = "";
   public int rssi;
   

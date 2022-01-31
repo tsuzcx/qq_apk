@@ -1,10 +1,15 @@
-public abstract interface avci
+import com.tencent.mobileqq.data.MessageForPtt;
+import java.util.ArrayList;
+
+class avci
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public int a;
+  public final ArrayList<MessageForPtt> a = new ArrayList(100);
+  public final int b = 99;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avci
  * JD-Core Version:    0.7.0.1
  */

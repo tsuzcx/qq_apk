@@ -12,7 +12,7 @@ class ReadInJoyChannelActivity$8
     if (this.this$0.leftView != null)
     {
       if (this.a <= 0) {
-        this.this$0.leftView.setText(2131654133);
+        this.this$0.leftView.setText(2131720023);
       }
     }
     else {
@@ -20,10 +20,10 @@ class ReadInJoyChannelActivity$8
     }
     if (this.a > 99)
     {
-      this.this$0.leftView.setText(String.format("%s(%d+)", new Object[] { this.this$0.getString(2131654133), Integer.valueOf(99) }));
+      this.this$0.leftView.setText(String.format("%s(%d+)", new Object[] { this.this$0.getString(2131720023), Integer.valueOf(99) }));
       return;
     }
-    this.this$0.leftView.setText(String.format("%s(%d)", new Object[] { this.this$0.getString(2131654133), Integer.valueOf(this.a) }));
+    this.this$0.leftView.setText(String.format("%s(%d)", new Object[] { this.this$0.getString(2131720023), Integer.valueOf(this.a) }));
   }
 }
 

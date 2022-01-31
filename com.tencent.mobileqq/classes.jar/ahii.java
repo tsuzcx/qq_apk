@@ -1,128 +1,40 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.widget.Button;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.22.1;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
-import com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.activity.qwallet.redpacket.widget.ViewPagerTabLayout;
 
 public class ahii
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public ahii(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public ahii(ViewPagerTabLayout paramViewPagerTabLayout) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((NewFlowCameraActivity.b(this.a)) && ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))) {
-      return;
-    }
-    paramContext = paramIntent.getAction();
-    if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
+    int i = ViewPagerTabLayout.a(this.a).indexOfChild(paramView);
+    if (i != -1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PTV.NewFlowCameraActivity", 2, "receive ACTION_START_VIDEO_CHAT.");
+      if (ViewPagerTabLayout.a(this.a).getCurrentItem() == i) {
+        break label85;
       }
-      paramContext = BaseActivity2.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131300778);
-      if (paramContext != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(paramContext);
+      if (ViewPagerTabLayout.a(this.a)) {
+        break label74;
       }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.e();
-      }
-      this.a.n();
-      return;
-    }
-    String str;
-    int i;
-    if ("tencent.video.q2v.startUploadPTV".equals(paramContext))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PTV.NewFlowCameraActivity", 2, "receive ACTION_BLESS_UPLOAD_PTV.");
-      }
-      switch (paramIntent.getIntExtra("broadcastType", 1))
-      {
-      default: 
-        return;
-      case 1: 
-        if (!TextUtils.isEmpty(NewFlowCameraActivity.a(this.a)))
-        {
-          str = "";
-          if (this.a.jdField_a_of_type_Ahjj != null) {
-            str = this.a.jdField_a_of_type_Ahjj.a();
-          }
-          i = paramIntent.getIntExtra("recordType", 0);
-          if (i != 3) {
-            break label315;
-          }
-          paramContext = "0X8008382";
-        }
-        break;
+      this.a.setCurrentTab(i, false);
+      if (ViewPagerTabLayout.a(this.a) != null) {
+        ViewPagerTabLayout.a(this.a).a(i);
       }
     }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(paramContext))
+    label74:
+    label85:
+    while (ViewPagerTabLayout.a(this.a) == null) {
+      for (;;)
       {
-        ahhk.a("", paramContext, str, "", NewFlowCameraActivity.a(this.a), "");
-        if (QLog.isColorLevel()) {
-          QLog.d("PTV.NewFlowCameraActivity", 2, String.format("subAction[%s], activityId[%s], templateId[%s]", new Object[] { paramContext, NewFlowCameraActivity.a(this.a), str }));
-        }
-      }
-      NewFlowCameraActivity.a(this.a, null);
-      this.a.finish();
-      return;
-      label315:
-      if (i == 2)
-      {
-        paramContext = "0X8008383";
-        continue;
-        this.a.onPause();
         return;
-        if (!"tencent.video.q2v.nightMode".equals(paramContext)) {
-          break;
-        }
-        boolean bool = paramIntent.getBooleanExtra("dark_mode_value", true);
-        if (QLog.isColorLevel()) {
-          QLog.d("PTV.NewFlowCameraActivity", 2, "receive ACTION_NIGHT_MODE." + bool);
-        }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b.get() == 3) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b.get() == 4))
-        {
-          GLVideoClipUtil.c();
-          return;
-        }
-        if (bool)
-        {
-          NewFlowCameraActivity.c(this.a, true);
-          NewFlowCameraActivity.a(this.a).setVisibility(0);
-          NewFlowCameraActivity.d(this.a, true);
-          GLVideoClipUtil.a(true);
-          NewFlowCameraActivity.c(this.a);
-          awqx.b(null, "dc00898", "", "", "0X8007BB6", "0X8007BB6", 0, 0, "", "", "", "");
-          if (!NewFlowCameraActivity.c(this.a)) {
-            break;
-          }
-          NewFlowCameraActivity.e(this.a, false);
-          NewFlowCameraActivity.a(this.a).setVisibility(0);
-          this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new NewFlowCameraActivity.22.1(this), 3000L);
-          return;
-        }
-        NewFlowCameraActivity.a(this.a).setVisibility(8);
-        NewFlowCameraActivity.c(this.a, false);
-        NewFlowCameraActivity.d(this.a, false);
-        GLVideoClipUtil.b();
-        return;
+        this.a.setCurrentTab(i);
       }
-      paramContext = null;
     }
+    ViewPagerTabLayout.a(this.a).b(i);
   }
 }
 

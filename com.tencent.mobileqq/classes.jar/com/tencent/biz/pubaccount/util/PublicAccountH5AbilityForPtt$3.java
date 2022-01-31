@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.util;
 
-import rss;
+import sfk;
 
 public class PublicAccountH5AbilityForPtt$3
   implements Runnable
 {
-  public PublicAccountH5AbilityForPtt$3(rss paramrss) {}
+  public PublicAccountH5AbilityForPtt$3(sfk paramsfk) {}
   
   public void run()
   {
-    rss.a(this.this$0);
+    sfk.a(this.this$0);
   }
 }
 

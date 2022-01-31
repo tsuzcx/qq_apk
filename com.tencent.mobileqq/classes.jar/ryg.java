@@ -1,44 +1,8 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import org.json.JSONObject;
 
-public class ryg
-  extends rxz
+public abstract interface ryg
 {
-  private TextView a;
-  
-  private ryg(ViewGroup paramViewGroup, rwm paramrwm)
-  {
-    super(paramViewGroup, paramrwm, 2131494548);
-  }
-  
-  public static ryg a(ViewGroup paramViewGroup, rwm paramrwm)
-  {
-    return new ryg(paramViewGroup, paramrwm);
-  }
-  
-  protected void a()
-  {
-    this.a = ((TextView)a(1).findViewById(2131313269));
-  }
-  
-  protected void a(int paramInt)
-  {
-    super.a(paramInt);
-    this.a.setVisibility(paramInt);
-  }
-  
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    super.a(paramstSimpleMetaFeed);
-    if (paramstSimpleMetaFeed == null) {
-      return;
-    }
-    this.a.setText(paramstSimpleMetaFeed.feed_desc);
-    a(1, 1, paramstSimpleMetaFeed);
-    a(2, 2, paramstSimpleMetaFeed);
-  }
+  public abstract void a(String paramString, JSONObject paramJSONObject);
 }
 
 

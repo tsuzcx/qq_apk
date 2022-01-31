@@ -16,15 +16,15 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import bbtm;
-import bcbd;
-import bcdq;
-import bcds;
-import bcdy;
-import bcev;
-import bcez;
-import bcfb;
-import bchp;
+import bcxm;
+import bdfe;
+import bdhr;
+import bdht;
+import bdhz;
+import bdiw;
+import bdja;
+import bdjc;
+import bdlq;
 import com.tencent.smtt.sdk.WebView;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -41,7 +41,7 @@ public class AppInterface
   private static final String TAG = "AppInterface";
   protected Activity activity;
   public Handler mHandler;
-  public bchp tipDialog;
+  public bdlq tipDialog;
   protected WebView webView;
   
   public AppInterface(Activity paramActivity, WebView paramWebView)
@@ -53,12 +53,12 @@ public class AppInterface
   
   public static String getImei()
   {
-    return bcez.c();
+    return bdja.c();
   }
   
   public static String getImsi()
   {
-    return bcez.d();
+    return bdja.d();
   }
   
   public String gSetPackageScanSetting(String paramString1, String paramString2)
@@ -69,20 +69,20 @@ public class AppInterface
       return null;
       if (paramString1.equals("2"))
       {
-        if (bcev.a(this.activity)) {
+        if (bdiw.a(this.activity)) {
           return "1";
         }
         return "0";
       }
       if (paramString1.equals("0"))
       {
-        bcfb.a("100", "ANDROIDQQ.STORE.UPDATECHECKBOX", "");
-        paramString1 = new bcbd(this, paramString2);
+        bdjc.a("100", "ANDROIDQQ.STORE.UPDATECHECKBOX", "");
+        paramString1 = new bdfe(this, paramString2);
         this.mHandler.post(new AppInterface.2(this, paramString1));
         return null;
       }
     } while (!paramString1.equals("1"));
-    paramString1 = bbtm.a().a().getSharedPreferences("package_scan", 0).edit();
+    paramString1 = bcxm.a().a().getSharedPreferences("package_scan", 0).edit();
     paramString1.putBoolean("qqsetting_package_scan_flag", true);
     paramString1.commit();
     return "1";
@@ -94,7 +94,7 @@ public class AppInterface
       return "baby,you don't have permission";
     }
     JSONArray localJSONArray = new JSONArray();
-    List localList = bcev.a(this.activity);
+    List localList = bdiw.a(this.activity);
     if (localList != null)
     {
       int i = 0;
@@ -126,7 +126,7 @@ public class AppInterface
       if (!hasRight()) {
         return "baby,you don't have permission";
       }
-      if (bcdy.a(paramString1)) {
+      if (bdhz.a(paramString1)) {
         return "[]";
       }
       paramString1 = this.activity.getPackageManager().getPackageInfo(paramString1, 0);
@@ -173,7 +173,7 @@ public class AppInterface
       if (j == 0) {
         break label224;
       }
-      paramString1.put(bcdq.a(paramPackageInfo.applicationInfo.loadIcon(this.activity.getPackageManager())));
+      paramString1.put(bdhr.a(paramPackageInfo.applicationInfo.loadIcon(this.activity.getPackageManager())));
       label128:
       if (k == 0) {
         break label252;
@@ -231,10 +231,10 @@ public class AppInterface
     if (!hasRight()) {
       return "baby,you don't have permission";
     }
-    if (bcdy.a(paramString1)) {
+    if (bdhz.a(paramString1)) {
       return "{}";
     }
-    paramString2 = bcdy.a(paramString1, paramString2);
+    paramString2 = bdhz.a(paramString1, paramString2);
     if (paramString2.length == 0) {
       return "{}";
     }
@@ -250,7 +250,7 @@ public class AppInterface
       i += 1;
     }
     paramString2 = new JSONArray();
-    Object localObject = bcev.a(this.activity);
+    Object localObject = bdiw.a(this.activity);
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -375,10 +375,10 @@ public class AppInterface
   
   public void getUpdateApp(String paramString)
   {
-    bcds.b("AppUpdate", "getUpdateApp , param = " + paramString);
+    bdht.b("AppUpdate", "getUpdateApp , param = " + paramString);
     try
     {
-      bbtm.a().a(paramString, this.activity, this.webView);
+      bcxm.a().a(paramString, this.activity, this.webView);
       return;
     }
     catch (Exception paramString)
@@ -390,7 +390,7 @@ public class AppInterface
   public int uninstallApp(String paramString)
   {
     if (!hasRight()) {}
-    while (!bcev.b(this.activity, paramString)) {
+    while (!bdiw.b(this.activity, paramString)) {
       return -1;
     }
     return 0;

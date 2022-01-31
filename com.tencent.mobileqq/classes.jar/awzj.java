@@ -1,176 +1,320 @@
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.os.Build;
 import android.os.Bundle;
-import android.text.SpannableStringBuilder;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.view.View;
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeRequest;
+import com.tencent.qphone.base.util.QLog;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
+import mqq.app.NewIntent;
+import mqq.manager.TicketManager;
+import oicq.wlogin_sdk.request.WFastLoginInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.tools.util;
 
 public class awzj
-  extends awzf
 {
-  private String ai;
-  private String aj;
-  protected long c;
-  protected long d;
-  protected boolean d;
-  protected long e;
-  protected int k;
-  protected int l;
+  protected static boolean a;
+  protected static String b;
+  protected Handler a;
+  protected String a;
+  protected HashMap<String, String> a;
+  protected NewIntent a;
+  protected Handler b;
+  protected boolean b;
+  
+  static
+  {
+    jdField_b_of_type_JavaLangString = "";
+  }
   
   public awzj()
   {
-    this.a = "timer";
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  private long a()
+  public static int a(String paramString)
   {
-    if (!this.jdField_d_of_type_Boolean)
+    int j = 0;
+    if (paramString.contains("$OPID$")) {
+      j = 1;
+    }
+    int i = j;
+    if (paramString.contains("$AT$")) {
+      i = j | 0x2;
+    }
+    j = i;
+    if (paramString.contains("$PT$")) {
+      j = i | 0x4;
+    }
+    i = j;
+    if (paramString.contains("$PF$")) {
+      i = j | 0x40;
+    }
+    j = i;
+    if (paramString.contains("$ESK$")) {
+      j = i | 0x80;
+    }
+    return j;
+  }
+  
+  public static Bundle a(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      long l1 = awao.a();
-      long l2 = this.c + this.k - l1;
-      if (l2 < 0L)
+      return localBundle;
+      paramString = paramString.split("&");
+    } while (paramString == null);
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = paramString[i];
+      int k = localObject.indexOf('=');
+      if (k != -1) {}
+      try
       {
-        this.jdField_d_of_type_Boolean = true;
-        l1 = 0L;
+        localBundle.putString(localObject.substring(0, k), localObject.substring(k + 1));
+        i += 1;
       }
-      do
+      catch (Exception localException)
       {
-        return l1;
-        if (l2 <= 0L) {
-          break;
+        for (;;)
+        {
+          QLog.d("AppLaucherHelper", 2, localException.getMessage(), localException);
         }
-        l1 = l2;
-      } while (l2 < this.k);
-      return this.k;
-      this.jdField_d_of_type_Boolean = true;
-      return l2;
-    }
-    return 0L;
-  }
-  
-  private SpannableStringBuilder a(long paramLong)
-  {
-    ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(-91585);
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(this.ai);
-    localSpannableStringBuilder.append('\n');
-    if (paramLong > 0L)
-    {
-      int i = localSpannableStringBuilder.length();
-      String str = String.valueOf(paramLong) + ajjy.a(2131648817);
-      localSpannableStringBuilder.append(str);
-      localSpannableStringBuilder.append(this.Y);
-      localSpannableStringBuilder.setSpan(localForegroundColorSpan, i, str.length() + i, 33);
-      return localSpannableStringBuilder;
-    }
-    localSpannableStringBuilder.append(this.aj);
-    return localSpannableStringBuilder;
-  }
-  
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    if ((paramView != null) && ((paramView instanceof CountdownTextView)))
-    {
-      paramContext = (CountdownTextView)paramView;
-      paramContext.a(a(), new awzk(this, paramContext));
-      paramContext.setTag(this);
-      return paramContext;
-    }
-    paramContext = new CountdownTextView(paramContext);
-    paramContext.setId(2131312294);
-    paramContext.setTag(this);
-    paramContext.setMaxLines(3);
-    paramContext.setTextColor(-10987432);
-    paramContext.setTextSize(2, 12.0F);
-    long l1 = a();
-    if (this.Y != null) {
-      paramContext.setText(a(l1));
-    }
-    paramContext.a(l1, new awzl(this, paramContext));
-    return paramContext;
-  }
-  
-  public String a()
-  {
-    return "Timer";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.ai = awbk.a(paramObjectInput.readUTF(), false);
-    this.aj = awbk.a(paramObjectInput.readUTF(), false);
-    this.c = paramObjectInput.readLong();
-    this.k = paramObjectInput.readInt();
-    this.l = paramObjectInput.readInt();
-    this.jdField_d_of_type_Long = paramObjectInput.readLong();
-    this.e = paramObjectInput.readLong();
-    this.jdField_d_of_type_Boolean = paramObjectInput.readBoolean();
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    if (this.ai == null)
-    {
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.aj != null) {
-        break label108;
       }
     }
-    label108:
-    for (String str = "";; str = this.aj)
+  }
+  
+  public static void a()
+  {
+    jdField_b_of_type_JavaLangString = "";
+  }
+  
+  private void a(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  {
+    localawzn = new awzn(this, System.currentTimeMillis(), paramString3, paramContext, paramInt);
+    if (this.jdField_a_of_type_MqqAppNewIntent == null) {
+      this.jdField_a_of_type_MqqAppNewIntent = new NewIntent(paramContext, mxh.class);
+    }
+    localAuthorizeRequest = new FastAuthorize.AuthorizeRequest();
+    long l1 = 0L;
+    try
     {
-      paramObjectOutput.writeUTF(str);
-      paramObjectOutput.writeLong(this.c);
-      paramObjectOutput.writeInt(this.k);
-      paramObjectOutput.writeInt(this.l);
-      paramObjectOutput.writeLong(this.jdField_d_of_type_Long);
-      paramObjectOutput.writeLong(this.e);
-      paramObjectOutput.writeBoolean(this.jdField_d_of_type_Boolean);
+      l2 = Long.parseLong(paramAppInterface.getCurrentAccountUin());
+      l1 = l2;
+    }
+    catch (Exception localException)
+    {
+      long l2;
+      label64:
+      break label64;
+    }
+    localAuthorizeRequest.uin.set(l1);
+    l1 = 0L;
+    try
+    {
+      l2 = Long.parseLong(paramString1);
+      l1 = l2;
+    }
+    catch (Exception paramString1)
+    {
+      label87:
+      int i;
+      break label87;
+    }
+    localAuthorizeRequest.client_id.set(l1);
+    localAuthorizeRequest.pf.set("");
+    paramString1 = bdiw.a(paramContext);
+    localAuthorizeRequest.qqv.set(paramString1);
+    localAuthorizeRequest.sdkp.set("a");
+    paramString1 = Build.DISPLAY;
+    localAuthorizeRequest.os.set(paramString1);
+    localAuthorizeRequest.skey.set(paramString4);
+    i = a(paramString2);
+    if (i == 0)
+    {
+      bdiw.a(paramContext, paramString3, a(this.jdField_a_of_type_JavaLangString), paramInt);
+      jdField_a_of_type_Boolean = false;
       return;
-      str = this.ai;
-      break;
+    }
+    localAuthorizeRequest.flags.set(i);
+    paramString2 = "";
+    paramString1 = paramString2;
+    for (;;)
+    {
+      try
+      {
+        arrayOfSignature = paramContext.getPackageManager().getPackageInfo(paramString3, 64).signatures;
+        paramString1 = paramString2;
+        if (arrayOfSignature != null)
+        {
+          paramString4 = paramString2;
+          paramString1 = paramString2;
+        }
+      }
+      catch (Exception paramString2)
+      {
+        Signature[] arrayOfSignature;
+        MessageDigest localMessageDigest;
+        label302:
+        continue;
+        localAuthorizeRequest.apk_sign.set(paramString1);
+        this.jdField_a_of_type_MqqAppNewIntent.putExtra("cmd", "ConnAuthSvr.fast_qq_login");
+        try
+        {
+          this.jdField_a_of_type_MqqAppNewIntent.putExtra("data", localAuthorizeRequest.toByteArray());
+          this.jdField_a_of_type_MqqAppNewIntent.setObserver(localawzn);
+          paramAppInterface.startServlet(this.jdField_a_of_type_MqqAppNewIntent);
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 2000L);
+          return;
+        }
+        catch (Exception paramAppInterface)
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d(getClass().getSimpleName(), 2, paramAppInterface.getMessage());
+          jdField_a_of_type_Boolean = false;
+          return;
+        }
+      }
+      try
+      {
+        localMessageDigest = MessageDigest.getInstance("MD5");
+        paramString4 = paramString2;
+        paramString1 = paramString2;
+        localMessageDigest.update(arrayOfSignature[0].toByteArray());
+        paramString4 = paramString2;
+        paramString1 = paramString2;
+        paramString2 = bbdm.a(localMessageDigest.digest());
+      }
+      catch (NoSuchAlgorithmException localNoSuchAlgorithmException1)
+      {
+        paramString2 = paramString4;
+        paramString1 = paramString2;
+        localNoSuchAlgorithmException1.printStackTrace();
+        paramString1 = paramString2;
+      }
+    }
+    try
+    {
+      paramString1 = paramString2.toLowerCase();
+      paramString2 = paramString1;
+      paramString4 = paramString2;
+      paramString1 = paramString2;
+      localMessageDigest.reset();
+      paramString1 = paramString2;
+    }
+    catch (Exception paramString1)
+    {
+      paramString1 = paramString2;
+      break label302;
+    }
+    catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
+    {
+      break label356;
+    }
+    if (TextUtils.isEmpty(paramString1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(getClass().getSimpleName(), 2, "no sign");
+      }
+      jdField_a_of_type_Boolean = false;
+      bdiw.a(paramContext, paramString3, a(this.jdField_a_of_type_JavaLangString), paramInt);
+      return;
     }
   }
   
-  public void a(XmlSerializer paramXmlSerializer)
+  public boolean a(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    paramXmlSerializer.startTag(null, "timer");
-    paramXmlSerializer.attribute(null, "st", String.valueOf(this.c));
-    paramXmlSerializer.attribute(null, "dr", String.valueOf(this.k));
-    paramXmlSerializer.attribute(null, "index", String.valueOf(this.l));
-    if (!TextUtils.isEmpty(this.ai)) {
-      paramXmlSerializer.attribute(null, "summary", this.ai);
+    if (jdField_a_of_type_Boolean) {
+      return false;
     }
-    if (!TextUtils.isEmpty(this.aj)) {
-      paramXmlSerializer.attribute(null, "ending", this.aj);
+    if (QLog.isColorLevel()) {
+      QLog.d(getClass().getSimpleName(), 2, "lauchApp");
     }
-    paramXmlSerializer.text(this.Y);
-    paramXmlSerializer.endTag(null, "timer");
-  }
-  
-  public boolean a(awwc paramawwc)
-  {
-    if (paramawwc == null) {
+    jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new awzm(this, Looper.getMainLooper(), paramContext, paramString3, paramInt, paramAppInterface, paramString1, paramString2);
+    }
+    if (paramString2.startsWith("?")) {}
+    for (this.jdField_a_of_type_JavaLangString = paramString2.substring(1);; this.jdField_a_of_type_JavaLangString = paramString2)
+    {
+      a(paramAppInterface, paramContext, paramString1, paramString2, paramString3, ((TicketManager)paramAppInterface.getManager(2)).getSkey(paramAppInterface.getAccount()), paramInt);
       return true;
     }
-    this.c = awwf.a(paramawwc.a("st"));
-    this.k = awwf.a(paramawwc.a("dr"));
-    this.l = awwf.a(paramawwc.a("index"));
-    this.ai = awbk.a(paramawwc.a("summary"), false);
-    this.aj = awbk.a(paramawwc.a("st"), false);
-    this.Y = awbk.a(awuw.a(paramawwc), false);
-    return true;
+  }
+  
+  public boolean a(String paramString1, Context paramContext, String paramString2, AppInterface paramAppInterface, String paramString3, String paramString4, int paramInt, String paramString5)
+  {
+    if (jdField_a_of_type_Boolean) {
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(getClass().getSimpleName(), 2, "launchAppWithWlogin");
+    }
+    if ((TextUtils.isEmpty(paramString2)) || (!mvv.a().h(paramString2))) {
+      return false;
+    }
+    jdField_a_of_type_Boolean = true;
+    if (this.jdField_b_of_type_AndroidOsHandler == null) {
+      this.jdField_b_of_type_AndroidOsHandler = new awzk(this);
+    }
+    Long localLong = Long.valueOf(0L);
+    try
+    {
+      paramString2 = Long.valueOf(paramString3);
+      long l1 = 1L;
+      try
+      {
+        long l2 = Long.valueOf(paramString5).longValue();
+        l1 = l2;
+      }
+      catch (Exception paramString3)
+      {
+        label99:
+        break label99;
+      }
+      paramString3 = new WtloginHelper(paramAppInterface.getApplication().getApplicationContext());
+      paramString5 = util.getPkgSigFromApkName(paramContext, paramString4);
+      paramString3.GetA1WithA1(paramAppInterface.getAccount(), 16L, 16L, paramString4.getBytes(), 1L, paramString2.longValue(), l1, "5.2".getBytes(), paramString5, new WUserSigInfo(), new WFastLoginInfo());
+      paramString3.SetListener(new awzl(this, paramString1, paramString3, paramInt, paramContext));
+      this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 10000L);
+      return true;
+    }
+    catch (Exception paramString2)
+    {
+      for (;;)
+      {
+        paramString2 = localLong;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("appcenter", 2, "parse appid error = " + paramString3);
+          paramString2 = localLong;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awzj
  * JD-Core Version:    0.7.0.1
  */

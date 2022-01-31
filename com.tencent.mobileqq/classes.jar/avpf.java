@@ -1,52 +1,69 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
+import java.lang.ref.WeakReference;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class avpf
-  extends avow
+  implements auoo
 {
-  public avos a;
-  public boolean b;
+  int jdField_a_of_type_Int;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public avpf(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public avpf(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString, int paramInt)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-    this.f = false;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(String paramString)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    try
+    return null;
+  }
+  
+  public void a(auop paramauop) {}
+  
+  public void b(auop paramauop)
+  {
+    if (paramauop.jdField_a_of_type_Int == 0)
     {
-      Object localObject = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject).optString("appname");
-      String str1 = ((JSONObject)localObject).optString("desc");
-      String str2 = ((JSONObject)localObject).optString("appIcon");
-      localObject = new MiniAppLocalSearchEntity(((JSONObject)localObject).optString("appid"), paramString, str2, str1, ((JSONObject)localObject).optInt("showMask", 0));
-      this.a = new avos((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.c, (MiniAppLocalSearchEntity)localObject, this.g);
-      if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.g)) && (paramString.equalsIgnoreCase(this.g)))
-      {
-        this.b = true;
-        return;
+      MessageForStructing localMessageForStructing = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      localMessageForStructing.structingMsg.mResid = paramauop.c;
+      localMessageForStructing.structingMsg.mFileName = String.valueOf(localMessageForStructing.uniseq);
+      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localMessageForStructing.uniseq, localMessageForStructing.structingMsg.getBytes());
+      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReceiptMsgManager", 2, "send real struct msg done, uniseq: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
       }
-      this.b = false;
       return;
     }
-    catch (JSONException paramString)
-    {
-      QLog.e("NetSearchTemplateMiniAppItem", 1, "parseLayoutExtensions, exception.");
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMsgManager", 2, "upload receipt msg pack failed, result.errStr=" + paramauop.b + ",result.errStr=" + paramauop.jdField_a_of_type_JavaLangString + " uniseq=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
     }
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extraflag = 32768;
+    ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
+    paramauop = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    if ((paramauop != null) && (paramauop.uniseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq)) {
+      paramauop.extraflag = 32768;
+    }
+    paramauop = this.jdField_a_of_type_JavaLangString;
+    int i = this.jdField_a_of_type_Int;
+    long l = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq;
+    ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(0)).notifyUI(MessageHandler.a(this.jdField_a_of_type_Int), false, new Object[] { paramauop, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avpf
  * JD-Core Version:    0.7.0.1
  */

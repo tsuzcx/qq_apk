@@ -1,20 +1,29 @@
-import android.support.v4.view.MotionEventCompat;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
-public class qrx
-  implements View.OnTouchListener
+class qrx
+  implements DialogInterface.OnDismissListener
 {
-  public qrx(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview) {}
+  qrx(qrw paramqrw) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((MotionEventCompat.getActionMasked(paramMotionEvent) == 0) && (ReadInJoyNavigationGridview.a(this.a) != null)) {
-      ReadInJoyNavigationGridview.a(this.a).a();
+    paramDialogInterface = this.a;
+    StringBuilder localStringBuilder = new StringBuilder().append("DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
+    if (!qrw.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      qrw.a(paramDialogInterface, bool);
+      if ((qrw.a(this.a) != null) && (qrw.a(this.a).b()) && (qrw.b(this.a)) && (qrw.a(this.a))) {
+        qrw.a(this.a).c();
+      }
+      if (qrw.a(this.a) != null) {
+        qrw.a(this.a).f();
+      }
+      qrw.a(this.a, false);
+      return;
     }
-    return true;
   }
 }
 

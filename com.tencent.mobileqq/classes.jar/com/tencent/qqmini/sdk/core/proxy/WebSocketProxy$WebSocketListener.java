@@ -5,13 +5,13 @@ import java.util.Map;
 
 public abstract interface WebSocketProxy$WebSocketListener
 {
-  public abstract void onClose(int paramInt, String paramString);
+  public abstract void onClose(int paramInt1, int paramInt2, String paramString);
   
-  public abstract void onError(int paramInt, String paramString);
+  public abstract void onError(int paramInt1, int paramInt2, String paramString);
   
-  public abstract void onMessage(String paramString, byte[] paramArrayOfByte);
+  public abstract void onMessage(int paramInt, String paramString, byte[] paramArrayOfByte);
   
-  public abstract void onOpen(int paramInt, Map<String, List<String>> paramMap);
+  public abstract void onOpen(int paramInt1, int paramInt2, Map<String, List<String>> paramMap);
 }
 
 

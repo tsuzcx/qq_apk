@@ -1,82 +1,35 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-
 public class ayzr
-  implements azax
+  extends ayzp
 {
-  public ayzr(XMediaEditor paramXMediaEditor) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b = 0;
   
-  public void a(int paramInt1, int paramInt2)
+  public ayzr()
   {
-    if (paramInt1 == paramInt2) {
-      return;
-    }
-    paramInt1 = paramInt2 - paramInt1;
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a(XMediaEditor.a(this.a), XMediaEditor.a(this.a) + paramInt1);
-    }
-    XMediaEditor.a(this.a, paramInt1 + XMediaEditor.a(this.a));
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public void a(RecyclerView.ViewHolder paramViewHolder)
+  public String toString()
   {
-    paramViewHolder = ((azaz)paramViewHolder).jdField_a_of_type_Azaa;
-    this.a.a(paramViewHolder.c);
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean)
-  {
-    if (XMediaEditor.a(this.a) != this.a.a.a())
-    {
-      paramViewHolder = this.a;
-      if (XMediaEditor.a(this.a)) {
-        break label73;
-      }
-    }
-    label73:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      XMediaEditor.a(paramViewHolder, paramBoolean);
-      if (XMediaEditor.a(this.a) != null) {
-        XMediaEditor.a(this.a).a(XMediaEditor.a(this.a));
-      }
-      return;
-    }
-  }
-  
-  public void b(RecyclerView.ViewHolder paramViewHolder)
-  {
-    int i = ((azaz)paramViewHolder).jdField_a_of_type_Azaa.c;
-    if (i == 0) {}
-    while (this.a.a.a(i - 1).b() == -1) {
-      return;
-    }
-    this.a.a(i - 1);
-  }
-  
-  public void c(RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = (azbo)paramViewHolder;
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a = false;
-    }
-    XMediaEditor.a(this.a, (azaj)paramViewHolder.jdField_a_of_type_Azaa);
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a(paramViewHolder.jdField_a_of_type_AndroidWidgetEditText, true);
-    }
-  }
-  
-  public void d(RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = (azbo)paramViewHolder;
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a(paramViewHolder.jdField_a_of_type_AndroidWidgetEditText, false);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" isExist:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" fileId:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" startOffset:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" videoAttr:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" videoKandianType:").append(this.b);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayzr
  * JD-Core Version:    0.7.0.1
  */

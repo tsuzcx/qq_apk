@@ -1,24 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import ndn;
-import qht;
-import qiy;
-import qmu;
-import qmv;
+import noo;
+import npx;
+import qty;
+import qvd;
 
 public class VideoUIManager$7
   implements Runnable
 {
-  public VideoUIManager$7(qiy paramqiy, int paramInt) {}
+  public VideoUIManager$7(qvd paramqvd) {}
   
   public void run()
   {
-    if ((qiy.a(this.this$0) != null) && (qiy.a(this.this$0).a != null))
-    {
-      qmv localqmv = new qmv("", "", qiy.a(this.this$0).a.mVideoVid, qiy.a(this.this$0).a.innerUniqueID).a((int)qiy.a(this.this$0).a.mChannelID);
-      ndn.a(null, "", "0X8008AD0", "0X8008AD0", 0, 0, "", "", "", localqmv.a().a(), false);
-      ndn.a(null, "", "0X8009B57", "0X8009B57", 0, 0, String.valueOf(this.a), "", "", localqmv.a().a(), false);
+    if ((qvd.a(this.this$0) != null) && (qvd.a(this.this$0).a != null)) {
+      noo.a(null, "", "0X8008ACF", "0X8008ACF", 0, 0, "", "", "", npx.a(qvd.a(this.this$0).a.mVideoVid, qvd.a(this.this$0).a.innerUniqueID, (int)qvd.a(this.this$0).a.mChannelID, null), false);
     }
   }
 }

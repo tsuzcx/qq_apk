@@ -1,24 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import dov.com.qq.im.BaseVMPeakActivity;
+import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFChunkPreviewFragment.1.1;
+import java.util.List;
 
-class bitk
-  implements View.OnClickListener
+public class bitk
+  implements bive
 {
-  bitk(bitj parambitj, bitm parambitm) {}
+  bitk(bitj parambitj) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, String paramString)
   {
-    if (!this.jdField_a_of_type_Bitm.a()) {
-      this.jdField_a_of_type_Bitm.b();
+    if (paramInt == 0) {
+      bitj.a(this.a, paramString);
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Bitj.a != null) {
-        this.jdField_a_of_type_Bitj.a.a(this.jdField_a_of_type_Bitj);
-      }
-      return;
-      this.jdField_a_of_type_Bitm.c();
-    }
+    ((bisj)bitj.a(this.a).get(paramInt)).c = paramString;
+    ((bisj)bitj.a(this.a).get(paramInt)).a = 13;
+    bitj.a(this.a).runOnUiThread(new AEGIFChunkPreviewFragment.1.1(this, paramInt));
   }
 }
 

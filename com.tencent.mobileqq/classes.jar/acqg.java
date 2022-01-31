@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
-class acqg
-  implements axbf
+public class acqg
+  extends bfmg
 {
-  acqg(acqc paramacqc) {}
+  public acqg(VisitorsActivity paramVisitorsActivity) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    axbl localaxbl = new axbl(3000, 360, 0);
-    localaxbl.a = true;
-    this.a.a.g.a(new axbe[] { localaxbl });
+    this.a.f = false;
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.c.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acqg
  * JD-Core Version:    0.7.0.1
  */

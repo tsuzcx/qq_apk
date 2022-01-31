@@ -1,34 +1,18 @@
-import android.os.Build.VERSION;
-import android.os.HandlerThread;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
 
 public class sah
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  private HandlerThread a;
+  public sah(ViolaLazyFragment paramViolaLazyFragment) {}
   
-  public HandlerThread a()
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if (this.a == null) {
-      this.a = new HandlerThread("WeishiHandlerThread");
-    }
-    return this.a;
-  }
-  
-  public void a()
-  {
-    if (this.a != null)
-    {
-      if (Build.VERSION.SDK_INT < 18) {
-        break label29;
-      }
-      this.a.quitSafely();
-    }
-    for (;;)
-    {
-      this.a = null;
-      return;
-      label29:
-      this.a.quit();
-    }
+    paramInt = this.a.getActivity().getWindow().getDecorView().getSystemUiVisibility();
+    this.a.getActivity().getWindow().getDecorView().setSystemUiVisibility(paramInt | 0x2 | 0x400);
   }
 }
 

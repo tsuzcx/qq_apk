@@ -4,28 +4,28 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import bjau;
-import bjav;
-import bjjl;
+import bkrg;
+import bkrh;
+import bkzw;
 import java.io.File;
 
 public class RMVideoSwitchCameraPicMgr
 {
-  private bjau jdField_a_of_type_Bjau = new bjau(this, null);
-  bjav jdField_a_of_type_Bjav = null;
+  private bkrg jdField_a_of_type_Bkrg = new bkrg(this, null);
+  bkrh jdField_a_of_type_Bkrh = null;
   
   private String a()
   {
     String str = "shortvideo_cover_pic";
-    if (this.jdField_a_of_type_Bjau.b) {
+    if (this.jdField_a_of_type_Bkrg.b) {
       str = "ptv_cover_pic";
     }
-    return bjjl.a + File.separator + str + ".jpg";
+    return bkzw.a + File.separator + str + ".jpg";
   }
   
   private String b()
   {
-    return bjjl.a + File.separator + "player_cover_pic" + ".jpg";
+    return bkzw.a + File.separator + "player_cover_pic" + ".jpg";
   }
   
   private native Bitmap getPreprocessBitmap(int[] paramArrayOfInt);
@@ -52,7 +52,7 @@ public class RMVideoSwitchCameraPicMgr
   public Bitmap a(boolean paramBoolean)
   {
     Object localObject = null;
-    this.jdField_a_of_type_Bjau.b = paramBoolean;
+    this.jdField_a_of_type_Bkrg.b = paramBoolean;
     String str = a();
     if (new File(str).exists())
     {

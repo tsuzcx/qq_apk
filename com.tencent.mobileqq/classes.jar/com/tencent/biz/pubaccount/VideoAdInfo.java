@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import atnz;
+import aulx;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -18,8 +18,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nea;
+import npb;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.AdInfo;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.NegFeedback;
@@ -28,12 +29,24 @@ import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.PosAdInfo;
 public class VideoAdInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoAdInfo> CREATOR = new nea();
+  public static final Parcelable.Creator<VideoAdInfo> CREATOR = new npb();
   public String A;
   public String B;
   public String C;
-  @atnz
+  @aulx
   public String D = "";
+  @aulx
+  public String E = "";
+  @aulx
+  public String F = "";
+  @aulx
+  public String G = "";
+  @aulx
+  public String H = "";
+  @aulx
+  public String I;
+  @aulx
+  public String J;
   public int a;
   public long a;
   public String a;
@@ -48,13 +61,13 @@ public class VideoAdInfo
   public long c;
   public String c;
   public ArrayList<String> c;
-  @atnz
+  @aulx
   public boolean c;
   public int d;
   public long d;
   public String d;
   public ArrayList<String> d;
-  @atnz
+  @aulx
   public boolean d;
   public int e;
   public long e;
@@ -63,16 +76,18 @@ public class VideoAdInfo
   public int f;
   public long f;
   public String f;
-  @atnz
+  @aulx
   public ArrayList<String> f;
   public int g;
   public long g;
   public String g;
-  @atnz
+  @aulx
   public ArrayList<String> g;
   public int h;
   public long h;
   public String h;
+  @aulx
+  public ArrayList<String> h;
   public int i;
   public String i;
   public int j;
@@ -85,13 +100,17 @@ public class VideoAdInfo
   public String m;
   public int n;
   public String n;
-  @atnz
+  @aulx
   public int o;
   public String o;
-  @atnz
+  @aulx
   public int p;
   public String p;
+  @aulx
+  public int q;
   public String q;
+  @aulx
+  public int r;
   public String r;
   public String s;
   public String t;
@@ -110,6 +129,9 @@ public class VideoAdInfo
     this.jdField_e_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_m_of_type_Int = 1;
     this.jdField_b_of_type_Boolean = true;
+    this.jdField_h_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_q_of_type_Int = 1;
+    this.jdField_r_of_type_Int = 3;
   }
   
   public VideoAdInfo(long paramLong, oidb_0x6cf.PosAdInfo paramPosAdInfo)
@@ -120,6 +142,9 @@ public class VideoAdInfo
     this.jdField_e_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_m_of_type_Int = 1;
     this.jdField_b_of_type_Boolean = true;
+    this.jdField_h_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_q_of_type_Int = 1;
+    this.jdField_r_of_type_Int = 3;
     if ((paramPosAdInfo == null) || (paramPosAdInfo.int32_ret.get() != 0) || (!paramPosAdInfo.msg_ad_info.has()) || (paramPosAdInfo.msg_ad_info.get() == null)) {
       return;
     }
@@ -147,11 +172,11 @@ public class VideoAdInfo
     this.jdField_n_of_type_JavaLangString = paramPosAdInfo.bytes_customized_invoke_url.get().toStringUtf8();
     this.jdField_o_of_type_JavaLangString = paramPosAdInfo.bytes_corporation_name.get().toStringUtf8();
     this.p = paramPosAdInfo.bytes_corporate_image_name.get().toStringUtf8();
-    this.q = paramPosAdInfo.bytes_corporate_logo.get().toStringUtf8();
+    this.jdField_q_of_type_JavaLangString = paramPosAdInfo.bytes_corporate_logo.get().toStringUtf8();
     this.jdField_d_of_type_Long = paramPosAdInfo.uint64_ad_uin.get();
-    this.r = paramPosAdInfo.bytes_ext.get().toStringUtf8();
-    if (TextUtils.isEmpty(this.r)) {
-      this.r = new JSONObject().toString();
+    this.jdField_r_of_type_JavaLangString = paramPosAdInfo.bytes_ext.get().toStringUtf8();
+    if (TextUtils.isEmpty(this.jdField_r_of_type_JavaLangString)) {
+      this.jdField_r_of_type_JavaLangString = new JSONObject().toString();
     }
     this.s = paramPosAdInfo.bytes_video_url.get().toStringUtf8();
     this.jdField_e_of_type_Int = paramPosAdInfo.uint32_cost_type.get();
@@ -204,6 +229,7 @@ public class VideoAdInfo
     this.jdField_h_of_type_Long = paramPosAdInfo.int64_noco_id.get();
     this.B = paramPosAdInfo.bytes_download_api_url.get().toStringUtf8();
     a(this.v);
+    b(this.v);
   }
   
   public VideoAdInfo(Parcel paramParcel)
@@ -214,6 +240,9 @@ public class VideoAdInfo
     this.jdField_e_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_m_of_type_Int = 1;
     this.jdField_b_of_type_Boolean = true;
+    this.jdField_h_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_q_of_type_Int = 1;
+    this.jdField_r_of_type_Int = 3;
     this.jdField_a_of_type_Long = paramParcel.readLong();
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_b_of_type_Long = paramParcel.readLong();
@@ -238,9 +267,9 @@ public class VideoAdInfo
     this.jdField_n_of_type_JavaLangString = paramParcel.readString();
     this.jdField_o_of_type_JavaLangString = paramParcel.readString();
     this.p = paramParcel.readString();
-    this.q = paramParcel.readString();
+    this.jdField_q_of_type_JavaLangString = paramParcel.readString();
     this.jdField_d_of_type_Long = paramParcel.readLong();
-    this.r = paramParcel.readString();
+    this.jdField_r_of_type_JavaLangString = paramParcel.readString();
     this.s = paramParcel.readString();
     this.jdField_e_of_type_Int = paramParcel.readInt();
     paramParcel.readStringList(this.jdField_b_of_type_JavaUtilArrayList);
@@ -489,6 +518,51 @@ public class VideoAdInfo
     }
   }
   
+  public void b(String paramString)
+  {
+    if ((paramString == null) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    for (;;)
+    {
+      int i1;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        this.E = paramString.optString("dpa_img");
+        this.F = paramString.optString("dpa_name");
+        this.G = paramString.optString("dpa_price");
+        this.H = paramString.optString("dpa_discount");
+        JSONArray localJSONArray = paramString.optJSONArray("dpa_additional");
+        if ((localJSONArray != null) && (localJSONArray.length() > 0))
+        {
+          i1 = 0;
+          if (i1 < localJSONArray.length())
+          {
+            Object localObject = localJSONArray.get(i1);
+            if (!(localObject instanceof String)) {
+              break label176;
+            }
+            this.jdField_h_of_type_JavaUtilArrayList.add((String)localObject);
+            break label176;
+          }
+        }
+        this.jdField_q_of_type_Int = paramString.optInt("ad_first_category");
+        this.jdField_r_of_type_Int = paramString.optInt("dpa_display_seconds");
+        this.I = paramString.optString("dpa_button_text1");
+        this.I = paramString.optString("dpa_button_text1");
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      label176:
+      i1 += 1;
+    }
+  }
+  
   public int describeContents()
   {
     return 0;
@@ -502,7 +576,7 @@ public class VideoAdInfo
     localStringBuilder.append("    rl=").append(this.jdField_f_of_type_JavaLangString).append("\n");
     localStringBuilder.append("    txt=").append(this.jdField_d_of_type_JavaLangString).append(", trace_id=").append(this.jdField_h_of_type_JavaLangString).append("\n");
     localStringBuilder.append("    button_txt=").append(this.jdField_l_of_type_JavaLangString).append(", corporation_name=").append(this.jdField_o_of_type_JavaLangString).append("\n");
-    localStringBuilder.append("    corporate_logo=").append(this.q).append("\n");
+    localStringBuilder.append("    corporate_logo=").append(this.jdField_q_of_type_JavaLangString).append("\n");
     localStringBuilder.append("    video_url=").append(this.s).append("\n");
     localStringBuilder.append("    aid=").append(this.jdField_e_of_type_Long).append(", duration=").append(this.jdField_k_of_type_Int).append("\n");
     localStringBuilder.append("    material_id=").append(this.jdField_g_of_type_Int).append(", material_width=").append(this.jdField_h_of_type_Int).append(", material_height=").append(this.jdField_i_of_type_Int).append("\n");
@@ -547,9 +621,9 @@ public class VideoAdInfo
     paramParcel.writeString(this.jdField_n_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_o_of_type_JavaLangString);
     paramParcel.writeString(this.p);
-    paramParcel.writeString(this.q);
+    paramParcel.writeString(this.jdField_q_of_type_JavaLangString);
     paramParcel.writeLong(this.jdField_d_of_type_Long);
-    paramParcel.writeString(this.r);
+    paramParcel.writeString(this.jdField_r_of_type_JavaLangString);
     paramParcel.writeString(this.s);
     paramParcel.writeInt(this.jdField_e_of_type_Int);
     paramParcel.writeStringList(this.jdField_b_of_type_JavaUtilArrayList);

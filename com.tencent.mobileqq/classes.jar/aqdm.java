@@ -1,10 +1,24 @@
-public abstract interface aqdm
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.forward.ForwardPhotoOption;
+
+public class aqdm
+  implements aqbo
 {
-  public abstract void a(boolean paramBoolean);
+  public aqdm(ForwardPhotoOption paramForwardPhotoOption) {}
+  
+  public void a()
+  {
+    ForwardPhotoOption.a(this.a).a.setVisibility(0);
+  }
+  
+  public void b()
+  {
+    ForwardPhotoOption.a(this.a).a.setVisibility(8);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqdm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,72 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspPublishVideo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class tcb
-  extends slu
+public abstract class tcb<DATA>
 {
-  public long a;
-  public String a;
-  public List<tbc> a;
-  public long b;
-  public String c;
-  public String d;
-  public String e;
+  public static final String a;
+  protected DATA a;
+  protected List<tcc<DATA>> a;
   
-  public tcb(qqstory_service.RspPublishVideo paramRspPublishVideo)
+  static
   {
-    super(paramRspPublishVideo.result);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = paramRspPublishVideo.create_time.get();
-    this.jdField_a_of_type_JavaLangString = paramRspPublishVideo.feed_id.get().toStringUtf8();
-    this.c = String.valueOf(paramRspPublishVideo.date.get());
-    this.b = paramRspPublishVideo.video_index.get();
-    if (paramRspPublishVideo.story_id.has()) {
-      this.d = paramRspPublishVideo.story_id.get().toStringUtf8();
-    }
-    if (paramRspPublishVideo.vid.has()) {
-      this.e = paramRspPublishVideo.vid.get().toStringUtf8();
-    }
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramRspPublishVideo = paramRspPublishVideo.group_feed_list.get().iterator();
-    while (paramRspPublishVideo.hasNext())
-    {
-      qqstory_group.GroupFeed localGroupFeed = (qqstory_group.GroupFeed)paramRspPublishVideo.next();
-      this.jdField_a_of_type_JavaUtilList.add(new tbc(localGroupFeed));
+    jdField_a_of_type_JavaLangString = tcb.class.getName();
+  }
+  
+  public tcb()
+  {
+    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  }
+  
+  public DATA a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a()
+  {
+    a(null);
+  }
+  
+  public void a(@NonNull tcc<DATA> paramtcc)
+  {
+    if (!this.jdField_a_of_type_JavaUtilList.contains(paramtcc)) {
+      this.jdField_a_of_type_JavaUtilList.add(paramtcc);
     }
   }
   
-  public String toString()
+  protected abstract void a(teu paramteu);
+  
+  protected void a(boolean paramBoolean, DATA paramDATA)
   {
-    return "PublishStoryVideoRespond{createTime=" + this.jdField_a_of_type_Long + ", feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", date='" + this.c + '\'' + ", storyId='" + this.d + '\'' + ", videoIndex=" + this.b + ", vid=" + this.e + ", addShareGroupFeeds=" + this.jdField_a_of_type_JavaUtilList + '}';
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((tcc)localIterator.next()).a(paramBoolean, paramDATA);
+    }
+  }
+  
+  public void b()
+  {
+    veg.b(jdField_a_of_type_JavaLangString, "onInit");
+  }
+  
+  public void b(@NonNull tcc<DATA> paramtcc)
+  {
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramtcc)) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramtcc);
+    }
+  }
+  
+  public void b(teu paramteu)
+  {
+    a(paramteu);
+  }
+  
+  public void c()
+  {
+    veg.b(jdField_a_of_type_JavaLangString, "onDestroy");
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 

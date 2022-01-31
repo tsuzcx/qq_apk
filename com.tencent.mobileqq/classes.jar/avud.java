@@ -1,43 +1,27 @@
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.qphone.base.util.QLog;
+
 public class avud
+  implements axic
 {
-  boolean jdField_a_of_type_Boolean;
+  public avud(CameraCaptureView paramCameraCaptureView) {}
   
-  public avud(avtz paramavtz, boolean paramBoolean)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 2, "onAutoFocusCallback single tap focus " + paramBoolean1 + ", camera2:" + paramBoolean2);
+    }
+    if (paramBoolean1)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
+      CameraCaptureView.a(this.a, true);
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    CameraCaptureView.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avud
  * JD-Core Version:    0.7.0.1
  */

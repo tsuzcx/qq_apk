@@ -1,22 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bgov
-  implements bgpm
+  implements DialogInterface.OnClickListener
 {
-  bgov(bgou parambgou) {}
+  bgov(bgos parambgos) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bgou.a(this.a, paramBoolean);
-    if ((bgou.a(this.a)) && (bgou.b(this.a)))
-    {
-      bgou.a(this.a);
-      if (bgou.c(this.a))
-      {
-        QLog.d("VipARCameraController", 2, " init onresume");
-        bgou.a(this.a).a();
-      }
-    }
+    this.a.b = true;
+    bgos.a(this.a, 2);
+    bgos.c(this.a);
   }
 }
 

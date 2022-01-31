@@ -1,7 +1,4 @@
-public abstract interface akhz
-{
-  public abstract void handleMessage(String paramString1, String paramString2);
-}
+public class akhz {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

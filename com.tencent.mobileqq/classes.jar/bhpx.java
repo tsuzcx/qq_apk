@@ -1,46 +1,32 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
 
-public class bhpx
-  implements Animator.AnimatorListener
+public final class bhpx
+  implements Parcelable.Creator<QzoneVerticalVideoTopicInfo>
 {
-  public bhpx(QIMProviderContainerView paramQIMProviderContainerView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public QzoneVerticalVideoTopicInfo a(Parcel paramParcel)
   {
-    this.a.c.setVisibility(0);
-    QIMProviderContainerView.a(this.a, true);
-    QIMProviderContainerView.a(this.a);
-    if (QIMProviderContainerView.a(this.a) != null)
-    {
-      paramAnimator = QIMProviderContainerView.a(this.a).iterator();
-      while (paramAnimator.hasNext()) {
-        ((auwa)paramAnimator.next()).a(null, 0);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ProviderContainerView", 2, "panelOpened : " + QIMProviderContainerView.a(this.a));
-    }
+    QzoneVerticalVideoTopicInfo localQzoneVerticalVideoTopicInfo = new QzoneVerticalVideoTopicInfo();
+    QzoneVerticalVideoTopicInfo.a(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.b(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.c(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.d(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.e(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.f(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.g(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.h(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    return localQzoneVerticalVideoTopicInfo;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public QzoneVerticalVideoTopicInfo[] a(int paramInt)
   {
-    this.a.a.setVisibility(0);
+    return new QzoneVerticalVideoTopicInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhpx
  * JD-Core Version:    0.7.0.1
  */

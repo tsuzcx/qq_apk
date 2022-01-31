@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import aciy;
+import actn;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
-import vms;
+import vzo;
 
 @TargetApi(14)
 public class FullScreenEmptyView
@@ -22,7 +22,7 @@ public class FullScreenEmptyView
   
   public int a()
   {
-    return vms.d(super.getContext()) - aciy.a(55.0F, super.getResources()) - vms.e(super.getContext());
+    return vzo.d(super.getContext()) - actn.a(55.0F, super.getResources()) - vzo.e(super.getContext());
   }
 }
 

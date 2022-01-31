@@ -1,111 +1,59 @@
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
+import android.app.PendingIntent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
-import com.tencent.mobileqq.haoliyou.JefsClass;
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.net.Uri;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Locale;
 
-public class aqbe
-  implements allx
+class aqbe
+  implements DialogInterface.OnClickListener
 {
-  public aqbe(JefsClass paramJefsClass, WeakReference paramWeakReference, JefsClass.CancelableRunnable paramCancelableRunnable, int paramInt, String paramString) {}
+  aqbe(aqbc paramaqbc) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    switch (paramInt)
+    {
+    default: 
+    case -2: 
+      do
+      {
+        return;
+        if (this.a.c) {
+          bded.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "51", "0", false);
+        }
+        this.a.a(true);
+        this.a.jdField_a_of_type_AndroidAppActivity.setResult(1);
+        this.a.jdField_a_of_type_AndroidAppActivity.finish();
+      } while (!QLog.isColorLevel());
+      QLog.i("ForwardOption.ForwardBaseOption", 2, "-->showQfavResultDialog--onClick--back call");
+      return;
+    }
+    if (this.a.c) {
+      bded.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "52", "0", false);
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("TeleScreen|JefsClass", 2, String.format(Locale.CHINA, "onReceive: success: %b, jump: %d, err_code: %d, err_msg: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString }));
+      QLog.i("ForwardOption.ForwardBaseOption", 2, "-->showQfavResultDialog--onClick--send call");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable == null) {
-      return;
+    paramDialogInterface = new Intent();
+    paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(this.a.jdField_a_of_type_Long), "shareToQQ" })));
+    paramDialogInterface.setPackage(this.a.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("pkg_name"));
+    paramDialogInterface = PendingIntent.getActivity(this.a.jdField_a_of_type_AndroidAppActivity, 0, paramDialogInterface, 268435456);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("is_share_flag", true);
+    if (this.a.jdField_a_of_type_Long > 0L) {
+      localIntent.putExtra("activity_finish_run_pendingIntent", paramDialogInterface);
     }
-    if (localObject == null)
-    {
-      almh.a().a(this.jdField_a_of_type_Int, -3);
-      QLog.i("TeleScreen|JefsClass", 1, "context is null");
-      if (this.jdField_a_of_type_JavaLangString == null) {}
-      for (paramString = "";; paramString = this.jdField_a_of_type_JavaLangString)
-      {
-        awqx.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, "", "1", paramString, "");
-        return;
-      }
-    }
-    if ((paramBoolean) && (paramInt1 == 1))
-    {
-      JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
-      return;
-    }
-    if ((!paramBoolean) || (paramInt1 == 0)) {}
-    for (;;)
-    {
-      try
-      {
-        if (!(localObject instanceof Activity)) {
-          break label491;
-        }
-        paramString = (Activity)localObject;
-        if ((paramString == null) || (paramString.isFinishing())) {
-          break label317;
-        }
-        QLog.i("TeleScreen|JefsClass", 1, "leave QQ jump other app , act.isFinishing() == false");
-        localObject = babr.a(paramString, 0, null, "即将离开QQ\n打开其他应用", paramString.getString(2131625035), paramString.getString(2131654987), new aqbf(this), new aqbg(this));
-        if ((paramString instanceof BaseActivity))
-        {
-          ((BaseActivity)paramString).setJumpDialog((Dialog)localObject);
-          ((bafb)localObject).show();
-          return;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("TeleScreen|JefsClass", 1, paramString, new Object[0]);
-        JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
-        return;
-      }
-      if ((paramString instanceof BasePluginActivity))
-      {
-        ((BasePluginActivity)paramString).setJumpDialog((Dialog)localObject);
-        continue;
-        label317:
-        if (BaseApplicationImpl.sProcessId != 1)
-        {
-          if (JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass) == null) {
-            JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, new aqbn(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, null));
-          }
-          paramString = new IntentFilter("com.tencent.mobileqq.telescreen.action_run");
-          paramString.addAction("com.tencent.mobileqq.telescreen.action_remove");
-          BaseApplicationImpl.context.registerReceiver(JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass), paramString);
-        }
-        paramString = new Intent();
-        paramString.putExtra("big_brother_source_key", this.jdField_a_of_type_JavaLangString);
-        paramString.putExtra("key_id", JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable));
-        paramString.putExtra("key_process_id", BaseApplicationImpl.processName);
-        paramString.putExtra("key_callback_id", this.jdField_a_of_type_Int);
-        paramString.putExtra("public_fragment_window_feature", 1);
-        abju.a(paramString, PublicTransFragmentActivity.class, JumpConfirmFragment.class);
-        QLog.i("TeleScreen|JefsClass", 1, "leave QQ jump other app , act == null && act.isFinishing() == true");
-        return;
-        almh.a().a(this.jdField_a_of_type_Int, -2);
-        return;
-        label491:
-        paramString = null;
-      }
-    }
+    bgpf.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), localIntent, -1, true);
+    bgpr.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 5, 0);
+    this.a.jdField_a_of_type_AndroidAppActivity.setResult(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqbe
  * JD-Core Version:    0.7.0.1
  */

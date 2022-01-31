@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bdmk;
-import bdmu;
+import beqt;
+import bere;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class MiniAppBaseInfo
   public static final int Audit = 2;
   public static final int AuditPass = 6;
   public static final int AuditReject = 7;
-  public static final Parcelable.Creator<MiniAppBaseInfo> CREATOR = new bdmu();
+  public static final Parcelable.Creator<MiniAppBaseInfo> CREATOR = new bere();
   public static final int Deleted = 5;
   public static final int Develop = 0;
   public static final String ENV_VERSION_DEVELOP = "develop";
@@ -31,7 +31,7 @@ public class MiniAppBaseInfo
   public static final String TAG = "MiniAppInfo";
   public static final int TYPE_MINI_APP = 0;
   public static final int TYPE_MINI_GAME = 1;
-  public bdmk apkgInfo;
+  public beqt apkgInfo;
   public String appId;
   public AppMode appMode;
   public int appType;
@@ -46,6 +46,7 @@ public class MiniAppBaseInfo
   public int engineType;
   public int fileSize;
   public FirstPageInfo firstPage;
+  public String firstPath;
   public String iconUrl;
   public String link;
   public int linkType;
@@ -111,6 +112,9 @@ public class MiniAppBaseInfo
     this.qualifications = paramParcel.createStringArrayList();
     this.shareId = paramParcel.readString();
     this.via = paramParcel.readString();
+    this.firstPath = paramParcel.readString();
+    this.link = paramParcel.readString();
+    this.linkType = paramParcel.readInt();
   }
   
   public static boolean equalObj(Object paramObject1, Object paramObject2)
@@ -174,7 +178,7 @@ public class MiniAppBaseInfo
   
   public boolean isInternalApp()
   {
-    return (this.appMode != null) && (this.appMode.a) && (!isEngineTypeMiniGame());
+    return (this.appMode != null) && (this.appMode.a);
   }
   
   public String simpleInfo()
@@ -242,6 +246,9 @@ public class MiniAppBaseInfo
     paramParcel.writeStringList(this.qualifications);
     paramParcel.writeString(this.shareId);
     paramParcel.writeString(this.via);
+    paramParcel.writeString(this.firstPath);
+    paramParcel.writeString(this.link);
+    paramParcel.writeInt(this.linkType);
   }
 }
 

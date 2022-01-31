@@ -1,19 +1,23 @@
-public class axbg
-  extends axbe
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.qzone.QZoneTitleTabManager.TabInfo;
+
+public final class axbg
+  implements Parcelable.Creator<QZoneTitleTabManager.TabInfo>
 {
-  public axbg(int paramInt)
+  public QZoneTitleTabManager.TabInfo a(Parcel paramParcel)
   {
-    super(paramInt, 0, 0);
+    return new QZoneTitleTabManager.TabInfo(paramParcel);
   }
   
-  protected void a(int paramInt, float paramFloat)
+  public QZoneTitleTabManager.TabInfo[] a(int paramInt)
   {
-    super.a(paramInt, paramFloat);
+    return new QZoneTitleTabManager.TabInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axbg
  * JD-Core Version:    0.7.0.1
  */

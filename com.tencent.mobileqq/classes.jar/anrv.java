@@ -1,53 +1,12 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.data.CameraEmotionData;
 
-public class anrv
-  extends anoj
+public abstract interface anrv
 {
-  public anrv(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
-  
-  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, anpe paramanpe, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendSquareFragment", 2, String.format("onMatchResponse success=%s match_op=%s retCode=%s info=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramanpe }));
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, long paramLong, String paramString, boolean paramBoolean2, byte[] paramArrayOfByte, boolean paramBoolean3, boolean paramBoolean4, int paramInt, List<anpv> paramList, anpd paramanpd)
-  {
-    if (ExtendFriendSquareFragment.a(this.a) != paramLong) {
-      return;
-    }
-    try
-    {
-      ExtendFriendSquareFragment.a(this.a, 1);
-      ExtendFriendSquareFragment.a(this.a, paramBoolean1, paramString, paramBoolean2, paramArrayOfByte, paramBoolean3, paramBoolean4, paramInt, paramList, paramanpd);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("ExtendFriendSquareFragment", 1, "onGetSquareStrangerList exception", paramString);
-    }
-  }
-  
-  protected void c(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendSquareFragment", 2, "onLimitChatResourceStateUpdate, isReady = " + paramBoolean);
-    }
-    if (ExtendFriendSquareFragment.a(this.a)) {
-      ExtendFriendSquareFragment.b(this.a);
-    }
-    while (!ExtendFriendSquareFragment.c(this.a)) {
-      return;
-    }
-    this.a.a.notifyDataSetChanged();
-  }
+  public abstract void a(int paramInt, CameraEmotionData paramCameraEmotionData);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anrv
  * JD-Core Version:    0.7.0.1
  */

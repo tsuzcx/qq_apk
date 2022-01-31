@@ -1,131 +1,58 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.pubaccount.Advertisement.view.ProgressControler.2;
-import com.tencent.biz.pubaccount.Advertisement.view.ProgressControler.3;
-import com.tencent.biz.qqstory.view.SplitedProgressBar;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.security.InvalidParameterException;
-import java.util.Timer;
-import java.util.TimerTask;
+import android.content.SharedPreferences;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class myr
+public abstract class myr
 {
-  public int a;
-  protected long a;
-  public Handler a;
-  private SplitedProgressBar jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar;
-  public WeakReference<tqg> a;
-  public Timer a;
-  private TimerTask jdField_a_of_type_JavaUtilTimerTask;
-  public boolean a;
-  public long b;
-  public long c;
+  public SharedPreferences a;
+  public myr a;
   
-  public myr(SplitedProgressBar paramSplitedProgressBar)
+  public myr(SharedPreferences paramSharedPreferences, myr parammyr)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new mys(this, Looper.getMainLooper());
-    if (paramSplitedProgressBar == null) {
-      throw new InvalidParameterException("ProgressControler: progressBar is null");
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar = paramSplitedProgressBar;
+    this.jdField_a_of_type_AndroidContentSharedPreferences = paramSharedPreferences;
+    this.jdField_a_of_type_Myr = parammyr;
   }
   
-  private void d()
+  public static boolean a(int paramInt)
   {
-    Timer localTimer = new Timer();
-    ProgressControler.3 local3 = new ProgressControler.3(this);
-    localTimer.scheduleAtFixedRate(local3, 0L, 50L);
-    this.jdField_a_of_type_JavaUtilTimer = localTimer;
-    this.jdField_a_of_type_JavaUtilTimerTask = local3;
+    return (paramInt & 0x1) != 0;
   }
   
-  protected void a()
+  public static boolean b(int paramInt)
   {
-    ProgressControler.2 local2 = new ProgressControler.2(this);
-    this.jdField_a_of_type_AndroidOsHandler.post(local2);
+    return (paramInt & 0x2) != 0;
   }
   
-  protected void a(int paramInt, long paramLong)
+  public abstract int a(String paramString1, String paramString2);
+  
+  public int a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    int j = 100;
-    int i = 0;
-    if (this.b > 0L)
+    int j = 0;
+    if (paramBoolean1) {}
+    for (int i = 1;; i = 0)
     {
-      int k = (int)paramLong * 100 / (int)this.b;
-      i = k;
-      if (k > 100) {
-        i = j;
+      if (paramBoolean2) {
+        j = 2;
       }
-    }
-    for (;;)
-    {
-      if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.b))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("ProgressControler", 2, "setProgressNow index < 0 || index >= mProgressBar.mTotalCount, index = " + paramInt + ", mTotalCount = " + this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.b);
-        }
-        if (this.jdField_a_of_type_JavaUtilTimer != null) {
-          this.jdField_a_of_type_JavaUtilTimer.cancel();
-        }
-        if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
-          this.jdField_a_of_type_JavaUtilTimerTask.cancel();
-        }
-        return;
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.setProgress(paramInt, i);
-      return;
+      return j | i;
     }
   }
   
-  public void a(int paramInt, long paramLong1, long paramLong2, tqg paramtqg)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.c = this.jdField_a_of_type_Long;
-    this.b = paramLong2;
-    if (this.jdField_a_of_type_JavaUtilTimer != null) {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
-    }
-    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
-      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-    if (paramLong2 <= 0L)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramtqg);
-      a();
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-      return;
-    }
-    d();
-  }
+  public abstract String a();
   
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-    if (this.jdField_a_of_type_JavaUtilTimer != null) {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
-    }
-    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
-      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
-    }
-  }
+  public abstract JSONArray a(String paramString);
   
-  public void c()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    b();
-  }
+  public abstract JSONObject a();
+  
+  public abstract boolean a();
+  
+  public abstract String b();
+  
+  public abstract String c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     myr
  * JD-Core Version:    0.7.0.1
  */

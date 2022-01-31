@@ -1,11 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
-import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 class UIJsPlugin$31
@@ -15,26 +11,14 @@ class UIJsPlugin$31
   
   public void run()
   {
-    Object localObject1 = ((AppBrandPageContainer)this.this$0.jsPluginEngine.appBrandRuntime.getContainer()).getPageByWebViewId(this.val$webview.getPageWebViewId());
-    if (localObject1 != null) {}
-    Object localObject2;
-    for (localObject1 = ((AbsAppBrandPage)localObject1).getCurrentWebviewContainer();; localObject2 = null)
+    WebviewContainer localWebviewContainer = this.this$0.jsPluginEngine.getWebviewContainer(this.val$webview);
+    if (localWebviewContainer != null)
     {
-      if (localObject1 != null) {}
-      try
-      {
-        ((WebviewContainer)localObject1).updateTextView(this.val$jsonObject);
-        this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          QLog.e("[mini] UIJsPlugin", 1, this.val$event + " error.", localThrowable);
-        }
-      }
+      localWebviewContainer.insertScrollView(this.val$jsonObject);
+      this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
+      return;
     }
+    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, "container is null", this.val$callbackId);
   }
 }
 

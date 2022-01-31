@@ -1,23 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.vas.FriendCloneSettingFragment;
+import android.content.Context;
+import android.support.v4.view.ViewPager;
+import android.view.animation.Interpolator;
+import android.widget.Scroller;
+import com.tencent.mobileqq.troop.widget.AvatarWallViewPager;
+import java.lang.reflect.Field;
 
 public class banf
-  implements DialogInterface.OnCancelListener
+  extends Scroller
 {
-  public banf(FriendCloneSettingFragment paramFriendCloneSettingFragment) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public banf(AvatarWallViewPager paramAvatarWallViewPager, Context paramContext, Interpolator paramInterpolator)
   {
-    if (this.a.a != null) {
-      this.a.a.finish();
+    super(paramContext, paramInterpolator);
+  }
+  
+  public void a()
+  {
+    try
+    {
+      Field localField = ViewPager.class.getDeclaredField("mScroller");
+      localField.setAccessible(true);
+      localField.set(this.a.a, this);
+      localField.setAccessible(false);
+      return;
     }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, 500);
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, 500);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     banf
  * JD-Core Version:    0.7.0.1
  */

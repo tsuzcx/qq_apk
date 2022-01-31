@@ -1,102 +1,60 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 class aznp
-  implements URLDrawableDownListener
+  implements Comparator<MessageRecord>
 {
-  aznp(azno paramazno, ImageProgressCircle paramImageProgressCircle, URLImageView paramURLImageView) {}
+  aznp(azno paramazno) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadCancelled ", new Object[0]));
-    }
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
+    int j = 0;
+    long l1 = paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq;
+    int i;
+    if (l1 == 0L) {
+      if ((paramMessageRecord1.msgtype == -1012) || (paramMessageRecord1.msgtype == -5021))
+      {
+        i = 1;
+        if ((paramMessageRecord2.msgtype == -1012) || (paramMessageRecord2.msgtype == -5021)) {
+          j = 1;
+        }
+        if (i == 0) {
+          break label111;
+        }
+        if (j == 0) {
+          break label105;
+        }
+        l1 = paramMessageRecord1.time - paramMessageRecord2.time;
       }
     }
-    awqx.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_cancel", 0, 1, 0, paramView, "", "", "");
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadFailed ", new Object[0]));
-    }
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
+    for (;;)
     {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
+      label86:
+      long l2;
+      if (l1 > 0L) {
+        l2 = 1L;
+      }
+      for (;;)
+      {
+        return (int)l2;
+        i = 0;
+        break;
+        label105:
+        l1 = 1L;
+        break label86;
+        label111:
+        if (j != 0)
+        {
+          l1 = -1L;
+          break label86;
+        }
+        break label86;
+        l2 = l1;
+        if (l1 < 0L) {
+          l2 = -1L;
+        }
       }
     }
-    if (paramThrowable == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramThrowable.getMessage())
-    {
-      awqx.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_failed", 0, 1, 0, paramView, paramURLDrawable, "", "");
-      return;
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
-    }
-    if (paramInterruptedException == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramInterruptedException.getMessage())
-    {
-      awqx.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_interrupt", 0, 1, 0, paramView, paramURLDrawable, "", "");
-      return;
-    }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadProgressed progress=%d", new Object[] { Integer.valueOf(paramInt) }));
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.getVisibility() != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setVisibility(0);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setProgress(paramInt / 100);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadSuccessed ", new Object[0]));
-    }
-    this.jdField_a_of_type_Azno.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
-    }
-    awqx.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_success", 0, 1, 0, paramView, "", "", "");
   }
 }
 

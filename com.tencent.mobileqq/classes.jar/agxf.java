@@ -1,18 +1,43 @@
-public abstract interface agxf
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment.3.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
+
+public class agxf
+  implements ahbu
 {
-  public abstract int a();
+  public agxf(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
   
-  public abstract void a(int paramInt);
+  private boolean a(HashMap<String, PreloadManager.PathResult> paramHashMap)
+  {
+    if (RedPacketEmojiFragment.a(this.a))
+    {
+      if (paramHashMap == null) {}
+      do
+      {
+        return false;
+        paramHashMap = (PreloadManager.PathResult)paramHashMap.get(this.a.c);
+      } while (paramHashMap == null);
+      this.a.d = paramHashMap.filePath;
+      if (QLog.isColorLevel()) {
+        QLog.i("RedPacketEmojiFragment", 2, "doLoading faceConfigPath:" + this.a.d);
+      }
+      if (!TextUtils.isEmpty(this.a.d)) {}
+      for (boolean bool = true;; bool = false) {
+        return bool;
+      }
+    }
+    return true;
+  }
   
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(boolean paramBoolean, String paramString);
-  
-  public abstract boolean c();
-  
-  public abstract void i();
-  
-  public abstract void j();
+  public void a(int paramInt, HashMap<String, PreloadManager.PathResult> paramHashMap)
+  {
+    ThreadManager.getUIHandler().post(new RedPacketEmojiFragment.3.1(this, paramInt, paramHashMap));
+  }
 }
 
 

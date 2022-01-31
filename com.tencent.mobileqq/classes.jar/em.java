@@ -1,42 +1,93 @@
-import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.dataline.activities.PrinterActivity;
-import com.tencent.mobileqq.data.PrinterItemMsgRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import java.util.ArrayList;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.dataline.activities.PrinterSubOptionActivity;
+import java.util.List;
 
-class em
-  implements View.OnClickListener
+public class em
+  extends BaseAdapter
 {
-  em(el paramel) {}
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new en(this);
   
-  public void onClick(View paramView)
+  public em(PrinterSubOptionActivity paramPrinterSubOptionActivity) {}
+  
+  public int getCount()
   {
-    Object localObject = (PrinterItemMsgRecord)((ed)paramView.getTag()).a();
-    if (localObject != null)
-    {
-      paramView = apck.a((PrinterItemMsgRecord)localObject);
-      ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
-      localForwardFileInfo.b(10009);
-      localForwardFileInfo.d(6);
-      localForwardFileInfo.b(paramView.nSessionId);
-      localForwardFileInfo.d(paramView.fileName);
-      localForwardFileInfo.c(((PrinterItemMsgRecord)localObject).uSessionID);
-      localForwardFileInfo.d(paramView.fileSize);
-      localForwardFileInfo.a(paramView.getFilePath());
-      localObject = new Intent(this.a.a.getApplicationContext(), FileBrowserActivity.class);
-      if ((paramView.nFileType == 0) || (paramView.nFileType == 1))
-      {
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(String.valueOf(paramView.nSessionId));
-        ((Intent)localObject).putStringArrayListExtra("Aio_SessionId_ImageList", localArrayList);
-      }
-      ((Intent)localObject).putExtra("fileinfo", localForwardFileInfo);
-      this.a.a.startActivityForResult((Intent)localObject, 102);
+    if ((this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b != null) && (this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.size() > 0)) {
+      return this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.size();
     }
+    return 1;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b != null) && (paramInt < this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.size())) {
+      return this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.get(paramInt);
+    }
+    return new el(this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity, 1, 0L, this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_JavaLangString);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if ((this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b != null) && (this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.size() > 0)) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    String str = ((el)getItem(paramInt)).jdField_a_of_type_JavaLangString;
+    if (getItemViewType(paramInt) == 0)
+    {
+      paramViewGroup = (el)getItem(paramInt);
+      if (paramViewGroup.jdField_a_of_type_Int == 1)
+      {
+        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559400, null);
+        paramViewGroup = (TextView)paramView.findViewById(2131377043);
+      }
+    }
+    for (;;)
+    {
+      if (paramViewGroup != null)
+      {
+        paramViewGroup.setText(str);
+        paramViewGroup.setTag(Integer.valueOf(paramInt));
+      }
+      return paramView;
+      if (paramViewGroup.jdField_a_of_type_Int == 2)
+      {
+        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559401, null);
+        View localView = paramView.findViewById(2131363963);
+        paramViewGroup = (TextView)paramView.findViewById(2131363964);
+        localView.setClickable(true);
+        localView.setEnabled(true);
+        localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        continue;
+        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558962, null);
+        paramView.findViewById(2131369329).setVisibility(8);
+        paramViewGroup = (TextView)paramView.findViewById(2131369330);
+        paramViewGroup.setTextSize(19.0F);
+        paramViewGroup.setTextColor(-16777216);
+      }
+      else
+      {
+        paramViewGroup = null;
+      }
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 2;
   }
 }
 

@@ -1,53 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import java.util.List;
-import org.json.JSONObject;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 
-class oup
-  implements ViewBase.OnClickListener
+public class oup
+  extends ReadInjoyXRecyclerView
 {
-  oup(ouo paramouo, opw paramopw, int paramInt, Container paramContainer) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public oup(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, Context paramContext)
   {
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_Opw.a();
-    if (localArticleInfo == null) {}
-    JSONObject localJSONObject;
-    do
-    {
-      return;
-      localJSONObject = localArticleInfo.getProteusItemData();
-    } while (localJSONObject == null);
-    qoe localqoe = this.jdField_a_of_type_Opw.a();
-    if (this.jdField_a_of_type_Int == 1120) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramViewBase = localArticleInfo;
-      if (!bool)
-      {
-        paramViewBase = localArticleInfo;
-        if (localArticleInfo.mSubArtilceList != null)
-        {
-          paramViewBase = localArticleInfo;
-          if (localArticleInfo.mSubArtilceList.size() > 0)
-          {
-            paramViewBase = localArticleInfo;
-            if (localArticleInfo.mSubArtilceList.get(0) != null) {
-              paramViewBase = (BaseArticleInfo)localArticleInfo.mSubArtilceList.get(0);
-            }
-          }
-        }
-      }
-      if (!qcn.a(paramViewBase, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext())) {
-        ouo.a(this.jdField_a_of_type_Ouo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase, localqoe);
-      }
-      ogy.a().a(paramViewBase.mArticleID, System.currentTimeMillis());
-      ouo.a(this.jdField_a_of_type_Ouo, paramViewBase, bool, localJSONObject);
-      localqoe.notifyDataSetChanged();
-      return;
+    super(paramContext);
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    super.a(paramViewHolder, paramInt);
+    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView != null)) {
+      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView.setData(this.a.a(), this.a.jdField_a_of_type_JavaUtilArrayList);
     }
   }
 }

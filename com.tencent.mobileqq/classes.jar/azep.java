@@ -1,37 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment.15;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.widget.AdapterView;
 
 public class azep
-  implements DialogInterface.OnClickListener
+  implements bfpd
 {
-  public azep(VisitorTroopCardFragment.15 param15) {}
+  public azep(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramInt == 1)
-    {
-      this.a.this$0.a.cancel();
-      return;
-    }
-    try
-    {
-      apln.a(this.a.this$0.getActivity(), true, "action_game_join_group", Long.valueOf(this.a.this$0.getActivity().getIntent().getStringExtra("appid")).longValue(), -1, this.a.a);
-      this.a.this$0.a.cancel();
-      this.a.this$0.getActivity().finish();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        QLog.e("VisitorTroopCardFragment.Activity", 1, "showAlertDlg error = " + paramDialogInterface);
-      }
-    }
+    TroopAvatarWallEditActivity.a(this.a);
+    return true;
   }
 }
 

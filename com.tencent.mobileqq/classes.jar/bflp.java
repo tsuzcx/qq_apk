@@ -1,186 +1,56 @@
-import android.text.TextUtils;
-import com.qq.jce.wup.BasicClassTypeUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.PluginStatic;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqreader.QReaderHelper.1;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.shortvideo.resource.GestureResource;
 
 public class bflp
+  implements GestureResource
 {
-  public static int a = 0;
+  public static String a;
   public static boolean a;
+  public static String b = "200";
+  public static String c = "20";
   
-  public static int a(QQAppInterface paramQQAppInterface)
+  static
   {
-    paramQQAppInterface = (bfcz)paramQQAppInterface.getManager(27);
-    if (paramQQAppInterface == null)
-    {
-      bfne.d("QReaderHelper", "PluginManager is NOT ready");
-      return 0;
-    }
-    paramQQAppInterface = paramQQAppInterface.a("qqreaderplugin.apk");
-    if (paramQQAppInterface == null)
-    {
-      bfne.d("QReaderHelper", "ReaderPlugin is NOT found");
-      return 0;
-    }
-    return paramQQAppInterface.mState;
+    jdField_a_of_type_JavaLangString = "5";
   }
   
-  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  public String getGestureGapFrame()
   {
-    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
-      return null;
-    }
-    try
-    {
-      paramString = Class.forName("com.qqreader.ReaderRuntime");
-      if (paramString == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QReaderHelper", 2, "createReaderRuntime: load class failed");
-        }
-        return null;
-      }
-    }
-    catch (ClassNotFoundException paramString)
-    {
-      try
-      {
-        ClassLoader localClassLoader = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "qqreaderplugin.apk");
-        paramString = localClassLoader.loadClass("com.qqreader.ReaderRuntime");
-        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
-      }
-      catch (Exception paramBaseApplicationImpl)
-      {
-        return null;
-      }
-      paramBaseApplicationImpl = paramString.getDeclaredConstructor(new Class[] { BaseApplicationImpl.class, String.class }).newInstance(new Object[] { paramBaseApplicationImpl, "Reader" });
-      if ((paramBaseApplicationImpl != null) && ((paramBaseApplicationImpl instanceof AppRuntime)))
-      {
-        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
-        return paramBaseApplicationImpl;
-      }
-    }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
-    {
-      paramBaseApplicationImpl.printStackTrace();
-      return null;
-    }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public static void a(int paramInt, QQAppInterface paramQQAppInterface)
+  public String getGestureGapTime()
   {
-    if (!badq.g(paramQQAppInterface.getApplication())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QReaderHelper", 2, "no network. skip update offline pkg.");
-      }
-    }
-    do
-    {
-      return;
-      if (a(paramInt))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QReaderHelper", 1, "entry " + paramInt + " offline preload enabled,update offline package now!");
-        }
-        mof.a();
-        ThreadManager.post(new QReaderHelper.1(paramQQAppInterface), 5, null, true);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("QReaderHelper", 2, "entry " + paramInt + " offline preload is disabled.");
+    return b;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  public boolean getGestureShouldUpload()
   {
-    if (paramQQAppInterface == null)
-    {
-      bfne.d("QReaderHelper", "Not in main process");
-      return;
-    }
-    ((bfcz)paramQQAppInterface.getManager(27)).installPlugin("qqreaderplugin.apk", new bflr(paramQQAppInterface));
+    return jdField_a_of_type_Boolean;
   }
   
-  private static boolean a(int paramInt)
+  public String getGestureThreadColdTime()
   {
-    boolean bool = true;
-    Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.qr_process_config.name());
-    if ((TextUtils.isEmpty((CharSequence)localObject)) && (QLog.isColorLevel())) {
-      QLog.e("QReaderHelper", 1, "reader dpc is null.");
-    }
-    do
-    {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.e("QReaderHelper", 2, "enableOfflinePreload,dpc=" + (String)localObject);
-      }
-      localObject = ((String)localObject).split("\\|");
-      if (localObject.length >= 7) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("QReaderHelper", 2, "offline preload switch not fount.");
-    return false;
-    if ((Integer.parseInt(localObject[6]) & paramInt) != 0) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
+    return c;
   }
   
-  private static void b(QQAppInterface paramQQAppInterface, int paramInt)
+  public String getModelPath()
   {
-    awqx.b(paramQQAppInterface, "P_CliOper", "VIP_QQREADER", "", "0X800604D", "0X800604D", 1, paramInt, "", "", "", "");
+    return axgw.a();
+  }
+  
+  public String getSoPathDir()
+  {
+    return axgw.b();
+  }
+  
+  public boolean isGestureEnable()
+  {
+    return axgp.a().d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bflp
  * JD-Core Version:    0.7.0.1
  */

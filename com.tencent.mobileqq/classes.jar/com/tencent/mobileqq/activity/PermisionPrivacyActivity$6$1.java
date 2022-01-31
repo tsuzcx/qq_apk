@@ -1,27 +1,21 @@
 package com.tencent.mobileqq.activity;
 
+import ajyc;
 import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.qphone.base.util.QLog;
 
 class PermisionPrivacyActivity$6$1
   implements Runnable
 {
-  PermisionPrivacyActivity$6$1(PermisionPrivacyActivity.6 param6, int paramInt) {}
+  PermisionPrivacyActivity$6$1(PermisionPrivacyActivity.6 param6) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$6.this$0.isFinishing()) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "updateIntimateRelationshipFriendCount number:" + this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Int > 0)
+    if (PermisionPrivacyActivity.a(this.a.this$0) == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$6.this$0.b.setRightText(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$6.this$0.getString(2131633630, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+      PermisionPrivacyActivity.a(this.a.this$0).setRightText("");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$6.this$0.b.setRightText("");
+    PermisionPrivacyActivity.a(this.a.this$0).setRightText(PermisionPrivacyActivity.a(this.a.this$0) + ajyc.a(2131707915));
   }
 }
 

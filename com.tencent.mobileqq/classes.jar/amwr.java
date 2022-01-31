@@ -1,23 +1,20 @@
-import android.os.Message;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
 
-class amwr
-  implements atyw
+public class amwr
 {
-  amwr(amwq paramamwq, int paramInt) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void a(int paramInt1, atyv paramatyv, int paramInt2, String paramString)
+  @NonNull
+  public String toString()
   {
-    if (this.jdField_a_of_type_Amwq.a.hasMessages(0))
-    {
-      this.jdField_a_of_type_Amwq.a.removeMessages(0);
-      this.jdField_a_of_type_Amwq.a.obtainMessage(0, this.jdField_a_of_type_Int, 0).sendToTarget();
-    }
+    return " key = " + this.a + " resUrl = " + this.b + " md5 = " + this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amwr
  * JD-Core Version:    0.7.0.1
  */

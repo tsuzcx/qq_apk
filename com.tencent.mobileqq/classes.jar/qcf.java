@@ -1,14 +1,19 @@
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.SimpleChannelInfo;
 
-public abstract interface qcf
+public final class qcf
+  implements Parcelable.Creator<SimpleChannelInfo>
 {
-  public abstract void a(View paramView);
+  public SimpleChannelInfo a(Parcel paramParcel)
+  {
+    return new SimpleChannelInfo(paramParcel);
+  }
   
-  public abstract void a(View paramView, int paramInt);
-  
-  public abstract void a(View paramView, int paramInt1, int paramInt2);
-  
-  public abstract void b(View paramView);
+  public SimpleChannelInfo[] a(int paramInt)
+  {
+    return new SimpleChannelInfo[paramInt];
+  }
 }
 
 

@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
 
 public abstract interface aqyv
 {
-  public abstract void a();
+  public abstract RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt);
   
-  public abstract void a(LocationRoom.Venue paramVenue);
-  
-  public abstract void a(String paramString);
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     aqyv
  * JD-Core Version:    0.7.0.1
  */

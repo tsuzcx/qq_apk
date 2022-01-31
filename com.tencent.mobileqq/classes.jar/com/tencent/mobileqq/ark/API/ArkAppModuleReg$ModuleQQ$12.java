@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ark.API;
 
-import adaj;
-import alan;
-import alat;
-import alfo;
+import adll;
+import aloz;
+import alpf;
+import aluc;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import com.tencent.ark.ark;
@@ -18,7 +18,7 @@ import java.lang.ref.WeakReference;
 public class ArkAppModuleReg$ModuleQQ$12
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$12(alat paramalat, long paramLong, String paramString) {}
+  public ArkAppModuleReg$ModuleQQ$12(alpf paramalpf, long paramLong, String paramString) {}
   
   public void run()
   {
@@ -51,21 +51,21 @@ public class ArkAppModuleReg$ModuleQQ$12
             }
             localObject1 = ((BaseChatPie)localObject2).a();
           } while (localObject1 == null);
-          localObject3 = adaj.a((ark.Container)localObject3);
+          localObject3 = adll.a((ark.Container)localObject3);
         } while (localObject3 == null);
-        localObject3 = (adaj)((WeakReference)localObject3).get();
-        Object localObject2 = ((BaseChatPie)localObject2).a((adaj)localObject3);
+        localObject3 = (adll)((WeakReference)localObject3).get();
+        Object localObject2 = ((BaseChatPie)localObject2).a((adll)localObject3);
         if (localObject2 != null)
         {
-          alfo.a().a(((MessageForArkApp)localObject2).arkContainer, (SessionInfo)localObject1, (MessageForArkApp)localObject2, this.jdField_a_of_type_JavaLangString, alan.a());
+          aluc.a().a(((MessageForArkApp)localObject2).arkContainer, (SessionInfo)localObject1, (MessageForArkApp)localObject2, this.jdField_a_of_type_JavaLangString, aloz.a());
           return;
         }
-      } while ((!alfo.a().a()) || (localObject3 == null));
-      alfo.a().a((adaj)localObject3, (SessionInfo)localObject1, this.jdField_a_of_type_JavaLangString);
+      } while ((!aluc.a().a()) || (localObject3 == null));
+      aluc.a().a((adll)localObject3, (SessionInfo)localObject1, this.jdField_a_of_type_JavaLangString);
       return;
-      localObject1 = adaj.a((ark.Container)localObject3);
+      localObject1 = adll.a((ark.Container)localObject3);
     } while (localObject1 == null);
-    alfo.a().a((adaj)((WeakReference)localObject1).get(), null, this.jdField_a_of_type_JavaLangString);
+    aluc.a().a((adll)((WeakReference)localObject1).get(), null, this.jdField_a_of_type_JavaLangString);
   }
 }
 

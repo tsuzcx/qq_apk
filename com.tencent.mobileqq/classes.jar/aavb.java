@@ -1,19 +1,19 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.ChatSettingForTroop.52;
 
-public final class aavb
+public class aavb
   implements DialogInterface.OnClickListener
 {
-  public aavb(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, atwx paramatwx) {}
+  public aavb(ChatSettingForTroop.52 param52) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FriendProfileCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Atwx);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (paramInt == 1)
+    {
+      this.a.this$0.a.cancel();
+      this.a.this$0.finish();
     }
   }
 }

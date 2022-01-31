@@ -1,63 +1,48 @@
-import NS_MOBILE_OPERATION.PicInfo;
-import android.util.SparseArray;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
 public class aggs
+  implements aggw
 {
-  public int a;
-  public long a;
-  public SparseArray<URLDrawable> a;
-  public String a;
-  public ArrayList<String> a;
-  public HashMap<String, String> a;
-  public vhk a;
-  public boolean a;
-  public int b;
-  public String b;
-  public HashMap<String, PhotoSendParams> b;
-  public boolean b;
-  public int c;
-  public String c;
-  public HashMap<String, PhotoSendParams> c;
-  public boolean c;
-  public int d;
-  public String d;
-  public HashMap<String, PicInfo> d;
-  public boolean d;
-  public int e;
-  public String e;
-  public HashMap<String, PicInfo> e;
-  public boolean e;
-  public int f;
-  public String f;
-  public HashMap<String, byte[]> f;
-  public boolean f;
-  public int g;
-  public boolean g;
-  public int h;
-  public boolean h;
-  public int i;
-  public boolean i;
-  public int j = 1052;
-  public boolean j;
-  public int k;
-  public boolean k;
-  public int l;
-  public boolean l;
-  public boolean m;
-  public boolean n;
-  public boolean o;
-  public boolean p;
-  public boolean q;
+  public aggs(MiniMsgTabFragment paramMiniMsgTabFragment) {}
   
-  public aggs()
+  public void a(RecentBaseData paramRecentBaseData)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if (paramRecentBaseData.a().equals("0"))
+    {
+      MiniMsgTabFragment.a(this.a).findViewById(2131377512).performClick();
+      return;
+    }
+    MiniChatActivity.a(localFragmentActivity, paramRecentBaseData.a(), paramRecentBaseData.a(), paramRecentBaseData.b(), false, MiniMsgTabFragment.a(this.a));
+    aggc.a("0X8009C2D");
+    if (MiniMsgTabFragment.a(this.a) == null) {
+      MiniMsgTabFragment.a(this.a, AnimationUtils.loadAnimation(this.a.getActivity(), 2130771995));
+    }
+    MiniMsgTabFragment.b(this.a).startAnimation(MiniMsgTabFragment.a(this.a));
+    MiniMsgTabFragment.a(this.a).setAnimationListener(new aggt(this, localFragmentActivity));
+    MiniMsgTabFragment.b(this.a).setVisibility(8);
+    int i = paramRecentBaseData.a();
+    if (akpy.c(i)) {
+      i = 1;
+    }
+    for (;;)
+    {
+      axqw.b(null, "dc00898", "", "", "0X800A0F7", "0X800A0F7", MiniMsgTabFragment.a(this.a), 1, "" + i, "", "", "");
+      return;
+      if (i == 1) {
+        i = 2;
+      } else if (i == 3000) {
+        i = 4;
+      } else {
+        i = 5;
+      }
+    }
   }
 }
 

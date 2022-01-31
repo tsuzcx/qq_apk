@@ -1,21 +1,17 @@
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
 
 class agcs
   implements DialogInterface.OnClickListener
 {
-  agcs(agcr paramagcr) {}
+  agcs(agch paramagch) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("PhotoConst.readinjoy_delete_pic_position", this.a.a.t);
-    this.a.a.setResult(-1, paramDialogInterface);
-    this.a.a.finish();
-    PhotoPreviewActivity.a(this.a.a).dismiss();
+    this.a.a.getIntent().removeExtra("if_check_account_same");
+    this.a.b.dismiss();
   }
 }
 

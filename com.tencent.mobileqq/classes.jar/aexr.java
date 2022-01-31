@@ -1,38 +1,192 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.SparseArray;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.List;
 
 public class aexr
-  extends RecyclerView.ViewHolder
+  implements aeyv
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray;
-  private View jdField_a_of_type_AndroidViewView;
+  private acut jdField_a_of_type_Acut;
+  private aeyx jdField_a_of_type_Aeyx;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Time jdField_a_of_type_AndroidTextFormatTime;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public aexr(Context paramContext, View paramView)
+  public aexr(QQAppInterface paramQQAppInterface, aeyx paramaeyx, Activity paramActivity, SessionInfo paramSessionInfo, acut paramacut)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Aeyx = paramaeyx;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_Acut = paramacut;
   }
   
-  public static aexr a(Context paramContext, View paramView)
+  public int a()
   {
-    return new aexr(paramContext, paramView);
+    return 40;
   }
   
-  public static aexr a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  public View a(Object... paramVarArgs)
   {
-    return new aexr(paramContext, LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false));
+    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560632, null);
+    ((TextView)paramVarArgs.findViewById(2131372957)).setText(2131691836);
+    ((ImageView)paramVarArgs.findViewById(2131372955)).setImageResource(2130848781);
+    paramVarArgs.findViewById(2131372954).setOnClickListener(new aexs(this));
+    return paramVarArgs;
   }
   
-  public View a()
+  public void a(int paramInt, Object... paramVarArgs)
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    if (paramInt != 1001) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DiscActiveTipsBar", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV =====>");
+    }
+    for (;;)
+    {
+      int i;
+      int j;
+      try
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000) {
+          return;
+        }
+        if (andi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 1)) {
+          return;
+        }
+        paramVarArgs = this.jdField_a_of_type_Acut.a();
+        if (paramVarArgs == null) {
+          return;
+        }
+        if (paramVarArgs.size() < 10)
+        {
+          paramVarArgs = "msgList size < 10, size = " + paramVarArgs.size();
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("DiscActiveTipsBar", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV <=====, step is:" + paramVarArgs);
+          return;
+        }
+        long l1 = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
+        paramInt = muf.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramInt, l1)) {
+          return;
+        }
+        Object localObject2 = "voice_disc_chat_freq_bar_show_count" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+        Object localObject1 = BaseApplication.getContext().getSharedPreferences("free_call", 0);
+        paramInt = ((SharedPreferences)localObject1).getInt((String)localObject2, 0);
+        if (paramInt >= 3) {
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("DiscActiveTipsBar", 2, "discChatFreqBarShowCount : " + paramInt);
+        }
+        l1 = awzw.a() * 1000L;
+        if (this.jdField_a_of_type_AndroidTextFormatTime == null) {
+          this.jdField_a_of_type_AndroidTextFormatTime = new Time();
+        }
+        this.jdField_a_of_type_AndroidTextFormatTime.set(l1);
+        paramInt = this.jdField_a_of_type_AndroidTextFormatTime.year;
+        i = this.jdField_a_of_type_AndroidTextFormatTime.month;
+        j = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
+        this.jdField_a_of_type_AndroidTextFormatTime.set(0, 0, 20, j, i, paramInt);
+        long l2 = this.jdField_a_of_type_AndroidTextFormatTime.toMillis(false);
+        this.jdField_a_of_type_AndroidTextFormatTime.set(0, 0, 23, j, i, paramInt);
+        long l3 = this.jdField_a_of_type_AndroidTextFormatTime.toMillis(false);
+        if ((l1 < l2) || (l1 > l3))
+        {
+          paramVarArgs = "current time not in " + 20 + "-" + 23;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("DiscActiveTipsBar", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV <=====, step is:" + paramVarArgs);
+          return;
+        }
+        localObject2 = ((SharedPreferences)localObject1).getString("voice_disc_chat_freq_bar_show_time" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null);
+        if (QLog.isColorLevel())
+        {
+          String str = paramInt + "-" + i + "-" + j;
+          QLog.d("DiscActiveTipsBar", 2, "currDate is:" + str + ",curr hour is:" + this.jdField_a_of_type_AndroidTextFormatTime.hour + ",discPttFreqTipMsgInsertTime is:" + (String)localObject2);
+        }
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          this.jdField_a_of_type_AndroidTextFormatTime.set(Long.parseLong((String)localObject2));
+          int k = this.jdField_a_of_type_AndroidTextFormatTime.year;
+          int m = this.jdField_a_of_type_AndroidTextFormatTime.month;
+          int n = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
+          if ((paramInt == k) && (i == m) && (j == n)) {
+            return;
+          }
+        }
+        localObject1 = ((SharedPreferences)localObject1).getString("start_group_audio_time" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null);
+        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (l1 - Long.parseLong((String)localObject1) <= 600000L)) {
+          return;
+        }
+        l1 = (l1 - 600000L) / 1000L;
+        i = paramVarArgs.size();
+        paramInt = 0;
+        localObject1 = new HashSet();
+        j = i - 1;
+        if (j >= 0)
+        {
+          localObject2 = (ChatMessage)paramVarArgs.get(j);
+          i = paramInt;
+          if (((ChatMessage)localObject2).time >= l1)
+          {
+            i = paramInt;
+            if (akpy.o(((ChatMessage)localObject2).msgtype))
+            {
+              i = paramInt;
+              if (((ChatMessage)localObject2).extraflag == 0)
+              {
+                i = paramInt + 1;
+                ((HashSet)localObject1).add(((ChatMessage)localObject2).senderuin);
+              }
+            }
+          }
+        }
+        else
+        {
+          i = ((HashSet)localObject1).size();
+          if (QLog.isColorLevel()) {
+            QLog.d("DiscActiveTipsBar", 2, "basicMsgNum : " + paramInt + ", msgUinNum : " + i);
+          }
+          return;
+        }
+      }
+      finally
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("DiscActiveTipsBar", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV <=====, step is:" + "");
+        }
+      }
+      j -= 1;
+      paramInt = i;
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 2000 };
+  }
+  
+  public int b()
+  {
+    return 4;
   }
 }
 

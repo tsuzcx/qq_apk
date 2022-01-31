@@ -1,23 +1,15 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.confighandler.NormalConfigHandler.GetConfigListen;
-import com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig;
-import com.tencent.mobileqq.utils.confighandler.QAVFunCallHandler;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
 public class bake
-  implements NormalConfigHandler.GetConfigListen<QAVFunCallConfig>
 {
-  public bake(QAVFunCallHandler paramQAVFunCallHandler) {}
+  public int a;
+  public String a;
   
-  public void a(AppInterface paramAppInterface, QAVFunCallConfig paramQAVFunCallConfig)
-  {
-    this.a.setConfig(paramQAVFunCallConfig);
-    this.a.onGetConfig(paramAppInterface);
-    this.a.requestPreDownload("onGetConfig", paramAppInterface);
-  }
+  public bake(TroopFileTransferManager paramTroopFileTransferManager) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bake
  * JD-Core Version:    0.7.0.1
  */

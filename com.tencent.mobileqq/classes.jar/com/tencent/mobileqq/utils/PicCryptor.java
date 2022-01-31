@@ -2,9 +2,9 @@ package com.tencent.mobileqq.utils;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import axro;
-import axrq;
-import bakz;
+import ayrv;
+import ayrx;
+import bbmj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.qphone.base.util.Cryptor;
@@ -14,11 +14,11 @@ import java.security.MessageDigest;
 import java.util.HashMap;
 
 public class PicCryptor
-  implements axrq
+  implements ayrx
 {
   private int jdField_a_of_type_Int;
   public long a;
-  public axro a;
+  public ayrv a;
   private boolean jdField_a_of_type_Boolean = true;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private int jdField_b_of_type_Int;
@@ -44,7 +44,7 @@ public class PicCryptor
   
   private int a()
   {
-    String str = (String)this.jdField_a_of_type_Axro.a.get("Range");
+    String str = (String)this.jdField_a_of_type_Ayrv.a.get("Range");
     if (!TextUtils.isEmpty(str))
     {
       str = str.replace("bytes=", "");
@@ -58,7 +58,7 @@ public class PicCryptor
   
   public static String a(byte[] paramArrayOfByte)
   {
-    paramArrayOfByte = bakz.a(paramArrayOfByte);
+    paramArrayOfByte = bbmj.a(paramArrayOfByte);
     if (paramArrayOfByte == null) {
       throw new IllegalArgumentException("byte2Hex error, byte not null");
     }
@@ -74,7 +74,7 @@ public class PicCryptor
   
   public static byte[] a(String paramString)
   {
-    paramString = bakz.a(paramString);
+    paramString = bbmj.a(paramString);
     if (paramString == null) {
       throw new IllegalArgumentException("hex2byte error, hexStr length must even");
     }
@@ -262,7 +262,7 @@ public class PicCryptor
         }
         long l = Runtime.getRuntime().totalMemory();
         l = Runtime.getRuntime().maxMemory() - (l - Runtime.getRuntime().freeMemory());
-        if (l < paramArrayOfByte.length() * 2)
+        if (l < paramArrayOfByte.length() * 3)
         {
           QLog.e("PicCryptor", 1, "checkMemoryForEncrypt : memory is not enough ! remainMemory = " + l + ", flowKeyHexStr.length() = " + paramArrayOfByte.length());
           throw new Exception("applying memory too large!");

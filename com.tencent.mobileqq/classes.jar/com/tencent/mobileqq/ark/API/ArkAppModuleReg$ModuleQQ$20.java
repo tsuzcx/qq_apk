@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark.API;
 
-import alat;
+import alpf;
 import android.content.Intent;
 import com.tencent.ark.ArkEnvironmentManager;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.BaseActivity;
 public class ArkAppModuleReg$ModuleQQ$20
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$20(alat paramalat, int paramInt, boolean paramBoolean, String paramString) {}
+  public ArkAppModuleReg$ModuleQQ$20(alpf paramalpf, int paramInt, boolean paramBoolean, String paramString) {}
   
   public void run()
   {

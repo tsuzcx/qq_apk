@@ -1,71 +1,17 @@
-import android.content.SharedPreferences;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
 
-class basj
-  implements Handler.Callback
+public class basj
+  extends baks
 {
-  basj(basg parambasg) {}
+  public basj(TroopInteractGiftAnimationController.1.1 param1) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
   {
-    if (paramMessage.what == 1)
-    {
-      paramMessage = basg.a();
-      int i = paramMessage.getInt("timer2_interval", 0);
-      int m = paramMessage.getInt("timer2_retry_times", 0);
-      int j = paramMessage.getInt("timer2_start_hour", 0);
-      int k = paramMessage.getInt("timer2_end_hour", 0);
-      if ((basd.a == 0L) || (NetConnInfoCenter.getServerTimeMillis() - basd.a < i))
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, i);
-        return true;
-      }
-      if (this.a.jdField_a_of_type_Int >= m)
-      {
-        QLog.i("SportManager", 2, "retry time enough cancel task.");
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        return true;
-      }
-      paramMessage = Calendar.getInstance();
-      paramMessage.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
-      m = paramMessage.get(11);
-      if (m >= j)
-      {
-        paramMessage = this.a;
-        paramMessage.jdField_a_of_type_Int += 1;
-        this.a.a("timer2 callback report1");
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, i + 2000);
-        return true;
-        if (m >= k) {
-          break;
-        }
-        paramMessage.set(11, 0);
-        paramMessage.set(12, 0);
-        paramMessage.set(13, 0);
-        paramMessage.set(14, 0);
-        if (basd.a - paramMessage.getTimeInMillis() > 0L)
-        {
-          QLog.i("SportManager", 2, "already report cancel task.");
-          this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-          return true;
-        }
-        paramMessage = this.a;
-        paramMessage.jdField_a_of_type_Int += 1;
-        this.a.a("timer2 callback report2");
-      }
-      QLog.i("SportManager", 2, "over time cancel task.");
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopInteractGiftAnimationController", 2, "startInteract: errorCode = " + paramInt);
     }
-    return false;
   }
 }
 

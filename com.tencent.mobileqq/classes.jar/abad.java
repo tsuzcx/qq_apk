@@ -1,21 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.KPLProfileCardActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity.11.1;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
 public class abad
-  implements View.OnTouchListener
+  extends ajtq
 {
-  public abad(KPLProfileCardActivity paramKPLProfileCardActivity) {}
+  public abad(EditInfoActivity paramEditInfoActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
   {
-    if (!this.a.a)
+    if (!this.a.j) {}
+    do
     {
-      awqx.b(this.a.app, "dc00898", "", "", "0X8008438", "0X8008438", 0, 0, "", "", "", "");
-      this.a.a = true;
-    }
-    return false;
+      return;
+      this.a.j = false;
+      this.a.runOnUiThread(new EditInfoActivity.11.1(this, paramBoolean, paramCard));
+    } while (!QLog.isColorLevel());
+    QLog.d("EditInfoActivity", 2, String.format("onGetDetailInfo, isSuccess: %s, resultCode:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
   }
 }
 

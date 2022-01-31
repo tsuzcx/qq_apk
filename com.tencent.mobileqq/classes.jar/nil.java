@@ -1,73 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.List;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class nil
-  extends ohe
+public class nil
+  implements bfoq
 {
-  nil(nik paramnik) {}
+  public nil(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((nik.a(this.a) != null) && ((nik.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nik.a(this.a)).a(paramInt);
-    }
-  }
-  
-  public void a(int paramInt, List<Long> paramList)
-  {
-    if ((nik.a(this.a) != null) && ((nik.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nik.a(this.a)).a(paramInt, paramList);
-    }
-  }
-  
-  public void a(TopBannerInfo paramTopBannerInfo)
-  {
-    if ((nik.a(this.a) != null) && ((nik.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nik.a(this.a)).a(paramTopBannerInfo);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if ((nik.a(this.a) != null) && ((nik.a(this.a) instanceof ReadInJoyListViewGroup)) && (paramInt == nik.a(this.a)))
+    PublicAccountAdvertisementActivity.a(this.a).dismiss();
+    if (paramView != null)
     {
-      ((ReadInJoyListViewGroup)nik.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
-      nik.a(this.a);
+      paramView = PublicAccountAdvertisementActivity.a(this.a).a(paramInt);
+      if (QLog.isColorLevel()) {
+        QLog.i("PublicAccountAdvertisementActivity", 2, "action" + paramView);
+      }
+      if (!TextUtils.isEmpty(paramView))
+      {
+        if (!paramView.equals(this.a.getResources().getString(2131692741))) {
+          break label91;
+        }
+        PublicAccountAdvertisementActivity.d(this.a);
+      }
     }
-  }
-  
-  public void as_()
-  {
-    if ((nik.a(this.a) != null) && ((nik.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nik.a(this.a)).q();
+    label91:
+    while (!paramView.equals(this.a.getResources().getString(2131693368))) {
+      return;
     }
-  }
-  
-  public void b(int paramInt, List<Long> paramList)
-  {
-    if ((nik.a(this.a) != null) && ((nik.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nik.a(this.a)).c(paramInt, paramList);
-    }
-  }
-  
-  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if ((nik.a(this.a) != null) && ((nik.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nik.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
-    }
-  }
-  
-  public void c(int paramInt, List<Long> paramList)
-  {
-    if ((nik.a(this.a) != null) && ((nik.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nik.a(this.a)).b(paramInt, paramList);
-    }
+    ardb.a().a(PublicAccountAdvertisementActivity.a(this.a), null, 3, 2);
+    axqw.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FC", "0X80090FC", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nil
  * JD-Core Version:    0.7.0.1
  */

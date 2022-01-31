@@ -1,21 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkBridgeActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public class bffm
-  implements DialogInterface.OnClickListener
 {
-  public bffm(QlinkBridgeActivity paramQlinkBridgeActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static String a(int paramInt)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    String str = b(paramInt);
+    return bfgv.a().getString(str, "");
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    String str = b(paramInt);
+    bfgv.a().edit().putString(str, paramString).apply();
+  }
+  
+  private static String b(int paramInt)
+  {
+    return "gdt_cookie_" + beuc.a().a() + "_" + paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bffm
  * JD-Core Version:    0.7.0.1
  */

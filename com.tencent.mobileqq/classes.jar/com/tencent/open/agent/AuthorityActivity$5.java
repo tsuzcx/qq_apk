@@ -2,7 +2,7 @@ package com.tencent.open.agent;
 
 import android.content.res.Resources;
 import android.widget.Button;
-import bbuc;
+import bcyc;
 
 public class AuthorityActivity$5
   implements Runnable
@@ -12,16 +12,16 @@ public class AuthorityActivity$5
   public void run()
   {
     this.this$0.j();
-    this.this$0.jdField_a_of_type_AndroidWidgetButton.setText(2131629223);
+    this.this$0.jdField_a_of_type_AndroidWidgetButton.setText(2131694900);
     if (this.this$0.jdField_a_of_type_Int == 0)
     {
-      String str = this.this$0.getResources().getString(2131629219);
+      String str = this.this$0.getResources().getString(2131694896);
       this.this$0.jdField_a_of_type_AndroidWidgetButton.setTag(str);
     }
     for (;;)
     {
       this.this$0.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      this.this$0.a(this.this$0.getResources().getString(2131629228), new bbuc(this));
+      this.this$0.a(this.this$0.getResources().getString(2131694905), new bcyc(this));
       return;
       this.this$0.jdField_a_of_type_AndroidWidgetButton.setTag(this.this$0.c);
     }

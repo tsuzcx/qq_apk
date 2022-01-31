@@ -1,18 +1,18 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter;
 
-import bipi;
+import bkgd;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.capture.view.QIMCommonLoadingView;
 
 public class InformationFaceAdapter$DownloadProgressCallback$1
   implements Runnable
 {
-  public InformationFaceAdapter$DownloadProgressCallback$1(bipi parambipi, int paramInt) {}
+  public InformationFaceAdapter$DownloadProgressCallback$1(bkgd parambkgd, int paramInt) {}
   
   public void run()
   {
-    bipi.a(this.jdField_a_of_type_Bipi).setVisibility(0);
-    bipi.a(this.jdField_a_of_type_Bipi).setProgress(this.jdField_a_of_type_Int);
+    bkgd.a(this.jdField_a_of_type_Bkgd).setVisibility(0);
+    bkgd.a(this.jdField_a_of_type_Bkgd).setProgress(this.jdField_a_of_type_Int);
     if (QLog.isColorLevel()) {
       QLog.d("InformationFaceAdapter", 2, "progress:" + this.jdField_a_of_type_Int);
     }

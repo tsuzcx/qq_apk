@@ -1,27 +1,27 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bigz;
+import bjxu;
 
 public class EditVideoStoryButton$3
   implements Runnable
 {
-  public EditVideoStoryButton$3(bigz parambigz) {}
+  public EditVideoStoryButton$3(bjxu parambjxu) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean) {
       return;
     }
-    bigz localbigz;
+    bjxu localbjxu;
     if (this.this$0.jdField_a_of_type_Float < 50.0F) {
-      localbigz = this.this$0;
+      localbjxu = this.this$0;
     }
-    for (localbigz.jdField_a_of_type_Float += this.this$0.b; this.this$0.jdField_a_of_type_Float > 99.0F; localbigz.jdField_a_of_type_Float += 1.0F)
+    for (localbjxu.jdField_a_of_type_Float += this.this$0.b; this.this$0.jdField_a_of_type_Float > 99.0F; localbjxu.jdField_a_of_type_Float += 1.0F)
     {
       this.this$0.jdField_a_of_type_Float = 99.0F;
       this.this$0.a((int)this.this$0.jdField_a_of_type_Float);
       return;
-      localbigz = this.this$0;
+      localbjxu = this.this$0;
     }
     this.this$0.a((int)this.this$0.jdField_a_of_type_Float);
     this.this$0.j();

@@ -1,34 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
 
-final class asmk
-  implements bbsh
+public class asmk
+  implements View.OnClickListener
 {
-  asmk(String paramString, asmo paramasmo) {}
+  public asmk(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onClick(View paramView)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
+    if (MsgBackupDateFragment.a(this.a) == 0) {
+      asoe.a("0X800A237");
+    }
+    for (;;)
     {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label50;
-      }
-      if (this.jdField_a_of_type_Asmo != null) {
-        this.jdField_a_of_type_Asmo.a(true);
-      }
-    }
-    label50:
-    while (this.jdField_a_of_type_Asmo == null) {
+      this.a.a();
       return;
+      if (asle.c) {
+        asoe.a("0X800A25C");
+      }
     }
-    this.jdField_a_of_type_Asmo.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asmk
  * JD-Core Version:    0.7.0.1
  */

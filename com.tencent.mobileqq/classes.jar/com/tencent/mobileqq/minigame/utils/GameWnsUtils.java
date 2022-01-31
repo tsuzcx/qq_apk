@@ -3,7 +3,7 @@ package com.tencent.mobileqq.minigame.utils;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bbtm;
+import bcxm;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -29,7 +29,7 @@ public class GameWnsUtils
   
   private static boolean buildModelEnable()
   {
-    String str1 = QzoneConfig.getInstance().getConfig("QZoneSetting", "MiniGameBlackList", "[GT-I9502]");
+    String str1 = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameBlackList", "[GT-I9502]");
     try
     {
       String str2 = Build.MODEL;
@@ -105,13 +105,38 @@ public class GameWnsUtils
   
   private static boolean gameSysVersionAllowed()
   {
-    int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "MiniGameMinSysVersion", 18);
+    int i = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameMinSysVersion", 18);
     return Build.VERSION.SDK_INT >= i;
   }
   
   public static String getBackPressHint()
   {
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameBackPressHint", "再按一次返回键退出该程序");
+  }
+  
+  public static int getBannerAdMinWidth()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameBannerAdMinWidth", 300);
+  }
+  
+  public static String getBattleGameShowAlertViewScenes()
+  {
+    return QzoneConfig.getInstance().getConfig("qqminiapp", "qqMiniappRetainAlterViewScene", "{\"2\": [\"2072\"],\"3\": [\"1037\"]}");
+  }
+  
+  public static int getCloseConfirmShowTimes()
+  {
+    return QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_exit_confirm_animation_expoure_times_threshold", 3);
+  }
+  
+  public static String getExitConfirmAnimationBlackList()
+  {
+    return QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_exit_confirm_animation_scene_black_list", "");
+  }
+  
+  public static String getFakeFristFrameUrl()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameFakeFirstFrameUrl", "");
   }
   
   public static int getFrameNoChangeLimit()
@@ -171,6 +196,11 @@ public class GameWnsUtils
     return str2.contains(str1);
   }
   
+  public static String getGameExitConfirmImageUrl()
+  {
+    return QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_exit_confirm_animation_image_url", "https://qzonestyle.gtimg.cn/aoi/sola/20191114160727_AqDlaIYOnx.gif");
+  }
+  
   public static int getGameJsErrorDetectInterval()
   {
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameJsErrorDetectInterval", 5000);
@@ -196,6 +226,11 @@ public class GameWnsUtils
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameNoPresentTouchLimit", 3);
   }
   
+  public static String getQQUpdateUrl()
+  {
+    return QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_upgrade_url", "https://m.q.qq.com/upgrade/{appid}");
+  }
+  
   public static long getRecordDurationInterval()
   {
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniRecordDurationInterval", 5000L);
@@ -216,9 +251,38 @@ public class GameWnsUtils
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniShowTimeout", 45000L);
   }
   
-  public static int getbBannerAdMinWidth()
+  public static String getWnsLogBlackList()
   {
-    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameBannerAdMinWidth", 300);
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameAPILogBlackList");
+  }
+  
+  public static String getWnsLogWhiteList()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameAPILogWhiteList");
+  }
+  
+  public static boolean isCodeCacheEnable()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameCodeCacheEnable", 1) == 1;
+  }
+  
+  public static boolean isForceDownloadInMainProcess()
+  {
+    return QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_force_download_in_mainprocess", 0) == 1;
+  }
+  
+  public static boolean killAllGamesWhenDestroy()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameKillAllGamesWhenDestroy", 0) == 1;
+  }
+  
+  public static boolean killAllGamesWhenReuse()
+  {
+    boolean bool = false;
+    if (QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameKillAllGamesWhenReuse", 0) == 0) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean needBackPressHint(String paramString)
@@ -254,7 +318,7 @@ public class GameWnsUtils
   
   private static boolean suffixEnable()
   {
-    Object localObject = QzoneConfig.getInstance().getConfig("QZoneSetting", "MiniGameGaryRange", "0-100");
+    Object localObject = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameGaryRange", "0-100");
     int[] arrayOfInt = new int[2];
     try
     {
@@ -276,7 +340,7 @@ public class GameWnsUtils
         localThrowable.printStackTrace();
       }
     }
-    l = bbtm.a().a() % 100L;
+    l = bcxm.a().a() % 100L;
     return (l >= arrayOfInt[0]) && (l < arrayOfInt[1]);
   }
 }

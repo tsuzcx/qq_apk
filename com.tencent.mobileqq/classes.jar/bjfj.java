@@ -1,32 +1,14 @@
-public class bjfj
+import com.tencent.mobileqq.app.soso.SosoInterface;
+
+class bjfj
+  implements avtk
 {
-  public static final int a;
-  public static final int b = bjlo.a(2.0F);
-  public static final int c = bjlo.a(4.0F);
-  public static final int d = bjlo.a(8.0F);
-  public float a;
-  public boolean a;
-  public float b;
-  public boolean b;
-  public float c;
-  public boolean c;
-  public float d;
-  public boolean d;
-  public float e;
-  public int e = 0;
-  public float f;
-  public float g;
-  public float h;
-  public float i;
+  bjfj(bjfi parambjfi, boolean paramBoolean) {}
   
-  static
+  public void a()
   {
-    jdField_a_of_type_Int = bjlo.a(20.0F);
-  }
-  
-  public bjfj()
-  {
-    this.jdField_a_of_type_Float = jdField_a_of_type_Int;
+    this.jdField_a_of_type_Bjfi.a = new bjfk(this, "NewStoryTakeVideoActivity");
+    SosoInterface.a(this.jdField_a_of_type_Bjfi.a);
   }
 }
 

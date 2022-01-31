@@ -1,17 +1,16 @@
-import java.lang.ref.WeakReference;
+import android.view.View;
 
-class bfvi
+public abstract interface bfvi
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<bfux> jdField_a_of_type_JavaLangRefWeakReference;
-  int b;
+  public abstract void a_(View paramView);
   
-  private bfvi(bfva parambfva) {}
+  public abstract void e();
+  
+  public abstract void e(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfvi
  * JD-Core Version:    0.7.0.1
  */

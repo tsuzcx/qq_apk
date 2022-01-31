@@ -1,31 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class uql
-  extends QQUIEventReceiver<upw, spl>
+public abstract interface uql
 {
-  public uql(@NonNull upw paramupw)
-  {
-    super(paramupw);
-  }
+  public abstract void N_();
   
-  public void a(@NonNull upw paramupw, @NonNull spl paramspl)
-  {
-    if (paramspl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
-    {
-      urk.d(this.TAG, "deleted story failed");
-      paramupw.a(5, paramspl.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    paramupw.a(paramspl.jdField_a_of_type_JavaLangString);
-    paramupw.a(new unf[] { new una(umi.a(upw.a(paramupw).a.jdField_a_of_type_JavaLangString)), (unf)paramupw.c.a() });
-  }
+  public abstract void a();
   
-  public Class acceptEventClass()
-  {
-    return spl.class;
-  }
+  public abstract void a(CommentEntry paramCommentEntry);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(CommentEntry paramCommentEntry);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void f_(int paramInt);
 }
 
 

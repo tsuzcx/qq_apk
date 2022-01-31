@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import ohb;
+import osm;
 
 public class SubscriptionInfoModule$4
   implements Runnable
 {
   public void run()
   {
-    ohb.a().b(this.a);
+    osm.a().b(this.a);
   }
 }
 

@@ -1,39 +1,50 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
 
 class adzm
-  implements Animation.AnimationListener
+  implements asut
 {
-  adzm(adzl paramadzl, float paramFloat) {}
+  adzm(adzh paramadzh, String paramString, adzr paramadzr) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    atpg.a("PhotoListPanel", "DragHandler", " flyOutAnimation End fAnimLayout:" + this.jdField_a_of_type_Adzl.jdField_a_of_type_AndroidWidgetRelativeLayout + ",## dy = " + (this.jdField_a_of_type_Float - this.jdField_a_of_type_Adzl.jdField_a_of_type_Adzk.b));
-    paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Adzl.c.getLayoutParams();
-    paramAnimation.topMargin = this.jdField_a_of_type_Adzl.d.topMargin;
-    this.jdField_a_of_type_Adzl.c.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_Adzl.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    paramAnimation = new AnimationSet(false);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.jdField_a_of_type_Adzl.c.getWidth() / 2, this.jdField_a_of_type_Adzl.c.getHeight() / 2);
-    paramAnimation.addAnimation(this.jdField_a_of_type_Adzl.b);
-    paramAnimation.addAnimation(localScaleAnimation);
-    paramAnimation.setDuration(200L);
-    this.jdField_a_of_type_Adzl.c.startAnimation(paramAnimation);
-    atpg.a("PhotoListPanel", "DragHandler", "startReemergeAnimation fAnimLayout:" + this.jdField_a_of_type_Adzl.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    paramAnimation.setAnimationListener(this.jdField_a_of_type_Adzl.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Adzr.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Adzr.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Adzr.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(asuq paramasuq)
   {
-    atpg.a("PhotoListPanel", "DragHandler", "@#flyOutAnimation, onAnimationStart ");
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoItemBuilder", 2, "dealVideoSaveUI onSaveComplete");
+    }
+    if (paramasuq != null)
+    {
+      if (paramasuq.jdField_a_of_type_Int != 0) {
+        break label112;
+      }
+      asur.a(this.jdField_a_of_type_Adzh.a);
+    }
+    for (;;)
+    {
+      paramasuq.jdField_a_of_type_Asup.b(this);
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Adzr.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Adzr.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+        this.jdField_a_of_type_Adzr.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
+      }
+      return;
+      label112:
+      asur.b(this.jdField_a_of_type_Adzh.a);
+    }
   }
+  
+  public void a(asuq paramasuq, int paramInt)
+  {
+    this.jdField_a_of_type_Adzh.a(this.jdField_a_of_type_Adzr, paramInt, false);
+  }
+  
+  public void b(asuq paramasuq) {}
 }
 
 

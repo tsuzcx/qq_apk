@@ -1,28 +1,27 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.biz.qqstory.storyHome.memory.view.StoryMemoriesListView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class uha
-  extends QQUIEventReceiver<ugy, spk>
+  extends QQUIEventReceiver<ugn, tkn>
 {
-  public uha(@NonNull ugy paramugy)
+  public uha(@NonNull ugn paramugn)
   {
-    super(paramugy);
+    super(paramugn);
   }
   
-  public void a(@NonNull ugy paramugy, @NonNull spk paramspk)
+  public void a(@NonNull ugn paramugn, @NonNull tkn paramtkn)
   {
-    if (paramspk.a)
+    if (paramtkn.a.isSuccess())
     {
-      urk.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive delete share group member event. %s.", paramspk);
-      ugy.a(paramugy).a.h();
+      veg.a(paramugn.b, "receive user info event. %s.", paramtkn.toString());
+      paramugn.i();
     }
   }
   
   public Class acceptEventClass()
   {
-    return spk.class;
+    return tkn.class;
   }
 }
 

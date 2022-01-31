@@ -1,20 +1,25 @@
-public class srs
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.album.view.AlbumImageView;
+
+class srs
+  implements Animation.AnimationListener
 {
-  @vlq(a="oa_task_id")
-  public int a;
-  @vlq(a="bg_url")
-  public String a;
-  @vlq(a="is_comp_able")
-  public boolean a;
-  @vlq(a="comp_vid")
-  public String b;
-  @vlq(a="icon_url")
-  public String c;
+  srs(srr paramsrr) {}
   
-  public String toString()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return "CompInfoBase{, comparedVid='" + this.b + '\'' + ", isComparedAble=" + this.jdField_a_of_type_Boolean + ", iconUrl='" + this.c + '\'' + ", taskId=" + this.jdField_a_of_type_Int + '}';
+    if (srn.a(this.a.a) == 1)
+    {
+      this.a.a.b.setVisibility(8);
+      srn.a(this.a.a).sendEmptyMessage(1);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

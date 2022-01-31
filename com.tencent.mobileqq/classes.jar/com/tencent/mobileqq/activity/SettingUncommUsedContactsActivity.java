@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import abrl;
-import abrm;
-import ajjh;
+import acbx;
+import acby;
+import ajxl;
 import android.os.Bundle;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
-import bbne;
+import bcqc;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -17,8 +17,8 @@ import com.tencent.mobileqq.widget.FormSwitchItem;
 public class SettingUncommUsedContactsActivity
   extends IphoneTitleBarActivity
 {
-  ajjh jdField_a_of_type_Ajjh = new abrl(this);
-  CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new abrm(this);
+  ajxl jdField_a_of_type_Ajxl = new acbx(this);
+  CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new acby(this);
   public FormSwitchItem a;
   final String jdField_a_of_type_JavaLangString = "SettingUnommUsedContacts";
   public FormSwitchItem b;
@@ -32,43 +32,43 @@ public class SettingUncommUsedContactsActivity
   
   void a()
   {
-    setContentViewB(2131495512);
-    setTitle(2131653572);
-    this.leftView.setText(2131625011);
+    setContentViewB(2131561100);
+    setTitle(2131719401);
+    this.leftView.setText(2131690572);
     this.rightViewText.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131304968));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131370634));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
     a(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), this.app.e(false));
-    this.b = ((FormSwitchItem)findViewById(2131310280));
+    this.b = ((FormSwitchItem)findViewById(2131376065));
     this.b.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
     a(this.b.a(), this.app.f(false));
-    if (AppSetting.c)
+    if (AppSetting.d)
     {
-      this.centerView.setContentDescription(getString(2131653572));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131629032));
+      this.centerView.setContentDescription(getString(2131719401));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131694696));
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setFocusable(true);
-      this.b.setContentDescription(getString(2131653637));
+      this.b.setContentDescription(getString(2131719521));
       this.b.setFocusable(true);
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    new bbne(this).a(paramInt1, getTitleBarHeight(), 0, paramInt2);
+    new bcqc(this).a(paramInt1, getTitleBarHeight(), 0, paramInt2);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     a();
-    addObserver(this.jdField_a_of_type_Ajjh);
+    addObserver(this.jdField_a_of_type_Ajxl);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_Ajjh);
+    removeObserver(this.jdField_a_of_type_Ajxl);
   }
   
   public void doOnResume()

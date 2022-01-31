@@ -1,35 +1,27 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.animation.Transformation;
 
-final class bcgi
-  implements DialogInterface.OnClickListener
+class bcgi
+  implements bbkq<Integer>
 {
-  bcgi(Bundle paramBundle, Activity paramActivity, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
+  bcgi(bcgg parambcgg, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(bbkk<Integer> parambbkk, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    paramInt = this.jdField_a_of_type_AndroidOsBundle.getInt("qqupdate_support_go_market", 0);
-    if ((paramDialogInterface != null) && (paramInt != 0))
+    if (!this.jdField_a_of_type_Bcgg.jdField_a_of_type_Boolean) {}
+    do
     {
-      UpgradeDetailActivity.a(this.jdField_a_of_type_AndroidAppActivity, paramInt);
-      awqx.b(null, "dc00898", "", "", "0X800A74F", "0X800A74F", 0, 0, "", "", "", "");
-      bchb.a(this.jdField_a_of_type_AndroidOsBundle.getString(bcgl.b));
       return;
-    }
-    bcgh.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
-    awqx.b(null, "dc00898", "", "", "0X8008F7C", "0X8008F7C", 0, 0, "", "", "", "");
-    paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString(bcgl.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bcgl.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bcgl.d);
-    paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 101 + "|" + paramDialogInterface;
-    bcar.a().a(25, paramDialogInterface);
+      this.jdField_a_of_type_Bcgg.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
+      this.jdField_a_of_type_Bcgg.jdField_a_of_type_Int = paramInteger.intValue();
+    } while (this.jdField_a_of_type_Bcgg.jdField_a_of_type_Int != this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bcgg.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcgi
  * JD-Core Version:    0.7.0.1
  */

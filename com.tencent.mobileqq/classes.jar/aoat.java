@@ -1,17 +1,11 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelFileTabView.1;
-import java.util.Comparator;
+import android.app.Application;
 
 public class aoat
-  implements Comparator<Long>
+  extends ayon
 {
-  public aoat(QfileLocalFileDelFileTabView.1 param1) {}
-  
-  public int a(Long paramLong1, Long paramLong2)
+  public aoat(Application paramApplication)
   {
-    if (paramLong1.equals(paramLong2)) {
-      return 1;
-    }
-    return (int)(paramLong1.longValue() - paramLong2.longValue());
+    super(paramApplication);
   }
 }
 

@@ -8,9 +8,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import ayzx;
-import ayzy;
-import azzx;
+import baap;
+import baaq;
+import bbbb;
 import com.tencent.mobileqq.troop.homework.entry.ui.api.AbsHomeWorkFragment;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.QIMCameraCaptureActivity;
@@ -22,7 +22,7 @@ import org.json.JSONObject;
 public class ArithmeticCaptureTransferFragment
   extends AbsHomeWorkFragment
 {
-  private ayzx jdField_a_of_type_Ayzx;
+  private baap jdField_a_of_type_Baap;
   private String jdField_a_of_type_JavaLangString;
   
   public static void a(Context paramContext, String paramString1, int paramInt, String paramString2)
@@ -47,7 +47,7 @@ public class ArithmeticCaptureTransferFragment
   {
     try
     {
-      this.jdField_a_of_type_Ayzx = new ayzx(new JSONObject(paramString));
+      this.jdField_a_of_type_Baap = new baap(new JSONObject(paramString));
       if (QLog.isColorLevel()) {
         QLog.d("ArithmeticCaptureTransferFragment", 2, "init data ,homework = " + paramString);
       }
@@ -61,7 +61,7 @@ public class ArithmeticCaptureTransferFragment
   
   public int getContentLayoutId()
   {
-    return 2131494770;
+    return 2131560342;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -72,16 +72,16 @@ public class ArithmeticCaptureTransferFragment
       paramIntent = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
       if ((paramIntent != null) && (paramIntent.size() > 0))
       {
-        ayzy localayzy = new ayzy();
-        localayzy.b = ((String)paramIntent.get(0));
-        this.jdField_a_of_type_Ayzx.a(localayzy);
+        baaq localbaaq = new baaq();
+        localbaaq.b = ((String)paramIntent.get(0));
+        this.jdField_a_of_type_Baap.a(localbaaq);
         if (QLog.isColorLevel()) {
-          QLog.d("ArithmeticCaptureTransferFragment", 2, "new picture ,path = " + localayzy.b);
+          QLog.d("ArithmeticCaptureTransferFragment", 2, "new picture ,path = " + localbaaq.b);
         }
-        azzx.a("Grp_edu", "Grp_oral", "Oral_Photoedit_Finish", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, "" });
+        bbbb.a("Grp_edu", "Grp_oral", "Oral_Photoedit_Finish", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, "" });
       }
     }
-    a(this.jdField_a_of_type_Ayzx.a(1));
+    a(this.jdField_a_of_type_Baap.a(1));
     a();
   }
   

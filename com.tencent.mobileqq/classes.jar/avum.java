@@ -1,22 +1,25 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import android.graphics.Bitmap;
 
 public class avum
-  extends avuy
 {
-  public avum(GroupSearchEngine paramGroupSearchEngine, avuz paramavuz, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramavuz, paramString, paramInt);
-  }
+  public int a;
+  public Bitmap a;
+  public String a;
+  public int b;
+  public int c;
   
-  public avom a(List<avon> paramList, String paramString)
+  public avum(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap, int paramInt3)
   {
-    return new avoa(paramList, paramString);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.c = paramInt3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avum
  * JD-Core Version:    0.7.0.1
  */

@@ -20,14 +20,14 @@ class Storage$2
         this.val$callback.onFailed(this.val$key, "size limit reached");
       }
     }
-    label401:
+    label453:
     do
     {
       for (;;)
       {
         return;
         if (Storage.access$000(this.this$0) == null) {
-          break label401;
+          break label453;
         }
         try
         {
@@ -39,7 +39,7 @@ class Storage$2
               if (this.val$callback != null) {
                 this.val$callback.onFailed(this.val$key, "exceeded the limit size");
               }
-              if (Storage.access$000(this.this$0) == null) {
+              if ((Storage.access$000(this.this$0) == null) || (Storage.access$000(this.this$0).isClosed())) {
                 continue;
               }
               try
@@ -72,7 +72,7 @@ class Storage$2
             if (this.val$callback != null) {
               this.val$callback.onSuccess(this.val$key, "ok");
             }
-            if (Storage.access$000(this.this$0) != null) {
+            if ((Storage.access$000(this.this$0) != null) && (!Storage.access$000(this.this$0).isClosed())) {
               try
               {
                 Storage.access$000(this.this$0).flush();
@@ -92,7 +92,7 @@ class Storage$2
             this.val$callback.onFailed(this.val$key, localThrowable.getMessage());
           }
           QLog.e("RequestHandler", 1, localThrowable, new Object[0]);
-          if (Storage.access$000(this.this$0) != null) {
+          if ((Storage.access$000(this.this$0) != null) && (!Storage.access$000(this.this$0).isClosed())) {
             try
             {
               Storage.access$000(this.this$0).flush();
@@ -107,7 +107,7 @@ class Storage$2
         }
         finally
         {
-          if (Storage.access$000(this.this$0) == null) {}
+          if ((Storage.access$000(this.this$0) == null) || (Storage.access$000(this.this$0).isClosed())) {}
         }
       }
       try

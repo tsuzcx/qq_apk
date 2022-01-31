@@ -1,89 +1,35 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.chat.ui.MessageNotificationSettingFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class amgj
-  extends alzl<amgi>
+  extends ajxl
 {
-  @NonNull
-  public static amgi a()
-  {
-    amgi localamgi2 = (amgi)alzw.a().a(550);
-    amgi localamgi1 = localamgi2;
-    if (localamgi2 == null) {
-      localamgi1 = new amgi();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "loadConfig(): bean = " + localamgi1.toString());
-    }
-    return localamgi1;
-  }
+  public amgj(MessageNotificationSettingFragment paramMessageNotificationSettingFragment) {}
   
-  public int a()
-  {
-    return 550;
-  }
-  
-  @NonNull
-  public amgi a(int paramInt)
-  {
-    return new amgi();
-  }
-  
-  @Nullable
-  public amgi a(alzs[] paramArrayOfalzs)
-  {
-    return amgi.a(paramArrayOfalzs);
-  }
-  
-  public Class a()
-  {
-    return amgi.class;
-  }
-  
-  public void a(int paramInt)
+  protected void onSetMessageNotification(boolean paramBoolean, Object[] paramArrayOfObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onReqFailed " + paramInt);
+      QLog.d("MessageNotificationSettingFragment", 2, new Object[] { "onSetMessageNotification: invoked. ", " isSuccess: ", Boolean.valueOf(paramBoolean), " data: " + paramArrayOfObject });
     }
-  }
-  
-  public void a(amgi paramamgi)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    boolean[] arrayOfBoolean;
+    if ((paramBoolean) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 3))
     {
-      localObject = (QQAppInterface)localObject;
-      if (((QQAppInterface)localObject).a(347))
-      {
-        ((arxi)((QQAppInterface)localObject).getManager(347)).a = paramamgi;
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onUpdate bean = " + paramamgi.toString());
-        }
-      }
+      localObject = (String[])paramArrayOfObject[0];
+      arrayOfBoolean = (boolean[])paramArrayOfObject[1];
+      if ((localObject != null) && (localObject.length >= 1) && (arrayOfBoolean != null) && (arrayOfBoolean.length >= 1)) {}
     }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    else
+    {
+      return;
+    }
+    Object localObject = localObject[0];
+    paramBoolean = arrayOfBoolean[0];
+    ((Integer)paramArrayOfObject[2]).intValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amgj
  * JD-Core Version:    0.7.0.1
  */

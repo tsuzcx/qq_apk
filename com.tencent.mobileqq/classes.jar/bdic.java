@@ -1,30 +1,12 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qqmini.sdk.core.widget.ActionSheetDialog.3;
-
-public class bdic
-  implements Animation.AnimationListener
+public abstract interface bdic
 {
-  public bdic(ActionSheetDialog.3 param3) {}
+  public abstract void a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    try
-    {
-      bdib.a(this.a.this$0);
-      bdib.a(this.a.this$0, true);
-      return;
-    }
-    catch (Exception paramAnimation) {}
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(String paramString, byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdic
  * JD-Core Version:    0.7.0.1
  */

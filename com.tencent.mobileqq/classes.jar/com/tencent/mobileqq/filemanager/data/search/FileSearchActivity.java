@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.filemanager.data.search;
 
-import ajjy;
+import ajyc;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
@@ -11,10 +12,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.widget.ImageView;
-import aoot;
-import aoou;
-import avon;
-import avsv;
+import apfo;
+import apfp;
+import awog;
+import awso;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment;
 import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
@@ -27,33 +29,54 @@ import java.util.List;
 public class FileSearchActivity
   extends BaseSearchActivity
 {
-  static List<avon> jdField_a_of_type_JavaUtilList;
+  static List<awog> jdField_a_of_type_JavaUtilList;
+  private Bundle jdField_a_of_type_AndroidOsBundle;
   private SearchTypeFragment jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment;
   private BaseSearchFragment jdField_b_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment;
-  List<avon> jdField_b_of_type_JavaUtilList;
+  List<awog> jdField_b_of_type_JavaUtilList;
   private boolean c = true;
   private int jdField_d_of_type_Int = -1;
   private String jdField_d_of_type_JavaLangString;
   private boolean jdField_d_of_type_Boolean;
   private String e;
   
+  public static void a(Activity paramActivity, String paramString1, List<awog> paramList, boolean paramBoolean, int paramInt, String paramString2, Bundle paramBundle)
+  {
+    Intent localIntent = new Intent(paramActivity, FileSearchActivity.class);
+    localIntent.putExtra("keyword", paramString1);
+    localIntent.putExtra("show_Header", paramBoolean);
+    localIntent.putExtra("from_type", paramInt);
+    localIntent.putExtra("qfile_search_param_uin", paramString2);
+    if (paramBundle != null) {
+      localIntent.putExtra("qfile_search_param_ex_params", paramBundle);
+    }
+    jdField_a_of_type_JavaUtilList = paramList;
+    if (jdField_a_of_type_JavaUtilList == null) {
+      jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    paramActivity.startActivityForResult(localIntent, 9999);
+  }
+  
   public static void a(Context paramContext, int paramInt, String paramString)
   {
-    a(paramContext, null, null, false, paramInt, paramString);
+    a(paramContext, null, null, false, paramInt, paramString, null);
   }
   
-  public static void a(Context paramContext, String paramString, List<avon> paramList, boolean paramBoolean, int paramInt)
+  public static void a(Context paramContext, String paramString, List<awog> paramList, boolean paramBoolean, int paramInt)
   {
-    a(paramContext, paramString, paramList, paramBoolean, paramInt, "");
+    a(paramContext, paramString, paramList, paramBoolean, paramInt, "", null);
   }
   
-  public static void a(Context paramContext, String paramString1, List<avon> paramList, boolean paramBoolean, int paramInt, String paramString2)
+  public static void a(Context paramContext, String paramString1, List<awog> paramList, boolean paramBoolean, int paramInt, String paramString2, Bundle paramBundle)
   {
     Intent localIntent = new Intent(paramContext, FileSearchActivity.class);
     localIntent.putExtra("keyword", paramString1);
     localIntent.putExtra("show_Header", paramBoolean);
     localIntent.putExtra("from_type", paramInt);
     localIntent.putExtra("qfile_search_param_uin", paramString2);
+    if (paramBundle != null) {
+      localIntent.putExtra("qfile_search_param_ex_params", paramBundle);
+    }
     jdField_a_of_type_JavaUtilList = paramList;
     if (jdField_a_of_type_JavaUtilList == null) {
       jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -74,7 +97,7 @@ public class FileSearchActivity
     }
     for (;;)
     {
-      avsv.a(null, 0, this.jdField_d_of_type_Int, "0X8009D58", 0, 0, null, null);
+      awso.a(null, 0, this.jdField_d_of_type_Int, "0X8009D58", 0, 0, null, null);
       return localObject;
       if (this.jdField_d_of_type_Int == 2)
       {
@@ -92,6 +115,13 @@ public class FileSearchActivity
         localObject = new TroopFileSearchFragment();
         ((TroopFileSearchFragment)localObject).jdField_a_of_type_Int = this.jdField_d_of_type_Int;
         ((TroopFileSearchFragment)localObject).jdField_a_of_type_Long = Long.parseLong(this.e);
+        this.jdField_b_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment = ((BaseSearchFragment)localObject);
+      }
+      else if ((this.jdField_d_of_type_Int == 15) || (this.jdField_d_of_type_Int == 16) || (this.jdField_d_of_type_Int == 17) || (this.jdField_d_of_type_Int == 18) || (this.jdField_d_of_type_Int == 19))
+      {
+        localObject = new FileSelectorSearchFragment();
+        ((FileSelectorSearchFragment)localObject).a(this.jdField_d_of_type_Int);
+        ((FileSelectorSearchFragment)localObject).a(this.jdField_a_of_type_AndroidOsBundle);
         this.jdField_b_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment = ((BaseSearchFragment)localObject);
       }
       else
@@ -112,7 +142,14 @@ public class FileSearchActivity
     if (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
       new Handler().postDelayed(new FileSearchActivity.1(this), 200L);
     }
-    return ajjy.a(2131638782);
+    String str = ajyc.a(2131704567);
+    if (this.jdField_d_of_type_Int == 16) {
+      str = getString(2131692461);
+    }
+    while (this.jdField_d_of_type_Int != 17) {
+      return str;
+    }
+    return getString(2131692460);
   }
   
   public void a()
@@ -157,6 +194,17 @@ public class FileSearchActivity
     }
   }
   
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
+    if ((paramInt1 != 9999) || (paramIntent == null)) {}
+    while (paramIntent.getIntExtra("qfile_send_bottom_bar_finish_result_code", 0) != -1) {
+      return;
+    }
+    setResult(paramInt2, new Intent(paramIntent));
+    finish();
+  }
+  
   public void doOnBackPressed()
   {
     super.doOnBackPressed();
@@ -170,6 +218,7 @@ public class FileSearchActivity
     this.c = localIntent.getBooleanExtra("show_Header", true);
     this.jdField_d_of_type_Int = localIntent.getIntExtra("from_type", -1);
     this.e = localIntent.getStringExtra("qfile_search_param_uin");
+    this.jdField_a_of_type_AndroidOsBundle = localIntent.getBundleExtra("qfile_search_param_ex_params");
     if (((this.jdField_d_of_type_Int == 2) || (this.jdField_d_of_type_Int == 13)) && (Build.VERSION.SDK_INT >= 5)) {
       overridePendingTransition(0, 0);
     }
@@ -180,7 +229,7 @@ public class FileSearchActivity
       paramBundle = new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(3), Integer.valueOf(2), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(11) }));
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment.jdField_a_of_type_JavaUtilList = paramBundle;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment.jdField_a_of_type_Int = 4;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment.a(new aoot(this.app, this, this.e, paramBundle));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment.a(new apfo(this.app, this, this.e, paramBundle));
     }
     for (;;)
     {
@@ -188,7 +237,7 @@ public class FileSearchActivity
       {
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment.jdField_a_of_type_JavaLangString = this.e;
         paramBundle = super.getSupportFragmentManager().beginTransaction();
-        paramBundle.add(2131309941, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment);
+        paramBundle.add(2131375702, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment);
         paramBundle.commit();
         this.jdField_d_of_type_Boolean = true;
       }
@@ -205,7 +254,7 @@ public class FileSearchActivity
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment = new SearchTypeFragment();
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment.jdField_a_of_type_JavaUtilList = Arrays.asList(new Integer[] { Integer.valueOf(13), Integer.valueOf(3), Integer.valueOf(2), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(11) });
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment.jdField_a_of_type_Int = 4;
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment.a(new aoou(this.app, this, this.e));
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment.a(new apfp(this.app, this, this.e));
       }
     }
   }

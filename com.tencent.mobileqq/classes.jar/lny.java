@@ -1,61 +1,21 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Build.VERSION;
+import com.tencent.av.gaudio.GaInviteActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-final class lny
-  implements lof
+public class lny
+  implements DialogInterface.OnClickListener
 {
-  lny(String paramString1, QQAppInterface paramQQAppInterface, String paramString2, int paramInt, long paramLong, WeakReference paramWeakReference) {}
+  public lny(GaInviteActivity paramGaInviteActivity) {}
   
-  public Bitmap a(long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.b, (byte)3, false, false);
-  }
-  
-  public TroopInfoData a()
-  {
-    TroopInfoData localTroopInfoData = new TroopInfoData();
-    localTroopInfoData.troopUin = this.b;
-    localTroopInfoData.updateForTroopInfo(((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).c(this.b), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    return localTroopInfoData;
-  }
-  
-  public String a()
-  {
-    return lnv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b);
-  }
-  
-  public String a(int paramInt)
-  {
-    return "0X800A3E4";
-  }
-  
-  public String a(long paramLong, int paramInt)
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt3 == 2) {
-      mgc.a(paramInt1, paramInt2, this.jdField_a_of_type_Int, this.b);
+    if (this.a.isFinishing()) {}
+    while (((Build.VERSION.SDK_INT >= 17) && (this.a.isDestroyed())) || (paramInt == 1)) {
+      return;
     }
-    lnv.a(this.jdField_a_of_type_Long, (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-  }
-  
-  public String b()
-  {
-    return lnv.a(this.b);
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt3 == 2) {
-      mgc.a(paramInt1, paramInt2, this.jdField_a_of_type_Int, this.b);
-    }
+    ChatActivityUtils.a(this.a, true, new lnz(this));
   }
 }
 

@@ -1,11 +1,11 @@
 package dov.com.qq.im;
 
-import bhec;
+import bigs;
 
 public class QIMEmojiRedPacketCameraCaptureUnit$11
   implements Runnable
 {
-  public QIMEmojiRedPacketCameraCaptureUnit$11(bhec parambhec) {}
+  public QIMEmojiRedPacketCameraCaptureUnit$11(bigs parambigs) {}
   
   public void run()
   {

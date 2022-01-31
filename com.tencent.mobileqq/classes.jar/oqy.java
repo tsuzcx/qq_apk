@@ -1,7 +1,12 @@
-public abstract interface oqy
-  extends oqw
+import android.view.View;
+
+class oqy
+  extends bfyo
 {
-  public abstract void a(boolean paramBoolean, String paramString, int paramInt);
+  oqy(oqx paramoqx, View paramView)
+  {
+    super(paramView);
+  }
 }
 
 

@@ -1,5 +1,6 @@
 package com.tencent.viola.module;
 
+import android.os.Handler;
 import com.tencent.viola.bridge.ViolaBridgeManager;
 import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.utils.OrientationDetector.OnOrientationChangedListener;
@@ -18,8 +19,11 @@ class DeviceModule$1
     try
     {
       localJSONObject.put("value", ViolaUtils.getScreenOrientation(paramInt));
-      ViolaBridgeManager.getInstance().callbackJavascript(this.this$0.getViolaInstance().getInstanceId(), "device", "callback", this.val$callback, localJSONObject, true);
-      return;
+      if ((paramInt == DeviceModule.access$000(this.this$0)) && (System.currentTimeMillis() - DeviceModule.access$100(this.this$0) <= 900L))
+      {
+        DeviceModule.access$200(this.this$0).postDelayed(new DeviceModule.1.1(this, localJSONObject), 500L);
+        return;
+      }
     }
     catch (Exception localException)
     {
@@ -28,6 +32,8 @@ class DeviceModule$1
         ViolaLogUtils.e("DeviceModule", "getOrientationChanged error:" + localException.getMessage());
         localException.printStackTrace();
       }
+      DeviceModule.access$102(this.this$0, System.currentTimeMillis());
+      ViolaBridgeManager.getInstance().callbackJavascript(this.this$0.getViolaInstance().getInstanceId(), "device", "callback", this.val$callback, localJSONObject, true);
     }
   }
 }

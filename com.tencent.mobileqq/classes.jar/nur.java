@@ -1,98 +1,128 @@
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.support.v4.app.FragmentActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class nur
-  implements TextWatcher
+  extends ntg
 {
-  public nur(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private ReadInJoyBaseListViewGroup jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
+  protected osp a;
   
-  public void afterTextChanged(Editable paramEditable)
+  public nur(Activity paramActivity)
   {
-    int i;
-    label51:
-    label86:
-    aeor localaeor;
-    if ((paramEditable instanceof nsi))
-    {
-      i = ((nsi)paramEditable).a();
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
-      {
-        if (this.a.jdField_c_of_type_Int - i >= -99) {
-          break label236;
-        }
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("-99");
-      }
-      if (i - this.a.jdField_c_of_type_Int <= 0) {
-        break label261;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FF4222"));
-      this.a.jdField_c_of_type_Boolean = true;
-      ReadInJoyCommentComponentFragment.a(this.a);
-      localaeor = ReadInJoyCommentComponentFragment.a(this.a);
-      if (localaeor != null)
-      {
-        i = paramEditable.toString().trim().length();
-        if (i > 0) {
-          break label294;
-        }
-        this.a.f.setVisibility(8);
-      }
-    }
-    for (;;)
-    {
-      if ((i <= 0) || (paramEditable.length() > 24) || (!localaeor.a(paramEditable))) {
-        break label308;
-      }
-      if (ReadInJoyCommentComponentFragment.a(this.a))
-      {
-        localaeor.a(ReadInJoyCommentComponentFragment.a(this.a).app, paramEditable, null, 7220, false);
-        this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(84);
-        this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(84, 10000L);
-      }
-      this.a.f.setImageResource(2130842178);
-      return;
-      i = paramEditable.length();
-      break;
-      label236:
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.a.jdField_c_of_type_Int - i));
-      break label51;
-      label261:
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131099949));
-      this.a.jdField_c_of_type_Boolean = false;
-      break label86;
-      label294:
-      this.a.f.setVisibility(0);
-    }
-    label308:
-    localaeor.c();
-    ReadInJoyCommentComponentFragment.a(this.a, false);
-    this.a.f.setSelected(false);
-    this.a.f.setImageResource(2130842529);
+    super(paramActivity);
+    this.jdField_a_of_type_Osp = new nus(this);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public ViewGroup a()
   {
-    if (ReadInJoyCommentComponentFragment.b(this.a)) {
-      ReadInJoyCommentComponentFragment.c(this.a, false);
+    return this.jdField_a_of_type_AndroidViewViewGroup;
+  }
+  
+  public void a()
+  {
+    super.a();
+    b();
+    osj.a().e();
+    osm.a().a(this.jdField_a_of_type_Osp);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramInt1, paramInt2, paramIntent);
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    super.a(paramViewGroup);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramBoolean);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    super.a(paramBoolean, paramInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramBoolean);
+  }
+  
+  public void b()
+  {
+    super.b();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(null, null);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.b(null);
+      ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup, localLayoutParams);
     }
-    while ((!ReadInJoyCommentComponentFragment.c(this.a)) || (paramInt3 != 1) || (paramInt2 != 0) || (!paramCharSequence.toString().substring(paramInt1, paramInt1 + 1).equals("@"))) {
-      return;
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(null, false);
+      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup);
     }
-    this.a.b("2");
+  }
+  
+  public void d()
+  {
+    osm.a().b(this.jdField_a_of_type_Osp);
+    super.d();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(null, false);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.g();
+  }
+  
+  public void e()
+  {
+    super.e();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.e();
+  }
+  
+  public void f()
+  {
+    super.f();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.f();
+  }
+  
+  public void g()
+  {
+    super.g();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.d();
+  }
+  
+  public void h()
+  {
+    super.h();
+    osj.a().e();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a();
+  }
+  
+  public void o()
+  {
+    super.o();
+    if (((this.jdField_a_of_type_AndroidAppActivity instanceof ReadInJoyFeedsActivity)) && (((ReadInJoyFeedsActivity)this.jdField_a_of_type_AndroidAppActivity).a() == 1)) {
+      sdf.a().d(((BaseActivity)a()).app);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nur
  * JD-Core Version:    0.7.0.1
  */

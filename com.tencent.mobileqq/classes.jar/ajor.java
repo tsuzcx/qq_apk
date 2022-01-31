@@ -1,25 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.io.File;
+import java.util.Comparator;
 
-final class ajor
-  implements DialogInterface.OnClickListener
+public final class ajor
+  implements Comparator<File>
 {
-  ajor(DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(File paramFile1, File paramFile2)
   {
-    ajop.a("1");
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if ((paramFile1.exists()) && (paramFile2.exists()))
+    {
+      if (paramFile1.lastModified() - paramFile2.lastModified() > 0L) {
+        return 1;
+      }
+      return -1;
     }
-    if (this.a != null) {
-      this.a.onClick(paramDialogInterface, paramInt);
-    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajor
  * JD-Core Version:    0.7.0.1
  */

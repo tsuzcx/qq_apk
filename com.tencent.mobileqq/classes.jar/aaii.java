@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
 public class aaii
-  implements aais
+  implements View.OnClickListener
 {
-  public aaii(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
+  public aaii(AddRequestActivity paramAddRequestActivity) {}
   
-  public boolean a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      bgtr.a(this.a);
-    }
-    return false;
+    this.a.c();
+    axqw.b(this.a.app, "CliOper", "", "", "0X800AA44", "0X800AA44", 0, 0, "", "", "", "");
   }
 }
 

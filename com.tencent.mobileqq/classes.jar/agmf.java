@@ -1,52 +1,35 @@
-import Wallet.RedPackGrapInfo;
-import android.animation.Animator;
-import android.support.v7.widget.RecyclerView;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
-import java.util.List;
-
-public class agmf
-  implements IRedPacket.OnGetAvailableListListener
+final class agmf
+  extends aglx
 {
-  public agmf(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
-  
-  public void OnGetAvailableList(List<RedPackGrapInfo> paramList)
+  public boolean a()
   {
-    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-      TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
-    }
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
-      }
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null)
-      {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
-        TroopUnAccalimedRedPacketList.a(this.a).setText(ajjy.a(2131650005));
-      }
-    }
+    return true;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (!super.a(paramString)) {}
     do
     {
-      return;
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
-      }
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
-      }
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).a(paramList);
-      }
-    } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
-    TroopUnAccalimedRedPacketList.a(this.a).start();
+      return false;
+      paramString = agmo.a(paramString);
+    } while ((paramString != null) && ("image".equals(paramString[0])) && (agmo.a(paramString[1])) && (!paramString[1].equals("gif")));
+    return true;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean d()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agmf
  * JD-Core Version:    0.7.0.1
  */

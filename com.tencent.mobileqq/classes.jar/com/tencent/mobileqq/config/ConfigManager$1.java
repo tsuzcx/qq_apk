@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.config;
 
-import alzh;
+import amox;
 import java.util.TimerTask;
 
 public class ConfigManager$1
@@ -10,7 +10,7 @@ public class ConfigManager$1
   
   public void run()
   {
-    synchronized (alzh.a(this.this$0))
+    synchronized (amox.a(this.this$0))
     {
       this.a += 1;
       if (this.a > 30)

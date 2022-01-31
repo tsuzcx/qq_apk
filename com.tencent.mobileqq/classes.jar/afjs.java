@@ -1,21 +1,13 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
+import android.widget.TextView;
 
-class afjs
-  extends RecyclerView.ViewHolder
+public class afjs
+  extends afjx
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  
-  afjs(afjr paramafjr, View paramView)
-  {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131310624));
-  }
+  public TextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afjs
  * JD-Core Version:    0.7.0.1
  */

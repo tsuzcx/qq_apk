@@ -1,62 +1,38 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
-class aota
-  implements aoqz
+public class aota
+  implements View.OnClickListener
 {
-  aota(aosz paramaosz, BaseActivity paramBaseActivity) {}
+  public aota(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public aovk a()
+  public void onClick(View paramView)
   {
-    Object localObject3 = null;
-    int i = 0;
-    Object localObject1;
-    switch (this.jdField_a_of_type_Aosz.a())
+    if (paramView == null)
     {
-    default: 
-      localObject1 = null;
-    }
-    int j;
-    int k;
-    for (;;)
-    {
-      Object localObject2 = localObject3;
-      if (localObject1 != null)
-      {
-        localObject2 = localObject3;
-        if (((List)localObject1).size() > 0)
-        {
-          localObject2 = (aotf)((List)localObject1).get(i);
-          j = ((aotf)localObject2).c();
-          k = ((aotf)localObject2).b();
-          if (j != 7) {
-            break;
-          }
-          localObject2 = new aovq(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
       }
-      return localObject2;
-      localObject1 = this.jdField_a_of_type_Aosz.a();
-      i = this.jdField_a_of_type_Aosz.b();
-      continue;
-      localObject1 = this.jdField_a_of_type_Aosz.a();
-      i = this.jdField_a_of_type_Aosz.b();
-      continue;
-      localObject1 = new ArrayList(1);
-      ((List)localObject1).add(this.jdField_a_of_type_Aosz.a());
+      return;
     }
-    if (j == 9) {
-      return new aovh(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-    }
-    switch (k)
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.getTag();
+    if (localFileManagerEntity != null)
     {
-    default: 
-      return new aoug(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-    case 6000: 
-      return new aoum(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
+      if (this.a.jdField_a_of_type_Aopw != null) {
+        this.a.jdField_a_of_type_Aopw.a(null);
+      }
+      this.a.jdField_a_of_type_Long = localFileManagerEntity.nSessionId;
+      if (QfileBaseRecentFileTabView.m(this.a).a().b(this.a.jdField_a_of_type_Long)) {
+        this.a.a(localFileManagerEntity);
+      }
     }
-    return new aovc(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
+    this.a.jdField_a_of_type_Aopw.a(Integer.valueOf(-1));
+    paramView.setVisibility(4);
+    this.a.g();
   }
 }
 

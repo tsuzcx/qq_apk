@@ -2,10 +2,10 @@ package com.tencent.widget;
 
 import android.view.View;
 import android.widget.ListAdapter;
-import bekg;
+import bfsa;
 
 class HorizontalListView$PerformClick
-  extends bekg
+  extends bfsa
   implements Runnable
 {
   int a;

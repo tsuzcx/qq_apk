@@ -27,10 +27,10 @@ class LoginView$16
     } while (LoginView.b(this.this$0) != true);
     LoginView.c(this.this$0, false);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    localLayoutParams.addRule(7, 2131303263);
-    localLayoutParams.addRule(5, 2131303263);
+    localLayoutParams.addRule(7, 2131368930);
+    localLayoutParams.addRule(5, 2131368930);
     localLayoutParams.setMargins(0, 0, 0, 0);
-    localLayoutParams.addRule(2, 2131303263);
+    localLayoutParams.addRule(2, 2131368930);
     this.this$0.b.setLayoutParams(localLayoutParams);
     LoginView.b(this.this$0, this.this$0.e.getScrollY());
     LoginView.c(this.this$0, 0);

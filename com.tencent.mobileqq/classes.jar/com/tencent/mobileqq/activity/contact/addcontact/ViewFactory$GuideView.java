@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import aewr;
-import aews;
+import afhn;
+import afho;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
@@ -17,7 +17,7 @@ public class ViewFactory$GuideView
   implements View.OnClickListener
 {
   public static final int a;
-  public aews a;
+  public afho a;
   private int b = -1;
   
   static
@@ -38,7 +38,7 @@ public class ViewFactory$GuideView
     int i = 0;
     while (i < jdField_a_of_type_Int)
     {
-      addView(paramContext.inflate(2131492925, this, false));
+      addView(paramContext.inflate(2131558465, this, false));
       i += 1;
     }
   }
@@ -51,7 +51,7 @@ public class ViewFactory$GuideView
     {
       View localView = getChildAt(i);
       localView.setTag(((Integer)localView.getTag()).intValue(), paramString);
-      ((TextView)localView.findViewById(2131301657)).setText(paramString);
+      ((TextView)localView.findViewById(2131367269)).setText(paramString);
       String str = localView.getContentDescription().toString();
       int k = str.length();
       int m = str.indexOf(":");
@@ -65,7 +65,7 @@ public class ViewFactory$GuideView
     }
   }
   
-  private void a(ArrayList<aewr> paramArrayList, String paramString)
+  private void a(ArrayList<afhn> paramArrayList, String paramString)
   {
     int j = getChildCount();
     int i = 0;
@@ -73,28 +73,28 @@ public class ViewFactory$GuideView
     {
       View localView = getChildAt(i);
       localView.setOnClickListener(this);
-      localView.setTag(Integer.valueOf(((aewr)paramArrayList.get(i)).b));
-      localView.setTag(((aewr)paramArrayList.get(i)).b, paramString);
-      ((ImageView)localView.findViewById(2131301652)).setImageResource(((aewr)paramArrayList.get(i)).b);
-      ((TextView)localView.findViewById(2131301667)).setText(localView.getContext().getResources().getString(((aewr)paramArrayList.get(i)).jdField_a_of_type_Int) + ":");
-      ((TextView)localView.findViewById(2131301657)).setText(paramString);
-      localView.setContentDescription(getResources().getString(((aewr)paramArrayList.get(i)).jdField_a_of_type_Int) + ":" + paramString);
+      localView.setTag(Integer.valueOf(((afhn)paramArrayList.get(i)).b));
+      localView.setTag(((afhn)paramArrayList.get(i)).b, paramString);
+      ((ImageView)localView.findViewById(2131367264)).setImageResource(((afhn)paramArrayList.get(i)).b);
+      ((TextView)localView.findViewById(2131367279)).setText(localView.getContext().getResources().getString(((afhn)paramArrayList.get(i)).jdField_a_of_type_Int) + ":");
+      ((TextView)localView.findViewById(2131367269)).setText(paramString);
+      localView.setContentDescription(getResources().getString(((afhn)paramArrayList.get(i)).jdField_a_of_type_Int) + ":" + paramString);
       i += 1;
     }
   }
   
-  public aewr a(int paramInt)
+  public afhn a(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 80000000: 
-      return new aewr(2131624177, 2130843832);
+      return new afhn(2131689717, 2130843910);
     case 80000001: 
-      return new aewr(2131624179, 2130843833);
+      return new afhn(2131689719, 2130843911);
     }
-    return new aewr(2131624178, 2130843834);
+    return new afhn(2131689718, 2130843912);
   }
   
   public void a(int paramInt, String paramString)
@@ -126,8 +126,8 @@ public class ViewFactory$GuideView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Aews != null) {
-        this.jdField_a_of_type_Aews.a(i, paramView);
+      if (this.jdField_a_of_type_Afho != null) {
+        this.jdField_a_of_type_Afho.a(i, paramView);
       }
       return;
       i = 80000000;
@@ -138,9 +138,9 @@ public class ViewFactory$GuideView
     }
   }
   
-  public void setListener(aews paramaews)
+  public void setListener(afho paramafho)
   {
-    this.jdField_a_of_type_Aews = paramaews;
+    this.jdField_a_of_type_Afho = paramafho;
   }
 }
 

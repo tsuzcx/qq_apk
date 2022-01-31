@@ -1,279 +1,120 @@
-import android.app.Fragment;
-import android.content.BroadcastReceiver;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.res.Configuration;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.component.media.image.ImageLoader;
-import com.tencent.mobileqq.activity.leba.QzoneFrame.3;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import java.util.List;
 
-public class afqb
-  extends ajii
+class afqb
+  extends ajxl
 {
-  public static int a;
-  public static String a;
-  public static int b;
-  private afqe jdField_a_of_type_Afqe = new afqd(this);
-  private Fragment jdField_a_of_type_AndroidAppFragment;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new afqc(this);
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boolean jdField_a_of_type_Boolean = true;
-  private Fragment jdField_b_of_type_AndroidAppFragment;
-  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int = 255;
-  private Fragment jdField_c_of_type_AndroidAppFragment;
-  private ViewGroup jdField_c_of_type_AndroidViewViewGroup;
-  private boolean jdField_c_of_type_Boolean = true;
+  afqb(afqa paramafqa) {}
   
-  static
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-    jdField_a_of_type_JavaLangString = "qzone_publish_queue_notify";
-  }
-  
-  public View a(LayoutInflater paramLayoutInflater)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131496321, null);
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a()
-  {
-    super.a();
-    bfsz.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    f();
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    if (this.jdField_a_of_type_AndroidAppFragment == null) {
+    super.onCancelMayKnowRecommend(paramBoolean, paramString);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("delete mayKnowData ");
+      if (!paramBoolean) {
+        break label65;
+      }
+    }
+    label65:
+    for (String str = "success";; str = "false")
+    {
+      QLog.d("CardViewController", 2, str + ", delete uin is " + paramString);
+      this.a.b();
       return;
     }
-    this.jdField_a_of_type_AndroidAppFragment.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
-  public void a(Configuration paramConfiguration)
+  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
   {
-    super.a(paramConfiguration);
-    if (this.jdField_b_of_type_AndroidAppFragment != null) {
-      this.jdField_b_of_type_AndroidAppFragment.onConfigurationChanged(paramConfiguration);
-    }
-    if (this.jdField_c_of_type_AndroidAppFragment != null) {
-      this.jdField_c_of_type_AndroidAppFragment.onConfigurationChanged(paramConfiguration);
-    }
-  }
-  
-  public void a(BaseActivity paramBaseActivity)
-  {
-    super.a(paramBaseActivity);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    ThreadManager.executeOnSubThread(new QzoneFrame.3(this));
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_AndroidAppFragment != null) && ((this.jdField_a_of_type_AndroidAppFragment instanceof bftc))) {
-      ((bftc)this.jdField_a_of_type_AndroidAppFragment).setQzoneSwitchlistener(this.jdField_a_of_type_Afqe);
-    }
-  }
-  
-  public void b(boolean paramBoolean) {}
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_AndroidAppFragment != null;
-  }
-  
-  public void c()
-  {
-    try
+    super.onMayKnowEntryStateChanged(paramBoolean, paramBundle);
+    if (QLog.isColorLevel())
     {
-      ImmersiveUtils.a(awnu.d(), a().getWindow());
-      ImageLoader.getInstance().clear(false);
-      if (this.jdField_a_of_type_AndroidAppFragment != null) {
-        ((bftc)this.jdField_a_of_type_AndroidAppFragment).onSwitchOutofQzone();
+      StringBuilder localStringBuilder = new StringBuilder().append("do network checkUpdate, rsp ");
+      if (paramBoolean)
+      {
+        paramBundle = "success";
+        QLog.d("CardViewController", 2, paramBundle + ". msg: \"send network respond done\"");
       }
-      return;
     }
-    catch (Throwable localThrowable)
+    else
     {
-      QLog.e("QzoneFrame", 1, "onSwitchOutofQzone" + localThrowable);
-    }
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    super.d(paramBoolean);
-    if (this.jdField_b_of_type_AndroidAppFragment == null) {}
-    do
-    {
-      return;
-      if ((this.jdField_b_of_type_AndroidViewViewGroup != null) && (this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131302804) != null)) {
-        this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131302804).setVisibility(8);
+      if (paramBoolean) {
+        break label82;
       }
-      this.jdField_a_of_type_AndroidAppFragment.onResume();
-      FrameHelperActivity.c(false);
-    } while (!FrameHelperActivity.b());
-    FrameHelperActivity.s();
-  }
-  
-  public void e()
-  {
-    super.e();
-    l();
-  }
-  
-  public void f()
-  {
-    super.f();
-    bfsz.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    bfsz.b(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131308463));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131308090));
-    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131308456));
-    this.jdField_b_of_type_AndroidAppFragment = bfsz.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "com.qzone.feed.ui.activity.QQLebaFriendFeedFragment");
-    this.jdField_a_of_type_AndroidAppFragment = this.jdField_b_of_type_AndroidAppFragment;
-    b();
-    Object localObject;
-    if (this.jdField_a_of_type_AndroidAppFragment != null)
-    {
-      ((bftc)this.jdField_b_of_type_AndroidAppFragment).setTitleView(this.jdField_a_of_type_AndroidViewViewGroup);
-      this.jdField_a_of_type_AndroidAppFragment.onAttach(a());
-      this.jdField_a_of_type_AndroidAppFragment.onCreate(null);
-      localObject = this.jdField_a_of_type_AndroidAppFragment.onCreateView(a().getLayoutInflater(), null, null);
-      if (localObject == null) {
-        return;
-      }
-      this.jdField_c_of_type_AndroidViewViewGroup.addView((View)localObject);
-      this.jdField_a_of_type_AndroidAppFragment.onActivityCreated(null);
-      this.jdField_a_of_type_AndroidAppFragment.onStart();
-    }
-    if (this.jdField_b_of_type_Boolean) {
-      this.jdField_b_of_type_Boolean = false;
+      afqa.a(this.a, System.currentTimeMillis());
     }
     for (;;)
     {
-      localObject = new IntentFilter(new IntentFilter(jdField_a_of_type_JavaLangString));
-      try
-      {
-        a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
-        return;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("QzoneFrame", 1, "registerReceiver" + localException);
-        return;
-      }
-      if ((this.jdField_b_of_type_AndroidAppFragment instanceof bftc)) {
-        ((bftc)this.jdField_b_of_type_AndroidAppFragment).forceRefresh();
-      }
-    }
-  }
-  
-  public void g()
-  {
-    super.g();
-    if (this.jdField_a_of_type_AndroidAppFragment == null) {
+      afqa.a(this.a, true, paramBoolean);
       return;
+      paramBundle = "false";
+      break;
+      label82:
+      afqa.a(this.a);
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidAppFragment.onStart();
   }
   
-  public void h()
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
   {
-    super.h();
-    if (this.jdField_a_of_type_AndroidAppFragment == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidAppFragment.onPause();
-    FrameHelperActivity.c(true);
-  }
-  
-  public void i()
-  {
-    super.i();
-    if (this.jdField_a_of_type_AndroidAppFragment == null) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidAppFragment.onStop();
-  }
-  
-  public void j()
-  {
-    super.j();
-    try
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      a().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      if (this.jdField_a_of_type_AndroidAppFragment == null) {
-        return;
+      StringBuilder localStringBuilder = new StringBuilder().append("recv mayKnowData push add ");
+      if (!paramBoolean) {
+        break label108;
+      }
+      localObject = "success";
+      localObject = localStringBuilder.append((String)localObject).append(", push uin size is ");
+      if (paramList == null) {
+        break label115;
       }
     }
-    catch (Exception localException)
+    label108:
+    label115:
+    for (int i = paramList.size();; i = 0)
     {
-      do
-      {
-        for (;;)
-        {
-          QLog.e("QzoneFrame", 1, "registerReceiver" + localException);
-        }
-        if (this.jdField_b_of_type_AndroidAppFragment != null)
-        {
-          this.jdField_b_of_type_AndroidAppFragment.onDestroy();
-          this.jdField_b_of_type_AndroidAppFragment = null;
-        }
-      } while (this.jdField_c_of_type_AndroidAppFragment == null);
-      this.jdField_c_of_type_AndroidAppFragment.onDestroy();
-      this.jdField_c_of_type_AndroidAppFragment = null;
+      QLog.d("CardViewController", 2, i);
+      if ((paramList != null) && (!paramList.isEmpty())) {
+        afqa.a(this.a, paramList.size());
+      }
+      this.a.b();
+      return;
+      localObject = "false";
+      break;
     }
   }
   
-  public void k()
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
   {
-    l();
-    awnu.jdField_c_of_type_Int = 0;
-    awnu.d = 0;
-    f();
-  }
-  
-  public void l()
-  {
-    this.jdField_c_of_type_AndroidViewViewGroup.removeAllViews();
-    this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-    if (this.jdField_b_of_type_AndroidAppFragment != null) {
-      this.jdField_b_of_type_AndroidAppFragment.onDestroy();
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("recv mayKnowData push del ");
+      if (!paramBoolean) {
+        break label82;
+      }
+      localObject = "success";
+      localObject = localStringBuilder.append((String)localObject).append(", push uin size is ");
+      if (paramList == null) {
+        break label89;
+      }
     }
-    if (this.jdField_c_of_type_AndroidAppFragment != null) {
-      this.jdField_c_of_type_AndroidAppFragment.onDestroy();
+    label82:
+    label89:
+    for (int i = paramList.size();; i = 0)
+    {
+      QLog.d("CardViewController", 2, i);
+      this.a.b();
+      return;
+      localObject = "false";
+      break;
     }
-    if ((this.jdField_b_of_type_AndroidAppFragment instanceof bftc)) {
-      ((bftc)this.jdField_b_of_type_AndroidAppFragment).clearCache();
-    }
-    if ((this.jdField_c_of_type_AndroidAppFragment instanceof bftc)) {
-      ((bftc)this.jdField_c_of_type_AndroidAppFragment).clearCache();
-    }
-    this.jdField_b_of_type_AndroidAppFragment = null;
-    this.jdField_c_of_type_AndroidAppFragment = null;
-    a().getIntent().putExtra("newflag", true);
   }
 }
 

@@ -1,101 +1,72 @@
-import com.tencent.mobileqq.data.IntimateInfo;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.GestureRelativeLayout;
 
 public class apqw
-  implements ajfe
+  implements GestureDetector.OnGestureListener
 {
-  protected void a(boolean paramBoolean, long paramLong) {}
+  private apqw(SimpleFileViewer.GestureRelativeLayout paramGestureRelativeLayout) {}
   
-  protected void a(boolean paramBoolean, long paramLong, ArrayList<Long> paramArrayList) {}
-  
-  protected void a(boolean paramBoolean, String paramString) {}
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  protected void a(boolean paramBoolean, String paramString, IntimateInfo paramIntimateInfo) {}
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
-  
-  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject) {}
-  
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    switch (paramInt)
+    return false;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (Math.abs(paramFloat2) > Math.abs(paramFloat1))
     {
+      paramMotionEvent1 = this.a.a.b();
+      if (paramFloat2 <= 0.0F) {
+        break label97;
+      }
+      if (paramMotionEvent1 != null) {
+        paramMotionEvent1.setVisibility(8);
+      }
+      if (this.a.a.jdField_a_of_type_Apxa != null) {
+        this.a.a.jdField_a_of_type_Apxa.b(true);
+      }
+      if (this.a.a.jdField_a_of_type_Apwy != null) {
+        this.a.a.jdField_a_of_type_Apwy.b(true);
+      }
     }
+    label97:
     do
     {
       do
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                if ((paramObject instanceof Object[]))
-                {
-                  paramObject = (Object[])paramObject;
-                  a(paramBoolean, (String)paramObject[0], (IntimateInfo)paramObject[1]);
-                  return;
-                }
-                a(false, "", null);
-                return;
-                if ((paramObject instanceof Object[]))
-                {
-                  paramObject = (Object[])paramObject;
-                  a(paramBoolean, (String)paramObject[0], ((Boolean)paramObject[1]).booleanValue());
-                  return;
-                }
-                a(paramBoolean, "", false);
-                return;
-                if ((paramObject instanceof Object[]))
-                {
-                  a(paramBoolean, (String)((Object[])(Object[])paramObject)[0]);
-                  return;
-                }
-                a(false, "");
-                return;
-                if ((paramObject instanceof Object[]))
-                {
-                  paramObject = (Object[])paramObject;
-                  a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
-                  return;
-                }
-                a(false, "", -1, -1, -1);
-                return;
-                if ((paramBoolean) && ((paramObject instanceof Object[])))
-                {
-                  a(paramBoolean, (Object[])paramObject);
-                  return;
-                }
-                a(false, null);
-                return;
-              } while (!(paramObject instanceof Object[]));
-              paramObject = (Object[])paramObject;
-            } while (paramObject.length < 2);
-            a(paramBoolean, ((Long)paramObject[0]).longValue(), (ArrayList)paramObject[1]);
-            return;
-          } while (!(paramObject instanceof Object[]));
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length < 1);
-        a(paramBoolean, ((Long)paramObject[0]).longValue());
-        return;
-      } while (!(paramObject instanceof Object[]));
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length < 2);
-    a(paramBoolean, (HashMap)paramObject[0], paramObject[1]);
+        return false;
+      } while (paramFloat2 >= 0.0F);
+      if (paramMotionEvent1 != null) {
+        paramMotionEvent1.setVisibility(0);
+      }
+      if (this.a.a.jdField_a_of_type_Apxa != null) {
+        this.a.a.jdField_a_of_type_Apxa.a(true);
+      }
+    } while (this.a.a.jdField_a_of_type_Apwy == null);
+    this.a.a.jdField_a_of_type_Apwy.a(true);
+    return false;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apqw
  * JD-Core Version:    0.7.0.1
  */

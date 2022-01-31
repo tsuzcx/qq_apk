@@ -1,91 +1,36 @@
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
 
 public class aaok
-  extends WtloginObserver
 {
-  public aaok(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
-  
-  public void OnCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt + " time=" + paramLong);
-      if (paramArrayOfByte2 == null) {}
-    }
-    try
-    {
-      paramString = new String(paramArrayOfByte2, "utf-8");
-      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode errMsg=" + paramString);
-      this.a.c();
-      if (DevlockQuickLoginActivity.a(this.a)) {
-        return;
-      }
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-      if (paramInt == 0)
-      {
-        bbmy.a(this.a.getApplicationContext(), 2, 2131626576, 0).b(DevlockQuickLoginActivity.a(this.a));
-        DevlockQuickLoginActivity.a(this.a);
-        DevlockQuickLoginActivity.a(this.a, 0, 2130772001);
-        return;
-      }
-      if (paramInt == 21)
-      {
-        paramString = this.a.getString(2131626573);
-        paramArrayOfByte1 = this.a.getString(2131653983);
-        this.a.a(null, paramString, paramArrayOfByte1, new aaol(this));
-        return;
-      }
-      paramString = DevlockQuickLoginActivity.a(this.a, 2131626574);
-      bbmy.a(this.a.getApplicationContext(), 1, paramString, 0).b(DevlockQuickLoginActivity.b(this.a));
-    }
-  }
-  
-  public void OnException(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DevlockQuickLoginActivity", 2, "OnException e=" + paramString);
-    }
-    this.a.c();
-    bbmy.a(DevlockQuickLoginActivity.b(this.a), 1, this.a.getString(2131626575), 0).b(DevlockQuickLoginActivity.d(this.a));
-  }
-  
-  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DevlockQuickLoginActivity", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
-    }
-    if (DevlockQuickLoginActivity.b(this.a))
-    {
-      this.a.c();
-      return;
-    }
-    if (paramInt == 0)
-    {
-      this.a.b();
-      return;
-    }
-    this.a.c();
-    if (paramInt == 21)
-    {
-      paramString = this.a.getString(2131626573);
-      paramArrayOfByte1 = this.a.getString(2131653983);
-      this.a.a(null, paramString, paramArrayOfByte1, new aaom(this));
-      return;
-    }
-    paramString = this.a.getString(2131626574);
-    bbmy.a(DevlockQuickLoginActivity.a(this.a), 1, paramString, 0).b(DevlockQuickLoginActivity.c(this.a));
-  }
+  public int a;
+  public long a;
+  public MessageForReplyText.SourceMsgInfo a;
+  public EmojiStickerManager.StickerInfo a;
+  public String a;
+  public boolean a = true;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public boolean c;
+  public int d;
+  public long d;
+  public String d;
+  public boolean d;
+  public int e;
+  public long e;
+  public boolean e;
+  public int f;
+  public boolean f;
+  public int g = -1;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
 }
 
 

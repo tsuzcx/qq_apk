@@ -1,16 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-
-final class qcu
-  extends AnimatorListenerAdapter
+public class qcu
 {
-  qcu(View paramView) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private long b;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public qcu(long paramLong)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.a.setTag(2131297012, null);
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

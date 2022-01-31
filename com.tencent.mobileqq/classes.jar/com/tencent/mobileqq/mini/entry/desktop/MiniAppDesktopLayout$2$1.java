@@ -11,7 +11,7 @@ class MiniAppDesktopLayout$2$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    MiniAppDesktopLayout.access$200(this.this$1.this$0).setVisibility(8);
+    MiniAppDesktopLayout.access$100(this.this$1.this$0).setVisibility(8);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

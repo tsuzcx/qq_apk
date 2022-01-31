@@ -1,112 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Observable;
-import mqq.app.MobileQQ;
-import mqq.manager.Manager;
+import android.text.TextUtils;
+import android.webkit.ValueCallback;
+import com.tencent.tissue.v8rt.engine.SpeedUtil;
 
-public class bfaw
-  extends Observable
-  implements Manager
+class bfaw
+  implements ValueCallback
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  bfaw(bfav parambfav) {}
   
-  public bfaw(AppInterface paramAppInterface)
+  public void onReceiveValue(Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bfax(this);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.redpoint.broadcast.push.av"));
-  }
-  
-  public Map<String, RedAppInfo> a(ArrayList<String> paramArrayList)
-  {
-    if (paramArrayList == null) {}
-    do
-    {
-      do
-      {
-        return null;
-        localObject = new Bundle();
-        ((Bundle)localObject).putStringArrayList("pathList", paramArrayList);
-        paramArrayList = QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "getRedTouchInfo", (Bundle)localObject);
-      } while ((paramArrayList == null) || (paramArrayList.code != 0) || (paramArrayList.data == null));
-      paramArrayList = paramArrayList.data;
-      paramArrayList.setClassLoader(RedAppInfo.class.getClassLoader());
-      localObject = paramArrayList.getParcelableArrayList("redTouchInfoList");
-    } while (localObject == null);
-    paramArrayList = new HashMap();
-    Object localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      RedAppInfo localRedAppInfo = (RedAppInfo)((Iterator)localObject).next();
-      paramArrayList.put(localRedAppInfo.b(), localRedAppInfo);
+    if ((!TextUtils.isEmpty(bfav.a(this.a))) && (bfav.a(this.a).contains("QLogic.js"))) {
+      SpeedUtil.DEFAULT.event("runQLogicJs finish " + this.a.a);
     }
-    return paramArrayList;
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("path", paramString);
-    QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "reportRedTouchClick", localBundle);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    boolean bool2 = false;
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("appId", paramInt);
-    localObject = QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "isLebaItemOpen", (Bundle)localObject);
-    boolean bool1 = bool2;
-    if (localObject != null)
-    {
-      bool1 = bool2;
-      if (((EIPCResult)localObject).code == 0)
-      {
-        bool1 = bool2;
-        if (((EIPCResult)localObject).data != null) {
-          bool1 = ((EIPCResult)localObject).data.getBoolean("isLebaItemOpen", false);
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public void onDestroy()
-  {
-    super.deleteObservers();
-    try
-    {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    this.a.a.a(bfau.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfaw
  * JD-Core Version:    0.7.0.1
  */

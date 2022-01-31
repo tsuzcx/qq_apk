@@ -1,16 +1,10 @@
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import android.os.IInterface;
+import cooperation.qappcenter.remote.SendMsg;
 
-class bgmi
-  implements QzoneZipCacheHelperCallBack
+public abstract interface bgmi
+  extends IInterface
 {
-  bgmi(bgmh parambgmh) {}
-  
-  public void onResult(boolean paramBoolean)
-  {
-    bgmh.a(this.a, paramBoolean);
-  }
-  
-  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
+  public abstract void a(SendMsg paramSendMsg);
 }
 
 

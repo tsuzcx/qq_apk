@@ -1,23 +1,16 @@
-import android.support.annotation.Nullable;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class ujy
-  implements ssc
+  extends ssy
 {
-  ujy(ujx paramujx, srz paramsrz) {}
+  ujy(ujx paramujx) {}
   
-  public void a(boolean paramBoolean, @Nullable sry paramsry)
+  public void c(boolean paramBoolean)
   {
-    urk.e("Q.qqstory.home.data.HomeFeedPresenter", "lbs update %b %s", new Object[] { Boolean.valueOf(paramBoolean), paramsry });
-    this.jdField_a_of_type_Srz.b(this);
-    if (this.jdField_a_of_type_Ujx.a.get())
-    {
-      urk.d("Q.qqstory.home.data.HomeFeedPresenter", "is destroy");
-      return;
-    }
-    ujx.a(this.jdField_a_of_type_Ujx).a = paramsry;
-    ujx.a(this.jdField_a_of_type_Ujx).a(null, 0);
-    ((uje)sqg.a(11)).a = paramsry;
+    ssw localssw = (ssw)this.a.a.app.getManager(181);
+    this.a.a(2, localssw.a());
+    this.a.a(3, localssw.b());
   }
 }
 

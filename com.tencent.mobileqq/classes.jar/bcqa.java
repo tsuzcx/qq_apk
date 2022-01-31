@@ -1,20 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.support.annotation.Nullable;
+import java.lang.ref.WeakReference;
 
-public class bcqa
-  implements DialogInterface.OnClickListener
+class bcqa
 {
-  public bcqa(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  private bcpw jdField_a_of_type_Bcpw;
+  private WeakReference<bcpy> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bcqa(bcpw parambcpw, bcpy parambcpy)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Bcpw = parambcpw;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambcpy);
+  }
+  
+  private boolean a()
+  {
+    bcpy localbcpy = (bcpy)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    return (localbcpy != null) && (localbcpy.a());
+  }
+  
+  @Nullable
+  bcpw a()
+  {
+    if (a()) {
+      return this.jdField_a_of_type_Bcpw;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcqa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,23 @@
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
+import com.tencent.qphone.base.util.QLog;
 
-class nwm
-  implements begw
+public class nwm
+  implements mzb
 {
-  nwm(nwk paramnwk, nwx paramnwx, begr parambegr) {}
+  public nwm(ReadInJoyNewFeedsActivity.2 param2) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void loaded(String paramString, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      this.jdField_a_of_type_Nwk.a().a(this.jdField_a_of_type_Nwx, this.jdField_a_of_type_Nwk.c);
-      this.jdField_a_of_type_Nwk.notifyDataSetChanged();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 3256 html web resource finish");
     }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nwm
  * JD-Core Version:    0.7.0.1
  */

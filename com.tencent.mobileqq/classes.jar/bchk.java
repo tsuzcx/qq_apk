@@ -1,33 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bchk
-  implements DialogInterface.OnClickListener
+public abstract interface bchk
+  extends bcci
 {
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public abstract View a();
   
-  public bchk(bchb parambchb, DialogInterface.OnClickListener paramOnClickListener, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_JavaLangString = bcfb.a(paramString1, "NEWYYB");
-    this.b = paramString2;
-  }
+  public abstract void a(String paramString);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
-    }
-    this.jdField_a_of_type_Bchb.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-    this.jdField_a_of_type_Bchb.jdField_a_of_type_Bchm = null;
-    bcfb.a("710", this.jdField_a_of_type_JavaLangString, this.b);
-  }
+  public abstract void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bchk
  * JD-Core Version:    0.7.0.1
  */

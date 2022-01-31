@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.AbsSpinner.SavedState;
+import com.tencent.common.app.AppInterface;
+import mqq.manager.TicketManager;
 
-public final class begp
-  implements Parcelable.Creator<AbsSpinner.SavedState>
+public class begp
 {
-  public AbsSpinner.SavedState a(Parcel paramParcel)
+  public static String a(AppInterface paramAppInterface)
   {
-    return new AbsSpinner.SavedState(paramParcel, null);
-  }
-  
-  public AbsSpinner.SavedState[] a(int paramInt)
-  {
-    return new AbsSpinner.SavedState[paramInt];
+    return ((TicketManager)paramAppInterface.getManager(2)).getSkey(paramAppInterface.getAccount());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     begp
  * JD-Core Version:    0.7.0.1
  */

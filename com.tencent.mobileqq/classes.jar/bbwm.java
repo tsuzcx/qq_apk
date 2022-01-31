@@ -1,20 +1,14 @@
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.Comparator;
+import android.os.Bundle;
 
-public class bbwm
-  implements Comparator<Friend>
+public abstract class bbwm
 {
-  public bbwm(FriendChooser paramFriendChooser) {}
+  public void a(long paramLong, int paramInt, Bundle paramBundle) {}
   
-  public int a(Friend paramFriend1, Friend paramFriend2)
-  {
-    return paramFriend1.g.compareToIgnoreCase(paramFriend2.g);
-  }
+  public void a(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbwm
  * JD-Core Version:    0.7.0.1
  */

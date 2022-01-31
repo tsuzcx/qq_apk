@@ -1,27 +1,26 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
 
-class rvt
-  extends ajgs
+public class rvt
+  implements Animation.AnimationListener
 {
-  rvt(rvs paramrvs) {}
+  public rvt(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
   
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(rvs.a(this.a))))
-    {
-      paramLong = BaseApplicationImpl.getApplication().getBaseContext();
-      if (paramBoolean) {
-        bbmy.a(BaseApplicationImpl.getApplication(), 2, 2131653435, 0).b(paramLong.getResources().getDimensionPixelSize(2131167766));
-      }
-    }
-    else
-    {
-      return;
-    }
-    bbmy.a(BaseApplicationImpl.getApplication(), 1, 2131653422, 0).b(paramLong.getResources().getDimensionPixelSize(2131167766));
+    CommonSuspensionGestureLayout.c(this.a).setLayerType(0, null);
+    CommonSuspensionGestureLayout.a(this.a).c();
+    CommonSuspensionGestureLayout.a(this.a).a();
+    CommonSuspensionGestureLayout.b(this.a);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    CommonSuspensionGestureLayout.a(this.a).b();
   }
 }
 

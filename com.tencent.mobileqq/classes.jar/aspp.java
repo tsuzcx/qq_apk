@@ -1,31 +1,43 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import com.tencent.widget.ListView;
 
-class aspp
-  implements asks
+public class aspp
+  extends asqq
 {
-  aspp(aspm paramaspm) {}
+  public aspp(MultiAIOItemFragment paramMultiAIOItemFragment, bfob parambfob, ListView paramListView) {}
   
-  public void a(Comments.Comment paramComment, int paramInt)
+  public void b(int paramInt)
   {
-    if (aspm.a(this.a) != null)
+    super.b(paramInt);
+    boolean bool;
+    switch (paramInt)
     {
-      if (paramInt == 0)
+    default: 
+      bool = false;
+      paramInt = 0;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfob.onScrollStateChanged(this.jdField_a_of_type_ComTencentWidgetListView, paramInt);
+      if ((this.jdField_a_of_type_ComTencentWidgetListView instanceof ChatXListView))
       {
-        aspm.a(this.a).b(paramComment);
-        aspm.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131630961));
-        awqx.b(null, "dc02676", "grp_lbs", "", "comment", "delete_comment", 0, 0, "", "", "", "");
+        ChatXListView localChatXListView = (ChatXListView)this.jdField_a_of_type_ComTencentWidgetListView;
+        int[] arrayOfInt = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
+        localChatXListView.setDisableLayout(bool, arrayOfInt[0], arrayOfInt[1]);
       }
-    }
-    else {
       return;
+      bool = false;
+      paramInt = 1;
+      continue;
+      paramInt = 2;
+      bool = true;
     }
-    aspm.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131630960));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aspp
  * JD-Core Version:    0.7.0.1
  */

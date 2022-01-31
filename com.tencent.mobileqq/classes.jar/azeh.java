@@ -1,47 +1,71 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.Spannable;
-import android.text.method.ArrowKeyMovementMethod;
-import android.text.method.MovementMethod;
-import android.text.method.Touch;
-import android.view.MotionEvent;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.activity.TroopAdminList;
+import java.util.List;
+import java.util.Map;
 
 public class azeh
-  extends ArrowKeyMovementMethod
+  extends BaseAdapter
 {
-  private static azeh a;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   
-  public static MovementMethod a()
+  public azeh(TroopAdminList paramTroopAdminList, Context paramContext)
   {
-    if (a == null) {
-      a = new azeh();
-    }
-    return a;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
   }
   
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  public int getCount()
   {
-    if (paramMotionEvent.getAction() == 1)
+    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      int i = (int)paramMotionEvent.getX();
-      int j = (int)paramMotionEvent.getY();
-      if (paramTextView.getTag(2131307025) != null)
-      {
-        azei localazei = (azei)paramTextView.getTag(2131307025);
-        Drawable localDrawable = localazei.getDrawable();
-        if ((localDrawable != null) && (new Rect(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight()).contains(i, j)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("zivonchen", 2, "我擦呢,命中------------------");
-          }
-          localazei.a(paramTextView);
-          return true;
-        }
-      }
+      paramViewGroup = new azei();
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560288, null);
+      paramViewGroup.c = ((ImageView)paramView.findViewById(2131368583));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370647));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131368086));
+      paramView.setTag(paramViewGroup);
+      paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.jdField_a_of_type_AndroidViewView$OnClickListener);
     }
-    return Touch.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+    for (;;)
+    {
+      Map localMap = (Map)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.jdField_a_of_type_JavaUtilList.get(paramInt);
+      String str = localMap.get("uin").toString();
+      paramViewGroup.jdField_a_of_type_JavaLangString = str;
+      paramViewGroup.c.setBackgroundDrawable(bbdr.b());
+      baxt localbaxt = baxt.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.app, localMap.get("uin").toString(), (byte)3);
+      if (localbaxt != null) {
+        paramViewGroup.c.setBackgroundDrawable(localbaxt);
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localMap.get("nick").toString());
+      if (!this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.b.equals(str)) {
+        break;
+      }
+      paramViewGroup.b.setVisibility(0);
+      return paramView;
+      paramViewGroup = (azei)paramView.getTag();
+    }
+    paramViewGroup.b.setVisibility(4);
+    return paramView;
   }
 }
 

@@ -1,30 +1,20 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import cooperation.qqreader.QRBridgeActivity;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class altb
-  implements alsv
+final class altb
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public void a(Context paramContext, ColorNote paramColorNote)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    Intent localIntent1 = new Intent(paramContext, QRBridgeActivity.class);
-    localIntent1.putExtra("readtype", "16");
-    localIntent1.putExtra("stay", "1");
-    localIntent1.putExtra("recent_note", alsr.b(paramColorNote));
-    Intent localIntent2 = new Intent();
-    paramColorNote = paramColorNote.getSubType().split("_");
-    if (paramColorNote.length > 1) {
-      localIntent2.putExtra("nbid", paramColorNote[0]);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp.ArkAppCenterUtil", 2, new Object[] { "preDownloadArkApp download complete,retCode: ", Integer.valueOf(paramInt), ";msg: ", paramString });
     }
-    localIntent1.putExtras(localIntent2);
-    localIntent1.addFlags(268435456);
-    paramContext.startActivity(localIntent1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     altb
  * JD-Core Version:    0.7.0.1
  */

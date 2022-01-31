@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.troop.utils;
 
 import android.content.Context;
-import azjh;
-import bbmy;
+import bakk;
+import bcpw;
 
 public class TroopGagMgr$2
   implements Runnable
 {
-  public TroopGagMgr$2(azjh paramazjh, boolean paramBoolean, Context paramContext, String paramString, int paramInt) {}
+  public TroopGagMgr$2(bakk parambakk, boolean paramBoolean, Context paramContext, String paramString, int paramInt) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      bbmy.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
+      bcpw.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
       return;
     }
-    bbmy.a(this.jdField_a_of_type_AndroidContentContext, 2130839293, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
+    bcpw.a(this.jdField_a_of_type_AndroidContentContext, 2130839317, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
   }
 }
 

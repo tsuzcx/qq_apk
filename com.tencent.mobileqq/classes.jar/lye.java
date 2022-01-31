@@ -1,7 +1,19 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.share.AVSchema;
+
 public class lye
+  implements DialogInterface.OnDismissListener
 {
-  public int a = 0;
-  public String a;
+  public lye(AVSchema paramAVSchema) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
+    this.a.b();
+  }
 }
 
 

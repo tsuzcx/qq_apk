@@ -1,21 +1,25 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class aaxr
-  implements View.OnClickListener
 {
-  public aaxr(GeneralSettingActivity paramGeneralSettingActivity) {}
+  private final String jdField_a_of_type_JavaLangString;
+  private final String b;
+  private final String c;
   
-  public void onClick(View paramView)
+  public aaxr(Conversation paramConversation, String paramString1, String paramString2, String paramString3)
   {
-    paramView = new Intent();
-    paramView.putExtra("set_display_type", 1);
-    PublicFragmentActivity.a(this.a.getActivity(), paramView, QQSettingChatOperationFragment.class);
-    awqx.b(null, "CliOper", "", "", "0X800A22C", "0X800A22C", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  public void a()
+  {
+    aaxs localaaxs = new aaxs(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a = bbcv.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), 230, this.jdField_a_of_type_JavaLangString, this.b, ajyc.a(2131702590), ajyc.a(2131702594), localaaxs, localaaxs);
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.setCancelable(false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.show();
   }
 }
 

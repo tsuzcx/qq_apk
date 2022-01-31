@@ -1,16 +1,25 @@
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.database.CommentEntry;
+import NS_KING_INTERFACE.stGetFeedCommentListReq;
+import UserGrowth.stQQGetFeedCommentListReq;
+import UserGrowth.stQQGetFeedCommentListRsp;
 
-public abstract interface smv
+public class smv
+  extends sls<stQQGetFeedCommentListRsp>
 {
-  public abstract void a(smz paramsmz, View paramView, String paramString);
+  public smv()
+  {
+    super("QQGetFeedCommentList");
+    this.a = new stGetFeedCommentListReq("", "76C9BjPDT1HaN4nHs", "", 0, "", 0);
+  }
   
-  public abstract void a(smz paramsmz, ViewGroup paramViewGroup, View paramView, int paramInt, CommentEntry paramCommentEntry);
+  public smv(String paramString1, String paramString2, int paramInt)
+  {
+    super("QQGetFeedCommentList");
+    this.a = new stQQGetFeedCommentListReq(new stGetFeedCommentListReq(paramString1, paramString2, "", 0, "", paramInt));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     smv
  * JD-Core Version:    0.7.0.1
  */

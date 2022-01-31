@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.video.multivideo;
 
 import android.widget.ImageView;
-import qlv;
+import qya;
 
 public class MultiVideoNormalItemHolder$5
   implements Runnable
 {
-  public MultiVideoNormalItemHolder$5(qlv paramqlv) {}
+  public MultiVideoNormalItemHolder$5(qya paramqya) {}
   
   public void run()
   {
     this.this$0.a.setVisibility(0);
     this.this$0.b.setVisibility(8);
-    this.this$0.a.setImageResource(2130841140);
+    this.this$0.a.setImageResource(2130841217);
   }
 }
 

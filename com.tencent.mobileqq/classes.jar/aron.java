@@ -1,23 +1,48 @@
-import com.tencent.mobileqq.data.TroopMessageNavigateInfo;
-import java.util.Comparator;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
+import com.tencent.smtt.sdk.WebView;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class aron
-  implements Comparator<TroopMessageNavigateInfo>
+  extends BroadcastReceiver
 {
-  public int a(TroopMessageNavigateInfo paramTroopMessageNavigateInfo1, TroopMessageNavigateInfo paramTroopMessageNavigateInfo2)
+  public aron(UiApiPlugin paramUiApiPlugin) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramTroopMessageNavigateInfo1.type == paramTroopMessageNavigateInfo2.type)
-    {
-      int i = 0;
-      if (paramTroopMessageNavigateInfo1.msgseq > paramTroopMessageNavigateInfo2.msgseq) {
-        i = -1;
-      }
-      while (paramTroopMessageNavigateInfo1.msgseq >= paramTroopMessageNavigateInfo2.msgseq) {
-        return i;
-      }
-      return 1;
+    paramContext = (ResultReceiver)paramIntent.getParcelableExtra("receiver");
+    long l = paramIntent.getLongExtra("seq", 0L);
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("seq", l);
+    if (UiApiPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get() != -1L) {
+      paramContext.send(-1, localBundle);
     }
-    return -(paramTroopMessageNavigateInfo1.getMsgBizType() - paramTroopMessageNavigateInfo2.getMsgBizType());
+    String str = paramIntent.getStringExtra("date");
+    paramIntent = paramIntent.getStringExtra("id");
+    Object localObject = this.a.mRuntime.a();
+    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
+    {
+      localObject = this.a.mRuntime.a();
+      if ((localObject == null) || (((WebView)localObject).getX5WebViewExtension() == null))
+      {
+        paramContext.send(-2, localBundle);
+        return;
+      }
+      localBundle = new Bundle();
+      localBundle.putString("date", str);
+      localBundle.putString("id", paramIntent);
+      UiApiPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(l);
+      UiApiPlugin.jdField_a_of_type_AndroidOsResultReceiver = paramContext;
+      ((WebView)localObject).getX5WebViewExtension().invokeMiscMethod("uploadX5CoreLiveLog", localBundle);
+      return;
+    }
+    paramContext.send(-2, localBundle);
   }
 }
 

@@ -1,24 +1,44 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.data.TroopInfo;
 
 public class abde
-  extends abdk
+  implements awqu
 {
-  public abde(MainFragment paramMainFragment)
-  {
-    super(null);
-  }
+  public abde(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView)
   {
-    ajii localajii = this.a.b();
-    if ((localajii instanceof ReadinjoyTabFrame)) {
-      ((ReadinjoyTabFrame)localajii).k();
+    int i = 1;
+    awoc localawoc = (awoc)paramView.getTag(2131379208);
+    if (localawoc == null) {}
+    for (;;)
+    {
+      return;
+      String str1 = localawoc.b();
+      String str2 = localawoc.a().toString();
+      paramView = "-1";
+      if ((localawoc instanceof awmq))
+      {
+        paramView = ((awmq)localawoc).e();
+        i = 3000;
+      }
+      while ((i != -1) && (ForwardTroopListFragment.a(this.a, new ResultRecord(str1, str2, i, paramView, ""))))
+      {
+        this.a.a.notifyDataSetChanged();
+        return;
+        if ((localawoc instanceof awmw)) {
+          paramView = ((awmw)localawoc).a;
+        } else if ((localawoc instanceof awnb)) {
+          paramView = ((awnb)localawoc).a().troopuin;
+        } else if ((localawoc instanceof awmr)) {
+          i = 0;
+        } else {
+          i = -1;
+        }
+      }
     }
-    ogy.a().l();
-    MainFragment.a(MainFragment.a(this.a), MainFragment.a(this.a));
-    super.onClick(paramView);
   }
 }
 

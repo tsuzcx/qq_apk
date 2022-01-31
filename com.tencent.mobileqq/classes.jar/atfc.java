@@ -1,132 +1,63 @@
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.mobileqq.ar.arcloud.pb.YoutuOcr.OcrItem;
-import com.tencent.mobileqq.ar.arcloud.pb.YoutuOcr.YoutuOcrDetail;
-import com.tencent.mobileqq.ar.arcloud.pb.YoutuOcr.YoutuOcrRsp;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.14.1;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class atfc
+  implements atfo
 {
-  public atfd a;
+  public atfc(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public static atfd a(YoutuOcr.YoutuOcrRsp paramYoutuOcrRsp)
+  public void a(InterestTagInfo paramInterestTagInfo)
   {
-    atfd localatfd = new atfd();
-    int i;
-    Object localObject;
-    if (paramYoutuOcrRsp.youtu_ocr_errorcode.has())
+    ChooseInterestTagActivity.a(this.a, 0);
+    bfmr.b(ChooseInterestTagActivity.a(this.a));
+    boolean bool;
+    if (!TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
     {
-      i = paramYoutuOcrRsp.youtu_ocr_errorcode.get();
-      localatfd.jdField_a_of_type_Int = i;
-      if (!paramYoutuOcrRsp.youtu_ocr_errormsg.has()) {
-        break label215;
-      }
-      localObject = paramYoutuOcrRsp.youtu_ocr_errormsg.get();
-      label49:
-      localatfd.jdField_a_of_type_JavaLangString = ((String)localObject);
-      if (paramYoutuOcrRsp.youtu_orc_detail.has())
+      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
+      ChooseInterestTagActivity localChooseInterestTagActivity = this.a;
+      if (ChooseInterestTagActivity.b(this.a) != -1)
       {
-        localObject = (YoutuOcr.YoutuOcrDetail)paramYoutuOcrRsp.youtu_orc_detail.get();
-        if (!((YoutuOcr.YoutuOcrDetail)localObject).errorcode.has()) {
-          break label221;
-        }
-        i = ((YoutuOcr.YoutuOcrDetail)localObject).errorcode.get();
-        label93:
-        localatfd.jdField_b_of_type_Int = i;
-        if (!((YoutuOcr.YoutuOcrDetail)localObject).errormsg.has()) {
-          break label226;
-        }
-        paramYoutuOcrRsp = ((YoutuOcr.YoutuOcrDetail)localObject).errormsg.get();
-        label116:
-        localatfd.jdField_b_of_type_JavaLangString = paramYoutuOcrRsp;
-        if (((YoutuOcr.YoutuOcrDetail)localObject).language.has()) {
-          localatfd.e = ((YoutuOcr.YoutuOcrDetail)localObject).language.get();
-        }
-        if (((YoutuOcr.YoutuOcrDetail)localObject).ocr_language_list.has())
-        {
-          localatfd.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-          localatfd.jdField_a_of_type_JavaUtilArrayList.addAll(((YoutuOcr.YoutuOcrDetail)localObject).ocr_language_list.get());
-        }
-        if (!((YoutuOcr.YoutuOcrDetail)localObject).ocr_item.has()) {
-          break label232;
-        }
+        bool = true;
+        ChooseInterestTagActivity.a(localChooseInterestTagActivity, false, bool);
+        ChooseInterestTagActivity.a(this.a).setText("");
+        ChooseInterestTagActivity.a(this.a, "");
       }
     }
-    label215:
-    label221:
-    label226:
-    label232:
-    for (paramYoutuOcrRsp = ((YoutuOcr.YoutuOcrDetail)localObject).ocr_item.get();; paramYoutuOcrRsp = null)
+    else
     {
-      if (paramYoutuOcrRsp != null) {
-        localatfd.d = a(paramYoutuOcrRsp);
+      if (!ChooseInterestTagActivity.a(this.a, paramInterestTagInfo)) {
+        break label132;
       }
-      return localatfd;
-      i = 0;
-      break;
-      localObject = "";
-      break label49;
-      i = -1;
-      break label93;
-      paramYoutuOcrRsp = "";
-      break label116;
+      ChooseInterestTagActivity.a(this.a).remove(paramInterestTagInfo);
+      ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
     }
-  }
-  
-  private static String a(List<YoutuOcr.OcrItem> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0))
-    {
-      QLog.d("Q.ocr", 1, "typeSetting regoc items is null");
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      String str = ((YoutuOcr.OcrItem)paramList.next()).itemstring.get();
-      if (!TextUtils.isEmpty(str)) {
-        localStringBuilder.append(str).append("\n");
-      }
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public OcrRecogResult a()
-  {
-    Object localObject;
-    if ((this.a == null) || (TextUtils.isEmpty(this.a.d))) {
-      localObject = null;
-    }
-    OcrRecogResult localOcrRecogResult;
+    label132:
     do
     {
-      return localObject;
-      localOcrRecogResult = new OcrRecogResult();
-      if (this.a != null)
-      {
-        localOcrRecogResult.language = this.a.e;
-        localOcrRecogResult.ocrContent = this.a.d;
-        localOcrRecogResult.ocr_languages = this.a.jdField_a_of_type_JavaUtilArrayList;
+      return;
+      bool = false;
+      break;
+      if (ChooseInterestTagActivity.a(this.a).size() < 8) {
+        break label198;
       }
-      localObject = localOcrRecogResult;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.ocr", 2, "getUIData " + localOcrRecogResult);
-    return localOcrRecogResult;
+    } while (ChooseInterestTagActivity.d(this.a));
+    ChooseInterestTagActivity.a(this.a, "最多只能添加8个标签哦");
+    ChooseInterestTagActivity.b(this.a, true);
+    ChooseInterestTagActivity.a(this.a).postDelayed(new ChooseInterestTagActivity.14.1(this), 2800L);
+    return;
+    label198:
+    ChooseInterestTagActivity.a(this.a).add(paramInterestTagInfo);
+    ChooseInterestTagActivity.c(this.a, paramInterestTagInfo);
   }
   
-  public String toString()
+  public boolean a(InterestTagInfo paramInterestTagInfo)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mOcrResult:").append(this.a);
-    return localStringBuilder.toString();
+    return ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
   }
 }
 

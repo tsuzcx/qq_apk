@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bdcy;
-import bdcz;
-import bdfn;
-import bdfz;
-import bdnw;
-import bdxo;
+import begy;
+import begz;
+import bejn;
+import beka;
+import besl;
+import bfeg;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class PickerJsPlugin$2$1
-  implements bdxo
+  implements bfeg
 {
   PickerJsPlugin$2$1(PickerJsPlugin.2 param2) {}
   
@@ -30,14 +30,14 @@ class PickerJsPlugin$2$1
     {
       for (;;)
       {
-        bdnw.d("PickerJsPlugin", "showMultiPickerView error.", localException);
+        besl.d("PickerJsPlugin", "showMultiPickerView error.", localException);
       }
     }
   }
   
   public void onValChange(int paramInt1, int paramInt2)
   {
-    int i = ((Integer)PickerJsPlugin.access$300(this.this$1.this$0).a(bdfn.a())).intValue();
+    int i = ((Integer)PickerJsPlugin.access$300(this.this$1.this$0).a(bejn.a())).intValue();
     this.this$1.val$req.a.a("onMultiPickerViewChange", String.format("{\"column\":%d,\"current\":%d}", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), i);
   }
   
@@ -61,7 +61,7 @@ class PickerJsPlugin$2$1
     {
       for (;;)
       {
-        bdnw.d("PickerJsPlugin", "showMultiPickerView error.", paramArrayOfInt);
+        besl.d("PickerJsPlugin", "showMultiPickerView error.", paramArrayOfInt);
       }
     }
     if (PickerJsPlugin.access$100(this.this$1.this$0) != null) {

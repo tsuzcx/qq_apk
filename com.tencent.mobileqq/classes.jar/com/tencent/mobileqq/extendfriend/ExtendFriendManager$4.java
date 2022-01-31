@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.extendfriend;
 
-import anoe;
-import ansv;
+import aoep;
+import aojh;
 
 public class ExtendFriendManager$4
   implements Runnable
 {
-  public ExtendFriendManager$4(anoe paramanoe, boolean paramBoolean) {}
+  public ExtendFriendManager$4(aoep paramaoep, boolean paramBoolean) {}
   
   public void run()
   {
-    anoe.b(this.this$0);
-    anoe.c(this.this$0);
+    aoep.b(this.this$0);
+    aoep.c(this.this$0);
     if (this.a) {
-      ansv.a();
+      aojh.a();
     }
   }
 }

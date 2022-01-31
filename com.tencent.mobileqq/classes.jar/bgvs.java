@@ -1,42 +1,69 @@
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-public class bgvs
+public final class bgvs
 {
-  private static axrr jdField_a_of_type_Axrr;
-  private static bakx jdField_a_of_type_Bakx = new bgvt();
-  private static axrr jdField_b_of_type_Axrr;
-  private static bakx jdField_b_of_type_Bakx = new bgvu();
-  
-  public static axrr a()
+  public static int a(Context paramContext, int paramInt)
   {
-    if (jdField_a_of_type_Axrr == null) {}
-    try
-    {
-      if (jdField_a_of_type_Axrr == null)
-      {
-        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_a_of_type_Bakx, 128);
-        localHttpCommunicator.a();
-        jdField_a_of_type_Axrr = new axss(localHttpCommunicator, true);
-      }
-      return jdField_a_of_type_Axrr;
-    }
-    finally {}
+    return paramContext.getSharedPreferences("QR_SETTING", 0).getInt("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "type", -1);
   }
   
-  public static axrr b()
+  public static long a(Context paramContext)
   {
-    if (jdField_b_of_type_Axrr == null) {}
-    try
-    {
-      if (jdField_b_of_type_Axrr == null)
-      {
-        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_b_of_type_Bakx, 128);
-        localHttpCommunicator.a();
-        jdField_b_of_type_Axrr = new axss(localHttpCommunicator, true);
-      }
-      return jdField_b_of_type_Axrr;
-    }
-    finally {}
+    return paramContext.getSharedPreferences("QR_SETTING", 0).getLong("LAST_LOGIN_TIME" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), -1L);
+  }
+  
+  public static String a(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("QR_SETTING", 0).getString("QR_LOCAL_BOOK_CONFIG" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), "");
+  }
+  
+  public static String a(Context paramContext, int paramInt)
+  {
+    return paramContext.getSharedPreferences("QR_SETTING", 0).getString("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "content", "");
+  }
+  
+  public static void a(Context paramContext)
+  {
+    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putLong("LAST_LOGIN_TIME" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), System.currentTimeMillis()).apply();
+  }
+  
+  public static void a(Context paramContext, int paramInt1, int paramInt2)
+  {
+    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putInt("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt1 + "type", paramInt2).apply();
+  }
+  
+  public static void a(Context paramContext, int paramInt, String paramString)
+  {
+    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putString("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "content", paramString).apply();
+  }
+  
+  public static void a(Context paramContext, int paramInt, boolean paramBoolean)
+  {
+    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putBoolean("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "show", paramBoolean).apply();
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putString("QR_LOCAL_BOOK_CONFIG" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), "").apply();
+  }
+  
+  public static void a(Context paramContext, boolean paramBoolean)
+  {
+    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putBoolean("USE_ENTRY_CONTROL", paramBoolean).apply();
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("QR_SETTING", 0).getBoolean("USE_ENTRY_CONTROL", false);
+  }
+  
+  public static boolean a(Context paramContext, int paramInt)
+  {
+    return paramContext.getSharedPreferences("QR_SETTING", 0).getBoolean("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "show", false);
   }
 }
 

@@ -1,40 +1,19 @@
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.av.app.DeviceCapabilityExamination;
 
-public abstract interface lev
+class lev
+  implements muu
 {
-  public abstract int a(int paramInt, boolean paramBoolean1, lfl paramlfl, boolean paramBoolean2);
+  lev(leu paramleu, lez paramlez, int paramInt1, String paramString, int paramInt2, int paramInt3) {}
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(PendantItem paramPendantItem, VideoMaterial paramVideoMaterial);
-  
-  public abstract void a(FilterDesc paramFilterDesc);
-  
-  public abstract void a(lfi paramlfi, lfl paramlfl);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(lfa paramlfa);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt1, int paramInt2);
-  
-  public abstract boolean c();
+  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_Lez.j = paramInt;
+    this.jdField_a_of_type_Lez.i = paramString2;
+    DeviceCapabilityExamination.a(this.jdField_a_of_type_Lez, this.jdField_a_of_type_Leu.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Leu.jdField_a_of_type_Les != null) {
+      this.jdField_a_of_type_Leu.jdField_a_of_type_Les.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(paramInt));
+    }
+  }
 }
 
 

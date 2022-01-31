@@ -1,33 +1,68 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
 
-class ahcf
-  implements begw
+public class ahcf
 {
-  ahcf(ahcb paramahcb, QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData, begr parambegr) {}
+  private static volatile ahcf jdField_a_of_type_Ahcf;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void OnClick(View paramView, int paramInt)
+  public static ahcf a()
   {
-    if (ahcb.a(this.jdField_a_of_type_Ahcb)) {
-      return;
-    }
-    ahcb.a(this.jdField_a_of_type_Ahcb, true);
-    switch (paramInt)
+    if (jdField_a_of_type_Ahcf == null) {}
+    try
     {
+      if (jdField_a_of_type_Ahcf == null) {
+        jdField_a_of_type_Ahcf = new ahcf();
+      }
+      return jdField_a_of_type_Ahcf;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a(), "0X800991E", "0X800991E", 0, 0, "", "", "", "");
-      ahcb.c(this.jdField_a_of_type_Ahcb, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    finally {}
+  }
+  
+  private void b()
+  {
+    this.b = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "begin connect:");
+    }
+    QIPCClientHelper.getInstance().getClient().addListener(new ahcg(this));
+    long l = System.currentTimeMillis();
+    QIPCClientHelper.getInstance().getClient().connect(new ahch(this, l));
+  }
+  
+  public void a()
+  {
+    if ((!this.jdField_a_of_type_Boolean) && (!this.b)) {
+      b();
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (!bool) {}
+        try
+        {
+          this.jdField_a_of_type_JavaLangObject.wait(500L);
+          return;
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            localInterruptedException.printStackTrace();
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahcf
  * JD-Core Version:    0.7.0.1
  */

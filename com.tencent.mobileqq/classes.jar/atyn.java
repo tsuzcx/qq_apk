@@ -1,11 +1,8 @@
-public class atyn
+public abstract interface atyn
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public abstract boolean a();
+  
+  public abstract boolean a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

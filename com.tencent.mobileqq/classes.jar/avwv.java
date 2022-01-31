@@ -1,18 +1,17 @@
-import android.widget.TextView;
-import java.util.List;
-
-public abstract interface avwv
-  extends avwx
+public abstract class avwv
+  extends avxa
 {
-  public abstract TextView a();
-  
-  public abstract List<avww> a();
-  
-  public abstract TextView b();
+  public int b = -1;
+  public int c;
+  public int d = -1;
+  public int e = -1;
+  public int f = -1;
+  public int g = -1;
+  public int h = -1;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avwv
  * JD-Core Version:    0.7.0.1
  */

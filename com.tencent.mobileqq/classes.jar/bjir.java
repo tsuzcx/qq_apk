@@ -1,31 +1,77 @@
 import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import java.lang.ref.WeakReference;
 
-final class bjir
-  implements axrt
+public class bjir
 {
-  bjir(String paramString1, String paramString2, bjis parambjis) {}
+  private static bjir jdField_a_of_type_Bjir;
+  private WeakReference<DoodleLayout> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<DoodleLayout> b;
   
-  public void onResp(axsq paramaxsq)
+  public static bjir a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bjiq.b(), 2, "onResp resultcode: " + paramaxsq.c + " threadid=" + Thread.currentThread().getId());
+    if (jdField_a_of_type_Bjir == null) {
+      jdField_a_of_type_Bjir = new bjir();
     }
-    if ((paramaxsq.c == 200) && (bjiq.a(this.jdField_a_of_type_JavaLangString, this.b))) {
-      if (this.jdField_a_of_type_Bjis != null) {
-        this.jdField_a_of_type_Bjis.a();
-      }
-    }
-    while (this.jdField_a_of_type_Bjis == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bjis.b();
+    return jdField_a_of_type_Bjir;
   }
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2)
+  public DoodleLayout a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bjis != null) {
-      this.jdField_a_of_type_Bjis.a(paramLong1, paramLong2);
+    Object localObject2 = null;
+    Object localObject1;
+    if (paramInt == 0)
+    {
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+      {
+        localObject1 = localObject2;
+        if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
+          localObject1 = (DoodleLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        }
+      }
     }
+    for (;;)
+    {
+      if ((localObject1 == null) && (QLog.isColorLevel())) {
+        QLog.e("DoodleLayoutConnector", 2, "getDoodleLayout null, not init yet");
+      }
+      return localObject1;
+      localObject1 = localObject2;
+      if (this.b != null)
+      {
+        localObject1 = localObject2;
+        if (this.b.get() != null) {
+          localObject1 = (DoodleLayout)this.b.get();
+        }
+      }
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DoodleLayoutConnector", 2, "unbind " + paramInt);
+    }
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      return;
+    }
+    this.b = null;
+  }
+  
+  public void a(int paramInt, DoodleLayout paramDoodleLayout)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DoodleLayoutConnector", 2, "bind " + paramInt);
+    }
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDoodleLayout);
+      return;
+    }
+    this.b = new WeakReference(paramDoodleLayout);
   }
 }
 

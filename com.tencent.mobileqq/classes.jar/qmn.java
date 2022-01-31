@@ -1,34 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-
 class qmn
-  extends Handler
+  extends osp
 {
-  private qmn(qmk paramqmk) {}
+  qmn(qmm paramqmm) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      qmk.a(this.a);
-      qmk.a(this.a).sendEmptyMessageDelayed(0, qmk.a(this.a));
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(qmk.a(this.a), 2, "prePlay timeout, try rePlay");
-    }
-    if ((this.a.e()) && (qmk.a(this.a).a() == qmk.a(this.a)))
-    {
-      qmk.b(this.a);
-      return;
-    }
-    qmk.a(this.a, false);
-    this.a.a(qmk.a(this.a));
-    qmk.a(this.a, qmk.a(this.a));
+    qmm.a(this.a, paramBoolean, paramInt, paramString);
+  }
+  
+  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
+  {
+    qmm.a(this.a, paramBoolean, paramLong, paramInt, paramString);
   }
 }
 

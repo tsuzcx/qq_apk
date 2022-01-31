@@ -5,14 +5,14 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import obz;
-import oqz;
-import psc;
+import onk;
+import pcb;
+import qea;
 
 public class VideoArticleModule$3
   implements Runnable
 {
-  public VideoArticleModule$3(oqz paramoqz, long paramLong1, boolean paramBoolean1, List paramList, int paramInt, boolean paramBoolean2, long paramLong2, ToServiceMsg paramToServiceMsg) {}
+  public VideoArticleModule$3(pcb parampcb, long paramLong1, boolean paramBoolean1, List paramList, int paramInt, boolean paramBoolean2, long paramLong2, ToServiceMsg paramToServiceMsg) {}
   
   public void run()
   {
@@ -40,7 +40,7 @@ public class VideoArticleModule$3
       if (localWeiShiVideoArticleInfo == null) {
         break label446;
       }
-      StringBuilder localStringBuilder2 = new StringBuilder().append("article【").append(i).append("】 id : ").append(localWeiShiVideoArticleInfo.articleID).append(" seq : ").append(localWeiShiVideoArticleInfo.recommendSeq).append(" title : ").append(obz.c(localWeiShiVideoArticleInfo.title)).append(" rowkey : ").append(localWeiShiVideoArticleInfo.rowkey).append(" isUgc : ").append(localWeiShiVideoArticleInfo.isUgc).append(" vid : ");
+      StringBuilder localStringBuilder2 = new StringBuilder().append("article【").append(i).append("】 id : ").append(localWeiShiVideoArticleInfo.articleID).append(" seq : ").append(localWeiShiVideoArticleInfo.recommendSeq).append(" title : ").append(onk.c(localWeiShiVideoArticleInfo.title)).append(" rowkey : ").append(localWeiShiVideoArticleInfo.rowkey).append(" isUgc : ").append(localWeiShiVideoArticleInfo.isUgc).append(" vid : ");
       if (localWeiShiVideoArticleInfo.videoData != null) {
         break label263;
       }
@@ -59,14 +59,14 @@ public class VideoArticleModule$3
       break;
       str = localWeiShiVideoArticleInfo.videoData.a;
       break label192;
-      QLog.i(oqz.a, 1, "onGetChannelArticleList success=" + this.jdField_a_of_type_Boolean + " channelId=" + this.jdField_a_of_type_Int + " noMoreData=" + this.jdField_b_of_type_Boolean + " beginRecommendSeq=" + this.jdField_a_of_type_Long + " endRecommendSeq=" + this.jdField_b_of_type_Long + " isRefresh : " + bool + ", " + localStringBuilder1.toString());
+      QLog.i(pcb.a, 1, "onGetChannelArticleList success=" + this.jdField_a_of_type_Boolean + " channelId=" + this.jdField_a_of_type_Int + " noMoreData=" + this.jdField_b_of_type_Boolean + " beginRecommendSeq=" + this.jdField_a_of_type_Long + " endRecommendSeq=" + this.jdField_b_of_type_Long + " isRefresh : " + bool + ", " + localStringBuilder1.toString());
       label374:
       if (bool)
       {
-        oqz.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg);
+        pcb.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg);
         return;
       }
-      oqz.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
+      pcb.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
       return;
     }
   }

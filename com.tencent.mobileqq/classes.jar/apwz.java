@@ -1,20 +1,20 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import android.view.View.OnClickListener;
 
 class apwz
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  apwz(apwu paramapwu) {}
+  apwz(apwy paramapwy) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    apwu.d(this.a);
-    this.a.a(true);
+    this.a.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apwz
  * JD-Core Version:    0.7.0.1
  */

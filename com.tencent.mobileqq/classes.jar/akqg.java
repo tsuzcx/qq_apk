@@ -1,63 +1,19 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import IMMsgBodyPack.MsgType0x210;
 
-public abstract class akqg
-  extends Binder
-  implements akqf
+class akqg
+  implements lxw
 {
-  public akqg()
-  {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArSoCallback");
-  }
+  akqg(akqf paramakqf, MsgType0x210 paramMsgType0x210) {}
   
-  public static akqf a(IBinder paramIBinder)
+  public void a(lxv paramlxv)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof akqf))) {
-      return (akqf)localIInterface;
-    }
-    return new akqh(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      a();
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      b();
-      paramParcel2.writeNoException();
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-    a(paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    paramlxv.b(this.jdField_a_of_type_IMMsgBodyPackMsgType0x210.vProtobuf);
+    paramlxv.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akqg
  * JD-Core Version:    0.7.0.1
  */

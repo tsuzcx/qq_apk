@@ -1,21 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class amuh
-  implements DialogInterface.OnClickListener
+public class amuh
 {
-  amuh(amua paramamua) {}
+  private int a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static amuh a(String paramString)
   {
-    paramDialogInterface.cancel();
-    amua.a(this.a).c();
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        amuh localamuh = new amuh();
+        localamuh.a = new JSONObject(paramString).optInt("pttWithTextSwitch", -1);
+        return localamuh;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("PttWithTextSwitchBean", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public boolean a()
+  {
+    return this.a == 1;
+  }
+  
+  public String toString()
+  {
+    return "open:" + this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amuh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import ohb;
-import opw;
-import pjg;
+import osm;
+import pax;
+import pvb;
 
 class ComponentLastRead$2
   implements Runnable
@@ -12,12 +12,12 @@ class ComponentLastRead$2
   public void run()
   {
     if (this.this$0.a.a.i()) {
-      ohb.a().a(this.this$0);
+      osm.a().a(this.this$0);
     }
     while (this.this$0.a.a.e() != 0) {
       return;
     }
-    ohb.a().a(this.this$0);
+    osm.a().a(this.this$0);
   }
 }
 

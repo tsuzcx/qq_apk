@@ -1,13 +1,13 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui;
 
-import bila;
-import bill;
-import biln;
+import bkbv;
+import bkcg;
+import bkci;
 
 public class EditTextDialog$LayoutChangeListener$1
   implements Runnable
 {
-  public EditTextDialog$LayoutChangeListener$1(biln parambiln) {}
+  public EditTextDialog$LayoutChangeListener$1(bkci parambkci) {}
   
   public void run()
   {

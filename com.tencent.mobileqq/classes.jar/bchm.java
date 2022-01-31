@@ -1,19 +1,13 @@
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-
-public class bchm
+public abstract interface bchm
+  extends bcci
 {
-  public int a;
-  public DialogInterface.OnClickListener a;
-  public Bundle a;
-  public boolean a;
-  public boolean b;
+  public abstract long b();
   
-  public bchm(bchb parambchb) {}
+  public abstract boolean c(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bchm
  * JD-Core Version:    0.7.0.1
  */

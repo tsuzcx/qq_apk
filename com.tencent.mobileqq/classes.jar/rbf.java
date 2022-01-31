@@ -1,43 +1,16 @@
-import android.util.Log;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
 
-public class rbf
+class rbf
+  extends oyg
 {
-  private static String jdField_a_of_type_JavaLangString = "TimeUtil";
-  private static ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap(8));
-  
-  public static long a(String paramString)
+  rbf(rap paramrap, String paramString, List paramList)
   {
-    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
-    {
-      long l1 = System.currentTimeMillis();
-      long l2 = l1 - ((Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).longValue();
-      Log.d(jdField_a_of_type_JavaLangString, paramString + " end spent time : " + l2 + "      end time " + l1);
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      return l2;
-    }
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
-    Log.d(jdField_a_of_type_JavaLangString, paramString + " start time : " + System.currentTimeMillis());
-    return -1L;
+    super(paramString);
   }
   
-  public static long b(String paramString)
+  public void a(oya paramoya)
   {
-    paramString = (Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
-    if (paramString == null) {
-      return -1L;
-    }
-    return paramString.longValue();
-  }
-  
-  public static long c(String paramString)
-  {
-    long l = -1L;
-    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-      l = ((Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString)).longValue();
-    }
-    return l;
+    paramoya.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.pic;
 
-import atqd;
-import bbmy;
+import auob;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class PicUploadInfo$1
   implements Runnable
 {
-  public PicUploadInfo$1(atqd paramatqd) {}
+  public PicUploadInfo$1(auob paramauob) {}
   
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.sApplication, 2131624393, 1).a();
+    bcpw.a(BaseApplicationImpl.sApplication, 2131689941, 1).a();
   }
 }
 

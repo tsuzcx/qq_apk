@@ -1,18 +1,24 @@
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedDns;
+import android.view.animation.Animation;
 
 class aqoj
-  implements CustomizedDns
+  extends bfmg
 {
-  aqoj(aqod paramaqod) {}
+  aqoj(aqoi paramaqoi) {}
   
-  public String getip(String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return aqpc.a().a(paramString);
+    this.a.a().c();
+    this.a.a().a();
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqoj
  * JD-Core Version:    0.7.0.1
  */

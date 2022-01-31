@@ -2,11 +2,11 @@ package com.tencent.open.appstore.dl;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bccu;
-import bcdj;
-import bcds;
-import bcgl;
-import becv;
+import bdgv;
+import bdhk;
+import bdht;
+import bdkm;
+import bfkl;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.io.File;
 import java.io.IOException;
@@ -14,14 +14,14 @@ import java.io.IOException;
 public class DownloadManagerV2$22
   implements Runnable
 {
-  public DownloadManagerV2$22(bccu parambccu, Bundle paramBundle) {}
+  public DownloadManagerV2$22(bdgv parambdgv, Bundle paramBundle) {}
   
   public void run()
   {
     String str1;
     try
     {
-      Object localObject1 = this.a.getString(bcgl.a);
+      Object localObject1 = this.a.getString(bdkm.a);
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         return;
       }
@@ -29,26 +29,26 @@ public class DownloadManagerV2$22
       str1 = this.a.getString("PackageName");
       if (localObject1 == null)
       {
-        bcds.e("DownloadManagerV2", "[writeApkCodeAsync]  pkgName=" + str1 + " download info is null");
+        bdht.e("DownloadManagerV2", "[writeApkCodeAsync]  pkgName=" + str1 + " download info is null");
         return;
       }
     }
     catch (Exception localException)
     {
-      bcds.c("DownloadManagerV2", "[writeApkCodeAsync] >>>", localException);
+      bdht.c("DownloadManagerV2", "[writeApkCodeAsync] >>>", localException);
       return;
     }
     String str2 = this.a.getString("Code");
-    bcds.b("DownloadManagerV2", "[writeApkCodeAsync] pkgName=" + str1 + ", code=" + str2);
+    bdht.b("DownloadManagerV2", "[writeApkCodeAsync] pkgName=" + str1 + ", code=" + str2);
     if (TextUtils.isEmpty(str2))
     {
       localException.j = 0;
       localException.a(4);
-      this.this$0.d(localException);
+      this.this$0.c(localException);
       this.this$0.a(4, localException);
       this.this$0.a(localException, localException.c);
-      bcds.b("AppCenterReporter", "from:[writeApkCodeAsync] code is empty");
-      bcdj.b(localException);
+      bdht.b("AppCenterReporter", "from:[writeApkCodeAsync] code is empty");
+      bdhk.b(localException);
       if (localException.a) {
         this.this$0.a(localException, false);
       }
@@ -59,19 +59,19 @@ public class DownloadManagerV2$22
       Object localObject2 = new File(localException.l);
       try
       {
-        becv.a((File)localObject2, str2);
-        localObject2 = becv.a((File)localObject2);
-        bcds.b("DownloadManagerV2", "[writeApkCodeAsync] pkgName=" + str1 + ",check code=" + (String)localObject2);
+        bfkl.a((File)localObject2, str2);
+        localObject2 = bfkl.a((File)localObject2);
+        bdht.b("DownloadManagerV2", "[writeApkCodeAsync] pkgName=" + str1 + ",check code=" + (String)localObject2);
         bool = str2.equals(localObject2);
         if (bool)
         {
-          bcds.b("DownloadManagerV2", "[writeApkCodeAsync]  pkgName=" + str1 + " write code and check code suc");
+          bdht.b("DownloadManagerV2", "[writeApkCodeAsync]  pkgName=" + str1 + " write code and check code suc");
           localException.j = 0;
-          this.this$0.d(localException);
+          this.this$0.c(localException);
           this.this$0.a(4, localException);
           this.this$0.a(localException, localException.c);
-          bcds.b("AppCenterReporter", "from:[writeApkCodeAsync] APK_WRITE_CODE_SUC");
-          bcdj.b(localException);
+          bdht.b("AppCenterReporter", "from:[writeApkCodeAsync] APK_WRITE_CODE_SUC");
+          bdhk.b(localException);
           if (!localException.a) {
             return;
           }
@@ -82,14 +82,14 @@ public class DownloadManagerV2$22
       {
         for (;;)
         {
-          bcds.b("DownloadManagerV2", "[writeApkCodeAsync] Exception=" + localIOException.getMessage());
+          bdht.b("DownloadManagerV2", "[writeApkCodeAsync] Exception=" + localIOException.getMessage());
           boolean bool = false;
         }
-        bcds.b("DownloadManagerV2", "[writeApkCodeAsync] pkgName=" + str1 + " write code or check code fail");
+        bdht.b("DownloadManagerV2", "[writeApkCodeAsync] pkgName=" + str1 + " write code or check code fail");
         localException.j = -20;
         localException.a(-2);
-        this.this$0.d(localException);
-        bccu.a(this.this$0, localException, localException.j, null);
+        this.this$0.c(localException);
+        bdgv.a(this.this$0, localException, localException.j, null);
       }
     }
   }

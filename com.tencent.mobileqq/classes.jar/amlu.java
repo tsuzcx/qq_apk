@@ -1,61 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.view.View;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.widget.RoundImageView;
 
-public class amlu
-  extends alzl<amlt>
+class amlu
+  extends anhg
 {
-  public static amlt a()
+  public ETTextView a;
+  public RoundImageView a;
+  
+  public amlu(amlr paramamlr, View paramView)
   {
-    return (amlt)alzw.a().a(377);
-  }
-  
-  public int a()
-  {
-    return 377;
-  }
-  
-  @NonNull
-  public amlt a(int paramInt)
-  {
-    return new amlt();
-  }
-  
-  @Nullable
-  public amlt a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
-      return amlt.a(paramArrayOfalzs);
-    }
-    return null;
-  }
-  
-  public Class<amlt> a()
-  {
-    return amlt.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amlt paramamlt) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramView.findViewById(2131367679));
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)paramView.findViewById(2131364438));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amlu
  * JD-Core Version:    0.7.0.1
  */

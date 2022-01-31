@@ -1,18 +1,13 @@
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.aekit.api.standard.filter.AEFilterManager;
 
-public class bikv
-  extends sfo
+class bikv
+  implements bild
 {
-  public final int a;
-  @NonNull
-  public final List<srl> a;
+  bikv(biku parambiku) {}
   
-  public bikv(int paramInt, @NonNull List<srl> paramList)
+  public void a(int paramInt, AEFilterManager paramAEFilterManager)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
+    this.a.a(paramInt, paramAEFilterManager);
   }
 }
 

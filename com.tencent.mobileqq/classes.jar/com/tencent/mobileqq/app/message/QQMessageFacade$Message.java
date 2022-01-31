@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.message;
 
-import akds;
-import atmo;
-import atnz;
+import akse;
+import aukm;
+import aulx;
 import com.tencent.mobileqq.data.MessageRecord;
 import java.util.ArrayList;
 
@@ -17,10 +17,10 @@ public class QQMessageFacade$Message
   public long fileSize = -1L;
   public int fileType = -1;
   public boolean hasReply;
-  @atnz
+  @aulx
   public boolean isCacheValid = true;
   public MessageRecord lastMsg;
-  public ArrayList<akds> msgInfoList;
+  public ArrayList<akse> msgInfoList;
   public String nickName;
   public String pttUrl;
   public long shareAppID;
@@ -34,7 +34,7 @@ public class QQMessageFacade$Message
     this.fileType = -1;
   }
   
-  public Class<? extends atmo> getClassForTable()
+  public Class<? extends aukm> getClassForTable()
   {
     return Message.class;
   }
@@ -49,7 +49,7 @@ public class QQMessageFacade$Message
   
   public boolean needNotification()
   {
-    return (this.bizType == 23) || (this.bizType == 17) || (this.bizType == 16) || (this.bizType == 5) || (this.bizType == 13) || (this.bizType == 26) || (this.bizType == 4) || (this.bizType == 14) || (this.bizType == 12);
+    return (this.bizType == 24) || (this.bizType == 17) || (this.bizType == 16) || (this.bizType == 5) || (this.bizType == 13) || (this.bizType == 27) || (this.bizType == 4) || (this.bizType == 14) || (this.bizType == 12);
   }
 }
 

@@ -1,120 +1,73 @@
-import android.os.Bundle;
-import java.security.InvalidParameterException;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class bbaq
+  extends Drawable
 {
-  final int jdField_a_of_type_Int;
-  private bbat jdField_a_of_type_Bbat = new bbar(this);
-  final bbau jdField_a_of_type_Bbau;
-  final bbav jdField_a_of_type_Bbav;
-  final ConcurrentHashMap<Integer, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private int jdField_a_of_type_Int;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private Path jdField_a_of_type_AndroidGraphicsPath;
+  private int b;
+  private int c;
   
-  public bbaq(bbav parambbav, int paramInt, bbau parambbau)
+  public bbaq(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Bbav = parambbav;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Bbau = parambbau;
-    int i = 0;
-    while (i < 32)
+    if ((paramInt2 > 0) && (paramInt3 > 0))
     {
-      int k = j;
-      if ((1 << i & paramInt) != 0) {
-        k = j + 1;
-      }
-      i += 1;
-      j = k;
+      this.b = paramInt2;
+      this.c = paramInt3;
+      this.jdField_a_of_type_AndroidGraphicsPath = bban.a(this.b, this.c);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(j);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
   }
   
-  public <T> T a(int paramInt)
+  public void draw(@NonNull Canvas paramCanvas)
   {
-    if (paramInt >= 0) {}
-    for (;;)
+    Rect localRect = getBounds();
+    int i = localRect.right - localRect.left;
+    int j = localRect.bottom - localRect.top;
+    if ((i != this.b) && (j != this.c))
     {
-      Object localObject4;
-      try
-      {
-        if ((this.jdField_a_of_type_Int & paramInt) == 0) {
-          break label250;
-        }
-        localObject4 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-        Object localObject1 = localObject4;
-        if (localObject4 != null) {
-          break label136;
-        }
-        if (this.jdField_a_of_type_Bbau == null) {
-          break label255;
-        }
-        localObject4 = this.jdField_a_of_type_Bbau.a(paramInt);
-      }
-      finally {}
-      throw new InvalidParameterException("componentFlag:" + paramInt + " cannot create, please check!");
-      Object localObject3 = new bbbs();
-      label136:
-      label250:
-      label255:
-      do
-      {
-        if ((localObject3 instanceof bbas))
-        {
-          localObject4 = (bbas)localObject3;
-          ((bbas)localObject4).jdField_a_of_type_Bbat = this.jdField_a_of_type_Bbat;
-          ((bbas)localObject4).b();
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localObject3);
-        for (;;)
-        {
-          return localObject3;
-          localObject3 = new bbbj(this.jdField_a_of_type_Bbat);
-          break;
-          localObject3 = new bbcj();
-          break;
-          localObject3 = new bbbt();
-          break;
-          localObject3 = new bbbd(this.jdField_a_of_type_Bbat.a());
-          break;
-          localObject3 = new bbca();
-          break;
-          localObject3 = new bbce(this.jdField_a_of_type_Bbat.a());
-          break;
-          localObject3 = new bbbg();
-          break;
-          localObject3 = new bbbo();
-          break;
-          localObject3 = null;
-        }
-        localObject3 = localObject4;
-      } while (localObject4 != null);
-      localObject3 = localObject4;
-      switch (paramInt)
-      {
-      }
+      this.b = i;
+      this.c = j;
+      this.jdField_a_of_type_AndroidGraphicsPath = bban.a(this.b, this.c);
     }
+    paramCanvas.save();
+    paramCanvas.translate(localRect.left, localRect.top);
+    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.restore();
   }
   
-  public void a(int paramInt, Bundle paramBundle)
+  public int getOpacity()
   {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    paramBundle = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-    while (paramBundle.hasNext())
+    switch (this.jdField_a_of_type_Int >>> 24)
     {
-      Object localObject = paramBundle.next();
-      if ((localObject instanceof bbas)) {
-        ((bbas)localObject).a(paramInt, localBundle);
-      }
+    default: 
+      return -3;
+    case 255: 
+      return -1;
     }
+    return -2;
   }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(@Nullable ColorFilter paramColorFilter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbaq
  * JD-Core Version:    0.7.0.1
  */

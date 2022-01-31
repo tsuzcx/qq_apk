@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emosm;
 
-import anae;
-import anaf;
+import anqm;
+import anqn;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
 import mqq.os.MqqHandler;
@@ -9,7 +9,7 @@ import mqq.os.MqqHandler;
 public class CustomEmotionRoamingDBManagerBase$3
   implements Runnable
 {
-  public CustomEmotionRoamingDBManagerBase$3(anae paramanae, anaf paramanaf) {}
+  public CustomEmotionRoamingDBManagerBase$3(anqm paramanqm, anqn paramanqn) {}
   
   public void run()
   {

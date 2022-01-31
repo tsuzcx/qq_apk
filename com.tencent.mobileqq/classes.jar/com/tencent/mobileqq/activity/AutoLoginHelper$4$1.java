@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import aabz;
-import aacc;
+import aals;
+import aalv;
 
 public class AutoLoginHelper$4$1
   implements Runnable
 {
-  public AutoLoginHelper$4$1(aacc paramaacc) {}
+  public AutoLoginHelper$4$1(aalv paramaalv) {}
   
   public void run()
   {
-    aabz.a(this.a.a).a(2131651340, 1);
+    aals.a(this.a.a).a(2131717132, 1);
   }
 }
 

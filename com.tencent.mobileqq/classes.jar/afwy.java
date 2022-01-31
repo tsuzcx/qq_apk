@@ -1,17 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.3.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
 
 public class afwy
-  implements DialogInterface.OnClickListener
+  implements akba
 {
-  public afwy(BindNumberActivity paramBindNumberActivity) {}
+  public afwy(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2, Object paramObject) {}
+  
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    this.a.a("dc00898", "0X8009F15", 0);
-    paramDialogInterface.dismiss();
-    BindNumberActivity.b(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d(ChatHistoryC2CDateFragment.b(), 2, "onGetRoamMsgForDate " + paramBoolean);
+    }
+    this.a.o();
+    if (paramBoolean)
+    {
+      ThreadManagerV2.executeOnSubThread(new ChatHistoryC2CDateFragment.3.1(this));
+      return;
+    }
+    this.a.c(this.a.getString(2131690722));
   }
 }
 

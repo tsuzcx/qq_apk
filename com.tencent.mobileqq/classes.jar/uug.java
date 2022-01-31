@@ -1,21 +1,15 @@
-import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
 
-class uug
-  extends uwy
+public class uug
+  implements bfrx
 {
-  public Bitmap a;
-  public Bitmap b;
+  public uug(MemoriesInnerListView paramMemoriesInnerListView) {}
   
-  public uug(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
+  public void onScrollStateChanged(int paramInt)
   {
-    super(paramInt, paramBitmap1);
-    this.b = paramBitmap2;
-    this.a = paramBitmap3;
-  }
-  
-  public uug(uwy paramuwy, Bitmap paramBitmap1, Bitmap paramBitmap2)
-  {
-    this(paramuwy.jdField_c_of_type_Int, paramuwy.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
+    if ((paramInt == 4097) && (this.a.a != null)) {
+      this.a.a.a(MemoriesInnerListView.a(this.a).a);
+    }
   }
 }
 

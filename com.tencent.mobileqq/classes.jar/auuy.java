@@ -1,25 +1,22 @@
-import android.graphics.Bitmap;
-
 public class auuy
 {
   public int a;
-  public Bitmap a;
   public String a;
-  public int b;
-  public int c;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
   
-  public auuy(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap, int paramInt3)
+  public auuy(auux paramauux, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.c = paramInt3;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auuy
  * JD-Core Version:    0.7.0.1
  */

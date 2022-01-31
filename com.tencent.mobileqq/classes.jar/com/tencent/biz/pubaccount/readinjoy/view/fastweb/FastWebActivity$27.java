@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
-import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
-import nvf;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 class FastWebActivity$27
   implements Runnable
@@ -10,12 +10,7 @@ class FastWebActivity$27
   
   public void run()
   {
-    if (FastWebActivity.a(this.this$0).b)
-    {
-      FastWebActivity.a(this.this$0).f();
-      return;
-    }
-    FastWebActivity.a(this.this$0).e();
+    FastWebActivity.a(this.this$0).a(FastWebActivity.a(this.this$0).c);
   }
 }
 

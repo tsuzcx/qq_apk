@@ -1,21 +1,19 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class awrq
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 1;
-  boolean jdField_a_of_type_Boolean = true;
-  int b = 86400;
-  int c = 5;
+  awrq(awrp paramawrp, awno paramawno) {}
   
-  void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 1;
-    this.b = 86400;
-    this.c = 5;
+    this.jdField_a_of_type_Awno.b(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awrq
  * JD-Core Version:    0.7.0.1
  */

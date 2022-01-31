@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import arpq;
+import aslu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
@@ -70,7 +70,7 @@ public class MessageForReplyText$SourceMsgInfo
     do
     {
       return;
-      paramQQAppInterface = arpq.a(paramQQAppInterface, paramMessageRecord);
+      paramQQAppInterface = aslu.a(paramQQAppInterface, paramMessageRecord);
     } while (paramQQAppInterface == null);
     setSourceMsgByte(paramQQAppInterface);
     setUniSeq(paramMessageRecord.uniseq, false);
@@ -104,14 +104,10 @@ public class MessageForReplyText$SourceMsgInfo
   
   public MessageRecord unPackSourceMsg(QQAppInterface paramQQAppInterface)
   {
-    if (this.mSourceMessageByte == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SourceMsgInfo", 2, "unPackSourceMsg failed");
-      }
+    if (this.mSourceMessageByte == null) {
       return null;
     }
-    return arpq.a(paramQQAppInterface, this.mSourceMessageByte);
+    return aslu.a(paramQQAppInterface, this.mSourceMessageByte);
   }
 }
 

@@ -1,46 +1,87 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-
-public class ahwx
-  implements belq
+public final class ahwx
 {
-  public ahwx(SpecailCareListActivity paramSpecailCareListActivity) {}
+  public final int a;
+  public final int b;
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public ahwx(int paramInt1, int paramInt2)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  public static ahwx a(String paramString)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
-    if (badq.d(this.a))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(true);
-      this.a.jdField_a_of_type_Boolean = true;
-      ((aunz)this.a.app.getManager(91)).a();
-      return true;
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return null;
     }
-    paramView = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(2000, 0, 0);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramView, 1000L);
-    return true;
+    int i = paramString.indexOf('*');
+    if (i < 0) {
+      i = paramString.indexOf('x');
+    }
+    for (;;)
+    {
+      if (i < 0) {
+        throw a(paramString);
+      }
+      try
+      {
+        ahwx localahwx = new ahwx(Integer.parseInt(paramString.substring(0, i)), Integer.parseInt(paramString.substring(i + 1)));
+        return localahwx;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        throw a(paramString);
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        throw a(paramString);
+      }
+    }
   }
   
-  public void b(int paramInt, View paramView, ListView paramListView)
+  private static NumberFormatException a(String paramString)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
+    throw new NumberFormatException("Invalid SizeF: \"" + paramString + "\"");
   }
   
-  public void c(int paramInt, View paramView, ListView paramListView) {}
+  public int a()
+  {
+    return this.a;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool = true;
+    if (paramObject == null) {}
+    do
+    {
+      return false;
+      if (this == paramObject) {
+        return true;
+      }
+    } while (!(paramObject instanceof ahwx));
+    paramObject = (ahwx)paramObject;
+    if ((this.a == paramObject.a) && (this.b == paramObject.b)) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public String toString()
+  {
+    return this.a + "x" + this.b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahwx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import acsy;
-import avhd;
-import bbmy;
+import addr;
+import awgw;
+import bcpw;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class DoodlePanel$5$1
   implements Runnable
 {
-  public DoodlePanel$5$1(acsy paramacsy, int paramInt) {}
+  public DoodlePanel$5$1(addr paramaddr, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Acsy.a.d();
-    if (this.jdField_a_of_type_Int == avhd.d)
+    this.jdField_a_of_type_Addr.a.d();
+    if (this.jdField_a_of_type_Int == awgw.d)
     {
-      this.jdField_a_of_type_Acsy.a.c();
+      this.jdField_a_of_type_Addr.a.c();
       return;
     }
-    bbmy.a(this.jdField_a_of_type_Acsy.a.getContext(), 2131624352, 0).b(DoodlePanel.a(this.jdField_a_of_type_Acsy.a).a());
+    bcpw.a(this.jdField_a_of_type_Addr.a.getContext(), 2131689899, 0).b(DoodlePanel.a(this.jdField_a_of_type_Addr.a).a());
   }
 }
 

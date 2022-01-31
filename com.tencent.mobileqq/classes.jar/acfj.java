@@ -1,6 +1,19 @@
-public abstract interface acfj
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+
+public class acfj
+  implements audw
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public acfj(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  
+  public void a(int paramInt, audx paramaudx)
+  {
+    if ((!TextUtils.isEmpty(TextPreviewTranslateActivity.a(this.a))) && (!TextPreviewTranslateActivity.a(this.a).equals(paramaudx.b)))
+    {
+      TextPreviewTranslateActivity.a(this.a, paramaudx.b);
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.c(this.a), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
+    }
+  }
 }
 
 

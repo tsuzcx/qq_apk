@@ -2,7 +2,7 @@ package cooperation.qzone.networkedmodule;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bfxs;
+import bhgd;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.LocalMultiProcConfig;
 import java.io.File;
@@ -64,6 +64,10 @@ public class QzoneModuleConst
   public static final String QZONE_MODULE_CONFIG_PTU_FILTER_ENGINE_JAR_DEFAULT_URL = "http://d3g.qq.com/sngapp/app/update/20170117164907_3213/filterengine.bundle.jar";
   public static final String QZONE_MODULE_CONFIG_PTU_FILTER_ENGINE_JAR_MD5_SECONDARY_KEY = "libFilterEngineJarMD5";
   public static final String QZONE_MODULE_CONFIG_PTU_FILTER_ENGINE_JAR_URL_SECONDARY_KEY = "libFilterEngineJarUrl";
+  public static final String QZONE_MODULE_CONFIG_SUPER_RESOLUTION_JAR_64_DEFAULT_MD5 = "f12dae831c929686229d1666fffcb012";
+  public static final String QZONE_MODULE_CONFIG_SUPER_RESOLUTION_JAR_64_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20191105145019_6289/libsuperresolution.jar";
+  public static final String QZONE_MODULE_CONFIG_SUPER_RESOLUTION_JAR_64_MD5_SECONDARY_KEY = "libSuperResolutionJarMD5_64";
+  public static final String QZONE_MODULE_CONFIG_SUPER_RESOLUTION_JAR_64_URL_SECONDARY_KEY = "libSuperResolutionJarUrl_64";
   public static final String QZONE_MODULE_CONFIG_SUPER_RESOLUTION_JAR_DEFAULT_MD5 = "6dc8f2f6f95d50ef6daef91c0f1595ec";
   public static final String QZONE_MODULE_CONFIG_SUPER_RESOLUTION_JAR_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20181204152623_3844/libsuperresolution.jar";
   public static final String QZONE_MODULE_CONFIG_SUPER_RESOLUTION_JAR_MD5_SECONDARY_KEY = "libSuperResolutionJarMD5";
@@ -86,16 +90,6 @@ public class QzoneModuleConst
   public static final String QZONE_MODULE_OSK_PLAYER = "osk_exoplayer2_bundle.jar";
   public static final String QZONE_MODULE_OSK_PLAYER_CONFIG_DEFAULT = "http://d3g.qq.com/sngapp/app/update/20170728155227_6686/osk_exoplayer2_bundle.jar|f9d35ec8e90af758354bb174abc12df4";
   public static final String QZONE_MODULE_OSK_PLAYER_CONFIG_SECONDARY_KEY = "libOskPlayerJarConfig";
-  public static final String QZONE_MODULE_P2VEFFECT_DEFAULT_MD5 = "bc6e9f9cabc10efff4d0a9c44748c118";
-  public static final String QZONE_MODULE_P2VEFFECT_DEFAULT_MD5_SECONDARY_KEY = "p2vEffectJarMD5";
-  public static final String QZONE_MODULE_P2VEFFECT_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20180716151136_5735/p2v_effect.jar";
-  public static final String QZONE_MODULE_P2VEFFECT_DEFAULT_URL_SECONDARY_KEY = "p2vEffectUrl";
-  public static final String QZONE_MODULE_P2VEFFECT_JAR = "p2v_effect_new.jar";
-  public static final String QZONE_MODULE_P2VEFFECT_MATERIAL = "p2v_material.zip";
-  public static final String QZONE_MODULE_P2VEFFECT_MATERIAL_MD5 = "f61e9058b09761852fda262a13c353fc";
-  public static final String QZONE_MODULE_P2VEFFECT_MATERIAL_MD5_SECONDARY_KEY = "p2vMaterialMD5";
-  public static final String QZONE_MODULE_P2VEFFECT_MATERIAL_URL = "http://d3g.qq.com/sngapp/app/update/20180124144756_2643/p2v_material.zip";
-  public static final String QZONE_MODULE_P2VEFFECT_MATERIAL_URL_SECONDARY_KEY = "p2vMaterialUrl";
   public static final String QZONE_MODULE_PIC_BEAUTY_SO = "libandroidndkbeauty.so";
   public static final String QZONE_MODULE_PTU_ALGORITHM_JNI_SO = "libalgo_rithm_jni.so";
   public static final String QZONE_MODULE_PTU_FILTER_ENGINE_JAR = "filterengine.bundle.jar";
@@ -108,8 +102,8 @@ public class QzoneModuleConst
   public static final String QZONE_MODULE_TEST_ID = "test_log.dex";
   public static final String QZONE_MODULE_UPLOAD_JAR = "upload.jar";
   private static final String QZONE_MODULE_UPLOAD_JAR_CRASH_KEY_WORDS_0 = "com.tencent.upload";
-  public static final String QZONE_MODULE_UPLOAD_JAR_DEFAULT_MD5 = "3ee967fd884a4ac3f56baba0e3e2bad7";
-  public static final String QZONE_MODULE_UPLOAD_JAR_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20191030155717_2152/upload-v2.0.9.1.jar";
+  public static final String QZONE_MODULE_UPLOAD_JAR_DEFAULT_MD5 = "f0cee072f5851282b04dc809a834dd0d";
+  public static final String QZONE_MODULE_UPLOAD_JAR_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20200225165213_5410/upload.jar";
   public static final String QZONE_MODULE_UPLOAD_JAR_MD5_SECONDARY_KEY = "libUploadJarMD5";
   public static final String QZONE_MODULE_UPLOAD_JAR_URL_SECONDARY_KEY = "libUploadJarUrl";
   public static final String QZONE_MODULE_UPLOAD_SO = "upload.so";
@@ -151,9 +145,9 @@ public class QzoneModuleConst
     }
   }
   
-  public static String getModuleSavePath(Context paramContext, bfxs parambfxs)
+  public static String getModuleSavePath(Context paramContext, bhgd parambhgd)
   {
-    return new File(paramContext.getApplicationContext().getDir(QZONE_NETWORKED_MODULE_FILE_PATH, 0), parambfxs.e.toLowerCase() + "_" + parambfxs.a).getAbsolutePath();
+    return new File(paramContext.getApplicationContext().getDir(QZONE_NETWORKED_MODULE_FILE_PATH, 0), parambhgd.e.toLowerCase() + "_" + parambhgd.a).getAbsolutePath();
   }
   
   private static String getSpKeyById(String paramString)
@@ -169,34 +163,34 @@ public class QzoneModuleConst
     //   1: istore_3
     //   2: ldc 2
     //   4: monitorenter
-    //   5: ldc_w 378
+    //   5: ldc_w 360
     //   8: aload_0
-    //   9: invokestatic 382	cooperation/qzone/networkedmodule/QzoneModuleConst:getSpKeyById	(Ljava/lang/String;)Ljava/lang/String;
+    //   9: invokestatic 364	cooperation/qzone/networkedmodule/QzoneModuleConst:getSpKeyById	(Ljava/lang/String;)Ljava/lang/String;
     //   12: iconst_0
-    //   13: invokestatic 449	cooperation/qzone/LocalMultiProcConfig:getInt	(Ljava/lang/String;Ljava/lang/String;I)I
+    //   13: invokestatic 431	cooperation/qzone/LocalMultiProcConfig:getInt	(Ljava/lang/String;Ljava/lang/String;I)I
     //   16: istore_1
-    //   17: ldc_w 321
+    //   17: ldc_w 303
     //   20: iconst_1
-    //   21: new 412	java/lang/StringBuilder
+    //   21: new 394	java/lang/StringBuilder
     //   24: dup
-    //   25: invokespecial 413	java/lang/StringBuilder:<init>	()V
-    //   28: ldc_w 451
-    //   31: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: invokespecial 395	java/lang/StringBuilder:<init>	()V
+    //   28: ldc_w 433
+    //   31: invokevirtual 407	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: iload_1
-    //   35: invokevirtual 454	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   38: invokevirtual 433	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   41: invokestatic 457	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   35: invokevirtual 436	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   38: invokevirtual 415	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   41: invokestatic 439	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   44: iload_1
     //   45: iconst_2
     //   46: if_icmpne +28 -> 74
     //   49: iload_3
     //   50: istore_2
-    //   51: invokestatic 461	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   51: invokestatic 443	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   54: ifeq +15 -> 69
-    //   57: ldc_w 321
+    //   57: ldc_w 303
     //   60: iconst_2
-    //   61: ldc_w 463
-    //   64: invokestatic 466	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   61: ldc_w 445
+    //   64: invokestatic 448	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   67: iload_3
     //   68: istore_2
     //   69: ldc 2

@@ -1,46 +1,24 @@
-import android.graphics.Bitmap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public class attm
+class attm
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public int b;
-  public Bitmap b;
-  public String b;
-  public int c;
-  public Bitmap c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public String h;
+  attm(attk paramattk, bbgg parambbgg) {}
   
-  public attm() {}
-  
-  public attm(Bitmap paramBitmap, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3, boolean paramBoolean, int paramInt4, int paramInt5)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_e_of_type_JavaLangString = paramString1;
-    this.jdField_f_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString3;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_e_of_type_Int = paramInt4;
-    this.jdField_f_of_type_Int = paramInt5;
+    this.jdField_a_of_type_Bbgg.dismiss();
+    this.jdField_a_of_type_Attk.a.a.c();
+    paramInt = ((Integer)atbg.a(this.jdField_a_of_type_Attk.a.a.app.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
+    axqw.b(this.jdField_a_of_type_Attk.a.a.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, atbp.a(this.jdField_a_of_type_Attk.a.a.j), paramInt + "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     attm
  * JD-Core Version:    0.7.0.1
  */

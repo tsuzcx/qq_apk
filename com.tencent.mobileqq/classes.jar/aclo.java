@@ -1,34 +1,59 @@
-import android.content.Context;
-import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-public final class aclo
-  implements apca
+public class aclo
+  implements View.OnClickListener
 {
-  public aclo(ArrayList paramArrayList, Context paramContext, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2) {}
+  public aclo(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    long l = System.currentTimeMillis();
+    if ((l - TroopRequestActivity.c > 0L) && (l - TroopRequestActivity.c < 800L)) {
+      return;
+    }
+    TroopRequestActivity.c = l;
+    if (((ajxn)this.a.app.getManager(51)).b(this.a.l)) {
+      paramView = new ProfileActivity.AllInOne(this.a.l, 1);
+    }
+    for (;;)
     {
-      Object localObject = (Uri)localIterator.next();
-      localObject = apin.a(this.jdField_a_of_type_AndroidContentContext, (Uri)localObject);
-      if (this.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.jdField_a_of_type_JavaLangString);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
+      axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.a.a.msg.group_code.get() + "", "3", "", "");
+      ProfileActivity.b(this.a, paramView);
+      return;
+      if ((this.a.a.msg.group_msg_type.get() != 2) || (this.a.a.msg.sub_type.get() != 3)) {
+        break;
       }
+      paramView = new ProfileActivity.AllInOne(this.a.l, 26);
+      paramView.d = 1;
+    }
+    paramView = new ProfileActivity.AllInOne(this.a.l, 24);
+    bamn.a(this.a.a, paramView);
+    switch (this.a.b)
+    {
+    }
+    for (;;)
+    {
+      break;
+      paramView.l = 3;
+      break;
+      paramView.l = 1;
+      break;
+      paramView.l = 2;
     }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aclo
  * JD-Core Version:    0.7.0.1
  */

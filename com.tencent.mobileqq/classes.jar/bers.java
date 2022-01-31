@@ -1,40 +1,29 @@
-import android.support.v7.widget.RecyclerView.RecycledViewPool;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.qqmini.sdk.launcher.model.EntryModel;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.model.ShareChatModel;
 
 public class bers
-  extends RecyclerView.RecycledViewPool
 {
-  public bers(RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter) {}
-  
-  public RecyclerView.ViewHolder getRecycledView(int paramInt)
-  {
-    Object localObject = this.a.getAdapter();
-    RecyclerView.ViewHolder localViewHolder = super.getRecycledView(paramInt);
-    if ((localViewHolder != null) && ((localObject instanceof berm)))
-    {
-      localObject = (berm)localObject;
-      if (((berm)localObject).d(paramInt))
-      {
-        if (!RecyclerViewWithHeaderFooter.a(this.a).contains(localViewHolder.itemView))
-        {
-          putRecycledView(localViewHolder);
-          return null;
-        }
-      }
-      else if ((((berm)localObject).c(paramInt)) && (!RecyclerViewWithHeaderFooter.b(this.a).contains(localViewHolder.itemView)))
-      {
-        putRecycledView(localViewHolder);
-        return null;
-      }
-    }
-    return localViewHolder;
-  }
+  public int a;
+  public Activity a;
+  public EntryModel a;
+  public MiniAppInfo a;
+  public ShareChatModel a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bers
  * JD-Core Version:    0.7.0.1
  */

@@ -2,28 +2,28 @@ package com.tencent.av.gaudio;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import ldm;
-import ldv;
+import lod;
+import lom;
 
 public class GaInviteLockActivity$1$1
   implements Runnable
 {
-  public GaInviteLockActivity$1$1(ldm paramldm, ArrayList paramArrayList) {}
+  public GaInviteLockActivity$1$1(lod paramlod, ArrayList paramArrayList) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ldm.a.a != null)
+    if (this.jdField_a_of_type_Lod.a.a != null)
     {
-      GaInviteLockActivity.a(this.jdField_a_of_type_Ldm.a).clear();
+      GaInviteLockActivity.a(this.jdField_a_of_type_Lod.a).clear();
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        ldv localldv = (ldv)localIterator.next();
-        if (localldv.a != this.jdField_a_of_type_Ldm.a.b) {
-          GaInviteLockActivity.a(this.jdField_a_of_type_Ldm.a).add(localldv);
+        lom locallom = (lom)localIterator.next();
+        if (locallom.a != this.jdField_a_of_type_Lod.a.b) {
+          GaInviteLockActivity.a(this.jdField_a_of_type_Lod.a).add(locallom);
         }
       }
-      GaInviteLockActivity.a(this.jdField_a_of_type_Ldm.a, "InviteMemberObserverWithoutCache" + GaInviteLockActivity.a(this.jdField_a_of_type_Ldm.a).size());
+      GaInviteLockActivity.a(this.jdField_a_of_type_Lod.a, "InviteMemberObserverWithoutCache" + GaInviteLockActivity.a(this.jdField_a_of_type_Lod.a).size());
     }
   }
 }

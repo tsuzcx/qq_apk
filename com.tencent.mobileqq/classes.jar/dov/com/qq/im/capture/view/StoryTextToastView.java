@@ -35,9 +35,9 @@ public class StoryTextToastView
   
   protected void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131494970, this, true);
-    this.a = ((TextView)findViewById(2131311710));
-    this.b = ((TextView)findViewById(2131311711));
+    LayoutInflater.from(paramContext).inflate(2131560544, this, true);
+    this.a = ((TextView)findViewById(2131377524));
+    this.b = ((TextView)findViewById(2131377525));
   }
   
   public StoryTextToastView b(String paramString)

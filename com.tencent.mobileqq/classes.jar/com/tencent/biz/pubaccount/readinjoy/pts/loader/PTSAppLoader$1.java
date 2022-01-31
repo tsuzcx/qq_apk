@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
-import pds;
+import ppk;
 
 public class PTSAppLoader$1
   implements Runnable
 {
-  public PTSAppLoader$1(pds parampds) {}
+  public PTSAppLoader$1(ppk paramppk) {}
   
   public void run()
   {
-    pds.a(this.this$0, "3978");
+    ppk.a(this.this$0, "3978");
   }
 }
 

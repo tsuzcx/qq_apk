@@ -1,58 +1,165 @@
-import android.content.SharedPreferences;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.av.ui.funchat.record.QavRecordReporter.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public abstract class mns
+public class mns
 {
-  public SharedPreferences a;
-  public mns a;
+  private static int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  private static Throwable jdField_a_of_type_JavaLangThrowable;
+  private static boolean jdField_a_of_type_Boolean;
+  private static int jdField_b_of_type_Int;
+  private static long jdField_b_of_type_Long;
+  private static int c;
   
-  public mns(SharedPreferences paramSharedPreferences, mns parammns)
+  public static void a()
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = paramSharedPreferences;
-    this.jdField_a_of_type_Mns = parammns;
+    jdField_a_of_type_Int = 0;
+    jdField_a_of_type_Long = System.currentTimeMillis();
+    jdField_b_of_type_Long = -1L;
+    jdField_b_of_type_Int = 0;
+    jdField_a_of_type_Boolean = false;
+    c = 0;
+    jdField_a_of_type_JavaLangThrowable = null;
   }
   
-  public static boolean a(int paramInt)
+  public static void a(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    return (paramInt & 0x1) != 0;
+    long l1 = System.currentTimeMillis();
+    long l2 = jdField_a_of_type_Long;
+    long l3 = jdField_b_of_type_Long;
+    int i = jdField_a_of_type_Int;
+    int j = jdField_b_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "onRecordEnd cores=" + paramInt1 + ", fqc=" + paramInt2 + ", start=" + l2 + ", end=" + l1 + ", frames=" + i + ", stopType=" + paramInt3 + ", mp4Start=" + l3 + ", mp4Frames=" + j);
+    }
+    ThreadManager.post(new QavRecordReporter.1(paramInt2, i, l1, l2, j, l3, paramLong, paramInt1, paramInt3), 5, null, false);
   }
   
-  public static boolean b(int paramInt)
+  public static void a(int paramInt, Throwable paramThrowable)
   {
-    return (paramInt & 0x2) != 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "onError " + paramInt);
+    }
+    jdField_a_of_type_Boolean = true;
+    c = paramInt;
+    jdField_a_of_type_JavaLangThrowable = paramThrowable;
   }
   
-  public abstract int a(String paramString1, String paramString2);
-  
-  public int a(boolean paramBoolean1, boolean paramBoolean2)
+  public static void a(long paramLong)
   {
-    int j = 0;
-    if (paramBoolean1) {}
-    for (int i = 1;; i = 0)
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "reportConvertPcmCostTime cost=" + paramLong);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("device_model", bbct.d());
+    localHashMap.put("api", bbct.e());
+    localHashMap.put("manufacture", bbct.h());
+    axrl localaxrl = axrl.a(BaseApplicationImpl.getContext());
+    if (!jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (paramBoolean2) {
-        j = 2;
-      }
-      return j | i;
+      localaxrl.a("", "av_record_convert_pcm_cost", bool, paramLong / 1000L, 0L, localHashMap, "", false);
+      return;
     }
   }
   
-  public abstract String a();
+  public static void a(String paramString)
+  {
+    axqw.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
+  }
   
-  public abstract JSONArray a(String paramString);
+  public static void a(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "reportPCMSuccess success=" + paramBoolean + ", errcode=" + paramInt);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(paramInt));
+    axrl.a(BaseApplicationImpl.getContext()).a("", "av_record_convert_pcm_success", paramBoolean, 0L, 0L, localHashMap, "", false);
+  }
   
-  public abstract JSONObject a();
+  public static void b()
+  {
+    jdField_a_of_type_Int += 1;
+  }
   
-  public abstract boolean a();
+  public static void c()
+  {
+    if (jdField_b_of_type_Long < 0L) {
+      jdField_b_of_type_Long = System.currentTimeMillis();
+    }
+    jdField_b_of_type_Int += 1;
+  }
   
-  public abstract String b();
+  public static void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "reportEnd");
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(c));
+    localHashMap.put("device_model", bbct.d());
+    localHashMap.put("api", bbct.e());
+    localHashMap.put("manufacture", bbct.h());
+    localHashMap.put("throwable", String.valueOf(jdField_a_of_type_JavaLangThrowable));
+    jdField_a_of_type_JavaLangThrowable = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "reportEnd params=" + localHashMap);
+    }
+    axrl localaxrl = axrl.a(BaseApplicationImpl.getContext());
+    if (!jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localaxrl.a("", "av_record_report_end", bool, 0L, 0L, localHashMap, "", false);
+      return;
+    }
+  }
   
-  public abstract String c();
+  public static void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "onAudioTrackInitFail");
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("device_model", bbct.d());
+    localHashMap.put("api", bbct.e());
+    localHashMap.put("manufacture", bbct.h());
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "onAudioTrackInitFail  params=" + localHashMap);
+    }
+    axrl localaxrl = axrl.a(BaseApplicationImpl.getContext());
+    if (!jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localaxrl.a("", "av_record_audio_fail", bool, 0L, 0L, localHashMap, "", false);
+      return;
+    }
+  }
+  
+  public static void f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "reportConvertPcmTimeout");
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("device_model", bbct.d());
+    localHashMap.put("api", bbct.e());
+    localHashMap.put("manufacture", bbct.h());
+    axrl localaxrl = axrl.a(BaseApplicationImpl.getContext());
+    if (!jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localaxrl.a("", "av_record_convert_pcm_timeout", bool, 0L, 0L, localHashMap, "", false);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mns
  * JD-Core Version:    0.7.0.1
  */

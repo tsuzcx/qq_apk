@@ -1,351 +1,452 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DatingConfig;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.magicface.DecoderUtil;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class asdc
+  extends ascz
 {
-  DatingConfig a;
+  public DecoderUtil a;
+  public byte[] a;
+  public int[] a;
+  public byte[] b;
+  public int c;
+  public byte[] c;
+  public int d;
+  public byte[] d;
+  public int e;
+  public byte[] e;
+  public int f;
+  public byte[] f;
+  public int g;
+  public int h;
+  public int i = -1;
+  public int j = -1;
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  public asdc()
   {
-    for (;;)
-    {
-      try
-      {
-        QLog.d("nearby.redpoint", 1, "clearRedDotInNearbyEnter: redDotType=" + paramInt);
-        paramQQAppInterface = (mmy)paramQQAppInterface.getManager(70);
-        if ((paramInt != 56) && (paramInt != 61)) {
-          break label102;
-        }
-        paramQQAppInterface.a(56);
-        paramQQAppInterface.a(61);
-        return;
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("nearby.redpoint", 2, "clearRedDotInNearbyEnter, exp=" + paramQQAppInterface.toString());
-        return;
-      }
-      paramQQAppInterface.a(paramInt);
-      return;
-      label102:
-      if (paramInt != 60) {
-        if (paramInt != 57) {}
-      }
-    }
-  }
-  
-  public static boolean a(AppInterface paramAppInterface)
-  {
-    boolean bool2 = false;
-    paramAppInterface = (String)asfc.a(paramAppInterface.getAccount(), "key_tabs_array", "");
-    for (;;)
-    {
-      try
-      {
-        paramAppInterface = new JSONArray(paramAppInterface);
-        int i = 0;
-        bool1 = false;
-        int j;
-        bool4 = bool1;
-      }
-      catch (Exception paramAppInterface)
-      {
-        try
-        {
-          if (i < paramAppInterface.length())
-          {
-            j = paramAppInterface.optJSONObject(i).optInt("tabType");
-            if (j == 1) {
-              bool2 = true;
-            }
-            if (j == 5) {
-              bool1 = true;
-            }
-            i += 1;
-            continue;
-          }
-          bool3 = bool2;
-          bool4 = bool1;
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyConfigUtil", 2, "isNewNearbyTab: hasOldTab=" + bool3 + ", hasNewTab=" + bool4);
-          }
-          return bool4;
-        }
-        catch (Exception paramAppInterface)
-        {
-          boolean bool1;
-          boolean bool3;
-          boolean bool4;
-          break label130;
-        }
-        paramAppInterface = paramAppInterface;
-        bool2 = false;
-        bool1 = false;
-      }
-      label130:
-      bool3 = bool2;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("NearbyConfigUtil", 2, "isNewNearbyTab:" + paramAppInterface.toString());
-        bool4 = bool1;
-        bool3 = bool2;
-      }
-    }
-  }
-  
-  public static boolean a(AppInterface paramAppInterface, int paramInt)
-  {
-    bool2 = false;
-    paramAppInterface = (String)asfc.a(paramAppInterface.getCurrentAccountUin(), "key_banner_enter_items", "");
-    for (;;)
-    {
-      try
-      {
-        paramAppInterface = new JSONArray(paramAppInterface);
-        i = 0;
-        if (i >= paramAppInterface.length()) {
-          continue;
-        }
-        JSONObject localJSONObject = paramAppInterface.optJSONObject(i);
-        if (!localJSONObject.has("id")) {
-          continue;
-        }
-        int j = localJSONObject.getInt("id");
-        if (j != paramInt) {
-          continue;
-        }
-        bool1 = true;
-      }
-      catch (Exception paramAppInterface)
-      {
-        int i;
-        boolean bool1 = bool2;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("NearbyConfigUtil", 2, "hasEnterItem:" + paramAppInterface.toString());
-        bool1 = bool2;
-        continue;
-        bool1 = false;
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyConfigUtil", 2, "hasEnterItem: itemId=" + paramInt + ", ret=" + bool1);
-      }
-      return bool1;
-      i += 1;
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    paramQQAppInterface = BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4);
-    int i;
-    if (paramQQAppInterface != null) {
-      i = paramQQAppInterface.getInt("charm_level", 0);
-    }
-    for (;;)
-    {
-      if (i == 0) {}
-      for (;;)
-      {
-        return false;
-        paramQQAppInterface = BaseApplicationImpl.getContext().getSharedPreferences("nearby_enters", 4).getString("config_content", null);
-        if (!TextUtils.isEmpty(paramQQAppInterface)) {
-          try
-          {
-            paramQQAppInterface = new JSONObject(paramQQAppInterface).optJSONArray("nearby_list_entrance");
-            if (paramQQAppInterface != null)
-            {
-              int j = 0;
-              while (j < paramQQAppInterface.length())
-              {
-                JSONObject localJSONObject = paramQQAppInterface.optJSONObject(j);
-                int k = localJSONObject.optInt("id");
-                int m = localJSONObject.optInt("lv_limit");
-                if ((k == paramInt) && (i >= m)) {
-                  return true;
-                }
-                j += 1;
-              }
-              i = 0;
-            }
-          }
-          catch (JSONException paramQQAppInterface)
-          {
-            paramQQAppInterface.printStackTrace();
-            return false;
-          }
-        }
-      }
-    }
-  }
-  
-  public static boolean b(AppInterface paramAppInterface)
-  {
-    int i = 0;
-    paramAppInterface = (String)asfc.a(paramAppInterface.getAccount(), "key_tabs_array", "");
-    try
-    {
-      paramAppInterface = new JSONArray(paramAppInterface);
-      bool1 = false;
-    }
-    catch (Exception paramAppInterface)
-    {
-      try
-      {
-        if (i >= paramAppInterface.length()) {
-          break label108;
-        }
-        int j = paramAppInterface.optJSONObject(i).optInt("tabType");
-        if (j == 6) {
-          bool1 = true;
-        }
-        i += 1;
-      }
-      catch (Exception paramAppInterface)
-      {
-        boolean bool1;
-        boolean bool2;
-        break label68;
-      }
-      paramAppInterface = paramAppInterface;
-      bool1 = false;
-    }
-    bool2 = bool1;
-    label68:
-    bool2 = bool1;
-    if (QLog.isColorLevel())
-    {
-      QLog.e("NearbyConfigUtil", 2, "hasNearbyMsgTab:" + paramAppInterface.toString());
-      bool2 = bool1;
-    }
-    label108:
+    this.jdField_b_of_type_ArrayOfByte = new byte[51200];
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_f_of_type_Int = -1;
+    this.jdField_e_of_type_ArrayOfByte = new byte[51200];
     if (QLog.isColorLevel()) {
-      QLog.d("NearbyConfigUtil", 2, "isNewNearbyTab: hasMsgTab=" + bool2);
+      QLog.d("MagicfaceFFMepgDecoder", 2, "func MagicfaceFFMepgDecoder begins");
     }
-    return bool2;
+    if (QLog.isColorLevel()) {
+      QLog.d("MagicfaceFFMepgDecoder", 2, "func MagicfaceFFMepgDecoder ends");
+    }
   }
   
-  /* Error */
-  public DatingConfig a()
+  public int a(byte[] paramArrayOfByte, int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 193	asdc:a	Lcom/tencent/mobileqq/data/DatingConfig;
-    //   6: ifnull +12 -> 18
-    //   9: aload_0
-    //   10: getfield 193	asdc:a	Lcom/tencent/mobileqq/data/DatingConfig;
-    //   13: astore_1
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: aload_1
-    //   17: areturn
-    //   18: aconst_null
-    //   19: astore_2
-    //   20: iconst_1
-    //   21: anewarray 195	java/lang/Class
-    //   24: astore_3
-    //   25: aload_3
-    //   26: iconst_0
-    //   27: ldc 4
-    //   29: aastore
-    //   30: ldc 197
-    //   32: aload_3
-    //   33: invokestatic 202	bace:a	(Ljava/lang/String;[Ljava/lang/Class;)[Ljava/lang/Object;
-    //   36: astore 4
-    //   38: aload_2
-    //   39: astore_1
-    //   40: aload 4
-    //   42: ifnull -28 -> 14
-    //   45: aload_2
-    //   46: astore_1
-    //   47: aload 4
-    //   49: arraylength
-    //   50: aload_3
-    //   51: arraylength
-    //   52: if_icmpne -38 -> 14
-    //   55: aload 4
-    //   57: iconst_0
-    //   58: aaload
-    //   59: checkcast 204	com/tencent/mobileqq/data/DatingConfig
-    //   62: astore_1
-    //   63: aload_0
-    //   64: aload_1
-    //   65: putfield 193	asdc:a	Lcom/tencent/mobileqq/data/DatingConfig;
-    //   68: goto -54 -> 14
-    //   71: astore_1
-    //   72: aload_0
-    //   73: monitorexit
-    //   74: aload_1
-    //   75: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	76	0	this	asdc
-    //   13	52	1	localObject1	Object
-    //   71	4	1	localObject2	Object
-    //   19	27	2	localObject3	Object
-    //   24	27	3	arrayOfClass	java.lang.Class[]
-    //   36	20	4	arrayOfObject	Object[]
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	71	finally
-    //   20	25	71	finally
-    //   30	38	71	finally
-    //   47	68	71	finally
+    int k;
+    if (paramInt == paramArrayOfByte.length) {
+      k = -1;
+    }
+    do
+    {
+      return k;
+      int m = paramInt + 1;
+      int n = 0;
+      int i1 = (byte)(paramArrayOfByte[(paramInt + 4)] & 0xF);
+      k = n;
+      paramInt = m;
+      if (i1 != 7)
+      {
+        k = n;
+        paramInt = m;
+        if (i1 != 8)
+        {
+          k = 1;
+          paramInt = m;
+        }
+      }
+      while (paramInt < paramArrayOfByte.length - 4) {
+        if ((paramArrayOfByte[paramInt] == 0) && (paramArrayOfByte[(paramInt + 1)] == 0) && (paramArrayOfByte[(paramInt + 2)] == 0) && (paramArrayOfByte[(paramInt + 3)] == 1))
+        {
+          m = (byte)(paramArrayOfByte[(paramInt + 4)] & 0xF);
+          if ((m != 7) && (m != 8))
+          {
+            if (k != 0) {
+              break;
+            }
+            paramInt += 1;
+            k = 1;
+          }
+          else
+          {
+            paramInt += 1;
+          }
+        }
+        else
+        {
+          paramInt += 1;
+        }
+      }
+      k = paramInt;
+    } while (paramInt != paramArrayOfByte.length - 4);
+    return paramArrayOfByte.length;
   }
   
-  /* Error */
   public void a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 193	asdc:a	Lcom/tencent/mobileqq/data/DatingConfig;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: ifnonnull +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: aconst_null
-    //   16: putfield 193	asdc:a	Lcom/tencent/mobileqq/data/DatingConfig;
-    //   19: goto -8 -> 11
-    //   22: astore_1
-    //   23: aload_0
-    //   24: monitorexit
-    //   25: aload_1
-    //   26: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	27	0	this	asdc
-    //   6	2	1	localDatingConfig	DatingConfig
-    //   22	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	22	finally
-    //   14	19	22	finally
+    if (QLog.isColorLevel()) {
+      QLog.d("MagicfaceFFMepgDecoder", 2, "func maigcfaceDecoder begins:,isStartDecodr:" + this.jdField_a_of_type_Boolean);
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil = new DecoderUtil();
+        if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createVideoDecoder() == 0) || (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createAlphaDecoder() != 0)) {}
+        this.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_Ascy.jdField_b_of_type_ArrayOfByte;
+        byte[] arrayOfByte1 = this.jdField_a_of_type_ArrayOfByte;
+        if (arrayOfByte1 != null) {
+          continue;
+        }
+      }
+      catch (Exception localException)
+      {
+        byte[] arrayOfByte2;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("MagicfaceFFMepgDecoder", 2, "===MagicfaceDecoder=Exception==" + localException.getMessage());
+        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil == null) {
+          continue;
+        }
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+          return;
+        }
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError4) {}
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("MagicfaceFFMepgDecoder", 2, localUnsatisfiedLinkError4.getMessage());
+        return;
+        k = 1;
+        l2 = 0L;
+        if (!this.jdField_a_of_type_Boolean) {
+          continue;
+        }
+        l1 = System.currentTimeMillis();
+        m = a(this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_Int);
+        this.jdField_c_of_type_Int = (m - this.jdField_d_of_type_Int);
+        n = this.jdField_c_of_type_Int;
+        if (n > 0) {
+          continue;
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil == null) {
+          continue;
+        }
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+          return;
+        }
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError5) {}
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("MagicfaceFFMepgDecoder", 2, localUnsatisfiedLinkError5.getMessage());
+        return;
+        a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
+        this.jdField_d_of_type_Int = m;
+        l3 = System.currentTimeMillis();
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.decodeVideoDecoder(this.jdField_b_of_type_ArrayOfByte, this.jdField_c_of_type_Int, this.jdField_c_of_type_ArrayOfByte);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("MagicfaceFFMepgDecoder", 2, "decodeVideoDecoder==usetime=" + (System.currentTimeMillis() - l3) + "==videoFrameLength==" + this.jdField_c_of_type_Int);
+        try
+        {
+          if (this.jdField_e_of_type_Int == -1)
+          {
+            this.jdField_e_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.getWidthVideoDecoder();
+            this.jdField_f_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.getHeightVideoDecoder();
+            if ((this.jdField_e_of_type_Int > 500) || (this.jdField_f_of_type_Int > 500))
+            {
+              this.jdField_e_of_type_Int = -1;
+              if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil == null) {
+                continue;
+              }
+              try
+              {
+                this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+                this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+                return;
+              }
+              catch (UnsatisfiedLinkError localUnsatisfiedLinkError6) {}
+              if (!QLog.isColorLevel()) {
+                continue;
+              }
+              QLog.e("MagicfaceFFMepgDecoder", 2, localUnsatisfiedLinkError6.getMessage());
+              return;
+            }
+            this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_f_of_type_Int * this.jdField_e_of_type_Int];
+          }
+          m = a(this.jdField_d_of_type_ArrayOfByte, this.h);
+          this.g = (m - this.h);
+          b(this.g, this.h, this.jdField_d_of_type_ArrayOfByte);
+          this.h = m;
+          l3 = System.currentTimeMillis();
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.decodeAlphaDecoder(this.jdField_e_of_type_ArrayOfByte, this.g, this.jdField_f_of_type_ArrayOfByte);
+          if (QLog.isColorLevel()) {
+            QLog.d("MagicfaceFFMepgDecoder", 2, "decodeAlphaDecoder==usetime=" + (System.currentTimeMillis() - l3) + "==alphaFrameLength==" + this.g);
+          }
+          l3 = System.currentTimeMillis();
+          arrayOfInt = a(this.jdField_c_of_type_ArrayOfByte, this.jdField_f_of_type_ArrayOfByte);
+          if (QLog.isColorLevel()) {
+            QLog.d("MagicfaceFFMepgDecoder", 2, "convertByteToColor==usetime=" + (System.currentTimeMillis() - l3));
+          }
+          if (this.jdField_a_of_type_Asdb != null) {
+            this.jdField_a_of_type_Asdb.a(arrayOfInt, this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
+          }
+          l3 = System.currentTimeMillis() - l1;
+          if (QLog.isColorLevel()) {
+            QLog.d("MagicfaceFFMepgDecoder", 2, "==============frameTime=============" + l3);
+          }
+          if (l3 >= this.jdField_b_of_type_Int) {
+            continue;
+          }
+          if (l2 <= 0L) {
+            continue;
+          }
+          l1 = this.jdField_b_of_type_Int - l3;
+          if (l1 <= l2) {
+            continue;
+          }
+          Thread.sleep(l1 - l2);
+          l1 = l2;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError2)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("MagicfaceFFMepgDecoder", 2, "magicfaceffMepgDecoder outofMemoryError");
+          }
+          this.jdField_e_of_type_Int = -1;
+          System.gc();
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil == null) {
+          continue;
+        }
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+          return;
+        }
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError7) {}
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("MagicfaceFFMepgDecoder", 2, localUnsatisfiedLinkError7.getMessage());
+        return;
+        l1 = l2 - l1;
+        break label1186;
+        Thread.sleep(this.jdField_b_of_type_Int - l3);
+        l1 = l2;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError3)
+      {
+        localOutOfMemoryError3.printStackTrace();
+        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil == null) {
+          continue;
+        }
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+          return;
+        }
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError8) {}
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("MagicfaceFFMepgDecoder", 2, localUnsatisfiedLinkError8.getMessage());
+        return;
+        l1 = l2;
+        if (k != 0) {
+          break label1186;
+        }
+        k = this.jdField_b_of_type_Int;
+        l1 = l2 + (l3 - k);
+      }
+      finally
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil == null) {
+          break label1161;
+        }
+      }
+      try
+      {
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+        return;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("MagicfaceFFMepgDecoder", 2, localUnsatisfiedLinkError1.getMessage());
+        return;
+      }
+      this.jdField_d_of_type_ArrayOfByte = this.jdField_a_of_type_Ascy.jdField_a_of_type_ArrayOfByte;
+      arrayOfByte2 = this.jdField_d_of_type_ArrayOfByte;
+      if (arrayOfByte2 == null)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil != null)
+        {
+          try
+          {
+            this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+            this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+            return;
+          }
+          catch (UnsatisfiedLinkError localUnsatisfiedLinkError2) {}
+          if (QLog.isColorLevel()) {
+            QLog.e("MagicfaceFFMepgDecoder", 2, localUnsatisfiedLinkError2.getMessage());
+          }
+        }
+      }
+      else {
+        try
+        {
+          this.jdField_c_of_type_ArrayOfByte = new byte[480000];
+          this.jdField_f_of_type_ArrayOfByte = new byte[480000];
+          byte[] arrayOfByte3 = this.jdField_c_of_type_ArrayOfByte;
+          if (arrayOfByte3 == null)
+          {
+            if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil == null) {
+              continue;
+            }
+            try
+            {
+              this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+              this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+              return;
+            }
+            catch (UnsatisfiedLinkError localUnsatisfiedLinkError3) {}
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e("MagicfaceFFMepgDecoder", 2, localUnsatisfiedLinkError3.getMessage());
+          }
+        }
+        catch (OutOfMemoryError localOutOfMemoryError1)
+        {
+          localOutOfMemoryError1.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.e("MagicfaceFFMepgDecoder", 2, "func MagicfaceFFMepgDecoder ends, OOM.");
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      long l1;
+      try
+      {
+        int m;
+        int n;
+        long l3;
+        int[] arrayOfInt;
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+        label1161:
+        throw localObject;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError9)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("MagicfaceFFMepgDecoder", 2, localUnsatisfiedLinkError9.getMessage());
+        continue;
+      }
+      label1186:
+      int k = 0;
+      long l2 = l1;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  {
+    if (this.jdField_b_of_type_ArrayOfByte.length < paramInt1)
+    {
+      this.jdField_b_of_type_ArrayOfByte = new byte[paramInt1];
+      if (QLog.isColorLevel()) {
+        QLog.d("MagicfaceFFMepgDecoder", 2, "videoFrame.length = " + this.jdField_b_of_type_ArrayOfByte.length + "new framelength = " + paramInt1);
+      }
+    }
+    System.arraycopy(paramArrayOfByte, paramInt2, this.jdField_b_of_type_ArrayOfByte, 0, paramInt1);
+  }
+  
+  public int[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    int m = 0;
+    if (m < this.jdField_a_of_type_ArrayOfInt.length)
+    {
+      int i1 = m * 3;
+      int n = paramArrayOfByte2[i1] & 0xFF;
+      int k;
+      if (n <= 50) {
+        k = 0;
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_ArrayOfInt[m] = (k << 24 & 0xFF000000 | paramArrayOfByte1[(i1 + 2)] << 16 & 0xFF0000 | paramArrayOfByte1[(i1 + 1)] << 8 & 0xFF00 | paramArrayOfByte1[i1] & 0xFF);
+        m += 1;
+        break;
+        k = n;
+        if (n >= 235) {
+          k = 255;
+        }
+      }
+    }
+    return this.jdField_a_of_type_ArrayOfInt;
+  }
+  
+  public void b(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  {
+    if (this.jdField_e_of_type_ArrayOfByte.length < paramInt1)
+    {
+      this.jdField_e_of_type_ArrayOfByte = new byte[paramInt1];
+      if (QLog.isColorLevel()) {
+        QLog.d("MagicfaceFFMepgDecoder", 2, "alphaFrame.length = " + this.jdField_e_of_type_ArrayOfByte.length + " new fillFrameAlpha = " + paramInt1);
+      }
+    }
+    System.arraycopy(paramArrayOfByte, paramInt2, this.jdField_e_of_type_ArrayOfByte, 0, paramInt1);
+  }
+  
+  public void c()
+  {
+    super.c();
+    this.jdField_b_of_type_ArrayOfByte = null;
+    this.jdField_e_of_type_ArrayOfByte = null;
+    this.jdField_f_of_type_ArrayOfByte = null;
+    this.jdField_c_of_type_ArrayOfByte = null;
+    this.jdField_a_of_type_ArrayOfInt = null;
+  }
+  
+  protected void f()
+  {
+    super.f();
+    this.jdField_d_of_type_Int = 0;
+    this.h = 0;
+  }
+  
+  protected void g()
+  {
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asdc
  * JD-Core Version:    0.7.0.1
  */

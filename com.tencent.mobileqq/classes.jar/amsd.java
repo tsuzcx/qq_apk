@@ -1,34 +1,40 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Goods;
+import org.json.JSONObject;
 
-public final class amsd
-  implements Parcelable.Creator
+public class amsd
 {
-  public IPSiteModel.Goods a(Parcel paramParcel)
+  private int a;
+  
+  public static amsd a(String paramString)
   {
-    IPSiteModel.Goods localGoods = new IPSiteModel.Goods();
-    localGoods.cover = paramParcel.readString();
-    localGoods.goodsTags = paramParcel.readString();
-    localGoods.id = paramParcel.readString();
-    localGoods.name = paramParcel.readString();
-    localGoods.price = paramParcel.readString();
-    localGoods.saleTags = paramParcel.readString();
-    localGoods.svipPrice = paramParcel.readString();
-    localGoods.url = paramParcel.readString();
-    localGoods.moreUrl = paramParcel.readString();
-    localGoods.saleNum = paramParcel.readString();
-    return localGoods;
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      amsd localamsd = new amsd();
+      localamsd.a = new JSONObject(paramString).optInt("open_don_disturb", 0);
+      return localamsd;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
-  public IPSiteModel.Goods[] a(int paramInt)
+  public int a()
   {
-    return new IPSiteModel.Goods[paramInt];
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    return super.toString() + " showDonDisturb=" + this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amsd
  * JD-Core Version:    0.7.0.1
  */

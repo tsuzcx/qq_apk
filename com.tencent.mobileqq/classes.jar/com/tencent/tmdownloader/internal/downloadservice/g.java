@@ -1,7 +1,7 @@
 package com.tencent.tmdownloader.internal.downloadservice;
 
 import android.text.TextUtils;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import com.tencent.tmdownloader.internal.storage.table.d;
 import java.util.HashMap;
 
@@ -86,7 +86,7 @@ public class g
   
   public boolean a(String paramString1, String paramString2)
   {
-    ac.c("DownloadSetting", "isAutoDownload downloadInfoNetType = " + paramString1 + ",currentNetType = " + paramString2);
+    ab.c("DownloadSetting", "isAutoDownload downloadInfoNetType = " + paramString1 + ",currentNetType = " + paramString2);
     if (TextUtils.isEmpty(paramString1)) {}
     do
     {
@@ -114,7 +114,7 @@ public class g
   
   public boolean b(String paramString1, String paramString2)
   {
-    ac.c("DownloadSetting", "isAutoPause downloadInfoNetType = " + paramString1 + ",currentNetType = " + paramString2);
+    ab.c("DownloadSetting", "isAutoPause downloadInfoNetType = " + paramString1 + ",currentNetType = " + paramString2);
     if (TextUtils.isEmpty(paramString1)) {}
     while ((!paramString1.equalsIgnoreCase("WIFI")) || (paramString2.equalsIgnoreCase("WIFI"))) {
       return false;

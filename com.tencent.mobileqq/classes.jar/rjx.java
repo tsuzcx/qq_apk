@@ -1,22 +1,12 @@
-import com.tencent.viola.adapter.IJSApiAdapter.OnInovkeCallback;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class rjx
-  implements pyi
+  implements View.OnClickListener
 {
-  IJSApiAdapter.OnInovkeCallback a;
+  rjx(rjw paramrjw) {}
   
-  public rjx(IJSApiAdapter.OnInovkeCallback paramOnInovkeCallback)
-  {
-    this.a = paramOnInovkeCallback;
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (this.a != null) {
-      this.a.callback(paramJSONObject);
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

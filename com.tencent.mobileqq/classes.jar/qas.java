@@ -1,21 +1,18 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseVideoArticleInfo;
 
-class qas
-  implements View.OnAttachStateChangeListener
+public final class qas
+  implements Parcelable.Creator<BaseVideoArticleInfo>
 {
-  qas(qaq paramqaq, ohe paramohe) {}
-  
-  public void onViewAttachedToWindow(View paramView)
+  public BaseVideoArticleInfo a(Parcel paramParcel)
   {
-    ohb.a().a(this.jdField_a_of_type_Ohe);
+    return new BaseVideoArticleInfo(paramParcel);
   }
   
-  public void onViewDetachedFromWindow(View paramView)
+  public BaseVideoArticleInfo[] a(int paramInt)
   {
-    ohb.a().b(this.jdField_a_of_type_Ohe);
-    this.jdField_a_of_type_Qaq.a.removeCallbacksAndMessages(null);
+    return new BaseVideoArticleInfo[paramInt];
   }
 }
 

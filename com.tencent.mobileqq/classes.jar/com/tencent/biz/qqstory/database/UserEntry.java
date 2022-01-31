@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.database;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class UserEntry
-  extends atmo
+  extends aukm
 {
   public long dbCacheTime = -1L;
   public int fansCount;
@@ -26,7 +26,7 @@ public class UserEntry
   public int shareGroupCount;
   public int sourceTagType = -2147483648;
   public String symbolUrl;
-  @atoc
+  @auma
   public String unionId;
   public int videoCount;
   public String wsSchema;

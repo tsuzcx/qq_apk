@@ -1,40 +1,18 @@
-import android.app.Activity;
-import android.content.Context;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.AdapterView;
 
 class adhk
-  extends ClickableSpan
+  implements bfpc
 {
-  private WeakReference<QQAppInterface> a;
-  private WeakReference<Context> b;
+  adhk(adhi paramadhi) {}
   
-  adhk(QQAppInterface paramQQAppInterface, Context paramContext)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramContext);
-  }
-  
-  public void onClick(View paramView)
-  {
-    paramView = (QQAppInterface)this.a.get();
-    if (((this.b.get() instanceof Activity)) && (paramView != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GrayTipsItemBuilder", 2, "handleHotChatToSeeTip span click ");
-      }
-      HotChatManager.a(null, false);
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
+    paramAdapterView = (ager)adhi.a(this.a).a.getItem(paramInt - 1);
+    adhi.a(this.a, paramAdapterView);
+    adhi.a(this.a).dismiss();
+    axqw.b(adhi.a(this.a).a, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
   }
 }
 

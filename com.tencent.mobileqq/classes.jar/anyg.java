@@ -1,6 +1,8 @@
+import java.util.List;
+
 public abstract interface anyg
 {
-  public abstract void a(long paramLong);
+  public abstract List<aoak> a(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

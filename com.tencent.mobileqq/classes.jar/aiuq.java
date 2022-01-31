@@ -1,102 +1,60 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.apollo.GLTextureView;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class aiuq
+  extends aiup
 {
-  public int a;
-  public long a;
-  public String a;
-  public final HashMap<Integer, aius> a;
-  public final List<aius> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public List<aiur> b;
-  public long c;
-  public String c;
-  public List<aiur> c;
-  public String d;
-  public String e;
+  protected int a;
+  protected int b;
+  private int[] jdField_b_of_type_ArrayOfInt = new int[1];
+  protected int c;
+  protected int d;
+  protected int e;
+  protected int f;
   
-  public aiuq()
+  public aiuq(GLTextureView paramGLTextureView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    super(paramGLTextureView, new int[] { 12324, paramInt1, 12323, paramInt2, 12322, paramInt3, 12321, paramInt4, 12325, paramInt5, 12326, paramInt6, 12344 });
+    this.a = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.e = paramInt5;
+    this.f = paramInt6;
   }
   
-  public static String a(int paramInt)
+  private int a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt1, int paramInt2)
   {
-    if (paramInt > 999999) {
-      return String.valueOf(999999) + "+";
+    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt1, this.jdField_b_of_type_ArrayOfInt)) {
+      paramInt2 = this.jdField_b_of_type_ArrayOfInt[0];
     }
-    return String.valueOf(paramInt);
+    return paramInt2;
   }
   
-  public static String b(int paramInt)
+  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig)
   {
-    if (paramInt > 99999) {
-      return String.valueOf(99999) + "+";
-    }
-    return String.valueOf(paramInt);
-  }
-  
-  public static String c(int paramInt)
-  {
-    if (paramInt > 9999) {
-      return String.valueOf(9999) + "+";
-    }
-    return String.valueOf(paramInt);
-  }
-  
-  public void a()
-  {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.isEmpty())) {
-      return;
-    }
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    label40:
-    aiur localaiur;
-    aius localaius;
-    for (;;)
+    int j = paramArrayOfEGLConfig.length;
+    int i = 0;
+    while (i < j)
     {
-      if (localIterator.hasNext())
+      EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
+      int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325, 0);
+      int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326, 0);
+      if ((k >= this.e) && (m >= this.f))
       {
-        localaiur = (aiur)localIterator.next();
-        if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(String.valueOf(localaiur.jdField_a_of_type_Long))))
-        {
-          if (localaiur.jdField_a_of_type_Short > 4) {
-            break label165;
-          }
-          localaius = (aius)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(3));
-          if (localaius != null)
-          {
-            localaius.c += 1;
-            this.jdField_b_of_type_Int += 1;
-          }
+        k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12324, 0);
+        m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323, 0);
+        int n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322, 0);
+        int i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321, 0);
+        if ((k == this.a) && (m == this.jdField_b_of_type_Int) && (n == this.c) && (i1 == this.d)) {
+          return localEGLConfig;
         }
       }
+      i += 1;
     }
-    for (;;)
-    {
-      if (this.c == null) {
-        this.c = new ArrayList();
-      }
-      this.c.add(localaiur);
-      break label40;
-      break;
-      label165:
-      localaius = (aius)this.jdField_a_of_type_JavaUtilHashMap.get(Short.valueOf(localaiur.jdField_a_of_type_Short));
-      if (localaius != null)
-      {
-        localaius.c += localaiur.f;
-        this.jdField_b_of_type_Int += localaiur.f;
-      }
-    }
+    return null;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import ajnd;
+import akbm;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
@@ -12,7 +12,7 @@ class NearbyHybridFragment$7
   
   public void run()
   {
-    ((ajnd)this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(3)).a((float)NearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.b, (float)NearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.a, 5);
+    ((akbm)this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(3)).a((float)NearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.b, (float)NearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.a, 5);
   }
 }
 

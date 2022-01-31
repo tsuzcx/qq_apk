@@ -1,181 +1,146 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAppReceiver;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Random;
+import mqq.app.AppRuntime;
 
-public class ymw
-  extends VasWebviewJsPlugin
+public final class ymw
 {
-  private GdtAppReceiver a;
+  protected static ymw a;
+  private static String b = "smartdevice::smartdevicereport";
+  public int a;
+  public long a;
+  public String a;
   
-  public ymw()
+  protected ymw()
   {
-    this.mPluginNameSpace = "qq_gdt_ad";
-    if (a() != null) {}
-    for (Object localObject = a();; localObject = BaseApplicationImpl.getApplication())
-    {
-      ypc.a().a((Context)localObject, new ypd());
-      return;
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = 0L;
   }
   
-  private void a()
+  public static ymw a()
   {
-    if ((this.a != null) || (this.mRuntime == null)) {
-      return;
-    }
-    yny.b("GdtAdWebPlugin", "registerReceiverForApp");
-    this.a = new GdtAppReceiver();
-    this.a.register(a());
-  }
-  
-  private void b()
-  {
-    if ((this.a == null) || (this.mRuntime == null)) {
-      return;
-    }
-    yny.b("GdtAdWebPlugin", "unregisterReceiverForApp");
-    this.a.unregister(a());
-    this.a = null;
-  }
-  
-  public Activity a()
-  {
-    if (this.mRuntime != null) {}
-    for (Activity localActivity1 = this.mRuntime.a();; localActivity1 = null)
-    {
-      Activity localActivity2 = localActivity1;
-      if ((localActivity1 instanceof BasePluginActivity)) {
-        localActivity2 = ((BasePluginActivity)BasePluginActivity.class.cast(localActivity1)).getOutActivity();
-      }
-      return localActivity2;
-    }
-  }
-  
-  public GdtAppReceiver a()
-  {
-    return this.a;
-  }
-  
-  public String a()
-  {
-    Activity localActivity = a();
-    if (localActivity == null) {}
-    while (!(localActivity instanceof QQBrowserActivity)) {
-      return null;
-    }
-    return ((QQBrowserActivity)QQBrowserActivity.class.cast(localActivity)).getCurrentUrl();
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    paramJsBridgeListener = null;
     try
     {
-      paramString1 = new JSONObject(paramVarArgs[0]).optString("callback");
-      if ("loadAd".equals(paramString3))
-      {
-        paramJsBridgeListener = ymu.a().a(5);
-        if (paramJsBridgeListener != null) {
-          paramJsBridgeListener.a(this, paramString1, paramVarArgs);
-        }
-        return true;
+      if (jdField_a_of_type_Ymw == null) {
+        jdField_a_of_type_Ymw = new ymw();
+      }
+      ymw localymw = jdField_a_of_type_Ymw;
+      return localymw;
+    }
+    finally {}
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, long paramLong, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDReport", 2, "action:" + paramString + " fromType:" + paramInt1 + " result:" + paramInt2 + " din:" + paramLong + " ext2:" + paramInt3);
+    }
+    a(paramAppRuntime, paramString, "" + paramLong, paramInt1, paramInt2, paramInt3, 0, "", "");
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDReport", 2, "action:" + paramString + " fromType:" + paramInt1 + " result:" + paramInt2 + " ext2:" + paramInt3);
+    }
+    a(paramAppRuntime, paramString, "", paramInt1, paramInt2, paramInt3, 0, "", "");
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString3, String paramString4)
+  {
+    QQAppInterface localQQAppInterface = null;
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)paramAppRuntime;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(b, 2, "smartdevice datareport, actionname:" + paramString1 + ", fromType:" + paramInt1 + ", actionResult = " + paramInt2 + ", ext2:" + paramInt3 + ", ext3:" + paramInt4 + ", ext4:" + paramString3 + ", ext5:" + paramString4);
+    }
+    String str1 = "" + paramInt3;
+    String str2 = "" + paramInt4;
+    if (paramString3 == null)
+    {
+      paramAppRuntime = "";
+      if (paramString4 != null) {
+        break label198;
       }
     }
-    catch (Exception paramString1)
+    label198:
+    for (paramString3 = "";; paramString3 = paramString4)
     {
-      for (;;)
-      {
-        yny.d("GdtAdWebPlugin", "GdtAdWebPlugin handleJsCallRequest error ", paramString1);
-        paramString1 = null;
-        continue;
-        if ("doAdReport".equals(paramString3))
-        {
-          paramJsBridgeListener = ymu.a().a(3);
-        }
-        else if ("doAppJump".equals(paramString3))
-        {
-          paramJsBridgeListener = ymu.a().a(1);
-        }
-        else if ("showVideoCeiling".equals(paramString3))
-        {
-          paramJsBridgeListener = ymu.a().a(2);
-        }
-        else if ("getLocation".equals(paramString3))
-        {
-          paramJsBridgeListener = ymu.a().a(4);
-        }
-        else if ("showCanvas".equals(paramString3))
-        {
-          paramJsBridgeListener = ymu.a().a(6);
-        }
-        else if ("getDeviceId".equals(paramString3))
-        {
-          paramJsBridgeListener = ymu.a().a(7);
-        }
-        else if ("getMacAddress".equals(paramString3))
-        {
-          paramJsBridgeListener = ymu.a().a(8);
-        }
-        else if ("getCarrier".equals(paramString3))
-        {
-          paramJsBridgeListener = ymu.a().a(9);
-        }
-        else if ("getNetType".equals(paramString3))
-        {
-          paramJsBridgeListener = ymu.a().a(10);
-        }
-        else if ("getOSVersion".equals(paramString3))
-        {
-          paramJsBridgeListener = ymu.a().a(11);
-        }
-        else if ("handleClick".equals(paramString3))
-        {
-          a();
-          paramJsBridgeListener = ymu.a().a(12);
-        }
-        else if ("showBanner".equals(paramString3))
-        {
-          paramJsBridgeListener = ymu.a().a(13);
-        }
-        else if ("getDeviceInfo".equals(paramString3))
-        {
-          paramJsBridgeListener = ymu.a().a(14);
-        }
-        else if ("c2sReport".equals(paramString3))
-        {
-          paramJsBridgeListener = ymu.a().a(15);
-        }
-        else if ("openMotiveVideoAd".equals(paramString3))
-        {
-          paramJsBridgeListener = ymu.a().a(16);
-        }
-        else if ("getUserInfo".equals(paramString3))
-        {
-          paramJsBridgeListener = ymu.a().a(17);
-        }
-        else if ("preLoadAfterAdLoaded".equals(paramString3))
-        {
-          paramJsBridgeListener = ymu.a().a(18);
-        }
-      }
+      axqw.b(localQQAppInterface, "CliOper", "", paramString2, "SmartDevice", paramString1, paramInt1, paramInt2, str1, str2, paramAppRuntime, paramString3);
+      return;
+      paramAppRuntime = paramString3;
+      break;
     }
   }
   
-  public void onDestroy()
+  public void a(int paramInt)
   {
-    super.onDestroy();
-    b();
+    if (0L == this.jdField_a_of_type_Long) {}
+    for (this.jdField_a_of_type_Long = (new Random().nextInt() & 0xFFFFFFFF);; this.jdField_a_of_type_Long += 1L) {
+      switch (paramInt)
+      {
+      default: 
+        this.jdField_a_of_type_Long %= 1431655765L;
+        if (0L == this.jdField_a_of_type_Long) {
+          this.jdField_a_of_type_Long += 1L;
+        }
+        return;
+      }
+    }
+    this.jdField_a_of_type_Long = (this.jdField_a_of_type_Long % 1431655765L + 1431655765L);
+    return;
+    this.jdField_a_of_type_Long = (this.jdField_a_of_type_Long % 1431655765L + 2863311530L);
+  }
+  
+  public void a(AppRuntime paramAppRuntime, String paramString, int paramInt)
+  {
+    b(paramAppRuntime, paramString, paramInt);
+  }
+  
+  public void a(AppRuntime paramAppRuntime, String paramString1, int paramInt1, int paramInt2, String paramString2, long paramLong)
+  {
+    QQAppInterface localQQAppInterface = null;
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)paramAppRuntime;
+    }
+    if (paramString2 == null) {}
+    for (paramAppRuntime = "";; paramAppRuntime = paramString2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(b, 2, "smartdevice datareport2, actionname:" + paramString1 + ",result:" + paramInt1 + ", pid:" + paramInt2 + ",sn:" + paramAppRuntime);
+      }
+      axqw.b(localQQAppInterface, "CliOper", "", "" + paramLong, "SmartDevice", paramString1, paramInt1, 0, Long.toString(paramInt2), "", paramAppRuntime, "");
+      return;
+    }
+  }
+  
+  public void b(AppRuntime paramAppRuntime, String paramString, int paramInt)
+  {
+    QQAppInterface localQQAppInterface = null;
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)paramAppRuntime;
+    }
+    long l = this.jdField_a_of_type_Long & 0xFFFFFFFF;
+    if (this.jdField_a_of_type_JavaLangString == null) {}
+    for (paramAppRuntime = "";; paramAppRuntime = this.jdField_a_of_type_JavaLangString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(b, 2, "smartdevice datareport, actionname:" + paramString + ",result:" + paramInt + ", pid:" + Long.toString(this.jdField_a_of_type_Int) + ",sn:" + paramAppRuntime + ",seq:" + Long.toString(l));
+      }
+      if ((!"Net_Wifi_Config_Time_Used".equals(paramString)) && (!"Net_Wifi_Config_Ack_Time_Used".equals(paramString))) {
+        break;
+      }
+      axqw.b(localQQAppInterface, "CliOper", "", "0", "SmartDevice", paramString, 0, paramInt, Long.toString(this.jdField_a_of_type_Int), Long.toString(l), paramAppRuntime, "");
+      return;
+    }
+    axqw.b(localQQAppInterface, "CliOper", "", "0", "SmartDevice", paramString, paramInt, 0, Long.toString(this.jdField_a_of_type_Int), Long.toString(l), paramAppRuntime, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ymw
  * JD-Core Version:    0.7.0.1
  */

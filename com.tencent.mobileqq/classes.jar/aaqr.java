@@ -1,16 +1,4 @@
-import com.tencent.mobileqq.activity.EditInfoActivity;
-
-public class aaqr
-  extends bamc
-{
-  public aaqr(EditInfoActivity paramEditInfoActivity) {}
-  
-  public void a()
-  {
-    EditInfoActivity.a(this.a, EditInfoActivity.b(this.a));
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaqr

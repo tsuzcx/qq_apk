@@ -1,6 +1,19 @@
-public abstract interface anzb
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup;
+
+public class anzb
+  extends RadioButton
 {
-  public abstract void a();
+  public anzb(EmoticonPagerRadioGroup paramEmoticonPagerRadioGroup, Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    return true;
+  }
 }
 
 

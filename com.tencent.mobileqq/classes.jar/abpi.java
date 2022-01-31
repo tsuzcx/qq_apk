@@ -1,23 +1,17 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
 public class abpi
-  implements Handler.Callback
+  implements DialogInterface.OnClickListener
 {
-  public abpi(RewardNoticeActivity paramRewardNoticeActivity) {}
+  public abpi(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      paramMessage = new abpj(this);
-      this.a.a(this.a.a, paramMessage, 4.0F, 500L, 4);
-    }
+    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
+    this.a.finish();
   }
 }
 

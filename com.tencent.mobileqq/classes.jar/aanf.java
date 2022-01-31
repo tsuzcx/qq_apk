@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.Conversation;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class aanf
-  extends sgc
+  implements bcpl
 {
-  public aanf(Conversation paramConversation) {}
+  public aanf(BaseChatPie paramBaseChatPie) {}
   
-  public void d(boolean paramBoolean)
+  public void a(Bundle paramBundle)
   {
-    if (paramBoolean)
-    {
-      urk.b("Q.recent", "onMsgTabStoryShowChange() sendEmptyMessageDelayedToHandler MSG_INIT_MSGTAG_STORY process, send");
-      this.a.a(1055, 0L, false);
-      return;
-    }
-    Conversation.a(this.a, false);
+    this.a.a.b(false);
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    this.a.a.b(true);
   }
 }
 

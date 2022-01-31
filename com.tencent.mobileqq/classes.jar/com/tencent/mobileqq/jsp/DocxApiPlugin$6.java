@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.jsp;
 
-import aqrp;
-import axfb;
+import armi;
+import ayfe;
 
 public class DocxApiPlugin$6
   implements Runnable
 {
-  public DocxApiPlugin$6(aqrp paramaqrp) {}
+  public DocxApiPlugin$6(armi paramarmi) {}
   
   public void run() {}
 }

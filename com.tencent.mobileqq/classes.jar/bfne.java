@@ -1,44 +1,41 @@
-import com.tencent.qphone.base.util.QLog;
-
-public final class bfne
+public class bfne<T>
 {
-  public static void a(String paramString1, String paramString2)
+  private long jdField_a_of_type_Long;
+  private bfnf<T> jdField_a_of_type_Bfnf;
+  private long b;
+  
+  private bfne(bfnf<T> parambfnf)
   {
-    QLog.e("ReadingCenter-" + paramString1, 1, paramString2);
+    this.jdField_a_of_type_Bfnf = parambfnf;
   }
   
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public static <T> bfne<T> a(bfnf<T> parambfnf)
   {
-    QLog.e("ReadingCenter-" + paramString1, 1, paramString2, paramThrowable);
+    return new bfne(parambfnf);
   }
   
-  public static void b(String paramString1, String paramString2)
+  public bfne<T> a(long paramLong)
   {
-    QLog.i("ReadingCenter-" + paramString1, 1, paramString2);
+    this.b = paramLong;
+    return this;
   }
   
-  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
+  public bfne<T> a(T paramT)
   {
-    QLog.i("ReadingCenter-" + paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ReadingCenter-" + paramString1, 2, paramString2);
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long > this.b)
+    {
+      this.jdField_a_of_type_Long = l;
+      if (this.jdField_a_of_type_Bfnf != null) {
+        this.jdField_a_of_type_Bfnf.a(paramT);
+      }
     }
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadingCenter-" + paramString1, 2, paramString2);
-    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfne
  * JD-Core Version:    0.7.0.1
  */

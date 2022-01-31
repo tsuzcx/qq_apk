@@ -1,32 +1,37 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.FeedsManager;
-import com.tencent.mobileqq.data.FeedsManager.2.1;
+import android.support.v4.util.ArraySet;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class amrw
-  implements ThreadExcutor.IThreadListener
 {
-  public amrw(FeedsManager paramFeedsManager) {}
+  public ArraySet<String> a = new ArraySet();
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public static amrw a(String paramString)
   {
-    FeedsManager.access$102(this.a, true);
-    ThreadManagerV2.getUIHandlerV2().post(new FeedsManager.2.1(this));
-    if (FeedsManager.access$300(this.a))
+    localamrw = new amrw();
+    try
     {
-      FeedsManager.access$302(this.a, false);
-      this.a.updateQzoneFeeds();
+      paramString = new JSONObject(paramString).getJSONArray("white_list");
+      int i = 0;
+      while (i < paramString.length())
+      {
+        localamrw.a.add(paramString.optString(i, ""));
+        i += 1;
+      }
+      return localamrw;
+    }
+    catch (Throwable paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("BroadcastConfProcessor", 2, paramString, new Object[0]);
+      }
     }
   }
-  
-  public void onPreRun() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amrw
  * JD-Core Version:    0.7.0.1
  */

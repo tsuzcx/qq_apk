@@ -1,296 +1,165 @@
-import android.text.TextUtils;
+import android.content.ContentValues;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.trooponline.data.TroopAllOnlineData;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
+import java.lang.reflect.Field;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
+import java.util.UUID;
 
 public class azrx
-  implements Manager
+  extends aksv
 {
-  protected long a;
-  protected QQAppInterface a;
-  private Map<String, azrv> a;
-  private Map<String, TroopAllOnlineData> b = new ConcurrentHashMap();
-  
-  public azrx(QQAppInterface paramQQAppInterface)
+  public azrx(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(paramQQAppInterface, paramProxyManager);
   }
   
-  public int a(String paramString)
+  private ContentValues a(aukm paramaukm)
   {
-    paramString = (azrv)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((paramString != null) && (paramString.jdField_a_of_type_Int > 0)) {
-      return paramString.jdField_a_of_type_Int;
-    }
-    return 1;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public long a(String paramString)
-  {
-    paramString = (azrv)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {}
-    for (long l1 = paramString.jdField_b_of_type_Long;; l1 = 0L)
+    ContentValues localContentValues = new ContentValues();
+    List localList = auln.a(paramaukm.getClass());
+    int j = localList.size();
+    int i = 0;
+    for (;;)
     {
-      long l2 = l1;
-      if (l1 <= 0L) {
-        l2 = NetConnInfoCenter.getServerTime();
-      }
-      return l2;
-    }
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramString = "";
-      return paramString;
-    }
-    String str = null;
-    Object localObject = (azrv)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localObject != null) {
-      str = ((azrv)localObject).jdField_a_of_type_JavaLangString;
-    }
-    for (int i = ((azrv)localObject).jdField_b_of_type_Int;; i = 0)
-    {
-      if (str == null) {
-        return "";
-      }
-      localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).c(paramString);
-      if ((localObject != null) && (((TroopInfo)localObject).wMemberNumClient > 0) && (i > ((TroopInfo)localObject).wMemberNumClient) && (!TextUtils.isEmpty(str)))
+      if (i < j)
       {
-        str = str.replace(String.valueOf(i), String.valueOf(((TroopInfo)localObject).wMemberNumClient));
-        paramString = str;
-        if (!QLog.isColorLevel()) {
-          break;
+        Object localObject1 = (Field)localList.get(i);
+        String str = ((Field)localObject1).getName();
+        if (!((Field)localObject1).isAccessible()) {
+          ((Field)localObject1).setAccessible(true);
         }
-        QLog.d("TroopOnlineMemberManage", 2, String.format("getOnlineTip onlineCount: %s, memberNum: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(((TroopInfo)localObject).wMemberNumClient) }));
-        return str;
+        try
+        {
+          localObject1 = ((Field)localObject1).get(paramaukm);
+          if ((localObject1 instanceof Integer))
+          {
+            localContentValues.put(str, (Integer)localObject1);
+            i += 1;
+          }
+        }
+        catch (IllegalArgumentException localIllegalArgumentException)
+        {
+          for (;;)
+          {
+            localIllegalArgumentException.printStackTrace();
+            Object localObject2 = null;
+          }
+        }
+        catch (IllegalAccessException localIllegalAccessException)
+        {
+          for (;;)
+          {
+            localIllegalAccessException.printStackTrace();
+            Object localObject3 = null;
+            continue;
+            if ((localObject3 instanceof Long)) {
+              localContentValues.put(str, (Long)localObject3);
+            } else if ((localObject3 instanceof String)) {
+              localContentValues.put(str, (String)localObject3);
+            } else if ((localObject3 instanceof byte[])) {
+              localContentValues.put(str, (byte[])localObject3);
+            } else if ((localObject3 instanceof Short)) {
+              localContentValues.put(str, (Short)localObject3);
+            } else if ((localObject3 instanceof Boolean)) {
+              localContentValues.put(str, (Boolean)localObject3);
+            } else if ((localObject3 instanceof Double)) {
+              localContentValues.put(str, (Double)localObject3);
+            } else if ((localObject3 instanceof Float)) {
+              localContentValues.put(str, (Float)localObject3);
+            } else if ((localObject3 instanceof Byte)) {
+              localContentValues.put(str, (Byte)localObject3);
+            }
+          }
+        }
       }
-      return str;
     }
+    return localContentValues;
   }
   
-  public List<azrw> a(String paramString)
+  public List<TroopFileTansferItemEntity> a(long paramLong)
   {
-    paramString = (azrv)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString == null) {
-      return null;
-    }
-    return paramString.jdField_a_of_type_JavaUtilList;
+    aukn localaukn = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    TroopFileTansferItemEntity localTroopFileTansferItemEntity = new TroopFileTansferItemEntity();
+    localTroopFileTansferItemEntity.troopuin = paramLong;
+    return localaukn.a(TroopFileTansferItemEntity.class, "select * from " + localTroopFileTansferItemEntity.getTableName() + " where troopuin = ?", new String[] { "" + paramLong });
   }
   
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
+  protected void a() {}
   
-  public void a(String paramString)
+  public void a(long paramLong, UUID paramUUID)
   {
-    try
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        return;
-      }
-      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+    if (paramUUID == null) {
       return;
     }
-    catch (Exception paramString)
-    {
-      QLog.i("TroopOnlineMemberManage", 1, "removeDetailOnlineData: e = " + paramString.toString());
-    }
+    azsr.c("TroopFileDataBaseProxy", azsr.a, "[" + paramUUID.toString() + "] deleteItem");
+    Object localObject = new TroopFileTansferItemEntity();
+    ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
+    localObject = ((TroopFileTansferItemEntity)localObject).getTableName();
+    String str = paramUUID.toString();
+    paramUUID = new azsa(this, paramUUID);
+    a((String)localObject, "_sId=?", new String[] { str }, paramUUID);
   }
   
-  public void a(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3)
+  public void a(TroopFileTansferItemEntity paramTroopFileTansferItemEntity)
   {
-    int i = paramInt1;
-    if (paramInt1 <= 0) {
-      i = 10;
-    }
-    azrv localazrv2 = (azrv)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
-    azrv localazrv1 = localazrv2;
-    if (localazrv2 == null)
-    {
-      localazrv1 = new azrv();
-      this.jdField_a_of_type_JavaUtilMap.put(paramString1, localazrv1);
-    }
-    if ((i != 4) || (!TextUtils.isEmpty(paramString2)))
-    {
-      localazrv1.jdField_a_of_type_JavaLangString = paramString2;
-      localazrv1.jdField_b_of_type_Int = paramInt3;
-    }
-    localazrv1.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTime() + i);
-    if (paramInt2 != -1) {
-      localazrv1.jdField_a_of_type_Int = paramInt2;
-    }
-  }
-  
-  public void a(String paramString, List<String> paramList, int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt <= 0) {
-      i = 10;
-    }
-    TroopAllOnlineData localTroopAllOnlineData = new TroopAllOnlineData();
-    localTroopAllOnlineData.troopUin = paramString;
-    localTroopAllOnlineData.memberUinList = paramList;
-    localTroopAllOnlineData.nextReqTime = i;
-    paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    paramString.b(localTroopAllOnlineData);
-    paramString.a();
-  }
-  
-  public void a(String paramString1, List<azrw> paramList, int paramInt1, String paramString2, int paramInt2)
-  {
-    int i = paramInt1;
-    if (paramInt1 <= 0) {
-      i = 10;
-    }
-    azrv localazrv2 = (azrv)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
-    azrv localazrv1 = localazrv2;
-    if (localazrv2 == null)
-    {
-      localazrv1 = new azrv();
-      this.jdField_a_of_type_JavaUtilMap.put(paramString1, localazrv1);
-    }
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      localazrv1.jdField_a_of_type_JavaLangString = paramString2;
-      localazrv1.jdField_b_of_type_Int = paramInt2;
-    }
-    if ((paramList != null) && (paramList.size() > 0)) {
-      localazrv1.jdField_a_of_type_JavaUtilList = paramList;
-    }
-    localazrv1.jdField_b_of_type_Long = (NetConnInfoCenter.getServerTime() + i);
-  }
-  
-  public int b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return 0;
-    }
-    paramString = (azrv)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {}
-    for (int i = paramString.jdField_b_of_type_Int;; i = 0) {
-      return i;
-    }
-  }
-  
-  public long b(String paramString)
-  {
-    paramString = (azrv)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {}
-    for (long l1 = paramString.jdField_a_of_type_Long;; l1 = 0L)
-    {
-      long l2 = l1;
-      if (l1 <= 0L) {
-        l2 = NetConnInfoCenter.getServerTime();
-      }
-      return l2;
-    }
-  }
-  
-  public List<String> b(String paramString)
-  {
-    atmp localatmp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    paramString = (TroopAllOnlineData)localatmp.a(TroopAllOnlineData.class, paramString);
-    localatmp.a();
-    if (paramString == null) {
-      return null;
-    }
-    return paramString.memberUinList;
-  }
-  
-  public void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if ((paramTroopFileTansferItemEntity == null) || (paramTroopFileTansferItemEntity.Id == null)) {
       return;
-      paramString = (azrv)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    } while (paramString == null);
-    paramString.jdField_a_of_type_JavaUtilList = null;
-    paramString.jdField_b_of_type_Long = NetConnInfoCenter.getServerTime();
-  }
-  
-  public void b(String paramString, List<String> paramList, int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt <= 0) {
+    }
+    azsr.c("TroopFileDataBaseProxy", azsr.a, "[" + paramTroopFileTansferItemEntity.Id.toString() + "] updateItem transStatus[" + paramTroopFileTansferItemEntity.Status + "] FilePath[" + paramTroopFileTansferItemEntity.FilePath + "]");
+    int i = paramTroopFileTansferItemEntity.Status;
+    switch (paramTroopFileTansferItemEntity.Status)
+    {
+    }
+    for (;;)
+    {
+      paramTroopFileTansferItemEntity.preupdate();
+      ContentValues localContentValues = a(paramTroopFileTansferItemEntity);
+      localContentValues.put("Status", Integer.valueOf(i));
+      localContentValues.put("_sStatus", azph.a(i));
+      String str1 = paramTroopFileTansferItemEntity.getTableName();
+      String str2 = paramTroopFileTansferItemEntity.Id.toString();
+      paramTroopFileTansferItemEntity = new azrz(this, paramTroopFileTansferItemEntity);
+      a(str1, localContentValues, "_sId=?", new String[] { str2 }, paramTroopFileTansferItemEntity);
+      return;
+      i = 3;
+      continue;
       i = 10;
     }
-    TroopAllOnlineData localTroopAllOnlineData2 = (TroopAllOnlineData)this.b.get(paramString);
-    TroopAllOnlineData localTroopAllOnlineData1 = localTroopAllOnlineData2;
-    if (localTroopAllOnlineData2 == null)
+  }
+  
+  public void a(TroopFileTansferItemEntity paramTroopFileTansferItemEntity, akte paramakte)
+  {
+    azsr.c("TroopFileDataBaseProxy", azsr.a, "[" + paramTroopFileTansferItemEntity.Id.toString() + "] addItem status[" + paramTroopFileTansferItemEntity.getStatus() + "]");
+    paramakte = new azry(this, paramTroopFileTansferItemEntity);
+    if (paramTroopFileTansferItemEntity.getStatus() == 1000)
     {
-      localTroopAllOnlineData1 = new TroopAllOnlineData();
-      this.b.put(paramString, localTroopAllOnlineData1);
+      this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, paramTroopFileTansferItemEntity.getTableName(), paramTroopFileTansferItemEntity, 0, paramakte);
+      return;
     }
-    localTroopAllOnlineData1.troopUin = paramString;
-    localTroopAllOnlineData1.memberUinList = paramList;
-    localTroopAllOnlineData1.nextReqTime = (NetConnInfoCenter.getServerTime() + i);
-  }
-  
-  public long c(String paramString)
-  {
-    atmp localatmp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    paramString = (TroopAllOnlineData)localatmp.a(TroopAllOnlineData.class, paramString);
-    localatmp.a();
-    if (paramString != null) {}
-    for (long l1 = paramString.nextReqTime;; l1 = 0L)
+    if (paramTroopFileTansferItemEntity.getStatus() == 1001)
     {
-      long l2 = l1;
-      if (l1 <= 0L) {
-        l2 = NetConnInfoCenter.getServerTime();
-      }
-      return l2;
+      this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, paramTroopFileTansferItemEntity.getTableName(), paramTroopFileTansferItemEntity, 1, paramakte);
+      return;
     }
+    azsr.a("TroopFileDataBaseProxy", azsr.a, "Item status[" + String.valueOf(paramTroopFileTansferItemEntity.getStatus()) + "] is wrong");
   }
   
-  public List<String> c(String paramString)
+  protected void a(String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString, akte paramakte)
   {
-    paramString = (TroopAllOnlineData)this.b.get(paramString);
-    if (paramString == null) {
-      return null;
-    }
-    return paramString.memberUinList;
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, paramString1, paramContentValues, paramString2, paramArrayOfString, 1, paramakte);
   }
   
-  public long d(String paramString)
+  protected void a(String paramString1, String paramString2, String[] paramArrayOfString, akte paramakte)
   {
-    paramString = (TroopAllOnlineData)this.b.get(paramString);
-    if (paramString != null) {}
-    for (long l1 = paramString.nextReqTime;; l1 = 0L)
-    {
-      long l2 = l1;
-      if (l1 <= 0L) {
-        l2 = NetConnInfoCenter.getServerTime();
-      }
-      return l2;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, paramString1, paramString2, paramArrayOfString, 2, paramakte);
   }
   
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-  }
+  protected void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azrx
  * JD-Core Version:    0.7.0.1
  */

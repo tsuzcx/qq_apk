@@ -1,248 +1,190 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.ArrayList;
-import java.util.Comparator;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
+import java.lang.ref.WeakReference;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ajgh
 {
-  public static Comparator<atmo> a = new ajgi();
+  public float a;
+  public int a;
+  private ajgn jdField_a_of_type_Ajgn;
+  public SharedPreferences a;
+  public String a;
+  public WeakReference<BaseChatPie> a;
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  public AtomicBoolean a;
+  public boolean a;
+  public int b;
+  public String b;
+  public WeakReference<aivb> b;
+  public AtomicBoolean b;
+  public boolean b;
+  public int c;
+  private WeakReference<ajfm> jdField_c_of_type_JavaLangRefWeakReference;
+  private AtomicBoolean jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public int d = -1;
+  public int e = 3;
+  private int f;
   
-  private static int a(char paramChar)
+  public ajgh()
   {
-    if (((paramChar >= 'A') && (paramChar <= 'Z')) || ((paramChar >= 'a') && (paramChar <= 'z'))) {
-      return 1;
-    }
-    if ((paramChar >= '0') && (paramChar <= '9')) {
-      return 10;
-    }
-    return 5;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_b_of_type_JavaLangString = ApolloUtil.a();
+    a();
+    this.jdField_a_of_type_AndroidContentSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
+    b();
   }
   
-  public static int a(int paramInt1, String paramString1, int paramInt2, String paramString2)
+  public int a()
   {
-    if (paramInt1 > paramInt2) {
-      return 1;
-    }
-    if (paramInt1 < paramInt2) {
-      return -1;
-    }
-    String str = paramString1;
-    if (paramString1 == null) {
-      str = "";
-    }
-    paramString1 = paramString2;
-    if (paramString2 == null) {
-      paramString1 = "";
-    }
-    return str.compareTo(paramString1);
+    return this.f;
   }
   
-  public static int a(String paramString1, String paramString2)
+  public aivb a()
   {
-    int k = 1;
-    int i;
-    int j;
-    if (paramString1 != null)
-    {
-      i = paramString1.length();
-      if (paramString2 == null) {
-        break label40;
-      }
-      j = paramString2.length();
-      label21:
-      if ((i != 0) && (j != 0)) {
-        break label45;
-      }
-      i -= j;
-    }
-    label40:
-    label45:
-    char[] arrayOfChar1;
-    char[] arrayOfChar2;
-    label175:
-    label180:
-    label233:
-    do
-    {
-      do
-      {
-        do
-        {
-          return i;
-          i = 0;
-          break;
-          j = 0;
-          break label21;
-          arrayOfChar1 = ChnToSpell.a(paramString1, 1).toCharArray();
-          arrayOfChar2 = ChnToSpell.a(paramString2, 1).toCharArray();
-          j = a(arrayOfChar1[0]);
-          m = a(arrayOfChar2[0]);
-          i = k;
-        } while (j > m);
-        if (j < m) {
-          return -1;
-        }
-        i = k;
-      } while (arrayOfChar1[0] > arrayOfChar2[0]);
-      if (arrayOfChar1[0] < arrayOfChar2[0]) {
-        return -1;
-      }
-      if (paramString1.charAt(0) < 'ÿ')
-      {
-        i = 1;
-        if (paramString2.charAt(0) >= 'ÿ') {
-          break label175;
-        }
-      }
-      for (j = 1;; j = 0)
-      {
-        if ((i ^ j) == 0) {
-          break label180;
-        }
-        return paramString1.charAt(0) - paramString2.charAt(0);
-        i = 0;
-        break;
-      }
-      int m = Math.min(arrayOfChar1.length, arrayOfChar2.length);
-      j = 1;
-      for (;;)
-      {
-        if (j >= m) {
-          break label233;
-        }
-        i = k;
-        if (arrayOfChar1[j] > arrayOfChar2[j]) {
-          break;
-        }
-        if (arrayOfChar1[j] < arrayOfChar2[j]) {
-          return -1;
-        }
-        j += 1;
-      }
-      i = k;
-    } while (arrayOfChar1.length > arrayOfChar2.length);
-    if (arrayOfChar1.length < arrayOfChar2.length) {
-      return -1;
-    }
-    return 0;
-  }
-  
-  public static String a(DiscussionInfo paramDiscussionInfo)
-  {
-    return paramDiscussionInfo.discussionName + "-" + paramDiscussionInfo.uin;
-  }
-  
-  public static String a(Friends paramFriends)
-  {
-    String str = paramFriends.getFriendNick();
-    return str + "-" + paramFriends.uin;
-  }
-  
-  public static String a(PublicAccountInfo paramPublicAccountInfo)
-  {
-    return paramPublicAccountInfo.name + "-" + paramPublicAccountInfo.uin;
-  }
-  
-  public static String a(TroopInfo paramTroopInfo)
-  {
-    if ((paramTroopInfo.hasSetTroopName()) || (TextUtils.isEmpty(paramTroopInfo.newTroopName))) {
-      return paramTroopInfo.troopname + "-" + paramTroopInfo.troopcode;
-    }
-    return paramTroopInfo.getTroopName() + "-" + paramTroopInfo.troopcode;
-  }
-  
-  public static ArrayList<atmo> a(ArrayList<atmo> paramArrayList, atmo paramatmo)
-  {
-    if (paramArrayList == null) {
+    if (this.jdField_b_of_type_JavaLangRefWeakReference == null) {
       return null;
     }
-    paramArrayList = (ArrayList)paramArrayList.clone();
-    if (paramArrayList.size() == 0)
-    {
-      paramArrayList.add(paramatmo);
-      return paramArrayList;
+    return (aivb)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public ajfm a()
+  {
+    if (this.jdField_c_of_type_JavaLangRefWeakReference == null) {
+      return null;
     }
-    Groups localGroups1 = (Groups)paramatmo;
-    int j = 0;
-    int i = paramArrayList.size() - 1;
-    if (j <= i)
-    {
-      int k = (j + i) / 2;
-      Groups localGroups2 = (Groups)paramArrayList.get(k);
-      if (localGroups1.seqid > localGroups2.seqid) {
-        j = k + 1;
-      }
-      for (;;)
-      {
-        break;
-        i = k - 1;
-      }
+    return (ajfm)this.jdField_c_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public BaseChatPie a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      return null;
     }
-    paramArrayList.add(i + 1, paramatmo);
-    return paramArrayList;
+    return (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
   }
   
-  public static void a(DiscussionInfo paramDiscussionInfo)
+  public IPCSpriteContext a()
   {
-    String str = a(paramDiscussionInfo);
-    paramDiscussionInfo.mCompareSpell = ChnToSpell.a(str, 1);
-    paramDiscussionInfo.mComparePartInt = b(str, paramDiscussionInfo.mCompareSpell);
+    IPCSpriteContext localIPCSpriteContext = new IPCSpriteContext();
+    localIPCSpriteContext.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localIPCSpriteContext.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localIPCSpriteContext.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localIPCSpriteContext.jdField_b_of_type_Int = this.e;
+    localIPCSpriteContext.jdField_c_of_type_Int = this.jdField_b_of_type_Int;
+    localIPCSpriteContext.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+    return localIPCSpriteContext;
   }
   
-  public static void a(Friends paramFriends)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    String str = a(paramFriends);
-    paramFriends.mCompareSpell = ChnToSpell.a(str, 1);
-    paramFriends.mComparePartInt = b(str, paramFriends.mCompareSpell);
+    aivb localaivb = a();
+    if (localaivb != null) {
+      localaivb.setBubbleType(paramInt);
+    }
   }
   
-  public static void a(PublicAccountInfo paramPublicAccountInfo)
+  public void a(int paramInt1, int paramInt2)
   {
-    String str = a(paramPublicAccountInfo);
-    paramPublicAccountInfo.mCompareSpell = ChnToSpell.a(str, 1);
-    paramPublicAccountInfo.mComparePartInt = b(str, paramPublicAccountInfo.mCompareSpell);
-  }
-  
-  public static void a(TroopInfo paramTroopInfo)
-  {
-    String str = a(paramTroopInfo);
-    paramTroopInfo.mCompareSpell = ChnToSpell.a(str, 1);
-    paramTroopInfo.mComparePartInt = b(str, paramTroopInfo.mCompareSpell);
-  }
-  
-  public static int b(String paramString1, String paramString2)
-  {
-    int k = paramString2.charAt(0);
-    int i;
-    if (((k >= 65) && (k <= 90)) || ((k >= 97) && (k <= 122)))
+    this.jdField_a_of_type_Int = paramInt1;
+    this.e = paramInt2;
+    if (this.e == 0)
     {
-      i = 65536;
-      if (paramString1.charAt(0) < 'ÿ') {
-        break label89;
+      if ((1 != paramInt1) && (3000 != paramInt1)) {
+        break label43;
+      }
+      this.jdField_c_of_type_Int = 1;
+    }
+    for (;;)
+    {
+      a(this.jdField_c_of_type_Int);
+      return;
+      label43:
+      if (paramInt1 == 0) {
+        this.jdField_c_of_type_Int = 0;
       }
     }
-    label89:
-    for (int j = 1;; j = 0)
-    {
-      return j | k << 8 | i | 0x0;
-      if ((k >= 48) && (k <= 57))
-      {
-        i = 262144;
-        break;
-      }
-      i = 131072;
-      break;
+  }
+  
+  public void a(aivb paramaivb)
+  {
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramaivb);
+  }
+  
+  public void a(ajgn paramajgn)
+  {
+    this.jdField_a_of_type_Ajgn = paramajgn;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
     }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean == null) {
+      return false;
+    }
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidContentSharedPreferences != null) {
+      this.d = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("sprite_hide_key" + this.jdField_b_of_type_JavaLangString, -1);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.f = paramInt;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    }
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    }
+    if (this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilSet.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajgh
  * JD-Core Version:    0.7.0.1
  */

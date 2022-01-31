@@ -24,8 +24,10 @@ class DesktopDittoImageArea$2
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((paramURLDrawable != null) && ((paramURLDrawable.getCurrDrawable() instanceof GifDrawable))) {
+    if ((paramURLDrawable != null) && ((paramURLDrawable.getCurrDrawable() instanceof GifDrawable)))
+    {
       AbstractGifImage.resumeAll();
+      this.this$0.invalidate();
     }
   }
 }

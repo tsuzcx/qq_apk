@@ -1,65 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 
-public class afuk
-  extends alzl
+class afuk
+  implements ViewPager.OnPageChangeListener
 {
-  public static afuj a()
-  {
-    return (afuj)alzw.a().a(470);
-  }
+  afuk(afuj paramafuj) {}
   
-  public int a()
-  {
-    return 470;
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  @NonNull
-  public afuj a(int paramInt)
-  {
-    return new afuj();
-  }
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
   
-  @Nullable
-  public afuj a(alzs[] paramArrayOfalzs)
+  public void onPageSelected(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfalzs[0].a);
+    EmoticonFromGroupEntity localEmoticonFromGroupEntity = afuj.a(this.a).a(paramInt);
+    if (localEmoticonFromGroupEntity != null)
+    {
+      afuj.a(this.a, localEmoticonFromGroupEntity);
+      afuj.b(this.a, localEmoticonFromGroupEntity);
     }
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
-      return afuj.a(paramArrayOfalzs);
-    }
-    return null;
-  }
-  
-  public Class<afuj> a()
-  {
-    return afuj.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_config", 0, "onUpdate " + paramObject);
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 

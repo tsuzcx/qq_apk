@@ -1,25 +1,22 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
 import java.util.List;
 
 public class awue
+  extends awur
 {
-  private static HashMap<String, awud> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public static HashMap<String, awud> a()
+  public awue(GroupSearchEngine paramGroupSearchEngine, awus paramawus, String paramString, int paramInt)
   {
-    return jdField_a_of_type_JavaUtilHashMap;
+    super(paramGroupSearchEngine, paramawus, paramString, paramInt);
   }
   
-  public static List<String> a()
+  public awof a(List<awog> paramList, String paramString)
   {
-    return jdField_a_of_type_JavaUtilList;
+    return new awly(paramList, paramString, GroupSearchEngine.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awue
  * JD-Core Version:    0.7.0.1
  */

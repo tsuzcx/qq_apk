@@ -1,82 +1,82 @@
-import android.support.annotation.Nullable;
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.SurfaceView;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
 
-class bhto
-  implements bhwg<wqg>
+public class bhto
 {
-  bhto(bhtn parambhtn, bhso parambhso) {}
+  private static SurfaceView a;
+  public static String a;
+  private static String b = "";
   
-  public void a(@Nullable wqg paramwqg)
+  static
   {
-    QLog.d("AEGIFChunkPreviewFragment", 4, "On observe material download state");
-    if ((paramwqg == null) || (bhtg.b(this.jdField_a_of_type_Bhtn.a) == null)) {
-      return;
-    }
-    int i = this.jdField_a_of_type_Bhso.jdField_a_of_type_Int + 1;
-    for (;;)
+    jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public static void a(bcdb parambcdb, String... paramVarArgs)
+  {
+    if ((parambcdb == null) || (parambcdb.a() == null) || (parambcdb.a() == null)) {}
+    FrameLayout localFrameLayout;
+    do
     {
-      bhsf localbhsf;
-      if (i < bhtg.b(this.jdField_a_of_type_Bhtn.a).size())
+      do
       {
-        localbhsf = (bhsf)bhtg.b(this.jdField_a_of_type_Bhtn.a).get(i);
-        if ((localbhsf == null) || (localbhsf.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial == null) || (!localbhsf.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id.equals(paramwqg.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id))) {
-          break label406;
-        }
-        if (localbhsf.jdField_b_of_type_Int != paramwqg.jdField_a_of_type_Int) {
-          localbhsf.jdField_b_of_type_Int = paramwqg.jdField_a_of_type_Int;
-        }
-        if (localbhsf.jdField_b_of_type_Int != 2) {
-          break label376;
-        }
-        localbhsf.jdField_b_of_type_JavaLangString = wqh.a().a(localbhsf.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
-        QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "Downloaded material", "path===" + localbhsf.jdField_b_of_type_JavaLangString });
-        paramwqg = new biaj();
-        paramwqg.jdField_a_of_type_Int = i;
-        paramwqg.jdField_a_of_type_JavaLangString = localbhsf.jdField_b_of_type_JavaLangString;
-        if ((localbhsf.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial == null) || ((localbhsf.jdField_a_of_type_JavaLangString != null) && (!localbhsf.jdField_a_of_type_JavaLangString.equals("")))) {
-          break label349;
-        }
-        if (localbhsf.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.additionalFields.get("savename") == null) {
-          break label334;
-        }
-        paramwqg.jdField_b_of_type_JavaLangString = "";
-        paramwqg.c = ((String)localbhsf.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.additionalFields.get("savename"));
-        bhtg.b(this.jdField_a_of_type_Bhtn.a).a(paramwqg);
-        localbhsf.jdField_a_of_type_Int = 12;
-        bhtg.c(this.jdField_a_of_type_Bhtn.a).add(paramwqg);
-      }
-      for (;;)
-      {
-        bhtg.b(this.jdField_a_of_type_Bhtn.a, this.jdField_a_of_type_Bhso.a());
         return;
-        label334:
-        paramwqg.jdField_b_of_type_JavaLangString = "";
-        paramwqg.c = "";
-        break;
-        label349:
-        if (localbhsf.jdField_a_of_type_JavaLangString == null)
+        localFrameLayout = (FrameLayout)parambcdb.a().findViewById(2131379397);
+        if ((jdField_a_of_type_AndroidViewSurfaceView != null) && (jdField_a_of_type_AndroidViewSurfaceView.getParent() == localFrameLayout))
         {
-          paramwqg.jdField_b_of_type_JavaLangString = "";
-          break;
+          bgxy.b(parambcdb.a(), jdField_a_of_type_AndroidViewSurfaceView);
+          return;
         }
-        paramwqg.jdField_b_of_type_JavaLangString = localbhsf.jdField_a_of_type_JavaLangString;
-        break;
-        label376:
-        if (localbhsf.jdField_b_of_type_Int == 0) {
-          bhtg.d(this.jdField_a_of_type_Bhtn.a).add(Integer.valueOf(i));
+        jdField_a_of_type_JavaLangString = parambcdb.a().getUrl();
+        if (paramVarArgs != null) {
+          b = paramVarArgs[0];
         }
+      } while (TextUtils.isEmpty(b));
+      jdField_a_of_type_AndroidViewSurfaceView = bgxy.a(parambcdb.a(), b);
+    } while (jdField_a_of_type_AndroidViewSurfaceView == null);
+    localFrameLayout.addView(jdField_a_of_type_AndroidViewSurfaceView, new FrameLayout.LayoutParams(-1, -1));
+  }
+  
+  public static void b(bcdb parambcdb, String... paramVarArgs)
+  {
+    if (parambcdb == null) {}
+    do
+    {
+      do
+      {
+        return;
+        parambcdb = parambcdb.a();
+      } while (parambcdb == null);
+      paramVarArgs = (FrameLayout)parambcdb.findViewById(2131379397);
+      if ((paramVarArgs != null) && (jdField_a_of_type_AndroidViewSurfaceView != null)) {
+        paramVarArgs.removeView(jdField_a_of_type_AndroidViewSurfaceView);
       }
-      label406:
-      i += 1;
-    }
+      bgxy.a(parambcdb, jdField_a_of_type_AndroidViewSurfaceView);
+      jdField_a_of_type_AndroidViewSurfaceView = null;
+      paramVarArgs = new Intent("action_js2qzone");
+      Bundle localBundle = new Bundle();
+      localBundle.putString("cmd", "setFloat");
+      paramVarArgs.putExtras(localBundle);
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneFloatJsHandleLogic", 2, "actionString: " + paramVarArgs.getAction());
+      }
+      bgxy.a(parambcdb, bgyf.a(), paramVarArgs);
+      bhqy.a(parambcdb);
+      parambcdb.finish();
+    } while (!bgxy.f());
+    bdid.a().a(bgxy.b, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhto
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
 import android.content.Context;
-import bbmy;
+import bcpw;
 
 public final class FileUtils$2
   implements Runnable
@@ -10,7 +10,7 @@ public final class FileUtils$2
   
   public void run()
   {
-    bbmy.a(this.a, 2131624428, 1).a();
+    bcpw.a(this.a, 2131689980, 1).a();
   }
 }
 

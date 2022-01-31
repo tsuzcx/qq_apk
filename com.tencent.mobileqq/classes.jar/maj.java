@@ -1,15 +1,16 @@
-import com.tencent.av.ui.VideoLayerUI;
-
-public class maj
-  implements lic
+class maj
 {
-  public maj(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2, int paramInt3) {}
+  lqt jdField_a_of_type_Lqt;
+  mai[] jdField_a_of_type_ArrayOfMai = new mai[2];
   
-  public void a()
+  maj(mah parammah)
   {
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].c(this.b);
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, 0L);
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(this.c, this.jdField_a_of_type_Int);
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfMai.length)
+    {
+      this.jdField_a_of_type_ArrayOfMai[i] = new mai(parammah);
+      i += 1;
+    }
   }
 }
 

@@ -14,6 +14,7 @@ import com.tencent.component.network.utils.http.base.QZoneHttp2Client;
 import com.tencent.component.network.utils.http.base.QZoneHttpClient;
 import com.tencent.component.network.utils.http.base.SNIVerifier;
 import com.tencent.component.network.utils.http.base.SniSSLSocketFactory;
+import com.tencent.component.network.utils.http.pool.CustomDnsResolve;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.URL;
@@ -50,12 +51,18 @@ public class HttpUtil
   
   public static QZoneHttpClient CreateDefaultHttpClient()
   {
+    return CreateDefaultHttpClient(null);
+  }
+  
+  public static QZoneHttpClient CreateDefaultHttpClient(CustomDnsResolve paramCustomDnsResolve)
+  {
     HttpUtil.ClientOptions localClientOptions = new HttpUtil.ClientOptions();
     localClientOptions.multiConnection = true;
     localClientOptions.maxConnection = DownloaderImpl.MAX_CONNECTION;
     localClientOptions.maxConnectionPerRoute = DownloaderImpl.MAX_CONNECTION_PER_ROUTE;
     localClientOptions.timeToLive = DownloaderImpl.TIME_TO_LIVE_HTTP;
     localClientOptions.timeToLiveUnit = DownloaderImpl.TIME_TO_LIVE_UNIT;
+    localClientOptions.dnsResolve = paramCustomDnsResolve;
     return createHttpClient(localClientOptions);
   }
   
@@ -112,7 +119,7 @@ public class HttpUtil
       paramClientOptions.register(new Scheme("https", (SocketFactory)localObject2, 443));
       if (((HttpUtil.ClientOptions)localObject1).multiConnection)
       {
-        localObject2 = new PoolingClientConnectionManager(paramClientOptions, ((HttpUtil.ClientOptions)localObject1).timeToLive, ((HttpUtil.ClientOptions)localObject1).timeToLiveUnit);
+        localObject2 = new PoolingClientConnectionManager(paramClientOptions, ((HttpUtil.ClientOptions)localObject1).timeToLive, ((HttpUtil.ClientOptions)localObject1).timeToLiveUnit, new SystemDefaultDnsResolver(), ((HttpUtil.ClientOptions)localObject1).dnsResolve);
         if (((HttpUtil.ClientOptions)localObject1).maxConnectionPerRoute > 0) {
           ((PoolingClientConnectionManager)localObject2).setDefaultMaxPerRoute(((HttpUtil.ClientOptions)localObject1).maxConnectionPerRoute);
         }

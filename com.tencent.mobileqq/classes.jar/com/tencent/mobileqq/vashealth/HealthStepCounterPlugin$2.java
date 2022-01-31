@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.vashealth;
 
-import barr;
+import bbtt;
 
 public class HealthStepCounterPlugin$2
   implements Runnable
 {
-  public HealthStepCounterPlugin$2(barr parambarr, String paramString) {}
+  public HealthStepCounterPlugin$2(bbtt parambbtt, String paramString) {}
   
   public void run()
   {
-    barr.b(this.this$0, this.a);
+    bbtt.b(this.this$0, this.a);
   }
 }
 

@@ -1,33 +1,49 @@
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.view.View.OnClickListener;
+import com.tencent.widget.SimpleTextView;
 
-public class bdcg
-  implements View.OnFocusChangeListener
+class bdcg
+  extends bfvp
 {
-  public bdcg(Login paramLogin) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  bdcg(bdce parambdce, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText)
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public View a(int paramInt, Object paramObject, bfvo parambfvo, View.OnClickListener paramOnClickListener)
+  {
+    parambfvo = super.a(paramInt, paramObject, parambfvo, paramOnClickListener);
+    if ((parambfvo instanceof SimpleTextView)) {
+      parambfvo.setTag(paramObject);
+    }
+    return parambfvo;
+  }
+  
+  public void a(int paramInt, Object paramObject, bfvo[] paramArrayOfbfvo)
+  {
+    paramInt = 0;
+    if ((paramArrayOfbfvo == null) || (paramArrayOfbfvo.length <= 0)) {}
+    for (;;)
     {
-      if (true == paramBoolean) {
-        this.a.jdField_b_of_type_AndroidWidgetEditText.selectAll();
-      }
-      if (!paramBoolean) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
-      }
-    }
-    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramBoolean)) {
       return;
+      if (paramArrayOfbfvo.length < 0)
+      {
+        paramArrayOfbfvo[0].b = 0;
+        paramArrayOfbfvo[0].a = 0;
+        paramInt = 1;
+      }
+      while (paramInt < paramArrayOfbfvo.length)
+      {
+        paramArrayOfbfvo[paramInt].b = -1;
+        paramArrayOfbfvo[paramInt].a = -1;
+        paramInt += 1;
+      }
     }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdcg
  * JD-Core Version:    0.7.0.1
  */

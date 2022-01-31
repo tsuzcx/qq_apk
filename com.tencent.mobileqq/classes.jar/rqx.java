@@ -1,14 +1,28 @@
-class rqx
+import android.graphics.drawable.Drawable;
+
+public class rqx
+  implements Comparable<rqx>
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  public int a;
+  public Drawable a;
+  public String a;
   
-  public rqx(int paramInt1, int paramInt2, boolean paramBoolean)
+  public rqx(String paramString, int paramInt, Drawable paramDrawable)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+  }
+  
+  public int a(rqx paramrqx)
+  {
+    if (this.jdField_a_of_type_Int < paramrqx.jdField_a_of_type_Int) {
+      return -1;
+    }
+    if (this.jdField_a_of_type_Int > paramrqx.jdField_a_of_type_Int) {
+      return 1;
+    }
+    return 0;
   }
 }
 

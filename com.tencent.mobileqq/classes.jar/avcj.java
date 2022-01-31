@@ -1,10 +1,18 @@
-public class avcj
+import com.tencent.mobileqq.data.MessageForPtt;
+
+public abstract interface avcj
 {
-  public static final String a = ajjy.a(2131648332);
+  public abstract void a();
+  
+  public abstract boolean a(MessageForPtt paramMessageForPtt);
+  
+  public abstract boolean a(MessageForPtt paramMessageForPtt, int paramInt);
+  
+  public abstract boolean b(MessageForPtt paramMessageForPtt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avcj
  * JD-Core Version:    0.7.0.1
  */

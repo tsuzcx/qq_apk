@@ -1,35 +1,38 @@
-import com.tencent.mobileqq.armap.sensor.rotation.Vector3;
+import android.opengl.GLES20;
 
 public class aljy
+  extends alke
 {
-  public static float a(double paramDouble)
+  public int a;
+  public int b;
+  
+  public aljy(int paramInt)
   {
-    return (float)(paramDouble - Math.floor(paramDouble / 360.0D) * 360.0D);
+    super(paramInt);
+    this.e = "uniform float uA;\nuniform float uD;\n";
+    this.j = "    if(abs(gl_FragColor[0]-u_screenColor[0]) < uD && abs(gl_FragColor[1]-u_screenColor[1]) < uD  && abs(gl_FragColor[2]-u_screenColor[2]) < uD ){\n        gl_FragColor[3] = uA;\n        if(uA < 0.01){\n            gl_FragColor[0] = 0.0;\n            gl_FragColor[1] = 0.0;\n            gl_FragColor[2] = 0.0;\n        }\n    }\n";
   }
   
-  public static float a(float paramFloat1, float paramFloat2)
+  protected void a()
   {
-    return (float)Math.asin(paramFloat1 / (2.0F * paramFloat2));
+    this.a = GLES20.glGetUniformLocation(this.d, "uA");
+    alki.a("glGetAttribLocation uA");
+    this.b = GLES20.glGetUniformLocation(this.d, "uD");
+    alki.a("glGetAttribLocation uD");
   }
   
-  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
+  protected void a(alkh paramalkh)
   {
-    return (float)(paramFloat1 * paramFloat2 * paramFloat3 / Math.sqrt((paramFloat1 + paramFloat2 + paramFloat3) * (paramFloat1 - paramFloat2 + paramFloat3) * (paramFloat1 + paramFloat2 - paramFloat3) * (paramFloat2 + paramFloat3 - paramFloat1)));
-  }
-  
-  public static float a(Vector3 paramVector31, Vector3 paramVector32)
-  {
-    return (float)Math.sqrt((paramVector31.x - paramVector32.x) * (paramVector31.x - paramVector32.x) + (paramVector31.y - paramVector32.y) * (paramVector31.y - paramVector32.y) + (paramVector31.z - paramVector32.z) * (paramVector31.z - paramVector32.z));
-  }
-  
-  public static float b(float paramFloat1, float paramFloat2)
-  {
-    return (float)Math.asin(Math.min(1.0F, Math.max(-1.0F, paramFloat1 / (2.0F * paramFloat2))));
+    if (paramalkh == null) {
+      return;
+    }
+    GLES20.glUniform1f(this.a, paramalkh.d);
+    GLES20.glUniform1f(this.b, paramalkh.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aljy
  * JD-Core Version:    0.7.0.1
  */

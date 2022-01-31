@@ -1,22 +1,42 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class abqh
-  implements View.OnFocusChangeListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abqh(SelectedAndSearchBar paramSelectedAndSearchBar) {}
+  public abqh(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (SelectedAndSearchBar.a(this.a) != null) {
-      SelectedAndSearchBar.a(this.a).a(paramBoolean);
+    if (NotifyPushSettingActivity.a())
+    {
+      NotifyPushSettingActivity.b(this.a).setChecked(false);
+      NotifyPushSettingActivity.b(this.a).setVisibility(8);
+      if (!paramBoolean) {
+        break label113;
+      }
+    }
+    label113:
+    for (int i = 1;; i = 0)
+    {
+      axqw.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
+      return;
+      if (paramBoolean)
+      {
+        NotifyPushSettingActivity.b(this.a).setVisibility(0);
+        NotifyPushSettingActivity.b(this.a).setVisibility(8);
+        break;
+      }
+      NotifyPushSettingActivity.b(this.a).setVisibility(8);
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abqh
  * JD-Core Version:    0.7.0.1
  */

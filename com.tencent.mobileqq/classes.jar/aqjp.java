@@ -1,26 +1,17 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+
 public class aqjp
-  implements ajfe
+  implements CompoundButton.OnCheckedChangeListener
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  public aqjp(TempMsgSettingFragment paramTempMsgSettingFragment) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    case 2: 
-      b(paramBoolean, ((Boolean)paramObject).booleanValue());
-      return;
-    }
-    a(paramBoolean, ((Boolean)paramObject).booleanValue());
+    ((ases)this.a.a.getManager(303)).a((short)-23308, paramBoolean, true);
+    axqw.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 1, 1, "", "", "", "");
   }
 }
 

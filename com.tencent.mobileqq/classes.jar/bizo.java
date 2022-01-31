@@ -1,22 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.media.AudioManager;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class bizo
-  implements View.OnClickListener
+public class bizo
 {
-  bizo(bizm parambizm) {}
+  private AudioManager a;
   
-  public void onClick(View paramView)
+  public void a()
   {
-    urp.a("video_edit_new", "clk_cutdown", 0, 0, new String[0]);
-    if (!bizm.a(this.a).q)
-    {
-      bizm.b(this.a);
-      return;
+    this.a = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio"));
+    this.a.requestAudioFocus(null, 3, 2);
+  }
+  
+  public void b()
+  {
+    if (this.a != null) {
+      this.a.abandonAudioFocus(null);
     }
-    bizm.a(this.a).q = false;
-    bizm.b(this.a).setSelected(false);
-    bizm.a(this.a).d(3003);
   }
 }
 

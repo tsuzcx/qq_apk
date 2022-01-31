@@ -1,31 +1,20 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XListView;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimTipsInfo;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
 public class afxk
-  implements View.OnClickListener
 {
-  public afxk(ContactListView paramContactListView) {}
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public Object a;
+  public String a;
+  public TextView b;
+  public TextView c;
   
-  public void onClick(View paramView)
-  {
-    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006710", "0X8006710", 0, 0, "", "", "", "");
-    ContactListView.a(this.a).removeHeaderView(ContactListView.a(this.a));
-    ContactListView.a(this.a, null);
-    bflc.a(this.a.getContext(), QQPimGetTipsInfoIPC.a().a);
-    QQPimGetTipsInfoIPC.a().c();
-    paramView = ContactListView.a(this.a).getAccount();
-    Bundle localBundle = new Bundle();
-    localBundle.putString(bfkr.o, bfkr.j);
-    localBundle.putInt(bfkr.p, QQPimGetTipsInfoIPC.a().a.b);
-    localBundle.putString(bfkr.l, paramView);
-    new bfkx().a(ContactListView.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localBundle);
-  }
+  public afxk(afxi paramafxi) {}
 }
 
 

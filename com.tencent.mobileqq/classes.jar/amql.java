@@ -1,31 +1,71 @@
+import com.tencent.qphone.base.util.QLog;
+
 public class amql
 {
-  private static amqa jdField_a_of_type_Amqa;
-  private static boolean jdField_a_of_type_Boolean;
+  protected String a = "";
   
-  public static void a(amqm paramamqm)
+  public amql() {}
+  
+  public amql(String paramString)
   {
-    if (paramamqm != null) {
-      amrq.a(paramamqm);
+    if (paramString != null) {
+      this.a = paramString;
     }
   }
   
-  public static boolean a()
+  public amqm a()
   {
-    return (jdField_a_of_type_Boolean) && (b());
+    if ((this instanceof amqm)) {
+      return (amqm)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkAIDictConfBean object");
+    return null;
   }
   
-  private static boolean b()
+  public amqn a()
   {
-    if (jdField_a_of_type_Amqa != null) {
-      return jdField_a_of_type_Amqa.a();
+    if ((this instanceof amqn)) {
+      return (amqn)this;
     }
-    return true;
+    QLog.e("ArkConfBean", 1, "this object is not a ArkAIKeyWordConfBean object");
+    return null;
+  }
+  
+  public amqo a()
+  {
+    if ((this instanceof amqo)) {
+      return (amqo)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkAIKeyWordSDKShareConfBean object");
+    return null;
+  }
+  
+  public amqp a()
+  {
+    if ((this instanceof amqp)) {
+      return (amqp)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkMsgAIDisableConfBean object");
+    return null;
+  }
+  
+  public amqq a()
+  {
+    if ((this instanceof amqq)) {
+      return (amqq)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkPlatformConfigBean object");
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amql
  * JD-Core Version:    0.7.0.1
  */

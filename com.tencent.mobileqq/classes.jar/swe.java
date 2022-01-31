@@ -1,24 +1,22 @@
-import android.view.ViewGroup;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class swe
-  extends swc
 {
-  protected TextView c = (TextView)a(2131312820);
+  public int a;
+  public ErrorMessage a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public swe(ViewGroup paramViewGroup, int paramInt)
+  public swe()
   {
-    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage();
   }
   
-  public void a(ssm paramssm)
+  public String toString()
   {
-    if (paramssm.b > 99)
-    {
-      this.c.setText("99+");
-      return;
-    }
-    this.c.setText(String.valueOf(paramssm.b));
+    return "UploadResult{errorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", fileKey='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileId='" + this.b + '\'' + ", uploadServerIp='" + this.d + '\'' + ", mLastUploadOffset='" + this.jdField_a_of_type_Int + '\'' + ", cdnUrl='" + this.c + '\'' + '}';
   }
 }
 

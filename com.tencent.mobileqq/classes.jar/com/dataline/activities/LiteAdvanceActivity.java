@@ -1,10 +1,10 @@
 package com.dataline.activities;
 
-import aaek;
-import aciy;
-import ajed;
-import ajjy;
-import akeu;
+import aaoc;
+import actn;
+import ajsf;
+import ajyc;
+import aktg;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -16,16 +16,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import apbo;
-import apcb;
-import apck;
-import awrm;
-import begr;
-import behe;
-import ce;
-import cf;
-import cg;
-import ch;
+import apti;
+import aptv;
+import apue;
+import axrk;
+import bfol;
+import bfoy;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -35,7 +31,11 @@ import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.Switch;
-import dj;
+import dx;
+import dy;
+import dz;
+import ea;
+import fc;
 import mqq.app.MobileQQ;
 
 public class LiteAdvanceActivity
@@ -58,64 +58,64 @@ public class LiteAdvanceActivity
   
   public LiteAdvanceActivity()
   {
-    this.jdField_a_of_type_JavaLangString = ajed.z;
+    this.jdField_a_of_type_JavaLangString = ajsf.z;
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
   }
   
   private void a()
   {
-    setContentView(2131493371);
-    Object localObject1 = (ImageView)findViewById(2131302061);
-    Object localObject2 = (TextView)findViewById(2131302466);
-    TextView localTextView1 = (TextView)findViewById(2131299132);
-    TextView localTextView2 = (TextView)findViewById(2131305358);
-    TextView localTextView3 = (TextView)findViewById(2131305359);
+    setContentView(2131558932);
+    Object localObject1 = (ImageView)findViewById(2131367679);
+    Object localObject2 = (TextView)findViewById(2131368086);
+    TextView localTextView1 = (TextView)findViewById(2131364692);
+    TextView localTextView2 = (TextView)findViewById(2131371051);
+    TextView localTextView3 = (TextView)findViewById(2131371052);
     if (this.jdField_a_of_type_Int == 0)
     {
-      ((ImageView)localObject1).setBackgroundResource(2130843326);
-      ((TextView)localObject2).setText(2131628323);
-      localTextView1.setText(2131628275);
-      localTextView2.setText(2131628298);
-      localTextView3.setText(2131628299);
+      ((ImageView)localObject1).setBackgroundResource(2130843408);
+      ((TextView)localObject2).setText(2131693964);
+      localTextView1.setText(2131693916);
+      localTextView2.setText(2131693939);
+      localTextView3.setText(2131693940);
     }
     for (;;)
     {
-      setTitle(2131629854);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131313351);
+      setTitle(2131695535);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131379186);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131296577);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131362118);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidViewView = findViewById(2131298687);
+      this.jdField_c_of_type_AndroidViewView = findViewById(2131364245);
       this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131309274));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(apbo.a().b());
-      this.jdField_c_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131310655));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375018));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(apti.a().b());
+      this.jdField_c_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131376448));
       this.jdField_c_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_c_of_type_Boolean);
-      this.jdField_c_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new ce(this));
-      this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131310652));
+      this.jdField_c_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new dx(this));
+      this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131376445));
       this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new cf(this));
-      this.jdField_b_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131305635));
+      this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new dy(this));
+      this.jdField_b_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131371331));
       this.jdField_b_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_b_of_type_Boolean);
-      this.jdField_b_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new cg(this));
-      if (aaek.S)
+      this.jdField_b_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new dz(this));
+      if (aaoc.S)
       {
         localObject2 = this.leftView.getText().toString();
         localObject1 = localObject2;
-        if (!getString(2131624770).equals(localObject2)) {
-          localObject1 = ajjy.a(2131640400) + (String)localObject2 + ajjy.a(2131640401);
+        if (!getString(2131690331).equals(localObject2)) {
+          localObject1 = ajyc.a(2131706185) + (String)localObject2 + ajyc.a(2131706186);
         }
         this.leftView.setContentDescription((CharSequence)localObject1);
       }
       return;
       if (this.jdField_a_of_type_Int == 1)
       {
-        ((ImageView)localObject1).setBackgroundResource(2130843324);
-        ((TextView)localObject2).setText(2131628324);
-        localTextView1.setText(2131628276);
-        localTextView2.setText(2131628277);
-        localTextView3.setText(2131628278);
+        ((ImageView)localObject1).setBackgroundResource(2130843406);
+        ((TextView)localObject2).setText(2131693965);
+        localTextView1.setText(2131693917);
+        localTextView2.setText(2131693918);
+        localTextView3.setText(2131693919);
       }
     }
   }
@@ -152,7 +152,7 @@ public class LiteAdvanceActivity
       do
       {
         return bool2;
-        localObject = ((akeu)localObject).b(str, 6000);
+        localObject = ((aktg)localObject).b(str, 6000);
         if (localObject != null) {
           break;
         }
@@ -172,9 +172,9 @@ public class LiteAdvanceActivity
   
   private boolean a(boolean paramBoolean)
   {
-    akeu localakeu = this.app.a().a();
+    aktg localaktg = this.app.a().a();
     String str = this.jdField_a_of_type_JavaLangString;
-    if ((str == null) || (str.length() == 0) || (localakeu == null))
+    if ((str == null) || (str.length() == 0) || (localaktg == null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("IphoneTitleBarActivity", 2, "setChatAtTop params error, return false.");
@@ -184,7 +184,7 @@ public class LiteAdvanceActivity
     if (QLog.isColorLevel()) {
       QLog.d("IphoneTitleBarActivity", 2, "setChatAtTop top: " + paramBoolean + " uin: " + str + " userType: " + 6000);
     }
-    RecentUser localRecentUser2 = localakeu.b(str, 6000);
+    RecentUser localRecentUser2 = localaktg.b(str, 6000);
     RecentUser localRecentUser1 = localRecentUser2;
     if (localRecentUser2 == null) {
       localRecentUser1 = new RecentUser(str, 6000);
@@ -192,20 +192,20 @@ public class LiteAdvanceActivity
     if (paramBoolean) {}
     for (localRecentUser1.showUpTime = (System.currentTimeMillis() / 1000L);; localRecentUser1.showUpTime = 0L)
     {
-      localakeu.a(localRecentUser1);
+      localaktg.a(localRecentUser1);
       return true;
     }
   }
   
   private void b()
   {
-    String str = getString(2131628249);
-    begr localbegr = (begr)behe.a(this, null);
-    localbegr.a(str);
-    localbegr.a(getResources().getString(2131628254), 3);
-    localbegr.c(2131625035);
-    localbegr.a(new ch(this, localbegr));
-    localbegr.show();
+    String str = getString(2131693890);
+    bfol localbfol = (bfol)bfoy.a(this, null);
+    localbfol.a(str);
+    localbfol.a(getResources().getString(2131693895), 3);
+    localbfol.c(2131690596);
+    localbfol.a(new ea(this, localbfol));
+    localbfol.show();
   }
   
   private void b(boolean paramBoolean)
@@ -242,7 +242,7 @@ public class LiteAdvanceActivity
     while (localIntent == null)
     {
       return;
-      apcb.a(2131654437);
+      aptv.a(2131720332);
     }
     try
     {
@@ -279,29 +279,29 @@ public class LiteAdvanceActivity
   
   private void e()
   {
-    ajjy.a(2131640399);
-    if (apck.a(this, getString(2131628323))) {
-      this.app.getApp().getString(2131626628);
+    ajyc.a(2131706184);
+    if (apue.a(this, getString(2131693964))) {
+      this.app.getApp().getString(2131692214);
     }
     do
     {
       return;
       if (this.jdField_a_of_type_Int == 0)
       {
-        apck.a(this.app, this, "jump_shortcut_dataline", getString(2131628323), 2130843326);
-        dj.q(this.app);
+        apue.a(this.app, this, "jump_shortcut_dataline", getString(2131693964), 2130843408);
+        fc.q(this.app);
         return;
       }
     } while (this.jdField_a_of_type_Int != 1);
-    apck.a(this.app, this, "jump_shortcut_dataline", getString(2131628323), 2130843326);
-    dj.q(this.app);
+    apue.a(this.app, this, "jump_shortcut_dataline", getString(2131693964), 2130843408);
+    fc.q(this.app);
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if ((paramInt2 == -1) && (paramIntent != null) && (paramIntent.getExtras() != null))
     {
-      Intent localIntent = aciy.a(new Intent(this, SplashActivity.class), new int[] { 2 });
+      Intent localIntent = actn.a(new Intent(this, SplashActivity.class), new int[] { 2 });
       localIntent.putExtras(new Bundle(paramIntent.getExtras()));
       startActivity(localIntent);
       finish();
@@ -314,7 +314,7 @@ public class LiteAdvanceActivity
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("targetUin");
     if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() != 0)) {
-      if (this.jdField_a_of_type_JavaLangString.equals(ajed.A)) {
+      if (this.jdField_a_of_type_JavaLangString.equals(ajsf.A)) {
         this.jdField_a_of_type_Int = 1;
       }
     }
@@ -328,7 +328,7 @@ public class LiteAdvanceActivity
       this.jdField_a_of_type_Int = 0;
       continue;
       this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_JavaLangString = ajed.z;
+      this.jdField_a_of_type_JavaLangString = ajsf.z;
     }
   }
   
@@ -338,11 +338,11 @@ public class LiteAdvanceActivity
     {
     default: 
       return;
-    case 2131313351: 
-      awrm.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_ckviewrecvfile");
+    case 2131379186: 
+      axrk.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_ckviewrecvfile");
       c();
       return;
-    case 2131296577: 
+    case 2131362118: 
       e();
       return;
     }

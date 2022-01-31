@@ -1,110 +1,110 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.ac.ArticleComment.GetRecommendPubAccountResponse;
-import com.tencent.mobileqq.ac.ArticleComment.Record;
-import com.tencent.mobileqq.ac.ArticleComment.RetInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Handler;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
+import com.tencent.biz.now.NowVideoView;
+import com.tencent.biz.now.NowVideoView.2.1;
+import com.tencent.image.QQLiveDrawable.ErrorInfo;
+import com.tencent.image.QQLiveDrawable.OnStateListener;
+import com.tencent.image.QQLiveDrawable.QQLiveDrawableParams;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
 
-class ndp
-  implements BusinessObserver
+public class ndp
+  implements QQLiveDrawable.OnStateListener
 {
-  ndp(ndo paramndo, NewIntent paramNewIntent, QQAppInterface paramQQAppInterface, ndq paramndq) {}
+  public ndp(NowVideoView paramNowVideoView) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onStateChange(String paramString, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, int paramInt, Object paramObject)
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (!paramBoolean)
+    this.a.c = this.a.d;
+    this.a.d = paramInt;
+    paramString = this.a.jdField_a_of_type_AndroidWidgetImageView;
+    boolean bool = ndm.a().b;
+    if (paramInt == 3)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(ndo.b(this.jdField_a_of_type_Ndo), 2, "OnReceiveGetRecommendPubAccountResponse failed!");
-      }
-      ndo.a(this.jdField_a_of_type_Ndo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ndq);
-      return;
-    }
-    Object localObject;
-    try
-    {
-      localObject = new ArticleComment.GetRecommendPubAccountResponse();
-      ((ArticleComment.GetRecommendPubAccountResponse)localObject).mergeFrom(paramBundle.getByteArray("data"));
-      if (QLog.isColorLevel()) {
-        QLog.d(ndo.b(this.jdField_a_of_type_Ndo), 2, "OnReceiveGetRecommendPubAccountResponse->retCode:" + ((ArticleComment.GetRecommendPubAccountResponse)localObject).ret.ret_code.get() + ", title:" + ((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_title.get() + ", listSize:" + ((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_list.get().size());
-      }
-      if (!((ArticleComment.GetRecommendPubAccountResponse)localObject).ret.has())
+      if (this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation == null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(ndo.b(this.jdField_a_of_type_Ndo), 2, "OnReceiveGetRecommendPubAccountResponse failed!(no ret)");
-        }
-        ndo.a(this.jdField_a_of_type_Ndo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ndq);
-        return;
+        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation = new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F);
+        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setDuration(500L);
+        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setRepeatCount(-1);
+        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setRepeatMode(1);
+        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setStartTime(-1L);
+        paramQQLiveDrawableParams = new LinearInterpolator();
+        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setInterpolator(paramQQLiveDrawableParams);
       }
-    }
-    catch (Exception paramBundle)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(ndo.b(this.jdField_a_of_type_Ndo), 2, "OnReceiveGetRecommendPubAccountResponse exception:" + paramBundle);
-      }
-      ndo.a(this.jdField_a_of_type_Ndo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ndq);
-      return;
-    }
-    paramInt = ((ArticleComment.GetRecommendPubAccountResponse)localObject).ret.ret_code.get();
-    if (paramInt == -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(ndo.b(this.jdField_a_of_type_Ndo), 2, "OnReceiveGetRecommendPubAccountResponse forbidden!");
-      }
-      ndo.a(this.jdField_a_of_type_Ndo, true);
-      this.jdField_a_of_type_Ndq.a(new ArrayList(), null, true);
-      return;
-    }
-    ndo.a(this.jdField_a_of_type_Ndo, false);
-    if (((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_title.has()) {}
-    for (paramBundle = ((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_title.get().toStringUtf8();; paramBundle = "")
-    {
-      if ((paramInt == 0) && (!TextUtils.isEmpty(paramBundle)) && (((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_list.has()) && (((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_list.get().size() > 0))
+      if (paramString != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(ndo.b(this.jdField_a_of_type_Ndo), 2, "OnReceiveGetRecommendPubAccountResponse update cache!");
-        }
-        ndo.a(this.jdField_a_of_type_Ndo, paramBundle);
-        ndo.a(this.jdField_a_of_type_Ndo).clear();
-        paramBundle = ((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_list.get().iterator();
-        while (paramBundle.hasNext())
+        paramString.setVisibility(0);
+        paramString.setImageResource(2130842637);
+        paramString.clearAnimation();
+        this.a.jdField_a_of_type_AndroidOsHandler.post(new NowVideoView.2.1(this, paramString));
+      }
+    }
+    for (;;)
+    {
+      this.a.a(this.a.c, this.a.d);
+      return;
+      if (paramInt == 0)
+      {
+        if (paramString != null)
         {
-          localObject = (ArticleComment.Record)paramBundle.next();
-          ndo.a(this.jdField_a_of_type_Ndo).add(new nds(this.jdField_a_of_type_Ndo, ((ArticleComment.Record)localObject).puin.get().toStringUtf8(), ((ArticleComment.Record)localObject).name.get().toStringUtf8(), true));
+          paramString.clearAnimation();
+          paramString.setImageResource(2130842639);
+          paramString.setVisibility(0);
         }
-        ndo.a(this.jdField_a_of_type_Ndo, NetConnInfoCenter.getServerTimeMillis());
-        ndo.a(this.jdField_a_of_type_Ndo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
-      ndo.a(this.jdField_a_of_type_Ndo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ndq);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d(ndo.b(this.jdField_a_of_type_Ndo), 2, "OnReceiveGetRecommendPubAccountResponse update UI->title:" + ndo.a(this.jdField_a_of_type_Ndo) + ", cacheTime:" + ndo.a(this.jdField_a_of_type_Ndo) + ", isFobidden:" + ndo.a(this.jdField_a_of_type_Ndo) + ", recommendSize:" + ndo.a(this.jdField_a_of_type_Ndo).size());
-      paramBundle = ndo.a(this.jdField_a_of_type_Ndo).iterator();
-      while (paramBundle.hasNext())
+      else if (paramInt == 4)
       {
-        localObject = (nds)paramBundle.next();
-        QLog.d(ndo.b(this.jdField_a_of_type_Ndo), 2, ((nds)localObject).toString());
+        if ((paramString != null) && (!bool))
+        {
+          paramString.clearAnimation();
+          paramString.setImageResource(2130842639);
+          paramString.setVisibility(0);
+        }
       }
-      break;
+      else if (paramInt == 2)
+      {
+        if (paramString != null)
+        {
+          paramString.clearAnimation();
+          paramString.setVisibility(8);
+        }
+        this.a.e = 0;
+        this.a.f = 0;
+        this.a.a(1);
+      }
+      else if (paramInt == 5)
+      {
+        if (paramString != null)
+        {
+          paramString.clearAnimation();
+          paramString.setVisibility(0);
+          paramString.setImageResource(2130842635);
+        }
+        if (!bbev.g(this.a.getContext()))
+        {
+          bcpw.a(this.a.getContext(), 1, 2131694610, 0).b(NowVideoView.g);
+          return;
+        }
+        if (this.a.jdField_a_of_type_JavaUtilList.size() > 0)
+        {
+          this.a.jdField_a_of_type_JavaUtilList.remove(this.a.jdField_a_of_type_JavaUtilList.get(this.a.jdField_a_of_type_JavaUtilList.size() - 1));
+          this.a.jdField_a_of_type_Ndq.a();
+        }
+        if ((this.a.jdField_a_of_type_JavaUtilList.size() == 0) && ((paramObject instanceof QQLiveDrawable.ErrorInfo)))
+        {
+          paramString = (QQLiveDrawable.ErrorInfo)paramObject;
+          QLog.d("NowVideoView", 2, "ErrorInf = " + paramString.toString());
+        }
+      }
+      else if (paramInt != 1) {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ndp
  * JD-Core Version:    0.7.0.1
  */

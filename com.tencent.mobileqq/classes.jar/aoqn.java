@@ -1,72 +1,37 @@
-import android.support.annotation.NonNull;
-import com.tencent.commonsdk.util.HexUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 import com.tencent.qphone.base.util.QLog;
 
-public class aoqn
-  extends aoql
+class aoqn
+  implements View.OnClickListener
 {
-  final long jdField_a_of_type_Long;
-  final byte[] jdField_a_of_type_ArrayOfByte;
-  final byte[] b;
+  aoqn(aoqm paramaoqm, View paramView) {}
   
-  public aoqn(String paramString1, String paramString2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, long paramLong, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6)
+  public void onClick(View paramView)
   {
-    super(paramString1, paramString2, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte5;
-    this.b = paramArrayOfByte6;
-  }
-  
-  public boolean a()
-  {
-    if (!super.a()) {}
+    paramView = this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((paramView instanceof aopv))
+    {
+      paramView = (WeiYunFileInfo)((aopv)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+      if ((apeh.a(paramView.a)) && (QLog.isColorLevel())) {
+        QLog.d(QfileBaseCloudFileTabView.b, 2, "there is a bug ");
+      }
+      QfileBaseCloudFileTabView.b(this.jdField_a_of_type_Aoqm.a).a().a(paramView);
+      this.jdField_a_of_type_Aoqm.a.au_();
+    }
     do
     {
-      do
+      return;
+      if ((paramView instanceof aorb))
       {
-        do
-        {
-          return false;
-          if (this.jdField_a_of_type_Long != 0L) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mGroupCode is err");
-        return false;
-        if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length != 0)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBufUuid is err");
-      return false;
-      if ((this.b != null) && (this.b.length != 0)) {
+        paramView = (WeiYunFileInfo)((aorb)this.jdField_a_of_type_AndroidViewView.getTag()).a;
         break;
       }
     } while (!QLog.isColorLevel());
-    QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBufUploadKey is err");
-    return false;
-    return true;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append(super.toString()).append(" mGroupCode:").append(this.jdField_a_of_type_Long).append(" uuid:");
-    if (this.jdField_a_of_type_ArrayOfByte != null)
-    {
-      str = HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte);
-      localStringBuilder = localStringBuilder.append(str).append(" mBufUploadKey:");
-      if (this.b == null) {
-        break label88;
-      }
-    }
-    label88:
-    for (String str = HexUtil.bytes2HexStr(this.b);; str = "")
-    {
-      return str;
-      str = "";
-      break;
-    }
+    QLog.e(QfileBaseCloudFileTabView.b, 2, "unknow Object");
   }
 }
 

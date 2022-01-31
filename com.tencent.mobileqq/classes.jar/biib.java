@@ -1,17 +1,8 @@
-import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import java.io.File;
 
 public class biib
-  implements tsr
 {
-  public biib(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
-  
-  public boolean a(tso paramtso, int paramInt1, int paramInt2)
-  {
-    LocalVideoSelectActivity.a(this.a).a();
-    LocalVideoSelectActivity.a(this.a).a(true);
-    return true;
-  }
+  public static final String a = biid.f + File.separator + "camera_story_default_template.json";
 }
 
 

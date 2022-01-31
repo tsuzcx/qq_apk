@@ -1,25 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
 
-final class azid
-  implements DialogInterface.OnClickListener
+public class azid
+  implements URLDrawable.URLDrawableListener
 {
-  azid(long paramLong) {}
+  public azid(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, azif paramazif) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      TroopFileTransferManager.i();
-      continue;
-      TroopFileTransferManager.a(this.a);
-    }
+    this.jdField_a_of_type_Azif.a(null);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    this.jdField_a_of_type_Azif.a(null);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = bdhr.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
+    this.jdField_a_of_type_Azif.a(paramURLDrawable);
   }
 }
 

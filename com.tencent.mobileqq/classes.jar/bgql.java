@@ -1,10 +1,35 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.RemoteException;
+import cooperation.qqfav.ipc.QfavRemoteProxyForQQ.1;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class bgql
-  implements BusinessObserver
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  protected bgqi a;
+  public ConcurrentLinkedQueue<bgqn> a;
+  protected boolean a;
+  
+  private void a(bgqn parambgqn)
+  {
+    if ((this.a != null) && (parambgqn != null))
+    {
+      Looper localLooper = Looper.getMainLooper();
+      if (Thread.currentThread() != localLooper.getThread()) {
+        new Handler(localLooper).post(new QfavRemoteProxyForQQ.1(this, parambgqn));
+      }
+    }
+    else
+    {
+      return;
+    }
+    try
+    {
+      this.a.a(parambgqn.jdField_a_of_type_Int, parambgqn.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    catch (RemoteException parambgqn) {}
+  }
 }
 
 

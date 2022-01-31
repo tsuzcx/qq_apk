@@ -1,9 +1,8 @@
-public class rwg
+public abstract interface rwg
 {
-  public static String a()
-  {
-    return "";
-  }
+  public abstract void a();
+  
+  public abstract void a(long paramLong);
 }
 
 

@@ -1,23 +1,34 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.trooponline.widget.RoundTextView;
-
 public class azru
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public azrw a;
-  public RoundTextView a;
+  public int a;
+  public long a;
   public String a;
-  public StringBuilder a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public int d;
   
-  public azru(azrr paramazrr) {}
+  public azru(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, int paramInt4, long paramLong)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public String toString()
+  {
+    return String.format("{id: %d, uin: %s, troopUin: %s, createTime: %d, svipLevel: %d, svipType: %d, globalTroopLevel: %d, mode: %d}", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.c), Integer.valueOf(this.d), Long.valueOf(this.jdField_b_of_type_Long) });
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azru
  * JD-Core Version:    0.7.0.1
  */

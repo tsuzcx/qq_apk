@@ -1,48 +1,73 @@
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.HashMap;
 
-class mtm
-  implements mwd
+public abstract class mtm
 {
-  mtm(mtc parammtc) {}
-  
-  public void a(int paramInt)
+  public static long a(Intent paramIntent)
   {
-    float f;
-    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.getFirstVisiblePosition() == 0) && (this.a.b))
-    {
-      paramInt = -this.a.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailBaseAdapter", 2, "onEndScroll scrollY = " + paramInt + " ,isScrollUp = " + this.a.e);
-      }
-      f = 150.0F * this.a.jdField_a_of_type_Float;
-      if (paramInt != 0)
-      {
-        if (!this.a.e) {
-          break label127;
-        }
-        if (paramInt <= f) {
-          break label119;
-        }
-        this.a.d(paramInt);
-      }
+    return paramIntent.getLongExtra("log_seq", 0L);
+  }
+  
+  public static long a(Bundle paramBundle)
+  {
+    long l = 0L;
+    if (paramBundle != null) {
+      l = paramBundle.getLong("log_seq");
     }
-    return;
-    label119:
-    this.a.e();
-    return;
-    label127:
-    if (paramInt > this.a.o - f)
-    {
-      this.a.d(paramInt);
-      return;
+    return l;
+  }
+  
+  public static long a(ToServiceMsg paramToServiceMsg)
+  {
+    return a(paramToServiceMsg.getAttribute("log_seq"));
+  }
+  
+  public static long a(Object paramObject)
+  {
+    long l = 0L;
+    if ((paramObject instanceof Long)) {
+      l = ((Long)paramObject).longValue();
     }
-    this.a.e();
+    return l;
+  }
+  
+  public static long a(HashMap<String, Object> paramHashMap)
+  {
+    if ((paramHashMap != null) && (paramHashMap.containsKey("log_seq"))) {
+      return a(paramHashMap.get("log_seq"));
+    }
+    return 0L;
+  }
+  
+  public static long a(Object[] paramArrayOfObject, int paramInt)
+  {
+    long l = 0L;
+    if (paramArrayOfObject.length > paramInt) {
+      l = a(paramArrayOfObject[paramInt]);
+    }
+    return l;
+  }
+  
+  public static void a(Intent paramIntent, long paramLong)
+  {
+    paramIntent.putExtra("log_seq", paramLong);
+  }
+  
+  public static void a(Bundle paramBundle, long paramLong)
+  {
+    paramBundle.putLong("log_seq", paramLong);
+  }
+  
+  public static void a(HashMap<String, Object> paramHashMap, long paramLong)
+  {
+    paramHashMap.put("log_seq", Long.valueOf(paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mtm
  * JD-Core Version:    0.7.0.1
  */

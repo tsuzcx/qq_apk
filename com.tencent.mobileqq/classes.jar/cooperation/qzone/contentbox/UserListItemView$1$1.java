@@ -1,16 +1,16 @@
 package cooperation.qzone.contentbox;
 
 import android.widget.ImageView;
-import azwp;
+import baxt;
 
 class UserListItemView$1$1
   implements Runnable
 {
-  UserListItemView$1$1(UserListItemView.1 param1, azwp paramazwp) {}
+  UserListItemView$1$1(UserListItemView.1 param1, baxt parambaxt) {}
   
   public void run()
   {
-    UserListItemView.a(this.jdField_a_of_type_CooperationQzoneContentboxUserListItemView$1.this$0).setImageDrawable(this.jdField_a_of_type_Azwp);
+    UserListItemView.a(this.jdField_a_of_type_CooperationQzoneContentboxUserListItemView$1.this$0).setImageDrawable(this.jdField_a_of_type_Baxt);
   }
 }
 

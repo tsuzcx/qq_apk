@@ -1,63 +1,94 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
 
 public class aalh
-  implements CompoundButton.OnCheckedChangeListener
+  implements InputFilter
 {
-  public aalh(ChatSettingForTroop paramChatSettingForTroop) {}
+  private int jdField_a_of_type_Int = 32;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public aalh(AuthDevRenameActivity paramAuthDevRenameActivity) {}
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if (((Boolean)paramCompoundButton.getTag()).booleanValue()) {
-      paramCompoundButton.setTag(Boolean.FALSE);
-    }
-    label20:
-    int i;
-    do
+    int j = paramInt1;
+    int k = 0;
+    if (j < paramInt2)
     {
-      do
+      i = paramCharSequence.charAt(j);
+      if (i < 128) {
+        i = 1;
+      }
+      for (;;)
       {
-        break label20;
-        do
+        j += 1;
+        k += i;
+        break;
+        if (i < 2048) {
+          i = 2;
+        } else {
+          i = 3;
+        }
+      }
+    }
+    int n = paramSpanned.length();
+    int i = 0;
+    int m = 0;
+    if (m < n)
+    {
+      if ((m >= paramInt3) && (m < paramInt4)) {
+        break label272;
+      }
+      j = paramSpanned.charAt(m);
+      if (j < 128)
+      {
+        j = 1;
+        label127:
+        i = j + i;
+      }
+    }
+    label272:
+    for (;;)
+    {
+      m += 1;
+      break;
+      if (j < 2048)
+      {
+        j = 2;
+        break label127;
+      }
+      j = 3;
+      break label127;
+      i = this.jdField_a_of_type_Int - i;
+      if (i <= 0) {
+        return "";
+      }
+      if (i >= k) {
+        return null;
+      }
+      paramInt4 = paramInt1;
+      while (paramInt4 < paramInt2)
+      {
+        paramInt3 = paramCharSequence.charAt(paramInt4);
+        if (paramInt3 < 128) {
+          paramInt3 = 1;
+        }
+        for (;;)
         {
-          return;
-        } while (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null);
-        i = this.a.app.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      } while (i == -1);
-      if (!paramBoolean) {
-        break;
+          i -= paramInt3;
+          if (i >= 0) {
+            break;
+          }
+          return paramCharSequence.subSequence(paramInt1, paramInt4);
+          if (paramInt3 < 2048) {
+            paramInt3 = 2;
+          } else {
+            paramInt3 = 3;
+          }
+        }
+        paramInt4 += 1;
       }
-    } while (i != 1);
-    ChatSettingForTroop.a(this.a, 4);
-    label74:
-    if (ChatSettingForTroop.a(this.a) != null) {
-      ChatSettingForTroop.d(this.a);
-    }
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean)
-    {
-      paramCompoundButton = "msg_open";
-      label107:
-      awqx.b(localQQAppInterface, "dc00899", "Grp_msg", "", "Grp_data", paramCompoundButton, 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "", "", "");
-      if (!paramBoolean) {
-        break label209;
-      }
-    }
-    label209:
-    for (paramCompoundButton = "msg_open";; paramCompoundButton = "msg_close")
-    {
-      azzx.a("Grp_msg", "grpData_admin", paramCompoundButton, 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, azzx.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
-      return;
-      if (i == 1) {
-        break;
-      }
-      ChatSettingForTroop.a(this.a, 1);
-      break label74;
-      paramCompoundButton = "msg_close";
-      break label107;
+      return null;
     }
   }
 }

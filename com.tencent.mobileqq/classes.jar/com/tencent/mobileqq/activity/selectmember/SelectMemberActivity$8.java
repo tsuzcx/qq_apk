@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import awqx;
+import axqw;
 import com.tencent.mobileqq.app.QQAppInterface;
-import mje;
+import mud;
 
 class SelectMemberActivity$8
   implements Runnable
@@ -11,7 +11,7 @@ class SelectMemberActivity$8
   
   public void run()
   {
-    awqx.b(this.this$0.app, "dc00899", "invite_friend", "", "friend_list", this.a, 0, 0, this.this$0.c, mje.a(this.this$0.app, this.this$0.app.getCurrentAccountUin(), this.this$0.c) + "", "", "");
+    axqw.b(this.this$0.app, "dc00899", "invite_friend", "", "friend_list", this.a, 0, 0, this.this$0.c, mud.a(this.this$0.app, this.this$0.app.getCurrentAccountUin(), this.this$0.c) + "", "", "");
   }
 }
 

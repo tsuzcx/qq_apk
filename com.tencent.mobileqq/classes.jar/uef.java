@@ -1,34 +1,60 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
-class uef
-  implements soj
+public class uef
+  implements TVK_SDKMgr.OnLogListener
 {
-  uef(uec paramuec, CommentEntry paramCommentEntry, boolean paramBoolean) {}
+  public int a;
   
-  public void a(int paramInt, Bundle paramBundle)
+  public int d(String paramString1, String paramString2)
   {
-    a(-1, ajjy.a(2131648618));
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
   }
   
-  public void a(int paramInt, String paramString)
+  public int e(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
-    bbmy.a(BaseApplication.getContext(), 1, ajjy.a(2131648615), 0).a();
-    urk.e("Q.qqstory.detail.StoryDetailPresenter", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2);
+    }
+    return 0;
   }
   
-  public void a(MessageMicro paramMessageMicro)
+  public int i(String paramString1, String paramString2)
   {
-    if (!uec.a(this.jdField_a_of_type_Uec).get()) {
-      uec.a(this.jdField_a_of_type_Uec, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if ((paramString2 != null) && (paramString2.contains("INFO_TRY_AGAIN_LATER"))) {}
+    try
+    {
+      this.a = Integer.parseInt(paramString2.substring(paramString2.lastIndexOf("=") + 1));
+      label32:
+      if (QLog.isColorLevel()) {
+        QLog.w(paramString1, 2, paramString2);
+      }
+      return 0;
+    }
+    catch (Exception localException)
+    {
+      break label32;
     }
   }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

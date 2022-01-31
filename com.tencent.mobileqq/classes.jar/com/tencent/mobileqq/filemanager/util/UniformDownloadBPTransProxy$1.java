@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import apeh;
+import apwb;
 
 public class UniformDownloadBPTransProxy$1
   implements Runnable
 {
-  public UniformDownloadBPTransProxy$1(apeh paramapeh, UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity) {}
+  public UniformDownloadBPTransProxy$1(apwb paramapwb, UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity) {}
   
   public void run()
   {
     try
     {
-      apeh.a(this.this$0, this.a, null);
+      apwb.a(this.this$0, this.a, null);
       return;
     }
     catch (Exception localException)

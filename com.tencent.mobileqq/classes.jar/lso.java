@@ -1,100 +1,120 @@
 import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Interpolator;
 
 public class lso
-  implements View.OnClickListener
 {
-  public lso(EffectSettingUi paramEffectSettingUi) {}
+  private int jdField_a_of_type_Int;
+  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
+  private final lsp jdField_a_of_type_Lsp;
+  private final boolean jdField_a_of_type_Boolean;
+  private final lsp b;
   
-  public void onClick(View paramView)
+  public lso(Context paramContext)
   {
-    long l = AudioHelper.b();
-    int k = paramView.getId();
-    paramView = paramView.getTag(2131311036);
-    if ((paramView != null) && ((paramView instanceof Boolean))) {}
-    for (boolean bool = ((Boolean)paramView).booleanValue();; bool = false)
+    this(paramContext, null);
+  }
+  
+  public lso(Context paramContext, Interpolator paramInterpolator)
+  {
+    this(paramContext, paramInterpolator, true);
+  }
+  
+  public lso(Context paramContext, Interpolator paramInterpolator, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Lsp = new lsp();
+    this.b = new lsp();
+    lsp.a(paramContext);
+  }
+  
+  public final int a()
+  {
+    return lsp.a(this.jdField_a_of_type_Lsp);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Lsp.a();
+    this.b.a();
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Lsp.a(paramInt1, paramInt3, paramInt5);
+    this.b.a(paramInt2, paramInt4, paramInt5);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (!a()))
     {
-      int m = this.a.jdField_a_of_type_Int;
-      bool = this.a.a(l, k, bool);
-      int i;
-      int j;
-      if (k == 4)
+      float f1 = lsp.a(this.jdField_a_of_type_Lsp);
+      float f2 = lsp.a(this.b);
+      if ((Math.signum(paramInt3) == Math.signum(f1)) && (Math.signum(paramInt4) == Math.signum(f2)))
       {
-        i = 1;
-        j = i;
-        if (i != 0)
+        paramInt3 = (int)(f1 + paramInt3);
+        paramInt4 = (int)(paramInt4 + f2);
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = 1;
+      this.jdField_a_of_type_Lsp.a(paramInt1, paramInt3, paramInt5, paramInt6, paramInt9);
+      this.b.a(paramInt2, paramInt4, paramInt7, paramInt8, paramInt10);
+      return;
+    }
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    lsp.a(this.jdField_a_of_type_Lsp, lsp.a(this.b, paramBoolean));
+  }
+  
+  public final boolean a()
+  {
+    return (lsp.a(this.jdField_a_of_type_Lsp)) && (lsp.a(this.b));
+  }
+  
+  public final int b()
+  {
+    return lsp.b(this.jdField_a_of_type_Lsp);
+  }
+  
+  public boolean b()
+  {
+    if (a()) {
+      return false;
+    }
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      long l = AnimationUtils.currentAnimationTimeMillis() - lsp.a(this.jdField_a_of_type_Lsp);
+      int i = lsp.c(this.jdField_a_of_type_Lsp);
+      if (l < i)
+      {
+        float f = (float)l / i;
+        if (this.jdField_a_of_type_AndroidViewAnimationInterpolator == null) {}
+        for (f = lsq.a(f);; f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f))
         {
-          paramView = ((AVActivity)this.a.getContext()).a;
-          if ((paramView != null) && ((paramView == null) || (paramView.getVisibility() != 8))) {
-            break label321;
-          }
-          j = 1;
-        }
-        label109:
-        if ((bool) && ((m != k) || (j != 0))) {
-          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(6105), Integer.valueOf(k), Long.valueOf(l) });
-        }
-        if (bool)
-        {
-          paramView = VideoController.a().a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get());
-          if (paramView != null)
-          {
-            if (QLog.isDevelopLevel()) {
-              QLog.d("EffectSettingUi", 1, "onShow clear state");
-            }
-            paramView.b(k);
-          }
-        }
-        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(165), Integer.valueOf(1) });
-        if (m != k)
-        {
-          if (k != 1) {
-            break label326;
-          }
-          lqz.b((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().C, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d, this.a.a(), bool);
+          this.jdField_a_of_type_Lsp.a(f);
+          this.b.a(f);
+          break;
         }
       }
-      label321:
-      label326:
-      label372:
-      do
-      {
-        do
-        {
-          return;
-          i = 0;
-          break;
-          j = 0;
-          break label109;
-          if (k != 2) {
-            break label372;
-          }
-          lqz.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.a.a(), bool);
-        } while (this.a.jdField_a_of_type_Lsl == null);
-        this.a.jdField_a_of_type_Lsl.a();
-        return;
-        if (k == 4)
-        {
-          lqz.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().C, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d, this.a.a(), bool);
-          return;
-        }
-        if (k == 3)
-        {
-          lqz.a(this.a.a(), bool);
-          return;
-        }
-      } while (k != 5);
-      mga.f();
-      return;
+      a();
+      continue;
+      if ((!lsp.a(this.jdField_a_of_type_Lsp)) && (!this.jdField_a_of_type_Lsp.b()) && (!this.jdField_a_of_type_Lsp.a())) {
+        this.jdField_a_of_type_Lsp.a();
+      }
+      if ((!lsp.a(this.b)) && (!this.b.b()) && (!this.b.a())) {
+        this.b.a();
+      }
     }
   }
 }

@@ -1,78 +1,61 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.HotFriendResData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amzd
-  extends amza
+  extends amyi<amzc>
 {
-  public amzd(QQAppInterface paramQQAppInterface)
-  {
-    super("qq.android.hotfriend.res", paramQQAppInterface);
-  }
-  
   public int a()
   {
-    return 10042;
+    return 465;
   }
   
-  public Class<? extends XmlData> a()
-  {
-    return HotFriendResData.class;
-  }
-  
-  public String a()
-  {
-    return "HotFriendResHandler";
-  }
-  
-  public void a(String paramString)
+  @NonNull
+  public amzc a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess:" + paramString);
+      QLog.d("QVipExtendIconProcessor", 2, "migrateDefaultContent");
     }
-    if (!new File(paramString).exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess sorse not exists");
-      }
-      return;
-    }
+    return new amzc();
+  }
+  
+  @NonNull
+  public amzc a(@NonNull ampi[] paramArrayOfampi)
+  {
+    amzc localamzc = new amzc();
     try
     {
-      String str = ascd.a();
+      localamzc.a = new JSONObject(paramArrayOfampi[0].a).optBoolean("showVipIcon", false);
       if (QLog.isColorLevel()) {
-        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess imagePath=" + str);
+        QLog.d("QVipExtendIconProcessor", 2, "parsed showVipIcon: " + localamzc.a);
       }
-      if (!TextUtils.isEmpty(str)) {
-        bace.a(paramString, str, false);
-      }
+      return localamzc;
     }
-    catch (Exception localException)
+    catch (JSONException paramArrayOfampi)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      QLog.e("QVipExtendIconProcessor", 1, "parsed failed: ", paramArrayOfampi);
     }
-    super.a(paramString);
+    return localamzc;
   }
   
-  public boolean a()
+  public Class<amzc> a()
   {
-    return true;
+    return amzc.class;
   }
   
-  public String b()
+  @NonNull
+  public amzc b()
   {
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("QVipExtendIconProcessor", 2, "migrateOldContent");
+    }
+    return new amzc();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amzd
  * JD-Core Version:    0.7.0.1
  */

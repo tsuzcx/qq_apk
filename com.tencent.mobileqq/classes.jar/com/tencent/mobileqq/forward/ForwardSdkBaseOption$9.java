@@ -3,10 +3,11 @@ package com.tencent.mobileqq.forward;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aphd;
-import apld;
-import atqs;
-import bcad;
+import aqaq;
+import aqeq;
+import aqgh;
+import auoq;
+import bded;
 import com.tencent.mobileqq.activity.photo.ImageInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pic.CompressInfo;
@@ -16,12 +17,12 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
-import mpl;
+import nam;
 
 public class ForwardSdkBaseOption$9
   implements Runnable
 {
-  public ForwardSdkBaseOption$9(apld paramapld) {}
+  public ForwardSdkBaseOption$9(aqeq paramaqeq) {}
   
   public void run()
   {
@@ -31,7 +32,7 @@ public class ForwardSdkBaseOption$9
     int i = 0;
     for (;;)
     {
-      if ((i >= 3) || ((this.this$0.m) && (this.this$0.jdField_a_of_type_Aphd != null)))
+      if ((i >= 3) || ((this.this$0.m) && (this.this$0.jdField_a_of_type_Aqaq != null)))
       {
         if ((this.this$0.b != 65520L) && (!this.this$0.d())) {
           this.this$0.J();
@@ -67,19 +68,19 @@ public class ForwardSdkBaseOption$9
       this.this$0.J();
       return;
     }
-    if (this.this$0.jdField_a_of_type_Aphd != null)
+    if (this.this$0.jdField_a_of_type_Aqaq != null)
     {
-      if ((this.this$0.jdField_a_of_type_Aphd.b() != null) && (this.this$0.b != Long.parseLong("1103584836"))) {
-        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_url", this.this$0.jdField_a_of_type_Aphd.b());
+      if ((this.this$0.jdField_a_of_type_Aqaq.b() != null) && (this.this$0.b != Long.parseLong("1103584836"))) {
+        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_url", this.this$0.jdField_a_of_type_Aqaq.b());
       }
-      if (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_Aphd.a())) {
-        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_icon", this.this$0.jdField_a_of_type_Aphd.a());
+      if (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_Aqaq.a())) {
+        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_icon", this.this$0.jdField_a_of_type_Aqaq.a());
       }
-      if (this.this$0.jdField_a_of_type_Aphd.c() != null) {
-        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_name", this.this$0.jdField_a_of_type_Aphd.c());
+      if (this.this$0.jdField_a_of_type_Aqaq.c() != null) {
+        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_name", this.this$0.jdField_a_of_type_Aqaq.c());
       }
-      if (this.this$0.jdField_a_of_type_Aphd.d() != null) {
-        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_a_action_data", this.this$0.jdField_a_of_type_Aphd.d());
+      if (this.this$0.jdField_a_of_type_Aqaq.d() != null) {
+        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_a_action_data", this.this$0.jdField_a_of_type_Aqaq.d());
       }
     }
     String str1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
@@ -105,7 +106,7 @@ public class ForwardSdkBaseOption$9
     if (localObject2 == null)
     {
       localObject2 = new CompressInfo((String)localObject1, 0);
-      atqs.b((CompressInfo)localObject2);
+      auoq.b((CompressInfo)localObject2);
       if (((CompressInfo)localObject2).jdField_e_of_type_JavaLangString != null)
       {
         this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("struct_share_key_thumb_height", ((CompressInfo)localObject2).jdField_e_of_type_Int);
@@ -123,21 +124,26 @@ public class ForwardSdkBaseOption$9
       ((Bundle)localObject2).putString("act_type", "52");
       ((Bundle)localObject2).putString("intext_3", "0");
       ((Bundle)localObject2).putString("stringext_1", str2);
-      bcad.a().a((Bundle)localObject2, "", str1, false);
-      localObject2 = mpl.a(BaseApplication.getContext(), str1, this.this$0.k, 1, (HashMap)localObject3, (Bundle)localObject1);
+      bded.a().a((Bundle)localObject2, "", str1, false);
+      aqgh.a("batch_url_exchange");
+      localObject2 = nam.a(BaseApplication.getContext(), str1, this.this$0.k, 1, (HashMap)localObject3, (Bundle)localObject1);
+      localObject3 = new HashMap();
+      ((HashMap)localObject3).put("param_ret_code", Integer.toString(((Bundle)localObject1).getInt("retcode", -1)));
+      aqgh.a("batch_url_exchange", str1, (HashMap)localObject3, ((Bundle)localObject1).getBoolean("isSuccess"));
       l = System.currentTimeMillis() - l;
       if ((localObject2 == null) || (((HashMap)localObject2).size() <= 0) || (!((String)((HashMap)localObject2).get(((HashMap)localObject2).keySet().iterator().next())).contains("url.cn"))) {
-        break label1285;
+        break label1339;
       }
     }
-    label1285:
+    label1328:
+    label1339:
     for (i = 0;; i = 1)
     {
       if (QLog.isColorLevel())
       {
         localObject3 = "batchUrlExchange for IMAGE_SHARE, isFailed = " + i + ", cost = " + l;
         if ((i != 1) && (l <= 3000L)) {
-          break label1274;
+          break label1328;
         }
         QLog.e("ForwardOption.ForwardSdkBaseOption", 2, (String)localObject3);
       }
@@ -153,7 +159,7 @@ public class ForwardSdkBaseOption$9
         if (i == 1) {
           ((Bundle)localObject3).putString("stringext_1", str2);
         }
-        bcad.a().a((Bundle)localObject3, "", str1, false);
+        bded.a().a((Bundle)localObject3, "", str1, false);
         if (localObject2 != null)
         {
           if (((HashMap)localObject2).containsKey("imageUrl"))
@@ -178,7 +184,6 @@ public class ForwardSdkBaseOption$9
         return;
         localObject1 = localObject2;
         break;
-        label1274:
         QLog.d("ForwardOption.ForwardSdkBaseOption", 2, (String)localObject3);
       }
     }

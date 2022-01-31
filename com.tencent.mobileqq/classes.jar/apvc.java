@@ -1,22 +1,33 @@
-import android.app.Activity;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.Comparator;
 
-class apvc
-  implements EIPCResultCallback
+public class apvc
+  implements Comparator<FileInfo>
 {
-  apvc(apvb paramapvb) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    if (-102 == paramEIPCResult.code) {
-      this.a.a.a.finish();
+    if (paramFileInfo1.c()) {
+      if (paramFileInfo2.c()) {
+        break label25;
+      }
     }
+    label25:
+    while (paramFileInfo1.b() > paramFileInfo2.b())
+    {
+      return -1;
+      if (paramFileInfo2.c()) {
+        return 1;
+      }
+    }
+    if (paramFileInfo1.b() == paramFileInfo2.b()) {
+      return 0;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apvc
  * JD-Core Version:    0.7.0.1
  */

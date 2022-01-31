@@ -1,27 +1,19 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import android.view.View;
+import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
 
 public class awfc
-  implements INetInfoHandler
+  extends awey
 {
-  public awfc(ShortVideoResourceManager paramShortVideoResourceManager) {}
-  
-  public void onNetMobile2None()
+  public awfc(CommentsView paramCommentsView, int paramInt, String paramString)
   {
-    ShortVideoResourceManager.a(this.a);
+    super(paramInt);
   }
   
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
+  public void onClick(View paramView)
   {
-    ShortVideoResourceManager.a(this.a);
+    if (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null) {
+      CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

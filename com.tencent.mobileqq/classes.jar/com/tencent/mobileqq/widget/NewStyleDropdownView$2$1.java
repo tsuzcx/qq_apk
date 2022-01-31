@@ -2,25 +2,25 @@ package com.tencent.mobileqq.widget;
 
 import android.view.View;
 import android.widget.ImageView;
-import bbkh;
-import bbkj;
+import bcnf;
+import bcnh;
 import com.tencent.qphone.base.util.QLog;
 
 public class NewStyleDropdownView$2$1
   implements Runnable
 {
-  public NewStyleDropdownView$2$1(bbkh parambbkh, View paramView) {}
+  public NewStyleDropdownView$2$1(bcnf parambcnf, View paramView) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("NewStyleDropdownView", 2, "arrow clicked and postDelayed 250 run, set icon up and isLastDropDown true");
     }
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Bbkh.a.b);
-    if (this.jdField_a_of_type_Bbkh.a.jdField_a_of_type_Bbkj != null) {
-      this.jdField_a_of_type_Bbkh.a.jdField_a_of_type_Bbkj.b();
+    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Bcnf.a.b);
+    if (this.jdField_a_of_type_Bcnf.a.jdField_a_of_type_Bcnh != null) {
+      this.jdField_a_of_type_Bcnf.a.jdField_a_of_type_Bcnh.b();
     }
-    this.jdField_a_of_type_Bbkh.a.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Bcnf.a.jdField_a_of_type_Boolean = true;
   }
 }
 

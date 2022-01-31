@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar.model;
 
-import akwn;
+import alkz;
 
 public class QQARSession$1
   implements Runnable
 {
-  public QQARSession$1(akwn paramakwn) {}
+  public QQARSession$1(alkz paramalkz) {}
   
   public void run()
   {

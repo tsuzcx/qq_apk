@@ -1,14 +1,14 @@
 package com.android.internal.telephony;
 
+import al;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import z;
 
 public class SmsRawData
   implements Parcelable
 {
-  public static final Parcelable.Creator<SmsRawData> CREATOR = new z();
+  public static final Parcelable.Creator<SmsRawData> CREATOR = new al();
   byte[] a;
   
   public SmsRawData(byte[] paramArrayOfByte)

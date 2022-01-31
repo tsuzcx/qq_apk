@@ -1,15 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class axmx
-  implements DialogInterface.OnClickListener
+public abstract interface axmx
 {
-  axmx(axmt paramaxmt) {}
+  public abstract void a(axna paramaxna, axne paramaxne);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(String paramString);
+  
+  public abstract boolean a(String paramString);
 }
 
 

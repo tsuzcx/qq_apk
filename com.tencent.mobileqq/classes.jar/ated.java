@@ -1,19 +1,10 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ated
-  implements atgq
+final class ated
+  implements DialogInterface.OnClickListener
 {
-  public ated(OCRResultActivity paramOCRResultActivity) {}
-  
-  public void a(int paramInt, atgr paramatgr)
-  {
-    if ((paramatgr != null) && (!TextUtils.isEmpty(OCRResultActivity.c(this.a))) && (!OCRResultActivity.c(this.a).equals(paramatgr.b)))
-    {
-      OCRResultActivity.c(this.a, paramatgr.b);
-      OCRResultActivity.a(this.a, false);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

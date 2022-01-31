@@ -1,40 +1,44 @@
+import com.tencent.mobileqq.location.data.LocationRoom;
+import com.tencent.mobileqq.location.window.FloatMapWidget;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
+import java.util.List;
 
-class aryz
-  extends atqo
+public class aryz
+  implements TencentMap.OnMapLoadedCallback
 {
-  aryz(aryq paramaryq, String paramString, aryl paramaryl) {}
+  public aryz(FloatMapWidget paramFloatMapWidget) {}
   
-  public void a(int paramInt, atpw paramatpw)
+  public void onMapLoaded()
   {
+    Object localObject = FloatMapWidget.a(this.a).a();
     if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadPic key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt);
+      QLog.d("FloatMapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. selfItem: ", ((arui)localObject).a() });
     }
-    int j = 0;
-    String str2 = "";
-    String str1 = str2;
-    int i = j;
-    if (paramatpw != null)
+    if (((arui)localObject).a() != null)
     {
-      str1 = str2;
-      i = j;
-      if (paramatpw.a != null)
-      {
-        i = paramatpw.a.a;
-        str1 = paramatpw.a.b;
+      localObject = FloatMapWidget.b(this.a).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("FloatMapWidget", 2, new Object[] { "onMapLoaded: invoked. ", " venue: ", localObject });
       }
+      if ((FloatMapWidget.c(this.a).d().size() != 1) || (localObject != null)) {
+        break label136;
+      }
+      this.a.a(false, null);
     }
-    aryq.a(this.jdField_a_of_type_Aryq, this.jdField_a_of_type_Aryl, paramInt, i, str1);
-  }
-  
-  public void a_(int paramInt, boolean paramBoolean)
-  {
-    aryq.a(this.jdField_a_of_type_Aryq, this.jdField_a_of_type_Aryl, paramInt);
+    for (;;)
+    {
+      FloatMapWidget.a(this.a, true);
+      FloatMapWidget.a(this.a);
+      return;
+      label136:
+      this.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aryz
  * JD-Core Version:    0.7.0.1
  */

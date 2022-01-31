@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark.API;
 
-import alcd;
+import alqr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.data.TroopInfo;
 public class TroopArkHelper$3
   implements Runnable
 {
-  public TroopArkHelper$3(alcd paramalcd, TroopInfo paramTroopInfo) {}
+  public TroopArkHelper$3(alqr paramalqr, TroopInfo paramTroopInfo) {}
   
   public void run()
   {

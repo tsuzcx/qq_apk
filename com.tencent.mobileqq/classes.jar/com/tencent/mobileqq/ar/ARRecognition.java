@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar;
 
-import akkq;
-import akkr;
-import akks;
-import akkt;
-import akrn;
-import akrs;
-import akru;
-import aksc;
-import akse;
-import aksk;
-import aktj;
+import akzc;
+import akzd;
+import akze;
+import akzf;
+import alfz;
+import alge;
+import algg;
+import algo;
+import algq;
+import algw;
+import alhv;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -22,7 +22,7 @@ import java.util.List;
 public class ARRecognition
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARRecognition> CREATOR = new akkq();
+  public static final Parcelable.Creator<ARRecognition> CREATOR = new akzc();
   public int a;
   public long a;
   public int b;
@@ -82,51 +82,51 @@ public class ARRecognition
     return l2;
   }
   
-  public static akkt a(ArrayList<ARRecognition> paramArrayList, aksc paramaksc)
+  public static akzf a(ArrayList<ARRecognition> paramArrayList, algo paramalgo)
   {
-    akkt localakkt = new akkt(0L, false);
+    akzf localakzf = new akzf(0L, false);
     if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-      return localakkt;
+      return localakzf;
     }
-    boolean bool1 = akrn.a(paramaksc.jdField_a_of_type_Akrn);
-    boolean bool2 = akrs.a(paramaksc.jdField_a_of_type_Akrs);
-    boolean bool3 = akse.a(paramaksc.jdField_a_of_type_Akse);
-    boolean bool4 = aktj.a(paramaksc.jdField_a_of_type_Aktj);
-    boolean bool5 = aksk.a(paramaksc.jdField_a_of_type_Aksk);
+    boolean bool1 = alfz.a(paramalgo.jdField_a_of_type_Alfz);
+    boolean bool2 = alge.a(paramalgo.jdField_a_of_type_Alge);
+    boolean bool3 = algq.a(paramalgo.jdField_a_of_type_Algq);
+    boolean bool4 = alhv.a(paramalgo.jdField_a_of_type_Alhv);
+    boolean bool5 = algw.a(paramalgo.jdField_a_of_type_Algw);
     if ((!bool1) && (!bool2) && (!bool3) && (!bool4) && (!bool5)) {
-      return localakkt;
+      return localakzf;
     }
-    paramaksc = new ArrayList();
+    paramalgo = new ArrayList();
     if (bool1) {
-      paramaksc.add(new akks(1L, a(paramArrayList, 1L)));
+      paramalgo.add(new akze(1L, a(paramArrayList, 1L)));
     }
     if (bool3) {
-      paramaksc.add(new akks(4L, a(paramArrayList, 4L)));
+      paramalgo.add(new akze(4L, a(paramArrayList, 4L)));
     }
     if (bool2) {
-      paramaksc.add(new akks(2L, a(paramArrayList, 2L)));
+      paramalgo.add(new akze(2L, a(paramArrayList, 2L)));
     }
     if (bool4) {
-      paramaksc.add(new akks(128L, a(paramArrayList, 128L)));
+      paramalgo.add(new akze(128L, a(paramArrayList, 128L)));
     }
     if (bool5) {
-      paramaksc.add(new akks(2048L, a(paramArrayList, 2048L)));
+      paramalgo.add(new akze(2048L, a(paramArrayList, 2048L)));
     }
     paramArrayList = new StringBuilder();
     int i = 0;
-    while (i < paramaksc.size())
+    while (i < paramalgo.size())
     {
-      paramArrayList.append("(index:").append(i).append(",prority=" + ((akks)paramaksc.get(i)).jdField_a_of_type_Long + ")\n");
+      paramArrayList.append("(index:").append(i).append(",prority=" + ((akze)paramalgo.get(i)).jdField_a_of_type_Long + ")\n");
       i += 1;
     }
     QLog.i("AREngine_CommonConfigInfo", 1, "getCurrentPriorityHighestResult print result " + paramArrayList.toString());
-    Collections.sort(paramaksc, new akkr());
-    localakkt.jdField_a_of_type_Long = ((akks)paramaksc.get(0)).jdField_a_of_type_Long;
-    if (paramaksc.size() == 1) {}
+    Collections.sort(paramalgo, new akzd());
+    localakzf.jdField_a_of_type_Long = ((akze)paramalgo.get(0)).jdField_a_of_type_Long;
+    if (paramalgo.size() == 1) {}
     for (bool1 = true;; bool1 = false)
     {
-      localakkt.jdField_a_of_type_Boolean = bool1;
-      return localakkt;
+      localakzf.jdField_a_of_type_Boolean = bool1;
+      return localakzf;
     }
   }
   
@@ -178,34 +178,34 @@ public class ARRecognition
     return false;
   }
   
-  public static boolean a(aksc paramaksc, long paramLong)
+  public static boolean a(algo paramalgo, long paramLong)
   {
-    if (paramaksc == null) {}
+    if (paramalgo == null) {}
     do
     {
       return false;
       if (paramLong == 1L) {
-        return akrn.a(paramaksc.jdField_a_of_type_Akrn);
+        return alfz.a(paramalgo.jdField_a_of_type_Alfz);
       }
       if (paramLong == 2L) {
-        return akrs.a(paramaksc.jdField_a_of_type_Akrs);
+        return alge.a(paramalgo.jdField_a_of_type_Alge);
       }
       if (paramLong == 128L) {
-        return aktj.a(paramaksc.jdField_a_of_type_Aktj);
+        return alhv.a(paramalgo.jdField_a_of_type_Alhv);
       }
       if (paramLong == 4L) {
-        return akse.a(paramaksc.jdField_a_of_type_Akse);
+        return algq.a(paramalgo.jdField_a_of_type_Algq);
       }
       if (paramLong == 64L) {
-        return akru.a(paramaksc.jdField_a_of_type_Akru);
+        return algg.a(paramalgo.jdField_a_of_type_Algg);
       }
     } while (paramLong != 2048L);
-    return aksk.a(paramaksc.jdField_a_of_type_Aksk);
+    return algw.a(paramalgo.jdField_a_of_type_Algw);
   }
   
-  public static boolean a(aksc paramaksc, ArrayList<ARRecognition> paramArrayList, long paramLong)
+  public static boolean a(algo paramalgo, ArrayList<ARRecognition> paramArrayList, long paramLong)
   {
-    if ((paramaksc == null) || (paramArrayList == null) || (!a(paramaksc, paramLong))) {
+    if ((paramalgo == null) || (paramArrayList == null) || (!a(paramalgo, paramLong))) {
       return false;
     }
     int j = a(paramArrayList, paramLong);
@@ -217,7 +217,7 @@ public class ARRecognition
       }
       long l = 1 << (int)((ARRecognition)paramArrayList.get(i)).jdField_a_of_type_Long;
       int k = ((ARRecognition)paramArrayList.get(i)).c;
-      if ((paramLong != l) && (a(paramaksc, l)) && (!a(paramLong, l, j, k))) {
+      if ((paramLong != l) && (a(paramalgo, l)) && (!a(paramLong, l, j, k))) {
         break;
       }
       i += 1;

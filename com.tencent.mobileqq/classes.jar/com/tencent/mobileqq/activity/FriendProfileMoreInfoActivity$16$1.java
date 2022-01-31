@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aawu;
+import abgr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
@@ -9,11 +9,11 @@ import mqq.os.MqqHandler;
 public class FriendProfileMoreInfoActivity$16$1
   implements Runnable
 {
-  public FriendProfileMoreInfoActivity$16$1(aawu paramaawu, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4) {}
+  public FriendProfileMoreInfoActivity$16$1(abgr paramabgr, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4) {}
   
   public void run()
   {
-    ((TroopManager)this.jdField_a_of_type_Aawu.a.app.getManager(52)).a(this.jdField_a_of_type_Aawu.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.c, this.d);
+    ((TroopManager)this.jdField_a_of_type_Abgr.a.app.getManager(52)).a(this.jdField_a_of_type_Abgr.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.c, this.d);
     ThreadManager.getUIHandler().post(new FriendProfileMoreInfoActivity.16.1.1(this));
   }
 }

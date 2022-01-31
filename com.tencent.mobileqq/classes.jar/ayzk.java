@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
 
-public abstract interface ayzk
+public class ayzk
+  extends ayzp
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void a(WordInfo paramWordInfo);
-  
-  public abstract void g();
+  public mobileqq_mp.RetInfo a;
+  public String a;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayzk
  * JD-Core Version:    0.7.0.1
  */

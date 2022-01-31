@@ -1,43 +1,77 @@
-import android.os.SystemClock;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.qqstory.database.VideoUrlEntry;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCollectionVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoFullInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoUrl;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class tod
-  implements AbsListView.OnScrollListener
+public class tod
+  extends syq
 {
-  tod(tob paramtob) {}
+  public String a;
+  public List<StoryVideoItem> a;
+  public boolean a;
+  public int b;
+  public List<List<VideoUrlEntry>> b;
+  public String c;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public tod(String paramString, qqstory_service.RspGetCollectionVideoList paramRspGetCollectionVideoList)
   {
-    if (SystemClock.uptimeMillis() - tob.a(this.a) < 500L) {}
-    int i;
-    do
+    super(paramRspGetCollectionVideoList.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramRspGetCollectionVideoList.is_end.get() == 1)
     {
-      do
-      {
-        return;
-        tob.a(this.a, SystemClock.uptimeMillis());
-      } while (!(this.a.jdField_a_of_type_Tjs instanceof tkg));
-      i = paramInt1 + paramInt2;
-      ((tkg)this.a.jdField_a_of_type_Tjs).a = i;
-    } while ((paramInt3 <= 0) || (paramInt3 - paramInt1 - paramInt2 >= 10));
-    this.a.jdField_a_of_type_Tmp.a();
-    urk.a("VideoCoverListGroupHolder", "onScroll mStartRequestDataRunnable mShowPosition=%d totalItemCount=%d, groupId=%s", Integer.valueOf(i), Integer.valueOf(paramInt3), this.a.jdField_a_of_type_Tjs.toString());
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt == 0) {
-      tob.a(this.a, false);
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_b_of_type_Int = paramRspGetCollectionVideoList.interact_status.get();
+      this.c = paramRspGetCollectionVideoList.next_cookie.get().toStringUtf8();
+      paramString = paramRspGetCollectionVideoList.full_video_info_list.get().iterator();
     }
     for (;;)
     {
-      if ((paramInt == 0) && (tob.a(this.a))) {
-        this.a.d();
+      if (!paramString.hasNext()) {
+        return;
       }
-      return;
-      tob.a(this.a, true);
+      Object localObject1 = (qqstory_struct.StoryVideoFullInfo)paramString.next();
+      paramRspGetCollectionVideoList = new StoryVideoItem();
+      paramRspGetCollectionVideoList.convertFrom((qqstory_struct.StoryVideoFullInfo)localObject1);
+      this.jdField_a_of_type_JavaUtilList.add(paramRspGetCollectionVideoList);
+      Object localObject2 = ((qqstory_struct.StoryVideoFullInfo)localObject1).compressed_video.get();
+      if (localObject2 != null)
+      {
+        localObject1 = new ArrayList(((List)localObject2).size());
+        localObject2 = ((List)localObject2).iterator();
+        for (;;)
+        {
+          if (((Iterator)localObject2).hasNext())
+          {
+            qqstory_struct.VideoUrl localVideoUrl = (qqstory_struct.VideoUrl)((Iterator)localObject2).next();
+            VideoUrlEntry localVideoUrlEntry = new VideoUrlEntry();
+            localVideoUrlEntry.vid = paramRspGetCollectionVideoList.mVid;
+            localVideoUrlEntry.videoUrlLevel = localVideoUrl.video_level.get();
+            localVideoUrlEntry.videoUrl = localVideoUrl.video_url.get();
+            ((List)localObject1).add(localVideoUrlEntry);
+            continue;
+            bool = false;
+            break;
+          }
+        }
+        this.jdField_b_of_type_JavaUtilList.add(localObject1);
+      }
     }
+  }
+  
+  public String toString()
+  {
+    return "GetCollectionVideoListResponse{unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", nextCookie='" + this.c + '\'' + ", isEnd=" + this.jdField_a_of_type_Boolean + ", interactStatus=" + this.jdField_b_of_type_Int + ", videoItems=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

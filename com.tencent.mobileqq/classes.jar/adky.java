@@ -1,14 +1,32 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class adky
-  implements axvr
+public class adky
+  implements View.OnClickListener
 {
-  adky(adkt paramadkt) {}
+  public adky(ApolloItemBuilder paramApolloItemBuilder) {}
   
-  public void a(ArrayList<MessageRecord> paramArrayList)
+  public void onClick(View paramView)
   {
-    this.a.b();
+    if (airz.a(this.a.a.getApplication()))
+    {
+      ApolloUtil.a(paramView.getContext(), null, "aio", ajmu.ah, null);
+      return;
+    }
+    if (!airz.b(this.a.a.getApplication())) {}
+    for (String str = ajmu.U;; str = ajmu.V + bggu.b)
+    {
+      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+      localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
+      VasWebviewUtil.openQQBrowserActivity(paramView.getContext(), str, -1L, localIntent, false, -1);
+      return;
+    }
   }
 }
 

@@ -1,20 +1,19 @@
-import com.tencent.biz.qqstory.database.LikeEntry;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.io.File;
 
-public class ucj
+public abstract interface ucj
 {
-  public int a;
-  public List<LikeEntry> a;
-  public boolean a;
-  public int b;
+  public abstract void a(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, String paramString2, File paramFile, boolean paramBoolean);
   
-  public ucj(boolean paramBoolean, List<LikeEntry> paramList, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
+  public abstract void a(VideoViewVideoHolder paramVideoViewVideoHolder, udc paramudc);
+  
+  public abstract boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, udc paramudc, int paramInt, Object paramObject);
+  
+  public abstract boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, udc paramudc, boolean paramBoolean);
+  
+  public abstract void b(VideoViewVideoHolder paramVideoViewVideoHolder, udc paramudc);
+  
+  public abstract void c(VideoViewVideoHolder paramVideoViewVideoHolder, udc paramudc);
 }
 
 

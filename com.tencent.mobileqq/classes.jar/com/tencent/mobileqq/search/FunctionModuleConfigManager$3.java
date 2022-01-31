@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.search;
 
 import android.text.TextUtils;
-import avhs;
+import awhl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
-import mpl;
+import nam;
 
 public class FunctionModuleConfigManager$3
   implements Runnable
 {
-  public FunctionModuleConfigManager$3(avhs paramavhs, String paramString) {}
+  public FunctionModuleConfigManager$3(awhl paramawhl, String paramString) {}
   
   public void run()
   {
     try
     {
-      Object localObject = mpl.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.a), "GET", null, null);
+      Object localObject = nam.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.a), "GET", null, null);
       if (localObject != null)
       {
-        localObject = avhs.a(this.this$0, (byte[])localObject);
+        localObject = awhl.a(this.this$0, (byte[])localObject);
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
           this.this$0.a((String)localObject);

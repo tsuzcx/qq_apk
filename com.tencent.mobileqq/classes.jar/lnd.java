@@ -1,173 +1,72 @@
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.RemoteException;
-import com.tencent.av.service.AVPbInfo;
-import com.tencent.av.service.AVServiceForQQ;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class lnd
 {
-  Context jdField_a_of_type_AndroidContentContext = null;
-  lly jdField_a_of_type_Lly = null;
-  lne jdField_a_of_type_Lne = null;
-  lnf jdField_a_of_type_Lnf = new lnf(this);
+  int jdField_a_of_type_Int = 0;
+  ArrayList<lnc> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  lna jdField_a_of_type_Lna = null;
   
-  public lnd(Context paramContext)
+  lnd()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    a(BaseApplicationImpl.getApplication());
+    this.jdField_a_of_type_Lna = lna.a();
+    this.jdField_a_of_type_Int = lni.a(this.jdField_a_of_type_Lna);
+    QLog.d("QavGPDownloadManager", 1, String.format("QavGPDownloadObserver, mStatusGameplay[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
   }
   
-  public int a(long paramLong, int paramInt)
+  boolean a()
   {
-    if (this.jdField_a_of_type_Lly == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
+    this.jdField_a_of_type_Lna = lna.a();
+    this.jdField_a_of_type_Int = lni.a(this.jdField_a_of_type_Lna);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGPDownloadManager", 4, String.format("checkResReady, mStatusGameplay[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
     }
-    do
-    {
-      return 0;
-      try
-      {
-        paramInt = this.jdField_a_of_type_Lly.a(paramLong, paramInt);
-        return paramInt;
-      }
-      catch (RemoteException localRemoteException) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "RemoteException", localRemoteException);
-    return 0;
+    return 11 != this.jdField_a_of_type_Int;
   }
   
-  public AVPbInfo a(byte[] paramArrayOfByte)
+  boolean a(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    if (this.jdField_a_of_type_Lly == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGPDownloadManager", 4, String.format("registReceiver[%s]", new Object[] { paramBaseApplicationImpl.getQQProcessName() }));
     }
-    do
-    {
-      return null;
-      try
-      {
-        paramArrayOfByte = this.jdField_a_of_type_Lly.a(paramArrayOfByte);
-        return paramArrayOfByte;
-      }
-      catch (RemoteException paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "processQCallPush RemoteException", paramArrayOfByte);
-    return null;
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("tencent.video.qavgameplaysomgr.notify");
+    return paramBaseApplicationImpl.registerReceiver(new lne(this), localIntentFilter) != null;
   }
   
-  public void a()
+  boolean b()
   {
-    b(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Lne = null;
+    return this.jdField_a_of_type_Int == 1;
   }
   
-  public void a(Context paramContext)
+  boolean c()
   {
-    if (this.jdField_a_of_type_Lly == null)
+    this.jdField_a_of_type_Lna = lna.a();
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = lni.a(this.jdField_a_of_type_Lna);
+    if (this.jdField_a_of_type_Int == 11)
     {
-      Intent localIntent = new Intent(paramContext, AVServiceForQQ.class);
-      boolean bool = paramContext.getApplicationContext().bindService(localIntent, this.jdField_a_of_type_Lnf, 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "bindService result == " + bool);
-      }
+      this.jdField_a_of_type_Int = 12;
+      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+      Intent localIntent = new Intent();
+      localIntent.setAction("from_qavgpsomgr_download");
+      localIntent.setClass(localBaseApplicationImpl.getApplicationContext(), JumpActivity.class);
+      localIntent.addFlags(268435456);
+      localBaseApplicationImpl.getBaseContext().startActivity(localIntent);
     }
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Lly == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
-    }
-    do
+    for (boolean bool = true;; bool = false)
     {
-      return;
-      try
-      {
-        this.jdField_a_of_type_Lly.a(paramString);
-        return;
-      }
-      catch (RemoteException paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "onGetQCallNickName RemoteException", paramString);
-  }
-  
-  public void a(String paramString, Bitmap paramBitmap)
-  {
-    if (this.jdField_a_of_type_Lly == null) {
       if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
+        QLog.d("QavGPDownloadManager", 2, String.format("nodifyDownloadRes, lastStatus[%s], mStatusGameplay[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int) }));
       }
+      return bool;
     }
-    do
-    {
-      return;
-      try
-      {
-        this.jdField_a_of_type_Lly.a(paramString, paramBitmap);
-        return;
-      }
-      catch (RemoteException paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "pushStrangeFace RemoteException", paramString);
-  }
-  
-  public void a(lne paramlne)
-  {
-    this.jdField_a_of_type_Lne = paramlne;
-    a(this.jdField_a_of_type_AndroidContentContext);
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Lly == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
-    }
-    do
-    {
-      return;
-      try
-      {
-        this.jdField_a_of_type_Lly.a(paramArrayOfByte);
-        return;
-      }
-      catch (RemoteException paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "RemoteException", paramArrayOfByte);
-  }
-  
-  public void b(Context paramContext)
-  {
-    paramContext.getApplicationContext().unbindService(this.jdField_a_of_type_Lnf);
-    this.jdField_a_of_type_Lly = null;
-  }
-  
-  public void b(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Lly == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
-    }
-    do
-    {
-      return;
-      try
-      {
-        this.jdField_a_of_type_Lly.c(paramArrayOfByte);
-        return;
-      }
-      catch (RemoteException paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "RemoteException", paramArrayOfByte);
   }
 }
 

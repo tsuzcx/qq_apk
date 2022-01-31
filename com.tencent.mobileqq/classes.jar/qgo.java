@@ -1,28 +1,30 @@
-import android.app.Activity;
-import android.content.res.Resources;
 import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import com.tencent.widget.AdapterView;
 
-class qgo
-  implements qpy
+public class qgo
+  implements bfpc
 {
-  qgo(qgm paramqgm, VideoInfo paramVideoInfo, JSONObject paramJSONObject) {}
+  public qgo(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  public boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramView = obz.a();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) {
-      ogy.a().a(Long.valueOf(paramView).longValue(), qfy.a(this.jdField_a_of_type_Qgm.a).a.makeDislikeParam(paramArrayList, qfy.a(this.jdField_a_of_type_Qgm.a).g));
+    paramAdapterView = paramAdapterView.getItemAtPosition(paramInt);
+    if ((paramAdapterView != null) && ((paramAdapterView instanceof TagInfo)))
+    {
+      if (ReadInJoyVideoTagSelectionFragment.a(this.a).a()) {
+        break label72;
+      }
+      if ((!ReadInJoyVideoTagSelectionFragment.a(this.a).a((TagInfo)paramAdapterView)) && (!ReadInJoyVideoTagSelectionFragment.a(this.a).c())) {
+        ReadInJoyVideoTagSelectionFragment.a(this.a).a();
+      }
     }
-    bbmy.a(qfy.a(this.jdField_a_of_type_Qgm.a), -1, qfy.a(this.jdField_a_of_type_Qgm.a).getString(2131633875), 0).b(qfy.a(this.jdField_a_of_type_Qgm.a).getResources().getDimensionPixelSize(2131167766));
-    qfy.a(this.jdField_a_of_type_Qgm.a).dismiss();
-    qfy.b(this.jdField_a_of_type_Qgm.a, false);
-    ndn.b(null, null, "0X800913C", "0X800913C", 0, 0, null, null, null, new qmv(new.a(null, null, null, null, this.jdField_a_of_type_OrgJsonJSONObject)).h(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g).a(paramArrayList).a().a(), false);
-    return true;
+    label72:
+    while (ReadInJoyVideoTagSelectionFragment.b(this.a).c()) {
+      return;
+    }
+    ReadInJoyVideoTagSelectionFragment.b(this.a).a();
   }
 }
 

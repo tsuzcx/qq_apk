@@ -1,37 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import java.util.List;
+import java.util.Map;
 
-final class agwn
-  implements View.OnTouchListener
+class agwn
+  implements ahbt
 {
-  private float b = 1.0F;
+  agwn(agwl paramagwl, AppInterface paramAppInterface) {}
   
-  agwn(float paramFloat) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.b = paramView.getAlpha();
-      paramView.setAlpha(this.a);
+    List localList = (List)agwl.a(this.jdField_a_of_type_Agwl).get(paramPathResult.url);
+    if (paramPathResult.url.endsWith(".zip")) {
+      agwl.a(this.jdField_a_of_type_Agwl, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, paramPathResult.folderPath, localList);
     }
-    for (;;)
-    {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-      {
-        paramView.setAlpha(this.b);
-      }
-      else if (paramMotionEvent.getAction() == 2)
-      {
-        int i = (int)paramMotionEvent.getRawX();
-        int j = (int)paramMotionEvent.getRawY();
-        if (!agwj.a(paramView, i, j)) {
-          paramView.setAlpha(1.0F);
-        }
-      }
+    while (!paramPathResult.url.endsWith(".png")) {
+      return;
     }
+    agwl.a(this.jdField_a_of_type_Agwl, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, localList);
   }
 }
 

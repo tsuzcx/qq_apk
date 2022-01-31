@@ -1,18 +1,18 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import com.tencent.mobileqq.data.ApolloActionData;
 
-class ajov
-  implements FileFilter
+public class ajov
 {
-  public boolean accept(File paramFile)
-  {
-    return Pattern.matches("cpu[0-9]+", paramFile.getName());
-  }
+  public void a() {}
+  
+  public void a(ApolloActionData paramApolloActionData) {}
+  
+  public void a(Boolean paramBoolean) {}
+  
+  public void b(ApolloActionData paramApolloActionData) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajov
  * JD-Core Version:    0.7.0.1
  */

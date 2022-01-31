@@ -1,94 +1,12 @@
-import java.util.ArrayList;
-import java.util.Collections;
-
-public class tqt
-  implements Cloneable
+class tqt
+  extends tpy
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<Integer> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
+  tqt(tqk paramtqk, trs paramtrs) {}
   
-  public tqt()
+  public boolean b()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public tqt(tqt paramtqt)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramtqt.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_JavaLangString = paramtqt.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Boolean = paramtqt.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Long = paramtqt.jdField_a_of_type_Long;
-    this.jdField_b_of_type_JavaLangString = paramtqt.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = paramtqt.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Int = paramtqt.jdField_b_of_type_Int;
-    this.jdField_b_of_type_Long = paramtqt.jdField_b_of_type_Long;
-    this.jdField_c_of_type_JavaLangString = paramtqt.jdField_c_of_type_JavaLangString;
-    this.jdField_c_of_type_Long = paramtqt.jdField_c_of_type_Long;
-    this.d = paramtqt.d;
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 3) {
-      return ((Integer)Collections.max(this.jdField_a_of_type_JavaUtilArrayList)).intValue();
-    }
-    return -1L;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_c_of_type_Long = 0L;
-    this.d = null;
-  }
-  
-  public long b()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 3) {
-      return ((Integer)Collections.min(this.jdField_a_of_type_JavaUtilArrayList)).intValue();
-    }
-    return -1L;
-  }
-  
-  public long c()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() < 3) {
-      return -1L;
-    }
-    int k = Math.min(this.jdField_a_of_type_JavaUtilArrayList.size(), 10);
-    int i = 0;
-    int j = 0;
-    while (i < k)
-    {
-      j += ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).intValue();
-      i += 1;
-    }
-    return j / k;
-  }
-  
-  public String toString()
-  {
-    return " " + this.jdField_a_of_type_JavaLangString + " " + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_Int + " " + this.jdField_b_of_type_Int + " " + this.jdField_b_of_type_Long + " " + this.jdField_a_of_type_Boolean + " " + c() + " " + b() + " " + a() + " " + this.jdField_b_of_type_JavaLangString + " " + this.jdField_c_of_type_JavaLangString + " " + this.jdField_c_of_type_Long + " " + this.d;
+    this.jdField_a_of_type_Trs.e = ((String)a("UploadImageJob_out_image_url"));
+    return true;
   }
 }
 

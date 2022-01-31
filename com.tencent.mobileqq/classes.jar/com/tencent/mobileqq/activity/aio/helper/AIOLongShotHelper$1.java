@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
-import bbmy;
+import bcpw;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 class AIOLongShotHelper$1
@@ -26,7 +26,7 @@ class AIOLongShotHelper$1
       label41:
       if (!this.b)
       {
-        bbmy.a(AIOLongShotHelper.a(this.this$0).jdField_a_of_type_AndroidContentContext, 1, ajjy.a(2131634309), 0).a();
+        bcpw.a(AIOLongShotHelper.a(this.this$0).jdField_a_of_type_AndroidContentContext, 1, ajyc.a(2131700097), 0).a();
         AIOLongShotHelper.a("0X800A50D");
       }
     }

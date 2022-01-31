@@ -1,24 +1,30 @@
-import android.support.annotation.NonNull;
-
-public class ues
-  extends sgl<uec, spl>
+class ues
+  implements ufo
 {
-  public ues(uec paramuec)
-  {
-    super(paramuec);
-  }
+  ues(uep paramuep, udg paramudg) {}
   
-  public void a(@NonNull uec paramuec, @NonNull spl paramspl)
+  public boolean a_(ufk paramufk, int paramInt1, int paramInt2)
   {
-    uec.a(paramuec, paramspl.a, this.TAG);
+    int i;
+    if (paramInt1 == 3) {
+      i = 1;
+    }
+    for (;;)
+    {
+      return this.jdField_a_of_type_Udg.a(this.jdField_a_of_type_Uep, i, Integer.valueOf(paramInt2));
+      if (paramInt1 == 701)
+      {
+        i = 2;
+      }
+      else
+      {
+        i = paramInt1;
+        if (paramInt1 == 702) {
+          i = 3;
+        }
+      }
+    }
   }
-  
-  public Class acceptEventClass()
-  {
-    return spl.class;
-  }
-  
-  public void b(@NonNull uec paramuec, @NonNull spl paramspl) {}
 }
 
 

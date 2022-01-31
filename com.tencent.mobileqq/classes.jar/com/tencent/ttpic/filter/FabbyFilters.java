@@ -17,6 +17,7 @@ import com.tencent.ttpic.openapi.filter.FabbyMvPart;
 import com.tencent.ttpic.openapi.filter.MaskStickerFilter.BrushMaskFilter;
 import com.tencent.ttpic.openapi.model.FaceActionCounter;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.util.TriggerUtil;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.openapi.util.VideoPrefsUtil;
 import com.tencent.ttpic.util.FrameUtil;
@@ -111,14 +112,18 @@ public class FabbyFilters
   {
     boolean bool = true;
     int j = 0;
+    FabbyMvFilter localFabbyMvFilter;
+    int k;
+    PTHandAttr localPTHandAttr;
     int i;
     if (isCurrentPartActionTrigger())
     {
-      FabbyMvFilter localFabbyMvFilter = (FabbyMvFilter)this.fabbyMvFilters.get(this.mMvPartIndex);
-      j = localFabbyMvFilter.mvPart.transitionItem.getTriggerTypeInt();
-      if (j == PTFaceAttr.PTExpression.ALL_VIEWER_ITEM_FRAME_FROZEN.value)
+      localFabbyMvFilter = (FabbyMvFilter)this.fabbyMvFilters.get(this.mMvPartIndex);
+      k = localFabbyMvFilter.mvPart.transitionItem.getTriggerTypeInt();
+      if ((localFabbyMvFilter.mvPart.transitionItem.triggerArea != null) && (localFabbyMvFilter.mvPart.transitionItem.triggerArea.size() > 0)) {}
+      for (j = 1; k == PTFaceAttr.PTExpression.ALL_VIEWER_ITEM_FRAME_FROZEN.value; j = 0)
       {
-        bool = paramSet.contains(Integer.valueOf(j));
+        bool = paramSet.contains(Integer.valueOf(k));
         if (bool)
         {
           this.mLastTriggerTime = paramLong;
@@ -132,19 +137,19 @@ public class FabbyFilters
         this.mLastRenderPartIndex = this.mMvPartIndex;
         return;
       }
-      paramAIAttr = (PTHandAttr)paramAIAttr.getAvailableData(AEDetectorType.HAND.value);
-      if (paramAIAttr == null) {
-        break label494;
+      localPTHandAttr = (PTHandAttr)paramAIAttr.getAvailableData(AEDetectorType.HAND.value);
+      if (localPTHandAttr == null) {
+        break label575;
       }
-      if (paramAIAttr.getHandType() == j) {
+      if (localPTHandAttr.getHandType() == k) {
         i = 1;
       }
     }
     for (;;)
     {
-      if (VideoMaterialUtil.isFaceTriggerType(j))
+      if (VideoMaterialUtil.isFaceTriggerType(k))
       {
-        if ((paramSet.contains(Integer.valueOf(j))) && (paramLong - this.mLastTriggerTime > 1000L)) {
+        if ((paramSet.contains(Integer.valueOf(k))) && (paramLong - this.mLastTriggerTime > 1000L)) {
           break;
         }
         bool = false;
@@ -152,17 +157,22 @@ public class FabbyFilters
         i = 0;
         continue;
       }
-      if (VideoMaterialUtil.isGestureTriggerType(j))
+      if (VideoMaterialUtil.isGestureTriggerType(k))
       {
+        if (j != 0)
+        {
+          bool = TriggerUtil.isGestureTriggered(localPTHandAttr, k, localFabbyMvFilter.mvPart.transitionItem.triggerHandPoint, localFabbyMvFilter.mvPart.transitionItem.triggerArea, paramAIAttr);
+          break;
+        }
         if ((i != 0) && (paramLong - this.mLastTriggerTime > 1000L)) {
           break;
         }
         bool = false;
         break;
       }
-      if (VideoMaterialUtil.isTouchTriggerType(j))
+      if (VideoMaterialUtil.isTouchTriggerType(k))
       {
-        if ((paramSet.contains(Integer.valueOf(j))) && (paramLong - this.mLastTriggerTime > 1000L)) {
+        if ((paramSet.contains(Integer.valueOf(k))) && (paramLong - this.mLastTriggerTime > 1000L)) {
           break;
         }
         bool = false;
@@ -170,7 +180,7 @@ public class FabbyFilters
         long l1 = this.mStartTime;
         long l2 = this.mOffsetTimeFromTrigger;
         i = 0;
-        label332:
+        label413:
         if (i < this.fabbyMvFilters.size()) {
           if (((Long)this.mBaseOffsetTimeList.get(i)).longValue() >= paramLong - l1 - l2) {
             this.mMvPartIndex = i;
@@ -183,7 +193,7 @@ public class FabbyFilters
             reset(paramLong);
             break;
             i += 1;
-            break label332;
+            break label413;
           }
           if (this.mMvPartIndex == this.mLastRenderPartIndex) {
             break;
@@ -196,7 +206,7 @@ public class FabbyFilters
       }
       bool = false;
       break;
-      label494:
+      label575:
       i = 0;
     }
   }

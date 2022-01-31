@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr;
 
-import atdp;
+import atzt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ocr.data.OcrConfig;
 import com.tencent.qphone.base.util.QLog;
@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 public class OCRManager$3
   implements Runnable
 {
-  public OCRManager$3(atdp paramatdp, boolean paramBoolean) {}
+  public OCRManager$3(atzt paramatzt, boolean paramBoolean) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class OCRManager$3
       QLog.d("Q.ocr.manager", 2, "onGetOCRConfig ,excute runnable");
     }
     if ((this.a) && (this.this$0.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig != null)) {
-      synchronized (atdp.a(this.this$0))
+      synchronized (atzt.a(this.this$0))
       {
         if (this.this$0.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig != null) {
           this.this$0.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig.saveToFile(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());

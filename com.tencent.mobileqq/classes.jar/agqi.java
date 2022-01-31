@@ -1,19 +1,28 @@
-public class agqi
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import mqq.observer.AccountObserver;
+
+class agqi
+  extends AccountObserver
 {
-  public int a;
-  public long a;
-  public String a;
+  agqi(agqh paramagqh) {}
   
-  public agqi(String paramString, long paramLong, int paramInt)
+  public void onUpdateSKey(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramString1 == null)
+    {
+      agqh.b(this.a, null);
+      agqh.a(this.a, null);
+      this.a.b();
+      return;
+    }
+    this.a.a(agqh.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, paramString1, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    agqh.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agqi
  * JD-Core Version:    0.7.0.1
  */

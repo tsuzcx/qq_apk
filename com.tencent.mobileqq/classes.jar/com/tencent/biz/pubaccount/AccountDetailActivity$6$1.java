@@ -6,13 +6,13 @@ import com.tencent.mobileqq.data.AccountDetail;
 class AccountDetailActivity$6$1
   implements Runnable
 {
-  AccountDetailActivity$6$1(AccountDetailActivity.6 param6) {}
+  AccountDetailActivity$6$1(AccountDetailActivity.6 param6, boolean paramBoolean) {}
   
   public void run()
   {
-    this.a.this$0.k();
-    if (!this.a.this$0.l) {
-      this.a.this$0.a(this.a.this$0.d, this.a.this$0.b, this.a.this$0.a.name, ChatActivity.class, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.k();
+    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.l)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.d, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.b, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.a.name, ChatActivity.class, true);
     }
   }
 }

@@ -1,19 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
-
-class ljz
-  implements lkh
+public abstract interface ljz
+  extends ljr
 {
-  ljz(ljy paramljy) {}
+  public abstract void a(float paramFloat1, float paramFloat2, boolean paramBoolean);
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedPacketGameEmojiAnimation", 2, "onShow called, needDetectFace set true");
-    }
-    if (this.a.a != null) {
-      this.a.a.c = true;
-    }
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean);
+  
+  public abstract void setDrawParticle(boolean paramBoolean);
 }
 
 

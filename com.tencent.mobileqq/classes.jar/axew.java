@@ -1,103 +1,75 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
-
-class axew
-  extends wma
+public class axew
+  extends axdm
 {
-  axew(axev paramaxev) {}
+  public axex a;
+  public Object a;
+  public boolean a = true;
+  public long b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public int f;
+  public boolean f;
+  public int g;
+  public boolean g;
+  public int h;
+  public String h;
+  public boolean h;
+  public int i;
+  public String i;
+  public boolean i;
+  public int j;
+  public String j;
+  public int k;
+  public String k;
+  public int l;
+  public String l;
+  public String m = "";
+  public String n = "";
+  public String o = "";
+  public String p = "";
+  public String q = "";
+  public String r;
+  public String s;
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
+  public String a()
   {
-    int i = 0;
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBoolean) {
-      if (paramDownloadFileRspBody != null)
-      {
-        paramInt = paramDownloadFileRspBody.int32_ret_code.get();
-        if (paramInt != 0) {
-          break label549;
-        }
-        Object localObject = bach.a(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
-        paramBundle = (Bundle)localObject;
-        if (localObject != null) {
-          paramBundle = ((String)localObject).toLowerCase();
-        }
-        localObject = paramDownloadFileRspBody.str_download_ip.get();
-        String str = bach.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
-        if (QLog.isColorLevel()) {
-          QLog.i("TeamWorkFileImportJobForGroup", 2, "---onReqDownloadFileResult success ,ip: " + (String)localObject + ",param: " + str);
-        }
-        paramDownloadFileRspBody = new StringBuilder("http://");
-        paramDownloadFileRspBody.append((String)localObject).append("/ftn_handler/").append(str).append("/?fname=").append(bach.b(this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString));
-        try
-        {
-          localObject = new JSONArray();
-          ((JSONArray)localObject).put(0, paramDownloadFileRspBody.toString());
-          localJSONObject.put("urls", localObject);
-          localJSONObject.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
-          localJSONObject.put("cookie", "FTN5K=" + paramBundle);
-          paramInt = 1;
-          if (paramInt != 0) {}
-        }
-        catch (Exception paramDownloadFileRspBody)
-        {
-          label459:
-          QLog.e("TeamWorkFileImportJobForGroup", 1, "onReqDownloadFileResult json exception: " + paramDownloadFileRspBody.toString());
-        }
-      }
-    }
-    try
-    {
-      localJSONObject.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("filetype", 3);
-      localJSONObject.put("fileid", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString);
-      localJSONObject.put("businesstype", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_b_of_type_Int);
-      localJSONObject.put("groupuin", Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.a));
-      localJSONObject.put("importoption", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
-      {
-        localJSONObject.put("md5", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5);
-        localJSONObject.put("sha", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA);
-      }
-      localJSONObject.put("filesize", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_d_of_type_Long);
-      this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.l = this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString;
-      this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.i = 3;
-      i = 1;
-    }
-    catch (Exception paramDownloadFileRspBody)
-    {
-      label549:
-      QLog.e("TeamWorkFileImportJobForGroup", 2, "put fileid exception: " + paramDownloadFileRspBody.toString());
-      break label459;
-      this.a.a(true);
-    }
-    if (((i != 0) || (paramInt != 0)) && (axea.a(localJSONObject)) && (axev.a(this.a, localJSONObject)))
-    {
-      this.a.jdField_a_of_type_Axem.a(localJSONObject, this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, this.a.hashCode());
-      return;
-      for (;;)
-      {
-        paramInt = 0;
-        break;
-        QLog.e("TeamWorkFileImportJobForGroup", 1, "onReqDownloadFileResult retCode: " + paramInt);
-        continue;
-        QLog.e("TeamWorkFileImportJobForGroup", 1, "onReqDownloadFileResult errorCode: " + paramInt);
-      }
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nShortVideoUploadInfo");
+    localStringBuilder.append("\n |-").append("localPath:").append(this.jdField_h_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("md5:").append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("thumbPath:").append(this.j);
+    localStringBuilder.append("\n |-").append("thumbWidth:").append(this.c);
+    localStringBuilder.append("\n |-").append("thumbHeight:").append(this.d);
+    localStringBuilder.append("\n |-").append("sendSizeSpec:").append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("\n |-").append("fileTime:").append(this.f);
+    localStringBuilder.append("\n |-").append("fileSource:").append(this.l);
+    localStringBuilder.append("\n |-").append("supportProgressive:").append(this.b);
+    localStringBuilder.append("\n |-").append("fileWidth:").append(this.jdField_h_of_type_Int);
+    localStringBuilder.append("\n |-").append("fileHeight:").append(this.i);
+    return localStringBuilder.toString();
+  }
+  
+  public boolean a()
+  {
+    return super.a();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axew
  * JD-Core Version:    0.7.0.1
  */

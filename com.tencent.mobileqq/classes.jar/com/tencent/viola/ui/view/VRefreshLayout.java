@@ -12,6 +12,9 @@ import com.tencent.viola.ui.view.refresh.RefreshMoveOberver;
 import com.tencent.viola.ui.view.refresh.VRefreshViewGroup;
 import com.tencent.viola.ui.view.refresh.listener.IHeaderCallBack;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,6 +24,7 @@ public class VRefreshLayout
   implements IVView<VRefresh>, IHeaderCallBack
 {
   public static String TAG = "VRefreshLayout";
+  private List<VRefreshLayout.OnHeaderStateChangeListener> headerStateChangeListeners;
   public int mComponentType = 1;
   private JSONObject mFireEventJsonObject = new JSONObject();
   private Handler mHandler;
@@ -51,6 +55,19 @@ public class VRefreshLayout
         paramContext.printStackTrace();
       }
     }
+  }
+  
+  public void addOnHeaderStateChangeListener(VRefreshLayout.OnHeaderStateChangeListener paramOnHeaderStateChangeListener)
+  {
+    if (paramOnHeaderStateChangeListener == null) {}
+    do
+    {
+      return;
+      if (this.headerStateChangeListeners == null) {
+        this.headerStateChangeListeners = new ArrayList();
+      }
+    } while (this.headerStateChangeListeners.contains(paramOnHeaderStateChangeListener));
+    this.headerStateChangeListeners.add(paramOnHeaderStateChangeListener);
   }
   
   public void bindComponent(VRefresh paramVRefresh)
@@ -157,6 +174,17 @@ public class VRefreshLayout
     }
   }
   
+  public void onFingerRelease()
+  {
+    if (this.headerStateChangeListeners != null)
+    {
+      Iterator localIterator = this.headerStateChangeListeners.iterator();
+      while (localIterator.hasNext()) {
+        ((VRefreshLayout.OnHeaderStateChangeListener)localIterator.next()).onHeaderFingerRelease();
+      }
+    }
+  }
+  
   public void onStateFinish(boolean paramBoolean)
   {
     this.mHandler.postDelayed(this.mRunnable, 500L);
@@ -212,6 +240,17 @@ public class VRefreshLayout
       }
       localJSONArray.put("refresh");
       getComponent().refreshFireEvent("refresh", localJSONArray, this.mFireEventJsonObject);
+    }
+  }
+  
+  public void onStickRefreshing()
+  {
+    if (this.headerStateChangeListeners != null)
+    {
+      Iterator localIterator = this.headerStateChangeListeners.iterator();
+      while (localIterator.hasNext()) {
+        ((VRefreshLayout.OnHeaderStateChangeListener)localIterator.next()).onStickRefreshing();
+      }
     }
   }
   

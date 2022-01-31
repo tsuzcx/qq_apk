@@ -1,32 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.widget.RelativeLayout;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.beauty.QavBeautyMenuPanel;
 
-final class mie
-  implements axrs
+public class mie
+  implements mii
 {
-  public void a(axsp paramaxsp, axsq paramaxsq)
+  boolean jdField_a_of_type_Boolean = false;
+  
+  public mie(QavPanel paramQavPanel) {}
+  
+  public void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
   {
-    if ((paramaxsp == null) || (paramaxsq == null)) {}
-    axro localaxro;
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramaxsp instanceof axro));
-      localaxro = (axro)paramaxsp;
-      localaxro.jdField_a_of_type_Long += paramaxsq.c;
-      paramaxsq.c = 0L;
-      paramaxsq = "bytes=" + localaxro.jdField_a_of_type_Long + "-";
-      localaxro.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaxsq);
-      paramaxsq = localaxro.jdField_a_of_type_JavaLangString;
-      if (paramaxsq.contains("range="))
-      {
-        paramaxsq = paramaxsq.substring(0, paramaxsq.lastIndexOf("range="));
-        localaxro.jdField_a_of_type_JavaLangString = (paramaxsq + "range=" + localaxro.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ScoreManager", 1, "IBreakDownFix. url = " + ((axro)paramaxsp).jdField_a_of_type_JavaLangString + ", offset=" + localaxro.jdField_a_of_type_Long);
+    if (!this.jdField_a_of_type_Boolean) {
+      mqr.a("0X800A567", 0);
+    }
+    if ((paramRelativeLayout instanceof QavBeautyMenuPanel)) {
+      ((QavBeautyMenuPanel)paramRelativeLayout).a(paramLong, paramBoolean);
+    }
+  }
+  
+  public void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    if ((paramRelativeLayout instanceof QavBeautyMenuPanel)) {
+      ((QavBeautyMenuPanel)paramRelativeLayout).b(paramLong, paramBoolean);
+    }
   }
 }
 

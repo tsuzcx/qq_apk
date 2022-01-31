@@ -1,0 +1,38 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
+
+public class bkmf
+  implements Animator.AnimatorListener
+{
+  public bkmf(SlideBottomPanel paramSlideBottomPanel) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    this.a.jdField_a_of_type_Boolean = false;
+    if (this.a.jdField_a_of_type_Bklp != null) {
+      this.a.jdField_a_of_type_Bklp.displayPanelFinish();
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.jdField_a_of_type_Boolean = false;
+    if (this.a.jdField_a_of_type_Bklp != null) {
+      this.a.jdField_a_of_type_Bklp.displayPanelFinish();
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.jdField_a_of_type_Boolean = true;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     bkmf
+ * JD-Core Version:    0.7.0.1
+ */

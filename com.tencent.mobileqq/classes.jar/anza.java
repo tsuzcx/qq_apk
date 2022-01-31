@@ -1,35 +1,6 @@
-import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
-
-public class anza
-  extends aodp
+public abstract interface anza
 {
-  public anza(VerifyPwdView paramVerifyPwdView) {}
-  
-  protected void a(int paramInt, String paramString)
-  {
-    apcb.a(paramString);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (!paramBoolean)
-    {
-      VerifyPwdView.a(this.a);
-      return;
-    }
-    VerifyPwdView.b(this.a);
-  }
-  
-  protected void b(int paramInt, String paramString)
-  {
-    apcb.a(paramString);
-    VerifyPwdView.c(this.a);
-  }
-  
-  protected void e()
-  {
-    VerifyPwdView.a(this.a);
-  }
+  public abstract void a();
 }
 
 

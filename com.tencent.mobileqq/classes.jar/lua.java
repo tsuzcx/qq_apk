@@ -1,137 +1,75 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.av.redpacket.AVRedPacketManager;
 import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.protofile.avredpacket.AVRedPacketGameSyncInfo.C2CGameInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import tencent.im.s2c.msgtype0x210.submsgtype0x116.submsgtype0x116.MemberInfo;
-import tencent.im.s2c.msgtype0x210.submsgtype0x116.submsgtype0x116.MsgBody;
 
-public class lua
-  extends BroadcastReceiver
+class lua
+  implements lgr
 {
-  public lua(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
+  lua(ltz paramltz) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    paramContext = paramIntent.getAction();
-    long l1 = paramIntent.getLongExtra("groupId", 0L);
-    long l2 = paramIntent.getLongExtra("roomId", 0L);
-    boolean bool;
-    if ((this.a.jdField_a_of_type_Long == l1) && (MultiIncomingCallsActivity.a(this.a) == l2)) {
-      bool = true;
-    }
-    Object localObject;
-    for (;;)
+    bool2 = false;
+    String str = mpy.a();
+    if ((paramArrayOfByte == null) || (TextUtils.isEmpty(str)) || (paramInt1 != 9))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_b_of_type_JavaLangString, 2, "handleMsgType0x210SuMsgType0x116 mMemberChangeEventReceiver fit=" + bool + ";current roomId=" + MultiIncomingCallsActivity.a(this.a) + ";groupId=" + this.a.jdField_a_of_type_Long);
+        QLog.d("AVRedPacketHandler", 2, "onC2CDataCome error return, msgType=" + paramInt1);
       }
-      if ("tencent.video.q2v.GvideoMemInviteUpdate".equals(paramContext)) {
-        mfs.a(paramIntent);
-      }
-      if ((paramContext.equalsIgnoreCase("tencent.video.q2v.GvideoMemInviteUpdate")) && (bool))
+      return false;
+    }
+    localAVRedPacketManager = (AVRedPacketManager)this.a.a.a(6);
+    localC2CGameInfo = new AVRedPacketGameSyncInfo.C2CGameInfo();
+    try
+    {
+      localC2CGameInfo.mergeFrom(paramArrayOfByte);
+      bool1 = true;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      for (;;)
       {
-        paramContext = new submsgtype0x116.MsgBody();
-        try
+        boolean bool1 = bool2;
+        if (QLog.isColorLevel())
         {
-          paramContext.mergeFrom(paramIntent.getByteArrayExtra("pushData"));
-          paramIntent = new HashSet();
-          localObject = MultiIncomingCallsActivity.a(this.a).iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            paramIntent.add(Long.valueOf(((ldv)((Iterator)localObject).next()).jdField_a_of_type_Long));
-            continue;
-            bool = false;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramContext)
-        {
-          paramContext.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.d(this.a.jdField_b_of_type_JavaLangString, 2, "mMemberChangeEventReceiver throw exception");
+          QLog.e("AVRedPacketHandler", 2, "onC2CDataCome,", paramArrayOfByte);
+          bool1 = bool2;
+          continue;
+          if ((paramInt2 == 2) || (paramInt2 == 3)) {
+            localAVRedPacketManager.b(paramInt2);
+          } else if (paramInt2 == 4) {
+            localAVRedPacketManager.c(localC2CGameInfo.exceptionType.get());
           }
         }
       }
     }
-    int j;
-    do
+    if (paramInt2 == 1)
     {
-      return;
-      int n = paramContext.enum_event_type.get();
+      paramArrayOfByte = new Bundle();
+      paramArrayOfByte.putString("key", localC2CGameInfo.key.get());
+      paramArrayOfByte.putInt("gameState", localC2CGameInfo.state.get());
+      paramArrayOfByte.putString("peerUin", str);
+      paramArrayOfByte.putInt("fromWho", localC2CGameInfo.fromWho.get());
+      paramArrayOfByte.putString("money", localC2CGameInfo.money.get());
+      paramArrayOfByte.putInt("resultCode", localC2CGameInfo.resultCode.get());
+      paramArrayOfByte.putString("resultState", localC2CGameInfo.resultState.get());
+      paramArrayOfByte.putInt("musicId", localC2CGameInfo.musicId.get());
+      paramArrayOfByte.putInt("hitScore", localC2CGameInfo.scores.get());
+      paramArrayOfByte.putInt("enterType", localC2CGameInfo.enterType.get());
+      paramArrayOfByte.putInt("maxScore", localC2CGameInfo.maxScore.get());
+      paramArrayOfByte.putInt("totalEmojiNum", localC2CGameInfo.totalEmojiNum.get());
+      localAVRedPacketManager.a(bool1, paramArrayOfByte);
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_b_of_type_JavaLangString, 2, "mMemberChangeEventReceiver before totalCount:" + paramContext.uint32_invite_list_total_count.get() + ";currentInviteMembers=" + MultiIncomingCallsActivity.a(this.a).size() + ";eventType=" + paramContext.enum_event_type.get());
+        QLog.d("AVRedPacketHandler", 2, "onC2CDataCome, isSucc: " + bool1 + ", subType=" + paramInt2);
       }
-      int i = 0;
-      j = 0;
-      if (j < paramContext.rpt_msg_member_join.size())
-      {
-        localObject = (submsgtype0x116.MemberInfo)paramContext.rpt_msg_member_join.get(j);
-        l1 = ((submsgtype0x116.MemberInfo)localObject).uint64_member_uin.get();
-        if ((l1 != this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin()) && (l1 != this.a.jdField_b_of_type_Long)) {}
-        for (int m = 1;; m = 0)
-        {
-          k = i;
-          if (!paramIntent.contains(Long.valueOf(l1)))
-          {
-            k = i;
-            if (m != 0)
-            {
-              MultiIncomingCallsActivity.a(this.a).add(new ldv(((submsgtype0x116.MemberInfo)localObject).uint64_member_uin.get(), ((submsgtype0x116.MemberInfo)localObject).uint32_invite_timestamp.get()));
-              i = 1;
-              k = i;
-              if (QLog.isColorLevel())
-              {
-                QLog.d(this.a.jdField_b_of_type_JavaLangString, 2, "mMemberChangeEventReceiver add member UIN:" + l1);
-                k = i;
-              }
-            }
-          }
-          j += 1;
-          i = k;
-          break;
-        }
-      }
-      int k = 0;
-      j = i;
-      i = k;
-      while (i < paramContext.rpt_msg_member_quit.size())
-      {
-        l1 = ((submsgtype0x116.MemberInfo)paramContext.rpt_msg_member_quit.get(i)).uint64_member_uin.get();
-        paramIntent = MultiIncomingCallsActivity.a(this.a).iterator();
-        do
-        {
-          k = j;
-          if (!paramIntent.hasNext()) {
-            break;
-          }
-          localObject = (ldv)paramIntent.next();
-        } while (((ldv)localObject).jdField_a_of_type_Long != l1);
-        MultiIncomingCallsActivity.a(this.a).remove(localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.jdField_b_of_type_JavaLangString, 2, "mMemberChangeEventReceiver remove member UIN:" + ((ldv)localObject).jdField_a_of_type_Long);
-        }
-        k = j;
-        if (n != 2) {
-          k = 1;
-        }
-        i += 1;
-        j = k;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_b_of_type_JavaLangString, 2, "mMemberChangeEventReceiver after totalCount:" + paramContext.uint32_invite_list_total_count.get() + ";currentInviteMembers=" + MultiIncomingCallsActivity.a(this.a).size() + ";eventType=" + paramContext.enum_event_type.get());
-      }
-    } while (j == 0);
-    MultiIncomingCallsActivity.a(this.a);
+      return true;
+    }
   }
 }
 

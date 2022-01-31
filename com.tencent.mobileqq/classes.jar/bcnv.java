@@ -1,31 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.widget.ParticipleView;
 
 public class bcnv
-  extends bcnu
+  extends AnimatorListenerAdapter
 {
-  public void a(String paramString1, String paramString2)
-  {
-    QLog.d(paramString1, 1, paramString2);
-  }
+  public bcnv(ParticipleView paramParticipleView) {}
   
-  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    QLog.d(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
-  }
-  
-  public void c(String paramString1, String paramString2)
-  {
-    QLog.d(paramString1, 1, paramString2);
+    ParticipleView.a(this.a, 1.0F);
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcnv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import abai;
-import aiba;
+import arpq;
+import bfmt;
 
-public class Leba$20
+class Leba$20
   implements Runnable
 {
-  public Leba$20(abai paramabai) {}
+  Leba$20(Leba paramLeba) {}
   
   public void run()
   {
-    this.this$0.a.notifyDataSetChanged();
+    if (Leba.a(this.this$0) != null) {
+      Leba.a(this.this$0).b();
+    }
+    this.this$0.a.sendEmptyMessage(11340005);
   }
 }
 

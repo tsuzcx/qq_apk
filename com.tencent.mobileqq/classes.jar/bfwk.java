@@ -1,23 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.PublishEventTag;
+import com.tencent.widget.VerticalGallery;
 
-public final class bfwk
-  implements Parcelable.Creator<PublishEventTag>
+public abstract interface bfwk
 {
-  public PublishEventTag a(Parcel paramParcel)
-  {
-    return new PublishEventTag(paramParcel);
-  }
-  
-  public PublishEventTag[] a(int paramInt)
-  {
-    return new PublishEventTag[paramInt];
-  }
+  public abstract void a(VerticalGallery paramVerticalGallery);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfwk
  * JD-Core Version:    0.7.0.1
  */

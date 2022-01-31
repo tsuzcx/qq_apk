@@ -1,39 +1,27 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
-class aeey
-  implements View.OnTouchListener
+public class aeey
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aeey(aeeh paramaeeh) {}
+  public aeey(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    boolean bool = false;
-    int i = paramMotionEvent.getAction();
-    paramView = this.a.jdField_a_of_type_Bbfs.a();
-    if (i == 0)
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (ViewGroup.MarginLayoutParams)UnlimitedBladeWorks.a(this.a).getLayoutParams();
+    if (UnlimitedBladeWorks.a(this.a)) {
+      paramValueAnimator.leftMargin = 0;
+    }
+    for (paramValueAnimator.rightMargin = i;; paramValueAnimator.rightMargin = 0)
     {
-      this.a.m.setText(ajjy.a(2131639350));
-      this.a.m.setTextColor(this.a.r);
-      this.a.jdField_a_of_type_Asgb.b();
-      if (paramView != null) {
-        paramView.a(true);
-      }
-      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "wolf_talk", 0, 0, "", "", "", "");
-      bool = true;
+      UnlimitedBladeWorks.a(this.a).setLayoutParams(paramValueAnimator);
+      return;
+      paramValueAnimator.leftMargin = i;
     }
-    while ((i != 3) && (i != 1)) {
-      return bool;
-    }
-    this.a.m.setText(ajjy.a(2131639289));
-    this.a.m.setTextColor(this.a.q);
-    this.a.jdField_a_of_type_Asgb.c();
-    if (paramView != null) {
-      paramView.a(false);
-    }
-    return true;
   }
 }
 

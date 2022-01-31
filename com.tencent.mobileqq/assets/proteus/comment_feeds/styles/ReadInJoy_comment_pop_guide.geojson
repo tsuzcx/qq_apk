@@ -41,8 +41,7 @@
                             "type":"match_parent"
                         },
                         "attributes":{
-                            "loadImageWithPath:":"$guide_image",
-                            "setScaleType:":"1"
+                            "loadImageWithPath:":"$guide_image"
                         }
                     },
                     {
@@ -95,13 +94,15 @@
                 "view_type": "UIButton",
                 "view_id": "id_guide_dismiss",
                 "default_visible": "YES",
-                "margin_top":"38",
+                "margin_top":"35",
                 "align_parent_center_horizontal": "YES",
                 "height":{
-                    "type": "wrap_content"
+                    "type":"absolutely",
+                    "value":"46"
                 },
                 "width":{
-                    "type": "wrap_content"
+                    "type":"absolutely",
+                    "value":"46"
                 },
                 "event_type":"cmd_guide_dismiss_clicked",
                 "attributes":{

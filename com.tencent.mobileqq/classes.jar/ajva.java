@@ -1,23 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.VideoMsgTools;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.VideoBroadcastReceiver;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class ajva
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public ajva(VideoBroadcastReceiver paramVideoBroadcastReceiver, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  public ajva(DeviceProfileManager paramDeviceProfileManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    mga.e(false, false);
-    VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, false, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, false, null, true, new Object[0]);
-    VideoBroadcastReceiver.a(this.jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver, 3, this.jdField_a_of_type_JavaLangString, this.c, this.d);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (QLog.isDevelopLevel()) {
+      QLog.e("DeviceProfileManager", 4, "onReceive");
     }
-    mga.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause);
+    if (paramIntent == null) {}
+    do
+    {
+      for (;;)
+      {
+        return;
+        try
+        {
+          paramContext = paramIntent.getExtras();
+          if (paramContext != null)
+          {
+            DeviceProfileManager.a(this.a, (HashMap)paramContext.getSerializable("featureMapLV2"));
+            if (DeviceProfileManager.a() != null)
+            {
+              DeviceProfileManager.a().a = ((HashMap)paramContext.getSerializable("featureAccountMapLV2"));
+              return;
+            }
+          }
+        }
+        catch (Exception paramContext) {}
+      }
+    } while (!QLog.isDevelopLevel());
+    paramContext.printStackTrace();
   }
 }
 

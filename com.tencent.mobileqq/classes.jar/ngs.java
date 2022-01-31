@@ -1,20 +1,17 @@
-import java.util.Comparator;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 
-public class ngs
-  implements Comparator<JSONObject>
+class ngs
+  implements View.OnClickListener
 {
-  String a;
+  ngs(nfu paramnfu, String paramString, nmv paramnmv) {}
   
-  public ngs(String paramString)
+  public void onClick(View paramView)
   {
-    this.a = paramString;
-  }
-  
-  public int a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
-  {
-    long l = paramJSONObject1.optLong(this.a);
-    return (int)(paramJSONObject2.optLong(this.a) - l);
+    nfu.c(this.jdField_a_of_type_Nfu, this.jdField_a_of_type_JavaLangString);
+    PublicAccountHandler.a(this.jdField_a_of_type_Nfu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nfu.jdField_a_of_type_JavaLangString, "Grp_tribe", "interest_data", "Clk_msg");
+    nfu.a(this.jdField_a_of_type_Nfu, this.jdField_a_of_type_Nmv.jdField_a_of_type_JavaLangString);
   }
 }
 

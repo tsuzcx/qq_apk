@@ -1,23 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.os.Build.VERSION;
-import awrn;
-import babp;
+import axrl;
+import bbct;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import obz;
+import onk;
 
 class ReadinjoyTabFrame$InitWebProcessRunnable
   implements Runnable
 {
-  private WeakReference<ReadinjoyTabFrame> a;
+  private long jdField_a_of_type_Long;
+  private WeakReference<ReadinjoyTabFrame> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public ReadinjoyTabFrame$InitWebProcessRunnable(ReadinjoyTabFrame paramReadinjoyTabFrame)
+  public void a(ReadinjoyTabFrame paramReadinjoyTabFrame)
   {
-    this.a = new WeakReference(paramReadinjoyTabFrame);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReadinjoyTabFrame);
   }
   
   public void run()
@@ -28,44 +29,44 @@ class ReadinjoyTabFrame$InitWebProcessRunnable
       do
       {
         return;
-      } while ((this.a == null) || (this.a.get() == null));
-      ReadinjoyTabFrame localReadinjoyTabFrame = (ReadinjoyTabFrame)this.a.get();
+      } while ((System.currentTimeMillis() - this.jdField_a_of_type_Long <= 1000L) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
+      ReadinjoyTabFrame localReadinjoyTabFrame = (ReadinjoyTabFrame)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       localWebProcessManager = (WebProcessManager)localReadinjoyTabFrame.a.getManager(13);
       if (localWebProcessManager != null)
       {
-        i = obz.f();
-        if (!obz.g()) {}
+        i = onk.f();
+        if (!onk.f()) {}
       }
       try
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
-        localHashMap.put("param_totalMem", String.valueOf(babp.d()));
-        localHashMap.put("param_availableMem", String.valueOf(babp.e()));
-        localHashMap.put("param_cpuNum", String.valueOf(babp.b()));
-        localHashMap.put("param_cpuFreq", String.valueOf(babp.a()));
+        localHashMap.put("param_totalMem", String.valueOf(bbct.d()));
+        localHashMap.put("param_availableMem", String.valueOf(bbct.e()));
+        localHashMap.put("param_cpuNum", String.valueOf(bbct.b()));
+        localHashMap.put("param_cpuFreq", String.valueOf(bbct.a()));
         localHashMap.put("param_preloadLevel", String.valueOf(i));
         if (QLog.isColorLevel()) {
           QLog.d("Q.readinjoy.4tab", 2, "preloadToolProcessReport:" + localHashMap.toString());
         }
-        awrn.a(localReadinjoyTabFrame.a()).a(localReadinjoyTabFrame.a.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
+        axrl.a(localReadinjoyTabFrame.a()).a(localReadinjoyTabFrame.a.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
       }
       catch (Exception localException)
       {
         for (;;)
         {
           QLog.d("Q.readinjoy.4tab", 2, "", localException);
-        }
-        if (i != 2) {
           continue;
+          if (i == 2) {
+            localWebProcessManager.a(201);
+          }
         }
-        localWebProcessManager.a(201);
-        continue;
       }
       if (i != 1) {
         break;
       }
       localWebProcessManager.a(200);
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
     } while (!QLog.isColorLevel());
     QLog.d("Q.readinjoy.4tab", 2, "enter folder preload web process");
   }

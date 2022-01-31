@@ -1,97 +1,64 @@
-public class bfcl
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
+import java.util.Map;
+import org.json.JSONObject;
+
+class bfcl
+  implements TextWatcher
 {
-  public static final byte[] a;
-  private static final char[] a;
-  public static final byte[] b;
-  public static final byte[] c;
-  public static final byte[] d;
+  bfcl(bfcj parambfcj, bejs parambejs) {}
   
-  static
-  {
-    jdField_a_of_type_ArrayOfByte = b("00A40400");
-    b = b("6A82");
-    c = b("9000");
-    d = b("0000");
-    jdField_a_of_type_ArrayOfChar = "0123456789ABCDEF".toCharArray();
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public static String a(byte[] paramArrayOfByte)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
-    int i = 0;
-    while (i < paramArrayOfByte.length)
+    if ((bfcj.a(this.jdField_a_of_type_Bfcj).containsKey(Integer.valueOf(bfcj.a(this.jdField_a_of_type_Bfcj)))) && (paramCharSequence.toString().equals(bfcj.a(this.jdField_a_of_type_Bfcj).get(Integer.valueOf(bfcj.a(this.jdField_a_of_type_Bfcj)))))) {
+      return;
+    }
+    bfcj.a(this.jdField_a_of_type_Bfcj).remove(Integer.valueOf(bfcj.a(this.jdField_a_of_type_Bfcj)));
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      int j = paramArrayOfByte[i] & 0xFF;
-      arrayOfChar[(i * 2)] = jdField_a_of_type_ArrayOfChar[(j >>> 4)];
-      arrayOfChar[(i * 2 + 1)] = jdField_a_of_type_ArrayOfChar[(j & 0xF)];
-      i += 1;
+      localJSONObject.put("inputId", bfcj.a(this.jdField_a_of_type_Bfcj));
+      if (paramInt3 == 0)
+      {
+        localJSONObject.put("cursor", paramInt1);
+        localJSONObject.put("value", paramCharSequence.toString());
+        if ((paramInt2 == 0) || (paramInt3 != 0)) {
+          break label241;
+        }
+        localJSONObject.put("keyCode", 8);
+        label154:
+        localJSONObject.put("data", new JSONObject(this.jdField_a_of_type_Bejs.b).optString("data"));
+        this.jdField_a_of_type_Bejs.a("onKeyboardValueChange", localJSONObject.toString(), bfcj.a(this.jdField_a_of_type_Bfcj).b());
+        return;
+      }
     }
-    return new String(arrayOfChar);
-  }
-  
-  public static byte[] a(String paramString)
-  {
-    byte[] arrayOfByte = b(String.format("%02X", new Object[] { Integer.valueOf(paramString.length() / 2) }));
-    paramString = b(paramString);
-    return a(jdField_a_of_type_ArrayOfByte, new byte[][] { arrayOfByte, paramString });
-  }
-  
-  private static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (paramInt1 > paramInt2) {
-      throw new IllegalArgumentException();
-    }
-    int i = paramArrayOfByte.length;
-    if ((paramInt1 < 0) || (paramInt1 > i)) {
-      throw new ArrayIndexOutOfBoundsException();
-    }
-    paramInt2 -= paramInt1;
-    i = Math.min(paramInt2, i - paramInt1);
-    byte[] arrayOfByte = new byte[paramInt2];
-    System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, i);
-    return arrayOfByte;
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte, byte[]... paramVarArgs)
-  {
-    int j = paramArrayOfByte.length;
-    int k = paramVarArgs.length;
-    int i = 0;
-    while (i < k)
+    catch (Exception paramCharSequence)
     {
-      j += paramVarArgs[i].length;
-      i += 1;
+      besl.d("WebInputHandler", "onTextChanged error", paramCharSequence);
+      return;
     }
-    byte[] arrayOfByte = a(paramArrayOfByte, 0, j);
-    j = paramArrayOfByte.length;
-    k = paramVarArgs.length;
-    i = 0;
-    while (i < k)
+    if (paramInt2 != 0) {
+      paramInt2 -= 1;
+    }
+    for (;;)
     {
-      paramArrayOfByte = paramVarArgs[i];
-      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, j, paramArrayOfByte.length);
-      j += paramArrayOfByte.length;
-      i += 1;
+      localJSONObject.put("cursor", paramInt1 + paramInt3 - paramInt2);
+      break;
+      label241:
+      localJSONObject.put("keyCode", paramCharSequence.charAt(paramInt1 + paramInt3 - 1));
+      break label154;
+      paramInt2 = 0;
     }
-    return arrayOfByte;
-  }
-  
-  public static byte[] b(String paramString)
-  {
-    int j = paramString.length();
-    byte[] arrayOfByte = new byte[j / 2];
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfByte[(i / 2)] = ((byte)((Character.digit(paramString.charAt(i), 16) << 4) + Character.digit(paramString.charAt(i + 1), 16)));
-      i += 2;
-    }
-    return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfcl
  * JD-Core Version:    0.7.0.1
  */

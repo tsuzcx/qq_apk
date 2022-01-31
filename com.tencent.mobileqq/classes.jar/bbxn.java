@@ -1,20 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityFragment.6;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
 public class bbxn
-  implements DialogInterface.OnClickListener
+  implements DownloadParams.DecodeHandler
 {
-  public bbxn(OpenAuthorityFragment.6 param6) {}
+  private int a;
+  private int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @Deprecated
+  public bbxn() {}
+  
+  public bbxn(int paramInt1, int paramInt2)
   {
-    paramDialogInterface.dismiss();
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  @Deprecated
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    return bbiq.a(paramBitmap, this.a, this.b);
+  }
+  
+  public String toString()
+  {
+    return "NinePatchDecoderHandler{reqW=" + this.a + ", reqH=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbxn
  * JD-Core Version:    0.7.0.1
  */

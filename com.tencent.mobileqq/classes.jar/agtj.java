@@ -1,83 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agtj
-  extends agsz<agti>
+class agtj
+  implements DialogInterface.OnClickListener
 {
-  public int a()
-  {
-    return 540;
-  }
+  agtj(agtc paramagtc, Runnable paramRunnable) {}
   
-  @NonNull
-  public agti a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("springHb_SpringFestivalRedpacketStaggerConfProcessor", 2, "[migrateOldOrDefaultContent]");
-    }
-    return new agti();
-  }
-  
-  protected agti a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
-    {
-      paramArrayOfalzs = paramArrayOfalzs[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.i("springHb_SpringFestivalRedpacketStaggerConfProcessor", 2, "onParsed " + paramArrayOfalzs);
-      }
-      return agti.a(paramArrayOfalzs);
-    }
-    return null;
-  }
-  
-  public Class<agti> a()
-  {
-    return agti.class;
-  }
-  
-  public void a()
-  {
-    super.a();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("springHb_SpringFestivalRedpacketStaggerConfProcessor", 2, "[onReqFailed] failCode=" + paramInt);
-    }
-  }
-  
-  public void a(agti paramagti)
-  {
-    super.a(paramagti);
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  @Nullable
-  public agti b(alzs[] paramArrayOfalzs)
-  {
-    return (agti)super.b(paramArrayOfalzs);
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agtj
  * JD-Core Version:    0.7.0.1
  */

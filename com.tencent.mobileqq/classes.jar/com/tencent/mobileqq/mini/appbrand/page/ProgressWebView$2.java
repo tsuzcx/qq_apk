@@ -1,15 +1,11 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
 import android.graphics.Bitmap;
-import android.net.Uri;
-import android.text.TextUtils;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.utils.cookieUtils;
 import com.tencent.mobileqq.mini.ui.NavigationBar;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.interfaces.WebResourceError;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 import org.json.JSONObject;
@@ -17,7 +13,7 @@ import org.json.JSONObject;
 class ProgressWebView$2
   extends WebViewClient
 {
-  ProgressWebView$2(ProgressWebView paramProgressWebView, AppBrandRuntime paramAppBrandRuntime) {}
+  ProgressWebView$2(ProgressWebView paramProgressWebView) {}
   
   public void doUpdateVisitedHistory(WebView paramWebView, String paramString, boolean paramBoolean)
   {
@@ -98,41 +94,6 @@ class ProgressWebView$2
         QLog.e("ProgressWebView", 1, "onPageStarted error." + paramWebView);
       }
     }
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
-  {
-    Uri localUri = null;
-    Object localObject = localUri;
-    if (paramWebResourceRequest != null)
-    {
-      localObject = localUri;
-      if (paramWebResourceRequest.getUrl() != null) {
-        localObject = paramWebResourceRequest.getUrl().toString();
-      }
-    }
-    try
-    {
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.val$appBrandRuntime != null) && (this.val$appBrandRuntime.activity != null))
-      {
-        localUri = Uri.parse((String)localObject);
-        if ((localUri != null) && ("open.mp.qq.com".equals(localUri.getHost())))
-        {
-          cookieUtils.setCookie(this.val$appBrandRuntime.activity, (String)localObject);
-          if (QLog.isColorLevel()) {
-            QLog.d("ProgressWebView", 2, "setcookie : " + localUri.getHost());
-          }
-        }
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.e("ProgressWebView", 1, "setCookie error, ", localThrowable);
-      }
-    }
-    return super.shouldInterceptRequest(paramWebView, paramWebResourceRequest);
   }
 }
 

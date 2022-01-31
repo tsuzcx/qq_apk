@@ -4,12 +4,12 @@ import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import opx;
+import pay;
 
 public class InterestLabelInfoModule$5
   implements Runnable
 {
-  public InterestLabelInfoModule$5(opx paramopx, List paramList) {}
+  public InterestLabelInfoModule$5(pay parampay, List paramList) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class InterestLabelInfoModule$5
       while (localIterator.hasNext())
       {
         InterestLabelInfo localInterestLabelInfo = (InterestLabelInfo)localIterator.next();
-        opx.a(this.this$0).put(Integer.valueOf(localInterestLabelInfo.mInterestLabelID), localInterestLabelInfo);
+        pay.a(this.this$0).put(Integer.valueOf(localInterestLabelInfo.mInterestLabelID), localInterestLabelInfo);
       }
     }
   }

@@ -7,17 +7,17 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import opw;
-import pey;
-import pfh;
-import pjg;
-import pmu;
+import pax;
+import pqs;
+import prb;
+import pvb;
+import pyp;
 
 public class ComponentDivider
   extends View
-  implements pey
+  implements pqs
 {
-  pjg a;
+  pvb a;
   
   public ComponentDivider(Context paramContext)
   {
@@ -46,16 +46,16 @@ public class ComponentDivider
   private void a(Context paramContext, Object paramObject)
   {
     b(paramContext);
-    if ((paramObject instanceof opw))
+    if ((paramObject instanceof pax))
     {
-      this.a.a((opw)paramObject);
+      this.a.a((pax)paramObject);
       b();
     }
   }
   
   private void b(Context paramContext)
   {
-    this.a = new pjg();
+    this.a = new pvb();
     a(paramContext);
     a();
   }
@@ -64,20 +64,20 @@ public class ComponentDivider
   
   public void a(Context paramContext)
   {
-    setBackgroundColor(getContext().getResources().getColor(2131101143));
+    setBackgroundColor(getContext().getResources().getColor(2131166737));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof opw))
+    if ((paramObject instanceof pax))
     {
-      this.a.a((opw)paramObject);
-      if ((((opw)paramObject).a() == 53) && ((getLayoutParams() instanceof LinearLayout.LayoutParams)))
+      this.a.a((pax)paramObject);
+      if ((((pax)paramObject).a() == 53) && ((getLayoutParams() instanceof LinearLayout.LayoutParams)))
       {
         paramObject = (LinearLayout.LayoutParams)getLayoutParams();
         paramObject.leftMargin = Utils.dp2px(6.0D);
         paramObject.rightMargin = Utils.dp2px(6.0D);
-        setBackgroundColor(getContext().getResources().getColor(2131099992));
+        setBackgroundColor(getContext().getResources().getColor(2131165577));
       }
       if (this.a.a.e()) {
         setVisibility(0);
@@ -90,16 +90,16 @@ public class ComponentDivider
     setVisibility(8);
   }
   
-  public void a(pfh parampfh)
+  public void a(prb paramprb)
   {
-    this.a.a(parampfh);
+    this.a.a(paramprb);
   }
   
   public void b()
   {
-    opw localopw = this.a.a;
+    pax localpax = this.a.a;
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -2);
-    pmu.a(getContext(), localopw, localLayoutParams);
+    pyp.a(getContext(), localpax, localLayoutParams);
     setLayoutParams(localLayoutParams);
   }
 }

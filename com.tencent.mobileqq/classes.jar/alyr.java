@@ -1,25 +1,101 @@
-import android.graphics.Rect;
-import java.util.Comparator;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.util.WeakReference;
 
 class alyr
-  implements Comparator<Rect>
+  implements aysa
 {
-  alyr(alyo paramalyo) {}
+  alyr(alyq paramalyq) {}
   
-  public int a(Rect paramRect1, Rect paramRect2)
+  public void onResp(aysx arg1)
   {
-    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
+    Object localObject1;
+    boolean bool;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder().append("onResp reqUrl: resp is null: ");
+      if (??? == null)
+      {
+        bool = true;
+        QLog.i("Q.dynamicAvatar", 2, bool);
+      }
+    }
+    else
+    {
+      if (??? != null) {
+        break label51;
+      }
+    }
+    label51:
     do
     {
-      return -1;
-      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
-        return 1;
+      return;
+      bool = false;
+      break;
+      localObject1 = ((ayrv)???.jdField_a_of_type_Aysw).jdField_a_of_type_JavaLangString;
+      int i = ???.jdField_a_of_type_Int;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.dynamicAvatar", 2, "onResp reqUrl: " + (String)localObject1 + " mResult: " + i + ",httpCode:" + ???.c + ",errDesc:" + ???.jdField_a_of_type_JavaLangString);
       }
-    } while (paramRect1.width() > paramRect2.width());
-    if (paramRect1.width() < paramRect2.width()) {
-      return 1;
+      for (;;)
+      {
+        synchronized (alyq.a(this.a))
+        {
+          if (alyq.a(this.a).isEmpty()) {
+            break;
+          }
+          Iterator localIterator = alyq.a(this.a).iterator();
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          Object localObject3 = (WeakReference)localIterator.next();
+          if ((localObject3 == null) || (((WeakReference)localObject3).get() == null)) {
+            continue;
+          }
+          localObject3 = (alys)((WeakReference)localObject3).get();
+          if (i == 0)
+          {
+            bool = true;
+            ((alys)localObject3).a((String)localObject1, bool, false);
+          }
+        }
+        bool = false;
+      }
+      alyq.a(this.a).remove(localObject2);
+    } while ((!bbev.g(BaseApplicationImpl.getContext())) || (bbev.h(BaseApplicationImpl.getContext())));
+    alyq.a(this.a);
+  }
+  
+  public void onUpdateProgeress(aysw arg1, long paramLong1, long paramLong2)
+  {
+    if ((!alyq.a(this.a).isEmpty()) && ((??? instanceof ayrv))) {
+      if (paramLong2 <= 0L) {
+        break label148;
+      }
     }
-    return 0;
+    label148:
+    for (int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);; i = 0)
+    {
+      String str = ((ayrv)???).jdField_a_of_type_JavaLangString;
+      synchronized (alyq.a(this.a))
+      {
+        if (!alyq.a(this.a).isEmpty())
+        {
+          Iterator localIterator = alyq.a(this.a).iterator();
+          while (localIterator.hasNext())
+          {
+            WeakReference localWeakReference = (WeakReference)localIterator.next();
+            if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+              ((alys)localWeakReference.get()).a(str, i);
+            }
+          }
+        }
+      }
+      return;
+    }
   }
 }
 

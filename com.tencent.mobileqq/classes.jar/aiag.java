@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class aiag
-  implements View.OnClickListener
+public abstract interface aiag
 {
-  aiag(aiaf paramaiaf) {}
-  
-  public void onClick(View paramView)
-  {
-    aiaf.a(this.a).a(paramView);
-  }
+  public abstract void a(float paramFloat1, float paramFloat2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aiag
  * JD-Core Version:    0.7.0.1
  */

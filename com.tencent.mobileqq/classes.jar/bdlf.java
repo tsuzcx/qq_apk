@@ -1,26 +1,21 @@
-import java.util.Observable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class bdlf
-  extends Observable
+class bdlf
+  implements DialogInterface.OnDismissListener
 {
-  public void a(Object paramObject)
+  bdlf(bdlc parambdlc) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramObject == null) {
-      return;
-    }
-    bdnw.a("minisdk-start_AppStateManager", "notifyChange msg=" + paramObject);
-    setChanged();
-    if (paramObject != null)
-    {
-      notifyObservers(paramObject);
-      return;
-    }
-    notifyObservers();
+    this.a.a = null;
+    this.a.c = false;
+    this.a.c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdlf
  * JD-Core Version:    0.7.0.1
  */

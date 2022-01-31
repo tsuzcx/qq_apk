@@ -1,21 +1,15 @@
-import android.view.animation.Transformation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
 
 public class acfq
-  implements bajj<Integer>
+  implements DialogInterface.OnClickListener
 {
-  public acfq(VisitorsActivity paramVisitorsActivity) {}
+  public acfq(TranslucentTRansferFragment paramTranslucentTRansferFragment, bbgg parambbgg) {}
   
-  public void a(bajd<Integer> parambajd, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.c.setText(paramInteger + "");
-    if (paramInteger.intValue() > 9999)
-    {
-      this.a.c.setTextSize(36.0F);
-      return;
-    }
-    this.a.c.setTextSize(44.0F);
+    this.jdField_a_of_type_Bbgg.dismiss();
   }
 }
 

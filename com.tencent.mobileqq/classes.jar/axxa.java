@@ -1,18 +1,12 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class axxa
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  axxa(axwx paramaxwx) {}
+  axxa(axwz paramaxwz) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("com.tencent.innerdns.domainAddressDataUpdateAction".equals(paramIntent.getAction())) {
-      axwx.a(this.a);
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

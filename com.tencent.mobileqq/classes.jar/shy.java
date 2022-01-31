@@ -1,16 +1,16 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-
-public abstract interface shy
+final class shy
+  implements oti
 {
-  public abstract void a(String paramString1, String paramString2, int paramInt);
+  public void l() {}
   
-  public abstract void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt);
-  
-  public abstract void b(String paramString1, String paramString2, int paramInt);
+  public void m()
+  {
+    shx.a(true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     shy
  * JD-Core Version:    0.7.0.1
  */

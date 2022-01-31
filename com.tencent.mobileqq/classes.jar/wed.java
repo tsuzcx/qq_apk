@@ -1,36 +1,17 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.Window;
 
-public class wed
+class wed
+  extends RecyclerView.ViewHolder
 {
-  public static void a(Window paramWindow)
+  wed(wea paramwea, View paramView)
   {
-    if (paramWindow == null) {
-      return;
-    }
-    paramWindow.getDecorView().setSystemUiVisibility(2);
-    paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(new wee(paramWindow));
-  }
-  
-  public static void b(Window paramWindow)
-  {
-    if (paramWindow == null) {
-      return;
-    }
-    paramWindow.setFlags(8, 8);
-  }
-  
-  public static void c(Window paramWindow)
-  {
-    if (paramWindow == null) {
-      return;
-    }
-    paramWindow.clearFlags(8);
+    super(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wed
  * JD-Core Version:    0.7.0.1
  */

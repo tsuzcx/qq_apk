@@ -1,35 +1,17 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
-import com.tencent.mobileqq.mini.sdk.MiniAppController.ActivityResultListener;
-import java.io.File;
+import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
+import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
+import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
 
 class VideoJsPlugin$8
-  implements MiniAppController.ActivityResultListener
+  implements Runnable
 {
-  VideoJsPlugin$8(VideoJsPlugin paramVideoJsPlugin, Activity paramActivity, boolean paramBoolean) {}
+  VideoJsPlugin$8(VideoJsPlugin paramVideoJsPlugin, AppBrandRuntime paramAppBrandRuntime, String paramString) {}
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void run()
   {
-    if (paramInt1 == 2)
-    {
-      if ((paramInt2 == -1) && (paramIntent != null))
-      {
-        paramIntent = PreferenceManager.getDefaultSharedPreferences(this.val$activity).getString("miniapp_video_path", "");
-        VideoJsPlugin.access$1300(this.this$0, new File(paramIntent), this.val$compress);
-      }
-      for (;;)
-      {
-        MiniAppController.getInstance().removeActivityResultListener(this);
-        return true;
-        VideoJsPlugin.access$400(this.this$0, VideoJsPlugin.access$300(this.this$0), "chooseVideo", null);
-      }
-    }
-    return false;
+    this.val$runtime.pageContainer.getCurrentPage().updateToastMsg(this.val$title);
   }
 }
 

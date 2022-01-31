@@ -1,20 +1,44 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class qwl
-  implements qzr
+class qwl
+  extends qwp
 {
-  public qwl(FastWebActivity paramFastWebActivity) {}
+  private final int jdField_a_of_type_Int;
+  private final qwr jdField_a_of_type_Qwr;
+  private final qwr b;
   
-  public void a(qzs paramqzs)
+  public qwl(int paramInt)
   {
-    ArticleInfo localArticleInfo = paramqzs.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    int i = FastWebActivity.b(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.i(FastWebActivity.a(this.a), 2, "articleInfo" + localArticleInfo);
-    }
-    raz.a(localArticleInfo, FastWebActivity.c(this.a), i, paramqzs.jdField_a_of_type_Boolean, this.a.b);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Qwr = new qwr(this.jdField_a_of_type_Int);
+    this.b = new qwr(this.jdField_a_of_type_Int);
+  }
+  
+  public long a(long paramLong)
+  {
+    this.jdField_a_of_type_Qwr.a(paramLong);
+    paramLong = this.jdField_a_of_type_Qwr.b;
+    this.b.a(paramLong);
+    long l = this.b.b;
+    float f = 2.0F / (Math.max(this.jdField_a_of_type_Qwr.a(), 2) - 1);
+    return ((float)(paramLong - l) * f + (float)(2L * paramLong - l));
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_Qwr.a();
+    this.b.a();
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.jdField_a_of_type_Qwr.b();
+    this.b.b();
+  }
+  
+  public String toString()
+  {
+    return "DoubleMoveAvgPredictor(" + this.jdField_a_of_type_Int + ')';
   }
 }
 

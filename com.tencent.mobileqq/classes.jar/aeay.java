@@ -1,27 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class aeay
-  extends aeav
 {
-  public String b;
+  public float a;
+  public int a;
+  public aeaw a;
+  public ValueAnimator a;
+  public boolean a;
+  public float b;
+  public int b;
+  public ValueAnimator b;
+  public boolean b;
+  public int c;
+  public ValueAnimator c;
+  public int d;
+  public ValueAnimator d;
+  public int e;
+  public int f;
+  public int g;
   
-  public aeay(String paramString)
-  {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null) {
-      this.b = paramRedPacketInfo.resPath;
-    }
-  }
-  
-  public boolean a()
-  {
-    return !TextUtils.isEmpty(this.b);
-  }
+  public aeay(SixCombolEffectView paramSixCombolEffectView) {}
 }
 
 

@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.data.RecentUser;
-
-public class aiah
+public abstract interface aiah
 {
-  int jdField_a_of_type_Int;
-  public RecentUser a;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aiah
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,29 @@
-import android.support.annotation.NonNull;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
 
 class aynr
-  implements Comparable<aynr>
+  implements Animation.AnimationListener
 {
-  public String a;
-  public String b;
+  aynr(aynq paramaynq) {}
   
-  aynr(aynk paramaynk) {}
-  
-  public int a(@NonNull aynr paramaynr)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return this.b.compareTo(paramaynr.b);
+    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(500);
+    paramAnimation.setFillAfter(true);
+    paramAnimation.setAnimationListener(new ayns(this));
+    this.a.d.startAnimation(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aynr
  * JD-Core Version:    0.7.0.1
  */

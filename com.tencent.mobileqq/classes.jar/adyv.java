@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import android.graphics.Bitmap;
+import java.lang.ref.WeakReference;
 
-public class adyv
-  implements bbrx
+class adyv
+  implements awce
 {
-  public adyv(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
+  public WeakReference<adyt> a;
   
-  public void a(int paramInt)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+    if (this.a.get() != null) {
+      adyt.a((adyt)this.a.get(), paramInt1, paramInt2, paramBitmap, paramInt3);
     }
   }
 }

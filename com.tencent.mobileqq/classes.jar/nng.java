@@ -1,22 +1,19 @@
-public abstract interface nng
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+
+public class nng
+  implements bcdu
 {
-  public abstract void a();
+  public nng(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public Object a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    }
+    return new nnj(this.a);
+  }
 }
 
 

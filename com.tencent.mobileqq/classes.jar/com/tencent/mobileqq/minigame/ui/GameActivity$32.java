@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import android.widget.FrameLayout;
-
 class GameActivity$32
   implements Runnable
 {
@@ -9,9 +7,7 @@ class GameActivity$32
   
   public void run()
   {
-    if (this.this$0.mBannerAdContainer != null) {
-      this.this$0.mBannerAdContainer.removeAllViews();
-    }
+    this.this$0.finish();
   }
 }
 

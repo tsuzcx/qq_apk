@@ -1,54 +1,70 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.ProgressButton;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.IInterface;
+import com.tencent.mobileqq.music.SongInfo;
 
-class asvl
-  implements DialogInterface.OnClickListener
+public abstract interface asvl
+  extends IInterface
 {
-  asvl(asuq paramasuq) {}
+  public abstract int a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramInt == 1)
-    {
-      if (this.a.jdField_a_of_type_Asyg != null) {
-        this.a.jdField_a_of_type_Asyg.a(2);
-      }
-      if (asuq.a(this.a) != null)
-      {
-        if (!this.a.n) {
-          break label88;
-        }
-        awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_trigger", 0, 0, asuq.a(this.a).uin, "", "yes", "android");
-      }
-    }
-    label88:
-    do
-    {
-      do
-      {
-        return;
-        awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_goon", 0, 0, asuq.a(this.a).uin, "", "yes", "android");
-        return;
-      } while (paramInt != 0);
-      if (this.a.jdField_a_of_type_Asyg != null) {
-        this.a.jdField_a_of_type_Asyg.a(10);
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131633195);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(0);
-      }
-      this.a.jdField_a_of_type_Int = 2;
-    } while (asuq.a(this.a) == null);
-    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_cancel", 0, 0, asuq.a(this.a).uin, "", "yes", "android");
-  }
+  public abstract Intent a();
+  
+  public abstract Bundle a();
+  
+  public abstract SongInfo a();
+  
+  public abstract String a();
+  
+  public abstract String a(int paramInt, String paramString);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(Intent paramIntent);
+  
+  public abstract void a(Bundle paramBundle);
+  
+  public abstract void a(asvi paramasvi);
+  
+  public abstract void a(String paramString, SongInfo[] paramArrayOfSongInfo, int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract SongInfo[] a();
+  
+  public abstract int b();
+  
+  public abstract SongInfo b();
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(asvi paramasvi);
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract int d();
+  
+  public abstract void d();
+  
+  public abstract int e();
+  
+  public abstract void e();
+  
+  public abstract int f();
+  
+  public abstract int g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     asvl
  * JD-Core Version:    0.7.0.1
  */

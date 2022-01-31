@@ -11,13 +11,13 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bajq;
+import bbkx;
 
 public class PanoramaBallView
   extends View
 {
   public static final int a;
-  public static final int b = bajq.b(32.0F);
+  public static final int b = bbkx.b(32.0F);
   private float jdField_a_of_type_Float;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private int c = jdField_a_of_type_Int;
@@ -32,7 +32,7 @@ public class PanoramaBallView
   
   static
   {
-    jdField_a_of_type_Int = bajq.b(32.0F);
+    jdField_a_of_type_Int = bbkx.b(32.0F);
   }
   
   public PanoramaBallView(Context paramContext)
@@ -68,7 +68,7 @@ public class PanoramaBallView
   {
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.e = paramContext.getResources().getColor(2131099748);
+    this.e = paramContext.getResources().getColor(2131165285);
   }
   
   private void a(Canvas paramCanvas)

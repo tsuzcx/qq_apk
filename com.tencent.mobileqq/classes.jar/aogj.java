@@ -1,34 +1,137 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.BuddyUploadTaskExcuter.1;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class aogj
-  implements aofq
+public class aogj
 {
-  aogj(aogi paramaogi, ByteStringMicro paramByteStringMicro, String paramString) {}
+  public int a;
+  public List<aogk> a;
+  public boolean a;
+  public boolean b;
   
-  public void a(boolean paramBoolean)
+  private int a()
   {
-    aofz.a(this.jdField_a_of_type_Aogi.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aogh.jdField_a_of_type_Aofz).a().a(aogh.a(this.jdField_a_of_type_Aogi.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aogh));
-    if (paramBoolean)
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aogi.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aogh.jdField_a_of_type_JavaLangString + " sendLocalFileToBuddyBySHA uploadFile success");
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      for (int i = 0;; i = ((aogk)localIterator.next()).jdField_a_of_type_JavaUtilList.size() + i)
+      {
+        j = i;
+        if (!localIterator.hasNext()) {
+          break;
+        }
       }
-      this.jdField_a_of_type_Aogi.jdField_a_of_type_Aofv.a(this.jdField_a_of_type_Aogi.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro.toByteArray(), 5000, 3, null);
-      aogh.a(this.jdField_a_of_type_Aogi.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aogh).putString("_m_ForwardUuid", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aogi.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aogv.a(this.jdField_a_of_type_JavaLangString, aogh.a(this.jdField_a_of_type_Aogi.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aogh));
-      return;
     }
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aogi.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aogh.jdField_a_of_type_JavaLangString + " BuddyUploadTaskExcuter faild");
-    this.jdField_a_of_type_Aogi.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aogv.a(aofz.a(this.jdField_a_of_type_Aogi.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aogh.jdField_a_of_type_Long, false), true);
+    int j = 0;
+    return j;
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      long l = System.currentTimeMillis();
+      int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+      while (i >= 0)
+      {
+        if (Math.abs(l - ((aogk)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Long) > 60000L) {
+          this.jdField_a_of_type_JavaUtilList.remove(i);
+        }
+        i -= 1;
+      }
+    }
+  }
+  
+  public aogk a()
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
+        localObject1 = (aogk)this.jdField_a_of_type_JavaUtilList.get(0);
+      }
+    }
+    return localObject1;
+  }
+  
+  public aogk a(String paramString)
+  {
+    int i;
+    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilList != null))
+    {
+      i = 0;
+      if (i < this.jdField_a_of_type_JavaUtilList.size()) {
+        if (paramString.equals(((aogk)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString))
+        {
+          paramString = (aogk)this.jdField_a_of_type_JavaUtilList.get(i);
+          this.jdField_a_of_type_JavaUtilList.remove(i);
+        }
+      }
+    }
+    for (;;)
+    {
+      if (paramString != null) {
+        this.jdField_a_of_type_JavaUtilList.add(0, paramString);
+      }
+      return paramString;
+      i += 1;
+      break;
+      paramString = null;
+    }
+  }
+  
+  public void a(aogk paramaogk, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+    this.jdField_a_of_type_Int = paramInt;
+    a();
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramaogk)) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramaogk);
+    }
+    if ((paramaogk == null) || (paramaogk.jdField_a_of_type_JavaUtilList.size() == 0)) {}
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_JavaUtilList.add(0, paramaogk);
+      while ((a() > 500) && (this.jdField_a_of_type_JavaUtilList.size() > 1)) {
+        this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("mProfileComplete").append("=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" ").append("mProfileComplete").append("=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" ").append("mShowCard").append("=").append(this.b);
+    localStringBuilder.append(" ").append("mMaxLikeCount").append("=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" ").append("mTags").append("=").append(" [");
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        aogk localaogk = (aogk)this.jdField_a_of_type_JavaUtilList.get(i);
+        localStringBuilder.append("\n");
+        localStringBuilder.append("index_").append(i).append("=").append(localaogk.toString());
+        i += 1;
+      }
+    }
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aogj
  * JD-Core Version:    0.7.0.1
  */

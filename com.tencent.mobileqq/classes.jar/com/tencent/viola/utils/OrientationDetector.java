@@ -16,10 +16,12 @@ public class OrientationDetector
   private WeakReference<Context> mContextRef;
   private int mCurrentOrientation = 1;
   private volatile OrientationEventListener mEventListener;
+  private int mHorizontalAngle = 20;
   private Object mLock = new Object();
   private HashMap<Integer, Long> mOrientationEventMap;
   private boolean mRotateSettingSwitch = false;
   private volatile OrientationDetector.RotationObserver mRotationObserver;
+  private int mVerticalAngle = 30;
   
   public OrientationDetector(Activity paramActivity, OrientationDetector.OnOrientationChangedListener paramOnOrientationChangedListener)
   {
@@ -106,6 +108,16 @@ public class OrientationDetector
       return (Context)this.mContextRef.get();
     }
     return null;
+  }
+  
+  public void setHorizontalAngle(int paramInt)
+  {
+    this.mHorizontalAngle = paramInt;
+  }
+  
+  public void setVerticalAngle(int paramInt)
+  {
+    this.mVerticalAngle = paramInt;
   }
 }
 

@@ -1,22 +1,33 @@
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.widget.AdapterView;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
 public class aawf
-  implements behk
+  implements View.OnTouchListener
 {
-  public aawf(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public aawf(Conversation paramConversation) {}
   
-  public void a(AdapterView<?> paramAdapterView) {}
-  
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramView == null) {
-      return;
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder().append("statusTitle onTouch event :").append(paramMotionEvent.toString()).append(", mGestureDetector is null ");
+      if (this.a.a == null) {
+        break label81;
+      }
     }
-    this.a.jdField_a_of_type_AndroidViewView = paramView;
-    this.a.jdField_a_of_type_Aawn.a(paramInt);
-    this.a.a(paramAdapterView, paramInt);
+    label81:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("Q.recent", 2, bool);
+      if (this.a.a != null) {
+        this.a.a.onTouchEvent(paramMotionEvent);
+      }
+      return true;
+    }
   }
 }
 

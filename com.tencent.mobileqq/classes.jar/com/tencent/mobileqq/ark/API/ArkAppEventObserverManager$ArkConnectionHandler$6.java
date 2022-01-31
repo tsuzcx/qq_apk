@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ark.API;
 
-import alad;
-import alaf;
-import alah;
+import alop;
+import alor;
+import alot;
 
 public class ArkAppEventObserverManager$ArkConnectionHandler$6
   implements Runnable
 {
-  public ArkAppEventObserverManager$ArkConnectionHandler$6(alaf paramalaf) {}
+  public ArkAppEventObserverManager$ArkConnectionHandler$6(alor paramalor) {}
   
   public void run()
   {
-    if ((alad.a(this.a.a) != null) && (!"none".equals(alad.b(this.a.a))))
+    if ((alop.a(this.a.a) != null) && (!"none".equals(alop.b(this.a.a))))
     {
-      alad.a(this.a.a).a(true, "none");
-      alad.a(this.a.a, "none");
+      alop.a(this.a.a).a(true, "none");
+      alop.a(this.a.a, "none");
     }
   }
 }

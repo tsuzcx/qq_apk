@@ -1,41 +1,106 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Build;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Date;
+import android.opengl.GLES20;
+import java.util.HashMap;
 
-final class auqz
-  implements DialogInterface.OnDismissListener
+public class auqz
 {
-  auqz(IosTimepicker paramIosTimepicker, JsBridgeListener paramJsBridgeListener) {}
+  public static int a;
+  public static int b = 2;
+  public static int c = 3;
+  public HashMap<String, Integer> a;
+  private int[] a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  static
   {
-    long l1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener != null))
-    {
-      l1 = this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker.a() / 1000L;
-      if (!Build.MODEL.equals("Coolpad 5890")) {
-        break label126;
-      }
-      long l2 = new Date().getTime() / 1000L;
-      if (l1 >= l2) {
-        break label126;
-      }
-      l1 = l2;
+    jdField_a_of_type_Int = 1;
+  }
+  
+  public auqz()
+  {
+    this.jdField_a_of_type_ArrayOfInt = new int[1];
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7)
+  {
+    a(paramFloat1, "percent1");
+    a(paramFloat2, "percent2");
+    a(paramFloat3, "percent3");
+    a(paramFloat4, "percent4");
+    a(paramFloat5, "percent5");
+    a(paramFloat6, "percent6");
+    a(paramFloat7, "percent7");
+  }
+  
+  private void a(float paramFloat, String paramString)
+  {
+    int i = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
+    if (i >= 0) {
+      GLES20.glUniform1f(i, paramFloat);
     }
-    label126:
+  }
+  
+  private void b(int paramInt)
+  {
+    float f = new float[] { 1.0F, 1.0F, 0.95F, 0.9F }[paramInt];
+    if (paramInt == c) {
+      f = 1.1F;
+    }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(auqx.a(), 2, "onDismiss Time :" + aurc.a(1000L * l1));
-      }
-      this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker.setOnTimePickerSelectListener(null);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener.a(Long.valueOf(l1));
-      auqx.a = true;
+      a(f, "quality");
+      a(0.0F, "add_red");
+      a(0.0F, "red_m");
+      a(0.0F, "green_m");
+      a(0.0F, "blue_m");
       return;
+      if (paramInt == b) {
+        f = 1.0F;
+      }
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    float f5 = 0.2F;
+    float f1;
+    float f2;
+    float f3;
+    float f4;
+    if (paramInt == jdField_a_of_type_Int)
+    {
+      f1 = 0.455F;
+      f2 = 0.17F;
+      f3 = 0.177F;
+      f4 = 0.0F;
+    }
+    for (;;)
+    {
+      a(0.0F, f1, f2, f3, 0.0F, f5, f4);
+      b(paramInt);
+      return;
+      if (paramInt == b)
+      {
+        f1 = 0.62F;
+        f2 = 0.375F;
+        f3 = 0.07F;
+        f5 = 0.125F;
+        f4 = 0.26F;
+      }
+      else if (paramInt == c)
+      {
+        f1 = 0.824F;
+        f2 = 0.461F;
+        f3 = 0.152F;
+        f4 = 0.0F;
+      }
+      else
+      {
+        f4 = 0.0F;
+        f5 = 0.0F;
+        f3 = 0.0F;
+        f2 = 0.0F;
+        f1 = 0.0F;
+      }
     }
   }
 }

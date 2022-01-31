@@ -1,24 +1,44 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface arov
+class arov
+  implements wxw
 {
-  public abstract arpi a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity);
+  arov(arou paramarou, String paramString) {}
   
-  public abstract String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity);
-  
-  public abstract void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList);
-  
-  public abstract boolean a(MessageRecord paramMessageRecord);
-  
-  public abstract boolean a(MsgBackupResEntity paramMsgBackupResEntity);
-  
-  public abstract void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList);
+  public void a(Bundle paramBundle)
+  {
+    if (paramBundle.getBoolean("isSuccess", false))
+    {
+      int i = paramBundle.getInt("appid");
+      Object localObject = paramBundle.getString("openId");
+      if ((i != this.jdField_a_of_type_Arou.jdField_a_of_type_JavaLangInteger.intValue()) || (!((String)localObject).equals(this.jdField_a_of_type_Arou.jdField_a_of_type_JavaLangString))) {
+        break label120;
+      }
+      paramBundle = paramBundle.getString("uin");
+      if (!TextUtils.isEmpty(paramBundle))
+      {
+        localObject = new Intent(this.jdField_a_of_type_Arou.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(), FriendProfileCardActivity.class);
+        ((Intent)localObject).putExtra("troopUin", this.jdField_a_of_type_JavaLangString);
+        ((Intent)localObject).putExtra("memberUin", paramBundle);
+        this.jdField_a_of_type_Arou.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a().startActivity((Intent)localObject);
+      }
+    }
+    label120:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("UiApiPlugin", 2, "appId != appID || !openId.equals(openID)");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     arov
  * JD-Core Version:    0.7.0.1
  */

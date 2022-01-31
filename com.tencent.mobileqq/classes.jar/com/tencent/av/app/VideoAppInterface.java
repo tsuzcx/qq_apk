@@ -1,7 +1,7 @@
 package com.tencent.av.app;
 
-import ajfb;
-import ajfe;
+import ajtd;
+import ajtg;
 import android.app.Notification;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -15,14 +15,13 @@ import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import android.view.View;
-import atmq;
-import auqk;
-import awdm;
-import awqx;
-import awru;
-import axrr;
-import axso;
+import auko;
+import avpt;
+import axcu;
+import axqw;
+import axrs;
+import ayry;
+import aysv;
 import com.tencent.av.VideoController;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.av.opengl.effects.AEFilterSupport;
@@ -38,16 +37,11 @@ import com.tencent.mfsdk.reporter.ReporterMachine;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.mobileqq.redtouch.RedTouch;
 import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
 import com.tencent.mobileqq.startup.step.UpdateAvSo;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -58,80 +52,79 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observer;
 import java.util.Vector;
-import krx;
-import ktm;
-import ktn;
-import ktp;
-import ktr;
-import kts;
-import kul;
-import kun;
-import kup;
-import kus;
-import kuu;
-import kuw;
-import kuy;
-import kva;
-import kvd;
-import kvh;
-import kvi;
-import kvl;
-import kvq;
-import kvu;
-import kvv;
-import kvy;
-import kvz;
-import kwn;
-import kwt;
-import kwu;
-import kwv;
-import kyh;
-import kyj;
-import kyl;
-import lad;
+import lcl;
+import leb;
+import lec;
+import lee;
+import leh;
 import lfa;
-import lls;
-import lor;
-import mht;
+import lfc;
+import lfe;
+import lfh;
+import lfj;
+import lfl;
+import lfn;
+import lfp;
+import lfs;
+import lfw;
+import lfx;
+import lga;
+import lgf;
+import lgj;
+import lgk;
+import lgn;
+import lgo;
+import lhc;
+import lhi;
+import lhj;
+import lhk;
+import lix;
+import liz;
+import ljb;
+import lkt;
+import lps;
+import lwk;
+import lzj;
 import mqq.app.MSFServlet;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
+import mss;
 
 public class VideoAppInterface
   extends AppInterface
-  implements awru
+  implements axrs
 {
   private static String jdField_a_of_type_JavaLangString = "VideoAppInterface";
   protected int a;
   protected Handler a;
-  private atmq jdField_a_of_type_Atmq;
-  private axso jdField_a_of_type_Axso;
+  private auko jdField_a_of_type_Auko;
+  private aysv jdField_a_of_type_Aysv;
   public VideoController a;
   protected DeviceCapabilityExamination a;
   private Runnable jdField_a_of_type_JavaLangRunnable;
-  protected List<ajfe> a;
-  private ktm jdField_a_of_type_Ktm;
-  private ktn jdField_a_of_type_Ktn;
-  kts jdField_a_of_type_Kts;
-  kul jdField_a_of_type_Kul;
-  kun jdField_a_of_type_Kun;
-  kup jdField_a_of_type_Kup;
-  kus jdField_a_of_type_Kus;
-  kuu jdField_a_of_type_Kuu;
-  kuw jdField_a_of_type_Kuw;
-  kuy jdField_a_of_type_Kuy;
-  kva jdField_a_of_type_Kva;
-  kvd jdField_a_of_type_Kvd;
-  kvh jdField_a_of_type_Kvh;
-  private kvi jdField_a_of_type_Kvi;
-  kvl jdField_a_of_type_Kvl;
-  kvv jdField_a_of_type_Kvv = null;
-  private kvy jdField_a_of_type_Kvy;
-  private kwn jdField_a_of_type_Kwn;
-  public kwu a;
-  protected kwv a;
-  lad jdField_a_of_type_Lad;
-  private final lfa jdField_a_of_type_Lfa = new lfa();
+  protected List<ajtg> a;
+  private leb jdField_a_of_type_Leb;
+  private lec jdField_a_of_type_Lec;
+  leh jdField_a_of_type_Leh;
+  lfa jdField_a_of_type_Lfa;
+  lfc jdField_a_of_type_Lfc;
+  lfe jdField_a_of_type_Lfe;
+  lfh jdField_a_of_type_Lfh;
+  lfj jdField_a_of_type_Lfj;
+  lfl jdField_a_of_type_Lfl;
+  lfn jdField_a_of_type_Lfn;
+  lfp jdField_a_of_type_Lfp;
+  lfs jdField_a_of_type_Lfs;
+  lfw jdField_a_of_type_Lfw;
+  private lfx jdField_a_of_type_Lfx;
+  lga jdField_a_of_type_Lga;
+  lgk jdField_a_of_type_Lgk = null;
+  private lgn jdField_a_of_type_Lgn;
+  private lhc jdField_a_of_type_Lhc;
+  public lhj a;
+  protected lhk a;
+  lkt jdField_a_of_type_Lkt;
+  private final lps jdField_a_of_type_Lps = new lps();
   protected boolean a;
   private Runnable b;
   public boolean b;
@@ -149,20 +142,6 @@ public class VideoAppInterface
     this.jdField_b_of_type_JavaLangRunnable = new VideoAppInterface.1(this);
   }
   
-  public static boolean a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
-  {
-    if (paramAppInfo == null) {}
-    while ((paramAppInfo.iNewFlag.get() == 0) || (paramAppInfo.exposure_max.get() < 0) || (paramAppInfo.red_display_info.get() == null) || (paramAppInfo.red_display_info.red_type_info.get() == null) || (paramAppInfo.red_display_info.red_type_info.get().size() == 0)) {
-      return false;
-    }
-    return true;
-  }
-  
-  private void d(String paramString)
-  {
-    this.jdField_a_of_type_Kvl.b(paramString);
-  }
-  
   private void e()
   {
     AudioManager localAudioManager = (AudioManager)getApplication().getApplicationContext().getSystemService("audio");
@@ -173,23 +152,18 @@ public class VideoAppInterface
     }
   }
   
-  private void e(String paramString)
-  {
-    this.jdField_a_of_type_Kvl.c(paramString);
-  }
-  
   private void f()
   {
-    this.jdField_a_of_type_Kul.b();
-    this.jdField_a_of_type_Kup.b();
-    this.jdField_a_of_type_Kuw.a();
-    this.jdField_a_of_type_Kvd.a();
-    this.jdField_a_of_type_Kun.a();
-    this.jdField_a_of_type_Kus.a();
-    this.jdField_a_of_type_Kva.a();
-    this.jdField_a_of_type_Kuy.b();
-    this.jdField_a_of_type_Kuu.a();
-    this.jdField_a_of_type_Kvi.a();
+    this.jdField_a_of_type_Lfa.b();
+    this.jdField_a_of_type_Lfe.b();
+    this.jdField_a_of_type_Lfl.a();
+    this.jdField_a_of_type_Lfs.a();
+    this.jdField_a_of_type_Lfc.a();
+    this.jdField_a_of_type_Lfh.a();
+    this.jdField_a_of_type_Lfp.a();
+    this.jdField_a_of_type_Lfn.b();
+    this.jdField_a_of_type_Lfj.a();
+    this.jdField_a_of_type_Lfx.a();
   }
   
   private void g()
@@ -240,7 +214,7 @@ public class VideoAppInterface
     QLog.d(jdField_a_of_type_JavaLangString, 2, "registerExitProcessReceiver");
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("com.tencent.av.exit_process");
-    getApp().registerReceiver(new kvu(this), localIntentFilter);
+    getApp().registerReceiver(new lgj(this), localIntentFilter);
   }
   
   private void l()
@@ -263,32 +237,32 @@ public class VideoAppInterface
   
   public int a(int paramInt, String paramString)
   {
-    return this.jdField_a_of_type_Kvl.a(paramInt, paramString);
+    return this.jdField_a_of_type_Lga.a(paramInt, paramString);
   }
   
   public int a(String paramString)
   {
-    return this.jdField_a_of_type_Kvl.a(paramString);
+    return this.jdField_a_of_type_Lga.a(paramString);
   }
   
   public long a(String paramString)
   {
-    return this.jdField_a_of_type_Kvl.a(paramString);
+    return this.jdField_a_of_type_Lga.a(paramString);
   }
   
-  public ajfb a(int paramInt)
+  public ajtd a(int paramInt)
   {
-    return this.jdField_a_of_type_Kwn.a(this, paramInt);
+    return this.jdField_a_of_type_Lhc.a(this, paramInt);
   }
   
   public Bitmap a(int paramInt, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return this.jdField_a_of_type_Kvl.a(paramInt, paramString1, paramString2, paramBoolean1, paramBoolean2);
+    return this.jdField_a_of_type_Lga.a(paramInt, paramString1, paramString2, paramBoolean1, paramBoolean2);
   }
   
   public Bundle a(int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle, ResultReceiver paramResultReceiver)
   {
-    return this.jdField_a_of_type_Kvl.a(paramInt1, paramInt2, paramInt3, paramBundle, paramResultReceiver);
+    return this.jdField_a_of_type_Lga.a(paramInt1, paramInt2, paramInt3, paramBundle, paramResultReceiver);
   }
   
   public Handler a()
@@ -309,62 +283,6 @@ public class VideoAppInterface
     return this.jdField_a_of_type_ComTencentAvVideoController;
   }
   
-  public RedTouch a(View paramView, int paramInt)
-  {
-    String str;
-    if ((this.jdField_a_of_type_ComTencentAvVideoController != null) && (this.jdField_a_of_type_ComTencentAvVideoController.a() != null))
-    {
-      int i = this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int;
-      str = ktr.a(paramInt, i);
-      if (!ktr.a(this, paramInt, i))
-      {
-        QLog.d("AVRedDot", 1, "tryGetRedTouchAndShowRedDot falied. can not show redtouch. appId = " + str);
-        return null;
-      }
-    }
-    else
-    {
-      QLog.d("AVRedDot", 1, "tryGetRedTouchAndShowRedDot failed. videoController == null or videoController.getSessionInfo() == null");
-      return null;
-    }
-    if ((paramView == null) || (TextUtils.isEmpty(str)))
-    {
-      QLog.d("AVRedDot", 1, "tryGetRedTouchAndShowRedDot falied. appId[" + str + "], view[" + paramView + "]");
-      return null;
-    }
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = a(str);
-    if ((localAppInfo != null) && (a(localAppInfo)))
-    {
-      RedTouch localRedTouch = new RedTouch(getApplication(), paramView).a(53).a();
-      localRedTouch.a(localAppInfo);
-      e(str);
-      QLog.d("AVRedDot", 1, "tryGetRedTouchAndShowRedDot successfully. appId[" + str + "], view[" + paramView + "], redTouch[" + localRedTouch + "]");
-      return localRedTouch;
-    }
-    QLog.d("AVRedDot", 1, "tryGetRedTouchAndShowRedDot falied. appId[" + str + "], view[" + paramView + "], appInfo[" + localAppInfo + "], hasRedDot[" + a(localAppInfo) + "]");
-    return null;
-  }
-  
-  public RedTouch a(View paramView, String paramString)
-  {
-    if ((paramView == null) || (TextUtils.isEmpty(paramString)))
-    {
-      QLog.d("AVRedDot", 1, "tryGetRedTouchAndShowRedDot falied. appId[" + paramString + "], view[" + paramView + "]");
-      return null;
-    }
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = a(paramString);
-    if ((localAppInfo != null) && (a(localAppInfo)))
-    {
-      RedTouch localRedTouch = new RedTouch(getApplication(), paramView).a(53).a();
-      localRedTouch.a(localAppInfo);
-      e(paramString);
-      QLog.d("AVRedDot", 1, "tryGetRedTouchAndShowRedDot successfully. appId[" + paramString + "], view[" + paramView + "], redTouch[" + localRedTouch + "]");
-      return localRedTouch;
-    }
-    QLog.d("AVRedDot", 1, "tryGetRedTouchAndShowRedDot falied. appId[" + paramString + "], view[" + paramView + "], appInfo[" + localAppInfo + "], hasRedDot[" + a(localAppInfo) + "]");
-    return null;
-  }
-  
   public BusinessInfoCheckUpdate.AppInfo a(String paramString)
   {
     Bundle localBundle = new Bundle();
@@ -374,22 +292,22 @@ public class VideoAppInterface
       return null;
     }
     paramString.setClassLoader(RedAppInfo.class.getClassLoader());
-    return auqk.a((RedAppInfo)paramString.getParcelable("red_touch_red_app_info"));
+    return avpt.a((RedAppInfo)paramString.getParcelable("red_touch_red_app_info"));
   }
   
   public String a()
   {
-    String str2 = getApp().getString(2131654887);
+    String str2 = getApp().getString(2131720785);
     Object localObject = a();
     String str1 = str2;
     if (localObject != null)
     {
-      String str3 = ((VideoController)localObject).a().jdField_d_of_type_JavaLangString;
+      String str3 = ((VideoController)localObject).a().d;
       int i = ((VideoController)localObject).a().i;
       localObject = ((VideoController)localObject).a().f;
       str1 = str2;
       if (i == 9500) {
-        str1 = getDisplayName(i, str3, (String)localObject) + getApp().getString(2131654889);
+        str1 = getDisplayName(i, str3, (String)localObject) + getApp().getString(2131720787);
       }
     }
     return str1;
@@ -397,14 +315,14 @@ public class VideoAppInterface
   
   public String a(String paramString)
   {
-    return this.jdField_a_of_type_Kvl.b(paramString);
+    return this.jdField_a_of_type_Lga.b(paramString);
   }
   
   public Map<String, Integer> a()
   {
     try
     {
-      Map localMap = this.jdField_a_of_type_Kuu.a();
+      Map localMap = this.jdField_a_of_type_Lfj.a();
       return localMap;
     }
     finally
@@ -414,40 +332,40 @@ public class VideoAppInterface
     }
   }
   
-  public ktm a()
+  public leb a()
   {
-    return this.jdField_a_of_type_Ktm;
+    return this.jdField_a_of_type_Leb;
   }
   
-  public ktn a()
+  public lec a()
   {
-    return this.jdField_a_of_type_Ktn;
+    return this.jdField_a_of_type_Lec;
   }
   
-  public kvv a()
+  public lgk a()
   {
-    if (this.jdField_a_of_type_Kvv == null) {
-      this.jdField_a_of_type_Kvv = new kvv(this);
+    if (this.jdField_a_of_type_Lgk == null) {
+      this.jdField_a_of_type_Lgk = new lgk(this);
     }
-    return this.jdField_a_of_type_Kvv;
+    return this.jdField_a_of_type_Lgk;
   }
   
-  public kwt a(int paramInt)
+  public lhi a(int paramInt)
   {
-    return this.jdField_a_of_type_Kwu.a(paramInt);
+    return this.jdField_a_of_type_Lhj.a(paramInt);
   }
   
-  public lad a()
+  public lkt a()
   {
-    return this.jdField_a_of_type_Lad;
+    return this.jdField_a_of_type_Lkt;
   }
   
-  public lfa a()
+  public lps a()
   {
     if (this.h) {
-      return this.jdField_a_of_type_Lfa;
+      return this.jdField_a_of_type_Lps;
     }
-    synchronized (this.jdField_a_of_type_Lfa)
+    synchronized (this.jdField_a_of_type_Lps)
     {
       String str;
       if (!this.h)
@@ -460,7 +378,7 @@ public class VideoAppInterface
         i = j;
         if (j != -1)
         {
-          this.jdField_a_of_type_Lfa.a("BEAUTY_SKIN", j);
+          this.jdField_a_of_type_Lps.a("BEAUTY_SKIN", j);
           i = j;
         }
         this.h = true;
@@ -468,9 +386,9 @@ public class VideoAppInterface
           QLog.i(jdField_a_of_type_JavaLangString, 2, "getBeautyConfig config[" + str + "], level[" + i + "]");
         }
       }
-      return this.jdField_a_of_type_Lfa;
+      return this.jdField_a_of_type_Lps;
       label133:
-      this.jdField_a_of_type_Lfa.a(str);
+      this.jdField_a_of_type_Lps.a(str);
       int i = -1;
     }
   }
@@ -480,7 +398,7 @@ public class VideoAppInterface
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "getVideoConfigUpdate");
     }
-    NewIntent localNewIntent = new NewIntent(this.app, awdm.class);
+    NewIntent localNewIntent = new NewIntent(this.app, axcu.class);
     localNewIntent.putExtra("reqType", 11);
     startServlet(localNewIntent);
   }
@@ -504,7 +422,7 @@ public class VideoAppInterface
           int j = this.jdField_a_of_type_ComTencentAvVideoController.a().g;
           if ((j > 0) && (j <= 4))
           {
-            String str = this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_JavaLangString;
+            String str = this.jdField_a_of_type_ComTencentAvVideoController.a().d;
             this.jdField_a_of_type_ComTencentAvVideoController.a(str, i);
             this.jdField_a_of_type_ComTencentAvVideoController.b(i);
             this.jdField_a_of_type_ComTencentAvVideoController.b(str, 0);
@@ -544,17 +462,17 @@ public class VideoAppInterface
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Kwu.a(paramInt, paramString);
+    this.jdField_a_of_type_Lhj.a(paramInt, paramString);
   }
   
   public void a(int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Kvl.a(paramInt, paramString1, paramString2);
+    this.jdField_a_of_type_Lga.a(paramInt, paramString1, paramString2);
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Kvl.a(paramLong);
+    this.jdField_a_of_type_Lga.a(paramLong);
   }
   
   public void a(long paramLong, int paramInt)
@@ -562,57 +480,65 @@ public class VideoAppInterface
     if (paramInt < 200) {}
     for (int i = paramInt + 200;; i = paramInt)
     {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "video exit, mIsExit[" + this.e + "], reason[" + i + "], _reason[" + paramInt + "], mManagerFactory[" + this.jdField_a_of_type_Kwu + "], seq[" + paramLong + "]", new Throwable("打印调用栈"));
-      this.e = true;
-      if ((this.jdField_a_of_type_ComTencentAvVideoController != null) && (this.jdField_a_of_type_ComTencentAvVideoController.a() != null))
-      {
-        if (!this.jdField_a_of_type_ComTencentAvVideoController.a().G) {
-          break label356;
-        }
-        awqx.b(null, "CliOper", "", "", "0X8008AAD", "0X8008AAD", 0, 0, "", "", "", "");
+      boolean bool;
+      if (i == 261) {
+        bool = true;
       }
       for (;;)
       {
-        if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvVideoController != null)) {
-          this.jdField_a_of_type_ComTencentAvVideoController.C();
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "video exit, mIsExit[" + this.e + "], reason[" + i + "], _reason[" + paramInt + "], mManagerFactory[" + this.jdField_a_of_type_Lhj + "], seq[" + paramLong + "]", new Throwable("打印调用栈"));
+        this.e = true;
+        Object localObject;
+        if ((this.jdField_a_of_type_ComTencentAvVideoController != null) && (this.jdField_a_of_type_ComTencentAvVideoController.a() != null))
+        {
+          if (this.jdField_a_of_type_ComTencentAvVideoController.a().G) {
+            axqw.b(null, "CliOper", "", "", "0X8008AAD", "0X8008AAD", 0, 0, "", "", "", "");
+          }
         }
-        this.jdField_b_of_type_Boolean = false;
-        lor.a(paramLong, getApplication());
-        krx.d(jdField_a_of_type_JavaLangString, "exit video process clearNotification");
-        QQNotificationManager.getInstance().cancel(jdField_a_of_type_JavaLangString, 235);
-        Object localObject = (AudioManager)getApplication().getApplicationContext().getSystemService("audio");
-        if (localObject != null) {}
+        else
+        {
+          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvVideoController != null)) {
+            this.jdField_a_of_type_ComTencentAvVideoController.C();
+          }
+          this.jdField_b_of_type_Boolean = false;
+          lzj.a(paramLong, getApplication());
+          lcl.d(jdField_a_of_type_JavaLangString, "exit video process clearNotification");
+          QQNotificationManager.getInstance().cancel(jdField_a_of_type_JavaLangString, 235);
+          localObject = (AudioManager)getApplication().getApplicationContext().getSystemService("audio");
+          if (localObject == null) {}
+        }
         try
         {
           ((AudioManager)localObject).setSpeakerphoneOn(this.jdField_a_of_type_Boolean);
           ((AudioManager)localObject).setMode(this.jdField_a_of_type_Int);
-          localObject = mht.a(this);
+          localObject = mss.a(this);
           if (localObject != null) {
-            ((mht)localObject).a();
+            ((mss)localObject).a();
           }
-          krx.d(jdField_a_of_type_JavaLangString, "force exit video process ...");
+          lcl.d(jdField_a_of_type_JavaLangString, "force exit video process ...");
           QLog.flushLog();
-          if (this.jdField_a_of_type_Ktm != null)
+          if (this.jdField_a_of_type_Leb != null)
           {
-            if (this.jdField_a_of_type_Ktm.a()) {
-              this.jdField_a_of_type_Ktm.b();
+            if (this.jdField_a_of_type_Leb.a()) {
+              this.jdField_a_of_type_Leb.a(bool);
             }
-            if (this.jdField_a_of_type_Ktm.c()) {
+            if (this.jdField_a_of_type_Leb.c()) {
               this.jdField_a_of_type_ComTencentAvVideoController.q(false);
             }
-            if (this.jdField_a_of_type_Ktm.b()) {
+            if (this.jdField_a_of_type_Leb.b()) {
               this.jdField_a_of_type_ComTencentAvVideoController.o(false);
             }
           }
           return;
-          label356:
-          awqx.b(null, "CliOper", "", "", "0X8008AAC", "0X8008AAC", 0, 0, "", "", "", "");
+          bool = false;
+          continue;
+          axqw.b(null, "CliOper", "", "", "0X8008AAC", "0X8008AAC", 0, 0, "", "", "", "");
         }
         catch (NullPointerException localNullPointerException)
         {
           for (;;)
           {
-            krx.d(jdField_a_of_type_JavaLangString, "VideoAppInterface.exit() -> am.setSpeakerphoneOn() catch NullPointerException !");
+            lcl.d(jdField_a_of_type_JavaLangString, "VideoAppInterface.exit() -> am.setSpeakerphoneOn() catch NullPointerException !");
           }
         }
       }
@@ -621,70 +547,26 @@ public class VideoAppInterface
   
   public void a(long paramLong1, String paramString, long paramLong2)
   {
-    this.jdField_a_of_type_Kvl.a(paramLong1, paramString, paramLong2);
-  }
-  
-  public void a(RedTouch paramRedTouch, int paramInt)
-  {
-    String str;
-    if ((this.jdField_a_of_type_ComTencentAvVideoController != null) && (this.jdField_a_of_type_ComTencentAvVideoController.a() != null))
-    {
-      str = ktr.a(paramInt, this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int);
-      if ((paramRedTouch == null) || (TextUtils.isEmpty(str))) {
-        QLog.d("AVRedDot", 1, "clearRedDot falied. appId[" + str + "], redTouch[" + paramRedTouch + "]");
-      }
-    }
-    else
-    {
-      QLog.d("AVRedDot", 1, "clearRedDot failed. videoController == null or videoController.getSessionInfo() == null");
-      return;
-    }
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = a(str);
-    if ((localAppInfo != null) && (a(localAppInfo)))
-    {
-      d(str);
-      paramRedTouch.b();
-      QLog.d("AVRedDot", 1, "clearRedDot successfully. appId[" + str + "], redTouch[" + paramRedTouch + "]");
-      return;
-    }
-    QLog.d("AVRedDot", 1, "clearRedDot falied. appId[" + str + "], redTouch[" + paramRedTouch + "], appInfo[" + localAppInfo + "], hasRedDot[" + a(localAppInfo) + "]");
-  }
-  
-  public void a(RedTouch paramRedTouch, String paramString)
-  {
-    if ((paramRedTouch == null) || (TextUtils.isEmpty(paramString)))
-    {
-      QLog.d("AVRedDot", 1, "clearRedDot falied. appId[" + paramString + "], redTouch[" + paramRedTouch + "]");
-      return;
-    }
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = a(paramString);
-    if ((localAppInfo != null) && (a(localAppInfo)))
-    {
-      d(paramString);
-      paramRedTouch.b();
-      QLog.d("AVRedDot", 1, "clearRedDot successfully. appId[" + paramString + "], redTouch[" + paramRedTouch + "]");
-      return;
-    }
-    QLog.d("AVRedDot", 1, "clearRedDot falied. appId[" + paramString + "], redTouch[" + paramRedTouch + "], appInfo[" + localAppInfo + "], hasRedDot[" + a(localAppInfo) + "]");
+    this.jdField_a_of_type_Lga.a(paramLong1, paramString, paramLong2);
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     QLog.d(jdField_a_of_type_JavaLangString, 2, "receiveToService");
-    this.jdField_a_of_type_Kvy.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    this.jdField_a_of_type_Lgn.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
   }
   
   public void a(String paramString)
   {
-    kyl localkyl = (kyl)a(4);
-    if (localkyl != null)
+    ljb localljb = (ljb)a(4);
+    if (localljb != null)
     {
-      localkyl.a(paramString);
-      localkyl.a(36, 1L);
-      localkyl.a(29, 1L);
-      localkyl.b();
-      kyj.a(16, 1L);
-      kyj.c();
+      localljb.a(paramString);
+      localljb.a(36, 1L);
+      localljb.a(29, 1L);
+      localljb.b();
+      liz.a(16, 1L);
+      liz.c();
     }
     onDestroy();
   }
@@ -693,7 +575,7 @@ public class VideoAppInterface
   {
     try
     {
-      this.jdField_a_of_type_Kuu.a(paramString, paramInt);
+      this.jdField_a_of_type_Lfj.a(paramString, paramInt);
       return;
     }
     finally
@@ -720,7 +602,7 @@ public class VideoAppInterface
     if (paramObserver != null)
     {
       a().addObserver(paramObserver);
-      if ((this.jdField_a_of_type_Kvl != null) && (this.jdField_a_of_type_Kvl.a != null)) {
+      if ((this.jdField_a_of_type_Lga != null) && (this.jdField_a_of_type_Lga.a != null)) {
         paramObserver.update(a(), new Object[] { Integer.valueOf(10) });
       }
     }
@@ -728,14 +610,14 @@ public class VideoAppInterface
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Kvl != null) {
-      this.jdField_a_of_type_Kvl.a(paramBoolean);
+    if (this.jdField_a_of_type_Lga != null) {
+      this.jdField_a_of_type_Lga.a(paramBoolean);
     }
   }
   
   public void a(boolean paramBoolean, Notification paramNotification)
   {
-    this.jdField_a_of_type_Kts.a(paramBoolean, paramNotification);
+    this.jdField_a_of_type_Leh.a(paramBoolean, paramNotification);
   }
   
   public void a(Object[] paramArrayOfObject)
@@ -747,69 +629,53 @@ public class VideoAppInterface
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Kts.a();
+    return this.jdField_a_of_type_Leh.a();
   }
   
   public boolean a(int paramInt)
   {
-    return this.jdField_a_of_type_Kwu.a(paramInt);
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    String str = ktr.a(paramInt1, paramInt2);
-    if (TextUtils.isEmpty(str))
-    {
-      QLog.d("AVRedDot", 1, "hasRedDot falied. appId = " + str);
-      return false;
-    }
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = a(str);
-    if ((localAppInfo != null) && (a(localAppInfo))) {
-      return true;
-    }
-    QLog.d("AVRedDot", 1, "hasRedDot falied. appId = " + str + ", appInfo = " + localAppInfo + ", hasRedDot = false");
-    return false;
+    return this.jdField_a_of_type_Lhj.a(paramInt);
   }
   
   public boolean a(int paramInt, long paramLong)
   {
-    return this.jdField_a_of_type_Kvl.a(paramInt, paramLong);
+    return this.jdField_a_of_type_Lga.a(paramInt, paramLong);
   }
   
   public boolean a(long paramLong)
   {
-    return this.jdField_a_of_type_Kvl.a(paramLong);
+    return this.jdField_a_of_type_Lga.a(paramLong);
   }
   
   public boolean a(String paramString)
   {
-    return this.jdField_a_of_type_Kvl.a(paramString);
+    return this.jdField_a_of_type_Lga.a(paramString);
   }
   
   public boolean a(String paramString, int paramInt)
   {
-    return this.jdField_a_of_type_Kvl.a(paramString, paramInt);
+    return this.jdField_a_of_type_Lga.a(paramString, paramInt);
   }
   
-  public boolean a(lls paramlls)
+  public boolean a(lwk paramlwk)
   {
-    return this.jdField_a_of_type_Kvl.a(paramlls);
+    return this.jdField_a_of_type_Lga.a(paramlwk);
   }
   
   public long[] a(String paramString)
   {
-    return this.jdField_a_of_type_Kvl.a(paramString);
+    return this.jdField_a_of_type_Lga.a(paramString);
   }
   
-  public void addObserver(ajfe paramajfe)
+  public void addObserver(ajtg paramajtg)
   {
-    addObserver(paramajfe, false);
+    addObserver(paramajtg, false);
   }
   
-  public void addObserver(ajfe paramajfe, boolean paramBoolean)
+  public void addObserver(ajtg paramajtg, boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramajfe)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramajfe);
+    if (!this.jdField_a_of_type_JavaUtilList.contains(paramajtg)) {
+      this.jdField_a_of_type_JavaUtilList.add(paramajtg);
     }
   }
   
@@ -820,27 +686,27 @@ public class VideoAppInterface
   
   public String b()
   {
-    return this.jdField_a_of_type_Kvl.a();
+    return this.jdField_a_of_type_Lga.a();
   }
   
   public String b(String paramString)
   {
-    return this.jdField_a_of_type_Kvl.c(paramString);
+    return this.jdField_a_of_type_Lga.c(paramString);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Kvl.c();
+    this.jdField_a_of_type_Lga.c();
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Kwu.a(paramInt);
+    this.jdField_a_of_type_Lhj.a(paramInt);
   }
   
   public void b(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Kvl.a(paramInt, paramString);
+    this.jdField_a_of_type_Lga.a(paramInt, paramString);
   }
   
   public void b(String paramString)
@@ -885,7 +751,7 @@ public class VideoAppInterface
         if (!this.g) {
           break;
         }
-        kyh.a(this.f, this.g);
+        lix.a(this.f, this.g);
       }
       return;
       this.g = true;
@@ -895,42 +761,42 @@ public class VideoAppInterface
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Kvl.b();
+    return this.jdField_a_of_type_Lga.b();
   }
   
   public boolean b(String paramString)
   {
-    return this.jdField_a_of_type_Kvl.b(paramString);
+    return this.jdField_a_of_type_Lga.b(paramString);
   }
   
-  public boolean b(lls paramlls)
+  public boolean b(lwk paramlwk)
   {
-    return this.jdField_a_of_type_Kvl.b(paramlls);
+    return this.jdField_a_of_type_Lga.b(paramlwk);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Kvl.d();
+    this.jdField_a_of_type_Lga.d();
   }
   
   public void c(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Kvl.b(paramInt, paramString);
+    this.jdField_a_of_type_Lga.b(paramInt, paramString);
   }
   
   public void c(String paramString)
   {
-    this.jdField_a_of_type_Kvl.a(paramString);
+    this.jdField_a_of_type_Lga.a(paramString);
   }
   
   public boolean c()
   {
-    return this.jdField_a_of_type_Kvl.c();
+    return this.jdField_a_of_type_Lga.c();
   }
   
   public boolean c(String paramString)
   {
-    return this.jdField_a_of_type_Kvl.c(paramString);
+    return this.jdField_a_of_type_Lga.c(paramString);
   }
   
   public void d()
@@ -939,35 +805,34 @@ public class VideoAppInterface
     l();
   }
   
-  public boolean d()
+  public void d(String paramString)
   {
-    return this.jdField_a_of_type_Kvl.d();
+    this.jdField_a_of_type_Lga.b(paramString);
   }
   
-  public boolean d(String paramString)
+  public boolean d()
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return false;
-      paramString = a(paramString);
-    } while ((paramString == null) || (!a(paramString)));
-    return true;
+    return this.jdField_a_of_type_Lga.d();
+  }
+  
+  public void e(String paramString)
+  {
+    this.jdField_a_of_type_Lga.c(paramString);
   }
   
   public boolean e()
   {
-    return this.jdField_a_of_type_Kvl.e();
+    return this.jdField_a_of_type_Lga.e();
   }
   
   public boolean f()
   {
-    return this.jdField_a_of_type_Kvl.f();
+    return this.jdField_a_of_type_Lga.f();
   }
   
   public boolean g()
   {
-    return this.jdField_a_of_type_Kvl.g();
+    return this.jdField_a_of_type_Lga.g();
   }
   
   public BaseApplication getApp()
@@ -980,7 +845,7 @@ public class VideoAppInterface
     return AppSetting.a();
   }
   
-  public List<ajfe> getBusinessObserver(int paramInt)
+  public List<ajtg> getBusinessObserver(int paramInt)
   {
     if (paramInt == 0) {
       return this.jdField_a_of_type_JavaUtilList;
@@ -995,48 +860,48 @@ public class VideoAppInterface
   
   public String getDisplayName(int paramInt, String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_Kvl.b(paramInt, paramString1, paramString2);
+    return this.jdField_a_of_type_Lga.b(paramInt, paramString1, paramString2);
   }
   
-  public atmq getEntityManagerFactory(String paramString)
+  public auko getEntityManagerFactory(String paramString)
   {
-    if (this.jdField_a_of_type_Atmq == null) {
-      this.jdField_a_of_type_Atmq = new QQEntityManagerFactory(getAccount());
+    if (this.jdField_a_of_type_Auko == null) {
+      this.jdField_a_of_type_Auko = new QQEntityManagerFactory(getAccount());
     }
-    return this.jdField_a_of_type_Atmq;
+    return this.jdField_a_of_type_Auko;
   }
   
   public Class<? extends MSFServlet>[] getMessagePushServlets()
   {
-    return new Class[] { ktp.class };
+    return new Class[] { lee.class };
   }
   
-  public axrr getNetEngine(int paramInt)
+  public ayry getNetEngine(int paramInt)
   {
-    if (this.jdField_a_of_type_Axso == null) {
-      this.jdField_a_of_type_Axso = new axso();
+    if (this.jdField_a_of_type_Aysv == null) {
+      this.jdField_a_of_type_Aysv = new aysv();
     }
-    return this.jdField_a_of_type_Axso.a(this, paramInt);
+    return this.jdField_a_of_type_Aysv.a(this, paramInt);
   }
   
   public boolean h()
   {
-    return this.jdField_a_of_type_Kvl.h();
+    return this.jdField_a_of_type_Lga.h();
   }
   
   public boolean i()
   {
-    return this.jdField_a_of_type_Kvl.a();
+    return this.jdField_a_of_type_Lga.a();
   }
   
   public boolean j()
   {
-    lfa locallfa = a();
-    if (locallfa.a("BEAUTY_SKIN") != 0) {
+    lps locallps = a();
+    if (locallps.a("BEAUTY_SKIN") != 0) {
       return true;
     }
     if (AEFilterSupport.a()) {
-      return locallfa.b();
+      return locallps.b();
     }
     return false;
   }
@@ -1049,9 +914,9 @@ public class VideoAppInterface
     AudioHelper.b("VideoAppInterface.onCreate.begin");
     UpdateAvSo.a(-1045L);
     this.c = true;
-    kyj.a(this);
-    kyj.a();
-    kyj.a(27);
+    liz.a(this);
+    liz.a();
+    liz.a(27);
     long l1 = System.currentTimeMillis();
     super.onCreate(paramBundle);
     j();
@@ -1060,33 +925,33 @@ public class VideoAppInterface
     AudioHelper.b("VideoAppInterface.onCreate.begin1");
     h();
     getEntityManagerFactory(null);
-    this.jdField_a_of_type_Kvh = new kvh(this);
-    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_Kvh);
-    this.jdField_a_of_type_Kvy = new kvy(this);
-    this.jdField_a_of_type_Kwn = new kwn();
-    this.jdField_a_of_type_Kwn.a(this.jdField_a_of_type_Kvy);
-    this.jdField_a_of_type_Kwu = new kwu(this);
-    this.jdField_a_of_type_Kwv = new kwv(this);
+    this.jdField_a_of_type_Lfw = new lfw(this);
+    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_Lfw);
+    this.jdField_a_of_type_Lgn = new lgn(this);
+    this.jdField_a_of_type_Lhc = new lhc();
+    this.jdField_a_of_type_Lhc.a(this.jdField_a_of_type_Lgn);
+    this.jdField_a_of_type_Lhj = new lhj(this);
+    this.jdField_a_of_type_Lhk = new lhk(this);
     g();
     this.jdField_a_of_type_ComTencentAvAppDeviceCapabilityExamination = new DeviceCapabilityExamination(this);
-    this.jdField_a_of_type_Kup = new kup(this);
-    this.jdField_a_of_type_Kul = new kul(this);
-    this.jdField_a_of_type_Kuw = new kuw(this);
-    this.jdField_a_of_type_Kvd = new kvd(this);
-    this.jdField_a_of_type_Kun = new kun(this);
-    this.jdField_a_of_type_Kus = new kus(this);
-    this.jdField_a_of_type_Kva = new kva(this);
-    this.jdField_a_of_type_Kuy = new kuy(this);
-    this.jdField_a_of_type_Kuu = new kuu(this);
-    this.jdField_a_of_type_Ktm = new ktm(this);
-    this.jdField_a_of_type_Ktn = new ktn(this);
-    this.jdField_a_of_type_Kvi = new kvi(this);
-    this.jdField_a_of_type_Kvl = new kvl(this);
-    this.jdField_a_of_type_Kvl.a();
-    this.jdField_a_of_type_Kvl.c();
-    this.jdField_a_of_type_Kts = new kts(this);
-    this.jdField_a_of_type_Kts.a();
-    this.jdField_a_of_type_Lad = new lad(this);
+    this.jdField_a_of_type_Lfe = new lfe(this);
+    this.jdField_a_of_type_Lfa = new lfa(this);
+    this.jdField_a_of_type_Lfl = new lfl(this);
+    this.jdField_a_of_type_Lfs = new lfs(this);
+    this.jdField_a_of_type_Lfc = new lfc(this);
+    this.jdField_a_of_type_Lfh = new lfh(this);
+    this.jdField_a_of_type_Lfp = new lfp(this);
+    this.jdField_a_of_type_Lfn = new lfn(this);
+    this.jdField_a_of_type_Lfj = new lfj(this);
+    this.jdField_a_of_type_Leb = new leb(this);
+    this.jdField_a_of_type_Lec = new lec(this);
+    this.jdField_a_of_type_Lfx = new lfx(this);
+    this.jdField_a_of_type_Lga = new lga(this);
+    this.jdField_a_of_type_Lga.a();
+    this.jdField_a_of_type_Lga.c();
+    this.jdField_a_of_type_Leh = new leh(this);
+    this.jdField_a_of_type_Leh.a();
+    this.jdField_a_of_type_Lkt = new lkt(this);
     AVReport.a().a();
     e();
     ThreadManager.post(new VideoAppInterface.CameraUsageRunnable(this), 5, null, true);
@@ -1141,28 +1006,28 @@ public class VideoAppInterface
     }
     l();
     this.jdField_b_of_type_JavaLangRunnable = null;
-    this.jdField_a_of_type_Kts.b();
-    this.jdField_a_of_type_Kvl.b();
-    this.jdField_a_of_type_Kvl.d();
-    if (this.jdField_a_of_type_Axso != null) {}
+    this.jdField_a_of_type_Leh.b();
+    this.jdField_a_of_type_Lga.b();
+    this.jdField_a_of_type_Lga.d();
+    if (this.jdField_a_of_type_Aysv != null) {}
     try
     {
-      this.jdField_a_of_type_Axso.onDestroy();
-      this.jdField_a_of_type_Axso = null;
+      this.jdField_a_of_type_Aysv.onDestroy();
+      this.jdField_a_of_type_Aysv = null;
       PtvTemplateManager.a();
       AVRedPacketManager.b();
-      this.jdField_a_of_type_Kva.b();
-      this.jdField_a_of_type_Kuy.a();
-      this.jdField_a_of_type_Kup.a();
-      this.jdField_a_of_type_Kul.a();
-      this.jdField_a_of_type_Kuw.b();
-      this.jdField_a_of_type_Kvd.b();
-      this.jdField_a_of_type_Kun.b();
-      this.jdField_a_of_type_Kus.b();
-      this.jdField_a_of_type_Kuu.b();
-      this.jdField_a_of_type_Kvi.b();
-      kvz.a(getApp());
-      kyj.b();
+      this.jdField_a_of_type_Lfp.b();
+      this.jdField_a_of_type_Lfn.a();
+      this.jdField_a_of_type_Lfe.a();
+      this.jdField_a_of_type_Lfa.a();
+      this.jdField_a_of_type_Lfl.b();
+      this.jdField_a_of_type_Lfs.b();
+      this.jdField_a_of_type_Lfc.b();
+      this.jdField_a_of_type_Lfh.b();
+      this.jdField_a_of_type_Lfj.b();
+      this.jdField_a_of_type_Lfx.b();
+      lgo.a(getApp());
+      liz.b();
       super.onDestroy();
       return;
     }
@@ -1170,20 +1035,20 @@ public class VideoAppInterface
     {
       for (;;)
       {
-        this.jdField_a_of_type_Axso.onDestroy();
+        this.jdField_a_of_type_Aysv.onDestroy();
       }
     }
   }
   
-  public void removeObserver(ajfe paramajfe)
+  public void removeObserver(ajtg paramajtg)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(paramajfe);
+    this.jdField_a_of_type_JavaUtilList.remove(paramajtg);
   }
   
   public void sendToService(ToServiceMsg paramToServiceMsg)
   {
-    krx.c(jdField_a_of_type_JavaLangString, "sendToService");
-    this.jdField_a_of_type_Kvy.a(paramToServiceMsg, null, ktp.class);
+    lcl.c(jdField_a_of_type_JavaLangString, "sendToService");
+    this.jdField_a_of_type_Lgn.a(paramToServiceMsg, null, lee.class);
   }
 }
 

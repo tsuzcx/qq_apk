@@ -1,30 +1,32 @@
-public class bfcu
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage.MessageLevel;
+import com.tencent.smtt.sdk.WebChromeClient;
+
+class bfcu
+  extends WebChromeClient
 {
-  private static final String[] a = { "B", "K", "M", "G" };
+  bfcu(bfct parambfct) {}
   
-  public static final String a(long paramLong)
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
-    float f1 = 0.0F;
-    int i = 0;
-    while (paramLong >= 1024L)
+    if (paramConsoleMessage != null)
     {
-      paramLong /= 1024L;
-      f1 = (float)(paramLong % 1024L);
-      i += 1;
+      if (paramConsoleMessage.messageLevel() != ConsoleMessage.MessageLevel.ERROR) {
+        break label51;
+      }
+      besl.d("AppBrandService", "consoleMessage.message()  line:" + paramConsoleMessage.lineNumber());
     }
-    if (f1 == 0.0F)
+    for (;;)
     {
-      f1 = (float)paramLong;
-      return String.valueOf(paramLong) + a[i];
+      return super.onConsoleMessage(paramConsoleMessage);
+      label51:
+      besl.b("AppBrandService", "consoleMessage.message() " + paramConsoleMessage.message());
     }
-    f1 /= 1024.0F;
-    float f2 = (float)paramLong;
-    return String.format("%.2f", new Object[] { Float.valueOf(f1 + f2) }) + a[i];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfcu
  * JD-Core Version:    0.7.0.1
  */

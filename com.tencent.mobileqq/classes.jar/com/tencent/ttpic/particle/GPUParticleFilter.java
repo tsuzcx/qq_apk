@@ -3,6 +3,7 @@ package com.tencent.ttpic.particle;
 import android.graphics.Bitmap;
 import android.graphics.PointF;
 import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.aekit.api.standard.GLCapabilities;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.filter.BaseFilter;
@@ -21,6 +22,7 @@ public class GPUParticleFilter
 {
   private static final String TAG = GPUParticleFilter.class.getSimpleName();
   private BaseFilter copyFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  private Frame copyedFrame = new Frame();
   private String dataPath;
   private final StickerItem item;
   private boolean needRender;
@@ -40,8 +42,7 @@ public class GPUParticleFilter
   private void init()
   {
     this.copyFilter.apply();
-    this.copyFilter.setRotationAndFlip(0, 0, 1);
-    this.pdSystem = PDSystem.create(this.dataPath, this.item.gpuParticleConfig.jsonBytes);
+    this.pdSystem = PDSystem.create(GLCapabilities.isSupportFramebufferFetch(), this.dataPath, this.item.gpuParticleConfig.jsonBytes);
     Bitmap localBitmap = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.dataPath + File.separator + ((GPUParticleConfig.Sprite)this.item.gpuParticleConfig.sprites.get(0)).path, 1);
     this.pdSystem.setImage(((GPUParticleConfig.Sprite)this.item.gpuParticleConfig.sprites.get(0)).path, BitmapUtils.bitmap2RGBA(localBitmap), localBitmap.getWidth(), localBitmap.getHeight());
     BitmapUtils.recycle(localBitmap);
@@ -187,15 +188,27 @@ public class GPUParticleFilter
     super.clearGLSLSelf();
     this.copyFilter.clearGLSLSelf();
     this.pdSystem.destroy();
+    if (this.copyedFrame != null) {
+      this.copyedFrame.clear();
+    }
   }
   
   public Frame render(Frame paramFrame)
   {
-    paramFrame.setNeedDepth(true);
-    paramFrame.bindDepthBuffer(paramFrame.width, paramFrame.height);
-    this.pdSystem.updateFboSize(paramFrame.getFBO(), this.width, this.height);
-    this.pdSystem.render(System.currentTimeMillis(), this.needRender);
-    return paramFrame;
+    if (!GLCapabilities.isSupportFramebufferFetch()) {
+      this.copyFilter.RenderProcess(paramFrame.getTextureId(), this.width, this.height, -1, 0.0D, this.copyedFrame);
+    }
+    for (Frame localFrame = this.copyedFrame;; localFrame = paramFrame)
+    {
+      localFrame.setNeedDepth(true);
+      localFrame.bindDepthBuffer(localFrame.width, localFrame.height);
+      this.pdSystem.updateFboSize(paramFrame.getTextureId(), localFrame.getFBO(), this.width, this.height);
+      this.pdSystem.render(System.currentTimeMillis(), this.needRender);
+      if (!GLCapabilities.isSupportFramebufferFetch()) {
+        this.copyFilter.RenderProcess(localFrame.getTextureId(), this.width, this.height, -1, 0.0D, paramFrame);
+      }
+      return paramFrame;
+    }
   }
   
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
@@ -252,7 +265,7 @@ public class GPUParticleFilter
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
   {
     super.updateVideoSize(paramInt1, paramInt2, paramDouble);
-    this.pdSystem.updateFboSize(0, paramInt1, paramInt2);
+    this.pdSystem.updateFboSize(0, 0, paramInt1, paramInt2);
   }
 }
 

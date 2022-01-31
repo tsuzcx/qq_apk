@@ -1,16 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.ArrayList;
+import java.util.List;
 
-class ndj
-  implements DialogInterface.OnClickListener
+public class ndj
 {
-  ndj(ncw paramncw) {}
+  public int a;
+  public long a;
+  public String a;
+  public List<String> a;
+  String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  ndj(ndh paramndh)
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ndj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,22 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfz;
+import beka;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import org.json.JSONObject;
 
 class MiscJsPlugin$1
-  implements MiscJsPlugin.OpenUrlCallback
+  implements AsyncResult
 {
-  MiscJsPlugin$1(MiscJsPlugin paramMiscJsPlugin, bdfz parambdfz) {}
+  MiscJsPlugin$1(MiscJsPlugin paramMiscJsPlugin, beka parambeka) {}
   
-  public void openResult(boolean paramBoolean, String paramString)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
     if (paramBoolean)
     {
       this.val$req.a();
       return;
     }
-    this.val$req.a(paramString);
+    this.val$req.b();
   }
 }
 

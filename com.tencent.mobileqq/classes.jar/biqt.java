@@ -1,18 +1,48 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.SecondDemoView;
-import java.util.ArrayList;
+import java.io.File;
 
 public class biqt
-  implements ValueAnimator.AnimatorUpdateListener
+  extends biqn
 {
-  public biqt(SecondDemoView paramSecondDemoView) {}
+  public String n;
+  public String o;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public String a()
   {
-    paramValueAnimator = (ArrayList)paramValueAnimator.getAnimatedValue();
-    this.a.a = paramValueAnimator;
-    this.a.invalidate();
+    File localFile = new File(this.o);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return this.o + File.separator + this.f;
+  }
+  
+  public String b()
+  {
+    File localFile = new File(this.o);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return this.o + File.separator;
+  }
+  
+  public String c()
+  {
+    File localFile = new File(this.n);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return this.n + File.separator + this.f;
+  }
+  
+  public boolean d()
+  {
+    Object localObject = new File(a());
+    if (!((File)localObject).exists()) {}
+    do
+    {
+      return false;
+      localObject = ((File)localObject).list();
+    } while ((localObject == null) || (localObject.length <= 0));
+    return true;
   }
 }
 

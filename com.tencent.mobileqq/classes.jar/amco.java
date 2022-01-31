@@ -1,73 +1,175 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.Rect;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class amco
-  extends alzl<amcn>
+public final class amco
+  extends amcm
 {
-  public int a()
+  public int c;
+  public String c;
+  public int d;
+  public int e;
+  
+  public amco()
   {
-    return 414;
+    this.jdField_c_of_type_Int = -1;
   }
   
-  @NonNull
-  public amcn a(int paramInt)
+  public static amcm a(JSONObject paramJSONObject)
   {
-    return new amcn();
-  }
-  
-  @Nullable
-  public amcn a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0) && (paramArrayOfalzs[0] != null))
+    amco localamco = new amco();
+    Context localContext = BaseApplicationImpl.getApplication().getApplicationContext();
+    localamco.jdField_a_of_type_JavaLangString = paramJSONObject.optString("align");
+    localamco.d = (bawz.c(localContext, paramJSONObject.optInt("text_size") / 2) + 1);
+    localamco.jdField_c_of_type_JavaLangString = paramJSONObject.optString("text_align");
+    String str = paramJSONObject.optString("text_color");
+    Object localObject = str;
+    if (str.startsWith("0x")) {
+      localObject = str.substring(2);
+    }
+    try
     {
-      amcn localamcn = amcn.a(paramArrayOfalzs[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("GlobalSearchConfProcessor", 2, "onParsed " + paramArrayOfalzs[0].a);
+      localamco.jdField_c_of_type_Int = Color.parseColor("#" + (String)localObject);
+      if (paramJSONObject.has("rect"))
+      {
+        localObject = paramJSONObject.optJSONArray("rect");
+        localamco.jdField_a_of_type_ArrayOfInt = new int[4];
+        int i = 0;
+        while (i < ((JSONArray)localObject).length())
+        {
+          localamco.jdField_a_of_type_ArrayOfInt[i] = bawz.a(localContext, ((JSONArray)localObject).optInt(i) / 2);
+          i += 1;
+        }
       }
-      return localamcn;
     }
-    return null;
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("DiyBubbleConfig", 2, "diy text_color invalid");
+        }
+      }
+      localamco.e = paramJSONObject.optInt("text_max_count");
+      if (QLog.isColorLevel()) {
+        QLog.d("DiyBubbleConfig", 2, "Resolve DiyBubbleTextConfig json->" + paramJSONObject);
+      }
+    }
+    return localamco;
   }
   
-  public Class<amcn> a()
+  @TargetApi(11)
+  public Rect a(amcz paramamcz, Canvas paramCanvas, Paint paramPaint)
   {
-    return amcn.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amcn paramamcn)
-  {
-    com.tencent.mobileqq.search.util.SearchConfigManager.needSeparate = paramamcn.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("GlobalSearchConfProcessor", 2, "onUpdate " + paramamcn.toString());
+    float f1 = 0.0F;
+    paramCanvas = paramamcz.getBounds();
+    Object localObject = BaseApplicationImpl.getContext().getResources();
+    if (b == -1) {
+      b = actn.a(48.0F, (Resources)localObject);
+    }
+    float f4 = 1.0F;
+    float f3 = this.jdField_a_of_type_ArrayOfInt[3];
+    int i;
+    if (paramCanvas.height() < b)
+    {
+      i = actn.a(2.0F, (Resources)localObject);
+      int j = actn.a(9.0F, (Resources)localObject);
+      int k = actn.a(7.0F, (Resources)localObject);
+      f4 = (paramCanvas.height() - k * 2) * 1.0F / (b - j * 2);
+      f3 = this.jdField_a_of_type_ArrayOfInt[3] * f4;
+    }
+    for (;;)
+    {
+      float f2;
+      if (this.jdField_a_of_type_JavaLangString.startsWith("T")) {
+        f2 = this.jdField_a_of_type_ArrayOfInt[1] - i;
+      }
+      for (;;)
+      {
+        label162:
+        float f5;
+        if (this.jdField_a_of_type_JavaLangString.endsWith("L"))
+        {
+          f1 = this.jdField_a_of_type_ArrayOfInt[0];
+          i = this.jdField_a_of_type_ArrayOfInt[2];
+          if (this.d != 0) {
+            paramPaint.setTextSize(f4 * this.d);
+          }
+          paramPaint.setAntiAlias(true);
+          paramPaint.setFakeBoldText(true);
+          localObject = ambf.a().a(paramamcz, paramamcz.jdField_a_of_type_JavaLangString);
+          Paint.FontMetrics localFontMetrics = paramPaint.getFontMetrics();
+          f4 = amcm.a(paramPaint, (String)localObject);
+          f5 = f2 + f3 / 2.0F - (localFontMetrics.bottom - localFontMetrics.top) / 2.0F - localFontMetrics.top;
+          if (!this.jdField_c_of_type_JavaLangString.equals("center")) {
+            break label403;
+          }
+          f2 = f1 + (i - f4) / 2.0F;
+        }
+        for (;;)
+        {
+          if (!paramamcz.b) {
+            break label433;
+          }
+          f1 = paramCanvas.width() - f2 - f4;
+          return new Rect((int)f1, (int)f5, (int)(i + f1), (int)(f3 + f5));
+          if (!this.jdField_a_of_type_JavaLangString.startsWith("B")) {
+            break label460;
+          }
+          f2 = this.jdField_a_of_type_ArrayOfInt[1] + this.jdField_a_of_type_ArrayOfInt[3] + paramCanvas.height();
+          f2 = i + (f2 - f3);
+          break;
+          if (!this.jdField_a_of_type_JavaLangString.endsWith("R")) {
+            break label162;
+          }
+          f1 = this.jdField_a_of_type_ArrayOfInt[0] + paramCanvas.width();
+          break label162;
+          label403:
+          f2 = f1;
+          if (this.jdField_c_of_type_JavaLangString.equals("right")) {
+            f2 = f1 + i - f4;
+          }
+        }
+        label433:
+        return new Rect((int)f2, (int)f5, (int)(i + f2), (int)(f3 + f5));
+        label460:
+        f2 = 0.0F;
+      }
+      i = 0;
     }
   }
   
-  public boolean a()
+  public void a(amcz paramamcz, Canvas paramCanvas)
   {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    if ((paramCanvas == null) || (paramamcz == null)) {}
+    String str;
+    do
+    {
+      return;
+      str = ambf.a().a(paramamcz, paramamcz.jdField_a_of_type_JavaLangString);
+    } while ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)));
+    Paint localPaint = new Paint();
+    if (this.jdField_c_of_type_Int != -1) {
+      localPaint.setColor(this.jdField_c_of_type_Int);
+    }
+    paramamcz = a(paramamcz, paramCanvas, localPaint);
+    paramCanvas.drawText(str, paramamcz.left, paramamcz.top, localPaint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amco
  * JD-Core Version:    0.7.0.1
  */

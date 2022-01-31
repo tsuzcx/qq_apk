@@ -1,49 +1,28 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
-import com.tencent.mobileqq.ark.ArkTopGestureLayout;
-
-public class alfu
-  extends TopGestureLayout.TopGestureDetector
+public abstract interface alfu
 {
-  public alfu(ArkTopGestureLayout paramArkTopGestureLayout, Context paramContext)
-  {
-    super(paramArkTopGestureLayout, paramContext);
-  }
+  public abstract long a();
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((this.a.isGestureIdle()) || (this.a.isGestureEnd())) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return false;
-            paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-            paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
-            if (!this.a.hasGestureFlag(1)) {
-              break;
-            }
-          } while ((paramFloat1 >= 0.0F) || (paramFloat2 >= 0.5F) || (this.a.mOnFlingGesture == null));
-          this.a.setGestureFlag(-1);
-        } while (ArkTopGestureLayout.a(this.a));
-        this.a.mOnFlingGesture.flingLToR();
-        return false;
-      } while ((!this.a.hasGestureFlag(2)) || (paramFloat1 <= 0.0F) || (paramFloat2 >= 0.5F) || (this.a.mOnFlingGesture == null));
-      this.a.setGestureFlag(-1);
-    } while (ArkTopGestureLayout.b(this.a));
-    this.a.mOnFlingGesture.flingRToL();
-    return false;
-  }
+  public abstract void a(int paramInt, algo paramalgo);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(alhv paramalhv);
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alfu
  * JD-Core Version:    0.7.0.1
  */

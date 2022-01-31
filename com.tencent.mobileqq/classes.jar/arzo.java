@@ -1,54 +1,26 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.music.QQPlayerService;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class arzo
-  implements INetInfoHandler
+class arzo
+  implements View.OnClickListener
 {
-  long a = 0L;
+  arzo(arzl paramarzl, BaseActivity paramBaseActivity, aruk paramaruk) {}
   
-  private void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (System.currentTimeMillis() - this.a < 500L) {
-      return;
-    }
-    this.a = System.currentTimeMillis();
-    QQPlayerService.d(BaseApplicationImpl.getContext());
-  }
-  
-  public void onNetMobile2None()
-  {
-    a(4);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    a(3);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    a(1);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    a(2);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    a(6);
-  }
-  
-  public void onNetWifi2None()
-  {
-    a(5);
+    paramView = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
+    int i = this.jdField_a_of_type_Aruk.a();
+    Object localObject = this.jdField_a_of_type_Aruk.a();
+    aruq.a(paramView).a.a(3, i, (String)localObject);
+    localObject = new aruk(i, (String)localObject);
+    aruq.a(paramView).a((aruk)localObject, false);
+    axqw.b(null, "CliOper", "", "", "0X800A979", "0X800A979", 0, 0, "", "0", "0", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arzo
  * JD-Core Version:    0.7.0.1
  */

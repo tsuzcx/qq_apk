@@ -1,32 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
+import java.util.List;
 
-class wkb
-  extends wkp
+public abstract interface wkb
+  extends wiz<wka>
 {
-  wkb(wju paramwju, wkc paramwkc, String paramString1, String paramString2)
-  {
-    super(paramwju);
-  }
+  public abstract void a();
   
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineUnit end : isSuccess = " + paramBoolean);
-      QLog.d(".troop.trace_video_combine", 2, "combineAudioAndVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Wju.a));
-      this.jdField_a_of_type_Wju.a = System.currentTimeMillis();
-    }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Wkc.a(this.jdField_a_of_type_JavaLangString, true, "cmobine auido video done.");
-      return;
-    }
-    this.jdField_a_of_type_Wkc.a(this.b, false, "cmobine auido video done.");
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(CertifiedAccountMeta.StEntry paramStEntry, List<wko> paramList, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wkb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,16 @@
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import java.util.Calendar;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import org.json.JSONObject;
 
 class azop
-  implements azph
+  implements baho
 {
-  azop(azoo paramazoo) {}
+  azop(azoo paramazoo, baja parambaja, int paramInt) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (azoo.a(this.a) != null)
-    {
-      if (paramInt1 != 0) {
-        break label212;
-      }
-      if (azoo.a(this.a) == null) {
-        break label288;
-      }
-      paramInt1 = azoo.a(this.a).a(azoo.a(this.a), paramInt2);
-      int i = azoo.a(this.a).a(azoo.a(this.a), paramInt2, paramInt1);
-      paramInt2 = paramInt1;
-      paramInt1 = i;
-    }
-    for (;;)
-    {
-      azoo.a(this.a).setSelection(1, paramInt2);
-      azoo.a(this.a).a(1);
-      azoo.a(this.a).setSelection(2, paramInt1);
-      azoo.a(this.a).a(2);
-      label212:
-      do
-      {
-        azoo.a(this.a, azoo.a(this.a).a(new int[] { azoo.a(this.a).a(0), azoo.a(this.a).a(1), azoo.a(this.a).a(2) }));
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopPickerViewHelper", 2, Arrays.toString(azoo.a(this.a).a(azoo.a(this.a).getTimeInMillis())));
-        }
-        return;
-      } while (paramInt1 != 1);
-      if (azoo.a(this.a) != null) {}
-      for (paramInt1 = azoo.a(this.a).a(azoo.a(this.a), azoo.a(this.a).a(0), paramInt2);; paramInt1 = 0)
-      {
-        azoo.a(this.a).setSelection(2, paramInt1);
-        azoo.a(this.a).a(2);
-        break;
-      }
-      label288:
-      paramInt1 = 0;
-      paramInt2 = 0;
+    if ((paramJSONObject != null) && (paramJSONObject.optInt("retcode", -1) == 0)) {
+      this.jdField_a_of_type_Baja.a(this.jdField_a_of_type_Azoo.a.a.a, 0, this.jdField_a_of_type_Int);
     }
   }
 }

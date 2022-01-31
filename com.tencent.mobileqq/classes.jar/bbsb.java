@@ -1,64 +1,142 @@
-import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.SignatureManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.vas.VasResEngine.VasResDrawable;
+import com.tencent.mobileqq.vas.adapter.SignatureAdapter.2;
+import com.tencent.mobileqq.vas.adapter.SignatureAdapter.3;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observer;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
 
 public class bbsb
+  implements bbrl, bbrr
 {
-  public int a;
-  public String a;
+  private bbrm jdField_a_of_type_Bbrm;
+  private bbsd jdField_a_of_type_Bbsd;
+  private RichStatus jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
+  private VasResDrawable jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable;
+  private String jdField_a_of_type_JavaLangString;
+  private Observer jdField_a_of_type_JavaUtilObserver = new bbsc(this);
+  private boolean jdField_a_of_type_Boolean;
+  private RichStatus jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus = new RichStatus(null);
+  private boolean jdField_b_of_type_Boolean;
   
-  public bbsb()
+  public bbsb(VasResDrawable paramVasResDrawable, AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_Int = 4;
-    this.jdField_a_of_type_JavaLangString = "";
+    this(paramVasResDrawable, paramAppRuntime, 2130845270);
   }
   
-  public static bbsb a(QQAppInterface paramQQAppInterface)
+  public bbsb(VasResDrawable paramVasResDrawable, AppRuntime paramAppRuntime, int paramInt)
   {
-    bbsb localbbsb = new bbsb();
-    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
-    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
-    int i = bbsc.a(localBaseApplication, paramQQAppInterface);
-    if (i == 1)
-    {
-      localbbsb.jdField_a_of_type_Int = 1;
-      localbbsb.jdField_a_of_type_JavaLangString = a(localBaseApplication, paramQQAppInterface);
-      return localbbsb;
+    this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable = paramVasResDrawable;
+    this.jdField_a_of_type_Bbrm = paramVasResDrawable.a();
+    paramVasResDrawable.a().jdField_a_of_type_Int = 2130846510;
+    paramVasResDrawable.a().b = paramInt;
+    paramVasResDrawable.a().jdField_a_of_type_JavaLangString = "sig_cover";
+    paramVasResDrawable.a().e = 103;
+    if (paramAppRuntime != null) {
+      paramVasResDrawable.a("my_uin", paramAppRuntime.getAccount());
     }
-    if (i == 2)
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    int i = 0;
+    boolean bool;
+    if (QLog.isColorLevel())
     {
-      localbbsb.jdField_a_of_type_Int = 2;
-      return localbbsb;
-    }
-    if ((!bbsd.a(localBaseApplication)) || (!bbsd.b(localBaseApplication)) || (!bbsd.c(localBaseApplication)))
-    {
-      if (i == 3)
+      StringBuilder localStringBuilder = new StringBuilder().append("downloadDone isMainThread:");
+      if (Looper.getMainLooper().getThread().getId() == Thread.currentThread().getId())
       {
-        localbbsb.jdField_a_of_type_Int = 3;
-        localbbsb.jdField_a_of_type_JavaLangString = a(localBaseApplication, paramQQAppInterface);
-        return localbbsb;
+        bool = true;
+        QLog.d("SignatureAdapter", 2, bool);
       }
-      localbbsb.jdField_a_of_type_Int = 5;
-      return localbbsb;
     }
-    localbbsb.jdField_a_of_type_Int = 4;
-    return localbbsb;
+    else
+    {
+      if (paramBundle != null) {
+        i = paramBundle.getInt("resType");
+      }
+      switch (i)
+      {
+      }
+    }
+    do
+    {
+      return;
+      bool = false;
+      break;
+    } while ((3 != paramInt) && (paramInt != 0));
+    ThreadManager.executeOnFileThread(new SignatureAdapter.3(this, paramBundle));
   }
   
-  public static String a(Context paramContext, String paramString)
+  public void a(bbsd parambbsd)
   {
-    paramString = bbsc.b(paramContext, paramString);
-    paramContext = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      paramContext = "https://sdi.3g.qq.com/v/2018082711463211194";
+    this.jdField_a_of_type_Bbsd = parambbsd;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    int i = this.jdField_a_of_type_Bbrm.a();
+    awei.a().addObserver(this.jdField_a_of_type_JavaUtilObserver);
+    bbqe localbbqe = awei.a().a(i);
+    if (!localbbqe.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      if ((localbbqe.jdField_a_of_type_Bbqg == null) || (TextUtils.isEmpty(localbbqe.jdField_a_of_type_Bbqg.c))) {
+        break label115;
+      }
+      this.jdField_a_of_type_JavaLangString = localbbqe.jdField_a_of_type_Bbqg.c;
     }
-    return paramContext;
+    for (;;)
+    {
+      awei.a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
+      if (this.jdField_a_of_type_Bbsd != null) {
+        this.jdField_a_of_type_Bbsd.load(localbbqe);
+      }
+      if (!SignatureManager.a(localbbqe)) {
+        break;
+      }
+      ThreadManager.executeOnFileThread(new SignatureAdapter.2(this, i, localbbqe));
+      return;
+      label115:
+      if (!TextUtils.isEmpty(localbbqe.s)) {
+        this.jdField_a_of_type_JavaLangString = localbbqe.s;
+      } else {
+        this.jdField_a_of_type_JavaLangString = localbbqe.k;
+      }
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Bbrm.a().sendEmptyMessage(10001);
+  }
+  
+  public void c()
+  {
+    awei.a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbsb
  * JD-Core Version:    0.7.0.1
  */

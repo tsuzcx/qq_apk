@@ -1,33 +1,27 @@
-import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GatherCardInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
 public class usk
-  extends uwy
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean = false;
+  private qqstory_struct.GatherCardInfo a;
   
-  public usk(int paramInt, Bitmap paramBitmap)
+  public usk(qqstory_struct.GatherCardInfo paramGatherCardInfo)
   {
-    super(paramInt, paramBitmap);
+    this.a = paramGatherCardInfo;
   }
   
-  public static usk a(usk paramusk, Bitmap paramBitmap)
+  public usk(byte[] paramArrayOfByte)
   {
-    paramBitmap = new usk(paramusk.c, paramBitmap);
-    paramBitmap.jdField_a_of_type_Int = paramusk.jdField_a_of_type_Int;
-    paramBitmap.jdField_b_of_type_Int = paramusk.jdField_b_of_type_Int;
-    paramBitmap.jdField_a_of_type_JavaLangString = paramusk.jdField_a_of_type_JavaLangString;
-    paramBitmap.jdField_a_of_type_Boolean = paramusk.jdField_a_of_type_Boolean;
-    paramBitmap.jdField_b_of_type_Boolean = paramusk.jdField_b_of_type_Boolean;
-    return paramBitmap;
-  }
-  
-  public String toString()
-  {
-    return "PlayerContext{startTime=" + this.jdField_a_of_type_Int + ", endTime=" + this.jdField_b_of_type_Int + ", isMute=" + this.jdField_a_of_type_Boolean + ", isDeleted=" + this.jdField_b_of_type_Boolean + "} " + super.toString();
+    this.a = new qqstory_struct.GatherCardInfo();
+    try
+    {
+      this.a.mergeFrom(paramArrayOfByte);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      veg.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
+    }
   }
 }
 

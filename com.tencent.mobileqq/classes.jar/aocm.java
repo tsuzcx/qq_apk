@@ -1,75 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.emoticonview.StickerGestureDetector.StickerAnimationListener.1;
 
 public class aocm
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public aocm(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  private aocm(aoci paramaoci) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramView = (aocu)paramView.getTag();
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.jdField_a_of_type_JavaLangObject;
-    if (5 != localFileManagerEntity.cloudType) {
-      apck.c(localFileManagerEntity);
-    }
-    switch (paramView.jdField_a_of_type_Int)
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null))
     {
-    }
-    for (;;)
-    {
-      this.a.i();
-      return;
-      this.a.a.a().ac();
-      if (!badq.d(BaseApplication.getContext()))
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.post(new StickerGestureDetector.StickerAnimationListener.1(this));
+      this.a.c();
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.ba();
+      this.a.jdField_b_of_type_Double = 1.0D;
+      this.a.jdField_a_of_type_Double = 0.0D;
+      if (this.a.jdField_a_of_type_AndroidViewView != null)
       {
-        apcb.a(2131627028);
-        return;
+        this.a.a(this.a.jdField_a_of_type_AndroidViewView, false);
+        this.a.c = null;
       }
-      if (localFileManagerEntity.status == 16)
+      if ((this.a.jdField_b_of_type_AndroidViewView != null) && ((this.a.jdField_b_of_type_AndroidViewView instanceof BaseChatItemLayout)))
       {
-        apcb.a(2131627218);
-        return;
+        ((BaseChatItemLayout)this.a.jdField_b_of_type_AndroidViewView).setStickerPressStatus(false);
+        this.a.jdField_b_of_type_AndroidViewView = null;
       }
-      apbf.a(localFileManagerEntity).a(false, this.a.getContext(), new aocn(this, localFileManagerEntity));
-      continue;
-      this.a.a.a().ab();
-      this.a.a(localFileManagerEntity, paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, false);
-      continue;
-      this.a.a.a().ad();
-      if (localFileManagerEntity.getCloudType() == 0)
-      {
-        QfileBaseRecentFileTabView.w(this.a).a().a(localFileManagerEntity.nSessionId);
-      }
-      else if (localFileManagerEntity.getCloudType() == 6)
-      {
-        ((ajgm)QfileBaseRecentFileTabView.x(this.a).a(8)).a(0, localFileManagerEntity.uniseq, false);
-      }
-      else
-      {
-        QfileBaseRecentFileTabView.y(this.a).a().a(localFileManagerEntity.nSessionId);
-        continue;
-        this.a.a.a().ae();
-        if (!badq.d(BaseApplication.getContext()))
-        {
-          apcb.a(2131627028);
-          return;
-        }
-        if (localFileManagerEntity.status == 16)
-        {
-          apcb.a(2131627218);
-          return;
-        }
-        boolean bool = localFileManagerEntity.isSend();
-        apbf.a(localFileManagerEntity).a(bool, this.a.a, new aoco(this, localFileManagerEntity));
-      }
+      com.tencent.mobileqq.emoticon.EmojiStickerManager.b = false;
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

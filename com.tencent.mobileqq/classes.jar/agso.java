@@ -1,30 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForScribble;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-public class agso
+class agso
+  implements DialogInterface.OnClickListener
 {
-  public QQAppInterface a;
+  agso(agsl paramagsl) {}
   
-  public boolean a(MessageForScribble paramMessageForScribble, String paramString, atqq paramatqq)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    axvt localaxvt = new axvt();
-    localaxvt.jdField_a_of_type_Boolean = true;
-    localaxvt.jdField_b_of_type_Int = 262153;
-    localaxvt.jdField_b_of_type_JavaLangString = paramMessageForScribble.selfuin;
-    localaxvt.c = paramMessageForScribble.frienduin;
-    localaxvt.jdField_a_of_type_Int = paramMessageForScribble.istroop;
-    localaxvt.jdField_a_of_type_Long = paramMessageForScribble.uniseq;
-    localaxvt.jdField_a_of_type_Atqq = paramatqq;
-    localaxvt.i = paramString;
-    localaxvt.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageForScribble;
-    paramMessageForScribble.fileUploadStatus = 3;
-    this.a.a().a(localaxvt);
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
+    if (((NewPhotoListActivity)this.a.a.get()).c != null) {
+      ((NewPhotoListActivity)this.a.a.get()).c.setClickable(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agso
  * JD-Core Version:    0.7.0.1
  */

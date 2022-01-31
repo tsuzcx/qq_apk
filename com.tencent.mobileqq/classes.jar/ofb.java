@@ -1,67 +1,33 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class ofb
+  extends ClickableSpan
 {
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<ofc> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private HashMap<String, String> b = new HashMap();
+  public ofb(CommentInfo paramCommentInfo1, CommentInfo paramCommentInfo2, BaseActivity paramBaseActivity) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    ohi.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.toUin, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    paramView = new ohl(this.b.articleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo).a(ogq.a).b(this.b.area).c(0).a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.toUin).a();
+    noo.a(null, ohi.a(this.b.articleInfo), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.b.articleInfo.mArticleID), String.valueOf(this.b.articleInfo.mAlgorithmID), this.b.articleInfo.innerUniqueID, paramView, false);
   }
   
-  public String a(int paramInt, String paramString)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    String str2 = "";
-    ofc localofc = a(paramInt);
-    String str1 = str2;
-    if (localofc != null)
-    {
-      str1 = str2;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        if (!"style_ID".equalsIgnoreCase(paramString)) {
-          break label46;
-        }
-        str1 = localofc.jdField_a_of_type_JavaLangString;
-      }
-    }
-    return str1;
-    label46:
-    return (String)localofc.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public String a(String paramString)
-  {
-    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public ofc a(int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt >= 0)
-    {
-      localObject1 = localObject2;
-      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-        localObject1 = (ofc)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      }
-    }
-    return localObject1;
-  }
-  
-  public String b(String paramString)
-  {
-    return (String)this.b.get(paramString);
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ofb
  * JD-Core Version:    0.7.0.1
  */

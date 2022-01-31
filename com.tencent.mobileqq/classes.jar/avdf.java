@@ -1,84 +1,43 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
 
 public class avdf
-  extends ajsf
 {
-  private avdf(SignTextEditFragment paramSignTextEditFragment) {}
-  
-  protected void e(boolean paramBoolean, Object paramObject)
+  private static String a(int paramInt1, int paramInt2)
   {
-    if (paramObject == null) {
-      SignTextEditFragment.a(this.a, 2);
+    switch (paramInt1)
+    {
     }
     for (;;)
     {
-      return;
-      paramObject = (Bundle)paramObject;
-      int i = paramObject.getInt("param_searchResult", 0);
-      paramObject = (ArrayList)paramObject.getSerializable("param_topicInfoList");
-      if ((paramObject == null) || (paramObject.size() <= 0)) {
-        if (i == 0) {
-          SignTextEditFragment.a(this.a, 3);
-        }
-      }
-      while (this.a.jdField_a_of_type_Aicx.a(paramObject, true))
+      return null;
+      switch (paramInt2)
       {
-        this.a.jdField_a_of_type_Aicx.notifyDataSetChanged();
-        return;
-        SignTextEditFragment.a(this.a, 2);
-        continue;
-        SignTextEditFragment.a(this.a, 4);
+      default: 
+        switch (paramInt2)
+        {
+        }
+        break;
       }
     }
+    return "0X8009E09";
+    return "0X8009E06";
+    return "0X8009E07";
+    return "0X8009E08";
+    return "0X8009E0A";
+    return "0X8009E0B";
   }
   
-  protected void f(boolean paramBoolean, Object paramObject)
+  public static void a(int paramInt1, int paramInt2)
   {
-    if (paramObject == null)
-    {
-      SignTextEditFragment.a(this.a, 2);
-      return;
-    }
-    Object localObject = (Bundle)paramObject;
-    int j = ((Bundle)localObject).getInt("param_atIndex");
-    int k = ((Bundle)localObject).getInt("param_atKeyLen");
-    paramObject = ((Bundle)localObject).getString("param_atKey");
-    long l = ((Bundle)localObject).getLong("param_reqTs");
-    localObject = (ArrayList)((Bundle)localObject).getSerializable("param_topicInfoList");
-    int i;
-    if (localObject == null)
-    {
-      i = 0;
-      if (QLog.isColorLevel()) {
-        QLog.i("SignTextEditFragment", 2, String.format("onGetTopicWithKey[%b,%d] key=[%s] [atIndex=%d, keyLen=%d],reqTs=%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i), paramObject, Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l) }));
-      }
-      if ((localObject != null) && (((List)localObject).size() > 0)) {
-        break label240;
-      }
-      SignTextEditFragment.a(this.a, 3);
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_Aicx.a((List)localObject, false)) {
-        this.a.jdField_a_of_type_Aicx.notifyDataSetChanged();
-      }
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setTag(new Object[] { Integer.valueOf(j), Integer.valueOf(k), paramObject, Long.valueOf(l) });
-      return;
-      i = ((List)localObject).size();
-      break;
-      label240:
-      SignTextEditFragment.a(this.a, 4);
+    String str = a(paramInt1, paramInt2);
+    if (!TextUtils.isEmpty(str)) {
+      axqw.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avdf
  * JD-Core Version:    0.7.0.1
  */

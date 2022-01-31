@@ -1,24 +1,23 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aikm
-  extends RecyclerView.ViewHolder
+  implements alxk
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public aikm(SessionClearFragment paramSessionClearFragment) {}
   
-  public aikm(aikl paramaikl, View paramView)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    super(paramView);
-    if (paramView == aikl.a(paramaikl)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForDiscuss onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131298757));
+    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aikm
  * JD-Core Version:    0.7.0.1
  */

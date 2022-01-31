@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
+import aukm;
 
 public abstract class BaseRecentUser
-  extends atmo
+  extends aukm
 {
   public boolean mIsParsed;
   

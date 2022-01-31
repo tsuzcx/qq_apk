@@ -1,255 +1,48 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.wadl.ipc.WadlParams;
-import cooperation.wadl.ipc.WadlResult;
-import org.json.JSONObject;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public class bcko
+class bcko
+  extends Animation
 {
-  public static int a(int paramInt)
+  private int jdField_a_of_type_Int;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
+  private View jdField_a_of_type_AndroidViewView;
+  private int b;
+  
+  public bcko(View paramView)
   {
-    if (paramInt == 6) {
-      return 4;
-    }
-    if (paramInt == 4) {
-      return 2;
-    }
-    if (paramInt == 5) {
-      return 3;
-    }
-    if ((paramInt == 7) || (paramInt == 14)) {
-      return -2;
-    }
-    if (paramInt == 0) {
-      return 1;
-    }
-    if (paramInt == 9) {
-      return 6;
-    }
-    if (paramInt == 11) {
-      return 9;
-    }
-    if (paramInt == 12) {
-      return 10;
-    }
-    if (paramInt == 13) {
-      return 20;
-    }
-    if (paramInt == 2) {
-      return 20;
-    }
-    if (paramInt == 1) {
-      return 20;
-    }
-    if (paramInt == 3) {
-      return 20;
-    }
-    if (paramInt == 10) {
-      return 13;
-    }
-    return 0;
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  public static int a(int paramInt, String paramString1, String paramString2)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    int i = 9;
-    if (bady.a(BaseApplication.getContext(), paramString1)) {
-      return i;
-    }
-    if (paramInt == 9) {
-      paramInt = 6;
-    }
-    for (;;)
+    super.applyTransformation(paramFloat, paramTransformation);
+    paramFloat = 90.0F - 90.0F * paramFloat;
+    this.jdField_a_of_type_AndroidGraphicsCamera.save();
+    this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(paramFloat);
+    this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.jdField_a_of_type_AndroidGraphicsCamera.restore();
+    if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      i = paramInt;
-      if (paramInt != 6) {
-        break;
-      }
-      i = paramInt;
-      if (bace.a(paramString2)) {
-        break;
-      }
-      return 0;
+      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - paramFloat / 90.0F);
+      this.jdField_a_of_type_AndroidViewView.invalidate();
     }
+    this.jdField_a_of_type_AndroidGraphicsMatrix.preTranslate(-this.jdField_a_of_type_Int / 2, 0.0F);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Int / 2, 0.0F);
+    paramTransformation.getMatrix().postConcat(this.jdField_a_of_type_AndroidGraphicsMatrix);
   }
   
-  public static String a(int paramInt)
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    switch (paramInt)
-    {
-    default: 
-      return bbtm.a().a().getString(2131629194);
-    case 0: 
-      return "";
-    case 1: 
-      return bbtm.a().a().getString(2131629199);
-    case 2: 
-      return bbtm.a().a().getString(2131629203);
-    case 3: 
-      return bbtm.a().a().getString(2131629201);
-    case 4: 
-      return bbtm.a().a().getString(2131629197);
-    case 5: 
-      return bbtm.a().a().getString(2131629194);
-    }
-    return bbtm.a().a().getString(2131629194);
-  }
-  
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      bckd.a("WadlJsBridgeUtil", "getAppid error packageName is empty");
-      return "";
-    }
-    String str3 = paramString.trim();
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    for (;;)
-    {
-      try
-      {
-        paramString = localBaseApplication.getSharedPreferences("wadl_AppInfo", 4).getString(str3, "");
-        String str1 = paramString;
-        bckd.a("WadlJsBridgeUtil", "getAppid error", localOutOfMemoryError1);
-      }
-      catch (OutOfMemoryError localOutOfMemoryError1)
-      {
-        try
-        {
-          if (TextUtils.isEmpty(paramString)) {
-            str1 = localBaseApplication.getSharedPreferences("wadlAppInfo", 0).getString(str3, "");
-          }
-          bckd.b("WadlJsBridgeUtil", "getAppid packageName=" + str3 + ",appId=" + str1);
-          return str1;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError2)
-        {
-          String str2;
-          break label106;
-        }
-        localOutOfMemoryError1 = localOutOfMemoryError1;
-        paramString = "";
-      }
-      label106:
-      str2 = paramString;
-    }
-  }
-  
-  public static JSONObject a(WadlResult paramWadlResult)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramWadlResult != null) {}
-    try
-    {
-      if (paramWadlResult.a != null)
-      {
-        WadlParams localWadlParams = paramWadlResult.a;
-        localJSONObject.put("appid", localWadlParams.a);
-        localJSONObject.put("state", a(paramWadlResult.b));
-        localJSONObject.put("pro", paramWadlResult.d);
-        localJSONObject.put("packagename", localWadlParams.j);
-        localJSONObject.put("ismyapp", 0);
-        localJSONObject.put("download_from", 0);
-        localJSONObject.put("realDownloadType", 0);
-        localJSONObject.put("via", localWadlParams.m);
-        localJSONObject.put("writecodestate", 0);
-        localJSONObject.put("extraInfo", localWadlParams.p);
-        localJSONObject.put("isAutoInstallBySDK", localWadlParams.a(1));
-        localJSONObject.put("isRes", localWadlParams.b);
-        int i = b(paramWadlResult.c);
-        localJSONObject.put("errorCode", i);
-        localJSONObject.put("errorMsg", a(i));
-      }
-      return localJSONObject;
-    }
-    catch (Exception paramWadlResult) {}
-    return localJSONObject;
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return false;
-    }
-    paramString1 = paramString1.trim();
-    paramString2 = paramString2.trim();
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getContext().getSharedPreferences("wadl_AppInfo", 4).edit();
-    localEditor.putString(paramString1, paramString2);
-    boolean bool = localEditor.commit();
-    bckd.b("WadlJsBridgeUtil", "savePackageInfo:appid:" + paramString2 + ",packageName:" + paramString1 + ",flag:" + bool);
-    return bool;
-  }
-  
-  public static int b(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case -72: 
-    case -70: 
-    case -69: 
-    case -68: 
-    case -67: 
-    case -66: 
-    case -65: 
-    case -64: 
-    case -63: 
-    case -62: 
-    case -61: 
-    case -59: 
-    case -58: 
-    case -57: 
-    case -56: 
-    case -55: 
-    case -54: 
-    case -53: 
-    case -52: 
-    case -50: 
-    case -49: 
-    case -48: 
-    case -47: 
-    case -46: 
-    case -45: 
-    case -44: 
-    case -43: 
-    case -42: 
-    case -41: 
-    case -29: 
-    case -28: 
-    case -27: 
-    case -22: 
-    case -19: 
-    case -18: 
-    case -17: 
-    case -14: 
-    case -13: 
-    default: 
-      return 6;
-    case 0: 
-      return 0;
-    case -71: 
-    case -30: 
-    case -26: 
-    case -25: 
-    case -24: 
-    case -23: 
-    case -16: 
-    case -15: 
-    case -1: 
-      return 1;
-    case -51: 
-    case -11: 
-      return 2;
-    case -40: 
-    case -12: 
-      return 3;
-    case 999: 
-      return 7;
-    }
-    return 5;
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

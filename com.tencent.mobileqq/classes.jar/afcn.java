@@ -1,32 +1,22 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.9.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.mobileqq.activity.chathistory.TroopAIOEmotionFragment;
 
 public class afcn
-  extends ajuc
+  implements bfoq
 {
-  public afcn(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  public afcn(TroopAIOEmotionFragment paramTroopAIOEmotionFragment, bfol parambfol) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (1 == paramInt1) {
-      ThreadManager.getUIHandler().post(new TroopNotifyAndRecommendView.9.1(this, paramString));
-    }
-  }
-  
-  protected void b(boolean paramBoolean, List<RecommendTroopItem> paramList)
-  {
-    if ((paramBoolean) && (paramList != null)) {
-      this.a.a(paramList);
+    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOEmotionFragment.b();
+    if (this.jdField_a_of_type_Bfol.isShowing()) {
+      this.jdField_a_of_type_Bfol.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afcn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,17 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
 
 public class atee
-  implements PopupWindow.OnDismissListener
+  implements View.OnClickListener
 {
-  public atee(OCRResultActivity paramOCRResultActivity) {}
+  public atee(PlayerInvitePanel paramPlayerInvitePanel, int paramInt) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    this.a.a = null;
-    if ((OCRResultActivity.c(this.a) != null) && (OCRResultActivity.c(this.a).size() > 1))
-    {
-      Drawable localDrawable = this.a.getResources().getDrawable(2130844711);
-      this.a.b.setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
+    if (PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel) != null) {
+      PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel).onItemClick(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
     }
   }
 }

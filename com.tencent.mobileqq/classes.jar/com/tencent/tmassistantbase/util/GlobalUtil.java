@@ -1,5 +1,7 @@
 package com.tencent.tmassistantbase.util;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -9,6 +11,8 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
+import android.net.Uri.Builder;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
@@ -22,7 +26,6 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import com.tencent.tmassistant.common.jce.BoutiqueGameConfig;
-import com.tencent.tmdownloader.internal.storage.b;
 import java.io.File;
 import java.io.IOException;
 import java.net.NetworkInterface;
@@ -51,7 +54,7 @@ public class GlobalUtil
   private static String mQImei;
   private static String mQadid;
   private static long sUin;
-  public static ThreadLocal<SimpleDateFormat> yyyyMMddHHTimeFormat = new k();
+  public static ThreadLocal<SimpleDateFormat> yyyyMMddHHTimeFormat = new j();
   public static ThreadLocal<SimpleDateFormat> yyyyMMddTimeFormat;
   protected Context mContext;
   private String mMACAdress = null;
@@ -63,14 +66,14 @@ public class GlobalUtil
     sUin = 0L;
     mQImei = "";
     mQadid = "";
-    yyyyMMddTimeFormat = new j();
+    yyyyMMddTimeFormat = new i();
   }
   
   protected GlobalUtil()
   {
     try
     {
-      ac.c(TAG, "isMIUI:" + isMIUI());
+      ab.c(TAG, "isMIUI:" + isMIUI());
       return;
     }
     catch (Throwable localThrowable) {}
@@ -194,12 +197,12 @@ public class GlobalUtil
     try
     {
       paramString.delete();
-      ac.c("GlobalUtil", "deleteDB");
+      ab.c("GlobalUtil", "deleteDB");
       return;
     }
     catch (Exception paramString)
     {
-      ac.c("GlobalUtil", "deleteDB failed");
+      ab.c("GlobalUtil", "deleteDB failed");
     }
   }
   
@@ -345,7 +348,7 @@ public class GlobalUtil
     }
     catch (Exception localException)
     {
-      ac.c(TAG, "getMacAddress Exception:", localException);
+      ab.c(TAG, "getMacAddress Exception:", localException);
     }
     return "";
   }
@@ -410,7 +413,7 @@ public class GlobalUtil
     //   72: getstatic 47	com/tencent/tmassistantbase/util/GlobalUtil:TAG	Ljava/lang/String;
     //   75: aload_0
     //   76: invokevirtual 370	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   79: invokestatic 373	com/tencent/tmassistantbase/util/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   79: invokestatic 373	com/tencent/tmassistantbase/util/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   82: aconst_null
     //   83: astore_0
     //   84: goto -23 -> 61
@@ -441,7 +444,7 @@ public class GlobalUtil
     //   138: aload_0
     //   139: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   142: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   145: invokestatic 389	com/tencent/tmassistantbase/util/ac:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   145: invokestatic 389	com/tencent/tmassistantbase/util/ab:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   148: goto -131 -> 17
     //   151: astore_0
     //   152: ldc 2
@@ -492,13 +495,13 @@ public class GlobalUtil
     }
     try
     {
-      sUin = Long.valueOf((String)x.a(x.a(x.a("com.tencent.common.app.BaseApplicationImpl").b("sApplication")).d("getRuntime").a()).d("getAccount").a()).longValue();
+      sUin = Long.valueOf((String)w.a(w.a(w.a("com.tencent.common.app.BaseApplicationImpl").b("sApplication")).d("getRuntime").a()).d("getAccount").a()).longValue();
       long l = sUin;
       return l;
     }
     catch (Throwable localThrowable)
     {
-      ac.e(TAG, localThrowable.getMessage());
+      ab.e(TAG, localThrowable.getMessage());
     }
     return 0L;
   }
@@ -539,7 +542,7 @@ public class GlobalUtil
     Object localObject1 = getInstance().getContext();
     if (localObject1 == null)
     {
-      ac.d(TAG, "GlobalUtil.getInstance().getContext() == null.");
+      ab.d(TAG, "GlobalUtil.getInstance().getContext() == null.");
       return false;
     }
     localObject1 = (ConnectivityManager)((Context)localObject1).getSystemService("connectivity");
@@ -556,7 +559,7 @@ public class GlobalUtil
     {
       for (;;)
       {
-        ac.e(TAG, localException.getMessage());
+        ab.e(TAG, localException.getMessage());
         Object localObject2 = null;
         continue;
         boolean bool = false;
@@ -595,15 +598,15 @@ public class GlobalUtil
   
   public static boolean isRecommendGame(String paramString)
   {
-    BoutiqueGameConfig localBoutiqueGameConfig = (BoutiqueGameConfig)b.a().a("key_recommend_games_config", BoutiqueGameConfig.class);
+    BoutiqueGameConfig localBoutiqueGameConfig = (BoutiqueGameConfig)com.tencent.tmdownloader.internal.storage.b.a().a("key_recommend_games_config", BoutiqueGameConfig.class);
     if ((localBoutiqueGameConfig != null) && (localBoutiqueGameConfig.pkgList != null) && (localBoutiqueGameConfig.pkgList.size() != 0))
     {
-      ac.c("nemo_bgg", "<isRecommendGame> CONFIG_RECOMMEND_GAMES  size = " + localBoutiqueGameConfig.pkgList.size() + "\ncontent=" + localBoutiqueGameConfig.pkgList);
+      ab.c("nemo_bgg", "<isRecommendGame> CONFIG_RECOMMEND_GAMES  size = " + localBoutiqueGameConfig.pkgList.size() + "\ncontent=" + localBoutiqueGameConfig.pkgList);
       boolean bool = localBoutiqueGameConfig.pkgList.contains(paramString);
-      ac.c("nemo_bgg", "<isRecommendGame> " + paramString + " is bgg：" + bool);
+      ab.c("nemo_bgg", "<isRecommendGame> " + paramString + " is bgg：" + bool);
       return bool;
     }
-    ac.e("nemo_bgg", "<isRecommendGame> CONFIG_RECOMMEND_GAMES error, boutiqueGameConfig is null!");
+    ab.e("nemo_bgg", "<isRecommendGame> CONFIG_RECOMMEND_GAMES error, boutiqueGameConfig is null!");
     return false;
   }
   
@@ -619,6 +622,55 @@ public class GlobalUtil
       str = Pattern.compile("\\s*|\t|\r|\n").matcher(paramString).replaceAll("");
     }
     return str;
+  }
+  
+  public static void setClipboardCMD(Context paramContext, String paramString, long paramLong1, long paramLong2)
+  {
+    com.tencent.tmassistantbase.util.b.b.a(TAG, "setClipboardCMD taskTmast:" + paramString + ", startTime=" + paramLong1 + ", endTime=" + paramLong2);
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    Object localObject = Uri.parse(paramString);
+    paramString = ((Uri)localObject).buildUpon();
+    paramLong2 -= paramLong1;
+    if (paramLong2 >= 300000L) {}
+    for (;;)
+    {
+      paramString.appendQueryParameter("clipboard_start_time", "" + paramLong1);
+      paramString.appendQueryParameter("clipboard_expiry_time", "" + paramLong2);
+      try
+      {
+        if (TextUtils.isEmpty(((Uri)localObject).getQueryParameter("hostpname")))
+        {
+          localObject = getAppPackageName(paramContext);
+          String str = "" + getAppVersionCode(paramContext);
+          paramString.appendQueryParameter("hostpname", (String)localObject);
+          paramString.appendQueryParameter("hostversioncode", str);
+        }
+        setPlainTextToClipboard(paramContext, "$" + paramString.build().toString() + "$");
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          com.tencent.tmassistantbase.util.b.b.a(TAG, "setClipboardCMD hostpname set failed.", localThrowable);
+        }
+      }
+      paramLong2 = 1800000L;
+    }
+  }
+  
+  public static void setPlainTextToClipboard(Context paramContext, String paramString)
+  {
+    paramContext = (ClipboardManager)paramContext.getSystemService("clipboard");
+    if (paramContext == null)
+    {
+      com.tencent.tmassistantbase.util.b.b.b(TAG, "cm is null!");
+      return;
+    }
+    paramContext.setPrimaryClip(ClipData.newPlainText("", paramString));
+    com.tencent.tmassistantbase.util.b.b.a(TAG, "setPlainTextToClipboard plainText:" + paramString);
   }
   
   public static void updateFilePathAuthorized(String paramString)
@@ -668,7 +720,7 @@ public class GlobalUtil
     }
     catch (Exception localException)
     {
-      ac.c(TAG, "getAndroidIdInPhone Exception:", localException);
+      ab.c(TAG, "getAndroidIdInPhone Exception:", localException);
     }
     return "";
   }
@@ -703,14 +755,14 @@ public class GlobalUtil
     try
     {
       if (TextUtils.isEmpty(mDevicedId)) {
-        mDevicedId = (String)x.a("com.tencent.open.appcommon.js.AppInterface").d("getImei").a();
+        mDevicedId = (String)w.a("com.tencent.open.appcommon.js.AppInterface").d("getImei").a();
       }
       String str = mDevicedId;
       return str;
     }
     catch (Exception localException)
     {
-      ac.c(TAG, "getImei Exception:", localException);
+      ab.c(TAG, "getImei Exception:", localException);
     }
     return null;
   }
@@ -722,12 +774,12 @@ public class GlobalUtil
       if (this.mContext == null) {
         return null;
       }
-      String str = (String)x.a("com.tencent.open.appcommon.js.AppInterface").d("getImsi").a();
+      String str = (String)w.a("com.tencent.open.appcommon.js.AppInterface").d("getImsi").a();
       return str;
     }
     catch (Exception localException)
     {
-      ac.c(TAG, "getImsi Exception:", localException);
+      ab.c(TAG, "getImsi Exception:", localException);
     }
     return null;
   }
@@ -745,7 +797,7 @@ public class GlobalUtil
     {
       str1 = getMacAddressNew();
     }
-    ac.c(TAG, "address:" + str1);
+    ab.c(TAG, "address:" + str1);
     return str1;
   }
   
@@ -771,7 +823,7 @@ public class GlobalUtil
     }
     catch (Exception localException)
     {
-      ac.c(TAG, "getNetworkOperator Exception:", localException);
+      ab.c(TAG, "getNetworkOperator Exception:", localException);
     }
     return "";
   }
@@ -788,7 +840,7 @@ public class GlobalUtil
     }
     catch (Exception localException)
     {
-      ac.c(TAG, "getNetworkType Exception:", localException);
+      ab.c(TAG, "getNetworkType Exception:", localException);
     }
     return 0;
   }
@@ -813,20 +865,20 @@ public class GlobalUtil
   public int getQQDownloaderAPILevel()
   {
     if (this.mContext == null) {
-      ac.c("SelfUpdateSDK", "context == null");
+      ab.c("SelfUpdateSDK", "context == null");
     }
     for (;;)
     {
       return 0;
-      ac.c("SelfUpdateSDK", "getQQDownloaderAPILevel");
+      ab.c("SelfUpdateSDK", "getQQDownloaderAPILevel");
       try
       {
         ApplicationInfo localApplicationInfo = this.mContext.getPackageManager().getApplicationInfo("com.tencent.android.qqdownloader", 128);
-        ac.c("SelfUpdateSDK", "appInfo:" + localApplicationInfo);
+        ab.c("SelfUpdateSDK", "appInfo:" + localApplicationInfo);
         if ((localApplicationInfo != null) && (localApplicationInfo.metaData != null))
         {
           int i = localApplicationInfo.metaData.getInt("com.tencent.android.qqdownloader.sdk.apilevel");
-          ac.c("SelfUpdateSDK", "apiLevel:" + i);
+          ab.c("SelfUpdateSDK", "apiLevel:" + i);
           return i;
         }
       }
@@ -838,20 +890,20 @@ public class GlobalUtil
   public int getQQDownloaderConnectLevel()
   {
     if (this.mContext == null) {
-      ac.c("SelfUpdateSDK", "context == null");
+      ab.c("SelfUpdateSDK", "context == null");
     }
     for (;;)
     {
       return 0;
-      ac.c("SelfUpdateSDK", "getQQDownloaderConnectLevel");
+      ab.c("SelfUpdateSDK", "getQQDownloaderConnectLevel");
       try
       {
         ApplicationInfo localApplicationInfo = this.mContext.getPackageManager().getApplicationInfo("com.tencent.android.qqdownloader", 128);
-        ac.c("SelfUpdateSDK", "appInfo:" + localApplicationInfo);
+        ab.c("SelfUpdateSDK", "appInfo:" + localApplicationInfo);
         if ((localApplicationInfo != null) && (localApplicationInfo.metaData != null))
         {
           int i = localApplicationInfo.metaData.getInt("com.tencent.android.qqdownloader.sdk.connectlevel");
-          ac.c("SelfUpdateSDK", "apiLevel:" + i);
+          ab.c("SelfUpdateSDK", "apiLevel:" + i);
           return i;
         }
       }
@@ -903,11 +955,11 @@ public class GlobalUtil
   {
     if ((!TextUtils.isEmpty(mQadid)) || (this.mContext == null))
     {
-      ac.c(TAG, ">getQadid " + mQadid);
+      ab.c(TAG, ">getQadid " + mQadid);
       return mQadid;
     }
-    mQadid = u.a(this.mContext.getApplicationContext());
-    ac.c(TAG, ">getQadid " + mQadid);
+    mQadid = t.a(this.mContext.getApplicationContext());
+    ab.c(TAG, ">getQadid " + mQadid);
     return mQadid;
   }
   
@@ -915,21 +967,21 @@ public class GlobalUtil
   {
     if ((!TextUtils.isEmpty(mQImei)) || (this.mContext == null))
     {
-      ac.c(TAG, ">getQimei" + mQImei);
+      ab.c(TAG, ">getQimei" + mQImei);
       return mQImei;
     }
     try
     {
-      x.a("com.tencent.beacon.event.UserAction").a("initUserAction", new Object[] { this.mContext.getApplicationContext() });
-      mQImei = (String)x.a("com.tencent.beacon.event.UserAction").d("getQIMEI").a();
-      ac.c(TAG, ">getQimei" + mQImei);
+      w.a("com.tencent.beacon.event.UserAction").a("initUserAction", new Object[] { this.mContext.getApplicationContext() });
+      mQImei = (String)w.a("com.tencent.beacon.event.UserAction").d("getQIMEI").a();
+      ab.c(TAG, ">getQimei" + mQImei);
       return mQImei;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        ac.e(TAG, ">getQimei" + localThrowable.getMessage());
+        ab.e(TAG, ">getQimei" + localThrowable.getMessage());
       }
     }
   }
@@ -954,7 +1006,7 @@ public class GlobalUtil
   {
     if (getInstance().getContext() == null)
     {
-      ac.d(TAG, "GlobalUtil.getInstance().getContext() == null.");
+      ab.d(TAG, "GlobalUtil.getInstance().getContext() == null.");
       return null;
     }
     return getInstance().getContext().getSharedPreferences("TMAssistantSDKSharedPreference", 4);
@@ -967,8 +1019,8 @@ public class GlobalUtil
       localContext = paramContext.getApplicationContext();
     }
     this.mContext = localContext;
-    this.mQUA = new w(localContext).a();
-    l.a().post(new i(this));
+    this.mQUA = new v(localContext).a();
+    k.a().post(new h(this));
   }
   
   public void setNetTypeValue(byte paramByte) {}

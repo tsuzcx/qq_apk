@@ -1,79 +1,67 @@
-import android.opengl.EGLContext;
-import com.tencent.mobileqq.richmedia.capture.data.FollowCaptureParam;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
+import com.tencent.mobileqq.vas.PendantInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class auzf
+  implements Handler.Callback
 {
-  public int a;
-  public EGLContext a;
-  public auzl a;
-  public auzy a;
-  public avap a;
-  public FollowCaptureParam a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e = 8;
-  public String e;
-  public boolean e;
-  public int f;
-  public boolean f;
-  public int g;
-  public int h;
-  public int i;
-  public int j = -1;
-  public int k = -1;
-  public int l;
-  public int m;
+  public auzf(ProfileHeaderView paramProfileHeaderView) {}
   
-  public auzf(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean1, int paramInt7, String paramString2, String paramString3, String paramString4, boolean paramBoolean2)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_d_of_type_Int = 30;
-    this.jdField_f_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.e = paramInt4;
-    this.jdField_f_of_type_Int = paramInt6;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_d_of_type_Int = paramInt5;
-    this.g = paramInt7;
-    this.jdField_d_of_type_JavaLangString = paramString4;
-  }
-  
-  public auzf(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5)
-  {
-    this(paramString, paramInt1, paramInt2, paramInt3, paramInt4, 30, 0, paramBoolean, paramInt5, null, null, null, false);
-  }
-  
-  public EGLContext a()
-  {
-    return this.jdField_a_of_type_AndroidOpenglEGLContext;
-  }
-  
-  public void a(EGLContext paramEGLContext)
-  {
-    this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
-  }
-  
-  public String toString()
-  {
-    return "EncodeConfig{sharedContext=" + this.jdField_a_of_type_AndroidOpenglEGLContext + ", outputFilePath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", width='" + this.jdField_a_of_type_Int + '\'' + ", height='" + this.jdField_b_of_type_Int + '\'' + ", bitRate='" + this.jdField_c_of_type_Int + '\'' + ", frameRate='" + this.jdField_d_of_type_Int + '\'' + ", iFrameInterval='" + this.e + '\'' + ", filterType=" + this.jdField_f_of_type_Int + ", needGenerateThumb=" + this.jdField_a_of_type_Boolean + ", watermarkPath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mosaicPath='" + this.jdField_c_of_type_JavaLangString + '\'' + ", orientation=" + this.g + ", adjustRotation=" + this.h + '}';
+    if (QLog.isDevelopLevel()) {
+      QLog.i(ProfileHeaderView.jdField_a_of_type_JavaLangString, 4, String.format(Locale.getDefault(), "mUICallback [%d]", new Object[] { Integer.valueOf(paramMessage.what) }));
+    }
+    if (ProfileHeaderView.jdField_b_of_type_Int == paramMessage.what)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "ProfileHeaderView handleMessage msg what is check tips time=" + this.a.jdField_a_of_type_Int);
+      }
+      if ((this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
+        this.a.k(this.a.jdField_a_of_type_Auuw);
+      }
+    }
+    do
+    {
+      do
+      {
+        return true;
+      } while (ProfileHeaderView.c != paramMessage.what);
+      localObject = (View)this.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_avatar_pendant");
+    } while (!(localObject instanceof ImageView));
+    Object localObject = (ImageView)localObject;
+    paramMessage = (ExtensionInfo)paramMessage.obj;
+    if ((paramMessage != null) && (paramMessage.isPendantValid()))
+    {
+      this.a.jdField_a_of_type_Long = paramMessage.pendantId;
+      AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
+      ((ImageView)localObject).setVisibility(0);
+      if (bbby.a(this.a.jdField_a_of_type_Long))
+      {
+        localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 2, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
+        return true;
+      }
+      localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 1, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
+      return true;
+    }
+    ((ImageView)localObject).setVisibility(4);
+    this.a.jdField_a_of_type_Long = 0L;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auzf
  * JD-Core Version:    0.7.0.1
  */

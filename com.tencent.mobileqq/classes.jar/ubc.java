@@ -1,49 +1,105 @@
-import android.app.PendingIntent;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
 
-public class ubc
-  implements DialogInterface.OnClickListener
+public abstract class ubc
+  extends uak
 {
-  public ubc(QQStoryMainActivity paramQQStoryMainActivity, Intent paramIntent) {}
+  public int a;
+  @NonNull
+  public final View a;
+  public StoryPlayerGroupHolder a;
+  public String a;
+  public uav a;
+  protected ubd a;
+  protected boolean a;
+  public int b;
+  private final String b;
+  protected boolean b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ubc(@NonNull ViewGroup paramViewGroup)
   {
-    switch (paramInt)
-    {
+    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.playernew." + getClass().getSimpleName());
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this));
+    this.jdField_a_of_type_AndroidViewView = a(paramViewGroup);
+  }
+  
+  protected abstract View a(ViewGroup paramViewGroup);
+  
+  public ubc a(Class<? extends ubc> paramClass)
+  {
+    if (this.jdField_a_of_type_Ubd != null) {
+      return this.jdField_a_of_type_Ubd.b(paramClass);
     }
-    do
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
+    veg.a(this.jdField_a_of_type_JavaLangString, "onPositionChanged, oldVer=%d, oldHor=%d, newVer=%d, newHor=%d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public void a(int paramInt1, int paramInt2, @NonNull uav paramuav, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
+  {
+    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Uav = paramuav;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = paramStoryPlayerGroupHolder;
+  }
+  
+  void a(ubd paramubd)
+  {
+    this.jdField_a_of_type_Ubd = paramubd;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_b_of_type_Boolean != paramBoolean)
     {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog back");
-        }
-        mpw.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity, 0, "", "");
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.finish();
-        try
-        {
-          paramDialogInterface = (PendingIntent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("activity_finish_run_pendingIntent");
-          if ((paramDialogInterface != null) && ((paramDialogInterface instanceof PendingIntent)))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->finish--send callback using PendingIntent");
-            }
-            paramDialogInterface.send();
-          }
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.moveTaskToBack(true);
-          return;
-        }
-        catch (Throwable paramDialogInterface) {}
-      } while (!QLog.isColorLevel());
-      QLog.e("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog ", paramDialogInterface);
+      this.jdField_b_of_type_Boolean = paramBoolean;
+      b(this.jdField_b_of_type_Boolean);
       return;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->qbShowShareResultDialog--stay");
+    }
+    veg.e(this.jdField_a_of_type_JavaLangString, "onSelected donot changed !");
+  }
+  
+  protected void b() {}
+  
+  protected void b(boolean paramBoolean)
+  {
+    veg.b(this.jdField_a_of_type_JavaLangString, "onSelectedChanged (ver=%d, hor=%d) , => %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(paramBoolean));
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_Uav = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = null;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String toString()
+  {
+    return "VideoHolderBase{, GroupPos=" + this.jdField_a_of_type_Int + ", VideoPos=" + this.jdField_b_of_type_Int + ", mData=" + this.jdField_a_of_type_Uav + '}';
   }
 }
 

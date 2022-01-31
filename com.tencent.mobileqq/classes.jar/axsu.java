@@ -1,417 +1,276 @@
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.os.Bundle;
+import android.os.SystemClock;
+import android.util.Pair;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.tencent.qphone.base.util.QLog.ILogCallback;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
-import mqq.manager.ProxyIpManager;
-import tencent.im.cs.cmd0x346.cmd0x346.DownloadSuccReq;
-import tencent.im.cs.cmd0x346.cmd0x346.ReqBody;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-public class axsu
-  extends axoo
-  implements axrs
+class axsu
+  extends axso
+  implements QLog.ILogCallback
 {
-  String e;
+  private int jdField_a_of_type_Int = 20;
+  private long jdField_a_of_type_Long = 2000L;
+  private axte jdField_a_of_type_Axte;
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private int jdField_b_of_type_Int = 50;
+  private long jdField_b_of_type_Long;
+  private Map<String, HashSet<Pair<Long, Integer>>> jdField_b_of_type_JavaUtilMap = new HashMap();
+  private int jdField_c_of_type_Int = 100;
+  private Map<String, HashSet<Pair<Long, Integer>>> jdField_c_of_type_JavaUtilMap = new HashMap();
   
-  public axsu(axvo paramaxvo, axvt paramaxvt)
+  public axsu(axsn paramaxsn, String paramString)
   {
-    super(paramaxvo, paramaxvt);
-    this.jdField_a_of_type_JavaUtilList = ((ProxyIpManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(3)).getProxyIp(4);
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    return ajed.aU + Utils.Crc64String(paramQQAppInterface.getAccount()) + "/" + "ptt" + "/pa_audio_" + paramString + ".amr";
-  }
-  
-  private cmd0x346.ReqBody a()
-  {
-    int j = 17;
-    cmd0x346.DownloadSuccReq localDownloadSuccReq = new cmd0x346.DownloadSuccReq();
-    localDownloadSuccReq.uint64_uin.set(Long.parseLong(this.jdField_a_of_type_Axvt.jdField_b_of_type_JavaLangString));
-    localDownloadSuccReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Axvt.e));
-    cmd0x346.ReqBody localReqBody = new cmd0x346.ReqBody();
-    localReqBody.uint32_cmd.set(1000);
-    localReqBody.uint32_seq.set(0);
-    int i;
-    if ("ftn".equals(this.d)) {
-      i = 3;
-    }
-    for (;;)
+    super(paramaxsn, paramString);
+    QLog.setLogCallback(this);
+    if ((this.jdField_a_of_type_Array2dOfJavaLangString.length >= 1) && (this.jdField_a_of_type_Array2dOfJavaLangString[0].length >= 4))
     {
-      localReqBody.uint32_business_id.set(i);
-      localReqBody.uint32_client_type.set(104);
-      localReqBody.msg_download_succ_req.set(localDownloadSuccReq);
-      return localReqBody;
-      i = j;
-      if ("pttcenter".equals(this.d)) {
-        i = j;
-      }
+      this.jdField_a_of_type_Long = (Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][0]).intValue() * 1000L);
+      this.jdField_b_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][1]).intValue();
+      this.jdField_c_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][2]).intValue();
+      this.jdField_a_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][3]).intValue();
     }
+    this.jdField_a_of_type_Axte = new axte(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_JavaUtilMap.put("MSF.D.MonitorSocket", Integer.valueOf(0));
+    this.jdField_a_of_type_JavaUtilMap.put("Q.msg.MsgProxy|addMsgQueue", Integer.valueOf(0));
+    this.jdField_a_of_type_JavaUtilMap.put("Q.db.Cache|writeRunable", Integer.valueOf(0));
+    this.jdField_a_of_type_JavaUtilMap.put("Q.msg.MsgProxy|writeRunable", Integer.valueOf(0));
+    this.jdField_a_of_type_JavaUtilMap.put("Q.db.Cache|addMsgQueue", Integer.valueOf(0));
+    this.jdField_a_of_type_JavaUtilMap.put("SQLiteOpenHelper| getWritableDatabase", Integer.valueOf(0));
+    this.jdField_a_of_type_JavaUtilMap.put("SQLiteOpenHelper| getReadableDatabase", Integer.valueOf(0));
   }
   
-  private void h()
+  public void a(Bundle paramBundle)
   {
-    b("setSuccess", "req");
-    String str = "PttCenterSvr.pb_pttCenter_CMD_REQ_DOWNLOAD_SUCC-1000";
-    if ("pttcenter".equals(this.d)) {
-      str = "PttCenterSvr.pb_pttCenter_CMD_REQ_DOWNLOAD_SUCC-1000";
-    }
-    axtb localaxtb;
-    for (;;)
-    {
-      cmd0x346.ReqBody localReqBody = a();
-      localaxtb = new axtb();
-      localaxtb.jdField_a_of_type_JavaLangString = str;
-      localaxtb.jdField_a_of_type_ArrayOfByte = localReqBody.toByteArray();
-      localaxtb.c = 1;
-      localaxtb.jdField_a_of_type_Int = 30000;
-      localaxtb.jdField_b_of_type_Int = 1;
-      localaxtb.jdField_a_of_type_Axta = this;
-      if (e()) {
-        break;
-      }
-      a(9366, "illegal app", null, this.jdField_a_of_type_Axow);
-      d();
+    if (!this.jdField_a_of_type_Boolean) {}
+    while (paramBundle.getInt("key_action") != 6) {
       return;
-      if ("ftn".equals(this.d)) {
-        str = "OfflineFilleHandleSvr.pb_ftnPtt_CMD_REQ_DOWNLOAD_SUCC-1000";
-      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager().a(localaxtb);
-  }
-  
-  public void a(axsp paramaxsp, axsq paramaxsq)
-  {
-    if ((paramaxsp == null) || (paramaxsq == null)) {}
-    do
+    String str = paramBundle.getString("key_log");
+    int i = paramBundle.getInt("key_count");
+    if (QLog.isColorLevel()) {
+      QLog.d("BatteryStats", 2, "LOG.onOtherProcReport：" + str + ", count:" + i);
+    }
+    synchronized (this.jdField_b_of_type_JavaUtilMap)
     {
-      do
+      HashSet localHashSet;
+      if (this.jdField_b_of_type_Boolean)
       {
-        return;
-      } while (!(paramaxsp instanceof axro));
-      paramaxsp = (axro)paramaxsp;
-      paramaxsp.jdField_a_of_type_Long += paramaxsq.c;
-    } while (0L != paramaxsp.jdField_b_of_type_Long);
-    paramaxsq.c = 0L;
-    paramaxsq = "bytes=" + paramaxsp.jdField_a_of_type_Long + "-";
-    paramaxsp.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaxsq);
-  }
-  
-  public void a(axtc paramaxtc, axtb paramaxtb)
-  {
-    a(null, paramaxtc.a, paramaxtc.a.getWupBuffer());
-  }
-  
-  public void a(axyg paramaxyg, axyv paramaxyv)
-  {
-    this.jdField_a_of_type_Axyg = null;
-    if (paramaxyv != null)
-    {
-      int i = 0;
-      while (i < paramaxyv.jdField_a_of_type_JavaUtilList.size())
-      {
-        paramaxyg = (axyy)paramaxyv.jdField_a_of_type_JavaUtilList.get(i);
-        if (QLog.isColorLevel()) {
-          b("procUrl", paramaxyg.toString());
-        }
-        this.i = paramaxyg.d;
-        if (QLog.isColorLevel()) {
-          QLog.e("http_sideway", 2, "C2CPttDownProcessor.onBusiProtoResp:isSendByQuickHttp=" + this.i);
-        }
-        a(this.jdField_a_of_type_Axow, paramaxyg);
-        if (paramaxyg.c == 0)
+        localHashSet = (HashSet)this.jdField_b_of_type_JavaUtilMap.get(str);
+        paramBundle = localHashSet;
+        if (localHashSet == null)
         {
-          this.c = paramaxyg.jdField_a_of_type_JavaLangString;
-          this.jdField_a_of_type_Axqf.i = this.c;
-          if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
-          {
-            paramaxyg = axub.a(this.c);
-            if (paramaxyg != null) {
-              this.jdField_a_of_type_JavaUtilArrayList.add(paramaxyg);
-            }
-          }
-          g();
-          i += 1;
+          paramBundle = new HashSet();
+          this.jdField_b_of_type_JavaUtilMap.put(str, paramBundle);
         }
-        else
-        {
-          d();
-        }
+        paramBundle.add(new Pair(Long.valueOf(System.currentTimeMillis()), Integer.valueOf(i)));
       }
+      if ((this.jdField_c_of_type_Boolean) && (this.d))
+      {
+        localHashSet = (HashSet)this.jdField_c_of_type_JavaUtilMap.get(str);
+        paramBundle = localHashSet;
+        if (localHashSet == null)
+        {
+          paramBundle = new HashSet();
+          this.jdField_c_of_type_JavaUtilMap.put(str, paramBundle);
+        }
+        paramBundle.add(new Pair(Long.valueOf(System.currentTimeMillis()), Integer.valueOf(i)));
+      }
+      return;
     }
   }
   
-  /* Error */
-  protected void a(com.tencent.qphone.base.remote.ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
+  public void b()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: ldc 157
-    //   3: ldc_w 337
-    //   6: invokevirtual 162	axsu:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   9: aload_2
-    //   10: invokevirtual 340	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
-    //   13: sipush 1000
-    //   16: if_icmpeq +38 -> 54
-    //   19: aload_2
-    //   20: invokevirtual 340	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
-    //   23: istore 4
-    //   25: aload_0
-    //   26: ldc_w 342
-    //   29: new 35	java/lang/StringBuilder
-    //   32: dup
-    //   33: invokespecial 38	java/lang/StringBuilder:<init>	()V
-    //   36: ldc_w 344
-    //   39: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: iload 4
-    //   44: invokevirtual 347	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   47: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokevirtual 162	axsu:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   53: return
-    //   54: new 349	tencent/im/cs/cmd0x346/cmd0x346$RspBody
-    //   57: dup
-    //   58: invokespecial 350	tencent/im/cs/cmd0x346/cmd0x346$RspBody:<init>	()V
-    //   61: astore_1
-    //   62: aload_1
-    //   63: aload_3
-    //   64: invokevirtual 354	tencent/im/cs/cmd0x346/cmd0x346$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   67: pop
-    //   68: aload_1
-    //   69: getfield 355	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   72: invokevirtual 358	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   75: ifeq +91 -> 166
-    //   78: aload_1
-    //   79: getfield 355	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   82: invokevirtual 360	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   85: i2l
-    //   86: lstore 5
-    //   88: lload 5
-    //   90: ldc2_w 361
-    //   93: lcmp
-    //   94: ifne -41 -> 53
-    //   97: aload_1
-    //   98: getfield 366	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
-    //   101: invokevirtual 369	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:has	()Z
-    //   104: ifeq -51 -> 53
-    //   107: aload_1
-    //   108: getfield 366	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
-    //   111: invokevirtual 372	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   114: checkcast 368	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp
-    //   117: getfield 376	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:int32_ret_code	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   120: invokevirtual 379	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   123: istore 4
-    //   125: invokestatic 281	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   128: ifeq -75 -> 53
-    //   131: aload_0
-    //   132: ldc_w 342
-    //   135: new 35	java/lang/StringBuilder
-    //   138: dup
-    //   139: invokespecial 38	java/lang/StringBuilder:<init>	()V
-    //   142: ldc_w 381
-    //   145: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   148: iload 4
-    //   150: invokevirtual 347	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   153: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   156: invokevirtual 162	axsu:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   159: return
-    //   160: astore_1
-    //   161: aload_1
-    //   162: invokevirtual 384	java/lang/Exception:printStackTrace	()V
-    //   165: return
-    //   166: ldc2_w 385
-    //   169: lstore 5
-    //   171: goto -83 -> 88
-    //   174: astore_1
-    //   175: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	176	0	this	axsu
-    //   0	176	1	paramToServiceMsg	com.tencent.qphone.base.remote.ToServiceMsg
-    //   0	176	2	paramFromServiceMsg	FromServiceMsg
-    //   0	176	3	paramArrayOfByte	byte[]
-    //   23	126	4	i	int
-    //   86	84	5	l	long
-    // Exception table:
-    //   from	to	target	type
-    //   54	62	160	java/lang/Exception
-    //   68	88	160	java/lang/Exception
-    //   97	159	160	java/lang/Exception
-    //   62	68	174	java/lang/Exception
-  }
-  
-  public void aU_()
-  {
-    super.aU_();
-    f();
-  }
-  
-  public int c()
-  {
-    super.c();
-    b("uiParam", this.jdField_a_of_type_Axvt.toString());
-    String str = this.jdField_a_of_type_Axvt.e;
-    if ((str == null) || (str.equals("")) || (str.equals("null")) || (bace.c(str)) || (str.startsWith("http://")))
+    super.b();
+    synchronized (this.jdField_b_of_type_JavaUtilMap)
     {
-      b(9302, a(new Exception("uuid illegal " + str)));
-      d();
-      return -1;
+      this.jdField_c_of_type_JavaUtilMap.clear();
+      return;
     }
-    this.jdField_a_of_type_Axvt.h = (ajed.aU + Utils.Crc64String(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()) + "/" + "ptt" + "/pa_audio_" + str + ".amr");
-    return 0;
   }
   
-  void d()
-  {
-    super.d();
-    d(2005);
-  }
-  
-  void e()
+  public void e()
   {
     super.e();
-    d(2003);
+    if ((axsn.a()) && (this.jdField_a_of_type_Boolean)) {}
+    label290:
+    for (;;)
+    {
+      synchronized (this.jdField_b_of_type_JavaUtilMap)
+      {
+        Iterator localIterator1 = this.jdField_b_of_type_JavaUtilMap.values().iterator();
+        int i = 0;
+        if (localIterator1.hasNext())
+        {
+          i = ((HashSet)localIterator1.next()).size() + i;
+          continue;
+        }
+        axsn.b(this.jdField_b_of_type_Axsn, new String[] { "fg30LogCount", "|", String.valueOf(i) });
+        localIterator1 = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
+        if (localIterator1.hasNext())
+        {
+          String str = (String)localIterator1.next();
+          StringBuilder localStringBuilder = axsk.a();
+          HashSet localHashSet = (HashSet)this.jdField_b_of_type_JavaUtilMap.get(str);
+          Iterator localIterator2 = localHashSet.iterator();
+          i = 0;
+          if (localIterator2.hasNext())
+          {
+            Pair localPair = (Pair)localIterator2.next();
+            localStringBuilder.append(localPair.first).append(",").append(localPair.second);
+            i += 1;
+            if (i >= localHashSet.size()) {
+              break label290;
+            }
+            localStringBuilder.append("#");
+            break label290;
+          }
+          axsn.b(this.jdField_b_of_type_Axsn, new String[] { "fg30LogAlarm", "|", str, "|", localStringBuilder.toString() });
+        }
+      }
+      this.jdField_b_of_type_JavaUtilMap.clear();
+      return;
+    }
   }
   
-  void f()
+  public void f()
   {
-    this.jdField_a_of_type_Axow.a();
-    this.d = "pttcenter";
-    b("findDbRec", "not found");
-    axyg localaxyg = new axyg();
-    axyi localaxyi = new axyi();
-    localaxyi.c = this.jdField_a_of_type_Axvt.jdField_b_of_type_JavaLangString;
-    localaxyi.d = this.jdField_a_of_type_Axvt.c;
-    localaxyi.e = this.jdField_a_of_type_Axvt.d;
-    localaxyi.f = this.jdField_a_of_type_Axvt.jdField_a_of_type_Int;
-    localaxyi.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Axvt.e;
-    localaxyi.jdField_b_of_type_JavaLangString = this.d;
-    localaxyi.jdField_a_of_type_Boolean = this.jdField_a_of_type_Axvt.jdField_b_of_type_Boolean;
-    localaxyi.jdField_a_of_type_Int = 0;
-    localaxyi.jdField_b_of_type_Int = 3;
-    localaxyg.jdField_a_of_type_Axzn = this;
-    localaxyg.jdField_a_of_type_JavaLangString = "c2c_ptt_dw";
-    localaxyg.jdField_a_of_type_JavaUtilList.add(localaxyi);
-    localaxyg.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager();
-    if (!e())
+    super.f();
+    if ((axsn.a()) && (this.jdField_a_of_type_Boolean)) {}
+    label292:
+    for (;;)
     {
-      a(9366, "illegal app", null, this.jdField_a_of_type_Axow);
-      d();
+      synchronized (this.jdField_b_of_type_JavaUtilMap)
+      {
+        Iterator localIterator1 = this.jdField_c_of_type_JavaUtilMap.values().iterator();
+        int i = 0;
+        if (localIterator1.hasNext())
+        {
+          i = ((HashSet)localIterator1.next()).size() + i;
+          continue;
+        }
+        axsn.b(this.jdField_b_of_type_Axsn, new String[] { "bg5LogCount", "|", String.valueOf(i) });
+        localIterator1 = this.jdField_c_of_type_JavaUtilMap.keySet().iterator();
+        if (localIterator1.hasNext())
+        {
+          String str = (String)localIterator1.next();
+          HashSet localHashSet = (HashSet)this.jdField_c_of_type_JavaUtilMap.get(str);
+          StringBuilder localStringBuilder = axsk.a();
+          Iterator localIterator2 = localHashSet.iterator();
+          i = 0;
+          if (localIterator2.hasNext())
+          {
+            Pair localPair = (Pair)localIterator2.next();
+            localStringBuilder.append(localPair.first).append(",").append(localPair.second);
+            i += 1;
+            if (i >= localHashSet.size()) {
+              break label292;
+            }
+            localStringBuilder.append("#");
+            break label292;
+          }
+          axsn.b(this.jdField_b_of_type_Axsn, new String[] { "bg5LogAlarm", "|", str, "|", localStringBuilder.toString() });
+        }
+      }
+      this.jdField_c_of_type_JavaUtilMap.clear();
+      return;
+    }
+  }
+  
+  public void onWriteLog(String paramString1, String paramString2)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Axte.a();
     }
     do
     {
       return;
-      if (QLog.isColorLevel()) {
-        b("requestStart", localaxyg.toString());
+      if (this.jdField_b_of_type_Long == 0L) {
+        this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
       }
-    } while (!f());
-    this.jdField_a_of_type_Axyg = localaxyg;
-    axzm.a(localaxyg);
-  }
-  
-  void g()
-  {
-    this.jdField_b_of_type_Axow.a();
-    String str3 = a(this.c, this.jdField_a_of_type_JavaUtilArrayList);
-    axou.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilArrayList);
-    axro localaxro = new axro();
-    localaxro.jdField_a_of_type_Axrt = this;
-    localaxro.jdField_a_of_type_JavaLangString = str3;
-    localaxro.jdField_a_of_type_Int = 0;
-    localaxro.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilArrayList;
-    localaxro.c = this.jdField_a_of_type_Axvt.h;
-    localaxro.e = String.valueOf(this.jdField_a_of_type_Axvt.jdField_a_of_type_Long);
-    localaxro.g = this.jdField_a_of_type_Axvt.jdField_a_of_type_Int;
-    localaxro.f = this.jdField_a_of_type_Axvt.jdField_b_of_type_Int;
-    localaxro.jdField_a_of_type_Long = 0L;
-    localaxro.k = true;
-    localaxro.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
-    localaxro.l = true;
-    localaxro.jdField_a_of_type_Axrs = this;
-    localaxro.d = this.e;
-    String str2 = null;
-    String str1 = str2;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+      this.jdField_a_of_type_Axte.a(paramString1 + "|" + paramString2);
+    } while (SystemClock.uptimeMillis() - this.jdField_b_of_type_Long <= this.jdField_a_of_type_Long);
+    Map localMap = this.jdField_a_of_type_Axte.a();
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Axte.a();
+    Object localObject;
+    if (localMap != null)
     {
-      str1 = str2;
-      if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-        str1 = Arrays.toString(this.jdField_a_of_type_JavaUtilArrayList.toArray());
+      paramString1 = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      while (paramString1.hasNext())
+      {
+        paramString2 = (String)paramString1.next();
+        localObject = localMap.keySet().iterator();
+        while (((Iterator)localObject).hasNext()) {
+          if (((String)((Iterator)localObject).next()).contains(paramString2)) {
+            ((Iterator)localObject).remove();
+          }
+        }
       }
     }
-    str2 = axub.a(str3);
-    b("httpDown", "RespDomain: " + str2 + " ipList:" + str1 + " uuid:" + this.jdField_a_of_type_Axvt.e + " downOffset:" + localaxro.jdField_a_of_type_Long);
-    if (!f()) {
+    int i;
+    if ((localMap != null) && (localMap.size() > 0))
+    {
+      localObject = new StringBuilder(localMap.size() * 20 + 10);
+      paramString1 = null;
+      Iterator localIterator = localMap.keySet().iterator();
+      i = 0;
+      if (localIterator.hasNext())
+      {
+        paramString2 = (String)localIterator.next();
+        if (((StringBuilder)localObject).length() > 0) {
+          ((StringBuilder)localObject).append("#");
+        }
+        ((StringBuilder)localObject).append("[").append(paramString2).append(",").append(localMap.get(paramString2)).append("]");
+        if (((Integer)localMap.get(paramString2)).intValue() <= i) {
+          break label549;
+        }
+        i = ((Integer)localMap.get(paramString2)).intValue();
+        paramString1 = paramString2;
+      }
+    }
+    label549:
+    for (;;)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("key_action", 6);
+      localBundle.putString("key_log", paramString2);
+      localBundle.putInt("key_count", ((Integer)localMap.get(paramString2)).intValue());
+      if (!axsn.a()) {
+        axsi.a().a(localBundle);
+      }
+      for (;;)
+      {
+        break;
+        a(localBundle);
+      }
+      axsn.a(this.jdField_b_of_type_Axsn, new String[] { "log|", ((StringBuilder)localObject).toString() });
+      paramString2 = this.jdField_b_of_type_Axsn;
+      if (i > this.jdField_c_of_type_Int) {}
+      for (int j = 1;; j = 0)
+      {
+        axsn.a(paramString2, 2, 0, j, ajyc.a(2131701070) + paramString1, "2秒钟日志打印次数：" + i);
+        return;
+      }
+      if ((axsn.a(this.jdField_b_of_type_Axsn) == null) || (!QLog.isColorLevel())) {
+        break;
+      }
+      axsn.a(this.jdField_b_of_type_Axsn, "No high frequnecy log in last 2seconds");
       return;
     }
-    this.jdField_a_of_type_Axsp = localaxro;
-    n();
-    this.jdField_a_of_type_Axrr.a(localaxro);
   }
   
-  protected void n()
-  {
-    if ((this.jdField_a_of_type_Axsp != null) && ((this.jdField_a_of_type_Axsp instanceof axro))) {
-      ((axro)this.jdField_a_of_type_Axsp).jdField_a_of_type_JavaLangString = MsfSdkUtils.insertMtype("pttCd", ((axro)this.jdField_a_of_type_Axsp).jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void onResp(axsq paramaxsq)
-  {
-    boolean bool2 = true;
-    super.onResp(paramaxsq);
-    this.jdField_a_of_type_Axsp = null;
-    Object localObject = new StringBuilder().append(" result:");
-    if (paramaxsq.jdField_a_of_type_Int == 0)
-    {
-      bool1 = true;
-      b("onHttpResp", bool1);
-      localObject = this.jdField_b_of_type_Axow;
-      if (paramaxsq.jdField_a_of_type_Int != 0) {
-        break label142;
-      }
-    }
-    label142:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      a((axow)localObject, paramaxsq, bool1);
-      this.jdField_a_of_type_Long = paramaxsq.jdField_a_of_type_Long;
-      if (this.jdField_a_of_type_Long <= 0L) {
-        this.jdField_a_of_type_Long = (paramaxsq.jdField_b_of_type_Long + paramaxsq.jdField_a_of_type_Axsp.jdField_a_of_type_Long);
-      }
-      this.jdField_b_of_type_Long += paramaxsq.c;
-      if (paramaxsq.jdField_a_of_type_Int != 0) {
-        break label147;
-      }
-      h();
-      e();
-      return;
-      bool1 = false;
-      break;
-    }
-    label147:
-    if ((paramaxsq.jdField_b_of_type_Int == 9364) && (this.l < 3))
-    {
-      b("[netChg]", "failed.but net change detect.so retry");
-      this.l += 1;
-      m();
-      f();
-      return;
-    }
-    d();
-  }
+  public void onWriteLog(String paramString, byte[] paramArrayOfByte) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axsu
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ class DoubleVideoCtrlUI$18
     if (!this.this$0.h)
     {
       this.this$0.e(0);
-      this.this$0.y(this.a);
+      this.this$0.z(this.a);
     }
   }
 }

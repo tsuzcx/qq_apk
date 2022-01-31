@@ -1,24 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.HorizontalRefreshLayout;
 
 public class qwy
-  implements nvg
+  extends AnimatorListenerAdapter
 {
-  public qwy(FastWebActivity paramFastWebActivity) {}
+  public qwy(HorizontalRefreshLayout paramHorizontalRefreshLayout) {}
   
-  public void a(long paramLong)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (FastWebActivity.a(this.a) != null)
-    {
-      FastWebActivity.a(this.a).b = paramLong;
-      if (FastWebActivity.a(this.a).b <= 0L)
-      {
-        FastWebActivity.a(this.a).b = 0L;
-        this.a.e();
-      }
-      FastWebActivity.a(this.a).a(FastWebActivity.a(this.a).b);
-    }
+    HorizontalRefreshLayout.a(this.a, 0.0F);
   }
 }
 

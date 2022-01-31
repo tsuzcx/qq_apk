@@ -1,10 +1,17 @@
-public abstract interface biom
+import android.support.annotation.Nullable;
+
+class biom
+  implements bjob<bivx>
 {
-  public abstract void a();
+  biom(biol parambiol) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract void b(String paramString);
+  public void a(@Nullable bivx parambivx)
+  {
+    if (parambivx == null) {
+      return;
+    }
+    biol.a(this.a, parambivx);
+  }
 }
 
 

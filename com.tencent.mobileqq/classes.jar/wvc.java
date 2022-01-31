@@ -1,76 +1,32 @@
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDelFeedRsp;
 import android.app.Activity;
-import android.view.View;
-import android.view.ViewStub;
-import android.widget.RelativeLayout;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public class wvc
+class wvc
+  implements xgx<CertifiedAccountWrite.StDelFeedRsp>
 {
-  private Animator jdField_a_of_type_AndroidAnimationAnimator;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  protected bhqy a;
-  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)bhfm.a(2);
-  private wvg jdField_a_of_type_Wvg;
-  private Animator b;
+  wvc(wva paramwva) {}
   
-  public wvc(Activity paramActivity, View paramView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDelFeedRsp paramStDelFeedRsp)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    ((ViewStub)paramView.findViewById(2131313583)).inflate();
-    this.jdField_a_of_type_Bhqy = new bhqy(paramView, "biz_src_jc_story");
-    this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.g();
-    this.jdField_a_of_type_Bhqy.a(new wvd(this));
-    this.jdField_a_of_type_Bhqy.a(this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.b);
-    this.jdField_a_of_type_Bhqy.a().setOnTouchListener(new wve(this));
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidAnimationAnimator == null) {
-      this.jdField_a_of_type_AndroidAnimationAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_Bhqy.a(), "alpha", new float[] { 0.0F, 1.0F }).setDuration(600L);
-    }
-    if ((this.b != null) && (this.b.isRunning())) {
-      this.b.cancel();
-    }
-    this.jdField_a_of_type_Bhqy.a().setVisibility(0);
-    this.jdField_a_of_type_AndroidAnimationAnimator.start();
-    boolean bool = vnd.a(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_Bhqy.a(bool);
-  }
-  
-  public void a(wvg paramwvg)
-  {
-    this.jdField_a_of_type_Wvg = paramwvg;
-  }
-  
-  public void b()
-  {
-    if (this.b == null)
-    {
-      this.b = ObjectAnimator.ofFloat(this.jdField_a_of_type_Bhqy.a(), "alpha", new float[] { 1.0F, 0.0F }).setDuration(600L);
-      this.b.addListener(new wvf(this));
-    }
-    if ((this.jdField_a_of_type_AndroidAnimationAnimator != null) && (this.jdField_a_of_type_AndroidAnimationAnimator.isRunning())) {}
-    while (this.jdField_a_of_type_Bhqy.a().getVisibility() == 8) {
+    if (this.a.a == null) {
       return;
     }
-    this.b.start();
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Bhqy != null)
+    if ((!paramBoolean) || (paramLong != 0L))
     {
-      boolean bool = vnd.a(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_Bhqy.a(bool);
+      bcpw.a(this.a.a, 1, ajyc.a(2131714645), 0).a();
+      return;
     }
+    wpw.a().a(new SubscribeFeedsEvent(wva.a(this.a).a.id.get(), 3));
+    this.a.a.finish();
+    bcpw.a(this.a.a, ajyc.a(2131714641), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wvc
  * JD-Core Version:    0.7.0.1
  */

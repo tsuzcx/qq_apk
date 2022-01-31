@@ -1,203 +1,60 @@
-import android.graphics.Paint;
-import java.util.ArrayList;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
 
 public class arfa
+  implements arfk
 {
-  public long a;
-  public arfb a;
-  public String a;
-  public ArrayList<arfc> a;
-  public long b;
-  public arfb b;
-  public ArrayList<arex> b;
+  public arfa(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
   
-  public arfa()
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Arfb = new arfb();
-    this.jdField_b_of_type_Arfb = new arfb();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public arfa a()
-  {
-    arfa localarfa = new arfa();
-    localarfa.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localarfa.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-    localarfa.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    if (this.jdField_b_of_type_JavaUtilArrayList != null)
+    int k = 1;
+    IVPluginDataReporter localIVPluginDataReporter;
+    int j;
+    if (!bbev.a(GroupVideoLoadingFragment.a(this.a)))
     {
-      localarfa.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-      localarfa.jdField_b_of_type_JavaUtilArrayList.addAll(this.jdField_b_of_type_JavaUtilArrayList);
-    }
-    localarfa.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    return localarfa;
-  }
-  
-  public ArrayList<arfc> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(Paint paramPaint1, Paint paramPaint2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    int k = (int)paramPaint1.measureText(this.jdField_a_of_type_JavaLangString);
-    int m = (int)paramPaint2.measureText(this.jdField_a_of_type_JavaLangString);
-    int j = 0;
-    int i = 0;
-    if (k <= paramInt) {
-      if (paramBoolean2)
-      {
-        paramInt = j;
-        paramPaint1 = new arfc(this.jdField_a_of_type_JavaLangString, paramInt, i, m, k, this.jdField_b_of_type_JavaUtilArrayList);
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramPaint1);
+      i = 1;
+      if (!paramBoolean) {
+        break label80;
+      }
+      GroupVideoLoadingFragment.a(this.a, false);
+      localIVPluginDataReporter = GroupVideoLoadingFragment.a(this.a).opType("enterPage");
+      if (!paramBoolean) {
+        break label111;
+      }
+      j = 1;
+      label50:
+      localIVPluginDataReporter = localIVPluginDataReporter.opIn(j);
+      if (i == 0) {
+        break label116;
       }
     }
-    String[] arrayOfString;
-    int i6;
-    do
+    label80:
+    label111:
+    label116:
+    for (int i = k;; i = 0)
     {
+      localIVPluginDataReporter.opResult(i).report();
       return;
-      i = paramInt - (int)paramPaint2.measureText(this.jdField_a_of_type_JavaLangString) >> 1;
-      j = paramInt - k >> 1;
-      paramInt = i;
-      i = j;
+      i = 0;
       break;
-      if (paramBoolean1)
-      {
-        paramPaint1 = new arfc(this.jdField_a_of_type_JavaLangString, 0, 0, m, k, this.jdField_b_of_type_JavaUtilArrayList);
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramPaint1);
-        return;
-      }
-      arrayOfString = arez.a(this.jdField_a_of_type_JavaLangString, paramPaint1, paramInt, paramInt);
-      i6 = arrayOfString.length;
-    } while (i6 <= 0);
-    int n = 0;
-    j = 0;
-    i = 0;
-    int i3 = 0;
-    int i1 = 0;
-    int i2 = 0;
-    m = 0;
-    k = 0;
-    label198:
-    label210:
-    Object localObject;
-    int i4;
-    arex localarex;
-    if (i3 < i6)
-    {
-      if (!paramBoolean2) {
-        break label481;
-      }
-      localObject = null;
-      if (this.jdField_b_of_type_JavaUtilArrayList == null) {
-        break label705;
-      }
-      n += arrayOfString[i3].length();
-      localObject = new ArrayList();
-      i4 = m;
-      m = j;
-      j = k;
-      k = i4;
-      if (m >= this.jdField_b_of_type_JavaUtilArrayList.size()) {
-        break label678;
-      }
-      localarex = (arex)this.jdField_b_of_type_JavaUtilArrayList.get(m);
-      if ((i3 == 0) || (i != m)) {
-        break label663;
-      }
-      k = n - arrayOfString[i3].length();
-      i4 = localarex.jdField_a_of_type_Int;
-      j = k;
-      k = i4 - k;
-      label327:
-      if ((localarex.jdField_a_of_type_Int > n) || (localarex.jdField_b_of_type_Int < n)) {
-        break label573;
-      }
-      if (i3 != 0) {
-        break label520;
-      }
-      ((ArrayList)localObject).add(new arex(localarex.jdField_a_of_type_Long, localarex.jdField_b_of_type_Long, localarex.jdField_a_of_type_Int, arrayOfString[i3].length()));
-      label388:
-      m += 1;
-      i4 = m;
-      i = n;
-      n = k;
-      k = i4;
-    }
-    for (;;)
-    {
-      localObject = new arfc(arrayOfString[i3], i1, i2, (ArrayList)localObject);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-      int i5 = i3 + 1;
-      i3 = k;
-      i4 = m;
-      m = j;
-      k = n;
-      j = i4;
-      n = i;
-      i = i3;
-      i3 = i5;
-      break label198;
-      break;
-      label481:
-      i1 = (int)paramPaint2.measureText(arrayOfString[i3]);
-      i2 = paramInt - (int)paramPaint1.measureText(arrayOfString[i3]) >> 1;
-      i1 = paramInt - i1 >> 1;
-      break label210;
-      label520:
-      i = localarex.jdField_a_of_type_Int;
-      i4 = arrayOfString[i3].length();
-      ((ArrayList)localObject).add(new arex(localarex.jdField_a_of_type_Long, localarex.jdField_b_of_type_Long, i - j - k, i4));
-      break label388;
-      label573:
-      if (i3 == 0) {
-        ((ArrayList)localObject).add(localarex);
+      if (i != 0) {
+        GroupVideoLoadingFragment.a(this.a, true);
       }
       for (;;)
       {
-        i4 = k;
-        m += 1;
-        k = j;
-        j = i4;
+        argi.b("2880338");
         break;
-        i4 = localarex.jdField_a_of_type_Int;
-        i5 = localarex.jdField_b_of_type_Int;
-        ((ArrayList)localObject).add(new arex(localarex.jdField_a_of_type_Long, localarex.jdField_b_of_type_Long, i4 - j - k, i5 - j - k));
+        GroupVideoLoadingFragment.a(this.a, false);
       }
-      label663:
-      i4 = j;
-      j = k;
-      k = i4;
-      break label327;
-      label678:
-      i4 = k;
-      i5 = j;
-      k = i;
-      i = n;
-      j = i4;
-      n = i5;
-      continue;
-      label705:
-      i4 = k;
-      i5 = j;
-      k = i;
-      i = n;
-      j = m;
-      n = i4;
-      m = i5;
+      j = 0;
+      break label50;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arfa
  * JD-Core Version:    0.7.0.1
  */

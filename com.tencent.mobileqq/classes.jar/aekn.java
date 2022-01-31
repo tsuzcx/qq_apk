@@ -1,29 +1,28 @@
-public class aekn
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import com.tencent.widget.RoundRectImageView;
+
+class aekn
+  implements Animation.AnimationListener
 {
-  public double a;
-  public double b;
+  aekn(aekm paramaekm) {}
   
-  public aekn(double paramDouble1, double paramDouble2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = paramDouble1;
-    this.b = paramDouble2;
+    paramAnimation = new AnimationSet(false);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getWidth() / 2, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getHeight() / 2);
+    paramAnimation.addAnimation(this.a.b);
+    paramAnimation.addAnimation(localScaleAnimation);
+    paramAnimation.setDuration(200L);
+    this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.startAnimation(paramAnimation);
+    paramAnimation.setAnimationListener(this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
   }
   
-  public aekn(aekn paramaekn)
-  {
-    a(paramaekn);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(aekn paramaekn)
-  {
-    this.a = paramaekn.a;
-    this.b = paramaekn.b;
-  }
-  
-  public String toString()
-  {
-    return "Velocity{vx=" + this.a + ", vy=" + this.b + '}';
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

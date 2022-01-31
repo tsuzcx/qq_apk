@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import java.util.ArrayList;
-import woj;
+import xdm;
 
 public abstract class absMultiViewPager
   extends ViewPager
@@ -18,7 +18,7 @@ public abstract class absMultiViewPager
   protected AdapterView.OnItemClickListener a;
   protected absMultiViewPager.ViewPagerAdapter a;
   protected ArrayList<Object> a;
-  protected woj a;
+  protected xdm a;
   protected ArrayList<View> b = new ArrayList();
   protected int d;
   
@@ -53,8 +53,8 @@ public abstract class absMultiViewPager
   
   protected void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Woj != null) {
-      this.jdField_a_of_type_Woj.a(paramInt1, paramInt2, getCurrentItem());
+    if (this.jdField_a_of_type_Xdm != null) {
+      this.jdField_a_of_type_Xdm.a(paramInt1, paramInt2, getCurrentItem());
     }
   }
   
@@ -106,9 +106,9 @@ public abstract class absMultiViewPager
     super.setOnPageChangeListener(paramOnPageChangeListener);
   }
   
-  public void setOnPagerSizeChangeListener(woj paramwoj)
+  public void setOnPagerSizeChangeListener(xdm paramxdm)
   {
-    this.jdField_a_of_type_Woj = paramwoj;
+    this.jdField_a_of_type_Xdm = paramxdm;
   }
 }
 

@@ -1,10 +1,9 @@
 package com.tencent.av.video.call;
 
-import ajed;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-import badq;
+import bbev;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -17,8 +16,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import kto;
-import mcq;
+import lco;
+import led;
+import mnp;
 
 public class ClientLogReport
 {
@@ -31,7 +31,7 @@ public class ClientLogReport
   private static final int LogSendRet_PENDING = 2;
   private static final String NewGACSReport = "dc02085";
   private static final String NewGACSReport2 = "dc02207";
-  private static final String REPORT_FAIL_LOG_DIR = ajed.aU + "av_report_record_dir";
+  private static final String REPORT_FAIL_LOG_DIR = ;
   private static final long REPORT_FAIL_RETRY_MAX_INTERVAL = 86400000L;
   private static final String REPORT_RECORD_IS_RETRY = "report_record_is_retry";
   private static final String REPORT_RECORD_SEQ = "report_record_seq";
@@ -194,24 +194,24 @@ public class ClientLogReport
   private void writeToFile(File paramFile, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: new 314	java/io/FileOutputStream
+    //   0: new 303	java/io/FileOutputStream
     //   3: dup
     //   4: aload_1
-    //   5: invokespecial 317	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   5: invokespecial 306	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   8: astore_3
     //   9: aload_3
     //   10: astore_1
     //   11: aload_3
     //   12: aload_2
-    //   13: invokevirtual 320	java/io/FileOutputStream:write	([B)V
+    //   13: invokevirtual 309	java/io/FileOutputStream:write	([B)V
     //   16: aload_3
     //   17: astore_1
     //   18: aload_3
-    //   19: invokevirtual 323	java/io/FileOutputStream:flush	()V
+    //   19: invokevirtual 312	java/io/FileOutputStream:flush	()V
     //   22: aload_3
     //   23: ifnull +7 -> 30
     //   26: aload_3
-    //   27: invokevirtual 326	java/io/FileOutputStream:close	()V
+    //   27: invokevirtual 315	java/io/FileOutputStream:close	()V
     //   30: return
     //   31: astore 4
     //   33: aconst_null
@@ -220,13 +220,13 @@ public class ClientLogReport
     //   36: astore_1
     //   37: ldc 44
     //   39: iconst_1
-    //   40: ldc_w 328
+    //   40: ldc_w 317
     //   43: aload 4
-    //   45: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   45: invokestatic 87	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   48: aload_2
     //   49: ifnull -19 -> 30
     //   52: aload_2
-    //   53: invokevirtual 326	java/io/FileOutputStream:close	()V
+    //   53: invokevirtual 315	java/io/FileOutputStream:close	()V
     //   56: return
     //   57: astore_1
     //   58: return
@@ -236,7 +236,7 @@ public class ClientLogReport
     //   62: aload_1
     //   63: ifnull +7 -> 70
     //   66: aload_1
-    //   67: invokevirtual 326	java/io/FileOutputStream:close	()V
+    //   67: invokevirtual 315	java/io/FileOutputStream:close	()V
     //   70: aload_2
     //   71: athrow
     //   72: astore_1
@@ -285,7 +285,7 @@ public class ClientLogReport
       QLog.e("ClientLogReport", 1, "checkLocalReportRecord mInit is false.");
       return;
     }
-    if (!badq.g(this.mContext))
+    if (!bbev.g(this.mContext))
     {
       QLog.e("ClientLogReport", 1, "checkLocalReportRecord network is invalid.");
       return;
@@ -311,16 +311,16 @@ public class ClientLogReport
       if (paramIntent != null)
       {
         if (!bool1) {
-          break label174;
+          break label173;
         }
-        kto.a(bool2);
+        led.a(bool2);
       }
     }
     for (;;)
     {
       this.mReportRecordCache.remove(Integer.valueOf(i));
       return;
-      label174:
+      label173:
       if (!bool2)
       {
         paramFromServiceMsg = new File(REPORT_FAIL_LOG_DIR);
@@ -328,7 +328,7 @@ public class ClientLogReport
           paramFromServiceMsg.mkdirs();
         }
         paramIntent.writeToFile(new File(REPORT_FAIL_LOG_DIR, String.valueOf(paramIntent.mTimestamp)));
-        kto.c();
+        led.c();
       }
     }
   }
@@ -340,7 +340,7 @@ public class ClientLogReport
       this.mContext = paramContext;
       this.mAppId = paramInt;
       this.mMsfSub = MsfServiceSdk.get();
-      if (mcq.a().q != 1) {
+      if (mnp.a().q != 1) {
         break label73;
       }
     }

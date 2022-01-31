@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import java.util.List;
 
 public class aasd
-  implements DialogInterface.OnClickListener
+  implements aptu
 {
-  public aasd(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  public aasd(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    ForwardFriendListActivity.a(this.a).dismiss();
-    ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
+    apue.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
   }
+  
+  public void b() {}
 }
 
 

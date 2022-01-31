@@ -30,9 +30,9 @@ public class VideoGestureLayout
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131493740, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131302896));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131305628));
+    LayoutInflater.from(paramContext).inflate(2131559312, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368521));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131371324));
     this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaVideoGestureLayout$HideRunnable = new VideoGestureLayout.HideRunnable(this, null);
     setVisibility(8);
   }

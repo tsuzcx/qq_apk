@@ -1,19 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.doutu.DoutuData;
 
-class annx
-  implements DialogInterface.OnClickListener
+public final class annx
+  implements Parcelable.Creator<DoutuData>
 {
-  annx(annw paramannw) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public DoutuData a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
+    return new DoutuData(paramParcel);
+  }
+  
+  public DoutuData[] a(int paramInt)
+  {
+    return new DoutuData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     annx
  * JD-Core Version:    0.7.0.1
  */

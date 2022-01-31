@@ -1,25 +1,13 @@
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.List;
 
-public class thc
-  extends sgc
+public abstract interface thc
 {
-  public thc(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  public abstract void a(@Nullable tfi paramtfi, Error paramError);
   
-  public void a(boolean paramBoolean, sfx paramsfx)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MyVideoVisiblePersonPageView", 2, "onGetVideoReaderConfig: isSuccess " + paramBoolean + ", QQStoryBanInfo = " + paramsfx);
-    }
-    if (paramBoolean)
-    {
-      if (paramsfx != null) {
-        this.a.a(paramsfx.a);
-      }
-      return;
-    }
-    this.a.e();
-  }
+  public abstract void a(@Nullable tfi paramtfi, @NonNull List<StoryVideoItem> paramList);
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.contactsync;
 
-import amoa;
+import aneh;
 
 public class ContactSyncManager$3
   implements Runnable
 {
-  public ContactSyncManager$3(amoa paramamoa) {}
+  public ContactSyncManager$3(aneh paramaneh) {}
   
   public void run()
   {

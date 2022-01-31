@@ -3,14 +3,14 @@ package com.tencent.biz.pubaccount.readinjoy.config;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import odc;
+import oon;
 
 public final class QQAladdinUtils$1
   implements Runnable
 {
   public void run()
   {
-    int[] arrayOfInt = odc.a;
+    int[] arrayOfInt = oon.a;
     int k = arrayOfInt.length;
     int i = 0;
     if (i < k)

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import awbk;
-import bakz;
+import axas;
+import bbmj;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
@@ -52,7 +52,7 @@ public class SystemMsg
     //   20: invokestatic 54	com/tencent/mobileqq/data/SystemMsg:isTroopSystemMessage	(I)Z
     //   23: ifeq +2467 -> 2490
     //   26: aload_1
-    //   27: invokestatic 60	bach:a	(Ljava/lang/String;)[B
+    //   27: invokestatic 60	bbdm:a	(Ljava/lang/String;)[B
     //   30: astore_2
     //   31: new 2	com/tencent/mobileqq/data/SystemMsg
     //   34: dup
@@ -136,7 +136,7 @@ public class SystemMsg
     //   164: aload_1
     //   165: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
     //   168: iconst_1
-    //   169: invokestatic 111	babh:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Z)Ljava/lang/String;
+    //   169: invokestatic 111	bbcl:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Z)Ljava/lang/String;
     //   172: astore_2
     //   173: aload_1
     //   174: astore 9
@@ -146,7 +146,7 @@ public class SystemMsg
     //   180: aload_1
     //   181: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
     //   184: iconst_1
-    //   185: invokestatic 114	babh:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Z)Ljava/lang/String;
+    //   185: invokestatic 114	bbcl:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Z)Ljava/lang/String;
     //   188: astore 11
     //   190: aload_1
     //   191: astore 9
@@ -156,7 +156,7 @@ public class SystemMsg
     //   197: aload_1
     //   198: getfield 79	com/tencent/mobileqq/data/SystemMsg:managerUin	Ljava/lang/String;
     //   201: iconst_1
-    //   202: invokestatic 114	babh:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Z)Ljava/lang/String;
+    //   202: invokestatic 114	bbcl:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Z)Ljava/lang/String;
     //   205: astore 12
     //   207: aload_1
     //   208: astore 9
@@ -166,7 +166,7 @@ public class SystemMsg
     //   214: aload_1
     //   215: getfield 106	com/tencent/mobileqq/data/SystemMsg:inviteMemUin	Ljava/lang/String;
     //   218: iconst_1
-    //   219: invokestatic 114	babh:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Z)Ljava/lang/String;
+    //   219: invokestatic 114	bbcl:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Z)Ljava/lang/String;
     //   222: astore 13
     //   224: iload_3
     //   225: lookupswitch	default:+4329->4554, -1023:+824->1049, -1022:+247->472, -1021:+107->332, -1020:+443->668, 35:+443->668, 36:+107->332, 37:+247->472, 46:+824->1049, 84:+443->668, 85:+107->332, 86:+247->472, 87:+824->1049
@@ -1221,13 +1221,13 @@ public class SystemMsg
     //   2494: new 168	java/io/ByteArrayInputStream
     //   2497: dup
     //   2498: aload_1
-    //   2499: invokestatic 60	bach:a	(Ljava/lang/String;)[B
+    //   2499: invokestatic 60	bbdm:a	(Ljava/lang/String;)[B
     //   2502: invokespecial 171	java/io/ByteArrayInputStream:<init>	([B)V
     //   2505: invokespecial 174	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   2508: astore 11
     //   2510: iload_3
     //   2511: lookupswitch	default:+2045->4556, -2004:+1973->4484, -2003:+1939->4450, -1010:+1520->4031, -1009:+1201->3712, -1008:+897->3408, -1007:+586->3097, -1006:+156->2667, 9:+1939->4450, 187:+156->2667, 188:+586->3097, 189:+897->3408, 190:+1201->3712, 191:+1520->4031, 513:+1973->4484
-    //   2633: getstatic 178	ajed:J	Ljava/lang/String;
+    //   2633: getstatic 178	ajsf:J	Ljava/lang/String;
     //   2636: invokestatic 182	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   2639: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2642: ifeq +1910 -> 4552
@@ -1264,7 +1264,7 @@ public class SystemMsg
     //   2700: new 116	java/lang/String
     //   2703: dup
     //   2704: aload_1
-    //   2705: invokestatic 199	awbk:a	([B)[B
+    //   2705: invokestatic 199	axas:a	([B)[B
     //   2708: ldc 201
     //   2710: invokespecial 204	java/lang/String:<init>	([BLjava/lang/String;)V
     //   2713: invokevirtual 156	java/lang/String:trim	()Ljava/lang/String;
@@ -1382,7 +1382,7 @@ public class SystemMsg
     //   2950: putfield 256	com/tencent/mobileqq/data/SystemMsg:strGroupUin	J
     //   2953: goto +1606 -> 4559
     //   2956: aload_1
-    //   2957: invokestatic 199	awbk:a	([B)[B
+    //   2957: invokestatic 199	axas:a	([B)[B
     //   2960: pop
     //   2961: aload_0
     //   2962: new 122	java/lang/StringBuilder
@@ -1542,7 +1542,7 @@ public class SystemMsg
     //   3293: new 116	java/lang/String
     //   3296: dup
     //   3297: aload_1
-    //   3298: invokestatic 199	awbk:a	([B)[B
+    //   3298: invokestatic 199	axas:a	([B)[B
     //   3301: invokespecial 274	java/lang/String:<init>	([B)V
     //   3304: pop
     //   3305: aload_0
@@ -1687,7 +1687,7 @@ public class SystemMsg
     //   3598: putfield 41	com/tencent/mobileqq/data/SystemMsg:strServerFromUinNickName	Ljava/lang/String;
     //   3601: goto +1017 -> 4618
     //   3604: aload_1
-    //   3605: invokestatic 199	awbk:a	([B)[B
+    //   3605: invokestatic 199	axas:a	([B)[B
     //   3608: pop
     //   3609: aload_0
     //   3610: new 122	java/lang/StringBuilder
@@ -1757,7 +1757,7 @@ public class SystemMsg
     //   3744: new 116	java/lang/String
     //   3747: dup
     //   3748: aload_1
-    //   3749: invokestatic 199	awbk:a	([B)[B
+    //   3749: invokestatic 199	axas:a	([B)[B
     //   3752: invokespecial 274	java/lang/String:<init>	([B)V
     //   3755: invokevirtual 156	java/lang/String:trim	()Ljava/lang/String;
     //   3758: astore 9
@@ -1861,7 +1861,7 @@ public class SystemMsg
     //   3965: putfield 41	com/tencent/mobileqq/data/SystemMsg:strServerFromUinNickName	Ljava/lang/String;
     //   3968: goto +672 -> 4640
     //   3971: aload_1
-    //   3972: invokestatic 199	awbk:a	([B)[B
+    //   3972: invokestatic 199	axas:a	([B)[B
     //   3975: pop
     //   3976: aload_0
     //   3977: new 122	java/lang/StringBuilder
@@ -2034,7 +2034,7 @@ public class SystemMsg
     //   4337: putfield 256	com/tencent/mobileqq/data/SystemMsg:strGroupUin	J
     //   4340: goto +312 -> 4652
     //   4343: aload_0
-    //   4344: invokestatic 199	awbk:a	([B)[B
+    //   4344: invokestatic 199	axas:a	([B)[B
     //   4347: pop
     //   4348: aload_1
     //   4349: new 122	java/lang/StringBuilder
@@ -2086,7 +2086,7 @@ public class SystemMsg
     //   4448: aload_1
     //   4449: areturn
     //   4450: aload_2
-    //   4451: getstatic 178	ajed:J	Ljava/lang/String;
+    //   4451: getstatic 178	ajsf:J	Ljava/lang/String;
     //   4454: invokestatic 182	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   4457: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   4460: ifeq +92 -> 4552
@@ -2104,7 +2104,7 @@ public class SystemMsg
     //   4482: aload_0
     //   4483: areturn
     //   4484: aload_2
-    //   4485: getstatic 178	ajed:J	Ljava/lang/String;
+    //   4485: getstatic 178	ajsf:J	Ljava/lang/String;
     //   4488: invokestatic 182	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   4491: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   4494: ifeq +58 -> 4552
@@ -2119,8 +2119,8 @@ public class SystemMsg
     //   4511: aload_0
     //   4512: ldc_w 286
     //   4515: aload_1
-    //   4516: invokestatic 291	bakz:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   4519: invokestatic 294	bakz:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   4516: invokestatic 291	bbmj:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   4519: invokestatic 294	bbmj:a	(Ljava/lang/String;)Ljava/lang/String;
     //   4522: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
     //   4525: aload_0
     //   4526: areturn
@@ -2591,8 +2591,8 @@ public class SystemMsg
         paramInt = getTroopOpFromTroopSysMsg(paramArrayOfByte, paramInt);
         if ((paramInt == 1) || (paramInt == 4))
         {
-          paramInt = bakz.a(paramArrayOfByte[15]) + 15;
-          i = bakz.a(paramArrayOfByte, paramInt);
+          paramInt = bbmj.a(paramArrayOfByte[15]) + 15;
+          i = bbmj.a(paramArrayOfByte, paramInt);
           arrayOfByte = new byte[i];
           System.arraycopy(paramArrayOfByte, paramInt + 2, arrayOfByte, 0, i);
           return arrayOfByte;
@@ -2601,16 +2601,16 @@ public class SystemMsg
       case -1020: 
       case 35: 
       case 84: 
-        paramInt = bakz.a(paramArrayOfByte[9]);
-        paramInt = bakz.a(paramArrayOfByte, bakz.a(paramArrayOfByte[9]) + 10) + (paramInt + 10 + 2);
-        i = bakz.a(paramArrayOfByte, paramInt);
+        paramInt = bbmj.a(paramArrayOfByte[9]);
+        paramInt = bbmj.a(paramArrayOfByte, bbmj.a(paramArrayOfByte[9]) + 10) + (paramInt + 10 + 2);
+        i = bbmj.a(paramArrayOfByte, paramInt);
         arrayOfByte = new byte[i];
         System.arraycopy(paramArrayOfByte, paramInt + 2, arrayOfByte, 0, i);
         return arrayOfByte;
       }
     } while (paramInt != 5);
-    paramInt = bakz.a(paramArrayOfByte[19]) + 19;
-    int i = bakz.a(paramArrayOfByte, paramInt);
+    paramInt = bbmj.a(paramArrayOfByte[19]) + 19;
+    int i = bbmj.a(paramArrayOfByte, paramInt);
     byte[] arrayOfByte = new byte[i];
     System.arraycopy(paramArrayOfByte, paramInt + 2, arrayOfByte, 0, i);
     return arrayOfByte;
@@ -2628,7 +2628,7 @@ public class SystemMsg
         return null;
       }
     } while (getTroopOpFromTroopSysMsg(paramArrayOfByte, paramInt) != 5);
-    return String.valueOf(bakz.a(paramArrayOfByte, 14));
+    return String.valueOf(bbmj.a(paramArrayOfByte, 14));
   }
   
   public static String getManagerUinFromTroopSysMsg(byte[] paramArrayOfByte, int paramInt)
@@ -2646,9 +2646,9 @@ public class SystemMsg
     case -1023: 
     case 46: 
     case 87: 
-      return String.valueOf(bakz.a(paramArrayOfByte, 10));
+      return String.valueOf(bbmj.a(paramArrayOfByte, 10));
     }
-    return String.valueOf(bakz.a(paramArrayOfByte, 5));
+    return String.valueOf(bbmj.a(paramArrayOfByte, 5));
   }
   
   public static String getRequestUinFromTroopSysMsg(byte[] paramArrayOfByte, int paramInt)
@@ -2669,9 +2669,9 @@ public class SystemMsg
     case 85: 
     case 86: 
     case 87: 
-      return String.valueOf(bakz.a(paramArrayOfByte, 10));
+      return String.valueOf(bbmj.a(paramArrayOfByte, 10));
     }
-    return String.valueOf(bakz.a(paramArrayOfByte, 5));
+    return String.valueOf(bbmj.a(paramArrayOfByte, 5));
   }
   
   public static String getStrMsgFromTroopSysMsg(byte[] paramArrayOfByte, int paramInt)
@@ -2689,22 +2689,22 @@ public class SystemMsg
     case 87: 
       if (getTroopOpFromTroopSysMsg(paramArrayOfByte, paramInt) == 5)
       {
-        paramInt = bakz.a(paramArrayOfByte[18]);
+        paramInt = bbmj.a(paramArrayOfByte[18]);
         arrayOfByte = new byte[paramInt];
-        bakz.a(arrayOfByte, 0, paramArrayOfByte, 19, paramInt);
+        bbmj.a(arrayOfByte, 0, paramArrayOfByte, 19, paramInt);
       }
       break;
     }
-    for (paramArrayOfByte = awbk.a(arrayOfByte);; paramArrayOfByte = awbk.a(arrayOfByte))
+    for (paramArrayOfByte = axas.a(arrayOfByte);; paramArrayOfByte = axas.a(arrayOfByte))
     {
-      return String.valueOf(bakz.b(paramArrayOfByte, 0, paramInt));
-      paramInt = bakz.a(paramArrayOfByte[9]);
+      return String.valueOf(bbmj.b(paramArrayOfByte, 0, paramInt));
+      paramInt = bbmj.a(paramArrayOfByte[9]);
       arrayOfByte = new byte[paramInt];
-      bakz.a(arrayOfByte, 0, paramArrayOfByte, 10, paramInt);
-      return String.valueOf(bakz.b(awbk.a(arrayOfByte), 0, paramInt));
-      paramInt = bakz.a(paramArrayOfByte[14]);
+      bbmj.a(arrayOfByte, 0, paramArrayOfByte, 10, paramInt);
+      return String.valueOf(bbmj.b(axas.a(arrayOfByte), 0, paramInt));
+      paramInt = bbmj.a(paramArrayOfByte[14]);
       arrayOfByte = new byte[paramInt];
-      bakz.a(arrayOfByte, 0, paramArrayOfByte, 15, paramInt);
+      bbmj.a(arrayOfByte, 0, paramArrayOfByte, 15, paramInt);
     }
   }
   
@@ -2713,7 +2713,7 @@ public class SystemMsg
     if (paramArrayOfByte == null) {
       return null;
     }
-    return String.valueOf(bakz.a(paramArrayOfByte, 0));
+    return String.valueOf(bbmj.a(paramArrayOfByte, 0));
   }
   
   public static byte getTroopOpFromTroopSysMsg(byte[] paramArrayOfByte, int paramInt)

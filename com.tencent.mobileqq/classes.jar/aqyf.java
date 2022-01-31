@@ -1,27 +1,21 @@
+import android.support.v4.util.LruCache;
+
 class aqyf
+  extends LruCache<String, aqyg>
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  
-  public aqyf(String paramString1, String paramString2)
+  aqyf(aqye paramaqye, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = bcdu.d(paramString2);
-    this.d = aqyb.a(paramString1);
+    super(paramInt);
   }
   
-  public String toString()
+  protected int a(String paramString, aqyg paramaqyg)
   {
-    return "MusicReqInfo{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", url='" + this.b + '\'' + ", md5='" + this.c + '\'' + ", status=" + this.jdField_a_of_type_Int + ", cachePath='" + this.d + '\'' + '}';
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqyf
  * JD-Core Version:    0.7.0.1
  */

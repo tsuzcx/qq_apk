@@ -1,19 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.hotpic.HotPicData;
 
-class aqyt
-  implements DialogInterface.OnClickListener
+public final class aqyt
+  implements Parcelable.Creator<HotPicData>
 {
-  aqyt(aqyr paramaqyr, bafb parambafb) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public HotPicData a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Bafb.dismiss();
+    return new HotPicData(paramParcel);
+  }
+  
+  public HotPicData[] a(int paramInt)
+  {
+    return new HotPicData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     aqyt
  * JD-Core Version:    0.7.0.1
  */

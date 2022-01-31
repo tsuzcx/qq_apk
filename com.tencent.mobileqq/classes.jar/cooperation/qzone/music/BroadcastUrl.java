@@ -3,7 +3,7 @@ package cooperation.qzone.music;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bfxa;
+import bhfl;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public class BroadcastUrl
   implements Parcelable
 {
-  public static final Parcelable.Creator<BroadcastUrl> CREATOR = new bfxa();
+  public static final Parcelable.Creator<BroadcastUrl> CREATOR = new bhfl();
   public Map<Byte, String> mapBroadcastUrl;
   
   public BroadcastUrl() {}

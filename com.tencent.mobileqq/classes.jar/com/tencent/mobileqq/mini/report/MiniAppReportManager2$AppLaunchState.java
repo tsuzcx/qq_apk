@@ -19,6 +19,7 @@ public class MiniAppReportManager2$AppLaunchState
   public String launchId;
   public int launchResult = 0;
   public long launchTime;
+  public long loadEndTime;
   public long loadTime;
   public boolean needReportLaunchResult;
   public int reportType;
@@ -46,6 +47,7 @@ public class MiniAppReportManager2$AppLaunchState
       this.needReportLaunchResult = paramString.getBoolean("needReportLaunchResult");
       this.hasPkg = paramString.getBoolean("hasPkg");
       this.flutterMode = paramString.optBoolean("flutterMode");
+      this.loadEndTime = paramString.optLong("loadEndTime");
       return;
     }
     catch (Throwable paramString) {}
@@ -90,6 +92,7 @@ public class MiniAppReportManager2$AppLaunchState
     this.needReportLaunchResult = true;
     this.jsError = null;
     this.hasPkg = false;
+    this.loadEndTime = 0L;
   }
   
   public String toJson()
@@ -113,6 +116,7 @@ public class MiniAppReportManager2$AppLaunchState
       ((JSONObject)localObject).put("needReportLaunchResult", this.needReportLaunchResult);
       ((JSONObject)localObject).put("hasPkg", this.hasPkg);
       ((JSONObject)localObject).put("flutterMode", this.flutterMode);
+      ((JSONObject)localObject).put("loadEndTime", this.loadEndTime);
       localObject = ((JSONObject)localObject).toString();
       return localObject;
     }

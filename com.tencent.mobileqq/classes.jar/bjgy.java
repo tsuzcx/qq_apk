@@ -1,43 +1,18 @@
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUOESMovieFilter;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
-import com.tencent.ttpic.openapi.filter.GPUOESBaseFilter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.text.DynamicTextItem.TextMap;
 
-public class bjgy
+public final class bjgy
+  implements Parcelable.Creator<DynamicTextItem.TextMap>
 {
-  public static GPUBaseFilter a(int paramInt)
+  public DynamicTextItem.TextMap a(Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    default: 
-      return new GPUBaseFilter();
-    case 101: 
-      return new GPUBaseFilter();
-    case 102: 
-      return new GPUOESBaseFilter();
-    case 0: 
-      return new bjha();
-    case 7: 
-      return new bjhc();
-    case 5: 
-      return new bjhe();
-    case 6: 
-      return new bjhf();
-    case 4: 
-      return new bjhb();
-    case 106: 
-      return new bjhd();
-    }
-    return new GPUOESMovieFilter();
+    return new DynamicTextItem.TextMap(paramParcel);
   }
   
-  public static boolean a(int paramInt)
+  public DynamicTextItem.TextMap[] a(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    return true;
+    return new DynamicTextItem.TextMap[paramInt];
   }
 }
 

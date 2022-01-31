@@ -1,263 +1,112 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-import android.view.GestureDetector;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
-import com.immersion.stickersampleapp.HapticManager;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class aelg
-  implements Handler.Callback, GestureDetector.OnGestureListener
+class aelg
+  implements View.OnClickListener
 {
-  private static boolean jdField_a_of_type_Boolean;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private final aelh jdField_a_of_type_Aelh;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private final View jdField_a_of_type_AndroidViewView;
-  private String jdField_a_of_type_JavaLangString = "chat_item_for_sticker40";
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int = -1;
-  private boolean jdField_d_of_type_Boolean;
+  aelg(aelc paramaelc) {}
   
-  public aelg(aelh paramaelh, View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Aelh = paramaelh;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramView.getContext(), this);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_d_of_type_Boolean = paramBoolean;
-  }
-  
-  private void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleGesture", 2, "finishSendingAction: " + paramInt);
-    }
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_a_of_type_Aelh.a(paramInt, this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 3000L);
-    this.jdField_c_of_type_Boolean = true;
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  private void b()
-  {
-    int[] arrayOfInt = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationInWindow(arrayOfInt);
-    this.jdField_a_of_type_Int = arrayOfInt[0];
-    this.jdField_b_of_type_Int = arrayOfInt[1];
-  }
-  
-  private boolean b(MotionEvent paramMotionEvent)
-  {
-    if ((paramMotionEvent.getAction() == 2) && (this.jdField_d_of_type_Int > -1) && (this.jdField_a_of_type_Aelh.a(paramMotionEvent.getX(), paramMotionEvent.getY())))
-    {
-      a(this.jdField_d_of_type_Int);
-      return true;
-    }
-    return false;
-  }
-  
-  private boolean c(MotionEvent paramMotionEvent)
-  {
-    boolean bool2 = true;
-    boolean bool1 = false;
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleGesture", 2, "handleActionUp: " + paramMotionEvent);
-      }
-      if (this.jdField_d_of_type_Int <= -1) {
-        break label80;
-      }
-      a(this.jdField_d_of_type_Int);
-    }
-    label80:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      this.jdField_a_of_type_Aelh.e();
-      return bool1;
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_d_of_type_Int > -1) {
-      a(this.jdField_d_of_type_Int);
-    }
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    boolean bool2 = c(paramMotionEvent);
-    boolean bool1 = bool2;
-    if (!bool2) {
-      bool1 = b(paramMotionEvent);
-    }
-    bool2 = bool1;
-    if (!bool1) {
-      bool2 = this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    }
-    return bool2;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
+    if (paramView.getTag() == null) {}
+    Object localObject1;
     do
     {
+      MessageForQQWalletMsg localMessageForQQWalletMsg;
       do
       {
-        return true;
-      } while (this.jdField_d_of_type_Int != ((Integer)paramMessage.obj).intValue());
-      if (this.jdField_c_of_type_Int >= this.jdField_a_of_type_Aelh.a())
-      {
-        a(this.jdField_d_of_type_Int);
-        return true;
-      }
-      this.jdField_c_of_type_Int += 1;
-      this.jdField_a_of_type_Aelh.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int);
-      if (this.jdField_d_of_type_Boolean) {
-        HapticManager.a().a(this.jdField_a_of_type_JavaLangString, 2);
-      }
-      for (;;)
-      {
-        if ((this.jdField_c_of_type_Int > 2) && (!this.jdField_b_of_type_Boolean))
+        do
         {
-          this.jdField_a_of_type_Aelh.c();
-          this.jdField_b_of_type_Boolean = true;
+          do
+          {
+            do
+            {
+              return;
+              if (this.a.jdField_a_of_type_Agyv != null) {
+                this.a.jdField_a_of_type_Agyv.a(8);
+              }
+              l = System.currentTimeMillis();
+            } while (!ahix.a(aelc.jdField_a_of_type_Long, l));
+            aelc.jdField_a_of_type_Long = l;
+            localMessageForQQWalletMsg = (MessageForQQWalletMsg)paramView.getTag();
+            localObject1 = localMessageForQQWalletMsg.mQQWalletRedPacketMsg;
+            localObject2 = (agvz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(125);
+            if (!mye.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+              break;
+            }
+            ((agvz)localObject2).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 8);
+          } while (!QLog.isColorLevel());
+          QLog.d("PasswdRedBagManager", 2, "current is in Anonymous, dont show passwdredbag tips");
+          return;
+          if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) {
+            break;
+          }
+          localObject3 = (bakk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(48);
+          boolean bool = ((bakk)localObject3).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          localObject3 = ((bakk)localObject3).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, false);
+          if ((!bool) && ((localObject3 == null) || (!((bakq)localObject3).jdField_a_of_type_Boolean))) {
+            break;
+          }
+          ((agvz)localObject2).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 8);
+        } while (!QLog.isColorLevel());
+        QLog.d("PasswdRedBagManager", 2, "current is in TroopMemberGag, dont show passwdredbag tips");
+        return;
+        localObject3 = ((agvz)localObject2).a(((QQWalletRedPacketMsg)localObject1).redPacketId);
+        long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
+        if ((localObject3 == null) || ((!((agvy)localObject3).jdField_a_of_type_Boolean) && (!((agvy)localObject3).b) && (!((agvy)localObject3).c) && (((agvy)localObject3).jdField_a_of_type_Long >= l))) {
+          break;
         }
-        if (this.jdField_c_of_type_Boolean)
-        {
-          this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-          this.jdField_c_of_type_Boolean = false;
-        }
-        paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramMessage.obj);
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 80L);
-        return true;
-        if (QLog.isColorLevel()) {
-          QLog.d("StickerBubbleGesture", 2, "handleMessage isTouchEffectSupport = " + this.jdField_d_of_type_Boolean);
-        }
-      }
-    } while (!this.jdField_c_of_type_Boolean);
-    this.jdField_a_of_type_Aelh.d();
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    return true;
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleGesture", 2, "onDown: " + paramMotionEvent);
-    }
-    this.jdField_a_of_type_Aelh.a(paramMotionEvent.getX(), paramMotionEvent.getY());
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleGesture", 2, "onFling: " + paramFloat1 + " / " + paramFloat2);
-    }
-    return false;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    int i = this.jdField_a_of_type_Aelh.a(paramMotionEvent.getX(), paramMotionEvent.getY());
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleGesture", 2, "onLongPress: " + paramMotionEvent + " on idx: " + i);
-    }
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleGesture", 2, "onScroll: " + paramFloat1 + " / " + paramFloat2);
-    }
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent)
-  {
-    int i = this.jdField_a_of_type_Aelh.a(paramMotionEvent.getX(), paramMotionEvent.getY());
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleGesture", 2, "onShowPress: " + paramMotionEvent + " on idx: " + i);
-    }
-    if ((i > -1) && (!jdField_a_of_type_Boolean))
-    {
-      if (this.jdField_d_of_type_Int > -1) {
-        a(this.jdField_d_of_type_Int);
-      }
-      this.jdField_d_of_type_Int = i;
-      b();
-      this.jdField_a_of_type_Float = (paramMotionEvent.getX() + this.jdField_a_of_type_Int);
-      this.jdField_b_of_type_Float = (paramMotionEvent.getY() + this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_Aelh.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, i, 1);
-      if (!this.jdField_d_of_type_Boolean) {
-        break label203;
-      }
-      HapticManager.a().a(this.jdField_a_of_type_JavaLangString, 2);
-    }
-    for (;;)
-    {
-      this.jdField_c_of_type_Int = 1;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      jdField_a_of_type_Boolean = true;
-      paramMotionEvent = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, Integer.valueOf(i));
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMotionEvent, 80L);
+        ((agvz)localObject2).a(((QQWalletRedPacketMsg)localObject1).redPacketId, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+        l = VACDReportUtil.a(null, "qqwallet", "graphb", "pwd.click", "msgType=18", 0, null);
+        paramView = ahjm.b(localMessageForQQWalletMsg);
+        localObject1 = new Bundle();
+        ((Bundle)localObject1).putString("feedsid", ahjm.a(localMessageForQQWalletMsg));
+        ((agvz)localObject2).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (agvy)localObject3, l, 131072, paramView, localMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.skinId, localMessageForQQWalletMsg.fromHBList, (Bundle)localObject1);
+      } while (!QLog.isColorLevel());
+      QLog.d("PasswdRedBagManager", 2, "click open passwdredbag, isPasswdRedBagOpen=" + ((agvy)localObject3).jdField_a_of_type_Boolean + ",isPasswdRedBagFinish=" + ((agvy)localObject3).b + ",isPasswdRedBagOverDue=" + ((agvy)localObject3).c);
       return;
-      label203:
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleGesture", 2, "onShowPress isTouchEffectSupport = " + this.jdField_d_of_type_Boolean);
+      Object localObject2 = new Intent();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
+        ((Intent)localObject2).putExtra("session", this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
-    }
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    long l = SystemClock.uptimeMillis();
-    int i;
-    if (l - this.jdField_a_of_type_Long > 300L)
-    {
-      i = this.jdField_a_of_type_Aelh.a(paramMotionEvent.getX(), paramMotionEvent.getY());
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleGesture", 2, "onSingleTapUp: " + paramMotionEvent + " on idx: " + i);
+      ((Intent)localObject2).putExtra("uniseq", localMessageForQQWalletMsg.uniseq);
+      ((Intent)localObject2).putExtra("public_fragment_window_feature", 1);
+      Object localObject3 = localMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId;
+      Object localObject4 = localMessageForQQWalletMsg.mQQWalletRedPacketMsg.authkey;
+      Object localObject5 = ahix.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      int j = ((Bundle)localObject5).getInt("groupType");
+      localObject5 = ((Bundle)localObject5).getString("name");
+      int i = 0;
+      if (localMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem != null) {
+        i = localMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.resourceType;
       }
-      if (i > -1)
-      {
-        b();
-        this.jdField_a_of_type_Aelh.a(paramMotionEvent.getX() + this.jdField_a_of_type_Int, paramMotionEvent.getY() + this.jdField_b_of_type_Int, i, 1);
-        if (!this.jdField_d_of_type_Boolean) {
-          break label153;
-        }
-        HapticManager.a().a(this.jdField_a_of_type_JavaLangString, 2);
+      localObject3 = ahix.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, j, (String)localObject5, (String)localObject3, (String)localObject4, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "appid#1344242394|bargainor_id#1000030201|channel#detailtips", "redgiftDetail", null, localMessageForQQWalletMsg.mQQWalletRedPacketMsg.redChannel, i, localMessageForQQWalletMsg.fromHBList);
+      localObject4 = new Bundle();
+      ((Bundle)localObject4).putString("json", ((JSONObject)localObject3).toString());
+      ((Bundle)localObject4).putString("callbackSn", "0");
+      ((Intent)localObject2).putExtra("fromHBList", localMessageForQQWalletMsg.fromHBList);
+      ((Intent)localObject2).putExtra("redPacketId", localMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId);
+      if (!(paramView.getContext() instanceof Activity)) {
+        ((Intent)localObject2).addFlags(268435456);
       }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aelh.a(i, 1);
-      this.jdField_a_of_type_Long = l;
-      return true;
-      label153:
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleGesture", 2, "onSingleTapUp isTouchEffectSupport = " + this.jdField_d_of_type_Boolean);
-      }
-    }
+      abtu.a(paramView.getContext(), (Intent)localObject2, PublicTransFragmentActivity.class, RedPacketKSongFragment.class);
+    } while (!QLog.isColorLevel());
+    QLog.d("PasswdRedBagManager", 2, "show passwdredbag ksong tips = " + ((QQWalletRedPacketMsg)localObject1).elem.title);
   }
 }
 

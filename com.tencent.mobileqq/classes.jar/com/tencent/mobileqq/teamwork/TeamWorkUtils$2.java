@@ -2,11 +2,11 @@ package com.tencent.mobileqq.teamwork;
 
 import android.os.Bundle;
 import android.os.Process;
-import aqax;
-import aqay;
-import awao;
-import awqx;
-import axfs;
+import aquz;
+import aqva;
+import awzw;
+import axqw;
+import ayfv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 
@@ -22,7 +22,7 @@ public final class TeamWorkUtils$2
     if (this.jdField_a_of_type_JavaLangString.equals(this.b))
     {
       localObject1 = this.c;
-      localObject2 = new aqax((String)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.d, 0, -5020, 3276804, awao.a());
+      localObject2 = new aquz((String)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.d, 0, -5020, 3276804, awzw.a());
       Bundle localBundle = new Bundle();
       localBundle.putInt("key_action", 42);
       localBundle.putString("key_a_action_DATA", this.e);
@@ -32,11 +32,11 @@ public final class TeamWorkUtils$2
       }
       localObject1 = this.c;
       label104:
-      localBundle.putString("key_action_DATA", axfs.a(localQQAppInterface, (String)localObject1, 0));
-      ((aqax)localObject2).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.f.length(), localBundle);
+      localBundle.putString("key_action_DATA", ayfv.a(localQQAppInterface, (String)localObject1, 0));
+      ((aquz)localObject2).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.f.length(), localBundle);
       localObject1 = new MessageForUniteGrayTip();
-      ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (aqax)localObject2);
-      aqay.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject1);
+      ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (aquz)localObject2);
+      aqva.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject1);
       localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
       if (!this.jdField_a_of_type_JavaLangString.equals(this.b)) {
         break label228;
@@ -46,7 +46,7 @@ public final class TeamWorkUtils$2
     label228:
     for (Object localObject1 = this.c;; localObject1 = this.b)
     {
-      awqx.b((QQAppInterface)localObject2, "dc00898", "", (String)localObject1, "0X8009FD0", "0X8009FD0", 0, 0, "", "", "", "");
+      axqw.b((QQAppInterface)localObject2, "dc00898", "", (String)localObject1, "0X8009FD0", "0X8009FD0", 0, 0, "", "", "", "");
       return;
       localObject1 = this.b;
       break;

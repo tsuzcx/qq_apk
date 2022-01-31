@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import avva;
-import avvn;
+import awut;
+import awvg;
 import java.util.List;
 
 class PublicAccountSearchEngine$1
   implements Runnable
 {
-  PublicAccountSearchEngine$1(PublicAccountSearchEngine paramPublicAccountSearchEngine, avvn paramavvn, avva paramavva) {}
+  PublicAccountSearchEngine$1(PublicAccountSearchEngine paramPublicAccountSearchEngine, awvg paramawvg, awut paramawut) {}
   
   public void run()
   {
-    List localList = this.this$0.a(this.jdField_a_of_type_Avvn);
-    if (this.jdField_a_of_type_Avva != null) {
-      this.jdField_a_of_type_Avva.a(localList, 1);
+    List localList = this.this$0.a(this.jdField_a_of_type_Awvg);
+    if (this.jdField_a_of_type_Awut != null) {
+      this.jdField_a_of_type_Awut.a(localList, 1);
     }
   }
 }

@@ -2,14 +2,14 @@ package com.tencent.mobileqq.profile.view;
 
 import android.os.Handler;
 import android.os.Message;
-import atwx;
+import auuw;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo;
 
 class PhotoViewForShopping$2
   implements Runnable
 {
-  PhotoViewForShopping$2(PhotoViewForShopping paramPhotoViewForShopping, atwx paramatwx) {}
+  PhotoViewForShopping$2(PhotoViewForShopping paramPhotoViewForShopping, auuw paramauuw) {}
   
   public void run()
   {

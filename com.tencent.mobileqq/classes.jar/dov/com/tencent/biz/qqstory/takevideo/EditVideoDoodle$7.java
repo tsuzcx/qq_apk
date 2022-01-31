@@ -1,18 +1,18 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bief;
-import bikx;
+import bjvc;
+import bkbs;
 import java.util.Collections;
 
 public class EditVideoDoodle$7
   implements Runnable
 {
-  public EditVideoDoodle$7(bief parambief) {}
+  public EditVideoDoodle$7(bjvc parambjvc) {}
   
   public void run()
   {
     if (!this.this$0.jdField_a_of_type_Boolean) {
-      this.this$0.jdField_a_of_type_Bikx.a(1, Collections.EMPTY_LIST);
+      this.this$0.jdField_a_of_type_Bkbs.a(1, Collections.EMPTY_LIST);
     }
   }
 }

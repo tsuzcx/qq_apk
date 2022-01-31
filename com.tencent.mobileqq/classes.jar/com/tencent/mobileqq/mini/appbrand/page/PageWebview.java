@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.webkit.JavascriptInterface;
 import android.widget.FrameLayout;
-import baip;
-import bfpk;
+import bbjw;
+import bgxr;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo.PageHtmlContent;
@@ -20,6 +20,7 @@ import com.tencent.mobileqq.mini.appbrand.utils.MiniLog;
 import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.sdk.ShareChatModel;
+import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
 import com.tencent.mobileqq.mini.webview.BaseAppBrandWebview;
@@ -115,7 +116,7 @@ public class PageWebview
   
   private void onWebViewReady(ApkgInfo paramApkgInfo)
   {
-    if (baip.a(this.pageFrameHtmlJsStr))
+    if (bbjw.a(this.pageFrameHtmlJsStr))
     {
       String str = paramApkgInfo.getPageFrameJSStr(this.mRouteUrl);
       if (!TextUtils.isEmpty(str)) {
@@ -210,7 +211,7 @@ public class PageWebview
     if (QLog.isColorLevel()) {
       QLog.i("miniapp-start", 1, "---PageWebView end load wawebview ---   webviewid:" + this.pageWebviewId);
     }
-    if (baip.a(this.mAppWxss)) {
+    if (bbjw.a(this.mAppWxss)) {
       this.mAppWxss = this.apkgInfo.getRootWxssJsContent();
     }
     if (!TextUtils.isEmpty(this.mAppWxss)) {
@@ -219,7 +220,7 @@ public class PageWebview
     if (QLog.isColorLevel()) {
       QLog.i("miniapp-start", 1, "---PageWebView begin load pageFrameHtmlJsStr --- webviewid:" + this.pageWebviewId);
     }
-    if (!baip.a(this.pageFrameHtmlJsStr)) {
+    if (!bbjw.a(this.pageFrameHtmlJsStr)) {
       evaluteJs(this.pageFrameHtmlJsStr);
     }
     for (;;)
@@ -230,7 +231,7 @@ public class PageWebview
       QLog.i("miniapp-start", 1, "---PageWebView end initApkgJs ---   webviewid:" + this.pageWebviewId);
       return;
       this.pageFrameHtmlJsStr = this.apkgInfo.getPageHtmlContent().jsStr;
-      if (!baip.a(this.pageFrameHtmlJsStr))
+      if (!bbjw.a(this.pageFrameHtmlJsStr))
       {
         QLog.i("miniapp-start", 1, "--- PageWebView load pageFrameHtmlJsStr --- webviewid:" + this.pageWebviewId);
         evaluteJs(this.pageFrameHtmlJsStr);
@@ -260,7 +261,7 @@ public class PageWebview
       if (this.mEnableNativeBuffer) {}
       for (localObject = "__qqConfig.nativeBufferEnabled = true;";; localObject = "")
       {
-        localObject = String.format((String)localObject + "__qqConfig.QUA='" + bfpk.a() + "';__qqConfig.platform = 'android';", new Object[] { localJSONObject });
+        localObject = String.format((String)localObject + "__qqConfig.QUA='" + bgxr.a() + "';__qqConfig.platform = 'android';", new Object[] { localJSONObject });
         localObject = (String)localObject + "__qqConfig.useXWebVideo=" + this.enableEmbeddedVideo + ";";
         localObject = (String)localObject + "__qqConfig.XWebVideoMinVersion=045100;";
         QLog.d("miniapp-embedded", 1, "page enableEmbeddedVideo : " + this.enableEmbeddedVideo);
@@ -273,6 +274,11 @@ public class PageWebview
     {
       QLog.e("miniapp-start", 1, "getJsDefaultConfig failed: " + localException);
     }
+  }
+  
+  public String getRouteUrl()
+  {
+    return this.mRouteUrl;
   }
   
   public boolean handleBackPressed()
@@ -340,7 +346,7 @@ public class PageWebview
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 513	com/tencent/mobileqq/mini/appbrand/page/PageWebview:hasLoadHtml	Z
+    //   3: getfield 514	com/tencent/mobileqq/mini/appbrand/page/PageWebview:hasLoadHtml	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifeq +6 -> 14
@@ -349,17 +355,17 @@ public class PageWebview
     //   13: return
     //   14: aload_0
     //   15: iconst_1
-    //   16: putfield 513	com/tencent/mobileqq/mini/appbrand/page/PageWebview:hasLoadHtml	Z
+    //   16: putfield 514	com/tencent/mobileqq/mini/appbrand/page/PageWebview:hasLoadHtml	Z
     //   19: ldc_w 325
     //   22: iconst_1
-    //   23: ldc_w 515
+    //   23: ldc_w 516
     //   26: invokestatic 313	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   29: aload_0
     //   30: sipush 623
     //   33: invokespecial 126	com/tencent/mobileqq/mini/appbrand/page/PageWebview:reportAppQualityEvent	(I)V
     //   36: aload_0
-    //   37: ldc_w 517
-    //   40: invokevirtual 520	com/tencent/mobileqq/mini/appbrand/page/PageWebview:loadUrl	(Ljava/lang/String;)V
+    //   37: ldc_w 518
+    //   40: invokevirtual 521	com/tencent/mobileqq/mini/appbrand/page/PageWebview:loadUrl	(Ljava/lang/String;)V
     //   43: aload_0
     //   44: sipush 624
     //   47: invokespecial 126	com/tencent/mobileqq/mini/appbrand/page/PageWebview:reportAppQualityEvent	(I)V
@@ -382,7 +388,7 @@ public class PageWebview
   
   public void loadPageWebviewJs(ApkgInfo paramApkgInfo)
   {
-    if (baip.a(this.mRouteUrl)) {}
+    if (bbjw.a(this.mRouteUrl)) {}
     while ((this.hasFLoad) || (!this.hasLoadHtmlFinish)) {
       return;
     }
@@ -398,11 +404,27 @@ public class PageWebview
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
+  public void onPause()
+  {
+    super.onPause();
+    if (this.webviewContainer != null) {
+      this.webviewContainer.onPause();
+    }
+  }
+  
   public void onPause(boolean paramBoolean)
   {
     super.onPause(paramBoolean);
     if ((paramBoolean) && (this.webviewContainer != null)) {
       this.webviewContainer.notifyOnPageWebViewPause();
+    }
+  }
+  
+  public void onResume()
+  {
+    super.onResume();
+    if (this.webviewContainer != null) {
+      this.webviewContainer.onResume();
     }
   }
   
@@ -430,24 +452,31 @@ public class PageWebview
   public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    JSONObject localJSONObject2 = new JSONObject();
-    JSONObject localJSONObject1 = new JSONObject();
-    try
+    QLog.d(TAG, 1, "onSizeChanged -- w : " + paramInt1 + "; h : " + paramInt2);
+    if (isReady())
     {
-      localJSONObject2.put("windowWidth", paramInt1);
-      localJSONObject2.put("windowHeight", paramInt2);
-      localJSONObject1.put("size", localJSONObject2);
-      this.appBrandRuntime.evaluateServiceSubcribeJS("onViewDidResize", localJSONObject1.toString());
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      JSONObject localJSONObject2 = new JSONObject();
+      JSONObject localJSONObject1 = new JSONObject();
+      try
       {
-        localJSONException.printStackTrace();
-        QLog.e(TAG, 1, "onSizeChanged, JSONException!");
+        localJSONObject2.put("windowWidth", (int)(paramInt1 / DisplayUtil.getDensity(getContext())));
+        localJSONObject2.put("windowHeight", (int)(paramInt2 / DisplayUtil.getDensity(getContext())));
+        localJSONObject1.put("size", localJSONObject2);
+        this.appBrandRuntime.evaluateServiceSubcribeJS("onViewDidResize", localJSONObject1.toString());
+        evaluateSubcribeJS("onViewDidResize", localJSONObject1.toString(), this.pageWebviewId);
+        QLog.d(TAG, 1, "onSizeChanged isReady true, already send to js");
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+          QLog.e(TAG, 1, "onSizeChanged, JSONException!");
+        }
       }
     }
+    QLog.d(TAG, 1, "onSizeChanged isReady false, do nothing.");
   }
   
   @JavascriptInterface

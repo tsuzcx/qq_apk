@@ -1,53 +1,33 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.reactive.SimpleObserver;
 import java.util.List;
 
 class uvo
-  implements sse
+  extends SimpleObserver<upb>
 {
-  uvo(uvm paramuvm, String paramString) {}
+  uvo(uvn paramuvn) {}
   
-  public void a(int paramInt, ssf paramssf, List<TroopBarPOI> paramList)
+  public void a(upb paramupb)
   {
-    this.jdField_a_of_type_Uvm.jdField_a_of_type_Ssf = paramssf;
-    if (!this.jdField_a_of_type_Uvm.isValidate()) {
-      return;
-    }
-    if (paramInt == 0) {
-      if (paramssf.a()) {
-        break label210;
-      }
-    }
-    label210:
-    for (boolean bool = true;; bool = false)
+    super.onNext(paramupb);
+    if (paramupb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      this.jdField_a_of_type_Uvm.d.setVisibility(0);
-      this.jdField_a_of_type_Uvm.a(bool);
-      if (this.jdField_a_of_type_Uvm.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_Uvm.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      if (this.jdField_a_of_type_Uvm.jdField_a_of_type_Ssf.b()) {
-        this.jdField_a_of_type_Uvm.jdField_a_of_type_JavaUtilArrayList.clear();
-      }
-      this.jdField_a_of_type_Uvm.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      if (this.jdField_a_of_type_Uvm.jdField_a_of_type_Vfe != null)
-      {
-        this.jdField_a_of_type_Uvm.jdField_a_of_type_Vfe.a(this.jdField_a_of_type_Uvm.jdField_a_of_type_JavaUtilArrayList, null);
-        this.jdField_a_of_type_Uvm.jdField_a_of_type_Vfe.notifyDataSetChanged();
-        if (this.jdField_a_of_type_Uvm.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-        {
-          this.jdField_a_of_type_Uvm.a(this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_Uvm.d.setVisibility(4);
-        }
-      }
-      int i = paramInt;
-      if (paramInt == 0) {
-        i = 0;
-      }
-      urp.b("edit_video", "poi_list_success", 0, i, new String[0]);
-      return;
+      tbz localtbz = (tbz)tdc.a(17);
+      localtbz.a(paramupb.jdField_a_of_type_JavaUtilList, paramupb.jdField_a_of_type_JavaLangString, false, false);
+      paramupb.jdField_a_of_type_JavaUtilList.addAll(localtbz.b(paramupb.jdField_a_of_type_JavaLangString, false));
     }
+    ste.a().dispatch(paramupb);
+    this.a.b();
+    veg.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull next");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    this.a.b();
+    veg.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull error", paramError);
   }
 }
 

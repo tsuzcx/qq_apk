@@ -1,91 +1,61 @@
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
 
 public class axey
-  implements ajfe
 {
-  public void a(int paramInt) {}
+  public static int a;
+  public static boolean a;
+  public static boolean b = true;
   
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
-  
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
-  
-  public void a(String paramString1, String paramString2, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
-  
-  public void c(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  static
   {
-    switch (paramInt)
+    jdField_a_of_type_Int = 18;
+  }
+  
+  public static void a()
+  {
+    Object localObject;
+    if (!jdField_a_of_type_Boolean)
     {
-    }
-    do
-    {
-      do
+      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.ShortVideoPlayInAIO.name(), null);
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideo.ShortVideoPlayConfig", 2, "initConfig(), videoPlayConfig=" + (String)localObject);
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        do
+        localObject = ((String)localObject).split("\\|");
+        if ((localObject != null) && (localObject.length >= 2))
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            return;
-                          } while (paramObject == null);
-                          b((TeamWorkFileImportInfo)paramObject);
-                          return;
-                        } while (paramObject == null);
-                        paramObject = (Object[])paramObject;
-                      } while (paramObject.length != 2);
-                      a((String)paramObject[0], (TeamWorkFileImportInfo)paramObject[1]);
-                      return;
-                    } while (paramObject == null);
-                    a((TeamWorkFileImportInfo)paramObject);
-                    return;
-                  } while (paramObject == null);
-                  paramObject = (Object[])paramObject;
-                } while (paramObject.length != 1);
-                a(((Integer)paramObject[0]).intValue());
-                return;
-              } while (paramObject == null);
-              paramObject = (Object[])paramObject;
-            } while (paramObject.length != 1);
-            if (((Integer)paramObject[0]).intValue() > 0) {}
-            for (paramBoolean = true;; paramBoolean = false)
-            {
-              a(paramBoolean);
-              return;
-            }
-          } while (paramObject == null);
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length != 3);
-        a((String)paramObject[0], (String)paramObject[1], (TeamWorkFileImportInfo)paramObject[2]);
-        return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length != 1);
-    c((TeamWorkFileImportInfo)paramObject[0]);
+          if (!TextUtils.isEmpty(localObject[0])) {
+            b = localObject[0].equals("1");
+          }
+          if (TextUtils.isEmpty(localObject[1])) {}
+        }
+      }
+    }
+    try
+    {
+      jdField_a_of_type_Int = Integer.parseInt(localObject[1]);
+      jdField_a_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideo.ShortVideoPlayConfig", 2, "initVideoPlayConfig(), sReadFromDPC=" + jdField_a_of_type_Boolean + ", sAutoPlayInAIO:" + b + ", sRequestedFPS:" + jdField_a_of_type_Int);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        jdField_a_of_type_Int = 18;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axey
  * JD-Core Version:    0.7.0.1
  */

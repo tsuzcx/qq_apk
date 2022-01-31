@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.View.BaseSavedState;
-import bbph;
+import bcsj;
 
 public class Workspace$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator<SavedState> CREATOR = new bbph();
+  public static final Parcelable.Creator<SavedState> CREATOR = new bcsj();
   int currentScreen = -1;
   
   private Workspace$SavedState(Parcel paramParcel)

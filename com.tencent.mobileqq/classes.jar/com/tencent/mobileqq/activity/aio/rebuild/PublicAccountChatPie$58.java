@@ -1,20 +1,21 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aegy;
+import aerv;
+import nqc;
 
 public class PublicAccountChatPie$58
   implements Runnable
 {
-  public PublicAccountChatPie$58(aegy paramaegy) {}
+  public PublicAccountChatPie$58(aerv paramaerv, boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    boolean bool = false;
-    aegy localaegy = this.this$0;
-    if ((this.this$0.b(true)) || (this.this$0.b(false))) {
-      bool = true;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.this$0.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c);
+      return;
     }
-    localaegy.as = bool;
+    this.this$0.a.a();
   }
 }
 

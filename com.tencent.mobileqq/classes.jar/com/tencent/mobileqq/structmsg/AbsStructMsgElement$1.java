@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.structmsg;
 
-import aegy;
+import aerv;
 import android.text.TextUtils;
-import awul;
+import axun;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import ndn;
+import noo;
 
 public class AbsStructMsgElement$1
   implements Runnable
 {
-  public AbsStructMsgElement$1(awul paramawul1, awul paramawul2, QQAppInterface paramQQAppInterface) {}
+  public AbsStructMsgElement$1(axun paramaxun1, axun paramaxun2, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     long l = NetConnInfoCenter.getServerTime();
     int j = -1;
     int i = j;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Awul.Q)) {}
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Axun.Q)) {}
     try
     {
       i = Integer.parseInt(this.this$0.Q);
-      if (aegy.a(this.jdField_a_of_type_Awul.R, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      if (aerv.a(this.jdField_a_of_type_Axun.R, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
       {
         j = 1;
-        ndn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Awul.R, "0X80055C7", "0X80055C7", i, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_Awul.a), this.jdField_a_of_type_Awul.c, Integer.toString(j), false);
+        noo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Axun.R, "0X80055C7", "0X80055C7", i, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_Axun.a), this.jdField_a_of_type_Axun.c, Integer.toString(j), false);
         return;
       }
     }

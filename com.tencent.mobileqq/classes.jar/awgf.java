@@ -1,53 +1,41 @@
-import android.util.SparseArray;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.widget.RecentDynamicAvatarView;
 
 public class awgf
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public float a;
-  public int a;
-  public SparseArray<awge> a;
-  public boolean a;
-  public int[] a;
-  public int b = 30;
-  public boolean b;
-  public int[] b;
-  public int c = 8;
-  public boolean c;
-  public int[] c;
-  public int d = 640;
-  public boolean d;
-  public int[] d;
-  public int e = 480;
-  public int[] e;
-  public int f = 550000;
-  public int[] f;
-  public int g = 100000;
-  public int[] g;
-  public int h = 35;
-  public int i = 3;
-  public int j = 3;
-  public int k = 1;
-  public int l = 1;
-  public int m;
-  public int n;
-  public int o;
-  public int p;
-  public int q;
-  public int r;
-  public int s = -1;
-  public int t = -1;
-  public int u = 2;
-  public int v = 3;
+  public final TextView a;
+  private awgd jdField_a_of_type_Awgd;
+  public RecentDynamicAvatarView a;
   
-  public awgf()
+  public awgf(awgc paramawgc, View paramView, awgd paramawgd)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_Float = 1.0F;
+    super(paramView);
+    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131367679));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370832));
+    this.jdField_a_of_type_Awgd = paramawgd;
+    paramView.setOnClickListener(this);
+    paramView.setTag(this);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_Awgd != null) && (awgc.a(this.jdField_a_of_type_Awgc))) {
+      this.jdField_a_of_type_Awgd.a(paramView, getAdapterPosition() - 1);
+    }
+    while (this.jdField_a_of_type_Awgd == null) {
+      return;
+    }
+    this.jdField_a_of_type_Awgd.a(paramView, getAdapterPosition());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     awgf
  * JD-Core Version:    0.7.0.1
  */

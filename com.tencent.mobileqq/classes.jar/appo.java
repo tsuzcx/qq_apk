@@ -1,62 +1,49 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public class appo
-  extends ajjh
+class appo
+  implements apji
 {
-  public appo(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
+  appo(appk paramappk) {}
   
-  protected void onSetGeneralSettingsC2CRoaming(boolean paramBoolean, Map<String, Integer> paramMap)
+  public void a(boolean paramBoolean)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("SecuritySettingActivity", 2, "onSetGeneralSettingsC2CRoaming issuc =" + paramBoolean);
-    }
-    this.a.a();
-    paramMap = this.a.getActivity();
-    if (paramMap == null)
-    {
-      QLog.e("QQSettingChatOperationFragment", 1, "onSetGeneralSettingsC2CRoaming: activity is null");
-      return;
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Apkn != null)) {
+      this.a.jdField_a_of_type_Apkn.a();
     }
     if (paramBoolean)
     {
-      bbmy.a(paramMap.getApplicationContext(), 2, 2131629665, 0).b(this.a.getActivity().getTitleBarHeight());
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Apmx.c(), this);
+      appk.d(this.a, true);
+      this.a.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(4);
+      appk.a(this.a);
       return;
     }
-    FormSwitchItem localFormSwitchItem;
-    if (QQSettingChatOperationFragment.a(this.a) != null)
+    if (appk.d(this.a))
     {
-      QQSettingChatOperationFragment.a(this.a).setOnCheckedChangeListener(null);
-      localFormSwitchItem = QQSettingChatOperationFragment.a(this.a);
-      if (QQSettingChatOperationFragment.a(this.a).e() != 1) {
-        break label176;
+      appk.d(this.a, false);
+      if (this.a.d) {
+        this.a.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
+      }
+      appk.e(this.a, true);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d();
+      if (this.a.jdField_a_of_type_Apkm != null) {
+        this.a.jdField_a_of_type_Apkm.a();
       }
     }
-    label176:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      localFormSwitchItem.setChecked(paramBoolean);
-      QQSettingChatOperationFragment.a(this.a).setOnCheckedChangeListener(this.a);
-      bbmy.a(paramMap.getApplicationContext(), 2131629663, 0).b(paramMap.getTitleBarHeight());
-      return;
-    }
+    apiz.a().a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Apmx.c(), appk.a(this.a), true);
   }
   
-  protected void onSetMessageRaoam(boolean paramBoolean)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramBoolean) {
-      QQSettingChatOperationFragment.a(this.a);
-    }
+    appk.c(this.a, paramBoolean2);
+    appk.a(this.a, paramBoolean1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     appo
  * JD-Core Version:    0.7.0.1
  */

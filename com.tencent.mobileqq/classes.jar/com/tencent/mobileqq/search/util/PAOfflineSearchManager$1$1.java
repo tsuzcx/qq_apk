@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.search.util;
 
 import android.text.TextUtils;
-import avvy;
-import avvz;
+import awvr;
+import awvs;
 import com.tencent.qphone.base.util.QLog;
-import mof;
+import mze;
 
 public class PAOfflineSearchManager$1$1
   implements Runnable
 {
-  public PAOfflineSearchManager$1$1(avvz paramavvz) {}
+  public PAOfflineSearchManager$1$1(awvs paramawvs) {}
   
   public void run()
   {
-    String str = mof.a("1011");
+    String str = mze.a("1011");
     if ((str == null) || (TextUtils.equals(str, ""))) {}
     do
     {

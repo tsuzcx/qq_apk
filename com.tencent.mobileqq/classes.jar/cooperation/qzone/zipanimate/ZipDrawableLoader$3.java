@@ -1,66 +1,66 @@
 package cooperation.qzone.zipanimate;
 
 import android.graphics.drawable.BitmapDrawable;
-import bgmh;
-import bgmk;
-import bgmm;
-import bgmn;
+import bhuy;
+import bhvb;
+import bhvd;
+import bhve;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ZipDrawableLoader$3
   implements Runnable
 {
-  public ZipDrawableLoader$3(bgmh parambgmh, int paramInt, bgmn parambgmn) {}
+  public ZipDrawableLoader$3(bhuy parambhuy, int paramInt, bhve parambhve) {}
   
   public void run()
   {
     int j = this.jdField_a_of_type_Int;
     int i = j;
-    if (j < bgmh.a(this.this$0)) {
-      i = j + bgmh.a(this.this$0).size();
+    if (j < bhuy.a(this.this$0)) {
+      i = j + bhuy.a(this.this$0).size();
     }
-    if (i - bgmh.a(this.this$0) > bgmh.b(this.this$0)) {}
-    while (this.jdField_a_of_type_Int >= bgmh.a(this.this$0).size()) {
+    if (i - bhuy.a(this.this$0) > bhuy.b(this.this$0)) {}
+    while (this.jdField_a_of_type_Int >= bhuy.a(this.this$0).size()) {
       return;
     }
-    bgmk localbgmk = null;
+    bhvb localbhvb = null;
     for (;;)
     {
       synchronized (this.this$0)
       {
-        if (this.jdField_a_of_type_Int < bgmh.a(this.this$0).size()) {
-          localbgmk = (bgmk)bgmh.a(this.this$0).get(this.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_Int < bhuy.a(this.this$0).size()) {
+          localbhvb = (bhvb)bhuy.a(this.this$0).get(this.jdField_a_of_type_Int);
         }
-        if (localbgmk == null) {
+        if (localbhvb == null) {
           break;
         }
-        if (localbgmk.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable == null)
+        if (localbhvb.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable == null)
         {
-          ??? = bgmh.a(this.this$0, localbgmk.jdField_a_of_type_JavaLangString);
+          ??? = bhuy.a(this.this$0, localbhvb.jdField_a_of_type_JavaLangString);
           if (??? != null)
           {
             j = ((BitmapDrawable)???).getIntrinsicWidth();
             i = ((BitmapDrawable)???).getIntrinsicHeight();
-            j = (int)(j * bgmh.a(this.this$0));
-            i = (int)(i * bgmh.a(this.this$0));
-            if (bgmh.a(this.this$0) == null) {
+            j = (int)(j * bhuy.a(this.this$0));
+            i = (int)(i * bhuy.a(this.this$0));
+            if (bhuy.a(this.this$0) == null) {
               break label285;
             }
-            ((BitmapDrawable)???).setBounds(bgmh.a(this.this$0));
-            localbgmk.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = ((BitmapDrawable)???);
+            ((BitmapDrawable)???).setBounds(bhuy.a(this.this$0));
+            localbhvb.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = ((BitmapDrawable)???);
           }
         }
         if (!this.this$0.a)
         {
           this.this$0.a = true;
-          if (bgmh.a(this.this$0) != null) {
-            bgmh.a(this.this$0).a(localbgmk.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
+          if (bhuy.a(this.this$0) != null) {
+            bhuy.a(this.this$0).a(localbhvb.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
           }
         }
-        if (this.jdField_a_of_type_Bgmn == null) {
+        if (this.jdField_a_of_type_Bhve == null) {
           break;
         }
-        this.jdField_a_of_type_Bgmn.a(this.jdField_a_of_type_Int, localbgmk.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
+        this.jdField_a_of_type_Bhve.a(this.jdField_a_of_type_Int, localbhvb.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
         return;
       }
       label285:

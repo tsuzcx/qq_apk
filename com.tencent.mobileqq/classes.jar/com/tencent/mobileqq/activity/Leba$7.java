@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import abai;
-import awcl;
-import awqx;
+import axbt;
+import axqw;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class Leba$7
+class Leba$7
   implements Runnable
 {
-  public Leba$7(abai paramabai, long paramLong) {}
+  Leba$7(Leba paramLeba, long paramLong) {}
   
   public void run()
   {
-    awcl localawcl = (awcl)this.this$0.a.getManager(12);
-    if ((localawcl != null) && ((localawcl.a(601L)) || ((this.a > 0L) && (localawcl.a(this.a))))) {
-      awqx.b(this.this$0.a, "CliOper", "", "", "app_center", "new_exposure", 0, 0, "", "", "", "");
+    axbt localaxbt = (axbt)this.this$0.a.getManager(12);
+    if ((localaxbt != null) && ((localaxbt.a(601L)) || ((this.a > 0L) && (localaxbt.a(this.a))))) {
+      axqw.b(this.this$0.a, "CliOper", "", "", "app_center", "new_exposure", 0, 0, "", "", "", "");
     }
   }
 }

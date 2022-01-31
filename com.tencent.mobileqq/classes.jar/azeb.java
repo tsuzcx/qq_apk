@@ -1,63 +1,22 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class azeb
-  extends aese
+class azeb
+  extends BroadcastReceiver
 {
-  public azeb(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    super(paramContext, paramQQAppInterface, paramBoolean);
-  }
+  azeb(azea paramazea) {}
   
-  protected int a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return 10100;
-  }
-  
-  protected void a(RecommendTroopItem paramRecommendTroopItem)
-  {
-    String str1 = paramRecommendTroopItem.uin;
-    String str2 = paramRecommendTroopItem.recomAlgol;
-    if (paramRecommendTroopItem.isJoined()) {}
-    for (paramRecommendTroopItem = "1";; paramRecommendTroopItem = "2")
+    if (("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) && ("CommentSendSuccess".equals(paramIntent.getStringExtra("event"))))
     {
-      awqx.b(null, "dc00899", "Grp_recom", "", "set_page", "clk_grp", 0, 0, str1, str2, paramRecommendTroopItem, "");
-      return;
-    }
-  }
-  
-  protected int b()
-  {
-    return 39;
-  }
-  
-  protected void b(RecommendTroopItem paramRecommendTroopItem)
-  {
-    String str1 = String.valueOf(paramRecommendTroopItem.uin);
-    String str2 = paramRecommendTroopItem.recomAlgol;
-    if (paramRecommendTroopItem.isJoined()) {}
-    for (paramRecommendTroopItem = "1";; paramRecommendTroopItem = "2")
-    {
-      awqx.b(null, "dc00899", "Grp_recom", "", "set_page", "clk_add", 0, 0, str1, str2, paramRecommendTroopItem, "");
-      return;
-    }
-  }
-  
-  protected int c()
-  {
-    return 10101;
-  }
-  
-  protected void c(RecommendTroopItem paramRecommendTroopItem)
-  {
-    String str1 = paramRecommendTroopItem.uin;
-    String str2 = paramRecommendTroopItem.recomAlgol;
-    if (paramRecommendTroopItem.isJoined()) {}
-    for (paramRecommendTroopItem = "1";; paramRecommendTroopItem = "2")
-    {
-      awqx.b(null, "dc00899", "Grp_recom", "", "set_page", "exp_grp", 0, 0, str1, str2, paramRecommendTroopItem, "");
-      return;
+      this.a.a = true;
+      this.a.dismiss();
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicCommentPopupWindow", 2, "web call finish----------------");
+      }
     }
   }
 }

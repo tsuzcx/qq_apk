@@ -1,23 +1,16 @@
-import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
-class adgw
-  implements begw
+public class adgw
+  implements View.OnClickListener
 {
-  adgw(adgs paramadgs, begr parambegr) {}
+  public adgw(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Begr.dismiss();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    ChatActivityUtils.a(this.jdField_a_of_type_Adgs.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Adgs.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adgs.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Adgs.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, true, null, null);
-    awqx.b(this.jdField_a_of_type_Adgs.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005976", "0X8005976", 0, 0, "", "", "", "");
+    AIOLongShotHelper.a(this.a, paramView);
+    AIOLongShotHelper.a("0X8009DE6");
   }
 }
 

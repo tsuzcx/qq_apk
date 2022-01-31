@@ -1,85 +1,95 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.articlesummary.articlesummary.ScripCmsInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class pqi
-  implements Cloneable
 {
-  public static int c;
-  public static int d;
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b = "";
-  public String c;
-  public String d;
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
+  private JSONObject a;
   
   public pqi()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 1;
+    this.a = new JSONObject();
+    a();
   }
   
-  public static pqi a(articlesummary.ScripCmsInfo paramScripCmsInfo)
+  public pqi(String paramString)
   {
-    pqi localpqi = new pqi();
-    localpqi.jdField_a_of_type_JavaLangString = paramScripCmsInfo.bytes_main_title.get().toStringUtf8();
-    localpqi.b = paramScripCmsInfo.bytes_sub_title.get().toStringUtf8();
-    localpqi.jdField_c_of_type_JavaLangString = paramScripCmsInfo.bytes_background_url.get().toStringUtf8();
-    localpqi.jdField_d_of_type_JavaLangString = paramScripCmsInfo.bytes_left_bottom_txt.get().toStringUtf8();
-    localpqi.e = paramScripCmsInfo.bytes_icon_url.get().toStringUtf8();
-    localpqi.f = paramScripCmsInfo.bytes_background_animation_url.get().toStringUtf8();
-    localpqi.g = paramScripCmsInfo.bytes_guide_main_title.get().toStringUtf8();
-    localpqi.h = paramScripCmsInfo.bytes_guide_sub_title.get().toStringUtf8();
-    localpqi.i = paramScripCmsInfo.bytes_guide_background_url.get().toStringUtf8();
-    localpqi.jdField_a_of_type_Long = paramScripCmsInfo.uint64_from_uin.get();
-    localpqi.j = paramScripCmsInfo.bytes_scrip_tag.get().toStringUtf8();
-    jdField_c_of_type_Int = paramScripCmsInfo.uint32_scrip_total_sum.get();
-    jdField_d_of_type_Int = paramScripCmsInfo.uint32_frequency_limit.get();
-    return localpqi;
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        this.a = new JSONObject(paramString);
+        a();
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("PTSReport", 1, "e = " + paramString);
+        this.a = new JSONObject();
+        a();
+        return;
+      }
+    }
+    this.a = new JSONObject();
+    a();
   }
   
-  public pqi a()
+  private void a()
+  {
+    for (;;)
+    {
+      try
+      {
+        this.a.put("os", "1");
+        this.a.put("version", "8.2.8");
+        this.a.put("pts_engine_version", ppm.a().a());
+        this.a.put("pts_app_version", ppk.a().a());
+        this.a.put("sdk_version", String.valueOf(Build.VERSION.SDK_INT));
+        JSONObject localJSONObject = this.a;
+        if (!TextUtils.isEmpty(Build.BRAND))
+        {
+          String str1 = Build.BRAND;
+          localJSONObject.put("device_brand", str1);
+          localJSONObject = this.a;
+          if (!TextUtils.isEmpty(Build.MODEL))
+          {
+            str1 = Build.MODEL;
+            localJSONObject.put("device_model", str1);
+            this.a.put("is_debug", "0");
+            return;
+          }
+          str1 = "";
+          continue;
+        }
+        String str2 = "";
+      }
+      catch (JSONException localJSONException)
+      {
+        QLog.e("PTSReport", 1, "[initCommonField], e = " + localJSONException);
+        return;
+      }
+    }
+  }
+  
+  public String a()
+  {
+    return this.a.toString();
+  }
+  
+  public pqi a(String paramString1, String paramString2)
   {
     try
     {
-      super.clone();
-      pqi localpqi = new pqi();
-      localpqi.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localpqi.b = this.b;
-      localpqi.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-      localpqi.jdField_d_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-      localpqi.e = this.e;
-      localpqi.f = this.f;
-      localpqi.i = this.i;
-      localpqi.g = this.g;
-      localpqi.h = this.h;
-      localpqi.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      localpqi.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-      localpqi.j = this.j;
-      return localpqi;
+      this.a.put(paramString1, paramString2);
+      return this;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
+    catch (JSONException paramString1)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ScripCmsInfo", 2, new Object[] { "Clone not support: ", localCloneNotSupportedException.toString() });
-        }
-      }
+      QLog.e("PTSReport", 1, "[addString], e = " + paramString1);
     }
+    return this;
   }
 }
 

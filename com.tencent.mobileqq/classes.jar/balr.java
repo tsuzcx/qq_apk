@@ -1,44 +1,23 @@
 public class balr
 {
   public int a;
+  public long a;
   public String a;
   public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
   public String b;
+  public int c;
   public String c;
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public void c(String paramString)
-  {
-    this.c = paramString;
-  }
-  
-  public String toString()
-  {
-    return super.toString();
-  }
+  public int d;
+  public String d;
+  public int e;
+  public String e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     balr
  * JD-Core Version:    0.7.0.1
  */

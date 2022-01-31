@@ -1,58 +1,89 @@
-import android.util.SparseArray;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class xfv
+  extends ampb<xfu>
 {
-  public int a;
-  public SparseArray<xfw> a;
-  public String a;
-  public boolean a;
-  public int b = 4;
-  
-  public xfv(String paramString)
+  private void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(3);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public xfw a(int paramInt)
-  {
-    xfw localxfw2 = (xfw)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    xfw localxfw1 = localxfw2;
-    if (localxfw2 == null)
+    QLog.d("Q.videostory.config.VSEntranceStyleProcessor", 2, "onUpdate() apply new style config");
+    if (!TextUtils.isEmpty(paramString2))
     {
-      if (paramInt != 1) {
-        break label40;
-      }
-      localxfw1 = new xfw(85, 5, 0.7F, 0.2F);
+      xfr.a().a("KEY_BOOLEAN_APPLY_STYLE_CONFIG", Boolean.valueOf(true));
+      xfr.a().a("KEY_VS_ENTRANCE_STYLE_MD5", paramString1);
+      xfr.a().a("KEY_VS_ENTRANCE_STYLE_CONTENT", paramString2);
     }
-    label40:
-    do
-    {
-      return localxfw1;
-      if (paramInt == 2) {
-        return new xfw(80, 15, 0.9F, 0.4F);
-      }
-      localxfw1 = localxfw2;
-    } while (paramInt != 3);
-    return new xfw(75, 30, 1.0F, 0.7F);
   }
   
-  public String toString()
+  public int a()
   {
-    StringBuilder localStringBuilder = new StringBuilder("ClearMemoryConfig{");
-    localStringBuilder.append("DpcConfigId='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", isClearEnable=").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", delay=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", clearStep=").append(this.b);
-    localStringBuilder.append(", clearLevels=").append(this.jdField_a_of_type_AndroidUtilSparseArray);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    return 473;
+  }
+  
+  public Class<xfu> a()
+  {
+    return xfu.class;
+  }
+  
+  @NonNull
+  public xfu a(int paramInt)
+  {
+    return new xfu();
+  }
+  
+  @Nullable
+  public xfu a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    {
+      QLog.i("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
+      xfu localxfu = xfu.a(paramArrayOfampi[0].a);
+      if (localxfu == null)
+      {
+        QLog.e("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed error!");
+        return null;
+      }
+      String str = (String)xfr.a().a("KEY_VS_ENTRANCE_STYLE_MD5", "");
+      if ((!TextUtils.isEmpty(localxfu.b())) && (!localxfu.b().equals(str)))
+      {
+        xgj.a().a(localxfu);
+        a(localxfu.b(), paramArrayOfampi[0].a);
+      }
+      return localxfu;
+    }
+    QLog.e("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed conf content is null!");
+    return null;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(xfu paramxfu)
+  {
+    if (paramxfu != null) {
+      QLog.i("Q.videostory.config.VSEntranceStyleProcessor", 2, "onUpdate:" + paramxfu.toString());
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xfv
  * JD-Core Version:    0.7.0.1
  */

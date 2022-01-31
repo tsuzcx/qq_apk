@@ -1,72 +1,124 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.gamecenter.data.FullPopData;
-import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class apws
-  implements apxg
+public class apws
 {
-  public Context a;
-  public FrameLayout a;
-  public ImageView a;
-  public RelativeLayout a;
-  public FullPopData a;
-  public FullPopVideoView a;
-  private String a;
-  public boolean a;
-  public ImageView b;
-  private String b;
-  public boolean b;
-  public ImageView c;
-  private boolean c;
-  public ImageView d;
+  public static String b;
+  protected int a;
+  protected Object a;
+  protected int b;
+  protected long b;
+  protected Object b;
+  protected int c;
+  protected final long c;
+  protected Object c;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
   
-  public apws(Context paramContext, FullPopData paramFullPopData, String paramString1, String paramString2, boolean paramBoolean)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData = paramFullPopData;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    jdField_b_of_type_JavaLangString = "UniformDownloaderAssinfo<FileAssistant>";
   }
   
-  public void a()
+  public apws(long paramLong)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_b_of_type_JavaLangObject = new Object();
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_c_of_type_JavaLangObject = new Object();
+    this.jdField_c_of_type_Long = paramLong;
   }
   
-  public void a(boolean paramBoolean)
+  public int a(String paramString, Bundle paramBundle)
   {
-    if (paramBoolean) {}
-    for (String str = "205929";; str = "205927")
+    if (a()) {
+      return 0;
+    }
+    if ((paramString == null) || (paramBundle == null)) {
+      try
+      {
+        QLog.e(jdField_b_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. init param error");
+        return -1;
+      }
+      finally {}
+    }
+    this.jdField_c_of_type_JavaLangString = paramString;
+    this.e = paramBundle.getString("_PARAM_FILEPATH");
+    this.f = paramBundle.getString("_PARAM_TMP_FILEPATH");
+    this.d = paramBundle.getString("_PARAM_FILENAME");
+    this.jdField_b_of_type_Long = paramBundle.getLong("_PARAM_FILESIZE");
+    this.g = paramBundle.getString("_PARAM_COOKIE");
+    QLog.i(jdField_b_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] init. ST:" + e() + " PGR:" + h());
+    c(1);
+    return 0;
+  }
+  
+  protected void a(int paramInt)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      apyn.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, str, this.jdField_c_of_type_Boolean);
+      this.jdField_a_of_type_Int = paramInt;
       return;
     }
   }
   
-  public void a(View... paramVarArgs)
+  protected boolean a()
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length < 6)) {
+    return e() >= 1;
+  }
+  
+  protected void b(int paramInt)
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      this.jdField_b_of_type_Int = paramInt;
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramVarArgs[0]);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramVarArgs[1]);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs[2]);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs[3]);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs[4]);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView = ((FullPopVideoView)paramVarArgs[5]);
-    this.d = ((ImageView)paramVarArgs[6]);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setOnClickListener(new apwt(this));
+  }
+  
+  protected void c(int paramInt)
+  {
+    synchronized (this.jdField_c_of_type_JavaLangObject)
+    {
+      QLog.i(jdField_b_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] setStatus. " + this.jdField_c_of_type_Int + "->" + paramInt);
+      this.jdField_c_of_type_Int = paramInt;
+      return;
+    }
+  }
+  
+  public int e()
+  {
+    synchronized (this.jdField_c_of_type_JavaLangObject)
+    {
+      int i = this.jdField_c_of_type_Int;
+      return i;
+    }
+  }
+  
+  protected int g()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      int i = this.jdField_a_of_type_Int;
+      return i;
+    }
+  }
+  
+  public int h()
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      int i = this.jdField_b_of_type_Int;
+      return i;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apws
  * JD-Core Version:    0.7.0.1
  */

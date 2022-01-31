@@ -1,18 +1,35 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class bfxk
-  implements bfxo
+class bfxk
+  extends Handler
 {
-  public bfxk(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
-  
-  public void a()
+  public bfxk()
   {
-    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playAudioList(this.jdField_a_of_type_JavaLangString);
+    super(Looper.getMainLooper());
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (paramMessage.obj == null);
+      paramMessage = ((WeakReference)paramMessage.obj).get();
+    } while ((paramMessage == null) || (!(paramMessage instanceof bfxh)));
+    ((bfxh)paramMessage).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfxk
  * JD-Core Version:    0.7.0.1
  */

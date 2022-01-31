@@ -1,253 +1,221 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import org.json.JSONArray;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aucu
+  extends BaseAdapter
 {
-  public static final int a;
-  public float a;
-  public int[] a;
-  float jdField_b_of_type_Float = 0.05F;
-  int jdField_b_of_type_Int = 1;
-  int c = -1;
-  int d = -1;
-  int e = -1;
-  public int f;
-  public int g;
-  int h = 0;
-  int i = 0;
-  private int j;
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aucv(this);
+  aucx jdField_a_of_type_Aucx;
+  audh jdField_a_of_type_Audh = new audh();
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  List<aucw> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  static
+  public aucu(Context paramContext, QQAppInterface paramQQAppInterface, aucx paramaucx)
   {
-    jdField_a_of_type_Int = ListenChangeVoicePanel.jdField_a_of_type_ArrayOfInt.length;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Aucx = paramaucx;
   }
   
-  public aucu()
+  public void a()
   {
-    this.jdField_a_of_type_ArrayOfInt = new int[jdField_a_of_type_Int];
-    this.jdField_a_of_type_Float = 0.75F;
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime().getPreferences();
-    try
+    this.jdField_a_of_type_JavaUtilList.clear();
+    super.notifyDataSetChanged();
+  }
+  
+  public void a(audd paramaudd, List<aubd> paramList, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    a(paramaudd, paramList, paramBoolean1, paramBoolean2, false);
+  }
+  
+  public void a(audd paramaudd, List<aubd> paramList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    Object localObject1;
+    int i;
+    label68:
+    aubd localaubd;
+    Object localObject2;
+    if (paramBoolean1)
     {
-      localObject = ((SharedPreferences)localObject).getString("PttVoiceChangePreSender", "[]");
-      JSONArray localJSONArray = new JSONArray((String)localObject);
-      if (localJSONArray.length() == jdField_a_of_type_Int + 2)
+      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
       {
-        int k = 0;
-        while (k < jdField_a_of_type_Int)
+        localObject1 = (aucw)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1);
+        if (((aucw)localObject1).jdField_a_of_type_Int == 5) {
+          this.jdField_a_of_type_JavaUtilList.remove(localObject1);
+        }
+      }
+      i = 0;
+      localObject1 = null;
+      if (i >= paramList.size()) {
+        break label606;
+      }
+      localaubd = (aubd)paramList.get(i);
+      if (paramaudd.jdField_a_of_type_Int != 0) {
+        break label666;
+      }
+      localObject2 = new aucw(this);
+      ((aucw)localObject2).jdField_a_of_type_Int = 3;
+      if (!TextUtils.isEmpty(localaubd.jdField_a_of_type_JavaLangString))
+      {
+        ((aucw)localObject2).jdField_a_of_type_JavaLangObject = localaubd.jdField_a_of_type_JavaLangString;
+        ((aucw)localObject2).jdField_a_of_type_JavaLangString = localaubd.jdField_a_of_type_JavaLangString;
+      }
+      localObject1 = localObject2;
+    }
+    for (;;)
+    {
+      Object localObject3;
+      if (localaubd.jdField_a_of_type_JavaUtilList.size() != 0)
+      {
+        if ((paramaudd.jdField_a_of_type_Int == 0) && (paramBoolean3))
         {
-          this.jdField_a_of_type_ArrayOfInt[k] = localJSONArray.getInt(k);
-          k += 1;
+          if (i != 0)
+          {
+            localObject3 = new aucw(this);
+            ((aucw)localObject3).jdField_a_of_type_Int = 2;
+            this.jdField_a_of_type_JavaUtilList.add(localObject3);
+          }
+          this.jdField_a_of_type_JavaUtilList.add(localObject2);
+          localObject2 = new aucw(this);
+          ((aucw)localObject2).jdField_a_of_type_Int = 1;
+          this.jdField_a_of_type_JavaUtilList.add(localObject2);
         }
-        this.f = localJSONArray.getInt(jdField_a_of_type_Int);
-        this.g = localJSONArray.getInt(jdField_a_of_type_Int + 1);
+        int j = 0;
+        for (;;)
+        {
+          if (j < localaubd.jdField_a_of_type_JavaUtilList.size())
+          {
+            localObject2 = (aube)localaubd.jdField_a_of_type_JavaUtilList.get(j);
+            localObject3 = new aucw(this);
+            ((aucw)localObject3).jdField_a_of_type_Int = 0;
+            ((aucw)localObject3).jdField_a_of_type_JavaLangObject = ((aube)localObject2).jdField_a_of_type_JavaLangObject;
+            ((aucw)localObject3).jdField_a_of_type_JavaLangString = localaubd.jdField_a_of_type_JavaLangString;
+            ((aucw)localObject3).jdField_b_of_type_Int = localaubd.jdField_a_of_type_Int;
+            ((aucw)localObject3).jdField_c_of_type_Int = j;
+            this.jdField_a_of_type_JavaUtilList.add(localObject3);
+            if (j != localaubd.jdField_a_of_type_JavaUtilList.size() - 1)
+            {
+              localObject2 = new aucw(this);
+              ((aucw)localObject2).jdField_a_of_type_Int = 1;
+              this.jdField_a_of_type_JavaUtilList.add(localObject2);
+            }
+            j += 1;
+            continue;
+            this.jdField_a_of_type_JavaUtilList.clear();
+            break;
+          }
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PttInfoCollector", 2, "get send record " + (String)localObject);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      this.jdField_a_of_type_ArrayOfInt = new int[jdField_a_of_type_Int];
-      this.f = 0;
-      this.g = 0;
-      localException.printStackTrace();
-    }
-  }
-  
-  private float a(int paramInt)
-  {
-    return this.jdField_a_of_type_ArrayOfInt[paramInt] / this.f;
-  }
-  
-  private void a()
-  {
-    Object localObject1 = new JSONArray();
-    Object localObject2 = this.jdField_a_of_type_ArrayOfInt;
-    int m = localObject2.length;
-    int k = 0;
-    while (k < m)
-    {
-      ((JSONArray)localObject1).put(localObject2[k]);
-      k += 1;
-    }
-    ((JSONArray)localObject1).put(this.f);
-    ((JSONArray)localObject1).put(this.g);
-    localObject2 = BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit();
-    localObject1 = ((JSONArray)localObject1).toString();
-    ((SharedPreferences.Editor)localObject2).putString("PttVoiceChangePreSender", (String)localObject1);
-    ((SharedPreferences.Editor)localObject2).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("PttInfoCollector", 2, "save send record " + (String)localObject1);
-    }
-  }
-  
-  private int c()
-  {
-    int k = 0;
-    int i1 = 0;
-    int n;
-    for (int m = 0; k < jdField_a_of_type_Int; m = n)
-    {
-      n = m;
-      if (m < this.jdField_a_of_type_ArrayOfInt[k])
+      if ((!TextUtils.isEmpty(localaubd.jdField_b_of_type_JavaLangString)) && (paramaudd.jdField_a_of_type_Int == 0))
       {
-        n = this.jdField_a_of_type_ArrayOfInt[k];
-        i1 = k;
+        localObject2 = localaubd.jdField_b_of_type_JavaLangString;
+        localObject3 = localaubd.jdField_c_of_type_JavaLangString;
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          localObject2 = new aucw(this);
+          ((aucw)localObject2).jdField_a_of_type_Int = 1;
+          this.jdField_a_of_type_JavaUtilList.add(localObject2);
+          localObject2 = new aucw(this);
+          ((aucw)localObject2).jdField_a_of_type_Int = 4;
+          ((aucw)localObject2).jdField_c_of_type_JavaLangString = localaubd.jdField_b_of_type_JavaLangString;
+          ((aucw)localObject2).jdField_a_of_type_JavaLangString = localaubd.jdField_a_of_type_JavaLangString;
+          ((aucw)localObject2).jdField_b_of_type_JavaLangString = localaubd.jdField_c_of_type_JavaLangString;
+          ((aucw)localObject2).jdField_b_of_type_Int = localaubd.jdField_a_of_type_Int;
+          ((aucw)localObject2).jdField_a_of_type_Boolean = true;
+          this.jdField_a_of_type_JavaUtilList.add(localObject2);
+          if (localObject1 != null)
+          {
+            ((aucw)localObject1).jdField_b_of_type_JavaLangString = localaubd.jdField_c_of_type_JavaLangString;
+            ((aucw)localObject1).jdField_c_of_type_JavaLangString = localaubd.jdField_b_of_type_JavaLangString;
+            ((aucw)localObject1).jdField_b_of_type_Int = localaubd.jdField_a_of_type_Int;
+            ((aucw)localObject1).jdField_a_of_type_Boolean = true;
+          }
+        }
       }
-      k += 1;
+      i += 1;
+      break label68;
+      label606:
+      paramaudd = new aucw(this);
+      paramaudd.jdField_a_of_type_Int = 1;
+      this.jdField_a_of_type_JavaUtilList.add(paramaudd);
+      if (paramBoolean2)
+      {
+        paramaudd = new aucw(this);
+        paramaudd.jdField_a_of_type_Int = 5;
+        this.jdField_a_of_type_JavaUtilList.add(paramaudd);
+      }
+      super.notifyDataSetChanged();
+      return;
+      label666:
+      localObject2 = null;
     }
-    return i1;
   }
   
-  public int a()
+  public int getCount()
   {
-    if (this.f < 5)
-    {
-      this.d = -1;
-      return -1;
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= getCount())) {
+      return null;
     }
-    if ((this.jdField_b_of_type_Int >= 2) && (this.c >= 0))
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return ((aucw)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      return null;
+    }
+    aucw localaucw = (aucw)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject;
+    if (localaucw.jdField_a_of_type_Int == 0)
     {
-      this.d = this.c;
-      this.h = 1;
+      localObject = (aude)this.jdField_a_of_type_Audh.a(0);
+      ((aude)localObject).a(paramViewGroup);
+      localObject = ((aude)localObject).a(paramInt, paramView, paramViewGroup, this, localaucw);
+      ((View)localObject).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PttInfoCollector", 2, "pre-send type " + this.d);
-      }
-      return this.d;
-      int k = c();
-      if (a(k) >= this.jdField_a_of_type_Float)
-      {
-        this.d = k;
-        this.h = 2;
-      }
-      else if ((this.c >= 0) && (this.g / this.f > 0.8D))
-      {
-        this.d = this.c;
-        this.h = 3;
-      }
-      else
-      {
-        this.d = -1;
-        this.h = -1;
+      ((View)localObject).setTag(localaucw);
+      return localObject;
+      localObject = paramView;
+      if (localaucw.jdField_a_of_type_Int == 1) {
+        localObject = ((audb)this.jdField_a_of_type_Audh.a(1)).a(paramInt, paramView, paramViewGroup, this, localaucw);
       }
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
+  public int getViewTypeCount()
   {
-    a();
-    if (this.d != -1)
-    {
-      awqx.b(paramQQAppInterface, "CliOper", "", "", "0X800608D", "0X800608D", this.h + 10, 0, this.d + "", paramInt + "", "", "8.2.6");
-      if (this.h == 2)
-      {
-        if (this.d != paramInt) {
-          break label235;
-        }
-        this.jdField_a_of_type_Float -= this.jdField_a_of_type_Float * this.jdField_b_of_type_Float;
-        if (this.jdField_a_of_type_Float >= 0.55F) {
-          break label258;
-        }
-        f1 = 0.55F;
-        label127:
-        this.jdField_a_of_type_Float = f1;
-        if (this.jdField_a_of_type_Float <= 0.9F) {
-          break label266;
-        }
-      }
-    }
-    label258:
-    label266:
-    for (float f1 = 0.9F;; f1 = this.jdField_a_of_type_Float)
-    {
-      this.jdField_a_of_type_Float = f1;
-      b();
-      if (this.e != -1) {
-        awqx.b(paramQQAppInterface, "CliOper", "", "", "0X800608D", "0X800608D", this.i + 20, 0, this.e + "", paramInt + "", "", "8.2.6");
-      }
-      if (paramInt >= 0) {
-        break label274;
-      }
-      return;
-      label235:
-      this.jdField_a_of_type_Float += (1.0F - this.jdField_a_of_type_Float) * this.jdField_b_of_type_Float;
-      break;
-      f1 = this.jdField_a_of_type_Float;
-      break label127;
-    }
-    label274:
-    if (paramInt == this.c)
-    {
-      this.jdField_b_of_type_Int += 1;
-      this.g += 1;
-    }
-    for (;;)
-    {
-      this.c = paramInt;
-      paramQQAppInterface = this.jdField_a_of_type_ArrayOfInt;
-      paramQQAppInterface[paramInt] += 1;
-      this.f += 1;
-      this.j += 1;
-      if (this.j % 5 == 0) {
-        a();
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("PttInfoCollector", 2, "real send type " + paramInt);
-      return;
-      this.jdField_b_of_type_Int = 1;
-    }
-  }
-  
-  public int b()
-  {
-    if ((this.c == -1) || (this.f < 5))
-    {
-      this.e = -1;
-      return -1;
-    }
-    if (this.jdField_b_of_type_Int >= 2)
-    {
-      this.e = this.c;
-      this.i = 1;
-    }
-    for (;;)
-    {
-      return this.e;
-      int k = c();
-      if (this.c == k)
-      {
-        this.e = this.c;
-        this.i = 2;
-      }
-      else if (this.g / this.f > 0.85D)
-      {
-        this.e = this.c;
-        this.i = 3;
-      }
-      else
-      {
-        this.e = -1;
-        this.i = -1;
-      }
-    }
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aucu
  * JD-Core Version:    0.7.0.1
  */

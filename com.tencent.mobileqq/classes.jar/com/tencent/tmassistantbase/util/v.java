@@ -1,61 +1,103 @@
 package com.tencent.tmassistantbase.util;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Build;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 
-public final class v
+public class v
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public int g;
-  public int h;
-  public int i;
+  protected static String b = "NA";
+  protected Context a = null;
   
-  private String b()
+  public v(Context paramContext)
+  {
+    this.a = paramContext;
+  }
+  
+  private StringBuffer a(String paramString)
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("0");
-    localStringBuffer.append(this.b.subSequence(0, 1));
-    localStringBuffer.append(this.c);
+    if (TextUtils.isEmpty(paramString))
+    {
+      localStringBuffer.append("NA");
+      return localStringBuffer;
+    }
+    paramString = paramString.toCharArray();
+    int i = 0;
+    while (i < paramString.length)
+    {
+      if ((paramString[i] > ' ') && (paramString[i] != '/') && (paramString[i] != '_') && (paramString[i] != '&') && (paramString[i] != '|') && (paramString[i] != '-')) {
+        localStringBuffer.append(paramString[i]);
+      }
+      i += 1;
+    }
+    return localStringBuffer;
+  }
+  
+  public static String b()
+  {
+    if ("1002".contains("BuildNo")) {
+      return "0000";
+    }
+    return "1002";
+  }
+  
+  private int c()
+  {
+    return this.a.getResources().getDisplayMetrics().widthPixels;
+  }
+  
+  private int d()
+  {
+    return this.a.getResources().getDisplayMetrics().heightPixels;
+  }
+  
+  private int e()
+  {
+    return 0;
+  }
+  
+  private String f()
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(a(Build.BRAND));
+    localStringBuffer.append("_");
+    localStringBuffer.append(a(Build.MODEL));
     return localStringBuffer.toString();
+  }
+  
+  private String g()
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    String str = Build.VERSION.RELEASE;
+    if (TextUtils.isEmpty(str)) {
+      localStringBuffer.append("NA");
+    }
+    for (;;)
+    {
+      localStringBuffer.append("_");
+      localStringBuffer.append(Build.VERSION.SDK_INT);
+      return localStringBuffer.toString();
+      localStringBuffer.append(str);
+    }
   }
   
   public String a()
   {
-    String str = b();
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("TMASDK_");
-    localStringBuffer.append(this.b);
-    if (!TextUtils.isEmpty(this.d))
-    {
-      localStringBuffer.append("_");
-      localStringBuffer.append(this.d);
-    }
-    localStringBuffer.append("/");
-    localStringBuffer.append(str);
-    localStringBuffer.append("&NA/");
-    localStringBuffer.append(str);
-    localStringBuffer.append("&");
-    localStringBuffer.append(this.f);
-    localStringBuffer.append("_");
-    localStringBuffer.append(this.i);
-    localStringBuffer.append("&");
-    localStringBuffer.append(this.g / 16);
-    localStringBuffer.append("_");
-    localStringBuffer.append(this.h / 16);
-    localStringBuffer.append("_");
-    localStringBuffer.append("14&");
-    localStringBuffer.append(this.a);
-    localStringBuffer.append("&");
-    localStringBuffer.append(this.e);
-    localStringBuffer.append("&");
-    localStringBuffer.append("NA");
-    localStringBuffer.append("&");
-    localStringBuffer.append("V3");
-    return localStringBuffer.toString();
+    u localu = new u();
+    localu.c = b();
+    localu.d = "";
+    localu.e = b;
+    localu.f = g();
+    localu.h = d();
+    localu.g = c();
+    localu.i = e();
+    localu.a = f();
+    localu.b = "1002";
+    return localu.a();
   }
 }
 

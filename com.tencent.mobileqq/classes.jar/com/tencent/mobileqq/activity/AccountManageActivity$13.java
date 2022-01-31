@@ -4,9 +4,9 @@ import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import axat;
-import azwp;
-import babh;
+import ayav;
+import baxt;
+import bbcl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.SubAccountInfo;
 import com.tencent.qphone.base.remote.SimpleAccount;
@@ -36,13 +36,13 @@ class AccountManageActivity$13
         }
         if ((!AccountManageActivity.a(this.this$0).containsKey(this.jdField_a_of_type_JavaLangString)) || (AccountManageActivity.a(this.this$0).get(this.jdField_a_of_type_JavaLangString) == null))
         {
-          azwp localazwp = azwp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, (byte)3);
-          String str2 = babh.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-          localObject2 = (axat)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(61);
+          baxt localbaxt = baxt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, (byte)3);
+          String str2 = bbcl.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+          localObject2 = (ayav)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(61);
           if (localObject2 == null) {
             break label349;
           }
-          localObject2 = ((axat)localObject2).a(this.jdField_a_of_type_JavaLangString);
+          localObject2 = ((ayav)localObject2).a(this.jdField_a_of_type_JavaLangString);
           String str1;
           if (!this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.isLogined())
           {
@@ -64,7 +64,7 @@ class AccountManageActivity$13
           }
           else
           {
-            str1 = babh.i(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+            str1 = bbcl.i(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
           }
           boolean bool1 = bool2;
           if (!TextUtils.isEmpty(str1))
@@ -74,10 +74,10 @@ class AccountManageActivity$13
               bool1 = true;
             }
           }
-          if ((localazwp instanceof azwp)) {
-            ((azwp)localazwp).a(false);
+          if ((localbaxt instanceof baxt)) {
+            ((baxt)localbaxt).a(false);
           }
-          this.this$0.runOnUiThread(new AccountManageActivity.13.1(this, bool1, str1, localBitmap, localazwp));
+          this.this$0.runOnUiThread(new AccountManageActivity.13.1(this, bool1, str1, localBitmap, localbaxt));
           return;
         }
       }
@@ -87,7 +87,7 @@ class AccountManageActivity$13
         return;
       }
       Bitmap localBitmap = (Bitmap)AccountManageActivity.a(this.this$0).get(this.jdField_a_of_type_JavaLangString);
-      azwp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, (byte)3);
+      baxt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, (byte)3);
       Object localObject1 = null;
       continue;
       label327:

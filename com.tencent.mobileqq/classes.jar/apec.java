@@ -1,18 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
+import com.tencent.weiyun.transmission.upload.UploadManager;
+import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
 
-final class apec
-  implements View.OnClickListener
+public class apec
 {
-  apec(QQAppInterface paramQQAppInterface, String paramString, apee paramapee, amln paramamln) {}
+  private final biel jdField_a_of_type_Biel;
+  private final UploadManager.IUploadStatusListener jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadManager$IUploadStatusListener;
+  private final Object jdField_a_of_type_JavaLangObject;
+  private final String jdField_a_of_type_JavaLangString;
+  private final boolean jdField_a_of_type_Boolean;
+  private String b;
   
-  public void onClick(View paramView)
+  public apec(String paramString, Object paramObject, boolean paramBoolean, UploadManager.IUploadStatusListener paramIUploadStatusListener, biel parambiel)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadManager$IUploadStatusListener = paramIUploadStatusListener;
+    this.jdField_a_of_type_Biel = parambiel;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      WeiyunTransmissionGlobal.getInstance().getUploadManager().removeJob(this.jdField_a_of_type_JavaLangString);
+      return;
     }
-    this.jdField_a_of_type_Apee.a(this.jdField_a_of_type_Amln.b());
+    bidy.a().a(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(String paramString)
+  {
+    this.b = paramString;
   }
 }
 

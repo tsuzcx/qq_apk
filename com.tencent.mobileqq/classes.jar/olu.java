@@ -1,22 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class olu
-  implements TVK_IMediaPlayer.OnSeekCompleteListener
+class olu
+  implements ViewBase.OnClickListener
 {
-  public olu(VideoView paramVideoView) {}
+  olu(ols paramols) {}
   
-  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (VideoView.a(this.a) != null) {
-      VideoView.a(this.a).start();
+    if (this.a.a != null) {
+      olr.a(this.a.a, paramViewBase);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     olu
  * JD-Core Version:    0.7.0.1
  */

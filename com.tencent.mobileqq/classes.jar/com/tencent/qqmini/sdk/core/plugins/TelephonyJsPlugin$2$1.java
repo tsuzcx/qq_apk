@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.view.View;
-import bdfz;
-import bdje;
-import bdjj;
-import bdnw;
+import beka;
+import benh;
+import benm;
+import besl;
 
 class TelephonyJsPlugin$2$1
-  implements bdjj
+  implements benm
 {
-  TelephonyJsPlugin$2$1(TelephonyJsPlugin.2 param2, bdje parambdje) {}
+  TelephonyJsPlugin$2$1(TelephonyJsPlugin.2 param2, benh parambenh) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -29,7 +29,7 @@ class TelephonyJsPlugin$2$1
     }
     catch (Exception paramView)
     {
-      bdnw.d("TelephonyJsPlugin", this.this$1.val$req.a + " error.", paramView);
+      besl.d("TelephonyJsPlugin", this.this$1.val$req.a + " error.", paramView);
     }
   }
 }

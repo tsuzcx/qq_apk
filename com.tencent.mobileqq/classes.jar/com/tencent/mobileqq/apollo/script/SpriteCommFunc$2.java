@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.apollo.script;
 
-import aisj;
-import aisk;
+import ajfh;
 
 public final class SpriteCommFunc$2
   implements Runnable
 {
-  public SpriteCommFunc$2(aisj paramaisj, aisk paramaisk) {}
+  public SpriteCommFunc$2(ajfh paramajfh, SpriteTaskParam paramSpriteTaskParam) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aisj != null) {
-      this.jdField_a_of_type_Aisj.b(this.jdField_a_of_type_Aisk);
+    if (this.jdField_a_of_type_Ajfh != null) {
+      this.jdField_a_of_type_Ajfh.b(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam);
     }
   }
 }

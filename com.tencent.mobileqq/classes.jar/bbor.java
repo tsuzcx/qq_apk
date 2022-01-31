@@ -1,64 +1,54 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bbor
-  implements ValueAnimator.AnimatorUpdateListener
+class bbor
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  float jdField_a_of_type_Float = 0.0F;
-  private final TabDragAnimationView jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView;
-  float b = 0.0F;
-  private float c;
-  private float d;
-  private float e;
-  private float f;
+  bbor(bbop parambbop) {}
   
-  public bbor(TabDragAnimationView paramTabDragAnimationView)
+  public void onAudioFocusChange(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = paramTabDragAnimationView;
-  }
-  
-  public void a()
-  {
-    this.c = this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c;
-    this.jdField_d_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.jdField_d_of_type_Float;
-    this.e = (this.c - this.jdField_a_of_type_Float);
-    this.f = (this.jdField_d_of_type_Float - this.b);
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f2 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if ((f2 < 0.1F) && (this.jdField_a_of_type_Float == 0.0F) && (this.b == 0.0F))
+    if (paramInt == -2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.jdField_d_of_type_Int = 1;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
-      paramValueAnimator.cancel();
-      paramValueAnimator.removeUpdateListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.a = null;
-      return;
-    }
-    float f1;
-    if (f2 < 0.1F)
-    {
-      f1 = this.e;
-      if (f2 >= 0.1F) {
-        break label126;
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorRingPlayer", 2, "transient focus loss.");
+      }
+      synchronized (this.a.a)
+      {
+        if (this.a.a.a == 4) {
+          this.a.a();
+        }
+        return;
       }
     }
-    label126:
-    for (f2 = this.f;; f2 = this.f * (1.0F - f2))
+    if (paramInt == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.a(this.c - f1, this.jdField_d_of_type_Float - f2, false);
-      return;
-      f1 = this.e * (1.0F - f2);
-      break;
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorRingPlayer", 2, "gained focus");
+      }
+      if (this.a.b)
+      {
+        this.a.c();
+        this.a.b = false;
+      }
+    }
+    else if (paramInt == -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorRingPlayer", 2, "Audio focus Loss");
+      }
+      this.a.b();
+      synchronized (this.a.a)
+      {
+        this.a.a.a = 6;
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbor
  * JD-Core Version:    0.7.0.1
  */

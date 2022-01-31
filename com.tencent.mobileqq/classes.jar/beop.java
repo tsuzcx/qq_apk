@@ -1,12 +1,16 @@
-import com.tencent.widget.VerticalGallery;
+import android.view.animation.Interpolator;
 
-public abstract interface beop
+public class beop
+  implements Interpolator
 {
-  public abstract void b(VerticalGallery paramVerticalGallery);
+  public float getInterpolation(float paramFloat)
+  {
+    return (float)Math.tan((paramFloat * 2.0F - 1.0F) / 4.0F * 3.141592653589793D) / 2.0F + 0.5F;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beop
  * JD-Core Version:    0.7.0.1
  */

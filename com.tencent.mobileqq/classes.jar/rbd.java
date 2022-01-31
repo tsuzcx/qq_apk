@@ -1,29 +1,37 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.26.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
 import com.tencent.qphone.base.util.QLog;
 
-class rbd
-  implements wiu
+public class rbd
+  implements rbz
 {
-  rbd(rbc paramrbc) {}
+  rbd(rap paramrap) {}
   
-  public void a(Bundle paramBundle)
+  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView)
   {
-    int i = paramBundle.getInt("readinjoy_to_wx_config");
-    if (QLog.isColorLevel()) {
-      QLog.d("", 2, "config = " + i);
+    rap.d(this.a, false);
+    if (!rap.c(this.a)) {
+      return;
     }
-    if (i == 0) {
-      WxShareHelperFromReadInjoy.a().a(rbc.b(this.a), rbc.a(this.a), 0, false);
+    rap.a(this.a, false);
+    if ((this.a.a()) && (rap.a(this.a) != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.video", 2, "onDrawFinish checkplayable!");
+      }
+      if (!rap.a(this.a).b()) {
+        break label122;
+      }
+      rap.a(this.a).postDelayed(new ReadInJoyBaseAdapter.26.1(this, paramReadInJoyBaseListView), 1200L);
     }
     for (;;)
     {
-      rbc.a(this.a).recycle();
-      rbc.a(this.a, null);
+      rap.a(this.a, this.a.a.getLastVisiblePosition() + 1, rap.c());
       return;
-      WXShareHelper.a().a(rbc.b(this.a), rbc.a(this.a), 0, false);
+      label122:
+      this.a.a(paramReadInJoyBaseListView, rap.b);
     }
   }
 }

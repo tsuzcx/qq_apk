@@ -1,191 +1,104 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.webviewplugin.UrlCheckPlugin.1;
-import com.tencent.biz.webviewplugin.UrlCheckPlugin.4;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.mp.mobileqq_mp.ButtonInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.ArrayList;
+import java.util.List;
 
 public class xee
-  extends WebViewPlugin
 {
-  public static int a;
-  public static int b = 1;
-  public static int c = 2;
-  public static int d = 3;
-  WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams = null;
-  WindowManager jdField_a_of_type_AndroidViewWindowManager = null;
-  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  CustomWebView jdField_a_of_type_ComTencentBizPubaccountCustomWebView = null;
-  BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity = null;
-  public Runnable a;
-  public mmo a;
-  boolean jdField_a_of_type_Boolean = false;
-  public int e = jdField_a_of_type_Int;
-  int f = 0;
-  int g = 0;
-  int h = 0;
+  private int jdField_a_of_type_Int;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  String jdField_a_of_type_JavaLangString;
+  private List<xee> jdField_a_of_type_JavaUtilList;
+  String b;
+  String c;
+  String d;
+  private String e;
+  private String f;
   
-  public xee()
+  public xee(String paramString1, String paramString2, Drawable paramDrawable, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new UrlCheckPlugin.4(this);
-    this.mPluginNameSpace = "URL_CHECK";
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.e = paramString2;
+    this.f = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private void b()
+  public int a()
   {
-    if (this.jdField_a_of_type_Mmo == null) {
-      this.jdField_a_of_type_Mmo = new mmo(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView, new xef(this));
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Drawable a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  }
+  
+  public String a()
+  {
+    return this.e;
+  }
+  
+  public xee a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return null;
+    }
+    return (xee)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(mobileqq_mp.ButtonInfo paramButtonInfo)
+  {
+    if (paramButtonInfo.logo_url.has()) {
+      this.jdField_a_of_type_JavaLangString = paramButtonInfo.logo_url.get();
+    }
+    if (paramButtonInfo.texture_url.has()) {
+      this.d = paramButtonInfo.texture_url.get();
+    }
+    if (paramButtonInfo.bg_colors.has())
+    {
+      paramButtonInfo = paramButtonInfo.bg_colors.get().split("\\|");
+      if (paramButtonInfo.length > 0) {
+        this.b = paramButtonInfo[0];
+      }
+      if (paramButtonInfo.length > 1) {
+        this.c = paramButtonInfo[1];
+      }
     }
   }
   
-  public void a()
+  public void a(xee paramxee)
   {
-    Object localObject = this.mRuntime.a();
-    if ((localObject != null) && (!((Activity)localObject).isFinishing()) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.e == c))
-    {
-      localObject = ((Activity)localObject).getWindowManager();
-      this.e = d;
-    }
-    try
-    {
-      ((WindowManager)localObject).removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    if (paramxee == null) {
       return;
     }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(this.TAG, 2, "removeView Error:" + localIllegalArgumentException.getMessage());
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
     }
+    this.jdField_a_of_type_JavaUtilList.add(paramxee);
   }
   
-  public void a(int paramInt)
+  public boolean a()
   {
-    Object localObject = this.mRuntime.a();
-    if (!(localObject instanceof BaseActivity)) {}
-    for (;;)
-    {
-      return;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView == null) {
-        continue;
-      }
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = ((BaseActivity)localObject);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getLayoutInflater().inflate(2131493367, null));
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131311708));
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131311702));
-        this.jdField_a_of_type_AndroidViewWindowManager = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindowManager();
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
-      }
-      try
-      {
-        i = Resources.getSystem().getDimensionPixelSize(Resources.getSystem().getIdentifier("status_bar_height", "dimen", "android"));
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 49;
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = (i + this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 1002;
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.format = 1;
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 262664;
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = -1;
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = -2;
-        if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-          this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new xeg(this));
-        }
-        if (this.jdField_a_of_type_AndroidViewWindowManager == null) {
-          this.jdField_a_of_type_AndroidViewWindowManager = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindowManager();
-        }
-        if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getText(paramInt));
-        }
-        this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.h + this.g);
-        this.e = c;
-        try
-        {
-          this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-          return;
-        }
-        catch (Exception localException1) {}
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e(this.TAG, 2, "addView exception:" + localException1.getMessage());
-        return;
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          int i = (int)(localException1.getDisplayMetrics().density * 25.0F + 0.5D);
-        }
-      }
+    return this.jdField_a_of_type_JavaUtilList != null;
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public String b()
   {
-    this.f = paramInt1;
-    this.g = paramInt2;
-    this.h = paramInt3;
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = this.mRuntime.a();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          paramString = this.mRuntime.a();
-        } while (!(paramString instanceof BaseActivity));
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = ((BaseActivity)paramString);
-        b();
-        if (paramLong != 8589934597L) {
-          break;
-        }
-        if (this.jdField_a_of_type_Mmo != null)
-        {
-          this.jdField_a_of_type_Mmo.a();
-          this.jdField_a_of_type_Mmo = null;
-        }
-      } while ((this.e != c) || (this.jdField_a_of_type_AndroidWidgetImageView == null));
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(null);
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      a();
-      return false;
-    } while ((paramLong != 8589934594L) || (this.f != 2) || (this.e == c));
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.postDelayed(new UrlCheckPlugin.1(this), this.g);
-    return false;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_Mmo != null)
-    {
-      this.jdField_a_of_type_Mmo.a();
-      this.jdField_a_of_type_Mmo = null;
-    }
-    super.onDestroy();
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xee
  * JD-Core Version:    0.7.0.1
  */

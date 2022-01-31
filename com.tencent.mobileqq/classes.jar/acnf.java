@@ -1,37 +1,55 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
 
-final class acnf
-  implements bfof
+public class acnf
+  implements DialogInterface.OnClickListener
 {
-  acnf(int paramInt1, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, int paramInt2, String paramString, Activity paramActivity) {}
+  public acnf(TroopTransferActivity paramTroopTransferActivity, String paramString, bbgg parambbgg) {}
   
-  public void a(int paramInt, String... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null))
+    if (!bbev.d(BaseApplication.getContext()))
     {
-      QLog.i("PlusPanelUtils", 2, "error get pskey...");
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Bcpt == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Bcpt = new bcpt(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Bcpt.b(2, 2131692321, 1000);
       return;
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("pskey_type", "27");
-    localHashMap.put("pskey", paramVarArgs[0]);
-    localHashMap.put("recv_group_type", this.jdField_a_of_type_Int + "");
-    localHashMap.put("recv_group_id", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    localHashMap.put("send_nickname", babh.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()));
-    localHashMap.put("send_uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-    localHashMap.put("group_count", this.b + "");
-    paramVarArgs = bfod.a(this.jdField_a_of_type_JavaLangString, localHashMap, true);
-    agwi.a(this.jdField_a_of_type_AndroidAppActivity, paramVarArgs);
+    paramDialogInterface = (akhq)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.a(20);
+    if (paramDialogInterface != null) {}
+    try
+    {
+      long l1 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_JavaLangString);
+      long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getCurrentAccountUin());
+      long l3 = Long.parseLong(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Boolean = true;
+      paramDialogInterface.a(l1, l2, l3);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Bcpt == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Bcpt = new bcpt(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Bcpt.b(0, 2131720384, 1000);
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopdisband.transfer", 2, paramDialogInterface.toString());
+        }
+      }
+    }
+    this.jdField_a_of_type_Bbgg.cancel();
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app, "CliOper", "", "", "Grp", "Transgrp_OK", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acnf
  * JD-Core Version:    0.7.0.1
  */

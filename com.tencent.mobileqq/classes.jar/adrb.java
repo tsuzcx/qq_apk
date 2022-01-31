@@ -1,40 +1,18 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.qphone.base.util.QLog;
 
 class adrb
-  implements View.OnClickListener
+  implements aput
 {
-  adrb(adra paramadra) {}
+  adrb(adqy paramadqy) {}
   
   public void onClick(View paramView)
   {
-    Object localObject = aciy.a(paramView);
-    if (!(localObject instanceof MessageForText)) {
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        localObject = (MessageForText)localObject;
-      } while (this.a.a());
-      if (((MessageForText)localObject).msgtype == -1003)
-      {
-        aciy.n = true;
-        localObject = bakz.a(((MessageForText)localObject).action);
-        localObject = bade.a(this.a.a, paramView.getContext(), (String)localObject);
-        if (localObject != null) {
-          ((bacn)localObject).c();
-        }
-      }
-    } while (!(paramView instanceof ETTextView));
-    ((ETTextView)paramView).a(true, false);
+    paramView = bbcv.a(this.a.a, 230);
+    paramView.setTitle(2131691555);
+    paramView.setMessage(2131691556);
+    paramView.setNegativeButton(2131690596, new adrc(this, paramView));
+    paramView.setPositiveButton(2131694793, new adrd(this));
+    paramView.show();
   }
 }
 

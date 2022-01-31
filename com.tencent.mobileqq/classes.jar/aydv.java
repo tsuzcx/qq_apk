@@ -1,31 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.troop.activity.TroopAdminList;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class aydv
-  extends ajjh
+  extends ayki
 {
-  public aydv(TroopAdminList paramTroopAdminList) {}
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public aydv(CharSequence paramCharSequence, int paramInt)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
-      this.a.c();
-    }
+    super(paramCharSequence, paramInt);
   }
   
-  protected void onUpdateFriendInfoFinished(ArrayList paramArrayList, boolean paramBoolean)
+  protected void a(View paramView, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopAdminList", 2, "onUpdateFriendInfoFinished ");
+    paramString = Uri.parse(paramString);
+    paramView = paramView.getContext();
+    paramString = new Intent("android.intent.action.VIEW", paramString);
+    paramString.putExtra("com.android.browser.application_id", paramView.getPackageName());
+    try
+    {
+      paramView.startActivity(paramString);
+      return;
     }
-    this.a.c();
+    catch (ActivityNotFoundException paramView)
+    {
+      QLog.w("OpenDefaultBrowserQQText", 1, "Activity was not found for intent, " + paramString.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aydv
  * JD-Core Version:    0.7.0.1
  */

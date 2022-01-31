@@ -12,8 +12,10 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bdig;
-import bdyn;
+import bemj;
+import bffu;
+import com.tencent.qqmini.sdk.core.proxy.KingCardProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import java.util.HashMap;
 
 public class CapsuleButton
@@ -24,7 +26,7 @@ public class CapsuleButton
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private bdig jdField_a_of_type_Bdig;
+  private bemj jdField_a_of_type_Bemj;
   public HashMap<String, Integer> a;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
@@ -41,23 +43,23 @@ public class CapsuleButton
   private View a()
   {
     Object localObject = new ImageView(getContext());
-    ((ImageView)localObject).setId(2131304593);
+    ((ImageView)localObject).setId(2131370278);
     ((ImageView)localObject).setContentDescription("更多");
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(bdyn.a(getContext(), 40.0F), -1);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(bffu.a(getContext(), 40.0F), -1);
     localLayoutParams.addRule(9, -1);
     ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     addView((View)localObject, localLayoutParams);
     localObject = new ImageView(getContext());
-    ((ImageView)localObject).setId(2131304591);
+    ((ImageView)localObject).setId(2131370276);
     ((ImageView)localObject).setContentDescription("关闭");
-    localLayoutParams = new RelativeLayout.LayoutParams(bdyn.a(getContext(), 40.0F), -1);
+    localLayoutParams = new RelativeLayout.LayoutParams(bffu.a(getContext(), 40.0F), -1);
     localLayoutParams.addRule(11, -1);
-    localLayoutParams.addRule(1, 2131304593);
+    localLayoutParams.addRule(1, 2131370278);
     ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     addView((View)localObject, localLayoutParams);
     localObject = new View(getContext());
-    ((View)localObject).setId(2131304592);
-    localLayoutParams = new RelativeLayout.LayoutParams(bdyn.a(getContext(), 0.5F), bdyn.a(getContext(), 18.0F));
+    ((View)localObject).setId(2131370277);
+    localLayoutParams = new RelativeLayout.LayoutParams(bffu.a(getContext(), 0.5F), bffu.a(getContext(), 18.0F));
     localLayoutParams.addRule(13, -1);
     ((View)localObject).setBackgroundColor(436207616);
     addView((View)localObject, localLayoutParams);
@@ -68,20 +70,35 @@ public class CapsuleButton
   {
     setClipChildren(false);
     a();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131304593));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131304591));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131304592);
+    this.jdField_a_of_type_AndroidWidgetImageView = b();
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370276));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370277);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840794);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840788);
-    this.c = getResources().getDrawable(2130840791);
-    this.d = getResources().getDrawable(2130840785);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840849);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840843);
+    this.c = getResources().getDrawable(2130840846);
+    this.d = getResources().getDrawable(2130840840);
   }
   
-  public CapsuleButton a(bdig parambdig)
+  private ImageView b()
   {
-    this.jdField_a_of_type_Bdig = parambdig;
+    ImageView localImageView = ((KingCardProxy)ProxyManager.get(KingCardProxy.class)).getCapsuleButtonMoreView(getContext());
+    if (localImageView == null) {
+      return (ImageView)findViewById(2131370278);
+    }
+    addView(localImageView);
+    return localImageView;
+  }
+  
+  public ImageView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public CapsuleButton a(bemj parambemj)
+  {
+    this.jdField_a_of_type_Bemj = parambemj;
     return this;
   }
   
@@ -110,16 +127,15 @@ public class CapsuleButton
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i == 2131304593) {
-      if (this.jdField_a_of_type_Bdig != null) {
-        this.jdField_a_of_type_Bdig.b();
+    if (paramView == this.jdField_a_of_type_AndroidWidgetImageView) {
+      if (this.jdField_a_of_type_Bemj != null) {
+        this.jdField_a_of_type_Bemj.b();
       }
     }
-    while ((i != 2131304591) || (this.jdField_a_of_type_Bdig == null)) {
+    while ((paramView != this.jdField_b_of_type_AndroidWidgetImageView) || (this.jdField_a_of_type_Bemj == null)) {
       return;
     }
-    this.jdField_a_of_type_Bdig.a();
+    this.jdField_a_of_type_Bemj.a();
   }
 }
 

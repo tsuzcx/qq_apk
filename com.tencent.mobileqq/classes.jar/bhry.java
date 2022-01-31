@@ -1,42 +1,24 @@
-import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import mqq.app.QQPermissionCallback;
 
-public class bhry
+class bhry
+  implements QQPermissionCallback
 {
-  public static final Integer a;
-  private bhsb jdField_a_of_type_Bhsb = new bhsb();
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  private boolean jdField_a_of_type_Boolean = true;
+  bhry(bhrx parambhrx) {}
   
-  static
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    jdField_a_of_type_JavaLangInteger = Integer.valueOf(480);
+    bbcv.b(this.a.a.mRuntime.a());
   }
   
-  public Frame a(Frame paramFrame)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Frame localFrame = paramFrame;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Bhsb.a(paramFrame, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
-      localFrame = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-    }
-    return localFrame;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bhsb.apply();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bhsb.ClearGLSL();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    bhrx.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhry
  * JD-Core Version:    0.7.0.1
  */

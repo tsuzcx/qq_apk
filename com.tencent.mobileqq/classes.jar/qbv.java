@@ -1,24 +1,66 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.articlesummary.articlesummary.PackInfo;
+import tencent.im.oidb.articlesummary.articlesummary.SpecialTopicInfo;
 
-class qbv
-  extends nev
+public class qbv
 {
-  private qbv(qbq paramqbq) {}
+  public int a;
+  public long a;
+  public String a;
+  public articlesummary.PackInfo a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public long d;
+  public String d;
+  public int e;
+  public long e;
+  public int f;
+  public long f;
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public qbv()
   {
-    qbq.b(this.a);
-    if (paramBoolean)
+    this.jdField_a_of_type_Int = 6;
+  }
+  
+  public static qbv a(articlesummary.PackInfo paramPackInfo)
+  {
+    try
     {
-      qbq.a(this.a, paramBundle.getString("VALUE_COOKIE", null));
-      paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
-      qbq.a(this.a, paramBundle);
-      if (qbq.a(this.a))
-      {
-        qbq.a(this.a);
-        qbq.a(this.a, false);
-      }
+      qbv localqbv = new qbv();
+      localqbv.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackInfo = paramPackInfo;
+      localqbv.jdField_a_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).str_header_title.get();
+      localqbv.jdField_b_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).bytes_recommend_reason.get().toStringUtf8();
+      localqbv.jdField_b_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint64_puin.get();
+      localqbv.jdField_c_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).str_header_icon_url.get();
+      localqbv.jdField_a_of_type_Int = paramPackInfo.pack_type.get();
+      localqbv.jdField_c_of_type_Long = paramPackInfo.uint64_pack_id.get();
+      localqbv.jdField_d_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).str_header_jump_url.get();
+      localqbv.jdField_b_of_type_Int = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_icon_shape.get();
+      localqbv.jdField_e_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint64_algorithm_id.get();
+      localqbv.jdField_d_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_strategy_id.get();
+      localqbv.f = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint64_topic_id.get();
+      localqbv.jdField_a_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_posttime.get();
+      localqbv.jdField_e_of_type_Int = paramPackInfo.uint32_follow_status.get();
+      return localqbv;
     }
+    catch (Exception paramPackInfo) {}
+    return null;
+  }
+  
+  public String toString()
+  {
+    return "PolymericInfo【 packID : " + this.jdField_c_of_type_Long + "\n polymericType : " + this.jdField_a_of_type_Int + "\n algorithmID : " + this.jdField_e_of_type_Long + "\n strategyID : " + this.jdField_d_of_type_Long + "\n title : " + this.jdField_a_of_type_JavaLangString + "\n desc : " + this.jdField_b_of_type_JavaLangString + "\n publicTime : " + this.jdField_a_of_type_Long + "\n iconUrl : " + this.jdField_c_of_type_JavaLangString + "\n uin : " + this.jdField_b_of_type_Long + "\n topicID : " + this.f + "\n topicMemberCount : " + this.jdField_c_of_type_Int + "\n jumpUrl : " + this.jdField_d_of_type_JavaLangString + "\n videoCount : " + this.jdField_d_of_type_Int + "\n followStatus : " + this.jdField_e_of_type_Int + "】";
   }
 }
 

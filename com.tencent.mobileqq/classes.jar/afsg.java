@@ -1,31 +1,54 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class afsg
-  implements behj
+public class afsg
 {
-  afsg(afry paramafry) {}
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public boolean b;
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public JSONObject a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
-    }
-    if ((this.a.jdField_a_of_type_Afrw.getCount() <= 0) || (paramInt <= 0)) {}
-    do
+    try
     {
-      return true;
-      paramAdapterView = (afss)this.a.jdField_a_of_type_Afrw.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_Afss = paramAdapterView;
-    paramView.setSelected(true);
-    paramAdapterView = new bakh();
-    paramAdapterView.a(2131299262, ajjy.a(2131635489), 2130838590);
-    paramAdapterView.a(2131301021, this.a.jdField_a_of_type_AndroidContentContext.getString(2131627114), 2130838599);
-    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = baay.a(paramView, paramAdapterView, afry.a(this.a), new afsh(this, paramView));
-    return true;
+      localJSONObject = new JSONObject();
+      localJSONException1.printStackTrace();
+    }
+    catch (JSONException localJSONException1)
+    {
+      try
+      {
+        localJSONObject.put("entryID", this.jdField_a_of_type_Int);
+        localJSONObject.put("redDotVersion", this.jdField_b_of_type_Int);
+        localJSONObject.put("showRedDot", this.jdField_a_of_type_Boolean);
+        localJSONObject.put("userCanceled", this.jdField_b_of_type_Boolean);
+        localJSONObject.put("lastCancelTime", this.jdField_a_of_type_Long);
+        return localJSONObject;
+      }
+      catch (JSONException localJSONException2)
+      {
+        JSONObject localJSONObject;
+        break label68;
+      }
+      localJSONException1 = localJSONException1;
+      localJSONObject = null;
+    }
+    label68:
+    return localJSONObject;
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null)
+    {
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("entryID");
+      this.jdField_b_of_type_Int = paramJSONObject.optInt("redDotVersion");
+      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("showRedDot");
+      this.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("userCanceled");
+      this.jdField_a_of_type_Long = paramJSONObject.optLong("lastCancelTime");
+    }
   }
 }
 

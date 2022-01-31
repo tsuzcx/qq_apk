@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aego;
-import aegr;
+import aerl;
+import aero;
 
 public class NearbyChatPie$12$1
   implements Runnable
 {
-  public NearbyChatPie$12$1(aegr paramaegr) {}
+  public NearbyChatPie$12$1(aero paramaero) {}
   
   public void run()
   {
-    if (!aego.a(this.a.a)) {
+    if (!this.a.a.N) {
       this.a.a.m();
     }
   }

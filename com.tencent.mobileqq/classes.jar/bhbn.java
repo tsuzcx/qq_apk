@@ -1,21 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import GIFT_MALL_PROTOCOL.DouFuInfo;
+import GIFT_MALL_PROTOCOL.doufu_piece_rsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class bhbn
-  implements View.OnClickListener
+  extends atzo
 {
-  bhbn(bhbk parambhbk) {}
+  public WeakReference<QQAppInterface> a;
   
-  public void onClick(View paramView)
+  protected void j(boolean paramBoolean, Bundle paramBundle)
   {
-    bhbk.a(this.a).setText(null);
-    this.a.dismiss();
+    if (this.a == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("UndealCount.QZoneObserver", 2, "onGetBirthDayNoticeData appRef==null");
+      }
+    }
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = (QQAppInterface)this.a.get();
+      if (localQQAppInterface != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("UndealCount.QZoneObserver", 2, "onGetBirthDayNoticeData app == null ");
+    return;
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof doufu_piece_rsp)))
+    {
+      paramBundle = ((doufu_piece_rsp)paramBundle).doufu.iterator();
+      while (paramBundle.hasNext()) {
+        bhbm.a(localQQAppInterface, (DouFuInfo)paramBundle.next());
+      }
+    }
+    localQQAppInterface.unRegistObserver(bhbm.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhbn
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ import android.util.DisplayMetrics;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import avdp;
-import avgb;
-import axkd;
-import baoj;
+import awdi;
+import awfu;
+import ayki;
+import bbqf;
 import com.etrump.mixlayout.ETFont;
 import com.etrump.mixlayout.ETTextView;
 import com.tencent.mobileqq.activity.aio.item.SignatureView;
-import fs;
+import hl;
 
 public class SignatureFontView
   extends RelativeLayout
@@ -26,7 +26,7 @@ public class SignatureFontView
   public TextPaint a;
   public ETTextView a;
   public SignatureView a;
-  private fs jdField_a_of_type_Fs = new avdp(this);
+  private hl jdField_a_of_type_Hl = new awdi(this);
   public boolean a;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = 1;
@@ -60,22 +60,22 @@ public class SignatureFontView
     this.jdField_a_of_type_Float = (13.0F * this.jdField_b_of_type_Float);
     this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSignatureView = new SignatureView(getContext());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSignatureView.setId(2131310415);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSignatureView.setId(2131376207);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSignatureView, localLayoutParams);
     this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = new ETTextView(getContext());
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setId(2131310429);
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextAnimationListener(this.jdField_a_of_type_Fs);
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setId(2131376221);
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextAnimationListener(this.jdField_a_of_type_Hl);
     this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextSize(15.0F);
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.d = true;
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setMovementMethod(avgb.a());
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.shouldStartAnimation = true;
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setMovementMethod(awfu.a());
     localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     addView(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, localLayoutParams);
   }
   
-  public void setAnimation(int paramInt, String paramString, baoj parambaoj)
+  public void setAnimation(int paramInt, String paramString, bbqf parambbqf)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSignatureView.setAnimation(paramInt, paramString, parambaoj);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSignatureView.setAnimation(paramInt, paramString, parambbqf);
   }
   
   public void setBGDrawable(Drawable paramDrawable)
@@ -124,7 +124,7 @@ public class SignatureFontView
   
   public void setText(CharSequence paramCharSequence)
   {
-    paramCharSequence = new axkd(paramCharSequence, 1, 20);
+    paramCharSequence = new ayki(paramCharSequence, 1, 20);
     this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setText(paramCharSequence);
   }
   

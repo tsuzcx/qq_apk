@@ -2,23 +2,23 @@ package com.tencent.biz.qqstory.playvideo;
 
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArraySet;
-import tio;
-import tip;
-import tiu;
-import tiv;
+import tvk;
+import tvl;
+import tvq;
+import tvr;
 
 public class TVKPreloader$1$1
   implements Runnable
 {
-  public TVKPreloader$1$1(tip paramtip, tiu paramtiu) {}
+  public TVKPreloader$1$1(tvl paramtvl, tvq paramtvq) {}
   
   public void run()
   {
-    Iterator localIterator = tio.a().iterator();
+    Iterator localIterator = tvk.a().iterator();
     while (localIterator.hasNext()) {
-      ((tiv)localIterator.next()).b(this.a);
+      ((tvr)localIterator.next()).b(this.a);
     }
-    tio.a(true);
+    tvk.a(true);
   }
 }
 

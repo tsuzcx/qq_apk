@@ -1,22 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
 
-class beqw
-  implements View.OnClickListener
+public final class beqw
+  implements Parcelable.Creator<BaseLibInfo>
 {
-  beqw(beqv parambeqv, bequ parambequ) {}
-  
-  public void onClick(View paramView)
+  public BaseLibInfo a(Parcel paramParcel)
   {
-    int i = this.jdField_a_of_type_Bequ.getPosition();
-    if (i >= 0) {
-      this.jdField_a_of_type_Beqv.a.a(this.jdField_a_of_type_Bequ.itemView, i);
+    BaseLibInfo localBaseLibInfo = new BaseLibInfo();
+    try
+    {
+      paramParcel = new BaseLibInfo(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt());
+      return paramParcel;
     }
+    catch (Throwable paramParcel)
+    {
+      besl.d("BaseLibInfo", "BaseLibInfo createFromParcel exception!", paramParcel);
+    }
+    return localBaseLibInfo;
+  }
+  
+  public BaseLibInfo[] a(int paramInt)
+  {
+    return new BaseLibInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beqw
  * JD-Core Version:    0.7.0.1
  */

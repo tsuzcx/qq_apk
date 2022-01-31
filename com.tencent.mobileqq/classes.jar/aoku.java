@@ -1,34 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class aoku
-  extends aoko
+final class aoku
+  implements View.OnClickListener
 {
-  public aoku(aokk paramaokk)
-  {
-    super(paramaokk);
-  }
+  aoku(Dialog paramDialog) {}
   
-  protected String a()
+  public void onClick(View paramView)
   {
-    return "StateChangeToOffWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+    axqw.b(null, "dc00898", "", "", "kuolie", "0X80097DF", 0, 0, "", "", "", "");
+    if ((this.a != null) && (this.a.isShowing())) {
+      this.a.dismiss();
     }
-    aokk.b(this.jdField_a_of_type_Aokk, 9, 11);
-    aokk.c(this.jdField_a_of_type_Aokk, 9, 14);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateUploadingWhenRecv)");
-    this.jdField_a_of_type_Aoko = new aolq(this.jdField_a_of_type_Aokk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aoku
  * JD-Core Version:    0.7.0.1
  */

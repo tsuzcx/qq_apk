@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import bbuf;
+import bcyf;
 
 class AuthorityActivity$8$7$1
   implements Runnable

@@ -1,37 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
+import com.tencent.common.app.AppInterface;
+import java.util.HashMap;
 
 public class otr
-  implements owa
+  implements View.OnClickListener
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  public otr(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public void onClick(View paramView)
   {
-    return ost.a(paramBaseArticleInfo);
-  }
-  
-  public void a(int paramInt1, Container paramContainer, opw paramopw, int paramInt2)
-  {
-    paramContainer = paramContainer.getVirtualView().findViewBaseByName("id_artilce_title");
-    if ((paramContainer != null) && (paramContainer.getNativeView() != null) && ((paramContainer.getNativeView() instanceof NativeTextImp)))
-    {
-      paramContainer = (NativeTextImp)paramContainer.getNativeView();
-      paramContainer.setLines(2);
-      paramContainer.setGravity(51);
+    paramView = (bcet)this.a.a.a(4);
+    if ((paramView != null) && (paramView.a != null) && (paramView.a.a())) {
+      return;
     }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, opw paramopw, ViewBase paramViewBase)
-  {
-    return false;
+    ReadInJoyAdIMAXBrowserFragment.a(this.a);
+    paramView = new HashMap();
+    paramView.put("stat_src", "5");
+    nmf.a(new nyg().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(nmf.u).b(nmf.ae).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(nmf.a(paramView)).a());
   }
 }
 

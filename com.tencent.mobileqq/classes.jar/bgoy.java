@@ -1,26 +1,36 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 class bgoy
-  implements ScaleGestureDetector.OnScaleGestureListener
+  implements ServiceConnection
 {
-  bgoy(bgou parambgou) {}
+  bgoy(bgos parambgos) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    float f = paramScaleGestureDetector.getScaleFactor();
-    if (bgou.a(this.a) != null) {
-      bgou.a(this.a).a("onActionScale", new float[] { f });
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.jdField_a_of_type_Bgoz = bgpa.a(paramIBinder);
+    if (QLog.isColorLevel()) {
+      QLog.d("DatalineRemoteManager", 2, "mDatalineService connected");
     }
-    return true;
+    paramComponentName = (akfm)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(10);
+    this.a.a(paramComponentName.a(), paramComponentName.d(), paramComponentName.e(), paramComponentName.f(), paramComponentName.a());
+    bgos.d(this.a);
   }
   
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    return true;
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().unbindService(bgos.a(this.a));
+    this.a.jdField_a_of_type_Bgoz = null;
+    this.a.jdField_a_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("DatalineRemoteManager", 2, "mDatalineService disconnected");
+    }
   }
-  
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

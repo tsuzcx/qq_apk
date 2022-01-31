@@ -1,27 +1,69 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class tks
-  extends Subscriber.SingleEventSubscriberNoRefect<syh>
+  implements IEventReceiver
 {
-  tko a;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private tkt jdField_a_of_type_Tkt;
+  private tku jdField_a_of_type_Tku;
+  private tkv jdField_a_of_type_Tkv;
   
-  public tks(@NonNull tko paramtko)
+  public tks(QQAppInterface paramQQAppInterface)
   {
-    this.a = paramtko;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    b();
   }
   
-  protected void a(@NonNull syh paramsyh)
+  private void b()
   {
-    if (paramsyh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
-      this.a.a(paramsyh.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Tku = new tku(this);
+    this.jdField_a_of_type_Tkv = new tkv(this);
+    ste.a().registerSubscriber(this.jdField_a_of_type_Tku);
+    ste.a().registerSubscriber(this.jdField_a_of_type_Tkv);
+  }
+  
+  private void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentTabHaloPresenter", 2, "invalidateHalo: invoked.  mCallback: " + this.jdField_a_of_type_Tkt);
+    }
+    if (this.jdField_a_of_type_Tkt != null) {
+      this.jdField_a_of_type_Tkt.a();
     }
   }
   
-  public Class acceptEventClass()
+  public void a()
   {
-    return syh.class;
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentTabHaloPresenter", 2, "destroy: invoked. ");
+    }
+    ste.a().unRegisterSubscriber(this.jdField_a_of_type_Tku);
+    ste.a().unRegisterSubscriber(this.jdField_a_of_type_Tkv);
+    this.jdField_a_of_type_Tkt = null;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  public void a(tkt paramtkt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentTabHaloPresenter", 2, "setCallback: invoked. Message: callback: " + paramtkt);
+    }
+    this.jdField_a_of_type_Tkt = paramtkt;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public boolean isValidate()
+  {
+    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
 }
 

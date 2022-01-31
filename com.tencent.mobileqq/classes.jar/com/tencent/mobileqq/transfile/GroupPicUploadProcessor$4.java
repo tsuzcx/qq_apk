@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import axqw;
+import ayrd;
 
 public class GroupPicUploadProcessor$4
   implements Runnable
 {
-  public GroupPicUploadProcessor$4(axqw paramaxqw) {}
+  public GroupPicUploadProcessor$4(ayrd paramayrd) {}
   
   public void run()
   {

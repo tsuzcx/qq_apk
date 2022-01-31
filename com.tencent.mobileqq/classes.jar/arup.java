@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import java.util.List;
 
-public class arup
-  implements arui
+public abstract interface arup
 {
-  public arup(MultiAIOViewPager paramMultiAIOViewPager) {}
+  public abstract void a(aruk paramaruk, int paramInt);
   
-  public void a(int paramInt) {}
+  public abstract void a(aruk paramaruk, int paramInt1, int paramInt2);
   
-  public void a(int paramInt1, float paramFloat, int paramInt2) {}
+  public abstract void a(aruk paramaruk, LocationRoom.Venue paramVenue, List<arui> paramList);
   
-  public void b(int paramInt)
-  {
-    if (MultiAIOViewPager.a(this.a) != null) {
-      MultiAIOViewPager.a(this.a).a(paramInt);
-    }
-  }
+  public abstract void b(aruk paramaruk, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arup
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,15 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
 
-class bgvg
-  implements ThreadPool.Job<Void>
+public class bgvg
+  implements View.OnClickListener
 {
-  bgvg(bguw parambguw, List paramList) {}
+  public bgvg(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
   
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public void onClick(View paramView)
   {
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramJobContext.hasNext())
-    {
-      long l = ((Long)paramJobContext.next()).longValue();
-      this.jdField_a_of_type_Bguw.b(l);
-    }
-    return null;
+    ForceUserUpdateActivity.a(this.a);
   }
 }
 

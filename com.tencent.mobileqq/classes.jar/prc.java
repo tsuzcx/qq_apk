@@ -1,19 +1,18 @@
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigGallery;
+
 public class prc
-  implements Cloneable
+  extends prd
 {
-  public int a = 0;
-  public long a;
-  public long b;
-  
-  public prc a()
+  public prc(Context paramContext, baxk parambaxk, rap paramrap)
   {
-    try
-    {
-      prc localprc = (prc)super.clone();
-      return localprc;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return null;
+    super(paramContext, parambaxk, paramrap);
+  }
+  
+  public pqt g()
+  {
+    this.jdField_a_of_type_Pqs = new ComponentContentBigGallery(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

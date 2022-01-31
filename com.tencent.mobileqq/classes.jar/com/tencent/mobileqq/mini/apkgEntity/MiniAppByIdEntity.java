@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.apkgEntity;
 
-import atmo;
+import aukm;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.util.Arrays;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="appId,entryPath")
 public class MiniAppByIdEntity
-  extends atmo
+  extends aukm
 {
   public String appId;
   public String entryPath;

@@ -96,7 +96,10 @@ public class AbsOverScrollDecorator$BounceBackState
   
   public void onAnimationStart(Animator paramAnimator) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator) {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.mAnimAttributes.onUpdate(paramValueAnimator);
+  }
 }
 
 

@@ -1,26 +1,14 @@
-import android.database.DataSetObserver;
-import com.tencent.widget.ExpandableListConnector;
+import org.json.JSONArray;
 
-public class bejd
-  extends DataSetObserver
+public abstract interface bejd
 {
-  public bejd(ExpandableListConnector paramExpandableListConnector) {}
+  public abstract void onError(int paramInt);
   
-  public void onChanged()
-  {
-    ExpandableListConnector.a(this.a, true, true);
-    this.a.notifyDataSetChanged();
-  }
-  
-  public void onInvalidated()
-  {
-    ExpandableListConnector.a(this.a, true, true);
-    this.a.notifyDataSetInvalidated();
-  }
+  public abstract void onJoinRoom(JSONArray paramJSONArray);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bejd
  * JD-Core Version:    0.7.0.1
  */

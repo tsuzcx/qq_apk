@@ -1,19 +1,17 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
 public class syh
-  extends sfo
 {
-  public final String a;
+  public static WeakReference<QQAppInterface> a = new WeakReference(null);
   
-  public syh(ErrorMessage paramErrorMessage, String paramString)
+  public static boolean a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String toString()
-  {
-    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + "} ";
+    QQAppInterface localQQAppInterface = (QQAppInterface)a.get();
+    if (localQQAppInterface == null) {
+      throw new IllegalStateException(ajyc.a(2131714401));
+    }
+    return localQQAppInterface.a().a;
   }
 }
 

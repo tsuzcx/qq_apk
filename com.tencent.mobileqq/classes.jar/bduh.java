@@ -1,77 +1,17 @@
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.webkit.WebView;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qidian.QidianProfileCardActivity;
 
 public class bduh
-  extends bduj
+  implements bcjn
 {
-  public static volatile boolean a;
-  private List<String> a;
+  public bduh(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public bduh()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    try
-    {
-      if ((!jdField_a_of_type_Boolean) && (Build.VERSION.SDK_INT >= 28))
-      {
-        jdField_a_of_type_Boolean = true;
-        WebView.setDataDirectorySuffix(bdle.a().b());
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      bdnw.d("AppBrandRuntime", "setDataDirectorySuffix error", localThrowable);
-    }
-  }
+  public void a(float paramFloat1, float paramFloat2) {}
   
-  public void a(bdwp parambdwp)
-  {
-    super.a(parambdwp);
-    parambdwp = new AppBrandPageContainer(this, this.jdField_a_of_type_Bduk);
-    parambdwp.a(null);
-    this.jdField_a_of_type_Bdvc = parambdwp;
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      bdnw.d("AppBrandRuntime", "loadSubPkgAppService url is null.");
-      return;
-    }
-    if (this.jdField_a_of_type_Bdfx == null)
-    {
-      bdnw.d("AppBrandRuntime", "loadSubPkgAppService ApkgInfo is null.");
-      return;
-    }
-    String str = this.jdField_a_of_type_Bdfx.c(paramString);
-    if (TextUtils.isEmpty(str))
-    {
-      bdnw.d("AppBrandRuntime", "loadSubPkgAppService subPkgRoot is null.");
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramString))
-    {
-      bdnw.d("AppBrandRuntime", "loadSubPkgAppService has loaded.");
-      return;
-    }
-    str = this.jdField_a_of_type_Bdfx.e(str);
-    if (TextUtils.isEmpty(str))
-    {
-      bdnw.d("AppBrandRuntime", "loadSubPkgAppService appServiceJsStr is null.");
-      return;
-    }
-    this.jdField_a_of_type_Bdwp.a(str, new bdui(this, paramString));
-  }
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bduh
  * JD-Core Version:    0.7.0.1
  */

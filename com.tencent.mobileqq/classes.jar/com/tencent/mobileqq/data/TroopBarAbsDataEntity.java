@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
+import aukm;
 import java.io.Externalizable;
 import org.json.JSONObject;
 
 public abstract class TroopBarAbsDataEntity
-  extends atmo
+  extends aukm
   implements Externalizable
 {
   public String id;

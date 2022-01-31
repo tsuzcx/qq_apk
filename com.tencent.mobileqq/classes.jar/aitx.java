@@ -1,83 +1,31 @@
-import android.os.Build.VERSION;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-final class aitx
-  implements aiud
+public class aitx
+  implements aiut
 {
-  aitx(aifg paramaifg, int[] paramArrayOfInt, AppInterface paramAppInterface, aiud paramaiud, boolean paramBoolean, int paramInt) {}
+  private int a;
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public aitx(int paramInt)
   {
-    if (paramBoolean)
+    QLog.i("ApolloTextureView", 1, "[ApolloConfigChooser], multiValue:" + paramInt);
+    this.a = paramInt;
+  }
+  
+  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
+  {
+    int i = this.a;
+    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    paramEGL10.eglChooseConfig(paramEGLDisplay, new int[] { 12329, 0, 12352, 4, 12351, 12430, 12324, 8, 12323, 8, 12322, 8, 12325, 16, 12321, 8, 12326, 0, 12338, 1, 12337, i, 12344 }, arrayOfEGLConfig, 1, arrayOfInt);
+    if (arrayOfInt[0] == 0)
     {
-      File localFile;
-      if ((Build.VERSION.SDK_INT < 24) && (BaseApplicationImpl.sProcessId == 1))
-      {
-        localFile = new File(aitw.a(1, paramInt1), "dress.zip");
-        if (!localFile.exists()) {}
-      }
-      try
-      {
-        paramArrayOfInt = aiys.f;
-        if (paramInt1 == 0) {
-          paramArrayOfInt = aiys.c + "/def/dress/";
-        }
-        new File(paramArrayOfInt).mkdirs();
-        mpx.a(localFile, paramArrayOfInt);
-        paramArrayOfInt = aitw.a(paramInt1);
-        if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0))
-        {
-          int j = paramArrayOfInt.length;
-          int i = 0;
-          while (i < j)
-          {
-            int k = paramArrayOfInt[i];
-            aitw.a(this.jdField_a_of_type_Aifg, 2, k);
-            i += 1;
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloResDownloader", 2, "downloadApolloResOrder down load role succ  id: " + paramInt1 + ", uin: " + paramString);
-        }
-      }
-      catch (Exception paramArrayOfInt)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloResDownloader", 2, "downloadApolloResOrder unZipFile file error resType->" + paramInt1 + " error->" + paramArrayOfInt.getMessage(), paramArrayOfInt);
-          }
-        }
-      }
-      catch (OutOfMemoryError paramArrayOfInt)
-      {
-        do
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloResDownloader", 2, "downloadApolloResOrder unZipFile file error resType->" + paramInt1 + " error->" + paramArrayOfInt.getMessage());
-            }
-          }
-        } while (this.jdField_a_of_type_Aiud == null);
-        this.jdField_a_of_type_Aiud.onDownLoadFinish(true, paramString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
-        return;
-      }
-      if ((this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0)) {
-        aitw.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString, this.jdField_a_of_type_Aiud, -1, this.jdField_a_of_type_ArrayOfInt, -1, -1, this.jdField_a_of_type_Boolean);
-      }
+      QLog.e("ApolloTextureView", 1, "[ApolloConfigChooser], fail to set config");
+      return null;
     }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Aiud != null) {
-        this.jdField_a_of_type_Aiud.onDownLoadFinish(false, paramString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloResDownloader", 2, "downloadApolloResOrder down load role fail id: " + this.jdField_a_of_type_Int + ", uin:" + paramString);
+    return arrayOfEGLConfig[0];
   }
 }
 

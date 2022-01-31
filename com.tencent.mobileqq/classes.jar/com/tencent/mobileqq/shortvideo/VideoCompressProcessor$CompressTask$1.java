@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.shortvideo;
 
-import awfz;
-import awgc;
+import axfh;
+import axfk;
 
 public class VideoCompressProcessor$CompressTask$1
   implements Runnable
 {
-  public VideoCompressProcessor$CompressTask$1(awfz paramawfz, boolean paramBoolean) {}
+  public VideoCompressProcessor$CompressTask$1(axfh paramaxfh, boolean paramBoolean) {}
   
   public void run()
   {
-    awfz.a(this.this$0).a(this.this$0.a, this.a);
+    axfh.a(this.this$0).a(this.this$0.a, this.a);
   }
 }
 

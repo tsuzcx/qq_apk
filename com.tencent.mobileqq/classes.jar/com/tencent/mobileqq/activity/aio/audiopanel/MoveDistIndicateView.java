@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import aciy;
+import actn;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -40,9 +40,9 @@ public class MoveDistIndicateView
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     paramContext = getResources();
-    this.jdField_a_of_type_Int = aciy.a(29.0F, paramContext);
-    this.jdField_b_of_type_Int = aciy.a(42.0F, paramContext);
-    this.e = aciy.a(8.0F, paramContext);
+    this.jdField_a_of_type_Int = actn.a(29.0F, paramContext);
+    this.jdField_b_of_type_Int = actn.a(42.0F, paramContext);
+    this.e = actn.a(8.0F, paramContext);
     this.c = this.jdField_a_of_type_Int;
     if (QLog.isDevelopLevel()) {
       QLog.d("MoveDistIndicateView", 4, "init(), mRaidusMin:" + this.jdField_a_of_type_Int + ",mRaidusMax:" + this.jdField_b_of_type_Int);
@@ -78,7 +78,7 @@ public class MoveDistIndicateView
       super.onDraw(paramCanvas);
       return;
       if (this.d == 1) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131101363));
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166958));
       }
       for (;;)
       {
@@ -86,11 +86,11 @@ public class MoveDistIndicateView
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
         paramCanvas.drawCircle(m, n, this.c, this.jdField_a_of_type_AndroidGraphicsPaint);
         break;
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131101364));
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166959));
       }
       if (this.c > this.jdField_a_of_type_Int)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131101259));
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166853));
         this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
         paramCanvas.drawCircle(m, n, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
@@ -140,7 +140,7 @@ public class MoveDistIndicateView
     if (QLog.isDevelopLevel()) {
       QLog.d("MoveDistIndicateView", 4, "setLevel(), max=" + this.jdField_b_of_type_Int + " min=" + this.jdField_a_of_type_Int + " mRadius=" + this.c + " type =" + this.d + " level=" + paramInt);
     }
-    if (paramInt == 100) {
+    if (this.c > this.jdField_a_of_type_Int + this.e) {
       setPressed(true);
     }
     for (;;)

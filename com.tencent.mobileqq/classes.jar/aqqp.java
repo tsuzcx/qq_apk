@@ -1,21 +1,27 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherVCtrlFragment;
+import android.content.Context;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-public class aqqp
-  implements DialogInterface.OnDismissListener
+class aqqp
+  implements ViewSwitcher.ViewFactory
 {
-  public aqqp(WatchTogetherVCtrlFragment paramWatchTogetherVCtrlFragment, Activity paramActivity) {}
+  aqqp(aqqo paramaqqo) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public View makeView()
   {
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    CornerImageView localCornerImageView = new CornerImageView(aqqo.a(this.a));
+    localCornerImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localCornerImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    localCornerImageView.setRadius(actn.a(30.0F, aqqo.a(this.a).getResources()) / 2);
+    return localCornerImageView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqqp
  * JD-Core Version:    0.7.0.1
  */

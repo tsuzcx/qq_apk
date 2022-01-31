@@ -1,37 +1,25 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 
-final class rty
-  extends akih
+public class rty
+  implements ruk
 {
-  rty(ajpe paramajpe, String paramString, AppInterface paramAppInterface, Context paramContext, int paramInt, boolean paramBoolean) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public int a()
+  public rty(TabLayoutCompat paramTabLayoutCompat) {}
+  
+  public void a(ViewPager paramViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2)
   {
-    return 4;
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (this.jdField_a_of_type_Ajpe != null) {
-      this.jdField_a_of_type_Ajpe.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
-    }
-    rtr.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
-  {
-    if (this.jdField_a_of_type_Ajpe != null) {
-      this.jdField_a_of_type_Ajpe.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      rtr.a(this.jdField_a_of_type_AndroidContentContext, 2131629887);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a == paramViewPager) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a(paramPagerAdapter2, this.jdField_a_of_type_Boolean);
     }
   }
   
-  public void b(boolean paramBoolean, Object paramObject) {}
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
 }
 
 

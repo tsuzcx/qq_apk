@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.app;
 
-import avys;
-import mqq.manager.Manager;
+import aseo;
+import bfnr;
+import com.tencent.commonsdk.util.notification.QQNotificationManager;
+import com.tencent.qphone.base.util.QLog;
 
 class QQAppInterface$10
   implements Runnable
@@ -10,17 +12,31 @@ class QQAppInterface$10
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.c();
-    }
-    int i = 0;
-    while (i < QQAppInterface.a(this.this$0).length)
+    try
     {
-      Manager localManager = QQAppInterface.a(this.this$0)[i];
-      if (localManager != null) {
-        localManager.onDestroy();
+      QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
+      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 265);
+      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 267);
+      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 274);
+      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 236);
+      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 268);
+      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 272);
+      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 271);
+      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 273);
+      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 239);
+      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 266);
+      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 524);
+      ((bfnr)this.this$0.getManager(313)).a();
+      ((aseo)this.this$0.getManager(284)).a(localQQNotificationManager, -1);
+      if (QLog.isColorLevel()) {
+        QLog.d("notification", 2, "removeNotification");
       }
-      i += 1;
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("notification", 2, "removeNotification", localException);
     }
   }
 }

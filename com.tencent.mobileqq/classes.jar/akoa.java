@@ -1,325 +1,343 @@
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
-import android.os.Looper;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import android.util.Xml;
+import android.os.Handler.Callback;
+import android.os.Message;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.FaceScanDownloadManager.1;
-import com.tencent.mobileqq.ar.FaceScanDownloadManager.2;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.startup.step.InitMagnifierSDK;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
-import org.xmlpull.v1.XmlPullParser;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Vector;
+import mqq.app.Foreground;
 
 public class akoa
+  implements Handler.Callback
 {
-  public static Handler a;
-  private static ArrayList<akob> a;
+  public static int a;
+  private static akoa jdField_a_of_type_Akoa;
+  public static ArrayList<String> a;
+  private long jdField_a_of_type_Long;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private Vector<akob> jdField_a_of_type_JavaUtilVector;
+  public boolean a;
+  private long b = System.currentTimeMillis();
+  private long c;
+  private long d;
   
   static
   {
-    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList(2);
+    jdField_a_of_type_Int = 0;
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public static int a(QQAppInterface paramQQAppInterface)
+  private akoa()
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp()).getInt("key_download_cfg_version" + paramQQAppInterface.getLongAccountUin(), 0);
-  }
-  
-  public static void a()
-  {
-    if (jdField_a_of_type_JavaUtilArrayList != null) {
-      jdField_a_of_type_JavaUtilArrayList.clear();
+    float f1 = akai.a().b;
+    float f2 = akai.a().c;
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("memory_reporter", 0);
+    if (localSharedPreferences.contains("sp_key_last_shot_time")) {
+      localSharedPreferences.edit().clear().commit();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanDownloadManager", 2, "clearCallback");
+    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences(a(), 0);
+    this.d = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("sp_key_last_shot_time", 0L);
+    if (Math.abs(System.currentTimeMillis() - this.d) >= 86400000L)
+    {
+      if (this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_need_report", false)) {
+        e();
+      }
+      if (f1 >= Math.random())
+      {
+        a();
+        this.jdField_a_of_type_Boolean = true;
+        this.d = System.currentTimeMillis();
+        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("sp_key_last_shot_time", this.d).putBoolean("key_need_report", true).commit();
+      }
     }
-  }
-  
-  public static void a(int paramInt1, int paramInt2)
-  {
     for (;;)
     {
-      try
-      {
-        Object[] arrayOfObject = jdField_a_of_type_JavaUtilArrayList.toArray();
-        if ((arrayOfObject == null) || (arrayOfObject.length <= 0)) {
-          return;
-        }
-      }
-      finally {}
-      int i = 0;
-      while (i < localObject.length)
-      {
-        akob localakob = (akob)localObject[i];
-        jdField_a_of_type_AndroidOsHandler.post(new FaceScanDownloadManager.1(localakob, paramInt1, paramInt2));
-        i += 1;
-      }
-    }
-  }
-  
-  public static void a(int paramInt, QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceScanDownloadManager", 2, "downloadFaceRes app is null");
-      }
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+      this.jdField_a_of_type_JavaUtilVector = new Vector();
+      a(xoz.a());
       return;
-    }
-    paramQQAppInterface = (amyp)paramQQAppInterface.getManager(77);
-    boolean bool;
-    switch (paramInt)
-    {
-    default: 
-      bool = false;
-      paramQQAppInterface = null;
-    }
-    while (paramQQAppInterface != null)
-    {
-      paramInt = paramQQAppInterface.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceScanDownloadManager", 2, "initAr version=" + paramQQAppInterface.b());
-      }
-      if ((bool) && (paramQQAppInterface.g()) && (paramInt > 1)) {
-        break;
-      }
-      paramQQAppInterface.a(true);
-      return;
-      paramQQAppInterface = paramQQAppInterface.a("qq.android.ar.face.models_v7.1.5");
-      bool = akoc.a();
-      continue;
-      paramQQAppInterface = paramQQAppInterface.a("qq.android.ar.face.so_v7.9.5");
-      bool = akod.a();
-      if (paramQQAppInterface != null) {
-        BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit().putInt("ar_native_so_version", paramQQAppInterface.b()).commit();
-      }
+      a();
+      this.jdField_a_of_type_Boolean = true;
     }
   }
   
-  public static void a(int paramInt, boolean paramBoolean)
+  public static akoa a()
   {
-    for (;;)
-    {
-      try
-      {
-        Object[] arrayOfObject = jdField_a_of_type_JavaUtilArrayList.toArray();
-        if ((arrayOfObject == null) || (arrayOfObject.length <= 0)) {
-          return;
-        }
-      }
-      finally {}
-      int i = 0;
-      while (i < localObject.length)
-      {
-        akob localakob = (akob)localObject[i];
-        jdField_a_of_type_AndroidOsHandler.post(new FaceScanDownloadManager.2(localakob, paramInt, paramBoolean));
-        i += 1;
-      }
-    }
-  }
-  
-  public static void a(akob paramakob)
-  {
-    if (paramakob != null) {}
+    if (jdField_a_of_type_Akoa == null) {}
     try
     {
-      if (!jdField_a_of_type_JavaUtilArrayList.contains(paramakob))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("FaceScanDownloadManager", 2, "addDownloadCallback");
-        }
-        jdField_a_of_type_JavaUtilArrayList.add(paramakob);
+      if (jdField_a_of_type_Akoa == null) {
+        jdField_a_of_type_Akoa = new akoa();
       }
-      return;
+      return jdField_a_of_type_Akoa;
     }
     finally {}
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  private String a()
   {
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramQQAppInterface = (amyp)paramQQAppInterface.getManager(77);
-        } while (paramQQAppInterface == null);
-        amzc localamzc = (amzc)paramQQAppInterface.a("qq.android.ar.face.so_v7.9.5");
-        if ((localamzc != null) && (localamzc.g()) && (!akod.a()))
-        {
-          localamzc.g();
-          if (QLog.isColorLevel()) {
-            QLog.d("FaceScanDownloadManager", 2, "reset native so download state");
-          }
-        }
-        paramQQAppInterface = (amzb)paramQQAppInterface.a("qq.android.ar.face.models_v7.1.5");
-      } while ((paramQQAppInterface == null) || (!paramQQAppInterface.g()) || (akoc.a()));
-      paramQQAppInterface.a();
-    } while (!QLog.isColorLevel());
-    QLog.d("FaceScanDownloadManager", 2, "reset modules so download state");
+    return "memory_reporter_" + BaseApplicationImpl.sProcessId;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  static void a()
   {
-    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp()).edit();
-    localEditor.putInt("key_download_cfg_version" + paramQQAppInterface.getLongAccountUin(), paramInt);
-    localEditor.commit();
+    if (QLog.getUIN_REPORTLOG_LEVEL() < 2) {
+      QLog.setUIN_REPORTLOG_LEVEL(2);
+    }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  private void a(int paramInt, xow paramxow)
   {
-    XmlPullParser localXmlPullParser = Xml.newPullParser();
-    for (;;)
+    synchronized (this.jdField_a_of_type_JavaUtilVector)
     {
-      try
-      {
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = localXmlPullParser.getEventType();
-        bool2 = false;
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("FaceScanDownloadManager", 2, paramString, paramQQAppInterface);
-        return;
-      }
-      int i = localXmlPullParser.next();
-      boolean bool2 = bool1;
-      break label171;
-      boolean bool1 = bool2;
-      if (localXmlPullParser.getName().equalsIgnoreCase("PreDownload"))
-      {
-        bool1 = bool2;
-        if (Integer.valueOf(localXmlPullParser.nextText()).intValue() == 1)
-        {
-          bool1 = true;
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("FaceScanDownloadManager", 2, "handleResp_GetArScanFacePreDownConfig success：isPreDownload|version=" + bool2 + "|" + paramInt);
-          }
-          a(paramQQAppInterface, paramInt);
-          a(paramQQAppInterface, bool2);
-          return;
-          label171:
-          if (i != 1)
-          {
-            bool1 = bool2;
-            switch (i)
-            {
-            }
-            bool1 = bool2;
-          }
-        }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilVector.iterator();
+      if (localIterator.hasNext()) {
+        ((akob)localIterator.next()).a(paramInt, paramxow);
       }
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  private void a(long paramLong)
   {
-    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp()).edit();
-    localEditor.putBoolean("key_download_cfg_enable" + paramQQAppInterface.getLongAccountUin(), paramBoolean);
-    localEditor.commit();
-  }
-  
-  public static boolean a()
-  {
-    return (akod.a()) && (akoc.a());
-  }
-  
-  private static boolean a(amza paramamza)
-  {
-    if (paramamza == null) {}
-    do
+    synchronized (this.jdField_a_of_type_JavaUtilVector)
     {
-      do
-      {
-        return false;
-        paramamza = paramamza.a();
-      } while (paramamza == null);
-      if ((!TextUtils.isEmpty(paramamza.strPkgName)) && (!TextUtils.isEmpty(paramamza.strResURL_big))) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("FaceScanDownloadManager", 2, "strPkgName is empty:" + TextUtils.isEmpty(paramamza.strPkgName) + " strResURL_big is empty:" + TextUtils.isEmpty(paramamza.strResURL_big) + " loadState :" + paramamza.loadState);
-    return false;
-    return true;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool3 = true;
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      return false;
-      paramQQAppInterface = (amyp)paramQQAppInterface.getManager(77);
-    } while (paramQQAppInterface == null);
-    amzc localamzc = (amzc)paramQQAppInterface.a("qq.android.ar.face.so_v7.9.5");
-    boolean bool2 = a(localamzc);
-    boolean bool1 = bool2;
-    if (!bool2)
-    {
-      bool1 = bool2;
-      if (localamzc != null)
-      {
-        bool1 = bool2;
-        if (localamzc.g())
-        {
-          bool1 = bool2;
-          if (akod.a()) {
-            bool1 = true;
-          }
-        }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilVector.iterator();
+      if (localIterator.hasNext()) {
+        ((akob)localIterator.next()).a(paramLong);
       }
     }
-    if (bool1) {
-      localamzc.a();
-    }
+  }
+  
+  private void d()
+  {
+    long l1 = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+    long l2 = (100 - akai.a().jdField_a_of_type_Int) * Runtime.getRuntime().maxMemory() / 100L;
     if (QLog.isColorLevel()) {
-      QLog.d("FaceScanDownloadManager", 2, "native so config is exist :" + bool1);
+      QLog.d("MemoryReporter", 2, new Object[] { "ReportDump  calculateSharpMemory heapSize= ", Long.valueOf(l1) });
     }
-    paramQQAppInterface = (amzb)paramQQAppInterface.a("qq.android.ar.face.models_v7.1.5");
-    bool2 = a(paramQQAppInterface);
-    if ((!bool2) && (paramQQAppInterface != null) && (paramQQAppInterface.g()) && (akoc.a())) {
-      bool2 = true;
+    if ((jdField_a_of_type_Int != 0) || (l1 > l2))
+    {
+      a(l1);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        InitMagnifierSDK.a(this.jdField_a_of_type_AndroidOsHandler, l1);
+        if ((this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_need_report", false)) && (l1 > this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_use_heap", 0L)) && (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long) > 120000L))
+        {
+          localObject = UnifiedMonitor.a();
+          if (localObject == null) {
+            break label294;
+          }
+        }
+      }
     }
-    for (;;)
+    label294:
+    for (Object localObject = (String)((HashMap)localObject).get("act");; localObject = null)
+    {
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_use_heap", l1).putString("key_act_name", (String)localObject).putBoolean("key_clear_flag", akai.a().jdField_a_of_type_Xov.jdField_a_of_type_Boolean).commit();
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      if ((this.jdField_a_of_type_Boolean) && (System.currentTimeMillis() - this.c > 86400000L))
+      {
+        f();
+        if (QLog.isColorLevel()) {
+          QLog.d("MemoryReporter", 2, "login over 24 hours, report again");
+        }
+      }
+      if ((this.jdField_a_of_type_Boolean) && (System.currentTimeMillis() - this.d > 86400000L)) {
+        e();
+      }
+      return;
+    }
+  }
+  
+  private void e()
+  {
+    if (("0".equals(AppSetting.g())) || (!this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_need_report", false))) {
+      return;
+    }
+    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    String str = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_act_name", "");
+    boolean bool = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_clear_flag", false);
+    long l3 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_use_heap", -1L);
+    long l2 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_threshold", -1L);
+    long l1 = l2;
+    if (l2 == -1L)
+    {
+      l1 = bbct.d();
+      localEditor.putLong("key_threshold", l1);
+    }
+    l2 = this.d;
+    long l4 = this.d;
+    long l5 = Runtime.getRuntime().maxMemory();
+    int i;
+    if (l3 != -1L)
+    {
+      i = 1;
+      if (!bool) {
+        break label239;
+      }
+    }
+    label239:
+    for (int j = 1;; j = 0)
+    {
+      InitMagnifierSDK.a(l2, l4 + 86400000L, str, l3, l5, l1, -1L, i, j);
+      localEditor.remove("key_use_heap").remove("key_act_name").remove("key_clear_flag").remove("key_need_report").commit();
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  private void f()
+  {
+    StringBuffer localStringBuffer = new StringBuffer(512);
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    if (localObject == null) {
+      return;
+    }
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      ajxn localajxn = (ajxn)((QQAppInterface)localObject).getManager(51);
+      int i;
+      if (localajxn != null)
+      {
+        i = localajxn.a();
+        localStringBuffer.append("fc=");
+        localStringBuffer.append(i);
+        localStringBuffer.append("&");
+      }
+      localObject = (ajvk)((QQAppInterface)localObject).getManager(53);
+      if (localObject != null)
+      {
+        i = ((ajvk)localObject).a().size();
+        localStringBuffer.append("dc=");
+        localStringBuffer.append(i);
+        localStringBuffer.append("&");
+        i = ((ajvk)localObject).b();
+        localStringBuffer.append("dmc=");
+        localStringBuffer.append(i);
+        localStringBuffer.append("&");
+      }
+    }
+    InitMagnifierSDK.a(this.jdField_a_of_type_AndroidOsHandler, -1L, -1L, "-1", localStringBuffer.toString());
+    this.c = System.currentTimeMillis();
+  }
+  
+  public void a(akob paramakob)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilVector)
+    {
+      this.jdField_a_of_type_JavaUtilVector.add(paramakob);
+      return;
+    }
+  }
+  
+  public boolean a(long paramLong1, long paramLong2, xov paramxov, int paramInt)
+  {
+    xow localxow = paramxov.a(paramInt);
+    if ((localxow != null) && (paramLong1 >= localxow.jdField_a_of_type_Int * paramLong2 / 100L))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("FaceScanDownloadManager", 2, "models config is exist :" + bool2);
+        QLog.d("MemoryReporter", 2, "onNeedTrimMemory|maxHeap=" + paramLong2 / 1024L / 1024L + ",totalSize=" + paramLong1 / 1024L / 84L);
       }
-      if ((bool1) && (bool2)) {}
-      for (bool1 = bool3;; bool1 = false) {
-        return bool1;
-      }
+      paramxov.jdField_a_of_type_Int = localxow.b;
+      a(paramInt, localxow);
+      return true;
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      f();
+    }
+    c();
+  }
+  
+  public void b(akob paramakob)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilVector)
+    {
+      this.jdField_a_of_type_JavaUtilVector.remove(paramakob);
+      return;
     }
   }
   
-  public static void b(QQAppInterface paramQQAppInterface)
+  public void c()
   {
-    a(paramQQAppInterface, 0);
-    a(paramQQAppInterface, false);
+    if (akai.a().jdField_a_of_type_Xov.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    }
   }
   
-  public static boolean b(QQAppInterface paramQQAppInterface)
+  public boolean handleMessage(Message paramMessage)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp()).getBoolean("key_download_cfg_enable" + paramQQAppInterface.getLongAccountUin(), false);
+    if (Foreground.sCountResume > 0) {}
+    for (boolean bool = true;; bool = false) {
+      switch (paramMessage.what)
+      {
+      default: 
+        return true;
+      }
+    }
+    d();
+    xoz.a().a(bool);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    paramMessage = this.jdField_a_of_type_AndroidOsHandler;
+    if (bool) {}
+    for (long l1 = 5000L;; l1 = 30000L)
+    {
+      paramMessage.sendEmptyMessageDelayed(1, l1);
+      break;
+    }
+    l1 = Runtime.getRuntime().totalMemory();
+    long l2 = Runtime.getRuntime().maxMemory();
+    paramMessage = akai.a().jdField_a_of_type_Xov;
+    xoz.a().c();
+    int i;
+    if (a(l1, l2, paramMessage, 1)) {
+      i = paramMessage.jdField_a_of_type_Int * 1000;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+      int j = i;
+      if (!bool)
+      {
+        j = i;
+        if (i >= 30000) {
+          j = i * 2;
+        }
+      }
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, j);
+      break;
+      if (a(l1, l2, paramMessage, 2)) {
+        i = paramMessage.jdField_a_of_type_Int * 1000;
+      } else if (a(l1, l2, paramMessage, 3)) {
+        i = paramMessage.jdField_a_of_type_Int * 1000;
+      } else {
+        i = 30000;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akoa
  * JD-Core Version:    0.7.0.1
  */

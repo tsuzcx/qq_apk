@@ -11,7 +11,7 @@ import android.view.ViewGroup.LayoutParams;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ArrayBlockingQueue;
-import qny;
+import raj;
 
 public class LayoutInflateProcessor
 {
@@ -24,21 +24,21 @@ public class LayoutInflateProcessor
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
-  private void a(qny paramqny)
+  private void a(raj paramraj)
   {
-    if (paramqny == null) {
+    if (paramraj == null) {
       return;
     }
-    ArrayBlockingQueue localArrayBlockingQueue2 = (ArrayBlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(qny.a(paramqny));
+    ArrayBlockingQueue localArrayBlockingQueue2 = (ArrayBlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(raj.a(paramraj));
     ArrayBlockingQueue localArrayBlockingQueue1;
     if (localArrayBlockingQueue2 == null)
     {
       localArrayBlockingQueue1 = new ArrayBlockingQueue(9);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(qny.a(paramqny), localArrayBlockingQueue1);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(raj.a(paramraj), localArrayBlockingQueue1);
     }
     do
     {
-      paramqny.a = localArrayBlockingQueue1;
+      paramraj.a = localArrayBlockingQueue1;
       return;
       localArrayBlockingQueue1 = localArrayBlockingQueue2;
     } while (localArrayBlockingQueue2.size() != 9);
@@ -79,16 +79,16 @@ public class LayoutInflateProcessor
   }
   
   @UiThread
-  public void a(qny[] paramArrayOfqny)
+  public void a(raj[] paramArrayOfraj)
   {
-    int j = paramArrayOfqny.length;
+    int j = paramArrayOfraj.length;
     int i = 0;
     while (i < j)
     {
-      a(paramArrayOfqny[i]);
+      a(paramArrayOfraj[i]);
       i += 1;
     }
-    ThreadManager.excute(new LayoutInflateProcessor.InflateTask(paramArrayOfqny, this.jdField_a_of_type_AndroidViewLayoutInflater), 16, null, true);
+    ThreadManager.excute(new LayoutInflateProcessor.InflateTask(paramArrayOfraj, this.jdField_a_of_type_AndroidViewLayoutInflater), 16, null, true);
   }
 }
 

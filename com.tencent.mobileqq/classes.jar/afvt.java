@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.activity.ProfileActivity;
-import mqq.app.QQPermissionCallback;
+import android.graphics.Matrix;
 
-class afvt
-  implements QQPermissionCallback
+public class afvt
 {
-  afvt(afvr paramafvr) {}
+  public float a;
+  private final Matrix a;
+  public boolean a;
+  public float b = 0.0F;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public afvt()
   {
-    babr.a(this.a.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.a.a = ProfileActivity.a(this.a.a, 5);
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Float = 0.0F;
   }
 }
 

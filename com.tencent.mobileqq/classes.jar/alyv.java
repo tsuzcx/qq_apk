@@ -1,20 +1,67 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.confess.data.TroopConfessMsg;
-import com.tencent.mobileqq.data.MessageForTroopConfess;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import tencent.im.oidb.cmd0x74b.oidb_0x74b.HeadInfo;
 
-class alyv
-  implements View.OnClickListener
+public class alyv
 {
-  alyv(alyu paramalyu, MessageForTroopConfess paramMessageForTroopConfess) {}
+  public int a;
+  public String a;
+  public ArrayList<alyw> a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void onClick(View paramView)
+  public static alyv a(oidb_0x74b.HeadInfo paramHeadInfo)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items.isEmpty())) {
-      alyx.a(this.jdField_a_of_type_Alyu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Alyu.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_Alyu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessTopicId(), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.confessorUin), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessToUin()));
+    Object localObject;
+    if (paramHeadInfo == null) {
+      localObject = null;
     }
+    alyv localalyv;
+    do
+    {
+      return localObject;
+      localalyv = new alyv();
+      if (paramHeadInfo.uint32_id.has()) {
+        localalyv.jdField_a_of_type_Int = paramHeadInfo.uint32_id.get();
+      }
+      if (paramHeadInfo.str_photohead.has()) {
+        localalyv.jdField_a_of_type_JavaLangString = paramHeadInfo.str_photohead.get();
+      }
+      if (paramHeadInfo.uint32_invalid.has()) {
+        localalyv.b = paramHeadInfo.uint32_invalid.get();
+      }
+      if (paramHeadInfo.uint32_timestamp.has()) {
+        localalyv.c = paramHeadInfo.uint32_timestamp.get();
+      }
+      if (paramHeadInfo.uint32_type.has()) {
+        localalyv.d = paramHeadInfo.uint32_type.get();
+      }
+      localObject = localalyv;
+    } while (!paramHeadInfo.rpt_videoheadlist.has());
+    localalyv.jdField_a_of_type_JavaUtilArrayList = alyw.a(paramHeadInfo.rpt_videoheadlist.get());
+    return localalyv;
+  }
+  
+  public static ArrayList<alyv> a(List<oidb_0x74b.HeadInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      alyv localalyv = a((oidb_0x74b.HeadInfo)paramList.next());
+      if (localalyv != null) {
+        localArrayList.add(localalyv);
+      }
+    }
+    return localArrayList;
   }
 }
 

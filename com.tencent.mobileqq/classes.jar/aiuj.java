@@ -1,91 +1,111 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.barrage.BarrageView;
-import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.io.File;
 
-class aiuj
-  implements aiij
+public class aiuj
 {
-  private WeakReference<aiug> a;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
   
-  public aiuj(aiug paramaiug)
+  public static String a(String paramString1, long paramLong, int paramInt, String paramString2)
   {
-    this.a = new WeakReference(paramaiug);
+    if (TextUtils.isEmpty(paramString1)) {
+      return "";
+    }
+    if (paramString1.endsWith("/")) {
+      return paramString1 + paramLong + "/" + paramInt + "/" + paramString2;
+    }
+    return paramString1 + "/" + paramLong + "/" + paramInt + "/" + paramString2;
   }
   
-  public void a(int paramInt1, int paramInt2, String paramString)
+  public static boolean a(int paramInt, long paramLong, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewController", 2, new Object[] { "mOtherSurfaceView onCompleteRender, roleName=", paramString });
+    if (100 == paramInt) {
+      return new File(ajmu.jdField_b_of_type_JavaLangString + paramInt + "_" + paramLong + "_" + paramString1 + File.separator + paramString2).exists();
     }
-    if (TextUtils.isEmpty(paramString)) {}
+    return false;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_Int + "_" + this.jdField_a_of_type_Long + "_" + this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    if (100 == this.jdField_a_of_type_Int) {
+      return ajmu.jdField_b_of_type_JavaLangString + a() + File.separator;
+    }
+    return "";
+  }
+  
+  public String c()
+  {
+    if (100 == this.jdField_a_of_type_Int) {
+      return b() + this.jdField_b_of_type_Int + ".zip";
+    }
+    return "";
+  }
+  
+  public String d()
+  {
+    if (100 == this.jdField_a_of_type_Int) {
+      return b() + this.jdField_b_of_type_Int + "_patch.zip";
+    }
+    return "";
+  }
+  
+  public String e()
+  {
+    if (100 == this.jdField_a_of_type_Int) {
+      return b() + this.jdField_c_of_type_Int + ".zip";
+    }
+    return "";
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("ContentUpdateCheckResult{");
+    localStringBuffer.append("mBuzId=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", mItemId=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", mName='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mVersion=").append(this.jdField_b_of_type_Int);
+    localStringBuffer.append(", mOldVersion=").append(this.jdField_c_of_type_Int);
+    localStringBuffer.append(", mDownloadFileUrl='").append(this.jdField_b_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mIsPatch=").append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append(", mPatchData=");
+    if (this.jdField_a_of_type_ArrayOfByte == null) {
+      localStringBuffer.append("null");
+    }
     for (;;)
     {
-      return;
-      if (this.a != null)
-      {
-        aiug localaiug = (aiug)this.a.get();
-        ApolloWebAvatarParam localApolloWebAvatarParam;
-        if (localaiug != null)
-        {
-          localApolloWebAvatarParam = aiug.a(localaiug);
-          if ((localApolloWebAvatarParam != null) && (paramString.equals(localApolloWebAvatarParam.apolloId)) && (localaiug.b != null))
-          {
-            aiug.b(localaiug);
-            aiug.a(localaiug).removeMessages(24);
-            localaiug.b.stopLoopDelayed(1000L);
-            if (!TextUtils.isEmpty(aiug.a(localaiug)))
-            {
-              if (!aiug.a(localaiug)) {
-                break label173;
-              }
-              if ((aiug.a(localaiug) == 1) && (localaiug.a != null)) {
-                localaiug.a.b();
-              }
-            }
-          }
-        }
-        while ((localaiug != null) && (localaiug.b != null))
-        {
-          return;
-          label173:
-          if (aiug.a(localaiug) == 1)
-          {
-            if (localaiug.a != null) {
-              localaiug.a.a(true);
-            }
-          }
-          else {
-            localaiug.b.getRenderImpl().a(1, localApolloWebAvatarParam.apolloId, "Bubble");
-          }
-        }
-      }
+      localStringBuffer.append(", mPatchSize=").append(this.jdField_b_of_type_Long);
+      localStringBuffer.append(", mDownloadPatchFileUrl='").append(this.jdField_c_of_type_JavaLangString).append('\'');
+      localStringBuffer.append(", mMd5='").append(this.jdField_d_of_type_JavaLangString).append('\'');
+      localStringBuffer.append(", mDownloadFileName='").append(this.jdField_e_of_type_JavaLangString).append('\'');
+      localStringBuffer.append(", mDownloadPatchFileName='").append(this.jdField_f_of_type_JavaLangString).append('\'');
+      localStringBuffer.append(", mFlagWriteIntervalTs=").append(this.jdField_b_of_type_Boolean);
+      localStringBuffer.append(", mCheckServerInterval=").append(this.jdField_d_of_type_Int);
+      localStringBuffer.append(", mCheckRequestId=").append(this.jdField_e_of_type_Int);
+      localStringBuffer.append(", mDomainId=").append(this.jdField_f_of_type_Int);
+      localStringBuffer.append('}');
+      return localStringBuffer.toString();
+      localStringBuffer.append("mPatchData:").append(this.jdField_a_of_type_ArrayOfByte);
     }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewController", 2, new Object[] { "mOtherSurfaceView onStartRender, roleName=", paramString });
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    aiug localaiug;
-    ApolloWebAvatarParam localApolloWebAvatarParam;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (this.a == null);
-        localaiug = (aiug)this.a.get();
-      } while (localaiug == null);
-      localApolloWebAvatarParam = aiug.a(localaiug);
-    } while ((localApolloWebAvatarParam == null) || (!paramString.equals(localApolloWebAvatarParam.apolloId)));
-    aiug.a(localaiug);
   }
 }
 

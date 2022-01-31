@@ -1,28 +1,11 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment.4.1;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
-
-public class aete
-  extends akfx
+class aete
+  implements mzb
 {
-  public aete(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment, String paramString)
-  {
-    super(paramString);
-  }
+  aete(aerv paramaerv) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 2, "getview onLocationFinish info = " + paramSosoLbsInfo);
-    }
-    if (paramInt != 0)
-    {
-      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 1, "getview onLocationFinish, errorCode=" + paramInt);
-      this.a.a.post(new AddContactViewPagerTroopFragment.4.1(this));
-    }
-  }
+  public void loaded(String paramString, int paramInt) {}
+  
+  public void progress(int paramInt) {}
 }
 
 

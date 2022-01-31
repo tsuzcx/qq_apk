@@ -1,16 +1,22 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
 class qsd
-  extends omr
+  implements DialogInterface.OnDismissListener
 {
-  qsd(qsc paramqsc, String paramString, List paramList)
-  {
-    super(paramString);
-  }
+  qsd(qrw paramqrw) {}
   
-  public void a(oml paramoml)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramoml.a(this.jdField_a_of_type_JavaUtilList);
+    qrw.a(this.a, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
+    if ((qrw.a(this.a) != null) && (qrw.a(this.a).b()) && (qrw.b(this.a)) && (!qrw.c(this.a)) && (qrw.a(this.a)) && (!qrw.d(this.a))) {
+      qrw.a(this.a).c();
+    }
+    if (qrw.a(this.a) != null) {
+      qrw.a(this.a).f();
+    }
+    qrw.a(this.a, false);
   }
 }
 

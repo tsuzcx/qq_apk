@@ -1,6 +1,45 @@
-// INTERNAL ERROR //
+public class albf
+  extends alah
+{
+  public aldz a;
+  public alkh a;
+  public boolean a;
+  public long b;
+  public String b;
+  public int d;
+  public int e = 1;
+  
+  public albf(String paramString1, int paramInt1, int paramInt2, int paramInt3, alkh paramalkh, aldz paramaldz, String paramString2, long paramLong, boolean paramBoolean, int paramInt4, int paramInt5, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    super(paramString1, paramInt1, paramInt2, paramInt5, paramFloat1, paramFloat2, paramFloat3);
+    this.d = paramInt3;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramInt4;
+    this.jdField_a_of_type_Alkh = paramalkh;
+    this.jdField_a_of_type_Aldz = paramaldz;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("OnlineVideoARRenderableInfo{");
+    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mRealRenderType=").append(this.d);
+    localStringBuilder.append(", mKeyingParams='").append(this.jdField_a_of_type_Alkh).append('\'');
+    localStringBuilder.append(", mVideoUrl='").append(this.jdField_b_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", mVideoSize='").append(this.jdField_b_of_type_Long).append('\'');
+    localStringBuilder.append(", mLayout='").append(this.jdField_a_of_type_Aldz).append('\'');
+    localStringBuilder.append(", isSoftPlay='").append(this.jdField_a_of_type_Boolean).append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
+  }
+}
+
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     albf
  * JD-Core Version:    0.7.0.1
  */

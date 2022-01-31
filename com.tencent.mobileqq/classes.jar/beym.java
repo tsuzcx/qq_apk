@@ -1,33 +1,72 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-class beym
-  extends akgd
+public class beym
 {
-  beym(beyl parambeyl, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public static void a(MiniAppInfo paramMiniAppInfo, String paramString, long paramLong1, long paramLong2, int paramInt)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    Object localObject;
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.appId != null) && (!TextUtils.isEmpty(paramString)))
     {
-      String str = paramSosoLbsInfo.a.d;
-      paramSosoLbsInfo = paramSosoLbsInfo.a.e;
-      this.jdField_a_of_type_AndroidOsBundle.putString("province", str);
-      this.jdField_a_of_type_AndroidOsBundle.putString("city", paramSosoLbsInfo);
-      if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(this.jdField_a_of_type_AndroidOsBundle);
+      if (paramLong1 == 0L) {
+        break label349;
+      }
+      localObject = "1";
+    }
+    for (;;)
+    {
+      String str4 = bfgt.a();
+      String str5 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPlatformId();
+      String str6 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion();
+      String str7 = bfgt.e();
+      try
+      {
+        String str1 = new URL(paramString).getHost();
+        if (paramString.indexOf('?') != -1)
+        {
+          str3 = paramString.substring(0, paramString.indexOf('?'));
+          paramString = paramMiniAppInfo.appId + '|' + paramString + '|' + (String)localObject + '|' + String.valueOf(paramInt) + '|' + paramLong2 + '|' + paramLong1 + '|' + str1 + '|' + str3 + '|' + beyn.a() + '|' + paramMiniAppInfo.getReportType() + '|' + "Android" + '|' + System.currentTimeMillis();
+          paramMiniAppInfo = paramString;
+          if (!bfgt.a()) {
+            paramMiniAppInfo = paramString + '|' + str4 + '|' + str5 + '|' + str6 + '|' + str7;
+          }
+          localObject = new Bundle();
+          if (!bfgt.a()) {
+            break label379;
+          }
+          paramString = "dc05116";
+          ((Bundle)localObject).putString("log_key", paramString);
+          ((Bundle)localObject).putStringArray("data", new String[] { paramMiniAppInfo });
+          beot.a().a("cmd_dc_report_log_key_data", (Bundle)localObject, null);
+          return;
+          label349:
+          localObject = "0";
+        }
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        for (;;)
+        {
+          besl.d("MiniProgramLpReportDC05", "reportOneHttpOrDownloadRequest", localMalformedURLException);
+          String str2 = paramString;
+          continue;
+          String str3 = paramString;
+          continue;
+          label379:
+          paramString = "dc05388";
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beym
  * JD-Core Version:    0.7.0.1
  */

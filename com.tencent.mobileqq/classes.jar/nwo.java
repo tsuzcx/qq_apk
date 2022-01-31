@@ -1,18 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.5;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class nwo
-  extends nwd
+public class nwo
+  implements View.OnClickListener
 {
-  nwo(nwn paramnwn) {}
+  public nwo(ReadInJoyNewFeedsActivity.5 param5, FrameLayout paramFrameLayout) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Nwk.a().a(this.a.jdField_a_of_type_Nwx.a.commentId, paramString, paramInt1);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.a.a();
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.a);
+    if (261 == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.a) {
+      bbjn.r(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.app.getCurrentAccountUin(), null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nwo
  * JD-Core Version:    0.7.0.1
  */

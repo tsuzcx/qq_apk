@@ -1,38 +1,33 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import java.util.ArrayList;
 
 public class ayzj
-  extends Handler
+  extends ayzp
 {
-  public ayzj(ayzh paramayzh, Looper paramLooper)
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<ayuo> a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  
+  public ayzj()
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    for (;;)
-    {
-      try
-      {
-        switch (paramMessage.what)
-        {
-        case 2: 
-          return;
-        }
-      }
-      finally {}
-      paramMessage = paramMessage.getData();
-      this.a.b(paramMessage.getDouble("startTime"), paramMessage.getStringArray("pinyins"));
-      this.a.a(0);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" fileID:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayzj
  * JD-Core Version:    0.7.0.1
  */

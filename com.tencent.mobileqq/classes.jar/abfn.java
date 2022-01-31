@@ -1,44 +1,30 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
 
 public class abfn
-  implements CompoundButton.OnCheckedChangeListener
+  extends VasQuickUpdateManager.CallBacker
 {
-  public abfn(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public abfn(FriendProfileCardActivity paramFriendProfileCardActivity, auvd paramauvd, Card paramCard) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
+    if ((paramLong == 15L) && ("cardWZ.zip".equals(paramString1)))
     {
-      beeq.a();
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label81;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b != null)
+      {
+        if (this.jdField_a_of_type_Auvd.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId)) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_Auvd = this.jdField_a_of_type_Auvd;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b.obtainMessage(5, 0, 18, this.jdField_a_of_type_ComTencentMobileqqDataCard).sendToTarget();
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.FrdProfileCard", 2, "send msg of UI_MSG_UPDATE_CARD");
+        }
       }
-      paramCompoundButton = "0X8004BE7";
-      label23:
-      if (!paramBoolean) {
-        break label87;
-      }
-    }
-    label81:
-    label87:
-    for (String str = "0X8004BE7";; str = "0X8004BE6")
-    {
-      awqx.b(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "1", "", "", "");
-      if (AppSetting.c) {
-        NotifyPushSettingActivity.d(this.a).setContentDescription(ajjy.a(2131641854));
-      }
-      return;
-      beeq.b();
-      break;
-      paramCompoundButton = "0X8004BE6";
-      break label23;
+      paramVasQuickUpdateManager.removeCallBacker(this);
     }
   }
 }

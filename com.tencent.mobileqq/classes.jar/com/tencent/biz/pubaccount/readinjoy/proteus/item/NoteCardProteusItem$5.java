@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.item;
 
-import ovi;
+import pgk;
 
 public class NoteCardProteusItem$5
   implements Runnable
 {
-  public NoteCardProteusItem$5(ovi paramovi) {}
+  public NoteCardProteusItem$5(pgk parampgk) {}
   
   public void run()
   {
-    ovi.b(this.this$0);
+    pgk.b(this.this$0);
   }
 }
 

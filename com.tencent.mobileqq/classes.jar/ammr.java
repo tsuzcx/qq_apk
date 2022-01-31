@@ -1,78 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.widget.MultiImageTextView;
 
-public final class ammr
-  extends alzl<ammq>
+public class ammr
+  implements DialogInterface.OnDismissListener
 {
-  public static ammq a()
-  {
-    QLog.d("TencentDocUrl2DocConfigProcessor", 1, "getConfig");
-    return (ammq)alzw.a().a(559);
-  }
+  public ammr(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public static boolean a(String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ammq localammq = a();
-    return (localammq != null) && (localammq.a()) && (localammq.a(paramString));
-  }
-  
-  public int a()
-  {
-    return 559;
-  }
-  
-  @NonNull
-  public ammq a(int paramInt)
-  {
-    QLog.w("TencentDocUrl2DocConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
-    return new ammq();
-  }
-  
-  @Nullable
-  public ammq a(alzs[] paramArrayOfalzs)
-  {
-    return ammq.a(paramArrayOfalzs);
-  }
-  
-  public Class<ammq> a()
-  {
-    return ammq.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.e("TencentDocUrl2DocConfigProcessor", 1, "onReqFailed: " + paramInt);
-  }
-  
-  public void a(ammq paramammq)
-  {
-    QLog.w("TencentDocUrl2DocConfigProcessor", 1, "onUpdate");
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    LocationSelectActivity.a(this.a).setRightTextColor(2);
+    if (AppSetting.d)
+    {
+      LocationSelectActivity.b(this.a).setContentDescription(ajyc.a(2131706298) + LocationSelectActivity.a(this.a).name);
+      LocationSelectActivity.a(this.a).setContentDescription(ajyc.a(2131706296) + LocationSelectActivity.a(this.a).a().getText());
+    }
+    paramDialogInterface = LocationSelectActivity.a(this.a);
+    if (LocationSelectActivity.a(this.a) == 0)
+    {
+      axqw.b(this.a.app, "CliOper", "", "", "0X8004248", "0X8004248", 0, 0, paramDialogInterface[0], paramDialogInterface[1], paramDialogInterface[2], "");
+      return;
+    }
+    axqw.b(this.a.app, "CliOper", "", "", "0X800424A", "0X800424A", 0, 0, paramDialogInterface[0], paramDialogInterface[1], paramDialogInterface[2], "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ammr
  * JD-Core Version:    0.7.0.1
  */

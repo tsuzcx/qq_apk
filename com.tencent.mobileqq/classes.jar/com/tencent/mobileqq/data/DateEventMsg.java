@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
-import ajjy;
-import amvt;
-import amvx;
-import amvy;
+import ajyc;
 import android.text.TextUtils;
+import anmb;
+import anmf;
+import anmg;
 import appoint.define.appoint_define.AppointInfo;
 import appoint.define.appoint_define.DateComment;
 import appoint.define.appoint_define.DateEvent;
 import appoint.define.appoint_define.StrangerInfo;
-import atmo;
-import atnz;
-import atoc;
+import aukm;
+import aulx;
+import auma;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -19,33 +19,33 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import org.json.JSONObject;
 
 public class DateEventMsg
-  extends atmo
+  extends aukm
   implements Comparable<DateEventMsg>
 {
   public int attendIdx;
   public byte bDeleted;
   public byte bReaded;
-  @atnz
-  public amvt date_comment;
-  @atnz
+  @aulx
+  public anmb date_comment;
+  @aulx
   public appoint_define.AppointInfo date_info;
-  @atoc
+  @auma
   public long event_id;
-  @atnz
+  @aulx
   boolean isInited = false;
   public String msg_content;
   public byte[] msg_date_info;
   public String msg_user_info;
-  @atnz
+  @aulx
   public String strReadableTime;
-  @atnz
+  @aulx
   public String strTime;
-  @atnz
+  @aulx
   public String str_event_tips;
   public long time;
   public int type;
-  @atnz
-  public amvx user_info;
+  @aulx
+  public anmf user_info;
   
   public static DateEventMsg convertFrom(appoint_define.DateEvent paramDateEvent)
   {
@@ -61,7 +61,7 @@ public class DateEventMsg
     localDateEventMsg.bReaded = 0;
     if (paramDateEvent.msg_user_info.has())
     {
-      localDateEventMsg.user_info = amvx.a((appoint_define.StrangerInfo)paramDateEvent.msg_user_info.get());
+      localDateEventMsg.user_info = anmf.a((appoint_define.StrangerInfo)paramDateEvent.msg_user_info.get());
       label96:
       if (!paramDateEvent.msg_date_info.has()) {
         break label175;
@@ -79,13 +79,13 @@ public class DateEventMsg
       }
     }
     if (paramDateEvent.msg_comment.has()) {
-      localDateEventMsg.date_comment = amvt.a((appoint_define.DateComment)paramDateEvent.msg_comment.get());
+      localDateEventMsg.date_comment = anmb.a((appoint_define.DateComment)paramDateEvent.msg_comment.get());
     }
     for (;;)
     {
-      amvy.a("DateEventMsg.convertFrom", new Object[] { localDateEventMsg.date_comment });
+      anmg.a("DateEventMsg.convertFrom", new Object[] { localDateEventMsg.date_comment });
       break;
-      amvy.b("DateEventMsg.convertFrom", new Object[] { "msg_comment no value" });
+      anmg.b("DateEventMsg.convertFrom", new Object[] { "msg_comment no value" });
     }
     localDateEventMsg.str_event_tips = paramDateEvent.str_event_tips.get();
     if (TextUtils.isEmpty(localDateEventMsg.str_event_tips)) {
@@ -95,13 +95,13 @@ public class DateEventMsg
     }
     for (;;)
     {
-      amvy.a("DateEventMsg.convertFrom", new Object[] { paramDateEvent.str_event_tips.get(), localDateEventMsg.str_event_tips });
+      anmg.a("DateEventMsg.convertFrom", new Object[] { paramDateEvent.str_event_tips.get(), localDateEventMsg.str_event_tips });
       break;
-      localDateEventMsg.str_event_tips = ajjy.a(2131636989);
+      localDateEventMsg.str_event_tips = ajyc.a(2131702773);
       continue;
-      localDateEventMsg.str_event_tips = ajjy.a(2131636990);
+      localDateEventMsg.str_event_tips = ajyc.a(2131702774);
       continue;
-      localDateEventMsg.str_event_tips = ajjy.a(2131636991);
+      localDateEventMsg.str_event_tips = ajyc.a(2131702775);
     }
   }
   
@@ -147,7 +147,7 @@ public class DateEventMsg
       try
       {
         if (TextUtils.isEmpty(this.msg_user_info)) {}
-        for (this.user_info = null; (this.msg_date_info == null) || (this.msg_date_info.length == 0); this.user_info = amvx.a(new JSONObject(this.msg_user_info)))
+        for (this.user_info = null; (this.msg_date_info == null) || (this.msg_date_info.length == 0); this.user_info = anmf.a(new JSONObject(this.msg_user_info)))
         {
           this.date_info = null;
           if ((this.type != 1) && (this.type != 2)) {
@@ -184,8 +184,8 @@ public class DateEventMsg
             localInvalidProtocolBufferMicroException.printStackTrace();
           }
         }
-        this.date_comment = amvt.a(new JSONObject(this.msg_content));
-        amvy.a("DateEventMsg.init", new Object[] { Integer.valueOf(this.type), this.date_comment, this.msg_content });
+        this.date_comment = anmb.a(new JSONObject(this.msg_content));
+        anmg.a("DateEventMsg.init", new Object[] { Integer.valueOf(this.type), this.date_comment, this.msg_content });
         return;
       }
     } while ((this.type != 3) && (this.type != 4) && (this.type != 5));
@@ -194,7 +194,7 @@ public class DateEventMsg
   
   public void prewrite()
   {
-    Object localObject = amvx.a(this.user_info);
+    Object localObject = anmf.a(this.user_info);
     if (localObject == null)
     {
       localObject = "";
@@ -207,7 +207,7 @@ public class DateEventMsg
       if ((this.type != 1) && (this.type != 2)) {
         break label99;
       }
-      localObject = amvt.a(this.date_comment);
+      localObject = anmb.a(this.date_comment);
       if (localObject != null) {
         break label91;
       }

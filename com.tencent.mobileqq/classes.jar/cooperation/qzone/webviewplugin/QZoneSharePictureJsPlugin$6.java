@@ -1,19 +1,19 @@
 package cooperation.qzone.webviewplugin;
 
-import ajjy;
-import bbac;
-import bbmy;
-import bgic;
+import ajyc;
+import bcdb;
+import bcpw;
+import bhqv;
 import com.tencent.biz.pubaccount.CustomWebView;
 
 public class QZoneSharePictureJsPlugin$6
   implements Runnable
 {
-  public QZoneSharePictureJsPlugin$6(bgic parambgic, bbac parambbac) {}
+  public QZoneSharePictureJsPlugin$6(bhqv parambhqv, bcdb parambcdb) {}
   
   public void run()
   {
-    bbmy.a(this.a.a().getContext(), ajjy.a(2131646544), 0).a();
+    bcpw.a(this.a.a().getContext(), ajyc.a(2131712332), 0).a();
   }
 }
 

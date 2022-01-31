@@ -1,19 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 
-class aqxj
-  implements DialogInterface.OnCancelListener
+final class aqxj
+  implements DialogInterface.OnClickListener
 {
-  aqxj(aqxa paramaqxa) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b(false);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqxj
  * JD-Core Version:    0.7.0.1
  */

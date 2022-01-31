@@ -1,14 +1,21 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
 public class awdj
-  implements BusinessObserver
+  implements View.OnTouchListener
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public awdj(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return SignatureHistoryFragment.a(this.a, paramView, false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     awdj
  * JD-Core Version:    0.7.0.1
  */

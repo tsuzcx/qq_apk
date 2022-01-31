@@ -73,11 +73,12 @@ public class RenderActionContextImpl
   
   public void setLayout(String paramString, DomObject paramDomObject)
   {
-    paramString = (VComponent)this.mRegistry.get(paramString);
-    if (paramString == null) {
+    VComponent localVComponent = (VComponent)this.mRegistry.get(paramString);
+    if (localVComponent == null) {}
+    while ((paramString != null) && (!paramString.equals(localVComponent.getRef()))) {
       return;
     }
-    paramString.applyLayout(paramDomObject);
+    localVComponent.applyLayout(paramDomObject);
   }
   
   public VComponent unregisterComponent(String paramString)

@@ -1,8 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.MsfSocketInputBuffer;
 
 public abstract interface aizh
 {
-  public abstract void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  public abstract void a(MsfSocketInputBuffer paramMsfSocketInputBuffer);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract byte[] a();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

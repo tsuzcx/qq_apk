@@ -1,13 +1,12 @@
-public class nad
+public abstract interface nad
 {
-  public boolean a = true;
-  public boolean b;
-  public boolean c = true;
-  public boolean d;
+  public abstract void a();
+  
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     nad
  * JD-Core Version:    0.7.0.1
  */

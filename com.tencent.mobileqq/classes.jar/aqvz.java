@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import android.net.Uri;
 
-public final class aqvz
-  implements Parcelable.Creator<MusicInfo>
+public abstract interface aqvz
 {
-  public MusicInfo a(Parcel paramParcel)
-  {
-    return new MusicInfo(paramParcel, null);
-  }
+  public abstract void a(Uri paramUri);
   
-  public MusicInfo[] a(int paramInt)
-  {
-    return new MusicInfo[paramInt];
-  }
+  public abstract void a(String paramString1, String paramString2, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqvz
  * JD-Core Version:    0.7.0.1
  */

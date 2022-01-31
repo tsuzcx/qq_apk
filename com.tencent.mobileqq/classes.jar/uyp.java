@@ -1,17 +1,11 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
-
-public class uyp
-  implements uyq
+final class uyp
+  extends ThreadLocal<StringBuilder>
 {
-  public void a(List<uyn> paramList, DoodleView paramDoodleView)
+  protected StringBuilder a()
   {
-    uxt localuxt = new uxt(paramDoodleView);
-    uyd localuyd = new uyd(paramDoodleView);
-    paramDoodleView = new uyh(paramDoodleView);
-    paramList.add(localuxt);
-    paramList.add(localuyd);
-    paramList.add(paramDoodleView);
+    StringBuilder localStringBuilder = new StringBuilder(512);
+    localStringBuilder.setLength(0);
+    return localStringBuilder;
   }
 }
 

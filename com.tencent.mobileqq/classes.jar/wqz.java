@@ -1,21 +1,22 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.videostory.capture.AEBottomListPart.5.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class wqz
-  implements bhwg<Boolean>
+  implements oob
 {
-  wqz(wqq paramwqq) {}
+  public wqz(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void a(String paramString1, String paramString2)
   {
-    ThreadManager.getFileThreadHandler().postAtFrontOfQueue(new AEBottomListPart.5.1(this));
+    QLog.i("SubscribeVideoDetailFragment", 1, "sendUrlToUUIDRequest getUUID Success");
+    if (this.a.a != null) {
+      this.a.a.f(paramString2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wqz
  * JD-Core Version:    0.7.0.1
  */

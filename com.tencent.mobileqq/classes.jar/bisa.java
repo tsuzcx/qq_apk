@@ -1,80 +1,28 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.3.1;
+import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.3.2;
+import mqq.os.MqqHandler;
 
-public abstract class bisa
-  implements TextWatcher, TextView.OnEditorActionListener
+public class bisa
+  implements biqq
 {
-  protected EditText a;
-  protected TextView a;
-  protected bisb a;
+  bisa(biry parambiry) {}
   
-  @NonNull
-  public static bisa a(int paramInt)
+  public void a(MetaMaterial paramMetaMaterial)
   {
-    switch (paramInt)
-    {
-    default: 
-      throw new IllegalArgumentException("unSupport interactType:" + paramInt);
-    }
-    return new bisd();
+    ThreadManager.getUIHandler().post(new AEVideoStoryGIFTplViewModel.3.1(this, paramMetaMaterial));
   }
   
-  protected abstract View a();
-  
-  public abstract bisc a();
-  
-  public void a() {}
-  
-  public void a(Context paramContext, bisc parambisc, EditText paramEditText, TextView paramTextView, bisb parambisb)
+  public void a(MetaMaterial paramMetaMaterial, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_Bisb = parambisb;
+    biry.a(this.a).a(new biqv(paramMetaMaterial, 1, paramInt));
   }
   
-  protected void a(CharSequence paramCharSequence, int paramInt)
+  public void b(MetaMaterial paramMetaMaterial)
   {
-    int i = baip.b(paramCharSequence.toString());
-    if (paramInt - i <= 6)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("%s/%s", new Object[] { Integer.valueOf(i / 2), Integer.valueOf(paramInt / 2) }));
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    ThreadManager.getUIHandler().post(new AEVideoStoryGIFTplViewModel.3.2(this, paramMetaMaterial));
   }
-  
-  protected void a(CharSequence paramCharSequence, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetEditText.setHint(paramCharSequence);
-      this.jdField_a_of_type_AndroidWidgetEditText.getText().clear();
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-  }
-  
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    return false;
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

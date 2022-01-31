@@ -1,24 +1,22 @@
-import android.annotation.TargetApi;
-import android.content.ClipData;
-import android.content.Context;
-import android.os.Build.VERSION;
+import com.tencent.av.service.AVRedPacketConfig;
 
-public final class mpb
+public class mpb
 {
-  @TargetApi(11)
-  public static void a(Context paramContext, String paramString)
+  public AVRedPacketConfig a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b = true;
+  public boolean c;
+  
+  public String toString()
   {
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      ((android.content.ClipboardManager)paramContext.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, paramString));
-      return;
-    }
-    ((android.text.ClipboardManager)paramContext.getSystemService("clipboard")).setText(paramString);
+    return "AVRedBagConfig, mMainSwitch[" + this.a + "], mResReady[" + this.c + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mpb
  * JD-Core Version:    0.7.0.1
  */

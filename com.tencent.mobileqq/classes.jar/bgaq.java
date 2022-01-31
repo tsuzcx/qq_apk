@@ -1,17 +1,15 @@
-import cooperation.qzone.plugin.PluginRecord;
+import android.os.IInterface;
 
-class bgaq
+public abstract interface bgaq
+  extends IInterface
 {
-  bgar jdField_a_of_type_Bgar;
-  bgas jdField_a_of_type_Bgas;
-  PluginRecord jdField_a_of_type_CooperationQzonePluginPluginRecord;
-  String jdField_a_of_type_JavaLangString;
+  public abstract String a();
   
-  bgaq(bgao parambgao) {}
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgaq
  * JD-Core Version:    0.7.0.1
  */

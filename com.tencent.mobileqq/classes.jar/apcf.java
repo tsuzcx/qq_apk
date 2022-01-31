@@ -1,12 +1,14 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
-
-final class apcf
-  implements Comparator<FileInfo>
+class apcf
+  extends apbq
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  public apcf(apbe paramapbe)
   {
-    return (int)(paramFileInfo2.b() / 1000L - paramFileInfo1.b() / 1000L);
+    super(paramapbe);
+  }
+  
+  protected String a()
+  {
+    return "StateSenderCancelSend";
   }
 }
 

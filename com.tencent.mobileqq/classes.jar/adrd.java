@@ -1,87 +1,27 @@
-import android.app.Activity;
-import android.view.View;
-import com.etrump.mixlayout.ETFont;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class adrd
-  implements bbgc
+  implements DialogInterface.OnClickListener
 {
-  adrd(adra paramadra, boolean paramBoolean) {}
+  adrd(adrb paramadrb) {}
   
-  public void a(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextItemBuilder", 2, "SingleTap invoked!");
+    if (!bbev.g(this.a.a.jdField_a_of_type_AndroidContentContext)) {
+      bdid.a().a(2131691557);
     }
-    Object localObject = (AnimationTextView)paramView;
-    float f1 = ((AnimationTextView)localObject).a - adra.e;
-    float f2 = ((AnimationTextView)localObject).b;
-    float f3 = adra.c;
-    if (this.jdField_a_of_type_Boolean) {
-      f1 = ((AnimationTextView)localObject).a - adra.f;
-    }
-    localObject = ((AnimationTextView)localObject).getText();
-    int k;
-    boolean bool2;
-    int j;
-    boolean bool1;
-    if ((localObject instanceof axkd))
+    do
     {
-      localObject = (axkd)localObject;
-      localObject = (axkk[])((axkd)localObject).getSpans(0, ((axkd)localObject).length(), axkk.class);
-      if (!(paramView instanceof ETTextView)) {
-        break label325;
-      }
-      paramView = (ETTextView)paramView;
-      k = paramView.b;
-      int m = paramView.c;
-      if ((paramView.a == null) || (paramView.a.mFontId == 0) || (paramView.a.mFontType != 1)) {
-        break label307;
-      }
-      bool2 = true;
-      i = k;
-      j = m;
-      bool1 = bool2;
-      if (bool2)
-      {
-        i = k;
-        j = m;
-        bool1 = bool2;
-        if (paramView.a() != null)
-        {
-          paramView = paramView.a();
-          if (QLog.isColorLevel()) {
-            QLog.d("ChatItemBuilder", 2, "isHanYiFont, onlyEmoji: " + paramView.jdField_a_of_type_Boolean);
-          }
-          if (paramView.jdField_a_of_type_Boolean) {
-            break label313;
-          }
-          bool1 = true;
-          label241:
-          j = m;
-        }
-      }
-    }
-    for (int i = k;; i = -1)
-    {
-      if ((i != -1) && (j != -1)) {}
-      for (bool2 = true;; bool2 = false)
-      {
-        anjd.a((axkk[])localObject, f1, f2 - f3, bool2, i, j, this.jdField_a_of_type_Adra.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adra.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (Activity)this.jdField_a_of_type_Adra.jdField_a_of_type_AndroidContentContext, bool1);
-        return;
-        label307:
-        bool2 = false;
-        break;
-        label313:
-        bool1 = false;
-        break label241;
-      }
-      label325:
-      bool1 = false;
-      j = -1;
-    }
+      return;
+      paramDialogInterface = (yak)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
+      paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, 1, 0);
+      paramDialogInterface = paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
+    } while (paramDialogInterface == null);
+    ymw.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), "Usr_AIO_Menu", 5, 0, paramDialogInterface.productId);
   }
 }
 

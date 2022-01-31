@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import ndn;
-import new;
+import noo;
+import npx;
 
 class ReadInJoyVideoSubChannelActivity$4
   implements Runnable
@@ -10,7 +10,7 @@ class ReadInJoyVideoSubChannelActivity$4
   
   public void run()
   {
-    ndn.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", new.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
+    noo.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", npx.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
   }
 }
 

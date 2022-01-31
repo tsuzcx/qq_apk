@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.pic;
 
-import atpl;
-import atpv;
+import aunj;
+import aunt;
 
 class PicPreDownloader$8
   implements Runnable
 {
-  PicPreDownloader$8(PicPreDownloader paramPicPreDownloader, atpv paramatpv) {}
+  PicPreDownloader$8(PicPreDownloader paramPicPreDownloader, aunt paramaunt) {}
   
   public void run()
   {
-    atpl.a(this.a, this.this$0.a);
+    aunj.a(this.a, this.this$0.a);
   }
 }
 

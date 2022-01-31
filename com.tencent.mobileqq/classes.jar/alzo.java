@@ -1,106 +1,141 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Intent;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
+import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity.CoverTransProcessorHandler.1;
+import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity.CoverTransProcessorHandler.2;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
-import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.SelfInfo;
+import mqq.util.WeakReference;
 
 public class alzo
-  implements Manager
+  extends ayvz
 {
-  public static byte a;
-  private int jdField_a_of_type_Int = 0;
-  private NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
+  WeakReference<QQAppInterface> a;
+  WeakReference<SelectCoverActivity> b;
   
-  static
+  public alzo(QQAppInterface paramQQAppInterface, SelectCoverActivity paramSelectCoverActivity)
   {
-    jdField_a_of_type_Byte = 30;
+    this.a = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramSelectCoverActivity);
   }
   
-  public alzo(NearbyAppInterface paramNearbyAppInterface)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
-  }
-  
-  public static int a(QQAppInterface paramQQAppInterface)
-  {
-    return ((Integer)asfc.a(paramQQAppInterface.getCurrentAccountUin(), "nearby_usercard_tab_host", Integer.valueOf(0))).intValue();
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return ((Integer)asfc.a(paramQQAppInterface.getCurrentAccountUin(), "face_score_switch", Integer.valueOf(0))).intValue() == 1;
-  }
-  
-  public static int b(QQAppInterface paramQQAppInterface)
-  {
-    return ((Integer)asfc.a(paramQQAppInterface.getCurrentAccountUin(), "nearby_usercard_tab_guest", Integer.valueOf(-1))).intValue();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a() {}
-  
-  public void a(NearbyAppInterface paramNearbyAppInterface, oidb_0x8dd.SelfInfo paramSelfInfo)
-  {
-    int i = 2;
-    QLog.d("NearbyNiche", 2, "writeSelfInfo" + paramSelfInfo);
-    if (paramSelfInfo == null) {}
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    SelectCoverActivity localSelectCoverActivity = (SelectCoverActivity)this.b.get();
+    if ((localQQAppInterface == null) || (localSelectCoverActivity == null)) {}
+    Object localObject;
+    label298:
     do
     {
       return;
-      Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramNearbyAppInterface.getCurrentAccountUin(), 4);
-      if (localObject != null)
+      localObject = (ayqm)paramMessage.obj;
+      switch (paramMessage.what)
       {
-        localObject = ((SharedPreferences)localObject).edit().putString("nick", paramSelfInfo.bytes_nick.get().toStringUtf8()).putInt("charm_level", paramSelfInfo.uint32_charm_level.get()).putInt("charm", paramSelfInfo.uint32_charm.get()).putString("third_line", paramSelfInfo.str_third_line_info.get()).putString("third_line_icon", paramSelfInfo.str_third_line_icon.get()).putInt("god_flag", paramSelfInfo.uint32_god_flag.get()).putInt("real_video_auth", paramSelfInfo.uint32_real_video_flag.get()).putInt("gender", paramSelfInfo.uint32_gender.get()).putInt("age", paramSelfInfo.uint32_age.get()).putInt("task_finished", paramSelfInfo.uint32_finish_task_num.get()).putInt("task_total", paramSelfInfo.uint32_all_task_num.get());
-        if (paramSelfInfo.uint32_vote_num.get() >= 0) {
-          ((SharedPreferences.Editor)localObject).putInt("vote", paramSelfInfo.uint32_vote_num.get());
+      case 1004: 
+      default: 
+        return;
+      case 1003: 
+        if (((ayqm)localObject).b == 48)
+        {
+          paramMessage = ((ayst)((ayqm)localObject).a).a;
+          if (QLog.isColorLevel()) {
+            QLog.i("SelectCoverActivity", 2, "mPhotoUploadHandler.handleMessage(), static avatar upload success. photoId = " + paramMessage);
+          }
+          paramMessage = (ajtk)localQQAppInterface.a(2);
+          if (paramMessage != null) {
+            paramMessage.a(true, localQQAppInterface.getCurrentAccountUin(), 0);
+          }
+          bazo.a(null);
+          if (((Integer)atbg.a(localQQAppInterface.getAccount(), "qq_avatar_type", Integer.valueOf(-1))).intValue() != 1) {
+            atbg.a(localQQAppInterface.getAccount(), "qq_avatar_type", Integer.valueOf(1));
+          }
+          if (localSelectCoverActivity.jdField_d_of_type_Int != 3)
+          {
+            int i = localSelectCoverActivity.f;
+            localObject = localSelectCoverActivity.c;
+            String str = localSelectCoverActivity.jdField_d_of_type_JavaLangString;
+            if (localSelectCoverActivity.a)
+            {
+              paramMessage = "1";
+              axqw.b(localQQAppInterface, "dc00898", "", "", "0X800711D", "0X800711D", 0, 0, String.valueOf(i), (String)localObject, str, paramMessage);
+            }
+          }
+          else
+          {
+            if (!SelectCoverActivity.a(localSelectCoverActivity)) {
+              break label298;
+            }
+            paramMessage = new Intent();
+            paramMessage.putExtra("key_photo_file_path", SelectCoverActivity.a(localSelectCoverActivity));
+            localSelectCoverActivity.setResult(-1, paramMessage);
+          }
+          for (;;)
+          {
+            localSelectCoverActivity.finish();
+            return;
+            paramMessage = "0";
+            break;
+            if (localSelectCoverActivity.jdField_d_of_type_Int == 3)
+            {
+              paramMessage = new Intent(localSelectCoverActivity, AvatarPendantActivity.class);
+              localObject = localSelectCoverActivity.getIntent();
+              paramMessage.putExtra("fromThirdApp", true);
+              paramMessage.putExtra("pkg_name", ((Intent)localObject).getStringExtra("pkg_name"));
+              paramMessage.putExtra("app_name", ((Intent)localObject).getStringExtra("app_name"));
+              localObject = ((Intent)localObject).getStringExtra("share_id");
+              paramMessage.putExtra("share_id", (String)localObject);
+              axqw.b(localQQAppInterface, "dc00898", "", "", "0X8009DFA", "0X8009DFA", 0, 0, (String)localObject, "", "", "");
+              paramMessage.putExtra("AllInOne", new ProfileActivity.AllInOne(localQQAppInterface.getCurrentAccountUin(), 0));
+              localSelectCoverActivity.startActivity(paramMessage);
+            }
+            else
+            {
+              localSelectCoverActivity.setResult(-1);
+            }
+          }
         }
-        if (paramSelfInfo.uint32_vote_increment.get() >= 0) {
-          ((SharedPreferences.Editor)localObject).putInt("vote_increment", paramSelfInfo.uint32_vote_increment.get());
+        if (((ayqm)localObject).b == 36)
+        {
+          paramMessage = ((ayst)((ayqm)localObject).a).b;
+          if (QLog.isColorLevel()) {
+            QLog.i("SelectCoverActivity", 2, "mPhotoUploadHandler.handleMessage(), big video upload success. videoId = " + paramMessage);
+          }
+          ThreadManager.post(new SelectCoverActivity.CoverTransProcessorHandler.1(this, localSelectCoverActivity, localQQAppInterface), 8, null, true);
+          return;
         }
-        ((SharedPreferences.Editor)localObject).commit();
+        if (((ayqm)localObject).b == 37)
+        {
+          paramMessage = ((ayst)((ayqm)localObject).a).b;
+          if (QLog.isColorLevel()) {
+            QLog.i("SelectCoverActivity", 2, "mPhotoUploadHandler.handleMessage(), medium video upload success. videoId = " + paramMessage);
+          }
+          ThreadManager.post(new SelectCoverActivity.CoverTransProcessorHandler.2(this, localSelectCoverActivity, localQQAppInterface), 8, null, true);
+          return;
+        }
+        break;
       }
-    } while (paramSelfInfo.uint32_gender.get() == -1);
-    switch (paramSelfInfo.uint32_gender.get())
-    {
+    } while (((ayqm)localObject).b != 38);
+    paramMessage = ((ayst)((ayqm)localObject).a).b;
+    if (QLog.isColorLevel()) {
+      QLog.i("SelectCoverActivity", 2, "mPhotoUploadHandler.handleMessage(), small video upload success. videoId = " + paramMessage);
     }
-    for (i = 0;; i = 1)
-    {
-      asfc.a(paramNearbyAppInterface.getAccount(), "self_gender", Integer.valueOf(i));
-      return;
+    alzl.a(localQQAppInterface, localSelectCoverActivity.b);
+    bazo.a(localSelectCoverActivity.b);
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.i("SelectCoverActivity", 2, "mPhotoUploadHandler.handleMessage(), upload photo failed.");
     }
+    SelectCoverActivity.a(localSelectCoverActivity, 2, ajyc.a(2131713707), 0);
+    bazo.a(null);
   }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      this.jdField_a_of_type_Int = Integer.valueOf(paramString).intValue();
-      return;
-    }
-    catch (Exception paramString)
-    {
-      this.jdField_a_of_type_Int = 0;
-    }
-  }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alzo
  * JD-Core Version:    0.7.0.1
  */

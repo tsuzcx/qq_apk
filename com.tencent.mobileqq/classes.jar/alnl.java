@@ -1,29 +1,26 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.view.View;
+import com.tencent.ark.ark.VariantWrapper;
 
 class alnl
-  extends AnimatorListenerAdapter
+  implements alov
 {
-  alnl(alni paramalni, ObjectAnimator paramObjectAnimator) {}
+  alnl(alnk paramalnk, long paramLong) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Alnk.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (this.jdField_a_of_type_Alni.c != null) {
-      this.jdField_a_of_type_Alni.c.setVisibility(0);
-    }
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    alnh.a(this.jdField_a_of_type_Alnk.a, this.jdField_a_of_type_Long, paramBoolean, "Motion", paramFloat1, paramFloat2, paramFloat3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alnl
  * JD-Core Version:    0.7.0.1
  */

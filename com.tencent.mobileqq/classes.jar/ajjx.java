@@ -1,74 +1,43 @@
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
-public class ajjx
+class ajjx
 {
-  public static final String[] a;
-  private static final String[] b = { "MSG", "RESUME", "TICK", "FG", "BG", "ENTER", "MAIN" };
   public int a;
-  public GuardManager a;
-  protected long c;
-  protected long d;
+  public String a;
+  public final List<ajjy> a;
   
-  static
+  public ajjx()
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "EMPTY", "BG_FETCH", "FG_MAIN", "FG_OTHER", "BG_GUARD", "BG_UNGUARD", "LITE_GUARD", "LITE_UNGUARD", "DEAD" };
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a()
+  public JSONObject a(String paramString, AppInterface paramAppInterface)
   {
-    this.c += 1L;
-    this.d += 1L;
-  }
-  
-  public final void a(int paramInt, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GuardManager", 2, jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int] + " onEvent " + b[paramInt] + ", " + paramObject + ", " + this.c + ", " + this.d);
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramAppInterface == null)) {
+      return null;
     }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 2: 
-      a();
-      return;
-    case 0: 
-      b();
-      return;
-    case 3: 
-      a((String)paramObject);
-      return;
-    case 4: 
-      d((String)paramObject);
-      return;
-    case 5: 
-      b((String)paramObject);
-      return;
-    case 6: 
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(2, null);
-      return;
+    JSONObject localJSONObject = new JSONObject();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((ajjy)localIterator.next()).a(paramString, localJSONObject, paramAppInterface);
     }
-    c((String)paramObject);
+    return localJSONObject;
   }
   
-  protected void a(String paramString) {}
-  
-  protected void b() {}
-  
-  protected void b(String paramString)
+  public String toString()
   {
-    this.d = 0L;
-    this.c = 0L;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mClientId:").append(this.jdField_a_of_type_Int).append(" mCmdSSOName:").append(this.jdField_a_of_type_JavaLangString).append(" mParameters:").append(this.jdField_a_of_type_JavaUtilList);
+    return localStringBuilder.toString();
   }
-  
-  protected void c(String paramString) {}
-  
-  protected void d(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajjx
  * JD-Core Version:    0.7.0.1
  */

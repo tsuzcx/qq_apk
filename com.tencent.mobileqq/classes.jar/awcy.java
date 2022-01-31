@@ -1,82 +1,84 @@
-import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
 import java.util.ArrayList;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import java.util.List;
 
 public class awcy
-  extends MSFServlet
+  extends akgp
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private awcy(SignTextEditFragment paramSignTextEditFragment) {}
+  
+  protected void e(boolean paramBoolean, Object paramObject)
   {
-    paramIntent.getStringExtra("key_cmd_string");
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
+    if (paramObject == null) {
+      SignTextEditFragment.a(this.a, 2);
+    }
+    for (;;)
     {
-      paramIntent = paramFromServiceMsg.getWupBuffer();
-      arrayOfInt = new int[1];
-      paramIntent = bfqk.a(paramIntent, (QQAppInterface)getAppRuntime(), arrayOfInt);
-      if (paramIntent != null)
+      return;
+      paramObject = (Bundle)paramObject;
+      int i = paramObject.getInt("param_searchResult", 0);
+      paramObject = (ArrayList)paramObject.getSerializable("param_topicInfoList");
+      if ((paramObject == null) || (paramObject.size() <= 0)) {
+        if (i == 0) {
+          SignTextEditFragment.a(this.a, 3);
+        }
+      }
+      while (this.a.jdField_a_of_type_Aipq.a(paramObject, true))
       {
-        paramFromServiceMsg = new Bundle();
-        paramFromServiceMsg.putSerializable("data", paramIntent);
-        notifyObserver(null, 1001, true, paramFromServiceMsg, atdk.class);
+        this.a.jdField_a_of_type_Aipq.notifyDataSetChanged();
+        return;
+        SignTextEditFragment.a(this.a, 2);
+        continue;
+        SignTextEditFragment.a(this.a, 4);
       }
     }
-    while (paramFromServiceMsg == null)
-    {
-      int[] arrayOfInt;
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneFeedsServlet", 2, new Object[] { "inform QZoneFeedsServlet isSuccess false:", paramFromServiceMsg.getBusinessFailMsg() });
-      }
-      notifyObserver(null, 1001, false, new Bundle(), atdk.class);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneFeedsServlet", 2, "inform QZoneFeedsServlet resultcode fail.");
-    }
-    notifyObserver(null, 1001, false, new Bundle(), atdk.class);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  protected void f(boolean paramBoolean, Object paramObject)
   {
-    if (paramIntent == null) {}
-    long l1;
-    do
+    if (paramObject == null)
     {
+      SignTextEditFragment.a(this.a, 2);
       return;
-      l1 = paramIntent.getLongExtra("selfuin", 0L);
-      localObject1 = paramIntent.getLongArrayExtra("hostuin");
-    } while (localObject1 == null);
-    Object localObject2 = new ArrayList(localObject1.length);
-    int j = localObject1.length;
-    int i = 0;
-    while (i < j)
-    {
-      ((ArrayList)localObject2).add(Long.valueOf(localObject1[i]));
-      i += 1;
     }
-    long l2 = paramIntent.getLongExtra("lasttime", 0L);
-    i = paramIntent.getIntExtra("src", 0);
-    localObject2 = new bfqk(l1, (ArrayList)localObject2, l2, paramIntent.getStringExtra("refer"), i);
-    Object localObject1 = ((bfqk)localObject2).encode();
-    paramIntent.putExtra("key_cmd_string", ((bfqk)localObject2).getCmdString());
-    if (localObject1 == null) {}
-    for (paramIntent = new byte[4];; paramIntent = (Intent)localObject1)
+    Object localObject = (Bundle)paramObject;
+    int j = ((Bundle)localObject).getInt("param_atIndex");
+    int k = ((Bundle)localObject).getInt("param_atKeyLen");
+    paramObject = ((Bundle)localObject).getString("param_atKey");
+    long l = ((Bundle)localObject).getLong("param_reqTs");
+    localObject = (ArrayList)((Bundle)localObject).getSerializable("param_topicInfoList");
+    int i;
+    if (localObject == null)
     {
-      paramPacket.setTimeout(60000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + "getAIONewestFeed");
-      paramPacket.putSendData(paramIntent);
+      i = 0;
+      if (QLog.isColorLevel()) {
+        QLog.i("SignTextEditFragment", 2, String.format("onGetTopicWithKey[%b,%d] key=[%s] [atIndex=%d, keyLen=%d],reqTs=%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i), paramObject, Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l) }));
+      }
+      if ((localObject != null) && (((List)localObject).size() > 0)) {
+        break label240;
+      }
+      SignTextEditFragment.a(this.a, 3);
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_Aipq.a((List)localObject, false)) {
+        this.a.jdField_a_of_type_Aipq.notifyDataSetChanged();
+      }
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setTag(new Object[] { Integer.valueOf(j), Integer.valueOf(k), paramObject, Long.valueOf(l) });
       return;
+      i = ((List)localObject).size();
+      break;
+      label240:
+      SignTextEditFragment.a(this.a, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     awcy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,18 @@
-import android.view.View;
-import com.dataline.activities.PrinterSubOptionActivity;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
 import com.tencent.widget.XListView;
-import java.util.List;
 
 public class cr
-  implements dg
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public cr(PrinterSubOptionActivity paramPrinterSubOptionActivity) {}
+  public cr(LiteActivity paramLiteActivity) {}
   
-  public void a(int paramInt)
+  public void onGlobalLayout()
   {
-    if (this.a.jdField_a_of_type_Ajgm.a != null)
-    {
-      List localList = this.a.jdField_a_of_type_Ajgm.a.a();
-      if ((localList == null) || (localList.size() > 0)) {
-        break label79;
-      }
-      this.a.findViewById(2131300063).setVisibility(0);
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Ajgm.a.a();
-      return;
-      label79:
-      PrinterSubOptionActivity.a(this.a);
+    int i = this.a.a.getBottom() - LiteActivity.a(this.a).getTop();
+    if ((LiteActivity.a(this.a).getVisibility() == 0) && (this.a.a.getPaddingBottom() != i)) {
+      this.a.a.setPadding(this.a.a.getPaddingLeft(), this.a.a.getPaddingTop(), this.a.a.getPaddingRight(), i);
     }
   }
 }

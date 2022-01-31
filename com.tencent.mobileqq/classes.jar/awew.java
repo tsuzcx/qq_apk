@@ -1,8 +1,15 @@
-public abstract interface awew
+public class awew
 {
-  public abstract void a(int paramInt);
+  public String a;
+  public String b;
   
-  public abstract void b(int paramInt);
+  public awew() {}
+  
+  public awew(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
 }
 
 

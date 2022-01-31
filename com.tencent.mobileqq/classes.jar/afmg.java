@@ -1,20 +1,33 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
+import android.os.Bundle;
+import com.tencent.widget.AbsListView;
 
 class afmg
-  implements aryj
+  implements bfob
 {
-  afmg(afmf paramafmf) {}
+  afmg(afma paramafma) {}
   
-  public void a()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.jdField_a_of_type_Aryq.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
-    this.a.jdField_a_of_type_Aryq.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.v();
+    afma.a(this.a, paramInt1 + paramInt2 - 1);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt != 0) {
+      return;
+    }
+    if (afma.b(this.a) >= this.a.getCount() - 2)
+    {
+      paramAbsListView = new Bundle();
+      paramAbsListView.putString("from", "4");
+      afma.a(this.a).b(4, afma.a(this.a), paramAbsListView);
+    }
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afmg
  * JD-Core Version:    0.7.0.1
  */

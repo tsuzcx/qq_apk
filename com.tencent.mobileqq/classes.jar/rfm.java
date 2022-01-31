@@ -1,21 +1,26 @@
-import android.view.ViewTreeObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 
-public class rfm
-  implements rfv
+class rfm
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  rfm(rfl paramrfl, int paramInt, TabChannelCoverInfo paramTabChannelCoverInfo, ImageView paramImageView) {}
   
-  public rfm(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new rfn(this, ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView), paramInt1, paramInt2));
+    if (rfl.a(this.jdField_a_of_type_Rfl) != null) {
+      rfl.a(this.jdField_a_of_type_Rfl).a(this.jdField_a_of_type_Int);
+    }
+    paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo;
+    int j = oes.b;
+    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {}
+    for (int i = 1;; i = 0)
+    {
+      oes.a("0X8009496", paramView, j, i, this.jdField_a_of_type_Int);
+      return;
+    }
   }
 }
 

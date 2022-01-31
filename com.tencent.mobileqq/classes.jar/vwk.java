@@ -1,29 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
-
-public class vwk
-  implements ValueAnimator.AnimatorUpdateListener
+class vwk
 {
-  private View jdField_a_of_type_AndroidViewView;
+  static void a(String paramString1, String paramString2) {}
   
-  private vwk(FollowedRecommendBannerView paramFollowedRecommendBannerView, View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
+  static void b(String paramString1, String paramString2) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-  }
+  static void c(String paramString1, String paramString2) {}
+  
+  static void d(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vwk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.MessageMicro;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
-public abstract interface soj
+public class soj
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  public soj(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(MessageMicro paramMessageMicro);
-  
-  public abstract void a(boolean paramBoolean, Bundle paramBundle);
+  public void onClick(View paramView)
+  {
+    if (this.a.a.isShowing()) {
+      this.a.a.dismiss();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     soj
  * JD-Core Version:    0.7.0.1
  */

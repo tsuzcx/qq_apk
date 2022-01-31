@@ -1,39 +1,21 @@
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.5;
 
 public class arvw
-  implements arud
+  implements DialogInterface.OnClickListener
 {
-  public arvw(MultiCardFragment paramMultiCardFragment) {}
+  public arvw(LocationDialogUtil.5 param5) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (MultiCardFragment.a(this.a) != null) {
-      MultiCardFragment.a(this.a).a();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (MultiCardFragment.a(this.a) != null)
-    {
-      MultiCardFragment.a(this.a).setViewPagerBusy(false);
-      MultiCardFragment.a(this.a).setScrollState(2);
-      MultiCardFragment.a(this.a).fling(-paramInt);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (MultiCardFragment.a(this.a) != null) {
-      return MultiCardFragment.a(this.a).a();
-    }
-    return true;
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arvw
  * JD-Core Version:    0.7.0.1
  */

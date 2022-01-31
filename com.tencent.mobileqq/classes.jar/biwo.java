@@ -1,247 +1,430 @@
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.animation.ValueAnimator;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Rect;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.util.Property;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeRsp;
+import camera.PLAYSHOW_MATERIALS_GENERAL_DATASTRUCT.PSMetaCategory;
+import camera.PLAYSHOW_MATERIALS_GENERAL_DATASTRUCT.PSMetaMaterial;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import com.tencent.ttpic.util.GsonUtils;
+import dov.com.qq.im.ae.play.AEPlayShowMaterialManager.1;
+import dov.com.qq.im.ae.play.AEPlayShowMaterialManager.2;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
 public class biwo
-  extends Drawable
-  implements Animatable
+  extends bjbe
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 255;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  Property<biwo, Float> jdField_a_of_type_AndroidUtilProperty = new biwp(this, Float.class, "backScale");
+  private axgh jdField_a_of_type_Axgh = new axgh();
+  private biqk jdField_a_of_type_Biqk;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 0;
-  Property<biwo, Integer> jdField_b_of_type_AndroidUtilProperty = new biwq(this, Integer.class, "backAlpha");
-  private boolean jdField_b_of_type_Boolean;
-  private float c;
-  private float d;
+  private List<biqj> jdField_a_of_type_JavaUtilList = new LinkedList();
   
-  private float a()
+  private biqk a()
   {
-    return this.jdField_a_of_type_Float;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AEPlayShowMaterialManager", 4, "getAEMaterialManager");
+    }
+    if (this.jdField_a_of_type_Biqk == null) {
+      this.jdField_a_of_type_Biqk = ((biqk)bjae.a(18));
+    }
+    return this.jdField_a_of_type_Biqk;
   }
   
-  private Drawable a(String paramString)
+  private List<biqj> a(@Nullable String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_AndroidContentContext == null)) {}
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AEPlayShowMaterialManager", 4, "parsePsCategoryListFromConfig");
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return new LinkedList();
+    }
+    GetPlayShowCatMatTreeRsp localGetPlayShowCatMatTreeRsp = (GetPlayShowCatMatTreeRsp)GsonUtils.json2Obj(paramString, biqb.a);
+    if ((localGetPlayShowCatMatTreeRsp == null) || (localGetPlayShowCatMatTreeRsp.Categories == null) || (localGetPlayShowCatMatTreeRsp.Categories.size() == 0)) {
+      return new LinkedList();
+    }
+    LinkedList localLinkedList1 = new LinkedList();
+    HashMap localHashMap = new HashMap();
+    int i = 0;
+    PSMetaCategory localPSMetaCategory;
+    if (i < localGetPlayShowCatMatTreeRsp.Categories.size())
+    {
+      localPSMetaCategory = (PSMetaCategory)localGetPlayShowCatMatTreeRsp.Categories.get(i);
+      if ((localPSMetaCategory != null) && (localPSMetaCategory.materials != null) && (localPSMetaCategory.materials.size() != 0)) {}
+    }
     for (;;)
     {
-      return null;
+      i += 1;
+      break;
+      LinkedList localLinkedList2 = new LinkedList();
+      int j = 0;
+      PSMetaMaterial localPSMetaMaterial;
+      if (j < localPSMetaCategory.materials.size())
+      {
+        localPSMetaMaterial = (PSMetaMaterial)localPSMetaCategory.materials.get(j);
+        if ((localPSMetaMaterial == null) || (TextUtils.isEmpty(localPSMetaMaterial.id)) || (TextUtils.isEmpty(localPSMetaMaterial.thumbUrl))) {}
+        for (;;)
+        {
+          label214:
+          j += 1;
+          break;
+          if (!localHashMap.containsKey(localPSMetaMaterial.id)) {
+            break label332;
+          }
+          paramString = (biqn)localHashMap.get(localPSMetaMaterial.id);
+          label252:
+          if ((paramString.jdField_f_of_type_Int != 4) && (paramString.jdField_f_of_type_Int != 5) && (paramString.jdField_f_of_type_Int != 6) && (paramString.jdField_f_of_type_Int != 7)) {
+            break label458;
+          }
+          if ((!TextUtils.isEmpty(paramString.jdField_d_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString.e)))
+          {
+            label306:
+            localHashMap.put(localPSMetaMaterial.id, paramString);
+            localLinkedList2.add(paramString);
+          }
+        }
+        label332:
+        paramString = new biqn();
+        paramString.jdField_a_of_type_JavaLangString = localPSMetaMaterial.id;
+        paramString.jdField_f_of_type_JavaLangString = localPSMetaMaterial.id;
+        paramString.jdField_d_of_type_JavaLangString = localPSMetaMaterial.packageUrl;
+        paramString.e = localPSMetaMaterial.packageMd5;
+        paramString.jdField_f_of_type_Int = localPSMetaMaterial.type;
+        paramString.j = localPSMetaMaterial.thumbUrl;
+        paramString.i = localPSMetaCategory.id;
+        paramString.k = localPSMetaMaterial.name;
+      }
       try
       {
-        if ("1/4".equals(paramString)) {
-          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840984);
-        }
-        if ("1/2".equals(paramString)) {
-          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840983);
-        }
-        if ("1x".equals(paramString)) {
-          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840985);
-        }
-        if ("2x".equals(paramString)) {
-          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840986);
-        }
-        if ("4x".equals(paramString)) {
-          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840987);
-        }
-        if (PickerContainer.jdField_a_of_type_JavaLangString.equals(paramString))
+        for (;;)
         {
-          paramString = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840988);
-          return paramString;
+          paramString.l = ((String)localPSMetaMaterial.additionalFields.get("web_url"));
+          try
+          {
+            label431:
+            paramString.m = ((String)localPSMetaMaterial.additionalFields.get("mini_app_id"));
+          }
+          catch (Throwable localThrowable1) {}
+        }
+        break label252;
+        label458:
+        if (paramString.jdField_f_of_type_Int == 2)
+        {
+          if (!TextUtils.isEmpty(paramString.l)) {
+            break label306;
+          }
+          break label214;
+        }
+        if ((paramString.jdField_f_of_type_Int != 3) || (TextUtils.isEmpty(paramString.m))) {
+          break label306;
+        }
+        break label214;
+        if (localLinkedList2.size() <= 0) {
+          continue;
+        }
+        paramString = new biqj();
+        paramString.jdField_b_of_type_JavaLangString = localPSMetaCategory.name;
+        paramString.jdField_a_of_type_JavaLangString = localPSMetaCategory.id;
+        if (localPSMetaCategory.onlyFlag) {}
+        for (j = 1;; j = 2)
+        {
+          paramString.jdField_b_of_type_Int = j;
+          paramString.jdField_a_of_type_Boolean = localPSMetaCategory.defaultFlag;
+          paramString.jdField_a_of_type_JavaUtilList = localLinkedList2;
+          localLinkedList1.add(paramString);
+          break;
+        }
+        return localLinkedList1;
+      }
+      catch (Throwable localThrowable2)
+      {
+        break label431;
+      }
+    }
+  }
+  
+  private List<biqj> a(List<biqj> paramList)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AEPlayShowMaterialManager", 4, "getFilteredPsCategoryList");
+    }
+    return a(paramList, a(new LinkedList(a().a())));
+  }
+  
+  private List<biqj> a(@NonNull List<biqj> paramList, @NonNull Map<String, biqn> paramMap)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AEPlayShowMaterialManager", 4, "reAssemblePsCategory");
+    }
+    this.jdField_a_of_type_JavaLangString = null;
+    LinkedList localLinkedList1 = new LinkedList();
+    int i = 0;
+    while (i < paramList.size())
+    {
+      biqj localbiqj = (biqj)paramList.get(i);
+      LinkedList localLinkedList2 = new LinkedList();
+      int j = 0;
+      Object localObject;
+      if (j < localbiqj.jdField_a_of_type_JavaUtilList.size())
+      {
+        localObject = (biqn)localbiqj.jdField_a_of_type_JavaUtilList.get(j);
+        if (((biqn)localObject).jdField_f_of_type_Int != 0)
+        {
+          ((biqn)localObject).jdField_d_of_type_Boolean = a((biqn)localObject);
+          localLinkedList2.add(localObject);
+          if (((biqn)localObject).jdField_f_of_type_Int == 2) {
+            this.jdField_a_of_type_JavaLangString = ((biqn)localObject).l;
+          }
+        }
+        for (;;)
+        {
+          j += 1;
+          break;
+          if (paramMap.containsKey(((biqn)localObject).jdField_a_of_type_JavaLangString))
+          {
+            biqn localbiqn = (biqn)paramMap.get(((biqn)localObject).jdField_a_of_type_JavaLangString);
+            localbiqn.j = ((biqn)localObject).j;
+            localbiqn.i = localbiqj.jdField_a_of_type_JavaLangString;
+            localbiqn.k = ((biqn)localObject).k;
+            localLinkedList2.add(localbiqn);
+          }
         }
       }
-      catch (Exception paramString)
+      if (localLinkedList2.size() > 0)
       {
-        paramString.printStackTrace();
-        QLog.e("HintDrawable", 2, "getDrawableByText exception:" + paramString.toString());
-        return null;
+        localObject = new biqj();
+        ((biqj)localObject).jdField_b_of_type_JavaLangString = localbiqj.jdField_b_of_type_JavaLangString;
+        ((biqj)localObject).jdField_b_of_type_Int = localbiqj.jdField_b_of_type_Int;
+        ((biqj)localObject).jdField_a_of_type_JavaLangString = localbiqj.jdField_a_of_type_JavaLangString;
+        ((biqj)localObject).jdField_a_of_type_JavaUtilList = localLinkedList2;
+        localLinkedList1.add(localObject);
       }
-      catch (OutOfMemoryError paramString)
-      {
-        QLog.e("HintDrawable", 2, "getDrawableByText OOM!!");
-      }
+      i += 1;
     }
-    return null;
+    return localLinkedList1;
   }
   
-  private void a(float paramFloat)
+  private Map<String, biqn> a(@Nullable List<biqj> paramList)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    int i = this.jdField_a_of_type_AndroidGraphicsRect.centerX();
-    int j = this.jdField_a_of_type_AndroidGraphicsRect.centerY();
-    int k = (int)(this.jdField_b_of_type_Float * (paramFloat - 1.0F)) / 2;
-    int m = (int)(this.c * (paramFloat - 1.0F)) / 2;
-    this.jdField_a_of_type_AndroidGraphicsRect.set((int)(i - k - this.jdField_b_of_type_Float / 2.0F), (int)(j - m - this.c / 2.0F), (int)(i + k + this.jdField_b_of_type_Float / 2.0F), (int)(j + m + this.c / 2.0F));
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AEPlayShowMaterialManager", 4, "buildMaterialDataMap");
+    }
+    if (paramList == null) {
+      return new HashMap();
+    }
+    HashMap localHashMap = new HashMap();
+    paramList = new LinkedList(paramList).iterator();
+    while (paramList.hasNext())
+    {
+      Object localObject = (biqj)paramList.next();
+      if ((localObject != null) && (((biqj)localObject).jdField_a_of_type_JavaUtilList != null) && (((biqj)localObject).jdField_a_of_type_JavaUtilList.size() != 0))
+      {
+        localObject = new LinkedList(((biqj)localObject).jdField_a_of_type_JavaUtilList).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          biqn localbiqn = (biqn)((Iterator)localObject).next();
+          if ((!TextUtils.isEmpty(localbiqn.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localbiqn.e))) {
+            localHashMap.put(localbiqn.jdField_a_of_type_JavaLangString, localbiqn);
+          }
+        }
+      }
+    }
+    return localHashMap;
   }
   
-  private void a(int paramInt1, int paramInt2)
+  private void a(@NonNull biqn parambiqn)
   {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
-    {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AEPlayShowMaterialManager", 4, "deleteMaterialZipAndDir, AEMaterialMetaData.id=" + parambiqn.jdField_a_of_type_JavaLangString);
     }
-    if (paramInt1 == 1)
-    {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat(this.jdField_a_of_type_AndroidUtilProperty, new float[] { this.d, 1.0F }), PropertyValuesHolder.ofInt(this.jdField_b_of_type_AndroidUtilProperty, new int[] { 0, 255 }) });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramInt2);
+    File localFile = new File(biid.jdField_d_of_type_JavaLangString, parambiqn.jdField_a_of_type_JavaLangString);
+    parambiqn = new File(biid.e, parambiqn.jdField_a_of_type_JavaLangString);
+    if (localFile.exists()) {
+      bbdj.d(localFile.getPath());
     }
+    if (parambiqn.exists()) {
+      bbdj.a(parambiqn.getPath());
+    }
+  }
+  
+  private void a(@NonNull List<biqj> paramList1, @NonNull List<biqj> paramList2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AEPlayShowMaterialManager", 4, "diffTwoListAndDeleteOutdatedMaterial");
+    }
+    paramList1 = a(paramList1);
+    Map localMap = a(paramList2);
+    Iterator localIterator = paramList1.entrySet().iterator();
+    label212:
+    label215:
     for (;;)
     {
-      if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
+      if (localIterator.hasNext())
       {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setStartDelay(0L);
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new biwr(this));
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new biws(this));
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+        paramList1 = (Map.Entry)localIterator.next();
+        String str = (String)paramList1.getKey();
+        paramList2 = (biqn)paramList1.getValue();
+        if (paramList2 == null) {
+          continue;
+        }
+        paramList1 = paramList2;
+        if (localMap.containsKey(str))
+        {
+          paramList1 = (biqn)localMap.get(str);
+          if ((paramList1 == null) || ((paramList1.jdField_f_of_type_Int != 4) && (paramList1.jdField_f_of_type_Int != 5) && (paramList1.jdField_f_of_type_Int != 6) && (paramList1.jdField_f_of_type_Int != 7)) || (paramList1.e.equals(paramList2.e))) {
+            break label212;
+          }
+        }
+      }
+      for (paramList1 = paramList2;; paramList1 = null)
+      {
+        if ((paramList1 == null) || ((paramList1.jdField_f_of_type_Int != 4) && (paramList1.jdField_f_of_type_Int != 5) && (paramList1.jdField_f_of_type_Int != 6) && (paramList1.jdField_f_of_type_Int != 7))) {
+          break label215;
+        }
+        a(paramList1);
+        break;
+        return;
+      }
+    }
+  }
+  
+  private boolean a(@NonNull biqn parambiqn)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AEPlayShowMaterialManager", 4, "isNotOrdinaryMaterialUsable, AEMaterialMetaData.id=" + parambiqn.jdField_a_of_type_JavaLangString);
+    }
+    switch (parambiqn.jdField_f_of_type_Int)
+    {
+    default: 
+      return false;
+    case 2: 
+    case 3: 
+      return true;
+    }
+    a();
+    return biqk.a(parambiqn);
+  }
+  
+  private List<biqj> b()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AEPlayShowMaterialManager", 4, "updatePsCategoryListInternal");
+    }
+    File localFile1 = new File(biii.jdField_a_of_type_JavaLangString);
+    File localFile2 = new File(biii.jdField_b_of_type_JavaLangString);
+    if (!localFile2.exists())
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("AEPlayShowMaterialManager", 4, "updatePsCategoryListInternal, updatedConfig=null, thread=" + Thread.currentThread());
+      }
+      if (!localFile1.exists())
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AEPlayShowMaterialManager", 4, "updatePsCategoryListInternal, defaultConfig=null, thread=" + Thread.currentThread());
+        }
+        return new LinkedList();
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("AEPlayShowMaterialManager", 4, "updatePsCategoryListInternal, defaultConfig=" + localFile1.getPath() + ", thread=" + Thread.currentThread());
+      }
+      return a(a(bkyy.a(localFile1)));
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AEPlayShowMaterialManager", 4, "updatePsCategoryListInternal, updatedConfig=" + localFile2.getPath() + ", thread=" + Thread.currentThread());
+    }
+    if (!localFile1.exists())
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("AEPlayShowMaterialManager", 4, "updatePsCategoryListInternal, defaultConfig=null, thread=" + Thread.currentThread());
+      }
+      localList1 = a(a(bkyy.a(localFile2)));
+      bbdj.b(localFile2.getPath(), localFile1.getPath());
+      return localList1;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AEPlayShowMaterialManager", 4, "updatePsCategoryListInternal, defaultConfig=" + localFile1.getPath() + ", thread=" + Thread.currentThread());
+    }
+    List localList1 = a(bkyy.a(localFile1));
+    List localList2 = a(bkyy.a(localFile2));
+    a(localList1, localList2);
+    localList1 = a(localList2);
+    bbdj.d(localFile1.getPath());
+    bbdj.b(localFile2.getPath(), localFile1.getPath());
+    return localList1;
+  }
+  
+  private void f()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AEPlayShowMaterialManager", 4, "updatePsCategoryListAsync");
+    }
+    ThreadManager.excute(new AEPlayShowMaterialManager.1(this), 64, null, true);
+  }
+  
+  private void g()
+  {
+    bizq.b("AEPlayShowMaterialManager", "notifyMaterialListUpdated");
+    ThreadManager.getUIHandler().post(new AEPlayShowMaterialManager.2(this));
+  }
+  
+  public List<biqj> a()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AEPlayShowMaterialManager", 4, "getPsCategoryList");
+    }
+    return new LinkedList(this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public void a(axgj paramaxgj)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AEPlayShowMaterialManager", 4, "removeObserver, observer=" + paramaxgj);
+    }
+    this.jdField_a_of_type_Axgh.a(paramaxgj);
+  }
+  
+  public void a(axgj paramaxgj, int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AEPlayShowMaterialManager", 4, "addObserver, observer=" + paramaxgj + ", eventId=" + paramInt);
+    }
+    this.jdField_a_of_type_Axgh.a(paramaxgj, new int[] { paramInt });
+  }
+  
+  public void c()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AEPlayShowMaterialManager", 4, "initIndeed");
+    }
+    f();
+  }
+  
+  public void d()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AEPlayShowMaterialManager", 4, "refresh");
+    }
+    f();
+  }
+  
+  public void e()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_JavaUtilList != null) {
+        this.jdField_a_of_type_JavaUtilList.clear();
       }
       return;
-      if (paramInt1 == 2)
-      {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofInt(this.jdField_b_of_type_AndroidUtilProperty, new int[] { 255, 0 }) });
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramInt2);
-      }
     }
-  }
-  
-  private int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  private void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
-    {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-    }
-    this.jdField_a_of_type_AndroidUtilProperty = null;
-    this.jdField_b_of_type_AndroidUtilProperty = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a(Context paramContext, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (paramContext == null) {
-      return false;
-    }
-    this.jdField_b_of_type_Float = paramFloat1;
-    this.c = paramFloat2;
-    this.d = paramFloat3;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    return true;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (paramString.equals(this.jdField_a_of_type_JavaLangString)) {
-      return false;
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(paramString);
-    invalidateSelf();
-    return true;
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    if (this.jdField_b_of_type_Int == 0) {}
-    while (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public boolean isRunning()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected void onBoundsChange(Rect paramRect)
-  {
-    super.onBoundsChange(paramRect);
-    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
-  
-  public void start()
-  {
-    if (isRunning()) {
-      stop();
-    }
-    this.jdField_a_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("HintDrawable", 2, "start :" + this.jdField_b_of_type_Int);
-    }
-    a(this.jdField_b_of_type_Int, 150);
-  }
-  
-  public void stop()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = false;
-    } while (this.jdField_a_of_type_AndroidAnimationValueAnimator == null);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
   }
 }
 

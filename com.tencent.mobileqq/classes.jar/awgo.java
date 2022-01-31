@@ -1,90 +1,53 @@
-import android.hardware.camera2.CameraCaptureSession;
-import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
-import android.hardware.camera2.CaptureFailure;
-import android.hardware.camera2.CaptureRequest;
-import android.hardware.camera2.CaptureRequest.Builder;
-import android.hardware.camera2.CaptureResult;
-import android.hardware.camera2.TotalCaptureResult;
-import android.support.annotation.NonNull;
-import com.samsung.android.sdk.camera.SCameraCaptureProcessor;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.StateListDrawable;
 
-public class awgo
-  extends CameraCaptureSession.CaptureCallback
+class awgo
 {
-  public awgo(Camera2Control paramCamera2Control) {}
+  private final Drawable a;
+  private final Drawable b;
   
-  private void a(CaptureResult paramCaptureResult, CaptureRequest paramCaptureRequest)
+  awgo(Context paramContext)
   {
-    paramCaptureRequest = paramCaptureRequest.getTag();
-    if ((!(paramCaptureRequest instanceof awiz)) || (((awiz)paramCaptureRequest).jdField_a_of_type_Boolean))
-    {
-      awgx.a(1, "[Camera2] mAfCaptureCallback handled!");
-      Camera2Control.d(this.a, false);
-    }
-    do
-    {
-      return;
-      paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
-      awgx.a(1, "[Camera2] mAfCaptureCallback:" + paramCaptureResult);
-    } while ((paramCaptureResult == null) || ((4 != paramCaptureResult.intValue()) && (5 != paramCaptureResult.intValue())));
-    a(true, (awiz)paramCaptureRequest);
+    paramContext = paramContext.getResources();
+    this.a = paramContext.getDrawable(2130837549);
+    this.b = paramContext.getDrawable(2130837553);
   }
   
-  private void a(boolean paramBoolean, awiz paramawiz)
+  private Drawable a(Drawable paramDrawable)
   {
-    Camera2Control.d(this.a, false);
-    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_TRIGGER, Integer.valueOf(2));
-    try
-    {
-      awgx.a(1, "[Camera2] mAfCaptureCallback run, success:" + paramBoolean);
-      Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_MODE, Integer.valueOf(4));
-      CameraCaptureSession localCameraCaptureSession = Camera2Control.a(this.a);
-      if (this.a.jdField_a_of_type_Boolean) {}
-      for (CaptureRequest localCaptureRequest = Camera2Control.a(this.a).buildCaptureRequest(Camera2Control.a(this.a));; localCaptureRequest = Camera2Control.a(this.a).build())
-      {
-        localCameraCaptureSession.setRepeatingRequest(localCaptureRequest, null, null);
-        if ((paramawiz.jdField_a_of_type_Awgv.a == null) || (paramawiz.jdField_a_of_type_Boolean)) {
-          break;
-        }
-        paramawiz.jdField_a_of_type_Boolean = true;
-        paramawiz.jdField_a_of_type_Awgv.a.a(1, paramBoolean);
-        return;
-      }
-      return;
-    }
-    catch (Exception paramawiz)
-    {
-      awgx.a(2, "[Camera2] mAfCaptureCallback e:" + paramawiz);
-    }
+    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
   }
   
-  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
+  private Drawable b(Drawable paramDrawable)
   {
-    a(paramTotalCaptureResult, paramCaptureRequest);
+    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
+    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
+    return paramDrawable;
   }
   
-  public void onCaptureFailed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureFailure paramCaptureFailure)
+  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    awgx.a(2, "[Camera2] mAfCaptureCallback failure reason:" + paramCaptureFailure.getReason());
-    paramCameraCaptureSession = paramCaptureRequest.getTag();
-    if ((!(paramCameraCaptureSession instanceof awiz)) || (((awiz)paramCameraCaptureSession).jdField_a_of_type_Boolean))
-    {
-      awgx.a(1, "[Camera2] mAfCaptureCallback handled!");
-      Camera2Control.d(this.a, false);
-      return;
-    }
-    a(false, (awiz)paramCameraCaptureSession);
+    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
+    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
+    return paramDrawable;
   }
   
-  public void onCaptureProgressed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureResult paramCaptureResult)
+  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
   {
-    a(paramCaptureResult, paramCaptureRequest);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
+    localStateListDrawable.addState(new int[0], paramDrawable1);
+    return localStateListDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     awgo
  * JD-Core Version:    0.7.0.1
  */

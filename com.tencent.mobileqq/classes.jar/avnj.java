@@ -1,183 +1,247 @@
+import NS_MOBILE_NEWEST_FEEDS.QzoneData;
+import NS_MOBILE_NEWEST_FEEDS.feed_info;
+import NS_MOBILE_NEWEST_FEEDS.newest_feeds_rsp;
+import NS_QQ_STORY_META.META.StImage;
+import NS_QQ_STORY_META.META.StStoryFeed;
+import NS_WEISHI_QQ_PROFILE.stGetNewestFeedRspInner;
+import android.content.Intent;
 import android.text.TextUtils;
-import android.view.View;
+import com.qq.taf.jce.JceInputStream;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class avnj
-  extends avoj
+  extends MSFServlet
 {
-  private int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long;
-  private TroopMemberInfo jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
-  
-  public avnj(QQAppInterface paramQQAppInterface, int paramInt, TroopMemberInfo paramTroopMemberInfo)
+  private void b(boolean paramBoolean, newest_feeds_rsp paramnewest_feeds_rsp)
   {
-    super(paramQQAppInterface, paramInt, 0L);
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo = paramTroopMemberInfo;
+    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
+    if (localQQAppInterface == null) {
+      return;
+    }
+    if ((paramBoolean) && (paramnewest_feeds_rsp != null))
+    {
+      a(paramBoolean, paramnewest_feeds_rsp);
+      localQQAppInterface.a().a(paramnewest_feeds_rsp);
+      localQQAppInterface.a().d();
+      return;
+    }
+    localQQAppInterface.a().c();
   }
   
-  private void a()
+  protected void a(boolean paramBoolean, newest_feeds_rsp paramnewest_feeds_rsp)
   {
-    switch (this.jdField_a_of_type_Int)
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed isSuc=%s last_feed_time=%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramnewest_feeds_rsp.last_feed_time) }));
+    }
+    QQAppInterface localQQAppInterface;
+    ajxn localajxn;
+    if (paramBoolean)
     {
-    default: 
-      return;
-    case 2: 
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopnick;
-      this.c = avwf.a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin });
-      return;
-    case 3: 
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.autoremark;
-      this.c = avwf.a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin });
-      return;
-    case 1: 
-      this.jdField_b_of_type_JavaLangString = avwf.a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopnick, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.autoremark });
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+      localQQAppInterface = (QQAppInterface)getAppRuntime();
+      if (localQQAppInterface != null)
       {
-        this.c = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick;
-        return;
+        localajxn = (ajxn)localQQAppInterface.getManager(51);
+        if (localajxn == null) {}
       }
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick;
-      this.c = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin;
-      return;
     }
-    this.jdField_b_of_type_JavaLangString = avwf.a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopnick, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.autoremark, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick });
-    this.c = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin;
-  }
-  
-  protected long a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = -9223372036854775808L;
-    long l = avwf.b(paramString, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopnick, avin.g);
-    if (l > this.jdField_a_of_type_Long)
+    ArrayList localArrayList;
+    Object localObject1;
+    Object localObject2;
+    long l;
+    for (;;)
     {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 2;
-    }
-    l = avwf.b(paramString, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.autoremark, avin.k);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 3;
-    }
-    l = avwf.b(paramString, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick, avin.l);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 1;
-    }
-    l = avwf.a(paramString, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin, avin.o, false);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 0;
-    }
-    if (this.jdField_a_of_type_Long != -9223372036854775808L)
-    {
-      this.jdField_a_of_type_Long += avin.z;
-      a();
-    }
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    if (avwf.a(this.jdField_b_of_type_Int))
-    {
-      ahcq.a = true;
-      ahcq.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopuin, 1000, c(), false);
-      avwf.a(this.jdField_a_of_type_JavaLangString, 20, 1, paramView);
-      avwf.a(this.jdField_a_of_type_JavaLangString, 20, paramView, false);
-      avwf.a(this, paramView);
-      if (SearchConfigManager.needSeparate) {
-        avwf.a("search", "contact", "contacts", 0, 0, new String[] { avwf.a(this.jdField_b_of_type_Int) });
-      }
-      if (((a() instanceof String)) && (!this.jdField_b_of_type_Boolean)) {
-        avwf.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.i, (String)a(), e());
-      }
-      if ((paramView.getContext() instanceof UniteSearchActivity))
+      Object localObject4;
+      Object localObject5;
+      try
       {
-        if ((this.i != null) && (!TextUtils.isEmpty(this.i))) {
-          avsv.a(null, 0, this.jdField_b_of_type_Int, "0X8009D31", 1, 0, null, null);
+        localArrayList = new ArrayList();
+        localObject1 = paramnewest_feeds_rsp.mapVcByte;
+        if ((localObject1 == null) || (((Map)localObject1).isEmpty())) {
+          break;
+        }
+        localObject2 = ((Map)localObject1).keySet().iterator();
+        if (!((Iterator)localObject2).hasNext()) {
+          break;
+        }
+        Object localObject3 = (Long)((Iterator)localObject2).next();
+        localObject4 = (QzoneData)((Map)localObject1).get(localObject3);
+        localObject3 = localajxn.a(String.valueOf(localObject3));
+        if (localObject3 == null) {
+          continue;
+        }
+        if (((QzoneData)localObject4).iType == 2)
+        {
+          localObject5 = new JceInputStream();
+          ((JceInputStream)localObject5).wrap(((QzoneData)localObject4).vcByte);
+          ((JceInputStream)localObject5).setServerEncoding("utf-8");
+          localObject4 = new stGetNewestFeedRspInner();
+          ((stGetNewestFeedRspInner)localObject4).readFrom((JceInputStream)localObject5);
+          localObject5 = ((stGetNewestFeedRspInner)localObject4).mapItemInfo;
+          if ((localObject5 == null) || (((Map)localObject5).isEmpty())) {
+            continue;
+          }
+          localObject4 = (String)((Map)localObject5).get("upload_time");
+          localObject5 = (String)((Map)localObject5).get("desc");
+          if (QLog.isColorLevel()) {
+            QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed weishi feed, uploadTime=%s desc=%s", new Object[] { localObject4, localObject5 }));
+          }
+          try
+          {
+            l = Long.valueOf((String)localObject4).longValue();
+            if ((((ExtensionInfo)localObject3).feedTime > l) && (((ExtensionInfo)localObject3).feedType != 1)) {
+              continue;
+            }
+            ((ExtensionInfo)localObject3).feedType = 1;
+            ((ExtensionInfo)localObject3).feedTime = l;
+            ((ExtensionInfo)localObject3).feedContent = ((String)localObject5);
+            ((ExtensionInfo)localObject3).feedHasPhoto = false;
+            ((ExtensionInfo)localObject3).feedPhotoUrl = null;
+            localArrayList.add(localObject3);
+          }
+          catch (NumberFormatException localNumberFormatException)
+          {
+            QLog.e("QzoneContactsFeedServlet", 1, "onGetQzoneContactsFeed fail.", localNumberFormatException);
+          }
+          continue;
+          return;
         }
       }
-      else {
-        return;
+      catch (Exception paramnewest_feeds_rsp)
+      {
+        QLog.e("QzoneContactsFeedServlet", 1, "onGetQzoneContactsFeed fail.", paramnewest_feeds_rsp);
       }
-      avsv.a(null, 0, this.jdField_b_of_type_Int, "0X8009D37", 0, 0, null, null);
+      int i = ((QzoneData)localObject4).iType;
+      if (i == 3) {
+        try
+        {
+          localObject5 = new META.StStoryFeed();
+          ((META.StStoryFeed)localObject5).mergeFrom(((QzoneData)localObject4).vcByte);
+          if (QLog.isColorLevel()) {
+            QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed story feed, uploadTime=%s feedPhotoUrl=%s", new Object[] { Long.valueOf(((META.StStoryFeed)localObject5).createTime.get()), ((META.StStoryFeed)localObject5).coverImage.url.get() }));
+          }
+          if (((localNumberFormatException.feedTime <= ((META.StStoryFeed)localObject5).createTime.get()) || (localNumberFormatException.feedType == 2)) && (!TextUtils.isEmpty(((META.StStoryFeed)localObject5).coverImage.url.get())))
+          {
+            localNumberFormatException.feedType = 2;
+            localNumberFormatException.feedTime = ((META.StStoryFeed)localObject5).createTime.get();
+            localNumberFormatException.feedContent = BaseApplicationImpl.getApplication().getString(2131690011);
+            localNumberFormatException.feedHasPhoto = false;
+            localNumberFormatException.feedPhotoUrl = ((META.StStoryFeed)localObject5).coverImage.url.get();
+            localArrayList.add(localNumberFormatException);
+          }
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          QLog.e("QzoneContactsFeedServlet", 1, "onGetQzoneContactsFeed fail.", localInvalidProtocolBufferMicroException);
+        }
+      }
+    }
+    paramnewest_feeds_rsp = paramnewest_feeds_rsp.vec_feed_info;
+    label630:
+    String str;
+    if ((paramnewest_feeds_rsp != null) && (!paramnewest_feeds_rsp.isEmpty()))
+    {
+      paramnewest_feeds_rsp = paramnewest_feeds_rsp.iterator();
+      while (paramnewest_feeds_rsp.hasNext())
+      {
+        localObject1 = (feed_info)paramnewest_feeds_rsp.next();
+        localObject2 = localajxn.a(String.valueOf(((feed_info)localObject1).opuin));
+        if (localObject2 != null)
+        {
+          l = ((feed_info)localObject1).time;
+          str = avnk.a(((feed_info)localObject1).strcontent, localQQAppInterface);
+          if (((feed_info)localObject1).has_pic != 1L) {
+            break label879;
+          }
+        }
+      }
+    }
+    label879:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed qzone feed, qZoneFeedTime=%s qZoneFeedContent=%s qZoneFeedHasPhoto=%s", new Object[] { Long.valueOf(l), str, Boolean.valueOf(paramBoolean) }));
+      }
+      if ((((ExtensionInfo)localObject2).feedTime > l) && (((ExtensionInfo)localObject2).feedType != 0)) {
+        break label630;
+      }
+      ((ExtensionInfo)localObject2).feedType = 0;
+      ((ExtensionInfo)localObject2).feedTime = l;
+      ((ExtensionInfo)localObject2).feedContent = str;
+      ((ExtensionInfo)localObject2).feedHasPhoto = paramBoolean;
+      ((ExtensionInfo)localObject2).feedPhotoUrl = ((feed_info)localObject1).strImgUrl;
+      localArrayList.add(localObject2);
+      break label630;
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed update size=%s", new Object[] { Integer.valueOf(localArrayList.size()) }));
+      }
+      if (localArrayList.size() <= 0) {
+        break;
+      }
+      localajxn.b(localArrayList);
+      paramnewest_feeds_rsp = (FriendListHandler)localQQAppInterface.a(1);
+      if (paramnewest_feeds_rsp == null) {
+        break;
+      }
+      paramnewest_feeds_rsp.notifyUI(2, true, null);
       return;
     }
-    avwf.a(paramView, this);
   }
   
-  public boolean a()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    return false;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public CharSequence c()
-  {
-    if (avwf.a(this.jdField_b_of_type_Int)) {
-      return ajjy.a(2131636753);
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
+    {
+      paramIntent = avni.a(paramFromServiceMsg.getWupBuffer());
+      if (paramIntent != null)
+      {
+        b(true, paramIntent);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneContactsFeedServlet", 2, "inform QzoneContactsFeedServlet isSuccess false");
+      }
+      b(false, null);
+      return;
     }
-    return ajjy.a(2131636744);
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedServlet", 2, "inform QzoneContactsFeedServlet resultcode fail.");
+    }
+    b(false, null);
   }
   
-  public String c()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public int d()
-  {
-    return 1000;
-  }
-  
-  public CharSequence d()
-  {
-    return null;
-  }
-  
-  public String d()
-  {
-    return this.c;
-  }
-  
-  public int e()
-  {
-    return 1;
+    if (paramIntent == null) {
+      return;
+    }
+    byte[] arrayOfByte = new avni(avnk.a(paramIntent)).encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null) {
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + "getAIONewestFeeds");
+    paramPacket.putSendData(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avnj
  * JD-Core Version:    0.7.0.1
  */

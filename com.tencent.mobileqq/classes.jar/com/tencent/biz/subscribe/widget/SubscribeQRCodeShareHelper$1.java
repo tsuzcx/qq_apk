@@ -1,29 +1,17 @@
 package com.tencent.biz.subscribe.widget;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import awmc;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import vvz;
-import wfw;
+import bbdj;
+import wuu;
 
 public class SubscribeQRCodeShareHelper$1
   implements Runnable
 {
-  public SubscribeQRCodeShareHelper$1(wfw paramwfw) {}
+  public SubscribeQRCodeShareHelper$1(wuu paramwuu) {}
   
   public void run()
   {
-    Bitmap localBitmap = vvz.a(wfw.a(this.this$0), awmc.a(63.0F), -16777216, -1, Bitmap.Config.ARGB_8888);
-    if ((localBitmap == null) || (localBitmap.isRecycled()))
-    {
-      QLog.d("SubscribeQRCodeShareHelper", 4, "failed to create card code");
-      return;
-    }
-    ThreadManager.getUIHandler().post(new SubscribeQRCodeShareHelper.1.1(this, localBitmap));
-    QLog.d("SubscribeQRCodeShareHelper", 4, " create card code success");
+    bbdj.a(wuu.a(this.this$0), true);
+    bbdj.c(wuu.a(this.this$0) + ".nomedia");
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import akkz;
-import bbmy;
+import akzl;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class ARVideoRecordUIControllerImpl$4
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$4(akkz paramakkz) {}
+  public ARVideoRecordUIControllerImpl$4(akzl paramakzl) {}
   
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.getContext(), 1, akkz.b, 1).a();
+    bcpw.a(BaseApplicationImpl.getContext(), 1, akzl.b, 1).a();
   }
 }
 

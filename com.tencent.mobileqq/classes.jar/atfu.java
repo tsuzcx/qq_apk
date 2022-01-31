@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.IInterface;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
 
-class atfu
-  implements View.OnClickListener
+public abstract interface atfu
+  extends IInterface
 {
-  atfu(atft paramatft) {}
+  public abstract Message a(Message paramMessage);
   
-  public void onClick(View paramView)
-  {
-    if ((this.a.a != null) && ((paramView.getTag() instanceof atfv)))
-    {
-      paramView = (atfv)paramView.getTag();
-      this.a.a.a(paramView);
-    }
-  }
+  public abstract BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel);
+  
+  public abstract void a(atgc paramatgc);
 }
 
 

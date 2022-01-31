@@ -1,34 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
 class aolg
-  extends aoko
+  implements Animation.AnimationListener
 {
-  public aolg(aokk paramaokk)
+  aolg(aolf paramaolf) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramaokk);
+    this.a.a.c.setVisibility(8);
+    this.a.a.a = false;
   }
   
-  protected String a()
-  {
-    return "StateRefuseByPCWhenToOffFailed";
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    aokk.b(this.jdField_a_of_type_Aokk, 11, 6);
-    aokk.c(this.jdField_a_of_type_Aokk, 11, 6);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateRefuseByPC)");
-    this.jdField_a_of_type_Aoko = new aole(this.jdField_a_of_type_Aokk);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aolg
  * JD-Core Version:    0.7.0.1
  */

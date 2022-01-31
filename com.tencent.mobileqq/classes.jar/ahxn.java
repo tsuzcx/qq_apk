@@ -1,49 +1,58 @@
+import android.os.FileObserver;
+import com.tencent.mobileqq.activity.richmedia.state.RMFileEventNotify.1;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-class ahxn
-  extends axlg
+public class ahxn
+  extends FileObserver
 {
-  ahxn(ahxk paramahxk, String paramString) {}
+  private boolean a;
   
-  public void onComplete(String paramString, int paramInt)
+  private void a()
   {
-    QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: " + paramString + "," + paramInt);
-    try
+    if (!this.a)
     {
-      paramString = new JSONObject();
-      paramString.put("code", 2);
-      paramString.put("errorCode", paramInt);
-      this.jdField_a_of_type_Ahxk.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: ", paramString);
+      this.a = true;
+      RMVideoStateMgr.a().a(new RMFileEventNotify.1(this));
     }
   }
   
-  public void onProgress(String paramString, long paramLong1, long paramLong2)
+  public void onEvent(int paramInt, String paramString)
   {
-    int i = (int)(100.0F * (float)paramLong1 / (float)paramLong2);
-    try
+    if ((paramInt & 0x20) == 32) {
+      if (QLog.isColorLevel()) {
+        QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][OPEN]  path=" + paramString);
+      }
+    }
+    do
     {
-      paramString = new JSONObject();
-      paramString.put("code", 1);
-      paramString.put("progress", i);
-      this.jdField_a_of_type_Ahxk.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
       return;
+      if ((paramInt & 0x400) == 1024)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE_SELF]  path=" + paramString);
+        }
+        a();
+        return;
+      }
+      if ((paramInt & 0x200) == 512)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE]  path=" + paramString);
+        }
+        a();
+        return;
+      }
+    } while ((paramInt & 0x8) != 8);
+    if (QLog.isColorLevel()) {
+      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][CLOSE_WRITE]  path=" + paramString);
     }
-    catch (JSONException paramString)
-    {
-      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: ", paramString);
-    }
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahxn
  * JD-Core Version:    0.7.0.1
  */

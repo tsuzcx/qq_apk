@@ -1,38 +1,53 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
+import android.util.SparseArray;
 
-class awzu
-  extends azue
+public class awzu
+  extends axat
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  private int c;
+  public int a;
+  public long a;
+  private SparseArray<Object> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public long c;
+  public boolean c;
+  public long d;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  public boolean g = true;
+  public boolean h;
   
-  public awzu(awzo paramawzo, int paramInt1, int paramInt2, int paramInt3)
+  public awzu(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.e = paramLong2;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+    this.c = paramBoolean3;
+    this.d = paramBoolean4;
   }
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public Object a(int paramInt)
   {
-    if (paramBitmap == null) {
-      return null;
+    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
+      return this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
     }
-    int j = this.c;
-    int k = paramBitmap.getWidth();
-    if (paramBitmap.getHeight() != 0) {}
-    for (int i = paramBitmap.getHeight();; i = this.c)
-    {
-      i = k * j / i;
-      return bacm.b(paramBitmap, this.jdField_a_of_type_Int, i, this.c);
+    return null;
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
+      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     }
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awzu
  * JD-Core Version:    0.7.0.1
  */

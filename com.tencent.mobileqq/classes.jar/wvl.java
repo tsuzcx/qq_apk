@@ -1,47 +1,38 @@
-import com.tencent.biz.videostory.capture.watermark.WaterMarkOnlineUserManager.1.1;
-import com.tencent.ttpic.openapi.watermark.LogicDataManager.OnGetQQNumberEventListener;
-import java.util.Random;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanGood;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
+import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class wvl
-  implements LogicDataManager.OnGetQQNumberEventListener
+  implements View.OnClickListener
 {
-  wvl(wvk paramwvk) {}
+  public wvl(CommodityItemView paramCommodityItemView) {}
   
-  public int onGetQQNumber()
+  public void onClick(View paramView)
   {
-    long l = System.currentTimeMillis();
-    if (l - wvk.a(this.a) > 60000L)
-    {
-      wvk.a(this.a, l);
-      new Thread(new WaterMarkOnlineUserManager.1.1(this)).start();
-      if (l - wvk.b(this.a) <= 1000L) {
-        break label168;
+    if ((this.a.a() != null) && (!CommodityItemView.a(this.a))) {
+      if (!(this.a.a() instanceof CommodityBean)) {
+        break label120;
       }
-      wvk.b(this.a, l);
     }
-    for (;;)
+    label120:
+    for (paramView = ((CommodityBean)this.a.a()).mUrl;; paramView = ((CertifiedAccountMeta.StYouZanGood)this.a.a()).url.get())
     {
-      synchronized (wvk.a(this.a))
-      {
-        if (wvk.a(this.a) != 0) {
-          wvk.a(this.a, wvk.a(this.a) - 1000 + new Random().nextInt(2000));
-        }
-        return wvk.a(this.a);
-        if (l - wvk.a(this.a) >= 0L) {
-          break;
-        }
-        wvk.a(this.a, l);
+      if (CommodityItemView.a(this.a) != null) {
+        xhe.a(CommodityItemView.a(this.a).poster.id.get(), "auth_" + wva.a(this.a.a()), "clk_goods", 0, 0, new String[0]);
       }
-      label168:
-      if (l - wvk.b(this.a) < 0L) {
-        wvk.b(this.a, l);
-      }
+      wiv.a(paramView, 8002);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wvl
  * JD-Core Version:    0.7.0.1
  */

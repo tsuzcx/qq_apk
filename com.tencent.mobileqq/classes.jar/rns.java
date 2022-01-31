@@ -1,90 +1,60 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.weaknet.WeakNetHelper.1;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+import java.util.List;
 
-public class rns
+class rns
 {
-  static long a()
+  public long a;
+  public List<Pair<Long, Long>> a;
+  private boolean a;
+  public long b;
+  public List<Pair<Long, Long>> b;
+  public long c;
+  public long d;
+  public long e;
+  
+  public rns(long paramLong)
   {
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(152);
-    int i;
-    if (localAladdinConfig != null)
-    {
-      i = localAladdinConfig.getIntegerFromString("toast_delay_time", 5000);
-      QLog.d("WeakNetHelper", 1, new Object[] { "getToastDelayTime, toastDelayTime = ", Integer.valueOf(i) });
-      if (i < 3000) {
-        QLog.d("WeakNetHelper", 1, new Object[] { "getToastDelayTime, toast config time is unreasonable, don't use it, toastDelayTime = ", Integer.valueOf(i) });
-      }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Long = paramLong;
+    if (this.jdField_a_of_type_Long <= 0L) {
+      this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
     }
-    else
-    {
-      QLog.d("WeakNetHelper", 1, new Object[] { "getToastDelayTime, default time = ", Integer.valueOf(5000) });
-      return 5000L;
-    }
-    return i;
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void a(long paramLong, boolean paramBoolean)
   {
-    ThreadManager.getSubThreadHandler().post(new WeakNetHelper.1(paramString1, paramString2));
+    if (this.jdField_a_of_type_JavaUtilList.size() >= 30) {
+      return;
+    }
+    this.d = NetConnInfoCenter.getServerTimeMillis();
+    if (this.jdField_b_of_type_Long == 0L) {
+      this.jdField_b_of_type_Long = this.d;
+    }
+    this.e = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static boolean a()
+  public void b(long paramLong, boolean paramBoolean)
   {
-    Object localObject = BaseActivity.sTopActivity;
-    if ((localObject instanceof SplashActivity))
+    this.c = NetConnInfoCenter.getServerTimeMillis();
+    if (this.jdField_a_of_type_JavaUtilList.size() >= 30) {}
+    do
     {
-      boolean bool = ReadinjoyTabFrame.c_();
-      if (bool) {}
-      for (localObject = "YES";; localObject = "NO")
-      {
-        QLog.d("WeakNetHelper", 1, new Object[] { "isAbleToShowToast: ", localObject, ", tab." });
-        return bool;
-      }
+      return;
+      l3 = (this.c - this.d) / 100L;
+    } while (l3 == 0L);
+    long l1 = paramLong - this.e;
+    long l2 = (this.c - this.jdField_a_of_type_Long) / 100L;
+    long l3 = Utils.px2dp((float)(l1 / l3));
+    this.jdField_a_of_type_JavaUtilList.add(new Pair(Long.valueOf(l3), Long.valueOf(l2)));
+    if ((this.jdField_a_of_type_Boolean) || (paramBoolean)) {
+      this.jdField_b_of_type_JavaUtilList.add(new Pair(Long.valueOf(this.c - this.d), Long.valueOf(l1)));
     }
-    if ((localObject instanceof ReadInJoyNewFeedsActivity))
-    {
-      QLog.d("WeakNetHelper", 1, "isAbleToShowToast: YES");
-      return true;
-    }
-    if (((localObject instanceof ReadInJoyVideoSubChannelActivity)) || ((localObject instanceof ReadInJoyChannelActivity)))
-    {
-      QLog.d("WeakNetHelper", 1, "isAbleToShowToast: YES, sub channel.");
-      return true;
-    }
-    QLog.d("WeakNetHelper", 1, "isAbleToShowToast: NO, not SplashActivity or ReadInJoyNewFeedsActivity, not sub channel activity.");
-    return false;
-  }
-  
-  static boolean a(ToServiceMsg paramToServiceMsg)
-  {
-    if (paramToServiceMsg != null)
-    {
-      Boolean localBoolean = (Boolean)paramToServiceMsg.getAttribute("isFeedsPreload");
-      if ((localBoolean != null) && (localBoolean.booleanValue()))
-      {
-        QLog.d("WeakNetHelper", 1, "isNeedToShowToast: NO, feeds preload request.");
-        return false;
-      }
-      paramToServiceMsg = (Long)paramToServiceMsg.getAttribute(oqg.d);
-      if ((paramToServiceMsg != null) && (paramToServiceMsg.longValue() == -1L))
-      {
-        QLog.d("WeakNetHelper", 1, "isNeedToShowToast: YES.");
-        return true;
-      }
-    }
-    QLog.d("WeakNetHelper", 1, "isNeedToShowToast: NO.");
-    return false;
+    this.e = paramLong;
   }
 }
 

@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.data.MessageForPtt;
+import java.util.List;
 
-public abstract interface audd
+public class audd
 {
-  public abstract void a();
-  
-  public abstract boolean a(MessageForPtt paramMessageForPtt);
-  
-  public abstract boolean a(MessageForPtt paramMessageForPtt, int paramInt);
-  
-  public abstract boolean b(MessageForPtt paramMessageForPtt);
+  public int a;
+  public String a;
+  public List<aubd> a;
+  public boolean a;
+  public int b;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     audd
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,14 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.image.
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicLong;
-import obj;
-import olg;
-import olh;
+import omu;
+import ows;
+import owt;
 
 public class GifView
   extends FrameLayout
@@ -28,10 +29,10 @@ public class GifView
   public int a;
   private Context jdField_a_of_type_AndroidContentContext;
   private KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
+  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
-  private KandianUrlImageView jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
   private String jdField_b_of_type_JavaLangString;
   private int c;
   
@@ -59,7 +60,7 @@ public class GifView
   private static Drawable a()
   {
     if (jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841221);
+      jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841300);
     }
     return jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
@@ -74,8 +75,8 @@ public class GifView
     long l = System.currentTimeMillis();
     AtomicLong localAtomicLong3 = new AtomicLong(l);
     AtomicLong localAtomicLong4 = new AtomicLong(0L);
-    paramURLDrawable.setDownloadListener(new olg(this, localAtomicLong3, localAtomicLong1, l, localAtomicLong2, localAtomicLong4, paramURLDrawable));
-    paramURLDrawable.setURLDrawableListener(new olh(this, l, localAtomicLong3, localAtomicLong1, localAtomicLong4, localAtomicLong2, paramURLDrawable));
+    paramURLDrawable.setDownloadListener(new ows(this, localAtomicLong3, localAtomicLong1, l, localAtomicLong2, localAtomicLong4, paramURLDrawable));
+    paramURLDrawable.setURLDrawableListener(new owt(this, l, localAtomicLong3, localAtomicLong1, localAtomicLong4, localAtomicLong2, paramURLDrawable));
   }
   
   private boolean b()
@@ -86,12 +87,12 @@ public class GifView
   private void c()
   {
     this.jdField_a_of_type_AndroidContentContext = getContext();
+    this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = new KandianUrlImageView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = new KandianUrlImageView(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    addView(this.jdField_a_of_type_ComTencentImageURLImageView, -1, -1);
     addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, -1, -1);
-    addView(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, -1, -1);
   }
   
   private void d()
@@ -107,7 +108,7 @@ public class GifView
   
   private void f()
   {
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(4);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(4);
   }
   
   public void a()
@@ -133,19 +134,19 @@ public class GifView
         f();
       }
       a((URLDrawable)localObject);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageDrawable((Drawable)localObject);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
     }
   }
   
   public boolean a()
   {
-    return (this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) && (this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getVisibility() != 0);
+    return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getVisibility() != 0);
   }
   
   public void b()
   {
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(0);
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setAlpha(1.0F);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setAlpha(1.0F);
   }
   
   public void onStartTemporaryDetach()
@@ -157,10 +158,10 @@ public class GifView
   public void setCoverUrl(String paramString)
   {
     this.jdField_b_of_type_JavaLangString = paramString;
-    if (this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) {}
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) {}
     try
     {
-      obj.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, new URL(this.jdField_b_of_type_JavaLangString), getContext());
+      omu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, new URL(this.jdField_b_of_type_JavaLangString), getContext());
       d();
       return;
     }
@@ -196,11 +197,11 @@ public class GifView
   
   public void setScaleType(int paramInt)
   {
-    if (this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) {
-      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setScaleType((ImageView.ScaleType)ImageBase.IMAGE_SCALE_TYPE.get(paramInt, ImageView.ScaleType.CENTER_CROP));
-    }
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setScaleType((ImageView.ScaleType)ImageBase.IMAGE_SCALE_TYPE.get(paramInt, ImageView.ScaleType.CENTER_CROP));
+    }
+    if (this.jdField_a_of_type_ComTencentImageURLImageView != null) {
+      this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType((ImageView.ScaleType)ImageBase.IMAGE_SCALE_TYPE.get(paramInt, ImageView.ScaleType.CENTER_CROP));
     }
   }
 }

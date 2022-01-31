@@ -1,25 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5.1.1;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-public class azqb
-  implements azwq
+class azqb
+  implements bcvx
 {
-  public azqb(TroopGiftAnimationController.5 param5) {}
+  azqb(azpt paramazpt, TroopFileTransferManager paramTroopFileTransferManager, String paramString1, String paramString2, long paramLong, int paramInt) {}
   
-  public void onLoadingStateChanged(int paramInt1, int paramInt2)
+  public void a(int paramInt)
   {
-    Bitmap localBitmap = azlj.a(this.a.this$0.a(String.valueOf(this.a.a.senderUin), null));
-    if ((paramInt1 == 0) && (paramInt2 == 1) && (this.a.this$0.a != null)) {
-      this.a.this$0.a.b(new TroopGiftAnimationController.5.1.1(this, localBitmap));
+    if (paramInt == 2) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azqb
  * JD-Core Version:    0.7.0.1
  */

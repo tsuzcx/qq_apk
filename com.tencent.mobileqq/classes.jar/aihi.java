@@ -1,115 +1,65 @@
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.apollo.CmShowRscCacheManager.1;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Message;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Iterator;
-import org.json.JSONObject;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class aihi
+  extends MqqHandler
 {
-  private static aihi jdField_a_of_type_Aihi;
-  private final SparseArray<aihj> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  public aihi(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  private aihi()
+  public void handleMessage(Message paramMessage)
   {
-    a();
-  }
-  
-  public static aihi a()
-  {
-    try
+    switch (paramMessage.what)
     {
-      if (jdField_a_of_type_Aihi == null) {
-        jdField_a_of_type_Aihi = new aihi();
-      }
-      aihi localaihi = jdField_a_of_type_Aihi;
-      return localaihi;
     }
-    finally {}
-  }
-  
-  private void b()
-  {
-    Object localObject1 = new aihq();
-    ((aihq)localObject1).jdField_a_of_type_Int = 100;
-    ((aihq)localObject1).jdField_a_of_type_Long = 1L;
-    ((aihq)localObject1).jdField_a_of_type_JavaLangString = "all_room3D";
-    localObject1 = ((aihq)localObject1).b() + "all_room3D.json";
-    Object localObject2 = new File((String)localObject1);
-    if (((File)localObject2).exists()) {
-      try
+    do
+    {
+      do
       {
-        localObject2 = new JSONObject(bace.b((File)localObject2)).optJSONObject("data");
-        if (localObject2 != null)
+        do
         {
-          localObject1 = ((JSONObject)localObject2).optString("downloadUrl");
-          localObject2 = ((JSONObject)localObject2).optJSONObject("list");
-          Iterator localIterator = ((JSONObject)localObject2).keys();
-          while (localIterator.hasNext())
-          {
-            Object localObject3 = (String)localIterator.next();
-            int i = ApolloUtil.b((String)localObject3);
-            if (i > -2147483648)
-            {
-              localObject3 = ((JSONObject)localObject2).optJSONObject((String)localObject3);
-              if (localObject3 != null)
-              {
-                localObject3 = ((JSONObject)localObject3).optString("source_qq");
-                if (!TextUtils.isEmpty((CharSequence)localObject3))
-                {
-                  aihj localaihj = new aihj();
-                  localaihj.c = "all_room3D.json";
-                  localaihj.jdField_b_of_type_JavaLangString = ((String)localObject1);
-                  localaihj.jdField_b_of_type_Int = i;
-                  localaihj.jdField_a_of_type_Int = 8;
-                  localaihj.jdField_a_of_type_JavaLangString = ((String)localObject3);
-                  this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localaihj);
-                }
-              }
-            }
+          return;
+          bcpw.a(this.a, 2131719554, 0).a();
+          return;
+          String str = this.a.getString(2131719555);
+          paramMessage = (String)paramMessage.obj;
+          bcpw.a(this.a.jdField_a_of_type_AndroidContentContext, 2, str + paramMessage, 0).a();
+          bbdr.a(this.a, paramMessage);
+          return;
+          paramMessage = bbcv.a(this.a.jdField_a_of_type_AndroidContentContext, 232, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719587), this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719586), 2131719569, 2131718713, new aihj(this), new aihk(this));
+          ShortVideoPlayActivity.a(this.a, paramMessage);
+          return;
+          if (QLog.isColorLevel()) {
+            QLog.d("ShortVideoPlayActivity", 2, "...mobile/none => wifi...");
           }
-        }
-        ApolloUtil.b("小窝json不存在");
-      }
-      catch (Exception localException)
-      {
-        QLog.e("rscContent_CmShowRscCacheManager", 1, "initRoomJson e:", localException);
-        if (QLog.isColorLevel()) {
-          QLog.d("rscContent_CmShowRscCacheManager", 2, "initRoomJson mRoomRscMap:" + this.jdField_a_of_type_AndroidUtilSparseArray);
-        }
+        } while ((this.a.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
+        ((TVK_IMediaPlayer)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).setDownloadNetworkChange(1);
         return;
-      }
-    }
-    QLog.e("rscContent_CmShowRscCacheManager", 1, "initRoomJson file is no exsit path:" + localException);
-  }
-  
-  public aihj a(int paramInt1, int paramInt2)
-  {
-    aihj localaihj = null;
-    if (paramInt1 == 8) {
-      localaihj = (aihj)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
-    }
-    if (localaihj == null) {
-      ApolloUtil.b("未获取资源getRscItem type:" + paramInt1 + " id:" + paramInt2);
-    }
-    return localaihj;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("rscContent_CmShowRscCacheManager", 2, "onRoomZipUpdated");
-    }
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    ThreadManager.executeOnSubThread(new CmShowRscCacheManager.1(this));
+        if (QLog.isColorLevel()) {
+          QLog.d("ShortVideoPlayActivity", 2, "...wifi/none => mobile...");
+        }
+        if ((this.a.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+          ((TVK_IMediaPlayer)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).setDownloadNetworkChange(2);
+        }
+        if ((this.a.b != 1) && (this.a.b != 2)) {
+          break;
+        }
+      } while (!this.a.b());
+      this.a.j();
+      this.a.r();
+      return;
+    } while ((this.a.b != 0) && (this.a.b != 5));
+    ShortVideoPlayActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aihi
  * JD-Core Version:    0.7.0.1
  */

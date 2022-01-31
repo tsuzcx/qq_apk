@@ -10,7 +10,10 @@ class LogicDataManager$72
   
   public String getValue()
   {
-    return "中国";
+    if (LogicDataManager.access$4600(this.this$0) == null) {
+      return "我在这里";
+    }
+    return LogicDataManager.access$4600(this.this$0);
   }
 }
 

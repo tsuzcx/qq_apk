@@ -9,7 +9,7 @@ final class MiniProgramLpReportDC04239$6
   
   public void run()
   {
-    MiniProgramLpReportDC04239.access$400(this.val$miniAppConfig, this.val$actionType, this.val$subActionType, this.val$reserves, this.val$reserves2);
+    MiniProgramLpReportDC04239.access$300(this.val$miniAppConfig, this.val$actionType, this.val$subActionType, this.val$reserves, this.val$reserves2);
   }
 }
 

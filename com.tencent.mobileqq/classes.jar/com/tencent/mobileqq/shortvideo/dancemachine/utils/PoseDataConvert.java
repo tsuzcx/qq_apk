@@ -5,22 +5,7 @@ import java.util.List;
 
 public class PoseDataConvert
 {
-  private static int[][] mirrorMap;
-  
-  static
-  {
-    int[] arrayOfInt1 = { 16, 17 };
-    int[] arrayOfInt2 = { 4, 7 };
-    int[] arrayOfInt3 = { 8, 11 };
-    int[] arrayOfInt4 = { 9, 12 };
-    int[] arrayOfInt5 = { 34, 35 };
-    int[] arrayOfInt6 = { 20, 23 };
-    int[] arrayOfInt7 = { 21, 24 };
-    int[] arrayOfInt8 = { 22, 25 };
-    int[] arrayOfInt9 = { 26, 29 };
-    int[] arrayOfInt10 = { 27, 30 };
-    mirrorMap = new int[][] { { 14, 15 }, arrayOfInt1, { 2, 5 }, { 3, 6 }, arrayOfInt2, arrayOfInt3, arrayOfInt4, { 10, 13 }, { 32, 33 }, arrayOfInt5, arrayOfInt6, arrayOfInt7, arrayOfInt8, arrayOfInt9, arrayOfInt10, { 28, 31 } };
-  }
+  private static int[][] mirrorMap = { { 14, 15 }, { 16, 17 }, { 2, 5 }, { 3, 6 }, { 4, 7 }, { 8, 11 }, { 9, 12 }, { 10, 13 }, { 32, 33 }, { 34, 35 }, { 20, 23 }, { 21, 24 }, { 22, 25 }, { 26, 29 }, { 27, 30 }, { 28, 31 } };
   
   public static float[] convertPointsOld(float[] paramArrayOfFloat, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {

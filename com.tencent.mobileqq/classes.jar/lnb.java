@@ -1,42 +1,59 @@
-import android.os.Bundle;
-import android.os.RemoteCallbackList;
-import android.os.RemoteException;
-import com.tencent.av.service.QQServiceForAV;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-class lnb
-  extends mmn
+public class lnb
 {
-  lnb(lna paramlna, String paramString, int paramInt) {}
+  private static volatile lnb jdField_a_of_type_Lnb;
+  lnd jdField_a_of_type_Lnd = null;
+  lnf jdField_a_of_type_Lnf = null;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle arg3)
+  public static lnb a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "sendNearbyVideoChatPbReq, cmd " + this.jdField_a_of_type_JavaLangString + "==>onResult, errorCode:" + paramInt);
-    }
-    synchronized (this.jdField_a_of_type_Lna.a.a)
+    if (jdField_a_of_type_Lnb == null) {}
+    try
     {
-      int j = this.jdField_a_of_type_Lna.a.a.beginBroadcast();
-      int i = 0;
-      for (;;)
+      if (jdField_a_of_type_Lnb == null)
       {
-        if (i < j) {
-          try
-          {
-            ((lmb)this.jdField_a_of_type_Lna.a.a.getBroadcastItem(i)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt, paramArrayOfByte);
-            i += 1;
-          }
-          catch (RemoteException paramArrayOfByte)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "callBack RemoteException", paramArrayOfByte);
-            }
-          }
-        }
+        lnb locallnb = new lnb();
+        locallnb.b();
+        jdField_a_of_type_Lnb = locallnb;
       }
-      this.jdField_a_of_type_Lna.a.a.finishBroadcast();
-      return;
+      return jdField_a_of_type_Lnb;
     }
+    finally {}
+  }
+  
+  public static void a()
+  {
+    lnb locallnb = a();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGPDownloadManager", 4, String.format("onDownloadRequest, mStatusGameplay[%s]", new Object[] { Integer.valueOf(locallnb.jdField_a_of_type_Lnd.a) }));
+    }
+    lnf.a();
+  }
+  
+  public static boolean a()
+  {
+    return jdField_a_of_type_Lnb != null;
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Lnd = new lnd();
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      this.jdField_a_of_type_Lnf = new lnf();
+    }
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Lnd.a();
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Lnd.c();
   }
 }
 

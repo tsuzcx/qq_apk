@@ -1,36 +1,42 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
 class wjt
-  implements ajks
+  implements wsp
 {
-  wjt(wjk paramwjk, Bundle paramBundle) {}
+  wjt(wjr paramwjr) {}
   
-  public boolean a(ajkx paramajkx)
+  public void a(boolean paramBoolean)
   {
-    Bundle localBundle = new Bundle();
-    ajkx localajkx = paramajkx;
-    if (paramajkx == null) {
-      localajkx = this.jdField_a_of_type_Wjk.a.a.jdField_a_of_type_Ajkt.a(this.jdField_a_of_type_Wjk.a.a.jdField_a_of_type_JavaLangString, 1, ajkr.a());
-    }
-    if (localajkx != null)
+    String str2 = RecommendBannerItemView.a(this.a.a).id.get();
+    StringBuilder localStringBuilder = new StringBuilder().append("recom_");
+    if (paramBoolean)
     {
-      localBundle.putString("url", localajkx.b);
-      localBundle.putString("content", localajkx.jdField_a_of_type_JavaLangString);
+      str1 = "cancel";
+      xhe.a(str2, "auth_page", str1, 0, 0, new String[] { "", RecommendBannerItemView.a(this.a.a) + "", RecommendBannerItemView.a(this.a.a).nick.get() });
+      if (RecommendBannerItemView.a(this.a.a))
+      {
+        str2 = RecommendBannerItemView.a(this.a.a).id.get();
+        localStringBuilder = new StringBuilder().append("reco_");
+        if (!paramBoolean) {
+          break label252;
+        }
+      }
     }
-    for (;;)
+    label252:
+    for (String str1 = "cancel";; str1 = "dislike")
     {
-      localBundle.putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq", -1));
-      this.jdField_a_of_type_Wjk.a.a(101, localBundle);
-      return false;
-      localBundle.putString("url", "");
-      localBundle.putString("content", "");
+      xhe.a(str2, "auth_discover", str1, 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a.a)), RecommendBannerItemView.a(this.a.a).nick.get(), RecommendBannerItemView.a(this.a.a).desc.get() });
+      return;
+      str1 = "dislike";
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wjt
  * JD-Core Version:    0.7.0.1
  */

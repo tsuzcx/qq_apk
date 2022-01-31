@@ -1,16 +1,72 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class axwe
-  implements URLDrawable.URLDrawableListener
 {
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  public int a;
+  public axwe a;
+  public String a;
+  public List<axwe> a;
+  public Map<String, String> a;
+  public String b;
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  public axwe(String paramString, Map<String, String> paramMap)
+  {
+    this.jdField_a_of_type_Int = 1;
+    this.b = paramString;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
+  }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  public int a()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
+  public axwe a()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return a(this.jdField_a_of_type_JavaUtilList.indexOf(this) + 1);
+    }
+    return null;
+  }
+  
+  public axwe a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
+      return (axwe)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public String a(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilMap != null) {
+      return (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    }
+    return null;
+  }
+  
+  public void a(axwe paramaxwe)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilList.add(paramaxwe);
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_JavaUtilMap != null) && (this.jdField_a_of_type_JavaUtilMap.size() > 0);
+  }
+  
+  public axwe b()
+  {
+    return a(0);
+  }
 }
 
 

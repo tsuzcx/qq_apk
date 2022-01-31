@@ -1,20 +1,34 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class bbgk
-  extends GestureDetector.SimpleOnGestureListener
+class bbgk
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public bbgk(BounceScrollView paramBounceScrollView) {}
+  bbgk(bbgg parambbgg, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return Math.abs(paramFloat2) >= Math.abs(paramFloat1);
+    bbgg localbbgg;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
+    {
+      paramCompoundButton = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+      localbbgg = this.jdField_a_of_type_Bbgg;
+      if (!paramBoolean) {
+        break label34;
+      }
+    }
+    label34:
+    for (int i = 1;; i = 0)
+    {
+      paramCompoundButton.onClick(localbbgg, i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbgk
  * JD-Core Version:    0.7.0.1
  */

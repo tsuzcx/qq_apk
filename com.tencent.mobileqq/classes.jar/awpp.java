@@ -1,61 +1,278 @@
+import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class awpp
+  extends awoh
 {
-  public static String a = "";
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  private static String a(String paramString1, String paramString2, String paramString3, awpq paramawpq, int paramInt)
+  public awpp(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    QLog.e("AVShortVideoReportController", 1, "getReportingDetail");
-    paramString1 = new StringBuilder(64);
-    paramString1.append(paramString2).append('|');
-    paramString1.append(paramString3).append('|');
-    paramString1.append("${count_unknown}").append('|');
-    paramString1.append(paramawpq.a).append('|');
-    paramString1.append(paramawpq.b).append('|');
-    paramString1.append(paramawpq.c).append('|');
-    paramString1.append(paramawpq.d).append('|');
-    paramString1.append(paramawpq.e).append('|');
-    paramString1.append(paramawpq.f).append('|');
-    paramString1.append(paramawpq.g).append('|');
-    paramString1.append(paramawpq.h).append('|');
-    paramString1.append(paramawpq.i).append('|');
-    paramString1.append(paramawpq.j).append('|');
-    paramString1.append(paramawpq.k).append('|');
-    paramString1.append(paramawpq.l).append('|');
-    paramString1.append(paramawpq.m).append('|');
-    paramString1.append(paramawpq.n).append('|');
-    paramString1.append(paramawpq.o).append('|');
-    paramString1.append(paramawpq.p).append('|');
-    paramString1.append(paramawpq.q).append('|');
-    paramString1.append(paramawpq.r).append('|');
-    paramString1.append(paramawpq.s).append('|');
-    paramString1.append(paramawpq.t).append('|');
-    paramString1.append(paramawpq.u).append('|');
-    paramString1.append(paramawpq.v).append('|');
-    return paramString1.toString();
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3, awpq paramawpq)
+  public awpp(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    paramString1 = a(paramString2, paramString1, paramString3, paramawpq, 1);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.d = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramString3;
+    a();
+  }
+  
+  private void a()
+  {
     if (QLog.isColorLevel()) {
-      QLog.i("AVShortVideoReportController", 2, "POST getReportingDetail=" + paramString1);
+      QLog.d("Q.uniteSearch.SearchResultModelForEntrance", 2, "extension info:" + this.d);
     }
-    paramString3 = new Intent();
-    paramString3.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-    paramString3.putExtra("reporting_tag", paramString2);
-    paramString3.putExtra("reporting_detail", paramString1);
-    paramString3.putExtra("reporting_count", 1);
-    paramString3.putExtra("is_runtime", 0);
-    BaseApplicationImpl.getApplication().sendBroadcast(paramString3);
+    if (!TextUtils.isEmpty(this.d)) {}
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(this.d);
+      if (localJSONObject.getInt("hideArrow") == 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        this.jdField_a_of_type_Boolean = bool;
+        this.e = localJSONObject.optString("title1");
+        this.jdField_a_of_type_JavaLangString = localJSONObject.optString("title2");
+        this.f = localJSONObject.optString("title3");
+        this.g = localJSONObject.optString("secondLine");
+        return;
+      }
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+  }
+  
+  public CharSequence a()
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    case -3: 
+    case -2: 
+    default: 
+      return ajyc.a(2131713655);
+    case -4: 
+      return this.e;
+    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public void a(View paramView)
+  {
+    Object localObject1;
+    Object localObject2;
+    switch (this.jdField_a_of_type_Int)
+    {
+    case -2: 
+    default: 
+      localObject1 = this.jdField_b_of_type_JavaLangString;
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject2 = bbej.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), (String)localObject1);
+        if (localObject2 == null) {
+          break label825;
+        }
+        ((bbds)localObject2).c();
+      }
+    case -1: 
+      do
+      {
+        return;
+        ActiveEntitySearchActivity.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString, ajyc.a(2131713640), new long[] { 1001L, 1002L });
+        awvy.a("all_result", "clk_people_group", new String[] { this.jdField_a_of_type_JavaLangString });
+        awvy.a("all_search", "all_result", "clk_user_grp", 0, 0, new String[] { "", "", this.jdField_a_of_type_JavaLangString, "" });
+      } while (!(paramView.getContext() instanceof UniteSearchActivity));
+      if (awiu.b.containsKey(this))
+      {
+        paramView = (awiv)awiu.b.get(this);
+        localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        localObject2 = new JSONObject();
+      }
+      try
+      {
+        ((JSONObject)localObject2).put("project", awso.a());
+        ((JSONObject)localObject2).put("event_src", "client");
+        ((JSONObject)localObject2).put("obj_lct", paramView.jdField_a_of_type_Int);
+        ((JSONObject)localObject2).put("get_src", "native");
+        awso.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(paramView.jdField_a_of_type_Long + "").obj2(paramView.jdField_b_of_type_JavaLangString).ver1(paramView.jdField_a_of_type_JavaLangString).ver2(awso.a(UniteSearchActivity.d)).ver7(((JSONObject)localObject2).toString()).session_id(((QQAppInterface)localObject1).getCurrentAccountUin() + awiu.jdField_a_of_type_Long));
+        awso.a(null, this.s, 0, "0X8009D3F", 0, 0, null, null);
+        return;
+      }
+      catch (JSONException localJSONException1)
+      {
+        for (;;)
+        {
+          QLog.e("Q.uniteSearch.SearchResultModelForEntrance", 2, "e = " + localJSONException1);
+        }
+      }
+    }
+    if ((paramView.getContext() instanceof UniteSearchActivity)) {
+      switch (((UniteSearchActivity)paramView.getContext()).jdField_a_of_type_Int)
+      {
+      }
+    }
+    for (int i = 0;; i = 0)
+    {
+      for (;;)
+      {
+        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+        {
+          localObject1 = awvv.a(this.jdField_a_of_type_JavaLangString, i, "group");
+          label480:
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          {
+            localObject2 = new Intent(paramView.getContext(), QQBrowserActivity.class);
+            ((Intent)localObject2).putExtra("url", (String)localObject1);
+            ((Intent)localObject2).putExtra("search_title", this.jdField_a_of_type_JavaLangString);
+            paramView.getContext().startActivity((Intent)localObject2);
+          }
+          if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+            break label787;
+          }
+          localObject1 = this.jdField_a_of_type_JavaLangString;
+          awvy.a("all_result", "clk_net_search", new String[] { localObject1 });
+          if ((!(paramView.getContext() instanceof UniteSearchActivity)) || (!awiu.b.containsKey(this))) {
+            break;
+          }
+          paramView = (awiv)awiu.b.get(this);
+          localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+          localObject2 = new JSONObject();
+        }
+        try
+        {
+          ((JSONObject)localObject2).put("project", awso.a());
+          ((JSONObject)localObject2).put("event_src", "client");
+          ((JSONObject)localObject2).put("obj_lct", paramView.jdField_a_of_type_Int);
+          ((JSONObject)localObject2).put("get_src", "web");
+          awso.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(paramView.jdField_a_of_type_Long + "").obj2(paramView.jdField_b_of_type_JavaLangString).ver1(paramView.jdField_a_of_type_JavaLangString).ver2(awso.a(UniteSearchActivity.d)).ver7(((JSONObject)localObject2).toString()).session_id(((QQAppInterface)localObject1).getCurrentAccountUin() + awiu.jdField_a_of_type_Long));
+          return;
+          i = 1;
+          continue;
+          i = 2;
+          continue;
+          i = 3;
+          continue;
+          localObject1 = this.jdField_b_of_type_JavaLangString;
+          break label480;
+          label787:
+          localObject1 = "";
+        }
+        catch (JSONException localJSONException2)
+        {
+          for (;;)
+          {
+            QLog.e("Q.uniteSearch.SearchResultModelForEntrance", 2, "e = " + localJSONException2);
+          }
+        }
+      }
+      label825:
+      if ((!((String)localObject1).startsWith("http://")) && (!((String)localObject1).startsWith("https://"))) {
+        break;
+      }
+      paramView = paramView.getContext();
+      localObject2 = new Intent(paramView, QQBrowserActivity.class);
+      ((Intent)localObject2).putExtra("url", (String)localObject1);
+      paramView.startActivity((Intent)localObject2);
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public CharSequence b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Int == -1;
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  public CharSequence c()
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    case -3: 
+    case -2: 
+    default: 
+      return "";
+    case -1: 
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      return awil.a(BaseApplicationImpl.getContext(), localQQAppInterface.c());
+    }
+    return this.g;
+  }
+  
+  public int d()
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      return 2131559613;
+    }
+    return 2131559606;
+  }
+  
+  public CharSequence d()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awpp
  * JD-Core Version:    0.7.0.1
  */

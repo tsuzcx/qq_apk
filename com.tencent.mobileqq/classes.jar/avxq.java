@@ -1,114 +1,156 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.opengl.GLES20;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-class avxq
-  implements View.OnClickListener
+public class avxq
 {
-  avxq(avxp paramavxp) {}
+  private static final ConcurrentLinkedQueue<avxq> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  public float[] a;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
   
-  public void onClick(View paramView)
+  private avxq()
   {
-    Object localObject1 = paramView.getTag(2131311070);
-    Object localObject2 = paramView.getTag(2131311071);
-    Context localContext;
-    Object localObject3;
-    if ((localObject1 != null) && ((localObject1 instanceof String)))
+    int i = avyg.a(1)[0];
+    if (i == 0)
     {
-      localContext = paramView.getContext();
-      localObject1 = (String)localObject1;
-      localObject3 = paramView.getTag(2131311045);
-      if (!(localObject3 instanceof Integer)) {
-        break label500;
+      avyg.a("glGenTexture");
+      throw new Exception("Unable to generate new texture " + Integer.toHexString(GLES20.glGetError()));
+    }
+    this.jdField_a_of_type_Int = i;
+  }
+  
+  public static avxq a()
+  {
+    synchronized (jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue)
+    {
+      avxq localavxq1 = (avxq)jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+      ??? = localavxq1;
+      if (localavxq1 != null) {}
+    }
+    return localavxq2;
+  }
+  
+  public static void a()
+  {
+    try
+    {
+      veg.c("FlowEdit_DecodedFrame", "releaseAll");
+      synchronized (jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue)
+      {
+        if (!jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) {
+          ((avxq)jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll()).c();
+        }
       }
     }
-    label419:
-    label500:
-    for (int i = ((Integer)localObject3).intValue();; i = 0)
-    {
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject1 = avwc.d(i);
-      }
-      for (localObject1 = avwc.a((String)localObject2, 3, (String)localObject1);; localObject1 = avwc.b((String)localObject1, i))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NetSearchTemplateNewEntranceView", 2, "open Browser append suffix url = " + (String)localObject1);
-        }
-        if (localObject1 != null) {
-          break;
-        }
-        QLog.e("NetSearchTemplateNewEntranceView", 2, "NetSearchSubView click jumpurl is null");
-        return;
-      }
-      avsv.a(null, 0, i, "0X8009D5F", 0, 0, null, null);
-      paramView = (avph)paramView.getTag(2131313373);
-      localObject3 = new JSONObject();
-      try
-      {
-        ((JSONObject)localObject3).put("project", avsv.a());
-        ((JSONObject)localObject3).put("event_src", "client");
-        ((JSONObject)localObject3).put("experiment_id", avsv.b);
-        if (paramView != null)
-        {
-          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("all_result").action("clk_relatedsearch_list").obj1(paramView.a + "").obj2(paramView.d).ver1(paramView.a()).ver2(avsv.a(i));
-          if (localObject2 == null)
-          {
-            paramView = "";
-            avsv.a(null, localReportModelDC02528.ver4(paramView).ver7(((JSONObject)localObject3).toString()).session_id(localQQAppInterface.getCurrentAccountUin() + avjb.a));
-          }
-        }
-        else
-        {
-          if ((!((String)localObject1).startsWith("https://")) && (!((String)localObject1).startsWith("http://"))) {
-            break label419;
-          }
-          paramView = new Intent(localContext, QQBrowserActivity.class);
-          paramView.putExtra("url", (String)localObject1);
-          localContext.startActivity(paramView);
-          return;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e("NetSearchTemplateNewEntranceView", 2, "e = " + localJSONException);
-          continue;
-          paramView = localObject2.toString();
-        }
-        if ((localContext instanceof BaseActivity))
-        {
-          paramView = bade.a(((BaseActivity)localContext).app, localContext, (String)localObject1);
-          if (paramView != null)
-          {
-            paramView.c();
-            return;
-          }
-          localContext.startActivity(new Intent(localContext, JumpActivity.class).setData(Uri.parse((String)localObject1)));
-          return;
-        }
-        localContext.startActivity(new Intent(localContext, JumpActivity.class).setData(Uri.parse((String)localObject1)));
-        return;
-      }
+    finally {}
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void a(int paramInt, long paramLong1, long paramLong2)
+  {
+    if (this.jdField_a_of_type_Int == 0) {
+      throw new IllegalStateException("this is an invalid frame");
     }
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public long b()
+  {
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Int == 0) {
+      throw new IllegalStateException("this is an invalid frame, don't recycle please");
+    }
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
+    synchronized (jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue)
+    {
+      jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(this);
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Int != 0)
+    {
+      avyg.b(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int = 0;
+      return;
+    }
+    veg.d("FlowEdit_DecodedFrame", "release duplicate %d", new Object[] { Integer.valueOf(System.identityHashCode(this)) });
+  }
+  
+  /* Error */
+  protected void finalize()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokespecial 133	java/lang/Object:finalize	()V
+    //   4: aload_0
+    //   5: getfield 63	avxq:jdField_a_of_type_Int	I
+    //   8: ifeq +10 -> 18
+    //   11: ldc 73
+    //   13: ldc 135
+    //   15: invokestatic 137	veg:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   18: return
+    //   19: astore_1
+    //   20: aload_0
+    //   21: getfield 63	avxq:jdField_a_of_type_Int	I
+    //   24: ifeq -6 -> 18
+    //   27: ldc 73
+    //   29: ldc 135
+    //   31: invokestatic 137	veg:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   34: return
+    //   35: astore_1
+    //   36: aload_0
+    //   37: getfield 63	avxq:jdField_a_of_type_Int	I
+    //   40: ifeq +10 -> 50
+    //   43: ldc 73
+    //   45: ldc 135
+    //   47: invokestatic 137	veg:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   50: aload_1
+    //   51: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	52	0	this	avxq
+    //   19	1	1	localThrowable	Throwable
+    //   35	16	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   0	4	19	java/lang/Throwable
+    //   0	4	35	finally
+  }
+  
+  public String toString()
+  {
+    return "DecodedFrame{textureId=" + this.jdField_a_of_type_Int + ", timeStampUs=" + this.jdField_a_of_type_Long + ", cycleCount=" + this.jdField_b_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avxq
  * JD-Core Version:    0.7.0.1
  */

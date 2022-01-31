@@ -1,34 +1,37 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 
-public class ards
+class ards
+  implements TextWatcher
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ardt(this);
-  private ardu jdField_a_of_type_Ardu;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  ards(ardr paramardr) {}
   
-  public ards(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public void a()
-  {
-    BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(ardu paramardu)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Ardu = paramardu;
+    if (ardr.a(this.a) != null)
+    {
+      if (TextUtils.isEmpty(paramCharSequence)) {
+        break label45;
+      }
+      if (!ardr.b(this.a))
+      {
+        ardr.b(this.a, true);
+        ardr.a(this.a, 1);
+      }
+    }
+    return;
+    label45:
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ards
  * JD-Core Version:    0.7.0.1
  */

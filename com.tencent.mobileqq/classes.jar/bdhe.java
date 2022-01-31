@@ -1,84 +1,73 @@
-import java.util.HashMap;
-import java.util.Iterator;
+import android.text.TextUtils;
+import com.tencent.open.appstore.js.DINewForCommonWebView;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.io.File;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class bdhe
+  implements bdkw
 {
-  public static String a(String paramString)
+  public bdhe(DINewForCommonWebView paramDINewForCommonWebView, String paramString) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    if ((paramString == null) || ("".equals(paramString))) {
-      return "";
-    }
-    StringBuffer localStringBuffer = new StringBuffer();
-    paramString = paramString.getBytes();
-    int i = 0;
-    while (i < paramString.length)
-    {
-      localStringBuffer.append(Integer.toHexString(new Integer(paramString[i] & 0xFF).intValue())).append(" ");
-      i += 1;
-    }
-    return localStringBuffer.toString();
+    bdht.e("DINewForCommonWebView", "[innerQuery] [onException] errorCode=" + paramInt + ", errorMsg=" + paramString);
   }
   
-  public static String a(byte[] paramArrayOfByte)
+  public void a(List<DownloadInfo> paramList)
   {
-    StringBuilder localStringBuilder = new StringBuilder(paramArrayOfByte.length);
-    int j = paramArrayOfByte.length;
+    bdht.c("DINewForCommonWebView", "[innerQuery] onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
     int i = 0;
-    while (i < j)
+    for (;;)
     {
-      localStringBuilder.appendCodePoint(paramArrayOfByte[i] & 0xFF);
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static HashMap<String, String> a(JSONObject paramJSONObject)
-  {
-    localHashMap = new HashMap();
-    if (paramJSONObject == null) {
-      return localHashMap;
-    }
-    try
-    {
-      Iterator localIterator = paramJSONObject.keys();
-      while (localIterator.hasNext())
+      if (i < j)
       {
-        String str = (String)localIterator.next();
-        localHashMap.put(str, paramJSONObject.getString(str));
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
+        {
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("packagename", localDownloadInfo.e);
+          localJSONObject.put("versioncode", localDownloadInfo.b);
+          localJSONObject.put("url", localDownloadInfo.d);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONObject.put("download_from", localDownloadInfo.h);
+          localJSONObject.put("writecodestate", localDownloadInfo.j);
+          if (TextUtils.isEmpty(localDownloadInfo.l)) {
+            localJSONObject.put("final_file_exits", "false");
+          }
+          for (;;)
+          {
+            localJSONArray.put(localJSONObject);
+            i += 1;
+            break;
+            localJSONObject.put("final_file_exits", new File(localDownloadInfo.l).exists());
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
       }
-      return localHashMap;
     }
-    catch (Exception paramJSONObject) {}
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return (paramString == null) || (paramString.length() == 0);
-  }
-  
-  public static byte[] a(String paramString)
-  {
-    paramString = paramString.toCharArray();
-    int m = paramString.length / 2;
-    byte[] arrayOfByte = new byte[m];
-    int i = 0;
-    while (i < m)
-    {
-      int k = Character.digit(paramString[(i * 2)], 16) << 4 | Character.digit(paramString[(i * 2 + 1)], 16);
-      int j = k;
-      if (k > 127) {
-        j = k - 256;
-      }
-      arrayOfByte[i] = ((byte)j);
-      i += 1;
-    }
-    return arrayOfByte;
+    paramList = "javascript:" + this.jdField_a_of_type_JavaLangString + "(" + localJSONArray.toString() + ")";
+    bdht.c("DINewForCommonWebView", "[innerQuery] querySucess : " + paramList);
+    DINewForCommonWebView.a(this.jdField_a_of_type_ComTencentOpenAppstoreJsDINewForCommonWebView, paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdhe
  * JD-Core Version:    0.7.0.1
  */

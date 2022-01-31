@@ -1,17 +1,20 @@
-public class bddh
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.OpenFrame;
+import com.tencent.open.agent.SocialFriendChooser;
+
+class bddh
+  implements bdcl
 {
-  public int a;
-  public String a;
+  bddh(bddg parambddg) {}
   
-  public bddh(String paramString, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    ((OpenFrame)this.a.a.a.getCurrentView()).g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bddh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,36 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.NearbyTribeAppController.2.1;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class atbl
-  implements View.OnTouchListener
+public class atbl
+  implements apwg
 {
-  private atbl(atbj paramatbj) {}
+  atbl(atbk paramatbk) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(String paramString, long paramLong)
   {
-    boolean bool3 = true;
-    boolean bool2 = false;
-    int i = paramMotionEvent.getAction();
-    Object localObject = this.a;
-    boolean bool1 = bool3;
-    if (i != 1) {
-      if (i != 3) {
-        break label105;
-      }
-    }
-    label105:
-    for (bool1 = bool3;; bool1 = false)
+    if ((TextUtils.isEmpty(paramString)) || (paramLong <= 0L)) {}
+    do
     {
-      ((atbj)localObject).b = bool1;
-      if ((this.a.b) && (this.a.jdField_a_of_type_Int != 2)) {
-        this.a.a();
+      return;
+      localObject = apti.a().b() + paramString;
+      if (!new File((String)localObject).exists()) {
+        break;
       }
-      localObject = this.a.jdField_a_of_type_Atbi.a();
-      bool1 = bool2;
-      if (localObject != null) {
-        bool1 = ((View.OnTouchListener)localObject).onTouch(paramView, paramMotionEvent);
-      }
-      return bool1;
-    }
+      apwc.a((String)localObject);
+    } while (!QLog.isColorLevel());
+    QLog.d(atbk.a(this.a), 2, "UniformDownloadUtil.installAPK,savePath=" + (String)localObject);
+    return;
+    atbk.a(this.a).post(new NearbyTribeAppController.2.1(this));
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putString("_filename_from_dlg", paramString);
+    ((Bundle)localObject).putLong("_filesize_from_dlg", paramLong);
+    ((Bundle)localObject).putString("_notify_name_dialog", ajyc.a(2131707377));
+    ((Bundle)localObject).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_hdsp_nearby");
+    apcy.a().a("http://pub.idqqimg.com/pc/misc/files/20170706/c221bf304be44e5a9e0441768beacff0.apk", (Bundle)localObject, null);
   }
 }
 

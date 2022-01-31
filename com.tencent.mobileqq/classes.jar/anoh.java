@@ -1,43 +1,18 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-public class anoh
+class anoh
 {
-  public int a;
-  public String a;
-  public HashMap<String, anoi> a;
-  public List<String> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public List<String> b = new ArrayList();
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public int h;
-  public String h;
-  public int i;
-  public String i;
-  public int j = 2;
-  public String j;
-  public int k = 50;
-  public String k;
-  public int l = 1;
-  public String l;
-  public String m;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
   
-  public anoh()
+  public anoh(anod paramanod, long paramLong1, long paramLong2, String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 

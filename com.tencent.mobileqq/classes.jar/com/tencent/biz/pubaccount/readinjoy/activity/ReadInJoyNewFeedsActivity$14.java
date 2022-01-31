@@ -1,7 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import noo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class ReadInJoyNewFeedsActivity$14
   implements Runnable
@@ -10,11 +11,16 @@ class ReadInJoyNewFeedsActivity$14
   
   public void run()
   {
-    QQMessageFacade localQQMessageFacade = this.this$0.app.a();
-    if (localQQMessageFacade != null)
+    try
     {
-      int i = localQQMessageFacade.b();
-      this.this$0.f(i);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("channel_id", 0);
+      noo.a(null, "", "0X8009665", "0X8009665", 0, 0, "", "", "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
     }
   }
 }

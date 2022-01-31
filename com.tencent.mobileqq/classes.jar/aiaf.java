@@ -1,289 +1,300 @@
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.adapter.ForwardRecentItemView;
-import com.tencent.mobileqq.adapter.ForwardRecentListAdapter.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
 
 public class aiaf
-  extends aiab
 {
-  private aiai jdField_a_of_type_Aiai;
-  ajfi jdField_a_of_type_Ajfi;
-  private ajhh jdField_a_of_type_Ajhh;
-  private ajjj jdField_a_of_type_Ajjj;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aiag(this);
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
-  private List<aiah> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private final float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int = -1;
+  private ahzz jdField_a_of_type_Ahzz;
+  private aiag jdField_a_of_type_Aiag;
+  private final Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+  private final float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int = 4;
+  private final Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
+  private final float jdField_c_of_type_Float;
+  private int jdField_c_of_type_Int = Color.parseColor("#298be7");
+  private final float d;
+  private float e;
+  private float f;
+  private float g;
+  private float h;
+  private float i;
+  private float j;
+  private float k;
   
-  public aiaf(Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, List<RecentUser> paramList, aiai paramaiai)
+  public aiaf(ahzz paramahzz, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super(paramContext, paramQQAppInterface, paramXListView, 1, false);
-    a(paramQQAppInterface);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aiai = paramaiai;
-    a(paramList);
+    this.jdField_a_of_type_Ahzz = paramahzz;
+    Object localObject = this.jdField_a_of_type_Ahzz.getContext();
+    this.jdField_a_of_type_Float = (bbkx.a() * 0.0375F);
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float * 0.5F);
+    this.d = paramInt3;
+    paramahzz = a(((Context)localObject).getResources(), 2130848200, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
+    localObject = a(((Context)localObject).getResources(), 2130848202, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
+    ColorDrawable localColorDrawable = new ColorDrawable(this.jdField_c_of_type_Int);
+    localColorDrawable.setBounds(0, 0, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float, Bitmap.Config.RGB_565);
+    Canvas localCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    localColorDrawable.draw(localCanvas);
+    if (paramahzz != null) {
+      localCanvas.drawBitmap(paramahzz, (this.jdField_a_of_type_Float - paramahzz.getWidth()) / 2.0F, (this.jdField_b_of_type_Float - paramahzz.getHeight()) / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float, Bitmap.Config.RGB_565);
+    localCanvas.setBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap);
+    localColorDrawable.draw(localCanvas);
+    if (localObject != null) {
+      localCanvas.drawBitmap((Bitmap)localObject, (this.jdField_a_of_type_Float - ((Bitmap)localObject).getWidth()) / 2.0F, (this.jdField_b_of_type_Float - ((Bitmap)localObject).getHeight()) / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    this.h = (1.0F * paramInt4 / paramInt2 * paramFloat1 + this.jdField_a_of_type_Float);
+    this.g = (2000.0F / paramInt2 * paramFloat1);
+    this.j = (paramInt3 - this.jdField_a_of_type_Float);
+    this.k = this.jdField_a_of_type_Float;
+    this.e = this.jdField_a_of_type_Float;
+    this.f = this.h;
   }
   
-  private ArrayList<aiah> a(List<RecentUser> paramList)
+  private void a(float paramFloat, Canvas paramCanvas)
   {
-    ArrayList localArrayList = new ArrayList(paramList.size());
-    int j = 0;
-    RecentUser localRecentUser;
-    String str;
-    int i;
-    Object localObject2;
-    if (j < paramList.size())
+    paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, paramFloat, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+  }
+  
+  private boolean a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    return (Math.abs(paramFloat1 - paramFloat3) <= this.jdField_a_of_type_Float * 2.0F) && (paramFloat2 > 0.0F) && (paramFloat2 < this.jdField_b_of_type_Float);
+  }
+  
+  private void b(float paramFloat, Canvas paramCanvas)
+  {
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramFloat - this.jdField_a_of_type_Float, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+  }
+  
+  private boolean b(float paramFloat1, float paramFloat2)
+  {
+    return Math.abs(paramFloat1 - paramFloat2) == 0.0F;
+  }
+  
+  public float a()
+  {
+    return this.jdField_b_of_type_Float;
+  }
+  
+  public int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
+  {
+    int i1 = paramOptions.outHeight;
+    int i2 = paramOptions.outWidth;
+    int n = 1;
+    int m = 1;
+    if ((i1 > paramInt2) || (i2 > paramInt1))
     {
-      localRecentUser = (RecentUser)paramList.get(j);
-      aiah localaiah = new aiah();
-      str = localRecentUser.uin;
-      i = localRecentUser.getType();
-      switch (localRecentUser.getType())
-      {
-      default: 
-        i = 1;
-        localObject1 = null;
-      case 6002: 
-        for (;;)
-        {
-          localObject2 = localObject1;
-          if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            localObject2 = str;
-          }
-          localaiah.jdField_a_of_type_JavaLangString = ((String)localObject2);
-          localaiah.jdField_a_of_type_Int = i;
-          localaiah.b = str;
-          localaiah.jdField_a_of_type_ComTencentMobileqqDataRecentUser = localRecentUser;
-          localArrayList.add(localaiah);
-          j += 1;
-          break;
-          localObject1 = localRecentUser.displayName;
-          i = 104;
-        }
-      case 1008: 
-        label284:
-        localObject1 = ((ajoy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56)).b(str);
-        if (localObject1 == null) {
-          break;
-        }
-      }
-    }
-    for (Object localObject1 = ((PublicAccountInfo)localObject1).name;; localObject1 = null)
-    {
-      i = 1;
-      break;
-      localObject1 = babh.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
-      localObject2 = ((aroh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11)).c(str);
-      if (localObject2 != null) {
-        localObject1 = ((PhoneContact)localObject2).name;
-      }
+      i1 /= 2;
+      i2 /= 2;
       for (;;)
       {
-        i = 11;
-        break;
-        if (localObject1 != null) {
-          localObject1 = babh.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject1, true);
-        } else {
-          localObject1 = str;
+        n = m;
+        if (i1 / m <= paramInt2) {
+          break;
         }
+        n = m;
+        if (i2 / m <= paramInt1) {
+          break;
+        }
+        m *= 2;
       }
-      localObject1 = this.jdField_a_of_type_Ajjj.e(str);
-      if ((localObject1 != null) && (((Friends)localObject1).uin != null) && (((Friends)localObject1).uin.length() > 0)) {}
-      for (localObject1 = babh.a((Friends)localObject1);; localObject1 = null)
+    }
+    return n;
+  }
+  
+  public Bitmap a(Resources paramResources, int paramInt1, int paramInt2, int paramInt3)
+  {
+    int m = 1;
+    if (paramResources == null) {}
+    while (paramInt1 <= 0) {
+      return null;
+    }
+    try
+    {
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inJustDecodeBounds = true;
+      BitmapFactory.decodeResource(paramResources, paramInt1, localOptions);
+      if ((paramInt2 <= 0) && (paramInt3 <= 0)) {}
+      for (paramInt2 = m;; paramInt2 = a(localOptions, paramInt2, paramInt3))
       {
-        if ((i == 1000) || (i == 1020))
-        {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(localRecentUser.troopUin);
-          localObject1 = babh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, (String)localObject1, localRecentUser.troopUin, true, null);
-        }
-        for (;;)
-        {
-          if (localObject1 != null)
-          {
-            localObject2 = localObject1;
-            if (!"".equals(localObject1)) {}
-          }
-          else
-          {
-            localObject2 = babh.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, true);
-          }
-          localObject1 = localObject2;
-          i = 1;
-          break;
-          if (i == 1004) {
-            localObject1 = babh.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.troopUin, str);
-          }
-        }
-        if ((0 == 0) || ("".equals(null))) {}
-        for (localObject1 = babh.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, true);; localObject1 = null)
-        {
-          i = 1;
-          break;
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(str);
-          int k = 4;
-          if (localObject1 != null) {}
-          for (localObject2 = ((TroopInfo)localObject1).getTroopName();; localObject2 = localRecentUser.displayName)
-          {
-            if (localObject2 != null)
-            {
-              i = k;
-              localObject1 = localObject2;
-              if (!((String)localObject2).trim().equals("")) {
-                break;
-              }
-            }
-            localObject1 = str;
-            i = k;
-            break;
-          }
-          localObject1 = this.jdField_a_of_type_Ajhh.a(str);
-          if ((localObject1 == null) || (((DiscussionInfo)localObject1).isHidden())) {
-            break label284;
-          }
-          if (TextUtils.isEmpty(((DiscussionInfo)localObject1).discussionName)) {}
-          for (localObject1 = localRecentUser.displayName;; localObject1 = ((DiscussionInfo)localObject1).discussionName)
-          {
-            localObject2 = localObject1;
-            if (TextUtils.isEmpty((CharSequence)localObject1)) {
-              localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131626235);
-            }
-            localObject1 = localObject2;
-            i = 101;
-            break;
-          }
-          return localArrayList;
-        }
+        localOptions.inJustDecodeBounds = false;
+        localOptions.inSampleSize = paramInt2;
+        return BitmapFactory.decodeResource(paramResources, paramInt1, localOptions);
       }
+      return null;
+    }
+    catch (Exception paramResources)
+    {
+      paramResources.printStackTrace();
+      return null;
+    }
+    catch (OutOfMemoryError paramResources)
+    {
+      paramResources.printStackTrace();
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Ajfi = ((ajfi)paramQQAppInterface.a(2));
-    this.jdField_a_of_type_Ajjj = ((ajjj)paramQQAppInterface.getManager(51));
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)paramQQAppInterface.getManager(52));
-    this.jdField_a_of_type_Ajhh = ((ajhh)paramQQAppInterface.getManager(53));
+    this.jdField_a_of_type_Aiag = null;
+    this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
   }
   
-  public void a(List<RecentUser> paramList)
+  public void a(float paramFloat1, float paramFloat2)
   {
-    ThreadManager.getSubThreadHandler().post(new ForwardRecentListAdapter.1(this, paramList));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    aiah localaiah;
-    BitmapDrawable localBitmapDrawable;
-    boolean bool3;
-    Object localObject;
-    if (paramView == null)
+    if (paramFloat1 >= 0.0F) {}
+    for (this.k = (this.jdField_a_of_type_Float + paramFloat1);; this.k = this.jdField_a_of_type_Float)
     {
-      paramView = new ForwardRecentItemView(this.jdField_a_of_type_AndroidContentContext);
-      paramViewGroup = new aiac();
-      paramView.setTag(paramViewGroup);
-      localaiah = (aiah)getItem(paramInt);
-      paramViewGroup.jdField_a_of_type_JavaLangString = localaiah.b;
-      paramViewGroup.jdField_c_of_type_Int = localaiah.jdField_a_of_type_Int;
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = paramView.jdField_a_of_type_AndroidWidgetImageView;
-      localBitmapDrawable = new BitmapDrawable(a(localaiah.jdField_a_of_type_Int, localaiah.b));
-      bool3 = this.jdField_a_of_type_Aiai.a(localaiah.b, localaiah.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType());
-      localObject = paramView.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord;
-      paramViewGroup = (ViewGroup)localObject;
-      if (localObject == null) {
-        paramViewGroup = new ResultRecord();
+      if (paramFloat2 >= 0.0F) {
+        this.j = Math.min(this.jdField_a_of_type_Float + paramFloat2, this.d - this.jdField_a_of_type_Float);
       }
-      paramViewGroup.a(localaiah.b, localaiah.jdField_a_of_type_JavaLangString, localaiah.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType(), localaiah.jdField_a_of_type_ComTencentMobileqqDataRecentUser.troopUin, "");
-      if (localaiah.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType() != 3000) {
-        break label288;
+      return;
+    }
+  }
+  
+  public void a(aiag paramaiag)
+  {
+    this.jdField_a_of_type_Aiag = paramaiag;
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    paramCanvas.save();
+    int m = this.jdField_a_of_type_AndroidGraphicsPaint.getColor();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_c_of_type_Int);
+    paramCanvas.drawRect(this.e, 0.0F, this.f, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawRect(this.e, this.jdField_b_of_type_Float - this.jdField_b_of_type_Int, this.f, this.jdField_b_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(m);
+    b(this.e, paramCanvas);
+    a(this.f, paramCanvas);
+    paramCanvas.restore();
+  }
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    float f1 = paramMotionEvent.getX();
+    if (paramMotionEvent.getAction() == 1) {
+      this.jdField_a_of_type_Int = -1;
+    }
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.i = paramMotionEvent.getX();
+      return;
+    }
+    float f2;
+    float f3;
+    if (paramMotionEvent.getAction() == 2)
+    {
+      f2 = f1 - this.i;
+      if (this.jdField_a_of_type_Int != 0) {
+        break label186;
       }
-      localObject = this.jdField_a_of_type_Ajhh.a(localaiah.b);
-      if ((localObject == null) || (((DiscussionInfo)localObject).hasRenamed())) {
-        break label266;
+      f3 = Math.max(this.f - this.h, this.k);
+      if (f1 < f3)
+      {
+        this.e = f3;
+        return;
       }
-      paramView.a(localaiah.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Ajhh.a(localaiah.b)), localBitmapDrawable, paramViewGroup, this.jdField_a_of_type_Boolean, bool3);
+      if ((f2 >= 0.0F) || (f2 + this.e > this.jdField_a_of_type_Float)) {
+        break label148;
+      }
+      this.e = f3;
     }
     for (;;)
     {
-      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      return paramView;
-      paramView = (ForwardRecentItemView)paramView;
-      paramViewGroup = (aiac)paramView.getTag();
-      break;
-      label266:
-      paramView.a(localaiah.jdField_a_of_type_JavaLangString, null, localBitmapDrawable, paramViewGroup, this.jdField_a_of_type_Boolean, bool3);
-      continue;
-      label288:
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(localaiah.b);
-      if ((localObject != null) && (!((TroopInfo)localObject).hasSetTroopName()) && (((TroopInfo)localObject).wMemberNumClient > 0))
+      this.jdField_a_of_type_Ahzz.invalidate();
+      if (this.jdField_a_of_type_Aiag == null) {
+        break;
+      }
+      this.jdField_a_of_type_Aiag.a(this.e, this.f);
+      return;
+      label148:
+      if (this.f - f1 < this.g)
       {
-        paramView.a(localaiah.jdField_a_of_type_JavaLangString, String.valueOf(((TroopInfo)localObject).wMemberNumClient), localBitmapDrawable, paramViewGroup, this.jdField_a_of_type_Boolean, bool3);
+        this.e = (this.f - this.g);
       }
       else
       {
-        boolean bool2 = false;
-        boolean bool1 = bool2;
-        if (localObject == null)
+        this.e = f1;
+        continue;
+        label186:
+        if (this.jdField_a_of_type_Int == 1)
         {
-          bool1 = bool2;
-          if (azgu.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localaiah.b)) {
-            bool1 = true;
+          f3 = Math.min(this.e + this.h, this.j);
+          if (f1 > f3)
+          {
+            this.f = f3;
+            return;
+          }
+          if ((f2 > 0.0F) && (f2 + this.f >= this.h)) {
+            this.f = f3;
+          } else if (f1 - this.e < this.g) {
+            this.f = (this.e + this.g);
+          } else {
+            this.f = f1;
           }
         }
-        paramView.a(localaiah.jdField_a_of_type_JavaLangString, null, localBitmapDrawable, paramViewGroup, this.jdField_a_of_type_Boolean, bool3, bool1);
       }
     }
   }
   
-  public boolean isEnabled(int paramInt)
+  public boolean a()
   {
+    return (!b(this.e, this.jdField_a_of_type_Float)) || (!b(this.f, this.h));
+  }
+  
+  public boolean a(float paramFloat1, float paramFloat2)
+  {
+    boolean bool1 = a(paramFloat1, paramFloat2, this.e - this.jdField_c_of_type_Float);
+    boolean bool2 = a(paramFloat1, paramFloat2, this.f + this.jdField_c_of_type_Float);
+    if (bool1)
+    {
+      this.jdField_a_of_type_Int = 0;
+      return true;
+    }
+    if (bool2)
+    {
+      this.jdField_a_of_type_Int = 1;
+      return true;
+    }
     return false;
+  }
+  
+  public float b()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Aiag = null;
+    this.e = 0.0F;
+    this.f = 0.0F;
+  }
+  
+  public float c()
+  {
+    return this.f - this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aiaf
  * JD-Core Version:    0.7.0.1
  */

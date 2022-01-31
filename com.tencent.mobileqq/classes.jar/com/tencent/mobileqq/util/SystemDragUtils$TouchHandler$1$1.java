@@ -3,29 +3,29 @@ package com.tencent.mobileqq.util;
 import android.content.Context;
 import android.view.View;
 import android.view.View.DragShadowBuilder;
-import azzo;
-import azzs;
-import azzt;
-import bbmy;
+import bbas;
+import bbaw;
+import bbax;
+import bcpw;
 import java.lang.ref.WeakReference;
 
 class SystemDragUtils$TouchHandler$1$1
   implements Runnable
 {
-  SystemDragUtils$TouchHandler$1$1(SystemDragUtils.TouchHandler.1 param1, azzs paramazzs) {}
+  SystemDragUtils$TouchHandler$1$1(SystemDragUtils.TouchHandler.1 param1, bbaw parambbaw) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Azzs != null) && (this.jdField_a_of_type_Azzs.a()))
+    if ((this.jdField_a_of_type_Bbaw != null) && (this.jdField_a_of_type_Bbaw.a()))
     {
-      View.DragShadowBuilder localDragShadowBuilder = new View.DragShadowBuilder(this.jdField_a_of_type_Azzs.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Azzs.jdField_a_of_type_AndroidViewView.startDrag(this.jdField_a_of_type_Azzs.jdField_a_of_type_AndroidContentClipData, localDragShadowBuilder, "QQ_AIO_DRAG", 256);
+      View.DragShadowBuilder localDragShadowBuilder = new View.DragShadowBuilder(this.jdField_a_of_type_Bbaw.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Bbaw.jdField_a_of_type_AndroidViewView.startDrag(this.jdField_a_of_type_Bbaw.jdField_a_of_type_AndroidContentClipData, localDragShadowBuilder, "QQ_AIO_DRAG", 256);
     }
     for (;;)
     {
-      azzt.a(this.jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$TouchHandler$1.this$0, this.jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$TouchHandler$1.this$0.jdField_a_of_type_Acmv);
+      bbax.a(this.jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$TouchHandler$1.this$0, this.jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$TouchHandler$1.this$0.jdField_a_of_type_Acxn);
       return;
-      bbmy.a((Context)this.jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$TouchHandler$1.this$0.jdField_a_of_type_JavaLangRefWeakReference.get(), azzo.b(), 0).a();
+      bcpw.a((Context)this.jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$TouchHandler$1.this$0.jdField_a_of_type_JavaLangRefWeakReference.get(), bbas.b(), 0).a();
     }
   }
 }

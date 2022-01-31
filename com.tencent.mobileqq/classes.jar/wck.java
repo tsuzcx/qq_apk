@@ -1,27 +1,24 @@
-import android.os.Bundle;
-import com.tencent.biz.subscribe.event.SimpleEventBus.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class wck
-  extends QIPCModule
+  implements bfvg
 {
-  wck(wcj paramwcj, String paramString)
+  public wck(SegmentList paramSegmentList) {}
+  
+  public void a(View paramView)
   {
-    super(paramString);
+    this.a.a.b(paramView);
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void b(View paramView)
   {
-    ThreadManager.getUIHandler().post(new SimpleEventBus.1.1(this, paramString, paramBundle));
-    return null;
+    this.a.a.c(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wck
  * JD-Core Version:    0.7.0.1
  */

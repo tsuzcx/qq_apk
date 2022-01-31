@@ -3,7 +3,7 @@ package com.tencent.mobileqq.emoticonview;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import awrn;
+import axrl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.HashMap;
 
@@ -48,7 +48,7 @@ class EmoticonMainPanel$31
       }
       for (;;)
       {
-        awrn.a(this.this$0.jdField_a_of_type_AndroidContentContext).a(str, (String)localObject, true, this.jdField_a_of_type_Long, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
+        axrl.a(this.this$0.jdField_a_of_type_AndroidContentContext).a(str, (String)localObject, true, this.jdField_a_of_type_Long, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
         localObject = localSharedPreferences.edit();
         ((SharedPreferences.Editor)localObject).putInt("sp_key_emoticon_panel_report_count", i + 1);
         ((SharedPreferences.Editor)localObject).apply();

@@ -1,8 +1,4 @@
-public abstract interface by
-{
-  public abstract void a(String paramString);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     by

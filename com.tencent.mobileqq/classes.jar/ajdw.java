@@ -1,6 +1,19 @@
-public abstract interface ajdw
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+
+class ajdw
+  implements DialogInterface.OnKeyListener
 {
-  public abstract void a(ajdu paramajdu, String paramString1, String paramString2, String paramString3);
+  ajdw(ajds paramajds, ajea paramajea) {}
+  
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramInt == 4) && (this.jdField_a_of_type_Ajea != null)) {
+      this.jdField_a_of_type_Ajea.a(this.jdField_a_of_type_Ajds.a(), "sc.xy_alert_show_success.local", "{\"cancel\":1}");
+    }
+    return true;
+  }
 }
 
 

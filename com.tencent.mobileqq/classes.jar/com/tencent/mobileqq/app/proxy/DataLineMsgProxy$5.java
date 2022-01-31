@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.app.proxy;
 
-import aken;
+import aksz;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
-import eu;
+import gn;
 
 public class DataLineMsgProxy$5
   implements Runnable
 {
-  public DataLineMsgProxy$5(aken paramaken, DataLineMsgRecord paramDataLineMsgRecord, eu parameu) {}
+  public DataLineMsgProxy$5(aksz paramaksz, DataLineMsgRecord paramDataLineMsgRecord, gn paramgn) {}
   
   public void run()
   {
-    aken.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
-    this.jdField_a_of_type_Eu.a();
+    aksz.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
+    this.jdField_a_of_type_Gn.a();
   }
 }
 

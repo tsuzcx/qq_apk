@@ -1,49 +1,81 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v4.util.MQLruCache;
+import android.util.Pair;
+import com.tencent.commonsdk.cache.Sizeable;
 
-class axoj
-  implements ITransactionCallback
+public class axoj
+  extends MQLruCache<String, Object>
 {
-  axoj(axoi paramaxoi) {}
-  
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public axoj(Integer paramInteger)
   {
-    this.a.d = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (this.a.d - this.a.c) + "ms");
-    }
-    this.a.jdField_a_of_type_Axqf.a = paramArrayOfByte;
-    if (this.a.b != -1) {
-      this.a.a(paramInt, "uploadImgError");
-    }
+    super(paramInteger.intValue());
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  protected int a(String paramString, Object paramObject)
   {
-    this.a.d = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (this.a.d - this.a.c) + "ms ,fileSize:" + this.a.q);
+    if ((paramObject instanceof Pair)) {
+      return ((Integer)((Pair)paramObject).second).intValue();
     }
-    if (this.a.jdField_a_of_type_Uxe.b.equals(this.a.jdField_a_of_type_Uxg.a))
+    if ((paramObject instanceof Bitmap))
     {
-      this.a.jdField_a_of_type_Uxe.a = this.a.d;
-      if (this.a.b != -1) {
-        this.a.aT_();
+      paramString = (Bitmap)paramObject;
+      return paramString.getRowBytes() * paramString.getHeight();
+    }
+    if ((paramObject instanceof BitmapDrawable))
+    {
+      paramObject = ((BitmapDrawable)paramObject).getBitmap();
+      if (paramObject != null)
+      {
+        int i = paramObject.getRowBytes();
+        return paramObject.getHeight() * i;
       }
     }
+    else if ((paramObject instanceof rpg))
+    {
+      paramObject = ((rpg)paramObject).a();
+      if (paramObject != null) {
+        return rpq.a(paramObject);
+      }
+    }
+    else if ((paramObject instanceof Sizeable))
+    {
+      return ((Sizeable)paramObject).getByteSize();
+    }
+    xoz.a(paramString, xoz.m);
+    return 204800;
   }
   
-  public void onSwitch2BackupChannel() {}
+  public Object a(String paramString, Object paramObject)
+  {
+    Object localObject = paramObject;
+    if ((paramObject instanceof rpg)) {
+      localObject = ((rpg)paramObject).a();
+    }
+    return super.put(paramString, localObject);
+  }
   
-  public void onTransStart() {}
+  public Object a(String paramString, Object paramObject, byte paramByte)
+  {
+    Object localObject = paramObject;
+    if ((paramObject instanceof rpg)) {
+      localObject = ((rpg)paramObject).a();
+    }
+    return super.put(paramString, localObject, paramByte);
+  }
   
-  public void onUpdateProgress(int paramInt) {}
+  public void a(String paramString, int paramInt) {}
+  
+  protected void a(boolean paramBoolean, String paramString, Object paramObject1, Object paramObject2)
+  {
+    if ((paramObject1 instanceof rpg)) {
+      ((rpg)paramObject1).a();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axoj
  * JD-Core Version:    0.7.0.1
  */

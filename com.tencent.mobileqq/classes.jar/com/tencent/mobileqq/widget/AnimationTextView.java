@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.widget;
 
-import adra;
-import ahpm;
-import ahpo;
-import almt;
-import alok;
+import aebz;
+import aice;
+import aicg;
+import ambh;
+import amcz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -25,42 +25,43 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView.BufferType;
-import axkd;
-import axkk;
-import axkm;
-import bbgb;
-import bbgc;
+import ayki;
+import aykp;
+import aykr;
+import bcjb;
+import bcjc;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
 
 public class AnimationTextView
   extends PatchedTextView
-  implements ahpm
+  implements aice
 {
-  public float a;
-  private int jdField_a_of_type_Int;
-  protected ahpo a;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  public bbgb a;
-  public bbgc a;
-  private boolean jdField_a_of_type_Boolean;
-  private final int[] jdField_a_of_type_ArrayOfInt = new int[2];
-  private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
-  public float b;
-  private int jdField_b_of_type_Int;
-  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
-  Runnable jdField_b_of_type_JavaLangRunnable = new AnimationTextView.1(this);
-  private boolean jdField_b_of_type_Boolean;
-  private Drawable[] jdField_b_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
-  private int jdField_c_of_type_Int = -5250572;
-  private boolean jdField_c_of_type_Boolean = true;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private boolean e;
-  public boolean g = true;
-  public boolean h;
+  private static final String TAG = "AnimationTextView";
+  public boolean doublleClicked;
+  private boolean hasStroke;
+  private Drawable[] hold;
+  private Drawable[] hold2;
+  public boolean isSingleClick = true;
+  private boolean mBlockRelayout;
+  private MotionEvent mCurrentDownEvent;
+  private boolean mHasSelected;
+  private int mHighlightBackgroundColor = -5250572;
+  private Paint mHighlightPaint;
+  private Path mHighlightPath;
+  private boolean mIsHighlight;
+  private boolean mIsSelectable = true;
+  private MotionEvent mPreviousUpEvent;
+  protected aicg mSelectDelegate;
+  private int mSelectEnd;
+  private int mSelectStart;
+  private int mStrokeColor;
+  private final int[] mTempLocation = new int[2];
+  Runnable mTimerForSecondClick = new AnimationTextView.1(this);
+  public bcjb onDoubleClick;
+  public bcjc onSingleClick;
+  public float touchL;
+  public float touchT;
   
   public AnimationTextView(Context paramContext)
   {
@@ -77,37 +78,61 @@ public class AnimationTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void a()
+  private void checkDelegateBound()
+  {
+    if (this.mSelectDelegate == null) {
+      throw new RuntimeException("Select delegate has not bound.");
+    }
+  }
+  
+  private void checkHighlightPaintAvailable()
+  {
+    if (this.mHighlightPaint == null)
+    {
+      this.mHighlightPaint = new Paint();
+      this.mHighlightPaint.setAntiAlias(true);
+      this.mHighlightPaint.setStyle(Paint.Style.FILL);
+    }
+  }
+  
+  private void checkHighlightPathAvailable()
+  {
+    if (this.mHighlightPath == null) {
+      this.mHighlightPath = new Path();
+    }
+  }
+  
+  private void dealSmallEmojiClick()
   {
     int i = 0;
-    float f1 = this.jdField_a_of_type_Float;
-    float f3 = adra.e;
-    float f2 = this.jdField_b_of_type_Float - adra.jdField_c_of_type_Int;
-    almt localalmt = (almt)getTag(2131298155);
-    Object localObject = (ChatMessage)getTag(2131298595);
+    float f1 = this.touchL;
+    float f3 = aebz.e;
+    float f2 = this.touchT - aebz.c;
+    ambh localambh = (ambh)getTag(2131363708);
+    Object localObject = (ChatMessage)getTag(2131364153);
     if (localObject != null) {}
     for (boolean bool = ((ChatMessage)localObject).isSend();; bool = false)
     {
       if (bool) {}
-      for (f1 = this.jdField_a_of_type_Float - adra.f;; f1 -= f3)
+      for (f1 = this.touchL - aebz.f;; f1 -= f3)
       {
         localObject = getText();
-        if ((localObject instanceof axkd))
+        if ((localObject instanceof ayki))
         {
-          localObject = (axkd)localObject;
-          localObject = (axkk[])((axkd)localObject).getSpans(0, ((axkd)localObject).length(), axkk.class);
+          localObject = (ayki)localObject;
+          localObject = (aykp[])((ayki)localObject).getSpans(0, ((ayki)localObject).length(), aykp.class);
           int k;
           for (int j = 0; i < localObject.length; j = k)
           {
-            axkm localaxkm = localObject[i];
+            aykr localaykr = localObject[i];
             k = j;
-            if ((localaxkm instanceof axkm))
+            if ((localaykr instanceof aykr))
             {
-              localaxkm = (axkm)localaxkm;
-              f3 = localaxkm.jdField_a_of_type_Float;
-              float f4 = localaxkm.jdField_b_of_type_Float;
-              float f5 = localaxkm.c;
-              float f6 = localaxkm.d;
+              localaykr = (aykr)localaykr;
+              f3 = localaykr.a;
+              float f4 = localaykr.b;
+              float f5 = localaykr.c;
+              float f6 = localaykr.d;
               k = j;
               if (f1 >= f3)
               {
@@ -134,28 +159,111 @@ public class AnimationTextView
           if (j != 0)
           {
             localObject = getBackground();
-            if ((localObject == null) || (!(localObject instanceof alok))) {
+            if ((localObject == null) || (!(localObject instanceof amcz))) {
               break label277;
             }
-            ((alok)localObject).jdField_a_of_type_Boolean = true;
+            ((amcz)localObject).a = true;
           }
         }
         label277:
-        while ((localObject == null) || (localalmt == null)) {
+        while ((localObject == null) || (localambh == null)) {
           return;
         }
         localObject = getResources();
         if (bool) {}
-        for (i = 2130848702;; i = 2130848509)
+        for (i = 2130848928;; i = 2130848752)
         {
-          localalmt.a(this, ((Resources)localObject).getDrawable(i));
+          localambh.a(this, ((Resources)localObject).getDrawable(i));
           return;
         }
       }
     }
   }
   
-  private void a(Object paramObject)
+  private int detectIndexByOffset(int paramInt1, int paramInt2)
+  {
+    Layout localLayout = getLayout();
+    if (localLayout != null)
+    {
+      int i = localLayout.getOffsetForHorizontal(localLayout.getLineForVertical(paramInt2), paramInt1);
+      paramInt2 = i;
+      if ((int)localLayout.getPrimaryHorizontal(i) > paramInt1) {
+        paramInt2 = localLayout.getOffsetToLeftOf(i);
+      }
+      return paramInt2;
+    }
+    return -1;
+  }
+  
+  private int detectIndexByOffsetSpring(int paramInt1, int paramInt2)
+  {
+    int i = -1;
+    checkDelegateBound();
+    int j = this.mSelectDelegate.d();
+    if (j == -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AnimationTextView", 2, "detectIndexByOffsetSpring backport to detectIndexByOffset");
+      }
+      i = detectIndexByOffset(paramInt1, paramInt2);
+    }
+    Layout localLayout;
+    do
+    {
+      return i;
+      localLayout = getLayout();
+    } while (localLayout == null);
+    int k;
+    if (j == 1)
+    {
+      i = this.mSelectDelegate.b();
+      k = localLayout.getLineForVertical(paramInt2);
+      j = i;
+      if (isFirstIndexOnEndLine(i))
+      {
+        m = (int)localLayout.getPrimaryHorizontal(i - 1);
+        n = (int)localLayout.getLineRight(k);
+        j = i;
+        if (paramInt1 > n - (n - m) / 2) {
+          j = i - 1;
+        }
+      }
+      j = localLayout.getLineForOffset(j);
+      int m = localLayout.getLineTop(j);
+      int n = localLayout.getLineBottom(j);
+      int i1 = (n - m) / 2;
+      if (k == j + 1)
+      {
+        i = j;
+        if (paramInt2 - n < i1) {}
+      }
+      else
+      {
+        if ((k != j - 1) || (m - paramInt2 >= i1)) {
+          break label290;
+        }
+      }
+    }
+    label290:
+    for (i = j;; i = k)
+    {
+      paramInt2 = localLayout.getOffsetForHorizontal(i, paramInt1);
+      if ((paramInt2 < contentLength() - 1) && (isFirstIndexOnEndLine(paramInt2 + 1)))
+      {
+        j = (int)localLayout.getPrimaryHorizontal(paramInt2);
+        i = (int)localLayout.getLineRight(i);
+        if (paramInt1 > i - (i - j) / 2)
+        {
+          return paramInt2 + 1;
+          i = this.mSelectDelegate.c();
+          break;
+        }
+      }
+      return paramInt2;
+    }
+  }
+  
+  private void invlidateSpan(Object paramObject)
   {
     Object localObject = getText();
     if ((localObject instanceof Spannable))
@@ -193,16 +301,7 @@ public class AnimationTextView
     }
   }
   
-  private boolean a(int paramInt)
-  {
-    Layout localLayout = getLayout();
-    if (localLayout == null) {
-      throw new RuntimeException("Has no layout.");
-    }
-    return (paramInt > 0) && (localLayout.getLineForOffset(paramInt) == localLayout.getLineForOffset(paramInt - 1) + 1);
-  }
-  
-  public static boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, MotionEvent paramMotionEvent3)
+  public static boolean isConsideredDoubleTap(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, MotionEvent paramMotionEvent3)
   {
     if (paramMotionEvent3.getEventTime() - paramMotionEvent2.getEventTime() > 200L) {}
     int i;
@@ -216,143 +315,28 @@ public class AnimationTextView
     return true;
   }
   
-  private int b(int paramInt1, int paramInt2)
+  private boolean isFirstIndexOnEndLine(int paramInt)
   {
     Layout localLayout = getLayout();
-    if (localLayout != null)
-    {
-      int i = localLayout.getOffsetForHorizontal(localLayout.getLineForVertical(paramInt2), paramInt1);
-      paramInt2 = i;
-      if ((int)localLayout.getPrimaryHorizontal(i) > paramInt1) {
-        paramInt2 = localLayout.getOffsetToLeftOf(i);
-      }
-      return paramInt2;
+    if (localLayout == null) {
+      throw new RuntimeException("Has no layout.");
     }
-    return -1;
+    return (paramInt > 0) && (localLayout.getLineForOffset(paramInt) == localLayout.getLineForOffset(paramInt - 1) + 1);
   }
   
-  private void b()
+  public void bind(@Nullable aicg paramaicg)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    }
+    this.mSelectDelegate = paramaicg;
   }
   
-  private int c(int paramInt1, int paramInt2)
+  public void clearHighlightContent()
   {
-    int i = -1;
-    d();
-    int j = this.jdField_a_of_type_Ahpo.d();
-    if (j == -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AnimationTextView", 2, "detectIndexByOffsetSpring backport to detectIndexByOffset");
-      }
-      i = b(paramInt1, paramInt2);
-    }
-    Layout localLayout;
-    do
-    {
-      return i;
-      localLayout = getLayout();
-    } while (localLayout == null);
-    int k;
-    if (j == 1)
-    {
-      i = this.jdField_a_of_type_Ahpo.b();
-      k = localLayout.getLineForVertical(paramInt2);
-      j = i;
-      if (a(i))
-      {
-        m = (int)localLayout.getPrimaryHorizontal(i - 1);
-        n = (int)localLayout.getLineRight(k);
-        j = i;
-        if (paramInt1 > n - (n - m) / 2) {
-          j = i - 1;
-        }
-      }
-      j = localLayout.getLineForOffset(j);
-      int m = localLayout.getLineTop(j);
-      int n = localLayout.getLineBottom(j);
-      int i1 = (n - m) / 2;
-      if (k == j + 1)
-      {
-        i = j;
-        if (paramInt2 - n < i1) {}
-      }
-      else
-      {
-        if ((k != j - 1) || (m - paramInt2 >= i1)) {
-          break label290;
-        }
-      }
-    }
-    label290:
-    for (i = j;; i = k)
-    {
-      paramInt2 = localLayout.getOffsetForHorizontal(i, paramInt1);
-      if ((paramInt2 < a() - 1) && (a(paramInt2 + 1)))
-      {
-        j = (int)localLayout.getPrimaryHorizontal(paramInt2);
-        i = (int)localLayout.getLineRight(i);
-        if (paramInt1 > i - (i - j) / 2)
-        {
-          return paramInt2 + 1;
-          i = this.jdField_a_of_type_Ahpo.c();
-          break;
-        }
-      }
-      return paramInt2;
-    }
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    }
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_Ahpo == null) {
-      throw new RuntimeException("Select delegate has not bound.");
-    }
-  }
-  
-  public int a()
-  {
-    return getText().length();
-  }
-  
-  public int a(int paramInt1, int paramInt2)
-  {
-    getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-    paramInt1 = paramInt1 - this.jdField_a_of_type_ArrayOfInt[0] - getPaddingLeft();
-    paramInt2 = paramInt2 - this.jdField_a_of_type_ArrayOfInt[1] - getPaddingTop();
-    if (this.jdField_a_of_type_Ahpo == null) {
-      return b(paramInt1, paramInt2);
-    }
-    return c(paramInt1, paramInt2);
+    this.mIsHighlight = false;
+    invalidate();
   }
   
   @Nullable
-  public ahpo a()
-  {
-    return this.jdField_a_of_type_Ahpo;
-  }
-  
-  @Nullable
-  public View a()
-  {
-    return this;
-  }
-  
-  @Nullable
-  public CharSequence a()
+  public CharSequence content()
   {
     CharSequence localCharSequence = getText();
     if (localCharSequence != null) {
@@ -361,35 +345,102 @@ public class AnimationTextView
     return null;
   }
   
-  public void a(@ColorInt int paramInt)
+  public int contentLength()
   {
-    this.jdField_c_of_type_Int = paramInt;
+    return getText().length();
   }
   
-  public void a(int paramInt1, int paramInt2)
+  @Nullable
+  public aicg delegate()
   {
-    if ((paramInt1 == -1) || (paramInt2 == -1))
-    {
-      this.jdField_a_of_type_Int = -1;
-      this.jdField_b_of_type_Int = -1;
-      this.jdField_b_of_type_Boolean = false;
+    return this.mSelectDelegate;
+  }
+  
+  public void doSelecting(ChatMessage paramChatMessage)
+  {
+    if (this.mSelectDelegate == null) {
+      throw new IllegalStateException("Has no bound delegate!");
     }
-    for (;;)
-    {
+    this.mSelectDelegate.a(paramChatMessage);
+  }
+  
+  public int endIndex()
+  {
+    return this.mSelectEnd;
+  }
+  
+  public void hasSelected(boolean paramBoolean) {}
+  
+  public boolean hasSelected()
+  {
+    return this.mHasSelected;
+  }
+  
+  public int highlightBackgroundColor()
+  {
+    return this.mHighlightBackgroundColor;
+  }
+  
+  public void highlightBackgroundColor(@ColorInt int paramInt)
+  {
+    this.mHighlightBackgroundColor = paramInt;
+  }
+  
+  public void highlightContent()
+  {
+    if (!hasSelected()) {
+      clearHighlightContent();
+    }
+    Layout localLayout = getLayout();
+    if (localLayout == null) {
       return;
-      if (paramInt1 > paramInt2) {
-        this.jdField_a_of_type_Int = paramInt2;
-      }
-      for (this.jdField_b_of_type_Int = paramInt1; this.jdField_b_of_type_Int - this.jdField_a_of_type_Int > 0; this.jdField_b_of_type_Int = paramInt2)
+    }
+    checkHighlightPaintAvailable();
+    checkHighlightPathAvailable();
+    this.mIsHighlight = true;
+    this.mHighlightPath.reset();
+    this.mHighlightPaint.setColor(this.mHighlightBackgroundColor);
+    localLayout.getSelectionPath(this.mSelectStart, this.mSelectEnd, this.mHighlightPath);
+    invalidate();
+  }
+  
+  public void invalidateDrawable(Drawable paramDrawable)
+  {
+    super.invalidateDrawable(paramDrawable);
+    Object localObject1 = getText();
+    if ((localObject1 instanceof Spannable))
+    {
+      localObject1 = (Spannable)localObject1;
+      localObject1 = (aykp[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), aykp.class);
+      if ((localObject1 != null) && (localObject1.length > 0))
       {
-        this.jdField_b_of_type_Boolean = true;
-        return;
-        this.jdField_a_of_type_Int = paramInt1;
+        this.mBlockRelayout = true;
+        int j = localObject1.length;
+        int i = 0;
+        while (i < j)
+        {
+          Object localObject2 = localObject1[i];
+          if (localObject2.a() == paramDrawable) {
+            invlidateSpan(localObject2);
+          }
+          i += 1;
+        }
+        this.mBlockRelayout = false;
       }
     }
   }
   
-  public void a(int paramInt, @NonNull int[] paramArrayOfInt, boolean paramBoolean)
+  public void isSelectable(boolean paramBoolean)
+  {
+    this.mIsSelectable = paramBoolean;
+  }
+  
+  public boolean isSelectable()
+  {
+    return this.mIsSelectable;
+  }
+  
+  public void locationByIndex(int paramInt, @NonNull int[] paramArrayOfInt, boolean paramBoolean)
   {
     Layout localLayout = getLayout();
     if (localLayout == null)
@@ -404,113 +455,20 @@ public class AnimationTextView
     paramArrayOfInt[1] = (localLayout.getLineBottom(localLayout.getLineForOffset(paramInt)) + i + getPaddingTop());
   }
   
-  public void a(@Nullable ahpo paramahpo)
-  {
-    this.jdField_a_of_type_Ahpo = paramahpo;
-  }
-  
-  public void a(ChatMessage paramChatMessage)
-  {
-    if (this.jdField_a_of_type_Ahpo == null) {
-      throw new IllegalStateException("Has no bound delegate!");
-    }
-    this.jdField_a_of_type_Ahpo.a(paramChatMessage);
-  }
-  
-  public int b()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  @Nullable
-  public CharSequence b()
-  {
-    CharSequence localCharSequence = a();
-    if (localCharSequence != null) {
-      return localCharSequence.subSequence(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    }
-    return null;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int d()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public void f()
-  {
-    if (!h()) {
-      g();
-    }
-    Layout localLayout = getLayout();
-    if (localLayout == null) {
-      return;
-    }
-    b();
-    c();
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_c_of_type_Int);
-    localLayout.getSelectionPath(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPath);
-    invalidate();
-  }
-  
-  public void g()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    invalidate();
-  }
-  
-  public boolean h()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void invalidateDrawable(Drawable paramDrawable)
-  {
-    super.invalidateDrawable(paramDrawable);
-    Object localObject1 = getText();
-    if ((localObject1 instanceof Spannable))
-    {
-      localObject1 = (Spannable)localObject1;
-      localObject1 = (axkk[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), axkk.class);
-      if ((localObject1 != null) && (localObject1.length > 0))
-      {
-        this.jdField_d_of_type_Boolean = true;
-        int j = localObject1.length;
-        int i = 0;
-        while (i < j)
-        {
-          Object localObject2 = localObject1[i];
-          if (localObject2.a() == paramDrawable) {
-            a(localObject2);
-          }
-          i += 1;
-        }
-        this.jdField_d_of_type_Boolean = false;
-      }
-    }
-  }
-  
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.mIsHighlight)
     {
       paramCanvas.translate(getPaddingLeft(), getPaddingTop());
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawPath(this.mHighlightPath, this.mHighlightPaint);
       paramCanvas.translate(-getPaddingLeft(), -getPaddingTop());
     }
-    if (this.e)
+    if (this.hasStroke)
     {
       int i = getCurrentTextColor();
       getPaint().setStyle(Paint.Style.STROKE);
       getPaint().setStrokeWidth(3.0F);
-      setTextColor(this.jdField_d_of_type_Int);
+      setTextColor(this.mStrokeColor);
       super.onDraw(paramCanvas);
       getPaint().setStyle(Paint.Style.FILL);
       setTextColor(i);
@@ -522,22 +480,22 @@ public class AnimationTextView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Bbgb != null) {
-      if ((this.jdField_b_of_type_AndroidViewMotionEvent != null) && (paramMotionEvent.getAction() == 0))
+    if (this.onDoubleClick != null) {
+      if ((this.mPreviousUpEvent != null) && (paramMotionEvent.getAction() == 0))
       {
-        this.jdField_a_of_type_Float = paramMotionEvent.getX();
-        this.jdField_b_of_type_Float = paramMotionEvent.getY();
-        a();
-        this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-        if ((this.jdField_b_of_type_AndroidViewMotionEvent != null) && (this.jdField_a_of_type_AndroidViewMotionEvent != null) && (a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent, paramMotionEvent)))
+        this.touchL = paramMotionEvent.getX();
+        this.touchT = paramMotionEvent.getY();
+        dealSmallEmojiClick();
+        this.mCurrentDownEvent = MotionEvent.obtain(paramMotionEvent);
+        if ((this.mPreviousUpEvent != null) && (this.mCurrentDownEvent != null) && (isConsideredDoubleTap(this.mCurrentDownEvent, this.mPreviousUpEvent, paramMotionEvent)))
         {
-          this.g = false;
-          this.jdField_a_of_type_AndroidViewMotionEvent = null;
-          this.jdField_b_of_type_AndroidViewMotionEvent = null;
-          if (this.jdField_a_of_type_Bbgb != null)
+          this.isSingleClick = false;
+          this.mCurrentDownEvent = null;
+          this.mPreviousUpEvent = null;
+          if (this.onDoubleClick != null)
           {
-            this.jdField_a_of_type_Bbgb.a(this);
-            this.h = true;
+            this.onDoubleClick.a(this);
+            this.doublleClicked = true;
             if (QLog.isColorLevel()) {
               QLog.d("AnimationTextView", 2, "DoubleClick invoked");
             }
@@ -547,13 +505,13 @@ public class AnimationTextView
       }
       else
       {
-        if ((this.jdField_b_of_type_AndroidViewMotionEvent != null) || (paramMotionEvent.getAction() != 0)) {
+        if ((this.mPreviousUpEvent != null) || (paramMotionEvent.getAction() != 0)) {
           break label192;
         }
-        this.g = true;
-        this.jdField_a_of_type_Float = paramMotionEvent.getX();
-        this.jdField_b_of_type_Float = paramMotionEvent.getY();
-        a();
+        this.isSingleClick = true;
+        this.touchL = paramMotionEvent.getX();
+        this.touchT = paramMotionEvent.getY();
+        dealSmallEmojiClick();
         if (QLog.isColorLevel()) {
           QLog.d("AnimationTextView", 2, "reserve to initial status");
         }
@@ -571,28 +529,61 @@ public class AnimationTextView
         if (getLayout() == null) {
           return super.onTouchEvent(paramMotionEvent);
         }
-        this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-        if (this.h)
+        this.mPreviousUpEvent = MotionEvent.obtain(paramMotionEvent);
+        if (this.doublleClicked)
         {
-          this.h = false;
-          this.jdField_b_of_type_AndroidViewMotionEvent = null;
+          this.doublleClicked = false;
+          this.mPreviousUpEvent = null;
         }
-        postDelayed(this.jdField_b_of_type_JavaLangRunnable, 200L);
+        postDelayed(this.mTimerForSecondClick, 200L);
       }
     }
   }
   
   public void requestLayout()
   {
-    if (!this.jdField_d_of_type_Boolean) {
+    if (!this.mBlockRelayout) {
       super.requestLayout();
+    }
+  }
+  
+  @Nullable
+  public CharSequence selectContent()
+  {
+    CharSequence localCharSequence = content();
+    if (localCharSequence != null) {
+      return localCharSequence.subSequence(this.mSelectStart, this.mSelectEnd);
+    }
+    return null;
+  }
+  
+  public void selectContent(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 == -1) || (paramInt2 == -1))
+    {
+      this.mSelectStart = -1;
+      this.mSelectEnd = -1;
+      this.mHasSelected = false;
+    }
+    for (;;)
+    {
+      return;
+      if (paramInt1 > paramInt2) {
+        this.mSelectStart = paramInt2;
+      }
+      for (this.mSelectEnd = paramInt1; this.mSelectEnd - this.mSelectStart > 0; this.mSelectEnd = paramInt2)
+      {
+        this.mHasSelected = true;
+        return;
+        this.mSelectStart = paramInt1;
+      }
     }
   }
   
   public void setStrokeColor(boolean paramBoolean, int paramInt)
   {
-    this.e = paramBoolean;
-    this.jdField_d_of_type_Int = paramInt;
+    this.hasStroke = paramBoolean;
+    this.mStrokeColor = paramInt;
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
@@ -600,12 +591,12 @@ public class AnimationTextView
     int j = 0;
     Object localObject = getText();
     super.setText(paramCharSequence, paramBufferType);
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = null;
-    this.jdField_b_of_type_ArrayOfAndroidGraphicsDrawableDrawable = null;
+    this.hold = null;
+    this.hold2 = null;
     if ((localObject != paramCharSequence) && ((getText() instanceof Spanned)))
     {
       paramCharSequence = (Spanned)getText();
-      paramBufferType = (axkk[])paramCharSequence.getSpans(0, paramCharSequence.length(), axkk.class);
+      paramBufferType = (aykp[])paramCharSequence.getSpans(0, paramCharSequence.length(), aykp.class);
       localObject = new Drawable[paramBufferType.length];
       int i = 0;
       while (i < paramBufferType.length)
@@ -616,7 +607,7 @@ public class AnimationTextView
         }
         i += 1;
       }
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = ((Drawable[])localObject);
+      this.hold = ((Drawable[])localObject);
       paramCharSequence = (DynamicDrawableSpan[])paramCharSequence.getSpans(0, paramCharSequence.length(), DynamicDrawableSpan.class);
       paramBufferType = new Drawable[paramCharSequence.length];
       i = j;
@@ -628,13 +619,35 @@ public class AnimationTextView
         }
         i += 1;
       }
-      this.jdField_b_of_type_ArrayOfAndroidGraphicsDrawableDrawable = paramBufferType;
+      this.hold2 = paramBufferType;
     }
+  }
+  
+  public int startIndex()
+  {
+    return this.mSelectStart;
+  }
+  
+  public int touchIndex(int paramInt1, int paramInt2)
+  {
+    getLocationInWindow(this.mTempLocation);
+    paramInt1 = paramInt1 - this.mTempLocation[0] - getPaddingLeft();
+    paramInt2 = paramInt2 - this.mTempLocation[1] - getPaddingTop();
+    if (this.mSelectDelegate == null) {
+      return detectIndexByOffset(paramInt1, paramInt2);
+    }
+    return detectIndexByOffsetSpring(paramInt1, paramInt2);
   }
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
     return true;
+  }
+  
+  @Nullable
+  public View view()
+  {
+    return this;
   }
 }
 

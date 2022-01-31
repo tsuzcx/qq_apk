@@ -1,117 +1,167 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.util.DisplayMetrics;
+import android.view.View;
 import java.util.ArrayList;
 
 public class aurn
 {
-  private static volatile aurn a;
+  private static final float jdField_c_of_type_Float = Resources.getSystem().getDisplayMetrics().density;
+  private float jdField_a_of_type_Float;
+  public int a;
+  private long jdField_a_of_type_Long;
+  public Context a;
+  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  public View a;
+  private ArrayList<aurm> jdField_a_of_type_JavaUtilArrayList;
+  private boolean jdField_a_of_type_Boolean;
+  private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
+  private int jdField_c_of_type_Int;
+  private int d;
+  private int e;
   
-  public static aurn a()
+  public static int a(int paramInt)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new aurn();
-      }
-      return a;
-    }
-    finally {}
+    return Math.round(paramInt * jdField_c_of_type_Float);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Intent paramIntent)
+  public void a()
   {
-    long l = paramIntent.getLongExtra("FORWARD_MSG_UNISEQ", 0L);
-    if (l == 0L) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReplyMsgSender", 2, "sendReplyMessage uniseq=0");
+    this.jdField_a_of_type_AndroidViewView.invalidate();
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = 0;
+    while (i < paramInt)
+    {
+      int j = (int)(5.0D * Math.random());
+      aurm localaurm = aurm.a(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[j], this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, j, this.jdField_a_of_type_AndroidContentContext.getResources());
+      localaurm.jdField_a_of_type_Long = System.currentTimeMillis();
+      localaurm.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_JavaUtilArrayList.add(localaurm);
+      i += 1;
+    }
+    this.jdField_b_of_type_Int += paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Float = paramInt1;
+    this.jdField_b_of_type_Float = paramInt2;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_c_of_type_Int = paramInt1;
+    this.d = paramInt2;
+    this.e = (paramInt2 * 3 / 8);
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long > 400L)
+    {
+      this.jdField_a_of_type_Long = l;
+      if (this.jdField_b_of_type_Int <= 5) {
+        a(1);
       }
     }
-    ChatMessage localChatMessage;
-    do
+    int i = 0;
+    aurm localaurm;
+    float f1;
+    float f2;
+    if (i < this.jdField_b_of_type_Int)
     {
-      return;
-      localChatMessage = ((aurj)paramQQAppInterface.getManager(340)).a(l);
-      if (localChatMessage != null) {
+      localaurm = (aurm)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      localaurm.e = ((float)(System.currentTimeMillis() - localaurm.jdField_a_of_type_Long) / 1000.0F);
+      f1 = localaurm.jdField_c_of_type_Float;
+      f2 = localaurm.e;
+      float f3 = localaurm.d;
+      float f4 = localaurm.e;
+      float f5 = a(400);
+      float f6 = localaurm.e;
+      float f7 = localaurm.e;
+      localaurm.jdField_a_of_type_ArrayOfFloat[0] = (f1 * f2 + this.jdField_a_of_type_Float);
+      localaurm.jdField_a_of_type_ArrayOfFloat[1] = (this.jdField_b_of_type_Float - (f3 * f4 - 0.5F * f5 * f6 * f7));
+      if (localaurm.jdField_c_of_type_Int > 200)
+      {
+        localaurm.jdField_c_of_type_Int -= 1;
+        label206:
+        if ((localaurm.jdField_c_of_type_Int < 0) || ((this.e > 0) && (localaurm.jdField_a_of_type_ArrayOfFloat[1] > this.e)))
+        {
+          localaurm.jdField_a_of_type_ArrayOfFloat[0] = this.jdField_a_of_type_Float;
+          localaurm.jdField_a_of_type_ArrayOfFloat[1] = this.jdField_b_of_type_Float;
+          localaurm.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
+          localaurm.jdField_a_of_type_Long = System.currentTimeMillis();
+          localaurm.jdField_a_of_type_Double = (Math.random() * 3.141592653589793D / 6.0D + 1.308996938995747D);
+          localaurm.jdField_b_of_type_Float = (a(90) + (float)Math.random() * a(50));
+          localaurm.jdField_c_of_type_Float = ((float)(localaurm.jdField_b_of_type_Float * Math.cos(localaurm.jdField_a_of_type_Double)));
+          localaurm.d = ((float)(localaurm.jdField_b_of_type_Float * Math.sin(localaurm.jdField_a_of_type_Double)));
+          localaurm.jdField_a_of_type_Float = ((float)Math.random() * a(18) - a(18));
+          int j = (int)(Math.random() * 5.0D);
+          Bitmap localBitmap = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[j];
+          localaurm.jdField_a_of_type_AndroidGraphicsBitmap = aurm.a(j, localaurm.jdField_a_of_type_Int, localaurm.jdField_b_of_type_Int, localBitmap);
+          if (j != 0) {
+            break label514;
+          }
+        }
+      }
+      label514:
+      for (localaurm.jdField_a_of_type_Int = actn.a(30.0F, this.jdField_a_of_type_AndroidContentContext.getResources());; localaurm.jdField_a_of_type_Int = actn.a(22.0F, this.jdField_a_of_type_AndroidContentContext.getResources()))
+      {
+        localaurm.jdField_b_of_type_Int = ((int)(localaurm.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / localaurm.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * localaurm.jdField_a_of_type_Int));
+        i += 1;
         break;
+        localaurm.jdField_c_of_type_Int -= (int)(Math.random() * 5.0D + 26.0D);
+        break label206;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("ReplyMsgSender", 2, "sendReplyMessage chatMessage is null");
-    return;
-    a(paramQQAppInterface, localChatMessage, paramSessionInfo, 0, paramIntent.getIntExtra("KEY_MSG_FORWARD_ID", 0), true);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString1, ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList1, aaes paramaaes, MessageRecord paramMessageRecord, String paramString2, ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList2)
-  {
-    MessageForReplyText localMessageForReplyText = new MessageForReplyText();
-    localMessageForReplyText.msg = paramString1;
-    localMessageForReplyText.msgtype = -1049;
-    localMessageForReplyText.atInfoList = paramArrayList1;
-    localMessageForReplyText.mSourceMsgInfo = paramaaes.a;
-    localMessageForReplyText.setSourceMessageRecord(paramMessageRecord);
-    localMessageForReplyText.isBarrageMsg = paramaaes.jdField_d_of_type_Boolean;
-    localMessageForReplyText.barrageTimeLocation = paramaaes.b;
-    localMessageForReplyText.barrageSourceMsgType = paramaaes.jdField_d_of_type_Int;
-    if ((!TextUtils.isEmpty(paramString2)) && (paramArrayList2 != null) && (!paramArrayList2.isEmpty()))
+    }
+    i = 0;
+    while (i < this.jdField_b_of_type_Int)
     {
-      localMessageForReplyText.saveExtInfoToExtStr("sens_reply_special_msg", paramString2);
-      localMessageForReplyText.saveExtInfoToExtStr("sens_reply_special_at_list", azef.a(paramArrayList2));
+      localaurm = (aurm)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if ((localaurm.jdField_a_of_type_ArrayOfFloat[0] < this.jdField_c_of_type_Int) && (localaurm.jdField_a_of_type_ArrayOfFloat[0] > 0.0F) && (localaurm.jdField_a_of_type_ArrayOfFloat[1] < this.d) && (localaurm.jdField_a_of_type_ArrayOfFloat[1] > 0.0F))
+      {
+        f1 = localaurm.jdField_a_of_type_Int * 1.0F / localaurm.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+        f2 = localaurm.jdField_b_of_type_Int * 1.0F / localaurm.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+        this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(-localaurm.jdField_a_of_type_Int / 2 / f1, -localaurm.jdField_b_of_type_Int / 2 / f2);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(localaurm.jdField_a_of_type_Float);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localaurm.jdField_a_of_type_ArrayOfFloat[0] / f1, localaurm.jdField_a_of_type_ArrayOfFloat[1] / f2);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(f1, f2);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(localaurm.jdField_c_of_type_Int);
+        paramCanvas.drawBitmap(localaurm.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, this.jdField_a_of_type_AndroidGraphicsPaint);
+      }
+      i += 1;
     }
-    int i = 2;
-    if (!TextUtils.isEmpty(paramaaes.a.mSourceMsgTroopName)) {
-      i = 0;
-    }
-    a(paramQQAppInterface, localMessageForReplyText, paramSessionInfo, i, 0, false);
+    a();
   }
   
-  public void a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, SessionInfo paramSessionInfo, int paramInt1, int paramInt2, boolean paramBoolean)
+  public void b()
   {
-    new ArrayList(1).add(paramChatMessage);
-    ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(paramChatMessage);
-    paramChatMessage = new arya();
-    paramChatMessage.jdField_a_of_type_Int = paramInt1;
-    paramChatMessage.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    paramChatMessage.jdField_a_of_type_JavaUtilList = localArrayList;
-    paramChatMessage.jdField_a_of_type_JavaUtilMap = null;
-    paramChatMessage.g = paramInt2;
-    paramChatMessage.b = 8;
-    paramChatMessage.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = new MessageForStructing();
-    paramChatMessage.jdField_a_of_type_Boolean = paramBoolean;
-    new aurm(paramQQAppInterface).e(paramChatMessage);
+    this.jdField_a_of_type_Boolean = true;
+    a();
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public void a(QQAppInterface paramQQAppInterface, MessageForMixedMsg paramMessageForMixedMsg, SessionInfo paramSessionInfo, int paramInt)
+  public void c()
   {
-    if (paramMessageForMixedMsg == null) {
-      return;
-    }
-    if (paramMessageForMixedMsg.getReplyMessage(paramQQAppInterface) != null)
-    {
-      new ArrayList(1).add(paramMessageForMixedMsg);
-      ArrayList localArrayList = new ArrayList(1);
-      localArrayList.add(paramMessageForMixedMsg);
-      paramMessageForMixedMsg = new arya();
-      paramMessageForMixedMsg.jdField_a_of_type_Int = 0;
-      paramMessageForMixedMsg.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-      paramMessageForMixedMsg.jdField_a_of_type_JavaUtilList = localArrayList;
-      paramMessageForMixedMsg.jdField_a_of_type_JavaUtilMap = null;
-      paramMessageForMixedMsg.b = 9;
-      paramMessageForMixedMsg.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = new MessageForStructing();
-      new aurk(paramQQAppInterface).e(paramMessageForMixedMsg);
-      return;
-    }
-    ((arno)paramQQAppInterface.getManager(174)).a(paramSessionInfo, paramMessageForMixedMsg, false, paramInt);
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 0;
   }
 }
 

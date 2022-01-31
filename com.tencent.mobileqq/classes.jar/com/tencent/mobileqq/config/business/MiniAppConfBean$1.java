@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.config.business;
 
-import amcz;
+import amtb;
 import java.util.ArrayList;
 
 public class MiniAppConfBean$1
   extends ArrayList<Integer>
 {
-  public MiniAppConfBean$1(amcz paramamcz)
+  public MiniAppConfBean$1(amtb paramamtb)
   {
     add(Integer.valueOf(1044));
     add(Integer.valueOf(1007));

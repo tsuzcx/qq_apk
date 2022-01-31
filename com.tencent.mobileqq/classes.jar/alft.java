@@ -1,41 +1,30 @@
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.widget.TipsBar;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import mqq.app.QQPermissionCallback;
 
-public class alft
+class alft
+  implements QQPermissionCallback
 {
-  public int a;
-  public long a;
-  public adai a;
-  public MessageForArkApp a;
-  public String a;
-  public WeakReference<TipsBar> a;
-  public long b;
-  public String b;
-  public WeakReference<aemq> b;
-  public String c;
-  public String d;
+  alft(alfo paramalfo) {}
   
-  alft(adai paramadai, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt, String paramString3, MessageForArkApp paramMessageForArkApp)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    a(paramadai, paramString1, paramLong1, paramLong2, paramString2, paramInt, paramString3, paramMessageForArkApp);
+    paramArrayOfString = new alfw();
+    paramArrayOfString.a = 2;
+    algo.a(this.a.a.recognitions, alfo.a(this.a), paramArrayOfString);
+    if (alfo.a(this.a) != null) {
+      alfo.a(this.a).a(0, alfo.a(this.a));
+    }
+    alfo.a(this.a, null);
   }
   
-  void a(adai paramadai, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt, String paramString3, MessageForArkApp paramMessageForArkApp)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Adai = paramadai;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.c = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong2;
-    this.d = paramString3;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp = paramMessageForArkApp;
+    this.a.grant();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alft
  * JD-Core Version:    0.7.0.1
  */

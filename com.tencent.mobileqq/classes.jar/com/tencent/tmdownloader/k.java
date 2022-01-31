@@ -1,7 +1,7 @@
 package com.tencent.tmdownloader;
 
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.t;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.s;
 import com.tencent.tmdownloader.internal.remote.a;
 
 class k
@@ -13,7 +13,7 @@ class k
   {
     try
     {
-      ac.c("RemoteOpProxy", "<requestShareUrl> process:" + t.e() + ", getServiceInterface()");
+      ab.c("RemoteOpProxy", "<requestShareUrl> process:" + s.e() + ", getServiceInterface()");
       a locala = (a)this.a.getServiceInterface();
       if (locala != null) {
         locala.c();
@@ -22,7 +22,7 @@ class k
     }
     catch (Exception localException)
     {
-      ac.c("RemoteOpProxy", "<requestShareUrl> process:" + t.e() + ", getServiceInterface() error, error msg = " + localException.getMessage());
+      ab.c("RemoteOpProxy", "<requestShareUrl> process:" + s.e() + ", getServiceInterface() error, error msg = " + localException.getMessage());
       localException.printStackTrace();
     }
   }

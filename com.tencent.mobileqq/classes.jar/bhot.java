@@ -1,47 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import dov.com.qq.im.capture.view.CountDownView;
-import java.lang.ref.WeakReference;
-import org.jetbrains.annotations.NotNull;
+import android.app.Activity;
+import mqq.app.QQPermissionCallback;
 
-public final class bhot
-  extends Handler
+final class bhot
+  implements QQPermissionCallback
 {
-  private WeakReference<CountDownView> a;
+  bhot(Activity paramActivity) {}
   
-  public bhot(CountDownView paramCountDownView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a = new WeakReference(paramCountDownView);
+    bbcv.b(bhos.a(this.a));
   }
   
-  public void a(CountDownView paramCountDownView, @NotNull Message paramMessage)
-  {
-    if (paramMessage.what == 1) {
-      CountDownView.a(paramCountDownView, CountDownView.a(paramCountDownView) - 1);
-    }
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a.get() == null)
-    {
-      removeCallbacksAndMessages(null);
-      return;
-    }
-    try
-    {
-      a((CountDownView)this.a.get(), paramMessage);
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      paramMessage.printStackTrace();
-    }
-  }
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhot
  * JD-Core Version:    0.7.0.1
  */

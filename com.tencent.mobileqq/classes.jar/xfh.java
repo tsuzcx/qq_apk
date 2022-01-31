@@ -1,38 +1,42 @@
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.widgets.TabLayout;
 
-public class xfh
+class xfh
   implements Animator.AnimatorListener
 {
-  public xfh(TabLayout paramTabLayout, Animator.AnimatorListener paramAnimatorListener) {}
+  xfh(xff paramxff) {}
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationCancel(paramAnimator);
-    TabLayout.a(this.jdField_a_of_type_ComTencentBizWidgetsTabLayout, false);
+    if (xff.a(this.a) != null) {
+      xff.a(this.a).a();
+    }
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationEnd(paramAnimator);
-    TabLayout.a(this.jdField_a_of_type_ComTencentBizWidgetsTabLayout, false);
-    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.a();
+    if (xff.a(this.a) != null) {
+      xff.a(this.a).a();
+    }
+    if (xff.a(this.a) != null)
+    {
+      xff.a(xff.a(this.a), null);
+      xff.a(this.a).a();
+    }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationRepeat(paramAnimator);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationStart(paramAnimator);
+    if (xff.a(this.a) != null) {
+      xff.a(this.a).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xfh
  * JD-Core Version:    0.7.0.1
  */

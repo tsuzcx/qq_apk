@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.phone;
 
-import afwq;
+import agip;
 import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 public class PhoneFrame
   extends PhoneInnerFrame
 {
-  private afwq a;
+  private agip a;
   
   public PhoneFrame(Context paramContext)
   {
@@ -25,7 +25,7 @@ public class PhoneFrame
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected afwq a()
+  protected agip a()
   {
     return this.a;
   }
@@ -35,9 +35,9 @@ public class PhoneFrame
     a().finish();
   }
   
-  public void setPhoneContext(afwq paramafwq)
+  public void setPhoneContext(agip paramagip)
   {
-    this.a = paramafwq;
+    this.a = paramagip;
   }
 }
 

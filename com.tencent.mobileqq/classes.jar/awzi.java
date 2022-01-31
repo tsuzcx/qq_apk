@@ -1,19 +1,23 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.friendlist.remote.FriendSingleInfo;
 
-class awzi
+public final class awzi
+  implements Parcelable.Creator<FriendSingleInfo>
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  ImageView b = null;
+  public FriendSingleInfo a(Parcel paramParcel)
+  {
+    return new FriendSingleInfo(paramParcel);
+  }
   
-  awzi(awzh paramawzh) {}
+  public FriendSingleInfo[] a(int paramInt)
+  {
+    return new FriendSingleInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awzi
  * JD-Core Version:    0.7.0.1
  */

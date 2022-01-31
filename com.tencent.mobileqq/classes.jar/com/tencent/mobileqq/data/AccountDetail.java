@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import ajjy;
-import atmo;
-import atnz;
-import atoc;
+import ajyc;
+import aukm;
+import aulx;
+import auma;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
@@ -16,33 +16,33 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import nbt;
-import nbu;
+import nmu;
+import nmv;
 import org.json.JSONObject;
 
 public class AccountDetail
-  extends atmo
+  extends aukm
 {
   public byte[] accountData;
   public int accountFlag;
   public long accountFlag2;
-  @atnz
+  @aulx
   public int cardStyle = 0;
   public String certifiedDescription = "";
-  @atnz
+  @aulx
   public String certifiedEnterprise = "";
   public int certifiedGrade;
-  @atnz
+  @aulx
   public String certifiedWeixin = "";
   public String configBackgroundColor = "3d7fe3";
-  @atnz
+  @aulx
   public String configBackgroundImg = "";
-  @atnz
-  public List<nbt> customConfigAttrs;
+  @aulx
+  public List<nmu> customConfigAttrs;
   public String displayNumber = "";
   public int followType;
-  @atnz
-  public List<nbt> fullscreenConfigAttrs;
+  @aulx
+  public List<nmu> fullscreenConfigAttrs;
   public int groupId;
   public List<mobileqq_mp.ConfigGroupInfo> groupInfoList;
   public boolean isAgreeSyncLbs;
@@ -55,16 +55,16 @@ public class AccountDetail
   public boolean isSyncLbsSelected;
   public String lastHistoryMsg;
   public int mShowMsgFlag = -1;
-  public String name = ajjy.a(2131633941);
+  public String name = ajyc.a(2131699729);
   public List<mobileqq_mp.ConfigGroupInfo> newGroupInfoList;
-  @atnz
-  public List<nbt> paConfigAttrs;
+  @aulx
+  public List<nmu> paConfigAttrs;
   public int seqno;
   public int showFlag;
-  public String summary = ajjy.a(2131633944);
-  @atoc
+  public String summary = ajyc.a(2131699732);
+  @auma
   public String uin;
-  @atnz
+  @aulx
   public String unifiedDesrpition;
   
   public AccountDetail() {}
@@ -242,29 +242,29 @@ public class AccountDetail
     int j;
     while (localIterator.hasNext())
     {
-      Object localObject = (nbt)localIterator.next();
-      if ((((nbt)localObject).jdField_a_of_type_Int != 1) && (((nbt)localObject).jdField_a_of_type_JavaUtilList != null))
+      Object localObject = (nmu)localIterator.next();
+      if ((((nmu)localObject).jdField_a_of_type_Int != 1) && (((nmu)localObject).jdField_a_of_type_JavaUtilList != null))
       {
-        localObject = ((nbt)localObject).jdField_a_of_type_JavaUtilList.iterator();
+        localObject = ((nmu)localObject).jdField_a_of_type_JavaUtilList.iterator();
         j = i;
         for (;;)
         {
           if (((Iterator)localObject).hasNext())
           {
-            nbu localnbu = (nbu)((Iterator)localObject).next();
+            nmv localnmv = (nmv)((Iterator)localObject).next();
             i = j;
-            if (localnbu.jdField_a_of_type_Int == 2)
+            if (localnmv.jdField_a_of_type_Int == 2)
             {
               i = j;
-              if (localnbu.e == 3) {
+              if (localnmv.e == 3) {
                 this.isSyncLbs = true;
               }
             }
-            switch (localnbu.d)
+            switch (localnmv.d)
             {
             default: 
               if (QLog.isColorLevel()) {
-                QLog.e("EqqDetail", 2, "Error Eqq lbs state value: " + localnbu.d);
+                QLog.e("EqqDetail", 2, "Error Eqq lbs state value: " + localnmv.d);
               }
               i = 1;
               label191:
@@ -324,17 +324,17 @@ public class AccountDetail
       int i = 0;
       while (localIterator.hasNext())
       {
-        Object localObject = (nbt)localIterator.next();
-        if ((((nbt)localObject).jdField_a_of_type_Int != 1) && (((nbt)localObject).jdField_a_of_type_JavaUtilList != null))
+        Object localObject = (nmu)localIterator.next();
+        if ((((nmu)localObject).jdField_a_of_type_Int != 1) && (((nmu)localObject).jdField_a_of_type_JavaUtilList != null))
         {
-          localObject = ((nbt)localObject).jdField_a_of_type_JavaUtilList.iterator();
+          localObject = ((nmu)localObject).jdField_a_of_type_JavaUtilList.iterator();
           for (;;)
           {
             if (((Iterator)localObject).hasNext())
             {
-              nbu localnbu = (nbu)((Iterator)localObject).next();
-              if (localnbu.e == 5) {
-                if (localnbu.d == 1)
+              nmv localnmv = (nmv)((Iterator)localObject).next();
+              if (localnmv.e == 5) {
+                if (localnmv.d == 1)
                 {
                   i = 1;
                   this.mShowMsgFlag = i;
@@ -370,9 +370,9 @@ public class AccountDetail
       this.configBackgroundColor = localJSONObject.optString("background_color");
       this.certifiedEnterprise = localJSONObject.optString("certified_enterprise");
       this.certifiedWeixin = localJSONObject.optString("certified_weixin");
-      this.paConfigAttrs = nbt.a(localJSONObject.optJSONArray("config_arr"));
-      this.customConfigAttrs = nbt.a(localJSONObject.optJSONArray("custom_arr"));
-      this.fullscreenConfigAttrs = nbt.a(localJSONObject.optJSONArray("fullscreen_arr"));
+      this.paConfigAttrs = nmu.a(localJSONObject.optJSONArray("config_arr"));
+      this.customConfigAttrs = nmu.a(localJSONObject.optJSONArray("custom_arr"));
+      this.fullscreenConfigAttrs = nmu.a(localJSONObject.optJSONArray("fullscreen_arr"));
       this.cardStyle = localJSONObject.optInt("card_style");
       return;
     }

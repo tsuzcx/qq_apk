@@ -1,196 +1,140 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewStub;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tribe.async.async.JobSegment;
-import java.io.File;
-import java.util.Collections;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.weiyun.utils.Singleton;
+import cooperation.weiyun.channel.pb.WeiyunPB.MsgHead;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
-public class bidk
-  extends bifz
-  implements View.OnClickListener, bidm, bidp
+public final class bidk
 {
-  public static final String a;
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private bidl jdField_a_of_type_Bidl;
+  private static Singleton<bidk, Void> jdField_a_of_type_ComTencentWeiyunUtilsSingleton = new bidl();
+  private long jdField_a_of_type_Long = 1L;
+  private ConcurrentHashMap<Integer, bidm> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   
-  static
+  public static bidk a()
   {
-    jdField_a_of_type_JavaLangString = sfm.e;
+    return (bidk)jdField_a_of_type_ComTencentWeiyunUtilsSingleton.get(null);
   }
   
-  public bidk(@NonNull bigb parambigb)
+  private void a(int paramInt, String paramString, byte[] paramArrayOfByte)
   {
-    super(parambigb);
-  }
-  
-  private void a(String paramString)
-  {
-    paramString = new File(paramString);
-    boolean bool;
-    if (paramString.isFile())
+    if ((paramString == null) || (paramString.length() == 0))
     {
-      bool = paramString.delete();
-      urk.d("Q.qqstory.publish.edit.EditVideoAt", "delete file : " + bool);
-    }
-    if (!paramString.exists())
-    {
-      bool = paramString.mkdirs();
-      urk.d("Q.qqstory.publish.edit.EditVideoAt", "create folder : " + bool);
-    }
-  }
-  
-  private void d()
-  {
-    Intent localIntent = new Intent(BaseApplication.getContext(), ForwardFriendListActivity.class);
-    localIntent.putExtra("extra_choose_friend", 4);
-    localIntent.putExtra("extra_left_btn_text", ajjy.a(2131638119));
-    a().getActivity().startActivityForResult(localIntent, 2);
-    a().getActivity().overridePendingTransition(2130771997, 2130771977);
-  }
-  
-  public JobSegment<bitz, bitz> a(int paramInt)
-  {
-    return new bity(this.jdField_a_of_type_Bidl, null, this.jdField_a_of_type_Bidl.a(paramInt));
-  }
-  
-  @NonNull
-  public List<String> a(int paramInt)
-  {
-    if (paramInt < 0) {
-      return Collections.EMPTY_LIST;
-    }
-    return this.jdField_a_of_type_Bidl.a(paramInt);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131297296));
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewStub.inflate());
-    }
-    if (this.jdField_a_of_type_Bidl == null) {
-      this.jdField_a_of_type_Bidl = new bidl(a(), this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    }
-    this.jdField_a_of_type_Bidl.a(this);
-    a(jdField_a_of_type_JavaLangString);
-    a(bidp.class, this);
-  }
-  
-  public void a(int paramInt)
-  {
-    urk.b("Q.qqstory.publish.edit.EditVideoAt", "EditVideoAt onStateChanged state = %d.", Integer.valueOf(paramInt));
-    this.jdField_a_of_type_Bigb.a(paramInt);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    switch (paramInt1)
-    {
-    default: 
+      QLog.e("WySender", 1, "sendRequestInner : seq[" + paramInt + "], cmd is empty");
       return;
     }
-    a().getActivity();
-    if (paramInt2 != -1)
+    if (QLog.isColorLevel()) {
+      QLog.d("WySender", 1, "sendRequestInner : seq[" + paramInt + "], cmd[" + paramString + "]");
+    }
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    String[] arrayOfString;
+    if (paramString.contains(".")) {
+      arrayOfString = paramString.split("\\.");
+    }
+    for (int i = Integer.parseInt(arrayOfString[(arrayOfString.length - 1)]);; i = Integer.parseInt(paramString))
     {
-      urk.e("Q.qqstory.publish.edit.EditVideoAt", "the resultCode of choosing a qq single friend is not RESULT_OK!");
-      this.jdField_a_of_type_Bigb.a(0);
+      paramArrayOfByte = new bidi(i, paramArrayOfByte);
+      paramString = new ToServiceMsg("mobileqq.service", localAppRuntime.getAccount(), paramString);
+      paramString.setTimeout(Math.min(60000L, (30000.0D * Math.pow(this.jdField_a_of_type_Long, 0.15D))));
+      paramString.setEnableFastResend(true);
+      paramString.putWupBuffer(bidj.a(paramArrayOfByte));
+      paramString.extraData.putInt("sequence", paramInt);
+      paramString.extraData.putLong("sendtimekey", System.currentTimeMillis());
+      paramArrayOfByte = new NewIntent(localAppRuntime.getApplication(), bidn.class);
+      paramArrayOfByte.putExtra(ToServiceMsg.class.getSimpleName(), paramString);
+      localAppRuntime.startServlet(paramArrayOfByte);
       return;
     }
-    if (paramIntent == null)
+  }
+  
+  void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    Object localObject = null;
+    int k = paramToServiceMsg.extraData.getInt("sequence");
+    int i;
+    label40:
+    bidi localbidi;
+    if (paramFromServiceMsg.isSuccess())
     {
-      urk.e("Q.qqstory.publish.edit.EditVideoAt", "the intent of choosing a single qq friend is null!");
-      this.jdField_a_of_type_Bigb.a(0);
-      return;
+      i = 0;
+      if (i != 1002) {
+        break label148;
+      }
+      this.jdField_a_of_type_Long += 1L;
+      if (i != 0) {
+        break label156;
+      }
+      localbidi = bidj.a(paramFromServiceMsg.getWupBuffer());
+      label53:
+      paramFromServiceMsg = paramFromServiceMsg.getBusinessFailMsg();
+      paramToServiceMsg = paramFromServiceMsg;
+      if (i == 1002) {
+        paramToServiceMsg = "(1002)" + paramFromServiceMsg;
+      }
+      if (i != 0) {
+        break label205;
+      }
+      if (localbidi != null) {
+        break label162;
+      }
+      i = 1810023;
     }
-    String str2 = paramIntent.getStringExtra("extra_choose_friend_uin");
-    String str1 = paramIntent.getStringExtra("extra_choose_friend_name");
-    Object localObject = paramIntent.getStringExtra("extraChooseFriendRemark");
-    if (str2 == null) {
-      urk.c("Q.qqstory.publish.edit.EditVideoAt", "choose a single qq friend. result null");
-    }
+    label148:
+    label156:
+    label162:
+    label196:
+    label205:
     for (;;)
     {
-      this.jdField_a_of_type_Bigb.a(0);
-      return;
-      urk.b("Q.qqstory.publish.edit.EditVideoAt", "choose a single qq friend. uin = %s name = %s remark = %s.", str2, str1, localObject);
-      urp.a("video_edit", "list_alt", 0, 0, new String[0]);
-      paramIntent = (Intent)localObject;
-      if (TextUtils.isEmpty((CharSequence)localObject))
+      label99:
+      bidm localbidm = (bidm)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(k));
+      if (localbidm != null) {
+        if (localbidi != null) {
+          break label196;
+        }
+      }
+      for (paramFromServiceMsg = localObject;; paramFromServiceMsg = localbidi.a())
       {
-        urk.d("Q.qqstory.publish.edit.EditVideoAt", "remark is null. set remark to name.");
-        paramIntent = str1;
+        localbidm.a(i, paramToServiceMsg, paramFromServiceMsg);
+        return;
+        i = paramFromServiceMsg.getResultCode();
+        break;
+        this.jdField_a_of_type_Long = 1L;
+        break label40;
+        localbidi = null;
+        break label53;
+        paramFromServiceMsg = localbidi.a();
+        int j = paramFromServiceMsg.retcode.get();
+        if (j == 0) {
+          break label205;
+        }
+        paramToServiceMsg = paramFromServiceMsg.retmsg.get();
+        i = j;
+        break label99;
       }
-      localObject = str1;
-      if (TextUtils.equals(str2, str1))
-      {
-        urk.d("Q.qqstory.publish.edit.EditVideoAt", "remark is null(choose a friend by searching.). set name to remark.");
-        localObject = paramIntent;
-      }
-      this.jdField_a_of_type_Bidl.a(str2, paramIntent, (String)localObject);
     }
   }
   
-  public void a(int paramInt, @NonNull bitz parambitz)
+  public void a(String paramString, byte[] paramArrayOfByte, bidm parambidm)
   {
-    super.a(paramInt, parambitz);
-    paramInt = this.jdField_a_of_type_Bidl.a(paramInt);
-    if (paramInt > 0) {
-      urp.a("video_edit", "send_alt", 0, 0, new String[] { paramInt + "" });
+    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    if (parambidm != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(i), parambidm);
     }
+    a(i, paramString, paramArrayOfByte);
   }
-  
-  protected boolean a(Message paramMessage)
-  {
-    if (paramMessage.what == 6)
-    {
-      int i = paramMessage.arg2;
-      this.jdField_a_of_type_Bidl.a(i);
-      return true;
-    }
-    return false;
-  }
-  
-  public void a_(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0) {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      }
-      return;
-    case 18: 
-      d();
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
-  }
-  
-  public void g()
-  {
-    super.g();
-    if (this.jdField_a_of_type_Bidl != null) {
-      this.jdField_a_of_type_Bidl.b();
-    }
-  }
-  
-  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bidk
  * JD-Core Version:    0.7.0.1
  */

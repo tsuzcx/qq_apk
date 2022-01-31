@@ -13,7 +13,7 @@ class BaseChatPie$33
   public void run()
   {
     this.this$0.e.setText(this.this$0.a.d);
-    if (AppSetting.c)
+    if (AppSetting.d)
     {
       String str = this.this$0.e.getText().toString();
       this.this$0.e.setContentDescription(str);

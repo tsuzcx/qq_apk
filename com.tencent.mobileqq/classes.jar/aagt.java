@@ -1,34 +1,36 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
 
 public class aagt
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aagt(ChatHistory paramChatHistory) {}
+  public aagt(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.d < this.a.c)
+    if (paramInt == 1)
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838746);
-      paramView = this.a;
-      paramView.d += 1;
-      if (this.a.d >= this.a.c)
-      {
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130848311);
-      }
-      this.a.e = ((this.a.d - 1) * 8);
-      this.a.jdField_a_of_type_Aahr.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-      this.a.t();
+      paramDialogInterface = new Intent(this.a, LoginActivity.class);
+      paramDialogInterface.putExtra("is_change_account", true);
+      paramDialogInterface.putExtra("if_check_account_same", true);
+      paramDialogInterface.putExtras(this.a.getIntent().getExtras());
+      paramDialogInterface.putExtra("appid", AddFriendLogicActivity.c(this.a));
+      paramDialogInterface.putExtra("openid", AddFriendLogicActivity.jdField_a_of_type_JavaLangString);
+      paramDialogInterface.putExtra("key_action", AddFriendLogicActivity.class.getSimpleName());
+      paramDialogInterface.addFlags(268435456);
+      paramDialogInterface.addFlags(67108864);
+      this.a.jdField_a_of_type_Bbgg.cancel();
+      this.a.startActivity(paramDialogInterface);
+      this.a.finish();
     }
+    while (paramInt != 0) {
+      return;
+    }
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 

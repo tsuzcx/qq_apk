@@ -1,21 +1,24 @@
-import android.view.MotionEvent;
+import android.app.Dialog;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
+import android.view.View.OnClickListener;
 
-public class aluo
-  implements View.OnTouchListener
+class aluo
+  implements View.OnClickListener
 {
-  public aluo(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
+  aluo(alum paramalum) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return false;
+    if ((alum.a(this.a) == 0) && (!TextUtils.isEmpty(alum.b(this.a)))) {
+      alum.a(this.a, null);
+    }
+    alum.a(this.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aluo
  * JD-Core Version:    0.7.0.1
  */

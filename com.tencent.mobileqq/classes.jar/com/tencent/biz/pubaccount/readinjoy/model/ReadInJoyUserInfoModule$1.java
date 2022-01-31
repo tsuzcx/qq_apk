@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import oql;
+import pbm;
 
 public class ReadInJoyUserInfoModule$1
   implements Runnable

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo;
 
-import aiev;
-import aiew;
-import aiex;
-import aing;
-import aipx;
+import airo;
+import airp;
+import airq;
+import ajae;
+import ajcv;
 import android.text.TextUtils;
 import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
 import com.tencent.common.app.AppInterface;
@@ -12,7 +12,7 @@ import com.tencent.common.app.AppInterface;
 public class AVCameraCaptureModel$1$1$1
   extends IApolloRunnableTask
 {
-  public AVCameraCaptureModel$1$1$1(aiex paramaiex, ApolloSurfaceView paramApolloSurfaceView, AVVideoCtrl.VideoFrame paramVideoFrame) {}
+  public AVCameraCaptureModel$1$1$1(airq paramairq, ApolloSurfaceView paramApolloSurfaceView, AVVideoCtrl.VideoFrame paramVideoFrame) {}
   
   public String a()
   {
@@ -21,10 +21,10 @@ public class AVCameraCaptureModel$1$1$1
   
   public void run()
   {
-    String str = aing.a().getCurrentAccountUin();
-    aipx localaipx = aing.a(aiev.a(this.jdField_a_of_type_Aiex.a.a));
-    if (localaipx == null) {}
-    while (TextUtils.isEmpty(localaipx.b(str))) {
+    String str = ajae.a().getCurrentAccountUin();
+    ajcv localajcv = ajae.a(airo.a(this.jdField_a_of_type_Airq.a.a));
+    if (localajcv == null) {}
+    while (TextUtils.isEmpty(localajcv.b(str))) {
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().nativePreviewCallback(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().a, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.data, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.width, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.height, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.rotate, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.videoFormat, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.srcType, "");

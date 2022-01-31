@@ -1,6 +1,47 @@
-public abstract interface bgki
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.photoplus.PhotoPlusManager;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class bgki
+  extends bbwf
 {
-  public abstract boolean a();
+  public bgki(PhotoPlusManager paramPhotoPlusManager, String paramString1, String paramString2, String paramString3) {}
+  
+  public void onCancel(bbwg parambbwg)
+  {
+    PhotoPlusManager.a(this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager).remove(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onDone(bbwg parambbwg)
+  {
+    PhotoPlusManager.a(this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager).remove(this.jdField_a_of_type_JavaLangString);
+    if (parambbwg.a() == 3)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoPlusManager", 2, "[onDone] download finished " + this.b);
+      }
+      if (TextUtils.isEmpty(this.c)) {
+        this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      return;
+      parambbwg = aurl.a(this.jdField_a_of_type_JavaLangString);
+      if (this.c.equalsIgnoreCase(parambbwg))
+      {
+        this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoPlusManager", 2, "[onDone] checkMd5 failed: " + this.jdField_a_of_type_JavaLangString);
+      }
+      bbdj.d(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    QLog.d("PhotoPlusManager", 2, "[onDone] downloadFile failed: " + parambbwg.b + " code=" + parambbwg.a);
+  }
 }
 
 

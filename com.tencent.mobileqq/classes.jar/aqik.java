@@ -1,19 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.youtu.ytposedetect.YTPoseDetectInterface.PoseDetectResult;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
 
-class aqik
-  implements YTPoseDetectInterface.PoseDetectResult
+public class aqik
+  implements bfos
 {
-  aqik(aqij paramaqij) {}
+  public aqik(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("qq_Identification.Model", 2, "pose detect start failed: " + paramInt + " reson: " + paramString1 + " do more: " + paramString2);
-    }
+    this.a.a = null;
+    this.a.o();
   }
-  
-  public void onSuccess() {}
 }
 
 

@@ -1,28 +1,18 @@
-import UserGrowth.stNotificationRsp;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import com.tencent.biz.pubaccount.weishi_new.view.WeiShiNoticeView;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import javax.annotation.Nullable;
 
-public class rwr
-  implements View.OnClickListener
+class rwr
+  implements rwq
 {
-  public rwr(WSRecommendFragment paramWSRecommendFragment) {}
-  
-  public void onClick(View paramView)
+  public InputStream a(@Nullable InputStream paramInputStream)
   {
-    if (WSRecommendFragment.a(this.a) == null) {
-      return;
-    }
-    int i = WSRecommendFragment.a(this.a).a();
-    paramView = WSRecommendFragment.a(this.a, WSRecommendFragment.a(this.a));
-    String str = WSRecommendFragment.a(this.a).h5Url;
-    sai.c("WSRecommendFragment", "schemeUrl:" + paramView + ", h5Url:" + str);
-    sam.a(WSRecommendFragment.a(this.a), paramView, str, i, this.a.a);
-    rzw.a(112, i, WSRecommendFragment.a(this.a).cid);
-    sai.a("weishi-808", "notification jumpUrl" + WSRecommendFragment.a(this.a).jump_url);
-    this.a.b(false);
+    return paramInputStream;
   }
+  
+  public void a() {}
+  
+  public void a(HttpURLConnection paramHttpURLConnection, @Nullable String paramString) {}
 }
 
 

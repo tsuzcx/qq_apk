@@ -1,365 +1,44 @@
-import android.annotation.TargetApi;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaFormat;
-import android.os.SystemClock;
-import android.util.Log;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-@TargetApi(16)
-public abstract class tsc
+final class tsc
+  implements bcwh
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo;
-  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
-  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
-  protected String a;
-  private List<tsd> jdField_a_of_type_JavaUtilList;
-  private tsd jdField_a_of_type_Tsd;
-  private tse jdField_a_of_type_Tse;
-  private tsg jdField_a_of_type_Tsg;
-  private boolean jdField_a_of_type_Boolean;
-  private ByteBuffer[] jdField_a_of_type_ArrayOfJavaNioByteBuffer;
-  private boolean jdField_b_of_type_Boolean;
-  private ByteBuffer[] jdField_b_of_type_ArrayOfJavaNioByteBuffer;
-  private boolean c;
-  private boolean d;
-  private boolean e;
+  tsc(String paramString, tpl paramtpl, trt paramtrt) {}
   
-  public tsc(tsg paramtsg, boolean paramBoolean, int paramInt, tse paramtse)
+  public void a(BaseResp paramBaseResp)
   {
-    this.jdField_a_of_type_JavaLangString = tsc.class.getSimpleName();
-    this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-    if ((paramtsg == null) || (paramInt == -1)) {
-      throw new IllegalArgumentException("no track specified");
+    if (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction)) {
+      return;
     }
-    this.jdField_a_of_type_Tsg = paramtsg;
-    this.e = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidMediaMediaFormat = paramtsg.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Tse = paramtse;
-    this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(this.jdField_a_of_type_AndroidMediaMediaFormat.getString("mime"));
-    this.jdField_a_of_type_Long = -9223372036854775808L;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  protected final MediaCodec a()
-  {
-    return this.jdField_a_of_type_AndroidMediaMediaCodec;
-  }
-  
-  protected final MediaFormat a()
-  {
-    return this.jdField_a_of_type_AndroidMediaMediaFormat;
-  }
-  
-  public final tsd a()
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      return null;
-    }
-    int i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 0L);
-    boolean bool;
-    if ((i >= 0) && ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) != 0))
+    switch (paramBaseResp.errCode)
     {
-      bool = true;
-      this.jdField_b_of_type_Boolean = bool;
-      if ((!this.jdField_b_of_type_Boolean) || (!this.c)) {
-        break label85;
+    case -3: 
+    case -1: 
+    default: 
+      if (this.jdField_a_of_type_Tpl != null) {
+        this.jdField_a_of_type_Tpl.b(this.jdField_a_of_type_Trt);
       }
-      a();
-      this.jdField_b_of_type_Boolean = false;
-      this.c = false;
-      this.d = true;
+      break;
     }
     for (;;)
     {
-      return null;
-      bool = false;
-      break;
-      label85:
-      Object localObject;
-      if (i >= 0)
-      {
-        localObject = this.jdField_b_of_type_ArrayOfJavaNioByteBuffer[i];
-        if ((localObject != null) && (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size != 0))
-        {
-          ((ByteBuffer)localObject).position(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset);
-          ((ByteBuffer)localObject).limit(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
-        }
-        tsd localtsd = (tsd)this.jdField_a_of_type_JavaUtilList.get(0);
-        localtsd.jdField_a_of_type_Int = i;
-        localtsd.jdField_a_of_type_JavaNioByteBuffer = ((ByteBuffer)localObject);
-        localtsd.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
-        localtsd.jdField_a_of_type_Boolean = this.jdField_b_of_type_Boolean;
-        if (this.d)
-        {
-          this.d = false;
-          localtsd.jdField_b_of_type_Boolean = true;
-        }
-        if (localtsd.jdField_a_of_type_Boolean)
-        {
-          Log.d(this.jdField_a_of_type_JavaLangString, "EOS output");
-          return localtsd;
-        }
-        this.jdField_a_of_type_Long = localtsd.jdField_a_of_type_Long;
-        return localtsd;
-      }
-      if (i == -3)
-      {
-        this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-        Log.d(this.jdField_a_of_type_JavaLangString, "output buffers have changed.");
-      }
-      else if (i == -2)
-      {
-        localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
-        Log.d(this.jdField_a_of_type_JavaLangString, "output format has changed to " + localObject);
-        a((MediaFormat)localObject);
-      }
-      else if (i != -1) {}
-    }
-  }
-  
-  protected tsd a(tsj paramtsj, long paramLong, tsg paramtsg, MediaCodec paramMediaCodec)
-  {
-    if (this.e)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
-      paramMediaCodec.flush();
-      return null;
-    }
-    Log.d(this.jdField_a_of_type_JavaLangString, "seeking to:                 " + paramLong);
-    Log.d(this.jdField_a_of_type_JavaLangString, "extractor current position: " + paramtsg.a());
-    paramtsg.a(paramLong, paramtsj.a());
-    Log.d(this.jdField_a_of_type_JavaLangString, "extractor new position:     " + paramtsg.a());
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    paramMediaCodec.flush();
-    if (paramtsg.c())
-    {
-      a();
-      this.d = true;
-    }
-    return a(true, true);
-  }
-  
-  public final tsd a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    while (!this.jdField_b_of_type_Boolean)
-    {
-      tsd localtsd = a();
-      while (a(paramBoolean1)) {}
-      if (localtsd != null) {
-        return localtsd;
-      }
-      if (!paramBoolean2) {
-        return null;
-      }
-    }
-    Log.d(this.jdField_a_of_type_JavaLangString, "EOS NULL");
-    return null;
-  }
-  
-  protected final void a()
-  {
-    int i = 0;
-    try
-    {
-      long l = SystemClock.elapsedRealtime();
-      this.jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_a_of_type_Tsg.a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-      a(this.jdField_a_of_type_AndroidMediaMediaCodec, this.jdField_a_of_type_AndroidMediaMediaFormat);
-      this.jdField_a_of_type_AndroidMediaMediaCodec.start();
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
-      this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      while (i < this.jdField_b_of_type_ArrayOfJavaNioByteBuffer.length)
-      {
-        this.jdField_a_of_type_JavaUtilList.add(new tsd());
-        i += 1;
-      }
-      Log.d(this.jdField_a_of_type_JavaLangString, "reinitCodec " + (SystemClock.elapsedRealtime() - l) + "ms");
+      WXShareHelper.a().b(this);
       return;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-      Log.e(this.jdField_a_of_type_JavaLangString, "reinitCodec: invalid surface or format");
-      throw localIllegalArgumentException;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-      Log.e(this.jdField_a_of_type_JavaLangString, "reinitCodec: illegal state");
-      throw localIllegalStateException;
-    }
-  }
-  
-  protected void a(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
-  {
-    paramMediaCodec.configure(paramMediaFormat, null, null, 0);
-  }
-  
-  protected void a(MediaFormat paramMediaFormat) {}
-  
-  public void a(tsd paramtsd)
-  {
-    b(paramtsd);
-  }
-  
-  public void a(tsd paramtsd, long paramLong)
-  {
-    b(paramtsd);
-  }
-  
-  public final void a(tsj paramtsj, long paramLong)
-  {
-    this.jdField_a_of_type_Long = -9223372036854775808L;
-    this.jdField_a_of_type_Tsd = a(paramtsj, paramLong, this.jdField_a_of_type_Tsg, this.jdField_a_of_type_AndroidMediaMediaCodec);
-  }
-  
-  protected boolean a()
-  {
-    return true;
-  }
-  
-  public final boolean a(boolean paramBoolean)
-  {
-    int j = 4;
-    long l = 0L;
-    if ((this.jdField_a_of_type_Boolean) || (!a())) {}
-    int k;
-    Object localObject;
-    do
-    {
-      do
+      if (this.jdField_a_of_type_Tpl != null)
       {
-        do
+        this.jdField_a_of_type_Tpl.a(this.jdField_a_of_type_Trt);
+        continue;
+        if (this.jdField_a_of_type_Tpl != null)
         {
-          return false;
-          if ((this.jdField_a_of_type_Tsg.b() == -1) || (this.jdField_a_of_type_Tsg.b() == this.jdField_a_of_type_Int)) {
-            break;
+          this.jdField_a_of_type_Tpl.c(this.jdField_a_of_type_Trt);
+          continue;
+          if (this.jdField_a_of_type_Tpl != null) {
+            this.jdField_a_of_type_Tpl.b(this.jdField_a_of_type_Trt);
           }
-        } while (!paramBoolean);
-        return this.jdField_a_of_type_Tsg.a();
-        k = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(0L);
-      } while (k < 0);
-      localObject = this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[k];
-      if (!this.jdField_a_of_type_Tsg.c()) {
-        break;
-      }
-      this.c = true;
-      this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(k, 0, 0, 0L, 4);
-    } while ((this.jdField_a_of_type_Tsg.b() <= -1L) || (this.jdField_a_of_type_Tse == null));
-    this.jdField_a_of_type_Tse.a(this);
-    return false;
-    if ((this.jdField_a_of_type_Tsg.b() > -1L) && (this.jdField_a_of_type_Tse != null)) {
-      this.jdField_a_of_type_Tse.a(this);
-    }
-    int i = this.jdField_a_of_type_Tsg.a((ByteBuffer)localObject, 0);
-    if (i < 0)
-    {
-      Log.d(this.jdField_a_of_type_JavaLangString, "EOS input");
-      this.jdField_a_of_type_Boolean = true;
-      i = 0;
-      paramBoolean = false;
-      localObject = this.jdField_a_of_type_AndroidMediaMediaCodec;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label265;
+        }
       }
     }
-    for (;;)
-    {
-      ((MediaCodec)localObject).queueInputBuffer(k, 0, i, l, j);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Tsg.a();
-      }
-      return paramBoolean;
-      l = this.jdField_a_of_type_Tsg.a();
-      paramBoolean = true;
-      break;
-      label265:
-      j = 0;
-    }
-  }
-  
-  public long b()
-  {
-    return this.jdField_a_of_type_Tsg.b();
-  }
-  
-  public final void b()
-  {
-    if (this.e) {
-      return;
-    }
-    for (;;)
-    {
-      int i = this.jdField_a_of_type_Tsg.b();
-      if ((i == -1) || (i == this.jdField_a_of_type_Int) || (this.jdField_a_of_type_Boolean)) {
-        break;
-      }
-      this.jdField_a_of_type_Tsg.a();
-    }
-  }
-  
-  public void b(tsd paramtsd)
-  {
-    this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(paramtsd.jdField_a_of_type_Int, false);
-    c(paramtsd);
-  }
-  
-  protected final boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Tsd != null) {
-      a(this.jdField_a_of_type_Tsd, 0L);
-    }
-  }
-  
-  protected final void c(tsd paramtsd)
-  {
-    paramtsd.a();
-    this.jdField_a_of_type_JavaUtilList.add(paramtsd);
-  }
-  
-  protected final boolean c()
-  {
-    return this.e;
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Tsd != null) {
-      a(this.jdField_a_of_type_Tsd);
-    }
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Tsg.b();
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-    this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-    Log.d(this.jdField_a_of_type_JavaLangString, "decoder released");
   }
 }
 

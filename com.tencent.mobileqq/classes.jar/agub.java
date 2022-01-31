@@ -1,27 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import mqq.util.WeakReference;
 
 class agub
-  implements View.OnClickListener
+  extends agsl
 {
-  agub(agty paramagty, String paramString) {}
-  
-  public void onClick(View paramView)
+  protected agub(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    agvs.a("sq.cptp", 1, 0, null, false);
-    if (!mpl.a(this.jdField_a_of_type_JavaLangString))
+    super(paramNewPhotoListActivity);
+  }
+  
+  public static agse b(NewPhotoListActivity paramNewPhotoListActivity)
+  {
+    if ((jdField_a_of_type_Agse == null) || (jdField_a_of_type_Agse.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoListActivity)) {}
+    try
     {
-      QLog.d("SpringBigInsertPage", 1, "invalide actionUrl: " + this.jdField_a_of_type_JavaLangString);
-      return;
+      if ((jdField_a_of_type_Agse == null) || (jdField_a_of_type_Agse.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoListActivity)) {
+        jdField_a_of_type_Agse = new agub(paramNewPhotoListActivity);
+      }
+      return jdField_a_of_type_Agse;
     }
-    this.jdField_a_of_type_Agty.a();
-    agty.a(this.jdField_a_of_type_Agty, this.jdField_a_of_type_JavaLangString);
+    finally {}
+  }
+  
+  protected String a(LocalMediaInfo paramLocalMediaInfo)
+  {
+    int i = this.jdField_a_of_type_Agsb.a;
+    return ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131695092, new Object[] { Integer.valueOf(i) });
+  }
+  
+  protected void a(Intent paramIntent)
+  {
+    super.a(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agub
  * JD-Core Version:    0.7.0.1
  */

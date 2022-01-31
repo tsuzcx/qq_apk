@@ -1,23 +1,10 @@
-import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
-
-public class mnx
-  implements ajfe
+public abstract interface mnx
 {
-  protected void a(boolean paramBoolean, BmqqUserSimpleInfo paramBmqqUserSimpleInfo) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramBoolean, (BmqqUserSimpleInfo)paramObject);
-  }
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mnx
  * JD-Core Version:    0.7.0.1
  */

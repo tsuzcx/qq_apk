@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import banc;
+import bboy;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,11 +8,11 @@ import java.util.Iterator;
 public class CustomOnlineStatusManager$1
   implements Runnable
 {
-  public CustomOnlineStatusManager$1(banc parambanc) {}
+  public CustomOnlineStatusManager$1(bboy parambboy) {}
   
   public void run()
   {
-    Iterator localIterator = banc.a(this.this$0).iterator();
+    Iterator localIterator = bboy.a(this.this$0).iterator();
     while (localIterator.hasNext())
     {
       Runnable localRunnable = (Runnable)((WeakReference)localIterator.next()).get();

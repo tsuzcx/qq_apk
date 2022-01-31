@@ -1,37 +1,20 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCConfirmFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
 public class arqu
-  implements bbpw
+  implements arro
 {
-  public arqu(MsgBackupPCConfirmFragment paramMsgBackupPCConfirmFragment) {}
+  public arqu(ListenTogetherManager paramListenTogetherManager, BaseActivity paramBaseActivity, int paramInt, String paramString) {}
   
-  public void a(View paramView, int paramInt)
+  public void a()
   {
-    if ((paramInt == 1) || (paramInt == 2))
-    {
-      arsc.a("MsgBackupMsgBackupPCConfirmFragment", "click cancel btn bizType = %d, pcHandler %b", new Object[] { Integer.valueOf(this.a.b), Boolean.valueOf(arpa.c) });
-      arrt.a().c();
-      if (!TextUtils.isEmpty(this.a.a)) {
-        break label93;
-      }
-      this.a.a(this.a.getActivity());
-      if (this.a.b != 2) {
-        break label104;
-      }
-      arsa.a("0X800A282");
-    }
-    label93:
-    label104:
-    while (!arpa.c)
-    {
+    if ((ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager)) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing())) {
       return;
-      this.a.onBackEvent();
-      break;
     }
-    arsa.a("0X800A266", 4);
+    ListenTogetherManager.a(ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager)).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1002);
   }
+  
+  public void b() {}
 }
 
 

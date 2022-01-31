@@ -1,13 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.qphone.base.util.QLog;
 
-public class plt
-  implements DialogInterface.OnDismissListener
+class plt
+  implements pca
 {
-  public plt(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  plt(plp paramplp, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
+      plp.a(this.jdField_a_of_type_Plp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      plp.a(this.jdField_a_of_type_Plp).notifyDataSetChanged();
+      return;
+    }
+    bcpw.a(plp.b(this.jdField_a_of_type_Plp).getContext(), 1, 2131718502, 0).a();
+  }
 }
 
 

@@ -1,23 +1,23 @@
 package cooperation.weiyun;
 
-import bbmy;
-import bgtv;
-import bguc;
+import bcpw;
+import bicx;
+import bide;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class WeiyunAIOUtils$WeiyunCallbackImpl$1
   implements Runnable
 {
-  public WeiyunAIOUtils$WeiyunCallbackImpl$1(bgtv parambgtv) {}
+  public WeiyunAIOUtils$WeiyunCallbackImpl$1(bicx parambicx) {}
   
   public void run()
   {
     if (BaseActivity.sTopActivity != null)
     {
-      bguc.a(bgtv.a(this.this$0), BaseActivity.sTopActivity, bgtv.a(this.this$0));
+      bide.a(bicx.a(this.this$0), BaseActivity.sTopActivity, bicx.a(this.this$0));
       return;
     }
-    bbmy.a(bgtv.a(this.this$0), 2, 2131631924, 1).b(bgtv.a(this.this$0));
+    bcpw.a(bicx.a(this.this$0), 2, 2131697638, 1).b(bicx.a(this.this$0));
   }
 }
 

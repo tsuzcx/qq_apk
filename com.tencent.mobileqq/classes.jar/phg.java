@@ -1,16 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class phg
-  implements View.OnClickListener
+  implements ViewBase.OnClickListener
 {
-  phg(phf paramphf) {}
+  phg(pgz parampgz, pax parampax, ViewBase paramViewBase) {}
   
-  public void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    paramView = this.a.jdField_a_of_type_Qoe.a();
-    if (paramView != null) {
-      paramView.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    try
+    {
+      if ((this.jdField_a_of_type_Pax.a().mSocialFeedInfo.jdField_a_of_type_Qcy.a) && (this.jdField_a_of_type_Pax.a().mSocialFeedInfo.jdField_a_of_type_Qcr != null)) {
+        onk.a(paramViewBase.getNativeView().getContext(), this.jdField_a_of_type_Pax.a().mSocialFeedInfo.jdField_a_of_type_Qcr.a.h, null);
+      }
+      paramViewBase = this.jdField_a_of_type_Pax.a();
+      if ((paramViewBase != null) && (paramViewBase.isPGCShortContent()))
+      {
+        paramViewBase.click_area = 11;
+        onk.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView().getContext(), paramViewBase, (int)paramViewBase.mChannelID);
+      }
+      return;
+    }
+    catch (NullPointerException paramViewBase)
+    {
+      QLog.e("PgcShortContentProteusItem", 1, paramViewBase.getLocalizedMessage());
     }
   }
 }

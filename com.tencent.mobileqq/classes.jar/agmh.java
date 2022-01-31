@@ -1,125 +1,47 @@
-import Wallet.RedPackGrapInfo;
-import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.ViewGroup;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbListAdapter.1;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.photo.MediaPlayHelper.2;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import java.util.HashMap;
 
 public class agmh
-  extends RecyclerView.Adapter<agmi>
+  implements TVK_SDKMgr.InstallListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<RedPackGrapInfo> jdField_a_of_type_JavaUtilList;
+  public agmh(MediaPlayHelper.2 param2) {}
   
-  public agmh(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList, Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public void onInstallProgress(float paramFloat) {}
   
-  public agmi a(ViewGroup paramViewGroup, int paramInt)
+  public void onInstalledFailed(int paramInt)
   {
-    return new agmi(this, new agmj(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList, this.jdField_a_of_type_AndroidContentContext, new adnc(TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), this.jdField_a_of_type_AndroidContentContext, TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList))));
-  }
-  
-  public void a(agmi paramagmi, int paramInt)
-  {
-    RedPackGrapInfo localRedPackGrapInfo = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(paramagmi.getPosition());
-    if (localRedPackGrapInfo == null) {}
-    do
-    {
-      return;
-      paramagmi = paramagmi.a;
-    } while (paramagmi == null);
-    paramagmi.a(localRedPackGrapInfo);
-  }
-  
-  void a(String paramString)
-  {
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_JavaUtilList == null) {
-          break label233;
-        }
-        if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-          break label234;
-        }
-        return;
-      }
-      catch (Throwable paramString)
-      {
-        RedPackGrapInfo localRedPackGrapInfo;
-        int j;
-        if (!QLog.isColorLevel()) {
-          break label233;
-        }
-        QLog.e(TroopUnAccalimedRedPacketList.b(), 2, "removeHbList occur an exception: " + paramString);
-        return;
-        i += 1;
-        continue;
-        TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList).postDelayed(new TroopUnAccalimedRedPacketList.HbListAdapter.1(this), 300L);
-        return;
-        i = 0;
-        continue;
-      }
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        localRedPackGrapInfo = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-        if ((localRedPackGrapInfo != null) && (localRedPackGrapInfo.sBiilNo.equals(paramString)))
-        {
-          j = i;
-          if (i == this.jdField_a_of_type_JavaUtilList.size()) {
-            j = i - 1;
-          }
-          this.jdField_a_of_type_JavaUtilList.remove(j);
-          notifyItemRemoved(j);
-          notifyItemRangeChanged(j, this.jdField_a_of_type_JavaUtilList.size());
-          if (TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList) == null) {
-            break label233;
-          }
-          if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-            continue;
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList.a == null) {
-            break label233;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList.a.dismiss();
-        }
-      }
-      label233:
-      return;
-      label234:
-      int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d(agmg.a(this.a.this$0), 2, "onInstalledFailed:" + paramInt);
     }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "MediaPlayHelper");
+    localHashMap.put("param_erroCode", String.valueOf(paramInt));
+    localHashMap.put("param_result", "0");
+    axrl.a(BaseApplication.getContext()).a(null, "actInstallTVK", false, 0L, 0L, localHashMap, "");
   }
   
-  void a(List<RedPackGrapInfo> paramList)
+  public void onInstalledSuccessed()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(agmg.a(this.a.this$0), 2, "onInstalledSuccessed");
     }
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public int getItemCount()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      return 0;
+    if ((this.a.this$0.b != null) && (this.a.this$0.a != null)) {
+      this.a.this$0.a.sendEmptyMessage(6);
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "MediaPlayHelper");
+    localHashMap.put("param_erroCode", "0");
+    localHashMap.put("param_result", "1");
+    axrl.a(BaseApplication.getContext()).a(null, "actInstallTVK", true, 0L, 0L, localHashMap, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agmh
  * JD-Core Version:    0.7.0.1
  */

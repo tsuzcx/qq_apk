@@ -1,40 +1,55 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.random.RandomWebProtocol;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import org.json.JSONObject;
 
 public class ltk
-  extends BroadcastReceiver
+  extends ltg
 {
-  public ltk(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public ltk(RandomWebProtocol paramRandomWebProtocol, int paramInt1, long paramLong, int paramInt2, String paramString)
   {
-    paramContext = paramIntent.getAction();
-    if ((TextUtils.isEmpty(paramIntent.getPackage())) || (!paramIntent.getPackage().equals(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getPackageName()))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("GAudioMembersCtrlActivity", 2, "receive broadcast from wrong package:" + paramIntent.getPackage() + ",action:" + paramContext);
+    super(paramRandomWebProtocol);
+    boolean bool = RandomWebProtocol.b();
+    paramRandomWebProtocol = new JSONObject();
+    try
+    {
+      paramRandomWebProtocol.put("session_type", paramInt1).put("groupid", paramLong);
+      if (4 == paramInt2) {
+        paramRandomWebProtocol.put("peer_enuin", ChatActivityUtils.b(RandomWebProtocol.a(), paramString));
       }
     }
-    int i;
-    long l;
-    do
+    catch (Exception paramString)
     {
       do
       {
-        return;
-      } while (!paramContext.equals("tencent.av.v2q.StopVideoChat"));
-      i = paramIntent.getIntExtra("stopReason3rd", -1);
-      l = paramIntent.getLongExtra("groupId", -1L);
-    } while ((i != 1) || (this.a.jdField_a_of_type_Long != l));
-    if (QLog.isColorLevel()) {
-      QLog.d("GAudioMembersCtrlActivity", 2, "ACTION_STOP_VIDEO_CHAT");
+        for (;;)
+        {
+          paramString.printStackTrace();
+          continue;
+          paramRandomWebProtocol = "https://play.mobile.qq.com/randchat/cgi-bin/chatplay/getroomowner";
+        }
+      } while (paramInt2 != 4);
+      if (!bool) {
+        break label139;
+      }
     }
-    this.a.finish();
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_OrgJsonJSONObject = paramRandomWebProtocol;
+    this.jdField_a_of_type_Boolean = bool;
+    if (paramInt2 == 5) {
+      if (bool)
+      {
+        paramRandomWebProtocol = "https://play.mobile.qq.com/randchat_test/cgi-bin/chatplay/getroomowner";
+        this.c = paramRandomWebProtocol;
+        this.d = "[m] RequestMultiRoomOwner";
+        return;
+      }
+    }
+    label139:
+    for (paramRandomWebProtocol = "https://play.mobile.qq.com/randchat_test/cgi-bin/chatplay/multichatkick";; paramRandomWebProtocol = "https://play.mobile.qq.com/randchat/cgi-bin/chatplay/multichatkick")
+    {
+      this.c = paramRandomWebProtocol;
+      break;
+    }
   }
 }
 

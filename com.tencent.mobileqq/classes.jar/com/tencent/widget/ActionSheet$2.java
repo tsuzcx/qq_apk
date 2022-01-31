@@ -2,25 +2,25 @@ package com.tencent.widget;
 
 import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
-import begr;
-import beha;
+import bfol;
+import bfou;
 
 public class ActionSheet$2
   implements Runnable
 {
-  public ActionSheet$2(begr parambegr) {}
+  public ActionSheet$2(bfol parambfol) {}
   
   public void run()
   {
-    if (begr.a(this.this$0) != null) {
-      begr.a(this.this$0).a();
+    if (bfol.a(this.this$0) != null) {
+      bfol.a(this.this$0).a();
     }
-    begr.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, begr.a(this.this$0).getHeight(), 0.0F));
-    begr.a(this.this$0).setFillEnabled(true);
-    begr.a(this.this$0).setStartTime(300L);
-    begr.a(this.this$0).setDuration(begr.a(this.this$0));
-    begr.a(this.this$0, true);
-    begr.a(this.this$0).startAnimation(begr.a(this.this$0));
+    bfol.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, bfol.a(this.this$0).getHeight(), 0.0F));
+    bfol.a(this.this$0).setFillEnabled(true);
+    bfol.a(this.this$0).setStartTime(300L);
+    bfol.a(this.this$0).setDuration(bfol.a(this.this$0));
+    bfol.a(this.this$0, true);
+    bfol.a(this.this$0).startAnimation(bfol.a(this.this$0));
   }
 }
 

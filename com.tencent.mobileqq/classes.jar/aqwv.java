@@ -1,22 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import java.util.List;
 
-public class aqwv
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface aqwv<T>
 {
-  public aqwv(FloatIconLayout paramFloatIconLayout) {}
+  public abstract int a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.setRotation(f);
-  }
+  public abstract String a(Context paramContext);
+  
+  public abstract String a(FontBubble paramFontBubble);
+  
+  public abstract List<FontBubble> a(QQAppInterface paramQQAppInterface, T paramT);
+  
+  public abstract void a(akfw paramakfw);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqwv
  * JD-Core Version:    0.7.0.1
  */

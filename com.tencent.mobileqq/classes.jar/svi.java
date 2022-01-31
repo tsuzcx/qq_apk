@@ -1,38 +1,99 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.widget.ARMapHongBaoListView;
+import android.annotation.TargetApi;
+import android.support.annotation.NonNull;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-class svi
-  extends RecyclerView.OnScrollListener
+@TargetApi(14)
+public class svi
+  extends sve
 {
-  boolean jdField_a_of_type_Boolean = false;
+  protected int a;
+  protected int b;
   
-  svi(svc paramsvc) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public svi(@NonNull String[] paramArrayOfString)
   {
-    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
-    if (paramInt == 0)
-    {
-      if ((paramRecyclerView.findLastCompletelyVisibleItemPosition() == paramRecyclerView.getItemCount() - 1) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Svc.jdField_a_of_type_Suo.d();
-      }
-      return;
-    }
-    svc.a(this.jdField_a_of_type_Svc);
+    super(paramArrayOfString);
+    paramArrayOfString = (tcv)tdc.a(10);
+    this.a = ((Integer)paramArrayOfString.b("StoryFriendCacheCountMax", Integer.valueOf(300))).intValue();
+    this.jdField_b_of_type_Int = ((Integer)paramArrayOfString.b("StoryFriendCacheCountNormal", Integer.valueOf(200))).intValue();
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  protected void a(String[] paramArrayOfString, svf paramsvf)
   {
-    if (paramInt1 > 0) {}
-    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
+    int m = paramArrayOfString.length;
+    int i = 0;
+    String str;
+    int j;
+    if (i < m)
     {
-      if (this.jdField_a_of_type_Svc.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.isDirty()) {
-        this.jdField_a_of_type_Svc.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.invalidate();
+      str = paramArrayOfString[i];
+      if (paramsvf.a)
+      {
+        j = 50;
+        label31:
+        if (!a(str, j)) {
+          break label60;
+        }
       }
-      return;
     }
+    for (;;)
+    {
+      i += 1;
+      break;
+      j = this.a;
+      break label31;
+      label60:
+      File localFile = new File(str);
+      double d = a(localFile);
+      File[] arrayOfFile = localFile.listFiles();
+      ArrayList localArrayList = new ArrayList();
+      int k = arrayOfFile.length;
+      j = 0;
+      while (j < k)
+      {
+        localArrayList.add(new svj(this, arrayOfFile[j]));
+        j += 1;
+      }
+      Collections.sort(localArrayList);
+      int n = localArrayList.size();
+      k = 0;
+      j = 0;
+      while (j < n)
+      {
+        if (j % 150 == 0) {}
+        try
+        {
+          Thread.sleep(100L);
+          if ((j % 20 == 0) && (a(str, this.jdField_b_of_type_Int))) {
+            return;
+          }
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            localInterruptedException.printStackTrace();
+          }
+          a(((svj)localArrayList.get(j)).a);
+          k += 1;
+          j += 1;
+        }
+      }
+      paramsvf.jdField_b_of_type_Double = (d - a(localFile) + paramsvf.jdField_b_of_type_Double);
+      paramsvf.jdField_b_of_type_Int += k;
+    }
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    paramString = new File(paramString).listFiles();
+    if (paramString == null) {}
+    while (paramString.length <= paramInt) {
+      return true;
+    }
+    return false;
   }
 }
 

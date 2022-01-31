@@ -1,147 +1,109 @@
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.PopupWindow;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.ocr.view.TranslateLanguageOptionsView.1;
+import com.tencent.mobileqq.widget.BounceScrollView;
 import java.util.List;
 
 public class audv
+  extends PopupWindow
+  implements RadioGroup.OnCheckedChangeListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
+  private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
+  private audw jdField_a_of_type_Audw;
   
-  public audv(Context paramContext)
+  private audv(Context paramContext, View paramView, int paramInt1, int paramInt2)
   {
-    this(paramContext, null);
+    super(paramView, paramInt1, paramInt2);
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131364722));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(this);
   }
   
-  public audv(Context paramContext, QQAppInterface paramQQAppInterface)
+  public static audv a(Activity paramActivity, List<audx> paramList, int paramInt, audw paramaudw)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private boolean a()
-  {
-    return (this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("http://")) || (this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("https://"));
-  }
-  
-  private void b()
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
-    String str1;
-    do
+    if ((paramActivity == null) || (paramList == null) || (paramList.size() <= 0)) {
+      return null;
+    }
+    Resources localResources = paramActivity.getResources();
+    int m = actn.a(36.0F, localResources);
+    int k = actn.a(150.0F, localResources);
+    View localView = LayoutInflater.from(paramActivity).inflate(2131560934, null);
+    BounceScrollView localBounceScrollView = (BounceScrollView)localView.findViewById(2131363713);
+    RadioGroup localRadioGroup = (RadioGroup)localView.findViewById(2131364722);
+    Object localObject = null;
+    int j = 0;
+    int i = 78;
+    RadioButton localRadioButton;
+    if (j < paramList.size())
     {
-      return;
-      str1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    } while (TextUtils.isEmpty(str1));
+      audx localaudx = (audx)paramList.get(j);
+      localRadioButton = (RadioButton)LayoutInflater.from(paramActivity).inflate(2131560933, null);
+      localRadioButton.setText(localaudx.a);
+      localRadioButton.setTag(localaudx);
+      localRadioButton.setId(j);
+      if (j != paramInt) {
+        break label297;
+      }
+      localRadioButton.setChecked(true);
+      localObject = localRadioButton;
+    }
+    label297:
+    for (;;)
+    {
+      localRadioGroup.addView(localRadioButton, j, new LinearLayout.LayoutParams(-1, -2));
+      j += 1;
+      i += m;
+      break;
+      paramInt = i;
+      if (i > actn.a(300.0F, localResources)) {
+        paramInt = actn.a(300.0F, localResources);
+      }
+      if (localObject != null) {
+        localBounceScrollView.post(new TranslateLanguageOptionsView.1(localObject, localBounceScrollView));
+      }
+      paramActivity = new audv(paramActivity, localView, k, paramInt);
+      paramActivity.setAnimationStyle(2131755028);
+      paramActivity.setBackgroundDrawable(new ColorDrawable(0));
+      paramActivity.setFocusable(true);
+      paramActivity.setOutsideTouchable(true);
+      paramActivity.a(paramaudw);
+      return paramActivity;
+    }
+  }
+  
+  public void a(audw paramaudw)
+  {
+    this.jdField_a_of_type_Audw = paramaudw;
+  }
+  
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  {
     try
     {
-      String str2 = xbq.b(str1, xbq.b(2));
-      if (QLog.isColorLevel()) {
-        QLog.i("HttpMqqJumper", 2, "openMoreOptions uin:" + str1 + " uinCode:" + str2);
+      paramRadioGroup = (audx)((RadioButton)paramRadioGroup.getChildAt(paramInt)).getTag();
+      if (this.jdField_a_of_type_Audw != null) {
+        this.jdField_a_of_type_Audw.a(paramInt, paramRadioGroup);
       }
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -1L, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, false);
-      Object localObject2 = new ArrayList();
-      if (localObject1 != null) {
-        ((List)localObject2).addAll((Collection)localObject1);
-      }
-      localObject1 = xbq.a(str1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 25004, 10, (List)localObject2);
-      localObject2 = ((String)localObject1).replaceAll(str1, str2);
-      Bundle localBundle = xbq.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      if (QLog.isColorLevel()) {
-        QLog.i("HttpMqqJumper", 2, "openMoreOptions safetyReport reportMsgOrg: " + (String)localObject1 + "  reportMsg: " + (String)localObject2);
-      }
-      xbq.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, str1, str2, null, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 25004, (String)localObject2, localBundle);
+      dismiss();
       return;
     }
-    catch (Throwable localThrowable)
+    catch (Exception paramRadioGroup)
     {
-      QLog.e("HttpMqqJumper", 1, "openMoreOptions safetyReport error" + localThrowable.getMessage());
+      paramRadioGroup.printStackTrace();
     }
-  }
-  
-  private boolean b()
-  {
-    return this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("mqq://jubao.qq.com");
-  }
-  
-  private boolean c()
-  {
-    return this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("mqq://");
-  }
-  
-  public audv a(BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    return this;
-  }
-  
-  public audv a(SessionInfo paramSessionInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    return this;
-  }
-  
-  public audv a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    Object localObject;
-    label94:
-    do
-    {
-      do
-      {
-        for (;;)
-        {
-          localObject = null;
-          if (b())
-          {
-            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replace("mqq://", "https://");
-            b();
-          }
-          while (localObject != null)
-          {
-            this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-            return;
-            if (!a()) {
-              break label94;
-            }
-            localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-            ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
-          }
-        }
-        if (!c()) {
-          break;
-        }
-      } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
-      localObject = bade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-    } while (localObject == null);
-    ((bacn)localObject).a();
-    ((bacn)localObject).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     audv
  * JD-Core Version:    0.7.0.1
  */

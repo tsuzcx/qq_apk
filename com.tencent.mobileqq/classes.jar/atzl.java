@@ -1,20 +1,21 @@
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class atzl
-  implements bajj<Integer>
+  implements BusinessObserver
 {
-  public atzl(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
   
-  public void a(bajd<Integer> parambajd, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(paramInteger.intValue());
+    if (paramInt == 10000) {
+      a(paramBoolean, paramBundle.getBoolean("new"), paramBundle.getInt("gc_notify_type", 0));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     atzl
  * JD-Core Version:    0.7.0.1
  */

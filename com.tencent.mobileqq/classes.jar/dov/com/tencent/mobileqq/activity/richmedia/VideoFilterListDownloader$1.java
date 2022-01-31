@@ -1,32 +1,32 @@
 package dov.com.tencent.mobileqq.activity.richmedia;
 
 import android.os.Bundle;
-import axro;
-import axrr;
-import bizy;
-import bjds;
+import ayrv;
+import ayry;
+import bkqk;
+import bkue;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import kry;
+import lcm;
 
 public class VideoFilterListDownloader$1
   implements Runnable
 {
-  public VideoFilterListDownloader$1(bizy parambizy, FilterDesc paramFilterDesc) {}
+  public VideoFilterListDownloader$1(bkqk parambkqk, FilterDesc paramFilterDesc) {}
   
   public void run()
   {
-    axro localaxro = new axro();
-    localaxro.jdField_a_of_type_Axrt = this.this$0.a;
-    localaxro.jdField_a_of_type_JavaLangString = this.a.resurl;
-    localaxro.jdField_a_of_type_Int = 0;
-    localaxro.c = (bjds.b + this.a.name + ".zip");
-    localaxro.a(this.a);
-    localaxro.jdField_a_of_type_Axru = this.this$0;
+    ayrv localayrv = new ayrv();
+    localayrv.jdField_a_of_type_Aysa = this.this$0.a;
+    localayrv.jdField_a_of_type_JavaLangString = this.a.resurl;
+    localayrv.jdField_a_of_type_Int = 0;
+    localayrv.c = (bkue.b + this.a.name + ".zip");
+    localayrv.a(this.a);
+    localayrv.jdField_a_of_type_Aysb = this.this$0;
     if (this.a.bundle == null) {
       this.a.bundle = new Bundle();
     }
     this.a.bundle.putLong("requestStartTime", System.currentTimeMillis());
-    kry.a().a(localaxro);
+    lcm.a().a(localayrv);
   }
 }
 

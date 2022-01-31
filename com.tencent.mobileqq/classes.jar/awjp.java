@@ -1,17 +1,30 @@
-final class awjp
-  extends awjr
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.search.activity.ContactSearchComponentActivity;
+
+public class awjp
+  implements View.OnTouchListener
 {
-  public double a(int paramInt1, int paramInt2)
+  public awjp(ContactSearchComponentActivity paramContactSearchComponentActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramInt1 > paramInt2) {
-      return paramInt2 / (paramInt1 + paramInt2);
+    if ((paramMotionEvent.getAction() == 1) && (TextUtils.isEmpty(this.a.a)))
+    {
+      paramView = this.a.getActivity();
+      if (paramView != null) {
+        paramView.finish();
+      }
     }
-    return paramInt1 / (paramInt1 + paramInt2);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awjp
  * JD-Core Version:    0.7.0.1
  */

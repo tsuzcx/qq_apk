@@ -1,37 +1,101 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
 
 public class akxw
-  implements akwr
+  implements albi
 {
-  public akxw(ARScanEntryView paramARScanEntryView) {}
+  public static int a;
+  private long jdField_a_of_type_Long;
+  private akxx jdField_a_of_type_Akxx;
+  private albg jdField_a_of_type_Albg;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = 0;
+  private boolean jdField_b_of_type_Boolean = true;
+  
+  static
+  {
+    jdField_a_of_type_Int = 8;
+  }
+  
+  public akxw(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Albg = new albg();
+  }
+  
+  private void b(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    long l;
+    if (this.jdField_a_of_type_Long != 0L)
+    {
+      l = System.currentTimeMillis();
+      if (l - this.jdField_a_of_type_Long >= 1000L) {}
+    }
+    label35:
+    label195:
+    label197:
+    do
+    {
+      for (;;)
+      {
+        return;
+        this.jdField_a_of_type_Long = l;
+        if (paramFloat2 > jdField_a_of_type_Int) {}
+        for (int i = 1;; i = 2)
+        {
+          if (this.jdField_b_of_type_Int == i) {
+            break label195;
+          }
+          QLog.i("ARPhonePoseDetectManager", 1, "detectPhonePose. data = " + paramFloat1 + "," + paramFloat2 + "," + paramFloat3 + "," + paramLong + ", mPhonePose = " + this.jdField_b_of_type_Int + ", phonePose = " + i);
+          if ((i == 2) && (this.jdField_b_of_type_Boolean)) {
+            this.jdField_b_of_type_Boolean = false;
+          }
+          this.jdField_b_of_type_Int = i;
+          if (this.jdField_a_of_type_Akxx == null) {
+            break;
+          }
+          if (this.jdField_b_of_type_Int != 1) {
+            break label197;
+          }
+          this.jdField_a_of_type_Akxx.a(true);
+          return;
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          break label35;
+        }
+      }
+    } while (this.jdField_b_of_type_Int != 2);
+    this.jdField_a_of_type_Akxx.a(false);
+  }
   
   public void a()
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResDownloadComplete ;" + this.a.m);
-    if (!this.a.m) {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Albg.a(this.jdField_a_of_type_AndroidContentContext, this);
+      this.jdField_a_of_type_Boolean = true;
       return;
     }
-    ARScanEntryView.a(this.a, 100);
-    ARScanEntryView.a(this.a).removeMessages(324);
-    ARScanEntryView.a(this.a).sendEmptyMessage(324);
-    this.a.k();
+    this.jdField_a_of_type_Albg.b();
+    this.jdField_b_of_type_Int = 0;
   }
   
-  public void a(int paramInt)
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResUpdateProgress " + paramInt + ";" + this.a.m);
-    if (!this.a.m) {
-      return;
-    }
-    ARScanEntryView.a(this.a, paramInt);
-    ARScanEntryView.a(this.a);
+    b(paramFloat1, paramFloat2, paramFloat3, paramLong);
   }
+  
+  public void a(akxx paramakxx)
+  {
+    this.jdField_a_of_type_Akxx = paramakxx;
+  }
+  
+  public void a(float[] paramArrayOfFloat) {}
   
   public void b()
   {
-    this.a.k();
+    this.jdField_a_of_type_Albg.c();
+    this.jdField_b_of_type_Int = 0;
   }
 }
 

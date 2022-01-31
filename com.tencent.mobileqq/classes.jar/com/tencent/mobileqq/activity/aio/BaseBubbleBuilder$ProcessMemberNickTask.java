@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.aio;
 import android.app.Activity;
 import android.content.Context;
 import android.view.View.OnLongClickListener;
-import babh;
+import bbcl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.io.UnsupportedEncodingException;
 
@@ -40,7 +40,7 @@ class BaseBubbleBuilder$ProcessMemberNickTask
       Object localObject;
       if (this.jdField_a_of_type_Int == 1)
       {
-        str1 = babh.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
+        str1 = bbcl.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
         localObject = str1;
         if (str1 != null)
         {
@@ -76,7 +76,7 @@ class BaseBubbleBuilder$ProcessMemberNickTask
         if (this.jdField_a_of_type_Int != 3000) {
           break label55;
         }
-        str1 = babh.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
+        str1 = bbcl.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {

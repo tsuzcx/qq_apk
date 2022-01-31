@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emoticonview;
 
-import anly;
+import aoci;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 
 public class StickerGestureDetector$3
   implements Runnable
 {
-  public StickerGestureDetector$3(anly paramanly) {}
+  public StickerGestureDetector$3(aoci paramaoci) {}
   
   public void run()
   {

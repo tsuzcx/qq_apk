@@ -1,43 +1,15 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextEffectView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel.2.1;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel.2.2;
-import mqq.os.MqqHandler;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.RelativeLayout;
 
-public class bipw
-  implements bhmd
+class bipw
+  extends AnimatorListenerAdapter
 {
-  public bipw(EditTextPanel paramEditTextPanel) {}
+  bipw(bipt parambipt) {}
   
-  public void a(float paramFloat, String paramString, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.post(new EditTextPanel.2.1(this, paramString, paramInt));
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if ((this.a.a == null) || (this.a.a.a == null)) {}
-    for (;;)
-    {
-      return;
-      int j = this.a.a.a.getChildCount();
-      DynamicTextConfigManager localDynamicTextConfigManager = (DynamicTextConfigManager)bhfm.a(7);
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = this.a.a.a.getChildAt(i);
-        localObject = (bipv)this.a.a.getChildViewHolder((View)localObject);
-        if (((bipv)localObject).a.isContainsResUrl(paramString)) {
-          ThreadManager.getUIHandler().post(new EditTextPanel.2.2(this, paramBoolean, (bipv)localObject, localDynamicTextConfigManager));
-        }
-        i += 1;
-      }
-    }
+    this.a.a.a().setVisibility(8);
   }
 }
 

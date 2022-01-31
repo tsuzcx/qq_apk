@@ -2,28 +2,28 @@ package cooperation.qzone.panorama.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import bfye;
-import bfyf;
-import bfyg;
-import bfyh;
-import bfyi;
-import bfyj;
-import bfyk;
-import bfyu;
-import bfza;
-import bfzb;
+import bhgp;
+import bhgq;
+import bhgr;
+import bhgs;
+import bhgt;
+import bhgu;
+import bhgv;
+import bhhf;
+import bhhl;
+import bhhm;
 import com.tencent.mobileqq.apollo.GLTextureView;
 
 public class PanoramaView
   extends GLTextureView
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private bfye jdField_a_of_type_Bfye;
-  private bfyg jdField_a_of_type_Bfyg = new bfza(this);
-  private bfyh jdField_a_of_type_Bfyh;
-  private bfyi jdField_a_of_type_Bfyi = new bfzb(this);
-  private bfyj jdField_a_of_type_Bfyj;
-  private bfyu jdField_a_of_type_Bfyu;
+  private bhgp jdField_a_of_type_Bhgp;
+  private bhgr jdField_a_of_type_Bhgr = new bhhl(this);
+  private bhgs jdField_a_of_type_Bhgs;
+  private bhgt jdField_a_of_type_Bhgt = new bhhm(this);
+  private bhgu jdField_a_of_type_Bhgu;
+  private bhhf jdField_a_of_type_Bhhf;
   
   public PanoramaView(Context paramContext)
   {
@@ -39,59 +39,59 @@ public class PanoramaView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bfyj != null)
+    if (this.jdField_a_of_type_Bhgu != null)
     {
       super.onPause();
-      if (this.jdField_a_of_type_Bfyh != null) {
-        this.jdField_a_of_type_Bfyh.b();
+      if (this.jdField_a_of_type_Bhgs != null) {
+        this.jdField_a_of_type_Bhgs.b();
       }
-      if (this.jdField_a_of_type_Bfyj != null) {
-        this.jdField_a_of_type_Bfyj.a();
+      if (this.jdField_a_of_type_Bhgu != null) {
+        this.jdField_a_of_type_Bhgu.a();
       }
     }
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_Bfyj != null) {
-      this.jdField_a_of_type_Bfyj.a(paramFloat1, paramFloat2);
+    if (this.jdField_a_of_type_Bhgu != null) {
+      this.jdField_a_of_type_Bhgu.a(paramFloat1, paramFloat2);
     }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bfyu == null) {}
+    if (this.jdField_a_of_type_Bhhf == null) {}
     for (;;)
     {
       return;
-      this.jdField_a_of_type_Bfyu.b(paramInt);
+      this.jdField_a_of_type_Bhhf.b(paramInt);
       setRenderMode(paramInt);
       if (paramInt == 0) {
-        this.jdField_a_of_type_Bfyu.a(false);
+        this.jdField_a_of_type_Bhhf.a(false);
       }
-      while ((this.jdField_a_of_type_Bfyh != null) && (this.jdField_a_of_type_Bfyu.a()))
+      while ((this.jdField_a_of_type_Bhgs != null) && (this.jdField_a_of_type_Bhhf.a()))
       {
-        this.jdField_a_of_type_Bfyh.a();
+        this.jdField_a_of_type_Bhgs.a();
         return;
-        this.jdField_a_of_type_Bfyu.a(true);
+        this.jdField_a_of_type_Bhhf.a(true);
       }
     }
   }
   
-  public void a(bfyu parambfyu, bfyf parambfyf)
+  public void a(bhhf parambhhf, bhgq parambhgq)
   {
-    if (parambfyu == null) {
+    if (parambhhf == null) {
       return;
     }
-    this.jdField_a_of_type_Bfyu = parambfyu;
+    this.jdField_a_of_type_Bhhf = parambhhf;
     setEGLContextClientVersion(2);
-    this.jdField_a_of_type_Bfyj = new bfyj(parambfyu, parambfyf);
-    setRenderer(this.jdField_a_of_type_Bfyj);
-    setRenderMode(parambfyu.c());
-    if (parambfyu.b()) {
-      setOnTouchListener(new bfyk(this, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bfyg, parambfyu));
+    this.jdField_a_of_type_Bhgu = new bhgu(parambhhf, parambhgq);
+    setRenderer(this.jdField_a_of_type_Bhgu);
+    setRenderMode(parambhhf.c());
+    if (parambhhf.b()) {
+      setOnTouchListener(new bhgv(this, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bhgr, parambhhf));
     }
-    this.jdField_a_of_type_Bfyh = new bfyh(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bfyi);
+    this.jdField_a_of_type_Bhgs = new bhgs(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bhgt);
   }
   
   public String getRenderThreadName()
@@ -101,30 +101,30 @@ public class PanoramaView
   
   public void onPause()
   {
-    if ((this.jdField_a_of_type_Bfyj != null) && (this.jdField_a_of_type_Bfyu != null))
+    if ((this.jdField_a_of_type_Bhgu != null) && (this.jdField_a_of_type_Bhhf != null))
     {
       super.onPause();
-      if ((this.jdField_a_of_type_Bfyh != null) && (this.jdField_a_of_type_Bfyu.a())) {
-        this.jdField_a_of_type_Bfyh.b();
+      if ((this.jdField_a_of_type_Bhgs != null) && (this.jdField_a_of_type_Bhhf.a())) {
+        this.jdField_a_of_type_Bhgs.b();
       }
     }
   }
   
   public void onResume()
   {
-    if ((this.jdField_a_of_type_Bfyj != null) && (this.jdField_a_of_type_Bfyu != null))
+    if ((this.jdField_a_of_type_Bhgu != null) && (this.jdField_a_of_type_Bhhf != null))
     {
-      this.jdField_a_of_type_Bfyu.a(true);
+      this.jdField_a_of_type_Bhhf.a(true);
       super.onResume();
-      if ((this.jdField_a_of_type_Bfyh != null) && (this.jdField_a_of_type_Bfyu.a())) {
-        this.jdField_a_of_type_Bfyh.a();
+      if ((this.jdField_a_of_type_Bhgs != null) && (this.jdField_a_of_type_Bhhf.a())) {
+        this.jdField_a_of_type_Bhgs.a();
       }
     }
   }
   
-  public void setOnPanoramaClickListener(bfye parambfye)
+  public void setOnPanoramaClickListener(bhgp parambhgp)
   {
-    this.jdField_a_of_type_Bfye = parambfye;
+    this.jdField_a_of_type_Bhgp = parambhgp;
   }
 }
 

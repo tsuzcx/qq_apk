@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.model;
 
 import android.os.Handler;
-import arnz;
-import bace;
+import askd;
+import bbdj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.pb.emosm.EmosmPb.SubCmd0x5RspBQRecommend;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ import mqq.app.MobileQQ;
 public class EmoticonManager$26
   implements Runnable
 {
-  public EmoticonManager$26(arnz paramarnz, int paramInt) {}
+  public EmoticonManager$26(askd paramaskd, int paramInt) {}
   
   public void run()
   {
@@ -33,7 +33,7 @@ public class EmoticonManager$26
       {
         localIOException.printStackTrace();
       }
-      byte[] arrayOfByte = bace.a((File)localObject);
+      byte[] arrayOfByte = bbdj.a((File)localObject);
       localObject = new EmosmPb.SubCmd0x5RspBQRecommend();
       if (arrayOfByte == null) {
         continue;

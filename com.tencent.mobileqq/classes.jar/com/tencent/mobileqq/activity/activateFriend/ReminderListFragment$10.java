@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import bbmy;
+import bcpw;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.extras.PullToRefreshRecyclerView;
 
 class ReminderListFragment$10
@@ -11,7 +11,7 @@ class ReminderListFragment$10
   public void run()
   {
     if (this.this$0.getActivity() != null) {
-      bbmy.a(this.this$0.getActivity(), this.a, 0).a();
+      bcpw.a(this.this$0.getActivity(), this.a, 0).a();
     }
     ReminderListFragment.a(this.this$0).a();
   }

@@ -1,15 +1,20 @@
-import android.view.View;
-import android.widget.TextView;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public class wna
+class wna
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View b;
+  public COMM.StCommonExt a;
+  public boolean a;
+  public boolean b;
+  
+  public String toString()
+  {
+    return "CommentResponse{hasMore=" + this.jdField_a_of_type_Boolean + ", attachInfo='" + this.jdField_a_of_type_NS_COMMCOMM$StCommonExt.attachInfo.get() + '\'' + ", hasResponse='" + this.b + '\'' + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wna
  * JD-Core Version:    0.7.0.1
  */

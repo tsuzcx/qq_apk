@@ -1,25 +1,33 @@
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 
 public class ukn
-  extends sgl<ujx, spl>
 {
-  public ukn(ujx paramujx)
+  @NonNull
+  private final Bitmap a;
+  
+  public ukn(Bitmap paramBitmap)
   {
-    super(paramujx);
+    if (paramBitmap == null) {
+      throw new NullPointerException("bitmap should not be null");
+    }
+    this.a = paramBitmap;
   }
   
-  public void a(@NonNull ujx paramujx, @NonNull spl paramspl)
+  public int a()
   {
-    urk.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramspl);
-    ujx.a(paramujx, paramspl.a);
+    return this.a.getWidth();
   }
   
-  public Class acceptEventClass()
+  public Bitmap a()
   {
-    return spl.class;
+    return Bitmap.createBitmap(this.a);
   }
   
-  public void b(@NonNull ujx paramujx, @NonNull spl paramspl) {}
+  public int b()
+  {
+    return this.a.getHeight();
+  }
 }
 
 

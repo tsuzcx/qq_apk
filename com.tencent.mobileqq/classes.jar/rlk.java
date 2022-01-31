@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class rlk
-  implements View.OnClickListener
+class rlk
+  implements ViewFactory.FoundClickableViewListener
 {
-  public rlk(BridgeModule paramBridgeModule, String paramString) {}
+  rlk(rlj paramrlj) {}
   
-  public void onClick(View paramView)
+  public void onFound(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, new JSONObject());
+    paramViewBase.setOnClickListener(new rll(this));
   }
 }
 

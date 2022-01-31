@@ -1,37 +1,43 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.res.Resources;
+import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 
-final class bajn
-  implements Handler.Callback
+class bajn
+  extends xas
 {
-  public boolean handleMessage(Message paramMessage)
+  bajn(bajk parambajk) {}
+  
+  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle, String paramString1, String paramString2)
   {
-    QQAppInterface localQQAppInterface;
-    if ((BaseApplicationImpl.getApplication().waitAppRuntime(null) instanceof QQAppInterface))
-    {
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null);
-      switch (paramMessage.what)
-      {
-      }
+    if (paramBundle == null) {
+      return;
     }
-    for (;;)
+    int i = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131298865);
+    paramBundle = paramBundle.getString("fileId");
+    azsr.c("TroopFileManager", azsr.a, "delete onActionResult: fileId:" + paramBundle + " isSuccess:" + paramBoolean + " errorCode:" + paramInt);
+    if (paramBoolean)
     {
-      return true;
-      bbmy.a(localQQAppInterface.getApplication(), ajjy.a(2131650256), 0).a();
-      continue;
-      bbmy.a(localQQAppInterface.getApplication(), ajjy.a(2131650255), 0).a();
-      continue;
-      bbmy.a(localQQAppInterface.getApplication(), ajjy.a(2131650254), 0).a();
-      continue;
-      bbmy.a(localQQAppInterface.getApplication(), ajjy.a(2131650257), 0).a();
+      this.a.b(paramBundle);
+      return;
     }
+    switch (paramInt)
+    {
+    default: 
+      bcpw.a(BaseApplicationImpl.getApplication(), ajyc.a(2131715364), 0).b(i);
+      return;
+    case -302: 
+    case -301: 
+    case -103: 
+      bcpw.a(BaseApplicationImpl.getApplication(), ajyc.a(2131715361), 0).b(i);
+      this.a.a(paramBundle);
+      return;
+    }
+    bcpw.a(BaseApplicationImpl.getApplication(), ajyc.a(2131715345), 0).b(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bajn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,41 @@
-import com.tencent.mobileqq.data.CardProfile;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.richmedia.mediacodec.widget.HWVideoPlayView;
+import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class awak
+  implements GLSurfaceView.EGLContextFactory
 {
-  public static ArrayList<CardProfile> a(List<CardProfile> paramList1, List<CardProfile> paramList2)
+  private int jdField_a_of_type_Int = 12440;
+  
+  public awak(HWVideoPlayView paramHWVideoPlayView) {}
+  
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    HashSet localHashSet = new HashSet();
-    ArrayList localArrayList = new ArrayList();
-    paramList1 = paramList1.iterator();
-    paramList2 = paramList2.iterator();
-    while (paramList1.hasNext())
-    {
-      CardProfile localCardProfile = (CardProfile)paramList1.next();
-      localHashSet.add(Long.valueOf(localCardProfile.lEctID));
-      localArrayList.add(localCardProfile);
+    int i = this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("HWVideoPlayView", 1, "createContext. display = " + paramEGLDisplay + " tid = " + Thread.currentThread().getId());
     }
-    while (paramList2.hasNext())
-    {
-      paramList1 = (CardProfile)paramList2.next();
-      if (!localHashSet.contains(Long.valueOf(paramList1.lEctID))) {
-        localArrayList.add(paramList1);
-      }
+    return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
+  }
+  
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView.m();
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
+      QLog.e("HWVideoPlayView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
     }
-    return localArrayList;
+    if (QLog.isColorLevel()) {
+      QLog.d("HWVideoPlayView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     awak
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,12 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.VideoDrawable;
-import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
-import com.tencent.qphone.base.util.QLog;
-
-public class alkw
-  implements VideoDrawable.OnPlayRepeatListener
+public abstract interface alkw
 {
-  public alkw(DynamicAvatarView paramDynamicAvatarView) {}
+  public abstract void b();
   
-  public void onPlayRepeat(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.dynamicAvatar", 2, "onPlayRepeat: " + paramInt);
-    }
-    if ((this.a.b) || (paramInt < 1)) {}
-    while (this.a.a == null) {
-      return;
-    }
-    Object localObject = this.a.a.jdField_a_of_type_ComTencentImageURLDrawable;
-    if ((localObject instanceof URLDrawable))
-    {
-      localObject = ((URLDrawable)localObject).getCurrDrawable();
-      if ((localObject instanceof VideoDrawable))
-      {
-        ((VideoDrawable)localObject).removeOnPlayRepeatListener(this);
-        this.a.a.jdField_a_of_type_Alkl.a(this.a.a, true);
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.dynamicAvatar", 2, "removeOnPlayRepeatListener.03");
-        }
-      }
-    }
-    this.a.a.jdField_a_of_type_ComTencentImageURLDrawable = null;
-    this.a.a();
-  }
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alkw
  * JD-Core Version:    0.7.0.1
  */

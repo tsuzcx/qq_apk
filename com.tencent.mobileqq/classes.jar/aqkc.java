@@ -1,16 +1,29 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import com.tencent.shadow.dynamic.host.PluginManager;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.freshnews.feed.NearbyImgLoader.RequestLoadedImgTask;
 
-public abstract interface aqkc
-  extends PluginManager
+public class aqkc
+  implements URLDrawableHandler
 {
-  public abstract void a(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback);
+  public aqkc(NearbyImgLoader.RequestLoadedImgTask paramRequestLoadedImgTask) {}
+  
+  public void doCancel() {}
+  
+  public boolean isCancelled()
+  {
+    return false;
+  }
+  
+  public void onFileDownloadFailed(int paramInt) {}
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
+  
+  public void publishProgress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqkc
  * JD-Core Version:    0.7.0.1
  */

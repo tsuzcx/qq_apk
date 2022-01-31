@@ -1,28 +1,21 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
-import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import org.json.JSONObject;
 
 class MediaJsPlugin$5
   implements Runnable
 {
-  MediaJsPlugin$5(MediaJsPlugin paramMediaJsPlugin, JsRuntime paramJsRuntime, int paramInt1, String paramString, int paramInt2) {}
+  MediaJsPlugin$5(MediaJsPlugin paramMediaJsPlugin, JsRuntime paramJsRuntime, int paramInt1, JSONObject paramJSONObject, String paramString, int paramInt2) {}
   
   public void run()
   {
-    Object localObject = ((AppBrandPageContainer)this.this$0.jsPluginEngine.appBrandRuntime.getContainer()).getPageByWebViewId(this.val$webview.getPageWebViewId());
-    if (localObject != null) {}
-    for (localObject = ((AbsAppBrandPage)localObject).getCurrentWebviewContainer();; localObject = null)
+    WebviewContainer localWebviewContainer = this.this$0.jsPluginEngine.getWebviewContainer(this.val$webview);
+    if (localWebviewContainer != null)
     {
-      if (localObject != null)
-      {
-        ((WebviewContainer)localObject).removeVideoPlayer(this.val$videoPlayerId);
-        this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
-      }
-      return;
+      localWebviewContainer.updateVideoPlayer(this.val$videoPlayerId, this.val$jsonObject);
+      this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
     }
   }
 }

@@ -221,7 +221,7 @@ public class CoverView
         localJSONObject5 = new JSONObject();
         localJSONObject5.put("data", this.data);
         localJSONObject5.put("touches", localJSONArray2);
-        if ((this.webviewContainer != null) && (this.webviewContainer.appBrandRuntime != null)) {
+        if ((this.webviewContainer != null) && (this.webviewContainer.appBrandRuntime != null) && (this.webviewContainer.appBrandRuntime.getPageWebView() != null)) {
           this.webviewContainer.appBrandRuntime.getPageWebView().evaluateSubcribeJS("onTouchCancel", localJSONObject5.toString(), this.webviewContainer.getPageWebview().pageWebviewId);
         }
       }

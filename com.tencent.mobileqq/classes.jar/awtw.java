@@ -1,38 +1,43 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
-
 public class awtw
-  extends RecyclablePool.Recyclable
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public long c;
-  public long d;
+  boolean jdField_a_of_type_Boolean;
   
-  public void recycle()
+  public awtw(awts paramawts, boolean paramBoolean)
   {
-    super.recycle();
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public String toString()
+  public void a(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    localStringBuilder.append("StorageItem info[size=").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(",accessTime=").append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(",isFile=").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(",fileCount=").append(this.c);
-    localStringBuilder.append(",dirCount=").append(this.d);
-    localStringBuilder.append(",name=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",path=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("]");
-    return localStringBuilder.toString();
+    try
+    {
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awtw
  * JD-Core Version:    0.7.0.1
  */

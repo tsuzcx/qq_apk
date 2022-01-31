@@ -1,57 +1,35 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 import java.util.List;
 
-class utr
-  extends vci
+public class utr
+  extends QQUIEventReceiver<utn, utq>
 {
-  private final List<vbx> a = new ArrayList();
-  
-  public int a()
+  public utr(utn paramutn)
   {
-    return this.a.size();
+    super(paramutn);
   }
   
-  public vbx a(int paramInt)
+  public void a(@NonNull utn paramutn, @NonNull utq paramutq)
   {
-    if ((paramInt >= 0) && (paramInt < this.a.size())) {
-      return (vbx)this.a.get(paramInt);
-    }
-    return null;
-  }
-  
-  public vbx a(String paramString)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    if (paramutq.jdField_a_of_type_Boolean)
     {
-      vbx localvbx = (vbx)localIterator.next();
-      if (TextUtils.equals(paramString, localvbx.a)) {
-        return localvbx;
+      if (paramutq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+      {
+        utn.a(paramutn, paramutq.jdField_a_of_type_JavaUtilList, true);
+        utn.a(paramutn).a(true);
       }
+      return;
     }
-    return null;
+    utn.a(paramutn, paramutq);
+    utn.a(paramutn).remove(utn.b());
+    utn.a(paramutn);
   }
   
-  public void a(Collection<vbx> paramCollection)
+  public Class acceptEventClass()
   {
-    urk.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
-    this.a.clear();
-    this.a.addAll(paramCollection);
-    a();
-  }
-  
-  public void a(vbx paramvbx)
-  {
-    urk.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + paramvbx);
-    int i = this.a.indexOf(paramvbx);
-    if (i >= 0)
-    {
-      this.a.set(i, paramvbx);
-      a(i);
-    }
+    return utq.class;
   }
 }
 

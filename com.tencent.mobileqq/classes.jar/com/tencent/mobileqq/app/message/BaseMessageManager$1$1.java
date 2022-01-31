@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.message;
 
-import ajzy;
+import akok;
 import java.util.Map;
 
 class BaseMessageManager$1$1

@@ -1,22 +1,20 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class aplj
-  extends Handler
+public class aplj
+  extends apli
 {
-  aplj(apld paramapld) {}
-  
-  public void handleMessage(Message paramMessage)
+  public aplj(apkp paramapkp)
   {
-    if (paramMessage.what == 0) {
-      bbmy.a(this.a.a, ajjy.a(2131639019), 0).a();
+    super(paramapkp);
+  }
+  
+  public boolean a(String paramString)
+  {
+    FileManagerEntity localFileManagerEntity = this.a.a();
+    if (localFileManagerEntity == null) {
+      return false;
     }
-    while (1 != paramMessage.what) {
-      return;
-    }
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    return paramString.equals(String.valueOf(localFileManagerEntity.nSessionId));
   }
 }
 

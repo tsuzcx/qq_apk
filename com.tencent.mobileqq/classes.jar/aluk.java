@@ -1,27 +1,18 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public abstract interface aluk
+class aluk
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract int a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
+  aluk(aluj paramaluj) {}
   
-  public abstract void a(Point paramPoint, int paramInt);
-  
-  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
-  
-  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(Point paramPoint, boolean paramBoolean);
-  
-  public abstract int b(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
+  public void onGlobalLayout()
+  {
+    aluj.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aluk
  * JD-Core Version:    0.7.0.1
  */

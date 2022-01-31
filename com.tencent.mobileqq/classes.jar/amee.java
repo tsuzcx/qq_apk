@@ -1,108 +1,114 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import java.util.ArrayList;
 
 public class amee
-  extends alzl<amed>
+  extends BaseAdapter
 {
-  public static int a(Context paramContext, String paramString)
+  public amee(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  
+  public String a(int paramInt)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "poke_msg_btn_is_show", 0);
+    if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.a.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt >= 0)) {
+      return (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    }
+    return null;
   }
   
-  public static void a(Context paramContext, String paramString, int paramInt)
+  public int getCount()
   {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt(paramString + "_" + "poke_msg_btn_is_show", paramInt);
-    paramContext.apply();
+    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    }
+    return 0;
   }
   
-  public int a()
+  public long getItemId(int paramInt)
   {
-    return 439;
+    return 0L;
   }
   
-  @NonNull
-  public amed a(int paramInt)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return new amed(0);
-  }
-  
-  @Nullable
-  public amed a(alzs[] paramArrayOfalzs)
-  {
-    j = 0;
-    i = j;
-    if (paramArrayOfalzs != null)
+    Object localObject;
+    if (paramView == null)
     {
-      i = j;
-      if (paramArrayOfalzs.length > 0) {
-        paramArrayOfalzs = paramArrayOfalzs[0].a;
+      paramView = this.a.getLayoutInflater().inflate(2131560674, null);
+      paramViewGroup = new ameo();
+      paramViewGroup.a = ((URLImageView)paramView.findViewById(2131363942));
+      paramView.setTag(paramViewGroup);
+      localObject = a(paramInt);
+      if ((this.a.jdField_a_of_type_Int != 0) && (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
+        this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.a.getResources().getDrawable(this.a.jdField_a_of_type_Int);
+      }
+      if (localObject == null) {}
+    }
+    else
+    {
+      for (;;)
+      {
+        try
+        {
+          localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+          if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+            continue;
+          }
+          localObject = URLDrawable.getDrawable((String)localObject, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          paramViewGroup.a.setImageDrawable((Drawable)localObject);
+        }
+        catch (Exception paramViewGroup)
+        {
+          URLDrawable.URLDrawableOptions localURLDrawableOptions;
+          paramViewGroup.printStackTrace();
+          continue;
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          return paramView;
+        }
+        if ((this.a.d != 1) || (this.a.jdField_a_of_type_Boolean)) {
+          continue;
+        }
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        return paramView;
+        paramViewGroup = (ameo)paramView.getTag();
+        break;
+        localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
       }
     }
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. strContent = " + paramArrayOfalzs);
+      if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+      {
+        localObject = URLDrawable.getDrawable("http://aaa", this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        paramViewGroup.a.setImageDrawable((Drawable)localObject);
       }
-      i = new JSONObject(paramArrayOfalzs).getInt("isPushSwitchShow");
+      for (;;)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        return paramView;
+        paramViewGroup.a.setImageDrawable(null);
+      }
     }
-    catch (Exception paramArrayOfalzs)
+    catch (Exception paramViewGroup)
     {
       for (;;)
       {
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("handlePushMsgBtnConfig", 2, "PushMsgBtnConfig parse error", paramArrayOfalzs);
-          i = j;
-        }
+        paramViewGroup.printStackTrace();
       }
     }
-    return new amed(i);
-  }
-  
-  public Class a()
-  {
-    return amed.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amed paramamed)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. onUpdate = " + paramamed.a);
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    a(localQQAppInterface.getApp(), localQQAppInterface.getAccount(), paramamed.a);
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amee
  * JD-Core Version:    0.7.0.1
  */

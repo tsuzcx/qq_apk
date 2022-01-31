@@ -1,75 +1,38 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.widget.ProgressButton;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
-import com.tencent.widget.XPanelContainer;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.MessageForQQWalletTips;
+import java.lang.ref.SoftReference;
 
 public class anji
-  extends anjj
-  implements View.OnClickListener
+  extends ClickableSpan
 {
-  protected int f;
+  public anji(MessageForQQWalletTips paramMessageForQQWalletTips, String paramString, SoftReference paramSoftReference, int paramInt) {}
   
-  public anji(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, anhs paramanhs, int paramInt4)
+  public void onClick(View paramView)
   {
-    super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramanhs, paramInt4);
-    this.b = false;
-    this.f = (XPanelContainer.a - (int)paramContext.getResources().getDimension(2131165754));
-  }
-  
-  public View a(angv paramangv, int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionDownloadOrInvalidAdapter", 2, "getEmotionView position = " + paramInt);
-    }
-    this.jdField_a_of_type_Anjk = ((anjk)paramangv);
-    if (paramView == null)
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    do
     {
-      paramangv = ankg.a().a(this.c);
-      paramView = new AbsListView.LayoutParams(-1, this.f);
-      if (paramangv == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("EmotionDownloadOrInvalidAdapter", 2, "getEmotionView position = " + paramInt + ";view form inflater");
-        }
-        paramangv = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495904, null);
-        paramangv.setLayoutParams(paramView);
-        this.jdField_a_of_type_Anjk.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramangv.findViewById(2131299236));
-        this.jdField_a_of_type_Anjk.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramangv.findViewById(2131299320));
-        this.jdField_a_of_type_Anjk.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton = ((ProgressButton)paramangv.findViewById(2131299318));
-        a(this.c, paramangv);
-        paramangv.setTag(this.jdField_a_of_type_Anjk);
-      }
-    }
-    for (;;)
-    {
-      a(this.jdField_a_of_type_Anjk);
-      return paramangv;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionDownloadOrInvalidAdapter", 2, "getEmotionView position = " + paramInt + ";view form cache");
-      }
-      break;
-      paramangv = paramView;
-    }
+      return;
+      paramView = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+    } while (paramView == null);
+    Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+    paramView.startActivity(localIntent);
   }
   
-  public EmoticonPackage a()
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
-  }
-  
-  public int getCount()
-  {
-    return 1;
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.clearShadowLayer();
   }
 }
 

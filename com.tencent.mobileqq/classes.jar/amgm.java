@@ -1,118 +1,72 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class amgm
+  extends ampb<amgl>
 {
-  public int a;
-  public String a;
-  public ArrayList<amgn> a;
-  
-  public amgm()
+  public static amgl a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = "";
+    return (amgl)ampm.a().a(549);
   }
   
-  public static amgm a(String paramString)
+  public int a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    amgm localamgm = new amgm();
-    for (;;)
-    {
-      int i;
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        paramString = localJSONObject.optJSONArray("match");
-        if (paramString == null) {
-          break;
-        }
-        localamgm.jdField_a_of_type_Int = localJSONObject.optInt("switch");
-        localamgm.jdField_a_of_type_JavaLangString = localJSONObject.optString("blackList");
-        if (localamgm.jdField_a_of_type_JavaUtilArrayList == null)
-        {
-          localamgm.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-          a(localamgm);
-          i = 0;
-          if (i < paramString.length())
-          {
-            localJSONObject = paramString.getJSONObject(i);
-            if (localJSONObject == null) {
-              break label235;
-            }
-            amgn localamgn = new amgn();
-            localamgn.jdField_a_of_type_JavaLangString = localJSONObject.optString("key");
-            localamgn.b = localJSONObject.optString("resUrl");
-            localamgn.c = localJSONObject.optString("md5");
-            localamgm.jdField_a_of_type_JavaUtilArrayList.add(localamgn);
-            break label235;
-          }
-        }
-        else
-        {
-          localamgm.jdField_a_of_type_JavaUtilArrayList.clear();
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          break label233;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("VipARConfBean", 1, "parse content exception = " + paramString.getMessage());
-        paramString.printStackTrace();
-        return null;
-      }
-      QLog.i("VipARConfBean", 2, " parseSuccess data = " + localamgm.toString());
-      label233:
-      return localamgm;
-      label235:
-      i += 1;
-    }
-  }
-  
-  private static void a(amgm paramamgm)
-  {
-    if ((paramamgm == null) || (TextUtils.isEmpty(paramamgm.jdField_a_of_type_JavaLangString))) {
-      QLog.i("VipARConfBean", 1, "checkIsInBlackList return empty");
-    }
-    if (bgph.a(paramamgm.jdField_a_of_type_JavaLangString)) {
-      paramamgm.jdField_a_of_type_Int = 0;
-    }
+    return 549;
   }
   
   @NonNull
-  public String toString()
+  public amgl a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    return new amgl();
+  }
+  
+  @Nullable
+  public amgl a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
     {
-      StringBuilder localStringBuilder = new StringBuilder(" switch = " + this.jdField_a_of_type_Int);
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        amgn localamgn = (amgn)localIterator.next();
-        if (localamgn != null) {
-          localStringBuilder.append("\n " + localamgn.toString());
-        }
+      amgl localamgl = amgl.a(paramArrayOfampi[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorNoteConfigProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
       }
-      if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-        localStringBuilder.append(" config list = null");
-      }
-      return localStringBuilder.toString();
+      return localamgl;
     }
-    return " switch = " + this.jdField_a_of_type_Int + " list = null";
+    return null;
+  }
+  
+  public Class a()
+  {
+    return amgl.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteConfigProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(amgl paramamgl) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amgm
  * JD-Core Version:    0.7.0.1
  */

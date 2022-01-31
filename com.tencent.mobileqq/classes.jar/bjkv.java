@@ -1,12 +1,26 @@
-class bjkv
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.QIMPtvTemplateProviderView;
+
+public class bjkv
+  extends bjdc
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  boolean jdField_a_of_type_Boolean = false;
-  float b = 0.0F;
+  public bjkv(QIMPtvTemplateProviderView paramQIMPtvTemplateProviderView) {}
   
-  private bjkv(bjks parambjks) {}
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PtvTemplateProviderView", 2, "onFaceUUpdate!");
+    }
+    this.a.g();
+  }
+  
+  public void g()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PtvTemplateProviderView", 2, "onSegmentModeUpdate!");
+    }
+    this.a.a(false);
+  }
 }
 
 

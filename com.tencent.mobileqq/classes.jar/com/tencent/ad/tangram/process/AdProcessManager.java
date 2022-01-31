@@ -80,6 +80,15 @@ public enum AdProcessManager
     return null;
   }
   
+  public Boolean isOnWebProcess()
+  {
+    AdProcessManagerAdapter localAdProcessManagerAdapter = getAdapter();
+    if (localAdProcessManagerAdapter != null) {
+      return localAdProcessManagerAdapter.isOnWebProcess();
+    }
+    return null;
+  }
+  
   public Boolean isWebProcessRunning()
   {
     AdProcessManagerAdapter localAdProcessManagerAdapter = getAdapter();

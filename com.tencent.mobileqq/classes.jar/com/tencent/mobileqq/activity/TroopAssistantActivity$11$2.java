@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import abvn;
+import acfz;
 
 public class TroopAssistantActivity$11$2
   implements Runnable
 {
-  public TroopAssistantActivity$11$2(abvn paramabvn, String paramString) {}
+  public TroopAssistantActivity$11$2(acfz paramacfz, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Abvn.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Acfz.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,102 +1,44 @@
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.FeedsProtocol.TopicCfg;
-import com.tencent.pb.now.ilive_feeds_read.TopicCfg;
-import java.util.List;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
 public class aslp
 {
   private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
   private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private String d;
+  private String b;
   
-  public static atar a(List<ilive_feeds_read.TopicCfg> paramList, atar paramatar)
+  public aslo a()
   {
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      paramList = (ilive_feeds_read.TopicCfg)paramList.get(0);
-      paramatar.a = new aslp();
-      paramatar.a.d(paramList.jump_url.get());
-      paramatar.a.b(paramList.topic_name.get());
-      paramatar.a.a(paramList.topic_desc.get());
-      paramatar.a.b(paramList.topic_parti_num.get());
-      paramatar.a.c(paramList.topic_pic_url.get());
-      paramatar.a.a(paramList.topic_tag.get());
-      paramatar.a.c(paramList.topic_type.get());
-    }
-    return paramatar;
+    return new aslo(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_a_of_type_Int);
   }
   
-  public static VideoData a(List<FeedsProtocol.TopicCfg> paramList, VideoData paramVideoData)
-  {
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      paramList = (FeedsProtocol.TopicCfg)paramList.get(0);
-      paramVideoData.a = new aslp();
-      paramVideoData.a.d(paramList.jump_url.get());
-      paramVideoData.a.b(paramList.topic_name.get());
-      paramVideoData.a.a(paramList.topic_desc.get());
-      paramVideoData.a.b(paramList.topic_parti_num.get());
-      paramVideoData.a.c(paramList.topic_pic_url.get());
-      paramVideoData.a.a(paramList.topic_tag.get());
-      paramVideoData.a.c(paramList.topic_type.get());
-    }
-    return paramVideoData;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
+  public aslp a(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
+    return this;
   }
   
-  public void a(String paramString)
+  public aslp a(MsgBackupUserData paramMsgBackupUserData)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    return this;
+  }
+  
+  public aslp a(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
   }
   
-  public String b()
+  public aslp b(String paramString)
   {
-    return this.d;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public void d(String paramString)
-  {
-    this.d = paramString;
+    this.b = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aslp
  * JD-Core Version:    0.7.0.1
  */

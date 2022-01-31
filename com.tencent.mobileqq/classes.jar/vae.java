@@ -1,21 +1,8 @@
-import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import com.tribe.async.dispatch.IEventReceiver;
 
-@TargetApi(11)
-public class vae
-{
-  public static ValueAnimator a(long paramLong, float paramFloat1, float paramFloat2, vah paramvah)
-  {
-    float f = (paramFloat2 - paramFloat1) / 5.0F;
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2, paramFloat2 - 3.0F * f, paramFloat2, paramFloat2 - f, paramFloat2 });
-    localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-    localValueAnimator.addUpdateListener(new vaf(paramvah));
-    localValueAnimator.addListener(new vag(paramvah, localValueAnimator));
-    localValueAnimator.setDuration(paramLong);
-    return localValueAnimator;
-  }
-}
+public abstract interface vae
+  extends IEventReceiver
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar

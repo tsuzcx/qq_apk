@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat;
 
-import ogy;
-import oox;
+import osj;
+import ozy;
 
 class ReadInJoyDynamicChannelFragment$3
   implements Runnable
@@ -10,9 +10,9 @@ class ReadInJoyDynamicChannelFragment$3
   
   public void run()
   {
-    oox localoox = ogy.a().a();
-    if (localoox != null) {
-      localoox.b(ReadInJoyDynamicChannelFragment.l(this.this$0));
+    ozy localozy = osj.a().a();
+    if (localozy != null) {
+      localozy.b(ReadInJoyDynamicChannelFragment.l(this.this$0));
     }
   }
 }

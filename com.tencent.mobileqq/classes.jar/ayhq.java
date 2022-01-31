@@ -1,33 +1,31 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ayhq
-  implements URLDrawable.URLDrawableListener
+public abstract class ayhq
 {
-  public ayhq(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, ayhs paramayhs) {}
+  protected Context a;
+  protected BaseAdapter a;
+  protected QQAppInterface a;
+  protected int b;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public ayhq(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
   {
-    this.jdField_a_of_type_Ayhs.a(null);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
+    this.b = paramInt;
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_Ayhs.a(null);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = bcdq.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
-    this.jdField_a_of_type_Ayhs.a(paramURLDrawable);
-  }
+  public abstract View a(int paramInt1, ayir paramayir, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayhq
  * JD-Core Version:    0.7.0.1
  */

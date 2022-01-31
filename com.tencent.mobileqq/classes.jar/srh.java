@@ -1,43 +1,26 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetFilterList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-
 public class srh
-  extends slz<sri>
 {
-  @NonNull
-  public final String a;
-  public final int c;
-  
-  public srh(@NonNull String paramString)
+  public static double a(int[] paramArrayOfInt)
   {
-    this(paramString, 20);
-  }
-  
-  public srh(@NonNull String paramString, int paramInt)
-  {
-    this.a = paramString;
-    this.c = paramInt;
-  }
-  
-  public String a()
-  {
-    return skt.a("StorySvc.video_filter_list");
-  }
-  
-  public slu a(byte[] paramArrayOfByte)
-  {
-    return new sri(paramArrayOfByte);
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetFilterList localReqGetFilterList = new qqstory_service.ReqGetFilterList();
-    localReqGetFilterList.count.set(this.c);
-    localReqGetFilterList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    return localReqGetFilterList.toByteArray();
+    int j = 0;
+    double d2 = 0.0D;
+    int k = paramArrayOfInt.length;
+    double d1 = 0.0D;
+    int i = 0;
+    while (i < k)
+    {
+      d1 += paramArrayOfInt[i];
+      i += 1;
+    }
+    double d3 = d1 / k;
+    i = j;
+    d1 = d2;
+    while (i < k)
+    {
+      d1 += (paramArrayOfInt[i] - d3) * (paramArrayOfInt[i] - d3);
+      i += 1;
+    }
+    return d1 / k;
   }
 }
 

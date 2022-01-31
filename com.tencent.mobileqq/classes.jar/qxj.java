@@ -1,18 +1,60 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.app.Activity;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.multivideo.MultiVideoDataManager.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
 
-public final class qxj
-  implements Parcelable.Creator<BaseData>
+public class qxj
 {
-  public BaseData a(Parcel paramParcel)
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private npt jdField_a_of_type_Npt;
+  private npu jdField_a_of_type_Npu;
+  private qxb jdField_a_of_type_Qxb;
+  private qxu jdField_a_of_type_Qxu;
+  
+  qxj(Activity paramActivity, qxb paramqxb, qxu paramqxu)
   {
-    return new BaseData(paramParcel);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Qxb = paramqxb;
+    this.jdField_a_of_type_Qxu = paramqxu;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onk.a());
+    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    b();
   }
   
-  public BaseData[] a(int paramInt)
+  private void b()
   {
-    return new BaseData[paramInt];
+    this.jdField_a_of_type_Npt = ((npt)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(99));
+    this.jdField_a_of_type_Npu = new qxk(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Npu);
+  }
+  
+  private void b(int paramInt1, int paramInt2)
+  {
+    ThreadManager.post(new MultiVideoDataManager.1(this, paramInt1, paramInt2), 1, null, true);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Npu);
+  }
+  
+  void a(int paramInt1, int paramInt2)
+  {
+    int i = paramInt1;
+    while ((i < paramInt1 + paramInt2) && (i < this.jdField_a_of_type_Qxu.a().size()))
+    {
+      VideoInfo localVideoInfo = (VideoInfo)this.jdField_a_of_type_Qxu.a().get(i);
+      if (localVideoInfo.s == 0) {
+        this.jdField_a_of_type_Npt.a(localVideoInfo.a, localVideoInfo.g);
+      }
+      i += 1;
+    }
+    b(paramInt1, paramInt2);
   }
 }
 

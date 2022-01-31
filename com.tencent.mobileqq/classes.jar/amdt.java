@@ -1,120 +1,99 @@
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class amdt
+  extends amdl
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public int c;
-  public long c;
+  public amdt(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public amdt()
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 8;
-    this.jdField_a_of_type_Long = 100000000L;
-    this.jdField_b_of_type_Int = 7;
-    this.jdField_b_of_type_Long = 16777216L;
-    this.jdField_c_of_type_Long = 16777216L;
-    this.jdField_c_of_type_Int = -1;
-  }
-  
-  public static amdt a(alzs[] paramArrayOfalzs)
-  {
-    amdt localamdt = new amdt();
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_observer", 2, String.format("onModifyCard isSuccess=%s cardId=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
+    }
+    this.a.b();
+    if (paramBoolean)
     {
-      int j = paramArrayOfalzs.length;
-      int i = 0;
-      if (i < j)
+      this.a.b(ajyc.a(2131701244));
+      axqw.b(this.a.app, "CliOper", "", "", "0X8007748", "0X8007748", this.a.d, 0, "", "", "", "");
+      return;
+    }
+    bcpw.a(this.a.getActivity(), 2, ajyc.a(2131701252), 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_observer", 2, String.format("onGetCardInfo isSuccess=%s cardId=%s queryType=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) }));
+    }
+    this.a.b();
+    if ((paramBoolean) && (paramString.equals(this.a.jdField_a_of_type_JavaLangString)))
+    {
+      if ((this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Int == 2) && (this.a.c == 1))
       {
-        Object localObject = paramArrayOfalzs[i];
-        if (localObject == null) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          localObject = ((alzs)localObject).a;
-          try
-          {
-            JSONObject localJSONObject = new JSONObject((String)localObject);
-            a(localJSONObject, localamdt);
-            b(localJSONObject, localamdt);
-            c(localJSONObject, localamdt);
-            if (QLog.isColorLevel()) {
-              QLog.i("PicCommonBean", 2, "parse: " + (String)localObject + " bean:" + localamdt);
-            }
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              localJSONException.printStackTrace();
-            }
-          }
-        }
+        this.a.c = 0;
+        this.a.jdField_a_of_type_Amdk.a(false);
       }
+      if ((!this.a.jdField_a_of_type_Boolean) || (!this.a.b) || (this.a.isFinishing())) {
+        break label190;
+      }
+      this.a.jdField_a_of_type_Amdk.a(paramString);
+      QLog.i("BusinessCard_observer", 4, "after edit and require : cardId = " + paramString);
+      this.a.finish();
     }
-    if (localamdt.jdField_a_of_type_Int < 0) {
-      localamdt.jdField_a_of_type_Int = 8;
-    }
-    if (localamdt.jdField_a_of_type_Long < 0L) {
-      localamdt.jdField_a_of_type_Long = 100000000L;
-    }
-    if (localamdt.jdField_b_of_type_Int < 1) {
-      localamdt.jdField_a_of_type_Long = 7L;
-    }
-    return localamdt;
+    label190:
+    do
+    {
+      return;
+      paramString = this.a.jdField_a_of_type_Amdk.a(paramString);
+    } while (paramString == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard = paramString;
+    BusinessCardEditActivity.a(this.a, false, true, true);
   }
   
-  private static void a(JSONObject paramJSONObject, amdt paramamdt)
+  public void b(boolean paramBoolean, String paramString)
   {
-    paramJSONObject = paramJSONObject.getJSONObject("regionDecode");
-    if (paramJSONObject.has("ramThreshold")) {
-      paramamdt.jdField_a_of_type_Int = paramJSONObject.optInt("ramThreshold");
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_observer", 2, String.format("onDelCard isSuccess=%s cardId=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
     }
-    if (paramJSONObject.has("pxThreshold")) {
-      paramamdt.jdField_a_of_type_Long = paramJSONObject.optLong("pxThreshold");
+    this.a.b();
+    if (paramBoolean)
+    {
+      bcpw.a(this.a.getActivity(), 2, ajyc.a(2131701247), 0).b(this.a.getTitleBarHeight());
+      this.a.finish();
+      return;
     }
-    if (paramJSONObject.has("threadCount")) {
-      paramamdt.jdField_b_of_type_Int = paramJSONObject.optInt("threadCount");
-    }
-    if (paramJSONObject.has("needRegionDecode")) {
-      paramamdt.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("needRegionDecode");
-    }
+    bcpw.a(this.a.getActivity(), 1, ajyc.a(2131701242), 0).b(this.a.getTitleBarHeight());
   }
   
-  private static void b(JSONObject paramJSONObject, amdt paramamdt)
+  public void b(boolean paramBoolean, String paramString, int paramInt)
   {
-    paramJSONObject = paramJSONObject.getJSONObject("uploadLimit");
-    if (paramJSONObject.has("c2c")) {
-      paramamdt.jdField_b_of_type_Long = paramJSONObject.optInt("c2c");
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_observer", 2, String.format("onAddCard isSuccess=%s cardId=%s result=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) }));
     }
-    if (paramJSONObject.has("group")) {
-      paramamdt.jdField_c_of_type_Long = paramJSONObject.optInt("group");
+    this.a.b();
+    Object localObject = this.a.getResources();
+    if (paramBoolean)
+    {
+      localObject = ((Resources)localObject).getString(2131698595);
+      this.a.b((String)localObject);
+      if (TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) {
+        this.a.jdField_a_of_type_JavaLangString = paramString;
+      }
+      return;
     }
-  }
-  
-  private static void c(JSONObject paramJSONObject, amdt paramamdt)
-  {
-    paramJSONObject = paramJSONObject.getJSONObject("switchEXIF");
-    if (paramJSONObject.has("switch")) {
-      paramamdt.jdField_c_of_type_Int = paramJSONObject.optInt("switch");
+    paramString = ((Resources)localObject).getString(2131698593);
+    if (paramInt == 66) {
+      paramString = ((Resources)localObject).getString(2131698594);
     }
-  }
-  
-  public String toString()
-  {
-    return "PicCommonBean{needRegionDecode=" + this.jdField_a_of_type_Boolean + ", ramThreshold=" + this.jdField_a_of_type_Int + ", pxThreshold=" + this.jdField_a_of_type_Long + ", threadCount=" + this.jdField_b_of_type_Int + ", C2C_FileSize_Limit=" + this.jdField_b_of_type_Long + ", GROUP_FileSize_Limit=" + this.jdField_c_of_type_Long + ", EXIF_SWITCH=" + this.jdField_c_of_type_Int + '}';
+    bcpw.a(this.a.getActivity(), 2, paramString, 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amdt
  * JD-Core Version:    0.7.0.1
  */

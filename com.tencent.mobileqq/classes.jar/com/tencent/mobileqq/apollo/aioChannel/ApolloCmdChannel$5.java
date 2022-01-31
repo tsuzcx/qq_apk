@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.apollo.aioChannel;
 
-import aijf;
+import aivy;
 import com.tencent.mobileqq.apollo.IApolloRunnableTask;
 import com.tencent.qphone.base.util.QLog;
 
 class ApolloCmdChannel$5
   extends IApolloRunnableTask
 {
-  ApolloCmdChannel$5(ApolloCmdChannel paramApolloCmdChannel, aijf paramaijf, String paramString) {}
+  ApolloCmdChannel$5(ApolloCmdChannel paramApolloCmdChannel, aivy paramaivy, String paramString) {}
   
   public String a()
   {
@@ -16,7 +16,7 @@ class ApolloCmdChannel$5
   
   public void run()
   {
-    this.this$0.callbackEngineWrapper(this.jdField_a_of_type_Aijf.isJsRuntime(), this.jdField_a_of_type_Aijf.getRuntimeState(), 0, "sc.apolloGameWebMessage.local", this.jdField_a_of_type_JavaLangString);
+    this.this$0.callbackEngineWrapper(this.jdField_a_of_type_Aivy.isJsRuntime(), this.jdField_a_of_type_Aivy.getRuntimeState(), 0, "sc.apolloGameWebMessage.local", this.jdField_a_of_type_JavaLangString);
     if (QLog.isColorLevel()) {
       QLog.d("cmgame_process.ApolloDataChannel", 2, "handleWebEvent data:" + this.jdField_a_of_type_JavaLangString);
     }

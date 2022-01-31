@@ -1,16 +1,12 @@
-import java.util.Comparator;
-
-final class bdro
-  implements Comparator<byte[]>
+public abstract interface bdro
 {
-  public int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    return paramArrayOfByte1.length - paramArrayOfByte2.length;
-  }
+  public abstract boolean isMultiVideoMsgSupport(int paramInt);
+  
+  public abstract boolean isSharpVideoMsgSupport(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdro
  * JD-Core Version:    0.7.0.1
  */

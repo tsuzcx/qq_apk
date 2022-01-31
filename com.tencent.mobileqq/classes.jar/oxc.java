@@ -1,40 +1,26 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyPrivacyListFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
 import com.tencent.qphone.base.util.QLog;
 
 public class oxc
-  implements ViewBase.OnClickListener
+  implements oxp
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  public oxc(VideoView paramVideoView) {}
   
-  public oxc(Context paramContext, ArticleInfo paramArticleInfo)
+  public void a(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a == null)) {}
-    do
+    if ((paramArrayOfString2 != null) && (paramArrayOfString2.length > 0))
     {
-      do
+      paramArrayOfString2 = paramArrayOfString2[0];
+      if ((!TextUtils.isEmpty(VideoView.d(this.a))) && (VideoView.d(this.a).equals(paramArrayOfString1[0])))
       {
+        this.a.b(paramArrayOfString2);
         return;
-        paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a;
-      } while (obz.a() != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_Long);
-      QLog.d("OnPivacyClickListener", 2, "privacy type is  " + paramViewBase.jdField_a_of_type_Int + "| feedsid is " + paramViewBase.b);
-    } while (paramViewBase.jdField_a_of_type_Int != 1);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("feeds_id", paramViewBase.b);
-    PublicFragmentActivity.a(this.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyPrivacyListFragment.class);
+      }
+      QLog.d("gifvideo.VideoView", 2, "not current video");
+      return;
+    }
+    QLog.d("gifvideo.VideoView", 2, "urls null");
   }
 }
 

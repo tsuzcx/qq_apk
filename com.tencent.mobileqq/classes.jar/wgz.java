@@ -1,22 +1,23 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalDetailHeadItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
 
 public class wgz
-  implements View.OnClickListener
+  implements axod
 {
-  public wgz(RelativePersonalDetailHeadItemView paramRelativePersonalDetailHeadItemView, CertifiedAccountMeta.StYouZanShop paramStYouZanShop) {}
+  public wgz(QRLoginMgrActivity paramQRLoginMgrActivity, wig paramwig) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    vvy.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StYouZanShop.schema.get());
+    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, this.jdField_a_of_type_Wig);
+  }
+  
+  public void b()
+  {
+    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, this.jdField_a_of_type_Wig);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wgz
  * JD-Core Version:    0.7.0.1
  */

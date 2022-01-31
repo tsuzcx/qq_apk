@@ -1,34 +1,14 @@
-import android.content.Intent;
+import android.content.DialogInterface;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
 
 public class ttp
-  extends tnm
+  extends bbdf
 {
-  private tto a;
+  public ttp(FollowCaptureLauncher paramFollowCaptureLauncher) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a != null) {
-      this.a.a(paramInt1, paramInt2, paramIntent);
-    }
-  }
-  
-  public void a(tto paramtto)
-  {
-    this.a = paramtto;
-  }
-  
-  public void f()
-  {
-    if (this.a != null) {
-      this.a.c();
-    }
-  }
-  
-  public void g()
-  {
-    if (this.a != null) {
-      this.a.b();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

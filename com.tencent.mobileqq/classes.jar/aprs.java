@@ -1,199 +1,212 @@
-import android.text.TextUtils;
-import java.io.Reader;
+import android.app.Activity;
+import android.content.res.Resources;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.multioperate.OfflineFileMultiOperate.1;
+import com.tencent.mobileqq.filemanager.multioperate.OfflineFileMultiOperate.2;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public final class aprs
-  extends aprr
+public class aprs
+  implements aprr<FileManagerEntity>
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "word";
-  private boolean jdField_a_of_type_Boolean;
-  private final char[] jdField_a_of_type_ArrayOfChar = new char['ÿ'];
-  private int jdField_b_of_type_Int;
-  private final char[] jdField_b_of_type_ArrayOfChar = new char[1024];
-  private int c;
-  private int d;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public aprs(Reader paramReader, int paramInt)
+  public aprs(QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
-    this.jdField_a_of_type_JavaIoReader = paramReader;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public final aprp a()
+  public void a(List<FileManagerEntity> paramList, int paramInt, aprx paramaprx)
   {
-    int m = this.jdField_b_of_type_Int;
-    int k = 0;
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      QLog.e("OfflineFileMultiOperate", 1, "doFileMultiOperate no any file");
+      return;
+    }
+    switch (paramInt)
+    {
+    default: 
+      QLog.e("OfflineFileMultiOperate", 1, "doFileMultiOperate unkonw optype:" + paramInt);
+      return;
+    case 3: 
+      a(paramList, paramaprx);
+      return;
+    case 1: 
+      b(paramList, paramaprx);
+      return;
+    case 2: 
+      c(paramList, paramaprx);
+      return;
+    }
+    d(paramList, paramaprx);
+  }
+  
+  protected void a(List<FileManagerEntity> paramList, aprx paramaprx)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (FileManagerEntity)localIterator.next();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(((FileManagerEntity)localObject).peerUin, ((FileManagerEntity)localObject).peerType, ((FileManagerEntity)localObject).uniseq);
+      if (localObject != null) {
+        localArrayList.add((ChatMessage)localObject);
+      }
+    }
+    if (localArrayList.size() > 0)
+    {
+      ThreadManager.post(new OfflineFileMultiOperate.1(this, localArrayList, paramList, paramaprx), 8, null, true);
+      return;
+    }
+    ThreadManagerV2.executeOnSubThread(new OfflineFileMultiOperate.2(this, paramList, paramaprx));
+  }
+  
+  protected void b(List<FileManagerEntity> paramList, aprx paramaprx)
+  {
+    if (!bbev.d(BaseApplication.getContext())) {
+      bcpw.a(this.jdField_a_of_type_AndroidAppActivity, 2131694672, 1).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131298865));
+    }
+    long l;
+    do
+    {
+      return;
+      l = 0L;
+      if ((paramList.size() != 1) || (!((FileManagerEntity)paramList.get(0)).sendCloudUnsuccessful())) {
+        break;
+      }
+      aptv.a(2131692571);
+    } while (paramaprx == null);
+    paramaprx.a(1, 2);
+    return;
+    Object localObject = paramList.iterator();
+    label90:
+    FileManagerEntity localFileManagerEntity;
+    if (((Iterator)localObject).hasNext())
+    {
+      localFileManagerEntity = (FileManagerEntity)((Iterator)localObject).next();
+      if (!apsz.a(localFileManagerEntity).a(true)) {
+        break label237;
+      }
+      l = localFileManagerEntity.fileSize + l;
+    }
+    label237:
     for (;;)
     {
-      this.jdField_b_of_type_Int += 1;
-      if (this.c >= this.d)
+      break label90;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+      if ((apue.a()) && (l > apee.a()))
       {
-        this.d = this.jdField_a_of_type_JavaIoReader.read(this.jdField_b_of_type_ArrayOfChar);
-        this.c = 0;
+        apue.a(false, this.jdField_a_of_type_AndroidAppActivity, new aprt(this, paramList, (aouq)localObject, paramaprx));
+        return;
       }
-      int n;
-      if (this.d == -1) {
-        if (k > 0)
-        {
-          n = m;
-          if (this.jdField_a_of_type_Boolean == true)
-          {
-            this.jdField_a_of_type_Boolean = false;
-            k = 0;
-            n = m;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        localFileManagerEntity = (FileManagerEntity)paramList.next();
+        if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+          ((aouq)localObject).b(localFileManagerEntity);
+        }
+      }
+      if (paramaprx == null) {
+        break;
+      }
+      paramaprx.a(1, 0);
+      return;
+    }
+  }
+  
+  protected void c(List<FileManagerEntity> paramList, aprx paramaprx)
+  {
+    if (!bbev.d(BaseApplication.getContext())) {
+      bcpw.a(this.jdField_a_of_type_AndroidAppActivity, 2131694672, 1).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131298865));
+    }
+    do
+    {
+      return;
+      if ((paramList.size() != 1) || (!((FileManagerEntity)paramList.get(0)).sendCloudUnsuccessful())) {
+        break;
+      }
+      aptv.a(2131692572);
+    } while (paramaprx == null);
+    paramaprx.a(2, 3);
+    return;
+    Iterator localIterator = paramList.iterator();
+    do
+    {
+      if (!localIterator.hasNext()) {
+        break;
+      }
+    } while (!apsz.a((FileManagerEntity)localIterator.next()).a(false));
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        aptr.a(this.jdField_a_of_type_AndroidAppActivity, 2131692672, 2131692677, new apru(this, paramList, paramaprx));
+        return;
+      }
+      apue.a(paramList, this.jdField_a_of_type_AndroidAppActivity);
+      if (paramaprx == null) {
+        break;
+      }
+      paramaprx.a(2, 0);
+      return;
+    }
+  }
+  
+  protected void d(List<FileManagerEntity> paramList, aprx paramaprx)
+  {
+    Object localObject1 = (FileManagerEntity)paramList.get(0);
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    if ((paramList.size() == 1) && (((FileManagerEntity)paramList.get(0)).sendCloudUnsuccessful()))
+    {
+      aptv.a(2131692573);
+      return;
+    }
+    Object localObject2 = paramList.iterator();
+    do
+    {
+      if (!((Iterator)localObject2).hasNext()) {
+        break;
+      }
+    } while (!apsz.a((FileManagerEntity)((Iterator)localObject2).next()).a(false));
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        if (!bcvm.a(this.jdField_a_of_type_AndroidAppActivity, 5, new aprv(this, paramList, (aouq)localObject1, paramaprx))) {
+          break;
+        }
+        aptr.a(this.jdField_a_of_type_AndroidAppActivity, 2131692672, 2131692675, new aprw(this, paramList, (aouq)localObject1, paramaprx));
+        return;
+      }
+      aptv.d(this.jdField_a_of_type_AndroidAppActivity.getString(2131692829));
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        localObject2 = (FileManagerEntity)paramList.next();
+        if (!((FileManagerEntity)localObject2).sendCloudUnsuccessful()) {
+          if (bbdj.b(((FileManagerEntity)localObject2).getFilePath())) {
+            ((aouq)localObject1).a(((FileManagerEntity)localObject2).getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0, false);
+          } else {
+            ((aouq)localObject1).a((FileManagerEntity)localObject2, String.valueOf(((FileManagerEntity)localObject2).peerUin));
           }
         }
       }
-      int i1;
-      for (;;)
-      {
-        if ((n == this.jdField_a_of_type_Int - 1) && (k == 0))
-        {
-          return null;
-          return null;
-          Object localObject = this.jdField_b_of_type_ArrayOfChar;
-          n = this.c;
-          this.c = (n + 1);
-          int j = localObject[n];
-          localObject = Character.UnicodeBlock.of(j);
-          if ((localObject == Character.UnicodeBlock.BASIC_LATIN) || (localObject == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS))
-          {
-            int i = j;
-            char c1;
-            if (localObject == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS) {
-              c1 = (char)(j - 65248);
-            }
-            if (Character.isLetter(c1))
-            {
-              if (k == 0) {
-                n = this.jdField_b_of_type_Int - 1;
-              }
-              do
-              {
-                localObject = this.jdField_a_of_type_ArrayOfChar;
-                m = k + 1;
-                localObject[k] = Character.toLowerCase(c1);
-                this.jdField_a_of_type_JavaLangString = "letter";
-                i1 = n;
-                k = m;
-                if (m != 255) {
-                  break label700;
-                }
-                k = m;
-                break;
-                if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "double")) {
-                  break label260;
-                }
-                n = m;
-              } while (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, "digit"));
-              label260:
-              this.jdField_b_of_type_Int -= 1;
-              this.c -= 1;
-              this.jdField_a_of_type_JavaLangString = "letter";
-              n = m;
-              if (this.jdField_a_of_type_Boolean != true) {
-                continue;
-              }
-              this.jdField_a_of_type_Boolean = false;
-              k = 0;
-              n = m;
-              continue;
-            }
-            if (Character.isDigit(c1))
-            {
-              if (k == 0) {
-                n = this.jdField_b_of_type_Int - 1;
-              }
-              do
-              {
-                localObject = this.jdField_a_of_type_ArrayOfChar;
-                m = k + 1;
-                localObject[k] = Character.toLowerCase(c1);
-                this.jdField_a_of_type_JavaLangString = "digit";
-                i1 = n;
-                k = m;
-                if (m != 255) {
-                  break label700;
-                }
-                k = m;
-                break;
-                if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "double")) {
-                  break label405;
-                }
-                n = m;
-              } while (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, "letter"));
-              label405:
-              this.jdField_b_of_type_Int -= 1;
-              this.c -= 1;
-              this.jdField_a_of_type_JavaLangString = "digit";
-              n = m;
-              if (this.jdField_a_of_type_Boolean != true) {
-                continue;
-              }
-              this.jdField_a_of_type_Boolean = false;
-              k = 0;
-              n = m;
-              continue;
-            }
-            if (k <= 0) {
-              break;
-            }
-            n = m;
-            if (this.jdField_a_of_type_Boolean != true) {
-              continue;
-            }
-            this.jdField_a_of_type_Boolean = false;
-            k = 0;
-            break;
-          }
-          if (Character.isLetter(j))
-          {
-            if (k == 0)
-            {
-              m = this.jdField_b_of_type_Int - 1;
-              this.jdField_a_of_type_ArrayOfChar[k] = j;
-              this.jdField_a_of_type_JavaLangString = "double";
-              k += 1;
-              break;
-            }
-            if ((TextUtils.equals(this.jdField_a_of_type_JavaLangString, "letter")) || (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "digit")))
-            {
-              this.jdField_b_of_type_Int -= 1;
-              this.c -= 1;
-              n = m;
-              continue;
-            }
-            localObject = this.jdField_a_of_type_ArrayOfChar;
-            n = k + 1;
-            localObject[k] = j;
-            this.jdField_a_of_type_JavaLangString = "double";
-            i1 = m;
-            k = n;
-            if (n != 2) {
-              break label700;
-            }
-            this.jdField_b_of_type_Int -= 1;
-            this.c -= 1;
-            this.jdField_a_of_type_Boolean = true;
-            k = n;
-            n = m;
-            continue;
-          }
-          if (k <= 0) {
-            break;
-          }
-          n = m;
-          if (this.jdField_a_of_type_Boolean == true)
-          {
-            this.jdField_a_of_type_Boolean = false;
-            k = 0;
-            break;
-          }
-        }
+      if (paramaprx == null) {
+        break;
       }
-      return new aprp(new String(this.jdField_a_of_type_ArrayOfChar, 0, k), n, k + n, this.jdField_a_of_type_JavaLangString);
-      label700:
-      m = i1;
+      paramaprx.a(4, 0);
+      return;
     }
   }
 }

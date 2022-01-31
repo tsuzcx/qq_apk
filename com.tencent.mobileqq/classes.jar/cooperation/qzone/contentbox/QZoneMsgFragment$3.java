@@ -1,26 +1,17 @@
 package cooperation.qzone.contentbox;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
-import com.tencent.qphone.base.util.QLog;
+import ahpf;
+import com.tencent.mobileqq.data.RecentUser;
 
 class QZoneMsgFragment$3
   implements Runnable
 {
-  QZoneMsgFragment$3(QZoneMsgFragment paramQZoneMsgFragment, String paramString) {}
+  QZoneMsgFragment$3(QZoneMsgFragment paramQZoneMsgFragment) {}
   
   public void run()
   {
-    QQMessageFacade localQQMessageFacade = this.this$0.a.a();
-    QQMessageFacade.Message localMessage = localQQMessageFacade.a("2290230341", 1008);
-    if (localMessage != null)
-    {
-      localMessage.saveExtInfoToExtStr("qzone_msg_box_promot", this.a);
-      localQQMessageFacade.a("2290230341", 1008, localMessage.uniseq, "extStr", localMessage.extStr);
-      return;
-    }
-    QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "updatePromptText message==null  ");
+    RecentUser localRecentUser = new RecentUser("2290230341", 1008);
+    ahpf.a(this.this$0.a, localRecentUser, true, true);
   }
 }
 

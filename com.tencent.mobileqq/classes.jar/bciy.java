@@ -1,34 +1,58 @@
-import com.tencent.open.model.AppInfo;
-import java.util.List;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.widget.ADView;
 
 public class bciy
-  implements ajfe
+  implements bcsg
 {
-  protected void a(boolean paramBoolean, List<AppInfo> paramList) {}
+  public bciy(ADView paramADView, LinearLayout paramLinearLayout) {}
   
-  protected void a(boolean paramBoolean, List<AppInfo> paramList, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(int paramInt)
   {
-    switch (paramInt)
+    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    int i = 0;
+    View localView;
+    while (i < j)
     {
-    default: 
-      return;
-    case 0: 
-      if (paramBoolean)
-      {
-        a(paramBoolean, (List)paramObject, null);
-        return;
+      localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+      if (localView != null) {
+        localView.setEnabled(false);
       }
-      a(paramBoolean, null, (String)paramObject);
-      return;
+      i += 1;
     }
-    if (paramBoolean)
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.f) {
+      if (paramInt == -1) {
+        i = j - 1;
+      }
+    }
+    for (;;)
     {
-      a(paramBoolean, (List)paramObject);
+      if ((i > -1) && (i < j))
+      {
+        localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+        if (localView != null) {
+          localView.setEnabled(true);
+        }
+      }
       return;
+      i = paramInt;
+      if (paramInt == j)
+      {
+        i = 0;
+        continue;
+        if (paramInt == -1)
+        {
+          i = 0;
+        }
+        else
+        {
+          i = paramInt;
+          if (paramInt == j) {
+            i = j - 1;
+          }
+        }
+      }
     }
-    a(paramBoolean, null);
   }
 }
 

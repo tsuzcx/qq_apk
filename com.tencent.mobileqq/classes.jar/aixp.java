@@ -1,60 +1,37 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
+import com.tencent.qphone.base.util.QLog;
+
 public class aixp
 {
-  private int jdField_a_of_type_Int;
-  private aiya jdField_a_of_type_Aiya;
-  private aiyb jdField_a_of_type_Aiyb;
-  private aiyd jdField_a_of_type_Aiyd;
-  private String jdField_a_of_type_JavaLangString;
-  private int b;
+  public String a;
   
-  private aixp(int paramInt1, String paramString, int paramInt2, aiyd paramaiyd, aiyb paramaiyb, aiya paramaiya)
+  public aixp(String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Aiyd = paramaiyd;
-    this.jdField_a_of_type_Aiyb = paramaiyb;
-    this.jdField_a_of_type_Aiya = paramaiya;
+    this.a = paramString;
   }
   
-  public int a()
+  public void a(ajfs paramajfs, Context paramContext, QQAppInterface paramQQAppInterface, String paramString)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public aiya a()
-  {
-    return this.jdField_a_of_type_Aiya;
-  }
-  
-  public aiyb a()
-  {
-    return this.jdField_a_of_type_Aiyb;
-  }
-  
-  public aiyd a()
-  {
-    return this.jdField_a_of_type_Aiyd;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String a(int paramInt)
-  {
-    return this.jdField_a_of_type_Aiya.a(paramInt);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return this.jdField_a_of_type_Aiya.a(paramInt);
-  }
-  
-  public int b()
-  {
-    return this.b;
+    int i = airz.a(paramQQAppInterface);
+    if ((paramajfs == null) || (paramContext == null) || (paramQQAppInterface == null) || (i == 1)) {}
+    SharedPreferences localSharedPreferences;
+    do
+    {
+      return;
+      paramContext = "apollo_friend_profile_drawer_first" + paramQQAppInterface.getCurrentAccountUin();
+      localSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
+    } while (!localSharedPreferences.getBoolean(paramContext, true));
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileBubble", 2, "onBubbleShow first");
+    }
+    ajfj.a(paramajfs, paramString, 3, 0);
+    localSharedPreferences.edit().putBoolean(paramContext, false).commit();
+    VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "Guide_bubbles_show", 0, 0, new String[] { "", "", "", this.a });
   }
 }
 

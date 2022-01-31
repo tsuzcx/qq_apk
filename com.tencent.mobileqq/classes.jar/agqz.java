@@ -1,68 +1,138 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleView;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract class agqz
+public class agqz
+  extends agqx
 {
-  protected Context a;
-  protected Rect a;
-  protected DoodleView a;
+  private Map<Long, Float> a;
+  private agqy b;
   
-  public agqz(DoodleView paramDoodleView)
+  public agqz()
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    if (paramDoodleView == null) {
-      throw new IllegalStateException("DoodleView can not be null.");
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_Agmg = new aglr();
+  }
+  
+  public float a(long paramLong)
+  {
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
+      return ((Float)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).floatValue();
     }
-    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView = paramDoodleView;
+    return 0.0F;
   }
   
-  public void a()
+  public void a(agqy paramagqy)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView.invalidate();
-    }
+    this.b = paramagqy;
+    ((aglr)this.jdField_a_of_type_Agmg).a(new agra(this));
   }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
-  }
-  
-  public final void a(Canvas paramCanvas)
-  {
-    b(paramCanvas);
-  }
-  
-  public boolean a()
-  {
-    return b();
-  }
-  
-  public final boolean a(MotionEvent paramMotionEvent)
-  {
-    a();
-    return b(paramMotionEvent);
-  }
-  
-  protected abstract void b(Canvas paramCanvas);
   
   public boolean b()
   {
-    return true;
+    if (this.jdField_a_of_type_Agrc == null) {
+      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "OnFileVideoPlay mInfo is null");
+    }
+    do
+    {
+      do
+      {
+        return false;
+      } while (!super.b());
+      this.jdField_a_of_type_Agrc.jdField_c_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "OnFileVideoPlay id:" + this.jdField_a_of_type_Agrc.jdField_a_of_type_Long + " set played flag");
+      }
+    } while ((this.jdField_a_of_type_Aejd == null) || (!this.jdField_a_of_type_Agrc.jdField_a_of_type_Boolean));
+    String str = ajyc.a(2131716335) + apvb.a(this.jdField_a_of_type_Agrc.jdField_c_of_type_Long) + "/" + apvb.a(this.jdField_a_of_type_Agrc.jdField_b_of_type_Long) + ")";
+    float f = (float)this.jdField_a_of_type_Agrc.jdField_c_of_type_Long / (float)this.jdField_a_of_type_Agrc.jdField_b_of_type_Long;
+    this.b.a(this.jdField_a_of_type_Agrc.jdField_a_of_type_Long, f, str);
+    this.jdField_a_of_type_Aejd.a(this.jdField_a_of_type_Agrc.jdField_a_of_type_Long, 11, null);
+    return false;
   }
   
-  protected abstract boolean b(MotionEvent paramMotionEvent);
+  public long c()
+  {
+    if (aglr.class.isInstance(this.jdField_a_of_type_Agmg)) {
+      return ((aglr)this.jdField_a_of_type_Agmg).a();
+    }
+    return 0L;
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Agrc == null) {
+      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "OnFileVideoPause mInfo is null");
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isDevelopLevel()) {
+          QLog.i("PauseDebug", 1, "OnFileVideoPause : " + this.jdField_a_of_type_Agrc.jdField_a_of_type_Long);
+        }
+        if (!this.jdField_a_of_type_Boolean) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "OnFileVideoPause user set cancel,igon!");
+      return;
+    } while ((this.jdField_a_of_type_Int != 3) || (!this.jdField_a_of_type_Agrc.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Agrc.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_Aejd == null));
+    this.jdField_a_of_type_Agrc.jdField_c_of_type_Boolean = false;
+    Bundle localBundle = new Bundle();
+    localBundle.putFloat("progress", a(this.jdField_a_of_type_Agrc.jdField_a_of_type_Long));
+    this.jdField_a_of_type_Aejd.a(this.jdField_a_of_type_Agrc.jdField_a_of_type_Long, 10, localBundle);
+    this.jdField_a_of_type_Agmg.a();
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_Agrc == null)
+    {
+      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onFileVideoCancel mInfo is null");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onFileVideoCancel id:" + this.jdField_a_of_type_Agrc.jdField_a_of_type_Long);
+    }
+    this.jdField_a_of_type_Agmg.a();
+    this.jdField_a_of_type_Aejd.a(this.jdField_a_of_type_Agrc.jdField_a_of_type_Long, 12, null);
+  }
+  
+  public void f()
+  {
+    if (this.jdField_a_of_type_Agrc == null) {
+      super.f();
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "VideoPlayControllerForFile onItemClick");
+      }
+      if ((this.jdField_a_of_type_Agrc.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Agrc.jdField_a_of_type_Boolean) && (c()))
+      {
+        QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "file[" + this.jdField_a_of_type_Agrc.jdField_a_of_type_Long + "] is downloading return!");
+        return;
+      }
+      super.f();
+    } while ((!this.jdField_a_of_type_Agrc.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Agrc.d) || (TextUtils.isEmpty(this.jdField_a_of_type_Agrc.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_Agmg.a == null));
+    b();
+  }
+  
+  public void l()
+  {
+    if (this.jdField_a_of_type_Agmg != null) {
+      this.jdField_a_of_type_Agmg.b();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agqz
  * JD-Core Version:    0.7.0.1
  */

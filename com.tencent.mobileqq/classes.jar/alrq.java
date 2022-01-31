@@ -1,35 +1,25 @@
-import com.tencent.mobileqq.chat.ui.MessageNotificationSettingFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class alrq
-  extends ajjh
+class alrq
+  implements alry
 {
-  public alrq(MessageNotificationSettingFragment paramMessageNotificationSettingFragment) {}
+  alrq(alrm paramalrm, alrw paramalrw, alry paramalry, String paramString) {}
   
-  protected void onSetMessageNotification(boolean paramBoolean, Object[] paramArrayOfObject)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageNotificationSettingFragment", 2, new Object[] { "onSetMessageNotification: invoked. ", " isSuccess: ", Boolean.valueOf(paramBoolean), " data: " + paramArrayOfObject });
-    }
-    boolean[] arrayOfBoolean;
-    if ((paramBoolean) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 3))
+    if (paramBoolean)
     {
-      localObject = (String[])paramArrayOfObject[0];
-      arrayOfBoolean = (boolean[])paramArrayOfObject[1];
-      if ((localObject != null) && (localObject.length >= 1) && (arrayOfBoolean != null) && (arrayOfBoolean.length >= 1)) {}
-    }
-    else
-    {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update success, name=%s", new Object[] { this.jdField_a_of_type_Alrw.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_Alry.a(true);
       return;
     }
-    Object localObject = localObject[0];
-    paramBoolean = arrayOfBoolean[0];
-    ((Integer)paramArrayOfObject[2]).intValue();
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, try full update, name=%s", new Object[] { this.jdField_a_of_type_Alrw.jdField_a_of_type_JavaLangString }));
+    alrm.a(this.jdField_a_of_type_Alrm, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alrw, new alrr(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alrq
  * JD-Core Version:    0.7.0.1
  */

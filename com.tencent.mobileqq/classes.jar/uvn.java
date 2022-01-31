@@ -1,27 +1,25 @@
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
 
-class uvn
-  implements begh
+public class uvn
+  extends ssp<uvr>
 {
-  int jdField_a_of_type_Int = 0;
+  private Stream<upb> a;
   
-  uvn(uvm paramuvm) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(uvr paramuvr)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+    this.a = Stream.of(paramuvr).map(new ThreadOffFunction("Q.qqstory.home.data.FeedCommentBackgroundSyncer", 2)).map(new uvp(null));
+    this.a.subscribe(new uvo(this));
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void c()
   {
-    if (paramInt == 1) {
-      beex.b(this.jdField_a_of_type_Uvm.a().a());
+    veg.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull consumer destroy");
+    if (this.a != null)
+    {
+      this.a.cancel();
+      this.a = null;
     }
-    while ((paramInt != 0) || (this.jdField_a_of_type_Uvm.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_Uvm.a.size())) {
-      return;
-    }
-    uvm.a(this.jdField_a_of_type_Uvm);
   }
 }
 

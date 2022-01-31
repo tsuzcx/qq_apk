@@ -1,17 +1,14 @@
-import android.view.animation.Interpolator;
+import android.os.Bundle;
 
-public class qel
-  implements Interpolator
+public abstract interface qel
 {
-  private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    return -paramFloat3 * (float)Math.cos(paramFloat1 / paramFloat4 * 1.570796326794897D) + paramFloat3 + paramFloat2;
-  }
+  public abstract void a(Bundle paramBundle, float paramFloat);
   
-  public float getInterpolation(float paramFloat)
-  {
-    return a(paramFloat, 0.0F, 1.0F, 1.0F);
-  }
+  public abstract void a(Bundle paramBundle, int paramInt, float paramFloat);
+  
+  public abstract void a(Bundle paramBundle, String paramString);
+  
+  public abstract void a(String paramString);
 }
 
 

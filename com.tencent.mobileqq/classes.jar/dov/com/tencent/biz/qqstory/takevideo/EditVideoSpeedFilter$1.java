@@ -4,19 +4,19 @@ import android.app.Activity;
 import android.os.Build.VERSION;
 import android.view.ViewGroup;
 import android.view.ViewStub;
-import bigb;
-import bigy;
-import bihj;
+import bjww;
+import bjxt;
+import bjye;
 import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
 
 public class EditVideoSpeedFilter$1
   implements Runnable
 {
-  public EditVideoSpeedFilter$1(bigy parambigy) {}
+  public EditVideoSpeedFilter$1(bjxt parambjxt) {}
   
   public void run()
   {
-    if (!bigy.a(this.this$0)) {}
+    if (!bjxt.a(this.this$0)) {}
     do
     {
       do
@@ -24,16 +24,16 @@ public class EditVideoSpeedFilter$1
         do
         {
           return;
-        } while (this.this$0.jdField_a_of_type_Bigb.a() == null);
-        localObject = this.this$0.jdField_a_of_type_Bigb.a().getActivity();
+        } while (this.this$0.jdField_a_of_type_Bjww.a() == null);
+        localObject = this.this$0.jdField_a_of_type_Bjww.a().getActivity();
       } while ((localObject == null) || (((Activity)localObject).isFinishing()) || ((Build.VERSION.SDK_INT > 16) && (((Activity)localObject).isDestroyed())));
-      bigy.a(this.this$0, (ViewStub)this.this$0.a(2131305960));
+      bjxt.a(this.this$0, (ViewStub)this.this$0.a(2131371656));
     } while (this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer != null);
-    Object localObject = bigy.a(this.this$0).getParent();
+    Object localObject = bjxt.a(this.this$0).getParent();
     if ((localObject != null) && ((localObject instanceof ViewGroup))) {}
-    for (this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer = ((PickerContainer)bigy.a(this.this$0).inflate());; this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer = ((PickerContainer)this.this$0.a(2131309679)))
+    for (this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer = ((PickerContainer)bjxt.a(this.this$0).inflate());; this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer = ((PickerContainer)this.this$0.a(2131375433)))
     {
-      this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer.a(this.this$0.jdField_a_of_type_Bigb.a, this.this$0);
+      this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer.a(this.this$0.jdField_a_of_type_Bjww.a, this.this$0);
       this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer.a(2, false);
       return;
     }

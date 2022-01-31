@@ -129,7 +129,7 @@ public class h
         paramArrayOfByte7 = paramArrayOfByte7.getBuf();
         break label221;
         paramArrayOfByte7 = new RegTLV(37);
-        paramArrayOfByte7.setShort(t.ax);
+        paramArrayOfByte7.setShort(t.az);
         paramArrayOfByte7 = paramArrayOfByte7.getBuf();
         break label221;
         localObject = new StringBuilder(23);
@@ -139,33 +139,33 @@ public class h
         localSecTransInfo.str_model_type.set(Build.MODEL);
         ((StringBuilder)localObject).append(" model:").append(Build.MODEL);
         PBStringField localPBStringField = localSecTransInfo.str_wifi_mac;
-        if (t.ay == null)
+        if (t.aA == null)
         {
           paramArrayOfByte7 = "";
           label701:
           localPBStringField.set(paramArrayOfByte7);
-          ((StringBuilder)localObject).append(" regMacAddress:").append(t.ay);
+          ((StringBuilder)localObject).append(" regMacAddress:").append(t.aA);
           localPBStringField = localSecTransInfo.str_gps_location;
-          if (t.aB != null) {
+          if (t.aD != null) {
             break label910;
           }
           paramArrayOfByte7 = "";
           label739:
           localPBStringField.set(paramArrayOfByte7);
-          ((StringBuilder)localObject).append(" regLocation:").append(t.aB);
+          ((StringBuilder)localObject).append(" regLocation:").append(t.aD);
           localPBStringField = localSecTransInfo.str_os_language;
-          if (t.az != null) {
+          if (t.aB != null) {
             break label918;
           }
         }
         label910:
         label918:
-        for (paramArrayOfByte7 = "";; paramArrayOfByte7 = t.az)
+        for (paramArrayOfByte7 = "";; paramArrayOfByte7 = t.aB)
         {
           localPBStringField.set(paramArrayOfByte7);
-          ((StringBuilder)localObject).append(" regOSLanguage:").append(t.az);
-          localSecTransInfo.uint32_qq_language.set(t.aA);
-          ((StringBuilder)localObject).append(" regQQLanguage:").append(t.aA);
+          ((StringBuilder)localObject).append(" regOSLanguage:").append(t.aB);
+          localSecTransInfo.uint32_qq_language.set(t.aC);
+          ((StringBuilder)localObject).append(" regQQLanguage:").append(t.aC);
           util.LOGI(((StringBuilder)localObject).toString(), "");
           if (localSecTransInfo == null) {
             break label926;
@@ -176,9 +176,9 @@ public class h
           util.LOGI("tlv50 len:" + paramArrayOfByte7.length, "");
           paramArrayOfByte7 = ((RegTLV)localObject).getBuf();
           break;
-          paramArrayOfByte7 = t.ay;
+          paramArrayOfByte7 = t.aA;
           break label701;
-          paramArrayOfByte7 = t.aB;
+          paramArrayOfByte7 = t.aD;
           break label739;
         }
         label926:

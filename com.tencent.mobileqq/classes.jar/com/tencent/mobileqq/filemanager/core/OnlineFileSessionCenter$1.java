@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanager.core;
 
 import android.content.IntentFilter;
-import aoke;
-import aokf;
+import apay;
+import apaz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class OnlineFileSessionCenter$1
   implements Runnable
 {
-  public OnlineFileSessionCenter$1(aoke paramaoke, QQAppInterface paramQQAppInterface) {}
+  public OnlineFileSessionCenter$1(apay paramapay, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    aoke.a(this.this$0, new aokf(this));
+    apay.a(this.this$0, new apaz(this));
     IntentFilter localIntentFilter = new IntentFilter("com.tencent.mobileqq.intent.logout");
-    this.a.getApp().registerReceiver(aoke.a(this.this$0), localIntentFilter);
+    this.a.getApp().registerReceiver(apay.a(this.this$0), localIntentFilter);
   }
 }
 

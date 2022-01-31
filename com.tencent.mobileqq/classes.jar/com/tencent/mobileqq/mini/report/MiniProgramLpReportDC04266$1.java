@@ -4,6 +4,7 @@ import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.SingleDcData;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandUtil;
+import java.util.List;
 
 final class MiniProgramLpReportDC04266$1
   implements Runnable
@@ -22,17 +23,24 @@ final class MiniProgramLpReportDC04266$1
     }
     if ((this.val$eventType == 611) && (this.val$miniAppConfig != null) && (this.val$miniAppConfig.config != null))
     {
-      localObject = MiniProgramReporter.getInstance().getLaunchMiniAppRecord(this.val$miniAppConfig.config.appId);
-      String str = MiniProgramReportHelper.launchIdForMiniAppConfig(this.val$miniAppConfig);
-      if ((localObject != null) && (((String)localObject).equals(str))) {
+      str = MiniProgramReporter.getInstance().getLaunchMiniAppRecord(this.val$miniAppConfig.config.appId);
+      localObject = MiniProgramReportHelper.launchIdForMiniAppConfig(this.val$miniAppConfig);
+      if ((str != null) && (str.equals(localObject))) {
         MiniProgramReporter.getInstance().removeLaunchMiniAppRecord(this.val$miniAppConfig.config.appId);
       }
     }
     Object localObject = MiniProgramReportHelper.launchIdForMiniAppConfig(this.val$miniAppConfig);
-    localObject = MiniProgramReportHelper.newSingleReportData(3, MiniProgramReportHelper.newAppQualityEntries(this.val$miniAppConfig, AppBrandUtil.getUrlWithoutParams(this.val$page), MiniReportManager.getEventName(this.val$eventType), this.val$attachInfo, this.val$ssoCmdName, String.valueOf(this.val$ssoCmdRetCode), this.val$appType, String.valueOf(this.val$timeCost), this.val$httpRequestThirdUrl, String.valueOf(this.val$timestamp), (String)localObject, this.val$reserves1, this.val$reserves2, this.val$reserves3, this.val$reserves4), null);
-    MiniProgramReporter.getInstance().addData((APP_REPORT_TRANSFER.SingleDcData)localObject);
-    MiniProgramLpReportDC05115.reDispatchReportEvent(this.val$miniAppConfig, MiniReportManager.getEventName(this.val$eventType), String.valueOf(this.val$ssoCmdRetCode), this.val$timeCost);
-    if (MiniProgramLpReportDC04266.access$000(this.val$eventType)) {
+    String str = MiniReportManager.getEventName(this.val$eventType);
+    localObject = MiniProgramReportHelper.newAppQualityEntries(this.val$miniAppConfig, AppBrandUtil.getUrlWithoutParams(this.val$page), str, this.val$attachInfo, this.val$ssoCmdName, String.valueOf(this.val$ssoCmdRetCode), this.val$appType, String.valueOf(this.val$timeCost), this.val$httpRequestThirdUrl, String.valueOf(this.val$timestamp), (String)localObject, this.val$reserves1, this.val$reserves2, this.val$reserves3, this.val$reserves4);
+    APP_REPORT_TRANSFER.SingleDcData localSingleDcData = MiniProgramReportHelper.newSingleReportData(MiniProgramLpReportDC04266.access$000(), (List)localObject, null);
+    MiniProgramReporter.getInstance().addData(localSingleDcData);
+    if (MiniReportManager.needReportToDC5332(str))
+    {
+      localObject = MiniProgramReportHelper.newSingleReportData(MiniProgramLpReportDC04266.access$100(), (List)localObject, null);
+      MiniProgramReporter.getInstance().addData((APP_REPORT_TRANSFER.SingleDcData)localObject);
+    }
+    MiniProgramLpReportDC05115.reDispatchReportEvent(this.val$miniAppConfig, str, String.valueOf(this.val$ssoCmdRetCode), this.val$timeCost, this.val$reserves4);
+    if (MiniProgramLpReportDC04266.access$200(this.val$eventType)) {
       MiniProgramReporter.getInstance().flush();
     }
   }

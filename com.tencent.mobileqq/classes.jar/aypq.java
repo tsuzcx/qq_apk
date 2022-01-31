@@ -1,32 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.Map;
+import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
 
 class aypq
-  implements DialogInterface.OnClickListener
+  implements ITransCallbackForReport
 {
-  aypq(aypd paramaypd, ayoq paramayoq) {}
+  aypq(aypn paramaypn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onFailed(int paramInt, String paramString1, String paramString2)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    }
-    TroopFileTransferManager.a(this.jdField_a_of_type_Aypd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aypd.jdField_a_of_type_Long).a(this.jdField_a_of_type_Ayoq.jdField_a_of_type_JavaUtilUUID);
-    paramDialogInterface = (ayoq)azih.a(this.jdField_a_of_type_Aypd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aypd.jdField_a_of_type_Long).c.get(this.jdField_a_of_type_Ayoq.f);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_Ayoq.b);
-    }
-    awqx.b(this.jdField_a_of_type_Aypd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Cancel_pause_download", 0, 0, "", this.jdField_a_of_type_Aypd.jdField_a_of_type_Long + "", "", "");
+    this.a.a(false, this.a.j, paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aypq
  * JD-Core Version:    0.7.0.1
  */

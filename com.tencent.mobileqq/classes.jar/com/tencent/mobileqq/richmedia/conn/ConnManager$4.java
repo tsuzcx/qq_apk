@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.richmedia.conn;
 
-import auwp;
-import avbo;
+import avwg;
+import awbh;
 import com.tencent.common.app.AppInterface;
 
 public class ConnManager$4
   implements Runnable
 {
-  public ConnManager$4(auwp paramauwp, long paramLong) {}
+  public ConnManager$4(avwg paramavwg, long paramLong) {}
   
   public void run()
   {
-    ((avbo)auwp.a(this.this$0).getBusinessHandler(0)).b(this.a);
+    ((awbh)avwg.a(this.this$0).getBusinessHandler(0)).b(this.a);
   }
 }
 

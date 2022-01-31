@@ -1,121 +1,240 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelLinearLayout;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.List;
 
 public class aocd
-  extends ajgs
+  extends anxd
 {
-  private Map<Long, FileManagerEntity> jdField_a_of_type_JavaUtilMap = new HashMap();
+  BaseChatPie a;
+  protected EmoticonPackage a;
+  protected anyb b;
+  protected int f;
+  private int g;
   
-  public aocd(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
-  
-  FileManagerEntity a(long paramLong)
+  public aocd(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, anyb paramanyb, BaseChatPie paramBaseChatPie, int paramInt4)
   {
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
-      return (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-    }
-    FileManagerEntity localFileManagerEntity = QfileBaseRecentFileTabView.e(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().a(paramLong, ajed.z, 6000, -1L);
-    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localFileManagerEntity);
-    return localFileManagerEntity;
+    super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramanyb);
+    this.g = paramInt4;
+    this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = paramEmoticonPackage;
+    this.b = paramanyb;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  protected void a(long paramLong, float paramFloat)
+  public View a(anxe paramanxe, int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    super.a(paramLong, paramFloat);
-    FileManagerEntity localFileManagerEntity = a(paramLong);
-    if (localFileManagerEntity == null) {
-      return;
-    }
-    localFileManagerEntity.fProgress = paramFloat;
-    QfileBaseRecentFileTabView.l(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, ajed.z, 6000, 16, null, 0, null);
-  }
-  
-  protected void a(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
-  {
-    super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
-    paramString = a(paramLong1);
-    if (paramString == null) {
-      return;
-    }
-    paramString.status = 2;
-    QfileBaseRecentFileTabView.f(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().a(paramString.uniseq, paramString.nSessionId, ajed.z, 6000, 10, null, 0, null);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.a(paramBoolean, paramLong, paramString);
-    Object localObject = a(paramLong);
-    if (localObject == null) {
-      return;
-    }
-    long l;
-    if (paramBoolean)
+    this.f = ((this.d - (int)(18.0F * this.jdField_a_of_type_Float) * (this.jdField_a_of_type_Int + 1)) / this.jdField_a_of_type_Int);
+    Object localObject1 = (aocf)paramanxe;
+    int i;
+    if (getItemViewType(paramInt) == 0)
     {
-      ((FileManagerEntity)localObject).status = 1;
-      QfileBaseRecentFileTabView.j(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().c((FileManagerEntity)localObject);
-      QLog.e(QfileBaseRecentFileTabView.a, 2, "FMConstants.TYPE_FILE_RECVFILE_SUCCESS in onRecvFile,entity.cloudtype:" + ((FileManagerEntity)localObject).cloudType + ",filepath:" + ((FileManagerEntity)localObject).strFilePath);
-      paramString = QfileBaseRecentFileTabView.k(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a();
-      paramLong = ((FileManagerEntity)localObject).uniseq;
-      l = ((FileManagerEntity)localObject).nSessionId;
-      localObject = ajed.z;
-      if (!paramBoolean) {
-        break label155;
+      if (paramView != null) {
+        break label933;
       }
-    }
-    label155:
-    for (int i = 11;; i = 12)
-    {
-      paramString.a(paramLong, l, (String)localObject, 6000, i, null, 0, null);
-      return;
-      ((FileManagerEntity)localObject).status = 0;
-      break;
-    }
-  }
-  
-  protected void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
-  {
-    super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
-    paramString = a(paramLong1);
-    if (paramString == null) {
-      return;
-    }
-    paramString.status = 2;
-    QfileBaseRecentFileTabView.g(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().a(paramString.uniseq, paramString.nSessionId, ajed.z, 6000, 10, null, 0, null);
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.b(paramBoolean, paramLong, paramString);
-    super.a(paramBoolean, paramLong, paramString);
-    Object localObject = a(paramLong);
-    if (localObject == null) {
-      return;
-    }
-    long l;
-    if (paramBoolean)
-    {
-      ((FileManagerEntity)localObject).status = 1;
-      QfileBaseRecentFileTabView.h(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().c((FileManagerEntity)localObject);
-      QLog.e(QfileBaseRecentFileTabView.a, 2, "FMConstants.TYPE_FILE_RECVFILE_SUCCESS in onSendFile,entity.cloudtype:" + ((FileManagerEntity)localObject).cloudType + ",filepath:" + ((FileManagerEntity)localObject).strFilePath);
-      paramString = QfileBaseRecentFileTabView.i(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a();
-      paramLong = ((FileManagerEntity)localObject).uniseq;
-      l = ((FileManagerEntity)localObject).nSessionId;
-      localObject = ajed.z;
-      if (!paramBoolean) {
-        break label163;
+      paramView = aoap.a().a(this.c);
+      if (paramView == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SmallEmotionDownloadedAdapter", 2, "getEmotionView position = " + paramInt + ";view from inflater");
+        }
+        paramView = new EmoticonPanelLinearLayout(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.g);
+        paramView.setPanelType(EmoticonPanelLinearLayout.c);
+        paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
+        paramView.setOrientation(0);
+        paramView.setPadding(0, (int)(18.0F * this.jdField_a_of_type_Float), 0, 0);
+        i = 0;
+        for (;;)
+        {
+          paramanxe = paramView;
+          if (i >= this.jdField_a_of_type_Int) {
+            break;
+          }
+          paramanxe = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+          paramViewGroup = new LinearLayout.LayoutParams(this.f, this.f);
+          paramViewGroup.leftMargin = ((int)(18.0F * this.jdField_a_of_type_Float));
+          paramanxe.setLayoutParams(paramViewGroup);
+          paramanxe.setVisibility(8);
+          paramanxe.setScaleType(ImageView.ScaleType.FIT_XY);
+          paramanxe.setAdjustViewBounds(false);
+          paramanxe.setFocusable(true);
+          paramanxe.setFocusableInTouchMode(true);
+          paramView.addView(paramanxe);
+          i += 1;
+        }
       }
+      paramanxe = paramView;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("SmallEmotionDownloadedAdapter", 2, "getEmotionView position = " + paramInt + ";view from cache");
+        paramanxe = paramView;
+      }
+      ((EmoticonPanelLinearLayout)paramanxe).setCallBack(this.b);
+      a(this.c, paramanxe);
+      paramView = (ViewGroup)paramanxe;
+      ((aocf)localObject1).jdField_a_of_type_ArrayOfComTencentImageURLImageView = new URLImageView[this.jdField_a_of_type_Int];
+      i = 0;
+      while (i < this.jdField_a_of_type_Int)
+      {
+        ((aocf)localObject1).jdField_a_of_type_ArrayOfComTencentImageURLImageView[i] = ((URLImageView)paramView.getChildAt(i));
+        i += 1;
+      }
+      paramanxe.setTag(localObject1);
     }
-    label163:
-    for (int i = 11;; i = 12)
+    for (;;)
     {
-      paramString.a(paramLong, l, (String)localObject, 6000, i, null, 0, null);
-      return;
-      ((FileManagerEntity)localObject).status = 0;
-      break;
+      i = 0;
+      paramView = paramanxe;
+      int j;
+      if (i < this.jdField_a_of_type_Int)
+      {
+        j = this.jdField_a_of_type_Int * paramInt + i;
+        if (j > this.jdField_a_of_type_JavaUtilList.size() - 1)
+        {
+          localObject1.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i].setTag(null);
+          localObject1.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i].setVisibility(8);
+        }
+      }
+      label896:
+      label908:
+      label919:
+      label931:
+      for (;;)
+      {
+        i += 1;
+        break;
+        paramViewGroup = localObject1.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i];
+        paramView = (aoah)this.jdField_a_of_type_JavaUtilList.get(j);
+        if ((paramView instanceof anyc)) {}
+        for (paramView = (anyc)paramView;; paramView = null)
+        {
+          if (paramView == null) {
+            break label931;
+          }
+          localObject1.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i].setTag(paramView);
+          paramViewGroup.setImageDrawable(paramView.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Float));
+          paramViewGroup.setVisibility(0);
+          break;
+          if (paramView == null)
+          {
+            paramViewGroup = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+            paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(57.0F * this.jdField_a_of_type_Float)));
+            LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+            paramanxe = new RelativeLayout.LayoutParams(-2, -2);
+            paramanxe.addRule(13, -1);
+            localLinearLayout.setLayoutParams(paramanxe);
+            paramView = anzi.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, true);
+            Object localObject2 = new LinearLayout.LayoutParams(-2, -2);
+            localLinearLayout.setOrientation(0);
+            ((LinearLayout.LayoutParams)localObject2).gravity = 16;
+            TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+            localTextView.setTextSize(14.0F);
+            if (paramView.a)
+            {
+              paramanxe = ajyc.a(2131714194);
+              localTextView.setText(paramanxe);
+              localTextView.setTextColor(-8947849);
+              localLinearLayout.addView(localTextView, (ViewGroup.LayoutParams)localObject2);
+              paramanxe = new LinearLayout.LayoutParams(-2, -2);
+              paramanxe.leftMargin = ((int)(5.0F * this.jdField_a_of_type_Float));
+              paramanxe.gravity = 16;
+              localObject2 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+              ((ImageView)localObject2).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846200));
+              localLinearLayout.addView((View)localObject2, paramanxe);
+              paramViewGroup.addView(localLinearLayout);
+              ((aocf)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout = localLinearLayout;
+              ((aocf)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new aoce(this, paramView));
+              if (this.g != 2) {
+                break label896;
+              }
+              ((aocf)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+              label825:
+              paramViewGroup.setTag(localObject1);
+              if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+                break label908;
+              }
+              paramanxe = "";
+              label843:
+              localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
+              if (!paramView.a) {
+                break label919;
+              }
+            }
+            for (paramView = "1";; paramView = "2")
+            {
+              VasWebviewUtil.reportCommercialDrainage(paramanxe, "ep_mall", "exp_bq_detail", null, 1, 0, 0, null, (String)localObject1, paramView);
+              paramView = paramViewGroup;
+              return paramView;
+              paramanxe = ajyc.a(2131714193);
+              break;
+              ((aocf)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+              break label825;
+              paramanxe = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+              break label843;
+            }
+          }
+          return paramView;
+        }
+      }
+      label933:
+      paramanxe = paramView;
     }
+  }
+  
+  public anxe a()
+  {
+    return new aocf();
+  }
+  
+  public EmoticonPackage a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
+  }
+  
+  public int getCount()
+  {
+    int i = super.getCount();
+    if (i > 0)
+    {
+      if (this.g == 1) {
+        return i;
+      }
+      return i + 1;
+    }
+    return 0;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (this.g == 1) {}
+    while (paramInt != getCount() - 1) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public int getViewTypeCount()
+  {
+    if (this.g == 1) {
+      return 1;
+    }
+    return 2;
   }
 }
 

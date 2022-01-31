@@ -1,49 +1,109 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.random.RandomController;
-import com.tencent.av.random.RandomController.2.1;
-import com.tencent.av.random.RandomWebProtocol;
+import com.tencent.av.business.manager.magicface.MagicfaceDataAudioJason;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.io.File;
 
 public class lij
-  implements mhb
 {
-  public lij(RandomController paramRandomController) {}
+  private asdq jdField_a_of_type_Asdq;
+  String jdField_a_of_type_JavaLangString;
+  private lie jdField_a_of_type_Lie;
+  lif jdField_a_of_type_Lif;
+  lig jdField_a_of_type_Lig;
+  lih jdField_a_of_type_Lih;
+  String jdField_b_of_type_JavaLangString;
+  lif jdField_b_of_type_Lif;
+  lif c = new lik(this);
   
-  public void a(String paramString, mhc parammhc)
+  public lij()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RandomController", 2, "onGetNearbyPeopleProfile uin :" + paramString + ", nickname:" + parammhc.b + ", gender:" + parammhc.a);
-    }
-    if (paramString.equals(RandomController.a(this.a).getAccount()))
+    a();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Lie == null)
     {
-      if (parammhc.a != -1) {
-        RandomController.a(this.a).a(parammhc.a);
-      }
-      if (RandomController.a(this.a).a())
+      if (bbct.d())
       {
-        if (!RandomController.a(this.a)) {
-          break label209;
-        }
-        RandomController.b(this.a, false);
-        RandomController.a(this.a).set(0);
-        RandomController.a(this.a).a(RandomController.b(this.a), RandomController.c(this.a), 1, new String[0]);
-        RandomController.a(this.a).a().removeCallbacks(RandomController.b(this.a));
+        this.jdField_a_of_type_Lie = new lii();
+        lcl.e("AVMagicfacePlayer", "initDecoder| use [MagicfaceNormalDecoder]");
       }
     }
-    for (;;)
-    {
-      RandomController.a(this.a).a().post(new RandomController.2.1(this));
+    else {
       return;
-      label209:
-      if (RandomController.b(this.a))
-      {
-        RandomController.c(this.a, false);
-        RandomController.a(this.a).a(this.a.b, RandomController.b(this.a));
-        RandomController.a(this.a).a().removeCallbacks(RandomController.b(this.a));
-      }
     }
+    this.jdField_a_of_type_Lie = new lii();
+    lcl.e("AVMagicfacePlayer", "initDecoder|use [MagicfaceNormalDecoder]");
+  }
+  
+  public void a(long paramLong, String paramString, lih paramlih, lig paramlig, lif paramlif)
+  {
+    if (this.jdField_a_of_type_Lie.a) {
+      try
+      {
+        this.jdField_b_of_type_JavaLangString = paramString;
+        this.jdField_a_of_type_Lih = paramlih;
+        this.jdField_a_of_type_Lig = paramlig;
+        this.jdField_a_of_type_Lif = paramlif;
+        this.jdField_a_of_type_Lie.b();
+        return;
+      }
+      finally {}
+    }
+    QLog.w("AVMagicfacePlayer", 1, "playMagicface, srcPath[" + paramString + "], seq[" + paramLong + "]");
+    try
+    {
+      this.jdField_a_of_type_JavaLangString = (paramString + "audio" + File.separator + paramlih.a.src);
+      this.jdField_b_of_type_Lif = paramlif;
+      this.jdField_b_of_type_JavaLangString = null;
+      this.jdField_a_of_type_Lih = null;
+      this.jdField_a_of_type_Lig = null;
+      this.jdField_a_of_type_Lif = null;
+      if ((paramlih.a.src != null) && (!paramlih.a.src.equals("")) && (this.jdField_a_of_type_Asdq == null)) {
+        this.jdField_a_of_type_Asdq = new asdq();
+      }
+      this.jdField_a_of_type_Lie.a(paramString);
+      this.jdField_a_of_type_Lie.a(paramlih);
+      this.jdField_a_of_type_Lie.a(paramlig);
+      this.jdField_a_of_type_Lie.a(this.c);
+      this.jdField_a_of_type_Lie.a();
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Asdq != null) {
+      this.jdField_a_of_type_Asdq.a(paramString);
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    lcl.c("AVMagicfacePlayer", "playSound soundSrc = " + paramString + ", loop = " + paramInt);
+    if (this.jdField_a_of_type_Asdq != null) {
+      this.jdField_a_of_type_Asdq.a(paramString, paramInt, 0);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Lie.a;
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.jdField_b_of_type_JavaLangString = null;
+      this.jdField_a_of_type_Lih = null;
+      this.jdField_a_of_type_Lig = null;
+      this.jdField_a_of_type_Lif = null;
+      this.jdField_a_of_type_Lie.b();
+      return;
+    }
+    finally {}
   }
 }
 

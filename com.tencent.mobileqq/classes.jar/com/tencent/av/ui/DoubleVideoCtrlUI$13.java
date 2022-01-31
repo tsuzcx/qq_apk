@@ -3,7 +3,7 @@ package com.tencent.av.ui;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import kvq;
+import lgf;
 
 class DoubleVideoCtrlUI$13
   implements Runnable

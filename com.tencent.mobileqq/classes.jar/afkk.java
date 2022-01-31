@@ -1,74 +1,36 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-
-public abstract class afkk
+class afkk
+  extends bfvp
 {
-  protected afmn a;
-  protected FragmentActivity a;
-  protected View a;
-  protected String a;
-  
-  public afkk(FragmentActivity paramFragmentActivity)
+  afkk(afki paramafki, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public abstract int a();
-  
-  public FragmentManager a()
+  public void a(int paramInt, Object paramObject, bfvo[] paramArrayOfbfvo)
   {
-    return this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getSupportFragmentManager();
-  }
-  
-  protected View a(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
-  }
-  
-  public BaseActivity a()
-  {
-    return this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.findViewById(2131309736);
-    f();
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(afmn paramafmn)
-  {
-    this.jdField_a_of_type_Afmn = paramafmn;
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Afmn = null;
-  }
-  
-  public void e() {}
-  
-  protected void f()
-  {
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("SissionUin");
+    paramInt = 0;
+    if ((paramArrayOfbfvo == null) || (paramArrayOfbfvo.length <= 0)) {}
+    for (;;)
+    {
+      return;
+      if (paramArrayOfbfvo.length < 0)
+      {
+        paramArrayOfbfvo[0].b = 0;
+        paramArrayOfbfvo[0].a = 0;
+        paramInt = 1;
+      }
+      while (paramInt < paramArrayOfbfvo.length)
+      {
+        paramArrayOfbfvo[paramInt].b = -1;
+        paramArrayOfbfvo[paramInt].a = -1;
+        paramInt += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afkk
  * JD-Core Version:    0.7.0.1
  */

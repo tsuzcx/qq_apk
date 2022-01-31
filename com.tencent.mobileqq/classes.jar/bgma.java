@@ -1,41 +1,52 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QzoneOfflineCacheHelper;
-import cooperation.qzone.webviewplugin.QzoneOfflineCacheHelperCallBack;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.AbstractPluginCommunicationChannel;
+import mqq.app.AppRuntime;
 
 public class bgma
+  extends AbstractPluginCommunicationChannel
 {
-  public static void a(String paramString, QzoneOfflineCacheHelperCallBack paramQzoneOfflineCacheHelperCallBack)
+  private QQAppInterface a()
   {
-    QzoneOfflineCacheHelper.downLoadFileIfNeeded(null, paramString, paramQzoneOfflineCacheHelperCallBack, false, null);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    QzoneOfflineCacheHelper.updateLruFileInNewThread(paramString2);
-  }
-  
-  public static void a(String paramString1, String paramString2, QzoneZipCacheHelperCallBack paramQzoneZipCacheHelperCallBack)
-  {
-    if (paramString1 != null) {
-      try
-      {
-        if (paramString1.length() == 0) {
-          return;
-        }
-        if (paramQzoneZipCacheHelperCallBack != null)
-        {
-          QzoneZipCacheHelper.checkAndDownLoadFileIfNeeded(null, paramString1, "QZonePet", paramString2, -1, paramQzoneZipCacheHelperCallBack);
-          return;
-        }
-      }
-      catch (Throwable paramString1)
-      {
-        QLog.e("WidgetAIOfflineUtil", 1, QZLog.getStackTraceString(paramString1));
-      }
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+      return (QQAppInterface)localAppRuntime;
     }
+    return null;
+  }
+  
+  public String getNickName()
+  {
+    String str = null;
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface != null) {
+      str = localQQAppInterface.getCurrentNickname();
+    }
+    return str;
+  }
+  
+  public String getSKey()
+  {
+    String str = null;
+    if (a() != null) {
+      str = "getSKey";
+    }
+    return str;
+  }
+  
+  public String getSid()
+  {
+    throw new RuntimeException("NotSupported!");
+  }
+  
+  public long getUin()
+  {
+    long l = 0L;
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface != null) {
+      l = localQQAppInterface.getLongAccountUin();
+    }
+    return l;
   }
 }
 

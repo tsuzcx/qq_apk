@@ -1,23 +1,29 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.ark.browser.ArkBrowserFragment;
-
 public class alfx
-  implements bbbz
 {
-  public alfx(ArkBrowserFragment paramArkBrowserFragment) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c = 0;
   
-  public void a(String paramString)
+  public alfx()
   {
-    this.a.a = paramString;
-    paramString = this.a.getWebView();
-    if (paramString != null) {
-      paramString.callJs("NativeApi.lightappGetShareData();");
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    return "POIInfo{latitude = " + this.jdField_a_of_type_Int + ", longitude = " + this.jdField_b_of_type_Int + ", name = " + this.jdField_a_of_type_JavaLangString + ", addr = " + this.jdField_b_of_type_JavaLangString + ", dist = " + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alfx
  * JD-Core Version:    0.7.0.1
  */

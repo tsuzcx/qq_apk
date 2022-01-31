@@ -1,37 +1,22 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.comic.utils.QQComicRedTouchManager.PluginRedTouchObserver.1;
+import java.util.Observable;
+import java.util.Observer;
+import mqq.os.MqqHandler;
 
-public class bgip
-  extends bgix
+public abstract class bgip
+  implements Observer
 {
-  private static void a(WebViewPlugin paramWebViewPlugin, bbac parambbac, String[] paramArrayOfString)
-  {
-    paramWebViewPlugin = new Intent("action_js2qzone");
-    paramArrayOfString = new Bundle();
-    paramArrayOfString.putString("cmd", "writeBlogSuccess");
-    paramWebViewPlugin.putExtras(paramArrayOfString);
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneBlogJsPlugin", 2, "handleWriteBlog actionString: " + paramWebViewPlugin.getAction());
-    }
-    bfpr.a(parambbac.a(), bfpy.a(), paramWebViewPlugin);
-  }
+  public abstract void a();
   
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public final void update(Observable paramObservable, Object paramObject)
   {
-    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
-    while (!paramString3.equalsIgnoreCase("writeBlogSuccess")) {
-      return false;
-    }
-    a(this.a, this.a.mRuntime, paramVarArgs);
-    return true;
+    ThreadManager.getUIHandler().post(new QQComicRedTouchManager.PluginRedTouchObserver.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgip
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.av.smallscreen.SmallScreenVideoControlUI;
+import android.app.Notification;
+import android.os.IInterface;
 
-public class lot
-  implements MediaPlayer.OnCompletionListener
+public abstract interface lot
+  extends IInterface
 {
-  public lot(SmallScreenVideoControlUI paramSmallScreenVideoControlUI) {}
+  public abstract int a(long paramLong, int paramInt);
   
-  public void onCompletion(MediaPlayer paramMediaPlayer) {}
+  public abstract void a();
+  
+  public abstract void a(lwn paramlwn);
+  
+  public abstract void a(boolean paramBoolean, Notification paramNotification);
+  
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 

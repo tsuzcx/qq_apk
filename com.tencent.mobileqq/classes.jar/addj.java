@@ -1,25 +1,11 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
+import msg.aio_doodle.DoodleMsgProto.DoodleData;
+import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
 
-class addj
-  implements begw
+public abstract interface addj
 {
-  addj(addh paramaddh, MessageForDeviceFile paramMessageForDeviceFile, begr parambegr) {}
+  public abstract boolean a(DoodleMsgProto.DoodleData paramDoodleData);
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    if ("device_groupchat".equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.extStr)) {
-      ((xvq)this.jdField_a_of_type_Addh.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Addh.b();
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      this.jdField_a_of_type_Addh.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    }
-  }
+  public abstract boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader);
 }
 
 

@@ -10,39 +10,39 @@ import android.os.SystemClock;
 import android.os.Trace;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import auxn;
-import auxr;
-import auxv;
-import auxw;
-import auxx;
-import auxy;
-import auxz;
-import auya;
-import auys;
-import auyt;
-import auyu;
-import auyv;
-import auyw;
-import auyy;
-import auzb;
+import avxg;
+import avxk;
+import avxo;
+import avxp;
+import avxq;
+import avxr;
+import avxs;
+import avxt;
+import avyl;
+import avym;
+import avyn;
+import avyo;
+import avyp;
+import avyr;
+import avyu;
 import com.tencent.mobileqq.richmedia.mediacodec.AudioDecoder;
 import com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView;
 import java.util.concurrent.atomic.AtomicBoolean;
 import javax.microedition.khronos.egl.EGLContext;
 import javax.microedition.khronos.opengles.GL10;
-import urk;
-import urp;
+import veg;
+import vel;
 
 @TargetApi(18)
 public class NeoVideoFilterPlayView
   extends VideoFilterPlayView
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private auxx jdField_a_of_type_Auxx;
-  private auxy jdField_a_of_type_Auxy;
-  private auyv jdField_a_of_type_Auyv = new auyu();
-  private auyw jdField_a_of_type_Auyw;
-  private auzb jdField_a_of_type_Auzb;
+  private avxq jdField_a_of_type_Avxq;
+  private avxr jdField_a_of_type_Avxr;
+  private avyo jdField_a_of_type_Avyo = new avyn();
+  private avyp jdField_a_of_type_Avyp;
+  private avyu jdField_a_of_type_Avyu;
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   public boolean a;
   private boolean d;
@@ -59,44 +59,44 @@ public class NeoVideoFilterPlayView
     super(paramContext, paramAttributeSet);
     paramContext = new HandlerThread("NeoVideoFilterPlayView");
     paramContext.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramContext.getLooper(), new auys(this));
-    this.jdField_a_of_type_Auzb = new auyt(this);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramContext.getLooper(), new avyl(this));
+    this.jdField_a_of_type_Avyu = new avym(this);
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Auxy = new auxy();
-      setEGLContextFactory(this.jdField_a_of_type_Auxy);
+      this.jdField_a_of_type_Avxr = new avxr();
+      setEGLContextFactory(this.jdField_a_of_type_Avxr);
       super.a();
-      urp.b("video_edit", "flow_view_create", 0, 0, new String[] { Build.MANUFACTURER, Build.MODEL, String.valueOf(Build.VERSION.SDK_INT) });
+      vel.b("video_edit", "flow_view_create", 0, 0, new String[] { Build.MANUFACTURER, Build.MODEL, String.valueOf(Build.VERSION.SDK_INT) });
     }
-    urk.d("FlowEdit_NeoVideoFilterPlayView", "Model=%s, Manufacture=%s, SDK=%d", new Object[] { Build.MODEL, Build.MANUFACTURER, Integer.valueOf(Build.VERSION.SDK_INT) });
+    veg.d("FlowEdit_NeoVideoFilterPlayView", "Model=%s, Manufacture=%s, SDK=%d", new Object[] { Build.MODEL, Build.MANUFACTURER, Integer.valueOf(Build.VERSION.SDK_INT) });
   }
   
   private void a(GL10 paramGL10)
   {
-    Object localObject = (auyy)this.jdField_a_of_type_Auxv;
-    paramGL10 = ((auyy)localObject).b();
-    auxx localauxx = ((auyy)localObject).c();
+    Object localObject = (avyr)this.jdField_a_of_type_Avxo;
+    paramGL10 = ((avyr)localObject).b();
+    avxq localavxq = ((avyr)localObject).c();
     int n;
     int i;
     int i1;
     int m;
     if (paramGL10 != null)
     {
-      if ((Math.abs(paramGL10.a()) > this.jdField_a_of_type_Auxr.b * 1000L) || (Math.abs(paramGL10.a()) < this.jdField_a_of_type_Auxr.jdField_a_of_type_Long)) {
-        urk.d("FlowEdit_NeoVideoFilterPlayView", "find invalid frame : %s us, current config start - end : [%d - %d] ms", new Object[] { paramGL10, Long.valueOf(this.jdField_a_of_type_Auxr.jdField_a_of_type_Long), Long.valueOf(this.jdField_a_of_type_Auxr.b) });
+      if ((Math.abs(paramGL10.a()) > this.jdField_a_of_type_Avxk.b * 1000L) || (Math.abs(paramGL10.a()) < this.jdField_a_of_type_Avxk.jdField_a_of_type_Long)) {
+        veg.d("FlowEdit_NeoVideoFilterPlayView", "find invalid frame : %s us, current config start - end : [%d - %d] ms", new Object[] { paramGL10, Long.valueOf(this.jdField_a_of_type_Avxk.jdField_a_of_type_Long), Long.valueOf(this.jdField_a_of_type_Avxk.b) });
       }
       n = 0;
-      if ((this.jdField_a_of_type_Auyw == null) || (paramGL10.b() != auyw.a(this.jdField_a_of_type_Auyw)))
+      if ((this.jdField_a_of_type_Avyp == null) || (paramGL10.b() != avyp.a(this.jdField_a_of_type_Avyp)))
       {
         n = 1;
-        this.jdField_a_of_type_Auyv.a();
+        this.jdField_a_of_type_Avyo.a();
       }
       i = a();
       i1 = 0;
       if ((this.j == -1) || (this.j != i))
       {
         i1 = 1;
-        this.jdField_a_of_type_Auyv.a(this.j, i);
+        this.jdField_a_of_type_Avyo.a(this.j, i);
       }
       this.j = i;
       if (a() == 1)
@@ -108,34 +108,34 @@ public class NeoVideoFilterPlayView
     for (;;)
     {
       label201:
-      if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false)) || (this.jdField_a_of_type_Auyw == null) || (n != 0) || (i1 != 0))
+      if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false)) || (this.jdField_a_of_type_Avyp == null) || (n != 0) || (i1 != 0))
       {
-        this.jdField_a_of_type_Auyw = new auyw(SystemClock.uptimeMillis(), paramGL10.a(), paramGL10.b(), null);
-        urk.c("FlowEdit_NeoVideoFilterPlayView", "start render : " + this.jdField_a_of_type_Auyw);
+        this.jdField_a_of_type_Avyp = new avyp(SystemClock.uptimeMillis(), paramGL10.a(), paramGL10.b(), null);
+        veg.c("FlowEdit_NeoVideoFilterPlayView", "start render : " + this.jdField_a_of_type_Avyp);
       }
       long l2 = SystemClock.uptimeMillis();
-      long l3 = auyw.a(this.jdField_a_of_type_Auyw) + (paramGL10.a() - auyw.b(this.jdField_a_of_type_Auyw)) * m / (i * 1000);
+      long l3 = avyp.a(this.jdField_a_of_type_Avyp) + (paramGL10.a() - avyp.b(this.jdField_a_of_type_Avyp)) * m / (i * 1000);
       long l1;
-      if ((localauxx != null) && (localauxx.b() == paramGL10.b()))
+      if ((localavxq != null) && (localavxq.b() == paramGL10.b()))
       {
-        l1 = auyw.a(this.jdField_a_of_type_Auyw) + (localauxx.a() - auyw.b(this.jdField_a_of_type_Auyw)) * m / (i * 1000);
+        l1 = avyp.a(this.jdField_a_of_type_Avyp) + (localavxq.a() - avyp.b(this.jdField_a_of_type_Avyp)) * m / (i * 1000);
         label367:
         if (l2 >= l3 - 5L) {
           break label548;
         }
-        paramGL10 = this.jdField_a_of_type_Auxx;
+        paramGL10 = this.jdField_a_of_type_Avxq;
         l1 = l3 - l2;
         label391:
         if (paramGL10 != null)
         {
           Trace.beginSection("AVEditor:DrawFrameOnScreen");
-          localObject = auxz.a(this.b, this.c, this.b, this.c);
+          localObject = avxs.a(this.b, this.c, this.b, this.c);
           a(paramGL10.a(), paramGL10.a, (float[])localObject);
-          if ((this.jdField_a_of_type_Auxx != null) && (this.jdField_a_of_type_Auxx != paramGL10)) {
-            this.jdField_a_of_type_Auxx.b();
+          if ((this.jdField_a_of_type_Avxq != null) && (this.jdField_a_of_type_Avxq != paramGL10)) {
+            this.jdField_a_of_type_Avxq.b();
           }
-          this.jdField_a_of_type_Auxx = paramGL10;
-          this.jdField_a_of_type_Auyv.a(paramGL10.a());
+          this.jdField_a_of_type_Avxq = paramGL10;
+          this.jdField_a_of_type_Avyo.a(paramGL10.a());
           Trace.endSection();
         }
         this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
@@ -161,21 +161,21 @@ public class NeoVideoFilterPlayView
         break label367;
         if (l2 < l1)
         {
-          localObject = ((auyy)localObject).a();
+          localObject = ((avyr)localObject).a();
           l2 = l1 - l2;
           l1 = l2;
           paramGL10 = (GL10)localObject;
           if (this.k <= 0) {
             break label391;
           }
-          urk.a("FlowEdit_NeoVideoFilterPlayView", "drawFrameFlow : drop %d frames, decoder is slow", Integer.valueOf(this.k));
+          veg.a("FlowEdit_NeoVideoFilterPlayView", "drawFrameFlow : drop %d frames, decoder is slow", Integer.valueOf(this.k));
           this.k = 0;
           l1 = l2;
           paramGL10 = (GL10)localObject;
           break label391;
         }
-        paramGL10 = ((auyy)localObject).a();
-        if (localauxx != null)
+        paramGL10 = ((avyr)localObject).a();
+        if (localavxq != null)
         {
           if (paramGL10 != null) {
             paramGL10.b();
@@ -184,12 +184,12 @@ public class NeoVideoFilterPlayView
           {
             this.k += 1;
             break;
-            urk.d("FlowEdit_NeoVideoFilterPlayView", "drawFrameFlow : peekNextDecodedFrame != null, but pollNextDecodedFrame == null");
+            veg.d("FlowEdit_NeoVideoFilterPlayView", "drawFrameFlow : peekNextDecodedFrame != null, but pollNextDecodedFrame == null");
           }
         }
         l1 = 0L;
         break label391;
-        urk.b("FlowEdit_NeoVideoFilterPlayView", "drawFrameFlow : waiting ∞ ms ( no frame )");
+        veg.b("FlowEdit_NeoVideoFilterPlayView", "drawFrameFlow : waiting ∞ ms ( no frame )");
         paramGL10 = null;
         l1 = -1L;
         break label391;
@@ -200,12 +200,12 @@ public class NeoVideoFilterPlayView
     }
   }
   
-  public auxv a()
+  public avxo a()
   {
-    this.jdField_a_of_type_Boolean = auxw.b;
-    urk.d("FlowEdit_NeoVideoFilterPlayView", "NeoVideoFilterPlayView ENABLE = %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    this.jdField_a_of_type_Boolean = avxp.b;
+    veg.d("FlowEdit_NeoVideoFilterPlayView", "NeoVideoFilterPlayView ENABLE = %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) });
     if (this.jdField_a_of_type_Boolean) {
-      return new auyy();
+      return new avyr();
     }
     return super.a();
   }
@@ -222,26 +222,26 @@ public class NeoVideoFilterPlayView
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      urk.b("FlowEdit_NeoVideoFilterPlayView", "startPlay: ");
-      if (TextUtils.isEmpty(this.jdField_a_of_type_Auxr.jdField_a_of_type_JavaLangString)) {
+      veg.b("FlowEdit_NeoVideoFilterPlayView", "startPlay: ");
+      if (TextUtils.isEmpty(this.jdField_a_of_type_Avxk.jdField_a_of_type_JavaLangString)) {
         throw new RuntimeException("startPlay failed. videoFilePath is empty.");
       }
-      this.jdField_a_of_type_Auxv.a();
-      EGLContext localEGLContext = this.jdField_a_of_type_Auxy.a();
+      this.jdField_a_of_type_Avxo.a();
+      EGLContext localEGLContext = this.jdField_a_of_type_Avxr.a();
       if (localEGLContext != null)
       {
-        auya localauya = new auya(this.jdField_a_of_type_Auxr);
-        localauya.b = true;
-        localauya.a = localEGLContext;
-        localauya.c = 1;
-        this.jdField_a_of_type_Auyw = null;
-        ((auyy)this.jdField_a_of_type_Auxv).a(localauya, this.jdField_a_of_type_Auzb);
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_Auxn.jdField_a_of_type_JavaLangString)) {
-          this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecAudioDecoder.a(this.jdField_a_of_type_Auxn);
+        avxt localavxt = new avxt(this.jdField_a_of_type_Avxk);
+        localavxt.b = true;
+        localavxt.a = localEGLContext;
+        localavxt.c = 1;
+        this.jdField_a_of_type_Avyp = null;
+        ((avyr)this.jdField_a_of_type_Avxo).a(localavxt, this.jdField_a_of_type_Avyu);
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Avxg.jdField_a_of_type_JavaLangString)) {
+          this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecAudioDecoder.a(this.jdField_a_of_type_Avxg);
         }
         return;
       }
-      urk.c("FlowEdit_NeoVideoFilterPlayView", "eglContext is null, ignore start play", new Throwable());
+      veg.c("FlowEdit_NeoVideoFilterPlayView", "eglContext is null, ignore start play", new Throwable());
       return;
     }
     super.b();
@@ -251,7 +251,7 @@ public class NeoVideoFilterPlayView
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      urk.b("FlowEdit_NeoVideoFilterPlayView", "pausePlay: ");
+      veg.b("FlowEdit_NeoVideoFilterPlayView", "pausePlay: ");
       this.d = true;
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecAudioDecoder.c();
       return;
@@ -282,20 +282,20 @@ public class NeoVideoFilterPlayView
     super.onDrawFrame(paramGL10);
   }
   
-  public void setPlayListener(auyv paramauyv)
+  public void setPlayListener(avyo paramavyo)
   {
-    if (paramauyv != null)
+    if (paramavyo != null)
     {
-      this.jdField_a_of_type_Auyv = paramauyv;
+      this.jdField_a_of_type_Avyo = paramavyo;
       return;
     }
-    this.jdField_a_of_type_Auyv = new auyu();
+    this.jdField_a_of_type_Avyo = new avyn();
   }
   
   public void setSpeedType(int paramInt)
   {
     int m = 0;
-    int n = this.jdField_a_of_type_Auxr.jdField_a_of_type_Int;
+    int n = this.jdField_a_of_type_Avxk.jdField_a_of_type_Int;
     super.setSpeedType(paramInt);
     if ((n == 3) && (paramInt != 3)) {}
     for (int i = 1;; i = 0)

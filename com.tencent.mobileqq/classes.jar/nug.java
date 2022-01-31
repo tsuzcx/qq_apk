@@ -1,19 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.2;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
-class nug
-  implements ViewBase.OnClickListener
+public class nug
+  implements Animation.AnimationListener
 {
-  nug(ntu paramntu, ViewBase paramViewBase) {}
+  public nug(ReadInJoyNaviController.2 param2) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ntt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView(), this.jdField_a_of_type_Ntu.a);
+    nud.a(this.a.this$0, true);
+    nud.a(this.a.this$0).setAlpha(0.0F);
+    nud.a(this.a.this$0).removeView(nud.a(this.a.this$0));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nug
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,30 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import urk;
-import uvq;
+import veg;
+import vim;
 
 public class EditVideoSave$5
   implements Runnable
 {
-  public EditVideoSave$5(uvq paramuvq) {}
+  public EditVideoSave$5(vim paramvim) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean)
     {
-      urk.b("EditVideoSave", "[updateProgress]stopUpdateProgress = " + this.this$0.jdField_a_of_type_Boolean);
+      veg.b("EditVideoSave", "[updateProgress]stopUpdateProgress = " + this.this$0.jdField_a_of_type_Boolean);
       return;
     }
-    uvq localuvq;
+    vim localvim;
     if (this.this$0.jdField_a_of_type_Int < 50) {
-      localuvq = this.this$0;
+      localvim = this.this$0;
     }
-    for (localuvq.jdField_a_of_type_Int += this.this$0.b; this.this$0.jdField_a_of_type_Int > 99; localuvq.jdField_a_of_type_Int += 1)
+    for (localvim.jdField_a_of_type_Int += this.this$0.b; this.this$0.jdField_a_of_type_Int > 99; localvim.jdField_a_of_type_Int += 1)
     {
       this.this$0.jdField_a_of_type_Int = 99;
       this.this$0.a(this.this$0.jdField_a_of_type_Int);
       return;
-      localuvq = this.this$0;
+      localvim = this.this$0;
     }
     this.this$0.a(this.this$0.jdField_a_of_type_Int);
     this.this$0.f();

@@ -1,72 +1,258 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x7a2.oidb_0x7a2.RspBody;
 
 public class ayaw
-  implements krj
 {
-  public ayaw(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public int a;
+  public Object a;
+  public String a;
+  public ArrayList<String> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public ArrayList<String> b;
+  public boolean b;
+  public String c;
+  public ArrayList<String> c;
+  public boolean c;
+  public boolean d;
   
-  public void a() {}
-  
-  public void a(Bundle paramBundle)
+  public ayaw()
   {
-    int j = 0;
-    paramBundle = paramBundle.getString("sso_GdtLoadAd_rsp_json");
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "json = " + paramBundle);
-    }
-    for (;;)
+    this.jdField_a_of_type_Int = -99999;
+    this.jdField_b_of_type_Int = -99999;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public static ayaw a(ayaw paramayaw)
+  {
+    if (paramayaw == null)
     {
-      int i;
-      int k;
-      try
+      if (QLog.isColorLevel()) {
+        QLog.d("SUB_ACCOUNT", 2, "SubAccountBackProtocData.clone() return, backData == null.");
+      }
+      return null;
+    }
+    ayaw localayaw = new ayaw();
+    localayaw.jdField_a_of_type_JavaLangString = paramayaw.jdField_a_of_type_JavaLangString;
+    localayaw.jdField_a_of_type_Int = paramayaw.jdField_a_of_type_Int;
+    localayaw.jdField_b_of_type_JavaLangString = paramayaw.jdField_b_of_type_JavaLangString;
+    localayaw.jdField_c_of_type_JavaLangString = paramayaw.jdField_c_of_type_JavaLangString;
+    ArrayList localArrayList = new ArrayList();
+    if (paramayaw.jdField_a_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(paramayaw.jdField_a_of_type_JavaUtilArrayList);
+    }
+    localayaw.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+    localArrayList = new ArrayList();
+    if (paramayaw.jdField_b_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(paramayaw.jdField_b_of_type_JavaUtilArrayList);
+    }
+    localayaw.jdField_b_of_type_JavaUtilArrayList = localArrayList;
+    localArrayList = new ArrayList();
+    if (paramayaw.jdField_c_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(paramayaw.jdField_c_of_type_JavaUtilArrayList);
+    }
+    localayaw.jdField_c_of_type_JavaUtilArrayList = localArrayList;
+    localayaw.jdField_a_of_type_JavaLangObject = paramayaw.jdField_a_of_type_JavaLangObject;
+    localayaw.jdField_b_of_type_Int = paramayaw.jdField_b_of_type_Int;
+    localayaw.jdField_a_of_type_Boolean = paramayaw.jdField_a_of_type_Boolean;
+    localayaw.jdField_b_of_type_Boolean = paramayaw.jdField_b_of_type_Boolean;
+    localayaw.jdField_c_of_type_Boolean = paramayaw.jdField_c_of_type_Boolean;
+    localayaw.d = paramayaw.d;
+    return localayaw;
+  }
+  
+  public ArrayList<String> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (this.jdField_b_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(this.jdField_b_of_type_JavaUtilArrayList);
+    }
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SUB_ACCOUNT", 2, "SubAccountBackProtocData.clearNewUins()");
+    }
+    if (this.jdField_b_of_type_JavaUtilArrayList != null) {
+      this.jdField_b_of_type_JavaUtilArrayList.clear();
+    }
+    if (this.jdField_c_of_type_JavaUtilArrayList != null) {
+      this.jdField_c_of_type_JavaUtilArrayList.clear();
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SUB_ACCOUNT", 2, "SubAccountBackProtocData.addNewUin subUin=" + paramString);
+    }
+    if ((paramString == null) || (paramString.length() < 4)) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+      }
+      if (this.jdField_b_of_type_JavaUtilArrayList == null) {
+        this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+      }
+    } while (this.jdField_b_of_type_JavaUtilArrayList.contains(paramString));
+    this.jdField_b_of_type_JavaUtilArrayList.add(paramString);
+  }
+  
+  public void a(oidb_0x7a2.RspBody paramRspBody, ArrayList<String> paramArrayList)
+  {
+    if (paramRspBody == null) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      for (;;)
       {
-        JSONObject localJSONObject1 = new JSONObject(paramBundle);
-        paramBundle = localJSONObject1.optJSONArray("pos_ads_info");
-        localJSONObject1 = new JSONObject(localJSONObject1.optString("busi_cookie")).optJSONObject("index");
-        i = 0;
-        if (i < paramBundle.length())
+        if ((paramRspBody.uint64_bind_uin.has()) && (paramRspBody.uint64_bind_uin.get() > 10000L))
         {
-          Object localObject = paramBundle.optJSONObject(i);
-          JSONObject localJSONObject2 = ((JSONObject)localObject).optJSONArray("ads_info").optJSONObject(0);
-          k = j;
-          if (localJSONObject2 != null)
+          this.jdField_c_of_type_JavaLangString = Long.toString(paramRspBody.uint64_bind_uin.get());
+          this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_c_of_type_JavaLangString);
+        }
+        if (!paramRspBody.uint64_multi_bind_uin.has()) {
+          break;
+        }
+        paramRspBody = paramRspBody.uint64_multi_bind_uin.get();
+        if (paramRspBody == null) {
+          break;
+        }
+        paramRspBody = paramRspBody.iterator();
+        while (paramRspBody.hasNext())
+        {
+          Object localObject = (Long)paramRspBody.next();
+          if (((Long)localObject).longValue() > 10000L)
           {
-            int m = localJSONObject1.optInt(((JSONObject)localObject).optString("pos_id"));
-            k = j;
-            if (m - 1 > 0)
-            {
-              k = j;
-              if (m - 1 < this.a.jdField_a_of_type_JavaUtilArrayList.size())
-              {
-                localObject = new aybp(localJSONObject2);
-                this.a.jdField_a_of_type_JavaUtilArrayList.add(m - 1, localObject);
-                k = 1;
-              }
+            localObject = Long.toString(((Long)localObject).longValue());
+            if (!this.jdField_a_of_type_JavaUtilArrayList.contains(localObject)) {
+              this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+            }
+            if (this.jdField_c_of_type_JavaLangString == null) {
+              this.jdField_c_of_type_JavaLangString = ((String)localObject);
             }
           }
         }
-        else
+        this.jdField_a_of_type_JavaUtilArrayList.clear();
+      }
+      this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
+      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+      this.jdField_b_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+      if ((paramArrayList != null) && (paramArrayList.size() > 0))
+      {
+        paramRspBody = paramArrayList.iterator();
+        while (paramRspBody.hasNext())
         {
-          if (j != 0) {
-            this.a.jdField_a_of_type_Aybe.notifyDataSetChanged();
+          paramArrayList = (String)paramRspBody.next();
+          if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramArrayList)) {
+            this.jdField_c_of_type_JavaUtilArrayList.add(paramArrayList);
           }
-          return;
+          this.jdField_b_of_type_JavaUtilArrayList.remove(paramArrayList);
         }
       }
-      catch (JSONException paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
+    } while (!QLog.isColorLevel());
+    QLog.d("SUB_ACCOUNT", 2, "SubAccountBackProtocData.parseUins() figure new subUins. localSubUins is null. new SubUins=" + String.valueOf(this.jdField_b_of_type_JavaUtilArrayList) + " overdue SubUins=" + String.valueOf(this.jdField_c_of_type_JavaUtilArrayList));
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_b_of_type_JavaUtilArrayList != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0) {
+        bool1 = true;
       }
-      i += 1;
-      j = k;
     }
+    return bool1;
+  }
+  
+  public ArrayList<String> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (this.jdField_c_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(this.jdField_c_of_type_JavaUtilArrayList);
+    }
+    return localArrayList;
+  }
+  
+  public boolean b()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_c_of_type_JavaUtilArrayList != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_c_of_type_JavaUtilArrayList.size() > 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public ArrayList<String> c()
+  {
+    if ((this.jdField_c_of_type_JavaLangString != null) && (this.jdField_c_of_type_JavaLangString.length() > 4))
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(this.jdField_c_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(0, this.jdField_c_of_type_JavaLangString);
+      }
+    }
+    for (;;)
+    {
+      ArrayList localArrayList = new ArrayList();
+      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+        localArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+      }
+      return localArrayList;
+      this.jdField_a_of_type_JavaUtilArrayList = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("SUB_ACCOUNT", 2, "getUinsBinded() return null, mSubUin is null");
+      }
+    }
+  }
+  
+  public boolean c()
+  {
+    boolean bool2 = false;
+    if ((this.jdField_c_of_type_JavaLangString != null) && (this.jdField_c_of_type_JavaLangString.length() > 4))
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(this.jdField_c_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(0, this.jdField_c_of_type_JavaLangString);
+      }
+    }
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 

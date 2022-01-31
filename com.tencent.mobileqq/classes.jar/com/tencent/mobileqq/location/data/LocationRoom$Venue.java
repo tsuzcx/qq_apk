@@ -5,7 +5,10 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import aqyx;
+import arul;
+import com.tencent.lbssearch.httpresponse.Poi;
+import com.tencent.lbssearch.object.result.SearchResultObject.SearchResultData;
+import com.tencent.lbssearch.object.result.SuggestionResultObject.SuggestionData;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.proto.lbsshare.LBSShare.POI;
@@ -16,7 +19,7 @@ import java.lang.ref.SoftReference;
 public class LocationRoom$Venue
   implements Parcelable
 {
-  public static final Parcelable.Creator<Venue> CREATOR = new aqyx();
+  public static final Parcelable.Creator<Venue> CREATOR = new arul();
   public LatLng a;
   public String a;
   public SoftReference<Marker> a;
@@ -31,6 +34,36 @@ public class LocationRoom$Venue
     this.b = paramParcel.readString();
     this.c = paramParcel.readString();
     this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = ((LatLng)paramParcel.readParcelable(LatLng.class.getClassLoader()));
+  }
+  
+  public static Venue a(String paramString, Poi paramPoi)
+  {
+    Venue localVenue = new Venue();
+    localVenue.jdField_a_of_type_JavaLangString = paramString;
+    localVenue.b = paramPoi.title;
+    localVenue.c = paramPoi.address;
+    localVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramPoi.latLng;
+    return localVenue;
+  }
+  
+  public static Venue a(String paramString, SearchResultObject.SearchResultData paramSearchResultData)
+  {
+    Venue localVenue = new Venue();
+    localVenue.jdField_a_of_type_JavaLangString = paramString;
+    localVenue.b = paramSearchResultData.title;
+    localVenue.c = paramSearchResultData.address;
+    localVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramSearchResultData.latLng;
+    return localVenue;
+  }
+  
+  public static Venue a(String paramString, SuggestionResultObject.SuggestionData paramSuggestionData)
+  {
+    Venue localVenue = new Venue();
+    localVenue.jdField_a_of_type_JavaLangString = paramString;
+    localVenue.b = paramSuggestionData.title;
+    localVenue.c = paramSuggestionData.address;
+    localVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramSuggestionData.latLng;
+    return localVenue;
   }
   
   public static Venue a(String paramString, LBSShare.POI paramPOI)

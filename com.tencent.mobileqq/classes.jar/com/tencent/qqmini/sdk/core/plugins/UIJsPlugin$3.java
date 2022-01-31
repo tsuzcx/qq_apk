@@ -2,40 +2,42 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.app.Activity;
 import android.content.Context;
-import android.text.TextUtils;
-import bdcz;
-import bdfz;
-import bdik;
-import bdyk;
+import android.util.Log;
+import android.view.ViewGroup;
+import begz;
+import beka;
+import bene;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class UIJsPlugin$3
   implements Runnable
 {
-  UIJsPlugin$3(UIJsPlugin paramUIJsPlugin, String paramString1, String paramString2, String paramString3, String paramString4, bdfz parambdfz, boolean paramBoolean, String paramString5, String paramString6) {}
+  UIJsPlugin$3(UIJsPlugin paramUIJsPlugin, beka parambeka) {}
   
   public void run()
   {
-    Object localObject = this.this$0.mMiniAppContext.a();
-    bdik localbdik;
-    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
+    try
     {
-      localbdik = new bdik((Context)localObject, 2131690144);
-      localbdik.setContentView(2131493726);
-      if (!TextUtils.isEmpty(this.val$title)) {
-        break label131;
+      Object localObject = new JSONObject(this.val$req.b);
+      String str = ((JSONObject)localObject).optString("title", "");
+      boolean bool = ((JSONObject)localObject).optBoolean("mask", false);
+      localObject = this.this$0.mMiniAppContext.a();
+      if (UIJsPlugin.access$000(this.this$0) == null) {
+        UIJsPlugin.access$002(this.this$0, new bene((Context)localObject, (ViewGroup)((Activity)localObject).findViewById(16908290)));
       }
-    }
-    label131:
-    for (localObject = null;; localObject = this.val$title)
-    {
-      localbdik.a((String)localObject).a(this.val$content);
-      localbdik.b(this.val$confirmText, bdyk.a(this.val$confirmColor), new UIJsPlugin.3.1(this));
-      if (this.val$showCancel) {
-        localbdik.a(this.val$cancelText, bdyk.a(this.val$cancelColor), new UIJsPlugin.3.2(this));
+      for (;;)
+      {
+        UIJsPlugin.access$000(this.this$0).a(1, "loading", null, str, -1, bool);
+        this.val$req.a();
+        return;
+        UIJsPlugin.access$000(this.this$0).a();
       }
-      localbdik.setCanceledOnTouchOutside(false);
-      localbdik.show();
       return;
+    }
+    catch (JSONException localJSONException)
+    {
+      Log.e("UIJsPlugin", localJSONException.getMessage(), localJSONException);
     }
   }
 }

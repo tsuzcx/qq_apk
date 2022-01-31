@@ -4,36 +4,36 @@ import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ssr;
-import sss;
-import ssy;
-import sxr;
+import tfn;
+import tfo;
+import tfu;
+import tkn;
 
 public class MsgTabNodeListLoader$1$1
   implements Runnable
 {
-  public MsgTabNodeListLoader$1$1(sss paramsss, sxr paramsxr) {}
+  public MsgTabNodeListLoader$1$1(tfo paramtfo, tkn paramtkn) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Sxr.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) {
-      this.jdField_a_of_type_Sss.a.a(this.jdField_a_of_type_Sxr.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+    if (this.jdField_a_of_type_Tkn.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) {
+      this.jdField_a_of_type_Tfo.a.a(this.jdField_a_of_type_Tkn.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
     }
     Object localObject2;
-    if (this.jdField_a_of_type_Sxr.jdField_a_of_type_JavaUtilList != null)
+    if (this.jdField_a_of_type_Tkn.jdField_a_of_type_JavaUtilList != null)
     {
-      ??? = this.jdField_a_of_type_Sxr.jdField_a_of_type_JavaUtilList.iterator();
+      ??? = this.jdField_a_of_type_Tkn.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)???).hasNext())
       {
         localObject2 = (QQUserUIItem)((Iterator)???).next();
-        this.jdField_a_of_type_Sss.a.a(this.jdField_a_of_type_Sxr.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+        this.jdField_a_of_type_Tfo.a.a(this.jdField_a_of_type_Tkn.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
       }
     }
-    synchronized (this.jdField_a_of_type_Sss.a.d)
+    synchronized (this.jdField_a_of_type_Tfo.a.d)
     {
-      localObject2 = this.jdField_a_of_type_Sss.a.d.iterator();
+      localObject2 = this.jdField_a_of_type_Tfo.a.d.iterator();
       if (((Iterator)localObject2).hasNext()) {
-        ((ssy)((Iterator)localObject2).next()).a();
+        ((tfu)((Iterator)localObject2).next()).a();
       }
     }
   }

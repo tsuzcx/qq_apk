@@ -1,105 +1,100 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.OutputStream;
+import java.net.URL;
 
 public class ayva
+  extends ayog
 {
-  public int a;
-  private String jdField_a_of_type_JavaLangString;
-  private List<ayvb> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private JSONArray jdField_a_of_type_OrgJsonJSONArray;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  public boolean a;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  
-  public static ayva a(String paramString)
+  public static Bitmap a(Bitmap paramBitmap, int paramInt)
   {
-    ayva localayva = new ayva();
-    localayva.a(paramString);
-    return localayva;
+    try
+    {
+      Bitmap localBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+      localBitmap.setDensity(160);
+      Canvas localCanvas = new Canvas(localBitmap);
+      Paint localPaint = new Paint();
+      Rect localRect = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+      RectF localRectF = new RectF(new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()));
+      float f = paramInt;
+      localPaint.setAntiAlias(true);
+      localCanvas.drawARGB(0, 0, 0, 0);
+      localPaint.setColor(-16777216);
+      localCanvas.drawRoundRect(localRectF, f, f, localPaint);
+      localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+      localCanvas.drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), localRect, localPaint);
+      return localBitmap;
+    }
+    catch (Exception localException) {}
+    return paramBitmap;
   }
   
-  private void a(String paramString)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    long l = System.currentTimeMillis();
-    this.jdField_b_of_type_JavaLangString = paramString;
-    new ArrayList();
-    JSONObject localJSONObject1 = new JSONObject(paramString);
-    this.jdField_b_of_type_Int = localJSONObject1.optInt("errorcode");
-    this.jdField_a_of_type_JavaLangString = localJSONObject1.optString("errormsg");
-    JSONArray localJSONArray = localJSONObject1.optJSONArray("items");
-    int i = 0;
-    while (i < localJSONArray.length())
+    return new File(paramDownloadParams.url.getFile());
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramFile = paramFile.getAbsolutePath();
+    if (!bbdj.b(paramFile))
     {
-      JSONObject localJSONObject2 = localJSONArray.getJSONObject(i);
-      ayvb localayvb = new ayvb();
-      localayvb.jdField_a_of_type_JavaLangString = localJSONObject2.optString("itemstring");
-      localayvb.jdField_a_of_type_Boolean = "YES".equalsIgnoreCase(localJSONObject2.optString("item"));
-      localayvb.jdField_a_of_type_Int = localJSONObject2.optInt("itemconf");
-      JSONObject localJSONObject3 = localJSONObject2.optJSONObject("itemcoord");
-      localayvb.jdField_b_of_type_Int = localJSONObject3.optInt("x");
-      localayvb.c = localJSONObject3.optInt("y");
-      localayvb.d = localJSONObject3.optInt("width");
-      localayvb.e = localJSONObject3.optInt("height");
-      if (!localayvb.a())
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoThumbDownloader", 2, "decodeFile file not exits. just return");
+      }
+      return null;
+    }
+    paramURLDrawableHandler = new BitmapFactory.Options();
+    paramURLDrawableHandler.inDensity = 160;
+    paramURLDrawableHandler.inTargetDensity = 160;
+    paramURLDrawableHandler.inScreenDensity = 160;
+    paramURLDrawableHandler.inJustDecodeBounds = true;
+    SafeBitmapFactory.decodeFile(paramFile, paramURLDrawableHandler);
+    paramURLDrawableHandler.inJustDecodeBounds = false;
+    paramURLDrawableHandler.inSampleSize = a(paramURLDrawableHandler, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight);
+    try
+    {
+      paramFile = BitmapFactory.decodeStream(new BufferedInputStream(new FileInputStream(paramFile)), null, paramURLDrawableHandler);
+      paramDownloadParams = paramDownloadParams.tag;
+      if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 3))
       {
-        urk.e("QQ.Troop.homework.ArithResult", "arith homework json error!! all json=" + paramString);
-        vkw.a("arith homework json error!! json=" + localJSONObject2, new Object[0]);
+        paramFile = a(paramFile, ((int[])(int[])paramDownloadParams)[2]);
+        return paramFile;
       }
-      if (!localayvb.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Int += 1;
-      }
-      this.jdField_a_of_type_JavaUtilList.add(localayvb);
-      i += 1;
     }
-    this.jdField_a_of_type_OrgJsonJSONArray = localJSONArray;
-    this.jdField_a_of_type_OrgJsonJSONObject = localJSONObject1;
-    urk.d("QQ.Troop.homework.ArithResult", "parse json cost=" + (System.currentTimeMillis() - l));
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public ayvb a(int paramInt)
-  {
-    return (ayvb)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public String a()
-  {
-    urk.d("QQ.Troop.homework.ArithResult", "toJson:" + this.jdField_a_of_type_Boolean);
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Boolean)
+    catch (OutOfMemoryError paramFile)
     {
-      int i = 0;
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        localObject = (ayvb)this.jdField_a_of_type_JavaUtilList.get(i);
-        JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONArray.getJSONObject(i);
-        if (((ayvb)localObject).jdField_a_of_type_Boolean) {}
-        for (localObject = "YES";; localObject = "NO")
-        {
-          localJSONObject.put("item", localObject);
-          i += 1;
-          break;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortVideoThumbDownloader", 2, "decodeFile : OutOfMemoryError ", paramFile);
       }
-      this.jdField_a_of_type_OrgJsonJSONObject.put("items", this.jdField_a_of_type_OrgJsonJSONArray);
+      return null;
     }
-    for (Object localObject = this.jdField_a_of_type_OrgJsonJSONObject.toString();; localObject = this.jdField_b_of_type_JavaLangString)
-    {
-      urk.d("QQ.Troop.homework.ArithResult", "toJSON cost=" + (System.currentTimeMillis() - l));
-      return localObject;
-    }
+    return paramFile;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayva
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class aoel
-  extends aoey
+  extends ajxl
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
+  aoel(aoek paramaoek) {}
   
-  public aoel(aoea paramaoea, MessageRecord paramMessageRecord)
+  protected void onGetRecommendDeviceList(boolean paramBoolean, ArrayList<airj> paramArrayList)
   {
-    super(paramaoea);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
-  }
-  
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aoex paramaoex)
-  {
-    if ("1".equals(this.g))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
-      }
-      paramaoex.a(aoea.a(this.jdField_a_of_type_Long, false), false);
-      return;
+    if (paramBoolean) {
+      aoen.a().a(paramArrayList);
     }
-    if ((this.b == null) || (this.b.length() == 0))
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send faild uuid is null");
-      }
-      paramaoex.a(aoea.a(this.jdField_a_of_type_Long, true), false);
+      aoek.a(this.a, false);
+      aoek.b(this.a, false);
       return;
+      if (QLog.isColorLevel()) {
+        QLog.d("EquipLockWebImpl", 2, "error, fetch recommend list !");
+      }
     }
-    aoea.a(this.jdField_a_of_type_Aoea).a().a().a(paramString, paramInt, this.d, 3, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aoem(this, paramString, paramaoex));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoel
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,24 @@
-import android.view.animation.Interpolator;
+import com.tencent.mobileqq.data.ContactMatch;
 
-final class atys
-  implements Interpolator
+public class atys
+  extends atyy
 {
-  public float getInterpolation(float paramFloat)
+  public ContactMatch a;
+  
+  public atys(ContactMatch paramContactMatch)
   {
-    if (paramFloat <= 0.3333333F) {
-      return 0.0F;
-    }
-    return (paramFloat - 0.3333333F) * 1.5F;
+    this.jdField_a_of_type_ComTencentMobileqqDataContactMatch = paramContactMatch;
+    this.jdField_a_of_type_Long = paramContactMatch.timestamp;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataContactMatch.isReaded;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     atys
  * JD-Core Version:    0.7.0.1
  */

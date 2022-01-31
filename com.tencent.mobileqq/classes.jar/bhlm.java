@@ -1,26 +1,20 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.share.QZoneShareActivity;
 
-public abstract class bhlm
+public class bhlm
+  implements View.OnClickListener
 {
-  protected Paint a = new Paint();
+  public bhlm(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public bhlm()
+  public void onClick(View paramView)
   {
-    this.a.setAntiAlias(true);
-    this.a.setStyle(Paint.Style.FILL_AND_STROKE);
+    QZoneShareActivity.f(this.a);
   }
-  
-  public abstract void a(Canvas paramCanvas, RectF paramRectF, int paramInt1, int paramInt2);
-  
-  public abstract void a(Canvas paramCanvas, ArrayList<bhne> paramArrayList, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhlm
  * JD-Core Version:    0.7.0.1
  */

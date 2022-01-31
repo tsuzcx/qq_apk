@@ -1,17 +1,6 @@
-import android.content.Context;
-import com.tencent.mobileqq.data.MessageForFile;
-
-class adek
-  implements apca
+public abstract interface adek<T>
 {
-  adek(adeg paramadeg, MessageForFile paramMessageForFile, Context paramContext) {}
-  
-  public void a()
-  {
-    apck.a(this.jdField_a_of_type_Adeg.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
-  }
-  
-  public void b() {}
+  public abstract T a(adeh paramadeh);
 }
 
 

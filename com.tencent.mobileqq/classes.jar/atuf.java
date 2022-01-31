@@ -1,62 +1,98 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.qphone.base.BaseConstants;
+import android.os.Bundle;
+import appoint.define.appoint_define.PublisherInfo;
+import com.tencent.mobileqq.data.StrangerInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x66b.Oidb_0x66b.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class atuf
+  extends mxm
 {
-  private static HashMap<Long, atug> a = new HashMap();
+  public atuf(NearbyProfileFragment paramNearbyProfileFragment) {}
   
-  public static void a(int paramInt1, int paramInt2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("business_type", String.valueOf(paramInt1));
-    localHashMap.put("prediction_step", String.valueOf(paramInt2));
-    awrn.a(BaseApplication.getContext()).a(null, "actPredictionData", true, 0L, 0L, localHashMap, "");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
-  {
-    if (paramMessageForShortVideo.getBitValue(1) == 1) {}
-    long l;
-    do
+    if (paramInt == 0)
+    {
+      paramBundle = new oidb_sso.OIDBSSOPkg();
+      try
+      {
+        paramArrayOfByte = (oidb_sso.OIDBSSOPkg)paramBundle.mergeFrom((byte[])paramArrayOfByte);
+        if (paramArrayOfByte != null)
+        {
+          paramInt = paramArrayOfByte.uint32_result.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("NearbyProfileFragment", 2, "handle_oidb_0x66b_0|oidb_sso.OIDBSSOPkg.result " + paramInt);
+          }
+        }
+        paramBundle = new Oidb_0x66b.RspBody();
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        try
+        {
+          paramBundle.mergeFrom(paramArrayOfByte.bytes_bodybuffer.get().toByteArray());
+          paramArrayOfByte = new NearbyMyTabCard();
+          if (!paramBundle.rpt_msg_vistor_info.has()) {
+            break label307;
+          }
+          paramArrayOfByte.visitors.clear();
+          paramBundle = paramBundle.rpt_msg_vistor_info.get().iterator();
+          while (paramBundle.hasNext())
+          {
+            Object localObject = (appoint_define.PublisherInfo)paramBundle.next();
+            if (localObject != null)
+            {
+              localObject = StrangerInfo.convertFrom((appoint_define.PublisherInfo)localObject);
+              if (localObject != null) {
+                paramArrayOfByte.visitors.add(localObject);
+              }
+            }
+          }
+          paramArrayOfByte = paramArrayOfByte;
+          if (QLog.isColorLevel()) {
+            QLog.d("NearbyProfileFragment", 2, "handle_oidb_0x66b_0|oidb_sso parseFrom byte " + paramArrayOfByte.toString());
+          }
+          paramArrayOfByte = paramBundle;
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("NearbyProfileFragment", 2, "handle_oidb_0x66b_0|oidb_sso parseFrom byte " + paramArrayOfByte.toString());
+          }
+        }
+      }
+    }
+    else
     {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPredictionEvaluator", 2, "msgViewedInAIO, size=" + a.size());
-      }
-      l = System.currentTimeMillis();
-    } while ((a.containsKey(Long.valueOf(paramMessageForShortVideo.uniseq))) || (a.size() >= 24));
-    paramQQAppInterface = new atug(paramQQAppInterface, paramMessageForShortVideo, l, 0L);
-    a.put(Long.valueOf(paramMessageForShortVideo.uniseq), paramQQAppInterface);
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
-  {
-    if (paramMessageForShortVideo.getBitValue(1) == 1) {}
-    long l;
-    do
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyProfileFragment", 2, "handleGetNearbyMyTab visitor info is: " + paramArrayOfByte.visitors.toString());
+    }
+    for (;;)
     {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoPredictionEvaluator", 2, "msgClicked, size=" + a.size());
-        }
-        l = System.currentTimeMillis();
-      } while (!a.containsKey(Long.valueOf(paramMessageForShortVideo.uniseq)));
-      paramQQAppInterface = (atug)a.remove(Long.valueOf(paramMessageForShortVideo.uniseq));
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.a(l);
-    paramQQAppInterface.a();
+      NearbyProfileFragment.a(this.a, paramArrayOfByte.visitors);
+      return;
+      label307:
+      if (QLog.isColorLevel()) {
+        QLog.i("NearbyProfileFragment", 2, "handleGetNearbyMyTay has no visitor info.");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atuf
  * JD-Core Version:    0.7.0.1
  */

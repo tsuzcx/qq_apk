@@ -1,24 +1,39 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.text.style.LineBackgroundSpan;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class raq
-  implements LineBackgroundSpan
+class raq
+  extends Handler
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public raq(int paramInt)
+  raq(rap paramrap, Looper paramLooper)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramLooper);
   }
   
-  public void a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    switch (paramMessage.what)
+    {
+    default: 
+      super.handleMessage(paramMessage);
+    }
+    do
+    {
+      return;
+      if (!this.a.g) {
+        break;
+      }
+      if (this.a.f)
+      {
+        rap.a(this.a, this.a.a);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w("ReadInJoyBaseAdapter", 2, "MSG_FOR_CHECK_PLAYAREA, 平移转场动画未做完，不触发自动播放");
+    return;
+    rap.a(this.a, this.a.a);
   }
-  
-  public void drawBackground(Canvas paramCanvas, Paint paramPaint, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, CharSequence paramCharSequence, int paramInt6, int paramInt7, int paramInt8) {}
 }
 
 

@@ -1,10 +1,30 @@
-import android.os.Bundle;
+import android.annotation.SuppressLint;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface qnv
+@SuppressLint({"HandlerLeak"})
+class qnv
+  extends Handler
 {
-  public abstract void a(Bundle paramBundle);
+  private qnv(qno paramqno) {}
   
-  public abstract void a(String paramString, Bundle paramBundle);
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsFloatWindowManager", 2, "floating window msg time out: " + paramMessage.what);
+      }
+      return;
+      qno.b(this.a);
+      continue;
+      this.a.h();
+    }
+  }
 }
 
 

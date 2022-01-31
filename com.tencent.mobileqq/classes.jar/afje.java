@@ -1,21 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 
 class afje
-  implements DialogInterface.OnClickListener
+  implements View.OnLongClickListener
 {
-  afje(afiu paramafiu) {}
+  afje(afjb paramafjb, afjh paramafjh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    if (paramInt == 0) {
-      afiu.a(this.a);
+    if (this.jdField_a_of_type_Afjb.a != null)
+    {
+      int i = this.jdField_a_of_type_Afjh.getAdapterPosition();
+      return this.jdField_a_of_type_Afjb.a.a(paramView, this.jdField_a_of_type_Afjh, i);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afje
  * JD-Core Version:    0.7.0.1
  */

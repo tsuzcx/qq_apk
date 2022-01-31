@@ -2,7 +2,9 @@ package com.tencent.aekit.api.standard.filter;
 
 public final class AEFilterManager$FilterType
 {
+  public static final int ADJUST = 116;
   public static final int BEAUTY = 104;
+  public static final int BODY = 115;
   public static final int DENOISE = 108;
   public static final int FACELINE = 114;
   public static final int FACE_COLOR_COMBINE = 107;

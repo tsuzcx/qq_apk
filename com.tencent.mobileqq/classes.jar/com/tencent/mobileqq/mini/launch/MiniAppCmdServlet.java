@@ -4,12 +4,13 @@ import android.os.Bundle;
 import android.os.Process;
 import android.os.RemoteException;
 import android.text.TextUtils;
-import bdom;
+import besz;
 import com.tencent.mobileqq.mini.apkg.ApkgMainProcessManager;
 import com.tencent.mobileqq.mini.apkg.BaseLibManager;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04902;
 import com.tencent.mobileqq.mini.share.MiniArkShareAsyncManager;
+import com.tencent.mobileqq.minigame.jsapi.manager.JsApiUpdateManager;
 import com.tencent.mobileqq.minigame.manager.EngineManager;
 import com.tencent.qphone.base.util.QLog;
 
@@ -21,6 +22,7 @@ public class MiniAppCmdServlet
   public static final String CMD_REBIND_ENGINE_CHANNEL = "cmd_rebind_engine_channel";
   public static final String CMD_REBIND_ENGINE_CHANNEL_NEW = "cmd_rebind_engine_channel_new";
   public static final String CMD_SHARE_ARK_ASYNC_MESSAGE = "cmd_share_ark_async_message";
+  public static final String CMD_UPDATE_APP_FOR_MINI_GAME = "cmd_update_app_for_mini_game";
   public static final String CMD_UPDATE_BASELIB = "cmd_update_baselib";
   public static final String CMD_UPDATE_PULL_DOWN_ENTRY_LIST = "cmd_update_pull_down_entry_list";
   public static final String CMD_UPLOAD_ARK_SHARE_IMAGE = "cmd_upload_ark_share_image";
@@ -55,7 +57,7 @@ public class MiniAppCmdServlet
         do
         {
           return;
-          QLog.i("MiniAppCmdServlet", 1, "sendCmd cmd=" + paramString);
+          QLog.i("MiniAppCmdServlet", 2, "sendCmd cmd=" + paramString);
           if (paramBundle != null) {
             ApkgMainProcessManager.handleMiniAppCmd(paramString, paramBundle, paramCmdCallback);
           }
@@ -134,11 +136,11 @@ public class MiniAppCmdServlet
         QLog.i("MiniAppCmdServlet", 1, "[MiniEng] CMD_RELOAD_ENGINE_CHANNEL appType:" + i);
       } while ((i != 0) && (i != 1));
       paramBundle = new Bundle();
-      Object localObject = bdom.a();
+      Object localObject = besz.a();
       if (i == 1) {}
       for (i = j;; i = 3)
       {
-        paramBundle.putParcelable("engineChannel", ((bdom)localObject).a(i));
+        paramBundle.putParcelable("engineChannel", ((besz)localObject).a(i));
         if (paramCmdCallback == null) {
           break;
         }
@@ -153,13 +155,18 @@ public class MiniAppCmdServlet
           return;
         }
       }
-    } while (!"cmd_update_pull_down_entry_list".equals(paramString));
-    if (paramBundle != null)
-    {
-      MiniAppUtils.handlePullDownEntryListData(paramBundle, paramCmdCallback);
-      return;
-    }
-    QLog.e("MiniAppCmdServlet", 1, "onMiniAppCmd cmd = " + paramString + ", bundle is null");
+      if ("cmd_update_pull_down_entry_list".equals(paramString))
+      {
+        if (paramBundle != null)
+        {
+          MiniAppUtils.handlePullDownEntryListData(paramBundle, paramCmdCallback);
+          return;
+        }
+        QLog.e("MiniAppCmdServlet", 1, "onMiniAppCmd cmd = " + paramString + ", bundle is null");
+        return;
+      }
+    } while (!"cmd_update_app_for_mini_game".equals(paramString));
+    JsApiUpdateManager.handleUpdateAppForMiniGame(paramBundle);
   }
 }
 

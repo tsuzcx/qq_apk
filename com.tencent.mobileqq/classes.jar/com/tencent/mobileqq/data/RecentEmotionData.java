@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
+import aukm;
 
 public class RecentEmotionData
-  extends atmo
+  extends aukm
 {
   public static final int TYPE_CUSTOM_EMO = 3;
   public static final int TYPE_EMOJI_EMO = 4;

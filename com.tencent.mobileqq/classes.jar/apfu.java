@@ -1,89 +1,34 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RouterHandler;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar.10;
-import cooperation.troop.TroopFileProxyActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
+import java.util.List;
 
 public class apfu
-  extends AsyncTask<Void, Void, Void>
+  extends awkc<awog, awwp>
 {
-  public apfu(SendBottomBar.10 param10) {}
-  
-  protected Void a(Void... paramVarArgs)
+  public apfu(FileSelectorSearchGroupFragment paramFileSelectorSearchGroupFragment, apfw paramapfw)
   {
-    paramVarArgs = SendBottomBar.a(this.a.this$0).a();
-    int i = SendBottomBar.a(this.a.this$0).a();
-    Object localObject = SendBottomBar.a(this.a.this$0).b();
-    if (i == 5)
+    try
     {
-      TroopFileProxyActivity.a.addAll(aonm.a());
-      return null;
-    }
-    if (paramVarArgs.equals(ajed.z))
-    {
-      paramVarArgs = new ArrayList();
-      paramVarArgs.addAll(aonm.a());
-      ((ajgm)SendBottomBar.a(this.a.this$0).a(8)).a(paramVarArgs);
-    }
-    label411:
-    for (;;)
-    {
-      return null;
-      if (i == 6002)
-      {
-        localObject = new ArrayList();
-        ((ArrayList)localObject).addAll(aonm.a());
-        ((RouterHandler)SendBottomBar.a(this.a.this$0).a(48)).a((ArrayList)localObject, null, null, Long.parseLong(paramVarArgs));
+      paramFileSelectorSearchGroupFragment = paramapfw.a(paramFileSelectorSearchGroupFragment.getActivity().app, paramFileSelectorSearchGroupFragment.getActivity());
+      if ((paramFileSelectorSearchGroupFragment != null) && (!paramFileSelectorSearchGroupFragment.isEmpty())) {
+        a(paramFileSelectorSearchGroupFragment);
       }
-      else if (i == 9501)
-      {
-        localObject = (xvq)SendBottomBar.a(this.a.this$0).a(49);
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.addAll(aonm.a());
-        ((xvq)localObject).a().a(paramVarArgs, localArrayList);
-      }
-      else
-      {
-        boolean bool = SendBottomBar.a(this.a.this$0).i();
-        SendBottomBar.a(this.a.this$0).a().a(bool, (String)localObject, paramVarArgs, i);
-        paramVarArgs = aonm.b().iterator();
-        do
-        {
-          if (!paramVarArgs.hasNext()) {
-            break;
-          }
-        } while (((FileManagerEntity)paramVarArgs.next()).nFileType != 13);
-        for (i = 1;; i = 0)
-        {
-          if (i == 0) {
-            break label411;
-          }
-          if (SendBottomBar.a(this.a.this$0) == 3)
-          {
-            awqx.b(SendBottomBar.a(this.a.this$0).app, "dc00898", "", "", "0X800A088", "0X800A088", 0, 0, "", "", "", "");
-            break;
-          }
-          if (SendBottomBar.a(this.a.this$0) != 21) {
-            break;
-          }
-          awqx.b(SendBottomBar.a(this.a.this$0).app, "dc00898", "", "", "0X800A08D", "0X800A08D", 0, 0, "", "", "", "");
-          break;
-        }
-      }
+      return;
     }
+    catch (Exception paramFileSelectorSearchGroupFragment) {}
   }
   
-  protected void a(Void paramVoid)
+  protected awrb<awog, awwp> a(int paramInt)
   {
-    super.onPostExecute(paramVoid);
-    this.a.this$0.d();
-    aonm.b();
-    SendBottomBar.d(this.a.this$0);
+    apfx localapfx = new apfx();
+    localapfx.a(new apfv(this));
+    return localapfx;
+  }
+  
+  protected awwq a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new apga(paramViewGroup);
   }
 }
 

@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
 
-class qgg
-  implements DialogInterface.OnShowListener
+public class qgg
+  implements View.OnClickListener
 {
-  qgg(qfy paramqfy) {}
+  public qgg(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    qfy.a(this.a, "mShareActionSheet onShow()");
-    this.a.a.a.a().clearFlags(8);
+    this.a.getActivity().finish();
   }
 }
 

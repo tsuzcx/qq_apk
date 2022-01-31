@@ -1,27 +1,23 @@
-import android.content.Context;
-import java.io.File;
+import android.support.annotation.NonNull;
+import com.tencent.util.Pair;
+import cooperation.qqreader.net.BusinessTask;
 
-final class bgwi
-  implements bgvi
+public final class bgwi
 {
-  bgwi(String paramString1, String paramString2, bgwk parambgwk, Context paramContext, File paramFile1, File paramFile2) {}
+  public static final Pair<Integer, Integer> a = new Pair(Integer.valueOf(1154), Integer.valueOf(1));
+  public static final Pair<Integer, Integer> b = new Pair(Integer.valueOf(1529), Integer.valueOf(2));
+  public static final Pair<Integer, Integer> c = new Pair(Integer.valueOf(1201), Integer.valueOf(1));
   
-  public void a(String paramString, long paramLong, float paramFloat)
+  public static void a(@NonNull Pair<Integer, Integer> paramPair, @NonNull bguq parambguq)
   {
-    if (this.jdField_a_of_type_Bgwk != null) {
-      this.jdField_a_of_type_Bgwk.a(paramLong, paramFloat);
-    }
+    a(paramPair, parambguq, false);
   }
   
-  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
+  public static void a(@NonNull Pair<Integer, Integer> paramPair, @NonNull bguq parambguq, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      bguw.a().a("http://dldir1.qq.com/weiyun/android/qq/librarySize1003.txt", this.jdField_a_of_type_JavaLangString, "SoHelper", new bgwj(this));
-    }
-    while (this.jdField_a_of_type_Bgwk == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bgwk.a(paramString3);
+    paramPair = new BusinessTask("ZzConfigDataTask", paramPair);
+    paramPair.a(parambguq, paramBoolean);
+    paramPair.a();
   }
 }
 

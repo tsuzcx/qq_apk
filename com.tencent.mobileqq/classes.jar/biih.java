@@ -1,42 +1,13 @@
-import android.support.annotation.NonNull;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.io.File;
 
 public class biih
 {
-  private List<biij> a = new LinkedList();
-  
-  public static biih a()
-  {
-    return biik.a;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((biij)localIterator.next()).b();
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((biij)localIterator.next()).a(paramBoolean);
-    }
-  }
-  
-  public boolean a(@NonNull biij parambiij)
-  {
-    return this.a.add(parambiij);
-  }
-  
-  public boolean b(@NonNull biij parambiij)
-  {
-    return this.a.remove(parambiij);
-  }
+  public static final String a = biia.a + File.separator + "gif";
+  public static final String b = a + File.separator + "capture";
+  public static final String c = a + File.separator + "res";
+  public static final String d = a + File.separator + "res_zip_download";
+  public static final String e = c + File.separator + "GifGuide";
+  public static final String f = a + File.separator + "material_config";
 }
 
 

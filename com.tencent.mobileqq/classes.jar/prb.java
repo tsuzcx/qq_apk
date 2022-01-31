@@ -1,17 +1,9 @@
-public class prb
+import android.view.View;
+import java.util.Map;
+
+public abstract interface prb
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  
-  public String toString()
-  {
-    return "PGCVideoInfo{video_md5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", video_url='" + this.jdField_b_of_type_JavaLangString + '\'' + ", pic_md5='" + this.c + '\'' + ", pic_url='" + this.d + '\'' + ", vid='" + this.e + '\'' + ", duration='" + this.jdField_a_of_type_Int + '\'' + ", busi_type='" + this.jdField_b_of_type_Int + '\'' + '}';
-  }
+  public abstract void a(View paramView, Map<String, Object> paramMap);
 }
 
 

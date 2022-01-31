@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.database;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class StoryVideoSimpleInfoEntity
-  extends atmo
+  extends aukm
 {
   public byte[] data;
-  @atoc
+  @auma
   public String unionId;
 }
 

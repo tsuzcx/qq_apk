@@ -1,34 +1,35 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import android.os.Bundle;
 
-class apwr
-  implements View.OnClickListener
+public class apwr
 {
-  apwr(apwp paramapwp, String paramString) {}
+  public long a;
+  public long b;
   
-  public void onClick(View paramView)
+  public apwr(long paramLong1, long paramLong2)
   {
-    if (this.jdField_a_of_type_JavaLangString.startsWith("mqqapi://miniapp/")) {
-      MiniAppLauncher.startMiniApp(this.jdField_a_of_type_Apwp.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 2016, null);
+    this.a = paramLong1;
+    this.b = paramLong2;
+  }
+  
+  public static apwr a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return null;
     }
-    for (;;)
-    {
-      yez.a(aing.a(), "769", "205647", this.jdField_a_of_type_Apwp.jdField_a_of_type_Apvy.a().gameAppId, "76903", "1", "160", new String[] { "", "", "20" });
-      return;
-      paramView = new Intent(this.jdField_a_of_type_Apwp.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Apwp.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    }
+    return new apwr(paramBundle.getLong("RPARAM_RECV_SIZE"), paramBundle.getLong("RPARAM_TRANS_SIZE"));
+  }
+  
+  public Bundle a()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("RPARAM_RECV_SIZE", this.a);
+    localBundle.putLong("RPARAM_TRANS_SIZE", this.b);
+    return localBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apwr
  * JD-Core Version:    0.7.0.1
  */

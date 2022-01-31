@@ -1,65 +1,110 @@
-import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.activity.photo.ImageInfo;
-import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.exception.ExceptionTracker;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class axpr
-  extends axpm
 {
-  public axpr(BaseApplicationImpl paramBaseApplicationImpl)
+  private static String a(axtr paramaxtr)
   {
-    super("DataLineFaceDownloader", paramBaseApplicationImpl);
+    if (paramaxtr == null) {
+      return null;
+    }
+    return paramaxtr.a();
   }
   
-  private String a(Context paramContext, String paramString)
+  public static void a(QQAppInterface paramQQAppInterface, axts paramaxts)
   {
-    String str = bacm.a(paramContext, paramString, 0);
-    ImageInfo localImageInfo = new ImageInfo();
-    bacm.a(4, paramContext, paramString, str, true, localImageInfo, 0);
-    return localImageInfo.b;
+    a("dc02181", paramQQAppInterface, paramaxts);
   }
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  private static void a(String paramString, QQAppInterface paramQQAppInterface, axtr paramaxtr)
   {
-    if ((paramDownloadParams.tag instanceof MessageForPic)) {}
-    for (paramDownloadParams = ((MessageForPic)paramDownloadParams.tag).path;; paramDownloadParams = null)
+    if (paramaxtr == null)
     {
-      if (TextUtils.isEmpty(paramDownloadParams)) {}
-      File localFile1;
-      do
-      {
-        return null;
-        localFile1 = new File(paramDownloadParams);
-      } while (!localFile1.exists());
-      File localFile2;
-      if (localFile1.length() >= 1048576L)
-      {
-        String str = a(this.a.getApplicationContext(), paramDownloadParams);
-        if (!bace.a(str)) {
-          break label203;
-        }
-        localFile2 = new File(str);
-        QLog.i("DataLineFaceDownloader", 1, "DatalineChat downloadImage compress, orgFilePath:" + paramDownloadParams + " orgFileSize:" + localFile1.length() + " compressPath:" + str + " compressFileSize:" + localFile2.length());
+      ExceptionTracker.trackException("CaptureReportController", "Capture Report not runtime Tag(" + paramString + ") report item is null");
+      if (!QLog.isColorLevel()) {}
+    }
+    do
+    {
+      return;
+      if (!TextUtils.isEmpty(paramaxtr.c)) {
+        break;
       }
-      label203:
-      for (paramDownloadParams = localFile2;; paramDownloadParams = localFile1)
+    } while (!QLog.isColorLevel());
+    return;
+    if (QLog.isColorLevel()) {}
+    QQAppInterface localQQAppInterface = paramQQAppInterface;
+    if (paramQQAppInterface == null)
+    {
+      localQQAppInterface = paramQQAppInterface;
+      if (BaseApplicationImpl.sProcessId == 1)
       {
-        axpm.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
-        return null;
-        QLog.i("DataLineFaceDownloader", 1, "DatalineChat downloadImage uncompress, orgFilePath:" + paramDownloadParams + " orgFileSize:" + localFile1.length());
+        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+        localQQAppInterface = paramQQAppInterface;
+        if (localAppRuntime != null)
+        {
+          localQQAppInterface = paramQQAppInterface;
+          if ((localAppRuntime instanceof QQAppInterface)) {
+            localQQAppInterface = (QQAppInterface)localAppRuntime;
+          }
+        }
       }
     }
+    if (localQQAppInterface == null)
+    {
+      paramQQAppInterface = a(paramaxtr);
+      paramaxtr = new Intent();
+      paramaxtr.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      paramaxtr.putExtra("reporting_tag", paramString);
+      paramaxtr.putExtra("reporting_detail", paramQQAppInterface);
+      paramaxtr.putExtra("reporting_count", 1);
+      paramaxtr.putExtra("is_runtime", 0);
+      BaseApplicationImpl.getApplication().sendBroadcast(paramaxtr);
+      return;
+    }
+    b(paramString, localQQAppInterface, a(paramaxtr));
+  }
+  
+  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString2)) || (paramQQAppInterface == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CaptureReportController", 2, "app or detail invalid. app : " + paramQQAppInterface + "  detail : " + paramString2);
+      }
+      return;
+    }
+    String str = paramString2;
+    if (paramString2.contains("${count_unknown}")) {
+      str = paramString2.replace("${count_unknown}", "1");
+    }
+    paramString2 = new NewIntent(paramQQAppInterface.getApplication(), axct.class);
+    paramString2.putExtra("sendType", 2);
+    paramString2.putExtra("tag", paramString1);
+    paramString2.putExtra("content", str);
+    paramString2.setWithouLogin(true);
+    paramQQAppInterface.startServlet(paramString2);
+  }
+  
+  public static void b(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString2)) || (paramQQAppInterface == null)) {}
+    do
+    {
+      return;
+      paramQQAppInterface = paramQQAppInterface.a();
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.a(paramString1, paramString2, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axpr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,77 +1,123 @@
-import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
 import android.graphics.Paint;
-import android.text.SpannableString;
-import android.text.TextPaint;
-import android.text.style.ForegroundColorSpan;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.TextView;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
 
-class aczp
-  implements ViewTreeObserver.OnPreDrawListener
+public class aczp
+  extends Drawable
 {
-  aczp(aczo paramaczo, TextView paramTextView, String paramString) {}
+  protected int a;
+  aczq jdField_a_of_type_Aczq;
+  Resources jdField_a_of_type_AndroidContentResResources;
+  protected Paint a;
+  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  protected Object a;
+  protected int b = 50;
   
-  private String a(String paramString)
+  public aczp(Resources paramResources)
   {
-    paramString = paramString.toCharArray();
-    int i = 0;
-    if (i < paramString.length)
-    {
-      if (paramString[i] == '　') {
-        paramString[i] = 32;
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((paramString[i] > 65280) && (paramString[i] < 65375)) {
-          paramString[i] = ((char)(paramString[i] - 65248));
-        }
-      }
-    }
-    return new String(paramString);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+    this.jdField_a_of_type_AndroidContentResResources = paramResources;
   }
   
-  public boolean onPreDraw()
+  public void a()
   {
-    int j = 0;
-    int k = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() * 2;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    TextPaint localTextPaint = this.jdField_a_of_type_AndroidWidgetTextView.getPaint();
-    String str2 = a(this.jdField_a_of_type_Aczo.a.getString(2131631762) + ">");
-    String str3 = a(this.jdField_a_of_type_JavaLangString);
-    String str1 = "  " + str2;
-    Object localObject = str3 + str1;
-    if (localTextPaint.measureText((String)localObject + "      ") < k) {}
-    label329:
+    this.jdField_a_of_type_Int = -1;
+    this.b = 50;
+  }
+  
+  public void a(aczq paramaczq)
+  {
+    this.jdField_a_of_type_Aczq = paramaczq;
+  }
+  
+  public void a(String paramString)
+  {
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof aczr)) && (((aczr)this.jdField_a_of_type_JavaLangObject).a != null) && (this.jdField_a_of_type_Int == 1) && (((aczr)this.jdField_a_of_type_JavaLangObject).a.equals(paramString))) {
+      return;
+    }
+    a();
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangObject = new aczr(this, paramString);
+  }
+  
+  public void a(String[] paramArrayOfString, int paramInt)
+  {
+    if (paramArrayOfString == null) {}
     for (;;)
     {
-      k = ((String)localObject).length();
-      int i = j;
-      if (k > str2.length()) {
-        i = k - str2.length();
-      }
-      localObject = new SpannableString((CharSequence)localObject);
-      ((SpannableString)localObject).setSpan(new ForegroundColorSpan(-12541697), i, k, 33);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      return true;
-      String str4 = "..." + str1;
-      int m = str3.length();
-      i = 0;
-      for (;;)
+      return;
+      try
       {
-        if (i >= m) {
-          break label329;
+        if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_JavaLangObject != null) && (!(this.jdField_a_of_type_JavaLangObject instanceof aczr)))
+        {
+          boolean bool = Arrays.equals((String[])this.jdField_a_of_type_JavaLangObject, paramArrayOfString);
+          if (bool) {
+            continue;
+          }
         }
-        str1 = str3.substring(0, m - i) + str4;
-        localObject = str1;
-        if (localTextPaint.measureText(str1 + "      ") < k) {
-          break;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          QLog.e("VipPendantDrawable", 1, "setPngPaths, exception=" + MsfSdkUtils.getStackTraceString(localException));
         }
-        i += 1;
-        localObject = str1;
       }
     }
+    a();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangObject = paramArrayOfString;
+    this.b = paramInt;
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_Int == -1) {}
+    Bitmap localBitmap;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_Aczq == null);
+      localBitmap = this.jdField_a_of_type_Aczq.a();
+    } while ((localBitmap == null) || (localBitmap.isRecycled()));
+    paramCanvas.drawBitmap(localBitmap, null, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      invalidateSelf();
+    }
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    invalidateSelf();
+  }
+  
+  public void setDither(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
+    invalidateSelf();
   }
 }
 

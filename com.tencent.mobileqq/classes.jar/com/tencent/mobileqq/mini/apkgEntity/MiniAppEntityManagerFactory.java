@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.apkgEntity;
 
-import ajrl;
+import akfv;
 import android.database.sqlite.SQLiteDatabase;
-import atnp;
+import auln;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.QQEntityManagerFactory.SQLiteOpenHelperImpl;
@@ -17,12 +17,12 @@ public class MiniAppEntityManagerFactory
     super(paramString);
   }
   
-  public ajrl build(String paramString)
+  public akfv build(String paramString)
   {
     if (this.dbHelper == null)
     {
       this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, "miniapp_" + paramString + ".db", null, 11);
-      this.dbHelper = new ajrl(this.mInnerDbHelper);
+      this.dbHelper = new akfv(this.mInnerDbHelper);
     }
     return this.dbHelper;
   }
@@ -30,10 +30,10 @@ public class MiniAppEntityManagerFactory
   public void createDatabase(SQLiteDatabase paramSQLiteDatabase)
   {
     QLog.d("miniapp-db", 1, "createDatabase");
-    paramSQLiteDatabase.execSQL(atnp.a(new MiniAppInfoEntity()));
-    paramSQLiteDatabase.execSQL(atnp.a(new MiniAppByLinkEntity()));
-    paramSQLiteDatabase.execSQL(atnp.a(new MiniAppByIdEntity()));
-    paramSQLiteDatabase.execSQL(atnp.a(new MiniAppShowInfoEntity()));
+    paramSQLiteDatabase.execSQL(auln.a(new MiniAppInfoEntity()));
+    paramSQLiteDatabase.execSQL(auln.a(new MiniAppByLinkEntity()));
+    paramSQLiteDatabase.execSQL(auln.a(new MiniAppByIdEntity()));
+    paramSQLiteDatabase.execSQL(auln.a(new MiniAppShowInfoEntity()));
   }
   
   public String getPackageName()
@@ -46,13 +46,13 @@ public class MiniAppEntityManagerFactory
     QLog.d("miniapp-db", 1, "upgradeDatabase --  oldVersion: " + paramInt1 + "; newVersion : " + paramInt2);
     if (paramInt1 < 8)
     {
-      paramSQLiteDatabase.execSQL(atnp.a(MiniAppInfoEntity.class.getSimpleName()));
-      paramSQLiteDatabase.execSQL(atnp.a(MiniAppByLinkEntity.class.getSimpleName()));
-      paramSQLiteDatabase.execSQL(atnp.a(MiniAppByIdEntity.class.getSimpleName()));
-      paramSQLiteDatabase.execSQL(atnp.a(MiniAppShowInfoEntity.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(auln.a(MiniAppInfoEntity.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(auln.a(MiniAppByLinkEntity.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(auln.a(MiniAppByIdEntity.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(auln.a(MiniAppShowInfoEntity.class.getSimpleName()));
     }
     if (paramInt1 < 11) {
-      paramSQLiteDatabase.execSQL(atnp.a(MiniAppShowInfoEntity.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(auln.a(MiniAppShowInfoEntity.class.getSimpleName()));
     }
     checkColumnChange(getPackageName(), paramSQLiteDatabase, paramInt1, paramInt2);
   }

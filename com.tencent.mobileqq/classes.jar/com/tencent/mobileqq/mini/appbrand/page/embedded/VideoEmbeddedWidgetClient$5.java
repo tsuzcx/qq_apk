@@ -15,7 +15,12 @@ class VideoEmbeddedWidgetClient$5
     QLog.i("miniapp-embedded", 1, "onVideoSizeChanged : w - " + paramInt1 + "; h - " + paramInt2);
     VideoEmbeddedWidgetClient.access$1102(this.this$0, paramInt1);
     VideoEmbeddedWidgetClient.access$1202(this.this$0, paramInt2);
-    VideoEmbeddedWidgetClient.access$1400(this.this$0).setVideoSize(paramInt1, paramInt2, VideoEmbeddedWidgetClient.access$1300(this.this$0));
+    if (VideoEmbeddedWidgetClient.access$1300(this.this$0) != null)
+    {
+      VideoEmbeddedWidgetClient.access$1300(this.this$0).setVideoSize(paramInt1, paramInt2, VideoEmbeddedWidgetClient.access$1400(this.this$0));
+      return;
+    }
+    QLog.e("miniapp-embedded", 1, "setOnVideoSizeChangedListener renderer is null");
   }
 }
 

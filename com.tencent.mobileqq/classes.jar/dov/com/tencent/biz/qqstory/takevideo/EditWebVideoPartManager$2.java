@@ -1,45 +1,45 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import ahtt;
-import ahty;
+import aigl;
+import aigq;
 import android.app.Activity;
-import bihs;
+import bjyn;
 import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
 public class EditWebVideoPartManager$2
   implements Runnable
 {
-  public EditWebVideoPartManager$2(bihs parambihs, EditVideoParams.EditSource paramEditSource, PublishParam paramPublishParam, Activity paramActivity) {}
+  public EditWebVideoPartManager$2(bjyn parambjyn, EditVideoParams.EditSource paramEditSource, PublishParam paramPublishParam, Activity paramActivity) {}
   
   public void run()
   {
-    bihs.a(this.this$0, null);
+    bjyn.a(this.this$0, null);
     this.this$0.c = 0;
-    bihs.a(this.this$0, this.this$0.a.a("extra_bless_latitude", 0.0D));
-    bihs.b(this.this$0, this.this$0.a.a("extra_bless_longitude", 0.0D));
+    bjyn.a(this.this$0, this.this$0.a.a("extra_bless_latitude", 0.0D));
+    bjyn.b(this.this$0, this.this$0.a.a("extra_bless_longitude", 0.0D));
     boolean bool;
     if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditRecordVideoSource))
     {
-      bihs.a(this.this$0);
+      bjyn.a(this.this$0);
       bool = false;
     }
     for (;;)
     {
-      ahtt localahtt = new ahtt(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishPublishParam.b, bool, bihs.a(this.this$0), true);
-      localahtt.a(bihs.a(this.this$0));
-      localahtt.execute(new Void[0]);
+      aigl localaigl = new aigl(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishPublishParam.b, bool, bjyn.a(this.this$0), true);
+      localaigl.a(bjyn.a(this.this$0));
+      localaigl.execute(new Void[0]);
       return;
       if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource))
       {
-        int i = bihs.a(this.this$0, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishPublishParam);
+        int i = bjyn.a(this.this$0, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishPublishParam);
         if (i != 0) {
-          bihs.a(this.this$0).a(i);
+          bjyn.a(this.this$0).a(i);
         }
         bool = true;
       }
       else
       {
-        bihs.a(this.this$0).a(-13);
+        bjyn.a(this.this$0).a(-13);
         bool = false;
       }
     }

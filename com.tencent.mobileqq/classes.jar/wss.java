@@ -1,27 +1,44 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.graphics.Rect;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class wss
-  extends RecyclerView.ViewHolder
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  private TextView a;
+  wss(wsr paramwsr, Rect paramRect) {}
   
-  public wss(View paramView)
-  {
-    super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131296609));
-  }
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
   
-  public void a(@NonNull wst paramwst)
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    this.a.setText(paramwst.a);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    int i;
+    int j;
+    do
+    {
+      while (!paramMotionEvent.hasNext())
+      {
+        do
+        {
+          return true;
+          i = (int)(paramMotionEvent.getX() + 0.5F);
+          j = (int)(paramMotionEvent.getY() + 0.5F);
+        } while (wsr.a(this.jdField_a_of_type_Wsr) == null);
+        paramMotionEvent = wsr.a(this.jdField_a_of_type_Wsr).iterator();
+      }
+      ((View)paramMotionEvent.next()).getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
+    } while (!this.jdField_a_of_type_AndroidGraphicsRect.contains(i, j));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wss
  * JD-Core Version:    0.7.0.1
  */

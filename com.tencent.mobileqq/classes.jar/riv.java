@@ -1,17 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
 public class riv
-  extends AnimatorListenerAdapter
+  implements rki
 {
-  public riv(TickerView paramTickerView) {}
+  public riv(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public BaseData a()
   {
-    TickerView.a(this.a).a();
-    TickerView.a(this.a);
-    this.a.invalidate();
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+  }
+  
+  public void a()
+  {
+    rnr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
   }
 }
 

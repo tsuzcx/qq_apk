@@ -1,16 +1,16 @@
 package com.tencent.biz.troop;
 
-import ogy;
-import wjk;
+import osj;
+import wym;
 
 public class TroopMemberApiService$IncomingHandler$9
   implements Runnable
 {
-  public TroopMemberApiService$IncomingHandler$9(wjk paramwjk, long paramLong, int paramInt) {}
+  public TroopMemberApiService$IncomingHandler$9(wym paramwym, long paramLong, int paramInt) {}
   
   public void run()
   {
-    ogy.a().b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    osj.a().b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
   }
 }
 

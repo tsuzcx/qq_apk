@@ -1,24 +1,18 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import mqq.util.WeakReference;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
 
 public class abkf
-  implements bbom
+  implements View.OnClickListener
 {
-  final WeakReference<QQBrowserActivity> a;
+  public abkf(LbsBaseActivity paramLbsBaseActivity) {}
   
-  public abkf(QQBrowserActivity paramQQBrowserActivity)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramQQBrowserActivity);
-  }
-  
-  public void onTabSelected(int paramInt1, int paramInt2)
-  {
-    QQBrowserActivity localQQBrowserActivity = (QQBrowserActivity)this.a.get();
-    if (localQQBrowserActivity == null) {}
-    while (paramInt1 == paramInt2) {
-      return;
+    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
+      this.a.a(LbsBaseActivity.a(this.a));
     }
-    QQBrowserActivity.a(paramInt2, localQQBrowserActivity);
   }
 }
 

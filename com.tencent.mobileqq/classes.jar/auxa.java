@@ -1,69 +1,45 @@
+import VIP.GetQzoneMusicInfoRsp;
+import VIP.MusicInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.Map;
 
 class auxa
-  extends auxj
+  implements ajtg
 {
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private long c;
+  auxa(auwz paramauwz) {}
   
-  public HashMap<String, String> a(String paramString)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramString = null;
-    if ((this.jdField_a_of_type_Long == 0L) || (this.c == 0L)) {
-      return null;
-    }
-    if (QLog.isColorLevel()) {
-      paramString = new StringBuilder();
-    }
-    HashMap localHashMap = new HashMap();
-    if (this.jdField_a_of_type_Boolean)
+    if ((paramBoolean) && ((paramObject instanceof GetQzoneMusicInfoRsp)))
     {
-      localHashMap.put("is_progressive", "progressive");
-      localHashMap.put("view_count", "1");
-      if (this.jdField_b_of_type_Boolean)
-      {
-        localHashMap.put("failure", "1");
-        if (QLog.isColorLevel())
-        {
-          paramString.append("progressive:\n");
-          paramString.append("refresh_dp:" + String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) + "\n");
-          paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
-          QLog.i(auxk.a, 2, paramString.toString());
-        }
+      paramObject = (GetQzoneMusicInfoRsp)paramObject;
+      if ((auwz.a(this.a)) || (!paramObject.mMusicList.containsKey(auwz.a(this.a).f))) {
+        break label101;
       }
+      auwz.a(this.a).a = ((MusicInfo)paramObject.mMusicList.get(auwz.a(this.a).f)).sSongUrl;
+      this.a.a(BaseApplicationImpl.getContext(), auwz.a(this.a));
     }
-    label391:
     for (;;)
     {
-      return localHashMap;
-      if (this.jdField_b_of_type_Long > this.jdField_a_of_type_Long) {
-        localHashMap.put("to_dp", String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long));
-      }
-      if ((this.c <= this.jdField_a_of_type_Long) || (this.c <= this.jdField_b_of_type_Long)) {
-        break;
-      }
-      localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
-      break;
-      localHashMap.put("is_progressive", "baseline");
-      localHashMap.put("view_count", "1");
-      if (this.jdField_b_of_type_Boolean) {
-        localHashMap.put("failure", "1");
-      }
-      for (;;)
+      return;
+      label101:
+      SongInfo[] arrayOfSongInfo = QQPlayerService.a();
+      if (arrayOfSongInfo != null)
       {
-        if (!QLog.isColorLevel()) {
-          break label391;
-        }
-        paramString.append("baseline:\n");
-        paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
-        QLog.i(auxk.a, 2, paramString.toString());
-        break;
-        if (this.c > this.jdField_a_of_type_Long) {
-          localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
+        paramInt = 0;
+        while (paramInt < arrayOfSongInfo.length)
+        {
+          if (paramObject.mMusicList.containsKey(arrayOfSongInfo[paramInt].f))
+          {
+            arrayOfSongInfo[paramInt].a = ((MusicInfo)paramObject.mMusicList.get(arrayOfSongInfo[paramInt].f)).sSongUrl;
+            if (QLog.isColorLevel()) {
+              QLog.d("ProfileMusicBoxController", 2, "requestMusicSongUrl mid:" + arrayOfSongInfo[paramInt].f + " url:" + arrayOfSongInfo[paramInt].a);
+            }
+          }
+          paramInt += 1;
         }
       }
     }
@@ -71,7 +47,7 @@ class auxa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auxa
  * JD-Core Version:    0.7.0.1
  */

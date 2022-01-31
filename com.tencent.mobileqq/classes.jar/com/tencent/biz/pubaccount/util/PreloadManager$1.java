@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.util;
 
-import ajed;
+import ajsf;
 import android.support.v4.util.MQLruCache;
 import java.io.File;
 
@@ -16,7 +16,7 @@ class PreloadManager$1
       PreloadManager.a(this.this$0).releaseLargeCache();
     }
     long l = System.currentTimeMillis();
-    Object localObject1 = new File(ajed.cE);
+    Object localObject1 = new File(ajsf.cG);
     int k;
     int i;
     Object localObject2;
@@ -34,7 +34,7 @@ class PreloadManager$1
         i += 1;
       }
     }
-    localObject1 = new File(ajed.cF);
+    localObject1 = new File(ajsf.cH);
     if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
     {
       localObject1 = ((File)localObject1).listFiles();

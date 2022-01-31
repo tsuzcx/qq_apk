@@ -1,18 +1,20 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnTouchListener;
 
-public abstract interface aqgw
-  extends View.OnTouchListener
+class aqgw
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a(View paramView, int paramInt);
+  public int a = aqgp.b;
   
-  public abstract void b(View paramView, int paramInt);
-  
-  public abstract void c(aqfp paramaqfp, int paramInt);
+  public aqgw(View paramView)
+  {
+    super(paramView);
+    paramView.setTag(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqgw
  * JD-Core Version:    0.7.0.1
  */

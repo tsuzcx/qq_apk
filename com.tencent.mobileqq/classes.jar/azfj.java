@@ -1,16 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
 public class azfj
-  implements View.OnTouchListener
+  extends BroadcastReceiver
 {
-  public azfj(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  public azfj(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return false;
+    if ((paramIntent != null) && (paramIntent.getAction().equals("cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.handleQunDetailDelete"))) {
+      this.a.finish();
+    }
   }
 }
 

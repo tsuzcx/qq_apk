@@ -1,31 +1,41 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.qphone.base.util.QLog;
 
-public class aezu
-  extends Handler
+class aezu
+  implements aysa
 {
-  public aezu(SystemMsgListView paramSystemMsgListView) {}
+  private Handler a;
   
-  public void handleMessage(Message paramMessage)
+  aezu(Handler paramHandler)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (SystemMsgListView.a(this.a) == null);
-      this.a.i();
-      SystemMsgListView.a(this.a).notifyDataSetChanged();
+    this.a = paramHandler;
+  }
+  
+  public void onResp(aysx paramaysx)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ZhituManager", 2, "FontDownloadListener onResp: " + paramaysx);
+    }
+    if (paramaysx.jdField_a_of_type_Int == 3) {
       return;
     }
-    paramMessage = SystemMsgListView.a(this.a).getResources().getString(2131654092);
-    bbmy.a(SystemMsgListView.a(this.a), 1, paramMessage, 0).b(this.a.a());
+    if (paramaysx.jdField_a_of_type_Int == 0)
+    {
+      if ("f832939458e5e54f73b1702bc4edb7e8".equalsIgnoreCase(aezn.a(paramaysx.jdField_a_of_type_Aysw.c)))
+      {
+        this.a.sendEmptyMessage(100);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ZhituManager", 2, "font download but md5 is not matched");
+      }
+      this.a.sendEmptyMessage(101);
+      return;
+    }
+    this.a.sendEmptyMessage(101);
   }
+  
+  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
 }
 
 

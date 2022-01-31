@@ -1,24 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
-import com.tencent.widget.BubblePopupWindow;
+import android.os.Handler;
+import android.os.Message;
 
-public class qve
-  implements View.OnClickListener
+class qve
+  extends Handler
 {
-  public qve(ReadinjoyTabbar paramReadinjoyTabbar) {}
+  qve(qvd paramqvd) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if ((ReadinjoyTabbar.a(this.a) != null) && (ReadinjoyTabbar.a(this.a).b())) {}
-    try
+    switch (paramMessage.what)
     {
-      ReadinjoyTabbar.a(this.a).a(3, 257, null, true);
-      ReadinjoyTabbar.a(this.a).b();
+    default: 
+    case 100: 
+    case 101: 
+    case 102: 
+      do
+      {
+        return;
+        qvd.a(this.a);
+        return;
+        this.a.i();
+        return;
+        qvd.b(this.a);
+        sendEmptyMessageDelayed(102, 1000L);
+      } while (qvd.a(this.a) != 1);
+      qvd.c(this.a);
+      return;
+    case 103: 
+      qvd.a(this.a, 3);
+      return;
+    case 104: 
+      qvd.d(this.a);
       return;
     }
-    catch (Exception paramView) {}
+    qvd.e(this.a);
   }
 }
 

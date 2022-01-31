@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.utils;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import bbmy;
+import bcpw;
 
 final class ShareUtils$2
   implements Runnable
@@ -11,7 +11,7 @@ final class ShareUtils$2
   
   public void run()
   {
-    bbmy.a(this.val$activity, 0, 2131655008, 1).b(this.val$activity.getResources().getDimensionPixelSize(2131167766));
+    bcpw.a(this.val$activity, 0, 2131720906, 1).b(this.val$activity.getResources().getDimensionPixelSize(2131298865));
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
-import ahen;
-import aheo;
-import ajop;
+import ahrd;
+import ahre;
+import akcz;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
@@ -19,7 +19,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import awqx;
+import axqw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -55,77 +55,82 @@ public class RegisterGuideView
       localObject = getActivity();
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {}
       for (str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();; str = "") {
-        return ajop.a((Context)localObject, str);
+        return akcz.a((Context)localObject, str);
       }
     }
     Object localObject = BaseApplicationImpl.getContext();
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {}
     for (String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();; str = "") {
-      return ajop.a((Context)localObject, str);
+      return akcz.a((Context)localObject, str);
     }
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if ((i != 2131298029) && (i == 2131298077)) {}
+    if ((i != 2131363579) && (i == 2131363629)) {}
     switch (paramView.getId())
     {
     default: 
-    case 2131298029: 
+    case 2131363579: 
       do
       {
         return;
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007575", "0X8007575", 0, 0, "", "", "", "");
+        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007575", "0X8007575", 0, 0, "", "", "", "");
+        axqw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AA26", "0X800AA26", 0, 0, "", "", "", "");
         paramView = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
         paramView.putExtra("from_register_guide", true);
         paramView.putExtra("is_need_show_logo_animation", true);
-        paramView = aheo.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      } while (this.jdField_a_of_type_Ahen == null);
-      this.jdField_a_of_type_Ahen.a(paramView);
+        paramView = ahre.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      } while (this.jdField_a_of_type_Ahrd == null);
+      this.jdField_a_of_type_Ahrd.a(paramView);
       return;
     }
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007576", "0X8007576", 0, 0, "", "", "", "");
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007576", "0X8007576", 0, 0, "", "", "", "");
+    axqw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AA25", "0X800AA25", 0, 0, "", "", "", "");
     paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, RegisterPhoneNumActivity.class);
     paramView.putExtra("key_register_from", 2);
-    paramView.putExtra("leftViewText", this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131625011));
+    paramView.putExtra("leftViewText", this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131690572));
     paramView.addFlags(67108864);
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramView);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramViewGroup = paramLayoutInflater.inflate(2131493629, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131297793);
+    paramViewGroup = paramLayoutInflater.inflate(2131559198, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131363340);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131298029));
-    this.b = ((Button)paramViewGroup.findViewById(2131298077));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131363579));
+    this.b = ((Button)paramViewGroup.findViewById(2131363629));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.b.setOnClickListener(this);
-    paramBundle = (ImageView)paramViewGroup.findViewById(2131310603);
+    paramBundle = (ImageView)paramViewGroup.findViewById(2131376396);
     paramLayoutInflater = "splash.jpg";
-    try
+    for (;;)
     {
-      if (paramViewGroup.getContext().getResources().getDisplayMetrics().widthPixels > 1500) {
-        paramLayoutInflater = "splash_big.jpg";
+      try
+      {
+        if (paramViewGroup.getContext().getResources().getDisplayMetrics().widthPixels > 1500) {
+          paramLayoutInflater = "splash_big.jpg";
+        }
+        paramLayoutInflater = getActivity().getAssets().open(paramLayoutInflater);
+        paramBundle.setImageDrawable(new BitmapDrawable(getResources(), paramLayoutInflater));
       }
-      paramLayoutInflater = getActivity().getAssets().open(paramLayoutInflater);
-      paramBundle.setImageDrawable(new BitmapDrawable(getResources(), paramLayoutInflater));
+      catch (Throwable paramLayoutInflater)
+      {
+        QLog.e("LoginActivity.RegisterGuideView", 1, "onCreateView error2:" + paramLayoutInflater.getMessage());
+        continue;
+      }
       try
       {
         paramLayoutInflater.close();
+        axqw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AA24", "0X800AA24", 0, 0, "", "", "", "");
         return paramViewGroup;
       }
       catch (Throwable paramLayoutInflater)
       {
         QLog.e("LoginActivity.RegisterGuideView", 1, "onCreateView error1:" + paramLayoutInflater.getMessage());
-        return paramViewGroup;
       }
-      return paramViewGroup;
-    }
-    catch (Throwable paramLayoutInflater)
-    {
-      QLog.e("LoginActivity.RegisterGuideView", 1, "onCreateView error2:" + paramLayoutInflater.getMessage());
     }
   }
 }

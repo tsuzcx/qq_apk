@@ -1,95 +1,124 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.etrump.mixlayout.ETDecoration;
-import com.etrump.mixlayout.ETEngine;
-import com.etrump.mixlayout.ETTextView;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView.ScaleType;
+import com.dataline.activities.LiteActivity;
+import com.dataline.util.widget.AsyncImageView;
+import com.tencent.mm.vfs.VFSFile;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.DataLineMsgSet;
 
-public class fp
-  extends Handler
+class fp
+  extends BaseAdapter
 {
-  public fp(Looper paramLooper)
+  private int jdField_a_of_type_Int;
+  public DataLineMsgSet a;
+  public fw a;
+  private AsyncImageView[] jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView = new AsyncImageView[3];
+  private int b;
+  
+  private fp(fk paramfk, fw paramfw, DataLineMsgSet paramDataLineMsgSet, int paramInt)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Fw = paramfw;
+    this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet = paramDataLineMsgSet;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
+    b();
   }
   
-  public void handleMessage(Message paramMessage)
+  private void b()
   {
-    int i;
-    ETEngine localETEngine;
-    Bitmap localBitmap;
-    switch (paramMessage.what)
+    int i = 0;
+    while (i < 3)
     {
-    default: 
-    case 2: 
-      do
-      {
-        return;
-        paramMessage = (fq)paramMessage.obj;
-      } while (paramMessage == null);
-      i = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      int j = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-      if ((ETTextView.a() != null) && ((ETTextView.a().getWidth() < i) || (ETTextView.a().getHeight() < j)))
-      {
-        ETTextView.a().recycle();
-        ETTextView.a(null);
-      }
-      if (ETTextView.a() == null)
-      {
-        ETTextView.a(Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888));
-        localETEngine = ETEngine.getInstanceForAnimation();
-        ??? = paramMessage.jdField_a_of_type_Fh.a(localETEngine, false);
-        if (??? != null) {
-          ((ETDecoration)???).gotoFrame(paramMessage.jdField_a_of_type_Int);
-        }
-        paramMessage.jdField_a_of_type_Fh.a(localETEngine, ETTextView.a(), (ETDecoration)???, true);
-        if (??? != null) {
-          ((ETDecoration)???).deleteDescriptor();
-        }
-        localBitmap = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap;
-        if (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-          break label308;
-        }
-      }
-      break;
+      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i] = new AsyncImageView(this.jdField_a_of_type_Fk.jdField_a_of_type_ComDatalineActivitiesLiteActivity);
+      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_Int, this.b));
+      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setAdjustViewBounds(false);
+      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setScaleType(ImageView.ScaleType.CENTER_CROP);
+      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setDefaultImage(2130849621);
+      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setIsDrawRound(false);
+      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setAsyncClipSize(this.jdField_a_of_type_Int, this.b);
+      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setTag(this.jdField_a_of_type_Fw);
+      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setClickable(true);
+      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setLongClickable(true);
+      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setOnClickListener(this.jdField_a_of_type_Fk.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setOnLongClickListener(this.jdField_a_of_type_Fk.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_AndroidViewView$OnLongClickListener);
+      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setOnTouchListener(this.jdField_a_of_type_Fk.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_AndroidViewView$OnTouchListener);
+      i += 1;
     }
-    for (;;)
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    if (i < 3)
     {
-      synchronized (ETTextView.a((ETTextView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get()))
-      {
-        if ((localBitmap.isRecycled()) || (((ETTextView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_Long != paramMessage.jdField_a_of_type_Long)) {
-          break label303;
-        }
-        localBitmap.eraseColor(0);
-        localETEngine.native_cloneBitmap(ETTextView.a(), localBitmap);
-        i = 1;
-        if (i == 0) {
-          break;
-        }
-        ETTextView.a().obtainMessage(1, paramMessage).sendToTarget();
-        return;
-        ETTextView.a().eraseColor(0);
+      AsyncImageView localAsyncImageView = this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i];
+      localAsyncImageView.setTag(this.jdField_a_of_type_Fw);
+      DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getAt(i);
+      if (localDataLineMsgRecord == null) {
+        localAsyncImageView.setImageResource(2130849621);
       }
-      if (ETTextView.a() == null) {
+      for (;;)
+      {
+        i += 1;
         break;
+        if ((localDataLineMsgRecord.path != null) && (new VFSFile(localDataLineMsgRecord.path).exists())) {
+          localAsyncImageView.setAsyncImage(localDataLineMsgRecord.path);
+        } else if (localDataLineMsgRecord.thumbPath != null) {
+          localAsyncImageView.setAsyncImage(localDataLineMsgRecord.thumbPath);
+        }
       }
-      ETTextView.a().recycle();
-      ETTextView.a(null);
-      return;
-      label303:
-      i = 0;
-      continue;
-      label308:
-      i = 0;
     }
+  }
+  
+  public int getCount()
+  {
+    return 3;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getAt(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramInt >= 3) {
+      paramView = null;
+    }
+    DataLineMsgRecord localDataLineMsgRecord;
+    do
+    {
+      return paramView;
+      paramViewGroup = this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[paramInt];
+      paramViewGroup.setTag(this.jdField_a_of_type_Fw);
+      localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getAt(paramInt);
+      if (localDataLineMsgRecord == null)
+      {
+        paramViewGroup.setImageResource(2130849621);
+        return paramViewGroup;
+      }
+      if ((localDataLineMsgRecord.path != null) && (new VFSFile(localDataLineMsgRecord.path).exists()))
+      {
+        paramViewGroup.setAsyncImage(localDataLineMsgRecord.path);
+        return paramViewGroup;
+      }
+      paramView = paramViewGroup;
+    } while (localDataLineMsgRecord.thumbPath == null);
+    paramViewGroup.setAsyncImage(localDataLineMsgRecord.thumbPath);
+    return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     fp
  * JD-Core Version:    0.7.0.1
  */

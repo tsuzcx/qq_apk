@@ -1,76 +1,41 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.qzonevip.gift.QzoneGiftUtil.1;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
 
 public class avnt
-  extends avoo
+  implements QzoneZipCacheHelperCallBack
 {
-  private AccountSearchPb.record jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private String jdField_a_of_type_JavaLangString;
+  public avnt(QzoneGiftUtil.1 param1) {}
   
-  public avnt(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  public void onResult(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = paramrecord;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    if (paramBoolean)
+    {
+      QzoneGiftUtil.1.a(this.a);
+      QLog.i("QzoneGiftUtil", 1, "downloadGiftZip onResult mLoadSuccessTimes = " + QzoneGiftUtil.1.c(this.a) + " mLoadFailTimes = " + QzoneGiftUtil.1.d(this.a));
+      if (this.a.jdField_a_of_type_Avnv != null)
+      {
+        if (QzoneGiftUtil.1.c(this.a) != this.a.jdField_a_of_type_Int) {
+          break label109;
+        }
+        this.a.jdField_a_of_type_Avnv.a();
+      }
+    }
+    label109:
+    while (QzoneGiftUtil.1.c(this.a) + QzoneGiftUtil.1.d(this.a) != this.a.jdField_a_of_type_Int)
+    {
+      return;
+      QzoneGiftUtil.1.b(this.a);
+      break;
+    }
+    this.a.jdField_a_of_type_Avnv.b();
   }
   
-  public CharSequence a()
-  {
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(View paramView)
-  {
-    Bundle localBundle = TroopInfoActivity.a(String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get()), 2);
-    localBundle.putInt("exposureSource", 3);
-    azlj.a((Activity)paramView.getContext(), localBundle, 2);
-    avwf.a(this.jdField_a_of_type_JavaLangString, 80, 0, paramView);
-    avwf.a(this.jdField_a_of_type_JavaLangString, 80, paramView, false);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    return null;
-  }
-  
-  public String b()
-  {
-    return String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get());
-  }
-  
-  public int c()
-  {
-    return 4;
-  }
-  
-  public CharSequence c()
-  {
-    return ajjy.a(2131639555);
-  }
-  
-  public CharSequence d()
-  {
-    return null;
-  }
+  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avnt
  * JD-Core Version:    0.7.0.1
  */

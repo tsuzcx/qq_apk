@@ -1,18 +1,18 @@
 package com.tencent.qqprotect.qsec;
 
-import bebv;
-import bebx;
+import bfjl;
+import bfjn;
 
 public class QSecPushServiceMgr$1
   implements Runnable
 {
-  public QSecPushServiceMgr$1(bebv parambebv, byte[] paramArrayOfByte) {}
+  public QSecPushServiceMgr$1(bfjl parambfjl, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    bebx localbebx = bebv.a(this.this$0, this.a);
-    if (localbebx != null) {
-      bebv.a(this.this$0, localbebx);
+    bfjn localbfjn = bfjl.a(this.this$0, this.a);
+    if (localbfjn != null) {
+      bfjl.a(this.this$0, localbfjn);
     }
   }
 }

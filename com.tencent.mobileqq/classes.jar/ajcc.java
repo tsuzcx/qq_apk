@@ -1,26 +1,25 @@
-import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
+import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class ajcc
-  extends batl
+  implements TVK_SDKMgr.InstallListener
 {
-  public ajcc(ApolloLottieAnim paramApolloLottieAnim, String paramString1, String paramString2, String paramString3) {}
+  public ajcc(CmGameAppInterface paramCmGameAppInterface) {}
   
-  public void onDone(batm parambatm)
+  public void onInstallProgress(float paramFloat)
   {
-    super.onDone(parambatm);
-    if (3 == parambatm.a()) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloLottieAnim", 2, "downloadZip onDone task.getStatus()->" + parambatm.a());
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a = 2;
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    }
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstallProgress] v:" + paramFloat);
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledFailed], i:" + paramInt);
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledSuccessed]");
   }
 }
 

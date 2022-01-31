@@ -5,7 +5,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.mini.widget.CoverView;
 import com.tencent.mobileqq.mini.widget.CoverView.OnPageChangeListener;
@@ -99,11 +98,6 @@ public class CoverPusherView
   public void setServiceWebview(JsRuntime paramJsRuntime)
   {
     this.livePusher.serviceWebview = paramJsRuntime;
-  }
-  
-  public void setWebviewContainer(WebviewContainer paramWebviewContainer)
-  {
-    this.livePusher.webviewContainer = paramWebviewContainer;
   }
   
   public void updateLivePusherSettings(JSONObject paramJSONObject)

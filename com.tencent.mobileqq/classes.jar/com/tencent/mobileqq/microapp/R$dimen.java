@@ -2,7 +2,7 @@ package com.tencent.mobileqq.microapp;
 
 public final class R$dimen
 {
-  public static int a = 2131165934;
+  public static int a = 2131297009;
 }
 
 

@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public abstract interface aqqb
+class aqqb
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
+  aqqb(aqqa paramaqqa, View paramView)
+  {
+    super(paramView);
+  }
   
-  public abstract void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
-  
-  public abstract void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
+  public String toString()
+  {
+    return super.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqqb
  * JD-Core Version:    0.7.0.1
  */

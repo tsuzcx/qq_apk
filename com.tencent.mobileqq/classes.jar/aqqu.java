@@ -1,98 +1,67 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.os.Looper;
-import android.support.v4.util.MQLruCache;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.gamecenter.data.FullPopData;
+import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
 
-public class aqqu
+public abstract class aqqu
+  implements aqri
 {
-  private static xfr a = new xfr(BaseApplicationImpl.sApplication);
+  public Context a;
+  public FrameLayout a;
+  public ImageView a;
+  public RelativeLayout a;
+  public FullPopData a;
+  public FullPopVideoView a;
+  private String a;
+  public boolean a;
+  public ImageView b;
+  private String b;
+  public boolean b;
+  public ImageView c;
+  private boolean c;
+  public ImageView d;
   
-  public static void a()
+  public aqqu(Context paramContext, FullPopData paramFullPopData, String paramString1, String paramString2, boolean paramBoolean)
   {
-    try
-    {
-      JavaHookBridge.findAndHookMethod(Bitmap.class, "createBitmap", new Object[] { DisplayMetrics.class, Integer.TYPE, Integer.TYPE, Bitmap.Config.class, Boolean.TYPE, new aqqv(90001) });
-    }
-    catch (NoSuchMethodException localNoSuchMethodException2)
-    {
-      try
-      {
-        JavaHookBridge.findAndHookMethod(Bitmap.class, "createBitmap", new Object[] { DisplayMetrics.class, [I.class, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Bitmap.Config.class, new aqqv(90002) });
-      }
-      catch (NoSuchMethodException localNoSuchMethodException2)
-      {
-        try
-        {
-          for (;;)
-          {
-            JavaHookBridge.findAndHookMethod(BitmapFactory.class, "decodeResource", new Object[] { Resources.class, Integer.TYPE, BitmapFactory.Options.class, new aqqv(90003) });
-            try
-            {
-              JavaHookBridge.findAndHookMethod(BitmapFactory.class, "decodeFile", new Object[] { String.class, BitmapFactory.Options.class, new aqqv(90004) });
-              return;
-            }
-            catch (NoSuchMethodException localNoSuchMethodException4)
-            {
-              azzz.a(localNoSuchMethodException4);
-            }
-            localNoSuchMethodException1 = localNoSuchMethodException1;
-            azzz.a(localNoSuchMethodException1);
-            continue;
-            localNoSuchMethodException2 = localNoSuchMethodException2;
-            azzz.a(localNoSuchMethodException2);
-          }
-        }
-        catch (NoSuchMethodException localNoSuchMethodException3)
-        {
-          for (;;)
-          {
-            azzz.a(localNoSuchMethodException3);
-          }
-        }
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData = paramFullPopData;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_Boolean = paramBoolean;
   }
   
-  private static void b(boolean paramBoolean, int paramInt)
+  public void a()
   {
-    String str = null;
-    Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (localObject != null) {
-      str = ((QQAppInterface)localObject).getCurrentAccountUin();
-    }
-    localObject = new HashMap();
-    ((HashMap)localObject).put("param_FailCode", Integer.toString(paramInt));
-    awrn.a(BaseApplicationImpl.getApplication()).a(str, "BitmapOOMHooker", paramBoolean, 0L, 0L, (HashMap)localObject, "", true);
+    if (!this.jdField_a_of_type_Boolean) {}
   }
   
-  private static void c()
+  public void a(boolean paramBoolean)
   {
-    if (BaseApplicationImpl.sImageCache != null) {
-      BaseApplicationImpl.sImageCache.evictAll();
-    }
-    System.gc();
-    Thread.yield();
-    System.gc();
-    if (ThreadManager.getUIHandler().getLooper() != Looper.myLooper()) {}
-    try
+    if (paramBoolean) {}
+    for (String str = "205929";; str = "205927")
     {
-      Thread.sleep(1000L);
+      aqsp.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, str, this.jdField_c_of_type_Boolean);
       return;
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      localInterruptedException.printStackTrace();
+  }
+  
+  public void a(View... paramVarArgs)
+  {
+    if ((paramVarArgs == null) || (paramVarArgs.length < 6)) {
+      return;
     }
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramVarArgs[0]);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramVarArgs[1]);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs[2]);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs[3]);
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs[4]);
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView = ((FullPopVideoView)paramVarArgs[5]);
+    this.d = ((ImageView)paramVarArgs[6]);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setOnClickListener(new aqqv(this));
   }
 }
 

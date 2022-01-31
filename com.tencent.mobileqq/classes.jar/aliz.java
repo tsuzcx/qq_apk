@@ -1,71 +1,95 @@
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class aliz
-  implements alja
+class aliz
+  implements aliw
 {
-  public final String a = aliy.a + "." + getClass().getSimpleName();
+  aliz(aliy paramaliy, aljb paramaljb, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
-  public static final String a(String paramString1, String paramString2)
+  public void a(long paramLong1, long paramLong2)
   {
-    return alka.a() + File.separator + "_res/" + paramString1;
-  }
-  
-  public String a(aljd paramaljd)
-  {
-    return alka.a() + File.separator + "_res/" + paramaljd.b + File.separator;
-  }
-  
-  public boolean a(aljd paramaljd)
-  {
-    String str = b(paramaljd);
-    try
-    {
-      boolean bool = new File(str).exists();
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a, 2, "needDownload.file exist|" + bool + "|" + paramaljd + "|" + str);
-      }
-      if (!bool) {
-        return true;
-      }
+    if (this.jdField_a_of_type_Aljb != null) {
+      this.jdField_a_of_type_Aljb.a(aliy.a(this.jdField_a_of_type_Aliy, paramLong1, 0));
     }
-    catch (Throwable paramaljd)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.a, 2, "isNeedDownload.exception happen.e=" + paramaljd.getMessage());
-      }
-      paramaljd.printStackTrace();
+  }
+  
+  public void a(boolean paramBoolean, alix paramalix)
+  {
+    QLog.i("AREngine_ARResourceManagerTools", 1, "onARResourceDownloadComplete result" + paramBoolean);
+    if (this.jdField_a_of_type_Aljb != null) {
+      this.jdField_a_of_type_Aljb.a(paramalix.jdField_a_of_type_Int, paramBoolean);
     }
-    return false;
-  }
-  
-  public boolean a(aljd paramaljd, boolean paramBoolean)
-  {
-    return true;
-  }
-  
-  public String b(aljd paramaljd)
-  {
-    return a(paramaljd.b, paramaljd.c);
-  }
-  
-  public boolean b(aljd paramaljd)
-  {
-    boolean bool = true;
-    String str = attn.a(b(paramaljd));
-    if (!paramaljd.b.equalsIgnoreCase(str))
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.a, 1, "checkDownloadFile.verify failed|" + str + "|" + paramaljd);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      for (;;)
+      {
+        if (localIterator.hasNext())
+        {
+          localalix = (alix)localIterator.next();
+          if (!localalix.jdField_a_of_type_JavaLangString.equals(paramalix.jdField_a_of_type_JavaLangString)) {
+            continue;
+          }
+          if (paramalix.jdField_a_of_type_Boolean) {}
+          try
+          {
+            System.currentTimeMillis();
+            if (paramalix.jdField_a_of_type_Int == 6)
+            {
+              new File(paramalix.c);
+              aljc.a(paramalix.c, alis.b());
+            }
+            for (;;)
+            {
+              QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerModelDownloadComplete  ");
+              this.b.remove(localalix);
+              QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerModelDownloadComplete  remove " + localalix.jdField_a_of_type_JavaLangString);
+              break;
+              if (paramalix.jdField_a_of_type_Int != 7) {
+                break label268;
+              }
+              aljc.a(paramalix.c, alis.a(paramalix.b));
+            }
+            return;
+          }
+          catch (Exception localException)
+          {
+            new File(paramalix.c).delete();
+            QLog.i("AREngine_ARResourceManagerTools", 1, "Download end. uncompressZip error. url = ");
+            if (this.jdField_a_of_type_Aljb != null) {
+              this.jdField_a_of_type_Aljb.a(false);
+            }
+            this.jdField_a_of_type_Aliy.a();
+            QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerAllDownloadComplete  ");
+          }
+        }
       }
-      bool = false;
+      label268:
+      while (this.b.size() != 0) {
+        for (;;)
+        {
+          alix localalix;
+          File localFile = new File(paramalix.c);
+          aljc.a(paramalix.c, localFile.getParentFile().getAbsolutePath() + File.separator + paramalix.b + File.separator);
+        }
+      }
+      if (this.jdField_a_of_type_Aljb != null) {
+        this.jdField_a_of_type_Aljb.a(true);
+      }
+      this.jdField_a_of_type_Aliy.a();
+      return;
     }
-    return bool;
+    if (this.jdField_a_of_type_Aljb != null) {
+      this.jdField_a_of_type_Aljb.a(false);
+    }
+    this.jdField_a_of_type_Aliy.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aliz
  * JD-Core Version:    0.7.0.1
  */

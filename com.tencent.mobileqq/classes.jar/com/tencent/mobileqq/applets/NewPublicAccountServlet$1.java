@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.applets;
 
-import akig;
-import akii;
+import akws;
+import akwu;
 
 public class NewPublicAccountServlet$1
   implements Runnable
 {
-  public NewPublicAccountServlet$1(akii paramakii, akig paramakig, byte[] paramArrayOfByte) {}
+  public NewPublicAccountServlet$1(akwu paramakwu, akws paramakws, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Akig.onUpdate(4, true, this.jdField_a_of_type_ArrayOfByte);
+    this.jdField_a_of_type_Akws.onUpdate(4, true, this.jdField_a_of_type_ArrayOfByte);
   }
 }
 

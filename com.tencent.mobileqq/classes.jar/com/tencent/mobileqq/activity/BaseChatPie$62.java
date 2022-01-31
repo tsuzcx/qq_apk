@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import awdp;
+import axcx;
 import com.tencent.qphone.base.util.QLog;
 
 class BaseChatPie$62
@@ -12,9 +12,9 @@ class BaseChatPie$62
   {
     if (!BaseChatPie.R)
     {
-      awdp.b = System.currentTimeMillis();
-      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_CLICK_CAMERA ", Long.valueOf(awdp.b) });
-      this.this$0.aM();
+      axcx.b = System.currentTimeMillis();
+      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_CLICK_CAMERA ", Long.valueOf(axcx.b) });
+      this.this$0.aO();
       BaseChatPie.R = true;
     }
   }

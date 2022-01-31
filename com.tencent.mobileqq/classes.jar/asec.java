@@ -1,22 +1,18 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.Emoticon;
 
-final class asec
-  implements View.OnClickListener
+class asec
+  implements asdx
 {
-  asec(Dialog paramDialog, String paramString) {}
+  asec(asdy paramasdy, Emoticon paramEmoticon, int paramInt1, String paramString, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.jdField_a_of_type_AndroidAppDialog != null) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
+    this.jdField_a_of_type_Asdy.a.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asec
  * JD-Core Version:    0.7.0.1
  */

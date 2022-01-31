@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.app;
 
-import ajed;
-import ajfb;
-import ajfe;
-import ajgs;
-import akbm;
-import aken;
-import akeu;
+import ajsf;
+import ajtd;
+import ajtg;
+import ajuv;
+import akpy;
+import aksz;
+import aktg;
 import android.content.ContentValues;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
-import apck;
-import atmp;
-import atmq;
-import awao;
-import awbi;
-import bach;
-import badq;
+import apue;
+import aukn;
+import auko;
+import awzw;
+import axaq;
+import bbdm;
+import bbev;
 import com.dataline.util.widget.AsyncImageView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -65,7 +65,7 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import es;
+import gl;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -80,13 +80,13 @@ import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.FileContr
 import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.GenericSubCmd;
 import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MsgHeader;
 import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.NFCNotify;
-import xrh;
-import xvo;
-import xvq;
-import ydt;
+import yak;
+import yes;
+import yeu;
+import ymx;
 
 public class RouterHandler
-  extends ajfb
+  extends ajtd
   implements LiteTransferListenerCallback, LiteTransferOperatorCallback
 {
   private int jdField_a_of_type_Int;
@@ -137,19 +137,19 @@ public class RouterHandler
   
   public static long a()
   {
-    return ((xrh)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(51)).a();
+    return ((yak)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(51)).a();
   }
   
   private void a(int paramInt, FTNNotify paramFTNNotify, long paramLong)
   {
-    paramFTNNotify = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.MsgBodyFromFTNNotify(paramFTNNotify, paramLong, ajed.z, 1).toByteArray();
-    ((xrh)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(paramLong, paramInt, paramFTNNotify);
+    paramFTNNotify = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.MsgBodyFromFTNNotify(paramFTNNotify, paramLong, ajsf.z, 1).toByteArray();
+    ((yak)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(paramLong, paramInt, paramFTNNotify);
   }
   
   private void a(int paramInt, FileControl paramFileControl, long paramLong)
   {
-    paramFileControl = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.MsgBodyFromFileControl(paramFileControl, paramLong, ajed.z, 3).toByteArray();
-    ((xrh)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(paramLong, paramInt, paramFileControl);
+    paramFileControl = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.MsgBodyFromFileControl(paramFileControl, paramLong, ajsf.z, 3).toByteArray();
+    ((yak)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(paramLong, paramInt, paramFileControl);
   }
   
   private void a(int paramInt, MsgCSBody0x211 paramMsgCSBody0x211)
@@ -235,13 +235,13 @@ public class RouterHandler
     if (!this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.FillReqBody(paramMsgCSBody0x346, localReqBody)) {
       return;
     }
-    ((xrh)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(paramMsgCSBody0x346.uMsgSubType, paramInt, localReqBody.toByteArray());
+    ((yak)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(paramMsgCSBody0x346.uMsgSubType, paramInt, localReqBody.toByteArray());
   }
   
   private void a(int paramInt, NFCNotify paramNFCNotify, long paramLong)
   {
-    paramNFCNotify = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.MsgBodyFromNFCNotify(paramNFCNotify, paramLong, ajed.z, 2).toByteArray();
-    ((xrh)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(paramLong, paramInt, paramNFCNotify);
+    paramNFCNotify = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.MsgBodyFromNFCNotify(paramNFCNotify, paramLong, ajsf.z, 2).toByteArray();
+    ((yak)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(paramLong, paramInt, paramNFCNotify);
   }
   
   private void a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, boolean paramBoolean)
@@ -342,7 +342,7 @@ public class RouterHandler
   
   private void a(RouterMsgRecord paramRouterMsgRecord, boolean paramBoolean)
   {
-    String str = akbm.a(String.valueOf(paramRouterMsgRecord.peerDin), 6002);
+    String str = akpy.a(String.valueOf(paramRouterMsgRecord.peerDin), 6002);
     boolean bool = false;
     QQMessageFacade localQQMessageFacade = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a();
     if (localQQMessageFacade == null) {}
@@ -372,9 +372,9 @@ public class RouterHandler
     do
     {
       return;
-      atmp localatmp = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+      aukn localaukn = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
       paramString = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramString, 6002);
-      localatmp.a();
+      localaukn.a();
     } while (paramString == null);
     localQQMessageFacade.a(paramString);
   }
@@ -403,12 +403,12 @@ public class RouterHandler
   
   public static boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    return ((xrh)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(51)).a(paramInt1, paramInt2, paramArrayOfByte);
+    return ((yak)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(51)).a(paramInt1, paramInt2, paramArrayOfByte);
   }
   
   public static boolean a(long paramLong, int paramInt, byte[] paramArrayOfByte)
   {
-    return ((xrh)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(51)).a(paramLong, paramInt, paramArrayOfByte);
+    return ((yak)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(51)).a(paramLong, paramInt, paramArrayOfByte);
   }
   
   private int b(int paramInt)
@@ -498,13 +498,13 @@ public class RouterHandler
   {
     Object localObject = Long.toString(paramRouterMsgRecord.peerDin);
     String str = a(paramRouterMsgRecord.peerDin);
-    akeu localakeu = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-    localObject = localakeu.a((String)localObject, 6002);
+    aktg localaktg = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+    localObject = localaktg.a((String)localObject, 6002);
     ((RecentUser)localObject).setType(6002);
-    ((RecentUser)localObject).lastmsgtime = awao.a();
+    ((RecentUser)localObject).lastmsgtime = awzw.a();
     ((RecentUser)localObject).displayName = str;
     ((RecentUser)localObject).msgType = paramRouterMsgRecord.msgtype;
-    localakeu.a((RecentUser)localObject);
+    localaktg.a((RecentUser)localObject);
   }
   
   public void GetThumbFilePath(int paramInt, Session paramSession) {}
@@ -518,7 +518,7 @@ public class RouterHandler
   
   public void InvokeReport(ReportItem paramReportItem)
   {
-    es.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramReportItem, es.d);
+    gl.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramReportItem, gl.d);
   }
   
   public void OnGroupComplete(int paramInt1, int paramInt2) {}
@@ -530,7 +530,7 @@ public class RouterHandler
     boolean bool2 = false;
     if (paramByte == 2)
     {
-      boolean bool1 = badq.h(BaseApplication.getContext());
+      boolean bool1 = bbev.h(BaseApplication.getContext());
       if (paramLong <= 3145728L) {}
       for (paramByte = 1;; paramByte = 0)
       {
@@ -652,7 +652,7 @@ public class RouterHandler
       localSession.vOfflineFileUUID = paramMessageForDeviceFile.vOfflineFileUUID;
       localSession.uChannelType = paramMessageForDeviceFile.uChannelType;
       if ((QLog.isDevelopLevel()) && (paramMessageForDeviceFile.md5 != null)) {
-        QLog.d("dataline.Router", 4, "getSessionFromMsgRecord, uSessionID[" + paramMessageForDeviceFile.uSessionID + "], strMR[" + bach.a(paramMessageForDeviceFile.md5) + "], filesize[" + paramMessageForDeviceFile.fileSize);
+        QLog.d("dataline.Router", 4, "getSessionFromMsgRecord, uSessionID[" + paramMessageForDeviceFile.uSessionID + "], strMR[" + bbdm.a(paramMessageForDeviceFile.md5) + "], filesize[" + paramMessageForDeviceFile.fileSize);
       }
       localSession.actionInfo = a(paramMessageForDeviceFile);
       return localSession;
@@ -664,12 +664,12 @@ public class RouterHandler
   {
     QQMessageFacade.Message localMessage = new QQMessageFacade.Message();
     ProxyManager localProxyManager = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    atmp localatmp = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if (aken.a(localProxyManager, RouterMsgRecord.sBasicTableName + paramString)) {
-      localProxyManager.a(localatmp);
+    aukn localaukn = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    if (aksz.a(localProxyManager, RouterMsgRecord.sBasicTableName + paramString)) {
+      localProxyManager.a(localaukn);
     }
-    paramString = localatmp.a(RouterMsgRecord.class, "select * from " + RouterMsgRecord.sBasicTableName + paramString + " order by msgid desc", null);
-    localatmp.a();
+    paramString = localaukn.a(RouterMsgRecord.class, "select * from " + RouterMsgRecord.sBasicTableName + paramString + " order by msgid desc", null);
+    localaukn.a();
     if (paramString == null) {
       return null;
     }
@@ -683,11 +683,11 @@ public class RouterHandler
   
   public String a(long paramLong)
   {
-    DeviceInfo localDeviceInfo = ((xrh)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(paramLong);
+    DeviceInfo localDeviceInfo = ((yak)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(paramLong);
     if (localDeviceInfo == null) {
-      return BaseApplication.getContext().getString(2131625834);
+      return BaseApplication.getContext().getString(2131691410);
     }
-    return ydt.a(localDeviceInfo);
+    return ymx.a(localDeviceInfo);
   }
   
   protected void a()
@@ -736,8 +736,8 @@ public class RouterHandler
         long l = this.jdField_a_of_type_Long + 1L;
         this.jdField_a_of_type_Long = l;
         localObject = new RouterMsgRecord(l);
-        xrh localxrh = (xrh)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
-        if (paramSession.msgHeader.uint64_src_uin == localxrh.a())
+        yak localyak = (yak)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
+        if (paramSession.msgHeader.uint64_src_uin == localyak.a())
         {
           l = paramSession.msgHeader.uint64_dst_uin;
           ((RouterMsgRecord)localObject).setTableName(String.valueOf(l));
@@ -756,7 +756,7 @@ public class RouterHandler
           ((RouterMsgRecord)localObject).msg = "file";
           ((RouterMsgRecord)localObject).msgtype = b(paramSession.emFileType);
           ((RouterMsgRecord)localObject).extInt = 1;
-          ((RouterMsgRecord)localObject).time = awao.a();
+          ((RouterMsgRecord)localObject).time = awzw.a();
           this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
           a((RouterMsgRecord)localObject);
           this.d.put(Long.valueOf(((RouterMsgRecord)localObject).uSessionID), localObject);
@@ -828,7 +828,7 @@ public class RouterHandler
       ((RouterMsgRecord)localObject).msgtype = b(paramSession.emFileType);
       ((RouterMsgRecord)localObject).msg = "file";
       ((RouterMsgRecord)localObject).extInt = ((RouterMsgRecord)localObject).status;
-      ((RouterMsgRecord)localObject).time = awao.a();
+      ((RouterMsgRecord)localObject).time = awzw.a();
       b((RouterMsgRecord)localObject);
       if (((RouterMsgRecord)localObject).status != 5) {
         this.d.remove(Long.valueOf(paramSession.uSessionID));
@@ -875,18 +875,18 @@ public class RouterHandler
     if (paramSession.msgHeader.uint64_src_uin == a())
     {
       l = paramSession.msgHeader.uint64_dst_uin;
-      localMessageForDeviceFile = (MessageForDeviceFile)awbi.a(-4500);
+      localMessageForDeviceFile = (MessageForDeviceFile)axaq.a(-4500);
       localMessageForDeviceFile.uniseq = paramSession.uSessionID;
       localMessageForDeviceFile.msgtype = -4500;
       localMessageForDeviceFile.istroop = 9501;
       localMessageForDeviceFile.filePath = paramSession.strFilePathSrc;
       localMessageForDeviceFile.fileSize = paramSession.uFileSizeSrc;
       localMessageForDeviceFile.issend = 0;
-      localMessageForDeviceFile.srcFileName = apck.a(paramSession.strFilePathSrc);
+      localMessageForDeviceFile.srcFileName = apue.a(paramSession.strFilePathSrc);
       localMessageForDeviceFile.msgStatus = 3;
       localMessageForDeviceFile.nFileStatus = -1;
-      localMessageForDeviceFile.time = awao.a();
-      localMessageForDeviceFile.msg = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131625716);
+      localMessageForDeviceFile.time = awzw.a();
+      localMessageForDeviceFile.msg = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691292);
       if (!paramSession.bSend) {
         break label616;
       }
@@ -896,11 +896,11 @@ public class RouterHandler
       localMessageForDeviceFile.selfuin = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
       localMessageForDeviceFile.senderuin = Long.toString(l);
       localMessageForDeviceFile.frienduin = Long.toString(l);
-      if (!xvq.d.equalsIgnoreCase(paramSession.actionInfo.strServiceName)) {
+      if (!yeu.d.equalsIgnoreCase(paramSession.actionInfo.strServiceName)) {
         break label622;
       }
       localMessageForDeviceFile.nFileMsgType = 2;
-      localMessageForDeviceFile.msg = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131625721);
+      localMessageForDeviceFile.msg = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691297);
     }
     for (;;)
     {
@@ -940,7 +940,7 @@ public class RouterHandler
       localMessageForDeviceFile.uint32_src_ter_type = paramSession.msgHeader.uint32_src_ter_type;
       localMessageForDeviceFile.uint32_dst_ter_type = paramSession.msgHeader.uint32_dst_ter_type;
       localMessageForDeviceFile.serial();
-      ((xvq)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a(paramSession.uSessionID, localMessageForDeviceFile.frienduin, localMessageForDeviceFile.istroop, localMessageForDeviceFile.uniseq);
+      ((yeu)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a(paramSession.uSessionID, localMessageForDeviceFile.frienduin, localMessageForDeviceFile.istroop, localMessageForDeviceFile.uniseq);
       this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageForDeviceFile, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
       return;
       l = paramSession.msgHeader.uint64_src_uin;
@@ -949,15 +949,15 @@ public class RouterHandler
       i = 1;
       break label151;
       label622:
-      if (xvq.h.equalsIgnoreCase(paramSession.actionInfo.strServiceName))
+      if (yeu.h.equalsIgnoreCase(paramSession.actionInfo.strServiceName))
       {
         localMessageForDeviceFile.nFileMsgType = 1;
-        localMessageForDeviceFile.msg = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131625716);
+        localMessageForDeviceFile.msg = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691292);
       }
-      else if (xvq.b.equalsIgnoreCase(paramSession.actionInfo.strServiceName))
+      else if (yeu.b.equalsIgnoreCase(paramSession.actionInfo.strServiceName))
       {
         localMessageForDeviceFile.nFileMsgType = 1;
-        localMessageForDeviceFile.msg = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131625716);
+        localMessageForDeviceFile.msg = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691292);
       }
     }
   }
@@ -1003,7 +1003,7 @@ public class RouterHandler
   protected void a(ArrayList<Session> paramArrayList, boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
-    if (!badq.d(BaseApplication.getContext())) {
+    if (!bbev.d(BaseApplication.getContext())) {
       this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.showNoNetworkDialog();
     }
     do
@@ -1068,7 +1068,7 @@ public class RouterHandler
     for (;;)
     {
       ((List)localObject2).add(localObject5);
-      ((xvq)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a(localMessageForDeviceFile.uSessionID, localMessageForDeviceFile.frienduin, localMessageForDeviceFile.istroop, localMessageForDeviceFile.uniseq);
+      ((yeu)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a(localMessageForDeviceFile.uSessionID, localMessageForDeviceFile.frienduin, localMessageForDeviceFile.istroop, localMessageForDeviceFile.uniseq);
       ((DeviceFileHandler)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(50)).a((Session)localObject5);
       localObject5 = new FTNInfo();
       ((FTNInfo)localObject5).strFileIndex = localMessageForDeviceFile.serverPath;
@@ -1131,9 +1131,9 @@ public class RouterHandler
     return this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getBoolean("auto_receive_files", false);
   }
   
-  public Class<? extends ajfe> observerClass()
+  public Class<? extends ajtg> observerClass()
   {
-    return ajgs.class;
+    return ajuv.class;
   }
   
   public void onDestroy()

@@ -16,10 +16,10 @@ class CanvasView$3$1
     //   4: ifnonnull +39 -> 43
     //   7: invokestatic 29	com/tencent/qqmini/sdk/core/widget/CanvasView:a	()Ljava/lang/String;
     //   10: ldc 31
-    //   12: invokestatic 37	bdnw:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   12: invokestatic 37	besl:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   15: aload_0
     //   16: getfield 13	com/tencent/qqmini/sdk/core/widget/CanvasView$3$1:jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$3	Lcom/tencent/qqmini/sdk/core/widget/CanvasView$3;
-    //   19: getfield 42	com/tencent/qqmini/sdk/core/widget/CanvasView$3:jdField_a_of_type_Bdii	Lbdii;
+    //   19: getfield 42	com/tencent/qqmini/sdk/core/widget/CanvasView$3:jdField_a_of_type_Beml	Lbeml;
     //   22: aload_0
     //   23: getfield 13	com/tencent/qqmini/sdk/core/widget/CanvasView$3$1:jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$3	Lcom/tencent/qqmini/sdk/core/widget/CanvasView$3;
     //   26: getfield 45	com/tencent/qqmini/sdk/core/widget/CanvasView$3:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -116,7 +116,7 @@ class CanvasView$3$1
     //   232: iload 5
     //   234: invokevirtual 99	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   237: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   240: invokestatic 106	bdnw:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   240: invokestatic 106	besl:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   243: ldc 107
     //   245: iload 4
     //   247: i2f
@@ -215,14 +215,14 @@ class CanvasView$3$1
     //   428: aload 11
     //   430: aconst_null
     //   431: invokevirtual 156	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
-    //   434: invokestatic 161	bdeu:a	()Lbdeu;
+    //   434: invokestatic 161	beiu:a	()Lbeiu;
     //   437: aload_0
     //   438: getfield 13	com/tencent/qqmini/sdk/core/widget/CanvasView$3$1:jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$3	Lcom/tencent/qqmini/sdk/core/widget/CanvasView$3;
     //   441: getfield 163	com/tencent/qqmini/sdk/core/widget/CanvasView$3:b	Ljava/lang/String;
-    //   444: invokevirtual 166	bdeu:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   444: invokevirtual 166	beiu:b	(Ljava/lang/String;)Ljava/lang/String;
     //   447: astore 11
     //   449: aload 11
-    //   451: invokestatic 171	bdgo:a	(Ljava/lang/String;)Ljava/io/File;
+    //   451: invokestatic 171	bekq:a	(Ljava/lang/String;)Ljava/io/File;
     //   454: astore 10
     //   456: new 173	java/io/FileOutputStream
     //   459: dup
@@ -255,14 +255,14 @@ class CanvasView$3$1
     //   515: astore 9
     //   517: aload 9
     //   519: ldc 193
-    //   521: invokestatic 161	bdeu:a	()Lbdeu;
+    //   521: invokestatic 161	beiu:a	()Lbeiu;
     //   524: aload 11
-    //   526: invokevirtual 196	bdeu:e	(Ljava/lang/String;)Ljava/lang/String;
+    //   526: invokevirtual 196	beiu:e	(Ljava/lang/String;)Ljava/lang/String;
     //   529: invokevirtual 200	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   532: pop
     //   533: aload_0
     //   534: getfield 13	com/tencent/qqmini/sdk/core/widget/CanvasView$3$1:jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$3	Lcom/tencent/qqmini/sdk/core/widget/CanvasView$3;
-    //   537: getfield 203	com/tencent/qqmini/sdk/core/widget/CanvasView$3:jdField_a_of_type_Bdcy	Lbdcy;
+    //   537: getfield 203	com/tencent/qqmini/sdk/core/widget/CanvasView$3:jdField_a_of_type_Begy	Lbegy;
     //   540: aload_0
     //   541: getfield 13	com/tencent/qqmini/sdk/core/widget/CanvasView$3$1:jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$3	Lcom/tencent/qqmini/sdk/core/widget/CanvasView$3;
     //   544: getfield 48	com/tencent/qqmini/sdk/core/widget/CanvasView$3:jdField_a_of_type_Int	I
@@ -297,10 +297,10 @@ class CanvasView$3$1
     //   616: invokestatic 230	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   619: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   622: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   625: invokestatic 37	bdnw:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   625: invokestatic 37	besl:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   628: aload_0
     //   629: getfield 13	com/tencent/qqmini/sdk/core/widget/CanvasView$3$1:jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$3	Lcom/tencent/qqmini/sdk/core/widget/CanvasView$3;
-    //   632: getfield 42	com/tencent/qqmini/sdk/core/widget/CanvasView$3:jdField_a_of_type_Bdii	Lbdii;
+    //   632: getfield 42	com/tencent/qqmini/sdk/core/widget/CanvasView$3:jdField_a_of_type_Beml	Lbeml;
     //   635: aload_0
     //   636: getfield 13	com/tencent/qqmini/sdk/core/widget/CanvasView$3$1:jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$3	Lcom/tencent/qqmini/sdk/core/widget/CanvasView$3;
     //   639: getfield 45	com/tencent/qqmini/sdk/core/widget/CanvasView$3:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -354,7 +354,7 @@ class CanvasView$3$1
     //   746: invokevirtual 241	org/json/JSONException:printStackTrace	()V
     //   749: aload_0
     //   750: getfield 13	com/tencent/qqmini/sdk/core/widget/CanvasView$3$1:jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$3	Lcom/tencent/qqmini/sdk/core/widget/CanvasView$3;
-    //   753: getfield 42	com/tencent/qqmini/sdk/core/widget/CanvasView$3:jdField_a_of_type_Bdii	Lbdii;
+    //   753: getfield 42	com/tencent/qqmini/sdk/core/widget/CanvasView$3:jdField_a_of_type_Beml	Lbeml;
     //   756: aload_0
     //   757: getfield 13	com/tencent/qqmini/sdk/core/widget/CanvasView$3$1:jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$3	Lcom/tencent/qqmini/sdk/core/widget/CanvasView$3;
     //   760: getfield 45	com/tencent/qqmini/sdk/core/widget/CanvasView$3:jdField_a_of_type_JavaLangString	Ljava/lang/String;

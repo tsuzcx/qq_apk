@@ -1,71 +1,97 @@
+import java.util.ArrayList;
+
 public class uyy
-  implements Cloneable
+  implements vab
 {
-  public final int a;
-  public final String a;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
-  public final String f;
-  public final String g;
-  public String h;
+  protected tje a;
+  private uyf jdField_a_of_type_Uyf;
+  private uza jdField_a_of_type_Uza;
+  protected uze a;
+  protected vac a;
+  protected vad a;
   
-  public uyy(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  public uyy(uza paramuza)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = null;
-    this.d = paramString3;
-    this.e = paramString4;
-    this.f = paramString5;
-    this.g = paramString6;
-    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Uza = paramuza;
+    this.jdField_a_of_type_Uyf = new uyf();
   }
   
-  public uyy(tbl paramtbl)
+  public Object a()
   {
-    this.jdField_a_of_type_JavaLangString = paramtbl.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramtbl.jdField_b_of_type_JavaLangString;
-    this.c = paramtbl.c;
-    this.d = paramtbl.d;
-    this.e = paramtbl.e;
-    this.f = paramtbl.g;
-    this.g = paramtbl.f;
-    this.jdField_a_of_type_Int = paramtbl.jdField_b_of_type_Int;
+    return null;
   }
   
   public String a()
   {
-    return this.h;
+    return getClass().getSimpleName();
   }
   
-  public void a(String paramString)
+  public void a()
   {
-    this.h = paramString;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {
-      return true;
+    veg.c("GetMyStoryDesFromVidListStep", "GetMyStoryDesFromVidListStep");
+    if (this.jdField_a_of_type_Uze == null)
+    {
+      if (this.jdField_a_of_type_Vad != null)
+      {
+        this.jdField_a_of_type_Vad.a(a());
+        return;
+      }
+      veg.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
+      return;
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
+    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_Uze.a);
+    this.jdField_a_of_type_Tje = tje.a(localArrayList);
+    this.jdField_a_of_type_Tje.a("GetMyStoryDesFromVidListStep");
+    this.jdField_a_of_type_Tje.a(new uyz(this, localArrayList));
+    this.jdField_a_of_type_Tje.b();
+  }
+  
+  public void a(Object paramObject)
+  {
+    boolean bool2 = true;
+    if ((paramObject instanceof uze))
+    {
+      this.jdField_a_of_type_Uze = ((uze)paramObject);
+      return;
     }
-    paramObject = (uyy)paramObject;
-    return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+    paramObject = new StringBuilder().append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
+    if (this.jdField_a_of_type_Uze == null)
+    {
+      bool1 = true;
+      veg.e("GetMyStoryDesFromVidListStep", bool1);
+      paramObject = new StringBuilder().append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
+      if (this.jdField_a_of_type_Uze != null) {
+        break label96;
+      }
+    }
+    label96:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      vxs.a(bool1, new Object[0]);
+      return;
+      bool1 = false;
+      break;
+    }
   }
   
-  public int hashCode()
+  public void a(vac paramvac)
   {
-    return this.jdField_a_of_type_JavaLangString.hashCode();
+    this.jdField_a_of_type_Vac = paramvac;
   }
   
-  public String toString()
+  public void a(vad paramvad)
   {
-    return "DoodleEmojiItem{mPackId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mLogoUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mDownloadLogoUrl='" + this.c + '\'' + ", mPackName='" + this.d + '\'' + ", mPackDownloadUrl='" + this.e + '\'' + ", mPackMd5='" + this.g + '\'' + ", mLocalEmojiFolderPath='" + this.h + '\'' + ", mConfig='" + this.f + '\'' + '}';
+    this.jdField_a_of_type_Vad = paramvad;
   }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

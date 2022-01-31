@@ -1,29 +1,25 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.MessageForStarLeague;
 
-public class aeba
-  extends aeav
+class aeba
+  implements View.OnClickListener
 {
-  public AnimationView.AnimationInfo a;
-  public String b;
+  aeba(aeaz paramaeaz) {}
   
-  public aeba(String paramString)
+  public void onClick(View paramView)
   {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null)
+    MessageForStarLeague localMessageForStarLeague = (MessageForStarLeague)((aebb)actn.a(paramView)).a;
+    if (!asji.a((BaseActivity)paramView.getContext(), localMessageForStarLeague.actionUrl, localMessageForStarLeague))
     {
-      this.b = paramRedPacketInfo.background;
-      this.a = paramRedPacketInfo.animInfo;
+      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+      localIntent.putExtra("url", localMessageForStarLeague.actionUrl);
+      paramView.getContext().startActivity(localIntent);
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.b != null) || (this.a != null);
   }
 }
 

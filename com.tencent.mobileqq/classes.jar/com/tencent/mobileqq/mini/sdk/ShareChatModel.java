@@ -11,8 +11,8 @@ public class ShareChatModel
   implements Parcelable
 {
   public static final Parcelable.Creator<ShareChatModel> CREATOR = new ShareChatModel.1();
-  public static final int TYPE_C2C = 1;
-  public static final int TYPE_GROUP = 2;
+  public static final int TYPE_C2C = 0;
+  public static final int TYPE_GROUP = 1;
   private String entryDataHash;
   public String name;
   public Map<String, String> reportData;

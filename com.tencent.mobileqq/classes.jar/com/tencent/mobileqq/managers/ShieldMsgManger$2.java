@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.managers;
 
-import arip;
+import aser;
 import java.util.ArrayList;
 
 public class ShieldMsgManger$2
   implements Runnable
 {
-  public ShieldMsgManger$2(arip paramarip, ArrayList paramArrayList) {}
+  public ShieldMsgManger$2(aser paramaser, ArrayList paramArrayList) {}
   
   public void run()
   {

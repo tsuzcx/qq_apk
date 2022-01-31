@@ -7,34 +7,33 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import beog;
-import beoh;
+import bfwa;
+import bfwb;
 
 public class LabelTextView
   extends TextView
-  implements beoh
+  implements bfwb
 {
-  private int a;
-  protected beog a;
+  private int jdField_a_of_type_Int = 2147483647;
+  protected bfwa a;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
   public LabelTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 2147483647;
     a();
   }
   
   public LabelTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2147483647;
     a();
   }
   
   public LabelTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = 2147483647;
     a();
   }
   
@@ -49,9 +48,9 @@ public class LabelTextView
   
   private void b()
   {
-    this.jdField_a_of_type_Beog = new beog();
-    this.jdField_a_of_type_Beog.a(true);
-    this.jdField_a_of_type_Beog.a(beog.c);
+    this.jdField_a_of_type_Bfwa = new bfwa();
+    this.jdField_a_of_type_Bfwa.a(true);
+    this.jdField_a_of_type_Bfwa.a(bfwa.c);
   }
   
   public void a(Canvas paramCanvas)
@@ -61,9 +60,9 @@ public class LabelTextView
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Beog != null)
+    if ((this.b) && (this.jdField_a_of_type_Bfwa != null))
     {
-      this.jdField_a_of_type_Beog.a(paramCanvas, this);
+      this.jdField_a_of_type_Bfwa.a(paramCanvas, this);
       return;
     }
     super.draw(paramCanvas);
@@ -72,11 +71,16 @@ public class LabelTextView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (getMeasuredWidth() < this.jdField_a_of_type_Int) {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (getMeasuredWidth() >= this.jdField_a_of_type_Int) {
+        break label38;
+      }
       if (getVisibility() == 0) {
         setVisibility(8);
       }
     }
+    label38:
     while (getVisibility() == 0) {
       return;
     }
@@ -86,6 +90,12 @@ public class LabelTextView
   public void setMinWidthCheck(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
+    if (paramInt > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+    }
   }
   
   public void setParam(int paramInt1, int paramInt2, float paramFloat)

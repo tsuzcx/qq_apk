@@ -4,11 +4,11 @@ import android.app.Activity;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
 import com.tencent.util.Pair;
 import java.util.List;
-import nmo;
-import nmq;
-import npv;
-import nrw;
-import nrx;
+import nxz;
+import nyb;
+import obg;
+import odg;
+import odh;
 
 public class ReadinjoyNativeArticleAdDownloadView$1$1
   implements Runnable
@@ -19,13 +19,13 @@ public class ReadinjoyNativeArticleAdDownloadView$1$1
   {
     if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())
     {
-      if ((nrw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0) != null) && (nrw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).isShowing())) {
-        nrw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).dismiss();
+      if ((odg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0) != null) && (odg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).isShowing())) {
+        odg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).dismiss();
       }
-      nrw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0, new npv(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0.a));
-      nrw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).a((List)this.jdField_a_of_type_ComTencentUtilPair.first, (List)this.jdField_a_of_type_ComTencentUtilPair.second, nrw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).a.b, nrw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).a.a.b, nrw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).a.a.a, nrw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).a.e, nrw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).a.a.h);
-      nrw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).a(new nrx(this));
-      nrw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).show();
+      odg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0, new obg(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0.a));
+      odg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).a((List)this.jdField_a_of_type_ComTencentUtilPair.first, (List)this.jdField_a_of_type_ComTencentUtilPair.second, odg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).a.b, odg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).a.a.b, odg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).a.a.a, odg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).a.e, odg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).a.a.h);
+      odg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).a(new odh(this));
+      odg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadinjoyNativeArticleAdDownloadView$1.this$0).show();
     }
   }
 }

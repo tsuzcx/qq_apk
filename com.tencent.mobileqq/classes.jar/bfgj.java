@@ -1,20 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qlink.QlinkStandardDialogActivity;
-
-public class bfgj
-  implements DialogInterface.OnDismissListener
-{
-  public bfgj(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
-}
+class bfgj {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfgj
  * JD-Core Version:    0.7.0.1
  */

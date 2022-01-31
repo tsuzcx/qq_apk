@@ -1,70 +1,28 @@
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.lang.ref.WeakReference;
 
-public class nfv
-  extends MSFServlet
+class nfv
+  implements View.OnClickListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EcShopServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bakz.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
-    for (;;)
-    {
-      new Bundle().putByteArray("data", arrayOfByte);
-      nft localnft = (nft)((QQAppInterface)super.getAppRuntime()).a(68);
-      if (localnft != null) {
-        localnft.a(paramIntent, paramFromServiceMsg, arrayOfByte);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("EcShopServlet", 2, "onReceive exit");
-      }
-      return;
-      arrayOfByte = null;
-    }
-  }
+  nfv(nfu paramnfu, nmv paramnmv, String paramString) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onClick(View paramView)
   {
-    String str = paramIntent.getStringExtra("cmd");
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    long l = paramIntent.getLongExtra("timeout", 30000L);
-    if (!TextUtils.isEmpty(str))
-    {
-      paramPacket.setSSOCommand("SQQShopFolderSvc." + str);
-      paramPacket.setTimeout(l);
-      if (arrayOfByte == null) {
-        break label135;
-      }
-      paramIntent = new byte[arrayOfByte.length + 4];
-      bakz.a(paramIntent, 0, arrayOfByte.length + 4);
-      bakz.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
+    paramView = new Intent((Context)this.jdField_a_of_type_Nfu.jdField_a_of_type_JavaLangRefWeakReference.get(), QQMapActivity.class);
+    paramView.putExtra("lat", this.jdField_a_of_type_Nmv.g);
+    paramView.putExtra("lon", this.jdField_a_of_type_Nmv.f);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      paramView.putExtra("loc", this.jdField_a_of_type_JavaLangString);
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EcShopServlet", 2, "onSend exit cmd=" + str);
-      }
-      return;
-      label135:
-      paramIntent = new byte[4];
-      bakz.a(paramIntent, 0, 4L);
-      paramPacket.putSendData(paramIntent);
-    }
+    ((BaseActivity)this.jdField_a_of_type_Nfu.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity(paramView);
+    axqw.b(this.jdField_a_of_type_Nfu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Biz_card", "Biz_card_map", 0, 0, this.jdField_a_of_type_Nfu.jdField_a_of_type_JavaLangString, "", "", "");
+    nfu.a(this.jdField_a_of_type_Nfu, this.jdField_a_of_type_Nmv.jdField_a_of_type_JavaLangString);
   }
 }
 

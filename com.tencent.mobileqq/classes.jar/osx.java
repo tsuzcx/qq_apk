@@ -1,36 +1,51 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 
 public class osx
+  implements Handler.Callback
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final osy jdField_a_of_type_Osy;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
+  
+  public osx(osy paramosy)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    if (paramBaseArticleInfo.mSinglePicture != null) {}
-    for (Object localObject = paramBaseArticleInfo.mSinglePicture.getFile();; localObject = null)
+    this.jdField_a_of_type_Osy = paramosy;
+    this.jdField_a_of_type_AndroidOsHandler = new bfnk(Looper.getMainLooper(), this);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    this.b = false;
+    do
     {
-      localJSONObject2.put("article_large_imge_url", localObject);
-      localJSONObject1.put("id_article_large_imge", localJSONObject2);
-      if (paramBaseArticleInfo.mGalleryPicNumber > 1)
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + ajjy.a(2131647104));
-        localJSONObject1.put("id_gallery_cnt", localObject);
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("gallery_icon", "qq_readinjoy_gallery_count");
-        localJSONObject1.put("id_gallery_img", localObject);
-        localJSONObject1.put("id_gallery_bg", new JSONObject());
+      while (!this.b) {
+        switch (this.jdField_a_of_type_Osy.a(paramBundle))
+        {
+        }
       }
-      otl.a(paramBaseArticleInfo, localJSONObject1, true);
-      otl.m(paramBaseArticleInfo, localJSONObject1);
-      otl.i(paramBaseArticleInfo, localJSONObject1);
-      otl.a(localJSONObject1);
-      localJSONObject1.put("style_ID", "ReadInjoy_gallery_channel_large_cell");
-      otl.a(localJSONObject1, paramBaseArticleInfo);
-      return localJSONObject1;
+      return;
+    } while (!this.jdField_a_of_type_Boolean);
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    localMessage.setData(paramBundle);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
     }
+    if (!this.b) {
+      a(paramMessage.getData());
+    }
+    return true;
   }
 }
 

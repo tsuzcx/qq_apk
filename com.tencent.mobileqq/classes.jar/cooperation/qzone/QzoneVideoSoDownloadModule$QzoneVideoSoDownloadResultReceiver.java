@@ -2,23 +2,23 @@ package cooperation.qzone;
 
 import android.os.Bundle;
 import android.os.ResultReceiver;
-import bfsd;
+import bhak;
 
 public class QzoneVideoSoDownloadModule$QzoneVideoSoDownloadResultReceiver
   extends ResultReceiver
 {
-  private bfsd a;
+  private bhak a;
   
-  public QzoneVideoSoDownloadModule$QzoneVideoSoDownloadResultReceiver(bfsd parambfsd)
+  public QzoneVideoSoDownloadModule$QzoneVideoSoDownloadResultReceiver(bhak parambhak)
   {
     super(null);
-    this.a = parambfsd;
+    this.a = parambhak;
   }
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     if (this.a != null) {
-      this.a.a(paramInt, paramBundle);
+      this.a.callback(paramInt, paramBundle);
     }
   }
 }

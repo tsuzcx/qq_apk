@@ -59,7 +59,7 @@ public class EngineManager$EngineChannelReceiver
             break;
           }
           localObject2 = (InstalledEngine)((Iterator)localObject1).next();
-        } while ((!((InstalledEngine)localObject2).isPersist) || (!((InstalledEngine)localObject2).isVerify));
+        } while ((!((InstalledEngine)localObject2).isPersist) || (!((InstalledEngine)localObject2).isVerify) || (!EngineManager.isEngineGTLocalQQVersion(((InstalledEngine)localObject2).engineVersion)));
       }
     }
     for (paramInt = 1;; paramInt = 0)

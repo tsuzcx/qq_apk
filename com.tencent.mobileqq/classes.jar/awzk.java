@@ -1,27 +1,27 @@
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 class awzk
-  implements axab
+  extends Handler
 {
-  awzk(awzj paramawzj, CountdownTextView paramCountdownTextView) {}
+  awzk(awzj paramawzj) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Awzj.jdField_d_of_type_Long = 0L;
-    this.jdField_a_of_type_Awzj.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(awzj.a(this.jdField_a_of_type_Awzj, 0L));
-  }
-  
-  public void a(long paramLong)
-  {
-    paramLong /= 1000L;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(awzj.a(this.jdField_a_of_type_Awzj, paramLong));
-    this.jdField_a_of_type_Awzj.jdField_d_of_type_Long = paramLong;
+    super.handleMessage(paramMessage);
+    if (paramMessage.what == 0)
+    {
+      awzj.a = false;
+      if (QLog.isColorLevel()) {
+        QLog.d(getClass().getSimpleName(), 2, "wtlogin time out");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awzk
  * JD-Core Version:    0.7.0.1
  */

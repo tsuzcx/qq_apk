@@ -5,15 +5,16 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import qxj;
-import qzy;
+import rkb;
+import rmq;
 
 public class BaseData
   implements Parcelable
 {
-  public static final Parcelable.Creator<BaseData> CREATOR = new qxj();
+  public static final Parcelable.Creator<BaseData> CREATOR = new rkb();
   public final float a;
   public FastWebArticleInfo a;
+  public float b;
   public ArticleInfo b;
   public boolean e;
   public final int p;
@@ -22,14 +23,16 @@ public class BaseData
   
   public BaseData(int paramInt)
   {
+    this.jdField_b_of_type_Float = -1000.0F;
     this.p = paramInt;
     this.jdField_a_of_type_Float = a(this);
   }
   
   public BaseData(Parcel paramParcel)
   {
+    this.jdField_b_of_type_Float = -1000.0F;
     this.p = paramParcel.readInt();
-    this.b = ((ArticleInfo)paramParcel.readParcelable(ArticleInfo.class.getClassLoader()));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = ((ArticleInfo)paramParcel.readParcelable(ArticleInfo.class.getClassLoader()));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo = ((FastWebArticleInfo)paramParcel.readParcelable(FastWebArticleInfo.class.getClassLoader()));
     this.jdField_a_of_type_Float = paramParcel.readFloat();
     this.q = paramParcel.readInt();
@@ -48,14 +51,14 @@ public class BaseData
       return 1.5F;
       return 2.0F;
       return 3.0F;
-      return ((ProteusItemData)paramBaseData).b;
-      return qzy.a();
-      return qzy.c(null);
+      return paramBaseData.jdField_b_of_type_Float;
+      return rmq.a(paramBaseData, false);
+      return rmq.a(paramBaseData, true);
       return 9.0F;
       return 10.0F;
       return 11.0F;
     } while (!(paramBaseData instanceof ProteusItemData));
-    return ((ProteusItemData)paramBaseData).b;
+    return paramBaseData.jdField_b_of_type_Float;
   }
   
   public boolean b(BaseData paramBaseData)
@@ -75,7 +78,7 @@ public class BaseData
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeInt(this.p);
-    paramParcel.writeParcelable(this.b, 0);
+    paramParcel.writeParcelable(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0);
     paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo, 0);
     paramParcel.writeFloat(this.jdField_a_of_type_Float);
     paramParcel.writeInt(this.q);

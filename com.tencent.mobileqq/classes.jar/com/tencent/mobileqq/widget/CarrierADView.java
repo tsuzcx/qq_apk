@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.widget;
 
-import amwd;
 import android.content.Context;
 import android.os.Handler.Callback;
 import android.os.Looper;
@@ -14,7 +13,8 @@ import android.view.ViewParent;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
-import babk;
+import anml;
+import bbco;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.dating.CarrierHelper;
 import com.tencent.mobileqq.struct.AdData;
@@ -26,8 +26,8 @@ public class CarrierADView
   extends ADView
   implements Handler.Callback
 {
-  private amwd jdField_a_of_type_Amwd;
   private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
+  private anml jdField_a_of_type_Anml;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
   public CarrierADView(Context paramContext)
@@ -115,13 +115,13 @@ public class CarrierADView
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     int i;
-    if (this.jdField_a_of_type_Amwd != null)
+    if (this.jdField_a_of_type_Anml != null)
     {
       i = paramMotionEvent.getAction();
       if (i != 0) {
         break label56;
       }
-      this.jdField_a_of_type_Amwd.a(false);
+      this.jdField_a_of_type_Anml.a(false);
       j();
       if (this.jdField_a_of_type_AndroidViewMotionEvent != null) {
         this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
@@ -146,7 +146,7 @@ public class CarrierADView
         return false;
       }
     } while ((i != 1) && (i != 3));
-    this.jdField_a_of_type_Amwd.a(true);
+    this.jdField_a_of_type_Anml.a(true);
     i();
     getParent().requestDisallowInterceptTouchEvent(false);
     return false;
@@ -155,7 +155,7 @@ public class CarrierADView
   public void setCarrierData(List<AdData> paramList, int paramInt, CarrierHelper paramCarrierHelper)
   {
     if (this.jdField_a_of_type_MqqOsMqqHandler == null) {
-      this.jdField_a_of_type_MqqOsMqqHandler = new babk(Looper.getMainLooper(), this);
+      this.jdField_a_of_type_MqqOsMqqHandler = new bbco(Looper.getMainLooper(), this);
     }
     h();
     if ((paramList == null) || (paramList.size() == 0))
@@ -181,7 +181,7 @@ public class CarrierADView
       if (paramInt < paramList.size()) {
         try
         {
-          View localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131495265, null);
+          View localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131560844, null);
           paramCarrierHelper.a(localView, (AdData)paramList.get(paramInt));
           b(localView, paramInt);
           paramInt += 1;
@@ -200,9 +200,9 @@ public class CarrierADView
     i();
   }
   
-  public void setFlingSwitch(amwd paramamwd)
+  public void setFlingSwitch(anml paramanml)
   {
-    this.jdField_a_of_type_Amwd = paramamwd;
+    this.jdField_a_of_type_Anml = paramanml;
   }
   
   public void setVisibility(int paramInt)

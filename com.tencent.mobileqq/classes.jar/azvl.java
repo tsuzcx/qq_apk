@@ -1,101 +1,26 @@
+import java.util.List;
+
 public class azvl
 {
-  public static azvl a;
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[256];
-  private static char[] jdField_a_of_type_ArrayOfChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
+  public int a;
+  public long a;
+  public String a;
+  public List<Long> a;
+  public boolean a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
   
-  protected azvl()
+  public String toString()
   {
-    a();
-  }
-  
-  public static azvl a()
-  {
-    if (jdField_a_of_type_Azvl == null) {}
-    try
-    {
-      jdField_a_of_type_Azvl = new azvl();
-      return jdField_a_of_type_Azvl;
-    }
-    finally {}
-  }
-  
-  public String a(String paramString)
-  {
-    return a(paramString.getBytes()).toString();
-  }
-  
-  public StringBuffer a(byte[] paramArrayOfByte)
-  {
-    int k = 0;
-    StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length * 2);
-    int i = 0;
-    int j = 0;
-    char c;
-    while (k < paramArrayOfByte.length)
-    {
-      i = i << 8 | paramArrayOfByte[k] & 0xFF;
-      j += 8;
-      if (j > 5)
-      {
-        Object localObject = jdField_a_of_type_ArrayOfChar;
-        j -= 6;
-        c = localObject[(i >> j)];
-        if (c == 'i') {
-          localObject = "ia";
-        }
-        for (;;)
-        {
-          localStringBuffer.append(localObject);
-          i &= (1 << j) - 1;
-          break;
-          if (c == '+') {
-            localObject = "ib";
-          } else if (c == '/') {
-            localObject = "ic";
-          } else {
-            localObject = Character.valueOf(c);
-          }
-        }
-      }
-      k += 1;
-    }
-    if (j > 0)
-    {
-      c = jdField_a_of_type_ArrayOfChar[(i << 6 - j)];
-      if (c != 'i') {
-        break label185;
-      }
-      paramArrayOfByte = "ia";
-    }
-    for (;;)
-    {
-      localStringBuffer.append(paramArrayOfByte);
-      return localStringBuffer;
-      label185:
-      if (c == '+') {
-        paramArrayOfByte = "ib";
-      } else if (c == '/') {
-        paramArrayOfByte = "ic";
-      } else {
-        paramArrayOfByte = Character.valueOf(c);
-      }
-    }
-  }
-  
-  protected void a()
-  {
-    int i = 0;
-    while (i < jdField_a_of_type_ArrayOfChar.length)
-    {
-      jdField_a_of_type_ArrayOfByte[jdField_a_of_type_ArrayOfChar[i]] = ((byte)i);
-      i += 1;
-    }
+    return "HomeworkInfo{content='" + this.jdField_b_of_type_JavaLangString + '\'' + ", group_id=" + this.jdField_a_of_type_Long + ", uin=" + this.jdField_b_of_type_Long + ", title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", date='" + this.jdField_c_of_type_JavaLangString + '\'' + ", need_feedback=" + this.jdField_a_of_type_Boolean + ", course_name=" + this.d + ", syncgids=" + this.jdField_a_of_type_JavaUtilList + ", hw_id=" + this.jdField_c_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azvl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
 import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
 
 public class afhd
-  implements ValueAnimator.AnimatorUpdateListener
+  implements aftc
 {
-  public afhd(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
+  public afhd(TroopView paramTroopView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt)
   {
-    this.a.h = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.invalidate();
+    if (paramInt == SimpleCheckableSlidingIndicator.a) {
+      TroopView.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afhd
  * JD-Core Version:    0.7.0.1
  */

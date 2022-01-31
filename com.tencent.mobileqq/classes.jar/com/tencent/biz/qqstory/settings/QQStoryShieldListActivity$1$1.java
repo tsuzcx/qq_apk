@@ -1,34 +1,34 @@
 package com.tencent.biz.qqstory.settings;
 
-import atmp;
+import aukn;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import sga;
-import txi;
+import ssw;
+import uke;
 
 public class QQStoryShieldListActivity$1$1
   implements Runnable
 {
-  public QQStoryShieldListActivity$1$1(txi paramtxi, List paramList) {}
+  public QQStoryShieldListActivity$1$1(uke paramuke, List paramList) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Txi.a.jdField_a_of_type_Sga == null) {}
+    if (this.jdField_a_of_type_Uke.a.jdField_a_of_type_Ssw == null) {}
     for (;;)
     {
       return;
-      Object localObject = this.jdField_a_of_type_Txi.a.jdField_a_of_type_Sga;
-      if (this.jdField_a_of_type_Txi.a.jdField_a_of_type_Int == 2) {}
+      Object localObject = this.jdField_a_of_type_Uke.a.jdField_a_of_type_Ssw;
+      if (this.jdField_a_of_type_Uke.a.jdField_a_of_type_Int == 2) {}
       QQStoryUserInfo localQQStoryUserInfo;
       for (boolean bool = true;; bool = false)
       {
-        localObject = ((sga)localObject).b(bool).iterator();
+        localObject = ((ssw)localObject).b(bool).iterator();
         while (((Iterator)localObject).hasNext())
         {
           localQQStoryUserInfo = (QQStoryUserInfo)((Iterator)localObject).next();
-          if (this.jdField_a_of_type_Txi.a.jdField_a_of_type_Sga.a != null) {
-            this.jdField_a_of_type_Txi.a.jdField_a_of_type_Sga.a.b(localQQStoryUserInfo);
+          if (this.jdField_a_of_type_Uke.a.jdField_a_of_type_Ssw.a != null) {
+            this.jdField_a_of_type_Uke.a.jdField_a_of_type_Ssw.a.b(localQQStoryUserInfo);
           }
         }
       }
@@ -36,11 +36,11 @@ public class QQStoryShieldListActivity$1$1
       while (((Iterator)localObject).hasNext())
       {
         localQQStoryUserInfo = (QQStoryUserInfo)((Iterator)localObject).next();
-        if (this.jdField_a_of_type_Txi.a.jdField_a_of_type_Sga.a != null) {
-          this.jdField_a_of_type_Txi.a.jdField_a_of_type_Sga.a.b(localQQStoryUserInfo);
+        if (this.jdField_a_of_type_Uke.a.jdField_a_of_type_Ssw.a != null) {
+          this.jdField_a_of_type_Uke.a.jdField_a_of_type_Ssw.a.b(localQQStoryUserInfo);
         }
-        if (this.jdField_a_of_type_Txi.a.jdField_a_of_type_Sga.b != null) {
-          this.jdField_a_of_type_Txi.a.jdField_a_of_type_Sga.b.put(localQQStoryUserInfo.uin, localQQStoryUserInfo);
+        if (this.jdField_a_of_type_Uke.a.jdField_a_of_type_Ssw.b != null) {
+          this.jdField_a_of_type_Uke.a.jdField_a_of_type_Ssw.b.put(localQQStoryUserInfo.uin, localQQStoryUserInfo);
         }
       }
     }

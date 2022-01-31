@@ -1,230 +1,107 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.presseffect.PressEffectTextView;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry;
+import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.DiscoverBannerPlayInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Subscriber;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 public class twb
-  extends AbsVideoInfoWidget
-  implements View.OnClickListener
+  extends twt
+  implements syt<tmh, tof>
 {
-  private long jdField_a_of_type_Long;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private PressEffectTextView jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView;
-  private twc jdField_a_of_type_Twc;
-  private String c;
+  private int jdField_a_of_type_Int;
+  private DiscoverBannerPlayInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceDiscoverBannerPlayInfo;
+  private String jdField_a_of_type_JavaLangString = "Q.qqstory.player.data.DiscoverBannerPlayPageLoader";
+  private two jdField_a_of_type_Two;
+  private twu jdField_a_of_type_Twu;
   
-  public twb(View paramView)
+  public twb(DiscoverBannerPlayInfo paramDiscoverBannerPlayInfo)
   {
-    super(paramView);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceDiscoverBannerPlayInfo = paramDiscoverBannerPlayInfo;
+    this.jdField_a_of_type_Two = new two(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceDiscoverBannerPlayInfo.bannerId);
   }
   
-  private void a(boolean paramBoolean)
+  private void a(DiscoverBannerVideoEntry paramDiscoverBannerVideoEntry)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView;
-    int i;
-    label42:
-    Context localContext;
-    if (paramBoolean)
+    twp localtwp = new twp(this.jdField_a_of_type_Two);
+    localtwp.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (paramDiscoverBannerVideoEntry != null)
     {
-      i = 0;
-      ((PressEffectTextView)localObject).setVisibility(i);
-      localObject = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      if (!(localObject instanceof LinearLayout.LayoutParams)) {
-        break label85;
-      }
-      localObject = (LinearLayout.LayoutParams)localObject;
-      localContext = this.jdField_a_of_type_AndroidViewView.getContext();
-      if (!paramBoolean) {
-        break label101;
-      }
-    }
-    label85:
-    label101:
-    for (float f = 10.0F;; f = 30.0F)
-    {
-      ((LinearLayout.LayoutParams)localObject).bottomMargin = vms.a(localContext, f);
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      return;
-      i = 8;
-      break;
-      localObject = new LinearLayout.LayoutParams(-2, -2);
-      break label42;
-    }
-  }
-  
-  public String a()
-  {
-    return "NewGuideNodeWidget";
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView = new PressEffectTextView(this.jdField_a_of_type_AndroidViewView.getContext(), null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView.setId(1001);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView.setTextSize(1, 14.0F);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView.setTextColor(-1);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView.setPadding(vms.a(this.jdField_a_of_type_AndroidViewView.getContext(), 82.5F), vms.a(this.jdField_a_of_type_AndroidViewView.getContext(), 9.0F), vms.a(this.jdField_a_of_type_AndroidViewView.getContext(), 82.5F), vms.a(this.jdField_a_of_type_AndroidViewView.getContext(), 9.0F));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView.setOnClickListener(this);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, vms.a(this.jdField_a_of_type_AndroidViewView.getContext(), 38.0F));
-    localLayoutParams.bottomMargin = vms.a(this.jdField_a_of_type_AndroidViewView.getContext(), 4.0F);
-    localLayoutParams.addRule(12, -1);
-    localLayoutParams.addRule(14, -1);
-    ((RelativeLayout)paramView).addView(this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetButton = new Button(this.jdField_a_of_type_AndroidViewView.getContext());
-    this.jdField_a_of_type_AndroidWidgetButton.setId(1000);
-    this.jdField_a_of_type_AndroidWidgetButton.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetButton.setTextSize(1, 17.0F);
-    this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839011);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    localLayoutParams = new RelativeLayout.LayoutParams(vms.a(this.jdField_a_of_type_AndroidViewView.getContext(), 220.0F), vms.a(this.jdField_a_of_type_AndroidViewView.getContext(), 40.0F));
-    localLayoutParams.addRule(14, -1);
-    localLayoutParams.addRule(2, 1001);
-    localLayoutParams.bottomMargin = vms.a(this.jdField_a_of_type_AndroidViewView.getContext(), 10.0F);
-    ((RelativeLayout)paramView).addView(this.jdField_a_of_type_AndroidWidgetButton, localLayoutParams);
-    a(true);
-  }
-  
-  public void a(@NonNull Map<Subscriber, String> paramMap)
-  {
-    this.jdField_a_of_type_Twc = new twc(this);
-    a(this.jdField_a_of_type_Twc);
-  }
-  
-  public void a(@NonNull tnz paramtnz, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    Object localObject1 = null;
-    if ((paramtnz.a == null) || (paramtnz.a.jdField_a_of_type_JavaUtilList == null) || (paramtnz.a.jdField_a_of_type_JavaUtilList.isEmpty()))
-    {
-      this.c = paramStoryVideoItem.mVid;
-      k();
-      return;
-    }
-    paramtnz = paramtnz.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramtnz.hasNext())
-    {
-      ste localste = (ste)paramtnz.next();
-      if (TextUtils.equals(paramStoryVideoItem.mVid, localste.jdField_a_of_type_JavaLangString))
+      paramDiscoverBannerVideoEntry = paramDiscoverBannerVideoEntry.bannerInfoList.iterator();
+      while (paramDiscoverBannerVideoEntry.hasNext())
       {
-        Object localObject2 = this.jdField_a_of_type_AndroidWidgetButton;
-        int i;
-        if (localste.jdField_a_of_type_Int != 0)
-        {
-          paramtnz = localste.c;
-          ((Button)localObject2).setText(paramtnz);
-          this.jdField_a_of_type_AndroidWidgetButton.setTag(localste.d);
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView;
-          paramtnz = localObject1;
-          if (localste.b != 0) {
-            paramtnz = localste.e;
-          }
-          ((PressEffectTextView)localObject2).setText(paramtnz);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView.setTag(localste.f);
-          if ((localste.b == 0) || (TextUtils.isEmpty(localste.e))) {
-            break label273;
-          }
-          i = 1;
-          label196:
-          if ((i != 0) && (!TextUtils.equals(this.c, paramStoryVideoItem.mVid)))
-          {
-            urp.a("play_video", "exp_all_tips", 0, 0, new String[0]);
-            this.c = paramStoryVideoItem.mVid;
-          }
-          if ((localste.b == 0) || (TextUtils.isEmpty(localste.e))) {
-            break label278;
-          }
-        }
-        label273:
-        label278:
-        for (boolean bool = true;; bool = false)
-        {
-          a(bool);
-          j();
-          return;
-          paramtnz = null;
-          break;
-          i = 0;
-          break label196;
-        }
+        DiscoverBannerVideoEntry.BannerInfo localBannerInfo = (DiscoverBannerVideoEntry.BannerInfo)paramDiscoverBannerVideoEntry.next();
+        localtwp.jdField_a_of_type_JavaUtilList.add(localBannerInfo.jdField_a_of_type_JavaLangString);
+        localtwp.jdField_a_of_type_JavaUtilMap.put(localBannerInfo.jdField_a_of_type_JavaLangString, localBannerInfo.b);
       }
     }
-    this.c = paramStoryVideoItem.mVid;
-    k();
+    this.jdField_a_of_type_Twu.b(new ErrorMessage(), Collections.singletonList(localtwp), true);
   }
   
-  public boolean a(@NonNull tnz paramtnz, @NonNull StoryVideoItem paramStoryVideoItem)
+  public List<twv> a(List<two> paramList)
   {
-    return (paramtnz.a != null) && (paramtnz.a.jdField_a_of_type_Int == 13);
+    return null;
   }
   
-  public int b()
+  public twr a()
   {
-    return -1;
+    return new twr(this.jdField_a_of_type_Two, null, null);
   }
   
-  public void f() {}
+  public void a() {}
   
-  public void g()
+  public void a(int paramInt, twu paramtwu)
   {
-    if (this.jdField_a_of_type_Twc != null) {
-      b(this.jdField_a_of_type_Twc);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {}
-    do
+    this.jdField_a_of_type_Twu = paramtwu;
+    paramtwu = ((tci)tdc.a(22)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceDiscoverBannerPlayInfo.bannerId);
+    if ((paramtwu != null) && (paramtwu.bannerInfoList.size() == paramtwu.totalCount) && (paramtwu.totalCount > 0))
     {
+      veg.a(this.jdField_a_of_type_JavaLangString, "get group data from cache, count:%d", Integer.valueOf(paramtwu.totalCount));
+      a(paramtwu);
       return;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d(a(), 2, new Object[] { "onClick ", Integer.valueOf(paramView.getId()), ", url=", paramView.getTag() });
-      }
-      localObject = paramView.getTag();
-    } while (!(localObject instanceof String));
-    Object localObject = (String)localObject;
-    switch (paramView.getId())
-    {
     }
-    for (;;)
-    {
-      if (!((String)localObject).startsWith("mqqapi:")) {
-        break label224;
-      }
-      paramView = bade.a(QQStoryContext.a(), b(), (String)localObject);
-      if (paramView == null) {
-        break;
-      }
-      paramView.c();
-      return;
-      urp.a("play_video", "clk_try", 0, 0, new String[] { localObject, "", "", this.c });
-      continue;
-      urp.a("play_video", "clk_all_tips", 0, 0, new String[] { localObject, "", "", this.c });
-    }
-    label224:
-    paramView = new Intent(b(), QQBrowserActivity.class);
-    paramView.putExtra("url", (String)localObject);
-    b().startActivity(paramView);
+    this.jdField_a_of_type_Int = 0;
+    a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceDiscoverBannerPlayInfo.bannerId, "");
   }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_Int += 1;
+    vxs.a(paramString1);
+    tmh localtmh = new tmh();
+    localtmh.b = paramString1;
+    localtmh.c = paramString2;
+    syr.a().a(localtmh, this);
+  }
+  
+  public void a(@NonNull tmh paramtmh, @Nullable tof paramtof, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if ((paramErrorMessage.isFail()) || (paramtof == null))
+    {
+      veg.a(this.jdField_a_of_type_JavaLangString, "get banner info back failed. bannerId =%s ", paramtmh.b);
+      this.jdField_a_of_type_Twu.a(paramErrorMessage, null, false);
+      return;
+    }
+    paramErrorMessage = (tci)tdc.a(22);
+    paramErrorMessage.a(paramtmh.b, paramtof);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "saved banner info to db. bannerId = " + paramtmh.b);
+    }
+    if ((paramtof.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int > 10))
+    {
+      a(paramErrorMessage.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceDiscoverBannerPlayInfo.bannerId));
+      return;
+    }
+    a(paramtmh.b, paramtof.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void b() {}
 }
 
 

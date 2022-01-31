@@ -2,13 +2,15 @@ package com.tencent.gamecenter.appointment;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import bckg;
+import aqss;
+import bdoh;
+import bibh;
 import com.tencent.common.app.BaseApplicationImpl;
 import cooperation.wadl.ipc.WadlParams;
 import cooperation.wadl.ipc.WadlResult;
 import java.util.Iterator;
 import java.util.List;
-import yey;
+import yoc;
 
 class GameCenterReceiver$2
   implements Runnable
@@ -19,29 +21,53 @@ class GameCenterReceiver$2
   {
     switch (this.a.getIntExtra("key_event_id", -1))
     {
-    default: 
-    case 1: 
+    }
+    do
+    {
       do
       {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+              } while (BaseApplicationImpl.sProcessId == 1);
+              bdoh.a().a();
+              return;
+              synchronized (this.this$0.a)
+              {
+                Object localObject2 = this.a.getStringExtra("key_appid");
+                Object localObject4 = this.a.getStringExtra("key_pkg_name");
+                if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject4)))
+                {
+                  localObject2 = new WadlResult(new WadlParams((String)localObject2, (String)localObject4));
+                  ((WadlResult)localObject2).b = 12;
+                  localObject4 = this.this$0.a.iterator();
+                  if (((Iterator)localObject4).hasNext()) {
+                    ((yoc)((Iterator)localObject4).next()).c((WadlResult)localObject2);
+                  }
+                }
+              }
+              return;
+            } while ((BaseApplicationImpl.sProcessId != 1) || (TextUtils.isEmpty(bibh.b(this.a.getStringExtra("appId"), "^*^%&$((2020ggy!"))));
+            aqss.a(this.a.getExtras());
+            return;
+          } while (BaseApplicationImpl.sProcessId != 1);
+          ??? = bibh.b(this.a.getStringExtra("appId"), "^*^%&$((2020ggy!");
+        } while (TextUtils.isEmpty((CharSequence)???));
+        aqss.a(0, (String)???);
         return;
-      } while (BaseApplicationImpl.sProcessId == 1);
-      bckg.a().a();
-      return;
-    }
-    synchronized (this.this$0.a)
-    {
-      Object localObject1 = this.a.getStringExtra("key_appid");
-      Object localObject3 = this.a.getStringExtra("key_pkg_name");
-      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject3)))
-      {
-        localObject1 = new WadlResult(new WadlParams((String)localObject1, (String)localObject3));
-        ((WadlResult)localObject1).b = 12;
-        localObject3 = this.this$0.a.iterator();
-        if (((Iterator)localObject3).hasNext()) {
-          ((yey)((Iterator)localObject3).next()).c((WadlResult)localObject1);
-        }
-      }
-    }
+      } while (BaseApplicationImpl.sProcessId != 1);
+      ??? = bibh.b(this.a.getStringExtra("appId"), "^*^%&$((2020ggy!");
+    } while (TextUtils.isEmpty((CharSequence)???));
+    ??? = new WadlParams((String)???, this.a.getStringExtra("pkgName"));
+    ((WadlParams)???).q = "biz_src_zf_games";
+    ((WadlParams)???).f = this.a.getIntExtra("versionCode", 0);
+    aqss.a((WadlParams)???);
   }
 }
 

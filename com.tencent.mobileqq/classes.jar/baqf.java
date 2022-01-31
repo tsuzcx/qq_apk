@@ -1,50 +1,38 @@
-import android.os.Handler;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
+import android.view.View;
+import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
+import com.tencent.widget.AdapterView;
 
-class baqf
-  implements Observer
+public class baqf
+  implements bfpe
 {
-  baqf(baqe parambaqe) {}
+  public baqf(WheelPickerLayout paramWheelPickerLayout) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void a(AdapterView<?> paramAdapterView) {}
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((paramObject instanceof ArrayList))
+    WheelPickerLayout.a(this.a, paramView, 1);
+    WheelPickerLayout.a(this.a, paramView, true);
+    if ((paramView != null) && (paramView.getTag() != null))
     {
-      paramObservable = (ArrayList)paramObject;
-      switch (((Integer)paramObservable.get(0)).intValue())
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
       {
-      default: 
-        return;
-      }
-      paramObservable = (RichStatus)paramObservable.get(1);
-      baqe.a(this.a, paramObservable);
-      if (baqe.a(this.a).plainText != null)
-      {
-        paramObject = avep.a().b;
-        if (paramObject != null)
+        if (i != paramInt)
         {
-          paramObject.plainText = ((ArrayList)baqe.a(this.a).plainText.clone());
-          paramObject.topics.clear();
-          paramObject.topics.addAll(baqe.a(this.a).topics);
+          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), false);
         }
+        paramInt += 1;
       }
-      if (paramObservable != null) {
-        baqe.b(this.a).copyFrom(paramObservable);
-      }
-      baqe.a(this.a).a().sendEmptyMessage(10003);
-      avep.a().deleteObserver(baqe.a(this.a));
-      return;
     }
-    baqe.a(this.a).a().sendEmptyMessage(10003);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baqf
  * JD-Core Version:    0.7.0.1
  */

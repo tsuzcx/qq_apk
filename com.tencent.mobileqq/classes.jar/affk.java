@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class affk
-  implements View.OnClickListener
+public abstract interface affk
 {
-  public affk(PublicAccountFragment paramPublicAccountFragment) {}
+  public abstract Activity a();
   
-  public void onClick(View paramView)
-  {
-    abjt.a(this.a.a, null);
-  }
+  public abstract QQAppInterface a();
+  
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     affk
  * JD-Core Version:    0.7.0.1
  */

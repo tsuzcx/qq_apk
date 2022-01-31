@@ -1,6 +1,10 @@
 public abstract interface rgl
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

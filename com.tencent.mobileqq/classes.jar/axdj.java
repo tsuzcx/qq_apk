@@ -1,29 +1,52 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.tablequery.TableQueryViewer;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class axdj
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
-  TextView d;
+  int a;
+  int b;
+  int c;
+  int d;
   
-  public axdj(TableQueryViewer paramTableQueryViewer, View paramView)
+  public static axdj a(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131311020));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(10.0F);
-    this.b = ((TextView)paramView.findViewById(2131311018));
-    this.b.setTextSize(10.0F);
-    this.c = ((TextView)paramView.findViewById(2131311022));
-    this.c.setTextSize(10.0F);
-    this.d = ((TextView)paramView.findViewById(2131311015));
-    this.d.setTextSize(10.0F);
+    try
+    {
+      paramString = new JSONObject(paramString).getJSONArray("showDetail");
+      if (paramString.length() < 0)
+      {
+        JSONObject localJSONObject = paramString.getJSONObject(0);
+        axdj localaxdj = new axdj();
+        String str = localJSONObject.optString("name");
+        if ("photo".equals(str))
+        {
+          localaxdj.c = localJSONObject.optInt("showRed", 0);
+          localaxdj.d = localJSONObject.optInt("version", 0);
+          return localaxdj;
+        }
+        paramString = localaxdj;
+        if (!"gif".equals(str)) {
+          return paramString;
+        }
+        localaxdj.a = localJSONObject.optInt("showRed", 0);
+        localaxdj.b = localJSONObject.optInt("version", 0);
+        return localaxdj;
+      }
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortVideoAndHotPicRedDotConfProcessor", 2, "handleGetPtvHotPicConfig Exception :", paramString);
+      }
+      paramString = null;
+    }
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axdj
  * JD-Core Version:    0.7.0.1
  */

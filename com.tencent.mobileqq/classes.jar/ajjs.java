@@ -1,29 +1,28 @@
-import java.util.Comparator;
+import java.io.File;
 
-public final class ajjs
-  implements Comparator<String>
+class ajjs
+  implements ajie
 {
-  public int a(String paramString1, String paramString2)
+  ajjs(ajjf paramajjf, File paramFile, String paramString) {}
+  
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    try
+    if (paramBoolean)
     {
-      long l1 = Long.parseLong(paramString1);
-      long l2 = Long.parseLong(paramString2);
-      if (l1 == l2) {
-        return 0;
+      if (this.jdField_a_of_type_JavaIoFile.exists())
+      {
+        this.jdField_a_of_type_Ajjf.a(this.jdField_a_of_type_JavaLangString, 0, paramInt2 + ajyc.a(2131700499));
+        return;
       }
-      if (l1 > l2) {
-        return 2;
-      }
-      return -1;
+      this.jdField_a_of_type_Ajjf.a(this.jdField_a_of_type_JavaLangString, 2, paramInt2 + ajyc.a(2131700475));
+      return;
     }
-    catch (Exception paramString1) {}
-    return 0;
+    this.jdField_a_of_type_Ajjf.a(this.jdField_a_of_type_JavaLangString, 2, paramInt2 + ajyc.a(2131700496));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajjs
  * JD-Core Version:    0.7.0.1
  */

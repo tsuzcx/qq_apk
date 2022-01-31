@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.applets.data;
 
-import atmo;
-import atnz;
-import atoc;
-import baip;
+import aukm;
+import aulx;
+import auma;
+import bbjw;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import tencent.im.oidb.qqconnect.Appinfo;
 
 public class AppletsAccountInfo
-  extends atmo
+  extends aukm
 {
   private static final String TABLENAME = "applets_account_info";
-  @atnz
+  @aulx
   public AppletInfo appInfo;
   public byte[] appInfoDetail;
   public String faceUrl;
   public String faceUrlSimple;
   public String nick;
-  @atoc
+  @auma
   public String uin;
   
   public AppletInfo convertToAppletInfo(qqconnect.Appinfo paramAppinfo)
@@ -70,7 +70,7 @@ public class AppletsAccountInfo
   
   public String toString()
   {
-    String str = baip.e(String.valueOf(this.uin));
+    String str = bbjw.e(String.valueOf(this.uin));
     StringBuilder localStringBuilder = new StringBuilder("--AppletsAccountInfo--");
     localStringBuilder.append(",shortUin:").append(str).append(",nick:").append(this.nick).append(",face_url:").append(this.faceUrl).append(",face_url_simple:").append(this.faceUrlSimple).append(",appInfo:").append(this.appInfo);
     return localStringBuilder.toString();

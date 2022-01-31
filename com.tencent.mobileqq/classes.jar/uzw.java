@@ -1,20 +1,33 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-
-class uzw
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class uzw
+  extends uzu
 {
-  private uzw(uzn paramuzn) {}
+  public Object a;
+  public String a;
   
-  public void onGlobalLayout()
+  public uzw(Object paramObject)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom() - this.a.c > this.a.b)
-    {
-      this.a.dismiss();
-      return;
-    }
-    this.a.jdField_a_of_type_Uzu.a(this.a.a());
+    this.jdField_a_of_type_JavaLangString = "InitParamSimpleStep";
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    d();
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

@@ -1,21 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-
-class algp
-  implements begw
+public class algp
 {
-  algp(algn paramalgn, begr parambegr) {}
+  public alfw a;
+  public boolean a;
   
-  public void OnClick(View paramView, int paramInt)
+  public String toString()
   {
-    this.jdField_a_of_type_Algn.a.e();
-    this.jdField_a_of_type_Algn.a.b(ajjy.a(2131634900));
-    this.jdField_a_of_type_Begr.dismiss();
+    return "ARCloudRecogResultBase{hasLBSLocation = " + this.jdField_a_of_type_Boolean + ", checkResult = " + this.jdField_a_of_type_Alfw + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     algp
  * JD-Core Version:    0.7.0.1
  */

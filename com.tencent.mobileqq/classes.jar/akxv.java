@@ -1,54 +1,32 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.ar.view.ARScanEntryView.40.1;
-import com.tencent.mobileqq.ar.view.ARScanEntryView.40.2;
-import com.tencent.mobileqq.ar.view.ARScanEntryView.40.3;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class akxv
-  extends alif
+class akxv
+  implements MediaPlayer.OnPreparedListener
 {
-  public akxv(ARScanEntryView paramARScanEntryView) {}
+  akxv(akxq paramakxq) {}
   
-  public void a(boolean paramBoolean, int paramInt, long paramLong)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    SharedPreferences localSharedPreferences = alig.a(this.a.a);
-    long l = localSharedPreferences.getLong("key_ar_act_id", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "onGetARRedDotInfo redSwitch = " + paramInt + ",actID = " + paramLong + ",isSuccess = " + paramBoolean + ",savedActID = " + l);
-    }
-    localSharedPreferences.edit().putLong("key_ar_act_id", paramLong).commit();
-    if (!this.a.m)
+    try
     {
-      QLog.d("AREngine_ARScanEntryView", 1, "onGetARRedDotInfo,not deal redhot message when pause");
-      return;
-    }
-    paramBoolean = localSharedPreferences.getBoolean("key_show_reddot", false);
-    if (paramInt == 1) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if (paramInt == 0) {
-        break label274;
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMusicController", 2, "load bg music success. : " + akxq.b(this.a));
       }
-      if ((paramLong > l) || ((paramBoolean) && (paramLong == l)))
+      this.a.a.seekTo(0);
+      akxq.b(this.a, true);
+      if (akxq.b(this.a))
       {
-        ARScanEntryView.a(this.a).post(new ARScanEntryView.40.1(this));
-        localSharedPreferences.edit().putBoolean("key_show_reddot", true).commit();
-        ARScanEntryView.g(this.a, true);
+        this.a.a.start();
+        akxq.c(this.a, false);
       }
-      if (paramLong >= l) {
-        break;
-      }
-      ARScanEntryView.g(this.a, false);
-      ARScanEntryView.a(this.a).post(new ARScanEntryView.40.2(this));
-      localSharedPreferences.edit().putBoolean("key_show_reddot", false).commit();
       return;
     }
-    label274:
-    ARScanEntryView.g(this.a, false);
-    ARScanEntryView.a(this.a).post(new ARScanEntryView.40.3(this));
+    catch (Exception paramMediaPlayer)
+    {
+      paramMediaPlayer.printStackTrace();
+    }
   }
 }
 

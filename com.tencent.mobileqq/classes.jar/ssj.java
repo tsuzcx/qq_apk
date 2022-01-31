@@ -1,19 +1,22 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext.StoryBroadcastReceiver;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+
 public class ssj
+  extends SimpleJob<Void>
 {
-  public final int a;
-  public final String a;
-  public final ssi a;
-  
-  public ssj(ssi paramssi, int paramInt, String paramString)
+  public ssj(QQStoryContext.StoryBroadcastReceiver paramStoryBroadcastReceiver, String paramString)
   {
-    this.jdField_a_of_type_Ssi = paramssi;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramString);
   }
   
-  public String toString()
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    return "Output{intput=" + this.jdField_a_of_type_Ssi + ", errorCode=" + this.jdField_a_of_type_Int + ", errorMessage='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    int i = svo.a();
+    veg.d(QQStoryContext.StoryBroadcastReceiver.a(), "onReceive : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
+    return null;
   }
 }
 

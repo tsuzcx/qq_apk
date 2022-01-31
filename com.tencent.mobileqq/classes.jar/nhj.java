@@ -1,24 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-class nhj
-  implements ValueAnimator.AnimatorUpdateListener
+public class nhj
+  implements bfoq
 {
-  nhj(nhi paramnhi) {}
+  public nhj(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    nhi.a(this.a).setTranslationY(i - nhi.a(this.a));
-    paramValueAnimator = nhi.a(this.a).getLayoutParams();
-    paramValueAnimator.height = i;
-    QLog.d("IconTabController", 1, "showWithAnimation: " + paramValueAnimator.height);
-    nhi.a(this.a).setLayoutParams(paramValueAnimator);
-    nhi.a(this.a).setAlpha(paramValueAnimator.height / nhi.a(this.a));
+    if (this.a.o) {
+      return;
+    }
+    this.a.o = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.a.dismiss();
+      return;
+      this.a.q();
+      continue;
+      this.a.E();
+      continue;
+      this.a.G();
+    }
   }
 }
 

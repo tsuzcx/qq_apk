@@ -1,19 +1,16 @@
-import android.text.Editable;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
 
-public class abty
-  implements View.OnFocusChangeListener
+class abty
+  implements View.OnLongClickListener
 {
-  public abty(SubLoginActivity paramSubLoginActivity) {}
+  abty(abtx paramabtx, long paramLong) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public boolean onLongClick(View paramView)
   {
-    if (true == paramBoolean) {
-      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
-    }
+    bbcv.a(this.jdField_a_of_type_Abtx.a, 230).setTitle(this.jdField_a_of_type_Abtx.a.getString(2131719973)).setItems(2130968611, new abtz(this)).show();
+    return true;
   }
 }
 

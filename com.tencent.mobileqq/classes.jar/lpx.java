@@ -1,48 +1,14 @@
-import android.content.res.Resources;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-class lpx
-  extends lpv
+public class lpx
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public int a;
+  public String a;
+  public String b;
   
-  lpx(LinearLayout paramLinearLayout)
+  public lpx(int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131306791));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLinearLayout.findViewById(2131306522));
-  }
-  
-  Resources a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView.getResources();
-  }
-  
-  void a()
-  {
-    if (!a()) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
-  
-  boolean a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView != null;
-  }
-  
-  boolean a(lpy paramlpy)
-  {
-    a();
-    if ((paramlpy.a != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
-    {
-      lpt.a(this.jdField_a_of_type_AndroidWidgetTextView, paramlpy);
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 

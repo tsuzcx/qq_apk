@@ -1,61 +1,75 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.drawable.Drawable;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDateCollectionList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDateVideoCollectionList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-final class tmg
-  implements ValueAnimator.AnimatorUpdateListener
+public class tmg
+  extends syv
 {
-  tmg(ViewGroup paramViewGroup, Drawable paramDrawable, ImageView paramImageView1, ImageView paramImageView2) {}
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public tmg()
   {
-    float f1 = ((Float)paramValueAnimator.getAnimatedValue("scaleX")).floatValue();
-    float f2 = ((Float)paramValueAnimator.getAnimatedValue("scaleY")).floatValue();
-    this.jdField_a_of_type_AndroidViewViewGroup.setPivotX(0.5F);
-    this.jdField_a_of_type_AndroidViewViewGroup.setScaleX(f1);
-    this.jdField_a_of_type_AndroidViewViewGroup.setPivotY(0.5F);
-    this.jdField_a_of_type_AndroidViewViewGroup.setScaleY(f2);
-    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(((Float)paramValueAnimator.getAnimatedValue("translateX")).floatValue());
-    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationY(((Float)paramValueAnimator.getAnimatedValue("translateY")).floatValue());
-    int j;
-    float f3;
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      int i = this.jdField_a_of_type_AndroidViewViewGroup.getWidth();
-      j = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
-      if (f1 >= f2) {
-        break label220;
-      }
-      f1 = f2 / f1;
-      f2 = i;
-      f3 = i;
-      this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(f1);
-      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX((f2 - f3 * f1) * 0.5F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(1.0F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY(0.0F);
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String a()
+  {
+    if (QQStoryContext.a().a(this.jdField_b_of_type_JavaLangString)) {
+      return sxp.a("StorySvc.get_date_collection_list");
     }
-    for (;;)
+    return sxp.a("StorySvc.get_others_video_list");
+  }
+  
+  public syq a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspDateVideoCollectionList localRspDateVideoCollectionList = new qqstory_service.RspDateVideoCollectionList();
+    try
     {
-      this.b.setAlpha(((Float)paramValueAnimator.getAnimatedValue("backgroundAlpha")).floatValue());
-      return;
-      label220:
-      if (f2 < f1)
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(1.0F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
-        f1 /= f2;
-        f2 = j;
-        f3 = j;
-        this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(f1);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY((f2 - f3 * f1) * 0.5F);
-      }
+      localRspDateVideoCollectionList.mergeFrom(paramArrayOfByte);
+      return new toe(this.jdField_b_of_type_JavaLangString, localRspDateVideoCollectionList);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      veg.b("Q.qqstory.memories:GetDateCollectionListRequest", a(), paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqDateCollectionList localReqDateCollectionList = new qqstory_service.ReqDateCollectionList();
+    localReqDateCollectionList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    localReqDateCollectionList.collection_count.set(this.c);
+    localReqDateCollectionList.collection_video_count.set(this.d);
+    localReqDateCollectionList.seqno.set(this.jdField_b_of_type_Long);
+    PBInt32Field localPBInt32Field = localReqDateCollectionList.is_friend;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localPBInt32Field.set(i);
+      if (this.e != -1) {
+        localReqDateCollectionList.time_zone.set(this.e);
+      }
+      localReqDateCollectionList.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+      return localReqDateCollectionList.toByteArray();
+    }
+  }
+  
+  public String toString()
+  {
+    return "GetDateCollectionListRequest{startCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", collectionPageSize=" + this.c + ", collectionVideoCount=" + this.d + ", seq=" + this.jdField_b_of_type_Long + ", timeZoneOffset=" + this.e + ", uin=" + this.jdField_b_of_type_JavaLangString + ", isFriend=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

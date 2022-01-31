@@ -1,63 +1,87 @@
-import com.tencent.mobileqq.data.MessageForTroopFee;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class amte
-  extends DefaultHandler
+  extends ampb<amtd>
 {
-  MessageForTroopFee a;
-  public String a;
-  
-  public amte()
+  public static amtd a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee = new MessageForTroopFee();
-    this.jdField_a_of_type_JavaLangString = "";
+    return (amtd)ampm.a().a(489);
   }
   
-  public MessageForTroopFee a()
+  public int a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee;
+    return 489;
   }
   
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  @NonNull
+  public amtd a(int paramInt)
   {
-    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-    if (this.jdField_a_of_type_JavaLangString.equals("title")) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.title = paramArrayOfChar;
-    }
-    while (!this.jdField_a_of_type_JavaLangString.equals("summary")) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.summary = paramArrayOfChar;
+    return new amtd();
   }
   
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  @Nullable
+  public amtd a(ampi[] paramArrayOfampi)
   {
-    if (paramString3.equals("msg"))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.actionUrl = paramAttributes.getValue("url");
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.brief = paramAttributes.getValue("brief");
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgTabCameraSwitchProcessor", 2, "onParsed ");
     }
-    do
-    {
-      return;
-      if (paramString3.equals("title"))
-      {
-        this.jdField_a_of_type_JavaLangString = "title";
-        return;
-      }
-      if (paramString3.equals("summary"))
-      {
-        this.jdField_a_of_type_JavaLangString = "summary";
-        return;
-      }
-    } while (!paramString3.equals("source"));
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.source = paramAttributes.getValue("name");
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
+      return amtd.a(paramArrayOfampi);
+    }
+    return null;
+  }
+  
+  public Class<amtd> a()
+  {
+    return amtd.class;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgTabCameraSwitchProcessor", 2, "onReqNoReceive ");
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgTabCameraSwitchProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(amtd paramamtd)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgTabCameraSwitchProcessor", 2, "onUpdate " + paramamtd.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amte
  * JD-Core Version:    0.7.0.1
  */

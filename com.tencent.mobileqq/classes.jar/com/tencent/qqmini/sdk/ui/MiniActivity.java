@@ -9,15 +9,17 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bdct;
-import bdle;
-import bdlu;
+import begs;
+import bepk;
+import beqe;
+import besh;
+import com.tencent.qqmini.sdk.launcher.model.LoginInfo;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class MiniActivity
   extends Activity
 {
-  private bdlu a;
+  private beqe a;
   
   public static void a(Activity paramActivity)
   {
@@ -32,11 +34,15 @@ public class MiniActivity
   
   private void a(Intent paramIntent)
   {
-    if (paramIntent == null) {
+    if (paramIntent == null) {}
+    do
+    {
       return;
-    }
-    paramIntent = (MiniAppInfo)paramIntent.getParcelableExtra("KEY_APPINFO");
-    this.a = bdle.a().a(paramIntent);
+      MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramIntent.getParcelableExtra("KEY_APPINFO");
+      this.a = bepk.a().a(localMiniAppInfo);
+      paramIntent = (LoginInfo)paramIntent.getParcelableExtra("KEY_LOGININFO");
+    } while (paramIntent == null);
+    bepk.a().a().setLoginInfo(paramIntent);
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -55,7 +61,7 @@ public class MiniActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    bdct.a(getApplicationContext(), null);
+    begs.a(getApplicationContext());
     RelativeLayout localRelativeLayout = new RelativeLayout(this);
     setContentView(localRelativeLayout);
     FrameLayout localFrameLayout = new FrameLayout(this);

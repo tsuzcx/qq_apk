@@ -1,24 +1,14 @@
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.7;
 
 public class aetm
-  extends Handler
+  implements nom
 {
-  public aetm(AddContactsActivity paramAddContactsActivity) {}
+  public aetm(PublicAccountChatPie.7 param7) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.jdField_a_of_type_Aeuo.b();
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    rrv.a().a(300);
+    this.a.this$0.a.sendEmptyMessage(1);
   }
 }
 

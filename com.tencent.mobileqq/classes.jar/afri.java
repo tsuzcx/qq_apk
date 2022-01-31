@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment.5.1;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class afri
-  implements ajnk
+public class afri
+  implements ThreadExcutor.IThreadListener
 {
-  afri(afqi paramafqi) {}
+  public afri(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void aj_() {}
+  public void onAdded() {}
   
-  public void b()
+  public void onPostRun()
   {
-    if ((this.a.a == null) || (this.a.a.app == null)) {
-      return;
-    }
-    ((ajnf)this.a.a.app.getManager(34)).d();
+    ThreadManager.getUIHandler().post(new PublicAccountFragment.5.1(this));
   }
   
-  public void i_(int paramInt)
-  {
-    this.a.f();
-  }
+  public void onPreRun() {}
 }
 
 

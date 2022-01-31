@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import ngv;
+import nsf;
 
 public class DailyDynamicHeaderViewController$11
   implements Runnable
 {
-  public DailyDynamicHeaderViewController$11(ngv paramngv) {}
+  public DailyDynamicHeaderViewController$11(nsf paramnsf) {}
   
   public void run()
   {
-    ngv.a(this.this$0, true);
+    nsf.a(this.this$0, true);
   }
 }
 

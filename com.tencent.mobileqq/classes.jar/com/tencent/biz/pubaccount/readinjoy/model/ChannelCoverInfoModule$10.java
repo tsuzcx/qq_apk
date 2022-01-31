@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import bace;
+import bbdj;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.File;
-import opa;
 import org.json.JSONArray;
+import pab;
 
 public class ChannelCoverInfoModule$10
   implements Runnable
 {
-  public ChannelCoverInfoModule$10(opa paramopa, JSONArray paramJSONArray) {}
+  public ChannelCoverInfoModule$10(pab parampab, JSONArray paramJSONArray) {}
   
   public void run()
   {
-    bace.a(BaseApplicationImpl.getApplication().getDir("readinjoy", 0).getAbsolutePath() + "/channel_section_data", this.a.toString());
+    bbdj.a(BaseApplicationImpl.getApplication().getDir("readinjoy", 0).getAbsolutePath() + "/channel_section_data", this.a.toString());
   }
 }
 

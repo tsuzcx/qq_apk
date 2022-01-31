@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.content.res.Resources;
-import bbmy;
+import bcpw;
 
 class KPLProfileCardActivity$2
   implements Runnable
@@ -10,7 +10,7 @@ class KPLProfileCardActivity$2
   
   public void run()
   {
-    bbmy.a(this.this$0, this.this$0.getResources().getString(2131629009), 0).b(this.this$0.getTitleBarHeight());
+    bcpw.a(this.this$0, this.this$0.getResources().getString(2131694673), 0).b(this.this$0.getTitleBarHeight());
   }
 }
 

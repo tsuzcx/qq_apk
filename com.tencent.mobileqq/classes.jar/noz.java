@@ -1,25 +1,24 @@
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.QualityReporter.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoReq;
 
 public class noz
 {
-  public SparseArray<noy> a = new SparseArray();
-  
-  public noz()
+  public static void a(qbx paramqbx)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExposureSupplementUtil", 2, "create ExposureSupplementUtilManager");
-    }
+    ThreadManager.excute(new QualityReporter.1(paramqbx), 16, null, true);
   }
   
-  public noy a(int paramInt)
+  private static void b(cc_sso_report_svr.ReportInfoReq paramReportInfoReq)
   {
-    return (noy)this.a.get(paramInt);
-  }
-  
-  public void a(int paramInt, noy paramnoy)
-  {
-    this.a.put(paramInt, paramnoy);
+    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), nou.class);
+    localNewIntent.putExtra("cmd", "FeedsContentCenter.QualityReport");
+    localNewIntent.putExtra("data", paramReportInfoReq.toByteArray());
+    localNewIntent.setObserver(new npa(localNewIntent));
+    onk.a().startServlet(localNewIntent);
   }
 }
 

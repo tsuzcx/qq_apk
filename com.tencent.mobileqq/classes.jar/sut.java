@@ -1,37 +1,74 @@
-import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.io.File;
+import java.util.Map;
 
-public class sut
-  extends QQUIEventReceiver<suo, sxb>
+class sut
+  extends sva
 {
-  public sut(@NonNull suo paramsuo)
+  public sut(suq paramsuq)
   {
-    super(paramsuo);
+    super("Q.qqstory.download.preload.PlayingListPreloader");
   }
   
-  public void a(@NonNull suo paramsuo, @NonNull sxb paramsxb)
+  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, sul paramsul)
   {
-    if (paramsxb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramsul);
+    a(paramString, paramInt1, paramErrorMessage, paramsul);
+  }
+  
+  protected void a(String paramString, int paramInt, ErrorMessage paramErrorMessage, sul paramsul)
+  {
+    sus localsus = this.a.jdField_a_of_type_Sus;
+    if (localsus == null) {}
+    label14:
+    label169:
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("zivonchen", 2, "MsgTabStoryNodeDelegate#GetGroupInfoEventReceiver isSuccess sharegroupInfo: " + paramsxb.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+      break label14;
+      do
+      {
+        return;
+      } while (!TextUtils.equals(paramString, localsus.jdField_a_of_type_JavaLangString));
+      if (paramErrorMessage.isFail()) {
+        if (!TextUtils.isEmpty(localsus.b)) {
+          break label136;
+        }
       }
-      if (paramsxb.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null) {
-        paramsuo.a(paramsuo.a.a(8, paramsxb.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.shareGroupId));
+      for (paramErrorMessage = paramErrorMessage.errorMsg;; paramErrorMessage = paramErrorMessage.errorMsg + " | " + paramErrorMessage.errorMsg)
+      {
+        localsus.b = paramErrorMessage;
+        localsus.jdField_a_of_type_Int = (paramInt + 1000);
+        if ((!paramsul.a.containsKey("handleCallback")) || (localsus.jdField_a_of_type_Boolean)) {
+          break;
+        }
+        localsus.jdField_a_of_type_Boolean = true;
+        if (!this.a.a(paramString)) {
+          break label169;
+        }
+        if (this.a.jdField_a_of_type_Suu == null) {
+          break;
+        }
+        this.a.jdField_a_of_type_Suu.a(paramString, paramsul.d, paramInt);
+        return;
       }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("zivonchen", 2, "MsgTabStoryNodeDelegate#GetGroupInfoEventReceiver errorInfo: " + paramsxb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", sharegroupInfo = " + paramsxb.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+    } while (this.a.jdField_a_of_type_Suu == null);
+    label136:
+    this.a.jdField_a_of_type_Suu.a(paramString, paramsul.d, localsus.a(), paramInt);
   }
   
-  public Class acceptEventClass()
+  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, sul paramsul)
   {
-    return sxb.class;
+    super.b(paramString, paramInt1, paramFile, paramInt2, paramsul);
+    a(paramString, paramInt1, new ErrorMessage(), paramsul);
+  }
+  
+  public void b(String paramString, int paramInt, sul paramsul)
+  {
+    super.b(paramString, paramInt, paramsul);
+    if ((this.a.jdField_a_of_type_Suu != null) && ((paramInt == 0) || (paramInt == 1))) {
+      this.a.jdField_a_of_type_Suu.b(paramString, paramsul.d, paramInt);
+    }
   }
 }
 

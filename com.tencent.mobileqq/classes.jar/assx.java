@@ -1,61 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multicard.MultiCardRootLayout;
+import java.lang.ref.WeakReference;
 
 public class assx
-  extends Handler
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public assx(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public assx(MultiCardRootLayout paramMultiCardRootLayout) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
+    if ((MultiCardRootLayout.a(this.a)) && (MultiCardRootLayout.a(this.a) != null))
     {
-    default: 
-    case 101: 
-    case 100: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a();
-          befb localbefb = befb.b;
-          if ((localbefb != null) && (localbefb.a())) {
-            localbefb.b(5);
-          }
-        } while (paramMessage.obj == null);
-        paramMessage = (NearbyPeopleCard)paramMessage.obj;
-        this.a.b = true;
-        this.a.a(paramMessage, true, false);
-        return;
-      } while (NearbyPeopleProfileActivity.a(this.a) == null);
-      NearbyPeopleProfileActivity.a(this.a).b();
-      return;
-    case 102: 
-      NearbyPeopleProfileActivity.a(this.a).a(paramMessage.arg1, paramMessage.arg2);
-      return;
-    case 202: 
-      NearbyPeopleProfileActivity.a(this.a).a(true);
-      this.a.a.sendEmptyMessageDelayed(203, 1500L);
-      return;
-    case 203: 
-      NearbyPeopleProfileActivity.a(this.a).a(false);
-      return;
-    case 204: 
-      this.a.a(this.a.getString(2131628902));
-      return;
-    case 207: 
-      this.a.a(ajjy.a(2131641453));
-      return;
+      asta localasta = (asta)MultiCardRootLayout.a(this.a).get();
+      if (localasta != null) {
+        localasta.a(this.a);
+      }
     }
-    this.a.a();
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     assx
  * JD-Core Version:    0.7.0.1
  */

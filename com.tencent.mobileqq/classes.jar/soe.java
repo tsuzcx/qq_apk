@@ -1,14 +1,22 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
 
-public abstract class soe
+public class soe
   implements View.OnClickListener
 {
-  public void onClick(View paramView) {}
+  public soe(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    PublicAccountImageCollectionCommentActivity.a(this.a);
+    PublicAccountImageCollectionCommentActivity.a(this.a, -1);
+    PublicAccountImageCollectionCommentActivity.b(this.a, false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     soe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
 
 public final class usl
-  implements Parcelable.Creator<EditLocalVideoSource>
+  implements Parcelable.Creator<CardItem.CardVideoInfo>
 {
-  public EditLocalVideoSource a(Parcel paramParcel)
+  public CardItem.CardVideoInfo a(Parcel paramParcel)
   {
-    return new EditLocalVideoSource(paramParcel);
+    return new CardItem.CardVideoInfo(paramParcel);
   }
   
-  public EditLocalVideoSource[] a(int paramInt)
+  public CardItem.CardVideoInfo[] a(int paramInt)
   {
-    return new EditLocalVideoSource[paramInt];
+    return new CardItem.CardVideoInfo[paramInt];
   }
 }
 

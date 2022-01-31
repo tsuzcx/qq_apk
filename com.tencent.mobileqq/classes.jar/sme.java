@@ -1,27 +1,35 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
+import android.os.Parcel;
+import org.json.JSONObject;
 
-class sme
-  extends Job<Object, Object, Object>
+public class sme
 {
-  sme(smd paramsmd, String paramString, QQStoryCmdHandler.IllegalUinException paramIllegalUinException)
+  public String mAbTest;
+  public int mType;
+  
+  protected sme(Parcel paramParcel)
   {
-    super(paramString);
+    this.mType = paramParcel.readInt();
+    this.mAbTest = paramParcel.readString();
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  protected sme(JSONObject paramJSONObject)
   {
-    urk.d("Q.qqstory.net:QQStoryCmdHandler", "uin convert error");
-    this.jdField_a_of_type_Smd.a.a().a(880002, this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler$IllegalUinException.getMessage(), null);
-    return null;
+    this.mType = paramJSONObject.optInt("type");
+    this.mAbTest = paramJSONObject.optString("qq_abtest");
+    parseJson(paramJSONObject);
+  }
+  
+  protected void parseJson(JSONObject paramJSONObject) {}
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    paramParcel.writeInt(this.mType);
+    paramParcel.writeString(this.mAbTest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sme
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.mobileqq.mini.report;
 import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.SingleDcData;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 final class MiniProgramLpReportDC04266$2
   implements Runnable
@@ -12,10 +13,16 @@ final class MiniProgramLpReportDC04266$2
   public void run()
   {
     String str = MiniProgramReportHelper.launchIdForMiniAppConfig(this.val$miniAppConfig);
-    APP_REPORT_TRANSFER.SingleDcData localSingleDcData = MiniProgramReportHelper.newSingleReportData(3, MiniProgramReportHelper.newAppQualityEntries(this.val$miniAppConfig, null, this.val$eventName, this.val$attachInfo, null, String.valueOf(this.val$retCode), MiniReportManager.getAppType(this.val$miniAppConfig), String.valueOf(this.val$costTime), null, String.valueOf(this.val$timestamp), str, this.val$reserves1, this.val$reserves2, this.val$reserves3, this.val$reserves4), null);
-    QLog.d("MiniProgramLpReportDC04266", 2, "MiniReportManager  reportCostTimeEvent: costTime event = [" + this.val$eventName + "], costTime result = [" + this.val$retCode + "], appType = [" + MiniReportManager.getAppType(this.val$miniAppConfig) + "], timeCost = [" + this.val$costTime + "],  attachInfo = [" + this.val$attachInfo + "]  launchId:" + str + "  retCode:" + this.val$retCode + "  reserves1:" + this.val$reserves1 + "  reserves2:" + this.val$reserves2 + "  reserves3:" + this.val$reserves3 + "  reserves4:" + this.val$reserves4);
+    Object localObject = MiniProgramReportHelper.newAppQualityEntries(this.val$miniAppConfig, null, this.val$eventName, this.val$attachInfo, null, String.valueOf(this.val$retCode), MiniReportManager.getAppType(this.val$miniAppConfig), String.valueOf(this.val$costTime), null, String.valueOf(this.val$timestamp), str, this.val$reserves1, this.val$reserves2, this.val$reserves3, this.val$reserves4);
+    APP_REPORT_TRANSFER.SingleDcData localSingleDcData = MiniProgramReportHelper.newSingleReportData(MiniProgramLpReportDC04266.access$000(), (List)localObject, null);
     MiniProgramReporter.getInstance().addData(localSingleDcData);
-    MiniProgramLpReportDC05115.reDispatchReportEvent(this.val$miniAppConfig, this.val$eventName, String.valueOf(this.val$retCode), this.val$costTime);
+    if (MiniReportManager.needReportToDC5332(this.val$eventName))
+    {
+      localObject = MiniProgramReportHelper.newSingleReportData(MiniProgramLpReportDC04266.access$100(), (List)localObject, null);
+      MiniProgramReporter.getInstance().addData((APP_REPORT_TRANSFER.SingleDcData)localObject);
+    }
+    QLog.d("MiniProgramLpReportDC04266", 2, "MiniReportManager  reportCostTimeEvent: costTime event = [" + this.val$eventName + "], costTime result = [" + this.val$retCode + "], appType = [" + MiniReportManager.getAppType(this.val$miniAppConfig) + "], timeCost = [" + this.val$costTime + "],  attachInfo = [" + this.val$attachInfo + "]  launchId:" + str + "  retCode:" + this.val$retCode + "  reserves1:" + this.val$reserves1 + "  reserves2:" + this.val$reserves2 + "  reserves3:" + this.val$reserves3 + "  reserves4:" + this.val$reserves4);
+    MiniProgramLpReportDC05115.reDispatchReportEvent(this.val$miniAppConfig, this.val$eventName, String.valueOf(this.val$retCode), this.val$costTime, this.val$reserves4);
   }
 }
 

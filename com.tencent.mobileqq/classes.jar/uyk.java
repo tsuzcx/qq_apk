@@ -1,29 +1,12 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 
-class uyk
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface uyk
 {
-  uyk(uyj paramuyj) {}
+  public abstract void a(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    if (uyh.a(this.a.a) == null) {
-      return;
-    }
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.l = (this.a.d + this.a.f * f);
-    this.a.m = (this.a.e + this.a.g * f);
-    this.a.j = (this.a.b + this.a.h * f);
-    this.a.k = (this.a.c + this.a.i * f);
-    if (this.a.a.a != null) {
-      this.a.a.a.a(f);
-    }
-    if (f == 1.0F) {
-      uyh.a(this.a.a, null);
-    }
-    uyh.a(this.a.a);
-  }
+  public abstract void b(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt);
 }
 
 

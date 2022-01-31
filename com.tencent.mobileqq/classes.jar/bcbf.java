@@ -1,26 +1,19 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bcbf
+class bcbf
+  implements DialogInterface.OnClickListener
 {
-  public static ArrayList<String> a;
-  public static HashMap<String, Class<?>> a;
+  bcbf(bcbe parambcbe) {}
   
-  static
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilArrayList.add("getQueryDownloadAction");
-    jdField_a_of_type_JavaUtilArrayList.add("checkUpdate");
-    jdField_a_of_type_JavaUtilArrayList.add("picUpload");
-    jdField_a_of_type_JavaUtilArrayList.add("gSetPackageScanSetting");
-    jdField_a_of_type_JavaUtilArrayList.add("getAllSDKDownloadInfos");
-    jdField_a_of_type_JavaUtilArrayList.add("queryInstalledAppInfo");
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcbf
  * JD-Core Version:    0.7.0.1
  */

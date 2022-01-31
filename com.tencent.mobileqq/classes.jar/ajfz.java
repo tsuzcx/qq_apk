@@ -1,49 +1,22 @@
-import com.tencent.mobileqq.app.ConditionSearchManager.DownloadTask.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import protocol.KQQConfig.GetResourceRespInfo;
+import android.os.Bundle;
 
-public class ajfz
-  extends axxg
+public abstract interface ajfz
 {
-  public File a;
-  public GetResourceRespInfo a;
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public ajfz(QQAppInterface paramQQAppInterface, String paramString, GetResourceRespInfo paramGetResourceRespInfo, File paramFile)
-  {
-    super(paramQQAppInterface, paramString);
-    this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo = paramGetResourceRespInfo;
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-  }
+  public abstract void a(int paramInt, String paramString);
   
-  protected void realCancel()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "DownloadTask realCancel");
-    }
-  }
+  public abstract void a(String paramString);
   
-  protected void realStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "DownloadTask realStart");
-    }
-    String str = this.key;
-    QQAppInterface localQQAppInterface = this.app;
-    GetResourceRespInfo localGetResourceRespInfo = this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo;
-    ThreadManagerV2.excute(new ConditionSearchManager.DownloadTask.1(this, str, this.jdField_a_of_type_JavaIoFile, localQQAppInterface, localGetResourceRespInfo), 128, null, true);
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
   
-  public String toString()
-  {
-    return "[DownloadTask] url=" + this.key;
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle);
+  
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajfz
  * JD-Core Version:    0.7.0.1
  */

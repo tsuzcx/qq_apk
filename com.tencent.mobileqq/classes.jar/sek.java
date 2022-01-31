@@ -1,60 +1,86 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class sek
+  implements mzb
 {
-  private double a;
-  private double b;
+  public int a;
+  public String a;
+  private ArrayList<naq> a;
+  private int b;
+  public String b;
+  private int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public sek(double paramDouble1, double paramDouble2)
+  public sek(String paramString)
   {
-    this.a = paramDouble1;
-    this.b = paramDouble2;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public double a()
+  public int a()
   {
-    return this.a;
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public qqstory_struct.GpsMsg a()
+  public void a()
   {
-    qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
-    localGpsMsg.setHasFlag(true);
-    localGpsMsg.lat.set((int)(a() * 1000000.0D));
-    localGpsMsg.lng.set((int)(b() * 1000000.0D));
-    return localGpsMsg;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((naq)localIterator.next()).a();
+    }
   }
   
-  public double b()
+  public void a(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public void a(naq paramnaq)
+  {
+    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramnaq)) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramnaq);
+    }
+  }
+  
+  public int b()
   {
     return this.b;
   }
   
-  public boolean equals(Object paramObject)
+  public void b(naq paramnaq)
   {
-    if (this == paramObject) {
-      return true;
-    }
-    if (!(paramObject instanceof sek)) {
-      return false;
-    }
-    return (((sek)paramObject).a == this.a) && (((sek)paramObject).b == this.b);
+    this.jdField_a_of_type_JavaUtilArrayList.remove(paramnaq);
   }
   
-  public int hashCode()
+  public int c()
   {
-    return "Gps".hashCode() + (int)(this.a * 1000000.0D) + (int)(this.b * 1000000.0D);
+    return this.c;
   }
   
-  public String toString()
+  public void loaded(String paramString, int paramInt)
   {
-    return "Gps{lat=" + this.a + ", lng=" + this.b + '}';
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((naq)localIterator.next()).loaded(paramString, paramInt);
+    }
+  }
+  
+  public void progress(int paramInt)
+  {
+    this.c = paramInt;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((naq)localIterator.next()).progress(paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sek
  * JD-Core Version:    0.7.0.1
  */

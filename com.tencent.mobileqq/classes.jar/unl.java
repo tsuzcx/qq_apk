@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class unl
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  unl(unj paramunj) {}
+  unl(unk paramunk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    urp.a("home_page", "guide_known", 0, 0, new String[0]);
-    paramDialogInterface.dismiss();
+    int i = ((Integer)paramView.getTag()).intValue();
+    if (this.a.a.a != null) {
+      this.a.a.a.a(paramView, this.a.a.a(i));
+    }
   }
 }
 

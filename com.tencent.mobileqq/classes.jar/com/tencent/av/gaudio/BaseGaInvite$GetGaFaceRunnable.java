@@ -6,8 +6,8 @@ import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import ldf;
-import mfs;
+import lnw;
+import mqr;
 
 public class BaseGaInvite$GetGaFaceRunnable
   implements Runnable
@@ -16,12 +16,12 @@ public class BaseGaInvite$GetGaFaceRunnable
   long jdField_a_of_type_Long;
   VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   final String jdField_a_of_type_JavaLangString;
-  WeakReference<ldf> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<lnw> jdField_a_of_type_JavaLangRefWeakReference;
   boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int;
   String jdField_b_of_type_JavaLangString;
   
-  public BaseGaInvite$GetGaFaceRunnable(String paramString, VideoAppInterface paramVideoAppInterface, int paramInt1, int paramInt2, long paramLong1, long paramLong2, ldf paramldf)
+  public BaseGaInvite$GetGaFaceRunnable(String paramString, VideoAppInterface paramVideoAppInterface, int paramInt1, int paramInt2, long paramLong1, long paramLong2, lnw paramlnw)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Int = paramInt1;
@@ -29,7 +29,7 @@ public class BaseGaInvite$GetGaFaceRunnable
     this.jdField_b_of_type_JavaLangString = Long.toString(paramLong2);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramldf);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramlnw);
   }
   
   public void a()
@@ -54,15 +54,15 @@ public class BaseGaInvite$GetGaFaceRunnable
     int i = this.jdField_a_of_type_Int;
     String str = String.valueOf(this.jdField_a_of_type_Long);
     Bitmap localBitmap = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i, str, null, true, false);
-    int j = mfs.c(this.jdField_b_of_type_Int);
+    int j = mqr.c(this.jdField_b_of_type_Int);
     str = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(i, str, null);
     Object localObject;
     if ((localBitmap != null) && (!TextUtils.equals(str, this.jdField_b_of_type_JavaLangString)))
     {
-      localObject = (ldf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject = (lnw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       if (localObject == null) {}
     }
-    for (boolean bool1 = ((ldf)localObject).a(localBitmap, str);; bool1 = false)
+    for (boolean bool1 = ((lnw)localObject).a(localBitmap, str);; bool1 = false)
     {
       if (!bool1)
       {

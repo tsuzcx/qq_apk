@@ -1,25 +1,54 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.AVActivity.10.1;
-import com.tencent.av.ui.AVActivity.10.2;
-
 public class lqj
-  extends bawf
 {
-  public lqj(AVActivity paramAVActivity) {}
+  public static final Object a;
+  private static lqj b;
+  private static int c;
+  public int a;
+  private lqj a;
+  public int b;
   
-  public void a()
+  static
   {
-    if (this.a.a != null) {
-      this.a.a.a().postDelayed(new AVActivity.10.1(this), 0L);
+    jdField_a_of_type_JavaLangObject = new Object();
+  }
+  
+  private lqj(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public static lqj a(int paramInt1, int paramInt2)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_b_of_type_Lqj != null)
+      {
+        lqj locallqj = jdField_b_of_type_Lqj;
+        jdField_b_of_type_Lqj = locallqj.jdField_a_of_type_Lqj;
+        locallqj.jdField_a_of_type_Lqj = null;
+        locallqj.jdField_a_of_type_Int = paramInt1;
+        locallqj.jdField_b_of_type_Int = paramInt2;
+        c -= 1;
+        return locallqj;
+      }
+      return new lqj(paramInt1, paramInt2);
     }
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void a()
   {
-    if (this.a.a != null) {
-      this.a.a.a().post(new AVActivity.10.2(this));
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (c < 4)
+      {
+        this.jdField_a_of_type_Lqj = jdField_b_of_type_Lqj;
+        jdField_b_of_type_Lqj = this;
+        c += 1;
+      }
+      return;
     }
   }
 }

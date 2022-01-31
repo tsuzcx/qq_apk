@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.location.ui;
 
 import android.widget.TextView;
-import arcl;
+import aryd;
 
 public final class MapUtils$1
   implements Runnable
@@ -10,7 +10,7 @@ public final class MapUtils$1
   
   public void run()
   {
-    arcl.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidWidgetTextView);
+    aryd.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidWidgetTextView);
   }
 }
 

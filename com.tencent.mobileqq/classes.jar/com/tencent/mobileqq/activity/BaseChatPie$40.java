@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import acka;
-import ahpc;
+import acut;
+import aibu;
 
 class BaseChatPie$40
   implements Runnable
 {
-  BaseChatPie$40(BaseChatPie paramBaseChatPie, ahpc paramahpc) {}
+  BaseChatPie$40(BaseChatPie paramBaseChatPie, aibu paramaibu) {}
   
   public void run()
   {

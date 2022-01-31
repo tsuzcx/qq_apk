@@ -1,20 +1,6 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
-
-public class abwf
-  implements View.OnClickListener
+public abstract interface abwf
 {
-  public abwf(TroopDisbandActivity paramTroopDisbandActivity, Dialog paramDialog) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    TroopDisbandActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
-  }
+  public abstract void a(int paramInt);
 }
 
 

@@ -2,7 +2,7 @@ package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
-import kvq;
+import lgf;
 
 class VideoLayerUIBase$2
   implements Runnable

@@ -1,65 +1,14 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.comment.DanmuItemBean;
+import java.util.ArrayList;
+import java.util.List;
 
-public class amlb
-  extends alzl<amla>
+public abstract interface amlb
 {
-  public static amla a()
-  {
-    return (amla)alzw.a().a(342);
-  }
-  
-  public int a()
-  {
-    return 342;
-  }
-  
-  @NonNull
-  public amla a(int paramInt)
-  {
-    return new amla();
-  }
-  
-  @Nullable
-  public amla a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
-      return amla.a(paramArrayOfalzs);
-    }
-    return null;
-  }
-  
-  public Class<amla> a()
-  {
-    return amla.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("TencentDocAIOShowGuideDialogProcessor", 1, "TENCENT_DOC_AIO_SHOW_GUIDE_DIALOG failed, resultCode:" + paramInt);
-  }
-  
-  public void a(amla paramamla) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public abstract void a(amkv paramamkv, boolean paramBoolean1, boolean paramBoolean2, int paramInt, ArrayList<DanmuItemBean> paramArrayList, List<Long> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amlb
  * JD-Core Version:    0.7.0.1
  */

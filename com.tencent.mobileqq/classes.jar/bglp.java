@@ -1,27 +1,15 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.qzone.widget.FastAnimationDrawable;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.plugin.PluginIphoneTitleBarActivity;
 
 public class bglp
-  extends Handler
+  implements View.OnClickListener
 {
-  private final WeakReference<Drawable> jdField_a_of_type_JavaLangRefWeakReference;
+  public bglp(PluginIphoneTitleBarActivity paramPluginIphoneTitleBarActivity) {}
   
-  public bglp(FastAnimationDrawable paramFastAnimationDrawable, Drawable paramDrawable)
+  public void onClick(View paramView)
   {
-    super(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDrawable);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    paramMessage = (Drawable)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramMessage != null) {
-      paramMessage.invalidateSelf();
-    }
+    this.a.a();
   }
 }
 

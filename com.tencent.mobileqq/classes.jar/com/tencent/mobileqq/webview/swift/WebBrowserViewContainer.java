@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift;
 
-import aciy;
+import actn;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -53,7 +53,7 @@ public class WebBrowserViewContainer
   private View a()
   {
     View localView = new View(this.jdField_a_of_type_AndroidContentContext);
-    localView.setId(2131304131);
+    localView.setId(2131369804);
     localView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
     localView.setBackgroundColor(1996488704);
     localView.setVisibility(8);
@@ -63,7 +63,7 @@ public class WebBrowserViewContainer
   private FrameLayout a()
   {
     FrameLayout localFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
-    localFrameLayout.setId(2131297027);
+    localFrameLayout.setId(2131362566);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
     localLayoutParams.gravity = 49;
     localFrameLayout.setLayoutParams(localLayoutParams);
@@ -73,30 +73,30 @@ public class WebBrowserViewContainer
   private LinearLayout a()
   {
     LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setId(2131297876);
+    localLinearLayout.setId(2131363422);
     Object localObject = new FrameLayout.LayoutParams(-1, -1);
     ((FrameLayout.LayoutParams)localObject).gravity = 49;
-    localLinearLayout.setBackgroundColor(super.getResources().getColor(2131101532));
+    localLinearLayout.setBackgroundColor(super.getResources().getColor(2131167129));
     localLinearLayout.setOrientation(1);
     localLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    ((TextView)localObject).setId(2131297877);
+    ((TextView)localObject).setId(2131363423);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    localLayoutParams.topMargin = aciy.a(20.0F, super.getResources());
+    localLayoutParams.topMargin = actn.a(20.0F, super.getResources());
     ((TextView)localObject).setGravity(17);
     ((TextView)localObject).setText("");
     ((TextView)localObject).setTextColor(-9472906);
     localLinearLayout.addView((View)localObject, localLayoutParams);
     localObject = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    ((TextView)localObject).setId(2131311091);
+    ((TextView)localObject).setId(2131376899);
     localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.topMargin = aciy.a(8.0F, super.getResources());
+    localLayoutParams.topMargin = actn.a(8.0F, super.getResources());
     localLayoutParams.gravity = 1;
-    ((TextView)localObject).setPadding(aciy.a(2.0F, super.getResources()), 0, aciy.a(2.0F, super.getResources()), 0);
+    ((TextView)localObject).setPadding(actn.a(2.0F, super.getResources()), 0, actn.a(2.0F, super.getResources()), 0);
     ((TextView)localObject).setVisibility(8);
     ((TextView)localObject).setText("QQ浏览器X5内核提供技术支持");
     ((TextView)localObject).setTextColor(-9472906);
-    ((TextView)localObject).setCompoundDrawables(super.getResources().getDrawable(2130838570), null, null, null);
+    ((TextView)localObject).setCompoundDrawables(super.getResources().getDrawable(2130838577), null, null, null);
     localLinearLayout.addView((View)localObject, localLayoutParams);
     return localLinearLayout;
   }
@@ -104,10 +104,10 @@ public class WebBrowserViewContainer
   private RelativeLayout a()
   {
     RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext, null);
-    localRelativeLayout.setId(2131313572);
+    localRelativeLayout.setId(2131379407);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     localLayoutParams.gravity = 80;
-    localRelativeLayout.setMinimumHeight(aciy.a(50.0F, super.getResources()));
+    localRelativeLayout.setMinimumHeight(actn.a(50.0F, super.getResources()));
     localRelativeLayout.setLayoutParams(localLayoutParams);
     localRelativeLayout.addView(a());
     localRelativeLayout.addView(a());
@@ -117,10 +117,10 @@ public class WebBrowserViewContainer
   private RefreshView a()
   {
     RefreshView localRefreshView = new RefreshView(this.jdField_a_of_type_AndroidContentContext, null);
-    localRefreshView.setId(2131313572);
+    localRefreshView.setId(2131379407);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     localLayoutParams.gravity = 80;
-    localRefreshView.setMinimumHeight(aciy.a(50.0F, super.getResources()));
+    localRefreshView.setMinimumHeight(actn.a(50.0F, super.getResources()));
     localRefreshView.setLayoutParams(localLayoutParams);
     localRefreshView.addView(a());
     localRefreshView.addView(a());
@@ -130,8 +130,8 @@ public class WebBrowserViewContainer
   private WebViewProgressBar a()
   {
     WebViewProgressBar localWebViewProgressBar = new WebViewProgressBar(this.jdField_a_of_type_AndroidContentContext);
-    localWebViewProgressBar.setId(2131306308);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, aciy.a(3.0F, super.getResources()));
+    localWebViewProgressBar.setId(2131372005);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, actn.a(3.0F, super.getResources()));
     localLayoutParams.addRule(10, -1);
     localWebViewProgressBar.setLayoutParams(localLayoutParams);
     return localWebViewProgressBar;
@@ -140,12 +140,12 @@ public class WebBrowserViewContainer
   private void b()
   {
     this.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(this.jdField_a_of_type_AndroidContentContext, null, 0);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setId(2131309309);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(aciy.a(23.0F, super.getResources()), aciy.a(23.0F, super.getResources()));
-    localLayoutParams.topMargin = aciy.a(-25.0F, super.getResources());
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setId(2131375054);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(actn.a(23.0F, super.getResources()), actn.a(23.0F, super.getResources()));
+    localLayoutParams.topMargin = actn.a(-25.0F, super.getResources());
     localLayoutParams.addRule(13, -1);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminate(true);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(super.getResources().getDrawable(2130839117));
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(super.getResources().getDrawable(2130839144));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setLayoutParams(localLayoutParams);
   }
@@ -155,7 +155,7 @@ public class WebBrowserViewContainer
     this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
     Object localObject = new RelativeLayout.LayoutParams(-1, -1);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setId(2131301271);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setId(2131366880);
     localObject = a();
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView((View)localObject);
     if (!this.jdField_b_of_type_Boolean)
@@ -182,9 +182,9 @@ public class WebBrowserViewContainer
   {
     Object localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
     if (paramBoolean) {}
-    for (this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)((LayoutInflater)localObject).inflate(2131494187, null));; this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)((LayoutInflater)localObject).inflate(2131494186, null)))
+    for (this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)((LayoutInflater)localObject).inflate(2131559759, null));; this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)((LayoutInflater)localObject).inflate(2131559758, null)))
     {
-      this.jdField_b_of_type_AndroidWidgetFrameLayout.setId(2131300771);
+      this.jdField_b_of_type_AndroidWidgetFrameLayout.setId(2131366382);
       localObject = new RelativeLayout.LayoutParams(-1, -1);
       this.jdField_b_of_type_AndroidWidgetFrameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
       return;
@@ -194,8 +194,8 @@ public class WebBrowserViewContainer
   private void d()
   {
     ViewStub localViewStub = new ViewStub(this.jdField_a_of_type_AndroidContentContext);
-    localViewStub.setId(2131297832);
-    localViewStub.setLayoutResource(2131494086);
+    localViewStub.setId(2131363378);
+    localViewStub.setLayoutResource(2131559658);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
     localLayoutParams.gravity = 80;
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localViewStub, localLayoutParams);
@@ -204,8 +204,8 @@ public class WebBrowserViewContainer
   public void a()
   {
     ViewStub localViewStub = new ViewStub(this.jdField_a_of_type_AndroidContentContext);
-    localViewStub.setId(2131297791);
-    localViewStub.setLayoutResource(2131494085);
+    localViewStub.setId(2131363338);
+    localViewStub.setLayoutResource(2131559657);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
     localLayoutParams.gravity = 80;
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localViewStub, localLayoutParams);
@@ -217,7 +217,7 @@ public class WebBrowserViewContainer
     {
       this.jdField_b_of_type_Boolean = paramBoolean;
       this.jdField_a_of_type_Boolean = true;
-      super.setId(2131297873);
+      super.setId(2131363419);
       c();
       super.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
       b();

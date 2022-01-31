@@ -1,30 +1,56 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-final class aksn
-  implements FileFilter
+class aksn
+  implements View.OnClickListener
 {
-  public boolean accept(File paramFile)
+  aksn(aksl paramaksl) {}
+  
+  public void onClick(View paramView)
   {
-    paramFile = paramFile.getName();
-    if (paramFile.startsWith("cpu"))
+    try
     {
-      int i = 3;
-      while (i < paramFile.length())
-      {
-        if (!Character.isDigit(paramFile.charAt(i))) {
-          return false;
-        }
-        i += 1;
+      axqw.b(null, "dc00898", "", "", "0X8009ACC", "0X8009ACC", 0, 0, "", "", "", "");
+      if (aksf.a != null) {
+        aksl.a(this.a).startActivity(aksf.a);
       }
-      return true;
+      for (;;)
+      {
+        this.a.dismiss();
+        return;
+        if (aksl.a(this.a) == null) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(aksl.a(), 2, "init MsgNotifyPushDialog.initPushOpeNotifyConfig");
+        }
+        aksf.a(aksl.a(this.a));
+        aksl.a(this.a).startActivity(aksf.a);
+      }
     }
-    return false;
+    catch (Exception paramView)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d(aksl.a(), 2, "Start Activity Failed");
+          aksl.a(this.a).startActivity(bbem.c(aksl.a(this.a)));
+          continue;
+          if (QLog.isColorLevel()) {
+            QLog.d(aksl.a(), 2, "mAppInterface=null, use default intent");
+          }
+          aksl.a(this.a).startActivity(bbem.a(aksl.a(this.a)));
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aksn
  * JD-Core Version:    0.7.0.1
  */

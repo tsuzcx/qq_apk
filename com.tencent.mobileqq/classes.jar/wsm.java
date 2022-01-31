@@ -1,26 +1,39 @@
-import android.support.v7.widget.RecyclerView;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoTipOffRsp;
+import com.tencent.qphone.base.util.QLog;
 
 class wsm
-  implements CompoundButton.OnCheckedChangeListener
+  implements xgx<CertifiedAccountWrite.StDoTipOffRsp>
 {
-  wsm(wsj paramwsj) {}
+  wsm(wsl paramwsl) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoTipOffRsp paramStDoTipOffRsp)
   {
-    paramCompoundButton = wsj.b(this.a);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
+    paramBoolean = true;
+    if (paramLong == 0L)
     {
-      paramCompoundButton.setVisibility(i);
+      QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest success");
+      if (this.a.a != null)
+      {
+        paramString = this.a.a;
+        if (paramLong != 0L) {
+          break label78;
+        }
+      }
+    }
+    for (;;)
+    {
+      paramString.a(paramBoolean);
       return;
+      QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest failed retCode:" + paramLong);
+      break;
+      label78:
+      paramBoolean = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wsm
  * JD-Core Version:    0.7.0.1
  */

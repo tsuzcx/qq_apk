@@ -1,22 +1,14 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class atzp
-  implements bajj<Rect>
+  implements BusinessObserver
 {
-  public atzp(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
-  
-  public void a(bajd<Rect> parambajd, float paramFloat, Rect paramRect, Transformation paramTransformation)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.invalidate(paramRect);
-  }
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     atzp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,24 @@
-import android.graphics.Paint;
-import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class axjw
-  extends axkc
+  implements View.OnClickListener
 {
-  axjw(@NonNull String paramString)
-  {
-    super(1, paramString);
-  }
+  axjw(axjq paramaxjq) {}
   
-  float a(@NonNull Paint paramPaint)
+  public void onClick(View paramView)
   {
-    return paramPaint.measureText(a());
+    axjq.a(this.a, axjq.a(this.a));
+    axjq.b(this.a, System.currentTimeMillis());
+    if (axjq.a(this.a) - axjq.b(this.a) < 300L) {
+      return;
+    }
+    axjq.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axjw
  * JD-Core Version:    0.7.0.1
  */

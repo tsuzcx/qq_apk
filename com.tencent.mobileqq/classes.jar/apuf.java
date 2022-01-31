@@ -1,23 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.gallery.presenter.AIOGalleryBasePresenter;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
-class apuf
-  implements DialogInterface.OnDismissListener
+final class apuf
+  implements apur
 {
-  apuf(apue paramapue) {}
+  apuf(String paramString1, String paramString2) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(Bitmap paramBitmap)
   {
-    if (ImmersiveUtils.isSupporImmersive() == 1) {
-      this.a.a.aJ_();
+    if (paramBitmap == null) {
+      return;
+    }
+    try
+    {
+      apvb.a(paramBitmap, this.a);
+      paramBitmap.recycle();
+      int i = gr.a(this.b);
+      gr.a(this.a, i);
+      return;
+    }
+    catch (FileNotFoundException paramBitmap)
+    {
+      paramBitmap.printStackTrace();
+      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail FileNotFoundException:" + paramBitmap.getMessage());
+      return;
+    }
+    catch (IOException paramBitmap)
+    {
+      paramBitmap.printStackTrace();
+      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail IOException:" + paramBitmap.getMessage());
+      return;
+    }
+    catch (OutOfMemoryError paramBitmap)
+    {
+      paramBitmap.printStackTrace();
+      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail OutOfMemoryError:" + paramBitmap.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apuf
  * JD-Core Version:    0.7.0.1
  */

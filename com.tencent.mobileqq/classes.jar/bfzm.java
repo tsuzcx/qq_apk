@@ -1,40 +1,40 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import java.util.ArrayList;
+import android.support.v7.widget.RecyclerView.RecycledViewPool;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 import java.util.List;
 
 public class bfzm
+  extends RecyclerView.RecycledViewPool
 {
-  int a;
-  public Dialog a;
-  public Intent a;
-  public ServiceConnection a;
-  public Class<? extends Activity> a;
-  public String a;
-  public List<RemoteCommand> a;
-  public boolean a;
-  public int b = -1;
-  public String b;
-  public int c = 10000;
-  String c;
-  public String d;
-  public String e;
-  public String f;
+  public bfzm(RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter) {}
   
-  public bfzm(int paramInt)
+  public RecyclerView.ViewHolder getRecycledView(int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt;
+    Object localObject = this.a.getAdapter();
+    RecyclerView.ViewHolder localViewHolder = super.getRecycledView(paramInt);
+    if ((localViewHolder != null) && ((localObject instanceof bfzg)))
+    {
+      localObject = (bfzg)localObject;
+      if (((bfzg)localObject).d(paramInt))
+      {
+        if (!RecyclerViewWithHeaderFooter.a(this.a).contains(localViewHolder.itemView))
+        {
+          putRecycledView(localViewHolder);
+          return null;
+        }
+      }
+      else if ((((bfzg)localObject).c(paramInt)) && (!RecyclerViewWithHeaderFooter.b(this.a).contains(localViewHolder.itemView)))
+      {
+        putRecycledView(localViewHolder);
+        return null;
+      }
+    }
+    return localViewHolder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfzm
  * JD-Core Version:    0.7.0.1
  */

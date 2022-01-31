@@ -2,8 +2,10 @@ package com.tencent.tmdownloader.internal.storage;
 
 import android.content.Context;
 import android.os.Environment;
+import android.text.TextUtils;
 import android.util.Log;
 import com.tencent.tmassistantbase.util.GlobalUtil;
+import com.tencent.tmassistantbase.util.b.b;
 import java.io.File;
 import java.io.FileOutputStream;
 
@@ -22,6 +24,25 @@ public class d
     this.a = paramString1;
     this.b = paramString2;
     this.e = a();
+  }
+  
+  public static String a(Context paramContext)
+  {
+    String str = "";
+    try
+    {
+      File localFile = paramContext.getExternalCacheDir();
+      paramContext = str;
+      if (localFile != null) {
+        paramContext = localFile.getParent();
+      }
+      return paramContext;
+    }
+    catch (Exception paramContext)
+    {
+      b.a("TMAssistantFile", "getExternalPath failed:", paramContext);
+    }
+    return "";
   }
   
   public static String a(String paramString)
@@ -43,11 +64,14 @@ public class d
     if (localObject == null) {
       return null;
     }
-    if (c())
+    boolean bool = c();
+    String str = a((Context)localObject);
+    b.a("TMAssistantFile", "hasExternalStorage=" + bool + ", externalPath=" + str);
+    if ((bool) && (!TextUtils.isEmpty(str)))
     {
       localObject = ((Context)localObject).getPackageName();
       localObject = "/tencent/TMAssistantSDK/Download/" + (String)localObject;
-      return Environment.getExternalStorageDirectory().getAbsolutePath() + (String)localObject;
+      return str + (String)localObject;
     }
     return ((Context)localObject).getFilesDir().getAbsolutePath() + "/TMAssistantSDK/Download";
   }
@@ -65,7 +89,13 @@ public class d
   
   public static boolean c()
   {
-    return ("mounted".equals(Environment.getExternalStorageState())) && (Environment.getExternalStorageDirectory().canWrite());
+    try
+    {
+      boolean bool = "mounted".equals(Environment.getExternalStorageState());
+      return bool;
+    }
+    catch (Exception localException) {}
+    return false;
   }
   
   public long a()

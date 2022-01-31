@@ -1,90 +1,160 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoRepository.1;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoRepository.2;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.RejectedExecutionException;
 
 public class pbm
 {
-  private List<qvs> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<URL> b = new ArrayList();
+  private aukn jdField_a_of_type_Aukn;
+  private ReadInJoyUserInfoModule jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule;
+  private ConcurrentHashMap<String, ReadInJoyUserInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
   
-  public pbm(NativeGridImageView paramNativeGridImageView, ArticleInfo paramArticleInfo)
+  public pbm(ExecutorService paramExecutorService, ReadInJoyUserInfoModule paramReadInJoyUserInfoModule, aukn paramaukn)
   {
-    int i;
-    if ((paramArticleInfo != null) && (paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.a != null) && (paramArticleInfo.mSocialFeedInfo.a.a != null) && (paramArticleInfo.mSocialFeedInfo.a.a.size() > 0))
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = paramExecutorService;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule = paramReadInJoyUserInfoModule;
+    this.jdField_a_of_type_Aukn = paramaukn;
+  }
+  
+  private void a(ReadInJoyUserInfo paramReadInJoyUserInfo)
+  {
+    QLog.d("ReadInJoyUserInfoRepository", 2, new Object[] { "saveReadInJoyUserInfoToDB, \n  userInfo = ", paramReadInJoyUserInfo });
+    if (paramReadInJoyUserInfo != null) {
+      onk.a("saveReadInJoyUserInfoToDB", new ReadInJoyUserInfoRepository.1(this, paramReadInJoyUserInfo), this.jdField_a_of_type_JavaUtilConcurrentExecutorService);
+    }
+  }
+  
+  public ReadInJoyUserInfo a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    ReadInJoyUserInfo localReadInJoyUserInfo = (ReadInJoyUserInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if ((localReadInJoyUserInfo != null) && (!localReadInJoyUserInfo.requestFlag))
     {
-      paramArticleInfo = paramArticleInfo.mSocialFeedInfo.a.a;
-      i = 0;
+      localReadInJoyUserInfo.requestFlag = true;
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(paramString);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule.a(localArrayList, 1, 1, 0);
+      }
+    }
+    QLog.d("ReadInJoyUserInfoRepository", 2, new Object[] { "getReadInJoyUserInfoByUin, \n ", "userInfo = ", localReadInJoyUserInfo });
+    return localReadInJoyUserInfo;
+  }
+  
+  public List<ReadInJoyUserInfo> a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    List localList;
+    do
+    {
+      return null;
+      localList = this.jdField_a_of_type_Aukn.a(ReadInJoyUserInfo.class, true, "uin = ?", new String[] { paramString }, null, null, null, "1");
+    } while ((localList == null) || (localList.size() <= 0));
+    QLog.d("ReadInJoyUserInfoRepository", 2, new Object[] { "loadSingleReadInJoyUserInfoFromDB, userInfo = ", localList.get(0) });
+    a(paramString, (ReadInJoyUserInfo)localList.get(0), false, true);
+    return localList;
+  }
+  
+  public void a()
+  {
+    QLog.d("ReadInJoyUserInfoRepository", 2, "resetRequestFlag.");
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+      while (localIterator.hasNext()) {
+        ((ReadInJoyUserInfo)((Map.Entry)localIterator.next()).getValue()).requestFlag = false;
+      }
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    try
+    {
+      onk.a("loadReadInJoyUserInfoFromDB", new ReadInJoyUserInfoRepository.2(this, paramInt), this.jdField_a_of_type_JavaUtilConcurrentExecutorService);
+      return;
+    }
+    catch (RejectedExecutionException localRejectedExecutionException)
+    {
+      QLog.d("ReadInJoyUserInfoRepository", 1, "loadReadInJoyUserInfoFromDB exception.");
+      localRejectedExecutionException.printStackTrace();
+    }
+  }
+  
+  public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
+      QLog.d("ReadInJoyUserInfoRepository", 2, "notifyCallback.");
+    } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule == null);
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule.a();
+    if ((localObject != null) && (((ConcurrentHashMap)localObject).get(paramString) != null))
+    {
+      ArrayList localArrayList = new ArrayList();
+      localObject = (List)((ConcurrentHashMap)localObject).get(paramString);
+      Iterator localIterator = ((List)localObject).iterator();
+      while (localIterator.hasNext())
+      {
+        pbj localpbj = (pbj)localIterator.next();
+        if (localpbj != null)
+        {
+          localpbj.a(paramString, paramReadInJoyUserInfo);
+          localArrayList.add(localpbj);
+        }
+      }
+      if (localArrayList.size() > 0) {
+        ((List)localObject).removeAll(localArrayList);
+      }
     }
     for (;;)
     {
-      if (i < paramArticleInfo.size()) {}
-      try
-      {
-        int j = this.jdField_a_of_type_JavaUtilList.size();
-        if (j >= 9)
-        {
-          if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-            ((qvs)this.jdField_a_of_type_JavaUtilList.get(0)).a(true);
-          }
-          return;
-        }
-        if ((((pra)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString != null) || (((pra)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString != null))
-        {
-          Object localObject;
-          label255:
-          int k;
-          if (((pra)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString != null)
-          {
-            paramNativeGridImageView = ((pra)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString;
-            localObject = new URL(paramNativeGridImageView);
-            if (((pra)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString == null) {
-              break label374;
-            }
-            paramNativeGridImageView = ((pra)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString;
-            paramNativeGridImageView = new URL(paramNativeGridImageView);
-            this.b.add(localObject);
-            localObject = this.jdField_a_of_type_JavaUtilList;
-            j = ((pra)paramArticleInfo.get(i)).a;
-            k = ((pra)paramArticleInfo.get(i)).jdField_b_of_type_Int;
-            if (((pra)paramArticleInfo.get(i)).jdField_c_of_type_Int != 1) {
-              break label391;
-            }
-          }
-          label391:
-          for (boolean bool = true;; bool = false)
-          {
-            ((List)localObject).add(new qvs(j, k, paramNativeGridImageView, bool));
-            break label410;
-            paramNativeGridImageView = ((pra)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString;
-            break;
-            label374:
-            paramNativeGridImageView = ((pra)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString;
-            break label255;
-          }
-        }
+      paramReadInJoyUserInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule.b();
+      if (paramReadInJoyUserInfo == null) {
+        break;
       }
-      catch (Exception paramNativeGridImageView)
-      {
-        paramNativeGridImageView.printStackTrace();
-        QLog.d("Proteus.NativeGridImageView", 1, "GridImageModel exception.");
-        label410:
-        i += 1;
-      }
+      paramReadInJoyUserInfo.remove(paramString);
+      return;
+      QLog.d("ReadInJoyUserInfoRepository", 2, "notifyCallback tempList is null.");
+      continue;
+      QLog.d("ReadInJoyUserInfoRepository", 2, "notifyCallback callbackList is null.");
     }
   }
   
-  public List<qvs> a()
+  public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    if ((TextUtils.isEmpty(paramString)) || (paramReadInJoyUserInfo == null)) {
+      QLog.d("ReadInJoyUserInfoRepository", 2, "updateReadInJoyUserInfo failed, uin is null or empty, or userInfo is null");
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramReadInJoyUserInfo);
+      QLog.d("ReadInJoyUserInfoRepository", 2, new Object[] { "updateReadInJoyUserInfo, \n uin = ", paramString, Character.valueOf('\n'), "userInfo = ", paramReadInJoyUserInfo, Character.valueOf('\n'), "saveToDB = ", Boolean.valueOf(paramBoolean1), Character.valueOf('\n'), "notifyCallback = ", Boolean.valueOf(paramBoolean2) });
+      if (paramBoolean2) {
+        a(paramString, paramReadInJoyUserInfo);
+      }
+    } while (!paramBoolean1);
+    a(paramReadInJoyUserInfo);
   }
   
-  public List<URL> b()
+  public void b()
   {
-    return this.b;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
 }
 

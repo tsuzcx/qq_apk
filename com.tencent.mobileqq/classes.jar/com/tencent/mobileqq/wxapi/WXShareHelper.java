@@ -9,9 +9,9 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.text.TextUtils;
-import awcb;
-import bbsg;
-import bbsh;
+import axbj;
+import bcwg;
+import bcwh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
@@ -34,8 +34,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Map;
-import mpo;
-import vvp;
+import nap;
+import wim;
 
 public class WXShareHelper
   extends BroadcastReceiver
@@ -43,10 +43,10 @@ public class WXShareHelper
 {
   private static WXShareHelper jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper;
   private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bbsg(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bcwg(this);
   Context jdField_a_of_type_AndroidContentContext;
   private IWXAPI jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), "wxf0a80d0ac2e82aa7", true);
-  private ArrayList<bbsh> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+  private ArrayList<bcwh> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
   private IWXAPI b;
   
   private WXShareHelper()
@@ -114,7 +114,7 @@ public class WXShareHelper
     if (paramBoolean2)
     {
       Bitmap localBitmap = Bitmap.createBitmap((Bitmap)localObject2, 0, 0, paramInt, paramInt);
-      localObject1 = mpo.a(localBitmap);
+      localObject1 = nap.a(localBitmap);
       localBitmap.recycle();
     }
     for (;;)
@@ -126,7 +126,7 @@ public class WXShareHelper
       }
       paramBitmap.recycle();
       return localObject1;
-      localObject1 = mpo.a((Bitmap)localObject2);
+      localObject1 = nap.a((Bitmap)localObject2);
     }
   }
   
@@ -142,12 +142,12 @@ public class WXShareHelper
     }
   }
   
-  public void a(bbsh parambbsh)
+  public void a(bcwh parambcwh)
   {
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(parambbsh)) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(parambbsh);
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(parambcwh)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(parambcwh);
       }
       return;
     }
@@ -176,7 +176,7 @@ public class WXShareHelper
   {
     if (TextUtils.isEmpty(paramString1))
     {
-      vvp.a(1, 2131631056);
+      wim.a(1, 2131696768);
       return;
     }
     WXImageObject localWXImageObject = new WXImageObject();
@@ -198,7 +198,7 @@ public class WXShareHelper
   {
     if (TextUtils.isEmpty(paramString))
     {
-      vvp.a(1, 2131631056);
+      wim.a(1, 2131696768);
       return;
     }
     WXImageObject localWXImageObject = new WXImageObject();
@@ -219,7 +219,7 @@ public class WXShareHelper
   {
     if (TextUtils.isEmpty(paramString1))
     {
-      vvp.a(1, 2131631056);
+      wim.a(1, 2131696768);
       return;
     }
     WXImageObject localWXImageObject = new WXImageObject();
@@ -344,12 +344,12 @@ public class WXShareHelper
     return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.isWXAppInstalled();
   }
   
-  public void b(bbsh parambbsh)
+  public void b(bcwh parambcwh)
   {
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.contains(parambbsh)) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(parambbsh);
+      if (this.jdField_a_of_type_JavaUtilArrayList.contains(parambcwh)) {
+        this.jdField_a_of_type_JavaUtilArrayList.remove(parambcwh);
       }
       return;
     }
@@ -461,7 +461,7 @@ public class WXShareHelper
     }
     try
     {
-      paramBaseReq = awcb.b(((ShowMessageFromWX.Req)paramBaseReq).message.messageExt);
+      paramBaseReq = axbj.b(((ShowMessageFromWX.Req)paramBaseReq).message.messageExt);
       if ((paramBaseReq.get("actiontype") != null) && (((String)paramBaseReq.get("actiontype")).equals("schema")) && (paramBaseReq.get("schema") != null))
       {
         paramBaseReq = Uri.decode((String)paramBaseReq.get("schema"));
@@ -497,7 +497,7 @@ public class WXShareHelper
         int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
         while (i >= 0)
         {
-          ((bbsh)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramBaseResp);
+          ((bcwh)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramBaseResp);
           i -= 1;
         }
         return;

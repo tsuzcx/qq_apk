@@ -1,70 +1,59 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.data.VipComicFavorEmoStructMsgInfo;
+import com.tencent.mobileqq.emosm.favroaming.IPicDownloadListener;
+import com.tencent.mobileqq.utils.SecUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class antw
+class antw
+  extends bbwf
 {
-  public static Bitmap a(int paramInt1, int paramInt2, float paramFloat)
-  {
-    Bitmap localBitmap = Bitmap.createBitmap(paramInt1 * 2, paramInt1 * 2, Bitmap.Config.ARGB_8888);
-    Canvas localCanvas = new Canvas(localBitmap);
-    Paint localPaint = new Paint(1);
-    localPaint.setAlpha((int)(255.0F * paramFloat));
-    localPaint.setColor(paramInt2);
-    localPaint.setStyle(Paint.Style.FILL);
-    localCanvas.drawCircle(paramInt1, paramInt1, paramInt1, localPaint);
-    localCanvas.save();
-    localCanvas.restore();
-    return localBitmap;
-  }
+  antw(antv paramantv, File paramFile, CustomEmotionData paramCustomEmotionData, ansr paramansr, List paramList1, IPicDownloadListener paramIPicDownloadListener, List paramList2, aukn paramaukn, VipComicFavorEmoStructMsgInfo paramVipComicFavorEmoStructMsgInfo, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2) {}
   
-  public static Bitmap a(Resources paramResources, Bitmap paramBitmap, int paramInt, float paramFloat, boolean paramBoolean)
+  public void onDone(bbwg parambbwg)
   {
-    int i = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
-    for (;;)
+    super.onDone(parambbwg);
+    if ((parambbwg.a() == 3) && (parambbwg.a == 0) && (this.jdField_a_of_type_JavaIoFile.exists()))
     {
-      Canvas localCanvas;
-      try
+      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath = this.jdField_a_of_type_JavaIoFile.getAbsolutePath();
+      if ("needDownload".equals(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType)) {
+        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType = "isUpdate";
+      }
+      if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath)))
       {
-        Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-        localCanvas = new Canvas(localBitmap);
-        localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, null);
-        if (!paramBoolean)
-        {
-          paramBitmap = new RectF(0.0F, 0.0F, i, j);
-          Paint localPaint = new Paint(1);
-          localPaint.setColor(paramInt);
-          localPaint.setAlpha((int)(paramFloat * 255.0F));
-          paramInt = aciy.a(2.0F, paramResources);
-          localCanvas.drawRoundRect(paramBitmap, paramInt, paramInt, localPaint);
-          localCanvas.save();
-          localCanvas.restore();
-          return localBitmap;
+        parambbwg = SecUtil.getFileMd5(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath);
+        if (!this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5.equals(parambbwg)) {
+          QLog.i("VipComicMqqManager", 2, "init = " + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5 + " , compute = " + parambbwg);
         }
       }
-      catch (OutOfMemoryError paramResources)
-      {
-        QLog.e("BackgroundUtil", 1, "get OOM when create ret, return target");
-        return paramBitmap;
+      this.jdField_a_of_type_Ansr.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onFileDone(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, true);
       }
-      i /= 2;
-      paramResources = new Paint(1);
-      paramResources.setAlpha((int)(paramFloat * 255.0F));
-      paramResources.setColor(paramInt);
-      paramResources.setStyle(Paint.Style.FILL);
-      localCanvas.drawCircle(i, i, i, paramResources);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+      if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) && (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null)) {
+        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onDone(this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList);
+      }
+      return;
+      this.jdField_b_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+      this.jdField_a_of_type_Ansr.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+      this.jdField_a_of_type_Aukn.b(this.jdField_a_of_type_ComTencentMobileqqDataVipComicFavorEmoStructMsgInfo);
+      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onFileDone(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, false);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     antw
  * JD-Core Version:    0.7.0.1
  */

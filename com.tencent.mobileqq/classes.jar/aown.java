@@ -1,17 +1,7 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-
-class aown
-  implements View.OnClickListener
+public abstract class aown
+  extends aowl
 {
-  aown(aovz paramaovz, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void onClick(View paramView)
-  {
-    awqx.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
-    apdq.a(this.jdField_a_of_type_Aovz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aovz.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFileID, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId);
-  }
+  protected abstract void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2);
 }
 
 

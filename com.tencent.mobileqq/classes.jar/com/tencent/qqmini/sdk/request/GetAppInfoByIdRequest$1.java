@@ -1,21 +1,18 @@
 package com.tencent.qqmini.sdk.request;
 
-import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByIdReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByIdRsp;
-import bdtf;
-import com.tencent.mobileqq.pb.PBStringField;
+import bezd;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class GetAppInfoByIdRequest$1
   implements Runnable
 {
-  public GetAppInfoByIdRequest$1(bdtf parambdtf, INTERFACE.StGetAppInfoByIdRsp paramStGetAppInfoByIdRsp) {}
+  public GetAppInfoByIdRequest$1(bezd parambezd, MiniAppInfo paramMiniAppInfo) {}
   
   public void run()
   {
-    MiniAppInfo.saveMiniAppByIdEntity(bdtf.a(this.this$0).firstPath.get(), this.a.appInfo);
-    MiniAppInfo.saveMiniAppInfoEntity(this.a.appInfo);
-    MiniAppInfo.saveMiniAppShowInfoEntity(this.a.appInfo);
+    ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).notifyMiniAppInfo(this.a);
   }
 }
 

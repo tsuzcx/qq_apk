@@ -1,27 +1,41 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.Spannable.Factory;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
 public class tyt
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, sys>
+  implements View.OnTouchListener
 {
-  public tyt(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
-  
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull sys paramsys)
-  {
-    if (paramsys.a.isSuccess()) {
-      paramQQStoryShareGroupProfileActivity.a.a(paramsys);
+    Object localObject = ((TextView)paramView).getText();
+    localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
+    paramView = (TextView)paramView;
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0))
+    {
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramView.getTotalPaddingLeft();
+      int n = paramView.getTotalPaddingTop();
+      int i1 = paramView.getScrollX();
+      int i2 = paramView.getScrollY();
+      paramMotionEvent = paramView.getLayout();
+      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
+      paramMotionEvent = (ClickableSpan[])((Spannable)localObject).getSpans(j, j, ClickableSpan.class);
+      if (paramMotionEvent.length != 0)
+      {
+        if (i == 1) {
+          paramMotionEvent[0].onClick(paramView);
+        }
+        return true;
+      }
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return sys.class;
+    return false;
   }
 }
 

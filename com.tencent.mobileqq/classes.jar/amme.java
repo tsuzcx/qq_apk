@@ -1,53 +1,35 @@
-import com.tencent.TMG.utils.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import SummaryCard.CondFitUser;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import java.util.List;
 
 public class amme
+  implements ajue
 {
-  private boolean a;
-  private boolean b;
-  private boolean c;
+  public amme(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public static amme a(alzs[] paramArrayOfalzs)
+  public void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt)
   {
-    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length <= 0)) {
-      return null;
+    this.a.a();
+    if (paramInt != 1) {
+      return;
     }
-    amme localamme = new amme();
-    try
+    if (!paramBoolean1)
     {
-      paramArrayOfalzs = new JSONObject(paramArrayOfalzs[0].a);
-      localamme.a = paramArrayOfalzs.getBoolean("fastload");
-      localamme.b = paramArrayOfalzs.getBoolean("prefetch");
-      localamme.c = paramArrayOfalzs.getBoolean("preloadWebView");
-      QLog.v("TencentDocPreloadConfigBean", 0, "fastload = " + localamme.a + ", prefetch = " + localamme.b + ", preloadWebView = " + localamme.c);
-      return localamme;
+      bcpw.a(this.a, 2131691016, 0).b(this.a.getTitleBarHeight());
+      return;
     }
-    catch (JSONException paramArrayOfalzs)
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-      QLog.e("TencentDocPreloadConfigBean", 1, paramArrayOfalzs.getLocalizedMessage(), paramArrayOfalzs);
+      bcpw.a(this.a, 2131691019, 0).b(this.a.getTitleBarHeight());
+      return;
     }
-    return localamme;
-  }
-  
-  public boolean a()
-  {
-    return this.a;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
-  }
-  
-  public boolean c()
-  {
-    return this.c;
+    SearchResultActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Ajty.b(), this.a.jdField_a_of_type_Ajty.c(), this.a.e, this.a.d, paramList, paramBoolean2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amme
  * JD-Core Version:    0.7.0.1
  */

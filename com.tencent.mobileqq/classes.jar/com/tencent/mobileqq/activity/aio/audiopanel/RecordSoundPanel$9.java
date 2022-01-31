@@ -12,7 +12,8 @@ class RecordSoundPanel$9
   public void run()
   {
     this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam);
-    ListenPanel localListenPanel = (ListenPanel)this.this$0.f.findViewById(2131303640);
+    this.this$0.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+    ListenPanel localListenPanel = (ListenPanel)this.this$0.f.findViewById(2131369310);
     localListenPanel.setVisibility(0);
     localListenPanel.setAudioPath(this.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_Double, this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam);
     localListenPanel.setJumpSource(ListenPanel.b);

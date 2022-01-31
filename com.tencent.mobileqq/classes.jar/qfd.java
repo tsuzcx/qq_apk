@@ -1,18 +1,17 @@
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import mqq.os.MqqHandler;
 
 public class qfd
-  extends pxn
+  implements View.OnClickListener
 {
-  private VideoInfo a;
+  public qfd(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public VideoInfo a()
+  public void onClick(View paramView)
   {
-    return this.a;
-  }
-  
-  public String a()
-  {
-    return this.a.g;
+    ReadInJoyDeliverVideoActivity.a(this.a).sendEmptyMessage(103);
+    ReadInJoyDeliverVideoActivity.b(this.a);
   }
 }
 

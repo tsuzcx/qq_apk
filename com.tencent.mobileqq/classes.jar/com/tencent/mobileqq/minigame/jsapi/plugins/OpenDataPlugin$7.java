@@ -1,50 +1,21 @@
 package com.tencent.mobileqq.minigame.jsapi.plugins;
 
-import android.app.Activity;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import bafb;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
-import com.tencent.mobileqq.mini.util.ColorUtils;
-import com.tencent.mobileqq.minigame.ui.GameActivity;
+import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 
 class OpenDataPlugin$7
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  OpenDataPlugin$7(OpenDataPlugin paramOpenDataPlugin, String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener, Boolean paramBoolean, String paramString4) {}
+  OpenDataPlugin$7(OpenDataPlugin paramOpenDataPlugin, JsRuntime paramJsRuntime, int paramInt) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((this.this$0.jsPluginEngine.getActivityContext() != null) && (this.this$0.jsPluginEngine.getActivityContext().getActivity() != null) && (!this.this$0.jsPluginEngine.getActivityContext().getActivity().isFinishing())) {
-      try
-      {
-        bafb localbafb = new bafb(this.this$0.jsPluginEngine.getActivityContext(), 2131690181);
-        localbafb.setContentView(2131493682);
-        if (TextUtils.isEmpty(this.val$title)) {}
-        for (String str = null;; str = this.val$title)
-        {
-          localbafb.setTitle(str).setMessage(this.val$content);
-          localbafb.setPositiveButton(this.val$positiveButtonText, ColorUtils.parseColor("#3CC51F"), this.val$positiveButtonListener);
-          if (this.val$showCancel.booleanValue()) {
-            localbafb.setNegativeButton(this.val$cancelButtonText, ColorUtils.parseColor("#000000"), new OpenDataPlugin.7.1(this));
-          }
-          localbafb.setCanceledOnTouchOutside(true);
-          localbafb.show();
-          if (!(this.this$0.jsPluginEngine.getActivityContext().getActivity() instanceof GameActivity)) {
-            break;
-          }
-          ((GameActivity)this.this$0.jsPluginEngine.getActivityContext().getActivity()).hideKeyBoard();
-          return;
-        }
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        GameLog.getInstance().e("OpenDataPlugin", "showQQCustomModel error " + localThrowable.getMessage());
-      }
-    }
+    GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE cancel");
+    GameLog.vconsoleLog("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE cancel");
+    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "modifyFriendInteractiveStorage", null, "cancel", this.val$callbackId);
   }
 }
 

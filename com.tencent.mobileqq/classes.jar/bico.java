@@ -1,28 +1,27 @@
-class bico
-  implements bhlc
+final class bico
+  implements biel
 {
-  bico(bicj parambicj) {}
+  public void a(String paramString) {}
   
-  public void b()
+  public void a(String paramString, long paramLong, bidw parambidw, boolean paramBoolean)
   {
-    bicj.a(this.a).d();
-    bicj.a(this.a).a();
-    bicj.a(this.a).a(bicj.a(this.a));
-  }
-  
-  public void bc_()
-  {
-    bicj.a(this.a).d();
-  }
-  
-  public void c()
-  {
-    bicj.a(this.a).d();
+    if (paramBoolean)
+    {
+      if (parambidw.a != 5) {
+        break label25;
+      }
+      bifq.a(paramString, "actFileWyDown", parambidw, false, paramLong);
+    }
+    label25:
+    while (parambidw.a != 4) {
+      return;
+    }
+    bifq.a(paramString, "actFileWyDown", parambidw, true, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bico
  * JD-Core Version:    0.7.0.1
  */

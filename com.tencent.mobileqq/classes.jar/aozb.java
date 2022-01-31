@@ -1,21 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter.1;
 
 public class aozb
-  implements aosd
+  extends BroadcastReceiver
 {
-  public aozb(SimpleFileViewer paramSimpleFileViewer) {}
+  public aozb(FileManagerDataCenter.1 param1) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (SimpleFileViewer.d(this.a) != null) {
-      SimpleFileViewer.d(this.a).setVisibility(8);
+    paramContext = paramIntent.getAction();
+    if ((paramContext != null) && (paramContext.equalsIgnoreCase("com.opensdk.downloadmanager.renameFilename")))
+    {
+      paramContext = paramIntent.getBundleExtra("extraBundle");
+      aoza.a(this.a.this$0, paramContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aozb
  * JD-Core Version:    0.7.0.1
  */

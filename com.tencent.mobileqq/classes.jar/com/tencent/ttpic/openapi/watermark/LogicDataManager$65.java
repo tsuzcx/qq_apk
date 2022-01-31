@@ -13,22 +13,27 @@ class LogicDataManager$65
   
   public String getValue()
   {
-    return super.getValue();
+    return "-1";
   }
   
   public String getValue(WMElement paramWMElement)
   {
-    if (paramWMElement.textSource.equals("")) {
-      paramWMElement = getValue();
+    if (paramWMElement.numberSource.equals("")) {
+      return getValue();
     }
-    String str;
-    do
+    try
     {
-      return paramWMElement;
-      str = (String)this.this$0.mFollowData.get(paramWMElement.textSource);
-      paramWMElement = str;
-    } while (str != null);
-    return "";
+      int i = Integer.parseInt((String)this.this$0.mFollowData.get(paramWMElement.numberSource));
+      if (((paramWMElement.showCaseMin.equals("")) && (paramWMElement.showCaseMax.equals(""))) || ((i >= Integer.parseInt(paramWMElement.showCaseMin)) && (i <= Integer.parseInt(paramWMElement.showCaseMax)))) {
+        return String.valueOf(i / 1000000000);
+      }
+      return "-1";
+    }
+    catch (NumberFormatException paramWMElement)
+    {
+      paramWMElement.printStackTrace();
+    }
+    return "-1";
   }
 }
 

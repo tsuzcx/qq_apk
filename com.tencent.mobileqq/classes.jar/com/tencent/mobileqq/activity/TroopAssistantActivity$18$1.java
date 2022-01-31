@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ahai;
+import ahmx;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import java.util.List;
 
@@ -11,10 +11,10 @@ class TroopAssistantActivity$18$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity$18.this$0.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity$18.this$0.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity$18.this$0.jdField_a_of_type_Ahai != null))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity$18.this$0.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity$18.this$0.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity$18.this$0.jdField_a_of_type_Ahmx != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity$18.this$0.jdField_a_of_type_Ahai.a(4);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity$18.this$0.jdField_a_of_type_Ahai.a(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity$18.this$0.jdField_a_of_type_Ahmx.a(4);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity$18.this$0.jdField_a_of_type_Ahmx.a(this.jdField_a_of_type_JavaUtilList);
       this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity$18.this$0.d();
     }
   }

@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.video.player;
 
 import com.tencent.common.app.BaseApplicationImpl;
-import ndy;
-import obz;
-import pqb;
-import qmr;
+import noz;
+import onk;
+import qbx;
+import qyw;
 
 public class ReadinjoyPlayerReporter$1
   implements Runnable
 {
-  public ReadinjoyPlayerReporter$1(qmr paramqmr, pqb parampqb) {}
+  public ReadinjoyPlayerReporter$1(qyw paramqyw, qbx paramqbx) {}
   
   public void run()
   {
-    obz.a(BaseApplicationImpl.getContext(), obz.a(), true, this.a.a());
-    ndy.a(this.a);
-    obz.a(this.a.jdField_a_of_type_Boolean, this.a.d, this.a.f, this.a.jdField_a_of_type_Int, this.a.jdField_c_of_type_Long, 409409, this.a.jdField_c_of_type_JavaLangString, this.a.jdField_a_of_type_JavaLangString);
+    onk.a(BaseApplicationImpl.getContext(), onk.a(), true, this.a.a());
+    noz.a(this.a);
+    onk.a(this.a.jdField_a_of_type_Boolean, this.a.d, this.a.f, this.a.jdField_a_of_type_Int, this.a.jdField_c_of_type_Long, 409409, this.a.jdField_c_of_type_JavaLangString, this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

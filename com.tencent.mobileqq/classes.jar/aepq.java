@@ -1,6 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
 class aepq
+  implements DialogInterface.OnDismissListener
 {
-  private static aepn a = new aepn(null);
+  aepq(aepg paramaepg) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.b(1);
+  }
 }
 
 

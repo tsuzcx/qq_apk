@@ -1,15 +1,26 @@
-import android.os.MessageQueue.IdleHandler;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
 
 class aeot
-  implements MessageQueue.IdleHandler
+  implements Animation.AnimationListener
 {
-  aeot(aeor paramaeor) {}
+  aeot(aeos paramaeos) {}
   
-  public boolean queueIdle()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    aeor.a(this.a, true);
-    return true;
+    if (this.a.a.q != null)
+    {
+      paramAnimation = AnimationUtils.loadAnimation(this.a.a.a, 2130772209);
+      paramAnimation.setAnimationListener(this);
+      this.a.a.q.startAnimation(paramAnimation);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

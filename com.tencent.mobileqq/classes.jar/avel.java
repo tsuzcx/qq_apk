@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
 
-class avel
-  implements avfp
+public class avel
+  implements View.OnTouchListener
 {
-  avel(aveg paramaveg) {}
+  public avel(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public void a(String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (SignatureHistoryFragment.b(this.a.a)) {
-      return;
+    if (paramMotionEvent.getAction() == 0) {
+      QCallDetailActivity.a(this.a).setPressed(true);
     }
-    SignatureHistoryFragment.a(this.a.a, paramString);
+    while (1 != paramMotionEvent.getAction()) {
+      return false;
+    }
+    QCallDetailActivity.a(this.a).setPressed(false);
+    return false;
   }
 }
 

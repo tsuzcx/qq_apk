@@ -1,71 +1,26 @@
-import android.os.FileObserver;
-import android.os.Handler;
-import android.util.Pair;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
+import com.tencent.widget.DynamicGridView;
 
-class bfqt
-  extends FileObserver
+public class bfqt
+  implements bfqu
 {
-  bfqt(bfqq parambfqq, String paramString, int paramInt)
+  private int jdField_a_of_type_Int;
+  private int b;
+  
+  public bfqt(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
   {
-    super(paramString, paramInt);
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public void onEvent(int paramInt, String paramString)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (!"qzone_startup_monitor".equals(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("QZoneStartupMonitor", 2, "path:" + paramString + ",非监控文件：" + "qzone_startup_monitor");
-      }
-      return;
-    }
-    switch (paramInt & 0xFFF)
-    {
-    default: 
-      return;
-    case 256: 
-      paramInt = QzoneConfig.getInstance().getConfig("QZoneSetting", "startupFailTimeout", 60000);
-      bfqq.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneStartupMonitor", 2, "如果" + paramInt + "ms 后，未收到启动成功的消息，则认为启动失败");
-      }
-      bfqq.a(this.a).sendEmptyMessageDelayed(1, paramInt);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneStartupMonitor", 2, "启动成功，清理超时，并校验odex和上报");
-    }
-    bfqq.a(this.a).removeMessages(1);
-    paramString = bfqq.a(BaseApplicationImpl.getApplication(), "qzone_plugin.apk");
-    if (paramString != null) {}
-    for (paramInt = ((Integer)paramString.first).intValue();; paramInt = 0)
-    {
-      bfqq.a(this.a, true);
-      bfqq.a(this.a, paramInt, bfqq.a(this.a), LocalMultiProcConfig.getInt("key_recovery_count", 0));
-      LocalMultiProcConfig.putInt("key_recovery_count", 0);
-      return;
-    }
-  }
-  
-  public void startWatching()
-  {
-    super.startWatching();
-    QLog.i("QZoneStartupMonitor", 1, "startWatching");
-  }
-  
-  public void stopWatching()
-  {
-    super.stopWatching();
-    QLog.i("QZoneStartupMonitor", 1, "stopWatching");
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.jdField_a_of_type_Int);
+    DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfqt
  * JD-Core Version:    0.7.0.1
  */

@@ -14,32 +14,32 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
-import tsa;
-import tsb;
-import tsc;
-import tsd;
-import tsf;
-import tsg;
-import tsh;
-import tsi;
-import tsj;
-import tsk;
-import tsl;
-import tsm;
-import tsn;
-import tso;
-import tsp;
-import tsq;
-import tsr;
-import tss;
-import tst;
-import tsu;
-import tsv;
-import tsw;
-import urk;
+import uew;
+import uex;
+import uey;
+import uez;
+import ufb;
+import ufc;
+import ufd;
+import ufe;
+import uff;
+import ufg;
+import ufh;
+import ufi;
+import ufj;
+import ufk;
+import ufl;
+import ufm;
+import ufn;
+import ufo;
+import ufp;
+import ufq;
+import ufr;
+import ufs;
+import veg;
 
 public class MediaPlayer
-  implements tso
+  implements ufk
 {
   protected float a;
   protected int a;
@@ -53,25 +53,25 @@ public class MediaPlayer
   public MediaPlayer.PlaybackThread a;
   protected final Object a;
   private CountDownLatch a;
-  public tsa a;
-  protected tsg a;
-  public tsi a;
-  protected tsj a;
-  protected tsm a;
-  public tsp a;
-  public tsq a;
-  public tsr a;
-  public tss a;
-  public tst a;
-  public tsu a;
-  protected tsv a;
-  public tsw a;
+  public uew a;
+  protected ufc a;
+  public ufe a;
+  protected uff a;
+  protected ufi a;
+  public ufl a;
+  public ufm a;
+  public ufn a;
+  public ufo a;
+  public ufp a;
+  public ufq a;
+  protected ufr a;
+  public ufs a;
   protected boolean a;
   protected float b;
   protected int b;
   protected long b;
   protected MediaFormat b;
-  protected tsg b;
+  protected ufc b;
   protected boolean b;
   protected int c;
   protected long c;
@@ -88,13 +88,13 @@ public class MediaPlayer
   
   public MediaPlayer()
   {
-    this.jdField_a_of_type_Tsj = tsj.a(4);
+    this.jdField_a_of_type_Uff = uff.a(4);
     this.jdField_a_of_type_Float = 1.0F;
     this.jdField_b_of_type_Float = 1.0F;
     this.jdField_a_of_type_JavaLangObject = new Object();
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread = null;
-    this.jdField_a_of_type_Tsi = new tsi(this, null);
-    this.jdField_a_of_type_Tsm = new tsm();
+    this.jdField_a_of_type_Ufe = new ufe(this, null);
+    this.jdField_a_of_type_Ufi = new ufi();
     this.jdField_c_of_type_Int = 0;
     this.jdField_d_of_type_Int = 3;
   }
@@ -147,31 +147,31 @@ public class MediaPlayer
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback.a(this.jdField_c_of_type_Int);
       a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
     }
-    tsh localtsh = new tsh(this);
+    ufd localufd = new ufd(this);
     if (this.h == 6) {
       return;
     }
-    this.jdField_a_of_type_Tsa = new tsa();
+    this.jdField_a_of_type_Uew = new uew();
     if (this.jdField_a_of_type_Int != -1) {}
     for (;;)
     {
       try
       {
-        Object localObject = new tsf(this.jdField_a_of_type_Tsg, false, this.jdField_a_of_type_Int, localtsh, this.jdField_a_of_type_AndroidViewSurface, tsk.a(this.g));
-        this.jdField_a_of_type_Tsa.a((tsc)localObject);
+        Object localObject = new ufb(this.jdField_a_of_type_Ufc, false, this.jdField_a_of_type_Int, localufd, this.jdField_a_of_type_AndroidViewSurface, ufg.a(this.g));
+        this.jdField_a_of_type_Uew.a((uey)localObject);
         if (this.jdField_b_of_type_Int != -1) {}
         try
         {
-          if (this.jdField_b_of_type_Tsg == this.jdField_a_of_type_Tsg) {
+          if (this.jdField_b_of_type_Ufc == this.jdField_a_of_type_Ufc) {
             break label525;
           }
-          if (this.jdField_b_of_type_Tsg != null) {
+          if (this.jdField_b_of_type_Ufc != null) {
             continue;
           }
         }
         catch (Exception localException2)
         {
-          tsg localtsg;
+          ufc localufc;
           Log.e("Story-MediaPlayer", "cannot create audio decoder: " + localException2.getMessage());
           continue;
           if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback == null) {
@@ -179,11 +179,11 @@ public class MediaPlayer
           }
           this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback.a();
           this.jdField_d_of_type_Int = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback.b();
-          if (this.jdField_a_of_type_Tsa.a() == null) {
+          if (this.jdField_a_of_type_Uew.a() == null) {
             break label406;
           }
-          i = this.jdField_a_of_type_Tsa.a().a();
-          j = this.jdField_a_of_type_Tsa.a().b();
+          i = this.jdField_a_of_type_Uew.a().a();
+          j = this.jdField_a_of_type_Uew.a().b();
           k = this.jdField_f_of_type_Int;
           if ((k <= 0) || (k == 180)) {
             break label520;
@@ -191,14 +191,14 @@ public class MediaPlayer
           this.jdField_f_of_type_Boolean = true;
           k = j;
           j = i;
-          this.jdField_a_of_type_Tsi.sendMessage(this.jdField_a_of_type_Tsi.obtainMessage(5, k, j));
+          this.jdField_a_of_type_Ufe.sendMessage(this.jdField_a_of_type_Ufe.obtainMessage(5, k, j));
         }
-        if (this.jdField_b_of_type_Tsg != null)
+        if (this.jdField_b_of_type_Ufc != null)
         {
-          localObject = this.jdField_b_of_type_Tsg;
-          localObject = new tsb((tsg)localObject, bool, this.jdField_b_of_type_Int, localtsh, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback);
-          this.jdField_a_of_type_Tsa.a((tsc)localObject);
-          if (!this.jdField_a_of_type_Tsa.a().isEmpty()) {
+          localObject = this.jdField_b_of_type_Ufc;
+          localObject = new uex((ufc)localObject, bool, this.jdField_b_of_type_Int, localufd, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback);
+          this.jdField_a_of_type_Uew.a((uey)localObject);
+          if (!this.jdField_a_of_type_Uew.a().isEmpty()) {
             break label302;
           }
           throw new IOException("cannot decode any stream");
@@ -210,7 +210,7 @@ public class MediaPlayer
         continue;
         bool = false;
         continue;
-        localtsg = this.jdField_a_of_type_Tsg;
+        localufc = this.jdField_a_of_type_Ufc;
         continue;
       }
       for (;;)
@@ -223,17 +223,17 @@ public class MediaPlayer
         if (this.h == 6) {
           break label523;
         }
-        if (this.jdField_a_of_type_Tsa.a() != null)
+        if (this.jdField_a_of_type_Uew.a() != null)
         {
-          tsd localtsd = this.jdField_a_of_type_Tsa.a(true);
-          this.jdField_a_of_type_Tsa.a().b(localtsd);
+          uez localuez = this.jdField_a_of_type_Uew.a(true);
+          this.jdField_a_of_type_Uew.a().b(localuez);
         }
         for (;;)
         {
           if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback != null) {
             this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback.a(true);
           }
-          this.jdField_a_of_type_Tsa.a(tsj.a(0), 0L);
+          this.jdField_a_of_type_Uew.a(uff.a(0), 0L);
           if (this.h == 6) {
             break;
           }
@@ -241,7 +241,7 @@ public class MediaPlayer
           this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread.start();
           this.h = 4;
           return;
-          this.jdField_a_of_type_Tsa.a(false);
+          this.jdField_a_of_type_Uew.a(false);
         }
         label520:
         int k = i;
@@ -275,8 +275,8 @@ public class MediaPlayer
       throw new IllegalStateException();
     }
     Log.d("Story-MediaPlayer", "seekTo " + paramLong);
-    if (this.jdField_a_of_type_Tsv != null) {
-      this.jdField_a_of_type_Tsv.a(this);
+    if (this.jdField_a_of_type_Ufr != null) {
+      this.jdField_a_of_type_Ufr.a(this);
     }
     this.jdField_a_of_type_Boolean = true;
     this.jdField_d_of_type_Long = Math.max(this.jdField_a_of_type_Long, paramLong);
@@ -287,7 +287,7 @@ public class MediaPlayer
   public void a(Context paramContext, Uri paramUri, Map<String, String> paramMap)
   {
     this.jdField_a_of_type_AndroidNetUri = paramUri;
-    a(new tsn(paramContext, paramUri, paramMap));
+    a(new ufj(paramContext, paramUri, paramMap));
   }
   
   public void a(Surface paramSurface)
@@ -307,64 +307,64 @@ public class MediaPlayer
   }
   
   @TargetApi(16)
-  public void a(tsl paramtsl)
+  public void a(ufh paramufh)
   {
     int j = 0;
     if (this.h != 1) {
       throw new IllegalStateException();
     }
-    this.jdField_a_of_type_Tsg = paramtsl.a();
-    this.jdField_b_of_type_Tsg = paramtsl.b();
+    this.jdField_a_of_type_Ufc = paramufh.a();
+    this.jdField_b_of_type_Ufc = paramufh.b();
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = -1;
     int i = 0;
     String str;
-    if (i < this.jdField_a_of_type_Tsg.a())
+    if (i < this.jdField_a_of_type_Ufc.a())
     {
-      paramtsl = this.jdField_a_of_type_Tsg.a(i);
-      Log.d("Story-MediaPlayer", paramtsl.toString());
-      str = paramtsl.getString("mime");
+      paramufh = this.jdField_a_of_type_Ufc.a(i);
+      Log.d("Story-MediaPlayer", paramufh.toString());
+      str = paramufh.getString("mime");
       if ((this.jdField_a_of_type_Int < 0) && (str.startsWith("video/")))
       {
-        this.jdField_a_of_type_Tsg.a(i);
+        this.jdField_a_of_type_Ufc.a(i);
         this.jdField_a_of_type_Int = i;
-        this.jdField_a_of_type_AndroidMediaMediaFormat = paramtsl;
-        this.jdField_a_of_type_Long = this.jdField_a_of_type_Tsg.a();
+        this.jdField_a_of_type_AndroidMediaMediaFormat = paramufh;
+        this.jdField_a_of_type_Long = this.jdField_a_of_type_Ufc.a();
       }
       for (;;)
       {
         i += 1;
         break;
-        if ((this.jdField_b_of_type_Tsg == null) && (this.jdField_b_of_type_Int < 0) && (str.startsWith("audio/")))
+        if ((this.jdField_b_of_type_Ufc == null) && (this.jdField_b_of_type_Int < 0) && (str.startsWith("audio/")))
         {
-          this.jdField_a_of_type_Tsg.a(i);
+          this.jdField_a_of_type_Ufc.a(i);
           this.jdField_b_of_type_Int = i;
-          this.jdField_b_of_type_AndroidMediaMediaFormat = paramtsl;
-          this.jdField_b_of_type_Long = this.jdField_a_of_type_Tsg.a();
-          this.jdField_b_of_type_Tsg = this.jdField_a_of_type_Tsg;
+          this.jdField_b_of_type_AndroidMediaMediaFormat = paramufh;
+          this.jdField_b_of_type_Long = this.jdField_a_of_type_Ufc.a();
+          this.jdField_b_of_type_Ufc = this.jdField_a_of_type_Ufc;
         }
       }
     }
-    if ((this.jdField_b_of_type_Tsg != null) && (this.jdField_b_of_type_Int == -1))
+    if ((this.jdField_b_of_type_Ufc != null) && (this.jdField_b_of_type_Int == -1))
     {
       i = j;
-      while (i < this.jdField_b_of_type_Tsg.a())
+      while (i < this.jdField_b_of_type_Ufc.a())
       {
-        paramtsl = this.jdField_b_of_type_Tsg.a(i);
-        Log.d("Story-MediaPlayer", paramtsl.toString());
-        str = paramtsl.getString("mime");
+        paramufh = this.jdField_b_of_type_Ufc.a(i);
+        Log.d("Story-MediaPlayer", paramufh.toString());
+        str = paramufh.getString("mime");
         if ((this.jdField_b_of_type_Int < 0) && (str.startsWith("audio/")))
         {
-          this.jdField_b_of_type_Tsg.a(i);
+          this.jdField_b_of_type_Ufc.a(i);
           this.jdField_b_of_type_Int = i;
-          this.jdField_b_of_type_AndroidMediaMediaFormat = paramtsl;
-          this.jdField_b_of_type_Long = this.jdField_b_of_type_Tsg.a();
+          this.jdField_b_of_type_AndroidMediaMediaFormat = paramufh;
+          this.jdField_b_of_type_Long = this.jdField_b_of_type_Ufc.a();
         }
         i += 1;
       }
     }
     if (this.jdField_a_of_type_Int == -1) {
-      this.jdField_a_of_type_Tsg = null;
+      this.jdField_a_of_type_Ufc = null;
     }
     if ((this.jdField_a_of_type_Int == -1) && (this.jdField_b_of_type_Int == -1)) {
       throw new IOException("invalid data source, no supported stream found");
@@ -375,16 +375,16 @@ public class MediaPlayer
     this.h = 2;
     if (!this.jdField_a_of_type_AndroidMediaMediaFormat.containsKey("rotation-degrees"))
     {
-      paramtsl = new MediaMetadataRetriever();
-      paramtsl.setDataSource(this.jdField_a_of_type_AndroidNetUri.getPath());
-      str = paramtsl.extractMetadata(24);
+      paramufh = new MediaMetadataRetriever();
+      paramufh.setDataSource(this.jdField_a_of_type_AndroidNetUri.getPath());
+      str = paramufh.extractMetadata(24);
     }
     try
     {
       this.jdField_f_of_type_Int = Integer.parseInt(str);
       this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("rotation-degrees", this.jdField_f_of_type_Int);
       label457:
-      paramtsl.release();
+      paramufh.release();
       return;
       this.jdField_f_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("rotation-degrees");
       return;
@@ -395,39 +395,39 @@ public class MediaPlayer
     }
   }
   
-  public void a(tsp paramtsp)
+  public void a(ufl paramufl)
   {
-    this.jdField_a_of_type_Tsp = paramtsp;
+    this.jdField_a_of_type_Ufl = paramufl;
   }
   
-  public void a(tsq paramtsq)
+  public void a(ufm paramufm)
   {
-    this.jdField_a_of_type_Tsq = paramtsq;
+    this.jdField_a_of_type_Ufm = paramufm;
   }
   
-  public void a(tsr paramtsr)
+  public void a(ufn paramufn)
   {
-    this.jdField_a_of_type_Tsr = paramtsr;
+    this.jdField_a_of_type_Ufn = paramufn;
   }
   
-  public void a(tss paramtss)
+  public void a(ufo paramufo)
   {
-    this.jdField_a_of_type_Tss = paramtss;
+    this.jdField_a_of_type_Ufo = paramufo;
   }
   
-  public void a(tst paramtst)
+  public void a(ufp paramufp)
   {
-    this.jdField_a_of_type_Tst = paramtst;
+    this.jdField_a_of_type_Ufp = paramufp;
   }
   
-  public void a(tsu paramtsu)
+  public void a(ufq paramufq)
   {
-    this.jdField_a_of_type_Tsu = paramtsu;
+    this.jdField_a_of_type_Ufq = paramufq;
   }
   
-  public void a(tsw paramtsw)
+  public void a(ufs paramufs)
   {
-    this.jdField_a_of_type_Tsw = paramtsw;
+    this.jdField_a_of_type_Ufs = paramufs;
   }
   
   public void a(boolean paramBoolean)
@@ -493,7 +493,7 @@ public class MediaPlayer
   {
     if (this.h >= 6)
     {
-      urk.c("Story-MediaPlayer", "getVideoWidth() with wrong state: " + this.h + "!", new IllegalStateException());
+      veg.c("Story-MediaPlayer", "getVideoWidth() with wrong state: " + this.h + "!", new IllegalStateException());
       this.h = 8;
     }
     do
@@ -552,7 +552,7 @@ public class MediaPlayer
   {
     if (this.h >= 6)
     {
-      urk.c("Story-MediaPlayer", "getVideoHeight() with wrong state: " + this.h + "!", new IllegalStateException());
+      veg.c("Story-MediaPlayer", "getVideoHeight() with wrong state: " + this.h + "!", new IllegalStateException());
       this.h = 8;
     }
     do
@@ -669,27 +669,27 @@ public class MediaPlayer
   protected void h()
   {
     int j = 1;
-    if (this.jdField_a_of_type_Tsa != null) {
-      this.jdField_a_of_type_Tsa.a();
+    if (this.jdField_a_of_type_Uew != null) {
+      this.jdField_a_of_type_Uew.a();
     }
     if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback != null) {
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback.d();
     }
     int i;
-    if (this.jdField_b_of_type_Tsg != null)
+    if (this.jdField_b_of_type_Ufc != null)
     {
       i = 1;
-      if (this.jdField_b_of_type_Tsg == this.jdField_a_of_type_Tsg) {
+      if (this.jdField_b_of_type_Ufc == this.jdField_a_of_type_Ufc) {
         break label83;
       }
     }
     for (;;)
     {
       if ((i & j) != 0) {
-        this.jdField_b_of_type_Tsg.b();
+        this.jdField_b_of_type_Ufc.b();
       }
-      if (this.jdField_a_of_type_Tsg != null) {
-        this.jdField_a_of_type_Tsg.b();
+      if (this.jdField_a_of_type_Ufc != null) {
+        this.jdField_a_of_type_Ufc.b();
       }
       return;
       i = 0;

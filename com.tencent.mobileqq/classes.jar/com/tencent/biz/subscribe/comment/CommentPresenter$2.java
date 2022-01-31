@@ -1,33 +1,33 @@
 package com.tencent.biz.subscribe.comment;
 
 import android.widget.TextView;
-import vzz;
-import wah;
-import wbb;
+import wnl;
+import wnu;
+import woo;
 
 public class CommentPresenter$2
   implements Runnable
 {
-  public CommentPresenter$2(vzz paramvzz) {}
+  public CommentPresenter$2(wnl paramwnl) {}
   
   public void run()
   {
-    if (vzz.a(this.this$0) != null) {
-      vzz.a(this.this$0).a(vzz.a(this.this$0));
+    if (wnl.a(this.this$0) != null) {
+      wnl.a(this.this$0).a(wnl.a(this.this$0));
     }
-    if (vzz.a(this.this$0) != null)
+    if (wnl.a(this.this$0) != null)
     {
-      if (vzz.a(this.this$0) > 0)
+      if (wnl.a(this.this$0) > 0)
       {
-        vzz.a(this.this$0).setText(wbb.a(vzz.a(this.this$0)));
-        vzz.a(this.this$0).setVisibility(0);
+        wnl.a(this.this$0).setText(woo.a(wnl.a(this.this$0)));
+        wnl.a(this.this$0).setVisibility(0);
       }
     }
     else {
       return;
     }
-    vzz.a(this.this$0).setText("");
-    vzz.a(this.this$0).setVisibility(8);
+    wnl.a(this.this$0).setText("");
+    wnl.a(this.this$0).setVisibility(8);
   }
 }
 

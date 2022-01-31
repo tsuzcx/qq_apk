@@ -1,32 +1,32 @@
 package com.tencent.mobileqq.ark.API;
 
-import albu;
-import albv;
-import albw;
+import alqi;
+import alqj;
+import alqk;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import babr;
-import bafb;
+import bbcv;
+import bbgg;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class ArkAppSchemeCenter$TelSchemeHandler$1
   implements Runnable
 {
-  public ArkAppSchemeCenter$TelSchemeHandler$1(albu paramalbu, String paramString) {}
+  public ArkAppSchemeCenter$TelSchemeHandler$1(alqi paramalqi, String paramString) {}
   
   public void run()
   {
-    bafb localbafb = babr.a(BaseActivity.sTopActivity, this.a);
-    TextView localTextView = (TextView)localbafb.findViewById(2131299579);
+    bbgg localbbgg = bbcv.a(BaseActivity.sTopActivity, this.a);
+    TextView localTextView = (TextView)localbbgg.findViewById(2131365147);
     localTextView.setGravity(17);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 17;
     localTextView.setLayoutParams(localLayoutParams);
-    localbafb.setPositiveButton(2131626068, new albv(this, localbafb));
-    localbafb.setNegativeButton(2131625035, new albw(this, localbafb));
+    localbbgg.setPositiveButton(2131691644, new alqj(this, localbbgg));
+    localbbgg.setNegativeButton(2131690596, new alqk(this, localbbgg));
     try
     {
-      localbafb.show();
+      localbbgg.show();
       return;
     }
     catch (Exception localException) {}

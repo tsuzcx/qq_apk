@@ -1,33 +1,24 @@
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import java.util.List;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.SeekBar;
+import com.tencent.av.ui.beauty.BeautySeekView;
 
 public class mlv
-  implements behi
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public mlv(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
+  public mlv(BeautySeekView paramBeautySeekView) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onGlobalLayout()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PoiMapActivity", 2, "setOnItemClickListener" + paramInt);
-    }
-    paramAdapterView = (mlx)this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.get(paramInt);
-    if (paramAdapterView != null)
+    if ((this.a.a) && (BeautySeekView.a(this.a) != null) && (BeautySeekView.a(this.a).getWidth() > 0))
     {
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.h = true;
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(paramAdapterView);
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_result", "", "", "", "");
+      this.a.a = false;
+      BeautySeekView.a(this.a, BeautySeekView.a(this.a).getProgress());
     }
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mlv
  * JD-Core Version:    0.7.0.1
  */

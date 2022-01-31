@@ -1,23 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
+import android.graphics.Color;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
-class xcx
-  implements Animation.AnimationListener
+public class xcx
+  implements View.OnClickListener
 {
-  xcx(xcv paramxcv, URLImageView paramURLImageView, URLDrawable paramURLDrawable, ScaleAnimation paramScaleAnimation) {}
+  public xcx(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    TroopGiftPanel.b(this.a).setSelected(false);
+    this.a.a.a(-1);
+    TroopGiftPanel.a(this.a).setSelected(true);
+    ((TextView)TroopGiftPanel.b(this.a).findViewById(2131378197)).setTextColor(Color.parseColor("#ff878b99"));
+    TroopGiftPanel.b(this.a).findViewById(2131379168).setVisibility(8);
+    ((TextView)TroopGiftPanel.a(this.a).findViewById(2131378196)).setTextColor(Color.parseColor("#ffff5b84"));
+    TroopGiftPanel.a(this.a).findViewById(2131379175).setVisibility(0);
+    this.a.onTabSelected(this.a.h, TroopGiftPanel.d);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import awqx;
+import axqw;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ class ChatSettingForTroop$23$1
     }
     ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop$23.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop$23.this$0.a.troopUin, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop$23.this$0.a.isOwnerOrAdim(), this.jdField_a_of_type_JavaUtilArrayList);
     this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop$23.this$0.a("Grp", "Clk_invite_new", "0");
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop$23.this$0.app, "dc00899", "Grp_create", "", "search", "grpedit_grpcreate_clk", 0, 0, "", "", "", "");
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop$23.this$0.app, "dc00899", "Grp_create", "", "search", "grpedit_grpcreate_clk", 0, 0, "", "", "", "");
   }
 }
 

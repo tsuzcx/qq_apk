@@ -1,18 +1,33 @@
-import java.util.Observable;
-
-public class vgi
-  extends Observable
+class vgi
+  implements vos
 {
-  public void notifyObservers()
+  vgi(vgd paramvgd) {}
+  
+  public void a()
   {
-    setChanged();
-    super.notifyObservers();
+    veg.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击重新拉取地理贴纸");
+    vgd.a(this.a);
   }
   
-  public void notifyObservers(Object paramObject)
+  public void a(String paramString)
   {
-    setChanged();
-    super.notifyObservers(paramObject);
+    veg.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载：" + paramString);
+    vhp localvhp = this.a.a;
+    if (this.a.a.a()) {}
+    for (String str = "2";; str = "1")
+    {
+      localvhp.a("download_face", 0, 0, new String[] { str, paramString });
+      vem.b("0X80075DD");
+      if (!((vlv)tdc.a(8)).a(paramString, true)) {
+        veg.d("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载启动失败");
+      }
+      return;
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    veg.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载取消：" + paramString);
   }
 }
 

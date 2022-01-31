@@ -1,142 +1,57 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.AsyncTask;
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.manager.ServerConfigManager.ConfigType;
+import android.text.SpannableString;
 
-final class baed
-  extends AsyncTask<Void, Void, Void>
+class baed
 {
-  baed(String paramString1, int paramInt, String paramString2) {}
+  public final int a;
+  public final SpannableString a;
   
-  protected Void a(Void... paramVarArgs)
+  public baed(int paramInt, SpannableString paramSpannableString)
   {
-    paramVarArgs = bahj.a(ServerConfigManager.ConfigType.common, baec.p());
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PerformanceReportUtils", 4, "reportFPS openStr ：" + paramVarArgs);
-    }
-    if ((paramVarArgs == null) || (!"1".equals(paramVarArgs))) {
-      return null;
-    }
-    int i;
-    for (;;)
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidTextSpannableString = paramSpannableString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      try
-      {
-        localSharedPreferences = baec.a();
-        if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_Int <= 0)) {
-          break label631;
-        }
-        if ((this.jdField_a_of_type_Int >= 60) && (QLog.isDevelopLevel())) {
-          QLog.e("PerformanceReportUtils", 4, "reportFPS  fps error fpsvalue :" + this.jdField_a_of_type_Int);
-        }
-        l2 = localSharedPreferences.getLong(this.jdField_a_of_type_JavaLangString, 0L);
-        l1 = baec.a();
-        paramVarArgs = bahj.a(ServerConfigManager.ConfigType.common, baec.q());
-        if (paramVarArgs == null) {}
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-      catch (Exception paramVarArgs)
-      {
-        SharedPreferences localSharedPreferences;
-        long l2;
-        long l1;
-        HashMap localHashMap;
-        BaseApplicationImpl localBaseApplicationImpl;
-        break label631;
-        i = 1;
-        continue;
+      paramObject = (baed)paramObject;
+      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
+        return false;
       }
-      try
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("PerformanceReportUtils", 4, "reportFPS  server time：" + paramVarArgs);
-        }
-        l1 = Long.valueOf(paramVarArgs).longValue();
-        l1 *= 1000L;
+      if (this.jdField_a_of_type_AndroidTextSpannableString != null) {
+        return this.jdField_a_of_type_AndroidTextSpannableString.equals(paramObject.jdField_a_of_type_AndroidTextSpannableString);
       }
-      catch (Exception paramVarArgs)
-      {
-        l1 = baec.a();
-        continue;
-        paramVarArgs = this.jdField_a_of_type_JavaLangString + "_new";
-      }
+    } while (paramObject.jdField_a_of_type_AndroidTextSpannableString == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    int j = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_AndroidTextSpannableString != null) {}
+    for (int i = this.jdField_a_of_type_AndroidTextSpannableString.hashCode();; i = 0) {
+      return i + j * 31;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PerformanceReportUtils", 4, "reportFPS report_time ：" + l1 + ",lastRp" + l2 + ",reportFPS fpsvalue：" + this.jdField_a_of_type_Int);
-    }
-    if ((l2 != 0L) && (SystemClock.uptimeMillis() >= l2))
-    {
-      if (SystemClock.uptimeMillis() - l2 < l1) {
-        break label633;
-      }
-      break label626;
-      bool = UnifiedMonitor.a().whetherReportThisTime(12, false);
-      if ((i == 0) && (!bool)) {
-        break label631;
-      }
-      localHashMap = new HashMap();
-      localHashMap.put("param_FPS", String.valueOf(this.jdField_a_of_type_Int));
-      localHashMap.put("aioBusiness", this.b);
-      localHashMap.put("theme_Id", QQAppInterface.d());
-      localHashMap.put("param_threadOpId", String.valueOf(ajtd.a().a()));
-      if (QLog.isDevelopLevel()) {
-        QLog.d("PerformanceReportUtils", 4, "reportFPS real report  fpsvalue：" + this.jdField_a_of_type_Int);
-      }
-      localHashMap.put("param_DeviceType", String.valueOf(ageh.a()));
-      paramVarArgs = null;
-      localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-      if (localBaseApplicationImpl != null) {
-        paramVarArgs = localBaseApplicationImpl.getRuntime();
-      }
-      if ((paramVarArgs != null) && ((paramVarArgs instanceof QQAppInterface)))
-      {
-        if (((QQAppInterface)paramVarArgs).a.a == 0L) {
-          break label638;
-        }
-        bool = true;
-        label457:
-        localHashMap.put("param_is_logining", String.valueOf(bool));
-        if (((QQAppInterface)paramVarArgs).a.c()) {
-          break label644;
-        }
-      }
-    }
-    label644:
-    for (boolean bool = true;; bool = false)
-    {
-      localHashMap.put("param_syncing_msg", String.valueOf(bool));
-      localHashMap.put("param_NetType", String.valueOf(badq.a(BaseApplication.getContext())));
-      if (i != 0)
-      {
-        paramVarArgs = this.jdField_a_of_type_JavaLangString;
-        awrn.a(BaseApplication.getContext()).a(bahj.a(), paramVarArgs, baec.a(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int, 0L, localHashMap, baec.o());
-        if (i == 0) {
-          break label631;
-        }
-        localSharedPreferences.edit().putLong(this.jdField_a_of_type_JavaLangString, SystemClock.uptimeMillis()).commit();
-      }
-      label626:
-      label631:
-      return null;
-      label633:
-      i = 0;
-      break;
-      label638:
-      bool = false;
-      break label457;
-    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("AtTag{");
+    localStringBuilder.append("startIndex=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", atSpan=").append(this.jdField_a_of_type_AndroidTextSpannableString);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baed
  * JD-Core Version:    0.7.0.1
  */

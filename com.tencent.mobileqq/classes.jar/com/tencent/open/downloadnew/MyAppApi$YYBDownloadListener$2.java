@@ -1,31 +1,31 @@
 package com.tencent.open.downloadnew;
 
 import android.text.TextUtils;
-import bcds;
-import bcev;
-import bcgg;
-import bcho;
+import bdht;
+import bdiw;
+import bdkh;
+import bdlp;
 
 public class MyAppApi$YYBDownloadListener$2
   implements Runnable
 {
-  public MyAppApi$YYBDownloadListener$2(bcho parambcho, DownloadInfo paramDownloadInfo) {}
+  public MyAppApi$YYBDownloadListener$2(bdlp parambdlp, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    bcds.c("MyAppApi", "rooted and start silent install...");
+    bdht.c("MyAppApi", "rooted and start silent install...");
     long l = System.currentTimeMillis();
-    if (bcgg.a(l))
+    if (bdkh.a(l))
     {
-      if ((bcev.a()) && (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.l))) {
-        bcev.b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.l);
+      if ((bdiw.a()) && (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.l))) {
+        bdiw.b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.l);
       }
     }
     else {
       return;
     }
-    bcds.c("MyAppApi", "root confused and remember user operation time!");
-    bcgg.a(l);
+    bdht.c("MyAppApi", "root confused and remember user operation time!");
+    bdkh.a(l);
   }
 }
 

@@ -1,23 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
 
 public class afhi
-  implements View.OnClickListener
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  public afhi(SimpleSlidingIndicator paramSimpleSlidingIndicator, int paramInt) {}
+  public afhi(TroopView paramTroopView) {}
   
-  public void onClick(View paramView)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.e == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.e >= 0) && (SimpleSlidingIndicator.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator) != null)) {
-      SimpleSlidingIndicator.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator).b(this.jdField_a_of_type_Int);
+    if (paramInt == 1) {
+      TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.a(this.jdField_a_of_type_Int, true, true);
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    TroopView.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afhi
  * JD-Core Version:    0.7.0.1
  */

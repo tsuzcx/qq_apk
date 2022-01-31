@@ -1,49 +1,280 @@
-import android.app.Activity;
-import android.content.res.Configuration;
+import android.content.Context;
 import android.content.res.Resources;
-import android.view.Display;
-import android.view.WindowManager;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
+import mqq.app.AppRuntime;
 
 public class azyi
 {
-  public static void a(Activity paramActivity)
+  public static final String[] a;
+  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { "http://pub.idqqimg.com/pc/misc/files/20180315/a9ebfbc36f364fd6bd186620148066ba.gif", "http://pub.idqqimg.com/pc/misc/files/20180315/43357aa60b24452baba7707ed7f75c88.gif", "http://pub.idqqimg.com/pc/misc/files/20180315/a4c4d2db3416431181d67fa5de1af860.gif" };
+  private Context jdField_a_of_type_AndroidContentContext;
+  public View a;
+  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private SpriteVideoView jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView;
+  private boolean jdField_a_of_type_Boolean = true;
+  private View jdField_b_of_type_AndroidViewView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private View jdField_c_of_type_AndroidViewView;
+  private TextView jdField_c_of_type_AndroidWidgetTextView;
+  private View jdField_d_of_type_AndroidViewView;
+  private TextView jdField_d_of_type_AndroidWidgetTextView;
+  private View e;
+  private View f;
+  private View g;
+  
+  static
   {
-    if (paramActivity == null) {
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "完美！\n为你打Call。", "真棒！\n背得很流畅哦。", "加油！\n但还可以更好。" };
+  }
+  
+  public azyi(Context paramContext, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560364, paramViewGroup, false);
+    e();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  private CharSequence a(String paramString1, String paramString2, int paramInt)
+  {
+    paramString2 = new SpannableString(new StringBuilder(paramString1).append(paramString2));
+    paramString2.setSpan(new bani(this.jdField_a_of_type_AndroidContentContext, 0, 20, 1, 7, 14, paramInt, paramString1), 0, paramString1.length(), 33);
+    return paramString2;
+  }
+  
+  private void a(String paramString)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mPlayGifImage = this.jdField_a_of_type_Boolean;
+    localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_AndroidWidgetImageView.getMeasuredWidth();
+    localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_AndroidWidgetImageView.getMeasuredHeight();
+    localURLDrawableOptions.mLoadingDrawable = aywk.a;
+    localURLDrawableOptions.mFailedDrawable = aywk.a;
+    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+    paramString.setDownloadListener(new azyl(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+    if ((paramString.getStatus() == 1) && (paramString.getCurrDrawable() != null))
+    {
+      h();
       return;
     }
-    int i = ((WindowManager)paramActivity.getSystemService("window")).getDefaultDisplay().getOrientation();
-    switch (paramActivity.getResources().getConfiguration().orientation)
+    paramString.startDownload();
+  }
+  
+  private void a(boolean paramBoolean, View paramView1, View paramView2)
+  {
+    int i = paramView1.getMeasuredHeight();
+    int j = paramView2.getMeasuredHeight();
+    if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null)
     {
-    default: 
-      i = 0;
+      this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(0.0F, 0.0F, i + j, j);
+      this.jdField_a_of_type_AndroidViewAnimationAnimation.setFillAfter(true);
     }
-    for (;;)
+    paramView2 = this.jdField_a_of_type_AndroidViewAnimationAnimation;
+    if (paramBoolean) {}
+    for (long l = 1000L;; l = 0L)
     {
-      paramActivity.setRequestedOrientation(i);
+      paramView2.setDuration(l);
+      paramView1.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
       return;
-      if ((i == 0) || (i == 1) || (!befo.c())) {
-        break;
-      }
-      i = 8;
-      continue;
-      if ((i != 0) && (i != 3) && (befo.c())) {
-        i = 9;
-      } else {
-        i = 1;
+    }
+  }
+  
+  private void e()
+  {
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131378804);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378096));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368559));
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131378794);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378417));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378155));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378321));
+    this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131378795);
+    this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131378797);
+    this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131378806);
+    this.g = this.jdField_a_of_type_AndroidViewView.findViewById(2131375358);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView = ((SpriteVideoView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376735));
+  }
+  
+  private void f()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.n();
+    }
+    if (this.jdField_a_of_type_AndroidViewAnimationAnimation != null) {
+      this.jdField_a_of_type_AndroidViewAnimationAnimation.cancel();
+    }
+  }
+  
+  private void g()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.setVisibility(0);
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface)) {
+        bamu.a((QQAppInterface)localAppRuntime, "qb_troop_hw_recite_result.mp4", "http://pub.idqqimg.com/pc/misc/files/20180312/59583551a1c748dfaae1e64f6e04ca20.mp4", this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView, new azym(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView, null));
       }
     }
   }
   
-  public static void b(Activity paramActivity)
+  private void h()
   {
-    if (paramActivity != null) {
-      paramActivity.setRequestedOrientation(-1);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      AbstractGifImage.resumeAll();
+      return;
     }
+    AbstractGifImage.pauseAll();
+  }
+  
+  public void a() {}
+  
+  public void a(SpriteVideoView paramSpriteVideoView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView = paramSpriteVideoView;
+  }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    paramString = this.jdField_a_of_type_AndroidContentContext.getResources();
+    int j = 2130843192;
+    int i = paramString.getColor(2131165275);
+    paramInt1 -= 1;
+    int k;
+    if (paramInt1 < jdField_a_of_type_ArrayOfJavaLangString.length)
+    {
+      k = paramInt1;
+      if (paramInt1 >= 0) {}
+    }
+    else
+    {
+      k = jdField_a_of_type_ArrayOfJavaLangString.length - 1;
+    }
+    String str1 = jdField_a_of_type_ArrayOfJavaLangString[k];
+    String str2 = jdField_b_of_type_ArrayOfJavaLangString[k];
+    paramInt1 = 0;
+    int m = 2130843172;
+    switch (k)
+    {
+    default: 
+      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(m);
+      this.jdField_b_of_type_AndroidViewView.setLayerType(1, null);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
+      if (this.jdField_a_of_type_AndroidWidgetImageView.getMeasuredHeight() > 0)
+      {
+        a(str2);
+        label168:
+        this.jdField_c_of_type_AndroidViewView.setBackgroundResource(j);
+        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(i);
+        j = (int)(paramLong / 60L);
+        m = (int)(paramLong % 60L);
+        paramString = new StringBuilder().append(j).append("'");
+        if (m != 0) {
+          paramString.append(m);
+        }
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(a(ajyc.a(2131713223), paramString.toString(), paramInt1));
+        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(i);
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(a(ajyc.a(2131713221), String.valueOf(paramInt2), paramInt1));
+        this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(i);
+        this.jdField_d_of_type_AndroidWidgetTextView.setText(a(ajyc.a(2131713222), String.valueOf(paramInt3), paramInt1));
+        if (this.g.getMeasuredHeight() != 0) {
+          break label440;
+        }
+        this.g.getViewTreeObserver().addOnGlobalLayoutListener(new azyk(this, paramBoolean));
+      }
+      break;
+    }
+    for (;;)
+    {
+      if ((paramBoolean) && (k == 0)) {
+        g();
+      }
+      return;
+      paramInt1 = Color.parseColor("#636363");
+      break;
+      paramInt1 = paramString.getColor(2131167134);
+      m = 2130843173;
+      j = 2130843191;
+      i = paramInt1;
+      break;
+      paramInt1 = paramString.getColor(2131167134);
+      j = 2130843190;
+      i = paramInt1;
+      break;
+      this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().addOnGlobalLayoutListener(new azyj(this, str2));
+      break label168;
+      label440:
+      this.f.setVisibility(4);
+      a(paramBoolean, this.g, this.jdField_d_of_type_AndroidViewView);
+    }
+  }
+  
+  public void b()
+  {
+    f();
+  }
+  
+  public void c()
+  {
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject1 instanceof QQAppInterface)) {
+      bamu.a((QQAppInterface)localObject1, "qb_troop_hw_recite_result.mp4", "http://pub.idqqimg.com/pc/misc/files/20180312/59583551a1c748dfaae1e64f6e04ca20.mp4");
+    }
+    localObject1 = jdField_b_of_type_ArrayOfJavaLangString;
+    int j = localObject1.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject2 = localObject1[i];
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mPlayGifImage = true;
+      localObject2 = URLDrawable.getDrawable((String)localObject2, localURLDrawableOptions);
+      if ((((URLDrawable)localObject2).getStatus() != 1) || (((URLDrawable)localObject2).getCurrDrawable() == null)) {
+        ((URLDrawable)localObject2).startDownload();
+      }
+      i += 1;
+    }
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.f.setVisibility(0);
+    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.a();
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_AndroidViewAnimationAnimation != null) {
+      this.jdField_a_of_type_AndroidViewAnimationAnimation.cancel();
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azyi
  * JD-Core Version:    0.7.0.1
  */

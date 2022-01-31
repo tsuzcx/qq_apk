@@ -1,20 +1,20 @@
 package dov.com.qq.im;
 
-import ajjy;
-import bbmy;
-import bhec;
+import ajyc;
+import bcpw;
+import bigs;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class QIMEmojiRedPacketCameraCaptureUnit$8
   implements Runnable
 {
-  public QIMEmojiRedPacketCameraCaptureUnit$8(bhec parambhec) {}
+  public QIMEmojiRedPacketCameraCaptureUnit$8(bigs parambigs) {}
   
   public void run()
   {
-    bbmy.a(BaseApplicationImpl.getContext(), ajjy.a(2131644010), 0).a();
+    bcpw.a(BaseApplicationImpl.getContext(), ajyc.a(2131709795), 0).a();
     this.this$0.g();
-    this.this$0.N();
+    this.this$0.L();
   }
 }
 

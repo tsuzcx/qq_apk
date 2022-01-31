@@ -1,115 +1,61 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Matrix;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.phone.BindNumberFromPcActivity;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.activity.phone.RebindActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract class agja
+public class agja
+  extends aume
 {
-  String a;
-  String b;
-  String c;
+  public agja(BindNumberFromPcActivity paramBindNumberFromPcActivity) {}
   
-  public agja(String paramString)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.c = paramString;
-  }
-  
-  public static agja a(String paramString)
-  {
-    if (agjb.a(paramString)) {
-      return new agjb(paramString);
-    }
-    if (agiz.a(paramString)) {
-      return new agiz(paramString);
-    }
-    return null;
-  }
-  
-  public static boolean c(String paramString)
-  {
-    return a(paramString) != null;
-  }
-  
-  public String a()
-  {
-    Object localObject = null;
-    String str = atra.a(this.c, 2);
-    if (!new File(str).exists())
+    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+    this.a.b();
+    int i;
+    if (paramBoolean)
     {
-      boolean bool = b(str);
-      awrn.a(BaseApplication.getContext()).a(null, this.b, bool, 0L, atra.a(str), null, "");
-      if (bool)
+      i = paramBundle.getInt("k_result");
+      if ((i == 104) || (i == 0))
       {
-        if (QLog.isColorLevel()) {
-          atpg.a("PIC_TAG_ERROR", "check file type,generateCompatibleFile suc", "outputPath" + str + " originFile" + this.c + " fileType:" + this.a);
+        paramBundle = new Intent(this.a, BindVerifyActivity.class);
+        paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
+        paramBundle.putExtra("k_country_code", this.a.b);
+        if ((paramBundle != null) && (!this.a.isFinishing()))
+        {
+          paramBundle.addFlags(536870912);
+          this.a.startActivityForResult(paramBundle, 1);
         }
-        localObject = str;
       }
-      while (!QLog.isColorLevel()) {
-        return localObject;
-      }
-      atpg.a("PIC_TAG_ERROR", "check file type,generateCompatibleFile fail", " originFile" + this.c + " fileType:" + this.a);
-      return null;
     }
-    if (QLog.isColorLevel()) {
-      atpg.a("PIC_TAG_ERROR", "check file type,compatibleFile exists", "outputPath" + str + " originFile" + this.c + " fileType:" + this.a);
-    }
-    return str;
-  }
-  
-  boolean b(String paramString)
-  {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    int j = bacm.b(this.c);
-    String str = "generate " + this.a;
-    int i = 1;
-    if (i <= 4) {}
     for (;;)
     {
-      try
+      this.a.app.unRegistObserver(BindNumberFromPcActivity.a(this.a));
+      BindNumberFromPcActivity.a(this.a, null);
+      return;
+      if (i == 107)
       {
-        localOptions.inSampleSize = i;
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a, 2, str + ",localPath:" + this.c + " sample:" + i + " path:" + paramString + " degree:" + j);
-        }
-        Bitmap localBitmap = SafeBitmapFactory.safeDecode(this.c, localOptions);
-        Object localObject = localBitmap;
-        if (j != 0)
-        {
-          localObject = new Matrix();
-          int k = localBitmap.getWidth();
-          int m = localBitmap.getHeight();
-          ((Matrix)localObject).postRotate(j, k >> 1, m >> 1);
-          localObject = Bitmap.createBitmap(localBitmap, 0, 0, k, m, (Matrix)localObject, true);
-        }
-        bool = atra.a(paramString, (Bitmap)localObject, 80, "incompatible to jpg", null);
-        if (bool)
-        {
-          bool = true;
-          if (QLog.isColorLevel()) {
-            QLog.d(this.a, 2, str + ",result:" + bool + " sample:" + i + " path:" + paramString + " degree:" + j);
-          }
-          return bool;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a, 2, str + ",compressQuality fail");
-        }
-        i *= 2;
+        Intent localIntent = new Intent(this.a, RebindActivity.class);
+        localIntent.putExtra("k_uin", paramBundle.getString("k_uin"));
+        localIntent.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
+        localIntent.putExtra("k_country_code", this.a.b);
+        paramBundle = localIntent;
+        break;
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
+      if (i == 106)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a, 2, str + ",oom localPath:" + this.c + " sample:" + i + " degree:" + j);
-        }
-        localOutOfMemoryError.printStackTrace();
-        System.gc();
-        i *= 2;
+        this.a.setResult(-1);
+        this.a.finish();
+        paramBundle = null;
+        break;
       }
+      this.a.a(a(i));
+      paramBundle = null;
       break;
-      boolean bool = false;
+      this.a.b(2131718737);
     }
   }
 }

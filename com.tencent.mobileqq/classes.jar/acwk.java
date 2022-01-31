@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Text;
 
-class acwk
-  implements DialogInterface.OnClickListener
+public final class acwk
+  implements Parcelable.Creator<ForwardUtils.Section_Text>
 {
-  acwk(acwe paramacwe) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ForwardUtils.Section_Text a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
+    return new ForwardUtils.Section_Text(paramParcel);
+  }
+  
+  public ForwardUtils.Section_Text[] a(int paramInt)
+  {
+    return new ForwardUtils.Section_Text[paramInt];
   }
 }
 

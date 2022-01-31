@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import ajhf;
-import ajhg;
-import ajhh;
+import ajvi;
+import ajvj;
+import ajvk;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +19,10 @@ class DiscussionInfoCardActivity$5
     if (this.a) {}
     try
     {
-      ajhg localajhg = new ajhg();
-      localajhg.a = String.valueOf(DiscussionInfoCardActivity.a(this.this$0));
-      localajhg.b = localArrayList.size();
-      DiscussionInfoCardActivity.a(this.this$0).a(localajhg);
+      ajvj localajvj = new ajvj();
+      localajvj.a = String.valueOf(DiscussionInfoCardActivity.a(this.this$0));
+      localajvj.b = localArrayList.size();
+      DiscussionInfoCardActivity.a(this.this$0).a(localajvj);
       return;
     }
     catch (Exception localException)

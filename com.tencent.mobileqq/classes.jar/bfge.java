@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
+import java.util.Comparator;
 
-public class bfge
-  implements DialogInterface.OnClickListener
+class bfge
+  implements Comparator<String>
 {
-  public bfge(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(String paramString1, String paramString2)
   {
-    this.a.finish();
+    return paramString1.compareTo(paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfge
  * JD-Core Version:    0.7.0.1
  */

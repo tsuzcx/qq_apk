@@ -1,67 +1,76 @@
-import android.content.Intent;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import java.io.BufferedReader;
 
 public class lmv
-  extends ajjh
+  extends lmu
 {
-  public lmv(QQServiceForAV paramQQServiceForAV) {}
+  private float jdField_a_of_type_Float;
+  float[] jdField_a_of_type_ArrayOfFloat = { 0.0F };
+  private float jdField_b_of_type_Float;
+  private float[] jdField_b_of_type_ArrayOfFloat = { 1.0F };
+  private boolean c;
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public float a(float paramFloat)
   {
-    Intent localIntent = new Intent("com.tencent.qqhead.getheadresp2");
-    localIntent.putExtra("uin", paramString);
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    if (this.a.b.contains(paramString)) {
-      localQQAppInterface.getApp().sendBroadcast(localIntent);
+    float[] arrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
+    int j = arrayOfFloat1.length;
+    int i = 1;
+    if (i < j) {
+      if (arrayOfFloat1[i] <= paramFloat) {}
     }
-    this.a.b.remove(paramString);
-    if (this.a.b()) {
-      localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Ajjh);
+    for (;;)
+    {
+      if (i == -1)
+      {
+        return this.jdField_b_of_type_ArrayOfFloat[(j - 1)];
+        i += 1;
+        break;
+      }
+      float[] arrayOfFloat2 = this.jdField_b_of_type_ArrayOfFloat;
+      j = i - 1;
+      float f1 = arrayOfFloat2[j];
+      float f2 = arrayOfFloat1[j];
+      float f3 = arrayOfFloat2[i];
+      return (paramFloat - f2) / (arrayOfFloat1[i] - f2) * (f3 - f1) + f1;
+      i = -1;
     }
   }
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void a(BufferedReader paramBufferedReader)
   {
-    if (QLog.isColorLevel())
+    int j = 0;
+    super.a(paramBufferedReader);
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (;;)
     {
-      QLog.d("QQServiceForAV", 2, "onUpdateFriendInfo uin = " + paramString);
-      QLog.d("QQServiceForAV", 2, "onUpdateFriendInfo isSuccess = " + paramBoolean);
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    Intent localIntent;
-    if ((paramBoolean) && (paramString != null))
-    {
-      localIntent = new Intent();
-      localIntent.setAction("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO");
-      localIntent.putExtra("uin", paramString);
-      localObject = (ajjj)QQServiceForAV.m(this.a).getManager(51);
-      if (localObject == null) {
-        break label205;
-      }
-      localObject = ((ajjj)localObject).e(paramString);
-      if (localObject == null) {
-        break label205;
-      }
-    }
-    label205:
-    for (Object localObject = babh.a((Friends)localObject);; localObject = paramString)
-    {
-      localIntent.putExtra("nick", (String)localObject);
-      localIntent.setPackage(localQQAppInterface.getApplication().getPackageName());
-      localQQAppInterface.getApp().sendBroadcast(localIntent);
-      this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramString);
-      if (this.a.b()) {
-        localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Ajjh);
-      }
       return;
+      this.jdField_a_of_type_Float = lmq.a(paramBufferedReader, "highMin");
+      this.jdField_b_of_type_Float = lmq.a(paramBufferedReader, "highMax");
+      this.c = lmq.a(paramBufferedReader, "relative");
+      this.jdField_b_of_type_ArrayOfFloat = new float[lmq.a(paramBufferedReader, "scalingCount")];
+      int i = 0;
+      while (i < this.jdField_b_of_type_ArrayOfFloat.length)
+      {
+        this.jdField_b_of_type_ArrayOfFloat[i] = lmq.a(paramBufferedReader, "scaling" + i);
+        i += 1;
+      }
+      this.jdField_a_of_type_ArrayOfFloat = new float[lmq.a(paramBufferedReader, "timelineCount")];
+      i = j;
+      while (i < this.jdField_a_of_type_ArrayOfFloat.length)
+      {
+        this.jdField_a_of_type_ArrayOfFloat[i] = lmq.a(paramBufferedReader, "timeline" + i);
+        i += 1;
+      }
     }
+  }
+  
+  public boolean a()
+  {
+    return this.c;
+  }
+  
+  public float b()
+  {
+    return this.jdField_a_of_type_Float + (this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) * lml.a();
   }
 }
 

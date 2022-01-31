@@ -1,29 +1,38 @@
-import android.support.v4.app.FragmentActivity;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class oij
-  implements Animation.AnimationListener
+class oij
+  extends ClickableSpan
 {
-  public oij(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
+  oij(oii paramoii, SubCommentData paramSubCommentData) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.getView().setVisibility(8);
-    this.a.getActivity().setResult(-1);
-    this.a.getActivity().finish();
-    this.a.getActivity().overridePendingTransition(0, 0);
+    ohi.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.uin, BaseActivity.sTopActivity);
+    paramView = new ofv(this.jdField_a_of_type_Oii).a().a();
+    noo.a(null, ohi.a(this.jdField_a_of_type_Oii.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Oii.a.mArticleID), String.valueOf(this.jdField_a_of_type_Oii.a.mAlgorithmID), this.jdField_a_of_type_Oii.a.innerUniqueID, paramView, false);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.isAuthorSelection()) {}
+    for (String str = "#FF8444";; str = "#737373")
+    {
+      paramTextPaint.setColor(Color.parseColor(str));
+      paramTextPaint.setUnderlineText(false);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oij
  * JD-Core Version:    0.7.0.1
  */

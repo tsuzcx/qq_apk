@@ -1,27 +1,36 @@
-import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat.ReadInJoyDynamicChannelFragment;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
-class orh
-  implements wiu
+public class orh
+  implements bfzp
 {
-  orh(org paramorg, String paramString) {}
+  public orh(ReadInJoyDynamicChannelFragment paramReadInJoyDynamicChannelFragment) {}
   
-  public void a(Bundle paramBundle)
+  public void a()
   {
-    QLog.d("ReadInJoyWebviewPlugin", 4, "receive readSkinAndSound callback resp:" + paramBundle.toString());
-    JSONObject localJSONObject = new JSONObject();
-    try
+    QLog.d("ReadInJoyDynamicChannelFragment", 2, "endRefresh.");
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, int paramInt)
+  {
+    QLog.d("ReadInJoyDynamicChannelFragment", 2, "startLoadMore.");
+    if (ReadInJoyDynamicChannelFragment.h(this.a) == 40830) {}
+    for (paramInt = ReadInJoyDynamicChannelFragment.i(this.a);; paramInt = 1)
     {
-      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", paramBundle.getString("skinId")).put("volumeIsOn", paramBundle.getInt("volumeIsOn"));
-      this.jdField_a_of_type_Org.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+      osj.a().a(ReadInJoyDynamicChannelFragment.j(this.a), ReadInJoyDynamicChannelFragment.k(this.a), 2, 0, paramInt);
       return;
     }
-    catch (JSONException paramBundle)
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  {
+    QLog.d("ReadInJoyDynamicChannelFragment", 2, "startTopRefresh.");
+    if (paramBoolean) {}
+    for (int i = 1;; i = 3)
     {
-      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
-      this.jdField_a_of_type_Org.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
+      this.a.b(i);
+      return;
     }
   }
 }

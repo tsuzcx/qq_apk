@@ -1,11 +1,5 @@
 package com.tencent.mobileqq.minigame.utils;
 
-import android.text.TextUtils;
-import com.tencent.mobileqq.minigame.gpkg.GpkgManager;
-import com.tencent.mobileqq.triton.sdk.game.MiniGameInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
 public class FileUtils
 {
   private static final String JS_TYPE = "js";
@@ -604,32 +598,6 @@ public class FileUtils
     //   378	389	634	java/lang/Throwable
     //   389	425	645	java/lang/Throwable
     //   378	389	660	finally
-  }
-  
-  public static String getResPath(String paramString1, String paramString2, MiniGameInfo paramMiniGameInfo)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (paramMiniGameInfo == null))
-    {
-      QLog.e("MiniGame-FileUtils", 1, "getResPath isEmpty or gameInfo is null:" + paramString1);
-      return null;
-    }
-    String str = paramString1;
-    if (paramString1.startsWith("GameRes://")) {
-      str = paramString1.replace("GameRes://", "");
-    }
-    paramString1 = str;
-    if (str.startsWith("./")) {
-      paramString1 = str.replace("./", "");
-    }
-    str = paramString1;
-    if ("js".equals(paramString2))
-    {
-      str = paramString1;
-      if (!paramString1.endsWith(".js")) {
-        str = paramString1 + ".js";
-      }
-    }
-    return GpkgManager.getGpkgFolderPath(paramMiniGameInfo) + File.separator + str;
   }
 }
 

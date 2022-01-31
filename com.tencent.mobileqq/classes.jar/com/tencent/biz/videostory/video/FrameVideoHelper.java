@@ -3,9 +3,9 @@ package com.tencent.biz.videostory.video;
 import android.os.Build.VERSION;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
-import wwt;
-import wyj;
-import wyl;
+import xfr;
+import xhj;
+import xhl;
 
 public class FrameVideoHelper
 {
@@ -13,14 +13,14 @@ public class FrameVideoHelper
   private final long jdField_a_of_type_Long;
   private final String jdField_a_of_type_JavaLangString;
   private ArrayList<FrameVideoHelper.FrameBuffer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private wyl jdField_a_of_type_Wyl;
+  private xhl jdField_a_of_type_Xhl;
   private volatile boolean jdField_a_of_type_Boolean;
   private long b;
   private long c;
-  private long d = ((Long)wwt.a().a("SmartCutPicWidth", Long.valueOf(224L))).longValue();
-  private long e = ((Long)wwt.a().a("SmartCutPicSpacing", Long.valueOf(500L))).longValue();
+  private long d = ((Long)xfr.a().a("SmartCutPicWidth", Long.valueOf(224L))).longValue();
+  private long e = ((Long)xfr.a().a("SmartCutPicSpacing", Long.valueOf(500L))).longValue();
   private long f;
-  private long g = ((Long)wwt.a().a("SmartCutPicMaxByte", Long.valueOf(90000L))).longValue();
+  private long g = ((Long)xfr.a().a("SmartCutPicMaxByte", Long.valueOf(90000L))).longValue();
   private long h;
   private long i;
   
@@ -43,15 +43,15 @@ public class FrameVideoHelper
   
   public void a()
   {
-    if (this.jdField_a_of_type_Wyl != null) {
-      this.jdField_a_of_type_Wyl.a();
+    if (this.jdField_a_of_type_Xhl != null) {
+      this.jdField_a_of_type_Xhl.a();
     }
     if (this.jdField_a_of_type_JavaUtilArrayList != null) {
       this.jdField_a_of_type_JavaUtilArrayList.clear();
     }
   }
   
-  public void a(long paramLong, wyj paramwyj)
+  public void a(long paramLong, xhj paramxhj)
   {
     if (this.jdField_a_of_type_Boolean) {}
     do
@@ -60,19 +60,19 @@ public class FrameVideoHelper
       if (Build.VERSION.SDK_INT >= 16) {
         break;
       }
-    } while (paramwyj == null);
-    paramwyj.a(false, null, -1L);
+    } while (paramxhj == null);
+    paramxhj.a(false, null, -1L);
     return;
     this.f = 0L;
     this.i = 0L;
     this.h = System.currentTimeMillis();
     this.jdField_a_of_type_Boolean = true;
-    ThreadManager.executeOnFileThread(new FrameVideoHelper.1(this, paramLong, paramwyj));
+    ThreadManager.executeOnFileThread(new FrameVideoHelper.1(this, paramLong, paramxhj));
   }
   
-  public void a(wyj paramwyj)
+  public void a(xhj paramxhj)
   {
-    a(0L, paramwyj);
+    a(0L, paramxhj);
   }
   
   public long b()

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.out;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -10,10 +10,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.view.View;
-import bbmy;
-import begr;
-import begw;
-import behe;
+import bcpw;
+import bfol;
+import bfoq;
+import bfoy;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
@@ -26,7 +26,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class MapHelper
-  implements begw
+  implements bfoq
 {
   public static final int ACTION_BAIDU_MAP = 2;
   public static final int ACTION_STREET = 0;
@@ -38,7 +38,7 @@ public class MapHelper
   protected static final int WALKING = 0;
   protected int[] mActionArray = new int[6];
   protected HashMap<String, Integer> mActionMap = new HashMap();
-  protected begr mActionSheet;
+  protected bfol mActionSheet;
   protected LinkedHashMap<String, String> mAppNameMap = new LinkedHashMap();
   protected Context mContext;
   protected HashSet<String> mInstalledMapAppSet = new HashSet();
@@ -53,8 +53,8 @@ public class MapHelper
   public MapHelper(Context paramContext)
   {
     this.mContext = paramContext;
-    this.mAppNameMap.put("com.tencent.map", ajjy.a(2131640667));
-    this.mAppNameMap.put("com.baidu.BaiduMap", ajjy.a(2131640673));
+    this.mAppNameMap.put("com.tencent.map", ajyc.a(2131706452));
+    this.mAppNameMap.put("com.baidu.BaiduMap", ajyc.a(2131706458));
     this.mActionMap.put("com.tencent.map", Integer.valueOf(1));
     this.mActionMap.put("com.baidu.BaiduMap", Integer.valueOf(2));
     this.mUIHandler = new Handler(Looper.getMainLooper());
@@ -200,7 +200,7 @@ public class MapHelper
   {
     if (TextUtils.isEmpty(this.mStreetViewUrl))
     {
-      bbmy.a(this.mContext.getApplicationContext(), 0, ajjy.a(2131640669), 1).b(this.mContext.getResources().getDimensionPixelSize(2131167766));
+      bcpw.a(this.mContext.getApplicationContext(), 0, ajyc.a(2131706454), 1).b(this.mContext.getResources().getDimensionPixelSize(2131298865));
       return;
     }
     Intent localIntent = new Intent(this.mContext, QQBrowserActivity.class);
@@ -218,7 +218,7 @@ public class MapHelper
   {
     if ((paramLatLng1 == null) || (paramLatLng2 == null))
     {
-      bbmy.a(this.mContext, 0, ajjy.a(2131640672), 1).b(this.mContext.getResources().getDimensionPixelSize(2131167766));
+      bcpw.a(this.mContext, 0, ajyc.a(2131706457), 1).b(this.mContext.getResources().getDimensionPixelSize(2131298865));
       return;
     }
     this.mSelfPoint = paramLatLng1;
@@ -226,10 +226,10 @@ public class MapHelper
     this.mSelfPoiName = paramString1;
     this.mTargetPoiName = paramString2;
     if (TextUtils.isEmpty(this.mSelfPoiName)) {
-      this.mSelfPoiName = ajjy.a(2131640668);
+      this.mSelfPoiName = ajyc.a(2131706453);
     }
     if (TextUtils.isEmpty(this.mTargetPoiName)) {
-      this.mTargetPoiName = ajjy.a(2131640666);
+      this.mTargetPoiName = ajyc.a(2131706451);
     }
     double d = getDistance(paramLatLng1.getLongitude(), paramLatLng1.getLatitude(), paramLatLng2.getLongitude(), paramLatLng2.getLatitude());
     if (d > 1000.0D)
@@ -239,19 +239,19 @@ public class MapHelper
         QLog.d("Q.qqmap", 2, "showActionSheet: self=" + paramLatLng1.toString() + ",to=" + paramLatLng2.toString() + ",selfPoi=" + paramString1 + ",toPoi=" + paramString2 + ",distance=" + d);
       }
       checkInstalledMapApp();
-      this.mActionSheet = ((begr)behe.a(this.mContext, null));
+      this.mActionSheet = ((bfol)bfoy.a(this.mContext, null));
       this.mActionSheet.a(this);
       if (TextUtils.isEmpty(this.mStreetViewUrl)) {
         break label424;
       }
-      this.mActionSheet.c(ajjy.a(2131640670));
+      this.mActionSheet.c(ajyc.a(2131706455));
       this.mActionArray[0] = 0;
     }
     label421:
     label424:
     for (int i = 1;; i = 0)
     {
-      this.mActionSheet.c(ajjy.a(2131640671));
+      this.mActionSheet.c(ajyc.a(2131706456));
       this.mActionArray[i] = 1;
       paramLatLng1 = this.mAppNameMap.entrySet().iterator();
       i += 1;

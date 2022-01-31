@@ -1,31 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.data.MessageForPtt;
 
-class acxi
-  implements ajzi
+public class acxi
+  implements MediaPlayer.OnCompletionListener
 {
-  acxi(acxh paramacxh) {}
+  public acxi(MediaPlayerManager paramMediaPlayerManager) {}
   
-  public void a(boolean paramBoolean, List<aelm> paramList)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onGetIceBreakHotPic, success: ").append(paramBoolean).append(" hotPiceList size: ");
-    int i;
-    if (paramList == null)
-    {
-      i = 0;
-      QLog.i("IceBreak.HotPic", 1, i);
-      if (paramBoolean) {
-        break label59;
-      }
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.release();
     }
-    label59:
-    while (this.a.a == null)
-    {
+    bbbr.a = null;
+    if ((MediaPlayerManager.a(this.a) != null) && ((MediaPlayerManager.a(this.a) instanceof MessageForPtt))) {
+      ((MessageForPtt)MediaPlayerManager.a(this.a)).playProgress = 0.0F;
+    }
+    if ((MediaPlayerManager.a(this.a) != null) && (MediaPlayerManager.a(this.a))) {
       return;
-      i = paramList.size();
-      break;
     }
-    this.a.a.a(paramList);
+    MediaPlayerManager.a(this.a, null);
+    this.a.e();
   }
 }
 

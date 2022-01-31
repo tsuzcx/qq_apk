@@ -1,18 +1,42 @@
+import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
 import com.tencent.qphone.base.util.QLog;
 
-class afrf
-  extends akfr
+public class afrf
+  extends aume
 {
-  afrf(afqi paramafqi) {}
+  private afrf(PhoneContactFragment paramPhoneContactFragment) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  private void g(boolean paramBoolean)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("SplashActivity", 4, "mainobserver onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactFragment", 2, String.format("refreshResult [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x2) != 0)) {
-      this.a.g();
+    if (this.a.c)
+    {
+      if (this.a.a != null) {
+        this.a.a.a(this.a.b(), paramBoolean, null);
+      }
+      if (paramBoolean) {
+        this.a.c();
+      }
+      this.a.c = false;
     }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactFragment", 2, String.format("onHideContact [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    this.a.c();
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactFragment", 2, String.format("onQueryBindState [%s, %s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) }));
+    }
+    g(paramBoolean1);
   }
 }
 

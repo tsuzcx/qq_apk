@@ -1,263 +1,275 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.support.v4.util.LruCache;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.extendfriend.limitchat.LimitChatUtil.1;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class antc
+public class antc<T>
+  extends BaseAdapter
 {
-  public static int a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    int i = 0;
-    paramQQAppInterface = b(paramQQAppInterface);
-    if (paramQQAppInterface != null) {
-      i = paramQQAppInterface.getInt("sp_match_chat_gray_section_" + paramString, 0);
-    }
-    return i;
-  }
+  public int a;
+  protected Context a;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  Handler jdField_a_of_type_AndroidOsHandler;
+  private LruCache<String, Drawable> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(30);
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private HashMap<EmoticonPackage, Boolean> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  protected List<T> a;
+  JSONArray jdField_a_of_type_OrgJsonJSONArray;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public static SharedPreferences a(QQAppInterface paramQQAppInterface)
+  public antc(Context paramContext, List<T> paramList)
   {
-    if (paramQQAppInterface == null)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838896);
+    bbnq.a((QQAppInterface)((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getAppRuntime(), bbnq.d);
+    paramContext = bbnq.d.a(this.jdField_a_of_type_AndroidContentContext);
+    if (paramContext != null) {}
+    try
     {
-      QLog.e("LimitChatUtil", 2, "get sp by app is null");
-      return null;
-    }
-    paramQQAppInterface = paramQQAppInterface.c();
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface)))
-    {
-      QLog.e("LimitChatUtil", 2, "get sp by uin is null");
-      return null;
-    }
-    return BaseApplicationImpl.getContext().getSharedPreferences("sp_for_extendfriend_limit_chat" + paramQQAppInterface, 0);
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = a(paramQQAppInterface);
-    if (paramQQAppInterface == null) {
-      paramQQAppInterface = "";
-    }
-    String str;
-    do
-    {
-      return paramQQAppInterface;
-      str = paramQQAppInterface.getString("sp_limit_chat_on_plus_panel_name", "");
-      paramQQAppInterface = str;
-    } while (!QLog.isColorLevel());
-    QLog.d("LimitChatUtil", 2, "getLimitChatOnPlusName: " + str);
-    return str;
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    String str = "0";
-    SharedPreferences localSharedPreferences = b(paramQQAppInterface);
-    paramQQAppInterface = str;
-    if (localSharedPreferences != null) {
-      paramQQAppInterface = localSharedPreferences.getString("sp_match_chat_algorithm_id" + paramString, "0");
-    }
-    return paramQQAppInterface;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      QLog.e("LimitChatUtil", 2, "ExtendFriendLimitChat checkAndUpdateLimiteChatSetting app null");
-    }
-    while (!b(paramQQAppInterface)) {
+      this.jdField_a_of_type_OrgJsonJSONArray = paramContext.getJSONArray("wording");
+      this.jdField_a_of_type_AndroidOsHandler = new Handler();
       return;
     }
-    paramQQAppInterface = (anod)paramQQAppInterface.a(127);
-    if (paramQQAppInterface != null)
+    catch (JSONException paramContext)
     {
-      paramQQAppInterface.a();
-      return;
-    }
-    QLog.e("LimitChatUtil", 2, "ExtendFriendLimitChat handler null");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    paramQQAppInterface = b(paramQQAppInterface);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.edit().putBoolean("sp_match_chat_first_in_" + paramString, false).commit();
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    paramQQAppInterface = b(paramQQAppInterface);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.edit().putInt("sp_match_chat_gray_section_" + paramString, paramInt).commit();
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    paramQQAppInterface = b(paramQQAppInterface);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.edit().putString("sp_match_chat_algorithm_id" + paramString1, paramString2).commit();
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, long paramLong1, int paramInt, String paramString, long paramLong2)
-  {
-    if (paramQQAppInterface == null) {
-      QLog.e("LimitChatUtil", 2, "ExtendFriendLimitChat getLimitChatOnPlusExpireTime: app is null ");
-    }
-    long l;
-    do
-    {
-      return;
-      SharedPreferences localSharedPreferences = a(paramQQAppInterface);
-      if (localSharedPreferences == null) {
-        break;
-      }
-      paramQQAppInterface = paramString;
-      if (paramString == null) {
-        paramQQAppInterface = "";
-      }
-      localSharedPreferences.edit().putBoolean("sp_limit_chat_on_plus_panel_be_show", paramBoolean).apply();
-      localSharedPreferences.edit().putLong("sp_limit_chat_on_plus_panel_chat_time", paramLong1).apply();
-      localSharedPreferences.edit().putInt("sp_limit_chat_on_plus_panel_left_count", paramInt).apply();
-      localSharedPreferences.edit().putString("sp_limit_chat_on_plus_panel_name", paramQQAppInterface).apply();
-      localSharedPreferences.edit().putLong("sp_limit_chat_on_plus_panel_expire_time", paramLong2).apply();
-      l = NetConnInfoCenter.getServerTime();
-      localSharedPreferences.edit().putLong("sp_limit_chat_on_plus_panel_update_time", l).apply();
-    } while (!QLog.isColorLevel());
-    QLog.i("LimitChatUtil", 2, "ExtendFriendLimitChat setShowLimitChatOnPlus  bShow: " + paramBoolean + " chatTime:" + paramLong1 + " leftCount:" + paramInt + " funcName: " + paramQQAppInterface + " expireTime : " + paramLong2 + " nowTime: " + l);
-    return;
-    QLog.e("LimitChatUtil", 2, "ExtendFriendLimitChat setShowLimitChatOnPlus on null sp");
-  }
-  
-  public static void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.e("LimitChatUtil", 2, "reportInSubThread UIN EMPTY");
-      return;
-    }
-    ThreadManager.getSubThreadHandler().post(new LimitChatUtil.1(paramString));
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool1 = false;
-    paramQQAppInterface = a(paramQQAppInterface);
-    if (paramQQAppInterface == null) {}
-    boolean bool2;
-    do
-    {
-      return bool1;
-      bool2 = paramQQAppInterface.getBoolean("sp_limit_chat_on_plus_panel_be_show", false);
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("LimitChatUtil", 2, "needShowLimitChatOnPlus: " + bool2);
-    return bool2;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    boolean bool = true;
-    paramQQAppInterface = b(paramQQAppInterface);
-    if (paramQQAppInterface != null) {
-      bool = paramQQAppInterface.getBoolean("sp_match_chat_first_in_" + paramString, true);
-    }
-    return bool;
-  }
-  
-  public static SharedPreferences b(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null)
-    {
-      QLog.e("LimitChatUtil", 2, "get sp by app is null");
-      return null;
-    }
-    paramQQAppInterface = paramQQAppInterface.c();
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface)))
-    {
-      QLog.e("LimitChatUtil", 2, "get matchSp is null");
-      return null;
-    }
-    return BaseApplicationImpl.getContext().getSharedPreferences("sp_for_extendfriend_match_chat" + paramQQAppInterface, 0);
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = b(paramQQAppInterface);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.edit().clear().commit();
-    }
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    paramQQAppInterface = b(paramQQAppInterface);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.edit().remove("sp_match_chat_first_in_" + paramString).commit();
-    }
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    paramQQAppInterface = a(paramQQAppInterface);
-    if (paramQQAppInterface == null) {
-      bool2 = bool1;
-    }
-    long l1;
-    long l2;
-    long l3;
-    do
-    {
-      return bool2;
-      if (ajlo.c())
+      for (;;)
       {
-        QLog.i("LimitChatUtil", 2, "getLimitChatOnPlusExpireTime: by change local langauage");
-        return true;
+        paramContext.printStackTrace();
       }
-      QLog.d("LimitChatUtil", 2, "getLimitChatOnPlusExpireTime: not ! by change local langauage");
-      l1 = paramQQAppInterface.getLong("sp_limit_chat_on_plus_panel_expire_time", 10L);
-      l2 = paramQQAppInterface.getLong("sp_limit_chat_on_plus_panel_update_time", 0L);
-      l3 = NetConnInfoCenter.getServerTime();
-      long l4 = l3 - l2;
-      bool1 = bool2;
-      if (l4 < l1)
+    }
+  }
+  
+  private Drawable a(EmoticonPackage paramEmoticonPackage)
+  {
+    if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramEmoticonPackage.epId) != null) {
+      return (Drawable)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramEmoticonPackage.epId);
+    }
+    Drawable localDrawable = anqu.a(2, paramEmoticonPackage.epId);
+    if (localDrawable != null)
+    {
+      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramEmoticonPackage.epId, localDrawable);
+      return localDrawable;
+    }
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  }
+  
+  public List<EmoticonPackage> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (((Boolean)localEntry.getValue()).booleanValue()) {
+        localArrayList.add(localEntry.getKey());
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(int paramInt)
+  {
+    boolean bool = a(paramInt);
+    EmoticonPackage localEmoticonPackage = (EmoticonPackage)getItem(paramInt);
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    if (!bool) {}
+    for (bool = true;; bool = false)
+    {
+      localHashMap.put(localEmoticonPackage, Boolean.valueOf(bool));
+      return;
+    }
+  }
+  
+  public void a(T paramT)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if ((paramT instanceof EmoticonPackage))
       {
-        bool1 = bool2;
-        if (l4 > 0L) {
-          bool1 = false;
-        }
+        EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramT;
+        this.jdField_a_of_type_JavaUtilHashMap.remove(localEmoticonPackage);
       }
-      bool2 = bool1;
-    } while (!QLog.isColorLevel());
-    QLog.d("LimitChatUtil", 2, "getLimitChatOnPlusExpireTime: " + l1 + " update :" + l2 + " now：" + l3 + " needUpdate：" + bool1);
-    return bool1;
+      this.jdField_a_of_type_JavaUtilList.remove(paramT);
+      if (this.b) {
+        notifyDataSetChanged();
+      }
+      return;
+    }
   }
   
-  public static boolean c(QQAppInterface paramQQAppInterface)
+  public void a(T paramT, int paramInt)
   {
-    antd localantd = answ.a();
-    return (localantd != null) && (localantd.a()) && (a(paramQQAppInterface)) && (!localantd.b());
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramInt, paramT);
+      if (this.b) {
+        notifyDataSetChanged();
+      }
+      return;
+    }
   }
   
-  public static boolean d(QQAppInterface paramQQAppInterface)
+  public void a(boolean paramBoolean)
   {
-    antd localantd = answ.a();
-    return (localantd != null) && (localantd.a()) && (a(paramQQAppInterface)) && (localantd.b());
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    EmoticonPackage localEmoticonPackage = (EmoticonPackage)getItem(paramInt);
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localEmoticonPackage)) {
+      return ((Boolean)this.jdField_a_of_type_JavaUtilHashMap.get(localEmoticonPackage)).booleanValue();
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public T getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView == null)
+    {
+      localObject = new antd(this);
+      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559049, null);
+      ((antd)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365608));
+      ((antd)localObject).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365613));
+      ((antd)localObject).jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365399));
+      ((antd)localObject).d = ((ImageView)paramView.findViewById(2131365400));
+      ((antd)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365612));
+      ((antd)localObject).e = ((ImageView)paramView.findViewById(2131365609));
+      ((antd)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365614));
+      ((antd)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131375996);
+      ((antd)localObject).jdField_b_of_type_AndroidViewView = paramView.findViewById(2131378656);
+      ((antd)localObject).f = ((ImageView)paramView.findViewById(2131365610));
+      ((antd)localObject).jdField_c_of_type_AndroidViewView = paramView.findViewById(2131365607);
+      paramView.setTag(localObject);
+      paramViewGroup.setTag(localObject);
+      paramView.setBackgroundResource(2130839372);
+      paramViewGroup = (ViewGroup)localObject;
+      localObject = (EmoticonPackage)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((EmoticonPackage)localObject).name);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a((EmoticonPackage)localObject));
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      if (!((EmoticonPackage)localObject).hasSound) {
+        break label437;
+      }
+      paramViewGroup.e.setVisibility(0);
+      if (!((EmoticonPackage)localObject).isNewVoiceType()) {
+        break label424;
+      }
+      paramViewGroup.e.setImageResource(2130838117);
+      label283:
+      if (!this.jdField_a_of_type_Boolean) {
+        break label503;
+      }
+      if (a(paramInt)) {
+        break label449;
+      }
+      paramView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131692260) + " " + ((EmoticonPackage)localObject).name);
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846203);
+      label349:
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramViewGroup.jdField_c_of_type_AndroidViewView.setVisibility(8);
+    }
+    for (;;)
+    {
+      if (((EmoticonPackage)localObject).mobileFeetype != 4) {
+        break label541;
+      }
+      paramViewGroup.f.setVisibility(0);
+      paramViewGroup.f.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839380));
+      return paramView;
+      paramViewGroup = (antd)paramView.getTag();
+      break;
+      label424:
+      paramViewGroup.e.setImageResource(2130839381);
+      break label283;
+      label437:
+      paramViewGroup.e.setVisibility(8);
+      break label283;
+      label449:
+      paramView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131692248) + " " + ((EmoticonPackage)localObject).name);
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846204);
+      break label349;
+      label503:
+      paramView.setContentDescription(((EmoticonPackage)localObject).name);
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramViewGroup.jdField_c_of_type_AndroidViewView.setVisibility(0);
+    }
+    label541:
+    if (((EmoticonPackage)localObject).mobileFeetype == 5)
+    {
+      paramViewGroup.f.setVisibility(0);
+      paramViewGroup.f.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846507));
+      return paramView;
+    }
+    paramViewGroup.f.setVisibility(8);
+    return paramView;
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    super.notifyDataSetChanged();
+    this.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     antc
  * JD-Core Version:    0.7.0.1
  */

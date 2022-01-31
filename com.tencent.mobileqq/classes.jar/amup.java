@@ -1,20 +1,95 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class amup
-  implements View.OnClickListener
 {
-  public amup(DataReportSettingFragment paramDataReportSettingFragment) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
+  private String b = "";
+  private String c = "";
+  private String d = "";
   
-  public void onClick(View paramView)
+  public static amup a(String paramString)
   {
-    babr.a(this.a.getActivity(), 0, 2131493852, ajjy.a(2131636985), "", ajjy.a(2131636980), ajjy.a(2131636986), new amuq(this), new amur(this)).show();
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      amup localamup = new amup();
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("enable", 0) == 1) {}
+      for (;;)
+      {
+        localamup.jdField_a_of_type_Boolean = bool;
+        localamup.jdField_a_of_type_Int = paramString.optInt("showCount", 0);
+        localamup.jdField_a_of_type_JavaLangString = paramString.optString("c2cTipsContent", "");
+        localamup.b = paramString.optString("c2cHighlightContent", "");
+        localamup.c = paramString.optString("groupTipsContent", "");
+        localamup.d = paramString.optString("groupHighlightContent", "");
+        return localamup;
+        bool = false;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return "想及时收到对方的回复，快去打开消息推送设置吧。";
+    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    if (TextUtils.isEmpty(this.b)) {
+      return "打开消息推送";
+    }
+    return this.b;
+  }
+  
+  public String c()
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      return "想及时收到对方的回复，快去打开消息推送设置吧。";
+    }
+    return this.c;
+  }
+  
+  public String d()
+  {
+    if (TextUtils.isEmpty(this.d)) {
+      return "打开消息推送";
+    }
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amup
  * JD-Core Version:    0.7.0.1
  */

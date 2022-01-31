@@ -1,41 +1,128 @@
-import android.util.SparseArray;
-import android.view.View;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Message;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.qphone.base.util.QLog;
 
 public class axgk
-  implements begw
+  implements Handler.Callback
 {
-  public axgk(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment, SparseArray paramSparseArray, begr parambegr) {}
+  private int jdField_a_of_type_Int;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  public HandlerThread a;
+  private axgl jdField_a_of_type_Axgl;
+  private int b;
+  private int c;
   
-  public void OnClick(View paramView, int paramInt)
+  public axgk(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
+    this.jdField_a_of_type_Int = (1000 / paramInt1);
+    this.b = ((int)(paramInt2 / 1000.0F * paramInt1) + 1);
+    this.c = 0;
+    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("shortvideo_Timer");
+    this.jdField_a_of_type_AndroidOsHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+  }
+  
+  private boolean a(Message paramMessage)
+  {
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (axin.a)
     {
-      paramInt = -1;
-      switch (paramInt)
+      paramMessage = RMVideoStateMgr.a();
+      if (!paramMessage.b) {
+        break label179;
+      }
+      paramMessage.jdField_a_of_type_Double = (System.currentTimeMillis() - paramMessage.jdField_a_of_type_Long);
+      if (paramMessage.jdField_a_of_type_Double >= axik.c) {
+        bool1 = true;
+      }
+      bool2 = bool1;
+      if (QLog.isColorLevel())
       {
+        bool2 = bool1;
+        if (bool1)
+        {
+          QLog.d("TCTimer", 2, "handleLooperEvent startTime=" + paramMessage.jdField_a_of_type_Long + " total=" + paramMessage.jdField_a_of_type_Double);
+          bool2 = bool1;
+        }
       }
     }
     for (;;)
     {
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
-      if (this.jdField_a_of_type_Begr.isShowing()) {
-        this.jdField_a_of_type_Begr.dismiss();
+      if (bool2) {
+        this.c = this.b;
       }
-      return;
-      paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
-      break;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 2);
-      continue;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 1);
-      continue;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 0);
+      int i = this.c;
+      int j = this.jdField_a_of_type_Int;
+      if (this.jdField_a_of_type_Axgl != null) {
+        this.jdField_a_of_type_Axgl.a(this.jdField_a_of_type_Axgl, bool2, i * j, this.c);
+      }
+      this.c += 1;
+      return true;
+      label179:
+      if (this.c >= this.b) {
+        bool2 = true;
+      }
     }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1398036036);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_a_of_type_Int);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public void a(axgl paramaxgl)
+  {
+    this.jdField_a_of_type_Axgl = paramaxgl;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+  }
+  
+  public void b(int paramInt)
+  {
+    this.c = (paramInt / this.jdField_a_of_type_Int);
+  }
+  
+  public void c()
+  {
+    this.c = 0;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1398036036);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_a_of_type_Int);
+    }
+    return a(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axgk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,20 @@
-public abstract interface psm
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+
+class psm
+  implements View.OnTouchListener
 {
-  public abstract void a(String paramString, float paramFloat);
+  psm(psi parampsi, LinearLayout paramLinearLayout) {}
   
-  public abstract void a(String paramString1, int paramInt1, long paramLong, String paramString2, int paramInt2, String paramString3, String paramString4);
-  
-  public abstract void a(String paramString, int paramInt, pwl parampwl);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    }
+    return false;
+  }
 }
 
 

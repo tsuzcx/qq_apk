@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import ansd;
-import ansi;
+import aoip;
+import aoiu;
 import com.tencent.qphone.base.util.QLog;
 
 public class ExtendFriendSquareFragment$3$1
   implements Runnable
 {
-  public ExtendFriendSquareFragment$3$1(ansd paramansd) {}
+  public ExtendFriendSquareFragment$3$1(aoip paramaoip) {}
   
   public void run()
   {

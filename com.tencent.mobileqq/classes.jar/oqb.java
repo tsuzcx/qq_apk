@@ -1,87 +1,87 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.ExtraInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.concurrent.ExecutorService;
-import tencent.im.oidb.cmd0xdcb.oidb_cmd0xdcb.ExtraInfo;
-import tencent.im.oidb.cmd0xdcb.oidb_cmd0xdcb.IconInfo;
-import tencent.im.oidb.cmd0xdcb.oidb_cmd0xdcb.ReqBody;
-import tencent.im.oidb.cmd0xdcb.oidb_cmd0xdcb.ReqParam;
-import tencent.im.oidb.cmd0xdcb.oidb_cmd0xdcb.RspBody;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class oqb
-  extends oqg
+  implements ITMAssistantDownloadClientListener
 {
-  public oqb(AppInterface paramAppInterface, atmp paramatmp, ExecutorService paramExecutorService, pdc parampdc, Handler paramHandler)
+  private List<oqa> a = new LinkedList();
+  
+  private static String a(int paramInt)
   {
-    super(paramAppInterface, paramatmp, paramExecutorService, parampdc, paramHandler);
+    switch (paramInt)
+    {
+    default: 
+      return "UNKNOWN";
+    case 1: 
+      return "DownloadSDKTaskState_WAITING";
+    case 2: 
+      return "DownloadSDKTaskState_DOWNLOADING";
+    case 4: 
+      return "DownloadSDKTaskState_SUCCEED";
+    case 3: 
+      return "DownloadSDKTaskState_PAUSED";
+    case 6: 
+      return "DownloadSDKTaskState_DELETE";
+    }
+    return "DownloadSDKTaskState_FAILED";
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void a(oqa paramoqa)
   {
-    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xdcb")) {
-      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    if (!this.a.contains(paramoqa)) {
+      this.a.add(paramoqa);
     }
   }
   
-  public void b(int paramInt)
+  public void b(oqa paramoqa)
   {
-    QLog.d("ReadInJoyDianDianEntranceModule", 1, "requestIconRefreshInfo | reqFeedType " + paramInt);
-    Object localObject = new oidb_cmd0xdcb.ReqBody();
-    oidb_cmd0xdcb.ReqParam localReqParam = new oidb_cmd0xdcb.ReqParam();
-    localReqParam.uint32_req_type.set(paramInt);
-    ((oidb_cmd0xdcb.ReqBody)localObject).msg_req_param.set(localReqParam);
-    localObject = pde.a("OidbSvc.0xdcb", 3531, 0, ((oidb_cmd0xdcb.ReqBody)localObject).toByteArray());
-    ((ToServiceMsg)localObject).getAttributes().put("req_feed_type", Integer.valueOf(paramInt));
-    a((ToServiceMsg)localObject);
+    this.a.remove(paramoqa);
   }
   
-  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
   {
-    oidb_cmd0xdcb.RspBody localRspBody = new oidb_cmd0xdcb.RspBody();
-    int i = ((Integer)paramToServiceMsg.getAttributes().get("req_feed_type")).intValue();
-    int j = pde.a(paramFromServiceMsg, paramObject, localRspBody);
-    QLog.d("ReadInJoyDianDianEntranceModule", 1, "handleIconRefreshInfoRsp | retCode " + j + " ; reqFeedsType " + i);
-    paramToServiceMsg = new RecommendFeedsDiandianEntranceManager.EntranceIconInfo();
-    paramToServiceMsg.jdField_a_of_type_Int = i;
-    paramFromServiceMsg = new RecommendFeedsDiandianEntranceManager.ExtraInfo();
-    if ((j == 0) && (localRspBody.msg_icon_info.has()))
+    try
     {
-      paramObject = (oidb_cmd0xdcb.IconInfo)localRspBody.msg_icon_info.get();
-      if (paramObject.feeds_msg_icon_url.has()) {
-        paramToServiceMsg.jdField_a_of_type_JavaLangString = paramObject.feeds_msg_icon_url.get();
-      }
-      if (paramObject.feeds_default_icon_url.has()) {
-        paramToServiceMsg.b = paramObject.feeds_default_icon_url.get();
-      }
-      if (paramObject.uint32_is_use_gif.has()) {
-        if (paramObject.uint32_is_use_gif.get() == 0) {
-          break label292;
-        }
-      }
-    }
-    label292:
-    for (boolean bool = true;; bool = false)
-    {
-      paramToServiceMsg.jdField_a_of_type_Boolean = bool;
-      if (paramObject.str_jump_schema.has()) {
-        paramToServiceMsg.c = paramObject.str_jump_schema.get();
-      }
-      paramToServiceMsg.jdField_a_of_type_Int = i;
-      if ((localRspBody.msg_extra_info.has()) && (localRspBody.msg_extra_info.str_report_json.has())) {
-        paramFromServiceMsg.jdField_a_of_type_JavaLangString = localRspBody.msg_extra_info.str_report_json.get();
-      }
-      QLog.d("ReadInJoyDianDianEntranceModule", 1, "handleIconRefreshInfoRsp | EntranceIconInfo " + paramToServiceMsg);
-      RecommendFeedsDiandianEntranceManager.a().a(paramToServiceMsg);
+      QLog.d("DownloadListenerDelegate", 2, "[onDownloadSDKTaskProgressChanged] url=" + paramString + " receiveLen=" + paramLong1 + " totalLen=" + paramLong2 + " progress=" + paramLong1 * 1.0D / paramLong2 * 100.0D);
       return;
     }
+    catch (Throwable paramTMAssistantDownloadClient)
+    {
+      QLog.e("DownloadListenerDelegate", 1, "[onDownloadSDKTaskProgressChanged] ", paramTMAssistantDownloadClient);
+    }
+  }
+  
+  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (paramTMAssistantDownloadClient != null) {
+      try
+      {
+        paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
+        if (paramTMAssistantDownloadClient != null)
+        {
+          QLog.d("DownloadListenerDelegate", 2, "[onDownloadSDKTaskProgressChanged] url=" + paramString1 + " savedPath= " + paramTMAssistantDownloadClient.mSavePath + " state=" + a(paramInt1) + " errorCode=" + paramInt2 + " errorMsg=" + paramString2);
+          Iterator localIterator = this.a.iterator();
+          while (localIterator.hasNext()) {
+            ((oqa)localIterator.next()).a(paramString1, paramTMAssistantDownloadClient.mSavePath, paramInt1, paramInt2, paramString2);
+          }
+        }
+        return;
+      }
+      catch (Throwable paramTMAssistantDownloadClient)
+      {
+        QLog.e("DownloadListenerDelegate", 1, "[onDownloadSDKTaskStateChanged] ", paramTMAssistantDownloadClient);
+      }
+    }
+  }
+  
+  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
+  {
+    QLog.d("DownloadListenerDelegate", 2, "[onDwonloadSDKServiceInvalid] ");
   }
 }
 

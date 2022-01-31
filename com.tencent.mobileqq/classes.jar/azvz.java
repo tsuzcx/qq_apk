@@ -1,18 +1,10 @@
-import android.view.Choreographer.FrameCallback;
-
-class azvz
-  implements Choreographer.FrameCallback
+public abstract interface azvz
 {
-  azvz(azvy paramazvy) {}
-  
-  public void doFrame(long paramLong)
-  {
-    azvy.a(this.a, paramLong);
-  }
+  public abstract void a(azvr paramazvr);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azvz
  * JD-Core Version:    0.7.0.1
  */

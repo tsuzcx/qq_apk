@@ -1,14 +1,16 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLImageView;
-
-public class ajdm
+public abstract interface ajdm
 {
-  View jdField_a_of_type_AndroidViewView;
-  public ImageView a;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public abstract String a(int paramInt, String paramString);
   
-  public ajdm(ajdl paramajdl) {}
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(aiwk paramaiwk, long paramLong);
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c(int paramInt, String paramString);
 }
 
 

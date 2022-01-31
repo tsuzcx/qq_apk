@@ -1,19 +1,36 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import android.graphics.Canvas;
+import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface axmm
+public class axmm
 {
-  public abstract void callJs(String paramString, String... paramVarArgs);
+  public boolean d = true;
+  public boolean e = true;
+  public int f;
+  public boolean f;
+  public int g;
   
-  public abstract void diyThemeSetup(JSONObject paramJSONObject, String paramString);
+  axmm(TCProgressBar paramTCProgressBar)
+  {
+    this.jdField_f_of_type_Boolean = false;
+  }
   
-  public abstract void downloadBgPic(String paramString, Bundle paramBundle);
+  void a(Canvas paramCanvas)
+  {
+    this.jdField_f_of_type_Boolean = false;
+  }
   
-  public abstract void startDownload(JSONObject paramJSONObject, String paramString);
+  boolean a(float paramFloat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.jdField_f_of_type_Int + ",x_coord + length = " + (this.jdField_f_of_type_Int + this.g));
+    }
+    return (paramFloat > this.jdField_f_of_type_Int) && (paramFloat < this.jdField_f_of_type_Int + this.g);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axmm
  * JD-Core Version:    0.7.0.1
  */

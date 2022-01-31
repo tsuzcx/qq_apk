@@ -1,28 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-class wxg
-  implements Animation.AnimationListener
+public class wxg
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  wxg(wxe paramwxe) {}
+  public wxg(TribeVideoPlugin paramTribeVideoPlugin, wxo paramwxo) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (wxe.a(this.a) != null)
+    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
     {
-      wxe.a(this.a).clearAnimation();
-      wxe.a(this.a).startAnimation(wxe.a(this.a));
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(6, wxo.a(this.jdField_a_of_type_Wxo));
+      paramTVK_IMediaPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
+      paramTVK_IMediaPlayer.obj = wxo.a(this.jdField_a_of_type_Wxo);
+      paramTVK_IMediaPlayer.what = 6;
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramTVK_IMediaPlayer);
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wxg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.bless;
 
-import aeqd;
+import afaz;
 
 public class BlessManager$5
   implements Runnable
 {
-  public BlessManager$5(aeqd paramaeqd) {}
+  public BlessManager$5(afaz paramafaz) {}
   
   public void run()
   {
-    if (aeqd.a(this.this$0) != null)
+    if (afaz.a(this.this$0) != null)
     {
-      if (!aeqd.a(this.this$0))
+      if (!afaz.a(this.this$0))
       {
-        aeqd.c(this.this$0, aeqd.a(this.this$0, aeqd.a(this.this$0), false));
-        aeqd.a(this.this$0, aeqd.a(this.this$0));
-        aeqd.a(this.this$0, aeqd.a(this.this$0), true);
+        afaz.c(this.this$0, afaz.a(this.this$0, afaz.a(this.this$0), false));
+        afaz.a(this.this$0, afaz.a(this.this$0));
+        afaz.a(this.this$0, afaz.a(this.this$0), true);
       }
       return;
     }
-    aeqd.a(this.this$0, false);
+    afaz.a(this.this$0, false);
   }
 }
 

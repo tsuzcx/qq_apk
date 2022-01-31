@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import akmr;
-import akmz;
-import akwx;
-import bcdu;
+import albd;
+import albl;
+import allj;
+import bdhv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -16,7 +16,7 @@ import java.util.Map;
 public class OnlineVideoARRenderable$4
   implements Runnable
 {
-  public OnlineVideoARRenderable$4(akmr paramakmr, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public OnlineVideoARRenderable$4(albd paramalbd, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
   public void run()
   {
@@ -27,15 +27,15 @@ public class OnlineVideoARRenderable$4
         this.a.stop();
         try
         {
-          akmr.a(this.this$0, true);
+          albd.a(this.this$0, true);
           localTVK_UserInfo = new TVK_UserInfo();
           localTVK_UserInfo.setUin("");
           localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
-          localTVK_PlayerVideoInfo.setConfigMap("file_dir", akwx.a(akmr.a(this.this$0)));
+          localTVK_PlayerVideoInfo.setConfigMap("file_dir", allj.a(albd.a(this.this$0)));
           if (ScanTorchActivity.h) {
             break label282;
           }
-          if (!akmr.b(this.this$0)) {
+          if (!albd.b(this.this$0)) {
             break label276;
           }
         }
@@ -51,19 +51,19 @@ public class OnlineVideoARRenderable$4
           QLog.d("AREngine_OnlineVideoARRenderable", 1, "onCompletion, exception=" + localException2.getMessage());
           return;
         }
-        if (akmz.a()) {
+        if (albl.a()) {
           localObject = "true";
         }
         localTVK_PlayerVideoInfo.setConfigMap("software_play", (String)localObject);
         localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", "20161009");
-        localTVK_PlayerVideoInfo.setConfigMap("filesize", String.valueOf(akmr.a(this.this$0)));
+        localTVK_PlayerVideoInfo.setConfigMap("filesize", String.valueOf(albd.a(this.this$0)));
         localTVK_PlayerVideoInfo.setPlayMode("cache_extend_video");
-        localTVK_PlayerVideoInfo.setVid(bcdu.d(akmr.a(this.this$0)));
+        localTVK_PlayerVideoInfo.setVid(bdhv.d(albd.a(this.this$0)));
         localObject = new HashMap();
         ((Map)localObject).put("shouq_bus_type", "shouq_ar_online_video");
         localTVK_PlayerVideoInfo.setReportInfoMap((Map)localObject);
-        akmr.a(this.this$0).openMediaPlayerByUrl(BaseApplicationImpl.getContext(), akmr.a(this.this$0), 0L, 0L, localTVK_UserInfo, localTVK_PlayerVideoInfo);
-        akmr.e(this.this$0);
+        albd.a(this.this$0).openMediaPlayerByUrl(BaseApplicationImpl.getContext(), albd.a(this.this$0), 0L, 0L, localTVK_UserInfo, localTVK_PlayerVideoInfo);
+        albd.e(this.this$0);
         return;
       }
       catch (Exception localException1)

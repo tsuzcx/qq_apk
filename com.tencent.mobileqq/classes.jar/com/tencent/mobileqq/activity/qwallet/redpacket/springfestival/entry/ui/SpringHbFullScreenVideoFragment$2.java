@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
 import android.text.TextUtils;
-import baip;
+import bbjw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -30,10 +30,10 @@ class SpringHbFullScreenVideoFragment$2
       if (URLUtil.isNetworkUrl(this.a))
       {
         localObject = PreloadManager.e(this.a);
-        if (baip.a((String)localObject))
+        if (bbjw.a((String)localObject))
         {
           SpringHbFullScreenVideoFragment.a(this.this$0, 0);
-          if (!baip.a((String)localObject)) {
+          if (!bbjw.a((String)localObject)) {
             break label187;
           }
           localObject = this.a;

@@ -1,64 +1,26 @@
-import NS_STORE_APP_CLIENT.MiniAppStore.StGetFirstPageByTypeReq;
-import NS_STORE_APP_CLIENT.MiniAppStore.StGetFirstPageByTypeRsp;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.graphics.SurfaceTexture;
 
-public class bdtj
-  extends bdtz
+public abstract interface bdtj
 {
-  private MiniAppStore.StGetFirstPageByTypeReq a = new MiniAppStore.StGetFirstPageByTypeReq();
+  public abstract void a();
   
-  public bdtj(int paramInt)
-  {
-    this.a.uiPageType.set(paramInt);
-  }
+  public abstract void a(int paramInt, Throwable paramThrowable);
   
-  protected String a()
-  {
-    return "store_app_client";
-  }
+  public abstract void a(long paramLong);
   
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    MiniAppStore.StGetFirstPageByTypeRsp localStGetFirstPageByTypeRsp = new MiniAppStore.StGetFirstPageByTypeRsp();
-    try
-    {
-      localStGetFirstPageByTypeRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetFirstPageByTypeRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("data", bdys.a(localStGetFirstPageByTypeRsp.vecAppInfo.get()).toString());
-        paramArrayOfByte.put("dataType", "string");
-        return paramArrayOfByte;
-      }
-      bdnw.a("GetFirstPageByTypeRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      bdnw.a("GetFirstPageByTypeRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
+  public abstract void a(SurfaceTexture paramSurfaceTexture);
   
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
+  public abstract void b();
   
-  protected String b()
-  {
-    return "GetFirstPageByType";
-  }
+  public abstract void b(long paramLong);
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdtj
  * JD-Core Version:    0.7.0.1
  */

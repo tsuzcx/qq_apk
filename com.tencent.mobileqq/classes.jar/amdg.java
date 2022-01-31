@@ -1,24 +1,12 @@
-public class amdg
+import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
+
+public abstract interface amdg
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  amdg(String paramString1, String paramString2, String paramString3)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
-  
-  public String toString()
-  {
-    return "UIElement(" + this.a + ", " + this.b + ", " + this.c + ")";
-  }
+  public abstract void a(int paramInt, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amdg
  * JD-Core Version:    0.7.0.1
  */

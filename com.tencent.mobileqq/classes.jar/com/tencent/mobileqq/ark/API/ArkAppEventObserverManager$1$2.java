@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.ark.API;
 
-import alad;
-import alae;
-import alam;
+import alop;
+import aloq;
+import aloy;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 
 public class ArkAppEventObserverManager$1$2
   implements Runnable
 {
-  public ArkAppEventObserverManager$1$2(alae paramalae) {}
+  public ArkAppEventObserverManager$1$2(aloq paramaloq) {}
   
   public void run()
   {
-    if (alad.a(this.a.a) != null) {
-      alad.a(this.a.a).a(false, 0.0D, 0.0D);
+    if (alop.a(this.a.a) != null) {
+      alop.a(this.a.a).a(false, 0.0D, 0.0D);
     }
-    SosoInterface.b(alad.a(this.a.a));
-    alad.a(this.a.a, null);
+    SosoInterface.b(alop.a(this.a.a));
+    alop.a(this.a.a, null);
   }
 }
 

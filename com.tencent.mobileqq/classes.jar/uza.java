@@ -1,15 +1,6 @@
-import java.io.File;
-import java.io.FileFilter;
-
-class uza
-  implements FileFilter
+public abstract interface uza
 {
-  uza(uyz paramuyz) {}
-  
-  public boolean accept(File paramFile)
-  {
-    return (paramFile.isDirectory()) && (paramFile.getName().startsWith("emoji_folder_"));
-  }
+  public abstract void a(uyf paramuyf);
 }
 
 

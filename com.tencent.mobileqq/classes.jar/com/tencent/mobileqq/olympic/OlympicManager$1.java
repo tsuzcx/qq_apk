@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.olympic;
 
-import akiq;
+import akxc;
 
 class OlympicManager$1
   implements Runnable
@@ -9,7 +9,7 @@ class OlympicManager$1
   
   public void run()
   {
-    akiq.a();
+    akxc.a();
     this.this$0.a();
     this.this$0.a();
     this.this$0.a();

@@ -1,15 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.ocr.OCRResultActivity.11.1;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
 public class auag
-  implements View.OnClickListener
+  implements aubo
 {
-  public auag(ProfileHeaderView paramProfileHeaderView, atwx paramatwx) {}
+  public auag(OCRResultActivity paramOCRResultActivity) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
   {
-    ProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView, this.jdField_a_of_type_Atwx);
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equals(OCRResultActivity.a(this.a)))) {
+      return;
+    }
+    this.a.runOnUiThread(new OCRResultActivity.11.1(this, paramInt, paramOcrRecogResult));
   }
 }
 

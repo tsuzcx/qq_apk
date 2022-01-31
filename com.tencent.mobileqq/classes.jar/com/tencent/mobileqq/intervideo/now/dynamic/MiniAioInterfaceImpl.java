@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.util.DisplayMetrics;
-import bajq;
+import bbkx;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
@@ -43,7 +43,7 @@ public class MiniAioInterfaceImpl
       localIntent1.putExtra("banner_plguinType", 1);
       localIntent1.putExtra("banner_pluginProxyActivityName", this.jdField_a_of_type_AndroidAppActivity.getClass().getName());
       Intent localIntent2 = new Intent(this.jdField_a_of_type_AndroidAppActivity, JumpActivity.class);
-      localIntent2.setData(Uri.parse(String.format("mqqapi://now/openroom?src_type=app&version=1&bid=88&roomid=%d&fromid=10001&roomtype=%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_a_of_type_Int) })));
+      localIntent2.setData(Uri.parse(String.format("nowmqqapi://now/openroom?src_type=app&version=1&bid=88&roomid=%d&fromid=10001&roomtype=%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_a_of_type_Int) })));
       localIntent2.addFlags(268435456);
       localIntent1.putExtra("banner_pendingIntent", PendingIntent.getActivities(this.jdField_a_of_type_AndroidAppActivity, 0, new Intent[] { localIntent2 }, 134217728));
       return localIntent1;
@@ -56,9 +56,9 @@ public class MiniAioInterfaceImpl
   {
     int i = this.jdField_a_of_type_AndroidAppActivity.getApplication().getResources().getDisplayMetrics().widthPixels;
     int j = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
-    int k = this.jdField_a_of_type_AndroidAppActivity.getApplication().getResources().getDimensionPixelSize(2131166108);
-    int m = bajq.b(47.0F);
-    int n = bajq.a(7.0F);
+    int k = this.jdField_a_of_type_AndroidAppActivity.getApplication().getResources().getDimensionPixelSize(2131297186);
+    int m = bbkx.b(47.0F);
+    int n = bbkx.a(7.0F);
     MiniMsgUserParam localMiniMsgUserParam = new MiniMsgUserParam();
     localMiniMsgUserParam.businessName = 11;
     localMiniMsgUserParam.accessType = 0;

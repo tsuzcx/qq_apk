@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
+import android.os.Handler;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-public class bjly
+class bjly
+  implements swm
 {
-  public static void a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt, Animation.AnimationListener paramAnimationListener)
+  bjly(bjlx parambjlx) {}
+  
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(paramFloat1, paramFloat2, paramFloat3, paramFloat4, 1, 0.5F, 1, 0.5F);
-    localScaleAnimation.setDuration(paramInt);
-    localScaleAnimation.setFillEnabled(true);
-    localScaleAnimation.setFillBefore(true);
-    localScaleAnimation.setFillAfter(true);
-    if (paramAnimationListener != null) {
-      localScaleAnimation.setAnimationListener(paramAnimationListener);
+    this.a.a.b();
+    if (paramInt == 0)
+    {
+      this.a.a.a.sendEmptyMessage(3);
+      return;
     }
-    paramView.startAnimation(localScaleAnimation);
+    this.a.a.a.sendEmptyMessage(5);
   }
 }
 

@@ -1,22 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class aegb
-  implements View.OnClickListener
+public abstract interface aegb
 {
-  aegb(aefv paramaefv) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = this.a;
-    if (!aefv.b(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      aefv.b(paramView, bool);
-      aefv.b(this.a);
-      return;
-    }
-  }
+  public abstract void a(Object paramObject);
 }
 
 

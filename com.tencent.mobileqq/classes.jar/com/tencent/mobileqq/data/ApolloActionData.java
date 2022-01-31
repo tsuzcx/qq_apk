@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import atmo;
-import atnz;
-import atoc;
-import banq;
+import aukm;
+import aulx;
+import auma;
+import bbpm;
 import java.io.Serializable;
 
 public class ApolloActionData
-  extends atmo
+  extends aukm
   implements Serializable
 {
   public static final int ACTION_HIDE = 0;
@@ -18,14 +18,14 @@ public class ApolloActionData
   public static final int MAIN_ACTION = 1;
   public static final int POST_ACTION = 2;
   public static final int PRE_ACTION = 0;
-  @atoc
+  @auma
   public int actionId;
   public float actionMoveDis;
   public String actionName;
   public int actionType;
   public int activeValue;
   public String anmiName;
-  @atnz
+  @aulx
   public String atNickName;
   public String boy1;
   public String bubbleText;
@@ -42,7 +42,7 @@ public class ApolloActionData
   public boolean hasSound;
   public int icon;
   public String iconUrl;
-  @atnz
+  @aulx
   public String inputText;
   public int isShow;
   public String keywords;
@@ -102,7 +102,7 @@ public class ApolloActionData
   
   public boolean verifyVersion(String paramString)
   {
-    return (TextUtils.isEmpty(this.minVer)) || (TextUtils.isEmpty(this.maxVer)) || ((banq.a(this.minVer, paramString)) && (banq.a(paramString, this.maxVer)));
+    return (TextUtils.isEmpty(this.minVer)) || (TextUtils.isEmpty(this.maxVer)) || ((bbpm.a(this.minVer, paramString)) && (bbpm.a(paramString, this.maxVer)));
   }
 }
 

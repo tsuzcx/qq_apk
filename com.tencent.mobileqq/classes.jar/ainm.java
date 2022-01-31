@@ -1,637 +1,327 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import android.media.MediaPlayer;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import android.webkit.URLUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import com.tencent.widget.Switch;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ainm
-  implements aioa
+  extends BaseAdapter
 {
-  public static String a;
-  private int jdField_a_of_type_Int = 1;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new aino(this);
-  AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private List<MediaPlayer> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private int b;
+  int jdField_a_of_type_Int;
+  private ainq jdField_a_of_type_Ainq;
+  private ainr jdField_a_of_type_Ainr;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  protected LayoutInflater a;
+  private View.AccessibilityDelegate jdField_a_of_type_AndroidViewView$AccessibilityDelegate = new ainp(this);
+  protected QQAppInterface a;
+  protected HashMap<String, Drawable> a;
+  protected List<Object> a;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   
-  static
+  public ainm(QQAppInterface paramQQAppInterface, Context paramContext, List<andx> paramList, ainq paramainq, ainr paramainr)
   {
-    jdField_a_of_type_JavaLangString = "cmgame_process.ApolloGameMusicPlayer";
-  }
-  
-  public ainm(AppInterface paramAppInterface, int paramInt)
-  {
-    if (BaseApplicationImpl.sProcessId != 1) {
-      i = 4;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", i);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
-    this.b = paramInt;
-    this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio"));
-    a(paramAppInterface);
+    this.jdField_a_of_type_Ainq = paramainq;
+    this.jdField_a_of_type_Ainr = paramainr;
+    b();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130844490);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130844501);
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().densityDpi;
   }
   
-  private MediaPlayer a(int paramInt)
+  private void a(RedTouch paramRedTouch, andx paramandx, boolean paramBoolean)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (paramBoolean) {}
+    for (byte b1 = 0;; b1 = 1)
     {
-      if (this.jdField_a_of_type_JavaUtilList != null)
+      paramandx.jdField_a_of_type_Byte = b1;
+      if (QLog.isColorLevel()) {
+        QLog.i("LebaListMgrAdapter", 2, "name: " + paramandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName + "  cCurFlag:" + paramandx.jdField_a_of_type_Byte);
+      }
+      long l = NetConnInfoCenter.getServerTimeMillis();
+      agca.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId, paramBoolean, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
+      ((akfg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(31)).a(String.valueOf(paramandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId), paramBoolean, l);
+      if (paramBoolean)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext())
+        avpq localavpq = (avpq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36);
+        l = paramandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId;
+        localavpq.b("100600." + (100000000L + l) + "");
+        if (paramRedTouch != null) {
+          paramRedTouch.b();
+        }
+      }
+      b();
+      notifyDataSetChanged();
+      if (this.jdField_a_of_type_Ainr != null) {
+        this.jdField_a_of_type_Ainr.a(paramandx);
+      }
+      return;
+    }
+  }
+  
+  private void a(RedTouch paramRedTouch, String paramString)
+  {
+    paramString = ((avpq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36)).a(paramString);
+    paramRedTouch.a(paramString);
+    a(paramString);
+  }
+  
+  private void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    ((avpq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36)).a(paramAppInfo);
+  }
+  
+  private void a(ArrayList<andx> paramArrayList)
+  {
+    int i = 1;
+    if (paramArrayList.size() > 0) {}
+    switch (paramArrayList.size())
+    {
+    default: 
+      ((andx)paramArrayList.get(0)).jdField_a_of_type_Int = 1;
+      while (i < paramArrayList.size() - 1)
+      {
+        ((andx)paramArrayList.get(i)).jdField_a_of_type_Int = 3;
+        i += 1;
+      }
+    case 1: 
+      ((andx)paramArrayList.get(0)).jdField_a_of_type_Int = 0;
+      return;
+    }
+    ((andx)paramArrayList.get(0)).jdField_a_of_type_Int = 1;
+    ((andx)paramArrayList.get(1)).jdField_a_of_type_Int = 2;
+    return;
+    ((andx)paramArrayList.get(paramArrayList.size() - 1)).jdField_a_of_type_Int = 2;
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_Ainq == null) {}
+    ArrayList localArrayList;
+    do
+    {
+      return;
+      this.jdField_b_of_type_Int = 0;
+      localArrayList = new ArrayList();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = localIterator.next();
+        if ((localObject instanceof andx))
         {
-          MediaPlayer localMediaPlayer = (MediaPlayer)localIterator.next();
-          if ((localMediaPlayer != null) && (localMediaPlayer.hashCode() == paramInt)) {
-            return localMediaPlayer;
+          localObject = (andx)localObject;
+          if ((this.jdField_a_of_type_Ainq.a((andx)localObject)) && (((andx)localObject).jdField_a_of_type_Boolean) && (((andx)localObject).jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.cCanChangeState != 0)) {
+            localArrayList.add(localObject);
+          } else {
+            this.jdField_b_of_type_Int += 1;
           }
         }
       }
-      return null;
-    }
+      this.jdField_a_of_type_JavaUtilList.clear();
+    } while (localArrayList.size() <= 0);
+    Collections.sort(localArrayList, new ajzr());
+    this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
+    a(localArrayList);
   }
   
-  private void a(AppInterface paramAppInterface)
+  public void a() {}
+  
+  public void a(List<andx> paramList)
   {
-    if (paramAppInterface == null) {}
-    while (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
-      return;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("apollo_game_music_switch" + paramAppInterface.getCurrentAccountUin() + "_" + this.b, 1);
+    b();
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    notifyDataSetChanged();
   }
   
-  private void a(boolean paramBoolean)
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidMediaAudioManager == null) {}
-    for (;;)
-    {
-      return;
-      if (paramBoolean) {}
-      for (int i = this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 2); QLog.isColorLevel(); i = this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener))
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[execAudioFocus], requestFocus:", Boolean.valueOf(paramBoolean), ",ret:", Integer.valueOf(i) });
-        return;
-      }
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  private MediaPlayer b(int paramInt)
+  public int getCount()
   {
-    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (this.jdField_a_of_type_AndroidMediaMediaPlayer.hashCode() == paramInt)) {
-      return this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
   }
   
-  public int a(int paramInt)
+  public long getItemId(int paramInt)
   {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[getCurPosition], hashCode:", Integer.valueOf(paramInt) });
-    }
-    MediaPlayer localMediaPlayer = a(paramInt);
-    if (localMediaPlayer != null) {
-      paramInt = localMediaPlayer.getCurrentPosition();
-    }
-    do
-    {
-      return paramInt;
-      localMediaPlayer = b(paramInt);
-      paramInt = i;
-    } while (localMediaPlayer == null);
-    return localMediaPlayer.getCurrentPosition();
+    return paramInt;
   }
   
-  public int a(aijf paramaijf, int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3, float paramFloat)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (paramaijf == null) {
-      return -1;
-    }
-    Object localObject1 = a();
-    if (localObject1 == null) {
-      return -1;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[playMusic], type:", Integer.valueOf(paramInt1), ",musicPath:", paramString, ",loopCount:", Integer.valueOf(paramInt2), ",gameId", Integer.valueOf(this.b), ",gameId:", Integer.valueOf(this.b), ",pos:", Integer.valueOf(paramInt3), ",volumn,:", Float.valueOf(paramFloat) });
-    }
-    if ((this.b > 0) && ((this.jdField_a_of_type_Int == 0) || (localObject1 == null) || (!aing.d()) || (paramaijf == null)))
+    andx localandx = (andx)getItem(paramInt);
+    if ((localandx == null) || (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "DO NOT play music.");
-      }
-      return -1;
+      paramViewGroup = paramView;
+      return paramViewGroup;
     }
-    if (-1 == paramInt2) {
-      paramInt2 = 2147483647;
-    }
-    for (;;)
+    ains localains;
+    label151:
+    label184:
+    RedTouch localRedTouch;
+    label232:
+    String str;
+    if (paramView == null)
     {
-      label286:
-      label684:
-      for (localObject1 = null;; localObject1 = null)
+      localains = new ains();
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558987, paramViewGroup, false);
+      localains.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369083));
+      localains.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369145));
+      localains.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369144));
+      localains.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)paramView.findViewById(2131363673));
+      if (ThemeUtil.isDefaultTheme())
       {
-        boolean bool;
-        try
-        {
-          if ((paramaijf instanceof ApolloSurfaceView))
-          {
-            localObject1 = ((ApolloSurfaceView)paramaijf).getRender();
-            if (localObject1 == null) {
-              continue;
-            }
-            bool = URLUtil.isNetworkUrl(paramString);
-            if (!bool) {
-              break label286;
-            }
-          }
-          for (localObject1 = paramString;; localObject1 = ((File)localObject1).getPath())
-          {
-            if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-              break label368;
-            }
-            QLog.w(jdField_a_of_type_JavaLangString, 1, "music NOT exist.path:" + paramString);
-            return -1;
-            if (!(paramaijf instanceof ApolloTextureView)) {
-              break;
-            }
-            localObject1 = ((ApolloTextureView)paramaijf).getRender();
-            break;
-            localObject1 = ((ApolloRender)localObject1).getRscPath(paramString, "mp3");
-            if (TextUtils.isEmpty((CharSequence)localObject1)) {
-              break label684;
-            }
-            localObject1 = new File((String)localObject1);
-            if (!((File)localObject1).exists()) {
-              break label684;
-            }
-          }
-          if (paramInt1 != 0) {
-            break label448;
-          }
+        localains.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130849133);
+        localains.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166861));
+        paramView = new RedTouch(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), paramView).c(100).a();
+        paramView.setTag(localains);
+        localRedTouch = (RedTouch)paramView;
+        localains.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
+        if (localandx.jdField_a_of_type_Byte != 0) {
+          break label688;
         }
-        catch (Throwable paramaijf)
-        {
-          QLog.e(jdField_a_of_type_JavaLangString, 1, "[playMusic], errInfo->" + paramaijf.getMessage());
-          return -1;
-        }
-        label368:
-        paramString = a((String)localObject1, paramInt2);
-        if (paramString != null)
-        {
-          if (-1 != paramInt3) {
-            paramString.seekTo(paramInt3);
-          }
-          if (-1.0F != paramFloat) {
-            paramString.setVolume(paramFloat, paramFloat);
-          }
-          localObject1 = aing.a();
-          if (localObject1 != null) {
-            ((ApolloCmdChannel)localObject1).playMusicInner(paramaijf, paramString.hashCode(), paramLong);
-          }
-          return paramString.hashCode();
-        }
-        return -1;
-        label448:
-        if (this.b == -10000) {
-          c(0, paramString);
-        }
-        for (;;)
-        {
-          try
-          {
-            paramString = new MediaPlayer();
-            synchronized (this.jdField_a_of_type_JavaLangObject)
-            {
-              this.jdField_a_of_type_JavaUtilList.add(paramString);
-              a(true);
-              paramString.setDataSource((String)localObject1);
-              if (paramInt2 == 2147483647)
-              {
-                bool = true;
-                paramString.setLooping(bool);
-                if (paramInt2 != 2147483647)
-                {
-                  paramString.setOnCompletionListener(new ainn(this, paramInt2, paramaijf, paramLong));
-                  if (QLog.isColorLevel()) {
-                    QLog.d(jdField_a_of_type_JavaLangString, 2, "create player, audio_sessionID: " + paramString.getAudioSessionId());
-                  }
-                }
-                paramString.prepare();
-                paramString.start();
-                if (-1 != paramInt3) {
-                  paramString.seekTo(paramInt3);
-                }
-                if (-1.0F != paramFloat) {
-                  paramString.setVolume(paramFloat, paramFloat);
-                }
-                localObject1 = aing.a();
-                if (localObject1 != null) {
-                  ((ApolloCmdChannel)localObject1).playMusicInner(paramaijf, paramString.hashCode(), paramLong);
-                }
-                paramInt1 = paramString.hashCode();
-                return paramInt1;
-              }
-            }
-            bool = false;
-          }
-          catch (Throwable paramaijf)
-          {
-            QLog.e(jdField_a_of_type_JavaLangString, 1, "prepare - start :", paramaijf);
-            return -1;
-          }
-        }
-      }
-    }
-  }
-  
-  public int a(AppInterface paramAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[getMusicSwitch], gameId:", Integer.valueOf(this.b) });
-    }
-    a(paramAppInterface);
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public MediaPlayer a(String paramString, int paramInt)
-  {
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_AndroidMediaMediaPlayer == null) {
-          this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-        }
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
-        a(true);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
-        paramString = this.jdField_a_of_type_AndroidMediaMediaPlayer;
-        if (paramInt != 2147483647) {
-          continue;
-        }
-        bool = true;
-        paramString.setLooping(bool);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.prepare();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      }
-      catch (Throwable paramString)
-      {
-        boolean bool;
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "prepare - start :", paramString);
-        continue;
-      }
-      return this.jdField_a_of_type_AndroidMediaMediaPlayer;
-      bool = false;
-    }
-  }
-  
-  public AppInterface a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      return null;
-    }
-    return (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[pauseMusic], gameId:", Integer.valueOf(this.b) });
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    do
-    {
-      try
-      {
+        localains.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
+        localains.jdField_a_of_type_ComTencentWidgetSwitch.setContentDescription(localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
+        localains.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new ainn(this, localRedTouch, localandx));
         if (QLog.isColorLevel()) {
-          QLog.d("ApolloGameMusicPlayer", 2, "pauseMusic bMute false");
+          QLog.i("LebaListMgrAdapter", 2, "getview name: " + localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName + "  cCurFlag:" + localandx.jdField_a_of_type_Byte);
         }
-        a(false);
-        synchronized (this.jdField_a_of_type_JavaLangObject)
-        {
-          if (this.jdField_a_of_type_JavaUtilList != null)
-          {
-            Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-            while (localIterator.hasNext())
-            {
-              MediaPlayer localMediaPlayer = (MediaPlayer)localIterator.next();
-              if (localMediaPlayer != null) {
-                localMediaPlayer.pause();
-              }
-            }
-          }
+        localains.jdField_a_of_type_AndroidWidgetTextView.setText(localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
+        localains.jdField_a_of_type_Andx = localandx;
+        if (!this.jdField_a_of_type_Boolean) {
+          break label716;
         }
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(jdField_a_of_type_JavaLangString, 2, "pause error:", localException);
+        paramViewGroup = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+        label339:
+        if (!this.jdField_a_of_type_Boolean) {
+          break label724;
         }
-        return;
-      }
-    } while (this.jdField_a_of_type_AndroidMediaMediaPlayer == null);
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.pause();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[seekTo], hashCode:", Integer.valueOf(paramInt1), ",pos:", Integer.valueOf(paramInt2) });
-    }
-    MediaPlayer localMediaPlayer = a(paramInt1);
-    if (localMediaPlayer != null) {
-      localMediaPlayer.seekTo(paramInt2);
-    }
-    localMediaPlayer = b(paramInt1);
-    if (localMediaPlayer != null) {
-      localMediaPlayer.seekTo(paramInt2);
-    }
-  }
-  
-  public void a(int paramInt, AppInterface arg2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[setMusicSwitch], sw:", Integer.valueOf(paramInt), ",gameId:", Integer.valueOf(this.b) });
-    }
-    if ((this.jdField_a_of_type_AndroidContentSharedPreferences == null) || (??? == null)) {}
-    do
-    {
-      do
-      {
-        return;
-        this.jdField_a_of_type_Int = paramInt;
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("apollo_game_music_switch" + ???.getCurrentAccountUin() + "_" + this.b, paramInt).commit();
-      } while (paramInt != 0);
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (this.jdField_a_of_type_JavaUtilList != null)
-        {
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-          while (localIterator.hasNext())
-          {
-            MediaPlayer localMediaPlayer = (MediaPlayer)localIterator.next();
-            if (localMediaPlayer != null) {
-              localMediaPlayer.reset();
-            }
-          }
+        str = localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strGridIconUrl;
+        label356:
+        if ((localandx == null) || (localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) || (TextUtils.isEmpty(localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strPkgName))) {
+          break label749;
         }
-      }
-    } while (this.jdField_a_of_type_AndroidMediaMediaPlayer == null);
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
-  }
-  
-  public void a(int paramInt, String arg2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[pauseMusic], path:", ???, ",gameId:", Integer.valueOf(this.b) });
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilList != null)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext())
-        {
-          MediaPlayer localMediaPlayer = (MediaPlayer)localIterator.next();
-          if ((localMediaPlayer != null) && (localMediaPlayer.hashCode() == paramInt))
-          {
-            if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-              a(false);
-            }
-            localMediaPlayer.pause();
-            return;
-          }
+        if (TextUtils.isEmpty(str)) {
+          break label737;
         }
-      }
-      if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (this.jdField_a_of_type_AndroidMediaMediaPlayer.hashCode() == paramInt))
-      {
-        a(false);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.pause();
-        return;
-      }
-    }
-  }
-  
-  public int b(int paramInt)
-  {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[getDuration], hashCode:", Integer.valueOf(paramInt) });
-    }
-    MediaPlayer localMediaPlayer = a(paramInt);
-    if (localMediaPlayer != null) {
-      paramInt = localMediaPlayer.getDuration();
-    }
-    do
-    {
-      return paramInt;
-      localMediaPlayer = b(paramInt);
-      paramInt = i;
-    } while (localMediaPlayer == null);
-    return localMediaPlayer.getDuration();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[resumeMusic], gameId:", Integer.valueOf(this.b) });
-    }
-    if ((this.jdField_a_of_type_Int == 0) || (aing.b()) || (aing.c()) || (!aing.d())) {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "DO NOT play music.");
-      }
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      a(true);
-      try
-      {
-        synchronized (this.jdField_a_of_type_JavaLangObject)
-        {
-          if (this.jdField_a_of_type_JavaUtilList != null)
-          {
-            Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-            while (localIterator.hasNext())
-            {
-              MediaPlayer localMediaPlayer = (MediaPlayer)localIterator.next();
-              if (localMediaPlayer != null) {
-                localMediaPlayer.start();
-              }
-            }
-          }
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mRequestWidth = actn.a(26.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        localURLDrawableOptions.mRequestHeight = localURLDrawableOptions.mRequestWidth;
+        localURLDrawableOptions.mLoadingDrawable = paramViewGroup;
+        localURLDrawableOptions.mFailedDrawable = paramViewGroup;
+        paramViewGroup = URLDrawable.getDrawable(str, localURLDrawableOptions);
+        paramViewGroup.setTargetDensity(this.jdField_a_of_type_Int);
+        if (paramViewGroup.getStatus() == 2) {
+          paramViewGroup.restartDownload();
         }
-      }
-      catch (Exception localException)
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "resumeMusic error:", localException);
-        return;
-      }
-    } while (this.jdField_a_of_type_AndroidMediaMediaPlayer == null);
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-  }
-  
-  public void b(int paramInt, String arg2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[resumeMusic], path:", ???, ",gameId:", Integer.valueOf(this.b) });
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilList != null)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext())
-        {
-          MediaPlayer localMediaPlayer = (MediaPlayer)localIterator.next();
-          if ((localMediaPlayer != null) && (localMediaPlayer.hashCode() == paramInt))
-          {
-            a(true);
-            localMediaPlayer.start();
-            return;
-          }
+        localains.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramViewGroup);
+        label473:
+        if (paramViewGroup != null) {
+          ThemeUtil.setThemeFilter(paramViewGroup, ThemeUtil.curThemeId);
         }
-      }
-      if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (this.jdField_a_of_type_AndroidMediaMediaPlayer.hashCode() == paramInt))
-      {
-        a(true);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-        return;
-      }
-    }
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[onDestroy],gameId:", Integer.valueOf(this.b) });
-    }
-    a(false);
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        break label144;
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        MediaPlayer localMediaPlayer = (MediaPlayer)localIterator.next();
-        if (localMediaPlayer != null)
-        {
-          localMediaPlayer.stop();
-          localMediaPlayer.release();
+        if (localandx.jdField_a_of_type_Byte != 1) {
+          break label761;
         }
+        long l = localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId;
+        a((RedTouch)paramView, "100600." + (100000000L + l) + "");
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "stop front music.");
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    label144:
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "stop back music.");
-      }
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-    }
-  }
-  
-  public void c(int paramInt, String arg2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[stopMusic], path:", ???, ",gameId:", Integer.valueOf(this.b) });
-    }
-    a(false);
     for (;;)
     {
-      MediaPlayer localMediaPlayer1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (this.jdField_a_of_type_JavaUtilList == null) {
-          break label206;
-        }
-        if (this.b != -10000) {
-          break label137;
-        }
-        if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
-          break label134;
-        }
-        localMediaPlayer1 = (MediaPlayer)this.jdField_a_of_type_JavaUtilList.get(0);
+      paramViewGroup = paramView;
+      if (!AppSetting.d) {
+        break;
       }
-      try
+      if (Build.VERSION.SDK_INT >= 16)
       {
-        localMediaPlayer1.stop();
-        localMediaPlayer1.release();
-        this.jdField_a_of_type_JavaUtilList.remove(localMediaPlayer1);
-        continue;
-        localObject = finally;
-        throw localObject;
+        bawi.a(localains.jdField_a_of_type_AndroidWidgetTextView, false);
+        bawi.a(localains.jdField_a_of_type_ComTencentWidgetSwitch, false);
+        bawi.a(localains.jdField_a_of_type_AndroidWidgetImageView, false);
+        localains.jdField_a_of_type_AndroidWidgetRelativeLayout.setContentDescription(localains.jdField_a_of_type_AndroidWidgetTextView.getText());
       }
-      catch (IllegalStateException localIllegalStateException)
-      {
-        for (;;)
-        {
-          localIllegalStateException.printStackTrace();
-        }
+      if (Build.VERSION.SDK_INT >= 14) {
+        localains.jdField_a_of_type_AndroidWidgetRelativeLayout.setAccessibilityDelegate(this.jdField_a_of_type_AndroidViewView$AccessibilityDelegate);
       }
-    }
-    label134:
-    return;
-    label137:
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      MediaPlayer localMediaPlayer2 = (MediaPlayer)localIterator.next();
-      if ((localMediaPlayer2 != null) && (localMediaPlayer2.hashCode() == paramInt))
-      {
-        this.jdField_a_of_type_JavaUtilList.remove(localMediaPlayer2);
-        localMediaPlayer2.stop();
-        localMediaPlayer2.release();
-        return;
-      }
-    }
-    label206:
-    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (this.jdField_a_of_type_AndroidMediaMediaPlayer.hashCode() == paramInt))
-    {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
+      localains.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new aino(this, localRedTouch, localandx));
+      return paramView;
+      localains.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130849130);
+      localains.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166854));
+      break label151;
+      localains = (ains)paramView.getTag();
+      break label184;
+      label688:
+      localains.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(false);
+      localains.jdField_a_of_type_ComTencentWidgetSwitch.setContentDescription(localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
+      break label232;
+      label716:
+      paramViewGroup = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      break label339;
+      label724:
+      str = localandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResURL;
+      break label356;
+      label737:
+      localains.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramViewGroup);
+      break label473;
+      label749:
+      localains.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramViewGroup);
+      break label473;
+      label761:
+      ((RedTouch)paramView).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ainm
  * JD-Core Version:    0.7.0.1
  */

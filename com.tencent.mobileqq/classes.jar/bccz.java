@@ -1,42 +1,25 @@
-import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
-import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
 
-class bccz
-  implements ITMAssistantExchangeURLListenner
+final class bccz
+  extends WebAccelerateHelper.CommonJsPluginFactory
 {
-  bccz(bccy parambccy) {}
-  
-  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
+  public List<WebViewPlugin> getCommonJsPlugin()
   {
-    bcds.b("DownloadResolver", "onExchangedURLSucceed --- ");
-    if ((paramBoolean) && (??? != null) && (???.size() > 0))
-    {
-      ??? = ???.iterator();
-      while (???.hasNext())
-      {
-        Object localObject1 = ???.next();
-        if ((localObject1 instanceof AppSimpleDetail))
-        {
-          int i = ((AppSimpleDetail)localObject1).versionCode;
-          if (i > 0) {
-            bccy.a(this.a).put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
-          }
-        }
-      }
-    }
-    synchronized (bccy.a(this.a))
-    {
-      bccy.a(this.a).notify();
-      return;
-    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new bcbb());
+    localArrayList.add(new armk());
+    localArrayList.add(new UiApiPlugin());
+    localArrayList.add(new arkh());
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bccz
  * JD-Core Version:    0.7.0.1
  */

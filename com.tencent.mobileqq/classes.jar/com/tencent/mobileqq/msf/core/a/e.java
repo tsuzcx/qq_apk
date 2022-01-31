@@ -39,7 +39,7 @@ class e
           if (QLog.isColorLevel()) {
             QLog.i("MSF.C.SsoListManager", 2, "report file start");
           }
-          h.a(this.c.c.p.sender.k(), (File)localObject1, this.a, this.b);
+          h.a(this.c.c.n.sender.k(), (File)localObject1, this.a, this.b);
           if (QLog.isColorLevel()) {
             QLog.i("MSF.C.SsoListManager", 2, "report file finish");
           }

@@ -1,22 +1,47 @@
+import NS_MOBILE_PHOTO.operation_red_touch_req;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+
 public class avfc
+  extends MSFServlet
 {
-  public long a;
-  public avfd a;
-  
-  public avfc()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Long = 0L;
+    if (paramFromServiceMsg != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneAlbumRedDotServlet", 2, "resultcode:" + paramFromServiceMsg.getResultCode() + ",failMsg:" + paramFromServiceMsg.getBusinessFailMsg());
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("QzoneAlbumRedDotServlet", 2, "fromServiceMsg==msg");
   }
   
-  public avfc(long paramLong, avfd paramavfd)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Avfd = paramavfd;
+    paramIntent = paramIntent.getSerializableExtra("req");
+    if ((paramIntent != null) && ((paramIntent instanceof operation_red_touch_req)))
+    {
+      avfb localavfb = new avfb(getAppRuntime().getLongAccountUin(), (operation_red_touch_req)paramIntent);
+      byte[] arrayOfByte = localavfb.encode();
+      paramIntent = arrayOfByte;
+      if (arrayOfByte == null) {
+        paramIntent = new byte[4];
+      }
+      paramPacket.setTimeout(60000L);
+      paramPacket.setSSOCommand("SQQzoneSvc." + localavfb.uniKey());
+      paramPacket.putSendData(paramIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avfc
  * JD-Core Version:    0.7.0.1
  */

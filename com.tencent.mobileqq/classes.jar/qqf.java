@@ -1,54 +1,48 @@
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsOptView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
 
-class qqf
-  implements ViewBase.OnClickListener
+public class qqf
+  implements View.OnClickListener
 {
-  qqf(qqe paramqqe) {}
+  public qqf(VideoFeedsOptView paramVideoFeedsOptView, qls paramqls, String paramString, int paramInt1, int paramInt2) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onClick(View paramView)
   {
-    for (;;)
+    this.jdField_a_of_type_Qls.a.put(this.jdField_a_of_type_JavaLangString, Integer.valueOf(((Integer)this.jdField_a_of_type_Qls.a.get(this.jdField_a_of_type_JavaLangString)).intValue() + 1));
+    bbjn.a("ug_prefix_ug_1get3_opt_day_click_" + this.jdField_a_of_type_JavaLangString, bbjn.a("ug_prefix_ug_1get3_opt_day_click_" + this.jdField_a_of_type_JavaLangString) + 1);
+    VideoFeedsOptView.a(VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView, "3"));
+    paramView = new qze(VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView));
+    if (this.jdField_a_of_type_Int == 1)
     {
-      FastWebArticleInfo localFastWebArticleInfo;
-      try
+      paramView.a(false).f(VideoFeedsOptView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView)).a(VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView)).x(VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView));
+      if ((this.b == 1) && (!TextUtils.isEmpty(VideoFeedsOptView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView))))
       {
-        String str = paramViewBase.getEventAttachedData();
-        int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
-        paramViewBase = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b;
-        localFastWebArticleInfo = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a;
-        switch (i)
-        {
-        case 1004: 
-          if (TextUtils.isEmpty(str)) {
-            return;
-          }
-          obz.e(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, str);
-          return;
-        }
+        awvy.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView.getContext(), VideoFeedsOptView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView));
+        VideoFeedsOptView.a(VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView, "108"));
       }
-      catch (Exception paramViewBase)
-      {
-        QLog.d("ReadInJoyFastWebBottomSocialViewNew", 1, "findClickableViewListener error!  msg=" + paramViewBase);
-        return;
-      }
-      ReadInJoyFastWebBottomSocialViewNew.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
-      return;
-      ReadInJoyFastWebBottomSocialViewNew.b(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
-      return;
-      ReadInJoyFastWebBottomSocialViewNew.c(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
-      return;
-      ReadInJoyFastWebBottomSocialViewNew.d(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
-      return;
-      ReadInJoyFastWebBottomSocialViewNew.e(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
-      return;
     }
+    while (VideoFeedsOptView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView))
+    {
+      noo.a(null, null, "0X80092A0", "0X80092A0", 0, 0, String.valueOf(VideoFeedsOptView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView)), "", "", paramView.a().a(), false);
+      return;
+      paramView.a(true).f(VideoFeedsOptView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView)).a(VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView)).x(VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView));
+      if ((this.b == 2) && (!TextUtils.isEmpty(VideoFeedsOptView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView))))
+      {
+        VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView, VideoFeedsOptView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView));
+        VideoFeedsOptView.a(VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView, "7"));
+      }
+      else if ((this.b == 1) && (!TextUtils.isEmpty(VideoFeedsOptView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView))))
+      {
+        awvy.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView.getContext(), VideoFeedsOptView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView));
+        VideoFeedsOptView.a(VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView, "108"));
+      }
+    }
+    noo.a(null, null, "0X8009034", "0X8009034", 0, 0, String.valueOf(VideoFeedsOptView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView)), "", "", paramView.a().a(), false);
   }
 }
 

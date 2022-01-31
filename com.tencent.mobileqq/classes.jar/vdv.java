@@ -1,15 +1,19 @@
-public class vdv
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class vdv
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public vdr<Boolean, vdw> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public vdr<Boolean, vdx> b;
-  public boolean b;
-  public int c;
-  public int d;
+  vdv(vdu paramvdu) {}
+  
+  public void onClick(View paramView)
+  {
+    vdu.a(this.a, false);
+    this.a.notifyDataSetChanged();
+    if (vdu.a(this.a) != null) {
+      vdu.a(this.a).f();
+    }
+  }
 }
 
 

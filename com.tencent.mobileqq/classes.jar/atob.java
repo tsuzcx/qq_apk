@@ -1,524 +1,308 @@
-import android.database.Cursor;
-import android.database.SQLException;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager.1;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage.1;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage.3;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.manager.Manager;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class atob
-  implements Manager
+  extends xpy
 {
-  protected atmx a;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private QQEntityManagerFactory jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
+  protected Context a;
+  public PicInfo a;
+  int e;
   
-  public atob(QQAppInterface paramQQAppInterface)
+  public atob(Context paramContext, PicInfo paramPicInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo = paramPicInfo;
   }
   
-  private ajrl a()
+  public int a()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals("0")) {
-      return a().build(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    }
-    return null;
+    return this.e;
   }
   
-  public int a(MessageRecord paramMessageRecord, boolean paramBoolean)
+  public View a(int paramInt, Handler paramHandler, atod paramatod)
   {
-    String[] arrayOfString = null;
-    int j = 0;
-    String str2 = MessageRecord.getTableName(paramMessageRecord.frienduin, paramMessageRecord.istroop);
-    String str1;
-    if (paramMessageRecord.getId() > 0L)
-    {
-      str1 = "_id=?";
-      arrayOfString = new String[1];
-      arrayOfString[0] = String.valueOf(paramMessageRecord.getId());
-    }
-    for (;;)
-    {
-      int i = j;
-      if (str1 != null)
-      {
-        i = j;
-        if (arrayOfString != null)
-        {
-          j = a(str2, str1, arrayOfString);
-          i = j;
-          if (paramBoolean)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramMessageRecord);
-            i = j;
-          }
-        }
-      }
-      return i;
-      if (paramMessageRecord.uniseq != 0L)
-      {
-        str1 = "uniseq=?";
-        arrayOfString = new String[1];
-        arrayOfString[0] = String.valueOf(paramMessageRecord.uniseq);
-      }
-      else
-      {
-        str1 = null;
-      }
-    }
-  }
-  
-  public int a(String paramString)
-  {
-    SQLiteDatabase localSQLiteDatabase = b();
-    if (localSQLiteDatabase == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("QSlowTableManager", 2, "getSlowTableCount db = null!");
-      }
-    }
-    while (!badk.a(paramString, localSQLiteDatabase)) {
-      return 0;
-    }
-    return localSQLiteDatabase.a(paramString);
-  }
-  
-  public int a(String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    int i = 0;
-    int j = 0;
-    SQLiteDatabase localSQLiteDatabase = a();
-    if (localSQLiteDatabase == null) {
-      QLog.e("QSlowTableManager", 2, "deleteSlowTable db = null!");
-    }
-    label192:
-    do
-    {
-      return j;
-      atmr localatmr = a().a();
-      if (localatmr != null) {
-        j = i;
-      }
-      try
-      {
-        localatmr.a();
-        j = i;
-        int k = localSQLiteDatabase.a(paramString1, paramString2, paramArrayOfString);
-        if (localatmr != null)
-        {
-          j = k;
-          localatmr.c();
-        }
-        i = k;
-        if (localatmr != null)
-        {
-          localatmr.b();
-          i = k;
-        }
-      }
-      catch (Exception paramArrayOfString)
-      {
-        for (;;)
-        {
-          QLog.e("QSlowTableManager", 1, "delete slowtable excep: ", paramArrayOfString);
-          i = j;
-          if (localatmr != null)
-          {
-            localatmr.b();
-            i = j;
-          }
-        }
-      }
-      finally
-      {
-        if (localatmr == null) {
-          break label192;
-        }
-        localatmr.b();
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QSlowTableManager", 2, "delete slowtable=" + paramString1 + " ,count=" + i + " ,whereClause:" + paramString2);
-        return i;
-      }
-      j = i;
-    } while (i <= 0);
-    QLog.d("QSlowTableManager", 1, "deleteSlowTable count:" + i);
-    return i;
-  }
-  
-  public long a(String paramString)
-  {
-    long l1 = 0L;
-    SQLiteDatabase localSQLiteDatabase = b();
-    if (localSQLiteDatabase == null)
-    {
-      l3 = l1;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("QSlowTableManager", 2, "queryLastMsgTime db = null!");
-        l3 = l1;
-      }
-    }
-    do
-    {
-      return l3;
-      l2 = l1;
-      if (badk.a(paramString, localSQLiteDatabase)) {
-        l3 = l1;
-      }
-      try
-      {
-        paramString = localSQLiteDatabase.a("select time from " + paramString + " order by time desc limit 1", null);
-        l2 = l1;
-        l3 = l1;
-        if (paramString.moveToNext())
-        {
-          l3 = l1;
-          l2 = paramString.getLong(0);
-        }
-        l3 = l2;
-        paramString.close();
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          l2 = l3;
-        }
-      }
-      l3 = l2;
-    } while (!QLog.isColorLevel());
-    QLog.d("QSlowTableManager", 2, "queryLastMsgTime maxtime=" + l2);
-    return l2;
-  }
-  
-  public Cursor a(String paramString1, String paramString2)
-  {
-    SQLiteDatabase localSQLiteDatabase = b();
-    if (localSQLiteDatabase == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("QSlowTableManager", 2, "querySlowTable db null!");
-      }
+    File localFile = null;
+    URL localURL = null;
+    URLDrawable localURLDrawable = null;
+    boolean bool2 = true;
+    URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo == null) {
+      return localURLImageView;
     }
     Object localObject1;
-    do
+    Object localObject3;
+    label258:
+    long l;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c))
     {
-      return null;
-      if (paramString1.indexOf("mr_troop_") == -1) {
-        break;
+      localObject1 = URLDrawable.getDrawable(new File(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c), null);
+      localObject3 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject1);
+      ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject1);
+      ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
+      ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels;
+      ((URLDrawable.URLDrawableOptions)localObject3).mPlayGifImage = true;
+      ((URLDrawable.URLDrawableOptions)localObject3).mExtraInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c)) {
+        localObject1 = localURLDrawable;
       }
-      localObject1 = " where " + paramString2;
-      paramString2 = badk.b(null, paramString1, localSQLiteDatabase, (String)localObject1);
-    } while (paramString2 == null);
-    for (;;)
+    }
+    else
     {
       try
       {
-        paramString2 = localSQLiteDatabase.a(paramString2.toString(), null);
-        paramString1 = paramString2;
-      }
-      catch (SQLException paramString2)
-      {
-        paramString1 = localSQLiteDatabase.a(paramString1, null, (String)localObject1, null, null, null);
-        continue;
-      }
-      return paramString1;
-      if (paramString1.indexOf("mr_grp_") != -1)
-      {
-        localObject1 = new StringBuilder("select * from ");
-        ((StringBuilder)localObject1).append(paramString1);
-        if ((paramString2 != null) && (paramString2.length() > 0))
-        {
-          ((StringBuilder)localObject1).append(" where ");
-          ((StringBuilder)localObject1).append(paramString2);
+        localFile = new File(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c);
+        localObject1 = localURLDrawable;
+        localURL = localFile.toURL();
+        localObject1 = localURLDrawable;
+        localURLDrawable = URLDrawable.getDrawable(new URL("nearbylocalimage", localURL.getAuthority(), localURL.getFile()), (URLDrawable.URLDrawableOptions)localObject3);
+        localObject1 = localURLDrawable;
+        localURLImageView.setImageDrawable(localURLDrawable);
+        localObject1 = localURLDrawable;
+        if (!localFile.exists()) {
+          break label441;
         }
-        try
-        {
-          localObject1 = localSQLiteDatabase.a(((StringBuilder)localObject1).toString(), null);
-          paramString2 = (String)localObject1;
+        localObject1 = localURLDrawable;
+        bool1 = localFile.isFile();
+        if (!bool1) {
+          break label441;
         }
-        catch (SQLException localSQLException1)
+        bool1 = true;
+        localObject1 = localURLDrawable;
+      }
+      catch (MalformedURLException localMalformedURLException1)
+      {
+        for (;;)
         {
-          for (;;)
-          {
-            paramString2 = localSQLiteDatabase.a(paramString1, null, paramString2, null, null, null);
+          label315:
+          if (QLog.isDevelopLevel()) {
+            localMalformedURLException1.printStackTrace();
           }
+          bool1 = false;
         }
-        paramString1 = paramString2;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("gene", 2, "cursor: " + paramString2);
-        paramString1 = paramString2;
-        continue;
       }
-      if (paramString1.indexOf("mr_discusssion_") != -1)
+      if ((localObject1 == null) || (((URLDrawable)localObject1).getStatus() == 1) || (((URLDrawable)localObject1).getStatus() == 2) || (((URLDrawable)localObject1).getStatus() == 4)) {
+        break label627;
+      }
+      localURLImageView.setURLDrawableDownListener(new atoc(this, paramatod, paramInt));
+      if (!bool1) {
+        break label619;
+      }
+      l = 1000L;
+      paramHandler.postDelayed(new PicBrowserImage.3(this, (URLDrawable)localObject1, paramatod, paramInt), l);
+    }
+    for (;;)
+    {
+      label441:
+      Object localObject2;
+      for (;;)
       {
-        localObject2 = " where " + paramString2;
-        paramString2 = badk.b(null, paramString1, localSQLiteDatabase, (String)localObject2);
-        if (paramString2 == null) {
+        return localURLImageView;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.b))
+        {
+          String str = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.b.replaceFirst("http", "nearbyimage");
+          if (ayog.b(str))
+          {
+            localObject3 = URLDrawable.getDrawable(str, null);
+            localObject1 = localObject3;
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.i("PicBrowser", 2, "PicBrowserGalleryAdapter getView loadingDrawble is: " + str);
+            localObject1 = localObject3;
+            break;
+          }
+          localObject1 = aywk.a;
           break;
         }
-        try
+        localObject1 = aywk.a;
+        break;
+        bool1 = false;
+        localObject1 = localURLDrawable;
+        break label258;
+        localObject2 = localURL;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a))
         {
-          paramString2 = localSQLiteDatabase.a(paramString2.toString(), null);
-          paramString1 = paramString2;
+          localObject1 = localFile;
+          try
+          {
+            localObject2 = aysr.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a);
+            localObject1 = localFile;
+            this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a = ((URL)localObject2).toString();
+            localObject1 = localFile;
+            localObject2 = URLDrawable.getDrawable((URL)localObject2, (URLDrawable.URLDrawableOptions)localObject3);
+            localObject1 = localObject2;
+            ((URLDrawable)localObject2).setDownloadListener(new asyw(this.jdField_a_of_type_AndroidContentContext, "actNearbyPicBrowser"));
+            localObject1 = localObject2;
+            localURLImageView.setImageDrawable((Drawable)localObject2);
+            localObject1 = localObject2;
+            bool1 = ayog.b(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a);
+            localObject1 = localObject2;
+          }
+          catch (MalformedURLException localMalformedURLException2)
+          {
+            localObject2 = localObject1;
+            if (QLog.isDevelopLevel())
+            {
+              localMalformedURLException2.printStackTrace();
+              localObject2 = localObject1;
+            }
+          }
         }
-        catch (SQLException paramString2)
-        {
-          paramString1 = localSQLiteDatabase.a(paramString1, null, (String)localObject2, null, null, null);
-        }
-        continue;
       }
-      Object localObject2 = badk.a(null, paramString1, localSQLiteDatabase, paramString2, null);
-      if (localObject2 != null) {
-        try
-        {
-          localObject2 = localSQLiteDatabase.a(((StringBuilder)localObject2).toString(), null);
-          paramString1 = (String)localObject2;
-        }
-        catch (SQLException localSQLException2)
-        {
-          paramString1 = localSQLiteDatabase.a(paramString1, null, paramString2, null, null, null);
-        }
-      } else {
-        paramString1 = null;
+      bool1 = false;
+      localObject1 = localObject2;
+      break label258;
+      label619:
+      l = 300L;
+      break label315;
+      label627:
+      if (localObject1 != null) {
+        break label643;
       }
+      paramatod.a(paramInt, false);
+    }
+    label643:
+    if (((URLDrawable)localObject1).getStatus() == 1) {}
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      paramatod.a(paramInt, bool1);
+      break;
     }
   }
   
-  public atmq a()
+  public void a()
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
-    if (str == null) {
-      throw new IllegalStateException("uin is null");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory;
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo != null) {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a;
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory == null)
+      localObject = aysr.a((String)localObject);
+      if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory = new atoa(str);
-        ThreadManager.post(new QSlowTableManager.1(this), 8, null, false);
-      }
-      return this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory;
-    }
-    finally {}
-  }
-  
-  public atmx a()
-  {
-    if ((this.jdField_a_of_type_Atmx == null) || (!this.jdField_a_of_type_Atmx.a())) {}
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_Atmx == null) || (!this.jdField_a_of_type_Atmx.a())) {
-        this.jdField_a_of_type_Atmx = ((atmx)a().createMessageRecordEntityManager());
-      }
-      return this.jdField_a_of_type_Atmx;
-    }
-  }
-  
-  public SQLiteDatabase a()
-  {
-    ajrl localajrl = a();
-    if (localajrl != null) {
-      return localajrl.a();
-    }
-    return null;
-  }
-  
-  public List<MessageRecord> a(String paramString)
-  {
-    if (b() == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("QSlowTableManager", 2, "querySlowTable db = null!");
-      }
-    }
-    do
-    {
-      return null;
-      if (paramString != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("QSlowTableManager", 2, "sql = null!");
-    return null;
-    return a().a(MessageRecord.class, paramString, null);
-  }
-  
-  public List<MessageRecord> a(String paramString1, String paramString2)
-  {
-    SQLiteDatabase localSQLiteDatabase = b();
-    if (localSQLiteDatabase == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("QSlowTableManager", 2, "querySlowTableForList db = null!");
-      }
-    }
-    do
-    {
-      return null;
-      paramString1 = badk.a(null, paramString1, localSQLiteDatabase, paramString2, null);
-      if (paramString1 != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("QSlowTableManager", 2, "sqlStr db = null!");
-    return null;
-    return a().a(MessageRecord.class, paramString1.toString(), null);
-  }
-  
-  public void a(String paramString, List<MessageRecord> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSlowTableManager", 2, "insertSlowTable return by non msg");
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mExtraInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo;
+        localObject = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
+        ((URLDrawable)localObject).setDownloadListener(new asyw(this.jdField_a_of_type_AndroidContentContext));
+        ThreadManager.postImmediately(new PicBrowserImage.1(this, (URLDrawable)localObject), null, true);
       }
       return;
     }
-    int m = 0;
-    int n = 0;
-    int i = 0;
-    paramString = a().a();
-    int j;
-    int k;
-    if (paramString != null)
-    {
-      j = m;
-      k = n;
+    catch (Exception localException) {}
+  }
+  
+  public void a(View paramView, int paramInt, atod paramatod)
+  {
+    paramView = (URLImageView)paramView;
+    URLDrawable localURLDrawable = (URLDrawable)paramView.getDrawable();
+    if (localURLDrawable == null) {
+      return;
     }
+    if ((localURLDrawable.getStatus() != 1) && (localURLDrawable.getStatus() != 2))
+    {
+      int i = localURLDrawable.getProgress();
+      if (i > 0) {
+        paramatod.b(paramInt, i / 100);
+      }
+      paramView.setMinimumHeight(10);
+      paramView.setMinimumWidth(10);
+      return;
+    }
+    if (localURLDrawable.getStatus() == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramatod.a(paramInt, bool);
+      break;
+    }
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public Drawable c()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo == null) {
+      return null;
+    }
+    Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = aywk.a;
+    ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = aywk.a;
+    ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = true;
+    ((URLDrawable.URLDrawableOptions)localObject1).mExtraInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c)) {}
     for (;;)
     {
+      Object localObject4;
+      Object localObject2;
       try
       {
-        paramString.a();
-        j = m;
-        k = n;
-        Iterator localIterator = paramList.iterator();
-        j = i;
-        k = i;
-        if (localIterator.hasNext())
-        {
-          j = i;
-          k = i;
-          MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-          j = i;
-          k = i;
-          localMessageRecord.setStatus(1000);
-          j = i;
-          k = i;
-          a().b(localMessageRecord);
-          j = i;
-          k = i;
-          if (localMessageRecord.getStatus() == 1001) {
-            i += 1;
-          }
+        localObject1 = URLDrawable.getDrawable(new File(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c).toURL(), (URLDrawable.URLDrawableOptions)localObject1);
+        localObject4 = b();
+        if ((localObject1 == null) || (localObject4 == null)) {
+          break;
         }
-        else
+        this.e = a((Rect)localObject4, (Drawable)localObject1);
+        if (QLog.isColorLevel()) {
+          QLog.d("PicBrowser", 2, "getAnimationDrawable ,cutValue = " + this.e);
+        }
+        return localObject1;
+      }
+      catch (MalformedURLException localMalformedURLException1)
+      {
+        if (QLog.isDevelopLevel()) {
+          localMalformedURLException1.printStackTrace();
+        }
+        localObject2 = null;
+        continue;
+      }
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.b)) {
+        try
         {
-          if (paramString != null)
+          localObject4 = new URL(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.b);
+          localObject4 = new URL("nearbyimage", ((URL)localObject4).getAuthority(), ((URL)localObject4).getFile());
+          if (ayog.b(((URL)localObject4).toString()))
           {
-            j = i;
-            k = i;
-            paramString.c();
+            localObject2 = URLDrawable.getDrawable((URL)localObject4, (URLDrawable.URLDrawableOptions)localObject2);
+            continue;
           }
-          return;
+          localObject4 = new URL(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a);
+          localObject2 = URLDrawable.getDrawable(new URL("nearbyimage", ((URL)localObject4).getAuthority(), ((URL)localObject4).getFile()), (URLDrawable.URLDrawableOptions)localObject2);
         }
-      }
-      catch (Exception localException)
-      {
-        k = j;
-        QLog.e("QSlowTableManager", 1, "insert slowtable excep: ", localException);
-        return;
-      }
-      finally
-      {
-        if (paramString != null) {
-          paramString.b();
-        }
-        QLog.d("QSlowTableManager", 1, "insertSlowTable totalCount:" + paramList.size() + " ,succCount:" + k);
-      }
-    }
-  }
-  
-  public long b(String paramString)
-  {
-    long l1 = 0L;
-    SQLiteDatabase localSQLiteDatabase = b();
-    if (localSQLiteDatabase == null)
-    {
-      l3 = l1;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("QSlowTableManager", 2, "queryLastMsgTime db = null!");
-        l3 = l1;
-      }
-    }
-    do
-    {
-      return l3;
-      l2 = l1;
-      if (badk.a(paramString, localSQLiteDatabase)) {
-        l3 = l1;
-      }
-      try
-      {
-        paramString = localSQLiteDatabase.a("select time from " + paramString + " order by time asc limit 1", null);
-        l2 = l1;
-        l3 = l1;
-        if (paramString.moveToNext())
+        catch (MalformedURLException localMalformedURLException2)
         {
-          l3 = l1;
-          l2 = paramString.getLong(0);
+          if (QLog.isDevelopLevel()) {
+            localMalformedURLException2.printStackTrace();
+          }
         }
-        l3 = l2;
-        paramString.close();
+      } else {
+        Object localObject3 = null;
       }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          l2 = l3;
-        }
-      }
-      l3 = l2;
-    } while (!QLog.isColorLevel());
-    QLog.d("QSlowTableManager", 2, "queryFirstMsgTime maxtime=" + l2);
-    return l2;
+    }
   }
   
-  public SQLiteDatabase b()
-  {
-    ajrl localajrl = a();
-    if (localajrl != null) {
-      return localajrl.b();
-    }
-    return null;
-  }
-  
-  public void onDestroy()
-  {
-    if ((this.jdField_a_of_type_Atmx != null) && (this.jdField_a_of_type_Atmx.a())) {
-      this.jdField_a_of_type_Atmx.a();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory.close();
-    }
-  }
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atob
  * JD-Core Version:    0.7.0.1
  */

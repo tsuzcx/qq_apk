@@ -1,22 +1,9 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-
 class adwi
-  implements DialogInterface.OnKeyListener
 {
-  adwi(advv paramadvv) {}
+  int jdField_a_of_type_Int = -1;
+  adwk[] jdField_a_of_type_ArrayOfAdwk;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4)
-    {
-      this.a.n = true;
-      advv.a(this.a).dismiss();
-    }
-    return false;
-  }
+  adwi(adwh paramadwh) {}
 }
 
 

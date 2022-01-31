@@ -1,27 +1,39 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class atus
-  extends RecyclerView.ViewHolder
+class atus
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  atus(atur paramatur, Context paramContext, atwv paramatwv, atuy paramatuy) {}
   
-  public atus(CustomCoverFragment paramCustomCoverFragment, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    paramView.setTag(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131302181));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131311233));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131298186));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramCustomCoverFragment.a);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramCustomCoverFragment.a);
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    String str1 = this.jdField_a_of_type_Atwv.h;
+    String str2 = this.jdField_a_of_type_Atwv.i;
+    Object localObject = this.jdField_a_of_type_Atwv.k;
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      paramView = this.jdField_a_of_type_Atwv.j;
+      localIntent.putExtra("url", String.format("http://3gimg.qq.com/lightmap/v1/marker/?key=%s&referer=qqnearby&marker=coord:%s,%s;title:%s;addr:%s", new Object[] { "25TBZ-W4HCP-2BKDM-LBYH3-L4QRT-G3BDP", str2, str1, paramView, localObject }));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      localObject = new axra(this.jdField_a_of_type_Atur.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_lbs").c("data_card").d("clk_lbs").e(String.valueOf(this.jdField_a_of_type_Atuy.jdField_a_of_type_Atwv.e));
+      if (!this.jdField_a_of_type_Atur.jdField_a_of_type_Boolean) {
+        break label210;
+      }
+    }
+    label210:
+    for (paramView = "1";; paramView = "2")
+    {
+      ((axra)localObject).a(new String[] { paramView, "", "", this.jdField_a_of_type_Atuy.jdField_a_of_type_Atwv.c }).a();
+      return;
+      paramView = (View)localObject;
+      break;
+    }
   }
 }
 

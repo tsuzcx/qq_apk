@@ -1,47 +1,31 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-import com.tencent.biz.videostory.app.material.AEMaterialMgr.1;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import java.io.File;
-import java.io.IOException;
-import java.util.Map;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
 
 public class wqi
-  implements axrt
+  implements wnu
 {
-  public wqi(AEMaterialMgr.1 param1) {}
+  public wqi(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
   
-  public void onResp(axsq paramaxsq)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(wqh.a(), 2, "onResp url: " + this.a.a.packageUrl + " resultcode: " + paramaxsq.c);
-    }
-    if (this.a.this$0.a(this.a.a)) {}
-    try
-    {
-      mpx.a(new File(PtvTemplateManager.jdField_a_of_type_JavaIoFile, this.a.a.id), PtvTemplateManager.jdField_a_of_type_JavaLangString);
-      wqh.a(this.a.this$0, this.a.a);
-      wqh.a(this.a.this$0).remove(this.a.a.id);
-      return;
-    }
-    catch (IOException paramaxsq)
-    {
-      while (!QLog.isColorLevel()) {}
-      paramaxsq.printStackTrace();
-    }
+    SubscribeHybirdFragment.a(this.a).a(paramInt);
   }
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2)
+  public void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString)
   {
-    wqh.a(this.a.this$0, this.a.a, (int)(paramLong1 / paramLong2 * 100L));
-    if (!wqh.a(this.a.this$0).containsKey(this.a.a.id)) {
-      wqh.a(this.a.this$0).put(this.a.a.id, this.a.a);
+    if ((paramStGetFeedDetailRsp == null) || (paramStGetFeedDetailRsp.feed.get() == null))
+    {
+      bcpw.a(this.a.a(), ajyc.a(2131714638), 0).a();
+      return;
     }
+    SubscribeHybirdFragment.a(this.a, paramStGetFeedDetailRsp, paramLong, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wqi
  * JD-Core Version:    0.7.0.1
  */

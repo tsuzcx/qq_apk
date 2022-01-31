@@ -18,6 +18,8 @@ public class GameLog
   public static final String MINI_TAG = "[mini] ";
   private static final String[] VCONSOLE_LOG_ARRAY = { "log", "info", "warn", "error" };
   public static final int VCONSOLE_LOG_DEBUG = 100;
+  private static String mPreLogInfo = "init log";
+  private static long mRepeatLogInfoNumber;
   private static GameLog sInstance;
   
   public static String cutString(String paramString)
@@ -116,40 +118,64 @@ public class GameLog
       QLog.i("[minigame] ", 1, "g_printNativeLog getLog null");
       QLog.i("[minigame] " + paramString1, 1, paramString2);
     }
-    label156:
+    label273:
     for (;;)
     {
       return;
+      String str = paramString2;
+      if (!TextUtils.isEmpty(mPreLogInfo))
+      {
+        if (!mPreLogInfo.equals(paramString2)) {
+          break label200;
+        }
+        mRepeatLogInfoNumber += 1L;
+        if (mRepeatLogInfoNumber >= 9223372036854775807L) {
+          mRepeatLogInfoNumber = 0L;
+        }
+        label83:
+        str = paramString2;
+        if (mRepeatLogInfoNumber > 10L)
+        {
+          if (mRepeatLogInfoNumber % 10L != 0L) {
+            continue;
+          }
+          str = paramString2 + "[ repeat " + mRepeatLogInfoNumber + "]";
+        }
+      }
       int i;
       if (paramInt >= 100)
       {
         i = paramInt - 100 + 3;
-        label53:
+        label154:
         if (i > 3) {
-          break label103;
+          break label217;
         }
-        getInstance().d(paramString1, paramString2);
+        getInstance().d(paramString1, str);
       }
       for (;;)
       {
         if (paramInt < 100) {
-          break label156;
+          break label273;
         }
         paramInt -= 100;
         if (paramInt >= VCONSOLE_LOG_ARRAY.length) {
           break;
         }
-        printVconsoleLog(VCONSOLE_LOG_ARRAY[paramInt], paramString2);
+        printVconsoleLog(VCONSOLE_LOG_ARRAY[paramInt], str);
         return;
+        label200:
+        mRepeatLogInfoNumber = 0L;
+        mPreLogInfo = paramString2;
+        break label83;
         i = paramInt;
-        break label53;
-        label103:
+        break label154;
+        label217:
         if (i == 4) {
-          getInstance().i(paramString1, paramString2);
+          getInstance().i(paramString1, str);
         } else if (i == 5) {
-          getInstance().w(paramString1, paramString2);
+          getInstance().w(paramString1, str);
         } else if (i == 6) {
-          getInstance().e(paramString1, paramString2);
+          getInstance().e(paramString1, str);
         }
       }
     }

@@ -75,7 +75,7 @@ public class n
                 QLog.d(a, 1, "get infoLogin, but not register push, register now");
                 localObject3 = paramContext.getPackageName();
                 if (localObject3 == null) {
-                  break label811;
+                  break label815;
                 }
                 localObject2 = new ToServiceMsg("", paramToServiceMsg.getUin(), "push.register");
                 ((ToServiceMsg)localObject2).setMsfCommand(MsfCommand.registerPush);
@@ -84,7 +84,7 @@ public class n
                 MsfSdkUtils.addToMsgProcessName((String)localObject3, (ToServiceMsg)localObject2);
                 localObject3 = (a)MsfService.core.pushManager.i.get(localObject3);
                 if (localObject3 == null) {
-                  break label679;
+                  break label683;
                 }
                 com.tencent.mobileqq.msf.sdk.y.a((ToServiceMsg)localObject2, ((a)localObject3).k);
                 MsfService.core.pushManager.a((ToServiceMsg)localObject2, RegPushReason.fillRegProxy);
@@ -463,12 +463,14 @@ public class n
       return;
       paramInt = ((Integer)paramToServiceMsg.getAttribute("localeId")).intValue();
     } while (MsfCore.sCore == null);
-    label679:
-    label811:
+    label683:
+    label815:
     if (QLog.isColorLevel()) {
       QLog.d(a, 2, "msf_update_localeId, localeId = " + paramInt);
     }
     MsfCore.sCore.mLocaleId = paramInt;
+    return;
+    MsfService.core.updateBatteryStatus(paramToServiceMsg);
   }
 }
 

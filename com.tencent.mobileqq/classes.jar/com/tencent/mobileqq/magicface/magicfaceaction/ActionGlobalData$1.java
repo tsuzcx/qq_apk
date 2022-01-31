@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.magicface.magicfaceaction;
 
-import argn;
-import argo;
+import ascp;
+import ascq;
 import java.util.TimerTask;
 
 public class ActionGlobalData$1
   extends TimerTask
 {
-  public ActionGlobalData$1(argn paramargn) {}
+  public ActionGlobalData$1(ascp paramascp) {}
   
   public void run()
   {
-    argn localargn = this.this$0;
-    localargn.h += 1;
-    localargn = this.this$0;
-    localargn.jdField_a_of_type_Float -= 0.1F;
-    if (this.this$0.jdField_a_of_type_Argo != null) {
-      this.this$0.jdField_a_of_type_Argo.b();
+    ascp localascp = this.this$0;
+    localascp.h += 1;
+    localascp = this.this$0;
+    localascp.jdField_a_of_type_Float -= 0.1F;
+    if (this.this$0.jdField_a_of_type_Ascq != null) {
+      this.this$0.jdField_a_of_type_Ascq.b();
     }
     if (this.this$0.h * 100 == this.this$0.c * 1000)
     {
       this.this$0.jdField_a_of_type_Float = 0.0F;
-      if (this.this$0.jdField_a_of_type_Argo != null) {
-        this.this$0.jdField_a_of_type_Argo.a();
+      if (this.this$0.jdField_a_of_type_Ascq != null) {
+        this.this$0.jdField_a_of_type_Ascq.a();
       }
       cancel();
     }

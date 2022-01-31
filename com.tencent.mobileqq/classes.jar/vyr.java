@@ -1,30 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class vyr
-  implements View.OnClickListener
+public class vyr
 {
-  vyr(vyo paramvyo) {}
-  
-  public void onClick(View paramView)
+  public static long a(String paramString, long paramLong)
   {
-    if (this.a.a() != null)
+    try
     {
-      paramView = this.a.a().a();
-      if (paramView != null) {
-        this.a.c(paramView);
-      }
+      long l = Long.valueOf(paramString).longValue();
+      return l;
     }
-    else
+    catch (NumberFormatException localNumberFormatException)
     {
-      return;
+      veg.d("NumberUtils", "Invalid num string " + paramString + ", return default number " + paramLong);
     }
-    bbmy.a(vyo.a(this.a), 1, ajjy.a(2131648859), 0).a();
+    return paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vyr
  * JD-Core Version:    0.7.0.1
  */

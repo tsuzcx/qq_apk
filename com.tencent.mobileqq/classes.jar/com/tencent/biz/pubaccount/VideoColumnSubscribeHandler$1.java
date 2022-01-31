@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount;
 
-import nec;
+import npd;
 
 public class VideoColumnSubscribeHandler$1
   implements Runnable
 {
-  public VideoColumnSubscribeHandler$1(nec paramnec, int paramInt) {}
+  public VideoColumnSubscribeHandler$1(npd paramnpd, int paramInt) {}
   
   public void run()
   {
-    nec.a(this.this$0, this.a);
+    npd.a(this.this$0, this.a);
   }
 }
 

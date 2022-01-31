@@ -1,45 +1,64 @@
-public class bccj
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.export.external.interfaces.SslError;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
+import com.tencent.smtt.sdk.WebView;
+
+public abstract interface bccj
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public boolean e;
-  public boolean f;
+  public abstract Object a(String paramString, Bundle paramBundle);
   
-  public bccj(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-  }
+  public abstract String a();
   
-  public bccj(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_d_of_type_JavaLangString = paramString4;
-    this.jdField_d_of_type_Boolean = paramBoolean;
-  }
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback);
+  
+  public abstract void a(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2);
+  
+  public abstract void a(WebView paramWebView, int paramInt);
+  
+  public abstract void a(WebView paramWebView, int paramInt, String paramString1, String paramString2);
+  
+  public abstract void a(WebView paramWebView, SslError paramSslError);
+  
+  public abstract void a(WebView paramWebView, String paramString);
+  
+  public abstract void a(WebView paramWebView, String paramString, Bitmap paramBitmap);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback);
+  
+  public abstract boolean a(ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams);
+  
+  public abstract boolean a(WebView paramWebView, String paramString);
+  
+  public abstract boolean a(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult);
+  
+  public abstract View b();
+  
+  public abstract void b(WebView paramWebView, String paramString);
+  
+  public abstract void b(WebView paramWebView, String paramString, Bitmap paramBitmap);
+  
+  public abstract void b(String paramString1, String paramString2);
+  
+  public abstract boolean b(WebView paramWebView, String paramString);
+  
+  public abstract boolean c(WebView paramWebView, String paramString);
+  
+  public abstract void v();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bccj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,80 @@
-import com.tencent.TMG.utils.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import android.os.ResultReceiver;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class avpj
-  extends avow
+public abstract class avpj
+  extends avpi
 {
-  public CharSequence a;
-  public String a;
-  public CharSequence b;
-  public boolean b;
+  public ResultReceiver a;
   
-  public avpj(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public static avpj a(Bundle paramBundle)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public avpj(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    for (boolean bool = true;; bool = false) {
+    if (paramBundle == null) {
+      return null;
+    }
+    int i = paramBundle.getInt("redpoint.fromReceiverIPCCode", -1);
+    Object localObject = (Class)jdField_a_of_type_AndroidUtilSparseArray.get(i);
+    if (localObject != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseReq getReq", 2, "class name is " + ((Class)localObject).getName());
+      }
       try
       {
-        paramString = new JSONObject(paramString);
-        this.jdField_a_of_type_JavaLangCharSequence = avwf.a(paramString.optJSONArray("leftText"));
-        this.jdField_b_of_type_JavaLangCharSequence = avwf.a(paramString.optJSONArray("rightText"));
-        this.jdField_a_of_type_JavaLangString = paramString.optString("bgColor");
-        if (paramString.optInt("needCenter") == 1)
-        {
-          this.jdField_b_of_type_Boolean = bool;
-          return;
-        }
+        localObject = (avpj)((Class)localObject).newInstance();
+        ((avpj)localObject).b(paramBundle);
+        return localObject;
       }
-      catch (JSONException paramString)
+      catch (Exception paramBundle)
       {
-        while (!QLog.isColorLevel()) {}
-        QLog.d(c, 0, paramString.toString());
+        return null;
       }
     }
+    return null;
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+    {
+      Parcel localParcel = Parcel.obtain();
+      this.jdField_a_of_type_AndroidOsResultReceiver.writeToParcel(localParcel, 0);
+      localParcel.setDataPosition(0);
+      ResultReceiver localResultReceiver = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(localParcel);
+      localParcel.recycle();
+      paramBundle.putParcelable("redpoint.fromReceiverKey", localResultReceiver);
+    }
+  }
+  
+  public abstract void a(QQAppInterface paramQQAppInterface, Bundle paramBundle);
+  
+  public final boolean a(Bundle paramBundle)
+  {
+    if ((paramBundle == null) || (this.jdField_a_of_type_AndroidOsResultReceiver == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseReq doCallback", 2, "bundle == null or fromReceiver == null");
+      }
+      return false;
+    }
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramBundle);
+    return true;
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    super.b(paramBundle);
+    this.jdField_a_of_type_AndroidOsResultReceiver = ((ResultReceiver)paramBundle.getParcelable("redpoint.fromReceiverKey"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avpj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,41 @@
-import android.content.Context;
-import android.support.v4.view.ViewPager;
-import android.view.animation.Interpolator;
-import android.widget.Scroller;
-import java.lang.reflect.Field;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.util.QZLog;
 
-public class bhqx
-  extends Scroller
+class bhqx
+  implements Downloader.DownloadListener
 {
-  private int a = 750;
+  bhqx(bhqv parambhqv, String[] paramArrayOfString) {}
   
-  public bhqx(Context paramContext)
+  public void onDownloadCanceled(String paramString)
   {
-    super(paramContext);
+    QZLog.i("QZoneSharePictureJsPlugin", "onDownloadCanceled");
   }
   
-  public bhqx(Context paramContext, Interpolator paramInterpolator)
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    super(paramContext, paramInterpolator);
+    QZLog.w("QZoneSharePictureJsPlugin", "下载GIF组件失败，请稍后重试");
+    bhqv.a(this.jdField_a_of_type_Bhqv, ajyc.a(2131712330), 1);
   }
   
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
   
-  public void a(ViewPager paramViewPager)
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    try
+    QZLog.i("QZoneSharePictureJsPlugin", "下载GIF组件成功");
+    if (this.jdField_a_of_type_Bhqv.a != null)
     {
-      Field localField = ViewPager.class.getDeclaredField("mScroller");
-      localField.setAccessible(true);
-      localField.set(paramViewPager, this);
+      bhqv.a(this.jdField_a_of_type_Bhqv, this.jdField_a_of_type_Bhqv.a.mRuntime, this.jdField_a_of_type_ArrayOfJavaLangString);
       return;
     }
-    catch (Exception paramViewPager)
-    {
-      paramViewPager.printStackTrace();
-    }
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
+    QZLog.w("QZoneSharePictureJsPlugin", "parentPlugin is null");
+    bhqv.a(this.jdField_a_of_type_Bhqv, ajyc.a(2131712309), 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhqx
  * JD-Core Version:    0.7.0.1
  */

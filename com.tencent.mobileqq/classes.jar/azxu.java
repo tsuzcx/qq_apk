@@ -1,19 +1,25 @@
-import android.graphics.drawable.BitmapDrawable;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
 
-class azxu
-  extends BitmapDrawable
+public class azxu
+  implements DialogInterface.OnClickListener
 {
-  private final WeakReference<azxv> a;
+  public azxu(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  public azxv a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (azxv)this.a.get();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    SubmitHomeWorkFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azxu
  * JD-Core Version:    0.7.0.1
  */

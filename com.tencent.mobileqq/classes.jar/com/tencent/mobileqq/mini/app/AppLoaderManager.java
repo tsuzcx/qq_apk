@@ -425,7 +425,7 @@ public class AppLoaderManager
   
   public void preloadNextRuntime()
   {
-    if ((!this.initAppRuntimeTask.isDone()) && (!this.mStarted)) {
+    if ((!this.initAppRuntimeTask.isDone()) || (this.mStarted)) {
       return;
     }
     resetTaskAndDepends(this.baselibLoadTask);

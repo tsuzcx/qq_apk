@@ -1,20 +1,20 @@
-import android.support.annotation.IntRange;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
 
-public abstract interface acpg
+public class acpg
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public acpg(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public abstract boolean a(@IntRange(from=0L, to=3L) int paramInt);
-  
-  public abstract boolean a(@IntRange(from=0L, to=3L) int paramInt, String paramString1, String paramString2);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void onClick(View paramView)
+  {
+    this.a.b();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acpg
  * JD-Core Version:    0.7.0.1
  */

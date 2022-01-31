@@ -1,10 +1,27 @@
-public abstract interface vbw
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class vbw
+  extends QQUIEventReceiver<vbd, tll>
 {
-  public abstract void a();
+  public vbw(@NonNull vbd paramvbd)
+  {
+    super(paramvbd);
+  }
   
-  public abstract void a(String paramString);
+  public void a(@NonNull vbd paramvbd, @NonNull tll paramtll)
+  {
+    if ((paramtll.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramtll.jdField_a_of_type_JavaUtilList == null)) {
+      return;
+    }
+    paramvbd.a(paramtll);
+  }
   
-  public abstract void b(String paramString);
+  public Class acceptEventClass()
+  {
+    return tll.class;
+  }
 }
 
 

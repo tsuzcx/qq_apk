@@ -1,62 +1,15 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
 
-final class mgm
-  implements mgp
+public class mgm
+  implements aaqd
 {
-  mgm(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent, String paramString) {}
+  public mgm(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  private void a(Context paramContext)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((paramContext instanceof JumpActivity)) {
-      ((Activity)paramContext).finish();
-    }
-  }
-  
-  public void a(int paramInt1, mgr parammgr, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      a(this.jdField_a_of_type_AndroidContentContext);
-    }
-    do
-    {
-      do
-      {
-        return;
-        bfch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent, 1);
-        return;
-        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        localIntent.putExtra("url", parammgr.jdField_a_of_type_JavaLangString);
-        if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-          localIntent.addFlags(268435456);
-        }
-        this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-        a(this.jdField_a_of_type_AndroidContentContext);
-        return;
-        ((aqkz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(236)).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, "4", "openRoom");
-        return;
-        if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
-        {
-          mgj.a(this.jdField_a_of_type_AndroidContentContext, parammgr.b, parammgr.c, new mgn(this));
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "context is not Activity");
-      return;
-      if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
-      {
-        mgj.a(this.jdField_a_of_type_AndroidContentContext, parammgr.b, parammgr.c, new mgo(this));
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "context is not Activity");
+    this.a.h = paramInt1;
+    this.a.i = paramInt2;
+    this.a.d(10);
   }
 }
 

@@ -1,17 +1,11 @@
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
+import android.view.View;
 
-public class aeyv
-  extends aiac
+public abstract interface aeyv
+  extends aeyz
 {
-  public Button a;
-  public TextView a;
-  public SysSuspiciousMsg a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public abstract int a();
+  
+  public abstract View a(Object... paramVarArgs);
 }
 
 

@@ -1,115 +1,91 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.EmoticonPack;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class toh
-  extends tog
+  implements Cloneable
 {
-  Map<String, tog> a;
+  public final int a;
+  public final String a;
+  public final int b;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
+  public final String f;
+  public final String g;
   
-  public toh(@NonNull ViewGroup paramViewGroup)
+  public toh(qqstory_struct.EmoticonPack paramEmoticonPack)
   {
-    super(paramViewGroup);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    b(new VideoViewVideoHolder((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131313286)));
-    b(new tmq((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131302601)));
-    b(new tnl((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131313237)));
-    b(new toi(this.jdField_a_of_type_AndroidViewView.findViewById(2131313209)));
-    b(new tof((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131313287)));
+    this.jdField_a_of_type_JavaLangString = String.valueOf(paramEmoticonPack.pack_id.get());
+    this.jdField_b_of_type_JavaLangString = paramEmoticonPack.icon.get().toStringUtf8();
+    this.d = paramEmoticonPack.name.get().toStringUtf8();
+    this.e = paramEmoticonPack.download_url.get().toStringUtf8();
+    this.f = paramEmoticonPack.md5.get().toStringUtf8();
+    this.jdField_a_of_type_Int = paramEmoticonPack.version.get();
+    this.jdField_b_of_type_Int = a(paramEmoticonPack.type.get());
+    this.c = paramEmoticonPack.download_icon.get().toStringUtf8();
+    this.g = paramEmoticonPack.config.get().toStringUtf8();
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  private int a(int paramInt)
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131495742, paramViewGroup, false);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    super.a(paramInt1, paramInt2);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((tog)localIterator.next()).a(paramInt1, paramInt2);
+    int i = paramInt;
+    switch (paramInt)
+    {
+    default: 
+      i = 1;
     }
+    return i;
   }
   
-  public void a(int paramInt1, int paramInt2, @NonNull tnz paramtnz, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
+  public boolean a()
   {
-    super.a(paramInt1, paramInt2, paramtnz, paramStoryPlayerGroupHolder);
-    urk.a(this.jdField_a_of_type_JavaLangString, "onBind, newVer=%d, newHor=%d, data=%s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), paramtnz);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((tog)localIterator.next()).a(paramInt1, paramInt2, paramtnz, paramStoryPlayerGroupHolder);
+    if (this.jdField_b_of_type_Int == 1) {
+      if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(this.d)) || (TextUtils.isEmpty(this.e)) || (TextUtils.isEmpty(this.f))) {}
     }
-  }
-  
-  public void a(tnn paramtnn)
-  {
-    super.a(paramtnn);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((tog)localIterator.next()).a(paramtnn);
+    while ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.d)))
+    {
+      return true;
+      return false;
     }
+    return false;
   }
   
-  public void a(toh paramtoh)
+  public boolean equals(Object paramObject)
   {
-    super.a(this);
-    paramtoh = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (paramtoh.hasNext()) {
-      ((tog)paramtoh.next()).a(this);
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (toh)paramObject;
+      if (this.jdField_a_of_type_JavaLangString == null) {
+        break;
+      }
+    } while (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
+    while (paramObject.jdField_a_of_type_JavaLangString != null) {
+      return false;
     }
+    return true;
   }
   
-  public void a(boolean paramBoolean)
+  public int hashCode()
   {
-    super.a(paramBoolean);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((tog)localIterator.next()).a(paramBoolean);
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      return this.jdField_a_of_type_JavaLangString.hashCode();
     }
+    return 0;
   }
   
-  @Nullable
-  public tog b(Class<? extends tog> paramClass)
+  public String toString()
   {
-    return (tog)this.jdField_a_of_type_JavaUtilMap.get(paramClass.getName());
-  }
-  
-  public void b()
-  {
-    super.b();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((tog)localIterator.next()).b();
-    }
-  }
-  
-  public void b(@NonNull tog paramtog)
-  {
-    this.jdField_a_of_type_JavaUtilMap.put(paramtog.getClass().getName(), paramtog);
-  }
-  
-  public void c()
-  {
-    super.c();
-    urk.a(this.jdField_a_of_type_JavaLangString, "onUnBind, verticalPosition=%d, horizontalPosition=%d, data=%s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_Tnz);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((tog)localIterator.next()).c();
-    }
-  }
-  
-  public boolean c()
-  {
-    return super.c();
+    return "EmojiPack{mPackId=" + this.jdField_a_of_type_JavaLangString + ", mLogoUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mPackName='" + this.d + '\'' + ", mPackDownloadUrl='" + this.e + '\'' + '}';
   }
 }
 

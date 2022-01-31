@@ -1,29 +1,40 @@
-import android.content.res.Resources;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-class mfe
-  implements View.OnTouchListener
+public class mfe
 {
-  mfe(mfb parammfb) {}
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup = null;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  boolean jdField_a_of_type_Boolean = false;
+  public int b;
+  public ImageView b;
+  public TextView b;
+  public boolean b;
+  public ImageView c;
+  public boolean c;
+  public ImageView d;
+  public boolean d;
+  public ImageView e = null;
+  public ImageView f;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public mfe()
   {
-    try
-    {
-      QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getResources().getResourceName(paramView.getId()) + "]");
-      this.a.a("result_root OnTouch");
-      return true;
-    }
-    catch (Exception paramMotionEvent)
-    {
-      for (;;)
-      {
-        QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getId() + "]");
-      }
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    this.jdField_b_of_type_AndroidWidgetImageView = null;
+    this.jdField_c_of_type_AndroidWidgetImageView = null;
+    this.jdField_d_of_type_AndroidWidgetImageView = null;
+    this.jdField_a_of_type_AndroidWidgetTextView = null;
+    this.jdField_b_of_type_AndroidWidgetTextView = null;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_d_of_type_Boolean = true;
   }
 }
 

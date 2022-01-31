@@ -1,39 +1,39 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import java.lang.ref.WeakReference;
-import ogx;
-import ohb;
-import opp;
+import osi;
+import osm;
+import paq;
 
 public class ReadInJoyFollowingMemberPrefetcher$4
   implements Runnable
 {
-  public ReadInJoyFollowingMemberPrefetcher$4(ogx paramogx, boolean paramBoolean) {}
+  public ReadInJoyFollowingMemberPrefetcher$4(osi paramosi, boolean paramBoolean) {}
   
   public void run()
   {
     if (com.tencent.TMG.utils.QLog.isColorLevel()) {
       com.tencent.TMG.utils.QLog.d("ReadInJoyFollowingMemberPrefetcher", 0, "fetch following members");
     }
-    opp localopp = (opp)ogx.a(this.this$0).get();
-    if (localopp != null)
+    paq localpaq = (paq)osi.a(this.this$0).get();
+    if (localpaq != null)
     {
       if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
         com.tencent.qphone.base.util.QLog.d("ReadInJoyFollowingMemberPrefetcher", 2, "preload all following members, force=" + this.a);
       }
       try
       {
-        if ((ogx.b(this.this$0).get() == null) || (ogx.a(this.this$0)))
+        if ((osi.b(this.this$0).get() == null) || (osi.a(this.this$0)))
         {
           if (com.tencent.TMG.utils.QLog.isColorLevel()) {
             com.tencent.TMG.utils.QLog.e("ReadInJoyFollowingMemberPrefetcher", 0, "fetch following member when appinterface is null or uninitialized!");
           }
           return;
         }
-        ogx.a(this.this$0, true);
-        ohb.a().a(this.this$0);
+        osi.a(this.this$0, true);
+        osm.a().a(this.this$0);
         this.this$0.b();
-        localopp.a(1000, 1, true);
+        localpaq.a(1000, 1, true);
         return;
       }
       finally {}

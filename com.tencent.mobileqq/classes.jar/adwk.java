@@ -1,14 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class adwk
-  implements DialogInterface.OnClickListener
 {
-  adwk(advv paramadvv) {}
+  public int a;
+  public long a;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  adwk(adwh paramadwh)
   {
-    this.a.e();
+    this.jdField_a_of_type_Long = -1L;
   }
 }
 

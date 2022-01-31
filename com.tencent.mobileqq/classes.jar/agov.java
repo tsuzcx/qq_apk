@@ -1,89 +1,118 @@
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.commonsdk.util.MD5Coding;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.mobileqq.activity.photo.DragGallery;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity.8.2;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.Map;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Locale;
 
 public class agov
-  extends batl
+  implements View.OnClickListener
 {
-  public agov(PreloadManager paramPreloadManager, DownloadParam paramDownloadParam, agpe paramagpe, WeakReference paramWeakReference) {}
+  public agov(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void onDoneFile(batm parambatm)
+  public void onClick(View paramView)
   {
-    super.onDoneFile(parambatm);
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadManager", 2, "RealTime onDoneFile|" + parambatm.jdField_a_of_type_Int + "|" + parambatm.jdField_a_of_type_JavaLangString + "|" + ((File)parambatm.jdField_a_of_type_JavaUtilMap.get(parambatm.jdField_a_of_type_JavaLangString)).getAbsolutePath());
-    }
-    Object localObject2;
-    Object localObject1;
-    if ((parambatm.jdField_a_of_type_Int == 0) && (parambatm.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(parambatm.jdField_a_of_type_JavaLangString)))
+    if (PhotoPreviewActivity.d(this.a))
     {
-      localObject2 = (File)parambatm.jdField_a_of_type_JavaUtilMap.get(parambatm.jdField_a_of_type_JavaLangString);
-      if (localObject2 == null)
-      {
-        localObject1 = "";
-        localObject1 = MD5Coding.encodeFile2HexStr((String)localObject1);
-        if ((localObject2 == null) || (!((File)localObject2).exists()) || (TextUtils.isEmpty((CharSequence)localObject1))) {
-          break label266;
+      paramView = new Intent();
+      if ((this.a.jdField_b_of_type_JavaUtilArrayList == null) || (this.a.jdField_b_of_type_JavaUtilArrayList.size() == 0)) {
+        if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.t >= 0) && (this.a.t < this.a.jdField_a_of_type_JavaUtilArrayList.size()))
+        {
+          ArrayList localArrayList = new ArrayList();
+          String str = (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.t);
+          if (TextUtils.isEmpty(str)) {
+            break label178;
+          }
+          localArrayList.add(str);
+          paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", localArrayList);
+          axqw.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, "1", "", "", "");
         }
-        if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.md5ForChecked)) || (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.md5ForChecked.equalsIgnoreCase((String)localObject1))) {
-          break label236;
-        }
-        if (this.jdField_a_of_type_Agpe != null) {
-          this.jdField_a_of_type_Agpe.onResult(2, PreloadManager.PathResult.getFailRes(parambatm.jdField_a_of_type_JavaLangString));
-        }
-        PreloadManager.a(parambatm.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
-        agvn.a(2, parambatm.c, parambatm.jdField_a_of_type_Int);
       }
-    }
-    label236:
-    label376:
-    label378:
-    do
-    {
       for (;;)
       {
+        this.a.setResult(-1, paramView);
+        this.a.finish();
         return;
-        localObject1 = ((File)localObject2).getAbsolutePath();
-        break;
-        agqh.a(parambatm.jdField_a_of_type_JavaLangString, (String)localObject1, NetConnInfoCenter.getServerTimeMillis(), this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
-        agvn.a(0, parambatm.c, parambatm.jdField_a_of_type_Int);
-        for (;;)
+        label178:
+        if (QLog.isColorLevel())
         {
-          if (!PreloadManager.a((PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get())) {
-            break label376;
-          }
-          if (parambatm.jdField_a_of_type_Int != 0) {
-            break label378;
-          }
-          localObject1 = agqh.a(parambatm.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.isForceUnzip, 0, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
-          localObject2 = new PreloadManager.PathResult();
-          ((PreloadManager.PathResult)localObject2).url = parambatm.jdField_a_of_type_JavaLangString;
-          ((PreloadManager.PathResult)localObject2).filePath = ((ResourceInfo)localObject1).filePath;
-          ((PreloadManager.PathResult)localObject2).folderPath = ((ResourceInfo)localObject1).folderPath;
-          if (this.jdField_a_of_type_Agpe == null) {
-            break;
-          }
-          this.jdField_a_of_type_Agpe.onResult(0, (PreloadManager.PathResult)localObject2);
-          return;
-          agvn.a(1, parambatm.c, parambatm.jdField_a_of_type_Int);
+          QLog.d("PhotoPreviewActivity", 2, "sendBtn click currentPath is null");
+          continue;
+          paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.a.jdField_b_of_type_JavaUtilArrayList);
+          axqw.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, String.valueOf(this.a.jdField_b_of_type_JavaUtilArrayList.size()), "", "", "");
         }
       }
-    } while (this.jdField_a_of_type_Agpe == null);
-    label266:
-    this.jdField_a_of_type_Agpe.onResult(1, PreloadManager.PathResult.getFailRes(parambatm.jdField_a_of_type_JavaLangString, parambatm.jdField_a_of_type_Int));
+    }
+    if (this.a.G)
+    {
+      AIOLongShotHelper.a(this.a, (String)this.a.jdField_b_of_type_JavaUtilArrayList.get(0), new agow(this));
+      AIOLongShotHelper.a("0X8009DEE");
+      return;
+    }
+    this.a.jdField_b_of_type_AndroidWidgetButton.setClickable(false);
+    int i;
+    if (this.a.I)
+    {
+      if (this.a.jdField_b_of_type_JavaUtilArrayList.size() > 0)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramView = new StringBuilder(this.a.jdField_b_of_type_JavaUtilArrayList.size() * 128);
+          i = 0;
+          while (i < this.a.jdField_b_of_type_JavaUtilArrayList.size())
+          {
+            paramView.append(String.format(Locale.CHINA, "choose image[%d],path=%s \r\n", new Object[] { Integer.valueOf(i), this.a.jdField_b_of_type_JavaUtilArrayList.get(i) }));
+            i += 1;
+          }
+          QLog.d("PhotoPreviewActivity", 2, paramView.toString());
+        }
+        PhotoPreviewActivity.b(this.a);
+        ThreadManagerV2.executeOnSubThread(new PhotoPreviewActivity.8.2(this));
+      }
+      for (;;)
+      {
+        this.a.finish();
+        return;
+        alvk.a().a("callbackArk", null, null);
+      }
+    }
+    if (this.a.getIntent().getBooleanExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", false))
+    {
+      paramView = this.a.jdField_b_of_type_JavaUtilArrayList.iterator();
+      for (long l = 0L; paramView.hasNext(); l = bbdj.a((String)paramView.next()) + l) {}
+      if (this.a.jdField_b_of_type_JavaUtilArrayList.size() == 0)
+      {
+        i = this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoDragGallery.getFirstVisiblePosition();
+        if (i < this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
+          bbdj.a((String)this.a.jdField_a_of_type_JavaUtilArrayList.get(i));
+        }
+      }
+      if (apue.a()) {
+        aptr.a(this.a, 2131692672, 2131692677, new agox(this));
+      }
+    }
+    for (;;)
+    {
+      LpReportInfo_pf00064.allReport(603, 1);
+      return;
+      this.a.j();
+      continue;
+      this.a.j();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agov
  * JD-Core Version:    0.7.0.1
  */

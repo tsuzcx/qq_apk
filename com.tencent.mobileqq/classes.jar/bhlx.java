@@ -1,36 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-
-class bhlx
-  implements bhmd
+public class bhlx
 {
-  bhlx(bhlw parambhlw) {}
+  public int a;
+  public long a;
+  public bhlv a;
+  public boolean a;
+  public int b;
+  public bhlv b;
   
-  public void a(float paramFloat, String paramString, int paramInt)
+  bhlx(bhlw parambhlw)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText onUpdateProgress, progress is : " + paramFloat);
-    }
-    bhlw.a(this.a, paramFloat);
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText onDownloadFinish, success: " + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      bhlw.a(this.a, 3);
-      this.a.b();
-      return;
-    }
-    bhlw.a(this.a, 2);
-    this.a.a(4);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Bhlv = null;
+    this.jdField_b_of_type_Bhlv = null;
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhlx
  * JD-Core Version:    0.7.0.1
  */

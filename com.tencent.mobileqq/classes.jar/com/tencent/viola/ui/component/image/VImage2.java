@@ -45,6 +45,7 @@ public class VImage2
   private static final String WEB_BASE64_PREFIX_PNG = "data:image/png;base64,";
   private boolean mHasSetPlaceHolder;
   private String mImageUrl;
+  private VImage2.NullDrawableChecker mNullDrawableChecker;
   private String mPlaceHolderUrl;
   
   public VImage2(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
@@ -148,6 +149,13 @@ public class VImage2
       localVImageView2.setImageStartTs(System.currentTimeMillis());
     }
     localVComponentAdapter.requestImage(paramString, paramInt1, paramInt2, bool, this, isGif());
+  }
+  
+  private void removeCheckMsg()
+  {
+    if (this.mNullDrawableChecker != null) {
+      this.mNullDrawableChecker.removeCheckMsg();
+    }
   }
   
   private void requestImage(boolean paramBoolean, String paramString)
@@ -446,6 +454,7 @@ public class VImage2
     if (Build.VERSION.SDK_INT >= 16) {
       paramContext.setCropToPadding(true);
     }
+    this.mNullDrawableChecker = new VImage2.NullDrawableChecker(this);
     return paramContext;
   }
   
@@ -456,17 +465,22 @@ public class VImage2
   
   public void onCancel()
   {
-    ViolaLogUtils.d("VImage2", "onCancel, hashCode: " + hashCode() + ", url: " + this.mImageUrl);
+    ViolaLogUtils.e("VImage2", "onCancel, hashCode: " + hashCode() + ", url: " + this.mImageUrl);
+    this.mImageUrl = null;
+    removeCheckMsg();
   }
   
   public void onError()
   {
     tryFireEvent(false, null);
-    ViolaLogUtils.d("VImage2", "onError, hashCode: " + hashCode());
+    ViolaLogUtils.e("VImage2", "onError, hashCode: " + hashCode() + ", url: " + this.mImageUrl);
+    this.mImageUrl = null;
+    removeCheckMsg();
   }
   
   public void onSuccess(Object paramObject, String paramString, Bundle paramBundle)
   {
+    removeCheckMsg();
     if (((VImageView2)getHostView() == null) || (paramString == null)) {
       return;
     }
@@ -596,11 +610,43 @@ public class VImage2
   @VComponentProp(name="src")
   public void setSrc(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals(this.mImageUrl)))
+    Object localObject = (VImageView2)getHostView();
+    if (localObject == null)
     {
-      this.mImageUrl = paramString;
-      requestImage(false, this.mImageUrl);
+      localObject = new StringBuilder().append("hostView is null, src: ");
+      if (paramString != null)
+      {
+        localObject = ((StringBuilder)localObject).append(paramString).append(", cache url: ");
+        if (this.mImageUrl == null) {
+          break label75;
+        }
+        paramString = this.mImageUrl;
+        label54:
+        ViolaLogUtils.e("VImage2", paramString);
+      }
     }
+    label75:
+    do
+    {
+      return;
+      paramString = "null";
+      break;
+      paramString = "";
+      break label54;
+      if (TextUtils.isEmpty(paramString))
+      {
+        ViolaLogUtils.e("VImage2", "url is null");
+        return;
+      }
+      if (!paramString.equals(this.mImageUrl))
+      {
+        this.mImageUrl = paramString;
+        requestImage(false, this.mImageUrl);
+        removeCheckMsg();
+        return;
+      }
+    } while ((((VImageView2)localObject).getDrawable() != null) || (this.mNullDrawableChecker == null));
+    this.mNullDrawableChecker.sendCheckMsg();
   }
   
   protected void tryFireEvent(boolean paramBoolean, Bundle paramBundle)

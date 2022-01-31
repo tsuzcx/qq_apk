@@ -1,49 +1,44 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedReq;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.widget.SlideTabViewPager;
+import com.tencent.biz.qqstory.view.widget.ViewPagerTapBlockView;
 
 public class wdo
-  extends wdq
+  implements ViewPager.OnPageChangeListener
 {
-  private CertifiedAccountWrite.StPublishFeedReq a = new CertifiedAccountWrite.StPublishFeedReq();
+  public wdo(SlideTabViewPager paramSlideTabViewPager) {}
   
-  public wdo(COMM.StCommonExt paramStCommonExt, CertifiedAccountMeta.StFeed paramStFeed)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
+    if (SlideTabViewPager.a(this.a) == 0)
+    {
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)SlideTabViewPager.a(this.a).getLayoutParams();
+      SlideTabViewPager localSlideTabViewPager = this.a;
+      paramInt2 = SlideTabViewPager.b(this.a).getWidth();
+      SlideTabViewPager.a(localSlideTabViewPager, localLayoutParams.leftMargin + paramInt2);
     }
-    if (paramStFeed != null) {
-      this.a.feed.set(paramStFeed);
-    }
+    paramInt2 = (int)(SlideTabViewPager.a(this.a, 12.5F) + SlideTabViewPager.a(this.a) * (paramInt1 + paramFloat));
+    SlideTabViewPager.a(this.a).setOffset(paramInt2);
+    paramInt2 = SlideTabViewPager.b(this.a).getWidth();
+    int i = SlideTabViewPager.a(this.a).getWidth();
+    paramInt1 = (int)(paramInt2 + (i - paramInt2) * (paramInt1 + paramFloat));
+    SlideTabViewPager.a(this.a).setBlockWidth(paramInt1);
   }
   
-  public static CertifiedAccountWrite.StPublishFeedRsp a(byte[] paramArrayOfByte)
+  public void onPageSelected(int paramInt)
   {
-    CertifiedAccountWrite.StPublishFeedRsp localStPublishFeedRsp = new CertifiedAccountWrite.StPublishFeedRsp();
-    try
-    {
-      paramArrayOfByte = (CertifiedAccountWrite.StPublishFeedRsp)localStPublishFeedRsp.mergeFrom(paramArrayOfByte);
-      return paramArrayOfByte;
+    this.a.a(paramInt);
+    if (SlideTabViewPager.a(this.a) != null) {
+      onPageSelected(paramInt);
     }
-    catch (Exception paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CertifiedAccountGetMsgTopRequest", 2, "onResponse fail." + paramArrayOfByte);
-      }
-    }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wdo
  * JD-Core Version:    0.7.0.1
  */

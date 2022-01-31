@@ -1,64 +1,42 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
-import bace;
+import bbdj;
 import com.tencent.qphone.base.util.QLog;
-import pdu;
+import ppm;
+import pqh;
 
 public class PTSEngineLoader$5
   implements Runnable
 {
-  public PTSEngineLoader$5(pdu parampdu) {}
+  public PTSEngineLoader$5(ppm paramppm) {}
   
   public void run()
   {
-    if (pdu.b(this.this$0)) {
-      QLog.i("PTSEngineLoader", 1, "[loadPTSEngine], jsc has loaded, do not load again.");
-    }
-    while (pdu.c(this.this$0))
+    if (this.this$0.a())
     {
-      QLog.i("PTSEngineLoader", 1, "[loadPTSEngine], has loaded, do not load again.");
+      QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], has loaded, do not load again.");
       return;
-      String str1 = pdu.b(this.this$0) + "/" + "libjsc.so";
-      QLog.i("PTSEngineLoader", 1, "[loadPTSEngine], jscSoFullPath = " + str1);
-      try
-      {
-        if (!bace.a(str1)) {
-          break label177;
-        }
-        System.load(str1);
-        pdu.a(this.this$0, true);
-        QLog.i("PTSEngineLoader", 1, "[loadPTSEngine], load jsc so success.");
-        pdu.a(this.this$0, "[loadPTSEngine] jsc succeed.", "1");
-      }
-      catch (Throwable localThrowable1)
-      {
-        QLog.e("PTSEngineLoader", 1, "[loadPTSEngine] error, t = " + localThrowable1);
-        pdu.b(this.this$0, localThrowable1.toString(), "1");
-      }
-      continue;
-      label177:
-      QLog.i("PTSEngineLoader", 1, "[loadPTSEngine], jsc so does not exists.");
     }
-    String str2 = pdu.b(this.this$0) + "/" + "libpts.so";
-    QLog.i("PTSEngineLoader", 1, "[loadPTSEngine], soFullPath = " + str2);
+    String str = ppm.b(this.this$0) + "/" + "libpts.so";
+    QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], soFullPath = " + str);
     try
     {
-      if (bace.a(str2))
+      if (bbdj.a(str))
       {
-        System.load(str2);
-        pdu.b(this.this$0, true);
-        QLog.i("PTSEngineLoader", 1, "[loadPTSEngine], load so success.");
-        pdu.a(this.this$0, "[loadPTSEngine] pts succeed.", "2");
+        System.load(str);
+        ppm.a(this.this$0, true);
+        QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], load so success.");
+        pqh.b("[loadPTSEngineImpl] pts succeed.", "2");
         return;
       }
     }
-    catch (Throwable localThrowable2)
+    catch (Throwable localThrowable)
     {
-      QLog.e("PTSEngineLoader", 1, "[loadPTSEngine] error, t = " + localThrowable2);
-      pdu.b(this.this$0, localThrowable2.toString(), "2");
+      QLog.e("PTSEngineLoader", 1, "[loadPTSEngineImpl] error, t = " + localThrowable);
+      pqh.a(localThrowable.toString(), "2");
       return;
     }
-    QLog.i("PTSEngineLoader", 1, "[loadPTSEngine], pts so does not exists.");
+    QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], pts so does not exists.");
   }
 }
 

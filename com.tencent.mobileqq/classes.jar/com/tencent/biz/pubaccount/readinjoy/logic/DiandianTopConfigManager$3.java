@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.logic;
 
-import onj;
+import oyy;
 
 public class DiandianTopConfigManager$3
   implements Runnable
 {
-  public DiandianTopConfigManager$3(onj paramonj, byte[] paramArrayOfByte, long paramLong) {}
+  public DiandianTopConfigManager$3(oyy paramoyy, byte[] paramArrayOfByte, long paramLong) {}
   
   /* Error */
   public void run()
@@ -45,8 +45,8 @@ public class DiandianTopConfigManager$3
     //   59: aload_3
     //   60: astore_1
     //   61: aload_0
-    //   62: getfield 15	com/tencent/biz/pubaccount/readinjoy/logic/DiandianTopConfigManager$3:this$0	Lonj;
-    //   65: getfield 69	onj:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   62: getfield 15	com/tencent/biz/pubaccount/readinjoy/logic/DiandianTopConfigManager$3:this$0	Loyy;
+    //   65: getfield 69	oyy:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   68: astore 4
     //   70: aload_3
     //   71: astore_2
@@ -65,7 +65,7 @@ public class DiandianTopConfigManager$3
     //   93: invokevirtual 78	java/io/FileOutputStream:flush	()V
     //   96: aload_0
     //   97: getfield 19	com/tencent/biz/pubaccount/readinjoy/logic/DiandianTopConfigManager$3:jdField_a_of_type_Long	J
-    //   100: invokestatic 81	onj:a	(J)V
+    //   100: invokestatic 81	oyy:a	(J)V
     //   103: aload 4
     //   105: monitorexit
     //   106: aload_3
@@ -89,7 +89,7 @@ public class DiandianTopConfigManager$3
     //   133: ifeq +34 -> 167
     //   136: aload_2
     //   137: astore_1
-    //   138: getstatic 93	onj:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   138: getstatic 93	oyy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   141: iconst_2
     //   142: new 46	java/lang/StringBuilder
     //   145: dup
@@ -109,7 +109,7 @@ public class DiandianTopConfigManager$3
     //   176: astore_1
     //   177: invokestatic 90	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   180: ifeq -66 -> 114
-    //   183: getstatic 93	onj:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   183: getstatic 93	oyy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   186: iconst_2
     //   187: new 46	java/lang/StringBuilder
     //   190: dup
@@ -125,7 +125,7 @@ public class DiandianTopConfigManager$3
     //   213: astore_1
     //   214: invokestatic 90	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   217: ifeq -103 -> 114
-    //   220: getstatic 93	onj:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   220: getstatic 93	oyy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   223: iconst_2
     //   224: new 46	java/lang/StringBuilder
     //   227: dup
@@ -148,7 +148,7 @@ public class DiandianTopConfigManager$3
     //   261: astore_1
     //   262: invokestatic 90	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   265: ifeq -6 -> 259
-    //   268: getstatic 93	onj:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   268: getstatic 93	oyy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   271: iconst_2
     //   272: new 46	java/lang/StringBuilder
     //   275: dup

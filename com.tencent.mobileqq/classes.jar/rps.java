@@ -1,12 +1,25 @@
-import android.widget.ImageView;
-import java.lang.ref.WeakReference;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
 
-class rps
+public class rps
+  implements Animator.AnimatorListener
 {
-  WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<rpt> b;
+  public rps(ZImageView paramZImageView) {}
   
-  private rps(rpq paramrpq) {}
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    ZImageView.a(this.a);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ZImageView.a(this.a);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

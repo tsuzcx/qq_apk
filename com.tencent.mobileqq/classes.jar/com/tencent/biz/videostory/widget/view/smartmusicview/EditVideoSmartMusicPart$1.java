@@ -1,32 +1,32 @@
 package com.tencent.biz.videostory.widget.view.smartmusicview;
 
-import axro;
-import axrr;
-import axsr;
-import badq;
+import ayrv;
+import ayry;
+import aysy;
+import bbev;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import wzt;
-import wzu;
+import xit;
+import xiu;
 
 public class EditVideoSmartMusicPart$1
   implements Runnable
 {
-  public EditVideoSmartMusicPart$1(wzt paramwzt) {}
+  public EditVideoSmartMusicPart$1(xit paramxit) {}
   
   public void run()
   {
-    axro localaxro = new axro();
-    localaxro.jdField_a_of_type_Axrt = new wzu(this);
-    localaxro.jdField_a_of_type_JavaLangString = wzt.a(this.this$0);
-    localaxro.jdField_a_of_type_Int = 0;
-    localaxro.jdField_c_of_type_JavaLangString = wzt.a(this.this$0).getPath();
-    localaxro.jdField_c_of_type_Int = badq.a(axsr.a().a());
+    ayrv localayrv = new ayrv();
+    localayrv.jdField_a_of_type_Aysa = new xiu(this);
+    localayrv.jdField_a_of_type_JavaLangString = xit.a(this.this$0);
+    localayrv.jdField_a_of_type_Int = 0;
+    localayrv.jdField_c_of_type_JavaLangString = xit.a(this.this$0).getPath();
+    localayrv.jdField_c_of_type_Int = bbev.a(aysy.a().a());
     QQStoryContext.a();
-    QQStoryContext.a().getNetEngine(0).a(localaxro);
-    QLog.i("EditVideoSmartMusicPart", 1, "startDownloadAnim, url: " + wzt.a(this.this$0));
+    QQStoryContext.a().getNetEngine(0).a(localayrv);
+    QLog.i("EditVideoSmartMusicPart", 1, "startDownloadAnim, url: " + xit.a(this.this$0));
   }
 }
 

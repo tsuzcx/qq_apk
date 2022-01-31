@@ -1,28 +1,33 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class afnz
   implements View.OnClickListener
 {
-  public afnz(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public afnz(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
   public void onClick(View paramView)
   {
-    paramView = new ArrayList();
-    Iterator localIterator = this.a.a.b.iterator();
-    while (localIterator.hasNext()) {
-      paramView.add(Long.valueOf(Long.parseLong((String)localIterator.next())));
-    }
-    ChatHistoryTroopMemberFragment.a(this.a, paramView);
+    if (!(paramView.getTag() instanceof afmr)) {}
+    do
+    {
+      do
+      {
+        return;
+        paramView = (afmr)paramView.getTag();
+      } while (paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get() != 2);
+      this.a.a(paramView);
+    } while (paramView.jdField_a_of_type_Int != 82);
+    axqw.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_notice", 0, 0, "", "", "", paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afnz
  * JD-Core Version:    0.7.0.1
  */

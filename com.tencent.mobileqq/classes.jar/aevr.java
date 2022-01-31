@@ -1,16 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import android.graphics.Point;
 
 public class aevr
-  implements View.OnClickListener
 {
-  public aevr(SearchContactsActivity paramSearchContactsActivity) {}
+  private int jdField_a_of_type_Int;
+  private aevh jdField_a_of_type_Aevh;
+  private aevi jdField_a_of_type_Aevi;
+  private Point jdField_a_of_type_AndroidGraphicsPoint;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  aevr(Point paramPoint, String paramString, boolean paramBoolean, aevi paramaevi, aevh paramaevh, int paramInt)
   {
-    this.a.setResult(0);
-    this.a.finish();
+    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Aevi = paramaevi;
+    this.jdField_a_of_type_Aevh = paramaevh;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

@@ -1,33 +1,23 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
 
-public class vww
-  implements whu
+public final class vww
+  implements Parcelable.Creator<TroopStoryItemInfo>
 {
-  public vww(RecommendBannerItemView paramRecommendBannerItemView) {}
-  
-  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
+  public TroopStoryItemInfo a(Parcel paramParcel)
   {
-    if (RecommendBannerItemView.a(this.a))
-    {
-      if (RecommendBannerItemView.a(this.a) != null) {
-        wye.a(RecommendBannerItemView.a(this.a).id.get(), "auth_discover", "reco_follow_clk", 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get(), RecommendBannerItemView.a(this.a).desc.get() });
-      }
-      return;
-    }
-    if (paramBoolean)
-    {
-      RecommendBannerItemView.a(this.a, "auth_page", "recom_follow", RecommendBannerItemView.a(this.a).id.get(), "", "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get());
-      return;
-    }
-    RecommendBannerItemView.a(this.a, "auth_page", "recom_unfollow", RecommendBannerItemView.a(this.a).id.get(), "", "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get());
+    return new TroopStoryItemInfo(paramParcel);
+  }
+  
+  public TroopStoryItemInfo[] a(int paramInt)
+  {
+    return new TroopStoryItemInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vww
  * JD-Core Version:    0.7.0.1
  */

@@ -1,77 +1,55 @@
-import SWEET_NEW_COMM_SVR.sweet_comm_cfg_get_rsp;
-import SWEET_NEW_COMM_SVR.sweet_comm_cfg_item;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.Map;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-public class bgqj
-  extends bgqc
+public abstract class bgqj
+  extends Binder
+  implements bgqi
 {
-  private void a(boolean paramBoolean, Object paramObject)
+  public bgqj()
   {
-    if ((paramBoolean) && ((paramObject instanceof sweet_comm_cfg_item)))
-    {
-      paramObject = (sweet_comm_cfg_item)paramObject;
-      if (a() != null)
-      {
-        apqq localapqq = (apqq)a().a(153);
-        if (localapqq != null) {
-          localapqq.a(true, paramObject.wording, paramObject.dynamic_value, paramObject.url);
-        }
-      }
+    attachInterface(this, "cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
+  }
+  
+  public static bgqi a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (a() == null);
-      paramObject = (apqq)a().a(153);
-    } while (paramObject == null);
-    paramObject.a(false, null, null, null);
-  }
-  
-  public QQAppInterface a()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
+    if ((localIInterface != null) && ((localIInterface instanceof bgqi))) {
+      return (bgqi)localIInterface;
     }
-    return null;
+    return new bgqk(paramIBinder);
   }
   
-  public QzoneExternalRequest a(Intent paramIntent)
+  public IBinder asBinder()
   {
-    return new bgqk(this, paramIntent);
+    return this;
   }
   
-  public void a(long paramLong)
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("currentUin", paramLong);
-    a(localIntent);
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    boolean bool = false;
-    if (paramFromServiceMsg != null) {}
-    for (int i = paramFromServiceMsg.getResultCode(); i == 1000; i = -1)
+    switch (paramInt1)
     {
-      paramIntent = (sweet_comm_cfg_get_rsp)bgfq.a(paramFromServiceMsg.getWupBuffer(), "GetCommCfg");
-      if ((paramIntent != null) && (paramIntent.m_cfg_res != null))
-      {
-        paramIntent = (sweet_comm_cfg_item)paramIntent.m_cfg_res.get(new Long(1L));
-        if (paramIntent != null) {
-          bool = true;
-        }
-        a(bool, paramIntent);
-      }
-      return;
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
+      return true;
     }
-    a(false, null);
+    paramParcel1.enforceInterface("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
+    paramInt1 = paramParcel1.readInt();
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(paramInt1, paramParcel1);
+      paramParcel2.writeNoException();
+      return true;
+    }
   }
 }
 

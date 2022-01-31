@@ -1,25 +1,29 @@
-import android.os.Handler;
-
-class amou
-  implements mmp
+public class amou
 {
-  amou(amos paramamos, mmo[] paramArrayOfmmo) {}
+  private String a;
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public amou(String paramString, int paramInt1, int paramInt2)
   {
-    if (!paramBoolean)
-    {
-      amos.a(this.jdField_a_of_type_Amos).removeCallbacks(amos.a(this.jdField_a_of_type_Amos));
-      amos.a(this.jdField_a_of_type_Amos).run();
-      if (this.jdField_a_of_type_ArrayOfMmo[0] != null) {
-        this.jdField_a_of_type_ArrayOfMmo[0].a();
-      }
+    this.a = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof amou))) {}
+    while (!toString().equals(paramObject.toString())) {
+      return false;
     }
+    return true;
+  }
+  
+  public String toString()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amou
  * JD-Core Version:    0.7.0.1
  */

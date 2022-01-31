@@ -1,114 +1,60 @@
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
-import com.tencent.mobileqq.activity.miniaio.MiniMultiForwardFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Set;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class apla
-  extends apmy
+  implements amgw
 {
-  private ChatMessage a;
+  private String a;
   
-  public apla(Intent paramIntent)
+  public apla(String paramString)
   {
-    super(paramIntent);
+    this.a = paramString;
+    if (bbdj.b(this.a)) {
+      this.a = new File(this.a).getAbsolutePath();
+    }
   }
   
-  public static void a(aphp paramaphp, long paramLong)
+  private String a()
   {
-    String str2 = paramaphp.c();
-    String str1 = str2;
-    if (!TextUtils.isEmpty(str2))
+    try
     {
-      if (!str2.startsWith(ajjy.a(2131638995))) {
-        break label216;
-      }
-      str1 = str2.substring(4);
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("file_color_note_local_path", this.a);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
-    for (;;)
+    catch (JSONException localJSONException) {}
+    return "";
+  }
+  
+  public ColorNote getColorNote()
+  {
+    if (!bbdj.b(this.a))
     {
-      str2 = paramaphp.jdField_a_of_type_AndroidOsBundle.getString("uin");
-      int i = paramaphp.jdField_a_of_type_AndroidOsBundle.getInt("uintype", 0);
-      Intent localIntent = new Intent();
-      localIntent.setClass(paramaphp.jdField_a_of_type_AndroidAppActivity, MiniChatActivity.class);
-      localIntent.addFlags(268435456);
-      localIntent.putExtra("uin", str2);
-      localIntent.putExtra("uintype", i);
-      localIntent.putExtra("uinname", str1);
-      localIntent.putExtra("public_fragment_window_feature", 1);
-      localIntent.putExtra("minaio_scaled_ration", paramaphp.a(0.78F));
-      localIntent.putExtra("minaio_height_ration", 0.86F);
-      localIntent.putExtra("member_dialog_title", str1);
-      localIntent.putExtra("structmsg_uniseq", paramLong);
-      localIntent.putExtra("multi_forward_title", ajjy.a(2131638987));
-      localIntent.putExtra("multi_forward_type", 3);
-      localIntent.putExtra("key_mini_from", 4);
-      abju.a(paramaphp.jdField_a_of_type_AndroidAppActivity, localIntent, MiniChatActivity.class, MiniMultiForwardFragment.class);
-      return;
-      label216:
-      str1 = str2;
-      if (str2.startsWith(ajjy.a(2131638988))) {
-        str1 = str2.substring(3);
-      }
+      QLog.i("LocalFileColorNoteServiceInfo", 1, "getColorNote: loacl file path is null");
+      return null;
     }
-  }
-  
-  protected View a()
-  {
-    View localView = super.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) {
-      localView.findViewById(2131301040).setOnClickListener(new aplb(this));
-    }
-    return localView;
-  }
-  
-  public String a()
-  {
-    String str2 = super.a();
-    String str1 = str2;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) {
-      str1 = ajjy.a(2131638989) + str2;
-    }
-    return str1;
-  }
-  
-  protected void a()
-  {
-    if (k()) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
-    }
-    if (l()) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-    }
-    if (m()) {
-      this.jdField_a_of_type_JavaUtilSet.add(b);
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool = super.a();
-    long l = this.jdField_a_of_type_AndroidOsBundle.getLong("FORWARD_MSG_UNISEQ", -1L);
-    if (l == -1L) {
-      return bool;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = ((aurj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(340)).a(l);
+    amhc localamhc = new amhc();
+    localamhc.a(17039360);
+    String str = apvk.b(5, this.a);
     if (QLog.isColorLevel()) {
-      QLog.d("ForwardReplyMsgOption", 2, "ForwardReplyMsgOption preloadData mChatMessage=" + this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      QLog.i("LocalFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
     }
-    return bool;
-  }
-  
-  protected boolean b(String paramString1, String paramString2, int paramInt)
-  {
-    int i = acvh.a().a();
-    this.jdField_a_of_type_AndroidOsBundle.putInt("KEY_MSG_FORWARD_ID", i);
-    return super.b(paramString1, paramString2, paramInt);
+    localamhc.a(str);
+    str = apue.a(this.a);
+    localamhc.b(str);
+    localamhc.c(apvb.a(apue.a(this.a)));
+    int i = apue.a(apue.a(str));
+    localamhc.d("resdrawable://" + i);
+    str = a();
+    if (!TextUtils.isEmpty(str)) {
+      localamhc.a(str.getBytes());
+    }
+    return localamhc.a();
   }
 }
 

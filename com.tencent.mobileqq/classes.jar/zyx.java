@@ -1,27 +1,28 @@
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.intervideo.nowproxy.proxyinner.channel.FromService;
 
-public class zyx
-  implements adam
+public final class zyx
+  implements Parcelable.Creator<FromService>
 {
-  public zyx(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
-  
-  public boolean a(adaj paramadaj)
+  public FromService a(Parcel paramParcel)
   {
-    this.a.finish();
-    if (ArkFullScreenAppActivity.a(this.a)) {
-      this.a.overridePendingTransition(2130771997, 2130772001);
-    }
-    return false;
+    FromService localFromService = new FromService();
+    localFromService.jdField_a_of_type_Int = paramParcel.readInt();
+    localFromService.b = paramParcel.readInt();
+    localFromService.c = paramParcel.readInt();
+    localFromService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
+    return localFromService;
   }
   
-  public boolean a(adaj paramadaj, String paramString1, String paramString2)
+  public FromService[] a(int paramInt)
   {
-    return false;
+    return new FromService[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zyx
  * JD-Core Version:    0.7.0.1
  */

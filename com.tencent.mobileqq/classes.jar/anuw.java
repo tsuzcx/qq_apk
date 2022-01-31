@@ -1,21 +1,29 @@
-import android.graphics.Rect;
-import android.view.View;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.30;
 
-public abstract interface anuw
+public class anuw
+  implements ajkr
 {
-  public abstract int a();
+  public anuw(MessengerService.IncomingHandler.30 param30) {}
   
-  public abstract Rect a(int paramInt);
-  
-  public abstract View a(int paramInt);
-  
-  public abstract int b();
-  
-  public abstract int c();
+  public void a(long paramLong, String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    if (paramLong == 0L) {}
+    for (int i = 0;; i = 1)
+    {
+      localBundle.putInt("result", i);
+      localBundle.putString("message", paramString);
+      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anuw
  * JD-Core Version:    0.7.0.1
  */

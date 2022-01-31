@@ -1,25 +1,28 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-
 public class asal
-  implements arzw
 {
-  public asal(MusicPlayerActivity paramMusicPlayerActivity) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
   
-  public void a(String paramString, int paramInt1, int paramInt2, Object paramObject)
+  public asal()
   {
-    paramString = Message.obtain(MusicPlayerActivity.a(this.a), 49);
-    Bundle localBundle = new Bundle();
-    localBundle.putIntArray("KEY_COLOR_LIST", new int[] { paramInt1, paramInt2 });
-    localBundle.putBoolean("KEY_MATCH_SONG", ((Boolean)paramObject).booleanValue());
-    paramString.setData(localBundle);
-    paramString.sendToTarget();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ContactsGuideInfo|showWelcomepage=").append(this.jdField_a_of_type_Boolean).append(",showConvGuideEntrance=").append(this.jdField_b_of_type_Boolean).append(",friends_recomm_flag=").append(this.jdField_a_of_type_Int).append(",groups_recomm_flag=").append(this.jdField_b_of_type_Int).append(",url=").append(this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asal
  * JD-Core Version:    0.7.0.1
  */

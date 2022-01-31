@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.bigbrother.RockDownloader;
 
-import almc;
+import amaq;
 import com.tencent.qphone.base.util.QLog;
 
 public class RockDownloaderManager$1
   implements Runnable
 {
-  public RockDownloaderManager$1(almc paramalmc) {}
+  public RockDownloaderManager$1(amaq paramamaq) {}
   
   public void run()
   {
     try
     {
-      almc.a(this.this$0);
+      amaq.a(this.this$0);
       return;
     }
     catch (Exception localException)

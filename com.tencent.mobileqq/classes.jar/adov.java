@@ -1,23 +1,25 @@
-import com.tencent.image.VideoDrawable.OnAudioPlayOnceListener;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.Intent;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 class adov
-  implements VideoDrawable.OnAudioPlayOnceListener
+  extends ClickableSpan
 {
-  adov(adot paramadot) {}
+  adov(ador paramador) {}
   
-  public void onFinish()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShortVideoPTVItemBuilder", 2, "VideoDrawable.OnAudioPlayOnceListener.onFinish");
-    }
-    if ((adot.a() != null) && (adot.a().get() != null))
+    if (!bbev.d(this.a.a))
     {
-      adot.a(adot.a(this.a), (ChatMessage)adot.a().get());
-      adot.a(null);
+      bcpw.a(this.a.a, ajyc.a(2131703224), 2000).a();
+      return;
     }
+    paramView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140617UV3MZn.html?ADTAG=veda.mobileqq.en");
+    paramView.putExtra("hide_more_button", true);
+    this.a.a.startActivity(paramView);
   }
 }
 

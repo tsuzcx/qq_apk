@@ -1,107 +1,17 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
 
 public class bisd
-  extends bisa
+  extends BaseFilter
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private String jdField_a_of_type_JavaLangString = "";
-  private vqp jdField_a_of_type_Vqp;
-  protected boolean a;
-  
-  protected View a()
+  public bisd()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\n  float ty = textureCoordinate.y * 0.5;\n  float ny = ty + 0.5;\n  vec2 newCoord1 = vec2(textureCoordinate.x,ty);\n  vec2 newCoord2 = vec2(textureCoordinate.x,ny);\n  vec3 color = texture2D(inputImageTexture,newCoord1).xyz;\n  float alpha = 1.0-texture2D(inputImageTexture,newCoord2).r;\n  float newAlpha = step(0.5,alpha);\n\n  gl_FragColor = vec4(color,newAlpha);\n}");
   }
   
-  public bisc a()
+  public void a(Frame paramFrame1, int paramInt1, int paramInt2, Frame paramFrame2)
   {
-    return new bisc(this.jdField_a_of_type_Vqp.a(), this.jdField_a_of_type_Vqp.a(), this.jdField_a_of_type_Vqp.a(), this.jdField_a_of_type_Boolean);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Vqp.a(new String[] { this.jdField_a_of_type_AndroidWidgetEditText.getText().toString() });
-    this.jdField_a_of_type_Vqp.c(false);
-  }
-  
-  public void a(Context paramContext, bisc parambisc, EditText paramEditText, TextView paramTextView, bisb parambisb)
-  {
-    super.a(paramContext, parambisc, paramEditText, paramTextView, parambisb);
-    this.jdField_a_of_type_Vqp = new vqp(paramContext);
-    this.jdField_a_of_type_Vqp.b(false);
-    this.jdField_a_of_type_Vqp.a(0.0F);
-    this.jdField_a_of_type_Vqp.c(true);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Vqp.a();
-    if (parambisc == null) {
-      a(this.jdField_a_of_type_Vqp.a(), true);
-    }
-    for (;;)
-    {
-      a(paramEditText.getText().toString(), 24);
-      return;
-      this.jdField_a_of_type_Vqp.a(parambisc.a);
-      a(parambisc.a[0], false);
-    }
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-    if (this.jdField_a_of_type_Vqp != null)
-    {
-      paramCharSequence = this.jdField_a_of_type_Vqp.a();
-      if ((paramCharSequence != null) && (paramCharSequence.length > 0)) {
-        this.jdField_a_of_type_JavaLangString = paramCharSequence[0];
-      }
-    }
-  }
-  
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 6)
-    {
-      this.jdField_a_of_type_Vqp.a(new String[] { this.jdField_a_of_type_AndroidWidgetEditText.getText().toString() });
-      this.jdField_a_of_type_Vqp.c(false);
-      this.jdField_a_of_type_Bisb.a();
-      return true;
-    }
-    return false;
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramInt2 = baip.b(paramCharSequence.toString());
-    if (24 - paramInt2 <= 6)
-    {
-      paramInt1 = paramInt2;
-      Object localObject = paramCharSequence;
-      if (24 - paramInt2 < 0)
-      {
-        localObject = baip.b(paramCharSequence.toString(), 0, 24);
-        paramInt1 = baip.b(((CharSequence)localObject).toString());
-        a((CharSequence)localObject, false);
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("%s/%s", new Object[] { Integer.valueOf(paramInt1 / 2), Integer.valueOf(12) }));
-      paramCharSequence = (CharSequence)localObject;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Vqp.a(new String[] { paramCharSequence.toString() });
-      if (TextUtils.isEmpty(paramCharSequence)) {
-        a(this.jdField_a_of_type_Vqp.a(), true);
-      }
-      if ((this.jdField_a_of_type_JavaLangString != null) && (!paramCharSequence.toString().equals(this.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    }
+    RenderProcess(paramFrame1.getTextureId(), paramInt1, paramInt2, -1, 0.0D, paramFrame2);
   }
 }
 

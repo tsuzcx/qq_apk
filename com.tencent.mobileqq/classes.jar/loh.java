@@ -1,15 +1,25 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.av.smallscreen.BaseSmallScreenService;
+import com.tencent.av.VideoController;
+import com.tencent.av.gaudio.GaInviteLockActivity;
 
 public class loh
-  extends PhoneStateListener
+  implements mil
 {
-  public loh(BaseSmallScreenService paramBaseSmallScreenService) {}
+  public loh(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public void a(boolean paramBoolean)
   {
-    super.onCallStateChanged(paramInt, paramString);
-    this.a.a(paramInt, paramString);
+    if ((!paramBoolean) || (GaInviteLockActivity.b(this.a))) {
+      return;
+    }
+    if ((this.a.a.e) || (this.a.a.l())) {
+      this.a.e();
+    }
+    for (;;)
+    {
+      axqw.b(null, "CliOper", "", "", "0X800420E", "0X800420E", 0, 0, "", "", "", "");
+      return;
+      this.a.d();
+    }
   }
 }
 

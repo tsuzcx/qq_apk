@@ -1,81 +1,79 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.RspHead;
-import tencent.mobileim.structmsg.structmsg.RspSystemMsgAction;
+import android.text.TextUtils;
+import android.util.Xml;
+import java.io.ByteArrayInputStream;
+import org.xmlpull.v1.XmlPullParser;
 
-class akco
-  implements axta
+public class akco
 {
-  akco(akcl paramakcl) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void a(axtc paramaxtc, axtb paramaxtb)
+  public akco()
   {
-    ToServiceMsg localToServiceMsg = (ToServiceMsg)paramaxtb.a;
-    if (paramaxtc.a.getResultCode() != 1000) {
-      this.a.a(4012, false, localToServiceMsg);
-    }
-    for (;;)
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public static akco a(String paramString)
+  {
+    Object localObject = null;
+    if (!TextUtils.isEmpty(paramString))
     {
-      try
+      akco localakco = new akco();
+      XmlPullParser localXmlPullParser = Xml.newPullParser();
+      localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
+      for (int i = 0;; i = localXmlPullParser.next())
       {
-        paramaxtc = paramaxtc.a.getWupBuffer();
-        localRspSystemMsgAction = new structmsg.RspSystemMsgAction();
-        localRspSystemMsgAction.mergeFrom(paramaxtc);
-        j = localRspSystemMsgAction.head.result.get();
-        if (j != 0) {
-          continue;
+        localObject = localakco;
+        if (i == 1) {
+          break;
         }
-        bool1 = true;
-        paramaxtc = localRspSystemMsgAction.msg_detail.get();
-        if (paramaxtc != null) {
-          continue;
+        if ((i == 2) && (localXmlPullParser.getName().equalsIgnoreCase("banner")))
+        {
+          int j = localXmlPullParser.getAttributeCount();
+          i = 0;
+          if (i < j)
+          {
+            paramString = localXmlPullParser.getAttributeName(i);
+            if ("text".equals(paramString)) {
+              localakco.jdField_b_of_type_JavaLangString = localXmlPullParser.getAttributeValue(i);
+            }
+            for (;;)
+            {
+              i += 1;
+              break;
+              if ("url".equals(paramString)) {
+                localakco.jdField_a_of_type_JavaLangString = localXmlPullParser.getAttributeValue(i);
+              } else if ("dayNum".equals(paramString)) {
+                localakco.jdField_a_of_type_Int = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
+              } else if ("dayIntervalNum".equals(paramString)) {
+                localakco.jdField_b_of_type_Int = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
+              } else if ("totalNum".equals(paramString)) {
+                localakco.c = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
+              } else if ("loginNum".equals(paramString)) {
+                localakco.e = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
+              } else if ("banner".equals(paramString)) {
+                localakco.jdField_a_of_type_Boolean = "1".equals(localXmlPullParser.getAttributeValue(i));
+              } else if ("setEntry".equals(paramString)) {
+                localakco.jdField_b_of_type_Boolean = "1".equals(localXmlPullParser.getAttributeValue(i));
+              }
+            }
+          }
         }
-        paramaxtc = "";
       }
-      catch (Exception paramaxtc)
-      {
-        structmsg.RspSystemMsgAction localRspSystemMsgAction;
-        int j;
-        boolean bool1;
-        int i;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", paramaxtc);
-        boolean bool2 = false;
-        continue;
-        continue;
-      }
-      i = -1;
-      if (localRspSystemMsgAction.remark_result.has()) {
-        i = localRspSystemMsgAction.remark_result.get();
-      }
-      localToServiceMsg.extraData.putString("system_msg_action_resp_key", paramaxtc);
-      localToServiceMsg.extraData.putInt("system_msg_action_resp_result_code_key", localRspSystemMsgAction.head.result.get());
-      localToServiceMsg.extraData.putInt("system_msg_action_resp_type_key", localRspSystemMsgAction.type.get());
-      localToServiceMsg.extraData.putString("system_msg_action_resp_invalid_decided_key", localRspSystemMsgAction.msg_invalid_decided.get());
-      localToServiceMsg.extraData.putInt("system_msg_action_resp_remark_result_key", i);
-      bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgActionResp result:" + j + " msg:" + paramaxtc);
-        bool2 = bool1;
-      }
-      this.a.a(4011, bool2, localToServiceMsg);
-      return;
-      paramaxtb = localRspSystemMsgAction.head.msg_fail.get();
-      paramaxtc = paramaxtb;
-      if (paramaxtb == null) {
-        paramaxtc = "";
-      }
-      localToServiceMsg.extraData.putString("system_msg_action_resp_error_key", paramaxtc);
-      bool1 = false;
     }
+    return localObject;
+  }
+  
+  public String toString()
+  {
+    return "MobileUnityBannerData [url=" + this.jdField_a_of_type_JavaLangString + ", text=" + this.jdField_b_of_type_JavaLangString + ", dayNum=" + this.jdField_a_of_type_Int + ", dayIntervalNum=" + this.jdField_b_of_type_Int + ", totalNum=" + this.c + ", loginNum = " + this.e + ", version=" + this.d + "]";
   }
 }
 

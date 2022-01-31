@@ -1,24 +1,49 @@
+import android.graphics.Color;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import java.util.ArrayList;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-class ovw
-  implements View.OnClickListener
+public class ovw
+  implements bcjn
 {
-  ovw(ovq paramovq, opw paramopw, Container paramContainer, int paramInt) {}
+  public ovw(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onClick(View paramView)
+  public void a(float paramFloat1, float paramFloat2) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramView = this.jdField_a_of_type_Opw.a().mSocialFeedInfo.a;
-    ArrayList localArrayList = paramView.a;
-    if ((localArrayList == null) || (localArrayList.size() == 0)) {
+    paramInt1 = ReadInJoySelfFragment.a(this.a).getScrollY();
+    if ((this.a.getActivity() != null) && ((this.a.getActivity() instanceof ReadInJoyNewFeedsActivity))) {}
+    do
+    {
       return;
-    }
-    paramView = (pra)paramView.a.get(0);
-    ovq.a(this.jdField_a_of_type_Ovq, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Opw.a(), (int)paramView.a, this.jdField_a_of_type_Opw.a().innerUniqueID, this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_Opw.a());
+      if (paramInt1 >= ReadInJoySelfFragment.a(this.a))
+      {
+        ReadInJoySelfFragment.a(this.a).setBackgroundColor(Color.parseColor("#FFFFFF"));
+        if (paramInt1 >= ReadInJoySelfFragment.a(this.a) * 3) {}
+        for (float f = 1.0F;; f = paramInt1 * 0.33F / ReadInJoySelfFragment.a(this.a))
+        {
+          ReadInJoySelfFragment.a(this.a).setAlpha(f);
+          ReadInJoySelfFragment.a(this.a).setBackgroundResource(2130842419);
+          ReadInJoySelfFragment.a(this.a).setVisibility(0);
+          if ((this.a.getActivity() == null) || (!(this.a.getActivity() instanceof ReadInJoySelfActivity))) {
+            break;
+          }
+          ImmersiveUtils.a(true, this.a.getActivity().getWindow());
+          return;
+        }
+      }
+      ReadInJoySelfFragment.a(this.a).setBackgroundColor(Color.parseColor("#00FFFFFF"));
+      ReadInJoySelfFragment.a(this.a).setBackgroundResource(2130842420);
+      ReadInJoySelfFragment.a(this.a).setVisibility(8);
+    } while ((this.a.getActivity() == null) || (!(this.a.getActivity() instanceof ReadInJoySelfActivity)));
+    ImmersiveUtils.a(false, this.a.getActivity().getWindow());
   }
 }
 

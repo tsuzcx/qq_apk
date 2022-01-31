@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajbl;
+import ajpn;
 import java.util.List;
 
 class ApolloPanel$12
   implements Runnable
 {
-  ApolloPanel$12(ApolloPanel paramApolloPanel, ajbl paramajbl, List paramList) {}
+  ApolloPanel$12(ApolloPanel paramApolloPanel, ajpn paramajpn, List paramList) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Ajbl != null) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-      this.jdField_a_of_type_Ajbl.b(this.jdField_a_of_type_JavaUtilList);
+    if ((this.jdField_a_of_type_Ajpn != null) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
+      this.jdField_a_of_type_Ajpn.b(this.jdField_a_of_type_JavaUtilList);
     }
   }
 }

@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.materialdownload;
 
-import nof;
+import nzq;
 
 public class AdMaterialResManager$2
   implements Runnable
 {
-  public AdMaterialResManager$2(nof paramnof) {}
+  public AdMaterialResManager$2(nzq paramnzq) {}
   
   public void run()
   {
-    nof.a(this.this$0, nof.a(this.this$0));
+    nzq.a(this.this$0, nzq.a(this.this$0));
   }
 }
 

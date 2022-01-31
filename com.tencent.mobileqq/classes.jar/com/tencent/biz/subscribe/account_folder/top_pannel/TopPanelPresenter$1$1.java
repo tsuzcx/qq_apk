@@ -5,18 +5,18 @@ import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetRecommendUserListRsp;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import common.config.service.QzoneConfig;
 import java.util.List;
-import vxd;
-import vxe;
-import vxf;
+import wkb;
+import wkc;
+import wkd;
 
 public class TopPanelPresenter$1$1
   implements Runnable
 {
-  public TopPanelPresenter$1$1(vxf paramvxf, CertifiedAccountRead.StGetRecommendUserListRsp paramStGetRecommendUserListRsp, List paramList, boolean paramBoolean) {}
+  public TopPanelPresenter$1$1(wkd paramwkd, CertifiedAccountRead.StGetRecommendUserListRsp paramStGetRecommendUserListRsp, List paramList, boolean paramBoolean) {}
   
   public void run()
   {
-    vxd localvxd = vxe.a(this.jdField_a_of_type_Vxf.a);
+    wkb localwkb = wkc.a(this.jdField_a_of_type_Wkd.a);
     Object localObject2 = null;
     Object localObject1 = localObject2;
     if ((QzoneConfig.getInstance().getConfig("qqminiapp", "publicAcuntDiscoverEntryEnable", 1) & (QzoneConfig.getInstance().getConfig("qqsubscribe", "JumpToNewServiceAccount", 1) ^ 0xFFFFFFFF)) == 1)
@@ -26,19 +26,19 @@ public class TopPanelPresenter$1$1
         localObject1 = (CertifiedAccountMeta.StEntry)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetRecommendUserListRsp.entry.get();
       }
     }
-    if (localvxd != null)
+    if (localwkb != null)
     {
-      localvxd.a((CertifiedAccountMeta.StEntry)localObject1, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
+      localwkb.a((CertifiedAccountMeta.StEntry)localObject1, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
       int i = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetRecommendUserListRsp.noticeCount.get();
       if (i > 0) {
-        localvxd.a(i);
+        localwkb.a(i);
       }
     }
     else
     {
       return;
     }
-    localvxd.a();
+    localwkb.a();
   }
 }
 

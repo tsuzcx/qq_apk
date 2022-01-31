@@ -1,6 +1,8 @@
-abstract interface qkj
+import org.json.JSONObject;
+
+public abstract interface qkj
 {
-  public abstract long a();
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 

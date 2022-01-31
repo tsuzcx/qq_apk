@@ -24,17 +24,17 @@ public class StrategyBean
   public boolean l = true;
   public boolean m = true;
   public boolean n = true;
-  public long o;
-  public long p = 30000L;
-  public String q = b;
-  public String r = c;
-  public String s = a;
-  public String t;
-  public Map<String, String> u;
-  public int v = 10;
-  public long w = 300000L;
-  public long x = -1L;
-  private boolean y = true;
+  public boolean o = true;
+  public long p;
+  public long q = 30000L;
+  public String r = b;
+  public String s = c;
+  public String t = a;
+  public String u;
+  public Map<String, String> v;
+  public int w = 10;
+  public long x = 300000L;
+  public long y = -1L;
   
   public StrategyBean()
   {
@@ -44,7 +44,7 @@ public class StrategyBean
     d = localStringBuilder.toString();
     localStringBuilder.setLength(0);
     localStringBuilder.append("*^@K#K").append("@!");
-    this.t = localStringBuilder.toString();
+    this.u = localStringBuilder.toString();
   }
   
   public StrategyBean(Parcel paramParcel)
@@ -71,10 +71,10 @@ public class StrategyBean
         bool1 = true;
         label191:
         this.i = bool1;
-        this.q = paramParcel.readString();
         this.r = paramParcel.readString();
-        this.t = paramParcel.readString();
-        this.u = z.b(paramParcel);
+        this.s = paramParcel.readString();
+        this.u = paramParcel.readString();
+        this.v = z.b(paramParcel);
         if (paramParcel.readByte() != 1) {
           break label374;
         }
@@ -92,14 +92,14 @@ public class StrategyBean
         }
         bool1 = true;
         label268:
-        this.m = bool1;
+        this.n = bool1;
         if (paramParcel.readByte() != 1) {
           break label389;
         }
         bool1 = true;
         label283:
-        this.n = bool1;
-        this.p = paramParcel.readLong();
+        this.o = bool1;
+        this.q = paramParcel.readLong();
         if (paramParcel.readByte() != 1) {
           break label394;
         }
@@ -116,11 +116,11 @@ public class StrategyBean
       label399:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.y = bool1;
-        this.o = paramParcel.readLong();
-        this.v = paramParcel.readInt();
-        this.w = paramParcel.readLong();
+        this.m = bool1;
+        this.p = paramParcel.readLong();
+        this.w = paramParcel.readInt();
         this.x = paramParcel.readLong();
+        this.y = paramParcel.readLong();
         return;
         bool1 = false;
         break;
@@ -176,10 +176,10 @@ public class StrategyBean
       paramInt = 1;
       label49:
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.q);
       paramParcel.writeString(this.r);
-      paramParcel.writeString(this.t);
-      z.b(paramParcel, this.u);
+      paramParcel.writeString(this.s);
+      paramParcel.writeString(this.u);
+      z.b(paramParcel, this.v);
       if (!this.j) {
         break label233;
       }
@@ -192,26 +192,26 @@ public class StrategyBean
       paramInt = 1;
       label111:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.m) {
+      if (!this.n) {
         break label243;
       }
       paramInt = 1;
       label126:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.n) {
+      if (!this.o) {
         break label248;
       }
       paramInt = 1;
       label141:
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.p);
+      paramParcel.writeLong(this.q);
       if (!this.l) {
         break label253;
       }
       paramInt = 1;
       label164:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.y) {
+      if (!this.m) {
         break label258;
       }
     }
@@ -219,10 +219,10 @@ public class StrategyBean
     for (paramInt = i1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.o);
-      paramParcel.writeInt(this.v);
-      paramParcel.writeLong(this.w);
+      paramParcel.writeLong(this.p);
+      paramParcel.writeInt(this.w);
       paramParcel.writeLong(this.x);
+      paramParcel.writeLong(this.y);
       return;
       paramInt = 0;
       break;

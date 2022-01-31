@@ -1,38 +1,26 @@
-import com.tencent.mobileqq.multicard.RecommendPerson;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class arxj
-  implements ajfe
+class arxj
+  extends ajxl
 {
-  public void a(boolean paramBoolean, String paramString, int paramInt, Map<Integer, List<RecommendPerson>> paramMap) {}
+  arxj(arxh paramarxh) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberRecommend.obsever", 2, " onUpdate() type =" + paramInt + " isSuccess = " + paramBoolean);
-    }
-    switch (paramInt)
+    super.onUpdateDelFriend(paramBoolean, paramObject);
+    paramObject = String.valueOf(paramObject);
+    if ((paramBoolean) && (paramObject.equals(arxh.a(this.a).a())))
     {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberRecommend.obsever", 2, " default type =" + paramInt);
+      arxh.a(arxh.a(this.a), 0, String.valueOf(paramObject));
+      if (arxh.a(this.a) != null) {
+        arxh.a(this.a).finish();
       }
-      break;
     }
-    do
-    {
-      return;
-    } while (!(paramObject instanceof Object[]));
-    paramObject = (Object[])paramObject;
-    Map localMap = (Map)paramObject[0];
-    a(paramBoolean, (String)paramObject[1], ((Integer)paramObject[2]).intValue(), localMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arxj
  * JD-Core Version:    0.7.0.1
  */

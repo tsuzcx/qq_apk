@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import akbm;
-import alyx;
+import akpy;
+import amon;
 import android.text.TextUtils;
-import atmo;
-import atnz;
-import awao;
-import aylt;
-import azzz;
-import bado;
+import aukm;
+import aulx;
+import awzw;
+import azmj;
+import bbbd;
+import bbet;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
@@ -16,13 +16,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Random;
-import mnf;
-import mxu;
+import mye;
+import niv;
 import org.json.JSONObject;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="time,senderuin,msgData,istroop,shmsgseq,msgseq")
 public class MessageRecord
-  extends atmo
+  extends aukm
 {
   public static final int EXTRA_STREAM_PTT_FLAG = 10001;
   public static final int MIN_VERSION_CODE_SUPPORT_IMAGE_MD5_TRANS = 2;
@@ -95,6 +95,7 @@ public class MessageRecord
   public static final int MSG_TYPE_LIGHTALK_MSG = -2026;
   public static final int MSG_TYPE_LIMIT_CHAT_CONFIRM = -7005;
   public static final int MSG_TYPE_LIMIT_CHAT_TOPIC = -4023;
+  public static final int MSG_TYPE_LIMIT_CHAT_TOPIC_RECEIVER = -4024;
   public static final int MSG_TYPE_LOCAL_COMMON = -4000;
   public static final int MSG_TYPE_LOCAL_URL = -4001;
   public static final int MSG_TYPE_LONG_MIX = -1036;
@@ -232,28 +233,28 @@ public class MessageRecord
   public static final String[] QUERY_OLD_TABLE_FIELDS_ARRAY = { "_id", "extraflag", "frienduin", "isread", "issend", "istroop", "msg", "msgId", "msgseq", "msgtype", "selfuin", "senderuin", "shmsgseq", "time" };
   public static final int SEND_FAIL_CODE_DEFAULT = 0;
   public static final int SEND_FAIL_CODE_GOLDMSG_ERROR = -900;
-  @atnz
-  public mxu advertisementItem;
-  @atnz
+  @aulx
+  public niv advertisementItem;
+  @aulx
   public ArrayList<MessageForText.AtTroopMemberInfo> atInfoList;
-  @atnz
+  @aulx
   public ArrayList<MessageForText.AtTroopMemberInfo> atInfoTempList;
   public int extInt;
   public int extLong;
   public String extStr;
   public int extraflag;
   public String frienduin;
-  @atnz
+  @aulx
   public boolean isBlessMsg;
-  @atnz
+  @aulx
   public boolean isCheckNeedShowInListTypeMsg;
-  @atnz
+  @aulx
   public boolean isMultiMsg;
-  @atnz
+  @aulx
   public boolean isOpenTroopMessage;
-  @atnz
+  @aulx
   public boolean isReMultiMsg;
-  @atnz
+  @aulx
   public boolean isReplySource;
   public boolean isValid = true;
   public boolean isread;
@@ -263,25 +264,25 @@ public class MessageRecord
   public int longMsgId;
   public int longMsgIndex;
   public JSONObject mExJsonObject;
-  @atnz
+  @aulx
   public int mIsShowQidianTips;
-  @atnz
-  public aylt mMessageInfo;
-  @atnz
+  @aulx
+  public azmj mMessageInfo;
+  @aulx
   public long mQidianMasterUin;
-  @atnz
+  @aulx
   public int mQidianTaskId;
-  @atnz
+  @aulx
   public String mQidianTipText;
-  @atnz
+  @aulx
   public int mRobotFlag;
-  @atnz
+  @aulx
   public String msg;
-  @atnz
+  @aulx
   public String msg2;
-  @atnz
+  @aulx
   public long msgBackupMsgRandom;
-  @atnz
+  @aulx
   public long msgBackupMsgSeq;
   public byte[] msgData;
   @Deprecated
@@ -289,25 +290,25 @@ public class MessageRecord
   public long msgUid;
   public long msgseq;
   public int msgtype;
-  @atnz
+  @aulx
   public boolean needNeedShowInList;
-  @atnz
+  @aulx
   public boolean needUpdateMsgTag = true;
   public String selfuin;
   public int sendFailCode;
   public String senderuin;
   public long shmsgseq;
-  @atnz
+  @aulx
   public boolean stickerHidden;
-  @atnz
+  @aulx
   public EmojiStickerManager.StickerInfo stickerInfo;
   public long time;
   public long uniseq;
   public int versionCode = 3;
-  @atnz
+  @aulx
   public int vipBubbleDiyTextId;
   public long vipBubbleID;
-  @atnz
+  @aulx
   public int vipSubBubbleId;
   
   public MessageRecord()
@@ -396,7 +397,7 @@ public class MessageRecord
     }
     for (;;)
     {
-      return "mr_" + str + "_" + akbm.a(paramString);
+      return "mr_" + str + "_" + akpy.a(paramString);
       str = "troop";
       continue;
       str = "discusssion";
@@ -413,7 +414,7 @@ public class MessageRecord
     }
     while (!TextUtils.isEmpty(paramString))
     {
-      return "mr_" + str + "_" + akbm.a(paramString) + "_New";
+      return "mr_" + str + "_" + akpy.a(paramString) + "_New";
       str = "troop_hctopic";
       continue;
       str = "troop";
@@ -485,7 +486,7 @@ public class MessageRecord
     for (int i = 69;; i = 0)
     {
       StringBuilder localStringBuilder = new StringBuilder(i + 256);
-      localStringBuilder.append("MessageRecord BaseInfo=friendUin:").append(this.frienduin).append(",_id:").append(getId()).append(",shmsgseq:").append(this.shmsgseq).append(",uid:").append(this.msgUid).append(",uniseq:").append(this.uniseq).append(",time:").append(this.time).append(",extraFlag:").append(this.extraflag).append(",istroop:").append(this.istroop).append(",msgType:").append(this.msgtype).append(",msg:").append(azzz.a(this.msg));
+      localStringBuilder.append("MessageRecord BaseInfo=friendUin:").append(this.frienduin).append(",_id:").append(getId()).append(",shmsgseq:").append(this.shmsgseq).append(",uid:").append(this.msgUid).append(",uniseq:").append(this.uniseq).append(",time:").append(this.time).append(",extraFlag:").append(this.extraflag).append(",istroop:").append(this.istroop).append(",msgType:").append(this.msgtype).append(",msg:").append(bbbd.a(this.msg));
       if (isLongMsg()) {
         localStringBuilder.append(",longMsgId:").append(this.longMsgId).append(",longMsgCount:").append(this.longMsgCount).append(",longMsgIndex:").append(this.longMsgIndex);
       }
@@ -493,7 +494,7 @@ public class MessageRecord
     }
   }
   
-  public Class<? extends atmo> getClassForTable()
+  public Class<? extends aukm> getClassForTable()
   {
     return MessageRecord.class;
   }
@@ -553,7 +554,7 @@ public class MessageRecord
   
   public String getLogColorContent()
   {
-    return azzz.a(this.msg);
+    return bbbd.a(this.msg);
   }
   
   public String getLongMsgInfoString()
@@ -562,7 +563,7 @@ public class MessageRecord
     for (int i = 69;; i = 0)
     {
       StringBuilder localStringBuilder = new StringBuilder(i + 129);
-      localStringBuilder.append("MessageRecord LongMsgInfo=friendUin:").append(this.frienduin).append(",istroop:").append(this.istroop).append(",msgType:").append(this.msgtype).append(",msg:").append(azzz.a(this.msg)).append(",time:").append(this.time);
+      localStringBuilder.append("MessageRecord LongMsgInfo=friendUin:").append(this.frienduin).append(",istroop:").append(this.istroop).append(",msgType:").append(this.msgtype).append(",msg:").append(bbbd.a(this.msg)).append(",time:").append(this.time);
       if (isLongMsg()) {
         localStringBuilder.append(",longMsgId:").append(this.longMsgId).append(",longMsgCount:").append(this.longMsgCount).append(",longMsgIndex:").append(this.longMsgIndex);
       }
@@ -610,7 +611,7 @@ public class MessageRecord
     this.msg = paramString;
     paramLong1 = paramLong4;
     if (paramLong4 <= 0L) {
-      paramLong1 = (int)awao.a();
+      paramLong1 = (int)awzw.a();
     }
     this.time = paramLong1;
     this.msgtype = paramInt1;
@@ -626,7 +627,7 @@ public class MessageRecord
     this.msg = paramString4;
     long l = paramLong1;
     if (paramLong1 <= 0L) {
-      l = (int)awao.a();
+      l = (int)awzw.a();
     }
     this.time = l;
     this.msgtype = paramInt1;
@@ -646,21 +647,21 @@ public class MessageRecord
   
   public boolean isSend()
   {
-    if ((mnf.a(this)) && (mnf.b(this))) {}
-    while ((alyx.a(this)) && (alyx.b(this))) {
+    if ((mye.a(this)) && (mye.b(this))) {}
+    while ((amon.a(this)) && (amon.b(this))) {
       return true;
     }
-    return bado.a(this.issend);
+    return bbet.a(this.issend);
   }
   
   public boolean isSendFromLocal()
   {
-    return bado.b(this.issend);
+    return bbet.b(this.issend);
   }
   
   public boolean isSendFromOtherTerminal()
   {
-    return bado.c(this.issend);
+    return bbet.c(this.issend);
   }
   
   public boolean isSupportFTS()
@@ -798,7 +799,7 @@ public class MessageRecord
     for (int i = 69;; i = 0)
     {
       StringBuilder localStringBuilder = new StringBuilder(i + (j + 39 + 9 + 10 + 11 + 10 + 11 + 10 + 10 + 10 + 5 + 19 + 6 + 19 + 8 + 5 + 8 + 5 + 11 + 10 + 14 + 10 + 9 + 5 + 9 + 10 + 5 + 14 + 10 + 19 + 8 + 19 + 12 + 5 + 8 + 19));
-      localStringBuilder.append("-----Dump MessageRecord-----,classname:").append(getClass().getSimpleName()).append(",selfUin:").append(this.selfuin).append(",friendUin:").append(this.frienduin).append(",senderUin:").append(this.senderuin).append(",shmsgseq:").append(this.shmsgseq).append(",uid:").append(this.msgUid).append(",time:").append(this.time).append(",isRead:").append(this.isread).append(",isSend:").append(this.issend).append(",extraFlag:").append(this.extraflag).append(",sendFailCode:").append(this.sendFailCode).append(",istroop:").append(this.istroop).append(",msgType:").append(this.msgtype).append(",msg:").append(azzz.a(this.msg)).append(",bubbleid:").append(this.vipBubbleID).append(",subBubbleId:").append(this.vipSubBubbleId).append(",uniseq:").append(this.uniseq).append(",isMultiMsg:").append(this.isMultiMsg).append(",msgseq:").append(this.msgseq);
+      localStringBuilder.append("-----Dump MessageRecord-----,classname:").append(getClass().getSimpleName()).append(",selfUin:").append(this.selfuin).append(",friendUin:").append(this.frienduin).append(",senderUin:").append(this.senderuin).append(",shmsgseq:").append(this.shmsgseq).append(",uid:").append(this.msgUid).append(",time:").append(this.time).append(",isRead:").append(this.isread).append(",isSend:").append(this.issend).append(",extraFlag:").append(this.extraflag).append(",sendFailCode:").append(this.sendFailCode).append(",istroop:").append(this.istroop).append(",msgType:").append(this.msgtype).append(",msg:").append(bbbd.a(this.msg)).append(",bubbleid:").append(this.vipBubbleID).append(",subBubbleId:").append(this.vipSubBubbleId).append(",uniseq:").append(this.uniseq).append(",isMultiMsg:").append(this.isMultiMsg).append(",msgseq:").append(this.msgseq);
       if (isLongMsg()) {
         localStringBuilder.append(",longMsgId:").append(this.longMsgId).append(",longMsgCount:").append(this.longMsgCount).append(",longMsgIndex:").append(this.longMsgIndex);
       }

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import akjn;
-import akjt;
-import aklt;
-import akma;
-import akmc;
-import akqs;
-import aljf;
+import akxz;
+import akyf;
+import alaf;
+import alam;
+import alao;
+import alfe;
+import alxt;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
@@ -14,41 +14,41 @@ import mqq.os.MqqHandler;
 public class ARTransferPromotionRenderable$7
   implements Runnable
 {
-  public ARTransferPromotionRenderable$7(akma paramakma) {}
+  public ARTransferPromotionRenderable$7(alam paramalam) {}
   
   public void run()
   {
-    if (akma.a(this.this$0) == 6)
+    if (alam.a(this.this$0) == 6)
     {
-      if ((akma.a(this.this$0) != null) && (akma.a(this.this$0)))
+      if ((alam.a(this.this$0) != null) && (alam.a(this.this$0)))
       {
-        akma.a(this.this$0).b(1, 0);
-        akma.a(this.this$0, false);
+        alam.a(this.this$0).b(1, 0);
+        alam.a(this.this$0, false);
       }
-      if ((akma.a(this.this$0) != null) && (akma.b(this.this$0))) {
-        akma.a(this.this$0).a();
+      if ((alam.a(this.this$0) != null) && (alam.b(this.this$0))) {
+        alam.a(this.this$0).a();
       }
-      if (akma.a(this.this$0) != null) {
-        akma.a(this.this$0).a(akma.a(this.this$0).a);
+      if (alam.a(this.this$0) != null) {
+        alam.a(this.this$0).a(alam.a(this.this$0).a);
       }
-      if (akma.a(this.this$0) == 6) {
-        akma.a(this.this$0, 7);
+      if (alam.a(this.this$0) == 6) {
+        alam.a(this.this$0, 7);
       }
-      akma.a(this.this$0).a();
-      if (akma.a(this.this$0) != null) {
+      alam.a(this.this$0).a();
+      if (alam.a(this.this$0) != null) {
         ThreadManager.getUIHandler().post(new ARTransferPromotionRenderable.7.1(this));
       }
     }
-    synchronized (akma.a(this.this$0))
+    synchronized (alam.a(this.this$0))
     {
-      akma.a(this.this$0).clear();
-      akma.a(this.this$0).d();
-      akma.a(this.this$0);
-      if (akma.a(this.this$0) != null)
+      alam.a(this.this$0).clear();
+      alam.a(this.this$0).d();
+      alam.a(this.this$0);
+      if (alam.a(this.this$0) != null)
       {
-        akma.a(this.this$0).b();
-        akma.a(this.this$0).a();
-        akma.a(this.this$0, null);
+        alam.a(this.this$0).b();
+        alam.a(this.this$0).a();
+        alam.a(this.this$0, null);
       }
       return;
     }

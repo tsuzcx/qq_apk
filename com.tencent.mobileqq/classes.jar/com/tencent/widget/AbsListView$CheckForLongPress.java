@@ -2,10 +2,10 @@ package com.tencent.widget;
 
 import android.view.View;
 import android.widget.ListAdapter;
-import begm;
+import bfog;
 
 class AbsListView$CheckForLongPress
-  extends begm
+  extends bfog
   implements Runnable
 {
   private AbsListView$CheckForLongPress(AbsListView paramAbsListView)

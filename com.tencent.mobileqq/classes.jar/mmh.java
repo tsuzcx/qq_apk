@@ -1,21 +1,27 @@
-import com.tencent.biz.PoiMapActivity;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
 
-public class mmh
-  extends mmg
+class mmh
+  implements View.OnKeyListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public int d;
+  mmh(mme parammme) {}
   
-  public mmh(PoiMapActivity paramPoiMapActivity)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    super(paramPoiMapActivity);
+    if (paramKeyEvent.getAction() == 0) {}
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    mme.b(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mmh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import ajmp;
+import akay;
 
 public class MessageRoamManager$8
   implements Runnable
 {
-  public MessageRoamManager$8(ajmp paramajmp) {}
+  public MessageRoamManager$8(akay paramakay) {}
   
   public void run()
   {
-    if (ajmp.a(this.this$0))
+    if (akay.a(this.this$0))
     {
       this.this$0.a(19, null);
       return;

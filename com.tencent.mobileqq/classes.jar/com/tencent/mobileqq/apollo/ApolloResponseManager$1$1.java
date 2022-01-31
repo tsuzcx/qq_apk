@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.apollo;
 
-import aifg;
-import aigu;
-import aigv;
+import airz;
+import aitn;
+import aito;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloActionData;
 
 public class ApolloResponseManager$1$1
   implements Runnable
 {
-  public ApolloResponseManager$1$1(aigv paramaigv, ApolloActionData paramApolloActionData) {}
+  public ApolloResponseManager$1$1(aito paramaito, ApolloActionData paramApolloActionData) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aigv.a.a == null) {
+    if (this.jdField_a_of_type_Aito.a.a == null) {
       return;
     }
-    ((aifg)this.jdField_a_of_type_Aigv.a.a.getManager(153)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 4);
+    ((airz)this.jdField_a_of_type_Aito.a.a.getManager(153)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 4);
   }
 }
 

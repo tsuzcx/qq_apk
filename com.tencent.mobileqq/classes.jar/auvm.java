@@ -1,19 +1,21 @@
+import java.util.ArrayList;
+
 public class auvm
 {
   public int a;
-  public boolean a;
-  public boolean b = true;
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.jdField_a_of_type_Int = 0;
-  }
+  public long a;
+  public String a;
+  public ArrayList<auvk> a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auvm
  * JD-Core Version:    0.7.0.1
  */

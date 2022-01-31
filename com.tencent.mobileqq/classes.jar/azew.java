@@ -1,14 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
 
 public class azew
-  implements bbmn
+  implements bfoq
 {
-  public azew(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
+  public azew(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, bfol parambfol) {}
   
-  public void a(Bundle paramBundle) {}
-  
-  public void b(Bundle paramBundle) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      if (System.currentTimeMillis() - TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity) > 500L)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Agqk.c(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Int);
+        TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, System.currentTimeMillis());
+      }
+    }
+  }
 }
 
 

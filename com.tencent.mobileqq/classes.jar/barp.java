@@ -1,16 +1,16 @@
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
 
 public class barp
+  implements aybh
 {
-  public ImageView a;
-  public SeekBar a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
+  public barp(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  
+  public void a()
+  {
+    aybp localaybp = new aybp(new aybg[] { new aybo(400, TroopGiftToAllSurfaceView.a(this.a), TroopGiftToAllSurfaceView.a(this.a) * 0.95F), new aybo(400, TroopGiftToAllSurfaceView.a(this.a) * 0.95F, TroopGiftToAllSurfaceView.a(this.a)) });
+    localaybp.a = true;
+    TroopGiftToAllSurfaceView.a(this.a).a(new aybg[] { localaybp });
+  }
 }
 
 

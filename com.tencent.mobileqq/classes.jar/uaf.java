@@ -1,16 +1,12 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class uaf
-  implements vqo
+class uaf
+  implements DialogInterface.OnClickListener
 {
-  public uaf(StoryPickerFragment paramStoryPickerFragment) {}
+  uaf(uae paramuae) {}
   
-  public void a()
-  {
-    if (this.a.a != null) {
-      this.a.a.d();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

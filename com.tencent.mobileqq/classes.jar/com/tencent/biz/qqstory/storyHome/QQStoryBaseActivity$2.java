@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface.OnDismissListener;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Window;
-import urk;
+import veg;
 
 class QQStoryBaseActivity$2
   implements Runnable
@@ -16,7 +16,7 @@ class QQStoryBaseActivity$2
   {
     if (this.this$0.isFinishing())
     {
-      urk.d("Q.qqstory.QQStoryBaseActivity", "Activity has been destroy.");
+      veg.d("Q.qqstory.QQStoryBaseActivity", "Activity has been destroy.");
       return;
     }
     if (this.this$0.jdField_a_of_type_AndroidAppDialog == null)

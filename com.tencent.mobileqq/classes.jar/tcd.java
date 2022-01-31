@@ -1,23 +1,63 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-
 public class tcd
-  extends slu
+  implements tck
 {
-  public sgq a = new sgq();
+  public final tcb[] a = new tcb[2];
   
-  public tcd(qqstory_service.RspAuthKey paramRspAuthKey)
+  private void a(tcb paramtcb, int paramInt)
   {
-    super(paramRspAuthKey.result);
-    this.a.jdField_a_of_type_JavaLangString = paramRspAuthKey.user_ip.get().toStringUtf8();
-    this.a.b = paramRspAuthKey.server_ip1.get().toStringUtf8();
-    this.a.c = paramRspAuthKey.server_ip2.get().toStringUtf8();
-    this.a.d = paramRspAuthKey.backup_server_ip1.get().toStringUtf8();
-    this.a.e = paramRspAuthKey.backup_server_ip2.get().toStringUtf8();
-    this.a.jdField_a_of_type_ArrayOfByte = paramRspAuthKey.auth_key.get().toByteArray();
-    this.a.jdField_a_of_type_Long = (paramRspAuthKey.expire_time.get() * 1000L);
+    this.a[paramInt] = paramtcb;
+  }
+  
+  public <T extends tcb> T a(int paramInt)
+  {
+    tcb localtcb = this.a[paramInt];
+    if (localtcb == null) {}
+    for (;;)
+    {
+      synchronized (this.a)
+      {
+        localtcb = this.a[paramInt];
+        if (localtcb == null) {
+          break label80;
+        }
+        return localtcb;
+        a(localtcb, paramInt);
+        if (localtcb != null) {
+          localtcb.b();
+        }
+        return localtcb;
+      }
+      Object localObject2 = new tdq();
+      continue;
+      localObject2 = new tbu();
+      continue;
+      return localObject2;
+      label80:
+      switch (paramInt)
+      {
+      }
+    }
+  }
+  
+  public void a()
+  {
+    veg.b("DataProviderManager", "onInit");
+  }
+  
+  public void b()
+  {
+    veg.b("DataProviderManager", "onDestroy");
+    tcb[] arrayOftcb = this.a;
+    int j = arrayOftcb.length;
+    int i = 0;
+    while (i < j)
+    {
+      tcb localtcb = arrayOftcb[i];
+      if (localtcb != null) {
+        localtcb.c();
+      }
+      i += 1;
+    }
   }
 }
 

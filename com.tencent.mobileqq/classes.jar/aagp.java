@@ -1,26 +1,14 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
 public class aagp
-  implements TopGestureLayout.InterceptTouchEventListener
+  implements bcps
 {
-  public aagp(ChatFragment paramChatFragment) {}
+  public aagp(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent)
+  public void a()
   {
-    if (this.a.a != null) {
-      this.a.a.b(paramMotionEvent);
-    }
-  }
-  
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
-  {
-    if (this.a.a != null) {
-      return this.a.a.a(paramMotionEvent);
-    }
-    return true;
+    this.a.onBackPressed();
+    AddFriendLogicActivity.a(this.a).a(null);
   }
 }
 

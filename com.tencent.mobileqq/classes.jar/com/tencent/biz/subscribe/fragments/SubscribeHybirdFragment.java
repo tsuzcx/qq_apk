@@ -4,9 +4,11 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StShare;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
-import alrv;
+import amgo;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -24,15 +26,16 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import awnu;
-import badq;
-import baip;
-import bazb;
-import bbcj;
-import bbpa;
+import axmt;
+import bbev;
+import bbjw;
+import bcbv;
+import bcfj;
+import bcsc;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.biz.subscribe.event.FollowUpdateEvent;
 import com.tencent.biz.subscribe.widget.StatusView;
 import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -46,17 +49,19 @@ import com.tencent.smtt.sdk.WebView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.io.File;
 import java.util.ArrayList;
-import vvy;
-import vvz;
-import vxn;
-import vzz;
-import wcr;
-import wcs;
-import wct;
-import wcu;
-import wcv;
-import wfz;
-import wye;
+import wiv;
+import wiw;
+import wkp;
+import wnl;
+import wqe;
+import wqf;
+import wqg;
+import wqh;
+import wqi;
+import wqj;
+import wsr;
+import wva;
+import xhe;
 
 public class SubscribeHybirdFragment
   extends WebViewFragment
@@ -64,23 +69,25 @@ public class SubscribeHybirdFragment
   private int jdField_a_of_type_Int;
   private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
   private CertifiedAccountMeta.StShare jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare;
-  protected alrv a;
+  protected amgo a;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
   private CommentBottomBar jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar;
   private StatusView jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView;
-  private wfz jdField_a_of_type_Wfz;
+  private wqj jdField_a_of_type_Wqj;
+  private wsr jdField_a_of_type_Wsr;
+  private wva jdField_a_of_type_Wva;
   
-  private View.OnClickListener a(vxn paramvxn)
+  private View.OnClickListener a(wkp paramwkp)
   {
-    return new wcu(this, paramvxn);
+    return new wqh(this, paramwkp);
   }
   
   private void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) && (!baip.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get()))) {
-      wye.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "exp_" + wfz.a(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo), paramInt, 0, new String[0]);
+    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) && (!bbjw.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get()))) {
+      xhe.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "exp_" + wva.a(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo), paramInt, 0, new String[0]);
     }
   }
   
@@ -96,9 +103,9 @@ public class SubscribeHybirdFragment
     if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType == 8001)
     {
       WebSoService.a().a();
-      wye.a(this.f, "auth_image", "exp", 0, 0, new String[] { "", "", localStFeed.poster.nick.get(), localStFeed.title.get() });
+      xhe.a(this.f, "auth_image", "exp", 0, 0, new String[] { "", "", localStFeed.poster.nick.get(), localStFeed.title.get() });
     }
-    if (!baip.a(paramStGetFeedDetailRsp.detailUrl.get()))
+    if (!bbjw.a(paramStGetFeedDetailRsp.detailUrl.get()))
     {
       if (getWebView() != null)
       {
@@ -109,6 +116,17 @@ public class SubscribeHybirdFragment
       return;
     }
     QLog.e("SubscribeHybirdFragment", 2, "detailUrl is null");
+  }
+  
+  public static void a(Context paramContext, FollowUpdateEvent paramFollowUpdateEvent)
+  {
+    if ((paramContext == null) || (paramFollowUpdateEvent == null)) {
+      return;
+    }
+    Intent localIntent = new Intent("action_update_follow_state");
+    localIntent.putExtra("uin", paramFollowUpdateEvent.useId);
+    localIntent.putExtra("followState", paramFollowUpdateEvent.followStatus);
+    paramContext.sendBroadcast(localIntent);
   }
   
   private boolean a(long paramLong, String paramString)
@@ -125,14 +143,14 @@ public class SubscribeHybirdFragment
   
   private boolean a(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if (!vvz.a(paramStFeed.status.get())) {
-      if (vvz.a(paramStFeed.poster.attr.get()))
+    if (!wiw.a(paramStFeed.status.get())) {
+      if (wiw.a(paramStFeed.poster.attr.get()))
       {
         if (this.jdField_a_of_type_AndroidViewView == null)
         {
-          this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131493151, null, false);
+          this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131558707, null, false);
           this.jdField_a_of_type_AndroidViewView.setLayoutParams(new ViewGroup.LayoutParams(-1, ImmersiveUtils.a(44.0F)));
-          this.jdField_a_of_type_Bbcj.c.addView(this.jdField_a_of_type_AndroidViewView);
+          this.jdField_a_of_type_Bcfj.c.addView(this.jdField_a_of_type_AndroidViewView);
         }
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       }
@@ -162,19 +180,22 @@ public class SubscribeHybirdFragment
     if (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar != null) {
       this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.setCurrentFeed(paramStFeed);
     }
-  }
-  
-  private void i()
-  {
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView = new StatusView(getActivity());
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.setVisibility(8);
-    this.jdField_a_of_type_Bbcj.c.addView(this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView);
+    if (this.jdField_a_of_type_Wsr != null) {
+      this.jdField_a_of_type_Wsr.a(paramStFeed.poster);
+    }
   }
   
   private void j()
   {
-    Object localObject = vvz.a();
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView = new StatusView(getActivity());
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.setVisibility(8);
+    this.jdField_a_of_type_Bcfj.c.addView(this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView);
+  }
+  
+  private void k()
+  {
+    Object localObject = wiw.a();
     if (new File((String)localObject).exists())
     {
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getActivity());
@@ -186,8 +207,8 @@ public class SubscribeHybirdFragment
       this.jdField_a_of_type_AndroidWidgetImageView.setImageURI(Uri.fromFile(new File((String)localObject + "/certified_account_preload_pic.png")));
       localObject = new RelativeLayout.LayoutParams(-1, -1);
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      if ((this.jdField_a_of_type_Bbcj != null) && (this.jdField_a_of_type_Bbcj.c != null)) {
-        this.jdField_a_of_type_Bbcj.c.addView(this.jdField_a_of_type_AndroidWidgetImageView);
+      if ((this.jdField_a_of_type_Bcfj != null) && (this.jdField_a_of_type_Bcfj.c != null)) {
+        this.jdField_a_of_type_Bcfj.c.addView(this.jdField_a_of_type_AndroidWidgetImageView);
       }
       return;
     }
@@ -200,34 +221,34 @@ public class SubscribeHybirdFragment
     }
   }
   
-  private void k()
-  {
-    if ((this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType != 8001)) {}
-    while (this.jdField_a_of_type_Alrv != null) {
-      return;
-    }
-    this.jdField_a_of_type_Alrv = new alrv(getActivity(), false, true);
-    this.jdField_a_of_type_Alrv.a(getActivity());
-    this.jdField_a_of_type_Alrv.a(new wcr(this));
-    this.jdField_a_of_type_Alrv.a(new wcs(this));
-    this.jdField_a_of_type_Alrv.a(new wct(this));
-  }
-  
   private void l()
   {
-    this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(-1);
-    this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839705);
-    this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130839699);
-    this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if ((this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType != 8001)) {}
+    while (this.jdField_a_of_type_Amgo != null) {
+      return;
+    }
+    this.jdField_a_of_type_Amgo = new amgo(getActivity(), false, true);
+    this.jdField_a_of_type_Amgo.a(getActivity());
+    this.jdField_a_of_type_Amgo.a(new wqe(this));
+    this.jdField_a_of_type_Amgo.a(new wqf(this));
+    this.jdField_a_of_type_Amgo.a(new wqg(this));
   }
   
   private void m()
+  {
+    this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(-1);
+    this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839754);
+    this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130839748);
+    this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+  }
+  
+  private void n()
   {
     if (a() != null)
     {
       long l = a().getLongExtra("PERF_OPEN_PAGE_TIME", 0L);
       if (l != 0L) {
-        wye.a("subscribe_open_h5_page_time", wye.a(0L, System.currentTimeMillis() - l));
+        xhe.a("subscribe_open_h5_page_time", xhe.a(0L, System.currentTimeMillis() - l));
       }
       this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = ((ExtraTypeInfo)a().getSerializableExtra("key_subscribe_intent_extra_type_info"));
     }
@@ -246,7 +267,7 @@ public class SubscribeHybirdFragment
     }
   }
   
-  private void n()
+  private void o()
   {
     if ((this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType != 7000) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType != 8001)) {}
     Object localObject1;
@@ -256,19 +277,19 @@ public class SubscribeHybirdFragment
       localObject1 = new FrameLayout.LayoutParams(-1, -2);
       ((FrameLayout.LayoutParams)localObject1).gravity = 80;
       this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar = new CommentBottomBar(getActivity());
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a(a(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, new wcv(this));
-      Object localObject2 = new vxn();
-      ((vxn)localObject2).jdField_a_of_type_Boolean = false;
-      ((vxn)localObject2).jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.setShareClickListener(a((vxn)localObject2));
+      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a(a(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, new wqi(this));
+      Object localObject2 = new wkp();
+      ((wkp)localObject2).jdField_a_of_type_Boolean = false;
+      ((wkp)localObject2).jdField_a_of_type_Int = 2;
+      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.setShareClickListener(a((wkp)localObject2));
       this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      this.jdField_a_of_type_Bbcj.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar);
+      this.jdField_a_of_type_Bcfj.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar);
       localObject1 = new ViewStub(a());
       localObject2 = new FrameLayout.LayoutParams(-1, -1);
       ((FrameLayout.LayoutParams)localObject2).gravity = 80;
       ((ViewStub)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      this.jdField_a_of_type_Bbcj.jdField_a_of_type_AndroidWidgetFrameLayout.addView((View)localObject1);
-      this.jdField_a_of_type_Bbcj.c.setPadding(0, 0, 0, ImmersiveUtils.a(50.0F));
+      this.jdField_a_of_type_Bcfj.jdField_a_of_type_AndroidWidgetFrameLayout.addView((View)localObject1);
+      this.jdField_a_of_type_Bcfj.c.setPadding(0, 0, 0, ImmersiveUtils.a(50.0F));
     } while (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a() == null);
     this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a().b((ViewStub)localObject1);
   }
@@ -283,16 +304,16 @@ public class SubscribeHybirdFragment
     getWebView().setHorizontalScrollBarEnabled(false);
     getWebView().getSettings().setDefaultTextEncodingName("utf-8");
     getWebView().getSettings().setUserAgentString(getWebView().getSettings().getUserAgentString() + " QQ_APP_Subscribe");
-    if (badq.g(getActivity())) {
+    if (bbev.g(getActivity())) {
       getWebView().getSettings().setCacheMode(2);
     }
-    if ((this.jdField_a_of_type_Bbcj != null) && (this.jdField_a_of_type_Bbcj.jdField_a_of_type_Bbpa != null)) {
-      this.jdField_a_of_type_Bbcj.jdField_a_of_type_Bbpa.a(false);
+    if ((this.jdField_a_of_type_Bcfj != null) && (this.jdField_a_of_type_Bcfj.jdField_a_of_type_Bcsc != null)) {
+      this.jdField_a_of_type_Bcfj.jdField_a_of_type_Bcsc.a(false);
     }
     switch (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType)
     {
     default: 
-      if ((awnu.b()) && (Build.VERSION.SDK_INT >= 23))
+      if ((axmt.b()) && (Build.VERSION.SDK_INT >= 23))
       {
         if (this.d != null) {
           this.d.setBackgroundColor(-1);
@@ -301,36 +322,47 @@ public class SubscribeHybirdFragment
         getActivity().getWindow().getDecorView().setSystemUiVisibility(this.jdField_a_of_type_Int);
       }
       if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType == 8002) {
-        this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+        this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
       }
       break;
     }
     for (;;)
     {
-      n();
-      i();
-      k();
-      return i;
-      l();
+      o();
       j();
+      l();
+      if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType == 8001) {
+        this.jdField_a_of_type_Wsr = new wsr(getActivity());
+      }
+      if (getActivity() != null)
+      {
+        this.jdField_a_of_type_Wqj = new wqj(this, null);
+        paramBundle = new IntentFilter();
+        paramBundle.addAction("action_update_follow_state");
+        paramBundle.addAction("action_get_lbs_location");
+        getActivity().registerReceiver(this.jdField_a_of_type_Wqj, paramBundle);
+      }
+      return i;
+      m();
+      k();
       break;
       if ((getActivity().getIntent() != null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType == 8002))
       {
-        this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         break;
       }
-      this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       break;
-      paramBundle = new vxn();
+      paramBundle = new wkp();
       paramBundle.jdField_a_of_type_Boolean = true;
       paramBundle.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(a(paramBundle));
+      this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(a(paramBundle));
     }
   }
   
   public void a(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if (vvy.c(paramStFeed.type.get()))
+    if (wiv.c(paramStFeed.type.get()))
     {
       if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -344,7 +376,7 @@ public class SubscribeHybirdFragment
     do
     {
       return;
-      vvy.a(getActivity(), paramStFeed);
+      wiv.a(getActivity(), paramStFeed);
     } while (getActivity() == null);
     getActivity().finish();
   }
@@ -366,7 +398,7 @@ public class SubscribeHybirdFragment
       this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.icon.set(paramString3);
       this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.desc.set(paramString4);
       paramString2 = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.type;
-      if (!baip.a(paramString5)) {
+      if (!bbjw.a(paramString5)) {
         break label108;
       }
     }
@@ -374,7 +406,7 @@ public class SubscribeHybirdFragment
     for (int i = 0;; i = Integer.parseInt(paramString5))
     {
       paramString2.set(i);
-      wye.a(paramString1, "auth_person", "exp", 0, 0, new String[0]);
+      xhe.a(paramString1, "auth_person", "exp", 0, 0, new String[0]);
       return;
     }
   }
@@ -392,24 +424,24 @@ public class SubscribeHybirdFragment
     }
   }
   
-  public void a(vxn paramvxn)
+  public void a(wkp paramwkp)
   {
-    vxn localvxn = paramvxn;
-    if (paramvxn == null) {
-      localvxn = new vxn();
+    wkp localwkp = paramwkp;
+    if (paramwkp == null) {
+      localwkp = new wkp();
     }
-    if (this.jdField_a_of_type_Wfz != null)
+    if (this.jdField_a_of_type_Wva != null)
     {
-      a(localvxn.jdField_a_of_type_Int);
-      localvxn.jdField_a_of_type_JavaLangString = b();
-      localvxn.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-      localvxn.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare;
-      localvxn.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-      this.jdField_a_of_type_Wfz.a(localvxn, this.jdField_a_of_type_Alrv);
+      a(localwkp.jdField_a_of_type_Int);
+      localwkp.jdField_a_of_type_JavaLangString = b();
+      localwkp.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+      localwkp.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare;
+      localwkp.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+      this.jdField_a_of_type_Wva.a(localwkp, this.jdField_a_of_type_Amgo);
     }
   }
   
-  public void ac_()
+  public void aa_()
   {
     Intent localIntent = new Intent();
     localIntent.setAction("action_reload_get_main_page");
@@ -420,16 +452,16 @@ public class SubscribeHybirdFragment
   
   public int c(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bbcj.jdField_a_of_type_Bbcm.B = false;
-    this.jdField_a_of_type_Bbcj.jdField_a_of_type_Bbcm.f = true;
-    this.jdField_a_of_type_Wfz = new wfz(a());
-    m();
+    this.jdField_a_of_type_Bcfj.jdField_a_of_type_Bcfm.B = false;
+    this.jdField_a_of_type_Bcfj.jdField_a_of_type_Bcfm.f = true;
+    this.jdField_a_of_type_Wva = new wva(a());
+    n();
     return super.c(paramBundle);
   }
   
   public void f()
   {
-    if ((this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar != null) && (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a())) {
+    if ((this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar != null) && (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.b())) {
       return;
     }
     String str;
@@ -442,7 +474,7 @@ public class SubscribeHybirdFragment
     }
     for (;;)
     {
-      wye.a(this.f, str, "clk_return", 0, 0, new String[] { "", "" });
+      xhe.a(this.f, str, "clk_return", 0, 0, new String[] { "", "" });
       super.f();
       return;
       str = "auth_image";
@@ -450,6 +482,18 @@ public class SubscribeHybirdFragment
       str = "auth_video";
       continue;
       str = "auth_person";
+    }
+  }
+  
+  public void i()
+  {
+    if (a() != null)
+    {
+      Intent localIntent = new Intent();
+      localIntent.setAction("action_refresh_return_page");
+      if (a() != null) {
+        a().sendBroadcast(localIntent);
+      }
     }
   }
   
@@ -462,27 +506,30 @@ public class SubscribeHybirdFragment
     if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
     }
-    if (this.jdField_a_of_type_Alrv != null) {
-      this.jdField_a_of_type_Alrv.c();
+    if (this.jdField_a_of_type_Amgo != null) {
+      this.jdField_a_of_type_Amgo.c();
     }
-    if (this.jdField_a_of_type_Wfz != null) {
-      this.jdField_a_of_type_Wfz.b();
+    if (this.jdField_a_of_type_Wva != null) {
+      this.jdField_a_of_type_Wva.b();
+    }
+    if ((getActivity() != null) && (this.jdField_a_of_type_Wqj != null)) {
+      getActivity().unregisterReceiver(this.jdField_a_of_type_Wqj);
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Alrv != null) {
-      this.jdField_a_of_type_Alrv.b();
+    if (this.jdField_a_of_type_Amgo != null) {
+      this.jdField_a_of_type_Amgo.b();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Alrv != null) {
-      this.jdField_a_of_type_Alrv.a();
+    if (this.jdField_a_of_type_Amgo != null) {
+      this.jdField_a_of_type_Amgo.a();
     }
   }
 }

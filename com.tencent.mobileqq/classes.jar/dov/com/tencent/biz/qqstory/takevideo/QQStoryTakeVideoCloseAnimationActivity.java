@@ -1,6 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import ajed;
+import ajsf;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
   
   static
   {
-    jdField_a_of_type_JavaLangString = ajed.bl + "qqstory/animation_cover.jpg";
+    jdField_a_of_type_JavaLangString = ajsf.bn + "qqstory/animation_cover.jpg";
   }
   
   public boolean doOnCreate(Bundle paramBundle)

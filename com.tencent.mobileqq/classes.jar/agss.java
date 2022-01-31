@@ -1,48 +1,71 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.text.DecimalFormat;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import mqq.util.WeakReference;
 
-public class agss
+public abstract class agss
 {
-  public static String a;
-  public static DecimalFormat a;
-  private static boolean a;
-  public static String b;
-  public static String c;
-  private static String d;
-  public int a;
-  public long a;
-  public int b;
-  public long b;
+  protected static volatile agss a;
+  public agsb a;
+  public agsq a;
+  agst jdField_a_of_type_Agst = null;
+  public agsu a;
+  agsv jdField_a_of_type_Agsv = null;
+  public WeakReference<NewPhotoPreviewActivity> a;
   
-  static
+  protected agss(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    jdField_a_of_type_JavaLangString = "http://i.gtimg.cn/channel/exclusive_hb/socialpay_makehb_ani_";
-    jdField_b_of_type_JavaLangString = "http://i.gtimg.cn/channel/exclusive_hb/socialpay_aio_ani_";
-    c = jdField_a_of_type_JavaLangString;
-    d = jdField_b_of_type_JavaLangString;
-    jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#0.00");
-  }
-  
-  public static String a()
-  {
-    if (!jdField_a_of_type_Boolean)
-    {
-      QQAppInterface localQQAppInterface = agwj.a();
-      if (localQQAppInterface != null) {
-        d = ((agmq)localQQAppInterface.getManager(245)).a("hb_exclusive", jdField_b_of_type_JavaLangString, new String[] { "aio_red", "prefix" });
-      }
+    this.jdField_a_of_type_Agsu = null;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramNewPhotoPreviewActivity);
+    this.jdField_a_of_type_Agsb = agsb.a(paramNewPhotoPreviewActivity.getIntent().getBooleanExtra("NEED_NEW_PHOTO_COMMON_DATA", true));
+    paramNewPhotoPreviewActivity.getIntent().putExtra("NEED_NEW_PHOTO_COMMON_DATA", false);
+    this.jdField_a_of_type_Agsb.a();
+    this.jdField_a_of_type_Agsq = new agsq();
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoPreviewActivity", 2, "PhotoPreviewLogic new，activity = " + paramNewPhotoPreviewActivity + ",PhotoCommonData = " + this.jdField_a_of_type_Agsb);
     }
-    return d;
   }
   
-  public String toString()
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(Intent paramIntent);
+  
+  abstract void a(View paramView);
+  
+  abstract void a(View paramView, int paramInt1, Bundle paramBundle, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(CompoundButton paramCompoundButton, boolean paramBoolean);
+  
+  abstract void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public void b()
   {
-    return "SpecifyAnimInfo{aId=" + this.jdField_a_of_type_Int + ", minPrice=" + this.jdField_a_of_type_Long + ", maxPrice=" + this.jdField_b_of_type_Long + ", skinId=" + this.jdField_b_of_type_Int + '}';
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoPreviewActivity", 2, "PhotoPreviewLogic close，activity = " + this.jdField_a_of_type_MqqUtilWeakReference.get() + ",PhotoCommonData = " + this.jdField_a_of_type_Agsb);
+    }
+    this.jdField_a_of_type_Agsb.b();
+    jdField_a_of_type_Agss = null;
   }
+  
+  public abstract void c();
+  
+  abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agss
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,36 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
-
-class ayti
-  extends wlz
+public class ayti
 {
-  ayti(ayth paramayth) {}
+  public int a;
+  public ayth a;
+  public aytj a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public boolean b;
+  public int c = 3;
+  public int d = 25;
+  public int e = 450000;
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  public ayti()
   {
-    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {}
-    do
-    {
-      return;
-      paramBundle = paramBundle.getString("itemKey");
-    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId != 25));
-    ayth.a(this.a, paramBoolean, paramInt1, paramInt2, paramString1, paramString2, paramString3);
+    this.jdField_a_of_type_Int = 480000;
+    this.jdField_b_of_type_Int = 9;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 30000;
+    this.jdField_b_of_type_Int = 1;
+    this.c = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ayti
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,32 @@
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import android.opengl.GLSurfaceView.EGLConfigChooser;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class aitt
-  implements aiil
+  implements GLSurfaceView.EGLConfigChooser
 {
-  private SoftReference<ApolloGuestsStateActivity> a;
+  private int a;
   
-  public aitt(ApolloGuestsStateActivity paramApolloGuestsStateActivity)
+  public aitt(int paramInt)
   {
-    this.a = new SoftReference(paramApolloGuestsStateActivity);
+    QLog.i("ApolloSurfaceView", 1, "[ApolloConfigChooser], multiValue:" + paramInt);
+    this.a = paramInt;
   }
   
-  public void onNotifyLongTouch(String paramString) {}
-  
-  public void onNotifyStatusChanged(int paramInt, String paramString) {}
-  
-  public void onSurfaceReady(int paramInt1, int paramInt2)
+  public EGLConfig chooseConfig(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGuestsStateActivity", 2, "apollo view is Ready.");
+    int i = this.a;
+    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    paramEGL10.eglChooseConfig(paramEGLDisplay, new int[] { 12329, 0, 12352, 4, 12351, 12430, 12324, 8, 12323, 8, 12322, 8, 12325, 16, 12321, 8, 12326, 0, 12338, 1, 12337, i, 12344 }, arrayOfEGLConfig, 1, arrayOfInt);
+    if (arrayOfInt[0] == 0)
+    {
+      QLog.e("ApolloSurfaceView", 1, "[ApolloConfigChooser], fail to set config");
+      return null;
     }
-    ApolloGuestsStateActivity localApolloGuestsStateActivity = (ApolloGuestsStateActivity)this.a.get();
-    if ((localApolloGuestsStateActivity == null) || (localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView == null) || (ApolloGuestsStateActivity.a(localApolloGuestsStateActivity) == null)) {
-      return;
-    }
-    float f3 = ajia.a() / 16.0F;
-    float f2 = localApolloGuestsStateActivity.c;
-    float f1 = f2;
-    if (0.0F != f3) {
-      f1 = f2 / f3;
-    }
-    localApolloGuestsStateActivity.jdField_a_of_type_Float = (paramInt1 / 2 / f1);
-    if (localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl() != null) {
-      localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a();
-    }
-    ApolloGuestsStateActivity.a(localApolloGuestsStateActivity).c();
-    localApolloGuestsStateActivity.b = paramInt1;
+    return arrayOfEGLConfig[0];
   }
 }
 

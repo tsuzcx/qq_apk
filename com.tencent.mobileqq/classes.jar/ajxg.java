@@ -1,19 +1,29 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache;
-import java.io.File;
-import java.util.Comparator;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ajxg
-  implements Comparator<File>
+public abstract interface ajxg
 {
-  public ajxg(CleanCache paramCleanCache) {}
+  public abstract ViewGroup a();
   
-  public int a(File paramFile1, File paramFile2)
-  {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
-    }
-    return 0;
-  }
+  public abstract bfwg a(String paramString);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(Configuration paramConfiguration);
+  
+  public abstract void a(QQAppInterface paramQQAppInterface);
+  
+  public abstract void a(String paramString, bfwg parambfwg);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

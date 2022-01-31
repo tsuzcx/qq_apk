@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/lr9" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/efs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ProgressBar android:id="@id/e21" android:layout_width="60.0dip" android:layout_height="14.5dip" android:layout_marginTop="12.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/av0" android:indeterminateBehavior="repeat" android:layout_below="@id/gg1" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="16.0dip" android:textColor="#aa000000" android:id="@id/gg1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="正在加载中..." android:includeFontPadding="false" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

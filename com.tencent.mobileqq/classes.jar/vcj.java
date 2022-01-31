@@ -1,45 +1,16 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import java.util.List;
 
-public class vcj
-  extends vcg<vca>
-  implements View.OnClickListener
+class vcj
+  implements vco
 {
-  public vcj(Context paramContext)
-  {
-    super(paramContext);
-  }
+  vcj(vci paramvci, ImageView paramImageView) {}
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void a(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_Vbx == null) {
-      return paramView;
+    if (paramDrawable != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
     }
-    if (paramView == null) {}
-    for (paramView = new vck(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((vca)this.jdField_a_of_type_Vbx).a(), ((vca)this.jdField_a_of_type_Vbx).a(), this);; paramView = (vck)paramView)
-    {
-      paramView.a((vca)this.jdField_a_of_type_Vbx, paramInt, getCount());
-      return paramView;
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    int i = ((Integer)paramView.getTag(2131311062)).intValue();
-    vcb localvcb = (vcb)((vca)this.jdField_a_of_type_Vbx).a.get(i);
-    paramView = (ImageView)paramView;
-    Boolean localBoolean = (Boolean)paramView.getTag(2131311040);
-    if ((localBoolean != null) && (localBoolean.booleanValue()))
-    {
-      localvcb.a = paramView.getDrawable();
-      this.jdField_a_of_type_Vbz.a(localvcb);
-      return;
-    }
-    urk.b("LocationFaceAdapter", "ImageView drawable has not been downloaded.");
   }
 }
 

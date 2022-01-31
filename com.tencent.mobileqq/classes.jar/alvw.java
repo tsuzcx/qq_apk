@@ -1,53 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.ArkEnvironmentManager.LibraryLoader;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 final class alvw
-  implements amqm
+  implements ArkEnvironmentManager.LibraryLoader
 {
-  public void a(String paramString1, String paramString2)
+  public boolean Load()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(alvv.a(), 2, paramString2);
-    }
+    ArkAppCenter.f();
+    return ArkAppCenter.b;
   }
   
-  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public boolean isLibraryLoad()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(alvv.a(), 2, paramString2, paramThrowable);
-    }
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(alvv.a(), 2, paramString2);
-    }
-  }
-  
-  public void c(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(alvv.a(), 2, paramString2);
-    }
-  }
-  
-  public void d(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(alvv.a(), 2, paramString2);
-    }
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(alvv.a(), 2, paramString2);
-    }
+    return ArkAppCenter.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alvw
  * JD-Core Version:    0.7.0.1
  */

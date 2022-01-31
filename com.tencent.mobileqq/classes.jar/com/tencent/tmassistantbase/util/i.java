@@ -1,13 +1,13 @@
 package com.tencent.tmassistantbase.util;
 
-class i
-  implements Runnable
+import java.text.SimpleDateFormat;
+
+final class i
+  extends ThreadLocal<SimpleDateFormat>
 {
-  i(GlobalUtil paramGlobalUtil) {}
-  
-  public void run()
+  protected SimpleDateFormat a()
   {
-    ac.a(this.a.mContext);
+    return new SimpleDateFormat("yyyyMMdd");
   }
 }
 

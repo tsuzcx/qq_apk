@@ -1,7 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
-import qvx;
+import java.util.Iterator;
+import java.util.List;
+import osc;
 
 class KandianMergeManager$32
   implements Runnable
@@ -10,12 +11,12 @@ class KandianMergeManager$32
   
   public void run()
   {
-    if ((KandianMergeManager.a(this.this$0) != null) && (this.this$0.h()))
+    if (KandianMergeManager.a(this.this$0) != null)
     {
-      Kandian210Msg0xeeInfo localKandian210Msg0xeeInfo = KandianMergeManager.a(this.this$0);
-      KandianMergeManager.a(this.this$0, null);
-      Kandian210Msg0xeeInfo.removeKandian210Msg0xeeInfoFromSp();
-      qvx.a().a(localKandian210Msg0xeeInfo);
+      Iterator localIterator = KandianMergeManager.a(this.this$0).iterator();
+      while (localIterator.hasNext()) {
+        ((osc)localIterator.next()).b();
+      }
     }
   }
 }

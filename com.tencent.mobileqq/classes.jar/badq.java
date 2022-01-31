@@ -1,120 +1,34 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.net.NetworkInfo;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import cooperation.qzone.util.NetworkState;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.data.TroopInfo;
 
 public class badq
+  implements Comparable<badq>
 {
-  public static int a(int paramInt)
+  public int a;
+  public TroopInfo a;
+  public String a;
+  public int b;
+  
+  public int a(@NonNull badq parambadq)
   {
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      return 2;
-    case 1: 
-    case 4: 
-    case 5: 
-      return 4;
+    if (this.b != parambadq.b) {
+      return this.b - parambadq.b;
     }
-    return 3;
-  }
-  
-  public static int a(Context paramContext)
-  {
-    int j = mpl.a();
-    int i = j;
-    if (j == -1) {
-      i = 2;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime != parambadq.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime) {
+      return (int)(parambadq.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime);
     }
-    return i;
-  }
-  
-  public static String a(int paramInt)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(paramInt & 0xFF).append(".").append(paramInt >> 8 & 0xFF).append(".").append(paramInt >> 16 & 0xFF).append(".").append(paramInt >> 24 & 0xFF);
-    return localStringBuffer.toString();
-  }
-  
-  public static String a(Context paramContext)
-  {
-    return NetworkState.getAPN();
-  }
-  
-  public static boolean a()
-  {
-    return AppNetConnInfo.isNetSupport();
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return AppNetConnInfo.isWifiConn();
-  }
-  
-  public static boolean a(NetworkInfo paramNetworkInfo)
-  {
-    return HwNetworkUtil.isMobileNetworkInfo(paramNetworkInfo);
-  }
-  
-  public static int b(Context paramContext)
-  {
-    int j = -1;
-    int i = j;
-    if (AppNetConnInfo.isNetSupport())
-    {
-      paramContext = AppNetConnInfo.getRecentNetworkInfo();
-      i = j;
-      if (paramContext != null) {
-        i = paramContext.getType();
-      }
+    if (parambadq.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime != this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime) {
+      return (int)(parambadq.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime);
     }
-    return i;
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    return AppNetConnInfo.isMobileConn();
-  }
-  
-  public static boolean c(Context paramContext)
-  {
-    int i = bbth.a(paramContext);
-    return (i == 4) || (i == 3);
-  }
-  
-  public static boolean d(Context paramContext)
-  {
-    return AppNetConnInfo.isNetSupport();
-  }
-  
-  public static boolean e(Context paramContext)
-  {
-    return HwNetworkUtil.isNetSupport(paramContext);
-  }
-  
-  @TargetApi(13)
-  public static boolean f(Context paramContext)
-  {
-    return (Build.VERSION.SDK_INT >= 13) && (b(paramContext) == 7);
-  }
-  
-  public static boolean g(Context paramContext)
-  {
-    return AppNetConnInfo.isNetSupport();
-  }
-  
-  public static boolean h(Context paramContext)
-  {
-    return NetworkState.isWifiConn();
+    if (this.jdField_a_of_type_Int != parambadq.jdField_a_of_type_Int) {
+      return this.jdField_a_of_type_Int - parambadq.jdField_a_of_type_Int;
+    }
+    return this.jdField_a_of_type_JavaLangString.compareTo(parambadq.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     badq
  * JD-Core Version:    0.7.0.1
  */

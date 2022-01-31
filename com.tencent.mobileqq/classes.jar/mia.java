@@ -1,18 +1,14 @@
-public abstract interface mia
+import com.tencent.av.ui.QavPanel;
+
+public class mia
+  implements mij
 {
-  public abstract void a();
+  public mia(QavPanel paramQavPanel, Runnable paramRunnable) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangRunnable.run();
+  }
 }
 
 

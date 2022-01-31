@@ -1,24 +1,18 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
-class bieo
-  extends QQUIEventReceiver<bief, bikt>
+public abstract interface bieo
 {
-  public bieo(@NonNull bief parambief)
-  {
-    super(parambief);
-  }
+  public abstract void a(int paramInt, bidv parambidv, String paramString);
   
-  public void a(@NonNull bief parambief, @NonNull bikt parambikt) {}
+  public abstract void a(long paramLong, boolean paramBoolean, bidv parambidv);
   
-  public Class acceptEventClass()
-  {
-    return bikt.class;
-  }
+  public abstract void a(long paramLong, boolean paramBoolean1, bidw parambidw, boolean paramBoolean2);
+  
+  public abstract void a(String paramString, List<bidv> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bieo
  * JD-Core Version:    0.7.0.1
  */

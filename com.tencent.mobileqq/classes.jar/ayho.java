@@ -1,21 +1,28 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.view.View;
+import java.util.List;
 
-public class ayho
-  implements ayhs
+class ayho
+  implements bfoq
 {
-  public ayho(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
+  ayho(ayhl paramayhl, List paramList, ayir paramayir, bfol parambfol) {}
   
-  public void a(Bitmap paramBitmap)
+  public void OnClick(View paramView, int paramInt)
   {
-    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_Bbsh);
-    WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      paramView = (ayis)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (ayhl.a(this.jdField_a_of_type_Ayhl) != null) {
+        ayhl.a(this.jdField_a_of_type_Ayhl).a(paramView.b(), this.jdField_a_of_type_Ayir);
+      }
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+    }
+    this.jdField_a_of_type_Bfol.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayho
  * JD-Core Version:    0.7.0.1
  */

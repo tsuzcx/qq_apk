@@ -1,34 +1,23 @@
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class asff
-  extends axos
+  extends aoeu
 {
-  private NearbyAppInterface a;
+  public asff(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
   
-  public asff(NearbyAppInterface paramNearbyAppInterface)
+  protected void a(boolean paramBoolean, ArrayList<Long> paramArrayList)
   {
-    super(paramNearbyAppInterface);
-    this.a = paramNearbyAppInterface;
-  }
-  
-  public axou a(axvt paramaxvt)
-  {
-    if (paramaxvt == null) {}
-    do
-    {
-      return null;
-      if ((paramaxvt.b == 8) || (paramaxvt.b == 64) || (paramaxvt.b == 21)) {
-        return new axsm(this, paramaxvt);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.richmedia.TransFileController", 2, paramaxvt.toString());
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("MatchChatMsgListFragment", 2, String.format("onGetExtendFriendOnlineState success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    MatchChatMsgListFragment.a(this.a, paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asff
  * JD-Core Version:    0.7.0.1
  */

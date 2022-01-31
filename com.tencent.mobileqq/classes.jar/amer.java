@@ -1,18 +1,23 @@
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
 
-class amer
-  implements bhnx
+public final class amer
+  implements Parcelable.Creator<CardOCRInfo>
 {
-  amer(ameq paramameq) {}
-  
-  public void a(String paramString)
+  public CardOCRInfo a(Parcel paramParcel)
   {
-    ((QIMMusicConfigManager)bhfm.a(2)).a(paramString);
+    return new CardOCRInfo(paramParcel);
+  }
+  
+  public CardOCRInfo[] a(int paramInt)
+  {
+    return new CardOCRInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amer
  * JD-Core Version:    0.7.0.1
  */

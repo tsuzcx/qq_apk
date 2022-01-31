@@ -1,56 +1,18 @@
-import android.widget.BaseAdapter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
-public abstract class rfj<T>
-  extends BaseAdapter
-  implements rfl
+public class rfj
+  implements ayby
 {
-  private int jdField_a_of_type_Int;
-  private HashMap<T, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public rfj(ReadInJoySkinSlideDownView paramReadInJoySkinSlideDownView) {}
   
-  protected void a(T paramT)
+  public void a(int paramInt1, int paramInt2)
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    localHashMap.put(paramT, Integer.valueOf(i));
-  }
-  
-  protected void a(List<T> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      a(paramList.next());
-    }
-  }
-  
-  protected void b()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  public T getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilHashMap.size())) {
-      return -1L;
-    }
-    Object localObject = getItem(paramInt);
-    if (this.jdField_a_of_type_JavaUtilHashMap.get(localObject) != null) {
-      return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).intValue();
-    }
-    return paramInt;
-  }
-  
-  public final boolean hasStableIds()
-  {
-    return true;
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+    localLayoutParams.width = paramInt1;
+    localLayoutParams.height = this.a.getHeight();
+    this.a.a.setLayoutParams(localLayoutParams);
   }
 }
 

@@ -1,103 +1,33 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
+import com.tencent.mobileqq.search.model.BusinessGroupWord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class awli
+public class awli
+  extends akiz
 {
-  private BufferedReader jdField_a_of_type_JavaIoBufferedReader;
-  private InputStream jdField_a_of_type_JavaIoInputStream;
-  private InputStreamReader jdField_a_of_type_JavaIoInputStreamReader;
-  public Process a;
+  public awli(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
   
-  public void a()
+  public void a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_JavaLangProcess != null)
-    {
-      this.jdField_a_of_type_JavaIoInputStream = this.jdField_a_of_type_JavaLangProcess.getInputStream();
-      this.jdField_a_of_type_JavaIoInputStreamReader = new InputStreamReader(this.jdField_a_of_type_JavaIoInputStream);
-      this.jdField_a_of_type_JavaIoBufferedReader = new BufferedReader(this.jdField_a_of_type_JavaIoInputStreamReader);
+    super.a(paramInt, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.w(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "unify handleBusiHotWordError code=" + paramInt + " errorMsg;" + paramString);
     }
   }
   
-  public void b()
+  public void a(int paramInt, List<BusinessGroupWord> paramList)
   {
-    if (this.jdField_a_of_type_JavaLangProcess != null) {}
-    try
-    {
-      for (;;)
-      {
-        String str = this.jdField_a_of_type_JavaIoBufferedReader.readLine();
-        if (str == null) {
-          break;
-        }
-        awlg.a("[@] compressVideo log:" + str, null);
-      }
-      label177:
-      return;
-    }
-    catch (IOException localIOException1)
-    {
-      for (;;)
-      {
-        try
-        {
-          if (this.jdField_a_of_type_JavaIoInputStream != null) {
-            this.jdField_a_of_type_JavaIoInputStream.close();
-          }
-          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
-            this.jdField_a_of_type_JavaIoInputStreamReader.close();
-          }
-          if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
-            this.jdField_a_of_type_JavaIoBufferedReader.close();
-          }
-          return;
-        }
-        catch (IOException localIOException3) {}
-        try
-        {
-          if (this.jdField_a_of_type_JavaIoInputStream != null) {
-            this.jdField_a_of_type_JavaIoInputStream.close();
-          }
-          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
-            this.jdField_a_of_type_JavaIoInputStreamReader.close();
-          }
-          if (this.jdField_a_of_type_JavaIoBufferedReader == null) {
-            continue;
-          }
-          this.jdField_a_of_type_JavaIoBufferedReader.close();
-          return;
-        }
-        catch (IOException localIOException2)
-        {
-          return;
-        }
-      }
-    }
-    finally
-    {
-      try
-      {
-        if (this.jdField_a_of_type_JavaIoInputStream != null) {
-          this.jdField_a_of_type_JavaIoInputStream.close();
-        }
-        if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
-          this.jdField_a_of_type_JavaIoInputStreamReader.close();
-        }
-        if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
-          this.jdField_a_of_type_JavaIoBufferedReader.close();
-        }
-      }
-      catch (IOException localIOException4)
-      {
-        break label177;
-      }
+    HotWordsForSubBussFragment.jdField_a_of_type_Int = paramInt;
+    HotWordsForSubBussFragment.a(this.a, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.i(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "unify handleTabSearchResult expireTime;" + HotWordsForSubBussFragment.jdField_a_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awli
  * JD-Core Version:    0.7.0.1
  */

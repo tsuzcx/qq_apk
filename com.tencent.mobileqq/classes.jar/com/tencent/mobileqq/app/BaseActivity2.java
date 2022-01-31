@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import ajeu;
-import ajrw;
+import ajsw;
+import akgg;
 import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -19,8 +19,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import awdp;
-import awrn;
+import axcx;
+import axrl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
@@ -41,7 +41,7 @@ public class BaseActivity2
   extends BaseActivity
   implements SkinnableActivityProcesser.Callback
 {
-  private static ajrw jdField_a_of_type_Ajrw;
+  private static akgg jdField_a_of_type_Akgg;
   public static BaseActivity2 a;
   private static boolean jdField_a_of_type_Boolean;
   public static boolean ab = true;
@@ -150,7 +150,7 @@ public class BaseActivity2
   
   public int e()
   {
-    return getResources().getDimensionPixelSize(2131167766);
+    return getResources().getDimensionPixelSize(2131298865);
   }
   
   protected boolean f()
@@ -211,84 +211,93 @@ public class BaseActivity2
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    if (getIntent().getLongExtra("TIMESTAMP_START_ACTIVITY", 0L) != 0L)
-    {
-      awdp.e = System.currentTimeMillis();
-      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_CREATE ", Long.valueOf(awdp.e) });
-    }
     if (QLog.isColorLevel()) {
       QLog.i("BaseActivity2", 2, "[" + hashCode() + "]" + this.jdField_a_of_type_JavaLangString + " process id =" + Process.myPid() + " onCreate task : " + getTaskId());
     }
     try
     {
-      this.q = BaseApplicationImpl.sApplication.getSharedPreferences("Last_Login", 4).getString("uin", null);
-      if ((this.q == null) && (QLog.isColorLevel())) {
-        QLog.d("BaseActivity2", 1, "last uin is null.. has porblem");
-      }
-      ThreadManagerV2.excute(new BaseActivity2.LogActivityOnCreateRunnalbe(this), 16, null, true);
-      if (InitSkin.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentThemeSkinnableActivityProcesser = new SkinnableActivityProcesser(this, this);
-      }
-      paramBundle = getIntent().getExtras();
-      if (paramBundle != null)
+      if (getIntent().getLongExtra("TIMESTAMP_START_ACTIVITY", 0L) != 0L)
       {
-        int i = paramBundle.getInt("fling_action_key");
-        if ((i != 0) && (a()))
-        {
-          if (1 == i) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler = new FlingTrackerHandler(this);
-          }
-        }
-        else {
-          this.aa = paramBundle.getBoolean("PhotoConst.ALLOW_LOCK", true);
-        }
-      }
-      else if (!jdField_a_of_type_Boolean)
-      {
-        b();
-        jdField_a_of_type_Boolean = true;
+        axcx.e = System.currentTimeMillis();
+        QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_CREATE ", Long.valueOf(axcx.e) });
       }
     }
-    catch (IllegalStateException paramBundle)
+    catch (Exception paramBundle)
     {
       try
       {
-        for (;;)
+        this.q = BaseApplicationImpl.sApplication.getSharedPreferences("Last_Login", 4).getString("uin", null);
+        if ((this.q == null) && (QLog.isColorLevel())) {
+          QLog.d("BaseActivity2", 1, "last uin is null.. has problem");
+        }
+        ThreadManagerV2.excute(new BaseActivity2.LogActivityOnCreateRunnalbe(this), 16, null, true);
+        if (InitSkin.jdField_a_of_type_Boolean) {
+          this.jdField_a_of_type_ComTencentThemeSkinnableActivityProcesser = new SkinnableActivityProcesser(this, this);
+        }
+        paramBundle = getIntent().getExtras();
+        if (paramBundle != null)
         {
-          paramBundle = new IntentFilter();
-          paramBundle.addAction("android.intent.action.SCREEN_OFF");
-          this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ajeu(this, null);
-          registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-          if ((this.ac) && (ImmersiveUtils.isSupporImmersive() == 1))
+          int i = paramBundle.getInt("fling_action_key");
+          if ((i != 0) && (a()))
           {
-            getWindow().addFlags(67108864);
-            if (this.ad)
-            {
-              this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(this, true, getResources().getColor(2131101315));
-              if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
-                break;
-              }
-              this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusDrawable(getResources().getDrawable(2130845215));
+            if (1 == i) {
+              this.jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler = new FlingTrackerHandler(this);
             }
           }
-          return;
-          paramBundle = paramBundle;
-          this.q = null;
-          if (QLog.isColorLevel()) {
-            QLog.e("BaseActivity2", 2, "Get lastLoginUin error", paramBundle);
+          else {
+            this.aa = paramBundle.getBoolean("PhotoConst.ALLOW_LOCK", true);
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler = new FlingGestureHandler(this);
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
+        else if (!jdField_a_of_type_Boolean)
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("BaseActivity2", 2, "registerReceiver error", paramBundle);
-          }
+          b();
+          jdField_a_of_type_Boolean = true;
         }
-        this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusDrawable(null);
+      }
+      catch (IllegalStateException paramBundle)
+      {
+        try
+        {
+          for (;;)
+          {
+            paramBundle = new IntentFilter();
+            paramBundle.addAction("android.intent.action.SCREEN_OFF");
+            this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ajsw(this, null);
+            registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
+            if ((this.ac) && (ImmersiveUtils.isSupporImmersive() == 1))
+            {
+              getWindow().addFlags(67108864);
+              if (this.ad)
+              {
+                this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(this, true, getResources().getColor(2131166910));
+                if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
+                  break;
+                }
+                this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusDrawable(getResources().getDrawable(2130845303));
+              }
+            }
+            return;
+            paramBundle = paramBundle;
+            QLog.e("BaseActivity2", 1, "getLongExtra fail, ", paramBundle);
+            continue;
+            paramBundle = paramBundle;
+            this.q = null;
+            if (QLog.isColorLevel()) {
+              QLog.e("BaseActivity2", 2, "Get lastLoginUin error", paramBundle);
+            }
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler = new FlingGestureHandler(this);
+        }
+        catch (Exception paramBundle)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("BaseActivity2", 2, "registerReceiver error", paramBundle);
+            }
+          }
+          this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusDrawable(null);
+        }
       }
     }
   }
@@ -300,7 +309,7 @@ public class BaseActivity2
       QLog.i("BaseActivity2", 2, "[" + hashCode() + "]" + this.jdField_a_of_type_JavaLangString + " process id =" + Process.myPid() + " onDestroy task : " + getTaskId());
     }
     jdField_a_of_type_ComTencentMobileqqAppBaseActivity2 = null;
-    awrn.a(this).d(this);
+    axrl.a(this).d(this);
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {}
     try
     {
@@ -327,7 +336,7 @@ public class BaseActivity2
       QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.jdField_a_of_type_JavaLangString + " onPause");
     }
     this.Z = true;
-    awrn.a(this).c(this);
+    axrl.a(this).c(this);
     a();
   }
   
@@ -341,14 +350,14 @@ public class BaseActivity2
     super.onResume();
     if (getIntent().getLongExtra("TIMESTAMP_START_ACTIVITY", 0L) != 0L)
     {
-      awdp.i = System.currentTimeMillis();
-      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_RESUME ", Long.valueOf(awdp.i) });
+      axcx.i = System.currentTimeMillis();
+      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_RESUME ", Long.valueOf(axcx.i) });
     }
     if (QLog.isColorLevel()) {
       QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.jdField_a_of_type_JavaLangString + " onResume ");
     }
     this.Z = false;
-    awrn.a(this).b(this);
+    axrl.a(this).b(this);
     jdField_a_of_type_ComTencentMobileqqAppBaseActivity2 = this;
     this.h = SystemClock.uptimeMillis();
     int i;
@@ -402,8 +411,8 @@ public class BaseActivity2
     super.onStart();
     if (getIntent().getLongExtra("TIMESTAMP_START_ACTIVITY", 0L) != 0L)
     {
-      awdp.g = System.currentTimeMillis();
-      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_START ", Long.valueOf(awdp.g) });
+      axcx.g = System.currentTimeMillis();
+      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_START ", Long.valueOf(axcx.g) });
     }
     if (QLog.isColorLevel()) {
       QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.jdField_a_of_type_JavaLangString + " onStart");

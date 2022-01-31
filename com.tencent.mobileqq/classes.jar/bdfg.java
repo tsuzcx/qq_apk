@@ -1,24 +1,26 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class bdfg
 {
-  @bdmd(a="timeStamp")
-  public int a;
-  @bdmd(a="muteConfig")
-  public bdfe a;
-  @bdmd(a="signature")
-  public String a;
-  @bdmd(a="nonceStr")
-  public String b;
-  @bdmd(a="groupId")
-  public String c;
+  public static ArrayList<String> a;
+  public static HashMap<String, Class<?>> a;
   
-  public String toString()
+  static
   {
-    return "RoomConfig{signature='" + this.jdField_a_of_type_JavaLangString + '\'' + ", nonceStr='" + this.b + '\'' + ", timeStamp=" + this.jdField_a_of_type_Int + ", groupId=" + this.c + ", muteConfig=" + this.jdField_a_of_type_Bdfe + '}';
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilArrayList.add("getQueryDownloadAction");
+    jdField_a_of_type_JavaUtilArrayList.add("checkUpdate");
+    jdField_a_of_type_JavaUtilArrayList.add("picUpload");
+    jdField_a_of_type_JavaUtilArrayList.add("gSetPackageScanSetting");
+    jdField_a_of_type_JavaUtilArrayList.add("getAllSDKDownloadInfos");
+    jdField_a_of_type_JavaUtilArrayList.add("queryInstalledAppInfo");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdfg
  * JD-Core Version:    0.7.0.1
  */

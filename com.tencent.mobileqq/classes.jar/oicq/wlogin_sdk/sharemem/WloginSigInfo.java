@@ -330,7 +330,7 @@ public class WloginSigInfo
   
   public String getAllTicketString()
   {
-    return "A1[" + this._en_A1.length + "][" + this._create_time + "]\n" + "A2[" + this._TGT.length + "][0]\n" + "Pskey[" + this._psKey.length + "][" + this._psKey_create_time + "]\n" + "Pt4token[" + this._pt4Token.length + "][0]\n" + "WtST[" + this.wtSessionTicket.length + "][0]\n" + "WtSTKey" + this.wtSessionTicketKey.length + "][0]\n";
+    return "A1[" + this._en_A1.length + "][" + this._create_time + "]\nA2[" + this._TGT.length + "][0]\nPskey[" + this._psKey.length + "][" + this._psKey_create_time + "]\nPt4token[" + this._pt4Token.length + "][0]\nWtST[" + this.wtSessionTicket.length + "][0]\nWtSTKey" + this.wtSessionTicketKey.length + "][0]\n";
   }
   
   public boolean iSExpireA2(long paramLong)

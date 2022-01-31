@@ -1,14 +1,13 @@
-import android.view.View;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public abstract class vmd
-  extends vmg
+final class vmd
+  implements FilenameFilter
 {
-  public vmd(vmi paramvmi, View paramView)
+  public boolean accept(File paramFile, String paramString)
   {
-    super(paramvmi, paramView);
+    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp"));
   }
-  
-  public abstract int a();
 }
 
 

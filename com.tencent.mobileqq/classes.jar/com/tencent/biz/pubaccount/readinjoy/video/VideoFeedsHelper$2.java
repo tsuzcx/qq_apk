@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import qcn;
+import qol;
 
 public final class VideoFeedsHelper$2
   implements Runnable
 {
   public void run()
   {
-    qcn.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b);
+    qol.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b);
   }
 }
 

@@ -1,60 +1,60 @@
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
-import java.util.Calendar;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.limitchat.LimitChatDamon.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
 public class arqm
-  implements alxq
 {
-  private arqm(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  private static volatile arqm jdField_a_of_type_Arqm;
+  private long jdField_a_of_type_Long = -1L;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private ConcurrentHashMap<String, Bundle> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public int a()
+  public static arqm a()
   {
-    return 3;
+    if (jdField_a_of_type_Arqm == null) {}
+    try
+    {
+      if (jdField_a_of_type_Arqm == null) {
+        jdField_a_of_type_Arqm = new arqm();
+      }
+      return jdField_a_of_type_Arqm;
+    }
+    finally {}
   }
   
-  public int a(int paramInt)
+  public void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return MsgBackupDateFragment.c(this.a) - MsgBackupDateFragment.d(this.a) + 1;
-    case 1: 
-      return 12;
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
+      return;
     }
-    Calendar localCalendar = Calendar.getInstance();
-    if (MsgBackupDateFragment.b(this.a) == 1)
-    {
-      localCalendar.set(1, MsgBackupDateFragment.e(this.a) + MsgBackupDateFragment.d(this.a));
-      localCalendar.set(2, MsgBackupDateFragment.f(this.a));
-      localCalendar.set(5, 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatDamon", 2, "sendMessageReadConfirm invoke, uin:" + paramString);
     }
-    for (;;)
+    try
     {
-      return localCalendar.getActualMaximum(5);
-      localCalendar.set(1, MsgBackupDateFragment.g(this.a) + MsgBackupDateFragment.d(this.a));
-      localCalendar.set(2, MsgBackupDateFragment.h(this.a));
-      localCalendar.set(5, 1);
+      if (this.jdField_a_of_type_JavaLangRunnable != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("LimitChatDamon", 2, "sendMessageReadConfirm last request do not finish");
+        }
+        return;
+      }
     }
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return MsgBackupDateFragment.d(this.a) + paramInt2 + ajjy.a(2131641136);
-    case 1: 
-      return paramInt2 + 1 + ajjy.a(2131641119);
+    finally {}
+    this.jdField_a_of_type_JavaLangRunnable = new LimitChatDamon.1(this, paramString, paramQQAppInterface);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      ThreadManager.getSubThreadHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 60000L);
     }
-    return paramInt2 + 1 + ajjy.a(2131641135);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     arqm
  * JD-Core Version:    0.7.0.1
  */

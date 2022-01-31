@@ -1,321 +1,132 @@
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
 public class azud
+  extends azts
 {
-  public static void a(int paramInt1, int paramInt2, String[] paramArrayOfString, azuc paramazuc)
+  protected boolean c;
+  protected boolean d;
+  protected long g = 2000L;
+  
+  protected azud(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, long paramLong2, List<String> paramList, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4)
   {
-    switch (paramInt1)
-    {
-    default: 
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 0;
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-      paramazuc.jdField_a_of_type_JavaUtilList.clear();
-      return;
-    case 2: 
-      a(paramArrayOfString, paramazuc);
-      return;
-    case 3: 
-      a(paramInt2, paramArrayOfString, paramazuc);
-      return;
-    case 4: 
-      b(paramInt2, paramArrayOfString, paramazuc);
-      return;
-    case 5: 
-      c(paramInt2, paramArrayOfString, paramazuc);
-      return;
-    case 6: 
-      d(paramInt2, paramArrayOfString, paramazuc);
-      return;
-    case 7: 
-      e(paramInt2, paramArrayOfString, paramazuc);
-      return;
-    case 8: 
-      g(paramInt2, paramArrayOfString, paramazuc);
-      return;
-    case 9: 
-    case 11: 
-      f(paramInt2, paramArrayOfString, paramazuc);
-      return;
-    }
-    h(paramInt2, paramArrayOfString, paramazuc);
+    super(paramQQAppInterface, paramLong1, paramString1, paramLong2, paramList, paramString2, paramString3, paramBoolean2, paramString4);
+    this.c = paramBoolean1;
   }
   
-  public static void a(int paramInt, String[] paramArrayOfString, azuc paramazuc)
+  public static azud a(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, long paramLong2, List<String> paramList, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4)
   {
-    paramazuc.jdField_a_of_type_JavaUtilList.clear();
-    if (paramInt == 2) {
-      if (!TextUtils.isEmpty(paramArrayOfString[1]))
-      {
-        paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 1;
-        paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[1];
-        if (!TextUtils.isEmpty(paramArrayOfString[4]))
-        {
-          localazub = new azub();
-          localazub.jdField_a_of_type_Int = 4;
-          localazub.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
-          paramazuc.jdField_a_of_type_JavaUtilList.add(localazub);
-        }
-        if (!TextUtils.isEmpty(paramArrayOfString[3]))
-        {
-          localazub = new azub();
-          localazub.jdField_a_of_type_Int = 3;
-          localazub.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-          paramazuc.jdField_a_of_type_JavaUtilList.add(localazub);
-        }
+    String str = "";
+    if (paramString1 == null) {
+      str = "strSavePath is null";
+    }
+    while (!TextUtils.isEmpty(str))
+    {
+      azsr.a("TroopFileThumbDownloader", azsr.a, "getFileDownloader " + str);
+      return null;
+      if (paramString1.length() == 0) {
+        str = "strSavePath is empty";
+      } else if (paramList == null) {
+        str = "lstUrl is null";
+      } else if (paramList.size() == 0) {
+        str = "lstUrl is empty";
+      } else if (paramString2 == null) {
+        str = "urlParams is null";
+      } else if (paramString2.length() == 0) {
+        str = "urlParams is empty";
       }
     }
-    while (paramInt != 1)
+    return new azud(paramQQAppInterface, paramLong1, paramString1, paramLong2, paramList, paramString2, paramString3, paramBoolean1, paramBoolean2, paramString4);
+  }
+  
+  public void a(bbmg parambbmg)
+  {
+    int k = 0;
+    if (!this.c) {
+      break label10;
+    }
+    label10:
+    while (this.d) {
+      return;
+    }
+    parambbmg = parambbmg.a("Set-Cookie");
+    i = k;
+    for (;;)
     {
-      do
+      try
       {
-        do
+        if (!TextUtils.isEmpty(parambbmg))
         {
-          return;
-          if (TextUtils.isEmpty(paramArrayOfString[4])) {
-            break;
+          i = k;
+          if (parambbmg.contains("duration"))
+          {
+            parambbmg = parambbmg.trim().split(";");
+            i = k;
+            if (parambbmg != null)
+            {
+              i = k;
+              if (parambbmg.length > 0)
+              {
+                j = 0;
+                i = k;
+                if (j < parambbmg.length)
+                {
+                  String[] arrayOfString = parambbmg[j].split("=");
+                  if ((arrayOfString == null) || (arrayOfString.length != 2) || (!"duration".equals(arrayOfString[0]))) {
+                    continue;
+                  }
+                  i = Integer.parseInt(arrayOfString[1]);
+                }
+              }
+            }
           }
-          paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 4;
-          paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
-        } while (TextUtils.isEmpty(paramArrayOfString[3]));
-        localazub = new azub();
-        localazub.jdField_a_of_type_Int = 3;
-        localazub.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-        paramazuc.jdField_a_of_type_JavaUtilList.add(localazub);
-        return;
-        paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 0;
-        paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-      } while (TextUtils.isEmpty(paramArrayOfString[3]));
-      azub localazub = new azub();
-      localazub.jdField_a_of_type_Int = 3;
-      localazub.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-      paramazuc.jdField_a_of_type_JavaUtilList.add(localazub);
-      return;
-    }
-    if (!TextUtils.isEmpty(paramArrayOfString[1]))
-    {
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 1;
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[1];
-      return;
-    }
-    if (!TextUtils.isEmpty(paramArrayOfString[6]))
-    {
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 6;
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[6];
-      return;
-    }
-    paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 0;
-    paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-  }
-  
-  public static void a(String[] paramArrayOfString, azuc paramazuc)
-  {
-    paramazuc.jdField_a_of_type_JavaUtilList.clear();
-    if (!TextUtils.isEmpty(paramArrayOfString[4]))
-    {
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 4;
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
-      if (!TextUtils.isEmpty(paramArrayOfString[3]))
-      {
-        localazub = new azub();
-        localazub.jdField_a_of_type_Int = 3;
-        localazub.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-        paramazuc.jdField_a_of_type_JavaUtilList.add(localazub);
-      }
-    }
-    do
-    {
-      return;
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 0;
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-    } while (TextUtils.isEmpty(paramArrayOfString[3]));
-    azub localazub = new azub();
-    localazub.jdField_a_of_type_Int = 3;
-    localazub.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-    paramazuc.jdField_a_of_type_JavaUtilList.add(localazub);
-  }
-  
-  public static void b(int paramInt, String[] paramArrayOfString, azuc paramazuc)
-  {
-    if (paramInt == 2) {
-      a(paramArrayOfString, paramazuc);
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    paramazuc.jdField_a_of_type_JavaUtilList.clear();
-    if (!TextUtils.isEmpty(paramArrayOfString[6]))
-    {
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 6;
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[6];
-      return;
-    }
-    paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 0;
-    paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-  }
-  
-  public static void c(int paramInt, String[] paramArrayOfString, azuc paramazuc)
-  {
-    paramazuc.jdField_a_of_type_JavaUtilList.clear();
-    if (paramInt == 2) {
-      if (!TextUtils.isEmpty(paramArrayOfString[4]))
-      {
-        paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 4;
-        paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
-      }
-    }
-    while (paramInt != 1)
-    {
-      do
-      {
-        return;
-        paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 0;
-        paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-      } while (TextUtils.isEmpty(paramArrayOfString[2]));
-      azub localazub = new azub();
-      localazub.jdField_a_of_type_Int = 2;
-      localazub.jdField_a_of_type_JavaLangString = paramArrayOfString[2];
-      paramazuc.jdField_a_of_type_JavaUtilList.add(localazub);
-      return;
-    }
-    if (!TextUtils.isEmpty(paramArrayOfString[2]))
-    {
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 2;
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[2];
-      return;
-    }
-    paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 0;
-    paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-  }
-  
-  public static void d(int paramInt, String[] paramArrayOfString, azuc paramazuc)
-  {
-    paramazuc.jdField_a_of_type_JavaUtilList.clear();
-    if (paramInt == 2) {
-      if (!TextUtils.isEmpty(paramArrayOfString[4]))
-      {
-        paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 4;
-        paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
-        if (!TextUtils.isEmpty(paramArrayOfString[3]))
-        {
-          localazub = new azub();
-          localazub.jdField_a_of_type_Int = 3;
-          localazub.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-          paramazuc.jdField_a_of_type_JavaUtilList.add(localazub);
         }
       }
-    }
-    do
-    {
-      do
+      catch (Exception parambbmg)
       {
-        return;
-        paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 0;
-        paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-      } while (TextUtils.isEmpty(paramArrayOfString[3]));
-      localazub = new azub();
-      localazub.jdField_a_of_type_Int = 3;
-      localazub.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-      paramazuc.jdField_a_of_type_JavaUtilList.add(localazub);
-      return;
-      if (paramInt == 1)
-      {
-        localazub = new azub();
-        localazub.jdField_a_of_type_Int = 0;
-        localazub.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-        paramazuc.jdField_a_of_type_JavaUtilList.add(localazub);
-        if (!TextUtils.isEmpty(paramArrayOfString[3]))
-        {
-          paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 3;
-          paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-          return;
-        }
-        paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 0;
-        paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-        return;
+        int j;
+        i = 0;
+        continue;
       }
-    } while (paramInt != 3);
-    azub localazub = new azub();
-    localazub.jdField_a_of_type_Int = 7;
-    localazub.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-    paramazuc.jdField_a_of_type_JavaUtilList.add(localazub);
-    if (!TextUtils.isEmpty(paramArrayOfString[3]))
+      if ((i == 0) || (this.jdField_a_of_type_Aztk == null) || (!(this.jdField_a_of_type_Aztk instanceof azue))) {
+        break;
+      }
+      ((azue)this.jdField_a_of_type_Aztk).a(i);
+      return;
+      j += 1;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public long b()
+  {
+    if (this.g <= 6000L)
     {
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 3;
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-      return;
+      long l = this.g;
+      this.g = (2000L + this.g);
+      return l;
     }
-    paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 0;
-    paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+    return 2000L;
   }
   
-  public static void e(int paramInt, String[] paramArrayOfString, azuc paramazuc)
+  public void b(boolean paramBoolean)
   {
-    if (paramInt == 2) {
-      a(paramArrayOfString, paramazuc);
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 0;
-    paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-    paramazuc.jdField_a_of_type_JavaUtilList.clear();
+    this.d = paramBoolean;
   }
   
-  public static void f(int paramInt, String[] paramArrayOfString, azuc paramazuc)
+  public void i()
   {
-    if (paramInt == 2) {
-      a(paramArrayOfString, paramazuc);
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    paramazuc.jdField_a_of_type_JavaUtilList.clear();
-    if (!TextUtils.isEmpty(paramArrayOfString[5]))
-    {
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 5;
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[5];
-      return;
-    }
-    paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 0;
-    paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-  }
-  
-  public static void g(int paramInt, String[] paramArrayOfString, azuc paramazuc)
-  {
-    if (paramInt == 2) {
-      a(paramArrayOfString, paramazuc);
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    paramazuc.jdField_a_of_type_JavaUtilList.clear();
-    if (!TextUtils.isEmpty(paramArrayOfString[3]))
-    {
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 3;
-      paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-      return;
-    }
-    paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 0;
-    paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-  }
-  
-  public static void h(int paramInt, String[] paramArrayOfString, azuc paramazuc)
-  {
-    if (paramInt == 2) {
-      a(paramArrayOfString, paramazuc);
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_Int = 0;
-    paramazuc.jdField_a_of_type_Azub.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-    paramazuc.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_Azsm.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azud
  * JD-Core Version:    0.7.0.1
  */

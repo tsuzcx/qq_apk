@@ -10,7 +10,7 @@ public class StartSecurityScan
   public int a()
   {
     if (this.a.app.r()) {
-      this.a.app.x();
+      this.a.app.y();
     }
     return 7;
   }

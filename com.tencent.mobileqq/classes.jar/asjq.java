@@ -1,19 +1,16 @@
-import android.os.IInterface;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
-
-public abstract interface asjq
-  extends IInterface
+public class asjq
 {
-  public abstract Message a(Message paramMessage);
-  
-  public abstract BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel);
-  
-  public abstract void a(asjy paramasjy);
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  int jdField_c_of_type_Int;
+  String jdField_c_of_type_JavaLangString;
+  String d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asjq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.honor;
 
-import alzw;
-import azcd;
-import azci;
+import ampm;
+import bacv;
+import badd;
 
 public class TroopHonorManager$1
   implements Runnable
 {
-  public TroopHonorManager$1(azcd paramazcd) {}
+  public TroopHonorManager$1(bacv parambacv) {}
   
   public void run()
   {
-    azci localazci = (azci)alzw.a().a(544);
-    this.this$0.a(localazci, true);
+    badd localbadd = (badd)ampm.a().a(544);
+    this.this$0.a(localbadd, true);
   }
 }
 

@@ -1,21 +1,10 @@
-import android.text.ClipboardManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
-
-class bcps
-  implements View.OnClickListener
+public abstract interface bcps
 {
-  bcps(bcpr parambcpr) {}
-  
-  public void onClick(View paramView)
-  {
-    ((ClipboardManager)this.a.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcps
  * JD-Core Version:    0.7.0.1
  */

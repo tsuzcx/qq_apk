@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import ajjy;
+import ajyc;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -21,8 +21,8 @@ import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import kth;
-import lup;
+import ldw;
+import mfi;
 import mqq.app.BaseActivity;
 
 public class MultiVideoEnterPageMembersControlUI
@@ -67,7 +67,7 @@ public class MultiVideoEnterPageMembersControlUI
     d();
     if (this.e == jdField_c_of_type_Int)
     {
-      localDrawable = super.getResources().getDrawable(2130841580);
+      localDrawable = super.getResources().getDrawable(2130841672);
       paramInt = (int)(super.getResources().getDisplayMetrics().density * 20.0F);
       localDrawable.setBounds(0, 0, paramInt, paramInt);
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(localDrawable, null, null, null);
@@ -75,7 +75,7 @@ public class MultiVideoEnterPageMembersControlUI
     while (this.e != d) {
       return;
     }
-    Drawable localDrawable = super.getResources().getDrawable(2130841581);
+    Drawable localDrawable = super.getResources().getDrawable(2130841673);
     paramInt = (int)(super.getResources().getDisplayMetrics().density * 20.0F);
     localDrawable.setBounds(0, 0, paramInt, paramInt);
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(localDrawable, null, null, null);
@@ -112,31 +112,31 @@ public class MultiVideoEnterPageMembersControlUI
       return;
     }
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    LayoutInflater.from(paramContext).inflate(2131493979, this);
+    LayoutInflater.from(paramContext).inflate(2131559547, this);
     this.jdField_a_of_type_AndroidViewView = this;
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)super.findViewById(2131304941));
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)super.findViewById(2131304939));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131306572));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131306571));
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131306566);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131306570));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131306563));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)super.findViewById(2131370607));
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)super.findViewById(2131370605));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372271));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372270));
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131372265);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131372269));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131372262));
     this.jdField_a_of_type_AndroidWidgetGridView.setNumColumns(-1);
     this.jdField_a_of_type_AndroidWidgetGridView.setGravity(17);
     this.jdField_a_of_type_AndroidWidgetGridView.setSelector(new ColorDrawable(0));
     if (Build.VERSION.SDK_INT >= 9) {
       this.jdField_a_of_type_AndroidWidgetGridView.setOverScrollMode(2);
     }
-    this.jdField_a_of_type_Lup = new lup(this);
-    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Lup);
+    this.jdField_a_of_type_Mfi = new mfi(this);
+    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Mfi);
     this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
     this.jdField_a_of_type_AndroidWidgetGridView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131306569));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131306567));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372268));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131372266));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
   }
   
-  public void a(ArrayList<kth> paramArrayList)
+  public void a(ArrayList<ldw> paramArrayList)
   {
     super.a(paramArrayList);
     d();
@@ -149,28 +149,28 @@ public class MultiVideoEnterPageMembersControlUI
       i = this.jdField_a_of_type_JavaUtilArrayList.size();
       if (i > 0)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(ajjy.a(2131641233), new Object[] { Integer.valueOf(i) }));
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(ajjy.a(2131641235));
-        this.jdField_a_of_type_AndroidWidgetButton.setText(ajjy.a(2131641232));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(ajyc.a(2131707018), new Object[] { Integer.valueOf(i) }));
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(ajyc.a(2131707020));
+        this.jdField_a_of_type_AndroidWidgetButton.setText(ajyc.a(2131707017));
       }
     }
     while (this.e != d) {
       for (;;)
       {
         return;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131641230));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131707015));
       }
     }
     int i = this.jdField_a_of_type_JavaUtilArrayList.size();
     if (i > 0) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(getResources().getString(2131630291), new Object[] { Integer.valueOf(i) }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(getResources().getString(2131695986), new Object[] { Integer.valueOf(i) }));
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131630288);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131630286);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131695983);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131695981);
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131629998);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695679);
     }
   }
   

@@ -12,8 +12,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.ScaleAnimation;
-import bajq;
-import beqc;
+import bbkx;
+import bfxw;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,7 +22,7 @@ import java.util.List;
 public class DragRecyclerView
   extends RecyclerView
 {
-  int SCROLL_OFFSET = bajq.a(20.0F);
+  int SCROLL_OFFSET = bbkx.a(20.0F);
   boolean autoScrollEnable = false;
   int autoScrollOffsetX = 0;
   boolean autoScrollStatus = false;
@@ -34,7 +34,6 @@ public class DragRecyclerView
   private int lastDragY;
   private boolean mAutoScrollEnable;
   private boolean mCanAutoScroll;
-  private Context mConttext;
   private DragRecyclerView.DragDeleteListener mDeleteDragListener;
   private boolean mIsDeletePrepared;
   private DragRecyclerView.OnItemChangeListener mOnItemChangeListener;
@@ -42,20 +41,20 @@ public class DragRecyclerView
   boolean oritationRight = true;
   private ScaleAnimation revertAnimation = new ScaleAnimation(1.1F, 1.0F, 1.1F, 1.0F, 1, 0.5F, 1, 0.5F);
   int startAutoScrollOffset = 0;
-  beqc touchHelper = new DragRecyclerView.MiniItemTouchHelper(this, new DragRecyclerView.4(this));
+  bfxw touchHelper = new DragRecyclerView.MiniItemTouchHelper(this, new DragRecyclerView.4(this));
   private boolean up;
   private ScaleAnimation zoomAnimation = new ScaleAnimation(1.0F, 1.1F, 1.0F, 1.1F, 1, 0.5F, 1, 0.5F);
   
   public DragRecyclerView(Context paramContext)
   {
-    super(paramContext);
-    init(paramContext);
+    super(paramContext.getApplicationContext());
+    init(paramContext.getApplicationContext());
   }
   
   public DragRecyclerView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    super(paramContext, paramAttributeSet);
-    init(paramContext);
+    super(paramContext.getApplicationContext(), paramAttributeSet);
+    init(paramContext.getApplicationContext());
   }
   
   private void doAutoScroolToBottom()
@@ -75,7 +74,6 @@ public class DragRecyclerView
   
   private void init(Context paramContext)
   {
-    this.mConttext = paramContext;
     addOnScrollListener(new DragRecyclerView.1(this));
     this.touchHelper.attachToRecyclerView(this);
     addOnItemTouchListener(new DragRecyclerView.2(this, this));
@@ -140,7 +138,7 @@ public class DragRecyclerView
   {
     if (!this.isDragging) {}
     label7:
-    label99:
+    label100:
     do
     {
       do
@@ -150,27 +148,27 @@ public class DragRecyclerView
         for (;;)
         {
           return;
-          if ((Math.abs(this.lastDragX - paramInt1) >= bajq.b(3.0F)) || (Math.abs(this.lastDragY - paramInt2) >= bajq.b(3.0F)))
+          if ((Math.abs(this.lastDragX - paramInt1) >= bbkx.b(3.0F)) || (Math.abs(this.lastDragY - paramInt2) >= bbkx.b(3.0F)))
           {
             this.lastDragX = paramInt1;
             this.lastDragY = paramInt2;
             if (this.mOnItemChangeListener != null) {
               this.mOnItemChangeListener.onDragMove(this.lastDragX, this.lastDragY);
             }
-            if (paramInt2 >= getHeight() - getResources().getDimensionPixelSize(2131165729))
+            if (paramInt2 >= getHeight() - getResources().getDimensionPixelSize(2131296802))
             {
               this.mCanAutoScroll = true;
               if (this.mOnItemChangeListener == null) {
-                break label208;
+                break label209;
               }
             }
             for (boolean bool = this.mOnItemChangeListener.isItemDeleteable(this.currDragViewHolder.getAdapterPosition());; bool = false)
             {
               if ((!bool) || (this.mDeleteDragListener == null)) {
-                break label211;
+                break label212;
               }
               if ((this.mOnItemChangeListener == null) || (!this.mOnItemChangeListener.isMoveToDeleteArea(paramInt1, paramInt2))) {
-                break label213;
+                break label214;
               }
               if (this.mIsDeletePrepared) {
                 break;
@@ -183,7 +181,7 @@ public class DragRecyclerView
               this.mOnItemChangeListener.onItemPrepared(this.currDragViewHolder.getAdapterPosition());
               return;
               this.mCanAutoScroll = false;
-              break label99;
+              break label100;
             }
           }
         }
@@ -191,9 +189,9 @@ public class DragRecyclerView
       this.mIsDeletePrepared = false;
       this.mDeleteDragListener.onDeleteDragStart();
     } while (this.mOnItemChangeListener == null);
-    label208:
-    label211:
-    label213:
+    label209:
+    label212:
+    label214:
     this.mOnItemChangeListener.onItemPrepared(-1);
   }
   

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import akma;
+import alam;
 import android.widget.TextView;
 
 class ARTransferPromotionRenderable$7$1
@@ -10,8 +10,8 @@ class ARTransferPromotionRenderable$7$1
   
   public void run()
   {
-    akma.a(this.a.this$0).setVisibility(8);
-    akma.a(this.a.this$0, null);
+    alam.a(this.a.this$0).setVisibility(8);
+    alam.a(this.a.this$0, null);
   }
 }
 

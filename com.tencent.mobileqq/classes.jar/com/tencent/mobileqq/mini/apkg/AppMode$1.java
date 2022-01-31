@@ -15,62 +15,69 @@ final class AppMode$1
       bool1 = true;
       localAppMode.interMode = bool1;
       if (paramParcel.readInt() != 1) {
-        break label163;
+        break label179;
       }
       bool1 = true;
       label37:
       localAppMode.authoritySilent = bool1;
       if (paramParcel.readInt() != 1) {
-        break label168;
+        break label184;
       }
       bool1 = true;
       label53:
       localAppMode.keepOffPullList = bool1;
       if (paramParcel.readInt() != 1) {
-        break label173;
+        break label189;
       }
       bool1 = true;
       label69:
       localAppMode.closeTopRightCapsule = bool1;
       if (paramParcel.readInt() != 1) {
-        break label178;
+        break label194;
       }
       bool1 = true;
       label85:
       localAppMode.openNativeApi = bool1;
       if (paramParcel.readInt() != 1) {
-        break label183;
+        break label199;
       }
       bool1 = true;
       label101:
       localAppMode.hideAppSearch = bool1;
       if (paramParcel.readInt() != 1) {
-        break label188;
+        break label204;
       }
       bool1 = true;
       label117:
       localAppMode.isAppStore = bool1;
       if (paramParcel.readInt() != 1) {
-        break label193;
+        break label209;
       }
       bool1 = true;
       label133:
       localAppMode.isWangKa = bool1;
       if (paramParcel.readInt() != 1) {
-        break label198;
+        break label214;
+      }
+      bool1 = true;
+      label149:
+      localAppMode.isInterLoading = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label219;
       }
     }
-    label163:
-    label168:
-    label173:
-    label178:
-    label183:
-    label188:
-    label193:
-    label198:
+    label179:
+    label184:
+    label189:
+    label194:
+    label199:
+    label204:
+    label209:
+    label214:
+    label219:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      localAppMode.isInterLoading = bool1;
+      localAppMode.isLimitedAccess = bool1;
       return localAppMode;
       bool1 = false;
       break;
@@ -88,6 +95,8 @@ final class AppMode$1
       break label117;
       bool1 = false;
       break label133;
+      bool1 = false;
+      break label149;
     }
   }
   

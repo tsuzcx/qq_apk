@@ -1,179 +1,120 @@
-import android.os.Message;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.fts.FTSDatabase;
-import com.tencent.mobileqq.persistence.fts.FTSDatatbase;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.List;
+import tencent.im.oidb.cmd0x438.oidb_0x438.ReqBody;
+import tencent.im.oidb.cmd0x438.oidb_0x438.ReqInfo;
+import tencent.im.oidb.cmd0x438.oidb_0x438.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public abstract class akew
-  extends Observable
+public class akew
+  extends ajtd
 {
-  protected int a;
-  protected long a;
-  public akfa a;
-  protected akfd a;
-  public QQAppInterface a;
-  public FTSDatabase a;
-  protected FTSDatatbase a;
-  protected boolean a;
-  protected int b;
-  protected boolean b;
-  protected int c;
-  private boolean c;
-  
-  public akew(QQAppInterface paramQQAppInterface, akfa paramakfa)
+  public akew(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Akfa = paramakfa;
+    super(paramQQAppInterface);
   }
   
-  public String a()
+  private static oidb_sso.OIDBSSOPkg a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    StringBuilder localStringBuilder1 = new StringBuilder(50);
-    StringBuilder localStringBuilder2 = localStringBuilder1.append(" ").append(getClass().getSimpleName()).append(" transCount:").append(this.jdField_c_of_type_Int).append(" transCost:").append(this.jdField_a_of_type_Long).append(" transAvg:");
-    if (this.jdField_c_of_type_Int != 0) {}
-    for (float f = (float)this.jdField_a_of_type_Long * 1.0F / this.jdField_c_of_type_Int;; f = 0.0F)
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000)) {
+      paramToServiceMsg = null;
+    }
+    for (;;)
     {
-      localStringBuilder2.append(f);
-      this.jdField_a_of_type_Long = 0L;
-      this.jdField_c_of_type_Int = 0;
-      return localStringBuilder1.toString();
-    }
-  }
-  
-  public ArrayList<FTSEntity> a(String paramString, Class<? extends FTSEntity> paramClass, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    return null;
-  }
-  
-  public ArrayList<FTSEntity> a(String paramString, Class<? extends FTSEntity> paramClass, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Akfd != null) {
-      this.jdField_a_of_type_Akfd.a();
-    }
-  }
-  
-  public void a(Observer paramObserver)
-  {
-    if (paramObserver != null) {
-      addObserver(paramObserver);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (bakq.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 1) {}
-    while (this.jdField_a_of_type_Akfd == null) {
-      return false;
-    }
-    return this.jdField_a_of_type_Akfd.a();
-  }
-  
-  public boolean a(FTSDatatbase paramFTSDatatbase, FTSDatabase paramFTSDatabase)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSDatatbase = paramFTSDatatbase;
-    this.jdField_a_of_type_ComTencentMobileqqFtsFTSDatabase = paramFTSDatabase;
-    return true;
-  }
-  
-  public void b()
-  {
-    if (a()) {
-      b();
-    }
-  }
-  
-  public void b(Observer paramObserver)
-  {
-    if (paramObserver != null) {
-      deleteObserver(paramObserver);
-    }
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_Akfd != null) {
-      return this.jdField_a_of_type_Akfd.b();
-    }
-    return true;
-  }
-  
-  public void c()
-  {
-    setChanged();
-    notifyObservers();
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Akfa.obtainMessage(2, this).sendToTarget();
-  }
-  
-  protected boolean d()
-  {
-    boolean bool3 = false;
-    int i;
-    boolean bool1;
-    if (!this.jdField_c_of_type_Boolean) {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      return paramToServiceMsg;
+      paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
+      try
       {
-        i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a.a();
-        if (i == 0)
+        paramFromServiceMsg.mergeFrom((byte[])paramObject);
+        if ((paramFromServiceMsg != null) && (paramFromServiceMsg.uint32_result.get() == 0))
         {
-          this.jdField_c_of_type_Boolean = true;
-          bool1 = false;
-          label39:
-          bool2 = bool1;
-          if (i == 1) {
-            this.jdField_c_of_type_Boolean = true;
+          paramToServiceMsg = paramFromServiceMsg;
+          if (paramFromServiceMsg.bytes_bodybuffer.get() != null) {
+            continue;
+          }
+        }
+        return null;
+      }
+      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QWalletHandler", 2, "parseSSOPkg: oidb_sso parseFrom byte InvalidProtocolBufferMicroException ");
           }
         }
       }
     }
-    for (boolean bool2 = bool1;; bool2 = true)
-    {
-      if ((bool2) && (e()) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Stop)) {}
-      for (bool1 = bool3;; bool1 = bool2)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.fts.sync_worker", 2, "isSaveDBAtOnce unActionLoginB atOnce:" + bool1);
-        }
-        return bool1;
-      }
-      bool1 = true;
-      break label39;
-      i = 0;
-      break;
+  }
+  
+  public void a(int paramInt, List<oidb_0x438.ReqInfo> paramList)
+  {
+    Object localObject = new oidb_0x438.ReqBody();
+    ((oidb_0x438.ReqBody)localObject).stReqInfo.set(paramList);
+    paramList = new oidb_sso.OIDBSSOPkg();
+    paramList.uint32_command.set(1080);
+    paramList.uint32_result.set(0);
+    paramList.uint32_service_type.set(paramInt);
+    paramList.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x438.ReqBody)localObject).toByteArray()));
+    localObject = createToServiceMsg("OidbSvc.0x438");
+    ((ToServiceMsg)localObject).putWupBuffer(paramList.toByteArray());
+    sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  protected Class<? extends ajtg> observerClass()
+  {
+    return akex.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("QWalletHandler", 4, "onReceive");
     }
-  }
-  
-  public abstract void e();
-  
-  protected boolean e()
-  {
-    return false;
-  }
-  
-  public boolean f()
-  {
-    return false;
+    String str = paramToServiceMsg.getServiceCmd();
+    if (QLog.isDevelopLevel())
+    {
+      QLog.i("QWalletHandler", 4, "cmd=" + str);
+      QLog.i("QWalletHandler", 4, "data length =" + ((byte[])paramObject).length);
+    }
+    if (TextUtils.isEmpty(str)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (str.compareTo("OidbSvc.0x438") != 0);
+      paramToServiceMsg = a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      if (paramToServiceMsg != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("QWalletHandler", 2, "onReceive: ssoPkg parse failed");
+    return;
+    paramFromServiceMsg = new oidb_0x438.RspBody();
+    try
+    {
+      paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+      paramFromServiceMsg = paramFromServiceMsg.PasswdRedBag.get();
+      if (paramFromServiceMsg != null)
+      {
+        notifyUI(paramToServiceMsg.uint32_service_type.get(), true, paramFromServiceMsg);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+    {
+      paramFromServiceMsg.printStackTrace();
+      notifyUI(paramToServiceMsg.uint32_service_type.get(), false, null);
+    }
   }
 }
 

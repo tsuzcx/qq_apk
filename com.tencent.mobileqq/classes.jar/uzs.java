@@ -1,26 +1,76 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class uzs
-  implements View.OnClickListener
+public class uzs
+  extends QQUIEventReceiver<vaf, tcu>
+  implements vab
 {
-  uzs(uzn paramuzn) {}
+  protected vad a;
   
-  public void onClick(View paramView)
+  public uzs(vaf paramvaf)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(this.a.jdField_a_of_type_JavaLangString);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(this.a.d);
-    this.a.jdField_a_of_type_Uyw.a = this.a.d;
-    this.a.jdField_a_of_type_Uyw.d = this.a.e;
-    this.a.dismiss();
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a == 3)) {
-      LpReportInfo_pf00064.allReport(615, 3, 3);
+    super(paramvaf);
+  }
+  
+  public Object a()
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return "ReportWatchVideoListStep";
+  }
+  
+  public void a()
+  {
+    ste.a().registerSubscriber(this);
+    ((tcs)tdc.a(13)).c();
+  }
+  
+  public void a(Object paramObject) {}
+  
+  public void a(vac paramvac) {}
+  
+  public void a(vad paramvad)
+  {
+    this.a = paramvad;
+  }
+  
+  public void a(vaf paramvaf, tcu paramtcu)
+  {
+    ste.a().unRegisterSubscriber(this);
+    if (this.a != null) {
+      this.a.a(a());
     }
-    urq.a("0X80076C5");
-    urq.b("0X80075D9");
+    for (;;)
+    {
+      veg.d("Q.qqstory.home,ReportWatchVideoListStep", "receive event. step is done");
+      return;
+      veg.d("Q.qqstory.home,ReportWatchVideoListStep", "finish callBack is null");
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tcu.class;
+  }
+  
+  public void b()
+  {
+    veg.a("Q.qqstory.home.qqstory_step", "Q.qqstory.home,ReportWatchVideoListStep", "Q.qqstory.home,ReportWatchVideoListStep");
+  }
+  
+  public void c()
+  {
+    tcs localtcs = (tcs)tdc.a(13);
+    ste.a().unRegisterSubscriber(this);
+    localtcs.d();
   }
 }
 

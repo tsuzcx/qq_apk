@@ -1,33 +1,28 @@
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.utils.SecUtil;
-import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
-import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment.3.1;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bavr
-  implements bavc
+final class bavr
+  implements DownloadParams.DecodeHandler
 {
-  public bavr(LiangHaoBuyFragment paramLiangHaoBuyFragment) {}
-  
-  public void a(Intent paramIntent, boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isDevelopLevel())
-    {
-      localStringBuilder = new StringBuilder().append("lockLH uin=").append(paramString1).append(",suc=").append(paramBoolean).append(",lhsig=");
-      if (paramArrayOfByte == null) {
-        break label89;
-      }
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
-    label89:
-    for (String str = SecUtil.toHexString(paramArrayOfByte);; str = "null")
+    Object localObject;
+    do
     {
-      QLog.i("LiangHaoBuyFragment", 4, str);
-      ThreadManagerV2.getUIHandlerV2().post(new LiangHaoBuyFragment.3.1(this, paramBoolean, paramIntent, paramString1, paramArrayOfByte, paramString2));
-      return;
-    }
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 2);
+    paramDownloadParams = (int[])localObject;
+    return bbdr.d(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 

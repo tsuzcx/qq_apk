@@ -1,19 +1,19 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bicj;
-import bicl;
-import bicm;
-import bigb;
+import bjtg;
+import bjti;
+import bjtj;
+import bjww;
 
 public class EditProviderPart$2$1$1$1
   implements Runnable
 {
-  public EditProviderPart$2$1$1$1(bicm parambicm) {}
+  public EditProviderPart$2$1$1$1(bjtj parambjtj) {}
   
   public void run()
   {
-    if ((this.a.a.a.this$0.jdField_a_of_type_Bihj != null) && (this.a.a.a.this$0.jdField_a_of_type_Bigb != null)) {
-      this.a.a.a.this$0.jdField_a_of_type_Bigb.a(0);
+    if ((this.a.a.a.this$0.jdField_a_of_type_Bjye != null) && (this.a.a.a.this$0.jdField_a_of_type_Bjww != null)) {
+      this.a.a.a.this$0.jdField_a_of_type_Bjww.a(0);
     }
   }
 }

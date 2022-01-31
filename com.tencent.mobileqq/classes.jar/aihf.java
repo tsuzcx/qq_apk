@@ -1,41 +1,21 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.14;
 
 public class aihf
-  implements aiib
+  implements DialogInterface.OnClickListener
 {
-  private aihf(ApolloTextureView paramApolloTextureView) {}
+  public aihf(ShortVideoPlayActivity.14 param14) {}
   
-  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("ApolloTextureView", 1, "[createContext], id:" + Thread.currentThread().getId());
-    if (this.a.mIsDestroy != null) {
-      this.a.mIsDestroy.set(false);
-    }
-    return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
-  }
-  
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-  {
-    QLog.d("ApolloTextureView", 1, "[destroyContext], id:" + Thread.currentThread().getId());
-    if (this.a.mIsDestroy != null) {
-      this.a.mIsDestroy.set(true);
-    }
-    if (this.a.mRender != null) {
-      this.a.mRender.onDestroy();
-    }
-    paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext);
+    this.a.this$0.s();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aihf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,18 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
+import android.widget.Button;
+import android.widget.TextView;
 
-public class ache
+class ache
+  extends aimv
 {
-  public static long a(long paramLong)
-  {
-    Calendar localCalendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
-    localCalendar.setTimeInMillis(paramLong);
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    return localCalendar.getTimeInMillis();
-  }
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public static String a(long paramLong, String paramString)
-  {
-    try
-    {
-      paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE).format(new Date(paramLong));
-      return paramString;
-    }
-    catch (Exception paramString) {}
-    return "";
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return a(paramLong, "yyyy-MM-dd");
-  }
-  
-  private static boolean a(long paramLong, String paramString)
-  {
-    Date localDate = new Date(paramLong);
-    paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE);
-    return paramString.format(localDate).equals(paramString.format(new Date(NetConnInfoCenter.getServerTimeMillis())));
-  }
+  private ache(achd paramachd) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ache
  * JD-Core Version:    0.7.0.1
  */

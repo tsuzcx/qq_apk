@@ -1,22 +1,72 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
+import android.content.Context;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-public class aewm
-  extends ViewPager.SimpleOnPageChangeListener
+public abstract class aewm
+  implements aewh
 {
-  public aewm(TroopView paramTroopView) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
+  public URLDrawable.URLDrawableOptions a()
   {
-    if (paramInt == 1) {
-      TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mExtraInfo = this;
+    return localURLDrawableOptions;
+  }
+  
+  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
+  {
+    if (paramURL == null) {
+      return null;
+    }
+    paramURL = URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
+    paramURL.setTag(new int[] { 0, 0, (int)paramURLDrawableOptions.mGifRoundCorner });
+    return paramURL;
+  }
+  
+  public URL a()
+  {
+    try
+    {
+      URL localURL1 = new URL("sticker_recommended_pic", "fromAIO", ((aewx)this).f());
+      if (localURL1 == null)
+      {
+        QLog.e("SimpleRemoteEmoticon", 1, "getURL url = null");
+        return null;
+      }
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      URL localURL2;
+      for (;;)
+      {
+        QLog.e("SimpleRemoteEmoticon", 1, "getURL create url exception e = " + localMalformedURLException.getMessage());
+        localURL2 = null;
+      }
+      return localURL2;
     }
   }
   
-  public void onPageSelected(int paramInt)
+  public void a(QQAppInterface paramQQAppInterface) {}
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
+  
+  public boolean a()
   {
-    TroopView.a(this.a, paramInt);
+    return false;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public String c()
+  {
+    return "z-";
   }
 }
 

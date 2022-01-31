@@ -1,18 +1,126 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
 
-class aplq
-  implements DialogInterface.OnClickListener
+public class aplq
+  implements aplh
 {
-  aplq(apln paramapln) {}
+  private azqt jdField_a_of_type_Azqt;
+  private UUID jdField_a_of_type_JavaUtilUUID;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aplq(azqt paramazqt)
   {
-    if (this.a.c) {
-      bcad.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "51", "0", false);
+    this.jdField_a_of_type_Azqt = paramazqt;
+    this.jdField_a_of_type_JavaUtilUUID = this.jdField_a_of_type_Azqt.jdField_a_of_type_JavaUtilUUID;
+    if (this.jdField_a_of_type_JavaUtilUUID == null) {
+      throw new NullPointerException("TroopFileStatusInfo Id null");
     }
-    apld.a(this.a.jdField_a_of_type_AndroidAppActivity, true, "addToQQFavorites", this.a.b);
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Azqt.c;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_Azqt.e;
+  }
+  
+  public void a(long paramLong)
+  {
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Azqt.jdField_b_of_type_Long);
+    if (localTroopFileTransferManager == null) {
+      QLog.e("VideoForTroop<QFile>", 1, "notifyProgress: get troopFileTransferManager failed.");
+    }
+    TroopFileTransferManager.Item localItem;
+    do
+    {
+      return;
+      localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_Azqt.jdField_a_of_type_JavaUtilUUID);
+    } while (localItem == null);
+    localItem.ProgressValue = paramLong;
+    localTroopFileTransferManager.a(localItem, 8);
+  }
+  
+  public void a(apab paramapab)
+  {
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Azqt.jdField_b_of_type_Long);
+    if (localTroopFileTransferManager == null)
+    {
+      QLog.e("VideoForTroop<QFile>", 1, "getUrl: get troopFileTransferManager failed.");
+      return;
+    }
+    localTroopFileTransferManager.a(this.jdField_a_of_type_Azqt.e, this.jdField_a_of_type_Azqt.g, this.jdField_a_of_type_Azqt.c, this.jdField_a_of_type_Azqt.h, new aplr(this, paramapab));
+  }
+  
+  public void a(String paramString)
+  {
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Azqt.jdField_b_of_type_Long);
+    if (localTroopFileTransferManager == null) {
+      QLog.e("VideoForTroop<QFile>", 1, "notifySuccessed: get troopFileTransferManager failed.");
+    }
+    TroopFileTransferManager.Item localItem;
+    do
+    {
+      return;
+      localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_Azqt.jdField_a_of_type_JavaUtilUUID);
+    } while (localItem == null);
+    boolean bool = azph.b(localItem.Status);
+    if (QLog.isColorLevel()) {
+      QLog.e("VideoForTroop<QFile>", 1, "notifySuccessed  itemStatus[" + localItem.Status + "]");
+    }
+    if ((bool) || (this.jdField_a_of_type_Azqt.jdField_b_of_type_Int == 7))
+    {
+      localItem.LocalFile = paramString;
+      localTroopFileTransferManager.a(localItem, 11);
+      return;
+    }
+    localTroopFileTransferManager.a(localItem, 6);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Azqt.jdField_b_of_type_Long);
+    if (localTroopFileTransferManager == null) {
+      QLog.e("VideoForTroop<QFile>", 1, "notifyFileFailed: get troopFileTransferManager failed.");
+    }
+    TroopFileTransferManager.Item localItem;
+    do
+    {
+      return;
+      localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_Azqt.jdField_a_of_type_JavaUtilUUID);
+    } while (localItem == null);
+    if (paramBoolean)
+    {
+      localTroopFileTransferManager.a(localItem, 12);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("VideoForTroop<QFile>", 1, "notifyFileFaild isInvalid[" + paramBoolean + "], itemStatus[" + localItem.Status + "]");
+    }
+    if ((azph.b(localItem.Status)) || (this.jdField_a_of_type_Azqt.jdField_b_of_type_Int == 7))
+    {
+      localTroopFileTransferManager.a(localItem, 10);
+      return;
+    }
+    localTroopFileTransferManager.a(localItem, 3);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Azqt.jdField_b_of_type_Int == 12;
+  }
+  
+  public String b()
+  {
+    return apti.a().c() + bfkp.a(this.jdField_a_of_type_Azqt.e);
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_Azqt.g;
   }
 }
 

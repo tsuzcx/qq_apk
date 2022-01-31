@@ -1,98 +1,33 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.proto.lbsshare.LBSShare.GetShopsByIdsResp;
-import com.tencent.proto.lbsshare.LBSShare.LocationResp;
-import com.tencent.proto.lbsshare.LBSShare.NearByShopsResp;
+import com.tencent.mobileqq.activity.LikeSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
 
 public class ablo
-  extends BroadcastReceiver
+  extends atbd
 {
-  public ablo(QQMapActivity paramQQMapActivity) {}
+  public ablo(LikeSettingActivity paramLikeSettingActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramContext = paramIntent.getAction();
     if (QLog.isColorLevel()) {
-      QLog.d("Q.qqmap", 2, "activiy.receiver.onReceive:" + paramContext);
+      QLog.i("LikeSettingActivity", 2, "onGetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
     }
-    if (paramContext.equals("com.tencent.mobileqq.onGetStreetViewUrl"))
-    {
-      this.a.j = paramIntent.getStringExtra("streetViewUrl");
-      this.a.n();
+    if (paramBoolean1) {
+      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean2);
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (paramContext.equals("com.tencent.mobileqq.onGetLbsShareSearch"))
-          {
-            byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-            localObject = new LBSShare.LocationResp();
-            paramContext = (Context)localObject;
-            if (arrayOfByte != null) {}
-            try
-            {
-              paramContext = (LBSShare.LocationResp)((LBSShare.LocationResp)localObject).mergeFrom(arrayOfByte);
-              paramIntent = paramIntent.getExtras().getBundle("req");
-              this.a.a(paramContext, paramIntent);
-              return;
-            }
-            catch (InvalidProtocolBufferMicroException paramContext)
-            {
-              for (;;)
-              {
-                if (QLog.isColorLevel()) {
-                  paramContext.printStackTrace();
-                }
-                paramContext = null;
-              }
-            }
-          }
-          if (!paramContext.equals("com.tencent.mobileqq.onGetLbsShareShop")) {
-            break;
-          }
-          paramContext = paramIntent.getByteArrayExtra("data");
-        } while (paramContext == null);
-        Object localObject = new LBSShare.NearByShopsResp();
-        try
-        {
-          paramContext = (LBSShare.NearByShopsResp)((LBSShare.NearByShopsResp)localObject).mergeFrom(paramContext);
-          paramIntent = paramIntent.getExtras().getBundle("req");
-          this.a.a(paramContext, paramIntent);
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramContext)
-        {
-          if (QLog.isColorLevel()) {
-            paramContext.printStackTrace();
-          }
-          this.a.a(null, null);
-          return;
-        }
-      } while (!paramContext.equals("com.tencent.mobileqq.onGetShareShopDetail"));
-      paramContext = paramIntent.getByteArrayExtra("data");
-    } while (paramContext == null);
-    paramIntent = new LBSShare.GetShopsByIdsResp();
-    try
-    {
-      paramContext = (LBSShare.GetShopsByIdsResp)paramIntent.mergeFrom(paramContext);
-      this.a.a(paramContext);
-      return;
+  }
+  
+  public void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onSetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
     }
-    catch (InvalidProtocolBufferMicroException paramContext)
+    if (!paramBoolean1)
     {
-      if (QLog.isColorLevel()) {
-        paramContext.printStackTrace();
-      }
-      this.a.a(null);
+      bcpw.a(this.a, 1, 2131719375, 0).b(this.a.getTitleBarHeight());
+      paramBoolean1 = ((asyy)this.a.app.getManager(161)).a();
+      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean1);
     }
   }
 }

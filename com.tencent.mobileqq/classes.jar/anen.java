@@ -1,30 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.net.Uri;
+import android.net.Uri.Builder;
+import android.provider.ContactsContract.RawContacts;
 
 class anen
-  implements aimb
 {
-  anen(aned paramaned, Bundle paramBundle1, Bundle paramBundle2, MessengerService paramMessengerService) {}
+  public static final String[] a = { "_id", "sourceid", "contact_id" };
+  public static final String[] b = { "sync1", "sync2", "sync3" };
   
-  public void a()
+  public static final Uri a(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
-    this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
+    return ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", paramString).appendQueryParameter("account_type", "com.tencent.mobileqq.account").appendQueryParameter("caller_is_syncadapter", aneh.b()).build();
   }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("result", paramInt);
-    this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
-  }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anen
  * JD-Core Version:    0.7.0.1
  */

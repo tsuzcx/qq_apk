@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.businessCard.data;
 
-import alqb;
+import amer;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -14,7 +14,7 @@ import org.json.JSONException;
 public class CardOCRInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CardOCRInfo> CREATOR = new alqb();
+  public static final Parcelable.Creator<CardOCRInfo> CREATOR = new amer();
   public float a;
   public int a;
   public String a;

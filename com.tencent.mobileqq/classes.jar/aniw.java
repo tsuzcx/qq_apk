@@ -1,127 +1,72 @@
 import android.content.Context;
-import android.util.SparseArray;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFoldMsgGrayTips;
+import java.util.HashMap;
+import org.json.JSONObject;
 
-public abstract class aniw
-  extends anjf
+public class aniw
+  extends ClickableSpan
 {
-  private static aniy a;
-  public int a;
-  protected Context a;
-  protected SparseArray<View> a;
+  public aniw(MessageForFoldMsgGrayTips paramMessageForFoldMsgGrayTips, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt) {}
   
-  public aniw(Context paramContext, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    super(paramInt1);
-    if (paramContext == null) {
-      throw new IllegalArgumentException("Context MUST NOT be null!!!");
-    }
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  }
-  
-  private boolean a(int paramInt)
-  {
-    switch (paramInt)
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname();
+    String str = this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.frienduin;
+    Object localObject1 = new JSONObject();
+    paramView = new JSONObject();
+    try
     {
-    default: 
-      return false;
-    }
-    return true;
-  }
-  
-  public static void b()
-  {
-    if (jdField_a_of_type_Aniy != null)
-    {
-      jdField_a_of_type_Aniy.a();
-      jdField_a_of_type_Aniy = null;
-    }
-  }
-  
-  protected abstract int a(int paramInt);
-  
-  protected View a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelViewBinder", 2, " createEmoticonPanelView, type=" + paramInt);
-    }
-    long l = System.currentTimeMillis();
-    Object localObject;
-    switch (paramInt)
-    {
-    default: 
-      localObject = null;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonPanelViewBinder", 2, "[Performance] createEmoticonPanelView, type=" + paramInt + ",duration=" + (System.currentTimeMillis() - l));
+      ((JSONObject)localObject1).put("name", localObject2);
+      ((JSONObject)localObject1).put("grouptype", 1 + "");
+      ((JSONObject)localObject1).put("groupid", str);
+      localObject2 = (agvz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(125);
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagIndex))) {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId = ((String)((agvz)localObject2).h.get(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagIndex));
       }
-      return localObject;
-      localObject = new EmoticonLinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
-      ((EmoticonLinearLayout)localObject).setPanelViewType(paramInt);
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidContentContext = null;
-    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {}
-    View localView;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-        } while (localView == null);
-        this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-        paramInt = a(paramInt);
-      } while (!a(paramInt));
-      if (jdField_a_of_type_Aniy == null) {
-        jdField_a_of_type_Aniy = new aniy();
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId)) {
+        return;
       }
-    } while (jdField_a_of_type_Aniy.a(paramInt, localView));
+      localObject2 = (String)((agvz)localObject2).d.get(((agvz)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.istroop) + "_" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.frienduin + "_" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId);
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        return;
+      }
+      ((JSONObject)localObject1).put("listid", this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId);
+      ((JSONObject)localObject1).put("authkey", localObject2);
+      paramView.put("userId", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      paramView.put("viewTag", "redgiftDetail");
+      paramView.put("app_info", "appid#1344242394|bargainor_id#1000030201|channel#graytips");
+      paramView.put("come_from", 2);
+      paramView.put("extra_data", localObject1);
+    }
+    catch (Exception localException)
+    {
+      label295:
+      break label295;
+    }
+    localObject1 = new Bundle();
+    ((Bundle)localObject1).putString("json", paramView.toString());
+    ((Bundle)localObject1).putString("callbackSn", "0");
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, PayBridgeActivity.class);
+    paramView.putExtras((Bundle)localObject1);
+    paramView.putExtra("pay_requestcode", 5);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    return;
   }
   
-  protected abstract void a(View paramView, int paramInt);
-  
-  public View b(int paramInt)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelViewBinder", 2, "getEmoticonPanelView, pageIndex=" + paramInt + ",viewBinder=" + this);
-    }
-    int i = a(paramInt);
-    View localView1 = null;
-    if (jdField_a_of_type_Aniy != null) {
-      localView1 = jdField_a_of_type_Aniy.a(i);
-    }
-    View localView2 = localView1;
-    if (localView1 == null) {
-      localView2 = a(i);
-    }
-    if (localView2 != null)
-    {
-      if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-        this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-      }
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localView2);
-      a(localView2, paramInt);
-    }
-    return localView2;
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.clearShadowLayer();
   }
 }
 

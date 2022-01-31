@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.network.handler;
 
-import sqy;
-import sxw;
-import sxz;
+import tdu;
+import tks;
+import tkv;
 
 public class RecentTabHaloPresenter$ReadStoryVideoEventReceiver$1
   implements Runnable
 {
-  public RecentTabHaloPresenter$ReadStoryVideoEventReceiver$1(sxz paramsxz, sxw paramsxw, sqy paramsqy) {}
+  public RecentTabHaloPresenter$ReadStoryVideoEventReceiver$1(tkv paramtkv, tks paramtks, tdu paramtdu) {}
   
   public void run()
   {
-    sxz.a(this.this$0, this.jdField_a_of_type_Sxw, this.jdField_a_of_type_Sqy);
+    tkv.a(this.this$0, this.jdField_a_of_type_Tks, this.jdField_a_of_type_Tdu);
   }
 }
 

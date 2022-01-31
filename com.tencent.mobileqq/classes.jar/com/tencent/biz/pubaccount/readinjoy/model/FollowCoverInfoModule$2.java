@@ -3,19 +3,19 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Base64;
-import bgmq;
-import opo;
-import prv;
+import bhvh;
+import pap;
+import qdt;
 import tencent.im.oidb.articlesummary.articlesummary.TopicRecommendFeedsInfo;
 
 public class FollowCoverInfoModule$2
   implements Runnable
 {
-  public FollowCoverInfoModule$2(opo paramopo, prv paramprv) {}
+  public FollowCoverInfoModule$2(pap parampap, qdt paramqdt) {}
   
   public void run()
   {
-    Object localObject = bgmq.a(opo.a(this.this$0), true, false);
+    Object localObject = bhvh.a(pap.a(this.this$0), true, false);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
@@ -29,8 +29,8 @@ public class FollowCoverInfoModule$2
     }
     for (;;)
     {
-      ((SharedPreferences.Editor)localObject).putInt("follow_tab_topic_update_info_exists", opo.a(this.this$0));
-      bgmq.a((SharedPreferences.Editor)localObject, true);
+      ((SharedPreferences.Editor)localObject).putInt("follow_tab_topic_update_info_exists", pap.a(this.this$0));
+      bhvh.a((SharedPreferences.Editor)localObject, true);
       return;
       label66:
       ((SharedPreferences.Editor)localObject).putString("follow_tab_topic_update_info", Base64.encodeToString(this.a.a().toByteArray(), 0));

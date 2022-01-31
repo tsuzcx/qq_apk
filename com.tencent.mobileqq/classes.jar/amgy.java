@@ -1,61 +1,33 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.colornote.anim.EnterExitAnimHelper.1.1;
+import mqq.os.MqqHandler;
 
 public class amgy
-  extends alzl<amhb>
+  implements Animator.AnimatorListener
 {
-  public static amhb a()
-  {
-    return (amhb)alzw.a().a(497);
-  }
+  amgy(amgx paramamgx, amkj paramamkj, boolean paramBoolean) {}
   
-  public int a()
-  {
-    return 497;
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  @NonNull
-  public amhb a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new amhb();
-  }
-  
-  @Nullable
-  public amhb a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
-      return amhb.a(paramArrayOfalzs);
+    if (this.jdField_a_of_type_Amkj != null) {
+      this.jdField_a_of_type_Amkj.onColorNoteAnimFinish();
     }
-    return null;
+    if ((this.jdField_a_of_type_Boolean) && ((paramAnimator instanceof wez))) {
+      ThreadManager.getUIHandler().postDelayed(new EnterExitAnimHelper.1.1(this, paramAnimator), 200L);
+    }
   }
   
-  public Class<amhb> a()
-  {
-    return amhb.class;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(amhb paramamhb) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amgy
  * JD-Core Version:    0.7.0.1
  */

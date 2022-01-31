@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
+import aukm;
 import java.io.Serializable;
 
 public class ApolloGameRoamData
-  extends atmo
+  extends aukm
   implements Serializable
 {
   public static final int TYPE_RECOMMEND = 1;

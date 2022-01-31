@@ -1,42 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
 
-class aohd
-  extends aodp
+public class aohd
+  implements View.OnTouchListener
 {
-  aohd(aohc paramaohc) {}
+  public aohd(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject = this.a.a(paramInt + "", paramString, paramLong2 + "");
-    FileManagerEntity localFileManagerEntity = aohc.a(this.a).a().a(paramLong2, paramLong1, paramString, paramInt);
-    if ((localObject != null) && (localFileManagerEntity != null))
+    switch (paramMotionEvent.getAction())
     {
-      localObject = ((apao)localObject).a();
-      if (localObject != null) {
-        ((apan)localObject).a(0, paramInt, paramString, (int)(localFileManagerEntity.fProgress * 100.0F), new Bundle());
-      }
     }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    paramString2 = this.a.a(paramInt1 + "", paramString1, paramLong2 + "");
-    FileManagerEntity localFileManagerEntity = aohc.a(this.a).a().a(paramLong2, paramLong1, paramString1, paramInt1);
-    QLog.i("FMObserver<FileAssistant>", 1, "offline file download is finish. isSuc[" + paramBoolean + "sessionId[" + paramLong2 + "]");
-    if ((paramString2 != null) && (localFileManagerEntity != null) && (paramString2.a() != null)) {
-      paramString2.a().a(paramBoolean, paramInt1, paramString1, new Bundle());
-    }
-    if (paramString2 != null) {
-      this.a.b(paramString2);
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aohd
  * JD-Core Version:    0.7.0.1
  */

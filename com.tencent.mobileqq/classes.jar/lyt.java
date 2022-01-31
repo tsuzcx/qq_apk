@@ -1,45 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoControlUI;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
-public class lyt
-  implements DialogInterface.OnClickListener
+class lyt
+  implements bcwh
 {
-  public lyt(VideoControlUI paramVideoControlUI, long paramLong) {}
+  lyt(lys paramlys, String paramString, Context paramContext, int paramInt1, int paramInt2) {}
   
-  public void onClick(DialogInterface arg1, int paramInt)
+  public void a(BaseResp paramBaseResp)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g()) {}
-    long l;
-    do
-    {
-      do
-      {
-        return;
-        QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c, 1, "showPermissionDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "]");
-        if ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.m) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.f != null)) {
-          awqx.b(null, "CliOper", "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.f, this.jdField_a_of_type_ComTencentAvUiVideoControlUI.f, 0, 0, "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, "");
-        }
-        mjg.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a());
-      } while ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.x != 2) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.x != 1));
-      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.b.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(this.jdField_a_of_type_Long) });
-      l = Long.valueOf(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()).longValue();
-      paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().a(l, 1);
-    } while (paramInt == -1);
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().c.remove(paramInt);
-    synchronized (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d)
-    {
-      paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().b(l, 1);
-      if (paramInt != -1)
-      {
-        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d.remove(paramInt);
-        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().c();
-      }
+    int i = 2;
+    QLog.w("ShareChat", 1, "onWXShareResp, mWXTransaction[" + this.jdField_a_of_type_JavaLangString + "], transaction[" + paramBaseResp.transaction + "], errCode[" + paramBaseResp.errCode + "], seq[" + this.jdField_a_of_type_Lys.a + "]");
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)) {
       return;
+    }
+    lys locallys;
+    int j;
+    int k;
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      bcpw.a(this.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_AndroidContentContext.getString(2131719476), 0).a();
+    case -2: 
+      WXShareHelper.a().b(this);
+      locallys = this.jdField_a_of_type_Lys;
+      j = this.jdField_a_of_type_Int;
+      k = this.b;
+      if (paramBaseResp.errCode != 0) {
+        break;
+      }
+    }
+    for (;;)
+    {
+      locallys.a(j, k, i);
+      return;
+      bcpw.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_AndroidContentContext.getString(2131719495), 0).a();
+      break;
+      i = 3;
     }
   }
 }

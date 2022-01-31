@@ -13,11 +13,11 @@ import com.tencent.tmassistant.common.jce.AppExtInfoParam;
 import com.tencent.tmassistant.common.jce.SDKDataReportRequest;
 import com.tencent.tmassistantbase.util.GlobalUtil;
 import com.tencent.tmassistantbase.util.Settings;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.m;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.l;
+import com.tencent.tmassistantbase.util.n;
 import com.tencent.tmassistantbase.util.o;
-import com.tencent.tmassistantbase.util.p;
-import com.tencent.tmassistantbase.util.t;
+import com.tencent.tmassistantbase.util.s;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -166,7 +166,7 @@ public class b
   {
     try
     {
-      paramString = o.c(this.b.getPackageInfo(paramString, 64).signatures[0].toByteArray()).toLowerCase();
+      paramString = n.c(this.b.getPackageInfo(paramString, 64).signatures[0].toByteArray()).toLowerCase();
       return paramString;
     }
     catch (PackageManager.NameNotFoundException paramString)
@@ -281,7 +281,7 @@ public class b
   
   private String c(String paramString)
   {
-    paramString = o.b(paramString);
+    paramString = n.b(paramString);
     if (TextUtils.isEmpty(paramString)) {
       return "";
     }
@@ -296,7 +296,7 @@ public class b
   private int d(int paramInt)
   {
     int j = 0;
-    if (!t.a()) {
+    if (!s.a()) {
       j = -1;
     }
     for (;;)
@@ -319,14 +319,14 @@ public class b
   
   public void a(int paramInt)
   {
-    ac.c("InfoAnalyzer_", "requestFailed errorCode=" + paramInt);
+    ab.c("InfoAnalyzer_", "requestFailed errorCode=" + paramInt);
     this.g = false;
   }
   
   public void a(AppDataReportConfig paramAppDataReportConfig)
   {
-    if (!p.a(GlobalUtil.getInstance().getContext())) {
-      ac.c("InfoAnalyzer_", "[begin] no available network!");
+    if (!o.a(GlobalUtil.getInstance().getContext())) {
+      ab.c("InfoAnalyzer_", "[begin] no available network!");
     }
     int i;
     do
@@ -335,26 +335,26 @@ public class b
       long l = System.currentTimeMillis();
       if (l - this.d < 60000L)
       {
-        ac.c("InfoAnalyzer_", "[begin] < 60 * 1000");
+        ab.c("InfoAnalyzer_", "[begin] < 60 * 1000");
         return;
       }
       this.d = l;
       if (this.g)
       {
-        ac.c("InfoAnalyzer_", "[begin] analyzing ");
+        ab.c("InfoAnalyzer_", "[begin] analyzing ");
         return;
       }
       i = d(paramAppDataReportConfig.frequency);
-      ac.c("InfoAnalyzer_", "[begin] ret=" + i + ",cfg.fre=" + paramAppDataReportConfig.frequency + ",today succeed.times=" + Settings.getInstance().getInt("analysis_succ_times"));
+      ab.c("InfoAnalyzer_", "[begin] ret=" + i + ",cfg.fre=" + paramAppDataReportConfig.frequency + ",today succeed.times=" + Settings.getInstance().getInt("analysis_succ_times"));
     } while (i != 0);
-    paramAppDataReportConfig = new Thread(new c(this, paramAppDataReportConfig), m.c.toString());
+    paramAppDataReportConfig = new Thread(new c(this, paramAppDataReportConfig), l.c.toString());
     paramAppDataReportConfig.setPriority(1);
     paramAppDataReportConfig.start();
   }
   
   public void b()
   {
-    ac.c("InfoAnalyzer_", "requestSucceed");
+    ab.c("InfoAnalyzer_", "requestSucceed");
     Settings.getInstance().setInt("analysis_succ_times", Settings.getInstance().getInt("analysis_succ_times") + 1);
     this.g = false;
   }

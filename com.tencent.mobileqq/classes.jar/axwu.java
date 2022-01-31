@@ -1,119 +1,214 @@
+import android.content.Context;
 import android.content.res.Resources;
-import android.os.SystemClock;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class axwu
+  extends axuo
 {
-  private static int a(int paramInt, MessageRecord paramMessageRecord)
+  public axwu() {}
+  
+  public axwu(Collection<axun> paramCollection)
   {
-    int i = 2;
-    if ((paramInt == 9063) || (paramInt == 90632)) {
-      i = 1;
-    }
-    do
-    {
-      do
-      {
-        return i;
-        if ((paramMessageRecord.istroop != 1) && (paramMessageRecord.istroop != 3000)) {
-          break;
-        }
-      } while (paramInt == 197);
-      if ((paramInt != 202) && (paramInt != 201)) {
-        break;
-      }
-      return 3;
-    } while (paramInt == 199);
-    if ((paramInt == 206) || (paramInt == 207)) {
-      return 3;
-    }
-    return -1;
+    super(paramCollection);
   }
   
-  private static String a(int paramInt)
+  protected int a(Resources paramResources, int paramInt, axun paramaxun)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-    case 2: 
-      return BaseApplicationImpl.getApplication().getResources().getString(2131624430);
-    }
-    return BaseApplicationImpl.getApplication().getResources().getString(2131624429);
+    return actn.a(5.0F, paramResources);
   }
   
-  public static String a(MessageForPic paramMessageForPic)
+  protected ArrayList<axun> a(ArrayList<axun> paramArrayList)
   {
-    Object localObject2 = null;
-    int i;
-    try
+    return paramArrayList;
+  }
+  
+  protected int b()
+  {
+    return 1;
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    Resources localResources = paramContext.getResources();
+    int n = localResources.getDimensionPixelSize(2131298789);
+    int i1 = localResources.getDimensionPixelSize(2131298790);
+    int i = actn.a(5.0F, localResources);
+    if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.mMsgServiceID == 35)) {}
+    for (int k = 6;; k = 10)
     {
-      String str = paramMessageForPic.getExtInfoFromExtStr("PicUploadExplicitError");
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty(str)) {
-        break label149;
-      }
-      i = a(Integer.parseInt(str), paramMessageForPic);
-      if (i == 3)
+      Object localObject1;
+      Object localObject2;
+      View localView;
+      if ((paramView != null) && ((paramView instanceof LinearLayout)))
       {
-        str = paramMessageForPic.getExtInfoFromExtStr("SEND_PHOTO_DAY_KEY");
-        localObject1 = localObject2;
-        if (TextUtils.isEmpty(str)) {
-          break label149;
+        paramView = (LinearLayout)paramView;
+        if (!TextUtils.isEmpty(this.c)) {
+          paramView.setBackgroundResource(2130839169);
         }
-        long l1 = Long.parseLong(str);
-        long l2 = SystemClock.uptimeMillis();
-        if (oby.a(l1, l2))
+        d(paramView);
+        localObject1 = a(this.jdField_a_of_type_JavaUtilArrayList);
+        if (paramView.getChildCount() != ((ArrayList)localObject1).size()) {
+          break label529;
+        }
+        k = ((ArrayList)localObject1).size();
+        j = 0;
+        if (j < k)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("PicUploadExplicitError", 2, "getFailedTip,lastSendPicTime:" + l1 + " timeCurrent:" + l2);
+          localObject2 = (axun)((ArrayList)localObject1).get(j);
+          ((axun)localObject2).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+          if ((localObject2 instanceof StructMsgItemTitle)) {
+            ((StructMsgItemTitle)localObject2).a(a(), this.l);
           }
-          return a(i);
+          localView = ((axun)localObject2).a(paramContext, paramView.getChildAt(j), paramBundle);
+          if (localView != null) {}
         }
-        paramMessageForPic.removeExtInfoToExtStr("SEND_PHOTO_DAY_KEY");
-        paramMessageForPic.updateMsgExtFiled();
-        return null;
+        else
+        {
+          label197:
+          return paramView;
+        }
+      }
+      else
+      {
+        paramView = new LinearLayout(paramContext);
+        paramView.setOrientation(1);
+        localObject1 = new LinearLayout.LayoutParams(-1, -2);
+        if (!a(1)) {
+          break label853;
+        }
+      }
+      label529:
+      label543:
+      label705:
+      label853:
+      for (int j = a(paramContext, k) + i;; j = i)
+      {
+        int m = i;
+        if (a(2)) {
+          m = i + a(paramContext, k);
+        }
+        paramView.setPadding(n, j, i1, m);
+        paramView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        i = j;
+        break;
+        m = actn.a(10.0F, localResources);
+        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+        if (j > 0) {
+          localLayoutParams.topMargin = a(localResources, j, (axun)localObject2);
+        }
+        localObject2 = ((axun)localObject2).jdField_a_of_type_JavaLangString;
+        if ("picture".equals(localObject2))
+        {
+          localView.setId(-1);
+          localLayoutParams.height = (BaseChatItemLayout.e - m - m);
+        }
+        for (;;)
+        {
+          j += 1;
+          break;
+          if ("video".equals(localObject2))
+          {
+            localLayoutParams.height = (BaseChatItemLayout.e - m - m);
+          }
+          else if ("title".equals(localObject2))
+          {
+            localView.setId(-1);
+          }
+          else if ("summary".equals(localObject2))
+          {
+            localView.setId(-1);
+          }
+          else if ("hr".equals(localObject2))
+          {
+            localLayoutParams.height = 1;
+            if (k == 1) {
+              paramView.setPadding(0, 0, 0, 0);
+            } else if (j == k - 1) {
+              paramView.setPadding(n, i, i1, 0);
+            }
+          }
+          else if ("image".equals(localObject2))
+          {
+            localLayoutParams.gravity = 1;
+            paramView.setPadding(0, 0, 0, 0);
+          }
+        }
+        paramView.removeAllViews();
+        k = ((ArrayList)localObject1).size();
+        j = 0;
+        if (j < k)
+        {
+          localObject2 = (axun)((ArrayList)localObject1).get(j);
+          ((axun)localObject2).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+          if ((localObject2 instanceof StructMsgItemTitle)) {
+            ((StructMsgItemTitle)localObject2).a(a(), this.l);
+          }
+          localView = ((axun)localObject2).a(paramContext, null, paramBundle);
+          if (localView == null) {
+            break label197;
+          }
+          m = actn.a(10.0F, localResources);
+          localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+          if (j > 0) {
+            localLayoutParams.topMargin = a(localResources, j, (axun)localObject2);
+          }
+          localObject2 = ((axun)localObject2).jdField_a_of_type_JavaLangString;
+          if (!"picture".equals(localObject2)) {
+            break label705;
+          }
+          localView.setId(-1);
+          localLayoutParams.height = (BaseChatItemLayout.e - m - m);
+        }
+        for (;;)
+        {
+          paramView.addView(localView, localLayoutParams);
+          j += 1;
+          break label543;
+          break;
+          if ("video".equals(localObject2))
+          {
+            localLayoutParams.height = (BaseChatItemLayout.e - m - m);
+          }
+          else if ("title".equals(localObject2))
+          {
+            localView.setId(-1);
+          }
+          else if ("summary".equals(localObject2))
+          {
+            localView.setId(-1);
+          }
+          else if ("hr".equals(localObject2))
+          {
+            localLayoutParams.height = 1;
+            if (k == 1) {
+              paramView.setPadding(0, 0, 0, 0);
+            } else if (j == k - 1) {
+              paramView.setPadding(n, i, i1, 0);
+            }
+          }
+          else if ("image".equals(localObject2))
+          {
+            localLayoutParams.gravity = 1;
+            paramView.setPadding(0, 0, 0, 0);
+          }
+        }
       }
     }
-    catch (Exception paramMessageForPic)
-    {
-      paramMessageForPic.printStackTrace();
-      return null;
-    }
-    Object localObject1 = a(i);
-    label149:
-    return localObject1;
   }
   
-  public static void a(MessageRecord paramMessageRecord, int paramInt, String paramString)
+  public String b()
   {
-    if ((paramMessageRecord instanceof MessageForPic))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PicUploadExplicitError", 2, "uploadFailUpdateMsg,errCode:" + paramInt + " errStr:" + paramString + " uinType:" + paramMessageRecord.istroop + " msg:" + paramMessageRecord);
-      }
-      int i = a(paramInt, paramMessageRecord);
-      if (i > 0)
-      {
-        if (i != 3) {
-          break label113;
-        }
-        paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitError", String.valueOf(paramInt));
-        paramMessageRecord.saveExtInfoToExtStr("SEND_PHOTO_DAY_KEY", String.valueOf(SystemClock.uptimeMillis()));
-      }
-    }
-    for (;;)
-    {
-      ((MessageForPic)paramMessageRecord).updateMsgExtFiled();
-      return;
-      label113:
-      paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitError", String.valueOf(paramInt));
-    }
+    return "Layout1";
   }
 }
 

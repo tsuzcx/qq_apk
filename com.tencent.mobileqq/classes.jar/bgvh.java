@@ -1,6 +1,16 @@
-public abstract interface bgvh
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
+
+public class bgvh
+  implements View.OnClickListener
 {
-  public abstract void a(bgup parambgup, boolean paramBoolean, int paramInt, String paramString);
+  public bgvh(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.finish();
+  }
 }
 
 

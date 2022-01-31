@@ -1,33 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.statistics.LocalCrashCollector;
-import com.tencent.mobileqq.statistics.LocalCrashCollector.3;
-import com.tencent.widget.XEditTextEx;
-
-public class awql
-  implements DialogInterface.OnClickListener
+class awql
+  implements azdp
 {
-  public awql(LocalCrashCollector.3 param3) {}
+  awql(awqh paramawqh, awne paramawne) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString, int paramInt)
   {
-    try
+    if ((this.jdField_a_of_type_Awne.b != null) && (this.jdField_a_of_type_Awne.b.equals(paramString)))
     {
-      LocalCrashCollector.a(this.a.this$0).a.setText("");
-      LocalCrashCollector.a(this.a.this$0).delete(0, LocalCrashCollector.a(this.a.this$0).length());
-      paramDialogInterface.dismiss();
-      return;
+      if (paramInt != 3) {
+        break label45;
+      }
+      this.jdField_a_of_type_Awne.j = 2;
     }
-    catch (Exception paramDialogInterface)
+    for (;;)
     {
-      paramDialogInterface.printStackTrace();
+      this.jdField_a_of_type_Awqh.a();
+      return;
+      label45:
+      if ((paramInt == 2) || (paramInt == 4)) {
+        this.jdField_a_of_type_Awne.j = 1;
+      } else if (paramInt == 1) {
+        this.jdField_a_of_type_Awne.j = 0;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awql
  * JD-Core Version:    0.7.0.1
  */

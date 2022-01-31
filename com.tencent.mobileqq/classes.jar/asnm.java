@@ -1,26 +1,24 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 import com.tencent.qphone.base.util.QLog;
 
-public class asnm
-  implements DialogInterface.OnClickListener
+public abstract class asnm
 {
-  public asnm(ShortVideoCommentsView paramShortVideoCommentsView, Activity paramActivity) {}
+  public String a = "MsgBackup." + getClass().getSimpleName();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString)
   {
-    asfl.a(this.jdField_a_of_type_AndroidAppActivity, 302);
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.bindphone", 2, "openBindPhonePage");
+    if (asog.a) {
+      QLog.d(this.a, 2, paramString);
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a, "playpage_phone_clk");
+  }
+  
+  protected boolean a(String paramString)
+  {
+    return bbdj.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asnm
  * JD-Core Version:    0.7.0.1
  */

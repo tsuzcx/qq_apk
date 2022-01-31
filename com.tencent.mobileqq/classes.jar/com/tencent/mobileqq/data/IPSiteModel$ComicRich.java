@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import amsa;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anih;
 
 public class IPSiteModel$ComicRich
   implements Parcelable
 {
-  public static final Parcelable.Creator<ComicRich> CREATOR = new amsa();
+  public static final Parcelable.Creator<ComicRich> CREATOR = new anih();
   public String extCover;
   public String extName;
   public String extTitle;

@@ -1,17 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import java.util.ArrayList;
-
 class biqm
-  implements ValueAnimator.AnimatorUpdateListener
+  implements biqy
 {
-  biqm(biql parambiql) {}
+  biqm(biqk parambiqk, biqy parambiqy) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(biqn parambiqn, int paramInt)
   {
-    paramValueAnimator = (ArrayList)paramValueAnimator.getAnimatedValue();
-    this.a.a = paramValueAnimator;
-    this.a.invalidateSelf();
+    if (this.jdField_a_of_type_Biqy != null) {
+      this.jdField_a_of_type_Biqy.a(parambiqn, paramInt);
+    }
+  }
+  
+  public void a(biqn parambiqn, boolean paramBoolean)
+  {
+    biqn localbiqn = biqk.a(this.jdField_a_of_type_Biqk, parambiqn);
+    if (localbiqn != null) {
+      localbiqn.d = biqk.a(parambiqn);
+    }
+    if (this.jdField_a_of_type_Biqy != null)
+    {
+      this.jdField_a_of_type_Biqy.a(parambiqn, paramBoolean);
+      if (localbiqn != null) {
+        bizq.b("AEMaterialManager", "【END】onDownloadFinish :" + localbiqn.a);
+      }
+    }
   }
 }
 

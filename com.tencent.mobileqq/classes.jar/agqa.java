@@ -1,21 +1,24 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class agqa
-  implements agmu
+final class agqa
+  implements DialogInterface.OnClickListener
 {
-  agqa(agpt paramagpt, ResultReceiver paramResultReceiver) {}
+  agqa(Activity paramActivity, String paramString1, String paramString2) {}
   
-  public void a(String paramString1, String paramString2, agmo paramagmo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramString1 = new Bundle();
-    paramString1.putString("res", paramString2);
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString1);
+    if (paramInt == 0)
+    {
+      agpv.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agqa
  * JD-Core Version:    0.7.0.1
  */

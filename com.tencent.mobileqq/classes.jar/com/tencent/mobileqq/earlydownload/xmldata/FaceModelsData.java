@@ -5,12 +5,12 @@ public class FaceModelsData
 {
   public String getSharedPreferencesName()
   {
-    return "early_qq.android.ar.face.models_v7.1.5";
+    return "early_qq.android.ar.face.models_v8.2.0";
   }
   
   public String getStrResName()
   {
-    return "qq.android.ar.face.models_v7.1.5";
+    return "qq.android.ar.face.models_v8.2.0";
   }
 }
 

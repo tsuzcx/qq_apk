@@ -1,94 +1,47 @@
-import android.text.TextUtils;
+import android.graphics.drawable.Drawable;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class auxr
+public final class auxr
+  implements anyb
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public boolean c;
+  public auxr(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public auxr()
+  public void a(anyc paramanyc)
   {
-    this(null, 0, true, false);
+    if (paramanyc != null) {}
+    try
+    {
+      paramanyc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
+      return;
+    }
+    catch (Throwable paramanyc) {}
   }
   
-  public auxr(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public void a(anyc paramanyc1, anyc paramanyc2, Drawable paramDrawable) {}
+  
+  public boolean a(anyc paramanyc)
   {
-    this(paramString, paramInt, paramBoolean1, paramBoolean2, 0L, 0L);
+    return false;
   }
   
-  public auxr(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, long paramLong2)
+  public void b()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean2;
-    this.jdField_b_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
+    ayla.a(this.jdField_a_of_type_AndroidWidgetEditText);
   }
   
-  public boolean a(auxr paramauxr)
-  {
-    if (paramauxr == null) {
-      throw new NullPointerException();
-    }
-    boolean bool = false;
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramauxr.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_JavaLangString = paramauxr.jdField_a_of_type_JavaLangString;
-      bool = true;
-    }
-    if (this.jdField_a_of_type_Int != paramauxr.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_Int = paramauxr.jdField_a_of_type_Int;
-      bool = true;
-    }
-    if (this.jdField_a_of_type_Boolean != paramauxr.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = paramauxr.jdField_a_of_type_Boolean;
-      bool = true;
-    }
-    if (this.jdField_b_of_type_Boolean != paramauxr.jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Boolean = paramauxr.jdField_b_of_type_Boolean;
-      bool = true;
-    }
-    if (this.jdField_a_of_type_Long != paramauxr.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = paramauxr.jdField_a_of_type_Long;
-      bool = true;
-    }
-    if (this.jdField_b_of_type_Long != paramauxr.jdField_b_of_type_Long)
-    {
-      this.jdField_b_of_type_Long = paramauxr.jdField_b_of_type_Long;
-      bool = true;
-    }
-    if (this.jdField_b_of_type_Int != paramauxr.jdField_b_of_type_Int)
-    {
-      this.jdField_b_of_type_Int = paramauxr.jdField_b_of_type_Int;
-      bool = true;
-    }
-    if (this.c != paramauxr.c)
-    {
-      this.c = paramauxr.c;
-      return true;
-    }
-    return bool;
-  }
+  public void b(anyc paramanyc) {}
   
-  public String toString()
-  {
-    return "inputFilePath=" + this.jdField_a_of_type_JavaLangString + " speedType=" + this.jdField_a_of_type_Int + " noSleep=" + this.jdField_a_of_type_Boolean + " repeat=" + this.jdField_b_of_type_Boolean + " startTimeMillSecond=" + this.jdField_a_of_type_Long + " endTimeMillSecond=" + this.jdField_b_of_type_Long;
-  }
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auxr
  * JD-Core Version:    0.7.0.1
  */

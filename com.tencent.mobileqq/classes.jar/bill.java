@@ -1,20 +1,24 @@
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bill
+class bill
+  implements Animator.AnimatorListener
 {
-  public abstract void a();
+  bill(bilj parambilj) {}
   
-  public abstract void a(int paramInt);
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AEWaterMarkListPart", 2, "Watermark Panel Opened!");
+    }
+  }
   
-  public abstract void a(DynamicTextItem paramDynamicTextItem, boolean paramBoolean1, int paramInt, boolean paramBoolean2);
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void b(boolean paramBoolean);
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

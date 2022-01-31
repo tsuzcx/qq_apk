@@ -1,30 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.view.PtvTemplateProviderView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-
-public final class auwd
-  extends BroadcastReceiver
+public class auwd
 {
-  private auwd(PtvTemplateProviderView paramPtvTemplateProviderView) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("action_brocassreceiver_for_ptv".equals(paramIntent.getAction()))
-    {
-      ausk.a().b(false);
-      PtvTemplateProviderView.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PtvTemplateProviderView", 2, "PtvTemplateProviderView PtvBroadcastReceiver size=" + this.a.a.size());
-      }
-    }
-  }
+  public static Integer a = Integer.valueOf(1);
+  public static Integer b = Integer.valueOf(2);
+  public static Integer c = Integer.valueOf(3);
+  public static Integer d = Integer.valueOf(4);
+  public Long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
+  public Integer e = Integer.valueOf(0);
+  public Integer f = Integer.valueOf(0);
+  public Integer g = a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auwd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,235 +1,75 @@
-import android.text.TextUtils;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Request.Builder;
-import com.squareup.okhttp.Response;
-import com.squareup.okhttp.ResponseBody;
-import com.tencent.qphone.base.util.MD5;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-import org.json.JSONObject;
 
-public class baua
+class baua
+  extends bduv
 {
-  public static Map<String, Long> a;
-  private int jdField_a_of_type_Int = -1;
-  private final String jdField_a_of_type_JavaLangString = "LhHelper";
-  private int jdField_b_of_type_Int = -1;
-  private final String jdField_b_of_type_JavaLangString = "a4d7ea5belhtimecard";
-  private final String c = "cmd=rsp&key=a4d7ea5belhtimecard";
-  private final String d = "https://proxy.vip.qq.com/cgi-bin/srfentry.fcgi";
-  private String e;
+  baua(batu parambatu) {}
   
-  static
+  protected void a(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap(10);
-  }
-  
-  public baua(String paramString)
-  {
-    this.e = paramString;
-  }
-  
-  private OkHttpClient a()
-  {
-    OkHttpClient localOkHttpClient = new OkHttpClient();
-    localOkHttpClient.setConnectTimeout(5L, TimeUnit.SECONDS);
-    localOkHttpClient.setReadTimeout(5L, TimeUnit.SECONDS);
-    return localOkHttpClient;
-  }
-  
-  private String a()
-  {
-    return MD5.toMD5("cmd=rsp&key=a4d7ea5belhtimecard&uin=" + this.e);
-  }
-  
-  private String a(int paramInt)
-  {
-    return MD5.toMD5("cmd=" + paramInt + "&key=" + "a4d7ea5belhtimecard" + "&uin=" + this.e);
-  }
-  
-  private JSONObject a(int paramInt)
-  {
-    int i;
-    try
-    {
-      Object localObject = b(paramInt);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopShareUtility", 2, "onQidianGroupInfo start");
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin == null)) {
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
+        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
       }
-      QLog.d("LhHelper", 1, "reqCgi cmd = " + paramInt);
-      localObject = new Request.Builder().url((String)localObject).build();
-      localObject = a().newCall((Request)localObject).execute();
-      i = ((Response)localObject).code();
-      if (i == 200)
+    }
+    while ((this.a.jdField_a_of_type_Bcpq == null) || (!this.a.jdField_a_of_type_Bcpq.isShowing()) || (this.a.jdField_a_of_type_Int == -1) || (this.a.b == -1)) {
+      return;
+    }
+    if ((paramBoolean) && (paramHashMap != null))
+    {
+      String str = (String)paramHashMap.get("uin");
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin.equals(str))
       {
-        localObject = new JSONObject(((Response)localObject).body().string()).optJSONObject("12042");
-        if (localObject == null) {
-          break label278;
-        }
-        localObject = ((JSONObject)localObject).optJSONObject("data");
-        if (localObject == null) {
-          break label278;
-        }
-        localObject = ((JSONObject)localObject).optJSONObject("rsp");
-        if (localObject == null) {
-          break label278;
-        }
-        i = ((JSONObject)localObject).optInt("ret");
-        String str = ((JSONObject)localObject).optString("sign");
-        QLog.d("LhHelper", 1, "reqCgi retCode = " + i);
-        if ((i == 0) && (a().equalsIgnoreCase(str))) {
-          return localObject;
-        }
-        QLog.e("LhHelper", 1, "reqCgi rsp sign error, cmd = " + paramInt);
-        return null;
+        this.a.b();
+        return;
       }
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("LhHelper", 1, "reqCgi exception cmd =" + paramInt + ", e = ", localThrowable);
-      return null;
-    }
-    QLog.e("LhHelper", 1, "reqCgi http errorCode = " + i + " ,cmd = " + paramInt);
-    label278:
-    return null;
-  }
-  
-  private JSONObject a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("req", paramJSONObject);
-      localJSONObject1.put("12042", localJSONObject2);
-      return localJSONObject1;
-    }
-    catch (Throwable paramJSONObject)
-    {
-      QLog.e("LhHelper", 1, "buildReqData exception e = ", paramJSONObject);
-    }
-    return null;
-  }
-  
-  private String b(int paramInt)
-  {
-    try
-    {
-      String str = a(paramInt);
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("cmd", paramInt);
-      localJSONObject.put("sign", str);
-      localJSONObject.put("uin", this.e);
-      str = "https://proxy.vip.qq.com/cgi-bin/srfentry.fcgi?data=" + a(localJSONObject);
-      return str;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("LhHelper", 1, "buildReqUrl cmd = " + paramInt + "exception e = ", localThrowable);
-    }
-    return null;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      if (a(2) != null) {
-        return true;
-      }
-      QLog.e("LhHelper", 1, "receiveReq rsp data is error");
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      paramHashMap = (String)paramHashMap.get("url");
+      this.a.jdField_a_of_type_JavaLangString = paramHashMap;
+      switch (this.a.jdField_a_of_type_Int)
       {
-        QLog.e("LhHelper", 1, "receiveReq exception e = ", localThrowable);
+      default: 
+        return;
+      case 0: 
+        this.a.c = bahh.a("", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, 0);
+        this.a.b();
+        batu.d(this.a);
+        return;
+      case 3: 
+        this.a.b();
+        batu.b(this.a);
+        return;
+      case 2: 
+        this.a.b();
+        batu.c(this.a);
+        return;
+      case 1: 
+        this.a.b();
+        batu.e(this.a);
+        return;
       }
+      this.a.b();
+      batu.f(this.a);
+      return;
     }
-    return false;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public boolean b()
-  {
-    try
-    {
-      JSONObject localJSONObject = a(3);
-      if (localJSONObject != null)
-      {
-        int i = localJSONObject.optInt("lhState", -1);
-        QLog.d("LhHelper", 1, "reqLhStatus lhState = " + i);
-        if (i == 2) {
-          return true;
-        }
-      }
-      else
-      {
-        QLog.e("LhHelper", 1, "reqLhStatus rsp data is error");
-      }
+    if (this.a.jdField_a_of_type_Baud != null) {
+      this.a.jdField_a_of_type_Baud.a(this.a.jdField_a_of_type_Int, false);
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.e("LhHelper", 1, "reqLhStatus exception e = ", localThrowable);
-      }
-    }
-    return false;
-  }
-  
-  public int c()
-  {
-    try
-    {
-      JSONObject localJSONObject = a(1);
-      if (localJSONObject != null)
-      {
-        this.jdField_a_of_type_Int = localJSONObject.optInt("buyoutMonth", -1);
-        this.jdField_b_of_type_Int = localJSONObject.optInt("buyoutType", -1);
-        int i = localJSONObject.optInt("cardState", -1);
-        if ((this.jdField_a_of_type_Int != -1) && (this.jdField_b_of_type_Int != -1))
-        {
-          if (i == 0) {
-            return 1;
-          }
-        }
-        else
-        {
-          QLog.e("LhHelper", 1, "checkUserStatus buyoutData is error");
-          break label103;
-        }
-      }
-      else
-      {
-        QLog.e("LhHelper", 1, "checkUserStatus rsp data is empty");
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("LhHelper", 1, "checkUserStatus exception e = ", localThrowable);
-    }
-    return 2;
-    label103:
-    return 3;
+    this.a.b();
+    bcpw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131693032), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+    this.a.jdField_a_of_type_Int = -1;
+    this.a.b = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     baua
  * JD-Core Version:    0.7.0.1
  */

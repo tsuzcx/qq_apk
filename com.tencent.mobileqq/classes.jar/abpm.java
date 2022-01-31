@@ -1,108 +1,66 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ims.QQProtectRisks.QQProtectRisksResponse;
-import com.tencent.ims.QQProtectRisks.RiskInfo;
-import com.tencent.mobileqq.activity.RiskInfoActivity;
-import com.tencent.mobileqq.activity.RiskInfoItem;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
+import android.content.res.Resources;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.MultiImageTextView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class abpm
-  extends mmn
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abpm(RiskInfoActivity paramRiskInfoActivity) {}
+  public abpm(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool1;
-    boolean bool2;
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("RiskInfoDetails", 2, "request risks info,onResult error=" + paramInt + " data=" + paramArrayOfByte);
-      }
-      bool1 = false;
-      paramBundle = new HashMap();
-      bool2 = bool1;
-      if (!bool1) {}
+    boolean bool2 = true;
+    boolean bool1 = true;
+    int j = nam.a();
+    int i = j;
+    if (j == -1) {
+      i = 2;
     }
-    for (;;)
+    if (i == 0)
     {
-      try
+      bcpw.a(this.a.getActivity(), 1, 2131696413, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
+      paramCompoundButton = this.a;
+      if (!paramBoolean) {}
+      for (paramBoolean = bool1;; paramBoolean = false)
       {
-        QQProtectRisks.QQProtectRisksResponse localQQProtectRisksResponse = new QQProtectRisks.QQProtectRisksResponse();
-        localQQProtectRisksResponse.mergeFrom(paramArrayOfByte);
-        paramInt = 0;
-        if (localQQProtectRisksResponse.uint32_sec_cmd.has()) {
-          paramInt = localQQProtectRisksResponse.uint32_sec_cmd.get();
-        }
-        bool2 = bool1;
-        if (paramInt == 1)
-        {
-          bool2 = bool1;
-          if (localQQProtectRisksResponse.risk_info_list.has())
-          {
-            bool2 = bool1;
-            if (!localQQProtectRisksResponse.risk_info_list.isEmpty())
-            {
-              paramInt = 0;
-              bool2 = bool1;
-              if (paramInt < localQQProtectRisksResponse.risk_info_list.size())
-              {
-                new QQProtectRisks.RiskInfo();
-                paramArrayOfByte = (QQProtectRisks.RiskInfo)localQQProtectRisksResponse.risk_info_list.get(paramInt);
-                if ((paramArrayOfByte.uint32_item_type.has()) && (paramArrayOfByte.uint32_item_type.get() == 1)) {
-                  break label511;
-                }
-                RiskInfoItem localRiskInfoItem = new RiskInfoItem();
-                localRiskInfoItem.jdField_a_of_type_JavaLangString = paramArrayOfByte.str_left_text.get();
-                localRiskInfoItem.d = paramArrayOfByte.str_jump_target.get();
-                if ((TextUtils.isEmpty(localRiskInfoItem.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(localRiskInfoItem.d))) {
-                  break label511;
-                }
-                localRiskInfoItem.jdField_b_of_type_JavaLangString = paramArrayOfByte.str_right_text.get();
-                localRiskInfoItem.c = paramArrayOfByte.str_desc_text.get();
-                localRiskInfoItem.jdField_a_of_type_Int = paramArrayOfByte.uint32_click_report_id.get();
-                if (paramArrayOfByte.uint32_item_id.has()) {
-                  localRiskInfoItem.jdField_b_of_type_Int = paramArrayOfByte.uint32_item_id.get();
-                }
-                if (paramArrayOfByte.str_right_text_open.has()) {
-                  localRiskInfoItem.e = paramArrayOfByte.str_right_text_open.get();
-                }
-                paramArrayOfByte = String.format("%d", new Object[] { Integer.valueOf(localRiskInfoItem.jdField_b_of_type_Int) });
-                if (localRiskInfoItem.jdField_b_of_type_Int == 0) {
-                  paramArrayOfByte = localRiskInfoItem.d;
-                }
-                paramBundle.put(paramArrayOfByte, localRiskInfoItem);
-                QLog.d("RiskInfoDetails", 1, String.format("%s, %s, %s, %s, %d, %d, %s", new Object[] { localRiskInfoItem.jdField_a_of_type_JavaLangString, localRiskInfoItem.jdField_b_of_type_JavaLangString, localRiskInfoItem.c, localRiskInfoItem.d, Integer.valueOf(localRiskInfoItem.jdField_a_of_type_Int), Integer.valueOf(localRiskInfoItem.jdField_b_of_type_Int), localRiskInfoItem.e }));
-              }
-            }
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.d("RiskInfoDetails", 1, "error protobuf content");
-        bool2 = false;
-        RiskInfoActivity.a(this.a, paramBundle, bool2);
+        NotifyPushSettingActivity.a(paramCompoundButton, paramBoolean);
         return;
       }
-      catch (Throwable paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        bool2 = bool1;
-        continue;
-      }
-      bool1 = true;
-      break;
-      label511:
-      paramInt += 1;
     }
+    if (NotifyPushSettingActivity.a(this.a).compareAndSet(true, true))
+    {
+      bcpw.a(this.a.getActivity(), 1, 2131698339, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
+      paramCompoundButton = this.a;
+      if (!paramBoolean) {}
+      for (paramBoolean = bool2;; paramBoolean = false)
+      {
+        NotifyPushSettingActivity.a(paramCompoundButton, paramBoolean);
+        return;
+      }
+    }
+    NotifyPushSettingActivity.a(this.a, paramBoolean);
+    if (paramBoolean)
+    {
+      paramCompoundButton = ajyc.a(2131707642) + abqi.a(3600000L);
+      NotifyPushSettingActivity.a(this.a).setRightText(paramCompoundButton);
+      NotifyPushSettingActivity.a(this.a).set(true);
+      long l = NetConnInfoCenter.getServerTime();
+      ((ajtk)this.a.app.a(2)).b((int)(3600L + l), "", "not_disturb_from_notify_push_setting_activity");
+      axqw.b(this.a.app, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 1, 60L + "", "0", "", "");
+      return;
+    }
+    paramCompoundButton = NotifyPushSettingActivity.a(this.a).a().getText().toString();
+    NotifyPushSettingActivity.a(this.a).a().setText("");
+    NotifyPushSettingActivity.a(this.a).set(true);
+    ((ajtk)this.a.app.a(2)).b(0, paramCompoundButton, "not_disturb_from_notify_push_setting_activity");
+    axqw.b(this.a.app, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 2, "0", "0", "", "");
   }
 }
 

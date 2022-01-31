@@ -1,6 +1,19 @@
-public abstract interface aavw
+import com.tencent.mobileqq.activity.Contacts;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
+public class aavw
+  extends akke
 {
-  public abstract void a(int paramInt);
+  public aavw(Contacts paramContacts) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NewFriendVerification.manager", 2, "ui.onGetAddFriendBlockedRedPoint, success=" + paramBoolean1 + ",blockedUin=" + paramString);
+    }
+    ((akbo)this.a.a.getManager(34)).c();
+  }
 }
 
 

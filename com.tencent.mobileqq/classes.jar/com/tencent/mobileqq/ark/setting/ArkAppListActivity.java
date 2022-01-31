@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark.setting;
 
-import aciy;
-import alhw;
+import actn;
+import alwk;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -22,10 +22,10 @@ public class ArkAppListActivity
     super.doOnCreate(paramBundle);
     paramBundle = new LinearLayout(this);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
-    paramBundle.setBackgroundResource(2130838504);
+    paramBundle.setBackgroundResource(2130838515);
     paramBundle.setLayoutParams(localLayoutParams);
     paramBundle.setOrientation(1);
-    paramBundle.setPadding(0, aciy.a(20.0F, getResources()), 0, 0);
+    paramBundle.setPadding(0, actn.a(20.0F, getResources()), 0, 0);
     this.a = paramBundle;
     paramBundle = getIntent().getStringArrayExtra("intent_extra_authority_app_list");
     if ((paramBundle != null) && (paramBundle.length > 0))
@@ -39,14 +39,14 @@ public class ArkAppListActivity
           FormSimpleItem localFormSimpleItem = new FormSimpleItem(this);
           localFormSimpleItem.setLeftText(localLayoutParams);
           localFormSimpleItem.a(true);
-          localFormSimpleItem.setOnClickListener(new alhw(this, localLayoutParams));
+          localFormSimpleItem.setOnClickListener(new alwk(this, localLayoutParams));
           this.a.addView(localFormSimpleItem);
         }
         i += 1;
       }
     }
     super.setContentView(this.a);
-    super.setTitle(2131624635);
+    super.setTitle(2131690189);
     return true;
   }
 }

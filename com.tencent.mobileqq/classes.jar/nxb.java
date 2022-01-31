@@ -1,41 +1,53 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import org.jetbrains.annotations.NotNull;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class nxb
-  extends ClickableSpan
+public class nxb
+  implements CompoundButton.OnCheckedChangeListener
 {
-  nxb(nwx paramnwx, BaseCommentData paramBaseCommentData, String paramString1, String paramString2) {}
+  public nxb(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onClick(@NotNull View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAuthorReply()) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.ksHomePage))) {
-      nvx.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.ksHomePage, BaseActivity.sTopActivity);
+    int j = 1;
+    int i;
+    if (paramBoolean) {
+      i = 0;
     }
     for (;;)
     {
-      ndn.a(null, nvx.a(this.jdField_a_of_type_Nwx.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Nwx.a.mArticleID), String.valueOf(this.jdField_a_of_type_Nwx.a.mAlgorithmID), this.jdField_a_of_type_Nwx.a.innerUniqueID, this.b, false);
-      return;
-      nvx.a(this.jdField_a_of_type_JavaLangString, BaseActivity.sTopActivity);
+      shh.a(i);
+      paramCompoundButton = new JSONObject();
+      if (paramBoolean) {
+        i = j;
+      }
+      try
+      {
+        for (;;)
+        {
+          paramCompoundButton.put("click_opt", i);
+          noo.a(null, "", "0X800A80B", "0X800A80B", 0, 0, "", "", "", paramCompoundButton.toString(), false);
+          return;
+          i = 1;
+          break;
+          i = 2;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
     }
-  }
-  
-  public void updateDrawState(@NotNull TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#376099"));
-    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nxb
  * JD-Core Version:    0.7.0.1
  */

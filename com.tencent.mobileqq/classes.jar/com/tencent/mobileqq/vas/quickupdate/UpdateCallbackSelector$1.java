@@ -1,31 +1,33 @@
 package com.tencent.mobileqq.vas.quickupdate;
 
-import baqp;
-import baqs;
-import baqt;
-import baqu;
-import baqv;
-import baqw;
-import baqx;
+import bbso;
+import bbsr;
+import bbss;
+import bbst;
+import bbsu;
+import bbsv;
+import bbsw;
+import bbsz;
 import java.util.HashMap;
 
 public final class UpdateCallbackSelector$1
-  extends HashMap<Long, baqp>
+  extends HashMap<Long, bbso>
 {
   public UpdateCallbackSelector$1()
   {
-    baqp[] arrayOfbaqp = new baqp[6];
-    arrayOfbaqp[0] = baqx.a;
-    arrayOfbaqp[1] = baqw.a;
-    arrayOfbaqp[2] = baqu.a;
-    arrayOfbaqp[3] = baqs.a;
-    arrayOfbaqp[4] = baqt.a;
-    arrayOfbaqp[5] = baqv.a;
-    int j = arrayOfbaqp.length;
+    bbso[] arrayOfbbso = new bbso[7];
+    arrayOfbbso[0] = bbsw.a;
+    arrayOfbbso[1] = bbsv.a;
+    arrayOfbbso[2] = bbst.a;
+    arrayOfbbso[3] = bbsr.a;
+    arrayOfbbso[4] = bbss.a;
+    arrayOfbbso[5] = bbsu.a;
+    arrayOfbbso[6] = bbsz.a;
+    int j = arrayOfbbso.length;
     while (i < j)
     {
-      baqp localbaqp = arrayOfbaqp[i];
-      put(Long.valueOf(localbaqp.getBID()), localbaqp);
+      bbso localbbso = arrayOfbbso[i];
+      put(Long.valueOf(localbbso.getBID()), localbbso);
       i += 1;
     }
   }

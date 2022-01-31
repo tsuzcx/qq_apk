@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.os.Message;
-import bigb;
+import bjww;
 
 class HWEditLocalVideoPlayer$5
   implements Runnable

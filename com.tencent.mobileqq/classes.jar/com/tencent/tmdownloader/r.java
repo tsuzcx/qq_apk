@@ -1,7 +1,7 @@
 package com.tencent.tmdownloader;
 
 import com.tencent.tmassistant.aidl.b;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -14,14 +14,14 @@ class r
   
   public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
   {
-    ac.c("TMAssistantDownloadSDKClient", "clientKey:" + paramString1 + ",state:" + paramInt1 + ", errorcode:" + paramInt2 + ",url:" + paramString2);
+    ab.c("TMAssistantDownloadSDKClient", "clientKey:" + paramString1 + ",state:" + paramInt1 + ", errorcode:" + paramInt2 + ",url:" + paramString2);
     paramString1 = this.a.mWeakListenerArrayList.iterator();
     while (paramString1.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)paramString1.next();
       ITMAssistantDownloadClientListener localITMAssistantDownloadClientListener = (ITMAssistantDownloadClientListener)localWeakReference.get();
       if (localITMAssistantDownloadClientListener != null) {
-        ac.c("TMAssistantDownloadSDKClient", " listener : " + localITMAssistantDownloadClientListener + "   linstenerWeakReference :" + localWeakReference);
+        ab.c("TMAssistantDownloadSDKClient", " listener : " + localITMAssistantDownloadClientListener + "   linstenerWeakReference :" + localWeakReference);
       }
       t.a().a(this.a, localITMAssistantDownloadClientListener, paramString2, paramInt1, paramInt2, paramString3);
     }

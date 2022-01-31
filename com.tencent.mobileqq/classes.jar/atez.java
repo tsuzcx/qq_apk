@@ -1,30 +1,73 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.view.MaskView;
+import android.content.res.Resources;
+import android.graphics.Paint;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class atez
-  implements SurfaceHolder.Callback
+  implements View.OnClickListener
 {
-  public atez(ScanOcrActivity paramScanOcrActivity) {}
+  public atez(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public void onClick(View paramView)
   {
-    ScanOcrActivity.a(this.a, paramSurfaceHolder);
-    if (ScanOcrActivity.a(this.a) == null)
+    if ((ChooseInterestTagActivity.a(this.a) == 3) || (ChooseInterestTagActivity.a(this.a) == 2) || (ChooseInterestTagActivity.a(this.a) == 1) || (ChooseInterestTagActivity.a(this.a) == 4))
     {
-      ScanOcrActivity.a(this.a, new atek(this.a, this.a.jdField_a_of_type_Atep, ScanOcrActivity.a(this.a)));
-      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_Int);
-      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.a());
-      if (ScanOcrActivity.a(this.a)) {
-        ScanOcrActivity.a(this.a).a();
+      paramView = (InterestTagInfo)paramView.getTag();
+      if (paramView != null)
+      {
+        ChooseInterestTagActivity.a(this.a).remove(paramView);
+        ChooseInterestTagActivity.a(this.a, paramView);
+        ChooseInterestTagActivity.b(this.a, paramView);
       }
     }
+    do
+    {
+      for (;;)
+      {
+        return;
+        try
+        {
+          int[] arrayOfInt = new int[2];
+          paramView.getLocationInWindow(arrayOfInt);
+          if (arrayOfInt[0] > 0)
+          {
+            InterestTagInfo localInterestTagInfo = (InterestTagInfo)paramView.getTag();
+            if (localInterestTagInfo != null)
+            {
+              Paint localPaint = new Paint();
+              localPaint.setTextSize((float)(ChooseInterestTagActivity.a(this.a) * 14.0F + 0.5D));
+              localPaint.setColor(this.a.getResources().getColor(2131166912));
+              localPaint.setFakeBoldText(false);
+              localPaint.setAntiAlias(true);
+              Object localObject2 = localInterestTagInfo.tagName;
+              Object localObject1 = localObject2;
+              if (TextUtils.isEmpty((CharSequence)localObject2)) {
+                localObject1 = " ";
+              }
+              localObject2 = localObject1;
+              if (((String)localObject1).length() > 8) {
+                localObject2 = ((String)localObject1).substring(0, 8) + "...";
+              }
+              float f = localPaint.measureText((String)localObject2);
+              int i = (int)(ChooseInterestTagActivity.a(this.a) * 64.0F + 0.5D + f);
+              localObject1 = new atfp(this.a, arrayOfInt[0], i);
+              ((atfp)localObject1).a(ChooseInterestTagActivity.a(this.a));
+              ((atfp)localObject1).a(localInterestTagInfo);
+              ((atfp)localObject1).showAsDropDown(paramView, -(int)((i - 40.0F * ChooseInterestTagActivity.a(this.a)) / 2.0F), 10);
+              return;
+            }
+          }
+        }
+        catch (Exception paramView) {}
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.i("choose_interest_tag", 4, paramView.getMessage());
   }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder) {}
 }
 
 

@@ -1,22 +1,20 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
-public abstract class apxp
-  extends RecyclerView.ViewHolder
+public class apxp
+  implements aptu
 {
-  public apxp(Context paramContext, View paramView, ViewGroup paramViewGroup)
+  public apxp(QfileEditBottomBar paramQfileEditBottomBar) {}
+  
+  public void a()
   {
-    super(paramView);
+    QfileEditBottomBar.a(this.a);
   }
   
-  public abstract void a(FeedsItemData paramFeedsItemData);
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apxp
  * JD-Core Version:    0.7.0.1
  */

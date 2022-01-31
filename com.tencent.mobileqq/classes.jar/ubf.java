@@ -1,43 +1,23 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.util.SparseArray;
 
 public final class ubf
-  implements View.OnClickListener
+  extends SparseArray<int[]>
 {
-  public ubf(ubd paramubd, Activity paramActivity, String paramString) {}
-  
-  public void onClick(View paramView)
+  public ubf()
   {
-    urk.d("QQStoryMainController", "top right button on click:" + this.jdField_a_of_type_Ubd);
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_Ubd.c)) && (mpl.a(this.jdField_a_of_type_Ubd.c)))
-    {
-      paramView = this.jdField_a_of_type_Ubd.c;
-      if (this.jdField_a_of_type_Ubd.a != 1) {
-        break label172;
-      }
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-    }
-    for (;;)
-    {
-      urp.a("hall", "exp", 0, 0, new String[] { "" });
-      if (!"troopStoryHallConfig".equals(this.jdField_a_of_type_JavaLangString)) {
-        break label197;
-      }
-      urp.a("story_grp", "clk_find_left", 0, 0, new String[] { "", "", "", "" });
-      return;
-      paramView = "https://story.now.qq.com/mobile/find.html?_wv=3&_bid=2542";
-      break;
-      label172:
-      if ((this.jdField_a_of_type_Ubd.a == 2) || (this.jdField_a_of_type_Ubd.a != 3)) {}
-    }
-    label197:
-    urp.a("home_page", "clk_find_entry", 0, 0, new String[0]);
+    put(0, new int[] { 1, 7 });
+    put(1, new int[] { 0, 2 });
+    put(2, new int[] { 0, 3 });
+    put(3, new int[] { 0, 4 });
+    put(4, new int[] { 0, 5 });
+    put(5, new int[] { 0, 6 });
+    put(6, new int[] { 0, 7 });
+    put(7, new int[] { 0, 8 });
+    put(8, new int[] { 0, 9 });
+    put(9, new int[] { 0, 10, 12 });
+    put(10, new int[] { 0, 11, 12 });
+    put(11, new int[] { 0, 9, 12 });
+    put(12, new int[] { 0, 7 });
   }
 }
 

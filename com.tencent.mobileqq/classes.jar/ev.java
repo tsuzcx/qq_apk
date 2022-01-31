@@ -1,18 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.dataline.util.file.DLFileInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.List;
 
-public final class ev
-  implements Parcelable.Creator<DLFileInfo>
+public class ev
 {
-  public DLFileInfo a(Parcel paramParcel)
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public boolean b = true;
+  public boolean c = false;
+  
+  public ev()
   {
-    return new DLFileInfo(paramParcel, null);
+    this.jdField_a_of_type_JavaLangString = "Printer";
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public DLFileInfo[] a(int paramInt)
+  public boolean a(List<FileInfo> paramList, String paramString, QQAppInterface paramQQAppInterface)
   {
-    return new DLFileInfo[paramInt];
+    return true;
   }
 }
 

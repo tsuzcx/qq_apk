@@ -10,13 +10,14 @@ import NS_MINI_AD.MiniAppAd.UserInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
-import amda;
+import amtc;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ExtConfigInfo;
 import com.tencent.mobileqq.mini.apkg.PluginInfo;
 import com.tencent.mobileqq.mini.apkg.RecommendAppInfo;
+import com.tencent.mobileqq.mini.http.HttpCmdManager;
 import com.tencent.mobileqq.mini.servlet.BatchGetUserInfoServlet;
 import com.tencent.mobileqq.mini.servlet.CloudStorageServlet;
 import com.tencent.mobileqq.mini.servlet.GetPotentialFriendListServlet;
@@ -54,6 +55,7 @@ import com.tencent.mobileqq.mini.servlet.MiniAppGetTinyIdServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppGetUserAppInfoServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppGetUserAppListServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppGetUserAppListServletV2;
+import com.tencent.mobileqq.mini.servlet.MiniAppGetUserGroupInfoServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppGetUserInfoExtraServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppGetUserSettingServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppLocalSearchDataServlet;
@@ -76,6 +78,7 @@ import com.tencent.mobileqq.mini.servlet.MiniMidasQueryServlet;
 import com.tencent.mobileqq.mini.servlet.MiniRewardedVideoAdServlet;
 import com.tencent.mobileqq.mini.servlet.ModifyFriendInteractiveStorageServlet;
 import com.tencent.mobileqq.mini.servlet.PersonalizeSetAvatarServlet;
+import com.tencent.mobileqq.mini.util.MiniAppSecurityUtil;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -88,7 +91,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
-import wya;
+import xha;
 
 public class MiniAppCmdUtil
 {
@@ -218,6 +221,18 @@ public class MiniAppCmdUtil
   
   public void checkNavigateRight(String paramString1, String paramString2, COMM.StCommonExt paramStCommonExt, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
+    int i = 0;
+    String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
+    str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
+    if (amtc.a("miniappsendrequestbyhttps", 0) == 0) {
+      i = 1;
+    }
+    if ((!TextUtils.isEmpty(str)) && (i != 0))
+    {
+      QLog.d(TAG, 1, "[miniapp-https-request].checkNavigateRight, send request by https.");
+      HttpCmdManager.g().checkNavigateRight(paramString1, paramString2, str, new MiniAppCmdUtil.5(this, paramMiniAppCmdInterface));
+      return;
+    }
     paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppCheckNavigateRightServlet.class, paramMiniAppCmdInterface, "checkNavigateRight");
     paramMiniAppCmdInterface.putExtra("key_appid", paramString1);
     paramMiniAppCmdInterface.putExtra("target_app_id", paramString2);
@@ -267,6 +282,18 @@ public class MiniAppCmdUtil
   
   public void getAppInfoById(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
+    int i = 0;
+    String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
+    str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
+    if (amtc.a("miniappsendrequestbyhttps", 0) == 0) {
+      i = 1;
+    }
+    if ((!TextUtils.isEmpty(str)) && (i != 0))
+    {
+      QLog.d(TAG, 1, "getAppInfoById, send request by https.");
+      HttpCmdManager.g().getAppInfoById(paramStCommonExt, paramString1, paramString2, paramString3, str, new MiniAppCmdUtil.4(this, paramMiniAppCmdInterface));
+      return;
+    }
     paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppGetAppInfoByIdServlet.class, paramMiniAppCmdInterface, "getAppInfoById");
     paramMiniAppCmdInterface.putExtra("key_app_id", paramString1);
     paramMiniAppCmdInterface.putExtra("key_first_path", paramString2);
@@ -291,6 +318,18 @@ public class MiniAppCmdUtil
   
   public void getAppInfoByLink(String paramString, int paramInt, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
+    int i = 0;
+    String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
+    str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
+    if (amtc.a("miniappsendrequestbyhttps", 0) == 0) {
+      i = 1;
+    }
+    if ((!TextUtils.isEmpty(str)) && (i != 0))
+    {
+      QLog.d(TAG, 1, "getAppInfoByLink, send request by https.");
+      HttpCmdManager.g().getAppInfoByLink(paramString, paramInt, str, new MiniAppCmdUtil.3(this, paramMiniAppCmdInterface));
+      return;
+    }
     paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppGetAppInfoByLinkServlet.class, paramMiniAppCmdInterface, "getAppInfoByLink");
     paramMiniAppCmdInterface.putExtra("key_uin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
     paramMiniAppCmdInterface.putExtra("key_link", paramString);
@@ -423,6 +462,18 @@ public class MiniAppCmdUtil
   
   public void getLoginCode(String paramString, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
+    int i = 0;
+    String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
+    str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
+    if (amtc.a("miniappsendrequestbyhttps", 0) == 0) {
+      i = 1;
+    }
+    if ((!TextUtils.isEmpty(str)) && (i != 0))
+    {
+      QLog.d(TAG, 1, "getLoginCode, send request by https");
+      HttpCmdManager.g().getCode(paramString, str, new MiniAppCmdUtil.2(this, paramMiniAppCmdInterface));
+      return;
+    }
     paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppGetLoginCodeServlet.class, paramMiniAppCmdInterface, "getLoginCode");
     paramMiniAppCmdInterface.putExtra("key_uin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
     paramMiniAppCmdInterface.putExtra("key_appid", paramString);
@@ -568,7 +619,7 @@ public class MiniAppCmdUtil
   
   public void getStoryInfo(String paramString, int paramInt, long paramLong, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
-    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), wya.class, paramMiniAppCmdInterface, "getStoryInfo");
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), xha.class, paramMiniAppCmdInterface, "getStoryInfo");
     paramMiniAppCmdInterface.putExtra("key_list_tyep", paramInt);
     paramMiniAppCmdInterface.putExtra("key_newest_time", paramLong);
     paramMiniAppCmdInterface.putExtra("key_uin", Long.valueOf(paramString));
@@ -636,6 +687,18 @@ public class MiniAppCmdUtil
   public void getUserCloudStorage(String paramString, String[] paramArrayOfString, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
     sendCloudRequest(paramString, paramArrayOfString, paramMiniAppCmdInterface, "get_cloud_storage");
+  }
+  
+  public void getUserGroupInfo(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, long paramLong, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppGetUserGroupInfoServlet.class, paramMiniAppCmdInterface, "getUserGroupInfo");
+    if (paramStCommonExt != null) {
+      paramMiniAppCmdInterface.putExtra("key_ext", paramStCommonExt.toByteArray());
+    }
+    paramMiniAppCmdInterface.putExtra("key_appid", paramString1);
+    paramMiniAppCmdInterface.putExtra("group_id", paramString2);
+    paramMiniAppCmdInterface.putExtra("group_class", paramLong);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
   public void getUserHealthData(String paramString, COMM.StCommonExt paramStCommonExt, MiniAppCmdInterface paramMiniAppCmdInterface)
@@ -816,7 +879,7 @@ public class MiniAppCmdUtil
     if (paramStCommonExt != null) {
       paramMiniAppCmdInterface.putExtra("key_ext", paramStCommonExt.toByteArray());
     }
-    if (amda.g()) {}
+    if (amtc.g()) {}
     for (paramInt1 = 1;; paramInt1 = 0)
     {
       paramMiniAppCmdInterface.putExtra("key_from_new_download", paramInt1);

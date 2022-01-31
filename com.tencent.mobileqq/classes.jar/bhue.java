@@ -1,27 +1,12 @@
-import android.app.Dialog;
-import android.app.FragmentManager;
-
-class bhue
-  implements biat
+public abstract interface bhue
 {
-  bhue(bhty parambhty, String paramString) {}
+  public abstract void a();
   
-  public void a()
-  {
-    bhty.a(this.jdField_a_of_type_Bhty).dismiss();
-    this.jdField_a_of_type_Bhty.getFragmentManager().popBackStack();
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_Bhty.a.a(this.jdField_a_of_type_JavaLangString, paramString);
-    bhty.a(this.jdField_a_of_type_Bhty).dismiss();
-    this.jdField_a_of_type_Bhty.getFragmentManager().popBackStack();
-  }
+  public abstract void a(int paramInt, String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhue
  * JD-Core Version:    0.7.0.1
  */

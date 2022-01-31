@@ -1,25 +1,17 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aedo;
-import aexw;
+import aeoo;
+import asym;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 public class FriendChatPie$20
   implements Runnable
 {
-  public FriendChatPie$20(aedo paramaedo) {}
+  public FriendChatPie$20(aeoo paramaeoo) {}
   
   public void run()
   {
-    if (aexw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))
-    {
-      aedo.b(this.this$0, true);
-      aexw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "", "", "0X8008072", "0X8008072", 0, 0, "", "", "", "");
-      return;
-    }
-    aedo.b(this.this$0, false);
+    this.this$0.jdField_a_of_type_Asym.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
   }
 }
 

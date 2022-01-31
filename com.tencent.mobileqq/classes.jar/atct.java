@@ -1,23 +1,20 @@
-public class atct
-  extends atcu
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
+
+class atct
+  implements bcib
 {
-  public final amdf a;
-  public final boolean a;
+  atct(atcs paramatcs) {}
   
-  public atct(amdf paramamdf, boolean paramBoolean)
+  public void a()
   {
-    this.jdField_a_of_type_Amdf = paramamdf;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return true;
+    this.a.a.a.setVisibility(8);
+    this.a.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atct
  * JD-Core Version:    0.7.0.1
  */

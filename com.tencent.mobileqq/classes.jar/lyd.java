@@ -1,22 +1,16 @@
-import com.tencent.av.ui.RedbagToolbar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
 
 public class lyd
-  implements met
+  implements DialogInterface.OnClickListener
 {
-  public lyd(RedbagToolbar paramRedbagToolbar, med parammed) {}
+  public lyd(AVSchema paramAVSchema, String paramString) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {}
-    for (paramBoolean = this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.startActivity_SendRedBag(true);; paramBoolean = false)
-    {
-      if (!paramBoolean)
-      {
-        this.jdField_a_of_type_Med.a(false);
-        this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.exitCurrentToolbar();
-      }
-      return;
-    }
+    mrb.d();
+    this.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,39 +1,29 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.Comparator;
 
 class avyt
-  extends alwg
+  implements Comparator<avxq>
 {
-  avyt(avys paramavys) {}
+  avyt(avyr paramavyr) {}
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public int a(avxq paramavxq1, avxq paramavxq2)
   {
-    if ((paramFromServiceMsg != null) && ("VideoSvc.Send".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())))
+    if (paramavxq2.b() > paramavxq1.b()) {}
+    do
     {
-      localObject = this.a.a("VideoSvc.Send");
-      if (localObject != null)
-      {
-        localObject = ((xfp)localObject).a(paramToServiceMsg, paramFromServiceMsg);
-        localMessageHandler = avys.a(this.a).a();
-        if ((localMessageHandler != null) && (localObject != null)) {
-          localMessageHandler.onReceive(paramToServiceMsg, paramFromServiceMsg, localObject);
-        }
+      return -1;
+      if (paramavxq2.b() < paramavxq1.b()) {
+        return 1;
       }
+    } while (paramavxq2.a() > paramavxq1.a());
+    if (paramavxq2.a() == paramavxq1.a()) {
+      return 0;
     }
-    while (paramFromServiceMsg == null)
-    {
-      Object localObject;
-      MessageHandler localMessageHandler;
-      return;
-    }
-    this.a.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avyt
  * JD-Core Version:    0.7.0.1
  */

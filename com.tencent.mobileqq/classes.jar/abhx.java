@@ -1,6 +1,43 @@
-public abstract interface abhx
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import mqq.util.WeakReference;
+
+public class abhx
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a();
+  WeakReference<GeneralSettingActivity> a;
+  WeakReference<CompoundButton> b;
+  
+  public abhx(GeneralSettingActivity paramGeneralSettingActivity, CompoundButton paramCompoundButton)
+  {
+    this.a = new WeakReference(paramGeneralSettingActivity);
+    this.b = new WeakReference(paramCompoundButton);
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    CompoundButton localCompoundButton = null;
+    if (this.a == null)
+    {
+      paramDialogInterface = null;
+      if (this.b != null) {
+        break label47;
+      }
+    }
+    for (;;)
+    {
+      if ((paramDialogInterface != null) && (localCompoundButton != null)) {
+        paramDialogInterface.a(localCompoundButton, false);
+      }
+      return;
+      paramDialogInterface = (GeneralSettingActivity)this.a.get();
+      break;
+      label47:
+      localCompoundButton = (CompoundButton)this.b.get();
+    }
+  }
 }
 
 

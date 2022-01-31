@@ -1,39 +1,51 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.event.FollowUpdateEvent;
-import com.tencent.biz.subscribe.widget.textview.FollowTextView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.qrcode.ipc.ScannerParams;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import mqq.app.AppActivity;
 
-public class whq
-  extends ajpe
+class whq
+  implements DialogInterface.OnClickListener
 {
-  public whq(FollowTextView paramFollowTextView) {}
+  whq(who paramwho, String paramString) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramBoolean, paramString);
-    FollowTextView.a(this.a, true);
-    if (paramBoolean)
+    paramDialogInterface = this.jdField_a_of_type_JavaLangString.toLowerCase();
+    if (paramDialogInterface.startsWith("www.")) {
+      paramDialogInterface = "http://" + this.jdField_a_of_type_JavaLangString;
+    }
+    for (;;)
     {
-      if (!FollowTextView.a(this.a)) {
-        FollowTextView.a(this.a, true, FollowTextView.a(this.a));
+      Intent localIntent = new Intent(this.jdField_a_of_type_Who.jdField_a_of_type_MqqAppAppActivity, QQBrowserDelegationActivity.class);
+      localIntent.putExtra("url", paramDialogInterface);
+      localIntent.putExtra("param_force_internal_browser", true);
+      localIntent.putExtra("key_isReadModeEnabled", true);
+      localIntent.putExtra("fromQrcode", true);
+      localIntent.putExtra("injectrecommend", false);
+      localIntent.putExtra("big_brother_source_key", "biz_src_jc_sacan_qr");
+      this.jdField_a_of_type_Who.jdField_a_of_type_MqqAppAppActivity.startActivity(localIntent);
+      if (this.jdField_a_of_type_Who.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e) {
+        this.jdField_a_of_type_Who.jdField_a_of_type_MqqAppAppActivity.finish();
       }
-      this.a.a(1);
-      if (FollowTextView.a(this.a) != null)
-      {
-        if (FollowTextView.a(this.a) != null) {
-          FollowTextView.a(this.a).a(true, FollowTextView.a(this.a));
-        }
-        wcj.a().a(new FollowUpdateEvent(1, FollowTextView.a(this.a).poster.id.get()));
+      if (this.jdField_a_of_type_Who.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.b) {
+        this.jdField_a_of_type_Who.jdField_a_of_type_MqqAppAppActivity.finish();
       }
       return;
+      if (paramDialogInterface.startsWith("https:")) {
+        paramDialogInterface = "https" + this.jdField_a_of_type_JavaLangString.substring(5);
+      } else if (paramDialogInterface.startsWith("http:")) {
+        paramDialogInterface = "http" + this.jdField_a_of_type_JavaLangString.substring(4);
+      } else {
+        paramDialogInterface = this.jdField_a_of_type_JavaLangString;
+      }
     }
-    bbmy.a(this.a.getContext(), 2131625092, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     whq
  * JD-Core Version:    0.7.0.1
  */

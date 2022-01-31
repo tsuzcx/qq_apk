@@ -967,6 +967,16 @@
         <item name="android:background">@drawable/common_btn_white</item>
         <item name="android:minHeight">44.0dip</item>
     </style>
+    <style name="g_">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+    </style>
     <style name="e3">
         <item name="android:duplicateParentState">true</item>
         <item name="android:layout_width">40.0dip</item>
@@ -3245,6 +3255,356 @@
         <item name="android:layout_marginTop">0.0dip</item>
         <item name="android:layout_marginBottom">0.0dip</item>
     </style>
+    <style name="ga">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff00cafc</item>
+    </style>
+    <style name="gb">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffffffff</item>
+    </style>
+    <style name="hf">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff4d94ff</item>
+    </style>
+    <style name="j5">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff03081a</item>
+    </style>
+    <style name="j_">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff878b99</item>
+    </style>
+    <style name="la">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffb0b3bf</item>
+    </style>
+    <style name="lb">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffff596a</item>
+    </style>
+    <style name="lc">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff00cafc</item>
+    </style>
+    <style name="ld">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffffffff</item>
+    </style>
+    <style name="le">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff4d94ff</item>
+    </style>
+    <style name="lg">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff03081a</item>
+    </style>
+    <style name="os">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff878b99</item>
+    </style>
+    <style name="ox">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffb0b3bf</item>
+    </style>
+    <style name="pt">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffff596a</item>
+    </style>
+    <style name="pu">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff00cafc</item>
+    </style>
+    <style name="pv">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffffffff</item>
+    </style>
+    <style name="px">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff4d94ff</item>
+    </style>
+    <style name="q0">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff03081a</item>
+    </style>
+    <style name="q3">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff878b99</item>
+    </style>
+    <style name="q8">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffb0b3bf</item>
+    </style>
+    <style name="qe">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffff596a</item>
+    </style>
+    <style name="qg">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff00cafc</item>
+    </style>
+    <style name="qw">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffffffff</item>
+    </style>
+    <style name="qx">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff4d94ff</item>
+    </style>
+    <style name="r0">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff03081a</item>
+    </style>
+    <style name="r5">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff878b99</item>
+    </style>
+    <style name="r_">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffb0b3bf</item>
+    </style>
+    <style name="ry">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffff596a</item>
+    </style>
+    <style name="s3">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff00cafc</item>
+    </style>
+    <style name="s8">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffffffff</item>
+    </style>
+    <style name="s9">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff4d94ff</item>
+    </style>
+    <style name="sq">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff03081a</item>
+    </style>
+    <style name="x3">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff878b99</item>
+    </style>
+    <style name="y1">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffb0b3bf</item>
+    </style>
+    <style name="y2">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffff596a</item>
+    </style>
+    <style name="y3">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff00cafc</item>
+    </style>
+    <style name="y4">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffffffff</item>
+    </style>
+    <style name="y5">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff4d94ff</item>
+    </style>
+    <style name="y6">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff03081a</item>
+    </style>
+    <style name="y7">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff878b99</item>
+    </style>
+    <style name="y8">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffb0b3bf</item>
+    </style>
+    <style name="y9">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffff596a</item>
+    </style>
+    <style name="y_">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff00cafc</item>
+    </style>
+    <style name="ya">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffffffff</item>
+    </style>
+    <style name="yb">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff4d94ff</item>
+    </style>
+    <style name="yc">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff03081a</item>
+    </style>
+    <style name="yd">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff878b99</item>
+    </style>
+    <style name="ye">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffb0b3bf</item>
+    </style>
+    <style name="yf">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffff596a</item>
+    </style>
+    <style name="yg">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff00cafc</item>
+    </style>
+    <style name="yh">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffffffff</item>
+    </style>
+    <style name="yi">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff4d94ff</item>
+    </style>
+    <style name="yj">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff03081a</item>
+    </style>
+    <style name="yk">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff878b99</item>
+    </style>
+    <style name="yl">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffb0b3bf</item>
+    </style>
+    <style name="ym">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffff596a</item>
+    </style>
+    <style name="yn">
+        <item name="android:textSize">10.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff00cafc</item>
+    </style>
+    <style name="yo">
+        <item name="android:textSize">10.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffffffff</item>
+    </style>
+    <style name="yp">
+        <item name="android:textSize">10.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff4d94ff</item>
+    </style>
+    <style name="yq">
+        <item name="android:textSize">10.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff03081a</item>
+    </style>
+    <style name="yr">
+        <item name="android:textSize">10.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff878b99</item>
+    </style>
+    <style name="ys">
+        <item name="android:textSize">10.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffb0b3bf</item>
+    </style>
+    <style name="yt">
+        <item name="android:textSize">10.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffff596a</item>
+    </style>
+    <style name="yu">
+        <item name="android:textSize">10.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff00cafc</item>
+    </style>
+    <style name="yv">
+        <item name="android:textSize">10.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffffffff</item>
+    </style>
+    <style name="yw">
+        <item name="android:textSize">10.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff4d94ff</item>
+    </style>
+    <style name="yx">
+        <item name="android:textSize">10.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff03081a</item>
+    </style>
+    <style name="yy">
+        <item name="android:textSize">10.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff878b99</item>
+    </style>
+    <style name="yz">
+        <item name="android:textSize">10.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffb0b3bf</item>
+    </style>
+    <style name="z0">
+        <item name="android:textSize">10.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffff596a</item>
+    </style>
     <style name="o1" parent="@android:style/Widget.CompoundButton.CheckBox">
         <item name="android:button">@drawable/atz</item>
     </style>
@@ -3978,6 +4338,12 @@
         <item name="android:windowEnterAnimation">@anim/ik</item>
         <item name="android:windowExitAnimation">@anim/il</item>
     </style>
+    <style name="z1" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:layout_width">fill_parent</item>
+    </style>
     <style name="xl" parent="@android:style/Animation.Dialog">
         <item name="android:windowEnterAnimation">@anim/in</item>
         <item name="android:windowExitAnimation">@anim/io</item>
@@ -4045,6 +4411,14 @@
         <item name="android:indeterminateDrawable">@android:drawable/progress_horizontal</item>
         <item name="android:progressDrawable">@drawable/hdm</item>
         <item name="android:minHeight">10.0dip</item>
+    </style>
+    <style name="z2">
+        <item name="android:textSize">17.0dip</item>
+        <item name="android:textColor">@color/ae6</item>
+    </style>
+    <style name="z3">
+        <item name="android:textSize">17.0dip</item>
+        <item name="android:textColor">@color/ae7</item>
     </style>
     <style name="rb" parent="@android:style/Theme">
         <item name="android:backgroundDimAmount">0.8</item>
@@ -4824,6 +5198,11 @@
         <item name="android:textSize">17.0sp</item>
         <item name="android:textColor">@color/a_2</item>
         <item name="android:background">@drawable/ax3</item>
+    </style>
+    <style name="z4">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textColor">@color/a_2</item>
+        <item name="android:background">@drawable/ced</item>
     </style>
     <style name="ur">
         <item name="android:textSize">14.0sp</item>

@@ -1,53 +1,58 @@
 public class bflj
-  extends beyr
 {
-  public final beyq a;
-  private String d;
+  public static boolean a;
+  private static volatile boolean b;
   
-  public bflj(bfli parambfli, int paramInt, String paramString)
+  /* Error */
+  public static void a()
   {
-    this.jdField_d_of_type_JavaLangString = "noreason";
-    this.jdField_a_of_type_JavaLangString = "com.tencent.mobileqq:tool";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangString = "qqreaderplugin.apk";
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_c_of_type_JavaLangString = "qqreaderplugin.apk";
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_a_of_type_Beyq = new beyq(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_Beyq.a = new aqdz(paramString, "com.tencent.mobileqq:tool", "qqreaderplugin.apk");
-  }
-  
-  protected void a()
-  {
-    this.jdField_d_of_type_JavaLangString = "preload:ok:common";
-    bfli.a(this.jdField_a_of_type_Bfli, this.jdField_a_of_type_Beyq, this.jdField_d_of_type_JavaLangString, this.jdField_d_of_type_Int);
-  }
-  
-  protected boolean a(beyx parambeyx)
-  {
-    boolean bool = bfli.a(this.jdField_a_of_type_Bfli);
-    if (bool) {}
-    for (String str = "preload:ok:dpc";; str = "preload:fail:dpc")
-    {
-      this.jdField_d_of_type_JavaLangString = str;
-      if (parambeyx != null)
-      {
-        parambeyx.jdField_a_of_type_Int = 2;
-        parambeyx.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-      }
-      return bool;
-    }
-  }
-  
-  protected boolean b(beyx parambeyx)
-  {
-    return true;
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 10	bflj:b	Z
+    //   6: istore_0
+    //   7: iload_0
+    //   8: ifeq +7 -> 15
+    //   11: ldc 2
+    //   13: monitorexit
+    //   14: return
+    //   15: invokestatic 16	com/tencent/sveffects/SdkContext:getInstance	()Lcom/tencent/sveffects/SdkContext;
+    //   18: ldc 18
+    //   20: invokestatic 24	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   23: new 26	bfln
+    //   26: dup
+    //   27: invokespecial 29	bfln:<init>	()V
+    //   30: new 31	bflu
+    //   33: dup
+    //   34: invokespecial 32	bflu:<init>	()V
+    //   37: new 34	bflq
+    //   40: dup
+    //   41: invokespecial 35	bflq:<init>	()V
+    //   44: new 37	bflt
+    //   47: dup
+    //   48: invokespecial 38	bflt:<init>	()V
+    //   51: invokevirtual 42	com/tencent/sveffects/SdkContext:init	(Ljava/lang/String;Landroid/app/Application;Lcom/tencent/sveffects/DpcSwitcher;Lcom/tencent/mobileqq/shortvideo/resource/Resources;Lcom/tencent/sveffects/Logger;Lcom/tencent/sveffects/Reporter;)V
+    //   54: iconst_1
+    //   55: putstatic 10	bflj:b	Z
+    //   58: goto -47 -> 11
+    //   61: astore_1
+    //   62: ldc 2
+    //   64: monitorexit
+    //   65: aload_1
+    //   66: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   6	2	0	bool	boolean
+    //   61	5	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	7	61	finally
+    //   15	58	61	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bflj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,29 @@
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class ayhi
-  implements QQPermissionCallback
+  extends aygx
 {
-  public ayhi(TroopBarReplyActivity paramTroopBarReplyActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public ayhi(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, ayhd paramayhd)
   {
-    babr.a(this.a, paramArrayOfString, paramArrayOfInt);
+    super(paramQQAppInterface, paramChatMessage, paramayhd);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected String a()
   {
-    this.a.f();
+    return this.a.msg;
+  }
+  
+  protected void a(aygy paramaygy) {}
+  
+  protected boolean a()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayhi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,82 @@
-public class awkd
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ListView;
+
+public abstract class awkd<M extends awod, V extends awwn>
+  extends awkc<M, V>
+  implements baxl, bfob
 {
-  private awjz a;
+  protected int a;
+  protected baxk a;
+  private ListView a;
   
-  public awkd(awkb paramawkb)
+  public awkd(ListView paramListView, baxk parambaxk)
   {
-    this.a = new awjz(paramawkb);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
+    this.jdField_a_of_type_Baxk = parambaxk;
+    parambaxk.a(this);
+    paramListView.setOnScrollListener(this);
   }
   
-  public void a(awke paramawke, long paramLong)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    switch (paramawke.jdField_a_of_type_Int)
+    if ((!this.jdField_a_of_type_Baxk.a()) && ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1)))
     {
-    case 4: 
-    default: 
-      return;
-    case 5: 
-      this.a.a(paramLong, paramawke.c, paramawke.jdField_a_of_type_Float, paramawke.jdField_b_of_type_Float, 5, paramawke.jdField_a_of_type_Long);
-      return;
-    case 0: 
-      this.a.a(paramLong, paramawke.jdField_a_of_type_ArrayOfInt[0], paramawke.jdField_a_of_type_ArrayOfFloat[0], paramawke.jdField_b_of_type_ArrayOfFloat[0], 0, paramawke.jdField_a_of_type_Long);
-      return;
-    case 2: 
-      this.a.a(paramLong, paramawke.jdField_a_of_type_ArrayOfInt, paramawke.jdField_a_of_type_ArrayOfFloat, paramawke.jdField_b_of_type_ArrayOfFloat, paramawke.jdField_a_of_type_Long);
-      return;
-    case 6: 
-      this.a.b(paramLong, paramawke.c, paramawke.jdField_a_of_type_Float, paramawke.jdField_b_of_type_Float, 6, paramawke.jdField_a_of_type_Long);
-      return;
-    case 1: 
-      this.a.b(paramLong, paramawke.jdField_a_of_type_ArrayOfInt[0], paramawke.jdField_a_of_type_ArrayOfFloat[0], paramawke.jdField_b_of_type_ArrayOfFloat[0], 1, paramawke.jdField_a_of_type_Long);
-      return;
+      int i = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount();
+      paramInt1 = 0;
+      while (paramInt1 < i)
+      {
+        awod localawod = (awod)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt1).getTag(2131379208);
+        if ((localawod != null) && (localawod.c() == paramInt2) && (paramString.equals(localawod.b())))
+        {
+          awra localawra = (awra)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt1).getTag(2131379210);
+          awwn localawwn = (awwn)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt1).getTag(2131379213);
+          if ((localawra != null) && (localawwn != null)) {
+            localawra.a(localawod, localawwn, paramBitmap);
+          }
+        }
+        paramInt1 += 1;
+      }
     }
-    this.a.b(paramLong, paramawke.jdField_a_of_type_ArrayOfInt, paramawke.jdField_a_of_type_ArrayOfFloat, paramawke.jdField_b_of_type_ArrayOfFloat, paramawke.jdField_a_of_type_Long);
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentWidgetListView == null) {}
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_Int = paramInt;
+      if ((paramInt != 0) && (paramInt != 1)) {
+        break;
+      }
+      if (this.jdField_a_of_type_Baxk.a()) {
+        this.jdField_a_of_type_Baxk.b();
+      }
+      int i = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        awod localawod = (awod)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt).getTag(2131379208);
+        awra localawra = (awra)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt).getTag(2131379210);
+        awwn localawwn = (awwn)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt).getTag(2131379213);
+        if ((localawra != null) && (localawod != null) && (paramAbsListView != null)) {
+          localawra.a(localawod, localawwn);
+        }
+        paramInt += 1;
+      }
+    }
+    this.jdField_a_of_type_Baxk.a();
+    this.jdField_a_of_type_Baxk.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awkd
  * JD-Core Version:    0.7.0.1
  */

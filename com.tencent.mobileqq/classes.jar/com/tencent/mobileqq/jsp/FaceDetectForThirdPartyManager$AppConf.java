@@ -7,6 +7,7 @@ import java.util.List;
 public class FaceDetectForThirdPartyManager$AppConf
   implements Serializable
 {
+  public int[] actionReq;
   public final List<FaceDetectForThirdPartyManager.AppWordings> al;
   public final String appName;
   public String colorSequence;

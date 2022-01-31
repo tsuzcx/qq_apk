@@ -1,48 +1,59 @@
-import android.support.annotation.NonNull;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.DiscoverBannerPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.HotRecommendFeedPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.MemoriesFeedPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.MemorySelectVideoPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.ProfileFeedPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.SingleFeedPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.TroopAIOPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.TroopAssistantHomeFeedPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
 
-class txv
-  implements txu
+public class txv
 {
-  private final int jdField_a_of_type_Int;
-  @NonNull
-  private final WeakReference<txu> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public txv(@NonNull txu paramtxu)
+  public static twl a(Object paramObject)
   {
-    this.jdField_a_of_type_Int = System.identityHashCode(paramtxu);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramtxu);
-  }
-  
-  private boolean a()
-  {
-    return this.jdField_a_of_type_JavaLangRefWeakReference.get() != null;
-  }
-  
-  public void a(@NonNull txs paramtxs)
-  {
-    txu localtxu = (txu)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localtxu != null) {
-      localtxu.a(paramtxs);
+    veg.d("Q.qqstory.player.data.SimpleDataProvider", "play info:%s", new Object[] { paramObject });
+    if ((paramObject instanceof HomeFeedPlayInfo)) {
+      return new txk(new twh((HomeFeedPlayInfo)paramObject));
     }
-  }
-  
-  public void b(@NonNull txs paramtxs)
-  {
-    txu localtxu = (txu)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localtxu != null) {
-      localtxu.b(paramtxs);
+    if ((paramObject instanceof TroopAssistantHomeFeedPlayInfo)) {
+      return new txk(new txr((TroopAssistantHomeFeedPlayInfo)paramObject));
     }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return ((paramObject instanceof txv)) && (((txv)paramObject).jdField_a_of_type_Int == this.jdField_a_of_type_Int);
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int;
+    if ((paramObject instanceof ProfileFeedPlayInfo)) {
+      return new txk(new txf((ProfileFeedPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof SingleFeedPlayInfo)) {
+      return new txk(new txq((SingleFeedPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof MsgTabPlayInfo)) {
+      return new txk(new txb((MsgTabPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof MemoriesFeedPlayInfo)) {
+      return new txk(new twx((MemoriesFeedPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof HotRecommendFeedPlayInfo)) {
+      return new txk(new twk((HotRecommendFeedPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof VidListPlayInfo)) {
+      return new txk(new txu((VidListPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof DiscoverBannerPlayInfo)) {
+      return new txk(new twb((DiscoverBannerPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof TroopAIOPlayInfo)) {
+      return new txt(((TroopAIOPlayInfo)paramObject).storyId);
+    }
+    if ((paramObject instanceof ShareFromMemoryPlayInfo)) {
+      return new txk(new txh((ShareFromMemoryPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof MemorySelectVideoPlayInfo)) {
+      return new txk(new txa((MemorySelectVideoPlayInfo)paramObject));
+    }
+    vxs.a("play info unknown", new Object[0]);
+    return null;
   }
 }
 

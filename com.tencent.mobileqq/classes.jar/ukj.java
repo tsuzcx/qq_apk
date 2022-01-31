@@ -1,44 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import android.content.Context;
+import android.view.View;
 
-public class ukj
-  extends sgl<ujx, ukr>
+class ukj
+  implements bfoq
 {
-  public ukj(ujx paramujx)
-  {
-    super(paramujx);
-  }
+  ukj(uki paramuki, bfol parambfol, Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3) {}
   
-  public void a(@NonNull ujx paramujx, @NonNull ukr paramukr)
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject = paramukr.a;
-    paramukr = paramujx.a(((ukt)localObject).a.feedId);
-    if (paramukr == null)
+    this.jdField_a_of_type_Bfol.e();
+    switch (paramInt)
     {
-      urk.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { ((ukt)localObject).a.feedId });
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_Uki.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, true, this.jdField_b_of_type_Int, this.c);
       return;
     }
-    if ((!(localObject instanceof ukv)) || (!(paramukr instanceof ukv)))
-    {
-      urk.e("Q.qqstory.home.data.HomeFeedPresenter", "SingleFeedInfoEvent error!!");
-      return;
-    }
-    localObject = (ukv)localObject;
-    paramukr = (ukv)paramukr;
-    paramukr.a = ((ukv)localObject).a;
-    paramukr.a(((ukv)localObject).b(), false);
-    paramukr.b(((ukv)localObject).c(), false);
-    paramukr.c(((ukv)localObject).a(), false);
-    ujx.a(paramujx).b(paramukr.a.feedId);
-    urk.a("Q.qqstory.home.data.HomeFeedPresenter", "single feed update from server %s", paramukr);
+    this.jdField_a_of_type_Uki.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.c);
   }
-  
-  public Class acceptEventClass()
-  {
-    return ukr.class;
-  }
-  
-  public void b(@NonNull ujx paramujx, @NonNull ukr paramukr) {}
 }
 
 

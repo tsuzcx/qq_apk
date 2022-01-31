@@ -1,20 +1,27 @@
-import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
-public final class bgnn
-  implements bfdf
+public class bgnn
+  extends aksv
 {
-  public bgnn(Activity paramActivity) {}
-  
-  public void a(boolean paramBoolean)
+  public bgnn(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    if (!paramBoolean) {
-      this.a.finish();
-    }
+    super(paramQQAppInterface, paramProxyManager);
+  }
+  
+  protected void a()
+  {
+    bgnl.a().c();
+  }
+  
+  protected void b()
+  {
+    bgnl.a().d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgnn
  * JD-Core Version:    0.7.0.1
  */

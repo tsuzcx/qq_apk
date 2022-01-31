@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.shortvideo;
 
-import awex;
-import awfl;
-import awfm;
+import axef;
+import axet;
+import axeu;
 import java.io.File;
 
 public final class ShortVideoPtuResManager$1
@@ -10,8 +10,8 @@ public final class ShortVideoPtuResManager$1
 {
   public void run()
   {
-    String str1 = awex.a();
-    String str2 = awex.b();
+    String str1 = axef.a();
+    String str2 = axef.b();
     File[] arrayOfFile = new File(str1).listFiles();
     int j;
     Object localObject1;
@@ -35,8 +35,8 @@ public final class ShortVideoPtuResManager$1
           localObject2 = arrayOfFile[k].getName();
           if (!str2.equalsIgnoreCase((String)localObject2))
           {
-            localObject3 = awfl.a((String)localObject2);
-            m = ((awfm)localObject3).a();
+            localObject3 = axet.a((String)localObject2);
+            m = ((axeu)localObject3).a();
             if (m == 0) {
               break label197;
             }
@@ -48,7 +48,7 @@ public final class ShortVideoPtuResManager$1
           }
         }
         label197:
-        localObject3 = ((awfm)localObject3).b();
+        localObject3 = ((axeu)localObject3).b();
       }
     }
     label397:

@@ -5,9 +5,9 @@ import android.os.Build.VERSION;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import zpj;
-import zpk;
-import zpu;
+import zzb;
+import zzc;
+import zzm;
 
 public class ReportUtil
 {
@@ -20,9 +20,9 @@ public class ReportUtil
   {
     try
     {
-      String str2 = zpu.a(16);
-      String str1 = zpk.a(new String(str2));
-      paramString = new String(zpk.a(str2, paramString));
+      String str2 = zzm.a(16);
+      String str1 = zzc.a(new String(str2));
+      paramString = new String(zzc.a(str2, paramString));
       paramString = "paramStr=" + URLEncoder.encode(paramString, "UTF-8") + "&key=" + URLEncoder.encode(str1, "UTF-8") + "&visibility=2";
       return paramString;
     }
@@ -35,7 +35,7 @@ public class ReportUtil
   
   private static String d(String paramString)
   {
-    StringBuilder localStringBuilder1 = zpu.a();
+    StringBuilder localStringBuilder1 = zzm.a();
     localStringBuilder1.append(paramString);
     try
     {
@@ -51,82 +51,82 @@ public class ReportUtil
       if (i != -1) {
         localStringBuilder1.append("&ps=").append(URLEncoder.encode(Integer.toString(i), "UTF-8"));
       }
-      paramString = zpj.a();
+      paramString = zzb.a();
       if (paramString != null) {
         localStringBuilder1.append("&av=").append(URLEncoder.encode(paramString, "UTF-8"));
       }
-      paramString = zpj.b();
+      paramString = zzb.b();
       if (paramString != null) {
         localStringBuilder1.append("&pn=").append(URLEncoder.encode(paramString, "UTF-8"));
       }
-      paramString = zpj.c();
+      paramString = zzb.c();
       if (paramString != null) {
         localStringBuilder1.append("&amn=").append(URLEncoder.encode(paramString, "UTF-8"));
       }
-      paramString = zpj.d();
+      paramString = zzb.d();
       if (paramString != null) {
         localStringBuilder1.append("&amv=").append(URLEncoder.encode(paramString, "UTF-8"));
       }
-      paramString = zpj.e();
+      paramString = zzb.e();
       if (paramString != null) {
         localStringBuilder1.append("&nm=").append(URLEncoder.encode(paramString, "UTF-8"));
       }
-      i = zpj.a();
+      i = zzb.a();
       if (i != -1) {
         localStringBuilder1.append("&bl=").append(URLEncoder.encode(Integer.toString(i), "UTF-8"));
       }
-      i = zpj.b();
+      i = zzb.b();
       if (i != -1) {
         localStringBuilder1.append("&bt=").append(URLEncoder.encode(Integer.toString(i), "UTF-8"));
       }
-      i = zpj.c();
+      i = zzb.c();
       if (i != -1) {
         localStringBuilder1.append("&bv=").append(URLEncoder.encode(Integer.toString(i), "UTF-8"));
       }
-      paramString = zpj.f();
+      paramString = zzb.f();
       if (paramString != null) {
         localStringBuilder1.append("&cr=").append(URLEncoder.encode(paramString, "UTF-8"));
       }
-      paramString = zpj.g();
+      paramString = zzb.g();
       if (paramString != null) {
         localStringBuilder1.append("&cl=").append(URLEncoder.encode(paramString, "UTF-8"));
       }
-      paramString = zpj.h();
+      paramString = zzb.h();
       if (paramString != null) {
         localStringBuilder1.append("&gn=").append(URLEncoder.encode(paramString, "UTF-8"));
       }
-      paramString = zpj.i();
+      paramString = zzb.i();
       if (paramString != null) {
         localStringBuilder1.append("&gv=").append(URLEncoder.encode(paramString, "UTF-8"));
       }
-      paramString = zpj.j();
+      paramString = zzb.j();
       if (paramString != null) {
         localStringBuilder1.append("&imsi=").append(URLEncoder.encode(paramString, "UTF-8"));
       }
-      paramString = zpj.k();
+      paramString = zzb.k();
       if (paramString != null) {
         localStringBuilder1.append("&ip_addr=").append(URLEncoder.encode(paramString, "UTF-8"));
       }
-      paramString = zpj.l();
+      paramString = zzb.l();
       if (paramString != null) {
         localStringBuilder1.append("&re=").append(URLEncoder.encode(paramString, "UTF-8"));
       }
-      paramString = zpj.m();
+      paramString = zzb.m();
       if (paramString != null) {
         localStringBuilder1.append("&rt=").append(URLEncoder.encode(paramString, "UTF-8"));
       }
-      paramString = zpj.n();
+      paramString = zzb.n();
       if (paramString != null) {
         localStringBuilder1.append("&st=").append(URLEncoder.encode(paramString, "UTF-8"));
       }
       localStringBuilder2 = localStringBuilder1.append("&root=");
-      if (!zpj.a()) {
+      if (!zzb.a()) {
         break label1008;
       }
       paramString = "1";
       localStringBuilder2.append(URLEncoder.encode(paramString, "UTF-8"));
       localStringBuilder2 = localStringBuilder1.append("&ams=");
-      if (!zpj.b()) {
+      if (!zzb.b()) {
         break label1038;
       }
       paramString = "1";
@@ -174,68 +174,68 @@ public class ReportUtil
     }
     localStringBuilder2.append(URLEncoder.encode(paramString, "UTF-8"));
     localStringBuilder2 = localStringBuilder1.append("&btls=");
-    if (zpj.c())
+    if (zzb.c())
     {
       paramString = "1";
       localStringBuilder2.append(URLEncoder.encode(paramString, "UTF-8"));
       localStringBuilder2 = localStringBuilder1.append("&bts=");
-      if (!zpj.d()) {
+      if (!zzb.d()) {
         break label1052;
       }
       paramString = "1";
       localStringBuilder2.append(URLEncoder.encode(paramString, "UTF-8"));
       localStringBuilder2 = localStringBuilder1.append("&gls=");
-      if (!zpj.e()) {
+      if (!zzb.e()) {
         break label1059;
       }
       paramString = "1";
       localStringBuilder2.append(URLEncoder.encode(paramString, "UTF-8"));
       localStringBuilder2 = localStringBuilder1.append("&gs=");
-      if (!zpj.f()) {
+      if (!zzb.f()) {
         break label1066;
       }
       paramString = "1";
       localStringBuilder2.append(URLEncoder.encode(paramString, "UTF-8"));
       localStringBuilder2 = localStringBuilder1.append("&gss=");
-      if (!zpj.g()) {
+      if (!zzb.g()) {
         break label1073;
       }
       paramString = "1";
       localStringBuilder2.append(URLEncoder.encode(paramString, "UTF-8"));
       localStringBuilder2 = localStringBuilder1.append("&ns=");
-      if (!zpj.h()) {
+      if (!zzb.h()) {
         break label1080;
       }
       paramString = "1";
       localStringBuilder2.append(URLEncoder.encode(paramString, "UTF-8"));
       localStringBuilder2 = localStringBuilder1.append("&pe=");
-      if (!zpj.i()) {
+      if (!zzb.i()) {
         break label1087;
       }
       paramString = "1";
       localStringBuilder2.append(URLEncoder.encode(paramString, "UTF-8"));
       localStringBuilder2 = localStringBuilder1.append("&ts=");
-      if (!zpj.j()) {
+      if (!zzb.j()) {
         break label1094;
       }
       paramString = "1";
       localStringBuilder2.append(URLEncoder.encode(paramString, "UTF-8"));
       localStringBuilder2 = localStringBuilder1.append("&uas=");
-      if (!zpj.k()) {
+      if (!zzb.k()) {
         break label1101;
       }
       paramString = "1";
       localStringBuilder2.append(URLEncoder.encode(paramString, "UTF-8"));
       localStringBuilder2 = localStringBuilder1.append("&ws=");
-      if (zpj.l()) {}
+      if (zzb.l()) {}
       for (paramString = "1";; paramString = "0")
       {
         localStringBuilder2.append(URLEncoder.encode(paramString, "UTF-8"));
-        paramString = zpj.o();
+        paramString = zzb.o();
         if (paramString != null) {
           localStringBuilder1.append("&qu=").append(URLEncoder.encode(paramString, "UTF-8"));
         }
-        paramString = zpj.p();
+        paramString = zzb.p();
         if (paramString != null) {
           localStringBuilder1.append("&android_id=").append(URLEncoder.encode(paramString, "UTF-8"));
         }
@@ -247,15 +247,15 @@ public class ReportUtil
         if (paramString != null) {
           localStringBuilder1.append("&pr=").append(URLEncoder.encode(paramString, "UTF-8"));
         }
-        paramString = zpj.q();
+        paramString = zzb.q();
         if (paramString != null) {
           localStringBuilder1.append("&mac=").append(URLEncoder.encode(paramString, "UTF-8"));
         }
-        paramString = zpj.r();
+        paramString = zzb.r();
         if (paramString != null) {
           localStringBuilder1.append("&device_id=").append(URLEncoder.encode(paramString, "UTF-8"));
         }
-        paramString = zpj.s();
+        paramString = zzb.s();
         if (paramString != null) {
           localStringBuilder1.append("&nt=").append(URLEncoder.encode(paramString, "UTF-8"));
         }

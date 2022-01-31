@@ -1,35 +1,29 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import java.util.ArrayList;
 
-public class agnq
-  extends FragmentPagerAdapter
+class agnq
+  implements xhj
 {
-  public agnq(SendHbMainFragment paramSendHbMainFragment, FragmentManager paramFragmentManager)
-  {
-    super(paramFragmentManager);
-  }
+  agnq(agnp paramagnp, LocalMediaInfo paramLocalMediaInfo) {}
   
-  public int getCount()
+  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
   {
-    return SendHbMainFragment.a(this.a).size();
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    return ((agnr)SendHbMainFragment.a(this.a).get(paramInt)).jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment;
-  }
-  
-  public CharSequence getPageTitle(int paramInt)
-  {
-    return ((agnr)SendHbMainFragment.a(this.a).get(paramInt)).jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Agnp.a.a.f();
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("KEY_VIDEO_STORY_CAPTYRE_FRAMES_SIZE", paramLong);
+    localBundle.putBoolean("VIDEO_STORY_PHOTO_LIST_TO_EDIT", true);
+    localBundle.putSerializable("KEY_VIDEO_STORY_CAPTYRE_FRAMES", paramArrayList);
+    this.jdField_a_of_type_Agnp.a.a.getIntent().putExtra("VIDEO_STORY_MEDIA_TYPE", 100);
+    PhotoListActivity.a(this.jdField_a_of_type_Agnp.a.a, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agnq
  * JD-Core Version:    0.7.0.1
  */

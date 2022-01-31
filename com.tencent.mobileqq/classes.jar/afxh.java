@@ -1,17 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
 
-public class afxh
-  extends ajjh
+class afxh
+  implements aprx
 {
-  public afxh(ContactListView paramContactListView) {}
+  afxh(afxg paramafxg) {}
   
-  protected void onAddFriend(String paramString) {}
-  
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (!paramBoolean3)) {
-      this.a.j();
+    if ((paramInt1 == 3) && (paramInt2 == 0))
+    {
+      axqw.b(this.a.a.a, "dc00898", "", "", "0X800A0B5", "0X800A0B5", 3, 0, "", "", "", "");
+      ChatHistoryC2CFileFragment.a(this.a.a, true);
     }
   }
 }

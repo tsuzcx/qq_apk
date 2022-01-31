@@ -1,15 +1,34 @@
-import cooperation.qqreader.net.BaseCgiTask;
+import java.util.List;
 
-public abstract class bfmh
-  implements bfmg
+public class bfmh
 {
-  public void a(bfmi parambfmi) {}
+  public static boolean a(int paramInt, List paramList)
+  {
+    return (paramList == null) || (paramInt < 0) || (paramInt >= paramList.size());
+  }
   
-  public void a(BaseCgiTask paramBaseCgiTask, String paramString) {}
+  public static <T> boolean a(T[] paramArrayOfT, T paramT)
+  {
+    if ((paramArrayOfT == null) || (paramT == null)) {}
+    for (;;)
+    {
+      return false;
+      int j = paramArrayOfT.length;
+      int i = 0;
+      while (i < j)
+      {
+        T ? = paramArrayOfT[i];
+        if ((? != null) && (?.equals(paramT))) {
+          return true;
+        }
+        i += 1;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfmh
  * JD-Core Version:    0.7.0.1
  */

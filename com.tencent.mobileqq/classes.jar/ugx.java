@@ -1,27 +1,48 @@
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ugx
-  extends QQUIEventReceiver<ugr, spl>
+  extends QQUIEventReceiver<ugn, ttk>
 {
-  public ugx(ugr paramugr)
+  public ugx(@NonNull ugn paramugn)
   {
-    super(paramugr);
+    super(paramugn);
   }
   
-  public void a(@NonNull ugr paramugr, @NonNull spl paramspl)
+  public void a(@NonNull ugn paramugn, @NonNull ttk paramttk)
   {
-    if (paramspl.a.isSuccess())
-    {
-      urk.a("Q.qqstory.memories.ProfileFeedPresenter", "receive video delete event. %s. start to refresh year node list", paramspl.toString());
-      ugr.a(paramugr, true);
+    if (!TextUtils.equals(paramttk.b, String.valueOf(paramugn.hashCode()))) {
+      return;
     }
+    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramugn.a()).a();
+    if (localVideoViewVideoHolder != null) {
+      localVideoViewVideoHolder.c(false);
+    }
+    paramugn.l();
+    if (paramttk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      veg.a(this.TAG, "generate thumbnail success. shareThumbPath = %s.", paramttk.jdField_a_of_type_JavaLangString);
+      if (paramttk.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
+      {
+        tti.a().a(paramugn.b(), paramttk.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      tti.a().a(paramugn.b(), paramttk.jdField_a_of_type_JavaLangString, paramttk.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramugn.hashCode());
+      return;
+    }
+    veg.e(this.TAG, "send video to friend failed because generate thumbnail failed.");
+    bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131701163), 0).a();
   }
   
   public Class acceptEventClass()
   {
-    return spl.class;
+    return ttk.class;
   }
 }
 

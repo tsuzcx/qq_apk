@@ -3,7 +3,7 @@ package com.tencent.mobileqq.troop.homework.xmediaeditor;
 import android.content.Context;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import azbo;
+import bacg;
 
 class XMediaEditor$2$1
   implements Runnable

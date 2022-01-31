@@ -1,20 +1,23 @@
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
 
-class azvs<Bitmap>
-  extends WeakReference<Bitmap>
+public final class azvs
+  implements Parcelable.Creator<HWGuideItem>
 {
-  private final String a;
-  
-  public azvs(String paramString, Bitmap paramBitmap, ReferenceQueue paramReferenceQueue)
+  public HWGuideItem a(Parcel paramParcel)
   {
-    super(paramBitmap, paramReferenceQueue);
-    this.a = paramString;
+    return new HWGuideItem(paramParcel);
+  }
+  
+  public HWGuideItem[] a(int paramInt)
+  {
+    return new HWGuideItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azvs
  * JD-Core Version:    0.7.0.1
  */

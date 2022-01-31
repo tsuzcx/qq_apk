@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.dating;
 
-import amwe;
-import atck;
+import anmm;
+import atyo;
 import java.util.List;
 
 public class MsgBoxListActivity$1$1
   implements Runnable
 {
-  public MsgBoxListActivity$1$1(amwe paramamwe, List paramList) {}
+  public MsgBoxListActivity$1$1(anmm paramanmm, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Amwe.a.a.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Anmm.a.a.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

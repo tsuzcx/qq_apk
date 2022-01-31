@@ -1,30 +1,59 @@
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
+import android.os.Handler;
+import android.os.Message;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-class ulf
-  extends LruCache<ulh, Drawable>
+public class ulf
+  extends JobSegment<List<String>, List<Bitmap>>
 {
-  ulf(ule paramule, int paramInt)
+  private int jdField_a_of_type_Int;
+  private final Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private String jdField_a_of_type_JavaLangString = "story.icon.UrlListToBitmapListSegment";
+  private uld jdField_a_of_type_Uld;
+  private String b;
+  
+  public ulf(@Nullable Bitmap paramBitmap, String paramString, int paramInt, uld paramuld)
   {
-    super(paramInt);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "[" + paramString + "]");
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Uld = paramuld;
   }
   
-  protected int a(ulh paramulh, Drawable paramDrawable)
+  protected void a(JobContext paramJobContext, List<String> paramList)
   {
-    if ((paramDrawable instanceof BitmapDrawable))
+    if ((paramList == null) || (paramList.isEmpty())) {
+      notifyError(new ErrorMessage(-1, "url list is empty"));
+    }
+    for (;;)
     {
-      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramDrawable != null)
+      return;
+      paramJobContext = Collections.unmodifiableList(paramList);
+      int i = paramJobContext.size();
+      paramList = new Bitmap[i];
+      Arrays.fill(paramList, this.jdField_a_of_type_AndroidGraphicsBitmap);
+      ukm.b(this.jdField_a_of_type_JavaLangString, "bitmapListSize = %d, stubBitmap = %s", Integer.valueOf(i), this.jdField_a_of_type_AndroidGraphicsBitmap);
+      Handler localHandler = new Handler(ThreadManager.getSubThreadLooper(), new ulh(this, null));
+      localHandler.sendMessageDelayed(Message.obtain(localHandler, 0, paramList), 300L);
+      i = this.jdField_a_of_type_Int / 2;
+      Iterator localIterator = paramJobContext.iterator();
+      while (localIterator.hasNext())
       {
-        int i = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * i;
-        ulq.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramulh, " size=", Integer.valueOf(i) });
-        return i;
+        String str = (String)localIterator.next();
+        if (!"stub_url".equals(str)) {
+          this.jdField_a_of_type_Uld.a(str, i, i, new ulg(this, paramJobContext, paramList, localHandler));
+        }
       }
     }
-    return 524288;
   }
 }
 

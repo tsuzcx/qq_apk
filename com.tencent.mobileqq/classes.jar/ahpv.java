@@ -1,67 +1,21 @@
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import com.tencent.TMG.utils.QLog;
-
-public class ahpv
+public abstract class ahpv
+  implements ahpx
 {
-  private static final int b = Color.rgb(123, 113, 30);
-  private static final int c = Color.argb(64, 125, 113, 30);
-  private static final int d = Color.rgb(162, 116, 4);
-  private static final int e = Color.argb(64, 213, 185, 118);
-  public int a = 0;
+  public int a;
+  public long a;
+  public azmk a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public String c;
   
-  private ahpm a(View paramView)
+  public ahpv()
   {
-    if (paramView == null) {}
-    do
-    {
-      return null;
-      if ((paramView.getParent() instanceof ahpm)) {
-        return (ahpm)paramView.getParent();
-      }
-    } while (!(paramView instanceof ahpm));
-    return (ahpm)paramView;
-  }
-  
-  void a(View paramView, ahpe paramahpe)
-  {
-    ahpm localahpm = a(paramView);
-    if (localahpm == null) {}
-    ahpo localahpo;
-    do
-    {
-      return;
-      localahpo = localahpm.a();
-    } while ((localahpo == null) || (!localahpo.b()) || (localahpm.h()));
-    if (this.a == 2)
-    {
-      localahpo.c(d);
-      localahpo.b(e);
-    }
-    for (;;)
-    {
-      localahpo.a(paramahpe);
-      localahpm.a(null);
-      return;
-      if (this.a == 1)
-      {
-        localahpo.c(b);
-        localahpo.b(c);
-      }
-      else
-      {
-        paramView = paramView.getResources();
-        int i = paramView.getColorStateList(2131101237).getDefaultColor();
-        int j = paramView.getColorStateList(2131101239).getDefaultColor();
-        localahpo.c(i);
-        localahpo.b(j);
-        if (QLog.isColorLevel()) {
-          QLog.d("ChatAdapterSelectableHelper", 0, "Load Select color, cursor=" + i + ", component=" + j);
-        }
-      }
-    }
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_b_of_type_Int = -35072;
+    this.jdField_a_of_type_Azmk = new azmk();
   }
 }
 

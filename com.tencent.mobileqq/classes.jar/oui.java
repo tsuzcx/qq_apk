@@ -1,24 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import java.util.ArrayList;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
+import com.tencent.mobileqq.widget.AutoFitTextView;
 
-class oui
-  implements View.OnClickListener
+public class oui
+  implements bcji
 {
-  oui(ouc paramouc, opw paramopw, Container paramContainer, int paramInt) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
+  AutoFitTextView jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView;
   
-  public void onClick(View paramView)
+  public oui(oug paramoug) {}
+  
+  public int a()
   {
-    paramView = this.jdField_a_of_type_Opw.a().mSocialFeedInfo.a;
-    ArrayList localArrayList = paramView.a;
-    if ((localArrayList == null) || (localArrayList.size() == 0)) {
-      return;
-    }
-    paramView = (pra)paramView.a.get(0);
-    ouc.a(this.jdField_a_of_type_Ouc, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Opw.a(), (int)paramView.a, this.jdField_a_of_type_Opw.a().innerUniqueID, this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_Opw.a());
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth() - bawz.a(oug.a(this.jdField_a_of_type_Oug), 10.0F);
   }
 }
 

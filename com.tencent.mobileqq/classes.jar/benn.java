@@ -1,16 +1,12 @@
-import android.view.animation.Interpolator;
+import android.view.View;
 
-public class benn
-  implements Interpolator
+public abstract interface benn
 {
-  public float getInterpolation(float paramFloat)
-  {
-    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
-  }
+  public abstract void a(View paramView, int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     benn
  * JD-Core Version:    0.7.0.1
  */

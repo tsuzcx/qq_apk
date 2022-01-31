@@ -1,27 +1,20 @@
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class arwq
-  extends ajuc
+class arwq
+  implements DialogInterface.OnDismissListener
 {
-  public arwq(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  arwq(arwp paramarwp) {}
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberRecommend.MultiCardRecommendFragment", 2, "onUpdateTroopGetMemberList（） troopUin =  " + paramString);
-    }
-    if ((paramInt1 == 9) && (paramString.equals(MultiCardRecommendFragment.a(this.a))) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(4);
-    }
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arwq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,16 @@
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Bundle;
 
-public class bjbn
-  implements Comparable<bjbn>
+public abstract interface bjbn
 {
-  public int a;
-  public long a;
-  public int b;
+  public abstract void a(bjbz parambjbz);
   
-  public bjbn(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
-    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
-  }
+  public abstract void a(bjbz parambjbz, boolean paramBoolean, int paramInt, Bundle paramBundle);
   
-  public int a(bjbn parambjbn)
-  {
-    return -(int)(this.jdField_a_of_type_Long - parambjbn.jdField_a_of_type_Long);
-  }
+  public abstract void a(bjcc parambjcc, boolean paramBoolean, int paramInt, Bundle paramBundle);
+  
+  public abstract void a(bjcj parambjcj, boolean paramBoolean, int paramInt, Bundle paramBundle);
+  
+  public abstract void a(bkqp parambkqp);
 }
 
 

@@ -1,113 +1,37 @@
-import android.content.Context;
-import android.support.v4.util.ArraySet;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 import java.util.List;
 
 public class aftz
-  extends acka
+  implements AdapterView.OnItemClickListener
 {
-  public final String a;
+  public aftz(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public aftz(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo, null, null);
-    this.jdField_a_of_type_JavaLangString = "MiniPie.MiniChatAdapter";
-    this.jdField_a_of_type_Adie = new afua(paramContext, paramQQAppInterface, paramSessionInfo, null, null);
-    this.jdField_a_of_type_Ackb = null;
-  }
-  
-  public void a(List<ChatMessage> paramList, CharSequence paramCharSequence, int paramInt)
-  {
-    long l1 = 0L;
-    paramInt = 0;
-    paramCharSequence = null;
-    ChatMessage localChatMessage;
-    boolean bool1;
-    if (paramInt < paramList.size())
+    paramAdapterView = (afuf)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
+    boolean bool = paramAdapterView.jdField_a_of_type_Boolean;
+    if (bool)
     {
-      localChatMessage = (ChatMessage)paramList.get(paramInt);
-      boolean bool2 = awbk.b(localChatMessage.msgtype);
-      if ((bool2) && ((paramInt == 0) || ((localChatMessage.time < this.b) && (localChatMessage.time - l1 > 300L)) || ((localChatMessage.time >= this.b) && (localChatMessage.time - l1 > 300L) && ((paramCharSequence == null) || (localChatMessage.time - paramCharSequence.time > 60L))) || ((this.jdField_a_of_type_AndroidSupportV4UtilArraySet.contains(Long.valueOf(localChatMessage.uniseq))) && (l1 / 60L != localChatMessage.time / 60L))))
-      {
-        bool1 = true;
-        label165:
-        localChatMessage.mNeedTimeStamp = bool1;
-        if (localChatMessage.mNeedTimeStamp)
-        {
-          long l2 = localChatMessage.time;
-          l1 = l2;
-          if (localChatMessage.time < this.b)
-          {
-            acns.a(localChatMessage);
-            l1 = l2;
-          }
-        }
-        if ((!bool2) || (((localChatMessage instanceof MessageForUniteGrayTip)) && (((MessageForUniteGrayTip)localChatMessage).tipParam.b == 1))) {
-          break label362;
-        }
-        paramCharSequence = localChatMessage;
+      if (EmoticonGroupStoreFragment.b(this.a).contains(paramAdapterView.jdField_a_of_type_JavaLangString)) {
+        EmoticonGroupStoreFragment.b(this.a).remove(paramAdapterView.jdField_a_of_type_JavaLangString);
+      }
+      paramAdapterView = (afuf)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
+      if (bool) {
+        break label126;
       }
     }
-    label362:
-    for (;;)
+    label126:
+    for (bool = true;; bool = false)
     {
-      if (paramInt != paramList.size() - 1) {
-        localChatMessage.isFlowMessage = false;
-      }
-      paramInt += 1;
-      break;
-      bool1 = false;
-      break label165;
-      if (paramList.size() > 0) {
-        this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(Long.valueOf(((ChatMessage)paramList.get(0)).uniseq));
-      }
-      this.jdField_a_of_type_JavaUtilList = paramList;
-      QLog.d("MiniPie.MiniChatAdapter", 1, "list addr = " + paramList.hashCode() + ",size = " + paramList.size());
-      super.notifyDataSetChanged();
+      paramAdapterView.jdField_a_of_type_Boolean = bool;
+      EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
       return;
+      EmoticonGroupStoreFragment.b(this.a).add(paramAdapterView.jdField_a_of_type_JavaLangString);
+      break;
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    ((afua)this.jdField_a_of_type_Adie).a(paramBoolean);
-  }
-  
-  protected boolean a()
-  {
-    return false;
-  }
-  
-  public void c()
-  {
-    super.c();
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = super.getView(paramInt, paramView, paramViewGroup);
-    if ((paramView != null) && ((paramView instanceof aftx)))
-    {
-      paramViewGroup = (aftx)paramView;
-      paramViewGroup.setIsShieldTouchForItem(true);
-      paramViewGroup.setFrom(((afua)this.jdField_a_of_type_Adie).a);
-      if ((paramView instanceof BaseChatItemLayout)) {
-        ((BaseChatItemLayout)paramView).c();
-      }
-    }
-    return paramView;
-  }
-  
-  public String toString()
-  {
-    return "list.addr = " + this.jdField_a_of_type_JavaUtilList.hashCode();
   }
 }
 

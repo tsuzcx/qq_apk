@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.adapter;
 
-import aibw;
+import aiop;
 
 public class RecommendFriendAdapter$6
   implements Runnable
 {
-  public RecommendFriendAdapter$6(aibw paramaibw) {}
+  public RecommendFriendAdapter$6(aiop paramaiop) {}
   
   public void run()
   {

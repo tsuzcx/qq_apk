@@ -1,34 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
 public class abmf
-  extends Handler
+  extends ClickableSpan
 {
-  public abmf(QQSettingCleanActivity paramQQSettingCleanActivity) {}
+  private abmf(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView) {}
+  
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (!this.a.isFinishing())
-      {
-        this.a.a.a(this.a.getString(2131625248));
-        this.a.a.d(2130848385);
-        this.a.a.b(false);
-      }
-      sendEmptyMessageDelayed(1, 1000L);
-      return;
-    } while ((this.a.a == null) || (!this.a.a.isShowing()));
-    this.a.a.cancel();
-    this.a.a.a(this.a.getString(2131625250));
-    this.a.a.c(true);
-    this.a.a.a(false);
-    this.a.a.b(true);
+    paramTextPaint.setColor(paramTextPaint.linkColor);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

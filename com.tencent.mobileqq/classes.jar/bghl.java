@@ -1,45 +1,50 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class bghl
-  extends bgix
+class bghl
+  implements auoo
 {
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  bghl(bghk parambghk) {}
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    if ((!paramString2.equals("qqexplive")) || (this.a == null)) {}
-    while (TextUtils.isEmpty(paramString3)) {
-      return false;
+    return null;
+  }
+  
+  public void a(auop paramauop) {}
+  
+  public void b(auop paramauop)
+  {
+    if ((paramauop == null) || (this.a.a == null)) {
+      return;
     }
-    QLog.i("QZoneECLiveJsPlugin", 2, "ec_live_jsbridge, dispatch method callback linkchain, " + paramString3);
-    try
+    if (paramauop.jdField_a_of_type_Int == 0)
     {
-      paramJsBridgeListener = new Intent("com.tencent.mobileqq.action.ACTION_EC_LIVE_DISPATCH_EVENT");
-      paramJsBridgeListener.putExtra("event", paramString3);
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
-      {
-        paramString1 = new JSONObject(paramVarArgs[0]);
-        if (paramString1 != null) {
-          paramJsBridgeListener.putExtra("data", paramString1.toString());
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicEmoticonUploader", 2, "Upload finish, id=" + paramauop.c);
       }
-      BaseApplicationImpl.getContext().sendBroadcast(paramJsBridgeListener, "com.tencent.msg.permission.pushnotify");
-      return true;
+      localBundle = new Bundle();
+      localBundle.putInt("result", 0);
+      localBundle.putString("id", paramauop.c);
+      this.a.a.onInvokeFinish(localBundle);
+      return;
     }
-    catch (Throwable paramJsBridgeListener)
-    {
-      QLog.e("QZoneECLiveJsPlugin", 1, "qz_livevideo_jsbridge, dispatch method callback linkchain exception", paramJsBridgeListener);
+    if (QLog.isColorLevel()) {
+      QLog.d("VipComicEmoticonUploader", 2, "Upload error");
     }
-    return false;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", 1);
+    localBundle.putInt("errCode", paramauop.b);
+    localBundle.putString("errMsg", paramauop.jdField_a_of_type_JavaLangString);
+    this.a.a.onInvokeFinish(localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bghl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,32 @@
-import android.net.Uri;
-import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.graphics.Rect;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 class amof
+  implements Comparator<Rect>
 {
-  public static final Uri a;
-  public static final String[] a;
+  amof(amoe paramamoe) {}
   
-  static
+  public int a(Rect paramRect1, Rect paramRect2)
   {
-    jdField_a_of_type_AndroidNetUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "data1", "display_name", "contact_id", "raw_contact_id" };
+    if (this.a.g.contains(paramRect1)) {}
+    do
+    {
+      do
+      {
+        return 1;
+        if (this.a.g.contains(paramRect2)) {
+          return -1;
+        }
+        if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {
+          return -1;
+        }
+      } while (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width());
+      if (paramRect1.width() > paramRect2.width()) {
+        return -1;
+      }
+    } while (paramRect1.width() < paramRect2.width());
+    return 0;
   }
 }
 

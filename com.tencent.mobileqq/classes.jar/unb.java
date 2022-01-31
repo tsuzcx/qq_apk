@@ -1,6 +1,16 @@
-public abstract interface unb<T>
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+
+public class unb
+  implements wdk
 {
-  public abstract void a(T paramT);
+  public unb(StoryPickerFragment paramStoryPickerFragment) {}
+  
+  public void a()
+  {
+    if (this.a.a != null) {
+      this.a.a.d();
+    }
+  }
 }
 
 

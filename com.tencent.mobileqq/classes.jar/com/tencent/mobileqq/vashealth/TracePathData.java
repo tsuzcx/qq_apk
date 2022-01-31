@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.vashealth;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class TracePathData
-  extends atmo
+  extends aukm
 {
   public static final String TABLE_NAME = "TracePathData";
   public double distance;
   public long endTime;
   public int isStop;
-  @atoc
+  @auma
   public long startTime;
   public int stepsGoal;
   public int totalSteps;

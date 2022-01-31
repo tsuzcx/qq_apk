@@ -1,19 +1,18 @@
-public class atye
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class atye
+  implements View.OnClickListener
 {
-  public static Integer a = Integer.valueOf(1);
-  public static Integer b = Integer.valueOf(2);
-  public static Integer c = Integer.valueOf(3);
-  public static Integer d = Integer.valueOf(4);
-  public Long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
-  public Integer e = Integer.valueOf(0);
-  public Integer f = Integer.valueOf(0);
-  public Integer g = a;
+  atye(atyc paramatyc, atxx paramatxx) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Atyc.dismiss();
+    if (this.jdField_a_of_type_Atxx.a != null) {
+      this.jdField_a_of_type_Atxx.a.onClick(paramView);
+    }
+  }
 }
 
 

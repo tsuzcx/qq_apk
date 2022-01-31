@@ -1,10 +1,10 @@
-public class amiu
+public abstract interface amiu
 {
-  public boolean a = true;
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amiu
  * JD-Core Version:    0.7.0.1
  */

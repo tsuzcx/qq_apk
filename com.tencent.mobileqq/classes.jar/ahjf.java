@@ -1,32 +1,28 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.RunnableUpdateThumb;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.qwallet.voice.KSongMicView;
+import java.util.Iterator;
+import java.util.List;
 
 public class ahjf
-  implements Animator.AnimatorListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ahjf(NewFlowCameraActivity.RunnableUpdateThumb paramRunnableUpdateThumb) {}
+  public ahjf(KSongMicView paramKSongMicView) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((NewFlowCameraActivity.a(this.a.this$0) != null) && (NewFlowCameraActivity.b(this.a.this$0) != null) && (NewFlowCameraActivity.a(this.a.this$0) != null))
+    float f = paramValueAnimator.getAnimatedFraction();
+    paramValueAnimator = KSongMicView.a(this.a).iterator();
+    while (paramValueAnimator.hasNext())
     {
-      NewFlowCameraActivity.a(this.a.this$0).setVisibility(8);
-      NewFlowCameraActivity.b(this.a.this$0).setImageBitmap(this.a.b);
-      NewFlowCameraActivity.b(this.a.this$0).setVisibility(0);
-      NewFlowCameraActivity.a(this.a.this$0).setText(NewFlowCameraActivity.c(this.a.this$0) + "");
-      NewFlowCameraActivity.a(this.a.this$0).setVisibility(0);
+      ahjg localahjg = (ahjg)paramValueAnimator.next();
+      localahjg.jdField_c_of_type_Float = (localahjg.f + (localahjg.g - localahjg.f) * f);
+      localahjg.d = (localahjg.h + (localahjg.i - localahjg.h) * f);
+      localahjg.e = (localahjg.j + (localahjg.k - localahjg.j) * f);
+      localahjg.a = (localahjg.b + (int)((localahjg.jdField_c_of_type_Int - localahjg.b) * f));
     }
+    this.a.invalidate();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

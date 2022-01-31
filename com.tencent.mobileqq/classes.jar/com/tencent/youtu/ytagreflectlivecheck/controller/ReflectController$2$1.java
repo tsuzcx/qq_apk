@@ -11,7 +11,9 @@ class ReflectController$2$1
   public void run()
   {
     YTLogger.i("mCountDownTimer", "change to main:" + (System.currentTimeMillis() - ReflectController.access$1300(this.this$1.this$0)));
-    ReflectController.access$1400(this.this$1.this$0, 2);
+    if (!ReflectController.access$1500(this.this$1.this$0)) {
+      ReflectController.access$1400(this.this$1.this$0, 2);
+    }
   }
 }
 

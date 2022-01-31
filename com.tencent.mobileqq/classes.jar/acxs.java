@@ -1,12 +1,16 @@
-class acxs
-  implements alnv
+import android.graphics.drawable.Drawable;
+
+public class acxs
 {
-  acxs(acxr paramacxr) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    acxr.a(this.a);
-  }
+  public int a;
+  public Drawable a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

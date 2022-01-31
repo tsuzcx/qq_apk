@@ -1,44 +1,82 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.utils.JsonORM;
+import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import java.io.File;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class uem
-  extends QQUIEventReceiver<uec, swv>
+class uem
+  implements TVK_IMediaPlayer.OnDownloadCallbackListener
 {
-  public uem(@NonNull uec paramuec)
-  {
-    super(paramuec);
-  }
+  uem(ueg paramueg) {}
   
-  public void a(@NonNull uec paramuec, @NonNull swv paramswv)
+  public void OnDownloadCallback(String paramString)
   {
-    if (uec.a(paramuec) == null) {
-      urk.b(this.TAG, "ignore this feature event. %s.", paramswv.toString());
-    }
-    srj localsrj;
+    veg.a(this.a.jdField_a_of_type_JavaLangString, "on tvk download callback. %s", paramString);
     do
     {
-      return;
-      while (!paramswv.hasNext())
+      do
       {
-        do
+        Object localObject2;
+        try
         {
-          urk.a(this.TAG, "receive feature event. %s.", paramswv.toString());
-        } while (paramswv.a == null);
-        paramswv = paramswv.a.iterator();
-      }
-      localsrj = (srj)paramswv.next();
-    } while (!localsrj.a.equals(uec.a(paramuec)));
-    urk.a(this.TAG, "receive feature data. update visit count from %d to %d.", Long.valueOf(uec.a(paramuec).a.mViewTotalTime), Integer.valueOf(localsrj.c));
-    uec.a(paramuec).a.mViewTotalTime = localsrj.c;
-    paramuec.a();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return swv.class;
+          uds localuds = (uds)JsonORM.a(new JSONObject(paramString), uds.class);
+          if (localuds == null)
+          {
+            veg.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback fail. %s", new Object[] { paramString });
+            return;
+          }
+        }
+        catch (JsonORM.JsonParseException localJsonParseException)
+        {
+          for (;;)
+          {
+            localJsonParseException.printStackTrace();
+            Object localObject1 = null;
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          do
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+              localObject2 = null;
+            }
+            switch (localObject2.d)
+            {
+            default: 
+              veg.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 未知. %s", new Object[] { paramString });
+              return;
+            case 1: 
+              veg.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 文件大小. %s", new Object[] { paramString });
+              return;
+            case 2: 
+              veg.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 下载 progress. offset = %d / %d, speedKBS = %d, clipNo = %d", new Object[] { Integer.valueOf(localObject2.c), Long.valueOf(localObject2.jdField_a_of_type_Long), Integer.valueOf(localObject2.b), Integer.valueOf(localObject2.jdField_a_of_type_Int) });
+              ueg.a(this.a).jdField_a_of_type_Long = localObject2.jdField_a_of_type_Long;
+              ueg.a(this.a).jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(localObject2.b));
+            }
+          } while ((TextUtils.isEmpty(this.a.c)) || (this.a.jdField_a_of_type_Ude == null));
+          this.a.jdField_a_of_type_Ude.a(this.a.d, new File(this.a.c), localObject2.c, null);
+          return;
+          veg.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 下载 DONE.");
+          return;
+        }
+        veg.e(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 下载出错. errorCode=%d, errorDetailCode=%d, errorMsg=%s", new Object[] { Integer.valueOf(localObject2.e), Integer.valueOf(localObject2.f), localObject2.jdField_a_of_type_JavaLangString });
+        this.a.jdField_a_of_type_Ude.a(this.a.b, this.a.d, localObject2.e);
+        return;
+        veg.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 存储文件完整下载完成.");
+        if (TextUtils.isEmpty(this.a.c)) {
+          break;
+        }
+      } while (this.a.jdField_a_of_type_Ude == null);
+      this.a.jdField_a_of_type_Ude.a(this.a.b, this.a.d, new File(this.a.c));
+      return;
+    } while (this.a.jdField_a_of_type_Ude == null);
+    this.a.jdField_a_of_type_Ude.a(this.a.b, this.a.d, null);
   }
 }
 

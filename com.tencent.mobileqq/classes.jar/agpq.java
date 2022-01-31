@@ -1,68 +1,32 @@
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
 
-public class agpq
+class agpq
+  extends mxm
 {
-  private static volatile agpq jdField_a_of_type_Agpq;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  agpq(agpn paramagpn) {}
   
-  public static agpq a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (jdField_a_of_type_Agpq == null) {}
-    try
+    if ((agpn.a(this.a).isFinishing()) || (this.a.a)) {
+      return;
+    }
+    this.a.d();
+    if (agpn.a(this.a) != null) {
+      agpn.a(this.a).removeCallbacks(agpn.b(this.a));
+    }
+    if (paramInt == 16)
     {
-      if (jdField_a_of_type_Agpq == null) {
-        jdField_a_of_type_Agpq = new agpq();
-      }
-      return jdField_a_of_type_Agpq;
+      this.a.e();
+      return;
     }
-    finally {}
-  }
-  
-  private void b()
-  {
-    this.b = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "begin connect:");
-    }
-    QIPCClientHelper.getInstance().getClient().addListener(new agpr(this));
-    long l = System.currentTimeMillis();
-    QIPCClientHelper.getInstance().getClient().connect(new agps(this, l));
-  }
-  
-  public void a()
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (!this.b)) {
-      b();
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (!bool) {}
-        try
-        {
-          this.jdField_a_of_type_JavaLangObject.wait(500L);
-          return;
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
-          {
-            localInterruptedException.printStackTrace();
-          }
-        }
-      }
-    }
+    agpn.a(this.a, agpn.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agpq
  * JD-Core Version:    0.7.0.1
  */

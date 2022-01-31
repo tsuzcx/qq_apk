@@ -1,26 +1,35 @@
-import android.content.res.Resources;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.widget.ksong.KSongView;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.activity.phone.SettingActivity2.3;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class agkw
-  extends bbpo
+  extends aume
 {
-  public agkw(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  public agkw(SettingActivity2.3 param3) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    super.a();
-    this.a.b = false;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a();
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.getResources().getDrawable(2130846204));
-    this.a.c.setText(ajjy.a(2131647514));
+    if (this.a.this$0.c != null)
+    {
+      this.a.this$0.app.unRegistObserver(this.a.this$0.c);
+      this.a.this$0.c = null;
+    }
+    this.a.this$0.b();
+    if (paramBoolean)
+    {
+      if (this.a.this$0.c != null)
+      {
+        this.a.this$0.app.unRegistObserver(this.a.this$0.c);
+        this.a.this$0.c = null;
+      }
+      this.a.this$0.a();
+      this.a.this$0.setResult(-1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agkw
  * JD-Core Version:    0.7.0.1
  */

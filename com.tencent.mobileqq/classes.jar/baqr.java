@@ -1,87 +1,59 @@
-import java.lang.ref.WeakReference;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.highway.transaction.Transaction;
 
-public class baqr<E>
+public class baqr
+  extends baqs
 {
-  private HashMap<String, CopyOnWriteArrayList<E>> a = new HashMap();
-  
-  public List<E> a(String paramString)
+  public baqr(baqp parambaqp, int paramInt)
   {
-    try
-    {
-      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.get(paramString);
-      paramString = localCopyOnWriteArrayList;
-      if (localCopyOnWriteArrayList == null) {
-        paramString = Collections.emptyList();
-      }
-      return paramString;
-    }
-    finally {}
+    super(parambaqp, paramInt);
   }
   
-  public void a(String paramString, E paramE)
+  public void a()
   {
-    try
-    {
-      CopyOnWriteArrayList localCopyOnWriteArrayList2 = (CopyOnWriteArrayList)this.a.get(paramString);
-      CopyOnWriteArrayList localCopyOnWriteArrayList1 = localCopyOnWriteArrayList2;
-      if (localCopyOnWriteArrayList2 == null)
-      {
-        localCopyOnWriteArrayList1 = new CopyOnWriteArrayList();
-        this.a.put(paramString, localCopyOnWriteArrayList1);
-      }
-      localCopyOnWriteArrayList1.add(paramE);
+    if (a(this.jdField_a_of_type_Baqp.a)) {
       return;
     }
-    finally {}
+    e();
   }
   
-  public void a(String paramString, Object paramObject, boolean paramBoolean)
+  public void b()
   {
-    try
-    {
-      paramString = (CopyOnWriteArrayList)this.a.get(paramString);
-      if (paramString != null)
-      {
-        if (paramBoolean)
-        {
-          Iterator localIterator = paramString.iterator();
-          while (localIterator.hasNext())
-          {
-            Object localObject1 = localIterator.next();
-            Object localObject2 = ((WeakReference)localObject1).get();
-            if ((localObject2 == null) || (localObject2 == paramObject)) {
-              paramString.remove(localObject1);
-            }
-          }
-        }
-        paramString.remove(paramObject);
-      }
+    if (this.jdField_a_of_type_Boolean) {
+      c();
     }
-    finally {}
   }
   
-  public List<E> b(String paramString)
+  public void c()
   {
-    try
+    boolean bool = true;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("isVideo", 0);
+    if (this.b != null)
     {
-      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.remove(paramString);
-      paramString = localCopyOnWriteArrayList;
-      if (localCopyOnWriteArrayList == null) {
-        paramString = Collections.emptyList();
-      }
-      return paramString;
+      localBundle.putInt("result", 1);
+      localBundle.putString("url", this.b);
     }
-    finally {}
+    for (;;)
+    {
+      baqq.a().a(bool, this.jdField_a_of_type_Int, localBundle);
+      return;
+      localBundle.putInt("result", 0);
+      localBundle.putString("error", "");
+      bool = false;
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
+      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     baqr
  * JD-Core Version:    0.7.0.1
  */

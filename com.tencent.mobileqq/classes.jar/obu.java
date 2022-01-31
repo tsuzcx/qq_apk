@@ -1,14 +1,27 @@
-final class obu
-  implements psi<String>
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+
+class obu
+  extends quc
 {
-  public boolean a(String paramString)
+  obu(obt paramobt) {}
+  
+  public void a(qub paramqub)
   {
-    return (paramString.toLowerCase().contains("readinjoy")) && (!paramString.contains("readinjoy_local_reset_config_version")) && (!paramString.contains("readinjoy_remote_reset_config_version"));
+    super.a(paramqub);
+    QLog.d("KandianAdPandent", 2, "onCompletion");
+    obt.a(this.a).sendEmptyMessage(2);
+  }
+  
+  public void a(qub paramqub, Object paramObject)
+  {
+    QLog.d("KandianAdPandent", 2, "onVideoPrepared");
+    obt.a(this.a).f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     obu
  * JD-Core Version:    0.7.0.1
  */

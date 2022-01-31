@@ -1,81 +1,53 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagRequset;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
 
 public class nfe
-  extends alzl<nfd>
 {
-  public int a()
-  {
-    return 35;
-  }
-  
-  public Class<nfd> a()
-  {
-    return nfd.class;
-  }
-  
-  @NonNull
-  public nfd a(int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface))
-      {
-        localObject = (QQAppInterface)localObject;
-        boolean bool = rqc.d((QQAppInterface)localObject);
-        return nfd.a(rqc.a((QQAppInterface)localObject), rqc.b((QQAppInterface)localObject), bool);
-      }
-    }
-    return new nfd();
-  }
-  
-  @Nullable
-  public nfd a(alzs[] paramArrayOfalzs)
+  public static void a(QQAppInterface paramQQAppInterface, AccountDetail paramAccountDetail)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PaSubscribeRedDotProcessor", 2, "[onParsed]");
+      QLog.d("AccountDetailBaseInfoModel", 2, "saveAccountDetailToDBAndCache");
     }
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
-      return nfd.a(paramArrayOfalzs);
+    aukn localaukn = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    if ((paramAccountDetail != null) && (paramAccountDetail.getId() != -1L)) {
+      if (!localaukn.a(paramAccountDetail)) {
+        localaukn.a(AccountDetail.class);
+      }
     }
-    return null;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(nfd paramnfd)
-  {
-    paramnfd.a();
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    for (;;)
     {
-      localObject = (QQAppInterface)localObject;
-      return baig.z(((QQAppInterface)localObject).getApp(), ((QQAppInterface)localObject).getAccount());
+      localaukn.a();
+      paramQQAppInterface = (akdi)paramQQAppInterface.getManager(56);
+      if ((paramQQAppInterface != null) && (paramAccountDetail != null))
+      {
+        paramQQAppInterface.a(paramAccountDetail);
+        if (paramAccountDetail.followType == 1) {
+          paramQQAppInterface.a(PublicAccountInfo.createPublicAccount(paramAccountDetail, 0L));
+        }
+      }
+      return;
+      localaukn.a(paramAccountDetail);
     }
-    return 0;
   }
   
-  public boolean b()
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, nmv paramnmv, int paramInt)
   {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), nou.class);
+    localNewIntent.putExtra("cmd", "set_function_flag");
+    mobileqq_mp.SetFunctionFlagRequset localSetFunctionFlagRequset = new mobileqq_mp.SetFunctionFlagRequset();
+    localSetFunctionFlagRequset.version.set(1);
+    localSetFunctionFlagRequset.uin.set((int)Long.parseLong(paramString));
+    localSetFunctionFlagRequset.type.set(paramnmv.e);
+    localSetFunctionFlagRequset.value.set(paramInt);
+    localSetFunctionFlagRequset.account_type.set(1);
+    localNewIntent.putExtra("data", localSetFunctionFlagRequset.toByteArray());
+    localNewIntent.setObserver(new nff(paramQQAppInterface, paramnmv, paramInt, paramString));
+    paramQQAppInterface.startServlet(localNewIntent);
   }
 }
 

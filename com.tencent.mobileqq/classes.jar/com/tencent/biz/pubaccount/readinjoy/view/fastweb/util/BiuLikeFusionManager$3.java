@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import qzk;
+import rmc;
 
 public class BiuLikeFusionManager$3
   implements Runnable
 {
-  public BiuLikeFusionManager$3(qzk paramqzk) {}
+  public BiuLikeFusionManager$3(rmc paramrmc) {}
   
   public void run()
   {
-    qzk.a(this.this$0);
+    rmc.a(this.this$0);
   }
 }
 

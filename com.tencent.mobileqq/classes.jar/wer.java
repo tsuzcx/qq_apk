@@ -1,27 +1,21 @@
-import java.lang.ref.WeakReference;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
-class wer
-  extends ajpe
+public class wer
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  WeakReference<wes> a;
+  public wer(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public wer(wes paramwes)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a = new WeakReference(paramwes);
-  }
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    super.a(paramBoolean, paramString);
-    wes localwes = (wes)this.a.get();
-    if (localwes != null) {
-      localwes.a(paramBoolean, paramString, false);
-    }
+    RotateCircleImageView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wer
  * JD-Core Version:    0.7.0.1
  */

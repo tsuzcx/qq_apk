@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfz;
+import beka;
 
 class VideoJsPlugin$4
   implements Runnable
 {
-  VideoJsPlugin$4(VideoJsPlugin paramVideoJsPlugin, int paramInt, bdfz parambdfz) {}
+  VideoJsPlugin$4(VideoJsPlugin paramVideoJsPlugin, int paramInt, beka parambeka) {}
   
   public void run()
   {

@@ -1,6 +1,6 @@
 public abstract interface udf
 {
-  public abstract void a(String paramString, int paramInt);
+  public abstract boolean a(udc paramudc, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
 }
 
 

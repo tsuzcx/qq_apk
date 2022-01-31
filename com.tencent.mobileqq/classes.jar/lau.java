@@ -1,27 +1,16 @@
-class lau
+import android.content.Context;
+
+public class lau
+  extends lax
 {
-  int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = false;
-  int b = 0;
-  int c = 0;
-  int d = 0;
-  int e = 0;
-  int f = 0;
-  int g = 0;
-  int h = 0;
-  int i = 0;
-  int j = 0;
-  int k = 0;
-  int l = 0;
-  int m = 0;
-  int n = 0;
-  int o = 0;
-  
-  lau(lar paramlar) {}
+  public static void a(Context paramContext, lam paramlam)
+  {
+    a().a(paramContext, "http://passport.imqq.com/App/MobileQQ/ChangeTrans.html", null, null, new lav(paramlam));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     lau
  * JD-Core Version:    0.7.0.1
  */

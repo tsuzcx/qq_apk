@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.widget;
 
 import android.graphics.drawable.Animatable;
-import bbms;
+import bcpq;
 
 public class QQProgressDialog$1
   implements Runnable
 {
-  public QQProgressDialog$1(bbms parambbms) {}
+  public QQProgressDialog$1(bcpq parambcpq) {}
   
   public void run()
   {
-    bbms.a(this.this$0).start();
+    bcpq.a(this.this$0).start();
   }
 }
 

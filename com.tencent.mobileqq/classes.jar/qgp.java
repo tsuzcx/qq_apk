@@ -1,16 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
 
-class qgp
-  implements DialogInterface.OnShowListener
+public class qgp
+  extends qgq
 {
-  qgp(qgm paramqgm) {}
-  
-  public void onShow(DialogInterface paramDialogInterface)
+  public qgp(@NonNull Context paramContext, int paramInt)
   {
-    qfy.a(this.a.a, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
-    qfy.a(this.a.a).getWindow().clearFlags(8);
+    super(paramContext, paramInt);
+  }
+  
+  public boolean a()
+  {
+    return getCount() == 5;
+  }
+  
+  public boolean a(@NonNull TagInfo paramTagInfo)
+  {
+    int i = getCount();
+    super.a(paramTagInfo);
+    return i != getCount();
+  }
+  
+  @NonNull
+  public View getView(int paramInt, @Nullable View paramView, @NonNull ViewGroup paramViewGroup)
+  {
+    paramView = super.getView(paramInt, paramView, paramViewGroup);
+    paramView.setSelected(true);
+    return paramView;
   }
 }
 

@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class arsn
-  implements DialogInterface.OnClickListener
+public abstract interface arsn
 {
-  arsn(arsd paramarsd) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    awqx.b(this.a.a, "CliOper", "", "", arsd.b, arsd.b, 0, 0, "", "", "", "");
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arsn
  * JD-Core Version:    0.7.0.1
  */

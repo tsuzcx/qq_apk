@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.monitor.ui;
 
-import azwa;
+import baxe;
 
 class MiniAppMonitorInfoView$FpsListener
-  implements azwa
+  implements baxe
 {
   private MiniAppMonitorInfoView$FpsListener(MiniAppMonitorInfoView paramMiniAppMonitorInfoView) {}
   

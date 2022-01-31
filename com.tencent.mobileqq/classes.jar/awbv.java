@@ -1,57 +1,134 @@
-import VipRecommend.MQQ.CommPayInfo;
-import VipRecommend.MQQ.UserInfo;
-import android.os.Bundle;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import android.os.SystemClock;
+import android.support.v4.util.MQLruCache;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashSet;
 
-public class awbv
-  extends xfp
+class awbv
+  extends AsyncTask<Void, Bitmap, Bitmap>
 {
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
+  
+  public awbv(awbu paramawbu, String paramString1, String paramString2, String paramString3)
   {
-    if ("VipPayLogicServer.getCommPayInfo ".equals(paramToServiceMsg.getServiceCmd()))
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  private Bitmap a(File paramFile)
+  {
+    Bitmap localBitmap1 = null;
+    Bitmap localBitmap2 = null;
+    if (paramFile.exists()) {
+      localBitmap2 = localBitmap1;
+    }
+    try
     {
-      if (paramFromServiceMsg == null) {
-        return null;
-      }
-      paramToServiceMsg = new UniPacket(true);
-      try
+      localBitmap1 = SafeBitmapFactory.decodeFile(paramFile.getAbsolutePath());
+      localBitmap2 = localBitmap1;
+      if (localBitmap1 == null)
       {
-        paramToServiceMsg.setEncodeName("utf-8");
-        paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-        paramToServiceMsg = (CommPayInfo)paramToServiceMsg.getByClass("payInfo", new CommPayInfo());
-        return paramToServiceMsg;
+        localBitmap2 = localBitmap1;
+        paramFile.delete();
+        localBitmap2 = localBitmap1;
       }
-      catch (RuntimeException paramToServiceMsg)
+      return localBitmap2;
+    }
+    catch (OutOfMemoryError paramFile) {}
+    return localBitmap2;
+  }
+  
+  protected Bitmap a(Void... paramVarArgs)
+  {
+    Object localObject1 = null;
+    paramVarArgs = null;
+    boolean bool2 = true;
+    Object localObject2 = awbu.a();
+    if (localObject2 != null)
+    {
+      localObject1 = new File((File)localObject2, this.jdField_a_of_type_JavaLangString);
+      boolean bool1 = bool2;
+      if (!((File)localObject1).exists())
       {
-        paramToServiceMsg.printStackTrace();
-        return null;
+        if (!TextUtils.isEmpty(this.b))
+        {
+          localObject2 = a(new File((File)localObject2, this.b));
+          if (localObject2 != null) {
+            publishProgress(new Bitmap[] { localObject2 });
+          }
+        }
+        bool1 = bool2;
+        if (this.c != null)
+        {
+          if ((awbu.a(this.jdField_a_of_type_Awbu) > 3L) && (Math.abs(SystemClock.uptimeMillis() - awbu.a(this.jdField_a_of_type_Awbu)) > 60000L)) {
+            awbu.a(this.jdField_a_of_type_Awbu, 0L);
+          }
+          bool1 = bool2;
+          if (awbu.a(this.jdField_a_of_type_Awbu) < 3L) {
+            bool1 = awbu.a(this.jdField_a_of_type_Awbu, this.c, (File)localObject1);
+          }
+        }
       }
-      catch (Exception paramToServiceMsg)
+      if (bool1) {
+        paramVarArgs = a((File)localObject1);
+      }
+      if ((!bool1) || (paramVarArgs == null)) {
+        break label253;
+      }
+      awbu.a(this.jdField_a_of_type_Awbu, 0L);
+      localObject1 = paramVarArgs;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.richstatus.img", 2, "decodeBitmap finish with " + localObject1 + ", " + awbu.a(this.jdField_a_of_type_Awbu));
+      }
+      return localObject1;
+      label253:
+      localObject1 = paramVarArgs;
+      if (!TextUtils.isEmpty(this.c))
       {
-        return null;
+        localObject1 = paramVarArgs;
+        if (awbu.b(this.jdField_a_of_type_Awbu) == 3L)
+        {
+          awbu.a(this.jdField_a_of_type_Awbu, SystemClock.uptimeMillis());
+          localObject1 = paramVarArgs;
+        }
       }
     }
-    return null;
   }
   
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  protected void a(Bitmap paramBitmap)
   {
-    paramUniPacket.setServantName("MQQ.VipPayLogicServer.VipPayLogicObj");
-    paramUniPacket.setFuncName("getCommPayInfo");
-    paramUniPacket.put("userInfo", (UserInfo)paramToServiceMsg.extraData.getSerializable("VIPRecommendPayRequest"));
-    return true;
+    if (paramBitmap != null) {
+      BaseApplicationImpl.sImageCache.put(awbu.a(this.jdField_a_of_type_Awbu) + this.jdField_a_of_type_JavaLangString, paramBitmap, (byte)0);
+    }
+    awbu.a(this.jdField_a_of_type_Awbu).remove(this.jdField_a_of_type_JavaLangString);
+    if (awbu.a(this.jdField_a_of_type_Awbu) != null) {
+      awbu.a(this.jdField_a_of_type_Awbu).a(this.jdField_a_of_type_JavaLangString, this.c, paramBitmap, 1);
+    }
   }
   
-  public String[] a()
+  protected void a(Bitmap... paramVarArgs)
   {
-    return new String[] { "VipPayLogicServer" };
+    paramVarArgs = paramVarArgs[0];
+    BaseApplicationImpl.sImageCache.put(awbu.a(this.jdField_a_of_type_Awbu) + this.b, paramVarArgs, (byte)0);
+    if (awbu.a(this.jdField_a_of_type_Awbu) != null) {
+      awbu.a(this.jdField_a_of_type_Awbu).a(this.jdField_a_of_type_JavaLangString, this.c, paramVarArgs, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     awbv
  * JD-Core Version:    0.7.0.1
  */

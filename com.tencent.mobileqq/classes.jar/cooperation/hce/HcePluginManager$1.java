@@ -1,12 +1,12 @@
 package cooperation.hce;
 
-import bfco;
+import bgkf;
 import java.util.HashSet;
 
 public class HcePluginManager$1
   extends HashSet<String>
 {
-  public HcePluginManager$1(bfco parambfco)
+  public HcePluginManager$1(bgkf parambgkf)
   {
     add("A000000632010105");
     add("A000000632010106");

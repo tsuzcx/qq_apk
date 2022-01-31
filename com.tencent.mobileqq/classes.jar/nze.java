@@ -1,70 +1,216 @@
+import android.content.Context;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeExposeReplyCommentView;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerVideoItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import org.json.JSONObject;
 
 public class nze
-  extends ViewBase
+  implements rkk, rkm
 {
-  private NativeExposeReplyCommentView a;
+  public static long a;
+  public static GdtHandler.Params a;
+  public static boolean a;
+  public static boolean b;
+  public static boolean c;
+  private Context jdField_a_of_type_AndroidContentContext;
+  public BaseData a;
+  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
+  nzf jdField_a_of_type_Nzf;
+  private rmt jdField_a_of_type_Rmt = new rmt();
+  public BaseData b;
   
-  public nze(VafContext paramVafContext)
+  static
   {
-    super(paramVafContext);
-    this.a = new NativeExposeReplyCommentView(paramVafContext.getContext());
+    jdField_a_of_type_Long = -2147483648L;
   }
   
-  public void a(nvf paramnvf)
+  public static void a(boolean paramBoolean)
   {
-    this.a.setAdapter(paramnvf);
+    try
+    {
+      jdField_a_of_type_Boolean = paramBoolean;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public int getComMeasuredHeight()
+  public static void f()
   {
-    return this.a.getComMeasuredHeight();
+    a(false);
+    jdField_b_of_type_Boolean = false;
+    c = false;
+    jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = null;
+    jdField_a_of_type_Long = -2147483648L;
   }
   
-  public int getComMeasuredWidth()
+  public int a(BaseData paramBaseData)
   {
-    return this.a.getComMeasuredWidth();
+    int i = -1;
+    if ((paramBaseData instanceof ProteusBannerVideoItemData)) {
+      i = oal.a((ProteusBannerVideoItemData)paramBaseData);
+    }
+    return i;
   }
   
-  public View getNativeView()
+  public rkj a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    return this.a;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new poo();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
+      olr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "native_article");
+    }
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      this.jdField_a_of_type_AndroidContentContext = paramContext;
+    }
+    ProteusItemData localProteusItemData = (ProteusItemData)paramBaseData;
+    paramViewGroup = null;
+    try
+    {
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localProteusItemData.a);
+      paramViewGroup = (ViewGroup)localObject;
+      olr.a(((Container)localObject).getVirtualView(), localProteusItemData.a.getViewBean());
+      paramViewGroup = (ViewGroup)localObject;
+      str = localProteusItemData.b.toString();
+      paramViewGroup = (ViewGroup)localObject;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Object localObject;
+        boolean bool;
+        String str = "error!! msg=" + localException.toString();
+      }
+    }
+    bool = false;
+    localObject = paramViewGroup;
+    if (paramViewGroup == null)
+    {
+      localObject = new View(paramContext);
+      bool = true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("WebFastProteusViewAdBannerVideoCreator", 1, "createViewHolder viewIsNull=" + bool + "  proteusData=" + str);
+    }
+    if ((this.jdField_a_of_type_Nzf == null) || (paramBaseData != this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData))
+    {
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData;
+      this.jdField_a_of_type_Nzf = new nzf(this, (View)localObject, localProteusItemData);
+    }
+    return this.jdField_a_of_type_Nzf;
   }
   
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a()
   {
-    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+    a(true);
+    if ((this.jdField_a_of_type_Nzf != null) && (nzf.a(this.jdField_a_of_type_Nzf) != null)) {
+      nzf.a(this.jdField_a_of_type_Nzf).m();
+    }
   }
   
-  public void onComMeasure(int paramInt1, int paramInt2)
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    this.a.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData == null) {
+      return;
+    }
+    int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.q;
     switch (paramInt)
     {
+    default: 
+      return;
     }
-    do
+    paramInt = paramAbsListView.getFirstVisiblePosition();
+    int j = paramAbsListView.getLastVisiblePosition();
+    if ((i >= paramInt) && (i <= j))
     {
-      return super.setAttribute(paramInt, paramObject);
-    } while ((!(paramObject instanceof nwx)) || (((nwx)paramObject).a == null));
-    this.a.a((nwx)paramObject);
-    return true;
+      h();
+      return;
+    }
+    g();
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    if (paramBaseData.p == 17)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData;
+      return true;
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    sht.a(2, jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params, jdField_a_of_type_Long);
+    jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = null;
+    jdField_a_of_type_Long = -2147483648L;
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_a_of_type_Nzf != null) && (nzf.a(this.jdField_a_of_type_Nzf) != null)) {
+      nzf.a(this.jdField_a_of_type_Nzf).p();
+    }
+  }
+  
+  public void d()
+  {
+    
+    if ((this.jdField_a_of_type_Nzf != null) && (nzf.a(this.jdField_a_of_type_Nzf) != null))
+    {
+      nzf.a(this.jdField_a_of_type_Nzf).k();
+      nzf.a(this.jdField_a_of_type_Nzf, null);
+      this.jdField_a_of_type_Nzf = null;
+    }
+  }
+  
+  public void e()
+  {
+    
+    if ((this.jdField_a_of_type_Nzf != null) && (nzf.a(this.jdField_a_of_type_Nzf) != null))
+    {
+      nzf.a(this.jdField_a_of_type_Nzf).k();
+      nzf.a(this.jdField_a_of_type_Nzf, null);
+      this.jdField_a_of_type_Nzf = null;
+    }
+  }
+  
+  public void g()
+  {
+    if (jdField_b_of_type_Boolean)
+    {
+      c = true;
+      if ((this.jdField_a_of_type_Nzf != null) && (nzf.a(this.jdField_a_of_type_Nzf) != null)) {
+        nzf.a(this.jdField_a_of_type_Nzf).p();
+      }
+    }
+  }
+  
+  public void h()
+  {
+    if ((this.jdField_a_of_type_Nzf != null) && (nzf.a(this.jdField_a_of_type_Nzf) != null)) {
+      nzf.a(this.jdField_a_of_type_Nzf).n();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nze
  * JD-Core Version:    0.7.0.1
  */

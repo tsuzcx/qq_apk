@@ -1,8 +1,16 @@
-import com.tencent.widget.ListView;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapClickListener;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
-public abstract interface mwe
+public class mwe
+  implements TencentMap.OnMapClickListener
 {
-  public abstract void a(ListView paramListView);
+  public mwe(PoiMapActivity paramPoiMapActivity) {}
+  
+  public void onMapClick(LatLng paramLatLng)
+  {
+    this.a.j();
+  }
 }
 
 

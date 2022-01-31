@@ -1,78 +1,80 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadBPTransEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import java.util.regex.Pattern;
 
 public class apef
 {
-  private static apef a;
+  public static int a;
+  public static final String a;
+  public static boolean a;
+  public static final char[] a;
+  public static final String[] a;
+  public static int b;
+  public static final String b;
+  public static final char[] b;
+  public static int c;
+  public static int d;
+  public static int e;
   
-  public static apef a()
+  static
   {
-    try
-    {
-      if (a == null) {
-        a = new apef();
-      }
-      apef localapef = a;
-      return localapef;
-    }
-    finally {}
+    jdField_a_of_type_Int = 1;
+    jdField_b_of_type_Int = 2;
+    c = 3;
+    d = 4;
+    e = 5;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { ".doc|.docx|.wps|.pages|", ".xls|.xlsx|.et|.numbers|" };
+    jdField_a_of_type_ArrayOfChar = new char[] { '…' };
+    jdField_a_of_type_JavaLangString = new String(jdField_a_of_type_ArrayOfChar);
+    jdField_b_of_type_ArrayOfChar = new char[] { '‥' };
+    jdField_b_of_type_JavaLangString = new String(jdField_b_of_type_ArrayOfChar);
   }
   
-  public apeg a(String paramString)
+  public static final boolean a(String paramString)
   {
-    Object localObject = aome.a().a();
-    if (localObject == null) {
-      QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] getBPTransItem failed APP=null. url[" + paramString + "]");
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
-    for (;;)
-    {
-      return null;
-      if (((QQAppInterface)localObject).a() != null) {}
-      for (paramString = ((QQAppInterface)localObject).a().a(paramString); paramString != null; paramString = null)
-      {
-        localObject = new apeg();
-        ((apeg)localObject).jdField_a_of_type_JavaLangString = paramString.mFileName;
-        ((apeg)localObject).jdField_a_of_type_Long = paramString.mFileSize;
-        ((apeg)localObject).c = paramString.mFilePath;
-        ((apeg)localObject).b = paramString.mTempPath;
-        return localObject;
-        QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] getUDLBPTransProxy=null.");
-      }
-    }
+    return Pattern.matches("(https|http)?(://)?docs.qq.com/(doc|sheet|slide|form/edit|form/fill)/.*", paramString);
   }
   
-  public void a(String paramString)
+  public static final boolean b(String paramString)
   {
-    QLog.i("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] delBPTransItem. url[" + paramString + "]");
-    QQAppInterface localQQAppInterface = aome.a().a();
-    if (localQQAppInterface == null) {
-      QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] delBPTransItem failed APP=null. url[" + paramString + "]");
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
-    while (localQQAppInterface.a() == null) {
-      return;
-    }
-    localQQAppInterface.a().a(paramString);
+    return Pattern.matches("(https|http)?(://)?docs.qq.com/(doc)/.*", paramString);
   }
   
-  public void a(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
+  public static final boolean c(String paramString)
   {
-    UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = new UniformDownloadBPTransEntity();
-    localUniformDownloadBPTransEntity.mUrl = paramString1;
-    localUniformDownloadBPTransEntity.mFileName = paramString2;
-    localUniformDownloadBPTransEntity.mFileSize = paramLong;
-    localUniformDownloadBPTransEntity.mFilePath = paramString4;
-    localUniformDownloadBPTransEntity.mTempPath = paramString3;
-    QQAppInterface localQQAppInterface = aome.a().a();
-    if (localQQAppInterface == null)
-    {
-      QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] addBPTransItem.failed APP=null, filename[" + paramString2 + "] fillesize[" + paramLong + "] tempPath[" + paramString3 + "] strPath[" + paramString4 + "] url[" + paramString1 + "]");
-      return;
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
-    if (localQQAppInterface.a() != null) {
-      localQQAppInterface.a().a(localUniformDownloadBPTransEntity);
+    return Pattern.matches("(https|http)?(://)?docs.qq.com/(sheet)/.*", paramString);
+  }
+  
+  public static final boolean d(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
-    QLog.i("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] addBPTransItem.filename[" + paramString2 + "] fillesize[" + paramLong + "] tempPath[" + paramString3 + "] strPath[" + paramString4 + "] url[" + paramString1 + "]");
+    return Pattern.matches("(https|http)?(://)?docs.qq.com/(slide)/.*", paramString);
+  }
+  
+  public static final boolean e(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    return Pattern.matches("(https|http)?(://)?docs.qq.com/(form/edit|form/fill)/.*", paramString);
+  }
+  
+  public static final boolean f(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    return Pattern.matches("(https|http)?(://)?docs.qq.com/(pdf)/.*", paramString);
   }
 }
 

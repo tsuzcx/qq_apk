@@ -1,12 +1,14 @@
 package com.tencent.youtu.ytagreflectlivecheck;
 
+import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleRequester.YTLiveStyleReq;
+import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleResponse;
 import com.tencent.youtu.ytagreflectlivecheck.worker.TimerWorker;
 import com.tencent.youtu.ytcommon.tools.YTLogger;
 
 final class YTAGReflectLiveCheckInterface$2
   extends TimerWorker
 {
-  YTAGReflectLiveCheckInterface$2(long paramLong1, long paramLong2, YTAGReflectLiveCheckInterface.GetLiveStyleResult paramGetLiveStyleResult)
+  YTAGReflectLiveCheckInterface$2(long paramLong1, long paramLong2)
   {
     super(paramLong1, paramLong2);
   }
@@ -14,7 +16,11 @@ final class YTAGReflectLiveCheckInterface$2
   public void onFinish()
   {
     YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.getLiveCheckType.onFinish] ");
-    this.val$getLiveStyleResult.onFailed(3, "Get light from sensor overtime.", "Maybe try again will work. if have tryed times, please record the device and report to server.");
+    if (YTAGReflectLiveCheckInterface.access$200() != null)
+    {
+      YTAGReflectLiveCheckInterface.access$200().onSuccess(new LiveStyleRequester.YTLiveStyleReq(-2.0F, YTAGReflectLiveCheckInterface.mAppId), new LiveStyleResponse());
+      YTAGReflectLiveCheckInterface.access$202(null);
+    }
   }
   
   public void onTick(long paramLong)

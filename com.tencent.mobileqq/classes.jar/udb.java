@@ -1,56 +1,33 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedLikeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
 
 public class udb
-  extends slz<tbn>
+  implements Animation.AnimationListener
 {
-  public String a;
-  public boolean a;
-  public int c = -1;
+  public udb(ExploreAnimalView paramExploreAnimalView) {}
   
-  public String a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return skt.a("StorySvc.feed_like_list_715");
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(600L);
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatCount(-1);
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatMode(2);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+    paramAnimation = (ImageView)this.a.findViewById(2131365318);
+    ImageView localImageView1 = (ImageView)this.a.findViewById(2131365319);
+    ImageView localImageView2 = (ImageView)this.a.findViewById(2131362792);
+    this.a.a(paramAnimation, 100L);
+    this.a.a(localImageView1, 240L);
+    this.a.a(localImageView2, 360L);
   }
   
-  public slu a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspFeedLikeList localRspFeedLikeList = new qqstory_service.RspFeedLikeList();
-    try
-    {
-      localRspFeedLikeList.mergeFrom(paramArrayOfByte);
-      return new udc(localRspFeedLikeList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      urk.d("Q.qqstory:GetLikeListRequest", "" + paramArrayOfByte);
-    }
-    return null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected byte[] a()
-  {
-    qqstory_service.ReqFeedLikeList localReqFeedLikeList = new qqstory_service.ReqFeedLikeList();
-    localReqFeedLikeList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 2;; i = 1)
-    {
-      localReqFeedLikeList.source.set(i);
-      if (this.c != -1) {
-        localReqFeedLikeList.type.set(this.c);
-      }
-      return localReqFeedLikeList.toByteArray();
-    }
-  }
-  
-  public String toString()
-  {
-    return "GetLikeListRequest{, feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isOpen=" + this.jdField_a_of_type_Boolean + ", type=" + this.c + '}';
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

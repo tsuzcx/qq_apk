@@ -1,20 +1,52 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 
-final class apmi
-  implements DialogInterface.OnClickListener
+class apmi
+  implements aplf
 {
-  apmi(long paramLong, int paramInt, Activity paramActivity, BaseChatPie paramBaseChatPie) {}
+  apmi(apme paramapme) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(apmy paramapmy)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ForwardShareByServerHelper", 2, "qbShowShareResultDialog back");
+    apkp localapkp = ((apli)paramapmy).a();
+    if (localapkp != null)
+    {
+      if (1 != localapkp.c()) {
+        break label147;
+      }
+      if (!localapkp.a().isZipInnerFile) {
+        break label91;
+      }
+      paramapmy = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localapkp.a());
+      if ((paramapmy != null) && (this.a.jdField_a_of_type_Apna != null)) {
+        this.a.jdField_a_of_type_Apna.a(String.valueOf(localapkp.a()), paramapmy);
+      }
     }
-    apmf.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+    label91:
+    while (2 != localapkp.c())
+    {
+      do
+      {
+        return;
+        paramapmy = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localapkp.a(), 7);
+      } while ((paramapmy == null) || (this.a.jdField_a_of_type_Apna == null));
+      this.a.jdField_a_of_type_Apna.a(localapkp.c(), paramapmy);
+      return;
+    }
+    label147:
+    aouq localaouq = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    String str = localapkp.e();
+    if (localapkp.a() == null) {}
+    for (paramapmy = null;; paramapmy = localapkp.a().e)
+    {
+      paramapmy = localaouq.a(str, paramapmy, 7, localapkp);
+      if ((paramapmy == null) || (this.a.jdField_a_of_type_Apna == null)) {
+        break;
+      }
+      this.a.jdField_a_of_type_Apna.a(localapkp.e(), paramapmy);
+      return;
+    }
   }
 }
 

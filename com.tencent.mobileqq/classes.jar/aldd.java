@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-
-class aldd
-  implements aldk
+public class aldd
 {
-  aldd(aldc paramaldc) {}
+  public int a;
+  long jdField_a_of_type_Long;
+  public int b;
   
-  public void a(boolean paramBoolean)
-  {
-    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, full update result, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.a.jdField_a_of_type_Aldi.a }));
-    if (paramBoolean) {}
-    this.a.jdField_a_of_type_Aldk.a(paramBoolean);
-  }
+  public aldd(aldc paramaldc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aldd
  * JD-Core Version:    0.7.0.1
  */

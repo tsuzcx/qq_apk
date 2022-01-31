@@ -1,18 +1,18 @@
 package com.tencent.av.ui.guide;
 
 import com.tencent.mobileqq.dinifly.LottieDrawable;
-import mdr;
-import mdt;
+import moq;
+import mos;
 
 public class GuideHelper$LottieDrawableHelper$1$2
   implements Runnable
 {
-  public GuideHelper$LottieDrawableHelper$1$2(mdr parammdr, LottieDrawable paramLottieDrawable) {}
+  public GuideHelper$LottieDrawableHelper$1$2(moq parammoq, LottieDrawable paramLottieDrawable) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Mdr.a != null) {
-      this.jdField_a_of_type_Mdr.a.a(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    if (this.jdField_a_of_type_Moq.a != null) {
+      this.jdField_a_of_type_Moq.a.a(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
     }
   }
 }

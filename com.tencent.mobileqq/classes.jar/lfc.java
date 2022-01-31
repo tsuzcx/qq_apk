@@ -1,42 +1,40 @@
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
+
 public class lfc
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  public mgh a;
-  boolean jdField_a_of_type_Boolean;
-  byte[] jdField_a_of_type_ArrayOfByte;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  int jdField_c_of_type_Int;
-  long jdField_c_of_type_Long;
-  int d;
-  int e;
-  public int f;
-  public int g;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private boolean jdField_a_of_type_Boolean;
   
-  lfc() {}
-  
-  public lfc(long paramLong1, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, long paramLong2, long paramLong3)
+  public lfc(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.d = paramInt4;
-    this.e = paramInt5;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong2;
-    this.jdField_b_of_type_Long = paramLong3;
-    this.jdField_c_of_type_Long = paramLong1;
-    this.f = 0;
-    this.g = 0;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new lfd(this);
   }
   
-  lfc(lfc paramlfc)
+  public void a()
   {
-    this(paramlfc.jdField_c_of_type_Long, paramlfc.jdField_a_of_type_ArrayOfByte, paramlfc.jdField_a_of_type_Int, paramlfc.jdField_b_of_type_Int, paramlfc.jdField_c_of_type_Int, paramlfc.d, paramlfc.e, paramlfc.jdField_a_of_type_Boolean, paramlfc.jdField_a_of_type_Long, paramlfc.jdField_b_of_type_Long);
-    this.f = paramlfc.f;
-    this.g = paramlfc.g;
+    if (QLog.isColorLevel()) {
+      QLog.d("GAudioExitMonitor", 2, "regist QQ Process Exit Receiver1");
+    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.av.EXIT_VIDEO_PROCESS");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_Boolean = false;
+    }
   }
 }
 

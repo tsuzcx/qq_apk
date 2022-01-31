@@ -1,22 +1,54 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
+import com.dataline.activities.LiteActivity;
+import com.dataline.activities.PrinterActivity;
+import com.tencent.litetransfersdk.Session;
 
 class akcu
-  implements akae
+  extends ajuv
 {
-  akcu(akcl paramakcl, long paramLong1, long paramLong2, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
+  akcu(akct paramakct) {}
   
-  public ToServiceMsg a()
+  protected void a(Session paramSession)
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Akcl.a.createToServiceMsg("ProfileService.Pb.ReqSystemMsgRead");
-    localToServiceMsg.extraData.putLong("latestFriendSeq", this.jdField_a_of_type_Long);
-    localToServiceMsg.extraData.putLong("latestGroupSeq", this.b);
-    localToServiceMsg.extraData.putLong("type", 1L);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
-    localToServiceMsg.setEnableFastResend(true);
-    return localToServiceMsg;
+    this.a.a(3, paramSession, 0.0D, false);
+    if (this.a.a != null)
+    {
+      this.a.a.c();
+      this.a.a.notifyDataSetChanged();
+      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
+      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
+    }
+  }
+  
+  protected void a(Session paramSession, float paramFloat)
+  {
+    this.a.a(1, paramSession, paramFloat, false);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(Session paramSession, boolean paramBoolean)
+  {
+    this.a.a(2, paramSession, 0.0D, paramBoolean);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong)
+  {
+    this.a.a(paramLong, paramBoolean);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b(Session paramSession)
+  {
+    this.a.a(0, paramSession, 0.0D, false);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

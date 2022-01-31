@@ -1,19 +1,21 @@
+import android.widget.CheckBox;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.contact.SimpleTextView;
+import com.tencent.widget.SingleLineTextView;
+
 public class ailx
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  public ailx(String paramString1, String paramString2, String paramString3)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
+  public int a;
+  public CheckBox a;
+  public ProgressBar a;
+  public SimpleTextView a;
+  public SingleLineTextView a;
+  public StringBuilder a;
+  public SingleLineTextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ailx
  * JD-Core Version:    0.7.0.1
  */

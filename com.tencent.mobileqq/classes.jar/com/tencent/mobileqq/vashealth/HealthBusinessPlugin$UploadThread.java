@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vashealth;
 
 import android.text.TextUtils;
-import apdh;
+import apvb;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLDecoder;
@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import mpl;
 import mqq.util.WeakReference;
+import nam;
 import org.json.JSONObject;
 
 class HealthBusinessPlugin$UploadThread
@@ -41,7 +41,7 @@ class HealthBusinessPlugin$UploadThread
   {
     HashMap localHashMap1;
     HashMap localHashMap2;
-    if (apdh.a(paramString2))
+    if (apvb.a(paramString2))
     {
       localHashMap1 = new HashMap();
       localHashMap1.put("Connection", "keep-alive");
@@ -55,7 +55,7 @@ class HealthBusinessPlugin$UploadThread
     label200:
     for (paramString2 = new HashMap();; paramString2 = paramMap)
     {
-      paramString1 = mpl.a(paramString1, paramString3, paramString4, paramString2, localHashMap2, localHashMap1);
+      paramString1 = nam.a(paramString1, paramString3, paramString4, paramString2, localHashMap2, localHashMap1);
       if (QLog.isColorLevel()) {
         QLog.i("HealthBusinessPlugin", 2, "upload result:" + paramString1);
       }
@@ -203,7 +203,7 @@ class HealthBusinessPlugin$UploadThread
     //   235: aload 4
     //   237: ldc 204
     //   239: aload 8
-    //   241: invokestatic 209	befm:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   241: invokestatic 209	bfng:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   244: astore 4
     //   246: aload_0
     //   247: getfield 20	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:this$0	Lcom/tencent/mobileqq/vashealth/HealthBusinessPlugin;
@@ -236,7 +236,7 @@ class HealthBusinessPlugin$UploadThread
     //   313: iconst_0
     //   314: invokeinterface 235 2 0
     //   319: checkcast 186	java/lang/String
-    //   322: astore 6
+    //   322: astore 7
     //   324: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   327: ifeq +50 -> 377
     //   330: ldc 90
@@ -254,18 +254,18 @@ class HealthBusinessPlugin$UploadThread
     //   358: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   361: ldc 239
     //   363: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   366: aload 6
+    //   366: aload 7
     //   368: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   371: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   374: invokestatic 164	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   377: aload 6
+    //   377: aload 7
     //   379: invokestatic 113	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   382: ifne -312 -> 70
     //   385: new 60	java/util/HashMap
     //   388: dup
     //   389: invokespecial 61	java/util/HashMap:<init>	()V
-    //   392: astore 7
-    //   394: aload 7
+    //   392: astore 6
+    //   394: aload 6
     //   396: ldc 241
     //   398: aload_0
     //   399: getfield 39	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -287,23 +287,23 @@ class HealthBusinessPlugin$UploadThread
     //   434: invokevirtual 251	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   437: aload 5
     //   439: ldc 255
-    //   441: aload 6
+    //   441: aload 7
     //   443: invokevirtual 251	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   446: aload 5
     //   448: ldc_w 257
     //   451: new 259	java/io/File
     //   454: dup
-    //   455: aload 6
+    //   455: aload 7
     //   457: invokespecial 260	java/io/File:<init>	(Ljava/lang/String;)V
     //   460: invokevirtual 263	java/io/File:getName	()Ljava/lang/String;
     //   463: invokevirtual 251	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   466: aload_0
     //   467: getfield 20	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:this$0	Lcom/tencent/mobileqq/vashealth/HealthBusinessPlugin;
     //   470: aload 4
-    //   472: aload 6
+    //   472: aload 7
     //   474: aload 8
     //   476: aload 9
-    //   478: aload 7
+    //   478: aload 6
     //   480: aload 5
     //   482: aload_0
     //   483: invokevirtual 266	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Landroid/os/Bundle;Lcom/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread;)V
@@ -420,7 +420,7 @@ class HealthBusinessPlugin$UploadThread
     //   759: ldc_w 327
     //   762: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   765: aload 12
-    //   767: invokestatic 58	apdh:a	(Ljava/lang/String;)Z
+    //   767: invokestatic 58	apvb:a	(Ljava/lang/String;)Z
     //   770: invokevirtual 162	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   773: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   776: invokestatic 318	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -616,7 +616,7 @@ class HealthBusinessPlugin$UploadThread
     //   1223: aload 10
     //   1225: ldc 204
     //   1227: aload 8
-    //   1229: invokestatic 209	befm:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   1229: invokestatic 209	bfng:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   1232: invokespecial 367	java/net/URL:<init>	(Ljava/lang/String;)V
     //   1235: invokevirtual 371	java/net/URL:openConnection	()Ljava/net/URLConnection;
     //   1238: checkcast 373	java/net/HttpURLConnection
@@ -717,7 +717,7 @@ class HealthBusinessPlugin$UploadThread
     //   1480: new 443	java/lang/StringBuffer
     //   1483: dup
     //   1484: invokespecial 444	java/lang/StringBuffer:<init>	()V
-    //   1487: astore 8
+    //   1487: astore 7
     //   1489: new 468	java/io/BufferedReader
     //   1492: dup
     //   1493: new 470	java/io/InputStreamReader
@@ -729,11 +729,11 @@ class HealthBusinessPlugin$UploadThread
     //   1508: astore 4
     //   1510: aload 4
     //   1512: invokevirtual 483	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   1515: astore 7
-    //   1517: aload 7
+    //   1515: astore 8
+    //   1517: aload 8
     //   1519: ifnull +92 -> 1611
-    //   1522: aload 8
-    //   1524: aload 7
+    //   1522: aload 7
+    //   1524: aload 8
     //   1526: invokevirtual 449	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   1529: ldc_w 485
     //   1532: invokevirtual 449	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
@@ -768,7 +768,7 @@ class HealthBusinessPlugin$UploadThread
     //   1604: invokeinterface 269 2 0
     //   1609: pop
     //   1610: return
-    //   1611: aload 8
+    //   1611: aload 7
     //   1613: invokevirtual 450	java/lang/StringBuffer:toString	()Ljava/lang/String;
     //   1616: astore 7
     //   1618: aload 7
@@ -881,14 +881,14 @@ class HealthBusinessPlugin$UploadThread
     //   1890: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1893: invokestatic 318	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   1896: goto -144 -> 1752
-    //   1899: astore 6
+    //   1899: astore 4
     //   1901: aload 5
-    //   1903: astore 4
-    //   1905: aload 6
+    //   1903: astore 6
+    //   1905: aload 4
     //   1907: astore 5
-    //   1909: aload 4
+    //   1909: aload 6
     //   1911: ifnull +8 -> 1919
-    //   1914: aload 4
+    //   1914: aload 6
     //   1916: invokevirtual 490	java/net/HttpURLConnection:disconnect	()V
     //   1919: getstatic 222	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   1922: aload_0
@@ -903,31 +903,34 @@ class HealthBusinessPlugin$UploadThread
     //   1947: aload 5
     //   1949: athrow
     //   1950: astore 5
-    //   1952: goto -43 -> 1909
-    //   1955: astore 6
-    //   1957: aload 7
-    //   1959: astore 5
-    //   1961: goto -420 -> 1541
+    //   1952: aload 4
+    //   1954: astore 6
+    //   1956: goto -47 -> 1909
+    //   1959: astore 6
+    //   1961: aload 7
+    //   1963: astore 5
+    //   1965: goto -424 -> 1541
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1964	0	this	UploadThread
+    //   0	1968	0	this	UploadThread
     //   143	797	1	i	int
     //   145	948	2	j	int
     //   151	1028	3	k	int
-    //   8	1907	4	localObject1	Object
-    //   413	1535	5	localObject2	Object
-    //   1950	1	5	localObject3	Object
-    //   1959	1	5	localObject4	Object
-    //   322	666	6	localObject5	Object
+    //   8	1745	4	localObject1	Object
+    //   1899	54	4	localObject2	Object
+    //   413	1535	5	localObject3	Object
+    //   1950	1	5	localObject4	Object
+    //   1963	1	5	localObject5	Object
+    //   392	596	6	localObject6	Object
     //   1539	291	6	localException1	Exception
-    //   1899	7	6	localObject6	Object
-    //   1955	1	6	localException2	Exception
-    //   392	1566	7	localObject7	Object
-    //   94	1747	8	localObject8	Object
+    //   1903	52	6	localObject7	Object
+    //   1959	1	6	localException2	Exception
+    //   322	1640	7	localObject8	Object
+    //   94	1747	8	localObject9	Object
     //   115	1290	9	str1	String
     //   689	535	10	str2	String
     //   728	142	11	str3	String
-    //   675	179	12	localObject9	Object
+    //   675	179	12	localObject10	Object
     // Exception table:
     //   from	to	target	type
     //   1243	1510	1539	java/lang/Exception
@@ -955,16 +958,16 @@ class HealthBusinessPlugin$UploadThread
     //   1205	1215	1950	finally
     //   1219	1243	1950	finally
     //   1545	1572	1950	finally
-    //   929	942	1955	java/lang/Exception
-    //   946	969	1955	java/lang/Exception
-    //   973	983	1955	java/lang/Exception
-    //   987	1014	1955	java/lang/Exception
-    //   1018	1027	1955	java/lang/Exception
-    //   1076	1120	1955	java/lang/Exception
-    //   1165	1187	1955	java/lang/Exception
-    //   1191	1201	1955	java/lang/Exception
-    //   1205	1215	1955	java/lang/Exception
-    //   1219	1243	1955	java/lang/Exception
+    //   929	942	1959	java/lang/Exception
+    //   946	969	1959	java/lang/Exception
+    //   973	983	1959	java/lang/Exception
+    //   987	1014	1959	java/lang/Exception
+    //   1018	1027	1959	java/lang/Exception
+    //   1076	1120	1959	java/lang/Exception
+    //   1165	1187	1959	java/lang/Exception
+    //   1191	1201	1959	java/lang/Exception
+    //   1205	1215	1959	java/lang/Exception
+    //   1219	1243	1959	java/lang/Exception
   }
 }
 

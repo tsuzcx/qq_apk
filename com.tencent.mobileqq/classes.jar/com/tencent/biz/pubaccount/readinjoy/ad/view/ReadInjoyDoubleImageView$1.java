@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
-import nrp;
+import ocz;
 
 public class ReadInjoyDoubleImageView$1
   implements Runnable
 {
-  public ReadInjoyDoubleImageView$1(nrp paramnrp) {}
+  public ReadInjoyDoubleImageView$1(ocz paramocz) {}
   
   public void run()
   {
-    nrp.a(this.this$0);
+    ocz.a(this.this$0);
   }
 }
 

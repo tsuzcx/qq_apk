@@ -1,54 +1,76 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.util.LruCache;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashSet;
 
-class alit
-  extends BroadcastReceiver
+public class alit
 {
-  alit(alis paramalis) {}
+  protected static ayrz a;
+  private ayry jdField_a_of_type_Ayry;
+  public AppInterface a;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private ArrayList<alix> jdField_a_of_type_JavaUtilArrayList;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  static
   {
-    if ((paramIntent == null) || (!"com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("faceType", -1) != this.a.jdField_a_of_type_Int)) {}
-    ArrayList localArrayList;
-    do
-    {
-      return;
-      paramContext = paramIntent.getStringArrayListExtra("uinList");
-      localArrayList = paramIntent.getStringArrayListExtra("headPathList");
-    } while ((paramContext == null) || (localArrayList == null));
-    int j = paramContext.size();
-    if (QLog.isColorLevel()) {
-      QLog.d("NonMainAppHeadLoader", 2, "onReceive, uinListSize:" + j + " reqSize:" + this.a.jdField_a_of_type_JavaUtilHashSet.size());
-    }
-    paramIntent = new ArrayList(this.a.jdField_a_of_type_JavaUtilHashSet.size());
+    jdField_a_of_type_Ayrz = new aliv();
+  }
+  
+  public alit(AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Ayry = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public void a()
+  {
+    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
     int i = 0;
-    while (i < j)
+    try
     {
-      String str = (String)paramContext.get(i);
-      if (this.a.jdField_a_of_type_JavaUtilHashSet.contains(str))
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        this.a.jdField_a_of_type_JavaUtilHashSet.remove(str);
-        paramIntent.add(str);
+        QLog.i("AREngine_ARResourceDownload", 1, "cancelDownloadTask. url = " + ((alix)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Ayry.b(((alix)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Ayrv);
+        i += 1;
       }
-      this.a.jdField_b_of_type_AndroidSupportV4UtilLruCache.put(str, localArrayList.get(i));
-      i += 1;
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      return;
     }
-    paramContext = Message.obtain();
-    paramContext.obj = paramIntent;
-    paramContext.what = 1001;
-    this.a.jdField_b_of_type_AndroidOsHandler.sendMessage(paramContext);
+    finally {}
+  }
+  
+  public boolean a(alix paramalix, aliw arg2)
+  {
+    if ((paramalix == null) || (??? == null)) {
+      return false;
+    }
+    ??? = new aliu(this, paramalix, ???);
+    ayrv localayrv = new ayrv();
+    localayrv.jdField_a_of_type_Aysa = ???;
+    localayrv.jdField_a_of_type_JavaLangString = paramalix.jdField_a_of_type_JavaLangString;
+    localayrv.jdField_a_of_type_Int = 0;
+    localayrv.c = paramalix.c;
+    localayrv.e = 1;
+    localayrv.jdField_a_of_type_Ayrz = jdField_a_of_type_Ayrz;
+    this.jdField_a_of_type_Ayry.a(localayrv);
+    paramalix.jdField_a_of_type_Ayrv = localayrv;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramalix);
+      QLog.i("AREngine_ARResourceDownload", 1, "submitDownloadTask. url = " + paramalix.jdField_a_of_type_JavaLangString);
+      return true;
+    }
+  }
+  
+  public void b()
+  {
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alit
  * JD-Core Version:    0.7.0.1
  */

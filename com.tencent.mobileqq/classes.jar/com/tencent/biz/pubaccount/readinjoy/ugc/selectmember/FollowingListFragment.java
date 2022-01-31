@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import bbmy;
-import behi;
+import bcpw;
+import bfpc;
 import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.ListView;
@@ -19,63 +19,63 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import ogy;
-import ohb;
-import ohe;
-import ppg;
-import pvb;
-import pvd;
-import pve;
-import pvf;
-import pvz;
+import osj;
+import osm;
+import osp;
+import qbc;
+import qgz;
+import qhb;
+import qhc;
+import qhd;
+import qhx;
 
 public class FollowingListFragment
   extends Fragment
-  implements behi, pvb<ObservableArrayList<ResultRecord>>
+  implements bfpc, qgz<ObservableArrayList<ResultRecord>>
 {
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private ObservableArrayList<ResultRecord> jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList;
   private List<HashMap<String, Object>> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private ohe jdField_a_of_type_Ohe = new pvd(this);
-  private pve jdField_a_of_type_Pve;
-  private pvz jdField_a_of_type_Pvz;
+  private osp jdField_a_of_type_Osp = new qhb(this);
+  private qhc jdField_a_of_type_Qhc;
+  private qhx jdField_a_of_type_Qhx;
   
   private void a()
   {
-    a(ogy.a().c());
+    a(osj.a().c());
     String[] arrayOfString = new String[3];
     arrayOfString[0] = "key_checked";
     arrayOfString[1] = "key_head_url";
     arrayOfString[2] = "key_name";
     int[] arrayOfInt = new int[3];
     int[] tmp35_34 = arrayOfInt;
-    tmp35_34[0] = 2131298635;
+    tmp35_34[0] = 2131364193;
     int[] tmp40_35 = tmp35_34;
-    tmp40_35[1] = 2131302061;
+    tmp40_35[1] = 2131367679;
     int[] tmp45_40 = tmp40_35;
-    tmp45_40[2] = 2131304981;
+    tmp45_40[2] = 2131370647;
     tmp45_40;
-    if ((this.jdField_a_of_type_Pvz != null) && (this.jdField_a_of_type_Pvz.a() == 1))
+    if ((this.jdField_a_of_type_Qhx != null) && (this.jdField_a_of_type_Qhx.a() == 1))
     {
-      this.jdField_a_of_type_Pve = new pvf(this, getActivity(), this.jdField_a_of_type_JavaUtilList, 2131494440, arrayOfString, arrayOfInt);
+      this.jdField_a_of_type_Qhc = new qhd(this, getActivity(), this.jdField_a_of_type_JavaUtilList, 2131560006, arrayOfString, arrayOfInt);
       return;
     }
-    this.jdField_a_of_type_Pve = new pve(this, getActivity(), this.jdField_a_of_type_JavaUtilList, 2131494440, arrayOfString, arrayOfInt);
+    this.jdField_a_of_type_Qhc = new qhc(this, getActivity(), this.jdField_a_of_type_JavaUtilList, 2131560006, arrayOfString, arrayOfInt);
   }
   
-  private void a(List<ppg> paramList)
+  private void a(List<qbc> paramList)
   {
     this.jdField_a_of_type_JavaUtilList.clear();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      ppg localppg = (ppg)paramList.next();
+      qbc localqbc = (qbc)paramList.next();
       HashMap localHashMap = new HashMap();
-      String str = localppg.a().toString();
+      String str = localqbc.a().toString();
       localHashMap.put("key_uin", str);
-      localHashMap.put("key_name", localppg.a());
-      localHashMap.put("key_head_url", localppg.b());
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.contains(ResultRecord.a(str, localppg.a())))) {
+      localHashMap.put("key_name", localqbc.a());
+      localHashMap.put("key_head_url", localqbc.b());
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.contains(ResultRecord.a(str, localqbc.a())))) {
         localHashMap.put("key_checked", Boolean.valueOf(true));
       }
       this.jdField_a_of_type_JavaUtilList.add(localHashMap);
@@ -97,50 +97,50 @@ public class FollowingListFragment
   
   public void a(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(pvz parampvz)
+  public void a(qhx paramqhx)
   {
-    this.jdField_a_of_type_Pvz = parampvz;
+    this.jdField_a_of_type_Qhx = paramqhx;
   }
   
   public void b(ObservableArrayList<ResultRecord> paramObservableArrayList) {}
   
   public void b(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Pve != null) {
-      this.jdField_a_of_type_Pve.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Qhc != null) {
+      this.jdField_a_of_type_Qhc.notifyDataSetChanged();
     }
   }
   
   public void c(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Pve != null) {
-      this.jdField_a_of_type_Pve.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Qhc != null) {
+      this.jdField_a_of_type_Qhc.notifyDataSetChanged();
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131494439, paramViewGroup, false);
-    paramViewGroup = (ListView)paramLayoutInflater.findViewById(2131303651);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560005, paramViewGroup, false);
+    paramViewGroup = (ListView)paramLayoutInflater.findViewById(2131369321);
     a();
-    paramViewGroup.setAdapter(this.jdField_a_of_type_Pve);
+    paramViewGroup.setAdapter(this.jdField_a_of_type_Qhc);
     paramViewGroup.setOnItemClickListener(this);
-    paramViewGroup.setSelector(2131101491);
+    paramViewGroup.setSelector(2131167087);
     paramViewGroup.setOverScrollMode(0);
-    ohb.a().a(this.jdField_a_of_type_Ohe);
+    osm.a().a(this.jdField_a_of_type_Osp);
     return paramLayoutInflater;
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    ohb.a().b(this.jdField_a_of_type_Ohe);
+    osm.a().b(this.jdField_a_of_type_Osp);
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     boolean bool = true;
-    Object localObject = (CheckBox)paramView.findViewById(2131298635);
+    Object localObject = (CheckBox)paramView.findViewById(2131364193);
     if (((CheckBox)localObject).isEnabled()) {
       if (!((CheckBox)localObject).isChecked())
       {
@@ -166,15 +166,15 @@ public class FollowingListFragment
       label142:
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.remove(localObject);
       continue;
-      if ((this.jdField_a_of_type_Pvz != null) && (this.jdField_a_of_type_Pvz.a() == 1))
+      if ((this.jdField_a_of_type_Qhx != null) && (this.jdField_a_of_type_Qhx.a() == 1))
       {
-        if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size() >= this.jdField_a_of_type_Pvz.b()))
+        if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size() >= this.jdField_a_of_type_Qhx.b()))
         {
-          paramAdapterView = getActivity().getResources().getString(2131652730, new Object[] { String.valueOf(this.jdField_a_of_type_Pvz.c()) });
-          bbmy.a(getActivity(), paramAdapterView, 0).a();
+          paramAdapterView = getActivity().getResources().getString(2131718554, new Object[] { String.valueOf(this.jdField_a_of_type_Qhx.c()) });
+          bcpw.a(getActivity(), paramAdapterView, 0).a();
           return;
         }
-        bbmy.a(getActivity(), getActivity().getResources().getString(2131652724), 0).a();
+        bcpw.a(getActivity(), getActivity().getResources().getString(2131718548), 0).a();
       }
     }
   }

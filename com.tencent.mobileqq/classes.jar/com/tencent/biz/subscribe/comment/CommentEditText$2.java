@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.comment;
 
-import vzq;
+import wnc;
 
 class CommentEditText$2
   implements Runnable

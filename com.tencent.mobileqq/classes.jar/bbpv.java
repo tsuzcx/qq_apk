@@ -1,45 +1,27 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.commonsdk.cache.Sizeable;
+import com.tencent.image.Utils;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class bbpv
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Sizeable
 {
-  public bbpv(NavBarAIO paramNavBarAIO) {}
+  public int a;
+  public HashMap<Integer, Bitmap> a = new HashMap();
+  public int b;
   
-  public void onGlobalLayout()
+  public int getByteSize()
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      NavBarAIO.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-    for (;;)
-    {
-      int j = NavBarAIO.a(this.a).getMeasuredWidth();
-      int i = j;
-      if (j == 0)
-      {
-        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)NavBarAIO.a(this.a).getLayoutParams();
-        i = bajq.a();
-        j = localLayoutParams.leftMargin;
-        int k = localLayoutParams.rightMargin;
-        if (QLog.isColorLevel()) {
-          QLog.i("NavBarAIO", 2, "addOnGlobalLayoutListener leftMargin:" + localLayoutParams.leftMargin + " rightMargin:" + localLayoutParams.rightMargin + " screenWidth:" + bajq.a());
-        }
-        i = i - j - k;
-      }
-      this.a.b(i);
-      return;
-      NavBarAIO.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
+    Iterator localIterator = this.a.values().iterator();
+    for (int i = 0; localIterator.hasNext(); i = Utils.getBitmapSize((Bitmap)localIterator.next()) + i) {}
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbpv
  * JD-Core Version:    0.7.0.1
  */

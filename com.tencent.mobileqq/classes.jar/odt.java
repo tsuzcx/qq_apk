@@ -1,131 +1,86 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.biz.pubaccount.readinjoy.kandianreport.ReadInJoyMMapKvStorage;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.tencent.widget.XPanelContainer;
 
 public class odt
-  implements AladdinConfigHandler
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  oqa a(String paramString, List<oqa> paramList)
+  public odt(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  
+  public void onGlobalLayout()
   {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    Object localObject = new Rect();
+    ReadInJoyDeliverBiuActivity.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = ReadInJoyDeliverBiuActivity.b(this.a).getRootView().getHeight();
+    int j = i - ((Rect)localObject).height();
+    boolean bool;
+    if (j > 100)
     {
-      oqa localoqa = (oqa)paramList.next();
-      if (localoqa.jdField_a_of_type_JavaLangString.equals(paramString)) {
-        return localoqa;
+      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout screenHeight:" + i + ", ExternalPanelheight:" + j + ", isShowKeybroad:" + bool);
       }
+      i = ReadInJoyDeliverBiuActivity.a(this.a).getHeight();
+      if (bool == ReadInJoyDeliverBiuActivity.a(this.a)) {
+        break label394;
+      }
+      if (j > ReadInJoyDeliverBiuActivity.a(this.a)) {
+        ReadInJoyDeliverBiuActivity.a(this.a, j);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout mMAXExternalPanelheight:" + ReadInJoyDeliverBiuActivity.b(this.a));
+      }
+      j = i - ReadInJoyDeliverBiuActivity.c(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout contentHeight:" + i + ", fixedHeight:" + ReadInJoyDeliverBiuActivity.d(this.a) + ", maxHeight:" + j);
+      }
+      ReadInJoyDeliverBiuActivity.a(this.a).setMaxHeight(j);
+      ReadInJoyDeliverBiuActivity.a(this.a, bool);
+      localObject = this.a;
+      if (i >= ReadInJoyDeliverBiuActivity.e(this.a)) {
+        break label372;
+      }
+      j = i;
+      label283:
+      ReadInJoyDeliverBiuActivity.b((ReadInJoyDeliverBiuActivity)localObject, j);
+      localObject = this.a;
+      if (i <= ReadInJoyDeliverBiuActivity.f(this.a)) {
+        break label383;
+      }
+      label307:
+      ReadInJoyDeliverBiuActivity.c((ReadInJoyDeliverBiuActivity)localObject, i);
     }
-    return null;
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("KandianDailySettingConfigHandler", 2, "[onReceiveConfig] " + paramString);
-    Map localMap = ocx.a(paramString);
-    Object localObject4 = localMap.keySet();
-    Object localObject1 = ReadInJoyMMapKvStorage.getInstance().getValeForKey("KANDIAN_DAILY_SETTING_CONFIG");
-    paramString = new JSONArray();
-    ArrayList localArrayList = new ArrayList();
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-      try
-      {
-        localObject1 = new JSONArray((String)localObject1);
-        if (localObject1 != null) {}
-        Object localObject5;
-        String[] arrayOfString;
-        Object localObject3;
-        Object localObject2;
-        for (;;) {}
+    for (;;)
+    {
+      ReadInJoyDeliverBiuActivity.d(this.a, ReadInJoyDeliverBiuActivity.h(this.a));
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout mExternalPanelheight:" + ReadInJoyDeliverBiuActivity.g(this.a));
       }
-      catch (JSONException localJSONException1)
+      return;
+      bool = false;
+      break;
+      label372:
+      j = ReadInJoyDeliverBiuActivity.e(this.a);
+      break label283;
+      label383:
+      i = ReadInJoyDeliverBiuActivity.f(this.a);
+      break label307;
+      label394:
+      if ((ReadInJoyDeliverBiuActivity.g(this.a) != ReadInJoyDeliverBiuActivity.h(this.a)) && (i == ReadInJoyDeliverBiuActivity.f(this.a)))
       {
-        for (;;)
-        {
-          try
-          {
-            QLog.d("KandianDailySettingConfigHandler", 2, "old data: " + localObject1);
-            paramInt1 = 0;
-            if (paramInt1 < ((JSONArray)localObject1).length())
-            {
-              localArrayList.add(oqa.a(((JSONArray)localObject1).optJSONObject(paramInt1)));
-              paramInt1 += 1;
-              continue;
-            }
-            paramString = (String)localObject1;
-            localObject4 = ((Set)localObject4).iterator();
-            if (!((Iterator)localObject4).hasNext()) {
-              continue;
-            }
-            localObject5 = (String)((Iterator)localObject4).next();
-            localObject1 = (String)localMap.get(localObject5);
-            QLog.d("KandianDailySettingConfigHandler", 2, "[onReceiveConfig] key=" + (String)localObject5 + ", value=" + (String)localObject1);
-            arrayOfString = ((String)localObject1).split("\\|");
-            if (arrayOfString.length != 3) {
-              continue;
-            }
-            paramInt1 = 1;
-            localObject3 = a((String)localObject5, localArrayList);
-            localObject1 = localObject3;
-            if (localObject3 == null)
-            {
-              paramInt1 = 0;
-              localObject1 = new oqa();
-            }
-            ((oqa)localObject1).jdField_b_of_type_JavaLangString = arrayOfString[0];
-            ((oqa)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject5);
-            localObject3 = arrayOfString[1].split(",");
-            localObject5 = arrayOfString[2].split(",");
-            ((oqa)localObject1).jdField_b_of_type_JavaUtilList = new ArrayList();
-            ((oqa)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
-            ((oqa)localObject1).jdField_b_of_type_JavaUtilList.add("");
-            ((oqa)localObject1).jdField_a_of_type_JavaUtilList.add("");
-            paramInt2 = 0;
-            if (paramInt2 >= localObject3.length) {
-              continue;
-            }
-            ((oqa)localObject1).jdField_a_of_type_JavaUtilList.add(localObject3[paramInt2]);
-            paramInt2 += 1;
-            continue;
-            localJSONException1 = localJSONException1;
-          }
-          catch (JSONException localJSONException2)
-          {
-            paramString = localJSONException1;
-            localObject2 = localJSONException2;
-            continue;
-          }
-          localJSONException1.printStackTrace();
-          continue;
-          paramInt2 = 0;
-          if (paramInt2 < localObject5.length)
-          {
-            localJSONException1.jdField_b_of_type_JavaUtilList.add(localObject5[paramInt2]);
-            paramInt2 += 1;
-          }
-          else if (paramInt1 == 0)
-          {
-            paramString.put(localJSONException1.a());
-          }
+        i -= ReadInJoyDeliverBiuActivity.h(this.a);
+        j = i - ReadInJoyDeliverBiuActivity.i(this.a);
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout contentHeight:" + i + ", fixedHeight:" + ReadInJoyDeliverBiuActivity.j(this.a) + ", maxHeight:" + j);
         }
-        QLog.d("KandianDailySettingConfigHandler", 2, "new data: " + paramString.toString());
-        ReadInJoyMMapKvStorage.getInstance().update("KANDIAN_DAILY_SETTING_CONFIG", paramString.toString());
-        return true;
+        ReadInJoyDeliverBiuActivity.b(this.a).setMaxHeight(j);
       }
     }
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    QLog.d("KandianDailySettingConfigHandler", 2, "[onWipeConfig]");
-    ReadInJoyMMapKvStorage.getInstance().update("KANDIAN_DAILY_SETTING_CONFIG", "");
   }
 }
 

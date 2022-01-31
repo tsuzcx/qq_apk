@@ -1,19 +1,21 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import com.tencent.widget.SwipListView;
+
 class nxt
-  extends nyf
+  implements View.OnClickListener
 {
-  nxt(nxd paramnxd, nwx paramnwx, boolean paramBoolean, int paramInt)
-  {
-    super(paramnxd, null);
-  }
+  nxt(nxs paramnxs, View paramView) {}
   
-  void a(nyi paramnyi)
+  public void onClick(View paramView)
   {
-    paramnyi.onCommentCreate(true, this.jdField_a_of_type_Nwx, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Nxd.a(this.jdField_a_of_type_Int), this.jdField_a_of_type_Int);
+    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Nxs.a).a(this.jdField_a_of_type_AndroidViewView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nxt
  * JD-Core Version:    0.7.0.1
  */

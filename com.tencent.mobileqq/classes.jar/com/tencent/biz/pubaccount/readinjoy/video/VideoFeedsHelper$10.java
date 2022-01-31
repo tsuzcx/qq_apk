@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.app.Dialog;
-import qcn;
+import qol;
 
 public final class VideoFeedsHelper$10
   implements Runnable
@@ -10,10 +10,10 @@ public final class VideoFeedsHelper$10
   {
     try
     {
-      if (qcn.a != null)
+      if (qol.a != null)
       {
-        qcn.a.dismiss();
-        qcn.a = null;
+        qol.a.dismiss();
+        qol.a = null;
       }
       return;
     }

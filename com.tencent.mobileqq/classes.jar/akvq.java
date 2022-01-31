@@ -1,42 +1,30 @@
-import android.opengl.GLES20;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class akvq
-  extends akvs
+  extends awyn
 {
-  public int a;
-  public int b;
-  public int c;
+  BrowserAppInterface a;
   
-  public akvq(int paramInt)
+  public akvq(BrowserAppInterface paramBrowserAppInterface)
   {
-    super(paramInt);
-    this.e = "uniform float u_threshold;\nuniform float u_clipBlack;\nuniform float u_clipWhite;\nfloat rgb2cb(float r, float g, float b){\n    return 0.5 + -0.168736*r - 0.331264*g + 0.5*b;\n}\nfloat rgb2cr(float r, float g, float b){\n    return 0.5 + 0.5*r - 0.418688*g - 0.081312*b;\n}\nfloat smoothclip(float low, float high, float x){\n    if (x <= low){\n        return 0.0;\n    }\n    if(x >= high){\n        return 1.0;\n    }\n    return (x-low)/(high-low);\n}\nvec4 greenscreen(vec4 color, float Cb_key,float Cr_key, float tola,float tolb, float clipBlack, float clipWhite){\n    float cb = rgb2cb(color.r,color.g,color.b);\n    float cr = rgb2cr(color.r,color.g,color.b);\n    float alpha = distance(vec2(cb, cr), vec2(Cb_key, Cr_key));\n    alpha = smoothclip(tola, tolb, alpha);\n    float r = max(gl_FragColor.r - (1.0-alpha)*u_screenColor.r, 0.0);\n    float g = max(gl_FragColor.g - (1.0-alpha)*u_screenColor.g, 0.0);\n    float b = max(gl_FragColor.b - (1.0-alpha)*u_screenColor.b, 0.0);\n    if(alpha < clipBlack){\n        alpha = r = g = b = 0.0;\n    }\n    if(alpha > clipWhite){\n        alpha = 1.0;\n    }\n    if(clipWhite < 1.0){\n        alpha = alpha/max(clipWhite, 0.9);\n    }\n    return vec4(r,g,b, alpha);\n}\n";
-    this.j = "    float tola = 0.0;\n    float tolb = u_threshold/2.0;\n    float cb_key = rgb2cb(u_screenColor.r, u_screenColor.g, u_screenColor.b);\n    float cr_key = rgb2cr(u_screenColor.r, u_screenColor.g, u_screenColor.b);\n    gl_FragColor = greenscreen(gl_FragColor, cb_key, cr_key, tola, tolb, u_clipBlack, u_clipWhite);\n";
+    this.a = paramBrowserAppInterface;
   }
   
-  protected void a()
+  public AppInterface a()
   {
-    this.a = GLES20.glGetUniformLocation(this.d, "u_threshold");
-    akvw.a("glGetAttribLocation u_threshold");
-    this.b = GLES20.glGetUniformLocation(this.d, "u_clipBlack");
-    akvw.a("glGetAttribLocation u_clipBlack");
-    this.c = GLES20.glGetUniformLocation(this.d, "u_clipWhite");
-    akvw.a("glGetAttribLocation u_clipWhite");
+    return this.a;
   }
   
-  protected void a(akvv paramakvv)
+  public void a(ToServiceMsg paramToServiceMsg)
   {
-    if (paramakvv == null) {
-      return;
-    }
-    GLES20.glUniform1f(this.a, paramakvv.f);
-    GLES20.glUniform1f(this.b, paramakvv.g);
-    GLES20.glUniform1f(this.c, paramakvv.h);
+    super.b(paramToServiceMsg, null, arpb.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akvq
  * JD-Core Version:    0.7.0.1
  */

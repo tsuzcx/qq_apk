@@ -1,51 +1,22 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.widget.Switch;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.av.widget.shimmer.ShimmerTextView;
 
-class mve
-  implements CompoundButton.OnCheckedChangeListener
+public class mve
+  extends AccessibilityDelegateCompat
 {
-  mve(mut parammut, nbu paramnbu, Switch paramSwitch) {}
+  public mve(ShimmerTextView paramShimmerTextView) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    if (!this.jdField_a_of_type_Mut.c)
-    {
-      this.jdField_a_of_type_Mut.c = true;
-      return;
-    }
-    if (this.jdField_a_of_type_Nbu.f == 1) {
-      this.jdField_a_of_type_Mut.a(this.jdField_a_of_type_Nbu, paramBoolean);
-    }
-    for (;;)
-    {
-      mut.a(this.jdField_a_of_type_Mut, this.jdField_a_of_type_Nbu.a);
-      return;
-      if (this.jdField_a_of_type_Nbu.f == 2)
-      {
-        if (paramBoolean) {
-          this.jdField_a_of_type_Mut.a(this.jdField_a_of_type_Nbu, this.jdField_a_of_type_ComTencentWidgetSwitch, paramBoolean);
-        } else {
-          this.jdField_a_of_type_Mut.a(this.jdField_a_of_type_Nbu, paramBoolean);
-        }
-      }
-      else if (this.jdField_a_of_type_Nbu.f == 3)
-      {
-        if (!paramBoolean) {
-          this.jdField_a_of_type_Mut.a(this.jdField_a_of_type_Nbu, this.jdField_a_of_type_ComTencentWidgetSwitch, paramBoolean);
-        } else {
-          this.jdField_a_of_type_Mut.a(this.jdField_a_of_type_Nbu, paramBoolean);
-        }
-      }
-      else {
-        this.jdField_a_of_type_Mut.a(this.jdField_a_of_type_Nbu, paramBoolean);
-      }
-    }
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramAccessibilityNodeInfoCompat.setVisibleToUser(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mve
  * JD-Core Version:    0.7.0.1
  */

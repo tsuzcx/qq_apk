@@ -1,48 +1,25 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.Emoticon;
 
-public class aaro
-  implements arok<List<EmoticonPackage>>
+class aaro
+  implements View.OnClickListener
 {
-  public aaro(EmosmActivity paramEmosmActivity) {}
+  aaro(aarj paramaarj, aobk paramaobk) {}
   
-  public void a(List<EmoticonPackage> paramList)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (this.a.jdField_a_of_type_Ancr != null) {
-      this.a.jdField_a_of_type_Ancr.a();
-    }
-    if ((paramList != null) && (paramList.size() > 0))
+    if ((paramView != null) && ((paramView instanceof ImageView)))
     {
-      EmoticonPackage localEmoticonPackage;
-      if (this.a.b == 1)
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          localEmoticonPackage = (EmoticonPackage)paramList.next();
-          if ((3 != localEmoticonPackage.jobType) && (1 != localEmoticonPackage.jobType) && (5 != localEmoticonPackage.jobType)) {
-            this.a.jdField_a_of_type_JavaUtilArrayList.add(localEmoticonPackage);
-          }
-        }
+      View localView = (View)paramView.getParent();
+      paramView = paramView.getTag();
+      String str = anzm.o.replace("[epId]", this.jdField_a_of_type_Aobk.a.epId).replace("[eId]", this.jdField_a_of_type_Aobk.a.eId);
+      if (this.jdField_a_of_type_Aarj.a.a == null) {
+        this.jdField_a_of_type_Aarj.a.a = new aaru(this.jdField_a_of_type_Aarj.a);
       }
-      if (this.a.b == 2)
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          localEmoticonPackage = (EmoticonPackage)paramList.next();
-          if ((3 == localEmoticonPackage.jobType) || (5 == localEmoticonPackage.jobType)) {
-            this.a.jdField_a_of_type_JavaUtilArrayList.add(localEmoticonPackage);
-          }
-        }
-      }
-    }
-    if (this.a.jdField_a_of_type_Ancr != null) {
-      this.a.jdField_a_of_type_Ancr.notifyDataSetChanged();
+      this.jdField_a_of_type_Aarj.a.a.a(1, localView, paramView, str);
     }
   }
 }

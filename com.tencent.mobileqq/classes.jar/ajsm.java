@@ -1,17 +1,14 @@
-import android.content.Context;
-import android.content.Intent;
-
 class ajsm
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  Intent jdField_a_of_type_AndroidContentIntent;
-  String jdField_a_of_type_JavaLangString;
+  public int a;
+  public String a;
+  public String b;
   
-  ajsm(ajsi paramajsi, String paramString, Context paramContext, Intent paramIntent)
+  public ajsm(ajsk paramajsk, int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 

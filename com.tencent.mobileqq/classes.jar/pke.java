@@ -1,18 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-
-public class pke
-  implements View.OnClickListener
+class pke
+  extends osp
 {
-  public pke(ComponentContentRecommend paramComponentContentRecommend) {}
+  pke(pkd parampkd) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    this.a.a(ComponentContentRecommend.a(this.a));
-    ogy.a().a(ComponentContentRecommend.a(this.a).mArticleID, ComponentContentRecommend.a(this.a).mRecommendFollowInfos.a);
-    ComponentContentRecommend.a(this.a);
+    pkd.a(this.a, paramBoolean, paramInt, paramString);
+  }
+  
+  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
+  {
+    pkd.a(this.a, paramBoolean, paramLong, paramInt, paramString);
+  }
+  
+  public void m()
+  {
+    if (pkd.a(this.a) == 2) {
+      pkd.a(this.a, true);
+    }
   }
 }
 

@@ -1,251 +1,114 @@
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import android.media.MediaFormat;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.CookieManager;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class axhg
 {
-  public static String a;
-  private static HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  public boolean a;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
+  public boolean b;
+  public boolean c;
+  boolean d;
+  boolean e;
+  boolean f;
+  boolean g;
   
-  static
+  public axhg(SVHwEncoder.HwEncode paramHwEncode) {}
+  
+  public void a()
   {
-    jdField_a_of_type_JavaLangString = "";
-    jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-    jdField_a_of_type_ArrayOfJavaLangString = new String[2];
+    a("releaseMuxer[resetValidData]");
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.c = false;
+    this.d = false;
+    this.e = false;
+    this.f = false;
+    this.g = false;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
   }
   
-  public static long a(String paramString)
+  public void a(MediaFormat paramMediaFormat)
   {
-    paramString = (Long)jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-    if (paramString != null) {
-      return SystemClock.elapsedRealtime() - paramString.longValue();
+    if ((paramMediaFormat.containsKey("csd-0")) && (paramMediaFormat.containsKey("csd-1"))) {
+      this.d = true;
     }
-    return 0L;
   }
   
-  public static String a(String paramString)
+  public void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (paramString = "";; paramString = paramString.hashCode() + "_" + System.currentTimeMillis())
-    {
-      jdField_a_of_type_JavaLangString = paramString;
-      QLog.d("TenDocLogReportHelper", 2, "init trace id: " + jdField_a_of_type_JavaLangString);
-      return jdField_a_of_type_JavaLangString;
-    }
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    String str;
-    if (paramString1 == null) {
-      str = null;
-    }
-    Uri localUri;
-    do
-    {
-      return str;
-      localUri = Uri.parse(paramString1);
-      str = paramString1;
-    } while (!TextUtils.isEmpty(localUri.getQueryParameter("xiaolv_wy_tdoc_tid")));
-    QLog.d("TenDocLogReportHelper", 2, "trace url: " + paramString1 + ",traceId: " + paramString2);
-    paramString1 = localUri.buildUpon();
-    paramString1.appendQueryParameter("xiaolv_wy_tdoc_tid", paramString2);
-    return paramString1.toString();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    awqx.b(paramQQAppInterface, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    a(jdField_a_of_type_ArrayOfJavaLangString, paramString1, paramString3, paramString4, paramString5);
-    awqx.b(paramQQAppInterface, "dc00898", "", "", paramString2, paramString2, 0, 0, "", "", jdField_a_of_type_ArrayOfJavaLangString[0], jdField_a_of_type_ArrayOfJavaLangString[1]);
     if (QLog.isColorLevel()) {
-      QLog.d("TenDocLogReportHelper", 2, "reportTDW: traceId=" + paramString1 + " T=" + paramString2 + " value=" + paramString3 + " extra1=" + paramString4 + " extra2=" + paramString5);
+      QLog.d("SVHwEncoder", 2, paramString + ": mHasKeyFrame=" + this.jdField_a_of_type_Boolean + " mVideoFirst=" + this.jdField_b_of_type_Boolean + " mFirstIsKey=" + this.c + " mVideoConfigOK=" + this.d + " mAudioConfigOK=" + this.e + " mVideoMuxeredframeCount=" + SVHwEncoder.HwEncode.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mAudioMuxeredframeCount=" + SVHwEncoder.HwEncode.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mVideoOrderError=" + this.f + " mAudioOrderError=" + this.g + " mVideoOrderErrorCnt=" + this.jdField_a_of_type_Int + " mAudioOrderErrorCnt=" + this.jdField_b_of_type_Int);
     }
   }
   
-  public static void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  boolean a()
   {
-    if (paramTeamWorkFileImportInfo == null) {
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("releaseMuxer[audioSpecOK]", "mNeedEncodeAudio=" + SVHwEncoder.HwEncode.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mAudioConfigOK=" + this.e);
+    if (SVHwEncoder.HwEncode.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode)) {
+      return this.e;
     }
-    if (TextUtils.isEmpty(paramTeamWorkFileImportInfo.k))
+    return true;
+  }
+  
+  public boolean a(long paramLong, boolean paramBoolean)
+  {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (paramBoolean)
     {
-      paramTeamWorkFileImportInfo.k = a(paramTeamWorkFileImportInfo.b);
-      return;
+      if (this.jdField_a_of_type_Long <= paramLong) {
+        break label83;
+      }
+      this.f = true;
+      this.jdField_a_of_type_Int += 1;
     }
-    QLog.d("TenDocLogReportHelper", 2, "has setted trace Id: " + paramTeamWorkFileImportInfo.k);
-  }
-  
-  public static void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(SystemClock.elapsedRealtime()));
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    QLog.d(paramString1, 2, "tencentdoc log:" + paramString2 + " - " + paramString3);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    QLog.d(paramString1, 2, "tencentdoc log:" + paramString2 + " - " + paramString3 + " - " + paramString4);
-  }
-  
-  private static void a(String[] paramArrayOfString, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    try
+    label83:
+    for (paramBoolean = bool1;; paramBoolean = false)
     {
-      jdField_a_of_type_OrgJsonJSONObject.put("trace", paramString1);
-      jdField_a_of_type_OrgJsonJSONObject.put("value", paramString2);
-      jdField_a_of_type_OrgJsonJSONObject.put("extra1", paramString3);
-      jdField_a_of_type_OrgJsonJSONObject.put("extra2", paramString4);
-      paramString1 = jdField_a_of_type_OrgJsonJSONObject.toString();
-      int i = paramString1.length();
-      int j = i / 2;
-      paramArrayOfString[0] = paramString1.substring(0, j);
-      paramArrayOfString[1] = paramString1.substring(j, i);
-      return;
-    }
-    catch (JSONException paramArrayOfString)
-    {
-      QLog.e("TenDocLogReportHelper", 2, "report fail", paramArrayOfString);
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramString)) {
-      if (!paramString.contains("docs.qq.com"))
+      this.jdField_a_of_type_Long = paramLong;
+      return paramBoolean;
+      if (this.jdField_b_of_type_Long > paramLong)
       {
-        bool1 = bool2;
-        if (!paramString.contains("docx.qq.com")) {}
+        this.g = true;
+        this.jdField_b_of_type_Int += 1;
       }
-      else
+      for (paramBoolean = bool2;; paramBoolean = false)
       {
-        bool1 = true;
+        this.jdField_b_of_type_Long = paramLong;
+        return paramBoolean;
       }
     }
-    return bool1;
   }
   
-  public static String b(String paramString)
+  public void b(MediaFormat paramMediaFormat)
   {
-    if (paramString == null) {
-      paramString = null;
+    if (paramMediaFormat.containsKey("csd-0")) {
+      this.e = true;
     }
-    Uri localUri;
-    do
-    {
-      return paramString;
-      localUri = Uri.parse(paramString);
-    } while (!TextUtils.isEmpty(localUri.getQueryParameter("showDiscuss")));
-    paramString = localUri.buildUpon();
-    paramString.appendQueryParameter("showDiscuss", "true");
-    return paramString.toString();
   }
   
-  public static void b(String paramString1, String paramString2, String paramString3)
+  boolean b()
   {
-    String str;
-    if (a(paramString1))
-    {
-      str = "ps_key:" + b(paramString1);
-      paramString1 = c(paramString1);
-      if (TextUtils.isEmpty(paramString1)) {
-        a(paramString2, paramString3, str);
-      }
-    }
-    else
-    {
-      return;
-    }
-    a(paramString2, paramString3, str, paramString1);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("releaseMuxer[videoSpecOK]", "mNeedEncodeVideo=" + SVHwEncoder.HwEncode.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mVideoConfigOK=" + this.d);
+    return (!SVHwEncoder.HwEncode.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode)) || ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.c) && (this.d) && (!this.f));
   }
   
-  public static void b(String paramString1, String paramString2, String paramString3, String paramString4)
+  public boolean c()
   {
-    if (a(paramString1))
-    {
-      paramString1 = c(paramString1);
-      if (TextUtils.isEmpty(paramString1)) {
-        a(paramString2, paramString3, paramString4);
-      }
-    }
-    else
-    {
-      return;
-    }
-    a(paramString2, paramString3, paramString4, paramString1);
-  }
-  
-  private static boolean b(String paramString)
-  {
-    paramString = CookieManager.getInstance().getCookie(paramString);
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.split(";");
-      int j = paramString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String[] arrayOfString = paramString[i];
-        if ((arrayOfString != null) && (arrayOfString.contains("p_skey")))
-        {
-          arrayOfString = arrayOfString.split("=");
-          if ((arrayOfString.length > 1) && (!TextUtils.isEmpty(arrayOfString[1]))) {
-            return true;
-          }
-        }
-        i += 1;
-      }
-    }
-    return false;
-  }
-  
-  public static String c(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    return Uri.parse(paramString).getQueryParameter("xiaolv_wy_tdoc_tid");
-  }
-  
-  public static String d(String paramString)
-  {
-    String str = c(paramString);
-    if (!TextUtils.isEmpty(str)) {}
-    int i;
-    do
-    {
-      return str;
-      i = paramString.indexOf("?");
-      str = paramString;
-    } while (i == -1);
-    return paramString.substring(0, i);
+    return (a()) && (b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axhg
  * JD-Core Version:    0.7.0.1
  */

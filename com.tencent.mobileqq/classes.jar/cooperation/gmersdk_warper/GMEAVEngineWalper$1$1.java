@@ -1,17 +1,17 @@
 package cooperation.gmersdk_warper;
 
-import bfbi;
-import bfbj;
-import bfbp;
+import bgiz;
+import bgja;
+import bgjg;
 
 public class GMEAVEngineWalper$1$1
   implements Runnable
 {
-  public GMEAVEngineWalper$1$1(bfbj parambfbj) {}
+  public GMEAVEngineWalper$1$1(bgja parambgja) {}
   
   public void run()
   {
-    bfbp.a(this.a.a.a).a(bfbi.a(this.a.a));
+    bgjg.a(this.a.a.a).a(bgiz.a(this.a.a));
   }
 }
 

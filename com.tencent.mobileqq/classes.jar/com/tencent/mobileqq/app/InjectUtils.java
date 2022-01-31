@@ -306,7 +306,7 @@ public class InjectUtils
     //   170: invokevirtual 48	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   173: aload 10
     //   175: iconst_1
-    //   176: invokestatic 153	ajst:a	(Landroid/app/Application;Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+    //   176: invokestatic 153	akhd:a	(Landroid/app/Application;Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
     //   179: astore 5
     //   181: ldc 11
     //   183: iconst_1

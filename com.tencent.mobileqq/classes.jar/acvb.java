@@ -1,73 +1,58 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.ChatItemAnimLayout;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
 
-class acvb
-  implements bbil
+public class acvb
+  extends Handler
 {
-  acvb(acuz paramacuz) {}
+  public acvb(ChatItemAnimLayout paramChatItemAnimLayout) {}
   
-  public void a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if ((!acuz.a(this.a)) && (paramInt == 1)) {
-      acuz.a(this.a);
-    }
-  }
-  
-  public void a(int paramInt, float paramFloat)
-  {
-    if (acuz.a(this.a)) {
-      this.a.a(paramInt, paramFloat);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    acuz.b(this.a);
-    if (acuz.a(this.a)) {
-      this.a.b(paramInt);
-    }
-  }
-  
-  public void e()
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.al();
-    }
-    if (acuz.a(this.a)) {
-      this.a.e();
-    }
-    if (!aisc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
-    for (int i = 1;; i = 0)
+    switch (paramMessage.what)
     {
-      if (i != 0) {
-        aisc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", true);
-      }
+    }
+    do
+    {
       return;
-    }
-  }
-  
-  public void f()
-  {
-    if (acuz.a(this.a)) {
-      this.a.f();
-    }
-  }
-  
-  public void g()
-  {
-    if (acuz.a(this.a)) {
-      this.a.g();
-    }
-  }
-  
-  public void h()
-  {
-    acuz.c(this.a);
-    if (acuz.a(this.a)) {
-      this.a.h();
-    }
-    if (aisc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      aisc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", false);
-    }
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatItemAnimLayout", 2, "ANIMATION_START");
+      }
+      this.a.b.mMsgAnimTime = System.currentTimeMillis();
+      this.a.e = 0.0F;
+      this.a.f = 0.0F;
+      sendMessageDelayed(ChatItemAnimLayout.a(this.a).obtainMessage(1), 10L);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatItemAnimLayout", 2, "ANIMATION_UPDADE");
+      }
+      this.a.b.mMsgAnimTime = System.currentTimeMillis();
+      float f2 = (float)(this.a.b.mMsgAnimTime - this.a.jdField_a_of_type_Long) / 300.0F;
+      float f1 = f2;
+      if (f2 > 1.0F) {
+        f1 = 1.0F;
+      }
+      this.a.e = (1.0F - (1.0F - f1) * (1.0F - f1) * (1.0F - f1));
+      this.a.f = f1;
+      if (this.a.e < 1.0F) {
+        sendMessageDelayed(ChatItemAnimLayout.a(this.a).obtainMessage(1), 10L);
+      }
+      for (;;)
+      {
+        this.a.invalidate();
+        return;
+        this.a.e = 1.0F;
+        sendMessageDelayed(ChatItemAnimLayout.a(this.a).obtainMessage(2), 0L);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatItemAnimLayout", 2, "ANIMATION_END");
+      }
+      this.a.e = 1.0F;
+      this.a.invalidate();
+    } while (this.a.jdField_a_of_type_Acvc == null);
+    this.a.jdField_a_of_type_Acvc.f(this.a.b);
   }
 }
 

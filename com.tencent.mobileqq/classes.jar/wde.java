@@ -1,40 +1,93 @@
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
+import android.content.Context;
 
 public class wde
-  extends wci
 {
-  public wde(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment, Bundle paramBundle)
+  protected int a;
+  Context a;
+  protected bfyt a;
+  protected wdg a;
+  protected boolean a;
+  
+  public wde(bfyt parambfyt, Context paramContext)
   {
-    super(paramBundle);
+    this.jdField_a_of_type_Int = 5;
+    this.jdField_a_of_type_Bfyt = parambfyt;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  protected BaseWidgetView a(ViewGroup paramViewGroup, wbp paramwbp)
+  public int a()
   {
-    return SubscribePersonalDetailFragment.a(this.a);
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a(Bundle paramBundle) {}
-  
-  public void a(wca paramwca)
+  public void a(wdg paramwdg)
   {
-    if ((paramwca.c()) || (paramwca.d()))
+    this.jdField_a_of_type_Wdg = paramwdg;
+    if (paramwdg != null)
     {
-      if ((SubscribePersonalDetailFragment.a(this.a) != null) && (SubscribePersonalDetailFragment.a(this.a).b() == 1))
-      {
-        SubDraftChangeEvent localSubDraftChangeEvent = new SubDraftChangeEvent();
-        wcj.a().a(localSubDraftChangeEvent);
-      }
-      SubscribePersonalDetailFragment.a(this.a, paramwca);
+      a(true);
+      a(true, false);
     }
+    this.jdField_a_of_type_Bfyt.setOnClickListener(new wdf(this));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Boolean == paramBoolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Bfyt.a(3);
+      return;
+    }
+    this.jdField_a_of_type_Bfyt.a(0);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (!paramBoolean1)
+    {
+      this.jdField_a_of_type_Bfyt.a(5);
+      return;
+    }
+    if (paramBoolean2) {}
+    for (int i = 3;; i = 4)
+    {
+      this.jdField_a_of_type_Bfyt.a(i);
+      if ((!this.jdField_a_of_type_Bfyt.b(i)) || (this.jdField_a_of_type_Wdg == null)) {
+        break;
+      }
+      this.jdField_a_of_type_Wdg.a();
+      return;
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    boolean bool;
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.jdField_a_of_type_Bfyt.a() == 0) || (!this.jdField_a_of_type_Bfyt.b(2)));
+      bool = true;
+      if (this.jdField_a_of_type_Wdg != null) {
+        bool = this.jdField_a_of_type_Wdg.a(paramBoolean);
+      }
+    } while (!bool);
+    this.jdField_a_of_type_Bfyt.a(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wde
  * JD-Core Version:    0.7.0.1
  */

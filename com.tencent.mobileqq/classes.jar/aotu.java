@@ -1,8 +1,16 @@
-public abstract interface aotu
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+
+public class aotu
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public aotu(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    QfileRecentPicFileTabView.a(this.a, paramView, false);
+  }
 }
 
 

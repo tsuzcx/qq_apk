@@ -43,8 +43,6 @@ public abstract interface IQQEnv
   
   public abstract Set<String> getLogWhiteList();
   
-  public abstract String getMiniGamePath(MiniGameInfo paramMiniGameInfo);
-  
   public abstract String getPlatformName();
   
   public abstract String getPlatformVersion();
@@ -82,6 +80,8 @@ public abstract interface IQQEnv
   public abstract void reportDC04902(String paramString, long paramLong);
   
   public abstract void showGameErrorDialog(Context paramContext, DialogCallback paramDialogCallback);
+  
+  public abstract void updateDisplayFrameTime(long paramLong, boolean paramBoolean);
 }
 
 

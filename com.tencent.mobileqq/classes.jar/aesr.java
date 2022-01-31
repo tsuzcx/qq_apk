@@ -1,23 +1,49 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.34.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse;
 
-class aesr
-  extends akfx
+public class aesr
+  implements BusinessObserver
 {
-  aesr(aesq paramaesq, String paramString, ajtg paramajtg, boolean paramBoolean)
-  {
-    super(paramString);
-  }
+  aesr(aerv paramaerv) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ac_ft.AddContactFindTroopRTLW", 2, "getRecommendTroopList onLocationFinish info = " + paramSosoLbsInfo);
+      QLog.d(this.a.a, 2, "success:" + String.valueOf(paramBoolean));
     }
-    if (paramInt != 0) {
-      QLog.i("ac_ft.AddContactFindTroopRTLW", 1, "getRecommendTroopList onLocationFinish, errorCode=" + paramInt);
+    if (!paramBoolean) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        byte[] arrayOfByte = paramBundle.getByteArray("data");
+        paramInt = paramBundle.getInt("type", 0);
+        if (arrayOfByte == null) {
+          continue;
+        }
+        paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+        oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse();
+        if (paramInt == 0) {
+          paramBundle.mergeFrom(arrayOfByte);
+        }
+        for (paramBoolean = true; (paramBoolean) && (paramBundle.ret_info.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() == 0); paramBoolean = sgj.a(arrayOfByte, localGetPublicAccountDetailInfoResponse, paramBundle))
+        {
+          ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountChatPie.34.1(this, paramBundle), 10L);
+          return;
+        }
+        return;
+      }
+      catch (Exception paramBundle) {}
     }
-    this.jdField_a_of_type_Ajtg.a(1, this.jdField_a_of_type_Aesq.b, 25, this.jdField_a_of_type_Boolean, aesq.a(this.jdField_a_of_type_Aesq));
   }
 }
 

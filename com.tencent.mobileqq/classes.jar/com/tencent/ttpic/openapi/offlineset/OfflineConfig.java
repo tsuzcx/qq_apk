@@ -18,10 +18,10 @@ import java.util.List;
 
 public class OfflineConfig
 {
-  private static final int DEVICE_PERF_LEVERL_HIGH = 4;
+  public static final int DEVICE_PERF_LEVERL_HIGH = 4;
   public static final int DEVICE_PERF_LEVERL_LOW = 2;
-  private static final int DEVICE_PERF_LEVERL_MIDDLE = 3;
-  private static final int DEVICE_PERF_LEVERL_VERYLOW = 1;
+  public static final int DEVICE_PERF_LEVERL_MIDDLE = 3;
+  public static final int DEVICE_PERF_LEVERL_VERYLOW = 1;
   private static final String TAG = "OfflineConfig";
   private static final String TAG_DEVICE_PERF_LEVERL_HIGH = "benchmark/high/";
   private static final String TAG_DEVICE_PERF_LEVERL_LOW = "benchmark/low/";

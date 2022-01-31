@@ -1,54 +1,94 @@
-import PUSHAPI.PushRsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.DynamicGridView;
 
 public class bfqj
-  extends QzoneExternalRequest
+  implements AbsListView.OnScrollListener
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private long b;
+  private int jdField_a_of_type_Int = -1;
+  private int b = -1;
+  private int c;
+  private int d;
+  private int e;
   
-  public bfqj(long paramLong1, long paramLong2, String paramString1, long paramLong3, String paramString2)
+  public bfqj(DynamicGridView paramDynamicGridView) {}
+  
+  private void c()
   {
-    super.setHostUin(paramLong1);
-    super.setLoginUserId(paramLong1);
-    super.setRefer(paramString1);
-    this.jdField_a_of_type_Long = paramLong2;
-    this.b = paramLong3;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.needCompress = false;
+    if ((this.d > 0) && (this.e == 0))
+    {
+      if ((!DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) || (!DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView))) {
+        break label42;
+      }
+      DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+    }
+    label42:
+    while (!DynamicGridView.c(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) {
+      return;
+    }
+    DynamicGridView.c(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
   }
   
-  public String getCmdString()
+  public void a()
   {
-    return "wns.pushrsp";
+    if ((this.c != this.jdField_a_of_type_Int) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != -1L))
+    {
+      DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView));
+      DynamicGridView.d(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+    }
   }
   
-  public byte[] getEncodedUniParameter()
+  public void b()
   {
-    PushRsp localPushRsp = new PushRsp();
-    localPushRsp.ptime = this.jdField_a_of_type_Long;
-    localPushRsp.is_bgd = 0;
-    localPushRsp.sUID = "<JIEHEBAN>";
-    localPushRsp.flag = this.b;
-    localPushRsp.Mark = this.jdField_a_of_type_JavaLangString;
-    return beye.a(localPushRsp);
+    if ((this.c + this.d != this.jdField_a_of_type_Int + this.b) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != -1L))
+    {
+      DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView));
+      DynamicGridView.d(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+    }
   }
   
-  public JceStruct getReq()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    return null;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    if (this.jdField_a_of_type_Int == -1)
+    {
+      i = this.c;
+      this.jdField_a_of_type_Int = i;
+      if (this.b != -1) {
+        break label111;
+      }
+    }
+    label111:
+    for (int i = this.d;; i = this.b)
+    {
+      this.b = i;
+      a();
+      b();
+      this.jdField_a_of_type_Int = this.c;
+      this.b = this.d;
+      if (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != null) {
+        DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      }
+      return;
+      i = this.jdField_a_of_type_Int;
+      break;
+    }
   }
   
-  public String uniKey()
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    return "wns.pushrsp";
+    this.e = paramInt;
+    DynamicGridView.c(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, paramInt);
+    c();
+    if (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != null) {
+      DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView).onScrollStateChanged(paramAbsListView, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfqj
  * JD-Core Version:    0.7.0.1
  */

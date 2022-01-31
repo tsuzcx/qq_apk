@@ -5,7 +5,7 @@ import com.tencent.av.redpacket.AVRedPacketManager;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.VideoLayerUI;
 import com.tencent.mobileqq.app.ThreadManager;
-import ljy;
+import lup;
 
 class RedPacketGameView$2
   implements Runnable

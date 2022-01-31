@@ -1,6 +1,12 @@
-class atxt
+public class atxt
 {
-  private static final atxr a = new atxr(null);
+  public T a;
+  
+  public atxt(T paramT)
+  {
+    Object localObject;
+    this.jdField_a_of_type_JavaLangObject = localObject;
+  }
 }
 
 

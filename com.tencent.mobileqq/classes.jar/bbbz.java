@@ -1,10 +1,18 @@
-public abstract interface bbbz
+final class bbbz
+  implements bcak
 {
-  public abstract void a(String paramString);
+  bbbz(aqyd paramaqyd) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.a != null)) {
+      this.a.a();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbbz
  * JD-Core Version:    0.7.0.1
  */

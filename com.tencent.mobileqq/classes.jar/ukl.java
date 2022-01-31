@@ -1,58 +1,36 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.SendVidRateDataResultReceiver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.ArrayList;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 import java.util.List;
 
 public class ukl
-  extends QQUIEventReceiver<ujx, syl>
+  extends JobSegment<List<Bitmap>, Bitmap>
 {
-  public ukl(ujx paramujx1, @NonNull ujx paramujx2)
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString = "story.icon.BitmapListToIconSegment";
+  
+  public ukl(Context paramContext, String paramString, int paramInt)
   {
-    super(paramujx2);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "[" + paramString + "]");
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(@NonNull ujx paramujx, @NonNull syl paramsyl)
+  protected void a(JobContext paramJobContext, List<Bitmap> paramList)
   {
-    if ((TextUtils.isEmpty(paramsyl.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramsyl.jdField_b_of_type_JavaLangString)) || (paramsyl.c == 0) || (paramsyl.jdField_b_of_type_Long == 0L) || (paramsyl.jdField_a_of_type_Int < 1))
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-      urk.d("Q.qqstory.home.data.HomeFeedPresenter", "receive not eligible rate event. event.feedId = %s, event.vid = %s, event.commentId = %d, event.commentFakeId = %d, event.rate = %d.", new Object[] { paramsyl.jdField_a_of_type_JavaLangString, paramsyl.jdField_b_of_type_JavaLangString, Integer.valueOf(paramsyl.c), Long.valueOf(paramsyl.jdField_b_of_type_Long), Integer.valueOf(paramsyl.jdField_a_of_type_Int) });
+      notifyError(new ErrorMessage(-1, "bitmap list should not be empty"));
       return;
     }
-    Object localObject1 = paramujx.a(paramsyl.jdField_a_of_type_JavaLangString);
-    if ((localObject1 == null) || (!(localObject1 instanceof ukv)))
-    {
-      urk.d("Q.qqstory.home.data.HomeFeedPresenter", "storyHomeFeed is null or it's not a VideoListHomeFeed. feedId = %s", new Object[] { paramsyl.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    Object localObject2 = (ukv)localObject1;
-    urk.b("Q.qqstory.home.data.HomeFeedPresenter", "receive rate event. event.feedId = %s, event.vid = %s, event.commentId = %d, event.commentFakeId = %d, event.rate = %d.", new Object[] { paramsyl.jdField_a_of_type_JavaLangString, paramsyl.jdField_b_of_type_JavaLangString, Integer.valueOf(paramsyl.c), Long.valueOf(paramsyl.jdField_b_of_type_Long), Integer.valueOf(paramsyl.jdField_a_of_type_Int) });
-    localObject1 = udl.a(paramsyl.jdField_a_of_type_JavaLangString, paramsyl.c, paramsyl.jdField_b_of_type_Long, 2, String.valueOf(paramsyl.jdField_a_of_type_Int));
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(localObject1);
-    ((ukv)localObject2).a(localArrayList, false);
-    localObject2 = (CommentLikeFeedItem)((ukv)localObject2).a;
-    ((CommentLikeFeedItem)localObject2).mCommentCount += 1;
-    if (ujx.a((CommentLikeFeedItem)localObject2)) {
-      ((CommentLikeFeedItem)localObject2).mFriendCommentCount += 1;
-    }
-    for (;;)
-    {
-      ujx.a(paramujx).b(paramsyl.jdField_a_of_type_JavaLangString);
-      ThreadManager.post(new HomeFeedPresenter.SendVidRateDataResultReceiver.1(this, (CommentLikeFeedItem)localObject2, (CommentEntry)localObject1), 5, null, false);
-      ujx.a((CommentLikeFeedItem)localObject2, (CommentEntry)localObject1);
-      return;
-      ((CommentLikeFeedItem)localObject2).mFanCommentCount += 1;
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return syl.class;
+    paramJobContext = (Bitmap[])paramList.toArray(new Bitmap[paramList.size()]);
+    paramList = bazq.a(this.jdField_a_of_type_Int, Bitmap.Config.ARGB_8888, paramJobContext);
+    ukm.b(this.jdField_a_of_type_JavaLangString, "result bitmap = %s, child count = %d", paramList, Integer.valueOf(paramJobContext.length));
+    notifyResult(paramList);
   }
 }
 

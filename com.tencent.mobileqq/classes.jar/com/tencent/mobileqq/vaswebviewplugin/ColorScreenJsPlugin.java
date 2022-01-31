@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import anad;
-import anah;
 import android.os.Bundle;
 import android.text.TextUtils;
+import anql;
+import anqp;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
@@ -135,7 +135,7 @@ public class ColorScreenJsPlugin
     if (QLog.isColorLevel()) {
       QLog.i("ColorScreenJsPlugin", 2, "queryLocal " + paramJSONObject.toString());
     }
-    paramString = anah.a("colorScreen_queryLocal", paramString, this.mOnRemoteResp.key, new Bundle());
+    paramString = anqp.a("colorScreen_queryLocal", paramString, this.mOnRemoteResp.key, new Bundle());
     if (paramJSONObject != null) {}
     try
     {
@@ -165,7 +165,7 @@ public class ColorScreenJsPlugin
     paramJSONObject = new Bundle();
     paramJSONObject.clear();
     paramJSONObject.putInt("id", i);
-    super.sendRemoteReq(anah.a("colorScreen_setup", paramString, this.mOnRemoteResp.key, paramJSONObject), false, true);
+    super.sendRemoteReq(anqp.a("colorScreen_setup", paramString, this.mOnRemoteResp.key, paramJSONObject), false, true);
   }
 }
 

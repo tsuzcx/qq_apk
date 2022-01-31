@@ -1,10 +1,10 @@
 package com.tencent.aekit.api.standard.filter;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.PointF;
 import android.opengl.GLES20;
 import android.os.Build;
-import android.os.Environment;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
@@ -30,13 +30,14 @@ import com.tencent.ttpic.audio.AudioDataManager;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
-import com.tencent.ttpic.gameplaysdk.GamePlaySDK;
+import com.tencent.ttpic.filter.MaterialLoadFinishListener;
 import com.tencent.ttpic.model.SizeI;
 import com.tencent.ttpic.offlineset.beans.AIBeautyParamsJsonBean;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTFaceDetector;
 import com.tencent.ttpic.openapi.PTSegAttr;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
+import com.tencent.ttpic.openapi.config.AdjustRealConfig.TYPE;
 import com.tencent.ttpic.openapi.config.BeautyRealConfig.TYPE;
 import com.tencent.ttpic.openapi.filter.FaceColorCombineFilter;
 import com.tencent.ttpic.openapi.filter.FaceFeatureParam;
@@ -67,14 +68,15 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.Vector;
 
 public class AEFilterManager
 {
-  private static final String DEFAULT_COPY_ASSETS_DIR = Environment.getExternalStorageDirectory().getPath() + File.separator + "Tencent" + File.separator + "aekit";
   private static final String DEFAULT_VIDEO_DIR = "Tencent" + File.separator + "aekit";
   private static final SizeI NET_SIZE = new SizeI(320, 320);
   public static final String SET_AEPROFILER_OBJ = "SET_AEPROFILER_OBJ";
@@ -85,6 +87,7 @@ public class AEFilterManager
   private static final String TAG = AEFilterManager.class.getSimpleName();
   private static final String TEST_PIC = "sample_input_16_9_1080.jpg";
   private int FACE_DETECT_WIDTH = 180;
+  private Vector<Integer> FILTERS_PRIORITY_ORDER;
   private final boolean NOT_NEED_TRANSFORM;
   private int beautyColorTone;
   private int beautyContrastRatio;
@@ -97,14 +100,18 @@ public class AEFilterManager
   private int beautyToothWhiten;
   private boolean beginVideoCodeProgress;
   private boolean closeAIBeautyConfig;
+  private int colorTemperature;
+  private int compareLevel;
   private int cosmeticsAlpha;
   private int decodeTexture;
   private int encodeTexture;
   private int exposureValue = 50;
+  private int fadeLevel;
   private boolean filterInSmooth = false;
   private boolean forceFaceDetect = false;
   private volatile boolean hasApplyPTFaceTransform = false;
   private int height;
+  private int hightLightLevel;
   private ArrayList<RedPacketPosition> hotAreaPositions;
   private boolean isAfterUpdateMaterial;
   private boolean isClearMaskImgs;
@@ -113,6 +120,8 @@ public class AEFilterManager
   private boolean isNeedSkipFrame;
   private boolean isNeedVideoTest;
   private boolean isVeryLowEndDevice = false;
+  private int lightnessLevel;
+  private int longLeg;
   private float lookupLevel = 1.0F;
   private AEDetector mAEDetector;
   private AEFilterChain mAEFilterChain;
@@ -120,20 +129,24 @@ public class AEFilterManager
   private AESegmentForQQ mAESegment;
   private AIBeautyParamsJsonBean mAIBeautyParamsJsonBean;
   private boolean mAIBeautyValid;
+  private AEAdjust mAdjust;
   private AIAttr mAiAttr = null;
   private AICtrl mAiCtrl = new AICtrl();
   private AIParam mAiParam = new AIParam();
+  private boolean mAllMustFiltsInited = false;
   private boolean mAsyncInitFilters;
   private String mCurVideoName;
   private AEDenoiseFilter mDenoiseFilter;
   private volatile boolean mDestroyed;
   private HashMap<AEDetectorType, Boolean> mDetectorMap = new HashMap();
   private boolean mEnableComparison = false;
+  private int mEnduranceTime = -1;
   private FaceColorCombineFilter mFaceColorCombineFilter;
   private double mFaceDetectScale = 0.16666667163372D;
   private AEFaceLine mFaceLine;
-  private Map<Integer, Boolean> mFilterEnableMap = new HashMap();
+  private Map<Integer, Boolean> mFilterEnableMap = new LinkedHashMap();
   private List<Integer> mFilterOrderList = new ArrayList();
+  private AEFiltersMustInitedSetting mFiltersMustInitedSetting;
   private int mFrameIndex;
   private List<Long> mFrameStamps;
   private volatile boolean mHasSubmitCreatePTFaceTransform = false;
@@ -147,6 +160,7 @@ public class AEFilterManager
   private boolean mNeedBodyDetect = false;
   private boolean mNeedGenderDetect = false;
   private String mOutputVideo;
+  private AEBodyBeauty mPTBodyBeauty;
   private AEFilterGallery mPTEffectFilter;
   private AEFaceBeauty mPTFaceBeauty;
   private volatile AEFaceTransform mPTFaceTransform;
@@ -162,15 +176,20 @@ public class AEFilterManager
   private VideoMaterial mVideoMaterial;
   private boolean mVideoTestSwitch;
   private double mViewAspectRatio;
+  private MaterialLoadFinishListener materialLoadFinishListener;
   private boolean needFaceDetect = false;
   private int outputTexture;
   private int phoneRotation;
   private boolean pointUpdate = false;
   private float[] rotationMatrix;
+  private int saturationLevel;
   private float[] segBgColor;
   private float[] segStrokeColor;
   private float segStrokeGapInPixel;
   private float segStrokeWidthInPixel;
+  private int shadowLevel;
+  private int sharpLevel;
+  private int slimWaist;
   private int smoothLevel;
   private int smoothSharpenHeight;
   private float smoothSharpenStrength;
@@ -182,6 +201,8 @@ public class AEFilterManager
   private int[] testBmpTexture;
   private int[] testVideoTexture;
   private int[] textures = new int[1];
+  private int thinBody;
+  private int thinShoulder;
   private int transBasic3;
   private int transBasic4;
   private int transCheekboneThin;
@@ -232,6 +253,14 @@ public class AEFilterManager
       this.smoothSharpenStrength = 1.2F;
       this.beautyColorTone = 50;
       this.cosmeticsAlpha = 100;
+      this.lightnessLevel = 0;
+      this.hightLightLevel = 0;
+      this.shadowLevel = 0;
+      this.compareLevel = 0;
+      this.sharpLevel = 0;
+      this.saturationLevel = 0;
+      this.colorTemperature = 0;
+      this.fadeLevel = 0;
       this.segStrokeColor = new float[] { 1.0F, 1.0F, 1.0F, 1.0F };
       this.segBgColor = new float[] { 0.0F, 0.0F, 0.0F, 0.0F };
       this.rotationMatrix = new float[16];
@@ -245,7 +274,27 @@ public class AEFilterManager
         FeatureManager.Features.MASK_IMAGES.init();
         this.isClearMaskImgs = true;
       }
+      initDefaultFiltersPriority();
       return;
+    }
+  }
+  
+  private int addTypeInOrderArray(int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  {
+    if (paramArrayOfInt == null) {
+      return paramInt2;
+    }
+    if ((this.mFiltersMustInitedSetting != null) && (this.mFiltersMustInitedSetting.isContainType(paramInt1)))
+    {
+      shiftRightArray(paramArrayOfInt, paramInt2, 1);
+      paramArrayOfInt[0] = paramInt1;
+    }
+    int i;
+    for (paramInt1 = paramInt2 + 1;; paramInt1 = i)
+    {
+      return paramInt1;
+      i = paramInt2 + 1;
+      paramArrayOfInt[paramInt2] = paramInt1;
     }
   }
   
@@ -279,10 +328,13 @@ public class AEFilterManager
             {
               this.mAEFilterChain.add(this.mPTSticker.getBeforeTransFilter());
               this.mPTSticker.updateCosAlpha(this.cosmeticsAlpha);
+              if (this.mPTSticker.isUseStickerPlugin()) {
+                this.mPTSticker.setPTFaceTransform(this.mPTFaceTransform);
+              }
             }
             break;
           case 103: 
-            if ((this.mPTSticker != null) && (this.mVideoMaterial != null))
+            if ((this.mPTSticker != null) && (this.mVideoMaterial != null) && (!this.mPTSticker.isUseStickerPlugin()))
             {
               this.mAEFilterChain.add(this.mPTSticker.getAfterTransFilter());
               this.mPTSticker.updateCosAlpha(this.cosmeticsAlpha);
@@ -309,7 +361,7 @@ public class AEFilterManager
             }
             break;
           case 105: 
-            if ((this.mPTFaceTransform != null) && (this.hasApplyPTFaceTransform) && (!this.NOT_NEED_TRANSFORM)) {
+            if ((this.mPTFaceTransform != null) && (this.hasApplyPTFaceTransform) && (!this.NOT_NEED_TRANSFORM) && ((this.mPTSticker == null) || (!this.mPTSticker.isUseStickerPlugin()))) {
               this.mAEFilterChain.add(this.mPTFaceTransform);
             }
             break;
@@ -325,11 +377,11 @@ public class AEFilterManager
             break;
           case 111: 
             if (this.mAiAttr == null) {
-              break label589;
+              break label687;
             }
             PTFaceAttr localPTFaceAttr = (PTFaceAttr)this.mAiAttr.getRealtimeData(AEDetectorType.FACE.value);
             if (localPTFaceAttr == null) {
-              break label589;
+              break label687;
             }
             if (localPTFaceAttr.getFaceCount() > 0) {
               bool = true;
@@ -355,11 +407,21 @@ public class AEFilterManager
       }
       this.mAEFilterChain.add(this.mFaceLine);
       break;
+      if (this.mPTBodyBeauty == null) {
+        break;
+      }
+      this.mAEFilterChain.add(this.mPTBodyBeauty);
+      break;
+      if (this.mAdjust == null) {
+        break;
+      }
+      this.mAEFilterChain.add(this.mAdjust);
+      break;
       if (this.mAEProfiler != null) {
         this.mAEProfiler.endByTag("IAEProfiler-chainFilters");
       }
       return;
-      label589:
+      label687:
       bool = false;
     }
   }
@@ -379,6 +441,103 @@ public class AEFilterManager
     return i;
   }
   
+  private int[] checkFilterInitOrder(int... paramVarArgs)
+  {
+    if ((this.FILTERS_PRIORITY_ORDER == null) || (paramVarArgs == null) || (this.FILTERS_PRIORITY_ORDER.size() == 0)) {
+      return paramVarArgs;
+    }
+    LogUtils.i(TAG, "checkFilterInitOrder|input lines:" + printLines(paramVarArgs));
+    ArrayList localArrayList = new ArrayList();
+    int j = 0;
+    int i = 0;
+    if (j < paramVarArgs.length)
+    {
+      if (!this.FILTERS_PRIORITY_ORDER.contains(Integer.valueOf(paramVarArgs[j]))) {
+        i = addTypeInOrderArray(paramVarArgs[j], paramVarArgs, i);
+      }
+      for (;;)
+      {
+        j += 1;
+        break;
+        localArrayList.add(Integer.valueOf(paramVarArgs[j]));
+      }
+    }
+    j = 0;
+    while (j < localArrayList.size())
+    {
+      k = j + 1;
+      while (k < localArrayList.size())
+      {
+        if (this.FILTERS_PRIORITY_ORDER.indexOf(localArrayList.get(j)) > this.FILTERS_PRIORITY_ORDER.indexOf(localArrayList.get(k)))
+        {
+          m = ((Integer)localArrayList.get(j)).intValue();
+          localArrayList.set(j, localArrayList.get(k));
+          localArrayList.set(k, Integer.valueOf(m));
+        }
+        k += 1;
+      }
+      j += 1;
+    }
+    int m = -1;
+    int k = m;
+    if (this.mFiltersMustInitedSetting != null)
+    {
+      k = m;
+      if (this.mFiltersMustInitedSetting.mustInitCount() > 0) {
+        j = localArrayList.size() - 1;
+      }
+    }
+    for (;;)
+    {
+      k = m;
+      if (j >= 0)
+      {
+        if (this.mFiltersMustInitedSetting.isContainType(((Integer)localArrayList.get(j)).intValue())) {
+          k = j;
+        }
+      }
+      else
+      {
+        j = i;
+        if (k < 0) {
+          break label366;
+        }
+        shiftRightArray(paramVarArgs, i + k, k + 1);
+        j = 0;
+        while (j <= k)
+        {
+          paramVarArgs[j] = ((Integer)localArrayList.remove(0)).intValue();
+          j += 1;
+        }
+      }
+      j -= 1;
+    }
+    j = i + k + 1;
+    label366:
+    i = j;
+    j = 0;
+    while ((i < paramVarArgs.length) && (j < localArrayList.size()))
+    {
+      paramVarArgs[i] = ((Integer)localArrayList.get(j)).intValue();
+      j += 1;
+      i += 1;
+    }
+    localArrayList.clear();
+    if (this.mFiltersMustInitedSetting != null)
+    {
+      this.mFiltersMustInitedSetting.updateAllFilterInitedValue(paramVarArgs);
+      this.mFiltersMustInitedSetting.reset();
+    }
+    this.mAllMustFiltsInited = false;
+    LogUtils.i(TAG, "checkFilterInitOrder|output lines:" + printLines(paramVarArgs));
+    return paramVarArgs;
+  }
+  
+  private boolean checkNotEnduranceTime(long paramLong)
+  {
+    return (this.mEnduranceTime > 0) && (System.currentTimeMillis() - paramLong > this.mEnduranceTime);
+  }
+  
   private void clearHotAreaBeforeProcess()
   {
     if (this.hotAreaPositions != null) {
@@ -388,7 +547,6 @@ public class AEFilterManager
   
   private void clearSharedResources()
   {
-    GamePlaySDK.getInstance().clear();
     ShaderManager.getInstance().clear();
     FrameBufferCache.getInstance().destroy();
     RetrieveDataManager.getInstance().clear();
@@ -405,208 +563,235 @@ public class AEFilterManager
     if (this.mAEProfiler != null) {
       this.mAEProfiler.startByTag("IAEProfiler-configFilters");
     }
-    PTFaceAttr localPTFaceAttr2 = (PTFaceAttr)this.mAiAttr.getRealtimeData(AEDetectorType.FACE.value);
-    if ((localPTFaceAttr2 != null) && (localPTFaceAttr2.getHistogram() != null)) {
-      updateBeautyNormalFactor(((Integer)localPTFaceAttr2.getHistogram().first).intValue());
-    }
-    PTFaceAttr localPTFaceAttr1;
-    int i;
-    label129:
-    Object localObject;
-    if ((this.mPTSticker != null) && (this.mPTSticker.getFreezeFaceInfo() != null))
-    {
-      localPTFaceAttr1 = this.mPTSticker.getFreezeFaceInfo();
-      if (this.mPTSticker != null) {
-        this.mPTSticker.setHotAreaPositions(this.hotAreaPositions);
-      }
-      Iterator localIterator = this.mFilterEnableMap.entrySet().iterator();
-      i = 0;
-      if (!localIterator.hasNext()) {
-        break label1632;
-      }
-      localObject = (Map.Entry)localIterator.next();
-      if (((Boolean)((Map.Entry)localObject).getValue()).booleanValue()) {
-        switch (((Integer)((Map.Entry)localObject).getKey()).intValue())
-        {
-        }
-      }
+    PTFaceAttr localPTFaceAttr1 = (PTFaceAttr)this.mAiAttr.getRealtimeData(AEDetectorType.FACE.value);
+    if (localPTFaceAttr1 == null) {
+      localPTFaceAttr1 = PTFaceAttr.EmptyFaceAttr;
     }
     for (;;)
     {
-      break label129;
-      localPTFaceAttr1 = localPTFaceAttr2;
-      break;
-      if (this.mPTSmooth != null)
+      if ((localPTFaceAttr1 != null) && (localPTFaceAttr1.getHistogram() != null)) {
+        updateBeautyNormalFactor(((Integer)localPTFaceAttr1.getHistogram().first).intValue());
+      }
+      PTFaceAttr localPTFaceAttr2;
+      int i;
+      label134:
+      Object localObject;
+      if ((this.mPTSticker != null) && (this.mPTSticker.getFreezeFaceInfo() != null))
       {
-        this.mPTSmooth.setIsVeryLowEndDevice(this.isVeryLowEndDevice);
-        this.mPTSmooth.setSmoothLevel(this.smoothLevel);
-        this.mPTSmooth.setSharpenSize(this.smoothSharpenWidth, this.smoothSharpenHeight);
-        this.mPTSmooth.setSharpenStrength(this.smoothSharpenStrength);
-        this.mPTSmooth.setFaceAttr(localPTFaceAttr2);
-        this.mPTSmooth.setExposureValue(this.exposureValue);
-        if ((this.filterInSmooth) && (!TextUtils.isEmpty(this.mLutPath)))
-        {
-          this.mPTSmooth.setLookUpPath(this.mLutPath);
-          this.mPTSmooth.setLookUpIntensity(this.lookupLevel);
+        localPTFaceAttr2 = this.mPTSticker.getFreezeFaceInfo();
+        if (this.mPTSticker != null) {
+          this.mPTSticker.setHotAreaPositions(this.hotAreaPositions);
         }
-        else
-        {
-          this.mPTSmooth.setLookUpPath("");
-          this.mPTSmooth.setLookUpIntensity(0.0F);
-          continue;
-          if (this.mPTSmoothPrev3 != null)
+        Iterator localIterator = this.mFilterEnableMap.entrySet().iterator();
+        i = 0;
+        if (!localIterator.hasNext()) {
+          break label1842;
+        }
+        localObject = (Map.Entry)localIterator.next();
+        if (((Boolean)((Map.Entry)localObject).getValue()).booleanValue()) {
+          switch (((Integer)((Map.Entry)localObject).getKey()).intValue())
           {
-            this.mPTSmoothPrev3.setSharpenFactor(0.0F);
-            this.mPTSmoothPrev3.enableDenoise(true);
-            this.mPTSmoothPrev3.setSmoothLevel(this.smoothLevel);
-            this.mPTSmoothPrev3.setSharpenSize(this.smoothSharpenWidth, this.smoothSharpenHeight);
-            this.mPTSmoothPrev3.setFaceStatus(localPTFaceAttr2, (int)(this.width * this.mFaceDetectScale), (int)(this.height * this.mFaceDetectScale), this.phoneRotation);
+          }
+        }
+      }
+      for (;;)
+      {
+        break label134;
+        localPTFaceAttr2 = localPTFaceAttr1;
+        break;
+        if (this.mPTSmooth != null)
+        {
+          this.mPTSmooth.setIsVeryLowEndDevice(this.isVeryLowEndDevice);
+          this.mPTSmooth.setSmoothLevel(this.smoothLevel);
+          this.mPTSmooth.setSharpenSize(this.smoothSharpenWidth, this.smoothSharpenHeight);
+          this.mPTSmooth.setSharpenStrength(this.smoothSharpenStrength);
+          this.mPTSmooth.setFaceAttr(localPTFaceAttr1);
+          this.mPTSmooth.setExposureValue(this.exposureValue);
+          if ((this.filterInSmooth) && (!TextUtils.isEmpty(this.mLutPath)))
+          {
+            this.mPTSmooth.setLookUpPath(this.mLutPath);
+            this.mPTSmooth.setLookUpIntensity(this.lookupLevel);
+          }
+          else
+          {
+            this.mPTSmooth.setLookUpPath("");
+            this.mPTSmooth.setLookUpIntensity(0.0F);
             continue;
-            if ((this.mPTSticker != null) && (i == 0))
+            if (this.mPTSmoothPrev3 != null)
             {
-              this.mPTSticker.setAIAttr(this.mAiAttr);
-              this.mPTSticker.updateVideoSize(this.width, this.height, this.mFaceDetectScale);
-              this.mPTSticker.setFaceAttr(localPTFaceAttr2);
-              this.mPTSticker.setRatio((float)this.mViewAspectRatio);
-              if (this.mPTSticker.checkStickerType(AESticker.STICKER_TYPE.SEGMENT_STICKER))
+              this.mPTSmoothPrev3.setSharpenFactor(0.0F);
+              this.mPTSmoothPrev3.enableDenoise(true);
+              this.mPTSmoothPrev3.setSmoothLevel(this.smoothLevel);
+              this.mPTSmoothPrev3.setSharpenSize(this.smoothSharpenWidth, this.smoothSharpenHeight);
+              this.mPTSmoothPrev3.setFaceStatus(localPTFaceAttr1, (int)(this.width * this.mFaceDetectScale), (int)(this.height * this.mFaceDetectScale), this.phoneRotation);
+              continue;
+              if ((this.mPTSticker != null) && (i == 0))
               {
-                if (this.mAEProfiler != null) {
-                  this.mAEProfiler.startByTag("IAEProfiler-waitSegTime");
-                }
-                this.mPTSticker.setSegAttr((PTSegAttr)this.mAiAttr.getRealtimeData(AEDetectorType.SEGMENT.value));
-                if (this.mAEProfiler != null) {
-                  this.mAEProfiler.endByTag("IAEProfiler-waitSegTime");
-                }
-              }
-              for (;;)
-              {
-                AudioDataManager.getInstance().resetPermission();
-                i = 1;
-                break;
-                this.mPTSticker.setSegAttr(null);
-              }
-              if (this.mPTFaceBeauty != null)
-              {
-                localObject = this.mPTFaceBeauty;
-                if (!this.closeAIBeautyConfig) {}
-                for (boolean bool = true;; bool = false)
+                this.mPTSticker.setAIAttr(this.mAiAttr);
+                this.mPTSticker.updateVideoSize(this.width, this.height, this.mFaceDetectScale);
+                this.mPTSticker.setFaceAttr(localPTFaceAttr1);
+                this.mPTSticker.setRatio((float)this.mViewAspectRatio);
+                if (this.mPTSticker.checkStickerType(AESticker.STICKER_TYPE.SEGMENT_STICKER))
                 {
-                  ((AEFaceBeauty)localObject).setLoadSo(bool);
-                  this.mPTFaceBeauty.setVideoSize(this.width, this.height, this.mFaceDetectScale);
-                  this.mPTFaceBeauty.setFaceAttr(localPTFaceAttr1);
-                  this.mPTFaceBeauty.setNormalAlphaFactor(this.beautyNormalAlpha);
-                  this.mPTFaceBeauty.setLipsLutAlpha(this.cosmeticsAlpha);
-                  this.mPTFaceBeauty.setFaceBeautyLevel(BeautyRealConfig.TYPE.BEAUTY, this.beautySkinLevel);
-                  this.mPTFaceBeauty.setFaceBeautyLevel(BeautyRealConfig.TYPE.EYE_LIGHTEN, this.beautyEyeLighten);
-                  this.mPTFaceBeauty.setFaceBeautyLevel(BeautyRealConfig.TYPE.TOOTH_WHITEN, this.beautyToothWhiten);
-                  this.mPTFaceBeauty.setFaceBeautyLevel(BeautyRealConfig.TYPE.REMOVE_POUNCH, this.beautyRemovePounch);
-                  this.mPTFaceBeauty.setFaceBeautyLevel(BeautyRealConfig.TYPE.REMOVE_WRINKLES, this.beautyRemoveWrinkles);
-                  this.mPTFaceBeauty.setFaceBeautyLevel(BeautyRealConfig.TYPE.REMOVE_WRINKLES2, this.beautyRemoveWrinkles2);
-                  this.mPTFaceBeauty.setFaceBeautyLevel(BeautyRealConfig.TYPE.COLOR_TONE, this.beautyColorTone);
-                  this.mPTFaceBeauty.setFaceBeautyLevel(BeautyRealConfig.TYPE.CONTRAST_RATIO, this.beautyContrastRatio);
-                  if ((this.mVideoMaterial == null) || (this.mVideoMaterial.getLipsSegType() != VideoMaterialUtil.LIPS_SEG_TPYE.MASK.value)) {
-                    break label908;
+                  if (this.mAEProfiler != null) {
+                    this.mAEProfiler.startByTag("IAEProfiler-waitSegTime");
                   }
-                  this.mPTFaceBeauty.setLipsLut(this.mVideoMaterial.getDataPath() + File.separator + this.mVideoMaterial.getLipsLutPath());
-                  break;
+                  this.mPTSticker.setSegAttr((PTSegAttr)this.mAiAttr.getRealtimeData(AEDetectorType.SEGMENT.value));
+                  if (this.mAEProfiler != null) {
+                    this.mAEProfiler.endByTag("IAEProfiler-waitSegTime");
+                  }
                 }
-                label908:
-                this.mPTFaceBeauty.setLipsLut("");
-                continue;
-                if ((this.mPTEffectFilter != null) && (!TextUtils.isEmpty(this.mLutPath)))
+                for (;;)
                 {
-                  this.mPTEffectFilter.updateLut(this.mLutPath);
-                  continue;
-                  if (this.mPTLight != null)
+                  AudioDataManager.getInstance().resetPermission();
+                  i = 1;
+                  break;
+                  this.mPTSticker.setSegAttr(null);
+                }
+                if (this.mPTFaceBeauty != null)
+                {
+                  localObject = this.mPTFaceBeauty;
+                  if (!this.closeAIBeautyConfig) {}
+                  for (boolean bool = true;; bool = false)
                   {
-                    if ((localPTFaceAttr2 != null) && (localPTFaceAttr2.getHistogram() != null)) {
-                      this.mPTLight.setHistogram((int[])localPTFaceAttr2.getHistogram().second);
+                    ((AEFaceBeauty)localObject).setLoadSo(bool);
+                    this.mPTFaceBeauty.setVideoSize(this.width, this.height, this.mFaceDetectScale);
+                    this.mPTFaceBeauty.setFaceAttr(localPTFaceAttr2);
+                    this.mPTFaceBeauty.setNormalAlphaFactor(this.beautyNormalAlpha);
+                    this.mPTFaceBeauty.setLipsLutAlpha(this.cosmeticsAlpha);
+                    this.mPTFaceBeauty.setFaceBeautyLevel(BeautyRealConfig.TYPE.BEAUTY, this.beautySkinLevel);
+                    this.mPTFaceBeauty.setFaceBeautyLevel(BeautyRealConfig.TYPE.EYE_LIGHTEN, this.beautyEyeLighten);
+                    this.mPTFaceBeauty.setFaceBeautyLevel(BeautyRealConfig.TYPE.TOOTH_WHITEN, this.beautyToothWhiten);
+                    this.mPTFaceBeauty.setFaceBeautyLevel(BeautyRealConfig.TYPE.REMOVE_POUNCH, this.beautyRemovePounch);
+                    this.mPTFaceBeauty.setFaceBeautyLevel(BeautyRealConfig.TYPE.REMOVE_WRINKLES, this.beautyRemoveWrinkles);
+                    this.mPTFaceBeauty.setFaceBeautyLevel(BeautyRealConfig.TYPE.REMOVE_WRINKLES2, this.beautyRemoveWrinkles2);
+                    this.mPTFaceBeauty.setFaceBeautyLevel(BeautyRealConfig.TYPE.COLOR_TONE, this.beautyColorTone);
+                    this.mPTFaceBeauty.setFaceBeautyLevel(BeautyRealConfig.TYPE.CONTRAST_RATIO, this.beautyContrastRatio);
+                    if ((this.mVideoMaterial == null) || (this.mVideoMaterial.getLipsSegType() != VideoMaterialUtil.LIPS_SEG_TPYE.MASK.value)) {
+                      break label918;
                     }
-                    this.mPTLight.setmLightSensorBrightness(this.mLightSensorBrightness);
-                    this.mPTLight.setIsVeryLowEndDevice(this.isVeryLowEndDevice);
-                    this.mPTLight.setSize(this.width, this.height);
-                    this.isLowLightEnv = this.mPTLight.isLowLightEnv();
+                    this.mPTFaceBeauty.setLipsLut(this.mVideoMaterial.getDataPath() + File.separator + this.mVideoMaterial.getLipsLutPath());
+                    break;
+                  }
+                  label918:
+                  this.mPTFaceBeauty.setLipsLut("");
+                  continue;
+                  if ((this.mPTEffectFilter != null) && (!TextUtils.isEmpty(this.mLutPath)))
+                  {
+                    this.mPTEffectFilter.updateLut(this.mLutPath);
                     continue;
-                    if ((this.mPTFaceTransform != null) && (this.hasApplyPTFaceTransform))
+                    if (this.mPTLight != null)
                     {
-                      if (this.closeAIBeautyConfig)
-                      {
-                        this.mPTFaceTransform.closeAIBeautyConfig();
-                        label1069:
-                        localObject = this.mPTFaceTransform;
-                        if (this.closeAIBeautyConfig) {
-                          break label1415;
-                        }
-                        bool = true;
-                        label1084:
-                        ((AEFaceTransform)localObject).setAgeDetectOn(bool);
-                        this.mPTFaceTransform.setAIBeautyValid(this.mAIBeautyValid);
-                        this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.FOREHEAD, this.transForehead);
-                        this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.EYE, this.transEye);
-                        this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.EYE_DISTANCE, this.transEyeDistance);
-                        this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.EYE_ANGLE, this.transEyeAngle);
-                        this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.MOUTH_SHAPE, this.transMouthShape);
-                        this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.CHIN, this.transChin);
-                        this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.FACE_THIN, this.transFaceThin);
-                        this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.FACE_V, this.transFaceV);
-                        this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.NOSE_WING, this.transNoseWing);
-                        this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.NOSE_POSITION, this.transNosePosition);
-                        this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.LIPS_THICKNESS, this.transLipsThickness);
-                        this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.LIPS_WIDTH, this.transLipsWidth);
-                        this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.NOSE, this.transNose);
-                        this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.CHEEKBONE_THIN, this.transCheekboneThin);
-                        this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.FACE_SHORTEN, this.transFaceShorten);
-                        if (!AEModule.isEnableDefaultBasic3()) {
-                          break label1420;
-                        }
-                        this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.BASIC3, this.transBasic3);
+                      if ((localPTFaceAttr1 != null) && (localPTFaceAttr1.getHistogram() != null)) {
+                        this.mPTLight.setHistogram((int[])localPTFaceAttr1.getHistogram().second);
                       }
-                      for (;;)
+                      this.mPTLight.setmLightSensorBrightness(this.mLightSensorBrightness);
+                      this.mPTLight.setIsVeryLowEndDevice(this.isVeryLowEndDevice);
+                      this.mPTLight.setSize(this.width, this.height);
+                      this.isLowLightEnv = this.mPTLight.isLowLightEnv();
+                      continue;
+                      if ((this.mPTFaceTransform != null) && (this.hasApplyPTFaceTransform))
                       {
-                        this.mPTFaceTransform.setPointUpdate(this.pointUpdate);
-                        if (isDetectorOn(AEDetectorType.HAIR_SEGMENT)) {
-                          this.mPTFaceTransform.setAiAttr(this.mAiAttr);
-                        }
-                        this.mPTFaceTransform.setFaceStatus(localPTFaceAttr1.getAllFacePoints(), localPTFaceAttr1.getAllFaceAngles(), localPTFaceAttr1.getFaceStatusList(), this.mFaceDetectScale, this.phoneRotation);
-                        break;
-                        if (this.mAIBeautyParamsJsonBean == null) {
-                          break label1069;
-                        }
-                        this.mPTFaceTransform.updateAgeSexBeautyConfig(this.mAIBeautyParamsJsonBean);
-                        break label1069;
-                        label1415:
-                        bool = false;
-                        break label1084;
-                        label1420:
-                        this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.BASIC4, this.transBasic4);
-                      }
-                      if (this.mFaceColorCombineFilter != null) {
-                        if (localPTFaceAttr1.getCurve() != null)
+                        if (this.closeAIBeautyConfig)
                         {
-                          this.mFaceColorCombineFilter.updateCurve(localPTFaceAttr1.getCurve(), false);
-                          this.mFaceColorCombineFilter.enableBrightness(1);
+                          this.mPTFaceTransform.closeAIBeautyConfig();
+                          label1076:
+                          localObject = this.mPTFaceTransform;
+                          if (this.closeAIBeautyConfig) {
+                            break label1425;
+                          }
+                          bool = true;
+                          label1091:
+                          ((AEFaceTransform)localObject).setAgeDetectOn(bool);
+                          this.mPTFaceTransform.setAIBeautyValid(this.mAIBeautyValid);
+                          this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.FOREHEAD, this.transForehead);
+                          this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.EYE, this.transEye);
+                          this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.EYE_DISTANCE, this.transEyeDistance);
+                          this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.EYE_ANGLE, this.transEyeAngle);
+                          this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.MOUTH_SHAPE, this.transMouthShape);
+                          this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.CHIN, this.transChin);
+                          this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.FACE_THIN, this.transFaceThin);
+                          this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.FACE_V, this.transFaceV);
+                          this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.NOSE_WING, this.transNoseWing);
+                          this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.NOSE_POSITION, this.transNosePosition);
+                          this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.LIPS_THICKNESS, this.transLipsThickness);
+                          this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.LIPS_WIDTH, this.transLipsWidth);
+                          this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.NOSE, this.transNose);
+                          this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.CHEEKBONE_THIN, this.transCheekboneThin);
+                          this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.FACE_SHORTEN, this.transFaceShorten);
+                          if (!AEModule.isEnableDefaultBasic3()) {
+                            break label1430;
+                          }
+                          this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.BASIC3, this.transBasic3);
                         }
-                        else
+                        for (;;)
                         {
-                          this.mFaceColorCombineFilter.enableBrightness(0);
-                          continue;
-                          if (this.mDenoiseFilter != null)
+                          this.mPTFaceTransform.setPointUpdate(this.pointUpdate);
+                          if (isDetectorOn(AEDetectorType.HAIR_SEGMENT)) {
+                            this.mPTFaceTransform.setAiAttr(this.mAiAttr);
+                          }
+                          this.mPTFaceTransform.setFaceStatus(localPTFaceAttr2.getAllFacePoints(), localPTFaceAttr2.getAllFaceAngles(), localPTFaceAttr2.getFaceStatusList(), this.mFaceDetectScale, this.phoneRotation);
+                          break;
+                          if (this.mAIBeautyParamsJsonBean == null) {
+                            break label1076;
+                          }
+                          this.mPTFaceTransform.updateAgeSexBeautyConfig(this.mAIBeautyParamsJsonBean);
+                          break label1076;
+                          label1425:
+                          bool = false;
+                          break label1091;
+                          label1430:
+                          this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.BASIC4, this.transBasic4);
+                        }
+                        if (this.mFaceColorCombineFilter != null) {
+                          if (localPTFaceAttr2.getCurve() != null)
                           {
-                            this.mDenoiseFilter.setLowLightEnv(isLowLightEnv());
-                            this.mDenoiseFilter.setVeryLowEndDevice(this.isVeryLowEndDevice);
+                            this.mFaceColorCombineFilter.updateCurve(localPTFaceAttr2.getCurve(), false);
+                            this.mFaceColorCombineFilter.enableBrightness(1);
+                          }
+                          else
+                          {
+                            this.mFaceColorCombineFilter.enableBrightness(0);
                             continue;
-                            if (this.mAESegment != null)
+                            if (this.mDenoiseFilter != null)
                             {
-                              this.mAESegment.setSegAttr((PTSegAttr)this.mAiAttr.getRealtimeData(AEDetectorType.SEGMENT.value));
-                              this.mAESegment.setStrokeWidthInPixel(this.segStrokeWidthInPixel);
-                              this.mAESegment.setStrokeGapInPixel(this.segStrokeGapInPixel);
-                              this.mAESegment.setStrokeColor(this.segStrokeColor);
-                              this.mAESegment.setBgColor(this.segBgColor);
+                              this.mDenoiseFilter.setLowLightEnv(isLowLightEnv());
+                              this.mDenoiseFilter.setVeryLowEndDevice(this.isVeryLowEndDevice);
                               continue;
-                              if (this.mFaceLine != null)
+                              if (this.mAESegment != null)
                               {
-                                this.mFaceLine.updateVideoSize(this.width, this.height, this.mFaceDetectScale);
-                                this.mFaceLine.setmFaceAttr(localPTFaceAttr2);
+                                this.mAESegment.setSegAttr((PTSegAttr)this.mAiAttr.getRealtimeData(AEDetectorType.SEGMENT.value));
+                                this.mAESegment.setStrokeWidthInPixel(this.segStrokeWidthInPixel);
+                                this.mAESegment.setStrokeGapInPixel(this.segStrokeGapInPixel);
+                                this.mAESegment.setStrokeColor(this.segStrokeColor);
+                                this.mAESegment.setBgColor(this.segBgColor);
+                                continue;
+                                if (this.mFaceLine != null)
+                                {
+                                  this.mFaceLine.updateVideoSize(this.width, this.height, this.mFaceDetectScale);
+                                  this.mFaceLine.setmFaceAttr(localPTFaceAttr1);
+                                  continue;
+                                  if (this.mPTBodyBeauty != null)
+                                  {
+                                    this.mPTBodyBeauty.setBodyBeautyStrength(BeautyRealConfig.TYPE.LONG_LEG, this.longLeg);
+                                    this.mPTBodyBeauty.setBodyBeautyStrength(BeautyRealConfig.TYPE.SLIM_WAIST, this.slimWaist);
+                                    this.mPTBodyBeauty.setBodyBeautyStrength(BeautyRealConfig.TYPE.THIN_BODY, this.thinBody);
+                                    this.mPTBodyBeauty.setBodyBeautyStrength(BeautyRealConfig.TYPE.THIN_SHOULDER, this.thinShoulder);
+                                    this.mPTBodyBeauty.updateAIAttr(this.mAiAttr);
+                                    continue;
+                                    if (this.mAdjust != null)
+                                    {
+                                      this.mAdjust.setAdjustLevel(AdjustRealConfig.TYPE.LIGHTNESS, this.lightnessLevel);
+                                      this.mAdjust.setAdjustLevel(AdjustRealConfig.TYPE.HIGHLIGHT, this.hightLightLevel);
+                                      this.mAdjust.setAdjustLevel(AdjustRealConfig.TYPE.SHADOW, this.shadowLevel);
+                                      this.mAdjust.setAdjustLevel(AdjustRealConfig.TYPE.COMPARE, this.compareLevel);
+                                      this.mAdjust.setAdjustLevel(AdjustRealConfig.TYPE.SHARP, this.sharpLevel);
+                                      this.mAdjust.setAdjustLevel(AdjustRealConfig.TYPE.SATURATION, this.saturationLevel);
+                                      this.mAdjust.setAdjustLevel(AdjustRealConfig.TYPE.COLOR_TEMPERATURE, this.colorTemperature);
+                                      this.mAdjust.setAdjustLevel(AdjustRealConfig.TYPE.FADE, this.fadeLevel);
+                                    }
+                                  }
+                                }
                               }
                             }
                           }
@@ -620,10 +805,50 @@ public class AEFilterManager
           }
         }
       }
+      label1842:
+      if (this.mAEProfiler != null) {
+        this.mAEProfiler.endByTag("IAEProfiler-configFilters");
+      }
+      return;
     }
-    label1632:
-    if (this.mAEProfiler != null) {
-      this.mAEProfiler.endByTag("IAEProfiler-configFilters");
+  }
+  
+  private Vector copyArry2Vector(Object paramObject, Vector<Integer> paramVector)
+  {
+    Object localObject2;
+    if (paramObject == null)
+    {
+      localObject2 = paramVector;
+      if (paramVector != null)
+      {
+        paramVector.clear();
+        localObject2 = paramVector;
+      }
+    }
+    do
+    {
+      return localObject2;
+      localObject2 = paramVector;
+    } while (!(paramObject instanceof int[]));
+    Object localObject1 = paramVector;
+    if (paramVector == null) {
+      localObject1 = new Vector();
+    }
+    ((Vector)localObject1).clear();
+    paramObject = (int[])paramObject;
+    int j = paramObject.length;
+    int i = 0;
+    for (;;)
+    {
+      localObject2 = localObject1;
+      if (i >= j) {
+        break;
+      }
+      int k = paramObject[i];
+      if (!((Vector)localObject1).contains(Integer.valueOf(k))) {
+        ((Vector)localObject1).add(Integer.valueOf(k));
+      }
+      i += 1;
     }
   }
   
@@ -632,7 +857,7 @@ public class AEFilterManager
     if ((AEModule.getContext() == null) || (paramString == null)) {
       return null;
     }
-    paramString = DEFAULT_COPY_ASSETS_DIR + File.separator + paramString;
+    paramString = AEModule.getContext().getExternalFilesDir(null).getPath() + File.separator + paramString;
     return BitmapUtils.decodeSampleBitmap(AEModule.getContext(), paramString, 1);
   }
   
@@ -648,6 +873,20 @@ public class AEFilterManager
       paramInt = this.decodeTexture;
     }
     return paramInt;
+  }
+  
+  private void defineEnableMap(int... paramVarArgs)
+  {
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+    paramVarArgs = checkFilterInitOrder(paramVarArgs);
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
+    {
+      localLinkedHashMap.put(Integer.valueOf(paramVarArgs[i]), Boolean.valueOf(true));
+      i += 1;
+    }
+    this.mFilterEnableMap = localLinkedHashMap;
   }
   
   private int detectFrame(int paramInt, boolean paramBoolean, long paramLong)
@@ -670,81 +909,86 @@ public class AEFilterManager
     localAIInput.setInputTexture(paramInt);
     this.mDetectorMap.clear();
     this.needFaceDetect = true;
-    Object localObject = this.mDetectorMap;
-    AEDetectorType localAEDetectorType = AEDetectorType.HAND;
+    Object localObject1 = this.mDetectorMap;
+    Object localObject2 = AEDetectorType.HAND;
     if (((this.mPTSticker != null) && (this.mPTSticker.checkStickerType(AESticker.STICKER_TYPE.GESTURE_STICKER))) || (PTDebugConfig.ENABLE_HAND_LINE))
     {
       paramBoolean = true;
-      ((HashMap)localObject).put(localAEDetectorType, Boolean.valueOf(paramBoolean));
-      if (isDetectorOn(AEDetectorType.HAND)) {
-        this.mAiParam.setModuleParam(AEDetectorType.HAND.value, "needDetectHandBone", Boolean.valueOf(this.mPTSticker.needDetectGestureBonePoint()));
+      ((HashMap)localObject1).put(localObject2, Boolean.valueOf(paramBoolean));
+      if (isDetectorOn(AEDetectorType.HAND))
+      {
+        localObject1 = this.mAiParam;
+        localObject2 = AEDetectorType.HAND.value;
+        if ((this.mPTSticker == null) || (!this.mPTSticker.needDetectGestureBonePoint())) {
+          break label1004;
+        }
+        paramBoolean = true;
+        label310:
+        ((AIParam)localObject1).setModuleParam((String)localObject2, "needDetectHandBone", Boolean.valueOf(paramBoolean));
       }
-      localObject = this.mDetectorMap;
-      localAEDetectorType = AEDetectorType.SEGMENT;
+      localObject1 = this.mDetectorMap;
+      localObject2 = AEDetectorType.SEGMENT;
       if (((this.mPTSticker == null) || (!this.mPTSticker.checkStickerType(AESticker.STICKER_TYPE.SEGMENT_STICKER))) && (!PTDebugConfig.ENABLE_SEGMENT) && ((!this.mFilterOrderList.contains(Integer.valueOf(111))) || (!((Boolean)this.mFilterEnableMap.get(Integer.valueOf(111))).booleanValue()))) {
-        break label955;
+        break label1009;
       }
       paramBoolean = true;
-      label382:
-      ((HashMap)localObject).put(localAEDetectorType, Boolean.valueOf(paramBoolean));
-      localObject = this.mDetectorMap;
-      localAEDetectorType = AEDetectorType.EMOTION;
+      label403:
+      ((HashMap)localObject1).put(localObject2, Boolean.valueOf(paramBoolean));
+      localObject1 = this.mDetectorMap;
+      localObject2 = AEDetectorType.EMOTION;
       if ((this.mPTSticker == null) || (!this.mPTSticker.needDetectEmotion())) {
-        break label960;
+        break label1014;
       }
       paramBoolean = true;
-      label424:
-      ((HashMap)localObject).put(localAEDetectorType, Boolean.valueOf(paramBoolean));
-      localObject = this.mDetectorMap;
-      localAEDetectorType = AEDetectorType.BODY;
-      if ((!this.mNeedBodyDetect) && (!PTDebugConfig.ENABLE_BODY_BEAUTY) && ((this.mPTSticker == null) || (!this.mPTSticker.needDetectBody()))) {
-        break label965;
+      label445:
+      ((HashMap)localObject1).put(localObject2, Boolean.valueOf(paramBoolean));
+      localObject1 = this.mDetectorMap;
+      localObject2 = AEDetectorType.BODY;
+      if ((!this.mNeedBodyDetect) && (!PTDebugConfig.ENABLE_BODY_BEAUTY) && ((this.mPTSticker == null) || (!this.mPTSticker.needDetectBody())) && (this.longLeg <= 0) && (this.slimWaist <= 0) && (this.thinBody <= 0) && (this.thinShoulder <= 0)) {
+        break label1019;
       }
       paramBoolean = true;
-      label479:
-      ((HashMap)localObject).put(localAEDetectorType, Boolean.valueOf(paramBoolean));
+      label528:
+      ((HashMap)localObject1).put(localObject2, Boolean.valueOf(paramBoolean));
       if (isDetectorOn(AEDetectorType.BODY)) {
         this.mAiParam.setModuleParam(AEDetectorType.BODY.value, "scale", Float.valueOf((float)this.mFaceDetectScale));
       }
-      localObject = this.mDetectorMap;
-      localAEDetectorType = AEDetectorType.HAIR_SEGMENT;
+      localObject1 = this.mDetectorMap;
+      localObject2 = AEDetectorType.HAIR_SEGMENT;
       if (((this.mPTSticker == null) || (!VideoMaterialUtil.isHairSegMaterial(this.mVideoMaterial))) && (!PTDebugConfig.ENABLE_HAIRSEG)) {
-        break label970;
+        break label1024;
       }
       paramBoolean = true;
-      label561:
-      ((HashMap)localObject).put(localAEDetectorType, Boolean.valueOf(paramBoolean));
+      label610:
+      ((HashMap)localObject1).put(localObject2, Boolean.valueOf(paramBoolean));
       if (isDetectorOn(AEDetectorType.HAIR_SEGMENT))
       {
-        localObject = PTHairSegmenter.HAIR_SEGMENT.getCurrentSize();
-        this.mAiParam.setModuleParam(AEDetectorType.HAIR_SEGMENT.value, "bytesDataSizeWidth", Integer.valueOf(((SizeI)localObject).width));
-        this.mAiParam.setModuleParam(AEDetectorType.HAIR_SEGMENT.value, "bytesDataSizeHeight", Integer.valueOf(((SizeI)localObject).height));
+        localObject1 = PTHairSegmenter.HAIR_SEGMENT.getCurrentSize();
+        this.mAiParam.setModuleParam(AEDetectorType.HAIR_SEGMENT.value, "bytesDataSizeWidth", Integer.valueOf(((SizeI)localObject1).width));
+        this.mAiParam.setModuleParam(AEDetectorType.HAIR_SEGMENT.value, "bytesDataSizeHeight", Integer.valueOf(((SizeI)localObject1).height));
       }
-      localObject = this.mDetectorMap;
-      localAEDetectorType = AEDetectorType.SKY_SEGMENT;
+      localObject1 = this.mDetectorMap;
+      localObject2 = AEDetectorType.SKY_SEGMENT;
       if (((this.mPTSticker == null) || (!this.mPTSticker.checkStickerType(AESticker.STICKER_TYPE.SEGMENT_SKY_STICKER))) && (!PTDebugConfig.ENABLE_SKYSEG)) {
-        break label975;
+        break label1029;
       }
       paramBoolean = true;
-      label678:
-      ((HashMap)localObject).put(localAEDetectorType, Boolean.valueOf(paramBoolean));
+      label727:
+      ((HashMap)localObject1).put(localObject2, Boolean.valueOf(paramBoolean));
       if (isDetectorOn(AEDetectorType.SKY_SEGMENT))
       {
-        localObject = PTSkySegmenter.SKY_SEGMENT.getCurrentSize();
-        this.mAiParam.setModuleParam(AEDetectorType.SKY_SEGMENT.value, "bytesDataSizeWidth", Integer.valueOf(((SizeI)localObject).width));
-        this.mAiParam.setModuleParam(AEDetectorType.SKY_SEGMENT.value, "bytesDataSizeHeight", Integer.valueOf(((SizeI)localObject).height));
+        localObject1 = PTSkySegmenter.SKY_SEGMENT.getCurrentSize();
+        this.mAiParam.setModuleParam(AEDetectorType.SKY_SEGMENT.value, "bytesDataSizeWidth", Integer.valueOf(((SizeI)localObject1).width));
+        this.mAiParam.setModuleParam(AEDetectorType.SKY_SEGMENT.value, "bytesDataSizeHeight", Integer.valueOf(((SizeI)localObject1).height));
         this.mAiParam.setRotationMatrix(this.rotationMatrix);
       }
       if ((this.mPTSticker == null) || (!this.mPTSticker.is3DCosMaterial())) {
-        break label980;
+        break label1034;
       }
     }
-    label955:
-    label960:
-    label965:
-    label970:
-    label975:
-    label980:
+    label1024:
+    label1029:
+    label1034:
     for (paramBoolean = true;; paramBoolean = false)
     {
       this.mAiParam.setModuleParam(AEDetectorType.FACE.value, "FaceKit", Boolean.valueOf(paramBoolean));
@@ -769,16 +1013,22 @@ public class AEFilterManager
       return this.mAiAttr.getOutTexture();
       paramBoolean = false;
       break;
+      label1004:
       paramBoolean = false;
-      break label382;
+      break label310;
+      label1009:
       paramBoolean = false;
-      break label424;
+      break label403;
+      label1014:
       paramBoolean = false;
-      break label479;
+      break label445;
+      label1019:
       paramBoolean = false;
-      break label561;
+      break label528;
       paramBoolean = false;
-      break label678;
+      break label610;
+      paramBoolean = false;
+      break label727;
     }
   }
   
@@ -853,8 +1103,25 @@ public class AEFilterManager
     if (this.mPTFaceTransform == null) {
       this.mPTFaceTransform = new AEFaceTransform();
     }
-    this.mPTFaceTransform.apply();
+    this.mPTFaceTransform.applyChain();
     this.hasApplyPTFaceTransform = true;
+  }
+  
+  private String getBaseStoragePath()
+  {
+    if (AEModule.getContext() == null) {
+      return null;
+    }
+    try
+    {
+      String str = AEModule.getContext().getExternalFilesDir(null).getAbsolutePath() + File.separator + DEFAULT_VIDEO_DIR;
+      return str;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return null;
   }
   
   private int getBmpToTextue(Bitmap paramBitmap)
@@ -866,153 +1133,199 @@ public class AEFilterManager
     return this.testBmpTexture[0];
   }
   
+  private String getInputVideoPath()
+  {
+    String str = getBaseStoragePath();
+    if (str == null) {
+      return null;
+    }
+    return str + File.separator + "inputVideo";
+  }
+  
+  private String getOutputVideoPath()
+  {
+    String str = getBaseStoragePath();
+    if (str == null) {
+      return null;
+    }
+    return str + File.separator + "outputVideo";
+  }
+  
+  private void initDefaultFiltersPriority()
+  {
+    this.FILTERS_PRIORITY_ORDER = new Vector();
+    this.FILTERS_PRIORITY_ORDER.add(Integer.valueOf(101));
+    this.FILTERS_PRIORITY_ORDER.add(Integer.valueOf(105));
+    this.FILTERS_PRIORITY_ORDER.add(Integer.valueOf(104));
+    this.mFiltersMustInitedSetting = new AEFiltersMustInitedSetting(new int[] { 101 });
+  }
+  
   private void initFilters()
   {
-    if ((this.mFilterEnableMap == null) || (this.mFilterEnableMap.isEmpty())) {
-      LogUtils.w(TAG, "[initFilters] warning, filters is empty!");
-    }
-    long l1;
-    label341:
-    label383:
-    do
+    if ((this.mFilterEnableMap == null) || (this.mFilterEnableMap.isEmpty()))
     {
+      LogUtils.w(TAG, "[initFilters] warning, filters is empty!");
       return;
-      l1 = 0L;
-      if (!this.mLogFlag)
-      {
-        long l2 = SystemClock.uptimeMillis();
-        l1 = l2;
-        if (this.mAEProfiler != null)
-        {
-          this.mAEProfiler.startByTag("IAEProfiler-initFilters");
-          l1 = l2;
-        }
-      }
-      Iterator localIterator = this.mFilterEnableMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        if (((Boolean)localEntry.getValue()).booleanValue()) {
-          switch (((Integer)localEntry.getKey()).intValue())
-          {
-          case 109: 
-          case 112: 
-          default: 
-            break;
-          case 101: 
-            if (this.mPTSmooth == null) {
-              this.mPTSmooth = new AESmooth();
-            }
-            this.mPTSmooth.apply();
-            break;
-          case 102: 
-          case 103: 
-            if ((this.mPTSticker == null) && (this.mVideoMaterial != null))
-            {
-              this.mPTSticker = new AESticker(this.mVideoMaterial, this.mAEDetector.getFaceDetector().getFaceDetector());
-              if ((this.mPTSticker.isExcludeOuterEffectFilterMaterial()) && (this.stickerInnerLutFilterListener != null)) {
-                this.stickerInnerLutFilterListener.notifyEnableStickerInnerEffectFilter(true);
-              }
-              if (this.mPTSticker.isUseMesh()) {
-                switchFilterOn(105, false);
-              }
-              if ((!this.mPTSticker.isCosFunMaterial()) && (!this.mPTSticker.isMultiViewMaterial())) {
-                break label383;
-              }
-              bool = true;
-              this.pointUpdate = bool;
-              if (this.mPTSticker.isExcludeOuterEffectFilterMaterial()) {
-                break label389;
-              }
-            }
-            for (boolean bool = true;; bool = false)
-            {
-              setFilterInSmooth(bool);
-              if (this.mPTSticker == null) {
-                break;
-              }
-              this.mPTSticker.apply();
-              break;
-              bool = false;
-              break label341;
-            }
-          case 110: 
-            if (this.mPTSmoothPrev3 == null) {
-              this.mPTSmoothPrev3 = new AESmoothPrev3();
-            }
-            this.mPTSmoothPrev3.apply();
-            break;
-          case 104: 
-            if (this.mPTFaceBeauty == null) {
-              this.mPTFaceBeauty = new AEFaceBeauty();
-            }
-            this.mPTFaceBeauty.apply();
-            break;
-          case 106: 
-            if (this.mPTEffectFilter == null) {
-              this.mPTEffectFilter = new AEFilterGallery();
-            }
-            this.mPTEffectFilter.apply();
-            break;
-          case 113: 
-            if (this.mPTLight == null) {
-              this.mPTLight = new AELight();
-            }
-            this.mPTLight.apply();
-            break;
-          case 105: 
-            ensureCreateAndApplyPTFaceTransform();
-            break;
-          case 107: 
-            if (this.mFaceColorCombineFilter == null) {
-              this.mFaceColorCombineFilter = new FaceColorCombineFilter();
-            }
-            this.mFaceColorCombineFilter.ApplyGLSLFilter();
-            break;
-          case 108: 
-            if (this.mDenoiseFilter == null) {
-              this.mDenoiseFilter = new AEDenoiseFilter();
-            }
-            this.mDenoiseFilter.apply();
-            break;
-          case 111: 
-            if (this.mAESegment == null) {
-              this.mAESegment = new AESegmentForQQ();
-            }
-            this.mAESegment.apply();
-            break;
-          case 114: 
-            if (this.mFaceLine == null) {
-              this.mFaceLine = new AEFaceLine();
-            }
-            this.mFaceLine.apply();
-          }
-        }
-      }
-    } while (this.mLogFlag);
-    label389:
-    this.mLogFlag = true;
-    if (this.mAEProfiler != null) {
-      this.mAEProfiler.endByTag("IAEProfiler-initFilters");
     }
-    LogUtils.i("CameraLaunchPerf", "initFilters cost duration=" + (SystemClock.uptimeMillis() - l1));
+    long l1 = 0L;
+    if (!this.mLogFlag)
+    {
+      l2 = SystemClock.uptimeMillis();
+      l1 = l2;
+      if (this.mAEProfiler != null)
+      {
+        this.mAEProfiler.startByTag("IAEProfiler-initFilters");
+        l1 = l2;
+      }
+    }
+    long l2 = System.currentTimeMillis();
+    Iterator localIterator = this.mFilterEnableMap.entrySet().iterator();
+    label89:
+    Map.Entry localEntry;
+    int i;
+    if (localIterator.hasNext())
+    {
+      localEntry = (Map.Entry)localIterator.next();
+      if (((Boolean)localEntry.getValue()).booleanValue())
+      {
+        i = ((Integer)localEntry.getKey()).intValue();
+        switch (i)
+        {
+        }
+      }
+    }
+    for (;;)
+    {
+      if ((!this.mAllMustFiltsInited) && (this.mFiltersMustInitedSetting != null) && (this.mFiltersMustInitedSetting.isContainType(i)))
+      {
+        LogUtils.i(TAG, "MUST applied:" + i);
+        this.mFiltersMustInitedSetting.appliedType(i);
+        this.mAllMustFiltsInited = this.mFiltersMustInitedSetting.isMustFiltersInited();
+      }
+      if ((!this.mAllMustFiltsInited) || (!checkNotEnduranceTime(l2))) {
+        break label89;
+      }
+      LogUtils.i(TAG, "初始化超时，下一帧继续，当前初始化到：" + localEntry.getKey());
+      if (this.mLogFlag) {
+        break;
+      }
+      this.mLogFlag = true;
+      if (this.mAEProfiler != null) {
+        this.mAEProfiler.endByTag("IAEProfiler-initFilters");
+      }
+      LogUtils.i("CameraLaunchPerf", "initFilters cost duration=" + (SystemClock.uptimeMillis() - l1));
+      return;
+      if ((this.mPTSticker == null) && (this.mVideoMaterial != null))
+      {
+        this.mPTSticker = new AESticker(this.mVideoMaterial, this.mAEDetector.getFaceDetector().getFaceDetector());
+        this.mPTSticker.setOnLoadFinishListener(this.materialLoadFinishListener);
+        if ((this.mPTSticker.isExcludeOuterEffectFilterMaterial()) && (this.stickerInnerLutFilterListener != null)) {
+          this.stickerInnerLutFilterListener.notifyEnableStickerInnerEffectFilter(true);
+        }
+        if (this.mPTSticker.isUseMesh()) {
+          switchFilterOn(105, false);
+        }
+        if ((!this.mPTSticker.isCosFunMaterial()) && (!this.mPTSticker.isMultiViewMaterial())) {
+          break label560;
+        }
+        bool = true;
+        label518:
+        this.pointUpdate = bool;
+        if (this.mPTSticker.isExcludeOuterEffectFilterMaterial()) {
+          break label566;
+        }
+      }
+      label560:
+      label566:
+      for (boolean bool = true;; bool = false)
+      {
+        setFilterInSmooth(bool);
+        if (this.mPTSticker == null) {
+          break;
+        }
+        this.mPTSticker.applyChain();
+        break;
+        bool = false;
+        break label518;
+      }
+      if (this.mPTSmooth == null) {
+        this.mPTSmooth = new AESmooth();
+      }
+      this.mPTSmooth.applyChain();
+      continue;
+      if (this.mPTSmoothPrev3 == null) {
+        this.mPTSmoothPrev3 = new AESmoothPrev3();
+      }
+      this.mPTSmoothPrev3.applyChain();
+      continue;
+      if (this.mPTFaceBeauty == null) {
+        this.mPTFaceBeauty = new AEFaceBeauty();
+      }
+      this.mPTFaceBeauty.applyChain();
+      continue;
+      if (this.mPTEffectFilter == null) {
+        this.mPTEffectFilter = new AEFilterGallery();
+      }
+      this.mPTEffectFilter.applyChain();
+      continue;
+      if (this.mPTLight == null) {
+        this.mPTLight = new AELight();
+      }
+      this.mPTLight.applyChain();
+      continue;
+      ensureCreateAndApplyPTFaceTransform();
+      continue;
+      if (this.mFaceColorCombineFilter == null) {
+        this.mFaceColorCombineFilter = new FaceColorCombineFilter();
+      }
+      this.mFaceColorCombineFilter.applyChain();
+      continue;
+      if (this.mDenoiseFilter == null) {
+        this.mDenoiseFilter = new AEDenoiseFilter();
+      }
+      this.mDenoiseFilter.applyChain();
+      continue;
+      if (this.mAESegment == null) {
+        this.mAESegment = new AESegmentForQQ();
+      }
+      this.mAESegment.applyChain();
+      continue;
+      if (this.mFaceLine == null) {
+        this.mFaceLine = new AEFaceLine();
+      }
+      this.mFaceLine.applyChain();
+      continue;
+      if (this.mPTBodyBeauty == null) {
+        this.mPTBodyBeauty = new AEBodyBeauty();
+      }
+      this.mPTBodyBeauty.applyChain();
+      continue;
+      if (this.mAdjust == null) {
+        this.mAdjust = new AEAdjust();
+      }
+      this.mAdjust.apply();
+    }
   }
   
   private void initVideoSet()
   {
-    File[] arrayOfFile = Environment.getExternalStoragePublicDirectory(DEFAULT_VIDEO_DIR + File.separator + "inputVideo").listFiles();
-    if (arrayOfFile != null)
+    Object localObject = getInputVideoPath();
+    if (localObject == null) {
+      return;
+    }
+    localObject = new File((String)localObject).listFiles();
+    if (localObject != null)
     {
-      int j = arrayOfFile.length;
+      int j = localObject.length;
       int i = 0;
       while (i < j)
       {
-        Object localObject = arrayOfFile[i];
-        if ((!((File)localObject).isDirectory()) && (((File)localObject).getName().endsWith(".mp4")))
+        String str = localObject[i];
+        if ((!str.isDirectory()) && (str.getName().endsWith(".mp4")))
         {
-          localObject = ((File)localObject).getName();
-          localObject = ((String)localObject).substring(0, ((String)localObject).lastIndexOf(".")).toString();
-          this.mTestVideoSet.add(localObject);
+          str = str.getName();
+          str = str.substring(0, str.lastIndexOf(".")).toString();
+          this.mTestVideoSet.add(str);
         }
         i += 1;
       }
@@ -1066,8 +1379,34 @@ public class AEFilterManager
       if (this.mPTSmoothPrev3 != null) {
         Log.e("AEFilterManager", "AESmoothPrev3 === " + this.mPTSmoothPrev3.printParamInfo());
       }
-    } while (this.mAESegment == null);
-    Log.e("AEFilterManager", "AESegmentForQQ === " + this.mAESegment.printParamInfo());
+      if (this.mAESegment != null) {
+        Log.e("AEFilterManager", "AESegmentForQQ === " + this.mAESegment.printParamInfo());
+      }
+    } while (this.mPTBodyBeauty == null);
+    Log.e("AEFilterManager", "AEBodyBeauty === " + this.mPTBodyBeauty.printParamInfo());
+  }
+  
+  private String printLines(int[] paramArrayOfInt)
+  {
+    String str1 = "";
+    String str2;
+    if (paramArrayOfInt == null)
+    {
+      str2 = str1;
+      return str2;
+    }
+    int j = paramArrayOfInt.length;
+    int i = 0;
+    for (;;)
+    {
+      str2 = str1;
+      if (i >= j) {
+        break;
+      }
+      int k = paramArrayOfInt[i];
+      str1 = str1 + "," + k;
+      i += 1;
+    }
   }
   
   private void setDefaultOrder()
@@ -1079,6 +1418,23 @@ public class AEFilterManager
     this.mFilterOrderList.add(Integer.valueOf(105));
     this.mFilterOrderList.add(Integer.valueOf(103));
     this.mFilterOrderList.add(Integer.valueOf(106));
+  }
+  
+  private void shiftRightArray(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  {
+    if ((paramArrayOfInt == null) || (paramInt2 <= 0)) {
+      return;
+    }
+    int i;
+    do
+    {
+      paramArrayOfInt[paramInt1] = paramArrayOfInt[i];
+      paramInt1 -= 1;
+      if (paramInt1 < 0) {
+        break;
+      }
+      i = paramInt1 - paramInt2;
+    } while (i >= 0);
   }
   
   private void startTestVideoIfNeed(boolean paramBoolean)
@@ -1094,8 +1450,8 @@ public class AEFilterManager
         }
       } while ((this.mTestVideoSet == null) || (this.mTestVideoSet.size() <= 0));
       this.mCurVideoName = ((String)this.mTestVideoSet.iterator().next());
-      this.mInputVideo = (Environment.getExternalStoragePublicDirectory(new StringBuilder().append(DEFAULT_VIDEO_DIR).append(File.separator).append("inputVideo").toString()) + File.separator + this.mCurVideoName + ".mp4");
-      this.mOutputVideo = (Environment.getExternalStoragePublicDirectory(new StringBuilder().append(DEFAULT_VIDEO_DIR).append(File.separator).append("outputVideo").toString()) + File.separator + this.mCurVideoName + ".mp4");
+      this.mInputVideo = (getInputVideoPath() + File.separator + this.mCurVideoName + ".mp4");
+      this.mOutputVideo = (getOutputVideoPath() + File.separator + this.mCurVideoName + ".mp4");
       Log.e(TAG, "videoName:" + this.mCurVideoName + "encode start!");
     } while (this.beginVideoCodeProgress);
     initVideoTest();
@@ -1176,6 +1532,7 @@ public class AEFilterManager
           {
           case 109: 
           case 112: 
+          case 115: 
           default: 
             break;
           case 102: 
@@ -1183,6 +1540,7 @@ public class AEFilterManager
             if ((this.mPTSticker == null) && (this.mVideoMaterial != null))
             {
               this.mPTSticker = new AESticker(this.mVideoMaterial, this.mAEDetector.getFaceDetector().getFaceDetector());
+              this.mPTSticker.setOnLoadFinishListener(this.materialLoadFinishListener);
               if ((this.mPTSticker.isExcludeOuterEffectFilterMaterial()) && (this.stickerInnerLutFilterListener != null)) {
                 this.stickerInnerLutFilterListener.notifyEnableStickerInnerEffectFilter(true);
               }
@@ -1191,7 +1549,7 @@ public class AEFilterManager
                 bool = true;
                 this.pointUpdate = bool;
                 if (this.mPTSticker.isExcludeOuterEffectFilterMaterial()) {
-                  break label277;
+                  break label296;
                 }
               }
               for (boolean bool = true;; bool = false)
@@ -1199,7 +1557,7 @@ public class AEFilterManager
                 setFilterInSmooth(bool);
                 break;
                 bool = false;
-                break label247;
+                break label266;
               }
             }
             break;
@@ -1244,11 +1602,16 @@ public class AEFilterManager
             }
             break;
           case 114: 
-            label247:
             if (this.mFaceLine == null) {
               this.mFaceLine = new AEFaceLine();
             }
-            label277:
+            break;
+          case 116: 
+            label266:
+            label296:
+            if (this.mAdjust == null) {
+              this.mAdjust = new AEAdjust();
+            }
             break;
           }
         }
@@ -1265,24 +1628,17 @@ public class AEFilterManager
     while (i < j)
     {
       int k = paramVarArgs[i];
-      this.mFilterEnableMap.put(Integer.valueOf(k), Boolean.valueOf(true));
       this.mFilterOrderList.add(Integer.valueOf(k));
       i += 1;
     }
+    defineEnableMap(paramVarArgs);
   }
   
   public void defineFiltersWithDefaultOrder(int... paramVarArgs)
   {
     disableAllFilters();
     setDefaultOrder();
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
-    {
-      int k = paramVarArgs[i];
-      this.mFilterEnableMap.put(Integer.valueOf(k), Boolean.valueOf(true));
-      i += 1;
-    }
+    defineEnableMap(paramVarArgs);
   }
   
   public void destroy()
@@ -1296,6 +1652,9 @@ public class AEFilterManager
     }
     if (this.mPTFaceBeauty != null) {
       this.mPTFaceBeauty.clear();
+    }
+    if (this.mAdjust != null) {
+      this.mAdjust.clear();
     }
     if (this.mPTEffectFilter != null) {
       this.mPTEffectFilter.clear();
@@ -1326,6 +1685,9 @@ public class AEFilterManager
     if (this.mAESegment != null) {
       this.mAESegment.clear();
     }
+    if (this.mPTBodyBeauty != null) {
+      this.mPTBodyBeauty.clear();
+    }
     if (this.mAEFilterChain != null) {
       this.mAEFilterChain.destroy();
     }
@@ -1340,6 +1702,7 @@ public class AEFilterManager
     if (this.isNeedVideoTest) {
       GLES20.glDeleteTextures(this.testVideoTexture.length, this.testVideoTexture, 0);
     }
+    this.mAllMustFiltsInited = false;
     this.mIsInited = false;
     this.mDestroyed = true;
   }
@@ -1614,6 +1977,44 @@ public class AEFilterManager
     this.mAIBeautyParamsJsonBean = paramAIBeautyParamsJsonBean;
   }
   
+  public void setAdjustLevel(AdjustRealConfig.TYPE paramTYPE, int paramInt)
+  {
+    switch (AEFilterManager.2.$SwitchMap$com$tencent$ttpic$openapi$config$AdjustRealConfig$TYPE[paramTYPE.ordinal()])
+    {
+    default: 
+      return;
+    case 1: 
+      this.lightnessLevel = paramInt;
+      return;
+    case 2: 
+      this.hightLightLevel = paramInt;
+      return;
+    case 3: 
+      this.shadowLevel = paramInt;
+      return;
+    case 4: 
+      this.compareLevel = paramInt;
+      return;
+    case 5: 
+      this.sharpLevel = paramInt;
+      return;
+    case 6: 
+      this.saturationLevel = paramInt;
+      return;
+    case 7: 
+      this.colorTemperature = paramInt;
+      return;
+    }
+    this.fadeLevel = paramInt;
+  }
+  
+  public void setBeautyAllwaysRender(boolean paramBoolean)
+  {
+    if (this.mPTFaceBeauty != null) {
+      this.mPTFaceBeauty.setAllwaysRender(paramBoolean);
+    }
+  }
+  
   public void setBeautyGenderCoefficient(int paramInt1, int paramInt2)
   {
     if (this.mPTSmooth != null) {}
@@ -1703,8 +2104,20 @@ public class AEFilterManager
     case 24: 
       this.transBasic4 = paramInt;
       return;
+    case 25: 
+      this.transBasic3 = paramInt;
+      return;
+    case 26: 
+      this.longLeg = paramInt;
+      return;
+    case 27: 
+      this.slimWaist = paramInt;
+      return;
+    case 28: 
+      this.thinShoulder = paramInt;
+      return;
     }
-    this.transBasic3 = paramInt;
+    this.thinBody = paramInt;
   }
   
   public void setCloseAIBeautyConfig(boolean paramBoolean)
@@ -1759,6 +2172,11 @@ public class AEFilterManager
     this.isNeedVideoTest = paramBoolean;
   }
   
+  public void setOnMaterialLoadFinishListener(MaterialLoadFinishListener paramMaterialLoadFinishListener)
+  {
+    this.materialLoadFinishListener = paramMaterialLoadFinishListener;
+  }
+  
   public void setParam(String paramString, Object paramObject)
   {
     int i = -1;
@@ -1774,19 +2192,51 @@ public class AEFilterManager
     {
       do
       {
+        do
+        {
+          do
+          {
+            return;
+            if (!paramString.equals("SET_AEPROFILER_OBJ")) {
+              break;
+            }
+            i = 0;
+            break;
+            if (!paramString.equals("SET_ENDURANCE_TIME")) {
+              break;
+            }
+            i = 1;
+            break;
+            if (!paramString.equals("SET_FILTERS_INIT_PRIORITY")) {
+              break;
+            }
+            i = 2;
+            break;
+            if (!paramString.equals("SET_FILTERS_INITED_FIRST_FRAME")) {
+              break;
+            }
+            i = 3;
+            break;
+            if (!paramString.equals("SET_ENABLE_ASYNC_INIT_FILTERS")) {
+              break;
+            }
+            i = 4;
+            break;
+          } while ((paramObject == null) || (!(paramObject instanceof IAEProfiler)));
+          this.mAEProfiler = ((IAEProfiler)paramObject);
+          return;
+        } while ((paramObject == null) || (!(paramObject instanceof Integer)));
+        this.mEnduranceTime = ((Integer)paramObject).intValue();
         return;
-        if (!paramString.equals("SET_AEPROFILER_OBJ")) {
-          break;
+        this.FILTERS_PRIORITY_ORDER = copyArry2Vector(paramObject, this.FILTERS_PRIORITY_ORDER);
+        return;
+        if ((paramObject instanceof AEFiltersMustInitedSetting))
+        {
+          this.mFiltersMustInitedSetting = ((AEFiltersMustInitedSetting)paramObject);
+          return;
         }
-        i = 0;
-        break;
-        if (!paramString.equals("SET_ENABLE_ASYNC_INIT_FILTERS")) {
-          break;
-        }
-        i = 1;
-        break;
-      } while ((paramObject == null) || (!(paramObject instanceof IAEProfiler)));
-      this.mAEProfiler = ((IAEProfiler)paramObject);
+      } while (paramObject != null);
+      this.mFiltersMustInitedSetting = null;
       return;
     } while (!(paramObject instanceof Boolean));
     this.mAsyncInitFilters = ((Boolean)paramObject).booleanValue();

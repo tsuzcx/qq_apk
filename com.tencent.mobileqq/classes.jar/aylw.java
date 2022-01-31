@@ -1,25 +1,18 @@
-import android.text.TextUtils.EllipsizeCallback;
-import android.widget.TextView;
-
-final class aylw
-  implements TextUtils.EllipsizeCallback
+class aylw
+  extends axms
 {
-  aylw(aylx paramaylx, String paramString) {}
+  aylw(aylv paramaylv) {}
   
-  public void ellipsized(int paramInt1, int paramInt2)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
   {
-    if (paramInt1 == paramInt2)
-    {
-      this.jdField_a_of_type_Aylx.c.setText(this.jdField_a_of_type_JavaLangString);
-      return;
+    if (aylv.a(this.a) != null) {
+      this.a.b(aylv.a(this.a));
     }
-    String str = this.jdField_a_of_type_JavaLangString.substring(0, paramInt1);
-    this.jdField_a_of_type_Aylx.c.setText(new axkd(mpl.b(mpl.c(str + "...")), 3, 14));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aylw
  * JD-Core Version:    0.7.0.1
  */

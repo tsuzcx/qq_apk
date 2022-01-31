@@ -1,33 +1,44 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
+import java.util.Collection;
+import java.util.Iterator;
 
-class azjw
-  extends mmk
+public class azjw
 {
-  azjw(azjq paramazjq, azjp paramazjp) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static String a(Collection<TroopAIOAppInfo> paramCollection)
   {
-    paramBundle = new oidb_0x962.RspBody();
-    if (paramArrayOfByte != null) {}
-    try
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (azjv.a(paramCollection))
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (this.jdField_a_of_type_Azjp != null) {
-        this.jdField_a_of_type_Azjp.a(paramInt, paramBundle);
-      }
-      return;
+      localStringBuilder.append("empty apps");
+      return localStringBuilder.toString();
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    localStringBuilder.append("[gray+ red*]");
+    paramCollection = paramCollection.iterator();
+    label41:
+    TroopAIOAppInfo localTroopAIOAppInfo;
+    if (paramCollection.hasNext())
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(".troop.send_gift", 2, "send_oidb_0x962. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
-        }
+      localTroopAIOAppInfo = (TroopAIOAppInfo)paramCollection.next();
+      if (localTroopAIOAppInfo.isGray) {
+        localStringBuilder.append("+");
       }
+      if (localTroopAIOAppInfo.redPoint) {
+        localStringBuilder.append("*");
+      }
+      if (TextUtils.isEmpty(localTroopAIOAppInfo.name)) {
+        break label117;
+      }
+      localStringBuilder.append(localTroopAIOAppInfo.name);
+    }
+    for (;;)
+    {
+      localStringBuilder.append(" ");
+      break label41;
+      break;
+      label117:
+      localStringBuilder.append("id:");
+      localStringBuilder.append(localTroopAIOAppInfo.appid);
     }
   }
 }

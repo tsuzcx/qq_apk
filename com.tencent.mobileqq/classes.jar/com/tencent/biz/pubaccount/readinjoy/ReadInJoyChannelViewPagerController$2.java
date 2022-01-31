@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import nia;
+import ntk;
 
 public class ReadInJoyChannelViewPagerController$2
   implements Runnable
 {
-  public ReadInJoyChannelViewPagerController$2(nia paramnia) {}
+  public ReadInJoyChannelViewPagerController$2(ntk paramntk) {}
   
   public void run()
   {
-    nia.a(this.this$0, nia.a(this.this$0, 70));
+    ntk.a(this.this$0, ntk.a(this.this$0, 70));
   }
 }
 

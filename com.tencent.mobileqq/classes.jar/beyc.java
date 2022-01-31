@@ -1,10 +1,14 @@
-public abstract interface beyc
+public class beyc
 {
-  public abstract void onConfigChange();
+  public int a = -1;
+  public int b = -1;
+  public int c = -1;
+  public int d = -1;
+  public int e = -1;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beyc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,13 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
 
-class afru
-  implements View.OnTouchListener
+public class afru
+  extends akav
 {
-  afru(afro paramafro) {}
+  public afru(TroopFragment paramTroopFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a()
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    this.a.h();
   }
 }
 

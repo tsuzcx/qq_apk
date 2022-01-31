@@ -1,26 +1,31 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
 
-final class aqrs
-  extends BroadcastReceiver
+public class aqrs
+  extends aqrr
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private ImageView a;
+  
+  public aqrs(Context paramContext, View paramView, ViewGroup paramViewGroup)
   {
-    if ((aqrr.a != null) && (aqrr.a.size() > 0))
-    {
-      Iterator localIterator = aqrr.a.iterator();
-      while (localIterator.hasNext())
-      {
-        aqrr localaqrr = (aqrr)((WeakReference)localIterator.next()).get();
-        if (localaqrr != null) {
-          localaqrr.a(paramContext, paramIntent);
-        }
-      }
-    }
+    super(paramContext, paramView, paramViewGroup);
+    this.a = ((ImageView)paramView.findViewById(2131363043));
+  }
+  
+  public void a(FeedsItemData paramFeedsItemData)
+  {
+    this.itemView.setBackgroundDrawable(aqst.a(this.itemView.getContext(), 8.0F, 8.0F, 8.0F, 8.0F));
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = this.itemView.getResources().getDrawable(2130846164);
+    localURLDrawableOptions.mFailedDrawable = this.itemView.getResources().getDrawable(2130846164);
+    this.a.setImageDrawable(URLDrawable.getDrawable(paramFeedsItemData.coverImgUrl, localURLDrawableOptions));
+    this.a.setOnClickListener(new aqrt(this, paramFeedsItemData));
   }
 }
 

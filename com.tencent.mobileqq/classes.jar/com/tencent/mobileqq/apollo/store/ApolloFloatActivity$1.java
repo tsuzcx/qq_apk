@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.store;
 
-import aciy;
+import actn;
 import android.content.res.Resources;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
@@ -14,8 +14,8 @@ class ApolloFloatActivity$1
   public void run()
   {
     this.this$0.a = new TextView(this.this$0);
-    this.this$0.a.setBackgroundResource(2130849311);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(aciy.a(50.0F, this.jdField_a_of_type_AndroidContentResResources), aciy.a(52.0F, this.jdField_a_of_type_AndroidContentResResources));
+    this.this$0.a.setBackgroundResource(2130849546);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(actn.a(50.0F, this.jdField_a_of_type_AndroidContentResResources), actn.a(52.0F, this.jdField_a_of_type_AndroidContentResResources));
     if (ApolloFloatActivity.a(this.this$0) == 1)
     {
       this.this$0.a.setTextColor(-16777216);
@@ -25,14 +25,14 @@ class ApolloFloatActivity$1
     {
       this.this$0.a.setGravity(17);
       this.this$0.a.setTextSize(17.0F);
-      this.this$0.a.setText(2131625271);
+      this.this$0.a.setText(2131690832);
       this.this$0.a.setOnClickListener(this.this$0);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.this$0.a, localLayoutParams);
       return;
       localLayoutParams.addRule(10, -1);
       localLayoutParams.addRule(11, -1);
-      localLayoutParams.rightMargin = aciy.a(5.0F, this.jdField_a_of_type_AndroidContentResResources);
-      this.this$0.a.setTextColor(this.jdField_a_of_type_AndroidContentResResources.getColor(2131101254));
+      localLayoutParams.rightMargin = actn.a(5.0F, this.jdField_a_of_type_AndroidContentResResources);
+      this.this$0.a.setTextColor(this.jdField_a_of_type_AndroidContentResResources.getColor(2131166848));
     }
   }
 }

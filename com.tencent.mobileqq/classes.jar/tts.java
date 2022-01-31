@@ -1,54 +1,13 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.support.v4.view.ViewPager;
 
 class tts
-  implements View.OnLongClickListener
+  implements bcrn
 {
   tts(ttr paramttr) {}
   
-  public boolean onLongClick(View paramView)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    int i = 0;
-    switch (paramView.getId())
-    {
-    default: 
-    case 2131304741: 
-    case 2131310236: 
-      do
-      {
-        do
-        {
-          return true;
-          paramView = (spz)sqg.a(10);
-          if (((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue()) {
-            break;
-          }
-          bool = true;
-          paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
-          paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
-        } while (paramView == null);
-        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
-      } while (paramView == null);
-      if (bool) {}
-      for (;;)
-      {
-        paramView.a(i);
-        return true;
-        bool = false;
-        break;
-        i = 8;
-      }
-    }
-    paramView = (spz)sqg.a(10);
-    if (!((Boolean)paramView.b("player_use_tvk", Boolean.valueOf(false))).booleanValue()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.b("player_use_tvk", Boolean.valueOf(bool));
-      bbmy.a(this.a.b(), "UserTVK: " + bool, 0).a();
-      return true;
-    }
+    this.a.a.setCurrentItem(paramInt2);
   }
 }
 

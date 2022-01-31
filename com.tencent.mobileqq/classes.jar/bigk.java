@@ -1,34 +1,37 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.widget.ImageView;
-import com.tribe.async.reactive.SimpleObserver;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-class bigk
-  extends SimpleObserver<Bitmap>
+public class bigk
+  implements Animation.AnimationListener
 {
-  bigk(bigj parambigj) {}
+  public bigk(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void a(Bitmap paramBitmap)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super.onNext(paramBitmap);
-    if (paramBitmap != null)
-    {
-      if (this.a.b)
-      {
-        this.a.a.setImageBitmap(paramBitmap);
-        urk.b("Q.qqstory.record.EditVideoPlayer", "blur current frame success");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMEffectCameraCaptureUnit", 2, "clearAnimation end!");
     }
-    else {
+    if (QIMEffectCameraCaptureUnit.e(this.a) == null) {
       return;
     }
-    urk.d("Q.qqstory.record.EditVideoPlayer", "finish blur current frame but play-cover-view is not visible");
+    this.a.v = true;
+    QIMEffectCameraCaptureUnit.e(this.a).setText(2131699470);
+    QIMEffectCameraCaptureUnit.e(this.a).startAnimation(this.a.b);
+    this.a.a.setStartOffset(3000L);
+    this.a.a.setAnimationListener(QIMEffectCameraCaptureUnit.b(this.a));
+    QIMEffectCameraCaptureUnit.e(this.a).setAnimation(this.a.a);
+    this.a.a.startNow();
   }
   
-  public void onError(@NonNull Error paramError)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    super.onError(paramError);
-    urk.d("Q.qqstory.record.EditVideoPlayer", "blur the current frame error : " + paramError);
+    this.a.v = true;
   }
 }
 

@@ -1,46 +1,48 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
 
 class sba
-  implements sch
+  extends akwt
 {
-  sba(sau paramsau, boolean paramBoolean, long paramLong, ImageProgressCircle paramImageProgressCircle) {}
+  sba(sax paramsax, saw paramsaw) {}
   
-  public void a(URL paramURL, int paramInt)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadProgressed");
-    }
-    sau.a(this.jdField_a_of_type_Sau, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle, paramInt);
+    return 5;
   }
   
-  public void a(URL paramURL, Throwable paramThrowable)
+  public void a(Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadFailed");
+      QLog.d("ServiceAccountFolderFeedAdapter", 2, "unfollow success");
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      PublicAccountImageCollectionPreloadManager.a().b(false, this.jdField_a_of_type_Long);
-    }
-    sau.a(this.jdField_a_of_type_Sau, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    sax.b(this.jdField_a_of_type_Sax, this.jdField_a_of_type_Saw);
+    StructLongMessageDownloadProcessor.a(sax.a(this.jdField_a_of_type_Sax), this.jdField_a_of_type_Saw.a);
+    ((baja)sax.a(this.jdField_a_of_type_Sax).getManager(132)).a(this.jdField_a_of_type_Saw.a);
   }
   
-  public void a(URL paramURL, rcs paramrcs)
+  public void a(boolean paramBoolean, Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadSuccessed");
+      QLog.d("ServiceAccountFolderFeedAdapter", 2, "do unfollow->uin:" + this.jdField_a_of_type_Saw.a + ", success:" + String.valueOf(paramBoolean));
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      PublicAccountImageCollectionPreloadManager.a().b(true, this.jdField_a_of_type_Long);
+    if ((sax.a(this.jdField_a_of_type_Sax) != null) && (sax.a(this.jdField_a_of_type_Sax).isResume())) {
+      sax.a(this.jdField_a_of_type_Sax).b(false);
     }
-    sau.a(this.jdField_a_of_type_Sau, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
   }
+  
+  public void b(Object paramObject)
+  {
+    sax.a(this.jdField_a_of_type_Sax);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sba
  * JD-Core Version:    0.7.0.1
  */

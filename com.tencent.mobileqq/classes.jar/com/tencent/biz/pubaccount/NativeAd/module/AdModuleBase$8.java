@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.NativeAd.module;
 
 import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
 import com.tencent.open.downloadnew.DownloadInfo;
-import nak;
+import nll;
 
 public class AdModuleBase$8
   implements Runnable
 {
-  public AdModuleBase$8(nak paramnak, DownloadInfo paramDownloadInfo) {}
+  public AdModuleBase$8(nll paramnll, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {

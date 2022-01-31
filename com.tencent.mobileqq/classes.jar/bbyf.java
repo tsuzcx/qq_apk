@@ -1,28 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.OpenCardContainer;
-import java.util.List;
+import android.content.Intent;
 
-class bbyf
-  implements View.OnClickListener
+public class bbyf
 {
-  bbyf(bbye parambbye, int paramInt) {}
+  public bbyi a;
   
-  public void onClick(View paramView)
+  public bbyf(Intent paramIntent)
   {
-    if ((bbye.a(this.jdField_a_of_type_Bbye) == null) || (this.jdField_a_of_type_Int >= bbye.a(this.jdField_a_of_type_Bbye).size()) || (this.jdField_a_of_type_Int < 0)) {
-      return;
-    }
-    if ((this.jdField_a_of_type_Bbye.a.a != null) && (bbye.a(this.jdField_a_of_type_Bbye).get(this.jdField_a_of_type_Int) != null) && (OpenCardContainer.a(this.jdField_a_of_type_Bbye.a) != null)) {
-      OpenCardContainer.a(this.jdField_a_of_type_Bbye.a).a(((bbyh)bbye.a(this.jdField_a_of_type_Bbye).get(this.jdField_a_of_type_Int)).a);
-    }
-    bbye.a(this.jdField_a_of_type_Bbye).remove(bbye.a(this.jdField_a_of_type_Bbye).get(this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_Bbye.notifyDataSetChanged();
+    this.a = new bbyi(paramIntent.getStringExtra("lh_uin"), paramIntent.getStringExtra("lh_light"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbyf
  * JD-Core Version:    0.7.0.1
  */

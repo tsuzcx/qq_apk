@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache.1;
-import java.io.File;
-import java.util.Comparator;
+import mqq.app.AppRuntime.Status;
 
-public class ajxc
-  implements Comparator<File>
+public final class ajxc
 {
-  public ajxc(CleanCache.1 param1) {}
+  private final long jdField_a_of_type_Long;
+  private final AppRuntime.Status jdField_a_of_type_MqqAppAppRuntime$Status;
   
-  public int a(File paramFile1, File paramFile2)
+  private ajxc(AppRuntime.Status paramStatus, long paramLong)
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
-    }
-    return 0;
+    this.jdField_a_of_type_MqqAppAppRuntime$Status = paramStatus;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

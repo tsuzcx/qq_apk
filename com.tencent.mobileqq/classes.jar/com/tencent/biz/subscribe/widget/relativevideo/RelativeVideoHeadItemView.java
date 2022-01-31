@@ -3,17 +3,17 @@ package com.tencent.biz.subscribe.widget.relativevideo;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StPoiInfoV2;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StVisitor;
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
-import baip;
-import baiu;
+import bbjw;
+import bbkb;
 import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import vms;
+import vzo;
 
 public class RelativeVideoHeadItemView
   extends RelativeFeedBaseHeaderView
@@ -32,17 +32,17 @@ public class RelativeVideoHeadItemView
   
   public int a()
   {
-    return 2131493144;
+    return 2131558699;
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131312345));
-    this.b = ((TextView)findViewById(2131312343));
-    this.c = ((TextView)findViewById(2131312346));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView = ((AsyncRichTextView)findViewById(2131312337));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131303752);
-    this.d = ((TextView)findViewById(2131312458));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378171));
+    this.b = ((TextView)findViewById(2131378169));
+    this.c = ((TextView)findViewById(2131378172));
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView = ((AsyncRichTextView)findViewById(2131378163));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369425);
+    this.d = ((TextView)findViewById(2131378285));
   }
   
   public void a(Object paramObject)
@@ -52,33 +52,42 @@ public class RelativeVideoHeadItemView
     }
     paramObject = (CertifiedAccountMeta.StFeed)paramObject;
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramObject.title.get());
-    this.b.setText(baiu.c(getContext(), paramObject.createTime.get() * 1000L));
-    int i = ((CertifiedAccountMeta.StVisitor)paramObject.visitorInfo.get()).view_count.get();
-    AsyncRichTextView localAsyncRichTextView;
-    if (i > 0)
+    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (paramObject.title.get().trim().length() > 0)
     {
+      i = 0;
+      ((TextView)localObject).setVisibility(i);
+      this.b.setText(bbkb.c(getContext(), paramObject.createTime.get() * 1000L));
+      i = ((CertifiedAccountMeta.StVisitor)paramObject.visitorInfo.get()).view_count.get();
+      if (i <= 0) {
+        break label241;
+      }
       this.c.setVisibility(0);
-      this.c.setText(vms.a(i) + ajjy.a(2131654066));
-      localAsyncRichTextView = this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView;
+      this.c.setText(vzo.a(i) + ajyc.a(2131719955));
+      label139:
+      localObject = this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView;
       if (paramObject.content.get().trim().length() <= 0) {
-        break label219;
+        break label253;
       }
     }
-    label219:
-    for (i = 0;; i = 8)
+    label241:
+    label253:
+    for (int i = 0;; i = 8)
     {
-      localAsyncRichTextView.setVisibility(i);
+      ((AsyncRichTextView)localObject).setVisibility(i);
       this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.setText(paramObject.content.get());
-      if (baip.a(((CertifiedAccountMeta.StPoiInfoV2)paramObject.poiInfo.get()).defaultName.get())) {
-        break label225;
+      if (bbjw.a(((CertifiedAccountMeta.StPoiInfoV2)paramObject.poiInfo.get()).defaultName.get())) {
+        break label259;
       }
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       this.d.setText(((CertifiedAccountMeta.StPoiInfoV2)paramObject.poiInfo.get()).defaultName.get());
       return;
-      this.c.setVisibility(8);
+      i = 8;
       break;
+      this.c.setVisibility(8);
+      break label139;
     }
-    label225:
+    label259:
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }

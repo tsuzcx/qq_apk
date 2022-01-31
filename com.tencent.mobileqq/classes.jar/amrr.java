@@ -1,42 +1,28 @@
-import android.annotation.TargetApi;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.data.ArkBabyqCardInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
 
-public class amrr
-  implements ArkViewImplement.LoadCallback
+class amrr
 {
-  public amrr(ArkBabyqCardInfo paramArkBabyqCardInfo, alff paramalff, alfb paramalfb, adai paramadai, int paramInt) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  @TargetApi(14)
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public String a()
   {
-    onLoadState(paramInt1);
+    return this.a + this.b;
   }
   
-  @TargetApi(14)
-  public void onLoadState(int paramInt)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkBabyqCardInfo", 2, "attachArkView onLoadFinish ArkBabyqCardInfo state=" + paramInt);
-    }
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_Alff.b.setVisibility(0);
-      this.jdField_a_of_type_Alfb.a(this.jdField_a_of_type_Alff, this.jdField_a_of_type_ComTencentMobileqqDataArkBabyqCardInfo);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Alfb.a(this.jdField_a_of_type_Adai, this.jdField_a_of_type_Int);
-      return;
-      this.jdField_a_of_type_Alff.b.setVisibility(8);
-    }
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amrr
  * JD-Core Version:    0.7.0.1
  */

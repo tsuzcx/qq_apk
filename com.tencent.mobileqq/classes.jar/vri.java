@@ -1,8 +1,23 @@
-import android.support.v7.widget.RecyclerView.Adapter;
+import android.os.Handler;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog.6.1;
 
-public abstract interface vri
+public class vri
+  implements tcc<tbx>
 {
-  public abstract void a(RecyclerView.Adapter paramAdapter);
+  public vri(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  
+  public void a(boolean paramBoolean, tbx paramtbx)
+  {
+    veg.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate.");
+    if ((paramBoolean) && (paramtbx != null))
+    {
+      veg.a("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate success, address=%s", paramtbx);
+      this.a.a.post(new EditVideoMusicDialog.6.1(this, paramtbx));
+      return;
+    }
+    veg.e("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate failed.");
+  }
 }
 
 

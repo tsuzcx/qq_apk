@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
-import atnz;
-import axin;
+import aulx;
+import ayir;
 import com.tencent.mobileqq.teamwork.PadInfo;
 import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
 import java.util.ArrayList;
@@ -9,23 +9,23 @@ import java.util.List;
 
 public class GPadInfo
   extends PadInfo
-  implements axin
+  implements ayir
 {
   public String creatorCard;
   public long creatorUid;
   public long groupCode;
   public String lastModifyCard;
   public long lastModifyUid;
-  @atnz
+  @aulx
   public boolean mClickable = true;
-  @atnz
+  @aulx
   public boolean mSelectable;
-  @atnz
+  @aulx
   public List<TimDocSSOMsg.UinRightInfo> mUins;
   public String ownerCard;
   public long ownerUin;
   public long owneruid;
-  @atnz
+  @aulx
   public List<String> searchKeyWordList = new ArrayList();
   
   public void copyFrom(PadInfo paramPadInfo)

@@ -1,33 +1,59 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.Map;
 
 public class aaum
-  extends VasQuickUpdateManager.CallBacker
+  extends ajxl
 {
-  public aaum(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public aaum(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
   {
-    if ((paramLong == 15L) && (paramString1.startsWith("card.")) && (this.a.a != null))
-    {
-      paramString1 = this.a.a.obtainMessage();
-      paramString1.what = 7;
-      if (paramInt1 != 0) {
-        break label82;
-      }
-      paramString1.arg1 = 1;
-    }
-    for (paramString1.arg2 = 1;; paramString1.arg2 = 0)
-    {
-      if (this.a.a != null) {
-        this.a.a.sendMessage(paramString1);
-      }
+    super.onSetGenralSettingsTroopFilter(paramBoolean, paramMap);
+    if ((paramMap == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null)) {
       return;
-      label82:
-      paramString1.arg1 = 0;
+    }
+    if (!paramBoolean) {
+      if (paramMap.get(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin) != null) {
+        bcpw.a(this.a.app.getApp(), 1, this.a.getString(2131720538), 0).b(this.a.getTitleBarHeight());
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(17);
+      return;
+      paramMap = (Integer)paramMap.get(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
+      if (paramMap != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopmask = paramMap.intValue();
+      }
     }
   }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {}
+    try
+    {
+      l = Long.valueOf(paramString).longValue();
+      if (l != 0L) {
+        this.a.a(l);
+      }
+      return;
+    }
+    catch (NumberFormatException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+        long l = 0L;
+      }
+    }
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString) {}
 }
 
 

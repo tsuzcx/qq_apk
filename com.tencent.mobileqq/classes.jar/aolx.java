@@ -1,17 +1,16 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.1.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
 
 public class aolx
-  implements bfio
+  implements View.OnClickListener
 {
-  aolx(aolw paramaolw) {}
+  public aolx(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, aonk paramaonk) {}
   
-  public boolean a(int paramInt, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    new Handler(Looper.getMainLooper()).post(new QfavFilePreviewController.1.1(this, paramBundle));
-    return true;
+    bazo.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(), this.jdField_a_of_type_Aonk.e, 1);
   }
 }
 

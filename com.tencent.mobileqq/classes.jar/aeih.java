@@ -1,11 +1,17 @@
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class aeih
-  implements moc
+  implements DialogInterface.OnClickListener
 {
-  aeih(aegy paramaegy) {}
+  aeih(aeig paramaeig) {}
   
-  public void loaded(String paramString, int paramInt) {}
-  
-  public void progress(int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    aeif.j(this.a.a).setResult(8001);
+  }
 }
 
 

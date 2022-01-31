@@ -1,19 +1,19 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import uss;
+import vfo;
 
 public class EditPicSave$4
   implements Runnable
 {
-  public EditPicSave$4(uss paramuss) {}
+  public EditPicSave$4(vfo paramvfo) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean) {
       return;
     }
-    uss localuss = this.this$0;
-    localuss.jdField_a_of_type_Int += this.this$0.b;
+    vfo localvfo = this.this$0;
+    localvfo.jdField_a_of_type_Int += this.this$0.b;
     if (this.this$0.jdField_a_of_type_Int > 99)
     {
       this.this$0.jdField_a_of_type_Int = 99;

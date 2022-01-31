@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import agpg;
+import ahbv;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -9,9 +9,9 @@ import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import ljd;
-import lje;
-import ljf;
+import ltu;
+import ltv;
+import ltw;
 
 public class QWalletFaceTracker
 {
@@ -24,8 +24,9 @@ public class QWalletFaceTracker
   public String[] modelPathsDetector = { "net_1_bin.rpnproto", "net_1.rpnmodel", "net_2_bin.rpnproto", "net_2.rpnmodel", "net_3_bin.rpnproto", "net_3.rpnmodel" };
   public String[] modelPathsPose = { "meshBasis.bin", "rotBasis.bin", "pdm.txt", "pdm_82.txt" };
   private long nativePtr;
-  public lje normalFaceExpression;
-  public final String[] soFileNames = { "libYTCommonEmoji.so", "libnnpackEmoj.so", "libYTIllumination.so", "libQwalletFaceTrackPro.so", "libfacetrackwrap.so" };
+  public ltv normalFaceExpression;
+  public final String[] soFileNames = { "libYTIllumination.so", "libfacetrackwrap.so" };
+  public final String[] soNames = { "YTIllumination", "facetrackwrap" };
   
   public static native boolean GlobalInit(String paramString);
   
@@ -33,11 +34,11 @@ public class QWalletFaceTracker
   
   private native void NativeDestructor();
   
-  private boolean checkMoreLikeNormalFaceExpression(float paramFloat, double paramDouble, double[] paramArrayOfDouble, int[] paramArrayOfInt, lje paramlje, List<PointF> paramList, float[] paramArrayOfFloat)
+  private boolean checkMoreLikeNormalFaceExpression(float paramFloat, double paramDouble, double[] paramArrayOfDouble, int[] paramArrayOfInt, ltv paramltv, List<PointF> paramList, float[] paramArrayOfFloat)
   {
-    paramlje.expressionWeight = paramArrayOfDouble;
-    paramlje.a = paramArrayOfInt;
-    return ljd.a(paramlje, paramList, paramArrayOfFloat).a * paramDouble - paramFloat > 0.0D;
+    paramltv.expressionWeight = paramArrayOfDouble;
+    paramltv.a = paramArrayOfInt;
+    return ltu.a(paramltv, paramList, paramArrayOfFloat).a * paramDouble - paramFloat > 0.0D;
   }
   
   public static QWalletFaceTracker getInstance()
@@ -69,11 +70,11 @@ public class QWalletFaceTracker
   {
     try
     {
-      agpg localagpg = PreloadManager.a();
+      ahbv localahbv = PreloadManager.a();
       DownloadParam localDownloadParam = new DownloadParam();
       localDownloadParam.filePos = 1;
       localDownloadParam.url = paramString1;
-      localagpg.a(localDownloadParam, new QWalletFaceTracker.1(this, paramString1, paramString2, paramContext, paramIBaseRecognizer));
+      localahbv.a(localDownloadParam, new QWalletFaceTracker.1(this, paramString1, paramString2, paramContext, paramIBaseRecognizer));
       return;
     }
     catch (Throwable paramContext)
@@ -97,14 +98,14 @@ public class QWalletFaceTracker
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 199	com/tencent/mobileqq/activity/qwallet/emoj/QWalletFaceTracker:hasSDkInit	Z
+    //   3: getfield 200	com/tencent/mobileqq/activity/qwallet/emoj/QWalletFaceTracker:hasSDkInit	Z
     //   6: istore 7
     //   8: iload 7
     //   10: ifne +6 -> 16
     //   13: aload_0
     //   14: monitorexit
     //   15: return
-    //   16: new 209	com/tencent/mobileqq/activity/qwallet/emoj/QWalletFaceTracker$2
+    //   16: new 210	com/tencent/mobileqq/activity/qwallet/emoj/QWalletFaceTracker$2
     //   19: dup
     //   20: aload_0
     //   21: aload_1
@@ -113,11 +114,11 @@ public class QWalletFaceTracker
     //   25: iload 5
     //   27: iload_2
     //   28: aload 6
-    //   30: invokespecial 212	com/tencent/mobileqq/activity/qwallet/emoj/QWalletFaceTracker$2:<init>	(Lcom/tencent/mobileqq/activity/qwallet/emoj/QWalletFaceTracker;[BIIIILcom/tencent/mobileqq/activity/qwallet/emoj/QWalletFaceTracker$OnPreviewFrameHandlerListener;)V
+    //   30: invokespecial 213	com/tencent/mobileqq/activity/qwallet/emoj/QWalletFaceTracker$2:<init>	(Lcom/tencent/mobileqq/activity/qwallet/emoj/QWalletFaceTracker;[BIIIILcom/tencent/mobileqq/activity/qwallet/emoj/QWalletFaceTracker$OnPreviewFrameHandlerListener;)V
     //   33: bipush 16
     //   35: aconst_null
     //   36: iconst_1
-    //   37: invokestatic 218	com/tencent/mobileqq/app/ThreadManagerV2:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   37: invokestatic 219	com/tencent/mobileqq/app/ThreadManagerV2:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
     //   40: goto -27 -> 13
     //   43: astore_1
     //   44: aload_0

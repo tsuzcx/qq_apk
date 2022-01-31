@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.appbrand.utils;
 
 import android.os.Process;
 import android.util.LruCache;
-import bace;
-import baip;
+import bbdj;
+import bbjw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.commonsdk.pool.RecyclablePool;
@@ -86,7 +86,7 @@ public class MiniLog
   
   private static void addNativeLogItem(String arg0, String paramString2, int paramInt, String paramString3, Throwable paramThrowable)
   {
-    if ((sPool == null) || (baip.a(???))) {}
+    if ((sPool == null) || (bbjw.a(???))) {}
     MiniLog.QLogItem localQLogItem;
     do
     {
@@ -201,13 +201,13 @@ public class MiniLog
   
   public static String getMiniLogFolderPath()
   {
-    return MiniAppGlobal.MINI_LOG_PATH;
+    return MiniAppGlobal.getMiniCacheFilePath();
   }
   
   public static String getMiniLogFolderPath(String paramString)
   {
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    return MiniAppGlobal.MINI_LOG_PATH + MD5.toMD5(paramString) + "/" + str + "/miniprogramLog/";
+    return MiniAppGlobal.getMiniCacheFilePath() + MD5.toMD5(paramString) + "/" + str + "/miniprogramLog/";
   }
   
   private static String getMiniLogPath(String paramString)
@@ -296,7 +296,7 @@ public class MiniLog
     {
       try
       {
-        if (bace.a(str + "log" + localObject1).length() <= MAX_MINI_LOG_SIZE) {
+        if (bbdj.a(str + "log" + localObject1).length() <= MAX_MINI_LOG_SIZE) {
           break label621;
         }
         localObject3 = localObject1;
@@ -553,7 +553,7 @@ public class MiniLog
           break label193;
         }
         localMiniItem = (MiniLog.MiniItem)miniQueue.poll();
-        if ((localMiniItem == null) || (baip.a(localMiniItem.filePath))) {
+        if ((localMiniItem == null) || (bbjw.a(localMiniItem.filePath))) {
           continue;
         }
         str = localMiniItem.filePath;
@@ -561,7 +561,7 @@ public class MiniLog
         if (localFile.exists()) {
           continue;
         }
-        bace.a(str);
+        bbdj.a(str);
         localBufferedWriter1 = new BufferedWriter(new MiniLogWriter(localFile, true), 8192);
       }
       catch (Throwable localThrowable)
@@ -714,7 +714,7 @@ public class MiniLog
     //   209: invokevirtual 337	java/io/File:exists	()Z
     //   212: ifne +297 -> 509
     //   215: aload 6
-    //   217: invokestatic 381	bace:a	(Ljava/lang/String;)Ljava/io/File;
+    //   217: invokestatic 381	bbdj:a	(Ljava/lang/String;)Ljava/io/File;
     //   220: pop
     //   221: new 494	java/io/BufferedWriter
     //   224: dup

@@ -1,23 +1,31 @@
-import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import com.tencent.biz.qrcode.ipc.ScannerParams;
+import mqq.app.AppActivity;
 
-public class whp
-  implements who
+class whp
+  extends whl
 {
-  public whp(AsyncRichTextView paramAsyncRichTextView) {}
+  whp(who paramwho) {}
   
-  public boolean a(String paramString)
+  public void a()
   {
-    if ((this.a.b != null) && (this.a.b.a(paramString))) {}
-    while (BaseApplicationImpl.getContext() == null) {
-      return true;
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.i)
+    {
+      this.a.jdField_a_of_type_Whu.a();
+      return;
     }
-    return true;
+    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e)
+    {
+      this.a.jdField_a_of_type_MqqAppAppActivity.finish();
+      return;
+    }
+    this.a.jdField_a_of_type_Whu.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     whp
  * JD-Core Version:    0.7.0.1
  */

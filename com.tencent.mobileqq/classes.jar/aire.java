@@ -1,53 +1,34 @@
-import android.content.Context;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
-import com.tencent.mobileqq.apollo.process.ui.framework.CmGameFloatView;
-import com.tencent.mobileqq.apollo.process.ui.framework.CmGameGuideView;
-import com.tencent.mobileqq.apollo.process.ui.framework.FrameworkView;
-import com.tencent.mobileqq.apollo.process.ui.framework.QzoneGameFloatView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aire
+class aire
+  implements DialogInterface.OnClickListener
 {
-  public static FrameworkView a(Context paramContext, aipj paramaipj, befq parambefq, ailv paramailv, CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    switch (paramStartCheckParam.src)
-    {
-    default: 
-      if (paramStartCheckParam.mGameType == 5) {
-        paramContext = new QzoneGameFloatView(paramContext, paramStartCheckParam);
-      }
-      break;
-    }
-    for (;;)
-    {
-      paramContext.a(paramaipj, parambefq, paramailv, paramStartCheckParam);
-      return paramContext;
-      paramContext = new QzoneGameFloatView(paramContext, paramStartCheckParam);
-      continue;
-      paramContext = new CmGameFloatView(paramContext, paramStartCheckParam);
-    }
-  }
+  aire(aird paramaird) {}
   
-  public static FrameworkView a(Context paramContext, aipj paramaipj, befq parambefq, CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      paramContext = new CmGameGuideView(paramContext, paramStartCheckParam);
+    if (QLog.isColorLevel()) {
+      QLog.d(aird.a(this.a), 2, "On Click Left Button! ");
+    }
+    if (this.a.mRuntime.a() != null) {
+      this.a.mRuntime.a().finish();
     }
     for (;;)
     {
-      paramContext.a(paramaipj, parambefq, null, paramStartCheckParam);
-      return paramContext;
-      paramContext = new CmGameGuideView(paramContext, paramStartCheckParam);
-      continue;
-      paramContext = new CmGameDebugView(paramContext, paramStartCheckParam);
+      aird.a(this.a, 1);
+      return;
+      if (QLog.isDevelopLevel()) {
+        QLog.d(aird.a(this.a), 4, "Call back object is null!");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aire
  * JD-Core Version:    0.7.0.1
  */

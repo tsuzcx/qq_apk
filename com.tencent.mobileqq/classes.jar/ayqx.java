@@ -1,34 +1,45 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.ImageUploadStep.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class ayqx
-  implements View.OnTouchListener
+public class ayqx
+  extends ayqs
 {
-  ayqx(ayqv paramayqv, String paramString, ayre paramayre) {}
+  private int a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  ayqx(ayqr paramayqr)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      paramView = new Intent(this.jdField_a_of_type_Ayqv.a.getContext(), QQBrowserActivity.class);
-      paramMotionEvent = bant.a("troopEnterEffect");
-      paramView.putExtra("url", paramMotionEvent + "&gc=" + this.jdField_a_of_type_Ayqv.b);
-      this.jdField_a_of_type_Ayqv.a.getContext().startActivity(paramView);
-      ayrg.a("Grp_AIO", "action_clk", new String[] { this.jdField_a_of_type_Ayqv.b });
-      VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_JavaLangString, "style", "0X8008E63", "", 1, 0, 0, "", Integer.toString(this.jdField_a_of_type_Ayre.a), "");
+    super(paramayqr);
+    this.jdField_a_of_type_JavaLangString = "ImageUploadStep";
+  }
+  
+  protected boolean a()
+  {
+    return ayqr.a(this.jdField_b_of_type_Ayqr).get();
+  }
+  
+  protected void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "ImageUploadStep|process|ready=" + ayqr.a(this.jdField_b_of_type_Ayqr) + ",remoteUrl=" + ayqr.a(this.jdField_b_of_type_Ayqr) + " ,localUrl=" + ayqr.b(this.jdField_b_of_type_Ayqr));
     }
-    return true;
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      f();
+      return;
+    }
+    if (ayqr.a(this.jdField_b_of_type_Ayqr).get())
+    {
+      b();
+      return;
+    }
+    ThreadManager.excute(new ForwardSdkShareProcessor.ImageUploadStep.1(this), 128, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayqx
  * JD-Core Version:    0.7.0.1
  */

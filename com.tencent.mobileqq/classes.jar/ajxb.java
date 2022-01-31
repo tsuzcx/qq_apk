@@ -1,19 +1,6 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache.1;
-import java.io.File;
-import java.util.Comparator;
-
-public class ajxb
-  implements Comparator<File>
+public abstract interface ajxb
 {
-  public ajxb(CleanCache.1 param1) {}
-  
-  public int a(File paramFile1, File paramFile2)
-  {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
-    }
-    return 0;
-  }
+  public abstract void g(boolean paramBoolean);
 }
 
 

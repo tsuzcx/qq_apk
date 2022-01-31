@@ -1,10 +1,14 @@
-import java.util.List;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
-public abstract interface akdf
+class akdf
+  implements FileFilter
 {
-  public abstract void a(String paramString, atmo paramatmo);
-  
-  public abstract void a(String paramString, List<? extends atmo> paramList);
+  public boolean accept(File paramFile)
+  {
+    return Pattern.matches("cpu[0-9]+", paramFile.getName());
+  }
 }
 
 

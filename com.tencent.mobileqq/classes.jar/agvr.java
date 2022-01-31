@@ -1,53 +1,162 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class agvr
-  extends MSFServlet
+  extends Handler
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private long jdField_a_of_type_Long = 1000L;
+  public CopyOnWriteArrayList<agvs> a;
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
+  
+  public agvr()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("springHb_report_SpringHbReportServlet", 2, "[onReceive] cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess() + ", retCode=" + paramFromServiceMsg.getResultCode());
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  }
+  
+  public agvr(Looper paramLooper)
+  {
+    super(paramLooper);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    b();
+    c();
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_b_of_type_Long = Math.max(SystemClock.elapsedRealtime() + 1000L * paramLong, this.jdField_b_of_type_Long);
+    f();
+  }
+  
+  public void a(agvs paramagvs)
+  {
+    long l = SystemClock.elapsedRealtime();
+    if (agvs.a(paramagvs) > l)
     {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bakz.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
-    for (;;)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
-      localBundle.putString("cmd", paramIntent.getStringExtra("cmd"));
-      localBundle.putByteArray("data", arrayOfByte);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramagvs);
+      a(agvs.a(paramagvs) - l);
       return;
-      arrayOfByte = null;
+    }
+    paramagvs.b();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()) {
+      g();
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((agvs)localIterator.next()).a();
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void b(agvs paramagvs)
   {
-    String str = paramIntent.getStringExtra("cmd");
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    long l = paramIntent.getLongExtra("timeout", 30000L);
-    paramPacket.setSSOCommand(str);
-    paramPacket.setTimeout(l);
-    paramPacket.putSendData(arrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("springHb_report_SpringHbReportServlet", 2, "[onSend] cmd=" + str);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramagvs);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() < 2) {
+      g();
     }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((agvs)localIterator.next()).b();
+    }
+  }
+  
+  public void d()
+  {
+    removeMessages(1);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_b_of_type_Long >= SystemClock.elapsedRealtime()) {
+      sendMessage(obtainMessage(1));
+    }
+  }
+  
+  public void f()
+  {
+    for (;;)
+    {
+      try
+      {
+        boolean bool = this.jdField_b_of_type_Boolean;
+        if (bool) {
+          return;
+        }
+        if (this.jdField_b_of_type_Long <= SystemClock.elapsedRealtime())
+        {
+          a();
+          continue;
+        }
+        this.jdField_b_of_type_Boolean = true;
+      }
+      finally {}
+      sendMessage(obtainMessage(1));
+    }
+  }
+  
+  public void g()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    removeMessages(1);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    for (;;)
+    {
+      try
+      {
+        l = this.jdField_b_of_type_Long - SystemClock.elapsedRealtime();
+        if (l <= 0L)
+        {
+          a();
+          return;
+        }
+        if (l < this.jdField_a_of_type_Long)
+        {
+          sendMessageDelayed(obtainMessage(1), l);
+          continue;
+        }
+        l = SystemClock.elapsedRealtime();
+      }
+      finally {}
+      b();
+      for (long l = l + this.jdField_a_of_type_Long - SystemClock.elapsedRealtime(); l < 0L; l += this.jdField_a_of_type_Long) {}
+      sendMessageDelayed(obtainMessage(1), l);
+    }
+  }
+  
+  public boolean sendMessageAtTime(Message paramMessage, long paramLong)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return super.sendMessageAtTime(paramMessage, paramLong);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agvr
  * JD-Core Version:    0.7.0.1
  */

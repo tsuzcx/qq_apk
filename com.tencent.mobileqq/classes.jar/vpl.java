@@ -1,8 +1,10 @@
 public abstract interface vpl
 {
-  public abstract void a(vpk paramvpk);
+  public abstract void a();
   
-  public abstract void a(vpk paramvpk, String paramString);
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

@@ -1,20 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.BusinessAlbumInfo;
 
-class bheg
-  implements View.OnTouchListener
+public final class bheg
+  implements Parcelable.Creator<BusinessAlbumInfo>
 {
-  bheg(bhec parambhec) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public BusinessAlbumInfo a(Parcel paramParcel)
   {
-    return true;
+    return new BusinessAlbumInfo(paramParcel, null);
+  }
+  
+  public BusinessAlbumInfo[] a(int paramInt)
+  {
+    return new BusinessAlbumInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bheg
  * JD-Core Version:    0.7.0.1
  */

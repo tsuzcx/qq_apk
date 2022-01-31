@@ -2,18 +2,18 @@ package com.tencent.mobileqq.filemanager.core;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import aome;
-import aomj;
-import apei;
-import apek;
-import apen;
-import apeq;
+import apcy;
+import apdd;
+import apwc;
+import apwe;
+import apwh;
+import apwk;
 import com.tencent.qphone.base.util.QLog;
 
 public class UniformDownloadMgr$9
   implements Runnable
 {
-  public UniformDownloadMgr$9(aome paramaome, Bundle paramBundle, String paramString, apeq paramapeq) {}
+  public UniformDownloadMgr$9(apcy paramapcy, Bundle paramBundle, String paramString, apwk paramapwk) {}
   
   public void run()
   {
@@ -21,31 +21,31 @@ public class UniformDownloadMgr$9
     long l = this.jdField_a_of_type_AndroidOsBundle.getLong("_filesize_from_dlg");
     if ((TextUtils.isEmpty((CharSequence)localObject)) || (0L == l))
     {
-      localObject = apei.a(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidOsBundle.putLong("_filesize_from_dlg", ((apek)localObject).jdField_a_of_type_Long);
-      if (TextUtils.isEmpty(((apek)localObject).jdField_a_of_type_JavaLangString)) {
-        ((apek)localObject).jdField_a_of_type_JavaLangString = "nofilename.x";
+      localObject = apwc.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidOsBundle.putLong("_filesize_from_dlg", ((apwe)localObject).jdField_a_of_type_Long);
+      if (TextUtils.isEmpty(((apwe)localObject).jdField_a_of_type_JavaLangString)) {
+        ((apwe)localObject).jdField_a_of_type_JavaLangString = "nofilename.x";
       }
-      this.jdField_a_of_type_AndroidOsBundle.putString("_filename_from_dlg", ((apek)localObject).jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidOsBundle.putString("_filename_from_dlg", ((apwe)localObject).jdField_a_of_type_JavaLangString);
     }
-    localObject = aome.a(this.this$0, this.jdField_a_of_type_JavaLangString);
-    if ((localObject != null) && (((aomj)localObject).a != null))
+    localObject = apcy.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+    if ((localObject != null) && (((apdd)localObject).a != null))
     {
-      int i = ((aomj)localObject).a.f();
+      int i = ((apdd)localObject).a.f();
       if ((i == 1) || (i == 2))
       {
-        if (this.jdField_a_of_type_Apeq != null) {
-          ((aomj)localObject).a.a(this.jdField_a_of_type_Apeq);
+        if (this.jdField_a_of_type_Apwk != null) {
+          ((apdd)localObject).a.a(this.jdField_a_of_type_Apwk);
         }
-        apeq localapeq = aome.a(this.this$0, this.jdField_a_of_type_JavaLangString);
-        if (localapeq != null) {
-          ((aomj)localObject).a.a(localapeq, false);
+        apwk localapwk = apcy.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+        if (localapwk != null) {
+          ((apdd)localObject).a.a(localapwk, false);
         }
         QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] startDownload. URL:" + this.jdField_a_of_type_JavaLangString + " update OuterListenner");
       }
     }
-    aome.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    aome.b(this.this$0);
+    apcy.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    apcy.b(this.this$0);
   }
 }
 

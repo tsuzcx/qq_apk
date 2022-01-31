@@ -1,6 +1,14 @@
-public abstract interface vmx<V>
+public abstract interface vmx
 {
-  public abstract V a();
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(vls paramvls);
+  
+  public abstract void a(boolean paramBoolean, vls paramvls);
+  
+  public abstract void b(int paramInt);
 }
 
 

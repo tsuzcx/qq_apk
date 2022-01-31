@@ -1,20 +1,22 @@
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.AutoReplyText;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
 
-class atkf
-  implements View.OnClickListener
+public class atkf
+  implements View.OnTouchListener
 {
-  atkf(atkc paramatkc, AutoReplyText paramAutoReplyText) {}
+  public atkf(StuffContainerView paramStuffContainerView, GestureDetector paramGestureDetector) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Atkc.a(this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId());
+    return this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atkf
  * JD-Core Version:    0.7.0.1
  */

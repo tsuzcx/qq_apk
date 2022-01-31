@@ -1,67 +1,41 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class avrj
-  extends avsc
 {
-  public avrj(azwg paramazwg)
+  public ConcurrentHashMap<String, avqy> a = new ConcurrentHashMap(10);
+  
+  public avqy a(SVHwEncoder paramSVHwEncoder, SessionInfo paramSessionInfo, int paramInt)
   {
-    super(paramazwg);
+    paramSVHwEncoder = new avqy(paramSVHwEncoder, paramSessionInfo, paramInt);
+    this.a.put(paramSVHwEncoder.a, paramSVHwEncoder);
+    avrd.a("VideoCompoundController", "newProcessor, key = " + paramSVHwEncoder.a);
+    return paramSVHwEncoder;
   }
   
-  protected avrh<avon, avww> a(azwg paramazwg)
+  public avqy a(String paramString)
   {
-    return new avrk(paramazwg);
+    avrd.a("VideoCompoundController", "findProcessor, key = " + paramString);
+    if ((!this.a.isEmpty()) && (paramString != null) && (this.a.containsKey(paramString))) {
+      return (avqy)this.a.get(paramString);
+    }
+    return null;
   }
   
-  public void a(avol paramavol, avwv paramavwv)
+  public boolean a(String paramString)
   {
-    Object localObject = (avom)paramavol;
-    paramavol = ((avwy)paramavwv).a();
-    if (paramavol != null)
-    {
-      List localList = ((avom)localObject).a();
-      if (localList != null)
-      {
-        paramavol.removeAllViews();
-        int k = Math.min(localList.size(), ((avom)localObject).a());
-        int i = 0;
-        if (i < k)
-        {
-          localObject = (avon)localList.get(i);
-          View localView = LayoutInflater.from(paramavwv.a().getContext()).inflate(2131496790, null);
-          avwz localavwz = new avwz(localView);
-          localView.setTag(2131313373, localObject);
-          localView.setTag(2131313378, localavwz);
-          localView.setTag(2131313374, Integer.valueOf(i));
-          localView.setTag(2131313372, Integer.valueOf(localList.size()));
-          localView.setTag(2131313375, this.a);
-          avwi.a((avon)localObject, k, i);
-          int m = ((avon)localObject).a();
-          int n = ((avon)localObject).b();
-          if ((localObject instanceof avoo)) {}
-          for (int j = ((avoo)localObject).r;; j = 0)
-          {
-            avwi.a(m, n, localView, j);
-            paramavol.addView(localView);
-            this.a.a((avol)localObject, localavwz);
-            i += 1;
-            break;
-          }
-        }
-      }
+    avrd.a("VideoCompoundController", "removeProcessor, key = " + paramString);
+    if (paramString == null) {}
+    while (this.a.remove(paramString) == null) {
+      return false;
     }
-    if (paramavwv.b() != null) {
-      paramavwv.b().setVisibility(8);
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avrj
  * JD-Core Version:    0.7.0.1
  */

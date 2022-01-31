@@ -1,20 +1,31 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class aetu
-  implements ajga
+class aetu
+  implements View.OnClickListener
 {
-  public aetu(AddContactsView paramAddContactsView) {}
+  aetu(aets paramaets) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onGetConfig | isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
-    }
-    if ((paramInt == 2) && (paramBoolean))
+    actn.n = true;
+    int i;
+    switch (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)
     {
-      this.a.d = true;
-      this.a.f();
+    default: 
+      i = 0;
+    }
+    for (;;)
+    {
+      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(i), "", "", "");
+      acxv.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
+      return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
     }
   }
 }

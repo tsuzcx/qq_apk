@@ -13,6 +13,8 @@ public final class FunnySpace
   public long TotalCount;
   public boolean is_block;
   public boolean is_show;
+  public boolean is_show_cmshowar = true;
+  public long uFirePowerCount;
   
   static
   {
@@ -22,12 +24,14 @@ public final class FunnySpace
   
   public FunnySpace() {}
   
-  public FunnySpace(ArrayList<FunnySpaceAction> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  public FunnySpace(ArrayList<FunnySpaceAction> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, boolean paramBoolean3, long paramLong2)
   {
     this.Actions = paramArrayList;
     this.is_block = paramBoolean1;
     this.is_show = paramBoolean2;
-    this.TotalCount = paramLong;
+    this.TotalCount = paramLong1;
+    this.is_show_cmshowar = paramBoolean3;
+    this.uFirePowerCount = paramLong2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -36,6 +40,8 @@ public final class FunnySpace
     this.is_block = paramJceInputStream.read(this.is_block, 1, false);
     this.is_show = paramJceInputStream.read(this.is_show, 2, false);
     this.TotalCount = paramJceInputStream.read(this.TotalCount, 3, false);
+    this.is_show_cmshowar = paramJceInputStream.read(this.is_show_cmshowar, 4, false);
+    this.uFirePowerCount = paramJceInputStream.read(this.uFirePowerCount, 5, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -46,6 +52,8 @@ public final class FunnySpace
     paramJceOutputStream.write(this.is_block, 1);
     paramJceOutputStream.write(this.is_show, 2);
     paramJceOutputStream.write(this.TotalCount, 3);
+    paramJceOutputStream.write(this.is_show_cmshowar, 4);
+    paramJceOutputStream.write(this.uFirePowerCount, 5);
   }
 }
 

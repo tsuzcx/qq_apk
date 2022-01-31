@@ -1,68 +1,27 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-
 public class aabd
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public aabd(AuthDevActivity paramAuthDevActivity) {}
+  public double a;
+  public int a;
+  public long a;
+  public String a;
+  public double b;
+  public long b;
+  public String b;
+  public String c = "";
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public aabd()
   {
-    boolean bool = true;
-    paramBoolean = false;
-    if (paramCompoundButton == AuthDevActivity.a(this.a).a())
-    {
-      AuthDevActivity.a(this.a).setOnCheckedChangeListener(null);
-      paramCompoundButton = AuthDevActivity.a(this.a);
-      if (AuthDevActivity.a(this.a).a())
-      {
-        paramBoolean = false;
-        paramCompoundButton.setChecked(paramBoolean);
-        AuthDevActivity.a(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
-        if (badq.d(this.a)) {
-          break label118;
-        }
-        bbmy.a(this.a, this.a.getString(2131626719), 0).b(this.a.getTitleBarHeight());
-      }
-    }
-    label118:
-    while (paramCompoundButton != AuthDevActivity.b(this.a).a())
-    {
-      do
-      {
-        for (;;)
-        {
-          return;
-          paramBoolean = true;
-        }
-        paramCompoundButton = (ajru)this.a.app.a(34);
-      } while (paramCompoundButton == null);
-      if (!AuthDevActivity.a(this.a).a()) {}
-      for (paramBoolean = bool;; paramBoolean = false)
-      {
-        paramCompoundButton.a(paramBoolean);
-        return;
-      }
-    }
-    AuthDevActivity.b(this.a).setOnCheckedChangeListener(null);
-    paramCompoundButton = AuthDevActivity.b(this.a);
-    if (AuthDevActivity.b(this.a).a()) {}
-    for (;;)
-    {
-      paramCompoundButton.setChecked(paramBoolean);
-      AuthDevActivity.b(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
-      AuthDevActivity.a(this.a);
-      return;
-      paramBoolean = true;
-    }
+    this.jdField_a_of_type_Double = (0.0D / 0.0D);
+    this.jdField_a_of_type_Long = 9223372036854775807L;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Double = (0.0D / 0.0D);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aabd
  * JD-Core Version:    0.7.0.1
  */

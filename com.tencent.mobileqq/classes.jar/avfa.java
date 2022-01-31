@@ -1,91 +1,194 @@
-import PersonalState.HotRishState;
-import PersonalState.RespGetSameStateList;
-import PersonalState.UserProfile;
-import android.os.Bundle;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusServlet.RspGetHistory;
+import NS_MOBILE_PHOTO.operation_red_touch_req;
+import android.annotation.TargetApi;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager.1;
+import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager.2;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.observer.BusinessObserver;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.QZoneClickReport;
+import mqq.app.NewIntent;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class avfa
-  implements BusinessObserver
+  implements Manager
 {
-  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RichStatus> paramArrayList, boolean paramBoolean3) {}
+  public QQAppInterface a;
   
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void a(boolean paramBoolean, ArrayList<HotRishState> paramArrayList) {}
-  
-  protected void a(boolean paramBoolean, List<byte[]> paramList, List<Integer> paramList1) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, byte[] paramArrayOfByte, ArrayList<UserProfile> paramArrayList) {}
-  
-  protected void b(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public avfa(QQAppInterface paramQQAppInterface)
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    switch (paramInt)
+    this.a = paramQQAppInterface;
+  }
+  
+  private SharedPreferences a()
+  {
+    String str2 = "";
+    String str1 = str2;
+    if (this.a != null)
     {
+      str1 = str2;
+      if (this.a.getCurrentAccountUin() != null) {
+        str1 = this.a.getCurrentAccountUin();
+      }
+    }
+    str1 = str1 + "_QZoneAlbumRedTouch";
+    return BaseApplication.getContext().getSharedPreferences(str1, 0);
+  }
+  
+  public static boolean c()
+  {
+    long l = 0L;
+    if (QLog.isColorLevel()) {
+      l = System.currentTimeMillis();
+    }
+    if (bhog.a().b())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneAlbumRedTouchManager", 2, "checkNewImages cost:" + (System.currentTimeMillis() - l));
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public long a()
+  {
+    return a().getLong("key_photo_guide_has_red_date", 0L);
+  }
+  
+  public void a()
+  {
+    if (this.a == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneAlbumRedTouchManager", 2, "setRedTouch");
+    }
+    NewIntent localNewIntent = new NewIntent(this.a.getApplication(), avfc.class);
+    localNewIntent.putExtra("req", new operation_red_touch_req(1L));
+    this.a.startServlet(localNewIntent);
+  }
+  
+  @TargetApi(9)
+  public void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    if ((paramAppInfo == null) || (paramAppInfo.iNewFlag.get() == 0) || (this.a == null)) {
+      return;
+    }
+    QZoneClickReport.startReportImediately(this.a.getCurrentAccountUin(), "443", "1");
+    ThreadManager.getSubThreadHandler().post(new QzoneAlbumRedTouchManager.2(this));
+  }
+  
+  public boolean a()
+  {
+    long l2 = a();
+    if (l2 <= 0L) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneAlbumRedTouchManager", 2, "isShowedRedTouchToday false");
+      }
     }
     do
     {
-      return;
-      if (paramBoolean) {
-        bool1 = paramBundle.getBoolean("k_sync_ss", false);
+      return false;
+      long l1 = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoUploadRedPointTimeInterval", 24) * 60 * 60 * 1000;
+      l2 = System.currentTimeMillis() - l2;
+      if ((l2 <= l1) && (l2 >= 0L)) {
+        break;
       }
-      a(paramBoolean, bool1);
-      return;
-      bool1 = bool2;
-      if (paramBoolean) {
-        bool1 = paramBundle.getBoolean("k_sync_ss", false);
-      }
-      b(paramBoolean, bool1);
-      return;
-      bool1 = paramBundle.getBoolean("k_is_first");
-      paramInt = paramBundle.getInt("k_fetch_sex");
-      if (paramBoolean)
-      {
-        paramBundle = (RespGetSameStateList)paramBundle.getSerializable("k_resp_mate");
-        a(paramBoolean, bool1, paramInt, paramBundle.vCookie, paramBundle.vUserInfos);
-        return;
-      }
-      a(false, bool1, paramInt, null, null);
-      return;
-      paramBundle = (StatusServlet.RspGetHistory)paramBundle.getSerializable("k_data");
-      a(paramBoolean, paramBundle.startTime, paramBundle.endTime, paramBundle.over, paramBundle.richStatus, paramBundle.isAddFromCard);
-      return;
-      Object localObject = paramBundle.getStringArrayList("k_status_key");
-      ArrayList localArrayList = new ArrayList();
-      if (localObject != null)
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          localArrayList.add(((String)((Iterator)localObject).next()).getBytes());
-        }
-      }
-      a(paramBoolean, localArrayList, paramBundle.getIntegerArrayList("k_status_err_code_list"));
-      return;
-      a(paramBoolean, (ArrayList)paramBundle.get("k_resp_hot_status"));
-      return;
-      a(paramBoolean, paramBundle);
-      return;
-      b(paramBoolean, paramBundle);
     } while (!QLog.isColorLevel());
-    QLog.d("StatusObserver", 2, "clear self sign ret:" + paramBoolean);
+    QLog.d("QzoneAlbumRedTouchManager", 2, "isShowedRedTouchToday false");
+    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneAlbumRedTouchManager", 2, "isShowedRedTouchToday true");
+    }
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.a == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneAlbumRedTouchManager", 2, "clearRedTouch");
+    }
+    ThreadManager.getSubThreadHandler().post(new QzoneAlbumRedTouchManager.1(this));
+  }
+  
+  public boolean b()
+  {
+    if (this.a == null) {
+      return false;
+    }
+    Object localObject = (avpq)this.a.getManager(36);
+    if (localObject == null) {
+      return false;
+    }
+    localObject = ((avpq)localObject).a(String.valueOf(100180));
+    return (localObject != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject).iNewFlag.get() == 1);
+  }
+  
+  public void c()
+  {
+    if ((!bhog.d()) && (bhog.c()) && (bhog.e()))
+    {
+      LocalMultiProcConfig.putLong("key_photo_guide_last_check", System.currentTimeMillis());
+      if (b()) {
+        break label65;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneAlbumRedTouchManager", 2, "not red");
+      }
+      if ((!a()) && (c())) {
+        d();
+      }
+    }
+    label65:
+    while (c()) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneAlbumRedTouchManager", 2, "has Red but clear Red Touch");
+    }
+    b();
+  }
+  
+  @TargetApi(9)
+  public void d()
+  {
+    int i = QzoneConfig.getInstance().getConfig("PhotoUpload", "GuideSelectPhotoSendRedJumpToQzone", 0);
+    SharedPreferences.Editor localEditor = a().edit().putLong("key_photo_guide_has_red_date", System.currentTimeMillis());
+    if (Build.VERSION.SDK_INT < 9) {
+      localEditor.commit();
+    }
+    while ((i == 1) && (this.a != null) && (this.a.getApp() != null) && (avfd.a(this.a.getApp(), 84)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneAlbumRedTouchManager", 2, "GetQZonePhotoGuideCheck supportJumpToQzone");
+      }
+      new avfd(this.a, this).a();
+      return;
+      localEditor.apply();
+    }
+    a();
+  }
+  
+  public void onDestroy()
+  {
+    this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avfa
  * JD-Core Version:    0.7.0.1
  */

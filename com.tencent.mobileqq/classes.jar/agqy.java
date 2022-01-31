@@ -1,27 +1,12 @@
-import org.json.JSONArray;
-
-public class agqy
+public abstract interface agqy
 {
-  public int a;
-  public String a;
-  public JSONArray a;
-  public int b;
-  public String b;
-  public JSONArray b;
-  public int c;
-  public String c;
-  public JSONArray c;
-  public String d;
-  public JSONArray d;
-  public String e;
-  public JSONArray e;
-  public String f;
-  public String g;
-  public String h;
+  public abstract void a(long paramLong, float paramFloat, String paramString);
+  
+  public abstract void b(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agqy
  * JD-Core Version:    0.7.0.1
  */

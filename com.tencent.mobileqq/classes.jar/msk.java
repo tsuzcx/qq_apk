@@ -1,10 +1,24 @@
-public abstract interface msk
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PopupDialog;
+
+public class msk
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3);
+  public msk(PopupDialog paramPopupDialog) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (PopupDialog.a.b != null) {
+      PopupDialog.a.b.onClick(paramDialogInterface, paramInt);
+    }
+    paramDialogInterface.dismiss();
+    PopupDialog.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     msk
  * JD-Core Version:    0.7.0.1
  */

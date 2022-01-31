@@ -1,83 +1,114 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.Player;
+import ConfigPush.FileStorageServerListInfo;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 
 public class ayqg
 {
-  public int a;
-  public long a;
   public String a;
-  public int b;
-  public long b;
+  public ArrayList<FileStorageServerListInfo> a;
+  public int[] a;
+  public String b;
+  public ArrayList<FileStorageServerListInfo> b;
+  public int[] b;
   
-  public ayqg() {}
-  
-  public ayqg(long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString)
+  public ayqg()
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfInt = new int[6];
+    this.jdField_b_of_type_ArrayOfInt = new int[6];
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public ayqg(oidb_0x6c2.Player paramPlayer)
+  public ArrayList<FileStorageServerListInfo> a(String paramString)
   {
-    this.jdField_a_of_type_Long = paramPlayer.uint64_uin.get();
-    this.jdField_b_of_type_Long = paramPlayer.uint64_time.get();
-    this.jdField_a_of_type_Int = paramPlayer.int32_amount.get();
-    this.jdField_b_of_type_Int = paramPlayer.int32_index.get();
-    this.jdField_a_of_type_JavaLangString = paramPlayer.bytes_tips.get().toStringUtf8();
-  }
-  
-  public String a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uin", this.jdField_a_of_type_Long);
-      localJSONObject.put("time", this.jdField_b_of_type_Long);
-      localJSONObject.put("amount", this.jdField_a_of_type_Int);
-      localJSONObject.put("index", this.jdField_b_of_type_Int);
-      localJSONObject.put("tips", this.jdField_a_of_type_JavaLangString);
-      return localJSONObject.toString();
+    if ((paramString != null) && (paramString.equals(this.jdField_a_of_type_JavaLangString))) {
+      return this.jdField_a_of_type_JavaUtilArrayList;
     }
-    catch (JSONException localJSONException)
+    if ((paramString != null) && (paramString.equals(this.jdField_b_of_type_JavaLangString))) {
+      return this.jdField_b_of_type_JavaUtilArrayList;
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+      this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_JavaUtilArrayList.size()];
+    }
+    if ((this.jdField_b_of_type_JavaUtilArrayList != null) && (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)) {
+      this.jdField_b_of_type_ArrayOfInt = new int[this.jdField_b_of_type_JavaUtilArrayList.size()];
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (paramString1 != null) {}
+    for (;;)
     {
-      for (;;)
+      try
       {
-        QLog.e(".troop.send_gift", 2, getClass().getSimpleName() + " toJson error. e=" + localJSONException);
+        int i;
+        if (paramString1.equals(this.jdField_a_of_type_JavaLangString))
+        {
+          localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+          paramString1 = this.jdField_a_of_type_ArrayOfInt;
+          if ((localArrayList == null) || (localArrayList.size() <= 0) || (paramString1 == null) || (paramString1.length <= 0)) {
+            break;
+          }
+          paramString2 = new URL(paramString2).getHost();
+          if ((paramString2 == null) || (paramString2.length() <= 0)) {
+            break;
+          }
+          i = 0;
+          if (i >= localArrayList.size()) {
+            break;
+          }
+          String str = ((FileStorageServerListInfo)localArrayList.get(i)).sIP;
+          if ((str != null) && (str.equalsIgnoreCase(paramString2)))
+          {
+            if (paramString1.length <= i) {
+              break;
+            }
+            paramString1[i] += 1;
+          }
+        }
+        else
+        {
+          if ((paramString1 == null) || (!paramString1.equals(this.jdField_b_of_type_JavaLangString))) {
+            break label163;
+          }
+          localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
+          paramString1 = this.jdField_b_of_type_ArrayOfInt;
+          continue;
+        }
+        i += 1;
+        continue;
+        paramString1 = null;
       }
+      catch (MalformedURLException paramString1)
+      {
+        return;
+      }
+      label163:
+      ArrayList localArrayList = null;
     }
   }
   
-  public void a(String paramString)
+  public int[] a(String paramString)
   {
-    paramString = new String(paramString);
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_Long = paramString.optLong("uin");
-      this.jdField_b_of_type_Long = paramString.optLong("time");
-      this.jdField_a_of_type_Int = paramString.optInt("amount");
-      this.jdField_b_of_type_Int = paramString.optInt("index");
-      this.jdField_a_of_type_JavaLangString = paramString.optString("tips");
-      return;
+    if ((paramString != null) && (paramString.equals(this.jdField_a_of_type_JavaLangString))) {
+      return this.jdField_a_of_type_ArrayOfInt;
     }
-    catch (JSONException paramString)
-    {
-      QLog.e(".troop.send_gift", 2, getClass().getSimpleName() + " fromJson error. e=" + paramString);
+    if ((paramString != null) && (paramString.equals(this.jdField_b_of_type_JavaLangString))) {
+      return this.jdField_b_of_type_ArrayOfInt;
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayqg
  * JD-Core Version:    0.7.0.1
  */

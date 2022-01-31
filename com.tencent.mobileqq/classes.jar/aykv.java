@@ -1,26 +1,22 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
-class aykv
-  implements Comparator<Map.Entry<String, aykx>>
+final class aykv
+  extends Editable.Factory
 {
-  aykv(ayku paramayku) {}
+  aykv(int paramInt) {}
   
-  public int a(Map.Entry<String, aykx> paramEntry1, Map.Entry<String, aykx> paramEntry2)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    float f = ((aykx)paramEntry2.getValue()).a() - ((aykx)paramEntry1.getValue()).a();
-    if (f > 0.0F) {
-      return 1;
+    if ((paramCharSequence instanceof ayks)) {
+      return (Editable)paramCharSequence;
     }
-    if (f < 0.0F) {
-      return -1;
-    }
-    return 0;
+    return new ayks(paramCharSequence, 3, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aykv
  * JD-Core Version:    0.7.0.1
  */

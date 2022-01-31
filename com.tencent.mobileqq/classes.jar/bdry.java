@@ -1,16 +1,24 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
 class bdry
-  implements bdrr
+  extends BroadcastReceiver
 {
-  private bdry(bdrx parambdrx) {}
+  bdry(bdrx parambdrx) {}
   
-  public void a(long paramLong, double paramDouble)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a = paramDouble;
+    boolean bool = "tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction());
+    bdru.c("CallingStateMonitor", String.format("onVideoChattingStateChanged isChatting=%s", new Object[] { Boolean.valueOf(bool) }));
+    if (bdrx.a(this.a) != null) {
+      bdrx.a(this.a).c(bool);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdry
  * JD-Core Version:    0.7.0.1
  */

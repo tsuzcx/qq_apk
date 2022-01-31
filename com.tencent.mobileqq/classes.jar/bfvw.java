@@ -1,15 +1,10 @@
-import cooperation.qzone.model.BusinessAlbumInfo;
-
-public class bfvw
+public abstract interface bfvw
 {
-  public static String a(int paramInt)
-  {
-    return BusinessAlbumInfo.a(paramInt);
-  }
+  public abstract String a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfvw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.gamecenter.view.ScrollTextView;
-import java.lang.ref.WeakReference;
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodCodec;
 
 public class apzj
-  extends Handler
+  extends apzh
 {
-  private WeakReference<ScrollTextView> a;
-  
-  public apzj(ScrollTextView paramScrollTextView)
+  public apzj(String paramString, BinaryMessenger paramBinaryMessenger)
   {
-    super(Looper.getMainLooper());
-    this.a = new WeakReference(paramScrollTextView);
+    super(paramString, paramBinaryMessenger);
   }
   
-  public void handleMessage(Message paramMessage)
+  public MethodChannel.MethodCallHandler a()
   {
-    ScrollTextView localScrollTextView = (ScrollTextView)this.a.get();
-    if (localScrollTextView == null)
-    {
-      removeCallbacksAndMessages(null);
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (ScrollTextView.a(localScrollTextView) != null)
-    {
-      localScrollTextView.b();
-      ScrollTextView.a(localScrollTextView);
-      if (ScrollTextView.b(localScrollTextView) >= ScrollTextView.a(localScrollTextView).length) {
-        ScrollTextView.a(localScrollTextView, 0);
-      }
-      localScrollTextView.setText(ScrollTextView.a(localScrollTextView)[ScrollTextView.b(localScrollTextView)]);
-    }
-    removeMessages(9001);
-    sendEmptyMessageDelayed(9001, ScrollTextView.a(localScrollTextView));
+    return new apzk(this);
+  }
+  
+  public MethodCodec a()
+  {
+    return apzl.a;
   }
 }
 

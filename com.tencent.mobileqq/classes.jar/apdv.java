@@ -1,21 +1,30 @@
-import android.app.Activity;
-import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
+import com.tencent.weiyun.transmission.upload.UploadManager;
 
-final class apdv
-  implements apca
+class apdv
+  implements bifm
 {
-  apdv(Activity paramActivity, Intent paramIntent) {}
+  apdv(apdj paramapdj) {}
   
-  public void a()
+  public void a(long paramLong, float paramFloat) {}
+  
+  public void a(String paramString)
   {
-    aphp.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, 103);
+    apdj.b(this.a, false);
   }
   
-  public void b() {}
+  public void a(String paramString1, String paramString2)
+  {
+    apdj.a(this.a, true);
+    apdj.b(this.a, false);
+    bick.a(apdj.a(this.a).getApplication(), true);
+    WeiyunTransmissionGlobal.getInstance().getUploadManager().loadLibFromPath(paramString1);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apdv
  * JD-Core Version:    0.7.0.1
  */

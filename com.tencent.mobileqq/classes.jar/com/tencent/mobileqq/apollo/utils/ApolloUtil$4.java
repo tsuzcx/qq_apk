@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aisa;
-import aisi;
+import ajey;
+import ajfg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -41,9 +41,9 @@ final class ApolloUtil$4
           }
         } while (i <= 0);
         this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.saveExtInfoToExtStr("is_share_ark_message_action_played", "2");
-        localObject2 = ((aisi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(249)).a();
+        localObject2 = ((ajfg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(249)).a();
         if (localObject2 != null) {
-          ((aisa)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, i);
+          ((ajey)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, i);
         }
       } while (localObject1 == null);
       localObject1 = (QQMessageFacade)((AppRuntime)localObject1).getManager(20);

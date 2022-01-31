@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.bubble;
 
-import almv;
-import alnc;
+import ambj;
+import ambq;
 import android.animation.AnimatorSet;
 
 public class BubbleInterActiveAnim$4
   implements Runnable
 {
-  public BubbleInterActiveAnim$4(almv paramalmv, alnc paramalnc) {}
+  public BubbleInterActiveAnim$4(ambj paramambj, ambq paramambq) {}
   
   public void run()
   {

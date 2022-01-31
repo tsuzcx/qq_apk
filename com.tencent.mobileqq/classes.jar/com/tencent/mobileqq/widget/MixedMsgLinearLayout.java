@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.widget;
 
-import adkd;
-import adni;
-import ahpm;
-import ahpo;
-import amyk;
+import adve;
+import adyh;
+import aice;
+import aicg;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -22,12 +21,13 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import axkd;
-import axkn;
-import axwd;
-import bbgb;
-import bbjz;
-import bbka;
+import anos;
+import ayki;
+import ayks;
+import aywk;
+import bcjb;
+import bcmx;
+import bcmy;
 import com.etrump.mixlayout.ETTextView;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
@@ -45,20 +45,20 @@ import java.util.List;
 
 public class MixedMsgLinearLayout
   extends LinearLayout
-  implements ahpm
+  implements aice
 {
   private int jdField_a_of_type_Int;
-  private ahpm jdField_a_of_type_Ahpm;
-  private ahpo jdField_a_of_type_Ahpo;
+  private aice jdField_a_of_type_Aice;
+  private aicg jdField_a_of_type_Aicg;
   private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  public bbgb a;
-  private bbjz jdField_a_of_type_Bbjz = new bbjz(this);
-  private bbka jdField_a_of_type_Bbka = new bbka(this);
+  public bcjb a;
+  private bcmx jdField_a_of_type_Bcmx = new bcmx(this);
+  private bcmy jdField_a_of_type_Bcmy = new bcmy(this);
   private boolean jdField_a_of_type_Boolean;
   private final int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private int jdField_b_of_type_Int;
   private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
-  public bbgb b;
+  public bcjb b;
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = -5250572;
   private boolean jdField_c_of_type_Boolean = true;
@@ -82,9 +82,9 @@ public class MixedMsgLinearLayout
     localLayoutParams.rightMargin = 0;
     localChatThumbView.setLayoutParams(localLayoutParams);
     localChatThumbView.setAdjustViewBounds(true);
-    int m = axwd.a(false);
-    int i = axwd.c(false);
-    int j = axwd.d(false);
+    int m = aywk.a(false);
+    int i = aywk.c(false);
+    int j = aywk.d(false);
     localChatThumbView.setMaxHeight(m);
     localChatThumbView.setMaxWidth(m);
     m = paramMessageForPic.thumbWidth;
@@ -105,11 +105,11 @@ public class MixedMsgLinearLayout
       float f1 = getResources().getDisplayMetrics().densityDpi / 160.0F;
       j = (int)(k * f1 + 0.5F);
       i = (int)(i * f1 + 0.5F);
-      if (!(axwd.b() instanceof SkinnableBitmapDrawable)) {
+      if (!(aywk.b() instanceof SkinnableBitmapDrawable)) {
         break label526;
       }
-      paramMessageForPic = ((SkinnableBitmapDrawable)axwd.b()).getBitmap();
-      localChatThumbView.setImageDrawable(new amyk(getResources(), paramMessageForPic, j, i, -921103));
+      paramMessageForPic = ((SkinnableBitmapDrawable)aywk.b()).getBitmap();
+      localChatThumbView.setImageDrawable(new anos(getResources(), paramMessageForPic, j, i, -921103));
       return localChatThumbView;
       i = k;
       break;
@@ -178,268 +178,105 @@ public class MixedMsgLinearLayout
       }
     }
     label526:
-    if ((axwd.b() instanceof BitmapDrawable))
+    if ((aywk.b() instanceof BitmapDrawable))
     {
-      paramMessageForPic = ((BitmapDrawable)axwd.b()).getBitmap();
-      localChatThumbView.setImageDrawable(new amyk(getResources(), paramMessageForPic, j, i, -921103));
+      paramMessageForPic = ((BitmapDrawable)aywk.b()).getBitmap();
+      localChatThumbView.setImageDrawable(new anos(getResources(), paramMessageForPic, j, i, -921103));
       return localChatThumbView;
     }
-    localChatThumbView.setImageDrawable(axwd.b());
+    localChatThumbView.setImageDrawable(aywk.b());
     return localChatThumbView;
   }
   
   private AnimationTextView a()
   {
     AnimationTextView localAnimationTextView = new AnimationTextView(getContext());
-    localAnimationTextView.setTextColor(getContext().getResources().getColorStateList(2131101278));
-    localAnimationTextView.setLinkTextColor(getContext().getResources().getColorStateList(2131101272));
-    localAnimationTextView.setSpannableFactory(axkd.a);
+    localAnimationTextView.setTextColor(getContext().getResources().getColorStateList(2131166872));
+    localAnimationTextView.setLinkTextColor(getContext().getResources().getColorStateList(2131166866));
+    localAnimationTextView.setSpannableFactory(ayki.a);
     localAnimationTextView.setMaxWidth(BaseChatItemLayout.e);
     localAnimationTextView.setMovementMethod(LinkMovementMethod.getInstance());
     localAnimationTextView.setPadding(0, 0, 0, 0);
     localAnimationTextView.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-    localAnimationTextView.jdField_a_of_type_Bbgb = this.jdField_a_of_type_Bbgb;
+    localAnimationTextView.onDoubleClick = this.jdField_a_of_type_Bcjb;
     return localAnimationTextView;
   }
   
-  public int a()
-  {
-    int k = getChildCount();
-    int j = 0;
-    int i = 0;
-    if (j < k)
-    {
-      View localView = getChildAt(j);
-      if (!(localView instanceof ahpm)) {
-        break label51;
-      }
-      i = ((ahpm)localView).a() + i;
-    }
-    label51:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return i;
-    }
-  }
-  
-  public int a(int paramInt1, int paramInt2)
-  {
-    getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-    int m = paramInt1 - this.jdField_a_of_type_ArrayOfInt[0] - getPaddingLeft();
-    int n = paramInt2 - this.jdField_a_of_type_ArrayOfInt[1] - getPaddingTop();
-    int k = getChildCount();
-    int j = 0;
-    int i = 0;
-    Object localObject;
-    if (j < k)
-    {
-      localObject = getChildAt(j);
-      if (!(localObject instanceof ahpm)) {
-        break label238;
-      }
-      ahpm localahpm = (ahpm)localObject;
-      if ((m > ((View)localObject).getLeft()) && (m < ((View)localObject).getRight()) && (n > ((View)localObject).getTop()) && (n < ((View)localObject).getBottom()))
-      {
-        this.jdField_a_of_type_Ahpm = localahpm;
-        return localahpm.a(paramInt1, paramInt2) + i;
-      }
-      i = localahpm.a() + i;
-    }
-    label235:
-    label238:
-    for (;;)
-    {
-      j += 1;
-      break;
-      j = 0;
-      i = 0;
-      if (j < k)
-      {
-        localObject = getChildAt(j);
-        if (!(localObject instanceof ahpm)) {
-          break label235;
-        }
-        localObject = (ahpm)localObject;
-        if (this.jdField_a_of_type_Ahpm == localObject) {
-          return this.jdField_a_of_type_Ahpm.a(paramInt1, paramInt2) + i;
-        }
-        i = ((ahpm)localObject).a() + i;
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        return -1;
-      }
-    }
-  }
-  
-  @Nullable
-  public ahpo a()
-  {
-    return this.jdField_a_of_type_Ahpo;
-  }
-  
-  @Nullable
-  public View a()
-  {
-    return this;
-  }
-  
-  @Nullable
   public CharSequence a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    int j = getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      View localView = getChildAt(i);
-      if ((localView instanceof ahpm)) {
-        localStringBuilder.append(((ahpm)localView).a());
-      }
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public void a(@ColorInt int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    int i;
-    int k;
-    label46:
-    ahpm localahpm;
-    int m;
-    int j;
-    if ((paramInt1 == -1) || (paramInt2 == -1))
-    {
-      this.jdField_a_of_type_Int = -1;
-      this.jdField_b_of_type_Int = -1;
-      this.jdField_b_of_type_Boolean = false;
-      paramInt2 = this.jdField_a_of_type_Int;
-      i = this.jdField_b_of_type_Int;
-      int n = getChildCount();
-      k = 0;
-      paramInt1 = 0;
-      if (k >= n) {
-        break label257;
-      }
-      View localView = getChildAt(k);
-      if (!(localView instanceof ahpm)) {
-        break label266;
-      }
-      localahpm = (ahpm)localView;
-      if (paramInt1 != 0) {
-        break label237;
-      }
-      m = localahpm.a();
-      if (paramInt2 < m) {
-        break label190;
-      }
-      i -= m;
-      localahpm.a(-1, -1);
-      j = paramInt2 - m;
-      paramInt2 = paramInt1;
-      paramInt1 = j;
-      label120:
-      localView.invalidate();
-    }
-    for (;;)
-    {
-      k += 1;
-      j = paramInt2;
-      paramInt2 = paramInt1;
-      paramInt1 = j;
-      break label46;
-      if (paramInt1 > paramInt2) {
-        this.jdField_a_of_type_Int = paramInt2;
-      }
-      for (this.jdField_b_of_type_Int = paramInt1;; this.jdField_b_of_type_Int = paramInt2)
-      {
-        if (this.jdField_b_of_type_Int - this.jdField_a_of_type_Int <= 0) {
-          break label188;
-        }
-        this.jdField_b_of_type_Boolean = true;
-        break;
-        this.jdField_a_of_type_Int = paramInt1;
-      }
-      label188:
-      break;
-      label190:
-      if (i > m)
-      {
-        j = paramInt1;
-        paramInt1 = m;
-      }
-      for (;;)
-      {
-        localahpm.a(paramInt2, paramInt1);
-        if (j != 0) {
-          break label258;
-        }
-        i -= m;
-        paramInt1 = 0;
-        paramInt2 = j;
-        break;
-        paramInt1 = i;
-        j = 1;
-      }
-      label237:
-      localahpm.a(-1, -1);
-      j = paramInt1;
-      paramInt1 = paramInt2;
-      paramInt2 = j;
-      break label120;
-      label257:
-      return;
-      label258:
-      paramInt1 = paramInt2;
-      paramInt2 = j;
-      break label120;
-      label266:
-      j = paramInt1;
-      paramInt1 = paramInt2;
-      paramInt2 = j;
-    }
-  }
-  
-  public void a(int paramInt, @NonNull int[] paramArrayOfInt, boolean paramBoolean)
-  {
-    int j = getChildCount();
+    int i3 = getChildCount();
+    int j = this.jdField_a_of_type_Int;
+    int k = this.jdField_b_of_type_Int;
+    int n = 0;
     int i = 0;
     Object localObject;
-    if (i < j)
+    int m;
+    int i1;
+    if (n < i3)
     {
-      localObject = getChildAt(i);
-      if (!(localObject instanceof ahpm)) {
-        break label79;
-      }
-      localObject = (ahpm)localObject;
-      int k = ((ahpm)localObject).a();
-      if (paramInt > k) {
-        paramInt -= k;
+      localObject = getChildAt(n);
+      if ((localObject instanceof aice))
+      {
+        localObject = (aice)localObject;
+        m = i;
+        if (i != 0) {
+          break label210;
+        }
+        i1 = ((aice)localObject).contentLength();
+        if (j >= i1)
+        {
+          m = k - i1;
+          k = j - i1;
+          j = m;
+        }
       }
     }
-    label79:
     for (;;)
     {
-      i += 1;
-      break;
-      ((ahpm)localObject).a(paramInt, paramArrayOfInt, paramBoolean);
-      return;
+      label96:
+      m = k;
+      i1 = j;
+      int i2 = i;
+      for (;;)
+      {
+        n += 1;
+        i = i2;
+        k = i1;
+        j = m;
+        break;
+        if (k <= i1) {
+          i = 1;
+        }
+        localObject = ((aice)localObject).selectContent();
+        if (localObject != null) {
+          localStringBuilder.append((CharSequence)localObject);
+        }
+        m = i;
+        if (i != 0) {
+          break label210;
+        }
+        j = k - i1;
+        k = 0;
+        break label96;
+        i2 = i;
+        i1 = k;
+        m = j;
+        if (n != 0)
+        {
+          localStringBuilder.append(" ");
+          i2 = i;
+          i1 = k;
+          m = j;
+        }
+      }
+      return localStringBuilder.toString();
+      label210:
+      i = k;
+      k = j;
+      j = i;
+      i = m;
     }
-  }
-  
-  public void a(@Nullable ahpo paramahpo)
-  {
-    this.jdField_a_of_type_Ahpo = paramahpo;
   }
   
   public void a(ColorStateList paramColorStateList1, ColorStateList paramColorStateList2)
@@ -473,23 +310,7 @@ public class MixedMsgLinearLayout
     }
   }
   
-  public void a(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MixedMsgLinearLayout", 2, "doSelecting msg = null.");
-      }
-      return;
-    }
-    if (this.jdField_a_of_type_Ahpo == null) {
-      throw new IllegalStateException("Has no bound delegate!");
-    }
-    this.jdField_a_of_type_Ahpm = null;
-    this.jdField_a_of_type_Ahpo.a(paramChatMessage);
-  }
-  
-  public void a(List<MessageRecord> paramList, adkd paramadkd)
+  public void a(List<MessageRecord> paramList, adve paramadve)
   {
     int k = 0;
     Object localObject1 = new ArrayList();
@@ -526,7 +347,7 @@ public class MixedMsgLinearLayout
       localObject1 = (View)((ArrayList)localObject3).get(i);
       detachViewFromParent((View)localObject1);
       ((AnimationTextView)localObject1).setText("");
-      this.jdField_a_of_type_Bbka.a((AnimationTextView)localObject1);
+      this.jdField_a_of_type_Bcmy.a((AnimationTextView)localObject1);
       i += 1;
     }
     j = paramList.size();
@@ -538,23 +359,23 @@ public class MixedMsgLinearLayout
       {
         localObject1 = new SelectableLinearLayout(getContext());
         ((LinearLayout)localObject1).setOrientation(1);
-        localObject2 = adni.a(getContext());
-        paramadkd.e = i;
-        paramadkd.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((ViewGroup)localObject2).findViewById(2131304981));
-        paramadkd.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((ViewGroup)localObject2).findViewById(2131304792));
-        paramadkd.jdField_b_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((ViewGroup)localObject2).findViewById(2131304808));
+        localObject2 = adyh.a(getContext());
+        paramadve.e = i;
+        paramadve.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((ViewGroup)localObject2).findViewById(2131370647));
+        paramadve.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((ViewGroup)localObject2).findViewById(2131370453));
+        paramadve.jdField_b_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((ViewGroup)localObject2).findViewById(2131370470));
         ((LinearLayout)localObject1).addView((View)localObject2);
         localObject2 = new ETTextView(getContext());
-        ((ETTextView)localObject2).setTextColor(getContext().getResources().getColorStateList(2131101278));
-        ((ETTextView)localObject2).setLinkTextColor(getContext().getResources().getColorStateList(2131101272));
-        ((ETTextView)localObject2).setEditableFactory(axkn.a);
-        ((ETTextView)localObject2).setSpannableFactory(axkd.a);
+        ((ETTextView)localObject2).setTextColor(getContext().getResources().getColorStateList(2131166872));
+        ((ETTextView)localObject2).setLinkTextColor(getContext().getResources().getColorStateList(2131166866));
+        ((ETTextView)localObject2).setEditableFactory(ayks.a);
+        ((ETTextView)localObject2).setSpannableFactory(ayki.a);
         ((ETTextView)localObject2).setMaxWidth(BaseChatItemLayout.d);
         ((ETTextView)localObject2).setMovementMethod(LinkMovementMethod.getInstance());
         ((LinearLayout)localObject1).addView((View)localObject2);
         ((LinearLayout)localObject1).setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
         addViewInLayout((View)localObject1, i, ((LinearLayout)localObject1).getLayoutParams(), true);
-        paramadkd.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localObject2);
+        paramadve.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localObject2);
       }
       label536:
       do
@@ -566,7 +387,7 @@ public class MixedMsgLinearLayout
           if (!(localObject2 instanceof MessageForText)) {
             break label536;
           }
-          localObject2 = this.jdField_a_of_type_Bbka.a();
+          localObject2 = this.jdField_a_of_type_Bcmy.a();
           localObject1 = localObject2;
           if (localObject2 == null) {
             localObject1 = a();
@@ -574,7 +395,7 @@ public class MixedMsgLinearLayout
           addViewInLayout((View)localObject1, i, ((AnimationTextView)localObject1).getLayoutParams(), true);
         }
       } while (!(localObject2 instanceof MessageForPic));
-      localObject1 = this.jdField_a_of_type_Bbjz.a();
+      localObject1 = this.jdField_a_of_type_Bcmx.a();
       if (localObject1 != null) {
         break label704;
       }
@@ -607,7 +428,7 @@ public class MixedMsgLinearLayout
         {
           ((ChatThumbView)paramList).setImageDrawable(null);
           ((ChatThumbView)paramList).setURLDrawableDownListener(null);
-          this.jdField_a_of_type_Bbjz.a((ChatThumbView)paramList);
+          this.jdField_a_of_type_Bcmx.a((ChatThumbView)paramList);
         }
         i += 1;
       }
@@ -615,98 +436,102 @@ public class MixedMsgLinearLayout
     }
   }
   
-  @Nullable
-  public CharSequence b()
+  public void bind(@Nullable aicg paramaicg)
   {
-    CharSequence localCharSequence = a();
-    if (localCharSequence != null) {
-      return localCharSequence.subSequence(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    }
-    return null;
+    this.jdField_a_of_type_Aicg = paramaicg;
   }
   
-  public CharSequence c()
+  public void clearHighlightContent()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    int j = getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      View localView = getChildAt(i);
+      if ((localView instanceof aice)) {
+        ((aice)localView).clearHighlightContent();
+      }
+      i += 1;
+    }
+  }
+  
+  @Nullable
+  public CharSequence content()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    int i3 = getChildCount();
-    int j = this.jdField_a_of_type_Int;
-    int k = this.jdField_b_of_type_Int;
-    int n = 0;
+    int j = getChildCount();
     int i = 0;
-    Object localObject;
-    int m;
-    int i1;
-    if (n < i3)
+    while (i < j)
     {
-      localObject = getChildAt(n);
-      if ((localObject instanceof ahpm))
-      {
-        localObject = (ahpm)localObject;
-        m = i;
-        if (i != 0) {
-          break label211;
-        }
-        i1 = ((ahpm)localObject).a();
-        if (j >= i1)
-        {
-          m = k - i1;
-          k = j - i1;
-          j = m;
-        }
+      View localView = getChildAt(i);
+      if ((localView instanceof aice)) {
+        localStringBuilder.append(((aice)localView).content());
       }
+      i += 1;
     }
+    return localStringBuilder.toString();
+  }
+  
+  public int contentLength()
+  {
+    int k = getChildCount();
+    int j = 0;
+    int i = 0;
+    if (j < k)
+    {
+      View localView = getChildAt(j);
+      if (!(localView instanceof aice)) {
+        break label51;
+      }
+      i = ((aice)localView).contentLength() + i;
+    }
+    label51:
     for (;;)
     {
-      label96:
-      m = k;
-      i1 = j;
-      int i2 = i;
-      for (;;)
-      {
-        n += 1;
-        i = i2;
-        k = i1;
-        j = m;
-        break;
-        if (k <= i1) {
-          i = 1;
-        }
-        localObject = ((ahpm)localObject).b();
-        if (localObject != null) {
-          localStringBuilder.append((CharSequence)localObject);
-        }
-        m = i;
-        if (i != 0) {
-          break label211;
-        }
-        j = k - i1;
-        k = 0;
-        break label96;
-        i2 = i;
-        i1 = k;
-        m = j;
-        if (n != 0)
-        {
-          localStringBuilder.append(" ");
-          i2 = i;
-          i1 = k;
-          m = j;
-        }
-      }
-      return localStringBuilder.toString();
-      label211:
-      i = k;
-      k = j;
-      j = i;
-      i = m;
+      j += 1;
+      break;
+      return i;
     }
   }
   
-  public void f()
+  @Nullable
+  public aicg delegate()
   {
-    if (!h())
+    return this.jdField_a_of_type_Aicg;
+  }
+  
+  public void doSelecting(ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage == null)
     {
-      g();
+      if (QLog.isColorLevel()) {
+        QLog.d("MixedMsgLinearLayout", 2, "doSelecting msg = null.");
+      }
+      return;
+    }
+    if (this.jdField_a_of_type_Aicg == null) {
+      throw new IllegalStateException("Has no bound delegate!");
+    }
+    this.jdField_a_of_type_Aice = null;
+    this.jdField_a_of_type_Aicg.a(paramChatMessage);
+  }
+  
+  public boolean hasSelected()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public void highlightBackgroundColor(@ColorInt int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void highlightContent()
+  {
+    if (!hasSelected())
+    {
+      clearHighlightContent();
       return;
     }
     int j = getChildCount();
@@ -716,14 +541,14 @@ public class MixedMsgLinearLayout
     if (i < j)
     {
       localObject = getChildAt(i);
-      if ((localObject instanceof ahpm))
+      if ((localObject instanceof aice))
       {
-        localObject = (ahpm)localObject;
-        if (!((ahpm)localObject).h()) {
+        localObject = (aice)localObject;
+        if (!((aice)localObject).hasSelected()) {
           break label74;
         }
-        ((ahpm)localObject).a(this.jdField_c_of_type_Int);
-        ((ahpm)localObject).f();
+        ((aice)localObject).highlightBackgroundColor(this.jdField_c_of_type_Int);
+        ((aice)localObject).highlightContent();
       }
     }
     for (;;)
@@ -732,28 +557,35 @@ public class MixedMsgLinearLayout
       break label19;
       break;
       label74:
-      ((ahpm)localObject).g();
+      ((aice)localObject).clearHighlightContent();
     }
   }
   
-  public void g()
+  public void locationByIndex(int paramInt, @NonNull int[] paramArrayOfInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = false;
     int j = getChildCount();
     int i = 0;
-    while (i < j)
+    Object localObject;
+    if (i < j)
     {
-      View localView = getChildAt(i);
-      if ((localView instanceof ahpm)) {
-        ((ahpm)localView).g();
+      localObject = getChildAt(i);
+      if (!(localObject instanceof aice)) {
+        break label79;
       }
-      i += 1;
+      localObject = (aice)localObject;
+      int k = ((aice)localObject).contentLength();
+      if (paramInt > k) {
+        paramInt -= k;
+      }
     }
-  }
-  
-  public boolean h()
-  {
-    return this.jdField_b_of_type_Boolean;
+    label79:
+    for (;;)
+    {
+      i += 1;
+      break;
+      ((aice)localObject).locationByIndex(paramInt, paramArrayOfInt, paramBoolean);
+      return;
+    }
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -768,17 +600,17 @@ public class MixedMsgLinearLayout
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_b_of_type_Bbgb != null) {
+    if (this.jdField_b_of_type_Bcjb != null) {
       if ((this.jdField_b_of_type_AndroidViewMotionEvent != null) && (paramMotionEvent.getAction() == 0))
       {
         this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-        if ((this.jdField_b_of_type_AndroidViewMotionEvent != null) && (this.jdField_a_of_type_AndroidViewMotionEvent != null) && (AnimationTextView.a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent, paramMotionEvent)))
+        if ((this.jdField_b_of_type_AndroidViewMotionEvent != null) && (this.jdField_a_of_type_AndroidViewMotionEvent != null) && (AnimationTextView.isConsideredDoubleTap(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent, paramMotionEvent)))
         {
           this.jdField_a_of_type_AndroidViewMotionEvent = null;
           this.jdField_b_of_type_AndroidViewMotionEvent = null;
-          if (this.jdField_b_of_type_Bbgb != null)
+          if (this.jdField_b_of_type_Bcjb != null)
           {
-            this.jdField_b_of_type_Bbgb.a(this);
+            this.jdField_b_of_type_Bcjb.a(this);
             return true;
           }
         }
@@ -789,6 +621,174 @@ public class MixedMsgLinearLayout
       }
     }
     return super.onTouchEvent(paramMotionEvent);
+  }
+  
+  @Nullable
+  public CharSequence selectContent()
+  {
+    CharSequence localCharSequence = content();
+    if (localCharSequence != null) {
+      return localCharSequence.subSequence(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    }
+    return null;
+  }
+  
+  public void selectContent(int paramInt1, int paramInt2)
+  {
+    int i;
+    int k;
+    label46:
+    aice localaice;
+    int m;
+    int j;
+    if ((paramInt1 == -1) || (paramInt2 == -1))
+    {
+      this.jdField_a_of_type_Int = -1;
+      this.jdField_b_of_type_Int = -1;
+      this.jdField_b_of_type_Boolean = false;
+      paramInt2 = this.jdField_a_of_type_Int;
+      i = this.jdField_b_of_type_Int;
+      int n = getChildCount();
+      k = 0;
+      paramInt1 = 0;
+      if (k >= n) {
+        break label257;
+      }
+      View localView = getChildAt(k);
+      if (!(localView instanceof aice)) {
+        break label266;
+      }
+      localaice = (aice)localView;
+      if (paramInt1 != 0) {
+        break label237;
+      }
+      m = localaice.contentLength();
+      if (paramInt2 < m) {
+        break label190;
+      }
+      i -= m;
+      localaice.selectContent(-1, -1);
+      j = paramInt2 - m;
+      paramInt2 = paramInt1;
+      paramInt1 = j;
+      label120:
+      localView.invalidate();
+    }
+    for (;;)
+    {
+      k += 1;
+      j = paramInt2;
+      paramInt2 = paramInt1;
+      paramInt1 = j;
+      break label46;
+      if (paramInt1 > paramInt2) {
+        this.jdField_a_of_type_Int = paramInt2;
+      }
+      for (this.jdField_b_of_type_Int = paramInt1;; this.jdField_b_of_type_Int = paramInt2)
+      {
+        if (this.jdField_b_of_type_Int - this.jdField_a_of_type_Int <= 0) {
+          break label188;
+        }
+        this.jdField_b_of_type_Boolean = true;
+        break;
+        this.jdField_a_of_type_Int = paramInt1;
+      }
+      label188:
+      break;
+      label190:
+      if (i > m)
+      {
+        j = paramInt1;
+        paramInt1 = m;
+      }
+      for (;;)
+      {
+        localaice.selectContent(paramInt2, paramInt1);
+        if (j != 0) {
+          break label258;
+        }
+        i -= m;
+        paramInt1 = 0;
+        paramInt2 = j;
+        break;
+        paramInt1 = i;
+        j = 1;
+      }
+      label237:
+      localaice.selectContent(-1, -1);
+      j = paramInt1;
+      paramInt1 = paramInt2;
+      paramInt2 = j;
+      break label120;
+      label257:
+      return;
+      label258:
+      paramInt1 = paramInt2;
+      paramInt2 = j;
+      break label120;
+      label266:
+      j = paramInt1;
+      paramInt1 = paramInt2;
+      paramInt2 = j;
+    }
+  }
+  
+  public int touchIndex(int paramInt1, int paramInt2)
+  {
+    getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
+    int m = paramInt1 - this.jdField_a_of_type_ArrayOfInt[0] - getPaddingLeft();
+    int n = paramInt2 - this.jdField_a_of_type_ArrayOfInt[1] - getPaddingTop();
+    int k = getChildCount();
+    int j = 0;
+    int i = 0;
+    Object localObject;
+    if (j < k)
+    {
+      localObject = getChildAt(j);
+      if (!(localObject instanceof aice)) {
+        break label238;
+      }
+      aice localaice = (aice)localObject;
+      if ((m > ((View)localObject).getLeft()) && (m < ((View)localObject).getRight()) && (n > ((View)localObject).getTop()) && (n < ((View)localObject).getBottom()))
+      {
+        this.jdField_a_of_type_Aice = localaice;
+        return localaice.touchIndex(paramInt1, paramInt2) + i;
+      }
+      i = localaice.contentLength() + i;
+    }
+    label235:
+    label238:
+    for (;;)
+    {
+      j += 1;
+      break;
+      j = 0;
+      i = 0;
+      if (j < k)
+      {
+        localObject = getChildAt(j);
+        if (!(localObject instanceof aice)) {
+          break label235;
+        }
+        localObject = (aice)localObject;
+        if (this.jdField_a_of_type_Aice == localObject) {
+          return this.jdField_a_of_type_Aice.touchIndex(paramInt1, paramInt2) + i;
+        }
+        i = ((aice)localObject).contentLength() + i;
+      }
+      for (;;)
+      {
+        j += 1;
+        break;
+        return -1;
+      }
+    }
+  }
+  
+  @Nullable
+  public View view()
+  {
+    return this;
   }
 }
 

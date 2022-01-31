@@ -1,38 +1,29 @@
-import android.support.v4.app.FragmentActivity;
+import android.app.Activity;
 import android.view.View;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 
-public class nai
-  implements begw
+class nai
+  implements bfoq
 {
-  public nai(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  nai(nae paramnae, Activity paramActivity, String paramString, bfol parambfol) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    if (ReadInJoyNativeAdFragment.a(this.a)) {
-      return;
-    }
-    ReadInJoyNativeAdFragment.a(this.a, true);
-    paramView = "";
     switch (paramInt)
     {
     }
     for (;;)
     {
-      ReadInJoyNativeAdFragment.a(this.a).dismiss();
-      bbmy.a(this.a.getActivity(), 2, paramView, 0).b(0);
+      this.jdField_a_of_type_Bfol.dismiss();
       return;
-      nbe.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 1, 0);
-      paramView = this.a.getString(2131652659);
+      nae.b(this.jdField_a_of_type_Nae, this.jdField_a_of_type_AndroidAppActivity);
       continue;
-      nbe.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 2, 0);
-      paramView = this.a.getString(2131652661);
+      nae.a(this.jdField_a_of_type_Nae, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     nai
  * JD-Core Version:    0.7.0.1
  */

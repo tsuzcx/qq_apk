@@ -1,26 +1,37 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.pts.nativemodule.IPTSNavigateTo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.regex.Pattern;
+import android.content.res.Resources;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
 public class peg
-  implements IPTSNavigateTo
 {
-  private final String a = "PTSNavigateToModule";
-  
-  public void navigateTo(String paramString)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    QLog.i("PTSNavigateToModule", 1, "[navigateTo], url = " + paramString);
-    paramString = Pattern.compile("\\/").split(paramString);
-    if ((paramString != null) && (paramString.length > 0))
+    String str = null;
+    JSONObject localJSONObject = new JSONObject();
+    Object localObject2;
+    if ((paramBaseArticleInfo.mTopicRecommendFeedsInfo != null) && (paramBaseArticleInfo.mTopicRecommendFeedsInfo.a != null) && (paramBaseArticleInfo.mTopicRecommendFeedsInfo.a.size() != 0))
     {
-      paramString = paramString[(paramString.length - 1)];
-      Intent localIntent = new Intent();
-      localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.AppName", paramString);
-      PublicFragmentActivity.a(BaseActivity.sTopActivity, localIntent, PTSFragment.class);
+      localObject1 = (qdv)paramBaseArticleInfo.mTopicRecommendFeedsInfo.a.get(0);
+      localObject2 = BaseApplicationImpl.getApplication().getResources();
+      str = ((qdv)localObject1).d;
+    }
+    for (Object localObject1 = String.format(((Resources)localObject2).getString(2131718580), new Object[] { bhvh.a(((qdv)localObject1).b) });; localObject1 = null)
+    {
+      localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("participant_title_text", localObject1);
+      localJSONObject.put("id_participant_title", localObject2);
+      pen.a(paramBaseArticleInfo, localJSONObject, false);
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("participant_pic_url", str);
+      localJSONObject.put("id_participant_imge", localObject1);
+      localJSONObject.put("id_view_cover", new JSONObject());
+      pen.b(paramBaseArticleInfo, localJSONObject);
+      pen.m(paramBaseArticleInfo, localJSONObject);
+      localJSONObject.put("style_ID", "ReadInjoy_single_topic_cell");
+      pen.a(localJSONObject, paramBaseArticleInfo);
+      return localJSONObject;
     }
   }
 }

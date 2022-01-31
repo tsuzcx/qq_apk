@@ -1,33 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
 class bihn
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  static
+  bihn(bihm parambihm) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (!bihm.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    if ("tencent.video.q2v.startUploadPTV".equals(paramIntent.getAction()))
     {
-      jdField_a_of_type_Boolean = bool;
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMWebEffectCameraCaptureUnit", 2, "receive ACTION_BLESS_UPLOAD_PTV.");
+      }
+      switch (paramIntent.getIntExtra("broadcastType", 1))
+      {
+      }
+    }
+    do
+    {
       return;
-    }
-  }
-  
-  bihn(bihm parambihm, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Bundle();
-    bijy localbijy = this.jdField_a_of_type_Bihm.a().a;
-    if ((!jdField_a_of_type_Boolean) && (localbijy == null)) {
-      throw new AssertionError();
-    }
-    bihm.a(paramDialogInterface, localbijy);
-    paramDialogInterface.putInt("element_index", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bihm.a.a(35, paramDialogInterface);
+      paramContext = this.a.a.a();
+    } while ((paramContext == null) || (paramContext.isFinishing()));
+    paramContext.finish();
   }
 }
 

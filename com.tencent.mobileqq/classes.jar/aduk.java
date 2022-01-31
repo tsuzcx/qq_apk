@@ -1,25 +1,39 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageForVideo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.MessageForMarketFace;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
 class aduk
-  implements View.OnClickListener
+  implements bfoq
 {
-  aduk(aduj paramaduj) {}
+  aduk(adug paramadug, aobk paramaobk, bfol parambfol, MessageForMarketFace paramMessageForMarketFace) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (!aduj.a(this.a)) {}
-    do
+    switch (paramInt)
     {
-      do
+    default: 
+      return;
+    case 0: 
+      if (this.jdField_a_of_type_Aobk.a.jobType != 1) {
+        break;
+      }
+    }
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if (this.jdField_a_of_type_Aobk.a.jobType == 3) {}
+      for (boolean bool2 = true;; bool2 = false)
       {
+        EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Adug.b, this.jdField_a_of_type_Adug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_Aobk.a.epId, bool1, bool2);
+        this.jdField_a_of_type_Bfol.cancel();
         return;
-      } while ((!lbk.c()) || (!lbk.d()));
-      paramView = (ackl)aciy.a(paramView);
-    } while (paramView == null);
-    paramView = (MessageForVideo)paramView.a;
-    aduj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramView, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      }
+      aaod.a(this.jdField_a_of_type_Adug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adug.b, this.jdField_a_of_type_Adug.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Aobk.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.uniseq);
+      this.jdField_a_of_type_Bfol.cancel();
+      return;
+    }
   }
 }
 

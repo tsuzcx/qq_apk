@@ -1,156 +1,139 @@
-import NS_MOBILE_NEWEST_FEEDS.newest_feeds_req;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class auoc
+  extends auob
 {
-  private static final Pattern a = Pattern.compile("@?\\{uin:\\d+,nick(name)?:.*?\\}");
-  
-  public static newest_feeds_req a(int paramInt, long paramLong1, ArrayList<Long> paramArrayList, long paramLong2, String paramString)
+  public auob a()
   {
-    return new newest_feeds_req(paramInt, paramLong1, paramArrayList, paramLong2, paramString, bfpk.a(), null);
+    return this;
   }
   
-  public static newest_feeds_req a(Intent paramIntent)
+  public void a(int paramInt)
   {
-    if (paramIntent == null) {
-      return new newest_feeds_req();
-    }
-    paramIntent = paramIntent.getSerializableExtra("req");
-    if ((paramIntent != null) && ((paramIntent instanceof newest_feeds_req))) {
-      return (newest_feeds_req)paramIntent;
-    }
-    return new newest_feeds_req();
+    this.e = paramInt;
   }
   
-  public static Intent a(Intent paramIntent, newest_feeds_req paramnewest_feeds_req)
+  public void a(long paramLong)
   {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    localIntent.putExtra("req", paramnewest_feeds_req);
-    return localIntent;
+    this.jdField_c_of_type_Long = paramLong;
   }
   
-  public static String a(String paramString)
+  public void a(auod paramauod)
   {
-    if ("".equals(paramString)) {}
-    int j;
-    int i;
-    do
-    {
-      return null;
-      int k = paramString.indexOf("uin:");
-      j = paramString.indexOf(",");
-      i = 0;
-      if (k != -1) {
-        i = k + 4;
-      }
-    } while ((i == 0) || (j == -1));
-    return paramString.substring(i, j);
+    this.jdField_a_of_type_Auod = paramauod;
   }
   
-  public static String a(String paramString, QQAppInterface paramQQAppInterface)
+  public void a(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {
-      localObject = null;
-    }
-    Matcher localMatcher;
-    do
-    {
-      return localObject;
-      localMatcher = a.matcher(paramString);
-      localObject = paramString;
-    } while (!localMatcher.find());
-    String str2 = localMatcher.group();
-    String str3 = a(str2);
-    String str1 = "";
-    Object localObject = str1;
-    if (!TextUtils.isEmpty(str3))
-    {
-      ajjj localajjj = (ajjj)paramQQAppInterface.getManager(51);
-      localObject = str1;
-      if (localajjj != null)
-      {
-        localObject = localajjj.e(str3);
-        if (localObject == null) {
-          break label153;
-        }
-      }
-    }
-    label151:
-    label153:
-    for (localObject = ((Friends)localObject).getFriendNickWithAlias();; localObject = "")
-    {
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        localObject = b(str2);
-      }
-      for (;;)
-      {
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label151;
-        }
-        paramString = paramString.replace(str2, "@" + (String)localObject + " ");
-        break;
-      }
-      break;
-    }
+    this.jdField_g_of_type_JavaLangString = paramString;
   }
   
-  public static ArrayList<Long> a(QQAppInterface paramQQAppInterface)
+  public void a(boolean paramBoolean)
   {
-    paramQQAppInterface = (ajjj)paramQQAppInterface.getManager(51);
-    if (paramQQAppInterface == null) {
-      return null;
-    }
-    Object localObject = paramQQAppInterface.d();
-    if (localObject != null)
-    {
-      paramQQAppInterface = new ArrayList(((ArrayList)localObject).size());
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Friends localFriends = (Friends)((Iterator)localObject).next();
-        if ((localFriends != null) && (Friends.isValidUin(localFriends.uin))) {
-          paramQQAppInterface.add(Long.valueOf(Long.parseLong(localFriends.uin)));
-        }
-      }
-    }
-    for (;;)
-    {
-      return paramQQAppInterface;
-      paramQQAppInterface = null;
-    }
+    this.jdField_h_of_type_Boolean = paramBoolean;
   }
   
-  public static String b(String paramString)
+  public void b(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    int j;
-    int i;
-    do
-    {
-      return null;
-      int k = paramString.indexOf(",nick:");
-      j = paramString.indexOf("}");
-      i = 0;
-      if (k != -1) {
-        i = k + 6;
-      }
-    } while ((j == -1) || (i == 0));
-    return paramString.substring(i, j);
+    this.jdField_f_of_type_Int = paramInt;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.jdField_h_of_type_Long = paramLong;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_h_of_type_JavaLangString = paramString;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_j_of_type_Boolean = paramBoolean;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_g_of_type_Int = paramInt;
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void d(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+  }
+  
+  public void e(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void e(String paramString)
+  {
+    this.d = paramString;
+  }
+  
+  public void f(int paramInt)
+  {
+    this.jdField_h_of_type_Int = paramInt;
+  }
+  
+  public void f(String paramString)
+  {
+    this.jdField_f_of_type_JavaLangString = paramString;
+  }
+  
+  public void g(int paramInt)
+  {
+    this.jdField_j_of_type_Int = paramInt;
+  }
+  
+  public void g(String paramString)
+  {
+    this.r = paramString;
+  }
+  
+  public void h(int paramInt)
+  {
+    this.k = paramInt;
+  }
+  
+  public void i(int paramInt)
+  {
+    this.l = paramInt;
+  }
+  
+  public void j(int paramInt)
+  {
+    this.m = paramInt;
+  }
+  
+  public void k(int paramInt)
+  {
+    this.n = paramInt;
+  }
+  
+  public void l(int paramInt)
+  {
+    this.o = paramInt;
+  }
+  
+  public void m(int paramInt)
+  {
+    this.q = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auoc
  * JD-Core Version:    0.7.0.1
  */

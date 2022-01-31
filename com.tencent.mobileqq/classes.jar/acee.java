@@ -1,16 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class acee
-  implements DialogInterface.OnClickListener
+  implements bfoq
 {
-  public acee(UpgradeActivity paramUpgradeActivity) {}
+  public acee(SubAccountUgActivity paramSubAccountUgActivity, bfol parambfol) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    UpgradeActivity.a(this.a, true);
-    awqx.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, akgn.b(), String.valueOf(0), akgo.a(), "");
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.cancel();
+      do
+      {
+        return;
+      } while (!this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.b());
+      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a(2131719915);
+      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.b = true;
+      paramView = (ayat)this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app.getManager(28);
+      if (paramView != null) {
+        paramView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a);
+      }
+    }
   }
 }
 

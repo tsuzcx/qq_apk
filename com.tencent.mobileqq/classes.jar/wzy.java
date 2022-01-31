@@ -1,37 +1,26 @@
-import com.tencent.biz.videostory.video.FrameVideoHelper;
-import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 class wzy
-  implements wyj
+  extends Handler
 {
-  wzy(wzt paramwzt) {}
+  wzy(wzw paramwzw) {}
   
-  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    if ((!paramBoolean) || (paramArrayList == null))
+    switch (paramMessage.what)
     {
-      this.a.a(ajjy.a(2131638084));
-      QLog.w("EditVideoSmartMusicPart", 1, "extractFrame failed  data is null");
-    }
-    wzt localwzt;
-    StringBuilder localStringBuilder;
-    if (wzt.a(this.a) != null)
-    {
-      localwzt = this.a;
-      localStringBuilder = new StringBuilder().append(ajjy.a(2131637970)).append(wzt.a(this.a).a()).append("ms\n抽取图片数：");
-      if (paramArrayList != null) {
-        break label133;
-      }
-    }
-    label133:
-    for (int i = 0;; i = paramArrayList.size())
-    {
-      localwzt.a(i + "\n抽帧字节数：" + wzt.a(this.a).b() + "KB");
-      wzt.a(this.a, paramArrayList);
+    default: 
       return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopTipsPopWindow", 2, "MSG_SHOW_WINDOW mTroopNotify = " + this.a.jdField_a_of_type_Azpe + ", mTroopNotifyAd = " + this.a.jdField_a_of_type_Azpf);
+    }
+    if (this.a.jdField_a_of_type_Azpf != null) {
+      this.a.a(this.a.jdField_a_of_type_Azpf);
+    }
+    this.a.a();
   }
 }
 

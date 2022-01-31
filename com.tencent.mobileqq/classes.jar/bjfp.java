@@ -1,17 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public class bjfp
-  implements ValueAnimator.AnimatorUpdateListener
+class bjfp
+  implements TextWatcher
 {
-  public bjfp(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
+  bjfp(bjfm parambjfm) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void afterTextChanged(Editable paramEditable)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(f);
+    bjfm.a(this.a);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

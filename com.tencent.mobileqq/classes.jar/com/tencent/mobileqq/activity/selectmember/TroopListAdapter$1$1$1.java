@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import ahtc;
-import ahtd;
+import aifu;
+import aifv;
 
 class TroopListAdapter$1$1$1
   implements Runnable

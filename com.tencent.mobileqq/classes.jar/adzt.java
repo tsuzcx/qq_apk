@@ -1,11 +1,27 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.troop.widget.RedDotImageView;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class adzt
+class adzt
+  implements bfoq
 {
-  public int a;
-  public Drawable a;
-  public RedDotImageView a;
+  adzt(adzs paramadzs, MessageForShortVideo paramMessageForShortVideo, adzy paramadzy, bfol parambfol) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2) {
+        this.jdField_a_of_type_Adzs.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Adzy);
+      } else {
+        this.jdField_a_of_type_Adzs.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Adzy);
+      }
+    }
+  }
 }
 
 

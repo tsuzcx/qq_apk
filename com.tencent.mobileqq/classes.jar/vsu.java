@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
-public class vsu
-  implements DialogInterface.OnDismissListener
+public final class vsu
+  implements Parcelable.Creator<PublishParam>
 {
-  public vsu(QRCardActivity paramQRCardActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public PublishParam a(Parcel paramParcel)
   {
-    this.a.c = false;
+    return new PublishParam(paramParcel);
+  }
+  
+  public PublishParam[] a(int paramInt)
+  {
+    return new PublishParam[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vsu
  * JD-Core Version:    0.7.0.1
  */

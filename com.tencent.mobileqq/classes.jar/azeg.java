@@ -1,23 +1,75 @@
-import android.text.Spannable;
-import java.util.Comparator;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troop.activity.TroopAdminList;
 
-final class azeg
-  implements Comparator<azef>
+public class azeg
+  implements View.OnClickListener
 {
-  azeg(Spannable paramSpannable) {}
+  public azeg(TroopAdminList paramTroopAdminList) {}
   
-  public int a(azef paramazef1, azef paramazef2)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    int j = this.a.getSpanStart(paramazef1);
-    int k = this.a.getSpanStart(paramazef2);
-    if (j < k) {
-      i = -1;
+    paramView = (azei)paramView.getTag();
+    if (paramView != null)
+    {
+      paramView = paramView.a;
+      if (!this.a.app.getCurrentAccountUin().equals(paramView)) {
+        break label53;
+      }
+      paramView = new ProfileActivity.AllInOne(paramView, 0);
     }
-    while (j <= k) {
-      return i;
+    for (;;)
+    {
+      ProfileActivity.b(this.a, paramView);
+      return;
+      label53:
+      int i = this.a.getIntent().getIntExtra("t_s_f", -1);
+      Object localObject = ((ajxn)this.a.app.getManager(51)).e(paramView);
+      TroopInfo localTroopInfo = ((TroopManager)this.a.app.getManager(52)).b(this.a.c);
+      if ((localObject != null) && (((Friends)localObject).isFriend()))
+      {
+        if (localTroopInfo != null)
+        {
+          paramView = new ProfileActivity.AllInOne(paramView, 20);
+          paramView.d = this.a.d;
+          paramView.c = this.a.c;
+        }
+        for (;;)
+        {
+          paramView.h = ((Friends)localObject).name;
+          paramView.i = ((Friends)localObject).remark;
+          break;
+          paramView = new ProfileActivity.AllInOne(paramView, 1);
+        }
+      }
+      if (i == 1002)
+      {
+        paramView = new ProfileActivity.AllInOne(paramView, 97);
+      }
+      else if (localTroopInfo != null)
+      {
+        paramView = new ProfileActivity.AllInOne(paramView, 21);
+        paramView.d = this.a.d;
+        paramView.c = this.a.c;
+        paramView.l = 12;
+      }
+      else
+      {
+        paramView = new ProfileActivity.AllInOne(paramView, 23);
+        localObject = new Bundle();
+        ((Bundle)localObject).putString("troop_code", this.a.d);
+        ((Bundle)localObject).putString("troop_uin", this.a.c);
+        paramView.b.putBundle("flc_extra_param", (Bundle)localObject);
+      }
     }
-    return 1;
   }
 }
 

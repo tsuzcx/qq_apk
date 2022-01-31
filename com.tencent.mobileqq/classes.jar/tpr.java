@@ -1,29 +1,34 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import android.graphics.Bitmap;
 
-public class tpr
-  implements Animator.AnimatorListener
+class tpr
+  implements ule
 {
-  public tpr(XViewPager paramXViewPager) {}
+  tpr(tpq paramtpq, String paramString) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    if (XViewPager.a(this.a) != null) {
-      XViewPager.a(this.a).b(0);
+    if (tpq.a(this.jdField_a_of_type_Tpq))
+    {
+      paramString = bbdr.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
+      if (paramString == null)
+      {
+        tpq.a(this.jdField_a_of_type_Tpq, false);
+        return;
+      }
+      bool = vxy.a(paramString, tpq.a(this.jdField_a_of_type_Tpq));
+      paramString.recycle();
+      tpq.b(this.jdField_a_of_type_Tpq, bool);
+      return;
     }
+    boolean bool = vxy.a(paramBitmap, tpq.a(this.jdField_a_of_type_Tpq));
+    tpq.c(this.jdField_a_of_type_Tpq, bool);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(String paramString, Throwable paramThrowable)
   {
-    if (XViewPager.a(this.a) != null) {
-      XViewPager.a(this.a).b(0);
-    }
+    veg.e("DownloadPic2FileJob", "Download url failed url=%s", new Object[] { this.jdField_a_of_type_JavaLangString });
+    tpq.d(this.jdField_a_of_type_Tpq, false);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

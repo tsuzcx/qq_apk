@@ -1,14 +1,26 @@
-import com.tencent.widget.AbsListView;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.qqconnect.wtlogin.Login;
 
-public abstract interface begh
+public class begh
+  implements TextView.OnEditorActionListener
 {
-  public abstract void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3);
+  public begh(Login paramLogin) {}
   
-  public abstract void onScrollStateChanged(AbsListView paramAbsListView, int paramInt);
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 6)
+    {
+      this.a.b();
+      return true;
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     begh
  * JD-Core Version:    0.7.0.1
  */

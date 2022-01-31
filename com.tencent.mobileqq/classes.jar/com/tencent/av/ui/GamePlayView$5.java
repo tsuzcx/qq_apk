@@ -9,7 +9,15 @@ class GamePlayView$5
   
   public void run()
   {
-    GamePlayView.a(this.this$0).native_stopEmitter(this.a);
+    try
+    {
+      GamePlayView.a(this.this$0).native_stopEmitter(this.a);
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      localUnsatisfiedLinkError.printStackTrace();
+    }
   }
 }
 

@@ -1,51 +1,71 @@
 import android.app.Activity;
-import android.os.AsyncTask;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.SpannableString;
 import com.tencent.mobileqq.app.BaseActivity;
-import java.io.File;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.3;
+import com.tencent.qphone.base.util.QLog;
 
-final class aptr
-  extends AsyncTask<Void, Void, Boolean>
+public class aptr
 {
-  aptr(File paramFile1, File paramFile2, Activity paramActivity, apts paramapts) {}
-  
-  protected Boolean a(Void... paramVarArgs)
+  public static void a(Context paramContext, int paramInt1, int paramInt2, aptu paramaptu)
   {
-    try
+    Object localObject = paramContext;
+    if (paramContext == null) {
+      localObject = BaseActivity.sTopActivity;
+    }
+    if (localObject == null)
     {
-      if (ew.a(this.jdField_a_of_type_JavaIoFile, this.b))
-      {
-        bacm.a(this.jdField_a_of_type_AndroidAppActivity, this.b.getAbsolutePath());
-        return Boolean.valueOf(true);
+      if (QLog.isColorLevel()) {
+        QLog.e("FMDialogUtil<FileAssistant>", 2, "show dialog fail, context is null!");
       }
-      return Boolean.valueOf(false);
+      return;
     }
-    catch (OutOfMemoryError paramVarArgs)
-    {
-      apsm.a().a().a("AIOGalleryUtils", 4, "savePhoto exception = " + paramVarArgs.getMessage());
-    }
-    return Boolean.valueOf(false);
+    a((Context)localObject, ((Context)localObject).getString(paramInt1), ((Context)localObject).getString(paramInt2), paramaptu);
   }
   
-  protected void a(Boolean paramBoolean)
+  public static void a(Context paramContext, String paramString, int paramInt, aptu paramaptu)
   {
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {}
-    for (int i = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight();; i = 0)
+    Object localObject = paramContext;
+    if (paramContext == null) {
+      localObject = BaseActivity.sTopActivity;
+    }
+    if (localObject == null)
     {
-      if (paramBoolean.booleanValue()) {}
-      for (String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131629482);; str = this.jdField_a_of_type_AndroidAppActivity.getString(2131629508))
+      if (QLog.isColorLevel()) {
+        QLog.e("FMDialogUtil<FileAssistant>", 2, "show dialog fail, context is null!");
+      }
+      return;
+    }
+    a((Context)localObject, paramString, ((Context)localObject).getString(paramInt), paramaptu);
+  }
+  
+  public static void a(Context paramContext, String paramString, CharSequence paramCharSequence, aptu paramaptu)
+  {
+    apts localapts = new apts(paramaptu);
+    paramaptu = new aptt(paramaptu);
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread()) {}
+    do
+    {
+      new Handler(localLooper).post(new FMDialogUtil.3(paramContext, paramCharSequence, paramString, localapts, paramaptu));
+      do
       {
-        bbmy.a(this.jdField_a_of_type_AndroidAppActivity, 2, str, 0).b(i);
-        if (this.jdField_a_of_type_Apts != null) {
-          this.jdField_a_of_type_Apts.a(paramBoolean.booleanValue());
-        }
+        return;
+      } while (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()));
+      if ((paramCharSequence instanceof String))
+      {
+        bbcv.a(paramContext, 230, paramString, (String)paramCharSequence, 2131692399, 2131692403, localapts, paramaptu).show();
         return;
       }
-    }
+    } while (!(paramCharSequence instanceof SpannableString));
+    bbcv.a(paramContext, 230, paramString, paramCharSequence, 2131692399, 2131692403, localapts, paramaptu).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aptr
  * JD-Core Version:    0.7.0.1
  */

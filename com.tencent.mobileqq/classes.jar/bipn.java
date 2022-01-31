@@ -1,66 +1,17 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.EditText;
+import com.tencent.ttpic.openapi.model.WMElement;
 
-public class bipn
-  extends bipb<biou>
-  implements View.OnClickListener
+class bipn
+  implements DialogInterface.OnClickListener
 {
-  public bipn(Context paramContext, FaceListPage paramFaceListPage)
-  {
-    super(paramContext, paramFaceListPage);
-  }
+  bipn(biph parambiph, bipp parambipp, WMElement paramWMElement) {}
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Bion == null) {
-      return paramView;
-    }
-    if (paramView == null) {}
-    for (paramView = new bipo(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((biou)this.jdField_a_of_type_Bion).a(), ((biou)this.jdField_a_of_type_Bion).a(), this);; paramView = (bipo)paramView)
-    {
-      paramView.a((biou)this.jdField_a_of_type_Bion, paramInt, getCount(), a());
-      return paramView;
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    Object localObject1 = (ImageView)paramView.findViewById(2131303865);
-    int i = ((Integer)((ImageView)localObject1).getTag(2131311062)).intValue();
-    paramView = (biov)((biou)this.jdField_a_of_type_Bion).jdField_a_of_type_JavaUtilList.get(i);
-    Object localObject2 = (Boolean)((ImageView)localObject1).getTag(2131311040);
-    if ((localObject2 != null) && (((Boolean)localObject2).booleanValue()))
-    {
-      paramView.a = ((ImageView)localObject1).getDrawable();
-      localObject2 = paramView.a;
-      int j;
-      int k;
-      if (localObject2 != null)
-      {
-        ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getIntrinsicWidth(), ((Drawable)localObject2).getIntrinsicHeight());
-        i = ((Drawable)localObject2).getIntrinsicWidth();
-        j = ((ImageView)localObject1).getWidth();
-        k = ((ImageView)localObject1).getPaddingLeft();
-        if (j <= i) {
-          break label195;
-        }
-      }
-      label195:
-      for (float f = (((j - i) / 2 - k) * 2 + i) / i;; f = (i - (k + (i - j) / 2) * 2) / i)
-      {
-        f = (float)(f * ((biou)this.jdField_a_of_type_Bion).jdField_a_of_type_Double);
-        localObject1 = bhoe.a();
-        this.jdField_a_of_type_Bhhl.a(paramView, ((bhof)localObject1).a, ((bhof)localObject1).b, f);
-        return;
-      }
-    }
-    urk.b("LocationFaceAdapter", "ImageView drawable has not been downloaded.");
+    this.jdField_a_of_type_Bipp.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Bipp.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMElement.getCheckInResetString());
   }
 }
 

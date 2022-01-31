@@ -1,54 +1,110 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import android.app.Application;
+import android.os.Build;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal.AppInfo;
+import com.tencent.weiyun.transmission.WeiyunTransmissionStatus;
+import com.tencent.weiyun.transmission.upload.UploadFile;
+import com.tencent.weiyun.transmission.upload.UploadFile.UploadBatch;
+import com.tencent.weiyun.transmission.upload.UploadManager;
+import cooperation.weiyun.TransmissionHelper.5;
+import cooperation.weiyun.upload.WyUploadJob;
+import mqq.app.AppRuntime;
 
-class bick
-  implements View.OnTouchListener
+public final class bick
 {
-  bick(bicj parambicj) {}
+  private static String jdField_a_of_type_JavaLangString;
+  private static volatile boolean jdField_a_of_type_Boolean;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static bidr a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt, String paramString4, String paramString5)
   {
-    if (bicj.a(this.a) == null)
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString4))) {
+      return null;
+    }
+    if (TextUtils.isEmpty(paramString3)) {
+      paramString3 = "0";
+    }
+    for (;;)
     {
-      if (this.a.jdField_a_of_type_Bigb.a == null) {
-        return false;
-      }
-      bicj.a(this.a, this.a.jdField_a_of_type_Bigb.a.a());
+      return bidr.a(10, paramString1, paramString2, paramString3, paramLong, paramInt, BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramString4, paramString5);
     }
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout != null) {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout.setTipsGone();
+  }
+  
+  public static UploadFile a(String paramString, UploadFile.UploadBatch paramUploadBatch, int paramInt)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramUploadBatch == null) || (paramInt < 0)) {
+      return null;
     }
-    if (bicj.a(this.a).c()) {
-      switch (paramMotionEvent.getAction() & 0xFF)
-      {
-      }
+    String str = Build.MODEL;
+    paramString = UploadFile.createUploadFile(1, BaseApplicationImpl.getApplication().getRuntime().getAccount(), str, str, str, paramString, false, paramUploadBatch, paramInt);
+    paramString.autoBackupFlag = false;
+    return paramString;
+  }
+  
+  private static String a()
+  {
+    if (jdField_a_of_type_JavaLangString == null) {
+      jdField_a_of_type_JavaLangString = "V1_AND_WY_VersionName_" + ayui.a() + "_ChannelId_" + "B";
     }
-    while ((this.a.jdField_a_of_type_Boolean) || (bicj.a(this.a).getVisibility() == 8))
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public static void a(int paramInt)
+  {
+    new Thread(new TransmissionHelper.5(paramInt)).start();
+  }
+  
+  public static void a(Application paramApplication, boolean paramBoolean)
+  {
+    if (jdField_a_of_type_Boolean) {
+      return;
+    }
+    WeiyunTransmissionGlobal.AppInfo localAppInfo = new WeiyunTransmissionGlobal.AppInfo(a(), 1000269, "mobileqq", ayui.a(), 0, "unknown");
+    WeiyunTransmissionGlobal localWeiyunTransmissionGlobal = WeiyunTransmissionGlobal.getInstance();
+    if (paramBoolean) {}
+    for (String str = "weiyun_";; str = "qq_")
     {
-      return false;
-      this.a.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.a.b = paramMotionEvent.getY();
-      continue;
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
-      if ((Math.abs(f1 - this.a.jdField_a_of_type_Float) < 10.0F) && (Math.abs(f2 - this.a.b) < 10.0F))
-      {
-        paramView = (bibg)this.a.a(bibg.class);
-        if (paramView != null) {
-          paramView.g_();
-        }
-      }
+      localWeiyunTransmissionGlobal.initTransmission(localAppInfo, paramApplication, new bicq(str), bifp.a());
+      WeiyunTransmissionGlobal.getInstance().getUploadManager().setSpareUploader(new WyUploadJob());
+      WeiyunTransmissionStatus.getInstance().setTranOnlyWifi(0, true, BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      WeiyunTransmissionStatus.getInstance().setLoginStatus(0, BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      AppNetConnInfo.registerNetChangeReceiver(null, new bicl());
+      bidy.a().a(new bicm(), paramApplication);
+      bidy.a().a(new bico());
+      WeiyunTransmissionGlobal.getInstance().getUploadManager().addGlobalObserver(new bicp());
+      jdField_a_of_type_Boolean = true;
+      return;
     }
-    return bicj.a(this.a).a(paramMotionEvent);
+  }
+  
+  public static void a(boolean paramBoolean, long paramLong)
+  {
+    WeiyunTransmissionStatus localWeiyunTransmissionStatus = WeiyunTransmissionStatus.getInstance();
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
+    {
+      localWeiyunTransmissionStatus.setLoginStatus(i, Long.toString(paramLong));
+      bicy.c();
+      return;
+    }
+  }
+  
+  public static UploadFile b(String paramString, UploadFile.UploadBatch paramUploadBatch, int paramInt)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramUploadBatch == null) || (paramInt < 0)) {
+      return null;
+    }
+    String[] arrayOfString = bicy.a();
+    paramString = UploadFile.createUploadFile(0, BaseApplicationImpl.getApplication().getRuntime().getAccount(), "QQ", arrayOfString[1], arrayOfString[0], paramString, false, paramUploadBatch, paramInt);
+    paramString.autoBackupFlag = false;
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bick
  * JD-Core Version:    0.7.0.1
  */

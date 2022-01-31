@@ -1,15 +1,8 @@
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public final class aizs
-  implements aifp
+public class aizs
 {
-  public aizs(aizz paramaizz, QQAppInterface paramQQAppInterface) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Aizz.b(ApolloGameUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-  }
+  public int a;
+  public CharSequence a;
+  public int b;
 }
 
 

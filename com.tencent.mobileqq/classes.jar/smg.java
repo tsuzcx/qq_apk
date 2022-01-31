@@ -1,26 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushOpModel;
 
-public class smg
-  extends SimpleJob<Void>
+public final class smg
+  implements Parcelable.Creator<WSPushOpModel>
 {
-  public smg(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, slz paramslz)
+  public WSPushOpModel a(Parcel paramParcel)
   {
-    super(paramString);
+    return new WSPushOpModel(paramParcel);
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public WSPushOpModel[] a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a(this.jdField_a_of_type_Slz);
-    return null;
+    return new WSPushOpModel[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     smg
  * JD-Core Version:    0.7.0.1
  */

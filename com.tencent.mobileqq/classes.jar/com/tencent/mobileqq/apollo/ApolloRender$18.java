@@ -2,7 +2,7 @@ package com.tencent.mobileqq.apollo;
 
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import babp;
+import bbct;
 
 final class ApolloRender$18
   implements Runnable
@@ -14,7 +14,7 @@ final class ApolloRender$18
     if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender == null) {
       return;
     }
-    int i = (int)(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getMeasuredWidth() - 80.0F * babp.a);
+    int i = (int)(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getMeasuredWidth() - 80.0F * bbct.a);
     this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop.setWidth(i);
   }
 }

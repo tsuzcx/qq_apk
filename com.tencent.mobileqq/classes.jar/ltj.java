@@ -1,99 +1,47 @@
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
-import com.tencent.av.ui.GAudioMembersCtrlActivity.7.1;
-import com.tencent.av.ui.GAudioMembersCtrlActivity.7.2;
-import com.tencent.av.ui.GAudioMembersCtrlActivity.7.3;
-import com.tencent.av.ui.GAudioMembersCtrlActivity.7.4;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.av.random.RandomWebProtocol;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import org.json.JSONObject;
 
 public class ltj
-  extends kur
+  extends ltg
 {
-  public ltj(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
+  long jdField_b_of_type_Long;
+  int c;
+  int d;
+  int e;
+  String f;
   
-  protected void a(long paramLong)
+  public ltj(RandomWebProtocol paramRandomWebProtocol, ltg paramltg, String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GAudioMembersCtrlActivity", 2, "onDestroyUI");
-    }
-    this.a.finish();
+    super(paramRandomWebProtocol, paramltg);
+    this.a = 3;
+    this.c = paramString1;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.f = paramString2;
+    this.e = paramInt3;
+    this.jdField_b_of_type_Long = paramLong;
+    this.d = ("[p]" + paramInt1 + paramInt2 + paramString2 + paramInt3 + paramLong);
   }
   
-  protected void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
+  String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("GAudioMembersCtrlActivity", 2, "onGAudioMemberMicChanged-->uin=" + paramLong + ",isMicOff=" + paramBoolean);
-    }
-    GAudioMembersCtrlActivity.c(this.a, new GAudioMembersCtrlActivity.7.3(this, paramLong, paramInt1, paramInt2, paramBoolean));
-  }
-  
-  protected void a(long paramLong1, long paramLong2, boolean paramBoolean)
-  {
-    if (this.a.jdField_a_of_type_Long != paramLong1)
+    this.a = null;
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("GAudioMembersCtrlActivity", 2, "onMemberJoin,wrong group uin.GroupUin = " + paramLong1 + " ,mGroupId = " + this.a.jdField_a_of_type_Long + " ,isQQUser = " + paramBoolean);
+      this.a = new JSONObject().put("session_type", this.c).put("reqtype", this.d).put("groupid", this.jdField_b_of_type_Long);
+      if (2 == this.d) {
+        this.a.put("peer_enuin", ChatActivityUtils.b(RandomWebProtocol.a(), this.f)).put("peer_gender", this.e);
       }
-      return;
+      return super.a();
     }
-    super.a(paramLong1, paramLong2, paramBoolean);
-    this.a.a(paramLong2, 1, true, 71);
-  }
-  
-  protected void a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    super.a(paramLong1, paramLong2, paramBoolean1, paramBoolean2);
-    if (this.a.jdField_a_of_type_Long != paramLong1)
+    catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("GAudioMembersCtrlActivity", 2, "onMemberJoin,wrong group uin.GroupUin = " + paramLong1 + " ,mGroupId = " + this.a.jdField_a_of_type_Long + " ,isQQUser = " + paramBoolean2);
+      for (;;)
+      {
+        localException.printStackTrace();
       }
-      return;
     }
-    this.a.a(paramLong2, 0, paramBoolean1, 70);
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    super.a(paramLong, paramBoolean1, paramBoolean2);
-    if (paramBoolean1) {}
-    for (int i = 42;; i = 43)
-    {
-      this.a.a(paramLong, 2, paramBoolean2, i);
-      return;
-    }
-  }
-  
-  protected void a(ArrayList<ldd> paramArrayList)
-  {
-    GAudioMembersCtrlActivity.d(this.a, new GAudioMembersCtrlActivity.7.4(this, paramArrayList));
-  }
-  
-  protected void b(long paramLong, boolean paramBoolean)
-  {
-    this.a.jdField_a_of_type_Lsx.b(paramLong, paramBoolean);
-  }
-  
-  protected void b(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("GAudioMembersCtrlActivity", 2, "onGAudioRoomMicModeChanged-->uin=" + paramLong + ",isRoomMicOff=" + paramBoolean1);
-    }
-    GAudioMembersCtrlActivity.b(this.a, new GAudioMembersCtrlActivity.7.2(this));
-  }
-  
-  protected void c(long paramLong1, long paramLong2, boolean paramBoolean)
-  {
-    this.a.finish();
-  }
-  
-  protected void d()
-  {
-    super.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("GAudioMembersCtrlActivity", 2, "onUpdatePstnInfo --> Start");
-    }
-    GAudioMembersCtrlActivity.a(this.a, new GAudioMembersCtrlActivity.7.1(this));
   }
 }
 

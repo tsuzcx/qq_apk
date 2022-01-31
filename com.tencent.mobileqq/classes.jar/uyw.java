@@ -1,23 +1,23 @@
+import com.tribe.async.dispatch.IEventReceiver;
+
 public class uyw
+  implements IEventReceiver
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
+  protected uyf a;
   
-  public void a(uyw paramuyw)
+  public uyf a()
   {
-    this.jdField_a_of_type_JavaLangString = paramuyw.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = paramuyw.jdField_a_of_type_Int;
-    this.b = paramuyw.b;
-    this.c = paramuyw.c;
-    this.d = paramuyw.d;
+    return this.a;
   }
   
-  public String toString()
+  public void a(Runnable paramRunnable)
   {
-    return "TextInfo{text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", textColor=" + this.jdField_a_of_type_Int + ", size=" + this.b + ", state=" + this.c + '}';
+    veg.b("Q.qqstory.home.Repository", "executeRunnableOnWorkThread");
+  }
+  
+  public boolean isValidate()
+  {
+    return false;
   }
 }
 

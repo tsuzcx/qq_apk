@@ -1,19 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-
-class nub
-  implements ViewBase.OnClickListener
+public class nub
+  extends bhvr
 {
-  nub(ntu paramntu) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  protected void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
   {
-    this.a.jdField_a_of_type_Nwk.c(this.a.jdField_a_of_type_Nwx);
+    nty.a().a(paramString, paramLong1, paramArrayOfLong, paramLong2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nub
  * JD-Core Version:    0.7.0.1
  */

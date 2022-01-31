@@ -1,49 +1,67 @@
-import android.content.Intent;
-import android.graphics.Color;
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.PicMessageExtraData;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.List;
+import mqq.manager.TicketManager;
+import tencent.im.oidb.cmd0x876.oidb_0x876.ReqBody;
+import tencent.im.oidb.cmd0x877.oidb_0x877.ReqBody;
+import tencent.im.oidb.cmd0xada.oidb_0xada.ReqBody;
+import tencent.nearby.now.nearby_now_anchor.ReqBatchGetAnchorStatus;
 
 public class anmr
-  implements View.OnTouchListener
 {
-  public anmr(AIOEmotionFragment paramAIOEmotionFragment, int paramInt, MessageForPic paramMessageForPic) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    if (paramMotionEvent.getAction() == 1)
+    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
+    localReqBody.uid.set(Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
+    localReqBody.tinyid.set(Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
+    Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
+    String str = ((TicketManager)localObject).getA2(paramQQAppInterface.getCurrentAccountUin());
+    localObject = ((TicketManager)localObject).getSkey(paramQQAppInterface.getCurrentAccountUin());
+    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E7");
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E9");
-        EmojiHomeUiPlugin.openEmojiDetailPage(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a().getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.picExtraData.emojiPkgId, false, false);
-      }
+      localReqBody.a2.set(str);
+      localReqBody.platform.set(1);
+      localReqBody.version.set("8.2.8");
+      localReqBody.original_id.set(paramQQAppInterface.getCurrentAccountUin());
+      localReqBody.original_key.set((String)localObject);
+      localReqBody.original_id_type.set(1);
     }
-    while (paramMotionEvent.getAction() != 0)
-    {
-      return false;
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E8");
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.picExtraData.webUrl);
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity().startActivity(paramView);
-      return false;
+    localReqBody.cmd.set(24727);
+    localReqBody.subcmd.set(6);
+    mxi.a(paramQQAppInterface, new anms(), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, anmt paramanmt)
+  {
+    oidb_0x877.ReqBody localReqBody = new oidb_0x877.ReqBody();
+    localReqBody.uint32_refer.set(paramInt);
+    mxi.a(paramQQAppInterface, paramanmt, localReqBody.toByteArray(), "OidbSvc.0x877_0", 2167, 0);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, anmu paramanmu)
+  {
+    mxi.a(paramQQAppInterface, paramanmu, new oidb_0x876.ReqBody().toByteArray(), "OidbSvc.0x876_" + paramInt, 2166, paramInt);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, List<Long> paramList, Bundle paramBundle, anmv paramanmv)
+  {
+    nearby_now_anchor.ReqBatchGetAnchorStatus localReqBatchGetAnchorStatus = new nearby_now_anchor.ReqBatchGetAnchorStatus();
+    localReqBatchGetAnchorStatus.uint64_uin.set(paramList);
+    paramList = paramBundle;
+    if (paramBundle == null) {
+      paramList = new Bundle();
     }
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
-    return false;
+    mxi.a(paramQQAppInterface, paramanmv, localReqBatchGetAnchorStatus.toByteArray(), "NearbyNowTips.batch_get_anchor_stats", paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     anmr
  * JD-Core Version:    0.7.0.1
  */

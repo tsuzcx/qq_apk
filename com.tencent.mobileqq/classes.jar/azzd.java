@@ -1,16 +1,47 @@
-import android.graphics.Bitmap;
+import android.os.CountDownTimer;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
-public abstract interface azzd<T>
+public class azzd
+  implements INetInfoHandler
 {
-  public abstract T a(Bitmap paramBitmap);
+  public azzd(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public abstract void a(Exception paramException);
+  public void onNetMobile2None()
+  {
+    this.a.b.cancel();
+    this.a.b.start();
+  }
   
-  public abstract void a(T paramT, Bitmap paramBitmap);
+  public void onNetMobile2Wifi(String paramString)
+  {
+    this.a.b.cancel();
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    this.a.b.cancel();
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    this.a.b.cancel();
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    this.a.b.cancel();
+  }
+  
+  public void onNetWifi2None()
+  {
+    this.a.b.cancel();
+    this.a.b.start();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azzd
  * JD-Core Version:    0.7.0.1
  */

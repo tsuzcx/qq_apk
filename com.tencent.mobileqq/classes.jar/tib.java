@@ -1,17 +1,15 @@
-class tib
-  implements tju
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+
+public class tib
+  extends atzm
 {
-  tib(tia paramtia) {}
+  tib(thy paramthy) {}
   
-  public void a()
+  protected void a(Object paramObject)
   {
-    tia.a(this.a);
-  }
-  
-  public void a(tjs paramtjs, String paramString, boolean paramBoolean)
-  {
-    urk.d("Q.qqstory.playernew.StoryPlayerImpl", "onGroupDataDelete, groupId=%s, vid=%s", new Object[] { paramtjs.a, paramString });
-    tia.a(this.a).a(paramtjs, paramString, paramBoolean);
+    ThreadManager.post(new MsgTabStoryNodeListManager.2.1(this, paramObject), 5, null, true);
+    veg.b(thy.b(), "freshRedPoint, showStoryNode");
   }
 }
 

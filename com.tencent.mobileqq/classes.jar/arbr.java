@@ -1,26 +1,28 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 class arbr
-  extends ajjh
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  arbr(arbp paramarbp) {}
+  arbr(arbn paramarbn) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    super.onUpdateDelFriend(paramBoolean, paramObject);
-    paramObject = String.valueOf(paramObject);
-    if ((paramBoolean) && (paramObject.equals(arbp.a(this.a).a())))
+    this.a.jdField_a_of_type_Boolean = false;
+    arbn.a(this.a, true);
+    if (this.a.c == 3) {}
+    do
     {
-      arbp.a(arbp.a(this.a), 0, String.valueOf(paramObject));
-      if (arbp.a(this.a) != null) {
-        arbp.a(this.a).finish();
-      }
-    }
+      return;
+      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
+      this.a.c = 2;
+    } while (arbn.a(this.a) == null);
+    arbn.a(this.a).j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     arbr
  * JD-Core Version:    0.7.0.1
  */

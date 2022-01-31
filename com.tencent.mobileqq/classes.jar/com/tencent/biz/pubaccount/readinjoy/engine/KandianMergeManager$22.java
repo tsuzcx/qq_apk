@@ -2,18 +2,18 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bgmq;
+import bhvh;
 
 class KandianMergeManager$22
   implements Runnable
 {
-  KandianMergeManager$22(KandianMergeManager paramKandianMergeManager, String paramString, long paramLong) {}
+  KandianMergeManager$22(KandianMergeManager paramKandianMergeManager, int paramInt) {}
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = bgmq.a(KandianMergeManager.a(this.this$0), 1).edit();
-    localEditor.putString("kandian_push_msg_xml", this.jdField_a_of_type_JavaLangString).putLong("kandian_push_msg_time", this.jdField_a_of_type_Long);
-    bgmq.a(localEditor, true);
+    SharedPreferences.Editor localEditor = bhvh.a(KandianMergeManager.a(this.this$0), 1).edit();
+    localEditor.putInt("subscribe_push_msg_status", this.a);
+    bhvh.a(localEditor, true);
   }
 }
 

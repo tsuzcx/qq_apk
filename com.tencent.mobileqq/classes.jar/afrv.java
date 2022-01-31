@@ -1,33 +1,86 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.messagesearch.C2CLinkElement;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment.MyTroopObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-class afrv
-  implements behi
+public class afrv
+  extends akim
 {
-  afrv(afro paramafro) {}
+  public afrv(TroopFragment paramTroopFragment) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.h();
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt1 != 2) {
+          break;
+        }
+      } while (paramInt2 != 0);
+      this.a.h();
+      return;
+    } while ((paramInt1 != 9) || (paramInt2 != 0));
+    this.a.h();
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if (this.a.jdField_a_of_type_Afpo != null) {
+      this.a.jdField_a_of_type_Afpo.b();
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
+      QLog.d("contacts.fragment.TroopFragment", 2, "onUpdateTroopList " + paramBoolean);
     }
-    if ((this.a.jdField_a_of_type_Afrn.getCount() <= 0) || (paramInt <= 0)) {
-      return;
-    }
-    paramAdapterView = this.a.jdField_a_of_type_Afrn.a(paramInt - 1);
-    if (paramAdapterView != null)
+    if (this.a.c)
     {
-      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", paramAdapterView.url);
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      return;
+      this.a.c = false;
+      if (this.a.jdField_a_of_type_Afqu != null) {
+        this.a.jdField_a_of_type_Afqu.a(this.a.b(), paramBoolean, null);
+      }
     }
-    QLog.e("LinkMessageSearchDialog", 2, "link element is null pos:" + paramInt);
+    ThreadManager.getUIHandler().postDelayed(new TroopFragment.MyTroopObserver.1(this), 500L);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
+  {
+    if (paramBoolean) {
+      this.a.h();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.h();
+    }
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.h();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
+  {
+    if (paramBoolean) {
+      this.a.h();
+    }
   }
 }
 

@@ -1,24 +1,43 @@
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.ui.QavPanel;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.av.VideoController;
 
 public class lds
-  implements lxc
+  extends OrientationEventListener
 {
-  public lds(GaInviteLockActivity paramGaInviteLockActivity, long paramLong) {}
+  private long jdField_a_of_type_Long;
   
-  public void a()
+  public lds(VideoController paramVideoController, Context paramContext, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a != null)
-    {
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131306670, false);
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131306671, false);
-    }
+    super(paramContext, paramInt);
   }
   
-  public void b()
+  public void onOrientationChanged(int paramInt)
   {
-    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, this.jdField_a_of_type_Long);
-    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, 0, 2130772163);
+    if (paramInt == -1) {}
+    long l;
+    do
+    {
+      return;
+      l = System.currentTimeMillis();
+    } while (l - this.jdField_a_of_type_Long < 50L);
+    this.jdField_a_of_type_Long = l;
+    if ((paramInt > 315) || (paramInt <= 45))
+    {
+      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 1);
+      return;
+    }
+    if ((paramInt > 45) && (paramInt <= 135))
+    {
+      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 2);
+      return;
+    }
+    if ((paramInt > 135) && (paramInt <= 225))
+    {
+      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 3);
+      return;
+    }
+    VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 4);
   }
 }
 

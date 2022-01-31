@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo;
 
-import aigp;
+import aiti;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloRender$7$1
   extends IApolloRunnableTask
 {
-  public ApolloRender$7$1(aigp paramaigp, byte[] paramArrayOfByte, int paramInt) {}
+  public ApolloRender$7$1(aiti paramaiti, byte[] paramArrayOfByte, int paramInt) {}
   
   public String a()
   {

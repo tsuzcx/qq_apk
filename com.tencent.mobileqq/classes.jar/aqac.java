@@ -1,8 +1,8 @@
 public abstract interface aqac
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public abstract void a(int paramInt);
   
-  public abstract boolean a();
+  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3);
 }
 
 

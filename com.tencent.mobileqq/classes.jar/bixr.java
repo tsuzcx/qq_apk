@@ -1,16 +1,25 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.ttpic.videoshelf.ui.VideoShelfPlayView;
+import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
 
 public class bixr
-  implements AdapterView.OnItemClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public bixr(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  public bixr(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onGlobalLayout()
   {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
+    if (Build.VERSION.SDK_INT >= 16) {
+      AEVideoShelfPreviewFragment.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+    for (;;)
+    {
+      AEVideoShelfPreviewFragment.a(this.a).updateVideoSize(AEVideoShelfPreviewFragment.a(this.a).getVideoWidth(), AEVideoShelfPreviewFragment.a(this.a).getVideoHeight());
+      return;
+      AEVideoShelfPreviewFragment.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
   }
 }
 

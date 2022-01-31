@@ -1,50 +1,59 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import org.json.JSONObject;
 
 public class owy
-  implements ViewBase.OnClickListener
+  implements TVK_SDKMgr.InstallListener
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private Handler a;
   
-  public owy(ArticleInfo paramArticleInfo, Context paramContext, int paramInt)
+  public owy(Handler paramHandler)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramHandler;
   }
   
-  private void a()
+  public void onInstallProgress(float paramFloat)
   {
-    ndn.a(null, null, "0X80097D7", "0X80097D7", 0, 0, "", "", "", "", false);
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    String str = "";
-    paramViewBase = str;
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      paramViewBase = str;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
-      {
-        paramViewBase = str;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null)
-        {
-          paramViewBase = str;
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.f != null)
-          {
-            paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.f;
-            obz.e(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
-          }
-        }
-      }
+    if (this.a != null) {
+      this.a.sendEmptyMessage(2);
     }
-    QLog.d("OnFriendsBiuClickListener", 1, "jump channel,  context:" + this.jdField_a_of_type_AndroidContentContext + "  url:" + paramViewBase);
-    a();
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("version", "8.2.8");
+      localJSONObject.put("error_code", paramInt);
+      label25:
+      if (this.a != null) {
+        this.a.sendEmptyMessage(1);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label25;
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("version", "8.2.8");
+      label17:
+      if (this.a != null) {
+        this.a.sendEmptyMessage(0);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label17;
+    }
   }
 }
 

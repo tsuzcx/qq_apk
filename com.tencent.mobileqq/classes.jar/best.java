@@ -1,16 +1,23 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
 public class best
+  extends Handler
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private bakw jdField_a_of_type_Bakw;
-  private besu jdField_a_of_type_Besu;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  private int c;
+  public best(Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     best
  * JD-Core Version:    0.7.0.1
  */

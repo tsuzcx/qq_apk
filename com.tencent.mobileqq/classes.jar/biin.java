@@ -1,20 +1,31 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import dov.com.qq.im.ae.AEPituCameraUnit.10;
 
-final class biin
-  implements Animation.AnimationListener
+public class biin
+  implements DialogInterface.OnClickListener
 {
-  biin(View paramView) {}
+  public biin(AEPituCameraUnit.10 param10) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.setAnimation(null);
+    Activity localActivity = biim.a(this.a.this$0).a();
+    if (paramInt == 1)
+    {
+      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      localIntent.setData(Uri.fromParts("package", localActivity.getPackageName(), null));
+      localActivity.startActivity(localIntent);
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      localActivity.finish();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

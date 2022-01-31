@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ajjj;
+import ajxn;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -29,7 +29,7 @@ class MainFragment$5
       QLog.d("SpecialCare", 2, "hasSpecialCareFriend=" + MainFragment.a(this.this$0));
       return;
     } while (MainFragment.a(this.this$0) == null);
-    List localList = ((ajjj)MainFragment.a(this.this$0).getManager(51)).b();
+    List localList = ((ajxn)MainFragment.a(this.this$0).getManager(51)).b();
     if ((localList != null) && (localList.size() > 0))
     {
       MainFragment.b(this.this$0, true);

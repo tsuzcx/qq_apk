@@ -1,25 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class abol
   implements DialogInterface.OnClickListener
 {
-  public abol(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
+  public abol(NotificationActivity paramNotificationActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    RegisterChooseLoginActivity.a(this.a, true);
-    RegisterChooseLoginActivity.a(this.a, true);
-    awqx.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 0, 0, "", "", "", "");
-    awqx.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 1, 0, "", "", "", "");
-    awqx.a(this.a.app, "new_reg", "next_ask", "new_clk", "", 1, "");
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abol
  * JD-Core Version:    0.7.0.1
  */

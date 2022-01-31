@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import aluq;
+import amkg;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import bafb;
+import bbgg;
 
 class SwipeBackLayout$5
   implements DialogInterface.OnClickListener
@@ -16,7 +16,7 @@ class SwipeBackLayout$5
     if (SwipeBackLayout.access$1900(this.this$0).isShowing()) {
       SwipeBackLayout.access$1900(this.this$0).dismiss();
     }
-    aluq.a(this.val$activity, true);
+    amkg.a(this.val$activity, true);
   }
 }
 

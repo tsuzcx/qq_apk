@@ -15,9 +15,9 @@ class PublicAccountImageCollectionMainActivity$9
     if (localTranslateAnimation != null)
     {
       this.this$0.a.setVisibility(0);
-      this.this$0.a.findViewById(2131312931).setVisibility(0);
-      this.this$0.a.findViewById(2131312925).setVisibility(0);
-      this.this$0.a.findViewById(2131312926).setVisibility(0);
+      this.this$0.a.findViewById(2131378756).setVisibility(0);
+      this.this$0.a.findViewById(2131378750).setVisibility(0);
+      this.this$0.a.findViewById(2131378751).setVisibility(0);
       this.this$0.a.bringToFront();
       this.this$0.a.startAnimation(localTranslateAnimation);
     }

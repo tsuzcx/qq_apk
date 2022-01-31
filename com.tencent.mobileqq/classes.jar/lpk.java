@@ -1,43 +1,40 @@
-import android.util.SparseArray;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
 public class lpk
 {
-  public short a;
-  public byte[] a;
-  public short b = 240;
-  public short c;
-  public short d;
+  public int a;
+  public String a;
+  public int b;
+  public int c;
   
-  public lpk(byte[] paramArrayOfByte)
+  public static lpk a()
   {
-    this.jdField_a_of_type_Short = 320;
-    paramArrayOfByte = leq.a(paramArrayOfByte);
-    lep locallep = (lep)paramArrayOfByte.get(4);
-    if (locallep != null) {
-      this.jdField_a_of_type_ArrayOfByte = locallep.a();
-    }
-    if (this.jdField_a_of_type_ArrayOfByte != null)
+    lle locallle = lgo.a(BaseApplicationImpl.getContext());
+    if (!locallle.a())
     {
-      paramArrayOfByte = (lep)paramArrayOfByte.get(3);
-      if (paramArrayOfByte != null)
-      {
-        paramArrayOfByte = paramArrayOfByte.a();
-        this.b = ((short)(paramArrayOfByte[0] << 8 | paramArrayOfByte[1] & 0xFF));
-        this.jdField_a_of_type_Short = ((short)(paramArrayOfByte[2] << 8 | paramArrayOfByte[3] & 0xFF));
-        this.c = ((short)(paramArrayOfByte[4] << 8 | paramArrayOfByte[5] & 0xFF));
-        int i = paramArrayOfByte[6];
-        this.d = ((short)(paramArrayOfByte[7] & 0xFF | i << 8));
-      }
+      lpk locallpk = new lpk();
+      if (locallpk.a(locallle)) {}
+      return locallpk;
     }
+    return null;
   }
   
-  public String toString()
+  public boolean a(lle paramlle)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("SwitchFaceItem face.length = ");
-    if (this.jdField_a_of_type_ArrayOfByte != null) {}
-    for (int i = this.jdField_a_of_type_ArrayOfByte.length;; i = 0) {
-      return i + ", width = " + this.jdField_a_of_type_Short + ", height = " + this.b + ", fameWidth = " + this.c + ", frameHeight = " + this.d;
+    try
+    {
+      this.jdField_a_of_type_Int = paramlle.a("OpenGLBlowUp/IsOpen", 0);
+      this.b = paramlle.a("OpenGLBlowUp/width", 0);
+      this.c = paramlle.a("OpenGLBlowUp/level", 0);
+      this.jdField_a_of_type_JavaLangString = paramlle.a("OpenGLBlowUp/versionname", "");
+      if (QLog.isColorLevel()) {
+        QLog.i("RendererConfig", 2, "OpenGLSharpenConfig isOpen: " + this.jdField_a_of_type_Int + " width: " + this.b + " level: " + this.c + " versionName: " + this.jdField_a_of_type_JavaLangString);
+      }
+      return true;
     }
+    catch (Exception paramlle) {}
+    return false;
   }
 }
 

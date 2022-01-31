@@ -4,14 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bckd;
-import bgsn;
+import bdoe;
+import bibp;
 import org.json.JSONObject;
 
 public class WadlParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<WadlParams> CREATOR = new bgsn();
+  public static final Parcelable.Creator<WadlParams> CREATOR = new bibp();
   public int a;
   public long a;
   public String a;
@@ -244,7 +244,7 @@ public class WadlParams
     }
     catch (Exception paramString)
     {
-      bckd.a("WadlParams", "parse json exception:" + paramString.getMessage());
+      bdoe.a("WadlParams", "parse json exception:" + paramString.getMessage());
     }
   }
   

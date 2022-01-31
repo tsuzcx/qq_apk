@@ -1,24 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.RecentDynamicAvatarView;
 
-class asrb
-  implements View.OnClickListener
+public class asrb
 {
-  asrb(asra paramasra) {}
-  
-  public void onClick(View paramView)
-  {
-    if (paramView == null) {}
-    while (StartLiveTopicLabelListView.a(this.a.a) == null) {
-      return;
-    }
-    StartLiveTopicLabelListView.a(this.a.a).a();
-  }
+  public int a;
+  public ImageView a;
+  public DragTextView a;
+  public RecentDynamicAvatarView a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asrb
  * JD-Core Version:    0.7.0.1
  */

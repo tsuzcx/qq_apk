@@ -1,29 +1,30 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.app.Dialog;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
 
-public final class tud
-  extends QQUIEventReceiver<ttr, ujj>
+public class tud
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public tud(@NonNull ttr paramttr)
+  public tud(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    super(paramttr);
+    return true;
   }
   
-  public void a(@NonNull ttr paramttr, @NonNull ujj paramujj)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if ((paramujj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramujj.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramttr.a != null) && (TextUtils.equals(paramujj.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramttr.a.b)))
+    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
     {
-      urk.a(paramttr.b, "refresh feed item , feed id :%s", paramttr.a.b);
-      paramttr.i();
+      paramFloat1 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
+      float f = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
+      double d = Math.abs(Math.asin(paramFloat1 / Math.sqrt(paramFloat1 * paramFloat1 + f * f)));
+      if ((paramFloat2 > 0.0F) && (d < 0.5235987755982988D) && (this.a.jdField_a_of_type_Int == 0)) {
+        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      }
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return ujj.class;
+    return false;
   }
 }
 

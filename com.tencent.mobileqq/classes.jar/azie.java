@@ -1,28 +1,24 @@
+import android.graphics.Bitmap;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+
 public class azie
+  implements URLDrawable.DownloadListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
+  public azie(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, azif paramazif) {}
   
-  public azie(String paramString, long paramLong, int paramInt1, int paramInt2)
+  public void onFileDownloadFailed(int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Azif.a(null);
   }
   
-  public azie(String paramString1, long paramLong, int paramInt1, int paramInt2, String paramString2)
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    Bitmap localBitmap = bdhr.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
+    this.jdField_a_of_type_Azif.a(localBitmap);
   }
 }
 

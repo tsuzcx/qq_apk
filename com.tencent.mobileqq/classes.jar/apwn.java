@@ -1,27 +1,22 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.os.Bundle;
 
-class apwn
-  implements ViewSwitcher.ViewFactory
+public abstract interface apwn
 {
-  apwn(apwm paramapwm) {}
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  public View makeView()
-  {
-    CornerImageView localCornerImageView = new CornerImageView(apwm.a(this.a));
-    localCornerImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localCornerImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    localCornerImageView.setRadius(aciy.a(30.0F, apwm.a(this.a).getResources()) / 2);
-    return localCornerImageView;
-  }
+  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
+  
+  public abstract void a(Bundle paramBundle);
+  
+  public abstract void a(String paramString, Bundle paramBundle);
+  
+  public abstract void b(Bundle paramBundle);
+  
+  public abstract void c(Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apwn
  * JD-Core Version:    0.7.0.1
  */

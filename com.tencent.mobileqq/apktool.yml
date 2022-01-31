@@ -1,5 +1,5 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: QQ_8.2.6.apk
+apkFileName: QQ-8.2.8-1346-3834.apk
 compressionType: false
 doNotCompress:
 - resources.arsc
@@ -14,6 +14,7 @@ doNotCompress:
 - assets/classes7.dex.MD5
 - assets/classes8.dex.MD5
 - assets/classes9.dex.MD5
+- assets/dexcount
 - assets/jni.ini
 - assets/licence_dual.conf
 - png
@@ -21,7 +22,6 @@ doNotCompress:
 - assets/revision.txt
 - jpg
 - assets/txlib
-- assets/youtusdk_mqzone.licence
 - assets/benchmark/high/agm.json
 - assets/benchmark/high/alps.json
 - assets/benchmark/high/hmd+global.json
@@ -252,6 +252,9 @@ doNotCompress:
 - r/v/f214.gif
 - r/v/f215.gif
 - r/v/f216.gif
+- r/v/f217.gif
+- r/v/f218.gif
+- r/v/f219.gif
 - r/w/a.hapt
 - mp3
 - r/w/a2.mp4
@@ -292,5 +295,5 @@ usesFramework:
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '1320'
-  versionName: 8.2.6
+  versionCode: '1346'
+  versionName: 8.2.8

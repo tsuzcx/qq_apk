@@ -1,15 +1,62 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abve
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public abve(TranslucentTRansferFragment paramTranslucentTRansferFragment, bafb parambafb) {}
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private abve(QQLSActivity paramQQLSActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Bafb.dismiss();
+    if (QQLSActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity)) {}
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          return;
+          if (paramIntent != null) {}
+          try
+          {
+            this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
+            if ("android.intent.action.SCREEN_ON".equals(this.jdField_a_of_type_JavaLangString))
+            {
+              if (!QLog.isColorLevel()) {
+                continue;
+              }
+              QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_ON");
+            }
+          }
+          catch (Exception paramContext)
+          {
+            QLog.e("QQLSActivity", 1, paramContext, new Object[0]);
+            return;
+          }
+        }
+        if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_OFF");
+      return;
+    } while (!"android.intent.action.USER_PRESENT".equals(this.jdField_a_of_type_JavaLangString));
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder().append("ScreenBroadcastReceiver ACTION_USER_PRESENTmanager.isEnterAio");
+      paramIntent = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
+      QLog.d("QQLSActivity", 2, aseq.f);
+    }
+    paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
+    if (!aseq.f) {
+      QQLSActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.finish();
   }
 }
 

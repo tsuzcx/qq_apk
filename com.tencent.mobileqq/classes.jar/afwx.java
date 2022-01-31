@@ -1,22 +1,25 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import java.lang.ref.WeakReference;
 
 public class afwx
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  public afwx(BindNumberActivity paramBindNumberActivity) {}
+  private final WeakReference<ChatHistoryC2CAllFragment> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public afwx(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindNumberActivity", 2, "new user guild confirm unbind");
+    this.a = new WeakReference(paramChatHistoryC2CAllFragment);
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    ChatHistoryC2CAllFragment localChatHistoryC2CAllFragment = (ChatHistoryC2CAllFragment)this.a.get();
+    if ((localChatHistoryC2CAllFragment != null) && (localChatHistoryC2CAllFragment.getActivity() != null) && (!localChatHistoryC2CAllFragment.getActivity().isFinishing())) {
+      paramDialogInterface.dismiss();
     }
-    this.a.a("dc00898", "0X8009F16", 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b(this.a.jdField_a_of_type_JavaLangString, this.a.c, 0, this.a.jdField_a_of_type_Boolean, this.a.b);
-    this.a.a(2131653452, 1000L, true);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agcx;
-import algw;
+import agov;
+import alvk;
 import android.os.Bundle;
 import android.os.Handler;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -10,17 +10,17 @@ import com.tencent.qphone.base.util.QLog;
 public class PhotoPreviewActivity$8$2
   implements Runnable
 {
-  public PhotoPreviewActivity$8$2(agcx paramagcx) {}
+  public PhotoPreviewActivity$8$2(agov paramagov) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("PhotoPreviewActivity", 2, "ArkApp copy file to res: " + PhotoPreviewActivity.a(this.a.a));
     }
-    String str = algw.a(this.a.a.b, PhotoPreviewActivity.a(this.a.a), PhotoPreviewActivity.e(this.a.a), PhotoPreviewActivity.b(this.a.a));
+    String str = alvk.a(this.a.a.b, PhotoPreviewActivity.a(this.a.a), PhotoPreviewActivity.e(this.a.a), PhotoPreviewActivity.b(this.a.a));
     Bundle localBundle = new Bundle();
     localBundle.putString("bundle_key_info", str);
-    algw.a().a("callbackArk", localBundle, null);
+    alvk.a().a("callbackArk", localBundle, null);
     ThreadManagerV2.getUIHandlerV2().post(new PhotoPreviewActivity.8.2.1(this));
   }
 }

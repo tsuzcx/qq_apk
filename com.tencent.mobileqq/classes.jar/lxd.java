@@ -1,8 +1,21 @@
-import com.tencent.av.ui.QavListItemBase;
+import android.graphics.Bitmap;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface lxd
+public class lxd
+  implements baxl
 {
-  public abstract void a(long paramLong, int paramInt, QavListItemBase paramQavListItemBase);
+  public lxd(QQServiceForAV paramQQServiceForAV) {}
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAV", 2, "onDecodeTaskCompleted");
+    }
+    new lxv(((QQAppInterface)this.a.a()).getApp().getApplicationContext()).a(new lxe(this, paramString, paramBitmap));
+  }
 }
 
 

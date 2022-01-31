@@ -1,48 +1,32 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import java.lang.ref.Reference;
-import java.lang.ref.ReferenceQueue;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
-public class bipc<K, V>
+class bipc
+  extends akuj
 {
-  private ReferenceQueue<V> jdField_a_of_type_JavaLangRefReferenceQueue = new ReferenceQueue();
-  private HashMap<K, bipc<K, V>.bipd> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  
-  @Nullable
-  public V a(K paramK)
+  bipc(bipb parambipb, String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramK))
-    {
-      paramK = (bipd)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
-      if (paramK.get() != null) {
-        return paramK.get();
-      }
-    }
-    return null;
+    super(paramString, paramBoolean);
   }
   
-  public void a()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    for (;;)
+    if (paramInt == 0)
     {
-      Reference localReference = this.jdField_a_of_type_JavaLangRefReferenceQueue.poll();
-      if (localReference == null) {
-        break;
+      if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+      {
+        SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.a;
+        bipb.a(this.a, paramSosoLbsInfo.a);
+        double d1 = localSosoLocation.a;
+        double d2 = localSosoLocation.b;
+        bipb.a(this.a, d1, d2);
+        return;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.remove(((bipd)localReference).a());
-    }
-  }
-  
-  public void a(@NonNull K paramK, @NonNull V paramV)
-  {
-    if ((paramK == null) || (paramV == null)) {
-      throw new IllegalArgumentException("key-value cannot be null");
-    }
-    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramK)) && (((bipd)this.jdField_a_of_type_JavaUtilHashMap.get(paramK)).get() != null)) {
+      QLog.i("Q.videostory.capture", 2, "LbsManagerService.startLocation: location is null");
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramK, new bipd(this, paramK, paramV, this.jdField_a_of_type_JavaLangRefReferenceQueue));
+    QLog.i("Q.videostory.capture", 2, "LbsManagerService.startLocation: failed");
   }
 }
 

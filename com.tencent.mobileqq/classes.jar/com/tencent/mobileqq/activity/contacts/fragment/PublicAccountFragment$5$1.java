@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import affl;
+import afri;
 
 public class PublicAccountFragment$5$1
   implements Runnable
 {
-  public PublicAccountFragment$5$1(affl paramaffl) {}
+  public PublicAccountFragment$5$1(afri paramafri) {}
   
   public void run()
   {

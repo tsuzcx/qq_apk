@@ -1,25 +1,35 @@
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-
 class qit
-  implements URLDrawable.URLDrawableListener
+  implements qin
 {
-  qit(qim paramqim) {}
+  qit(qis paramqis) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  public void a() {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  public void a(float paramFloat) {}
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    if ((qim.a(this.a) != null) && (qim.a(this.a).getStatus() == 1) && ((qim.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    switch (paramInt)
     {
-      paramURLDrawable = (RegionDrawable)qim.a(this.a).getCurrDrawable();
-      qim.a(this.a, paramURLDrawable.getBitmap());
+    default: 
+      return;
+    case 0: 
+      qis.a(this.a, paramString1);
+      qis.b(this.a, paramString2);
+      qis.a(this.a, 3);
+      return;
+    case 1001: 
+      qis.b(this.a, 10);
+      return;
+    case 1002: 
+      qis.b(this.a, 9);
+      return;
+    case 1003: 
+      qis.b(this.a, 11);
+      return;
     }
+    qis.b(this.a, 13);
+    qis.c(this.a, 1002);
   }
 }
 

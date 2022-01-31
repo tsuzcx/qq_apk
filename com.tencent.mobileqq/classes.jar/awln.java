@@ -1,76 +1,179 @@
-import android.annotation.TargetApi;
-import android.media.MediaMetadataRetriever;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment;
+import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment.2.1;
+import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment.2.2;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
+import pb.unite.search.DynamicTabSearch.SubHotWord;
 
-@TargetApi(18)
 public class awln
+  extends akjc
 {
-  public static int a(String paramString, awlo paramawlo)
+  public awln(PublicAcntSearchFragment paramPublicAcntSearchFragment) {}
+  
+  public void a(String paramString1, boolean paramBoolean, String paramString2, int paramInt, String paramString3, long[] paramArrayOfLong)
   {
-    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    label226:
+    if (QLog.isColorLevel()) {
+      QLog.i("PublicAcntSearchFragment", 2, "handleTabSearchError!!!");
+    }
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+  }
+  
+  public void a(String paramString1, boolean paramBoolean1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean2, List<awof> paramList, long[] paramArrayOfLong, String paramString3, List<DynamicTabSearch.SubHotWord> paramList1, boolean paramBoolean3, String paramString4)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PublicAcntSearchFragment", 2, "handleTabSearchResult， keyword=" + this.a.jdField_c_of_type_JavaLangString + ", isFirstReq=" + paramBoolean1 + " ,cookie = " + paramArrayOfByte + ",result=" + paramList.size());
+    }
+    ThreadManager.getUIHandler().post(new PublicAcntSearchFragment.2.1(this, paramBoolean2));
+    if (!TextUtils.equals(paramString2, this.a.jdField_a_of_type_JavaLangString))
+    {
+      QLog.d("PublicAcntSearchFragment", 2, "handleTabSearchResult. reqKeyword=" + paramString1 + " keyword=" + this.a.jdField_c_of_type_JavaLangString + " reqTime=" + paramString2 + " lastReqTime=" + this.a.jdField_a_of_type_JavaLangString + " isEnd1=" + paramBoolean2);
+      return;
+    }
+    if (!TextUtils.equals(paramString1, this.a.jdField_c_of_type_JavaLangString))
+    {
+      QLog.d("PublicAcntSearchFragment", 2, "handleTabSearchResult. masks=" + paramArrayOfLong[0] + " reqKeyword=" + paramString1 + " keyword=" + this.a.jdField_c_of_type_JavaLangString + " isEnd1=" + paramBoolean2);
+      return;
+    }
+    if (paramList == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PublicAcntSearchFragment", 2, "handleTabSearchResult result is null");
+      }
+      a(paramString1, paramBoolean1, paramString2, -1, "result = null", paramArrayOfLong);
+      return;
+    }
+    paramString1 = paramList.iterator();
+    int i = 0;
+    long l2 = -1L;
+    long l1 = -1L;
+    label307:
+    int j;
+    if (paramString1.hasNext())
+    {
+      paramString2 = (awof)paramString1.next();
+      if (paramString2.a() == null) {
+        break label1056;
+      }
+      long l3 = l1;
+      if ((paramString2 instanceof awnd))
+      {
+        paramString3 = (awnd)paramString2;
+        l3 = l1;
+        if (l1 == -1L) {
+          l3 = paramString3.a;
+        }
+        l2 = paramString3.a;
+      }
+      j = paramString2.a().size();
+      l1 = l3;
+      i += j;
+    }
+    label1049:
+    label1056:
     for (;;)
     {
-      String str1;
-      String str2;
-      String str3;
-      try
-      {
-        localMediaMetadataRetriever.setDataSource(paramString);
-        str1 = localMediaMetadataRetriever.extractMetadata(18);
-        str2 = localMediaMetadataRetriever.extractMetadata(19);
-        paramString = localMediaMetadataRetriever.extractMetadata(24);
-        str3 = localMediaMetadataRetriever.extractMetadata(9);
-        localMediaMetadataRetriever.release();
-        if ((paramString != null) && (!"".equals(paramString)) && (!"null".equals(paramString))) {
-          break label226;
-        }
-        paramString = "0";
-        if ((str1 == null) || (str2 == null))
-        {
-          QLog.e("MediaMetadataUtils", 1, "[@] extractMetadata:width=" + str1 + " height=" + str2);
-          return -2;
-        }
+      break label307;
+      if (!paramBoolean1) {
+        awvy.a("sub_result", "load_result", new String[] { this.a.jdField_c_of_type_JavaLangString, awvy.a(paramArrayOfLong), "", awvy.a("dynamic_tab_search.1", paramArrayOfLong) });
       }
-      catch (RuntimeException paramString)
+      if (i == 0)
       {
-        QLog.e("MediaMetadataUtils", 1, "[@] setDataSource", paramString);
-        return -1;
+        awvy.a("sub_result", "no_result", new String[] { this.a.jdField_c_of_type_JavaLangString, awvy.a(paramArrayOfLong), "", awvy.a("dynamic_tab_search.1", paramArrayOfLong) });
+        this.a.f = paramBoolean2;
+        this.a.jdField_a_of_type_Boolean = false;
+        this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+        if ((this.a.jdField_c_of_type_JavaUtilList == null) || (this.a.jdField_c_of_type_JavaUtilList.isEmpty())) {
+          break label949;
+        }
+        paramString1 = awiu.a(paramList, paramBoolean1);
+        if ((paramBoolean1) || (l1 != PublicAcntSearchFragment.a(this.a)) || (paramString1 == null) || (paramString1.size() <= 0) || (paramBoolean3)) {
+          break label865;
+        }
+        paramString2 = (awoe)this.a.jdField_c_of_type_JavaUtilList.get(this.a.jdField_c_of_type_JavaUtilList.size() - 1);
+        if ((!(this.a.jdField_c_of_type_JavaUtilList.get(this.a.jdField_c_of_type_JavaUtilList.size() - 1) instanceof awpk)) || (!(paramString1.get(0) instanceof awnn))) {
+          paramString1.remove(0);
+        }
+        j = 0;
+        i = 0;
+        label685:
+        if (i >= paramString1.size()) {
+          break label1049;
+        }
+        if (!((awoe)paramString1.get(i) instanceof awnn)) {
+          break label852;
+        }
       }
       for (;;)
       {
-        try
+        if ((paramString2 instanceof awog))
         {
-          paramawlo.a[0] = Integer.parseInt(str1);
-          paramawlo.a[1] = Integer.parseInt(str2);
-          paramawlo.a[3] = Integer.parseInt(str3);
-          i = 0;
+          paramString2 = (awog)paramString2;
+          j = paramString2.a();
+          awwb.a(paramString2, j + i, j - 1);
         }
-        catch (NumberFormatException localNumberFormatException)
+        for (;;)
         {
-          QLog.e("MediaMetadataUtils", 1, "[@] parseInt", localNumberFormatException);
-          int i = -3;
-          continue;
+          int k = 0;
+          for (;;)
+          {
+            if (k < i)
+            {
+              paramString2 = (awoe)paramString1.get(k);
+              if ((paramString2 instanceof awog)) {
+                awwb.a((awog)paramString2, j + i, j + k);
+              }
+              k += 1;
+              continue;
+              if (!paramBoolean1) {
+                break;
+              }
+              awvy.a("sub_result", "exp_result", new String[] { this.a.jdField_c_of_type_JavaLangString, awvy.a(paramArrayOfLong), "", awvy.a("dynamic_tab_search.1", paramArrayOfLong) });
+              break;
+              label852:
+              j = i;
+              i += 1;
+              break label685;
+            }
+          }
+          label865:
+          this.a.jdField_c_of_type_JavaUtilList.addAll(paramString1);
+          for (;;)
+          {
+            i = 0;
+            while (i < this.a.jdField_c_of_type_JavaUtilList.size())
+            {
+              if ((this.a.jdField_c_of_type_JavaUtilList.get(i) instanceof awop)) {
+                ((awop)this.a.jdField_c_of_type_JavaUtilList.get(i)).r = 0;
+              }
+              i += 1;
+            }
+            label949:
+            paramString1 = awiu.a(paramList, paramBoolean1);
+            this.a.jdField_c_of_type_JavaUtilList = paramString1;
+          }
+          this.a.jdField_a_of_type_Awkc.a(this.a.jdField_c_of_type_JavaUtilList);
+          PublicAcntSearchFragment.a(this.a, l2);
+          if ((this.a.jdField_c_of_type_JavaUtilList.size() != 0) || (TextUtils.isEmpty(this.a.jdField_c_of_type_JavaLangString)) || (!paramBoolean2)) {
+            break;
+          }
+          ThreadManager.getUIHandler().post(new PublicAcntSearchFragment.2.2(this));
+          return;
+          j = 0;
         }
-        try
-        {
-          paramawlo.a[2] = Integer.parseInt(paramString);
-          paramawlo.a[4] = 0;
-          return i;
-        }
-        catch (NumberFormatException paramString)
-        {
-          QLog.e("MediaMetadataUtils", 1, "[@] parseInt", paramString);
-          paramawlo.a[2] = 0;
-          return i;
-        }
+        i = j;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awln
  * JD-Core Version:    0.7.0.1
  */

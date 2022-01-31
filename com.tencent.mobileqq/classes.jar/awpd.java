@@ -1,93 +1,42 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.mobileqq.splashad.SplashADView;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
+import com.tencent.TMG.utils.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
-public final class awpd
-  extends awob
+public class awpd
+  extends awop
 {
-  public awpd(Object paramObject, SplashADView paramSplashADView, AppActivity paramAppActivity, ImageView paramImageView1, ImageView paramImageView2, long paramLong)
+  public String a;
+  
+  public awpd(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    super(paramObject);
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  protected void a()
+  public awpd(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public void a(String paramString)
   {
     try
     {
-      auen localauen = (auen)this.jdField_a_of_type_JavaLangObject;
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b = false;
-      switch (localauen.a)
-      {
-      case 2: 
-        this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.d();
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QSplash@QbossSplashUtil", 1, "show SplashAd end() error ", localException);
+      this.a = new JSONObject(paramString).optString("title");
       return;
     }
-  }
-  
-  protected void a(awoa paramawoa)
-  {
-    auen localauen;
-    try
+    catch (JSONException paramString)
     {
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        return;
-      }
-      localauen = (auen)this.jdField_a_of_type_JavaLangObject;
-      QLog.i("QSplash@QbossSplashUtil", 1, "bindView");
-      awnv.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (!this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.jdField_a_of_type_Boolean)
-      {
-        paramawoa.jdField_a_of_type_Long = 0L;
-        return;
-      }
-    }
-    catch (Exception paramawoa)
-    {
-      QLog.e("QSplash@QbossSplashUtil", 1, "show SplashAd bindView error ", paramawoa);
-      return;
-    }
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_MqqAppAppActivity.findViewById(2131310602);
-    if (localViewGroup == null)
-    {
-      QLog.i("QSplash@QbossSplashUtil", 1, "bindView fail, root is null");
-      paramawoa.jdField_a_of_type_Long = 0L;
-      return;
-    }
-    localViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView, 0);
-    switch (localauen.a)
-    {
-    }
-    for (;;)
-    {
-      auem.a(localauen.j, null, 1);
-      auem.a(localauen.b, this.jdField_a_of_type_Long, false);
-      awnv.a(localauen.c, localauen.g);
-      return;
-      if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.b != null))
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.b.setVisibility(8);
-      }
-      paramawoa.jdField_a_of_type_Long = 3000L;
-      continue;
-      QLog.i("QSplash@QbossSplashUtil", 1, "show video");
-      this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b();
-      paramawoa.jdField_a_of_type_Long = 10000L;
+      while (!QLog.isColorLevel()) {}
+      QLog.d(c, 0, paramString.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awpd
  * JD-Core Version:    0.7.0.1
  */

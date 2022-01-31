@@ -1,73 +1,30 @@
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-public class ajay
-  implements aiij, aiil
+public abstract interface ajay
 {
-  public WeakReference<BaseChatPie> a;
-  private WeakReference<aiij> b;
+  public abstract int a(int paramInt);
   
-  public ajay(BaseChatPie paramBaseChatPie)
-  {
-    if (((paramBaseChatPie instanceof aedo)) || ((paramBaseChatPie instanceof aejb)) || ((paramBaseChatPie instanceof aede)) || ((paramBaseChatPie instanceof aefe))) {
-      this.a = new WeakReference(paramBaseChatPie);
-    }
-  }
+  public abstract int a(aivy paramaivy, int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3, float paramFloat);
   
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloBackgroundViewListener", 2, "onCompleteRender");
-    }
-    if ((this.b != null) && (this.b.get() != null)) {
-      ((aiij)this.b.get()).a(paramInt1, paramInt2, paramString);
-    }
-  }
+  public abstract int a(AppInterface paramAppInterface);
   
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloBackgroundViewListener", 2, "onStartRender");
-    }
-    if ((this.b != null) && (this.b.get() != null)) {
-      ((aiij)this.b.get()).a(paramInt, paramString);
-    }
-  }
+  public abstract void a();
   
-  public void a(aiij paramaiij)
-  {
-    this.b = new WeakReference(paramaiij);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onNotifyLongTouch(String paramString) {}
+  public abstract void a(int paramInt, AppInterface paramAppInterface);
   
-  public void onNotifyStatusChanged(int paramInt, String paramString) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void onSurfaceReady(int paramInt1, int paramInt2)
-  {
-    Object localObject2 = (BaseChatPie)this.a.get();
-    if ((localObject2 == null) || (((BaseChatPie)localObject2).jdField_a_of_type_Aihg == null)) {}
-    Object localObject1;
-    do
-    {
-      do
-      {
-        return;
-        localObject1 = ((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        localObject2 = ((BaseChatPie)localObject2).jdField_a_of_type_Aihg.a();
-      } while ((localObject1 == null) || (localObject2 == null));
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloBackgroundViewListener", 2, "surfaceView.getWidth():" + ((ApolloTextureView)localObject2).getWidth());
-      }
-      ((ApolloTextureView)localObject2).getRenderImpl().a(1, null, 0, 1.0F, 250.0F, 0.0F);
-      ((ApolloTextureView)localObject2).getRenderImpl().a(1000L);
-      localObject1 = ((aisi)((AppInterface)localObject1).getManager(249)).a();
-    } while (localObject1 == null);
-    ((airz)localObject1).b();
-  }
+  public abstract int b(int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt, String paramString);
 }
 
 

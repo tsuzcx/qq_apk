@@ -5,30 +5,30 @@ import com.tencent.TMG.utils.SoUtil;
 
 public class QAVAuthBuffer
 {
-  private static boolean mIsSoLoaded;
-  private static QAVAuthBuffer sAuthBuffer;
+  private static QAVAuthBuffer jdField_a_of_type_ComTencentAvSigQAVAuthBuffer;
+  private static boolean jdField_a_of_type_Boolean;
   
-  public static QAVAuthBuffer getInstance()
+  public static QAVAuthBuffer a()
   {
-    if (sAuthBuffer == null) {}
+    if (jdField_a_of_type_ComTencentAvSigQAVAuthBuffer == null) {}
     try
     {
-      if (sAuthBuffer == null)
+      if (jdField_a_of_type_ComTencentAvSigQAVAuthBuffer == null)
       {
-        loadSo();
-        if (mIsSoLoaded) {
-          sAuthBuffer = new QAVAuthBuffer();
+        a();
+        if (jdField_a_of_type_Boolean) {
+          jdField_a_of_type_ComTencentAvSigQAVAuthBuffer = new QAVAuthBuffer();
         }
       }
-      return sAuthBuffer;
+      return jdField_a_of_type_ComTencentAvSigQAVAuthBuffer;
     }
     finally {}
   }
   
   @SuppressLint({"UnsafeDynamicallyLoadedCode"})
-  private static void loadSo()
+  private static void a()
   {
-    if (!mIsSoLoaded) {
+    if (!jdField_a_of_type_Boolean) {
       try
       {
         if (SoUtil.customLibPath != null)
@@ -38,7 +38,7 @@ public class QAVAuthBuffer
         }
         for (;;)
         {
-          mIsSoLoaded = true;
+          jdField_a_of_type_Boolean = true;
           return;
           System.loadLibrary("stlport_shared");
           System.loadLibrary("qav_authbuff");
@@ -47,7 +47,7 @@ public class QAVAuthBuffer
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
       {
-        mIsSoLoaded = false;
+        jdField_a_of_type_Boolean = false;
         localUnsatisfiedLinkError.printStackTrace();
       }
     }

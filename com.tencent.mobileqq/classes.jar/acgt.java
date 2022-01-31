@@ -1,49 +1,48 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
-import com.tencent.mobileqq.data.ActivateFriendItem;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class acgt
-  extends ajjh
+  implements DialogInterface.OnClickListener
 {
-  public acgt(ActivateFriendGrid paramActivateFriendGrid) {}
+  public acgt(TroopDisbandActivity paramTroopDisbandActivity, bbgg parambbgg) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 0;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bcpt == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bcpt = new bcpt(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
+    }
+    if (bbev.d(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity))
+    {
+      paramDialogInterface = (akhq)this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app.a(20);
+      if (paramDialogInterface != null)
+      {
+        if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.b & 0x1) == 0)
+        {
+          TroopDisbandActivity localTroopDisbandActivity = this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity;
+          localTroopDisbandActivity.b |= 0x1;
+          paramDialogInterface.l(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_JavaLangString);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bcpt.b(0, 2131692216, 1000);
+      }
+    }
     for (;;)
     {
-      if (i < ActivateFriendGrid.a(this.a).size())
-      {
-        String str = String.valueOf(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin);
-        if (paramString.equals(str))
-        {
-          paramString = babh.b(ActivateFriendGrid.a(this.a), str, false);
-          ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setNickName(paramString);
-        }
+      if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {
+        this.jdField_a_of_type_Bbgg.cancel();
       }
-      else
-      {
-        return;
-      }
-      i += 1;
-    }
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i = 0;
-    while (i < ActivateFriendGrid.a(this.a).size())
-    {
-      String str = babh.j(ActivateFriendGrid.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin));
-      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setNickName(str);
-      i += 1;
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bcpt.b(2, 2131692212, 1500);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bcpt.b(2, 2131694672, 1500);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acgt
  * JD-Core Version:    0.7.0.1
  */

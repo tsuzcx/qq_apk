@@ -1,125 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.linker.LinkerObject.1;
-import java.net.URLEncoder;
-import mqq.app.AppRuntime;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.json.JSONObject;
-
 public class bism
-  implements ThreadExcutor.IThreadListener
 {
-  public int a;
-  bisn a;
-  public final String a;
+  public String a;
   public String b;
-  public String c;
-  public String d;
   
-  public bism(String paramString)
+  public bism(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString1;
+    this.b = paramString2;
   }
-  
-  public static bism a(String paramString)
-  {
-    bism localbism = new bism(paramString);
-    for (;;)
-    {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("LinkerObject", 2, "parse Url:" + paramString);
-        }
-        localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s&req_from=riji", new Object[] { BaseApplicationImpl.getApplication().getRuntime().getAccount(), URLEncoder.encode(paramString) });
-        localObject = mpl.a(BaseApplicationImpl.getApplication().getApplicationContext(), (String)localObject, null, "GET", null, null, 10000, 10000);
-        int i;
-        if ((localObject != null) && (((HttpResponse)localObject).getStatusLine().getStatusCode() == 200))
-        {
-          localObject = new JSONObject(mpl.a((HttpResponse)localObject));
-          i = Integer.parseInt(((JSONObject)localObject).getString("ret"));
-          if (i == 0)
-          {
-            str = ((JSONObject)localObject).getString("title");
-            if (!TextUtils.isEmpty(str)) {
-              localbism.b = str;
-            }
-            str = ((JSONObject)localObject).getString("abstract");
-            if (!TextUtils.isEmpty(str)) {
-              localbism.c = str;
-            }
-            localbism.jdField_a_of_type_Int = 0;
-            if (!((JSONObject)localObject).has("errTypeCode")) {
-              break label357;
-            }
-            str = "2";
-            localObject = ((JSONObject)localObject).getString("errTypeCode");
-            urp.a("video_edit", "url_rich", 0, 0, new String[] { str, localObject, paramString });
-          }
-        }
-        else
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("LinkerObject", 2, "parse result,mResultCode:" + localbism.jdField_a_of_type_Int + ",mShareTitle:" + localbism.b + ",mShareDesc:" + localbism.c + ",mShareThumb:" + localbism.d);
-          return localbism;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("LinkerObject", 2, "parse fail,reportServerCode:" + i + ",json:" + localObject);
-        continue;
-        String str = "1";
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return localbism;
-      }
-      label357:
-      Object localObject = null;
-    }
-    return localbism;
-  }
-  
-  public void a(bisn parambisn)
-  {
-    this.jdField_a_of_type_Bisn = parambisn;
-  }
-  
-  public void a(String paramString)
-  {
-    ThreadManagerV2.excute(new LinkerObject.1(this, paramString), 128, this, true);
-  }
-  
-  public boolean a()
-  {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c));
-  }
-  
-  public void onAdded() {}
-  
-  public void onPostRun()
-  {
-    if (this.jdField_a_of_type_Bisn != null)
-    {
-      if (this.jdField_a_of_type_Int == 0) {
-        this.jdField_a_of_type_Bisn.a(this);
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Bisn.a(this, this.jdField_a_of_type_Int);
-  }
-  
-  public void onPreRun() {}
 }
 
 

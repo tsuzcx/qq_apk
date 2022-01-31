@@ -1,67 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.troop.aioapp.FullListGroupAppsDbHelper.1;
-import com.tencent.mobileqq.troop.aioapp.data.FullListGroupAppEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.teamworkforgroup.TeamWorkTransparentShareActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 public class ayjb
+  implements bcwh
 {
-  private final QQAppInterface a;
+  public ayjb(TeamWorkTransparentShareActivity paramTeamWorkTransparentShareActivity, String paramString) {}
   
-  ayjb(QQAppInterface paramQQAppInterface)
+  public void a(BaseResp paramBaseResp)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  private void b(FullListGroupAppEntity paramFullListGroupAppEntity)
-  {
-    if ((paramFullListGroupAppEntity == null) || (ayjf.a(paramFullListGroupAppEntity.troopAIOAppInfos)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FullListGroupAppsDbHelper", 2, "saveToDb: invoked. empty full list, no need to persist");
-      }
+    if (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction)) {
       return;
     }
-    atmp localatmp = this.a.getEntityManagerFactory().createEntityManager();
-    paramFullListGroupAppEntity.setStatus(1000);
-    localatmp.a(FullListGroupAppEntity.class.getSimpleName(), null, null);
-    localatmp.b(paramFullListGroupAppEntity);
-    localatmp.a();
-  }
-  
-  public void a()
-  {
-    atmp localatmp = this.a.getEntityManagerFactory().createEntityManager();
-    ayja localayja = ayja.a(this.a);
-    Object localObject = localatmp.a(FullListGroupAppEntity.class);
-    if (!ayjf.a((Collection)localObject))
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        FullListGroupAppEntity localFullListGroupAppEntity = (FullListGroupAppEntity)((Iterator)localObject).next();
-        if (!ayjf.a(localFullListGroupAppEntity.troopAIOAppInfos))
-        {
-          localayja.a = localFullListGroupAppEntity.troopAIOAppInfos;
-          QLog.i("FullListGroupAppsDbHelper", 1, "buildFullListFromDb: invoked. " + localayja.a);
-          return;
-        }
-      }
+    case -1: 
+    default: 
+      wim.a(1, 2131719476);
     }
-    localatmp.a();
-  }
-  
-  void a(FullListGroupAppEntity paramFullListGroupAppEntity)
-  {
-    ThreadManagerV2.excute(new FullListGroupAppsDbHelper.1(this, paramFullListGroupAppEntity), 32, null, false);
+    for (;;)
+    {
+      WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTeamWorkTransparentShareActivity.a);
+      return;
+      wim.a(2, 2131719495);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayjb
  * JD-Core Version:    0.7.0.1
  */

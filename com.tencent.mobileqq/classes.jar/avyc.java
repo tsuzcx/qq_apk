@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.opengl.GLSurfaceView.EGLConfigChooser;
+import android.opengl.GLSurfaceView.EGLContextFactory;
 
-class avyc
-  implements View.OnClickListener
+public abstract interface avyc
 {
-  avyc(avxz paramavxz) {}
+  public abstract GLSurfaceView.EGLConfigChooser a();
   
-  public void onClick(View paramView) {}
+  public abstract GLSurfaceView.EGLContextFactory a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avyc
  * JD-Core Version:    0.7.0.1
  */

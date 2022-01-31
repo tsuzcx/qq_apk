@@ -1,32 +1,47 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.AgeSelectionActivity;
+import java.util.Calendar;
 
 public class aaio
-  implements apca
+  implements amng
 {
-  public aaio(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aodw paramaodw) {}
+  private aaio(AgeSelectionActivity paramAgeSelectionActivity) {}
   
-  public void a()
+  public int a()
   {
-    apcb.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131627191));
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-        if (bace.b(localFileManagerEntity.getFilePath())) {
-          this.jdField_a_of_type_Aodw.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
-        } else {
-          this.jdField_a_of_type_Aodw.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
-        }
-      }
-    }
+    return 3;
   }
   
-  public void b() {}
+  public int a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 0: 
+      return AgeSelectionActivity.a(this.a) - AgeSelectionActivity.b(this.a) + 1;
+    case 1: 
+      return 12;
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, AgeSelectionActivity.c(this.a) + AgeSelectionActivity.b(this.a));
+    localCalendar.set(2, AgeSelectionActivity.d(this.a));
+    localCalendar.set(5, 1);
+    return localCalendar.getActualMaximum(5);
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return "";
+    case 0: 
+      return AgeSelectionActivity.b(this.a) + paramInt2 + ajyc.a(2131700011);
+    case 1: 
+      return paramInt2 + 1 + ajyc.a(2131700008);
+    }
+    return paramInt2 + 1 + ajyc.a(2131700009);
+  }
 }
 
 

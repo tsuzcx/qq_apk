@@ -1,22 +1,22 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
 import android.os.Handler;
-import sje;
-import sjf;
-import urk;
+import swa;
+import swb;
+import veg;
 
 public class StoryVideoUploadProgressManager$ProgressStatus$1
   implements Runnable
 {
-  public StoryVideoUploadProgressManager$ProgressStatus$1(sjf paramsjf) {}
+  public StoryVideoUploadProgressManager$ProgressStatus$1(swb paramswb) {}
   
   public void run()
   {
-    urk.a("StoryVideoUploadProgressManager", "progress running, id=%s", this.a.jdField_a_of_type_JavaLangString);
-    sjf.a(this.a);
-    sje.a(this.a.jdField_a_of_type_Sje, this.a.jdField_a_of_type_JavaLangString, this.a.b);
-    if (!sjf.a(this.a)) {
-      sje.a(this.a.jdField_a_of_type_Sje).postDelayed(sjf.a(this.a), 500L);
+    veg.a("StoryVideoUploadProgressManager", "progress running, id=%s", this.a.jdField_a_of_type_JavaLangString);
+    swb.a(this.a);
+    swa.a(this.a.jdField_a_of_type_Swa, this.a.jdField_a_of_type_JavaLangString, this.a.b);
+    if (!swb.a(this.a)) {
+      swa.a(this.a.jdField_a_of_type_Swa).postDelayed(swb.a(this.a), 500L);
     }
   }
 }

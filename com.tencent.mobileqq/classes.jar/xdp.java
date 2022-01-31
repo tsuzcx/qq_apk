@@ -1,63 +1,44 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.app.Activity;
+import com.tencent.biz.troopplugin.PluginJumpManager;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
 
-class xdp
-  extends anad
+public class xdp
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  xdp(xdo paramxdo) {}
+  public xdp(PluginJumpManager paramPluginJumpManager, xdq paramxdq, Activity paramActivity, String paramString1, String paramString2, String paramString3, long paramLong, xdr paramxdr, String paramString4) {}
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
+    this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager = paramPluginManagerClient;
+    paramPluginManagerClient = this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.queryPlugin(this.jdField_a_of_type_Xdq.b);
     int i;
-    Object localObject;
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == xdo.a(this.a).key))
-    {
-      i = paramBundle.getInt("failcode");
-      localObject = paramBundle.getBundle("request");
-      if (i == 1000) {
-        break label80;
+    if (paramPluginManagerClient != null) {
+      if (paramPluginManagerClient.mState == 4)
+      {
+        i = 1;
+        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.launchPlugin(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Xdq.b, this.jdField_a_of_type_Xdq.c, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Long, this.jdField_a_of_type_Xdr.b, this.jdField_a_of_type_Xdr.a);
       }
-      QLog.e("SSOWebviewPlugin", 2, "IPC failed ! failcode: " + i + "  reqParams: " + localObject);
     }
     for (;;)
     {
-      return;
-      label80:
-      String str = paramBundle.getString("cmd");
-      paramBundle = paramBundle.getBundle("response");
-      if (("ipc_cmd_certified_account_web_plugin_follow".equals(str)) && (localObject != null) && (paramBundle != null))
-      {
-        localObject = ((Bundle)localObject).getString("callback");
-        i = paramBundle.getInt("retCode");
-        paramBundle = new JSONObject();
-        try
-        {
-          paramBundle.put("retCode", i);
-          this.a.callJs((String)localObject, new String[] { paramBundle.toString() });
-          if (QLog.isColorLevel())
-          {
-            QLog.d("SSOWebviewPlugin", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW return! retCode: " + i);
-            return;
-          }
-        }
-        catch (Throwable paramBundle)
-        {
-          QLog.e("SSOWebviewPlugin", 2, "sso.PublicFollow failed! " + QLog.getStackTraceString(paramBundle));
-        }
+      if (i == 0) {
+        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.openLinkInNewWebView(this.jdField_a_of_type_AndroidAppActivity, this.b, this.d);
       }
+      return;
+      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 0, this.b, this.jdField_a_of_type_Xdr.b, null, null);
+      this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.installPlugin(this.jdField_a_of_type_Xdq.b);
+      i = 0;
+      continue;
+      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 1, this.b, this.jdField_a_of_type_Xdr.b, null, null);
+      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xdp
  * JD-Core Version:    0.7.0.1
  */

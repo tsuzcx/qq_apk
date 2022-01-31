@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.data;
 
-import atmo;
+import aukm;
 
 public class ApolloActionRecentData
-  extends atmo
+  extends aukm
 {
   public int actionId;
   public int orderId;

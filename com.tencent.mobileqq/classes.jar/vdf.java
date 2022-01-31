@@ -1,40 +1,17 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.7.1;
 
 public class vdf
-  extends vcy
+  implements vaa
 {
-  protected EditVideoParams a;
-  public String c;
+  vdf(vcs paramvcs) {}
   
-  public vdf(int paramInt1, String paramString, int paramInt2)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    super(paramInt1, paramString, paramInt2);
-  }
-  
-  public vdf(int paramInt1, String paramString, int paramInt2, EditVideoParams paramEditVideoParams)
-  {
-    super(paramInt1, paramString, paramInt2);
-    this.a = paramEditVideoParams;
-  }
-  
-  @NonNull
-  public Class<? extends vcz> a()
-  {
-    return vdh.class;
-  }
-  
-  @NonNull
-  public vcz a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new vdh(this, paramContext, paramViewGroup, null);
-  }
-  
-  public boolean a()
-  {
-    return true;
+    veg.e("NewMyStorySegment", "error occur when get friends data from server steps=%s,error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
+    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.7.1(this));
   }
 }
 

@@ -1,9 +1,6 @@
-public class atap
+public abstract interface atap
 {
-  public long a;
-  public String a;
-  public String b;
-  public String c;
+  public abstract void a(String paramString, boolean paramBoolean);
 }
 
 

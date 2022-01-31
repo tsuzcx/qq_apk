@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import ajof;
+import akcp;
 
 public class PhoneUnityManager$1
   implements Runnable
 {
-  public PhoneUnityManager$1(ajof paramajof) {}
+  public PhoneUnityManager$1(akcp paramakcp) {}
   
   public void run()
   {
-    ajof.a(this.this$0);
+    akcp.a(this.this$0);
   }
 }
 

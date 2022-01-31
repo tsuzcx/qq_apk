@@ -1,43 +1,24 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import java.util.List;
+import android.support.annotation.Nullable;
 
-public abstract interface vly
+class vly
+  extends vmh
 {
-  public abstract int a();
+  vly(vlv paramvlv, vlu paramvlu)
+  {
+    super(paramvlu);
+  }
   
-  public abstract Bitmap a();
-  
-  public abstract View a();
-  
-  public abstract vmd a(int paramInt);
-  
-  public abstract vme a();
-  
-  public abstract void a();
-  
-  public abstract void a(List<QQUserUIItem> paramList, int paramInt);
-  
-  public abstract void a(srq paramsrq, float paramFloat1, float paramFloat2);
-  
-  public abstract void a(vma paramvma);
-  
-  public abstract void a(vmc paramvmc);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(int[] paramArrayOfInt);
-  
-  public abstract vmg[] a();
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void d(boolean paramBoolean);
-  
-  public abstract void e(boolean paramBoolean);
+  protected void a(@Nullable vlu arg1)
+  {
+    super.onResult(???);
+    veg.b("DoodleEmojiManager", "startDownload again");
+    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    {
+      this.a.jdField_a_of_type_Vlu = null;
+      this.a.c();
+      return;
+    }
+  }
 }
 
 

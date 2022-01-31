@@ -1,30 +1,37 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.ForegroundColorSpan;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 
-class rrj
-  implements qpy
+public class rrj
 {
-  rrj(rrh paramrrh) {}
-  
-  public boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public static CharSequence a(String paramString1, String paramString2, String paramString3, String paramString4, ArticleInfo paramArticleInfo)
   {
-    if (!badq.g(rrd.a(this.a.a)))
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(0);
+    if (!TextUtils.isEmpty(paramString4)) {}
+    for (paramString4 = URLDrawable.getDrawable(paramString4, (URLDrawable.URLDrawableOptions)localObject);; paramString4 = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20200102/f5a4461be0ec4116bc34e5b02e5c831f.png", (URLDrawable.URLDrawableOptions)localObject))
     {
-      bbmy.a(rrd.a(this.a.a), 1, rrd.a(this.a.a).getString(2131652511), 0).a();
-      return false;
+      paramString4.setBounds(0, 0, vpp.b(BaseApplicationImpl.getContext(), 17.0F), vpp.b(BaseApplicationImpl.getContext(), 17.0F));
+      localObject = new SpannableStringBuilder();
+      SpannableString localSpannableString = new SpannableString(paramString1);
+      localSpannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#FF262626")), 0, paramString1.length(), 33);
+      localSpannableString.setSpan(new AbsoluteSizeSpan(16, true), 0, paramString1.length(), 33);
+      ((SpannableStringBuilder)localObject).append(localSpannableString);
+      paramString1 = " " + paramString3;
+      paramString3 = new SpannableString(paramString1);
+      paramString3.setSpan(new wdy(paramString4), 0, 1, 17);
+      paramString3.setSpan(new rrk(-12084769, 16777215, 860716207, paramString2, paramArticleInfo), 0, paramString1.length(), 33);
+      ((SpannableStringBuilder)localObject).append(paramString3);
+      return ((SpannableStringBuilder)localObject).subSequence(0, ((SpannableStringBuilder)localObject).length());
     }
-    paramView = obz.a();
-    ogy.a().a(Long.valueOf(paramView).longValue(), this.a.a.a(paramArrayList));
-    bbmy.a(rrd.a(this.a.a), -1, rrd.a(this.a.a).getString(2131633875), 0).b(rrd.a(this.a.a).getResources().getDimensionPixelSize(2131167766));
-    rrd.a(this.a.a).dismiss();
-    if (rrd.a(this.a.a) != null) {
-      rrd.a(this.a.a).a(rrd.a(this.a.a), rrd.e(this.a.a), rrd.a(this.a.a), paramArrayList);
-    }
-    return true;
   }
 }
 

@@ -1,65 +1,42 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import android.os.Build;
-import android.text.TextUtils;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
 
-public class ahgb
-  implements MediaPlayer.OnErrorListener
+class ahgb
+  implements ahbt
 {
-  public ahgb(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  ahgb(ahfz paramahfz) {}
   
-  private String[] a()
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    String str = QzoneConfig.getInstance().getConfig("VideoEdit", "VideoLoadErrorReturnCode");
-    if (str == null) {
-      return null;
+    int j = 1;
+    int i;
+    if (paramInt == 0)
+    {
+      i = 1;
+      if (paramPathResult == null) {
+        break label114;
+      }
     }
-    return str.split(",");
-  }
-  
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
-  {
-    QLog.e("EditLocalVideoActivity", 2, "VideoView onError, what:" + paramInt1 + ", extra:" + paramInt2);
     for (;;)
     {
-      try
+      if (((j & i) != 0) && (!bbjw.a(paramPathResult.filePath)))
       {
-        Toast.makeText(this.a.getApplicationContext(), ajjy.a(2131637859), 1).show();
-        paramMediaPlayer = a();
-        if (paramMediaPlayer == null)
+        Bitmap localBitmap = ahfz.a(this.a, paramPathResult.filePath, false);
+        if (localBitmap != null)
         {
-          EditLocalVideoActivity.a(this.a, "play_local_video", "play_local_video_success", "4", "what: " + paramInt1 + ",   extra: " + paramInt2 + ",   " + Build.MODEL);
-          this.a.setResult(0);
-          return true;
+          ahfz.a(this.a, localBitmap);
+          ahfz.a(this.a, false);
         }
-        int k = paramMediaPlayer.length;
-        int i = 0;
-        int j = 1;
-        if (i < k)
-        {
-          if (TextUtils.equals(paramMediaPlayer[i], paramInt1 + "-" + paramInt2)) {
-            j = 0;
-          }
-        }
-        else
-        {
-          if (j == 0) {
-            continue;
-          }
-          EditLocalVideoActivity.a(this.a, "play_local_video", "play_local_video_success", "4", "what: " + paramInt1 + ",   extra: " + paramInt2 + ",   " + Build.MODEL);
-          continue;
-        }
-        i += 1;
       }
-      catch (Exception paramMediaPlayer)
-      {
-        QLog.e("EditLocalVideoActivity", 2, "VideoView onError", paramMediaPlayer);
-        return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("springHb_SpringEntryManager", 2, "getTransitionOrDefaultBitmap resCode:" + paramInt + ",pathRes:" + paramPathResult);
       }
+      return;
+      i = 0;
+      break;
+      label114:
+      j = 0;
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import atax;
-import awqx;
+import atxb;
+import axqw;
 import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
 
 class VisitorsActivity$3
@@ -16,10 +16,10 @@ class VisitorsActivity$3
     {
       localRedTouchItem.passThroughLevel = 0;
       this.this$0.a.c();
-      awqx.b(this.this$0.app, "dc00898", "", "", "0X800760F", "0X800760F", 0, 0, "1", "", "", "");
+      axqw.b(this.this$0.app, "dc00898", "", "", "0X800760F", "0X800760F", 0, 0, "1", "", "", "");
       return;
     }
-    awqx.b(this.this$0.app, "dc00898", "", "", "0X800760F", "0X800760F", 0, 0, "2", "", "", "");
+    axqw.b(this.this$0.app, "dc00898", "", "", "0X800760F", "0X800760F", 0, 0, "2", "", "", "");
   }
 }
 

@@ -1,22 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-
 final class bfhv
-  implements View.OnClickListener
 {
-  bfhv(Dialog paramDialog) {}
+  int jdField_a_of_type_Int;
+  bfik jdField_a_of_type_Bfik;
+  bfil jdField_a_of_type_Bfil;
+  String jdField_a_of_type_JavaLangString = "";
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean;
+  int c;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    if (this.a != null) {
-      this.a.dismiss();
-    }
+    return "[EntryId:" + this.jdField_a_of_type_Int + ",UseCache:" + this.jdField_a_of_type_Boolean + ",rightnow:" + this.jdField_b_of_type_Boolean + ",Retry:" + this.jdField_b_of_type_Int + ",localKey:" + this.jdField_a_of_type_JavaLangString + ",content:" + this.jdField_a_of_type_Bfik.toString() + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfhv
  * JD-Core Version:    0.7.0.1
  */

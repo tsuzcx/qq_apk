@@ -1,18 +1,12 @@
-import android.support.annotation.Nullable;
+import cooperation.qzone.event.ExoticEventPool;
 
-class bhdc
-  implements bhwg<wsh>
+public class bhdc
 {
-  bhdc(bhcw parambhcw) {}
-  
-  public void a(@Nullable wsh paramwsh)
-  {
-    this.a.a(paramwsh);
-  }
+  private static final ExoticEventPool a = new ExoticEventPool(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhdc
  * JD-Core Version:    0.7.0.1
  */

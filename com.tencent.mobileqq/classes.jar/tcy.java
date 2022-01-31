@@ -1,44 +1,71 @@
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.os.Build;
+import android.text.TextUtils;
 
 public class tcy
-  extends ten
 {
-  protected String a;
+  public static tcy a;
+  public static tcy b;
+  @vym(a="manufacturer")
+  public String a;
+  @vym(a="model")
+  public String b;
   
-  public void a()
+  static
   {
-    ShareGroupItem localShareGroupItem = ((uac)sqg.a(7)).a(this.a);
-    txz localtxz = (txz)sqg.a(24);
-    txr localtxr = localtxz.a(localShareGroupItem.headerUnionIdList);
-    if (localtxr == null)
+    jdField_a_of_type_Tcy = new tcy();
+    jdField_b_of_type_Tcy = new tcy();
+    jdField_b_of_type_Tcy.jdField_a_of_type_JavaLangString = Build.MANUFACTURER;
+    jdField_b_of_type_Tcy.jdField_b_of_type_JavaLangString = Build.MODEL;
+    jdField_a_of_type_Tcy.jdField_a_of_type_JavaLangString = "all";
+    jdField_a_of_type_Tcy.jdField_b_of_type_JavaLangString = "all";
+  }
+  
+  public boolean a()
+  {
+    if (jdField_a_of_type_Tcy.equals(this)) {}
+    while ((jdField_b_of_type_Tcy.equals(this)) || ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.equals(this.jdField_b_of_type_JavaLangString, jdField_b_of_type_Tcy.jdField_b_of_type_JavaLangString)))) {
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      localtxz.a(localShareGroupItem.headerUnionIdList, new tcz(this));
-      return;
-    }
-    a(localtxr);
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (tcy)paramObject;
+      if (this.jdField_a_of_type_JavaLangString != null)
+      {
+        if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {}
+      }
+      else {
+        while (paramObject.jdField_a_of_type_JavaLangString != null) {
+          return false;
+        }
+      }
+      if (this.jdField_b_of_type_JavaLangString != null) {
+        return this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString);
+      }
+    } while (paramObject.jdField_b_of_type_JavaLangString == null);
+    return false;
   }
   
-  protected void a(Error paramError)
+  public int hashCode()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShareGroupAvatarJob", 2, paramError, new Object[0]);
+    int j = 0;
+    if (this.jdField_a_of_type_JavaLangString != null) {}
+    for (int i = this.jdField_a_of_type_JavaLangString.hashCode();; i = 0)
+    {
+      if (this.jdField_b_of_type_JavaLangString != null) {
+        j = this.jdField_b_of_type_JavaLangString.hashCode();
+      }
+      return i * 31 + j;
     }
-    b(false);
-  }
-  
-  protected void a(Map<String, Object> paramMap)
-  {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarJob_sgi"))) {
-      this.a = ((String)a("ShareGroupAvatarJob_sgi"));
-    }
-  }
-  
-  protected void a(txr paramtxr)
-  {
-    a("ShareGroupAvatarJob_sga", paramtxr.a());
-    b(true);
   }
 }
 

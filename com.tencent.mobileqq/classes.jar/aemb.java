@@ -1,6 +1,31 @@
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+
 public class aemb
+  extends aelu
 {
-  public static final String a = ajed.aU + ".sticker_recommended_pics/";
+  public Bitmap a;
+  public String b;
+  
+  public aemb(String paramString)
+  {
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
+    {
+      this.a = paramRedPacketInfo.icon;
+      this.b = paramRedPacketInfo.resPath;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.a != null) && (!TextUtils.isEmpty(this.b));
+  }
 }
 
 

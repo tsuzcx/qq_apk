@@ -1,16 +1,34 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopAppInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aauc
-  implements begw
+  implements ncf
 {
-  public aauc(FriendProfileCardActivity paramFriendProfileCardActivity, ArrayList paramArrayList, begr parambegr) {}
+  public aauc(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a() {}
+  
+  public void a(ArrayList<TroopAppInfo> paramArrayList)
   {
-    ((bajp)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a();
-    this.jdField_a_of_type_Begr.e();
+    if ((this.a.isFinishing()) || (paramArrayList == null) || (paramArrayList.size() == 0)) {}
+    do
+    {
+      return;
+      ArrayList localArrayList = new ArrayList();
+      askq localaskq = (askq)this.a.app.getManager(37);
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        TroopAppInfo localTroopAppInfo = (TroopAppInfo)paramArrayList.next();
+        localaskq.a(Long.valueOf(localTroopAppInfo.appId), localTroopAppInfo);
+        localArrayList.add(Long.valueOf(localTroopAppInfo.appId));
+      }
+      localaskq.a(this.a.a.troopUin, localArrayList);
+    } while (this.a.i);
   }
 }
 

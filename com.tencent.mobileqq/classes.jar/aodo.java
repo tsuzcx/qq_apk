@@ -1,21 +1,65 @@
-import android.app.Activity;
-import android.view.View;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class aodo
-  implements begw
+public abstract class aodo
 {
-  aodo(aodn paramaodn, String paramString, ayqd paramayqd) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static aodo a(Bundle paramBundle)
   {
-    awqx.b(this.jdField_a_of_type_Aodn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A7F3", "0X800A7F3", 2, 0, "", "", "", "");
-    new aypd(Long.parseLong(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Aodn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Aodn.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Ayqd.a);
-    this.jdField_a_of_type_Aodn.a();
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    int i;
+    if (paramBundle != null)
+    {
+      localObject1 = localObject2;
+      if (paramBundle.containsKey("cur_data_source_type"))
+      {
+        QLog.d("EmoticonPreviewData", 1, "restoreSaveInstanceState execute");
+        i = paramBundle.getInt("cur_data_source_type");
+        if (i != 0) {
+          break label53;
+        }
+        localObject1 = new aodz(null).b(paramBundle);
+      }
+    }
+    label53:
+    do
+    {
+      return localObject1;
+      localObject1 = localObject2;
+    } while (i != 1);
+    return new aodx(null).b(paramBundle);
   }
+  
+  public abstract int a(List<aodo> paramList);
+  
+  public abstract long a();
+  
+  public abstract Drawable a(Context paramContext);
+  
+  public abstract anyc a();
+  
+  public abstract CustomEmotionData a();
+  
+  public void a(Bundle paramBundle, int paramInt)
+  {
+    paramBundle.putInt("cur_data_source_type", paramInt);
+  }
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(aodo paramaodo);
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aodo
  * JD-Core Version:    0.7.0.1
  */

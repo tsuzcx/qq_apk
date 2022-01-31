@@ -1,23 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.Switch;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 
 public class nlj
-  implements begy
+  implements bfoq
 {
-  public nlj(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public nlj(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void onDismiss()
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool = true;
-    ReadInJoySettingActivity.a(this.a, true);
-    Switch localSwitch = ReadInJoySettingActivity.a(this.a);
-    if (!ReadInJoySettingActivity.a(this.a)) {}
+    if (ReadInJoyNativeAdFragment.a(this.a)) {
+      return;
+    }
+    ReadInJoyNativeAdFragment.a(this.a, true);
+    paramView = "";
+    switch (paramInt)
+    {
+    }
     for (;;)
     {
-      localSwitch.setChecked(bool);
-      ReadInJoySettingActivity.a(this.a).cancel();
+      ReadInJoyNativeAdFragment.a(this.a).dismiss();
+      bcpw.a(this.a.getActivity(), 2, paramView, 0).b(0);
       return;
-      bool = false;
+      nmf.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 1, 0);
+      paramView = this.a.getString(2131718482);
+      continue;
+      nmf.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 2, 0);
+      paramView = this.a.getString(2131718484);
     }
   }
 }

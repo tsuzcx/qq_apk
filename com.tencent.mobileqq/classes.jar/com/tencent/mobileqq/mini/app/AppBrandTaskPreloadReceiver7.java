@@ -2,10 +2,10 @@ package com.tencent.mobileqq.mini.app;
 
 import android.content.Context;
 import android.content.Intent;
-import bdct;
-import bdle;
-import bdnu;
-import bdnw;
+import begs;
+import bepk;
+import besj;
+import besl;
 import com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI3.QQBaselibLoader;
 import com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver;
 import common.config.service.QzoneConfig;
@@ -20,12 +20,12 @@ public class AppBrandTaskPreloadReceiver7
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     Object localObject = paramIntent.getAction();
-    bdnw.b("minisdk-start", "AppBrandTaskPreloadReceiver onReceive action: " + (String)localObject);
-    bdct.a(paramContext.getApplicationContext(), null);
-    bdle.a().a(AppBrandUI3.QQBaselibLoader.g());
-    localObject = bdle.a().a();
+    besl.b("minisdk-start", "AppBrandTaskPreloadReceiver onReceive action: " + (String)localObject);
+    begs.a(paramContext.getApplicationContext());
+    bepk.a().a(AppBrandUI3.QQBaselibLoader.g());
+    localObject = bepk.a().a();
     if (localObject != null) {
-      ((bdnu)localObject).a(paramContext, paramIntent);
+      ((besj)localObject).a(paramContext, paramIntent);
     }
   }
 }

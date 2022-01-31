@@ -1,24 +1,10 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-class oqu
-  extends Handler
+public class oqu
 {
-  oqu(oqs paramoqs, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.f();
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

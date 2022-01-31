@@ -1,12 +1,17 @@
-import com.tencent.qqmini.sdk.core.widget.NavigationBar;
-
-public abstract interface bdij
+public class bdij
 {
-  public abstract void a(NavigationBar paramNavigationBar);
+  public final int a;
+  public final String a;
+  
+  public bdij(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdij
  * JD-Core Version:    0.7.0.1
  */

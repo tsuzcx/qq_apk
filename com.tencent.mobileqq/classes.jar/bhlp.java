@@ -1,71 +1,115 @@
-import android.graphics.Bitmap;
-import android.graphics.Typeface;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import com.tencent.common.app.BaseApplicationImpl;
+import NS_MOBILE_OPERATION.operation_forward_req;
+import android.text.TextUtils;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class bhlp
+  extends QzoneExternalRequest
 {
-  int a;
-  public Bitmap a;
-  public Typeface a;
-  int b = 0;
-  int c = 0;
-  int d = 0;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i = 2;
+  public JceStruct a;
   
-  public bhlp()
+  public bhlp(String paramString1, String paramString2, int paramInt1, long paramLong1, String paramString3, String paramString4, String paramString5, ArrayList<String> paramArrayList, long paramLong2, String paramString6, int paramInt2, Map<String, String> paramMap1, Map<String, String> paramMap2)
   {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public int a(float paramFloat)
-  {
-    return aciy.a(paramFloat, BaseApplicationImpl.getApplication().getResources());
-  }
-  
-  public int a(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int j = 0;
-    while (j < paramInt)
-    {
-      localStringBuilder.append("我");
-      j += 1;
+    super.setHostUin(paramLong1);
+    super.setLoginUserId(paramLong1);
+    operation_forward_req localoperation_forward_req = new operation_forward_req();
+    if (paramLong2 != 0L) {
+      localoperation_forward_req.subid = ((int)paramLong2);
     }
-    TextPaint localTextPaint = new TextPaint();
-    if (this.jdField_a_of_type_AndroidGraphicsTypeface != null) {
-      localTextPaint.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = "";
     }
-    localTextPaint.setShadowLayer(a(3.0F), a(5.0F), a(5.0F), -1);
-    paramInt = aciy.a(100.0F, BaseApplicationImpl.getApplication().getResources());
-    for (;;)
+    if (paramString2 != null) {
+      localoperation_forward_req.srcId = paramString2;
+    }
+    if (paramInt1 > 0) {
+      localoperation_forward_req.appid = paramInt1;
+    }
+    localoperation_forward_req.uin = paramLong1;
+    if (paramLong1 > 0L) {
+      localoperation_forward_req.ownUin = paramLong1;
+    }
+    if (paramString3 != null)
     {
-      localTextPaint.setTextSize(paramInt);
-      StaticLayout localStaticLayout = bhno.a(localStringBuilder, 0, localStringBuilder.length(), localTextPaint, this.c, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, 1);
-      if (localTextPaint.measureText(localStringBuilder.toString()) > this.c)
-      {
-        paramInt -= 1;
+      if (paramString3.length() > 200) {
+        localoperation_forward_req.srcTitle = paramString3.substring(0, 200);
       }
-      else
+    }
+    else
+    {
+      if (paramString4 != null)
       {
-        if (localStaticLayout.getHeight() <= this.d) {
-          break;
+        if (paramString4.length() <= 600) {
+          break label257;
         }
-        paramInt -= 1;
+        localoperation_forward_req.srcAbstract = paramString4.substring(0, 600);
+      }
+      label152:
+      if (paramString5 != null) {
+        if (paramString5.length() <= 1500) {
+          break label267;
+        }
       }
     }
-    return paramInt;
+    label257:
+    label267:
+    for (localoperation_forward_req.reason = paramString5.substring(0, 1500);; localoperation_forward_req.reason = paramString5)
+    {
+      if ((paramArrayList == null) || (paramArrayList.size() <= 9)) {
+        break label277;
+      }
+      if (localoperation_forward_req.srcImages == null) {
+        localoperation_forward_req.srcImages = new ArrayList();
+      }
+      paramInt1 = 0;
+      while (paramInt1 < 9)
+      {
+        localoperation_forward_req.srcImages.add(paramArrayList.get(paramInt1));
+        paramInt1 += 1;
+      }
+      localoperation_forward_req.srcTitle = paramString3;
+      break;
+      localoperation_forward_req.srcAbstract = paramString4;
+      break label152;
+    }
+    label277:
+    localoperation_forward_req.srcImages = paramArrayList;
+    localoperation_forward_req.operatemask = 4;
+    if (localoperation_forward_req.busi_param == null) {
+      localoperation_forward_req.busi_param = new HashMap();
+    }
+    localoperation_forward_req.busi_param.put(Integer.valueOf(43), str);
+    if (!TextUtils.isEmpty(paramString6)) {
+      localoperation_forward_req.busi_param.put(Integer.valueOf(79), paramString6);
+    }
+    localoperation_forward_req.iUrlInfoFrm = paramInt2;
+    localoperation_forward_req.xcxMapEx = paramMap1;
+    localoperation_forward_req.stored_extend_info = paramMap2;
+    this.a = localoperation_forward_req;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.forward";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "forward";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhlp
  * JD-Core Version:    0.7.0.1
  */

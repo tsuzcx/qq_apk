@@ -1,66 +1,91 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
+import java.util.List;
 
 public class ayfl
-  implements begw
+  implements ajtg
 {
-  String jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Aznl.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int);
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2) {}
   
-  public ayfl(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, begr parambegr, URLDrawable paramURLDrawable) {}
+  public void a(boolean paramBoolean, int paramInt, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt, List<TimDocSSOMsg.UinRightInfo> paramList) {}
+  
+  public void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void b(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void c(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void d(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int i;
-    if (!azge.b(this.jdField_a_of_type_JavaLangString))
+    switch (paramInt)
     {
-      i = 1;
-      if (i == 0) {
-        break label74;
-      }
-      paramView = this.jdField_a_of_type_JavaLangString;
-      paramView = this.jdField_a_of_type_Begr.a(paramInt);
-      if (!this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131627742).equals(paramView)) {
-        break label130;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
     }
-    for (;;)
+    do
     {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      i = 0;
-      break;
-      label74:
-      if (this.jdField_a_of_type_JavaLangString.equals(afzi.jdField_a_of_type_JavaLangString)) {}
-      for (paramView = azge.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_JavaLangString, 0);; paramView = azge.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_JavaLangString, 1))
+      do
       {
-        azge.a(paramView);
-        break;
-      }
-      label130:
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131627752).equals(paramView)) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      } else if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131627750).equals(paramView)) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.d, this.jdField_a_of_type_JavaLangString);
-      } else if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131632269).equals(paramView)) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.c(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int);
-      } else if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131627739).equals(paramView)) {
-        if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Boolean) && (TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity) != null) && (TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity).getBoolean("from_personality_label", false))) {
-          TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int, TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity));
-        } else if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int))) {
-          this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int);
-        } else {
-          this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.c(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int);
-        }
-      }
-    }
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        return;
+                      } while (paramObject == null);
+                      paramObject = (Object[])paramObject;
+                      a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
+                      return;
+                    } while (paramObject == null);
+                    paramObject = (Object[])paramObject;
+                    b(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
+                    return;
+                  } while (paramObject == null);
+                  paramObject = (Object[])paramObject;
+                  a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (List)paramObject[2]);
+                  return;
+                } while (paramObject == null);
+                a(paramBoolean, (Object[])paramObject);
+                return;
+                if (paramObject != null) {
+                  b(paramBoolean, (Object[])paramObject);
+                }
+              } while (paramObject == null);
+              c(paramBoolean, (Object[])paramObject);
+              return;
+            } while (paramObject == null);
+            d(paramBoolean, (Object[])paramObject);
+            return;
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 2);
+        a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 2);
+    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayfl
  * JD-Core Version:    0.7.0.1
  */

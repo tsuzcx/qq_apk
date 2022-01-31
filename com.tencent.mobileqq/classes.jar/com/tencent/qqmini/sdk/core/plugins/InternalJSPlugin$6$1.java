@@ -2,7 +2,8 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import bdfz;
+import beka;
+import besl;
 
 class InternalJSPlugin$6$1
   implements DialogInterface.OnClickListener
@@ -11,7 +12,8 @@ class InternalJSPlugin$6$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    InternalJSPlugin.access$200(this.this$1.val$activity, this.this$1.val$appid, this.this$1.val$packageName);
+    besl.a("InternalJSPlugin", "confirmOpenAppDetailPage downloadUrl : " + this.this$1.val$downloadUrl);
+    InternalJSPlugin.access$200(this.this$1.this$0, this.this$1.val$activity, this.this$1.val$nativeAppId, this.this$1.val$packageName, this.this$1.val$appName, this.this$1.val$downloadUrl);
     this.this$1.val$req.a();
   }
 }

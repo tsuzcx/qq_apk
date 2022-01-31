@@ -1,48 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin.RecommendedListResp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
 
-public class areg
-  extends atoh
+public final class areg
+  implements Parcelable.Creator<IVPluginInfo>
 {
-  public areg(LoginWelcomeManager paramLoginWelcomeManager) {}
-  
-  protected void a(NewerGuidePlugin.RecommendedListResp paramRecommendedListResp)
+  public IVPluginInfo a(Parcel paramParcel)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginWelcomeManager", 2, String.format("onGetRecommendedList resp=%s", new Object[] { paramRecommendedListResp }));
-      }
-      if (LoginWelcomeManager.a(this.a) != null)
-      {
-        Bundle localBundle = LoginWelcomeManager.a(this.a).getBundle("request");
-        if (localBundle != null) {
-          localBundle.putParcelable("result", paramRecommendedListResp);
-        }
-        this.a.b();
-      }
-      LoginWelcomeManager.a(this.a).removeObserver(LoginWelcomeManager.a(this.a));
-      return;
-    }
-    catch (Throwable paramRecommendedListResp)
-    {
-      QLog.e("LoginWelcomeManager", 1, "onGetRecommendedList fail.", paramRecommendedListResp);
-    }
+    return new IVPluginInfo(paramParcel);
   }
   
-  protected void c(boolean paramBoolean)
+  public IVPluginInfo[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, String.format("ShowCommonGuideWebResult result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
+    return new IVPluginInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     areg
  * JD-Core Version:    0.7.0.1
  */

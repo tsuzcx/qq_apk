@@ -3,9 +3,9 @@ package com.tencent.av.app;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import ksb;
-import ksd;
-import kse;
+import lcq;
+import lcs;
+import lct;
 
 final class DeviceCapabilityExamination$1
   implements Runnable
@@ -14,29 +14,29 @@ final class DeviceCapabilityExamination$1
   
   public void run()
   {
-    Object localObject = ksb.a(this.jdField_a_of_type_Int);
+    Object localObject = lcq.a(this.jdField_a_of_type_Int);
     if (localObject == null)
     {
       QLog.w("DeviceCapabilityExamination", 1, "startEncoderTest, error", new Throwable("打印调用栈"));
       return;
     }
     com.tencent.av.mediacodec.NativeCodec.printLog = true;
-    ksd localksd = DeviceCapabilityExamination.a((kse)localObject);
-    if (localksd == null)
+    lcs locallcs = DeviceCapabilityExamination.a((lct)localObject);
+    if (locallcs == null)
     {
-      QLog.w("DeviceCapabilityExamination", 1, "startEncoderTest, 无样本, codec[" + ((kse)localObject).b + "]");
+      QLog.w("DeviceCapabilityExamination", 1, "startEncoderTest, 无样本, codec[" + ((lct)localObject).b + "]");
       return;
     }
-    localObject = DeviceCapabilityExamination.a(localksd.jdField_a_of_type_JavaLangString);
+    localObject = DeviceCapabilityExamination.a(locallcs.jdField_a_of_type_JavaLangString);
     if (!new File((String)localObject).exists())
     {
       QLog.w("DeviceCapabilityExamination", 1, "startEncoderTest, error, filePath[" + (String)localObject, new Throwable("打印调用栈"));
       return;
     }
-    localObject = DeviceCapabilityExamination.a(DeviceCapabilityExamination.a(), localksd.jdField_a_of_type_JavaLangString, localksd.jdField_a_of_type_Int, localksd.b);
-    localksd.c = localObject[1].intValue();
-    localksd.d = localObject[4].intValue();
-    DeviceCapabilityExamination.a(AudioHelper.b(), this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_Int, localksd, null);
+    localObject = DeviceCapabilityExamination.a(DeviceCapabilityExamination.a(), locallcs.jdField_a_of_type_JavaLangString, locallcs.jdField_a_of_type_Int, locallcs.b);
+    locallcs.c = localObject[1].intValue();
+    locallcs.d = localObject[4].intValue();
+    DeviceCapabilityExamination.a(AudioHelper.b(), this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_Int, locallcs, null);
   }
 }
 

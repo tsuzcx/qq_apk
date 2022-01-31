@@ -1,48 +1,47 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class axep
 {
-  protected axem a;
-  TeamWorkFileImportInfo a;
-  
-  public axep(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
+  public static axer a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo = paramTeamWorkFileImportInfo;
-    if (paramQQAppInterface != null) {
-      this.jdField_a_of_type_Axem = ((axem)paramQQAppInterface.a(120));
+    String str = paramString;
+    if (axfp.a())
+    {
+      str = paramString;
+      if (!paramString.endsWith("64bit")) {
+        str = paramString + "64bit";
+      }
     }
+    paramString = new axer();
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_resource_status_sp", 4);
+    paramString.a = localSharedPreferences.getInt(str + "_version_k", 0);
+    paramString.b = localSharedPreferences.getInt(str + "_status_k", -1);
+    paramString.c = localSharedPreferences.getInt(str + "_last_error_k", -1);
+    return paramString;
   }
   
-  public void a(QQAppInterface paramQQAppInterface) {}
-  
-  protected void a(boolean paramBoolean)
+  public static boolean a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = 0;
-    if ((paramBoolean) && (bace.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c)))
+    String str = paramString;
+    if (axfp.a())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("TeamWorkFileImportJob", 2, "---notifyUIFailed try local fileName: " + this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
+      str = paramString;
+      if (!paramString.endsWith("64bit")) {
+        str = paramString + "64bit";
       }
-      this.jdField_a_of_type_Axem.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.a = false;
-      this.jdField_a_of_type_Axem.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      this.jdField_a_of_type_Axem.f(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
     }
-    for (;;)
-    {
-      if (i != 0) {
-        this.jdField_a_of_type_Axem.d(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      }
-      return;
-      i = 1;
-    }
+    paramString = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_resource_status_sp", 4).edit();
+    paramString.putInt(str + "_version_k", paramInt1);
+    paramString.putInt(str + "_status_k", paramInt2);
+    paramString.putInt(str + "_last_error_k", paramInt3);
+    return paramString.commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axep
  * JD-Core Version:    0.7.0.1
  */

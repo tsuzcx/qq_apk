@@ -1,36 +1,24 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import java.util.HashMap;
 
 public class afnm
-  implements View.OnClickListener
+  implements afnk
 {
-  public afnm(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public afnm(TroopActivity paramTroopActivity) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, boolean paramBoolean)
   {
-    vkw.a(this.a.jdField_a_of_type_Afow);
-    vkw.a(this.a.jdField_a_of_type_JavaUtilList);
-    paramView = new ArrayList();
-    int i = 0;
-    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+    if ((this.a.a.containsKey(paramString)) && (((Boolean)this.a.a.get(paramString)).booleanValue() != paramBoolean))
     {
-      paramView.add(((afou)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
-      i += 1;
+      this.a.a.remove(paramString);
+      return;
     }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
-    this.a.getActivity().setResult(-1, localIntent);
-    this.a.getActivity().finish();
+    this.a.a.put(paramString, Boolean.valueOf(paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afnm
  * JD-Core Version:    0.7.0.1
  */

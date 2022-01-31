@@ -1,25 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenPermissionDialogFragment;
+import android.content.Context;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
 
-public class aluf
-  implements DialogInterface.OnClickListener
+class aluf
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public aluf(ColorNoteSmallScreenPermissionDialogFragment paramColorNoteSmallScreenPermissionDialogFragment) {}
+  aluf(aluc paramaluc, String paramString, Context paramContext) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = babr.a(this.a.getActivity(), 230).setMessage(2131625301).setNegativeButton(2131625300, new alug(this));
-    paramDialogInterface.setOnDismissListener(new aluh(this));
-    paramDialogInterface.setCancelable(false);
-    paramDialogInterface.setCanceledOnTouchOutside(false);
-    paramDialogInterface.show();
+    if ((paramInt == 0) && (paramAppPathInfo.path != null)) {
+      ArkAppCacheMgr.getAppIcon(this.jdField_a_of_type_JavaLangString, new alug(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aluf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,28 @@
 package com.dataline.activities;
 
 import android.graphics.Bitmap;
-import azvq;
-import bz;
+import bawu;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
+import ds;
 import java.io.File;
 
 final class LiteActivity$15
   implements Runnable
 {
-  LiteActivity$15(String paramString, bz parambz) {}
+  LiteActivity$15(String paramString, ds paramds) {}
   
   public void run()
   {
     if (ChatBackgroundManager.a(new File(this.jdField_a_of_type_JavaLangString))) {
-      this.jdField_a_of_type_Bz.a(null, true);
+      this.jdField_a_of_type_Ds.a(null, true);
     }
     Bitmap localBitmap;
     do
     {
       return;
-      localBitmap = azvq.a(this.jdField_a_of_type_JavaLangString);
-    } while (this.jdField_a_of_type_Bz == null);
-    this.jdField_a_of_type_Bz.a(localBitmap, false);
+      localBitmap = bawu.a(this.jdField_a_of_type_JavaLangString);
+    } while (this.jdField_a_of_type_Ds == null);
+    this.jdField_a_of_type_Ds.a(localBitmap, false);
   }
 }
 

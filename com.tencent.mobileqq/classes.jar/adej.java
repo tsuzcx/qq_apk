@@ -1,15 +1,6 @@
-import android.content.Context;
-import com.tencent.mobileqq.data.MessageForFile;
-
-class adej
-  implements bbrx
+public abstract interface adej
 {
-  adej(adeg paramadeg, MessageForFile paramMessageForFile, Context paramContext) {}
-  
-  public void a(int paramInt)
-  {
-    apck.a(this.jdField_a_of_type_Adeg.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
-  }
+  public abstract void a(adeh paramadeh, int paramInt);
 }
 
 

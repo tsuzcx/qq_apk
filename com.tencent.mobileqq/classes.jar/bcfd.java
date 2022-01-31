@@ -1,79 +1,78 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.smtt.sdk.WebView;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import java.util.ArrayList;
 
 public class bcfd
-  implements bceo
 {
-  protected Context a;
-  protected WebView a;
-  protected String a;
-  
-  public bcfd(Context paramContext, String paramString, WebView paramWebView)
+  public static final ArrayList<String> a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
-  }
-  
-  public void a(Exception paramException)
-  {
-    bcds.b("AppReport", "<AppReport> FullReportCallback onException >>> " + paramException.toString());
-    bcfc.b(this.jdField_a_of_type_AndroidContentContext);
-    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentSmttSdkWebView != null))
-    {
-      bcds.c("AppReport", "<AppReport> onException get app update list after full report");
-      SimpleAccount localSimpleAccount = BaseApplicationImpl.getApplication().getFirstSimpleAccount();
-      paramException = "";
-      if (localSimpleAccount != null) {
-        paramException = localSimpleAccount.getUin();
-      }
-      bcff.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_JavaLangString, false, paramException);
-    }
-    bcfc.a = false;
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    Object localObject = paramJSONObject;
-    if (paramJSONObject == null) {
-      localObject = new JSONObject();
-    }
-    bcds.b("AppReport", "<AppReport> FullReportCallback onResult >>> " + ((JSONObject)localObject).toString());
-    int i = ((JSONObject)localObject).optInt("code", -1);
-    if (i == 0)
-    {
-      bcfc.a(this.jdField_a_of_type_AndroidContentContext);
-      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentSmttSdkWebView != null))
-      {
-        bcds.c("AppReport", "<AppReport> onResult get app update list after full report");
-        localObject = BaseApplicationImpl.getApplication().getFirstSimpleAccount();
-        paramJSONObject = "";
-        if (localObject != null) {
-          paramJSONObject = ((SimpleAccount)localObject).getUin();
-        }
-        if (i != 0) {
-          break label136;
-        }
-        bcff.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_JavaLangString, true, paramJSONObject);
-      }
-    }
+    ArrayList localArrayList = new ArrayList();
     for (;;)
     {
-      bcfc.a = false;
-      return;
-      bcfc.b(this.jdField_a_of_type_AndroidContentContext);
-      break;
-      label136:
-      bcff.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_JavaLangString, false, paramJSONObject);
+      try
+      {
+        Object localObject = (amwx)ampm.a().a(361);
+        if ((localObject != null) && (!TextUtils.isEmpty(((amwx)localObject).d)))
+        {
+          localObject = ((amwx)localObject).d;
+          localObject = ((String)localObject).split(";");
+          int j = localObject.length;
+          int i = 0;
+          if (i < j)
+          {
+            localArrayList.add(localObject[i]);
+            i += 1;
+            continue;
+          }
+          return localArrayList;
+        }
+      }
+      catch (Throwable localThrowable) {}
+      String str = "QQ";
     }
+  }
+  
+  public static final boolean a(int paramInt, boolean paramBoolean)
+  {
+    amwx localamwx = (amwx)ampm.a().a(361);
+    if (localamwx != null) {}
+    switch (paramInt)
+    {
+    default: 
+      return paramBoolean;
+    case 1: 
+      return localamwx.jdField_a_of_type_Boolean;
+    case 2: 
+      return localamwx.jdField_b_of_type_Boolean;
+    }
+    return localamwx.jdField_c_of_type_Boolean;
+  }
+  
+  public static final boolean b(int paramInt, boolean paramBoolean)
+  {
+    amwx localamwx = (amwx)ampm.a().a(361);
+    if (localamwx != null) {
+      switch (paramInt)
+      {
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return paramBoolean;
+        } while (Math.random() >= Float.valueOf(localamwx.jdField_a_of_type_JavaLangString).floatValue());
+        return true;
+      } while (Math.random() >= Float.valueOf(localamwx.jdField_b_of_type_JavaLangString).floatValue());
+      return true;
+    } while (Math.random() >= Float.valueOf(localamwx.jdField_c_of_type_JavaLangString).floatValue());
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcfd
  * JD-Core Version:    0.7.0.1
  */

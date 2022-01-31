@@ -1,50 +1,102 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
-import com.tencent.mobileqq.emosm.Client;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.business.qvip.SSOErrorInfoMapConfig;
+import java.util.HashMap;
+import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anab
-  implements ServiceConnection
+  extends amyi<SSOErrorInfoMapConfig>
 {
-  public anab(Client paramClient) {}
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public static SSOErrorInfoMapConfig c()
   {
-    try
-    {
-      this.a.mIsBound = true;
-      this.a.mService = new Messenger(paramIBinder);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.emoji.web.Client", 2, "ServiceConnection Attached.");
-      }
-      anfc.a().a();
-      paramComponentName = Message.obtain(null, 1);
-      paramComponentName.replyTo = this.a.mMessenger;
-      this.a.mService.send(paramComponentName);
-      return;
+    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig2 = (SSOErrorInfoMapConfig)ampm.a().a(477);
+    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig1 = localSSOErrorInfoMapConfig2;
+    if (localSSOErrorInfoMapConfig2 == null) {
+      localSSOErrorInfoMapConfig1 = new SSOErrorInfoMapConfig();
     }
-    catch (Exception paramComponentName)
+    return localSSOErrorInfoMapConfig1;
+  }
+  
+  public int a()
+  {
+    return 477;
+  }
+  
+  @NonNull
+  public SSOErrorInfoMapConfig a()
+  {
+    return new SSOErrorInfoMapConfig();
+  }
+  
+  @NonNull
+  public SSOErrorInfoMapConfig a(ampi[] paramArrayOfampi)
+  {
+    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig = new SSOErrorInfoMapConfig();
+    paramArrayOfampi = paramArrayOfampi[0].a;
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("Q.emoji.web.Client", 2, paramComponentName.getMessage());
+      String str1;
+      amzz localamzz;
+      String str2;
+      anaa localanaa;
+      try
+      {
+        if (!TextUtils.isEmpty(paramArrayOfampi))
+        {
+          paramArrayOfampi = new JSONObject(paramArrayOfampi);
+          Iterator localIterator1 = paramArrayOfampi.keys();
+          if (localIterator1.hasNext())
+          {
+            str1 = (String)localIterator1.next();
+            JSONObject localJSONObject1 = paramArrayOfampi.optJSONObject(str1);
+            Iterator localIterator2 = localJSONObject1.keys();
+            localamzz = new amzz();
+            if (!localIterator2.hasNext()) {
+              break label220;
+            }
+            str2 = (String)localIterator2.next();
+            JSONObject localJSONObject2 = localJSONObject1.optJSONObject(str2);
+            Iterator localIterator3 = localJSONObject2.keys();
+            localanaa = new anaa();
+            if (!localIterator3.hasNext()) {
+              break label204;
+            }
+            String str3 = (String)localIterator3.next();
+            String str4 = localJSONObject2.optString(str3);
+            localanaa.a.put(str3, str4);
+            continue;
+          }
+        }
+        return localSSOErrorInfoMapConfig;
+      }
+      catch (JSONException paramArrayOfampi)
+      {
+        veg.e("SSOErrorInfoMapProcessor", "SSOErrorInfoMapConfig onParsed exception :" + paramArrayOfampi.getMessage());
+      }
+      label204:
+      localamzz.a.put(str2, localanaa);
+      continue;
+      label220:
+      localSSOErrorInfoMapConfig.mErrorMap.put(str1, localamzz);
     }
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public Class<SSOErrorInfoMapConfig> a()
   {
-    this.a.mService = null;
-    this.a.onDisconnectWithService();
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.web.Client", 2, "Disconnected.");
-    }
+    return SSOErrorInfoMapConfig.class;
+  }
+  
+  @NonNull
+  public SSOErrorInfoMapConfig b()
+  {
+    return new SSOErrorInfoMapConfig();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anab
  * JD-Core Version:    0.7.0.1
  */

@@ -9,19 +9,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import aphp;
-import awuw;
-import axdl;
-import axfs;
-import axoa;
-import bahv;
-import bahx;
-import baia;
-import bbac;
-import bbms;
-import bbmy;
-import bfpr;
-import bfpy;
+import aqbc;
+import axuy;
+import aydn;
+import ayfv;
+import ayog;
+import bbjc;
+import bbje;
+import bbjh;
+import bcdb;
+import bcpq;
+import bcpw;
+import bgxy;
+import bgyf;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -35,15 +35,15 @@ import java.util.ArrayList;
 import java.util.List;
 import mqq.app.MobileQQ;
 import org.json.JSONObject;
-import xdt;
+import xmt;
 
 public class TeamWorkForceShare
-  implements DialogInterface.OnCancelListener, AdapterView.OnItemClickListener, axdl
+  implements DialogInterface.OnCancelListener, AdapterView.OnItemClickListener, aydn
 {
   private static final String jdField_a_of_type_JavaLangString = TeamWorkForceShare.class.getSimpleName();
   private Activity jdField_a_of_type_AndroidAppActivity;
-  private bahv jdField_a_of_type_Bahv;
-  private bbms jdField_a_of_type_Bbms;
+  private bbjc jdField_a_of_type_Bbjc;
+  private bcpq jdField_a_of_type_Bcpq;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private WebViewPlugin jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin;
   private String b;
@@ -66,8 +66,8 @@ public class TeamWorkForceShare
   
   public void a()
   {
-    this.jdField_a_of_type_Bbms = new bbms(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_Bbms.show();
+    this.jdField_a_of_type_Bcpq = new bcpq(this.jdField_a_of_type_AndroidAppActivity);
+    this.jdField_a_of_type_Bcpq.show();
     b();
   }
   
@@ -76,35 +76,35 @@ public class TeamWorkForceShare
     this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new TeamWorkForceShare.1(this, paramBitmap));
   }
   
-  protected List<bahx>[] a()
+  protected List<bbje>[] a()
   {
     ArrayList localArrayList = new ArrayList();
-    bahx localbahx = new bahx();
-    localbahx.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131630983);
-    localbahx.jdField_b_of_type_Int = 2130838732;
-    localbahx.jdField_b_of_type_Boolean = true;
-    localbahx.c = 2;
-    localbahx.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbahx);
-    localbahx = new bahx();
-    localbahx.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131630996);
-    localbahx.jdField_b_of_type_Int = 2130838733;
-    localbahx.jdField_b_of_type_Boolean = true;
-    localbahx.c = 3;
-    localbahx.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbahx);
-    localbahx = new bahx();
-    localbahx.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131631003);
-    localbahx.jdField_b_of_type_Int = 2130838736;
-    localbahx.c = 9;
-    localbahx.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbahx);
-    localbahx = new bahx();
-    localbahx.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131630986);
-    localbahx.jdField_b_of_type_Int = 2130838730;
-    localbahx.c = 10;
-    localbahx.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbahx);
+    bbje localbbje = new bbje();
+    localbbje.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131696695);
+    localbbje.jdField_b_of_type_Int = 2130838754;
+    localbbje.jdField_b_of_type_Boolean = true;
+    localbbje.c = 2;
+    localbbje.jdField_b_of_type_JavaLangString = "";
+    localArrayList.add(localbbje);
+    localbbje = new bbje();
+    localbbje.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131696708);
+    localbbje.jdField_b_of_type_Int = 2130838755;
+    localbbje.jdField_b_of_type_Boolean = true;
+    localbbje.c = 3;
+    localbbje.jdField_b_of_type_JavaLangString = "";
+    localArrayList.add(localbbje);
+    localbbje = new bbje();
+    localbbje.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131696715);
+    localbbje.jdField_b_of_type_Int = 2130838758;
+    localbbje.c = 9;
+    localbbje.jdField_b_of_type_JavaLangString = "";
+    localArrayList.add(localbbje);
+    localbbje = new bbje();
+    localbbje.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131696698);
+    localbbje.jdField_b_of_type_Int = 2130838752;
+    localbbje.c = 10;
+    localbbje.jdField_b_of_type_JavaLangString = "";
+    localArrayList.add(localbbje);
     return (List[])new ArrayList[] { localArrayList };
   }
   
@@ -121,10 +121,10 @@ public class TeamWorkForceShare
       QLog.d(jdField_a_of_type_JavaLangString, 1, "tag == null");
       return;
     }
-    if (this.jdField_a_of_type_Bahv.a()) {
-      this.jdField_a_of_type_Bahv.b();
+    if (this.jdField_a_of_type_Bbjc.a()) {
+      this.jdField_a_of_type_Bbjc.b();
     }
-    paramAdapterView = ((baia)paramAdapterView).a;
+    paramAdapterView = ((bbjh)paramAdapterView).a;
     paramInt = paramAdapterView.c;
     QLog.d(jdField_a_of_type_JavaLangString, 1, "action = " + paramAdapterView.c);
     switch (paramInt)
@@ -153,10 +153,10 @@ public class TeamWorkForceShare
       paramAdapterView = new Bundle();
       paramAdapterView.putBoolean("key_flag_from_plugin", true);
       paramAdapterView.putString("pluginName", "web_share");
-      paramAdapterView.putString("struct_share_key_source_icon", axfs.d);
+      paramAdapterView.putString("struct_share_key_source_icon", ayfv.d);
       paramAdapterView.putString("app_name", paramView.f());
       paramAdapterView.putString("struct_share_key_source_action", "web");
-      paramAdapterView.putString("struct_share_key_source_url", axfs.jdField_b_of_type_JavaLangString);
+      paramAdapterView.putString("struct_share_key_source_url", ayfv.jdField_b_of_type_JavaLangString);
       String str = paramView.b();
       paramAdapterView.putString("detail_url", paramView.a());
       paramAdapterView.putString("title", str);
@@ -168,22 +168,22 @@ public class TeamWorkForceShare
       QLog.d(jdField_a_of_type_JavaLangString, 1, "title = " + str + ", desc = " + paramView.c() + ", url = " + paramView.a());
       paramAdapterView.putString("openerProc", MobileQQ.getMobileQQ().getQQProcessName());
       paramAdapterView.putBoolean("k_back", true);
-      paramAdapterView.putString("brief_key", this.jdField_a_of_type_AndroidAppActivity.getString(2131630985, new Object[] { str }));
-      paramAdapterView.putByteArray("stuctmsg_bytes", awuw.a(paramAdapterView).getBytes());
+      paramAdapterView.putString("brief_key", this.jdField_a_of_type_AndroidAppActivity.getString(2131696697, new Object[] { str }));
+      paramAdapterView.putByteArray("stuctmsg_bytes", axuy.a(paramAdapterView).getBytes());
       paramView = new Intent();
       paramView.putExtras(paramAdapterView);
-      aphp.a(this.jdField_a_of_type_AndroidAppActivity, paramView, 34322);
+      aqbc.a(this.jdField_a_of_type_AndroidAppActivity, paramView, 34322);
       return;
     case 3: 
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.c, new String[] { String.format("{\"type\":%d,\"action\":%d,\"ec\":%d,\"em\":\"%s\"}", new Object[] { Integer.valueOf(2), Integer.valueOf(1), Integer.valueOf(0), "ok" }) });
-      paramAdapterView = axoa.d(this.jdField_b_of_type_JavaLangString);
-      paramView = bfpy.a();
+      paramAdapterView = ayog.d(this.jdField_b_of_type_JavaLangString);
+      paramView = bgyf.a();
       if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
       {
         paramView.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
         paramView.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getDisplayName(0, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), null);
       }
-      bfpr.a(this.jdField_a_of_type_AndroidAppActivity, paramView, paramAdapterView, BaseApplication.getContext().getString(2131626640), "", 34356);
+      bgxy.a(this.jdField_a_of_type_AndroidAppActivity, paramView, paramAdapterView, BaseApplication.getContext().getString(2131692226), "", 34356);
       return;
     }
     boolean bool;
@@ -200,7 +200,7 @@ public class TeamWorkForceShare
       if (WXShareHelper.a().a()) {
         break label750;
       }
-      bbmy.a(this.jdField_a_of_type_AndroidAppActivity, 2131655008, 1).a();
+      bcpw.a(this.jdField_a_of_type_AndroidAppActivity, 2131720906, 1).a();
       QLog.d(jdField_a_of_type_JavaLangString, 1, "wx not installed");
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.c, new String[] { String.format("{\"type\":%d,\"action\":%d,\"ec\":%d,\"em\":\"%s\"}", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(1), Integer.valueOf(1), "wx not installed" }) });
       return;
@@ -210,7 +210,7 @@ public class TeamWorkForceShare
     label750:
     if (!WXShareHelper.a().b())
     {
-      bbmy.a(this.jdField_a_of_type_AndroidAppActivity, 2131655009, 1).a();
+      bcpw.a(this.jdField_a_of_type_AndroidAppActivity, 2131720907, 1).a();
       QLog.d(jdField_a_of_type_JavaLangString, 1, "wx version too low");
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.c, new String[] { String.format("{\"type\":%d,\"action\":%d,\"ec\":%d,\"em\":\"%s\"}", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(1), Integer.valueOf(2), "wx version too low" }) });
       return;

@@ -1,91 +1,79 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.map.geolocation.TencentLocation;
-import com.tencent.map.geolocation.TencentLocationListener;
-import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
-import com.tencent.mobileqq.location.data.LocationRoom;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.hotpic.HotPicData;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import mqq.os.MqqHandler;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-class aqzf
-  implements TencentLocationListener
+public class aqzf
+  extends aqyu
 {
-  private Runnable jdField_b_of_type_JavaLangRunnable;
-  private volatile boolean jdField_b_of_type_Boolean = true;
-  private volatile boolean c;
-  
-  aqzf(aqzc paramaqzc, boolean paramBoolean, Runnable paramRunnable, MqqHandler paramMqqHandler, LocationRoom paramLocationRoom)
+  public static URL b(String paramString)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (paramBoolean = bool;; paramBoolean = false)
+    try
     {
-      this.c = paramBoolean;
-      this.jdField_b_of_type_JavaLangRunnable = this.jdField_a_of_type_JavaLangRunnable;
-      return;
+      paramString = new URL("hot_pic_origin", "", paramString);
+      return paramString;
     }
+    catch (MalformedURLException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
-  public void onLocationChanged(TencentLocation paramTencentLocation, int paramInt, String paramString)
+  protected String a(HotPicData paramHotPicData)
   {
-    if (paramInt == 0)
-    {
-      LatLng localLatLng = new LatLng(paramTencentLocation.getLatitude(), paramTencentLocation.getLongitude());
-      paramTencentLocation = localLatLng;
-      if (QLog.isColorLevel())
-      {
-        paramTencentLocation = localLatLng;
-        if (aqzc.a != null) {
-          paramTencentLocation = aqzc.a;
-        }
-      }
-      if ((paramTencentLocation.getLatitude() == 0.0D) && (paramTencentLocation.getLongitude() == 0.0D))
-      {
-        if (this.jdField_b_of_type_Boolean)
-        {
-          this.jdField_b_of_type_Boolean = false;
-          QLog.e("LocationHandler", 1, "[LocationManager] onLocationChanged: invoked. (0,0) detected");
-        }
-        return;
-      }
-      aqzc.a(this.jdField_a_of_type_Aqzc, paramTencentLocation);
-    }
-    if ((this.c) && (this.jdField_b_of_type_JavaLangRunnable != null))
+    return paramHotPicData.originalUrl;
+  }
+  
+  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramDownloadParams = (HotPicData)paramDownloadParams.mExtraInfo;
+    String str = a(paramDownloadParams);
+    File localFile = a(str);
+    if (localFile.exists())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("LocationHandler", 2, "[LocationManager] onLocationChanged: invoked. remove over time runnable");
+        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "loadImageFile file exist:" + localFile.getAbsolutePath());
       }
-      this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-      this.jdField_b_of_type_JavaLangRunnable = null;
+      return localFile;
     }
-    if (paramInt != 0)
-    {
-      paramTencentLocation = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a();
-      arbp.a(this.jdField_a_of_type_Aqzc.app, paramTencentLocation.a(), paramTencentLocation.a(), 1);
+    localFile.getParentFile().mkdirs();
+    if ((bbbd.a()) && (bbbd.b() < 20971520L)) {
+      throw new IOException("SD card free space is " + bbbd.b());
     }
-    for (;;)
+    Object localObject = new File(a);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdir();
+    }
+    int i = a(str, localFile);
+    if (i == 0)
     {
-      if ((paramInt == 0) || (HwNetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))) {
-        awso.a().a("requestSoso", new Object[] { Integer.valueOf(-1), Boolean.valueOf(false), "LocationHandler", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("LocationHandler", 2, "[LocationManager] onLocationChanged: invoked. errorCode: " + paramInt + " errorMsg: " + paramString);
-      return;
-      if (this.c)
+      localObject = aurl.a(localFile.getAbsolutePath());
+      if (!paramDownloadParams.originalMD5.equalsIgnoreCase((String)localObject))
       {
-        this.c = false;
-        this.jdField_a_of_type_Aqzc.a(aqzc.a(this.jdField_a_of_type_Aqzc).a(), aqzc.a(this.jdField_a_of_type_Aqzc).a());
+        localFile.delete();
+        paramURLDrawableHandler.onFileDownloadFailed(0);
+        return null;
       }
-      aqzc.a(this.jdField_a_of_type_Aqzc, true);
+      paramURLDrawableHandler.onFileDownloadSucceed(localFile.length());
+      if (QLog.isColorLevel()) {
+        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->0");
+      }
+      return localFile;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->" + i);
+    }
+    return null;
   }
-  
-  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     aqzf
  * JD-Core Version:    0.7.0.1
  */

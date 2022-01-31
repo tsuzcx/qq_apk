@@ -1,100 +1,77 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
 import android.view.View;
-import com.tencent.biz.widgets.ViewFinderView.1;
 
 public class xfk
-  extends View
 {
-  protected double a;
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842583);
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842600);
-  protected int c;
-  protected int d = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+  private int a;
+  private int b;
   
-  public xfk(Context paramContext)
+  public xfk(int paramInt1, int paramInt2)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(1275068416);
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  public void a()
+  public static xfk a(int paramInt)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Boolean = true;
-      invalidate();
+    default: 
+      return new xfk(0, -1);
+    case 0: 
+      return new xfk(0, 0);
+    case 1: 
+      return new xfk(0, -1);
     }
+    return new xfk(0, -2);
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static xfk b(int paramInt)
   {
-    Rect localRect = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(localRect);
-    this.c = (paramInt4 - paramInt2 - this.d);
-    this.jdField_a_of_type_Double = (this.c / 5000.0D);
-    this.jdField_a_of_type_AndroidGraphicsRect = localRect;
-    invalidate();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  protected void onDraw(Canvas paramCanvas)
-  {
-    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
-    if ((localRect == null) || (localRect.width() == 0) || (localRect.height() == 0)) {
-      paramCanvas.drawRect(0.0F, 0.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return new xfk(1, -1);
+    case 3: 
+      return new xfk(1, 0);
+    case 1: 
+      return new xfk(1, -1);
     }
-    do
+    return new xfk(1, -2);
+  }
+  
+  public void a(View paramView)
+  {
+    if (this.a == 0) {
+      switch (this.b)
+      {
+      default: 
+        paramView.setPivotX(this.b);
+      }
+    }
+    while (this.a != 1)
     {
       return;
-      paramCanvas.drawRect(0.0F, 0.0F, this.jdField_a_of_type_Int, localRect.top, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(0.0F, localRect.top, localRect.left, localRect.bottom, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(localRect.right, localRect.top, this.jdField_a_of_type_Int, localRect.bottom, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(0.0F, localRect.bottom, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    } while (!this.jdField_a_of_type_Boolean);
-    int i = (int)((System.currentTimeMillis() - this.jdField_a_of_type_Long) * this.jdField_a_of_type_Double) % this.c;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(localRect.left, localRect.top + i, localRect.right, i + localRect.top + this.d);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    postInvalidateDelayed(20L, localRect.left, localRect.top, localRect.right, localRect.bottom);
-  }
-  
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    invalidate();
-  }
-  
-  public void postInvalidateDelayed(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (Build.VERSION.SDK_INT >= 14)
-    {
-      super.postInvalidateDelayed(paramLong, paramInt1, paramInt2, paramInt3, paramInt4);
+      paramView.setPivotX(paramView.getWidth() * 0.5F);
+      return;
+      paramView.setPivotX(paramView.getWidth());
       return;
     }
-    postDelayed(new ViewFinderView.1(this, paramInt1, paramInt2, paramInt3, paramInt4), paramLong);
+    switch (this.b)
+    {
+    default: 
+      paramView.setPivotY(this.b);
+      return;
+    case -1: 
+      paramView.setPivotY(paramView.getHeight() * 0.5F);
+      return;
+    }
+    paramView.setPivotY(paramView.getHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xfk
  * JD-Core Version:    0.7.0.1
  */

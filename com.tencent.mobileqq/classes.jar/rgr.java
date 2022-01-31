@@ -1,8 +1,18 @@
-public abstract interface rgr
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class rgr
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  rgr(rgq paramrgq) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void onClick(View paramView)
+  {
+    rgq.a(true, -1, rgq.a(this.a));
+    if (rgq.a(this.a) != null) {
+      rgq.a(this.a).onClick(paramView);
+    }
+  }
 }
 
 

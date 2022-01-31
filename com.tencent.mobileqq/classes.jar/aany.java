@@ -1,22 +1,14 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.Conversation;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aany
-  implements Handler.Callback
+class aany
+  implements DialogInterface.OnClickListener
 {
-  public aany(Conversation paramConversation) {}
+  aany(aanw paramaanw) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    arih.a().a(paramMessage.what);
-    if (paramMessage.what == 4)
-    {
-      this.a.a(1134013, 0L, false);
-      return true;
-    }
-    this.a.e(true);
-    return true;
+    paramDialogInterface.dismiss();
   }
 }
 

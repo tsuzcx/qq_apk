@@ -1,41 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 
-public class aerx
-  implements View.OnClickListener
+class aerx
+  implements DialogInterface.OnClickListener
 {
-  public aerx(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  aerx(aerw paramaerw, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = paramView.getTag();
-    if ((paramView == null) || (!(paramView instanceof Integer))) {}
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        i = ((Integer)paramView).intValue();
-      } while ((i < 0) || (this.a.jdField_a_of_type_Aesa == null));
-      paramView = this.a.getActivity();
-    } while (paramView == null);
-    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_clk", 0, 0, this.a.b, "", "", "");
-    MessageRecord localMessageRecord = ((aerz)this.a.jdField_a_of_type_Aesa.getItem(i)).a;
-    ChatHistoryBubbleListForTroopFragment.a(paramView, this.a.b, localMessageRecord, 100, 1);
-    if (QLog.isColorLevel()) {
-      QLog.i(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "onItemClick, message = " + localMessageRecord);
-    }
-    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A597", "0X800A597", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Aerw.a.a.a(4, 0, 0, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aerx
  * JD-Core Version:    0.7.0.1
  */

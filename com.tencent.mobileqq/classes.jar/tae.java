@@ -1,52 +1,20 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class tae
-  extends slz<tbu>
+class tae
+  extends tpk
 {
-  private final String a;
-  public List<String> a;
+  tae(tac paramtac) {}
   
-  public tae()
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = skt.a("StoryGroupSvc.datacard_batch_get_video_info");
+    super.a();
+    tab.a(this.a.a, null);
   }
   
-  public String a()
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public slu a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspBatchGetVideoInfo localRspBatchGetVideoInfo = new qqstory_service.RspBatchGetVideoInfo();
-    try
-    {
-      localRspBatchGetVideoInfo.mergeFrom(paramArrayOfByte);
-      return new tbu(localRspBatchGetVideoInfo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      urk.b("Q.qqstory.shareGroup:GetShareGroupVideoInfoRequest", a(), paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqBatchGetVideoInfo localReqBatchGetVideoInfo = new qqstory_service.ReqBatchGetVideoInfo();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localReqBatchGetVideoInfo.story_id_list.add(ByteStringMicro.copyFromUtf8(str));
-    }
-    return localReqBatchGetVideoInfo.toByteArray();
+    super.a(paramInt);
+    vel.a("home_page", "suc_share", 1, paramInt, new String[] { vel.b(this.a.a.a) + "", vel.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
 }
 

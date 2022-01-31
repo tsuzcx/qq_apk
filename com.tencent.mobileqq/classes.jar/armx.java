@@ -1,29 +1,28 @@
-import java.util.Map;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
+import org.json.JSONObject;
 
-class armx
-  extends armu<armw>
+public class armx
+  implements QQPermissionCallback
 {
-  public armx(armw paramarmw)
+  public armx(MediaApiPlugin paramMediaApiPlugin, JSONObject paramJSONObject, boolean paramBoolean, AppActivity paramAppActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super(paramarmw);
+    QLog.d(MediaApiPlugin.a, 1, "User requestPermissions WRITE_EXTERNAL_STORAGE denied");
+    bbcv.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void a(armw paramarmw, boolean paramBoolean, armr paramarmr)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramarmw == null) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      armw.a(paramarmw, (armo)armw.a(paramarmw).get(paramarmr.h));
-      return;
-    }
-    armw.a(paramarmw, paramarmr.jdField_a_of_type_JavaLangString, paramarmr.jdField_a_of_type_Int, 1001);
+    this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     armx
  * JD-Core Version:    0.7.0.1
  */

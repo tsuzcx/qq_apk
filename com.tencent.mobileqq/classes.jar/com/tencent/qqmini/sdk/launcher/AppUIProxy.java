@@ -1,111 +1,102 @@
 package com.tencent.qqmini.sdk.launcher;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.view.ViewGroup;
-import bdcw;
-import bdli;
-import bdlm;
-import bdln;
-import bdlq;
-import bdlt;
-import bdnw;
+import begv;
+import begw;
+import bepo;
+import beps;
+import bepv;
+import bepy;
+import besl;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class AppUIProxy
-  extends bdlt
+  extends bepy
 {
-  public static final String TAG = "minisdk-start_AppUIProxy";
   private AppUIProxy.LoadingUI mLoadingUI;
-  private Handler mMainHandler = new Handler(Looper.getMainLooper());
   
-  private void initOnIntentChanged()
-  {
-    if (this.mIntent == null) {}
-    Bundle localBundle;
-    MiniAppInfo localMiniAppInfo;
-    bdlq localbdlq;
-    do
-    {
-      return;
-      localBundle = this.mIntent.getExtras();
-      localMiniAppInfo = (MiniAppInfo)this.mIntent.getParcelableExtra("KEY_APPINFO");
-      localbdlq = bdli.a().a(localMiniAppInfo);
-      bdnw.b("minisdk-start_AppUIProxy", "queryAppRunTimeLoader Loader:" + localbdlq);
-      if (localbdlq == null) {
-        break;
-      }
-      bdli.a().a(localbdlq);
-    } while (!localbdlq.isLoadSucceed());
-    onRuntimeResume(localbdlq);
-    showLoading(false, null);
-    return;
-    showLoading(true, this.mIntent);
-    bdli.a().a(localMiniAppInfo, new bdlm(this), localBundle);
-  }
-  
-  private void onRuntimeCompleted(bdlq parambdlq)
-  {
-    if ((parambdlq == null) || (parambdlq.getRuntime() == null) || (this.mActivity == null)) {
-      return;
-    }
-    if (!parambdlq.dismissLoadingAfterLoaded()) {
-      parambdlq.addRuntimeStateObserver(new bdln(this));
-    }
-    for (;;)
-    {
-      this.mRuntime = parambdlq.getRuntime();
-      this.mRuntime.a(this.mActivity, this.mRootLayout);
-      this.mRuntime.a(parambdlq.getMiniAppInfo(), null);
-      return;
-      showLoading(false, null);
-    }
-  }
-  
-  private void onRuntimeResume(bdlq parambdlq)
-  {
-    if ((parambdlq == null) || (parambdlq.getRuntime() == null) || (this.mActivity == null)) {
-      return;
-    }
-    this.mRuntime = parambdlq.getRuntime();
-    this.mRuntime.a(this.mActivity, this.mRootLayout);
-  }
-  
-  private void showLoading(boolean paramBoolean, Intent paramIntent)
+  public void hideLoading()
   {
     if (this.mLoadingUI == null) {
       return;
     }
-    if (paramBoolean)
-    {
-      this.mLoadingUI.a(paramIntent);
-      if (this.mLoadingUI.getVisibility() != 0) {
-        this.mLoadingUI.setVisibility(0);
-      }
-      if (this.mLoadingUI.getParent() != null) {
-        ((ViewGroup)this.mLoadingUI.getParent()).removeView(this.mLoadingUI);
-      }
-      this.mRootLayout.addView(this.mLoadingUI);
-      this.mLoadingUI.a();
-      return;
-    }
-    this.mLoadingUI.b();
+    this.mMainHandler.post(new AppUIProxy.1(this));
+    begv.a(System.currentTimeMillis());
   }
   
   public void onCreate(Activity paramActivity, Bundle paramBundle, ViewGroup paramViewGroup)
   {
-    super.onCreate(paramActivity, paramBundle, paramViewGroup);
     this.mLoadingUI = new AppUIProxy.LoadingUI(this, paramActivity.getApplicationContext());
-    initOnIntentChanged();
+    super.onCreate(paramActivity, paramBundle, paramViewGroup);
   }
   
-  public void onNewIntent(Activity paramActivity, Intent paramIntent)
+  public void onDestroy(Activity paramActivity)
   {
-    super.onNewIntent(paramActivity, paramIntent);
-    initOnIntentChanged();
+    besl.b("UIProxy", "onDestroy");
+    if (this.mActivity == paramActivity)
+    {
+      this.mActivity = null;
+      this.mRootLayout = null;
+      if (this.mRuntime != null) {
+        this.mRuntime.a(paramActivity);
+      }
+    }
+    if (bepo.a().a() != null) {
+      bepo.a().a().notifyRuntimeEvent(62, new Object[0]);
+    }
+  }
+  
+  public void onRuntimeReady()
+  {
+    if (!this.mActivatedRuntimeLoader.dismissLoadingAfterLoaded()) {
+      this.mActivatedRuntimeLoader.addRuntimeStateObserver(new beps(this));
+    }
+    for (;;)
+    {
+      super.onRuntimeReady();
+      return;
+      hideLoading();
+    }
+  }
+  
+  public void resumeRuntime(bepv parambepv)
+  {
+    if (this.mActivity == null) {
+      besl.c("UIProxy", "Failed to resumeRuntime. Activity is null");
+    }
+    do
+    {
+      return;
+      if (parambepv == null)
+      {
+        besl.c("UIProxy", "Failed to resumeRuntime. runtime loader is null");
+        return;
+      }
+      this.mActivatedRuntimeLoader = parambepv;
+      this.mMiniAppInfo = this.mActivatedRuntimeLoader.getMiniAppInfo();
+      this.mRuntime = this.mActivatedRuntimeLoader.getRuntime();
+      hideLoading();
+    } while (this.mRuntime == null);
+    this.mRuntime.a(this.mActivity, this.mRootLayout);
+  }
+  
+  public void showLoading(MiniAppInfo paramMiniAppInfo)
+  {
+    if (this.mLoadingUI == null) {
+      return;
+    }
+    this.mLoadingUI.a(paramMiniAppInfo);
+    if (this.mLoadingUI.getVisibility() != 0) {
+      this.mLoadingUI.setVisibility(0);
+    }
+    if (this.mLoadingUI.getParent() != null) {
+      ((ViewGroup)this.mLoadingUI.getParent()).removeView(this.mLoadingUI);
+    }
+    this.mRootLayout.addView(this.mLoadingUI);
+    this.mLoadingUI.a();
   }
 }
 

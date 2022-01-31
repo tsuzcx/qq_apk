@@ -1,177 +1,24 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import java.util.ArrayList;
 
-class azff
-  implements azgl
+public class azff
+  implements DialogInterface.OnClickListener
 {
-  azff(azez paramazez) {}
+  public azff(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, int paramInt) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
+    paramDialogInterface = (String)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.b.get(this.jdField_a_of_type_Int);
+    long l = Long.parseLong((String)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.c.get(this.jdField_a_of_type_Int));
+    ajtk localajtk = (ajtk)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.app.a(2);
+    if (localajtk != null) {
+      localajtk.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.app.getCurrentAccountUin(), paramDialogInterface, l);
     }
-    label295:
-    label820:
-    do
-    {
-      for (;;)
-      {
-        return;
-        if (paramJSONObject != null)
-        {
-          try
-          {
-            paramInt = ((Integer)paramJSONObject.get("retcode")).intValue();
-            paramJSONObject = (JSONObject)paramJSONObject.get("result");
-            if ((paramInt != 0) || (paramJSONObject == null)) {
-              continue;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult. retCode = " + paramInt + "\n");
-            }
-            paramBundle = (JSONObject)paramJSONObject.get("basics");
-            Object localObject2;
-            String str;
-            int i;
-            Object localObject1;
-            if (paramBundle != null)
-            {
-              paramBundle = (JSONArray)paramBundle.get("datas");
-              if (paramBundle != null)
-              {
-                paramInt = 0;
-                if (paramInt < paramBundle.length())
-                {
-                  localObject2 = (JSONObject)paramBundle.get(paramInt);
-                  str = (String)((JSONObject)localObject2).get("name");
-                  i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
-                  localObject1 = (String)((JSONObject)localObject2).get("api");
-                  localObject2 = (String)((JSONObject)localObject2).get("msg");
-                  if (!QLog.isColorLevel()) {
-                    break label1008;
-                  }
-                  QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, basics name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg = " + (String)localObject2 + "\n");
-                  break label1008;
-                }
-              }
-            }
-            paramBundle = (JSONObject)paramJSONObject.get("friendlink");
-            if (paramBundle != null)
-            {
-              paramBundle = (JSONArray)paramBundle.get("datas");
-              if (paramBundle != null)
-              {
-                paramInt = 0;
-                if (paramInt < paramBundle.length())
-                {
-                  localObject2 = (JSONObject)paramBundle.get(paramInt);
-                  str = (String)((JSONObject)localObject2).get("name");
-                  i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
-                  localObject1 = (String)((JSONObject)localObject2).get("api");
-                  localObject2 = (String)((JSONObject)localObject2).get("msg");
-                  if (("add_group".equals(localObject1)) && (i != 1)) {
-                    azez.a(this.a).b();
-                  }
-                  if (!QLog.isColorLevel()) {
-                    break label1015;
-                  }
-                  QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, friendlink name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg= " + (String)localObject2 + "\n");
-                  break label1015;
-                }
-              }
-            }
-            paramInt = ((Integer)paramJSONObject.get("appid")).intValue();
-            if (QLog.isColorLevel()) {
-              QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, appid =" + paramInt + "\n");
-            }
-            paramJSONObject = (JSONObject)paramJSONObject.get("qqpay");
-            if (paramJSONObject == null) {
-              continue;
-            }
-            paramJSONObject = (JSONArray)paramJSONObject.get("datas");
-            if (paramJSONObject == null) {
-              continue;
-            }
-            paramInt = 0;
-            while (paramInt < paramJSONObject.length())
-            {
-              localObject1 = (JSONObject)paramJSONObject.get(paramInt);
-              paramBundle = (String)((JSONObject)localObject1).get("name");
-              i = ((Integer)((JSONObject)localObject1).get("state")).intValue();
-              str = (String)((JSONObject)localObject1).get("api");
-              localObject1 = (String)((JSONObject)localObject1).get("msg");
-              if (QLog.isColorLevel()) {
-                QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, qqpay name = " + paramBundle + " state = " + i + " api = " + str + " msg= " + (String)localObject1 + "\n");
-              }
-              paramInt += 1;
-            }
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-          }
-          catch (Exception paramJSONObject) {}
-          QLog.d("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult " + paramJSONObject.toString());
-          return;
-          if ((azez.a(this.a) != null) && (paramJSONObject != null)) {
-            try
-            {
-              paramJSONObject = (JSONObject)paramJSONObject.get("data");
-              if (paramJSONObject != null)
-              {
-                paramJSONObject = (JSONObject)paramJSONObject.get("key");
-                if (paramJSONObject != null)
-                {
-                  paramInt = ((Integer)paramJSONObject.get("retCode")).intValue();
-                  paramBundle = (String)paramJSONObject.get("retMsg");
-                  if (paramInt != 0) {
-                    break label921;
-                  }
-                  if (azez.a(this.a) != null) {
-                    azez.a(this.a).a(true);
-                  }
-                  azfg.a(9, new Object());
-                  if (QLog.isColorLevel())
-                  {
-                    QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "joinGroup onResult retCode = " + paramInt + " retMsg = " + paramBundle);
-                    return;
-                  }
-                }
-              }
-            }
-            catch (Exception paramJSONObject)
-            {
-              azez.a(this.a).d(azez.a(this.a).getString(2131654574));
-            }
-          }
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "joinGroup onResult " + paramJSONObject.toString());
-    return;
-    label921:
-    paramJSONObject = azez.a(this.a).getString(2131654574);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      azez.a(this.a).d(paramJSONObject);
-      break label820;
-      paramJSONObject = azez.a(this.a).getString(2131654569);
-      continue;
-      paramJSONObject = azez.a(this.a).getString(2131654575);
-      continue;
-      label1008:
-      paramInt += 1;
-      break;
-      label1015:
-      paramInt += 1;
-      break label295;
+    if (!this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.isFinishing()) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.finish();
     }
   }
 }

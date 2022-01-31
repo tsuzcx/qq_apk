@@ -1,40 +1,40 @@
 package cooperation.vip.qqbanner;
 
-import ahac;
-import ahad;
+import ahmr;
+import ahms;
 import android.util.SparseArray;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bajq;
-import bgmb;
-import bgqq;
-import bgqt;
+import bbkx;
+import bhus;
+import bhzp;
+import bhzs;
 
 public class QbossADImmersionBannerManager$1
   implements Runnable
 {
-  public QbossADImmersionBannerManager$1(bgqt parambgqt, ahac paramahac) {}
+  public QbossADImmersionBannerManager$1(bhzs parambhzs, ahmr paramahmr) {}
   
   public void run()
   {
     if (this.a == null) {}
-    while (!(this.a instanceof bgqq)) {
+    while (!(this.a instanceof bhzp)) {
       return;
     }
-    bgqt.a(this.this$0, (bgqq)this.a);
-    bgqt.a(this.this$0).setText(bgqt.a(this.this$0, bgqt.a(this.this$0).c));
-    bgqt.b(this.this$0).setText(bgqt.b(this.this$0, bgqt.a(this.this$0).d));
-    bgqt.a(this.this$0).setTextColor(bgqt.a(this.this$0, bgqt.a(this.this$0).e));
-    bgqt.b(this.this$0).setTextColor(bgqt.b(this.this$0, bgqt.a(this.this$0).e));
-    ahad localahad = (ahad)this.a.a.get(2);
-    bgqt.a(this.this$0, new bgmb());
-    bgqt.a(this.this$0).a(localahad.c, bgqt.a(this.this$0, bgqt.a(this.this$0)));
-    bgqt.a(this.this$0).a(bajq.a() / 720.0F);
-    bgqt.a(this.this$0).a();
-    bgqt.a(this.this$0).a(true);
-    bgqt.a(this.this$0).b(true);
-    bgqt.a(this.this$0).start();
-    bgqt.a(this.this$0).setImageDrawable(bgqt.a(this.this$0));
+    bhzs.a(this.this$0, (bhzp)this.a);
+    bhzs.a(this.this$0).setText(bhzs.a(this.this$0, bhzs.a(this.this$0).c));
+    bhzs.b(this.this$0).setText(bhzs.b(this.this$0, bhzs.a(this.this$0).d));
+    bhzs.a(this.this$0).setTextColor(bhzs.a(this.this$0, bhzs.a(this.this$0).e));
+    bhzs.b(this.this$0).setTextColor(bhzs.b(this.this$0, bhzs.a(this.this$0).e));
+    ahms localahms = (ahms)this.a.a.get(2);
+    bhzs.a(this.this$0, new bhus());
+    bhzs.a(this.this$0).a(localahms.c, bhzs.a(this.this$0, bhzs.a(this.this$0)));
+    bhzs.a(this.this$0).a(bbkx.a() / 720.0F);
+    bhzs.a(this.this$0).a();
+    bhzs.a(this.this$0).a(true);
+    bhzs.a(this.this$0).b(true);
+    bhzs.a(this.this$0).start();
+    bhzs.a(this.this$0).setImageDrawable(bhzs.a(this.this$0));
   }
 }
 

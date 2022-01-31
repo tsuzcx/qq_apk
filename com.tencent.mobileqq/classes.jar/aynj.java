@@ -1,26 +1,33 @@
 public class aynj
+  implements ajtg
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public long b;
+  protected void a() {}
   
-  public aynj()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  protected void a(aynm paramaynm, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject) {}
   
-  public String toString()
+  protected void a(boolean paramBoolean, aynm paramaynm, int paramInt, String paramString) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return "TroopCreateAdvanceData{resultCode=" + this.jdField_a_of_type_Int + ", groupSize=" + this.jdField_b_of_type_Int + ", troopCode=" + this.jdField_a_of_type_Long + ", troopUin=" + this.jdField_b_of_type_Long + '}';
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, (aynm)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+      return;
+      paramObject = (Object[])paramObject;
+      a((aynm)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Long)paramObject[3]).longValue(), ((Long)paramObject[4]).longValue(), paramObject[5]);
+      return;
+    } while (!paramBoolean);
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aynj
  * JD-Core Version:    0.7.0.1
  */

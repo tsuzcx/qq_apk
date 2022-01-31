@@ -1,21 +1,24 @@
-public class bhny
+import android.app.Activity;
+import mqq.app.QQPermissionCallback;
+
+final class bhny
+  implements QQPermissionCallback
 {
-  String a = "";
-  String b = "";
-  String c = "";
+  bhny(String paramString1, String paramString2, Activity paramActivity) {}
   
-  public bhny() {}
-  
-  public bhny(String paramString1, String paramString2, String paramString3)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    bbcv.b(bhnx.a(this.jdField_a_of_type_AndroidAppActivity));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bhnx.a(this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhny
  * JD-Core Version:    0.7.0.1
  */

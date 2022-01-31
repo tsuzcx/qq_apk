@@ -1,18 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.content.SharedPreferences;
-import bgmq;
+import android.content.SharedPreferences.Editor;
+import bhvh;
 
 class KandianMergeManager$11
   implements Runnable
 {
-  KandianMergeManager$11(KandianMergeManager paramKandianMergeManager) {}
+  KandianMergeManager$11(KandianMergeManager paramKandianMergeManager, int paramInt) {}
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = bgmq.a(KandianMergeManager.a(this.this$0), true, false);
-    if (localSharedPreferences != null) {
-      KandianMergeManager.a(this.this$0, localSharedPreferences.getInt("kandian_follow_data_length", -1));
+    Object localObject = bhvh.a(KandianMergeManager.a(this.this$0), true, false);
+    if (localObject != null)
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      if (localObject != null)
+      {
+        ((SharedPreferences.Editor)localObject).putInt("kandian_follow_data_length", this.a);
+        bhvh.a((SharedPreferences.Editor)localObject, true);
+      }
     }
   }
 }

@@ -1101,20 +1101,20 @@ public abstract class DownloadTask
     //   12: iconst_0
     //   13: ireturn
     //   14: invokestatic 116	java/lang/System:currentTimeMillis	()J
-    //   17: lstore 20
+    //   17: lstore 22
     //   19: iload 5
     //   21: sipush 206
-    //   24: if_icmpne +218 -> 242
+    //   24: if_icmpne +228 -> 252
     //   27: aload_0
     //   28: getfield 740	com/tencent/component/network/downloader/impl/DownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
-    //   31: ifnull +200 -> 231
+    //   31: ifnull +210 -> 241
     //   34: aload_0
     //   35: getfield 740	com/tencent/component/network/downloader/impl/DownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
     //   38: aload_0
     //   39: getfield 175	com/tencent/component/network/downloader/impl/DownloadTask:mUrl	Ljava/lang/String;
     //   42: invokeinterface 760 2 0
     //   47: invokestatic 181	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   50: ifne +181 -> 231
+    //   50: ifne +191 -> 241
     //   53: aload_3
     //   54: aload_0
     //   55: getfield 740	com/tencent/component/network/downloader/impl/DownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
@@ -1123,19 +1123,19 @@ public abstract class DownloadTask
     //   62: invokeinterface 760 2 0
     //   67: invokevirtual 763	com/tencent/component/network/downloader/DownloadResult:setPath	(Ljava/lang/String;)V
     //   70: iconst_1
-    //   71: istore 26
+    //   71: istore 8
     //   73: getstatic 96	com/tencent/component/network/downloader/impl/DownloadTask:sBytesBufferPool	Lcom/tencent/component/network/utils/BytesBufferPool;
     //   76: invokevirtual 766	com/tencent/component/network/utils/BytesBufferPool:get	()Lcom/tencent/component/network/utils/BytesBufferPool$BytesBuffer;
     //   79: astore 28
     //   81: lconst_0
-    //   82: lstore 16
+    //   82: lstore 18
     //   84: aload_0
     //   85: getfield 498	com/tencent/component/network/downloader/impl/DownloadTask:mContentLength	J
-    //   88: lstore 22
+    //   88: lstore 24
     //   90: lconst_0
-    //   91: lstore 8
+    //   91: lstore 10
     //   93: invokestatic 116	java/lang/System:currentTimeMillis	()J
-    //   96: lstore 12
+    //   96: lstore 14
     //   98: new 209	java/io/File
     //   101: dup
     //   102: aload_3
@@ -1148,709 +1148,712 @@ public abstract class DownloadTask
     //   117: pop
     //   118: aload 4
     //   120: invokeinterface 270 1 0
-    //   125: istore 27
-    //   127: iload 27
-    //   129: ifeq +279 -> 408
-    //   132: iconst_0
-    //   133: ifeq +11 -> 144
-    //   136: new 770	java/lang/NullPointerException
-    //   139: dup
-    //   140: invokespecial 771	java/lang/NullPointerException:<init>	()V
-    //   143: athrow
-    //   144: iconst_0
-    //   145: ifeq +11 -> 156
-    //   148: new 770	java/lang/NullPointerException
-    //   151: dup
-    //   152: invokespecial 771	java/lang/NullPointerException:<init>	()V
-    //   155: athrow
-    //   156: getstatic 96	com/tencent/component/network/downloader/impl/DownloadTask:sBytesBufferPool	Lcom/tencent/component/network/utils/BytesBufferPool;
-    //   159: aload 28
-    //   161: invokevirtual 775	com/tencent/component/network/utils/BytesBufferPool:recycle	(Lcom/tencent/component/network/utils/BytesBufferPool$BytesBuffer;)V
-    //   164: aload_0
-    //   165: getfield 777	com/tencent/component/network/downloader/impl/DownloadTask:mNetworkFlowStatistics	Lcom/tencent/component/network/downloader/Downloader$NetworkFlowStatistics;
-    //   168: ifnull +22 -> 190
-    //   171: aload_0
-    //   172: getfield 777	com/tencent/component/network/downloader/impl/DownloadTask:mNetworkFlowStatistics	Lcom/tencent/component/network/downloader/Downloader$NetworkFlowStatistics;
-    //   175: invokestatic 782	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   178: lconst_0
-    //   179: invokestatic 116	java/lang/System:currentTimeMillis	()J
-    //   182: lload 12
-    //   184: lsub
-    //   185: invokeinterface 788 6 0
-    //   190: ldc_w 329
-    //   193: new 331	java/lang/StringBuilder
-    //   196: dup
-    //   197: invokespecial 332	java/lang/StringBuilder:<init>	()V
-    //   200: ldc_w 790
-    //   203: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   206: aload_0
-    //   207: getfield 498	com/tencent/component/network/downloader/impl/DownloadTask:mContentLength	J
-    //   210: invokevirtual 793	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   213: ldc_w 795
-    //   216: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   219: lconst_0
+    //   125: istore 9
+    //   127: iload 9
+    //   129: ifeq +289 -> 418
+    //   132: aload_0
+    //   133: invokestatic 116	java/lang/System:currentTimeMillis	()J
+    //   136: lload 22
+    //   138: lsub
+    //   139: putfield 153	com/tencent/component/network/downloader/impl/DownloadTask:t_recv_data	J
+    //   142: iconst_0
+    //   143: ifeq +11 -> 154
+    //   146: new 770	java/lang/NullPointerException
+    //   149: dup
+    //   150: invokespecial 771	java/lang/NullPointerException:<init>	()V
+    //   153: athrow
+    //   154: iconst_0
+    //   155: ifeq +11 -> 166
+    //   158: new 770	java/lang/NullPointerException
+    //   161: dup
+    //   162: invokespecial 771	java/lang/NullPointerException:<init>	()V
+    //   165: athrow
+    //   166: getstatic 96	com/tencent/component/network/downloader/impl/DownloadTask:sBytesBufferPool	Lcom/tencent/component/network/utils/BytesBufferPool;
+    //   169: aload 28
+    //   171: invokevirtual 775	com/tencent/component/network/utils/BytesBufferPool:recycle	(Lcom/tencent/component/network/utils/BytesBufferPool$BytesBuffer;)V
+    //   174: aload_0
+    //   175: getfield 777	com/tencent/component/network/downloader/impl/DownloadTask:mNetworkFlowStatistics	Lcom/tencent/component/network/downloader/Downloader$NetworkFlowStatistics;
+    //   178: ifnull +22 -> 200
+    //   181: aload_0
+    //   182: getfield 777	com/tencent/component/network/downloader/impl/DownloadTask:mNetworkFlowStatistics	Lcom/tencent/component/network/downloader/Downloader$NetworkFlowStatistics;
+    //   185: invokestatic 782	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   188: lconst_0
+    //   189: invokestatic 116	java/lang/System:currentTimeMillis	()J
+    //   192: lload 14
+    //   194: lsub
+    //   195: invokeinterface 788 6 0
+    //   200: ldc_w 329
+    //   203: new 331	java/lang/StringBuilder
+    //   206: dup
+    //   207: invokespecial 332	java/lang/StringBuilder:<init>	()V
+    //   210: ldc_w 790
+    //   213: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   216: aload_0
+    //   217: getfield 498	com/tencent/component/network/downloader/impl/DownloadTask:mContentLength	J
     //   220: invokevirtual 793	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   223: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   226: invokestatic 347	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   229: iconst_0
-    //   230: ireturn
-    //   231: ldc_w 329
-    //   234: ldc_w 797
-    //   237: invokestatic 750	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   240: iconst_0
-    //   241: ireturn
-    //   242: aload_0
-    //   243: getfield 740	com/tencent/component/network/downloader/impl/DownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
-    //   246: ifnull +44 -> 290
-    //   249: aload_0
-    //   250: getfield 740	com/tencent/component/network/downloader/impl/DownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
-    //   253: aload_0
-    //   254: getfield 175	com/tencent/component/network/downloader/impl/DownloadTask:mUrl	Ljava/lang/String;
-    //   257: invokeinterface 760 2 0
-    //   262: invokestatic 181	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   265: ifne +25 -> 290
-    //   268: iload 5
-    //   270: sipush 200
-    //   273: if_icmpne +17 -> 290
-    //   276: aload_0
-    //   277: getfield 740	com/tencent/component/network/downloader/impl/DownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
-    //   280: aload_0
-    //   281: getfield 175	com/tencent/component/network/downloader/impl/DownloadTask:mUrl	Ljava/lang/String;
-    //   284: iconst_1
-    //   285: invokeinterface 754 3 0
+    //   223: ldc_w 795
+    //   226: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   229: lconst_0
+    //   230: invokevirtual 793	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   233: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   236: invokestatic 347	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   239: iconst_0
+    //   240: ireturn
+    //   241: ldc_w 329
+    //   244: ldc_w 797
+    //   247: invokestatic 750	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   250: iconst_0
+    //   251: ireturn
+    //   252: aload_0
+    //   253: getfield 740	com/tencent/component/network/downloader/impl/DownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   256: ifnull +44 -> 300
+    //   259: aload_0
+    //   260: getfield 740	com/tencent/component/network/downloader/impl/DownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   263: aload_0
+    //   264: getfield 175	com/tencent/component/network/downloader/impl/DownloadTask:mUrl	Ljava/lang/String;
+    //   267: invokeinterface 760 2 0
+    //   272: invokestatic 181	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   275: ifne +25 -> 300
+    //   278: iload 5
+    //   280: sipush 200
+    //   283: if_icmpne +17 -> 300
+    //   286: aload_0
+    //   287: getfield 740	com/tencent/component/network/downloader/impl/DownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
     //   290: aload_0
-    //   291: invokespecial 799	com/tencent/component/network/downloader/impl/DownloadTask:generateStorageName	()Ljava/lang/String;
-    //   294: astore 29
-    //   296: aload_0
-    //   297: aload 29
-    //   299: invokespecial 801	com/tencent/component/network/downloader/impl/DownloadTask:generateStoragePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   302: astore 28
-    //   304: aload_0
-    //   305: aload 29
-    //   307: iconst_0
-    //   308: invokespecial 803	com/tencent/component/network/downloader/impl/DownloadTask:generateStoragePath	(Ljava/lang/String;Z)Ljava/lang/String;
-    //   311: astore 29
-    //   313: aload_0
-    //   314: aload 28
-    //   316: aload_0
-    //   317: getfield 498	com/tencent/component/network/downloader/impl/DownloadTask:mContentLength	J
-    //   320: invokespecial 805	com/tencent/component/network/downloader/impl/DownloadTask:ensureStorageSpace	(Ljava/lang/String;J)Z
-    //   323: ifeq +15 -> 338
-    //   326: aload_3
-    //   327: aload 28
-    //   329: invokevirtual 763	com/tencent/component/network/downloader/DownloadResult:setPath	(Ljava/lang/String;)V
-    //   332: iconst_0
-    //   333: istore 26
-    //   335: goto -262 -> 73
-    //   338: aload 28
-    //   340: aload 29
-    //   342: invokestatic 809	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
-    //   345: ifne +25 -> 370
-    //   348: aload_0
-    //   349: aload 29
-    //   351: aload_0
-    //   352: getfield 498	com/tencent/component/network/downloader/impl/DownloadTask:mContentLength	J
-    //   355: invokespecial 805	com/tencent/component/network/downloader/impl/DownloadTask:ensureStorageSpace	(Ljava/lang/String;J)Z
-    //   358: ifeq +12 -> 370
-    //   361: aload_3
-    //   362: aload 29
-    //   364: invokevirtual 763	com/tencent/component/network/downloader/DownloadResult:setPath	(Ljava/lang/String;)V
-    //   367: goto -35 -> 332
-    //   370: aload_3
-    //   371: invokevirtual 369	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   374: iconst_2
-    //   375: invokevirtual 738	com/tencent/component/network/downloader/DownloadResult$Status:setFailed	(I)V
-    //   378: iconst_0
-    //   379: ireturn
-    //   380: astore_1
-    //   381: ldc_w 329
-    //   384: ldc_w 811
-    //   387: aload_1
-    //   388: invokestatic 442	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   391: goto -247 -> 144
-    //   394: astore_1
-    //   395: ldc_w 329
-    //   398: ldc_w 811
-    //   401: aload_1
-    //   402: invokestatic 442	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   405: goto -249 -> 156
-    //   408: aload_0
-    //   409: getfield 813	com/tencent/component/network/downloader/impl/DownloadTask:mNeedMd5	Z
-    //   412: ifeq +1090 -> 1502
-    //   415: aload_1
-    //   416: ldc_w 815
-    //   419: invokeinterface 518 2 0
-    //   424: ifnull +13 -> 437
-    //   427: aload_2
-    //   428: ldc_w 815
-    //   431: invokevirtual 535	com/squareup/okhttp/Response:headers	(Ljava/lang/String;)Ljava/util/List;
-    //   434: ifnonnull +1068 -> 1502
-    //   437: ldc_w 817
-    //   440: invokestatic 823	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   443: astore 4
-    //   445: aload_1
-    //   446: ifnull +325 -> 771
-    //   449: aload_1
-    //   450: invokeinterface 605 1 0
-    //   455: ifnull +316 -> 771
-    //   458: aload_1
-    //   459: invokeinterface 605 1 0
-    //   464: invokeinterface 629 1 0
-    //   469: ifnull +296 -> 765
-    //   472: aload_1
-    //   473: invokeinterface 605 1 0
-    //   478: invokeinterface 629 1 0
-    //   483: invokeinterface 523 1 0
-    //   488: ifnull +277 -> 765
-    //   491: aload_1
-    //   492: invokeinterface 605 1 0
-    //   497: invokeinterface 629 1 0
-    //   502: invokeinterface 523 1 0
-    //   507: invokevirtual 826	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   510: ldc_w 828
-    //   513: invokevirtual 831	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   516: iconst_m1
-    //   517: if_icmple +248 -> 765
-    //   520: iconst_1
-    //   521: istore 5
-    //   523: aload_1
-    //   524: invokeinterface 605 1 0
-    //   529: invokeinterface 834 1 0
-    //   534: astore_1
-    //   535: new 836	java/io/FileOutputStream
-    //   538: dup
-    //   539: aload 29
-    //   541: iload 26
-    //   543: invokespecial 839	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   546: astore_2
-    //   547: aload 29
-    //   549: invokevirtual 841	java/io/File:length	()J
-    //   552: lstore 24
-    //   554: iconst_0
-    //   555: istore 6
-    //   557: lconst_0
-    //   558: lstore 10
-    //   560: lload 16
-    //   562: lstore 14
-    //   564: lload 10
-    //   566: lstore 8
-    //   568: aload_1
-    //   569: aload 28
-    //   571: getfield 847	com/tencent/component/network/utils/BytesBufferPool$BytesBuffer:data	[B
-    //   574: iload 6
-    //   576: sipush 8192
-    //   579: iload 6
-    //   581: isub
-    //   582: invokevirtual 853	java/io/InputStream:read	([BII)I
-    //   585: istore 7
-    //   587: iload 7
-    //   589: ifle +217 -> 806
-    //   592: iload 7
-    //   594: iload 6
-    //   596: iadd
-    //   597: sipush 8192
-    //   600: if_icmpne +196 -> 796
-    //   603: lload 16
-    //   605: lstore 14
-    //   607: lload 10
-    //   609: lstore 8
-    //   611: aload_2
-    //   612: aload 28
-    //   614: getfield 847	com/tencent/component/network/utils/BytesBufferPool$BytesBuffer:data	[B
-    //   617: iconst_0
-    //   618: iload 7
-    //   620: iload 6
-    //   622: iadd
-    //   623: invokevirtual 859	java/io/OutputStream:write	([BII)V
-    //   626: lload 16
-    //   628: lstore 14
-    //   630: lload 10
-    //   632: lstore 8
-    //   634: aload_0
-    //   635: aload_0
-    //   636: getfield 183	com/tencent/component/network/downloader/impl/DownloadTask:mUrlKey	Ljava/lang/String;
-    //   639: aload 29
-    //   641: invokevirtual 860	java/io/File:getPath	()Ljava/lang/String;
-    //   644: invokespecial 862	com/tencent/component/network/downloader/impl/DownloadTask:notifyStreamDownloadProgress	(Ljava/lang/String;Ljava/lang/String;)V
-    //   647: aload 4
-    //   649: ifnull +859 -> 1508
-    //   652: lload 16
-    //   654: lstore 14
-    //   656: lload 10
-    //   658: lstore 8
-    //   660: aload 4
-    //   662: aload 28
-    //   664: getfield 847	com/tencent/component/network/utils/BytesBufferPool$BytesBuffer:data	[B
-    //   667: iconst_0
-    //   668: iload 6
-    //   670: iload 7
-    //   672: iadd
-    //   673: invokevirtual 865	java/security/MessageDigest:update	([BII)V
-    //   676: goto +832 -> 1508
-    //   679: lload 16
-    //   681: iload 7
-    //   683: i2l
-    //   684: ladd
-    //   685: lstore 16
-    //   687: lload 16
-    //   689: lstore 14
-    //   691: lload 10
-    //   693: lstore 8
-    //   695: aload_3
-    //   696: invokevirtual 617	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   699: lload 16
-    //   701: putfield 867	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   704: lload 22
-    //   706: lconst_0
-    //   707: lcmp
-    //   708: ifle +37 -> 745
-    //   711: lload 16
-    //   713: lstore 14
-    //   715: lload 10
-    //   717: lstore 8
-    //   719: aload_0
-    //   720: aload_0
-    //   721: getfield 183	com/tencent/component/network/downloader/impl/DownloadTask:mUrlKey	Ljava/lang/String;
-    //   724: lload 22
-    //   726: lload 24
-    //   728: ladd
-    //   729: lload 16
-    //   731: lload 24
-    //   733: ladd
-    //   734: l2f
-    //   735: lload 22
-    //   737: lload 24
-    //   739: ladd
-    //   740: l2f
-    //   741: fdiv
-    //   742: invokespecial 869	com/tencent/component/network/downloader/impl/DownloadTask:notifyDownloadProgress	(Ljava/lang/String;JF)V
-    //   745: lload 16
-    //   747: lstore 14
-    //   749: lload 10
-    //   751: lstore 8
-    //   753: invokestatic 116	java/lang/System:currentTimeMillis	()J
-    //   756: lstore 18
-    //   758: lload 18
-    //   760: lstore 12
-    //   762: goto -202 -> 560
-    //   765: iconst_0
-    //   766: istore 5
-    //   768: goto -245 -> 523
-    //   771: aload_2
-    //   772: ifnull +722 -> 1494
-    //   775: aload_2
-    //   776: invokevirtual 609	com/squareup/okhttp/Response:body	()Lcom/squareup/okhttp/ResponseBody;
-    //   779: ifnull +715 -> 1494
-    //   782: aload_2
-    //   783: invokevirtual 609	com/squareup/okhttp/Response:body	()Lcom/squareup/okhttp/ResponseBody;
-    //   786: invokevirtual 872	com/squareup/okhttp/ResponseBody:byteStream	()Ljava/io/InputStream;
-    //   789: astore_1
-    //   790: iconst_0
-    //   791: istore 5
-    //   793: goto -258 -> 535
-    //   796: iload 6
-    //   798: iload 7
-    //   800: iadd
-    //   801: istore 6
-    //   803: goto -124 -> 679
-    //   806: lload 10
-    //   808: lstore 18
-    //   810: iload 7
-    //   812: ifgt +95 -> 907
-    //   815: lload 10
-    //   817: lstore 18
-    //   819: iload 6
-    //   821: ifle +86 -> 907
-    //   824: lload 16
-    //   826: lstore 14
-    //   828: lload 10
-    //   830: lstore 8
-    //   832: aload_2
-    //   833: aload 28
-    //   835: getfield 847	com/tencent/component/network/utils/BytesBufferPool$BytesBuffer:data	[B
-    //   838: iconst_0
-    //   839: iload 6
-    //   841: invokevirtual 859	java/io/OutputStream:write	([BII)V
-    //   844: lload 16
-    //   846: lstore 14
-    //   848: lload 10
-    //   850: lstore 8
-    //   852: aload_0
-    //   853: aload_0
-    //   854: getfield 183	com/tencent/component/network/downloader/impl/DownloadTask:mUrlKey	Ljava/lang/String;
-    //   857: aload 29
-    //   859: invokevirtual 860	java/io/File:getPath	()Ljava/lang/String;
-    //   862: invokespecial 862	com/tencent/component/network/downloader/impl/DownloadTask:notifyStreamDownloadProgress	(Ljava/lang/String;Ljava/lang/String;)V
-    //   865: lload 10
-    //   867: iload 6
-    //   869: i2l
-    //   870: ladd
-    //   871: lstore 10
-    //   873: lload 10
-    //   875: lstore 18
-    //   877: aload 4
-    //   879: ifnull +28 -> 907
-    //   882: lload 16
-    //   884: lstore 14
-    //   886: lload 10
-    //   888: lstore 8
-    //   890: aload 4
-    //   892: aload 28
-    //   894: getfield 847	com/tencent/component/network/utils/BytesBufferPool$BytesBuffer:data	[B
-    //   897: iconst_0
-    //   898: iload 6
-    //   900: invokevirtual 865	java/security/MessageDigest:update	([BII)V
-    //   903: lload 10
-    //   905: lstore 18
-    //   907: lload 16
-    //   909: lstore 14
-    //   911: lload 18
-    //   913: lstore 8
-    //   915: aload_0
-    //   916: invokestatic 116	java/lang/System:currentTimeMillis	()J
-    //   919: lload 20
-    //   921: lsub
-    //   922: putfield 153	com/tencent/component/network/downloader/impl/DownloadTask:t_recv_data	J
-    //   925: lload 22
-    //   927: lconst_0
-    //   928: lcmp
-    //   929: ifgt +25 -> 954
-    //   932: lload 16
-    //   934: lstore 14
-    //   936: lload 18
-    //   938: lstore 8
-    //   940: aload_0
-    //   941: aload_0
-    //   942: getfield 183	com/tencent/component/network/downloader/impl/DownloadTask:mUrlKey	Ljava/lang/String;
-    //   945: lload 22
-    //   947: lload 24
-    //   949: ladd
-    //   950: fconst_1
-    //   951: invokespecial 869	com/tencent/component/network/downloader/impl/DownloadTask:notifyDownloadProgress	(Ljava/lang/String;JF)V
-    //   954: lload 16
-    //   956: lstore 14
+    //   291: getfield 175	com/tencent/component/network/downloader/impl/DownloadTask:mUrl	Ljava/lang/String;
+    //   294: iconst_1
+    //   295: invokeinterface 754 3 0
+    //   300: aload_0
+    //   301: invokespecial 799	com/tencent/component/network/downloader/impl/DownloadTask:generateStorageName	()Ljava/lang/String;
+    //   304: astore 29
+    //   306: aload_0
+    //   307: aload 29
+    //   309: invokespecial 801	com/tencent/component/network/downloader/impl/DownloadTask:generateStoragePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   312: astore 28
+    //   314: aload_0
+    //   315: aload 29
+    //   317: iconst_0
+    //   318: invokespecial 803	com/tencent/component/network/downloader/impl/DownloadTask:generateStoragePath	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   321: astore 29
+    //   323: aload_0
+    //   324: aload 28
+    //   326: aload_0
+    //   327: getfield 498	com/tencent/component/network/downloader/impl/DownloadTask:mContentLength	J
+    //   330: invokespecial 805	com/tencent/component/network/downloader/impl/DownloadTask:ensureStorageSpace	(Ljava/lang/String;J)Z
+    //   333: ifeq +15 -> 348
+    //   336: aload_3
+    //   337: aload 28
+    //   339: invokevirtual 763	com/tencent/component/network/downloader/DownloadResult:setPath	(Ljava/lang/String;)V
+    //   342: iconst_0
+    //   343: istore 8
+    //   345: goto -272 -> 73
+    //   348: aload 28
+    //   350: aload 29
+    //   352: invokestatic 809	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   355: ifne +25 -> 380
+    //   358: aload_0
+    //   359: aload 29
+    //   361: aload_0
+    //   362: getfield 498	com/tencent/component/network/downloader/impl/DownloadTask:mContentLength	J
+    //   365: invokespecial 805	com/tencent/component/network/downloader/impl/DownloadTask:ensureStorageSpace	(Ljava/lang/String;J)Z
+    //   368: ifeq +12 -> 380
+    //   371: aload_3
+    //   372: aload 29
+    //   374: invokevirtual 763	com/tencent/component/network/downloader/DownloadResult:setPath	(Ljava/lang/String;)V
+    //   377: goto -35 -> 342
+    //   380: aload_3
+    //   381: invokevirtual 369	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   384: iconst_2
+    //   385: invokevirtual 738	com/tencent/component/network/downloader/DownloadResult$Status:setFailed	(I)V
+    //   388: iconst_0
+    //   389: ireturn
+    //   390: astore_1
+    //   391: ldc_w 329
+    //   394: ldc_w 811
+    //   397: aload_1
+    //   398: invokestatic 442	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   401: goto -247 -> 154
+    //   404: astore_1
+    //   405: ldc_w 329
+    //   408: ldc_w 811
+    //   411: aload_1
+    //   412: invokestatic 442	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   415: goto -249 -> 166
+    //   418: aload_0
+    //   419: getfield 813	com/tencent/component/network/downloader/impl/DownloadTask:mNeedMd5	Z
+    //   422: ifeq +1090 -> 1512
+    //   425: aload_1
+    //   426: ldc_w 815
+    //   429: invokeinterface 518 2 0
+    //   434: ifnull +13 -> 447
+    //   437: aload_2
+    //   438: ldc_w 815
+    //   441: invokevirtual 535	com/squareup/okhttp/Response:headers	(Ljava/lang/String;)Ljava/util/List;
+    //   444: ifnonnull +1068 -> 1512
+    //   447: ldc_w 817
+    //   450: invokestatic 823	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   453: astore 4
+    //   455: aload_1
+    //   456: ifnull +325 -> 781
+    //   459: aload_1
+    //   460: invokeinterface 605 1 0
+    //   465: ifnull +316 -> 781
+    //   468: aload_1
+    //   469: invokeinterface 605 1 0
+    //   474: invokeinterface 629 1 0
+    //   479: ifnull +296 -> 775
+    //   482: aload_1
+    //   483: invokeinterface 605 1 0
+    //   488: invokeinterface 629 1 0
+    //   493: invokeinterface 523 1 0
+    //   498: ifnull +277 -> 775
+    //   501: aload_1
+    //   502: invokeinterface 605 1 0
+    //   507: invokeinterface 629 1 0
+    //   512: invokeinterface 523 1 0
+    //   517: invokevirtual 826	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   520: ldc_w 828
+    //   523: invokevirtual 831	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   526: iconst_m1
+    //   527: if_icmple +248 -> 775
+    //   530: iconst_1
+    //   531: istore 5
+    //   533: aload_1
+    //   534: invokeinterface 605 1 0
+    //   539: invokeinterface 834 1 0
+    //   544: astore_1
+    //   545: new 836	java/io/FileOutputStream
+    //   548: dup
+    //   549: aload 29
+    //   551: iload 8
+    //   553: invokespecial 839	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   556: astore_2
+    //   557: aload 29
+    //   559: invokevirtual 841	java/io/File:length	()J
+    //   562: lstore 26
+    //   564: iconst_0
+    //   565: istore 6
+    //   567: lconst_0
+    //   568: lstore 12
+    //   570: lload 18
+    //   572: lstore 16
+    //   574: lload 12
+    //   576: lstore 10
+    //   578: aload_1
+    //   579: aload 28
+    //   581: getfield 847	com/tencent/component/network/utils/BytesBufferPool$BytesBuffer:data	[B
+    //   584: iload 6
+    //   586: sipush 8192
+    //   589: iload 6
+    //   591: isub
+    //   592: invokevirtual 853	java/io/InputStream:read	([BII)I
+    //   595: istore 7
+    //   597: iload 7
+    //   599: ifle +217 -> 816
+    //   602: iload 7
+    //   604: iload 6
+    //   606: iadd
+    //   607: sipush 8192
+    //   610: if_icmpne +196 -> 806
+    //   613: lload 18
+    //   615: lstore 16
+    //   617: lload 12
+    //   619: lstore 10
+    //   621: aload_2
+    //   622: aload 28
+    //   624: getfield 847	com/tencent/component/network/utils/BytesBufferPool$BytesBuffer:data	[B
+    //   627: iconst_0
+    //   628: iload 7
+    //   630: iload 6
+    //   632: iadd
+    //   633: invokevirtual 859	java/io/OutputStream:write	([BII)V
+    //   636: lload 18
+    //   638: lstore 16
+    //   640: lload 12
+    //   642: lstore 10
+    //   644: aload_0
+    //   645: aload_0
+    //   646: getfield 183	com/tencent/component/network/downloader/impl/DownloadTask:mUrlKey	Ljava/lang/String;
+    //   649: aload 29
+    //   651: invokevirtual 860	java/io/File:getPath	()Ljava/lang/String;
+    //   654: invokespecial 862	com/tencent/component/network/downloader/impl/DownloadTask:notifyStreamDownloadProgress	(Ljava/lang/String;Ljava/lang/String;)V
+    //   657: aload 4
+    //   659: ifnull +859 -> 1518
+    //   662: lload 18
+    //   664: lstore 16
+    //   666: lload 12
+    //   668: lstore 10
+    //   670: aload 4
+    //   672: aload 28
+    //   674: getfield 847	com/tencent/component/network/utils/BytesBufferPool$BytesBuffer:data	[B
+    //   677: iconst_0
+    //   678: iload 6
+    //   680: iload 7
+    //   682: iadd
+    //   683: invokevirtual 865	java/security/MessageDigest:update	([BII)V
+    //   686: goto +832 -> 1518
+    //   689: lload 18
+    //   691: iload 7
+    //   693: i2l
+    //   694: ladd
+    //   695: lstore 18
+    //   697: lload 18
+    //   699: lstore 16
+    //   701: lload 12
+    //   703: lstore 10
+    //   705: aload_3
+    //   706: invokevirtual 617	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   709: lload 18
+    //   711: putfield 867	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   714: lload 24
+    //   716: lconst_0
+    //   717: lcmp
+    //   718: ifle +37 -> 755
+    //   721: lload 18
+    //   723: lstore 16
+    //   725: lload 12
+    //   727: lstore 10
+    //   729: aload_0
+    //   730: aload_0
+    //   731: getfield 183	com/tencent/component/network/downloader/impl/DownloadTask:mUrlKey	Ljava/lang/String;
+    //   734: lload 24
+    //   736: lload 26
+    //   738: ladd
+    //   739: lload 18
+    //   741: lload 26
+    //   743: ladd
+    //   744: l2f
+    //   745: lload 24
+    //   747: lload 26
+    //   749: ladd
+    //   750: l2f
+    //   751: fdiv
+    //   752: invokespecial 869	com/tencent/component/network/downloader/impl/DownloadTask:notifyDownloadProgress	(Ljava/lang/String;JF)V
+    //   755: lload 18
+    //   757: lstore 16
+    //   759: lload 12
+    //   761: lstore 10
+    //   763: invokestatic 116	java/lang/System:currentTimeMillis	()J
+    //   766: lstore 20
+    //   768: lload 20
+    //   770: lstore 14
+    //   772: goto -202 -> 570
+    //   775: iconst_0
+    //   776: istore 5
+    //   778: goto -245 -> 533
+    //   781: aload_2
+    //   782: ifnull +722 -> 1504
+    //   785: aload_2
+    //   786: invokevirtual 609	com/squareup/okhttp/Response:body	()Lcom/squareup/okhttp/ResponseBody;
+    //   789: ifnull +715 -> 1504
+    //   792: aload_2
+    //   793: invokevirtual 609	com/squareup/okhttp/Response:body	()Lcom/squareup/okhttp/ResponseBody;
+    //   796: invokevirtual 872	com/squareup/okhttp/ResponseBody:byteStream	()Ljava/io/InputStream;
+    //   799: astore_1
+    //   800: iconst_0
+    //   801: istore 5
+    //   803: goto -258 -> 545
+    //   806: iload 6
+    //   808: iload 7
+    //   810: iadd
+    //   811: istore 6
+    //   813: goto -124 -> 689
+    //   816: lload 12
+    //   818: lstore 20
+    //   820: iload 7
+    //   822: ifgt +95 -> 917
+    //   825: lload 12
+    //   827: lstore 20
+    //   829: iload 6
+    //   831: ifle +86 -> 917
+    //   834: lload 18
+    //   836: lstore 16
+    //   838: lload 12
+    //   840: lstore 10
+    //   842: aload_2
+    //   843: aload 28
+    //   845: getfield 847	com/tencent/component/network/utils/BytesBufferPool$BytesBuffer:data	[B
+    //   848: iconst_0
+    //   849: iload 6
+    //   851: invokevirtual 859	java/io/OutputStream:write	([BII)V
+    //   854: lload 18
+    //   856: lstore 16
+    //   858: lload 12
+    //   860: lstore 10
+    //   862: aload_0
+    //   863: aload_0
+    //   864: getfield 183	com/tencent/component/network/downloader/impl/DownloadTask:mUrlKey	Ljava/lang/String;
+    //   867: aload 29
+    //   869: invokevirtual 860	java/io/File:getPath	()Ljava/lang/String;
+    //   872: invokespecial 862	com/tencent/component/network/downloader/impl/DownloadTask:notifyStreamDownloadProgress	(Ljava/lang/String;Ljava/lang/String;)V
+    //   875: lload 12
+    //   877: iload 6
+    //   879: i2l
+    //   880: ladd
+    //   881: lstore 12
+    //   883: lload 12
+    //   885: lstore 20
+    //   887: aload 4
+    //   889: ifnull +28 -> 917
+    //   892: lload 18
+    //   894: lstore 16
+    //   896: lload 12
+    //   898: lstore 10
+    //   900: aload 4
+    //   902: aload 28
+    //   904: getfield 847	com/tencent/component/network/utils/BytesBufferPool$BytesBuffer:data	[B
+    //   907: iconst_0
+    //   908: iload 6
+    //   910: invokevirtual 865	java/security/MessageDigest:update	([BII)V
+    //   913: lload 12
+    //   915: lstore 20
+    //   917: lload 24
+    //   919: lconst_0
+    //   920: lcmp
+    //   921: ifgt +25 -> 946
+    //   924: lload 18
+    //   926: lstore 16
+    //   928: lload 20
+    //   930: lstore 10
+    //   932: aload_0
+    //   933: aload_0
+    //   934: getfield 183	com/tencent/component/network/downloader/impl/DownloadTask:mUrlKey	Ljava/lang/String;
+    //   937: lload 24
+    //   939: lload 26
+    //   941: ladd
+    //   942: fconst_1
+    //   943: invokespecial 869	com/tencent/component/network/downloader/impl/DownloadTask:notifyDownloadProgress	(Ljava/lang/String;JF)V
+    //   946: lload 18
+    //   948: lstore 16
+    //   950: lload 20
+    //   952: lstore 10
+    //   954: aload_3
+    //   955: invokevirtual 617	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
     //   958: lload 18
-    //   960: lstore 8
-    //   962: aload_3
-    //   963: invokevirtual 617	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   966: lload 16
-    //   968: putfield 867	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   971: iload 5
-    //   973: ifeq +159 -> 1132
-    //   976: lload 16
-    //   978: lstore 14
-    //   980: lload 18
-    //   982: lstore 8
-    //   984: new 209	java/io/File
-    //   987: dup
-    //   988: new 331	java/lang/StringBuilder
-    //   991: dup
-    //   992: invokespecial 332	java/lang/StringBuilder:<init>	()V
-    //   995: aload 29
-    //   997: invokevirtual 860	java/io/File:getPath	()Ljava/lang/String;
-    //   1000: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1003: ldc_w 874
-    //   1006: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1009: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1012: invokespecial 212	java/io/File:<init>	(Ljava/lang/String;)V
-    //   1015: astore 30
-    //   1017: lload 16
-    //   1019: lstore 14
-    //   1021: lload 18
-    //   1023: lstore 8
-    //   1025: aload 29
-    //   1027: aload 30
-    //   1029: invokestatic 880	com/tencent/component/network/utils/FileUtils:unGzip	(Ljava/io/File;Ljava/io/File;)Z
-    //   1032: istore 26
-    //   1034: lload 16
-    //   1036: lstore 14
-    //   1038: lload 18
-    //   1040: lstore 8
-    //   1042: ldc_w 329
-    //   1045: new 331	java/lang/StringBuilder
-    //   1048: dup
-    //   1049: invokespecial 332	java/lang/StringBuilder:<init>	()V
-    //   1052: ldc_w 882
-    //   1055: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1058: iload 26
-    //   1060: invokevirtual 885	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1063: ldc_w 887
+    //   960: putfield 867	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   963: iload 5
+    //   965: ifeq +159 -> 1124
+    //   968: lload 18
+    //   970: lstore 16
+    //   972: lload 20
+    //   974: lstore 10
+    //   976: new 209	java/io/File
+    //   979: dup
+    //   980: new 331	java/lang/StringBuilder
+    //   983: dup
+    //   984: invokespecial 332	java/lang/StringBuilder:<init>	()V
+    //   987: aload 29
+    //   989: invokevirtual 860	java/io/File:getPath	()Ljava/lang/String;
+    //   992: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   995: ldc_w 874
+    //   998: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1001: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1004: invokespecial 212	java/io/File:<init>	(Ljava/lang/String;)V
+    //   1007: astore 30
+    //   1009: lload 18
+    //   1011: lstore 16
+    //   1013: lload 20
+    //   1015: lstore 10
+    //   1017: aload 29
+    //   1019: aload 30
+    //   1021: invokestatic 880	com/tencent/component/network/utils/FileUtils:unGzip	(Ljava/io/File;Ljava/io/File;)Z
+    //   1024: istore 8
+    //   1026: lload 18
+    //   1028: lstore 16
+    //   1030: lload 20
+    //   1032: lstore 10
+    //   1034: ldc_w 329
+    //   1037: new 331	java/lang/StringBuilder
+    //   1040: dup
+    //   1041: invokespecial 332	java/lang/StringBuilder:<init>	()V
+    //   1044: ldc_w 882
+    //   1047: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1050: iload 8
+    //   1052: invokevirtual 885	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1055: ldc_w 887
+    //   1058: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1061: aload 30
+    //   1063: invokevirtual 860	java/io/File:getPath	()Ljava/lang/String;
     //   1066: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1069: aload 30
-    //   1071: invokevirtual 860	java/io/File:getPath	()Ljava/lang/String;
-    //   1074: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1077: ldc_w 889
-    //   1080: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1083: aload 30
-    //   1085: invokevirtual 841	java/io/File:length	()J
-    //   1088: invokevirtual 793	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1091: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1094: invokestatic 750	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1097: iload 26
-    //   1099: ifeq +33 -> 1132
-    //   1102: lload 16
-    //   1104: lstore 14
-    //   1106: lload 18
-    //   1108: lstore 8
-    //   1110: aload 29
-    //   1112: invokestatic 893	com/tencent/component/network/utils/FileUtils:delete	(Ljava/io/File;)V
-    //   1115: lload 16
-    //   1117: lstore 14
-    //   1119: lload 18
-    //   1121: lstore 8
-    //   1123: aload_3
-    //   1124: aload 30
-    //   1126: invokevirtual 860	java/io/File:getPath	()Ljava/lang/String;
-    //   1129: invokevirtual 763	com/tencent/component/network/downloader/DownloadResult:setPath	(Ljava/lang/String;)V
-    //   1132: aload_1
-    //   1133: ifnull +7 -> 1140
-    //   1136: aload_1
-    //   1137: invokevirtual 896	java/io/InputStream:close	()V
-    //   1140: aload_2
-    //   1141: ifnull +7 -> 1148
-    //   1144: aload_2
-    //   1145: invokevirtual 897	java/io/OutputStream:close	()V
-    //   1148: getstatic 96	com/tencent/component/network/downloader/impl/DownloadTask:sBytesBufferPool	Lcom/tencent/component/network/utils/BytesBufferPool;
-    //   1151: aload 28
-    //   1153: invokevirtual 775	com/tencent/component/network/utils/BytesBufferPool:recycle	(Lcom/tencent/component/network/utils/BytesBufferPool$BytesBuffer;)V
-    //   1156: aload_0
-    //   1157: getfield 777	com/tencent/component/network/downloader/impl/DownloadTask:mNetworkFlowStatistics	Lcom/tencent/component/network/downloader/Downloader$NetworkFlowStatistics;
-    //   1160: ifnull +23 -> 1183
-    //   1163: aload_0
-    //   1164: getfield 777	com/tencent/component/network/downloader/impl/DownloadTask:mNetworkFlowStatistics	Lcom/tencent/component/network/downloader/Downloader$NetworkFlowStatistics;
-    //   1167: invokestatic 782	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   1170: lload 16
-    //   1172: invokestatic 116	java/lang/System:currentTimeMillis	()J
-    //   1175: lload 12
-    //   1177: lsub
-    //   1178: invokeinterface 788 6 0
-    //   1183: aload 4
-    //   1185: ifnull +91 -> 1276
-    //   1188: aload 4
-    //   1190: invokevirtual 901	java/security/MessageDigest:digest	()[B
-    //   1193: astore_1
-    //   1194: new 331	java/lang/StringBuilder
-    //   1197: dup
-    //   1198: invokespecial 332	java/lang/StringBuilder:<init>	()V
-    //   1201: astore_2
-    //   1202: iconst_0
-    //   1203: istore 5
-    //   1205: iload 5
-    //   1207: aload_1
-    //   1208: arraylength
-    //   1209: if_icmpge +56 -> 1265
-    //   1212: aload_2
-    //   1213: aload_1
-    //   1214: iload 5
-    //   1216: baload
-    //   1217: sipush 255
-    //   1220: iand
-    //   1221: invokestatic 904	java/lang/Integer:toHexString	(I)Ljava/lang/String;
-    //   1224: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1227: pop
-    //   1228: iload 5
-    //   1230: iconst_1
-    //   1231: iadd
-    //   1232: istore 5
-    //   1234: goto -29 -> 1205
-    //   1237: astore_1
-    //   1238: ldc_w 329
-    //   1241: ldc_w 811
-    //   1244: aload_1
-    //   1245: invokestatic 442	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1248: goto -108 -> 1140
-    //   1251: astore_1
-    //   1252: ldc_w 329
-    //   1255: ldc_w 811
-    //   1258: aload_1
-    //   1259: invokestatic 442	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1262: goto -114 -> 1148
-    //   1265: aload_3
-    //   1266: invokevirtual 617	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   1269: aload_2
-    //   1270: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1273: putfield 907	com/tencent/component/network/downloader/DownloadResult$Content:md5	Ljava/lang/String;
-    //   1276: ldc_w 329
-    //   1279: new 331	java/lang/StringBuilder
-    //   1282: dup
-    //   1283: invokespecial 332	java/lang/StringBuilder:<init>	()V
-    //   1286: ldc_w 790
-    //   1289: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1292: aload_0
-    //   1293: getfield 498	com/tencent/component/network/downloader/impl/DownloadTask:mContentLength	J
-    //   1296: invokevirtual 793	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1299: ldc_w 795
-    //   1302: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1305: lload 18
-    //   1307: invokevirtual 793	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1310: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1313: invokestatic 347	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1316: iconst_1
-    //   1317: ireturn
-    //   1318: astore_3
-    //   1319: aconst_null
-    //   1320: astore_1
+    //   1069: ldc_w 889
+    //   1072: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1075: aload 30
+    //   1077: invokevirtual 841	java/io/File:length	()J
+    //   1080: invokevirtual 793	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1083: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1086: invokestatic 750	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1089: iload 8
+    //   1091: ifeq +33 -> 1124
+    //   1094: lload 18
+    //   1096: lstore 16
+    //   1098: lload 20
+    //   1100: lstore 10
+    //   1102: aload 29
+    //   1104: invokestatic 893	com/tencent/component/network/utils/FileUtils:delete	(Ljava/io/File;)V
+    //   1107: lload 18
+    //   1109: lstore 16
+    //   1111: lload 20
+    //   1113: lstore 10
+    //   1115: aload_3
+    //   1116: aload 30
+    //   1118: invokevirtual 860	java/io/File:getPath	()Ljava/lang/String;
+    //   1121: invokevirtual 763	com/tencent/component/network/downloader/DownloadResult:setPath	(Ljava/lang/String;)V
+    //   1124: aload_0
+    //   1125: invokestatic 116	java/lang/System:currentTimeMillis	()J
+    //   1128: lload 22
+    //   1130: lsub
+    //   1131: putfield 153	com/tencent/component/network/downloader/impl/DownloadTask:t_recv_data	J
+    //   1134: aload_1
+    //   1135: ifnull +7 -> 1142
+    //   1138: aload_1
+    //   1139: invokevirtual 896	java/io/InputStream:close	()V
+    //   1142: aload_2
+    //   1143: ifnull +7 -> 1150
+    //   1146: aload_2
+    //   1147: invokevirtual 897	java/io/OutputStream:close	()V
+    //   1150: getstatic 96	com/tencent/component/network/downloader/impl/DownloadTask:sBytesBufferPool	Lcom/tencent/component/network/utils/BytesBufferPool;
+    //   1153: aload 28
+    //   1155: invokevirtual 775	com/tencent/component/network/utils/BytesBufferPool:recycle	(Lcom/tencent/component/network/utils/BytesBufferPool$BytesBuffer;)V
+    //   1158: aload_0
+    //   1159: getfield 777	com/tencent/component/network/downloader/impl/DownloadTask:mNetworkFlowStatistics	Lcom/tencent/component/network/downloader/Downloader$NetworkFlowStatistics;
+    //   1162: ifnull +23 -> 1185
+    //   1165: aload_0
+    //   1166: getfield 777	com/tencent/component/network/downloader/impl/DownloadTask:mNetworkFlowStatistics	Lcom/tencent/component/network/downloader/Downloader$NetworkFlowStatistics;
+    //   1169: invokestatic 782	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   1172: lload 18
+    //   1174: invokestatic 116	java/lang/System:currentTimeMillis	()J
+    //   1177: lload 14
+    //   1179: lsub
+    //   1180: invokeinterface 788 6 0
+    //   1185: aload 4
+    //   1187: ifnull +91 -> 1278
+    //   1190: aload 4
+    //   1192: invokevirtual 901	java/security/MessageDigest:digest	()[B
+    //   1195: astore_1
+    //   1196: new 331	java/lang/StringBuilder
+    //   1199: dup
+    //   1200: invokespecial 332	java/lang/StringBuilder:<init>	()V
+    //   1203: astore_2
+    //   1204: iconst_0
+    //   1205: istore 5
+    //   1207: iload 5
+    //   1209: aload_1
+    //   1210: arraylength
+    //   1211: if_icmpge +56 -> 1267
+    //   1214: aload_2
+    //   1215: aload_1
+    //   1216: iload 5
+    //   1218: baload
+    //   1219: sipush 255
+    //   1222: iand
+    //   1223: invokestatic 904	java/lang/Integer:toHexString	(I)Ljava/lang/String;
+    //   1226: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1229: pop
+    //   1230: iload 5
+    //   1232: iconst_1
+    //   1233: iadd
+    //   1234: istore 5
+    //   1236: goto -29 -> 1207
+    //   1239: astore_1
+    //   1240: ldc_w 329
+    //   1243: ldc_w 811
+    //   1246: aload_1
+    //   1247: invokestatic 442	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1250: goto -108 -> 1142
+    //   1253: astore_1
+    //   1254: ldc_w 329
+    //   1257: ldc_w 811
+    //   1260: aload_1
+    //   1261: invokestatic 442	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1264: goto -114 -> 1150
+    //   1267: aload_3
+    //   1268: invokevirtual 617	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   1271: aload_2
+    //   1272: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1275: putfield 907	com/tencent/component/network/downloader/DownloadResult$Content:md5	Ljava/lang/String;
+    //   1278: ldc_w 329
+    //   1281: new 331	java/lang/StringBuilder
+    //   1284: dup
+    //   1285: invokespecial 332	java/lang/StringBuilder:<init>	()V
+    //   1288: ldc_w 790
+    //   1291: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1294: aload_0
+    //   1295: getfield 498	com/tencent/component/network/downloader/impl/DownloadTask:mContentLength	J
+    //   1298: invokevirtual 793	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1301: ldc_w 795
+    //   1304: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1307: lload 20
+    //   1309: invokevirtual 793	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1312: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1315: invokestatic 347	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1318: iconst_1
+    //   1319: ireturn
+    //   1320: astore_2
     //   1321: aconst_null
-    //   1322: astore_2
-    //   1323: lload 16
-    //   1325: lstore 14
-    //   1327: aload_2
-    //   1328: ifnull +7 -> 1335
-    //   1331: aload_2
-    //   1332: invokevirtual 896	java/io/InputStream:close	()V
-    //   1335: aload_1
-    //   1336: ifnull +7 -> 1343
-    //   1339: aload_1
-    //   1340: invokevirtual 897	java/io/OutputStream:close	()V
-    //   1343: getstatic 96	com/tencent/component/network/downloader/impl/DownloadTask:sBytesBufferPool	Lcom/tencent/component/network/utils/BytesBufferPool;
-    //   1346: aload 28
-    //   1348: invokevirtual 775	com/tencent/component/network/utils/BytesBufferPool:recycle	(Lcom/tencent/component/network/utils/BytesBufferPool$BytesBuffer;)V
-    //   1351: aload_0
-    //   1352: getfield 777	com/tencent/component/network/downloader/impl/DownloadTask:mNetworkFlowStatistics	Lcom/tencent/component/network/downloader/Downloader$NetworkFlowStatistics;
-    //   1355: ifnull +23 -> 1378
-    //   1358: aload_0
-    //   1359: getfield 777	com/tencent/component/network/downloader/impl/DownloadTask:mNetworkFlowStatistics	Lcom/tencent/component/network/downloader/Downloader$NetworkFlowStatistics;
-    //   1362: invokestatic 782	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   1365: lload 14
-    //   1367: invokestatic 116	java/lang/System:currentTimeMillis	()J
-    //   1370: lload 12
-    //   1372: lsub
-    //   1373: invokeinterface 788 6 0
-    //   1378: ldc_w 329
-    //   1381: new 331	java/lang/StringBuilder
-    //   1384: dup
-    //   1385: invokespecial 332	java/lang/StringBuilder:<init>	()V
-    //   1388: ldc_w 790
-    //   1391: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1394: aload_0
-    //   1395: getfield 498	com/tencent/component/network/downloader/impl/DownloadTask:mContentLength	J
-    //   1398: invokevirtual 793	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1401: ldc_w 795
-    //   1404: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1407: lload 8
-    //   1409: invokevirtual 793	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1412: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1415: invokestatic 347	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1418: aload_3
-    //   1419: athrow
-    //   1420: astore_2
-    //   1421: ldc_w 329
-    //   1424: ldc_w 811
-    //   1427: aload_2
-    //   1428: invokestatic 442	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1431: goto -96 -> 1335
-    //   1434: astore_1
-    //   1435: ldc_w 329
-    //   1438: ldc_w 811
-    //   1441: aload_1
-    //   1442: invokestatic 442	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1445: goto -102 -> 1343
-    //   1448: astore_3
-    //   1449: aconst_null
-    //   1450: astore 4
-    //   1452: aload_1
-    //   1453: astore_2
-    //   1454: aload 4
-    //   1456: astore_1
-    //   1457: lload 16
-    //   1459: lstore 14
-    //   1461: goto -134 -> 1327
-    //   1464: astore_3
-    //   1465: aload_1
-    //   1466: astore 4
-    //   1468: aload_2
-    //   1469: astore_1
-    //   1470: aload 4
-    //   1472: astore_2
-    //   1473: lload 16
-    //   1475: lstore 14
-    //   1477: goto -150 -> 1327
-    //   1480: astore 4
-    //   1482: aload_1
-    //   1483: astore_3
-    //   1484: aload_2
-    //   1485: astore_1
-    //   1486: aload_3
-    //   1487: astore_2
-    //   1488: aload 4
-    //   1490: astore_3
-    //   1491: goto -164 -> 1327
-    //   1494: iconst_0
-    //   1495: istore 5
-    //   1497: aconst_null
-    //   1498: astore_1
-    //   1499: goto -964 -> 535
-    //   1502: aconst_null
-    //   1503: astore 4
-    //   1505: goto -1060 -> 445
-    //   1508: iconst_0
-    //   1509: istore 6
-    //   1511: lload 10
-    //   1513: iload 7
-    //   1515: iconst_0
-    //   1516: iadd
-    //   1517: i2l
-    //   1518: ladd
-    //   1519: lstore 10
-    //   1521: goto -842 -> 679
+    //   1322: astore_1
+    //   1323: aconst_null
+    //   1324: astore_3
+    //   1325: lload 18
+    //   1327: lstore 16
+    //   1329: aload_0
+    //   1330: invokestatic 116	java/lang/System:currentTimeMillis	()J
+    //   1333: lload 22
+    //   1335: lsub
+    //   1336: putfield 153	com/tencent/component/network/downloader/impl/DownloadTask:t_recv_data	J
+    //   1339: aload_3
+    //   1340: ifnull +7 -> 1347
+    //   1343: aload_3
+    //   1344: invokevirtual 896	java/io/InputStream:close	()V
+    //   1347: aload_1
+    //   1348: ifnull +7 -> 1355
+    //   1351: aload_1
+    //   1352: invokevirtual 897	java/io/OutputStream:close	()V
+    //   1355: getstatic 96	com/tencent/component/network/downloader/impl/DownloadTask:sBytesBufferPool	Lcom/tencent/component/network/utils/BytesBufferPool;
+    //   1358: aload 28
+    //   1360: invokevirtual 775	com/tencent/component/network/utils/BytesBufferPool:recycle	(Lcom/tencent/component/network/utils/BytesBufferPool$BytesBuffer;)V
+    //   1363: aload_0
+    //   1364: getfield 777	com/tencent/component/network/downloader/impl/DownloadTask:mNetworkFlowStatistics	Lcom/tencent/component/network/downloader/Downloader$NetworkFlowStatistics;
+    //   1367: ifnull +23 -> 1390
+    //   1370: aload_0
+    //   1371: getfield 777	com/tencent/component/network/downloader/impl/DownloadTask:mNetworkFlowStatistics	Lcom/tencent/component/network/downloader/Downloader$NetworkFlowStatistics;
+    //   1374: invokestatic 782	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   1377: lload 16
+    //   1379: invokestatic 116	java/lang/System:currentTimeMillis	()J
+    //   1382: lload 14
+    //   1384: lsub
+    //   1385: invokeinterface 788 6 0
+    //   1390: ldc_w 329
+    //   1393: new 331	java/lang/StringBuilder
+    //   1396: dup
+    //   1397: invokespecial 332	java/lang/StringBuilder:<init>	()V
+    //   1400: ldc_w 790
+    //   1403: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1406: aload_0
+    //   1407: getfield 498	com/tencent/component/network/downloader/impl/DownloadTask:mContentLength	J
+    //   1410: invokevirtual 793	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1413: ldc_w 795
+    //   1416: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1419: lload 10
+    //   1421: invokevirtual 793	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1424: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1427: invokestatic 347	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1430: aload_2
+    //   1431: athrow
+    //   1432: astore_3
+    //   1433: ldc_w 329
+    //   1436: ldc_w 811
+    //   1439: aload_3
+    //   1440: invokestatic 442	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1443: goto -96 -> 1347
+    //   1446: astore_1
+    //   1447: ldc_w 329
+    //   1450: ldc_w 811
+    //   1453: aload_1
+    //   1454: invokestatic 442	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1457: goto -102 -> 1355
+    //   1460: astore_2
+    //   1461: aconst_null
+    //   1462: astore 4
+    //   1464: aload_1
+    //   1465: astore_3
+    //   1466: aload 4
+    //   1468: astore_1
+    //   1469: lload 18
+    //   1471: lstore 16
+    //   1473: goto -144 -> 1329
+    //   1476: astore 4
+    //   1478: aload_1
+    //   1479: astore_3
+    //   1480: aload_2
+    //   1481: astore_1
+    //   1482: lload 18
+    //   1484: lstore 16
+    //   1486: aload 4
+    //   1488: astore_2
+    //   1489: goto -160 -> 1329
+    //   1492: astore 4
+    //   1494: aload_1
+    //   1495: astore_3
+    //   1496: aload_2
+    //   1497: astore_1
+    //   1498: aload 4
+    //   1500: astore_2
+    //   1501: goto -172 -> 1329
+    //   1504: iconst_0
+    //   1505: istore 5
+    //   1507: aconst_null
+    //   1508: astore_1
+    //   1509: goto -964 -> 545
+    //   1512: aconst_null
+    //   1513: astore 4
+    //   1515: goto -1060 -> 455
+    //   1518: iconst_0
+    //   1519: istore 6
+    //   1521: lload 12
+    //   1523: iload 7
+    //   1525: iconst_0
+    //   1526: iadd
+    //   1527: i2l
+    //   1528: ladd
+    //   1529: lstore 12
+    //   1531: goto -842 -> 689
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1524	0	this	DownloadTask
-    //   0	1524	1	paramHttpResponse	HttpResponse
-    //   0	1524	2	paramResponse	Response
-    //   0	1524	3	paramDownloadResult	DownloadResult
-    //   0	1524	4	paramJobContext	ThreadPool.JobContext
-    //   0	1524	5	paramInt	int
-    //   555	955	6	i	int
-    //   585	932	7	j	int
-    //   91	1317	8	l1	long
-    //   558	962	10	l2	long
-    //   96	1275	12	l3	long
-    //   562	914	14	l4	long
-    //   82	1392	16	l5	long
-    //   756	550	18	l6	long
-    //   17	903	20	l7	long
-    //   88	858	22	l8	long
-    //   552	396	24	l9	long
-    //   71	1027	26	bool1	boolean
-    //   125	3	27	bool2	boolean
-    //   79	1268	28	localObject1	Object
-    //   109	1002	29	localObject2	Object
-    //   1015	110	30	localFile	File
+    //   0	1534	0	this	DownloadTask
+    //   0	1534	1	paramHttpResponse	HttpResponse
+    //   0	1534	2	paramResponse	Response
+    //   0	1534	3	paramDownloadResult	DownloadResult
+    //   0	1534	4	paramJobContext	ThreadPool.JobContext
+    //   0	1534	5	paramInt	int
+    //   565	955	6	i	int
+    //   595	932	7	j	int
+    //   71	1019	8	bool1	boolean
+    //   125	3	9	bool2	boolean
+    //   91	1329	10	l1	long
+    //   568	962	12	l2	long
+    //   96	1287	14	l3	long
+    //   572	913	16	l4	long
+    //   82	1401	18	l5	long
+    //   766	542	20	l6	long
+    //   17	1317	22	l7	long
+    //   88	850	24	l8	long
+    //   562	378	26	l9	long
+    //   79	1280	28	localObject1	Object
+    //   109	994	29	localObject2	Object
+    //   1007	110	30	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   136	144	380	java/lang/Throwable
-    //   148	156	394	java/lang/Throwable
-    //   1136	1140	1237	java/lang/Throwable
-    //   1144	1148	1251	java/lang/Throwable
-    //   98	127	1318	finally
-    //   408	437	1318	finally
-    //   437	445	1318	finally
-    //   449	520	1318	finally
-    //   523	535	1318	finally
-    //   775	790	1318	finally
-    //   1331	1335	1420	java/lang/Throwable
-    //   1339	1343	1434	java/lang/Throwable
-    //   535	547	1448	finally
-    //   547	554	1464	finally
-    //   568	587	1480	finally
-    //   611	626	1480	finally
-    //   634	647	1480	finally
-    //   660	676	1480	finally
-    //   695	704	1480	finally
-    //   719	745	1480	finally
-    //   753	758	1480	finally
-    //   832	844	1480	finally
-    //   852	865	1480	finally
-    //   890	903	1480	finally
-    //   915	925	1480	finally
-    //   940	954	1480	finally
-    //   962	971	1480	finally
-    //   984	1017	1480	finally
-    //   1025	1034	1480	finally
-    //   1042	1097	1480	finally
-    //   1110	1115	1480	finally
-    //   1123	1132	1480	finally
+    //   146	154	390	java/lang/Throwable
+    //   158	166	404	java/lang/Throwable
+    //   1138	1142	1239	java/lang/Throwable
+    //   1146	1150	1253	java/lang/Throwable
+    //   98	127	1320	finally
+    //   418	447	1320	finally
+    //   447	455	1320	finally
+    //   459	530	1320	finally
+    //   533	545	1320	finally
+    //   785	800	1320	finally
+    //   1343	1347	1432	java/lang/Throwable
+    //   1351	1355	1446	java/lang/Throwable
+    //   545	557	1460	finally
+    //   557	564	1476	finally
+    //   578	597	1492	finally
+    //   621	636	1492	finally
+    //   644	657	1492	finally
+    //   670	686	1492	finally
+    //   705	714	1492	finally
+    //   729	755	1492	finally
+    //   763	768	1492	finally
+    //   842	854	1492	finally
+    //   862	875	1492	finally
+    //   900	913	1492	finally
+    //   932	946	1492	finally
+    //   954	963	1492	finally
+    //   976	1009	1492	finally
+    //   1017	1026	1492	finally
+    //   1034	1089	1492	finally
+    //   1102	1107	1492	finally
+    //   1115	1124	1492	finally
   }
   
   protected void initTask()

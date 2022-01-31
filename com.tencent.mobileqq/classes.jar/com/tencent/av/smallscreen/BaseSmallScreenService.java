@@ -12,31 +12,31 @@ import android.widget.TextView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import loh;
-import lom;
-import loq;
-import lor;
+import lyz;
+import lze;
+import lzi;
+import lzj;
 import mqq.app.AppService;
 
 public class BaseSmallScreenService
   extends AppService
-  implements lom
+  implements lze
 {
   int jdField_a_of_type_Int;
   Handler jdField_a_of_type_AndroidOsHandler;
-  PhoneStateListener jdField_a_of_type_AndroidTelephonyPhoneStateListener = new loh(this);
+  PhoneStateListener jdField_a_of_type_AndroidTelephonyPhoneStateListener = new lyz(this);
   TelephonyManager jdField_a_of_type_AndroidTelephonyTelephonyManager = null;
   View jdField_a_of_type_AndroidViewView = null;
   ImageView jdField_a_of_type_AndroidWidgetImageView = null;
   TextView jdField_a_of_type_AndroidWidgetTextView = null;
   SmallScreenRelativeLayout jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout = null;
   Runnable jdField_a_of_type_JavaLangRunnable = null;
-  loq jdField_a_of_type_Loq = null;
+  lzi jdField_a_of_type_Lzi = null;
   boolean jdField_a_of_type_Boolean = true;
   int jdField_b_of_type_Int;
   public SmallScreenRelativeLayout b;
   Runnable jdField_b_of_type_JavaLangRunnable = null;
-  public loq b;
+  public lzi b;
   boolean jdField_b_of_type_Boolean = false;
   int jdField_c_of_type_Int;
   boolean jdField_c_of_type_Boolean = false;
@@ -59,7 +59,7 @@ public class BaseSmallScreenService
   public BaseSmallScreenService()
   {
     this.jdField_b_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout = null;
-    this.jdField_b_of_type_Loq = null;
+    this.jdField_b_of_type_Lzi = null;
   }
   
   static void a(WindowManager.LayoutParams paramLayoutParams)
@@ -70,7 +70,7 @@ public class BaseSmallScreenService
       paramLayoutParams.type = 2038;
       return;
     }
-    if (lor.a()) {}
+    if (lzj.a()) {}
     for (int i1 = 2005;; i1 = 2002)
     {
       paramLayoutParams.type = i1;
@@ -81,7 +81,7 @@ public class BaseSmallScreenService
   public int a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout)
   {
     if (paramSmallScreenRelativeLayout == this.jdField_b_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout) {}
-    for (paramSmallScreenRelativeLayout = this.jdField_b_of_type_Loq;; paramSmallScreenRelativeLayout = this.jdField_a_of_type_Loq) {
+    for (paramSmallScreenRelativeLayout = this.jdField_b_of_type_Lzi;; paramSmallScreenRelativeLayout = this.jdField_a_of_type_Lzi) {
       return paramSmallScreenRelativeLayout.a().x;
     }
   }
@@ -96,7 +96,7 @@ public class BaseSmallScreenService
   
   void a()
   {
-    if (!this.jdField_b_of_type_Loq.a()) {}
+    if (!this.jdField_b_of_type_Lzi.a()) {}
   }
   
   public void a(int paramInt, String paramString) {}
@@ -108,7 +108,7 @@ public class BaseSmallScreenService
   public void a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (paramSmallScreenRelativeLayout == this.jdField_b_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout) {}
-    for (paramSmallScreenRelativeLayout = this.jdField_b_of_type_Loq;; paramSmallScreenRelativeLayout = this.jdField_a_of_type_Loq)
+    for (paramSmallScreenRelativeLayout = this.jdField_b_of_type_Lzi;; paramSmallScreenRelativeLayout = this.jdField_a_of_type_Lzi)
     {
       WindowManager.LayoutParams localLayoutParams = paramSmallScreenRelativeLayout.a();
       localLayoutParams.x = paramInt1;
@@ -122,7 +122,7 @@ public class BaseSmallScreenService
   
   protected boolean a()
   {
-    return lor.f(((AppInterface)this.app).getApp());
+    return lzj.f(((AppInterface)this.app).getApp());
   }
   
   public boolean a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout)
@@ -133,14 +133,14 @@ public class BaseSmallScreenService
   public int b(SmallScreenRelativeLayout paramSmallScreenRelativeLayout)
   {
     if (paramSmallScreenRelativeLayout == this.jdField_b_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout) {}
-    for (paramSmallScreenRelativeLayout = this.jdField_b_of_type_Loq;; paramSmallScreenRelativeLayout = this.jdField_a_of_type_Loq) {
+    for (paramSmallScreenRelativeLayout = this.jdField_b_of_type_Lzi;; paramSmallScreenRelativeLayout = this.jdField_a_of_type_Lzi) {
       return paramSmallScreenRelativeLayout.a().y;
     }
   }
   
   void b()
   {
-    this.jdField_a_of_type_Loq.a();
+    this.jdField_a_of_type_Lzi.a();
   }
   
   void c()
@@ -348,11 +348,11 @@ public class BaseSmallScreenService
     //   384: aload_0
     //   385: getfield 58	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_b_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout	Lcom/tencent/av/smallscreen/SmallScreenRelativeLayout;
     //   388: aload_0
-    //   389: invokevirtual 299	com/tencent/av/smallscreen/SmallScreenRelativeLayout:setFloatListener	(Llom;)V
+    //   389: invokevirtual 299	com/tencent/av/smallscreen/SmallScreenRelativeLayout:setFloatListener	(Llze;)V
     //   392: aload_0
     //   393: getfield 56	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout	Lcom/tencent/av/smallscreen/SmallScreenRelativeLayout;
     //   396: aload_0
-    //   397: invokevirtual 299	com/tencent/av/smallscreen/SmallScreenRelativeLayout:setFloatListener	(Llom;)V
+    //   397: invokevirtual 299	com/tencent/av/smallscreen/SmallScreenRelativeLayout:setFloatListener	(Llze;)V
     //   400: aload_0
     //   401: getfield 56	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout	Lcom/tencent/av/smallscreen/SmallScreenRelativeLayout;
     //   404: aload_0
@@ -372,21 +372,21 @@ public class BaseSmallScreenService
     //   432: checkcast 311	android/widget/TextView
     //   435: putfield 64	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   438: aload_0
-    //   439: new 109	loq
+    //   439: new 109	lzi
     //   442: dup
     //   443: aload_0
     //   444: aload_0
     //   445: getfield 58	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_b_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout	Lcom/tencent/av/smallscreen/SmallScreenRelativeLayout;
-    //   448: invokespecial 314	loq:<init>	(Landroid/content/Context;Landroid/view/View;)V
-    //   451: putfield 62	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_b_of_type_Loq	Lloq;
+    //   448: invokespecial 314	lzi:<init>	(Landroid/content/Context;Landroid/view/View;)V
+    //   451: putfield 62	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_b_of_type_Lzi	Llzi;
     //   454: aload_0
-    //   455: new 109	loq
+    //   455: new 109	lzi
     //   458: dup
     //   459: aload_0
     //   460: aload_0
     //   461: getfield 56	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout	Lcom/tencent/av/smallscreen/SmallScreenRelativeLayout;
-    //   464: invokespecial 314	loq:<init>	(Landroid/content/Context;Landroid/view/View;)V
-    //   467: putfield 60	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_Loq	Lloq;
+    //   464: invokespecial 314	lzi:<init>	(Landroid/content/Context;Landroid/view/View;)V
+    //   467: putfield 60	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_Lzi	Llzi;
     //   470: aload_0
     //   471: getfield 58	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_b_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout	Lcom/tencent/av/smallscreen/SmallScreenRelativeLayout;
     //   474: iconst_1
@@ -406,12 +406,12 @@ public class BaseSmallScreenService
     //   502: getfield 263	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_d_of_type_Int	I
     //   505: invokevirtual 322	com/tencent/av/smallscreen/SmallScreenRelativeLayout:setSize	(II)V
     //   508: aload_0
-    //   509: getfield 62	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_b_of_type_Loq	Lloq;
-    //   512: invokevirtual 112	loq:a	()Landroid/view/WindowManager$LayoutParams;
+    //   509: getfield 62	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_b_of_type_Lzi	Llzi;
+    //   512: invokevirtual 112	lzi:a	()Landroid/view/WindowManager$LayoutParams;
     //   515: invokestatic 324	com/tencent/av/smallscreen/BaseSmallScreenService:a	(Landroid/view/WindowManager$LayoutParams;)V
     //   518: aload_0
-    //   519: getfield 60	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_Loq	Lloq;
-    //   522: invokevirtual 112	loq:a	()Landroid/view/WindowManager$LayoutParams;
+    //   519: getfield 60	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_Lzi	Llzi;
+    //   522: invokevirtual 112	lzi:a	()Landroid/view/WindowManager$LayoutParams;
     //   525: invokestatic 324	com/tencent/av/smallscreen/BaseSmallScreenService:a	(Landroid/view/WindowManager$LayoutParams;)V
     //   528: aload_0
     //   529: aload_0
@@ -446,28 +446,28 @@ public class BaseSmallScreenService
     //   598: ldc_w 352
     //   601: invokevirtual 350	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   604: aload_0
-    //   605: invokestatic 354	lor:i	()Z
+    //   605: invokestatic 354	lzj:i	()Z
     //   608: putfield 40	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_b_of_type_Boolean	Z
     //   611: aload_0
     //   612: aload_0
     //   613: getfield 87	com/tencent/av/smallscreen/BaseSmallScreenService:app	Lmqq/app/AppRuntime;
     //   616: checkcast 147	com/tencent/common/app/AppInterface
     //   619: invokevirtual 151	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   622: invokestatic 356	lor:c	(Landroid/content/Context;)Z
+    //   622: invokestatic 356	lzj:c	(Landroid/content/Context;)Z
     //   625: putfield 46	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_e_of_type_Boolean	Z
     //   628: aload_0
     //   629: aload_0
     //   630: getfield 87	com/tencent/av/smallscreen/BaseSmallScreenService:app	Lmqq/app/AppRuntime;
     //   633: checkcast 147	com/tencent/common/app/AppInterface
     //   636: invokevirtual 151	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   639: invokestatic 358	lor:b	(Landroid/content/Context;)Z
+    //   639: invokestatic 358	lzj:b	(Landroid/content/Context;)Z
     //   642: putfield 42	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_c_of_type_Boolean	Z
     //   645: aload_0
     //   646: aload_0
     //   647: getfield 87	com/tencent/av/smallscreen/BaseSmallScreenService:app	Lmqq/app/AppRuntime;
     //   650: checkcast 147	com/tencent/common/app/AppInterface
     //   653: invokevirtual 151	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   656: invokestatic 154	lor:f	(Landroid/content/Context;)Z
+    //   656: invokestatic 154	lzj:f	(Landroid/content/Context;)Z
     //   659: putfield 48	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_f_of_type_Boolean	Z
     //   662: aload_0
     //   663: getfield 70	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
@@ -542,9 +542,9 @@ public class BaseSmallScreenService
     this.jdField_a_of_type_AndroidTelephonyPhoneStateListener = null;
     this.jdField_a_of_type_JavaLangRunnable = null;
     this.jdField_b_of_type_JavaLangRunnable = null;
-    this.jdField_a_of_type_Loq.b();
+    this.jdField_a_of_type_Lzi.b();
     this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.c();
-    this.jdField_a_of_type_Loq = null;
+    this.jdField_a_of_type_Lzi = null;
     this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout = null;
     if (QLog.isColorLevel()) {
       QLog.d("BaseSmallScreenService", 2, "onDestroy end");

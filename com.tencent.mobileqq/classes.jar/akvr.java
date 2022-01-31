@@ -1,42 +1,412 @@
-import android.opengl.GLES20;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
 public class akvr
-  extends akvs
+  implements Manager
 {
-  public int a;
-  public int b;
-  public int c;
+  private long jdField_a_of_type_Long = -1L;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ConcurrentHashMap<String, akvt> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private long jdField_b_of_type_Long = -1L;
+  private ConcurrentHashMap<String, String> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
   
-  public akvr(int paramInt)
+  public akvr(QQAppInterface paramQQAppInterface)
   {
-    super(paramInt);
-    this.e = "uniform float u_threshold;\nuniform float u_clipBlack;\nuniform float u_clipWhite;\nfloat smoothclip(float low, float high, float x){\n    if (x <= low){\n        return 0.0;\n    }\n    if(x >= high){\n        return 1.0;\n    }\n    return (x-low)/(high-low);\n}\n";
-    this.j = "    float screenWeight = u_threshold/2.0;\n    float angle = 0.7854 + 0.7854*(max(0.0, min(0.95, screenWeight))*2.0-1.0);\n    float noise_level = 0.0625;\n    float key_Y = 0.257*u_screenColor.r + 0.504*u_screenColor.g + 0.098*u_screenColor.b;\n    float key_Cb = -0.148*u_screenColor.r - 0.291*u_screenColor.g + 0.439*u_screenColor.b;\n    float key_Cr = 0.439*u_screenColor.r - 0.368*u_screenColor.g - 0.071*u_screenColor.b;\n    float kgl = sqrt(key_Cb*key_Cb + key_Cr*key_Cr);\n    key_Cb = (key_Cb / kgl);\n    key_Cr = (key_Cr / kgl);\n    float accept_angle_tg = min(tan(angle), 16.0);\n    float accept_angle_ctg = min(1.0/tan(angle), 16.0);\n    float one_over_kc = 1.0/kgl;\n    float kfgy_scale = min(key_Y/kgl, 16.0);\n    float kg = min(kgl, 0.5);\n    //r g b = y cb cr\n    float y = 0.257*gl_FragColor.r + 0.504*gl_FragColor.g + 0.098*gl_FragColor.b;\n    float cb = -0.148*gl_FragColor.r - 0.291*gl_FragColor.g + 0.439*gl_FragColor.b;\n    float cr = 0.439*gl_FragColor.r - 0.368*gl_FragColor.g - 0.071*gl_FragColor.b;\n    float x = (cb*key_Cb + cr*key_Cr);\n    x = max(min(x, 0.5), -0.5);\n    float z = (cr*key_Cb - cb*key_Cr);\n    z = max(min(z, 0.5), -0.5);\n    if (abs(z) > min(x*accept_angle_tg, 0.5)) {\n        gl_FragColor.a = 1.0;\n    } else {\n        if ((z*z+(x-kg)*(x-kg)) < noise_level*noise_level) {\n            gl_FragColor.rgb = vec3(0.0);\n            gl_FragColor.a = 0.0;\n        } else {\n            float x1 = abs(max(min(z*accept_angle_ctg, 0.5), -0.5));\n            float z1 = z;\n            float dx = max(x-x1, 0.0);\n            float kbg = dx*one_over_kc;\n            kbg = max(min(kbg, 1.0), 0.0);\n            y = y - min(dx*kfgy_scale, 1.0);\n            y = max(y, 0.0);\n            cb = (x1*key_Cb - z1*key_Cr);\n            cb = max(min(cb, 0.5), -0.5);\n            cr = (x1*key_Cr + z1*key_Cb);\n            cr = max(min(cr, 0.5), -0.5);\n            float alpha = 1.0 - kbg;\n            alpha = smoothclip(0.2, 1.0, alpha);//\n            //y cb cr => r g b\n            float r = 1.164*y + 1.596*cr;\n            float g = 1.164*y - 0.813*cr - 0.392*cb;\n            float b = 1.164*y + 2.017*cb;\n            if(alpha < u_clipBlack){\n                alpha = 0.0;\n                r = g = b = 0.0;\n            }\n            if(alpha > u_clipWhite){\n                alpha = 1.0;\n            }\n            if(u_clipWhite < 1.0){\n                alpha = alpha/max(u_clipWhite, 0.9);\n            }\n            gl_FragColor.r = max(min(r, 1.0), 0.0);\n            gl_FragColor.g = max(min(g, 1.0), 0.0);\n            gl_FragColor.b = max(min(b, 1.0), 0.0);\n            gl_FragColor.a = alpha;\n        }\n    }\n";
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(0);
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(0);
+    a();
   }
   
-  protected void a()
+  private void c(String paramString)
   {
-    this.a = GLES20.glGetUniformLocation(this.d, "u_threshold");
-    akvw.a("glGetAttribLocation u_threshold");
-    this.b = GLES20.glGetUniformLocation(this.d, "u_clipBlack");
-    akvw.a("glGetAttribLocation u_clipBlack");
-    this.c = GLES20.glGetUniformLocation(this.d, "u_clipWhite");
-    akvw.a("glGetAttribLocation u_clipWhite");
-  }
-  
-  protected void a(akvv paramakvv)
-  {
-    if (paramakvv == null) {
-      return;
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(5, paramString, 0);
+    int j;
+    int i;
+    if ((localObject1 != null) && (((Pair)localObject1).second != null))
+    {
+      localObject1 = (Setting)((Pair)localObject1).second;
+      j = ((Setting)localObject1).systemHeadID;
+      i = ((Setting)localObject1).bHeadType;
     }
-    GLES20.glUniform1f(this.a, paramakvv.f);
-    GLES20.glUniform1f(this.b, paramakvv.g);
-    GLES20.glUniform1f(this.c, paramakvv.h);
+    for (;;)
+    {
+      Object localObject2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ClassicHeadActivityManager", 2, " QQ 18 handle handleUpdateStrangerHeadReal uin=" + paramString + ",localHeadID=" + j + ",localType=" + i);
+        localObject1 = new StringBuilder(1000);
+        localObject2 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
+          ((StringBuilder)localObject1).append(" QQ 18 handle mHeadIdMap: uin=");
+          ((StringBuilder)localObject1).append((String)localEntry.getKey());
+          ((StringBuilder)localObject1).append(",headid=");
+          ((StringBuilder)localObject1).append(((akvt)localEntry.getValue()).jdField_a_of_type_Int);
+          ((StringBuilder)localObject1).append(",type=");
+          ((StringBuilder)localObject1).append(((akvt)localEntry.getValue()).b);
+          ((StringBuilder)localObject1).append(",isRequest=");
+          ((StringBuilder)localObject1).append(((akvt)localEntry.getValue()).jdField_a_of_type_Boolean);
+          ((StringBuilder)localObject1).append(",saveTime=");
+          ((StringBuilder)localObject1).append(((akvt)localEntry.getValue()).jdField_a_of_type_Long);
+          ((StringBuilder)localObject1).append("\n");
+          QLog.d("ClassicHeadActivityManager", 2, ((StringBuilder)localObject1).toString());
+        }
+      }
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+      {
+        localObject1 = (akvt)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        if (localObject1 != null)
+        {
+          int k = ((akvt)localObject1).jdField_a_of_type_Int;
+          int m = ((akvt)localObject1).b;
+          if (((m == 0) && (k != j)) || ((m != i) && (!((akvt)localObject1).jdField_a_of_type_Boolean)))
+          {
+            ((akvt)localObject1).jdField_a_of_type_Boolean = true;
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder(1000);
+              ((StringBuilder)localObject2).append("QQ 18 get and update stranger update head uin = ");
+              ((StringBuilder)localObject2).append(paramString);
+              ((StringBuilder)localObject2).append(",receiveSysid = ");
+              ((StringBuilder)localObject2).append(k);
+              ((StringBuilder)localObject2).append(",receiveType = ");
+              ((StringBuilder)localObject2).append(m);
+              ((StringBuilder)localObject2).append(",localSysid = ");
+              ((StringBuilder)localObject2).append(j);
+              ((StringBuilder)localObject2).append(",loaclType = ");
+              ((StringBuilder)localObject2).append(i);
+              ((StringBuilder)localObject2).append("\n");
+              QLog.d("ClassicHeadActivityManager", 2, ((StringBuilder)localObject2).toString());
+            }
+            ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).c(paramString);
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject1);
+          }
+          if ((k == j) && (m == i) && (((akvt)localObject1).jdField_a_of_type_Boolean))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ClassicHeadActivityManager", 4, " QQ 18 remove update map uin = " + paramString + ",receiveSysid = " + k + ",localSysid = " + j);
+            }
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+          }
+        }
+      }
+      return;
+      i = 0;
+      j = 0;
+    }
+  }
+  
+  public long a()
+  {
+    long l = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).getLong("classic_head_activity_switch_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), -1L);
+    if (QLog.isColorLevel()) {
+      QLog.d("ClassicHeadActivityManager", 2, "getSwitch key=classic_head_activity_switch value= " + l);
+    }
+    return l;
+  }
+  
+  public Setting a()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1, (String)localObject, 0);
+    if ((localObject != null) && (((Pair)localObject).second != null)) {
+      return (Setting)((Pair)localObject).second;
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    Object localObject = bbjn.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = ((String)localObject).split("\\|");
+      if ((localObject != null) && (localObject.length == 2))
+      {
+        this.jdField_a_of_type_Long = alwu.a(localObject[0]);
+        this.jdField_b_of_type_Long = alwu.a(localObject[1]);
+        if (QLog.isColorLevel()) {
+          QLog.d("ClassicHeadActivityManager", 2, "parseClassicHeadActivityConfig success");
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ClassicHeadActivityManager", 2, "parseClassicHeadActivityConfig beginTime=" + this.jdField_a_of_type_Long + " endTime=" + this.jdField_b_of_type_Long);
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    long l = a();
+    if (l != paramLong)
+    {
+      SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).edit();
+      localEditor.putLong("classic_head_activity_switch_" + str, paramLong);
+      localEditor.commit();
+      if (QLog.isColorLevel()) {
+        QLog.d("ClassicHeadActivityManager", 2, "save Switch Success");
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ClassicHeadActivityManager", 2, "qq18Switch=" + paramLong + " localSwitch=" + l);
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2, long paramLong3)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp() == null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c() == null)) {}
+    for (;;)
+    {
+      return;
+      StringBuilder localStringBuilder = new StringBuilder("handleInitValue");
+      localStringBuilder.append(" sysId=").append(paramLong1);
+      localStringBuilder.append(" headType=").append(paramLong2);
+      localStringBuilder.append(" qq18Switch=").append(paramLong3);
+      String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      a(paramLong3);
+      if (paramLong3 == 1L)
+      {
+        FriendListHandler localFriendListHandler = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
+        Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1, str, 0);
+        if ((localObject != null) && (((Boolean)((Pair)localObject).first).booleanValue()))
+        {
+          localFriendListHandler.c(str);
+          localFriendListHandler.notifyUI(3, true, str);
+        }
+        while (QLog.isColorLevel())
+        {
+          QLog.d("ClassicHeadActivityManager", 2, localStringBuilder.toString());
+          return;
+          if ((localObject != null) && (((Pair)localObject).second != null))
+          {
+            localObject = (Setting)((Pair)localObject).second;
+            paramLong3 = ((Setting)localObject).systemHeadID;
+            long l = ((Setting)localObject).bHeadType;
+            localStringBuilder.append(" localSysId=").append(paramLong3);
+            localStringBuilder.append(" localheadType=").append(l);
+            if ((paramLong2 != l) || ((paramLong2 == 0L) && (paramLong1 != paramLong3)))
+            {
+              localStringBuilder.append(" fetch userHead");
+              localFriendListHandler.c(str);
+              localFriendListHandler.notifyUI(3, true, str);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public void a(akvs paramakvs)
+  {
+    StringBuilder localStringBuilder;
+    FriendListHandler localFriendListHandler;
+    Object localObject;
+    if ((a()) && (paramakvs != null))
+    {
+      localStringBuilder = new StringBuilder("handleFriendHeadFlagItem");
+      localStringBuilder.append(" uin=").append(bbjw.e(paramakvs.jdField_a_of_type_JavaLangString));
+      localStringBuilder.append(" sysId=").append(paramakvs.jdField_b_of_type_Long);
+      localStringBuilder.append(" headType=").append(paramakvs.c);
+      localStringBuilder.append(" qq18Switch=").append(paramakvs.jdField_a_of_type_Long);
+      if ((!TextUtils.isEmpty(paramakvs.jdField_a_of_type_JavaLangString)) && (paramakvs.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) && (paramakvs.jdField_a_of_type_Long != -1L)) {
+        a(paramakvs.jdField_a_of_type_Long);
+      }
+      localFriendListHandler = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1, paramakvs.jdField_a_of_type_JavaLangString, 0);
+      if ((localObject == null) || (!((Boolean)((Pair)localObject).first).booleanValue())) {
+        break label221;
+      }
+      localFriendListHandler.c(paramakvs.jdField_a_of_type_JavaLangString);
+      localFriendListHandler.notifyUI(3, true, paramakvs.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ClassicHeadActivityManager", 2, localStringBuilder.toString());
+      }
+      return;
+      label221:
+      if ((localObject != null) && (((Pair)localObject).second != null))
+      {
+        localObject = (Setting)((Pair)localObject).second;
+        long l1 = ((Setting)localObject).systemHeadID;
+        long l2 = ((Setting)localObject).bHeadType;
+        localStringBuilder.append(" localsysId=").append(l1);
+        localStringBuilder.append(" localheadType=").append(l2);
+        if (((paramakvs.jdField_a_of_type_Long == 1L) && (paramakvs.c != -1L) && (paramakvs.c != l2)) || ((paramakvs.jdField_b_of_type_Long != -1L) && (paramakvs.jdField_b_of_type_Long != l1) && (l2 == 0L)))
+        {
+          localStringBuilder.append(" fetch userHead");
+          localFriendListHandler.c(paramakvs.jdField_a_of_type_JavaLangString);
+          localFriendListHandler.notifyUI(3, true, paramakvs.jdField_a_of_type_JavaLangString);
+        }
+      }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)))
+    {
+      akvt localakvt = (akvt)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if ((localakvt != null) && (localakvt.jdField_a_of_type_Boolean))
+      {
+        QLog.d("ClassicHeadActivityManager", 2, " QQ 18 handle handleGetHeadError uin=" + paramString + ",HeadID=" + localakvt.jdField_a_of_type_Int + ",Type=" + localakvt.b + ",IsRequest=" + localakvt.jdField_a_of_type_Boolean);
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      }
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    int i = 0;
+    Object localObject;
+    int j;
+    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(5, paramString, 0);
+      if ((localObject == null) || (((Pair)localObject).second == null)) {
+        break label350;
+      }
+      localObject = (Setting)((Pair)localObject).second;
+      j = ((Setting)localObject).systemHeadID;
+      i = ((Setting)localObject).bHeadType;
+    }
+    for (;;)
+    {
+      if ((paramInt1 == j) && (paramInt2 == i)) {
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+        {
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+          if (QLog.isColorLevel()) {
+            QLog.d("ClassicHeadActivityManager", 2, " QQ 18 saveReceiveSysHeadId found same, remove uin=" + paramString + ", syid=" + paramInt1 + ",headType=" + paramInt2);
+          }
+        }
+      }
+      do
+      {
+        do
+        {
+          akvt localakvt;
+          do
+          {
+            do
+            {
+              return;
+              localObject = new akvt(paramString, paramInt1, paramInt2);
+              if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
+                break;
+              }
+              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject);
+            } while (!QLog.isColorLevel());
+            QLog.d("ClassicHeadActivityManager", 2, " QQ 18 saveReceiveSysHeadId save uin=" + paramString + ", syid=" + paramInt1 + ",headType=" + paramInt2);
+            return;
+            localakvt = (akvt)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+          } while (localakvt == null);
+          i = localakvt.jdField_a_of_type_Int;
+          j = localakvt.b;
+        } while (((paramInt2 != 0) || (paramInt1 == i)) && (j == paramInt2));
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject);
+      } while (!QLog.isColorLevel());
+      QLog.d("ClassicHeadActivityManager", 2, " QQ 18 saveReceiveSysHeadId save uin=" + paramString + ", syid=" + paramInt1 + ",headType=" + paramInt2);
+      return;
+      label350:
+      j = 0;
+    }
+  }
+  
+  public boolean a()
+  {
+    long l = awzw.a() * 1000L;
+    if ((this.jdField_a_of_type_Long != -1L) && (this.jdField_b_of_type_Long != -1L) && (l > this.jdField_a_of_type_Long) && (l < this.jdField_b_of_type_Long))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ClassicHeadActivityManager", 2, "ClassicHeadActivityActivate is activate");
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0))
+    {
+      Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        if (QLog.isColorLevel()) {
+          QLog.d("ClassicHeadActivityManager", 2, " QQ 18 handle actionB cached stranger head uin = " + (String)localEntry.getKey());
+        }
+        c((String)localEntry.getKey());
+      }
+      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      if (QLog.isColorLevel()) {
+        QLog.d("ClassicHeadActivityManager", 2, " QQ 18 handle actionB cached stranger head update finished");
+      }
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (QLog.isColorLevel()) {
+            QLog.d("ClassicHeadActivityManager", 2, " QQ 18 handleUpdateStrangerHead strangerUin = " + paramString);
+          }
+          String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+          if (!str.equals(paramString)) {
+            break;
+          }
+          if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))) {
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("ClassicHeadActivityManager", 2, " QQ 18 handleUpdateStrangerHead remove current user ");
+        return;
+        if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a == null) || (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a.b())) {
+          break;
+        }
+      } while ((this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap == null) || (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)));
+      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, "");
+      return;
+    } while ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() <= 0));
+    c(paramString);
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akvr
  * JD-Core Version:    0.7.0.1
  */

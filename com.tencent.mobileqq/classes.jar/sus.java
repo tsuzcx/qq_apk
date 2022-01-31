@@ -1,22 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class sus
-  extends QQUIEventReceiver<suo, spl>
 {
-  public sus(@NonNull suo paramsuo)
+  public int a;
+  public final long a;
+  public final String a;
+  public boolean a;
+  public String b = "";
+  
+  public sus(String paramString)
   {
-    super(paramsuo);
+    this.jdField_a_of_type_Int = 1000;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public void a(@NonNull suo paramsuo, @NonNull spl paramspl)
+  public ErrorMessage a()
   {
-    paramsuo.a.b(paramspl);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return spl.class;
+    return new ErrorMessage(this.jdField_a_of_type_Int, this.b);
   }
 }
 

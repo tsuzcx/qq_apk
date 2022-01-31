@@ -1,15 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class apkh
-  implements View.OnClickListener
+public abstract interface apkh
 {
-  apkh(apkg paramapkg) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.b();
-  }
+  public abstract void a(int paramInt);
 }
 
 

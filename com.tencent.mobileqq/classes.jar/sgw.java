@@ -1,48 +1,63 @@
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.os.Build.VERSION;
+import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.util.LruCache;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.DownloadingUrlEntry;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.List;
-import java.util.concurrent.locks.ReentrantLock;
+import android.view.View;
 
-class sgw
-  extends SimpleJob<Void>
+public class sgw
 {
-  sgw(sgs paramsgs, String paramString1, String paramString2, int paramInt)
+  public static GradientDrawable a(View paramView, float paramFloat, @ColorInt int paramInt)
   {
-    super(paramString1);
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    localGradientDrawable.setCornerRadius(paramFloat);
+    localGradientDrawable.setColor(paramInt);
+    if (paramView != null) {
+      a(paramView, localGradientDrawable);
+    }
+    return localGradientDrawable;
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public static GradientDrawable a(View paramView, float paramFloat, @ColorInt int paramInt1, int paramInt2)
   {
-    try
-    {
-      sgs.a(this.jdField_a_of_type_Sgs).lock();
-      paramJobContext = DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      sgs.a(this.jdField_a_of_type_Sgs).remove(paramJobContext);
-      paramJobContext = QQStoryContext.a().a().createEntityManager();
-      paramVarArgs = sqd.a(paramJobContext, DownloadingUrlEntry.class, DownloadingUrlEntry.class.getSimpleName(), "key=?", new String[] { DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) });
-      if ((paramVarArgs != null) && (paramVarArgs.size() > 0))
-      {
-        paramVarArgs = (DownloadingUrlEntry)paramVarArgs.get(0);
-        paramVarArgs.setStatus(1000);
-        paramVarArgs.bIsDownloadCompleted = 1;
-        paramJobContext.b(paramVarArgs);
-      }
-      return null;
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    if (paramFloat > 0.0F) {
+      localGradientDrawable.setCornerRadius(paramFloat);
     }
-    finally
-    {
-      sgs.a(this.jdField_a_of_type_Sgs).unlock();
+    localGradientDrawable.setStroke(paramInt2, paramInt1);
+    if (paramView != null) {
+      a(paramView, localGradientDrawable);
     }
+    return localGradientDrawable;
+  }
+  
+  public static StateListDrawable a(View paramView, @NonNull Drawable paramDrawable1, @NonNull Drawable paramDrawable2)
+  {
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842910 }, paramDrawable1);
+    localStateListDrawable.addState(new int[0], paramDrawable2);
+    if (paramView != null) {
+      a(paramView, localStateListDrawable);
+    }
+    return localStateListDrawable;
+  }
+  
+  public static void a(@NonNull View paramView, @NonNull Drawable paramDrawable)
+  {
+    if (Build.VERSION.SDK_INT < 16)
+    {
+      paramView.setBackgroundDrawable(paramDrawable);
+      return;
+    }
+    paramView.setBackground(paramDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sgw
  * JD-Core Version:    0.7.0.1
  */

@@ -2,18 +2,18 @@ package com.tencent.mobileqq.location.ui;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import aqzw;
-import aram;
-import babr;
-import bafb;
+import arvk;
+import arwa;
+import bbcv;
+import bbgg;
 
 public final class LocationDialogUtil$8
   implements Runnable
 {
   public void run()
   {
-    bafb localbafb = babr.a(this.jdField_a_of_type_AndroidAppActivity, 230, null, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131653719) + this.jdField_a_of_type_JavaLangString, 2131629116, 2131625035, new aram(this), null);
-    aqzw.a(this.jdField_a_of_type_AndroidAppActivity, localbafb);
+    bbgg localbbgg = bbcv.a(this.jdField_a_of_type_AndroidAppActivity, 230, null, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131719603) + this.jdField_a_of_type_JavaLangString, 2131694793, 2131690596, new arwa(this), null);
+    arvk.a(this.jdField_a_of_type_AndroidAppActivity, localbbgg);
   }
 }
 

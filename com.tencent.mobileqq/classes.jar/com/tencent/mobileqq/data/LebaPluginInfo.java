@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atmp;
-import atnz;
-import atoc;
+import aukm;
+import aukn;
+import aulx;
+import auma;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import java.util.List;
 import tencent.im.PluginConfig.PluginConfig.GetResourceRespInfo;
 
 public class LebaPluginInfo
-  extends atmo
+  extends aukm
 {
   public static final int STATE_ADD = 3;
   public static final int STATE_DEL = 2;
@@ -21,19 +21,20 @@ public class LebaPluginInfo
   public int cCanChangeState;
   public byte cDataType;
   public String resConf;
-  @atnz
+  @aulx
   public int sPriority;
   public int sResSeq;
   public short sResSubType;
   public int showInSimpleMode;
-  @atnz
+  @aulx
   public int state = 0;
   public String strGotoUrl;
+  public String strGridIconUrl;
   @Deprecated
   public String strPkgName;
   public String strResName;
   public String strResURL;
-  @atoc
+  @auma
   public long uiResId;
   
   public static LebaPluginInfo convToLocalPluginInfo(PluginConfig.GetResourceRespInfo paramGetResourceRespInfo)
@@ -54,59 +55,55 @@ public class LebaPluginInfo
       l = paramGetResourceRespInfo.res_id.get();
       localLebaPluginInfo.uiResId = l;
       if (!paramGetResourceRespInfo.state.has()) {
-        break label349;
+        break label375;
       }
       i = paramGetResourceRespInfo.state.get();
       localLebaPluginInfo.state = i;
       if (!paramGetResourceRespInfo.res_seq.has()) {
-        break label354;
+        break label380;
       }
       i = paramGetResourceRespInfo.res_seq.get();
       localLebaPluginInfo.sResSeq = i;
       if (!paramGetResourceRespInfo.pkg_name.has()) {
-        break label359;
+        break label385;
       }
       str = paramGetResourceRespInfo.pkg_name.get();
       localLebaPluginInfo.strPkgName = str;
       if (!paramGetResourceRespInfo.res_name.has()) {
-        break label366;
+        break label392;
       }
       str = paramGetResourceRespInfo.res_name.get();
       label137:
       localLebaPluginInfo.strResName = str;
       if (!paramGetResourceRespInfo.icon_url.has()) {
-        break label373;
+        break label399;
       }
       str = paramGetResourceRespInfo.icon_url.get();
       label163:
       localLebaPluginInfo.strResURL = str;
       if (!paramGetResourceRespInfo.sub_type.has()) {
-        break label380;
+        break label406;
       }
       s = (short)paramGetResourceRespInfo.sub_type.get();
       label189:
       localLebaPluginInfo.sResSubType = s;
       if (!paramGetResourceRespInfo.jump_url.has()) {
-        break label385;
+        break label411;
       }
       str = paramGetResourceRespInfo.jump_url.get();
       label214:
       localLebaPluginInfo.strGotoUrl = str;
       if (!paramGetResourceRespInfo.can_change_state.has()) {
-        break label392;
+        break label418;
       }
       i = paramGetResourceRespInfo.can_change_state.get();
       label239:
       localLebaPluginInfo.cCanChangeState = i;
       if (!paramGetResourceRespInfo.res_conf.has()) {
-        break label397;
+        break label423;
       }
-    }
-    label385:
-    label392:
-    label397:
-    for (String str = paramGetResourceRespInfo.res_conf.get();; str = "")
-    {
+      str = paramGetResourceRespInfo.res_conf.get();
+      label264:
       localLebaPluginInfo.resConf = str;
       localLebaPluginInfo.cDataType = 0;
       i = j;
@@ -114,69 +111,82 @@ public class LebaPluginInfo
         i = paramGetResourceRespInfo.simple_mode.get();
       }
       localLebaPluginInfo.showInSimpleMode = i;
+      if (!paramGetResourceRespInfo.grid_icon_url.has()) {
+        break label430;
+      }
+    }
+    label385:
+    label392:
+    label399:
+    label406:
+    label411:
+    label418:
+    label423:
+    label430:
+    for (String str = paramGetResourceRespInfo.grid_icon_url.get();; str = "")
+    {
+      localLebaPluginInfo.strGridIconUrl = str;
       if (QLog.isColorLevel()) {
         QLog.i("ConfigManager", 2, "plugin config xml:" + paramGetResourceRespInfo.res_conf.get());
       }
       return localLebaPluginInfo;
       l = 0L;
       break;
-      label349:
+      label375:
       i = 0;
       break label62;
-      label354:
+      label380:
       i = 0;
       break label86;
-      label359:
       str = "";
       break label111;
-      label366:
       str = "";
       break label137;
-      label373:
       str = "";
       break label163;
-      label380:
       s = -1;
       break label189;
       str = "";
       break label214;
       i = 1;
       break label239;
+      str = "";
+      break label264;
     }
   }
   
-  public static LebaPluginInfo find(atmp paramatmp, long paramLong)
+  public static LebaPluginInfo find(aukn paramaukn, long paramLong)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (paramatmp != null)
+    if (paramaukn != null)
     {
       localObject1 = localObject2;
       if (paramLong > 0L) {
-        localObject1 = (LebaPluginInfo)paramatmp.a(LebaPluginInfo.class, "uiResId=?", new String[] { String.valueOf(paramLong) });
+        localObject1 = (LebaPluginInfo)paramaukn.a(LebaPluginInfo.class, "uiResId=?", new String[] { String.valueOf(paramLong) });
       }
     }
     return localObject1;
   }
   
-  public static List<LebaPluginInfo> getAll(atmp paramatmp)
+  public static List<LebaPluginInfo> getAll(aukn paramaukn)
   {
-    if (paramatmp != null) {}
-    for (paramatmp = paramatmp.a(LebaPluginInfo.class, false, "", null, null, null, null, null);; paramatmp = null)
+    if (paramaukn != null) {}
+    for (paramaukn = paramaukn.a(LebaPluginInfo.class, false, "", null, null, null, null, null);; paramaukn = null)
     {
-      Object localObject = paramatmp;
-      if (paramatmp == null) {
+      Object localObject = paramaukn;
+      if (paramaukn == null) {
         localObject = Collections.EMPTY_LIST;
       }
       return localObject;
     }
   }
   
-  public static void persistOrReplace(atmp paramatmp, LebaPluginInfo paramLebaPluginInfo)
+  public static void persistOrReplace(aukn paramaukn, LebaPluginInfo paramLebaPluginInfo)
   {
-    if ((paramatmp != null) && (paramLebaPluginInfo != null) && (paramLebaPluginInfo.uiResId > 0L))
+    if ((paramaukn != null) && (paramLebaPluginInfo != null) && (paramLebaPluginInfo.uiResId > 0L))
     {
-      LebaPluginInfo localLebaPluginInfo = (LebaPluginInfo)paramatmp.a(LebaPluginInfo.class, "uiResId=?", new String[] { String.valueOf(paramLebaPluginInfo.uiResId) });
+      LebaPluginInfo localLebaPluginInfo = (LebaPluginInfo)paramaukn.a(LebaPluginInfo.class, "uiResId=?", new String[] { String.valueOf(paramLebaPluginInfo.uiResId) });
       if (localLebaPluginInfo != null)
       {
         localLebaPluginInfo.sResSeq = paramLebaPluginInfo.sResSeq;
@@ -189,30 +199,31 @@ public class LebaPluginInfo
         localLebaPluginInfo.resConf = paramLebaPluginInfo.resConf;
         localLebaPluginInfo.cDataType = paramLebaPluginInfo.cDataType;
         localLebaPluginInfo.showInSimpleMode = paramLebaPluginInfo.showInSimpleMode;
-        paramatmp.a(localLebaPluginInfo);
+        localLebaPluginInfo.strGridIconUrl = paramLebaPluginInfo.strGridIconUrl;
+        paramaukn.a(localLebaPluginInfo);
       }
     }
     else
     {
       return;
     }
-    paramatmp.a(paramLebaPluginInfo);
+    paramaukn.a(paramLebaPluginInfo);
   }
   
-  public static void remove(atmp paramatmp, long paramLong)
+  public static void remove(aukn paramaukn, long paramLong)
   {
-    if (paramatmp != null)
+    if (paramaukn != null)
     {
-      LebaPluginInfo localLebaPluginInfo = find(paramatmp, paramLong);
+      LebaPluginInfo localLebaPluginInfo = find(paramaukn, paramLong);
       if (localLebaPluginInfo != null) {
-        paramatmp.b(localLebaPluginInfo);
+        paramaukn.b(localLebaPluginInfo);
       }
     }
   }
   
   public String toString()
   {
-    return "LebaPluginInfo：" + this.uiResId + "|" + this.state + "|" + this.strPkgName + "|" + this.strResName + "|" + this.sResSeq + "|" + this.sResSubType + "|" + this.cCanChangeState + "|" + this.sPriority + "|" + this.showInSimpleMode + "|" + this.strResURL + "|" + this.strGotoUrl;
+    return "LebaPluginInfo：" + this.uiResId + "|" + this.state + "|" + this.strPkgName + "|" + this.strResName + "|" + this.sResSeq + "|" + this.sResSubType + "|" + this.cCanChangeState + "|" + this.sPriority + "|" + this.showInSimpleMode + "|" + this.strResURL + "|" + this.strGotoUrl + "|" + this.strGridIconUrl;
   }
 }
 

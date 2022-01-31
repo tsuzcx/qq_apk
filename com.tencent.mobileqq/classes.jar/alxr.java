@@ -1,59 +1,42 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.confess.BaseMsgListFragment;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-
 public class alxr
-  extends ajjh
 {
-  public alxr(BaseMsgListFragment paramBaseMsgListFragment) {}
+  public int a;
+  public alxs a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
   
-  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
+  public alxr()
   {
-    if ((paramBoolean) && ((paramObject instanceof HashMap))) {}
-    try
-    {
-      paramObject = ((HashMap)paramObject).entrySet().iterator();
-      do
-      {
-        Map.Entry localEntry;
-        do
-        {
-          if (!paramObject.hasNext()) {
-            break;
-          }
-          localEntry = (Map.Entry)paramObject.next();
-        } while (localEntry == null);
-        paramBoolean = this.a.a((String)localEntry.getKey(), 2);
-      } while (!paramBoolean);
-      i = 1;
-    }
-    catch (Throwable paramObject)
-    {
-      for (;;)
-      {
-        int i = 0;
-        continue;
-        i = 0;
-      }
-    }
-    if (i != 0) {
-      this.a.b();
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Boolean = true;
   }
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public String toString()
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a(paramString, 1))) {
-      this.a.b();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("|_DownloadParam_start");
+    localStringBuilder.append("|").append(" type:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|").append(" md5:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("|").append(" endFix:").append(this.c);
+    localStringBuilder.append("|").append(" retryCount:").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("|").append(" needUnzip:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("|").append(" needVerify:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("|").append(" url:").append(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_JavaLangObject != null) {
+      localStringBuilder.append("|").append(" userData:").append(this.jdField_a_of_type_JavaLangObject);
     }
+    localStringBuilder.append("|end");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alxr
  * JD-Core Version:    0.7.0.1
  */

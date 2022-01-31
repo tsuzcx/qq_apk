@@ -1,18 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class adij
-  implements bbjy
+class adij
+  implements aknu
 {
-  public adij(LightVideoItemBuilder paramLightVideoItemBuilder, adik paramadik) {}
+  adij(adii paramadii) {}
   
-  public void a(String paramString)
+  public void a(boolean paramBoolean, List<aewh> paramList)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Adik.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Adik.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Adik.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
+    StringBuilder localStringBuilder = new StringBuilder().append("onGetIceBreakHotPic, success: ").append(paramBoolean).append(" hotPiceList size: ");
+    int i;
+    if (paramList == null)
+    {
+      i = 0;
+      QLog.i("IceBreak.HotPic", 1, i);
+      if (paramBoolean) {
+        break label59;
+      }
     }
+    label59:
+    while (this.a.a == null)
+    {
+      return;
+      i = paramList.size();
+      break;
+    }
+    this.a.a.a(paramList);
   }
 }
 

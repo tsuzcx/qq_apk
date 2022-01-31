@@ -1,27 +1,21 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import android.graphics.Bitmap;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
 
 public class bixc
-  extends Property<PickerContainer, Float>
+  implements biyk
 {
-  public bixc(PickerContainer paramPickerContainer, Class paramClass, String paramString)
+  public bixc(AETemplateInfoFragment paramAETemplateInfoFragment, boolean[] paramArrayOfBoolean, String paramString) {}
+  
+  public void a(int paramInt)
   {
-    super(paramClass, paramString);
+    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
   }
   
-  public Float a(PickerContainer paramPickerContainer)
+  public void a(Bitmap paramBitmap)
   {
-    if (paramPickerContainer != null) {
-      return PickerContainer.a(paramPickerContainer);
-    }
-    return Float.valueOf(1.0F);
-  }
-  
-  public void a(PickerContainer paramPickerContainer, Float paramFloat)
-  {
-    if (paramPickerContainer != null) {
-      PickerContainer.a(paramPickerContainer, paramFloat);
-    }
+    this.jdField_a_of_type_ArrayOfBoolean[0] = true;
+    BitmapUtils.saveBitmap(paramBitmap, this.jdField_a_of_type_JavaLangString);
   }
 }
 

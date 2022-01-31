@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import advj;
-import advk;
-import advv;
+import aegi;
+import aegj;
+import aegu;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.qphone.base.util.QLog;
 
 public class AIOGalleryActivity$AIOGalleryManager$1$5
   implements Runnable
 {
-  public AIOGalleryActivity$AIOGalleryManager$1$5(advk paramadvk, long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3) {}
+  public AIOGalleryActivity$AIOGalleryManager$1$5(aegj paramaegj, long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3) {}
   
   public void run()
   {
-    if (advj.l(this.jdField_a_of_type_Advk.a) != null)
+    if (aegi.l(this.jdField_a_of_type_Aegj.a) != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("IAIOImageProviderCallBack", 2, "[carverW]IAIOImageProviderCallBack.notifyVideoUrl ");
       }
-      ((advv)advj.m(this.jdField_a_of_type_Advk.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.c);
+      ((aegu)aegi.m(this.jdField_a_of_type_Aegj.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.c);
     }
   }
 }

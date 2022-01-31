@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import java.util.Comparator;
+import android.provider.Settings.System;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class acdd
-  implements Comparator<acdf>
+  implements View.OnClickListener
 {
-  private acdd(TroopTransferActivity paramTroopTransferActivity) {}
+  public acdd(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public int a(acdf paramacdf1, acdf paramacdf2)
+  public void onClick(View paramView)
   {
-    return paramacdf1.f.compareToIgnoreCase(paramacdf2.f);
+    this.a.b(2);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.a);
+    if (this.a.a().booleanValue())
+    {
+      paramView = Settings.System.DEFAULT_NOTIFICATION_URI;
+      this.a.b();
+      this.a.a(paramView);
+    }
   }
 }
 

@@ -1,40 +1,56 @@
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.utils.VipUtils;
+import java.util.List;
 
 public class abio
-  extends alow
+  implements View.OnClickListener
 {
-  public abio(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public abio(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    super.a(paramBoolean, paramString);
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    super.a(paramBoolean, paramString, paramInt);
-    if (paramBoolean)
+    int j = 1;
+    int k = VipUtils.a(this.a.app, null);
+    int i;
+    if ((k & 0x2) != 0)
     {
-      BusinessCard localBusinessCard = ((alov)this.a.app.getManager(112)).a(paramString);
-      QLog.i("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo success : cardId = " + paramString);
-      this.a.a(localBusinessCard);
-      this.a.a = localBusinessCard;
+      i = 1;
+      if ((k & 0x4) == 0) {
+        break label92;
+      }
+    }
+    for (;;)
+    {
+      if ((i == 0) && (j == 0)) {
+        break label97;
+      }
+      if (30 != this.a.a.size()) {
+        break label145;
+      }
+      paramView = new bcpw(this.a);
+      paramView.d(2000);
+      paramView.c(2131720324);
+      paramView.a();
+      return;
+      i = 0;
+      break;
+      label92:
+      j = 0;
+    }
+    label97:
+    if (16 == this.a.a.size())
+    {
+      paramView = new bcpw(this.a);
+      paramView.d(2000);
+      paramView.c(2131720323);
+      paramView.a();
       return;
     }
-    QLog.e("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo faild : cardId = " + paramString);
-  }
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    super.b(paramBoolean, paramString);
-  }
-  
-  public void b(boolean paramBoolean, String paramString, int paramInt)
-  {
-    super.b(paramBoolean, paramString, paramInt);
+    label145:
+    GroupManagerActivity.a(this.a, bbcv.a(this.a, 2131693221, 2131693227, null, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
+    GroupManagerActivity.a(this.a, 0);
   }
 }
 

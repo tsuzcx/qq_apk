@@ -1,17 +1,17 @@
 package cooperation.plugin;
 
 import android.content.Context;
-import bfdi;
+import bgkz;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 
 public final class IPluginManager$6
   implements Runnable
 {
-  public IPluginManager$6(Context paramContext, bfdi parambfdi) {}
+  public IPluginManager$6(Context paramContext, bgkz parambgkz) {}
   
   public void run()
   {
-    PluginProxyService.openService(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bfdi.d, this.jdField_a_of_type_Bfdi.b, this.jdField_a_of_type_Bfdi.c, this.jdField_a_of_type_Bfdi.e, this.jdField_a_of_type_Bfdi.a);
+    PluginProxyService.openService(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bgkz.d, this.jdField_a_of_type_Bgkz.b, this.jdField_a_of_type_Bgkz.c, this.jdField_a_of_type_Bgkz.e, this.jdField_a_of_type_Bgkz.a);
   }
 }
 

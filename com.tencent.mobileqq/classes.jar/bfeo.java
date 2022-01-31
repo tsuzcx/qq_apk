@@ -1,14 +1,22 @@
-import android.os.IInterface;
-import cooperation.qappcenter.remote.RecvMsg;
-
-public abstract interface bfeo
-  extends IInterface
+public class bfeo
 {
-  public abstract void a(RecvMsg paramRecvMsg);
+  private float a = 1.4E-45F;
+  
+  public float a()
+  {
+    return this.a;
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (paramFloat > this.a) {
+      this.a = paramFloat;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfeo
  * JD-Core Version:    0.7.0.1
  */

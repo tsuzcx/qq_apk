@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aaxg;
-import aaxh;
-import aaxi;
-import aaxj;
-import aciy;
-import adwz;
-import ajjy;
-import alkl;
+import abhd;
+import abhe;
+import abhf;
+import abhg;
+import actn;
+import aehy;
+import ajyc;
+import alyz;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
@@ -19,14 +19,14 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
-import asrz;
-import atux;
-import awqx;
-import axoa;
-import azyk;
-import babr;
-import bafb;
-import begr;
+import atod;
+import ausv;
+import axqw;
+import ayog;
+import bazo;
+import bbcv;
+import bbgg;
+import bfol;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.Utils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -39,18 +39,18 @@ import java.util.ArrayList;
 
 public class FriendProfilePicBrowserActivity
   extends PicBrowserActivity
-  implements DialogInterface.OnCancelListener, View.OnClickListener, asrz
+  implements DialogInterface.OnCancelListener, View.OnClickListener, atod
 {
   public int a;
   Handler jdField_a_of_type_AndroidOsHandler = new Handler();
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public atux a;
+  public ausv a;
   ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
   
   private File a()
   {
-    PicInfo localPicInfo = this.jdField_a_of_type_Atux.a();
+    PicInfo localPicInfo = this.jdField_a_of_type_Ausv.a();
     if (QLog.isColorLevel()) {
       QLog.d("FriendProfilePicBrowserActivity", 2, "getCurPicPathUrl, curPicInfo=" + localPicInfo);
     }
@@ -60,15 +60,15 @@ public class FriendProfilePicBrowserActivity
     if (!TextUtils.isEmpty(localPicInfo.c)) {
       return new File(localPicInfo.c);
     }
-    return axoa.a(localPicInfo.a);
+    return ayog.a(localPicInfo.a);
   }
   
   private String a()
   {
     int i = -1;
     String str2 = "";
-    if (this.jdField_a_of_type_Atux != null) {
-      i = this.jdField_a_of_type_Atux.a();
+    if (this.jdField_a_of_type_Ausv != null) {
+      i = this.jdField_a_of_type_Ausv.a();
     }
     String str1 = str2;
     if (i >= 0)
@@ -86,7 +86,7 @@ public class FriendProfilePicBrowserActivity
   
   private void a(Bundle paramBundle)
   {
-    Intent localIntent = aciy.a(new Intent(this, SplashActivity.class), null);
+    Intent localIntent = actn.a(new Intent(this, SplashActivity.class), null);
     localIntent.putExtras(new Bundle(paramBundle));
     startActivity(localIntent);
     finish();
@@ -146,7 +146,7 @@ public class FriendProfilePicBrowserActivity
     this.jdField_b_of_type_JavaUtilArrayList = ((Bundle)localObject).getParcelableArrayList("picInfos");
     if (this.jdField_a_of_type_Int == 1)
     {
-      localObject = ((alkl)this.app.getManager(180)).a(this.app.getCurrentAccountUin());
+      localObject = ((alyz)this.app.getManager(180)).a(this.app.getCurrentAccountUin());
       localPicInfo = new PicInfo();
       if (localObject != null)
       {
@@ -182,7 +182,7 @@ public class FriendProfilePicBrowserActivity
     if (localFile == null) {
       return;
     }
-    azyk.a(localFile.getAbsolutePath(), this);
+    bazo.a(localFile.getAbsolutePath(), this);
   }
   
   private void h()
@@ -191,7 +191,7 @@ public class FriendProfilePicBrowserActivity
     if (localFile == null) {
       return;
     }
-    azyk.a(localFile.getAbsolutePath(), this.app, this);
+    bazo.a(localFile.getAbsolutePath(), this.app, this);
   }
   
   private void i()
@@ -200,7 +200,7 @@ public class FriendProfilePicBrowserActivity
     if (localFile == null) {
       return;
     }
-    azyk.b(localFile.getAbsolutePath(), this.app, this);
+    bazo.b(localFile.getAbsolutePath(), this.app, this);
   }
   
   private void j()
@@ -213,7 +213,7 @@ public class FriendProfilePicBrowserActivity
       }
       return;
     }
-    adwz.a(this, localFile, Utils.Crc64String(localFile.getAbsolutePath()));
+    aehy.a(this, localFile, Utils.Crc64String(localFile.getAbsolutePath()));
   }
   
   private void k()
@@ -221,12 +221,12 @@ public class FriendProfilePicBrowserActivity
     if (QLog.isColorLevel()) {
       QLog.d("FriendProfilePicBrowserActivity", 2, "deletePic");
     }
-    bafb localbafb = babr.a(this, 0);
-    localbafb.setMessage(getString(2131625914)).setCancelable(true);
-    localbafb.setNegativeButton(2131625035, new aaxh(this, localbafb));
-    localbafb.setPositiveButton(2131625014, new aaxi(this, localbafb));
+    bbgg localbbgg = bbcv.a(this, 0);
+    localbbgg.setMessage(getString(2131691490)).setCancelable(true);
+    localbbgg.setNegativeButton(2131690596, new abhe(this, localbbgg));
+    localbbgg.setPositiveButton(2131690575, new abhf(this, localbbgg));
     if (!isFinishing()) {
-      localbafb.show();
+      localbbgg.show();
     }
   }
   
@@ -240,14 +240,14 @@ public class FriendProfilePicBrowserActivity
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Atux != null) && (this.jdField_a_of_type_Atux.a() == paramInt1)) {
+    if ((this.jdField_a_of_type_Ausv != null) && (this.jdField_a_of_type_Ausv.a() == paramInt1)) {
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
     }
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Atux != null) && (this.jdField_a_of_type_Atux.a() == paramInt)) {
+    if ((this.jdField_a_of_type_Ausv != null) && (this.jdField_a_of_type_Ausv.a() == paramInt)) {
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
     }
   }
@@ -266,26 +266,26 @@ public class FriendProfilePicBrowserActivity
   
   public void c()
   {
-    boolean bool = this.jdField_a_of_type_Atux.f();
+    boolean bool = this.jdField_a_of_type_Ausv.f();
     if (QLog.isColorLevel()) {
       QLog.d("FriendProfilePicBrowserActivity", 2, "showActionSheet, ,forbid=" + bool);
     }
     if (bool) {
       return;
     }
-    begr localbegr = begr.a(this, false);
-    localbegr.b(2131627742);
-    localbegr.b(2131627271);
-    localbegr.c(ajjy.a(2131639135));
-    localbegr.b(2131627267);
+    bfol localbfol = bfol.a(this, false);
+    localbfol.b(2131693383);
+    localbfol.b(2131692909);
+    localbfol.c(ajyc.a(2131704920));
+    localbfol.b(2131692905);
     if (this.jdField_a_of_type_Int == 2) {
-      localbegr.a(ajjy.a(2131639094), 3);
+      localbfol.a(ajyc.a(2131704879), 3);
     }
-    localbegr.d(ajjy.a(2131639136));
-    localbegr.a(new aaxg(this, localbegr));
-    localbegr.show();
-    awqx.b(this.app, "dc00898", "", "", "0X8007C13", "0X8007C13", 0, 0, "", "", "", "");
-    awqx.b(this.app, "dc00898", "", "", "0X800A8C9", "0X800A8C9", 0, 0, "1", "", "", "");
+    localbfol.d(ajyc.a(2131704921));
+    localbfol.a(new abhd(this, localbfol));
+    localbfol.show();
+    axqw.b(this.app, "dc00898", "", "", "0X8007C13", "0X8007C13", 0, 0, "", "", "", "");
+    axqw.b(this.app, "dc00898", "", "", "0X800A8C9", "0X800A8C9", 0, 0, "1", "", "", "");
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -310,17 +310,17 @@ public class FriendProfilePicBrowserActivity
       return false;
     }
     getWindow().setFlags(1024, 1024);
-    this.jdField_a_of_type_Xgz = new aaxj(this);
+    this.jdField_a_of_type_Xpz = new abhg(this);
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131310191));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131375958));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131301291));
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajjy.a(2131639140));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366902));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajyc.a(2131704925));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
-    this.jdField_a_of_type_Atux.a(false);
+    this.jdField_a_of_type_Ausv.a(false);
     if (this.jdField_a_of_type_Int == 1)
     {
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
@@ -328,7 +328,7 @@ public class FriendProfilePicBrowserActivity
         break label287;
       }
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      this.jdField_a_of_type_Atux.a(true);
+      this.jdField_a_of_type_Ausv.a(true);
     }
     label287:
     for (int i = 1;; i = 0)
@@ -337,7 +337,7 @@ public class FriendProfilePicBrowserActivity
       if (i != 0)
       {
         paramBundle = "1";
-        awqx.b(localQQAppInterface, "dc00898", "", "", "0X8007103", "0X8007103", 0, 0, paramBundle, "", "", "");
+        axqw.b(localQQAppInterface, "dc00898", "", "", "0X8007103", "0X8007103", 0, 0, paramBundle, "", "", "");
       }
       for (;;)
       {
@@ -345,7 +345,7 @@ public class FriendProfilePicBrowserActivity
         paramBundle = "0";
         break;
         if (this.jdField_a_of_type_Int == 2) {
-          awqx.b(this.app, "dc00898", "", "", "0X8007C11", "0X8007C11", 0, 0, "", "", "", "");
+          axqw.b(this.app, "dc00898", "", "", "0X8007C11", "0X8007C11", 0, 0, "", "", "", "");
         }
       }
     }
@@ -354,8 +354,8 @@ public class FriendProfilePicBrowserActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Atux != null) {
-      this.jdField_a_of_type_Atux.u();
+    if (this.jdField_a_of_type_Ausv != null) {
+      this.jdField_a_of_type_Ausv.u();
     }
   }
   
@@ -387,12 +387,12 @@ public class FriendProfilePicBrowserActivity
     {
     default: 
       return;
-    case 2131310191: 
+    case 2131375958: 
       paramView = getIntent();
       paramView.putExtra("setHead_fileid", a());
       setResult(-1, paramView);
       finish();
-      awqx.b(this.app, "dc00898", "", "", "0X8007C12", "0X8007C12", 0, 0, "", "", "", "");
+      axqw.b(this.app, "dc00898", "", "", "0X8007C12", "0X8007C12", 0, 0, "", "", "", "");
       return;
     }
     c();

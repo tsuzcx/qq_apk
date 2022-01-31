@@ -1,8 +1,8 @@
-import android.graphics.Bitmap;
-
-public abstract interface bivb
+public class bivb
 {
-  public abstract void a(String paramString1, int paramInt, String paramString2, Bitmap paramBitmap);
+  public String a = "";
+  public String b = "";
+  public String c = "";
 }
 
 

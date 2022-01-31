@@ -1,20 +1,23 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.DiscoverTab;
 
-class bhel
-  extends bhfa
+public final class bhel
+  implements Parcelable.Creator<DiscoverTab>
 {
-  bhel(bhek parambhek, Activity paramActivity, Intent paramIntent) {}
-  
-  public void a()
+  public DiscoverTab a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, this.jdField_a_of_type_AndroidContentIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    return new DiscoverTab(paramParcel);
+  }
+  
+  public DiscoverTab[] a(int paramInt)
+  {
+    return new DiscoverTab[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhel
  * JD-Core Version:    0.7.0.1
  */

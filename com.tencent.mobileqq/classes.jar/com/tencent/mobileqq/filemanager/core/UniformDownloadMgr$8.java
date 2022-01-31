@@ -2,14 +2,14 @@ package com.tencent.mobileqq.filemanager.core;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import aome;
-import apei;
-import apek;
+import apcy;
+import apwc;
+import apwe;
 
 public class UniformDownloadMgr$8
   implements Runnable
 {
-  public UniformDownloadMgr$8(aome paramaome, Bundle paramBundle, String paramString) {}
+  public UniformDownloadMgr$8(apcy paramapcy, Bundle paramBundle, String paramString) {}
   
   public void run()
   {
@@ -17,15 +17,15 @@ public class UniformDownloadMgr$8
     long l = this.jdField_a_of_type_AndroidOsBundle.getLong("_filesize_from_dlg");
     if ((TextUtils.isEmpty((CharSequence)localObject)) || (0L == l) || (-1L == l))
     {
-      localObject = apei.a(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidOsBundle.putLong("_filesize_from_dlg", ((apek)localObject).jdField_a_of_type_Long);
-      if (TextUtils.isEmpty(((apek)localObject).jdField_a_of_type_JavaLangString)) {
-        ((apek)localObject).jdField_a_of_type_JavaLangString = "nofilename.x";
+      localObject = apwc.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidOsBundle.putLong("_filesize_from_dlg", ((apwe)localObject).jdField_a_of_type_Long);
+      if (TextUtils.isEmpty(((apwe)localObject).jdField_a_of_type_JavaLangString)) {
+        ((apwe)localObject).jdField_a_of_type_JavaLangString = "nofilename.x";
       }
-      this.jdField_a_of_type_AndroidOsBundle.putString("_filename_from_dlg", ((apek)localObject).jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidOsBundle.putString("_filename_from_dlg", ((apwe)localObject).jdField_a_of_type_JavaLangString);
     }
-    aome.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    aome.b(this.this$0);
+    apcy.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    apcy.b(this.this$0);
   }
 }
 

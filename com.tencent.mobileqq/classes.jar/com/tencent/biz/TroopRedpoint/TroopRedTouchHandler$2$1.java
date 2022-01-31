@@ -1,21 +1,21 @@
 package com.tencent.biz.TroopRedpoint;
 
 import android.os.Bundle;
-import axfs;
+import ayfv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import mmr;
-import mms;
-import mmy;
+import mxq;
+import mxr;
+import mxx;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
 public class TroopRedTouchHandler$2$1
   implements Runnable
 {
-  public TroopRedTouchHandler$2$1(mms parammms, boolean paramBoolean, Bundle paramBundle) {}
+  public TroopRedTouchHandler$2$1(mxr parammxr, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
@@ -28,14 +28,14 @@ public class TroopRedTouchHandler$2$1
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidOsBundle != null))
     {
       localObject = this.jdField_a_of_type_AndroidOsBundle.getByteArray("data");
-      if ((!this.jdField_a_of_type_Mms.jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(46))) || (!axfs.a(this.jdField_a_of_type_Mms.jdField_a_of_type_Mmr.app))) {
+      if ((!this.jdField_a_of_type_Mxr.jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(46))) || (!ayfv.a(this.jdField_a_of_type_Mxr.jdField_a_of_type_Mxq.app))) {
         break label309;
       }
       j = 1;
       if (j == 0) {
         break label345;
       }
-      oidb_0x791.RedDotInfo localRedDotInfo = ((mmy)this.jdField_a_of_type_Mms.jdField_a_of_type_Mmr.app.getManager(70)).a(46, false);
+      oidb_0x791.RedDotInfo localRedDotInfo = ((mxx)this.jdField_a_of_type_Mxr.jdField_a_of_type_Mxq.app.getManager(70)).a(46, false);
       if ((localRedDotInfo == null) || (!localRedDotInfo.uint32_last_time.has())) {
         break label314;
       }
@@ -44,20 +44,20 @@ public class TroopRedTouchHandler$2$1
     for (;;)
     {
       label151:
-      if ((localObject != null) && (mmr.a(this.jdField_a_of_type_Mms.jdField_a_of_type_Mmr.app, new ArrayList(this.jdField_a_of_type_Mms.jdField_a_of_type_JavaUtilList), (byte[])localObject)))
+      if ((localObject != null) && (mxq.a(this.jdField_a_of_type_Mxr.jdField_a_of_type_Mxq.app, new ArrayList(this.jdField_a_of_type_Mxr.jdField_a_of_type_JavaUtilList), (byte[])localObject)))
       {
-        this.jdField_a_of_type_Mms.jdField_a_of_type_Mmr.a = 1;
+        this.jdField_a_of_type_Mxr.jdField_a_of_type_Mxq.a = 1;
         if (QLog.isColorLevel()) {
           QLog.i("storyRedDotDebug", 2, "getRedPointAsync");
         }
-        this.jdField_a_of_type_Mms.jdField_a_of_type_Mmr.notifyUI(105, true, null);
+        this.jdField_a_of_type_Mxr.jdField_a_of_type_Mxq.notifyUI(105, true, null);
         if (j != 0)
         {
-          localObject = ((mmy)this.jdField_a_of_type_Mms.jdField_a_of_type_Mmr.app.getManager(70)).a(46, false);
+          localObject = ((mxx)this.jdField_a_of_type_Mxr.jdField_a_of_type_Mxq.app.getManager(70)).a(46, false);
           if ((localObject != null) && (QLog.isColorLevel())) {
-            QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, "getRedPointInfoAsync enableTencentDocsAssistant:" + mmy.a((oidb_0x791.RedDotInfo)localObject));
+            QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, "getRedPointInfoAsync enableTencentDocsAssistant:" + mxx.a((oidb_0x791.RedDotInfo)localObject));
           }
-          mmr.a(this.jdField_a_of_type_Mms.jdField_a_of_type_Mmr.app, (oidb_0x791.RedDotInfo)localObject, i, false);
+          mxq.a(this.jdField_a_of_type_Mxr.jdField_a_of_type_Mxq.app, (oidb_0x791.RedDotInfo)localObject, i, false);
         }
       }
       label309:
@@ -69,7 +69,7 @@ public class TroopRedTouchHandler$2$1
         break;
         i = 0;
         break label151;
-        this.jdField_a_of_type_Mms.jdField_a_of_type_Mmr.a = 2;
+        this.jdField_a_of_type_Mxr.jdField_a_of_type_Mxq.a = 2;
       } while (!QLog.isColorLevel());
       QLog.e("TroopRedTouchHandler", 2, "getRedPointInfo success data is null");
       return;

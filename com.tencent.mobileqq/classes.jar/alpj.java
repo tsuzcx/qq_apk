@@ -1,21 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-
-public class alpj
-  implements View.OnClickListener
+class alpj
+  implements wtk
 {
-  public alpj(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  alpj(alpf paramalpf, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    paramView = (alpm)paramView.getTag();
-    this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.b, paramView.jdField_a_of_type_Boolean);
+    alpf localalpf = this.jdField_a_of_type_Alpf;
+    long l = this.jdField_a_of_type_Long;
+    if (paramBoolean1) {}
+    for (int i = 1;; i = 0)
+    {
+      localalpf.a(l, paramBoolean1, paramString, i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alpj
  * JD-Core Version:    0.7.0.1
  */

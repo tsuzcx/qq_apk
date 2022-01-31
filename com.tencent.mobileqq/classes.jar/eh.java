@@ -1,23 +1,16 @@
-import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.dataline.activities.PrinterDefaultActivity;
 
 public class eh
+  implements View.OnClickListener
 {
-  public GridView a;
-  public LinearLayout a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public LinearLayout b;
-  public TextView b;
-  public TextView c;
+  public eh(PrinterDefaultActivity paramPrinterDefaultActivity) {}
   
-  public eh(ed paramed) {}
+  public void onClick(View paramView)
+  {
+    this.a.finish();
+  }
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.pic;
 
-import atpn;
-import atpv;
+import aunl;
+import aunt;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -19,7 +19,7 @@ class PicPreDownloader$5
     {
       int j;
       int i;
-      atpv localatpv;
+      aunt localaunt;
       synchronized (this.this$0.jdField_a_of_type_JavaUtilList)
       {
         Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
@@ -28,27 +28,27 @@ class PicPreDownloader$5
         if (!localIterator.hasNext()) {
           break label310;
         }
-        localatpv = (atpv)localIterator.next();
-        switch (localatpv.f)
+        localaunt = (aunt)localIterator.next();
+        switch (localaunt.f)
         {
         case 4: 
           k += 1;
-          localatpv.e = localatpv.f;
-          this.this$0.jdField_a_of_type_JavaUtilMap.put(localatpv.a.g, Integer.valueOf(localatpv.e));
-          this.this$0.d.add(0, localatpv);
-          localatpv.e = localatpv.f;
-          this.this$0.jdField_a_of_type_JavaUtilMap.put(localatpv.a.g, Integer.valueOf(localatpv.e));
+          localaunt.e = localaunt.f;
+          this.this$0.jdField_a_of_type_JavaUtilMap.put(localaunt.a.g, Integer.valueOf(localaunt.e));
+          this.this$0.d.add(0, localaunt);
+          localaunt.e = localaunt.f;
+          this.this$0.jdField_a_of_type_JavaUtilMap.put(localaunt.a.g, Integer.valueOf(localaunt.e));
         }
       }
       i += 1;
-      localatpv.e = localatpv.f;
-      this.this$0.jdField_a_of_type_JavaUtilMap.put(localatpv.a.g, Integer.valueOf(localatpv.e));
-      this.this$0.b.add(0, localatpv);
+      localaunt.e = localaunt.f;
+      this.this$0.jdField_a_of_type_JavaUtilMap.put(localaunt.a.g, Integer.valueOf(localaunt.e));
+      this.this$0.b.add(0, localaunt);
       continue;
       j += 1;
-      localatpv.e = localatpv.f;
-      this.this$0.jdField_a_of_type_JavaUtilMap.put(localatpv.a.g, Integer.valueOf(localatpv.e));
-      this.this$0.c.add(0, localatpv);
+      localaunt.e = localaunt.f;
+      this.this$0.jdField_a_of_type_JavaUtilMap.put(localaunt.a.g, Integer.valueOf(localaunt.e));
+      this.this$0.c.add(0, localaunt);
       continue;
       label310:
       this.this$0.jdField_a_of_type_JavaUtilList.clear();

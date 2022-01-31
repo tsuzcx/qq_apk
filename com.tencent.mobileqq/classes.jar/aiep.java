@@ -1,47 +1,19 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aiep
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  aiep(aieo paramaieo, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  aiep(aien paramaien) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMessage.what == aieo.a(this.a))
-    {
-      QLog.d(aieo.a(this.a), 4, "Receive Message!");
-      this.a.a();
-    }
-    for (;;)
-    {
-      try
-      {
-        awqx.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 1, "", "", "", "");
-        return;
-      }
-      catch (Exception paramMessage) {}
-      if (paramMessage.what == aieo.b(this.a))
-      {
-        QLog.d(aieo.a(this.a), 4, "Receive Message!");
-        try
-        {
-          awqx.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 0, "", "", "", "");
-          return;
-        }
-        catch (Exception paramMessage) {}
-      }
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aiep
  * JD-Core Version:    0.7.0.1
  */

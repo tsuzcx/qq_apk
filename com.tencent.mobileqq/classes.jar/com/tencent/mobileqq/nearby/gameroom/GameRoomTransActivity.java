@@ -4,13 +4,13 @@ import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import ashl;
-import ashm;
-import ashn;
-import ashq;
-import ashr;
-import bafb;
-import bbfc;
+import atdp;
+import atdq;
+import atdr;
+import atdu;
+import atdv;
+import bbgg;
+import bcic;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -18,12 +18,12 @@ public class GameRoomTransActivity
   extends BaseActivity
 {
   public DialogInterface.OnDismissListener a;
-  public bafb a;
+  public bbgg a;
   
   public GameRoomTransActivity()
   {
-    this.jdField_a_of_type_Bafb = null;
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new ashq(this);
+    this.jdField_a_of_type_Bbgg = null;
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new atdu(this);
   }
   
   public void a()
@@ -53,7 +53,7 @@ public class GameRoomTransActivity
     {
       i = getIntent().getIntExtra("roomNum", 10);
       int j = getIntent().getIntExtra("zoneId", 0);
-      ((bbfc)this.app.a(107)).b(i, j, new ashm(this, i));
+      ((bcic)this.app.a(107)).b(i, j, new atdq(this, i));
       return;
     }
     catch (Exception localException)
@@ -69,7 +69,7 @@ public class GameRoomTransActivity
   {
     String str = getIntent().getStringExtra("inviteId");
     int i = getIntent().getIntExtra("roomNum", 10);
-    ((bbfc)this.app.a(107)).a(str, true, new ashn(this, str, i));
+    ((bcic)this.app.a(107)).a(str, true, new atdr(this, str, i));
   }
   
   protected void d()
@@ -77,7 +77,7 @@ public class GameRoomTransActivity
     int i = getIntent().getIntExtra("roomNum", 10);
     int j = getIntent().getIntExtra("zoneId", 0);
     long l = getIntent().getLongExtra("gc", -1L);
-    ((bbfc)this.app.a(107)).a(new ashr(this, l, i, j));
+    ((bcic)this.app.a(107)).a(new atdv(this, l, i, j));
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -88,7 +88,7 @@ public class GameRoomTransActivity
     {
       if (checkSelfPermission("android.permission.RECORD_AUDIO") != 0)
       {
-        requestPermissions(new ashl(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
+        requestPermissions(new atdp(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
         return true;
       }
       a();

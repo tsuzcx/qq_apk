@@ -1,56 +1,24 @@
-import android.support.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class tkx
-  implements tjp
+  extends ssk
 {
+  public final int a;
   public final String a;
-  public final List<String> a;
-  private tjq jdField_a_of_type_Tjq;
-  private tjt jdField_a_of_type_Tjt;
-  private tjv jdField_a_of_type_Tjv;
+  public final String b;
   
-  public tkx(String paramString)
+  public tkx(tkw paramtkw, ErrorMessage paramErrorMessage, String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(paramString);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Tjq = new tjq();
-    this.jdField_a_of_type_Tjq.b = true;
-    this.jdField_a_of_type_Tjq.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Tjq.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Tjt = new tjt(new tjs("TROOP_GROUD_ID"));
-    this.jdField_a_of_type_Tjt.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Tjt.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-    this.jdField_a_of_type_Tjt.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_JavaLangString, "TROOP_FEED_ID");
-    this.jdField_a_of_type_Tjq.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Tjt);
-    this.jdField_a_of_type_Tjv = new tjv(new tjs("TROOP_GROUD_ID"), this.jdField_a_of_type_JavaLangString, "TROOP_FEED_ID");
-    this.jdField_a_of_type_Tjv.jdField_a_of_type_Tjt = this.jdField_a_of_type_Tjt;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public tjq a(@Nullable tjs paramtjs, int paramInt)
+  public String toString()
   {
-    return this.jdField_a_of_type_Tjq;
+    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.jdField_a_of_type_Int + "} " + super.toString();
   }
-  
-  public tjv a()
-  {
-    return this.jdField_a_of_type_Tjv;
-  }
-  
-  public void a() {}
-  
-  public void a(@Nullable tjs paramtjs, int paramInt1, int paramInt2, String paramString) {}
-  
-  public void a(@Nullable tjs paramtjs, String paramString) {}
-  
-  public void a(tju paramtju) {}
-  
-  public void b() {}
-  
-  public void b(tju paramtju) {}
 }
 
 

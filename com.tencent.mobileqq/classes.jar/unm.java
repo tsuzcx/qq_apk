@@ -1,12 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
 
-class unm
-  implements DialogInterface.OnDismissListener
+public class unm
+  implements bfrx
 {
-  unm(unj paramunj) {}
+  public unm(StoryPickerHorizontalListView paramStoryPickerHorizontalListView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void onScrollStateChanged(int paramInt)
+  {
+    if ((paramInt == 4097) && (this.a.jdField_a_of_type_Unp != null)) {
+      this.a.jdField_a_of_type_Unp.a(this.a.jdField_a_of_type_Unj.a);
+    }
+  }
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ark;
 
-import alcv;
-import alcy;
-import alcz;
-import aldm;
-import ambf;
-import ambr;
+import alrj;
+import alrm;
+import alrn;
+import alsa;
+import amrd;
+import amrp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.lang.ref.WeakReference;
@@ -17,29 +17,29 @@ import java.util.Set;
 public class ArkAiDictUpdateMgr$1
   implements Runnable
 {
-  public ArkAiDictUpdateMgr$1(alcy paramalcy) {}
+  public ArkAiDictUpdateMgr$1(alrm paramalrm) {}
   
   public void run()
   {
-    if ((QQAppInterface)alcy.a(this.this$0).get() == null) {
+    if ((QQAppInterface)alrm.a(this.this$0).get() == null) {
       ArkAppCenter.c("ArkApp.Dict.Update", "updateLocalDict, qq app is NULL, return");
     }
     for (;;)
     {
       return;
-      ambf localambf1 = alcy.a();
-      Object localObject2 = alcy.a(localambf1);
-      ambf localambf3 = alcy.b();
+      amrd localamrd1 = alrm.a();
+      Object localObject2 = alrm.a(localamrd1);
+      amrd localamrd3 = alrm.b();
       Object localObject1 = new ArrayList();
       Object localObject3 = ((Map)localObject2).keySet().iterator();
       while (((Iterator)localObject3).hasNext())
       {
         String str = (String)((Iterator)localObject3).next();
-        ambr localambr = (ambr)((Map)localObject2).get(str);
-        if (!alcy.a(this.this$0, localambr))
+        amrp localamrp = (amrp)((Map)localObject2).get(str);
+        if (!alrm.a(this.this$0, localamrp))
         {
           ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateLocalDict, local dict is not integrity, update, id=%s", new Object[] { str }));
-          ((ArrayList)localObject1).add(localambr);
+          ((ArrayList)localObject1).add(localamrp);
         }
         else
         {
@@ -48,29 +48,29 @@ public class ArkAiDictUpdateMgr$1
       }
       if (((ArrayList)localObject1).isEmpty())
       {
-        alcy.a(localambf1);
-        alcv.b((AppInterface)alcy.a(this.this$0).get());
+        alrm.a(localamrd1);
+        alrj.b((AppInterface)alrm.a(this.this$0).get());
         return;
       }
       try
       {
-        if (alcy.a(this.this$0))
+        if (alrm.a(this.this$0))
         {
           ArkAppCenter.c("ArkApp.Dict.Update", "updateLocalDict, update in progress, wait current task complete");
-          alcy.a(this.this$0, true);
+          alrm.a(this.this$0, true);
           return;
         }
       }
       finally {}
-      alcy.b(this.this$0, true);
-      localObject2 = new aldm(null);
-      ((aldm)localObject2).jdField_a_of_type_Boolean = true;
-      ((aldm)localObject2).jdField_a_of_type_Int = ((ArrayList)localObject1).size();
+      alrm.b(this.this$0, true);
+      localObject2 = new alsa(null);
+      ((alsa)localObject2).jdField_a_of_type_Boolean = true;
+      ((alsa)localObject2).jdField_a_of_type_Int = ((ArrayList)localObject1).size();
       localObject1 = ((ArrayList)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject3 = (ambr)((Iterator)localObject1).next();
-        alcy.a(this.this$0, localambf3, (ambr)localObject3, new alcz(this, (ambr)localObject3, (aldm)localObject2, localambf2));
+        localObject3 = (amrp)((Iterator)localObject1).next();
+        alrm.a(this.this$0, localamrd3, (amrp)localObject3, new alrn(this, (amrp)localObject3, (alsa)localObject2, localamrd2));
       }
     }
   }

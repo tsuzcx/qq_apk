@@ -1,31 +1,20 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
-import com.tencent.mobileqq.mini.sdk.MiniAppController.ActivityResultListener;
-import java.io.File;
+import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
+import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
+import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
 
 class VideoJsPlugin$9
-  implements MiniAppController.ActivityResultListener
+  implements Runnable
 {
-  VideoJsPlugin$9(VideoJsPlugin paramVideoJsPlugin, File paramFile, boolean paramBoolean) {}
+  VideoJsPlugin$9(VideoJsPlugin paramVideoJsPlugin, AppBrandRuntime paramAppBrandRuntime) {}
   
-  @SuppressLint({"NewApi"})
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void run()
   {
-    if (paramInt1 != 2) {
-      return false;
+    AbsAppBrandPage localAbsAppBrandPage = this.val$runtime.pageContainer.getCurrentPage();
+    if (localAbsAppBrandPage.hasToastView()) {
+      localAbsAppBrandPage.hideToastView();
     }
-    if (paramInt2 != -1)
-    {
-      this.val$videoFile.deleteOnExit();
-      VideoJsPlugin.access$400(this.this$0, VideoJsPlugin.access$300(this.this$0), "chooseVideo", null);
-      return true;
-    }
-    VideoJsPlugin.access$1300(this.this$0, this.val$videoFile, this.val$compress);
-    MiniAppController.getInstance().removeActivityResultListener(this);
-    return true;
   }
 }
 

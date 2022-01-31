@@ -1,10 +1,8 @@
-import com.tencent.mobileqq.data.MessageRecord;
-
-public abstract interface bjiv
+public class bjiv
 {
-  public abstract MessageRecord a(bjiy parambjiy);
-  
-  public abstract MessageRecord a(bjjg parambjjg);
+  public int a;
+  public int b;
+  public int c;
 }
 
 

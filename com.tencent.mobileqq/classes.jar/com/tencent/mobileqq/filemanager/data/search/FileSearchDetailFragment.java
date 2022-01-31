@@ -7,66 +7,66 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import aooj;
-import aool;
-import avkj;
-import azwg;
+import apfe;
+import apfg;
+import awkc;
+import baxk;
 import com.tencent.widget.ListView;
 import java.util.List;
 
 public class FileSearchDetailFragment
   extends Fragment
 {
-  private static aooj b;
+  private static apfe b;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  aooj jdField_a_of_type_Aooj;
-  avkj jdField_a_of_type_Avkj;
-  public azwg a;
+  apfe jdField_a_of_type_Apfe;
+  awkc jdField_a_of_type_Awkc;
+  public baxk a;
   ListView jdField_a_of_type_ComTencentWidgetListView;
   String jdField_a_of_type_JavaLangString;
   
-  public static FileSearchDetailFragment a(String paramString, aooj paramaooj)
+  public static FileSearchDetailFragment a(String paramString, apfe paramapfe)
   {
-    b = paramaooj;
-    paramaooj = new FileSearchDetailFragment();
+    b = paramapfe;
+    paramapfe = new FileSearchDetailFragment();
     Bundle localBundle = new Bundle();
     localBundle.putString("keyword", paramString);
-    paramaooj.setArguments(localBundle);
-    return paramaooj;
+    paramapfe.setArguments(localBundle);
+    return paramapfe;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Aooj = b;
+    this.jdField_a_of_type_Apfe = b;
     b = null;
     this.jdField_a_of_type_JavaLangString = getArguments().getString("keyword");
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131493641, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131301817));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131303596));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559210, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131367427));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131369266));
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Azwg != null) {
-      this.jdField_a_of_type_Azwg.d();
+    if (this.jdField_a_of_type_Baxk != null) {
+      this.jdField_a_of_type_Baxk.d();
     }
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    paramView = getString(2131626952);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(paramView, new Object[] { Integer.valueOf(this.jdField_a_of_type_Aooj.a.size()), this.jdField_a_of_type_JavaLangString }));
-    this.jdField_a_of_type_Azwg = new azwg(getActivity(), getActivity().app);
-    this.jdField_a_of_type_Avkj = new aool(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Azwg, this.jdField_a_of_type_Aooj, this.jdField_a_of_type_JavaLangString, getActivity().app);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Avkj);
+    paramView = getString(2131692570);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(paramView, new Object[] { Integer.valueOf(this.jdField_a_of_type_Apfe.a.size()), this.jdField_a_of_type_JavaLangString }));
+    this.jdField_a_of_type_Baxk = new baxk(getActivity(), getActivity().app);
+    this.jdField_a_of_type_Awkc = new apfg(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Baxk, this.jdField_a_of_type_Apfe, this.jdField_a_of_type_JavaLangString, getActivity().app);
+    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Awkc);
   }
 }
 

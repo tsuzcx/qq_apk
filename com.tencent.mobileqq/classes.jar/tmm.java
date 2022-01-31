@@ -1,23 +1,49 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedTagInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tmm
-  extends tmo
+  extends syv<tmo>
 {
-  private ElasticImageView a;
+  public List<String> a = new ArrayList();
   
-  public tmm(@NonNull ViewGroup paramViewGroup)
+  public String a()
   {
-    super(paramViewGroup);
+    return "StorySvc.homepage_batch_feeds_label";
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  public syq a(byte[] paramArrayOfByte)
   {
-    this.a = ((ElasticImageView)paramViewGroup.findViewById(2131298717));
-    this.a.setOnClickListener(new tmn(this));
-    return this.a;
+    qqstory_service.RspStoryFeedTagInfo localRspStoryFeedTagInfo = new qqstory_service.RspStoryFeedTagInfo();
+    try
+    {
+      localRspStoryFeedTagInfo.mergeFrom(paramArrayOfByte);
+      return new tmo(localRspStoryFeedTagInfo);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqStoryFeedTagInfo localReqStoryFeedTagInfo = new qqstory_service.ReqStoryFeedTagInfo();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localReqStoryFeedTagInfo.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
+    }
+    return localReqStoryFeedTagInfo.toByteArray();
   }
 }
 

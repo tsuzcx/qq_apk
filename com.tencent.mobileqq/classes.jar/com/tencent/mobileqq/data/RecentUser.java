@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import ahdj;
+import ahpy;
 import android.database.Cursor;
-import atnv;
-import atnw;
-import atnx;
-import atnz;
+import ault;
+import aulu;
+import aulv;
+import aulx;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
@@ -19,28 +19,28 @@ public class RecentUser
   public static final String TABLE_NAME = "recent";
   private static final String TAG = "RecentUser";
   public String displayName;
-  @atnz
+  @aulx
   public Object extraInfo;
-  @atnv(a=0)
+  @ault(a=0)
   public int isHiddenChat;
-  @atnz
+  @aulx
   public int jumpTabMode;
-  @atnw
+  @aulu
   public long lFlag;
-  @atnw
+  @aulu
   public long lastmsgdrafttime;
   public long lastmsgtime;
-  @atnz
+  @aulx
   public Object msg;
   public byte[] msgData;
   public int msgType;
-  @atnw
+  @aulu
   public long opTime;
   public byte[] parceledRecentBaseData;
-  @atnw
+  @aulu
   public long showUpTime;
   public String troopUin;
-  @atnx
+  @aulv
   private int type;
   public String uin;
   
@@ -68,7 +68,7 @@ public class RecentUser
   
   public void doParse()
   {
-    this.msg = ahdj.a(this.msgType, this.msgData);
+    this.msg = ahpy.a(this.msgType, this.msgData);
   }
   
   public boolean entityByCursor(Cursor paramCursor)
@@ -124,7 +124,7 @@ public class RecentUser
   
   public void prewrite()
   {
-    this.msgData = ahdj.a(this.msgType, this.msg);
+    this.msgData = ahpy.a(this.msgType, this.msg);
     super.prewrite();
   }
   
@@ -148,7 +148,7 @@ public class RecentUser
   
   public boolean shouldShowInRecentList()
   {
-    return (this.msgType == 23) || (this.msgType == 17) || (this.msgType == 16) || (this.msgType == 10) || (this.msgType == 5) || (this.msgType == 13) || (this.msgType == 26) || (this.msgType == 7) || (this.msgType == 8) || (this.msgType == 18) || (this.msgType == 22) || (this.msgType == 21) || (this.msgType == 2) || (this.msgType == 3) || (this.msgType == 11) || (this.msgType == 28) || (this.msgType == 4) || (this.msgType == 19) || (this.msgType == 14) || (this.msgType == 1) || (this.msgType == 9) || (this.msgType == 12) || (this.msgType == 6) || (this.msgType == 20);
+    return (this.msgType == 24) || (this.msgType == 17) || (this.msgType == 16) || (this.msgType == 10) || (this.msgType == 5) || (this.msgType == 13) || (this.msgType == 27) || (this.msgType == 7) || (this.msgType == 8) || (this.msgType == 18) || (this.msgType == 22) || (this.msgType == 21) || (this.msgType == 2) || (this.msgType == 3) || (this.msgType == 11) || (this.msgType == 29) || (this.msgType == 4) || (this.msgType == 19) || (this.msgType == 14) || (this.msgType == 1) || (this.msgType == 9) || (this.msgType == 12) || (this.msgType == 6) || (this.msgType == 20) || (this.msgType == 23);
   }
 }
 

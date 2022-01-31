@@ -2,24 +2,24 @@ package com.tencent.mobileqq.nearby.now;
 
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import ascz;
-import asmr;
-import awrb;
+import aszd;
+import ativ;
+import axra;
 
 class SmallVideoFragment$4
   implements Runnable
 {
-  SmallVideoFragment$4(SmallVideoFragment paramSmallVideoFragment, ascz paramascz) {}
+  SmallVideoFragment$4(SmallVideoFragment paramSmallVideoFragment, aszd paramaszd) {}
   
   public void run()
   {
-    awrb localawrb = new awrb(SmallVideoFragment.a(this.this$0).app).a("dc00899").b("grp_lbs").c("video").d("playpage_fw_suc").e(asmr.d);
+    axra localaxra = new axra(SmallVideoFragment.a(this.this$0).app).a("dc00899").b("grp_lbs").c("video").d("playpage_fw_suc").e(ativ.d);
     int i = this.a.b();
-    String str2 = asmr.a;
-    if (TextUtils.equals(asmr.a, "2")) {}
-    for (String str1 = asmr.c;; str1 = "")
+    String str2 = ativ.a;
+    if (TextUtils.equals(ativ.a, "2")) {}
+    for (String str1 = ativ.c;; str1 = "")
     {
-      localawrb.a(new String[] { "3", String.valueOf(i), str2, str1 }).a();
+      localaxra.a(new String[] { "3", String.valueOf(i), str2, str1 }).a();
       return;
     }
   }

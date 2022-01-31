@@ -1,25 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
-import com.tencent.widget.AdapterView;
-
 public class ayyu
-  implements behi
+  extends ayyy
 {
-  public ayyu(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  public int a;
+  public long a;
+  public byte[] a;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public String toString()
   {
-    if (paramInt < this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.getCount())
-    {
-      paramAdapterView = this.a.jdField_a_of_type_Ayzb.a(paramInt);
-      this.a.a(paramInt, paramAdapterView);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" size:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(" storeType:");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayyu
  * JD-Core Version:    0.7.0.1
  */

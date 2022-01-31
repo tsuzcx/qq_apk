@@ -1,36 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
 
-final class atty
-  implements axrs
+public class atty
+  implements View.OnClickListener
 {
-  public void a(axsp paramaxsp, axsq paramaxsq)
+  public atty(NearbyProfileFragment paramNearbyProfileFragment, String paramString, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramaxsp == null) || (paramaxsq == null)) {}
-    do
+    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.startActivity(paramView);
+    axra localaxra = new axra(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.app).a("dc00899").b("grp_lbs").c("face_score_vip").d("expert_click");
+    String str1 = "" + (NearbyProfileFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment).gender + 1);
+    String str2 = "" + this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.e == 3) {}
+    for (paramView = "2";; paramView = "1")
     {
-      do
-      {
-        return;
-      } while (!(paramaxsp instanceof axro));
-      paramaxsp = (axro)paramaxsp;
-      paramaxsp.jdField_a_of_type_Long += paramaxsq.c;
-      paramaxsq.c = 0L;
-      paramaxsq = "bytes=" + paramaxsp.jdField_a_of_type_Long + "-";
-      paramaxsp.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaxsq);
-      paramaxsq = paramaxsp.jdField_a_of_type_JavaLangString;
-      if (paramaxsq.contains("range="))
-      {
-        String str = paramaxsq.substring(0, paramaxsq.lastIndexOf("range="));
-        paramaxsp.jdField_a_of_type_JavaLangString = (str + "range=" + paramaxsp.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("PrecoverResDownloader", 2, "IBreakDownFix, " + paramaxsq);
+      localaxra.a(new String[] { "", str1, str2, paramView }).a();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atty
  * JD-Core Version:    0.7.0.1
  */

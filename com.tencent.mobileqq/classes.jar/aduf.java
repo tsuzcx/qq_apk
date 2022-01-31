@@ -1,10 +1,13 @@
+import android.widget.ImageView;
+import android.widget.TextView;
+
 public class aduf
+  extends actr
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public ImageView a;
+  public TextView b;
+  
+  public aduf(adue paramadue) {}
 }
 
 

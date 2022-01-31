@@ -23,7 +23,7 @@ public class VSlider$ScaleTransformer
       do
       {
         return;
-      } while ((VSlider.access$200(this.this$0) != null) && (VSlider.access$200(this.this$0).getCount() == 1));
+      } while ((VSlider.access$200(this.this$0)) || ((VSlider.access$300(this.this$0) != null) && (VSlider.access$300(this.this$0).getCount() == 1)));
       if (paramFloat < 0.0F) {}
       for (f = (1.0F - this.minScale) * paramFloat + 1.0F; paramFloat <= 0.0F; f = (this.minScale - 1.0F) * paramFloat + 1.0F)
       {

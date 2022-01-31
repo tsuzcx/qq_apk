@@ -1,64 +1,34 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class ayfs
-  implements ayca
+class ayfs
+  implements View.OnClickListener
 {
-  public ayfs(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  ayfs(ayfr paramayfr) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    int k = 1;
-    if (this.a.b.getText().length() <= 0) {}
-    for (;;)
+    if ((ayfr.a(this.a) instanceof CustomWebView))
     {
-      return;
-      if (paramInt1 < 0)
+      if (2 == ayfr.a(this.a).c)
       {
-        if (paramInt2 > this.a.G.length() + 1) {}
-        for (;;)
-        {
-          this.a.b.setSelection(paramInt2);
-          return;
-          paramInt2 = this.a.G.length() + 1;
-        }
-      }
-      if (paramInt2 < 0)
-      {
-        if (paramInt1 > this.a.G.length() + 1) {}
-        for (;;)
-        {
-          this.a.b.setSelection(paramInt1);
-          return;
-          paramInt1 = this.a.G.length() + 1;
-        }
-      }
-      if (!TextUtils.isEmpty(this.a.G))
-      {
-        int i = 0;
-        int j = paramInt1;
-        if (paramInt1 < this.a.G.length() + 1)
-        {
-          j = this.a.G.length() + 1;
-          i = 1;
-        }
-        if (paramInt2 < this.a.G.length() + 1) {
-          paramInt2 = this.a.G.length() + 1;
-        }
-        for (paramInt1 = k; paramInt1 != 0; paramInt1 = i)
-        {
-          this.a.b.setSelection(j, paramInt2);
-          return;
-        }
+        ((CustomWebView)ayfr.a(this.a)).callJs("openAdvPermissionsMobile()");
+        this.a.b();
       }
     }
+    else {
+      return;
+    }
+    ((CustomWebView)ayfr.a(this.a)).callJs("openCooperationMobile()");
+    this.a.b();
+    axqw.b(ayfr.a(this.a).app, "dc00898", "", "", "0x8009412", "0x8009412", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayfs
  * JD-Core Version:    0.7.0.1
  */

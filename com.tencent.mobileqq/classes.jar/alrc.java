@@ -1,22 +1,25 @@
-import android.hardware.Camera.ShutterCallback;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.ShutterCallbackForward.1;
+import java.util.ArrayList;
 
-public class alrc
-  implements Camera.ShutterCallback
+class alrc
+  implements admv
 {
-  private final alqs jdField_a_of_type_Alqs;
-  private final alqt jdField_a_of_type_Alqt;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
+  alrc(alra paramalra) {}
   
-  public void onShutter()
+  public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.ShutterCallbackForward.1(this));
+    boolean bool = ((adlk)alra.a(this.a).get(alra.a(this.a))).checkShare();
+    if (bool != alra.a(this.a))
+    {
+      alra.a(this.a, bool);
+      alra.a(this.a, alra.a(this.a));
+    }
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alrc
  * JD-Core Version:    0.7.0.1
  */

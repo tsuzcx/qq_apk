@@ -1,18 +1,40 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class ahhy
-  implements View.OnLayoutChangeListener
+class ahhy
+  extends BroadcastReceiver
 {
-  public ahhy(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt) {}
+  private ahhy(ahhu paramahhu) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.removeOnLayoutChangeListener(this);
-    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, this.jdField_a_of_type_Int, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.addOnLayoutChangeListener(new ahhz(this));
+    if ("open_video_callback".equals(paramIntent.getAction())) {}
+    try
+    {
+      int i = paramIntent.getIntExtra("retcode", 4);
+      paramContext = paramIntent.getStringExtra("retmsg");
+      int j = paramIntent.getIntExtra("isDownloaded", -1);
+      long l1 = paramIntent.getLongExtra("played_time", 0L);
+      long l2 = paramIntent.getLongExtra("total_time", 0L);
+      paramIntent = new JSONObject();
+      paramIntent.put("retcode", i);
+      paramIntent.put("retmsg", paramContext);
+      paramIntent.put("played_time", l1);
+      paramIntent.put("total_time", l2);
+      if (j != -1) {
+        paramIntent.put("is_downloaded", j);
+      }
+      ahhu.a(this.a, "openVideoPlayer", paramIntent.toString());
+      return;
+    }
+    catch (JSONException paramContext)
+    {
+      QLog.e("springHb_SpringFestivalRedpacketJsPlugin", 1, paramContext, new Object[0]);
+    }
   }
 }
 

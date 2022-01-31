@@ -1,17 +1,25 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
+
 class qzl
-  extends ohe
+  implements Animator.AnimatorListener
 {
-  qzl(qzk paramqzk) {}
+  qzl(qzj paramqzj) {}
   
-  public void a(boolean paramBoolean, long paramLong)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    qzk.a(this.a, paramBoolean, paramLong, qzk.a(this.a));
+    QLog.d("TabBarView", 4, "onAnimationEnd");
+    qzj.b(this.a);
+    this.a.b.clearAnimation();
   }
   
-  public void g(boolean paramBoolean)
-  {
-    qzk.a(this.a, paramBoolean);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

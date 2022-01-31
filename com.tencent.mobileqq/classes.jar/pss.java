@@ -1,27 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class pss
-  implements DialogInterface.OnDismissListener
+class pss
+  implements View.OnClickListener
 {
-  public pss(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  pss(psr parampsr) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (ReadInJoyDeliverUGCActivity.c(this.a))
-    {
-      ReadInJoyDeliverUGCActivity.c(this.a, false);
-      ReadInJoyDeliverUGCActivity.e(this.a);
-      if (!ReadInJoyDeliverUGCActivity.g(this.a)) {
-        ReadInJoyDeliverUGCActivity.g(this.a, 1, this.a.getString(2131652594));
-      }
-      if (ReadInJoyDeliverUGCActivity.a(this.a) != null) {
-        ReadInJoyDeliverUGCActivity.a(this.a).removeCallbacksAndMessages(null);
-      }
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

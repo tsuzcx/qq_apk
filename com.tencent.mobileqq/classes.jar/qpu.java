@@ -1,24 +1,41 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDailyXListView;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
+import java.util.Random;
 
 public class qpu
-  implements qpk
+  extends qpw
 {
-  public qpu(ReadInJoyDailyXListView paramReadInJoyDailyXListView) {}
+  private float i;
   
-  public void a()
+  public qpu(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView)
   {
-    if (ReadInJoyDailyXListView.a(this.a))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDailyXListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", this.a.c + " mNoMoreData : " + this.a.b });
-      }
-      if ((this.a.c == 0) && ((!rvf.a(this.a.d)) || (!this.a.b)))
-      {
-        this.a.a(4);
-        QLog.d("ReadInJoyDailyXListView", 2, "preloadOptimize switch ON, loadingMore()");
-      }
-    }
+    super(paramLikeExplosionView);
+    b();
+  }
+  
+  public qpu(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView, int paramInt)
+  {
+    super(paramLikeExplosionView);
+    double d = Math.toRadians(paramInt);
+    this.e = ((float)Math.cos(d));
+    this.f = ((float)Math.sin(d));
+    a();
+    b();
+  }
+  
+  private void b()
+  {
+    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a).setColor(Color.parseColor("#E6FF4222"));
+    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a).setStyle(Paint.Style.FILL);
+    this.i = (VideoFeedsLikeAnimate.LikeExplosionView.a(this.a).nextFloat() * actn.a(10.0F, this.a.getResources()) + actn.a(4.5F, this.a.getResources()));
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    paramCanvas.drawCircle(this.c, this.d, this.i, VideoFeedsLikeAnimate.LikeExplosionView.a(this.a));
   }
 }
 

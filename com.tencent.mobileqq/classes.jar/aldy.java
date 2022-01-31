@@ -1,15 +1,23 @@
-import com.tencent.ark.open.ArkAppInfo.AppDownloadInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-public class aldy
+public final class aldy
+  implements Parcelable.Creator<ArCloudConfigInfo>
 {
-  public int a;
-  public ArkAppInfo.AppDownloadInfo a;
-  public String a;
-  public int b;
+  public ArCloudConfigInfo a(Parcel paramParcel)
+  {
+    return new ArCloudConfigInfo(paramParcel);
+  }
+  
+  public ArCloudConfigInfo[] a(int paramInt)
+  {
+    return new ArCloudConfigInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aldy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,17 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.QavOperationMenuView;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class lxh
-  implements lrj
+  extends akav
 {
-  public lxh(QavOperationMenuView paramQavOperationMenuView) {}
+  public lxh(QQServiceForAV paramQQServiceForAV) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  protected void a()
   {
-    switch (paramInt1)
-    {
-    case 1: 
-    default: 
-    case 2: 
-      do
-      {
-        return;
-      } while (this.a.a == null);
-      this.a.a.a(paramString, paramInt2, false);
-      return;
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    if (localQQAppInterface != null) {
+      new bgjz(localQQAppInterface).a(new lxi(this));
     }
-    if (this.a.a != null) {
-      this.a.a.a(paramString, paramInt2, true);
-    }
-    mga.c(2131306686);
   }
 }
 

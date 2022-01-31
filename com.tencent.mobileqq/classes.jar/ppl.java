@@ -1,30 +1,26 @@
-import java.net.URL;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSAppLoader.2;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface ppl
+public class ppl
+  extends ppr
 {
-  public abstract int getCommentCount();
+  public ppl(PTSAppLoader.2 param2) {}
   
-  public abstract String getInnerUniqueID();
+  public void loaded(String paramString, int paramInt)
+  {
+    super.loaded(paramString, paramInt);
+    QLog.i("PTSAppLoader", 1, "[updatePTSApp], asyncBack code = " + paramInt + ", param = " + paramString);
+    if ((paramInt == 0) && (paramString == null))
+    {
+      ppk.b(this.a.this$0, this.a.a);
+      QLog.i("PTSAppLoader", 1, "[updatePTSApp], download succeed, bid = " + this.a.a);
+    }
+  }
   
-  public abstract String getShareUrl();
-  
-  public abstract String getSubscribeName();
-  
-  public abstract String getSubscribeUin();
-  
-  public abstract URL getVideoCoverURL();
-  
-  public abstract URL getVideoCoverUrlWithSmartCut(boolean paramBoolean);
-  
-  public abstract URL getVideoCoverWithSmartCut(int paramInt1, int paramInt2);
-  
-  public abstract int getVideoDuration();
-  
-  public abstract int getVideoHeight();
-  
-  public abstract String getVideoVid();
-  
-  public abstract int getVideoWidth();
+  public void progress(int paramInt)
+  {
+    super.progress(paramInt);
+  }
 }
 
 

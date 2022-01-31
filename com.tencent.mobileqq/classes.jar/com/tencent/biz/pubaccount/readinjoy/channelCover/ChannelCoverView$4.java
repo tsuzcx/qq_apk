@@ -5,14 +5,14 @@ import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionD
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.NetworkState;
-import ndn;
-import nhi;
-import nti;
-import obz;
-import odh;
-import ogy;
-import opa;
+import noo;
+import nss;
+import oes;
+import onk;
+import oos;
 import org.json.JSONObject;
+import osj;
+import pab;
 
 public final class ChannelCoverView$4
   implements Runnable
@@ -28,7 +28,7 @@ public final class ChannelCoverView$4
       try
       {
         localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("folder_status", obz.d);
+        ((JSONObject)localObject1).put("folder_status", onk.d);
         if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo != null) {
           ((JSONObject)localObject1).put("channel_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId);
         }
@@ -38,7 +38,7 @@ public final class ChannelCoverView$4
         }
         i = 2;
         ((JSONObject)localObject1).put("network_type", i);
-        if (this.jdField_a_of_type_Int != nti.jdField_a_of_type_Int) {
+        if (this.jdField_a_of_type_Int != oes.jdField_a_of_type_Int) {
           continue;
         }
         ((JSONObject)localObject1).put("channel_type", "2");
@@ -71,16 +71,16 @@ public final class ChannelCoverView$4
         ((JSONObject)localObject1).put("location", this.c + 1);
       }
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo != null) {
-        ((JSONObject)localObject1).put("is_change", odh.a(obz.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId));
+        ((JSONObject)localObject1).put("is_change", oos.a(onk.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId));
       }
-      if (!nhi.a()) {
+      if (!nss.a()) {
         continue;
       }
       i = j;
       ((JSONObject)localObject1).put("style", i);
       if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId == 41695))
       {
-        localObject2 = ogy.a().a();
+        localObject2 = osj.a().a();
         if (localObject2 != null)
         {
           localObject2 = ((SelectPositionModule)localObject2).a();
@@ -95,7 +95,7 @@ public final class ChannelCoverView$4
       }
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo != null)
       {
-        if ((opa.a() != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId) || (opa.a() == 0)) {
+        if ((pab.a() != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId) || (pab.a() == 0)) {
           continue;
         }
         ((JSONObject)localObject1).put("channelid_to_mainfeeds", 1);
@@ -104,11 +104,11 @@ public final class ChannelCoverView$4
       if (QLog.isColorLevel()) {
         QLog.d("ChannelCoverView", 2, "reportRecommendEvent T =" + this.jdField_a_of_type_JavaLangString + "; reportString = " + (String)localObject1);
       }
-      ndn.a(null, "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", (String)localObject1, false);
+      noo.a(null, "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", (String)localObject1, false);
       return;
       i = 1;
       continue;
-      if (this.jdField_a_of_type_Int == nti.b) {
+      if (this.jdField_a_of_type_Int == oes.b) {
         ((JSONObject)localObject1).put("channel_type", "1");
       }
     }

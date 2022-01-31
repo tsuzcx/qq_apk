@@ -1,39 +1,23 @@
-import NS_USER_ACTION_REPORT.UserActionReport;
-import NS_USER_ACTION_REPORT.UserActionReportReq;
-import NS_USER_ACTION_REPORT.UserCommReport;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.TCWDatePicker.SavedState;
 
-public class bfvu
-  extends QzoneExternalRequest
+public final class bfvu
+  implements Parcelable.Creator<TCWDatePicker.SavedState>
 {
-  private final JceStruct a;
-  
-  public bfvu(UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
+  public TCWDatePicker.SavedState a(Parcel paramParcel)
   {
-    this.a = new UserActionReportReq(1, paramUserCommReport, paramArrayList);
-    this.needCompress = false;
+    return new TCWDatePicker.SavedState(paramParcel, null);
   }
   
-  public String getCmdString()
+  public TCWDatePicker.SavedState[] a(int paramInt)
   {
-    return "MobileReport.UserActionReport";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "UserActionReport";
+    return new TCWDatePicker.SavedState[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfvu
  * JD-Core Version:    0.7.0.1
  */

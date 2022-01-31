@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount;
 
-import nes;
+import npt;
 
 public class VideoPlayCountHandler$1
   implements Runnable
 {
-  public VideoPlayCountHandler$1(nes paramnes, String paramString1, String paramString2) {}
+  public VideoPlayCountHandler$1(npt paramnpt, String paramString1, String paramString2) {}
   
   public void run()
   {

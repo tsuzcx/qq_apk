@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.ImageTagInfo;
-
-public final class bfwd
-  implements Parcelable.Creator<ImageTagInfo>
+public class bfwd
 {
-  public ImageTagInfo a(Parcel paramParcel)
-  {
-    return new ImageTagInfo(paramParcel, null);
-  }
+  public static void a() {}
   
-  public ImageTagInfo[] a(int paramInt)
-  {
-    return new ImageTagInfo[paramInt];
-  }
+  public static void a(long paramLong, String paramString, int paramInt) {}
+  
+  public static void a(String paramString) {}
+  
+  public static void b(long paramLong, String paramString, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfwd
  * JD-Core Version:    0.7.0.1
  */

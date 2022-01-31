@@ -12,7 +12,8 @@ public class JSThread
 {
   private static final int MAX_PENDING_VSYNC = 1;
   private static final String TAG = "JSThread";
-  private static long sJSThreadId = -1L;
+  private boolean firstFrame;
+  private long jsThreadId = -1L;
   private Runnable mCallbackMainLoop = new JSThread.1(this);
   private JSThread.IListener mListener;
   private final AtomicInteger mPendingVSyncCount = new AtomicInteger();
@@ -28,14 +29,10 @@ public class JSThread
     setName("JSThread_" + getId());
   }
   
-  public static boolean isJSThread()
-  {
-    return sJSThreadId == Thread.currentThread().getId();
-  }
-  
   @MainThread
   private void startScheduleVSync()
   {
+    this.firstFrame = true;
     Choreographer.getInstance().postFrameCallback(this.mVsyncCallback);
   }
   
@@ -43,6 +40,11 @@ public class JSThread
   private void stopScheduleVSync()
   {
     Choreographer.getInstance().removeFrameCallback(this.mVsyncCallback);
+  }
+  
+  public boolean isJSThread()
+  {
+    return this.jsThreadId == Thread.currentThread().getId();
   }
   
   public void onPause()
@@ -63,7 +65,7 @@ public class JSThread
   
   public void run()
   {
-    sJSThreadId = getId();
+    this.jsThreadId = getId();
     if (this.mListener == null) {
       return;
     }
@@ -77,6 +79,7 @@ public class JSThread
         JNICaller.TTEngine.runLoop(this.mTritonEngine, true);
         bool = this.mQuitThread;
         JNICaller.TTEngine.runLoop(this.mTritonEngine, false);
+        TTLog.i("JSThread", "JSThread runLoop is interrupted loopQuit=" + bool);
       } while (!bool);
     }
     catch (Exception localException)

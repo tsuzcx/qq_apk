@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.widget;
 
 import android.view.View;
-import bbov;
-import bboz;
+import bcrx;
+import bcsb;
 
 public class VoteViewV2$1
   implements Runnable
@@ -13,9 +13,9 @@ public class VoteViewV2$1
   {
     if (VoteViewV2.a(this.this$0))
     {
-      this.this$0.findViewById(2131303235).setVisibility(0);
-      bbov.a(this.this$0);
-      this.this$0.findViewById(2131303235).setOnClickListener(new bboz(this));
+      this.this$0.findViewById(2131368902).setVisibility(0);
+      bcrx.a(this.this$0);
+      this.this$0.findViewById(2131368902).setOnClickListener(new bcsb(this));
     }
   }
 }

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app;
 
-import aeor;
-import ajez;
-import ajfa;
-import ajfb;
-import akhe;
+import aezn;
+import ajtb;
+import ajtc;
+import ajtd;
+import akvq;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.content.ComponentName;
@@ -16,22 +16,23 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import aqrr;
-import asfp;
-import atmq;
-import awrn;
-import axrr;
-import axso;
-import axwx;
-import azjq;
-import azve;
-import babp;
-import baio;
-import baom;
-import bato;
-import bbcs;
-import bfaw;
-import bfml;
+import arkn;
+import armk;
+import atbt;
+import auko;
+import axrl;
+import ayry;
+import aysv;
+import ayxe;
+import bakt;
+import bawi;
+import bbct;
+import bbjv;
+import bbqi;
+import bbwi;
+import bcfs;
+import bgin;
+import bguv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
@@ -55,19 +56,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
-import mof;
-import mov;
-import mow;
-import mpt;
-import mql;
 import mqq.app.AppRuntime;
 import mqq.app.IToolProcEventListener;
 import mqq.app.MSFServlet;
 import mqq.app.TicketManagerImpl;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import ngh;
-import ohd;
+import mze;
+import mzu;
+import mzv;
+import nau;
+import nbm;
+import nri;
+import oso;
 
 public class BrowserAppInterface
   extends AppInterface
@@ -78,16 +79,16 @@ public class BrowserAppInterface
   public static final AtomicBoolean c;
   int jdField_a_of_type_Int = 0;
   long jdField_a_of_type_Long;
-  akhe jdField_a_of_type_Akhe = new akhe(this);
+  akvq jdField_a_of_type_Akvq = new akvq(this);
   public Intent a;
-  protected asfp a;
-  private atmq jdField_a_of_type_Atmq;
-  private axso jdField_a_of_type_Axso;
-  public baom a;
+  protected atbt a;
+  private auko jdField_a_of_type_Auko;
+  private aysv jdField_a_of_type_Aysv;
+  public bbqi a;
   Map<Integer, Manager> jdField_a_of_type_JavaUtilMap = new HashMap(20);
-  protected ohd a;
+  protected oso a;
   public boolean a;
-  private ajfb[] jdField_a_of_type_ArrayOfAjfb = new ajfb[1];
+  private ajtd[] jdField_a_of_type_ArrayOfAjtd = new ajtd[1];
   public int b;
   public boolean b;
   private int c;
@@ -109,7 +110,7 @@ public class BrowserAppInterface
   
   private void a()
   {
-    QbSdk.setTbsLogClient(new ajez(this, BaseApplicationImpl.getContext()));
+    QbSdk.setTbsLogClient(new ajtb(this, BaseApplicationImpl.getContext()));
   }
   
   public static void a(int paramInt)
@@ -210,6 +211,7 @@ public class BrowserAppInterface
   
   private boolean a(Context paramContext, Intent paramIntent)
   {
+    int j = 0;
     String str = paramIntent.getAction();
     if (str == null) {
       return false;
@@ -248,6 +250,24 @@ public class BrowserAppInterface
         paramContext = (PathTraceManager)getManager(210);
         if ((paramContext != null) && (paramContext.a())) {
           return true;
+        }
+        if (!arkn.a())
+        {
+          int i = j;
+          if (paramIntent != null)
+          {
+            i = j;
+            if (paramIntent.getBooleanExtra("qq_mode_foreground", false)) {
+              i = 1;
+            }
+          }
+          if (i != 0)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("BrowserAppInterface", 2, " has floating window， not exit tool process");
+            }
+            return true;
+          }
         }
         return a(paramIntent);
       }
@@ -331,46 +351,46 @@ public class BrowserAppInterface
     }
   }
   
-  private ajfb b(int paramInt)
+  private ajtd b(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     }
-    return new ngh(this);
+    return new nri(this);
   }
   
-  public ajfb a(int paramInt)
+  public ajtd a(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfAjfb[paramInt];
+    Object localObject1 = this.jdField_a_of_type_ArrayOfAjtd[paramInt];
     if (localObject1 != null) {
       return localObject1;
     }
-    synchronized (this.jdField_a_of_type_ArrayOfAjfb)
+    synchronized (this.jdField_a_of_type_ArrayOfAjtd)
     {
-      ajfb localajfb = this.jdField_a_of_type_ArrayOfAjfb[paramInt];
-      localObject1 = localajfb;
-      if (localajfb == null)
+      ajtd localajtd = this.jdField_a_of_type_ArrayOfAjtd[paramInt];
+      localObject1 = localajtd;
+      if (localajtd == null)
       {
-        localajfb = b(paramInt);
-        localObject1 = localajfb;
-        if (localajfb != null)
+        localajtd = b(paramInt);
+        localObject1 = localajtd;
+        if (localajtd != null)
         {
-          this.jdField_a_of_type_ArrayOfAjfb[paramInt] = localajfb;
-          localObject1 = localajfb;
+          this.jdField_a_of_type_ArrayOfAjtd[paramInt] = localajtd;
+          localObject1 = localajtd;
         }
       }
       return localObject1;
     }
   }
   
-  public asfp a()
+  public atbt a()
   {
-    if (this.jdField_a_of_type_Asfp == null) {
-      this.jdField_a_of_type_Asfp = new asfp(this);
+    if (this.jdField_a_of_type_Atbt == null) {
+      this.jdField_a_of_type_Atbt = new atbt(this);
     }
-    return this.jdField_a_of_type_Asfp;
+    return this.jdField_a_of_type_Atbt;
   }
   
   public String a()
@@ -378,12 +398,12 @@ public class BrowserAppInterface
     return null;
   }
   
-  public ohd a()
+  public oso a()
   {
-    if (this.jdField_a_of_type_Ohd == null) {
-      this.jdField_a_of_type_Ohd = new ohd(this);
+    if (this.jdField_a_of_type_Oso == null) {
+      this.jdField_a_of_type_Oso = new oso(this);
     }
-    return this.jdField_a_of_type_Ohd;
+    return this.jdField_a_of_type_Oso;
   }
   
   public void a(boolean paramBoolean)
@@ -418,7 +438,7 @@ public class BrowserAppInterface
         QbSdk.setUploadCode(BaseApplication.getContext(), 154);
         long l = System.currentTimeMillis();
         localObject = ((Context)localObject).getSharedPreferences(((Context)localObject).getPackageName() + "_preferences", 4);
-        QbSdk.setTbsListener(new ajfa(this, (SharedPreferences)localObject, l));
+        QbSdk.setTbsListener(new ajtc(this, (SharedPreferences)localObject, l));
         QLog.d("TBS_update", 1, "tbs start download");
         localObject = ((SharedPreferences)localObject).edit();
         ((SharedPreferences.Editor)localObject).putBoolean("tbs_downloading", true);
@@ -462,12 +482,12 @@ public class BrowserAppInterface
     return getAccount();
   }
   
-  public atmq getEntityManagerFactory(String paramString)
+  public auko getEntityManagerFactory(String paramString)
   {
-    if (this.jdField_a_of_type_Atmq == null) {
-      this.jdField_a_of_type_Atmq = new QQEntityManagerFactory(getAccount());
+    if (this.jdField_a_of_type_Auko == null) {
+      this.jdField_a_of_type_Auko = new QQEntityManagerFactory(getAccount());
     }
-    return this.jdField_a_of_type_Atmq;
+    return this.jdField_a_of_type_Auko;
   }
   
   public Manager getManager(int paramInt)
@@ -497,19 +517,19 @@ public class BrowserAppInterface
         return localObject1;
       }
       finally {}
-      localObject1 = new bato(this);
+      localObject1 = new bbwi(this);
       continue;
-      Object localObject3 = new azjq(this);
+      Object localObject3 = new bakt(this);
       continue;
       localObject3 = new TicketManagerImpl(this);
       continue;
-      localObject3 = new bfaw(this);
+      localObject3 = new bgin(this);
       continue;
       localObject3 = new PathTraceManager(this);
       continue;
-      localObject3 = new aeor(this);
+      localObject3 = new aezn(this);
       continue;
-      localObject3 = new bfml();
+      localObject3 = new bguv();
       continue;
       label239:
       localObject4 = localObject3;
@@ -528,7 +548,7 @@ public class BrowserAppInterface
   
   public Class<? extends MSFServlet>[] getMessagePushServlets()
   {
-    return new Class[] { mql.class };
+    return new Class[] { nbm.class };
   }
   
   public String getModuleId()
@@ -536,12 +556,12 @@ public class BrowserAppInterface
     return "modular_web";
   }
   
-  public axrr getNetEngine(int paramInt)
+  public ayry getNetEngine(int paramInt)
   {
-    if (this.jdField_a_of_type_Axso == null) {
-      this.jdField_a_of_type_Axso = new axso();
+    if (this.jdField_a_of_type_Aysv == null) {
+      this.jdField_a_of_type_Aysv = new aysv();
     }
-    return this.jdField_a_of_type_Axso.a(this, paramInt);
+    return this.jdField_a_of_type_Aysv.a(this, paramInt);
   }
   
   public void onBeforeExitProc()
@@ -570,7 +590,7 @@ public class BrowserAppInterface
   
   public void onCreate(Bundle paramBundle)
   {
-    baio.a(null, "web_browserAppinterface_onCreate");
+    bbjv.a(null, "web_browserAppinterface_onCreate");
     super.onCreate(paramBundle);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     try
@@ -578,22 +598,22 @@ public class BrowserAppInterface
       if (Build.VERSION.SDK_INT >= 28) {
         android.webkit.WebView.setDataDirectorySuffix("tool");
       }
-      bbcs.a(this);
+      bcfs.a(this);
       a();
       str = getAccount();
       if (TextUtils.isEmpty(str))
       {
         paramBundle = null;
         QbSdk.setCurrentID(paramBundle);
-        mof.a(new mpt());
-        mof.a(new mow());
-        mof.a(new mov());
-        mof.a(BaseApplicationImpl.getContext());
+        mze.a(new nau());
+        mze.a(new mzv());
+        mze.a(new mzu());
+        mze.a(BaseApplicationImpl.getContext());
         if (getLongAccountUin() % 10L != 6L) {
           break label261;
         }
         bool = true;
-        mof.jdField_a_of_type_Boolean = bool;
+        mze.jdField_a_of_type_Boolean = bool;
         if (!jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
         {
           if (QLog.isColorLevel()) {
@@ -605,8 +625,8 @@ public class BrowserAppInterface
         if (!paramBundle.getBoolean("is_set", false)) {
           paramBundle.edit().putBoolean("hide_back_text", true).putBoolean("is_set", true).commit();
         }
-        bbca.A = SystemClock.elapsedRealtime();
-        baio.a("web_browserAppinterface_onCreate", null);
+        bcfa.A = SystemClock.elapsedRealtime();
+        bbjv.a("web_browserAppinterface_onCreate", null);
       }
     }
     catch (Throwable paramBundle)
@@ -627,21 +647,21 @@ public class BrowserAppInterface
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Asfp != null) {}
+    if (this.jdField_a_of_type_Atbt != null) {}
     try
     {
-      this.jdField_a_of_type_Asfp.onDestroy();
-      this.jdField_a_of_type_Asfp = null;
-      if (this.jdField_a_of_type_Axso != null) {
-        this.jdField_a_of_type_Axso.onDestroy();
+      this.jdField_a_of_type_Atbt.onDestroy();
+      this.jdField_a_of_type_Atbt = null;
+      if (this.jdField_a_of_type_Aysv != null) {
+        this.jdField_a_of_type_Aysv.onDestroy();
       }
     }
     catch (Exception localException1)
     {
       try
       {
-        this.jdField_a_of_type_Axso.onDestroy();
-        this.jdField_a_of_type_Axso = null;
+        this.jdField_a_of_type_Aysv.onDestroy();
+        this.jdField_a_of_type_Aysv = null;
         synchronized (this.jdField_a_of_type_JavaUtilMap)
         {
           Object localObject1 = this.jdField_a_of_type_JavaUtilMap.keySet();
@@ -688,27 +708,27 @@ public class BrowserAppInterface
     for (;;)
     {
       int i;
-      synchronized (this.jdField_a_of_type_ArrayOfAjfb)
+      synchronized (this.jdField_a_of_type_ArrayOfAjtd)
       {
-        ajfb[] arrayOfajfb2 = this.jdField_a_of_type_ArrayOfAjfb;
-        int j = arrayOfajfb2.length;
+        ajtd[] arrayOfajtd2 = this.jdField_a_of_type_ArrayOfAjtd;
+        int j = arrayOfajtd2.length;
         i = 0;
         if (i < j)
         {
-          ajfb localajfb = arrayOfajfb2[i];
-          if (localajfb != null) {
-            localajfb.onDestroy();
+          ajtd localajtd = arrayOfajtd2[i];
+          if (localajtd != null) {
+            localajtd.onDestroy();
           }
         }
         else
         {
-          if (axwx.a != null) {
-            axwx.a().a();
+          if (ayxe.a != null) {
+            ayxe.a().a();
           }
-          aqrr.a();
+          armk.a();
           UiApiPlugin.e();
-          if (this.jdField_a_of_type_Ohd != null) {
-            this.jdField_a_of_type_Ohd.b();
+          if (this.jdField_a_of_type_Oso != null) {
+            this.jdField_a_of_type_Oso.b();
           }
           return;
         }
@@ -743,22 +763,22 @@ public class BrowserAppInterface
     if (bool) {
       getHandler(BrowserAppInterface.class).postDelayed(new BrowserAppInterface.4(this), 3000L);
     }
-    if ((WebCoreService.jdField_a_of_type_Boolean) && (babp.e() >>> 20 < 20L)) {
+    if ((WebCoreService.jdField_a_of_type_Boolean) && (bbct.e() >>> 20 < 20L)) {
       WebCoreService.b();
     }
     try
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
-      localHashMap.put("param_totalMem", String.valueOf(babp.d()));
-      localHashMap.put("param_availableMem", String.valueOf(babp.e()));
-      localHashMap.put("param_cpuNum", String.valueOf(babp.b()));
-      localHashMap.put("param_cpuFreq", String.valueOf(babp.a()));
+      localHashMap.put("param_totalMem", String.valueOf(bbct.d()));
+      localHashMap.put("param_availableMem", String.valueOf(bbct.e()));
+      localHashMap.put("param_cpuNum", String.valueOf(bbct.b()));
+      localHashMap.put("param_cpuFreq", String.valueOf(bbct.a()));
       localHashMap.put("param_releaseType", String.valueOf(1));
       if (QLog.isColorLevel()) {
         QLog.d("BrowserAppInterface", 2, "releaseWebCoreServiceReport:" + localHashMap.toString());
       }
-      awrn.a(getApplication()).a(getCurrentAccountUin(), "actReadInJoyReleaseWebService", true, 0L, 0L, localHashMap, "");
+      axrl.a(getApplication()).a(getCurrentAccountUin(), "actReadInJoyReleaseWebService", true, 0L, 0L, localHashMap, "");
       return;
     }
     catch (Exception localException) {}
@@ -769,12 +789,12 @@ public class BrowserAppInterface
     super.onRunningForeground();
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentIntent = null;
-    azve.a(getApp());
+    bawi.a(getApp());
   }
   
   public void sendToService(ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_Akhe.a(paramToServiceMsg);
+    this.jdField_a_of_type_Akvq.a(paramToServiceMsg);
   }
 }
 

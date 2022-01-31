@@ -1,22 +1,24 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.Comparator;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-public class afor
-  implements View.OnClickListener
+final class afor
+  implements Comparator<structmsg.StructMsg>
 {
-  public afor(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
-  
-  public void onClick(View paramView)
+  public int a(structmsg.StructMsg paramStructMsg1, structmsg.StructMsg paramStructMsg2)
   {
-    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
-    this.a.getActivity().finish();
+    if (paramStructMsg1.msg_time.get() < paramStructMsg2.msg_time.get()) {
+      return 1;
+    }
+    if (paramStructMsg1.msg_time.get() > paramStructMsg2.msg_time.get()) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afor
  * JD-Core Version:    0.7.0.1
  */

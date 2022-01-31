@@ -1,55 +1,33 @@
-public class azkg
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+class azkg
+  implements View.OnTouchListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
+  azkg(azkf paramazkf) {}
   
-  public static azkg a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new azkg();
-  }
-  
-  public azkg a(String paramString)
-  {
-    this.a = paramString;
-    return this;
-  }
-  
-  public azkg b(String paramString)
-  {
-    this.b = paramString;
-    return this;
-  }
-  
-  public azkg c(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
-  
-  public azkg d(String paramString)
-  {
-    this.d = paramString;
-    return this;
-  }
-  
-  public azkg e(String paramString)
-  {
-    this.e = paramString;
-    return this;
-  }
-  
-  public azkg f(String paramString)
-  {
-    this.j = paramString;
-    return this;
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.15F);
+      this.a.c.setAlpha(0.5F);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      if ((i == 3) || (i == 1))
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+        this.a.c.setAlpha(1.0F);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      }
+    }
   }
 }
 

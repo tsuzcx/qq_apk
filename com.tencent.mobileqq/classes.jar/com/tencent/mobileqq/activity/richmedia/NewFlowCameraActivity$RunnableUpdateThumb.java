@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import aciy;
-import ahje;
-import ahjf;
+import actn;
+import ahvv;
+import ahvw;
 import android.animation.ValueAnimator;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
-import awmc;
-import urk;
+import axli;
+import veg;
 
 public class NewFlowCameraActivity$RunnableUpdateThumb
   implements Runnable
@@ -27,24 +27,24 @@ public class NewFlowCameraActivity$RunnableUpdateThumb
   {
     if ((NewFlowCameraActivity.a(this.this$0) == null) || (NewFlowCameraActivity.b(this.this$0) == null) || (NewFlowCameraActivity.a(this.this$0) == null))
     {
-      urk.e("PTV.NewFlowCameraActivity", "RunnableUpdateThumb error. mFragmentAnimThumbView == null or mFragmentThumbView == null or mFragmentNumView == null.");
+      veg.e("PTV.NewFlowCameraActivity", "RunnableUpdateThumb error. mFragmentAnimThumbView == null or mFragmentThumbView == null or mFragmentNumView == null.");
       return;
     }
     NewFlowCameraActivity.a(this.this$0).setImageBitmap(this.a);
     NewFlowCameraActivity.a(this.this$0).setVisibility(0);
     NewFlowCameraActivity.b(this.this$0).setVisibility(8);
-    int i = awmc.a;
-    int j = awmc.a(this.this$0.getApplicationContext());
-    int k = aciy.a(47.0F, this.this$0.getResources());
-    int m = aciy.a(75.0F, this.this$0.getResources());
-    int n = aciy.a(12.0F, this.this$0.getResources());
-    int i1 = aciy.a(20.0F, this.this$0.getResources());
-    urk.c("PTV.NewFlowCameraActivity", "startScaleAnim. sWidth:" + i + " sHeight:" + j + " dWidth:" + k + " dHeight:" + m + " sMarginLeft:" + 0 + " sMarginBottom:" + 0 + " dMarginLeft:" + n + " dMarginBottom:" + i1);
+    int i = axli.a;
+    int j = axli.a(this.this$0.getApplicationContext());
+    int k = actn.a(47.0F, this.this$0.getResources());
+    int m = actn.a(75.0F, this.this$0.getResources());
+    int n = actn.a(12.0F, this.this$0.getResources());
+    int i1 = actn.a(20.0F, this.this$0.getResources());
+    veg.c("PTV.NewFlowCameraActivity", "startScaleAnim. sWidth:" + i + " sHeight:" + j + " dWidth:" + k + " dHeight:" + m + " sMarginLeft:" + 0 + " sMarginBottom:" + 0 + " dMarginLeft:" + n + " dMarginBottom:" + i1);
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     localValueAnimator.setDuration(300L);
     localValueAnimator.setInterpolator(new LinearInterpolator());
-    localValueAnimator.addUpdateListener(new ahje(this, k, i, m, j, n, i1));
-    localValueAnimator.addListener(new ahjf(this));
+    localValueAnimator.addUpdateListener(new ahvv(this, k, i, m, j, n, i1));
+    localValueAnimator.addListener(new ahvw(this));
     localValueAnimator.start();
   }
   
@@ -52,7 +52,7 @@ public class NewFlowCameraActivity$RunnableUpdateThumb
   {
     if (!this.this$0.k)
     {
-      urk.e("PTV.NewFlowCameraActivity", "RunnableUpdateThumb error. enableMultiFragment = %s.", new Object[] { Boolean.valueOf(this.this$0.k) });
+      veg.e("PTV.NewFlowCameraActivity", "RunnableUpdateThumb error. enableMultiFragment = %s.", new Object[] { Boolean.valueOf(this.this$0.k) });
       return;
     }
     a();

@@ -1,18 +1,17 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class apmb
-  implements DialogInterface.OnClickListener
+  implements aptu
 {
-  apmb(apma paramapma, bafb parambafb) {}
+  apmb(apma paramapma) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_Bafb.dismiss();
-    this.jdField_a_of_type_Apma.a.setResult(-1);
-    this.jdField_a_of_type_Apma.a.finish();
+    aply.a(this.a.a);
+    if (this.a.a.a != null) {
+      this.a.a.a.d();
+    }
   }
+  
+  public void b() {}
 }
 
 

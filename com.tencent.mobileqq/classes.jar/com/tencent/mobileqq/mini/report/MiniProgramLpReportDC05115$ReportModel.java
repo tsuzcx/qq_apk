@@ -4,15 +4,16 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.provider.Settings.Secure;
-import bbtm;
-import bfpk;
+import bcxm;
+import bekw;
+import bgxr;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.QbSdk;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,8 +22,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class MiniProgramLpReportDC05115$ReportModel
 {
-  private String androidID = Settings.Secure.getString(bbtm.a().a().getContentResolver(), "android_id");
-  private String clientVersion = "8.2.6.4370";
+  private String androidID;
+  private String clientVersion = "8.2.8.4440";
   private int cpuAVG;
   private long crashErrorNum;
   private String deviceManufacturer = Build.MANUFACTURER;
@@ -53,13 +54,13 @@ public class MiniProgramLpReportDC05115$ReportModel
   private int memINC;
   private MiniAppConfig miniAppConfig;
   private String networkGateWayIP = "null";
-  private String networkSSID = HwNetworkUtil.getCurrentWifiSSID(bbtm.a().a());
+  private String networkSSID;
   private String networkType = MiniProgramReportHelper.getNetworkType();
   private long oomErrorNum;
   private String openID = "null";
   private long pkgDownloadCost;
   private String pkgDownloadResult;
-  private String qua = bfpk.a();
+  private String qua = bgxr.a();
   private long relaunchCost;
   private String x5Version = String.valueOf(QbSdk.getTbsVersion(BaseApplicationImpl.getApplication()));
   
@@ -71,41 +72,54 @@ public class MiniProgramLpReportDC05115$ReportModel
   private void prepareReportRecord()
   {
     long l2 = 0L;
+    int i;
+    long l1;
     try
     {
-      this.gamePrepareCost = this.launchCost;
-      int i;
-      Iterator localIterator;
-      long l1;
-      if (!this.httpRequestCostList.isEmpty())
-      {
-        i = this.httpRequestCostList.size();
-        localIterator = this.httpRequestCostList.iterator();
-        for (l1 = 0L; localIterator.hasNext(); l1 = ((Long)localIterator.next()).longValue() + l1) {}
-        this.httpRequestCost = (l1 / i);
+      if (this.networkSSID == null) {
+        this.networkSSID = bekw.b(bcxm.a().a());
       }
-      if (!this.httpRequestLengths.isEmpty())
-      {
-        localIterator = this.httpRequestLengths.iterator();
-        for (l1 = 0L; localIterator.hasNext(); l1 = ((Long)localIterator.next()).longValue() + l1) {}
-        this.httpRequestLength = (l1 / this.httpRequestLengths.size());
+      if (this.androidID == null) {
+        this.androidID = Settings.Secure.getString(bcxm.a().a().getContentResolver(), "android_id");
       }
-      if (!this.downloadRequestCostList.isEmpty())
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
       {
-        i = this.downloadRequestCostList.size();
-        localIterator = this.downloadRequestCostList.iterator();
-        for (l1 = 0L; localIterator.hasNext(); l1 = Math.max(((Long)localIterator.next()).longValue(), 0L) + l1) {}
-        this.downloadRequestCost = (l1 / i);
+        Iterator localIterator1;
+        QLog.e("MiniProgramLpReportDC05", 1, localThrowable, new Object[0]);
       }
-      if (!this.downloadRequestLengths.isEmpty())
-      {
-        localIterator = this.downloadRequestLengths.iterator();
-        for (l1 = l2; localIterator.hasNext(); l1 = ((Long)localIterator.next()).longValue() + l1) {}
-        this.downloadRequestLength = (l1 / this.downloadRequestLengths.size());
-      }
-      return;
     }
     finally {}
+    if (!this.httpRequestCostList.isEmpty())
+    {
+      i = this.httpRequestCostList.size();
+      localIterator1 = this.httpRequestCostList.iterator();
+      for (l1 = 0L; localIterator1.hasNext(); l1 = ((Long)localIterator1.next()).longValue() + l1) {}
+      long l3 = i;
+      this.httpRequestCost = (l1 / l3);
+    }
+    Iterator localIterator2;
+    if (!this.httpRequestLengths.isEmpty())
+    {
+      localIterator2 = this.httpRequestLengths.iterator();
+      for (l1 = 0L; localIterator2.hasNext(); l1 = ((Long)localIterator2.next()).longValue() + l1) {}
+      this.httpRequestLength = (l1 / this.httpRequestLengths.size());
+    }
+    if (!this.downloadRequestCostList.isEmpty())
+    {
+      i = this.downloadRequestCostList.size();
+      localIterator2 = this.downloadRequestCostList.iterator();
+      for (l1 = 0L; localIterator2.hasNext(); l1 = Math.max(((Long)localIterator2.next()).longValue(), 0L) + l1) {}
+      this.downloadRequestCost = (l1 / i);
+    }
+    if (!this.downloadRequestLengths.isEmpty())
+    {
+      localIterator2 = this.downloadRequestLengths.iterator();
+      for (l1 = l2; localIterator2.hasNext(); l1 = ((Long)localIterator2.next()).longValue() + l1) {}
+      this.downloadRequestLength = (l1 / this.downloadRequestLengths.size());
+    }
   }
   
   private void reportCPUMemoryFPS(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
@@ -125,32 +139,32 @@ public class MiniProgramLpReportDC05115$ReportModel
     //   1: monitorenter
     //   2: aload_0
     //   3: aload_0
-    //   4: getfield 250	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestNum	J
+    //   4: getfield 256	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestNum	J
     //   7: lconst_1
     //   8: ladd
-    //   9: putfield 250	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestNum	J
+    //   9: putfield 256	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestNum	J
     //   12: iload 5
     //   14: ifeq +16 -> 30
     //   17: aload_0
     //   18: aload_0
-    //   19: getfield 252	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestErrorNum	J
+    //   19: getfield 258	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestErrorNum	J
     //   22: lconst_1
     //   23: ladd
-    //   24: putfield 252	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestErrorNum	J
+    //   24: putfield 258	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestErrorNum	J
     //   27: aload_0
     //   28: monitorexit
     //   29: return
     //   30: aload_0
-    //   31: getfield 166	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestCostList	Ljava/util/List;
+    //   31: getfield 134	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestCostList	Ljava/util/List;
     //   34: lload_1
-    //   35: invokestatic 255	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   38: invokeinterface 259 2 0
+    //   35: invokestatic 261	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   38: invokeinterface 265 2 0
     //   43: pop
     //   44: aload_0
-    //   45: getfield 168	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestLengths	Ljava/util/List;
+    //   45: getfield 136	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestLengths	Ljava/util/List;
     //   48: lload_3
-    //   49: invokestatic 255	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   52: invokeinterface 259 2 0
+    //   49: invokestatic 261	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   52: invokeinterface 265 2 0
     //   57: pop
     //   58: goto -31 -> 27
     //   61: astore 6
@@ -180,32 +194,32 @@ public class MiniProgramLpReportDC05115$ReportModel
     //   1: monitorenter
     //   2: aload_0
     //   3: aload_0
-    //   4: getfield 263	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestNum	J
+    //   4: getfield 269	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestNum	J
     //   7: lconst_1
     //   8: ladd
-    //   9: putfield 263	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestNum	J
+    //   9: putfield 269	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestNum	J
     //   12: iload 5
     //   14: ifge +16 -> 30
     //   17: aload_0
     //   18: aload_0
-    //   19: getfield 265	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestErrorNum	J
+    //   19: getfield 271	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestErrorNum	J
     //   22: lconst_1
     //   23: ladd
-    //   24: putfield 265	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestErrorNum	J
+    //   24: putfield 271	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestErrorNum	J
     //   27: aload_0
     //   28: monitorexit
     //   29: return
     //   30: aload_0
-    //   31: getfield 162	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestCostList	Ljava/util/List;
+    //   31: getfield 130	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestCostList	Ljava/util/List;
     //   34: lload_1
-    //   35: invokestatic 255	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   38: invokeinterface 259 2 0
+    //   35: invokestatic 261	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   38: invokeinterface 265 2 0
     //   43: pop
     //   44: aload_0
-    //   45: getfield 164	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestLengths	Ljava/util/List;
+    //   45: getfield 132	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestLengths	Ljava/util/List;
     //   48: lload_3
-    //   49: invokestatic 255	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   52: invokeinterface 259 2 0
+    //   49: invokestatic 261	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   52: invokeinterface 265 2 0
     //   57: pop
     //   58: goto -31 -> 27
     //   61: astore 6
@@ -249,6 +263,17 @@ public class MiniProgramLpReportDC05115$ReportModel
   {
     try
     {
+      this.launchFlag = false;
+      this.launchCost = 0L;
+      this.launchResult = "";
+      this.relaunchCost = 0L;
+      this.pkgDownloadCost = 0L;
+      this.pkgDownloadResult = "";
+      this.gamePrepareCost = 0L;
+      this.gameUseTime = 0L;
+      this.jsErrorNum = 0L;
+      this.oomErrorNum = 0L;
+      this.crashErrorNum = 0L;
       this.downloadRequestErrorNum = 0L;
       this.downloadRequestNum = 0L;
       this.downloadRequestLengths.clear();
@@ -266,9 +291,19 @@ public class MiniProgramLpReportDC05115$ReportModel
     }
   }
   
+  public void setGamePrepareCost(long paramLong)
+  {
+    this.gamePrepareCost = paramLong;
+  }
+  
   public void setGameUseTime(long paramLong)
   {
     this.gameUseTime = paramLong;
+  }
+  
+  public void setJsErrorNum()
+  {
+    this.jsErrorNum += 1L;
   }
   
   public void setMiniAppConfig(MiniAppConfig paramMiniAppConfig)

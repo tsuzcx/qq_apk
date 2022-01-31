@@ -1,77 +1,64 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x985.oidb_0x985.GetReadListRsp;
+import tencent.im.oidb.cmd0x985.oidb_0x985.RspBody;
 
 public class avou
-  extends avow
+  extends avpg<ReceiptMessageReadMemberListContainerFragment>
 {
-  public int a;
-  public avop a;
-  public CharSequence a;
-  public String a;
-  public List<avop> a;
-  public int b;
-  
-  public avou(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public avou(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    super(paramReceiptMessageReadMemberListContainerFragment);
   }
   
-  public avou(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_JavaLangCharSequence = avwf.a(paramString.optString("firstLineText"));
-      this.jdField_a_of_type_JavaLangString = paramString.optString("firstLineTextPostfix");
-      Object localObject1 = paramString.optJSONObject("leftImage");
-      if (localObject1 != null) {
-        this.jdField_a_of_type_Avop = new avop(((JSONObject)localObject1).optString("url"), ((JSONObject)localObject1).optInt("type"));
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "mGetMemberList request error on code: " + paramInt);
       }
-      this.b = paramString.optInt("allHeight");
-      localObject1 = paramString.optJSONArray("imageList");
-      if (localObject1 != null)
+    }
+    do
+    {
+      return;
+      try
       {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList(((JSONArray)localObject1).length());
-        int i = 0;
-        while (i < ((JSONArray)localObject1).length())
+        paramBundle = new oidb_0x985.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramInt = paramBundle.uint32_code.get();
+        if (paramInt == 0)
         {
-          Object localObject2 = ((JSONArray)localObject1).optJSONObject(i);
-          localObject2 = new avop(((JSONObject)localObject2).optString("url"), ((JSONObject)localObject2).optInt("type"));
-          this.jdField_a_of_type_JavaUtilList.add(localObject2);
-          i += 1;
+          paramBundle = (oidb_0x985.GetReadListRsp)paramBundle.msg_get_read_list_rsp.get();
+          paramArrayOfByte = paramBundle.rpt_msg_read_list.get();
+          paramBundle = paramBundle.rpt_msg_unread_list.get();
+          ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a, ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a, paramArrayOfByte));
+          ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a, ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a, paramBundle));
+          ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(2);
+          return;
         }
       }
-      this.jdField_a_of_type_Int = paramString.optInt("imageTotalCount");
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public boolean b()
-  {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      bool = false;
-    }
-    return bool;
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "fetch read member fail on invalid data");
+        return;
+      }
+      QLog.d("ReceiptMessageReadMemberListContainerFragment", 1, "mGetMemberList fail on code: " + paramInt);
+      if (paramInt == 5)
+      {
+        ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
+        return;
+      }
+    } while (paramInt != 20);
+    ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avou
  * JD-Core Version:    0.7.0.1
  */

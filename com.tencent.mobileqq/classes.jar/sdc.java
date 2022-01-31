@@ -1,23 +1,39 @@
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class sdc
-  extends scz
 {
-  public sdc(sed paramsed)
+  public static String a(String paramString)
   {
-    super(paramsed.a);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.recommendAlbum.logic_OneDayAlbumFilter " + paramsed.c);
-    sef localsef = new sef();
-    localsef.a(paramsed);
-    a(localsef);
+    String str1;
+    if ((paramString != null) && (paramString.length() < 5)) {
+      str1 = (String)sbo.a.get(paramString);
+    }
+    for (;;)
+    {
+      String str3 = str1;
+      if (str1 == null) {
+        str3 = "";
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SubscriptUtil", 2, "getUin subscribeID[" + paramString + "]'s uin: " + str3);
+      }
+      return str3;
+      try
+      {
+        int i = Integer.parseInt(paramString);
+        str1 = String.valueOf(i);
+      }
+      catch (Exception localException)
+      {
+        String str2 = (String)sbo.a.get(paramString);
+      }
+    }
   }
-  
-  protected void c(List<sdf> paramList) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sdc
  * JD-Core Version:    0.7.0.1
  */

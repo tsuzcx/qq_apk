@@ -1,8 +1,12 @@
-import java.util.ArrayList;
-
-public abstract interface aybt
+class aybt
+  implements aybh
 {
-  public abstract void a(int paramInt, String paramString, ArrayList<aybq> paramArrayList);
+  aybt(aybq paramaybq) {}
+  
+  public void a()
+  {
+    aybq.a(this.a).a();
+  }
 }
 
 

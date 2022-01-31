@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.view;
 
-import aifs;
-import ajcu;
+import aisl;
+import ajqw;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -10,14 +10,14 @@ import com.tencent.image.URLImageView;
 public class ApolloPanel$34$1
   implements Runnable
 {
-  public ApolloPanel$34$1(ajcu paramajcu) {}
+  public ApolloPanel$34$1(ajqw paramajqw) {}
   
   public void run()
   {
     ApolloPanel.a(this.a.a).setVisibility(0);
     this.a.a.b.setVisibility(0);
     ApolloPanel.a(this.a.a).setVisibility(8);
-    if ((aifs.a) && (ApolloPanel.d(this.a.a)))
+    if ((aisl.a) && (ApolloPanel.d(this.a.a)))
     {
       ApolloPanel.a(this.a.a).setVisibility(0);
       ApolloPanel.b(this.a.a).setVisibility(0);

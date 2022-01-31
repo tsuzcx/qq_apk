@@ -1,27 +1,56 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import java.lang.ref.WeakReference;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-class awwj
-  implements View.OnLongClickListener
+public class awwj
+  extends awyf
 {
-  awwj(awwi paramawwi) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public boolean onLongClick(View paramView)
+  public awwj(View paramView)
   {
-    if (this.a.a != null)
+    super(paramView);
+  }
+  
+  public awwj(ViewGroup paramViewGroup, int paramInt)
+  {
+    super(paramViewGroup, paramInt);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131376244));
+    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131378329);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    View localView;
+    if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      acmv localacmv = (acmv)this.a.a.get();
-      if (localacmv != null) {
-        return localacmv.onLongClick(paramView);
+      localView = this.jdField_a_of_type_AndroidViewView;
+      if (!paramBoolean) {
+        break label24;
       }
     }
-    return false;
+    label24:
+    for (int i = 0;; i = 8)
+    {
+      localView.setVisibility(i);
+      return;
+    }
+  }
+  
+  public TextView e()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awwj
  * JD-Core Version:    0.7.0.1
  */

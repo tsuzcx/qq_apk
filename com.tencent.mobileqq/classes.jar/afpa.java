@@ -1,22 +1,23 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
 public class afpa
-  implements TextWatcher
+  extends RecyclerView.ItemDecoration
 {
-  public afpa(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  private int a;
   
-  public void afterTextChanged(Editable paramEditable)
+  public afpa(int paramInt)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.e(paramEditable);
+    this.a = paramInt;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.right = this.a;
+  }
 }
 
 

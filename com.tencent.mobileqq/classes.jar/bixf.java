@@ -1,10 +1,42 @@
-public abstract interface bixf
+import android.graphics.SurfaceTexture;
+import android.view.TextureView.SurfaceTextureListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import java.lang.ref.WeakReference;
+
+public class bixf
+  implements TextureView.SurfaceTextureListener
 {
-  public abstract void b(int paramInt, String paramString);
+  private WeakReference<AETemplateInfoFragment> a;
   
-  public abstract void c(int paramInt, String paramString);
+  public bixf(AETemplateInfoFragment paramAETemplateInfoFragment)
+  {
+    this.a = new WeakReference(paramAETemplateInfoFragment);
+  }
   
-  public abstract void d(int paramInt, String paramString);
+  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  {
+    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureAvailable");
+    if ((this.a != null) && (this.a.get() != null)) {
+      AETemplateInfoFragment.a((AETemplateInfoFragment)this.a.get(), paramSurfaceTexture);
+    }
+  }
+  
+  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
+  {
+    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureDestroyed");
+    if ((this.a != null) && (this.a.get() != null)) {
+      AETemplateInfoFragment.c((AETemplateInfoFragment)this.a.get());
+    }
+    return true;
+  }
+  
+  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  {
+    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureSizeChanged");
+  }
+  
+  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
 }
 
 

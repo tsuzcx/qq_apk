@@ -1,26 +1,23 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.content.Context;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
-class uul
-  implements View.OnTouchListener
+public class uul
+  extends vdl
 {
-  uul(uuk paramuuk) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public uul(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    switch (paramMotionEvent.getAction())
+    super(paramContext, paramString1, paramString2, paramInt1, paramInt2);
+  }
+  
+  protected void S_()
+  {
+    wcr localwcr = a().a("FeedSegment");
+    if ((localwcr != null) && (localwcr.a() == 0))
     {
+      this.a = true;
+      return;
     }
-    for (;;)
-    {
-      return false;
-      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
-      continue;
-      this.a.a.setTextColor(Color.parseColor("#ffffff"));
-    }
+    this.a = false;
   }
 }
 

@@ -1,22 +1,60 @@
-import android.support.annotation.NonNull;
+import cooperation.qzone.statistic.access.concept.Statistic;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-class bhmw
-  implements bhmf
+public class bhmw
 {
-  bhmw(bhmv parambhmv) {}
+  protected volatile ConcurrentLinkedQueue<Statistic> a = new ConcurrentLinkedQueue();
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public int a()
   {
-    if (paramInt == 0) {
-      return azjg.b(paramString);
+    return this.a.size();
+  }
+  
+  public Statistic a()
+  {
+    return (Statistic)this.a.poll();
+  }
+  
+  public List<Statistic> a()
+  {
+    return a(a());
+  }
+  
+  public List<Statistic> a(int paramInt)
+  {
+    Object localObject;
+    if (paramInt < 1)
+    {
+      localObject = null;
+      return localObject;
     }
-    return "";
+    ArrayList localArrayList = new ArrayList();
+    int i = Math.min(paramInt, a());
+    paramInt = 0;
+    for (;;)
+    {
+      localObject = localArrayList;
+      if (paramInt >= i) {
+        break;
+      }
+      localObject = a();
+      if (localObject != null) {
+        localArrayList.add(localObject);
+      }
+      paramInt += 1;
+    }
+  }
+  
+  public void a(Statistic paramStatistic)
+  {
+    this.a.add(paramStatistic);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhmw
  * JD-Core Version:    0.7.0.1
  */

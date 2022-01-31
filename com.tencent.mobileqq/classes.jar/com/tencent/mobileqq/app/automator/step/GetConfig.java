@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import ajgd;
-import ajxm;
-import alyz;
-import amyp;
+import ajuf;
+import aklw;
+import amop;
 import android.os.Build.VERSION;
-import aqfa;
-import aqun;
-import axxj;
-import axxk;
-import badq;
-import bfcz;
+import anox;
+import aqzc;
+import arpj;
+import ayxq;
+import ayxr;
+import bbev;
+import bgkq;
 import com.tencent.mobileqq.app.PluginConfigProxy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -26,30 +26,30 @@ public class GetConfig
   
   public int a()
   {
-    ((aqun)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(128)).a();
+    ((arpj)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(128)).a();
     Object localObject = new PluginConfigProxy();
     this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a().a((PluginConfigProxy)localObject);
     ((PluginConfigProxy)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app);
-    ((bfcz)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(27)).a();
-    ((amyp)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(77)).a(true);
-    localObject = (ajgd)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(4);
-    ((ajgd)localObject).a(null, new GetResourceReqInfo[] { ((ajgd)localObject).d(), ((ajgd)localObject).f(), ((ajgd)localObject).b(), ((ajgd)localObject).e(), ((ajgd)localObject).c() });
+    ((bgkq)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(27)).a();
+    ((anox)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(77)).a(true);
+    localObject = (ajuf)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(4);
+    ((ajuf)localObject).a(null, new GetResourceReqInfo[] { ((ajuf)localObject).d(), ((ajuf)localObject).f(), ((ajuf)localObject).b(), ((ajuf)localObject).e(), ((ajuf)localObject).c() });
     if (!"5.0.2".equals(Build.VERSION.RELEASE))
     {
-      int i = badq.b(BaseApplication.getContext());
+      int i = bbev.b(BaseApplication.getContext());
       if ((i == 1) || (i == 4))
       {
         localObject = new GetConfig.1(this);
-        axxj localaxxj = (axxj)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(193);
-        if (!localaxxj.a()) {
+        ayxq localayxq = (ayxq)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(193);
+        if (!localayxq.a()) {
           break label264;
         }
-        localaxxj.a(10057, null, "tvk_sdkmgr", 0, "http://tvk_sdkmgr/unkown", "unkown", 1, 0, false, new axxk(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app, "tvk_sdkmgr", (Runnable)localObject, 4000L));
+        localayxq.a(10057, null, "tvk_sdkmgr", 0, "http://tvk_sdkmgr/unkown", "unkown", 1, 0, false, new ayxr(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app, "tvk_sdkmgr", (Runnable)localObject, 4000L));
       }
     }
     for (;;)
     {
-      aqfa.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app).b();
+      aqzc.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app).b();
       return 2;
       label264:
       ((Runnable)localObject).run();
@@ -60,7 +60,7 @@ public class GetConfig
   {
     if (this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new ajxm(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new aklw(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.b(this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener);
     }

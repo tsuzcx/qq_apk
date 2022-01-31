@@ -887,6 +887,16 @@ public class MsfServiceSdk
     unregisterServiceListener();
     this.proxy.unbindMsfService();
   }
+  
+  public ToServiceMsg updateBatterStatusMsg(String paramString, int paramInt1, int paramInt2)
+  {
+    paramString = new ToServiceMsg(getMsfServiceName(), paramString, "push.register");
+    paramString.setMsfCommand(MsfCommand.msf_update_battery);
+    paramString.getAttributes().put("battery_capacity", Integer.valueOf(paramInt1));
+    paramString.getAttributes().put("power_connect", Integer.valueOf(paramInt2));
+    beforeSend(paramString);
+    return paramString;
+  }
 }
 
 

@@ -1,22 +1,27 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import android.os.AsyncTask;
 
-public class aqbm
+class aqbm
+  extends er
 {
-  public List<aqbl> a;
-  public Set<String> a;
+  aqbm(aqbc paramaqbc) {}
   
-  public aqbm()
+  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilSet = new TreeSet();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    try
+    {
+      eo.a(this.a.a, paramAsyncTask, paramInt, new aqbn(this));
+      super.a(paramAsyncTask, paramInt);
+      return;
+    }
+    catch (Exception paramAsyncTask)
+    {
+      paramAsyncTask.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqbm
  * JD-Core Version:    0.7.0.1
  */

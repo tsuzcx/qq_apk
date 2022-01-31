@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import ajjj;
-import ajjy;
+import ajxn;
+import ajyc;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import badq;
+import bbev;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -20,27 +20,27 @@ import com.tencent.widget.XListView;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import sfz;
-import sgc;
-import skt;
-import sqg;
-import sqs;
-import tfy;
-import tgz;
-import tha;
-import thb;
-import thc;
-import thd;
-import the;
-import tww;
-import ulp;
+import ssv;
+import ssy;
+import sxp;
+import tdc;
+import tdo;
+import tsu;
+import ttv;
+import ttw;
+import ttx;
+import tty;
+import ttz;
+import tua;
+import ujs;
+import uyl;
 
 public class MyVideoVisiblePersonPageView
   extends RelativeLayout
   implements View.OnClickListener
 {
   int jdField_a_of_type_Int = -1;
-  ajjj jdField_a_of_type_Ajjj;
+  ajxn jdField_a_of_type_Ajxn;
   public Dialog a;
   public Context a;
   public GestureDetector a;
@@ -49,9 +49,9 @@ public class MyVideoVisiblePersonPageView
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
   String jdField_a_of_type_JavaLangString;
-  sgc jdField_a_of_type_Sgc = new thc(this);
-  tww jdField_a_of_type_Tww;
-  protected ulp a;
+  ssy jdField_a_of_type_Ssy = new tty(this);
+  ujs jdField_a_of_type_Ujs;
+  protected uyl a;
   public int b;
   View jdField_b_of_type_AndroidViewView;
   TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -61,18 +61,18 @@ public class MyVideoVisiblePersonPageView
   {
     super(paramContext);
     this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Ulp = new thd(this);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidContentContext, new the(this));
-    LayoutInflater.from(paramContext).inflate(2131495848, this, true);
-    this.jdField_a_of_type_Ajjj = ((ajjj)tfy.a().getManager(51));
+    this.jdField_a_of_type_Uyl = new ttz(this);
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidContentContext, new tua(this));
+    LayoutInflater.from(paramContext).inflate(2131561439, this, true);
+    this.jdField_a_of_type_Ajxn = ((ajxn)tsu.a().getManager(51));
     this.jdField_a_of_type_AndroidAppDialog = paramDialog;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = tfy.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Sgc);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = tsu.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ssy);
     a();
-    paramDialog = ((sqs)sqg.a(2)).b(QQStoryContext.a().b());
+    paramDialog = ((tdo)tdc.a(2)).b(QQStoryContext.a().b());
     if ((paramDialog != null) && (paramDialog.isVip))
     {
       h();
@@ -98,35 +98,35 @@ public class MyVideoVisiblePersonPageView
   
   public String a()
   {
-    String str = ajjy.a(2131641272);
+    String str = ajyc.a(2131707057);
     if ((this.jdField_a_of_type_Int == 1000) || (this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2)) {
-      str = ajjy.a(2131641274);
+      str = ajyc.a(2131707059);
     }
     while (this.jdField_a_of_type_Int != 3) {
       return str;
     }
-    return ajjy.a(2131641273);
+    return ajyc.a(2131707058);
   }
   
   void a()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131303596));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131307499);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131307586));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131309455));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131369266));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131373212);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373299));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375203));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.c = ((TextView)findViewById(2131313660));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131309715);
-    this.jdField_a_of_type_Tww = new tww(this.jdField_a_of_type_AndroidContentContext, null);
-    this.jdField_a_of_type_Tww.a(2131495847);
-    this.jdField_a_of_type_Tww.a(this.jdField_a_of_type_Ulp);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Tww);
+    this.c = ((TextView)findViewById(2131379494));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131375470);
+    this.jdField_a_of_type_Ujs = new ujs(this.jdField_a_of_type_AndroidContentContext, null);
+    this.jdField_a_of_type_Ujs.a(2131561438);
+    this.jdField_a_of_type_Ujs.a(this.jdField_a_of_type_Uyl);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ujs);
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new tgz(this));
-    tha localtha = new tha(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(localtha);
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(localtha);
-    this.jdField_b_of_type_AndroidViewView.setOnTouchListener(localtha);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new ttv(this));
+    ttw localttw = new ttw(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(localttw);
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(localttw);
+    this.jdField_b_of_type_AndroidViewView.setOnTouchListener(localttw);
   }
   
   public void a(List<QQUserUIItem> paramList)
@@ -136,36 +136,36 @@ public class MyVideoVisiblePersonPageView
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_b_of_type_AndroidViewView.setVisibility(8);
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    if ((this.jdField_a_of_type_Tww != null) && (paramList != null))
+    if ((this.jdField_a_of_type_Ujs != null) && (paramList != null))
     {
       Iterator localIterator = paramList.iterator();
       while (localIterator.hasNext())
       {
         QQUserUIItem localQQUserUIItem = (QQUserUIItem)localIterator.next();
-        Friends localFriends = this.jdField_a_of_type_Ajjj.e(String.valueOf(localQQUserUIItem.qq));
+        Friends localFriends = this.jdField_a_of_type_Ajxn.e(String.valueOf(localQQUserUIItem.qq));
         if (localFriends != null)
         {
           localQQUserUIItem.mComparePartInt = localFriends.mComparePartInt;
           localQQUserUIItem.mCompareSpell = localFriends.mCompareSpell;
         }
       }
-      Collections.sort(paramList, new thb(this));
-      this.jdField_a_of_type_Tww.a(paramList);
-      this.jdField_a_of_type_Tww.notifyDataSetChanged();
+      Collections.sort(paramList, new ttx(this));
+      this.jdField_a_of_type_Ujs.a(paramList);
+      this.jdField_a_of_type_Ujs.notifyDataSetChanged();
     }
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Sgc);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ssy);
   }
   
   void c()
   {
-    if (badq.d(this.jdField_a_of_type_AndroidContentContext))
+    if (bbev.d(this.jdField_a_of_type_AndroidContentContext))
     {
       d();
-      ((sfz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(98)).b(this.jdField_a_of_type_JavaLangString);
+      ((ssv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(98)).b(this.jdField_a_of_type_JavaLangString);
       return;
     }
     e();
@@ -196,8 +196,8 @@ public class MyVideoVisiblePersonPageView
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.c.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(2130845811), null, null);
-    this.c.setText(ajjy.a(2131641271));
+    this.c.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(2130845992), null, null);
+    this.c.setText(ajyc.a(2131707056));
   }
   
   void g()
@@ -207,8 +207,8 @@ public class MyVideoVisiblePersonPageView
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.c.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(2130845809), null, null);
-    this.c.setText(skt.a(2131633884));
+    this.c.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(2130845990), null, null);
+    this.c.setText(sxp.a(2131699672));
   }
   
   void h()
@@ -218,8 +218,8 @@ public class MyVideoVisiblePersonPageView
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.c.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(2130845813), null, null);
-    this.c.setText(ajjy.a(2131641275));
+    this.c.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(2130845994), null, null);
+    this.c.setText(ajyc.a(2131707060));
   }
   
   public void onClick(View paramView)

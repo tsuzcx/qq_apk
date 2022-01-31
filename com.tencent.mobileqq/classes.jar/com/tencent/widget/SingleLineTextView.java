@@ -30,15 +30,15 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
-import asbd;
-import axkk;
-import bacc;
-import benf;
-import beng;
-import benh;
-import beni;
-import benj;
-import benk;
+import asxh;
+import aykp;
+import bbdh;
+import bfuz;
+import bfva;
+import bfvb;
+import bfvc;
+import bfvd;
+import bfve;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -57,12 +57,12 @@ public class SingleLineTextView
   private final TextPaint jdField_a_of_type_AndroidTextTextPaint;
   private TextUtils.TruncateAt jdField_a_of_type_AndroidTextTextUtils$TruncateAt;
   private TransformationMethod jdField_a_of_type_AndroidTextMethodTransformationMethod;
-  private benf jdField_a_of_type_Benf;
+  private bfuz jdField_a_of_type_Bfuz;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  ArrayList<benk> jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<bfve> jdField_a_of_type_JavaUtilArrayList;
   private boolean jdField_a_of_type_Boolean;
-  private final beng[] jdField_a_of_type_ArrayOfBeng;
-  private benj[] jdField_a_of_type_ArrayOfBenj;
+  private final bfva[] jdField_a_of_type_ArrayOfBfva;
+  private bfvd[] jdField_a_of_type_ArrayOfBfvd;
   private float jdField_b_of_type_Float = 0.0F;
   private int jdField_b_of_type_Int = -16777216;
   private BoringLayout.Metrics jdField_b_of_type_AndroidTextBoringLayout$Metrics;
@@ -100,7 +100,7 @@ public class SingleLineTextView
     this.jdField_a_of_type_AndroidTextTextUtils$TruncateAt = TextUtils.TruncateAt.END;
     this.jdField_a_of_type_Boolean = true;
     this.g = -1;
-    this.jdField_a_of_type_ArrayOfBeng = new beng[3];
+    this.jdField_a_of_type_ArrayOfBfva = new bfva[3];
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     this.jdField_c_of_type_Int = 0;
     this.jdField_d_of_type_Int = 0;
@@ -109,7 +109,7 @@ public class SingleLineTextView
     if (paramAttributeSet != null)
     {
       paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.SingleLineTextView);
-      paramInt = paramAttributeSet.getDimensionPixelSize(0, (int)bacc.a(paramContext, 12.0F));
+      paramInt = paramAttributeSet.getDimensionPixelSize(0, (int)bbdh.a(paramContext, 12.0F));
       paramContext = paramAttributeSet.getColorStateList(1);
       localObject = paramAttributeSet.getString(3);
       this.e = paramAttributeSet.getDimensionPixelSize(2, 2147483647);
@@ -121,35 +121,35 @@ public class SingleLineTextView
     }
   }
   
-  public static Drawable a(Context paramContext, benk parambenk)
+  public static Drawable a(Context paramContext, bfve parambfve)
   {
     Object localObject2 = null;
-    asbd localasbd = null;
+    asxh localasxh = null;
     Object localObject1 = localObject2;
     if (paramContext != null)
     {
       localObject1 = localObject2;
-      if (parambenk != null)
+      if (parambfve != null)
       {
-        if (TextUtils.isEmpty(parambenk.jdField_a_of_type_JavaLangString)) {
+        if (TextUtils.isEmpty(parambfve.jdField_a_of_type_JavaLangString)) {
           break label81;
         }
-        localasbd = new asbd(paramContext, parambenk.jdField_a_of_type_JavaLangString);
+        localasxh = new asxh(paramContext, parambfve.jdField_a_of_type_JavaLangString);
       }
     }
     for (;;)
     {
-      localObject1 = localasbd;
-      if (localasbd != null)
+      localObject1 = localasxh;
+      if (localasxh != null)
       {
-        localObject1 = localasbd.mutate();
-        ((Drawable)localObject1).setAlpha((int)(parambenk.jdField_a_of_type_Float * 255.0F));
+        localObject1 = localasxh.mutate();
+        ((Drawable)localObject1).setAlpha((int)(parambfve.jdField_a_of_type_Float * 255.0F));
         ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
       }
       return localObject1;
       label81:
-      if (parambenk.jdField_a_of_type_Int != 0) {
-        localasbd = new asbd(paramContext, parambenk.jdField_a_of_type_Int);
+      if (parambfve.jdField_a_of_type_Int != 0) {
+        localasxh = new asxh(paramContext, parambfve.jdField_a_of_type_Int);
       }
     }
   }
@@ -229,19 +229,19 @@ public class SingleLineTextView
     int j = g();
     boolean bool1 = bool2;
     int m;
-    benj[] arrayOfbenj;
+    bfvd[] arrayOfbfvd;
     if (j > 0)
     {
       bool1 = bool2;
-      if (j > (int)bacc.a(getContext(), 105.0F))
+      if (j > (int)bbdh.a(getContext(), 105.0F))
       {
-        m = Math.min(i(), getResources().getDimensionPixelSize(2131165604));
+        m = Math.min(i(), getResources().getDimensionPixelSize(2131296676));
         bool1 = bool2;
         if (paramInt < m)
         {
-          arrayOfbenj = this.jdField_a_of_type_ArrayOfBenj;
+          arrayOfbfvd = this.jdField_a_of_type_ArrayOfBfvd;
           bool1 = bool2;
-          if (arrayOfbenj != null) {
+          if (arrayOfbfvd != null) {
             j = 0;
           }
         }
@@ -250,23 +250,23 @@ public class SingleLineTextView
     for (int k = paramInt;; k = paramInt)
     {
       bool1 = bool2;
-      if (j < arrayOfbenj.length)
+      if (j < arrayOfbfvd.length)
       {
-        benj localbenj = arrayOfbenj[j];
+        bfvd localbfvd = arrayOfbfvd[j];
         paramInt = k;
-        if (localbenj != null)
+        if (localbfvd != null)
         {
           paramInt = k;
-          if (localbenj.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+          if (localbfvd.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
           {
             paramInt = k;
-            if (!localbenj.jdField_a_of_type_Boolean)
+            if (!localbfvd.jdField_a_of_type_Boolean)
             {
               paramInt = k;
-              if (localbenj.jdField_a_of_type_Int > 0)
+              if (localbfvd.jdField_a_of_type_Int > 0)
               {
-                k += localbenj.jdField_a_of_type_Int;
-                localbenj.jdField_a_of_type_Int = 0;
+                k += localbfvd.jdField_a_of_type_Int;
+                localbfvd.jdField_a_of_type_Int = 0;
                 paramInt = k;
                 if (k >= m) {
                   bool1 = true;
@@ -310,24 +310,24 @@ public class SingleLineTextView
   {
     int k = 0;
     int j = 0;
-    benj[] arrayOfbenj = this.jdField_a_of_type_ArrayOfBenj;
-    if (arrayOfbenj != null)
+    bfvd[] arrayOfbfvd = this.jdField_a_of_type_ArrayOfBfvd;
+    if (arrayOfbfvd != null)
     {
-      int i2 = arrayOfbenj.length;
+      int i2 = arrayOfbfvd.length;
       k = 0;
       int m = 0;
       while (k < i2)
       {
-        benj localbenj = arrayOfbenj[k];
+        bfvd localbfvd = arrayOfbfvd[k];
         int i1 = m;
         int n = j;
-        if (localbenj.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+        if (localbfvd.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
         {
           i1 = m;
           n = j;
-          if (localbenj.jdField_a_of_type_Int > 0)
+          if (localbfvd.jdField_a_of_type_Int > 0)
           {
-            n = j + (this.i + localbenj.jdField_a_of_type_Int);
+            n = j + (this.i + localbfvd.jdField_a_of_type_Int);
             i1 = 1;
           }
         }
@@ -385,26 +385,26 @@ public class SingleLineTextView
   public int a()
   {
     int k = getPaddingLeft();
-    Object localObject = this.jdField_a_of_type_Benf;
+    Object localObject = this.jdField_a_of_type_Bfuz;
     int j = k;
     if (localObject != null)
     {
       j = k;
-      if (((benf)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+      if (((bfuz)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
       {
-        j = ((benf)localObject).g;
-        j = k + (((benf)localObject).jdField_a_of_type_Int + j);
+        j = ((bfuz)localObject).g;
+        j = k + (((bfuz)localObject).jdField_a_of_type_Int + j);
       }
     }
-    localObject = this.jdField_a_of_type_ArrayOfBeng[1];
+    localObject = this.jdField_a_of_type_ArrayOfBfva[1];
     k = j;
     if (localObject != null)
     {
       k = j;
-      if (!((beng)localObject).jdField_a_of_type_Boolean)
+      if (!((bfva)localObject).jdField_a_of_type_Boolean)
       {
-        k = ((beng)localObject).jdField_b_of_type_Int;
-        k = j + (((beng)localObject).a() + k);
+        k = ((bfva)localObject).jdField_b_of_type_Int;
+        k = j + (((bfva)localObject).a() + k);
       }
     }
     return k;
@@ -412,8 +412,8 @@ public class SingleLineTextView
   
   public Drawable a()
   {
-    if (this.jdField_a_of_type_Benf != null) {
-      return this.jdField_a_of_type_Benf.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+    if (this.jdField_a_of_type_Bfuz != null) {
+      return this.jdField_a_of_type_Bfuz.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
     }
     return null;
   }
@@ -438,7 +438,7 @@ public class SingleLineTextView
       }
       while ((this.jdField_a_of_type_JavaLangCharSequence instanceof Spannable))
       {
-        this.jdField_a_of_type_AndroidTextLayout = new benh(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_b_of_type_JavaLangCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, localAlignment, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_AndroidTextTextUtils$TruncateAt, paramInt2);
+        this.jdField_a_of_type_AndroidTextLayout = new bfvb(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_b_of_type_JavaLangCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, localAlignment, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_AndroidTextTextUtils$TruncateAt, paramInt2);
         return;
         localAlignment = Layout.Alignment.ALIGN_CENTER;
         continue;
@@ -477,10 +477,10 @@ public class SingleLineTextView
             this.jdField_a_of_type_AndroidTextLayout = BoringLayout.make(this.jdField_b_of_type_JavaLangCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, localAlignment, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, paramMetrics, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_AndroidTextTextUtils$TruncateAt, paramInt2);
             return;
           }
-          this.jdField_a_of_type_AndroidTextLayout = new beni(this.jdField_b_of_type_JavaLangCharSequence, 0, this.jdField_b_of_type_JavaLangCharSequence.length(), this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, localAlignment, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_AndroidTextTextUtils$TruncateAt, paramInt2);
+          this.jdField_a_of_type_AndroidTextLayout = new bfvc(this.jdField_b_of_type_JavaLangCharSequence, 0, this.jdField_b_of_type_JavaLangCharSequence.length(), this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, localAlignment, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_AndroidTextTextUtils$TruncateAt, paramInt2);
           return;
         }
-        this.jdField_a_of_type_AndroidTextLayout = new beni(this.jdField_b_of_type_JavaLangCharSequence, 0, this.jdField_b_of_type_JavaLangCharSequence.length(), this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, localAlignment, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_AndroidTextTextUtils$TruncateAt, paramInt2);
+        this.jdField_a_of_type_AndroidTextLayout = new bfvc(this.jdField_b_of_type_JavaLangCharSequence, 0, this.jdField_b_of_type_JavaLangCharSequence.length(), this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, localAlignment, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_AndroidTextTextUtils$TruncateAt, paramInt2);
         return;
       }
     }
@@ -489,56 +489,56 @@ public class SingleLineTextView
   public int b()
   {
     int j = getPaddingRight();
-    Object localObject = this.jdField_a_of_type_Benf;
+    Object localObject = this.jdField_a_of_type_Bfuz;
     int k = j;
     if (localObject != null)
     {
       k = j;
-      if (((benf)localObject).jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) {
-        k = j + (((benf)localObject).g + ((benf)localObject).jdField_b_of_type_Int + ((benf)localObject).g);
+      if (((bfuz)localObject).jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) {
+        k = j + (((bfuz)localObject).g + ((bfuz)localObject).jdField_b_of_type_Int + ((bfuz)localObject).g);
       }
     }
     j = k;
     if (localObject != null)
     {
       j = k;
-      if (((benf)localObject).jdField_c_of_type_AndroidGraphicsDrawableDrawable != null)
+      if (((bfuz)localObject).jdField_c_of_type_AndroidGraphicsDrawableDrawable != null)
       {
-        if (((benf)localObject).jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) {
+        if (((bfuz)localObject).jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) {
           break label178;
         }
-        j = ((benf)localObject).jdField_c_of_type_Int;
+        j = ((bfuz)localObject).jdField_c_of_type_Int;
       }
     }
     label178:
     int m;
-    for (j = k + (((benf)localObject).g + j);; j = k + (((benf)localObject).g + (j + m)))
+    for (j = k + (((bfuz)localObject).g + j);; j = k + (((bfuz)localObject).g + (j + m)))
     {
-      localObject = this.jdField_a_of_type_ArrayOfBeng[2];
+      localObject = this.jdField_a_of_type_ArrayOfBfva[2];
       k = j;
       if (localObject != null)
       {
         k = j;
-        if (!((beng)localObject).jdField_a_of_type_Boolean)
+        if (!((bfva)localObject).jdField_a_of_type_Boolean)
         {
-          k = ((beng)localObject).jdField_b_of_type_Int;
-          k = j + (((beng)localObject).a() + k);
+          k = ((bfva)localObject).jdField_b_of_type_Int;
+          k = j + (((bfva)localObject).a() + k);
         }
       }
-      localObject = this.jdField_a_of_type_ArrayOfBeng[0];
+      localObject = this.jdField_a_of_type_ArrayOfBfva[0];
       j = k;
       if (localObject != null)
       {
         j = k;
-        if (!((beng)localObject).jdField_a_of_type_Boolean)
+        if (!((bfva)localObject).jdField_a_of_type_Boolean)
         {
-          j = ((beng)localObject).jdField_b_of_type_Int;
-          j = k + (((beng)localObject).a() + j);
+          j = ((bfva)localObject).jdField_b_of_type_Int;
+          j = k + (((bfva)localObject).a() + j);
         }
       }
       return j + g();
-      j = ((benf)localObject).g;
-      m = ((benf)localObject).jdField_c_of_type_Int;
+      j = ((bfuz)localObject).g;
+      m = ((bfuz)localObject).jdField_c_of_type_Int;
     }
   }
   
@@ -560,20 +560,20 @@ public class SingleLineTextView
       c();
     }
     int[] arrayOfInt = getDrawableState();
-    Object localObject1 = this.jdField_a_of_type_Benf;
+    Object localObject1 = this.jdField_a_of_type_Bfuz;
     if (localObject1 != null)
     {
-      if ((((benf)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (((benf)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable.isStateful())) {
-        ((benf)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(arrayOfInt);
+      if ((((bfuz)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (((bfuz)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable.isStateful())) {
+        ((bfuz)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(arrayOfInt);
       }
-      if ((((benf)localObject1).jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) && (((benf)localObject1).jdField_b_of_type_AndroidGraphicsDrawableDrawable.isStateful())) {
-        ((benf)localObject1).jdField_b_of_type_AndroidGraphicsDrawableDrawable.setState(arrayOfInt);
+      if ((((bfuz)localObject1).jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) && (((bfuz)localObject1).jdField_b_of_type_AndroidGraphicsDrawableDrawable.isStateful())) {
+        ((bfuz)localObject1).jdField_b_of_type_AndroidGraphicsDrawableDrawable.setState(arrayOfInt);
       }
-      if ((((benf)localObject1).jdField_c_of_type_AndroidGraphicsDrawableDrawable != null) && (((benf)localObject1).jdField_c_of_type_AndroidGraphicsDrawableDrawable.isStateful())) {
-        ((benf)localObject1).jdField_c_of_type_AndroidGraphicsDrawableDrawable.setState(arrayOfInt);
+      if ((((bfuz)localObject1).jdField_c_of_type_AndroidGraphicsDrawableDrawable != null) && (((bfuz)localObject1).jdField_c_of_type_AndroidGraphicsDrawableDrawable.isStateful())) {
+        ((bfuz)localObject1).jdField_c_of_type_AndroidGraphicsDrawableDrawable.setState(arrayOfInt);
       }
     }
-    localObject1 = this.jdField_a_of_type_ArrayOfBenj;
+    localObject1 = this.jdField_a_of_type_ArrayOfBfvd;
     if (localObject1 != null)
     {
       int m = localObject1.length;
@@ -588,15 +588,15 @@ public class SingleLineTextView
       }
     }
     int j = 0;
-    if (j < this.jdField_a_of_type_ArrayOfBeng.length)
+    if (j < this.jdField_a_of_type_ArrayOfBfva.length)
     {
-      localObject1 = this.jdField_a_of_type_ArrayOfBeng[j];
+      localObject1 = this.jdField_a_of_type_ArrayOfBfva[j];
       if (localObject1 == null) {}
       for (;;)
       {
         j += 1;
         break;
-        if (((beng)localObject1).a(arrayOfInt)) {
+        if (((bfva)localObject1).a(arrayOfInt)) {
           k = 1;
         }
       }
@@ -695,17 +695,17 @@ public class SingleLineTextView
       localObject1 = paramDrawable.getBounds();
       j = getScrollX();
       k = getScrollY();
-      localObject2 = this.jdField_a_of_type_Benf;
+      localObject2 = this.jdField_a_of_type_Bfuz;
       if (localObject2 == null) {
         break label721;
       }
-      if (paramDrawable == ((benf)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable)
+      if (paramDrawable == ((bfuz)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable)
       {
         n = c();
         i1 = d();
         i2 = getHeight();
         m = getPaddingLeft();
-        k = (i2 - i1 - n - ((benf)localObject2).jdField_d_of_type_Int) / 2 + n + k;
+        k = (i2 - i1 - n - ((bfuz)localObject2).jdField_d_of_type_Int) / 2 + n + k;
         j = m + j;
       }
     }
@@ -713,22 +713,22 @@ public class SingleLineTextView
     label721:
     for (;;)
     {
-      localObject2 = this.jdField_a_of_type_ArrayOfBenj;
+      localObject2 = this.jdField_a_of_type_ArrayOfBfvd;
       i2 = k;
       i1 = j;
       Object localObject3;
       if (localObject2 != null)
       {
-        localObject3 = this.jdField_a_of_type_ArrayOfBeng[0];
+        localObject3 = this.jdField_a_of_type_ArrayOfBfva[0];
         n = getWidth() - getPaddingRight() - this.h;
         m = n;
         if (localObject3 != null)
         {
           m = n;
-          if (!((beng)localObject3).jdField_a_of_type_Boolean)
+          if (!((bfva)localObject3).jdField_a_of_type_Boolean)
           {
-            m = ((beng)localObject3).a();
-            m = n - (((beng)localObject3).jdField_b_of_type_Int + m);
+            m = ((bfva)localObject3).a();
+            m = n - (((bfva)localObject3).jdField_b_of_type_Int + m);
           }
         }
         n = 0;
@@ -763,19 +763,19 @@ public class SingleLineTextView
                 m += 1;
                 i1 = i2;
                 continue;
-                if (paramDrawable == ((benf)localObject2).jdField_b_of_type_AndroidGraphicsDrawableDrawable)
+                if (paramDrawable == ((bfuz)localObject2).jdField_b_of_type_AndroidGraphicsDrawableDrawable)
                 {
                   i2 = c();
                   i3 = d();
                   i4 = getHeight();
                   m = getWidth();
                   n = getPaddingRight();
-                  i1 = ((benf)localObject2).jdField_b_of_type_Int;
-                  k = (i4 - i3 - i2 - ((benf)localObject2).e) / 2 + i2 + k;
+                  i1 = ((bfuz)localObject2).jdField_b_of_type_Int;
+                  k = (i4 - i3 - i2 - ((bfuz)localObject2).e) / 2 + i2 + k;
                   j = m - n - i1 + j;
                   break;
                 }
-                if (paramDrawable != ((benf)localObject2).jdField_c_of_type_AndroidGraphicsDrawableDrawable) {
+                if (paramDrawable != ((bfuz)localObject2).jdField_c_of_type_AndroidGraphicsDrawableDrawable) {
                   break label721;
                 }
                 n = c();
@@ -783,10 +783,10 @@ public class SingleLineTextView
                 i2 = getHeight();
                 m = j + i();
                 j = m;
-                if (((benf)localObject2).jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) {
-                  j = m + (((benf)localObject2).jdField_b_of_type_Int + ((benf)localObject2).g);
+                if (((bfuz)localObject2).jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) {
+                  j = m + (((bfuz)localObject2).jdField_b_of_type_Int + ((bfuz)localObject2).g);
                 }
-                m = (i2 - i1 - n - ((benf)localObject2).f) / 2;
+                m = (i2 - i1 - n - ((bfuz)localObject2).f) / 2;
                 k += n + m;
                 break;
               }
@@ -803,7 +803,7 @@ public class SingleLineTextView
             break label720;
           }
           localObject1 = (Spannable)localObject1;
-          localObject1 = (axkk[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), axkk.class);
+          localObject1 = (aykp[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), aykp.class);
           if ((localObject1 == null) || (localObject1.length <= 0)) {
             break label720;
           }
@@ -813,7 +813,7 @@ public class SingleLineTextView
           while (j < k)
           {
             localObject2 = localObject1[j];
-            if (((axkk)localObject2).a() == paramDrawable) {
+            if (((aykp)localObject2).a() == paramDrawable) {
               a(localObject2);
             }
             j += 1;
@@ -871,25 +871,25 @@ public class SingleLineTextView
         j = h();
       }
       Object localObject1 = getDrawableState();
-      Object localObject2 = this.jdField_a_of_type_Benf;
-      if ((localObject2 != null) && (((benf)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
+      Object localObject2 = this.jdField_a_of_type_Bfuz;
+      if ((localObject2 != null) && (((bfuz)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
       {
         paramCanvas.save();
         int i13 = getPaddingLeft();
-        int i14 = (i4 - ((benf)localObject2).jdField_d_of_type_Int) / 2;
+        int i14 = (i4 - ((bfuz)localObject2).jdField_d_of_type_Int) / 2;
         paramCanvas.translate(i13 + i5, i3 + i2 + i14);
-        ((benf)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+        ((bfuz)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
         paramCanvas.restore();
       }
-      Object localObject3 = this.jdField_a_of_type_ArrayOfBeng[1];
+      Object localObject3 = this.jdField_a_of_type_ArrayOfBfva[1];
       Paint.FontMetrics localFontMetrics;
       float f2;
       float f1;
-      if ((localObject3 != null) && (!((beng)localObject3).jdField_a_of_type_Boolean))
+      if ((localObject3 != null) && (!((bfva)localObject3).jdField_a_of_type_Boolean))
       {
         paramCanvas.save();
-        paramCanvas.translate(i5 + n - ((beng)localObject3).a(), i8 + k);
-        localFontMetrics = ((beng)localObject3).a();
+        paramCanvas.translate(i5 + n - ((bfva)localObject3).a(), i8 + k);
+        localFontMetrics = ((bfva)localObject3).a();
         f2 = i9;
         f1 = f2;
         if (localFontMetrics != null)
@@ -899,7 +899,7 @@ public class SingleLineTextView
             f1 = (int)(getMeasuredHeight() - localFontMetrics.bottom);
           }
         }
-        ((beng)localObject3).a(paramCanvas, (int[])localObject1, 0.0F, f1);
+        ((bfva)localObject3).a(paramCanvas, (int[])localObject1, 0.0F, f1);
         paramCanvas.restore();
       }
       localObject3 = this.jdField_a_of_type_AndroidTextLayout;
@@ -910,17 +910,17 @@ public class SingleLineTextView
       paramCanvas.translate(n, i8 + k);
       ((Layout)localObject3).draw(paramCanvas, null, null, j - k);
       paramCanvas.restore();
-      localObject3 = this.jdField_a_of_type_ArrayOfBeng[2];
+      localObject3 = this.jdField_a_of_type_ArrayOfBfva[2];
       j = m;
       if (localObject3 != null)
       {
         j = m;
-        if (!((beng)localObject3).jdField_a_of_type_Boolean)
+        if (!((bfva)localObject3).jdField_a_of_type_Boolean)
         {
           paramCanvas.save();
-          j = i() + 0 + ((beng)localObject3).jdField_b_of_type_Int;
+          j = i() + 0 + ((bfva)localObject3).jdField_b_of_type_Int;
           n = i5 + i6 - i7 - i10 + 0;
-          m = 0 + (((beng)localObject3).a() + ((beng)localObject3).jdField_b_of_type_Int);
+          m = 0 + (((bfva)localObject3).a() + ((bfva)localObject3).jdField_b_of_type_Int);
           if (n <= j) {
             break label1185;
           }
@@ -929,29 +929,29 @@ public class SingleLineTextView
       for (;;)
       {
         paramCanvas.translate(j, i8 + k);
-        localFontMetrics = ((beng)localObject3).a();
+        localFontMetrics = ((bfva)localObject3).a();
         f2 = i9;
         f1 = f2;
         if (localFontMetrics != null)
         {
           f1 = f2;
           if (f2 > getMeasuredHeight() - localFontMetrics.bottom) {
-            f1 = (int)(((beng)localObject3).b() - localFontMetrics.bottom);
+            f1 = (int)(((bfva)localObject3).b() - localFontMetrics.bottom);
           }
         }
-        ((beng)localObject3).a(paramCanvas, (int[])localObject1, 0.0F, f1);
+        ((bfva)localObject3).a(paramCanvas, (int[])localObject1, 0.0F, f1);
         paramCanvas.restore();
         j = m;
         m = j;
         if (localObject2 != null)
         {
           m = j;
-          if (((benf)localObject2).jdField_c_of_type_AndroidGraphicsDrawableDrawable != null)
+          if (((bfuz)localObject2).jdField_c_of_type_AndroidGraphicsDrawableDrawable != null)
           {
             paramCanvas.save();
-            n = i() + j + ((benf)localObject2).g;
-            i1 = i5 + i6 - i7 - i10 + j + ((benf)localObject2).g;
-            m = j + (((benf)localObject2).jdField_c_of_type_Int + ((benf)localObject2).g);
+            n = i() + j + ((bfuz)localObject2).g;
+            i1 = i5 + i6 - i7 - i10 + j + ((bfuz)localObject2).g;
+            m = j + (((bfuz)localObject2).jdField_c_of_type_Int + ((bfuz)localObject2).g);
             if (i1 <= n) {
               break label1178;
             }
@@ -959,43 +959,43 @@ public class SingleLineTextView
         }
         for (j = n;; j = i1)
         {
-          n = (i4 - ((benf)localObject2).f) / 2;
+          n = (i4 - ((bfuz)localObject2).f) / 2;
           paramCanvas.translate(j, i3 + i2 + n);
-          ((benf)localObject2).jdField_c_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+          ((bfuz)localObject2).jdField_c_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
           paramCanvas.restore();
-          if ((localObject2 != null) && (((benf)localObject2).jdField_b_of_type_AndroidGraphicsDrawableDrawable != null))
+          if ((localObject2 != null) && (((bfuz)localObject2).jdField_b_of_type_AndroidGraphicsDrawableDrawable != null))
           {
             paramCanvas.save();
-            j = i() + m + ((benf)localObject2).g;
-            m = i5 + i6 - i7 - i10 + m + ((benf)localObject2).g;
-            n = ((benf)localObject2).jdField_b_of_type_Int;
-            n = ((benf)localObject2).g;
+            j = i() + m + ((bfuz)localObject2).g;
+            m = i5 + i6 - i7 - i10 + m + ((bfuz)localObject2).g;
+            n = ((bfuz)localObject2).jdField_b_of_type_Int;
+            n = ((bfuz)localObject2).g;
             if (m <= j) {
               break label1171;
             }
           }
           for (;;)
           {
-            m = (i4 - ((benf)localObject2).e) / 2;
+            m = (i4 - ((bfuz)localObject2).e) / 2;
             paramCanvas.translate(j, i3 + i2 + m);
-            ((benf)localObject2).jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+            ((bfuz)localObject2).jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
             paramCanvas.restore();
-            localObject2 = this.jdField_a_of_type_ArrayOfBeng[0];
+            localObject2 = this.jdField_a_of_type_ArrayOfBfva[0];
             m = 0;
             j = m;
             if (localObject2 != null)
             {
               j = m;
-              if (!((beng)localObject2).jdField_a_of_type_Boolean)
+              if (!((bfva)localObject2).jdField_a_of_type_Boolean)
               {
                 paramCanvas.save();
-                paramCanvas.translate(i5 + i6 - i7 - ((beng)localObject2).a() - getPaddingRight(), k + i8);
-                ((beng)localObject2).a(paramCanvas, (int[])localObject1, 0.0F, i9);
+                paramCanvas.translate(i5 + i6 - i7 - ((bfva)localObject2).a() - getPaddingRight(), k + i8);
+                ((bfva)localObject2).a(paramCanvas, (int[])localObject1, 0.0F, i9);
                 paramCanvas.restore();
-                j = ((beng)localObject2).a();
+                j = ((bfva)localObject2).a();
               }
             }
-            localObject1 = this.jdField_a_of_type_ArrayOfBenj;
+            localObject1 = this.jdField_a_of_type_ArrayOfBfvd;
             if (localObject1 != null)
             {
               k = getPaddingRight();
@@ -1097,12 +1097,12 @@ public class SingleLineTextView
         for (paramInt1 = this.jdField_a_of_type_AndroidTextLayout.getLineTop(paramInt1);; paramInt1 = 0)
         {
           paramInt1 += n;
-          localObject = this.jdField_a_of_type_Benf;
+          localObject = this.jdField_a_of_type_Bfuz;
           paramInt2 = paramInt1;
           if (localObject != null) {
-            paramInt2 = Math.max(Math.max(paramInt1, ((benf)localObject).jdField_d_of_type_Int), ((benf)localObject).e);
+            paramInt2 = Math.max(Math.max(paramInt1, ((bfuz)localObject).jdField_d_of_type_Int), ((bfuz)localObject).e);
           }
-          localObject = this.jdField_a_of_type_ArrayOfBenj;
+          localObject = this.jdField_a_of_type_ArrayOfBfvd;
           paramInt1 = paramInt2;
           if (localObject != null)
           {
@@ -1125,16 +1125,16 @@ public class SingleLineTextView
             for (;;)
             {
               k = paramInt1;
-              if (paramInt2 >= this.jdField_a_of_type_ArrayOfBeng.length) {
+              if (paramInt2 >= this.jdField_a_of_type_ArrayOfBfva.length) {
                 break;
               }
-              localObject = this.jdField_a_of_type_ArrayOfBeng[paramInt2];
+              localObject = this.jdField_a_of_type_ArrayOfBfva[paramInt2];
               k = paramInt1;
               if (localObject != null)
               {
                 k = paramInt1;
-                if (!((beng)localObject).jdField_a_of_type_Boolean) {
-                  k = Math.max(paramInt1, ((beng)localObject).b());
+                if (!((bfva)localObject).jdField_a_of_type_Boolean) {
+                  k = Math.max(paramInt1, ((bfva)localObject).b());
                 }
               }
               paramInt2 += 1;
@@ -1159,29 +1159,29 @@ public class SingleLineTextView
   
   public void setCompoundDrawablePadding(int paramInt)
   {
-    benf localbenf2 = this.jdField_a_of_type_Benf;
+    bfuz localbfuz2 = this.jdField_a_of_type_Bfuz;
     if (paramInt == 0) {
-      if (localbenf2 == null) {}
+      if (localbfuz2 == null) {}
     }
-    benf localbenf1;
-    for (localbenf2.g = paramInt;; localbenf1.g = paramInt)
+    bfuz localbfuz1;
+    for (localbfuz2.g = paramInt;; localbfuz1.g = paramInt)
     {
       if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
       }
       return;
-      localbenf1 = localbenf2;
-      if (localbenf2 == null)
+      localbfuz1 = localbfuz2;
+      if (localbfuz2 == null)
       {
-        localbenf1 = new benf(null);
-        this.jdField_a_of_type_Benf = localbenf1;
+        localbfuz1 = new bfuz(null);
+        this.jdField_a_of_type_Bfuz = localbfuz1;
       }
     }
   }
   
   public void setCompoundDrawables(Drawable paramDrawable1, Drawable paramDrawable2)
   {
-    Object localObject2 = this.jdField_a_of_type_Benf;
+    Object localObject2 = this.jdField_a_of_type_Bfuz;
     int j;
     if ((paramDrawable1 != null) || (paramDrawable2 != null))
     {
@@ -1191,10 +1191,10 @@ public class SingleLineTextView
       }
       if (localObject2 != null)
       {
-        if (((benf)localObject2).g != 0) {
+        if (((bfuz)localObject2).g != 0) {
           break label64;
         }
-        this.jdField_a_of_type_Benf = null;
+        this.jdField_a_of_type_Bfuz = null;
       }
     }
     for (;;)
@@ -1206,43 +1206,43 @@ public class SingleLineTextView
       j = 0;
       break;
       label64:
-      if (((benf)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-        ((benf)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(null);
+      if (((bfuz)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+        ((bfuz)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(null);
       }
-      ((benf)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-      if (((benf)localObject2).jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) {
-        ((benf)localObject2).jdField_b_of_type_AndroidGraphicsDrawableDrawable.setCallback(null);
+      ((bfuz)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+      if (((bfuz)localObject2).jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) {
+        ((bfuz)localObject2).jdField_b_of_type_AndroidGraphicsDrawableDrawable.setCallback(null);
       }
-      ((benf)localObject2).jdField_b_of_type_AndroidGraphicsDrawableDrawable = null;
-      ((benf)localObject2).jdField_d_of_type_Int = 0;
-      ((benf)localObject2).jdField_a_of_type_Int = 0;
-      ((benf)localObject2).e = 0;
-      ((benf)localObject2).jdField_b_of_type_Int = 0;
+      ((bfuz)localObject2).jdField_b_of_type_AndroidGraphicsDrawableDrawable = null;
+      ((bfuz)localObject2).jdField_d_of_type_Int = 0;
+      ((bfuz)localObject2).jdField_a_of_type_Int = 0;
+      ((bfuz)localObject2).e = 0;
+      ((bfuz)localObject2).jdField_b_of_type_Int = 0;
       continue;
       label137:
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject1 = new benf(null);
-        this.jdField_a_of_type_Benf = ((benf)localObject1);
+        localObject1 = new bfuz(null);
+        this.jdField_a_of_type_Bfuz = ((bfuz)localObject1);
       }
-      if ((((benf)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable != paramDrawable1) && (((benf)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)) {
-        ((benf)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(null);
+      if ((((bfuz)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable != paramDrawable1) && (((bfuz)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)) {
+        ((bfuz)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(null);
       }
-      ((benf)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable1;
-      if ((((benf)localObject1).jdField_b_of_type_AndroidGraphicsDrawableDrawable != paramDrawable1) && (((benf)localObject1).jdField_b_of_type_AndroidGraphicsDrawableDrawable != null)) {
-        ((benf)localObject1).jdField_b_of_type_AndroidGraphicsDrawableDrawable.setCallback(null);
+      ((bfuz)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable1;
+      if ((((bfuz)localObject1).jdField_b_of_type_AndroidGraphicsDrawableDrawable != paramDrawable1) && (((bfuz)localObject1).jdField_b_of_type_AndroidGraphicsDrawableDrawable != null)) {
+        ((bfuz)localObject1).jdField_b_of_type_AndroidGraphicsDrawableDrawable.setCallback(null);
       }
-      ((benf)localObject1).jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramDrawable2;
-      localObject2 = ((benf)localObject1).jdField_a_of_type_AndroidGraphicsRect;
+      ((bfuz)localObject1).jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramDrawable2;
+      localObject2 = ((bfuz)localObject1).jdField_a_of_type_AndroidGraphicsRect;
       int[] arrayOfInt = getDrawableState();
       if (paramDrawable1 != null)
       {
         paramDrawable1.setState(arrayOfInt);
         paramDrawable1.copyBounds((Rect)localObject2);
         paramDrawable1.setCallback(this);
-        ((benf)localObject1).jdField_a_of_type_Int = ((Rect)localObject2).width();
-        ((benf)localObject1).jdField_d_of_type_Int = ((Rect)localObject2).height();
+        ((bfuz)localObject1).jdField_a_of_type_Int = ((Rect)localObject2).width();
+        ((bfuz)localObject1).jdField_d_of_type_Int = ((Rect)localObject2).height();
       }
       for (;;)
       {
@@ -1252,22 +1252,22 @@ public class SingleLineTextView
         paramDrawable2.setState(arrayOfInt);
         paramDrawable2.copyBounds((Rect)localObject2);
         paramDrawable2.setCallback(this);
-        ((benf)localObject1).jdField_b_of_type_Int = ((Rect)localObject2).width();
-        ((benf)localObject1).e = ((Rect)localObject2).height();
+        ((bfuz)localObject1).jdField_b_of_type_Int = ((Rect)localObject2).width();
+        ((bfuz)localObject1).e = ((Rect)localObject2).height();
         break;
-        ((benf)localObject1).jdField_d_of_type_Int = 0;
-        ((benf)localObject1).jdField_a_of_type_Int = 0;
+        ((bfuz)localObject1).jdField_d_of_type_Int = 0;
+        ((bfuz)localObject1).jdField_a_of_type_Int = 0;
       }
       label341:
-      ((benf)localObject1).e = 0;
-      ((benf)localObject1).jdField_b_of_type_Int = 0;
+      ((bfuz)localObject1).e = 0;
+      ((bfuz)localObject1).jdField_b_of_type_Int = 0;
     }
   }
   
   public void setCompoundDrawablesWithIntrinsicBounds(int paramInt1, int paramInt2)
   {
     Drawable localDrawable2 = null;
-    if ((paramInt1 == 0) && (paramInt2 == 0) && (this.jdField_a_of_type_Benf != null) && ((this.jdField_a_of_type_Benf.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) || (this.jdField_a_of_type_Benf.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null)))
+    if ((paramInt1 == 0) && (paramInt2 == 0) && (this.jdField_a_of_type_Bfuz != null) && ((this.jdField_a_of_type_Bfuz.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) || (this.jdField_a_of_type_Bfuz.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null)))
     {
       this.jdField_c_of_type_Int = 0;
       this.jdField_d_of_type_Int = 0;
@@ -1309,16 +1309,16 @@ public class SingleLineTextView
   
   public void setDrawableRight2(Drawable paramDrawable)
   {
-    Object localObject2 = this.jdField_a_of_type_Benf;
+    Object localObject2 = this.jdField_a_of_type_Bfuz;
     if (paramDrawable == null) {
       if (localObject2 != null)
       {
-        if (((benf)localObject2).jdField_c_of_type_AndroidGraphicsDrawableDrawable != null) {
-          ((benf)localObject2).jdField_c_of_type_AndroidGraphicsDrawableDrawable.setCallback(null);
+        if (((bfuz)localObject2).jdField_c_of_type_AndroidGraphicsDrawableDrawable != null) {
+          ((bfuz)localObject2).jdField_c_of_type_AndroidGraphicsDrawableDrawable.setCallback(null);
         }
-        ((benf)localObject2).jdField_c_of_type_AndroidGraphicsDrawableDrawable = null;
-        ((benf)localObject2).f = 0;
-        ((benf)localObject2).jdField_c_of_type_Int = 0;
+        ((bfuz)localObject2).jdField_c_of_type_AndroidGraphicsDrawableDrawable = null;
+        ((bfuz)localObject2).f = 0;
+        ((bfuz)localObject2).jdField_c_of_type_Int = 0;
       }
     }
     for (;;)
@@ -1330,19 +1330,19 @@ public class SingleLineTextView
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject1 = new benf(null);
-        this.jdField_a_of_type_Benf = ((benf)localObject1);
+        localObject1 = new bfuz(null);
+        this.jdField_a_of_type_Bfuz = ((bfuz)localObject1);
       }
-      if ((((benf)localObject1).jdField_c_of_type_AndroidGraphicsDrawableDrawable != paramDrawable) && (((benf)localObject1).jdField_c_of_type_AndroidGraphicsDrawableDrawable != null)) {
-        ((benf)localObject1).jdField_c_of_type_AndroidGraphicsDrawableDrawable.setCallback(null);
+      if ((((bfuz)localObject1).jdField_c_of_type_AndroidGraphicsDrawableDrawable != paramDrawable) && (((bfuz)localObject1).jdField_c_of_type_AndroidGraphicsDrawableDrawable != null)) {
+        ((bfuz)localObject1).jdField_c_of_type_AndroidGraphicsDrawableDrawable.setCallback(null);
       }
-      ((benf)localObject1).jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-      localObject2 = ((benf)localObject1).jdField_a_of_type_AndroidGraphicsRect;
+      ((bfuz)localObject1).jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+      localObject2 = ((bfuz)localObject1).jdField_a_of_type_AndroidGraphicsRect;
       paramDrawable.setState(getDrawableState());
       paramDrawable.copyBounds((Rect)localObject2);
       paramDrawable.setCallback(this);
-      ((benf)localObject1).jdField_c_of_type_Int = ((Rect)localObject2).width();
-      ((benf)localObject1).f = ((Rect)localObject2).height();
+      ((bfuz)localObject1).jdField_c_of_type_Int = ((Rect)localObject2).width();
+      ((bfuz)localObject1).f = ((Rect)localObject2).height();
     }
   }
   
@@ -1356,19 +1356,19 @@ public class SingleLineTextView
   
   public void setExtendText(String paramString, int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfBeng.length)) {}
-    beng localbeng2;
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfBfva.length)) {}
+    bfva localbfva2;
     boolean bool;
     do
     {
       return;
-      localbeng2 = this.jdField_a_of_type_ArrayOfBeng[paramInt];
+      localbfva2 = this.jdField_a_of_type_ArrayOfBfva[paramInt];
       bool = TextUtils.isEmpty(paramString);
-    } while ((bool) && ((localbeng2 == null) || (localbeng2.jdField_a_of_type_Boolean)));
+    } while ((bool) && ((localbfva2 == null) || (localbfva2.jdField_a_of_type_Boolean)));
     int j;
-    if ((bool) && (localbeng2 != null) && (!localbeng2.jdField_a_of_type_Boolean))
+    if ((bool) && (localbfva2 != null) && (!localbfva2.jdField_a_of_type_Boolean))
     {
-      localbeng2.a();
+      localbfva2.a();
       j = 1;
     }
     for (;;)
@@ -1383,17 +1383,17 @@ public class SingleLineTextView
       return;
       if (!bool)
       {
-        beng localbeng1 = localbeng2;
-        if (localbeng2 == null)
+        bfva localbfva1 = localbfva2;
+        if (localbfva2 == null)
         {
-          localbeng1 = new beng(getResources());
-          this.jdField_a_of_type_ArrayOfBeng[paramInt] = localbeng1;
+          localbfva1 = new bfva(getResources());
+          this.jdField_a_of_type_ArrayOfBfva[paramInt] = localbfva1;
         }
-        if (!paramString.equals(localbeng1.jdField_a_of_type_JavaLangString))
+        if (!paramString.equals(localbfva1.jdField_a_of_type_JavaLangString))
         {
-          localbeng1.jdField_a_of_type_JavaLangString = paramString;
-          localbeng1.jdField_c_of_type_Int = -1;
-          localbeng1.jdField_a_of_type_Boolean = false;
+          localbfva1.jdField_a_of_type_JavaLangString = paramString;
+          localbfva1.jdField_c_of_type_Int = -1;
+          localbfva1.jdField_a_of_type_Boolean = false;
           j = 1;
           continue;
         }
@@ -1404,55 +1404,55 @@ public class SingleLineTextView
   
   public void setExtendTextColor(ColorStateList paramColorStateList, int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfBeng.length)) {}
-    beng localbeng1;
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfBfva.length)) {}
+    bfva localbfva1;
     do
     {
       return;
-      beng localbeng2 = this.jdField_a_of_type_ArrayOfBeng[paramInt];
-      localbeng1 = localbeng2;
-      if (localbeng2 == null)
+      bfva localbfva2 = this.jdField_a_of_type_ArrayOfBfva[paramInt];
+      localbfva1 = localbfva2;
+      if (localbfva2 == null)
       {
-        localbeng1 = new beng(getResources());
-        this.jdField_a_of_type_ArrayOfBeng[paramInt] = localbeng1;
+        localbfva1 = new bfva(getResources());
+        this.jdField_a_of_type_ArrayOfBfva[paramInt] = localbfva1;
       }
-    } while (!localbeng1.a(paramColorStateList, getDrawableState()));
+    } while (!localbfva1.a(paramColorStateList, getDrawableState()));
     postInvalidate();
   }
   
   public void setExtendTextPadding(int paramInt1, int paramInt2)
   {
-    if ((paramInt2 < 0) || (paramInt2 >= this.jdField_a_of_type_ArrayOfBeng.length)) {}
-    beng localbeng2;
+    if ((paramInt2 < 0) || (paramInt2 >= this.jdField_a_of_type_ArrayOfBfva.length)) {}
+    bfva localbfva2;
     do
     {
       return;
-      localbeng2 = this.jdField_a_of_type_ArrayOfBeng[paramInt2];
-    } while ((paramInt1 <= 0) && ((localbeng2 == null) || (localbeng2.jdField_a_of_type_Boolean)));
-    beng localbeng1 = localbeng2;
-    if (localbeng2 == null)
+      localbfva2 = this.jdField_a_of_type_ArrayOfBfva[paramInt2];
+    } while ((paramInt1 <= 0) && ((localbfva2 == null) || (localbfva2.jdField_a_of_type_Boolean)));
+    bfva localbfva1 = localbfva2;
+    if (localbfva2 == null)
     {
-      localbeng1 = new beng(getResources());
-      this.jdField_a_of_type_ArrayOfBeng[paramInt2] = localbeng1;
+      localbfva1 = new bfva(getResources());
+      this.jdField_a_of_type_ArrayOfBfva[paramInt2] = localbfva1;
     }
-    localbeng1.jdField_b_of_type_Int = paramInt1;
+    localbfva1.jdField_b_of_type_Int = paramInt1;
   }
   
   public void setExtendTextSize(float paramFloat, int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfBeng.length)) {}
-    beng localbeng1;
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfBfva.length)) {}
+    bfva localbfva1;
     do
     {
       return;
-      beng localbeng2 = this.jdField_a_of_type_ArrayOfBeng[paramInt];
-      localbeng1 = localbeng2;
-      if (localbeng2 == null)
+      bfva localbfva2 = this.jdField_a_of_type_ArrayOfBfva[paramInt];
+      localbfva1 = localbfva2;
+      if (localbfva2 == null)
       {
-        localbeng1 = new beng(getResources());
-        this.jdField_a_of_type_ArrayOfBeng[paramInt] = localbeng1;
+        localbfva1 = new bfva(getResources());
+        this.jdField_a_of_type_ArrayOfBfva[paramInt] = localbfva1;
       }
-    } while ((!localbeng1.a(paramFloat, getContext())) || (this.jdField_a_of_type_AndroidOsHandler.hasMessages(1)));
+    } while ((!localbfva1.a(paramFloat, getContext())) || (this.jdField_a_of_type_AndroidOsHandler.hasMessages(1)));
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
   }
   
@@ -1501,7 +1501,7 @@ public class SingleLineTextView
   
   public void setIconDrawables(Drawable[] paramArrayOfDrawable, boolean paramBoolean)
   {
-    Object localObject2 = this.jdField_a_of_type_ArrayOfBenj;
+    Object localObject2 = this.jdField_a_of_type_ArrayOfBfvd;
     int j;
     if ((!paramBoolean) || (paramArrayOfDrawable == null) || (paramArrayOfDrawable.length == 0)) {
       if (localObject2 != null)
@@ -1523,7 +1523,7 @@ public class SingleLineTextView
       }
     }
     Object localObject1;
-    for (this.jdField_a_of_type_ArrayOfBenj = null;; this.jdField_a_of_type_ArrayOfBenj = ((benj[])localObject1))
+    for (this.jdField_a_of_type_ArrayOfBfvd = null;; this.jdField_a_of_type_ArrayOfBfvd = ((bfvd[])localObject1))
     {
       if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
@@ -1536,11 +1536,11 @@ public class SingleLineTextView
       }
       else
       {
-        localObject1 = new benj[paramArrayOfDrawable.length];
+        localObject1 = new bfvd[paramArrayOfDrawable.length];
         j = 0;
         while (j < localObject1.length)
         {
-          localObject1[j] = new benj(null);
+          localObject1[j] = new bfvd(null);
           j += 1;
         }
       }
@@ -1574,7 +1574,7 @@ public class SingleLineTextView
     }
   }
   
-  public void setIconDrawablesWithIntrinsicBounds(ArrayList<benk> paramArrayList)
+  public void setIconDrawablesWithIntrinsicBounds(ArrayList<bfve> paramArrayList)
   {
     int m = 0;
     if (paramArrayList != null) {}
@@ -1592,7 +1592,7 @@ public class SingleLineTextView
           if (j >= k) {
             break label261;
           }
-          if (!((benk)this.jdField_a_of_type_JavaUtilArrayList.get(j)).a((benk)paramArrayList.get(j))) {
+          if (!((bfve)this.jdField_a_of_type_JavaUtilArrayList.get(j)).a((bfve)paramArrayList.get(j))) {
             j = 1;
           }
         }
@@ -1614,8 +1614,8 @@ public class SingleLineTextView
             {
               if (j < k)
               {
-                benk localbenk = (benk)paramArrayList.get(j);
-                localObject[j] = a(getContext(), localbenk);
+                bfve localbfve = (bfve)paramArrayList.get(j);
+                localObject[j] = a(getContext(), localbfve);
                 if (localObject[j] == null) {
                   break label252;
                 }
@@ -1633,14 +1633,14 @@ public class SingleLineTextView
           {
             this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
             setIconDrawables((Drawable[])localObject, bool);
-            localObject = this.jdField_a_of_type_ArrayOfBenj;
+            localObject = this.jdField_a_of_type_ArrayOfBfvd;
             if ((localObject != null) && (paramArrayList != null))
             {
               j = m;
               while ((j < localObject.length) && (j < paramArrayList.size()))
               {
                 if ((localObject[j] != null) && (paramArrayList.get(j) != null)) {
-                  localObject[j].jdField_a_of_type_Boolean = ((benk)paramArrayList.get(j)).jdField_a_of_type_Boolean;
+                  localObject[j].jdField_a_of_type_Boolean = ((bfve)paramArrayList.get(j)).jdField_a_of_type_Boolean;
                 }
                 j += 1;
               }
@@ -1701,7 +1701,7 @@ public class SingleLineTextView
           break;
         }
         paramCharSequence = (Spannable)a();
-        paramCharSequence = (axkk[])paramCharSequence.getSpans(0, paramCharSequence.length(), axkk.class);
+        paramCharSequence = (aykp[])paramCharSequence.getSpans(0, paramCharSequence.length(), aykp.class);
         if (j >= paramCharSequence.length) {
           break;
         }

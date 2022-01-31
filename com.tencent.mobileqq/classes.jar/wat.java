@@ -1,31 +1,36 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.subscribe.comment.EmoView;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
 
-public class wat
-  extends Handler
+final class wat
+  extends wad
 {
-  public wat(EmoView paramEmoView) {}
+  wat(wad paramwad, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onFailure(String paramString)
   {
-    int i;
-    if (paramMessage.what == 0)
-    {
-      i = EmoView.a(this.a) + 1;
-      if ((i <= 4) && (EmoView.a(this.a)[EmoView.a(this.a)] == 0)) {}
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
     }
-    else
-    {
-      return;
-    }
-    EmoView.a(this.a, i);
-    EmoView.a(this.a)[EmoView.a(this.a)] = 1;
+    this.jdField_a_of_type_Wad.onFailure(paramString);
+    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 2, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " combine mix music and original failed " + paramString);
+  }
+  
+  public void onStart()
+  {
+    super.onStart();
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 2, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " combine mix music and original start");
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = this.b;
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 2, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " combine mix music and original：" + String.valueOf(l1 - l2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wat
  * JD-Core Version:    0.7.0.1
  */

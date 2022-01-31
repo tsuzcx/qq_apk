@@ -1,15 +1,8 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class vaa
-  implements View.OnFocusChangeListener
+public abstract interface vaa
 {
-  vaa(uzx paramuzx) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
-  {
-    urk.b("EditTextDialog", "onFocusChange:" + paramBoolean);
-  }
+  public abstract void a(ErrorMessage paramErrorMessage);
 }
 
 

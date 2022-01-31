@@ -29,7 +29,7 @@ class ImageJsPlugin$4
     }
     paramIntent = new ArrayList();
     paramIntent.add(this.val$imageFile.getAbsolutePath());
-    ImageJsPlugin.access$200(this.this$0, paramIntent, this.val$webview, this.val$callbackId);
+    ImageJsPlugin.access$300(this.this$0, paramIntent, this.val$webview, this.val$callbackId);
     MiniAppController.getInstance().removeActivityResultListener(this);
     return true;
   }

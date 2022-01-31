@@ -1,45 +1,68 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr.FileUploadMgrObserver.1;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Set;
-
 public class ayug
-  implements Observer
 {
-  private final void a(Object paramObject)
+  public int a = 40000;
+  public int b = 30000;
+  public int c = 20000;
+  public int d = 20000;
+  public int e = 15000;
+  public int f = 10000;
+  private int g;
+  
+  public ayug() {}
+  
+  private ayug(ayug paramayug)
   {
-    paramObject = (Object[])paramObject;
-    int i = ((Integer)paramObject[0]).intValue();
-    paramObject = (Object[])paramObject[1];
-    switch (i)
-    {
-    default: 
-      return;
-    }
-    a((Set)paramObject[0]);
+    this.a = paramayug.a;
+    this.b = paramayug.b;
+    this.c = paramayug.c;
+    this.d = paramayug.d;
+    this.e = paramayug.e;
+    this.f = paramayug.f;
   }
   
-  protected void a(Set<Long> paramSet) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public int a(int paramInt)
   {
-    if (paramObject == null) {
-      return;
-    }
-    paramObservable = Looper.getMainLooper();
-    if (Thread.currentThread() != paramObservable.getThread())
+    switch (paramInt)
     {
-      new Handler(paramObservable).post(new TroopFileUploadMgr.FileUploadMgrObserver.1(this, paramObject));
-      return;
+    case 2: 
+    default: 
+      return this.a;
+    case 1: 
+    case 4: 
+    case 5: 
+      return this.c;
     }
-    a(paramObject);
+    return this.b;
+  }
+  
+  public ayug a()
+  {
+    return new ayug(this);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.g = (paramInt * 2000);
+  }
+  
+  public int b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return this.d + this.g;
+    case 1: 
+    case 4: 
+    case 5: 
+      return this.f + this.g;
+    }
+    return this.e + this.g;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayug
  * JD-Core Version:    0.7.0.1
  */

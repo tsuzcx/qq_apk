@@ -1,34 +1,73 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams;
+import android.os.IBinder;
+import android.os.IBinder.DeathRecipient;
+import android.os.RemoteException;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbqa
-  implements ValueAnimator.AnimatorUpdateListener
+  implements IBinder.DeathRecipient, bbqb
 {
-  public bbqa(FloatingScreenContainer paramFloatingScreenContainer, int paramInt1, int paramInt2, WindowManager.LayoutParams paramLayoutParams, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
+  private long jdField_a_of_type_Long;
+  private ayll jdField_a_of_type_Ayll;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  private bbqa(long paramLong, String paramString, ayll paramayll)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    if (this.jdField_a_of_type_Int >= -this.b) {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = ((int)(this.c + paramValueAnimator.floatValue() * (this.jdField_a_of_type_Int - this.c)));
-    }
-    if (this.d >= this.e)
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Ayll = paramayll;
+    try
     {
-      WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-      float f1 = this.f;
-      localLayoutParams.y = ((int)(paramValueAnimator.floatValue() * (this.d - this.f) + f1));
+      paramayll.asBinder().linkToDeath(this, 0);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.a(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-    FloatingScreenContainer.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer).setFloatingCenterX(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x);
-    FloatingScreenContainer.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer).setFloatingCenterY(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y);
+    catch (RemoteException paramString)
+    {
+      QLog.e("QuickUpdateIPCModule", 1, "linkToDeath fail: " + this, paramString);
+    }
+  }
+  
+  public void binderDied()
+  {
+    QLog.e("QuickUpdateIPCModule", 1, "binderDied: " + this);
+    bbsy.a(this.jdField_a_of_type_Long).removeListener(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this);
+  }
+  
+  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  {
+    QLog.e("QuickUpdateIPCModule", 1, "onCompleted: " + paramInt1 + ", " + this);
+    try
+    {
+      this.jdField_a_of_type_Ayll.onComplete(paramString1, paramInt1);
+      return;
+    }
+    catch (RemoteException paramQQAppInterface)
+    {
+      QLog.e("QuickUpdateIPCModule", 1, "onCompleted: " + this, paramQQAppInterface);
+    }
+  }
+  
+  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
+  {
+    try
+    {
+      this.jdField_a_of_type_Ayll.onProgress(paramString1, paramLong2, paramLong3);
+      return;
+    }
+    catch (RemoteException paramQQAppInterface)
+    {
+      QLog.e("QuickUpdateIPCModule", 1, "onProgress: " + this, paramQQAppInterface);
+    }
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_Long + "_" + this.jdField_a_of_type_JavaLangString + "," + super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbqa
  * JD-Core Version:    0.7.0.1
  */

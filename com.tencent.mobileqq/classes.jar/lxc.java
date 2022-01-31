@@ -1,8 +1,19 @@
-public abstract interface lxc
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.LBSInfo;
+
+public final class lxc
+  implements Parcelable.Creator<LBSInfo>
 {
-  public abstract void a();
+  public LBSInfo a(Parcel paramParcel)
+  {
+    return new LBSInfo(paramParcel);
+  }
   
-  public abstract void b();
+  public LBSInfo[] a(int paramInt)
+  {
+    return new LBSInfo[paramInt];
+  }
 }
 
 

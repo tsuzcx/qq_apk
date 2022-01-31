@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.confess;
 
-import alyi;
+import amny;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.Uri.Builder;
 import android.text.TextUtils;
-import bbac;
+import bcdb;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import mpl;
 import mqq.os.MqqHandler;
+import nam;
 import org.json.JSONArray;
 
 public class ConfessPlugin$5
@@ -44,23 +44,23 @@ public class ConfessPlugin$5
       ConfessPlugin.a(this.this$0, false);
       return;
     }
-    Bitmap localBitmap = alyi.a((AppInterface)localObject4, (Context)localObject3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);
+    Bitmap localBitmap = amny.a((AppInterface)localObject4, (Context)localObject3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);
     if ((this.jdField_b_of_type_Int == 0) && (localBitmap != null)) {}
-    for (Object localObject2 = alyi.b((AppInterface)localObject4, (Context)localObject3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);; localObject2 = null)
+    for (Object localObject2 = amny.b((AppInterface)localObject4, (Context)localObject3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);; localObject2 = null)
     {
       if ((localBitmap == null) || ((this.jdField_b_of_type_Int == 0) && (localObject2 == null)))
       {
         ConfessPlugin.a(this.this$0);
         ConfessPlugin.a(this.this$0, false);
-        ConfessPlugin.a(this.this$0, 0, 2131653595);
+        ConfessPlugin.a(this.this$0, 0, 2131719476);
         return;
       }
-      String str3 = alyi.a((AppInterface)localObject4, (Context)localObject3, localBitmap);
+      String str3 = amny.a((AppInterface)localObject4, (Context)localObject3, localBitmap);
       String str1 = this.jdField_c_of_type_JavaLangString;
       if (this.jdField_b_of_type_Int == 0)
       {
-        localObject1 = alyi.a(str3, this.this$0.mRuntime.a());
-        localObject2 = alyi.a(alyi.a((AppInterface)localObject4, (Context)localObject3, (Bitmap)localObject2), this.this$0.mRuntime.a());
+        localObject1 = amny.a(str3, this.this$0.mRuntime.a());
+        localObject2 = amny.a(amny.a((AppInterface)localObject4, (Context)localObject3, (Bitmap)localObject2), this.this$0.mRuntime.a());
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           localObject3 = ((String)localObject2).replace("http://qqadapt.qpic.cn/qqshare/", "");
@@ -73,7 +73,7 @@ public class ConfessPlugin$5
         {
           ConfessPlugin.a(this.this$0);
           ConfessPlugin.a(this.this$0, false);
-          ConfessPlugin.a(this.this$0, 1, 2131631056);
+          ConfessPlugin.a(this.this$0, 1, 2131696768);
           return;
         }
         localObject2 = this.jdField_d_of_type_JavaLangString;
@@ -100,7 +100,7 @@ public class ConfessPlugin$5
           localObject4 = localObject2;
           if (!((HashMap)localObject5).isEmpty())
           {
-            localObject4 = mpl.a((HashMap)localObject5);
+            localObject4 = nam.a((HashMap)localObject5);
             localObject3 = (String)((HashMap)localObject4).get("remoteUrl");
             if (localObject3 != null) {
               localObject1 = localObject3;

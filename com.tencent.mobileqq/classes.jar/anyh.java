@@ -1,33 +1,67 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class anyh
-  implements TextWatcher
+  implements anza
 {
-  public anyh(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
+  public anyh(EmoticonMainPanel paramEmoticonMainPanel, int paramInt, long paramLong) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a()
   {
-    paramEditable = MPFileVerifyPwdView.a(this.a).getText().toString();
-    if ((!TextUtils.isEmpty(paramEditable)) && (paramEditable.length() >= 16)) {
-      apcb.a(BaseApplicationImpl.getContext().getString(2131628729));
+    int k = 1;
+    int j = this.jdField_a_of_type_Int;
+    int i = j;
+    List localList;
+    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.h)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonMainPanel", 2, "switchTabMode mMarketPgkDownloaded = true");
+      }
+      localList = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_JavaUtilList;
+      i = j;
+      if (localList != null)
+      {
+        i = j;
+        if (localList.size() > 0)
+        {
+          if ((localList.size() <= EmoticonMainPanel.e) || (((aoak)localList.get(EmoticonMainPanel.e)).jdField_a_of_type_Int != 8)) {
+            break label163;
+          }
+          i = 1;
+          if (!((anrs)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(334)).c()) {
+            break label198;
+          }
+        }
+      }
     }
-    while (TextUtils.isEmpty(paramEditable)) {
-      return;
+    label163:
+    label198:
+    for (j = k;; j = 0)
+    {
+      if (i != 0) {
+        if (localList.size() >= j + 4) {
+          i = j + 3;
+        }
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.h = false;
+        EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, this.jdField_a_of_type_Long, i);
+        return;
+        i = 0;
+        break;
+        i = 0;
+        continue;
+        if (localList.size() >= j + 3) {
+          i = j + 2;
+        } else {
+          i = 0;
+        }
+      }
     }
-    MPFileVerifyPwdView.b(this.a).setEnabled(true);
-    MPFileVerifyPwdView.b(this.a).setTextColor(Color.parseColor("#00a5e0"));
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

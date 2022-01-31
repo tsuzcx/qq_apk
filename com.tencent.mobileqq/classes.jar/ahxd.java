@@ -1,25 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-
 public class ahxd
-  implements Animation.AnimationListener
 {
-  public ahxd(SpecailCareListActivity paramSpecailCareListActivity, ahxh paramahxh) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public ahxd(int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Ahxh.c.setVisibility(0);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahxd
  * JD-Core Version:    0.7.0.1
  */

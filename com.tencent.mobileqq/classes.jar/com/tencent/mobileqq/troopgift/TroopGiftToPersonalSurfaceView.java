@@ -11,21 +11,21 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import axbe;
-import axbf;
-import axbg;
-import axbh;
-import axbi;
-import axbk;
-import axbm;
-import axbn;
-import axby;
-import axbz;
-import axci;
-import axcl;
-import azqp;
-import azqr;
-import azvv;
+import aybg;
+import aybh;
+import aybi;
+import aybj;
+import aybk;
+import aybm;
+import aybo;
+import aybp;
+import ayca;
+import aycb;
+import ayck;
+import aycn;
+import bart;
+import barv;
+import bawz;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
 
@@ -33,11 +33,11 @@ public class TroopGiftToPersonalSurfaceView
   extends SpriteGLView
 {
   protected int a;
-  private axci jdField_a_of_type_Axci;
-  private axci[] jdField_a_of_type_ArrayOfAxci;
+  private ayck jdField_a_of_type_Ayck;
+  private ayck[] jdField_a_of_type_ArrayOfAyck;
   protected int b;
-  private axci b;
-  private axci c;
+  private ayck b;
+  private ayck c;
   private int d;
   
   public TroopGiftToPersonalSurfaceView(Context paramContext, AttributeSet paramAttributeSet)
@@ -47,7 +47,7 @@ public class TroopGiftToPersonalSurfaceView
   
   private Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    int i = azvv.a(getContext(), 4.0F);
+    int i = bawz.a(getContext(), 4.0F);
     try
     {
       Bitmap localBitmap1 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
@@ -73,7 +73,7 @@ public class TroopGiftToPersonalSurfaceView
       paramBitmap.setAlpha(43);
       paramBitmap.setStyle(Paint.Style.STROKE);
       paramBitmap.setAntiAlias(true);
-      paramBitmap.setStrokeWidth(azvv.a(getContext(), 1.0F));
+      paramBitmap.setStrokeWidth(bawz.a(getContext(), 1.0F));
       localCanvas.drawCircle(localBitmap1.getWidth() / 2, localBitmap1.getHeight() / 2, localBitmap1.getWidth() / 2, paramBitmap);
       localBitmap2.recycle();
       return localBitmap1;
@@ -82,72 +82,72 @@ public class TroopGiftToPersonalSurfaceView
     return null;
   }
   
-  public void a(int paramInt, axbf paramaxbf)
+  public void a(int paramInt, aybh paramaybh)
   {
-    int i = this.jdField_a_of_type_Axci.d();
+    int i = this.jdField_a_of_type_Ayck.d();
     int j = (int)(i * 0.15F);
-    this.jdField_a_of_type_Axci.a(new axbe[] { new axbn(new axbe[] { new axbg(paramInt), new axbm(200, 1.0F, 1.05F), new axbm(200, 1.05F, 0.0F) }), new axbn(new axbe[] { new axbg(paramInt), new axbi(200, (int)this.jdField_a_of_type_Axci.c, (int)this.jdField_a_of_type_Axci.d, (int)this.jdField_a_of_type_Axci.c - j / 2, (int)this.jdField_a_of_type_Axci.d), new axbi(200, (int)this.jdField_a_of_type_Axci.c, (int)this.jdField_a_of_type_Axci.d, (int)this.jdField_a_of_type_Axci.c + j / 2 + i, (int)this.jdField_a_of_type_Axci.d) }) });
-    if (this.jdField_b_of_type_Axci.a() == null)
+    this.jdField_a_of_type_Ayck.a(new aybg[] { new aybp(new aybg[] { new aybi(paramInt), new aybo(200, 1.0F, 1.05F), new aybo(200, 1.05F, 0.0F) }), new aybp(new aybg[] { new aybi(paramInt), new aybk(200, (int)this.jdField_a_of_type_Ayck.c, (int)this.jdField_a_of_type_Ayck.d, (int)this.jdField_a_of_type_Ayck.c - j / 2, (int)this.jdField_a_of_type_Ayck.d), new aybk(200, (int)this.jdField_a_of_type_Ayck.c, (int)this.jdField_a_of_type_Ayck.d, (int)this.jdField_a_of_type_Ayck.c + j / 2 + i, (int)this.jdField_a_of_type_Ayck.d) }) });
+    if (this.jdField_b_of_type_Ayck.a() == null)
     {
-      if (paramaxbf != null) {
-        paramaxbf.a();
+      if (paramaybh != null) {
+        paramaybh.a();
       }
       return;
     }
-    axbm localaxbm = new axbm(200, 1.05F, 0.0F);
-    this.jdField_b_of_type_Axci.a(new axbe[] { new axbn(new axbe[] { new axbg(paramInt), new axbm(200, 1.0F, 1.05F), localaxbm }), new axbn(new axbe[] { new axbi(200, (int)this.jdField_b_of_type_Axci.c, (int)this.jdField_b_of_type_Axci.d, (int)this.jdField_b_of_type_Axci.c + j / 2, (int)this.jdField_b_of_type_Axci.d), new axbi(200, (int)this.jdField_b_of_type_Axci.c, (int)this.jdField_b_of_type_Axci.d, (int)this.jdField_b_of_type_Axci.c - j / 2 - i, (int)this.jdField_b_of_type_Axci.d) }) });
-    localaxbm.a(paramaxbf);
+    aybo localaybo = new aybo(200, 1.05F, 0.0F);
+    this.jdField_b_of_type_Ayck.a(new aybg[] { new aybp(new aybg[] { new aybi(paramInt), new aybo(200, 1.0F, 1.05F), localaybo }), new aybp(new aybg[] { new aybk(200, (int)this.jdField_b_of_type_Ayck.c, (int)this.jdField_b_of_type_Ayck.d, (int)this.jdField_b_of_type_Ayck.c + j / 2, (int)this.jdField_b_of_type_Ayck.d), new aybk(200, (int)this.jdField_b_of_type_Ayck.c, (int)this.jdField_b_of_type_Ayck.d, (int)this.jdField_b_of_type_Ayck.c - j / 2 - i, (int)this.jdField_b_of_type_Ayck.d) }) });
+    localaybo.a(paramaybh);
   }
   
-  public void a(axbz paramaxbz)
+  public void a(aycb paramaycb)
   {
-    this.jdField_a_of_type_Axci.e = 0.0F;
-    this.jdField_b_of_type_Axci.e = 0.0F;
-    int i = this.jdField_a_of_type_Axci.d();
+    this.jdField_a_of_type_Ayck.e = 0.0F;
+    this.jdField_b_of_type_Ayck.e = 0.0F;
+    int i = this.jdField_a_of_type_Ayck.d();
     int j = i / 10;
-    this.jdField_a_of_type_Axci.a(this.jdField_a_of_type_Int / 2 - i, this.d);
-    this.jdField_b_of_type_Axci.a(this.jdField_a_of_type_Int / 2 + i, this.d);
-    this.jdField_a_of_type_ArrayOfAxci[0].a(this.jdField_a_of_type_Int / 2 - i, this.d - j * 2);
-    this.jdField_a_of_type_ArrayOfAxci[1].a(this.jdField_a_of_type_Int / 2 - i, this.d - j);
-    this.jdField_a_of_type_ArrayOfAxci[2].a(this.jdField_a_of_type_Int / 2 - i, this.d);
-    this.jdField_a_of_type_ArrayOfAxci[3].a(this.jdField_a_of_type_Int / 2 - i * 6 / 5, this.d + j);
-    this.jdField_a_of_type_ArrayOfAxci[4].a(this.jdField_a_of_type_Int / 2 - i * 6 / 5, this.d + j * 2);
-    this.jdField_a_of_type_ArrayOfAxci[5].a(this.jdField_a_of_type_Int / 2 - i, j * 2 + this.d);
-    this.jdField_a_of_type_Axci.a(new axbe[] { new axbn(new axbe[] { new axbm(200, 0.0F, 1.05F), new axbm(150, 1.05F, 1.0F) }) });
-    this.jdField_b_of_type_Axci.a(new axbe[] { new axbn(new axbe[] { new axbg(200), new axbm(200, 0.0F, 1.05F), new axbm(150, 1.05F, 1.0F) }) });
-    float f = 9.0F / (this.jdField_b_of_type_Axci.c - this.jdField_a_of_type_Axci.c);
-    axbn localaxbn1 = new axbn(new axbe[] { new axbg(500), new axbh(600, (int)this.jdField_a_of_type_ArrayOfAxci[0].c, (int)this.jdField_a_of_type_ArrayOfAxci[0].d, (int)this.jdField_b_of_type_Axci.c, i / 20, f) });
-    axbn localaxbn2 = new axbn(new axbe[] { new axbg(700), new axbh(600, (int)this.jdField_a_of_type_ArrayOfAxci[1].c, (int)this.jdField_a_of_type_ArrayOfAxci[1].d, (int)this.jdField_b_of_type_Axci.c, i / 20, f) });
-    axbn localaxbn3 = new axbn(new axbe[] { new axbg(600), new axbh(600, (int)this.jdField_a_of_type_ArrayOfAxci[2].c, (int)this.jdField_a_of_type_ArrayOfAxci[2].d, (int)this.jdField_b_of_type_Axci.c, i / 20, f) });
-    axbn localaxbn4 = new axbn(new axbe[] { new axbg(900), new axbh(600, (int)this.jdField_a_of_type_ArrayOfAxci[3].c, (int)this.jdField_a_of_type_ArrayOfAxci[3].d, (int)this.jdField_b_of_type_Axci.c, i / 20, f * 0.6F) });
-    axbn localaxbn5 = new axbn(new axbe[] { new axbg(800), new axbh(600, (int)this.jdField_a_of_type_ArrayOfAxci[4].c, (int)this.jdField_a_of_type_ArrayOfAxci[4].d, (int)this.jdField_b_of_type_Axci.c, i / 20, f * 0.6F) });
-    axbn localaxbn6 = new axbn(new axbe[] { new axbg(1000), new axbh(600, (int)this.jdField_a_of_type_ArrayOfAxci[5].c, (int)this.jdField_a_of_type_ArrayOfAxci[5].d, (int)this.jdField_b_of_type_Axci.c, i / 20, f) });
+    this.jdField_a_of_type_Ayck.a(this.jdField_a_of_type_Int / 2 - i, this.d);
+    this.jdField_b_of_type_Ayck.a(this.jdField_a_of_type_Int / 2 + i, this.d);
+    this.jdField_a_of_type_ArrayOfAyck[0].a(this.jdField_a_of_type_Int / 2 - i, this.d - j * 2);
+    this.jdField_a_of_type_ArrayOfAyck[1].a(this.jdField_a_of_type_Int / 2 - i, this.d - j);
+    this.jdField_a_of_type_ArrayOfAyck[2].a(this.jdField_a_of_type_Int / 2 - i, this.d);
+    this.jdField_a_of_type_ArrayOfAyck[3].a(this.jdField_a_of_type_Int / 2 - i * 6 / 5, this.d + j);
+    this.jdField_a_of_type_ArrayOfAyck[4].a(this.jdField_a_of_type_Int / 2 - i * 6 / 5, this.d + j * 2);
+    this.jdField_a_of_type_ArrayOfAyck[5].a(this.jdField_a_of_type_Int / 2 - i, j * 2 + this.d);
+    this.jdField_a_of_type_Ayck.a(new aybg[] { new aybp(new aybg[] { new aybo(200, 0.0F, 1.05F), new aybo(150, 1.05F, 1.0F) }) });
+    this.jdField_b_of_type_Ayck.a(new aybg[] { new aybp(new aybg[] { new aybi(200), new aybo(200, 0.0F, 1.05F), new aybo(150, 1.05F, 1.0F) }) });
+    float f = 9.0F / (this.jdField_b_of_type_Ayck.c - this.jdField_a_of_type_Ayck.c);
+    aybp localaybp1 = new aybp(new aybg[] { new aybi(500), new aybj(600, (int)this.jdField_a_of_type_ArrayOfAyck[0].c, (int)this.jdField_a_of_type_ArrayOfAyck[0].d, (int)this.jdField_b_of_type_Ayck.c, i / 20, f) });
+    aybp localaybp2 = new aybp(new aybg[] { new aybi(700), new aybj(600, (int)this.jdField_a_of_type_ArrayOfAyck[1].c, (int)this.jdField_a_of_type_ArrayOfAyck[1].d, (int)this.jdField_b_of_type_Ayck.c, i / 20, f) });
+    aybp localaybp3 = new aybp(new aybg[] { new aybi(600), new aybj(600, (int)this.jdField_a_of_type_ArrayOfAyck[2].c, (int)this.jdField_a_of_type_ArrayOfAyck[2].d, (int)this.jdField_b_of_type_Ayck.c, i / 20, f) });
+    aybp localaybp4 = new aybp(new aybg[] { new aybi(900), new aybj(600, (int)this.jdField_a_of_type_ArrayOfAyck[3].c, (int)this.jdField_a_of_type_ArrayOfAyck[3].d, (int)this.jdField_b_of_type_Ayck.c, i / 20, f * 0.6F) });
+    aybp localaybp5 = new aybp(new aybg[] { new aybi(800), new aybj(600, (int)this.jdField_a_of_type_ArrayOfAyck[4].c, (int)this.jdField_a_of_type_ArrayOfAyck[4].d, (int)this.jdField_b_of_type_Ayck.c, i / 20, f * 0.6F) });
+    aybp localaybp6 = new aybp(new aybg[] { new aybi(1000), new aybj(600, (int)this.jdField_a_of_type_ArrayOfAyck[5].c, (int)this.jdField_a_of_type_ArrayOfAyck[5].d, (int)this.jdField_b_of_type_Ayck.c, i / 20, f) });
     i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfAxci.length)
+    while (i < this.jdField_a_of_type_ArrayOfAyck.length)
     {
-      this.jdField_a_of_type_ArrayOfAxci[i].e = 0.0F;
-      this.jdField_a_of_type_ArrayOfAxci[i].jdField_a_of_type_Int = 255;
-      this.jdField_a_of_type_ArrayOfAxci[i].a(new axbe[] { new axbe[] { localaxbn1, localaxbn2, localaxbn3, localaxbn4, localaxbn5, localaxbn6 }[i], new axbn(new axbe[] { new axbg(1300), new axbk(300, 255, 0) }) });
+      this.jdField_a_of_type_ArrayOfAyck[i].e = 0.0F;
+      this.jdField_a_of_type_ArrayOfAyck[i].jdField_a_of_type_Int = 255;
+      this.jdField_a_of_type_ArrayOfAyck[i].a(new aybg[] { new aybg[] { localaybp1, localaybp2, localaybp3, localaybp4, localaybp5, localaybp6 }[i], new aybp(new aybg[] { new aybi(1300), new aybm(300, 255, 0) }) });
       i += 1;
     }
-    if ((this.c != null) && ((this.c instanceof axby)))
+    if ((this.c != null) && ((this.c instanceof ayca)))
     {
-      ((axby)this.c).a = new azqp(this, paramaxbz);
-      ((axby)this.c).a(getContext(), this);
+      ((ayca)this.c).a = new bart(this, paramaycb);
+      ((ayca)this.c).a(getContext(), this);
     }
     while (a())
     {
       a(this.c);
-      a(this.jdField_a_of_type_Axci);
-      a(this.jdField_b_of_type_Axci);
+      a(this.jdField_a_of_type_Ayck);
+      a(this.jdField_b_of_type_Ayck);
       i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfAxci.length)
+      while (i < this.jdField_a_of_type_ArrayOfAyck.length)
       {
-        a(this.jdField_a_of_type_ArrayOfAxci[i]);
+        a(this.jdField_a_of_type_ArrayOfAyck[i]);
         i += 1;
       }
       if ((this.c != null) && ((this.c instanceof VideoSprite))) {
-        ((VideoSprite)this.c).a(new azqr(this, paramaxbz));
+        ((VideoSprite)this.c).a(new barv(this, paramaycb));
       }
     }
   }
@@ -177,8 +177,8 @@ public class TroopGiftToPersonalSurfaceView
   
   public void setReceiveHeadBitmap(Bitmap paramBitmap)
   {
-    if ((paramBitmap != null) && (this.jdField_b_of_type_Axci != null)) {
-      this.jdField_b_of_type_Axci.a(this, a(paramBitmap.copy(Bitmap.Config.ARGB_8888, false), azvv.a(getContext(), 70.0F), azvv.a(getContext(), 70.0F)));
+    if ((paramBitmap != null) && (this.jdField_b_of_type_Ayck != null)) {
+      this.jdField_b_of_type_Ayck.a(this, a(paramBitmap.copy(Bitmap.Config.ARGB_8888, false), bawz.a(getContext(), 70.0F), bawz.a(getContext(), 70.0F)));
     }
   }
   
@@ -189,75 +189,75 @@ public class TroopGiftToPersonalSurfaceView
     this.c.c = (paramInt1 / 2);
     this.c.d = (paramInt2 / 2);
     a(this.c);
-    this.jdField_a_of_type_Axci = new axci();
-    a(this.jdField_a_of_type_Axci);
-    this.jdField_b_of_type_Axci = new axci();
-    a(this.jdField_b_of_type_Axci);
-    this.jdField_a_of_type_Axci.e = 0.0F;
-    this.jdField_b_of_type_Axci.e = 0.0F;
-    this.jdField_a_of_type_ArrayOfAxci = new axci[6];
+    this.jdField_a_of_type_Ayck = new ayck();
+    a(this.jdField_a_of_type_Ayck);
+    this.jdField_b_of_type_Ayck = new ayck();
+    a(this.jdField_b_of_type_Ayck);
+    this.jdField_a_of_type_Ayck.e = 0.0F;
+    this.jdField_b_of_type_Ayck.e = 0.0F;
+    this.jdField_a_of_type_ArrayOfAyck = new ayck[6];
     paramInt1 = 0;
     while (paramInt1 < 6)
     {
-      this.jdField_a_of_type_ArrayOfAxci[paramInt1] = new axci();
-      this.jdField_a_of_type_ArrayOfAxci[paramInt1].e = 0.0F;
-      a(this.jdField_a_of_type_ArrayOfAxci[paramInt1]);
+      this.jdField_a_of_type_ArrayOfAyck[paramInt1] = new ayck();
+      this.jdField_a_of_type_ArrayOfAyck[paramInt1].e = 0.0F;
+      a(this.jdField_a_of_type_ArrayOfAyck[paramInt1]);
       paramInt1 += 1;
     }
     if (paramBitmap1 != null) {
-      this.jdField_a_of_type_Axci.a(this, a(paramBitmap1.copy(Bitmap.Config.ARGB_8888, false), azvv.a(getContext(), 70.0F), azvv.a(getContext(), 70.0F)));
+      this.jdField_a_of_type_Ayck.a(this, a(paramBitmap1.copy(Bitmap.Config.ARGB_8888, false), bawz.a(getContext(), 70.0F), bawz.a(getContext(), 70.0F)));
     }
     if (paramBitmap2 != null) {
-      this.jdField_b_of_type_Axci.a(this, a(paramBitmap2.copy(Bitmap.Config.ARGB_8888, false), azvv.a(getContext(), 70.0F), azvv.a(getContext(), 70.0F)));
+      this.jdField_b_of_type_Ayck.a(this, a(paramBitmap2.copy(Bitmap.Config.ARGB_8888, false), bawz.a(getContext(), 70.0F), bawz.a(getContext(), 70.0F)));
     }
-    paramBitmap1 = new axcl(this, paramBitmap3);
+    paramBitmap1 = new aycn(this, paramBitmap3);
     paramInt1 = 0;
     while (paramInt1 < 6)
     {
-      this.jdField_a_of_type_ArrayOfAxci[paramInt1].a(paramBitmap1);
+      this.jdField_a_of_type_ArrayOfAyck[paramInt1].a(paramBitmap1);
       paramInt1 += 1;
     }
   }
   
   public void setResourceWithFps(Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, String[] paramArrayOfString, int paramInt)
   {
-    this.c = new axby(this, paramArrayOfString);
-    ((axby)this.c).e(paramInt);
+    this.c = new ayca(this, paramArrayOfString);
+    ((ayca)this.c).e(paramInt);
     a(this.c);
-    this.jdField_a_of_type_Axci = new axci();
-    a(this.jdField_a_of_type_Axci);
-    this.jdField_b_of_type_Axci = new axci();
-    a(this.jdField_b_of_type_Axci);
-    this.jdField_a_of_type_Axci.e = 0.0F;
-    this.jdField_b_of_type_Axci.e = 0.0F;
-    this.jdField_a_of_type_ArrayOfAxci = new axci[6];
+    this.jdField_a_of_type_Ayck = new ayck();
+    a(this.jdField_a_of_type_Ayck);
+    this.jdField_b_of_type_Ayck = new ayck();
+    a(this.jdField_b_of_type_Ayck);
+    this.jdField_a_of_type_Ayck.e = 0.0F;
+    this.jdField_b_of_type_Ayck.e = 0.0F;
+    this.jdField_a_of_type_ArrayOfAyck = new ayck[6];
     paramInt = 0;
     while (paramInt < 6)
     {
-      this.jdField_a_of_type_ArrayOfAxci[paramInt] = new axci();
-      this.jdField_a_of_type_ArrayOfAxci[paramInt].e = 0.0F;
-      a(this.jdField_a_of_type_ArrayOfAxci[paramInt]);
+      this.jdField_a_of_type_ArrayOfAyck[paramInt] = new ayck();
+      this.jdField_a_of_type_ArrayOfAyck[paramInt].e = 0.0F;
+      a(this.jdField_a_of_type_ArrayOfAyck[paramInt]);
       paramInt += 1;
     }
     if (paramBitmap1 != null) {
-      this.jdField_a_of_type_Axci.a(this, a(paramBitmap1.copy(Bitmap.Config.ARGB_8888, false), azvv.a(getContext(), 70.0F), azvv.a(getContext(), 70.0F)));
+      this.jdField_a_of_type_Ayck.a(this, a(paramBitmap1.copy(Bitmap.Config.ARGB_8888, false), bawz.a(getContext(), 70.0F), bawz.a(getContext(), 70.0F)));
     }
     if (paramBitmap2 != null) {
-      this.jdField_b_of_type_Axci.a(this, a(paramBitmap2.copy(Bitmap.Config.ARGB_8888, false), azvv.a(getContext(), 70.0F), azvv.a(getContext(), 70.0F)));
+      this.jdField_b_of_type_Ayck.a(this, a(paramBitmap2.copy(Bitmap.Config.ARGB_8888, false), bawz.a(getContext(), 70.0F), bawz.a(getContext(), 70.0F)));
     }
-    paramBitmap1 = new axcl(this, paramBitmap3);
+    paramBitmap1 = new aycn(this, paramBitmap3);
     paramInt = 0;
     while (paramInt < 6)
     {
-      this.jdField_a_of_type_ArrayOfAxci[paramInt].a(paramBitmap1);
+      this.jdField_a_of_type_ArrayOfAyck[paramInt].a(paramBitmap1);
       paramInt += 1;
     }
   }
   
   public void setSendHeadBitmap(Bitmap paramBitmap)
   {
-    if ((paramBitmap != null) && (this.jdField_a_of_type_Axci != null)) {
-      this.jdField_a_of_type_Axci.a(this, a(paramBitmap.copy(Bitmap.Config.ARGB_8888, false), azvv.a(getContext(), 70.0F), azvv.a(getContext(), 70.0F)));
+    if ((paramBitmap != null) && (this.jdField_a_of_type_Ayck != null)) {
+      this.jdField_a_of_type_Ayck.a(this, a(paramBitmap.copy(Bitmap.Config.ARGB_8888, false), bawz.a(getContext(), 70.0F), bawz.a(getContext(), 70.0F)));
     }
   }
 }

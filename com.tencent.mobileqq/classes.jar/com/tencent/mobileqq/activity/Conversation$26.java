@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import badq;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.BaseApplication;
+import akac;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 class Conversation$26
   implements Runnable
@@ -11,24 +13,21 @@ class Conversation$26
   
   public void run()
   {
-    PullRefreshHeader localPullRefreshHeader;
-    if (this.this$0.g)
-    {
-      Conversation.a(this.this$0, 800L);
-      boolean bool = badq.d(BaseApplication.getContext());
-      if (this.this$0.a != null)
-      {
-        localPullRefreshHeader = this.this$0.a;
-        if (!bool) {
-          break label57;
-        }
-      }
+    akac localakac = (akac)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159);
+    this.this$0.p = localakac.b("sp_mayknow_entry_list_msg");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, " shouldShowConversationMayknow = " + this.this$0.p);
     }
-    label57:
-    for (int i = 0;; i = 2)
+    ArrayList localArrayList = localakac.c();
+    if ((this.this$0.p) && (localArrayList != null) && (localArrayList.size() > 0)) {
+      localakac.d();
+    }
+    for (;;)
     {
-      localPullRefreshHeader.a(i);
+      this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1009);
       return;
+      localakac.e();
+      this.this$0.p = false;
     }
   }
 }

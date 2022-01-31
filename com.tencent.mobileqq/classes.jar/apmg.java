@@ -1,55 +1,22 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.List;
 
 class apmg
-  implements atqq
+  implements xba
 {
-  apmg(apmf paramapmf) {}
+  apmg(apmf paramapmf, boolean paramBoolean, String paramString, short paramShort) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void a(List<apqg> paramList)
   {
-    return null;
-  }
-  
-  public void a(atqr paramatqr)
-  {
-    if ((paramatqr != null) && (QLog.isColorLevel())) {
-      QLog.d("ForwardShareByServerHelper", 2, "upCallBack updateMsg info =" + paramatqr);
+    if (this.jdField_a_of_type_Apmf.a.jdField_a_of_type_Apnc != null) {
+      this.jdField_a_of_type_Apmf.a.jdField_a_of_type_Apnc.a(paramList, this.jdField_a_of_type_Apmf.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apmf.a.b, this.jdField_a_of_type_Apmf.a.c, this.jdField_a_of_type_Apmf.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
     }
-  }
-  
-  public void b(atqr paramatqr)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardShareByServerHelper", 2, "UpCallBack onSend result =" + paramatqr + ", isTimeOut=" + apmf.a(this.a) + ", isFirstShow =" + apmf.b(this.a));
-    }
-    if (!apmf.b(this.a)) {}
-    int i;
-    do
+    if (paramList != null)
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (apmf.a(this.a));
-        i = paramatqr.jdField_a_of_type_Int;
-        if (i != 0) {
-          break;
-        }
-        paramatqr = (String[])paramatqr.jdField_a_of_type_JavaLangObject;
-        if ((paramatqr != null) && (paramatqr.length == 2))
-        {
-          QLog.i("ForwardShareByServerHelper", 1, "UpCallBack onSend urls=" + paramatqr[0] + " ," + paramatqr[1]);
-          apmf.a(this.a, apmf.a(this.a), paramatqr[0], paramatqr[1]);
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("ForwardShareByServerHelper", 2, "onSend updateMsg error !");
+      axqw.b(this.jdField_a_of_type_Apmf.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_suc", 0, 0, "" + this.jdField_a_of_type_Apmf.a.jdField_a_of_type_Apkp.a().TroopUin, "", apue.f(this.jdField_a_of_type_Apmf.a.b()), "1");
       return;
-    } while (-1 != i);
-    apmf.a(this.a, apmf.a);
+    }
+    axqw.b(this.jdField_a_of_type_Apmf.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, "" + this.jdField_a_of_type_Apmf.a.jdField_a_of_type_Apkp.a().TroopUin, "-1", apue.f(this.jdField_a_of_type_Apmf.a.b()), "1");
   }
 }
 

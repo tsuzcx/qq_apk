@@ -1,20 +1,30 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 
 public class qev
-  extends AnimatorListenerAdapter
+  implements bfoq
 {
-  public qev(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment, List paramList) {}
+  public qev(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramAnimator = new Bundle();
-    paramAnimator.putLong("ARGS_VIDEO_START_POSITION", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment.a() + 300L);
-    paramAnimator.putInt("VIDEO_FROM_TYPE", VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment));
-    qbq.a().a(this.jdField_a_of_type_JavaUtilList, paramAnimator);
+    if (ReadInJoyDeliverUGCActivity.a(this.a)) {
+      return;
+    }
+    ReadInJoyDeliverUGCActivity.b(this.a, true);
+    ReadInJoyDeliverUGCActivity.c(this.a, ReadInJoyDeliverUGCActivity.c(this.a));
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ReadInJoyDeliverUGCActivity.a(this.a).dismiss();
+      return;
+      ReadInJoyDeliverUGCActivity.b(this.a);
+      noo.a(null, "", "0X8008239", "0X8008239", 0, 0, "", "", "", onk.e(), false);
+      continue;
+      ReadInJoyDeliverUGCActivity.c(this.a);
+    }
   }
 }
 

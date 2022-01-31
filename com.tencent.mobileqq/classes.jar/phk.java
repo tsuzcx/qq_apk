@@ -1,55 +1,26 @@
-import android.content.Context;
-import android.util.Pair;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentVerticalSmallVideo;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.PgcSmallView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 
-public class phk
-  extends pez
+class phk
+  implements View.OnClickListener
 {
-  public phk(Context paramContext, azwg paramazwg, qoe paramqoe)
-  {
-    super(paramContext, paramazwg, paramqoe);
-  }
+  phk(pgz parampgz, pax parampax, Container paramContainer, PgcSmallView paramPgcSmallView) {}
   
-  public pez a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g();
-  }
-  
-  public pez d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    ComponentContentVerticalSmallVideo localComponentContentVerticalSmallVideo = (ComponentContentVerticalSmallVideo)this.jdField_a_of_type_Pey;
-    Pair localPair;
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof oqh)))
+    paramView = this.jdField_a_of_type_Pax.a();
+    paramView.click_area = 11;
+    onk.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramView, (int)paramView.mChannelID);
+    if (this.jdField_a_of_type_Pax.a().mSocialFeedInfo.a.jdField_a_of_type_Int == 3)
     {
-      localPair = obj.a(((oqh)this.jdField_a_of_type_JavaLangObject).f(), ((oqh)this.jdField_a_of_type_JavaLangObject).e());
-      if (!obz.s(((oqh)this.jdField_a_of_type_JavaLangObject).a())) {
-        break label105;
-      }
-      localComponentContentVerticalSmallVideo.setLayoutParams(new AbsListView.LayoutParams(-2, -2));
+      onk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPgcSmallView.getContext(), this.jdField_a_of_type_Pax.a().mSocialFeedInfo.a.jdField_a_of_type_Qda.h, null);
+      return;
     }
-    for (;;)
-    {
-      a(localComponentContentVerticalSmallVideo);
-      return this;
-      label105:
-      localComponentContentVerticalSmallVideo.setLayoutParams(new AbsListView.LayoutParams(((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue()));
-    }
-  }
-  
-  public pez e()
-  {
-    return null;
-  }
-  
-  public pez g()
-  {
-    this.jdField_a_of_type_Pey = new ComponentContentVerticalSmallVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    onk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPgcSmallView.getContext(), this.jdField_a_of_type_Pax.a().mSocialFeedInfo.a.jdField_a_of_type_Qch.c, null);
   }
 }
 

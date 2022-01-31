@@ -1,56 +1,63 @@
-import com.tencent.mobileqq.data.EmoticonResp;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.util.SparseArray;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
-class anfn
-  extends anfq
+public class anfn
 {
-  anfn(anfj paramanfj, ajhm paramajhm, angh paramangh, Object paramObject)
+  private final SparseArray<BlockingQueue<anfv>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private ange jdField_a_of_type_Ange;
+  private final BlockingQueue<anfv> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
+  
+  public anfn(ange paramange)
   {
-    super(paramanfj, paramajhm);
+    this.jdField_a_of_type_Ange = paramange;
   }
   
-  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp)
+  protected int a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-      return;
+    return 300;
+  }
+  
+  public anfv a(int paramInt, Object paramObject)
+  {
+    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject = localBlockingQueue;
+    if (localBlockingQueue == null) {
+      localObject = new LinkedBlockingQueue();
     }
-    ??? = (ajhm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    int i = paramEmoticonResp.epId;
-    int j = paramEmoticonResp.timestamp;
-    Object localObject1 = (ArrayList)paramEmoticonResp.data;
-    if ((this.jdField_a_of_type_Angh.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Angh.jdField_a_of_type_JavaLangString.equals(paramEmoticonResp.keySeq)))
+    localObject = (anfv)((BlockingQueue)localObject).poll();
+    if (localObject == null)
     {
-      ((ajhm)???).b(this);
-      this.jdField_a_of_type_Angh.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_Angh.jdField_a_of_type_Int = paramEmoticonResp.resultcode;
-      this.jdField_a_of_type_Angh.b = paramEmoticonResp.timeoutReason;
+      localObject = this.jdField_a_of_type_Ange.a(paramInt);
+      anhx.a("DanmakuFactory", new Object[] { localObject, " is created " });
     }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaLangObject.notify();
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        ??? = this.jdField_a_of_type_Anfj.jdField_a_of_type_JavaLangString;
-        StringBuilder localStringBuilder = new StringBuilder().append("fetchEmoticonEncryptKeys|net get key backepId=").append(i).append(" tstamp=").append(j).append(" list.size=");
-        if (localObject1 == null)
-        {
-          localObject1 = "null";
-          QLog.d((String)???, 2, localObject1 + " encryptSuccess=" + paramBoolean + " type=" + paramInt + " er.resultCode=" + paramEmoticonResp.resultcode);
-          return;
-        }
-      }
-      localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
+      ((anfv)localObject).e();
+      ((anfv)localObject).a(paramObject);
+      return localObject;
+      anhx.a("DanmakuFactory", new Object[] { localObject, " is reused " });
+    }
+  }
+  
+  public void a(anfv paramanfv)
+  {
+    int i = paramanfv.a();
+    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+    Object localObject = localBlockingQueue;
+    if (localBlockingQueue == null)
+    {
+      localObject = new LinkedBlockingQueue();
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localObject);
+    }
+    if (a() > ((BlockingQueue)localObject).size()) {
+      ((BlockingQueue)localObject).add(paramanfv);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anfn
  * JD-Core Version:    0.7.0.1
  */

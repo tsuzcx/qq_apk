@@ -1,35 +1,17 @@
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class ajhk
+  implements DialogInterface.OnClickListener
 {
-  public static String a(String paramString)
-  {
-    String str2 = "";
-    String str1 = str2;
-    int i;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      i = paramString.lastIndexOf("diydoutu@");
-      str1 = str2;
-      if (i >= 0) {
-        str1 = paramString.substring(i, paramString.length());
-      }
-    }
-    paramString = str1;
-    if (!TextUtils.isEmpty(str1))
-    {
-      i = str1.lastIndexOf(".");
-      paramString = str1;
-      if (i >= 0) {
-        paramString = str1.substring(0, i);
-      }
-    }
-    return paramString;
-  }
+  public ajhk(ApolloGameActivity paramApolloGameActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajhk
  * JD-Core Version:    0.7.0.1
  */

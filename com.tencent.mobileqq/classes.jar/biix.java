@@ -1,49 +1,16 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public final class biix
-  extends bika
+public class biix
 {
-  public static final String a = biix.class.getSimpleName();
-  
-  public biix(DoodleView paramDoodleView)
+  public static bjog a(@NonNull bjol parambjol)
   {
-    super(paramDoodleView);
+    return new bjog(parambjol, bjoh.a(BaseApplicationImpl.getApplication()));
   }
   
-  public String a()
+  public static bjog a(@NonNull bjol parambjol, bjoi parambjoi)
   {
-    return a;
-  }
-  
-  public void a() {}
-  
-  protected void a(Canvas paramCanvas) {}
-  
-  public void a(Canvas paramCanvas, float paramFloat) {}
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return true;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public void b(Canvas paramCanvas) {}
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    urk.b(a, "EmptyLayer handle touch event.");
-    return false;
+    return new bjog(parambjol, parambjoi);
   }
 }
 

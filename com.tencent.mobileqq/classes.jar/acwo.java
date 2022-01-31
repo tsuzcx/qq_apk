@@ -1,18 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.AdapterView;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
 class acwo
-  implements behi
+  implements bcwh
 {
   acwo(acwm paramacwm) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(BaseResp paramBaseResp)
   {
-    paramAdapterView = (afss)acwm.a(this.a).a.getItem(paramInt - 1);
-    acwm.a(this.a, paramAdapterView);
-    acwm.a(this.a).dismiss();
-    awqx.b(acwm.a(this.a).a, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
+    if (paramBaseResp.errCode != 0) {
+      acwm.a(this.a, 1, 2131693650);
+    }
   }
 }
 

@@ -1,23 +1,11 @@
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
-class aebo
-  extends ajhp
+public class aebo
+  implements bfuh
 {
-  aebo(aebk paramaebk) {}
+  public aebo(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      this.a.b = annt.a(this.a.a).a(this.a.a, this.a.a());
-      this.a.b(this.a.b);
-      if ((this.a.b != null) && (!this.a.b.isEmpty())) {
-        this.a.t(false);
-      }
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
+  public void a() {}
 }
 
 

@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view;
 
-import ohb;
-import oyl;
+import osm;
+import pkd;
 
 public class FusionBiuButton$5
   implements Runnable
 {
-  public FusionBiuButton$5(oyl paramoyl) {}
+  public FusionBiuButton$5(pkd parampkd) {}
   
   public void run()
   {
-    if (oyl.a(this.this$0) == 2) {
-      oyl.a(this.this$0, false);
+    if (pkd.a(this.this$0) == 2) {
+      pkd.a(this.this$0, false);
     }
-    while (oyl.a(this.this$0) != 1) {
+    while (pkd.a(this.this$0) != 1) {
       return;
     }
-    ohb.a().b(true);
+    osm.a().b(true);
   }
 }
 

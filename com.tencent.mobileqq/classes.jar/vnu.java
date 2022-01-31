@@ -1,34 +1,28 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
-final class vnu
-  extends vnh
+public class vnu
 {
-  vnu(vnh paramvnh, PublishVideoEntry paramPublishVideoEntry) {}
+  public final ArrayList<vlj> a;
+  @NonNull
+  public final vko a;
+  @NonNull
+  public final vkp a;
+  @NonNull
+  public final vkz a;
+  @NonNull
+  public final vld a;
   
-  public void onFailure(String paramString)
+  public vnu(@NonNull vld paramvld, @NonNull vkz paramvkz, @NonNull vkp paramvkp, @NonNull vko paramvko)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
-    }
-    this.jdField_a_of_type_Vnh.onFailure(paramString);
-    if ((this.jdField_a_of_type_Vnh instanceof sjo)) {
-      ((sjo)this.jdField_a_of_type_Vnh).a(941006);
-    }
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getVideoFromMp4 failed msg：" + paramString);
-  }
-  
-  public void onStart()
-  {
-    super.onStart();
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getVideoFromMp4 start");
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.b;
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getVideoFromMp4 success cost：" + String.valueOf(l1 - l2));
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Vld = paramvld;
+    this.jdField_a_of_type_Vkz = paramvkz;
+    this.jdField_a_of_type_Vkp = paramvkp;
+    this.jdField_a_of_type_Vko = paramvko;
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramvkp);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramvkz);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramvld);
   }
 }
 

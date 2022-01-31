@@ -13,4 +13,6 @@
 	<business id="a03996" path="com.tencent.weather#get_device_info" author="inkfan,yuqicai" info="社交平台产品部"/>
 	<business id="e1ee76" path="https://bookshelf.html5.qq.com" author="freemanyao" info="增值产品部/商业产品中心"/>
 	<business id="c57534" path="qc.vip.qq.com" author="sluckyliu" info="PCG平台与内容事业群/社交娱乐产品部/波洞星球产品中心"/>
+	<business id="ee632a" path="com.tencent.pcg.qzone.qqcps" author="yinghaowang" info="PCG平台与内容事业群/社交平台产品部/增值研发中心/前台开发组/前台开发二组"/>
+	<business id="cd9fb2" path="h5.qzone.qq.com.biz_src_liwu" author="bookerchen" info="礼物商城"/>
 </list>

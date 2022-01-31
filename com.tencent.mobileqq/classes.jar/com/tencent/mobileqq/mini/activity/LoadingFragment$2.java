@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.activity;
 
-import arnc;
+import asjf;
 import com.tencent.mobileqq.mini.tfs.BaseTask;
 
 class LoadingFragment$2
-  implements arnc
+  implements asjf
 {
   LoadingFragment$2(LoadingFragment paramLoadingFragment) {}
   

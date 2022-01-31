@@ -1,20 +1,40 @@
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
-class aaxn
-  implements axle
+public class aaxn
+  extends akwr
 {
-  aaxn(aaxm paramaaxm, CompoundButton paramCompoundButton, boolean paramBoolean, int paramInt) {}
+  private WeakReference<Conversation> a;
   
-  public void onCancel()
+  public aaxn(Conversation paramConversation)
   {
-    this.jdField_a_of_type_Aaxm.a.a(this.jdField_a_of_type_AndroidWidgetCompoundButton, false);
+    this.a = new WeakReference(paramConversation);
   }
   
-  public void onConfirm()
+  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
   {
-    this.jdField_a_of_type_Aaxm.a.b();
-    GeneralSettingActivity.a(this.jdField_a_of_type_Aaxm.a, this.jdField_a_of_type_AndroidWidgetCompoundButton, true, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    if ((paramBoolean) && (paramList != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
+      }
+      Conversation localConversation = (Conversation)this.a.get();
+      if (localConversation != null)
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          AppletsAccountInfo localAppletsAccountInfo = (AppletsAccountInfo)paramList.next();
+          if (localAppletsAccountInfo != null) {
+            localConversation.a(9, localAppletsAccountInfo.uin, 1038);
+          }
+        }
+      }
+    }
   }
 }
 

@@ -1,22 +1,6 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-
-public class bcjl
+public abstract interface bcjl
 {
-  public static SharedPreferences a(Context paramContext, String paramString)
-  {
-    String str;
-    if (paramString != null)
-    {
-      str = paramString;
-      if (paramString.length() != 0) {}
-    }
-    else
-    {
-      str = "sdk_preference";
-    }
-    return paramContext.getSharedPreferences(str, 4);
-  }
+  public abstract void a();
 }
 
 

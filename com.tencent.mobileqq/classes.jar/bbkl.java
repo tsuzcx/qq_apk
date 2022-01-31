@@ -1,16 +1,16 @@
-import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
-
-public abstract interface bbkl
+final class bbkl
+  implements bbkr<Integer>
 {
-  public abstract void a();
-  
-  public abstract void a(boolean paramBoolean, String paramString, mobile_sub_get_photo_wall_rsp parammobile_sub_get_photo_wall_rsp);
-  
-  public abstract boolean a();
+  public Integer a(float paramFloat, Integer paramInteger1, Integer paramInteger2)
+  {
+    int i = paramInteger1.intValue();
+    float f = i;
+    return Integer.valueOf((int)((paramInteger2.intValue() - i) * paramFloat + f));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbkl
  * JD-Core Version:    0.7.0.1
  */

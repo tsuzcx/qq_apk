@@ -17,46 +17,46 @@ class VRecyclerView$ScrollListener
     int k = 0;
     int i;
     VRecyclerView localVRecyclerView;
-    label178:
+    label180:
     int j;
     if (paramInt == 0)
     {
-      boolean bool = VRecyclerView.access$300(this.this$0);
-      this.this$0.calAndSetContentOffset(bool);
+      boolean bool = VRecyclerView.access$200(this.this$0);
+      this.this$0.calAndSetContentOffset(bool, 0.0F, 0.0F);
       paramRecyclerView = this.this$0.getLayoutManager();
       if ((paramRecyclerView instanceof LinearLayoutManager))
       {
         i = ((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition();
-        if ((this.this$0.getAdapter() != null) && (i != -1) && (i == this.this$0.getAdapter().getItemCount() - 1) && (!VRecyclerView.access$400(this.this$0)) && (VRecyclerView.access$500(this.this$0) != null))
+        if ((this.this$0.getAdapter() != null) && (i != -1) && (i == this.this$0.getAdapter().getItemCount() - 1) && (!VRecyclerView.access$300(this.this$0)) && (VRecyclerView.access$400(this.this$0) != null))
         {
-          VRecyclerView.access$402(this.this$0, true);
-          VRecyclerView.access$500(this.this$0).onLoadMore(this.this$0, 0, VRecyclerView.access$600(this.this$0));
+          VRecyclerView.access$302(this.this$0, true);
+          VRecyclerView.access$400(this.this$0).onLoadMore(this.this$0, 0, VRecyclerView.access$500(this.this$0));
           ViolaLogUtils.d("VRecyclerView", "hit load more in onScrollStateChanged");
         }
-        VRecyclerView.access$700(this.this$0, false);
-        if (VRecyclerView.access$500(this.this$0) != null)
+        VRecyclerView.access$600(this.this$0, false);
+        if (VRecyclerView.access$400(this.this$0) != null)
         {
-          paramRecyclerView = VRecyclerView.access$500(this.this$0);
+          paramRecyclerView = VRecyclerView.access$400(this.this$0);
           localVRecyclerView = this.this$0;
           if (!bool) {
-            break label325;
+            break label327;
           }
           i = 0;
           if (!bool) {
-            break label336;
+            break label338;
           }
-          j = VRecyclerView.access$600(this.this$0);
-          label192:
+          j = VRecyclerView.access$500(this.this$0);
+          label194:
           paramRecyclerView.onScrollEnd(localVRecyclerView, i, j);
         }
-        VRecyclerView.access$902(this.this$0, false);
-        label212:
-        if (VRecyclerView.access$500(this.this$0) != null)
+        VRecyclerView.access$802(this.this$0, false);
+        label214:
+        if (VRecyclerView.access$400(this.this$0) != null)
         {
-          paramRecyclerView = VRecyclerView.access$500(this.this$0);
+          paramRecyclerView = VRecyclerView.access$400(this.this$0);
           localVRecyclerView = this.this$0;
           if (this.this$0.canChildPullDown()) {
-            break label364;
+            break label366;
           }
           i = 1;
         }
@@ -84,18 +84,18 @@ class VRecyclerView$ScrollListener
       }
       i = -1;
       break;
-      label325:
-      i = VRecyclerView.access$800(this.this$0);
-      break label178;
-      label336:
+      label327:
+      i = VRecyclerView.access$700(this.this$0);
+      break label180;
+      label338:
       j = 0;
-      break label192;
+      break label194;
       if ((paramInt != 2) && (paramInt != 1)) {
-        break label212;
+        break label214;
       }
-      VRecyclerView.access$902(this.this$0, true);
-      break label212;
-      label364:
+      VRecyclerView.access$802(this.this$0, true);
+      break label214;
+      label366:
       i = k;
       if (!this.this$0.canChildPullUp()) {
         i = 2;
@@ -105,9 +105,9 @@ class VRecyclerView$ScrollListener
   
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    VRecyclerView.access$1002(this.this$0, paramInt2);
-    VRecyclerView.access$200(this.this$0, paramInt1, paramInt2);
-    VRecyclerView.access$1100(this.this$0);
+    VRecyclerView.access$902(this.this$0, paramInt2);
+    this.this$0.performOnScroll(paramInt1, paramInt2);
+    VRecyclerView.access$1000(this.this$0);
   }
 }
 

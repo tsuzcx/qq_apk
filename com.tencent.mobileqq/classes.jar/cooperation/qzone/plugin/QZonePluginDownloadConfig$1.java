@@ -1,18 +1,18 @@
 package cooperation.qzone.plugin;
 
-import awqm;
-import bgae;
+import axql;
+import bhip;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.Properties;
 
 public class QZonePluginDownloadConfig$1
   implements Runnable
 {
-  public QZonePluginDownloadConfig$1(bgae parambgae, String paramString, Properties paramProperties) {}
+  public QZonePluginDownloadConfig$1(bhip parambhip, String paramString, Properties paramProperties) {}
   
   public void run()
   {
-    awqm.a(BaseApplicationImpl.getContext()).reportKVEvent(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilProperties);
+    axql.a(BaseApplicationImpl.getContext()).reportKVEvent(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilProperties);
   }
 }
 

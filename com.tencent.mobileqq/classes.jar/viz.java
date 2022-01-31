@@ -1,10 +1,9 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
-
 public abstract interface viz
+  extends vho
 {
-  public abstract void a(@NonNull ArrayList<vja> paramArrayList, @NonNull Context paramContext);
+  public abstract vvg a(int paramInt);
+  
+  public abstract void a(int paramInt);
 }
 
 

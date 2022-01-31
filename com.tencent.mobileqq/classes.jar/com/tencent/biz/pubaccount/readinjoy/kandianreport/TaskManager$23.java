@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import android.text.TextUtils;
-import axro;
-import axrr;
+import ayrv;
+import ayry;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -25,8 +25,8 @@ class TaskManager$23
     String str2 = (String)paramArrayOfObject[2];
     String str1 = (String)paramArrayOfObject[3];
     String str3 = (String)paramArrayOfObject[4];
-    paramArrayOfObject = new axro();
-    paramArrayOfObject.jdField_a_of_type_Axrt = new TaskManager.23.1(this, str3, paramJSContext);
+    paramArrayOfObject = new ayrv();
+    paramArrayOfObject.jdField_a_of_type_Aysa = new TaskManager.23.1(this, str3, paramJSContext);
     paramArrayOfObject.jdField_a_of_type_JavaLangString = ((String)localObject);
     paramArrayOfObject.jdField_a_of_type_Int = ((int)d);
     if (!TextUtils.isEmpty(str2)) {

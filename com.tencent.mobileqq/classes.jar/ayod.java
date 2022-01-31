@@ -1,52 +1,20 @@
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.data.TroopFeedItem;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.together.ui.RoundRectView;
 
 public class ayod
-  extends ayoe
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
-  {
-    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {}
-    for (;;)
-    {
-      return null;
-      localTroopFeedItem.type = 99;
-      try
-      {
-        localTroopFeedItem.linkUrl = paramJSONObject.optString("open_url");
-        if (paramJSONObject.has("app_id"))
-        {
-          localTroopFeedItem.ex_1 = ("" + paramJSONObject.getLong("app_id"));
-          if ((!sga.i()) && (localTroopFeedItem.isStoryType()))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("TroopFeedParserHelperQ.qqstory.tag_api_limit", 2, "当前系统api：" + Build.VERSION.SDK_INT + ",低于14");
-            return null;
-          }
-        }
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return null;
-      }
-    }
-    paramJSONObject = paramJSONObject.getJSONObject("content");
-    localTroopFeedItem.content = paramJSONObject.getString("body");
-    localTroopFeedItem.title = paramJSONObject.getString("title");
-    localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
-    return localTroopFeedItem;
-  }
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  aynq jdField_a_of_type_Aynq;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  RoundRectView jdField_a_of_type_ComTencentMobileqqTogetherUiRoundRectView;
+  TextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayod
  * JD-Core Version:    0.7.0.1
  */

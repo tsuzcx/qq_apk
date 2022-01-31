@@ -1,22 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Build.VERSION;
-import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
 
-public class lze
-  implements DialogInterface.OnClickListener
+public abstract interface lze
 {
-  public lze(VideoInviteActivity paramVideoInviteActivity, long paramLong) {}
+  public abstract int a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isFinishing()) {}
-    while (((Build.VERSION.SDK_INT >= 17) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isDestroyed())) || (paramInt == 1)) {
-      return;
-    }
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity, true, new lzf(this));
-  }
+  public abstract void a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
+  
+  public abstract void a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract boolean a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
+  
+  public abstract int b(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
 }
 
 

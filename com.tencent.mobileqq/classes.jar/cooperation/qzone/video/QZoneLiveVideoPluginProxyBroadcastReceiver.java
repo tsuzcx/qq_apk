@@ -3,11 +3,11 @@ package cooperation.qzone.video;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import bfcz;
-import bfdi;
-import bfzg;
-import bfzm;
-import bgbf;
+import bgkq;
+import bgkz;
+import bhhr;
+import bhhx;
+import bhjq;
 import com.tencent.mobileqq.pluginsdk.PluginProxyBroadcastReceiver;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -18,7 +18,7 @@ public class QZoneLiveVideoPluginProxyBroadcastReceiver
   public static void a(Context paramContext, String paramString1, Intent paramIntent, String paramString2)
   {
     paramIntent.putExtra("useSkinEngine", -1);
-    paramString2 = bgbf.a();
+    paramString2 = bhjq.a();
     if (TextUtils.isEmpty(paramString2)) {
       QLog.e("PluginDebug", 1, "启动失败 错误的pluginid=" + paramString2);
     }
@@ -28,23 +28,23 @@ public class QZoneLiveVideoPluginProxyBroadcastReceiver
       if (!paramString2.equals("qzone_live_video_plugin_hack.apk")) {
         break;
       }
-    } while (!new File(bgbf.a(paramContext), paramString2).exists());
+    } while (!new File(bhjq.a(paramContext), paramString2).exists());
     if (QLog.isColorLevel()) {
       QLog.d("PluginDebug", 2, "sendBroadcast 加载动态包:hackPluginID:" + paramString2);
     }
-    bfzm localbfzm = new bfzm(0);
-    localbfzm.b = "qzone_live_video_plugin_hack.apk";
-    localbfzm.d = "QZoneLiveVideo";
-    localbfzm.jdField_a_of_type_JavaLangString = paramString1;
-    localbfzm.e = "com.qzone.adapter.livevideo.LiveVideoPluginPreloadBroadcastReceiver";
-    localbfzm.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbfzm.b = paramString2;
-    localbfzm.d = "QZoneLiveVideo";
-    bfzg.b(paramContext, localbfzm);
+    bhhx localbhhx = new bhhx(0);
+    localbhhx.b = "qzone_live_video_plugin_hack.apk";
+    localbhhx.d = "QZoneLiveVideo";
+    localbhhx.jdField_a_of_type_JavaLangString = paramString1;
+    localbhhx.e = "com.qzone.adapter.livevideo.LiveVideoPluginPreloadBroadcastReceiver";
+    localbhhx.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localbhhx.b = paramString2;
+    localbhhx.d = "QZoneLiveVideo";
+    bhhr.b(paramContext, localbhhx);
     return;
     if (paramString2.equals("qzone_live_video_plugin.apk"))
     {
-      paramString2 = new bfdi(0);
+      paramString2 = new bgkz(0);
       paramString2.b = "qzone_live_video_plugin.apk";
       paramString2.d = "QZoneLiveVideo";
       paramString2.jdField_a_of_type_JavaLangString = paramString1;
@@ -55,7 +55,7 @@ public class QZoneLiveVideoPluginProxyBroadcastReceiver
       if (QLog.isColorLevel()) {
         QLog.d("PluginDebug", 2, "加载原始插件");
       }
-      bfcz.b(paramContext, paramString2);
+      bgkq.b(paramContext, paramString2);
       return;
     }
     QLog.e("PluginDebug", 1, "启动失败 错误的pluginid=" + paramString2);

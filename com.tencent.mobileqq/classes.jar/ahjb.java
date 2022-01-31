@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import Wallet.ReportHBGameRsp;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class ahjb
-  implements ahns
+final class ahjb
+  implements BusinessObserver
 {
-  public ahjb(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void a_(String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
+    paramBundle = (ReportHBGameRsp)paramBundle.getSerializable("rsp");
     if (QLog.isColorLevel()) {
-      QLog.i("PTV.NewFlowCameraActivity", 2, "onPictureToken path " + paramString);
+      QLog.d("QWalletTools", 2, "ReportHBGameRsp reportObserver:" + paramBoolean + "|" + paramBundle);
     }
-    this.a.a.b();
-    NewFlowCameraActivity.a(this.a, paramString, true);
+    if ((paramBoolean) && (paramBundle != null) && (paramBundle.result == 0)) {}
   }
 }
 

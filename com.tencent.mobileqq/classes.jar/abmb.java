@@ -1,57 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Process;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.activity.QQMapActivity.MapRuntime;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import QQService.SvcDevLoginInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class abmb
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public abmb(QQMapActivity.MapRuntime paramMapRuntime) {}
+  public abmb(LoginInfoActivity paramLoginInfoActivity, Button paramButton, int paramInt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    int j = 1;
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    for (;;)
+    if (!bbev.d(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity))
     {
+      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getString(2131692321), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight());
       return;
-      int i;
-      if (paramContext.equals("com.tencent.process.exit"))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQMapActivity", 2, "receive kill map process broadcast");
-        }
-        paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
-        if ((!QQMapActivity.a(paramIntent.getExtras().getString("verify"), paramContext)) || (!azvt.a(paramContext, MobileQQ.getContext()))) {
-          break label144;
-        }
-        i = j;
-      }
-      while (i != 0)
-      {
-        Process.killProcess(Process.myPid());
-        return;
-        i = j;
-        if (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))
-        {
-          i = j;
-          if (!paramContext.equals("mqq.intent.action.LOGOUT"))
-          {
-            i = j;
-            if (!paramContext.equals("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName())) {
-              label144:
-              i = 0;
-            }
-          }
-        }
-      }
     }
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app, "CliOper", "", "", "My_eq", "Kick_off_PC", 0, 0, "", "", "", "");
+    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetButton.getTag();
+    if (paramView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getSubAccountKey(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getAccount(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getAccount(), new abmc(this, paramView));
+      return;
+    }
+    bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getString(2131694489), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight());
   }
 }
 

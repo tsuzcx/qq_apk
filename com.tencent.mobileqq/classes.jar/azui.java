@@ -1,18 +1,10 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-
-final class azui
-  implements DownloadParams.DecodeHandler
+public abstract interface azui
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    return azue.a(paramBitmap);
-  }
+  public abstract void a(String paramString, boolean paramBoolean, int paramInt, azug paramazug);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azui
  * JD-Core Version:    0.7.0.1
  */

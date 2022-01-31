@@ -1,23 +1,18 @@
-import android.view.animation.Animation;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-
-public class afid
-  extends beem
+class afid
+  extends ajxl
 {
-  public afid(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  afid(afhz paramafhz) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    this.a.a(true);
-    EmoticonGroupStoreFragment.a(this.a, false);
-    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.a(this.a));
-    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.b(this.a));
+    if ((paramBoolean) && (afhz.a(this.a) != null)) {
+      afhz.a(this.a).a(String.valueOf(paramObject));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afid
  * JD-Core Version:    0.7.0.1
  */

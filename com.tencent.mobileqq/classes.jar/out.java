@@ -1,32 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
 
-class out
-  implements ViewBase.OnClickListener
+public class out
+  implements View.OnClickListener
 {
-  out(ouq paramouq, int paramInt, opw paramopw, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2) {}
+  public out(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onClick(View paramView)
   {
-    int i;
-    qoe localqoe;
-    if (this.jdField_a_of_type_Int == 1151)
-    {
-      i = 1;
-      localqoe = this.jdField_a_of_type_Opw.a();
-      if (i == 0) {
-        break label42;
-      }
-    }
-    label42:
-    for (paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;; paramViewBase = this.b)
-    {
-      localqoe.b(paramViewBase);
-      return;
-      i = 0;
-      break;
-    }
+    this.a.onBackEvent();
   }
 }
 

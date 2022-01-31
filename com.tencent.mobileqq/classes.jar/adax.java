@@ -1,23 +1,15 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
 class adax
-  implements ArkAppCacheMgr.OnGetAppIcon
+  implements aybh
 {
-  adax(adaw paramadaw1, adaw paramadaw2) {}
+  adax(adav paramadav) {}
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public void a()
   {
-    if (paramBitmap != null)
-    {
-      this.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    aybn localaybn = new aybn(3000, 360, 0);
+    localaybn.a = true;
+    this.a.a.e.a(new aybg[] { localaybn });
   }
 }
 

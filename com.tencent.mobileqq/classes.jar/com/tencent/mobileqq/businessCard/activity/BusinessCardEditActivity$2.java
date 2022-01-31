@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.businessCard.activity;
 
-import aciy;
+import actn;
 import android.widget.EditText;
 
 class BusinessCardEditActivity$2
@@ -11,7 +11,7 @@ class BusinessCardEditActivity$2
   public void run()
   {
     this.a.requestFocusFromTouch();
-    aciy.a(this.a);
+    actn.a(this.a);
   }
 }
 

@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastMusicInfo;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
-public final class bfwy
-  implements Parcelable.Creator<BroadcastMusicInfo>
+public class bfwy
+  implements View.OnFocusChangeListener
 {
-  public BroadcastMusicInfo a(Parcel paramParcel)
-  {
-    return new BroadcastMusicInfo(paramParcel);
-  }
+  public bfwy(XPanelContainer paramXPanelContainer) {}
   
-  public BroadcastMusicInfo[] a(int paramInt)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    return new BroadcastMusicInfo[paramInt];
+    if ((QLog.isColorLevel()) && ((this.a.getContext() instanceof Activity))) {
+      QLog.d("XPanelContainer", 2, new Object[] { "input focus changed, hasFocus=", Boolean.valueOf(paramBoolean), ", current focus=", ((Activity)this.a.getContext()).getCurrentFocus() });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfwy
  * JD-Core Version:    0.7.0.1
  */

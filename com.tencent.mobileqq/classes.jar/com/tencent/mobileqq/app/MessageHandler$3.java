@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import awao;
+import awzw;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
@@ -14,7 +14,7 @@ class MessageHandler$3
     if (this.this$0.app.a().b(this.a))
     {
       if (QLog.isDevelopLevel()) {
-        QLog.d("MsgSend", 4, "delay notify: " + MessageHandler.d);
+        QLog.d("MsgSend", 4, "delay notify: " + MessageHandler.e);
       }
       this.this$0.notifyUI(8022, true, new String[] { this.a.frienduin });
     }

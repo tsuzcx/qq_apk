@@ -1,113 +1,188 @@
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.pluginsdk.IStatisticsUploader;
-import com.tencent.qphone.base.BaseConstants;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Random;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import java.util.ArrayList;
+import java.util.Set;
 
 public class awqq
-  implements IStatisticsUploader
+  extends awry
 {
-  public static final Random a = new Random();
+  private awqu a;
+  protected Set<String> a;
   
-  public static void a(String paramString, int paramInt, long paramLong)
+  public awqq(baxk parambaxk)
   {
-    if (a.nextInt(1000) != 0) {}
-    do
-    {
-      do
-      {
-        return;
-        localObject1 = new HashMap();
-        ((HashMap)localObject1).put(BaseConstants.RDM_NoChangeFailCode, String.valueOf(paramInt));
-        ((HashMap)localObject1).put("plugin_name", paramString);
-        ((HashMap)localObject1).put("cost", String.valueOf(paramLong));
-        ((HashMap)localObject1).put("result", String.valueOf(paramInt));
-        localObject2 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-      } while (localObject2 == null);
-      Object localObject2 = ((AppRuntime)localObject2).getAccount();
-      awrn.a(MobileQQ.sMobileQQ).a((String)localObject2, "actPluginDexa2OatInfo", false, paramLong, 0L, (HashMap)localObject1, null);
-    } while (!QLog.isColorLevel());
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("uploadDexOatInfo pluginId ");
-    ((StringBuilder)localObject1).append(paramString);
-    ((StringBuilder)localObject1).append(" ");
-    ((StringBuilder)localObject1).append(String.valueOf(paramInt));
-    ((StringBuilder)localObject1).append(" ");
-    ((StringBuilder)localObject1).append(paramLong);
-    QLog.d("PluginStatisticsCollector", 2, ((StringBuilder)localObject1).toString());
+    super(parambaxk);
   }
   
-  public void uploadStartupFailure(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public awqq(baxk parambaxk, awqu paramawqu)
   {
-    boolean bool = false;
-    if ("success".equals(paramString5)) {
-      bool = true;
-    }
-    String str = paramString5;
-    if (paramString5 != null)
+    super(parambaxk);
+    this.jdField_a_of_type_Awqu = paramawqu;
+  }
+  
+  public awqq(baxk parambaxk, awqu paramawqu, Set<String> paramSet)
+  {
+    super(parambaxk);
+    this.jdField_a_of_type_Awqu = paramawqu;
+    this.jdField_a_of_type_JavaUtilSet = paramSet;
+  }
+  
+  private void a(Activity paramActivity, String paramString)
+  {
+    Intent localIntent = new Intent(paramActivity, SelectMemberActivity.class);
+    localIntent.putExtra("param_type", 3000);
+    localIntent.putExtra("param_subtype", 0);
+    localIntent.putExtra("param_from", 1002);
+    localIntent.putExtra("param_max", 99);
+    localIntent.putExtra("param_entrance", 29);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(SelectMemberActivity.a(paramString, "", 0, paramString));
+    localIntent.putExtra("param_selected_records_for_create_discussion", localArrayList);
+    paramActivity.startActivityForResult(localIntent, 1300);
+  }
+  
+  public void a(awog paramawog, awwp paramawwp, Bitmap paramBitmap)
+  {
+    if (paramawog.c() == 103)
     {
-      str = paramString5;
-      if (paramString5.contains(ClassNotFoundException.class.getName()))
+      if (paramawwp.b() != null) {
+        paramawwp.b().setImageDrawable(awvy.a(paramBitmap));
+      }
+      return;
+    }
+    super.a(paramawog, paramawwp, paramBitmap);
+  }
+  
+  public void b(awog paramawog, awwp paramawwp)
+  {
+    super.b(paramawog, paramawwp);
+    Object localObject;
+    if (((paramawog instanceof awna)) && (paramawog.c() == null))
+    {
+      if (paramawwp.c() != null) {
+        paramawwp.c().setVisibility(8);
+      }
+      if (paramawwp.a() != null) {
+        paramawwp.a().setVisibility(8);
+      }
+      if (paramawwp.b() != null) {
+        paramawwp.b().setVisibility(8);
+      }
+      localObject = ((awwj)paramawwp).e();
+      if (localObject != null)
       {
-        float f = bace.a();
-        str = "GetAvailableInnernalMemorySize:" + f + "__" + paramString5;
+        ((TextView)localObject).setVisibility(0);
+        ((TextView)localObject).setText(paramawog.a());
+      }
+      localObject = paramawwp.a().findViewById(2131378329);
+      if (localObject != null)
+      {
+        ((View)localObject).setVisibility(8);
+        if ((((paramawog instanceof awmv)) || ((paramawog instanceof awmz)) || ((paramawog instanceof awmr))) && (awiu.a(paramawog.b()))) {
+          ((View)localObject).setVisibility(0);
+        }
+      }
+      if (paramawwp.c() != null)
+      {
+        localObject = paramawog.b();
+        if ((this.jdField_a_of_type_JavaUtilSet != null) && (this.jdField_a_of_type_JavaUtilSet.contains(localObject))) {
+          paramawwp.c().setText(ajyc.a(2131702567));
+        }
+      }
+      if ((awvy.a) && (paramawwp.a() != null) && ((paramawog instanceof awoc))) {
+        paramawwp.a().setOnLongClickListener(new awqr(this, paramawog));
+      }
+      if ((paramawwp.a() != null) && ((paramawog instanceof awmr)))
+      {
+        int i = ((awmr)paramawog).f();
+        if (QLog.isColorLevel()) {
+          QLog.d("ContactSearchResultPresenter", 2, "add from type =" + i);
+        }
+        if ((i == 21) || (i == 1) || (i == 2))
+        {
+          paramawwp = paramawwp.a();
+          paramawwp.setContentDescription(paramawwp.getContext().getString(2131699363));
+          paramawwp.setImageResource(2130845175);
+          paramawwp.setOnClickListener(new awqs(this, paramawog));
+        }
+      }
+      return;
+    }
+    if ((paramawwp.c() != null) && (!TextUtils.isEmpty(paramawog.c())))
+    {
+      paramawwp.c().setVisibility(0);
+      label411:
+      if (paramawwp.a() != null) {
+        paramawwp.a().setVisibility(0);
+      }
+      if ((paramawwp.b() == null) || (paramawog.b() == null)) {
+        break label667;
+      }
+      paramawwp.b().setVisibility(0);
+      if ((!(paramawog instanceof awmr)) && (!(paramawog instanceof awmq)) && (!(paramawog instanceof awmx))) {
+        break label651;
+      }
+      localObject = paramawog.b();
+      if ((TextUtils.isEmpty((CharSequence)localObject)) || (!bbbd.b((String)localObject))) {
+        break label635;
+      }
+      localObject = paramawwp.b().getContext().getResources().getDrawable(2130841313);
+      ((Drawable)localObject).setBounds(0, 0, actn.a(15.0F, paramawwp.b().getContext().getResources()), actn.a(15.0F, paramawwp.b().getContext().getResources()));
+      ThemeUtil.setThemeFilter((Drawable)localObject, ThemeUtil.curThemeId);
+      paramawwp.b().setCompoundDrawables(null, null, (Drawable)localObject, null);
+    }
+    for (;;)
+    {
+      localObject = ((awwj)paramawwp).e();
+      if (localObject == null) {
+        break;
+      }
+      ((TextView)localObject).setVisibility(8);
+      break;
+      if (paramawwp.c() == null) {
+        break label411;
+      }
+      paramawwp.c().setVisibility(8);
+      break label411;
+      label635:
+      paramawwp.b().setCompoundDrawables(null, null, null, null);
+      continue;
+      label651:
+      paramawwp.b().setCompoundDrawables(null, null, null, null);
+      continue;
+      label667:
+      if (paramawwp.b() != null) {
+        paramawwp.b().setVisibility(8);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginStatisticsCollector", 2, "uploadStartupFailure result = " + bool + ", pluginName = " + paramString2 + ", extraInfo = " + str);
-    }
-    if (!bool)
-    {
-      paramString5 = new HashMap();
-      paramString5.put(BaseConstants.RDM_NoChangeFailCode, "");
-      paramString5.put("plugin_name", paramString2);
-      paramString5.put("plugin_loc", paramString3);
-      paramString5.put("plugin_activity", paramString4);
-      paramString5.put("plugin_extra_info", str);
-      awrn.a(paramContext).a(paramString1, "actPluginStartupFailure", bool, 0L, 0L, paramString5, null);
-    }
-    paramString3 = new HashMap();
-    paramString3.put(BaseConstants.RDM_NoChangeFailCode, "");
-    paramString3.put("plugin_name", paramString2);
-    awrn.a(paramContext).a(paramString1, "actPluginStartupResult", bool, 0L, 0L, paramString3, null);
   }
   
-  public void uploadStartupSpeedInfo(Context paramContext, Intent paramIntent)
+  protected void c(awog paramawog, awwp paramawwp)
   {
-    long l1 = paramIntent.getLongExtra("launchTotal", 0L);
-    long l2 = paramIntent.getLongExtra("pluginApkCost", 0L);
-    long l3 = paramIntent.getLongExtra("pluginOatCost", 0L);
-    long l4 = paramIntent.getLongExtra("pluginDownloadCost", 0L);
-    long l5 = paramIntent.getLongExtra("pluginLibCost", 0L);
-    long l6 = paramIntent.getLongExtra("pluginLoaderCost", 0L);
-    String str1 = paramIntent.getStringExtra("launchComponent");
-    String str2 = paramIntent.getStringExtra("launchProcName");
-    String str3 = paramIntent.getStringExtra("pluginsdk_selfuin");
-    String str4 = paramIntent.getStringExtra("pluginsdk_pluginName");
-    String str5 = paramIntent.getStringExtra("pluginsdk_pluginLocation");
-    String str6 = paramIntent.getStringExtra("pluginsdk_pluginpath");
-    paramIntent = paramIntent.getStringExtra("pluginsdk_launchActivity");
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("plugin_name", str4);
-    localHashMap.put("plugin_loc", str5);
-    localHashMap.put("plugin_activity", paramIntent);
-    localHashMap.put("plugin_extra_info", str6);
-    localHashMap.put("pluginOatCost", String.valueOf(l3));
-    localHashMap.put("pluginApkCost", String.valueOf(l2));
-    localHashMap.put("pluginLoaderCost", String.valueOf(l6));
-    localHashMap.put("launchTotal", String.valueOf(l1));
-    awrn.a(paramContext).a(str3, "actPluginSpeedInfoV2", false, l1, 0L, localHashMap, null);
-    QLog.d("plugin_tag", 1, "uploadStartupSpeedInfo  " + str5 + ", launchTotal " + l1 + ", apkCost " + l2 + ", dex2OatCost " + l3 + ", libCost " + l5 + ", downloadCost " + l4 + ", loaderCost " + l6 + ", launchComponent " + str1 + ", procName " + str2);
+    if (this.jdField_a_of_type_Awqu != null)
+    {
+      if (paramawwp.a() != null) {
+        paramawwp.a().setOnClickListener(new awqt(this));
+      }
+      return;
+    }
+    super.c(paramawog, paramawwp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awqq
  * JD-Core Version:    0.7.0.1
  */

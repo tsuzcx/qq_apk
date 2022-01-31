@@ -1,23 +1,26 @@
-public class wtr
+import com.tencent.biz.subscribe.videoplayer.CleanVideoPlayerView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+
+class wtr
+  implements udh
 {
-  public double a;
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  wtr(wto paramwto, adni paramadni, CleanVideoPlayerView paramCleanVideoPlayerView) {}
   
-  public wtr()
+  public void a_(udc paramudc)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = ajjy.a(2131650033);
-    this.jdField_b_of_type_JavaLangString = ajjy.a(2131650035);
-    this.jdField_a_of_type_Double = 0.8D;
+    Long localLong = (Long)wto.b(this.jdField_a_of_type_Wto).get(Integer.valueOf(this.jdField_a_of_type_Adni.b));
+    if ((localLong != null) && (localLong.longValue() > 0L))
+    {
+      paramudc.a(localLong.longValue());
+      QLog.d("SubscribePlayerManager", 4, "playInner seekTo: " + localLong);
+    }
+    this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerCleanVideoPlayerView.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wtr
  * JD-Core Version:    0.7.0.1
  */

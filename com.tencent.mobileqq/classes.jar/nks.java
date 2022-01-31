@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFollowActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFollowActivity.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import java.util.HashMap;
 
 public class nks
-  implements View.OnClickListener
 {
-  public nks(ReadInJoyFollowActivity paramReadInJoyFollowActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public HashMap<String, Long> a;
+  public int b;
+  public String b;
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.a.a(true);
-    ThreadManager.executeOnSubThread(new ReadInJoyFollowActivity.1.1(this));
+    if (this.a != null) {
+      this.a.clear();
+    }
   }
 }
 

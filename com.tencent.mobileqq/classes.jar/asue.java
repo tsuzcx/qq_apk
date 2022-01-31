@@ -1,79 +1,82 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-class asue
-  implements bcgn
+public class asue
 {
-  asue(aste paramaste) {}
+  public int a;
+  public SessionInfo a;
+  public MessageForStructing a;
+  public AbsStructMsg a;
+  private Object a = new Object();
+  public HashMap<String, ArrayList<MessageRecord>> a;
+  public List<ChatMessage> a;
+  public Map<String, String> a;
+  public boolean a;
+  public int b;
+  public List<MessageForStructing> b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  private int h;
+  private int i;
   
-  public void installSucceed(String paramString1, String paramString2)
+  public int a()
   {
-    this.a.jdField_a_of_type_Int = 4;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-    if (aste.a(this.a) != null) {
-      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_done", 0, 0, aste.a(this.a).uin, "", "yes", "android");
-    }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 2;
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 3;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-    if (this.a.jdField_a_of_type_Asyg != null) {
-      this.a.jdField_a_of_type_Asyg.a(5);
-    }
-    if (aste.a(this.a) != null) {
-      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_done", 0, 0, aste.a(this.a).uin, "", "yes", "android");
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 2;
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    this.a.jdField_a_of_type_Int = 1;
-    if ((paramList != null) && (paramList.size() > 0))
+    synchronized (this.a)
     {
-      paramList = (DownloadInfo)paramList.get(0);
-      Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-      localMessage.what = 2;
-      localMessage.arg1 = paramList.f;
-      localMessage.sendToTarget();
-      if ((paramList.f == 0) && (aste.a(this.a) != null)) {
-        awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_begin", 0, 0, aste.a(this.a).uin, "", "yes", "android");
-      }
+      int j = this.h;
+      return j;
     }
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  public String a()
   {
-    this.a.jdField_a_of_type_Int = 2;
+    return String.valueOf(hashCode());
   }
   
-  public void packageReplaced(String paramString1, String paramString2) {}
+  public void a(int paramInt)
+  {
+    synchronized (this.a)
+    {
+      this.h ^= paramInt;
+      return;
+    }
+  }
   
-  public void uninstallSucceed(String paramString1, String paramString2) {}
+  public void a(int paramInt1, int paramInt2)
+  {
+    synchronized (this.a)
+    {
+      int j = this.i;
+      if (paramInt1 == 0) {
+        paramInt2 = 0;
+      }
+      this.i = (j + paramInt2);
+      return;
+    }
+  }
+  
+  public int b()
+  {
+    synchronized (this.a)
+    {
+      int j = this.i;
+      return j;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     asue
  * JD-Core Version:    0.7.0.1
  */

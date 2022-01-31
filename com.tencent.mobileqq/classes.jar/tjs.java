@@ -1,48 +1,27 @@
-import android.support.annotation.NonNull;
-
 public class tjs
 {
-  public String a;
-  public String b;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  private String b;
   
-  public tjs(@NonNull String paramString)
+  public tjs(String paramString)
   {
-    this.a = paramString;
-    vkw.a(paramString);
+    this.b = paramString;
   }
   
-  public boolean equals(Object paramObject)
+  public void a()
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (tjs)paramObject;
-      if (this.a != null) {
-        return this.a.equals(paramObject.a);
-      }
-    } while (paramObject.a == null);
-    return false;
+    tjt localtjt = new tjt(this, false);
+    tju localtju = new tju(this, false);
+    tbb.a().a(localtjt, localtju);
   }
   
-  public int hashCode()
+  public void b()
   {
-    if (this.a != null) {
-      return this.a.hashCode();
-    }
-    return 0;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.b == null) {}
-    for (String str = "";; str = this.b) {
-      return str + this.a;
-    }
+    tjt localtjt = new tjt(this, true);
+    tju localtju = new tju(this, true);
+    tbb.a().a(localtjt, localtju);
   }
 }
 

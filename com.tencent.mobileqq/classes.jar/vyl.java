@@ -1,26 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.io.Closeable;
 
-class vyl
-  implements wem
+public final class vyl
 {
-  vyl(vyk paramvyk) {}
-  
-  public void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs)
+  public static void a(Closeable paramCloseable)
   {
-    if (paramBoolean)
+    if (paramCloseable != null) {}
+    try
     {
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof ArrayList))) {
-        this.a.a((ArrayList)paramVarArgs[0]);
-      }
+      paramCloseable.close();
       return;
     }
-    QLog.d(vyk.a, 4, "get drafts failed");
+    catch (Exception paramCloseable) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vyl
  * JD-Core Version:    0.7.0.1
  */

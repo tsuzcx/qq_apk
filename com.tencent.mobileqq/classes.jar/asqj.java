@@ -1,27 +1,41 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.LayoutParams;
 
-class asqj
-  implements View.OnTouchListener
+public class asqj
+  extends asqr
 {
-  asqj(aspq paramaspq) {}
+  private final MultiAIOBaseViewPager a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public asqj(MultiAIOBaseViewPager paramMultiAIOBaseViewPager)
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131310244).setAlpha(0.5F);
-    }
-    for (;;)
+    this.a = paramMultiAIOBaseViewPager;
+  }
+  
+  public int a(View paramView1, View paramView2)
+  {
+    paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
+    paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
+    if (paramView1.a != paramView2.a)
     {
-      return false;
-      this.a.a.findViewById(2131310244).setAlpha(1.0F);
+      if (paramView1.a) {
+        return 1;
+      }
+      return -1;
     }
+    int i = this.a.a();
+    if (i == paramView1.b) {
+      return 1;
+    }
+    if (i == paramView2.b) {
+      return -1;
+    }
+    return paramView1.b - paramView2.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asqj
  * JD-Core Version:    0.7.0.1
  */

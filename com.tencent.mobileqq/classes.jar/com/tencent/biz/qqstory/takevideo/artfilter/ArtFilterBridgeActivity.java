@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.takevideo.artfilter;
 
-import ajjy;
+import ajyc;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -15,7 +15,7 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import uxe;
+import vka;
 
 public class ArtFilterBridgeActivity
   extends BaseActivity
@@ -31,11 +31,11 @@ public class ArtFilterBridgeActivity
     Object localObject3;
     if (getIntent().getBooleanExtra("USE_FILTER", false))
     {
-      localObject1 = uxe.a();
+      localObject1 = vka.a();
       i = k;
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localObject3 = uxe.b();
+        localObject3 = vka.b();
         i = k;
         if (localObject3 != null)
         {
@@ -70,7 +70,7 @@ public class ArtFilterBridgeActivity
           }
           boolean bool2 = localIntent.getBooleanExtra("go_publish_activity", false);
           if (bool2) {
-            ((Bundle)localObject3).putString("extra_publish_text", ajjy.a(2131634958));
+            ((Bundle)localObject3).putString("extra_publish_text", ajyc.a(2131700742));
           }
           if (localIntent.hasExtra("troop_uin")) {
             ((Bundle)localObject3).putString("troop_uin", localIntent.getStringExtra("troop_uin"));

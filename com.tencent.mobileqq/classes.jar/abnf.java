@@ -1,15 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.MainFragment;
 
 public class abnf
-  extends atdh
+  implements DialogInterface.OnDismissListener
 {
-  public abnf(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public abnf(MainFragment paramMainFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QQSettingSettingActivity.a(this.a);
-    QQSettingSettingActivity.b(this.a);
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
   }
 }
 

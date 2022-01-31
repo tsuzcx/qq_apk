@@ -1,34 +1,31 @@
-import android.content.Context;
-import android.graphics.Point;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
-import com.tencent.tencentmap.mapsdk.maps.MapView;
-import com.tencent.tencentmap.mapsdk.maps.Projection;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class akxs
-  implements TencentMap.OnMapLoadedCallback
+class akxs
+  implements MediaPlayer.OnPreparedListener
 {
-  public akxs(ARScanEntryView paramARScanEntryView) {}
+  akxs(akxq paramakxq) {}
   
-  public void onMapLoaded()
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    this.a.j = true;
-    if (ARScanEntryView.a(this.a) != null)
+    try
     {
-      Projection localProjection = ARScanEntryView.a(this.a).getMap().getProjection();
-      TencentMap localTencentMap = ARScanEntryView.a(this.a).getMap();
-      if ((localProjection != null) && (localTencentMap != null))
-      {
-        Point localPoint = localProjection.toScreenLocation(localTencentMap.getCameraPosition().target);
-        if (localPoint != null)
-        {
-          localPoint.offset(0, aciy.a(60.0F, this.a.a.getResources()) * -1);
-          localTencentMap.moveCamera(CameraUpdateFactory.newLatLng(localProjection.fromScreenLocation(localPoint)));
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMusicController", 2, "load bg music success. : " + akxq.b(this.a));
       }
+      this.a.a.seekTo(0);
+      akxq.b(this.a, true);
+      if (akxq.b(this.a))
+      {
+        this.a.a.start();
+        akxq.c(this.a, false);
+      }
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      paramMediaPlayer.printStackTrace();
     }
   }
 }

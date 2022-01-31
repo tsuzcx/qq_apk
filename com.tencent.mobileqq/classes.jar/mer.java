@@ -1,29 +1,30 @@
-import android.content.res.Resources;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class mer
-  implements View.OnTouchListener
+public class mer
+  extends lfg
 {
-  mer(meo parammeo) {}
+  public mer(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(long paramLong, ArrayList<ldw> paramArrayList, int paramInt1, int paramInt2)
   {
-    try
-    {
-      QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getResources().getResourceName(paramView.getId()) + "]");
-      this.a.a(false, 3);
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.b, 2, "onUserListALLUpdate");
     }
-    catch (Exception paramMotionEvent)
-    {
-      for (;;)
-      {
-        QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getId() + "]");
-      }
+    MultiIncomingCallsActivity.a(this.a, paramLong, paramArrayList, paramInt1);
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.b, 2, "onMembersChange");
     }
+    if ((paramLong != this.a.a) || (paramBoolean)) {}
+    while (((paramInt != 10) && (paramInt != 1)) || (!this.a.isResume())) {
+      return;
+    }
+    MultiIncomingCallsActivity.a(this.a, paramInt);
   }
 }
 

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aomg;
-import apei;
+import apda;
+import apwc;
 
 public class UniformDownloadMgr$16$1
   implements Runnable
 {
-  public UniformDownloadMgr$16$1(aomg paramaomg, String paramString) {}
+  public UniformDownloadMgr$16$1(apda paramapda, String paramString) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_JavaLangString != null)
     {
-      apei.a(this.jdField_a_of_type_Aomg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aomg.b);
+      apwc.a(this.jdField_a_of_type_Apda.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apda.b);
       return;
     }
-    apei.b(this.jdField_a_of_type_Aomg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aomg.b);
+    apwc.b(this.jdField_a_of_type_Apda.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apda.b);
   }
 }
 

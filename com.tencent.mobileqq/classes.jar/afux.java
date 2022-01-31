@@ -1,8 +1,30 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment;
+import java.util.ArrayList;
 
-public abstract interface afux
+class afux
+  implements View.OnClickListener
 {
-  public abstract void a(RecentBaseData paramRecentBaseData);
+  afux(afur paramafur, int paramInt, ArrayList paramArrayList) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!afur.a(this.jdField_a_of_type_Afur))
+    {
+      if (this.jdField_a_of_type_Int == 1) {
+        SDKSetEmotionPreviewFragment.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0), afur.a(this.jdField_a_of_type_Afur), null);
+      }
+    }
+    else {
+      return;
+    }
+    paramView = new Intent();
+    paramView.putStringArrayListExtra("path_list", this.jdField_a_of_type_JavaUtilArrayList);
+    PublicFragmentActivity.a(afur.a(this.jdField_a_of_type_Afur), paramView, SDKSetEmotionPreviewFragment.class);
+  }
 }
 
 

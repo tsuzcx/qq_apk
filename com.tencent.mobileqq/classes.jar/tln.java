@@ -1,20 +1,60 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tln
-  extends JobSegment<ucw, ucw>
+  extends tjg
+  implements syt<tnb, tor>
 {
-  public tln(tlj paramtlj) {}
+  protected String a;
+  protected List<String> a;
   
-  protected void a(JobContext paramJobContext, ucw paramucw)
+  public tln(String paramString, List<String> paramList)
   {
-    paramucw.a(tlj.a(this.a).a(paramucw.a.feedId, true), true, true);
-    if (paramucw.a()) {
-      paramucw.a(tlj.a(this.a).a(tlj.a(this.a), false), true, false);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
-    urk.a("Q.qqstory.player.CommentFloatDialogController", "load feed data from cache: %s.", tlj.a(this.a).toString());
-    notifyResult(paramucw);
+  }
+  
+  public void a()
+  {
+    tnb localtnb = new tnb();
+    localtnb.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    syr.a().a(localtnb, this);
+  }
+  
+  public void a(@NonNull tnb paramtnb, @Nullable tor paramtor, @NonNull ErrorMessage paramErrorMessage)
+  {
+    paramtnb = new tlo();
+    if ((paramtor == null) || (paramErrorMessage.isFail()))
+    {
+      c();
+      ste.a().dispatch(paramtnb);
+      return;
+    }
+    b();
+    paramtor.jdField_a_of_type_JavaUtilList = ((tcz)tdc.a(5)).a(paramtor.jdField_a_of_type_JavaUtilList);
+    paramtnb.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramtor = paramtor.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramtor.hasNext())
+    {
+      paramErrorMessage = (StoryVideoItem)paramtor.next();
+      paramErrorMessage = new uuf(paramErrorMessage.mVid, paramErrorMessage);
+      paramtnb.jdField_a_of_type_JavaUtilList.add(paramErrorMessage);
+    }
+    ste.a().dispatch(paramtnb);
+  }
+  
+  public String toString()
+  {
+    return "VidToSimpleInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + ", mCollectionId=" + this.jdField_a_of_type_JavaLangString + '}';
   }
 }
 

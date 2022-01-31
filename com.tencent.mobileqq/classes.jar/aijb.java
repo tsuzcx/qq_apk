@@ -1,466 +1,338 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloRenderRunner.1;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class aijb
 {
-  private List<WeakReference<aijf>> a = new ArrayList();
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  public static HashMap<String, String> a;
+  private static boolean jdField_a_of_type_Boolean = true;
   
-  public aijf a()
+  static
   {
-    for (;;)
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface)
+  {
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
+    new HashSet();
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      int i;
-      ArrayList localArrayList;
-      aijf localaijf;
-      try
-      {
-        i = this.a.size();
-        localArrayList = new ArrayList();
-        i -= 1;
-        if (i < 0) {
-          break label226;
-        }
-        WeakReference localWeakReference = (WeakReference)this.a.get(i);
-        if (localWeakReference == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner apolloViewWeakReference is null");
-          }
-        }
-        else
-        {
-          localaijf = (aijf)localWeakReference.get();
-          if (localaijf == null)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner apolloSurfaceView is null");
-            }
-            localArrayList.add(localWeakReference);
-          }
-        }
+      paramQQAppInterface = bbjo.a(localSharedPreferences, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), null);
+      if (paramQQAppInterface != null) {
+        return paramQQAppInterface.size();
       }
-      finally {}
-      if (((localaijf instanceof View)) && (((View)localaijf).getVisibility() == 0))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner find renderTask:" + localaijf);
-        }
-        Object localObject2 = localaijf;
-        if (!localArrayList.isEmpty())
-        {
-          this.a.removeAll(localArrayList);
-          localObject2 = localaijf;
-          if (QLog.isColorLevel()) {
-            QLog.d("apollochannel_JsRenderRunner", 2, "mRenderRunners.removeAll(invalidRunners):" + this.a.size());
-          }
-        }
-        for (localObject2 = localaijf;; localObject2 = null)
-        {
-          return localObject2;
-          label226:
-          if (!localArrayList.isEmpty())
-          {
-            this.a.removeAll(localArrayList);
-            if (QLog.isColorLevel()) {
-              QLog.d("apollochannel_JsRenderRunner", 2, "mRenderRunners.removeAll(invalidRunners):" + this.a.size());
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner not find");
-          }
-        }
-      }
-      i -= 1;
+    }
+    return 0;
+  }
+  
+  public static int a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).getInt("special_sound_type" + paramQQAppInterface.getCurrentAccountUin() + paramString, 1);
+  }
+  
+  public static Set<String> a(QQAppInterface paramQQAppInterface)
+  {
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
+    new HashSet();
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      paramQQAppInterface = bbjo.a(localSharedPreferences, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), null);
+      return paramQQAppInterface;
     }
   }
   
-  public aijf a(int paramInt)
+  public static void a(int paramInt, QQAppInterface paramQQAppInterface)
   {
-    for (;;)
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
+    localEditor.putInt("special_sound_quota" + paramQQAppInterface.getCurrentAccountUin(), paramInt);
+    localEditor.commit();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    jdField_a_of_type_JavaUtilHashMap.clear();
+    Object localObject = bbjo.a(paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4), "special_sound" + paramQQAppInterface.getCurrentAccountUin(), null);
+    if (localObject != null)
     {
-      int i;
-      ArrayList localArrayList;
-      aijf localaijf;
-      try
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        i = this.a.size();
-        localArrayList = new ArrayList();
-        i -= 1;
-        if (i < 0) {
-          break label235;
-        }
-        WeakReference localWeakReference = (WeakReference)this.a.get(i);
-        if (localWeakReference == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner apolloViewWeakReference is null");
-          }
-        }
-        else
-        {
-          localaijf = (aijf)localWeakReference.get();
-          if (localaijf == null)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner apolloSurfaceView is null");
-            }
-            localArrayList.add(localWeakReference);
-          }
-        }
+        String str = (String)((Iterator)localObject).next();
+        jdField_a_of_type_JavaUtilHashMap.put(paramQQAppInterface.getCurrentAccountUin() + str, str);
       }
-      finally {}
-      if (((localaijf instanceof ApolloSurfaceView)) && (((ApolloSurfaceView)localaijf).getGameId() == paramInt))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner find renderTask:" + localaijf);
-        }
-        Object localObject2 = localaijf;
-        if (!localArrayList.isEmpty())
-        {
-          this.a.removeAll(localArrayList);
-          localObject2 = localaijf;
-          if (QLog.isColorLevel()) {
-            QLog.d("apollochannel_JsRenderRunner", 2, "mRenderRunners.removeAll(invalidRunners):" + this.a.size());
-          }
-        }
-        for (localObject2 = localaijf;; localObject2 = null)
-        {
-          return localObject2;
-          label235:
-          if (!localArrayList.isEmpty())
-          {
-            this.a.removeAll(localArrayList);
-            if (QLog.isColorLevel()) {
-              QLog.d("apollochannel_JsRenderRunner", 2, "mRenderRunners.removeAll(invalidRunners):" + this.a.size());
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner not find");
-          }
-        }
+    }
+    a(false);
+  }
+  
+  public static void a(String paramString, int paramInt, QQAppInterface paramQQAppInterface)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
+    localEditor.putInt("special_sound_type" + paramQQAppInterface.getCurrentAccountUin() + paramString, paramInt);
+    localEditor.commit();
+  }
+  
+  public static void a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    Object localObject1 = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
+    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject1).edit();
+    Object localObject2 = paramQQAppInterface.getCurrentAccountUin() + paramString;
+    if (!jdField_a_of_type_JavaUtilHashMap.containsKey(localObject2)) {
+      jdField_a_of_type_JavaUtilHashMap.put(localObject2, paramString);
+    }
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      localObject2 = bbjo.a((SharedPreferences)localObject1, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), null);
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = new HashSet();
       }
-      i -= 1;
+      if (((Set)localObject1).contains(paramString)) {
+        return;
+      }
+      ((Set)localObject1).add(paramString);
+      paramString = ((Set)localObject1).toArray();
+      bbjo.a(localEditor, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), paramString).commit();
+      return;
     }
   }
   
-  public aijf a(long paramLong)
+  public static void a(String paramString1, String paramString2, QQAppInterface paramQQAppInterface)
   {
-    ArrayList localArrayList;
-    aijf localaijf;
-    for (;;)
+    if ((paramString2 == null) || (paramString2.length() == 0))
     {
-      WeakReference localWeakReference;
+      if (a(paramString1, paramQQAppInterface)) {
+        b(paramString1, paramQQAppInterface);
+      }
+      if (b(paramString1, paramQQAppInterface)) {
+        c(paramString1, paramQQAppInterface);
+      }
+    }
+    do
+    {
+      return;
       try
       {
-        localArrayList = new ArrayList();
-        Iterator localIterator = this.a.iterator();
-        if (!localIterator.hasNext()) {
-          break label269;
+        int i = Integer.parseInt(paramString2);
+        if (!a(paramString1, paramQQAppInterface)) {
+          a(paramString1, paramQQAppInterface);
         }
-        localWeakReference = (WeakReference)localIterator.next();
-        if (localWeakReference == null)
+        a(paramString1, i, paramQQAppInterface);
+        return;
+      }
+      catch (Exception paramString1) {}
+    } while (!QLog.isColorLevel());
+    QLog.i("SpecialCareManager", 2, "dealWithRespSound|exception = " + paramString1.toString());
+  }
+  
+  public static void a(List<String> paramList1, int paramInt, List<String> paramList2, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = (akfa)paramQQAppInterface.a(15);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.a(paramList1, paramInt, paramList2);
+    }
+  }
+  
+  public static void a(List<String> paramList, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return;
+    }
+    Object localObject1 = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
+    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject1).edit();
+    label224:
+    for (;;)
+    {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        localObject1 = bbjo.a((SharedPreferences)localObject1, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), null);
+        if (localObject1 != null) {
+          break label224;
+        }
+        localObject1 = new HashSet();
+        paramList = paramList.iterator();
+        if (paramList.hasNext())
         {
-          if (!QLog.isColorLevel()) {
+          String str1 = (String)paramList.next();
+          String str2 = paramQQAppInterface.getCurrentAccountUin() + str1;
+          if (!jdField_a_of_type_JavaUtilHashMap.containsKey(str2)) {
+            jdField_a_of_type_JavaUtilHashMap.put(str2, str1);
+          }
+          if (((Set)localObject1).contains(str1)) {
             continue;
           }
-          QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerJsContext apolloViewWeakReference is null");
-          continue;
-        }
-        localaijf = (aijf)localWeakReference.get();
-      }
-      finally {}
-      if (localaijf == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerJsContext apolloSurfaceView is null");
-        }
-        localArrayList.add(localWeakReference);
-      }
-      else
-      {
-        long l = localaijf.getRuntimeState();
-        if (QLog.isColorLevel()) {
-          QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerJsContext getRuntimeState:" + l);
-        }
-        if (paramLong == l)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerJsContext find getRuntimeState:" + l);
-          }
-          localObject2 = localaijf;
-          if (!localArrayList.isEmpty())
-          {
-            this.a.removeAll(localArrayList);
-            localObject2 = localaijf;
-            if (QLog.isColorLevel()) {
-              QLog.d("apollochannel_JsRenderRunner", 2, "mRenderRunners.removeAll(invalidRunners):" + this.a.size());
-            }
-          }
+          ((Set)localObject1).add(str1);
         }
       }
-    }
-    for (Object localObject2 = localaijf;; localObject2 = null)
-    {
-      return localObject2;
-      label269:
-      if (!localArrayList.isEmpty())
-      {
-        this.a.removeAll(localArrayList);
-        if (QLog.isColorLevel()) {
-          QLog.d("apollochannel_JsRenderRunner", 2, "mRenderRunners.removeAll(invalidRunners):" + this.a.size());
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerJsContext not find");
-      }
-    }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      this.a.clear();
+      paramList = ((Set)localObject1).toArray();
+      bbjo.a(localEditor, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), paramList).commit();
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
   }
   
-  public void a(aijf paramaijf)
+  public static void a(Map<String, Integer> paramMap, QQAppInterface paramQQAppInterface)
   {
-    if (paramaijf == null) {}
-    for (;;)
-    {
+    if ((paramMap == null) || (paramMap.isEmpty())) {
       return;
-      try
-      {
-        Iterator localIterator = this.a.iterator();
-        for (;;)
-        {
-          if (localIterator.hasNext())
-          {
-            WeakReference localWeakReference = (WeakReference)localIterator.next();
-            if ((localWeakReference != null) && (paramaijf == localWeakReference.get()))
-            {
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("apollochannel_JsRenderRunner", 2, "addRunner has add the same iRenderRunner:" + paramaijf);
-              break;
-            }
-          }
-        }
-      }
-      finally {}
-      this.a.add(new WeakReference(paramaijf));
-      if (QLog.isColorLevel()) {
-        QLog.d("apollochannel_JsRenderRunner", 2, "addRunner iRenderRunner:" + paramaijf + ", size: " + this.a);
-      }
     }
-  }
-  
-  public void a(aijf paramaijf, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("apollochannel_JsRenderRunner", 2, "exeJsOnEngine, renderRunner:" + paramaijf + ",jsStr:" + paramString);
-    }
-    if ((paramaijf != null) && (!TextUtils.isEmpty(paramString))) {
-      paramaijf.exeJsOnEngine(paramString);
-    }
-  }
-  
-  public void a(ApolloCmdChannel paramApolloCmdChannel, long paramLong, int paramInt, String paramString1, String paramString2)
-  {
-    for (;;)
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
+    paramMap = paramMap.entrySet().iterator();
+    while (paramMap.hasNext())
     {
-      ArrayList localArrayList;
-      WeakReference localWeakReference;
-      try
+      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      if (QLog.isColorLevel()) {
+        QLog.d("SpecialCareManager", 2, "getSpecialCareSounds from FriendList: " + localEntry.toString());
+      }
+      String str = (String)localEntry.getKey();
+      int i = ((Integer)localEntry.getValue()).intValue();
+      localEditor.putInt("special_sound_type" + paramQQAppInterface.getCurrentAccountUin() + str, i);
+    }
+    localEditor.commit();
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public static boolean a()
+  {
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return a();
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
+  }
+  
+  public static boolean a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
+    new HashSet();
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      paramQQAppInterface = bbjo.a(localSharedPreferences, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), null);
+      if ((paramQQAppInterface != null) && (!paramQQAppInterface.isEmpty()) && (paramQQAppInterface.contains(paramString))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public static void b(int paramInt, QQAppInterface paramQQAppInterface)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
+    localEditor.putInt("special_sound_svip_quota" + paramQQAppInterface.getCurrentAccountUin(), paramInt);
+    localEditor.commit();
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
+    localEditor.putLong("key_get_special_sound_quota_time" + paramQQAppInterface.getCurrentAccountUin(), System.currentTimeMillis());
+    localEditor.commit();
+  }
+  
+  public static void b(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    Object localObject2 = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
+    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject2).edit();
+    ??? = paramQQAppInterface.getCurrentAccountUin() + paramString;
+    if (jdField_a_of_type_JavaUtilHashMap.containsKey(???)) {
+      jdField_a_of_type_JavaUtilHashMap.remove(???);
+    }
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      localObject2 = bbjo.a((SharedPreferences)localObject2, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), null);
+      if (localObject2 != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("apollochannel_JsRenderRunner", 2, "callbackEngine cmd:" + paramString1 + ",respData:" + paramString2);
-        }
-        if (paramApolloCmdChannel == null) {
+        if (!((Set)localObject2).contains(paramString)) {
           return;
         }
-        if (TextUtils.isEmpty(paramString2)) {
-          continue;
-        }
-        localArrayList = new ArrayList();
-        Iterator localIterator = this.a.iterator();
-        if (!localIterator.hasNext()) {
-          break label280;
-        }
-        localWeakReference = (WeakReference)localIterator.next();
-        if (localWeakReference == null)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("apollochannel_JsRenderRunner", 2, "callbackEngine apolloViewWeakReference is null");
-          continue;
-        }
-        localaijf = (aijf)localWeakReference.get();
+        ((Set)localObject2).remove(paramString);
+        paramString = ((Set)localObject2).toArray();
+        bbjo.a(localEditor, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), paramString).commit();
       }
-      finally {}
-      aijf localaijf;
-      if (localaijf == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("apollochannel_JsRenderRunner", 2, "callbackEngine apolloSurfaceView is null");
-        }
-        localArrayList.add(localWeakReference);
-      }
-      else
-      {
-        long l = localaijf.getRuntimeState();
-        if (QLog.isColorLevel()) {
-          QLog.d("apollochannel_JsRenderRunner", 2, "callbackEngine getRuntimeState runtimeState:" + l);
-        }
-        if (paramLong == localaijf.getRuntimeState())
-        {
-          localaijf.runRenderTask(new ApolloRenderRunner.1(this, localaijf, paramLong, paramApolloCmdChannel, paramInt, paramString1, paramString2));
-          if (QLog.isColorLevel()) {
-            QLog.d("apollochannel_JsRenderRunner", 2, "callbackEngine getRenderRunner find runtimeState:" + l);
-          }
-          label280:
-          if (!localArrayList.isEmpty())
-          {
-            this.a.removeAll(localArrayList);
-            if (QLog.isColorLevel()) {
-              QLog.d("apollochannel_JsRenderRunner", 2, "after mRenderRunners.removeAll(invalidRunners):" + this.a.size());
-            }
-          }
-        }
-        else if (QLog.isColorLevel())
-        {
-          QLog.d("apollochannel_JsRenderRunner", 2, "lState != apolloSurfaceView.getRuntimeState(), renderThreadId:" + localaijf.getRuntimeState());
-        }
-      }
-    }
-  }
-  
-  public aijf b(long paramLong)
-  {
-    ArrayList localArrayList;
-    aijf localaijf;
-    for (;;)
-    {
-      WeakReference localWeakReference;
-      try
-      {
-        localArrayList = new ArrayList();
-        Iterator localIterator = this.a.iterator();
-        if (!localIterator.hasNext()) {
-          break label269;
-        }
-        localWeakReference = (WeakReference)localIterator.next();
-        if (localWeakReference == null)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerByThreadId apolloViewWeakReference is null");
-          continue;
-        }
-        localaijf = (aijf)localWeakReference.get();
-      }
-      finally {}
-      if (localaijf == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerByThreadId apolloSurfaceView is null");
-        }
-        localArrayList.add(localWeakReference);
-      }
-      else
-      {
-        long l = localaijf.getRenderThreadId();
-        if (QLog.isColorLevel()) {
-          QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerByThreadId getRenderThreadId:" + l);
-        }
-        if (paramLong == l)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerByThreadId find getRenderThreadId:" + l);
-          }
-          localObject2 = localaijf;
-          if (!localArrayList.isEmpty())
-          {
-            this.a.removeAll(localArrayList);
-            localObject2 = localaijf;
-            if (QLog.isColorLevel()) {
-              QLog.d("apollochannel_JsRenderRunner", 2, "mRenderRunners.removeAll(invalidRunners):" + this.a.size());
-            }
-          }
-        }
-      }
-    }
-    for (Object localObject2 = localaijf;; localObject2 = null)
-    {
-      return localObject2;
-      label269:
-      if (!localArrayList.isEmpty())
-      {
-        this.a.removeAll(localArrayList);
-        if (QLog.isColorLevel()) {
-          QLog.d("apollochannel_JsRenderRunner", 2, "mRenderRunners.removeAll(invalidRunners):" + this.a.size());
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("apollochannel_JsRenderRunner", 2, "getRenderRunnerByThreadId not find");
-      }
-    }
-  }
-  
-  public void b(aijf paramaijf)
-  {
-    if (paramaijf == null) {}
-    for (;;)
-    {
       return;
-      try
+    }
+  }
+  
+  public static void b(List<String> paramList, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return;
+    }
+    Object localObject2 = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
+    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject2).edit();
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      localObject2 = bbjo.a((SharedPreferences)localObject2, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), null);
+      if (localObject2 == null) {
+        break label217;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        Iterator localIterator = this.a.iterator();
-        for (;;)
-        {
-          if (localIterator.hasNext())
-          {
-            WeakReference localWeakReference = (WeakReference)localIterator.next();
-            if ((localWeakReference != null) && (paramaijf == localWeakReference.get()))
-            {
-              localIterator.remove();
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("apollochannel_JsRenderRunner", 2, "removeRunner find it:" + paramaijf);
-              break;
-            }
-          }
+        String str1 = (String)paramList.next();
+        String str2 = paramQQAppInterface.getCurrentAccountUin() + str1;
+        if (jdField_a_of_type_JavaUtilHashMap.containsKey(str2)) {
+          jdField_a_of_type_JavaUtilHashMap.remove(str2);
+        }
+        if (((Set)localObject2).contains(str1)) {
+          ((Set)localObject2).remove(str1);
         }
       }
-      finally {}
-      if (QLog.isColorLevel()) {
-        QLog.d("apollochannel_JsRenderRunner", 2, "removeRunner not find it:" + paramaijf);
-      }
     }
+    paramList = ((Set)localObject2).toArray();
+    bbjo.a(localEditor, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), paramList).commit();
+    label217:
+  }
+  
+  public static boolean b(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).contains("special_sound_type" + paramQQAppInterface.getCurrentAccountUin() + paramString);
+  }
+  
+  public static void c(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
+    localEditor.remove("special_sound_type" + paramQQAppInterface.getCurrentAccountUin() + paramString);
+    localEditor.commit();
+  }
+  
+  public static void c(List<String> paramList, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return;
+    }
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      String str = (String)paramList.next();
+      localEditor.remove("special_sound_type" + paramQQAppInterface.getCurrentAccountUin() + str);
+    }
+    localEditor.commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aijb
  * JD-Core Version:    0.7.0.1
  */

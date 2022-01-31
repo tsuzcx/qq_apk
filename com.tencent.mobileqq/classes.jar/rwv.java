@@ -1,39 +1,31 @@
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.adapter.ILogAdapter;
 
 public class rwv
-  extends StaggeredGridLayoutManager
+  implements ILogAdapter
 {
-  public rwv(int paramInt1, int paramInt2)
+  public void callLog(String paramString1, int paramInt, String paramString2)
   {
-    super(paramInt1, paramInt2);
-  }
-  
-  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
-  {
-    try
+    switch (paramInt)
     {
-      super.onLayoutChildren(paramRecycler, paramState);
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d(paramString1, 2, paramString2);
+      }
+      break;
+    }
+    do
+    {
+      do
+      {
+        return;
+        QLog.e(paramString1, 2, paramString2);
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.i(paramString1, 2, paramString2);
       return;
-    }
-    catch (Exception paramRecycler)
-    {
-      sai.d("WSStaggeredGridLayoutManager", "onLayoutChildren exception: " + paramRecycler.getLocalizedMessage());
-    }
-  }
-  
-  public void scrollToPosition(int paramInt)
-  {
-    try
-    {
-      super.scrollToPosition(paramInt);
-      return;
-    }
-    catch (Exception localException)
-    {
-      sai.d("WSStaggeredGridLayoutManager", "scrollToPosition exception: " + localException.getLocalizedMessage());
-    }
+    } while (!QLog.isColorLevel());
+    QLog.w(paramString1, 2, paramString2);
   }
 }
 

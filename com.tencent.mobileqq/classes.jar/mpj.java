@@ -1,29 +1,87 @@
-import android.app.Activity;
-import android.view.View;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import org.json.JSONObject;
 
-class mpj
-  implements begw
+public class mpj
+  extends mqj
 {
-  mpj(mpf parammpf, Activity paramActivity, String paramString, begr parambegr) {}
+  public final int a;
+  public final String a;
+  public final String b = "appid#0|bargainor_id#0|channel#bqredpacket2";
+  public final String c = "appid#0|bargainor_id#0|channel#bqredpacket";
+  public final String d = "2";
+  public final String e = "16384";
+  public final String f = "1";
   
-  public void OnClick(View paramView, int paramInt)
+  mpj(mpc parammpc)
   {
-    switch (paramInt)
+    super(parammpc);
+    this.jdField_a_of_type_JavaLangString = "appid#0|bargainor_id#0|channel#bqredpacket1";
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  static long a(VideoAppInterface paramVideoAppInterface)
+  {
+    paramVideoAppInterface = paramVideoAppInterface.a().a().d;
+    try
     {
+      long l = Long.valueOf(paramVideoAppInterface).longValue();
+      return l;
     }
-    for (;;)
+    catch (Exception paramVideoAppInterface) {}
+    return 0L;
+  }
+  
+  static String a(VideoAppInterface paramVideoAppInterface)
+  {
+    return paramVideoAppInterface.getDisplayName(0, paramVideoAppInterface.getCurrentAccountUin(), null);
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, String paramString)
+  {
+    long l = mpy.a(paramVideoAppInterface);
+    paramVideoAppInterface = new JSONObject();
+    try
     {
-      this.jdField_a_of_type_Begr.dismiss();
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("url", paramString);
+      paramVideoAppInterface.put("userId", l);
+      paramVideoAppInterface.put("viewTag", "openEmbelUrl");
+      paramVideoAppInterface.put("come_from", 2);
+      paramVideoAppInterface.put("extra_data", localObject);
+      paramString = BaseApplicationImpl.getApplication();
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("json", paramVideoAppInterface.toString());
+      ((Bundle)localObject).putString("callbackSn", "0");
+      paramVideoAppInterface = new Intent(paramString.getApplicationContext(), PayBridgeActivity.class);
+      paramVideoAppInterface.addFlags(268435456);
+      paramVideoAppInterface.putExtras((Bundle)localObject);
+      paramVideoAppInterface.putExtra("pay_requestcode", 5);
+      paramString.getBaseContext().startActivity(paramVideoAppInterface);
       return;
-      mpf.b(this.jdField_a_of_type_Mpf, this.jdField_a_of_type_AndroidAppActivity);
-      continue;
-      mpf.a(this.jdField_a_of_type_Mpf, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
     }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  static String b(VideoAppInterface paramVideoAppInterface)
+  {
+    return paramVideoAppInterface.a().a().e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mpj
  * JD-Core Version:    0.7.0.1
  */

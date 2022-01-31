@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.proxy.fts;
 
-import akfb;
+import aktn;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.qphone.base.util.QLog;
 
@@ -14,7 +14,7 @@ class FTSTroopOperator$1$1
     if (QLog.isColorLevel()) {
       QLog.d("Q.fts.troop.operator", 2, "getTroopsMemberList after 24 h");
     }
-    akfb.a(this.a.this$0).f();
+    aktn.a(this.a.this$0).f();
   }
 }
 

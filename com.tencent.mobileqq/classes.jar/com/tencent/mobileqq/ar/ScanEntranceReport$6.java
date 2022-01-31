@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar;
 
-import akpc;
-import awrn;
+import aldo;
+import axrl;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ScanEntranceReport$6
   implements Runnable
 {
-  public ScanEntranceReport$6(akpc paramakpc, int paramInt, long paramLong) {}
+  public ScanEntranceReport$6(aldo paramaldo, int paramInt, long paramLong) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("neon_opened", String.valueOf(this.jdField_a_of_type_Int));
-    awrn.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_success", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+    axrl.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_success", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
   }
 }
 

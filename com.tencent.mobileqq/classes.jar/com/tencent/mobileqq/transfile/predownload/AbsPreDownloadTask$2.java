@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile.predownload;
 
-import axxg;
+import ayxn;
 
 public class AbsPreDownloadTask$2
   implements Runnable
 {
-  public AbsPreDownloadTask$2(axxg paramaxxg) {}
+  public AbsPreDownloadTask$2(ayxn paramayxn) {}
   
   public void run()
   {

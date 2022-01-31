@@ -1,12 +1,12 @@
 package com.tencent.biz.videostory.db;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class WSPersonalEntity
-  extends atmo
+  extends aukm
 {
-  @atoc
+  @auma
   public String uin;
   public byte[] weiShiPersonalRsp;
   

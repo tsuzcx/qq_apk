@@ -1,17 +1,17 @@
 package cooperation.wadl.ipc;
 
 import android.os.Bundle;
-import bgsp;
-import bgst;
+import bibr;
+import bibv;
 
 public class WadlProxyServiceManager$ClientMessageHandler$1
   implements Runnable
 {
-  public WadlProxyServiceManager$ClientMessageHandler$1(bgst parambgst, Bundle paramBundle) {}
+  public WadlProxyServiceManager$ClientMessageHandler$1(bibv parambibv, Bundle paramBundle) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bgst.a.a(this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_Bibv.a.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

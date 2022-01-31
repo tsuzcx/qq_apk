@@ -1,71 +1,90 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity.2.1;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity.2.2;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity.2.3;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity.2.4;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.gesturelock.LockPatternView;
-import com.tencent.mobileqq.gesturelock.LockPatternView.DisplayMode;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.ArrayList;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aayc
-  implements aqan
+  extends WtloginObserver
 {
-  public aayc(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
+  public aayc(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
   
-  public void a() {}
-  
-  public void a(List<aqam> paramList)
+  public void OnCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    if (paramList != null) {
-      switch (this.a.jdField_a_of_type_Int)
-      {
-      }
-    }
-    do
+    if (QLog.isColorLevel())
     {
-      return;
-      if ((paramList != null) && (paramList.size() >= 3))
-      {
-        this.a.a(paramList);
-        this.a.jdField_a_of_type_JavaLangString = GesturePWDUtils.encodeGesture(GesturePWDUtils.patternToString(paramList), this.a.app.getCurrentAccountUin());
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131627344);
-        this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new GesturePWDCreateActivity.2.1(this), 500L);
-        this.a.jdField_a_of_type_Int = 1;
+      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt + " time=" + paramLong);
+      if (paramArrayOfByte2 == null) {}
+    }
+    try
+    {
+      paramString = new String(paramArrayOfByte2, "utf-8");
+      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode errMsg=" + paramString);
+      this.a.c();
+      if (DevlockQuickLoginActivity.a(this.a)) {
         return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
-      bbmy.a(this.a, 1, this.a.getString(2131627364), 0).b(this.a.getTitleBarHeight());
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new GesturePWDCreateActivity.2.2(this), 500L);
-      return;
-      paramList = GesturePWDUtils.encodeGesture(GesturePWDUtils.patternToString(paramList), this.a.app.getCurrentAccountUin());
-      if ((this.a.jdField_a_of_type_JavaLangString == null) || (paramList == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramList))) {
-        break;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
       }
-      GesturePWDUtils.setGesturePWD(this.a, this.a.app.getCurrentAccountUin(), this.a.jdField_a_of_type_JavaLangString);
-      GesturePWDUtils.setGesturePWDState(this.a, this.a.app.getCurrentAccountUin(), 2);
-      awqx.b(this.a.app, "CliOper", "", "", "Setting_tab", "Gesture_password", 0, 1, "", "", "", "");
-      bbmy.a(this.a, 2, this.a.getString(2131627346), 0).b(this.a.getTitleBarHeight());
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new GesturePWDCreateActivity.2.3(this), 300L);
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.gesturelock.creat", 2, "gesture lock create success...");
-    return;
-    this.a.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new GesturePWDCreateActivity.2.4(this), 500L);
-    bbmy.a(this.a, 1, this.a.getString(2131627345), 0).b(this.a.getTitleBarHeight());
+      if (paramInt == 0)
+      {
+        bcpw.a(this.a.getApplicationContext(), 2, 2131692162, 0).b(DevlockQuickLoginActivity.a(this.a));
+        DevlockQuickLoginActivity.a(this.a);
+        DevlockQuickLoginActivity.a(this.a, 0, 2130772001);
+        return;
+      }
+      if (paramInt == 21)
+      {
+        paramString = this.a.getString(2131692159);
+        paramArrayOfByte1 = this.a.getString(2131719867);
+        this.a.a(null, paramString, paramArrayOfByte1, new aayd(this));
+        return;
+      }
+      paramString = DevlockQuickLoginActivity.a(this.a, 2131692160);
+      bcpw.a(this.a.getApplicationContext(), 1, paramString, 0).b(DevlockQuickLoginActivity.b(this.a));
+    }
   }
   
-  public void b() {}
-  
-  public void b(List<aqam> paramList)
+  public void OnException(String paramString, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.creat", 2, "celladd.");
+      QLog.d("DevlockQuickLoginActivity", 2, "OnException e=" + paramString);
     }
+    this.a.c();
+    bcpw.a(DevlockQuickLoginActivity.b(this.a), 1, this.a.getString(2131692161), 0).b(DevlockQuickLoginActivity.d(this.a));
+  }
+  
+  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DevlockQuickLoginActivity", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
+    }
+    if (DevlockQuickLoginActivity.b(this.a))
+    {
+      this.a.c();
+      return;
+    }
+    if (paramInt == 0)
+    {
+      this.a.b();
+      return;
+    }
+    this.a.c();
+    if (paramInt == 21)
+    {
+      paramString = this.a.getString(2131692159);
+      paramArrayOfByte1 = this.a.getString(2131719867);
+      this.a.a(null, paramString, paramArrayOfByte1, new aaye(this));
+      return;
+    }
+    paramString = this.a.getString(2131692160);
+    bcpw.a(DevlockQuickLoginActivity.a(this.a), 1, paramString, 0).b(DevlockQuickLoginActivity.c(this.a));
   }
 }
 

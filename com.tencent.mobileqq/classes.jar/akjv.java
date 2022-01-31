@@ -1,399 +1,694 @@
+import QTimedMessage.QTimedMessage.C2CMessage;
+import QTimedMessage.QTimedMessage.C2CMessage.RichText;
+import QTimedMessage.QTimedMessage.Client;
+import QTimedMessage.QTimedMessage.Content;
+import QTimedMessage.QTimedMessage.Message;
+import QTimedMessage.QTimedMessage.Timer;
+import QTimedMessage.QTimedMessage.User;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
-import org.json.JSONArray;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
+import org.json.JSONException;
 import org.json.JSONObject;
+import tencent.im.oidb.cmd0x75f.cmd0x75f.AddBatchReq;
+import tencent.im.oidb.cmd0x75f.cmd0x75f.AddBatchRsp;
+import tencent.im.oidb.cmd0x75f.cmd0x75f.ReqBody;
+import tencent.im.oidb.cmd0x75f.cmd0x75f.RspBody;
+import tencent.im.oidb.cmd0x7c9.cmd0x7c9.ReqBody;
+import tencent.im.oidb.cmd0x7c9.cmd0x7c9.ReqHelloType;
+import tencent.im.oidb.cmd0x7c9.cmd0x7c9.RspBody;
+import tencent.im.oidb.cmd0x7c9.cmd0x7c9.RspHelloContent;
+import tencent.im.oidb.cmd0x82a.cmd0x82a.MsgInfo;
+import tencent.im.oidb.cmd0x82a.cmd0x82a.ReqBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class akjv
+  extends MSFServlet
 {
-  private ArrayList<akjw> a = new ArrayList();
-  
-  /* Error */
-  public static akjv a(String paramString)
+  private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    // Byte code:
-    //   0: new 26	java/io/File
-    //   3: dup
-    //   4: new 28	java/lang/StringBuilder
-    //   7: dup
-    //   8: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   11: aload_0
-    //   12: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   15: ldc 35
-    //   17: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   20: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   23: invokespecial 42	java/io/File:<init>	(Ljava/lang/String;)V
-    //   26: astore_0
-    //   27: aload_0
-    //   28: invokevirtual 46	java/io/File:exists	()Z
-    //   31: ifeq +419 -> 450
-    //   34: new 48	java/io/FileInputStream
-    //   37: dup
-    //   38: aload_0
-    //   39: invokespecial 51	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   42: astore_0
-    //   43: aload_0
-    //   44: invokevirtual 55	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   47: astore_1
-    //   48: aload_1
-    //   49: getstatic 61	java/nio/channels/FileChannel$MapMode:READ_ONLY	Ljava/nio/channels/FileChannel$MapMode;
-    //   52: lconst_0
-    //   53: aload_1
-    //   54: invokevirtual 67	java/nio/channels/FileChannel:size	()J
-    //   57: invokevirtual 71	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
-    //   60: astore_2
-    //   61: invokestatic 77	java/nio/charset/Charset:defaultCharset	()Ljava/nio/charset/Charset;
-    //   64: aload_2
-    //   65: invokevirtual 81	java/nio/charset/Charset:decode	(Ljava/nio/ByteBuffer;)Ljava/nio/CharBuffer;
-    //   68: invokevirtual 84	java/nio/CharBuffer:toString	()Ljava/lang/String;
-    //   71: astore_2
-    //   72: invokestatic 89	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   75: ifeq +28 -> 103
-    //   78: ldc 91
-    //   80: iconst_2
-    //   81: new 28	java/lang/StringBuilder
-    //   84: dup
-    //   85: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   88: ldc 93
-    //   90: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   93: aload_2
-    //   94: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   100: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   103: aload_2
-    //   104: invokestatic 100	akjv:b	(Ljava/lang/String;)Lakjv;
-    //   107: astore_2
-    //   108: aload_0
-    //   109: ifnull +7 -> 116
-    //   112: aload_0
-    //   113: invokevirtual 103	java/io/FileInputStream:close	()V
-    //   116: aload_1
-    //   117: ifnull +7 -> 124
-    //   120: aload_1
-    //   121: invokevirtual 104	java/nio/channels/FileChannel:close	()V
-    //   124: aload_2
-    //   125: areturn
-    //   126: astore_0
-    //   127: invokestatic 107	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   130: ifeq +12 -> 142
-    //   133: ldc 91
-    //   135: iconst_0
-    //   136: ldc 109
-    //   138: aload_0
-    //   139: invokestatic 113	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
-    //   142: aload_2
-    //   143: areturn
-    //   144: astore_1
-    //   145: aconst_null
-    //   146: astore_2
-    //   147: aconst_null
-    //   148: astore_0
-    //   149: invokestatic 107	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   152: ifeq +12 -> 164
-    //   155: ldc 91
-    //   157: iconst_0
-    //   158: ldc 115
-    //   160: aload_1
-    //   161: invokestatic 113	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
-    //   164: aload_0
-    //   165: ifnull +7 -> 172
-    //   168: aload_0
-    //   169: invokevirtual 103	java/io/FileInputStream:close	()V
-    //   172: aload_2
-    //   173: ifnull +7 -> 180
-    //   176: aload_2
-    //   177: invokevirtual 104	java/nio/channels/FileChannel:close	()V
-    //   180: aconst_null
-    //   181: areturn
-    //   182: astore_0
-    //   183: invokestatic 107	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   186: ifeq +12 -> 198
-    //   189: ldc 91
-    //   191: iconst_0
-    //   192: ldc 109
-    //   194: aload_0
-    //   195: invokestatic 113	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
-    //   198: aconst_null
-    //   199: areturn
-    //   200: astore_3
-    //   201: aconst_null
-    //   202: astore_1
-    //   203: aconst_null
-    //   204: astore 4
-    //   206: aload_1
-    //   207: astore_2
-    //   208: aload 4
-    //   210: astore_0
-    //   211: invokestatic 107	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   214: ifeq +17 -> 231
-    //   217: aload_1
-    //   218: astore_2
-    //   219: aload 4
-    //   221: astore_0
-    //   222: ldc 91
-    //   224: iconst_0
-    //   225: ldc 117
-    //   227: aload_3
-    //   228: invokestatic 113	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
-    //   231: aload 4
-    //   233: ifnull +8 -> 241
-    //   236: aload 4
-    //   238: invokevirtual 103	java/io/FileInputStream:close	()V
-    //   241: aload_1
-    //   242: ifnull +7 -> 249
-    //   245: aload_1
-    //   246: invokevirtual 104	java/nio/channels/FileChannel:close	()V
-    //   249: aconst_null
-    //   250: areturn
-    //   251: astore_0
-    //   252: invokestatic 107	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   255: ifeq +12 -> 267
-    //   258: ldc 91
-    //   260: iconst_0
-    //   261: ldc 109
-    //   263: aload_0
-    //   264: invokestatic 113	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
-    //   267: aconst_null
-    //   268: areturn
-    //   269: astore_3
-    //   270: aconst_null
-    //   271: astore_1
-    //   272: aconst_null
-    //   273: astore 4
-    //   275: aload_1
-    //   276: astore_2
-    //   277: aload 4
-    //   279: astore_0
-    //   280: invokestatic 107	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   283: ifeq +17 -> 300
-    //   286: aload_1
-    //   287: astore_2
-    //   288: aload 4
-    //   290: astore_0
-    //   291: ldc 91
-    //   293: iconst_0
-    //   294: ldc 119
-    //   296: aload_3
-    //   297: invokestatic 113	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
-    //   300: aload 4
-    //   302: ifnull +8 -> 310
-    //   305: aload 4
-    //   307: invokevirtual 103	java/io/FileInputStream:close	()V
-    //   310: aload_1
-    //   311: ifnull +7 -> 318
-    //   314: aload_1
-    //   315: invokevirtual 104	java/nio/channels/FileChannel:close	()V
-    //   318: aconst_null
-    //   319: areturn
-    //   320: astore_0
-    //   321: invokestatic 107	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   324: ifeq +12 -> 336
-    //   327: ldc 91
-    //   329: iconst_0
-    //   330: ldc 109
-    //   332: aload_0
-    //   333: invokestatic 113	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
-    //   336: aconst_null
-    //   337: areturn
-    //   338: astore_1
-    //   339: aconst_null
-    //   340: astore_2
-    //   341: aconst_null
-    //   342: astore_0
-    //   343: aload_0
-    //   344: ifnull +7 -> 351
-    //   347: aload_0
-    //   348: invokevirtual 103	java/io/FileInputStream:close	()V
-    //   351: aload_2
-    //   352: ifnull +7 -> 359
-    //   355: aload_2
-    //   356: invokevirtual 104	java/nio/channels/FileChannel:close	()V
-    //   359: aload_1
-    //   360: athrow
-    //   361: astore_0
-    //   362: invokestatic 107	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   365: ifeq -6 -> 359
-    //   368: ldc 91
-    //   370: iconst_0
-    //   371: ldc 109
-    //   373: aload_0
-    //   374: invokestatic 113	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
-    //   377: goto -18 -> 359
-    //   380: astore_1
-    //   381: aconst_null
-    //   382: astore_2
-    //   383: goto -40 -> 343
-    //   386: astore_3
-    //   387: aload_1
-    //   388: astore_2
-    //   389: aload_3
-    //   390: astore_1
-    //   391: goto -48 -> 343
-    //   394: astore_1
-    //   395: goto -52 -> 343
-    //   398: astore_1
-    //   399: goto -56 -> 343
-    //   402: astore_3
-    //   403: aconst_null
-    //   404: astore_1
-    //   405: aload_0
-    //   406: astore 4
-    //   408: goto -133 -> 275
-    //   411: astore_3
-    //   412: aload_0
-    //   413: astore 4
-    //   415: goto -140 -> 275
-    //   418: astore_3
-    //   419: aconst_null
-    //   420: astore_1
-    //   421: aload_0
-    //   422: astore 4
-    //   424: goto -218 -> 206
-    //   427: astore_3
-    //   428: aload_0
-    //   429: astore 4
-    //   431: goto -225 -> 206
-    //   434: astore_1
-    //   435: aconst_null
-    //   436: astore_2
-    //   437: goto -288 -> 149
-    //   440: astore_2
-    //   441: aload_1
-    //   442: astore_3
-    //   443: aload_2
-    //   444: astore_1
-    //   445: aload_3
-    //   446: astore_2
-    //   447: goto -298 -> 149
-    //   450: aconst_null
-    //   451: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	452	0	paramString	String
-    //   47	74	1	localFileChannel	java.nio.channels.FileChannel
-    //   144	17	1	localFileNotFoundException1	java.io.FileNotFoundException
-    //   202	113	1	localObject1	Object
-    //   338	22	1	localObject2	Object
-    //   380	8	1	localObject3	Object
-    //   390	1	1	localObject4	Object
-    //   394	1	1	localObject5	Object
-    //   398	1	1	localObject6	Object
-    //   404	17	1	localObject7	Object
-    //   434	8	1	localFileNotFoundException2	java.io.FileNotFoundException
-    //   444	1	1	localObject8	Object
-    //   60	377	2	localObject9	Object
-    //   440	4	2	localFileNotFoundException3	java.io.FileNotFoundException
-    //   446	1	2	localObject10	Object
-    //   200	28	3	localIOException1	java.io.IOException
-    //   269	28	3	localException1	Exception
-    //   386	4	3	localObject11	Object
-    //   402	1	3	localException2	Exception
-    //   411	1	3	localException3	Exception
-    //   418	1	3	localIOException2	java.io.IOException
-    //   427	1	3	localIOException3	java.io.IOException
-    //   442	4	3	localFileNotFoundException4	java.io.FileNotFoundException
-    //   204	226	4	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   112	116	126	java/lang/Exception
-    //   120	124	126	java/lang/Exception
-    //   34	43	144	java/io/FileNotFoundException
-    //   168	172	182	java/lang/Exception
-    //   176	180	182	java/lang/Exception
-    //   34	43	200	java/io/IOException
-    //   236	241	251	java/lang/Exception
-    //   245	249	251	java/lang/Exception
-    //   34	43	269	java/lang/Exception
-    //   305	310	320	java/lang/Exception
-    //   314	318	320	java/lang/Exception
-    //   34	43	338	finally
-    //   347	351	361	java/lang/Exception
-    //   355	359	361	java/lang/Exception
-    //   43	48	380	finally
-    //   48	103	386	finally
-    //   103	108	386	finally
-    //   149	164	394	finally
-    //   211	217	398	finally
-    //   222	231	398	finally
-    //   280	286	398	finally
-    //   291	300	398	finally
-    //   43	48	402	java/lang/Exception
-    //   48	103	411	java/lang/Exception
-    //   103	108	411	java/lang/Exception
-    //   43	48	418	java/io/IOException
-    //   48	103	427	java/io/IOException
-    //   103	108	427	java/io/IOException
-    //   43	48	434	java/io/FileNotFoundException
-    //   48	103	440	java/io/FileNotFoundException
-    //   103	108	440	java/io/FileNotFoundException
+    long[] arrayOfLong = paramIntent.getExtras().getLongArray("p_uin_list");
+    ArrayList localArrayList = new ArrayList();
+    akjw localakjw = (akjw)getAppRuntime().getManager(85);
+    Bundle localBundle = new Bundle();
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder(1024);
+      localStringBuilder.append("rspSendMessage response.getResultCode()=").append(paramFromServiceMsg.getResultCode()).append("send count = ").append(arrayOfLong.length);
+      if (!paramFromServiceMsg.isSuccess()) {}
+    }
+    for (;;)
+    {
+      Object localObject1;
+      Object localObject3;
+      try
+      {
+        localObject1 = new oidb_sso.OIDBSSOPkg();
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
+      {
+        Object localObject2;
+        localObject1 = null;
+      }
+      try
+      {
+        localObject2 = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+        localObject3 = new byte[((ByteBuffer)localObject2).getInt() - 4];
+        ((ByteBuffer)localObject2).get((byte[])localObject3);
+        ((oidb_sso.OIDBSSOPkg)localObject1).mergeFrom((byte[])localObject3);
+        localObject3 = localObject1;
+        i = ((oidb_sso.OIDBSSOPkg)localObject3).uint32_result.get();
+        if (localStringBuilder != null) {
+          localStringBuilder.append(" respGetBirthday|oidb_sso.OIDBSSOPkg.result=").append(i);
+        }
+        if (((i != 0) && (i != 1401)) || (!((oidb_sso.OIDBSSOPkg)localObject3).bytes_bodybuffer.has()) || (((oidb_sso.OIDBSSOPkg)localObject3).bytes_bodybuffer.get() == null)) {
+          break label494;
+        }
+        localObject2 = ((oidb_sso.OIDBSSOPkg)localObject3).bytes_bodybuffer.get().toByteArray();
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
+      {
+        label415:
+        break label415;
+      }
+      try
+      {
+        localObject1 = new cmd0x75f.RspBody();
+        ((cmd0x75f.RspBody)localObject1).mergeFrom((byte[])localObject2);
+        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+        localObject2 = new byte[paramFromServiceMsg.getInt() - 4];
+        paramFromServiceMsg.get((byte[])localObject2);
+        ((cmd0x75f.RspBody)localObject1).mergeFrom((byte[])localObject2);
+        paramFromServiceMsg = (cmd0x75f.AddBatchRsp)((cmd0x75f.RspBody)localObject1).msg_add_batch_rsp.get();
+        if (localStringBuilder == null) {
+          break label680;
+        }
+        localStringBuilder.append(" rpt_messages size=").append(paramFromServiceMsg.rpt_messages.get().size());
+      }
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      {
+        if (!QLog.isColorLevel()) {
+          break label494;
+        }
+        QLog.d("ActivateFriends.Servlet", 2, "respSendTimingMsg erro ", paramFromServiceMsg);
+      }
+      int j = paramFromServiceMsg.rpt_messages.get().size();
+      if (i < j)
+      {
+        try
+        {
+          long l = ((QTimedMessage.Message)paramFromServiceMsg.rpt_messages.get().get(i)).msg_content.msg_c2c_message.msg_to_user.uint64_uin.get();
+          localArrayList.add(Long.valueOf(l));
+          if (localStringBuilder != null)
+          {
+            localStringBuilder.append("{");
+            localStringBuilder.append(l);
+            localStringBuilder.append("}");
+          }
+        }
+        catch (Exception localException)
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("ActivateFriends.Servlet", 2, "respSendMessage index=" + i);
+          continue;
+        }
+        i += 1;
+        continue;
+        localObject3 = localObject1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ActivateFriends.Servlet", 2, "rspSendMessage|oidb_sso parseFrom byte", localInvalidProtocolBufferMicroException1);
+        localObject3 = localObject1;
+        continue;
+      }
+      label494:
+      if (localArrayList.size() == arrayOfLong.length) {
+        i = 0;
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ActivateFriends.Servlet", 2, localStringBuilder.toString());
+        }
+        if (i == 2) {
+          break label648;
+        }
+        paramFromServiceMsg = new long[localArrayList.size()];
+        j = 0;
+        while (j < localArrayList.size())
+        {
+          paramFromServiceMsg[j] = ((Long)localArrayList.get(j)).longValue();
+          j += 1;
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("ActivateFriends.Servlet", 2, "respSendMsg | response.result = " + paramFromServiceMsg.getResultCode());
+        break;
+        if (localArrayList.size() > 0) {
+          i = 1;
+        } else {
+          i = 2;
+        }
+      }
+      localakjw.a(paramFromServiceMsg, 2);
+      label648:
+      localBundle.putInt("key_rt_type", i);
+      notifyObserver(paramIntent, 113, true, localBundle, akjz.class);
+      return;
+      localStringBuilder = null;
+      break;
+      label680:
+      int i = 0;
+    }
   }
   
-  public static akjv b(String paramString)
+  public static void a(QQAppInterface paramQQAppInterface, ArrayList<String> paramArrayList)
   {
-    try
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), akjv.class);
+    localNewIntent.putExtra("param_req_type", 116);
+    localNewIntent.putStringArrayListExtra("data", paramArrayList);
+    paramQQAppInterface.startServlet(localNewIntent);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), akjv.class);
+    localNewIntent.putExtra("param_req_type", 114);
+    localNewIntent.putExtra("param_req_birthday", paramBoolean1);
+    localNewIntent.putExtra("param_req_memorial", paramBoolean2);
+    paramQQAppInterface.startServlet(localNewIntent);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ActivateFriends.Servlet", 2, "sendGetBirthDayMsgForce");
+    }
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), akjv.class);
+    localNewIntent.putExtra("param_req_type", 114);
+    localNewIntent.putExtra("param_has_birthday_data", paramBoolean1);
+    localNewIntent.putExtra("param_has_memorial_data", paramBoolean3);
+    localNewIntent.putExtra("param_req_birthday", paramBoolean2);
+    localNewIntent.putExtra("param_req_memorial", paramBoolean4);
+    paramQQAppInterface.startServlet(localNewIntent);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString, long[] paramArrayOfLong1, long[] paramArrayOfLong2, int paramInt)
+  {
+    if ((paramArrayOfLong1.length == 0) || (paramArrayOfLong1.length != paramArrayOfLong2.length)) {
+      return false;
+    }
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), akjv.class);
+    localNewIntent.putExtra("param_req_type", 113);
+    localNewIntent.putExtra("p_msg", paramString);
+    localNewIntent.putExtra("p_uin_list", paramArrayOfLong1);
+    localNewIntent.putExtra("p_time_list", paramArrayOfLong2);
+    localNewIntent.putExtra("p_gift_id", paramInt);
+    paramQQAppInterface.startServlet(localNewIntent);
+    return true;
+  }
+  
+  private void b(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    Object localObject = null;
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      Object localObject = new JSONObject(paramString);
-      akjv localakjv = new akjv();
-      JSONArray localJSONArray = ((JSONObject)localObject).getJSONArray("360senceinfo");
-      paramString = localakjv;
-      if (((JSONObject)localObject).has("360senceinfo"))
+      localStringBuilder = new StringBuilder(1024);
+      localStringBuilder.append("response.getResultCode()=").append(paramFromServiceMsg.getResultCode());
+    }
+    for (;;)
+    {
+      if (paramFromServiceMsg.getResultCode() == 1000) {}
+      for (;;)
       {
-        int j = localJSONArray.length();
-        paramString = localakjv;
-        if (j > 0)
+        try
         {
-          int i = 0;
-          for (;;)
+          paramIntent = new oidb_sso.OIDBSSOPkg();
+          localObject = paramIntent;
+        }
+        catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+        {
+          try
           {
-            paramString = localakjv;
-            if (i >= j) {
-              break;
+            paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+            localObject = new byte[paramFromServiceMsg.getInt() - 4];
+            paramFromServiceMsg.get((byte[])localObject);
+            paramIntent.mergeFrom((byte[])localObject);
+            localObject = paramIntent;
+            if (localObject != null)
+            {
+              i = ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get();
+              if (localStringBuilder != null) {
+                localStringBuilder.append(" respGetBirthday|oidb_sso.OIDBSSOPkg.result=").append(i);
+              }
+              if ((i == 0) && (((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.has()) && (((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get() != null))
+              {
+                paramIntent = ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get().toByteArray();
+                try
+                {
+                  paramFromServiceMsg = new cmd0x7c9.RspBody();
+                  paramFromServiceMsg.mergeFrom(paramIntent);
+                  if (!paramFromServiceMsg.rpt_hello_content.has()) {
+                    break label382;
+                  }
+                  paramIntent = (akjw)getAppRuntime().getManager(85);
+                  paramFromServiceMsg = paramFromServiceMsg.rpt_hello_content.get().iterator();
+                  if (paramFromServiceMsg.hasNext())
+                  {
+                    localObject = (cmd0x7c9.RspHelloContent)paramFromServiceMsg.next();
+                    i = ((cmd0x7c9.RspHelloContent)localObject).uint32_next_time_gap.get();
+                    j = ((cmd0x7c9.RspHelloContent)localObject).uint32_req_type.get();
+                    if (localStringBuilder != null) {
+                      localStringBuilder.append(" type=").append(j).append(" interval=").append(i);
+                    }
+                    if (j != 1) {
+                      break label359;
+                    }
+                    paramIntent.a(i * 1000);
+                    continue;
+                  }
+                  if (localStringBuilder == null) {
+                    continue;
+                  }
+                }
+                catch (Exception paramIntent)
+                {
+                  if (QLog.isColorLevel()) {
+                    QLog.d("ActivateFriends.Servlet", 2, "respGetBirthday|oidb_sso parseFrom byte", paramIntent);
+                  }
+                }
+              }
             }
-            paramString = localJSONArray.getJSONObject(i);
-            localObject = new akjw();
-            if (paramString.has("text")) {
-              ((akjw)localObject).jdField_a_of_type_JavaLangString = paramString.optString("text");
+            QLog.d("ActivateFriends.Servlet", 2, localStringBuilder.toString());
+            return;
+          }
+          catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+          {
+            int i;
+            int j;
+            long l;
+            break label334;
+          }
+          paramFromServiceMsg = paramFromServiceMsg;
+          paramIntent = (Intent)localObject;
+        }
+        label334:
+        if (QLog.isColorLevel())
+        {
+          QLog.d("ActivateFriends.Servlet", 2, "respGetBirthday|oidb_sso parseFrom byte", paramFromServiceMsg);
+          localObject = paramIntent;
+          continue;
+          label359:
+          if (j == 2)
+          {
+            l = i * 1000;
+            paramIntent.b(l);
+            continue;
+            label382:
+            if (localStringBuilder != null)
+            {
+              localStringBuilder.append(" rspBody.rpt_hello_content hasno ");
+              continue;
+              if (QLog.isColorLevel()) {
+                QLog.d("ActivateFriends.Servlet", 2, "respGetBirthday | response.result = " + paramFromServiceMsg.getResultCode());
+              }
             }
-            if (paramString.has("starttime")) {
-              ((akjw)localObject).jdField_a_of_type_Long = paramString.optLong("starttime");
-            }
-            if (paramString.has("endtime")) {
-              ((akjw)localObject).b = paramString.optLong("endtime");
-            }
-            localakjv.a.add(localObject);
-            if (QLog.isColorLevel()) {
-              QLog.d("ARTransferDoorVideoInfo", 2, "ARTransferDoorVideoInfo parseJson index: " + i + "," + ((akjw)localObject).toString());
-            }
-            i += 1;
           }
         }
       }
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      QLog.d("ARTransferDoorVideoInfo", 1, String.format("parseJson, Exception\n%s", new Object[] { paramString }));
-      paramString = null;
+      localStringBuilder = null;
     }
   }
   
-  public akjw a(long paramLong)
+  private void c(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    if (QLog.isColorLevel()) {
+      localStringBuilder.append("activiate_friends|response.getResultCode()=").append(paramFromServiceMsg.getResultCode());
+    }
+    if (paramFromServiceMsg.getResultCode() == 1000) {}
+    for (;;)
     {
-      akjw localakjw = (akjw)localIterator.next();
-      long l = localakjw.jdField_a_of_type_Long;
-      if ((paramLong < localakjw.b * 1000L) && (paramLong >= l * 1000L)) {
-        return localakjw;
+      try
+      {
+        paramIntent = new oidb_sso.OIDBSSOPkg();
+        int i;
+        localObject = paramIntent;
+      }
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      {
+        try
+        {
+          paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+          localObject = new byte[paramFromServiceMsg.getInt() - 4];
+          paramFromServiceMsg.get((byte[])localObject);
+          paramIntent.mergeFrom((byte[])localObject);
+          localObject = paramIntent;
+          if (localObject != null)
+          {
+            i = ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get();
+            if (localStringBuilder != null) {
+              localStringBuilder.append(" respSendReadedActivateFriends|oidb_sso.OIDBSSOPkg.result=").append(i);
+            }
+          }
+          if (localStringBuilder != null) {
+            QLog.d("ActivateFriends.Servlet", 2, localStringBuilder.toString());
+          }
+          return;
+        }
+        catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+        {
+          Object localObject;
+          break label139;
+        }
+        paramFromServiceMsg = paramFromServiceMsg;
+        paramIntent = null;
+      }
+      label139:
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ActivateFriends.Servlet", 2, "respSendReadedActivateFriends|oidb_sso parseFrom byte", paramFromServiceMsg);
+        localObject = paramIntent;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("ActivateFriends.Servlet", 2, "respSendReadedActivateFriends | response.result = " + paramFromServiceMsg.getResultCode());
+        }
       }
     }
-    return null;
+  }
+  
+  private void c(Intent paramIntent, Packet paramPacket)
+  {
+    Object localObject1 = paramIntent.getLongArrayExtra("p_uin_list");
+    long[] arrayOfLong = paramIntent.getLongArrayExtra("p_time_list");
+    String str = paramIntent.getStringExtra("p_msg");
+    int j = paramIntent.getIntExtra("p_gift_id", -1);
+    if (QLog.isColorLevel()) {
+      QLog.d("ActivateFriends.Servlet", 2, "reqSendMessage | uin = " + Arrays.toString((long[])localObject1) + " | time = " + Arrays.toString(arrayOfLong));
+    }
+    paramIntent = new cmd0x75f.ReqBody();
+    paramIntent.uint64_appid.set(1800000011L);
+    paramIntent.uint32_subcmd.set(6);
+    cmd0x75f.AddBatchReq localAddBatchReq = new cmd0x75f.AddBatchReq();
+    ArrayList localArrayList = new ArrayList(localObject1.length);
+    int i = 0;
+    if (i < localObject1.length)
+    {
+      QTimedMessage.Message localMessage = new QTimedMessage.Message();
+      localMessage.uint64_appid.set(1800000011L);
+      Object localObject2 = new QTimedMessage.User();
+      ((QTimedMessage.User)localObject2).enum_uin_type.set(3);
+      ((QTimedMessage.User)localObject2).uint64_uin.set(getAppRuntime().getLongAccountUin());
+      localMessage.msg_author.set((MessageMicro)localObject2);
+      localMessage.uint32_main_type.set(100);
+      localMessage.uint32_sub_type.set(1);
+      localMessage.uint64_create_time.set(System.currentTimeMillis());
+      localObject2 = new QTimedMessage.Timer();
+      ((QTimedMessage.Timer)localObject2).uint64_time.set(arrayOfLong[i] * 1000L);
+      localMessage.msg_timer.set((MessageMicro)localObject2);
+      localObject2 = new QTimedMessage.Content();
+      QTimedMessage.C2CMessage localC2CMessage = new QTimedMessage.C2CMessage();
+      Object localObject3 = new QTimedMessage.User();
+      ((QTimedMessage.User)localObject3).enum_uin_type.set(3);
+      ((QTimedMessage.User)localObject3).uint64_uin.set(getAppRuntime().getLongAccountUin());
+      localC2CMessage.msg_from_user.set((MessageMicro)localObject3);
+      localObject3 = new QTimedMessage.User();
+      ((QTimedMessage.User)localObject3).enum_uin_type.set(3);
+      ((QTimedMessage.User)localObject3).uint64_uin.set(localObject1[i]);
+      localC2CMessage.msg_to_user.set((MessageMicro)localObject3);
+      localObject3 = new QTimedMessage.Client();
+      ((QTimedMessage.Client)localObject3).uint32_Mobile.set(1);
+      ((QTimedMessage.Client)localObject3).uint32_PC.set(1);
+      localC2CMessage.msg_recv_client.set((MessageMicro)localObject3);
+      if (j != -1)
+      {
+        localObject3 = new QTimedMessage.C2CMessage.RichText();
+        ((QTimedMessage.C2CMessage.RichText)localObject3).uint32_service_id.set(51);
+        ((QTimedMessage.C2CMessage.RichText)localObject3).uint32_gift_id.set(j);
+        localC2CMessage.msg_rich_text.set((MessageMicro)localObject3);
+        localC2CMessage.uint32_send_rich_text_standalone.set(1);
+        localC2CMessage.bytes_text.set(ByteStringMicro.copyFrom(str.getBytes()));
+        localC2CMessage.uint32_send_text_standalone.set(1);
+      }
+      for (;;)
+      {
+        ((QTimedMessage.Content)localObject2).msg_c2c_message.set(localC2CMessage);
+        localMessage.msg_content.set((MessageMicro)localObject2);
+        localArrayList.add(localMessage);
+        i += 1;
+        break;
+        localC2CMessage.bytes_text.set(ByteStringMicro.copyFrom(str.getBytes()));
+        localC2CMessage.uint32_send_text_standalone.set(1);
+      }
+    }
+    localAddBatchReq.rpt_messages.set(localArrayList);
+    paramIntent.msg_add_batch_req.set(localAddBatchReq);
+    localObject1 = new oidb_sso.OIDBSSOPkg();
+    ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(1887);
+    ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(3);
+    ((oidb_sso.OIDBSSOPkg)localObject1).uint32_result.set(0);
+    ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent.toByteArray()));
+    paramIntent = ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray();
+    paramPacket.setSSOCommand("OidbSvc.0x75f");
+    localObject1 = ByteBuffer.allocate(paramIntent.length + 4);
+    ((ByteBuffer)localObject1).putInt(paramIntent.length + 4);
+    ((ByteBuffer)localObject1).put(paramIntent);
+    paramPacket.putSendData(((ByteBuffer)localObject1).array());
+  }
+  
+  public void a(Intent paramIntent, Packet paramPacket)
+  {
+    int j = 1;
+    boolean bool2 = paramIntent.getBooleanExtra("param_req_birthday", false);
+    boolean bool1 = paramIntent.getBooleanExtra("param_req_memorial", false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ActivateFriends.Servlet", 2, "req send get birthday message birthday=" + bool2 + " memorial=" + bool1);
+    }
+    Object localObject = new cmd0x7c9.ReqBody();
+    ArrayList localArrayList = new ArrayList(2);
+    cmd0x7c9.ReqHelloType localReqHelloType;
+    if (bool2)
+    {
+      localReqHelloType = new cmd0x7c9.ReqHelloType();
+      localReqHelloType.string_qua.set(bgxr.a());
+      localReqHelloType.uint32_req_type.set(1);
+      if (paramIntent.hasExtra("param_has_birthday_data"))
+      {
+        bool2 = paramIntent.getBooleanExtra("param_has_birthday_data", false);
+        PBUInt32Field localPBUInt32Field = localReqHelloType.uint32_has_data;
+        if (bool2)
+        {
+          i = 1;
+          localPBUInt32Field.set(i);
+        }
+      }
+      else
+      {
+        localArrayList.add(localReqHelloType);
+      }
+    }
+    else if (bool1)
+    {
+      localReqHelloType = new cmd0x7c9.ReqHelloType();
+      localReqHelloType.string_qua.set(bgxr.a());
+      localReqHelloType.uint32_req_type.set(2);
+      if (paramIntent.hasExtra("param_has_memorial_data"))
+      {
+        bool1 = paramIntent.getBooleanExtra("param_has_memorial_data", false);
+        paramIntent = localReqHelloType.uint32_has_data;
+        if (!bool1) {
+          break label376;
+        }
+      }
+    }
+    label376:
+    for (int i = j;; i = 0)
+    {
+      paramIntent.set(i);
+      localArrayList.add(localReqHelloType);
+      ((cmd0x7c9.ReqBody)localObject).rpt_hello_type.set(localArrayList);
+      ((cmd0x7c9.ReqBody)localObject).string_qua.set(bgxr.a());
+      paramIntent = new oidb_sso.OIDBSSOPkg();
+      paramIntent.uint32_command.set(1993);
+      paramIntent.uint32_service_type.set(2);
+      paramIntent.uint32_result.set(0);
+      paramIntent.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((cmd0x7c9.ReqBody)localObject).toByteArray()));
+      paramPacket.setSSOCommand("OidbSvc.0x7c9_2");
+      paramIntent = paramIntent.toByteArray();
+      localObject = ByteBuffer.allocate(paramIntent.length + 4);
+      ((ByteBuffer)localObject).putInt(paramIntent.length + 4);
+      ((ByteBuffer)localObject).put(paramIntent);
+      paramPacket.putSendData(((ByteBuffer)localObject).array());
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public void b(Intent paramIntent, Packet paramPacket)
+  {
+    Object localObject1 = paramIntent.getStringArrayListExtra("data");
+    if (localObject1 == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ActivateFriends.Servlet", 2, "activiate_friends|reqSendReadedActivateFriends size:" + ((List)localObject1).size());
+    }
+    paramIntent = new cmd0x82a.ReqBody();
+    paramIntent.uint32_app_id.set(1001);
+    paramIntent.uint32_inst_id.set(AppSetting.a());
+    ArrayList localArrayList = new ArrayList(((List)localObject1).size());
+    int i = 0;
+    for (;;)
+    {
+      if (i < ((List)localObject1).size())
+      {
+        String str1 = (String)((List)localObject1).get(i);
+        try
+        {
+          Object localObject2 = new JSONObject(str1);
+          str1 = ((JSONObject)localObject2).optString("key_msg_ext_from_uin", "");
+          String str2 = ((JSONObject)localObject2).optString("key_msg_ext_to_uin", "");
+          String str3 = ((JSONObject)localObject2).optString("key_msg_ext_msg_seq", "");
+          String str4 = ((JSONObject)localObject2).optString("key_msg_ext_msg_type", "");
+          localObject2 = ((JSONObject)localObject2).optString("key_msg_ext_msg_sub_type", "");
+          if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (TextUtils.isEmpty(str4)) || (TextUtils.isEmpty((CharSequence)localObject2))) {
+            break label503;
+          }
+          cmd0x82a.MsgInfo localMsgInfo = new cmd0x82a.MsgInfo();
+          localMsgInfo.uint64_from_uin.set(Long.valueOf(str1).longValue());
+          localMsgInfo.uint64_to_uin.set(Long.valueOf(str2).longValue());
+          localMsgInfo.uint32_msg_seq.set(Integer.valueOf(str3).intValue());
+          localMsgInfo.uint32_type.set(Integer.valueOf(str4).intValue());
+          localMsgInfo.uint32_subtype.set(Integer.valueOf((String)localObject2).intValue());
+          localArrayList.add(localMsgInfo);
+        }
+        catch (JSONException localJSONException)
+        {
+          if (!QLog.isColorLevel()) {
+            break label503;
+          }
+          QLog.i("ActivateFriends.Servlet", 2, localJSONException.getMessage(), localJSONException);
+        }
+        catch (Exception localException)
+        {
+          if (!QLog.isColorLevel()) {
+            break label503;
+          }
+        }
+        QLog.i("ActivateFriends.Servlet", 2, localException.getMessage(), localException);
+      }
+      else
+      {
+        paramIntent.msg_info.set(localArrayList);
+        localObject1 = new oidb_sso.OIDBSSOPkg();
+        ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(2090);
+        ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(1);
+        ((oidb_sso.OIDBSSOPkg)localObject1).uint32_result.set(0);
+        ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent.toByteArray()));
+        paramPacket.setSSOCommand("OidbSvc.0x82a_1");
+        paramIntent = ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray();
+        localObject1 = ByteBuffer.allocate(paramIntent.length + 4);
+        ((ByteBuffer)localObject1).putInt(paramIntent.length + 4);
+        ((ByteBuffer)localObject1).put(paramIntent);
+        paramPacket.putSendData(((ByteBuffer)localObject1).array());
+        return;
+      }
+      label503:
+      i += 1;
+    }
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    String str2 = paramFromServiceMsg.getServiceCmd();
+    if (str2 == null) {}
+    label98:
+    do
+    {
+      return;
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        boolean bool = paramFromServiceMsg.isSuccess();
+        localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
+        if (!bool) {
+          break label98;
+        }
+      }
+      for (String str1 = "";; str1 = "not")
+      {
+        QLog.d("ActivateFriends.Servlet", 2, str1 + " success");
+        if (!str2.equals("OidbSvc.0x7c9_2")) {
+          break;
+        }
+        b(paramIntent, paramFromServiceMsg);
+        return;
+      }
+      if (str2.equals("OidbSvc.0x75f"))
+      {
+        a(paramIntent, paramFromServiceMsg);
+        return;
+      }
+    } while (!str2.equals("OidbSvc.0x82a_1"));
+    c(paramIntent, paramFromServiceMsg);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    Bundle localBundle = paramIntent.getExtras();
+    if (localBundle == null) {
+      return;
+    }
+    switch (localBundle.getInt("param_req_type", 0))
+    {
+    case 115: 
+    default: 
+      return;
+    case 113: 
+      if (QLog.isColorLevel()) {
+        QLog.d("ActivateFriends.Servlet", 2, "req send timing message");
+      }
+      c(paramIntent, paramPacket);
+      return;
+    case 114: 
+      a(paramIntent, paramPacket);
+      return;
+    }
+    b(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akjv
  * JD-Core Version:    0.7.0.1
  */

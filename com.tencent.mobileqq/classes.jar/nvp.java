@@ -1,26 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.hotpic.HotPicData;
 
 public class nvp
-  extends nvr
+  implements arbi
 {
-  public nvp(ReadInJoyCommentListView paramReadInJoyCommentListView) {}
+  public nvp(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(HotPicData paramHotPicData)
   {
-    super.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    super.onScrollStateChanged(paramAbsListView, paramInt);
-    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt);
+    if ((this.a instanceof ReadInJoyDeliverUGCActivity)) {
+      ((ReadInJoyDeliverUGCActivity)this.a).a(paramHotPicData);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nvp
  * JD-Core Version:    0.7.0.1
  */

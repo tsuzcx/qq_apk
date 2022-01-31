@@ -1,76 +1,59 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Arrays;
-import java.util.List;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class wxq
+  implements TextWatcher
 {
-  public String a;
-  private boolean jdField_a_of_type_Boolean;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
+  public wxq(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public wxq(wxm paramwxm, String paramString1, String paramString2)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public void a(String paramString)
-  {
-    Object localObject = new File(paramString);
-    if (((File)localObject).exists())
+    String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    int i;
+    if (str.equals(""))
     {
-      this.jdField_a_of_type_Boolean = true;
-      localObject = Arrays.asList(((File)localObject).list());
-      String str;
-      if (((List)localObject).contains("bg@2x.png"))
-      {
-        str = paramString + "/" + "bg@2x.png";
-        if (!new File(str).exists()) {
-          break label195;
-        }
-        this.c = str;
+      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+      i = str.length();
+      ThemeUtil.getCurrentThemeInfo().getString("themeId");
+      if (i <= 6) {
+        break label215;
       }
-      if (((List)localObject).contains("camera@2x.png"))
-      {
-        str = paramString + "/" + "camera@2x.png";
-        if (!new File(str).exists()) {
-          break label203;
-        }
-        this.d = str;
+      EditUniqueTitleActivity.a(this.a, false);
+      if (!this.a.jdField_a_of_type_Boolean) {
+        this.a.rightViewText.setAlpha(0.5F);
       }
     }
-    for (;;)
+    for (paramEditable = this.a.getResources().getColorStateList(2131166984);; paramEditable = this.a.getResources().getColorStateList(2131166933))
     {
-      if (((List)localObject).contains("point@2x.png"))
-      {
-        paramString = paramString + "/" + "point@2x.png";
-        if (!new File(paramString).exists()) {
-          break label211;
-        }
-        this.e = paramString;
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramEditable);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str.length() + "/" + 6);
+      int j = 6 - str.length();
+      i = j;
+      if (j < 0) {
+        i = 0;
       }
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(String.format(this.a.getString(2131696442), new Object[] { Integer.valueOf(i) }));
       return;
-      label195:
-      this.jdField_a_of_type_Boolean = false;
+      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
       break;
-      label203:
-      this.jdField_a_of_type_Boolean = false;
+      label215:
+      EditUniqueTitleActivity.b(this.a, true);
+      if (!this.a.jdField_a_of_type_Boolean) {
+        this.a.rightViewText.setAlpha(1.0F);
+      }
     }
-    label211:
-    this.jdField_a_of_type_Boolean = false;
   }
   
-  public boolean a()
-  {
-    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "isResourceReady:" + this.jdField_a_of_type_Boolean);
-    return this.jdField_a_of_type_Boolean;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

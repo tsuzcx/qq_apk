@@ -1,54 +1,51 @@
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class utu
-  implements utw
+  implements IEventReceiver
 {
-  private long jdField_a_of_type_Long;
+  public int a;
+  public QQUserUIItem a;
+  private StoryMemoriesFragment jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment;
+  public String a;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  protected ssy a;
+  private utw jdField_a_of_type_Utw;
+  private utx jdField_a_of_type_Utx;
   
-  public utu(EditVideoFilter paramEditVideoFilter) {}
-  
-  public void a(MotionEvent paramMotionEvent)
+  public utu(int paramInt, String paramString, StoryMemoriesFragment paramStoryMemoriesFragment)
   {
-    ury localury = (ury)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(ury.class);
-    if (localury != null) {
-      localury.a(paramMotionEvent);
-    }
+    this.jdField_a_of_type_Ssy = new utv(this);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment = paramStoryMemoriesFragment;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2)
+  public void a()
   {
-    if (paramMotionEvent2 != null)
-    {
-      ury localury = (ury)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(ury.class);
-      if (localury != null) {}
-      for (boolean bool = localury.a(paramMotionEvent2);; bool = false)
-      {
-        if (bool)
-        {
-          a(paramMotionEvent1);
-          a(paramMotionEvent2);
-        }
-        return bool;
-      }
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((tdo)tdc.a(2)).b(this.jdField_a_of_type_JavaLangString);
+    tsu.a().addObserver(this.jdField_a_of_type_Ssy);
+    this.jdField_a_of_type_Utw = new utw(this);
+    ste.a().registerSubscriber(this.jdField_a_of_type_Utw);
+    this.jdField_a_of_type_Utx = new utx(this);
+    ste.a().registerSubscriber(this.jdField_a_of_type_Utx);
   }
   
-  public void onClick(View paramView)
+  public void b()
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long > 300L)
-    {
-      this.jdField_a_of_type_Long = l;
-      paramView = (ury)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(ury.class);
-      if (paramView != null) {
-        paramView.d_();
-      }
-      return;
-    }
-    urk.b("Q.qqstory.publish.edit.EditVideoFilter", "repeat viewpager click.");
+    tsu.a().removeObserver(this.jdField_a_of_type_Ssy);
+    ste.a().unRegisterSubscriber(this.jdField_a_of_type_Utw);
+    ste.a().unRegisterSubscriber(this.jdField_a_of_type_Utx);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  public boolean isValidate()
+  {
+    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
 }
 

@@ -1,68 +1,186 @@
-public abstract class bhim
-  extends batl
+import android.content.Context;
+import android.os.IBinder;
+import android.os.RemoteException;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.plugin.PluginRecord;
+
+class bhim
+  extends bhhr
 {
-  public abstract void a(int paramInt);
+  bhjt a;
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString, boolean paramBoolean);
-  
-  public abstract void a(String paramString, boolean paramBoolean, int paramInt);
-  
-  public void onCancel(batm parambatm)
+  bhim(bhjt parambhjt)
   {
-    super.onCancel(parambatm);
-    a(parambatm.jdField_a_of_type_JavaLangString);
+    this.a = parambhjt;
   }
   
-  public void onDone(batm parambatm)
+  public PluginRecord a(String paramString)
   {
-    String str = parambatm.jdField_a_of_type_JavaLangString;
-    if (parambatm.a() == 3) {}
-    for (boolean bool = true;; bool = false)
+    try
     {
-      a(str, bool, parambatm.jdField_a_of_type_Int);
-      return;
+      paramString = this.a.a(paramString);
+      return paramString;
+    }
+    catch (RemoteException paramString)
+    {
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (NullPointerException paramString)
+    {
+      for (;;)
+      {
+        QLog.w("QZonePluginClient", 1, "", paramString);
+      }
     }
   }
   
-  public void onNetMobile2None()
+  public void a()
   {
-    super.onNetMobile2None();
-    a(2);
+    try
+    {
+      this.a.a();
+      return;
+    }
+    catch (NullPointerException localNullPointerException)
+    {
+      QLog.e("QZonePluginClient", 1, localNullPointerException, new Object[0]);
+    }
   }
   
-  public void onNetWifi2Mobile()
+  public void a(Context paramContext, bhhx parambhhx, bhhw parambhhw)
   {
-    super.onNetWifi2Mobile();
-    a(1);
+    try
+    {
+      a(parambhhx.b, new bhin(this, parambhhw, paramContext, parambhhx), 0);
+      return;
+    }
+    catch (RemoteException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
   }
   
-  public void onNetWifi2None()
+  public void a(bhhy parambhhy, int paramInt)
   {
-    super.onNetWifi2None();
-    a(3);
+    try
+    {
+      this.a.a(parambhhy, paramInt);
+      return;
+    }
+    catch (NullPointerException parambhhy)
+    {
+      QLog.e("QZonePluginClient", 1, parambhhy, new Object[0]);
+    }
   }
   
-  public void onProgress(batm parambatm)
+  public boolean a()
   {
-    super.onProgress(parambatm);
-    int i = (int)parambatm.jdField_a_of_type_Float;
-    a(parambatm.jdField_a_of_type_JavaLangString, i);
+    try
+    {
+      boolean bool = this.a.a();
+      return bool;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      localRemoteException.printStackTrace();
+    }
+    return false;
   }
   
-  public boolean onStart(batm parambatm)
+  public boolean a(String paramString)
   {
-    super.onStart(parambatm);
-    a(parambatm.jdField_a_of_type_JavaLangString, true);
-    return true;
+    try
+    {
+      boolean bool = this.a.a(paramString);
+      return bool;
+    }
+    catch (RemoteException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString, bhib parambhib, int paramInt)
+  {
+    try
+    {
+      boolean bool = this.a.a(paramString, parambhib, paramInt);
+      return bool;
+    }
+    catch (NullPointerException paramString)
+    {
+      QLog.e("QZonePluginClient", 1, paramString, new Object[0]);
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    this.a = null;
+  }
+  
+  boolean b()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    try
+    {
+      if (this.a != null)
+      {
+        IBinder localIBinder = this.a.asBinder();
+        bool1 = bool2;
+        if (localIBinder != null)
+        {
+          bool1 = bool2;
+          if (localIBinder.isBinderAlive())
+          {
+            boolean bool3 = localIBinder.pingBinder();
+            bool1 = bool2;
+            if (bool3) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+      return bool1;
+    }
+    catch (Exception localException) {}
+    return false;
+  }
+  
+  public boolean b(String paramString)
+  {
+    try
+    {
+      boolean bool = this.a.b(paramString);
+      return bool;
+    }
+    catch (RemoteException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return false;
+  }
+  
+  public boolean c(String paramString)
+  {
+    try
+    {
+      boolean bool = this.a.c(paramString);
+      return bool;
+    }
+    catch (RemoteException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhim
  * JD-Core Version:    0.7.0.1
  */

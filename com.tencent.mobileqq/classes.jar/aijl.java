@@ -1,20 +1,30 @@
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-public abstract interface aijl
+public class aijl
+  implements Animation.AnimationListener
 {
-  public abstract int a();
+  public aijl(SpecailCareListActivity paramSpecailCareListActivity, aijz paramaijz) {}
   
-  public abstract aijg a();
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    paramAnimation = new RelativeLayout.LayoutParams(this.jdField_a_of_type_Aijz.a.getLayoutParams());
+    paramAnimation.addRule(15);
+    paramAnimation.setMargins((int)(12.0F * SpecailCareListActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0, (int)(10.0F * SpecailCareListActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0);
+    this.jdField_a_of_type_Aijz.a.setLayoutParams(paramAnimation);
+    this.jdField_a_of_type_Aijz.a.clearAnimation();
+  }
   
-  public abstract void a(List<aijk> paramList, boolean paramBoolean);
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract int b();
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aijl
  * JD-Core Version:    0.7.0.1
  */

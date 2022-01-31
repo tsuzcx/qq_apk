@@ -1,17 +1,20 @@
-import android.os.IInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public abstract interface akpz
-  extends IInterface
+final class akpz
+  implements Comparator<MessageRecord>
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  {
+    if (paramMessageRecord1.longMsgIndex > paramMessageRecord2.longMsgIndex) {
+      return 1;
+    }
+    return -1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akpz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
-public class rlc
-  implements rjj
+class rlc
+  implements Animation.AnimationListener
 {
-  public rlc(BridgeModule paramBridgeModule, String paramString) {}
+  rlc(rky paramrky, FastWebArticleInfo paramFastWebArticleInfo) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    try
+    ImageView localImageView = rky.c(this.jdField_a_of_type_Rky);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.a) {}
+    for (int i = 2130842305;; i = 2130841224)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("result", false);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+      localImageView.setImageResource(i);
+      paramAnimation.setInterpolator(new AnticipateInterpolator());
       return;
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(BridgeModule.TAG, 2, "canOpenPage error" + localException.getMessage());
-    }
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

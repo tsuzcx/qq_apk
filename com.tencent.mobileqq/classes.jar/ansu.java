@@ -1,58 +1,35 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager.2.1;
+import java.util.List;
 
 public class ansu
-  extends Handler
+  extends ajwb
 {
-  public static int a;
-  public static int b = 2;
-  private WeakReference<ExtendFriendLimitChatMatchFragment> a;
+  ansu(anss paramanss) {}
   
-  static
+  public void a(List<CustomEmotionData> paramList)
   {
-    jdField_a_of_type_Int = 1;
-  }
-  
-  public ansu(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramExtendFriendLimitChatMatchFragment);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    if (paramMessage.what == jdField_a_of_type_Int)
-    {
-      paramMessage = (ExtendFriendLimitChatMatchFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramMessage != null)
-      {
-        QLog.e("ExtendFriendLimitChatMatchFragment", 1, "limitchat matching time out from ui");
-        ExtendFriendLimitChatMatchFragment.a(paramMessage, true);
-      }
+    if (anss.f(this.a) == null) {
+      return;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (paramMessage.what != b);
-        paramMessage = (ExtendFriendLimitChatMatchFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      } while (paramMessage == null);
-      ExtendFriendLimitChatMatchFragment.b(paramMessage);
-      paramMessage = paramMessage.getActivity();
-    } while (paramMessage == null);
-    paramMessage.finish();
+    anss.g(this.a).removeObserver(anss.a(this.a));
+    ThreadManager.excute(new FavroamingManager.2.1(this, paramList), 128, null, true);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (anss.e(this.a) == null) {}
+    while (!paramBoolean) {
+      return;
+    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ansu
  * JD-Core Version:    0.7.0.1
  */

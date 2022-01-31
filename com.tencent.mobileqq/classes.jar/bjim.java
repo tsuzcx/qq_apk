@@ -1,151 +1,100 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.data.QIMBeautyItem;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 public class bjim
 {
-  private static bjim jdField_a_of_type_Bjim;
-  public static String a;
-  private List<QIMBeautyItem> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  public int a;
+  long jdField_a_of_type_Long;
+  volatile boolean jdField_a_of_type_Boolean = false;
+  int[] jdField_a_of_type_ArrayOfInt;
+  public long[] a;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
+  int[] jdField_b_of_type_ArrayOfInt;
+  int c;
   
-  static
+  public bjim()
   {
-    jdField_a_of_type_JavaLangString = "QIMBeautyManager";
+    this.jdField_a_of_type_ArrayOfLong = new long[4];
   }
   
-  private bjim()
+  public bjim(int paramInt)
   {
-    a();
-  }
-  
-  public static bjim a()
-  {
-    if (jdField_a_of_type_Bjim == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bjim == null) {
-        jdField_a_of_type_Bjim = new bjim();
-      }
-      return jdField_a_of_type_Bjim;
-    }
-    finally {}
-  }
-  
-  private String a()
-  {
-    String str = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_beauty_config", 0).getString("short_video_beauty_content", "");
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "take  config content= " + str);
-    }
-    return str;
-  }
-  
-  public int a(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("short_video_beauty_config", 0).getInt("short_video_beauty_version", 0);
-  }
-  
-  public List<QIMBeautyItem> a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-      a();
-    }
-    return this.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_ArrayOfLong = new long[4];
+    this.jdField_a_of_type_ArrayOfLong = new long[paramInt];
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    try
+    int i = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.c = 0;
+    while (i < this.jdField_a_of_type_ArrayOfLong.length)
     {
-      Object localObject = a();
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        return;
-      }
-      localObject = new JSONObject((String)localObject);
-      if (((JSONObject)localObject).has("category"))
-      {
-        localObject = ((JSONObject)localObject).getJSONArray("category");
-        if (localObject != null)
-        {
-          int k = ((JSONArray)localObject).length();
-          if (k > 0)
-          {
-            int i = 0;
-            while (i < k)
-            {
-              JSONObject localJSONObject1 = ((JSONArray)localObject).getJSONObject(i);
-              if (localJSONObject1.has("content"))
-              {
-                JSONArray localJSONArray = localJSONObject1.getJSONArray("content");
-                if (localJSONArray == null) {
-                  break;
-                }
-                int m = localJSONArray.length();
-                if (m <= 0) {
-                  break;
-                }
-                int j = 0;
-                while (j < m)
-                {
-                  QIMBeautyItem localQIMBeautyItem = new QIMBeautyItem();
-                  JSONObject localJSONObject2 = localJSONArray.getJSONObject(j);
-                  if (localJSONObject2.has("iconUrl")) {
-                    localQIMBeautyItem.c = localJSONObject2.getString("iconUrl");
-                  }
-                  if (localJSONObject2.has("id")) {
-                    localQIMBeautyItem.jdField_a_of_type_JavaLangString = localJSONObject2.getString("id");
-                  }
-                  if (localJSONObject2.has("name")) {
-                    localQIMBeautyItem.b = localJSONObject2.getString("name");
-                  }
-                  if (localJSONObject2.has("jump_app")) {
-                    localQIMBeautyItem.d = localJSONObject2.getString("jump_app");
-                  }
-                  this.jdField_a_of_type_JavaUtilList.add(localQIMBeautyItem);
-                  j += 1;
-                }
-              }
-              if (localJSONObject1.has("downloadInfo"))
-              {
-                vnd.jdField_a_of_type_JavaLangString = localJSONObject1.getString("downloadInfo");
-                if (QLog.isColorLevel()) {
-                  QLog.e(jdField_a_of_type_JavaLangString, 2, "QIMBeautyManager WeishiGuideUtils.DOWNLOAD_JSON=  " + vnd.jdField_a_of_type_JavaLangString);
-                }
-              }
-              i += 1;
-            }
-          }
-        }
-      }
+      this.jdField_a_of_type_ArrayOfLong[i] = 0L;
+      i += 1;
+    }
+  }
+  
+  public void a(int paramInt, long paramLong)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ArrayOfLong[paramInt] == 0L)) {
+      this.jdField_a_of_type_ArrayOfLong[paramInt] = paramLong;
+    }
+  }
+  
+  public void a(Integer... paramVarArgs)
+  {
+    if ((paramVarArgs == null) || (this.jdField_b_of_type_Int >= 400)) {
       return;
     }
-    catch (Exception localException)
+    if (paramVarArgs.length == 1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "parse sv config error, stacktrace :  " + QLog.getStackTraceString(localException));
+      if (this.jdField_a_of_type_ArrayOfInt == null) {
+        this.jdField_a_of_type_ArrayOfInt = new int[400];
+      }
+      this.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_Int] = paramVarArgs[0].intValue();
+    }
+    for (;;)
+    {
+      this.jdField_b_of_type_Int += 1;
+      return;
+      if (paramVarArgs.length == 2)
+      {
+        if (this.jdField_a_of_type_ArrayOfInt == null) {
+          this.jdField_a_of_type_ArrayOfInt = new int[400];
+        }
+        if (this.jdField_b_of_type_ArrayOfInt == null) {
+          this.jdField_b_of_type_ArrayOfInt = new int[400];
+        }
+        this.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_Int] = paramVarArgs[0].intValue();
+        this.jdField_b_of_type_ArrayOfInt[this.jdField_b_of_type_Int] = paramVarArgs[1].intValue();
       }
     }
   }
   
-  public boolean a(String paramString, int paramInt, Context paramContext)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "savebeautyConfig :  " + paramString);
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return System.currentTimeMillis() - this.jdField_a_of_type_Long >= paramInt;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
     }
-    paramContext = paramContext.getSharedPreferences("short_video_beauty_config", 0).edit();
-    paramContext.putString("short_video_beauty_content", paramString);
-    paramContext.putInt("short_video_beauty_version", paramInt);
-    paramContext.commit();
-    return true;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    a();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    a();
   }
 }
 

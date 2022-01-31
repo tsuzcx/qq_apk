@@ -1,43 +1,43 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.os.Environment;
-import android.os.Process;
-import com.tencent.av.core.SDKConfigInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
-import java.util.Iterator;
+import android.content.Context;
+import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateError;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class lbg
+class lbg
+  extends lao
 {
-  private final SDKConfigInfo a = new SDKConfigInfo(null);
+  lbg(lbf paramlbf, Long paramLong, Context paramContext, List paramList, Language paramLanguage, lbr paramlbr) {}
   
-  public lbg()
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
   {
-    int i = Process.myPid();
-    Iterator localIterator = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses().iterator();
-    while (localIterator.hasNext())
+    try
     {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localIterator.next();
-      if (localRunningAppProcessInfo.pid == i) {
-        SDKConfigInfo.access$102(this.a, localRunningAppProcessInfo.processName);
-      }
+      lbf.a(this.jdField_a_of_type_Lbf).jdField_a_of_type_JavaLangString = paramJSONObject.getString("access_token");
+      lbf.a(this.jdField_a_of_type_Lbf).jdField_a_of_type_Long = (paramJSONObject.getLong("expires_in") * 1000L + this.jdField_a_of_type_JavaLangLong.longValue());
+      lbf.a(this.jdField_a_of_type_Lbf, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, lbf.a(this.jdField_a_of_type_Lbf).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangLong, this.jdField_a_of_type_Lbr);
+      return;
     }
-    if ("mounted".equals(Environment.getExternalStorageState())) {
-      SDKConfigInfo.access$202(this.a, Environment.getExternalStorageDirectory().getPath() + File.separator + "tencent" + File.separator + "msflogs" + File.separator + "com.tencent.mobileqq".replace(".", File.separator) + File.separator);
+    catch (JSONException paramArrayOfHeader)
+    {
+      this.jdField_a_of_type_Lbr.a(new TranslateError(paramArrayOfHeader), this.jdField_a_of_type_JavaLangLong);
     }
-    krx.a("SDKConfigInfo", this.a.toString());
   }
   
-  public SDKConfigInfo a()
+  public void a(Throwable paramThrowable, String paramString)
   {
-    return this.a;
+    this.jdField_a_of_type_Lbr.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
+    if (QLog.isColorLevel()) {
+      QLog.e("Translator", 2, "error:" + paramThrowable + "\trequest_time:" + this.jdField_a_of_type_JavaLangLong);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     lbg
  * JD-Core Version:    0.7.0.1
  */

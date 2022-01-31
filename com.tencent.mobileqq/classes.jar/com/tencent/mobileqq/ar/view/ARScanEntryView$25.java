@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.view;
 
-import ajjy;
-import bbmy;
+import ajyc;
+import bcpw;
 
 class ARScanEntryView$25
   implements Runnable
@@ -10,7 +10,7 @@ class ARScanEntryView$25
   
   public void run()
   {
-    bbmy.a(this.this$0.a, ajjy.a(2131634952), 1).b(this.this$0.a());
+    bcpw.a(this.this$0.a, ajyc.a(2131700736), 1).b(this.this$0.a());
   }
 }
 

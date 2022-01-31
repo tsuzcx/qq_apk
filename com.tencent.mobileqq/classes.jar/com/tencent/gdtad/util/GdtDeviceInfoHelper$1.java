@@ -1,9 +1,9 @@
 package com.tencent.gdtad.util;
 
-import yny;
-import you;
-import yow;
-import yoy;
+import yxs;
+import yyn;
+import yyp;
+import yys;
 
 public final class GdtDeviceInfoHelper$1
   implements Runnable
@@ -12,8 +12,8 @@ public final class GdtDeviceInfoHelper$1
   
   public void run()
   {
-    yny.b(yoy.a(), String.format("updateForAidTicketAndTaidTicketOnSubThread delayMillis:%d count:%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(yoy.a()) }));
-    if (yoy.a() >= 5) {}
+    yxs.b(yys.a(), String.format("updateForAidTicketAndTaidTicketOnSubThread delayMillis:%d count:%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(yys.a()) }));
+    if (yys.a() >= 5) {}
     int i;
     label212:
     do
@@ -21,35 +21,35 @@ public final class GdtDeviceInfoHelper$1
       return;
       try
       {
-        if (yoy.a() >= 5) {
+        if (yys.a() >= 5) {
           return;
         }
       }
       finally {}
-      yoy.a(yoy.a() + 1);
-      yow localyow = you.a().a();
-      i = yoy.a(localyow);
-      if (localyow != null) {
-        yny.b(yoy.a(), String.format("updateForAidTicketAndTaidTicketOnSubThread errorCode:%d errorCodeOfTicketEntity:%d expiredTimestampOfTicketEntity:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(localyow.jdField_a_of_type_Int), Long.valueOf(localyow.jdField_a_of_type_Long) }));
+      yys.a(yys.a() + 1);
+      yyp localyyp = yyn.a().a();
+      i = yys.a(localyyp);
+      if (localyyp != null) {
+        yxs.b(yys.a(), String.format("updateForAidTicketAndTaidTicketOnSubThread errorCode:%d errorCodeOfTicketEntity:%d expiredTimestampOfTicketEntity:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(localyyp.jdField_a_of_type_Int), Long.valueOf(localyyp.jdField_a_of_type_Long) }));
       }
       for (;;)
       {
         if (i != 0) {
           break label212;
         }
-        if ((localyow == null) || (localyow.jdField_a_of_type_Long == 0L)) {
+        if ((localyyp == null) || (localyyp.jdField_a_of_type_Long == 0L)) {
           break;
         }
-        long l = localyow.jdField_a_of_type_Long * 1000L - System.currentTimeMillis() + 1000L;
+        long l = localyyp.jdField_a_of_type_Long * 1000L - System.currentTimeMillis() + 1000L;
         if (l <= 0L) {
           break;
         }
-        yoy.a(l);
+        yys.a(l);
         return;
-        yny.b(yoy.a(), String.format("updateForAidTicketAndTaidTicketOnSubThread initTuringSDK return null, errorCode:%d", new Object[] { Integer.valueOf(i) }));
+        yxs.b(yys.a(), String.format("updateForAidTicketAndTaidTicketOnSubThread initTuringSDK return null, errorCode:%d", new Object[] { Integer.valueOf(i) }));
       }
     } while (i != 3);
-    yoy.a(1800000L);
+    yys.a(1800000L);
   }
 }
 

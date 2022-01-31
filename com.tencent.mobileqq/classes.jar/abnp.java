@@ -1,30 +1,14 @@
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.QuickLoginActivity;
-import mqq.observer.AccountObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.NearbyActivity;
 
 public class abnp
-  extends AccountObserver
+  extends atfy
 {
-  public abnp(QuickLoginActivity paramQuickLoginActivity) {}
+  public abnp(NearbyActivity paramNearbyActivity) {}
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt, byte[] paramArrayOfByte)
+  protected void a()
   {
-    Toast.makeText(this.a.getApplicationContext(), "login failure! check you qq and password!", 0).show();
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login suc", 0).show();
-  }
-  
-  public void onLoginTimeout(String paramString)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login outtime", 0).show();
-  }
-  
-  public void onUserCancel(String paramString)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login cancel", 0).show();
+    this.a.a.sendEmptyMessageDelayed(2, 0L);
   }
 }
 

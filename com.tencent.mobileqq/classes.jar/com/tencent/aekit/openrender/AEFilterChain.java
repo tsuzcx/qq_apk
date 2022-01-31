@@ -87,7 +87,7 @@ public class AEFilterChain
     while (localIterator.hasNext())
     {
       Object localObject = (AEChainI)localIterator.next();
-      if (localObject != null)
+      if ((localObject != null) && (((AEChainI)localObject).isApplied()))
       {
         localObject = ((AEChainI)localObject).render(paramFrame);
         if ((localObject != paramFrame) && (!paramFrame.unlock())) {
@@ -115,7 +115,7 @@ public class AEFilterChain
       while (localIterator.hasNext())
       {
         Object localObject2 = (AEChainI)localIterator.next();
-        if (localObject2 != null)
+        if ((localObject2 != null) && (((AEChainI)localObject2).isApplied()))
         {
           String str = localObject2.getClass().getSimpleName();
           AEProfiler.getInstance().start(str, true);
@@ -136,29 +136,37 @@ public class AEFilterChain
   public void process(int paramInt1, int paramInt2, int paramInt3, int paramInt4, AEChainI... paramVarArgs)
   {
     Log.i(TAG, "[process] + BEGIN, width = " + paramInt3 + ", height = " + paramInt4);
-    Object localObject = new Frame();
-    ((Frame)localObject).setSizedTexture(paramInt1, paramInt3, paramInt4);
+    Object localObject1 = new Frame();
+    ((Frame)localObject1).setSizedTexture(paramInt1, paramInt3, paramInt4);
     paramInt3 = paramVarArgs.length;
     paramInt1 = 0;
     if (paramInt1 < paramInt3)
     {
       AEChainI localAEChainI = paramVarArgs[paramInt1];
-      if (localAEChainI == null) {}
+      Object localObject2 = localObject1;
+      if (localAEChainI != null)
+      {
+        if (localAEChainI.isApplied()) {
+          break label103;
+        }
+        localObject2 = localObject1;
+      }
       for (;;)
       {
         paramInt1 += 1;
+        localObject1 = localObject2;
         break;
-        Frame localFrame = localAEChainI.render((Frame)localObject);
+        label103:
+        localObject2 = localAEChainI.render((Frame)localObject1);
         Log.d(TAG, "[process] filter = " + localAEChainI);
-        if ((localFrame != localObject) && (!((Frame)localObject).unlock())) {
-          ((Frame)localObject).clear();
+        if ((localObject2 != localObject1) && (!((Frame)localObject1).unlock())) {
+          ((Frame)localObject1).clear();
         }
-        localObject = localFrame;
       }
     }
-    copy((Frame)localObject, paramInt2);
-    if (!((Frame)localObject).unlock()) {
-      ((Frame)localObject).clear();
+    copy((Frame)localObject1, paramInt2);
+    if (!((Frame)localObject1).unlock()) {
+      ((Frame)localObject1).clear();
     }
     Log.i(TAG, "[process] + END");
   }

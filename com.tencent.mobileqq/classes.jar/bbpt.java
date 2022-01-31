@@ -1,38 +1,63 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import android.os.AsyncTask;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.vas.PendantInfo;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class bbpt
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends AsyncTask<Long, Void, Void>
 {
-  public bbpt(NavBarAIO paramNavBarAIO, int paramInt1, int paramInt2) {}
+  long jdField_a_of_type_Long;
+  Object jdField_a_of_type_JavaLangObject;
   
-  public void onGlobalLayout()
+  public bbpt(PendantInfo paramPendantInfo, Object paramObject, long paramLong)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-    for (;;)
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  protected Void a(Long... paramVarArgs)
+  {
+    try
     {
-      int i = NavBarAIO.a(this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO);
-      int j = NavBarAIO.b(this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO);
-      if ((i != this.jdField_a_of_type_Int) || (j != this.b))
+      long l1 = paramVarArgs[0].longValue();
+      long l2 = paramVarArgs[1].longValue();
+      long l3 = paramVarArgs[2].longValue();
+      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.a((int)l3, this.jdField_a_of_type_JavaLangObject, (int)l2);
+      if ((paramVarArgs != null) && (!isCancelled()))
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("NavBarAIO", 4, "adjustTitleDimension onGlobalLayout lw_now:" + j + " rw_now:" + i + " lw:" + this.b + " rw:" + this.jdField_a_of_type_Int);
+        l2 = SystemClock.uptimeMillis();
+        Message localMessage = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(17);
+        if (PendantInfo.a(localMessage, this.jdField_a_of_type_Long))
+        {
+          localMessage.obj = paramVarArgs;
+          if (l2 < l1) {
+            this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(localMessage, l1 - l2);
+          } else {
+            this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+          }
         }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.b();
       }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
+    catch (Throwable paramVarArgs)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.e("PendantInfo", 4, "", paramVarArgs);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.b = true;
+    }
+    return null;
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_Bbpt = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbpt
  * JD-Core Version:    0.7.0.1
  */

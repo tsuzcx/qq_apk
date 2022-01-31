@@ -1,12 +1,15 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
-class vrg
-  extends RecyclerView.ViewHolder
+public class vrg
+  implements DialogInterface.OnClickListener
 {
-  vrg(vre paramvre, View paramView)
+  public vrg(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramView);
+    paramDialogInterface.dismiss();
   }
 }
 

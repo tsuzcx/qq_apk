@@ -1,19 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import android.os.IInterface;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-class avra
-  implements View.OnClickListener
+public abstract interface avra
+  extends IInterface
 {
-  avra(avqx paramavqx) {}
+  public abstract Bundle a(int paramInt, Bundle paramBundle);
   
-  public void onClick(View paramView)
-  {
-    avqx.a(this.a).a(paramView);
-  }
+  public abstract void a(int paramInt, Bundle paramBundle);
+  
+  public abstract void a(CompressInfo paramCompressInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avra
  * JD-Core Version:    0.7.0.1
  */

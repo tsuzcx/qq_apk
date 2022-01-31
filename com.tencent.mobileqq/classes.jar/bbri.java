@@ -1,20 +1,16 @@
-import android.content.Context;
-import android.os.Handler;
-import java.lang.ref.WeakReference;
+import java.util.Comparator;
 
-public class bbri
-  extends Handler
+final class bbri
+  implements Comparator<bbrf>
 {
-  WeakReference<Context> a;
-  
-  public bbri(Context paramContext)
+  public int a(bbrf parambbrf1, bbrf parambbrf2)
   {
-    this.a = new WeakReference(paramContext);
+    return parambbrf2.a - parambbrf1.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbri
  * JD-Core Version:    0.7.0.1
  */

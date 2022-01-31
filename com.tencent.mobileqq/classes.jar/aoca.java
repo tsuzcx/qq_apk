@@ -1,17 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import android.widget.LinearLayout;
 
 public class aoca
-  implements View.OnClickListener
+  extends anxe
 {
-  public aoca(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
-  
-  public void onClick(View paramView)
-  {
-    QfileLocalFilePicTabView.a(this.a, paramView, true);
-    paramView.sendAccessibilityEvent(8);
-  }
+  public LinearLayout[] a;
 }
 
 

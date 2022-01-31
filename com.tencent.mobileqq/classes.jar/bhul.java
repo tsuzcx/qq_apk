@@ -1,37 +1,46 @@
 import android.content.Context;
-import com.tencent.mobileqq.widget.GifAnimationDrawable;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.PopupWindow;
+import java.lang.ref.WeakReference;
 
 public class bhul
-  extends GifAnimationDrawable
+  extends PopupWindow
 {
-  public bhul(Context paramContext, ArrayList<String> paramArrayList, long paramLong)
+  private WeakReference<Context> a;
+  
+  public bhul(Context paramContext)
   {
-    super(paramContext, paramArrayList, paramLong);
+    super(paramContext);
+    this.a = new WeakReference(paramContext);
   }
   
-  public void start()
+  public void showAsDropDown(View paramView)
   {
-    if (!this.a)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("zswp20pro", 2, "start");
-      }
-      this.a = true;
-      this.b = true;
-      this.d = false;
-      a();
-    }
-    while (!QLog.isColorLevel()) {
+    if (this.a.get() == null) {
       return;
     }
-    QLog.d("zswp20pro", 2, "start but isRunning");
+    super.showAsDropDown(paramView);
+  }
+  
+  public void showAsDropDown(View paramView, int paramInt1, int paramInt2)
+  {
+    if (this.a.get() == null) {
+      return;
+    }
+    super.showAsDropDown(paramView, paramInt1, paramInt2);
+  }
+  
+  public void showAtLocation(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.get() == null) {
+      return;
+    }
+    super.showAtLocation(paramView, paramInt1, paramInt2, paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhul
  * JD-Core Version:    0.7.0.1
  */

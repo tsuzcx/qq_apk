@@ -1,14 +1,28 @@
-import android.text.Editable;
-import java.util.Comparator;
+import com.tencent.mobileqq.data.TroopInfo;
 
-final class azdm
-  implements Comparator
+class azdm
+  extends akim
 {
-  azdm(Editable paramEditable) {}
+  azdm(azdl paramazdl) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  protected void a(int paramInt1, int paramInt2)
   {
-    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
+    azdl.a(this.a, false, paramInt1, paramInt2, null);
+  }
+  
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    azdl.a(this.a, true, paramInt1, paramInt2, paramString);
+  }
+  
+  protected void a(String paramString)
+  {
+    azdl.a(this.a, paramString);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  {
+    azdl.a(this.a, paramBoolean, paramLong, paramTroopInfo);
   }
 }
 

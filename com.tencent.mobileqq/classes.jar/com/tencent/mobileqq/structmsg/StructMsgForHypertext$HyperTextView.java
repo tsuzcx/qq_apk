@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
-import rtr;
+import sgj;
 
 public final class StructMsgForHypertext$HyperTextView
   extends TextView
@@ -64,7 +64,7 @@ public final class StructMsgForHypertext$HyperTextView
   
   public void onClick(View paramView)
   {
-    Object localObject = paramView.getTag(2131310787);
+    Object localObject = paramView.getTag(2131376583);
     if ((localObject != null) && ((localObject instanceof StructMsgForHypertext)))
     {
       localObject = (StructMsgForHypertext)localObject;
@@ -81,7 +81,7 @@ public final class StructMsgForHypertext$HyperTextView
     Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
     localIntent.putExtra("big_brother_source_key", "biz_src_jc_aio");
     localIntent.putExtra("url", ((StructMsgForHypertext)localObject).mMsgUrl);
-    rtr.a(((StructMsgForHypertext)localObject).message, localIntent, ((StructMsgForHypertext)localObject).mMsgUrl);
+    sgj.a(((StructMsgForHypertext)localObject).message, localIntent, ((StructMsgForHypertext)localObject).mMsgUrl);
     paramView.startActivity(localIntent);
     this.jdField_a_of_type_Boolean = true;
   }

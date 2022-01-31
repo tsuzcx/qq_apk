@@ -1,100 +1,135 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.opengl.EGL14;
+import android.support.annotation.RequiresApi;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.mobileqq.shortvideo.filter.QQImage2FrameFilter;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import tencent.im.cs.smart_device_proxy.smart_device_proxy.CgiRsp;
-import tencent.im.cs.smart_device_proxy.smart_device_proxy.RspBody;
+import java.util.ArrayList;
+import java.util.List;
 
 public class xhn
-  extends MSFServlet
 {
-  private void a(Intent paramIntent, int paramInt1, int paramInt2)
+  private final int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private avzm jdField_a_of_type_Avzm;
+  private QQFilterRenderManager jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
+  private final String jdField_a_of_type_JavaLangString;
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean = true;
+  private final int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private final int c;
+  private int d = 42;
+  private int e;
+  
+  public xhn(String paramString, int paramInt1, int paramInt2, int paramInt3, long paramLong, boolean paramBoolean, int paramInt4)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ssoResultCode", paramInt1);
-    localBundle.putInt("proxyResultCode", paramInt2);
-    notifyObserver(paramIntent, 0, false, localBundle, null);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramInt4;
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private int a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SmartDeviceServlet", 2, "onReceive " + paramFromServiceMsg.getServiceCmd() + ",resultCode=" + paramFromServiceMsg.getResultCode());
-    }
-    if ("smart_device_proxy.cgi".equals(paramFromServiceMsg.getServiceCmd()))
-    {
-      if (paramFromServiceMsg.getResultCode() != 1000) {
-        a(paramIntent, paramFromServiceMsg.getResultCode(), 0);
+    int i = 0;
+    if ((paramBitmap == null) || (paramInt2 == 0) || (paramInt1 == 0)) {
+      if (paramBitmap == null) {
+        paramInt1 = i;
       }
     }
-    else {
-      return;
-    }
-    if (paramFromServiceMsg.getWupBuffer() == null)
+    do
     {
-      a(paramIntent, 0, -1);
-      return;
+      return paramInt1;
+      return GlUtil.createTexture(3553, paramBitmap);
+      i = GlUtil.createTexture(3553, paramBitmap);
+      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager == null) {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = new QQFilterRenderManager();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceCreate(paramInt1, paramInt2, paramInt1, paramInt2);
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceChange(paramInt1, paramInt2, paramInt1, paramInt2);
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.pushChain(new int[] { 170 }, null);
+      List localList = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.getQQFilters(170);
+      if ((localList != null) && (localList.size() > 0) && ((localList.get(0) instanceof QQImage2FrameFilter))) {
+        ((QQImage2FrameFilter)localList.get(0)).setImageSize(paramBitmap.getWidth(), paramBitmap.getHeight());
+      }
+      paramInt2 = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.drawFrame(i);
+      paramInt1 = paramInt2;
+    } while (i <= 0);
+    GlUtil.deleteTexture(i);
+    return paramInt2;
+  }
+  
+  private int b(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  {
+    if ((paramBitmap == null) || (paramInt2 == 0) || (paramInt1 == 0))
+    {
+      if (paramBitmap == null) {
+        return 0;
+      }
+      return GlUtil.createTexture(3553, paramBitmap);
     }
-    int i = paramFromServiceMsg.getWupBuffer().length - 4;
-    Object localObject = new byte[i];
-    bakz.a((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    smart_device_proxy.RspBody localRspBody = new smart_device_proxy.RspBody();
-    smart_device_proxy.CgiRsp localCgiRsp = new smart_device_proxy.CgiRsp();
+    Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(localBitmap);
+    float f = paramInt1 * 1.0F / paramInt2;
+    f = paramBitmap.getWidth() * 1.0F / paramBitmap.getHeight();
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    Matrix localMatrix = new Matrix();
+    localMatrix.postTranslate(i * -0.5F, j * -0.5F);
+    if ((this.e != 180) && (this.e != 270)) {
+      localMatrix.postRotate(-180.0F, 0.0F, 1.0F);
+    }
+    localMatrix.postScale(-1.0F, 1.0F);
+    f = paramInt1 * 1.0F / paramBitmap.getWidth();
+    localMatrix.postScale(f, f);
+    localMatrix.postTranslate(paramInt1 * 0.5F, paramInt2 * 0.5F);
+    localCanvas.drawBitmap(paramBitmap, localMatrix, null);
+    return GlUtil.createTexture(3553, localBitmap);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  @TargetApi(17)
+  @RequiresApi(api=17)
+  public void a(List<Bitmap> paramList, xhh paramxhh)
+  {
+    xhi localxhi = new xhi(0, "success");
+    this.jdField_a_of_type_Avzm = new avzm();
+    avyy localavyy = new avyy(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.c, 1, false, 0);
+    localavyy.a(EGL14.eglGetCurrentContext());
+    QLog.d("MuiltiImageToVideo", 2, this.jdField_a_of_type_JavaLangString + " " + this.jdField_b_of_type_Int + " " + this.jdField_a_of_type_Int + " " + this.c);
+    this.jdField_a_of_type_Avzm.a(localavyy, new xho(this, paramList, paramxhh, localxhi));
     try
     {
-      localRspBody.mergeFrom((byte[])localObject);
-      if (localRspBody.int32_errorCode.get() != 0)
+      try
       {
-        a(paramIntent, 0, localRspBody.int32_errorCode.get());
+        wait();
         return;
       }
-    }
-    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-    {
-      paramFromServiceMsg.printStackTrace();
-      a(paramIntent, 0, -1);
+      finally {}
       return;
     }
-    localCgiRsp.mergeFrom(localRspBody.bytes_info.get().toByteArray());
-    if (QLog.isColorLevel()) {
-      QLog.d("SmartDeviceServlet", 2, "resultCode=" + localCgiRsp.int32_errorCode.get() + ",resultStr=" + localCgiRsp.bytes_rsp.get().toStringUtf8());
-    }
-    localObject = new Bundle();
-    ((Bundle)localObject).putInt("cgiResultCode", localCgiRsp.int32_errorCode.get());
-    ((Bundle)localObject).putByteArray("data", localCgiRsp.bytes_rsp.get().toByteArray());
-    notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), (Bundle)localObject, null);
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SmartDeviceServlet", 2, "onSend");
-    }
-    paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-    byte[] arrayOfByte1 = paramIntent.getWupBuffer();
-    byte[] arrayOfByte2 = new byte[arrayOfByte1.length + 4];
-    bakz.a(arrayOfByte2, 0, arrayOfByte1.length + 4);
-    bakz.a(arrayOfByte2, 4, arrayOfByte1, arrayOfByte1.length);
-    paramIntent.putWupBuffer(arrayOfByte2);
-    paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-    paramPacket.putSendData(paramIntent.getWupBuffer());
-    paramPacket.setTimeout(paramIntent.getTimeout());
-    paramPacket.setAttributes(paramIntent.getAttributes());
-    if (!paramIntent.isNeedCallback()) {
-      paramPacket.setNoResponse();
+    catch (InterruptedException paramList)
+    {
+      paramList.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xhn
  * JD-Core Version:    0.7.0.1
  */

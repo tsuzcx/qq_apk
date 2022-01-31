@@ -1,17 +1,30 @@
-import android.view.animation.Interpolator;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class bemr
-  implements Interpolator
+class bemr
+  implements View.OnClickListener
 {
-  public float getInterpolation(float paramFloat)
+  bemr(bemn parambemn, DialogInterface.OnClickListener paramOnClickListener) {}
+  
+  public void onClick(View paramView)
   {
-    paramFloat -= 1.0F;
-    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bemn, 0);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Bemn.isShowing()) {
+        this.jdField_a_of_type_Bemn.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bemr
  * JD-Core Version:    0.7.0.1
  */

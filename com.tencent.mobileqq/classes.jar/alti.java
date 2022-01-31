@@ -1,98 +1,174 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.ark.ArkAppPreloader;
+import com.tencent.ark.ArkAppPreloader.PreloadAppCallback;
+import com.tencent.ark.ArkEnvironmentManager;
+import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.1;
+import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.2;
+import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
 
 public class alti
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
 {
-  alsg jdField_a_of_type_Alsg;
-  alte jdField_a_of_type_Alte;
-  altf jdField_a_of_type_Altf;
-  public View a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public View b;
-  public TextView b;
+  private int jdField_a_of_type_Int;
+  private ArkAppPreloader.PreloadAppCallback jdField_a_of_type_ComTencentArkArkAppPreloader$PreloadAppCallback = new altk(this);
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private ConcurrentHashMap<String, altm> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(8);
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public alti(alte paramalte, View paramView)
+  public alti(QQAppInterface paramQQAppInterface)
   {
-    super(paramView);
-    this.jdField_a_of_type_Alte = paramalte;
-    Resources localResources = paramView.getContext().getResources();
-    paramView.setOnClickListener(this);
-    View localView1 = paramView.findViewById(2131305254);
-    azve.a(localView1, false);
-    localView1.setOnClickListener(this);
-    View localView2 = paramView.findViewById(2131305255);
-    azve.a(localView2, false);
-    localView2.setOnClickListener(this);
-    if (alte.a(paramalte))
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Boolean = false;
+    ThreadManagerV2.executeOnSubThread(new ArkAppPreDownloadMgr.1(this));
+  }
+  
+  private void a(altm paramaltm)
+  {
+    if (paramaltm == null)
     {
-      i = 8;
-      localView1.setVisibility(i);
-      if (!alte.a(paramalte)) {
-        break label329;
+      QLog.d("ArkApp.ArkAppPreDownloadMgr", 1, "profiling preDownloadApp failed for item null");
+      return;
+    }
+    ThreadManagerV2.executeOnSubThread(new ArkAppPreDownloadMgr.3(this, paramaltm));
+  }
+  
+  private static void a(String paramString)
+  {
+    paramString = new File(paramString);
+    if (!paramString.exists()) {
+      paramString.mkdirs();
+    }
+  }
+  
+  private void a(String paramString1, String paramString2, ArkAppPreloader.PreloadAppCallback paramPreloadAppCallback, int paramInt)
+  {
+    String str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
+    String str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
+    String str3 = ArkEnvironmentManager.getInstance().getAppResPath(paramString1);
+    a(str3);
+    ArkAppPreloader.preloadApp(paramString1, paramString2, str2, str3, str1, paramPreloadAppCallback, paramInt);
+  }
+  
+  private void c()
+  {
+    String str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
+    String str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
+    a(str1);
+    a(str2);
+    BaseApplicationImpl.sApplication.getApplicationContext();
+    ArkAppPreloader.preloadCommon(alta.a(), str2, str1);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, "profiling startPredownload");
+    }
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0) && (!this.jdField_a_of_type_Boolean))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Int = 0;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        altm localaltm = (altm)((Map.Entry)localIterator.next()).getValue();
+        if (!TextUtils.isEmpty(localaltm.a)) {
+          if (TextUtils.isEmpty(ArkAppMgr.getInstance().getAppPathByNameFromLocal(localaltm.a, "", null, false))) {
+            a(localaltm);
+          } else {
+            QLog.d("ArkApp.ArkAppPreDownloadMgr", 1, new Object[] { "profiling ark app predowloaded,app=", localaltm.a });
+          }
+        }
       }
     }
-    label329:
-    for (int i = j;; i = 8)
-    {
-      localView2.setVisibility(i);
-      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131305247);
-      this.jdField_a_of_type_AndroidViewView.setContentDescription(localResources.getString(2131625299));
-      this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131305244);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131305248));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131305258));
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(aciy.a(3.0F, localResources));
-      this.jdField_a_of_type_AndroidWidgetTextView.setFocusable(true);
-      this.jdField_a_of_type_AndroidWidgetTextView.setFocusableInTouchMode(true);
-      azve.a(this.jdField_a_of_type_AndroidWidgetTextView, true);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131305256));
-      this.jdField_b_of_type_AndroidWidgetTextView.setFocusable(true);
-      this.jdField_b_of_type_AndroidWidgetTextView.setFocusableInTouchMode(true);
-      azve.a(this.jdField_b_of_type_AndroidWidgetTextView, true);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131305249));
-      this.jdField_a_of_type_Altf = new altf(paramalte, this);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_Altf);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new altg(paramalte, this));
-      this.jdField_a_of_type_Alsg = new alsg();
-      this.jdField_a_of_type_Alsg.a(paramView.getContext(), aciy.a(15.0F, localResources), aciy.a(9.5F, localResources));
+  }
+  
+  public void a(amqq paramamqq)
+  {
+    if ((paramamqq != null) && (paramamqq.a() != null)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = paramamqq.a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    }
+    while (!QLog.isColorLevel()) {
       return;
-      i = 0;
-      break;
+    }
+    QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, "profiling updatePreloadConfig cfg is empty");
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    for (;;)
+    {
+      try
+      {
+        boolean bool;
+        if (!TextUtils.isEmpty(paramString))
+        {
+          bool = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
+          if (bool) {}
+        }
+        else
+        {
+          return;
+        }
+        String str;
+        HashMap localHashMap;
+        try
+        {
+          SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_app_first_use", 0);
+          bool = localSharedPreferences.getBoolean(paramString, false);
+          if (bool) {
+            break label218;
+          }
+          str = BaseApplicationImpl.sApplication.getRuntime().getAccount();
+          localHashMap = new HashMap();
+          localHashMap.put("app_name", paramString);
+          if (!paramBoolean) {
+            break label193;
+          }
+          axrl.a(BaseApplicationImpl.getApplication()).a(str, "ark_app_predownload_first_hit", true, 0L, 0L, localHashMap, "", false);
+          QLog.d("ArkApp.ArkAppPreDownloadMgr", 1, new Object[] { "profiling reportPredownloadFirstHit app=", paramString, ",hasUsed=", Boolean.valueOf(bool), ",hasPreDownload=", Boolean.valueOf(paramBoolean) });
+          localSharedPreferences.edit().putBoolean(paramString, true).apply();
+        }
+        catch (Exception paramString)
+        {
+          QLog.d("ArkApp.ArkAppPreDownloadMgr", 1, "profiling reportPredownloadFirstHit exception=", paramString);
+        }
+        continue;
+        axrl.a(BaseApplicationImpl.getApplication()).a(str, "ark_app_predownload_first_hit", false, 0L, 0L, localHashMap, "", false);
+      }
+      finally {}
+      label193:
+      continue;
+      label218:
+      QLog.d("ArkApp.ArkAppPreDownloadMgr", 1, new Object[] { "profiling reportPredownloadFirstHit not first use app=", paramString });
     }
   }
   
-  public ColorNote a(int paramInt)
+  public void b()
   {
-    return (ColorNote)alte.a(this.jdField_a_of_type_Alte).get(paramInt);
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    do
-    {
-      return;
-    } while (alte.a(this.jdField_a_of_type_Alte) == null);
-    alte.a(this.jdField_a_of_type_Alte).a();
-    awqx.b(null, "dc00898", "", "", "0X800A6CE", "0X800A6CE", 0, 0, "", "", "", "");
+    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling startPreload");
+    ArkAppCenter.a(new ArkAppPreDownloadMgr.2(this), 10000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alti
  * JD-Core Version:    0.7.0.1
  */

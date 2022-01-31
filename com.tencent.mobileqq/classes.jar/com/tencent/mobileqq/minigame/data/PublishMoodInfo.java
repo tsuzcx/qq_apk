@@ -170,11 +170,6 @@ public class PublishMoodInfo
     }
   }
   
-  public boolean isValid()
-  {
-    return (!TextUtils.isEmpty(this.mText)) || ((this.mAllImageAndVideo != null) && (this.mAllImageAndVideo.size() > 0) && (this.mMediaInfoHashMap != null) && (this.mMediaInfoHashMap.size() > 0));
-  }
-  
   public String toString()
   {
     int j = 0;

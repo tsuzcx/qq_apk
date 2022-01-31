@@ -1,14 +1,6 @@
-import android.view.View;
-
-class qfu
-  implements qnz
+public abstract interface qfu
 {
-  qfu(qft paramqft) {}
-  
-  public void a(View paramView)
-  {
-    paramView.setTag(new qaj(paramView, 6));
-  }
+  public abstract void b();
 }
 
 

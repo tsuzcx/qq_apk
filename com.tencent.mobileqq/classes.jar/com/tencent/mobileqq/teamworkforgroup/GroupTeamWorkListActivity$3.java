@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
-import axie;
+import ayii;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 
@@ -13,7 +13,7 @@ public class GroupTeamWorkListActivity$3
   {
     WebProcessManager localWebProcessManager = (WebProcessManager)this.this$0.app.getManager(13);
     if ((localWebProcessManager != null) && (localWebProcessManager.d())) {
-      localWebProcessManager.a(101, new axie(this));
+      localWebProcessManager.a(101, new ayii(this));
     }
   }
 }

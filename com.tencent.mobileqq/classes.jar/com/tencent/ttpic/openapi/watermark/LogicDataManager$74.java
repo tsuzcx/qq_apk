@@ -10,7 +10,7 @@ class LogicDataManager$74
   
   public String getValue()
   {
-    return LogicDataManager.access$4700(this.this$0);
+    return "我在这里";
   }
 }
 

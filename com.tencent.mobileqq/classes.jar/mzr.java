@@ -1,24 +1,16 @@
-import java.util.HashMap;
-
-public class mzr
+public abstract interface mzr
 {
-  public int a;
-  public long a;
-  public String a;
-  public HashMap<String, Long> a;
-  public int b;
-  public String b;
+  public abstract void a(String paramString1, int paramInt, String paramString2);
   
-  public void a()
-  {
-    if (this.a != null) {
-      this.a.clear();
-    }
-  }
+  public abstract boolean a();
+  
+  public abstract void b(String paramString1, int paramInt, String paramString2);
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     mzr
  * JD-Core Version:    0.7.0.1
  */

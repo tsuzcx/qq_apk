@@ -1,22 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class bjcs
-  implements DialogInterface.OnClickListener
+class bjcs
+  implements View.OnClickListener
 {
-  public bjcs(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  bjcs(bjcp parambjcp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    if (bjcp.a(this.a))
     {
-      if (this.a.jdField_a_of_type_Int == 2) {
-        this.a.a();
-      }
-      this.a.a(this.a.c);
+      this.a.a.y();
+      return;
     }
-    bjiw.a = true;
+    bcpw.a(BaseApplicationImpl.getContext(), ajyc.a(2131713691), 0).a();
   }
 }
 

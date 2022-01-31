@@ -1,22 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
 
 public class rgh
-  extends AnimatorListenerAdapter
+  extends RecyclerViewWithHeaderFooterFix
 {
-  public rgh(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public rgh(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, Context paramContext)
   {
-    ReadInJoyNinePicDeliverDynamicGridView.b(this.a, false);
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.a);
+    super(paramContext);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    ReadInJoyNinePicDeliverDynamicGridView.b(this.a, true);
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.a);
+    super.a(paramViewHolder, paramInt);
+    this.a.a(paramViewHolder, paramInt);
   }
 }
 

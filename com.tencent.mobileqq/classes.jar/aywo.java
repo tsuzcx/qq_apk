@@ -1,22 +1,25 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
 public class aywo
-  implements View.OnClickListener
+  extends NativeGifImage
 {
-  public aywo(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
-  
-  public void onClick(View paramView)
+  public aywo(aywn paramaywn, File paramFile, boolean paramBoolean, float paramFloat)
   {
-    beex.b(paramView);
-    this.a.getActivity().doOnBackPressed();
+    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
+  }
+  
+  public void executeNewTask()
+  {
+    if (this.mCurrentFrameIndex >= 1) {
+      return;
+    }
+    super.executeNewTask();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aywo
  * JD-Core Version:    0.7.0.1
  */

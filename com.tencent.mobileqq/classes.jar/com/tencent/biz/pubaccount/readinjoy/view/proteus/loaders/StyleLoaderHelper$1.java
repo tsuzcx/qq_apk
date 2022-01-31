@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders;
 
-import ohb;
-import rdm;
+import osm;
+import rqa;
 
 public class StyleLoaderHelper$1
   implements Runnable
 {
-  public StyleLoaderHelper$1(rdm paramrdm) {}
+  public StyleLoaderHelper$1(rqa paramrqa) {}
   
   public void run()
   {
-    ohb.a().b();
+    osm.a().b();
   }
 }
 

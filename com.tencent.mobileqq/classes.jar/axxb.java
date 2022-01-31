@@ -1,80 +1,49 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.animation.DecelerateInterpolator;
+import com.tencent.qphone.base.util.QLog;
 
-public class axxb
+class axxb
+  implements View.OnTouchListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  axxb(axwz paramaxwz, View paramView) {}
   
-  public axxb() {}
-  
-  public axxb(String paramString, int paramInt1, int paramInt2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.c = paramInt2;
-  }
-  
-  public static String a(List<axxb> paramList)
-  {
-    if (paramList == null) {
-      return null;
-    }
-    try
+    switch (paramMotionEvent.getAction())
     {
-      JSONArray localJSONArray = new JSONArray();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+    }
+    for (;;)
+    {
+      return false;
+      if (!this.jdField_a_of_type_Axwz.b)
       {
-        axxb localaxxb = (axxb)paramList.next();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("i", localaxxb.jdField_a_of_type_JavaLangString);
-        if (localaxxb.jdField_a_of_type_Int != 80) {
-          localJSONObject.put("p", localaxxb.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Axwz.b = true;
+        ObjectAnimator localObjectAnimator = (ObjectAnimator)paramView.getTag(2131373069);
+        paramMotionEvent = localObjectAnimator;
+        if (localObjectAnimator == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("StructMsgItemLayout12", 2, "animator is null");
+          }
+          paramMotionEvent = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewView, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 0.9F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 0.95F }) });
+          paramMotionEvent.setInterpolator(new DecelerateInterpolator(2.0F));
+          paramMotionEvent.setDuration(100L);
+          paramView.setTag(2131373069, paramMotionEvent);
         }
-        if (localaxxb.c != 1) {
-          localJSONObject.put("t", localaxxb.c);
-        }
-        localJSONArray.put(localJSONObject);
+        paramMotionEvent.start();
       }
-      paramList = localJSONArray.toString();
-    }
-    catch (Exception paramList)
-    {
-      paramList.printStackTrace();
-      return null;
-    }
-    return paramList;
-  }
-  
-  public static ArrayList<axxb> a(String paramString)
-  {
-    try
-    {
-      ArrayList localArrayList = new ArrayList();
-      JSONArray localJSONArray = new JSONArray(paramString);
-      int i = 0;
-      for (;;)
-      {
-        paramString = localArrayList;
-        if (i >= localJSONArray.length()) {
-          break;
-        }
-        paramString = localJSONArray.getJSONObject(i);
-        localArrayList.add(new axxb(paramString.getString("i"), paramString.optInt("p", 80), paramString.optInt("t", 1)));
-        i += 1;
+      return true;
+      this.jdField_a_of_type_Axwz.a.onClick(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Axwz.b = false;
+      paramView = (ObjectAnimator)paramView.getTag(2131373069);
+      if (paramView != null) {
+        paramView.reverse();
       }
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      paramString = null;
     }
   }
 }

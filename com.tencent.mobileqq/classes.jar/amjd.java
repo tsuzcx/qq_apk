@@ -1,66 +1,55 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class amjd
-  extends amie<amjc>
+  implements amjh
 {
-  public static amjc c()
+  public String a()
   {
-    return (amjc)alzw.a().a(409);
+    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131692370);
   }
   
-  public int a()
+  public void a(View paramView, int paramInt)
   {
-    return 409;
-  }
-  
-  @NonNull
-  public amjc a()
-  {
-    return new amjc();
-  }
-  
-  @NonNull
-  public amjc a(alzs[] paramArrayOfalzs)
-  {
-    boolean bool = true;
-    localamjc = new amjc();
-    paramArrayOfalzs = paramArrayOfalzs[0].jdField_a_of_type_JavaLangString;
-    try
+    boolean bool2 = true;
+    Context localContext = paramView.getContext();
+    boolean bool1;
+    if (!((BaseActivity)paramView.getContext()).isInMultiWindow())
     {
-      paramArrayOfalzs = new JSONObject(paramArrayOfalzs);
-      if (paramArrayOfalzs.optInt("is_show_recover_entry", 1) == 1) {}
-      for (;;)
-      {
-        localamjc.jdField_a_of_type_Boolean = bool;
-        localamjc.jdField_a_of_type_JavaLangString = paramArrayOfalzs.optString("recover_text", localamjc.jdField_a_of_type_JavaLangString);
-        localamjc.b = paramArrayOfalzs.optString("recover_url", localamjc.b);
-        return localamjc;
-        bool = false;
+      bool1 = true;
+      if (!(localContext instanceof BaseActivity)) {
+        break label121;
       }
-      return localamjc;
+      if (((BaseActivity)localContext).isInMultiWindow()) {
+        break label116;
+      }
+      bool1 = bool2;
     }
-    catch (JSONException paramArrayOfalzs)
+    label116:
+    label121:
+    for (;;)
     {
-      urk.e("QVipFriendTagProcessor", "QVipFriendTagConfig onParsed exception :" + paramArrayOfalzs.getMessage());
+      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      bgpf.a((Activity)localContext, paramView.getAccount(), null, -1, bool1);
+      bgpr.b(paramView, 6, 0);
+      bgpv.a(paramView.getCurrentAccountUin());
+      axqw.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 2, 0, "", "", "", "");
+      return;
+      bool1 = false;
+      break;
+      bool1 = false;
     }
-  }
-  
-  public Class<amjc> a()
-  {
-    return amjc.class;
-  }
-  
-  @NonNull
-  public amjc b()
-  {
-    return new amjc();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amjd
  * JD-Core Version:    0.7.0.1
  */

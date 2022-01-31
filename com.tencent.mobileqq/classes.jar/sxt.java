@@ -1,13 +1,12 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidPollInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidRateInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
 
-public final class sxt
-  extends sfo
+public class sxt
 {
-  public List<qqstory_struct.VidPollInfo> a = new ArrayList();
-  public List<qqstory_struct.VidRateInfo> b = new ArrayList();
+  public static boolean a(QQStoryAutoPlayView paramQQStoryAutoPlayView, MotionEvent paramMotionEvent)
+  {
+    return sym.a(paramQQStoryAutoPlayView, paramMotionEvent);
+  }
 }
 
 

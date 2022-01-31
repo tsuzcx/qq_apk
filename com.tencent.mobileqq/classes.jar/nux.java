@@ -1,24 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment.8.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hotpic.HotPicData;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
 
-public class nux
-  implements aqhg
+class nux
+  extends anql
 {
-  public nux(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  nux(nuw paramnuw) {}
   
-  public void a(HotPicData paramHotPicData)
+  public void onBindedToClient()
   {
-    this.a.a = paramHotPicData;
-    ReadInJoyCommentComponentFragment.a(this.a, null);
-    ThreadManager.getUIHandler().post(new ReadInJoyCommentComponentFragment.8.1(this));
+    ReadInJoyArticleDetailActivity.a(this.a.a);
   }
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nux
  * JD-Core Version:    0.7.0.1
  */

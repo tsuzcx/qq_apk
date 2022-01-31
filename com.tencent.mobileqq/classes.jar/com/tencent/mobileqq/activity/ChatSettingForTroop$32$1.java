@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aaks;
+import aauk;
 import com.tencent.qphone.base.util.QLog;
 
 public class ChatSettingForTroop$32$1
   implements Runnable
 {
-  public ChatSettingForTroop$32$1(aaks paramaaks) {}
+  public ChatSettingForTroop$32$1(aauk paramaauk) {}
   
   public void run()
   {

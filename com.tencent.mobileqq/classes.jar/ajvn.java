@@ -1,51 +1,30 @@
-import Wallet.AcsMsg;
-import Wallet.AcsPullMsgRsp;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
 
-class ajvn
-  implements acih
+public class ajvn
 {
-  ajvn(ajvm paramajvm, String paramString) {}
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public static String a(String paramString)
   {
-    try
+    String str2 = "";
+    String str1 = str2;
+    int i;
+    if (!TextUtils.isEmpty(paramString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("ActivateFriends.Manager", 2, "getReminderListByday onProcessReminderList isSucc : " + paramBoolean);
+      i = paramString.lastIndexOf("diydoutu@");
+      str1 = str2;
+      if (i >= 0) {
+        str1 = paramString.substring(i, paramString.length());
       }
-      if (paramBoolean)
-      {
-        ajvm.a(this.jdField_a_of_type_Ajvm).edit().putString("sp_key_fetch_reminder_list_time", this.jdField_a_of_type_JavaLangString).apply();
-        paramBundle = (AcsPullMsgRsp)paramBundle.getSerializable("rsp");
-        if (paramBundle != null)
-        {
-          Object localObject = paramBundle.msgs;
-          if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
-          {
-            ajvm.a(this.jdField_a_of_type_Ajvm).a();
-            ajvm.a(this.jdField_a_of_type_Ajvm).a((List)localObject);
-            paramBundle = new ArrayList();
-            localObject = ((ArrayList)localObject).iterator();
-            while (((Iterator)localObject).hasNext()) {
-              paramBundle.add(((AcsMsg)((Iterator)localObject).next()).msg_id);
-            }
-          }
-        }
-      }
-      return;
     }
-    catch (Throwable paramBundle)
+    paramString = str1;
+    if (!TextUtils.isEmpty(str1))
     {
-      QLog.e("ActivateFriends.Manager", 1, "checkTodayReminder throw an exception: " + paramBundle);
+      i = str1.lastIndexOf(".");
+      paramString = str1;
+      if (i >= 0) {
+        paramString = str1.substring(0, i);
+      }
     }
-    acib.a(paramBundle, new ajvo(this));
+    return paramString;
   }
 }
 

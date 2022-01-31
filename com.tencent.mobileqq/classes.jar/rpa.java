@@ -1,67 +1,18 @@
-import android.os.Bundle;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.1;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.2;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.3;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.4;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.5;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.6;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class rpa
-  extends MqqHandler
+class rpa
+  extends BroadcastReceiver
 {
-  public rpa(SubscriptFeedsActivity paramSubscriptFeedsActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  rpa(rox paramrox) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.isFinishing()) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          switch (paramMessage.what)
-          {
-          default: 
-            return;
-          case 1002: 
-            try
-            {
-              paramMessage = rqn.a().b(this.a.app);
-              this.a.runOnUiThread(new SubscriptFeedsActivity.14.1(this, paramMessage));
-              return;
-            }
-            catch (Exception paramMessage) {}
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("SubscriptFeedsActivity", 2, paramMessage.toString());
-        return;
-        this.a.runOnUiThread(new SubscriptFeedsActivity.14.2(this));
-        return;
-        paramMessage = paramMessage.getData();
-      } while ((paramMessage == null) || (!bgmq.a()));
-      paramMessage = paramMessage.getSerializable("ReadInJoyArticleList");
-    } while ((paramMessage == null) || (!(paramMessage instanceof ArrayList)));
-    if ((!SubscriptFeedsActivity.a(this.a, (ArrayList)paramMessage)) && (QLog.isColorLevel())) {
-      QLog.d("SubscriptFeedsActivity", 2, "onGetRecommendReadInJoyArticleList data save to sp fail");
-    }
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.3(this, paramMessage));
-    return;
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.4(this));
-    return;
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.5(this));
-    return;
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.6(this));
+    ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).addObserver(this.a.a);
+    this.a.b(false, -1, -1);
   }
 }
 

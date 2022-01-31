@@ -1,16 +1,20 @@
-public abstract interface bdda
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class bdda
+  implements bcxw
 {
-  public abstract int a();
+  public bdda(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
   
-  public abstract String a();
-  
-  public abstract String a(bdfs parambdfs);
-  
-  public abstract void a(String paramString1, String paramString2, int[] paramArrayOfInt);
+  public void a()
+  {
+    axqw.b(null, "dc00898", "", "", "0X800A7BD", "0X800A7BD", QuickLoginAuthorityActivity.b(this.a), 0, "", "", "", "");
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "report-dc00898-0X800A7BD-fromType=" + QuickLoginAuthorityActivity.b(this.a));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdda
  * JD-Core Version:    0.7.0.1
  */

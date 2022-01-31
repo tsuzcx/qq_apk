@@ -1,50 +1,66 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ahqd
-  extends Handler
+  extends ahpv
+  implements Cloneable
 {
-  public ahqd(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public ahqd(Context paramContext)
   {
-    if (paramMessage.what == 0)
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131699592);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    QLog.d("TroopConfessToMeMsg", 2, "deSerialize");
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
-      CreateFaceToFaceDiscussionActivity.a(this.a, 3);
-      paramMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(0);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, this.a.jdField_a_of_type_Long);
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (1 != paramMessage.what) {
-          break;
-        }
-      } while (this.a.jdField_c_of_type_Boolean);
-      this.a.jdField_a_of_type_JavaLangStringBuffer.delete(0, this.a.jdField_a_of_type_JavaLangStringBuffer.length());
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844314);
-      this.a.b.setImageResource(2130844314);
-      this.a.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130844314);
-      this.a.d.setImageResource(2130844314);
-      this.a.e.setEnabled(true);
-      this.a.f.setEnabled(true);
-      this.a.g.setEnabled(true);
-      this.a.h.setEnabled(true);
-      this.a.i.setEnabled(true);
-      this.a.j.setEnabled(true);
-      this.a.k.setEnabled(true);
-      this.a.l.setEnabled(true);
-      this.a.m.setEnabled(true);
-      this.a.n.setEnabled(true);
-      this.a.o.setEnabled(true);
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      this.c = paramArrayOfByte.getString("messageNavInfo");
+      if ((this.c != null) && (this.c.length() != 0)) {
+        this.jdField_a_of_type_Azmk.a(this.c);
+      }
       return;
-    } while (2 != paramMessage.what);
-    bbmy.a(BaseApplicationImpl.getContext(), paramMessage.arg1, paramMessage.arg2, 0).a();
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("time", this.jdField_a_of_type_Int);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Azmk != null) {
+        this.c = this.jdField_a_of_type_Azmk.a();
+      }
+      localJSONObject.put("messageNavInfo", this.c);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+    return localJSONObject.toString().getBytes();
   }
 }
 

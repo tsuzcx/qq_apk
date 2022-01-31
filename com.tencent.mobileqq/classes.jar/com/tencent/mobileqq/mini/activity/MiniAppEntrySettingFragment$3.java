@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.activity;
 
 import android.support.v4.app.FragmentActivity;
-import atmp;
-import atmq;
-import atmr;
+import aukn;
+import auko;
+import aukp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -24,31 +24,31 @@ class MiniAppEntrySettingFragment$3
       QLog.e("MiniAppEntrySettingFragment", 2, "updateLocalSwitchDataList, app is null.");
     }
     label34:
-    atmp localatmp;
+    aukn localaukn;
     do
     {
       return;
       QLog.i("MiniAppEntrySettingFragment", 1, "removeAllLocalSwitchDataList");
-      localatmp = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
-    } while (localatmp == null);
-    localObject1 = localatmp.a();
+      localaukn = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+    } while (localaukn == null);
+    localObject1 = localaukn.a();
     try
     {
-      ((atmr)localObject1).a();
-      localatmp.b(" DELETE FROM MiniAppSettingSwitchInfoEntity ");
-      ((atmr)localObject1).c();
+      ((aukp)localObject1).a();
+      localaukn.b(" DELETE FROM MiniAppSettingSwitchInfoEntity ");
+      ((aukp)localObject1).c();
     }
     catch (Exception localException)
     {
       for (;;)
       {
         localException.printStackTrace();
-        ((atmr)localObject1).b();
+        ((aukp)localObject1).b();
       }
     }
     finally
     {
-      ((atmr)localObject1).b();
+      ((aukp)localObject1).b();
     }
     MiniAppEntrySettingFragment.access$400(this.this$0, this.val$serverSwitchInfoEntities);
   }

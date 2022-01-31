@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.scribble;
 
-import aqrf;
+import arlx;
 
 public class ScribbleResMgr$ResInfo
 {
-  @aqrf(a="downloading")
+  @arlx(a="downloading")
   public boolean downloading;
-  @aqrf(a="isShow")
+  @arlx(a="isShow")
   public int isShow = 1;
-  @aqrf(a="name")
+  @arlx(a="name")
   public String name = "";
-  @aqrf(a="orderIndex")
+  @arlx(a="orderIndex")
   public int orderIndex;
-  @aqrf(a="predownload")
+  @arlx(a="predownload")
   public int predownload = 1;
-  @aqrf(a="resType")
+  @arlx(a="resType")
   public int resType;
-  @aqrf(a="showInApp")
+  @arlx(a="showInApp")
   public int showInApp;
-  @aqrf(a="sourceId")
+  @arlx(a="sourceId")
   public int sourceId;
-  @aqrf(a="sourceMd5")
+  @arlx(a="sourceMd5")
   public String sourceMd5 = "";
-  @aqrf(a="sourceUrl")
+  @arlx(a="sourceUrl")
   public String sourceUrl = "";
   
   ResInfo cpy(ResInfo paramResInfo)

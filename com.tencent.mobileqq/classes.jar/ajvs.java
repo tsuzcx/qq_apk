@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-
-class ajvs
-  extends ajfo
+public class ajvs
+  implements ajtg
 {
-  ajvs(ajvr paramajvr) {}
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  protected void onGetSelfAddFriendSetting(boolean paramBoolean, int paramInt)
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerification.manager", 2, "onGetSelfAddFriendSetting() addFriendSetting is:" + paramInt);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
     }
-    ajvr.a(this.a, ajvr.a(this.a, paramInt));
-    if ((ajvr.a(this.a)) && (ajvr.a(this.a) != null)) {
-      this.a.b(ajvr.a(this.a).c());
-    }
+    b(paramBoolean, paramObject);
   }
 }
 

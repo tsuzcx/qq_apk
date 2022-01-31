@@ -1,72 +1,16 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.1;
-import com.tencent.map.geolocation.TencentLocation;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import com.tribe.async.async.JobSegment;
-import com.tribe.async.reactive.Stream;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
 
-public abstract class uiy<T extends uiz>
-  extends swl
+public class uiy
+  extends uai
 {
-  private Stream<T> a;
-  public sry a;
-  public uja a;
-  protected ujc<T> a;
+  public uiy(uix paramuix) {}
   
-  public uiy(@NonNull ujc<T> paramujc)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Uja = new uja();
-    this.jdField_a_of_type_Ujc = paramujc;
-    vkw.a(this.jdField_a_of_type_Ujc);
-  }
-  
-  private void d()
-  {
-    a();
-    Bosses.get().postLightWeightJob(new FeedListPageLoaderBase.1(this), 0);
-  }
-  
-  public abstract JobSegment<ujb, T> a();
-  
-  public abstract JobSegment<Integer, ujb> a(uja paramuja);
-  
-  protected abstract T a();
-  
-  protected abstract T a(ErrorMessage paramErrorMessage);
-  
-  public uja a()
-  {
-    return this.jdField_a_of_type_Uja;
-  }
-  
-  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
-  {
-    super.a(paramTencentLocation, paramInt);
-    this.jdField_a_of_type_Uja.a();
-    d();
-  }
-  
-  protected abstract void a(List<String> paramList, boolean paramBoolean);
-  
-  public void a(uja paramuja)
-  {
-    this.jdField_a_of_type_Uja = paramuja;
-    urk.a("Q.qqstory.home.position", "restore last time cache:%s", paramuja);
-  }
-  
-  public T b()
-  {
-    return a();
-  }
-  
-  public void c()
-  {
-    super.c();
-    d();
+    if ((paramInt1 == 20000) && (paramInt2 == -1)) {
+      this.a.b().finish();
+    }
   }
 }
 

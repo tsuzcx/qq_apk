@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.comment;
 
-import upb;
+import vbx;
 
 class StoryInputBarView$5
   implements Runnable

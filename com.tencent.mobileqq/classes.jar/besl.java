@@ -1,78 +1,102 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.soload.config.SoConfig;
-import com.tencent.widget.soload.config.SoConfig.SoInfo;
-import java.util.Map;
+import android.util.Log;
 
 public class besl
 {
-  private static volatile besl jdField_a_of_type_Besl;
-  SoConfig jdField_a_of_type_ComTencentWidgetSoloadConfigSoConfig;
+  private static besk a;
   
-  private besl()
+  public static int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoConfigManager", 2, "SoConfigManager init");
+    if (a != null) {
+      return a.getLogLevel();
     }
-    if (a()) {
-      this.jdField_a_of_type_ComTencentWidgetSoloadConfigSoConfig = SoConfig.readConfig();
+    return 3;
+  }
+  
+  private static String a(String paramString)
+  {
+    return "[MiniSDK]" + paramString;
+  }
+  
+  public static void a(besk parambesk)
+  {
+    if (parambesk != null) {
+      a = parambesk;
     }
   }
   
-  public static besl a()
+  public static void a(String paramString1, String paramString2)
   {
-    if (jdField_a_of_type_Besl == null) {}
-    try
+    a(paramString1, paramString2, null);
+  }
+  
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (a != null)
     {
-      if (jdField_a_of_type_Besl == null) {
-        jdField_a_of_type_Besl = new besl();
-      }
-      return jdField_a_of_type_Besl;
-    }
-    finally {}
-  }
-  
-  private SoConfig.SoInfo a(String paramString)
-  {
-    if ((this.jdField_a_of_type_ComTencentWidgetSoloadConfigSoConfig != null) && (this.jdField_a_of_type_ComTencentWidgetSoloadConfigSoConfig.mSoInfos != null)) {
-      return (SoConfig.SoInfo)this.jdField_a_of_type_ComTencentWidgetSoloadConfigSoConfig.mSoInfos.get(paramString);
-    }
-    return null;
-  }
-  
-  private boolean a()
-  {
-    return BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface;
-  }
-  
-  public void a(besp parambesp)
-  {
-    this.jdField_a_of_type_ComTencentWidgetSoloadConfigSoConfig.update(parambesp);
-  }
-  
-  public void a(String paramString, beso parambeso)
-  {
-    if (a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.SoConfigManager", 2, "getSoInfo, name=" + paramString + ", SoConfig=" + this.jdField_a_of_type_ComTencentWidgetSoloadConfigSoConfig);
-      }
-      if ((this.jdField_a_of_type_ComTencentWidgetSoloadConfigSoConfig.mSoInfos == null) || (this.jdField_a_of_type_ComTencentWidgetSoloadConfigSoConfig.mSoInfos.size() == 0)) {
-        ((besq)alzw.a().a(526)).a(new besm(this, parambeso, paramString));
-      }
-      while (parambeso == null) {
-        return;
-      }
-      parambeso.a(a(paramString));
+      a.d(a(paramString1), paramString2, paramThrowable);
       return;
     }
-    agwb.a(paramString, new besn(this, parambeso));
+    Log.d(a(paramString1), paramString2, paramThrowable);
+  }
+  
+  public static boolean a()
+  {
+    return true;
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    b(paramString1, paramString2, null);
+  }
+  
+  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (a != null)
+    {
+      a.i(a(paramString1), paramString2, paramThrowable);
+      return;
+    }
+    Log.i(a(paramString1), paramString2, paramThrowable);
+  }
+  
+  public static boolean b()
+  {
+    return 2 >= a();
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    c(paramString1, paramString2, null);
+  }
+  
+  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (a != null)
+    {
+      a.w(a(paramString1), paramString2, paramThrowable);
+      return;
+    }
+    Log.w(a(paramString1), paramString2, paramThrowable);
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    d(paramString1, paramString2, null);
+  }
+  
+  public static void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (a != null)
+    {
+      a.e(a(paramString1), paramString2, paramThrowable);
+      return;
+    }
+    Log.e(a(paramString1), paramString2, paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     besl
  * JD-Core Version:    0.7.0.1
  */

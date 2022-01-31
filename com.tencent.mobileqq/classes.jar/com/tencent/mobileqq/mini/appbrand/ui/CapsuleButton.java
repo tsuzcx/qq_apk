@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import ajjy;
-import alrv;
+import ajyc;
+import amgo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -26,8 +26,8 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bati;
-import baup;
+import bbwc;
+import bbxj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
@@ -61,6 +61,7 @@ import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.ShareChatModel;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
+import com.tencent.mobileqq.mini.util.MiniAppSecurityUtil;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
 import com.tencent.mobileqq.mini.utils.NavigateBackUtils;
@@ -68,10 +69,13 @@ import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.jsapi.GameBrandRuntime;
 import com.tencent.mobileqq.minigame.jsapi.GameJsPluginEngine;
 import com.tencent.mobileqq.minigame.jsapi.GameJsRuntime;
+import com.tencent.mobileqq.minigame.manager.GameCloseManager;
 import com.tencent.mobileqq.minigame.manager.GameInfoManager;
+import com.tencent.mobileqq.minigame.manager.GameLoadManager;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.triton.sdk.ITTEngine;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.io.UnsupportedEncodingException;
@@ -117,7 +121,7 @@ public class CapsuleButton
   private boolean isMiniMsgTabShow;
   private boolean isOpenMonitorPanel;
   private int launchFrom = -1;
-  private baup lottieLoader;
+  private bbxj lottieLoader;
   private AppBrandRuntime mAppBrandRuntime;
   private Drawable mCloseBtnBgDrawable;
   private Drawable mCloseBtnWhiteBgDrawable;
@@ -167,28 +171,28 @@ public class CapsuleButton
   private View getContainerView()
   {
     this.mMoreView = new DiniFlyAnimationView(getContext());
-    this.mMoreView.setId(2131298036);
-    this.mMoreView.setContentDescription(ajjy.a(2131635558));
+    this.mMoreView.setId(2131363586);
+    this.mMoreView.setContentDescription(ajyc.a(2131701342));
     Object localObject = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 40.0F), -1);
     ((RelativeLayout.LayoutParams)localObject).addRule(9, -1);
     this.mMoreView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     addView(this.mMoreView, (ViewGroup.LayoutParams)localObject);
     localObject = new ImageView(getContext());
-    ((ImageView)localObject).setId(2131297953);
-    ((ImageView)localObject).setContentDescription(ajjy.a(2131635554));
+    ((ImageView)localObject).setId(2131363501);
+    ((ImageView)localObject).setContentDescription(ajyc.a(2131701338));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 40.0F), -1);
     localLayoutParams.addRule(11, -1);
-    localLayoutParams.addRule(1, 2131298036);
+    localLayoutParams.addRule(1, 2131363586);
     ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     addView((View)localObject, localLayoutParams);
     localObject = new View(getContext());
-    ((View)localObject).setId(2131303557);
+    ((View)localObject).setId(2131369226);
     localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 0.5F), DisplayUtil.dip2px(getContext(), 18.0F));
     localLayoutParams.addRule(13, -1);
     ((View)localObject).setBackgroundColor(436207616);
     addView((View)localObject, localLayoutParams);
     localObject = new TextView(getContext());
-    ((TextView)localObject).setId(2131308447);
+    ((TextView)localObject).setId(2131374169);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, DisplayUtil.dip2px(getContext(), 19.0F));
     localLayoutParams.leftMargin = DisplayUtil.dip2px(getContext(), 21.5F);
     localLayoutParams.topMargin = DisplayUtil.dip2px(getContext(), -9.5F);
@@ -313,7 +317,9 @@ public class CapsuleButton
         this.mAppBrandRuntime.jsPluginEngine.callbackJsEventOK(this.mAppBrandRuntime.serviceRuntime, localObject3, localJSONObject, this.actionSheetCallbackId);
         return;
       }
-      this.mAppBrandRuntime.getPageWebView().fromShareMenuBtn = 0;
+      if (this.mAppBrandRuntime.getPageWebView() != null) {
+        this.mAppBrandRuntime.getPageWebView().fromShareMenuBtn = 0;
+      }
       localObject1 = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
     } while (localObject1 == null);
     label257:
@@ -402,7 +408,9 @@ public class CapsuleButton
         this.mAppBrandRuntime.jsPluginEngine.callbackJsEventOK(this.mAppBrandRuntime.serviceRuntime, localObject3, localJSONObject, this.actionSheetCallbackId);
         return;
       }
-      this.mAppBrandRuntime.getPageWebView().fromShareMenuBtn = 1;
+      if (this.mAppBrandRuntime.getPageWebView() != null) {
+        this.mAppBrandRuntime.getPageWebView().fromShareMenuBtn = 1;
+      }
       localObject1 = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
     } while (localObject1 == null);
     label257:
@@ -468,9 +476,11 @@ public class CapsuleButton
         this.mAppBrandRuntime.jsPluginEngine.callbackJsEventOK(this.mAppBrandRuntime.serviceRuntime, localJSONException, localJSONObject, this.actionSheetCallbackId);
         return;
       }
+      if (this.mAppBrandRuntime.getPageWebView() != null) {
+        this.mAppBrandRuntime.getPageWebView().fromShareMenuBtn = 3;
+      }
       localObject2 = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
     } while (localObject2 == null);
-    this.mAppBrandRuntime.getPageWebView().fromShareMenuBtn = 3;
     this.mAppBrandRuntime.serviceRuntime.evaluateSubcribeJS(localJSONException, localJSONObject.toString(), ((PageWebview)localObject2).pageWebviewId);
   }
   
@@ -556,10 +566,12 @@ public class CapsuleButton
         this.mAppBrandRuntime.jsPluginEngine.callbackJsEventOK(this.mAppBrandRuntime.serviceRuntime, localObject3, localJSONObject, this.actionSheetCallbackId);
         return;
       }
+      if (this.mAppBrandRuntime.getPageWebView() != null) {
+        this.mAppBrandRuntime.getPageWebView().fromShareMenuBtn = 4;
+      }
       localObject1 = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
     } while (localObject1 == null);
     label257:
-    this.mAppBrandRuntime.getPageWebView().fromShareMenuBtn = 4;
     this.mAppBrandRuntime.serviceRuntime.evaluateSubcribeJS(localObject3, localJSONObject.toString(), ((PageWebview)localObject1).pageWebviewId);
   }
   
@@ -572,57 +584,64 @@ public class CapsuleButton
     this.launchFrom = 0;
     int i = 1;
     int m = -1;
-    boolean bool4 = false;
+    boolean bool5 = false;
     boolean bool7 = false;
     boolean bool3 = false;
-    boolean bool5 = false;
+    boolean bool4 = false;
     boolean bool6 = false;
     boolean bool2 = false;
     int j = 0;
     int k = 0;
     int n = 0;
+    boolean bool1;
     if (isMiniGameRuntime()) {
       if ((this.mGameBrandRuntime != null) && (this.mGameBrandRuntime.activity != null) && (!this.isMiniMsgTabShow))
       {
-        if ((this.mGameBrandRuntime.getApkgInfo() == null) || (this.mGameBrandRuntime.getApkgInfo().appConfig.config.verType == 3)) {
-          break label1581;
+        if (this.mGameBrandRuntime.getApkgInfo() == null) {
+          break label1660;
         }
-        bool2 = true;
+        if (this.mGameBrandRuntime.getApkgInfo().appConfig.config.verType == 3)
+        {
+          bool2 = false;
+          bool1 = false;
+        }
       }
     }
-    for (boolean bool1 = true;; bool1 = false)
+    for (;;)
     {
       String str2 = this.mGameBrandRuntime.getApkgInfo().appId;
       String str1 = this.mGameBrandRuntime.getApkgInfo().apkgName;
-      bool6 = this.mGameBrandRuntime.withShareQQ;
+      bool7 = this.mGameBrandRuntime.withShareQQ;
       bool4 = this.mGameBrandRuntime.withShareQzone;
-      boolean bool8 = this.mGameBrandRuntime.withShareWeChatFriend;
+      boolean bool9 = this.mGameBrandRuntime.withShareWeChatFriend;
       bool3 = this.mGameBrandRuntime.withShareWeChatMoment;
       k = this.mGameBrandRuntime.getApkgInfo().appConfig.config.topType;
       bool5 = ((GameActivity)this.mGameBrandRuntime.activity).getIsOrientationLandscape();
       Object localObject1 = ((GameActivity)this.mGameBrandRuntime.activity).getMenuStyle();
-      bool7 = bool1;
+      bool6 = this.mGameBrandRuntime.getApkgInfo().appConfig.isLimitedAccessApp();
+      boolean bool8 = bool1;
       bool1 = bool4;
-      bool4 = bool8;
+      bool4 = bool9;
+      label273:
       if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_share_to_wx_switcher", 1) != 1)
       {
-        bool8 = false;
+        bool9 = false;
         bool3 = false;
       }
       for (;;)
       {
         Object localObject2;
-        label336:
-        label363:
-        boolean bool9;
-        if ((this.mGameBrandRuntime.activity instanceof GameActivity))
+        label356:
+        label383:
+        boolean bool10;
+        if (((this.mGameBrandRuntime.activity instanceof GameActivity)) && (!bool6))
         {
           localObject2 = ((GameActivity)this.mGameBrandRuntime.activity).getColorNoteController();
           if (localObject2 != null)
           {
-            bool4 = ((alrv)localObject2).a();
+            bool4 = ((amgo)localObject2).a();
             if (bool4) {
-              if (((alrv)localObject2).c())
+              if (((amgo)localObject2).c())
               {
                 j = 2;
                 QLog.d("CapsuleButton", 1, "handleMoreClick, shouldDisplayColorNote : " + bool4);
@@ -631,9 +650,9 @@ public class CapsuleButton
                 bool4 = bool2;
                 i = -1;
                 bool2 = bool3;
-                bool9 = false;
+                bool10 = false;
                 bool3 = bool1;
-                bool1 = bool9;
+                bool1 = bool10;
               }
             }
           }
@@ -641,32 +660,33 @@ public class CapsuleButton
         for (;;)
         {
           if (j == 0) {
-            break label1572;
+            break label1651;
           }
           localObject2 = new Intent();
           ((Intent)localObject2).putExtra("miniAppID", str2);
           ((Intent)localObject2).putExtra("miniAppName", str1);
           if (isMiniGameRuntime())
           {
-            bool9 = this.isOpenMonitorPanel;
-            label437:
-            ((Intent)localObject2).putExtra("isOpenMonitorPanel", bool9);
+            bool10 = this.isOpenMonitorPanel;
+            label457:
+            ((Intent)localObject2).putExtra("isOpenMonitorPanel", bool10);
             ((Intent)localObject2).putExtra("debugEnable", getEnableDebug());
             ((Intent)localObject2).putExtra("showDebug", bool4);
-            ((Intent)localObject2).putExtra("showMonitor", bool7);
+            ((Intent)localObject2).putExtra("showMonitor", bool8);
             ((Intent)localObject2).putExtra("menuStyle", (String)localObject1);
-            ((Intent)localObject2).putExtra("showShareQQ", bool6);
+            ((Intent)localObject2).putExtra("showShareQQ", bool7);
             ((Intent)localObject2).putExtra("showShareQzone", bool3);
-            ((Intent)localObject2).putExtra("showShareWeChatFriends", bool8);
+            ((Intent)localObject2).putExtra("showShareWeChatFriends", bool9);
             ((Intent)localObject2).putExtra("showShareWeChatMoment", bool2);
             ((Intent)localObject2).putExtra("topType", k);
             ((Intent)localObject2).putExtra("showDetail", true);
+            ((Intent)localObject2).putExtra("showSetting", true);
             ((Intent)localObject2).putExtra("showComplaint", true);
             if (Build.VERSION.SDK_INT < 21) {
-              break label1404;
+              break label1483;
             }
             bool2 = true;
-            label579:
+            label609:
             ((Intent)localObject2).putExtra("addShortcut", bool2);
             ((Intent)localObject2).putExtra("showBackHome", i);
             ((Intent)localObject2).putExtra("isLandscape", bool5);
@@ -674,8 +694,9 @@ public class CapsuleButton
             ((Intent)localObject2).putExtra("showKingcardTip", shouldShowKingCardTip());
             ((Intent)localObject2).putExtra("key_mini_msgtab_type", 1);
             ((Intent)localObject2).putExtra("key_mini_msgtab_need_action_sheet", true);
+            ((Intent)localObject2).putExtra("is_limited_access_app", bool6);
             if (!isMiniGameRuntime()) {
-              break label1410;
+              break label1489;
             }
             if ((this.mGameBrandRuntime != null) && (this.mGameBrandRuntime.getApkgInfo() != null))
             {
@@ -684,12 +705,13 @@ public class CapsuleButton
               ((Intent)localObject2).putExtra("key_mini_app_is_game", true);
               ((Intent)localObject2).putExtra("key_color_note", m);
             }
-            label729:
+            label770:
+            MiniAppSecurityUtil.modifyIntentDataWithoutLogin((Intent)localObject2, str2);
             if ((!isMiniGameRuntime()) || (this.mGameBrandRuntime.activity == null)) {
-              break label1486;
+              break label1565;
             }
             MiniChatActivity.a(this.mGameBrandRuntime.activity, (Intent)localObject2, 1001);
-            label761:
+            label809:
             this.mRedDot.setVisibility(8);
             this.isMiniMsgTabShow = true;
             unReadCount = 0;
@@ -698,26 +720,30 @@ public class CapsuleButton
             }
             reportClick("open");
             return;
+            bool2 = true;
+            bool1 = true;
+            break;
             i = 0;
             bool5 = false;
             k = 0;
             str1 = "";
             str2 = "";
-            bool4 = false;
             bool6 = false;
+            bool4 = false;
             bool7 = false;
+            bool8 = false;
             bool3 = false;
             bool1 = false;
             bool2 = false;
             localObject1 = "light";
-            break;
+            break label273;
             j = 1;
-            break label336;
+            break label356;
             if ((this.mAppBrandRuntime != null) && (this.mAppBrandRuntime.activity != null) && (!this.isMiniMsgTabShow))
             {
               localObject1 = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
               if (this.mAppBrandRuntime.apkgInfo.appConfig.config.verType == 3) {
-                break label1521;
+                break label1600;
               }
               bool2 = true;
             }
@@ -729,7 +755,7 @@ public class CapsuleButton
             {
               str1 = AppBrandUtil.getUrlWithoutParams(this.mAppBrandRuntime.apkgInfo.getAppConfigInfo().entryPagePath);
               if ((this.mAppBrandRuntime.pageContainer.getCurrentPage() == null) || (this.mAppBrandRuntime.getCurPage().getCurrentPageWebview() == null) || (!this.mAppBrandRuntime.getCurPage().getCurrentPageWebview().enableShowBackHome())) {
-                break label1335;
+                break label1411;
               }
               str2 = AppBrandUtil.getUrlWithoutParams(this.mAppBrandRuntime.pageContainer.getCurrentPage().getUrl());
               i = m;
@@ -741,77 +767,81 @@ public class CapsuleButton
                 }
               }
             }
-            label1032:
+            label1092:
             str2 = this.mAppBrandRuntime.apkgInfo.appId;
             str1 = this.mAppBrandRuntime.apkgInfo.apkgName;
             bool3 = bool7;
             if (localObject1 != null)
             {
-              bool4 = ((PageWebview)localObject1).withShareQQ;
+              bool5 = ((PageWebview)localObject1).withShareQQ;
               bool3 = ((PageWebview)localObject1).withShareQzone;
-              bool5 = ((PageWebview)localObject1).withShareWeChatFriend;
+              bool4 = ((PageWebview)localObject1).withShareWeChatFriend;
               bool6 = ((PageWebview)localObject1).withShareWeChatMoment;
             }
             n = this.mAppBrandRuntime.apkgInfo.appConfig.config.topType;
-            bool7 = this.mAppBrandRuntime.apkgInfo.appConfig.config.isSpecialMiniApp();
-            if (bool7)
+            boolean bool11 = this.mAppBrandRuntime.apkgInfo.appConfig.config.isSpecialMiniApp();
+            bool7 = bool6;
+            bool6 = bool4;
+            if (bool11)
             {
-              bool4 = false;
-              bool3 = false;
               bool5 = false;
+              bool3 = false;
               bool6 = false;
+              bool7 = false;
             }
+            bool4 = bool7;
             if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_share_to_wx_switcher", 1) != 1)
             {
-              bool5 = false;
               bool6 = false;
+              bool4 = false;
             }
-            bool8 = this.mAppBrandRuntime.apkgInfo.appConfig.isInternalApp();
+            bool7 = this.mAppBrandRuntime.apkgInfo.appConfig.isLimitedAccessApp();
             m = k;
             if ((this.mAppBrandRuntime.activity instanceof AppBrandUI))
             {
               m = k;
-              if (!bool8)
+              if (!bool7)
               {
                 localObject1 = ((AppBrandUI)this.mAppBrandRuntime.activity).getColorNoteController();
                 m = k;
                 if (localObject1 != null)
                 {
-                  bool8 = ((alrv)localObject1).a();
+                  bool8 = ((amgo)localObject1).a();
                   if (bool8) {
-                    if (!((alrv)localObject1).c()) {
-                      break label1340;
+                    if (!((amgo)localObject1).c()) {
+                      break label1416;
                     }
                   }
                 }
               }
             }
-            label1335:
-            label1340:
+            label1411:
+            label1416:
             for (j = 2;; j = 1)
             {
               QLog.d("CapsuleButton", 1, "handleMoreClick, shouldDisplayColorNote : " + bool8);
               m = j;
               j = 1;
-              bool8 = bool2;
+              bool9 = bool2;
               bool2 = bool7;
-              bool9 = bool5;
-              bool7 = bool1;
+              bool10 = bool6;
+              bool7 = bool5;
+              bool8 = bool1;
               localObject1 = "light";
               bool5 = false;
               k = n;
-              bool1 = bool2;
-              bool2 = bool6;
-              bool6 = bool4;
-              bool4 = bool8;
-              bool8 = bool9;
+              bool1 = bool11;
+              bool6 = bool2;
+              bool2 = bool4;
+              bool4 = bool9;
+              bool9 = bool10;
               break;
               i = -1;
-              break label1032;
+              break label1092;
             }
-            bool8 = false;
-            bool6 = false;
+            bool9 = false;
             bool7 = false;
+            bool8 = false;
             j = 0;
             bool4 = false;
             localObject1 = "light";
@@ -819,53 +849,55 @@ public class CapsuleButton
             k = 0;
             str1 = "";
             str2 = "";
+            bool6 = false;
             bool1 = false;
             i = m;
             m = n;
             break;
-            bool9 = this.mAppBrandRuntime.isOpenMonitorPanel();
-            break label437;
-            label1404:
+            bool10 = this.mAppBrandRuntime.isOpenMonitorPanel();
+            break label457;
+            label1483:
             bool2 = false;
-            break label579;
-            label1410:
+            break label609;
+            label1489:
             if ((this.mAppBrandRuntime == null) || (this.mAppBrandRuntime.apkgInfo == null)) {
-              break label729;
+              break label770;
             }
             ((Intent)localObject2).putExtra("key_mini_app_version_type", this.mAppBrandRuntime.versionType);
             ((Intent)localObject2).putExtra("key_mini_app_config", this.mAppBrandRuntime.apkgInfo.appConfig);
             ((Intent)localObject2).putExtra("key_mini_app_is_game", false);
             ((Intent)localObject2).putExtra("key_color_note", m);
-            break label729;
-            label1486:
+            break label770;
+            label1565:
             if ((isMiniGameRuntime()) || (this.mAppBrandRuntime.activity == null)) {
-              break label761;
+              break label809;
             }
             MiniChatActivity.a(this.mAppBrandRuntime.activity, (Intent)localObject2, 1001);
-            break label761;
-            label1521:
+            break label809;
+            label1600:
             bool2 = false;
           }
           j = 0;
-          break label336;
+          break label356;
           j = 0;
-          break label363;
+          break label383;
           bool4 = bool2;
           m = -1;
-          bool9 = bool1;
+          bool10 = bool1;
           bool2 = bool3;
           bool1 = false;
           j = i;
-          bool3 = bool9;
+          bool3 = bool10;
           i = m;
           m = n;
         }
-        label1572:
+        label1651:
         break;
-        bool8 = bool4;
+        bool9 = bool4;
       }
-      label1581:
+      label1660:
       bool2 = false;
+      bool1 = false;
     }
   }
   
@@ -957,13 +989,17 @@ public class CapsuleButton
         QLog.e("CapsuleButton", 1, "on forward aio click exception mGameJsPluginEngine==null");
         return;
       } while (this.mAppBrandRuntime == null);
-      this.mAppBrandRuntime.getPageWebView().shareChatModel = localShareChatModel;
+      if (this.mAppBrandRuntime.getPageWebView() != null) {
+        this.mAppBrandRuntime.getPageWebView().shareChatModel = localShareChatModel;
+      }
       if (this.launchFrom == 1)
       {
         this.mAppBrandRuntime.jsPluginEngine.callbackJsEventOK(this.mAppBrandRuntime.serviceRuntime, paramBundle, localJSONObject, this.actionSheetCallbackId);
         return;
       }
-      this.mAppBrandRuntime.getPageWebView().fromShareMenuBtn = 0;
+      if (this.mAppBrandRuntime.getPageWebView() != null) {
+        this.mAppBrandRuntime.getPageWebView().fromShareMenuBtn = 0;
+      }
       localPageWebview = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
     } while (localPageWebview == null);
     this.mAppBrandRuntime.serviceRuntime.evaluateSubcribeJS(paramBundle, localJSONObject.toString(), localPageWebview.pageWebviewId);
@@ -979,9 +1015,9 @@ public class CapsuleButton
   {
     setClipChildren(false);
     getContainerView();
-    this.mCloseView = ((ImageView)findViewById(2131297953));
-    this.mRedDot = ((TextView)findViewById(2131308447));
-    this.mSplider = findViewById(2131303557);
+    this.mCloseView = ((ImageView)findViewById(2131363501));
+    this.mRedDot = ((TextView)findViewById(2131374169));
+    this.mSplider = findViewById(2131369226);
     this.mRedDot.setTextSize(12.0F);
     this.mRedDot.setTextColor(-1);
     this.mRedDot.setGravity(17);
@@ -989,20 +1025,20 @@ public class CapsuleButton
     this.mMoreView.setOnClickListener(this);
     this.mMoreView.setOnLongClickListener(this);
     this.mCloseView.setOnClickListener(this);
-    this.mMoreBtnWhiteBgDrawable = getResources().getDrawable(2130840817);
-    this.mCloseBtnWhiteBgDrawable = getResources().getDrawable(2130840811);
-    this.mMoreBtnBgDrawable = getResources().getDrawable(2130840814);
-    this.mCloseBtnBgDrawable = getResources().getDrawable(2130840808);
+    this.mMoreBtnWhiteBgDrawable = getResources().getDrawable(2130840874);
+    this.mCloseBtnWhiteBgDrawable = getResources().getDrawable(2130840868);
+    this.mMoreBtnBgDrawable = getResources().getDrawable(2130840871);
+    this.mCloseBtnBgDrawable = getResources().getDrawable(2130840865);
     if ((!TextUtils.isEmpty(MiniAppGlobal.CAPSULE_CLOSE_URL)) && (!TextUtils.isEmpty(MiniAppGlobal.CAPSULE_CLOSE_DARK_URL)))
     {
-      this.mCloseBtnWhiteBgDrawable = MiniAppUtils.getIcon(getContext(), MiniAppGlobal.CAPSULE_CLOSE_DARK_URL, true, 2130840811, 40, 30);
-      this.mCloseBtnBgDrawable = MiniAppUtils.getIcon(getContext(), MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130840808, 40, 30);
+      this.mCloseBtnWhiteBgDrawable = MiniAppUtils.getIcon(getContext(), MiniAppGlobal.CAPSULE_CLOSE_DARK_URL, true, 2130840868, 40, 30);
+      this.mCloseBtnBgDrawable = MiniAppUtils.getIcon(getContext(), MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130840865, 40, 30);
     }
     if (!TextUtils.isEmpty(MiniAppGlobal.KINGCARD_GUIDE_TEXT)) {}
-    for (String str = MiniAppGlobal.KINGCARD_GUIDE_TEXT;; str = getResources().getString(2131628623))
+    for (String str = MiniAppGlobal.KINGCARD_GUIDE_TEXT;; str = getResources().getString(2131694273))
     {
       this.mKingCardText = str;
-      this.lottieLoader = new baup(null, super.getContext());
+      this.lottieLoader = new bbxj(null, super.getContext());
       int i = (int)(MemoryManager.a() / 2L);
       this.lottieLoader.a(i);
       return;
@@ -1044,7 +1080,7 @@ public class CapsuleButton
         localBundle = new Bundle();
         localBundle.putString("appid", (String)localObject);
         localBundle.putInt("verType", i);
-        QIPCClientHelper.getInstance().callServer("MiniAppTransferModule", "query_mini_app_data", localBundle, new CapsuleButton.3(this, localApkgInfo));
+        QIPCClientHelper.getInstance().callServer("MiniAppTransferModule", "query_mini_app_data", localBundle, new CapsuleButton.4(this, localApkgInfo));
         return;
       }
     }
@@ -1110,7 +1146,7 @@ public class CapsuleButton
     localBundle.putString("appid", paramMiniAppInfo.appId);
     localBundle.putInt("topType", paramMiniAppInfo.topType);
     localBundle.putInt("verType", paramMiniAppInfo.verType);
-    QIPCClientHelper.getInstance().callServer("MiniAppTransferModule", "sync_mini_app_data", localBundle, new CapsuleButton.5(this, paramMiniAppInfo));
+    QIPCClientHelper.getInstance().callServer("MiniAppTransferModule", "sync_mini_app_data", localBundle, new CapsuleButton.6(this, paramMiniAppInfo));
   }
   
   private void setMiniAppTop(MiniAppInfo paramMiniAppInfo)
@@ -1120,7 +1156,7 @@ public class CapsuleButton
       QLog.e("CapsuleButton", 1, "setMiniAppTop, miniAppInfo = null.");
       return;
     }
-    MiniAppCmdUtil.getInstance().setUserAppTop(paramMiniAppInfo.appId, paramMiniAppInfo.topType, paramMiniAppInfo.verType, null, new CapsuleButton.6(this));
+    MiniAppCmdUtil.getInstance().setUserAppTop(paramMiniAppInfo.appId, paramMiniAppInfo.topType, paramMiniAppInfo.verType, null, new CapsuleButton.7(this, paramMiniAppInfo));
   }
   
   private boolean shouldShowKingCardTip()
@@ -1138,7 +1174,7 @@ public class CapsuleButton
       QLog.i("CapsuleButton", 1, "shouldShowKingCardTip， not wangka app");
       return false;
     }
-    i = bati.a();
+    i = bbwc.a();
     QLog.i("CapsuleButton", 1, "shouldShowKingCardTip， king card status = " + i);
     if (i == 1) {}
     for (;;)
@@ -1189,7 +1225,7 @@ public class CapsuleButton
           localObject2 = null;
           localMiniAppConfig = null;
         }
-        localObject3 = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + ((MiniAppInfo)localObject2).appId + "&openid=" + MainPageFragment.getUin() + "&avatar=" + (String)localObject3 + ajjy.a(2131635557);
+        localObject3 = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + ((MiniAppInfo)localObject2).appId + "&openid=" + MainPageFragment.getUin() + "&avatar=" + (String)localObject3 + ajyc.a(2131701341);
         localObject2 = new Intent((Context)localObject1, QQBrowserActivity.class);
         ((Intent)localObject2).putExtra("url", (String)localObject3);
         localObject3 = new Bundle();
@@ -1361,10 +1397,10 @@ public class CapsuleButton
         QLog.e("CapsuleButton", 2, "handleMessage error, msg is null.");
       }
     }
-    label322:
-    label453:
-    label861:
-    label864:
+    label337:
+    label468:
+    label876:
+    label879:
     for (;;)
     {
       return false;
@@ -1414,13 +1450,14 @@ public class CapsuleButton
             {
               ((GameActivity)paramMessage).clickMonitorPanel();
               if (this.isOpenMonitorPanel) {
-                break label322;
+                break label337;
               }
             }
             for (boolean bool = true;; bool = false)
             {
               this.isOpenMonitorPanel = bool;
               setIsOpenMonitorPanel(this.isOpenMonitorPanel);
+              GameLoadManager.g().getGameEngine().setEnableJankCanary(this.isOpenMonitorPanel);
               return false;
             }
           }
@@ -1442,7 +1479,7 @@ public class CapsuleButton
             paramMessage.topType = i;
             sendSetUserAppTopRequest(this.mGameBrandRuntime.getApkgInfo().appConfig.config);
             if (this.mGameBrandRuntime.getApkgInfo().appConfig.config.topType != 1) {
-              break label453;
+              break label468;
             }
           }
           for (paramMessage = "settop_on";; paramMessage = "settop_off")
@@ -1462,7 +1499,7 @@ public class CapsuleButton
             paramMessage.topType = i;
             sendSetUserAppTopRequest(this.mAppBrandRuntime.apkgInfo.appConfig.config);
             if (this.mAppBrandRuntime.apkgInfo.appConfig.config.topType != 1) {
-              break label560;
+              break label575;
             }
           }
           for (paramMessage = "settop_on";; paramMessage = "settop_off")
@@ -1508,14 +1545,14 @@ public class CapsuleButton
         if (isMiniGameRuntime())
         {
           if ((this.mGameBrandRuntime.activity == null) || (!(this.mGameBrandRuntime.activity instanceof GameActivity))) {
-            break label861;
+            break label876;
           }
           paramMessage = ((GameActivity)this.mGameBrandRuntime.activity).getColorNoteController();
         }
         for (;;)
         {
           if (paramMessage == null) {
-            break label864;
+            break label879;
           }
           if (!paramMessage.c())
           {
@@ -1552,11 +1589,12 @@ public class CapsuleButton
   
   public void onClick(View paramView)
   {
+    Object localObject = null;
     MiniAppStateManager.getInstance().notifyChange("hideKeyboard");
     switch (paramView.getId())
     {
     default: 
-    case 2131298036: 
+    case 2131363586: 
       do
       {
         return;
@@ -1567,8 +1605,14 @@ public class CapsuleButton
     QLog.e("CapsuleButton", 1, "[btn_close, inner page close]");
     MiniAppStateManager.getInstance().notifyChange("hideInput");
     if (isMiniGameRuntime()) {
-      if ((this.mGameBrandRuntime.activity instanceof GameActivity)) {
-        if (!((GameActivity)this.mGameBrandRuntime.activity).handleMiniGameCloseButtonClick(new CapsuleButton.2(this))) {
+      if ((this.mGameBrandRuntime.activity instanceof GameActivity))
+      {
+        GameActivity localGameActivity = (GameActivity)this.mGameBrandRuntime.activity;
+        paramView = localObject;
+        if (this.mGameBrandRuntime.getApkgInfo() != null) {
+          paramView = this.mGameBrandRuntime.getApkgInfo().appConfig;
+        }
+        if ((!GameCloseManager.showAlertViewForBattleGame(localGameActivity, paramView, new CapsuleButton.2(this))) && (!GameCloseManager.showPullDownGuideDialog(localGameActivity, paramView, new CapsuleButton.3(this)))) {
           performMiniGameClose();
         }
       }
@@ -1662,17 +1706,16 @@ public class CapsuleButton
       return;
       localActivity = getActivity();
     } while ((this.mMoreView == null) || (localActivity == null) || (localActivity.isFinishing()) || (!shouldShowKingCardTip()));
-    AppBrandTask.runTaskOnUiThreadIfNot(new CapsuleButton.7(this, localActivity));
+    AppBrandTask.runTaskOnUiThreadIfNot(new CapsuleButton.8(this, localActivity));
   }
   
   public void showShareMenuForInnerShareButton(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, HashMap<String, Integer> paramHashMap, int paramInt)
   {
     QLog.d("CapsuleButton", 1, "showShareMenuForInnerShareButton --  isMiniMsgTabShow : " + this.isMiniMsgTabShow);
     if (this.isMiniMsgTabShow) {}
-    label163:
-    label211:
-    label987:
-    label1010:
+    label278:
+    label1047:
+    label1070:
     for (;;)
     {
       return;
@@ -1683,25 +1726,28 @@ public class CapsuleButton
       int i = -1;
       String str = "";
       Object localObject1 = "";
+      boolean bool2 = false;
       boolean bool1 = false;
       paramHashMap = "light";
+      label181:
       Object localObject2;
-      boolean bool2;
+      boolean bool3;
       if (isMiniGameRuntime()) {
         if ((this.mGameBrandRuntime != null) && (this.mGameBrandRuntime.activity != null) && (!this.isMiniMsgTabShow))
         {
           str = this.mGameBrandRuntime.getApkgInfo().appId;
           localObject1 = this.mGameBrandRuntime.getApkgInfo().apkgName;
-          bool1 = ((GameActivity)this.mGameBrandRuntime.activity).getIsOrientationLandscape();
+          bool2 = ((GameActivity)this.mGameBrandRuntime.activity).getIsOrientationLandscape();
           paramHashMap = ((GameActivity)this.mGameBrandRuntime.activity).getMenuStyle();
+          bool1 = this.mGameBrandRuntime.getApkgInfo().appConfig.isLimitedAccessApp();
           if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_share_to_wx_switcher", 1) == 1) {
-            break label987;
+            break label1047;
           }
           paramBoolean3 = false;
           paramBoolean4 = false;
           localObject2 = localObject1;
           int j = -1;
-          bool2 = false;
+          bool3 = false;
           i = paramInt;
           paramInt = j;
           localObject1 = paramHashMap;
@@ -1710,17 +1756,18 @@ public class CapsuleButton
       }
       for (;;)
       {
+        label229:
         if (i == 0) {
-          break label1010;
+          break label1070;
         }
         localObject2 = new Intent();
         ((Intent)localObject2).putExtra("miniAppID", str);
         ((Intent)localObject2).putExtra("miniAppName", paramHashMap);
-        boolean bool3;
+        boolean bool4;
         if (isMiniGameRuntime())
         {
-          bool3 = this.isOpenMonitorPanel;
-          ((Intent)localObject2).putExtra("isOpenMonitorPanel", bool3);
+          bool4 = this.isOpenMonitorPanel;
+          ((Intent)localObject2).putExtra("isOpenMonitorPanel", bool4);
           ((Intent)localObject2).putExtra("debugEnable", getEnableDebug());
           ((Intent)localObject2).putExtra("showDebug", false);
           ((Intent)localObject2).putExtra("showMonitor", false);
@@ -1731,16 +1778,18 @@ public class CapsuleButton
           ((Intent)localObject2).putExtra("showShareWeChatMoment", paramBoolean4);
           ((Intent)localObject2).putExtra("topType", -11);
           ((Intent)localObject2).putExtra("showDetail", false);
+          ((Intent)localObject2).putExtra("showSetting", false);
           ((Intent)localObject2).putExtra("showComplaint", false);
           ((Intent)localObject2).putExtra("addShortcut", false);
           ((Intent)localObject2).putExtra("showBackHome", paramInt);
-          ((Intent)localObject2).putExtra("isLandscape", bool1);
-          ((Intent)localObject2).putExtra("isSpecialMiniApp", bool2);
+          ((Intent)localObject2).putExtra("isLandscape", bool2);
+          ((Intent)localObject2).putExtra("isSpecialMiniApp", bool3);
           ((Intent)localObject2).putExtra("showKingcardTip", shouldShowKingCardTip());
           ((Intent)localObject2).putExtra("key_mini_msgtab_type", 1);
           ((Intent)localObject2).putExtra("key_mini_msgtab_need_action_sheet", true);
+          ((Intent)localObject2).putExtra("is_limited_access_app", bool1);
           if (!isMiniGameRuntime()) {
-            break label887;
+            break label947;
           }
           if ((this.mGameBrandRuntime != null) && (this.mGameBrandRuntime.getApkgInfo() != null))
           {
@@ -1748,8 +1797,9 @@ public class CapsuleButton
             ((Intent)localObject2).putExtra("key_mini_app_config", this.mGameBrandRuntime.getApkgInfo().appConfig);
             ((Intent)localObject2).putExtra("key_mini_app_is_game", true);
           }
+          label565:
           if ((!isMiniGameRuntime()) || (this.mGameBrandRuntime == null) || (this.mGameBrandRuntime.activity == null)) {
-            break label952;
+            break label1012;
           }
           MiniChatActivity.a(this.mGameBrandRuntime.activity, (Intent)localObject2, 1001);
         }
@@ -1764,7 +1814,7 @@ public class CapsuleButton
           QLog.d("CapsuleButton", 1, "isMiniMsgTabShow true");
           return;
           paramInt = 0;
-          break label163;
+          break label181;
           if ((this.mAppBrandRuntime != null) && (this.mAppBrandRuntime.activity != null) && (!this.isMiniMsgTabShow))
           {
             if (this.mAppBrandRuntime.pageContainer.getCurrentPageWebview() == null) {
@@ -1775,7 +1825,7 @@ public class CapsuleButton
             {
               paramHashMap = AppBrandUtil.getUrlWithoutParams(this.mAppBrandRuntime.apkgInfo.getAppConfigInfo().entryPagePath);
               if ((this.mAppBrandRuntime.pageContainer.getCurrentPage() == null) || (this.mAppBrandRuntime.getCurPage().getCurrentPageWebview() == null) || (!this.mAppBrandRuntime.getCurPage().getCurrentPageWebview().enableShowBackHome())) {
-                break label844;
+                break label901;
               }
               localObject1 = AppBrandUtil.getUrlWithoutParams(this.mAppBrandRuntime.pageContainer.getCurrentPage().getUrl());
               paramInt = i;
@@ -1789,35 +1839,38 @@ public class CapsuleButton
             {
               str = this.mAppBrandRuntime.apkgInfo.appId;
               paramHashMap = this.mAppBrandRuntime.apkgInfo.apkgName;
-              bool2 = this.mAppBrandRuntime.apkgInfo.appConfig.config.isSpecialMiniApp();
+              bool3 = this.mAppBrandRuntime.apkgInfo.appConfig.config.isSpecialMiniApp();
+              bool1 = this.mAppBrandRuntime.apkgInfo.appConfig.config.isLimitedAccessApp();
               if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_share_to_wx_switcher", 1) != 1)
               {
                 paramBoolean3 = false;
                 paramBoolean4 = false;
               }
-              bool1 = false;
+              bool2 = false;
               localObject1 = "light";
               i = 1;
               break;
             }
           }
           paramHashMap = "";
+          bool2 = false;
           bool1 = false;
           localObject1 = "light";
           i = 0;
           paramInt = -1;
-          bool2 = false;
-          break label211;
-          bool3 = this.mAppBrandRuntime.isOpenMonitorPanel();
-          break label260;
-          label887:
+          bool3 = false;
+          break label229;
+          bool4 = this.mAppBrandRuntime.isOpenMonitorPanel();
+          break label278;
+          label947:
           if ((this.mAppBrandRuntime == null) || (this.mAppBrandRuntime.apkgInfo == null)) {
-            break label526;
+            break label565;
           }
           ((Intent)localObject2).putExtra("key_mini_app_version_type", this.mAppBrandRuntime.versionType);
           ((Intent)localObject2).putExtra("key_mini_app_config", this.mAppBrandRuntime.apkgInfo.appConfig);
           ((Intent)localObject2).putExtra("key_mini_app_is_game", false);
-          break label526;
+          break label565;
+          label1012:
           if ((!isMiniGameRuntime()) && (this.mAppBrandRuntime.activity != null)) {
             MiniChatActivity.a(this.mAppBrandRuntime.activity, (Intent)localObject2, 1001);
           }
@@ -1825,7 +1878,7 @@ public class CapsuleButton
         localObject2 = paramHashMap;
         i = paramInt;
         paramInt = -1;
-        bool2 = false;
+        bool3 = false;
         paramHashMap = (HashMap<String, Integer>)localObject1;
         localObject1 = localObject2;
       }
@@ -1834,7 +1887,7 @@ public class CapsuleButton
   
   public void updateRedDotVisible()
   {
-    AppBrandTask.runTaskOnUiThreadIfNot(new CapsuleButton.4(this));
+    AppBrandTask.runTaskOnUiThreadIfNot(new CapsuleButton.5(this));
   }
   
   public void updateStyle(int paramInt)
@@ -1843,16 +1896,16 @@ public class CapsuleButton
     {
       if (paramInt == -1)
       {
-        this.mMoreView.setImageResource(2130840817);
-        this.mCloseView.setImageResource(2130840811);
+        this.mMoreView.setImageResource(2130840874);
+        this.mCloseView.setImageResource(2130840868);
         this.mSplider.setBackgroundColor(Color.parseColor("#4DFFFFFF"));
       }
     }
     else {
       return;
     }
-    this.mMoreView.setImageResource(2130840814);
-    this.mCloseView.setImageResource(2130840808);
+    this.mMoreView.setImageResource(2130840871);
+    this.mCloseView.setImageResource(2130840865);
     this.mSplider.setBackgroundColor(Color.parseColor("#1A000000"));
   }
   

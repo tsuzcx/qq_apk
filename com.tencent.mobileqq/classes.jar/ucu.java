@@ -1,8 +1,9 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.support.annotation.NonNull;
+import android.view.View;
 
 public abstract interface ucu
 {
-  public abstract void a(ucw paramucw, boolean paramBoolean, ErrorMessage paramErrorMessage);
+  public abstract void a(@NonNull View paramView, int paramInt);
 }
 
 

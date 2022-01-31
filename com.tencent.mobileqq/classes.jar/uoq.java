@@ -1,20 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
 class uoq
-  extends SimpleJob<Object>
+  extends atzm
 {
-  uoq(uoh paramuoh, String paramString1, String paramString2)
-  {
-    super(paramString1);
-  }
+  uoq(uop paramuop) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  protected void a(Object paramObject)
   {
-    uoh.a(this.jdField_a_of_type_Uoh).a(this.jdField_a_of_type_JavaLangString);
-    return null;
+    if ((paramObject != null) && ((paramObject instanceof oidb_0x791.RedDotInfo)))
+    {
+      paramObject = (oidb_0x791.RedDotInfo)paramObject;
+      if (paramObject.uint32_appid.get() == 21)
+      {
+        int i = paramObject.uint32_number.get();
+        int j = paramObject.uint32_last_time.get();
+        this.a.a.a(i, j);
+      }
+    }
   }
 }
 

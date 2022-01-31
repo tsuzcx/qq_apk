@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity.history;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bajr;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.TimeZone;
 import mqq.app.MobileQQ;
@@ -17,11 +17,11 @@ class ChatHistoryC2CAllFragment$5
   public void run()
   {
     boolean bool1 = false;
-    if (bajr.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+    if (VipUtils.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
     {
       this.this$0.jdField_b_of_type_JavaLangString = "svip";
       this.this$0.c = "2";
-      bajr.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "vip", "0X8004FAB", "0X8004FAB", 0, 0, new String[] { this.this$0.jdField_b_of_type_JavaLangString });
+      VipUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "vip", "0X8004FAB", "0X8004FAB", 0, 0, new String[] { this.this$0.jdField_b_of_type_JavaLangString });
     }
     for (;;)
     {
@@ -54,7 +54,7 @@ class ChatHistoryC2CAllFragment$5
           }
         }
         return;
-        if (bajr.c(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+        if (VipUtils.c(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
         {
           this.this$0.jdField_b_of_type_JavaLangString = "vip";
           this.this$0.c = "1";

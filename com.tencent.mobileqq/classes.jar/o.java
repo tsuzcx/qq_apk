@@ -97,7 +97,7 @@ public class o
     }
   }
   
-  public int a(int paramInt1, int paramInt2, ge paramge)
+  public int a(int paramInt1, int paramInt2, hx paramhx)
   {
     return 0;
   }
@@ -183,7 +183,7 @@ public class o
         this.jdField_b_of_type_AndroidGraphicsRect.set(-i, -j, this.jdField_b_of_type_ArrayOfInt[0] + i, j + this.jdField_b_of_type_ArrayOfInt[1]);
       }
     }
-    a(ajjy.a(2131639070));
+    a(ajyc.a(2131704855));
     return false;
   }
   

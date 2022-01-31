@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import ajjy;
+import aaad;
+import ajyc;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
@@ -10,17 +11,16 @@ import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import begh;
-import bejx;
+import bfob;
+import bfrr;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.XListView;
-import nve;
-import nvp;
-import nvq;
-import nvr;
-import nvs;
-import zqk;
+import ogp;
+import oha;
+import ohb;
+import ohc;
+import ohd;
 
 public class ReadInJoyCommentListView
   extends XListView
@@ -29,9 +29,9 @@ public class ReadInJoyCommentListView
   protected ProgressBar a;
   protected RelativeLayout a;
   protected TextView a;
-  private nve jdField_a_of_type_Nve;
-  private nvr jdField_a_of_type_Nvr = new nvp(this);
-  public nvs a;
+  private ogp jdField_a_of_type_Ogp;
+  private ohc jdField_a_of_type_Ohc = new oha(this);
+  public ohd a;
   public boolean a;
   int jdField_b_of_type_Int;
   boolean jdField_b_of_type_Boolean;
@@ -69,17 +69,17 @@ public class ReadInJoyCommentListView
   
   private void h()
   {
-    setOnScrollListener(this.jdField_a_of_type_Nvr);
+    setOnScrollListener(this.jdField_a_of_type_Ohc);
   }
   
   private void i()
   {
-    if ((a()) && (this.jdField_a_of_type_Nvs != null))
+    if ((a()) && (this.jdField_a_of_type_Ohd != null))
     {
       QLog.d("ReadInJoyCommentListView", 2, "loadingMore| hasMore " + this.jdField_a_of_type_Boolean);
       j();
       this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_Nvs.a(this);
+      this.jdField_a_of_type_Ohd.a(this);
     }
   }
   
@@ -87,30 +87,30 @@ public class ReadInJoyCommentListView
   {
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131624018);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689557);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(null);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
   }
   
   private void k()
   {
-    if (this.jdField_a_of_type_Nvs != null)
+    if (this.jdField_a_of_type_Ohd != null)
     {
       QLog.d("ReadInJoyCommentListView", 2, "preLoadingMore | hasMore " + this.jdField_a_of_type_Boolean);
       j();
       this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_Nvs.a(this);
+      this.jdField_a_of_type_Ohd.a(this);
     }
   }
   
   private void l()
   {
     Object localObject = getAdapter();
-    if ((localObject instanceof bejx))
+    if ((localObject instanceof bfrr))
     {
-      localObject = (bejx)localObject;
-      if ((((bejx)localObject).getWrappedAdapter() instanceof BaseAdapter)) {
-        ((BaseAdapter)((bejx)localObject).getWrappedAdapter()).notifyDataSetChanged();
+      localObject = (bfrr)localObject;
+      if ((((bfrr)localObject).getWrappedAdapter() instanceof BaseAdapter)) {
+        ((BaseAdapter)((bfrr)localObject).getWrappedAdapter()).notifyDataSetChanged();
       }
     }
     while (!(localObject instanceof BaseAdapter)) {
@@ -121,9 +121,9 @@ public class ReadInJoyCommentListView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131494208, this, false));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131306455));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131306456));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559779, this, false));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372152));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372153));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#A6A6A6"));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
@@ -131,10 +131,10 @@ public class ReadInJoyCommentListView
     setFooterDividersEnabled(false);
   }
   
-  public void a(begh parambegh)
+  public void a(bfob parambfob)
   {
-    if (this.jdField_a_of_type_Nvr != null) {
-      this.jdField_a_of_type_Nvr.b(parambegh);
+    if (this.jdField_a_of_type_Ohc != null) {
+      this.jdField_a_of_type_Ohc.b(parambfob);
     }
   }
   
@@ -142,7 +142,7 @@ public class ReadInJoyCommentListView
   {
     if (paramInt == 0)
     {
-      zqk.a().a("list_comment_kandian", false);
+      aaad.a().a("list_comment_kandian", false);
       if ((paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.jdField_a_of_type_Boolean))
       {
         if (QLog.isColorLevel()) {
@@ -173,7 +173,7 @@ public class ReadInJoyCommentListView
       k();
       return;
     }
-    zqk.a().a("list_comment_kandian");
+    aaad.a().a("list_comment_kandian");
   }
   
   public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
@@ -221,9 +221,9 @@ public class ReadInJoyCommentListView
         QLog.d("ReadInJoyCommentListView", 2, "loadMoreFail");
       }
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131646979));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131712767));
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new nvq(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new ohb(this));
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
       this.jdField_a_of_type_Int = 0;
     }
@@ -271,25 +271,25 @@ public class ReadInJoyCommentListView
     }
   }
   
-  public void setOnScrollListener(begh parambegh)
+  public void setOnScrollListener(bfob parambfob)
   {
-    if ((parambegh instanceof nvr)) {
-      super.setOnScrollListener(this.jdField_a_of_type_Nvr);
+    if ((parambfob instanceof ohc)) {
+      super.setOnScrollListener(this.jdField_a_of_type_Ohc);
     }
-    while (this.jdField_a_of_type_Nvr == null) {
+    while (this.jdField_a_of_type_Ohc == null) {
       return;
     }
-    this.jdField_a_of_type_Nvr.a(parambegh);
+    this.jdField_a_of_type_Ohc.a(parambfob);
   }
   
-  public void setOnScrollOffsetYListener(nve paramnve)
+  public void setOnScrollOffsetYListener(ogp paramogp)
   {
-    this.jdField_a_of_type_Nve = paramnve;
+    this.jdField_a_of_type_Ogp = paramogp;
   }
   
-  public void setRefreshCallback(nvs paramnvs)
+  public void setRefreshCallback(ohd paramohd)
   {
-    this.jdField_a_of_type_Nvs = paramnvs;
+    this.jdField_a_of_type_Ohd = paramohd;
   }
 }
 

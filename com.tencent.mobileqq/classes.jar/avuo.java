@@ -1,22 +1,31 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class avuo
-  extends avuy
+public final class avuo
+  extends BroadcastReceiver
 {
-  public avuo(GroupSearchEngine paramGroupSearchEngine, avuz paramavuz, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramavuz, paramString, paramInt);
-  }
+  private avuo(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
   
-  public avom a(List<avon> paramList, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new aooq(paramList, paramString, GroupSearchEngine.a(this.a));
+    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
+    {
+      avsd.a().b();
+      avsd.a().a(new avup(this));
+      this.a.b();
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager FilterBroadcastReceiver size=" + this.a.a.size());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avuo
  * JD-Core Version:    0.7.0.1
  */

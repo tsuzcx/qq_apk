@@ -1,15 +1,21 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract interface bbad
+final class bbad
+  implements View.OnClickListener
 {
-  public abstract int pluginStartActivityForResult(WebViewPlugin paramWebViewPlugin, Intent paramIntent, byte paramByte);
+  bbad(AtomicBoolean paramAtomicBoolean, audu paramaudu) {}
   
-  public abstract int switchRequestCode(WebViewPlugin paramWebViewPlugin, byte paramByte);
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    this.jdField_a_of_type_Audu.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbad
  * JD-Core Version:    0.7.0.1
  */

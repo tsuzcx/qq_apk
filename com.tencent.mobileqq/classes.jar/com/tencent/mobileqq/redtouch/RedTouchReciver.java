@@ -3,7 +3,7 @@ package com.tencent.mobileqq.redtouch;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import auqb;
+import avpj;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class RedTouchReciver
@@ -20,9 +20,9 @@ public class RedTouchReciver
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    auqb localauqb = auqb.a(paramBundle);
-    if (localauqb != null) {
-      localauqb.a(this.a, paramBundle);
+    avpj localavpj = avpj.a(paramBundle);
+    if (localavpj != null) {
+      localavpj.a(this.a, paramBundle);
     }
   }
 }

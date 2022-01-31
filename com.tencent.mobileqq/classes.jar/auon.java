@@ -1,14 +1,19 @@
-public abstract interface auon
+public abstract class auon
+  implements auol
 {
-  public abstract void a();
+  public final void a(int paramInt, aunu paramaunu) {}
   
-  public abstract void b();
+  public final void a_(int paramInt, boolean paramBoolean) {}
   
-  public abstract void c();
+  public final void b(int paramInt, aunu paramaunu) {}
+  
+  public final void c(int paramInt, aunu paramaunu) {}
+  
+  public final void d(int paramInt, aunu paramaunu) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auon
  * JD-Core Version:    0.7.0.1
  */

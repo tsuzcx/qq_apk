@@ -1,22 +1,23 @@
-import android.content.Context;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.richmedia.FlowActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbTranslucentBrowserActivity;
 
-public abstract class ahhm
+public class ahhm
+  implements Animation.AnimationListener
 {
-  FlowActivity a;
+  public ahhm(SpringHbTranslucentBrowserActivity paramSpringHbTranslucentBrowserActivity) {}
   
-  public ahhm(FlowActivity paramFlowActivity)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = paramFlowActivity;
+    if (SpringHbTranslucentBrowserActivity.a(this.a) != null) {
+      SpringHbTranslucentBrowserActivity.a(this.a).setAlpha(1.0F);
+    }
   }
   
-  public Context a()
-  {
-    return this.a;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void a(ViewGroup paramViewGroup);
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

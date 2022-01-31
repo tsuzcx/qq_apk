@@ -1,29 +1,43 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
+import android.os.IBinder;
+import android.os.IBinder.DeathRecipient;
+import android.os.Messenger;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class anuq
-  implements Animation.AnimationListener
+  implements IBinder.DeathRecipient
 {
-  anuq(anup paramanup) {}
+  anuq(anul paramanul) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void binderDied()
   {
-    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(500);
-    paramAnimation.setFillAfter(true);
-    paramAnimation.setAnimationListener(new anur(this));
-    this.a.c.startAnimation(paramAnimation);
+    if (QLog.isColorLevel())
+    {
+      QLog.d("MessengerService$IncomingHandler", 2, "-->binder died");
+      MessengerService.a((MessengerService)this.a.a.get());
+      MessengerService.b((MessengerService)this.a.a.get());
+    }
+    MessengerService localMessengerService;
+    if (this.a.a != null)
+    {
+      localMessengerService = (MessengerService)this.a.a.get();
+      if ((localMessengerService == null) || (localMessengerService.a == null)) {}
+    }
+    try
+    {
+      localMessengerService.a.getBinder().unlinkToDeath(anul.a(this.a), 0);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("MessengerService$IncomingHandler", 1, "-->binder died unlink to death error=" + localException.toString());
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anuq
  * JD-Core Version:    0.7.0.1
  */

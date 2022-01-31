@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import rof;
-import rol;
+import saw;
+import sbc;
 
 class FolderFollowTabFragment$7
   implements Runnable
@@ -15,20 +15,20 @@ class FolderFollowTabFragment$7
   
   public void run()
   {
-    Object localObject = rol.a();
-    List localList = ((rol)localObject).a();
+    Object localObject = sbc.a();
+    List localList = ((sbc)localObject).a();
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = localList.iterator();
     while (localIterator.hasNext())
     {
-      rof localrof = (rof)localIterator.next();
-      if (FolderFollowTabFragment.a(this.this$0, localrof.a))
+      saw localsaw = (saw)localIterator.next();
+      if (FolderFollowTabFragment.a(this.this$0, localsaw.a))
       {
-        localArrayList.add(localrof);
+        localArrayList.add(localsaw);
         localIterator.remove();
       }
     }
-    ((rol)localObject).a(localList);
+    ((sbc)localObject).a(localList);
     localObject = Message.obtain();
     ((Message)localObject).arg1 = this.a;
     ((Message)localObject).obj = localList;

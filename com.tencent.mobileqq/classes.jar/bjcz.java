@@ -1,13 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.RelativeLayout;
 
-public class bjcz
-  implements DialogInterface.OnClickListener
+class bjcz
+  extends AnimatorListenerAdapter
 {
-  public bjcz(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  bjcz(bjcx parambjcx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a.a().setVisibility(8);
+  }
 }
 
 

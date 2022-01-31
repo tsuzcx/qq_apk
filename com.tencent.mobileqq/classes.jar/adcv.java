@@ -1,34 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.confess.ConfessNewsBgView;
-import com.tencent.mobileqq.data.MessageForConfessNews;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 class adcv
-  implements View.OnClickListener
+  implements wxw
 {
   adcv(adcu paramadcu) {}
   
-  public void onClick(View paramView)
+  public void a(Bundle paramBundle)
   {
-    Object localObject;
-    if ((paramView instanceof ConfessNewsBgView))
+    boolean bool;
+    if (paramBundle.getInt("type") == 73)
     {
-      localObject = paramView.getTag();
-      if ((localObject instanceof MessageForConfessNews))
-      {
-        localObject = (MessageForConfessNews)localObject;
-        if (((MessageForConfessNews)localObject).istroop != 1) {
-          break label73;
-        }
-      }
+      bool = paramBundle.getBoolean("isSuccess");
+      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.i)) {}
     }
-    label73:
-    for (int i = 1; i != 0; i = 0)
+    else
     {
-      alyx.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, 2, ((MessageForConfessNews)localObject).strGroupUin, ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).strRecUin);
       return;
     }
-    alyc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).nConfessorSex, ((MessageForConfessNews)localObject).strRecUin);
+    if (Boolean.valueOf(bool).booleanValue())
+    {
+      bcpw.a(BaseApplicationImpl.getApplication(), 2, 2131720399, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
+      return;
+    }
+    bcpw.a(BaseApplicationImpl.getApplication(), 1, 2131720396, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
   }
 }
 

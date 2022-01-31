@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ark.API;
 
-import akzp;
-import akzs;
+import alob;
+import aloe;
 import android.text.TextUtils;
-import bcko;
-import bgsw;
-import bgsx;
+import bdop;
+import biby;
+import bibz;
 import com.tencent.ark.ark.VariantWrapper;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.wadl.ipc.WadlParams;
@@ -16,18 +16,18 @@ import org.json.JSONObject;
 public class ArkAppDownloadModule$3$1
   implements Runnable
 {
-  public ArkAppDownloadModule$3$1(akzs paramakzs, WadlResult paramWadlResult) {}
+  public ArkAppDownloadModule$3$1(aloe paramaloe, WadlResult paramWadlResult) {}
   
   public void run()
   {
     int i;
     ark.VariantWrapper localVariantWrapper1;
-    if ((akzp.a(this.jdField_a_of_type_Akzs.a) != null) && (akzp.a(this.jdField_a_of_type_Akzs.a).size() > 0))
+    if ((alob.a(this.jdField_a_of_type_Aloe.a) != null) && (alob.a(this.jdField_a_of_type_Aloe.a).size() > 0))
     {
       i = 0;
-      if (i < akzp.a(this.jdField_a_of_type_Akzs.a).size())
+      if (i < alob.a(this.jdField_a_of_type_Aloe.a).size())
       {
-        localVariantWrapper1 = this.jdField_a_of_type_Akzs.a.b(((Long)akzp.a(this.jdField_a_of_type_Akzs.a).get(i)).longValue());
+        localVariantWrapper1 = this.jdField_a_of_type_Aloe.a.b(((Long)alob.a(this.jdField_a_of_type_Aloe.a).get(i)).longValue());
         if ((localVariantWrapper1 != null) && (this.jdField_a_of_type_CooperationWadlIpcWadlResult != null)) {
           break label101;
         }
@@ -39,14 +39,14 @@ public class ArkAppDownloadModule$3$1
     ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
     localVariantWrapper2.SetNull();
     ark.VariantWrapper localVariantWrapper3 = localVariantWrapper1.Create();
-    int j = bcko.a(this.jdField_a_of_type_CooperationWadlIpcWadlResult.b);
+    int j = bdop.a(this.jdField_a_of_type_CooperationWadlIpcWadlResult.b);
     String str;
     if (-2 == j)
     {
-      j = bcko.b(this.jdField_a_of_type_CooperationWadlIpcWadlResult.c);
-      str = akzp.a(this.jdField_a_of_type_Akzs.a, j);
+      j = bdop.b(this.jdField_a_of_type_CooperationWadlIpcWadlResult.c);
+      str = alob.a(this.jdField_a_of_type_Aloe.a, j);
       if (!TextUtils.isEmpty(str)) {
-        akzp.a(this.jdField_a_of_type_Akzs.a, str);
+        alob.a(this.jdField_a_of_type_Aloe.a, str);
       }
       switch (j)
       {
@@ -54,7 +54,7 @@ public class ArkAppDownloadModule$3$1
     }
     for (;;)
     {
-      JSONObject localJSONObject = akzp.a(this.jdField_a_of_type_Akzs.a, this.jdField_a_of_type_CooperationWadlIpcWadlResult, "DownloadInit");
+      JSONObject localJSONObject = alob.a(this.jdField_a_of_type_Aloe.a, this.jdField_a_of_type_CooperationWadlIpcWadlResult, "DownloadInit");
       str = "";
       if (localJSONObject != null) {
         str = localJSONObject.toString();
@@ -70,10 +70,10 @@ public class ArkAppDownloadModule$3$1
       break;
       if (this.jdField_a_of_type_CooperationWadlIpcWadlResult.a != null)
       {
-        bgsw.a().c(this.jdField_a_of_type_CooperationWadlIpcWadlResult.a.d, this.jdField_a_of_type_CooperationWadlIpcWadlResult.a.a);
+        biby.a().c(this.jdField_a_of_type_CooperationWadlIpcWadlResult.a.d, this.jdField_a_of_type_CooperationWadlIpcWadlResult.a.a);
         continue;
         if (2 == j) {
-          akzp.a(this.jdField_a_of_type_Akzs.a, true);
+          alob.a(this.jdField_a_of_type_Aloe.a, true);
         }
       }
     }

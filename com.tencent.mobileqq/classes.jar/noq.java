@@ -1,95 +1,105 @@
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.ac.ArticleComment.GetRecommendPubAccountResponse;
+import com.tencent.mobileqq.ac.ArticleComment.Record;
+import com.tencent.mobileqq.ac.ArticleComment.RetInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
-public class noq
-  extends WebViewPlugin
+class noq
+  implements BusinessObserver
 {
-  public noq()
-  {
-    this.mPluginNameSpace = "ReadinjoyAdJs";
-  }
+  noq(nop paramnop, NewIntent paramNewIntent, QQAppInterface paramQQAppInterface, nor paramnor) {}
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length <= 0))
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    if (!paramBoolean)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountWebviewPlugin", 2, " method null or args == null");
+        QLog.d(nop.b(this.jdField_a_of_type_Nop), 2, "OnReceiveGetRecommendPubAccountResponse failed!");
       }
-      return false;
+      nop.a(this.jdField_a_of_type_Nop, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nor);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountWebviewPlugin", 2, " method:" + paramString3);
-    }
-    if ("setGameSubscribe".equals(paramString3)) {}
+    Object localObject;
     try
     {
-      paramString1 = new JSONObject(paramVarArgs[0]);
-      paramJsBridgeListener = paramString1.optString("ret");
-      paramString1.optString("appid");
-      paramString1 = paramString1.optString("pkgname");
-      if (("1".equals(paramJsBridgeListener)) && (!TextUtils.isEmpty(paramString2)))
+      localObject = new ArticleComment.GetRecommendPubAccountResponse();
+      ((ArticleComment.GetRecommendPubAccountResponse)localObject).mergeFrom(paramBundle.getByteArray("data"));
+      if (QLog.isColorLevel()) {
+        QLog.d(nop.b(this.jdField_a_of_type_Nop), 2, "OnReceiveGetRecommendPubAccountResponse->retCode:" + ((ArticleComment.GetRecommendPubAccountResponse)localObject).ret.ret_code.get() + ", title:" + ((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_title.get() + ", listSize:" + ((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_list.get().size());
+      }
+      if (!((ArticleComment.GetRecommendPubAccountResponse)localObject).ret.has())
       {
         if (QLog.isColorLevel()) {
-          QLog.d("PublicAccountWebviewPlugin", 2, " method:pkgname=" + paramString1);
+          QLog.d(nop.b(this.jdField_a_of_type_Nop), 2, "OnReceiveGetRecommendPubAccountResponse failed!(no ret)");
         }
-        paramJsBridgeListener = new Bundle();
-        paramJsBridgeListener.putBoolean("isSuccess", true);
-        paramJsBridgeListener.putString("pkgname", paramString1);
-        wis.a().a(130, paramJsBridgeListener);
+        nop.a(this.jdField_a_of_type_Nop, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nor);
+        return;
       }
     }
-    catch (Exception paramJsBridgeListener)
+    catch (Exception paramBundle)
     {
-      for (;;)
+      if (QLog.isColorLevel()) {
+        QLog.d(nop.b(this.jdField_a_of_type_Nop), 2, "OnReceiveGetRecommendPubAccountResponse exception:" + paramBundle);
+      }
+      nop.a(this.jdField_a_of_type_Nop, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nor);
+      return;
+    }
+    paramInt = ((ArticleComment.GetRecommendPubAccountResponse)localObject).ret.ret_code.get();
+    if (paramInt == -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(nop.b(this.jdField_a_of_type_Nop), 2, "OnReceiveGetRecommendPubAccountResponse forbidden!");
+      }
+      nop.a(this.jdField_a_of_type_Nop, true);
+      this.jdField_a_of_type_Nor.a(new ArrayList(), null, true);
+      return;
+    }
+    nop.a(this.jdField_a_of_type_Nop, false);
+    if (((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_title.has()) {}
+    for (paramBundle = ((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_title.get().toStringUtf8();; paramBundle = "")
+    {
+      if ((paramInt == 0) && (!TextUtils.isEmpty(paramBundle)) && (((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_list.has()) && (((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_list.get().size() > 0))
       {
         if (QLog.isColorLevel()) {
-          QLog.e("PublicAccountWebviewPlugin", 2, paramJsBridgeListener.getMessage());
+          QLog.d(nop.b(this.jdField_a_of_type_Nop), 2, "OnReceiveGetRecommendPubAccountResponse update cache!");
         }
-      }
-    }
-    if ("setGameLoadState".equals(paramString3)) {}
-    try
-    {
-      paramString1 = new JSONObject(paramVarArgs[0]);
-      paramJsBridgeListener = paramString1.optString("adid");
-      long l1 = nbj.a(paramString1.optString("navigationStart"), 0L);
-      long l2 = nbj.a(paramString1.optString("htmlLoaded"), 0L);
-      long l3 = nbj.a(paramString1.optString("domComplete"), 0L);
-      if ((l1 > 0L) || (l2 > 0L) || (l3 > 0L))
-      {
-        paramString1 = new Bundle();
-        paramString1.putString("adid", paramJsBridgeListener);
-        paramString1.putLong("navigationStart", l1);
-        paramString1.putLong("htmlLoaded", l2);
-        paramString1.putLong("domComplete", l3);
-        wis.a().a(137, paramString1);
-      }
-    }
-    catch (Exception paramJsBridgeListener)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PublicAccountWebviewPlugin", 2, paramJsBridgeListener.getMessage());
+        nop.a(this.jdField_a_of_type_Nop, paramBundle);
+        nop.a(this.jdField_a_of_type_Nop).clear();
+        paramBundle = ((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_list.get().iterator();
+        while (paramBundle.hasNext())
+        {
+          localObject = (ArticleComment.Record)paramBundle.next();
+          nop.a(this.jdField_a_of_type_Nop).add(new not(this.jdField_a_of_type_Nop, ((ArticleComment.Record)localObject).puin.get().toStringUtf8(), ((ArticleComment.Record)localObject).name.get().toStringUtf8(), true));
         }
+        nop.a(this.jdField_a_of_type_Nop, NetConnInfoCenter.getServerTimeMillis());
+        nop.a(this.jdField_a_of_type_Nop, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
+      nop.a(this.jdField_a_of_type_Nop, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nor);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d(nop.b(this.jdField_a_of_type_Nop), 2, "OnReceiveGetRecommendPubAccountResponse update UI->title:" + nop.a(this.jdField_a_of_type_Nop) + ", cacheTime:" + nop.a(this.jdField_a_of_type_Nop) + ", isFobidden:" + nop.a(this.jdField_a_of_type_Nop) + ", recommendSize:" + nop.a(this.jdField_a_of_type_Nop).size());
+      paramBundle = nop.a(this.jdField_a_of_type_Nop).iterator();
+      while (paramBundle.hasNext())
+      {
+        localObject = (not)paramBundle.next();
+        QLog.d(nop.b(this.jdField_a_of_type_Nop), 2, ((not)localObject).toString());
+      }
+      break;
     }
-    return true;
-  }
-  
-  public boolean handleSchemaRequest(String paramString1, String paramString2)
-  {
-    return super.handleSchemaRequest(paramString1, paramString2);
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
   }
 }
 

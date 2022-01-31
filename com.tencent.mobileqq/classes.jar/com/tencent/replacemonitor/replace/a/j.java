@@ -8,8 +8,8 @@ import com.tencent.replacemonitor.MonitorResult;
 import com.tencent.replacemonitor.MonitorStep;
 import com.tencent.replacemonitor.MonitorTask;
 import com.tencent.replacemonitor.MonitorType;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.q;
 import java.io.File;
 import java.io.IOException;
 
@@ -18,10 +18,10 @@ public class j
 {
   public MonitorResult a(MonitorTask paramMonitorTask, MonitorStep paramMonitorStep)
   {
-    ac.c("WashMonitor", "VersionCodeMonitorAction>>" + paramMonitorTask.appName + "开始通过VersionCode比较检测洗包 step = " + paramMonitorStep);
+    ab.c("WashMonitor", "VersionCodeMonitorAction>>" + paramMonitorTask.appName + "开始通过VersionCode比较检测洗包 step = " + paramMonitorStep);
     if ((paramMonitorStep == MonitorStep.INSTALLING) || (paramMonitorStep == MonitorStep.AFTER_INSTALL))
     {
-      PackageInfo localPackageInfo = r.c(paramMonitorTask.packageName);
+      PackageInfo localPackageInfo = q.c(paramMonitorTask.packageName);
       if ((localPackageInfo != null) && (paramMonitorTask.versionCode > 0) && (paramMonitorTask.versionCode > localPackageInfo.versionCode))
       {
         paramMonitorStep = new MonitorResult(paramMonitorStep, 1, "通过版本号对比发现安装了版本号更低的包，确认洗包", a());

@@ -1,23 +1,12 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
 
 public class ahqa
-  extends BroadcastReceiver
+  extends ahqb
 {
-  public ahqa(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public ahqa(Context paramContext)
   {
-    if ((badq.d(this.a.jdField_a_of_type_AndroidContentContext)) && (this.a.c) && (this.a.isResume()))
-    {
-      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-    }
+    this.a = paramContext.getString(2131697506);
+    this.b = this.a;
   }
 }
 

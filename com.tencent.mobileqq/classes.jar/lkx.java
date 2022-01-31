@@ -1,133 +1,177 @@
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class lkx
-  extends lka
 {
-  public boolean a;
+  public static int a;
   
-  public void a(long paramLong)
+  public static ayki a(String paramString, int paramInt)
   {
-    long l = paramLong - this.jdField_a_of_type_Long;
-    int k = 0;
-    int j = 0;
-    int i;
-    float f;
-    if (this.jdField_a_of_type_Boolean) {
-      if ((l > 0L) && (l < 100L))
-      {
-        i = (int)(255L * l / 100L);
-        if ((l <= 0L) || (l > 200L)) {
-          break label226;
-        }
-        f = -0.0035F * (float)l + 1.5F;
+    return new ayki(a(paramString), 3, paramInt);
+  }
+  
+  public static String a(int paramInt)
+  {
+    String str2 = "";
+    String str1 = str2;
+    if (paramInt >= 0)
+    {
+      str1 = str2;
+      if (paramInt < ayjw.a.length) {
+        str1 = '\024' + ayjw.a[paramInt];
       }
     }
-    label539:
-    for (;;)
+    return str1;
+  }
+  
+  public static String a(ayks paramayks)
+  {
+    int j = 0;
+    if (paramayks == null) {
+      return null;
+    }
+    int i = paramayks.length();
+    Object localObject1 = new char[i];
+    paramayks.getChars(0, i, (char[])localObject1, 0);
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    Object localObject2 = (aykp[])paramayks.getSpans(0, i, aykp.class);
+    if ((localObject2 != null) && (localObject2.length > 0))
     {
-      QLog.d("RedPacketGameParticleTopWordTip", 2, "WL_DEBUG update duration = " + l + ", alpha = " + i + ", scale = " + f + ", curTime = " + paramLong + ", mStartTime = " + this.jdField_a_of_type_Long);
-      a(i);
-      b(f);
-      return;
-      if ((l >= 100L) && (l <= 1200L))
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append((char[])localObject1);
+      localObject1 = new ArrayList(localObject2.length);
+      i = 0;
+      Object localObject3;
+      if (i < localObject2.length)
       {
-        i = 255;
-        break;
+        localObject3 = localObject2[i];
+        if (localObject3 == null) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          ((ArrayList)localObject1).add(lky.a((aykp)localObject3, paramayks.getSpanStart(localObject3), paramayks.getSpanEnd(localObject3)));
+        }
       }
+      Collections.sort((List)localObject1, lky.jdField_a_of_type_JavaUtilComparator);
+      localObject2 = ((ArrayList)localObject1).iterator();
       i = j;
-      if (l <= 1200L) {
-        break;
-      }
-      i = j;
-      if (l >= 1250L) {
-        break;
-      }
-      i = (int)(255L * (l - 1250L) / -50L);
-      break;
-      label226:
-      if ((l > 200L) && (l <= 350L))
+      if (((Iterator)localObject2).hasNext())
       {
-        f = 0.001333333F * (float)l + 0.5333334F;
-      }
-      else if ((l > 350L) && (l <= 450L))
-      {
-        f = -0.001F * (float)l + 1.35F;
-      }
-      else if ((l > 450L) && (l <= 550L))
-      {
-        f = 0.001F * (float)l + 0.45F;
-      }
-      else if ((l > 550L) && (l <= 1100L))
-      {
-        f = 1.0F;
-      }
-      else if ((l > 1100L) && (l <= 1150L))
-      {
-        f = 0.0016F * (float)l - 0.76F;
-      }
-      else if ((l > 1150L) && (l <= 1250L))
-      {
-        f = -0.0108F * (float)l + 13.5F;
-      }
-      else
-      {
-        f = 0.0F;
-        continue;
-        if ((l > 0L) && (l < 100L)) {
-          i = (int)(255L * l / 100L);
+        paramayks = (lky)((Iterator)localObject2).next();
+        localObject3 = paramayks.jdField_a_of_type_Aykp;
+        int k = paramayks.jdField_a_of_type_Int;
+        j = paramayks.b;
+        switch (((aykp)localObject3).c)
+        {
+        default: 
+          paramayks = localStringBuilder2.substring(k, j);
         }
         for (;;)
         {
-          if ((l <= 0L) || (l > 200L)) {
-            break label539;
+          if (i < k) {
+            localStringBuilder1.append(localStringBuilder2.substring(i, k));
           }
-          f = -0.0035F * (float)l + 1.5F;
+          localStringBuilder1.append(paramayks);
+          i = j;
           break;
-          if ((l >= 100L) && (l <= 700L))
-          {
-            i = 255;
-          }
-          else
-          {
-            i = k;
-            if (l > 700L)
-            {
-              i = k;
-              if (l < 750L) {
-                i = (int)(255L * (l - 750L) / -50L);
-              }
-            }
-          }
-        }
-        if ((l > 200L) && (l <= 350L)) {
-          f = 0.001333333F * (float)l + 0.5333334F;
-        } else if ((l > 350L) && (l <= 450L)) {
-          f = -0.001F * (float)l + 1.35F;
-        } else if ((l > 450L) && (l <= 550L)) {
-          f = 0.001F * (float)l + 0.45F;
-        } else if ((l > 550L) && (l <= 600L)) {
-          f = 1.0F;
-        } else if ((l > 600L) && (l <= 650L)) {
-          f = 0.0016F * (float)l + 0.04F;
-        } else if ((l > 650L) && (l <= 750L)) {
-          f = -0.0108F * (float)l + 8.1F;
-        } else {
-          f = 0.0F;
+          paramayks = '\024' + ((aykp)localObject3).a();
+          continue;
+          paramayks = a(((aykp)localObject3).jdField_a_of_type_Int & 0x7FFFFFFF);
         }
       }
+      if (i < localStringBuilder2.length()) {
+        localStringBuilder1.append(localStringBuilder2.substring(i));
+      }
+      lky.a((List)localObject1);
+    }
+    for (;;)
+    {
+      return localStringBuilder1.toString();
+      localStringBuilder1.append((char[])localObject1);
     }
   }
   
-  public void a(boolean paramBoolean)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    int k = 0;
+    if (TextUtils.isEmpty(paramString)) {
+      localObject1 = "";
+    }
+    do
+    {
+      return localObject1;
+      localObject1 = paramString;
+    } while (paramString.indexOf("/") == -1);
+    int i = 0;
+    for (Object localObject1 = paramString;; localObject1 = paramString)
+    {
+      paramString = (String)localObject1;
+      int j = k;
+      Object localObject2 = localObject1;
+      try
+      {
+        String str;
+        if (i < ayjw.a.length)
+        {
+          localObject2 = localObject1;
+          str = '\024' + ayjw.a[i];
+          localObject2 = localObject1;
+          paramString = (String)localObject1;
+          if (((String)localObject1).indexOf(str) != -1)
+          {
+            localObject2 = localObject1;
+            paramString = ((String)localObject1).replace(str, ayla.c(i));
+          }
+        }
+        else
+        {
+          for (;;)
+          {
+            localObject2 = paramString;
+            localObject1 = paramString;
+            if (j >= ayjw.a.length) {
+              break;
+            }
+            localObject2 = paramString;
+            str = ayjw.a[j];
+            localObject1 = paramString;
+            localObject2 = paramString;
+            if (paramString.indexOf(str) != -1)
+            {
+              localObject2 = paramString;
+              localObject1 = paramString.replace(str, ayla.c(j));
+            }
+            j += 1;
+            paramString = (String)localObject1;
+          }
+          return localObject1;
+        }
+      }
+      catch (Exception paramString)
+      {
+        localObject1 = localObject2;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("ChatRoomUtil", 2, "convertMsg exception", paramString);
+          localObject1 = localObject2;
+        }
+      }
+      i += 1;
+    }
   }
   
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static void a(String paramString)
   {
-    paramInt2 = paramInt1 * 39 / 750;
-    paramInt3 = paramInt1 * 59 / 750;
-    a(paramInt2, paramInt3, paramInt1 - paramInt2, paramInt1 * 268 / 750 + paramInt3);
+    int i = ldc.a().a().d;
+    if (QLog.isColorLevel()) {
+      QLog.i("ChatRoomUtil", 2, String.format("doReport, tag[%s], fromType[%s]", new Object[] { paramString, Integer.valueOf(i) }));
+    }
+    axqw.b(null, "dc00898", "", "", paramString, paramString, i, 0, "", "", "", "");
   }
 }
 

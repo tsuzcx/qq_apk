@@ -1,28 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class qmy
-  implements View.OnClickListener
+class qmy
+  implements Animation.AnimationListener
 {
-  long jdField_a_of_type_Long = 0L;
+  qmy(qmx paramqmx) {}
   
-  public qmy(BaseTabbar paramBaseTabbar, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 300L)
-    {
-      this.jdField_a_of_type_Long = 0L;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a.a(this.jdField_a_of_type_Int);
-      }
-      return;
+    if (qmx.a(this.a) != null) {
+      qmx.a(this.a).setVisibility(8);
     }
-    this.jdField_a_of_type_Long = l;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.setSelectedTab(this.jdField_a_of_type_Int, true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

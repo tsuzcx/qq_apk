@@ -1,40 +1,34 @@
-import android.graphics.Bitmap;
+import com.tencent.component.network.utils.thread.ThreadPool.Job;
+import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
+import java.util.Collection;
+import java.util.Iterator;
 
-public class bhbx
+class bhbx
+  implements ThreadPool.Job<Object>
 {
-  public final int a;
-  public final Bitmap a;
-  public final String a;
-  public final Throwable a;
-  public final boolean a;
+  bhbx(bhbt parambhbt, boolean paramBoolean) {}
   
-  private bhbx(boolean paramBoolean, int paramInt, String paramString, Throwable paramThrowable, Bitmap paramBitmap)
+  public Object run(ThreadPool.JobContext paramJobContext)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  private static bhbx b(int paramInt, String paramString)
-  {
-    return new bhbx(false, paramInt, paramString, null, null);
-  }
-  
-  private static bhbx b(Bitmap paramBitmap)
-  {
-    return new bhbx(true, 0, null, null, paramBitmap);
-  }
-  
-  public String toString()
-  {
-    return "ChangeFaceResult{isSuccess=" + this.jdField_a_of_type_Boolean + ", errCode=" + this.jdField_a_of_type_Int + ", msg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", exception=" + this.jdField_a_of_type_JavaLangThrowable + ", data=" + this.jdField_a_of_type_AndroidGraphicsBitmap + '}';
+    paramJobContext.setMode(1);
+    paramJobContext = bhbt.a(this.jdField_a_of_type_Bhbt).a();
+    if (paramJobContext != null)
+    {
+      paramJobContext = paramJobContext.iterator();
+      while (paramJobContext.hasNext())
+      {
+        Object localObject = (bhbr)paramJobContext.next();
+        int i = ((bhbr)localObject).a(this.jdField_a_of_type_Boolean);
+        localObject = ((bhbr)localObject).a();
+        this.jdField_a_of_type_Bhbt.a((String)localObject, i);
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhbx
  * JD-Core Version:    0.7.0.1
  */

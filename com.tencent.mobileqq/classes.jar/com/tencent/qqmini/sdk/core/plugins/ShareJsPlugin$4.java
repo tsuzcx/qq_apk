@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfz;
+import beka;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class ShareJsPlugin$4
   implements AsyncResult
 {
-  ShareJsPlugin$4(ShareJsPlugin paramShareJsPlugin, bdfz parambdfz) {}
+  ShareJsPlugin$4(ShareJsPlugin paramShareJsPlugin, beka parambeka) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (paramJSONObject.optBoolean("needShareCallback"))
+    if (paramJSONObject.optBoolean("needShareCallBack"))
     {
       this.val$req.a();
       return;

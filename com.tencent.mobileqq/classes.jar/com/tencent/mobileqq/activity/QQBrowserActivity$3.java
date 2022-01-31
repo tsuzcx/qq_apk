@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bayo;
+import bcbi;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class QQBrowserActivity$3
@@ -10,7 +10,7 @@ class QQBrowserActivity$3
   
   public void run()
   {
-    bayo.a().a(BaseApplicationImpl.sApplication.waitAppRuntime(null));
+    bcbi.a().a(BaseApplicationImpl.sApplication.waitAppRuntime(null));
   }
 }
 

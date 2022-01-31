@@ -12,7 +12,7 @@ class ReadInJoyFastWebBottomSocialView$3
     ReadInJoyFastWebBottomSocialView.a(this.this$0, false);
     ReadInJoyFastWebBottomSocialView.a(this.this$0).setVisibility(0);
     ReadInJoyFastWebBottomSocialView.b(this.this$0).setVisibility(8);
-    ReadInJoyFastWebBottomSocialView.a(this.this$0).setImageResource(2130841140);
+    ReadInJoyFastWebBottomSocialView.a(this.this$0).setImageResource(2130841217);
   }
 }
 

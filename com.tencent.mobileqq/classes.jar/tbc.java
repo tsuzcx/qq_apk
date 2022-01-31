@@ -1,53 +1,57 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.VideoStoryId;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tribe.async.utils.AssertUtils;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import mqq.observer.BusinessObserver;
 
-public class tbc
+class tbc
+  implements BusinessObserver
 {
-  @NonNull
-  public final String a;
-  @NonNull
-  public final Map<String, String> a;
-  @NonNull
-  public String b;
+  tbc(tbb paramtbb, long paramLong, tbd paramtbd, String paramString, tbe paramtbe) {}
   
-  public tbc(@NonNull qqstory_group.GroupFeed paramGroupFeed)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = paramGroupFeed.union_id.get().toStringUtf8();
-    HashMap localHashMap = new HashMap();
-    Iterator localIterator = paramGroupFeed.story_id_list.get().iterator();
-    if (localIterator.hasNext())
+    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    Object localObject;
+    tbe localtbe;
+    String str;
+    if (paramBoolean)
     {
-      qqstory_group.VideoStoryId localVideoStoryId = (qqstory_group.VideoStoryId)localIterator.next();
-      String str = localVideoStoryId.story_id.get().toStringUtf8();
-      if (!TextUtils.isEmpty(str)) {}
-      for (boolean bool = true;; bool = false)
+      localObject = paramBundle.getByteArray("data");
+      if ((localObject != null) && (localObject.length > 0))
       {
-        AssertUtils.assertTrue(bool);
-        localHashMap.put(localVideoStoryId.vid.get().toStringUtf8(), str);
-        this.b = localVideoStoryId.feed_id.get().toStringUtf8();
-        break;
+        localtbe = this.jdField_a_of_type_Tbd.a((byte[])localObject);
+        if (localtbe != null)
+        {
+          paramInt = localtbe.jdField_a_of_type_Int;
+          str = localtbe.jdField_a_of_type_JavaLangString;
+          if (paramInt == 0)
+          {
+            localtbe.a();
+            veg.a("Q.qqstory.net:LegoNetworkRequester", "get cmd:%s success take time:%d data length=%d", this.jdField_a_of_type_JavaLangString, Long.valueOf(l), Integer.valueOf(localObject.length));
+            vel.b("story_net", this.jdField_a_of_type_JavaLangString, 0, paramInt, new String[] { str, String.valueOf(l), vel.a(BaseApplication.getContext()) });
+          }
+        }
       }
     }
-    if (TextUtils.isEmpty(this.b)) {
-      this.b = paramGroupFeed.feed_id.get().toStringUtf8();
+    for (;;)
+    {
+      this.jdField_a_of_type_Tbe.a(paramBoolean, paramBundle);
+      return;
+      localtbe.a(paramInt, str);
+      veg.d("Q.qqstory.net:LegoNetworkRequester", "get cmd:%s error:%d msg:%s take time:%d data length%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt), str, Long.valueOf(l), Integer.valueOf(localObject.length) });
+      break;
+      veg.d("Q.qqstory.net:LegoNetworkRequester", "get cmd:%s error. response is null", new Object[] { this.jdField_a_of_type_JavaLangString });
+      vel.b("story_net", this.jdField_a_of_type_JavaLangString, 0, 940002, new String[] { "response is null", String.valueOf(l), vel.a(BaseApplication.getContext()) });
+      continue;
+      this.jdField_a_of_type_Tbe.a(-2, paramBundle);
+      veg.d("Q.qqstory.net:LegoNetworkRequester", "get cmd:" + this.jdField_a_of_type_Tbd.a() + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
+      vel.b("story_net", this.jdField_a_of_type_Tbd.a(), 0, 940002, new String[] { "rsp data error", String.valueOf(l), vel.a(BaseApplication.getContext()) });
+      continue;
+      paramInt = paramBundle.getInt("data_error_code");
+      localObject = paramBundle.getString("data_error_msg");
+      this.jdField_a_of_type_Tbe.a(paramInt, paramBundle);
+      veg.d("Q.qqstory.net:LegoNetworkRequester", "get cmd:" + this.jdField_a_of_type_JavaLangString + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
+      vel.b("story_net", this.jdField_a_of_type_JavaLangString, 0, paramInt, new String[] { localObject, String.valueOf(l), vel.a(BaseApplication.getContext()) });
     }
-    this.jdField_a_of_type_JavaUtilMap = Collections.unmodifiableMap(localHashMap);
-  }
-  
-  public String toString()
-  {
-    return "AddGroupFeed[" + this.jdField_a_of_type_JavaLangString + "," + this.b + "," + this.jdField_a_of_type_JavaUtilMap + "]";
   }
 }
 

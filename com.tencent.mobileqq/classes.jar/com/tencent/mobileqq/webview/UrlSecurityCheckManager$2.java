@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.webview;
 
-import acka;
-import baxz;
+import acut;
+import bcat;
 import com.tencent.widget.ListView;
 import java.lang.ref.WeakReference;
 
 public class UrlSecurityCheckManager$2
   implements Runnable
 {
-  public UrlSecurityCheckManager$2(baxz parambaxz, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
+  public UrlSecurityCheckManager$2(bcat parambcat, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
   
   public void run()
   {
     ListView localListView = (ListView)this.a.get();
-    acka localacka = (acka)this.b.get();
-    if ((localListView != null) && (localacka != null)) {
-      baxz.a(this.this$0, localListView, localacka);
+    acut localacut = (acut)this.b.get();
+    if ((localListView != null) && (localacut != null)) {
+      bcat.a(this.this$0, localListView, localacut);
     }
   }
 }

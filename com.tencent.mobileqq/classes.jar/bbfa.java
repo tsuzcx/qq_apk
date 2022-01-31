@@ -1,39 +1,43 @@
-import java.lang.reflect.Method;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bbfa
+class bbfa
+  implements View.OnClickListener
 {
-  public static Class a(ClassLoader paramClassLoader, String paramString)
-  {
-    try
-    {
-      paramClassLoader = paramClassLoader.loadClass(paramString);
-      return paramClassLoader;
-    }
-    catch (ClassNotFoundException paramClassLoader)
-    {
-      paramClassLoader.printStackTrace();
-    }
-    return null;
-  }
+  bbfa(bbew parambbew) {}
   
-  public static Method a(Class paramClass, String paramString, Class[] paramArrayOfClass)
+  public void onClick(View paramView)
   {
-    try
+    switch (bbew.a(this.a))
     {
-      paramClass = paramClass.getDeclaredMethod(paramString, paramArrayOfClass);
-      paramClass.setAccessible(true);
-      return paramClass;
+    default: 
+      return;
+    case 1: 
+      bdht.c("NewUpgradeDialog", "onclick right btn  state = STATE_INIT");
+      bbew.a(this.a);
+      return;
+    case 4: 
+      bbew.b(this.a);
+      bdht.c("NewUpgradeDialog", "onclick right btn  state = STATE_COMPLETE");
+      return;
+    case 10: 
+      bdht.c("NewUpgradeDialog", "onclick right btn  state = STATE_CANCEL");
+      return;
+    case 3: 
+      bbew.c(this.a);
+      bdht.c("NewUpgradeDialog", "onclick right btn  state = STATE_PAUSE");
+      return;
+    case 2: 
+      this.a.c();
+      bdht.c("NewUpgradeDialog", "onclick right btn  state = STATE_DOWNLOADING");
+      return;
     }
-    catch (NoSuchMethodException paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
+    bdht.c("NewUpgradeDialog", "onclick right btn  state = STATE_WAIT");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbfa
  * JD-Core Version:    0.7.0.1
  */

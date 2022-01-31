@@ -1,119 +1,32 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
-
-class aybj
-  implements BusinessObserver
+public class aybj
+  extends aybg
 {
-  aybj(aybi paramaybi, aybq paramaybq, String paramString) {}
+  private float d;
+  private int f;
+  private int g;
+  private int h;
+  private int i;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public aybj(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TribeVideoListPlayerFragment", 2, "type = [" + paramInt + "], isSuccess = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
+    super(paramInt1, 11, 0);
+    this.f = paramInt2;
+    this.g = paramInt3;
+    this.h = paramInt4;
+    this.i = paramInt5;
+    this.d = paramFloat;
+  }
+  
+  protected void a(int paramInt, float paramFloat)
+  {
+    this.jdField_c_of_type_Float = (paramInt * 0.8F / this.jdField_c_of_type_Int);
+    if (this.jdField_c_of_type_Float > 0.8F) {
+      this.jdField_c_of_type_Float = 0.8F;
     }
-    Object localObject1 = this.jdField_a_of_type_Aybi.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity();
-    Object localObject2;
-    if (localObject1 == null)
-    {
-      localObject1 = BaseApplicationImpl.getContext();
-      if (paramBoolean)
-      {
-        try
-        {
-          paramBundle = paramBundle.getByteArray("data");
-          if (paramBundle == null) {
-            break label540;
-          }
-          localObject2 = new WebSsoBody.WebSsoResponseBody();
-          ((WebSsoBody.WebSsoResponseBody)localObject2).mergeFrom(paramBundle);
-          paramInt = ((WebSsoBody.WebSsoResponseBody)localObject2).ret.get();
-          paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject2).data.get());
-          if (QLog.isColorLevel()) {
-            QLog.i("TribeVideoListPlayerFragment", 2, "retCode = [" + paramInt + "]");
-          }
-          if (paramInt == 0) {
-            break label267;
-          }
-          paramBundle = paramBundle.optString("msg");
-          if (!TextUtils.isEmpty(paramBundle))
-          {
-            bbmy.a((Context)localObject1, 1, "" + paramBundle, 1).a();
-            return;
-          }
-          bbmy.a((Context)localObject1, 1, ajjy.a(2131649332), 1).a();
-          return;
-        }
-        catch (Exception paramBundle)
-        {
-          bbmy.a((Context)localObject1, 1, ajjy.a(2131649318), 1).a();
-          if (!QLog.isColorLevel()) {
-            break label637;
-          }
-        }
-        QLog.e("TribeVideoListPlayerFragment", 2, "未知异常，请稍后重试", paramBundle);
-        return;
-        label267:
-        if (paramBundle.optInt("retcode") != 0) {
-          break label637;
-        }
-        paramBundle = this.jdField_a_of_type_Aybq;
-        if (this.jdField_a_of_type_Aybq.jdField_c_of_type_Boolean) {
-          break label638;
-        }
-      }
-    }
-    label540:
-    label637:
-    label638:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramBundle.jdField_c_of_type_Boolean = paramBoolean;
-      paramBundle = this.jdField_a_of_type_Aybi.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramBundle.hasNext())
-      {
-        localObject2 = (aybn)paramBundle.next();
-        if (((localObject2 instanceof aybq)) && (((aybq)localObject2).jdField_c_of_type_Long == this.jdField_a_of_type_Aybq.jdField_c_of_type_Long)) {
-          ((aybq)localObject2).jdField_c_of_type_Boolean = this.jdField_a_of_type_Aybq.jdField_c_of_type_Boolean;
-        }
-      }
-      if (this.jdField_a_of_type_Aybq.jdField_c_of_type_Boolean) {}
-      for (paramBundle = ajjy.a(2131649333);; paramBundle = ajjy.a(2131649331))
-      {
-        bbmy.a((Context)localObject1, 2, paramBundle, 1).a();
-        if ((this.jdField_a_of_type_Aybi.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Aybi.jdField_a_of_type_Int) == this.jdField_a_of_type_Aybq) && (this.jdField_a_of_type_Aybq.jdField_c_of_type_Boolean) && (TribeVideoListPlayerFragment.jdField_a_of_type_JavaLangRefWeakReference != null) && (TribeVideoListPlayerFragment.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-          ((TribeVideoPlugin)TribeVideoListPlayerFragment.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_Aybq.jdField_c_of_type_Long);
-        }
-        awqx.b(null, "dc00899", "Grp_tribe", "", "video_player", "follow_suc", 0, 0, this.jdField_a_of_type_Aybq.d, this.jdField_a_of_type_Aybq.b + "", "", this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      this.jdField_a_of_type_Aybi.l.clearAnimation();
-      this.jdField_a_of_type_Aybi.k.clearAnimation();
-      this.jdField_a_of_type_Aybi.f.clearAnimation();
-      bbmy.a((Context)localObject1, 1, ajjy.a(2131649330), 1).a();
-      return;
-      this.jdField_a_of_type_Aybi.l.clearAnimation();
-      this.jdField_a_of_type_Aybi.k.clearAnimation();
-      this.jdField_a_of_type_Aybi.f.clearAnimation();
-      bbmy.a((Context)localObject1, 1, ajjy.a(2131649315), 1).a();
-      return;
-      break;
-      return;
-    }
+    this.jdField_b_of_type_Int = ((int)(360.0F * paramInt * paramInt / (this.jdField_c_of_type_Int * this.jdField_c_of_type_Int)));
+    this.a = (this.f + (this.h - this.f) * paramInt / this.jdField_c_of_type_Int);
+    this.jdField_b_of_type_Float = ((int)(this.g + this.i * Math.sin(this.d * this.a)));
+    super.a(paramInt, paramFloat);
   }
 }
 

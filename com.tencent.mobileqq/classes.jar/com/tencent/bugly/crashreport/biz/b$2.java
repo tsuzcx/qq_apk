@@ -23,7 +23,7 @@ final class b$2
       x.c(">>> %s onCreated <<<", new Object[] { paramBundle });
       paramActivity = com.tencent.bugly.crashreport.common.info.a.b();
     } while (paramActivity == null);
-    paramActivity.C.add(b.a(paramBundle, "onCreated"));
+    paramActivity.E.add(b.a(paramBundle, "onCreated"));
   }
   
   public final void onActivityDestroyed(Activity paramActivity)
@@ -39,7 +39,7 @@ final class b$2
       x.c(">>> %s onDestroyed <<<", new Object[] { str });
       paramActivity = com.tencent.bugly.crashreport.common.info.a.b();
     } while (paramActivity == null);
-    paramActivity.C.add(b.a(str, "onDestroyed"));
+    paramActivity.E.add(b.a(str, "onDestroyed"));
   }
   
   public final void onActivityPaused(Activity paramActivity)
@@ -56,20 +56,20 @@ final class b$2
       x.c(">>> %s onPaused <<<", new Object[] { str });
       locala = com.tencent.bugly.crashreport.common.info.a.b();
     } while (locala == null);
-    locala.C.add(b.a(str, "onPaused"));
+    locala.E.add(b.a(str, "onPaused"));
     locala.a(false);
-    locala.t = System.currentTimeMillis();
-    locala.u = (locala.t - locala.s);
-    b.b(locala.t);
-    if (locala.u < 0L) {
-      locala.u = 0L;
+    locala.u = System.currentTimeMillis();
+    locala.v = (locala.u - locala.t);
+    b.b(locala.u);
+    if (locala.v < 0L) {
+      locala.v = 0L;
     }
     if (paramActivity != null)
     {
-      locala.r = "background";
+      locala.s = "background";
       return;
     }
-    locala.r = "unknown";
+    locala.s = "unknown";
   }
   
   public final void onActivityResumed(Activity paramActivity)
@@ -91,12 +91,12 @@ final class b$2
           paramActivity = com.tencent.bugly.crashreport.common.info.a.b();
           if (paramActivity != null)
           {
-            paramActivity.C.add(b.a(str, "onResumed"));
+            paramActivity.E.add(b.a(str, "onResumed"));
             paramActivity.a(true);
-            paramActivity.r = str;
-            paramActivity.s = System.currentTimeMillis();
-            paramActivity.v = (paramActivity.s - b.c());
-            long l2 = paramActivity.s - b.d();
+            paramActivity.s = str;
+            paramActivity.t = System.currentTimeMillis();
+            paramActivity.w = (paramActivity.t - b.c());
+            long l2 = paramActivity.t - b.d();
             if (b.e() > 0L) {}
             for (l1 = b.e(); l2 > l1; l1 = b.f())
             {

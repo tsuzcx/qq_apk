@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import amsb;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anii;
 import java.util.List;
 
 public class IPSiteModel$Game
   implements Parcelable
 {
-  public static final Parcelable.Creator<Game> CREATOR = new amsb();
+  public static final Parcelable.Creator<Game> CREATOR = new anii();
   public String cover;
   public String desc;
   public List<IPSiteModel.GameRich> gameRiches;

@@ -1,53 +1,48 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment.1.1;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public class nce
-  implements View.OnClickListener
+class nce
+  implements BusinessObserver
 {
-  public nce(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
+  nce(ncc paramncc) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      onClick(paramView);
-      return;
-    case 2131302832: 
-      if (!this.a.jdField_a_of_type_Bbcj.a.a)
-      {
-        paramView = this.a.jdField_a_of_type_Bazb.c.getText().toString();
-        this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("javascript:onRightBtn(\"" + paramView + "\")");
-        return;
-      }
-      if (PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a) == 1001)
-      {
-        ThreadManager.executeOnSubThread(new PublicAccountBrowser.PublicAccountBrowserFragment.1.1(this));
-        this.a.getActivity().finish();
-        return;
-      }
-      onClick(paramView);
+    if (this.a.a) {
       return;
     }
-    if (!this.a.jdField_a_of_type_Bbcj.a.a)
+    if ((!paramBoolean) || (paramBundle == null))
     {
-      paramView = this.a.jdField_a_of_type_Bazb.a.getText().toString();
-      if (paramView.equals(PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a).getStringExtra("leftViewText")))
-      {
-        this.a.f();
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("javascript:onLeftBtn(\"" + paramView + "\")");
+      ncc.a(this.a);
       return;
     }
-    onClick(paramView);
+    do
+    {
+      oidb_sso.OIDBSSOPkg localOIDBSSOPkg;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+        localOIDBSSOPkg.mergeFrom(paramBundle);
+        if ((localOIDBSSOPkg == null) || (!localOIDBSSOPkg.uint32_result.has()) || (localOIDBSSOPkg.uint32_result.get() != 0) || (!localOIDBSSOPkg.bytes_bodybuffer.has()) || (localOIDBSSOPkg.bytes_bodybuffer.get() == null))
+        {
+          ncc.a(this.a);
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+        ncc.a(this.a);
+        return;
+      }
+      paramBundle = ncc.b(this.a, localOIDBSSOPkg);
+    } while ((paramBundle == null) || (paramBundle.size() <= 0));
+    ncc.a(this.a, paramBundle);
   }
 }
 

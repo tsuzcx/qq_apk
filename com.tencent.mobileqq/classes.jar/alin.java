@@ -1,31 +1,32 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class alin
-  implements ValueAnimator.AnimatorUpdateListener
+final class alin
+  implements ayrz
 {
-  alin(alij paramalij, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(aysw paramaysw, aysx paramaysx)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {}
-    float f;
-    do
-    {
+    if ((paramaysw == null) || (paramaysx == null)) {}
+    while (!(paramaysw instanceof ayrv)) {
       return;
-      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-      int i = (int)(-this.jdField_a_of_type_Alij.d * (1.0F - f));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    } while (!this.jdField_a_of_type_Alij.g);
-    this.b.setAlpha(f);
+    }
+    ayrv localayrv = (ayrv)paramaysw;
+    localayrv.jdField_a_of_type_Long += paramaysx.c;
+    paramaysx.c = 0L;
+    paramaysx = "bytes=" + localayrv.jdField_a_of_type_Long + "-";
+    localayrv.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysx);
+    paramaysx = localayrv.jdField_a_of_type_JavaLangString;
+    if (paramaysx.contains("range="))
+    {
+      paramaysx = paramaysx.substring(0, paramaysx.lastIndexOf("range="));
+      localayrv.jdField_a_of_type_JavaLangString = (paramaysx + "range=" + localayrv.jdField_a_of_type_Long);
+    }
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, "IBreakDownFix. url = " + ((ayrv)paramaysw).jdField_a_of_type_JavaLangString + ", offset=" + localayrv.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alin
  * JD-Core Version:    0.7.0.1
  */

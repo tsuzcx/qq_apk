@@ -1,19 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class ofy
+public abstract interface ofy
 {
-  public void a(int paramInt, List<DynamicChannelDataModel> paramList) {}
+  public abstract void a(ArticleInfo paramArticleInfo, int paramInt1, String paramString1, JSONObject paramJSONObject, String paramString2, JSONArray paramJSONArray, int paramInt2);
   
-  public void a(int paramInt1, boolean paramBoolean, List<ogf> paramList, int paramInt2) {}
-  
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList) {}
-  
-  public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList) {}
+  public abstract void a(ArticleInfo paramArticleInfo, String paramString1, int paramInt, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ofy
  * JD-Core Version:    0.7.0.1
  */

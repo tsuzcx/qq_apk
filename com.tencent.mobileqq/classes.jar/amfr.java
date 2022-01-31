@@ -1,89 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.hardware.Camera.PreviewCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.PreviewCallbackForward.1;
 
 public class amfr
-  extends alzl<amfs>
+  implements Camera.PreviewCallback
 {
-  public int a()
-  {
-    return 538;
-  }
+  private final amfh jdField_a_of_type_Amfh;
+  private final amfi jdField_a_of_type_Amfi;
+  private final Handler jdField_a_of_type_AndroidOsHandler;
   
-  @NonNull
-  public amfs a(int paramInt)
+  @TargetApi(8)
+  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    return new amfs();
-  }
-  
-  @Nullable
-  public amfs a(alzs[] paramArrayOfalzs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onParsed");
-    }
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
-    {
-      paramArrayOfalzs = paramArrayOfalzs[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.d("RichmediaIpv6ConifgProcessor", 2, "onParsed, content:" + paramArrayOfalzs);
-      }
-      return amfs.a(paramArrayOfalzs);
-    }
-    return new amfs();
-  }
-  
-  public Class a()
-  {
-    return amfs.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onReqFailed");
-    }
-  }
-  
-  public void a(amfs paramamfs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onUpdate");
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (localQQAppInterface != null)
-    {
-      localQQAppInterface.a().a = paramamfs;
-      localQQAppInterface.getHwEngine().ipv6Switch = paramamfs.a;
-      localQQAppInterface.getHwEngine().ipv6SwitchDual = paramamfs.b;
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.PreviewCallbackForward.1(this, paramArrayOfByte));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amfr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,17 @@
-import android.content.Intent;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
-class agio
-  extends aggx
+public class agio
+  implements DialogInterface.OnKeyListener
 {
-  protected agio(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
-  {
-    super(paramNewPhotoPreviewActivity);
-  }
+  public agio(BaseActivityView paramBaseActivityView) {}
   
-  public static aggt b(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((jdField_a_of_type_Aggt == null) || (jdField_a_of_type_Aggt.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {}
-    try
-    {
-      if ((jdField_a_of_type_Aggt == null) || (jdField_a_of_type_Aggt.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {
-        jdField_a_of_type_Aggt = new agio(paramNewPhotoPreviewActivity);
-      }
-      return jdField_a_of_type_Aggt;
-    }
-    finally {}
-  }
-  
-  protected void a(Intent paramIntent)
-  {
-    super.a(paramIntent);
-    this.jdField_a_of_type_Aggs.c = ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131629467);
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Aggf.a != null) && (!this.jdField_a_of_type_Aggf.a.isEmpty());
-  }
-  
-  protected void b()
-  {
-    super.b();
-    ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b.setOnClickListener(new agip(this));
+    return (paramInt == 4) && (this.a.a.e()) && (bbev.d(this.a.getContext()));
   }
 }
 

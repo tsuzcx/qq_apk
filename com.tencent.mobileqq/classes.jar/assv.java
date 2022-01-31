@@ -1,33 +1,35 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import java.util.ArrayList;
+import android.os.Message;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import mqq.os.MqqHandler;
 
 public class assv
-  implements begw
+  extends MqqHandler
 {
-  public assv(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, begr parambegr) {}
+  public assv(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    switch (paramInt)
+    switch (paramMessage.what)
     {
     }
-    for (;;)
+    do
     {
-      this.jdField_a_of_type_Begr.e();
       return;
-      if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity) != null)
-      {
-        NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity).a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.size());
-        continue;
-        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.h();
-      }
-    }
+      MultiCardRecommendFragment.e(this.a);
+      sendEmptyMessageDelayed(3, 500L);
+      return;
+      MultiCardRecommendFragment.a(this.a, MultiCardRecommendFragment.b(this.a));
+      MultiCardRecommendFragment.e(this.a);
+      return;
+      MultiCardRecommendFragment.d(this.a);
+      return;
+    } while (MultiCardRecommendFragment.a(this.a) == null);
+    MultiCardRecommendFragment.a(this.a).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     assv
  * JD-Core Version:    0.7.0.1
  */

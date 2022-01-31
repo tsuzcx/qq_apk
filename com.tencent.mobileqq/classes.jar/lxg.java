@@ -1,10 +1,13 @@
-import android.view.View;
-
-public abstract interface lxg
+class lxg
+  implements lxw
 {
-  public abstract void a(View paramView, int paramInt);
+  lxg(lxf paramlxf, String paramString) {}
   
-  public abstract void a(View paramView1, View paramView2);
+  public void a(lxv paramlxv)
+  {
+    paramlxv.a(this.jdField_a_of_type_JavaLangString);
+    paramlxv.a();
+  }
 }
 
 

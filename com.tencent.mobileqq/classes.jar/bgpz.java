@@ -1,119 +1,104 @@
-import android.graphics.Color;
-import android.text.TextUtils;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.widget.ListView;
+import cooperation.qqfav.globalsearch.FavoriteSearchEngine;
+import cooperation.qqfav.globalsearch.FavoriteSearchFragment;
 
 public class bgpz
-  extends bgqa
+  extends awkd<awog, awwp>
+  implements View.OnClickListener
 {
-  private float a;
-  private float b;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  
-  public bgpz(String paramString, View paramView)
+  public bgpz(FavoriteSearchFragment paramFavoriteSearchFragment, ListView paramListView, baxk parambaxk)
   {
-    super(paramString, paramView);
+    super(paramListView, parambaxk);
   }
   
-  private void a(String paramString)
+  protected awrb<awog, awwp> a(int paramInt)
   {
-    try
-    {
-      ((TextView)this.jdField_a_of_type_AndroidViewView).setTextSize(0, a(paramString));
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return new bgqd(FavoriteSearchFragment.a(this.a));
   }
   
-  private int b(String paramString)
+  protected awwq a(int paramInt, ViewGroup paramViewGroup)
   {
-    int j = 3;
-    if (TextUtils.isEmpty(paramString)) {
-      throw new RuntimeException(getClass().getName() + " setGravity value can not be null");
+    return new awyf(paramViewGroup, 2131562384);
+  }
+  
+  public int getCount()
+  {
+    int i = super.getCount();
+    if ((i > 0) && (((bgqc)super.a(i - 1)).a == -2L)) {
+      return i - 1;
     }
-    int i;
-    if ("center".equals(paramString)) {
-      i = 17;
+    return i;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt == super.getCount() - 1) {
+      return 1;
     }
-    do
+    return 0;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (getItemViewType(paramInt) == 1)
     {
+      Object localObject;
+      if (paramView == null)
+      {
+        localObject = new TextView(paramViewGroup.getContext());
+        ((TextView)localObject).setTextSize(18.0F);
+        ((TextView)localObject).setTextColor(paramViewGroup.getResources().getColor(2131166865));
+        ((TextView)localObject).setGravity(1);
+        ((TextView)localObject).setClickable(true);
+        ((TextView)localObject).setOnClickListener(this);
+        ((TextView)localObject).setPadding(0, 16, 0, 16);
+        paramView = (View)localObject;
+        paramViewGroup = paramView;
+        if (((bgqc)super.a(paramInt)).a != -1L) {
+          break label118;
+        }
+        paramViewGroup.performClick();
+      }
+      label118:
       do
       {
-        return i;
-        i = j;
-      } while ("left".equals(paramString));
-      i = j;
-    } while (!"right".equals(paramString));
-    return 5;
-  }
-  
-  private void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+        return localObject;
+        paramViewGroup = (TextView)paramView;
+        localObject = paramView;
+        break;
+        paramViewGroup.setText(2131698129);
+        paramView = (Animatable)paramViewGroup.getCompoundDrawables()[1];
+        paramViewGroup.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      } while (paramView == null);
+      paramView.stop();
+      return localObject;
     }
-    ((TextView)this.jdField_a_of_type_AndroidViewView).setTextColor(Color.parseColor(paramString));
+    return super.getView(paramInt, paramView, paramViewGroup);
   }
   
-  protected void a(String paramString1, String paramString2)
+  public int getViewTypeCount()
   {
-    super.a(paramString1, paramString2);
-    if (!(this.jdField_a_of_type_AndroidViewView instanceof TextView)) {}
-    do
-    {
-      return;
-      if ("content".equals(paramString1))
-      {
-        ((TextView)this.jdField_a_of_type_AndroidViewView).setText(paramString2);
-        return;
-      }
-      if ("text_color".equals(paramString1))
-      {
-        b(paramString2);
-        return;
-      }
-      if ("text_align".equals(paramString1))
-      {
-        ((TextView)this.jdField_a_of_type_AndroidViewView).setGravity(b(paramString2));
-        return;
-      }
-      if ("max_lines".equals(paramString1))
-      {
-        ((TextView)this.jdField_a_of_type_AndroidViewView).setMaxLines(Integer.parseInt(paramString2));
-        return;
-      }
-      if ("shadow_color".equals(paramString1))
-      {
-        this.jdField_c_of_type_Int = Color.parseColor(paramString2);
-        return;
-      }
-      if ("shadow_x".equals(paramString1))
-      {
-        this.jdField_a_of_type_Float = Float.parseFloat(paramString2);
-        return;
-      }
-      if ("shadow_y".equals(paramString1))
-      {
-        this.b = Float.parseFloat(paramString2);
-        return;
-      }
-      if ("shadow_radius".equals(paramString1))
-      {
-        this.jdField_c_of_type_Float = Float.parseFloat(paramString2);
-        return;
-      }
-    } while (!"text_size".equals(paramString1));
-    a(paramString2);
+    return 2;
   }
   
-  protected void b()
+  public void onClick(View paramView)
   {
-    super.b();
-    ((TextView)this.jdField_a_of_type_AndroidViewView).setShadowLayer(this.jdField_c_of_type_Float, this.jdField_a_of_type_Float, this.b, this.jdField_c_of_type_Int);
+    paramView = (TextView)paramView;
+    paramView.setText(null);
+    Animatable localAnimatable = (Animatable)BaseApplicationImpl.sApplication.getResources().getDrawable(2130839140);
+    paramView.setCompoundDrawablesWithIntrinsicBounds(null, (Drawable)localAnimatable, null, null);
+    localAnimatable.start();
+    paramView = (FavoriteSearchEngine)this.a.a;
+    FavoriteSearchFragment.a(this.a).a = this.a.c;
+    paramView.a(FavoriteSearchFragment.a(this.a), this.a);
   }
 }
 

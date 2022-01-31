@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
-import oab;
+import olm;
 
 public final class KandianDailyReportUtils$3
   implements Runnable
@@ -14,12 +14,12 @@ public final class KandianDailyReportUtils$3
   
   public void run()
   {
-    oab.a().add(this.a);
+    olm.a().add(this.a);
     QLog.d("KandianDailyReportUtils", 1, "add feeds 64e exposure info " + this.a);
-    if (!oab.a())
+    if (!olm.a())
     {
       ThreadManager.getSubThreadHandler().postDelayed(new KandianDailyReportUtils.3.1(this), 100L);
-      oab.a(true);
+      olm.a(true);
     }
   }
 }

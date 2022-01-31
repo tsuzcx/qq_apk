@@ -1,9 +1,15 @@
-import android.view.View;
-import java.util.Map;
-
-public abstract interface pfh
+class pfh
+  implements pvr
 {
-  public abstract void a(View paramView, Map<String, Object> paramMap);
+  pfh(pfe parampfe, pax parampax) {}
+  
+  public void a()
+  {
+    rbu localrbu = this.jdField_a_of_type_Pax.a().a();
+    if (localrbu != null) {
+      localrbu.a(null, this.jdField_a_of_type_Pax.a(), 1);
+    }
+  }
 }
 
 

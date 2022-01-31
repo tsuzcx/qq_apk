@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.model;
 
-import akmy;
-import akso;
-import akwn;
+import albk;
+import alha;
+import alkz;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQARSession$22
   implements Runnable
 {
-  public QQARSession$22(akwn paramakwn, int paramInt) {}
+  public QQARSession$22(alkz paramalkz, int paramInt) {}
   
   public void run()
   {
-    if (akwn.a(this.this$0) == null) {
+    if (alkz.a(this.this$0) == null) {
       QLog.d("AREngine_QQARSession", 1, "onARAnimationComplete mCurARResourceInfo is null!");
     }
     for (;;)
@@ -21,42 +21,42 @@ public class QQARSession$22
       return;
       if (this.a == 0)
       {
-        if (akwn.a(this.this$0).d()) {
+        if (alkz.a(this.this$0).d()) {
           break label289;
         }
-        if ((!akwn.a(this.this$0).h()) && (!akwn.a(this.this$0).g()) && (!akwn.a(this.this$0).k())) {
+        if ((!alkz.a(this.this$0).h()) && (!alkz.a(this.this$0).g()) && (!alkz.a(this.this$0).k())) {
           break label191;
         }
-        if ((!akwn.a(this.this$0).j()) || ((akwn.a(this.this$0).g()) && (akwn.a(this.this$0).j()))) {
-          akwn.c(this.this$0, true);
+        if ((!alkz.a(this.this$0).j()) || ((alkz.a(this.this$0).g()) && (alkz.a(this.this$0).j()))) {
+          alkz.c(this.this$0, true);
         }
       }
       label289:
-      while ((akwn.b(this.this$0)) && (this.this$0.a == 2) && (akwn.a(this.this$0) != null))
+      while ((alkz.b(this.this$0)) && (this.this$0.a == 2) && (alkz.a(this.this$0) != null))
       {
-        akmy localakmy = new akmy(akwn.a(this.this$0));
-        akwn.a(this.this$0).a(1, localakmy, this.a);
+        albk localalbk = new albk(alkz.a(this.this$0));
+        alkz.a(this.this$0).a(1, localalbk, this.a);
         return;
         label191:
-        if (!akwn.a(this.this$0).j())
+        if (!alkz.a(this.this$0).j())
         {
-          if (akwn.a(this.this$0) == 1L)
+          if (alkz.a(this.this$0) == 1L)
           {
             this.this$0.b(1L);
-            akwn.b(this.this$0);
+            alkz.b(this.this$0);
           }
           for (;;)
           {
             this.this$0.k();
             break;
-            if (akwn.a(this.this$0) == 2L) {
+            if (alkz.a(this.this$0) == 2L) {
               this.this$0.m();
-            } else if (akwn.a(this.this$0) == 2048L) {
+            } else if (alkz.a(this.this$0) == 2048L) {
               this.this$0.o();
             }
           }
-          if ((akwn.a(this.this$0).g()) && (akwn.a(this.this$0).j())) {
-            akwn.c(this.this$0, true);
+          if ((alkz.a(this.this$0).g()) && (alkz.a(this.this$0).j())) {
+            alkz.c(this.this$0, true);
           }
         }
       }

@@ -1,49 +1,80 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.widget.ProgressPieView;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 
-public class bemo
-  extends Handler
+class bemo
+  extends BaseAdapter
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
+  bemo(bemn parambemn) {}
   
-  public bemo(ProgressPieView paramProgressPieView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public int getCount()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b > this.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.b - 1);
-      sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
+    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
+      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
     }
-    do
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
+      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
+    }
+    paramViewGroup = paramView;
+    if (paramView == null)
     {
-      return;
-      if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b < this.jdField_a_of_type_Int)
-      {
-        int i = this.jdField_a_of_type_ComTencentWidgetProgressPieView.b + this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Int;
-        if (i <= this.jdField_a_of_type_Int) {
-          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
-        }
-        for (;;)
-        {
-          sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
-          return;
-          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_Int);
-        }
+      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.a.a(), null);
+      paramView = new bemv(this.a, null);
+      paramView.a = ((TextView)paramViewGroup.findViewById(2131368381));
+      paramViewGroup.setTag(paramView);
+    }
+    paramView = (bemv)paramViewGroup.getTag();
+    int i;
+    int j;
+    int k;
+    int m;
+    if (paramView.a != null)
+    {
+      paramView.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+      paramView.a.setOnClickListener(new bemu(this.a, paramInt));
+      i = paramView.a.getPaddingTop();
+      j = paramView.a.getPaddingLeft();
+      k = paramView.a.getPaddingRight();
+      m = paramView.a.getPaddingBottom();
+      if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
+        break label212;
       }
-      removeMessages(0);
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setShowImage(false);
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = false;
+      paramView.a.setBackgroundResource(2130840760);
+    }
+    for (;;)
+    {
+      paramView.a.setPadding(j, i, k, m);
+      return paramViewGroup;
+      label212:
+      if (paramInt == 0) {
+        paramView.a.setBackgroundResource(2130840761);
+      } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
+        paramView.a.setBackgroundResource(2130840759);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bemo
  * JD-Core Version:    0.7.0.1
  */

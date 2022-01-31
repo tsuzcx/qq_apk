@@ -73,19 +73,55 @@
             "$includeComponet": "componet/read_article.geojson"
           },
           {
-            "view_type": "ReadInJoyMiddleBodyView",
-            "view_id": "id_middle_body_content",
+            "view_type": "UIView",
+            "view_id": "id_middle_body_container",
+            "layout_type": "layout_relative",
             "margin_bottom": "10",
+            "default_visible":"YES",
             "height": {
-              "type": "wrap_content"
-            },
-            "width": {
-              "type": "relative",
-              "value": "375"
-            },
-            "attributes": {
-              "setArticleModel:": "-1"
-            }
+                "type": "wrap_content"
+             },
+             "width": {
+                "type": "relative",
+                "value": "375"
+             },
+             "subviews": [
+                {
+                  "view_type": "ReadInJoyMiddleBodyView",
+                  "view_id": "id_middle_body_content",
+                   "height": {
+                        "type": "wrap_content"
+                     },
+                     "width": {
+                         "type": "relative",
+                          "value": "375"
+                     },
+                     "attributes": {
+                        "setArticleModel:": "-1"
+                     }
+                 },
+                 {
+                     "view_id": "id_live_status_container",
+                     "view_type": "UIView",
+                     "height": {
+                         "type": "relative",
+                         "value": "19"
+                     },
+                     "width": {
+                         "type": "wrap_content"
+                     },
+                     "attributes": {
+                       "setAttatchInfo:": "$live_show"
+                     },
+                     "margin_top": "8",
+                     "margin_left": "20",
+                     "subviews": [
+                         {
+                             "$includeComponet": "componet/live_status_cell.geojson"
+                         }
+                     ]
+                 }
+             ]
           },
           {
             "$includeComponet": "componet/capsule.geojson"

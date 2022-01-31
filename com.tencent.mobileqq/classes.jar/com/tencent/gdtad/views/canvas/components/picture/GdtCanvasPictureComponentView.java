@@ -11,12 +11,12 @@ import com.tencent.gdtad.views.canvas.components.pictures.HotArea;
 import com.tencent.gdtad.views.image.GdtGifImageView;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import rrl;
-import ypm;
-import yqe;
-import yqf;
-import yqg;
-import yqo;
+import sed;
+import yzg;
+import yzy;
+import yzz;
+import zaa;
+import zag;
 
 public class GdtCanvasPictureComponentView
   extends GdtCanvasComponentView
@@ -24,13 +24,13 @@ public class GdtCanvasPictureComponentView
   private GdtCanvasPictureComponentData jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentData;
   private GdtGifImageView jdField_a_of_type_ComTencentGdtadViewsImageGdtGifImageView;
   
-  public GdtCanvasPictureComponentView(Context paramContext, WeakReference<yqo> paramWeakReference, GdtCanvasPictureComponentData paramGdtCanvasPictureComponentData)
+  public GdtCanvasPictureComponentView(Context paramContext, WeakReference<zag> paramWeakReference, GdtCanvasPictureComponentData paramGdtCanvasPictureComponentData)
   {
     super(paramContext, paramWeakReference);
     a(paramContext, paramGdtCanvasPictureComponentData, null);
   }
   
-  public GdtCanvasPictureComponentView(Context paramContext, WeakReference<yqo> paramWeakReference, GdtCanvasPictureComponentData paramGdtCanvasPictureComponentData, View.OnTouchListener paramOnTouchListener)
+  public GdtCanvasPictureComponentView(Context paramContext, WeakReference<zag> paramWeakReference, GdtCanvasPictureComponentData paramGdtCanvasPictureComponentData, View.OnTouchListener paramOnTouchListener)
   {
     super(paramContext, paramWeakReference);
     a(paramContext, paramGdtCanvasPictureComponentData, paramOnTouchListener);
@@ -61,13 +61,13 @@ public class GdtCanvasPictureComponentView
         localButton.setLayoutParams(localLayoutParams);
         localButton.setBackgroundColor(0);
         localRelativeLayout.addView(localButton);
-        localButton.setOnClickListener(new yqf(this, ((HotArea)localArrayList.get(i)).linkType, ((HotArea)localArrayList.get(i)).formModId, ((HotArea)localArrayList.get(i)).url));
+        localButton.setOnClickListener(new yzz(this, ((HotArea)localArrayList.get(i)).linkType, ((HotArea)localArrayList.get(i)).formModId, ((HotArea)localArrayList.get(i)).url));
         i += 1;
       }
     }
     addView(localRelativeLayout);
     localLinearLayout.setPadding(a().paddingLeft, a().paddingTop, a().paddingRight, a().paddingBottom);
-    this.jdField_a_of_type_ComTencentGdtadViewsImageGdtGifImageView = new GdtGifImageView(paramContext, paramGdtCanvasPictureComponentData.url, paramGdtCanvasPictureComponentData.guassianUrl, new WeakReference(new yqe(this)));
+    this.jdField_a_of_type_ComTencentGdtadViewsImageGdtGifImageView = new GdtGifImageView(paramContext, paramGdtCanvasPictureComponentData.url, paramGdtCanvasPictureComponentData.guassianUrl, new WeakReference(new yzy(this)));
     localLinearLayout.addView(this.jdField_a_of_type_ComTencentGdtadViewsImageGdtGifImageView);
     paramContext = this.jdField_a_of_type_ComTencentGdtadViewsImageGdtGifImageView.getLayoutParams();
     paramContext.width = a().width;
@@ -78,10 +78,10 @@ public class GdtCanvasPictureComponentView
     }
     for (;;)
     {
-      rrl.a();
-      this.jdField_a_of_type_Ypm = new ypm(new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsImageGdtGifImageView), new WeakReference(this));
+      sed.a();
+      this.jdField_a_of_type_Yzg = new yzg(new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsImageGdtGifImageView), new WeakReference(this));
       return;
-      this.jdField_a_of_type_ComTencentGdtadViewsImageGdtGifImageView.setOnTouchListener(new yqg(new GdtCanvasPictureComponentView.2(this, paramGdtCanvasPictureComponentData)));
+      this.jdField_a_of_type_ComTencentGdtadViewsImageGdtGifImageView.setOnTouchListener(new zaa(new GdtCanvasPictureComponentView.2(this, paramGdtCanvasPictureComponentData)));
     }
   }
   
@@ -90,15 +90,15 @@ public class GdtCanvasPictureComponentView
     return this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentData;
   }
   
-  public ypm a()
+  public yzg a()
   {
-    return this.jdField_a_of_type_Ypm;
+    return this.jdField_a_of_type_Yzg;
   }
   
   public void d()
   {
     super.d();
-    rrl.b();
+    sed.b();
   }
 }
 

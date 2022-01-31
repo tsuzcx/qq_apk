@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.report;
 
-import bdsx;
+import beyu;
 
 public final class SDKMiniProgramLpReportDC04239$5
   implements Runnable
 {
   public void run()
   {
-    bdsx.a(this.a, this.b, this.c, this.d, this.e, this.f);
+    beyu.a(this.a, this.b, this.c, this.d, this.e, this.f);
   }
 }
 

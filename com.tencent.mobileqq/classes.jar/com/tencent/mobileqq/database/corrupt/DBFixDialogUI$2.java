@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.database.corrupt;
 
-import amua;
 import android.app.Activity;
 import android.app.Dialog;
+import anki;
 
 public class DBFixDialogUI$2
   implements Runnable
 {
-  public DBFixDialogUI$2(amua paramamua, Dialog paramDialog) {}
+  public DBFixDialogUI$2(anki paramanki, Dialog paramDialog) {}
   
   public void run()
   {

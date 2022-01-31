@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import akjn;
-import akjo;
+import akxz;
+import akya;
 import android.graphics.SurfaceTexture;
 import android.opengl.Matrix;
 import com.tencent.qphone.base.util.QLog;
@@ -11,28 +11,28 @@ import com.tencent.ttpic.openapi.filter.TextureRender;
 public class ARPromotionMediaPlayerWrapper$1
   implements Runnable
 {
-  public ARPromotionMediaPlayerWrapper$1(akjn paramakjn) {}
+  public ARPromotionMediaPlayerWrapper$1(akxz paramakxz) {}
   
   public void run()
   {
     try
     {
-      if (akjn.a(this.this$0)) {
+      if (akxz.a(this.this$0)) {
         return;
       }
-      if (akjn.a(this.this$0) != null)
+      if (akxz.a(this.this$0) != null)
       {
-        akjn.a(this.this$0).updateTexImage();
-        akjn.a(this.this$0).getTransformMatrix(akjn.a(this.this$0));
-        akjn.a(this.this$0);
-        akjn.a(this.this$0);
-        Matrix.setIdentityM(akjn.b(this.this$0), 0);
-        akjn.a(this.this$0).bind();
-        akjn.a(this.this$0).drawTexture(36197, akjn.a(this.this$0), akjn.a(this.this$0), akjn.b(this.this$0));
-        akjn.a(this.this$0).unbind();
-        if ((akjn.b(this.this$0) == 2L) && (akjn.a(this.this$0) != null))
+        akxz.a(this.this$0).updateTexImage();
+        akxz.a(this.this$0).getTransformMatrix(akxz.a(this.this$0));
+        akxz.a(this.this$0);
+        akxz.a(this.this$0);
+        Matrix.setIdentityM(akxz.b(this.this$0), 0);
+        akxz.a(this.this$0).bind();
+        akxz.a(this.this$0).drawTexture(36197, akxz.a(this.this$0), akxz.a(this.this$0), akxz.b(this.this$0));
+        akxz.a(this.this$0).unbind();
+        if ((akxz.b(this.this$0) == 2L) && (akxz.a(this.this$0) != null))
         {
-          akjn.a(this.this$0).a(akjn.b(this.this$0), 0, akjn.a(this.this$0).getTexId());
+          akxz.a(this.this$0).a(akxz.b(this.this$0), 0, akxz.a(this.this$0).getTexId());
           QLog.d("ARWorldCupMediaPlayerWrapper", 2, "ARWorldCupMediaPlayerWrapper.drawFrame hardWare");
           return;
         }

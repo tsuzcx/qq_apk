@@ -1,38 +1,48 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.2;
-import java.util.Iterator;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.lang.ref.WeakReference;
 
-public class aymn
-  extends ajtk
+public final class aymn
+  extends BroadcastReceiver
 {
-  public aymn(TroopAioKeywordTipManager.2 param2) {}
-  
-  protected void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    SparseArray localSparseArray;
-    if (paramBoolean)
-    {
-      localSparseArray = this.a.this$0.b;
-      if (paramList != null) {
-        try
-        {
-          paramList = paramList.iterator();
-          while (paramList.hasNext())
-          {
-            TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = (TroopAioKeywordTipInfo)paramList.next();
-            this.a.this$0.b.put(localTroopAioKeywordTipInfo.ruleId, localTroopAioKeywordTipInfo);
-          }
-        }
-        finally {}
-      }
+    String str2 = paramIntent.getStringExtra("themePath");
+    String str3 = paramIntent.getStringExtra("themeId");
+    String str1 = paramIntent.getStringExtra("bg3D");
+    String str4 = paramIntent.getStringExtra("aio");
+    paramIntent = paramIntent.getStringExtra("playerSkin");
+    if ((!TextUtils.isEmpty(str2)) || (!TextUtils.isEmpty(str3))) {
+      ThemeUtil.validLocalTheme(paramContext, str2, str3);
     }
+    do
+    {
+      do
+      {
+        return;
+        if (TextUtils.isEmpty(str1)) {
+          break;
+        }
+        paramIntent = (QQAppInterface)ThemeUtil.weakApp.get();
+      } while (paramIntent == null);
+      ThemeUtil.access$000(paramContext, paramIntent, paramIntent.getCurrentAccountUin(), str1);
+      return;
+      if (!TextUtils.isEmpty(str4))
+      {
+        ThemeUtil.previewAIOTheme(paramContext, str4);
+        return;
+      }
+    } while (TextUtils.isEmpty(paramIntent));
+    ThemeUtil.previewPlayerSkin(paramContext, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aymn
  * JD-Core Version:    0.7.0.1
  */

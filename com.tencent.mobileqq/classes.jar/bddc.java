@@ -1,38 +1,53 @@
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.open.agent.AuthorityAccountView;
+import com.tencent.open.agent.CardContainer;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
 
-public abstract class bddc
+public class bddc
+  extends Handler
 {
-  private static MiniAppInfo a;
-  public static List<String> a;
-  
-  static
+  public bddc(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
   {
-    jdField_a_of_type_JavaUtilList = new ArrayList(Arrays.asList(new String[] { "requestPayment", "updateHTMLWebView", "insertHTMLWebView", "removeHTMLWebView", "insertMap", "wnsRequest", "getQua", "openUrl", "notifyNative", "launchApplication", "getUserInfoExtra", "updateShareMenu", "showShareMenu", "hideShareMenu", "getShareInfo", "shareAppMessage" }));
+    super(paramLooper);
   }
   
-  public static MiniAppInfo a()
+  public void handleMessage(Message paramMessage)
   {
-    if (jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null) {}
-    try
+    switch (paramMessage.what)
     {
-      if (jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null)
-      {
-        MiniAppInfo localMiniAppInfo = new MiniAppInfo();
-        localMiniAppInfo.appId = "0000000000";
-        localMiniAppInfo.launchParam.a = "0000000000";
-        jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = localMiniAppInfo;
-      }
-      return jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
     }
-    finally {}
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            paramMessage = (Bitmap)paramMessage.obj;
+          } while (paramMessage == null);
+          this.a.a.a("", "", paramMessage, true);
+          return;
+          paramMessage = (Bitmap)paramMessage.obj;
+        } while (paramMessage == null);
+        this.a.a.a("", paramMessage);
+        return;
+        paramMessage = (String)paramMessage.obj;
+      } while (TextUtils.isEmpty(paramMessage));
+      this.a.a.setAppType(paramMessage);
+      return;
+    } while (this.a.a.a == null);
+    this.a.a.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bddc
  * JD-Core Version:    0.7.0.1
  */

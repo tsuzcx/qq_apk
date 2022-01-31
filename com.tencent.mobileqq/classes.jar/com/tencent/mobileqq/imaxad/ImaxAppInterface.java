@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.imaxad;
 
-import atmq;
+import auko;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -29,7 +29,7 @@ public class ImaxAppInterface
     return getAccount();
   }
   
-  public atmq getEntityManagerFactory(String paramString)
+  public auko getEntityManagerFactory(String paramString)
   {
     return null;
   }

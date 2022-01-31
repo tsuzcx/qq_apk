@@ -1,42 +1,23 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
-public class azzf
+class azzf
+  implements DialogInterface.OnClickListener
 {
-  public static String a(Context paramContext, String paramString)
+  azzf(azze paramazze) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramContext != null) {
-      return paramContext.getSharedPreferences("c_profile_sharepreference", 0).getString(paramString, "");
+    this.a.a.a(this.a.a.a);
+    if (ReciteRecordLayout.a(this.a.a) != null) {
+      ReciteRecordLayout.a(this.a.a).f();
     }
-    return "";
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    if (paramContext != null)
-    {
-      paramContext = paramContext.getSharedPreferences("c_profile_sharepreference", 0).edit();
-      paramContext.remove(paramString);
-      paramContext.commit();
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    b(paramContext, paramString1, paramString2);
-  }
-  
-  private static void b(Context paramContext, String paramString1, String paramString2)
-  {
-    paramContext = paramContext.getSharedPreferences("c_profile_sharepreference", 0).edit();
-    paramContext.putString(paramString1, paramString2);
-    paramContext.commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azzf
  * JD-Core Version:    0.7.0.1
  */

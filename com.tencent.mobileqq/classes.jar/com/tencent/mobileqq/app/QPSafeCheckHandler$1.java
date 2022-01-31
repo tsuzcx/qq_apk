@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app;
 
-import ajpk;
-import ajrq;
+import akdu;
+import akga;
 
 public class QPSafeCheckHandler$1
   implements Runnable
 {
   public void run()
   {
-    ajrq.a();
+    akga.a();
     this.this$0.a(this.a);
   }
 }

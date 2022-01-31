@@ -1,115 +1,132 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.process.ui.NativeUIManager.1;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.Align;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.text.TextPaint;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.util.LRULinkedHashMap;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
 import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import org.json.JSONObject;
 
 public class airc
+  implements aira
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  public HashMap<String, airb> a;
+  static LRULinkedHashMap<String, Bitmap> jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(10);
+  Bundle jdField_a_of_type_AndroidOsBundle;
+  WeakReference<MessengerService> jdField_a_of_type_JavaLangRefWeakReference;
+  JSONObject jdField_a_of_type_OrgJsonJSONObject;
   
-  public airc(Context paramContext, int paramInt)
+  public airc(JSONObject paramJSONObject, Bundle paramBundle, WeakReference<MessengerService> paramWeakReference)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
   }
   
-  public airb a(String paramString)
+  public Object a()
   {
-    aiqu localaiqu = null;
-    Object localObject = null;
-    if ("Dialog".equals(paramString))
-    {
-      localaiqu = new aiqu();
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-        break label38;
-      }
-    }
-    label38:
-    for (paramString = localObject;; paramString = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get())
-    {
-      localaiqu.a(paramString);
-      return localaiqu;
-    }
+    return new Object();
   }
   
-  public void a()
+  public void invalidateSelf()
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    Object localObject4 = this.jdField_a_of_type_OrgJsonJSONObject.optString("text");
+    int j = this.jdField_a_of_type_OrgJsonJSONObject.optInt("width");
+    int k = this.jdField_a_of_type_OrgJsonJSONObject.optInt("height");
+    int m = this.jdField_a_of_type_OrgJsonJSONObject.optInt("fontId");
+    Object localObject1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("fontColor");
+    int n = this.jdField_a_of_type_OrgJsonJSONObject.optInt("fontType");
+    TextPaint localTextPaint = new TextPaint();
+    Rect localRect = new Rect(3, 5, j - 3, k - 3);
+    float f = bbby.a(localTextPaint, localRect, (String)localObject4);
+    try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-      while (localIterator.hasNext())
+      i = Color.parseColor((String)localObject1);
+      if (n == 1)
       {
-        Object localObject = (String)localIterator.next();
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          localObject = (airb)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-          if (localObject != null) {
-            ((airb)localObject).a();
-          }
+        localObject3 = aiqz.a().a(this, (String)localObject4, m, n, f, i, j, k, localTextPaint);
+        if (localObject3 != null) {
+          localObject1 = new Bundle();
         }
       }
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
     }
-  }
-  
-  public void a(airb paramairb)
-  {
-    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (paramairb != null)) {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramairb.a());
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    paramString1 = aing.a(this.jdField_a_of_type_Int);
-    if (paramString1 != null)
+    catch (Exception localException1)
     {
-      paramString1 = paramString1.a();
-      if (paramString1 != null) {
-        paramString1.runRenderTask(new NativeUIManager.1(this, paramString1, paramString2, paramString3));
-      }
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    airb localairb;
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      localairb = null;
-      if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-        localairb = (airb)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
-      }
-      if (localairb == null) {
-        break label45;
-      }
-      localairb.a(paramString2, paramString4, this);
-    }
-    label45:
-    do
-    {
-      do
+      try
       {
-        return;
-      } while ("destroy".equals(paramString3));
-      localairb = a(paramString1);
-    } while (localairb == null);
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+        do
+        {
+          int i;
+          for (;;)
+          {
+            localObject4 = new ByteArrayOutputStream();
+            ((Bitmap)localObject3).compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject4);
+            localObject3 = bbca.encodeToString(((ByteArrayOutputStream)localObject4).toByteArray(), 2);
+            ((ByteArrayOutputStream)localObject4).close();
+            ((Bundle)localObject1).putBoolean("updateResult", true);
+            ((Bundle)localObject1).putString("file", "data:image/png;base64," + (String)localObject3);
+            this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject1);
+            if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+              ((MessengerService)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_AndroidOsBundle);
+            }
+            return;
+            localException1 = localException1;
+            i = 0;
+          }
+          localObject2 = aiqz.a().a(this, m, n);
+          if (localObject2 != null) {
+            localTextPaint.setTypeface((Typeface)localObject2);
+          }
+          localTextPaint.setColor(i);
+          localTextPaint.setTextAlign(Paint.Align.CENTER);
+          localTextPaint.setTextSize(f);
+          localObject2 = localTextPaint.getFontMetrics();
+          f = (localRect.bottom + localRect.top - ((Paint.FontMetrics)localObject2).bottom - ((Paint.FontMetrics)localObject2).top) / 2.0F;
+          String str = j + "_" + k;
+          localObject3 = (Bitmap)jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(str);
+          localObject2 = localObject3;
+          if (localObject3 == null)
+          {
+            localObject3 = Bitmap.createBitmap(j, k, Bitmap.Config.ARGB_8888);
+            localObject2 = localObject3;
+            if (localObject3 != null)
+            {
+              jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(str, localObject3);
+              localObject2 = localObject3;
+            }
+          }
+          localObject3 = localObject2;
+        } while (localObject2 == null);
+        Object localObject3 = new Canvas((Bitmap)localObject2);
+        ((Canvas)localObject3).drawColor(0, PorterDuff.Mode.CLEAR);
+        ((Canvas)localObject3).drawText((String)localObject4, localRect.centerX(), f, localTextPaint);
+        localObject3 = localObject2;
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          Object localObject2;
+          ((Bundle)localObject2).putBoolean("updateResult", false);
+          ((Bundle)localObject2).putString("errMsg", localException2.getMessage());
+        }
+      }
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localairb);
-    a(paramString1, paramString2, paramString3, paramString4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     airc
  * JD-Core Version:    0.7.0.1
  */

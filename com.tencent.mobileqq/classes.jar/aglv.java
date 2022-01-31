@@ -1,20 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
-
 public class aglv
-  implements DialogInterface.OnClickListener
 {
-  public aglv(TransactionActivity paramTransactionActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public static final String[] a = { "id", "name", "path", "folderpath", "filesize", "modifieddate", "duration", "mimetype", "md5" };
+  public static final String[] b = { "id", "folderpath", "modifieddate" };
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aglv
  * JD-Core Version:    0.7.0.1
  */

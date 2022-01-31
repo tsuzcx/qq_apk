@@ -1,72 +1,27 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.PopupWindow;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.widget.RangeButtonView;
-import java.util.ArrayList;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class qnq
+class qnq
+  extends AnimatorListenerAdapter
 {
-  private int jdField_a_of_type_Int;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private bemt jdField_a_of_type_Bemt;
-  private List<bemx> jdField_a_of_type_JavaUtilList;
-  private List<String> b;
+  qnq(qno paramqno) {}
   
-  public qnq(LayoutInflater paramLayoutInflater)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
-  }
-  
-  public qno a()
-  {
-    qno localqno = new qno(null);
-    Object localObject = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131493482, null);
-    qno.a(localqno, new PopupWindow((View)localObject, -1, -2));
-    qno.a(localqno).setBackgroundDrawable(new BitmapDrawable());
-    qno.a(localqno).setOutsideTouchable(true);
-    localObject = (RangeButtonView)((View)localObject).findViewById(2131300948);
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    paramAnimator = new Bundle();
+    paramAnimator.putBoolean("key_is_from_floating_window", true);
+    paramAnimator.putParcelable("VIDEO_OBJ", qno.a(this.a).a);
+    if (qno.a(this.a) != null) {}
+    for (long l = qno.a(this.a).a() + 300L;; l = 0L)
     {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.jdField_a_of_type_JavaUtilList.add(new bemx(ajjy.a(2131638913), TypedValue.applyDimension(1, 15.0F, ajia.a)));
-      this.jdField_a_of_type_JavaUtilList.add(new bemx(ajjy.a(2131638910), TypedValue.applyDimension(1, 16.0F, ajia.a)));
-      this.jdField_a_of_type_JavaUtilList.add(new bemx(ajjy.a(2131638911), TypedValue.applyDimension(1, 17.0F, ajia.a)));
-      this.jdField_a_of_type_JavaUtilList.add(new bemx(ajjy.a(2131638912), TypedValue.applyDimension(1, 18.0F, ajia.a)));
-      this.jdField_a_of_type_JavaUtilList.add(new bemx(ajjy.a(2131638914), TypedValue.applyDimension(1, 20.0F, ajia.a)));
+      paramAnimator.putLong("VIDEO_PLAY_POSITION", l);
+      qol.a(BaseActivity.sTopActivity, paramAnimator, false, qno.a(this.a));
+      qno.a(this.a, 1);
+      return;
     }
-    ((RangeButtonView)localObject).setTitleData(this.jdField_a_of_type_JavaUtilList);
-    qno.a(localqno, this.jdField_a_of_type_JavaUtilList);
-    if (this.jdField_a_of_type_Bemt != null) {
-      ((RangeButtonView)localObject).setOnChangerListener(this.jdField_a_of_type_Bemt);
-    }
-    ((RangeButtonView)localObject).setThumbPosition(this.jdField_a_of_type_Int);
-    if ((this.b == null) || (this.b.isEmpty()))
-    {
-      this.b = new ArrayList();
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131625538));
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131625539));
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131625540));
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131625541));
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131625542));
-    }
-    ((RangeButtonView)localObject).setContentDescList(this.b);
-    return localqno;
-  }
-  
-  public qnq a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public qnq a(bemt parambemt)
-  {
-    this.jdField_a_of_type_Bemt = parambemt;
-    return this;
   }
 }
 

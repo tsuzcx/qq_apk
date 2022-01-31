@@ -1,16 +1,13 @@
-import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
 class adks
-  extends acjc
+  extends actr
 {
-  public long a;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  public String a;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView b;
   TextView c;
+  TextView d;
   
   adks(adkq paramadkq) {}
 }

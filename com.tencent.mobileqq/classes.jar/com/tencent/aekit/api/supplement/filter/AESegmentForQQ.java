@@ -10,7 +10,6 @@ public class AESegmentForQQ
 {
   private boolean isSegReady = false;
   private FabbyStrokeFilter mFabbyStrokeFilter = new FabbyStrokeFilter();
-  private boolean mIsApplied = false;
   private float strokeGapInPixel;
   private float strokeWidthInPixel;
   

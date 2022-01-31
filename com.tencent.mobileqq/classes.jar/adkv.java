@@ -1,20 +1,22 @@
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class adkv
-  implements QQPermissionCallback
+  implements bfoq
 {
-  adkv(adkt paramadkt, View paramView, BaseActivity paramBaseActivity) {}
+  adkv(adkt paramadkt, adly paramadly, bfol parambfol) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    babr.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Adkt.d(this.jdField_a_of_type_AndroidViewView);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.cancel();
+      return;
+      aaod.c(this.jdField_a_of_type_Adkt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adkt.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adkt.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Adly.a.uniseq);
+    }
   }
 }
 

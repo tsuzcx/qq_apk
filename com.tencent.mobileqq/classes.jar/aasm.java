@@ -1,66 +1,52 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.TencentDocData;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Comparator;
 
-public class aasm
-  implements avrb
+class aasm
+  implements Comparator<Object>
 {
-  public aasm(ForwardRecentActivity paramForwardRecentActivity) {}
+  aasm(aasl paramaasl) {}
   
-  public void a(View paramView)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    int i = 3000;
-    paramView = (avoj)paramView.getTag(2131313373);
-    if (paramView == null) {
-      return;
+    if ((paramObject1 instanceof FileManagerEntity)) {
+      if ((paramObject2 instanceof FileManagerEntity)) {
+        if (((FileManagerEntity)paramObject1).srvTime <= ((FileManagerEntity)paramObject2).srvTime) {}
+      }
     }
-    String str1 = paramView.b();
-    String str2 = paramView.a().toString();
-    if ((paramView instanceof avmx)) {
-      paramView = ((avmx)paramView).e();
-    }
-    for (;;)
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardEntranceActivity", 2, "onAction, uin = " + str1 + ", displayName = " + str2 + ", troopUin = " + paramView + ", type = " + i);
-      }
-      if ((i != -1) && (ForwardRecentActivity.a(this.a, new ResultRecord(str1, str2, i, paramView, "")))) {
-        ForwardRecentActivity.a(this.a).notifyDataSetChanged();
-      }
-      ForwardRecentActivity.g(this.a);
-      return;
-      if ((paramView instanceof avmv))
+      do
       {
-        paramView = ((avmv)paramView).b();
+        do
+        {
+          return -1;
+          return 1;
+          if (!(paramObject2 instanceof TencentDocData)) {
+            break;
+          }
+        } while (((FileManagerEntity)paramObject1).srvTime > ((TencentDocData)paramObject2).aioTime);
+        return 1;
+        if (!(paramObject1 instanceof TencentDocData)) {
+          break label124;
+        }
+        if (!(paramObject2 instanceof FileManagerEntity)) {
+          break;
+        }
+      } while (((TencentDocData)paramObject1).aioTime > ((FileManagerEntity)paramObject2).srvTime);
+      return 1;
+      if (!(paramObject2 instanceof TencentDocData)) {
+        break;
       }
-      else if ((paramView instanceof avnd))
-      {
-        paramView = ((avnd)paramView).a;
-        i = 1;
-      }
-      else if ((paramView instanceof avni))
-      {
-        paramView = ((avni)paramView).a().troopuin;
-        i = 1;
-      }
-      else if ((paramView instanceof avmy))
-      {
-        i = 0;
-        paramView = "-1";
-      }
-      else
-      {
-        i = -1;
-        paramView = "-1";
-      }
-    }
+    } while (((TencentDocData)paramObject1).aioTime > ((TencentDocData)paramObject2).aioTime);
+    return 1;
+    label124:
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aasm
  * JD-Core Version:    0.7.0.1
  */

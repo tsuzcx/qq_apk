@@ -1,8 +1,8 @@
-class rtq
+public class rtq
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public int a;
+  public String a;
+  public String b;
 }
 
 

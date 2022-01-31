@@ -1,34 +1,27 @@
-public class aqxl
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import mqq.app.AppRuntime;
+
+final class aqxl
+  implements aqxa
 {
-  public static String a(int paramInt)
+  public String a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return " Unknow playState ";
-    case 0: 
-      return " IDLE ";
-    case 1: 
-      return " BUFFERING ";
-    case 2: 
-      return " PLAYING ";
-    case 3: 
-      return " PAUSE ";
-    case 4: 
-      return " STOP ";
-    case 5: 
-      return " ERROR_INTERNAL ";
-    case 7: 
-      return " ERROR_FOCUS ";
-    case 6: 
-      return " NETWORK_INTERRUPT ";
+    return auwo.a;
+  }
+  
+  public void a(int paramInt)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(5L, "font.diycard.android." + paramInt, "HiBoomDownloader");
     }
-    return " COMPLETION ";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqxl
  * JD-Core Version:    0.7.0.1
  */

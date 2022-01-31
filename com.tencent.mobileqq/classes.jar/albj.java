@@ -1,21 +1,23 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.3;
-import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.3.1.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.ARScanAR;
 
-public class albj
-  implements yjn
+public final class albj
+  implements Parcelable.Creator<ARScanAR>
 {
-  public albj(ArkAppNotifyCenter.GdtNotify.3 param3) {}
-  
-  public void onResponse(yjm paramyjm)
+  public ARScanAR a(Parcel paramParcel)
   {
-    ArkAppCenter.a().postToArkThread(new ArkAppNotifyCenter.GdtNotify.3.1.1(this, paramyjm));
+    return new ARScanAR(paramParcel);
+  }
+  
+  public ARScanAR[] a(int paramInt)
+  {
+    return new ARScanAR[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     albj
  * JD-Core Version:    0.7.0.1
  */

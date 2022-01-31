@@ -1,25 +1,28 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aapc
-  implements bbsh
+public final class aapc
+  implements DialogInterface.OnClickListener
 {
-  public aapc(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public aapc(long paramLong, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString, boolean paramBoolean1, aaqe paramaaqe, Bundle paramBundle, boolean paramBoolean2) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
+    boolean bool = false;
+    paramDialogInterface = ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext);
+    if (paramInt == 1)
     {
-    case -2: 
-    case -1: 
-    default: 
-      vvp.a(1, 2131653595);
+      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDialogInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Aaqe, this.jdField_a_of_type_AndroidOsBundle);
       return;
     }
-    vvp.a(2, 2131653612);
+    if (!this.b) {
+      bool = true;
+    }
+    ChatActivityUtils.a(paramDialogInterface, bool, null);
   }
 }
 

@@ -1,25 +1,375 @@
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.util.Pair;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView;
+import com.tencent.biz.pubaccount.readinjoy.view.RingAvatarView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.articlesummary.articlesummary.FriendRecommendInfo;
+import tencent.im.oidb.articlesummary.articlesummary.PackInfo;
+import tencent.im.oidb.articlesummary.articlesummary.SpecialTopicInfo;
+import tencent.im.oidb.articlesummary.articlesummary.SubscribeInfo;
 
-class pyp
-  implements URLDrawable.URLDrawableListener
+public class pyp
 {
-  pyp(pyo parampyo) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public static int a(ArticleInfo paramArticleInfo)
   {
-    if ((pyo.a(this.a) != null) && (pyo.a(this.a).getStatus() == 1) && ((pyo.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    if (paramArticleInfo == null) {}
+    label84:
+    do
     {
-      paramURLDrawable = (RegionDrawable)pyo.a(this.a).getCurrDrawable();
-      pyo.a(this.a, paramURLDrawable.getBitmap());
+      do
+      {
+        do
+        {
+          return 0;
+          if ((paramArticleInfo.mPackInfoObj == null) || (!paramArticleInfo.mPackInfoObj.pack_type.has())) {
+            break label84;
+          }
+          if (paramArticleInfo.mPackInfoObj.pack_type.get() != 2) {
+            break;
+          }
+        } while (!paramArticleInfo.mPackInfoObj.msg_special_topic_info.has());
+        return 1;
+      } while ((paramArticleInfo.mPackInfoObj.pack_type.get() != 3) || (!paramArticleInfo.mPackInfoObj.msg_friend_recommend_info.has()));
+      return 2;
+    } while ((paramArticleInfo.mSubscribeInfoObj == null) || (!paramArticleInfo.mSubscribeInfoObj.uint32_is_subscribed.has()) || (paramArticleInfo.mSubscribeInfoObj.uint32_is_subscribed.get() != 1));
+    return 3;
+  }
+  
+  public static Pair<Integer, Integer> a()
+  {
+    int i = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+    return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 0.562F)));
+  }
+  
+  public static String a(int paramInt)
+  {
+    int i = paramInt / 3600;
+    int j = (paramInt - i * 60) / 60;
+    paramInt %= 60;
+    String str1;
+    String str2;
+    if (j >= 10)
+    {
+      str1 = String.valueOf(j);
+      if (paramInt < 10) {
+        break label104;
+      }
+      str2 = String.valueOf(paramInt);
+      label44:
+      if (i <= 0) {
+        break label146;
+      }
+      if (i < 10) {
+        break label125;
+      }
     }
+    label104:
+    label125:
+    for (String str3 = String.valueOf(i);; str3 = String.format("0%d", new Object[] { Integer.valueOf(i) }))
+    {
+      return String.format("%s:%s:%s", new Object[] { str3, str1, str2 });
+      str1 = String.format("0%d", new Object[] { Integer.valueOf(j) });
+      break;
+      str2 = String.format("0%d", new Object[] { Integer.valueOf(paramInt) });
+      break label44;
+    }
+    label146:
+    return String.format("%s:%s", new Object[] { str1, str2 });
+  }
+  
+  public static void a(Context paramContext, KandianUrlImageView paramKandianUrlImageView)
+  {
+    paramContext = a();
+    int i = ((Integer)paramContext.first).intValue();
+    int j = ((Integer)paramContext.second).intValue();
+    paramContext = paramKandianUrlImageView.getLayoutParams();
+    paramContext.width = i;
+    paramContext.height = j;
+    paramKandianUrlImageView.setLayoutParams(paramContext);
+    paramKandianUrlImageView.setPadding(0, 0, 0, 0);
+    paramKandianUrlImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+  }
+  
+  public static void a(Context paramContext, KandianUrlImageView paramKandianUrlImageView, double paramDouble)
+  {
+    int i = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+    int j = (int)(i / paramDouble);
+    paramContext = new RelativeLayout.LayoutParams(i, j);
+    paramContext.width = i;
+    paramContext.height = j;
+    paramContext.setMargins(0, 0, 0, 0);
+    paramKandianUrlImageView.setLayoutParams(paramContext);
+    paramKandianUrlImageView.setPadding(0, 0, 0, 0);
+    paramKandianUrlImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+  }
+  
+  public static void a(Context paramContext, KandianUrlImageView paramKandianUrlImageView, boolean paramBoolean)
+  {
+    paramContext = b();
+    int i = ((Integer)paramContext.first).intValue();
+    int j = ((Integer)paramContext.second).intValue();
+    ViewGroup.LayoutParams localLayoutParams = paramKandianUrlImageView.getLayoutParams();
+    paramContext = localLayoutParams;
+    if (localLayoutParams == null) {
+      if (!paramBoolean) {
+        break label80;
+      }
+    }
+    label80:
+    for (paramContext = new LinearLayout.LayoutParams(i, j);; paramContext = new RelativeLayout.LayoutParams(i, j))
+    {
+      paramContext.width = i;
+      paramContext.height = j;
+      paramKandianUrlImageView.setLayoutParams(paramContext);
+      paramKandianUrlImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      return;
+    }
+  }
+  
+  public static void a(Context paramContext, pax parampax, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    a(paramContext, parampax, paramLayoutParams, null);
+  }
+  
+  public static void a(Context paramContext, pax parampax, ViewGroup.LayoutParams paramLayoutParams, View paramView)
+  {
+    ArticleInfo localArticleInfo = parampax.a();
+    if (localArticleInfo == null)
+    {
+      QLog.d("UtilsForComponent", 1, "configDividerHeight failed, articleInfo is null.");
+      return;
+    }
+    paramLayoutParams.height = paramContext.getResources().getDimensionPixelSize(2131298546);
+    int i = parampax.a();
+    int j = parampax.b();
+    if (localArticleInfo.mChannelID == 70L)
+    {
+      paramLayoutParams.height = Utils.dp2px(5.0D);
+      return;
+    }
+    if (parampax.e() == 56)
+    {
+      paramLayoutParams.height = Utils.dp2px(5.0D);
+      return;
+    }
+    if ((i == 29) || (i == 30) || (j == 29) || (j == 30))
+    {
+      paramLayoutParams.height = Utils.dp2px(5.0D);
+      return;
+    }
+    if (i == 53)
+    {
+      paramLayoutParams.height = Utils.dp2px(0.5D);
+      return;
+    }
+    if ((localArticleInfo.mChannelID == 0L) && ((i == 6) || (i == 128) || (i == 46))) {
+      if (i == 6) {
+        i = Utils.dp2px(13.0D);
+      }
+    }
+    for (;;)
+    {
+      if ((paramLayoutParams instanceof LinearLayout.LayoutParams))
+      {
+        ((LinearLayout.LayoutParams)paramLayoutParams).topMargin = i;
+        ((LinearLayout.LayoutParams)paramLayoutParams).leftMargin = Utils.dp2px(6.0D);
+        ((LinearLayout.LayoutParams)paramLayoutParams).rightMargin = Utils.dp2px(6.0D);
+      }
+      paramLayoutParams.height = Utils.dp2px(0.5D);
+      paramView.setBackgroundColor(Color.parseColor("#e5e5e5"));
+      return;
+      if (i == 46)
+      {
+        i = Utils.dp2px(8.0D);
+      }
+      else if (i == 128)
+      {
+        i = Utils.dp2px(0.0D);
+        continue;
+        if (olr.a(i, j))
+        {
+          paramLayoutParams.height = Utils.dp2px(5.0D);
+          return;
+        }
+        paramLayoutParams.height = Utils.dp2px(5.0D);
+      }
+      else
+      {
+        i = 0;
+      }
+    }
+  }
+  
+  public static void a(pax parampax, RingAvatarView paramRingAvatarView, ImageView paramImageView)
+  {
+    if ((paramRingAvatarView == null) || (paramImageView == null) || (parampax == null)) {}
+    do
+    {
+      return;
+      parampax = parampax.a();
+    } while ((parampax == null) || (parampax.mSocialFeedInfo == null) || (parampax.mSocialFeedInfo.a == null));
+    if (parampax.mSocialFeedInfo.a.a())
+    {
+      paramRingAvatarView.a();
+      paramImageView.setVisibility(0);
+      return;
+    }
+    paramRingAvatarView.b();
+    paramImageView.setVisibility(8);
+  }
+  
+  public static void a(qdd paramqdd, ReadInJoyYAFolderTextView paramReadInJoyYAFolderTextView, pvb parampvb, SpannableStringBuilder paramSpannableStringBuilder)
+  {
+    SpannableStringBuilder localSpannableStringBuilder = paramSpannableStringBuilder;
+    if (paramSpannableStringBuilder == null) {
+      localSpannableStringBuilder = new SpannableStringBuilder();
+    }
+    if (onk.a(paramqdd))
+    {
+      List localList = paramqdd.jdField_a_of_type_Qcj.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      Object localObject = new ArrayList();
+      int i = localList.size();
+      paramSpannableStringBuilder = ((SocializeFeedsInfo.BiuCommentInfo)localList.get(i - 1)).jdField_a_of_type_JavaLangString;
+      int j;
+      label130:
+      SocializeFeedsInfo.BiuCommentInfo localBiuCommentInfo;
+      long l;
+      if ((!TextUtils.isEmpty(paramSpannableStringBuilder)) && ((paramSpannableStringBuilder.startsWith(":")) || (paramSpannableStringBuilder.startsWith("："))))
+      {
+        paramqdd = paramSpannableStringBuilder.substring(1);
+        localStringBuilder.append(paramqdd);
+        j = localStringBuilder.length();
+        i -= 2;
+        if (i < 0) {
+          break label329;
+        }
+        localBiuCommentInfo = (SocializeFeedsInfo.BiuCommentInfo)localList.get(i);
+        l = localBiuCommentInfo.jdField_a_of_type_JavaLangLong.longValue();
+        paramqdd = bbcl.b((QQAppInterface)onk.a(), String.valueOf(l), true);
+        paramSpannableStringBuilder = "@" + paramqdd;
+        paramqdd = paramSpannableStringBuilder;
+        if (localBiuCommentInfo.c == 1) {
+          paramqdd = paramSpannableStringBuilder + " ";
+        }
+        if (localBiuCommentInfo.jdField_a_of_type_JavaLangString != null) {
+          break label320;
+        }
+      }
+      label320:
+      for (paramSpannableStringBuilder = "";; paramSpannableStringBuilder = localBiuCommentInfo.jdField_a_of_type_JavaLangString)
+      {
+        localStringBuilder.append(paramqdd).append(paramSpannableStringBuilder);
+        paramSpannableStringBuilder = new pxd();
+        paramSpannableStringBuilder.jdField_a_of_type_Int = j;
+        paramSpannableStringBuilder.b = (paramqdd.length() + j);
+        paramSpannableStringBuilder.jdField_a_of_type_Long = l;
+        ((List)localObject).add(paramSpannableStringBuilder);
+        j = localStringBuilder.length();
+        i -= 1;
+        break label130;
+        paramqdd = paramSpannableStringBuilder;
+        if (paramSpannableStringBuilder != null) {
+          break;
+        }
+        paramqdd = "";
+        break;
+      }
+      label329:
+      paramqdd = new SpannableStringBuilder(new ayki(localStringBuilder, 7, 16));
+      paramSpannableStringBuilder = ((List)localObject).iterator();
+      while (paramSpannableStringBuilder.hasNext())
+      {
+        localObject = (pxd)paramSpannableStringBuilder.next();
+        paramqdd.setSpan(new pvd(((pxd)localObject).jdField_a_of_type_Long, -3355444, parampvb), ((pxd)localObject).jdField_a_of_type_Int, ((pxd)localObject).b, 17);
+      }
+      localSpannableStringBuilder.append(paramqdd);
+    }
+    for (;;)
+    {
+      paramReadInJoyYAFolderTextView.setText(localSpannableStringBuilder);
+      return;
+      if (!TextUtils.isEmpty(paramqdd.jdField_a_of_type_JavaLangString)) {
+        try
+        {
+          localSpannableStringBuilder.append(new ayki(axas.b(paramqdd.jdField_a_of_type_JavaLangString), 7, 16));
+        }
+        catch (Exception paramqdd)
+        {
+          QLog.d("UtilsForComponent", 1, "parse bytes_comments failed ", paramqdd);
+        }
+      }
+    }
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 5) || (paramInt == 7);
+  }
+  
+  public static boolean a(ArticleInfo paramArticleInfo)
+  {
+    boolean bool2 = true;
+    if (paramArticleInfo == null) {
+      return false;
+    }
+    if (paramArticleInfo.mFeedType == 1)
+    {
+      bool1 = bool2;
+      if (!rap.i(paramArticleInfo)) {
+        if (!rap.k(paramArticleInfo)) {
+          break label36;
+        }
+      }
+    }
+    label36:
+    for (boolean bool1 = bool2;; bool1 = false) {
+      return bool1;
+    }
+  }
+  
+  public static Pair<Integer, Integer> b()
+  {
+    Resources localResources = BaseApplicationImpl.getApplication().getResources();
+    return new Pair(Integer.valueOf((localResources.getDisplayMetrics().widthPixels - actn.a(3.0F, localResources)) / 3), Integer.valueOf(localResources.getDimensionPixelSize(2131298552)));
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == 10) || (paramInt == 11) || (paramInt == 12) || (paramInt == 27) || (paramInt == 28) || (paramInt == 33) || (paramInt == 35) || (paramInt == 43) || (paramInt == 44) || (paramInt == 45) || (paramInt == 49) || (paramInt == 62) || (paramInt == 63) || (paramInt == 94) || (paramInt == 95) || (paramInt == 112) || (paramInt == 113) || (paramInt == 114);
+  }
+  
+  public static boolean b(ArticleInfo paramArticleInfo)
+  {
+    return (rap.a(paramArticleInfo) == 23) || (rap.b(paramArticleInfo) == 56);
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    return (paramInt == 22) || (paramInt == 21) || (paramInt == 23) || (paramInt == 107) || (paramInt == 108) || (paramInt == 54) || (paramInt == 55) || (paramInt == 56);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import ury;
+import veu;
 
 class EditVideoGuide$GotoLocationPageDelayRunnable
   implements Runnable
@@ -9,9 +9,9 @@ class EditVideoGuide$GotoLocationPageDelayRunnable
   
   public void run()
   {
-    ury localury = (ury)this.this$0.a(ury.class);
-    if (localury != null) {
-      localury.b();
+    veu localveu = (veu)this.this$0.a(veu.class);
+    if (localveu != null) {
+      localveu.b();
     }
   }
 }

@@ -1,26 +1,12 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
+import android.support.v7.widget.RecyclerView.Adapter;
 
-final class wee
-  implements View.OnSystemUiVisibilityChangeListener
+public abstract interface wee
 {
-  wee(Window paramWindow) {}
-  
-  public void onSystemUiVisibilityChange(int paramInt)
-  {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (paramInt = 5894;; paramInt = 1799)
-    {
-      this.a.getDecorView().setSystemUiVisibility(paramInt);
-      return;
-    }
-  }
+  public abstract void a(RecyclerView.Adapter paramAdapter);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wee
  * JD-Core Version:    0.7.0.1
  */

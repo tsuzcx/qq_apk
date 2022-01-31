@@ -1,134 +1,124 @@
-import android.content.Context;
+import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.gallery.model.video.AIOFileVideoData;
+import com.tencent.mobileqq.gallery.presenter.AIOGalleryBasePresenter;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
+import com.tencent.mobileqq.startup.step.CheckPermission;
+import java.io.File;
+import mqq.os.MqqHandler;
 
-public class aqpp
-  implements aqkh, Manager
+class aqpp
+  implements bcur
 {
-  QQAppInterface a;
+  aqpp(aqpn paramaqpn, AIOFileVideoData paramAIOFileVideoData) {}
   
-  public aqpp(QQAppInterface paramQQAppInterface)
+  public void a(bbje parambbje, bcuq parambcuq)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public static Bundle a(IVPluginInfo paramIVPluginInfo, aqkd paramaqkd)
-  {
-    int m = 0;
-    Bundle localBundle = new Bundle();
+    if (parambbje == null) {
+      return;
+    }
+    this.jdField_a_of_type_Aqpn.jdField_a_of_type_Bcuq.b();
+    int i;
+    switch (parambbje.c)
+    {
+    case 55: 
+    case 56: 
+    case 60: 
+    case 61: 
+    case 62: 
+    case 63: 
+    case 65: 
+    case 66: 
+    default: 
+      i = -1;
+    }
     for (;;)
     {
-      try
+      axqw.b(null, "dc00898", "", "", "0X8009EFA", "0X8009EFA", i, 0, "", "", "", "");
+      return;
+      int j = 1;
+      i = j;
+      if (this.jdField_a_of_type_Aqpn.jdField_a_of_type_Aqnk.e())
       {
-        localObject1 = ((BaseApplicationImpl)MobileQQ.getContext()).waitAppRuntime(null);
-        str2 = ((AppRuntime)localObject1).getAccount();
-        localObject2 = (ajjj)((AppRuntime)localObject1).getManager(51);
-        localObject3 = ((ajjj)localObject2).e(str2);
-        if (localObject3 == null) {
-          break label470;
+        parambbje = this.jdField_a_of_type_Aqpn.jdField_a_of_type_Aqnk.a(this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.jdField_a_of_type_Int, 0);
+        if (this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.jdField_b_of_type_Int == 1) {}
+        for (boolean bool = true;; bool = false)
+        {
+          aqnu.a(this.jdField_a_of_type_Aqpn.jdField_a_of_type_AndroidAppActivity, parambbje, bool);
+          i = j;
+          break;
         }
-        localObject1 = ((Friends)localObject3).name;
-        j = ((Friends)localObject3).gender;
-        i = ((Friends)localObject3).age;
-        localObject3 = ((ajjj)localObject2).b(str2);
-        if (localObject3 == null) {
-          break label452;
+        if (!this.jdField_a_of_type_Aqpn.jdField_a_of_type_ComTencentMobileqqGalleryPresenterAIOGalleryBasePresenter.e()) {
+          break;
         }
-        k = (int)((Card)localObject3).lBirthday;
-        localObject2 = ((Card)localObject3).strCountry;
-        str1 = ((Card)localObject3).strProvince;
-        localObject3 = ((Card)localObject3).strCity;
-      }
-      catch (Exception paramIVPluginInfo)
-      {
-        String str2;
-        paramIVPluginInfo.printStackTrace();
-        return localBundle;
-      }
-      localBundle.putString("nickname", (String)localObject1);
-      localBundle.putLong("roomid", paramIVPluginInfo.a);
-      localBundle.putInt("authtype", 1);
-      localBundle.putString("authid", paramaqkd.a().b);
-      localBundle.putInt("gender", j);
-      localBundle.putInt("vastype", 2);
-      localBundle.putLong("hostid", Long.parseLong(str2));
-      localBundle.putString("authkey", paramaqkd.a().a);
-      localBundle.putString("appid", paramIVPluginInfo.b);
-      localBundle.putString("vasname", paramIVPluginInfo.g);
-      localBundle.putString("userdata", paramIVPluginInfo.d);
-      localBundle.putInt("fromid", Integer.parseInt(paramIVPluginInfo.e));
-      localBundle.putInt("age", i);
-      localBundle.putInt("birthyear", n);
-      localBundle.putInt("birthmonth", m);
-      localBundle.putInt("birthday", k);
-      localBundle.putBoolean("loghost", true);
-      localBundle.putBoolean("reporthost", true);
-      localBundle.putString("backType", paramIVPluginInfo.h);
-      localBundle.putInt("isGroupCode", paramIVPluginInfo.c);
-      localBundle.putString("openType", paramIVPluginInfo.i);
-      localBundle.putString("extra", paramIVPluginInfo.j);
-      localBundle.putString("payToken", paramaqkd.a().c);
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        localBundle.putString("addrCountry", (String)localObject2);
-      }
-      if (!TextUtils.isEmpty(str1)) {
-        localBundle.putString("addrProv", str1);
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-        localBundle.putString("addrCity", (String)localObject3);
-      }
-      return localBundle;
-      int n = k >>> 16;
-      m = (0xFF00 & k) >>> 8;
-      k &= 0xFF;
-      continue;
-      label452:
-      Object localObject2 = "";
-      int k = 0;
-      String str1 = "";
-      Object localObject3 = "";
-      break label481;
-      label470:
-      int i = 0;
-      int j = 0;
-      Object localObject1 = "";
-      continue;
-      label481:
-      if (k == 0)
-      {
-        n = 1995;
-        k = 0;
+        this.jdField_a_of_type_Aqpn.jdField_a_of_type_ComTencentMobileqqGalleryPresenterAIOGalleryBasePresenter.b(this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.jdField_a_of_type_Long);
+        axqw.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
+        bcpw.a(this.jdField_a_of_type_Aqpn.jdField_a_of_type_AndroidAppActivity, 2, this.jdField_a_of_type_Aqpn.jdField_a_of_type_AndroidAppActivity.getString(2131692755), 0).a();
+        i = -1;
+        continue;
+        j = 5;
+        i = j;
+        if (this.jdField_a_of_type_Aqpn.jdField_a_of_type_Aqnk.e())
+        {
+          this.jdField_a_of_type_Aqpn.jdField_a_of_type_Aqnk.a(this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.jdField_a_of_type_Long);
+          bcpw.a(this.jdField_a_of_type_Aqpn.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Aqpn.jdField_a_of_type_AndroidAppActivity.getString(2131692829), 0).a();
+          i = j;
+          continue;
+          if (!CheckPermission.isHasStoragePermission(this.jdField_a_of_type_Aqpn.jdField_a_of_type_AndroidAppActivity))
+          {
+            CheckPermission.requestStorePermission(this.jdField_a_of_type_Aqpn.jdField_a_of_type_AndroidAppActivity, null);
+            return;
+          }
+          i = 2;
+          if (new aqmp().a(this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData))
+          {
+            parambbje = new File(this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.c);
+            parambcuq = apue.a(this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.c);
+            ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(parambbje.getAbsolutePath(), this.jdField_a_of_type_Aqpn.jdField_a_of_type_Aqnk.a, parambcuq, false));
+          }
+          else
+          {
+            parambbje = new Bundle();
+            float f = 0.0F;
+            if (agqz.class.isInstance(this.jdField_a_of_type_Aqpn.jdField_a_of_type_Agqx)) {
+              f = ((agqz)this.jdField_a_of_type_Aqpn.jdField_a_of_type_Agqx).a(this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.jdField_a_of_type_Long);
+            }
+            parambbje.putFloat("progress", f);
+            this.jdField_a_of_type_Aqpn.jdField_a_of_type_Agqx.h();
+            this.jdField_a_of_type_Aqpn.jdField_a_of_type_Aqnk.a(this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.jdField_a_of_type_Long, 13, parambbje);
+            this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.n = true;
+            this.jdField_a_of_type_Aqpn.a(this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.jdField_a_of_type_Int);
+            this.jdField_a_of_type_Aqpn.j();
+            continue;
+            j = 3;
+            i = j;
+            if (this.jdField_a_of_type_Aqpn.jdField_a_of_type_Aqnk.e())
+            {
+              this.jdField_a_of_type_Aqpn.jdField_a_of_type_Aqnk.c(this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.jdField_a_of_type_Long);
+              i = j;
+              continue;
+              parambcuq = this.jdField_a_of_type_Aqpn.jdField_a_of_type_Aqmm.a();
+              parambbje = parambcuq;
+              if (TextUtils.isEmpty(parambcuq)) {
+                parambbje = this.jdField_a_of_type_Aqpn.jdField_a_of_type_Aqmm.c();
+              }
+              aqnv.a(this.jdField_a_of_type_Aqpn.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Aqpn.jdField_a_of_type_Aqmm.a(), this.jdField_a_of_type_Aqpn.jdField_a_of_type_Aqmm.c(), parambbje, this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.d, this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.jdField_b_of_type_Int, false);
+              i = 6;
+              continue;
+              i = 11;
+              apue.b(this.jdField_a_of_type_Aqpn.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.c);
+            }
+          }
+        }
       }
     }
-  }
-  
-  public void a() {}
-  
-  public void a(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt) {}
-  
-  public void onDestroy()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("XProxy|ODPROXY", 2, "onDestroy");
-    }
-    a();
-    this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqpp
  * JD-Core Version:    0.7.0.1
  */

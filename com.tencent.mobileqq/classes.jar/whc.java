@@ -1,23 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity.6.1;
+import java.util.ArrayList;
 
 public class whc
-  implements View.OnClickListener
+  implements wij
 {
-  public whc(ServiceFolderFollowPBHeadView paramServiceFolderFollowPBHeadView) {}
+  public whc(QRLoginMgrActivity paramQRLoginMgrActivity) {}
   
-  public void onClick(View paramView)
+  public void a(ArrayList<wig> paramArrayList)
   {
-    vvy.a("https://h5.qzone.qq.com/subscription/messagelist?_proxy=1&_wv=1&_wwv=4");
-    ServiceFolderFollowPBHeadView.a(this.a).setVisibility(8);
-    awqx.b(null, "dc00898", "", "", "auth_page", "msg_exp", 0, 0, "", "", "", "");
+    this.a.runOnUiThread(new QRLoginMgrActivity.6.1(this, paramArrayList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     whc
  * JD-Core Version:    0.7.0.1
  */

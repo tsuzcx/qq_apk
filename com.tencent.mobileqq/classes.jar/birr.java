@@ -1,39 +1,19 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import android.support.annotation.Nullable;
+import java.util.List;
 
-public class birr
-  extends bird
+class birr
+  implements bjob<List<biqs>>
 {
-  public int c;
+  birr(birn parambirn) {}
   
-  public birr(int paramInt1, String paramString, int paramInt2, int paramInt3)
+  public void a(@Nullable List<biqs> paramList)
   {
-    super(paramInt1, paramString, paramInt2);
-    this.c = paramInt3;
-  }
-  
-  @NonNull
-  public bire a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new birs(this, paramContext, paramViewGroup);
-  }
-  
-  @NonNull
-  public Class<? extends bire> a()
-  {
-    return birs.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    urk.a("WeatherFilterData", "updateWeather:%s", Integer.valueOf(paramInt));
-    this.c = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return true;
+    if (paramList == null) {
+      return;
+    }
+    birn.a(this.a).clear();
+    birn.a(this.a).addAll(paramList);
+    birn.a(this.a).notifyDataSetChanged();
   }
 }
 

@@ -1,35 +1,40 @@
-import android.app.Activity;
-import java.lang.reflect.Method;
+import android.content.ContentValues;
 
-public abstract class bgpp
+public final class bgpp
 {
-  public static bgpp a;
+  public long a;
+  public Object a;
+  public String a;
+  public long b = -1L;
   
-  public static void a()
+  public bgpp(long paramLong1, long paramLong2, ContentValues paramContentValues)
   {
+    this.jdField_a_of_type_Long = 1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = paramLong1;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_JavaLangObject = paramContentValues;
     try
     {
-      Method localMethod = Class.forName("cooperation.vip.common.VipClass").getMethod("getInstance", new Class[0]);
-      localMethod.setAccessible(true);
-      a = (bgpp)localMethod.invoke(null, new Object[0]);
+      this.jdField_a_of_type_JavaLangString = paramContentValues.getAsString("entityNickName");
       return;
     }
-    catch (Throwable localThrowable) {}
+    catch (Exception paramContentValues) {}
   }
   
-  public static void b(Activity paramActivity, String paramString)
+  public bgpp(long paramLong1, long paramLong2, Object paramObject, String paramString)
   {
-    bgpp localbgpp = a;
-    if (localbgpp != null) {
-      localbgpp.a(paramActivity, paramString);
-    }
+    this.jdField_a_of_type_Long = 1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = paramLong1;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
-  
-  public abstract void a(Activity paramActivity, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgpp
  * JD-Core Version:    0.7.0.1
  */

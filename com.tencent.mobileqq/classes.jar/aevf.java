@@ -1,47 +1,126 @@
 import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import com.tencent.mobileqq.data.MessageForSafeGrayTips;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
 public class aevf
-  implements TextView.OnEditorActionListener
 {
-  public aevf(SearchBaseActivity paramSearchBaseActivity) {}
-  
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public static MessageForReplyText.SourceMsgInfo a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, int paramInt, long paramLong, String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (paramInt != 3)
+    if (paramChatMessage == null) {
+      return null;
+    }
+    paramQQAppInterface = new MessageForReplyText.SourceMsgInfo();
+    paramQQAppInterface.origUid = paramChatMessage.msgUid;
+    paramQQAppInterface.mSourceMsgSeq = paramChatMessage.shmsgseq;
+    paramQQAppInterface.mSourceMsgSenderUin = Long.parseLong(paramChatMessage.senderuin);
+    paramQQAppInterface.setUniSeq(paramChatMessage.uniseq, true);
+    paramQQAppInterface.mSourceMsgTime = ((int)paramChatMessage.time);
+    paramQQAppInterface.mSourceSummaryFlag = 1;
+    paramQQAppInterface.mType = paramInt;
+    paramQQAppInterface.mAtInfoStr = paramChatMessage.getExtInfoFromExtStr(axad.i);
+    Object localObject = mye.a(paramChatMessage);
+    if (!TextUtils.isEmpty(((myf)localObject).b)) {
+      paramQQAppInterface.mAnonymousNickName = ((myf)localObject).b;
+    }
+    for (;;)
     {
-      bool1 = bool2;
-      if (paramKeyEvent != null)
+      if (((paramChatMessage instanceof MessageForFile)) && (paramQQAppInterface.mSourceMsgSenderUin == 0L) && (paramChatMessage.issend != 1) && (!TextUtils.isEmpty(paramChatMessage.frienduin))) {
+        paramQQAppInterface.mSourceMsgSenderUin = Long.parseLong(paramChatMessage.frienduin);
+      }
+      paramQQAppInterface.mSourceMsgToUin = paramLong;
+      paramQQAppInterface.mSourceMsgTroopName = paramString;
+      try
       {
-        bool1 = bool2;
-        if (paramKeyEvent.getKeyCode() != 66) {}
+        if (!(paramChatMessage instanceof MessageForMixedMsg)) {
+          break;
+        }
+        paramQQAppInterface.mSourceMsgText = MessageForMixedMsg.getReplySummary(paramChatMessage);
+        return paramQQAppInterface;
+      }
+      catch (Exception paramChatMessage)
+      {
+        paramQQAppInterface.mSourceMsgText = "";
+        return paramQQAppInterface;
+      }
+      if ((paramQQAppInterface.mSourceMsgSenderUin == 50000000L) || (paramQQAppInterface.mSourceMsgSenderUin == 1000000L))
+      {
+        localObject = bajb.a(paramChatMessage);
+        if (localObject != null) {
+          paramQQAppInterface.mAnonymousNickName = ((bajc)localObject).c;
+        }
       }
     }
-    else
+    if ((paramChatMessage instanceof MessageForStructing))
     {
-      paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      if ((!TextUtils.isEmpty(paramTextView)) && (!TextUtils.isEmpty(paramTextView.trim()))) {
-        break label102;
+      paramQQAppInterface.mSourceMsgText = MessageForStructing.getReplySummary(paramChatMessage);
+      return paramQQAppInterface;
+    }
+    if ((paramChatMessage instanceof MessageForArkApp))
+    {
+      paramQQAppInterface.mSourceMsgText = MessageForArkApp.getReplySummary(paramChatMessage);
+      return paramQQAppInterface;
+    }
+    paramQQAppInterface.mSourceMsgText = paramChatMessage.getSummaryMsg();
+    return paramQQAppInterface;
+  }
+  
+  public static MessageRecord a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
+  {
+    paramQQAppInterface = paramQQAppInterface.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramSourceMsgInfo.mSourceMsgSeq, 0L);
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
+    {
+      int i = 0;
+      while (i < paramQQAppInterface.size())
+      {
+        paramSessionInfo = (MessageRecord)paramQQAppInterface.get(i);
+        if ((!akpy.a(paramSessionInfo)) && (!(paramSessionInfo instanceof MessageForSafeGrayTips))) {
+          return paramSessionInfo;
+        }
+        i += 1;
       }
-      this.a.a(true, this.a.jdField_a_of_type_AndroidWidgetEditText);
-      bbmy.a(this.a.getApplicationContext(), ajjy.a(2131647818), 0).a();
-      bool1 = true;
     }
-    return bool1;
-    label102:
-    if (!TextUtils.isEmpty(paramTextView))
+    return null;
+  }
+  
+  public static MessageRecord a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong1, long paramLong2)
+  {
+    paramQQAppInterface = paramQQAppInterface.a().b(paramString, paramInt, paramLong1, paramLong2);
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
     {
-      avwf.a("add_page", "search", "clk_search_all", this.a.h + 1, 0, new String[] { "", "", paramTextView, "" });
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramTextView, false);
+      paramInt = 0;
+      while (paramInt < paramQQAppInterface.size())
+      {
+        paramString = (MessageRecord)paramQQAppInterface.get(paramInt);
+        if ((!akpy.b(paramString)) && (!(paramString instanceof MessageForSafeGrayTips))) {
+          return paramString;
+        }
+        paramInt += 1;
+      }
     }
-    return true;
+    return null;
+  }
+  
+  public static MessageRecord b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
+  {
+    return a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramSourceMsgInfo.mSourceMsgTime, paramSourceMsgInfo.origUid);
+  }
+  
+  public static MessageRecord c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
+  {
+    if (paramSessionInfo.jdField_a_of_type_Int == 0) {
+      return b(paramQQAppInterface, paramSessionInfo, paramSourceMsgInfo);
+    }
+    return a(paramQQAppInterface, paramSessionInfo, paramSourceMsgInfo);
   }
 }
 

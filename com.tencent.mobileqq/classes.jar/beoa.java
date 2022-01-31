@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.TCWDatePicker.SavedState;
+import android.widget.ImageView;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import java.io.File;
 
-public final class beoa
-  implements Parcelable.Creator<TCWDatePicker.SavedState>
+public class beoa
+  implements bent
 {
-  public TCWDatePicker.SavedState a(Parcel paramParcel)
-  {
-    return new TCWDatePicker.SavedState(paramParcel, null);
-  }
+  public beoa(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public TCWDatePicker.SavedState[] a(int paramInt)
+  public void a(File paramFile)
   {
-    return new TCWDatePicker.SavedState[paramInt];
+    if ((MiniAppVideoPlayer.c(this.a) != null) && (paramFile != null)) {
+      MiniAppVideoPlayer.c(this.a).setImageBitmap(bekr.a(paramFile.getAbsolutePath()));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beoa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
 import MessageSvcPack.RoamInfo;
-import ajrj;
+import akft;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class RoamInfoListWrapper
   implements Parcelable
 {
-  public static final Parcelable.Creator<RoamInfoListWrapper> CREATOR = new ajrj();
+  public static final Parcelable.Creator<RoamInfoListWrapper> CREATOR = new akft();
   public ArrayList<RoamInfo> a;
   
   public int describeContents()

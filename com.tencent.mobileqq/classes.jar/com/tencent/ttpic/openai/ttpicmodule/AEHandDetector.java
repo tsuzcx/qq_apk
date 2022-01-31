@@ -9,6 +9,8 @@ import com.tencent.aekit.plugin.core.AIInput;
 import com.tencent.aekit.plugin.core.AIParam;
 import com.tencent.aekit.plugin.core.IDetect;
 import com.tencent.aekit.plugin.core.PTHandAttr;
+import com.tencent.ttpic.openapi.initializer.RapidNetSDKInitializer;
+import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Map;
@@ -42,12 +44,21 @@ public class AEHandDetector
     if ((paramAIInput == null) || (paramAIInput.getInput("frame") == null)) {
       return null;
     }
-    Map localMap = paramAIParam.getModuleParam(AEDetectorType.HAND.value);
-    boolean bool = false;
-    if (localMap != null) {
-      bool = ((Boolean)localMap.get("needDetectHandBone")).booleanValue();
+    Object localObject = paramAIParam.getModuleParam(AEDetectorType.HAND.value);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localObject != null)
+    {
+      bool1 = bool2;
+      if (((Map)localObject).containsKey("needDetectHandBone"))
+      {
+        bool1 = bool2;
+        if (((Map)localObject).get("needDetectHandBone") != null) {
+          bool1 = ((Boolean)((Map)localObject).get("needDetectHandBone")).booleanValue();
+        }
+      }
     }
-    HAND_DETECTOR.getHandDetectImpl().setNeedDetectBonePoint(bool);
+    HAND_DETECTOR.getHandDetectImpl().setNeedDetectBonePoint(bool1);
     int i = (int)(paramAIParam.getWidth() * paramAIParam.getScale(getModuleType()).floatValue());
     int j = (int)(paramAIParam.getHeight() * paramAIParam.getScale(getModuleType()).floatValue());
     float f = paramAIParam.getScale(getModuleType()).floatValue();
@@ -55,8 +66,8 @@ public class AEHandDetector
     AEProfiler.getInstance().start("RGBA-TO-BITMAP");
     if ((i > 0) && (j > 0))
     {
-      paramAIParam = paramAIInput.getBytes(paramAIParam.getScale(getModuleType()).floatValue());
-      if (paramAIParam == null)
+      localObject = paramAIInput.getBytes(paramAIParam.getScale(getModuleType()).floatValue());
+      if (localObject == null)
       {
         paramAIInput = new PTHandAttr();
         paramAIInput.setHandType(-1);
@@ -65,13 +76,16 @@ public class AEHandDetector
         return paramAIInput;
       }
       paramAIInput = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-      paramAIInput.copyPixelsFromBuffer(ByteBuffer.wrap(paramAIParam));
+      paramAIInput.copyPixelsFromBuffer(ByteBuffer.wrap((byte[])localObject));
     }
     for (;;)
     {
       long l = AEProfiler.getInstance().end("RGBA-TO-BITMAP");
       AEProfiler.getInstance().add(1, "RGBA-TO-BITMAP", l);
-      return HAND_DETECTOR.getHandDetectImpl().detectFrame(paramAIInput, f, k);
+      paramAIInput = HAND_DETECTOR.getHandDetectImpl().detectFrame(paramAIInput, f, k);
+      paramAIInput.setDetectWidth(paramAIParam.getWidth());
+      paramAIInput.setDetectHeight(paramAIParam.getHeight());
+      return paramAIInput;
       paramAIInput = null;
     }
   }
@@ -93,6 +107,8 @@ public class AEHandDetector
   
   public boolean init(String paramString1, String paramString2)
   {
+    FeatureManager.Features.RAPID_NET.setSoDirOverrideFeatureManager(paramString1);
+    FeatureManager.Features.RAPID_NET.setResourceDirOverrideFeatureManager(paramString2);
     return onModuleInstall(paramString1, paramString2);
   }
   

@@ -1,6 +1,12 @@
-public abstract interface actr<T>
+import android.view.View;
+import android.widget.TextView;
+
+public abstract class actr
+  extends acve
 {
-  public abstract T a(acto paramacto);
+  public int a;
+  public View a;
+  public TextView a;
 }
 
 

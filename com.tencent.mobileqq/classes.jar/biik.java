@@ -1,6 +1,12 @@
-class biik
+import java.io.File;
+
+public class biik
 {
-  static final biih a = new biih(null);
+  public static final String a = biia.a + File.separator + "playshow";
+  public static final String b = biid.e;
+  public static final String c = a + File.separator + "material_config";
+  public static final String d = a + File.separator + "thumbs";
+  public static final String e = a + File.separator + "videos";
 }
 
 

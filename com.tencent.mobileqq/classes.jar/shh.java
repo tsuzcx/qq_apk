@@ -1,33 +1,103 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
-import java.util.Map;
+import android.content.Context;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class shh
-  extends Job<Object, Object, Object>
+public class shh
 {
-  shh(shg paramshg, String paramString, shp paramshp)
+  public static int a()
   {
-    super(paramString);
+    return ((Integer)bhvh.a("readinjoy_user_data_switch", Integer.valueOf(0))).intValue();
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public static void a(int paramInt)
   {
-    this.jdField_a_of_type_Shp.jdField_a_of_type_Sho.a(this.jdField_a_of_type_Shp);
-    this.jdField_a_of_type_Shg.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Shp.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Shg.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_Shp.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Shp);
-    return null;
+    bhvh.a("readinjoy_user_data_switch", Integer.valueOf(paramInt));
   }
   
-  public int getJobType()
+  public static void a(Context paramContext, int paramInt, Runnable paramRunnable)
   {
-    return 16;
+    int k = Aladdin.getConfig(232).getIntegerFromString("user_data_alert_switch", 0);
+    String str = Aladdin.getConfig(232).getString("user_data_alert_content", paramContext.getString(2131718605));
+    int j = Aladdin.getConfig(232).getIntegerFromString("user_data_alert_interval", 1);
+    int i = ((Integer)bhvh.a("readinjoy_user_data_state", Integer.valueOf(0))).intValue();
+    long l1 = ((Long)bhvh.a("readinjoy_user_data_time", Long.valueOf(0L))).longValue();
+    int m = ((Integer)bhvh.a("readinjoy_user_data_switch", Integer.valueOf(1))).intValue();
+    long l2;
+    if ((k == 1) && (m == 1))
+    {
+      l2 = System.currentTimeMillis();
+      if (l2 - l1 < j * 86400000L) {
+        break label329;
+      }
+      i = 0;
+    }
+    label329:
+    for (;;)
+    {
+      if ((1 << paramInt & i) == 0)
+      {
+        bhvh.a("readinjoy_user_data_time", Long.valueOf(l2));
+        bhvh.a("readinjoy_user_data_state", Integer.valueOf(i | 1 << paramInt));
+        bbgg localbbgg = bbcv.a(paramContext, 230);
+        localbbgg.setTitle(null);
+        localbbgg.setMessage(str);
+        localbbgg.setPositiveButton(paramContext.getString(2131720884), new shi(paramInt, j, paramRunnable));
+        localbbgg.setNegativeButton(paramContext.getString(2131720887), new shj(paramInt, j, paramRunnable));
+        localbbgg.show();
+        paramContext = new JSONObject();
+        if (paramInt == 1) {
+          paramInt = 0;
+        }
+      }
+      do
+      {
+        do
+        {
+          try
+          {
+            for (;;)
+            {
+              paramContext.put("exp_src", paramInt);
+              paramContext.put("user_data_alert_interval", j);
+              noo.a(null, "", "0X800A808", "0X800A808", 0, 0, "", "", "", paramContext.toString(), false);
+              return;
+              paramInt = 1;
+            }
+          }
+          catch (JSONException paramRunnable)
+          {
+            for (;;)
+            {
+              paramRunnable.printStackTrace();
+            }
+          }
+        } while (paramRunnable == null);
+        paramRunnable.run();
+        return;
+      } while (paramRunnable == null);
+      paramRunnable.run();
+      return;
+    }
+  }
+  
+  public static int b()
+  {
+    int i = Aladdin.getConfig(232).getIntegerFromString("user_data_alert_switch", 0);
+    int j = Aladdin.getConfig(232).getIntegerFromString("user_data_switch_switch", 0);
+    if ((i == 0) && (j == 0)) {
+      return 0;
+    }
+    if (a() == 0) {
+      return 1;
+    }
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     shh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,56 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.qun.group_effect.group_effect.EffectInfo;
+import tencent.qun.group_effect.group_effect.UserConfig;
+import tencent.qun.group_effect.group_effect_commu.TEffectDetail;
 
 public class azri
 {
   public int a;
-  public azri a;
+  public long a;
   public String a;
-  public ArrayList<azri> a;
-  public String b;
+  public boolean a;
   
-  private azri() {}
-  
-  public azri(int paramInt, String paramString1, String paramString2)
+  public group_effect_commu.TEffectDetail a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-  }
-  
-  public String a()
-  {
-    String str = this.jdField_a_of_type_JavaLangString;
-    azri localazri = this;
-    while (localazri.jdField_a_of_type_Azri != null)
+    group_effect_commu.TEffectDetail localTEffectDetail = new group_effect_commu.TEffectDetail();
+    Object localObject = new group_effect.UserConfig();
+    ((group_effect.UserConfig)localObject).effect_id.set(this.jdField_a_of_type_Int);
+    ((group_effect.UserConfig)localObject).group_code.set(this.jdField_a_of_type_Long);
+    localObject = ((group_effect.UserConfig)localObject).status;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (long l = 1L;; l = 0L)
     {
-      localazri = localazri.jdField_a_of_type_Azri;
-      str = localazri.jdField_a_of_type_JavaLangString + "-" + str;
+      ((PBUInt64Field)localObject).set(l);
+      new group_effect.EffectInfo().name.set(this.jdField_a_of_type_JavaLangString);
+      return localTEffectDetail;
     }
-    return str;
   }
   
-  public void a(azri paramazri)
+  public void a(group_effect_commu.TEffectDetail paramTEffectDetail)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramazri);
-  }
-  
-  public boolean a(azri paramazri)
-  {
-    if ((paramazri != null) && (paramazri.jdField_a_of_type_Int + 1 == this.jdField_a_of_type_Int))
+    group_effect.UserConfig localUserConfig = (group_effect.UserConfig)paramTEffectDetail.st_userconfig.get();
+    paramTEffectDetail = (group_effect.EffectInfo)paramTEffectDetail.st_effectinfo.get();
+    this.jdField_a_of_type_Int = localUserConfig.effect_id.get();
+    this.jdField_a_of_type_JavaLangString = paramTEffectDetail.name.get();
+    this.jdField_a_of_type_Long = localUserConfig.group_code.get();
+    if (localUserConfig.status.get() != 0L) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Azri = paramazri;
-      return true;
+      this.jdField_a_of_type_Boolean = bool;
+      return;
     }
-    return false;
+  }
+  
+  public String toString()
+  {
+    return "{groupCode: " + this.jdField_a_of_type_Long + ", effectId: " + this.jdField_a_of_type_Int + ", isOn: " + this.jdField_a_of_type_Boolean + "}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azri
  * JD-Core Version:    0.7.0.1
  */

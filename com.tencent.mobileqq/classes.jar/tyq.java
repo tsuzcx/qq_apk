@@ -1,73 +1,79 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 import java.util.List;
 
 public class tyq
-  extends sgl<QQStoryShareGroupProfileActivity, snl>
+  extends wcr
 {
-  public tyq(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public static final String KEY = "PlayerCommentEmptySegment";
+  private View jdField_a_of_type_AndroidViewView;
+  private tyf jdField_a_of_type_Tyf;
+  public ups a;
+  private boolean b = true;
+  
+  public tyq(Context paramContext)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    super(paramContext);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull snl paramsnl)
+  private boolean b()
   {
-    if ((paramsnl.b != 3) || (paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null)) {}
-    ArrayList localArrayList;
-    label68:
-    do
+    return (this.jdField_a_of_type_Tyf == null) || (this.jdField_a_of_type_Tyf.a());
+  }
+  
+  public int a()
+  {
+    if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_Ups == null) || (this.jdField_a_of_type_Ups.a(b()).size() == 0))) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View a(int paramInt, vas paramvas, ViewGroup paramViewGroup)
+  {
+    if (this.b) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    for (;;)
     {
-      return;
-      int i;
-      tzq localtzq;
-      HotSortVideoEntry localHotSortVideoEntry;
-      if (paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike == 1)
-      {
-        i = 1;
-        localtzq = paramQQStoryShareGroupProfileActivity.a.a;
-        Object localObject = paramQQStoryShareGroupProfileActivity.a.a.a;
-        localArrayList = new ArrayList();
-        localObject = ((List)localObject).iterator();
-        do
-        {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          localHotSortVideoEntry = (HotSortVideoEntry)((Iterator)localObject).next();
-        } while (!localHotSortVideoEntry.feedId.equals(paramsnl.jdField_a_of_type_JavaLangString));
-        if (i == 0) {
-          break label164;
-        }
-      }
-      for (int j = localHotSortVideoEntry.likeCount + 1;; j = localHotSortVideoEntry.likeCount - 1)
-      {
-        localHotSortVideoEntry.likeCount = j;
-        if (localHotSortVideoEntry.likeCount < 0) {
-          localHotSortVideoEntry.likeCount = 0;
-        }
-        localtzq.a(localHotSortVideoEntry);
-        localArrayList.add(localHotSortVideoEntry);
-        break label68;
-        i = 0;
-        break;
-      }
-    } while (localArrayList.size() <= 0);
-    label164:
-    ((spn)sqg.a(25)).a(localArrayList);
-    paramQQStoryShareGroupProfileActivity.d = true;
+      return paramvas.a();
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
   }
   
-  public Class acceptEventClass()
+  public String a()
   {
-    return snl.class;
+    return "PlayerCommentEmptySegment";
   }
   
-  public void b(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull snl paramsnl) {}
+  public vas a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561328, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131369513);
+    if (QQStoryContext.a()) {
+      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166349));
+    }
+    return new vas(paramViewGroup);
+  }
+  
+  public void a(tyf paramtyf)
+  {
+    this.jdField_a_of_type_Tyf = paramtyf;
+  }
+  
+  public void a(ups paramups)
+  {
+    this.jdField_a_of_type_Ups = paramups;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
 }
 
 

@@ -1,120 +1,97 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.GroupInfo;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class afbh
-  implements View.OnClickListener
+  extends akav
 {
-  public afbh(NotificationView paramNotificationView) {}
+  public afbh(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    afbb localafbb = (afbb)paramView.getTag();
-    if (localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() == 80)
-    {
-      paramView = TroopInfoActivity.a(String.valueOf(localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get()), 5);
-      TroopInfoActivity.a(this.a.a(), paramView);
-      return;
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessManager", 2, "onBlessDirtyTextCheck " + paramBoolean + " ,code=" + paramInt);
     }
-    if (!badq.d(this.a.a()))
+    if (paramBoolean) {}
+    while ((i != 0) && (!BlessSelectMemberActivity.b()))
     {
-      bbmy.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.a().getString(2131628946), 0).b(this.a.a());
+      BlessSelectMemberActivity.a(this.a, BlessSelectMemberActivity.a(this.a));
       return;
-    }
-    ((FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).b(String.valueOf(localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get()));
-    NotificationView.a(this.a, (structmsg.StructMsg)localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get(), localafbb.c);
-    String str2 = localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_info.msg_alert.get();
-    String str3 = localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "";
-    int i;
-    label265:
-    String str1;
-    if (localafbb.b < this.a.jdField_a_of_type_Afaz.jdField_a_of_type_Int)
-    {
-      paramView = "1";
-      i = localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_inviter_role.get();
-      if ((i != 2) && (i != 3)) {
-        break label419;
-      }
-      i = 0;
-      if (i == 0) {
-        break label424;
-      }
-      str1 = "0";
-      label272:
-      if ((str2 != null) && (!"".equals(str2))) {
-        break label752;
-      }
-      if (localafbb.jdField_a_of_type_Int != 82) {
-        break label430;
-      }
-      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "oper", "focus_notice", 0, 0, "", "", "", localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
-      NotificationView.a(this.a, localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get(), (structmsg.StructMsg)localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get());
-    }
-    for (;;)
-    {
-      NotificationView.c(this.a);
-      this.a.jdField_a_of_type_Bbms.c(2131653452);
-      this.a.jdField_a_of_type_Bbms.show();
-      return;
-      paramView = "0";
-      break;
-      label419:
-      i = 1;
-      break label265;
-      label424:
-      str1 = "1";
-      break label272;
-      label430:
-      if (localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() == 2)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NotificationView", 2, "doCheckPayTroopReq start: " + str3);
-        }
-        TroopRequestActivity.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str3, localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, this.a.jdField_a_of_type_Afcf);
-        azzx.a("Grp_contacts_news", "notice", "agree_invite", 0, 0, new String[] { str3, paramView, str1, "1" });
-      }
-      else
-      {
-        NotificationView.a(this.a, 1, (structmsg.StructMsg)localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get());
-        if ((localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.has()) && (localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.req_uin_nick.has())) {
-          ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(str3, localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "", localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.req_uin_nick.get());
-        }
-        if (localafbb.jdField_a_of_type_Int == 1)
+      if (paramInt != 0) {
+        if (paramInt == 1)
         {
-          azzx.a("Grp_contacts_news", "notice", "agree_ask", 0, 0, new String[] { str3, paramView, str1, "1" });
+          BlessSelectMemberActivity.a(this.a, 2131690501, true);
+          i = 0;
         }
-        else if (localafbb.jdField_a_of_type_Int == 2)
+        else
         {
-          azzx.a("Grp_contacts_news", "notice", "agree_invite", 0, 0, new String[] { str3, paramView, str1, "1" });
-          continue;
-          label752:
-          NotificationView.a(this.a, 0, (structmsg.StructMsg)localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get());
-          if (localafbb.jdField_a_of_type_Int == 1) {
-            azzx.a("Grp_contacts_news", "notice", "refuse_ask", 0, 0, new String[] { str3, paramView, str1, "1" });
-          } else if (localafbb.jdField_a_of_type_Int == 2) {
-            azzx.a("Grp_contacts_news", "notice", "refuse_invite", 0, 0, new String[] { str3, paramView, str1, "1" });
+          if (paramInt == 8) {
+            BlessSelectMemberActivity.a(this.a, 2131690536, true);
           }
+          i = 0;
         }
       }
     }
+    this.a.e();
+  }
+  
+  public void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessManager", 2, "onSendBlessMsgResp " + paramBoolean1 + " ,replyCode=" + paramInt + " waitTime=" + paramLong + " ,entrance=" + BlessSelectMemberActivity.a(this.a));
+    }
+    if (!this.a.a) {
+      return;
+    }
+    this.a.a = false;
+    if (paramInt == 67L)
+    {
+      BlessSelectMemberActivity.a(System.currentTimeMillis());
+      this.a.a(paramLong);
+      this.a.e();
+      BlessSelectMemberActivity.a(this.a, 2131690521, true);
+      return;
+    }
+    if (BlessSelectMemberActivity.b(this.a) == 15)
+    {
+      this.a.a(paramBoolean1);
+      return;
+    }
+    this.a.a(paramBoolean1, paramBoolean2);
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessSelectMemberActivity", 2, "onUpdateMsgContent, isSuc:" + paramBoolean + " ,type:" + BlessSelectMemberActivity.c(this.a));
+    }
+    if (BlessSelectMemberActivity.c(this.a) == 3) {
+      if (paramBoolean) {
+        BlessSelectMemberActivity.a(this.a);
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        this.a.e();
+        BlessSelectMemberActivity.a(this.a, 2131690520, false);
+        return;
+      } while (BlessSelectMemberActivity.c(this.a) != 2);
+      if ((BlessSelectMemberActivity.a(this.a).a() == null) || (!paramBoolean))
+      {
+        this.a.e();
+        BlessSelectMemberActivity.a(this.a, 2131690537, false);
+        return;
+      }
+    } while (BlessSelectMemberActivity.b());
+    BlessSelectMemberActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afbh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ptt.preop;
 
-import audi;
+import avco;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class PttPreSendManager$1
   implements Runnable
 {
-  public PttPreSendManager$1(audi paramaudi, BaseChatPie paramBaseChatPie) {}
+  public PttPreSendManager$1(avco paramavco, BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {

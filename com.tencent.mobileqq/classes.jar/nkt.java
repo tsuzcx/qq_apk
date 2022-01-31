@@ -1,15 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
-import java.util.List;
-
-public class nkt
-  extends ohe
+public abstract interface nkt
 {
-  public nkt(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
-  
-  public void a_(List<rql> paramList)
-  {
-    this.a.a(paramList);
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

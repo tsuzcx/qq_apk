@@ -5,24 +5,24 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 import android.text.TextUtils;
-import aqsg;
+import arnc;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import mpo;
+import nap;
 
 public class QQApiPlugin$2
   implements Runnable
 {
-  public QQApiPlugin$2(aqsg paramaqsg, String paramString1, String paramString2, String paramString3, Activity paramActivity, ApplicationInfo paramApplicationInfo) {}
+  public QQApiPlugin$2(arnc paramarnc, String paramString1, String paramString2, String paramString3, Activity paramActivity, ApplicationInfo paramApplicationInfo) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QQApi", 2, "shareMsgToSina download image:" + this.jdField_a_of_type_JavaLangString);
     }
-    String str = mpo.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
+    String str = nap.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
     if (QLog.isColorLevel()) {
       QLog.d("QQApi", 2, "shareMsgToSina path:" + str);
     }

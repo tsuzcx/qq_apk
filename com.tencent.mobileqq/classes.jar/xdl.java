@@ -1,23 +1,8 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-class xdl
-  extends Handler
+public abstract interface xdl
 {
-  xdl(xdi paramxdi, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (!(paramMessage.obj instanceof bbds)) {}
-    while (paramMessage.what != 204) {
-      return;
-    }
-    this.a.a((bbds)paramMessage.obj);
-  }
+  public abstract void b();
 }
 
 

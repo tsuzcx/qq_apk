@@ -1,88 +1,25 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.util.Locale;
-import mqq.observer.WtloginObserver;
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.portal.FormalView;
+import com.tencent.mobileqq.portal.StrokeTextView;
 
-class auqs
-  extends WtloginObserver
+public class auqs
+  extends bfmg
 {
-  auqs(auqr paramauqr) {}
+  public auqs(FormalView paramFormalView, View paramView) {}
   
-  public void OnRegGetSMSVerifyLoginAccount(int paramInt, long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(auqr.jdField_a_of_type_JavaLangString, 2, "OnRegGetSMSVerifyLoginAccount ret=" + paramInt + " uin=" + paramLong);
+    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.c();
+    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a = true;
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView) != null) {
+      FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView).setVisibility(0);
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.isFinishing()) {
-      return;
-    }
-    if (paramArrayOfByte3 != null) {}
-    for (;;)
-    {
-      try
-      {
-        paramArrayOfByte1 = new String(paramArrayOfByte3, "utf-8");
-        QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        String str = Integer.toString(paramInt);
-        if (paramArrayOfByte1 != null) {
-          break label208;
-        }
-        paramArrayOfByte3 = "";
-        awqx.a(localQQAppInterface, "new_reg", "setting_page_no", "result", "", 1, "", str, "", paramArrayOfByte3, "", "", "", "", "");
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.c();
-        if (paramInt != 0) {
-          break label469;
-        }
-        auqr.a(this.a, Long.valueOf(paramLong).toString());
-        auqr.a(this.a, paramArrayOfByte2);
-        if (!TextUtils.isEmpty(auqr.a(this.a))) {
-          break;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131651340, 1);
-        return;
-      }
-      catch (UnsupportedEncodingException paramArrayOfByte1)
-      {
-        paramArrayOfByte1.printStackTrace();
-      }
-      paramArrayOfByte1 = null;
-      continue;
-      label208:
-      paramArrayOfByte3 = paramArrayOfByte1;
-    }
-    if ((auqr.a(this.a) == null) || (auqr.a(this.a).length == 0))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131651340, 1);
-      return;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d(auqr.jdField_a_of_type_JavaLangString, 4, String.format(Locale.getDefault(), "OnRegGetSMSVerifyLoginAccount ret: %s, uin: %s, sign: %s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong), MD5.toMD5(auqr.a(this.a)) }));
-    }
-    paramArrayOfByte1 = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, RegisterQQNumberActivity.class);
-    paramArrayOfByte1.putExtra("phonenum", this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString);
-    paramArrayOfByte1.putExtra("invite_code", this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.c);
-    paramArrayOfByte1.putExtra("key", this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString);
-    paramArrayOfByte1.putExtra("key_register_is_phone_num_registered", this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_Boolean);
-    paramArrayOfByte1.putExtra("uin", auqr.a(this.a));
-    paramArrayOfByte1.putExtra("key_register_sign", auqr.a(this.a));
-    paramArrayOfByte1.putExtra("key_register_from_send_sms", auqr.a(this.a));
-    paramArrayOfByte1.putExtra("key_register_chose_bind_phone", true);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.startActivity(paramArrayOfByte1);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.finish();
-    return;
-    label469:
-    if (TextUtils.isEmpty(paramArrayOfByte1))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131651340, 1);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(paramArrayOfByte1, 1);
   }
 }
 

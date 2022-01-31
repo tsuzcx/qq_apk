@@ -1,44 +1,22 @@
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class tjd
-  implements tju
+public class tjd
+  extends ssk
 {
-  tjd(tjc paramtjc) {}
+  public boolean a;
+  public boolean b;
+  public boolean c = true;
+  public boolean d;
   
-  public void a()
+  public tjd(ErrorMessage paramErrorMessage)
   {
-    tjc.a(this.a, this.a.a.a(tjc.a(this.a), 5));
-    List localList = tjc.a(this.a).a;
-    if ((tjc.a(this.a) == null) && (localList.size() > 0)) {
-      tjc.a(this.a, ((tjt)localList.get(0)).a);
-    }
-    label193:
-    for (;;)
-    {
-      tjc.a(this.a).a(tjc.a(this.a), "");
-      urk.d("Q.qqstory.player.data.SimpleDataProvider", "current group:%s", new Object[] { tjc.a(this.a) });
-      return;
-      int i = 0;
-      for (;;)
-      {
-        if (i >= localList.size()) {
-          break label193;
-        }
-        if (((tjt)localList.get(i)).a.equals(tjc.a(this.a)))
-        {
-          i -= 1;
-          if (i < 0) {
-            break;
-          }
-          tjc.a(this.a, ((tjt)localList.get(i)).a);
-          break;
-        }
-        i += 1;
-      }
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
   }
   
-  public void a(tjs paramtjs, String paramString, boolean paramBoolean) {}
+  public String toString()
+  {
+    return "{\"_class\":\"BasePageLoaderEvent\", \"errorInfo\":\"" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + "\", \"isEnd\":\"" + this.jdField_a_of_type_Boolean + "\", \"isLocalData\":\"" + this.b + "\", \"isFirstPage\":\"" + this.c + "\"}";
+  }
 }
 
 

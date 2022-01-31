@@ -1,26 +1,32 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.mini.util.MiniAppSecurityUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class aboe
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
-  public aboe(RegisterActivity paramRegisterActivity) {}
+  public aboe(NotificationActivity paramNotificationActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
-    {
-      RegisterActivity.b(this.a);
-      return true;
+    axqw.a(this.a.app, "dc00898", "", "", "0X800AA17", "0X800AA17", 0, 0, "", "", NotificationActivity.b(this.a), "");
+    if (MiniAppSecurityUtil.checkMiniAppForLogin(NotificationActivity.c(this.a))) {
+      MiniAppLauncher.startMiniApp(this.a, NotificationActivity.c(this.a), 2089, null);
     }
-    return false;
+    for (;;)
+    {
+      this.a.finish();
+      return;
+      QLog.e("NotificationActivity", 1, "MiniAppLauncher.startMiniApp error: fake app!");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aboe
  * JD-Core Version:    0.7.0.1
  */

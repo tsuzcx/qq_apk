@@ -1,77 +1,215 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.core.common.Logger;
 
-public class aref
-  extends ajfo
+class aref
+  implements Logger
 {
-  public aref(LoginWelcomeManager paramLoginWelcomeManager) {}
+  private String jdField_a_of_type_JavaLangString;
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  aref(aree paramaree, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, String.format("onCardDownload isSuccess=%s data=%s", new Object[] { Boolean.valueOf(paramBoolean), paramObject }));
-    }
-    if ((LoginWelcomeManager.a(this.a) == null) || ((paramBoolean) && (paramObject != null))) {}
-    for (;;)
-    {
-      try
-      {
-        Object localObject = LoginWelcomeManager.a(this.a).getBundle("request");
-        String str = ((Bundle)localObject).getString("uin");
-        long l1 = Long.parseLong(LoginWelcomeManager.a(this.a).getCurrentAccountUin());
-        long l2 = Long.parseLong(str);
-        localObject = ((Bundle)localObject).getString("authSig");
-        LoginWelcomeManager.a(this.a).addObserver(this.a.a);
-        ajtg localajtg = (ajtg)LoginWelcomeManager.a(this.a).a(20);
-        paramObject = localajtg.a((Card)paramObject);
-        localajtg.a(str, paramObject, 1, null, (String)localObject, localajtg.a(paramObject, l1, l2), null);
-        LoginWelcomeManager.a(this.a).removeObserver(LoginWelcomeManager.a(this.a));
-        return;
-      }
-      catch (Exception paramObject)
-      {
-        QLog.e("LoginWelcomeManager", 1, "onCardDownload fail.", paramObject);
-        continue;
-      }
-      this.a.b();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  protected void onUpdateAvatar(boolean paramBoolean, String paramString)
+  private void a(int paramInt, String paramString, Throwable paramThrowable)
   {
-    int i = 1;
-    QLog.d("LoginWelcomeManager", 1, String.format("mCardObserver.onUpdateAvatar isSuccess=%s uin=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
-    if (TextUtils.equals(LoginWelcomeManager.a(this.a).getCurrentAccountUin(), paramString)) {
-      if (LoginWelcomeManager.a(this.a) != null)
-      {
-        paramString = LoginWelcomeManager.a(this.a).getBundle("request");
-        if (paramString != null) {
-          if (!paramBoolean) {
-            break label130;
-          }
-        }
-      }
-    }
-    for (;;)
+    String str = String.valueOf(this.jdField_a_of_type_JavaLangString);
+    switch (paramInt)
     {
-      paramString.putInt("result", i);
-      paramString.putString("path", LoginWelcomeManager.a(this.a));
-      LoginWelcomeManager.a(this.a, null);
-      this.a.b();
-      LoginWelcomeManager.a(this.a).removeObserver(LoginWelcomeManager.a(this.a));
+    default: 
       return;
-      label130:
-      i = 0;
+    case 4: 
+    case 5: 
+      if (paramThrowable == null)
+      {
+        QLog.d(str, 4, paramString);
+        return;
+      }
+      QLog.d(str, 4, paramString, paramThrowable);
+      return;
+    case 3: 
+      if (paramThrowable == null)
+      {
+        QLog.i(str, 2, paramString);
+        return;
+      }
+      QLog.i(str, 2, paramString, paramThrowable);
+      return;
+    case 2: 
+      if (paramThrowable == null)
+      {
+        QLog.w(str, 1, paramString);
+        return;
+      }
+      QLog.w(str, 1, paramString, paramThrowable);
+      return;
     }
+    if (paramThrowable == null)
+    {
+      QLog.e(str, 1, paramString);
+      return;
+    }
+    QLog.e(str, 1, paramString, paramThrowable);
+  }
+  
+  public void debug(String paramString)
+  {
+    a(4, paramString, null);
+  }
+  
+  public void debug(String paramString, Object paramObject)
+  {
+    a(4, aren.a(paramString, paramObject).a(), null);
+  }
+  
+  public void debug(String paramString, Object paramObject1, Object paramObject2)
+  {
+    a(4, aren.a(paramString, paramObject1, paramObject2).a(), null);
+  }
+  
+  public void debug(String paramString, Throwable paramThrowable)
+  {
+    a(4, paramString, paramThrowable);
+  }
+  
+  public void debug(String paramString, Object... paramVarArgs)
+  {
+    a(4, aren.a(paramString, paramVarArgs).a(), null);
+  }
+  
+  public void error(String paramString)
+  {
+    a(1, paramString, null);
+  }
+  
+  public void error(String paramString, Object paramObject)
+  {
+    a(1, aren.a(paramString, paramObject).a(), null);
+  }
+  
+  public void error(String paramString, Object paramObject1, Object paramObject2)
+  {
+    a(1, aren.a(paramString, paramObject1, paramObject2).a(), null);
+  }
+  
+  public void error(String paramString, Throwable paramThrowable)
+  {
+    a(1, paramString, paramThrowable);
+  }
+  
+  public void error(String paramString, Object... paramVarArgs)
+  {
+    a(1, aren.a(paramString, paramVarArgs).a(), null);
+  }
+  
+  public String getName()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void info(String paramString)
+  {
+    a(3, paramString, null);
+  }
+  
+  public void info(String paramString, Object paramObject)
+  {
+    a(3, aren.a(paramString, paramObject).a(), null);
+  }
+  
+  public void info(String paramString, Object paramObject1, Object paramObject2)
+  {
+    a(3, aren.a(paramString, paramObject1, paramObject2).a(), null);
+  }
+  
+  public void info(String paramString, Throwable paramThrowable)
+  {
+    a(3, paramString, paramThrowable);
+  }
+  
+  public void info(String paramString, Object... paramVarArgs)
+  {
+    a(3, aren.a(paramString, paramVarArgs).a(), null);
+  }
+  
+  public boolean isDebugEnabled()
+  {
+    return QLog.isDevelopLevel();
+  }
+  
+  public boolean isErrorEnabled()
+  {
+    return QLog.getUIN_REPORTLOG_LEVEL() >= 1;
+  }
+  
+  public boolean isInfoEnabled()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public boolean isTraceEnabled()
+  {
+    return QLog.isDevelopLevel();
+  }
+  
+  public boolean isWarnEnabled()
+  {
+    return QLog.getUIN_REPORTLOG_LEVEL() >= 1;
+  }
+  
+  public void trace(String paramString)
+  {
+    a(5, paramString, null);
+  }
+  
+  public void trace(String paramString, Object paramObject)
+  {
+    a(5, aren.a(paramString, paramObject).a(), null);
+  }
+  
+  public void trace(String paramString, Object paramObject1, Object paramObject2)
+  {
+    a(5, aren.a(paramString, paramObject1, paramObject2).a(), null);
+  }
+  
+  public void trace(String paramString, Throwable paramThrowable)
+  {
+    a(5, paramString, paramThrowable);
+  }
+  
+  public void trace(String paramString, Object... paramVarArgs)
+  {
+    a(5, aren.a(paramString, paramVarArgs).a(), null);
+  }
+  
+  public void warn(String paramString)
+  {
+    a(2, paramString, null);
+  }
+  
+  public void warn(String paramString, Object paramObject)
+  {
+    a(2, aren.a(paramString, paramObject).a(), null);
+  }
+  
+  public void warn(String paramString, Object paramObject1, Object paramObject2)
+  {
+    a(2, aren.a(paramString, paramObject1, paramObject2).a(), null);
+  }
+  
+  public void warn(String paramString, Throwable paramThrowable)
+  {
+    a(2, paramString, paramThrowable);
+  }
+  
+  public void warn(String paramString, Object... paramVarArgs)
+  {
+    a(2, aren.a(paramString, paramVarArgs).a(), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aref
  * JD-Core Version:    0.7.0.1
  */

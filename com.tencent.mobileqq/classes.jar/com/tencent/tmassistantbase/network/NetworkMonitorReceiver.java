@@ -7,7 +7,7 @@ import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -59,7 +59,7 @@ public class NetworkMonitorReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ac.c("NetworkMonitorReceiver", "network changed!");
+    ab.c("NetworkMonitorReceiver", "network changed!");
     if (mNetworkChangedHandler == null) {
       mNetworkChangedHandler = new e(this);
     }
@@ -71,11 +71,11 @@ public class NetworkMonitorReceiver
   
   public void registerReceiver()
   {
-    ac.c("NetworkMonitorReceiver", "registerReceiver enter");
+    ab.c("NetworkMonitorReceiver", "registerReceiver enter");
     Context localContext = GlobalUtil.getInstance().getContext();
     if (localContext == null)
     {
-      ac.c("NetworkMonitorReceiver", "registerReceiver context = null");
+      ab.c("NetworkMonitorReceiver", "registerReceiver context = null");
       return;
     }
     IntentFilter localIntentFilter = new IntentFilter();
@@ -84,8 +84,8 @@ public class NetworkMonitorReceiver
     {
       localContext.registerReceiver(this, localIntentFilter);
       this.isRegisterReceiver = true;
-      ac.c("NetworkMonitorReceiver", "registerReceiver isRegisterReceiver = true");
-      ac.c("NetworkMonitorReceiver", "registerReceiver exit");
+      ab.c("NetworkMonitorReceiver", "registerReceiver isRegisterReceiver = true");
+      ab.c("NetworkMonitorReceiver", "registerReceiver exit");
       return;
     }
     catch (Throwable localThrowable)
@@ -93,7 +93,7 @@ public class NetworkMonitorReceiver
       for (;;)
       {
         this.isRegisterReceiver = false;
-        ac.c("NetworkMonitorReceiver", "registerReceiver isRegisterReceiver = false");
+        ab.c("NetworkMonitorReceiver", "registerReceiver isRegisterReceiver = false");
         localThrowable.printStackTrace();
       }
     }

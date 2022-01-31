@@ -1,248 +1,390 @@
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
-import android.graphics.Typeface;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import android.widget.BaseAdapter;
+import android.widget.ListAdapter;
+import com.tencent.ditto.utils.ClassLoadUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ListView;
+import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.stickynote.QzoneStickyNoteManager.1;
+import cooperation.qzone.stickynote.QzoneStickyNoteManager.2;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import cooperation.qzone.util.QZLog;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 public class bhna
-  extends DynamicTextItem
+  implements bfob
 {
-  public static final int b;
-  public static final int c;
-  public static final int d;
-  protected float a;
-  protected RectF a;
-  protected TextPaint a;
-  protected float b;
-  private int e = 2147483647;
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private View jdField_a_of_type_AndroidViewView;
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ListView jdField_a_of_type_ComTencentWidgetListView;
+  private Class jdField_a_of_type_JavaLangClass;
+  private ClassLoader jdField_a_of_type_JavaLangClassLoader;
+  private Object jdField_a_of_type_JavaLangObject;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = 0;
+  private Object jdField_b_of_type_JavaLangObject;
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int;
+  private boolean jdField_c_of_type_Boolean;
+  private boolean d = true;
   
-  static
+  private int a()
   {
-    Resources localResources = BaseApplicationImpl.getContext().getResources();
-    jdField_b_of_type_Int = aciy.a(22.0F, localResources);
-    d = aciy.a(14.0F, localResources);
-    jdField_c_of_type_Int = Math.min(localResources.getDisplayMetrics().widthPixels - bijo.jdField_a_of_type_Int, aciy.a(270.0F, localResources));
+    return this.jdField_c_of_type_Int - 2;
   }
   
-  public bhna()
+  private Class a()
   {
-    this(0, bhlz.a(0));
-  }
-  
-  public bhna(int paramInt, List<String> paramList)
-  {
-    super(paramInt, paramList);
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
-    if (!paramList.isEmpty()) {
-      a(0, (String)paramList.get(0));
+    if (this.jdField_a_of_type_JavaLangClass != null) {
+      return this.jdField_a_of_type_JavaLangClass;
     }
-    this.jdField_a_of_type_Int = jdField_b_of_type_Int;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public int a(int paramInt1, String paramString, int paramInt2, int paramInt3)
-  {
-    int i = paramInt3 + 10;
-    c(i);
-    a(paramInt1, paramString);
-    if (this.jdField_b_of_type_AndroidTextStaticLayout.getHeight() < paramInt2) {
-      return i;
-    }
-    c(paramInt3);
-    a(paramInt1, paramString);
-    return paramInt3;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(paramInt);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    float f = 0.0F;
-    int i = 0;
-    super.a(paramInt, paramString);
-    String str = super.b(paramInt);
-    paramString = str;
-    if (TextUtils.isEmpty(str)) {
-      paramString = "　　";
-    }
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Int);
-    }
-    this.jdField_b_of_type_AndroidTextStaticLayout = bhno.a(paramString, 0, paramString.length(), this.jdField_a_of_type_AndroidTextTextPaint, jdField_c_of_type_Int, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, this.e);
-    str = paramString;
-    if (this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount() > this.e)
+    try
     {
-      paramInt = this.jdField_b_of_type_AndroidTextStaticLayout.getLineEnd(this.e - 1);
-      str = paramString;
-      if (paramInt < paramString.length()) {
-        str = paramString.subSequence(0, paramInt) + "";
-      }
-      this.jdField_b_of_type_AndroidTextStaticLayout = bhno.a(str, 0, str.length(), this.jdField_a_of_type_AndroidTextTextPaint, jdField_c_of_type_Int, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, this.e);
+      this.jdField_a_of_type_JavaLangClass = ClassLoadUtils.load(this.jdField_a_of_type_JavaLangClassLoader, "com.qzone.homepage.ui.activity.FriendProfileCardAdapterConverter");
+      return this.jdField_a_of_type_JavaLangClass;
     }
-    paramInt = i;
-    if (this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount() == 1)
+    catch (Exception localException)
     {
-      this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidTextTextPaint.measureText(str);
-      this.jdField_b_of_type_Float = (this.jdField_a_of_type_AndroidTextTextPaint.descent() - this.jdField_a_of_type_AndroidTextTextPaint.ascent());
-      return;
-    }
-    while (paramInt < this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount())
-    {
-      f = Math.max(f, this.jdField_b_of_type_AndroidTextStaticLayout.getLineWidth(paramInt));
-      paramInt += 1;
-    }
-    this.jdField_a_of_type_Float = f;
-    this.jdField_b_of_type_Float = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    float f1;
-    if (this.jdField_b_of_type_AndroidTextStaticLayout != null)
-    {
-      if (this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount() == 1)
+      for (;;)
       {
-        paramCanvas.save();
-        paramCanvas.translate(a() / 2.0F, b() / 2.0F);
-        this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
-        f1 = -((this.jdField_a_of_type_AndroidTextTextPaint.descent() + this.jdField_a_of_type_AndroidTextTextPaint.ascent()) / 2.0F);
-        String str2 = super.b(0);
-        String str1 = str2;
-        if (TextUtils.isEmpty(str2)) {
-          str1 = "　　";
-        }
-        paramCanvas.drawText(str1, 0.0F, f1, this.jdField_a_of_type_AndroidTextTextPaint);
-        if (super.b(0))
-        {
-          int i = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str1);
-          int j = (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.descent() - this.jdField_a_of_type_AndroidTextTextPaint.ascent());
-          this.jdField_a_of_type_AndroidGraphicsRectF.left = (-i / 2.0F);
-          this.jdField_a_of_type_AndroidGraphicsRectF.top = (-j / 2.0F);
-          this.jdField_a_of_type_AndroidGraphicsRectF.right = (i / 2.0F);
-          this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (j / 2.0F);
-          paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
-        }
-        paramCanvas.restore();
+        QLog.w("QzoneStickyNoteManager", 4, "getConverterClass failed: " + localException.getMessage());
       }
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
-    paramCanvas.save();
-    this.jdField_b_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-    if (super.b(0))
-    {
-      f1 = super.a(this.jdField_b_of_type_AndroidTextStaticLayout);
-      float f2 = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
-      this.jdField_a_of_type_AndroidGraphicsRectF.left = 0.0F;
-      this.jdField_a_of_type_AndroidGraphicsRectF.top = 0.0F;
-      this.jdField_a_of_type_AndroidGraphicsRectF.right = f1;
-      this.jdField_a_of_type_AndroidGraphicsRectF.bottom = f2;
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
-    }
-    paramCanvas.restore();
   }
   
-  public boolean a()
+  private Object a()
   {
-    return true;
-  }
-  
-  public boolean a(int paramInt1, String paramString, int paramInt2, int paramInt3)
-  {
-    paramInt3 -= 10;
-    if (paramInt3 > d)
-    {
-      c(paramInt3);
-      a(paramInt1, paramString);
-      if (this.jdField_b_of_type_AndroidTextStaticLayout.getHeight() >= paramInt2) {}
+    if (this.jdField_b_of_type_JavaLangObject != null) {
+      return this.jdField_b_of_type_JavaLangObject;
     }
-    for (paramInt3 = 0;; paramInt3 = 1)
+    try
     {
-      if (paramInt3 == 0)
+      Class localClass = ClassLoadUtils.load(this.jdField_a_of_type_JavaLangClassLoader, "com.qzone.homepage.ui.activity.FriendProfileCardAdapterConverter$LoadCallback");
+      ClassLoader localClassLoader = this.jdField_a_of_type_JavaLangClassLoader;
+      bhnb localbhnb = new bhnb(this);
+      this.jdField_b_of_type_JavaLangObject = Proxy.newProxyInstance(localClassLoader, new Class[] { localClass }, localbhnb);
+      return this.jdField_b_of_type_JavaLangObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
       {
-        return false;
-        paramInt3 -= 10;
-        break;
+        QLog.w("QzoneStickyNoteManager", 1, "getLocalCallback failed: " + localThrowable.getMessage());
       }
-      double d1 = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight() / this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount();
-      this.e = ((int)(paramInt2 / d1));
-      a(paramInt1, paramString);
-      return true;
     }
   }
   
-  public boolean a(String paramString)
+  private Object a(ListView paramListView)
   {
-    int i = this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount();
-    i = this.jdField_b_of_type_AndroidTextStaticLayout.getLineEnd(i - 1);
-    return paramString.length() > i + 1;
+    boolean bool = true;
+    if (this.jdField_a_of_type_JavaLangClassLoader == null) {
+      return null;
+    }
+    try
+    {
+      Constructor localConstructor = a().getConstructor(new Class[] { Activity.class, ListView.class, Long.TYPE, Boolean.TYPE });
+      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_Long == this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin())) {}
+      for (;;)
+      {
+        paramListView = localConstructor.newInstance(new Object[] { this.jdField_a_of_type_AndroidAppActivity, paramListView, Long.valueOf(this.jdField_a_of_type_Long), Boolean.valueOf(bool) });
+        return paramListView;
+        bool = false;
+      }
+      return null;
+    }
+    catch (Exception paramListView)
+    {
+      QLog.w("QzoneStickyNoteManager", 4, "newConverter failed: " + paramListView.getMessage());
+    }
   }
   
-  public float b()
+  private void a(int paramInt, boolean paramBoolean)
   {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramInt);
-    this.jdField_a_of_type_Int = paramInt;
+    QZLog.d("QzoneStickyNoteManager", 4, "onLoad " + this.jdField_a_of_type_Int + ", hasMore: " + paramBoolean);
+    if (this.jdField_a_of_type_Int == 2) {
+      this.jdField_a_of_type_Int = 0;
+    }
     this.jdField_c_of_type_Boolean = true;
+    this.d = paramBoolean;
   }
   
-  public int e()
+  private void a(ListAdapter paramListAdapter)
   {
-    return this.jdField_a_of_type_AndroidTextTextPaint.getColor();
-  }
-  
-  public int f()
-  {
-    if (this.jdField_b_of_type_AndroidTextStaticLayout == null) {
-      return 0;
+    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentWidgetListView != null) && (paramListAdapter != null))
+    {
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(paramListAdapter);
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+      this.jdField_b_of_type_Boolean = true;
     }
-    return this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount();
+  }
+  
+  private void a(AbsListView paramAbsListView, int paramInt)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    try
+    {
+      a().getDeclaredMethod("onScrollStateChanged", new Class[] { AbsListView.class, Integer.TYPE }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramAbsListView, Integer.valueOf(paramInt) });
+      return;
+    }
+    catch (Exception paramAbsListView)
+    {
+      QLog.w("QzoneStickyNoteManager", 4, "onScrollStateChangedProxy failed: " + paramAbsListView.getMessage());
+    }
+  }
+  
+  private void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    try
+    {
+      a().getDeclaredMethod("onScroll", new Class[] { AbsListView.class, Integer.TYPE, Integer.TYPE, Integer.TYPE }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramAbsListView, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      return;
+    }
+    catch (Exception paramAbsListView)
+    {
+      QLog.w("QzoneStickyNoteManager", 4, "onScrollProxy failed: " + paramAbsListView.getMessage());
+    }
+  }
+  
+  private void a(String paramString)
+  {
+    try
+    {
+      a().getDeclaredMethod("onLifecycle", new Class[] { String.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramString });
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.w("QzoneStickyNoteManager", 4, "onLifecycle failed: " + paramString.getMessage());
+    }
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    QZLog.d("QzoneStickyNoteManager", 4, "onLoadFinish " + paramBoolean);
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  private void d()
+  {
+    QLog.i("QzoneStickyNoteManager", 1, "tryLoadMore");
+    if ((this.d) && (this.jdField_a_of_type_Int != 2) && (this.jdField_b_of_type_Int == 0))
+    {
+      this.jdField_a_of_type_Int = 2;
+      e();
+    }
+  }
+  
+  private void e()
+  {
+    QLog.i("QzoneStickyNoteManager", 1, "loadMore");
+    Object localObject = a();
+    if (localObject == null)
+    {
+      QLog.e("QzoneStickyNoteManager", 1, "loadMore exit due to null callback");
+      return;
+    }
+    try
+    {
+      a().getDeclaredMethod("loadMore", new Class[] { Object.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { localObject });
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QzoneStickyNoteManager", 1, "loadMore failed: " + localException.getMessage());
+    }
+  }
+  
+  public BaseAdapter a()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetBaseAdapter != null) {
+      return this.jdField_a_of_type_AndroidWidgetBaseAdapter;
+    }
+    if (this.jdField_a_of_type_JavaLangObject == null) {
+      return null;
+    }
+    if (this.jdField_a_of_type_JavaLangClassLoader != null) {}
+    try
+    {
+      this.jdField_a_of_type_AndroidWidgetBaseAdapter = ((BaseAdapter)a().getDeclaredMethod("getAdapter", new Class[0]).invoke(this.jdField_a_of_type_JavaLangObject, new Object[0]));
+      return this.jdField_a_of_type_AndroidWidgetBaseAdapter;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.w("QzoneStickyNoteManager", 4, "getAdapter failed: " + localException.getMessage());
+      }
+    }
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentWidgetListView != null)) {
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(new bfxg(null));
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    QZLog.d("QzoneStickyNoteManager", 4, "onActivityResult " + paramInt1 + ", " + paramInt2 + ", " + paramIntent);
+    try
+    {
+      a().getDeclaredMethod("onActivityResult", new Class[] { Integer.TYPE, Integer.TYPE, Intent.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramIntent });
+      return;
+    }
+    catch (Exception paramIntent)
+    {
+      QLog.w("QzoneStickyNoteManager", 4, "onActivityResult failed: " + paramIntent.getMessage());
+    }
+  }
+  
+  public void a(Activity paramActivity, QQAppInterface paramQQAppInterface, Card paramCard, ListView paramListView, View paramView)
+  {
+    if ((paramActivity == null) || (paramQQAppInterface == null)) {
+      QLog.w("QzoneStickyNoteManager", 1, "init failed due to null parameter");
+    }
+    boolean bool1;
+    boolean bool2;
+    do
+    {
+      do
+      {
+        return;
+        this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
+        this.jdField_a_of_type_AndroidViewView = paramView;
+      } while (!bhbh.b());
+      this.jdField_a_of_type_JavaLangClassLoader = QzonePluginProxyActivity.a();
+      paramView = new StringBuilder().append("tryLoadQzonePlugin: loader = ");
+      if (this.jdField_a_of_type_JavaLangClassLoader != null) {}
+      for (bool1 = true;; bool1 = false)
+      {
+        QLog.i("QzoneStickyNoteManager", 1, bool1);
+        if (this.jdField_a_of_type_JavaLangClassLoader != null) {
+          break;
+        }
+        QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new QzoneStickyNoteManager.1(this, paramActivity, paramQQAppInterface, paramListView, paramCard));
+        return;
+      }
+      bool1 = bhbh.a(paramActivity, paramQQAppInterface);
+      bool2 = bhbh.b(paramActivity, paramQQAppInterface);
+    } while ((!bool1) || (!bool2));
+    a(paramQQAppInterface, paramActivity, paramListView, paramCard);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, ListView paramListView, Card paramCard)
+  {
+    if ((paramQQAppInterface == null) || (paramActivity == null) || (paramCard == null)) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        l = Long.parseLong(paramCard.uin);
+        QZLog.i("QzoneStickyNoteManager", "attach: " + this.jdField_a_of_type_Boolean + ", " + l);
+        if ((l <= 0L) || (this.jdField_a_of_type_Boolean)) {
+          continue;
+        }
+        if (this.jdField_a_of_type_JavaLangClassLoader == null) {
+          this.jdField_a_of_type_JavaLangClassLoader = QzonePluginProxyActivity.a();
+        }
+        if (paramQQAppInterface != bhbh.a()) {
+          bhbh.a(paramActivity, paramQQAppInterface);
+        }
+        this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+        this.jdField_a_of_type_Long = l;
+        this.jdField_a_of_type_AndroidOsHandler.post(new QzoneStickyNoteManager.2(this, paramListView, paramCard));
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          localException.printStackTrace();
+          long l = 0L;
+        }
+      }
+    }
+  }
+  
+  public void a(Card paramCard)
+  {
+    if (this.jdField_a_of_type_JavaLangObject == null) {}
+    while (this.jdField_a_of_type_JavaLangClassLoader == null) {
+      return;
+    }
+    try
+    {
+      a().getDeclaredMethod("updateFriendProfileCard", new Class[] { Card.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramCard });
+      return;
+    }
+    catch (Exception paramCard)
+    {
+      QLog.w("QzoneStickyNoteManager", 4, "updateFriendProfileCard failed: " + paramCard.getMessage());
+    }
+  }
+  
+  public void b()
+  {
+    a("onResume");
+  }
+  
+  public void c()
+  {
+    a("onDestroy");
+    this.jdField_a_of_type_JavaLangObject = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_JavaLangObject = null;
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_c_of_type_Int = paramInt3;
+    a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    if (paramInt == 0)
+    {
+      if (this.jdField_c_of_type_Boolean)
+      {
+        this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
+        this.jdField_c_of_type_Boolean = false;
+      }
+      if (paramAbsListView.getLastVisiblePosition() >= a()) {
+        d();
+      }
+    }
+    a(paramAbsListView, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhna
  * JD-Core Version:    0.7.0.1
  */

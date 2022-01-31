@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import agpe;
+import ahbt;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openai.ttpicmodule.AEHandDetector;
 
 class HandRecognizer$1
-  implements agpe
+  implements ahbt
 {
   HandRecognizer$1(HandRecognizer paramHandRecognizer, String paramString) {}
   

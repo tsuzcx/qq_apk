@@ -1,163 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.util.SparseArray;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class oel
+  extends bjun
 {
-  private static long jdField_a_of_type_Long = 2000L;
-  private static Runnable jdField_a_of_type_JavaLangRunnable;
-  private static boolean jdField_a_of_type_Boolean;
-  
-  public static void a()
+  public oel(@NonNull bjww parambjww, long paramLong)
   {
-    QLog.i("DailyTipsFoldUtils", 2, "[init]");
-    jdField_a_of_type_Boolean = false;
+    super(parambjww, paramLong);
   }
   
-  public static void a(BaseArticleInfo paramBaseArticleInfo, ReadInJoyXListView paramReadInJoyXListView)
+  private void j()
   {
-    if ((paramBaseArticleInfo == null) || (!odm.c((int)paramBaseArticleInfo.mChannelID))) {
-      QLog.i("DailyTipsFoldUtils", 1, "[foldDailyTips], articleInfo is null or not daily channel.");
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (paramReadInJoyXListView == null)
-        {
-          QLog.i("DailyTipsFoldUtils", 1, "[foldDailyTips], listView is null.");
-          return;
-        }
-      } while (!a(paramBaseArticleInfo));
-      jdField_a_of_type_JavaLangRunnable = new DailyTipsFoldUtils.1(paramReadInJoyXListView);
-    } while (jdField_a_of_type_Boolean);
-    paramBaseArticleInfo = Aladdin.getConfig(208);
-    if (paramBaseArticleInfo != null)
-    {
-      jdField_a_of_type_Long = paramBaseArticleInfo.getIntegerFromString("delay_duration", 2000);
-      QLog.i("DailyTipsFoldUtils", 2, "[foldDailyTips], delayFoldTime = " + jdField_a_of_type_Long);
-    }
-    paramReadInJoyXListView.postDelayed(jdField_a_of_type_JavaLangRunnable, jdField_a_of_type_Long);
+    ((ImageView)a(2131377579)).setVisibility(8);
+    ((TextView)a(2131364750)).setText(ajyc.a(2131712857));
   }
   
-  public static void a(ReadInJoyXListView paramReadInJoyXListView, int paramInt)
+  public void a()
   {
-    if (paramReadInJoyXListView == null)
-    {
-      QLog.i("DailyTipsFoldUtils", 1, "[cancelFoldDailyTipsRunnable], listView is null.");
-      return;
-    }
-    if (!odm.c(paramInt))
-    {
-      QLog.i("DailyTipsFoldUtils", 1, "[cancelFoldDailyTipsRunnable], is not daily feeds, channelID = " + paramInt);
-      return;
-    }
-    if (jdField_a_of_type_JavaLangRunnable != null)
-    {
-      QLog.i("DailyTipsFoldUtils", 1, "[cancelFoldDailyTipsRunnable], removeCallbacks");
-      paramReadInJoyXListView.removeCallbacks(jdField_a_of_type_JavaLangRunnable);
-    }
-    jdField_a_of_type_JavaLangRunnable = null;
+    super.a();
+    j();
   }
   
-  private static boolean a(BaseArticleInfo paramBaseArticleInfo)
+  public void onClick(View paramView)
   {
-    boolean bool5 = false;
-    boolean bool4 = false;
-    boolean bool3 = false;
-    if ((paramBaseArticleInfo == null) || (!odm.c((int)paramBaseArticleInfo.mChannelID))) {
-      return false;
-    }
-    paramBaseArticleInfo = paramBaseArticleInfo.proteusItemsData;
-    bool1 = bool5;
-    if (paramBaseArticleInfo != null) {
-      bool2 = bool4;
-    }
-    for (;;)
+    super.onClick(paramView);
+    int i = paramView.getId();
+    paramView = (Long)this.a.get(i);
+    if (paramView != null) {}
+    switch ((int)paramView.longValue())
     {
-      try
-      {
-        paramBaseArticleInfo = new JSONObject(paramBaseArticleInfo);
-        bool2 = bool4;
-        Object localObject = paramBaseArticleInfo.optString("style_ID");
-        bool2 = bool4;
-        QLog.i("DailyTipsFoldUtils", 1, "[isFirstCardDailyTips], styleID = " + (String)localObject);
-        bool1 = bool5;
-        bool2 = bool4;
-        if (TextUtils.equals("ReadInjoy_daily_check_card", (CharSequence)localObject))
-        {
-          bool2 = bool4;
-          paramBaseArticleInfo = paramBaseArticleInfo.optJSONArray("datas");
-          bool1 = bool3;
-          if (paramBaseArticleInfo != null)
-          {
-            bool1 = bool3;
-            bool2 = bool4;
-            if (paramBaseArticleInfo.length() == 1)
-            {
-              bool2 = bool4;
-              localObject = paramBaseArticleInfo.getJSONObject(0);
-              bool1 = bool3;
-              if (localObject != null)
-              {
-                bool2 = bool4;
-                bool1 = TextUtils.equals("1", ((JSONObject)localObject).optString("is_day_tip"));
-              }
-            }
-          }
-          bool2 = bool1;
-          localObject = new StringBuilder().append("[isFirstCardDailyTips], data length = ");
-          if (paramBaseArticleInfo == null) {
-            continue;
-          }
-          bool2 = bool1;
-          paramBaseArticleInfo = Integer.valueOf(paramBaseArticleInfo.length());
-          bool2 = bool1;
-          QLog.i("DailyTipsFoldUtils", 1, paramBaseArticleInfo);
-        }
-      }
-      catch (JSONException paramBaseArticleInfo)
-      {
-        QLog.e("DailyTipsFoldUtils", 1, "[isFirstCardDailyTips], e = " + paramBaseArticleInfo);
-        bool1 = bool2;
-        continue;
-      }
-      QLog.i("DailyTipsFoldUtils", 1, "[isFirstCardDailyTips] res = " + bool1);
-      return bool1;
-      paramBaseArticleInfo = "0";
-    }
-  }
-  
-  public static void b(ReadInJoyXListView paramReadInJoyXListView, int paramInt)
-  {
-    if (paramReadInJoyXListView == null)
-    {
-      QLog.i("DailyTipsFoldUtils", 1, "[touchDailyFeeds], listView is null.");
+    default: 
+      return;
+    case 4: 
+      noo.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "3", "", "", "", false);
+      return;
+    case 8: 
+      noo.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "1", "", "", "", false);
       return;
     }
-    if (!odm.c(paramInt))
-    {
-      QLog.i("DailyTipsFoldUtils", 1, "[touchDailyFeeds], is not daily feeds, channelID = " + paramInt);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("DailyTipsFoldUtils", 2, "[touchDailyFeeds], cancelFoldDailyTipsRunnable.");
-    }
-    jdField_a_of_type_Boolean = true;
-    a(paramReadInJoyXListView, paramInt);
+    noo.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "2", "", "", "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oel
  * JD-Core Version:    0.7.0.1
  */

@@ -1,135 +1,111 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.mobileqq.redtouch.RedDisplayInfo;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.mobileqq.redtouch.RedTouchUI;
-import com.tencent.mobileqq.redtouch.RedTypeInfo;
-import cooperation.qqreader.view.ReaderTabBarView;
-import java.util.ArrayList;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ARMapHongBaoListView;
 
 public class bfns
+  implements Handler.Callback
 {
-  public int a;
-  RedTouchUI jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI;
-  public String a;
-  public boolean a;
-  public int b = 0;
+  public bfns(ARMapHongBaoListView paramARMapHongBaoListView) {}
   
-  public bfns(ReaderTabBarView paramReaderTabBarView, int paramInt1, String paramString, boolean paramBoolean, int paramInt2, RedTouchUI paramRedTouchUI)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramInt2;
-    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI = paramRedTouchUI;
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (ReaderTabBarView.a(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView).get(paramInt) == null) {}
-    label165:
-    do
+    int j;
+    int k;
+    switch (paramMessage.what)
     {
-      do
-      {
-        return;
-        this.jdField_a_of_type_Boolean = paramBoolean;
-        if ((!this.jdField_a_of_type_Boolean) && (ReaderTabBarView.a(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView).containsKey(Integer.valueOf(paramInt)))) {
-          ReaderTabBarView.a(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView).remove(Integer.valueOf(paramInt));
-        }
-        switch (this.jdField_a_of_type_Int)
-        {
-        default: 
-          paramInt = 0;
-        }
-        for (;;)
-        {
-          if (this.jdField_a_of_type_Boolean) {
-            break label165;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.b();
-          return;
-          paramInt = 0;
-          continue;
-          paramInt = -1;
-          try
-          {
-            int i = Integer.parseInt(this.jdField_a_of_type_JavaLangString);
-            paramInt = i;
-          }
-          catch (NumberFormatException localNumberFormatException)
-          {
-            for (;;)
-            {
-              bfne.a("ReaderTabBarView", localNumberFormatException.getMessage());
-              continue;
-              paramBoolean = false;
-            }
-          }
-          if (this.jdField_a_of_type_Boolean)
-          {
-            if (paramInt <= 0) {
-              break;
-            }
-            paramBoolean = true;
-            this.jdField_a_of_type_Boolean = paramBoolean;
-          }
-          paramInt = 4;
-        }
-        RedAppInfo localRedAppInfo = new RedAppInfo();
-        localRedAppInfo.b(1);
-        localRedAppInfo.c(paramInt);
-        RedDisplayInfo localRedDisplayInfo = new RedDisplayInfo();
-        RedTypeInfo localRedTypeInfo = new RedTypeInfo();
-        localRedTypeInfo.setRed_type(paramInt);
-        Object localObject;
-        if (paramInt == 4) {
-          localObject = new JSONObject();
-        }
-        try
-        {
-          ((JSONObject)localObject).put("cn", "#FF0000");
-          localRedTypeInfo.setRed_desc(((JSONObject)localObject).toString());
-          localRedTypeInfo.setRed_content(this.jdField_a_of_type_JavaLangString);
-          localObject = new ArrayList();
-          ((ArrayList)localObject).add(localRedTypeInfo);
-          localRedDisplayInfo.a((ArrayList)localObject);
-          localRedAppInfo.a(localRedDisplayInfo);
-          this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(localRedAppInfo);
-          if (localRedTypeInfo.getRed_type() != 0) {
-            break;
-          }
-          if (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) == 4)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 20, 8, 0).a();
-            return;
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            bfne.a("ReaderTabBarView", localJSONException.getMessage());
-          }
-        }
-      } while (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) != 5);
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 15, 8, 0).a();
-      return;
-      if (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) == 4)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 30, 2, 0).a();
-        return;
+    default: 
+      return false;
+    case 1: 
+      this.a.setIsShowingPreguide(true);
+      boolean bool1 = paramMessage.getData().getBoolean("isFirstCall", false);
+      boolean bool2 = paramMessage.getData().getBoolean("isListViewSpring", false);
+      boolean bool3 = paramMessage.getData().getBoolean("isPendantBounce", false);
+      j = paramMessage.getData().getInt("pendantBountCnt", 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMapHongBaoListView", 2, "ARMapHongBaoListView handleMessage MSG_WHAT_GUIDE_SHOW, " + bool1 + "," + bool2 + "," + bool3 + "," + j);
       }
-    } while (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) != 5);
-    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 25, 2, 0).a();
+      if ((bool1) && (bool2))
+      {
+        this.a.jdField_a_of_type_Alwx.c(-this.a.e);
+        if ((ARMapHongBaoListView.a(this.a) != null) && (this.a.b)) {
+          ARMapHongBaoListView.a(this.a).b(false);
+        }
+      }
+      if ((bool3) && (j > 0))
+      {
+        float f = j * 1.0F / 6.0F;
+        if (this.a.jdField_a_of_type_Alwv != null) {
+          this.a.jdField_a_of_type_Alwv.a((int)(f * this.a.e), j * 300L);
+        }
+        k = j - 1;
+        i = k;
+        if (k > 0)
+        {
+          paramMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 1);
+          paramMessage.getData().putBoolean("isFirstCall", false);
+          paramMessage.getData().putBoolean("isListViewSpring", false);
+          paramMessage.getData().putBoolean("isPendantBounce", bool3);
+          paramMessage.getData().putInt("pendantBountCnt", k);
+          ARMapHongBaoListView.a(this.a).sendMessageDelayed(paramMessage, j * 300L + 200L);
+        }
+      }
+      break;
+    }
+    for (int i = k;; i = j)
+    {
+      if (i == 0)
+      {
+        paramMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 2);
+        ARMapHongBaoListView.a(this.a).sendMessageDelayed(paramMessage, 1200L);
+      }
+      this.a.invalidate();
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMapHongBaoListView", 2, "ARMapHongBaoListView handleMessage MSG_WHAT_GUIDE_HIDE");
+      }
+      if (ARMapHongBaoListView.a(this.a) != null) {
+        ARMapHongBaoListView.a(this.a).a(false);
+      }
+      ARMapHongBaoListView.a(this.a, paramMessage.what);
+      ARMapHongBaoListView.a(this.a).sendEmptyMessageDelayed(5, 300L);
+      return false;
+      this.a.setIsShowingPreguide(true);
+      i = this.a.e;
+      if (paramMessage.arg1 != 0) {
+        i = paramMessage.arg1;
+      }
+      this.a.jdField_a_of_type_Alwx.c(-i);
+      if (this.a.jdField_a_of_type_Alwv != null) {
+        this.a.jdField_a_of_type_Alwv.a(this.a.e / 3, 300L);
+      }
+      Message localMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 4);
+      localMessage.obj = paramMessage.obj;
+      ARMapHongBaoListView.a(this.a).sendMessageDelayed(localMessage, 2000L);
+      if ((ARMapHongBaoListView.a(this.a) == null) || (!this.a.b)) {
+        break;
+      }
+      ARMapHongBaoListView.a(this.a).b(false);
+      return false;
+      if (((Bundle)paramMessage.obj).getBoolean("isSpringBack")) {
+        ARMapHongBaoListView.a(this.a, paramMessage.what);
+      }
+      ARMapHongBaoListView.a(this.a).sendEmptyMessageDelayed(5, 300L);
+      if (ARMapHongBaoListView.a(this.a) == null) {
+        break;
+      }
+      ARMapHongBaoListView.a(this.a).a(false);
+      return false;
+      this.a.setIsShowingPreguide(false);
+      return false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfns
  * JD-Core Version:    0.7.0.1
  */

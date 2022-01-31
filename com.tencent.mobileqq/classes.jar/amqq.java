@@ -1,23 +1,22 @@
-import android.view.SurfaceView;
-import android.view.TextureView;
-import android.view.View;
-
 public class amqq
+  extends amql
 {
-  public static amqu a(View paramView)
+  private amrk a;
+  
+  public amqq(String paramString, amrk paramamrk)
   {
-    if ((paramView instanceof SurfaceView)) {
-      return new amqw((SurfaceView)paramView);
-    }
-    if ((paramView instanceof TextureView)) {
-      return new amqx((TextureView)paramView);
-    }
-    return null;
+    super(paramString);
+    this.a = paramamrk;
+  }
+  
+  public amrk a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqq
  * JD-Core Version:    0.7.0.1
  */

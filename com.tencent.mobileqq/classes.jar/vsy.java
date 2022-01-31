@@ -1,50 +1,62 @@
-import android.annotation.SuppressLint;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
+import android.os.Message;
 
 public class vsy
-  implements View.OnLongClickListener
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new vta(this);
-  View jdField_a_of_type_AndroidViewView;
-  
-  public vsy(QRCardActivity paramQRCardActivity) {}
-  
-  @SuppressLint({"ServiceCast", "NewApi"})
-  void a(String paramString)
+  public static String a(int paramInt)
   {
-    if (!TextUtils.isEmpty(paramString))
+    switch (paramInt)
     {
-      if (Build.VERSION.SDK_INT < 11) {
-        ((android.text.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(paramString);
-      }
+    default: 
+      return "BOOLEAN";
+    case 1: 
+      return "TRUE";
     }
-    else {
-      return;
-    }
-    ((android.content.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(paramString);
+    return "FALSE";
   }
   
-  public boolean onLongClick(View paramView)
+  public static String a(Message paramMessage)
   {
-    if (paramView == null) {
-      return false;
+    switch (paramMessage.what)
+    {
+    default: 
+      return "OTHERS[" + paramMessage.what + "] - " + paramMessage.arg1;
+    case 1: 
+      return "ACTION_VISIBILITY - " + paramMessage.arg1;
+    case 2: 
+      return "ACTION_KEEP_SHOWING - " + a(paramMessage.arg1);
+    case 3: 
+      return "ACTION_PLAY_ANIMATION";
+    case 4: 
+      return "ACTION_STOP_ANIMATION";
+    case 5: 
+      return "ACTION_SET_PROGRESS";
+    case 7: 
+      return "ACTION_UI_EVENT_CLICK - " + b(paramMessage.arg1);
+    case 8: 
+      return "ACTION_UI_EVENT_LONG_CLICK - " + b(paramMessage.arg1);
+    case 9: 
+      return "ACTION_UI_EVENT_TOUCH - " + b(paramMessage.arg1);
+    case 10: 
+      return "ACTION_UI_VISIBILITY_CHANGED - " + paramMessage.arg1;
     }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    paramView.setSelected(true);
-    bakh localbakh = new bakh();
-    localbakh.a(2131299262, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getString(2131625731), 2130838590);
-    baay.a(paramView, localbakh, this.jdField_a_of_type_AndroidViewView$OnClickListener, new vsz(this, paramView));
-    return true;
+    return "ACTION_SET_STUBMODE";
+  }
+  
+  public static String b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "BOOLEAN";
+    case 0: 
+      return "UNREGISTER";
+    }
+    return "REGISTER";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vsy
  * JD-Core Version:    0.7.0.1
  */

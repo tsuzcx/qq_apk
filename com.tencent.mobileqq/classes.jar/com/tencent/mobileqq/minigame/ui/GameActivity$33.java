@@ -1,33 +1,13 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import com.tencent.qphone.base.util.QLog;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 class GameActivity$33
   implements Runnable
 {
-  GameActivity$33(GameActivity paramGameActivity, String paramString) {}
+  GameActivity$33(GameActivity paramGameActivity) {}
   
   public void run()
   {
-    try
-    {
-      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.val$reportUrl).openConnection();
-      localHttpURLConnection.setRequestMethod("GET");
-      localHttpURLConnection.setConnectTimeout(10000);
-      localHttpURLConnection.setReadTimeout(10000);
-      localHttpURLConnection.setUseCaches(false);
-      localHttpURLConnection.setInstanceFollowRedirects(true);
-      localHttpURLConnection.connect();
-      int i = localHttpURLConnection.getResponseCode();
-      QLog.i("[minigame] GameActivity", 1, "reportBannerAd rspCode" + i);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.i("[minigame] GameActivity", 1, "reportBannerAd error, url = " + this.val$reportUrl, localThrowable);
-    }
+    this.this$0.moveTaskToBack(true);
   }
 }
 

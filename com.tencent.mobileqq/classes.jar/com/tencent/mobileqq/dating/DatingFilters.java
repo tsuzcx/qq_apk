@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.dating;
 
-import ajjy;
-import amvu;
+import ajyc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anmc;
 import appoint.define.appoint_define.LocaleInfo;
 import com.tencent.mobileqq.pb.PBStringField;
 import java.io.UnsupportedEncodingException;
@@ -12,7 +12,7 @@ import java.io.UnsupportedEncodingException;
 public class DatingFilters
   implements Parcelable
 {
-  public static final Parcelable.Creator<DatingFilters> CREATOR = new amvu();
+  public static final Parcelable.Creator<DatingFilters> CREATOR = new anmc();
   public static final int[] a;
   public static final String[] a;
   public static final int[] b;
@@ -29,11 +29,11 @@ public class DatingFilters
   
   static
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { ajjy.a(2131637061), "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { ajyc.a(2131702845), "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
     jdField_a_of_type_ArrayOfInt = new int[] { 0, 22, 26, 35, 120 };
     jdField_b_of_type_ArrayOfInt = new int[] { 0, 18, 23, 27, 36 };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { ajjy.a(2131637059), ajjy.a(2131637065), ajjy.a(2131637064), ajjy.a(2131637062), ajjy.a(2131637060) };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { ajjy.a(2131637067), ajjy.a(2131637069), ajjy.a(2131637066), ajjy.a(2131637063), ajjy.a(2131637058), ajjy.a(2131637068) };
+    jdField_b_of_type_ArrayOfJavaLangString = new String[] { ajyc.a(2131702843), ajyc.a(2131702849), ajyc.a(2131702848), ajyc.a(2131702846), ajyc.a(2131702844) };
+    jdField_c_of_type_ArrayOfJavaLangString = new String[] { ajyc.a(2131702851), ajyc.a(2131702853), ajyc.a(2131702850), ajyc.a(2131702847), ajyc.a(2131702842), ajyc.a(2131702852) };
   }
   
   private DatingFilters(Parcel paramParcel)

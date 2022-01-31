@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import mfs;
+import mqr;
 
 public class InviteUIChecker
 {
@@ -62,7 +62,7 @@ public class InviteUIChecker
         }
         QLog.i("InviteUIChecker", 2, "addInviteUITimeoutChecker session[" + str2 + "], task[" + paramVideoAppInterface + "], timeout[" + l1 + "]");
         return l1;
-        if (mfs.a()) {
+        if (mqr.a()) {
           l1 = 1500L;
         }
       }

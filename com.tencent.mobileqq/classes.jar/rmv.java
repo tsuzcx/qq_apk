@@ -1,16 +1,14 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.util.List;
 
-class rmv
-  extends AnimatorListenerAdapter
+final class rmv
+  implements rmz
 {
-  rmv(rmt paramrmt, VVideoView paramVVideoView, View paramView) {}
+  rmv(rmx paramrmx) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(boolean paramBoolean, List<BaseData> paramList)
   {
-    rmt.a(this.jdField_a_of_type_Rmt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView, this.jdField_a_of_type_AndroidViewView);
+    this.a.b(paramList);
   }
 }
 

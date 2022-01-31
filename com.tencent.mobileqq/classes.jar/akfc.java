@@ -1,71 +1,89 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.fts.FTSTroopSync;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
+import mqq.manager.Manager;
 
 public class akfc
-  implements akfd
+  implements Manager
 {
-  akfa jdField_a_of_type_Akfa;
-  akfb jdField_a_of_type_Akfb;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private QQAppInterface a;
   
-  akfc(QQAppInterface paramQQAppInterface, akfb paramakfb)
+  public akfc(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Akfb = paramakfb;
-    this.jdField_a_of_type_Akfa = this.jdField_a_of_type_Akfb.jdField_a_of_type_Akfa;
+    if (paramQQAppInterface == null) {
+      throw new NullPointerException("RecentManagerFor3rdPart, app is null");
+    }
+    this.a = paramQQAppInterface;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  public boolean a(String paramString, int paramInt)
   {
-    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
-    localEditor.putBoolean("fts_troop_upgrade_flag" + paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
-    localEditor.commit();
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getBoolean("fts_troop_upgrade_flag" + paramQQAppInterface.getCurrentAccountUin(), false);
-  }
-  
-  public void a() {}
-  
-  public boolean a()
-  {
-    return !a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public boolean b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(FTSTroopSync.class.getSimpleName());
-    Object localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a();
-    ArrayList localArrayList = new ArrayList(((ArrayList)localObject).size());
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.a != null)
     {
-      TroopInfo localTroopInfo = (TroopInfo)((Iterator)localObject).next();
-      try
+      bool1 = bool2;
+      if (this.a.e())
       {
-        localArrayList.add(new FTSTroopSync(5, Long.parseLong(localTroopInfo.troopuin)));
-      }
-      catch (Exception localException) {}
-      if (QLog.isColorLevel()) {
-        QLog.e("FTSTroopUpgrader", 2, "startUpgrade exception : " + localException.toString());
+        aktg localaktg = this.a.a().a();
+        paramString = localaktg.b(paramString, paramInt);
+        bool1 = bool2;
+        if (paramString != null)
+        {
+          localaktg.b(paramString);
+          bool1 = true;
+        }
       }
     }
-    if (this.jdField_a_of_type_Akfb.a(localArrayList))
+    return bool1;
+  }
+  
+  public boolean a(String paramString, int paramInt, long paramLong)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.a != null)
     {
-      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-      return true;
+      bool1 = bool2;
+      if (this.a.e())
+      {
+        aktg localaktg = this.a.a().a();
+        paramString = localaktg.b(paramString, paramInt);
+        bool1 = bool2;
+        if (paramString != null)
+        {
+          paramString.lastmsgtime = paramLong;
+          localaktg.a(paramString);
+          bool1 = true;
+        }
+      }
     }
-    return false;
+    return bool1;
+  }
+  
+  public boolean a(String paramString1, int paramInt, String paramString2, long paramLong1, long paramLong2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return false;
+    }
+    if ((this.a != null) && (this.a.e()))
+    {
+      aktg localaktg = this.a.a().a();
+      RecentUser localRecentUser = localaktg.a(paramString1, paramInt);
+      localRecentUser.uin = paramString1;
+      localRecentUser.setType(paramInt);
+      localRecentUser.displayName = paramString2;
+      localRecentUser.lastmsgtime = paramLong1;
+      localRecentUser.lastmsgdrafttime = paramLong2;
+      localaktg.a(localRecentUser);
+    }
+    return true;
+  }
+  
+  public void onDestroy()
+  {
+    this.a = null;
   }
 }
 

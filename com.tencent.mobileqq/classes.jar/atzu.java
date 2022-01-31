@@ -1,22 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.profile.view.CircularProgressBar;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SougouSearchInfo;
+import java.util.List;
 
-public class atzu
-  extends Handler
+class atzu
+  extends atzv
 {
-  public atzu(CircularProgressBar paramCircularProgressBar) {}
+  atzu(atzt paramatzt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, String paramString, List<OCRTextSearchInfo.SougouSearchInfo> paramList)
   {
-    this.a.invalidate();
-    if (CircularProgressBar.a(this.a))
+    paramList = this.a.a(paramList);
+    atzr localatzr = (atzr)this.a.a.a(113);
+    if (paramBoolean) {}
+    for (int i = 0;; i = -1)
     {
-      CircularProgressBar.a(this.a, CircularProgressBar.a(this.a) + CircularProgressBar.b(this.a));
-      if (CircularProgressBar.a(this.a) > 360) {
-        CircularProgressBar.a(this.a, 0);
-      }
-      CircularProgressBar.a(this.a).sendEmptyMessageDelayed(0, CircularProgressBar.c(this.a));
+      localatzr.notifyUI(3, paramBoolean, new Object[] { Integer.valueOf(i), paramString, paramList });
+      return;
     }
   }
 }

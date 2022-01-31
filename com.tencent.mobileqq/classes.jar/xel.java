@@ -1,9 +1,4 @@
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
-
-public abstract interface xel
-{
-  public abstract void a(HotWordSearchEntryDataModel.HotSearchItem paramHotSearchItem);
-}
+public abstract interface xel {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

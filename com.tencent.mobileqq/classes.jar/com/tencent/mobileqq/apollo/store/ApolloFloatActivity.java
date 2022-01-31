@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.store;
 
-import ailn;
-import aing;
-import aipj;
+import aiyg;
+import ajae;
+import ajch;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -16,8 +16,8 @@ import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anfc;
-import bbmy;
+import anvl;
+import bcpw;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.emosm.Client;
@@ -75,17 +75,17 @@ public class ApolloFloatActivity
     if (localIntent != null)
     {
       this.e = localIntent.getIntExtra("extra_key_gameid", -1);
-      aipj localaipj = aing.a(this.e);
+      ajch localajch = ajae.a(this.e);
       i = localIntent.getIntExtra("extra_key_taskid", 0);
-      if (localaipj != null)
+      if (localajch != null)
       {
-        localaipj.a(this, i);
+        localajch.a(this, i);
         this.c = localIntent.getIntExtra("extra_key_from", -1);
         if (this.c != 1) {
           break label478;
         }
         getWindow().getDecorView().setSystemUiVisibility(5894);
-        i = aing.a(localIntent.getIntExtra("extra_key_entratation", 1));
+        i = ajae.a(localIntent.getIntExtra("extra_key_entratation", 1));
         setRequestedOrientation(i);
         localIntent.getIntExtra("extra_key_transparent", 1);
         this.d = 0;
@@ -118,7 +118,7 @@ public class ApolloFloatActivity
       localObject = super.getResources();
       if (this.mSystemBarComp != null)
       {
-        i = ((Resources)localObject).getColor(2131101491);
+        i = ((Resources)localObject).getColor(2131167087);
         this.mSystemBarComp.setStatusColor(i);
         this.mSystemBarComp.setStatusBarColor(i);
       }
@@ -129,8 +129,8 @@ public class ApolloFloatActivity
       if (!this.jdField_a_of_type_Boolean) {
         super.hideTitleBar();
       }
-      if (!anfc.a().a()) {
-        anfc.a().a().doBindService(paramBundle.getContext().getApplicationContext());
+      if (!anvl.a().a()) {
+        anvl.a().a().doBindService(paramBundle.getContext().getApplicationContext());
       }
       this.h = (System.currentTimeMillis() - this.jdField_a_of_type_Long);
       return false;
@@ -148,11 +148,11 @@ public class ApolloFloatActivity
       label507:
       if (QLog.isColorLevel())
       {
-        bbmy.a(this, "透明浮层url为空", 0).a();
+        bcpw.a(this, "透明浮层url为空", 0).a();
         QLog.e("ApolloFloatActivity", 2, "ApolloFloat WebUrl is empty!");
         continue;
         if (QLog.isColorLevel()) {
-          bbmy.a(this, "透明浮层url为空", 0).a();
+          bcpw.a(this, "透明浮层url为空", 0).a();
         }
         QLog.e("ApolloFloatActivity", 2, "[doOnCreate] intent is null url null");
       }
@@ -162,7 +162,7 @@ public class ApolloFloatActivity
   public void doOnWindowFocusChanged(boolean paramBoolean)
   {
     if (this.c == 1) {
-      ailn.a(this);
+      aiyg.a(this);
     }
     super.doOnWindowFocusChanged(paramBoolean);
   }

@@ -1,23 +1,17 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import cooperation.troop_homework.outer.TroopHWRecordBaseActivity;
 
-public class bgoo
+final class bgoo
   implements View.OnClickListener
 {
-  public bgoo(TroopHWRecordBaseActivity paramTroopHWRecordBaseActivity) {}
+  bgoo(Dialog paramDialog, String paramString) {}
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
+    if (this.jdField_a_of_type_AndroidAppDialog != null) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    do
-    {
-      return;
-    } while (this.a.a);
-    this.a.setResult(0);
-    this.a.finish();
   }
 }
 

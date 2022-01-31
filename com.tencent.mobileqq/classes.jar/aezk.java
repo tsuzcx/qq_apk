@@ -1,6 +1,4 @@
-public class aezk
-  extends aeyh
-{}
+public class aezk {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar

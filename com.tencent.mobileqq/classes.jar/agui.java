@@ -1,39 +1,31 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.SystemClock;
-import android.view.View;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
 class agui
-  extends View
+  implements bhpm
 {
-  private View jdField_a_of_type_AndroidViewView;
+  agui(agug paramagug, LocalMediaInfo paramLocalMediaInfo) {}
   
-  public agui(aguh paramaguh, Context paramContext, View paramView, Drawable paramDrawable)
+  public void a(boolean paramBoolean)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    setBackgroundDrawable(paramDrawable);
-  }
-  
-  public void invalidateDrawable(Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_AndroidViewView.invalidate();
-  }
-  
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
-  {
-    long l = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_AndroidViewView.postDelayed(paramRunnable, paramLong - l);
-  }
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_AndroidViewView.removeCallbacks(paramRunnable);
+    if (paramBoolean)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation == 90) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight))
+      {
+        int i = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth = i;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.setPanoramaType();
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.setPanoramaType();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agui
  * JD-Core Version:    0.7.0.1
  */

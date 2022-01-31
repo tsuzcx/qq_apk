@@ -1,24 +1,40 @@
-import java.util.ArrayList;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QavSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 
 public class anpw
+  extends anpx
 {
-  public int a;
-  public String a;
-  public ArrayList<String> a;
-  public int b;
-  
-  public String toString()
+  public anpw(QQAppInterface paramQQAppInterface)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{tagId: ").append(this.jdField_a_of_type_Int).append("}");
-    localStringBuilder.append("{tagName: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{tagOnLinePeopleCount: ").append(this.b).append("}");
-    return localStringBuilder.toString();
+    super(e(), paramQQAppInterface);
+  }
+  
+  public static String e()
+  {
+    if (AppSetting.b) {
+      return "qq.android.qav.sov9_828_for_arm64";
+    }
+    if (lmb.f() <= 2) {
+      return "qq.android.qav.so_665";
+    }
+    return "qq.android.qav.sov9_828";
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return QavSoData.class;
+  }
+  
+  public String b()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     anpw
  * JD-Core Version:    0.7.0.1
  */

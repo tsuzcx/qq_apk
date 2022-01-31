@@ -1,36 +1,26 @@
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
 
 public class azww
-  implements azwx
+  implements QQPermissionCallback
 {
-  public String a;
+  public azww(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  azww(azwr paramazwr, azwp paramazwp)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((paramazwp != null) && (paramazwp.a != null)) {
-      this.jdField_a_of_type_JavaLangString = paramazwp.a.jdField_a_of_type_JavaLangString;
-    }
+    bbcv.a(this.a.getActivity(), paramArrayOfString, paramArrayOfInt);
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramBoolean2) {
-      this.jdField_a_of_type_Azwr.a(paramBoolean1, 113, paramString, this.jdField_a_of_type_Azwr.a);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.FaceDrawableImpl", 2, "====faceDrawableImpl onUpdateGroupFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + paramString + ",type: " + 113);
-      }
-      return;
-      this.jdField_a_of_type_Azwr.a(paramBoolean1, 113, paramString, null);
-    }
+    this.a.c = TroopHWJsPlugin.a(this.a.getActivity(), 260);
+    bfmr.a(this.a.getActivity());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azww
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import agfy;
+import agrx;
 
 public class NewPhotoListActivity$QueryPhotoTask$1
   implements Runnable
 {
-  public NewPhotoListActivity$QueryPhotoTask$1(agfy paramagfy) {}
+  public NewPhotoListActivity$QueryPhotoTask$1(agrx paramagrx) {}
   
   public void run()
   {
-    this.a.a.e();
+    this.a.a.c();
   }
 }
 

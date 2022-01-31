@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import ajjj;
-import atwx;
+import ajxn;
+import auuw;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class FriendProfileCardActivity$62
@@ -13,7 +13,7 @@ class FriendProfileCardActivity$62
   {
     try
     {
-      ((ajjj)this.this$0.app.getManager(51)).a(this.this$0.a.a);
+      ((ajxn)this.this$0.app.getManager(51)).a(this.this$0.a.a);
       return;
     }
     catch (Throwable localThrowable)

@@ -1,14 +1,17 @@
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
-public class uea
-  extends vql
+class uea
+  implements DialogInterface.OnClickListener
 {
-  public uea(StoryDetailFragment paramStoryDetailFragment) {}
+  uea(udz paramudz) {}
   
-  public boolean a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.d();
-    return true;
+    if (this.a.a.jdField_a_of_type_Ufm != null) {
+      this.a.a.jdField_a_of_type_Ufm.a(this.a.a.jdField_a_of_type_Ufk);
+    }
   }
 }
 

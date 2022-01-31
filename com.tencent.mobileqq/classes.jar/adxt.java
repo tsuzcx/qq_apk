@@ -1,27 +1,24 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class adxt
-  implements aojh
+  implements suu
 {
-  public adxt(AIOImageProviderService paramAIOImageProviderService, long paramLong, int paramInt1, int paramInt2, aotv paramaotv) {}
+  long jdField_a_of_type_Long;
+  adxu jdField_a_of_type_Adxu;
+  String jdField_a_of_type_JavaLangString;
   
-  public void a(int paramInt, String paramString)
+  public void a(adxu paramadxu, String paramString, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E", new String[] { String.valueOf(paramInt), paramString }, null, null, -1);
-    }
+    this.jdField_a_of_type_Adxu = paramadxu;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Aotv.b(), new String[] { paramString1 }, paramString2, null, -1);
-    }
-  }
+  public void a(String paramString1, String paramString2, int paramInt) {}
   
-  public void aF_() {}
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt) {}
   
-  public void aG_() {}
+  public void b(String paramString1, String paramString2, int paramInt) {}
 }
 
 

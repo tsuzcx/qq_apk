@@ -1,52 +1,72 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.TroopAssistantHomeFeedPlayInfo;
-import java.util.Iterator;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.ReadStoryVideoEventReceiver.1;
+import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.ReadStoryVideoEventReceiver.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 import java.util.List;
+import mqq.os.MqqHandler;
 
-public class tkv
-  extends tjg<TroopAssistantHomeFeedPlayInfo>
+public final class tkv
+  extends QQUIEventReceiver<tks, tdu>
 {
-  public tkv(TroopAssistantHomeFeedPlayInfo paramTroopAssistantHomeFeedPlayInfo)
+  public tkv(@NonNull tks paramtks)
   {
-    super(paramTroopAssistantHomeFeedPlayInfo);
-    paramTroopAssistantHomeFeedPlayInfo = (uje)sqg.a(11);
-    if (paramTroopAssistantHomeFeedPlayInfo.b != null) {
-      this.a = paramTroopAssistantHomeFeedPlayInfo.b;
-    }
+    super(paramtks);
   }
   
-  public uiw a(String paramString)
+  private void b(tks paramtks, tdu paramtdu)
   {
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      uiw localuiw = (uiw)localIterator.next();
-      if (localuiw.a.equals(paramString)) {
-        return localuiw;
+    Object localObject = ((tgb)tks.a(paramtks).getManager(251)).a().a(3, "");
+    if ((localObject != null) && (paramtdu.b.equals(((tfi)localObject).e))) {
+      if (QLog.isColorLevel()) {
+        QLog.i(this.TAG, 2, "onEvent: invoked. Message: guideInfo: " + localObject);
       }
     }
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(boolean paramBoolean, int paramInt, tjy paramtjy)
-  {
-    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
-    if ((paramBoolean) && (((List)localObject).size() > 0))
+    tfi localtfi;
+    do
     {
-      List localList = b((List)localObject);
-      paramtjy.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
-      urk.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
       return;
+      localObject = (stf)tks.a(paramtks).getManager(197);
+      localtfi = ((stf)localObject).b(paramtdu.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.i(this.TAG, 2, "syncHaloReadStatus: invoked. Message: haloNodeInfo: " + localtfi + "\nmanager: " + localObject);
+      }
+    } while (localtfi == null);
+    int i = localtfi.a.size() - 1;
+    for (;;)
+    {
+      if (i >= 0)
+      {
+        tga localtga = (tga)localtfi.a.get(i);
+        if ((localtga.jdField_a_of_type_Long == paramtdu.jdField_a_of_type_Long) && (!localtga.jdField_a_of_type_Boolean))
+        {
+          localtga.jdField_a_of_type_Boolean = true;
+          localtfi.b -= 1;
+        }
+      }
+      else
+      {
+        ((stf)localObject).c(localtfi);
+        ((stf)localObject).b(localtfi);
+        paramtks = new RecentTabHaloPresenter.ReadStoryVideoEventReceiver.2(this, paramtks);
+        ThreadManager.getUIHandler().post(paramtks);
+        return;
+      }
+      i -= 1;
     }
-    localObject = new tal();
-    ((tal)localObject).a = this.a.a();
-    urk.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((tal)localObject).a);
-    slv.a().a((slz)localObject, new tkw(this, paramtjy));
   }
   
-  public void b() {}
+  public void a(@NonNull tks paramtks, @NonNull tdu paramtdu)
+  {
+    ThreadManager.post(new RecentTabHaloPresenter.ReadStoryVideoEventReceiver.1(this, paramtks, paramtdu), 8, null, true);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tdu.class;
+  }
 }
 
 

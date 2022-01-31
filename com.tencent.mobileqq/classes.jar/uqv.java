@@ -1,18 +1,12 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-
-public class uqv
-  implements bekb
+public abstract interface uqv
 {
-  public uqv(StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
+  public abstract void b(boolean paramBoolean);
   
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (StoryHomeHorizontalListView.a(this.a) != null) {
-      StoryHomeHorizontalListView.a(this.a).a(paramInt, paramBoolean);
-    }
-    urk.a("HorizontalListView", "on item scroll mHasMore=%b, mIsLoadingMore:%b", Boolean.valueOf(StoryHomeHorizontalListView.a(this.a)), Boolean.valueOf(StoryHomeHorizontalListView.b(this.a)));
-    this.a.a();
-  }
+  public abstract boolean b();
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d();
 }
 
 

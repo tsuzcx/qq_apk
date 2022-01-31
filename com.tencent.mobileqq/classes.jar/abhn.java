@@ -1,58 +1,78 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchSimpleItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Switch;
 
 public class abhn
-  implements begw
+  extends axms
 {
-  public abhn(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity, String paramString1, String paramString2, begr parambegr) {}
+  public abhn(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    paramView = paramView.getContext();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app, "dc00898", "", "", "0X8009EC8", "0X8009EC8", 0, 0, "", "", "", "");
-      if (!badq.d(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity))
-      {
-        bbmy.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.getString(2131626719), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.getTitleBarHeight());
-        return;
-      }
-      paramView = (ajru)this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app.a(34);
-      if (paramView != null) {
-        paramView.a(3, this.jdField_a_of_type_JavaLangString, this.b);
-      }
-      PhoneUnityBindInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity);
-      PhoneUnityBindInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity, 2131653452, 1000L, true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.jdField_a_of_type_Boolean = false;
-      return;
-    case 1: 
-      if (!badq.d(paramView))
-      {
-        PhoneUnityBindInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity, 2131629008);
-        return;
-      }
-      paramView = new Intent(paramView, BindNumberActivity.class);
-      paramView.putExtra("cmd_param_is_from_uni", true);
-      paramView.putExtra("cmd_param_is_from_change_bind", true);
-      paramView.putExtra("kNeedUnbind", true);
-      paramView.putExtra("kUnityOther", true);
-      paramView.putExtra("kSrouce", this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.startActivityForResult(paramView, 1004);
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app, "dc00898", "", "", "0X8009EC9", "0X8009EC9", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Begr.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.jdField_a_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.i("GeneralSettingActivity", 2, String.format("%s onReqGetSimpleUISwitch suc=%b [%b,%d]", new Object[] { "SimpleUILog", Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt) }));
+    }
+    if ((!paramBoolean1) || (!this.a.app.getCurrentAccountUin().equals(paramString))) {}
+    while ((GeneralSettingActivity.a(this.a, this.a.a)) || (!this.a.a())) {
       return;
     }
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app, "dc00898", "", "", "0X8009ECA", "0X8009ECA", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Begr.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.finish();
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("GeneralSettingActivity", 2, String.format("%s onSwitchSimpleUICallback suc=%b bSwitchElsePref=%b hasChange=%b statusCode=%d", new Object[] { "SimpleUILog", Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean3), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt) }));
+    }
+    Object localObject;
+    label177:
+    String str;
+    if (paramBoolean3)
+    {
+      paramBoolean2 = this.a.a.a().isChecked();
+      if (paramBoolean1)
+      {
+        if (paramBoolean2) {
+          this.a.a(this.a.getString(2131719396, new Object[] { ajyc.a(2131705243) }), 2);
+        }
+        GeneralSettingActivity.a(this.a, false, this.a.a);
+        this.a.a(axmt.b(), axmt.c());
+        if (paramBoolean1) {
+          bhoo.a();
+        }
+        return;
+      }
+      this.a.a(this.a.a.a(), axmt.b());
+      if (paramBoolean2)
+      {
+        localObject = ajyc.a(2131705241);
+        str = this.a.getString(2131719395, new Object[] { localObject });
+        if (1 != paramInt) {
+          break label259;
+        }
+        localObject = ajyc.a(2131705238) + (String)localObject + ajyc.a(2131705239);
+      }
+    }
+    for (;;)
+    {
+      this.a.a((String)localObject, 1);
+      break;
+      localObject = ajyc.a(2131705242);
+      break label177;
+      label259:
+      if (6 == paramInt)
+      {
+        localObject = str + ajyc.a(2131705237);
+        continue;
+        if (paramBoolean1) {
+          break;
+        }
+        this.a.a(2131719393, 1);
+        break;
+      }
+      localObject = str;
+    }
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.ttpic.module_switchface;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import lpm;
+import mae;
 
 class SwitchFaceProcessor$1
   implements Runnable

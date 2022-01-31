@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import atmo;
-import atnz;
+import aukm;
+import aulx;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="eId,epId")
 public class Emoticon
-  extends atmo
+  extends aukm
   implements Serializable
 {
   public static final int JOB_H5_MAGIC = 4;
@@ -46,7 +46,7 @@ public class Emoticon
   public String name;
   public boolean value;
   public String voicePrint;
-  @atnz
+  @aulx
   public List<Integer> voicePrintItems;
   public String volumeColor;
   public int width;

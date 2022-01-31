@@ -1,92 +1,22 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tencent.biz.qqstory.storyHome.model.TagUserItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.VideoListLayout;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
 class uok
-  implements begw
+  implements uon
 {
-  uok(uoh paramuoh, begr parambegr, int paramInt, ukt paramukt) {}
+  uok(uoj paramuoj, PublishParam paramPublishParam, String paramString, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_Begr.e();
-    switch (paramInt)
-    {
-    }
-    Object localObject2;
-    do
-    {
-      do
-      {
-        return;
-        uoh.b(this.jdField_a_of_type_Uoh, this.jdField_a_of_type_Int);
-        if (this.jdField_a_of_type_Ukt.a().type != 3) {
-          break;
-        }
-      } while (!(this.jdField_a_of_type_Ukt.a().getOwner() instanceof QQUserUIItem));
-      paramView = ((QQUserUIItem)this.jdField_a_of_type_Ukt.a().getOwner()).qq;
-      localObject1 = new StringBuilder();
-      localObject2 = this.jdField_a_of_type_Uoh.a(this.jdField_a_of_type_Int);
-      if (localObject2 != null)
-      {
-        localObject2 = (VideoListLayout)((unw)localObject2).a(2131307559);
-        if (localObject2 != null)
-        {
-          localObject2 = ((VideoListLayout)localObject2).a();
-          if (localObject2 != null)
-          {
-            paramInt = ((StoryHomeHorizontalListView)localObject2).getFirstVisiblePosition();
-            while (paramInt <= ((StoryHomeHorizontalListView)localObject2).getLastVisiblePosition())
-            {
-              List localList = this.jdField_a_of_type_Ukt.d();
-              if ((paramInt >= 0) && (paramInt < localList.size()))
-              {
-                ((StringBuilder)localObject1).append(((StoryVideoItem)localList.get(paramInt)).mVid);
-                if (paramInt < ((StoryHomeHorizontalListView)localObject2).getLastVisiblePosition()) {
-                  ((StringBuilder)localObject1).append(",");
-                }
-              }
-              paramInt += 1;
-            }
-          }
-        }
-      }
-      urp.c("video_nenegative", "close_IDrecommend", 0, 0, new String[] { "", paramView, "", ((StringBuilder)localObject1).toString() });
-      return;
-    } while ((this.jdField_a_of_type_Ukt.a().type != 6) || (!(this.jdField_a_of_type_Ukt.a().getOwner() instanceof TagUserItem)));
-    long l = ((TagUserItem)this.jdField_a_of_type_Ukt.a().getOwner()).tagId;
-    paramView = new StringBuilder();
-    Object localObject1 = this.jdField_a_of_type_Uoh.a(this.jdField_a_of_type_Int);
-    if (localObject1 != null)
-    {
-      localObject1 = (VideoListLayout)((unw)localObject1).a(2131307559);
-      if (localObject1 != null)
-      {
-        localObject1 = ((VideoListLayout)localObject1).a();
-        if (localObject1 != null)
-        {
-          paramInt = ((StoryHomeHorizontalListView)localObject1).getFirstVisiblePosition();
-          while (paramInt <= ((StoryHomeHorizontalListView)localObject1).getLastVisiblePosition())
-          {
-            localObject2 = this.jdField_a_of_type_Ukt.d();
-            if ((paramInt >= 0) && (paramInt < ((List)localObject2).size()))
-            {
-              paramView.append(((StoryVideoItem)((List)localObject2).get(paramInt)).mVid);
-              if (paramInt < ((StoryHomeHorizontalListView)localObject1).getLastVisiblePosition()) {
-                paramView.append(",");
-              }
-            }
-            paramInt += 1;
-          }
-        }
-      }
-    }
-    urp.c("video_nenegative", "close_newsrecommend", 0, 0, new String[] { "", String.valueOf(l), "", paramView.toString() });
+    veg.c("QQStoryTakeVideoHelper", "generate manifest file success.start publishing.");
+    uoj.a(this.jdField_a_of_type_Uoj, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
+  
+  public void b()
+  {
+    veg.e("QQStoryTakeVideoHelper", "generate manifest file error. let's exit.");
+    uoj.a(this.jdField_a_of_type_Uoj).finish();
+    uoj.a(this.jdField_a_of_type_Uoj).overridePendingTransition(0, 0);
   }
 }
 

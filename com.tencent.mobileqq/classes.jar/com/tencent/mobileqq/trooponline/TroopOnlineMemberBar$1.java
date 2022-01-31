@@ -5,47 +5,47 @@ import android.content.res.Resources;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.widget.TextView;
-import azro;
-import badq;
+import bass;
+import bbev;
 
 public class TroopOnlineMemberBar$1
   implements Runnable
 {
-  public TroopOnlineMemberBar$1(azro paramazro) {}
+  public TroopOnlineMemberBar$1(bass parambass) {}
   
   public void run()
   {
-    if (azro.a(this.this$0) != 0)
+    if (bass.a(this.this$0) != 0)
     {
       this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if ((azro.a(this.this$0) != 2) && (badq.g(this.this$0.jdField_a_of_type_AndroidContentContext))) {
+      if ((bass.a(this.this$0) != 2) && (bbev.g(this.this$0.jdField_a_of_type_AndroidContentContext))) {
         break label170;
       }
       if (this.this$0.b != 1) {
         break label129;
       }
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(2131629179);
+      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(2131694856);
       this.this$0.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
       if ((this.this$0.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) && (this.this$0.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.isRunning())) {
         this.this$0.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
       }
-      azro.a(this.this$0, 2);
+      bass.a(this.this$0, 2);
     }
     label129:
     label170:
-    while (azro.a(this.this$0) != 1) {
+    while (bass.a(this.this$0) != 1) {
       for (;;)
       {
         return;
         if (this.this$0.b == 3) {
-          this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(2131627290);
+          this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(2131692928);
         } else {
-          this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(2131653852);
+          this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(2131719736);
         }
       }
     }
     if (this.this$0.jdField_a_of_type_AndroidGraphicsDrawableAnimatable == null) {
-      this.this$0.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839113));
+      this.this$0.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839140));
     }
     this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(null);
     this.this$0.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds((Drawable)this.this$0.jdField_a_of_type_AndroidGraphicsDrawableAnimatable, null, null, null);

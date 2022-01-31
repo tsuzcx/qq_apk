@@ -3,23 +3,23 @@ package com.tencent.biz.qqstory.shareGroup.infocard.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.BaseAdapter;
-import azvv;
+import bawz;
 import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 import java.util.ArrayList;
 import java.util.List;
-import tzo;
-import tzp;
-import uhm;
-import vqk;
+import umk;
+import uml;
+import uui;
+import wdg;
 
 public class ShareGroupInnerListView
   extends StoryHomeHorizontalListView
 {
   public String a;
-  public tzp a;
-  protected uhm a;
-  protected vqk a;
+  public uml a;
+  protected uui a;
+  protected wdg a;
   
   public ShareGroupInnerListView(Context paramContext)
   {
@@ -29,17 +29,17 @@ public class ShareGroupInnerListView
   public ShareGroupInnerListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.c = azvv.a(paramContext, 82.0F);
-    this.jdField_a_of_type_Uhm = new uhm(paramContext);
-    setAdapter(this.jdField_a_of_type_Uhm);
-    setOnItemClickListener(this.jdField_a_of_type_Uhm);
-    this.jdField_a_of_type_Vqk = new tzo(this);
-    setOnLoadMoreListener(this.jdField_a_of_type_Vqk);
+    this.c = bawz.a(paramContext, 82.0F);
+    this.jdField_a_of_type_Uui = new uui(paramContext);
+    setAdapter(this.jdField_a_of_type_Uui);
+    setOnItemClickListener(this.jdField_a_of_type_Uui);
+    this.jdField_a_of_type_Wdg = new umk(this);
+    setOnLoadMoreListener(this.jdField_a_of_type_Wdg);
   }
   
   public BaseAdapter a()
   {
-    return this.jdField_a_of_type_Uhm;
+    return this.jdField_a_of_type_Uui;
   }
   
   public void setData(VideoCollectionItem paramVideoCollectionItem)
@@ -49,7 +49,7 @@ public class ShareGroupInnerListView
     for (boolean bool = true;; bool = false)
     {
       setLoadMoreComplete(bool);
-      this.jdField_a_of_type_Uhm.a(paramVideoCollectionItem.collectionVideoUIItemList, paramVideoCollectionItem.collectionId);
+      this.jdField_a_of_type_Uui.a(paramVideoCollectionItem.collectionVideoUIItemList, paramVideoCollectionItem.collectionId);
       int i = this.b / this.c;
       if (paramVideoCollectionItem.collectionVideoUIItemList.size() < i) {
         break;
@@ -60,9 +60,9 @@ public class ShareGroupInnerListView
     setOverScrollMode(1);
   }
   
-  public void setLoadMoreDataListener(tzp paramtzp)
+  public void setLoadMoreDataListener(uml paramuml)
   {
-    this.jdField_a_of_type_Tzp = paramtzp;
+    this.jdField_a_of_type_Uml = paramuml;
   }
 }
 

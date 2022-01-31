@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.richstatus;
 
-import ajjj;
-import ajjy;
+import ajxn;
+import ajyc;
 import android.os.Bundle;
 import android.text.TextUtils;
-import avev;
-import avey;
-import awqx;
+import aweo;
+import awer;
+import axqw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ExtensionInfo;
-import gf;
+import hy;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
@@ -18,23 +18,23 @@ import mqq.os.MqqHandler;
 public class StatusManager$3$1
   implements Runnable
 {
-  public StatusManager$3$1(avey paramavey, boolean paramBoolean, Bundle paramBundle) {}
+  public StatusManager$3$1(awer paramawer, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
-    Object localObject3 = (ajjj)avev.a(this.jdField_a_of_type_Avey.a).getManager(51);
+    Object localObject3 = (ajxn)aweo.a(this.jdField_a_of_type_Awer.a).getManager(51);
     Object localObject2;
     int i;
     int j;
     Object localObject4;
     if (localObject3 != null)
     {
-      localObject2 = ((ajjj)localObject3).a(avev.a(this.jdField_a_of_type_Avey.a).getAccount());
+      localObject2 = ((ajxn)localObject3).a(aweo.a(this.jdField_a_of_type_Awer.a).getAccount());
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new ExtensionInfo();
-        ((ExtensionInfo)localObject1).uin = avev.a(this.jdField_a_of_type_Avey.a).getAccount();
+        ((ExtensionInfo)localObject1).uin = aweo.a(this.jdField_a_of_type_Awer.a).getAccount();
       }
       if (this.jdField_a_of_type_Boolean)
       {
@@ -56,7 +56,7 @@ public class StatusManager$3$1
             }
             ((RichStatus)localObject2).fontId = 0;
             ((RichStatus)localObject2).fontType = 0;
-            ((ajjj)localObject3).a((ExtensionInfo)localObject1);
+            ((ajxn)localObject3).a((ExtensionInfo)localObject1);
           }
         }
       }
@@ -68,7 +68,7 @@ public class StatusManager$3$1
         }
         localObject1 = "1";
         label243:
-        awqx.b(null, "CliOper", "", "", "signiture", "set_clk_save_succ", 0, 0, (String)localObject1, "", "", "");
+        axqw.b(null, "CliOper", "", "", "signiture", "set_clk_save_succ", 0, 0, (String)localObject1, "", "", "");
       }
     }
     for (Object localObject1 = localObject2;; localObject1 = null)
@@ -129,20 +129,20 @@ public class StatusManager$3$1
       }
       for (;;)
       {
-        avev.a(this.jdField_a_of_type_Avey.a, null);
+        aweo.a(this.jdField_a_of_type_Awer.a, null);
         ThreadManager.getUIHandler().post(new StatusManager.3.1.1(this, j, (RichStatus)localObject1, (TipsInfo)localObject2));
-        gf.a().a(j, (RichStatus)localObject1, (TipsInfo)localObject2, 0);
+        hy.a().a(j, (RichStatus)localObject1, (TipsInfo)localObject2, 0);
         return;
         label659:
-        if (avev.a(this.jdField_a_of_type_Avey.a) == null) {
+        if (aweo.a(this.jdField_a_of_type_Awer.a) == null) {
           break;
         }
-        ((RichStatus)localObject2).fontId = avev.a(this.jdField_a_of_type_Avey.a).fontId;
-        ((RichStatus)localObject2).fontType = avev.a(this.jdField_a_of_type_Avey.a).fontType;
-        if ((avev.a(this.jdField_a_of_type_Avey.a).mStickerInfos == null) || (avev.a(this.jdField_a_of_type_Avey.a).mStickerInfos.size() <= 0)) {
+        ((RichStatus)localObject2).fontId = aweo.a(this.jdField_a_of_type_Awer.a).fontId;
+        ((RichStatus)localObject2).fontType = aweo.a(this.jdField_a_of_type_Awer.a).fontType;
+        if ((aweo.a(this.jdField_a_of_type_Awer.a).mStickerInfos == null) || (aweo.a(this.jdField_a_of_type_Awer.a).mStickerInfos.size() <= 0)) {
           break;
         }
-        ((RichStatus)localObject2).mStickerInfos = new ArrayList(avev.a(this.jdField_a_of_type_Avey.a).mStickerInfos);
+        ((RichStatus)localObject2).mStickerInfos = new ArrayList(aweo.a(this.jdField_a_of_type_Awer.a).mStickerInfos);
         break;
         label771:
         localObject1 = "0";
@@ -155,27 +155,27 @@ public class StatusManager$3$1
         i = j;
         break label366;
         if (TextUtils.isEmpty((CharSequence)localObject3)) {
-          ((TipsInfo)localObject2).titleWording = ajjy.a(2131648573);
+          ((TipsInfo)localObject2).titleWording = ajyc.a(2131714362);
         }
         if (TextUtils.isEmpty(str2)) {
-          ((TipsInfo)localObject2).leftBtnWording = ajjy.a(2131648571);
+          ((TipsInfo)localObject2).leftBtnWording = ajyc.a(2131714360);
         }
         j = i;
         if (TextUtils.isEmpty(str1))
         {
-          ((TipsInfo)localObject2).rightBtnWording = ajjy.a(2131648575);
+          ((TipsInfo)localObject2).rightBtnWording = ajyc.a(2131714364);
           j = i;
           continue;
           if (TextUtils.isEmpty((CharSequence)localObject3)) {
-            ((TipsInfo)localObject2).titleWording = ajjy.a(2131648572);
+            ((TipsInfo)localObject2).titleWording = ajyc.a(2131714361);
           }
           if (TextUtils.isEmpty(str2)) {
-            ((TipsInfo)localObject2).leftBtnWording = ajjy.a(2131648574);
+            ((TipsInfo)localObject2).leftBtnWording = ajyc.a(2131714363);
           }
           j = i;
           if (TextUtils.isEmpty(str1))
           {
-            ((TipsInfo)localObject2).rightBtnWording = ajjy.a(2131648576);
+            ((TipsInfo)localObject2).rightBtnWording = ajyc.a(2131714365);
             j = i;
           }
         }

@@ -3,14 +3,14 @@ package com.tencent.qqmini.sdk.launcher.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bdmt;
+import berc;
 import java.util.HashMap;
 import java.util.Map;
 
 public class LaunchParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<LaunchParam> CREATOR = new bdmt();
+  public static final Parcelable.Creator<LaunchParam> CREATOR = new berc();
   public int a;
   public long a;
   public EntryModel a;
@@ -33,7 +33,7 @@ public class LaunchParam
   
   public LaunchParam()
   {
-    this.jdField_a_of_type_Int = 9999;
+    this.jdField_a_of_type_Int = 1001;
     this.jdField_c_of_type_Int = 0;
   }
   

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aeiv;
+import aets;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextPaint;
 import android.text.style.URLSpan;
@@ -23,8 +23,8 @@ class ChatActivityUtils$AddFriendSpan
     if (((paramView instanceof SplashActivity)) || ((paramView instanceof ChatActivity)))
     {
       paramView = (FragmentActivity)paramView;
-      if ((paramView.getChatFragment().a() instanceof aeiv)) {
-        ((aeiv)paramView.getChatFragment().a()).bm();
+      if ((paramView.getChatFragment().a() instanceof aets)) {
+        ((aets)paramView.getChatFragment().a()).bo();
       }
     }
   }

@@ -1,11 +1,8 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
 
-class adkf
-  extends acjc
+public abstract interface adkf
 {
-  TextView b;
-  
-  adkf(adke paramadke) {}
+  public abstract void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo);
 }
 
 

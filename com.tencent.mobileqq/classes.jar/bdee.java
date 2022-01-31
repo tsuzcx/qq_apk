@@ -1,47 +1,38 @@
-import java.io.Closeable;
-import java.io.InputStream;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public final class bdee
-  implements Closeable
+class bdee
+  extends Handler
 {
-  private final long jdField_a_of_type_Long;
-  private final String jdField_a_of_type_JavaLangString;
-  private final long[] jdField_a_of_type_ArrayOfLong;
-  private final InputStream[] jdField_a_of_type_ArrayOfJavaIoInputStream;
-  
-  private bdee(bddy parambddy, String paramString, long paramLong, InputStream[] paramArrayOfInputStream, long[] paramArrayOfLong)
+  bdee(bded parambded, Looper paramLooper)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ArrayOfJavaIoInputStream = paramArrayOfInputStream;
-    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
+    super(paramLooper);
   }
   
-  public InputStream a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return this.jdField_a_of_type_ArrayOfJavaIoInputStream[paramInt];
-  }
-  
-  public String a(int paramInt)
-  {
-    return bddy.a(a(paramInt));
-  }
-  
-  public void close()
-  {
-    InputStream[] arrayOfInputStream = this.jdField_a_of_type_ArrayOfJavaIoInputStream;
-    int j = arrayOfInputStream.length;
-    int i = 0;
-    while (i < j)
+    switch (paramMessage.what)
     {
-      bdef.a(arrayOfInputStream[i]);
-      i += 1;
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      bded localbded = this.a;
+      if (paramMessage.obj == null) {}
+      for (String str = null;; str = (String)paramMessage.obj)
+      {
+        localbded.a(str);
+        break;
+      }
+      this.a.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdee
  * JD-Core Version:    0.7.0.1
  */

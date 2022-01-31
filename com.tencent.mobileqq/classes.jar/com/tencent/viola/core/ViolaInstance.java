@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PointF;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.support.v4.app.Fragment;
@@ -59,6 +60,7 @@ public class ViolaInstance
   public static long jsCreateInstanceStart;
   public static long pageEnd;
   public static long pageStart = 0L;
+  private boolean compatMode;
   private boolean enableLayerType = true;
   private boolean isDestroy;
   private boolean isResume;
@@ -121,6 +123,7 @@ public class ViolaInstance
     ViolaLogUtils.d("ViolaInstance", "violaInstance create,instanceId=" + this.mInstanceId);
     init();
     ViolaEnvironment.sApplication = paramApplication;
+    detectCompatMode(paramString);
   }
   
   private void destroyView(View paramView)
@@ -147,6 +150,21 @@ public class ViolaInstance
     {
       ViolaLogUtils.e("ViolaInstance", "destroyView Exception e:" + paramView.getMessage());
     }
+  }
+  
+  private void detectCompatMode(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      do
+      {
+        return;
+        paramString = Uri.parse(paramString);
+      } while (paramString == null);
+      paramString = paramString.getQueryParameter("v_fwMode");
+    } while ((TextUtils.isEmpty(paramString)) || (!paramString.equals("1")));
+    this.compatMode = true;
   }
   
   private void ensureRenderArchor()
@@ -458,6 +476,11 @@ public class ViolaInstance
   public ViolaInstance.ViolaPageListener getViolaPageListener()
   {
     return this.mViolaPageListener;
+  }
+  
+  public boolean isCompatMode()
+  {
+    return this.compatMode;
   }
   
   public boolean isDestroy()

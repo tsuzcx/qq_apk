@@ -1,16 +1,23 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class afwu
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public afwu(BindNumberActivity paramBindNumberActivity) {}
+  public afwu(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
-    BindNumberActivity.b(this.a);
+    paramDialogInterface = (agdx)paramDialogInterface;
+    paramDialogInterface.a();
+    int i = paramDialogInterface.a();
+    paramDialogInterface = (akay)this.a.a.getManager(92);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.history.C2CAllFragment", 2, "onDismiss, recordCount : " + i + ",showRoamFlag" + paramDialogInterface.e());
+    }
   }
 }
 

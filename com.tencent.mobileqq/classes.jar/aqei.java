@@ -1,71 +1,76 @@
-import android.annotation.TargetApi;
-import android.graphics.Matrix;
-import android.graphics.Path;
-import android.graphics.PathMeasure;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Interpolator;
-import android.view.animation.Transformation;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class aqei
-  extends Animation
+public class aqei
+  extends aqdq
 {
-  public float a;
-  public int a;
-  public PathMeasure a;
-  public View a;
-  public Interpolator a;
-  public aqeh a;
-  public aqej a;
-  public float b;
-  
-  @TargetApi(11)
-  public aqei(Path paramPath, float paramFloat, View paramView1, View paramView2, aqeh paramaqeh)
+  public aqei(Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(paramPath, false);
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength();
-    this.jdField_a_of_type_AndroidViewView = paramView2;
-    this.jdField_b_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Aqeh = paramaqeh;
-    paramView1.setLayerType(2, null);
+    super(paramIntent);
+    this.e = true;
   }
   
-  private static float a(int paramInt, float paramFloat)
+  public List<RecentUser> a(List<RecentUser> paramList)
   {
-    switch (paramInt)
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-    default: 
-      return (float)Math.pow(paramFloat, 2.0D);
-    case 1: 
-      if (paramFloat < 0.8D) {
-        return 0.0F;
+      RecentUser localRecentUser = (RecentUser)paramList.next();
+      if ((localRecentUser != null) && (!bbbd.a(localRecentUser.uin)) && (localRecentUser.getType() != 1020) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && ((localRecentUser.getType() != 1006) || (a(aqas.h))) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 1001) && (localRecentUser.getType() != 10002) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1022) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 0) || (!nbc.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
+        localArrayList.add(localRecentUser);
       }
-      return 5.0F * paramFloat - 4.0F;
     }
-    return 0.5F * paramFloat + 0.5F;
+    return localArrayList;
   }
   
-  @TargetApi(11)
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  protected void d()
   {
-    Object localObject = paramTransformation.getMatrix();
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.getMatrix(this.jdField_a_of_type_Float * paramFloat, (Matrix)localObject, 1);
-    float f;
-    if (Build.VERSION.SDK_INT >= 11)
+    e();
+    super.d();
+  }
+  
+  public void e()
+  {
+    Object localObject1 = axuy.a(this.jdField_a_of_type_AndroidOsBundle);
+    if ((localObject1 == null) || (TextUtils.isEmpty(((AbsStructMsg)localObject1).mMsg_A_ActionData))) {}
+    for (;;)
     {
-      localObject = this.jdField_a_of_type_AndroidViewView;
-      f = this.jdField_b_of_type_Float;
-      aqeh localaqeh = this.jdField_a_of_type_Aqeh;
-      ((View)localObject).setRotation(f * paramFloat * aqeh.jdField_b_of_type_Float);
+      return;
+      Object localObject2 = bbej.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, ((AbsStructMsg)localObject1).mMsg_A_ActionData);
+      if (localObject2 == null) {
+        continue;
+      }
+      localObject1 = ((bbds)localObject2).b("usertype");
+      localObject2 = ((bbds)localObject2).b("unionid");
+      if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2))) {
+        continue;
+      }
+      try
+      {
+        i = Integer.parseInt((String)localObject1);
+        vel.a("share_uin", "qq_suc", bamn.b(this.jdField_a_of_type_AndroidOsBundle.getInt("uintype")), i, new String[] { localObject2 });
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("Q.qqstory.shareAccount", 2, "shareToQQ success userType:" + i + ",userUnionId:" + (String)localObject2);
+        return;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        for (;;)
+        {
+          int i = 0;
+        }
+      }
     }
-    if (this.jdField_a_of_type_Aqeh.jdField_b_of_type_Boolean)
-    {
-      f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(paramFloat);
-      this.jdField_a_of_type_AndroidViewView.setScaleX(this.jdField_a_of_type_Aqeh.c * f);
-      this.jdField_a_of_type_AndroidViewView.setScaleY(f * this.jdField_a_of_type_Aqeh.c);
-    }
-    paramTransformation.setAlpha(1.0F - a(this.jdField_a_of_type_Int, paramFloat));
   }
 }
 

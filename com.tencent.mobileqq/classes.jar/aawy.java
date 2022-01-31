@@ -1,40 +1,24 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.data.NowShowVideoInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.ilive.photo.NowLiveGallary.RspBody.PhotoInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class aawy
-  extends ajfn
+  extends BroadcastReceiver
 {
-  public aawy(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public aawy(Conversation paramConversation) {}
   
-  public void a(int paramInt, List<NowLiveGallary.RspBody.PhotoInfo> paramList)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt != 0)
+    if ("login".equals(paramIntent.getStringExtra("status")))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendProfileMoreInfoActivity", 2, "onGetNowOnliveGallay errorCode:" + paramInt);
-      }
+      this.a.a.a(27, 2);
+      this.a.a.b = paramIntent.getStringExtra("loginInfo");
+      this.a.a.a = paramIntent.getLongExtra("subappid", 1L);
+      this.a.a.a(-1, null);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileMoreInfoActivity", 2, "onGetNowOnliveGallay size:" + paramList.size());
-    }
-    FriendProfileMoreInfoActivity.a(this.a).clear();
-    paramInt = 0;
-    while (paramInt < paramList.size())
-    {
-      Object localObject = (NowLiveGallary.RspBody.PhotoInfo)paramList.get(paramInt);
-      localObject = new NowShowVideoInfo(((NowLiveGallary.RspBody.PhotoInfo)localObject).cover.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).video.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).timestamp.get());
-      FriendProfileMoreInfoActivity.a(this.a).add(localObject);
-      paramInt += 1;
-    }
-    this.a.a.sendEmptyMessage(1003);
+    this.a.a.k();
   }
 }
 

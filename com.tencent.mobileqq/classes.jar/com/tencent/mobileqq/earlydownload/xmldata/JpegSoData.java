@@ -1,21 +1,22 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import amzv;
+import anpm;
+import anqd;
 
 public class JpegSoData
   extends XmlData
 {
-  @amzv(a=true, b=false)
-  public String v7a_MD5;
+  @anqd(a=true, b=false)
+  public String SO_MD5;
   
   public String getSharedPreferencesName()
   {
-    return "early_qq.android.pic.jpeg.so_above826";
+    return "early_" + anpm.e();
   }
   
   public String getStrResName()
   {
-    return "qq.android.pic.jpeg.so_above826";
+    return anpm.e();
   }
 }
 

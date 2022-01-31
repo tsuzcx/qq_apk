@@ -1,80 +1,111 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.SoftReference;
+import android.content.Context;
+import android.view.MotionEvent;
 
 public class aueh
-  implements axrt
 {
-  String jdField_a_of_type_JavaLangString;
-  SoftReference<QQAppInterface> jdField_a_of_type_JavaLangRefSoftReference;
-  String b;
-  String c;
-  String d;
+  private float jdField_a_of_type_Float;
+  private final auei jdField_a_of_type_Auei;
+  private boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private boolean jdField_b_of_type_Boolean;
+  private float c;
+  private float d;
+  private float e;
   
-  public aueh(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
+  public aueh(Context paramContext, auei paramauei)
   {
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString3;
-    this.c = paramString2;
-    this.d = paramString4;
+    this.jdField_a_of_type_Auei = paramauei;
   }
   
-  public void onResp(axsq paramaxsq)
+  private float a(MotionEvent paramMotionEvent)
   {
-    try
-    {
-      if (paramaxsq.a == 0)
-      {
-        QLog.i("QbossPreDownloadManager", 1, "ResFile has download!");
-        if (TextUtils.isEmpty(this.c)) {
-          return;
-        }
-        if (apdh.b(this.c))
-        {
-          paramaxsq = new File(this.c);
-          File localFile = new File(this.c.substring(0, this.c.lastIndexOf(".")));
-          if (!paramaxsq.renameTo(localFile)) {
-            return;
-          }
-          long l = localFile.length();
-          paramaxsq = (QQAppInterface)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-          if (paramaxsq != null)
-          {
-            paramaxsq = (axxj)paramaxsq.getManager(193);
-            if (paramaxsq.a())
-            {
-              QLog.i("QbossPreDownloadManager", 1, "preDownloadSuccess");
-              paramaxsq.a(this.b, l);
-            }
-          }
-          bgbr.a().c(this.d, null);
-          return;
-        }
-        auef.a(this.b, this.jdField_a_of_type_JavaLangRefSoftReference, this.jdField_a_of_type_JavaLangString, "2");
-        QLog.i("QbossPreDownloadManager", 1, "ResFile check not exist");
-        return;
-      }
-    }
-    catch (Exception paramaxsq)
-    {
-      QLog.e("QbossPreDownloadManager", 1, paramaxsq, new Object[0]);
+    return (float)Math.toDegrees(Math.atan2(paramMotionEvent.getY(1) - paramMotionEvent.getY(0), paramMotionEvent.getX(1) - paramMotionEvent.getX(0)));
+  }
+  
+  private void a()
+  {
+    if ((this.jdField_a_of_type_Boolean) || (Math.abs(this.c - this.d) < 5.0F)) {
       return;
     }
-    if (paramaxsq.a == 1)
-    {
-      auef.a(this.b, this.jdField_a_of_type_JavaLangRefSoftReference, this.jdField_a_of_type_JavaLangString, "1");
-      QLog.i("QbossPreDownloadManager", 1, "ResFile dowload faield");
-    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Auei.b(this);
   }
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
+  private boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Auei.a(this));
+  }
+  
+  private void b()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Boolean = false;
+    } while (!this.jdField_b_of_type_Boolean);
+    this.jdField_a_of_type_Auei.a(this);
+    this.jdField_b_of_type_Boolean = false;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    int i = 0;
+    switch (paramMotionEvent.getActionMasked())
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return true;
+            b();
+            return true;
+          } while (paramMotionEvent.getPointerCount() != 2);
+          float f = a(paramMotionEvent);
+          this.d = f;
+          this.e = f;
+          this.c = f;
+          return true;
+        } while ((paramMotionEvent.getPointerCount() < 2) || ((this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)));
+        this.d = a(paramMotionEvent);
+        this.jdField_a_of_type_Float = ((paramMotionEvent.getX(1) + paramMotionEvent.getX(0)) * 0.5F);
+        this.jdField_b_of_type_Float = ((paramMotionEvent.getY(1) + paramMotionEvent.getY(0)) * 0.5F);
+        boolean bool = this.jdField_a_of_type_Boolean;
+        a();
+        if ((!bool) || (a())) {
+          i = 1;
+        }
+      } while (i == 0);
+      this.e = this.d;
+      return true;
+    } while (paramMotionEvent.getPointerCount() != 2);
+    b();
+    return true;
+  }
+  
+  public float b()
+  {
+    return this.jdField_b_of_type_Float;
+  }
+  
+  public float c()
+  {
+    return this.d - this.e;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aueh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,19 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-
-final class tfg
-  implements bbsh
+public class tfg
 {
-  tfg(String paramString, tcp paramtcp, tex paramtex) {}
+  public final long a;
+  public final tfe a;
+  public final long b;
   
-  public void a(BaseResp paramBaseResp)
+  public tfg(tfe paramtfe, long paramLong1, long paramLong2)
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction)) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
-    {
-    case -3: 
-    case -1: 
-    default: 
-      if (this.jdField_a_of_type_Tcp != null) {
-        this.jdField_a_of_type_Tcp.b(this.jdField_a_of_type_Tex);
-      }
-      break;
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      if (this.jdField_a_of_type_Tcp != null)
-      {
-        this.jdField_a_of_type_Tcp.a(this.jdField_a_of_type_Tex);
-        continue;
-        if (this.jdField_a_of_type_Tcp != null)
-        {
-          this.jdField_a_of_type_Tcp.c(this.jdField_a_of_type_Tex);
-          continue;
-          if (this.jdField_a_of_type_Tcp != null) {
-            this.jdField_a_of_type_Tcp.b(this.jdField_a_of_type_Tex);
-          }
-        }
-      }
-    }
+    this.jdField_a_of_type_Tfe = paramtfe;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+  }
+  
+  public String toString()
+  {
+    return "Progress{intput=" + this.jdField_a_of_type_Tfe + ", downloadBytes=" + this.jdField_a_of_type_Long + ", totalBytes=" + this.b + '}';
   }
 }
 

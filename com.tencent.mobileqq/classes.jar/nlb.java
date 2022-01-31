@@ -1,19 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.ViewPager.PageTransformer;
+import android.view.View;
+import com.tencent.biz.pubaccount.NativeAd.adapter.VerticleViewPager;
 
 public class nlb
-  implements moc
+  implements ViewPager.PageTransformer
 {
-  public nlb(ReadInJoyNewFeedsActivity.2 param2) {}
+  private nlb(VerticleViewPager paramVerticleViewPager) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void transformPage(View paramView, float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 3256 html web resource finish");
+    if (paramFloat < -1.0F)
+    {
+      paramView.setAlpha(0.0F);
+      return;
     }
+    if (paramFloat <= 1.0F)
+    {
+      paramView.setAlpha(1.0F);
+      paramView.setTranslationX(paramView.getWidth() * -paramFloat);
+      paramView.setTranslationY(paramView.getHeight() * paramFloat);
+      return;
+    }
+    paramView.setAlpha(0.0F);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

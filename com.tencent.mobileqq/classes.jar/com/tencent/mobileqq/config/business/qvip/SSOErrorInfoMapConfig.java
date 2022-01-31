@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.config.business.qvip;
 
-import amjv;
-import amjw;
+import amzz;
+import anaa;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Locale;
@@ -9,16 +9,16 @@ import java.util.Locale;
 public class SSOErrorInfoMapConfig
   implements Serializable
 {
-  public HashMap<String, amjv> mErrorMap = new HashMap();
+  public HashMap<String, amzz> mErrorMap = new HashMap();
   
   public String getErrorInfo(String paramString1, String paramString2)
   {
     if (this.mErrorMap.containsKey(paramString1))
     {
-      paramString1 = (amjv)this.mErrorMap.get(paramString1);
+      paramString1 = (amzz)this.mErrorMap.get(paramString1);
       if (paramString1.a.containsKey(paramString2))
       {
-        paramString1 = (amjw)paramString1.a.get(paramString2);
+        paramString1 = (anaa)paramString1.a.get(paramString2);
         paramString2 = Locale.getDefault().getCountry();
         String str = Locale.getDefault().getLanguage();
         paramString2 = str.toLowerCase() + "_" + paramString2.toLowerCase();

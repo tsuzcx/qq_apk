@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.jsp;
 
-import axrt;
+import aysa;
 import com.tencent.common.app.AppInterface;
 
 class AECameraPlugin$DownloadRunnable
   implements Runnable
 {
-  axrt jdField_a_of_type_Axrt;
+  aysa jdField_a_of_type_Aysa;
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   String jdField_a_of_type_JavaLangString;
   String b;
@@ -14,7 +14,7 @@ class AECameraPlugin$DownloadRunnable
   
   public void run()
   {
-    AECameraPlugin.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Axrt);
+    AECameraPlugin.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Aysa);
   }
 }
 

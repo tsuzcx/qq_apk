@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import abtm;
+import acdy;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,7 +13,7 @@ class SubAccountBindActivity$5$1$1
   
   public void run()
   {
-    ((ImageView)SubAccountBindActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$5$1.jdField_a_of_type_Abtm.a).getChildAt(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$5$1.jdField_a_of_type_Int).findViewById(2131302061)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    ((ImageView)SubAccountBindActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$5$1.jdField_a_of_type_Acdy.a).getChildAt(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$5$1.jdField_a_of_type_Int).findViewById(2131367679)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

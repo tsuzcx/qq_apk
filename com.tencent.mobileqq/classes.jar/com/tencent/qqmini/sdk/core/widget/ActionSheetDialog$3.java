@@ -3,22 +3,22 @@ package com.tencent.qqmini.sdk.core.widget;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
-import bdib;
-import bdic;
+import beme;
+import bemf;
 
 public class ActionSheetDialog$3
   implements Runnable
 {
-  public ActionSheetDialog$3(bdib parambdib) {}
+  public ActionSheetDialog$3(beme parambeme) {}
   
   public void run()
   {
-    bdib.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, 0.0F, bdib.a(this.this$0).getHeight()));
-    bdib.a(this.this$0).setInterpolator(AnimationUtils.loadInterpolator(bdib.a(this.this$0), 17432582));
-    bdib.a(this.this$0).setDuration(200L);
-    bdib.a(this.this$0).setFillAfter(true);
-    bdib.a(this.this$0).startAnimation(bdib.a(this.this$0));
-    bdib.a(this.this$0).setAnimationListener(new bdic(this));
+    beme.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, 0.0F, beme.a(this.this$0).getHeight()));
+    beme.a(this.this$0).setInterpolator(AnimationUtils.loadInterpolator(beme.a(this.this$0), 17432582));
+    beme.a(this.this$0).setDuration(200L);
+    beme.a(this.this$0).setFillAfter(true);
+    beme.a(this.this$0).startAnimation(beme.a(this.this$0));
+    beme.a(this.this$0).setAnimationListener(new bemf(this));
   }
 }
 

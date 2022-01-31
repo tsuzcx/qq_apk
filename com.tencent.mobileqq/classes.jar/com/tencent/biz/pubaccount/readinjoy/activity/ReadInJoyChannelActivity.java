@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import ajjy;
+import ajyc;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -13,8 +13,8 @@ import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import azzu;
-import bgmq;
+import bbay;
+import bhvh;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyWebProcessManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
@@ -34,29 +34,29 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.app.AppRuntime;
-import ndn;
-import new;
-import nhw;
-import nhx;
-import nkg;
-import nkh;
-import nki;
-import nkj;
-import nkk;
-import obz;
-import oct;
-import ogy;
-import ohb;
-import ohd;
-import ohi;
-import oie;
-import qcn;
-import qhp;
-import qiy;
-import qji;
-import qsq;
-import rcx;
-import vnd;
+import noo;
+import npx;
+import ntg;
+import nth;
+import nvr;
+import nvs;
+import nvt;
+import nvu;
+import nvv;
+import onk;
+import ooe;
+import osj;
+import osm;
+import oso;
+import ost;
+import otp;
+import qol;
+import qtu;
+import qvd;
+import qvn;
+import rfc;
+import rpl;
+import vzz;
 
 public class ReadInJoyChannelActivity
   extends IphoneTitleBarActivity
@@ -65,7 +65,7 @@ public class ReadInJoyChannelActivity
   protected long a;
   private MessageForStructing jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
   String jdField_a_of_type_JavaLangString = "";
-  public nhw a;
+  public ntg a;
   private boolean jdField_a_of_type_Boolean;
   private long jdField_b_of_type_Long = -1L;
   private boolean jdField_b_of_type_Boolean;
@@ -80,13 +80,13 @@ public class ReadInJoyChannelActivity
     if ((paramViewGroup == null) || (this.jdField_b_of_type_Boolean)) {
       return;
     }
-    paramViewGroup.setOnClickListener(new nkj(this));
+    paramViewGroup.setOnClickListener(new nvu(this));
   }
   
   private void a(boolean paramBoolean)
   {
-    if ((a()) && (this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_Nhw != null) && (this.jdField_a_of_type_Nhw.a() != null) && ((this.jdField_a_of_type_Nhw instanceof nhx)) && (((nhx)this.jdField_a_of_type_Nhw).a() != null) && (((nhx)this.jdField_a_of_type_Nhw).a().size() > 0)) {
-      obz.a(56, (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000L, this.jdField_a_of_type_Nhw.a().a(), (BaseArticleInfo)((nhx)this.jdField_a_of_type_Nhw).a().get(0), paramBoolean);
+    if ((a()) && (this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_Ntg != null) && (this.jdField_a_of_type_Ntg.a() != null) && ((this.jdField_a_of_type_Ntg instanceof nth)) && (((nth)this.jdField_a_of_type_Ntg).a() != null) && (((nth)this.jdField_a_of_type_Ntg).a().size() > 0)) {
+      onk.a(56, (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000L, this.jdField_a_of_type_Ntg.a().a(), (BaseArticleInfo)((nth)this.jdField_a_of_type_Ntg).a().get(0), paramBoolean);
     }
   }
   
@@ -101,12 +101,12 @@ public class ReadInJoyChannelActivity
   
   private void b(int paramInt)
   {
-    ohb.a().a(new nkh(this, paramInt));
+    osm.a().a(new nvs(this, paramInt));
   }
   
   private void b(ViewGroup paramViewGroup)
   {
-    if ((b()) && (bgmq.C(obz.a()))) {
+    if ((b()) && (bhvh.D(onk.a()))) {
       c(paramViewGroup);
     }
   }
@@ -136,11 +136,11 @@ public class ReadInJoyChannelActivity
           this.jdField_b_of_type_Boolean = "1".equals(localHashMap.get("canDownRefresh"));
           bool2 = "1".equals(localHashMap.get("canUpRefresh"));
           bool1 = "1".equals(localHashMap.get("isImmersive"));
-          bgmq.c(Integer.valueOf((String)localHashMap.get("channelID")).intValue());
-          if (this.jdField_a_of_type_Nhw != null)
+          bhvh.b(Integer.valueOf((String)localHashMap.get("channelID")).intValue());
+          if (this.jdField_a_of_type_Ntg != null)
           {
-            ((nhx)this.jdField_a_of_type_Nhw).a(this.jdField_b_of_type_Boolean, bool2, bool1);
-            ((nhx)this.jdField_a_of_type_Nhw).i();
+            ((nth)this.jdField_a_of_type_Ntg).a(this.jdField_b_of_type_Boolean, bool2, bool1);
+            ((nth)this.jdField_a_of_type_Ntg).i();
           }
           QLog.d("IphoneTitleBarActivity", 1, new Object[] { "handlerDynamicParams mCanPullDownRefresh=", Boolean.valueOf(this.jdField_b_of_type_Boolean), " mCanPullUpRefresh=", Boolean.valueOf(bool2), " mChannelName=", this.jdField_a_of_type_JavaLangString });
           return;
@@ -160,11 +160,11 @@ public class ReadInJoyChannelActivity
   {
     if (paramViewGroup != null)
     {
-      ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(this).inflate(2131494529, paramViewGroup, false);
+      ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(this).inflate(2131560101, paramViewGroup, false);
       paramViewGroup.addView(localViewGroup);
       d(localViewGroup);
-      ndn.a(null, "", "0X8009337", "0X8009337", 0, 0, "", "", "", new.c(), false);
-      localViewGroup.setOnClickListener(new nkk(this));
+      noo.a(null, "", "0X8009337", "0X8009337", 0, 0, "", "", "", npx.c(), false);
+      localViewGroup.setOnClickListener(new nvv(this));
     }
   }
   
@@ -179,16 +179,16 @@ public class ReadInJoyChannelActivity
   
   private void d()
   {
-    ViewGroup localViewGroup = (ViewGroup)findViewById(2131309089);
-    this.jdField_a_of_type_Nhw = new nhx(this);
-    ((nhx)this.jdField_a_of_type_Nhw).c(getIntent().getIntExtra("channel_from", -1));
-    this.jdField_a_of_type_Nhw.a(localViewGroup);
-    this.jdField_a_of_type_Nhw.a();
-    if ((b()) && ((this.jdField_a_of_type_Nhw instanceof nhx))) {
-      this.rightViewImg.setOnClickListener((View.OnClickListener)this.jdField_a_of_type_Nhw);
+    ViewGroup localViewGroup = (ViewGroup)findViewById(2131374831);
+    this.jdField_a_of_type_Ntg = new nth(this);
+    ((nth)this.jdField_a_of_type_Ntg).c(getIntent().getIntExtra("channel_from", -1));
+    this.jdField_a_of_type_Ntg.a(localViewGroup);
+    this.jdField_a_of_type_Ntg.a();
+    if ((b()) && ((this.jdField_a_of_type_Ntg instanceof nth))) {
+      this.rightViewImg.setOnClickListener((View.OnClickListener)this.jdField_a_of_type_Ntg);
     }
-    if ((ThemeUtil.isInNightMode(obz.a())) && (this.titleRoot != null)) {
-      View.inflate(this, 2131494415, this.titleRoot);
+    if ((ThemeUtil.isInNightMode(onk.a())) && (this.titleRoot != null)) {
+      View.inflate(this, 2131559985, this.titleRoot);
     }
     e();
     b(localViewGroup);
@@ -196,25 +196,25 @@ public class ReadInJoyChannelActivity
   
   private void d(ViewGroup paramViewGroup)
   {
-    paramViewGroup = (TextView)paramViewGroup.findViewById(2131306893);
-    if (vnd.a(this))
+    paramViewGroup = (TextView)paramViewGroup.findViewById(2131372605);
+    if (vzz.a(this))
     {
-      paramViewGroup.setText(ajjy.a(2131647079));
+      paramViewGroup.setText(ajyc.a(2131712867));
       return;
     }
-    paramViewGroup.setText(ajjy.a(2131647077));
+    paramViewGroup.setText(ajyc.a(2131712865));
   }
   
   private void e()
   {
     if (b()) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = oct.b();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = ooe.b();
     }
   }
   
   private void f()
   {
-    this.jdField_a_of_type_Nhw.a(true);
+    this.jdField_a_of_type_Ntg.a(true);
     ThreadManager.executeOnSubThread(new ReadInJoyChannelActivity.6(this));
   }
   
@@ -224,7 +224,7 @@ public class ReadInJoyChannelActivity
     {
       super.getWindow().addFlags(67108864);
       setImmersiveStatus();
-      this.titleRoot = ((RelativeLayout)findViewById(2131311638));
+      this.titleRoot = ((RelativeLayout)findViewById(2131377452));
       ImmersiveUtils.a(getWindow(), this.isClearCoverLayer);
       this.titleRoot.setFitsSystemWindows(false);
       this.titleRoot.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
@@ -235,7 +235,7 @@ public class ReadInJoyChannelActivity
       if (!ThemeUtil.isInNightMode(this.app)) {
         break label276;
       }
-      if ((azzu.b()) || (azzu.d())) {
+      if ((bbay.b()) || (bbay.d())) {
         break label255;
       }
       this.mSystemBarComp.setStatusBarColor(-7829368);
@@ -244,9 +244,9 @@ public class ReadInJoyChannelActivity
     {
       this.centerView.setTextColor(-16777216);
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130848260);
+      this.leftView.setBackgroundResource(2130848492);
       if ((this.leftView != null) && (c())) {
-        this.leftView.setText(ajjy.a(2131646988));
+        this.leftView.setText(ajyc.a(2131712776));
       }
       this.vg.setBackgroundColor(-1);
       a(this.vg);
@@ -262,12 +262,12 @@ public class ReadInJoyChannelActivity
       this.mSystemBarComp.setStatusBarDarkMode(true);
       continue;
       label276:
-      if ((Build.VERSION.SDK_INT >= 23) && (!azzu.b()) && (!azzu.d()))
+      if ((Build.VERSION.SDK_INT >= 23) && (!bbay.b()) && (!bbay.d()))
       {
         getWindow().getDecorView().setSystemUiVisibility(9216);
         this.mSystemBarComp.setStatusBarColor(-1);
       }
-      else if (!azzu.d())
+      else if (!bbay.d())
       {
         this.mSystemBarComp.setStatusBarColor(-2368549);
       }
@@ -288,8 +288,8 @@ public class ReadInJoyChannelActivity
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Nhw != null) {
-      this.jdField_a_of_type_Nhw.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Ntg != null) {
+      this.jdField_a_of_type_Ntg.a(paramInt1, paramInt2, paramIntent);
     }
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
   }
@@ -297,10 +297,10 @@ public class ReadInJoyChannelActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    qji.a().a(this);
-    this.jdField_a_of_type_Boolean = qcn.a();
+    qvn.a().a(this);
+    this.jdField_a_of_type_Boolean = qol.b();
     if (!this.jdField_a_of_type_Boolean) {
-      setTheme(2131689610);
+      setTheme(2131755146);
     }
     super.doOnCreate(paramBundle);
     if (Build.VERSION.SDK_INT >= 11) {
@@ -309,22 +309,22 @@ public class ReadInJoyChannelActivity
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().addFlags(-2147483648);
     }
-    setContentView(2131494361);
-    rcx.b(getIntent().getIntExtra("channel_id", -1));
-    paramBundle = (ohd)this.app.getManager(163);
+    setContentView(2131559931);
+    rpl.b(getIntent().getIntExtra("channel_id", -1));
+    paramBundle = (oso)this.app.getManager(163);
     ReadInJoyWebProcessManager.a(this.app);
-    setClickableTitle(getIntent().getStringExtra("channel_name"), new nkg(this));
+    setClickableTitle(getIntent().getStringExtra("channel_name"), new nvr(this));
     d();
     if (b())
     {
       ThreadManager.executeOnSubThread(new ReadInJoyChannelActivity.2(this));
       this.jdField_b_of_type_Long = System.currentTimeMillis();
-      oct.a(getIntent().getIntExtra("channel_from", 9), oct.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), oct.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), oct.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), oct.a(this.jdField_b_of_type_Long));
+      ooe.a(getIntent().getIntExtra("channel_from", 9), ooe.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), ooe.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), ooe.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), ooe.a(this.jdField_b_of_type_Long));
       if ((this.app != null) && (this.app.a() != null) && (!c())) {
         this.app.a().addObserver(this);
       }
-      ohi.b();
-      ohi.c();
+      ost.b();
+      ost.c();
     }
     c();
     b(0);
@@ -334,17 +334,17 @@ public class ReadInJoyChannelActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    ((ohd)obz.a().getManager(163)).a().i(getIntent().getIntExtra("channel_id", 0));
+    ((oso)onk.a().getManager(163)).a().i(getIntent().getIntExtra("channel_id", 0));
     this.jdField_a_of_type_Long = 0L;
-    if (this.jdField_a_of_type_Nhw != null) {
-      this.jdField_a_of_type_Nhw.d();
+    if (this.jdField_a_of_type_Ntg != null) {
+      this.jdField_a_of_type_Ntg.d();
     }
-    qji.a().b(this);
-    qsq.a(this).b();
+    qvn.a().b(this);
+    rfc.a(this).b();
     if (b())
     {
       ThreadManager.executeOnSubThread(new ReadInJoyChannelActivity.3(this));
-      oct.a(getIntent().getIntExtra("channel_from", 9), oct.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), oct.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), oct.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), oct.a(this.jdField_b_of_type_Long), this.jdField_b_of_type_Long, "");
+      ooe.a(getIntent().getIntExtra("channel_from", 9), ooe.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), ooe.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), ooe.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), ooe.a(this.jdField_b_of_type_Long), this.jdField_b_of_type_Long, "");
       this.jdField_b_of_type_Long = -1L;
       if ((this.app != null) && (this.app.a() != null)) {
         this.app.a().deleteObserver(this);
@@ -356,8 +356,8 @@ public class ReadInJoyChannelActivity
   public void doOnPause()
   {
     super.doOnPause();
-    this.jdField_a_of_type_Nhw.g();
-    qsq.a(this).a();
+    this.jdField_a_of_type_Ntg.g();
+    rfc.a(this).a();
     b(3);
   }
   
@@ -365,10 +365,10 @@ public class ReadInJoyChannelActivity
   {
     super.doOnResume();
     a();
-    this.jdField_a_of_type_Nhw.h();
-    qsq.a(this).a(getIntent().getIntExtra("channel_type", 0), getIntent().getIntExtra("channel_id", 0));
-    if ((bgmq.i()) && (a())) {
-      ogy.a().a(56);
+    this.jdField_a_of_type_Ntg.h();
+    rfc.a(this).a(getIntent().getIntExtra("channel_type", 0), getIntent().getIntExtra("channel_id", 0));
+    if ((bhvh.i()) && (a())) {
+      osj.a().a(56);
     }
     b(2);
   }
@@ -376,10 +376,10 @@ public class ReadInJoyChannelActivity
   public void doOnStart()
   {
     super.doOnStart();
-    bgmq.a(getAppRuntime());
-    this.jdField_a_of_type_Nhw.e();
+    bhvh.a(getAppRuntime());
+    this.jdField_a_of_type_Ntg.e();
     if ((this.mFlingHandler != null) && ((this.mFlingHandler instanceof FlingGestureHandler))) {
-      ((FlingGestureHandler)this.mFlingHandler).mTopLayout.setOnFlingGesture(new nki(this));
+      ((FlingGestureHandler)this.mFlingHandler).mTopLayout.setOnFlingGesture(new nvt(this));
     }
     b(1);
   }
@@ -387,20 +387,20 @@ public class ReadInJoyChannelActivity
   public void doOnStop()
   {
     super.doOnStop();
-    qji.a().a(false, "ReadInJoyChannelActivity doOnStop");
-    this.jdField_a_of_type_Nhw.f();
+    qvn.a().a(false, "ReadInJoyChannelActivity doOnStop");
+    this.jdField_a_of_type_Ntg.f();
     b(4);
   }
   
   public boolean onBackEvent()
   {
-    Object localObject = this.jdField_a_of_type_Nhw.a();
-    if ((localObject != null) && (((qhp)localObject).a() != null))
+    Object localObject = this.jdField_a_of_type_Ntg.a();
+    if ((localObject != null) && (((qtu)localObject).a() != null))
     {
-      localObject = ((qhp)localObject).a();
-      if (((qiy)localObject).a())
+      localObject = ((qtu)localObject).a();
+      if (((qvd)localObject).a())
       {
-        ((qiy)localObject).g();
+        ((qvd)localObject).g();
         return true;
       }
     }
@@ -414,7 +414,7 @@ public class ReadInJoyChannelActivity
     Object localObject = super.onCreateRightView();
     if (b())
     {
-      this.rightViewImg.setImageResource(2130842241);
+      this.rightViewImg.setImageResource(2130842325);
       this.rightViewImg.setVisibility(0);
       localObject = this.rightViewImg;
     }
@@ -426,7 +426,7 @@ public class ReadInJoyChannelActivity
     if ((paramObject instanceof MessageRecord))
     {
       paramObservable = (MessageRecord)paramObject;
-      if ((!paramObservable.isSendFromLocal()) && (!oie.a(paramObservable))) {
+      if ((!paramObservable.isSendFromLocal()) && (!otp.a(paramObservable))) {
         b();
       }
     }

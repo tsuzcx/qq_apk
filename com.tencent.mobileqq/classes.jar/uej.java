@@ -1,79 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import mqq.os.MqqHandler;
 
 public class uej
-  extends sgl<uec, snl>
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public uej(uec paramuec)
-  {
-    super(paramuec);
-  }
+  uej(ueg paramueg) {}
   
-  public void a(@NonNull uec paramuec, @NonNull snl paramsnl)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if ((paramsnl.jdField_a_of_type_Int == 2) || (!paramsnl.jdField_a_of_type_JavaLangString.equals(uec.a(paramuec))) || (uec.a(paramuec) == null))
-    {
-      urk.b(this.TAG, "ignore this feed info change event. %s.", paramsnl.toString());
-      return;
-    }
-    urk.a(this.TAG, "receive feed info change event. %s.", paramsnl.toString());
-    switch (paramsnl.b)
-    {
-    default: 
-      return;
-    case 1: 
-      if (paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
-      {
-        uec.a(paramuec).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
-        uec.a(paramuec).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount;
-        uec.a(paramuec).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount;
-      }
-      localObject = (spd)sqg.a(17);
-      localList = ((spd)localObject).a(paramsnl.jdField_a_of_type_JavaLangString, true);
-      uec.a(paramuec).a(localList, true, true);
-      if (uec.a(paramuec).a())
-      {
-        paramsnl = ((spd)localObject).a(paramsnl.jdField_a_of_type_JavaLangString, false);
-        uec.a(paramuec).a(paramsnl, true, false);
-      }
-      paramuec.a();
-      return;
-    case 2: 
-      if (paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
-      {
-        uec.a(paramuec).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
-        uec.a(paramuec).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount;
-        uec.a(paramuec).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount;
-      }
-      uec.a(paramuec).a(paramsnl.c);
-      paramuec.a();
-      return;
-    }
-    if (paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
-    {
-      uec.a(paramuec).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike = paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike;
-      uec.a(paramuec).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount = paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount;
-      uec.a(paramuec).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendLikeCount = paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendLikeCount;
-      uec.a(paramuec).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanLikeCount = paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanLikeCount;
-    }
-    Object localObject = (sps)sqg.a(15);
-    List localList = ((sps)localObject).a(paramsnl.jdField_a_of_type_JavaLangString, true);
-    uec.a(paramuec).b(localList, true, true);
-    if (uec.a(paramuec).a())
-    {
-      paramsnl = ((sps)localObject).a(paramsnl.jdField_a_of_type_JavaLangString, false);
-      uec.a(paramuec).b(paramsnl, true, false);
-    }
-    paramuec.a();
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.3.1(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
+    return false;
   }
-  
-  public Class acceptEventClass()
-  {
-    return snl.class;
-  }
-  
-  public void b(@NonNull uec paramuec, @NonNull snl paramsnl) {}
 }
 
 

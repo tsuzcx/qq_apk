@@ -1,51 +1,26 @@
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import com.tencent.widget.AbsListView;
 
-public class arpp
+public abstract interface arpp
 {
-  private int jdField_a_of_type_Int;
-  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
+  public abstract int a();
   
-  public arpo a()
-  {
-    return new arpo(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_a_of_type_Int);
-  }
+  public abstract void a();
   
-  public arpp a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
+  public abstract void a(int paramInt);
   
-  public arpp a(MsgBackupUserData paramMsgBackupUserData)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
-    return this;
-  }
+  public abstract void a(arpr paramarpr);
   
-  public arpp a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
+  public abstract void a(AbsListView paramAbsListView, int paramInt);
   
-  public arpp b(String paramString)
-  {
-    this.b = paramString;
-    return this;
-  }
+  public abstract void b();
   
-  public arpp c(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     arpp
  * JD-Core Version:    0.7.0.1
  */

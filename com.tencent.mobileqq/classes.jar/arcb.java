@@ -1,24 +1,85 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class arcb
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  arcb(arbz paramarbz, arbp paramarbp) {}
+  private final String jdField_a_of_type_JavaLangString = "reason";
+  private final String b = "homekey";
   
-  public void onClick(View paramView)
+  arcb(arbz paramarbz) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Arbz.jdField_a_of_type_Arbp.a()) {
-      return;
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoItemEventManager", 2, "onReceive ===>" + paramContext);
     }
-    arbp.a(this.jdField_a_of_type_Arbz.jdField_a_of_type_Arbp).a(arbz.a(this.jdField_a_of_type_Arbz));
-    awqx.b(null, "CliOper", "", "", "0X800A96F", "0X800A96F", 0, 0, "0", "0", "0", "");
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    {
+      paramContext = arbz.a(this.jdField_a_of_type_Arbz).iterator();
+      while (paramContext.hasNext()) {
+        ((arcc)paramContext.next()).b(false);
+      }
+    }
+    if ("android.intent.action.SCREEN_ON".equals(paramContext))
+    {
+      paramContext = arbz.a(this.jdField_a_of_type_Arbz).iterator();
+      while (paramContext.hasNext()) {
+        ((arcc)paramContext.next()).b(true);
+      }
+    }
+    if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
+    {
+      paramContext = arbz.a(this.jdField_a_of_type_Arbz).iterator();
+      while (paramContext.hasNext()) {
+        ((arcc)paramContext.next()).c(true);
+      }
+    }
+    if ("tencent.av.v2q.StopVideoChat".equals(paramContext))
+    {
+      paramContext = arbz.a(this.jdField_a_of_type_Arbz).iterator();
+      while (paramContext.hasNext()) {
+        ((arcc)paramContext.next()).c(false);
+      }
+    }
+    if ("VolumeBtnDown".equals(paramIntent.getAction()))
+    {
+      paramContext = arbz.a(this.jdField_a_of_type_Arbz).iterator();
+      while (paramContext.hasNext()) {
+        ((arcc)paramContext.next()).i();
+      }
+    }
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    {
+      paramContext = paramIntent.getStringExtra("reason");
+      if (paramContext != null) {
+        break label294;
+      }
+    }
+    for (;;)
+    {
+      return;
+      label294:
+      if (paramContext.equals("homekey"))
+      {
+        paramContext = arbz.a(this.jdField_a_of_type_Arbz).iterator();
+        while (paramContext.hasNext())
+        {
+          ((arcc)paramContext.next()).h();
+          QLog.d("VideoItemEventManager", 2, "onReceive ===>homekey press");
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     arcb
  * JD-Core Version:    0.7.0.1
  */

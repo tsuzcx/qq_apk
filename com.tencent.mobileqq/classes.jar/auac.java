@@ -1,17 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import java.util.List;
 
-public class auac
-  implements View.OnClickListener
+public abstract interface auac
 {
-  public auac(ProfileHeaderView paramProfileHeaderView, View paramView) {}
-  
-  public void onClick(View paramView)
-  {
-    atxr.a().c(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
+  public abstract void a(List<audk> paramList);
 }
 
 

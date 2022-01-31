@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import advv;
-import adxf;
-import adyb;
-import agez;
+import aegu;
+import aeie;
+import aeja;
+import agqx;
 import mqq.os.MqqHandler;
 
 public class AIOGalleryScene$5
   implements Runnable
 {
-  public AIOGalleryScene$5(advv paramadvv) {}
+  public AIOGalleryScene$5(aegu paramaegu) {}
   
   public void run()
   {
     this.this$0.c(false);
     this.this$0.a(false);
-    if ((this.this$0.jdField_a_of_type_Adxf.a() != null) && ((this.this$0.jdField_a_of_type_Adxf.a().a instanceof AIOShortVideoData))) {
-      advv.a(this.this$0, true);
+    if ((this.this$0.jdField_a_of_type_Aeie.a() != null) && ((this.this$0.jdField_a_of_type_Aeie.a().a instanceof AIOShortVideoData))) {
+      aegu.a(this.this$0, true);
     }
-    if (this.this$0.jdField_a_of_type_Agez.c())
+    if (this.this$0.jdField_a_of_type_Agqx.c())
     {
       this.this$0.u();
       this.this$0.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.this$0.b);

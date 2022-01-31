@@ -1,20 +1,23 @@
-import java.io.File;
+import com.tencent.biz.qqstory.msgTabNode.view.viewholder.MsgNodeViewHolder.1.1;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-final class tir
-  implements shc
+public class tir
+  implements URLDrawable.URLDrawableListener
 {
-  tir(File paramFile, String paramString) {}
+  tir(tiq paramtiq) {}
   
-  public void a(sha paramsha)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    String str = paramsha.b;
-    if (str != null)
-    {
-      if ((paramsha.a) && (this.jdField_a_of_type_JavaIoFile.exists()) && (!shq.a(this.jdField_a_of_type_JavaIoFile))) {
-        this.jdField_a_of_type_JavaIoFile.delete();
-      }
-      tio.a(new tiu(this.jdField_a_of_type_JavaLangString, str, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), ""));
-    }
+    ThreadManager.getUIHandler().postDelayed(new MsgNodeViewHolder.1.1(this), 1000L);
   }
 }
 

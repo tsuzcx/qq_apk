@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.filemanager.thumbnail;
 
-import aytp;
-import aytq;
+import azuf;
+import azug;
 
 public class TroopFileThumbnailFetchMgr$1
   implements Runnable
 {
-  public TroopFileThumbnailFetchMgr$1(aytp paramaytp, String paramString, boolean paramBoolean, int paramInt, aytq paramaytq) {}
+  public TroopFileThumbnailFetchMgr$1(azuf paramazuf, String paramString, boolean paramBoolean, int paramInt, azug paramazug) {}
   
   public void run()
   {
-    this.this$0.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_Aytq);
+    this.this$0.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_Azug);
   }
 }
 

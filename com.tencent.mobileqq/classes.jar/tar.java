@@ -1,73 +1,72 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgListHeadNode;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgListHeadNode;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 public class tar
-  extends slz<tcc>
 {
-  private static final String jdField_a_of_type_JavaLangString = skt.a("StoryLrSvc.msglist_head_node");
-  private List<Long> jdField_a_of_type_JavaUtilList;
-  private String b;
-  private int c;
+  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
+  private static HashSet<String> jdField_a_of_type_JavaUtilHashSet;
+  private static tar jdField_a_of_type_Tar;
   
-  public int a()
+  public static tar a()
   {
-    return this.c;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public slu a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspMsgListHeadNode localRspMsgListHeadNode = new qqstory_service.RspMsgListHeadNode();
-    try
+    if (jdField_a_of_type_Tar == null)
     {
-      localRspMsgListHeadNode.mergeFrom(paramArrayOfByte);
-      return new tcc(localRspMsgListHeadNode);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
+      jdField_a_of_type_Tar = new tar();
+      jdField_a_of_type_JavaUtilHashSet = new HashSet();
+      jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      Iterator localIterator = ((tbz)tdc.a(17)).a().iterator();
+      while (localIterator.hasNext())
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("RecentTabHaloRequest", 2, "decodeResponse: failed. Message: exception: " + paramArrayOfByte);
+        CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
+        if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
+        {
+          jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
+          jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
         }
       }
     }
+    return jdField_a_of_type_Tar;
   }
   
-  protected byte[] a()
+  public int a(String paramString)
   {
-    qqstory_service.ReqMsgListHeadNode localReqMsgListHeadNode = new qqstory_service.ReqMsgListHeadNode();
-    PBBytesField localPBBytesField = localReqMsgListHeadNode.current_seq;
-    if (this.b != null) {}
-    for (String str = this.b;; str = "")
-    {
-      localPBBytesField.set(ByteStringMicro.copyFromUtf8(str));
-      localReqMsgListHeadNode.uin_list.set(this.jdField_a_of_type_JavaUtilList);
-      localReqMsgListHeadNode.source.set(this.c);
-      localReqMsgListHeadNode.setHasFlag(true);
-      return localReqMsgListHeadNode.toByteArray();
+    paramString = (Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (paramString == null) {
+      return -1;
     }
+    return paramString.intValue();
   }
   
-  public String toString()
+  public void a()
   {
-    StringBuilder localStringBuilder = new StringBuilder("RecentTabHaloRequest{");
-    localStringBuilder.append("mCurrentSeq='").append(this.b).append('\'');
-    localStringBuilder.append(", mUins=").append(this.jdField_a_of_type_JavaUtilList);
-    localStringBuilder.append(", mWhen=").append(this.c);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    jdField_a_of_type_JavaUtilHashSet.clear();
+    jdField_a_of_type_JavaUtilHashMap.clear();
+    Iterator localIterator = ((tbz)tdc.a(17)).a().iterator();
+    while (localIterator.hasNext())
+    {
+      CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
+      if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
+      {
+        jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
+        jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
+      }
+    }
+    veg.d("StoryFailCommentCacher", "update failed comments. size = %d.", new Object[] { Integer.valueOf(jdField_a_of_type_JavaUtilHashSet.size()) });
+  }
+  
+  public boolean a(String paramString)
+  {
+    return jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
+  }
+  
+  public void b()
+  {
+    jdField_a_of_type_JavaUtilHashSet.clear();
+    jdField_a_of_type_JavaUtilHashMap.clear();
+    jdField_a_of_type_Tar = null;
   }
 }
 

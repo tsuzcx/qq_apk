@@ -6,12 +6,12 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.ArrayList;
-import nou;
-import npa;
+import oaf;
+import oal;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rdg;
-import rsl;
+import rpu;
+import sfd;
 
 public class ProteusBannerTriplePicItemData
   extends AdData
@@ -24,8 +24,8 @@ public class ProteusBannerTriplePicItemData
   private JSONObject a()
   {
     JSONObject localJSONObject1 = new JSONObject();
-    if (npa.a(this)) {
-      return nou.a(localJSONObject1, this);
+    if (oal.a(this)) {
+      return oaf.a(localJSONObject1, this);
     }
     try
     {
@@ -41,9 +41,9 @@ public class ProteusBannerTriplePicItemData
       }
       if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 2))
       {
-        Object localObject3 = rsl.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0), 4);
-        Object localObject2 = rsl.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(1), 4);
-        localObject1 = rsl.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(2), 4);
+        Object localObject3 = sfd.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0), 4);
+        Object localObject2 = sfd.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(1), 4);
+        localObject1 = sfd.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(2), 4);
         JSONObject localJSONObject2 = new JSONObject();
         localJSONObject2.put("multi_img_url1", ((URL)localObject3).toString());
         localJSONObject1.put("id_multi_img_1", localJSONObject2);
@@ -99,10 +99,10 @@ public class ProteusBannerTriplePicItemData
     this.b = a();
     try
     {
-      rdg localrdg = rdg.a("native_article", true);
+      rpu localrpu = rpu.a("native_article", true);
       localObject1 = localObject3;
-      if (localrdg != null) {
-        localObject1 = localrdg.getTemplateBean(this.b);
+      if (localrpu != null) {
+        localObject1 = localrpu.getTemplateBean(this.b);
       }
     }
     catch (JSONException localJSONException)

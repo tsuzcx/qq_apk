@@ -1,22 +1,56 @@
-import com.tencent.open.model.CreateVirtualResult;
-import com.tencent.open.model.GetVirtualListResult;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.text.method.MovementMethod;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.TextView;
+import java.lang.reflect.Field;
 
 public class bcjw
+  extends LinkMovementMethod
 {
-  protected void a(boolean paramBoolean, int paramInt) {}
+  private static MovementMethod jdField_a_of_type_AndroidTextMethodMovementMethod;
+  private static Field jdField_a_of_type_JavaLangReflectField;
   
-  protected void a(boolean paramBoolean, int paramInt, SdkAuthorize.AuthorizeResponse paramAuthorizeResponse) {}
+  public static MovementMethod a()
+  {
+    if (jdField_a_of_type_AndroidTextMethodMovementMethod == null) {
+      jdField_a_of_type_AndroidTextMethodMovementMethod = new bcjw();
+    }
+    return jdField_a_of_type_AndroidTextMethodMovementMethod;
+  }
   
-  protected void a(boolean paramBoolean, CreateVirtualResult paramCreateVirtualResult, int paramInt) {}
-  
-  public void a(boolean paramBoolean, GetVirtualListResult paramGetVirtualListResult) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt) {}
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getActionMasked() == 1) {}
+    try
+    {
+      if (jdField_a_of_type_JavaLangReflectField == null) {
+        jdField_a_of_type_JavaLangReflectField = View.class.getDeclaredField("mHasPerformedLongPress");
+      }
+      jdField_a_of_type_JavaLangReflectField.setAccessible(true);
+      boolean bool = jdField_a_of_type_JavaLangReflectField.getBoolean(paramTextView);
+      if (bool) {
+        return true;
+      }
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      localNoSuchFieldException.printStackTrace();
+      return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      for (;;)
+      {
+        localIllegalAccessException.printStackTrace();
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcjw
  * JD-Core Version:    0.7.0.1
  */

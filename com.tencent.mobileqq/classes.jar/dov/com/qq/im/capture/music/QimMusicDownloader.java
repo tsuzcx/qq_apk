@@ -1,20 +1,20 @@
 package dov.com.qq.im.capture.music;
 
 import android.text.TextUtils;
-import bhim;
+import bjde;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class QimMusicDownloader
 {
-  public static void a(String paramString1, String paramString2, bhim parambhim)
+  public static void a(String paramString1, String paramString2, bjde parambjde)
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
       QLog.e("MusicProviderView.Downloader", 1, "invalid downlaod params " + paramString1 + ", " + paramString2);
       return;
     }
-    ThreadManager.post(new QimMusicDownloader.DownloadMusicTask(paramString1, paramString2, parambhim), 5, null, false);
+    ThreadManager.post(new QimMusicDownloader.DownloadMusicTask(paramString1, paramString2, parambjde), 5, null, false);
   }
 }
 

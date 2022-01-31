@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.appbrand.a.a;
 
 import android.text.TextUtils;
-import bace;
+import bbdj;
 import com.tencent.mobileqq.microapp.appbrand.utils.b;
 import com.tencent.mobileqq.microapp.webview.BaseAppBrandWebview;
 import java.io.File;
@@ -23,7 +23,7 @@ final class j
     if (new File(str).isDirectory()) {
       return f.a(this.e, this.b, this.c, null, "operation not permitted, unlink " + this.a, this.d);
     }
-    bace.a(str, false);
+    bbdj.a(str, false);
     return f.a(this.e, this.b, this.c, null, this.d);
   }
 }

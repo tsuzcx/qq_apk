@@ -1,8 +1,16 @@
-import android.view.MotionEvent;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.widget.SingleLineTextView;
 
-public abstract interface afpy
+class afpy
+  extends aimv
 {
-  public abstract void a(MotionEvent paramMotionEvent);
+  public Button a;
+  public TextView a;
+  public MayKnowRecommend a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 

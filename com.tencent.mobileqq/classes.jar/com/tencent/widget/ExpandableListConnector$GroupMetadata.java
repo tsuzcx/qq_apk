@@ -3,12 +3,12 @@ package com.tencent.widget;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bejc;
+import bfqw;
 
 public class ExpandableListConnector$GroupMetadata
   implements Parcelable, Comparable<GroupMetadata>
 {
-  public static final Parcelable.Creator<GroupMetadata> CREATOR = new bejc();
+  public static final Parcelable.Creator<GroupMetadata> CREATOR = new bfqw();
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
   int b;

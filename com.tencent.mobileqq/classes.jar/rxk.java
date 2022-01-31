@@ -1,25 +1,28 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public class rxk
-  extends rxe
+class rxk
+  implements DialogInterface.OnCancelListener
 {
-  public String a;
+  rxk(rxh paramrxh, String paramString) {}
   
-  public rxk(JSONObject paramJSONObject)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    super(paramJSONObject);
-  }
-  
-  public static rxk a(JSONObject paramJSONObject)
-  {
-    return new rxk(paramJSONObject);
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null) {
-      this.a = paramJSONObject.toString();
+    paramDialogInterface = new JSONObject();
+    try
+    {
+      paramDialogInterface.put("index", rxh.a(this.jdField_a_of_type_Rxh));
+      paramDialogInterface.put("type", 1);
+      if (rxh.a(this.jdField_a_of_type_Rxh) != null) {
+        ((BridgeModule)rxh.a(this.jdField_a_of_type_Rxh).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
+      }
+      return;
     }
+    catch (JSONException paramDialogInterface) {}
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.tmassistant.st;
 
 import android.os.Handler;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.p;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.o;
 import com.tencent.tmdownloader.internal.downloadservice.b;
 
 class g
@@ -12,24 +12,24 @@ class g
   
   public void run()
   {
-    ac.c("SDKReportManager2", ">>onNetworkChanged enter");
+    ab.c("SDKReportManager2", ">>onNetworkChanged enter");
     if (SDKReportManager2.access$200(this.a) != null)
     {
-      p.c();
+      o.c();
       if (!b.b()) {
         break label67;
       }
-      ac.c("SDKReportManager2", ">>onNetworkChanged connect");
+      ab.c("SDKReportManager2", ">>onNetworkChanged connect");
       if (!SDKReportManager2.access$200(this.a).hasMessages(2)) {
         SDKReportManager2.access$200(this.a).sendEmptyMessage(2);
       }
     }
     for (;;)
     {
-      ac.c("SDKReportManager2", ">>onNetworkChanged exit");
+      ab.c("SDKReportManager2", ">>onNetworkChanged exit");
       return;
       label67:
-      ac.c("SDKReportManager2", ">>onNetworkChanged unconnect");
+      ab.c("SDKReportManager2", ">>onNetworkChanged unconnect");
       if (SDKReportManager2.access$200(this.a).hasMessages(2)) {
         SDKReportManager2.access$200(this.a).removeMessages(2);
       }

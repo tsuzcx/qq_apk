@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.widget.media;
 
-import bdcy;
-import bdnw;
+import begy;
+import besl;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,8 +29,8 @@ class MiniAppVideoPlayer$16
           i = MiniAppVideoPlayer.j(this.this$0);
           localJSONObject.put("buffered", i);
           localJSONObject.put("videoId", this.this$0.jdField_a_of_type_Long);
-          this.this$0.jdField_a_of_type_Bdcy.a("onVideoProgress", localJSONObject.toString(), this.this$0.jdField_a_of_type_Int);
-          bdnw.a("MiniAppVideoPlayer", "updateBufferProgress onVideoProgress = " + localJSONObject.toString());
+          this.this$0.jdField_a_of_type_Begy.a("onVideoProgress", localJSONObject.toString(), this.this$0.jdField_a_of_type_Int);
+          besl.a("MiniAppVideoPlayer", "updateBufferProgress onVideoProgress = " + localJSONObject.toString());
         }
         catch (JSONException localJSONException)
         {

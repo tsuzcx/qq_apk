@@ -1,23 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.DrawableRes;
 
-class aqvb
-  implements ajgy
+public class aqvb
 {
-  aqvb(aqva paramaqva) {}
-  
-  public void a(boolean paramBoolean)
+  @DrawableRes
+  public static int a(int paramInt)
   {
-    if (paramBoolean) {
-      aqva.a(this.a);
+    switch (paramInt)
+    {
+    default: 
+      return -1;
+    case 1001: 
+      return 2130847215;
+    case 1002: 
+      return 2130847216;
+    case 1003: 
+      return 2130847217;
+    case 1004: 
+      return 2130847218;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogether.dpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
-    }
+    return 2130847219;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqvb
  * JD-Core Version:    0.7.0.1
  */

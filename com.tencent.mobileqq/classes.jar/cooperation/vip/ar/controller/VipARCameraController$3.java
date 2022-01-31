@@ -1,16 +1,16 @@
 package cooperation.vip.ar.controller;
 
 import android.opengl.GLSurfaceView;
-import bgou;
+import bhxr;
 
 public class VipARCameraController$3
   implements Runnable
 {
-  public VipARCameraController$3(bgou parambgou) {}
+  public VipARCameraController$3(bhxr parambhxr) {}
   
   public void run()
   {
-    bgou.a(this.this$0).setVisibility(0);
+    bhxr.a(this.this$0).setVisibility(0);
   }
 }
 

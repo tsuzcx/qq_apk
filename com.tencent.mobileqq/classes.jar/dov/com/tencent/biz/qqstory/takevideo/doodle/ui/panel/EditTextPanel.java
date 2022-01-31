@@ -7,16 +7,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import apbx;
-import apgz;
-import azve;
-import bhfm;
-import bhlf;
-import bhlz;
-import bhmd;
-import bipw;
-import bipx;
-import bipy;
+import aptr;
+import apzc;
+import bawi;
+import bjae;
+import bjfx;
+import bjgr;
+import bjgv;
+import bkgr;
+import bkgs;
+import bkgt;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
@@ -25,13 +25,13 @@ import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean
 
 public class EditTextPanel
   extends RelativeLayout
-  implements apgz
+  implements apzc
 {
   public static String a;
   int jdField_a_of_type_Int = -1;
   EditText jdField_a_of_type_AndroidWidgetEditText;
-  private bhmd jdField_a_of_type_Bhmd = new bipw(this);
-  bipy jdField_a_of_type_Bipy;
+  private bjgv jdField_a_of_type_Bjgv = new bkgr(this);
+  bkgt jdField_a_of_type_Bkgt;
   public EditTextEffectView a;
   int b = -1;
   int c;
@@ -58,8 +58,8 @@ public class EditTextPanel
   
   private void a(DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, int paramInt)
   {
-    if (this.jdField_a_of_type_Bipy != null) {
-      this.jdField_a_of_type_Bipy.a(paramDynamicTextConfigBean, paramInt);
+    if (this.jdField_a_of_type_Bkgt != null) {
+      this.jdField_a_of_type_Bkgt.a(paramDynamicTextConfigBean, paramInt);
     }
   }
   
@@ -131,16 +131,16 @@ public class EditTextPanel
     this.d = paramInt1;
     DynamicTextConfigManager.DynamicTextConfigBean localDynamicTextConfigBean = a(paramInt2, paramInt1);
     if (localDynamicTextConfigBean != null) {
-      if (!AppSetting.c) {}
+      if (!AppSetting.d) {}
     }
     while (!QLog.isColorLevel()) {
       try
       {
-        azve.a(paramView, bhlz.a(localDynamicTextConfigBean.text_id, 0));
-        DynamicTextConfigManager localDynamicTextConfigManager = (DynamicTextConfigManager)bhfm.a(7);
-        bhlf localbhlf = (bhlf)bhfm.a(14);
+        bawi.a(paramView, bjgr.a(localDynamicTextConfigBean.text_id, 0));
+        DynamicTextConfigManager localDynamicTextConfigManager = (DynamicTextConfigManager)bjae.a(7);
+        bjfx localbjfx = (bjfx)bjae.a(14);
         if (localDynamicTextConfigBean != null) {
-          localbhlf.a(String.valueOf(localDynamicTextConfigBean.text_id), 5);
+          localbjfx.a(String.valueOf(localDynamicTextConfigBean.text_id), 5);
         }
         if (localDynamicTextConfigManager.a(localDynamicTextConfigBean))
         {
@@ -156,10 +156,10 @@ public class EditTextPanel
         }
         if (NetConnInfoCenter.isMobileConn())
         {
-          apbx.a(paramView.getContext(), 2131632540, 2131632539, new bipx(this, localException, localDynamicTextConfigBean));
+          aptr.a(paramView.getContext(), 2131698276, 2131698275, new bkgs(this, localException, localDynamicTextConfigBean));
           return;
         }
-        localException.a(localDynamicTextConfigBean, this.jdField_a_of_type_Bhmd);
+        localException.a(localDynamicTextConfigBean, this.jdField_a_of_type_Bjgv);
         return;
       }
     }
@@ -195,9 +195,9 @@ public class EditTextPanel
     }
   }
   
-  public void setPanelListener(bipy parambipy)
+  public void setPanelListener(bkgt parambkgt)
   {
-    this.jdField_a_of_type_Bipy = parambipy;
+    this.jdField_a_of_type_Bkgt = parambkgt;
   }
 }
 

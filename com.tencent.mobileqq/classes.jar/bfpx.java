@@ -1,10 +1,23 @@
-public abstract interface bfpx
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.CirclePageIndicator.SavedState;
+
+public final class bfpx
+  implements Parcelable.Creator<CirclePageIndicator.SavedState>
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public CirclePageIndicator.SavedState a(Parcel paramParcel)
+  {
+    return new CirclePageIndicator.SavedState(paramParcel, null);
+  }
+  
+  public CirclePageIndicator.SavedState[] a(int paramInt)
+  {
+    return new CirclePageIndicator.SavedState[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfpx
  * JD-Core Version:    0.7.0.1
  */

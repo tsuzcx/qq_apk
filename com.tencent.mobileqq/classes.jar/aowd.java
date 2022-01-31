@@ -1,19 +1,108 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class aowd
-  implements View.OnClickListener
 {
-  aowd(aovz paramaovz) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private aowe jdField_a_of_type_Aowe;
+  private Object jdField_a_of_type_JavaLangObject;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private int jdField_b_of_type_Int;
+  private byte[] jdField_b_of_type_ArrayOfByte;
+  private byte[] c;
   
-  public void onClick(View paramView)
+  aowd(aovy paramaovy)
   {
-    apck.a(this.a.a, this.a.c());
+    a(false, 0L, null, null, 0);
+  }
+  
+  aowd(aovy paramaovy, long paramLong, aowe paramaowe)
+  {
+    a(false, paramLong, null, paramaowe, 0);
+  }
+  
+  aowd(aovy paramaovy, aowe paramaowe)
+  {
+    a(false, 0L, null, paramaowe, 0);
+  }
+  
+  aowd(aovy paramaovy, String paramString)
+  {
+    a(false, 0L, paramString, null, 0);
+  }
+  
+  aowd(aovy paramaovy, boolean paramBoolean, long paramLong)
+  {
+    a(paramBoolean, paramLong, null, null, 0);
+  }
+  
+  aowd(aovy paramaovy, boolean paramBoolean, long paramLong, aowe paramaowe, int paramInt)
+  {
+    a(paramBoolean, paramLong, null, paramaowe, paramInt);
+  }
+  
+  aowd(aovy paramaovy, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, aowe paramaowe)
+  {
+    a(false, 0L, null, paramaowe, 0);
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
+    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
+    this.c = paramArrayOfByte3;
+  }
+  
+  private void a(boolean paramBoolean, long paramLong, String paramString, aowe paramaowe, int paramInt)
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Aowe = paramaowe;
+    this.jdField_a_of_type_JavaLangObject = null;
+  }
+  
+  int a()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  aowe a()
+  {
+    return this.jdField_a_of_type_Aowe;
+  }
+  
+  Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  void a()
+  {
+    this.jdField_a_of_type_Int += 1;
+  }
+  
+  boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  int b()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aowd
  * JD-Core Version:    0.7.0.1
  */

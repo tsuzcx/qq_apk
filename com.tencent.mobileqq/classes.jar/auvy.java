@@ -1,45 +1,84 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import java.util.Iterator;
-import java.util.List;
+import SummaryCardTaf.SSummaryCardRsp;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Pair;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity.2.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class auvy
-  implements Animator.AnimatorListener
+  extends ajtq
 {
-  public auvy(ProviderContainerView paramProviderContainerView) {}
+  public auvy(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
   {
-    this.a.c.setVisibility(8);
-    paramAnimator = ProviderContainerView.a(this.a);
-    if (paramAnimator != null) {
-      paramAnimator.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardBaseActivity", 2, "CardObserver onSetCardTemplateReturn isSuccess : " + paramBoolean + ", obj : " + paramObject);
     }
-    if (ProviderContainerView.a(this.a) != null)
+    String str = this.a.app.getCurrentAccountUin();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_BackgroundId", String.valueOf(this.a.g));
+    localHashMap.put("param_StyleId", String.valueOf(this.a.jdField_a_of_type_Long));
+    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    this.a.b();
+    if ((paramBoolean) && (paramObject != null))
     {
-      paramAnimator = ProviderContainerView.a(this.a).iterator();
-      while (paramAnimator.hasNext()) {
-        ((auwa)paramAnimator.next()).a();
+      if ((paramObject instanceof Card)) {
+        ThreadManager.post(new VipProfileCardBaseActivity.2.1(this, (Card)paramObject, localHashMap, str), 5, null, true);
+      }
+      while (!(paramObject instanceof Pair)) {
+        return;
+      }
+      paramObject = (Pair)paramObject;
+      Message localMessage;
+      if (((Integer)paramObject.first).intValue() == 101107)
+      {
+        this.a.jdField_a_of_type_Int = 1;
+        this.a.d = 2;
+        localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
+        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      }
+      for (;;)
+      {
+        localHashMap.put("param_FailCode", String.valueOf(paramObject.first));
+        axrl.a(this.a.app.getApp()).a(str, "profileCardSet", false, 0L, 0L, localHashMap, "", false);
+        return;
+        if (((Integer)paramObject.first).intValue() == 101108)
+        {
+          this.a.jdField_a_of_type_Int = 2;
+          this.a.d = 5;
+          localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+        }
+        else
+        {
+          localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(6);
+          if ((((Integer)paramObject.first).intValue() >= 400000) && (((Integer)paramObject.first).intValue() <= 499999)) {
+            localMessage.obj = ((SSummaryCardRsp)paramObject.second).emsg;
+          }
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+        }
       }
     }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (ProviderContainerView.a(this.a) != null) {
-      ProviderContainerView.a(this.a).b();
+    if (!paramBoolean) {}
+    for (paramObject = "-104";; paramObject = "-105")
+    {
+      localHashMap.put("param_FailCode", paramObject);
+      axrl.a(this.a.app.getApp()).a(str, "profileCardSet", false, 0L, 0L, localHashMap, "", false);
+      paramObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(6);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramObject);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auvy
  * JD-Core Version:    0.7.0.1
  */

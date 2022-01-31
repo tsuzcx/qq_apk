@@ -1,19 +1,12 @@
-import mqq.app.QQPermissionCallback;
+import android.app.Activity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 
-class aqsx
-  implements QQPermissionCallback
+public abstract interface aqsx
 {
-  aqsx(aqst paramaqst, String paramString) {}
+  public abstract void a(MessageRecord paramMessageRecord, Activity paramActivity);
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Aqst.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{'result':-10, 'msg': 'no permission to read contact number'}" });
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    aqst.a(this.jdField_a_of_type_Aqst, this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity);
 }
 
 

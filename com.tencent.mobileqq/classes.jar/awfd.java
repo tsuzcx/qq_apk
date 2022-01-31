@@ -1,46 +1,8 @@
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.3;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.utils.quic.QuicResDownload;
-import java.util.Properties;
-import mqq.app.MobileQQ;
+import android.view.View;
 
-public class awfd
-  implements awfg
+public abstract interface awfd
 {
-  public awfd(ShortVideoResourceManager.3 param3) {}
-  
-  public void I_()
-  {
-    VideoEnvironment.a("QuicResDownload", "doUserDownloadQuicResourceAsync: [onNetWorkNone]", null);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    VideoEnvironment.a("QuicResDownload", "doUserDownloadQuicResourceAsync: [onDownloadFinish]name=" + paramString1 + " filepath=" + paramString2, null);
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    if ((paramLong1 == paramLong2) && (!QuicResDownload.a)) {
-      QuicResDownload.a = true;
-    }
-    try
-    {
-      Properties localProperties = new Properties();
-      localProperties.put("version", "8.2.6.4370");
-      localProperties.put("appid", String.valueOf(AppSetting.a()));
-      localProperties.put("release", String.valueOf(true));
-      localProperties.put("name", paramString);
-      awqm.a(this.a.a.getApplication().getApplicationContext()).reportKVEvent("msf_quic_resdown", localProperties);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
+  public abstract void a(int paramInt, View paramView);
 }
 
 

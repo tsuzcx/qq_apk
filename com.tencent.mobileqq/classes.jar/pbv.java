@@ -1,15 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeUsersCommentsView;
-
-public class pbv
-  implements View.OnClickListener
+class pbv
+  extends akdo
 {
-  public pbv(NativeUsersCommentsView paramNativeUsersCommentsView) {}
+  pbv(pbu parampbu) {}
   
-  public void onClick(View paramView)
+  public void b(boolean paramBoolean, String paramString)
   {
-    this.a.callOnClick();
+    this.a.f();
   }
 }
 

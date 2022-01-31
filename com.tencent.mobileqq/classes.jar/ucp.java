@@ -1,28 +1,10 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
-import java.util.ArrayList;
-
-class ucp
-  extends ParallelJobSegment<String, Integer>
+public class ucp
 {
-  public ucp(uch paramuch)
-  {
-    this(paramuch, "RequestViewCountSegment");
-  }
-  
-  public ucp(uch paramuch, String paramString)
-  {
-    super(paramString);
-  }
-  
-  protected void a(JobContext paramJobContext, String paramString)
-  {
-    szp localszp = new szp();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramString);
-    localszp.a = localArrayList;
-    slv.a().a(localszp, new ucq(this, paramJobContext, paramString));
-  }
+  public float a;
+  public int a;
+  public Object a;
+  public boolean a;
+  public float b;
 }
 
 

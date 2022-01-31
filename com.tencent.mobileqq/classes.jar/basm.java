@@ -1,44 +1,50 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.vashealth.VideoCallBack;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class basm
-  extends Handler
 {
-  public basm(VideoCallBack paramVideoCallBack, bbms parambbms, String paramString, Activity paramActivity) {}
+  public int a;
+  public basm a;
+  public String a;
+  public ArrayList<basm> a;
+  public String b;
   
-  public void handleMessage(Message paramMessage)
+  private basm() {}
+  
+  public basm(int paramInt, String paramString1, String paramString2)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+  }
+  
+  public String a()
+  {
+    String str = this.jdField_a_of_type_JavaLangString;
+    basm localbasm = this;
+    while (localbasm.jdField_a_of_type_Basm != null)
     {
+      localbasm = localbasm.jdField_a_of_type_Basm;
+      str = localbasm.jdField_a_of_type_JavaLangString + "-" + str;
     }
-    int i;
-    do
+    return str;
+  }
+  
+  public void a(basm parambasm)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambasm);
+  }
+  
+  public boolean a(basm parambasm)
+  {
+    if ((parambasm != null) && (parambasm.jdField_a_of_type_Int + 1 == this.jdField_a_of_type_Int))
     {
-      return;
-      if ((this.jdField_a_of_type_Bbms != null) && (this.jdField_a_of_type_Bbms.isShowing())) {
-        this.jdField_a_of_type_Bbms.dismiss();
-      }
-      i = paramMessage.arg1;
-      if (i != 0) {
-        break;
-      }
-      paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
-      Intent localIntent = new Intent();
-      localIntent.putExtra("video_dir", paramMessage);
-      localIntent.putExtra("thumb_dir", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(1, localIntent);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    } while (!QLog.isColorLevel());
-    QLog.i("VideoCallBack", 2, "encode success: " + paramMessage);
-    return;
-    this.jdField_a_of_type_AndroidAppActivity.setResult(2);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    QLog.e("VideoCallBack", 1, "error! ret = " + i);
+      this.jdField_a_of_type_Basm = parambasm;
+      return true;
+    }
+    return false;
   }
 }
 

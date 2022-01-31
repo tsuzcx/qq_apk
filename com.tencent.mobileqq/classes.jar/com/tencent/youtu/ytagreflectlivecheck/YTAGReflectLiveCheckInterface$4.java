@@ -7,8 +7,8 @@ final class YTAGReflectLiveCheckInterface$4
   
   public void run()
   {
-    YTAGReflectLiveCheckInterface.access$200().onFailed(this.val$resultCode, this.val$message, this.val$tips);
-    YTAGReflectLiveCheckInterface.access$202(null);
+    YTAGReflectLiveCheckInterface.access$300().onFailed(this.val$resultCode, this.val$message, this.val$tips);
+    YTAGReflectLiveCheckInterface.access$302(null);
   }
 }
 

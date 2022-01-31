@@ -1,46 +1,25 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTDocFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 
 public class aodb
-  extends apdj
+  implements asko<EmoticonPackage>
 {
-  public aodb(QfileRecentTDocFileTabView paramQfileRecentTDocFileTabView) {}
+  public aodb(AIOEmotionFragment paramAIOEmotionFragment, QQAppInterface paramQQAppInterface) {}
   
-  public void a() {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e()
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    Object localObject = aonm.b();
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    if (paramEmoticonPackage == null)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (aonk.a(((FileManagerEntity)((Iterator)localObject).next()).Uuid)) {
-          awqx.b(QfileRecentTDocFileTabView.b(this.a), "dc00898", "", "", "0X800A08C", "0X800A08C", 0, 0, "", "", "", "");
-        }
-      }
+      AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 32);
+      return;
     }
-  }
-  
-  public void f() {}
-  
-  public void g()
-  {
-    this.a.a.a().G();
+    AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aodb
  * JD-Core Version:    0.7.0.1
  */

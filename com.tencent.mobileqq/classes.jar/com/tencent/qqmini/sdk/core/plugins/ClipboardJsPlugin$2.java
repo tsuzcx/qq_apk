@@ -3,13 +3,13 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import bdfz;
+import beka;
 import org.json.JSONObject;
 
 class ClipboardJsPlugin$2
   implements Runnable
 {
-  ClipboardJsPlugin$2(ClipboardJsPlugin paramClipboardJsPlugin, bdfz parambdfz) {}
+  ClipboardJsPlugin$2(ClipboardJsPlugin paramClipboardJsPlugin, beka parambeka) {}
   
   public void run()
   {

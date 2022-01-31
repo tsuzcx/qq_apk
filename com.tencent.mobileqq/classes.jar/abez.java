@@ -1,48 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class abez
-  implements DialogInterface.OnClickListener
+  implements akil
 {
-  public abez(NotificationActivity paramNotificationActivity) {}
+  public abez(FriendProfileCardActivity paramFriendProfileCardActivity, Intent paramIntent) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Object paramObject)
   {
-    this.a.app.logout(true);
-    baig.a(this.a.app.getApp(), this.a.app.getCurrentAccountUin(), false);
-    paramDialogInterface = (axat)this.a.app.getManager(61);
-    if (paramDialogInterface != null) {}
-    for (paramDialogInterface = paramDialogInterface.a();; paramDialogInterface = null)
+    if ((paramObject instanceof String))
     {
-      if ((paramDialogInterface != null) && (paramDialogInterface.size() > 0))
-      {
-        paramDialogInterface = paramDialogInterface.iterator();
-        while (paramDialogInterface.hasNext())
-        {
-          String str = (String)paramDialogInterface.next();
-          if (!atok.a().a(this.a.app, str))
-          {
-            this.a.app.updateSubAccountLogin(str, false);
-            this.a.app.getApplication().refreAccountList();
-          }
-        }
-      }
-      this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
-      this.a.finish();
-      return;
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abez
  * JD-Core Version:    0.7.0.1
  */

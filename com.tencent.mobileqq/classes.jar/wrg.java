@@ -1,24 +1,10 @@
-import android.support.annotation.Nullable;
-import java.util.List;
-
-class wrg
-  implements bhwg<List<wqk>>
+public abstract interface wrg<T>
 {
-  wrg(wrc paramwrc) {}
-  
-  public void a(@Nullable List<wqk> paramList)
-  {
-    if (paramList == null) {
-      return;
-    }
-    wrc.a(this.a).clear();
-    wrc.a(this.a).addAll(paramList);
-    wrc.a(this.a).notifyDataSetChanged();
-  }
+  public abstract void a(T... paramVarArgs);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wrg
  * JD-Core Version:    0.7.0.1
  */

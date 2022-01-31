@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import annd;
-import anng;
-import annh;
+import aodo;
+import aodr;
+import aods;
 import java.util.List;
 
 public class EmotionDataSource$1
   implements Runnable
 {
-  public EmotionDataSource$1(anng paramanng, boolean paramBoolean, annh paramannh, annd paramannd) {}
+  public EmotionDataSource$1(aodr paramaodr, boolean paramBoolean, aods paramaods, aodo paramaodo) {}
   
   public void run()
   {
     List localList = this.this$0.a(this.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_Annh != null) {
-      this.jdField_a_of_type_Annh.a(localList, this.jdField_a_of_type_Annd);
+    if (this.jdField_a_of_type_Aods != null) {
+      this.jdField_a_of_type_Aods.a(localList, this.jdField_a_of_type_Aodo);
     }
   }
 }

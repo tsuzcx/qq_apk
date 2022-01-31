@@ -1,18 +1,27 @@
-import android.os.Parcel;
-import android.support.v4.os.ParcelableCompatCreatorCallbacks;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.SavedState;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public final class tqb
-  implements ParcelableCompatCreatorCallbacks<XViewPager.SavedState>
+class tqb
+  implements URLDrawable.URLDrawableListener
 {
-  public XViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
+  tqb(tqa paramtqa) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    return new XViewPager.SavedState(paramParcel, paramClassLoader);
+    tqa.c(this.a, false);
   }
   
-  public XViewPager.SavedState[] a(int paramInt)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return new XViewPager.SavedState[paramInt];
+    tqa.b(this.a, false);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.a.a("UrlDrawableDownloadJob_dra", paramURLDrawable.getCurrDrawable());
+    tqa.a(this.a, true);
   }
 }
 

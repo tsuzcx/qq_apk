@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import bdnw;
+import besl;
 
 public class MiniFragmentActivity
   extends FragmentActivity
@@ -16,8 +16,8 @@ public class MiniFragmentActivity
   private MiniBaseFragment a()
   {
     Object localObject = getIntent().getStringExtra("public_fragment_class");
-    if (bdnw.a()) {
-      bdnw.a("MiniFragmentActivity", "creating fragment " + (String)localObject);
+    if (besl.a()) {
+      besl.a("MiniFragmentActivity", "creating fragment " + (String)localObject);
     }
     try
     {
@@ -27,7 +27,7 @@ public class MiniFragmentActivity
     }
     catch (Exception localException)
     {
-      bdnw.d("MiniFragmentActivity", "create fragment error", localException);
+      besl.d("MiniFragmentActivity", "create fragment error", localException);
     }
     return null;
   }
@@ -35,29 +35,37 @@ public class MiniFragmentActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     this.a = a();
-    setContentView(2131493728);
+    setContentView(2131559297);
     if (this.a == null)
     {
       finish();
       return false;
     }
     paramBundle = getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131301051, this.a);
+    paramBundle.replace(2131366662, this.a);
     paramBundle.commit();
     return true;
   }
   
   public void onCreate(@Nullable Bundle paramBundle)
   {
-    super.onCreate(paramBundle);
     requestWindowFeature(getIntent());
+    super.onCreate(paramBundle);
     doOnCreate(paramBundle);
   }
   
   public void requestWindowFeature(Intent paramIntent)
   {
-    if (paramIntent.hasExtra("public_fragment_window_feature")) {
-      requestWindowFeature(paramIntent.getIntExtra("public_fragment_window_feature", 0));
+    try
+    {
+      if (paramIntent.hasExtra("public_fragment_window_feature")) {
+        requestWindowFeature(paramIntent.getIntExtra("public_fragment_window_feature", 0));
+      }
+      return;
+    }
+    catch (Exception paramIntent)
+    {
+      besl.c("MiniFragmentActivity", "Failed to request window feature", paramIntent);
     }
   }
   

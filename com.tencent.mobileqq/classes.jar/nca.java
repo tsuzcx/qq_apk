@@ -1,95 +1,73 @@
-import android.os.Bundle;
-import java.util.ArrayList;
+import OnlinePushPack.SvcRespPushMsg;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.biz.game.SensorAPIJavaScript.9.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class nca
-  implements ajfe
+  implements nbq
 {
-  public void a(scd paramscd) {}
+  public nca(SensorAPIJavaScript paramSensorAPIJavaScript) {}
   
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void a(boolean paramBoolean, String paramString) {}
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
-  
-  public void a(boolean paramBoolean, ArrayList<scg> paramArrayList) {}
-  
-  public void a(boolean paramBoolean, scd paramscd, byte[] paramArrayOfByte, String paramString) {}
-  
-  public void b(boolean paramBoolean, int paramInt) {}
-  
-  public void c(boolean paramBoolean, int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(int paramInt, SvcRespPushMsg paramSvcRespPushMsg)
   {
-    switch (paramInt)
+    if (this.a.jdField_a_of_type_AndroidAppActivity != null)
     {
-    case 3: 
-    case 5: 
-    case 6: 
-    default: 
-      return;
-    case 2: 
-      if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Bundle)))
+      AppInterface localAppInterface = this.a.mRuntime.a();
+      if (localAppInterface != null)
       {
-        paramObject = (Bundle)paramObject;
-        a(true, paramObject.getString("VALUE_ARTICLE_ID"), paramObject.getInt("VALUE_ARTICLE_LIKE_COUNT"));
-        return;
-      }
-      a(false, null, 0);
-      return;
-    case 0: 
-      if ((paramObject != null) && ((paramObject instanceof Bundle)))
-      {
-        a(paramBoolean, ((Bundle)paramObject).getString("VALUE_ARTICLE_ID"));
-        return;
-      }
-      a(false, null);
-      return;
-    case 1: 
-      if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Bundle)))
-      {
-        paramObject = (Bundle)paramObject;
-        a(true, paramObject.getString("VALUE_ARTICLE_ID"), Boolean.valueOf(paramObject.getBoolean("VALUE_ARTICLE_IS_LIKED")).booleanValue());
-        return;
-      }
-      a(false, null, false);
-      return;
-    case 4: 
-      if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Bundle)))
-      {
-        paramObject = (Bundle)paramObject;
-        if (paramObject.getBoolean("VALUE_ARTICLE_IMAGEE_IS_SUCCESS", false))
-        {
-          b(true, paramObject.getInt("VALUE_ARTICLE_COMMENT_COUNT"));
-          return;
+        ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", localAppInterface.getAccount(), "OnlinePush.RespPush");
+        localToServiceMsg.setNeedCallback(false);
+        UniPacket localUniPacket = new UniPacket(true);
+        localUniPacket.setEncodeName("utf-8");
+        int i = awyl.a;
+        awyl.a = i + 1;
+        localUniPacket.setRequestId(i);
+        localUniPacket.setServantName("OnlinePush");
+        localUniPacket.setFuncName("SvcRespPushMsg");
+        localUniPacket.setRequestId(paramInt);
+        localUniPacket.put("resp", paramSvcRespPushMsg);
+        localToServiceMsg.putWupBuffer(localUniPacket.encode());
+        paramSvcRespPushMsg = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), amly.class);
+        paramSvcRespPushMsg.putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
+        localAppInterface.startServlet(paramSvcRespPushMsg);
+        if (QLog.isColorLevel()) {
+          QLog.d("SensorApi", 2, "reply push");
         }
-        b(false, 0);
-        return;
       }
-      b(false, 0);
-      return;
     }
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Bundle)))
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    String str = SensorAPIJavaScript.jdField_a_of_type_Nbn.a(String.valueOf(paramInt));
+    if (!TextUtils.isEmpty(str))
     {
-      if (((Bundle)paramObject).getBoolean("VALUE_ARTICLE_IMAGEE_IS_SUCCESS", false))
-      {
-        a(true);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("SensorApi", 2, "send data to appId=" + paramInt);
       }
-      a(false);
+      if (this.a.jdField_a_of_type_AndroidOsHandler == null) {
+        this.a.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new SensorAPIJavaScript.9.1(this, str, paramString));
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    a(false);
+    QLog.d("SensorApi", 2, "appId=" + paramInt + "'s callback is empty");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nca
  * JD-Core Version:    0.7.0.1
  */

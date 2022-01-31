@@ -1,55 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkViewImplement.ArkViewInterface;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-class alhs
-  implements View.OnClickListener
+public class alhs
+  extends alhu
 {
-  alhs(alhr paramalhr, int paramInt, ArkViewImplement.ArkViewInterface paramArkViewInterface) {}
+  public float a;
+  public int a;
+  public long a;
+  public ArCloudConfigInfo a;
+  public String a;
+  public float[] a;
+  public float b;
+  public int b;
+  public float c = 0.0F;
   
-  public void onClick(View paramView)
+  public alhs()
   {
-    int i = paramView.getId();
-    if (this.jdField_a_of_type_Int == 2) {
-      if (i == 0) {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(5);
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (i == 1)
-        {
-          this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(4);
-          return;
-        }
-      } while (i != 2);
-      this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
-      return;
-      if (this.jdField_a_of_type_Int != 1) {
-        break;
-      }
-      if (i == 0)
-      {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(1);
-        return;
-      }
-      if (i == 1)
-      {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(2);
-        return;
-      }
-    } while (i != 2);
-    this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
-    return;
-    this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+    this.jdField_b_of_type_Long = 1L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_a_of_type_ArrayOfFloat = null;
+    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
+  }
+  
+  public String toString()
+  {
+    return "ARLocalMarkerRecogResult{recogType = " + this.jdField_b_of_type_Long + ", frameIdx = " + this.jdField_a_of_type_Long + ", state = " + this.jdField_a_of_type_Int + ", markerName = " + this.jdField_a_of_type_JavaLangString + ", markerType = " + this.jdField_b_of_type_Int + ", markerWidth = " + this.jdField_a_of_type_Float + ", markerHeight = " + this.jdField_b_of_type_Float + ", markerDiameter = " + this.c + ", pose = " + this.jdField_a_of_type_ArrayOfFloat + ", arResourceInfo = " + this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alhs
  * JD-Core Version:    0.7.0.1
  */

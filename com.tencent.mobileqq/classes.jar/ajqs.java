@@ -1,94 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
-import mqq.manager.Manager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class ajqs
-  implements Manager
+  implements View.OnClickListener
 {
-  private QQAppInterface a;
+  public ajqs(ApolloPanel paramApolloPanel, ajqf paramajqf, ApolloActionData paramApolloActionData) {}
   
-  public ajqs(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    if (paramQQAppInterface == null) {
-      throw new NullPointerException("RecentManagerFor3rdPart, app is null");
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null) && (ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel) != null)) {
+      ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_Ajqf);
     }
-    this.a = paramQQAppInterface;
-  }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.a != null)
-    {
-      bool1 = bool2;
-      if (this.a.e())
-      {
-        akeu localakeu = this.a.a().a();
-        paramString = localakeu.b(paramString, paramInt);
-        bool1 = bool2;
-        if (paramString != null)
-        {
-          localakeu.b(paramString);
-          bool1 = true;
-        }
-      }
+    ApolloPanel.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
+      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "action_flame_clicksend", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId) });
     }
-    return bool1;
-  }
-  
-  public boolean a(String paramString, int paramInt, long paramLong)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.a != null)
-    {
-      bool1 = bool2;
-      if (this.a.e())
-      {
-        akeu localakeu = this.a.a().a();
-        paramString = localakeu.b(paramString, paramInt);
-        bool1 = bool2;
-        if (paramString != null)
-        {
-          paramString.lastmsgtime = paramLong;
-          localakeu.a(paramString);
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean a(String paramString1, int paramInt, String paramString2, long paramLong1, long paramLong2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return false;
-    }
-    if ((this.a != null) && (this.a.e()))
-    {
-      akeu localakeu = this.a.a().a();
-      RecentUser localRecentUser = localakeu.a(paramString1, paramInt);
-      localRecentUser.uin = paramString1;
-      localRecentUser.setType(paramInt);
-      localRecentUser.displayName = paramString2;
-      localRecentUser.lastmsgtime = paramLong1;
-      localRecentUser.lastmsgdrafttime = paramLong2;
-      localakeu.a(localRecentUser);
-    }
-    return true;
-  }
-  
-  public void onDestroy()
-  {
-    this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajqs
  * JD-Core Version:    0.7.0.1
  */

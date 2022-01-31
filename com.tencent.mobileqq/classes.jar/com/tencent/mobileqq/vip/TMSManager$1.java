@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vip;
 
-import baud;
-import baue;
+import bbwx;
+import bbwy;
 
 public class TMSManager$1
   implements Runnable
 {
-  public TMSManager$1(baud parambaud, baue parambaue) {}
+  public TMSManager$1(bbwx parambbwx, bbwy parambbwy) {}
   
   public void run()
   {

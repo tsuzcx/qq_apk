@@ -1,6 +1,6 @@
 package com.tencent.replacemonitor.replace.st;
 
-import com.tencent.tmassistantbase.util.e;
+import com.tencent.tmassistantbase.util.d;
 
 public class InstallFinishLog
   extends ReplaceBaseLog
@@ -9,7 +9,7 @@ public class InstallFinishLog
   
   public String build()
   {
-    return super.build() + "|" + this.installEndTime + "|" + e.a(this.externalParams, "&");
+    return super.build() + "|" + this.installEndTime + "|" + d.a(this.externalParams, "&");
   }
   
   public int getType()

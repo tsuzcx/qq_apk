@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import java.util.ArrayList;
-import qoe;
-import qox;
+import rap;
+import rbi;
 
 public class ReadInJoyBaseAdapter$36$1
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$36$1(qox paramqox) {}
+  public ReadInJoyBaseAdapter$36$1(rbi paramrbi) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-    this.a.jdField_a_of_type_Qoe.a(this.a.jdField_a_of_type_Int, localArrayList, new ArrayList(), null, true);
+    this.a.jdField_a_of_type_Rap.a(this.a.jdField_a_of_type_Int, localArrayList, new ArrayList(), null, true);
   }
 }
 

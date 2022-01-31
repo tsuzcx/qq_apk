@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.TroopManager;
 
-public class akia
-  extends ajfb
+public final class akia
+  implements DialogInterface.OnClickListener
 {
-  public akia(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public akia(TroopManager paramTroopManager, String paramString) {}
   
-  protected Class<? extends ajfe> observerClass()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return ajsa.class;
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
   }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

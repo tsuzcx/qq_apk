@@ -1,31 +1,19 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.gmersdk_warper.GMEAVEngineWalper.1.1;
+import mqq.os.MqqHandler;
 
 public class bgja
-  extends bgix
+  extends bgjq
 {
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  bgja(bgiz parambgiz) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ("jumpNuanProfile".equals(paramString3))
-    {
-      bool1 = bool2;
-      if (!"Qzone".equals(paramString2)) {}
+    if (paramInt == 0) {
+      ThreadManager.getUIHandler().post(new GMEAVEngineWalper.1.1(this));
     }
-    try
-    {
-      paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("uin", "");
-      paramString1 = bfpy.a();
-      paramString1.a = this.a.mRuntime.a().getAccount();
-      bfpr.b(this.a.mRuntime.a(), paramString1, paramJsBridgeListener, -1);
-      bool1 = true;
-      return bool1;
-    }
-    catch (Throwable paramJsBridgeListener) {}
-    return false;
   }
 }
 

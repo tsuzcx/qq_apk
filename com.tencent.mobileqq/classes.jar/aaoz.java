@@ -1,17 +1,15 @@
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
-class aaoz
+public final class aaoz
   implements DialogInterface.OnClickListener
 {
-  aaoz(aaoy paramaaoy) {}
+  public aaoz(aaqe paramaaqe) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a.a != null) && (this.a.a.a.isShowing()) && (this.a.a.a.getWindow() != null)) {
-      this.a.a.a.dismiss();
+    if (this.a != null) {
+      this.a.a();
     }
   }
 }

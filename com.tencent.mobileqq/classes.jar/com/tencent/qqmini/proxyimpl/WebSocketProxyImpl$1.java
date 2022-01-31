@@ -5,11 +5,11 @@ import com.tencent.qqmini.sdk.core.proxy.WebSocketProxy.WebSocketListener;
 class WebSocketProxyImpl$1
   implements Runnable
 {
-  WebSocketProxyImpl$1(WebSocketProxyImpl paramWebSocketProxyImpl, WebSocketProxyImpl.WebSocketTask paramWebSocketTask, int paramInt, String paramString) {}
+  WebSocketProxyImpl$1(WebSocketProxyImpl paramWebSocketProxyImpl, WebSocketProxyImpl.WebSocketTask paramWebSocketTask, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
-    this.val$task.mListener.onClose(this.val$code, this.val$reason);
+    this.val$task.mListener.onClose(this.val$socketId, this.val$code, this.val$reason);
   }
 }
 

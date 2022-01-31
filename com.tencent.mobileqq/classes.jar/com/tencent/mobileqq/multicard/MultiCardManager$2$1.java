@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.multicard;
 
-import arwd;
+import assh;
 import java.util.HashMap;
 
 class MultiCardManager$2$1

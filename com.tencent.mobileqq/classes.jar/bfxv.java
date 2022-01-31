@@ -1,52 +1,27 @@
-import android.os.Message;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import java.util.Map;
+import android.content.Context;
+import android.os.Handler;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
 class bfxv
-  implements Downloader.DownloadListener
+  implements bfxs
 {
-  bfxv(bfxu parambfxu) {}
+  private final GestureDetector a;
   
-  public void onDownloadCanceled(String paramString)
+  public bfxv(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
   {
-    Message localMessage = Message.obtain(bfxu.a(this.a));
-    localMessage.what = 5;
-    localMessage.obj = paramString;
-    localMessage.sendToTarget();
+    this.a = new GestureDetector(paramContext, paramOnGestureListener, paramHandler);
   }
   
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    paramDownloadResult = Message.obtain(bfxu.a(this.a));
-    paramDownloadResult.what = 3;
-    paramDownloadResult.obj = paramString;
-    paramDownloadResult.sendToTarget();
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
-  {
-    paramString = (bfxw)bfxu.a(this.a).get(paramString);
-    if (paramString != null) {
-      paramString.a = Float.valueOf(paramFloat);
-    }
-    Message localMessage = Message.obtain(bfxu.a(this.a));
-    localMessage.what = 6;
-    localMessage.obj = paramString;
-    localMessage.sendToTarget();
-  }
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    paramDownloadResult = Message.obtain(bfxu.a(this.a));
-    paramDownloadResult.what = 2;
-    paramDownloadResult.obj = paramString;
-    paramDownloadResult.sendToTarget();
+    return this.a.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfxv
  * JD-Core Version:    0.7.0.1
  */

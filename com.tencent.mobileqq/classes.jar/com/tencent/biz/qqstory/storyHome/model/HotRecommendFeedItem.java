@@ -7,10 +7,10 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import ukp;
+import uxl;
 
 public class HotRecommendFeedItem
-  extends VideoListFeedItem<ukp, HotRecommendOwner>
+  extends VideoListFeedItem<uxl, HotRecommendOwner>
 {
   public static final String TAG = "HotRecommendFeedItem";
   public boolean mIsTopLocation;
@@ -106,9 +106,9 @@ public class HotRecommendFeedItem
   }
   
   @NonNull
-  public ukp generateHomeFeed()
+  public uxl generateHomeFeed()
   {
-    return new ukp(this);
+    return new uxl(this);
   }
   
   public int getCommentLikeType()

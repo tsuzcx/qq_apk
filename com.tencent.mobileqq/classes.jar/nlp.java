@@ -1,16 +1,16 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class nlp
-  implements CompoundButton.OnCheckedChangeListener
+class nlp
+  implements View.OnClickListener
 {
-  public nlp(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  nlp(nll paramnll) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    ReadInJoySettingActivity.b(this.a, paramBoolean);
-    ReadInJoySettingActivity.a(this.a, ReadInJoySettingActivity.b(this.a));
+    this.a.a.dismiss();
+    nll.c(this.a);
   }
 }
 

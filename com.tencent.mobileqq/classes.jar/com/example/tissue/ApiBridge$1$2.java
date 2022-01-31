@@ -1,13 +1,11 @@
 package com.example.tissue;
 
-import android.content.Context;
 import android.os.Looper;
 import android.util.Log;
 import com.tencent.tissue.miniapp.IJsService;
 import com.tencent.tissue.miniapp.hdasync.HdAsyncAction;
 import com.tencent.tissue.miniapp.hdasync.HdAsyncResult;
 import com.tencent.tissue.v8rt.engine.AssetUtil;
-import io.flutter.view.FlutterView;
 
 class ApiBridge$1$2
   extends HdAsyncAction
@@ -28,21 +26,16 @@ class ApiBridge$1$2
     paramObject = paramObject.toString();
     ApiBridge.access$000(this.this$1.this$0).loadScript(this.val$wxsPath, paramObject);
     ApiBridge.access$102(this.this$1.this$0, this.val$wxsPath);
-    paramObject = ApiBridge.normalizePath(this.val$wxsPath);
-    Object localObject = ApiBridge.access$200(this.this$1.this$0).getContext().getApplicationContext();
+    paramObject = AssetUtil.loadFileAsString(ApiBridge.normalizePath(this.val$wxsPath));
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("flutter_assets/assets/");
+    localStringBuilder.append("wxsPath content: ");
     localStringBuilder.append(paramObject);
-    paramObject = AssetUtil.loadAssetTextAsString((Context)localObject, localStringBuilder.toString());
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("wxsPath content: ");
-    ((StringBuilder)localObject).append(paramObject);
-    Log.w("ApiBridge", ((StringBuilder)localObject).toString());
+    Log.w("ApiBridge3", localStringBuilder.toString());
     paramObject = ApiBridge.access$000(this.this$1.this$0).executeScriptWithReturn(this.val$wxsPath, paramObject);
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("__tissue_load_wxs_: ");
-    ((StringBuilder)localObject).append(paramObject);
-    Log.w("ApiBridge", ((StringBuilder)localObject).toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("__tissue_load_wxs_: ");
+    localStringBuilder.append(paramObject);
+    Log.w("ApiBridge3", localStringBuilder.toString());
     return doNext(true, paramObject);
   }
 }

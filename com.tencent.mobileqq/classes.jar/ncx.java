@@ -1,20 +1,28 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.PublicAccountManager.1;
-import mqq.observer.BusinessObserver;
+import android.widget.LinearLayout;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import com.tencent.biz.pubaccount.AccountDetailBounceScrollView;
 
 public class ncx
-  implements BusinessObserver
+  implements bcjn
 {
-  public ncx(PublicAccountManager.1 param1) {}
+  public ncx(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(float paramFloat1, float paramFloat2) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.a.a.a();
+    paramInt1 = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight() - this.a.b * (1.0D - LebaSearchPluginManagerActivity.jdField_a_of_type_Double) + 56.0F * this.a.jdField_a_of_type_Float);
+    this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.setMaxOverScrollY(paramInt1);
+    if (LebaSearchPluginManagerActivity.a(this.a))
+    {
+      this.a.a(paramInt2);
+      LebaSearchPluginManagerActivity.b(this.a, paramInt2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ncx
  * JD-Core Version:    0.7.0.1
  */

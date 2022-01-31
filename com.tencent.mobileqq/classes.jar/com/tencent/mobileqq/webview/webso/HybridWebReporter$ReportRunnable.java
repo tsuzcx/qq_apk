@@ -2,8 +2,8 @@ package com.tencent.mobileqq.webview.webso;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import bbdo;
-import bfpz;
+import bcgo;
+import bgyg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.base.http.HttpBaseUtil;
@@ -29,12 +29,12 @@ class HybridWebReporter$ReportRunnable
 {
   int jdField_a_of_type_Int = 0;
   String jdField_a_of_type_JavaLangString;
-  ArrayList<bbdo> jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<bcgo> jdField_a_of_type_JavaUtilArrayList;
   boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int = 0;
   boolean jdField_b_of_type_Boolean = false;
   
-  public HybridWebReporter$ReportRunnable(ArrayList<bbdo> paramArrayList)
+  public HybridWebReporter$ReportRunnable(ArrayList<bcgo> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
@@ -61,7 +61,7 @@ class HybridWebReporter$ReportRunnable
       {
         if (((Iterator)localObject2).hasNext())
         {
-          localJSONArray.put(((bbdo)((Iterator)localObject2).next()).a());
+          localJSONArray.put(((bcgo)((Iterator)localObject2).next()).a());
           continue;
           if (localObject1 == null) {
             break;
@@ -114,7 +114,7 @@ class HybridWebReporter$ReportRunnable
       {
         for (;;)
         {
-          localObject = bfpz.a(BaseApplication.getContext(), str2, new StringEntity(this.jdField_a_of_type_JavaLangString, "UTF-8"));
+          localObject = bgyg.a(BaseApplication.getContext(), str2, new StringEntity(this.jdField_a_of_type_JavaLangString, "UTF-8"));
           if (((HttpResponse)localObject).getStatusLine().getStatusCode() != 200) {
             break label416;
           }

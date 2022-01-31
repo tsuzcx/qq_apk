@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.activity.aio;
 
-import android.hardware.SensorManager;
-
 class MediaPlayerManager$7
   implements Runnable
 {
-  MediaPlayerManager$7(MediaPlayerManager paramMediaPlayerManager) {}
+  MediaPlayerManager$7(MediaPlayerManager paramMediaPlayerManager, boolean paramBoolean) {}
   
   public void run()
   {
-    MediaPlayerManager.a(this.this$0).unregisterListener(MediaPlayerManager.a(this.this$0));
-    MediaPlayerManager.a(this.this$0).unregisterListener(this.this$0);
+    if (MediaPlayerManager.a(this.this$0, this.a, true)) {
+      this.this$0.e();
+    }
   }
 }
 

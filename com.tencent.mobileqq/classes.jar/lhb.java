@@ -1,78 +1,95 @@
-import android.opengl.GLES20;
-import com.tencent.av.opengl.program.TextureProgram;
-import com.tencent.av.opengl.program.YUVTextureAliasingProgram;
-import com.tencent.av.opengl.program.YUVTextureProgram;
-import java.util.HashMap;
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.handler.NetAddr;
+import com.tencent.av.business.manager.zimu.ZimuItem;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class lhb
+  extends lha
 {
-  static Map<String, TextureProgram> a = new HashMap();
-  
-  public static TextureProgram a(int paramInt)
+  public lhb(AppInterface paramAppInterface)
   {
-    int j = 1;
-    for (;;)
+    super(paramAppInterface);
+  }
+  
+  protected int a()
+  {
+    Object localObject = (VideoAppInterface)this.mApp;
+    if (((VideoAppInterface)localObject).a(0))
     {
-      int i;
-      try
-      {
-        String str = paramInt + "_" + Thread.currentThread().getId();
-        localObject1 = (TextureProgram)a.get(str);
-        if (localObject1 == null)
-        {
-          i = 1;
-          if (i != 0) {
-            break label173;
-          }
-          GLES20.glUseProgram(((TextureProgram)localObject1).a());
-          if (lie.a() != 0)
-          {
-            i = j;
-            break label173;
-            localObject1 = new TextureProgram();
-            a.put(str, localObject1);
-            return localObject1;
-          }
-        }
-        else
-        {
-          i = 0;
-          continue;
-        }
-        i = 0;
+      localObject = (lju)((VideoAppInterface)localObject).a(0);
+      if (localObject != null) {
+        return ((lju)localObject).b();
       }
-      finally {}
-      Object localObject1 = new YUVTextureProgram();
-      continue;
-      Object localObject3 = new YUVTextureAliasingProgram();
-      continue;
-      localObject3 = new lha();
-      continue;
-      localObject3 = new lgz();
-      continue;
-      localObject3 = new lgy();
-      continue;
-      label173:
-      if (i != 0) {
-        switch (paramInt)
-        {
-        }
+    }
+    return 4;
+  }
+  
+  protected void a(long paramLong1, boolean paramBoolean, List<NetAddr> paramList, long paramLong2)
+  {
+    VideoController localVideoController = ((VideoAppInterface)this.mApp).a();
+    lgf locallgf = localVideoController.a();
+    StringBuilder localStringBuilder = new StringBuilder().append("requestRecordingAudio, isStart[").append(paramBoolean).append("], sessionid[").append(paramLong2).append("], seq[").append(paramLong1).append("], iplist[");
+    if (paramList == null)
+    {
+      localObject = "null";
+      localStringBuilder = localStringBuilder.append(localObject).append("], peerUin[");
+      if (locallgf != null) {
+        break label159;
       }
+    }
+    label159:
+    for (Object localObject = "null";; localObject = locallgf.d)
+    {
+      QLog.w("AudioTransClientInterfaceHandlerExtend.runhw", 1, (String)localObject + "]");
+      if ((localVideoController != null) && (locallgf != null)) {
+        localVideoController.a(ldz.a(locallgf.d), paramBoolean, paramList, paramLong2);
+      }
+      return;
+      localObject = Integer.valueOf(paramList.size());
+      break;
     }
   }
   
-  public static void a()
+  protected void a(Integer paramInteger, Object paramObject)
   {
-    try
+    lcl.c("AudioTransClientInterfaceHandlerExtend.runhw", "notifyEvent :" + paramInteger + "|" + paramObject);
+    ((VideoAppInterface)this.mApp).a(new Object[] { paramInteger, paramObject });
+  }
+  
+  protected void a(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    a(Integer.valueOf(6008), new lhh(paramString1, paramString2, paramString3, paramInt));
+  }
+  
+  protected boolean a()
+  {
+    boolean bool2 = false;
+    Object localObject = (VideoAppInterface)this.mApp;
+    boolean bool1 = bool2;
+    if (((VideoAppInterface)localObject).a(0))
     {
-      a.clear();
-      return;
+      localObject = (lju)((VideoAppInterface)localObject).a(0);
+      bool1 = bool2;
+      if (localObject != null)
+      {
+        localObject = (ZimuItem)((lju)localObject).a();
+        bool1 = bool2;
+        if (localObject != null)
+        {
+          localObject = ((ZimuItem)localObject).getId();
+          if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).equalsIgnoreCase("film"))) {
+            break label74;
+          }
+        }
+      }
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    label74:
+    for (bool1 = true;; bool1 = false) {
+      return bool1;
     }
   }
 }

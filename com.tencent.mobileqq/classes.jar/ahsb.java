@@ -1,40 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class ahsb
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public ahsb(SelectMemberActivity paramSelectMemberActivity) {}
+  public ahsb(LoginView paramLoginView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if ((TextUtils.isEmpty(paramIntent.getPackage())) || (!paramIntent.getPackage().equals(this.a.app.getApp().getPackageName()))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "receive broadcast from wrong package:" + paramIntent.getPackage() + ",action:" + paramContext);
-      }
-    }
-    int i;
-    int j;
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramContext.equals("tencent.av.v2q.StopVideoChat"));
-      i = paramIntent.getIntExtra("stopReason", 0);
-      j = paramIntent.getIntExtra("stopReason3rd", -1);
-    } while (((i != 0) && (j != 1)) || ((this.a.d != 11) && (this.a.d != 36)));
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "ACTION_STOP_VIDEO_CHAT");
-    }
-    this.a.finish();
+    paramDialogInterface = (UpgradeDetailWrapper)this.a.a.getIntent().getParcelableExtra(UpgradeDetailWrapper.class.getSimpleName());
+    UpgradeDetailActivity.a(this.a.a, paramDialogInterface, true, false, false);
   }
 }
 

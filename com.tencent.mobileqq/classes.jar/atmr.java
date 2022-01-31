@@ -1,98 +1,45 @@
-import com.tencent.mobileqq.app.SQLiteDatabase;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.graphics.LightingColorFilter;
+import android.graphics.drawable.Drawable;
+import android.view.View;
 
-public class atmr
+class atmr
+  extends AnimatorListenerAdapter
 {
-  private static final Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
-  private final ajrl jdField_a_of_type_Ajrl;
-  private SQLiteDatabase jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase;
+  atmr(atlu paramatlu) {}
   
-  atmr(ajrl paramajrl)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Ajrl = paramajrl;
+    this.a.c = false;
   }
   
-  public void a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Thread localThread = Thread.currentThread();
-    awrz.b(localThread.getId(), localThread.getName());
-    jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    this.jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase = this.jdField_a_of_type_Ajrl.a();
-    if ((ajrl.a) && (befo.e())) {
-      this.jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase.b();
-    }
-    for (;;)
-    {
-      awrz.a(localThread.getId());
-      awrz.a(localThread.getId(), localThread.getName());
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase.a();
-    }
+    this.a.c = false;
+    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366535).setVisibility(8);
+    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366509).setTranslationY(0.0F);
+    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366534).setTranslationY(0.0F);
+    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366540).setVisibility(8);
   }
   
-  /* Error */
-  public void b()
+  public void onAnimationPause(Animator paramAnimator)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 54	atmr:jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase	Lcom/tencent/mobileqq/app/SQLiteDatabase;
-    //   4: invokevirtual 79	com/tencent/mobileqq/app/SQLiteDatabase:d	()V
-    //   7: aload_0
-    //   8: aconst_null
-    //   9: putfield 54	atmr:jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase	Lcom/tencent/mobileqq/app/SQLiteDatabase;
-    //   12: getstatic 17	atmr:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   15: checkcast 12	java/util/concurrent/locks/ReentrantLock
-    //   18: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:isHeldByCurrentThread	()Z
-    //   21: ifeq +18 -> 39
-    //   24: ldc2_w 83
-    //   27: aconst_null
-    //   28: invokestatic 72	awrz:a	(JLjava/lang/String;)V
-    //   31: getstatic 17	atmr:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   34: invokeinterface 87 1 0
-    //   39: return
-    //   40: astore_1
-    //   41: getstatic 17	atmr:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   44: checkcast 12	java/util/concurrent/locks/ReentrantLock
-    //   47: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:isHeldByCurrentThread	()Z
-    //   50: ifeq -11 -> 39
-    //   53: ldc2_w 83
-    //   56: aconst_null
-    //   57: invokestatic 72	awrz:a	(JLjava/lang/String;)V
-    //   60: getstatic 17	atmr:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   63: invokeinterface 87 1 0
-    //   68: return
-    //   69: astore_1
-    //   70: getstatic 17	atmr:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   73: checkcast 12	java/util/concurrent/locks/ReentrantLock
-    //   76: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:isHeldByCurrentThread	()Z
-    //   79: ifeq +18 -> 97
-    //   82: ldc2_w 83
-    //   85: aconst_null
-    //   86: invokestatic 72	awrz:a	(JLjava/lang/String;)V
-    //   89: getstatic 17	atmr:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   92: invokeinterface 87 1 0
-    //   97: aload_1
-    //   98: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	99	0	this	atmr
-    //   40	1	1	localException	java.lang.Exception
-    //   69	29	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   0	12	40	java/lang/Exception
-    //   0	12	69	finally
+    this.a.c = false;
   }
   
-  public void c()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase.e();
+    this.a.c = true;
+    int i = this.a.jdField_b_of_type_Int;
+    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366533).setBackgroundResource(2130844587);
+    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366533).getBackground().setColorFilter(new LightingColorFilter(-16777216, i));
+    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366532).setBackgroundColor(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atmr
  * JD-Core Version:    0.7.0.1
  */

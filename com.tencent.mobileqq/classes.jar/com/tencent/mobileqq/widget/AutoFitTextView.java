@@ -7,14 +7,14 @@ import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bbgi;
+import bcji;
 
 public class AutoFitTextView
   extends TextView
 {
   private float jdField_a_of_type_Float;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private bbgi jdField_a_of_type_Bbgi;
+  private bcji jdField_a_of_type_Bcji;
   
   public AutoFitTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
@@ -30,9 +30,9 @@ public class AutoFitTextView
     if (this.jdField_a_of_type_Float == 0.0F) {
       this.jdField_a_of_type_Float = getTextSize();
     }
-    if (this.jdField_a_of_type_Bbgi != null) {}
+    if (this.jdField_a_of_type_Bcji != null) {}
     float f1;
-    for (paramInt = this.jdField_a_of_type_Bbgi.a();; paramInt = getWidth())
+    for (paramInt = this.jdField_a_of_type_Bcji.a();; paramInt = getWidth())
     {
       int i = getPaddingLeft();
       int j = getPaddingRight();
@@ -58,9 +58,9 @@ public class AutoFitTextView
     a(getText().toString(), getWidth());
   }
   
-  public void setOnGetMaxWidthCallback(bbgi parambbgi)
+  public void setOnGetMaxWidthCallback(bcji parambcji)
   {
-    this.jdField_a_of_type_Bbgi = parambbgi;
+    this.jdField_a_of_type_Bcji = parambcji;
   }
 }
 

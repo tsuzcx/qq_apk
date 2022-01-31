@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.chat;
 
-import ajjy;
-import alrm;
+import ajyc;
+import amgc;
 import com.tencent.common.config.AppSetting;
 import java.util.HashMap;
 
 public class MessageNotificationSettingManager$1
   extends HashMap<Integer, String>
 {
-  public MessageNotificationSettingManager$1(alrm paramalrm)
+  public MessageNotificationSettingManager$1(amgc paramamgc)
   {
-    put(Integer.valueOf(2131230759), ajjy.a(2131640855));
-    put(Integer.valueOf(2131230721), ajjy.a(2131640857));
-    put(Integer.valueOf(2131230758), ajjy.a(2131640852));
-    put(Integer.valueOf(2131230720), ajjy.a(2131640853));
-    put(Integer.valueOf(AppSetting.d), ajjy.a(2131640856));
-    put(Integer.valueOf(AppSetting.e), ajjy.a(2131640860));
+    put(Integer.valueOf(2131230759), ajyc.a(2131706640));
+    put(Integer.valueOf(2131230721), ajyc.a(2131706642));
+    put(Integer.valueOf(2131230758), ajyc.a(2131706637));
+    put(Integer.valueOf(2131230720), ajyc.a(2131706638));
+    put(Integer.valueOf(AppSetting.d), ajyc.a(2131706641));
+    put(Integer.valueOf(AppSetting.e), ajyc.a(2131706645));
   }
 }
 

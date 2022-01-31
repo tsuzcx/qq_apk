@@ -6,15 +6,15 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import nbe;
-import nbj;
-import nor;
-import not;
-import npa;
+import nmf;
+import nmk;
+import oac;
+import oae;
+import oal;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rdg;
-import rsl;
+import rpu;
+import sfd;
 
 public class ProteusBannerBigPicItemData
   extends AdData
@@ -42,14 +42,14 @@ public class ProteusBannerBigPicItemData
     String str1 = null;
     JSONObject localJSONObject = new JSONObject();
     Object localObject1;
-    if (npa.b(this)) {
-      localObject1 = not.a(localJSONObject, this);
+    if (oal.b(this)) {
+      localObject1 = oae.a(localJSONObject, this);
     }
     for (;;)
     {
       return localObject1;
-      if (npa.a(this)) {
-        return nor.a(localJSONObject, this);
+      if (oal.a(this)) {
+        return oac.a(localJSONObject, this);
       }
       localObject1 = str1;
       Object localObject5;
@@ -95,8 +95,8 @@ public class ProteusBannerBigPicItemData
       try
       {
         localObject1 = this.e;
-        d1 = nbj.a(this.d, 0.0D);
-        d2 = nbj.a((String)localObject1, 0.0D);
+        d1 = nmk.a(this.d, 0.0D);
+        d2 = nmk.a((String)localObject1, 0.0D);
         if (d2 == 0.0D)
         {
           localObject1 = str1;
@@ -126,7 +126,7 @@ public class ProteusBannerBigPicItemData
       localObject5 = this.jdField_b_of_type_JavaLangString;
       str1 = this.f;
       str2 = this.c;
-      i = nbj.a((String)localObject1, 3000);
+      i = nmk.a((String)localObject1, 3000);
       if (d1 > 0.0D) {
         break label640;
       }
@@ -161,7 +161,7 @@ public class ProteusBannerBigPicItemData
         }
         if (!TextUtils.isEmpty(this.l))
         {
-          localObject1 = rsl.a(this.l, 4);
+          localObject1 = sfd.a(this.l, 4);
           localObject4 = new JSONObject();
           ((JSONObject)localObject4).put("image_url", ((URL)localObject1).toString());
           localJSONObject.put("id_ad_banner_bottom_imge", localObject4);
@@ -192,7 +192,7 @@ public class ProteusBannerBigPicItemData
         ((JSONObject)localObject1).put("text", this.q);
         localJSONObject.put("id_tv_author", localObject1);
         break label807;
-        d1 = nbe.a((double[])localObject1, BaseApplicationImpl.getContext());
+        d1 = nmf.a((double[])localObject1, BaseApplicationImpl.getContext());
         break;
         d1 = Math.ceil(d1);
         localObject1 = localObject4;
@@ -232,10 +232,10 @@ public class ProteusBannerBigPicItemData
     this.jdField_b_of_type_OrgJsonJSONObject = a();
     try
     {
-      rdg localrdg = rdg.a("native_article", true);
+      rpu localrpu = rpu.a("native_article", true);
       localObject1 = localObject3;
-      if (localrdg != null) {
-        localObject1 = localrdg.getTemplateBean(this.jdField_b_of_type_OrgJsonJSONObject);
+      if (localrpu != null) {
+        localObject1 = localrpu.getTemplateBean(this.jdField_b_of_type_OrgJsonJSONObject);
       }
     }
     catch (JSONException localJSONException)

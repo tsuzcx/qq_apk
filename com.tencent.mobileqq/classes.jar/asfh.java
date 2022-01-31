@@ -1,41 +1,39 @@
-import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.NearbyTribeAppController.2.1;
+import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class asfh
-  implements apem
+  extends ajxl
 {
-  asfh(asfg paramasfg) {}
+  public asfh(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
   
-  public void a(String paramString, long paramLong)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramLong <= 0L)) {}
-    do
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a(paramString))) {
+      this.a.b();
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      return;
-      localObject = apbo.a().b() + paramString;
-      if (!new File((String)localObject).exists()) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("MatchChatMsgListFragment", 2, "onUpdateFriendInfo uin =" + paramString);
       }
-      apei.a((String)localObject);
-    } while (!QLog.isColorLevel());
-    QLog.d(asfg.a(this.a), 2, "UniformDownloadUtil.installAPK,savePath=" + (String)localObject);
-    return;
-    asfg.a(this.a).post(new NearbyTribeAppController.2.1(this));
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putString("_filename_from_dlg", paramString);
-    ((Bundle)localObject).putLong("_filesize_from_dlg", paramLong);
-    ((Bundle)localObject).putString("_notify_name_dialog", ajjy.a(2131641592));
-    ((Bundle)localObject).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_hdsp_nearby");
-    aome.a().a("http://pub.idqqimg.com/pc/misc/files/20170706/c221bf304be44e5a9e0441768beacff0.apk", (Bundle)localObject, null);
+      int i = 0;
+      if (this.a.a(paramString)) {
+        i = 1;
+      }
+      if (i != 0) {
+        this.a.b();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asfh
  * JD-Core Version:    0.7.0.1
  */

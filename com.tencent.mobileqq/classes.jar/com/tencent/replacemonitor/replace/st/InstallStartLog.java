@@ -1,6 +1,6 @@
 package com.tencent.replacemonitor.replace.st;
 
-import com.tencent.tmassistantbase.util.e;
+import com.tencent.tmassistantbase.util.d;
 
 public class InstallStartLog
   extends ReplaceBaseLog
@@ -9,7 +9,7 @@ public class InstallStartLog
   
   public String build()
   {
-    return super.build() + "|" + this.installStartTime + "|" + e.a(this.externalParams, "&");
+    return super.build() + "|" + this.installStartTime + "|" + d.a(this.externalParams, "&");
   }
   
   public int getType()

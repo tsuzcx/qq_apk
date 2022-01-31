@@ -1,14 +1,20 @@
-public abstract interface avbg
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+public class avbg
+  implements Animation.AnimationListener
 {
-  public abstract void a(long paramLong);
+  public void a(Animation paramAnimation, float paramFloat) {}
   
-  public abstract void a(long paramLong, int paramInt1, int paramInt2);
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public abstract void a(Object paramObject);
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avbg
  * JD-Core Version:    0.7.0.1
  */

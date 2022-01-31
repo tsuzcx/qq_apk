@@ -1,53 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class mrd
-  implements BusinessObserver
+public class mrd
 {
-  mrd(mrb parammrb) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static String a()
   {
-    if (this.a.a) {
-      return;
-    }
-    if ((!paramBoolean) || (paramBundle == null))
+    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localFile == null)
     {
-      mrb.a(this.a);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("DingdongSoundUtil", 2, "[sound_early] getFilesDir is null");
+      }
+      return "";
     }
-    do
-    {
-      oidb_sso.OIDBSSOPkg localOIDBSSOPkg;
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-        localOIDBSSOPkg.mergeFrom(paramBundle);
-        if ((localOIDBSSOPkg == null) || (!localOIDBSSOPkg.uint32_result.has()) || (localOIDBSSOPkg.uint32_result.get() != 0) || (!localOIDBSSOPkg.bytes_bodybuffer.has()) || (localOIDBSSOPkg.bytes_bodybuffer.get() == null))
-        {
-          mrb.a(this.a);
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-        mrb.a(this.a);
-        return;
-      }
-      paramBundle = mrb.b(this.a, localOIDBSSOPkg);
-    } while ((paramBundle == null) || (paramBundle.size() <= 0));
-    mrb.a(this.a, paramBundle);
+    return localFile.getParent() + "/dingdong/sound_early/";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mrd
  * JD-Core Version:    0.7.0.1
  */

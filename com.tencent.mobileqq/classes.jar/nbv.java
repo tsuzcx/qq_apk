@@ -1,25 +1,26 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.PhotoWallViewForAccountDetail;
-import com.tencent.widget.AdapterView;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class nbv
-  implements behi
+  extends Handler
 {
-  public nbv(PhotoWallViewForAccountDetail paramPhotoWallViewForAccountDetail) {}
+  public nbv(SensorAPIJavaScript paramSensorAPIJavaScript) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    paramAdapterView = (nbu)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (this.a.jdField_a_of_type_Nby == null) {
+    if (paramMessage.what == 5) {
+      this.a.a((String)paramMessage.obj);
+    }
+    while (paramMessage.what != 291) {
       return;
     }
-    this.a.jdField_a_of_type_Nby.a(paramAdapterView);
+    this.a.updateMicStatus((String)paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nbv
  * JD-Core Version:    0.7.0.1
  */

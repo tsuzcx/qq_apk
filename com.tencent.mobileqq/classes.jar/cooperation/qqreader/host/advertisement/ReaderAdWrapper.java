@@ -1,7 +1,7 @@
 package cooperation.qqreader.host.advertisement;
 
 import android.text.TextUtils;
-import bady;
+import bbfd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.pb.PBRepeatField;
@@ -14,7 +14,7 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.MutiPicTextInfo;
-import yjt;
+import ysw;
 
 public class ReaderAdWrapper
 {
@@ -27,24 +27,27 @@ public class ReaderAdWrapper
   private String jdField_a_of_type_JavaLangString;
   private List<ReaderAdWrapper.ImageData> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long = -1L;
+  private long jdField_b_of_type_Long;
   private String jdField_b_of_type_JavaLangString;
-  private String c;
+  private boolean jdField_b_of_type_Boolean;
+  private long jdField_c_of_type_Long = -1L;
+  private String jdField_c_of_type_JavaLangString;
   private String d;
   private String e;
   private String f;
   
-  public ReaderAdWrapper(GdtAd paramGdtAd, String paramString)
+  ReaderAdWrapper(GdtAd paramGdtAd, String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = paramGdtAd;
+    this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getAId();
     paramGdtAd = this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getImageData();
     if (paramGdtAd != null)
     {
       this.jdField_b_of_type_JavaLangString = paramGdtAd.jdField_a_of_type_JavaLangString;
       this.jdField_a_of_type_CooperationQqreaderHostAdvertisementReaderAdWrapper$ImageData = new ReaderAdWrapper.ImageData(paramGdtAd);
     }
-    this.c = this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getVideoUrl();
+    this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getVideoUrl();
     this.d = this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getText();
     this.f = this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getUrlForImpression();
     if (!this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.info.display_info.button_info.get().isEmpty()) {
@@ -59,16 +62,21 @@ public class ReaderAdWrapper
       }
       i += 1;
     }
-    if (!TextUtils.isEmpty(this.c)) {
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
       bool = true;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.jdField_a_of_type_Long = new Date().getTime();
+    this.jdField_b_of_type_Boolean = bool;
+    this.jdField_b_of_type_Long = new Date().getTime();
   }
   
   GdtAd a()
   {
     return this.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
+  }
+  
+  public long getAId()
+  {
+    return this.jdField_a_of_type_Long;
   }
   
   public ReaderAdWrapper.ImageData getBasicImageData()
@@ -128,12 +136,12 @@ public class ReaderAdWrapper
   
   public long getVideoStartPos()
   {
-    return this.jdField_b_of_type_Long;
+    return this.jdField_c_of_type_Long;
   }
   
   public String getVideoUrl()
   {
-    return this.c;
+    return this.jdField_c_of_type_JavaLangString;
   }
   
   public void increaseUsedCount()
@@ -143,7 +151,7 @@ public class ReaderAdWrapper
   
   public boolean isAdAppInstalled()
   {
-    return bady.a(BaseApplicationImpl.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getAppPackageName());
+    return bbfd.a(BaseApplicationImpl.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getAppPackageName());
   }
   
   public boolean isAppType()
@@ -158,12 +166,17 @@ public class ReaderAdWrapper
   
   public boolean isExpired()
   {
-    return new Date().getTime() - this.jdField_a_of_type_Long > 3600000L;
+    return new Date().getTime() - this.jdField_b_of_type_Long > 3600000L;
+  }
+  
+  public boolean isLocalBook()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
   
   public boolean isVideoAd()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.jdField_b_of_type_Boolean;
   }
   
   public void setExtraData(ReaderAdWrapper paramReaderAdWrapper)
@@ -171,9 +184,14 @@ public class ReaderAdWrapper
     this.jdField_a_of_type_CooperationQqreaderHostAdvertisementReaderAdWrapper = paramReaderAdWrapper;
   }
   
+  public void setLocalBook(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
   public void setVideoStartPos(long paramLong)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_c_of_type_Long = paramLong;
   }
 }
 

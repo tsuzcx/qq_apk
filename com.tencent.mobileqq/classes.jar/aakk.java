@@ -1,34 +1,90 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopAppInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 
 public class aakk
-  implements mre
+  implements View.OnClickListener
 {
-  public aakk(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aakk(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void a() {}
-  
-  public void a(ArrayList<TroopAppInfo> paramArrayList)
+  public void onClick(View paramView)
   {
-    if ((this.a.isFinishing()) || (paramArrayList == null) || (paramArrayList.size() == 0)) {}
+    if (!(paramView instanceof RotateSwitchImageView)) {}
+    View localView2;
     do
     {
-      return;
-      ArrayList localArrayList = new ArrayList();
-      arom localarom = (arom)this.a.app.getManager(37);
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
+      do
       {
-        TroopAppInfo localTroopAppInfo = (TroopAppInfo)paramArrayList.next();
-        localarom.a(Long.valueOf(localTroopAppInfo.appId), localTroopAppInfo);
-        localArrayList.add(Long.valueOf(localTroopAppInfo.appId));
+        return;
+        localView1 = AssociatedAccountManageActivity.a(this.a, paramView);
+        localView2 = AssociatedAccountManageActivity.b(this.a, paramView);
+        if (AssociatedAccountManageActivity.a(this.a) != null) {
+          break;
+        }
+        AssociatedAccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
+        AssociatedAccountManageActivity.a(this.a).b();
+        if (localView2 != null)
+        {
+          localObject = (RelativeLayout.LayoutParams)localView2.getLayoutParams();
+          ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(AssociatedAccountManageActivity.a(this.a) * 12.0F + AssociatedAccountManageActivity.b(this.a) * 75.0F));
+          localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
+        if ((localView1 instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localView1).b();
+        }
+      } while (!AppSetting.d);
+      paramView.setContentDescription(this.a.getString(2131690799));
+      return;
+      if (AssociatedAccountManageActivity.a(this.a) != paramView) {
+        break;
       }
-      localarom.a(this.a.a.troopUin, localArrayList);
-    } while (this.a.i);
+      AssociatedAccountManageActivity.a(this.a).a();
+      if (localView2 != null)
+      {
+        localObject = (RelativeLayout.LayoutParams)localView2.getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(AssociatedAccountManageActivity.c(this.a) * 12.0F));
+        localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      }
+      if ((localView1 instanceof ShaderAnimLayout)) {
+        ((ShaderAnimLayout)localView1).f();
+      }
+      AssociatedAccountManageActivity.a(this.a, null);
+    } while (!AppSetting.d);
+    paramView.setContentDescription(this.a.getString(2131720637));
+    return;
+    AssociatedAccountManageActivity.a(this.a).a();
+    Object localObject = AssociatedAccountManageActivity.b(this.a, AssociatedAccountManageActivity.a(this.a));
+    if (localObject != null)
+    {
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
+      localLayoutParams.rightMargin = ((int)(AssociatedAccountManageActivity.d(this.a) * 12.0F));
+      ((View)localObject).setLayoutParams(localLayoutParams);
+    }
+    ((RotateSwitchImageView)paramView).b();
+    if (localView2 != null)
+    {
+      localObject = (RelativeLayout.LayoutParams)localView2.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(AssociatedAccountManageActivity.e(this.a) * 12.0F + AssociatedAccountManageActivity.f(this.a) * 75.0F));
+      localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    if (AppSetting.d)
+    {
+      paramView.setContentDescription(this.a.getString(2131690799));
+      AssociatedAccountManageActivity.a(this.a).setContentDescription(this.a.getString(2131720637));
+    }
+    if ((localView1 instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)localView1).b();
+    }
+    View localView1 = AssociatedAccountManageActivity.a(this.a, AssociatedAccountManageActivity.a(this.a));
+    if ((localView1 instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)localView1).f();
+    }
+    AssociatedAccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
   }
 }
 

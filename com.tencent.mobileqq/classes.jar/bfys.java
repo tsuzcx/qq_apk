@@ -1,62 +1,50 @@
-import android.graphics.Bitmap;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
 public class bfys
+  extends GridLayoutManager.SpanSizeLookup
 {
-  private int jdField_a_of_type_Int = -1;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private int b;
+  private GridLayoutManager.SpanSizeLookup jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager$SpanSizeLookup;
+  private final GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
+  private final bfzg jdField_a_of_type_Bfzg;
   
-  public int a()
+  public bfys(bfzg parambfzg, GridLayoutManager paramGridLayoutManager)
   {
-    return this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Bfzg = parambfzg;
+    this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = paramGridLayoutManager;
   }
   
-  public void a()
+  public void a(GridLayoutManager.SpanSizeLookup paramSpanSizeLookup)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
-    while (this.jdField_a_of_type_Int > 0) {
-      return;
-    }
-    this.jdField_a_of_type_Int = bfyw.a(this.jdField_a_of_type_AndroidGraphicsBitmap, true);
+    this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager$SpanSizeLookup = paramSpanSizeLookup;
   }
   
-  public void a(int paramInt)
+  public int getSpanSize(int paramInt)
   {
-    this.b = paramInt;
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    int j = 1;
+    int i;
+    if ((this.jdField_a_of_type_Bfzg.a(paramInt)) || (this.jdField_a_of_type_Bfzg.b(paramInt)))
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      i = 1;
+      if (i == 0) {
+        break label45;
+      }
+      i = this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.getSpanCount();
     }
-    bfyw.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public int c()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      return this.jdField_a_of_type_AndroidGraphicsBitmap.getByteCount();
-    }
-    return 0;
+    label45:
+    do
+    {
+      return i;
+      i = 0;
+      break;
+      i = j;
+    } while (this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager$SpanSizeLookup == null);
+    return this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager$SpanSizeLookup.getSpanSize(paramInt - this.jdField_a_of_type_Bfzg.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfys
  * JD-Core Version:    0.7.0.1
  */

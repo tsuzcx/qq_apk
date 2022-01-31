@@ -1,14 +1,22 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
 public class uaq
-  implements bekd
+  implements ucu
 {
-  public uaq(StoryPickerHorizontalListView paramStoryPickerHorizontalListView) {}
+  public uaq(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public void a(@NonNull View paramView, int paramInt)
   {
-    if ((paramInt == 4097) && (this.a.jdField_a_of_type_Uat != null)) {
-      this.a.jdField_a_of_type_Uat.a(this.a.jdField_a_of_type_Uan.a);
+    if (bkur.a)
+    {
+      paramInt = StoryPlayerGroupHolder.a(this.a);
+      paramView = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+      paramView.bottomMargin = paramInt;
+      this.a.a.setLayoutParams(paramView);
     }
   }
 }

@@ -1,164 +1,132 @@
-import android.graphics.PointF;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import android.os.Process;
+import android.text.TextUtils;
+import android.text.format.Time;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.PTFaceAttr;
-import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import mqq.app.Foreground;
+import mqq.app.MobileQQ;
 
 public class lfl
 {
-  public int a;
-  public List<PointF> a;
-  public short a;
-  public byte[] a;
-  public float[] a;
-  public int b;
-  public short b;
-  public byte[] b;
-  public int c;
-  public byte[] c;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new lfm(this);
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private boolean jdField_a_of_type_Boolean;
   
-  public lfl()
+  public lfl(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_ArrayOfFloat = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_b_of_type_ArrayOfByte = null;
-    this.jdField_c_of_type_ArrayOfByte = null;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
   }
   
-  private byte[] a(int paramInt1, int paramInt2, float paramFloat)
+  private String a(Context paramContext)
   {
-    PointF localPointF = null;
-    Object localObject = localPointF;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    try
     {
-      localObject = localPointF;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      int i = Process.myPid();
+      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
+      while (paramContext.hasNext())
       {
-        localObject = localPointF;
-        if (paramInt1 != 0)
+        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+        if (localRunningAppProcessInfo.pid == i)
         {
-          localObject = localPointF;
-          if (paramInt2 != 0)
-          {
-            localObject = localPointF;
-            if (paramFloat > 0.0001D)
-            {
-              float f = 240.0F / (paramInt1 * paramFloat);
-              paramFloat = 320.0F / (paramInt2 * paramFloat);
-              krx.c("FaceData", "getFaceFeature:" + paramInt1 + "|" + paramInt2 + "|" + f);
-              localObject = ByteBuffer.allocate(this.jdField_a_of_type_JavaUtilList.size() * 4);
-              paramInt1 = 0;
-              while (paramInt1 < this.jdField_a_of_type_JavaUtilList.size())
-              {
-                localPointF = (PointF)this.jdField_a_of_type_JavaUtilList.get(paramInt1);
-                short s1 = (short)(int)(localPointF.x * f);
-                short s2 = (short)(int)(localPointF.y * paramFloat);
-                ((ByteBuffer)localObject).putShort(s1);
-                ((ByteBuffer)localObject).putShort(s2);
-                paramInt1 += 1;
-              }
-              localObject = ((ByteBuffer)localObject).array();
-            }
-          }
+          paramContext = localRunningAppProcessInfo.processName;
+          return paramContext;
         }
       }
     }
-    return localObject;
+    catch (Exception paramContext) {}
+    return null;
   }
   
-  private byte[] b(int paramInt1, int paramInt2, float paramFloat)
+  private String a(ArrayList<String> paramArrayList, boolean paramBoolean)
   {
-    PointF localPointF = null;
-    Object localObject = localPointF;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    Time localTime = new Time();
+    localTime.setToNow();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("com.tencent.process.exit");
+    localStringBuilder.append(localTime.year).append(localTime.month + 1).append(localTime.monthDay);
+    localStringBuilder.append(localTime.hour);
+    if (paramBoolean)
     {
-      localObject = localPointF;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-      {
-        localObject = localPointF;
-        if (paramInt1 != 0)
-        {
-          localObject = localPointF;
-          if (paramInt2 != 0)
-          {
-            localObject = localPointF;
-            if (paramFloat > 0.0001D)
-            {
-              float f = 2.4E+008F / (paramInt1 * paramFloat);
-              paramFloat = 3.2E+008F / (paramInt2 * paramFloat);
-              krx.c("FaceData", "getFaceFeature2:" + paramInt1 + "|" + paramInt2 + "|" + f);
-              localObject = ByteBuffer.allocate(this.jdField_a_of_type_JavaUtilList.size() * 8);
-              paramInt1 = 0;
-              while (paramInt1 < this.jdField_a_of_type_JavaUtilList.size())
-              {
-                localPointF = (PointF)this.jdField_a_of_type_JavaUtilList.get(paramInt1);
-                paramInt2 = (int)(localPointF.x * f);
-                int i = (int)(localPointF.y * paramFloat);
-                ((ByteBuffer)localObject).putInt(paramInt2);
-                ((ByteBuffer)localObject).putInt(i);
-                paramInt1 += 1;
-              }
-              localObject = ((ByteBuffer)localObject).array();
-            }
-          }
-        }
+      localStringBuilder.append(localTime.minute - 1);
+      if (paramArrayList != null) {
+        break label142;
       }
     }
-    return localObject;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_ArrayOfFloat = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_b_of_type_ArrayOfByte = null;
-    this.jdField_c_of_type_ArrayOfByte = null;
-  }
-  
-  public void a(PTFaceAttr paramPTFaceAttr, float paramFloat, boolean paramBoolean)
-  {
-    if (paramPTFaceAttr != null)
+    label142:
+    for (paramArrayList = "null";; paramArrayList = paramArrayList.toString())
     {
-      this.jdField_a_of_type_Int = paramPTFaceAttr.getFaceCount();
-      if ((this.jdField_a_of_type_Int > 0) && (paramPTFaceAttr != null))
-      {
-        if (paramBoolean) {
-          break label143;
-        }
-        this.jdField_a_of_type_JavaUtilList = ((List)paramPTFaceAttr.getAllFacePoints().get(0));
-        this.jdField_a_of_type_ArrayOfFloat = ((float[])paramPTFaceAttr.getAllFaceAngles().get(0));
-        this.jdField_a_of_type_ArrayOfByte = a(this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, paramFloat);
-        this.jdField_b_of_type_ArrayOfByte = b(this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, paramFloat);
-      }
+      localStringBuilder.append(paramArrayList);
+      paramArrayList = MD5.toMD5(localStringBuilder.toString());
+      return MD5.toMD5(paramArrayList + localStringBuilder.toString());
+      localStringBuilder.append(localTime.minute);
+      break;
     }
+  }
+  
+  private boolean a(String paramString, ArrayList<String> paramArrayList)
+  {
+    if (Foreground.sCountActivity > 0) {}
+    while ((paramString == null) || (paramString.length() == 0) || ((!paramString.equals(a(paramArrayList, false))) && (!paramString.equals(a(paramArrayList, true))))) {
+      return false;
+    }
+    return true;
+  }
+  
+  private boolean a(ArrayList<String> paramArrayList)
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
+      bool1 = true;
+    }
+    String str;
+    do
+    {
+      return bool1;
+      str = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication());
+      bool1 = bool2;
+    } while (TextUtils.isEmpty(str));
+    int i = 0;
     for (;;)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FaceData", 4, "updateFaceData, count[" + this.jdField_a_of_type_Int + "]");
+      bool1 = bool2;
+      if (i >= paramArrayList.size()) {
+        break;
       }
-      return;
-      this.jdField_a_of_type_Int = 0;
-      break;
-      label143:
-      paramPTFaceAttr = paramPTFaceAttr.genOrigFaceData();
-      if (paramPTFaceAttr != null)
-      {
-        ByteBuffer localByteBuffer = ByteBuffer.allocate(paramPTFaceAttr.getBytes().length + 4);
-        this.jdField_a_of_type_Short = ((short)(int)(this.jdField_c_of_type_Int * paramFloat));
-        this.jdField_b_of_type_Short = ((short)(int)(this.jdField_b_of_type_Int * paramFloat));
-        localByteBuffer.put(new byte[] { (byte)(this.jdField_b_of_type_Short >> 8), (byte)(this.jdField_b_of_type_Short >> 0), (byte)(this.jdField_a_of_type_Short >> 8), (byte)(this.jdField_a_of_type_Short >> 0) });
-        localByteBuffer.put(paramPTFaceAttr.getBytes());
-        this.jdField_c_of_type_ArrayOfByte = localByteBuffer.array();
-        if (QLog.isDevelopLevel()) {
-          QLog.d("FaceData", 1, "updateFaceData local Side mDetectWidth:=" + this.jdField_a_of_type_Short + "mDetectHeight:=" + this.jdField_b_of_type_Short + ",InputWidth:=" + this.jdField_c_of_type_Int + ",InputHeight:=" + this.jdField_b_of_type_Int);
-        }
+      if (str.equals(paramArrayList.get(i))) {
+        return true;
       }
+      i += 1;
+    }
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GKillProcessMonitor", 2, "regist QQ Process Exit Receiver");
+    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.process.exit");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_Boolean = false;
     }
   }
 }

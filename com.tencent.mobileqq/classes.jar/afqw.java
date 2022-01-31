@@ -1,24 +1,41 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
 
-class afqw
-  extends ajrb
+public class afqw
+  extends akav
 {
-  afqw(afqi paramafqi) {}
+  public afqw(DeviceFragment paramDeviceFragment) {}
   
-  public void a(boolean paramBoolean)
+  protected void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainAssistObserver", 2, "RedpointObserver, onUpdateSettingMe");
+    if (this.a.a == null) {
+      return;
     }
-    this.a.e();
+    DeviceFragment localDeviceFragment = this.a;
+    if (paramInt1 != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localDeviceFragment.c = bool;
+      this.a.a.d();
+      this.a.a.notifyDataSetChanged();
+      return;
+    }
   }
   
-  public void b(boolean paramBoolean)
+  protected void b(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainAssistObserver", 2, "RedpointObserver, onNotifyLebaRedTouch");
+    if (this.a.a == null) {
+      return;
     }
-    this.a.g();
+    DeviceFragment localDeviceFragment = this.a;
+    if (paramInt1 != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localDeviceFragment.d = bool;
+      this.a.a.e();
+      this.a.a.a(this.a.d, ajsf.A);
+      this.a.a.notifyDataSetChanged();
+      return;
+    }
   }
 }
 

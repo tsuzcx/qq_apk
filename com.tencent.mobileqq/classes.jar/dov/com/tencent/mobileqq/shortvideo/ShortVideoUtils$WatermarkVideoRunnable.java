@@ -10,26 +10,26 @@ import android.graphics.Canvas;
 import android.media.MediaMetadataRetriever;
 import android.os.Message;
 import android.text.TextUtils;
-import befo;
+import bfni;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import mqq.os.MqqHandler;
-import vlc;
-import vni;
-import vnq;
+import vxy;
+import wae;
+import wam;
 
 public class ShortVideoUtils$WatermarkVideoRunnable
   implements Runnable
 {
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static vni jdField_a_of_type_Vni;
+  private static wae jdField_a_of_type_Wae;
   private int jdField_a_of_type_Int;
   String jdField_a_of_type_JavaLangString;
   private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private vnq jdField_a_of_type_Vnq;
+  private wam jdField_a_of_type_Wam;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private String jdField_b_of_type_JavaLangString;
@@ -57,7 +57,7 @@ public class ShortVideoUtils$WatermarkVideoRunnable
     Object localObject3;
     Object localObject5;
     Object localObject6;
-    if (befo.d())
+    if (bfni.d())
     {
       localObject1 = new MediaMetadataRetriever();
       ((MediaMetadataRetriever)localObject1).setDataSource(this.jdField_b_of_type_JavaLangString);
@@ -77,8 +77,8 @@ public class ShortVideoUtils$WatermarkVideoRunnable
       if (QLog.isColorLevel()) {
         QLog.d("ShortVideoUtils", 2, "watermark task measure, w=" + this.jdField_b_of_type_Int + ", h=" + this.jdField_c_of_type_Int + ",r=" + i);
       }
-      if (jdField_a_of_type_Vni == null) {
-        jdField_a_of_type_Vni = vni.a(BaseApplicationImpl.getContext());
+      if (jdField_a_of_type_Wae == null) {
+        jdField_a_of_type_Wae = wae.a(BaseApplicationImpl.getContext());
       }
       this.jdField_a_of_type_JavaLangString = ShortVideoUtils.b();
       localObject5 = new File(this.jdField_a_of_type_JavaLangString);
@@ -106,7 +106,7 @@ public class ShortVideoUtils$WatermarkVideoRunnable
         {
           try
           {
-            localObject1 = BitmapFactory.decodeResource(((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources(), 2130845076);
+            localObject1 = BitmapFactory.decodeResource(((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources(), 2130845160);
             if (this.jdField_b_of_type_Int != 576)
             {
               float f = this.jdField_b_of_type_Int / 576.0F;
@@ -134,14 +134,14 @@ public class ShortVideoUtils$WatermarkVideoRunnable
                 if (j != 0) {
                   ((Canvas)localObject6).restore();
                 }
-                if (vlc.a((Bitmap)localObject3, Bitmap.CompressFormat.PNG, 100, ((File)localObject5).getAbsolutePath())) {
+                if (vxy.a((Bitmap)localObject3, Bitmap.CompressFormat.PNG, 100, ((File)localObject5).getAbsolutePath())) {
                   break;
                 }
                 if (QLog.isColorLevel()) {
                   QLog.d("ShortVideoUtils", 2, "compress watermark to file failed");
                 }
-                vlc.a((Bitmap)localObject3);
-                vlc.a((Bitmap)localObject1);
+                vxy.a((Bitmap)localObject3);
+                vxy.a((Bitmap)localObject1);
                 a(10001);
               }
             }
@@ -171,9 +171,9 @@ public class ShortVideoUtils$WatermarkVideoRunnable
           label631:
           int k = this.jdField_c_of_type_Int - 20 - localException1.getHeight();
         }
-        vlc.a((Bitmap)localObject3);
-        vlc.a(localException1);
-        if (jdField_a_of_type_Vni.a()) {
+        vxy.a((Bitmap)localObject3);
+        vxy.a(localException1);
+        if (jdField_a_of_type_Wae.a()) {
           if (QLog.isColorLevel()) {
             QLog.d("ShortVideoUtils", 2, "generate files mFFmpeg is running!");
           }
@@ -185,8 +185,8 @@ public class ShortVideoUtils$WatermarkVideoRunnable
             jdField_a_of_type_JavaLangObject.wait();
             try
             {
-              jdField_a_of_type_Vni.a(this.jdField_c_of_type_JavaLangString);
-              jdField_a_of_type_Vni.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Vnq);
+              jdField_a_of_type_Wae.a(this.jdField_c_of_type_JavaLangString);
+              jdField_a_of_type_Wae.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Wam);
               return;
             }
             catch (Exception localException2) {}

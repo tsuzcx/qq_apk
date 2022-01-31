@@ -1,22 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
 
 public class aiko
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public aiko(CmGameDebugToolFragment paramCmGameDebugToolFragment) {}
+  public aiko(SessionClearFragment paramSessionClearFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    CmGameDebugToolFragment.a(this.a).edit().putBoolean("game_whitelist_verify_switch", paramBoolean).commit();
+    paramView = ajyc.a(2131713843);
+    paramView = bbcv.a(SessionClearFragment.a(this.a), 230, ajyc.a(2131713845), paramView, 2131694647, 2131720918, new aikp(this), new aikq(this));
+    SessionClearFragment.a(this.a, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aiko
  * JD-Core Version:    0.7.0.1
  */

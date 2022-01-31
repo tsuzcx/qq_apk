@@ -1,207 +1,27 @@
-import NearbyGroup.GroupInfo;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.JoinGroupTransitActivity;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.RecentRecommendTroopItem;
-import com.tencent.widget.ListView;
-import com.tencent.widget.SingleLineTextView;
-import com.tencent.widget.ThemeImageView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 public class afgp
-  extends aiab
-  implements View.OnClickListener
+  extends akup
 {
-  private afgq jdField_a_of_type_Afgq;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<RecentRecommendTroopItem> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public afgp(Context paramContext, QQAppInterface paramQQAppInterface, ListView paramListView, int paramInt, boolean paramBoolean, afgq paramafgq)
+  public afgp(SearchContactsFragment paramSearchContactsFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    super(paramContext, paramQQAppInterface, paramListView, paramInt, paramBoolean);
-    this.jdField_a_of_type_Afgq = paramafgq;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  private void a(afgr paramafgr, RecentRecommendTroopItem paramRecentRecommendTroopItem)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    paramafgr.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramRecentRecommendTroopItem.name);
-    paramafgr.b.setText(paramRecentRecommendTroopItem.labelStr);
-    paramafgr.jdField_a_of_type_AndroidWidgetButton.setText(ajjy.a(2131647477));
-    paramafgr.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(4, paramRecentRecommendTroopItem.uin));
-    paramafgr.jdField_a_of_type_ComTencentMobileqqTroopDataRecentRecommendTroopItem = paramRecentRecommendTroopItem;
-    paramafgr.jdField_a_of_type_JavaLangString = paramRecentRecommendTroopItem.uin;
-    paramafgr.jdField_c_of_type_Int = 4;
-    awqx.b(null, "dc00899", "Grp_recom", "", "link_top", "exp_grp", 0, 0, paramRecentRecommendTroopItem.uin, paramRecentRecommendTroopItem.recomAlgol, "", "");
-    if (AppSetting.c)
+    if (paramInt == 0)
     {
-      paramafgr.jdField_a_of_type_AndroidViewView.setContentDescription(paramRecentRecommendTroopItem.name + " " + paramRecentRecommendTroopItem.labelStr);
-      paramafgr.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setContentDescription(paramRecentRecommendTroopItem.name);
-      paramafgr.b.setContentDescription(paramRecentRecommendTroopItem.labelStr);
+      SearchContactsFragment.a(this.a, paramSosoLbsInfo.a.a);
+      SearchContactsFragment.b(this.a, paramSosoLbsInfo.a.b);
     }
-  }
-  
-  public RecentRecommendTroopItem a(int paramInt)
-  {
-    return (RecentRecommendTroopItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a()
-  {
-    super.c();
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a(List<RecentRecommendTroopItem> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    notifyDataSetChanged();
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      if (((RecentRecommendTroopItem)localIterator.next()).uin.equalsIgnoreCase(paramString)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
-    {
-      paramView = new afgr();
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131493301, null);
-      paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131296259));
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131305159));
-      paramView.b = ((SingleLineTextView)localView.findViewById(2131309446));
-      paramView.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131309433));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131309443));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131299428));
-      paramView.jdField_a_of_type_AndroidViewView = localView;
-      ((ThemeImageView)paramView.jdField_c_of_type_AndroidWidgetImageView).setSupportMaskView(true);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      paramView.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      localView.setOnClickListener(this);
-      localView.setTag(paramView);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setTag(paramView);
-      paramView.jdField_a_of_type_AndroidWidgetButton.setTag(paramView);
-      paramViewGroup = paramView;
-    }
-    for (;;)
-    {
-      if (afgs.a)
-      {
-        awqx.b(null, "dc00899", "Grp_recom", "", "link_top", "exp", 0, 0, "", "", "", "");
-        afgs.a = false;
-      }
-      a(paramViewGroup, a(paramInt));
-      return localView;
-      paramViewGroup = (afgr)paramView.getTag();
-      localView = paramView;
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    Object localObject1;
-    Object localObject2;
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131309433: 
-      paramView = ((afgr)paramView.getTag()).jdField_a_of_type_ComTencentMobileqqTroopDataRecentRecommendTroopItem;
-      localObject1 = "mqqapi://app/joinImmediately?source_id=3&version=1.0&src_type=app&pkg=com.tencent.mobileqq&cmp=com.tencent.biz.JoinGroupTransitActivity&group_code=" + paramView.uin + "&subsource_id=10019";
-      localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, JoinGroupTransitActivity.class);
-      ((Intent)localObject2).putExtra("source_scheme", (String)localObject1);
-      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
-      awqx.b(null, "dc00899", "Grp_recom", "", "link_top", "clk_add", 0, 0, paramView.uin, paramView.recomAlgol, "", "");
-      return;
-    case 2131309584: 
-      paramView = ((afgr)paramView.getTag()).jdField_a_of_type_ComTencentMobileqqTroopDataRecentRecommendTroopItem;
-      localObject1 = new GroupInfo();
-    }
-    try
-    {
-      ((GroupInfo)localObject1).lCode = Long.valueOf(paramView.uin).longValue();
-      ((GroupInfo)localObject1).strName = paramView.name;
-      if (TextUtils.isEmpty(paramView.recommendReason)) {}
-      for (((GroupInfo)localObject1).strIntro = paramView.intro;; ((GroupInfo)localObject1).strIntro = paramView.recommendReason)
-      {
-        ((GroupInfo)localObject1).iMemberCnt = paramView.memberNum;
-        localObject2 = mne.a(paramView);
-        if (localObject2 != null) {
-          ((GroupInfo)localObject1).labels = ((ArrayList)localObject2);
-        }
-        ((GroupInfo)localObject1).strJoinSig = paramView.authSig;
-        localObject1 = azlj.a(108, (GroupInfo)localObject1, 10020, false);
-        azlj.a(this.jdField_a_of_type_AndroidContentContext, (Bundle)localObject1, 2);
-        awqx.b(null, "dc00899", "Grp_recom", "", "link_top", "clk_grp", 0, 0, paramView.uin, paramView.recomAlgol, "", "");
-        return;
-      }
-      paramView = (afgr)paramView.getTag();
-      this.jdField_a_of_type_JavaUtilList.remove(paramView.jdField_a_of_type_ComTencentMobileqqTroopDataRecentRecommendTroopItem);
-      notifyDataSetChanged();
-      if (this.jdField_a_of_type_Afgq != null) {
-        this.jdField_a_of_type_Afgq.a(paramView.jdField_a_of_type_ComTencentMobileqqTroopDataRecentRecommendTroopItem.uin, this.jdField_a_of_type_JavaUtilList.size());
-      }
-      awqx.b(null, "dc00899", "Grp_recom", "", "link_top", "clk_delete", 0, 0, paramView.jdField_a_of_type_ComTencentMobileqqTroopDataRecentRecommendTroopItem.uin, paramView.jdField_a_of_type_ComTencentMobileqqTroopDataRecentRecommendTroopItem.recomAlgol, "", "");
-      return;
-    }
-    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afgp
  * JD-Core Version:    0.7.0.1
  */

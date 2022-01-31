@@ -1,16 +1,57 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.List;
 
 public class uru
-  implements View.OnClickListener
+  extends uyl
 {
-  public uru(DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment paramDanceMachineQQBrowserFragment) {}
+  public uru(urr paramurr) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, View paramView, Object paramObject, vas paramvas)
   {
-    this.a.getActivity().finish();
+    if ((paramInt < 0) || (paramInt > this.a.a.a(urr.a(this.a)).size())) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramObject = (CommentEntry)this.a.a.a(urr.a(this.a)).get(paramInt);
+          switch (paramView.getId())
+          {
+          default: 
+            return;
+          }
+        } while ((paramObject.authorRole == 1002) || (paramObject.authorRole == 1003));
+        sxp.a(paramView.getContext(), 12, paramObject.authorUnionId);
+        return;
+      } while (urr.a(this.a) == null);
+      urr.a(this.a).a(paramObject, paramInt);
+      return;
+    } while (urr.a(this.a) == null);
+    urr.a(this.a).L_();
+  }
+  
+  public void b(int paramInt, View paramView, Object paramObject, vas paramvas)
+  {
+    if ((paramInt < 0) || (paramInt > this.a.a.a(urr.a(this.a)).size())) {}
+    do
+    {
+      do
+      {
+        return;
+        paramObject = (CommentEntry)this.a.a.a(urr.a(this.a)).get(paramInt);
+        switch (paramView.getId())
+        {
+        default: 
+          return;
+        }
+      } while (urr.a(this.a) == null);
+      urr.a(this.a).b(paramObject, paramInt);
+      return;
+    } while (urr.a(this.a) == null);
+    urr.a(this.a).L_();
   }
 }
 

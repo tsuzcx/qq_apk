@@ -1,22 +1,15 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import mqq.util.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
 
-class agim
-  implements acwd
+public class agim
+  implements DialogInterface.OnClickListener
 {
-  agim(agil paramagil) {}
+  public agim(BaseActivityView paramBaseActivityView) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((NewPhotoPreviewActivity)this.a.a.a.get()).setResult(-1, new Intent());
-    ((NewPhotoPreviewActivity)this.a.a.a.get()).finish();
-  }
-  
-  public void b()
-  {
-    ((NewPhotoPreviewActivity)this.a.a.a.get()).setResult(-1, new Intent());
-    ((NewPhotoPreviewActivity)this.a.a.a.get()).finish();
+    this.a.f();
   }
 }
 

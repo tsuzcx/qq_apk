@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import tia;
+import tuw;
 
 class StoryPlayerActivity$2
   implements Runnable

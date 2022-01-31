@@ -1,27 +1,24 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
-final class vvu
-  implements wxx<CertifiedAccountRead.StGetMainPageRsp>
+public class vvu
+  implements vvv
 {
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public void a(@NonNull ArrayList<vvw> paramArrayList, @NonNull Context paramContext)
   {
-    if ((paramBoolean) && (paramLong == 0L))
+    int i = 0;
+    while (i < vvw.a.length)
     {
-      if (paramStGetMainPageRsp != null) {
-        vvt.a((CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get());
-      }
+      paramArrayList.add(new vvw(paramContext.getResources().getDrawable(vvw.b[i]), 0, vvw.a[i]));
+      i += 1;
     }
-    else {
-      return;
-    }
-    QLog.w(vvt.class.getSimpleName(), 1, "getPuinUser empty");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vvu
  * JD-Core Version:    0.7.0.1
  */

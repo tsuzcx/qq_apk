@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import com.tencent.qphone.base.util.QLog;
-import qvi;
+import rhu;
 
 class RecommendFeedsDiandianEntranceManager$1
   implements Runnable
 {
-  RecommendFeedsDiandianEntranceManager$1(RecommendFeedsDiandianEntranceManager paramRecommendFeedsDiandianEntranceManager, qvi paramqvi) {}
+  RecommendFeedsDiandianEntranceManager$1(RecommendFeedsDiandianEntranceManager paramRecommendFeedsDiandianEntranceManager, rhu paramrhu) {}
   
   public void run()
   {

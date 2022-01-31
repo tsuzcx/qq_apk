@@ -1,37 +1,28 @@
-import com.tencent.mobileqq.widget.ContainerView;
-import com.tencent.widget.ScrollView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
-public class bbhj
-  implements bend
+class bbhj
+  implements TextWatcher
 {
-  public bbhj(ContainerView paramContainerView) {}
+  bbhj(bbhb parambbhb, int paramInt) {}
   
-  public void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    switch (paramInt)
+    if ((this.jdField_a_of_type_Bbhb.a.getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
     {
+      this.jdField_a_of_type_Bbhb.a.setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
+      this.jdField_a_of_type_Bbhb.a.setSelection(this.jdField_a_of_type_Int - 1);
     }
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramBoolean) && (!ContainerView.b(this.a)));
-      paramScrollView = ahox.a();
-      if ((paramScrollView.c()) && (!paramScrollView.a())) {
-        paramScrollView.a();
-      }
-      ContainerView.b(this.a, false);
-      return;
-      ContainerView.b(this.a, true);
-      paramScrollView = ahox.a();
-    } while ((!paramScrollView.c()) || (!paramScrollView.a()));
-    paramScrollView.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbhj
  * JD-Core Version:    0.7.0.1
  */

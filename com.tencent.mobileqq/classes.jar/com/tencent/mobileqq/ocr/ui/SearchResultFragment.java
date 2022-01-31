@@ -5,11 +5,11 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import atej;
-import atfy;
-import atfz;
-import atgc;
-import awqx;
+import aubf;
+import aucz;
+import auda;
+import audd;
+import axqw;
 import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
 import java.util.List;
 
@@ -28,15 +28,15 @@ public class SearchResultFragment
     }
   }
   
-  public void a(String paramString, int paramInt, atej paramatej)
+  public void a(String paramString, int paramInt, aubf paramaubf)
   {
-    paramString = this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter.a(paramString, paramInt, paramatej);
+    paramString = this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter.a(paramString, paramInt, paramaubf);
     this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.a();
     paramInt = 0;
     while (paramInt < paramString.size())
     {
-      paramatej = (atgc)paramString.get(paramInt);
-      this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.a(paramatej.a);
+      paramaubf = (audd)paramString.get(paramInt);
+      this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.a(paramaubf.a);
       paramInt += 1;
     }
     if (paramString.size() == 1) {
@@ -52,19 +52,19 @@ public class SearchResultFragment
   
   public void onCreate(Bundle paramBundle)
   {
-    awqx.b(null, "dc00898", "", "", "0X80082E6", "0X80082E6", 0, 0, "", "", "", "");
+    axqw.b(null, "dc00898", "", "", "0X80082E6", "0X80082E6", 0, 0, "", "", "", "");
     super.onCreate(paramBundle);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131494048, null);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramLayoutInflater.findViewById(2131313396));
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost = ((ScrolledTabHost)paramLayoutInflater.findViewById(2131311013));
-    this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter = new SearchResultViewPagerAdapter(this.jdField_a_of_type_Atfl, this, this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559620, null);
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramLayoutInflater.findViewById(2131379231));
+    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost = ((ScrolledTabHost)paramLayoutInflater.findViewById(2131376822));
+    this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter = new SearchResultViewPagerAdapter(this.jdField_a_of_type_Aucm, this, this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter);
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setOnTabSelectedListener(new atfy(this));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new atfz(this));
+    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setOnTabSelectedListener(new aucz(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new auda(this));
     return paramLayoutInflater;
   }
 }

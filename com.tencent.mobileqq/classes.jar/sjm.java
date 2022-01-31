@@ -1,98 +1,28 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
-class sjm
-  implements vnq
+public class sjm
+  implements View.OnClickListener
 {
-  private final int jdField_a_of_type_Int;
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+  public sjm(WSRecommendFragment paramWSRecommendFragment) {}
   
-  public sjm(Object paramObject, AtomicInteger paramAtomicInteger, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = paramAtomicInteger;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onFailure(String paramString)
-  {
-    urk.d(sjj.a, "FFMPEGResponseCallback onFailure() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    int j = 0;
-    int k = 0;
-    int m = 0;
-    int i = 0;
-    urk.d(sjj.a, "FFMPEGResponseCallback onFinish() mTaskType = " + this.jdField_a_of_type_Int + " isSuccess = " + paramBoolean);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaLangObject.notify();
-      switch (this.jdField_a_of_type_Int)
-      {
-      case 1: 
-        urk.e(sjj.a, "Undefined task type mTaskType = " + this.jdField_a_of_type_Int);
-        throw new RuntimeException("Undefined task in FFMPEGResponseCallback");
-      }
-    }
-    AtomicInteger localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-    if (paramBoolean)
-    {
-      label152:
-      localAtomicInteger.set(i);
-      for (;;)
-      {
-        label158:
-        return;
-        localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-        if (!paramBoolean) {
-          break;
-        }
-        i = j;
-        label174:
-        localAtomicInteger.set(i);
-      }
-      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-      if (!paramBoolean) {
-        break label248;
-      }
-    }
-    label248:
-    for (i = k;; i = 945001)
-    {
-      localAtomicInteger.set(i);
-      break label158;
-      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-      if (paramBoolean) {}
-      for (i = m;; i = 944004)
-      {
-        localAtomicInteger.set(i);
-        break;
-      }
-      break;
-      i = 943004;
-      break label152;
-      i = 942004;
-      break label174;
-    }
-  }
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
-  {
-    urk.c(sjj.a, "onStart() mTaskType = " + this.jdField_a_of_type_Int);
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    urk.c(sjj.a, "FFMPEGResponseCallback onSuccess() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
+    WSPublicAccReport.getInstance().reportPublicAccDetailClick();
+    paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+    paramView.putExtra("uin", String.valueOf(2062433139L));
+    paramView.putExtra("uintype", 1008);
+    paramView.putExtra("source", 119);
+    this.a.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sjm
  * JD-Core Version:    0.7.0.1
  */

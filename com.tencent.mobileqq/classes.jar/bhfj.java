@@ -1,31 +1,23 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.music.BroadcastMusicInfo;
 
-class bhfj
-  implements bign
+public final class bhfj
+  implements Parcelable.Creator<BroadcastMusicInfo>
 {
-  bhfj(bhff parambhff) {}
-  
-  public void a() {}
-  
-  public void a(TroopBarPOI paramTroopBarPOI)
+  public BroadcastMusicInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureController", 2, "onSelectLocation " + paramTroopBarPOI);
-    }
-    this.a.a.setLocation(paramTroopBarPOI);
-    if (paramTroopBarPOI != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bioo.b = bool;
-      return;
-    }
+    return new BroadcastMusicInfo(paramParcel);
+  }
+  
+  public BroadcastMusicInfo[] a(int paramInt)
+  {
+    return new BroadcastMusicInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhfj
  * JD-Core Version:    0.7.0.1
  */

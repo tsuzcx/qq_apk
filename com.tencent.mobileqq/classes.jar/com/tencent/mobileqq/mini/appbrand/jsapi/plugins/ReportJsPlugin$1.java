@@ -10,6 +10,7 @@ final class ReportJsPlugin$1
     add("reportKeyValue");
     add("api_report");
     add("reportDC");
+    add("reportDataToDC");
   }
 }
 

@@ -1,27 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
 public class ablv
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public ablv(QQMapActivity paramQQMapActivity) {}
+  public ablv(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.a == null)
-    {
-      this.a.a = ((begr)behe.a(this.a, null));
-      this.a.a.b(2131632406);
-      this.a.a.b(2131626722);
-      this.a.a.c(2131625035);
-      this.a.a.a(new ablw(this));
-    }
-    if (!this.a.a.isShowing()) {
-      this.a.a.show();
-    }
-    awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_menu", 0, 0, "", "", "", "");
+    LoginInfoActivity.a(this.a).setVisibility(4);
+    LoginInfoActivity.a(this.a).clearAnimation();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

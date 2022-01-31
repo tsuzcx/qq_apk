@@ -1,24 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewParent;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Gxzb;
 
-public class anil
-  implements ValueAnimator.AnimatorUpdateListener
+public final class anil
+  implements Parcelable.Creator
 {
-  public anil(EmoticonMainPanel paramEmoticonMainPanel, int paramInt) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public IPSiteModel.Gxzb a(Parcel paramParcel)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i == this.jdField_a_of_type_Int) {
-      AbstractGifImage.resumeAll();
-    }
-    com.tencent.widget.XPanelContainer.jdField_a_of_type_Int = i;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.getParent() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.getParent().requestLayout();
-    }
+    IPSiteModel.Gxzb localGxzb = new IPSiteModel.Gxzb();
+    localGxzb.appid = paramParcel.readInt();
+    localGxzb.appName = paramParcel.readString();
+    localGxzb.cover = paramParcel.readString();
+    localGxzb.feeType = paramParcel.readInt();
+    localGxzb.id = paramParcel.readString();
+    localGxzb.name = paramParcel.readString();
+    return localGxzb;
+  }
+  
+  public IPSiteModel.Gxzb[] a(int paramInt)
+  {
+    return new IPSiteModel.Gxzb[paramInt];
   }
 }
 

@@ -1,317 +1,553 @@
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.common.app.AppInterface;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.config.HwServlet;
-import com.tencent.mobileqq.highway.openup.SessionInfo;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class axue
-  extends axox
 {
-  ajmm jdField_a_of_type_Ajmm = new axug(this);
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private Transaction jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction;
-  private String jdField_a_of_type_JavaLangString = "";
-  private byte[] d;
-  private byte[] e;
-  
-  public axue(axos paramaxos, axvt paramaxvt)
+  public static int a(String paramString)
   {
-    super(paramaxos, paramaxvt);
-    this.jdField_a_of_type_Axqf.jdField_a_of_type_Axou = this;
-    this.jdField_a_of_type_Axqf.jdField_a_of_type_ArrayOfByte = paramaxvt.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  private void a(MessageForScribble paramMessageForScribble)
-  {
-    if (paramMessageForScribble != null)
+    HashMap localHashMap = axug.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
     {
-      paramMessageForScribble.prewrite();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessageForScribble.frienduin, paramMessageForScribble.istroop, paramMessageForScribble.uniseq, paramMessageForScribble.msgData);
-    }
-  }
-  
-  private void g()
-  {
-    try
-    {
-      if (SessionInfo.getInstance(this.jdField_a_of_type_Axvt.b).getHttpconn_sig_session() != null)
-      {
-        int i = SessionInfo.getInstance(this.jdField_a_of_type_Axvt.b).getHttpconn_sig_session().length;
-        this.jdField_d_of_type_ArrayOfByte = new byte[i];
-        System.arraycopy(SessionInfo.getInstance(this.jdField_a_of_type_Axvt.b).getHttpconn_sig_session(), 0, this.jdField_d_of_type_ArrayOfByte, 0, i);
+      paramString = (axuf)localHashMap.get(paramString);
+      if (paramString != null) {
+        return paramString.a().size();
       }
-      if (this.jdField_d_of_type_ArrayOfByte == null) {
-        HwServlet.getConfig(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Axvt.b);
-      }
-      return;
     }
-    finally {}
-  }
-  
-  private void h()
-  {
-    if (!f())
-    {
-      d("<BDH_LOG> sendMsg() do not send message, due to mIsCancel=true || mIsPause=true, current channel = " + this.w);
-      return;
-    }
-    MessageForScribble localMessageForScribble = (MessageForScribble)this.jdField_a_of_type_Axvt.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (localMessageForScribble != null)
-    {
-      localMessageForScribble.combineFileUrl = this.jdField_a_of_type_JavaLangString;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ScribblePicUploadProcessor", 2, "mPicUrl: " + this.jdField_a_of_type_JavaLangString);
-        QLog.d("ScribblePicUploadProcessor", 2, "TestPicSend finish upload,currentTime = " + System.currentTimeMillis() + ",processor = " + this);
-      }
-      this.c.a();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localMessageForScribble, this.jdField_a_of_type_Ajmm);
-      QLog.i("SCRIBBLEMSG", 2, "!!!sendMessage uniseq:" + localMessageForScribble.uniseq);
-      return;
-    }
-    a(-1, "MessageForScribble IS NULL", "", this.b);
-    d();
-  }
-  
-  protected long a(long paramLong)
-  {
-    paramLong = this.q - paramLong;
-    if (!this.jdField_d_of_type_Boolean) {}
-    for (paramLong = Math.min(paramLong, this.jdField_a_of_type_Bess.a(BaseApplication.getContext(), this.q, this.s, -1));; paramLong = Math.min(paramLong, 14600L)) {
-      return Math.min(paramLong, 131072L);
-    }
-  }
-  
-  protected void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4)
-  {
-    if (paramLong1 != 0L) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 1, this.jdField_a_of_type_Axqf.b, this.jdField_a_of_type_Axvt.jdField_a_of_type_Int, paramLong1);
-    }
-    if (paramLong2 != 0L) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 1, this.jdField_a_of_type_Axqf.b, this.jdField_a_of_type_Axvt.jdField_a_of_type_Int, paramLong2);
-    }
-    if (paramLong3 != 0L) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 0, this.jdField_a_of_type_Axqf.b, this.jdField_a_of_type_Axvt.jdField_a_of_type_Int, paramLong3);
-    }
-    if (paramLong4 != 0L) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 0, this.jdField_a_of_type_Axqf.b, this.jdField_a_of_type_Axvt.jdField_a_of_type_Int, paramLong4);
-    }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if ((!paramBoolean) && (axtt.b(this.j))) {}
-    while ((this.h) || ((paramBoolean) && ((this.m & 0x2) > 0)) || ((!paramBoolean) && ((this.m & 0x1) > 0))) {
-      return;
-    }
-    int j = this.m;
-    int i;
-    long l;
-    String str;
-    if (paramBoolean)
-    {
-      i = 2;
-      this.m = (i | j);
-      this.l = System.currentTimeMillis();
-      l = (System.nanoTime() - this.jdField_k_of_type_Long) / 1000000L;
-      HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-      if (this.jdField_d_of_type_ArrayOfByte != null) {
-        break label156;
-      }
-      str = "null";
-      label105:
-      localHashMap.put("param_sessionKey", str);
-      if (!paramBoolean) {
-        break label168;
-      }
-      awrn.a(BaseApplication.getContext()).a(null, "scribble_upload", true, l, this.q, this.jdField_a_of_type_JavaUtilHashMap, "");
-    }
-    for (;;)
-    {
-      l();
-      return;
-      i = 1;
-      break;
-      label156:
-      str = bakz.a(this.jdField_d_of_type_ArrayOfByte);
-      break label105;
-      label168:
-      if (this.j != -9527) {
-        this.jdField_a_of_type_JavaUtilHashMap.remove("param_rspHeader");
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_FailCode", String.valueOf(this.j));
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_errorDesc", this.i);
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_picSize", String.valueOf(this.q));
-      awrn.a(BaseApplication.getContext()).a(null, "scribble_upload", false, l, this.q, this.jdField_a_of_type_JavaUtilHashMap, "");
-    }
-  }
-  
-  byte[] a(int paramInt1, int paramInt2)
-  {
-    return super.a(paramInt1, paramInt2);
-  }
-  
-  public void aS_()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "NearbyPeoplePhotoUploadProcessor.sendFile()");
-    }
-    this.b.a();
-    Object localObject = new axuf(this, SystemClock.uptimeMillis());
-    this.jdField_a_of_type_Axqf.jdField_c_of_type_Int = 41;
-    this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Axqf.jdField_c_of_type_Int, this.jdField_a_of_type_Axvt.i, (int)this.r, this.jdField_d_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfByte, (ITransactionCallback)localObject, this.jdField_a_of_type_Axqf.jdField_a_of_type_ArrayOfByte);
-    int i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
-    localObject = HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte);
-    String str = HexUtil.bytes2HexStr(this.e);
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "<BDH_LOG> Transaction submit RetCode:" + i + " T_ID:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId() + " UniSeq:" + this.jdField_a_of_type_Axvt.jdField_a_of_type_Long + " MD51:" + (String)localObject + " MD52:" + str + " uuid:" + this.jdField_k_of_type_JavaLangString + " Path:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.filePath + " Cmd:" + this.jdField_a_of_type_Axqf.jdField_c_of_type_Int);
-    }
-    if (i != 0)
-    {
-      a(i, "SubmitError.", "", this.b);
-      d();
-    }
-  }
-  
-  public void aU_()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    super.aU_();
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "ScriblePicUploadProcessor.start()");
-    }
-    g();
-    MessageForScribble localMessageForScribble = (MessageForScribble)this.jdField_a_of_type_Axvt.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (this.jdField_a_of_type_ArrayOfByte == null)
-    {
-      this.e = HexUtil.hexStr2Bytes(localMessageForScribble.combineFileMd5);
-      if (!j())
-      {
-        d();
-        return;
-      }
-      localMessageForScribble.combineFileMd5 = HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte);
-    }
-    if (this.jdField_d_of_type_ArrayOfByte != null)
-    {
-      aS_();
-      return;
-    }
-    QLog.e("ScribblePicUploadProcessor", 2, "ScribblePicUploadProcessor get null BDHsession key.");
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "ScribblePicUploadProcessor.resume()");
-    }
-    f();
-    aS_();
     return 0;
   }
   
-  public int c()
+  public static int a(String paramString, short paramShort)
   {
-    String str = this.jdField_a_of_type_Axvt.i;
-    if (TextUtils.isEmpty(str))
+    HashMap localHashMap = axug.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
     {
-      b(9302, a(new Exception("filePath null")));
-      d();
-      return -1;
+      paramString = (axuf)localHashMap.get(paramString);
+      if (paramString != null)
+      {
+        if (paramShort <= paramString.a().size()) {
+          return ((axud)paramString.a().get(paramShort - 1)).a();
+        }
+        QLog.w("StreamDataManager", 2, "getRecordedSize error shPackSeq: " + paramShort + "sfi.getStreamData().size(): " + paramString.a().size());
+      }
     }
-    File localFile = new File(str);
-    if (!localFile.exists())
-    {
-      b(9042, a(new Exception("sendFile not exist " + str)));
-      d();
-      return -1;
-    }
-    if (!localFile.canRead())
-    {
-      b(9070, a(new Exception("sendFile not readable " + this.jdField_a_of_type_Axqf.jdField_c_of_type_JavaLangString)));
-      d();
-      return -1;
-    }
-    long l = localFile.length();
-    this.jdField_a_of_type_Axqf.jdField_a_of_type_Long = l;
-    this.q = l;
-    if (l <= 0L)
-    {
-      b(9071, a(new Exception("file size 0 " + str)));
-      d();
-      return -1;
-    }
-    return super.c();
+    return 0;
   }
   
-  void d()
+  public static File a(String paramString)
   {
-    super.d();
-    d(1005);
-    Object localObject = (MessageForScribble)this.jdField_a_of_type_Axvt.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (localObject != null) {
-      ((MessageForScribble)localObject).fileUploadStatus = 2;
-    }
-    a((MessageForScribble)localObject);
-    QLog.e("ScribblePicUploadProcessor", 2, "onError()---- errCode: " + this.j + ", errDesc:" + this.i);
-    if (this.jdField_a_of_type_Axvt.jdField_a_of_type_Atqq != null)
+    HashMap localHashMap = axug.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
     {
-      localObject = new atqr();
-      ((atqr)localObject).jdField_a_of_type_Int = -1;
-      ((atqr)localObject).b = this.j;
-      ((atqr)localObject).jdField_a_of_type_JavaLangString = this.i;
-      this.jdField_a_of_type_Axvt.jdField_a_of_type_Atqq.b((atqr)localObject);
+      paramString = (axuf)localHashMap.get(paramString);
+      if (paramString != null) {
+        return paramString.a();
+      }
     }
+    return null;
   }
   
-  protected void d(String paramString)
+  public static String a(int paramInt1, int paramInt2)
   {
+    HashMap localHashMap = axug.a();
+    if ((localHashMap != null) && (localHashMap.size() > 0))
+    {
+      Iterator localIterator = localHashMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        axuf localaxuf = (axuf)localHashMap.get(str);
+        if ((localaxuf.b() == paramInt1) && (localaxuf.a() == paramInt2)) {
+          return str;
+        }
+      }
+    }
+    return null;
+  }
+  
+  public static Map.Entry<String, axuf> a(long paramLong1, long paramLong2)
+  {
+    Object localObject = axug.a();
     if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, paramString);
+      QLog.d("StreamDataManager", 2, "getStreamFileInfoEntryByMsg  try get random is:" + paramLong1 + ",msgSeq is:" + paramLong2);
     }
-  }
-  
-  void e()
-  {
-    super.e();
-    d(1003);
-    Object localObject = (MessageForScribble)this.jdField_a_of_type_Axvt.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (localObject != null) {
-      ((MessageForScribble)localObject).fileUploadStatus = 1;
-    }
-    a((MessageForScribble)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "onSuccess().");
-    }
-    if (this.jdField_a_of_type_Axvt.jdField_a_of_type_Atqq != null)
+    if ((localObject != null) && (((HashMap)localObject).size() > 0))
     {
-      localObject = new atqr();
-      ((atqr)localObject).jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Axvt.jdField_a_of_type_Atqq.b((atqr)localObject);
+      localObject = ((HashMap)localObject).entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+        axuf localaxuf = (axuf)localEntry.getValue();
+        if (QLog.isColorLevel()) {
+          QLog.d("StreamDataManager", 2, "getStreamFileInfoEntryByMsg  random is:" + axas.a((int)localaxuf.b) + ",msgSeq is:" + localaxuf.jdField_a_of_type_Long);
+        }
+        if ((axas.a((int)localaxuf.b) == paramLong1) && (paramLong2 == localaxuf.jdField_a_of_type_Long)) {
+          return localEntry;
+        }
+      }
+    }
+    return null;
+  }
+  
+  public static short a(String paramString)
+  {
+    HashMap localHashMap = axug.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (axuf)localHashMap.get(paramString);
+      if (paramString != null) {
+        return paramString.c();
+      }
+    }
+    return -1;
+  }
+  
+  public static void a(String paramString)
+  {
+    HashMap localHashMap = axug.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (axuf)localHashMap.get(paramString);
+      if (paramString != null)
+      {
+        int i = paramString.a().size();
+        paramString.a((short)i);
+        if (i >= 1) {
+          ((axud)paramString.a().get(paramString.a().size() - 1)).a(true);
+        }
+      }
     }
   }
   
-  public void f()
+  public static void a(String paramString, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().cancelTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
+    HashMap localHashMap = axug.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (axuf)localHashMap.get(paramString);
+      if (paramString != null) {
+        paramString.jdField_a_of_type_Long = paramLong;
+      }
     }
+  }
+  
+  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2, long paramLong1, int paramInt1, int paramInt2, long paramLong2, Bundle paramBundle)
+  {
+    a(paramString1, paramQQAppInterface, paramString2, paramLong1, false, paramInt1, paramInt2, paramLong2, paramBundle);
+  }
+  
+  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2, long paramLong1, boolean paramBoolean, int paramInt1, int paramInt2, long paramLong2, Bundle paramBundle)
+  {
+    short s1 = -1;
+    Object localObject = axug.a();
+    paramInt1 = bbis.a(paramInt1);
+    short s2;
+    axud localaxud;
+    if ((localObject != null) && (((HashMap)localObject).containsKey(paramString1)))
+    {
+      localObject = (axuf)((HashMap)localObject).get(paramString1);
+      ((axuf)localObject).jdField_a_of_type_Boolean = paramBoolean;
+      if (localObject != null)
+      {
+        s2 = s1;
+        if (((axuf)localObject).a() == 0)
+        {
+          localObject = ((axuf)localObject).a();
+          s2 = s1;
+          if (localObject != null)
+          {
+            s2 = s1;
+            if (((List)localObject).size() > 0)
+            {
+              localObject = ((List)localObject).iterator();
+              s2 = s1;
+              if (((Iterator)localObject).hasNext())
+              {
+                localaxud = (axud)((Iterator)localObject).next();
+                if ((localaxud.a() == localaxud.a().length) && (!localaxud.b()))
+                {
+                  s1 = localaxud.a();
+                  localaxud.b(true);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      break;
+      if ((!localaxud.b()) && (localaxud.a()))
+      {
+        s1 = localaxud.a();
+        localaxud.b(true);
+        continue;
+        if ((s2 != -1) && (paramLong1 != 0L)) {
+          paramQQAppInterface.a().a(paramString2, paramString1, paramLong1, s2, paramInt1, paramInt2, paramLong2, paramBundle);
+        }
+        return;
+      }
+    }
+  }
+  
+  public static void a(String paramString, short paramShort)
+  {
+    HashMap localHashMap = axug.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (axuf)localHashMap.get(paramString);
+      if (paramString != null) {
+        paramString.c(paramShort);
+      }
+    }
+  }
+  
+  public static void a(String paramString, boolean paramBoolean)
+  {
+    HashMap localHashMap = axug.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (axuf)localHashMap.get(paramString);
+      if (paramString != null) {
+        paramString.a(paramBoolean);
+      }
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, int paramInt3)
+  {
+    HashMap localHashMap = axug.a();
+    if ((localHashMap != null) && (!localHashMap.containsKey(paramString)))
+    {
+      paramQQAppInterface = new axuf(paramQQAppInterface, paramInt1, paramString, paramInt2);
+      paramQQAppInterface.a(paramInt3);
+      try
+      {
+        localHashMap.put(paramString, paramQQAppInterface);
+        return true;
+      }
+      finally {}
+    }
+    return false;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    HashMap localHashMap = axug.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString))) {
+      try
+      {
+        localHashMap.remove(paramString);
+        return true;
+      }
+      finally {}
+    }
+    return false;
+  }
+  
+  public static boolean a(String paramString, short paramShort)
+  {
+    HashMap localHashMap = axug.a();
+    return (localHashMap == null) || (!localHashMap.containsKey(paramString)) || (((axuf)localHashMap.get(paramString)).b() != paramShort);
+  }
+  
+  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt, short paramShort)
+  {
+    return a(paramString, paramArrayOfByte, paramInt, paramShort, false);
+  }
+  
+  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt, short paramShort, boolean paramBoolean)
+  {
+    Object localObject1 = axug.a();
+    if ((localObject1 != null) && (((HashMap)localObject1).containsKey(paramString)))
+    {
+      axuf localaxuf = (axuf)((HashMap)localObject1).get(paramString);
+      if (!paramBoolean) {}
+      try
+      {
+        localaxuf.a(paramArrayOfByte, paramInt);
+        if (localaxuf.a() == 0)
+        {
+          paramString = localaxuf.a();
+          if (paramString.size() == 0)
+          {
+            localObject1 = new axud(localaxuf.jdField_a_of_type_Int);
+            System.arraycopy(paramArrayOfByte, 0, ((axud)localObject1).a(), 0, paramInt);
+            ((axud)localObject1).a(paramInt);
+            paramShort = localaxuf.b();
+            s = (short)(paramShort + 1);
+            ((axud)localObject1).a(paramShort);
+            paramString.add(localObject1);
+            localaxuf.b(s);
+            return true;
+          }
+        }
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          short s;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("StreamDataManager", 2, "write fail", paramString);
+            continue;
+            localObject1 = (axud)paramString.get(paramString.size() - 1);
+            Object localObject2 = ((axud)localObject1).a();
+            int i;
+            if (((axud)localObject1).a() < localObject2.length)
+            {
+              i = localObject2.length - ((axud)localObject1).a();
+              if (i >= paramInt)
+              {
+                System.arraycopy(paramArrayOfByte, 0, ((axud)localObject1).a(), ((axud)localObject1).a(), paramInt);
+                ((axud)localObject1).a(((axud)localObject1).a() + paramInt);
+              }
+              else
+              {
+                if (paramInt <= i)
+                {
+                  System.arraycopy(paramArrayOfByte, 0, ((axud)localObject1).a(), ((axud)localObject1).a(), paramInt);
+                  ((axud)localObject1).a(((axud)localObject1).a() + paramInt);
+                  return true;
+                }
+                System.arraycopy(paramArrayOfByte, 0, ((axud)localObject1).a(), ((axud)localObject1).a(), i);
+                ((axud)localObject1).a(((axud)localObject1).a().length);
+                paramInt -= i;
+                localObject1 = new axud(localaxuf.jdField_a_of_type_Int);
+                System.arraycopy(paramArrayOfByte, i, ((axud)localObject1).a(), 0, paramInt);
+                ((axud)localObject1).a(paramInt);
+                paramShort = localaxuf.b();
+                s = (short)(paramShort + 1);
+                ((axud)localObject1).a(paramShort);
+                paramString.add(localObject1);
+                localaxuf.b(s);
+              }
+            }
+            else
+            {
+              localObject1 = new axud(localaxuf.jdField_a_of_type_Int);
+              System.arraycopy(paramArrayOfByte, 0, ((axud)localObject1).a(), 0, paramInt);
+              ((axud)localObject1).a(paramInt);
+              paramShort = localaxuf.b();
+              s = (short)(paramShort + 1);
+              ((axud)localObject1).a(paramShort);
+              paramString.add(localObject1);
+              localaxuf.b(s);
+              continue;
+              if (localaxuf.a() == 1)
+              {
+                localObject2 = localaxuf.a();
+                paramInt = paramArrayOfByte.length;
+                i = 0;
+                if (paramInt > 0)
+                {
+                  if (((List)localObject2).size() == 0)
+                  {
+                    paramString = new axud(localaxuf.jdField_a_of_type_Int);
+                    ((List)localObject2).add(paramString);
+                  }
+                  for (;;)
+                  {
+                    int k = paramString.a().length - paramString.a();
+                    int j = k;
+                    if (k >= paramInt) {
+                      j = paramInt;
+                    }
+                    System.arraycopy(paramArrayOfByte, i, paramString.a(), paramString.a(), j);
+                    i += j;
+                    paramInt -= j;
+                    paramString.a(j + paramString.a());
+                    paramString.a(paramShort);
+                    break;
+                    localObject1 = (axud)((List)localObject2).get(((List)localObject2).size() - 1);
+                    paramString = (String)localObject1;
+                    if (((axud)localObject1).a().length - ((axud)localObject1).a() <= 0)
+                    {
+                      paramString = new axud(localaxuf.jdField_a_of_type_Int);
+                      ((List)localObject2).add(paramString);
+                    }
+                  }
+                }
+                localaxuf.b((short)(paramShort + 1));
+              }
+            }
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  public static byte[] a(String paramString, short paramShort)
+  {
+    Object localObject = axug.a();
+    if ((localObject != null) && (((HashMap)localObject).containsKey(paramString)))
+    {
+      paramString = (axuf)((HashMap)localObject).get(paramString);
+      if (paramString != null)
+      {
+        localObject = (axud)paramString.a().get(paramShort - 1);
+        paramString = ((axud)localObject).a();
+        paramShort = ((axud)localObject).a();
+        if (paramShort != paramString.length)
+        {
+          localObject = new byte[paramShort];
+          System.arraycopy(paramString, 0, localObject, 0, paramShort);
+          return localObject;
+        }
+        return paramString;
+      }
+    }
+    return null;
+  }
+  
+  public static int b(String paramString)
+  {
+    HashMap localHashMap = axug.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (axuf)localHashMap.get(paramString);
+      if (paramString != null) {
+        return paramString.b();
+      }
+    }
+    return -1;
+  }
+  
+  public static short b(String paramString)
+  {
+    HashMap localHashMap = axug.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (axuf)localHashMap.get(paramString);
+      if (paramString != null) {
+        return paramString.a();
+      }
+    }
+    return 0;
+  }
+  
+  public static void b(String paramString)
+  {
+    HashMap localHashMap = axug.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (axuf)localHashMap.get(paramString);
+      if (paramString != null) {
+        paramString.a();
+      }
+    }
+  }
+  
+  public static void b(String paramString, long paramLong)
+  {
+    HashMap localHashMap = axug.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (axuf)localHashMap.get(paramString);
+      if (paramString != null) {
+        paramString.b = paramLong;
+      }
+    }
+  }
+  
+  public static boolean b(String paramString)
+  {
+    HashMap localHashMap = axug.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (axuf)localHashMap.get(paramString);
+      if (paramString != null) {
+        return paramString.jdField_a_of_type_Boolean;
+      }
+    }
+    return false;
+  }
+  
+  public static int c(String paramString)
+  {
+    HashMap localHashMap = axug.a();
+    int i;
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (axuf)localHashMap.get(paramString);
+      if (paramString != null)
+      {
+        i = paramString.a().size();
+        if ((i < 1) || (((axud)paramString.a().get(i - 1)).b())) {
+          return i;
+        }
+        return i - 1;
+      }
+    }
+    return 0;
+    return i;
+  }
+  
+  public static short c(String paramString)
+  {
+    HashMap localHashMap = axug.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (axuf)localHashMap.get(paramString);
+      if (paramString != null) {
+        return paramString.b();
+      }
+    }
+    return 0;
+  }
+  
+  public static void c(String paramString, long paramLong)
+  {
+    HashMap localHashMap = axug.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (axuf)localHashMap.get(paramString);
+      if (paramString != null) {
+        paramString.a(paramLong);
+      }
+    }
+  }
+  
+  public static boolean c(String paramString)
+  {
+    List localList = axug.a();
+    if ((localList != null) && (!localList.contains(paramString)))
+    {
+      localList.add(paramString);
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean d(String paramString)
+  {
+    List localList = axug.a();
+    if ((localList != null) && (localList.contains(paramString)))
+    {
+      localList.remove(paramString);
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean e(String paramString)
+  {
+    List localList = axug.a();
+    return (localList != null) && (localList.contains(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axue
  * JD-Core Version:    0.7.0.1
  */

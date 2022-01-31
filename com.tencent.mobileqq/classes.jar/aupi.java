@@ -1,21 +1,9 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
-import java.util.Comparator;
-
-public class aupi
-  implements Comparator<ReceiptMessageReadMemberListFragment.MemberInfo>
+public final class aupi
+  extends aupf
 {
-  public aupi(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
-  
-  public int a(ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo1, ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo2)
+  protected int c()
   {
-    if (paramMemberInfo1.a == paramMemberInfo2.a) {
-      return 0;
-    }
-    if (paramMemberInfo1.a < paramMemberInfo2.a) {
-      return -1;
-    }
-    return 1;
+    return 514;
   }
 }
 

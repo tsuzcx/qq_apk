@@ -1,141 +1,136 @@
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.util.Printer;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqMessageQueue;
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
+import android.util.SparseIntArray;
+import java.util.ArrayList;
 
 public class ajlp
+  implements ajmc
 {
-  public static int a;
-  private static AbstractUnifiedMonitor.ThreadMonitorCallback a;
+  public static SparseIntArray a = new SparseIntArray();
   
-  static
+  public static int a(int paramInt1, boolean paramBoolean1, int paramInt2, int paramInt3, boolean paramBoolean2)
   {
-    jdField_a_of_type_Int = 100;
-    jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback = new ajlq();
-  }
-  
-  public static void a()
-  {
-    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(0)) {
-      return;
+    int k = 0;
+    int j = 0;
+    int i;
+    if (paramInt3 != 0) {
+      i = 1;
     }
-    int i = UnifiedMonitor.a().getThreshold(0);
-    UnifiedMonitor.a().setMonitoredThread(0, Looper.getMainLooper().getThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
-    ajlr localajlr = new ajlr(0);
-    localajlr.a(i, false);
-    Looper.getMainLooper().setMessageLogging(localajlr);
-    MqqMessageQueue.getSubMainThreadQueue().setMessageLogging(localajlr);
-  }
-  
-  public static void b()
-  {
-    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(14)) {
-      return;
+    while ((paramInt2 == 0) && (!paramBoolean2)) {
+      if (i != 0)
+      {
+        paramInt2 = j;
+        return paramInt2;
+        i = 0;
+      }
+      else
+      {
+        return 6;
+      }
     }
-    int i = UnifiedMonitor.a().getThreshold(14);
-    UnifiedMonitor.a().setMonitoredThread(14, Looper.getMainLooper().getThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
-    ajlr localajlr = new ajlr(14);
-    localajlr.a(i, false);
-    Looper.getMainLooper().setMessageLogging(localajlr);
-  }
-  
-  public static void c()
-  {
-    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(4)) {
-      return;
+    if ((paramInt2 != 1) && (paramInt2 != 2)) {
+      return 101;
     }
-    int i = UnifiedMonitor.a().getThreshold(4);
-    UnifiedMonitor.a().setMonitoredThread(4, ThreadManager.getSubThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
-    ajsy localajsy = new ajsy(4, "SubLooper");
-    localajsy.a(i, false);
-    ThreadManager.getSubThreadLooper().setMessageLogging(localajsy);
-  }
-  
-  public static void d()
-  {
-    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(18)) {
-      return;
-    }
-    Object localObject1 = MsfCore.sCore;
-    if (localObject1 == null)
+    if (a.get(paramInt1) == 0)
     {
-      QLog.e("AutoMonitor", 1, "msf core hasnot init");
-      return;
+      j = 1;
+      switch (paramInt2)
+      {
+      default: 
+        label67:
+        paramInt3 = k;
+        label95:
+        a.put(paramInt1, 1);
+        if (paramBoolean1) {
+          if (paramInt2 == 1) {
+            paramInt2 = 4;
+          }
+        }
+        break;
+      }
     }
-    Object localObject2 = ((MsfCore)localObject1).getNetworkHandlerThread();
-    if (localObject2 == null)
+    for (;;)
     {
-      QLog.e("AutoMonitor", 1, "network thread hasnot init");
-      return;
+      paramInt3 = paramInt2;
+      if (paramInt1 == 1)
+      {
+        paramInt3 = paramInt2;
+        if (!ajmt.b) {
+          paramInt3 = paramInt2 + 10;
+        }
+      }
+      paramInt2 = paramInt3;
+      if (paramInt1 != 1) {
+        break;
+      }
+      paramInt2 = paramInt3;
+      if (ajmt.jdField_d_of_type_Boolean) {
+        break;
+      }
+      return paramInt3 | 0x20;
+      j = 0;
+      break label67;
+      paramInt3 = k;
+      if (j != 0) {
+        break label95;
+      }
+      paramInt3 = 1;
+      break label95;
+      if (j != 0)
+      {
+        paramInt3 = 2;
+        break label95;
+      }
+      paramInt3 = 3;
+      break label95;
+      paramInt2 = 5;
+      continue;
+      paramInt2 = paramInt3;
+      if (i == 0) {
+        paramInt2 = paramInt3 + 6;
+      }
     }
-    localObject1 = ((HandlerThread)localObject2).getLooper();
-    if (localObject1 == null)
+  }
+  
+  public String a(int paramInt)
+  {
+    switch (paramInt)
     {
-      QLog.e("AutoMonitor", 1, "network thread has not start");
-      return;
+    default: 
+      return "";
+    case 1: 
+      return "_sprite_aio";
+    case 2: 
+      return "_sprite_drawer";
+    case 3: 
+      return "_sprite_friend_card";
+    case 113: 
+      return "_sprite_sdk";
+    case 4: 
+      return "_sprite_action_fps";
+    case 10: 
+      return "_apollo_so";
+    case 20: 
+      return "_apollo_crash";
+    case 30: 
+      return "_apollo_resource_download";
+    case 40: 
+      return "_apollo_store_sso";
     }
-    int i = UnifiedMonitor.a().getThreshold(18);
-    UnifiedMonitor.a().setMonitoredThread(18, (Thread)localObject2, jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
-    localObject2 = new ajsy(18, "msf-network");
-    ((ajsy)localObject2).a(i, false);
-    ((Looper)localObject1).setMessageLogging((Printer)localObject2);
+    return "_apollo_view_re_attach";
   }
   
-  public static void e()
+  public void a()
   {
-    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(13)) {
-      return;
-    }
-    int i = UnifiedMonitor.a().getThreshold(13);
-    UnifiedMonitor.a().setMonitoredThread(13, ThreadManager.getRecentThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
-    ajsy localajsy = new ajsy(13, "RecentLooper");
-    localajsy.a(i, false);
-    ThreadManager.getRecentThreadLooper().setMessageLogging(localajsy);
+    a.clear();
   }
   
-  public static void f()
+  public boolean a(int paramInt)
   {
-    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(5)) {
-      return;
-    }
-    int i = UnifiedMonitor.a().getThreshold(5);
-    UnifiedMonitor.a().setMonitoredThread(5, ThreadManager.getFileThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
-    ajsy localajsy = new ajsy(5, "FileLooper");
-    localajsy.a(i, false);
-    ThreadManager.getFileThreadLooper().setMessageLogging(localajsy);
-  }
-  
-  public static void g()
-  {
-    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(6))
-    {
-      com.tencent.mobileqq.app.ThreadExcutor.sLooperMonitorSwitch = false;
-      return;
-    }
-    com.tencent.mobileqq.app.ThreadExcutor.sLooperMonitorSwitch = true;
-    com.tencent.mobileqq.app.ThreadExcutor.sThreshTime = UnifiedMonitor.a().getThreshold(6);
-  }
-  
-  public static void h()
-  {
-    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(19)) {
-      return;
-    }
-    int i = UnifiedMonitor.a().getThreshold(19);
-    UnifiedMonitor.a().setMonitoredThread(19, Looper.getMainLooper().getThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
-    ajlr localajlr = new ajlr(19);
-    localajlr.a(i, false);
-    Looper.getMainLooper().setMessageLogging(localajlr);
+    return ajmt.jdField_d_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajlp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,21 @@
-public class aqbl
+class aqbl
+  implements aqbo
 {
-  public String a;
-  public String b;
-  public String c;
+  aqbl(aqbc paramaqbc) {}
+  
+  public void a()
+  {
+    this.a.a.setProgressBarVisibility(0);
+  }
+  
+  public void b()
+  {
+    this.a.a.setProgressBarVisibility(8);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqbl
  * JD-Core Version:    0.7.0.1
  */

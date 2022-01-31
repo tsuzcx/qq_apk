@@ -21,7 +21,6 @@
             "event_type": "cmd_diversion_click",
             "visible_depend_on_children":"YES",
             "margin_left":"65",
-            "margin_top":"0",
             "height": {
                 "type": "relative",
                 "value": "24"

@@ -1,19 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
 class qlz
-  implements Animation.AnimationListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  qlz(qlv paramqlv, RelativeLayout paramRelativeLayout) {}
+  qlz(qly paramqly) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    if ((qly.a(this.a) != null) && (qly.a(this.a).a != null)) {
+      this.a.a.a(qly.a(this.a).a, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+    }
+    return true;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if ((qly.a(this.a) != null) && (qly.a(this.a).d != null)) {
+      this.a.a.onClick(qly.a(this.a).d);
+    }
+    return true;
   }
 }
 

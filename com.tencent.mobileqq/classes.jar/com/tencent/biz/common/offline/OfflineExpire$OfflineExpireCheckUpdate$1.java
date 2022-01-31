@@ -2,20 +2,20 @@ package com.tencent.biz.common.offline;
 
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import moo;
 import mqq.app.AppRuntime;
-import xcl;
+import mzn;
+import xll;
 
 public class OfflineExpire$OfflineExpireCheckUpdate$1
   implements Runnable
 {
-  public OfflineExpire$OfflineExpireCheckUpdate$1(moo parammoo) {}
+  public OfflineExpire$OfflineExpireCheckUpdate$1(mzn parammzn) {}
   
   public void run()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof AppInterface)) {
-      new xcl((AppInterface)localAppRuntime).a();
+      new xll((AppInterface)localAppRuntime).a();
     }
   }
 }

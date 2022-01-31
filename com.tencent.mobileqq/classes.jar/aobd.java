@@ -1,18 +1,21 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class aobd
-  extends atdh
+class aobd
+  implements View.OnClickListener
 {
-  public aobd(FileAssistantActivity paramFileAssistantActivity) {}
+  aobd(aobc paramaobc, IPSiteModel.Goods paramGoods) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    QLog.i("FileAssistantActivity", 1, " fileRedTouch get push GameCenterObserver ");
-    paramBundle = this.a.a.obtainMessage(1);
-    this.a.a.sendMessage(paramBundle);
+    paramView = new Intent(aobc.a(this.jdField_a_of_type_Aobc), QQBrowserActivity.class);
+    paramView.putExtra("hide_operation_bar", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(aobc.a(this.jdField_a_of_type_Aobc), this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Goods.url, -1L, paramView, false, -1);
+    VasWebviewUtil.reportCommercialDrainage(aobc.a(this.jdField_a_of_type_Aobc), "IP", "aio_productclk", "", 0, 0, 0, aobc.b(this.jdField_a_of_type_Aobc), aobc.c(this.jdField_a_of_type_Aobc), "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

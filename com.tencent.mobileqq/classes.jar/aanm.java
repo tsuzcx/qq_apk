@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class aanm
-  extends ajsa
+  implements DialogInterface.OnClickListener
 {
-  public aanm(Conversation paramConversation) {}
+  public aanm(BaseChatPie paramBaseChatPie) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.f) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, "VideoRedbag, onCheckRealNameRsp in conv");
-      }
-    } while ((!paramBoolean) || (paramInt != awkk.a));
-    babr.a(this.a.a(), 0, null, this.a.a(2131653696), 2131653698, 2131653697, new aann(this), new aano(this)).show();
+    if ((this.a.b != null) && (this.a.b.isShowing())) {
+      this.a.b.dismiss();
+    }
   }
 }
 

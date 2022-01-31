@@ -1,26 +1,19 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x857.TroopTips0x857.RedGrayTipsInfo;
 
 class bamk
-  extends anfx
 {
-  bamk(bami parambami) {}
+  String jdField_a_of_type_JavaLangString;
+  TroopTips0x857.RedGrayTipsInfo jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$RedGrayTipsInfo;
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
+  public bamk(bamj parambamj, String paramString, TroopTips0x857.RedGrayTipsInfo paramRedGrayTipsInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNick", 2, "emotion onJsonComplete id = " + paramEmoticonPackage.epId + " resultCode = " + paramInt);
-    }
-    if (this.a.a != null) {
-      this.a.a.sendEmptyMessage(257);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$RedGrayTipsInfo = paramRedGrayTipsInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bamk
  * JD-Core Version:    0.7.0.1
  */

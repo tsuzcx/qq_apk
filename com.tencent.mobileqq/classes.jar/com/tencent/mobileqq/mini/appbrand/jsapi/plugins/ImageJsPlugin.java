@@ -13,10 +13,11 @@ import android.media.ExifInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import baaf;
+import bbbj;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.MiniAppInterface;
 import com.tencent.mobileqq.mini.app.AppLoaderFactory;
 import com.tencent.mobileqq.mini.app.BaseAppLoaderManager;
@@ -38,9 +39,10 @@ import java.util.ArrayList;
 import java.util.ArrayList<Ljava.lang.String;>;
 import java.util.Iterator;
 import java.util.Set;
+import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import vlm;
+import vyi;
 
 public class ImageJsPlugin
   extends BaseJsPlugin
@@ -53,7 +55,8 @@ public class ImageJsPlugin
   private boolean mHasChoosePhoto;
   private JsRuntime mJsRunTime;
   private boolean mNeedCompress;
-  private BroadcastReceiver receiver = new ImageJsPlugin.5(this);
+  private boolean mShowOriBtn;
+  private BroadcastReceiver receiver = new ImageJsPlugin.7(this);
   
   public ImageJsPlugin()
   {
@@ -69,10 +72,10 @@ public class ImageJsPlugin
     }
     if (this.mNeedCompress)
     {
-      callbackJsChooseImage(compressImages(paramArrayList), paramJsRuntime, paramInt);
+      ThreadManager.getFileThreadHandler().post(new ImageJsPlugin.5(this, paramArrayList, paramJsRuntime, paramInt));
       return;
     }
-    callbackJsChooseImage(copyImages(paramArrayList), paramJsRuntime, paramInt);
+    ThreadManager.getFileThreadHandler().post(new ImageJsPlugin.6(this, paramArrayList, paramJsRuntime, paramInt));
   }
   
   private void callbackGetImageInfo(String paramString, JsRuntime paramJsRuntime, int paramInt)
@@ -127,7 +130,7 @@ public class ImageJsPlugin
         return;
       }
       if (paramArrayList == null) {
-        break label285;
+        break label286;
       }
       localJSONArray = new JSONArray();
       localObject = new JSONArray();
@@ -166,7 +169,7 @@ public class ImageJsPlugin
       }
       this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, "chooseImage", (JSONObject)localObject, paramInt);
       return;
-      label285:
+      label286:
       paramArrayList = null;
       localJSONArray = null;
     }
@@ -215,265 +218,273 @@ public class ImageJsPlugin
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 251	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 281	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifeq +5 -> 9
     //   7: aload_1
     //   8: areturn
-    //   9: new 257	java/io/File
+    //   9: new 287	java/io/File
     //   12: dup
     //   13: aload_1
-    //   14: invokespecial 259	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: invokespecial 289	java/io/File:<init>	(Ljava/lang/String;)V
     //   17: astore 4
-    //   19: invokestatic 173	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
-    //   22: ldc_w 366
-    //   25: invokevirtual 345	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
+    //   19: invokestatic 203	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
+    //   22: ldc_w 396
+    //   25: invokevirtual 375	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
     //   28: astore 11
-    //   30: new 257	java/io/File
-    //   33: dup
-    //   34: aload 11
-    //   36: invokespecial 259	java/io/File:<init>	(Ljava/lang/String;)V
-    //   39: astore 12
-    //   41: aconst_null
-    //   42: astore 8
-    //   44: aconst_null
-    //   45: astore 9
-    //   47: aconst_null
-    //   48: astore 7
-    //   50: aload 8
-    //   52: astore 5
-    //   54: aload 9
-    //   56: astore_3
-    //   57: invokestatic 269	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   60: ifeq +40 -> 100
-    //   63: aload 8
-    //   65: astore 5
-    //   67: aload 9
-    //   69: astore_3
-    //   70: ldc 14
-    //   72: iconst_2
-    //   73: new 276	java/lang/StringBuilder
-    //   76: dup
-    //   77: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   80: ldc_w 368
-    //   83: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   86: aload 4
-    //   88: invokevirtual 263	java/io/File:length	()J
-    //   91: invokevirtual 371	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   94: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   97: invokestatic 373	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   100: aload 8
-    //   102: astore 5
-    //   104: aload 9
-    //   106: astore_3
-    //   107: new 122	android/graphics/BitmapFactory$Options
-    //   110: dup
-    //   111: invokespecial 123	android/graphics/BitmapFactory$Options:<init>	()V
-    //   114: astore 4
-    //   116: aload 8
-    //   118: astore 5
-    //   120: aload 9
-    //   122: astore_3
-    //   123: aload 4
-    //   125: iconst_2
-    //   126: putfield 376	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   129: aload 8
-    //   131: astore 5
-    //   133: aload 9
-    //   135: astore_3
-    //   136: aload_1
-    //   137: aload 4
-    //   139: invokestatic 377	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   142: astore 10
-    //   144: aload 7
-    //   146: astore 4
-    //   148: aload 10
-    //   150: ifnull +128 -> 278
-    //   153: aload 8
-    //   155: astore 5
-    //   157: aload 9
-    //   159: astore_3
-    //   160: aload_1
-    //   161: invokestatic 380	com/tencent/mobileqq/mini/util/ImageUtil:getExifOrientation	(Ljava/lang/String;)I
-    //   164: istore_2
-    //   165: aload 8
-    //   167: astore 5
-    //   169: aload 9
-    //   171: astore_3
-    //   172: ldc 14
-    //   174: iconst_2
-    //   175: new 276	java/lang/StringBuilder
-    //   178: dup
-    //   179: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   182: ldc_w 382
-    //   185: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   188: iload_2
-    //   189: invokevirtual 340	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   192: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   195: invokestatic 294	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   198: aload 10
-    //   200: astore 6
-    //   202: iload_2
-    //   203: ifeq +30 -> 233
-    //   206: aload 8
-    //   208: astore 5
-    //   210: aload 9
-    //   212: astore_3
-    //   213: iload_2
-    //   214: aload 10
-    //   216: invokestatic 386	com/tencent/mobileqq/mini/util/ImageUtil:rotaingImageView	(ILandroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
-    //   219: astore 6
-    //   221: aload 8
-    //   223: astore 5
-    //   225: aload 9
-    //   227: astore_3
-    //   228: aload 10
-    //   230: invokevirtual 389	android/graphics/Bitmap:recycle	()V
-    //   233: aload 7
-    //   235: astore 4
-    //   237: aload 6
-    //   239: ifnull +39 -> 278
-    //   242: aload 8
-    //   244: astore 5
-    //   246: aload 9
-    //   248: astore_3
-    //   249: new 391	java/io/FileOutputStream
-    //   252: dup
-    //   253: aload 12
-    //   255: invokespecial 394	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   258: astore 4
-    //   260: aload 6
-    //   262: getstatic 313	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   265: bipush 50
-    //   267: aload 4
-    //   269: invokevirtual 319	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   272: pop
-    //   273: aload 4
-    //   275: invokevirtual 397	java/io/FileOutputStream:flush	()V
-    //   278: aload 4
-    //   280: astore 5
-    //   282: aload 4
-    //   284: astore_3
-    //   285: invokestatic 269	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   288: ifeq +40 -> 328
+    //   30: aload 11
+    //   32: ifnonnull +16 -> 48
+    //   35: ldc 14
+    //   37: iconst_1
+    //   38: ldc_w 398
+    //   41: invokestatic 400	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   44: ldc_w 402
+    //   47: areturn
+    //   48: new 287	java/io/File
+    //   51: dup
+    //   52: aload 11
+    //   54: invokespecial 289	java/io/File:<init>	(Ljava/lang/String;)V
+    //   57: astore 12
+    //   59: aconst_null
+    //   60: astore 8
+    //   62: aconst_null
+    //   63: astore 9
+    //   65: aconst_null
+    //   66: astore 7
+    //   68: aload 8
+    //   70: astore 5
+    //   72: aload 9
+    //   74: astore_3
+    //   75: invokestatic 299	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   78: ifeq +40 -> 118
+    //   81: aload 8
+    //   83: astore 5
+    //   85: aload 9
+    //   87: astore_3
+    //   88: ldc 14
+    //   90: iconst_2
+    //   91: new 306	java/lang/StringBuilder
+    //   94: dup
+    //   95: invokespecial 307	java/lang/StringBuilder:<init>	()V
+    //   98: ldc_w 404
+    //   101: invokevirtual 313	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: aload 4
+    //   106: invokevirtual 293	java/io/File:length	()J
+    //   109: invokevirtual 407	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   112: invokevirtual 320	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   115: invokestatic 400	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   118: aload 8
+    //   120: astore 5
+    //   122: aload 9
+    //   124: astore_3
+    //   125: new 152	android/graphics/BitmapFactory$Options
+    //   128: dup
+    //   129: invokespecial 153	android/graphics/BitmapFactory$Options:<init>	()V
+    //   132: astore 4
+    //   134: aload 8
+    //   136: astore 5
+    //   138: aload 9
+    //   140: astore_3
+    //   141: aload 4
+    //   143: iconst_2
+    //   144: putfield 410	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   147: aload 8
+    //   149: astore 5
+    //   151: aload 9
+    //   153: astore_3
+    //   154: aload_1
+    //   155: aload 4
+    //   157: invokestatic 411	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   160: astore 10
+    //   162: aload 7
+    //   164: astore 4
+    //   166: aload 10
+    //   168: ifnull +128 -> 296
+    //   171: aload 8
+    //   173: astore 5
+    //   175: aload 9
+    //   177: astore_3
+    //   178: aload_1
+    //   179: invokestatic 414	com/tencent/mobileqq/mini/util/ImageUtil:getExifOrientation	(Ljava/lang/String;)I
+    //   182: istore_2
+    //   183: aload 8
+    //   185: astore 5
+    //   187: aload 9
+    //   189: astore_3
+    //   190: ldc 14
+    //   192: iconst_2
+    //   193: new 306	java/lang/StringBuilder
+    //   196: dup
+    //   197: invokespecial 307	java/lang/StringBuilder:<init>	()V
+    //   200: ldc_w 416
+    //   203: invokevirtual 313	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   206: iload_2
+    //   207: invokevirtual 370	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   210: invokevirtual 320	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   213: invokestatic 324	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   216: aload 10
+    //   218: astore 6
+    //   220: iload_2
+    //   221: ifeq +30 -> 251
+    //   224: aload 8
+    //   226: astore 5
+    //   228: aload 9
+    //   230: astore_3
+    //   231: iload_2
+    //   232: aload 10
+    //   234: invokestatic 420	com/tencent/mobileqq/mini/util/ImageUtil:rotaingImageView	(ILandroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
+    //   237: astore 6
+    //   239: aload 8
+    //   241: astore 5
+    //   243: aload 9
+    //   245: astore_3
+    //   246: aload 10
+    //   248: invokevirtual 423	android/graphics/Bitmap:recycle	()V
+    //   251: aload 7
+    //   253: astore 4
+    //   255: aload 6
+    //   257: ifnull +39 -> 296
+    //   260: aload 8
+    //   262: astore 5
+    //   264: aload 9
+    //   266: astore_3
+    //   267: new 425	java/io/FileOutputStream
+    //   270: dup
+    //   271: aload 12
+    //   273: invokespecial 428	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   276: astore 4
+    //   278: aload 6
+    //   280: getstatic 343	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   283: bipush 50
+    //   285: aload 4
+    //   287: invokevirtual 349	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   290: pop
     //   291: aload 4
-    //   293: astore 5
-    //   295: aload 4
-    //   297: astore_3
-    //   298: ldc 14
-    //   300: iconst_2
-    //   301: new 276	java/lang/StringBuilder
-    //   304: dup
-    //   305: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   308: ldc_w 399
-    //   311: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   314: aload 12
-    //   316: invokevirtual 263	java/io/File:length	()J
-    //   319: invokevirtual 371	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   322: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   325: invokestatic 373	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   328: aload 4
-    //   330: ifnull +8 -> 338
-    //   333: aload 4
-    //   335: invokevirtual 402	java/io/FileOutputStream:close	()V
-    //   338: aload 11
-    //   340: areturn
-    //   341: astore 4
-    //   343: aload 5
-    //   345: astore_3
-    //   346: invokestatic 269	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   349: ifeq +18 -> 367
-    //   352: aload 5
-    //   354: astore_3
-    //   355: ldc 14
-    //   357: iconst_2
-    //   358: aload 4
-    //   360: iconst_0
-    //   361: anewarray 271	java/lang/Object
-    //   364: invokestatic 274	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   367: aload 5
-    //   369: ifnull -362 -> 7
-    //   372: aload 5
-    //   374: invokevirtual 402	java/io/FileOutputStream:close	()V
-    //   377: aload_1
-    //   378: areturn
-    //   379: astore_3
-    //   380: aload_1
-    //   381: areturn
-    //   382: astore_1
-    //   383: aload_3
-    //   384: ifnull +7 -> 391
-    //   387: aload_3
-    //   388: invokevirtual 402	java/io/FileOutputStream:close	()V
-    //   391: aload_1
-    //   392: athrow
-    //   393: astore_1
-    //   394: goto -56 -> 338
+    //   293: invokevirtual 431	java/io/FileOutputStream:flush	()V
+    //   296: aload 4
+    //   298: astore 5
+    //   300: aload 4
+    //   302: astore_3
+    //   303: invokestatic 299	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   306: ifeq +40 -> 346
+    //   309: aload 4
+    //   311: astore 5
+    //   313: aload 4
+    //   315: astore_3
+    //   316: ldc 14
+    //   318: iconst_2
+    //   319: new 306	java/lang/StringBuilder
+    //   322: dup
+    //   323: invokespecial 307	java/lang/StringBuilder:<init>	()V
+    //   326: ldc_w 433
+    //   329: invokevirtual 313	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   332: aload 12
+    //   334: invokevirtual 293	java/io/File:length	()J
+    //   337: invokevirtual 407	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   340: invokevirtual 320	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   343: invokestatic 400	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   346: aload 4
+    //   348: ifnull +8 -> 356
+    //   351: aload 4
+    //   353: invokevirtual 436	java/io/FileOutputStream:close	()V
+    //   356: aload 11
+    //   358: areturn
+    //   359: astore 4
+    //   361: aload 5
+    //   363: astore_3
+    //   364: invokestatic 299	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   367: ifeq +18 -> 385
+    //   370: aload 5
+    //   372: astore_3
+    //   373: ldc 14
+    //   375: iconst_2
+    //   376: aload 4
+    //   378: iconst_0
+    //   379: anewarray 301	java/lang/Object
+    //   382: invokestatic 304	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   385: aload 5
+    //   387: ifnull -380 -> 7
+    //   390: aload 5
+    //   392: invokevirtual 436	java/io/FileOutputStream:close	()V
+    //   395: aload_1
+    //   396: areturn
     //   397: astore_3
-    //   398: goto -7 -> 391
-    //   401: astore_1
-    //   402: aload 4
-    //   404: astore_3
-    //   405: goto -22 -> 383
-    //   408: astore_3
-    //   409: aload 4
-    //   411: astore 5
-    //   413: aload_3
-    //   414: astore 4
-    //   416: goto -73 -> 343
+    //   398: aload_1
+    //   399: areturn
+    //   400: astore_1
+    //   401: aload_3
+    //   402: ifnull +7 -> 409
+    //   405: aload_3
+    //   406: invokevirtual 436	java/io/FileOutputStream:close	()V
+    //   409: aload_1
+    //   410: athrow
+    //   411: astore_1
+    //   412: goto -56 -> 356
+    //   415: astore_3
+    //   416: goto -7 -> 409
+    //   419: astore_1
+    //   420: aload 4
+    //   422: astore_3
+    //   423: goto -22 -> 401
+    //   426: astore_3
+    //   427: aload 4
+    //   429: astore 5
+    //   431: aload_3
+    //   432: astore 4
+    //   434: goto -73 -> 361
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	419	0	this	ImageJsPlugin
-    //   0	419	1	paramString	String
-    //   164	50	2	i	int
-    //   56	299	3	localObject1	Object
-    //   379	9	3	localException1	Exception
-    //   397	1	3	localException2	Exception
-    //   404	1	3	localThrowable1	Throwable
-    //   408	6	3	localThrowable2	Throwable
-    //   17	317	4	localObject2	Object
-    //   341	69	4	localThrowable3	Throwable
-    //   414	1	4	localObject3	Object
-    //   52	360	5	localObject4	Object
-    //   200	61	6	localBitmap1	Bitmap
-    //   48	186	7	localObject5	Object
-    //   42	201	8	localObject6	Object
-    //   45	202	9	localObject7	Object
-    //   142	87	10	localBitmap2	Bitmap
-    //   28	311	11	str	String
-    //   39	276	12	localFile	File
+    //   0	437	0	this	ImageJsPlugin
+    //   0	437	1	paramString	String
+    //   182	50	2	i	int
+    //   74	299	3	localObject1	Object
+    //   397	9	3	localException1	Exception
+    //   415	1	3	localException2	Exception
+    //   422	1	3	localThrowable1	Throwable
+    //   426	6	3	localThrowable2	Throwable
+    //   17	335	4	localObject2	Object
+    //   359	69	4	localThrowable3	Throwable
+    //   432	1	4	localObject3	Object
+    //   70	360	5	localObject4	Object
+    //   218	61	6	localBitmap1	Bitmap
+    //   66	186	7	localObject5	Object
+    //   60	201	8	localObject6	Object
+    //   63	202	9	localObject7	Object
+    //   160	87	10	localBitmap2	Bitmap
+    //   28	329	11	str	String
+    //   57	276	12	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   57	63	341	java/lang/Throwable
-    //   70	100	341	java/lang/Throwable
-    //   107	116	341	java/lang/Throwable
-    //   123	129	341	java/lang/Throwable
-    //   136	144	341	java/lang/Throwable
-    //   160	165	341	java/lang/Throwable
-    //   172	198	341	java/lang/Throwable
-    //   213	221	341	java/lang/Throwable
-    //   228	233	341	java/lang/Throwable
-    //   249	260	341	java/lang/Throwable
-    //   285	291	341	java/lang/Throwable
-    //   298	328	341	java/lang/Throwable
-    //   372	377	379	java/lang/Exception
-    //   57	63	382	finally
-    //   70	100	382	finally
-    //   107	116	382	finally
-    //   123	129	382	finally
-    //   136	144	382	finally
-    //   160	165	382	finally
-    //   172	198	382	finally
-    //   213	221	382	finally
-    //   228	233	382	finally
-    //   249	260	382	finally
-    //   285	291	382	finally
-    //   298	328	382	finally
-    //   346	352	382	finally
-    //   355	367	382	finally
-    //   333	338	393	java/lang/Exception
-    //   387	391	397	java/lang/Exception
-    //   260	278	401	finally
-    //   260	278	408	java/lang/Throwable
+    //   75	81	359	java/lang/Throwable
+    //   88	118	359	java/lang/Throwable
+    //   125	134	359	java/lang/Throwable
+    //   141	147	359	java/lang/Throwable
+    //   154	162	359	java/lang/Throwable
+    //   178	183	359	java/lang/Throwable
+    //   190	216	359	java/lang/Throwable
+    //   231	239	359	java/lang/Throwable
+    //   246	251	359	java/lang/Throwable
+    //   267	278	359	java/lang/Throwable
+    //   303	309	359	java/lang/Throwable
+    //   316	346	359	java/lang/Throwable
+    //   390	395	397	java/lang/Exception
+    //   75	81	400	finally
+    //   88	118	400	finally
+    //   125	134	400	finally
+    //   141	147	400	finally
+    //   154	162	400	finally
+    //   178	183	400	finally
+    //   190	216	400	finally
+    //   231	239	400	finally
+    //   246	251	400	finally
+    //   267	278	400	finally
+    //   303	309	400	finally
+    //   316	346	400	finally
+    //   364	370	400	finally
+    //   373	385	400	finally
+    //   351	356	411	java/lang/Exception
+    //   405	409	415	java/lang/Exception
+    //   278	296	419	finally
+    //   278	296	426	java/lang/Throwable
   }
   
   private ArrayList<String> copyImages(ArrayList<String> paramArrayList)
@@ -541,7 +552,7 @@ public class ImageJsPlugin
     openNativeCamera(paramActivity, paramJsRuntime, paramInt);
   }
   
-  private void openChoosePhotoActivity(Activity paramActivity, int paramInt)
+  private void openChoosePhotoActivity(Activity paramActivity, int paramInt, boolean paramBoolean)
   {
     Intent localIntent = new Intent(paramActivity, NewPhotoListActivity.class);
     localIntent.putExtra("enter_from", 4);
@@ -550,8 +561,9 @@ public class ImageJsPlugin
     localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 6);
     localIntent.putExtra("PhotoConst.DEST_BROADCAST_ACTION_NAME", "micro_api_choose_image");
     localIntent.putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
+    localIntent.putExtra("PhotoConst.original_button", paramBoolean);
     paramActivity.startActivity(localIntent);
-    baaf.a(paramActivity, false, true);
+    bbbj.a(paramActivity, false, true);
   }
   
   private void openNativeCamera(Activity paramActivity, JsRuntime paramJsRuntime, int paramInt)
@@ -574,11 +586,16 @@ public class ImageJsPlugin
     QLog.d("ImageJsPlugin", 2, "handleNativeRequest eventName=" + paramString1 + ",jsonParams=" + paramString2);
     this.mNeedCompress = false;
     this.mHasChoosePhoto = false;
+    this.mShowOriBtn = false;
     this.mJsRunTime = paramJsRuntime;
     this.mCallBackId = paramInt;
     Object localObject1;
     int j;
     int i;
+    int m;
+    Object localObject2;
+    int n;
+    int k;
     if ("chooseImage".equals(paramString1))
     {
       try
@@ -589,7 +606,7 @@ public class ImageJsPlugin
         localObject1 = ((JSONObject)localObject1).optJSONArray("sourceType");
         i = j;
         if (j <= 9) {
-          break label1083;
+          break label1160;
         }
         i = 9;
       }
@@ -597,29 +614,51 @@ public class ImageJsPlugin
       {
         for (;;)
         {
+          label219:
+          label248:
           QLog.e("ImageJsPlugin", 1, paramString1 + " error,", paramString2);
           this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
           continue;
-          openChoosePhotoActivity(this.jsPluginEngine.getActivityContext(), j);
+          if ("camera".equals(((JSONArray)localObject1).optString(0))) {
+            openCamera(this.jsPluginEngine.getActivityContext(), paramJsRuntime, paramInt);
+          } else {
+            openChoosePhotoActivity(this.jsPluginEngine.getActivityContext(), i, this.mShowOriBtn);
+          }
         }
       }
-      if (paramString2 != null)
+      if (m < paramString2.length())
       {
-        paramString2 = paramString2.optString(0);
-        if ((!TextUtils.isEmpty(paramString2)) && ("compressed".equals(paramString2))) {
-          this.mNeedCompress = true;
+        localObject2 = paramString2.optString(m);
+        if (TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          n = j;
+          break label1185;
         }
+        if (((String)localObject2).equals("original"))
+        {
+          n = 1;
+          break label1185;
+        }
+        n = j;
+        if (!((String)localObject2).equals("compressed")) {
+          break label1185;
+        }
+        k = 1;
+        n = j;
+        break label1185;
       }
-      if (((JSONArray)localObject1).length() == 2) {
-        AppBrandTask.runTaskOnUiThread(new ImageJsPlugin.2(this, paramJsRuntime, paramInt, j));
-      }
-      for (;;)
+      if (k != 0)
       {
+        if (j == 0) {
+          break label248;
+        }
+        this.mShowOriBtn = true;
+      }
+      while (((JSONArray)localObject1).length() == 2)
+      {
+        AppBrandTask.runTaskOnUiThread(new ImageJsPlugin.2(this, paramJsRuntime, paramInt, i));
         return "";
-        if (!"camera".equals(((JSONArray)localObject1).optString(0))) {
-          break;
-        }
-        openCamera(this.jsPluginEngine.getActivityContext(), paramJsRuntime, paramInt);
+        this.mNeedCompress = true;
       }
     }
     else if (!"previewImage".equals(paramString1)) {}
@@ -629,7 +668,7 @@ public class ImageJsPlugin
       {
         paramString2 = new JSONObject(paramString2);
         localObject1 = paramString2.optString("current", "");
-        Object localObject2 = paramString2.optJSONArray("urls");
+        localObject2 = paramString2.optJSONArray("urls");
         paramString2 = new ArrayList();
         j = 0;
         i = 0;
@@ -642,10 +681,10 @@ public class ImageJsPlugin
           String str2 = MiniAppFileManager.getInstance().getAbsolutePath(str1);
           paramString2.add(str2);
           if (!QLog.isColorLevel()) {
-            break label1099;
+            break label1198;
           }
           QLog.d("ImageJsPlugin", 2, "previewImage wxFilePath=" + str1 + ",localFilePath=" + str2);
-          break label1099;
+          break label1198;
         }
         if (paramString2 != null)
         {
@@ -707,7 +746,7 @@ public class ImageJsPlugin
             paramString2 = MiniAppFileManager.getInstance().getAbsolutePath(paramString2);
             localObject1 = new File(paramString2);
             localObject1 = ShortVideoUtils.d() + System.currentTimeMillis() / 1000L + "_" + ((File)localObject1).getName();
-            if (vlm.a(this.jsPluginEngine.getActivityContext(), paramString2, (String)localObject1)) {
+            if (vyi.a(this.jsPluginEngine.getActivityContext(), paramString2, (String)localObject1)) {
               this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
             }
             for (;;)
@@ -756,14 +795,26 @@ public class ImageJsPlugin
         continue;
         this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
       }
-      label1083:
-      j = i;
-      if (i >= 1) {
+      for (;;)
+      {
         break;
+        label1160:
+        if (i < 1) {
+          i = 1;
+        }
       }
-      j = 1;
+      if (paramString2 == null) {
+        break label219;
+      }
+      j = 0;
+      k = 0;
+      m = 0;
       break;
-      label1099:
+      label1185:
+      m += 1;
+      j = n;
+      break;
+      label1198:
       i += 1;
     }
   }

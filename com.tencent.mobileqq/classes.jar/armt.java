@@ -1,115 +1,42 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.miniapp.MiniAppInfoManager.1;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import tencent.im.oidb.oidb_0xb61.GetAppinfoRsp;
-import tencent.im.oidb.oidb_0xb61.GetPkgUrlRsp;
-import tencent.im.oidb.oidb_0xb61.RspBody;
-import tencent.im.oidb.qqconnect.Appinfo;
+import cooperation.liveroom.LiveRoomHelper;
+import cooperation.liveroom.LiveRoomPluginInstaller;
 
-public class armt
-  extends mmk
+class armt
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  public armt(MiniAppInfoManager.1 param1) {}
+  armt(arms paramarms, String paramString) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
+    PluginBaseInfo localPluginBaseInfo = paramPluginManagerClient.queryPlugin("LiveRoomPlugin.apk");
     if (QLog.isColorLevel()) {
-      QLog.i("MiniAppInfoManager", 2, "onResult type=" + this.a.jdField_a_of_type_Armr.jdField_a_of_type_Int + ", appid=" + this.a.jdField_a_of_type_Armr.jdField_a_of_type_JavaLangString + ", code=" + paramInt);
+      QLog.d("LiveRoomBusinessPlugin", 2, "get plugin info by ipc");
     }
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {
-      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
-        break label798;
-      }
-    }
-    label798:
-    for (;;)
+    if ((localPluginBaseInfo != null) && (localPluginBaseInfo.mState == 4))
     {
-      try
-      {
-        paramBundle = ((oidb_0xb61.RspBody)new oidb_0xb61.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
-        StringBuilder localStringBuilder = new StringBuilder().append("req error code=").append(paramInt);
-        if (paramArrayOfByte == null)
-        {
-          paramArrayOfByte = ", data=null";
-          QLog.i("MiniAppInfoManager", 2, paramArrayOfByte);
-          if ((this.a.jdField_a_of_type_Armu != null) && (this.a.jdField_a_of_type_Armu.a != null)) {
-            this.a.jdField_a_of_type_Armu.a(this.a.jdField_a_of_type_Armu.a.get(), false, this.a.jdField_a_of_type_Armr);
-          }
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle = "";
-        continue;
-        paramArrayOfByte = ", msg=" + paramBundle;
-        continue;
-      }
-      paramBundle = new oidb_0xb61.RspBody();
-      for (;;)
-      {
-        try
-        {
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if (paramBundle.wording.has()) {
-            this.a.jdField_a_of_type_Armr.g = paramBundle.wording.get();
-          }
-          if ((this.a.jdField_a_of_type_Int != 1) || (!paramBundle.get_appinfo_rsp.appinfo.has())) {
-            break label637;
-          }
-          this.a.jdField_a_of_type_Armr.jdField_b_of_type_Int = paramBundle.get_appinfo_rsp.appinfo.platform.get();
-          this.a.jdField_a_of_type_Armr.jdField_b_of_type_JavaLangString = paramBundle.get_appinfo_rsp.appinfo.app_name.get();
-          this.a.jdField_a_of_type_Armr.jdField_c_of_type_Int = paramBundle.get_appinfo_rsp.appinfo.app_state.get();
-          this.a.jdField_a_of_type_Armr.jdField_c_of_type_JavaLangString = paramBundle.get_appinfo_rsp.appinfo.icon_url.get();
-          this.a.jdField_a_of_type_Armr.e = paramBundle.get_appinfo_rsp.appinfo.icon_small_url.get();
-          this.a.jdField_a_of_type_Armr.jdField_d_of_type_JavaLangString = paramBundle.get_appinfo_rsp.appinfo.icon_middle_url.get();
-          if (paramBundle.next_req_duration.has()) {
-            this.a.jdField_a_of_type_Armr.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() + Math.max(paramBundle.next_req_duration.get() * 1000L, 300000L));
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("MiniAppInfoManager", 2, "receive appInfo: " + this.a.jdField_a_of_type_Armr);
-          }
-          armw.a().a(this.a.jdField_a_of_type_Armr);
-          if ((this.a.jdField_a_of_type_Armu == null) || (this.a.jdField_a_of_type_Armu.a == null)) {
-            break;
-          }
-          this.a.jdField_a_of_type_Armu.a(this.a.jdField_a_of_type_Armu.a.get(), true, this.a.jdField_a_of_type_Armr);
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-        if ((this.a.jdField_a_of_type_Armu == null) || (this.a.jdField_a_of_type_Armu.a == null)) {
-          break;
-        }
-        this.a.jdField_a_of_type_Armu.a(this.a.jdField_a_of_type_Armu.a.get(), false, this.a.jdField_a_of_type_Armr);
-        return;
-        label637:
-        if ((this.a.jdField_a_of_type_Int != 2) || (!paramBundle.get_mqqapp_url_rsp.has())) {
-          break label743;
-        }
-        this.a.jdField_a_of_type_Armr.jdField_d_of_type_Int = paramBundle.get_mqqapp_url_rsp.app_version.get();
-        this.a.jdField_a_of_type_Armr.f = paramBundle.get_mqqapp_url_rsp.pkg_url.get();
-        if (paramBundle.next_req_duration.has()) {
-          this.a.jdField_a_of_type_Armr.jdField_b_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() + Math.max(paramBundle.next_req_duration.get() * 1000L, 300000L));
-        }
-      }
-      label743:
-      if ((this.a.jdField_a_of_type_Armu != null) && (this.a.jdField_a_of_type_Armu.a != null))
-      {
-        this.a.jdField_a_of_type_Armu.a(this.a.jdField_a_of_type_Armu.a.get(), false, this.a.jdField_a_of_type_Armr);
-        return;
-        paramBundle = "";
+      LiveRoomHelper.setPluginInstalledInTool();
+      LiveRoomHelper.setPluginVersionInTool("" + localPluginBaseInfo.mCurVersion);
+      this.jdField_a_of_type_Arms.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0\"version\":\"" + localPluginBaseInfo.mCurVersion + "\"}" });
+      if (QLog.isColorLevel()) {
+        QLog.d("LiveRoomBusinessPlugin", 2, "plugin is installed: version=" + localPluginBaseInfo.mCurVersion);
       }
     }
+    do
+    {
+      return;
+      this.jdField_a_of_type_Arms.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1}" });
+      LiveRoomPluginInstaller.getInstance().installFromTool(paramPluginManagerClient, "checkSDKInstalled");
+    } while (!QLog.isColorLevel());
+    QLog.d("LiveRoomBusinessPlugin", 2, "plugin is not installed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     armt
  * JD-Core Version:    0.7.0.1
  */

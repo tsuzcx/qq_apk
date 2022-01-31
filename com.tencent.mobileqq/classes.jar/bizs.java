@@ -1,17 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
+import android.app.Activity;
+import android.view.WindowManager.BadTokenException;
+import com.tencent.qphone.base.util.QLog;
 
-class bizs
-  implements DialogInterface.OnClickListener
+public class bizs
 {
-  bizs(bizm parambizm) {}
+  private static final String jdField_a_of_type_JavaLangString = bizs.class.getSimpleName();
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private bbgg jdField_a_of_type_Bbgg;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bizs(Activity paramActivity)
   {
-    paramDialogInterface.dismiss();
-    bizm.a(this.a).q = false;
-    bizm.b(this.a).setSelected(false);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  private void b(Runnable paramRunnable)
+  {
+    if (this.jdField_a_of_type_Bbgg != null) {
+      return;
+    }
+    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131699354);
+    this.jdField_a_of_type_Bbgg = bbcv.a(this.jdField_a_of_type_AndroidAppActivity, 230).setMessage(str).setPositiveButton(this.jdField_a_of_type_AndroidAppActivity.getString(2131694087), new bizt(this, paramRunnable));
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    try
+    {
+      b(paramRunnable);
+      if (!this.jdField_a_of_type_Bbgg.isShowing())
+      {
+        this.jdField_a_of_type_Bbgg.setCancelable(false);
+        this.jdField_a_of_type_Bbgg.show();
+      }
+      return;
+    }
+    catch (WindowManager.BadTokenException paramRunnable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "", paramRunnable);
+    }
   }
 }
 

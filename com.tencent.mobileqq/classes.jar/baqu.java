@@ -1,144 +1,150 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Rect;
-import android.graphics.drawable.NinePatchDrawable;
-import com.tencent.mobileqq.activity.aio.item.TroopPobingItemView;
-import com.tencent.mobileqq.vas.quickupdate.PobingUpdateCallback.1;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
 import java.io.File;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import pttcenterservice.PttShortVideo.PttShortVideoFileInfo;
+import pttcenterservice.PttShortVideo.PttShortVideoUploadReq;
 
 public class baqu
-  extends baqp
+  extends baqs
 {
-  public static final baqu a;
-  public static final HashMap<Integer, String> a;
+  private ITransactionCallback b;
+  protected Transaction b;
+  protected boolean b;
+  protected String c;
   
-  static
+  public baqu(baqp parambaqp, int paramInt)
   {
-    jdField_a_of_type_Baqu = new baqu();
-    jdField_a_of_type_JavaUtilHashMap = new PobingUpdateCallback.1();
+    super(parambaqp, paramInt);
+    this.jdField_b_of_type_ComTencentMobileqqHighwayApiITransactionCallback = new baqv(this);
   }
   
-  public static NinePatchDrawable a(Resources paramResources, Bitmap paramBitmap)
+  public void a()
   {
-    int i = 0;
-    int[] arrayOfInt1 = new int[2];
-    arrayOfInt1[0] = (paramBitmap.getWidth() / 2);
-    arrayOfInt1[1] = (paramBitmap.getWidth() / 2 + 1);
-    int[] arrayOfInt2 = new int[2];
-    arrayOfInt2[0] = (paramBitmap.getHeight() / 2);
-    arrayOfInt2[1] = (paramBitmap.getHeight() / 2 + 1);
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(arrayOfInt1.length * 4 + arrayOfInt2.length * 4 + 36 + 32).order(ByteOrder.nativeOrder());
-    localByteBuffer.put((byte)1);
-    localByteBuffer.put((byte)2);
-    localByteBuffer.put((byte)2);
-    localByteBuffer.put((byte)9);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(arrayOfInt1[0]);
-    localByteBuffer.putInt(arrayOfInt1[1]);
-    localByteBuffer.putInt(arrayOfInt2[0]);
-    localByteBuffer.putInt(arrayOfInt2[1]);
-    while (i < 9)
-    {
-      localByteBuffer.putInt(1);
-      i += 1;
+    String str1 = this.jdField_a_of_type_Baqp.jdField_b_of_type_JavaLangString;
+    String str2 = this.jdField_a_of_type_Baqp.jdField_a_of_type_JavaLangString;
+    boolean bool2 = a(str1);
+    boolean bool1 = false;
+    if (bool2) {
+      bool1 = b(str2);
     }
-    return new NinePatchDrawable(paramResources, paramBitmap, localByteBuffer.array(), new Rect(), "");
-  }
-  
-  public static String a(int paramInt)
-  {
-    return "pobing.preview.cache." + paramInt;
-  }
-  
-  public static boolean a()
-  {
-    return QzoneConfig.getInstance().getConfig("qqsetting", "addgroupvasfeaturedisable", 0L) == 0L;
-  }
-  
-  public Bitmap a(Context paramContext, int paramInt, String paramString)
-  {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inDensity = 320;
-    localOptions.inTargetDensity = 320;
-    paramContext = getDir(paramContext, getScid(paramInt));
-    paramContext = paramContext + File.separator + paramString;
-    paramString = new azvr();
-    azvq.a(paramContext, localOptions, paramString);
-    if (paramString.jdField_a_of_type_Int != 0)
-    {
-      QLog.e("PobingUpdateCallback", 1, paramContext + " decodeFail: " + paramString.jdField_a_of_type_Int);
-      return null;
+    if ((bool2) && (bool1)) {
+      return;
     }
-    return paramString.jdField_a_of_type_AndroidGraphicsBitmap;
+    e();
   }
   
-  public boolean a(Context paramContext, int paramInt)
+  public void b()
   {
-    Object localObject = "newComeCard." + paramInt;
-    paramContext = jdField_a_of_type_Baqu.getDir(paramContext, (String)localObject);
-    if (!new File(paramContext).exists()) {
-      return false;
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean)) {
+      c();
     }
-    if (paramInt == 2000) {
-      return new File(paramContext, "addgroup_preview.png").exists();
+  }
+  
+  protected boolean b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadVideo path= " + paramString);
     }
-    localObject = TroopPobingItemView.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    ITransactionCallback localITransactionCallback = this.jdField_b_of_type_ComTencentMobileqqHighwayApiITransactionCallback;
+    QQAppInterface localQQAppInterface = a();
+    String str = localQQAppInterface.c();
+    byte[] arrayOfByte;
     File localFile;
-    while (((Iterator)localObject).hasNext())
+    if (localQQAppInterface != null)
     {
-      localFile = new File(paramContext, (String)((Iterator)localObject).next());
-      if (!localFile.exists())
-      {
-        QLog.e("PobingUpdateCallback", 1, "missing: " + localFile.getAbsolutePath());
-        return false;
+      arrayOfByte = aleu.a(paramString);
+      localFile = new File(paramString);
+      if (arrayOfByte != null) {
+        break label93;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadVideo md5 null ");
       }
     }
-    localObject = jdField_a_of_type_JavaUtilHashMap.values().iterator();
-    while (((Iterator)localObject).hasNext())
+    label93:
+    int i;
+    do
     {
-      localFile = new File(paramContext, (String)((Iterator)localObject).next());
-      if (!localFile.exists())
-      {
-        QLog.e("PobingUpdateCallback", 1, "missing: " + localFile.getAbsolutePath());
-        return false;
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "uploadVideo,file length " + new File(paramString).length());
       }
+      PttShortVideo.PttShortVideoUploadReq localPttShortVideoUploadReq = new PttShortVideo.PttShortVideoUploadReq();
+      localPttShortVideoUploadReq.setHasFlag(true);
+      localPttShortVideoUploadReq.uint64_fromuin.set(Long.parseLong(str));
+      localPttShortVideoUploadReq.uint64_touin.set(Long.parseLong(str));
+      localPttShortVideoUploadReq.uint32_chat_type.set(1);
+      localPttShortVideoUploadReq.uint32_client_type.set(1);
+      localPttShortVideoUploadReq.uint64_group_code.set(Long.parseLong(str));
+      localPttShortVideoUploadReq.uint32_agent_type.set(0);
+      localPttShortVideoUploadReq.uint32_business_type.set(3001);
+      localPttShortVideoUploadReq.uint32_flag_support_large_size.set(1);
+      PttShortVideo.PttShortVideoFileInfo localPttShortVideoFileInfo = new PttShortVideo.PttShortVideoFileInfo();
+      localPttShortVideoFileInfo.str_file_name.set(localFile.getName());
+      localPttShortVideoFileInfo.bytes_file_md5.set(ByteStringMicro.copyFrom(arrayOfByte));
+      localPttShortVideoFileInfo.bytes_thumb_file_md5.set(ByteStringMicro.copyFrom(arrayOfByte));
+      localPttShortVideoFileInfo.uint64_file_size.set(localFile.length());
+      localPttShortVideoFileInfo.uint32_file_res_length.set(0);
+      localPttShortVideoFileInfo.uint32_file_res_width.set(0);
+      localPttShortVideoFileInfo.uint32_file_format.set(3);
+      localPttShortVideoFileInfo.uint32_file_time.set((int)this.jdField_a_of_type_Baqp.jdField_a_of_type_Long);
+      localPttShortVideoFileInfo.uint64_thumb_file_size.set(0L);
+      localPttShortVideoUploadReq.msg_PttShortVideoFileInfo.set(localPttShortVideoFileInfo);
+      paramString = new Transaction(str, 74, paramString, 0, arrayOfByte, localITransactionCallback, localPttShortVideoUploadReq.toByteArray(), false);
+      i = localQQAppInterface.getHwEngine().submitTransactionTask(paramString);
+      if (i == 0)
+      {
+        this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction = paramString;
+        return true;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadVideo submitTransactionTask  retCode= " + i);
+    return false;
+  }
+  
+  public void c()
+  {
+    boolean bool = true;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("isVideo", 1);
+    if ((this.jdField_b_of_type_JavaLangString != null) && (this.c != null))
+    {
+      localBundle.putInt("result", 1);
+      localBundle.putString("url", this.jdField_b_of_type_JavaLangString);
+      localBundle.putString("vid", this.c);
     }
-    return true;
+    for (;;)
+    {
+      baqq.a().a(bool, this.jdField_a_of_type_Int, localBundle);
+      return;
+      localBundle.putInt("result", 0);
+      localBundle.putString("error", "");
+      bool = false;
+    }
   }
   
-  public long getBID()
+  public void d()
   {
-    return 40L;
-  }
-  
-  protected String getRootDir()
-  {
-    return "newComeCard";
-  }
-  
-  protected String getScidPrefix()
-  {
-    return "newComeCard.";
+    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
+      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
+    }
+    if (this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
+      this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     baqu
  * JD-Core Version:    0.7.0.1
  */

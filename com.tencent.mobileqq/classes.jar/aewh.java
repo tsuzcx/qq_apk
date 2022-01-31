@@ -1,17 +1,34 @@
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
+import android.content.Context;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.net.URL;
 
-public class aewh
-  implements afhf
+public abstract interface aewh
+  extends aewg
 {
-  public aewh(TroopView paramTroopView) {}
+  public abstract URLDrawable.URLDrawableOptions a();
   
-  public void a(int paramInt)
-  {
-    if (paramInt == SimpleCheckableSlidingIndicator.a) {
-      TroopView.a(this.a);
-    }
-  }
+  public abstract URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions);
+  
+  public abstract String a();
+  
+  public abstract URL a();
+  
+  public abstract void a(QQAppInterface paramQQAppInterface);
+  
+  public abstract void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo);
+  
+  public abstract boolean a();
+  
+  public abstract String b();
+  
+  public abstract boolean b();
+  
+  public abstract String c();
+  
+  public abstract boolean c();
 }
 
 

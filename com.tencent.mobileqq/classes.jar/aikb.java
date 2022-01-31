@@ -1,190 +1,192 @@
 import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugManager.1;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugManager.2;
-import com.tencent.mobileqq.apollo.debug.page.CmGameDebugBaseFragment;
-import com.tencent.mobileqq.apollo.debug.page.CmGameDebugLogFragment;
-import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler.1;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import mqq.os.MqqHandler;
 
 public class aikb
+  extends akfb
+  implements antz
 {
-  public static final String[] a;
-  public static final String[] b;
-  public static final String[] c;
-  private WeakReference<aikc> jdField_a_of_type_JavaLangRefWeakReference;
-  private BlockingQueue<aikk> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new ArrayBlockingQueue(100);
-  private boolean jdField_a_of_type_Boolean;
-  private BlockingQueue<aikk> b;
-  private BlockingQueue<aikk> c;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "Log", "Tool" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "All", "Log", "Info", "Error", "Game" };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { "#000000", "#000000", "#6a59d6", "#FF0000", "#556B2F" };
-  }
+  private volatile int jdField_a_of_type_Int;
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private final int jdField_b_of_type_Int = 1;
+  private Bundle jdField_b_of_type_AndroidOsBundle;
+  private final int c = 90000;
   
   public aikb()
   {
-    this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue = new ArrayBlockingQueue(50);
-    this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue = new ArrayBlockingQueue(50);
+    ThreadManager.post(new VipSpecialCareHandler.1(this), 8, null, true);
   }
   
-  public static CmGameDebugBaseFragment a(int paramInt)
+  private final void a(int paramInt)
   {
-    switch (paramInt)
+    int i = this.jdField_a_of_type_Int - 1;
+    this.jdField_a_of_type_Int = i;
+    if (i != 0)
     {
-    default: 
-      return new CmGameDebugLogFragment();
-    case 0: 
-      return new CmGameDebugLogFragment();
+      a("-->warning:special care set,uncorrect state,seq=" + this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int = 0;
     }
-    return new CmGameDebugToolFragment();
-  }
-  
-  private void a(aikk paramaikk)
-  {
-    if (paramaikk == null) {
+    try
+    {
+      Bundle localBundle = this.jdField_b_of_type_AndroidOsBundle;
+      i = paramInt;
+      if (paramInt == 0) {
+        i = 0;
+      }
+      localBundle.putInt("error", i);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", this.jdField_b_of_type_AndroidOsBundle);
+      a(this.jdField_a_of_type_AndroidOsBundle);
       return;
     }
-    switch (paramaikk.a)
+    catch (NullPointerException localNullPointerException)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(paramaikk);
-      if (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size() == 100) {
-        this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.poll();
-      }
-      ThreadManager.getUIHandler().post(new CmGameDebugManager.1(this, paramaikk));
-      return;
-      this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.offer(paramaikk);
-      if (this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.size() == 50)
-      {
-        this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.poll();
-        continue;
-        this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.offer(paramaikk);
-        if (this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.size() == 50) {
-          this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.poll();
-        }
-      }
+      localNullPointerException.printStackTrace();
     }
   }
   
-  public static boolean a(int paramInt)
+  private void a(String paramString)
   {
-    aips localaips = aing.a();
-    if (localaips != null) {
-      return localaips.a(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("VipSpecialCareHandler", 2, paramString);
     }
-    return false;
-  }
-  
-  public static boolean a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramStartCheckParam != null)
-    {
-      bool1 = bool2;
-      if (paramStartCheckParam.isWhiteUsr)
-      {
-        bool1 = bool2;
-        if (a(paramStartCheckParam.gameId)) {
-          bool1 = BaseApplicationImpl.getApplication().getSharedPreferences("cmgame_sp", 0).getBoolean("game_debug_tool_switch", true);
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  private List<aikk> b(int paramInt)
-  {
-    Object localObject = Arrays.asList(this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.toArray(new aikk[0]));
-    if (paramInt == 0) {
-      return localObject;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      aikk localaikk = (aikk)((Iterator)localObject).next();
-      if (localaikk.a == paramInt) {
-        localArrayList.add(localaikk);
-      }
-    }
-    return localArrayList;
-  }
-  
-  public List<aikk> a(int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    switch (paramInt)
-    {
-    default: 
-      return localArrayList;
-    case 0: 
-      return Arrays.asList(this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.toArray(new aikk[0]));
-    case 1: 
-      return b(1);
-    case 2: 
-      return b(2);
-    case 3: 
-      return Arrays.asList(this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.toArray(new aikk[0]));
-    }
-    return Arrays.asList(this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.toArray(new aikk[0]));
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    a(false);
-  }
-  
-  public void a(aikc paramaikc)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaikc);
-  }
-  
-  public void a(String paramString, int paramInt, Object... paramVarArgs)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
-    localStringBuilder.append(paramString).append(" | ");
-    int i = 0;
-    while (i < paramVarArgs.length)
-    {
-      paramString = paramVarArgs[i];
-      if (paramString != null) {
-        localStringBuilder.append(paramString.toString());
-      }
-      i += 1;
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     }
-    a(new aikk(localStringBuilder.toString(), paramInt));
+    if (this.jdField_a_of_type_AndroidOsHandlerThread != null) {
+      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+    }
   }
   
-  public void a(boolean paramBoolean)
+  public void a(Bundle paramBundle) {}
+  
+  public final void a(Bundle paramBundle1, Bundle paramBundle2)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.clear();
-    this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.clear();
-    this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.clear();
-    if ((paramBoolean) && (!this.jdField_a_of_type_Boolean)) {
-      ThreadManager.getUIHandler().post(new CmGameDebugManager.2(this));
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle1;
+    this.jdField_b_of_type_AndroidOsBundle = paramBundle2;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle1, Bundle paramBundle2)
+  {
+    if (this.jdField_a_of_type_Int != 0)
+    {
+      a("-->current request is ongoing,can't do request yet");
+      paramBundle2.putInt("error", -1);
+      paramBundle1.putBundle("response", paramBundle2);
+      a(paramBundle1);
+      return;
+    }
+    this.jdField_a_of_type_Int += 1;
+    a("-->do request,seq=" + this.jdField_a_of_type_Int);
+    ArrayList localArrayList;
+    for (;;)
+    {
+      try
+      {
+        a(paramBundle1, paramBundle2);
+        if ((!"sepcial_care_delete_ring".equals(paramString)) && (!"special_care_set_ring".equals(paramString))) {
+          break;
+        }
+        paramBundle1 = paramBundle1.getBundle("request");
+        int i = paramBundle1.getInt("id", 1);
+        paramBundle2 = paramBundle1.getString("uin");
+        paramBundle1 = paramBundle2;
+        if (paramBundle2 == null) {
+          paramBundle1 = "";
+        }
+        paramBundle2 = new ArrayList();
+        paramBundle2.add(paramBundle1);
+        localArrayList = new ArrayList();
+        localArrayList.add(String.valueOf(i));
+        if (this.jdField_a_of_type_AndroidOsHandler != null) {
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 90000L);
+        }
+        if (!"special_care_set_ring".equals(paramString)) {
+          break label288;
+        }
+        if (i == 1)
+        {
+          aijb.a(paramBundle2, 2, localArrayList, paramQQAppInterface);
+          paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
+          paramString = "specialcare_already_set" + paramBundle1;
+          paramQQAppInterface.edit().putBoolean(paramString, true).commit();
+          return;
+        }
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        paramQQAppInterface.printStackTrace();
+        this.jdField_a_of_type_Int = 0;
+        return;
+      }
+      aijb.a(paramBundle2, 3, localArrayList, paramQQAppInterface);
+    }
+    label288:
+    aijb.a(paramBundle2, 4, localArrayList, paramQQAppInterface);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (paramObject != null) {
+      switch (((Integer)paramObject).intValue())
+      {
+      }
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_AndroidOsHandler != null) {
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      }
+      a(0);
+      return;
+      a("-->method_type_open_switch");
+      continue;
+      a("-->method_type_set_sound");
+      continue;
+      a("-->method_type_delete_sound");
+    }
+  }
+  
+  public void b(Object paramObject)
+  {
+    int i = -1;
+    if (paramObject != null)
+    {
+      i = ((Integer)paramObject).intValue();
+      if (i != 10010) {
+        break label48;
+      }
+      a("-->error:set quota limit");
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_AndroidOsHandler != null) {
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      }
+      a(i);
+      return;
+      label48:
+      a("-->error:" + i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aikb
  * JD-Core Version:    0.7.0.1
  */

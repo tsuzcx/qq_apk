@@ -1,53 +1,51 @@
+import android.app.Dialog;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
 
 public class amdp
-  implements alzn<String>
+  implements View.OnClickListener
 {
-  public boolean a;
+  public amdp(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    boolean bool = false;
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("OpenSdkSwitchConfig", 1, "OpenVirtual.config content is empty");
-    }
-    for (;;)
+    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
     {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.a.jdField_a_of_type_AndroidAppDialog = null;
+    }
+    if (this.a.jdField_a_of_type_Int == 0) {
+      axqw.b(this.a.app, "CliOper", "", "", "0X80064E3", "0X80064E3", 0, 0, "", "", "", "");
+    }
+    while ((this.a.jdField_a_of_type_Boolean) && (this.a.b) && (!this.a.isFinishing()))
+    {
+      this.a.finish();
       return;
-      QLog.i("OpenSdkSwitchConfig", 1, "OpenVirtual.switch.config.parse=" + paramString);
-      try
-      {
-        if (new JSONObject(paramString).optInt("enable", 0) == 1) {
-          bool = true;
-        }
-        this.a = bool;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("OpenSdkSwitchConfig", 2, new Object[] { "OpenVirtual.switch.config.parse=", toString() });
-          return;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("OpenSdkSwitchConfig", 1, "OpenVirtual.config.getException.", paramString);
+      if (this.a.getIntent().getIntExtra("source_activity", 0) == 1) {
+        axqw.b(this.a.app, "CliOper", "", "", "0X80064EE", "0X80064EE", 0, 0, "", "", "", "");
       }
     }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("OpenSdkSwitchConfig={");
-    localStringBuilder.append("enable:").append(this.a);
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    if (this.a.c)
+    {
+      amew.a(this.a.app.getCurrentAccountUin(), -1);
+      this.a.c = false;
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardId)))
+    {
+      this.a.finish();
+      return;
+    }
+    BusinessCardEditActivity.a(this.a, false, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amdp
  * JD-Core Version:    0.7.0.1
  */

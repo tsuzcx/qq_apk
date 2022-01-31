@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import aboy;
-import aboz;
-import abpa;
-import abpb;
-import ajjy;
+import abzc;
+import abzd;
+import abze;
+import abzf;
+import ajyc;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -22,15 +22,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import atog;
-import atoi;
-import atok;
-import awqx;
-import badq;
-import bavd;
-import bavh;
-import bbms;
-import bbmy;
+import aume;
+import aumg;
+import aumi;
+import axqw;
+import bbev;
+import bbxx;
+import bbyb;
+import bcpq;
+import bcpw;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -47,11 +47,11 @@ public class RegisterQQNumberActivity
   implements View.OnClickListener
 {
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  atog jdField_a_of_type_Atog = new aboz(this);
-  private bavh jdField_a_of_type_Bavh;
-  private bbms jdField_a_of_type_Bbms;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new abpa(this);
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new aboy(this);
+  aume jdField_a_of_type_Aume = new abzd(this);
+  private bbyb jdField_a_of_type_Bbyb;
+  private bcpq jdField_a_of_type_Bcpq;
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new abze(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new abzc(this);
   private boolean jdField_a_of_type_Boolean;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private byte[] b;
@@ -76,64 +76,64 @@ public class RegisterQQNumberActivity
     View localView;
     if (this.f)
     {
-      k = 2131651380;
+      k = 2131717172;
       c(k);
       b();
       a(100);
-      localObject1 = (ImageView)findViewById(2131307709);
+      localObject1 = (ImageView)findViewById(2131373423);
       ((ImageView)localObject1).setVisibility(0);
       localObject2 = new LinearLayout.LayoutParams(-2, -2);
       ((LinearLayout.LayoutParams)localObject2).rightMargin = ((int)(10.0F * getResources().getDisplayMetrics().density));
       ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      localObject5 = (ImageView)findViewById(2131307709);
-      localObject3 = (TextView)findViewById(2131312679);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131312667));
-      localObject4 = (Button)findViewById(2131298018);
+      localObject5 = (ImageView)findViewById(2131373423);
+      localObject3 = (TextView)findViewById(2131378503);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378491));
+      localObject4 = (Button)findViewById(2131363568);
       ((Button)localObject4).setOnClickListener(this);
-      localObject2 = (TextView)findViewById(2131305763);
-      localObject1 = (TextView)findViewById(2131305239);
-      localView = findViewById(2131302651);
+      localObject2 = (TextView)findViewById(2131371459);
+      localObject1 = (TextView)findViewById(2131370913);
+      localView = findViewById(2131368273);
       if (this.f) {
         break label386;
       }
-      ((ImageView)localObject5).setImageResource(2130845874);
+      ((ImageView)localObject5).setImageResource(2130846055);
       ((TextView)localObject3).setVisibility(8);
       localObject3 = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131307704);
+      ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131373418);
       ((RelativeLayout.LayoutParams)localObject3).topMargin = ((int)(50.0F * getResources().getDisplayMetrics().density));
       ((RelativeLayout.LayoutParams)localObject3).leftMargin = ((int)(getResources().getDisplayMetrics().density * 27.5F));
       ((RelativeLayout.LayoutParams)localObject3).rightMargin = ((int)(getResources().getDisplayMetrics().density * 27.5F));
       this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject3);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 20.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131651284);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717076);
       ((TextView)localObject2).setVisibility(8);
       localObject2 = new RelativeLayout.LayoutParams(-1, -2);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131312667);
+      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131378491);
       ((RelativeLayout.LayoutParams)localObject2).topMargin = ((int)(50.0F * getResources().getDisplayMetrics().density));
       ((RelativeLayout.LayoutParams)localObject2).leftMargin = ((int)(getResources().getDisplayMetrics().density * 27.5F));
       ((RelativeLayout.LayoutParams)localObject2).rightMargin = ((int)(getResources().getDisplayMetrics().density * 27.5F));
       ((Button)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      ((Button)localObject4).setText(2131653983);
+      ((Button)localObject4).setText(2131719867);
       ((TextView)localObject1).setVisibility(8);
     }
     label386:
     do
     {
       return;
-      k = 2131651283;
+      k = 2131717075;
       break;
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_d_of_type_JavaLangString);
       if (this.jdField_e_of_type_Boolean) {
         if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
         {
-          localObject4 = new SpannableString(String.format(getString(2131651366), new Object[] { this.jdField_e_of_type_JavaLangString }));
+          localObject4 = new SpannableString(String.format(getString(2131717158), new Object[] { this.jdField_e_of_type_JavaLangString }));
           ((SpannableString)localObject4).setSpan(new ForegroundColorSpan(Color.parseColor("#FF8444")), 8, this.jdField_e_of_type_JavaLangString.length() + 8, 33);
           ((TextView)localObject2).setText((CharSequence)localObject4);
         }
       }
       while (this.g)
       {
-        ((TextView)localObject3).setText(2131651331);
+        ((TextView)localObject3).setText(2131717123);
         ((TextView)localObject1).setVisibility(8);
         return;
         ((TextView)localObject2).setVisibility(8);
@@ -141,7 +141,7 @@ public class RegisterQQNumberActivity
         if (!this.jdField_d_of_type_Boolean)
         {
           localObject4 = "+" + this.jdField_b_of_type_JavaLangString + " " + this.jdField_a_of_type_JavaLangString.substring(0, 3) + "-" + this.jdField_a_of_type_JavaLangString.substring(3, 7) + "-" + this.jdField_a_of_type_JavaLangString.substring(7);
-          localObject5 = new SpannableString(String.format(getString(2131651322), new Object[] { localObject4 }));
+          localObject5 = new SpannableString(String.format(getString(2131717114), new Object[] { localObject4 }));
           ((SpannableString)localObject5).setSpan(new ForegroundColorSpan(Color.parseColor("#FF8444")), 9, ((String)localObject4).length() + 9, 33);
           ((TextView)localObject2).setText((CharSequence)localObject5);
         }
@@ -150,7 +150,7 @@ public class RegisterQQNumberActivity
           ((TextView)localObject2).setVisibility(8);
         }
       }
-      ((TextView)localObject3).setText(2131651329);
+      ((TextView)localObject3).setText(2131717121);
       ((TextView)localObject1).setVisibility(0);
     } while (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString));
     localView.setVisibility(0);
@@ -160,10 +160,10 @@ public class RegisterQQNumberActivity
   {
     boolean bool = getIntent().getBooleanExtra("key_register_chose_bind_phone", false);
     if (this.jdField_e_of_type_Boolean) {
-      awqx.a(this.app, "dc00898", "", "", paramString, paramString, 1, 0, "", "", "", "");
+      axqw.a(this.app, "dc00898", "", "", paramString, paramString, 1, 0, "", "", "", "");
     }
     if (!this.jdField_b_of_type_Boolean) {
-      awqx.a(this.app, "dc00898", "", "", paramString, paramString, 2, 0, "", "", "", "");
+      axqw.a(this.app, "dc00898", "", "", paramString, paramString, 2, 0, "", "", "", "");
     }
     for (;;)
     {
@@ -172,18 +172,18 @@ public class RegisterQQNumberActivity
         if (bool) {
           break;
         }
-        awqx.a(this.app, "dc00898", "", "", paramString, paramString, 6, 0, "", "", "", "");
+        axqw.a(this.app, "dc00898", "", "", paramString, paramString, 6, 0, "", "", "", "");
       }
       return;
       if (!this.jdField_c_of_type_Boolean) {
-        awqx.a(this.app, "dc00898", "", "", paramString, paramString, 3, 0, "", "", "", "");
+        axqw.a(this.app, "dc00898", "", "", paramString, paramString, 3, 0, "", "", "", "");
       } else if (!bool) {
-        awqx.a(this.app, "dc00898", "", "", paramString, paramString, 4, 0, "", "", "", "");
+        axqw.a(this.app, "dc00898", "", "", paramString, paramString, 4, 0, "", "", "", "");
       } else {
-        awqx.a(this.app, "dc00898", "", "", paramString, paramString, 5, 0, "", "", "", "");
+        axqw.a(this.app, "dc00898", "", "", paramString, paramString, 5, 0, "", "", "", "");
       }
     }
-    awqx.a(this.app, "dc00898", "", "", paramString, paramString, 7, 0, "", "", "", "");
+    axqw.a(this.app, "dc00898", "", "", paramString, paramString, 7, 0, "", "", "", "");
   }
   
   private void d()
@@ -202,8 +202,8 @@ public class RegisterQQNumberActivity
   
   private void e()
   {
-    atok.a().a(true);
-    atok.a().b(this.app, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
+    aumi.a().a(true);
+    aumi.a().b(this.app, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
   }
   
   private void f()
@@ -225,7 +225,7 @@ public class RegisterQQNumberActivity
     if ((!this.h) && (this.i))
     {
       g();
-      a(2131651328, 0);
+      a(2131717120, 0);
     }
     for (;;)
     {
@@ -236,7 +236,7 @@ public class RegisterQQNumberActivity
         if (this.jdField_d_of_type_Boolean) {
           getAppRuntime().login(this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_MqqObserverAccountObserver);
         } else {
-          atoi.a(this.app, this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_JavaLangString);
+          aumg.a(this.app, this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_JavaLangString);
         }
       }
     }
@@ -255,7 +255,7 @@ public class RegisterQQNumberActivity
     }
     if (this.jdField_d_of_type_Boolean)
     {
-      this.app.unRegistObserver(this.jdField_a_of_type_Atog);
+      this.app.unRegistObserver(this.jdField_a_of_type_Aume);
       if (this.jdField_e_of_type_Boolean)
       {
         this.app = ((QQAppInterface)getAppRuntime());
@@ -267,19 +267,19 @@ public class RegisterQQNumberActivity
     do
     {
       return;
-      if (atok.a().a()) {
+      if (aumi.a().a()) {
         break;
       }
     } while (!QLog.isColorLevel());
     QLog.d("RegisterQQNumberActivity", 2, "onAccountChanged not phonenum login");
     return;
-    this.app.unRegistObserver(this.jdField_a_of_type_Atog);
+    this.app.unRegistObserver(this.jdField_a_of_type_Aume);
     this.app = ((QQAppInterface)getAppRuntime());
-    this.app.registObserver(this.jdField_a_of_type_Atog);
+    this.app.registObserver(this.jdField_a_of_type_Aume);
     if (this.jdField_a_of_type_Boolean)
     {
       this.app.a(new RegisterQQNumberActivity.1(this));
-      bbmy.a(BaseApplicationImpl.sApplication, ajjy.a(2131647563), 0).a();
+      bcpw.a(BaseApplicationImpl.sApplication, ajyc.a(2131713351), 0).a();
     }
     LoginActivity.a(this.app, this.app.getAccount());
     d();
@@ -293,17 +293,17 @@ public class RegisterQQNumberActivity
     default: 
       return;
     }
-    awqx.b(this.app, "CliOper", "", "", "0X8006655", "0X8006655", 0, 0, "", "", "", "");
-    awqx.a(this.app, "new_reg", "result_page", "login_clk", "", 1, "", this.jdField_d_of_type_JavaLangString, "", "", "", "", "", "", " ");
+    axqw.b(this.app, "CliOper", "", "", "0X8006655", "0X8006655", 0, 0, "", "", "", "");
+    axqw.a(this.app, "new_reg", "result_page", "login_clk", "", 1, "", this.jdField_d_of_type_JavaLangString, "", "", "", "", "", "", " ");
     if (this.f)
     {
-      awqx.a(this.app, "dc00898", "", "", "0X8007CCB", "0X8007CCB", 0, 0, "", "", "", "");
+      axqw.a(this.app, "dc00898", "", "", "0X8007CCB", "0X8007CCB", 0, 0, "", "", "", "");
       a("0X8007CCB");
       if (this.jdField_e_of_type_Boolean) {
-        awqx.a(this.app, "dc00898", "", "", "0X80072FC", "0X80072FC", 0, 0, "", "", "", "");
+        axqw.a(this.app, "dc00898", "", "", "0X80072FC", "0X80072FC", 0, 0, "", "", "", "");
       }
-      if (!badq.d(BaseApplication.getContext())) {
-        a(2131626719, 0);
+      if (!bbev.d(BaseApplication.getContext())) {
+        a(2131692321, 0);
       }
     }
     else
@@ -316,10 +316,10 @@ public class RegisterQQNumberActivity
       if (!this.j)
       {
         this.j = true;
-        if (this.jdField_a_of_type_Bavh == null) {
-          this.jdField_a_of_type_Bavh = new bavh(this, null);
+        if (this.jdField_a_of_type_Bbyb == null) {
+          this.jdField_a_of_type_Bbyb = new bbyb(this, null);
         }
-        this.jdField_a_of_type_Bavh.a(this.jdField_d_of_type_JavaLangString, new abpb(this));
+        this.jdField_a_of_type_Bbyb.a(this.jdField_d_of_type_JavaLangString, new abzf(this));
       }
       this.i = true;
       f();
@@ -350,15 +350,15 @@ public class RegisterQQNumberActivity
     if (QLog.isDevelopLevel()) {
       QLog.d("RegisterQQNumberActivity", 4, String.format(Locale.getDefault(), "onClick  uin: %s, sign: %s", new Object[] { this.jdField_d_of_type_JavaLangString, com.tencent.qphone.base.util.MD5.toMD5(this.jdField_a_of_type_ArrayOfByte) }));
     }
-    atoi.a(this.app, this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_JavaLangString);
+    aumg.a(this.app, this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_JavaLangString);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131495870);
+    setContentView(2131561461);
     if (QLog.isDevelopLevel()) {
-      bavd.a(getClass().getSimpleName(), getIntent());
+      bbxx.a(getClass().getSimpleName(), getIntent());
     }
     this.jdField_e_of_type_Boolean = getIntent().getBooleanExtra("key_register_from_quick_register", false);
     if (this.jdField_e_of_type_Boolean) {
@@ -400,19 +400,19 @@ public class RegisterQQNumberActivity
       finish();
       return;
     }
-    this.app.registObserver(this.jdField_a_of_type_Atog);
+    this.app.registObserver(this.jdField_a_of_type_Aume);
     this.f = getIntent().getBooleanExtra("key_register_result", true);
     this.g = getIntent().getBooleanExtra("key_register_is_lh", false);
     if ((this.f) && (this.g))
     {
       this.i = false;
       this.j = true;
-      this.jdField_a_of_type_Bavh = new bavh(this, null);
-      this.jdField_a_of_type_Bavh.a(this.jdField_d_of_type_JavaLangString, new abpb(this));
+      this.jdField_a_of_type_Bbyb = new bbyb(this, null);
+      this.jdField_a_of_type_Bbyb.a(this.jdField_d_of_type_JavaLangString, new abzf(this));
     }
     a();
     b(true);
-    awqx.b(this.app, "CliOper", "", "", "0X8006654", "0X8006654", 0, 0, "", "", "", "");
+    axqw.b(this.app, "CliOper", "", "", "0X8006654", "0X8006654", 0, 0, "", "", "", "");
     Object localObject2 = this.app;
     if (this.f)
     {
@@ -424,8 +424,8 @@ public class RegisterQQNumberActivity
     label609:
     for (Object localObject1 = "0X800735F";; localObject1 = "0X8007CCA")
     {
-      awqx.a((QQAppInterface)localObject2, "dc00898", "", "", paramBundle, (String)localObject1, 0, 0, "", "", "", "");
-      awqx.a(this.app, "new_reg", "result_page", "page_exp", "", 1, "", this.jdField_d_of_type_JavaLangString, "", "", "", "", "", "", "");
+      axqw.a((QQAppInterface)localObject2, "dc00898", "", "", paramBundle, (String)localObject1, 0, 0, "", "", "", "");
+      axqw.a(this.app, "new_reg", "result_page", "page_exp", "", 1, "", this.jdField_d_of_type_JavaLangString, "", "", "", "", "", "", "");
       a("0X800735F");
       return;
       paramBundle = "0X8007CCA";
@@ -437,7 +437,7 @@ public class RegisterQQNumberActivity
   {
     super.onDestroy();
     if (this.app != null) {
-      this.app.unRegistObserver(this.jdField_a_of_type_Atog);
+      this.app.unRegistObserver(this.jdField_a_of_type_Aume);
     }
     c();
     g();
@@ -448,12 +448,12 @@ public class RegisterQQNumberActivity
     super.onPause();
     try
     {
-      if ((this.jdField_a_of_type_Bbms != null) && (this.jdField_a_of_type_Bbms.isShowing()))
+      if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing()))
       {
-        this.jdField_a_of_type_Bbms.dismiss();
-        this.jdField_a_of_type_Bbms.cancel();
+        this.jdField_a_of_type_Bcpq.dismiss();
+        this.jdField_a_of_type_Bcpq.cancel();
       }
-      this.jdField_a_of_type_Bbms = null;
+      this.jdField_a_of_type_Bcpq = null;
       return;
     }
     catch (Throwable localThrowable)

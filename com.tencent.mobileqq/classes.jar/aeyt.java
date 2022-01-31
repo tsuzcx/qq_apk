@@ -1,62 +1,25 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class aeyt
-  extends ajjh
+  implements View.OnClickListener
 {
   aeyt(aeys paramaeys) {}
   
-  public void onAgreeSuspiciousMsg(boolean paramBoolean, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onAgreeSuspiciousMsg " + paramBoolean + " " + paramInt);
-    }
-    if (paramBoolean)
-    {
-      bbmy.a(aeys.a(this.a), ajjy.a(2131641695), 0).a();
-      aeys.a(this.a, paramLong);
-      this.a.d();
-      return;
-    }
-    bbmy.a(aeys.a(this.a), ajjy.a(2131641716), 0).a();
-  }
-  
-  public void onSuspiciousDel(boolean paramBoolean, int paramInt, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousDel " + paramBoolean + " " + paramInt + " " + paramLong);
-    }
-    if (paramBoolean) {
-      this.a.d();
-    }
-  }
-  
-  public void onSuspiciousGetList(boolean paramBoolean, int paramInt, ArrayList<SysSuspiciousMsg> paramArrayList, byte[] paramArrayOfByte, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousGetList " + paramBoolean + " " + paramInt + " " + paramObject);
-    }
-    if (paramBoolean)
-    {
-      if ((paramObject instanceof Integer))
-      {
-        paramInt = ((Integer)paramObject).intValue();
-        aeys.a(this.a).put(paramInt, paramArrayOfByte);
-      }
-      if (paramArrayList != null) {
-        aeys.a(this.a, aeys.a(this.a) + paramArrayList.size());
-      }
-      this.a.d();
-    }
-  }
-  
-  public void onSuspiciousSendReadReport(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousSendReadReport " + paramBoolean + " " + paramInt);
-    }
+    paramView = new Intent();
+    paramView.putExtra("is_from_conversation", true);
+    paramView.putExtra("bookid", aeys.a(this.a));
+    paramView.putExtra("book_new_id", aeys.b(this.a));
+    Intent localIntent = new Intent();
+    localIntent.putExtras(paramView);
+    localIntent.putExtra("readtype", "15");
+    localIntent.setClassName(aeys.a(this.a), "cooperation.qqreader.QRBridgeActivity");
+    localIntent.addFlags(268435456);
+    aeys.a(this.a).startActivity(localIntent);
   }
 }
 

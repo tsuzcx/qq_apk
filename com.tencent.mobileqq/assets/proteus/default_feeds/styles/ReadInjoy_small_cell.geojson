@@ -22,7 +22,8 @@
                 "jump_type": "$jump_type",
                 "partner_id": "$partner_id",
                 "feeds_content": "$feeds_content",
-                "feeds_type": "$feeds_type"
+                "feeds_type": "$feeds_type",
+                "novel_corner_mark": "$novel_corner_mark"
             }
         },
         "subviews":[
@@ -79,7 +80,7 @@
                                 "margin_top":"10",
                                 "height":{
                                     "type":"relative",
-                                    "value":"15"
+                                    "value":"18"
                                 },
                                 "width":{
                                     "type":"relative",
@@ -94,7 +95,7 @@
                                         "margin_left":"2",
                                         "height":{
                                             "type":"relative",
-                                            "value":"30"
+                                            "value":"18"
                                         },
                                         "width":{
                                             "type":"relative",
@@ -105,6 +106,7 @@
                                                 "view_type":"UILabel",
                                                 "view_id":"id_info_status",
                                                 "margin_left":"6",
+                                                "align_parent_center_vertical": "YES",
                                                 "height":{
                                                     "type":"relative",
                                                     "value":"15"
@@ -125,6 +127,7 @@
                                             {
                                                 "view_type":"ReadInjoyAsynImageView",
                                                 "view_id":"id_icon_awesome",
+                                                 "align_parent_center_vertical": "YES",
                                                 "margin_left":"6",
                                                 "height":{
                                                     "type":"relative",
@@ -161,6 +164,7 @@
                                             {
                                                 "view_type":"UILabel",
                                                 "view_id":"id_info_source",
+                                                 "align_parent_center_vertical": "YES",
                                                 "margin_left":"6",
                                                 "height":{
                                                     "type":"relative",
@@ -176,30 +180,32 @@
                                                     "setNumberOfLinesString:":"1"
                                                 }
                                             },
+
                                             {
-                                                   "view_type": "UIImageView",
-                                                   "view_id": "id_img_family_icon",
-                                                   "align_parent_center_vertical": "YES",
-                                                   "right_of_view":"id_info_source",
-                                                   "margin_left":"5.5",
-                                                    "height": {
-                                                              "type": "absolutely",
-                                                              "value":"18"
+                                                  "view_type": "UIImageView",
+                                                  "view_id": "id_img_family_icon",
+                                                  "align_parent_center_vertical": "YES",
+                                                  "right_of_view":"id_info_source",
+                                                  "margin_left":"5.5",
+                                                   "height": {
+                                                             "type": "relative",
+                                                             "value":"18"
+                                                   },
+                                                   "width": {
+                                                             "type": "relative",
+                                                             "value":"84.5"
                                                     },
-                                                    "width": {
-                                                              "type": "absolutely",
-                                                              "value":"84.5"
-                                                     },
-                                                     "attributes": {
-                                                               "loadImageWithPath:": "$family_icon_url",
+                                                    "attributes": {
+                                                              "loadImageWithPath:": "$family_icon_url",
                                                                "setWHRate:widthBenchmark:": ["$family_icon_wh_rate", "NO"],
-                                                               "setAttatchInfo:":"$family_jump_schema"
-                                                    },
-                                                    "event_type":"cmd_family_comment_icon_click"
-                                             },
+                                                              "setAttatchInfo:":"$family_jump_schema"
+                                                   },
+                                                   "event_type":"cmd_family_comment_icon_click"
+                                            },
                                             {
                                                 "view_type": "UILabel",
                                                 "view_id": "id_comment_num",
+                                                 "align_parent_center_vertical": "YES",
                                                 "margin_left": "6",
                                                 "height": {
                                                     "type": "relative",
@@ -474,7 +480,7 @@
                                     "attributes":{
                                         "setBorderWidthString:": "0.5",
                                         "setCornerRadiusString:": "3.0",
-                                    	"setBorderColorString:": "#D9D9D9",
+                                        "setBorderColorString:": "#D9D9D9",
                                         "align_parent_center_vertical:":"YES",
                                         "setTextAlignmentString:":"1",
                                         "setTextColorString:":"#262626",

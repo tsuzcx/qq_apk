@@ -3,18 +3,18 @@ package com.tencent.biz.qqstory.album;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
-import mok;
-import scq;
-import sct;
+import mzj;
+import spm;
+import spp;
 
 public class StoryAlbumResourceDownloader$3
   implements Runnable
 {
-  public StoryAlbumResourceDownloader$3(scq paramscq) {}
+  public StoryAlbumResourceDownloader$3(spm paramspm) {}
   
   public void run()
   {
-    new mok(QQStoryContext.a().getApp().getBaseContext(), "http://3408?_bid=3408", new sct(this)).a();
+    new mzj(QQStoryContext.a().getApp().getBaseContext(), "http://3408?_bid=3408", new spp(this)).a();
   }
 }
 

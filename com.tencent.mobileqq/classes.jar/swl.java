@@ -1,47 +1,32 @@
-import android.support.annotation.Nullable;
-import com.tencent.map.geolocation.TencentLocation;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-public abstract class swl
+public class swl
 {
-  public long a;
-  protected AtomicBoolean a;
-  public boolean a;
-  public long b;
-  public boolean b;
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
   
-  public swl()
+  public swl(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a()
+  public int a()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
+  public String a()
   {
-    this.jdField_a_of_type_Boolean = false;
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public void a(String paramString)
   {
-    long l2 = System.currentTimeMillis();
-    long l1 = this.b - this.jdField_a_of_type_Long;
-    l2 -= this.b;
-    urk.c(paramString, "page network respond times " + l1);
-    urk.c(paramString, "page db times " + l2);
-  }
-  
-  public void b()
-  {
-    this.b = System.currentTimeMillis();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

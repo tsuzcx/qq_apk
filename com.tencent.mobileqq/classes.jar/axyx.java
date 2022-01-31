@@ -1,35 +1,52 @@
-public class axyx
-  extends axzi
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.io.File;
+
+class axyx
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b = false;
-  public String c;
-  public String d;
+  axyx(axyw paramaxyw) {}
   
-  public axyx()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append(" mResid:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" isExist:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" blockSize:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" netChg:");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(" startOffset:").append(this.jdField_a_of_type_Long);
-    return localStringBuilder.toString();
+    if (TextUtils.isEmpty(this.a.W)) {
+      return;
+    }
+    for (;;)
+    {
+      String str;
+      try
+      {
+        str = aytb.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.V);
+        if (TextUtils.isEmpty(str))
+        {
+          this.a.a();
+          this.a.a(this.a.W, paramView);
+          axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005C9B", "0X8005C9B", 0, 1, 0, this.a.W, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.U, this.a.V);
+          return;
+        }
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+      if (new File(str).exists())
+      {
+        if (this.a.jdField_a_of_type_Boolean) {
+          this.a.d();
+        } else {
+          this.a.c();
+        }
+      }
+      else
+      {
+        this.a.a();
+        this.a.a(this.a.W, paramView);
+      }
+    }
   }
 }
 

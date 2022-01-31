@@ -1,29 +1,16 @@
-public abstract class apao
+public abstract interface apao
 {
-  private apan a;
+  public abstract void a(int paramInt, String paramString);
   
-  public static String a(String paramString1, String paramString2, String paramString3)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append("-");
-    localStringBuilder.append(paramString2);
-    localStringBuilder.append("-");
-    localStringBuilder.append(paramString3);
-    return localStringBuilder.toString();
-  }
+  public abstract void a(int paramInt, String paramString1, String paramString2);
   
-  public apan a()
-  {
-    return this.a;
-  }
+  public abstract void a(long paramLong, String paramString);
   
-  public abstract String a();
+  public abstract void a(bbmg parambbmg);
   
-  public void a(apan paramapan)
-  {
-    this.a = paramapan;
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void b();
 }
 
 

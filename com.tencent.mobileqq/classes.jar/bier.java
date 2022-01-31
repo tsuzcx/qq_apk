@@ -1,94 +1,57 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.weiyun.transmission.utils.handler.ReleaseLooperHandler;
 
 public class bier
-  extends bipf
+  implements Handler.Callback
 {
-  private final List<bion> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final ConcurrentLinkedQueue<bion> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private boolean jdField_a_of_type_Boolean = true;
+  private biem jdField_a_of_type_Biem;
+  private final biet jdField_a_of_type_Biet;
+  private final ReleaseLooperHandler jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler;
   
-  public int a()
+  public bier(biet parambiet, biem parambiem, ReleaseLooperHandler paramReleaseLooperHandler)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    this.jdField_a_of_type_Biet = parambiet;
+    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler = paramReleaseLooperHandler;
+    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler.addCallback(this);
+    this.jdField_a_of_type_Biem = parambiem;
   }
   
-  public bion a(int paramInt)
+  private void b(bidv parambidv, int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (bion)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public bion a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) {
-      a(((bhkc)bhfm.a(4)).a());
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-    while (localIterator.hasNext())
+    if (parambidv == null) {}
+    long l;
+    String str;
+    do
     {
-      bion localbion = (bion)localIterator.next();
-      if ((localbion != null) && (TextUtils.equals(paramString, localbion.jdField_a_of_type_JavaLangString))) {
-        return localbion;
-      }
-    }
-    return null;
+      return;
+      l = parambidv.a();
+      str = parambidv.a().a;
+    } while (parambidv.d());
+    this.jdField_a_of_type_Biem.a(parambidv.a().a(), cooperation.weiyun.sdk.download.DownloadType.values()[paramInt], new bies(this, str, l, parambidv, paramInt));
   }
   
-  public void a(bion parambion)
+  public void a(bidv parambidv, int paramInt)
   {
-    urk.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + parambion);
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(parambion);
-    if (i >= 0)
+    if (parambidv == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler.sendMessage(Message.obtain(null, 21, paramInt, 0, parambidv));
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 21)
     {
-      this.jdField_a_of_type_JavaUtilList.set(i, parambion);
-      a(i);
+      b((bidv)paramMessage.obj, paramMessage.arg1);
+      return true;
     }
-  }
-  
-  public void a(Collection<bion> paramCollection)
-  {
-    urk.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
-    try
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-      this.jdField_a_of_type_JavaUtilList.clear();
-      paramCollection = paramCollection.iterator();
-      while (paramCollection.hasNext())
-      {
-        bion localbion = (bion)paramCollection.next();
-        if (localbion != null)
-        {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(localbion);
-          if (localbion.jdField_a_of_type_Int == 0) {
-            this.jdField_a_of_type_JavaUtilList.add(localbion);
-          }
-        }
-      }
-    }
-    finally {}
-    a();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bier
  * JD-Core Version:    0.7.0.1
  */

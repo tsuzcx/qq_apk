@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/fce" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center" android:id="@id/fyi" android:layout_width="32.0dip" android:layout_height="25.0dip" android:src="@drawable/etj" android:scaleType="centerInside" android:layout_weight="1.0" />
+        <TextView android:textSize="36.0dip" android:textColor="#ff00cafc" android:layout_gravity="center" android:id="@id/jbm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+    </FrameLayout>
+    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center" android:id="@id/fyv" android:layout_width="32.0dip" android:layout_height="25.0dip" android:src="@drawable/etj" android:scaleType="centerInside" android:layout_weight="1.0" />
+        <TextView android:textSize="36.0dip" android:textColor="#ff00cafc" android:layout_gravity="center" android:id="@id/jbo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+    </FrameLayout>
+    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center" android:id="@id/fyu" android:layout_width="32.0dip" android:layout_height="25.0dip" android:src="@drawable/etj" android:scaleType="centerInside" android:layout_weight="1.0" />
+        <TextView android:textSize="36.0dip" android:textColor="#ff00cafc" android:layout_gravity="center" android:id="@id/jbn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+    </FrameLayout>
+    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center" android:id="@id/fy_" android:layout_width="32.0dip" android:layout_height="25.0dip" android:src="@drawable/etj" android:scaleType="centerInside" android:layout_weight="1.0" />
+        <TextView android:textSize="36.0dip" android:textColor="#ff00cafc" android:layout_gravity="center" android:id="@id/j_y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+    </FrameLayout>
+</LinearLayout>

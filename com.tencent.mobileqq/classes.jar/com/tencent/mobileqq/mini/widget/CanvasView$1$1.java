@@ -67,9 +67,9 @@ class CanvasView$1$1
             this.this$1.this$0.callbackJsEventOK(this.this$1.val$event, (JSONObject)localObject2, this.this$1.val$callBackId);
             return;
           }
-          catch (Exception localException)
+          catch (Throwable localThrowable)
           {
-            QLog.e(CanvasView.access$100(), 2, "getImageData failed: " + Log.getStackTraceString(localException));
+            QLog.e(CanvasView.access$100(), 2, "getImageData failed: " + Log.getStackTraceString(localThrowable));
             this.this$1.this$0.callbackJsEventFail(this.this$1.val$event, null, this.this$1.val$callBackId);
             return;
           }

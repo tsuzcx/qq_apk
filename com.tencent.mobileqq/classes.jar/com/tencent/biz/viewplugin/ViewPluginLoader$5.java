@@ -2,18 +2,18 @@ package com.tencent.biz.viewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import batl;
-import batm;
-import batr;
+import bbwf;
+import bbwg;
+import bbwl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import org.json.JSONObject;
-import xai;
+import xji;
 
 public class ViewPluginLoader$5
   implements Runnable
 {
-  public ViewPluginLoader$5(xai paramxai, JSONObject paramJSONObject, String paramString, batl parambatl) {}
+  public ViewPluginLoader$5(xji paramxji, JSONObject paramJSONObject, String paramString, bbwf parambbwf) {}
   
   public void run()
   {
@@ -26,9 +26,9 @@ public class ViewPluginLoader$5
       return;
       Object localObject = new File(this.jdField_a_of_type_JavaLangString);
       Bundle localBundle = new Bundle();
-      localObject = new batm(str, (File)localObject);
-      ((batm)localObject).b = 3;
-      this.this$0.a().a((batm)localObject, this.jdField_a_of_type_Batl, localBundle);
+      localObject = new bbwg(str, (File)localObject);
+      ((bbwg)localObject).b = 3;
+      this.this$0.a().a((bbwg)localObject, this.jdField_a_of_type_Bbwf, localBundle);
     } while (!QLog.isColorLevel());
     QLog.d("ViewPluginLoader", 2, "start Download url = " + str);
   }

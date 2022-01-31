@@ -1,113 +1,31 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class asze
-  extends aszt
+final class asze
+  implements DialogInterface.OnClickListener
 {
-  public asze(NearbyMomentFragment paramNearbyMomentFragment) {}
+  asze(String paramString, int paramInt, Activity paramActivity) {}
   
-  public void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if (paramString != null)
-    {
-      NearbyMomentFragment.a(this.a).a().remove(paramString);
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-      NearbyMomentFragment.b(this.a, paramString.c);
+    paramDialogInterface = this.jdField_a_of_type_JavaLangString + "&from=" + this.jdField_a_of_type_Int;
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramDialogInterface);
+    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.nearby.tribeAppDownload", 2, "open download page, url=" + paramDialogInterface);
     }
-    if (NearbyMomentFragment.a(this.a).a().size() == 0) {
-      this.a.a(1);
+    if (this.jdField_a_of_type_Int == 1) {
+      axqw.b(null, "dc00899", "grp_lbs", "", "app_down", "msg_down", 0, 0, "", "", "", "");
     }
-    NearbyMomentFragment.a(this.a).remove(paramString);
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    atar localatar = NearbyMomentFragment.a(this.a, paramString);
-    if (localatar != null)
-    {
-      if (localatar.g > 0) {
-        localatar.g -= 1;
-      }
-      if ((localatar.jdField_a_of_type_JavaUtilList != null) && (localatar.jdField_a_of_type_JavaUtilList.size() > 0))
-      {
-        Iterator localIterator = localatar.jdField_a_of_type_JavaUtilList.iterator();
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          paramString = (atap)localIterator.next();
-        } while (paramString.a != paramLong);
-      }
-    }
-    for (;;)
-    {
-      if (paramString != null) {
-        localatar.jdField_a_of_type_JavaUtilList.remove(paramString);
-      }
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
+    while (this.jdField_a_of_type_Int != 2) {
       return;
-      paramString = null;
     }
-  }
-  
-  public void b(String paramString)
-  {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if (paramString != null)
-    {
-      paramString.g += 1;
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-    }
-  }
-  
-  public void b(String paramString, long paramLong)
-  {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if (paramString != null)
-    {
-      if (!paramString.jdField_a_of_type_Boolean)
-      {
-        paramString.jdField_a_of_type_Boolean = true;
-        paramString.f += 1;
-      }
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-    }
-  }
-  
-  public void c(String paramString)
-  {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if ((paramString instanceof atau))
-    {
-      paramString = (atau)paramString;
-      paramString.e += 1;
-    }
-    for (;;)
-    {
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-      return;
-      if ((paramString instanceof atao))
-      {
-        paramString = (atao)paramString;
-        paramString.e += 1;
-      }
-    }
-  }
-  
-  public void c(String paramString, long paramLong)
-  {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if ((paramString != null) && (paramString.jdField_a_of_type_Boolean))
-    {
-      paramString.jdField_a_of_type_Boolean = false;
-      if (paramString.f > 0) {
-        paramString.f -= 1;
-      }
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-    }
+    axqw.b(null, "dc00899", "grp_lbs", "", "app_down", "pic_down", 0, 0, "", "", "", "");
   }
 }
 

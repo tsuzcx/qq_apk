@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.multimsg;
 
-import atmo;
+import aukm;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="uin,uniseq")
 public class MultiMsgNick
-  extends atmo
+  extends aukm
 {
   public String nick;
   public String uin;

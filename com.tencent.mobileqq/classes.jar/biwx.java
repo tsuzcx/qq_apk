@@ -1,14 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Bitmap;
+import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment;
 
-class biwx
-  implements ValueAnimator.AnimatorUpdateListener
+public class biwx
+  implements biyk
 {
-  biwx(biwt parambiwt) {}
+  public biwx(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt) {}
+  
+  public void a(Bitmap paramBitmap)
   {
-    this.a.invalidateSelf();
+    AETakeFacePhotoPreviewFragment.a(biqf.a(this.a.getActivity(), paramBitmap));
   }
 }
 

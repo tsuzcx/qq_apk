@@ -1,49 +1,34 @@
 import android.content.Context;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.ViewConfiguration;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.graphics.drawable.Drawable;
+import android.os.SystemClock;
+import android.view.View;
 
 public class ahhi
-  extends GestureDetector.SimpleOnGestureListener
+  extends View
 {
-  float jdField_a_of_type_Float;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public ahhi(FlowCameraActivity2 paramFlowCameraActivity2, Context paramContext)
+  public ahhi(ahhd paramahhd, Context paramContext, View paramView, Drawable paramDrawable)
   {
-    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
+    super(paramContext);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    setBackgroundDrawable(paramDrawable);
   }
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void invalidateDrawable(Drawable paramDrawable)
   {
-    return super.onDown(paramMotionEvent);
+    this.jdField_a_of_type_AndroidViewView.invalidate();
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
   {
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    long l = SystemClock.uptimeMillis();
+    this.jdField_a_of_type_AndroidViewView.postDelayed(paramRunnable, paramLong - l);
   }
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
   {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.i) || (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.j)) {
-      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    float f = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    if (Math.abs(f) > this.jdField_a_of_type_Float)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a(f);
-      return true;
-    }
-    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return super.onSingleTapUp(paramMotionEvent);
+    this.jdField_a_of_type_AndroidViewView.removeCallbacks(paramRunnable);
   }
 }
 

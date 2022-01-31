@@ -1,6 +1,9 @@
-public abstract interface atxd
+public class atxd
 {
-  public abstract void a(int paramInt, String paramString);
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 10019) || (paramInt == 10020) || (paramInt == 10021) || (paramInt == 10022) || (paramInt == 10023) || (paramInt == 10024) || (paramInt == 10025) || (paramInt == 10026);
+  }
 }
 
 

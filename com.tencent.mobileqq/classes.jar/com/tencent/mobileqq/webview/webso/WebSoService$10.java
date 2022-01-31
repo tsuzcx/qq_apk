@@ -5,36 +5,36 @@ import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bbdn;
-import bbdp;
-import bbee;
+import bcgn;
+import bcgp;
+import bche;
 import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppRuntime;
 
 final class WebSoService$10
   implements Runnable
 {
-  WebSoService$10(bbdn parambbdn, Uri paramUri, String paramString1, String paramString2, WebSoService.WebSoState paramWebSoState) {}
+  WebSoService$10(bcgn parambcgn, Uri paramUri, String paramString1, String paramString2, WebSoService.WebSoState paramWebSoState) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
     Object localObject2 = "";
     Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Bbdn != null)
+    if (this.jdField_a_of_type_Bcgn != null)
     {
       localObject1 = localObject2;
-      if (this.jdField_a_of_type_Bbdn.d != null)
+      if (this.jdField_a_of_type_Bcgn.d != null)
       {
-        bbee.a(this.jdField_a_of_type_Bbdn.d.getBytes(), bbee.b(this.jdField_a_of_type_AndroidNetUri));
-        localObject1 = bbdp.a(this.jdField_a_of_type_Bbdn.d);
+        bche.a(this.jdField_a_of_type_Bcgn.d.getBytes(), bche.b(this.jdField_a_of_type_AndroidNetUri));
+        localObject1 = bcgp.a(this.jdField_a_of_type_Bcgn.d);
       }
     }
     if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidNetUri != null))
     {
       localObject2 = WebSoService.a().edit();
       String str1 = String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
-      String str2 = bbee.a(this.jdField_a_of_type_AndroidNetUri);
+      String str2 = bche.a(this.jdField_a_of_type_AndroidNetUri);
       ((SharedPreferences.Editor)localObject2).putString("eTag_" + str1 + str2, this.jdField_a_of_type_JavaLangString);
       ((SharedPreferences.Editor)localObject2).putString("pageVersion_" + str1 + str2, this.b);
       ((SharedPreferences.Editor)localObject2).putString("htmlSha1_" + str1 + str2, (String)localObject1);

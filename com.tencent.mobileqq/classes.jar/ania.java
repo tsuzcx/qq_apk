@@ -1,27 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel.17.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.AutoReplyText;
 
-public class ania
-  extends anfw
+public final class ania
+  implements Parcelable.Creator<AutoReplyText>
 {
-  public ania(EmoticonMainPanel paramEmoticonMainPanel) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  public AutoReplyText a(Parcel paramParcel)
   {
-    if ((paramEmoticonPackage == null) || (TextUtils.isEmpty(paramEmoticonPackage.epId))) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonMainPanel", 2, "onPackageEnd resultCode = " + paramInt + ",ep = " + paramEmoticonPackage);
-      }
-    } while (this.a.n);
-    ThreadManager.getUIHandler().post(new EmoticonMainPanel.17.1(this, paramEmoticonPackage, paramInt));
+    return new AutoReplyText(paramParcel);
+  }
+  
+  public AutoReplyText[] a(int paramInt)
+  {
+    return new AutoReplyText[paramInt];
   }
 }
 

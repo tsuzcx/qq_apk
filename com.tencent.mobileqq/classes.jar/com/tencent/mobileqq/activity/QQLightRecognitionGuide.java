@@ -19,10 +19,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import awqx;
-import bajo;
-import baop;
-import bhok;
+import axqw;
+import bbkv;
+import bbql;
+import bjjc;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngImage;
@@ -40,17 +40,17 @@ public class QQLightRecognitionGuide
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   private IphoneTitleBarActivity jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity;
-  private final String jdField_a_of_type_JavaLangString = bhok.a().getAbsolutePath() + "/qq_recognition_guide/";
+  private final String jdField_a_of_type_JavaLangString = bjjc.a().getAbsolutePath() + "/qq_recognition_guide/";
   private final String b = "qq_pic_recognition_guide.png";
   
   private void a(String paramString)
   {
     String str = this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getIntent().getStringExtra("method");
     if ("setFaceData".equals(str)) {
-      awqx.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "1", "", "", "");
+      axqw.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "1", "", "", "");
     }
     if ("loginVerify".equals(str)) {
-      awqx.a(null, "dc00898", "", "", paramString, paramString, 0, 0, "2", "", "", "");
+      axqw.a(null, "dc00898", "", "", paramString, paramString, 0, 0, "2", "", "", "");
     }
   }
   
@@ -60,29 +60,23 @@ public class QQLightRecognitionGuide
     BaseApplicationImpl.getApplication().getSharedPreferences(paramString, 4).edit().putBoolean("has_show_guide", paramBoolean).apply();
   }
   
-  public static boolean a(String paramString)
-  {
-    paramString = "light_recognition_guide" + paramString;
-    return BaseApplicationImpl.getApplication().getSharedPreferences(paramString, 4).getBoolean("has_show_guide", false);
-  }
-  
   private void b(String paramString)
   {
     File localFile = new File(this.jdField_a_of_type_JavaLangString + this.b);
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getAppInterface();
     if (((localObject == null) || (!((AppInterface)localObject).isLogin())) && (!a())) {}
-    for (paramString = getResources().getDrawable(2130844776);; paramString = baop.a(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getAppRuntime(), localFile.getAbsolutePath(), paramString, (Drawable)localObject, new int[] { 25 }, "-lightRecognition-", null))
+    for (paramString = getResources().getDrawable(2130844856);; paramString = bbql.a(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getAppRuntime(), localFile.getAbsolutePath(), paramString, (Drawable)localObject, new int[] { 25 }, "-lightRecognition-", null))
     {
       this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramString);
       ApngImage.playByTag(25);
       return;
-      localObject = super.getResources().getDrawable(2130844775);
+      localObject = super.getResources().getDrawable(2130844855);
     }
   }
   
   public boolean a()
   {
-    String str = bajo.a();
+    String str = bbkv.a();
     return (!TextUtils.isEmpty(str)) && (new File(str + "libAPNG_release_813.so").exists());
   }
   
@@ -97,7 +91,7 @@ public class QQLightRecognitionGuide
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (paramInt1 == 1)
+    if (paramInt1 == 22)
     {
       QLog.d("QQLightRecognitionGuide", 1, "onActivity requestCode == AuthDevActivity.REQ_IDENTIFICATION, resultCode is : " + paramInt2);
       if ((paramInt2 == -1) && (this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity != null))
@@ -116,7 +110,7 @@ public class QQLightRecognitionGuide
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131305124)
+    if (paramView.getId() == 2131370797)
     {
       a("0X800A85D");
       paramView = (FaceDetectForThirdPartyManager.AppConf)getArguments().getSerializable("FaceRecognition.AppConf");
@@ -135,7 +129,7 @@ public class QQLightRecognitionGuide
         if (paramView != null) {
           localIntent2.putExtra("key_identification_type", paramView.mode);
         }
-        startActivityForResult(localIntent2, 1);
+        startActivityForResult(localIntent2, 22);
       }
     }
     else
@@ -152,9 +146,9 @@ public class QQLightRecognitionGuide
   public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     a(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getCurrentAccountUin(), true);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131495595, paramViewGroup, false);
-    paramLayoutInflater.findViewById(2131305124).setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramLayoutInflater.findViewById(2131309152));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561186, paramViewGroup, false);
+    paramLayoutInflater.findViewById(2131370797).setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramLayoutInflater.findViewById(2131374896));
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(120);
     a("0X800A85C");
     return paramLayoutInflater;

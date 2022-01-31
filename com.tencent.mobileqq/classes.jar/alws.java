@@ -1,118 +1,166 @@
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Set;
+import tencent.im.oidb.cmd0x95a.cmd0x95a.GetArActivityRedReq;
+import tencent.im.oidb.cmd0x95a.cmd0x95a.GetArActivityRedRsp;
+import tencent.im.oidb.cmd0x95a.cmd0x95a.ReqBody;
+import tencent.im.oidb.cmd0x95a.cmd0x95a.RspBody;
+import tencent.im.oidb.cmd0x95a.cmd0x95a.UpdateArCountRsp;
 
 public class alws
-  extends bblf
+  extends ajtd
 {
-  private alws(CountrySelectActivity paramCountrySelectActivity) {}
-  
-  public int a()
+  public alws(AppInterface paramAppInterface)
   {
-    return 2131493803;
+    super(paramAppInterface);
   }
   
-  public void a(View paramView, int paramInt)
+  public void a(long paramLong1, long paramLong2)
   {
-    paramView = (TextView)paramView;
-    Object localObject = getItem(paramInt);
-    if ((localObject instanceof alwt)) {
-      paramView.setText(((alwt)localObject).jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArMapHandler", 2, "reqActRedDotInfo,uin :" + paramLong1 + ",actID :" + paramLong2);
     }
-    while (!(localObject instanceof BaseAddress)) {
-      return;
-    }
-    paramView.setText(((BaseAddress)localObject).pinyinFirst);
+    Object localObject = new cmd0x95a.GetArActivityRedReq();
+    ((cmd0x95a.GetArActivityRedReq)localObject).uint64_uin.set(paramLong1);
+    ((cmd0x95a.GetArActivityRedReq)localObject).uint64_client_activity_id.set(paramLong2);
+    cmd0x95a.ReqBody localReqBody = new cmd0x95a.ReqBody();
+    localReqBody.msg_get_ar_activity_red_req.set((MessageMicro)localObject);
+    localObject = makeOIDBPkg("OidbSvc.0x95a", 2394, 5, localReqBody.toByteArray());
+    ((ToServiceMsg)localObject).extraData.putInt("subcmd", 5);
+    sendPbReq((ToServiceMsg)localObject);
   }
   
-  public boolean a(int paramInt)
+  void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    return getItemViewType(paramInt) == 0;
-  }
-  
-  public int getCount()
-  {
-    return this.a.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if ((this.a.jdField_a_of_type_JavaUtilList.get(paramInt) instanceof alwt)) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (getItemViewType(paramInt) == 0)
+    int i = -1;
+    boolean bool;
+    int j;
+    Object localObject;
+    if (paramFromServiceMsg == null)
     {
-      if (paramView != null) {
-        break label284;
+      bool = false;
+      j = paramToServiceMsg.extraData.getInt("subcmd", -1);
+      localObject = "";
+      if (bool)
+      {
+        localObject = new cmd0x95a.RspBody();
+        i = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
+        paramFromServiceMsg = paramFromServiceMsg.extraData.getString("str_error_msg");
+        if (i == 0) {
+          switch (j)
+          {
+          }
+        }
       }
-      paramView = this.a.getLayoutInflater().inflate(a(), null);
     }
-    label273:
-    label284:
     for (;;)
     {
-      ((TextView)paramView).setText(((alwt)getItem(paramInt)).jdField_a_of_type_JavaLangString);
-      return paramView;
-      paramViewGroup = paramView;
-      if (paramView == null)
-      {
-        paramViewGroup = this.a.getLayoutInflater().inflate(2131493804, null);
-        paramView = new alwu(null);
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131299234));
-        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131298631));
-        paramViewGroup.findViewById(2131299233).setVisibility(8);
-        paramViewGroup.setTag(paramView);
-        paramViewGroup.setOnClickListener(this.a);
+      localObject = paramFromServiceMsg;
+      if (QLog.isColorLevel()) {
+        QLog.d("ArMapHandler", 2, "handle0x95a errMsg:" + (String)localObject + ",result:" + i + ",isSuc:" + bool + ",subCmd:" + j);
       }
-      alwu localalwu = (alwu)paramViewGroup.getTag();
-      BaseAddress localBaseAddress = (BaseAddress)getItem(paramInt);
-      localalwu.jdField_a_of_type_AndroidWidgetTextView.setText(localBaseAddress.name);
-      if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_JavaLangString.equals(localBaseAddress.code))) {
-        localalwu.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      }
-      for (;;)
+      return;
+      bool = paramFromServiceMsg.isSuccess();
+      break;
+      if (((cmd0x95a.RspBody)localObject).msg_update_ar_count_rsp.has())
       {
-        localalwu.jdField_a_of_type_JavaLangString = localBaseAddress.code;
-        paramView = paramViewGroup;
-        if (!CountrySelectActivity.jdField_a_of_type_Boolean) {
+        paramToServiceMsg = (cmd0x95a.UpdateArCountRsp)((cmd0x95a.RspBody)localObject).msg_update_ar_count_rsp.get();
+        if (paramToServiceMsg.uint64_uin.has()) {}
+        for (long l = paramToServiceMsg.uint64_uin.get();; l = -1L)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ArMapHandler", 2, "handle0x95a report scanQRCode result,uin = " + l);
+          }
+          localObject = paramFromServiceMsg;
           break;
         }
-        if (localalwu.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0) {
-          break label273;
-        }
-        paramViewGroup.setContentDescription(localBaseAddress.name + ajjy.a(2131636821));
-        return paramViewGroup;
-        localalwu.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        a(paramToServiceMsg, bool, i, (cmd0x95a.RspBody)localObject);
       }
-      paramViewGroup.setContentDescription(localBaseAddress.name);
-      return paramViewGroup;
     }
   }
   
-  public int getViewTypeCount()
+  void a(ToServiceMsg paramToServiceMsg, boolean paramBoolean, int paramInt, cmd0x95a.RspBody paramRspBody)
   {
-    return 2;
+    long l2 = 0L;
+    long l1;
+    if ((paramBoolean) && (paramInt == 0) && (paramRspBody != null))
+    {
+      if (!paramRspBody.msg_get_ar_activity_red_rsp.has()) {
+        break label177;
+      }
+      paramToServiceMsg = (cmd0x95a.GetArActivityRedRsp)paramRspBody.msg_get_ar_activity_red_rsp.get();
+      if (paramToServiceMsg != null)
+      {
+        if (!paramToServiceMsg.uint64_uin.has()) {
+          break label182;
+        }
+        l1 = paramToServiceMsg.uint64_uin.get();
+        label62:
+        if (!paramToServiceMsg.uint32_red_switch.has()) {
+          break label188;
+        }
+      }
+    }
+    label177:
+    label182:
+    label188:
+    for (paramInt = paramToServiceMsg.uint32_red_switch.get();; paramInt = 0)
+    {
+      if (paramToServiceMsg.uint64_server_activity_id.has()) {
+        l2 = paramToServiceMsg.uint64_server_activity_id.get();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ArMapHandler", 2, "handleGetARActRedDotInfo uin:" + l1 + ",redSwitch:" + paramInt + ",actId:" + l2);
+      }
+      notifyUI(20, paramBoolean, new Object[] { Integer.valueOf(paramInt), Long.valueOf(l2) });
+      return;
+      paramToServiceMsg = null;
+      break;
+      l1 = 0L;
+      break label62;
+    }
+  }
+  
+  protected boolean msgCmdFilter(String paramString)
+  {
+    if (this.allowCmdSet == null)
+    {
+      this.allowCmdSet = new HashSet();
+      this.allowCmdSet.add("OidbSvc.0x95a");
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  protected Class<? extends ajtg> observerClass()
+  {
+    return alwt.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
+    String str;
+    do
+    {
+      do
+      {
+        return;
+        str = paramFromServiceMsg.getServiceCmd();
+        if (!msgCmdFilter(str)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("ArMapHandler", 2, "onReceive, msgCmdFilter is true,cmd  = " + str);
+      return;
+    } while (!"OidbSvc.0x95a".equals(str));
+    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

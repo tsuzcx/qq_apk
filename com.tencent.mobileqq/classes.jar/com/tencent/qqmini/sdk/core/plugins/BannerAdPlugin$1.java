@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.os.Bundle;
-import bdcz;
-import bdfz;
-import bdnw;
-import bdyj;
+import begz;
+import beka;
+import besl;
+import bffp;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsBannerAdView;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -12,12 +12,12 @@ import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 class BannerAdPlugin$1
   implements Runnable
 {
-  BannerAdPlugin$1(BannerAdPlugin paramBannerAdPlugin, String paramString, bdyj parambdyj, bdfz parambdfz, Bundle paramBundle) {}
+  BannerAdPlugin$1(BannerAdPlugin paramBannerAdPlugin, String paramString, bffp parambffp, beka parambeka, Bundle paramBundle) {}
   
   public void run()
   {
     if (((AdProxy)ProxyManager.get(AdProxy.class) == null) || (BannerAdPlugin.access$000(this.this$0) == null)) {
-      bdnw.b("BannerAdPlugin", "start create, null");
+      besl.b("BannerAdPlugin", "start create, null");
     }
     do
     {
@@ -31,7 +31,7 @@ class BannerAdPlugin$1
     }
     catch (Throwable localThrowable)
     {
-      bdnw.b("BannerAdPlugin", "loadAd error", localThrowable);
+      besl.b("BannerAdPlugin", "loadAd error", localThrowable);
     }
   }
 }

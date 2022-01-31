@@ -1,221 +1,140 @@
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Build.VERSION;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import android.util.DisplayMetrics;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.biz.widgets.ElasticHorScrView;
-import com.tencent.mobileqq.utils.ShareWithPictureActionSheetBuilder.2;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.utils.SchoolTroopKeywordManager.SchoolTroopHighlightSpan.1;
+import com.tencent.qphone.base.util.QLog;
+import java.text.MessageFormat;
 
 public class baie
-  extends bahv
+  extends ClickableSpan
+  implements bfoq
 {
-  protected Bitmap a;
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final baid jdField_a_of_type_Baid;
+  private bfol jdField_a_of_type_Bfol;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public baie(Context paramContext)
+  public baie(QQAppInterface paramQQAppInterface, Context paramContext, baid parambaid)
   {
-    super(paramContext, false);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Baid = parambaid;
+    a("Grp_edu", "", "Grp_AIO", "GuideWords_Show", 0, 0);
   }
   
-  protected View a()
+  private void a()
   {
-    View localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131496826, null);
-    this.jdField_a_of_type_Baib.a((RelativeLayout)localView.findViewById(2131296596));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131296383));
-    Object localObject2;
-    Object localObject1;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (this.jdField_a_of_type_JavaLangCharSequence != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-      }
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131309901));
-      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131309902));
-      localObject2 = a();
-      if (localObject2.length <= 0) {
-        break label390;
-      }
-      localObject1 = localObject2[0];
-      label122:
-      if (!((List)localObject1).isEmpty()) {
-        break label1200;
-      }
+    if ((this.jdField_a_of_type_Bfol != null) && (this.jdField_a_of_type_Bfol.isShowing())) {
+      this.jdField_a_of_type_Bfol.dismiss();
     }
-    label147:
-    label1183:
-    label1189:
-    label1192:
-    label1195:
-    label1200:
-    for (int j = 0;; j = 1)
+    this.jdField_a_of_type_Bfol = ((bfol)bfoy.a(this.jdField_a_of_type_AndroidContentContext, null));
+    Object localObject2 = this.jdField_a_of_type_Baid.b();
+    Object localObject1 = localObject2;
+    if (((String)localObject2).length() > 10) {
+      localObject1 = ((String)localObject2).substring(0, 5) + "…" + ((String)localObject2).substring(((String)localObject2).length() - 5, ((String)localObject2).length());
+    }
+    localObject1 = MessageFormat.format(baic.a()[this.jdField_a_of_type_Baid.jdField_b_of_type_Int], new Object[] { localObject1 });
+    localObject2 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558435, null);
+    ((View)localObject2).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837560));
+    ((View)localObject2).setOnClickListener(new baif(this));
+    TextView localTextView = (TextView)((View)localObject2).findViewById(2131361927);
+    localTextView.setVisibility(0);
+    localTextView.setText((CharSequence)localObject1);
+    localTextView.setContentDescription((CharSequence)localObject1);
+    localTextView.setGravity(17);
+    localTextView.setPadding(vzo.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), 0, vzo.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), 0);
+    this.jdField_a_of_type_Bfol.b((View)localObject2);
+    this.jdField_a_of_type_Bfol.c(baic.b()[this.jdField_a_of_type_Baid.jdField_b_of_type_Int]);
+    this.jdField_a_of_type_Bfol.d(ajyc.a(2131713565));
+    this.jdField_a_of_type_Bfol.a(this);
+    this.jdField_a_of_type_Bfol.show();
+  }
+  
+  private void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
+  {
+    ThreadManager.excute(new SchoolTroopKeywordManager.SchoolTroopHighlightSpan.1(this, paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2), 32, null, true);
+  }
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    Object localObject;
+    bali localbali;
+    if (paramInt == 0)
     {
-      if (localObject2.length > 1)
-      {
-        localObject2 = localObject2[1];
-        if (!((List)localObject2).isEmpty()) {
-          break label1195;
-        }
+      localObject = null;
+      localbali = bali.a();
+      if (this.jdField_a_of_type_Baid.jdField_b_of_type_Int != 1) {
+        break label201;
       }
-      for (int k = 0;; k = 1)
+      paramView = localbali.a("troop_homework_create_notice");
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(paramView))
       {
-        Object localObject3 = new TextPaint();
-        ((TextPaint)localObject3).setTextSize(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131167716));
-        Object localObject4 = new StaticLayout(a((TextPaint)localObject3, this.e, a((List)localObject1), 5), (TextPaint)localObject3, this.e, Layout.Alignment.ALIGN_CENTER, 1.0F, this.g, true);
-        StaticLayout localStaticLayout = new StaticLayout(a((TextPaint)localObject3, this.e, a((List)localObject2), 5), (TextPaint)localObject3, this.e, Layout.Alignment.ALIGN_CENTER, 1.0F, this.g, true);
-        localObject3 = localStaticLayout;
-        if (((StaticLayout)localObject4).getHeight() >= localStaticLayout.getHeight()) {
-          localObject3 = localObject4;
+        localObject = new balj();
+        ((balj)localObject).a = this.jdField_a_of_type_Baid.a;
+        ((balj)localObject).c = "aio_keyword";
+        ((balj)localObject).h = this.jdField_a_of_type_Baid.jdField_b_of_type_JavaLangString;
+        ((balj)localObject).i = this.jdField_a_of_type_Baid.b();
+        paramView = localbali.a(paramView, (balj)localObject);
+        if (QLog.isDevelopLevel()) {
+          QLog.i(baic.a, 2, "do action '" + this.jdField_a_of_type_Baid.jdField_b_of_type_Int + "', open url: " + paramView);
         }
-        int m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelOffset(2131165596);
-        int i;
-        if (j != 0)
+        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", paramView);
+        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      }
+      a("Grp_edu", "", "Grp_AIO", "GuideActionsheet_Clk", 0, 0);
+      if (this.jdField_a_of_type_Bfol != null) {
+        this.jdField_a_of_type_Bfol.dismiss();
+      }
+      return;
+      label201:
+      if (this.jdField_a_of_type_Baid.jdField_b_of_type_Int == 2)
+      {
+        paramView = localbali.a("troop_create_homework");
+      }
+      else
+      {
+        paramView = (View)localObject;
+        if (QLog.isColorLevel())
         {
-          this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)localView.findViewById(2131301556));
-          if (Build.VERSION.SDK_INT >= 9) {
-            this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setOverScrollMode(2);
-          }
-          localObject4 = ((List)localObject1).iterator();
-          i = 0;
-          label350:
-          if (((Iterator)localObject4).hasNext())
-          {
-            if (((bahx)((Iterator)localObject4).next()).d != 0) {
-              break label1192;
-            }
-            i += 1;
-          }
-        }
-        for (;;)
-        {
-          break label350;
-          e();
-          break;
-          localObject1 = new ArrayList(0);
-          break label122;
-          localObject2 = new ArrayList(0);
-          break label147;
-          int n = this.d + a() + this.d;
-          this.jdField_a_of_type_AndroidWidgetGridView.setColumnWidth(n);
-          this.jdField_a_of_type_AndroidWidgetGridView.setNumColumns(i);
-          localObject4 = this.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams();
-          this.jdField_a_of_type_AndroidWidgetGridView.setPadding(this.h, this.jdField_a_of_type_AndroidWidgetGridView.getPaddingTop(), this.h, this.jdField_a_of_type_AndroidWidgetGridView.getPaddingBottom());
-          ((ViewGroup.LayoutParams)localObject4).width = (n * i + this.h + this.h);
-          this.jdField_a_of_type_Int = ((ViewGroup.LayoutParams)localObject4).width;
-          ((ViewGroup.LayoutParams)localObject4).height = (this.c + this.f + ((StaticLayout)localObject3).getHeight() + m);
-          this.jdField_a_of_type_AndroidWidgetGridView.setLayoutParams((ViewGroup.LayoutParams)localObject4);
-          this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(new bahy(this.jdField_a_of_type_AndroidContentContext, (List)localObject1));
-          this.jdField_a_of_type_AndroidWidgetGridView.setSelector(new ColorDrawable(0));
-          this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
-          if (k != 0)
-          {
-            this.jdField_b_of_type_AndroidWidgetGridView = ((GridView)localView.findViewById(2131301557));
-            if (Build.VERSION.SDK_INT >= 9) {
-              this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setOverScrollMode(2);
-            }
-            this.jdField_b_of_type_AndroidWidgetGridView.setSmoothScrollbarEnabled(false);
-            localObject1 = ((List)localObject2).iterator();
-            i = 0;
-            if (((Iterator)localObject1).hasNext())
-            {
-              if (((bahx)((Iterator)localObject1).next()).d != 0) {
-                break label1189;
-              }
-              i += 1;
-            }
-          }
-          for (;;)
-          {
-            break;
-            n = this.d + a() + this.d;
-            this.jdField_b_of_type_AndroidWidgetGridView.setColumnWidth(n);
-            this.jdField_b_of_type_AndroidWidgetGridView.setNumColumns(i);
-            localObject1 = this.jdField_b_of_type_AndroidWidgetGridView.getLayoutParams();
-            this.jdField_b_of_type_AndroidWidgetGridView.setPadding(this.h, this.jdField_b_of_type_AndroidWidgetGridView.getPaddingTop(), this.h, this.jdField_b_of_type_AndroidWidgetGridView.getPaddingBottom());
-            ((ViewGroup.LayoutParams)localObject1).width = (n * i + this.h + this.h);
-            this.jdField_b_of_type_Int = ((ViewGroup.LayoutParams)localObject1).width;
-            ((ViewGroup.LayoutParams)localObject1).height = (this.c + this.f + ((StaticLayout)localObject3).getHeight() + m);
-            this.jdField_b_of_type_AndroidWidgetGridView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-            this.jdField_b_of_type_AndroidWidgetGridView.setNumColumns(i);
-            this.jdField_b_of_type_AndroidWidgetGridView.setAdapter(new bahy(this.jdField_a_of_type_AndroidContentContext, (List)localObject2));
-            this.jdField_b_of_type_AndroidWidgetGridView.setSelector(new ColorDrawable(0));
-            this.jdField_b_of_type_AndroidWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
-            localObject1 = (TextView)localView.findViewById(2131296376);
-            ((TextView)localObject1).setText(2131625035);
-            ((TextView)localObject1).setOnClickListener(new baif(this));
-            if (j == 0) {
-              this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setVisibility(8);
-            }
-            if (k == 0) {
-              this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setVisibility(8);
-            }
-            localView.post(new ShareWithPictureActionSheetBuilder.2(this));
-            j = bajq.a(90.0F);
-            i = j;
-            if (this.jdField_a_of_type_AndroidWidgetGridView != null) {
-              i = j + this.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().height;
-            }
-            if (this.jdField_b_of_type_AndroidWidgetGridView != null) {
-              i += this.jdField_b_of_type_AndroidWidgetGridView.getLayoutParams().height;
-            }
-            for (;;)
-            {
-              k = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
-              j = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels;
-              localObject1 = (RelativeLayout)localView.findViewById(2131310255);
-              localObject2 = ((RelativeLayout)localObject1).getLayoutParams();
-              ((ViewGroup.LayoutParams)localObject2).height = (j - i);
-              ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-              if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-              {
-                m = bajq.a(20.0F);
-                j = j - i - bajq.a(30.0F) * 2;
-                i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * j / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-                if (i <= k - m * 2) {
-                  break label1183;
-                }
-                i = k - m * 2;
-                j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * i / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-              }
-              for (;;)
-              {
-                localObject1 = (ImageView)localView.findViewById(2131310254);
-                localObject2 = (RelativeLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
-                ((RelativeLayout.LayoutParams)localObject2).height = j;
-                ((RelativeLayout.LayoutParams)localObject2).width = i;
-                ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-                ((ImageView)localObject1).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-                return localView;
-              }
-            }
-          }
+          QLog.e(baic.a, 2, "I don't know this action '" + this.jdField_a_of_type_Baid.jdField_b_of_type_Int + "'");
+          paramView = (View)localObject;
         }
       }
     }
   }
   
-  public void a(Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Boolean = true;
+    if (bbcc.a)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(baic.a, 2, "SchoolTroopHighlightSpan onCLick is invoked by LongClick misstake");
+      }
+      return;
+    }
+    if ((paramView instanceof ETTextView)) {
+      ((ETTextView)paramView).mHasClickedArkSpan = true;
+    }
+    a();
+    a("Grp_edu", "", "Grp_AIO", "GuideWords_Clk", 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baie
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,74 @@
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-final class akub
-  implements axrs
+public class akub
+  extends ajtd
 {
-  public void a(axsp paramaxsp, axsq paramaxsq)
+  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  bhvm jdField_a_of_type_Bhvm = null;
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
+  
+  public akub(QQAppInterface paramQQAppInterface)
   {
-    if ((paramaxsp == null) || (paramaxsq == null)) {}
-    while (!(paramaxsp instanceof axro)) {
-      return;
-    }
-    axro localaxro = (axro)paramaxsp;
-    localaxro.jdField_a_of_type_Long += paramaxsq.c;
-    paramaxsq.c = 0L;
-    paramaxsq = "bytes=" + localaxro.jdField_a_of_type_Long + "-";
-    localaxro.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaxsq);
-    paramaxsq = localaxro.jdField_a_of_type_JavaLangString;
-    if (paramaxsq.contains("range="))
-    {
-      paramaxsq = paramaxsq.substring(0, paramaxsq.lastIndexOf("range="));
-      localaxro.jdField_a_of_type_JavaLangString = (paramaxsq + "range=" + localaxro.jdField_a_of_type_Long);
-    }
-    QLog.i("AREngine_ARPreSoResourceDownload", 1, "IBreakDownFix. url = " + ((axro)paramaxsp).jdField_a_of_type_JavaLangString + ", offset=" + localaxro.jdField_a_of_type_Long);
+    super(paramQQAppInterface);
   }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bhvm != null)
+    {
+      this.jdField_a_of_type_Bhvm.a();
+      this.jdField_a_of_type_Bhvm = null;
+    }
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ReadInJoyHandler", 2, "readInJoyFeedsMsgNotify, isSuccess=" + paramBoolean1 + ",isNewMsgCome=" + paramBoolean2 + ",reason=" + paramInt);
+    }
+    notifyUI(1, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt) });
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyHandler", 2, "handleOnlinePushReadInJoyFeedsMsg");
+    }
+  }
+  
+  protected boolean msgCmdFilter(String paramString)
+  {
+    if (this.allowCmdSet == null) {
+      this.allowCmdSet = new HashSet();
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  protected Class<? extends ajtg> observerClass()
+  {
+    return akud.class;
+  }
+  
+  public void onDestroy()
+  {
+    a();
+    super.onDestroy();
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akub
  * JD-Core Version:    0.7.0.1
  */

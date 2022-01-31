@@ -1,33 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class ahwr
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public ahwr(SpecailCareListActivity paramSpecailCareListActivity) {}
+  public ahwr(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.leftView.clearAnimation();
-    this.a.a.clearAnimation();
-    this.a.leftView.setVisibility(4);
-    this.a.a.setVisibility(8);
-    this.a.rightViewText.setClickable(true);
-    this.a.rightViewText.setText(SpecailCareListActivity.b);
-    this.a.rightViewText.setContentDescription(ajjy.a(2131648477));
-    this.a.c = true;
+    LpReportInfo_pf00064.allReport(680, 1, 2);
+    QzoneSlideShowPreparingFragment.a(this.a).dismiss();
+    this.a.a();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahwr
  * JD-Core Version:    0.7.0.1
  */

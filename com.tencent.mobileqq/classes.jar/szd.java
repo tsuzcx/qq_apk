@@ -1,73 +1,31 @@
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeed;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class szd
-  extends slz
 {
-  public static final String a;
-  public List<uiw> a;
-  public List<String> b = new ArrayList();
+  public int a;
+  public final long a;
+  public final String a;
+  public final String b;
   
-  static
+  public boolean equals(Object paramObject)
   {
-    jdField_a_of_type_JavaLangString = skt.a("StorySvc.homepage_batch_feeds_detail_720");
+    if ((paramObject instanceof szd)) {
+      return TextUtils.equals(((szd)paramObject).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+    }
+    return false;
   }
   
-  public szd()
+  public String toString()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public slu a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspStoryFeed localRspStoryFeed = new qqstory_service.RspStoryFeed();
-    try
-    {
-      localRspStoryFeed.mergeFrom(paramArrayOfByte);
-      return new sze(localRspStoryFeed);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqStoryFeed localReqStoryFeed = new qqstory_service.ReqStoryFeed();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      uiw localuiw = (uiw)localIterator.next();
-      if (localuiw != null) {
-        if (TextUtils.isEmpty(localuiw.jdField_a_of_type_JavaLangString)) {
-          urk.e("Q.qqstory.net:BatchGetFriendStoryFeedInfoRequest", "check your param feedId is null");
-        } else {
-          localArrayList.add(localuiw.a());
-        }
-      }
-    }
-    if (localArrayList.size() == 0) {
-      throw new QQStoryCmdHandler.IllegalUinException("feed id seq is null");
-    }
-    localReqStoryFeed.feed_id_list.set(localArrayList);
-    return localReqStoryFeed.toByteArray();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.valueOf(this.jdField_a_of_type_JavaLangString));
+    localStringBuilder.append("\n");
+    localStringBuilder.append("-t ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("  -dt ");
+    localStringBuilder.append(String.valueOf(this.jdField_a_of_type_Long));
+    localStringBuilder.append("\n");
+    return localStringBuilder.toString();
   }
 }
 

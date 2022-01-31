@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import bacm;
+import bbdr;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.qphone.base.util.QLog;
@@ -13,14 +13,14 @@ import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatcher.Dispatchable;
 import java.io.File;
 import java.io.IOException;
-import sfm;
-import sgi;
-import tfy;
-import tgh;
-import vlc;
-import vlm;
-import vms;
-import vnr;
+import ssi;
+import ste;
+import tsu;
+import ttd;
+import vxy;
+import vyi;
+import vzo;
+import wan;
 
 public final class PlayModeUtils$5
   implements Runnable
@@ -29,34 +29,34 @@ public final class PlayModeUtils$5
   
   public void run()
   {
-    String str2 = tfy.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, true);
+    String str2 = tsu.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, true);
     File localFile = new File(str2);
-    Object localObject1 = vms.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalVideoPath, tfy.a().getResources().getDisplayMetrics().widthPixels, tfy.a().getResources().getDisplayMetrics().heightPixels);
-    if ((!vlm.c(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalVideoPath)) || (localObject1 == null))
+    Object localObject1 = vzo.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalVideoPath, tsu.a().getResources().getDisplayMetrics().widthPixels, tsu.a().getResources().getDisplayMetrics().heightPixels);
+    if ((!vyi.c(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalVideoPath)) || (localObject1 == null))
     {
       if (QLog.isColorLevel()) {
         QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, "storyVideoItem.mLocalVideoPath: " + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalVideoPath + " or retriever.getFrameAtTime == null");
       }
-      localObject1 = new tgh(this.jdField_a_of_type_JavaLangString, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      sgi.a().dispatch((Dispatcher.Dispatchable)localObject1);
+      localObject1 = new ttd(this.jdField_a_of_type_JavaLangString, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      ste.a().dispatch((Dispatcher.Dispatchable)localObject1);
       return;
     }
-    Object localObject2 = vnr.a(tfy.a(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoWidth, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoHeight, this.jdField_a_of_type_Int);
+    Object localObject2 = wan.a(tsu.a(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoWidth, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoHeight, this.jdField_a_of_type_Int);
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       QLog.e("Q.qqstory.player.PlayModeUtils", 2, "download water mark failed");
     }
-    Object localObject3 = vnr.b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    localObject1 = vnr.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    String str1 = vnr.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoWidth, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoHeight);
+    Object localObject3 = wan.b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    localObject1 = wan.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    String str1 = wan.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoWidth, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoHeight);
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
     while ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
     {
-      str1 = sfm.u;
+      str1 = ssi.u;
       str1 = str1 + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid + System.currentTimeMillis() + "_max.png";
-      if (!vnr.a((String)localObject3, (String)localObject1, str1))
+      if (!wan.a((String)localObject3, (String)localObject1, str1))
       {
-        localObject1 = new tgh(this.jdField_a_of_type_JavaLangString, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        sgi.a().dispatch((Dispatcher.Dispatchable)localObject1);
+        localObject1 = new ttd(this.jdField_a_of_type_JavaLangString, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        ste.a().dispatch((Dispatcher.Dispatchable)localObject1);
         QLog.e("Q.qqstory.player.PlayModeUtils", 2, "combineTwoImg maxMask videoVote failed");
         return;
         localObject1 = str1;
@@ -69,11 +69,11 @@ public final class PlayModeUtils$5
     while ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
     {
       localObject3 = localObject2;
-      if (vnr.a((String)localObject1, (String)localObject2, (String)localObject2)) {
+      if (wan.a((String)localObject1, (String)localObject2, (String)localObject2)) {
         break label433;
       }
-      localObject1 = new tgh(this.jdField_a_of_type_JavaLangString, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      sgi.a().dispatch((Dispatcher.Dispatchable)localObject1);
+      localObject1 = new ttd(this.jdField_a_of_type_JavaLangString, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      ste.a().dispatch((Dispatcher.Dispatchable)localObject1);
       QLog.e("Q.qqstory.player.PlayModeUtils", 2, "combineTwoImg failed");
       return;
       if (!TextUtils.isEmpty((CharSequence)localObject3)) {
@@ -85,12 +85,12 @@ public final class PlayModeUtils$5
     {
       localObject3 = localObject1;
       label433:
-      localObject1 = vms.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalVideoPath, tfy.a().getResources().getDisplayMetrics().widthPixels, tfy.a().getResources().getDisplayMetrics().heightPixels);
+      localObject1 = vzo.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalVideoPath, tsu.a().getResources().getDisplayMetrics().widthPixels, tsu.a().getResources().getDisplayMetrics().heightPixels);
       if (localObject1 != null) {
         break;
       }
-      localObject1 = new tgh(this.jdField_a_of_type_JavaLangString, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      sgi.a().dispatch((Dispatcher.Dispatchable)localObject1);
+      localObject1 = new ttd(this.jdField_a_of_type_JavaLangString, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      ste.a().dispatch((Dispatcher.Dispatchable)localObject1);
       QLog.e("Q.qqstory.player.PlayModeUtils", 2, "getLocalVideoThumbnail failed");
       return;
       localObject1 = localObject2;
@@ -98,7 +98,7 @@ public final class PlayModeUtils$5
     if (!TextUtils.isEmpty((CharSequence)localObject3))
     {
       localObject3 = SafeBitmapFactory.decodeFile((String)localObject3);
-      localObject2 = vlc.c((Bitmap)localObject1, (Bitmap)localObject3);
+      localObject2 = vxy.c((Bitmap)localObject1, (Bitmap)localObject3);
       ((Bitmap)localObject1).recycle();
       ((Bitmap)localObject3).recycle();
       localObject1 = localObject2;
@@ -107,18 +107,18 @@ public final class PlayModeUtils$5
     {
       try
       {
-        bacm.a((Bitmap)localObject1, new File(str2));
+        bbdr.a((Bitmap)localObject1, new File(str2));
         ((Bitmap)localObject1).recycle();
-        vlm.b(tfy.a(), localFile);
-        localObject1 = new tgh(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        ((tgh)localObject1).b = str2;
-        sgi.a().dispatch((Dispatcher.Dispatchable)localObject1);
+        vyi.b(tsu.a(), localFile);
+        localObject1 = new ttd(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        ((ttd)localObject1).b = str2;
+        ste.a().dispatch((Dispatcher.Dispatchable)localObject1);
         return;
       }
       catch (IOException localIOException)
       {
-        localObject2 = new tgh(this.jdField_a_of_type_JavaLangString, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        sgi.a().dispatch((Dispatcher.Dispatchable)localObject2);
+        localObject2 = new ttd(this.jdField_a_of_type_JavaLangString, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        ste.a().dispatch((Dispatcher.Dispatchable)localObject2);
       }
       if (!QLog.isColorLevel()) {
         break;

@@ -1,107 +1,112 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import android.text.TextUtils;
+import android.util.Base64;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import java.util.concurrent.atomic.AtomicInteger;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import tencent.im.pushsvr.pushsvrExt.ExtData;
+import tencent.im.s2c.msgtype0x210.submsgtype0x101.SubMsgType0x27.ClientReport;
+import tencent.im.s2c.msgtype0x210.submsgtype0x101.SubMsgType0x27.MsgBody;
+import tencent.im.s2c.msgtype0x210.submsgtype0x101.SubMsgType0x27.PushPlatform;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class afkm
-  implements Handler.Callback
 {
-  public afkm(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  private static final AtomicInteger a = new AtomicInteger(1);
   
-  public boolean handleMessage(Message paramMessage)
+  public static int a(MessageRecord paramMessageRecord)
   {
-    switch (paramMessage.what)
-    {
-    case 6: 
-    case 7: 
-    case 11: 
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
-    case 9: 
-    case 22: 
-    case 23: 
-    case 16: 
-    case 17: 
-    case 18: 
-    case 19: 
-    case 20: 
-    case 21: 
-    case 65537: 
-    case 65538: 
-    case 65539: 
-    case 65540: 
-    case 24: 
-    case 25: 
-    case 27: 
-    case 28: 
-    case 33: 
-    case 14: 
-    case 15: 
-    case 26: 
-    case 34: 
-    case 13: 
-      do
-      {
-        return true;
-        this.a.g(paramMessage);
-        return true;
-        this.a.a(paramMessage);
-        return true;
-        this.a.f(paramMessage);
-        return true;
-        this.a.e(paramMessage);
-        return true;
-        this.a.b(paramMessage);
-        return true;
-        this.a.d(paramMessage);
-        return true;
-        this.a.c(paramMessage);
-        return true;
-        ChatHistoryC2CAllFragment.a(this.a);
-        return true;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.history.C2CAllFragment", 2, "handle_get_roam_msg_auth_mode notify UI");
-        }
-        if (this.a.jdField_a_of_type_Ajmp.f())
-        {
-          this.a.c(false);
-          return true;
-        }
-        this.a.t();
-        return true;
-      } while (paramMessage.obj == null);
-      ChatHistoryC2CAllFragment localChatHistoryC2CAllFragment = this.a;
-      BaseApplication localBaseApplication = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-      if (((Boolean)paramMessage.obj).booleanValue() == true) {}
-      for (int i = 2131626632;; i = 2131626631)
-      {
-        localChatHistoryC2CAllFragment.a(localBaseApplication.getString(i));
-        return true;
-      }
-    case 39: 
-      ChatHistoryC2CAllFragment.a(this.a, paramMessage);
-      return true;
-    case 40: 
-      ChatHistoryC2CAllFragment.b(this.a, paramMessage);
-      return true;
-    case 41: 
-      ChatHistoryC2CAllFragment.c(this.a, paramMessage);
-      return true;
+    paramMessageRecord = MessageForSystemMsg.parseStructMsg(paramMessageRecord.msgData);
+    if (paramMessageRecord.msg_type.get() == 1) {
+      return paramMessageRecord.msg.sub_type.get();
     }
-    ChatHistoryC2CAllFragment.d(this.a, paramMessage);
-    return true;
+    return -1;
+  }
+  
+  public static final void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, short paramShort, msg_comm.Msg paramMsg, int paramInt)
+  {
+    if ((paramShort != 188) && (paramShort != 189)) {
+      return;
+    }
+    Object localObject2 = (msg_comm.MsgHead)paramMsg.msg_head.get();
+    Object localObject1;
+    boolean bool1;
+    boolean bool2;
+    if (localObject2 != null)
+    {
+      paramMsg = "" + ((msg_comm.MsgHead)localObject2).auth_uin.get();
+      localObject1 = ((msg_comm.MsgHead)localObject2).auth_nick.get();
+      localObject2 = ((msg_comm.MsgHead)localObject2).auth_remark.get();
+      bool1 = TextUtils.isEmpty(paramMsg);
+      bool2 = TextUtils.isEmpty((CharSequence)localObject1);
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        paramMsg = (msg_comm.Msg)localObject2;
+        label109:
+        if (TextUtils.isEmpty(paramMsg)) {
+          break label434;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("NewFriendPushUtil", 2, String.format(Locale.getDefault(), "handleNewFrdSystemPush [0x%x,%d,%s,%d]", new Object[] { Short.valueOf(paramShort), Long.valueOf(paramLong2), paramMsg, Integer.valueOf(paramInt) }));
+      }
+      localObject2 = new SubMsgType0x27.MsgBody();
+      SubMsgType0x27.PushPlatform localPushPlatform = new SubMsgType0x27.PushPlatform();
+      SubMsgType0x27.ClientReport localClientReport = new SubMsgType0x27.ClientReport();
+      localClientReport.uint32_service_id.set(1005);
+      PBStringField localPBStringField = localClientReport.str_content_id;
+      if (paramShort == 188) {}
+      for (localObject1 = "0xbc";; localObject1 = "0xbd")
+      {
+        localPBStringField.set((String)localObject1);
+        ((SubMsgType0x27.MsgBody)localObject2).msg_client_report.set(localClientReport);
+        localPushPlatform.uint32_forward_type.set(1);
+        localPushPlatform.uint64_from_uin.set(paramLong2);
+        localObject1 = String.format(ajyc.a(2131707493), new Object[] { paramMsg });
+        localPushPlatform.str_desc.set((String)localObject1);
+        localPushPlatform.str_target_url.set(Base64.encodeToString("newfrd_add".getBytes(), 0));
+        localPushPlatform.str_title.set(ajyc.a(2131707495));
+        localObject1 = new pushsvrExt.ExtData();
+        ((pushsvrExt.ExtData)localObject1).uint64_to_uin.set(paramLong2);
+        ((pushsvrExt.ExtData)localObject1).str_remark.set(ByteStringMicro.copyFromUtf8(paramMsg));
+        localPushPlatform.bytes_ext_data.set(ByteStringMicro.copyFrom(((pushsvrExt.ExtData)localObject1).toByteArray()));
+        ((SubMsgType0x27.MsgBody)localObject2).msg_push_platform.set(localPushPlatform);
+        ((aseo)paramQQAppInterface.getManager(284)).a((SubMsgType0x27.MsgBody)localObject2, (short)(a.getAndIncrement() % 32767), paramInt);
+        return;
+        if (!bool2)
+        {
+          paramMsg = (msg_comm.Msg)localObject1;
+          break label109;
+        }
+        if (!bool1) {
+          break label109;
+        }
+        paramMsg = String.valueOf(paramLong2);
+        break label109;
+        label434:
+        break;
+      }
+      paramMsg = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afkm
  * JD-Core Version:    0.7.0.1
  */

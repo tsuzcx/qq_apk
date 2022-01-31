@@ -4,24 +4,24 @@ import android.graphics.Bitmap;
 import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import java.util.Map;
-import rlv;
+import rym;
 
 public class QShareUtils$1
   implements Runnable
 {
-  public QShareUtils$1(rlv paramrlv, Map paramMap, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt) {}
+  public QShareUtils$1(rym paramrym, Map paramMap, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt) {}
   
   public void run()
   {
-    rlv.a(this.this$0, String.valueOf(System.currentTimeMillis()));
+    rym.a(this.this$0, String.valueOf(System.currentTimeMillis()));
     Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
     if (this.jdField_a_of_type_Boolean)
     {
-      WxShareHelperFromReadInjoy.a().a(rlv.a(this.this$0), this.jdField_a_of_type_JavaLangString, localBitmap, this.b, this.c, this.d, this.e);
+      WxShareHelperFromReadInjoy.a().a(rym.a(this.this$0), this.jdField_a_of_type_JavaLangString, localBitmap, this.b, this.c, this.d, this.e);
       return;
     }
     WXShareHelper localWXShareHelper = WXShareHelper.a();
-    String str1 = rlv.a(this.this$0);
+    String str1 = rym.a(this.this$0);
     String str2 = this.jdField_a_of_type_JavaLangString;
     String str3 = this.b;
     String str4 = this.c;

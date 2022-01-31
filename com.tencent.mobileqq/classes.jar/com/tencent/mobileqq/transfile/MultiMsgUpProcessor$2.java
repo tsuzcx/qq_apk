@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.transfile;
 
-import axsi;
+import aysp;
 
 public class MultiMsgUpProcessor$2
   implements Runnable
 {
-  public MultiMsgUpProcessor$2(axsi paramaxsi) {}
+  public MultiMsgUpProcessor$2(aysp paramaysp) {}
   
   public void run()
   {
-    this.this$0.aU_();
+    this.this$0.aR_();
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.search.rich;
 
-import alep;
+import altd;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
-import avsz;
-import avtb;
+import awss;
+import awsu;
 import com.tencent.ark.ArkTextureView;
 import com.tencent.ark.ArkViewImplement;
 import com.tencent.ark.ArkViewImplement.LoadCallback;
@@ -17,13 +17,13 @@ public class ArkAppView
   extends ArkTextureView
   implements ArkViewImplement.LoadCallback
 {
-  private avsz a;
+  private awss a;
   
   public ArkAppView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     ArkAppCenter.b(true);
-    alep.a();
+    altd.a();
   }
   
   public void a()
@@ -31,16 +31,16 @@ public class ArkAppView
     this.a = null;
   }
   
-  public void a(avtb paramavtb, avsz paramavsz)
+  public void a(awsu paramawsu, awss paramawss)
   {
     if (QLog.isColorLevel()) {
       QLog.d(TAG, 2, "init");
     }
-    if (paramavtb == null) {
+    if (paramawsu == null) {
       return;
     }
-    this.a = paramavsz;
-    super.initArkView(paramavtb);
+    this.a = paramawss;
+    super.initArkView(paramawsu);
     setOnTouchListener(this);
     setLoadCallback(this);
   }

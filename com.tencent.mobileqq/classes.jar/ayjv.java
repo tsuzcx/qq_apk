@@ -1,21 +1,19 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-
-class ayjv
-  implements View.OnClickListener
+public class ayjv
 {
-  ayjv(ayju paramayju) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void onClick(View paramView)
+  public ayjv(int paramInt1, int paramInt2, int paramInt3)
   {
-    GroupManagerActivity.a((Activity)ayju.a(this.a));
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayjv
  * JD-Core Version:    0.7.0.1
  */

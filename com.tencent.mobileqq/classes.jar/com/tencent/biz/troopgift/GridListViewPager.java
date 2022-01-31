@@ -1,6 +1,6 @@
 package com.tencent.biz.troopgift;
 
-import aciy;
+import actn;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -11,8 +11,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.GridView;
 import android.widget.ListAdapter;
 import java.util.ArrayList;
-import wmt;
-import wmv;
+import xbw;
+import xby;
 
 public class GridListViewPager
   extends absMultiViewPager
@@ -54,23 +54,23 @@ public class GridListViewPager
   
   public View a(int paramInt, ArrayList<Object> paramArrayList)
   {
-    wmv localwmv = new wmv(this, getContext());
-    localwmv.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    localwmv.setVerticalSpacing(0);
-    localwmv.setHorizontalSpacing(10);
-    localwmv.setColumnWidth(this.jdField_a_of_type_Int / this.b - 40);
-    localwmv.setNumColumns(this.b);
+    xby localxby = new xby(this, getContext());
+    localxby.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+    localxby.setVerticalSpacing(0);
+    localxby.setHorizontalSpacing(10);
+    localxby.setColumnWidth(this.jdField_a_of_type_Int / this.b - 40);
+    localxby.setNumColumns(this.b);
     Object localObject = getContext().getResources();
-    localwmv.setPadding(aciy.a(5.0F, (Resources)localObject), aciy.a(1.0F, (Resources)localObject), aciy.a(5.0F, (Resources)localObject), aciy.a(1.0F, (Resources)localObject));
-    localwmv.setGravity(1);
-    localwmv.setSelector(new ColorDrawable(0));
-    localObject = new wmt(getContext(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel);
-    ((wmt)localObject).a(paramArrayList);
-    ((wmt)localObject).a(this.jdField_a_of_type_JavaLangString);
-    localwmv.setAdapter((ListAdapter)localObject);
-    localwmv.setOnItemClickListener(this);
-    ((wmt)localObject).notifyDataSetChanged();
-    return localwmv;
+    localxby.setPadding(actn.a(5.0F, (Resources)localObject), actn.a(1.0F, (Resources)localObject), actn.a(5.0F, (Resources)localObject), actn.a(1.0F, (Resources)localObject));
+    localxby.setGravity(1);
+    localxby.setSelector(new ColorDrawable(0));
+    localObject = new xbw(getContext(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel);
+    ((xbw)localObject).a(paramArrayList);
+    ((xbw)localObject).a(this.jdField_a_of_type_JavaLangString);
+    localxby.setAdapter((ListAdapter)localObject);
+    localxby.setOnItemClickListener(this);
+    ((xbw)localObject).notifyDataSetChanged();
+    return localxby;
   }
   
   public ArrayList<Object> a(int paramInt)
@@ -87,7 +87,7 @@ public class GridListViewPager
     int i = 0;
     while (i < localArrayList.size())
     {
-      ((wmt)((GridView)localArrayList.get(i)).getAdapter()).notifyDataSetChanged();
+      ((xbw)((GridView)localArrayList.get(i)).getAdapter()).notifyDataSetChanged();
       i += 1;
     }
   }

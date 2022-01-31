@@ -1,35 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
-import com.tencent.qphone.base.util.QLog;
-
 public class lva
-  implements DialogInterface.OnClickListener
+  extends lur
 {
-  public lva(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, long paramLong) {}
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public lva()
   {
-    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.g()) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.a().a() == -1) {
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.p(this.jdField_a_of_type_Long);
-    }
-    for (;;)
+    a(255);
+  }
+  
+  public void a(long paramLong)
+  {
+    int i = (int)((paramLong - this.a) % 4000L * this.h / 2000L - this.c);
+    a(this.g, i, this.g + this.b, this.c + i);
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.e != paramInt)
     {
-      paramDialogInterface.dismiss();
+      this.e = paramInt;
+      c();
+    }
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.b = (paramInt1 * 70 / 160);
+    this.c = (paramInt1 * 70 / 160);
+    this.d = (paramInt1 * 5 / 160);
+    this.f = paramInt1;
+    this.h = (this.c + paramInt2);
+    c();
+  }
+  
+  public void c()
+  {
+    if (this.e == 0) {}
+    for (int i = this.d;; i = this.f - this.d - this.b)
+    {
+      this.g = i;
       return;
-      if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d())
-      {
-        MultiVideoCtrlLayerUIBase.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase, true);
-        this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.f(this.jdField_a_of_type_Long, 65535);
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.e(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.c, 2, "PressCameraBtnRunnable-->go on stage fail,can not find the session");
-      }
     }
   }
 }

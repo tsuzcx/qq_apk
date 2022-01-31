@@ -1,828 +1,342 @@
-import android.annotation.TargetApi;
-import android.graphics.Rect;
-import android.graphics.SurfaceTexture;
-import android.hardware.Camera;
-import android.hardware.Camera.Area;
-import android.hardware.Camera.AutoFocusCallback;
-import android.hardware.Camera.Parameters;
-import android.hardware.Camera.PreviewCallback;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.SurfaceHolder;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.List<Lawof;>;
 
 public class awiu
-  extends Handler
-  implements Camera.AutoFocusCallback
 {
-  awiu(awir paramawir, Looper paramLooper)
+  public static long a;
+  public static HashMap<awog, awiv> a;
+  public static boolean a;
+  public static final HashMap<awoe, awiv> b;
+  public static boolean b;
+  protected static final HashMap<String, Integer> c = new HashMap();
+  
+  static
   {
-    super(paramLooper);
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_b_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  @TargetApi(14)
-  private void a(Rect paramRect1, Rect paramRect2, Camera.AutoFocusCallback paramAutoFocusCallback)
+  public static int a(awoe paramawoe)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraProxy", 2, "[handleMessage]SET_FOCUS_MODE_REQUEST_FOCUS");
+    if (paramawoe == null) {
+      return -1;
     }
-    Camera.Parameters localParameters = awij.a().a();
-    if ((Build.VERSION.SDK_INT >= 14) && (paramRect1 != null))
+    if (c.size() == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("CameraProxy", 2, "[handleMessage] focus area = " + paramRect1);
+      c.put(awnq.class.getSimpleName(), Integer.valueOf(101));
+      c.put(awns.class.getSimpleName(), Integer.valueOf(101));
+      c.put(awnr.class.getSimpleName(), Integer.valueOf(101));
+      c.put(awly.class.getSimpleName(), Integer.valueOf(102));
+      c.put(awnt.class.getSimpleName(), Integer.valueOf(102));
+      c.put(bgqe.class.getSimpleName(), Integer.valueOf(103));
+      c.put(apfl.class.getSimpleName(), Integer.valueOf(104));
+      c.put(awnp.class.getSimpleName(), Integer.valueOf(105));
+      c.put(awpp.class.getSimpleName(), Integer.valueOf(106));
+      c.put(awny.class.getSimpleName(), Integer.valueOf(107));
+      c.put(awnu.class.getSimpleName(), Integer.valueOf(108));
+      c.put(awnw.class.getSimpleName(), Integer.valueOf(109));
+    }
+    Integer localInteger = (Integer)c.get(paramawoe.getClass().getSimpleName());
+    if (localInteger == null) {
+      return -1;
+    }
+    if ((paramawoe instanceof awpp))
+    {
+      if (((awpp)paramawoe).jdField_a_of_type_Int == -1) {
+        return localInteger.intValue();
       }
-      localParameters.setFocusMode("auto");
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(new Camera.Area(paramRect1, 1000));
-      localParameters.setFocusAreas(localArrayList);
-      if ((localParameters.getMaxNumMeteringAreas() > 0) && (paramRect2 != null))
+      return -1;
+    }
+    return localInteger.intValue();
+  }
+  
+  public static List<awoe> a(List<awof> paramList, boolean paramBoolean)
+  {
+    return a(paramList, paramBoolean, false, true);
+  }
+  
+  public static List<awoe> a(List<awof> paramList, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    return a(paramList, paramBoolean1, paramBoolean2, false);
+  }
+  
+  public static List<awoe> a(List<awof> paramList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (paramList == null)
+    {
+      QLog.d("Q.uniteSearch.SearchUtil", 2, "getItemListFromGroupResult  result is null.");
+      return null;
+    }
+    ArrayList localArrayList1 = new ArrayList();
+    Object localObject3 = new HashMap();
+    Object localObject2 = paramList.iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject1 = ((Iterator)localObject2).next();
+      if ((localObject1 instanceof awnd))
       {
-        paramRect1 = new ArrayList(1);
-        paramRect1.add(new Camera.Area(new Rect(paramRect2), 1000));
-        localParameters.setMeteringAreas(paramRect1);
-      }
-      awij.a().jdField_a_of_type_AndroidHardwareCamera.setParameters(localParameters);
-    }
-    paramRect1 = paramAutoFocusCallback;
-    if (paramAutoFocusCallback == null) {
-      paramRect1 = new awiv(this);
-    }
-    awij.a().a(paramRect1);
-  }
-  
-  public String a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraProxy", 2, "[@] getDefaultFocusMode: Build.MANUFACTURER=" + Build.MANUFACTURER + "VERSION.SDK_INT=" + Build.VERSION.SDK_INT);
-    }
-    if ((Build.MANUFACTURER.equalsIgnoreCase("samsung")) && (Build.VERSION.SDK_INT >= 14)) {}
-    return "continuous-picture";
-  }
-  
-  public String b()
-  {
-    String str2 = "continuous-video";
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraProxy", 2, "[@] getRecordingFocusMode: Build.MANUFACTURER=" + Build.MANUFACTURER + "VERSION.SDK_INT=" + Build.VERSION.SDK_INT);
-    }
-    String str1 = str2;
-    if (Build.MANUFACTURER.equalsIgnoreCase("samsung"))
-    {
-      str1 = str2;
-      if (Build.VERSION.SDK_INT >= 14) {
-        str1 = "continuous-picture";
+        localObject4 = (awnd)localObject1;
+        localObject1 = (Integer)((HashMap)localObject3).get(Long.valueOf(((awnd)localObject4).jdField_a_of_type_Long));
+        if (localObject1 == null) {}
+        for (localObject1 = Integer.valueOf(1);; localObject1 = Integer.valueOf(((Integer)localObject1).intValue() + 1))
+        {
+          ((HashMap)localObject3).put(Long.valueOf(((awnd)localObject4).jdField_a_of_type_Long), localObject1);
+          break;
+        }
       }
     }
-    return str1;
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    boolean bool1 = false;
-    boolean bool3 = false;
-    boolean bool4 = false;
-    boolean bool5 = false;
-    boolean bool2 = false;
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    ((HashMap)localObject3).size();
+    localObject2 = new ArrayList();
+    ((List)localObject2).addAll(((HashMap)localObject3).keySet());
+    Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    localObject3 = new ArrayList();
+    Object localObject4 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    jdField_a_of_type_JavaUtilHashMap.clear();
+    localObject1 = "";
+    Iterator localIterator = paramList.iterator();
+    paramList = (List<awof>)localObject1;
+    label271:
+    int i;
+    if (localIterator.hasNext())
     {
-    }
-    for (;;)
-    {
-      try
+      localObject1 = localIterator.next();
+      if (!(localObject1 instanceof awnd)) {
+        break label1026;
+      }
+      awnd localawnd = (awnd)localObject1;
+      if (!TextUtils.isEmpty(paramList)) {
+        break label1023;
+      }
+      paramList = localawnd.b();
+      Object localObject5;
+      if (paramBoolean3)
       {
-        throw new RuntimeException("Unimplemented CameraProxy message=" + paramMessage.what);
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("CameraProxy", 2, "[Camera2Handler.handleMessage]", localException);
+        if (!paramBoolean1) {
+          break label729;
         }
-        return;
-        i = ((Integer)((Object[])(Object[])paramMessage.obj)[0]).intValue();
-        if (QLog.isColorLevel()) {
-          QLog.i("CameraProxy", 2, "[handleMessage]OPEN_CAMERA_OLD");
-        }
-        i = awij.a().a(i);
-        bhcs.a("CameraProxy", 1, "【Open Old Camera Result】:" + i);
-        if (i == 5)
+        if (awvy.a(localawnd.jdField_a_of_type_Long))
         {
-          this.a.jdField_a_of_type_Awix.a(1, new Object[] { Boolean.valueOf(true) });
-          return;
-        }
-        if (i != 0)
-        {
-          this.a.jdField_a_of_type_Awix.a(1, new Object[] { "open camera failed:errcode=" + awij.a(i) });
-          return;
-        }
-        if (!awij.a().c())
-        {
-          this.a.jdField_a_of_type_Awix.a(1, new Object[] { "open camera failed, orientation error." });
-          return;
-        }
-        this.a.jdField_a_of_type_Awix.a(1, new Object[] { Boolean.valueOf(true) });
-        this.a.jdField_a_of_type_Boolean = false;
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("CameraProxy", 2, "[handleMessage]CHANGED");
-        }
-        int k = Integer.parseInt(paramMessage.obj.toString());
-        i = paramMessage.arg1;
-        j = paramMessage.arg2;
-        this.a.jdField_a_of_type_Boolean = false;
-        awir.a(this.a, false);
-        if (QLog.isColorLevel()) {
-          QLog.i("CameraProxy", 2, "[@] surfaceChanged start, format = " + k + ",width = " + i + ",height = " + j);
-        }
-        if ((this.a.jdField_b_of_type_Int <= 0) || (i <= this.a.jdField_b_of_type_Int)) {
-          break label5323;
-        }
-        i = this.a.jdField_b_of_type_Int;
-        if ((this.a.jdField_c_of_type_Int <= 0) || (j <= this.a.jdField_c_of_type_Int)) {
-          break label5320;
-        }
-        j = this.a.jdField_c_of_type_Int;
-        localObject7 = awij.a();
-        if (Build.VERSION.SDK_INT <= 10) {
-          awij.a().b();
-        }
-        if (this.a.jdField_a_of_type_Int == 1)
-        {
-          localObject1 = this.a.jdField_a_of_type_Awja;
-          if (((awja)localObject1).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-            continue;
-          }
-          if (!awij.a().e()) {
-            this.a.jdField_a_of_type_Awix.a(2, new Object[] { "set preview format failed" });
+          ((List)localObject3).add(Long.valueOf(localawnd.jdField_a_of_type_Long));
+          if (localawnd.a() != null)
+          {
+            i = 0;
+            if (i < localawnd.a().size())
+            {
+              localObject5 = (awog)localawnd.a().get(i);
+              awiv localawiv = new awiv();
+              localawiv.jdField_a_of_type_JavaLangString = paramList;
+              if ((localObject5 instanceof awop))
+              {
+                localawiv.jdField_a_of_type_Long = ((awop)localObject5).jdField_a_of_type_Long;
+                label385:
+                localawiv.jdField_a_of_type_Int = (i + 1);
+                localawiv.jdField_a_of_type_Boolean = false;
+                localObject1 = "";
+                if (!(localObject5 instanceof awne)) {
+                  break label516;
+                }
+                localObject1 = ((awne)localObject5).jdField_b_of_type_JavaLangString;
+              }
+              for (;;)
+              {
+                localawiv.jdField_b_of_type_JavaLangString = ((String)localObject1);
+                localawiv.jdField_b_of_type_Boolean = jdField_a_of_type_Boolean;
+                jdField_a_of_type_JavaUtilHashMap.put(localObject5, localawiv);
+                if ((localObject5 instanceof awne)) {
+                  ((awne)localObject5).d = localawnd.c;
+                }
+                i += 1;
+                break;
+                if ((localObject5 instanceof awne))
+                {
+                  localawiv.jdField_a_of_type_Long = ((awne)localObject5).d();
+                  break label385;
+                }
+                localawiv.jdField_a_of_type_Long = localawnd.jdField_a_of_type_Long;
+                break label385;
+                label516:
+                if ((localObject5 instanceof awop)) {
+                  localObject1 = ((awop)localObject5).d;
+                }
+              }
+            }
           }
         }
         else
         {
-          if (this.a.jdField_a_of_type_Int == 3)
-          {
-            if (ahhj.jdField_a_of_type_Int == 1)
-            {
-              localObject1 = this.a.jdField_c_of_type_Awja;
-              continue;
-            }
-            if (ahhj.jdField_a_of_type_Int == 2)
-            {
-              localObject1 = this.a.jdField_b_of_type_Awja;
-              continue;
-            }
-            this.a.jdField_a_of_type_Awix.a(2, new Object[] { "set preview format failed[Camera Kind error:PROGNOSIS_FULL_FILTER]" });
-            return;
-          }
-          if (this.a.jdField_a_of_type_Int == 2)
-          {
-            if (ahhj.jdField_a_of_type_Int == 1)
-            {
-              localObject1 = this.a.e;
-              continue;
-            }
-            if (ahhj.jdField_a_of_type_Int == 2)
-            {
-              localObject1 = this.a.d;
-              continue;
-            }
-            this.a.jdField_a_of_type_Awix.a(2, new Object[] { "set preview format failed[Camera Kind error:RATIO_SCREEN]" });
-            return;
-          }
-          if (this.a.jdField_a_of_type_Int == 4)
-          {
-            if (ahhj.jdField_a_of_type_Int == 1)
-            {
-              localObject1 = this.a.g;
-              continue;
-            }
-            if (ahhj.jdField_a_of_type_Int == 2)
-            {
-              localObject1 = this.a.f;
-              continue;
-            }
-            this.a.jdField_a_of_type_Awix.a(2, new Object[] { "set preview format failed[Camera Kind error:PROGNOSIS_FULL_FILTER]" });
-            return;
-          }
-          if (this.a.jdField_a_of_type_Int == 5)
-          {
-            localObject1 = this.a.h;
-            continue;
-          }
-          this.a.jdField_a_of_type_Awix.a(2, new Object[] { "set preview format failed[Preview Selector Error]" });
-          return;
-        }
-        localObject6 = null;
-        if ((this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 3) || (this.a.jdField_a_of_type_Int == 4))
-        {
-          localObject6 = ((awij)localObject7).c(awje.j, awje.k, this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int);
-          localObject5 = localObject6[0];
-          localObject6 = localObject6[1];
-          if (localObject5 == null) {
-            break label5314;
-          }
-          bool1 = awij.a().a((awim)localObject5);
-          break label5326;
-          if (!bool1) {
-            this.a.jdField_a_of_type_Awix.a(2, new Object[] { "set preview size failed" + (String)localObject5 });
-          }
-        }
-        else
-        {
-          if (this.a.jdField_a_of_type_Int == 2)
-          {
-            localObject5 = ((awij)localObject7).a(awje.j, awje.k, i, j);
-            bool1 = bool4;
-            if (localObject5 == null) {
-              break label5334;
-            }
-            bool1 = awij.a().a((awim)localObject5);
-            break label5334;
-          }
-          if (this.a.jdField_a_of_type_Int != 5) {
-            break label5350;
-          }
-          if ((Build.MANUFACTURER.equals("Xiaomi")) && (Build.MODEL.equals("MI 3")))
-          {
-            localObject5 = new awim();
-            ((awim)localObject5).jdField_a_of_type_Int = 640;
-            ((awim)localObject5).jdField_b_of_type_Int = 480;
-            bool1 = bool5;
-            if (localObject5 == null) {
-              break label5342;
-            }
-            bool1 = awij.a().a((awim)localObject5);
-            break label5342;
-          }
-          localObject5 = ((awij)localObject7).a(480);
-          continue;
-        }
-        if (!awij.a().a(awje.g))
-        {
-          this.a.jdField_a_of_type_Awix.a(2, new Object[] { "set preview fps failed" });
-          return;
-        }
-        if ((this.a.jdField_a_of_type_Int != 1) && (this.a.jdField_a_of_type_Int != 4) && (this.a.jdField_a_of_type_Int != 5) && (localObject6 != null) && (!((awij)localObject7).b((awim)localObject6))) {}
-        ((awja)localObject1).jdField_a_of_type_Int = awij.a().a();
-        ((awja)localObject1).jdField_a_of_type_Awim = awij.a().a();
-        localObject5 = awij.a().b();
-        if (localObject5 != null)
-        {
-          ((awja)localObject1).jdField_b_of_type_Awim = ((awim)localObject5);
-          ((awja)localObject1).jdField_a_of_type_Boolean = true;
-        }
-        localObject5 = awij.a().a();
-        ((awja)localObject1).jdField_b_of_type_Int = localObject5[0];
-        ((awja)localObject1).jdField_c_of_type_Int = localObject5[1];
-        if ((this.a.jdField_a_of_type_Int != 1) && (this.a.jdField_a_of_type_Int != 3) && (this.a.jdField_a_of_type_Int != 4) && (this.a.jdField_a_of_type_Int != 5))
-        {
-          ((awja)localObject1).jdField_b_of_type_Awim = awij.a().b();
-          ((awja)localObject1).jdField_a_of_type_Boolean = true;
-        }
-        if (this.a.jdField_a_of_type_Int == 4) {
-          ((awja)localObject1).jdField_a_of_type_Boolean = false;
-        }
-        ((awja)localObject1).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true);
-        Object localObject1 = a();
-        if ((!awij.a().a((String)localObject1)) && (!awij.a().a("auto")) && (!awij.a().a(this))) {
-          this.a.jdField_a_of_type_Awix.a(9, new Object[] { ajjy.a(2131635535) });
-        }
-        if (!awij.a().c())
-        {
-          this.a.jdField_a_of_type_Awix.a(2, new Object[] { "set display orientation failed" });
-          return;
-          if (!awij.a().a((awja)localObject1))
-          {
-            this.a.jdField_a_of_type_Awix.a(2, new Object[] { "set Camera Params failed" });
-            return;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.i("CameraProxy", 2, "[handleMessage]Set camera param by cache params");
-          continue;
+          jdField_b_of_type_Boolean = jdField_a_of_type_Boolean;
+          ((List)localObject4).add(Long.valueOf(localawnd.jdField_a_of_type_Long));
         }
       }
-      finally
+      localObject1 = localawnd.a();
+      if (((List)localObject1).size() > 0)
       {
-        awjd.a(paramMessage);
-      }
-      Object localObject3 = awij.a().a();
-      int i = awij.a().a();
-      Object localObject5 = awij.a().a();
-      this.a.jdField_a_of_type_Awix.a(2, new Object[] { localObject5, Integer.valueOf(i), localObject3 });
-      continue;
-      localObject3 = (Object[])paramMessage.obj;
-      localObject5 = (awim)localObject3[0];
-      Object localObject7 = (awim)localObject3[1];
-      i = ((Integer)localObject3[2]).intValue();
-      int j = ((Integer)localObject3[3]).intValue();
-      bool2 = ((Boolean)localObject3[4]).booleanValue();
-      if (QLog.isColorLevel()) {
-        QLog.i("CameraProxy", 2, "[handleMessage]SET_PARAMS, , wantedSize = " + localObject5 + " , viewSize = " + localObject7 + " , selectMode = " + i + " , resolutionMode = " + bool2);
-      }
-      this.a.jdField_a_of_type_Boolean = false;
-      awir.a(this.a, false);
-      Object localObject6 = awij.a();
-      Object localObject8 = awij.a().jdField_a_of_type_Int + "#" + localObject5 + "#" + localObject7 + "#" + i;
-      localObject3 = (awja)this.a.jdField_a_of_type_JavaUtilMap.get(localObject8);
-      if (localObject3 == null)
-      {
-        localObject3 = new awja();
-        this.a.jdField_a_of_type_JavaUtilMap.put(localObject8, localObject3);
-      }
-      for (;;)
-      {
+        boolean bool1;
+        label590:
+        label610:
+        label636:
+        int j;
+        if (!TextUtils.isEmpty(localawnd.d()))
+        {
+          bool1 = true;
+          boolean bool2 = localawnd.jdField_b_of_type_Boolean;
+          if (TextUtils.isEmpty(localawnd.d)) {
+            break label754;
+          }
+          paramBoolean2 = true;
+          localObject5 = new awnn(localawnd, bool1, bool2);
+          if (localawnd.jdField_a_of_type_Boolean) {
+            break label759;
+          }
+          bool1 = true;
+          ((awnn)localObject5).a(bool1);
+          localArrayList1.add(localObject5);
+          j = ((List)localObject1).size();
+          i = 0;
+          label665:
+          if (i >= j) {
+            break label847;
+          }
+          localObject5 = (awog)((List)localObject1).get(i);
+          if (!(localObject5 instanceof awne)) {
+            break label765;
+          }
+          localObject5 = (awne)localObject5;
+          awwb.a((awog)localObject5, j, i);
+          localArrayList1.add(localObject5);
+        }
         for (;;)
         {
-          if (!((awja)localObject3).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+          i += 1;
+          break label665;
+          label729:
+          localArrayList2.add(Long.valueOf(localawnd.jdField_a_of_type_Long));
+          break;
+          bool1 = false;
+          break label590;
+          label754:
+          paramBoolean2 = false;
+          break label610;
+          label759:
+          bool1 = false;
+          break label636;
+          label765:
+          if ((localObject5 instanceof awop))
           {
-            if (!awij.a().e())
-            {
-              this.a.jdField_a_of_type_Awix.a(2, new Object[] { "set preview format failed" });
-              awjd.a(paramMessage);
-              return;
-            }
-            if (!bool2) {}
-            for (localObject5 = ((awij)localObject6).a(((awim)localObject5).jdField_a_of_type_Int, ((awim)localObject5).jdField_b_of_type_Int, ((awim)localObject7).jdField_a_of_type_Int, ((awim)localObject7).jdField_b_of_type_Int);; localObject5 = ((awij)localObject6).b(((awim)localObject5).jdField_a_of_type_Int, ((awim)localObject5).jdField_b_of_type_Int, ((awim)localObject7).jdField_a_of_type_Int, ((awim)localObject7).jdField_b_of_type_Int))
-            {
-              localObject7 = localObject5[0];
-              localObject5 = localObject5[1];
-              if (localObject7 != null) {
-                bool1 = awij.a().a((awim)localObject7);
-              }
-              if (bool1) {
-                break;
-              }
-              this.a.jdField_a_of_type_Awix.a(2, new Object[] { "set preview size failed" + "" });
-              awjd.a(paramMessage);
-              return;
-            }
-            if (((localObject5 == null) || (((awij)localObject6).b((awim)localObject5))) || (!awij.a().a(j)))
-            {
-              this.a.jdField_a_of_type_Awix.a(2, new Object[] { "set preview fps failed" });
-              awjd.a(paramMessage);
-              return;
-            }
-            ((awja)localObject3).jdField_a_of_type_Int = awij.a().a();
-            ((awja)localObject3).jdField_a_of_type_Awim = awij.a().a();
-            localObject5 = awij.a().b();
-            if (localObject5 != null)
-            {
-              ((awja)localObject3).jdField_b_of_type_Awim = ((awim)localObject5);
-              ((awja)localObject3).jdField_a_of_type_Boolean = true;
-            }
-            localObject5 = awij.a().a();
-            ((awja)localObject3).jdField_b_of_type_Int = localObject5[0];
-            ((awja)localObject3).jdField_c_of_type_Int = localObject5[1];
-            ((awja)localObject3).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true);
+            localObject5 = (awop)localObject5;
+            awwb.a((awog)localObject5, j, i);
+            localArrayList1.add(localObject5);
           }
-          for (;;)
+          else if ((localObject5 instanceof awpp))
           {
-            localObject3 = a();
-            if ((!awij.a().a((String)localObject3)) && (!awij.a().a("auto")) && (!awij.a().a(this))) {
-              this.a.jdField_a_of_type_Awix.a(9, new Object[] { ajjy.a(2131635532) });
-            }
-            if (awij.a().c()) {
-              break;
-            }
-            this.a.jdField_a_of_type_Awix.a(2, new Object[] { "set display orientation failed" });
-            awjd.a(paramMessage);
-            return;
-            if (!awij.a().a((awja)localObject3))
-            {
-              this.a.jdField_a_of_type_Awix.a(2, new Object[] { "set Camera Params failed" });
-              awjd.a(paramMessage);
-              return;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("CameraProxy", 2, "[handleMessage]Set camera param by cache params");
-            }
+            localArrayList1.add((awpp)localObject5);
           }
-          localObject3 = awij.a().a();
-          i = awij.a().a();
-          localObject5 = awij.a().a();
-          this.a.jdField_a_of_type_Awix.a(2, new Object[] { localObject5, Integer.valueOf(i), localObject3 });
-          break;
-          if (QLog.isColorLevel()) {
-            QLog.i("CameraProxy", 2, "[handleMessage]SET_FOCUS_MODE_DEFAULT");
-          }
-          localObject3 = a();
-          if ((awij.a().a((String)localObject3)) || (awij.a().a("auto")) || (awij.a().a(this))) {
-            break;
-          }
-          this.a.jdField_a_of_type_Awix.a(9, new Object[] { ajjy.a(2131635534) });
-          break;
-          if (QLog.isColorLevel()) {
-            QLog.i("CameraProxy", 2, "[handleMessage]SET_FOCUS_MODE_AUTO");
-          }
-          if (awij.a().a("auto")) {
-            break;
-          }
-          this.a.jdField_a_of_type_Awix.a(9, new Object[] { ajjy.a(2131635533) });
-          break;
-          if (QLog.isColorLevel()) {
-            QLog.i("CameraProxy", 2, "[handleMessage]SET_FOCUS_MODE_RECORDING");
-          }
-          localObject3 = b();
-          if (awij.a().a((String)localObject3)) {
-            break;
-          }
-          this.a.jdField_a_of_type_Awix.a(9, new Object[] { ajjy.a(2131635528) });
-          break;
-          localObject3 = (awiz)paramMessage.obj;
-          a(((awiz)localObject3).jdField_a_of_type_AndroidGraphicsRect, ((awiz)localObject3).b, ((awiz)localObject3).jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback);
-          break;
-          if (QLog.isColorLevel()) {
-            QLog.i("CameraProxy", 2, "[handleMessage]PREVIEW_SET_SURFACE");
-          }
-          localObject3 = (SurfaceTexture)paramMessage.obj;
-          if (awij.a().a((SurfaceTexture)localObject3)) {
-            break;
-          }
-          this.a.jdField_a_of_type_Awix.a(2, new Object[] { "set preview texture failed" });
-          break;
-          if (QLog.isColorLevel()) {
-            QLog.i("CameraProxy", 2, "[handleMessage]PREVIEW_SET_SURFACE_HOLDER");
-          }
-          localObject3 = (SurfaceHolder)paramMessage.obj;
-          if (awij.a().a((SurfaceHolder)localObject3)) {
-            break;
-          }
-          this.a.jdField_a_of_type_Awix.a(2, new Object[] { "set surface holder failed" });
-          break;
-          if (QLog.isColorLevel()) {
-            QLog.i("CameraProxy", 2, "[handleMessage]PREVIEW_SET_CALLBACK");
-          }
-          localObject3 = (Camera.PreviewCallback)paramMessage.obj;
-          bool1 = bool3;
-          if (paramMessage.arg1 > 0) {
-            bool1 = true;
-          }
-          if (awij.a().a((Camera.PreviewCallback)localObject3, bool1)) {
-            break;
-          }
-          this.a.jdField_a_of_type_Awix.a(2, new Object[] { "set preview callback failed" });
-          break;
-          if (QLog.isColorLevel()) {
-            QLog.i("CameraProxy", 2, "[handleMessage]PREVIEW_START");
-          }
-          if (!awij.a().a())
+          else if ((localObject5 instanceof awog))
           {
-            if (QLog.isColorLevel()) {
-              QLog.i("CameraProxy", 2, "[handleMessage]PREVIEW_START error");
-            }
-            bhcs.b("CameraProxy", 1, "【Camera 】PREVIEW_START error");
-            this.a.jdField_a_of_type_Awix.a(3, new Object[] { "start preview failed" });
-            break;
-          }
-          localObject3 = awij.a();
-          if (((awij)localObject3).jdField_a_of_type_Int != 1) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("CameraProxy", 2, "[handleMessage]PREVIEW_START " + ((awij)localObject3).jdField_a_of_type_Int);
-          }
-          bhcs.a("CameraProxy", 1, "【Camera 】PREVIEW_START success cameraID:" + ((awij)localObject3).jdField_a_of_type_Int);
-          if ((!((awij)localObject3).d()) || (awir.a(this.a) == null)) {
-            break;
-          }
-          ((awij)localObject3).a(awir.a(this.a));
-          ((awij)localObject3).c();
-          break;
-          if (QLog.isColorLevel()) {
-            QLog.i("CameraProxy", 2, "[handleMessage]FACE_DETECT_SWITCH" + paramMessage.arg1);
-          }
-          localObject3 = awij.a();
-          if ((!((awij)localObject3).d()) || (awir.a(this.a) == null)) {
-            break;
-          }
-          if (paramMessage.arg1 == 1)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("CameraProxy", 2, "[handleMessage]FACE_DETECT_SWITCH " + ((awij)localObject3).jdField_a_of_type_Int);
-            }
-            if (((awij)localObject3).jdField_a_of_type_Int != 1) {
-              break;
-            }
-            ((awij)localObject3).a(awir.a(this.a));
-            ((awij)localObject3).c();
-            break;
-          }
-          if (paramMessage.arg1 != 2) {
-            break;
-          }
-          ((awij)localObject3).d();
-          break;
-          if (QLog.isColorLevel()) {
-            QLog.i("CameraProxy", 2, "[handleMessage]PREVIEW_STOP");
-          }
-          bhcs.a("CameraProxy", 1, "【Camera】PREVIEW_STOP success");
-          if (!awij.a().b())
-          {
-            this.a.jdField_a_of_type_Awix.a(4, new Object[] { "stop preview failed" });
-            break;
-          }
-          localObject3 = awij.a();
-          if ((!((awij)localObject3).d()) || (awir.a(this.a) == null)) {
-            break;
-          }
-          ((awij)localObject3).d();
-          break;
-          if (QLog.isColorLevel()) {
-            QLog.i("CameraProxy", 2, "[handleMessage]RELEASE");
-          }
-          awij.a().b();
-          this.a.jdField_a_of_type_Boolean = true;
-          try
-          {
-            Thread.sleep(50L);
-            bhcs.a("CameraProxy", 1, "【Camera】RELEASE success");
-            this.a.jdField_a_of_type_Awix.a(11, new Object[] { "camera destory" });
-            break;
-            if (QLog.isColorLevel()) {
-              QLog.i("CameraProxy", 2, "[handleMessage]NIGHT_MODE_ON_OFF" + paramMessage.arg1);
-            }
-            if (paramMessage.arg1 == 1)
-            {
-              awir.a(this.a);
-              break;
-            }
-            if (paramMessage.arg1 != 2) {
-              break;
-            }
-            awir.b(this.a);
-            break;
-            if (QLog.isColorLevel()) {
-              QLog.i("CameraProxy", 2, "[handleMessage]FLASH_LIGHT_ON_OFF");
-            }
-            if (paramMessage.arg1 == 1)
-            {
-              if (awij.a().a(true)) {
-                break;
-              }
-              this.a.jdField_a_of_type_Awix.a(6, new Object[] { "turn on flash light failed" });
-              break;
-            }
-            if ((paramMessage.arg1 != 2) || (awij.a().a(false))) {
-              break;
-            }
-            this.a.jdField_a_of_type_Awix.a(6, new Object[] { "turn off flash light failed" });
-            break;
-            if (QLog.isColorLevel()) {
-              QLog.i("CameraProxy", 2, "[handleMessage]FLASH_LIGHT_SWITCH");
-            }
-            if (paramMessage.arg1 == 0)
-            {
-              if (awij.a().f()) {
-                break;
-              }
-              this.a.jdField_a_of_type_Awix.a(6, new Object[] { "switch flash light failed" });
-              break;
-            }
-            if (paramMessage.arg1 == 1)
-            {
-              if (awij.a().b(true)) {
-                break;
-              }
-              this.a.jdField_a_of_type_Awix.a(6, new Object[] { "turn on flash light failed" });
-              break;
-            }
-            if ((paramMessage.arg1 != 2) || (awij.a().b(false))) {
-              break;
-            }
-            this.a.jdField_a_of_type_Awix.a(6, new Object[] { "turn off flash light failed" });
-            break;
-            if (QLog.isColorLevel()) {
-              QLog.i("CameraProxy", 2, "[handleMessage]PICTURE_TAKE");
-            }
-            ahji.a("received");
-            localObject3 = (awjc)paramMessage.obj;
-            localObject5 = awij.a();
-            if (!((awij)localObject5).jdField_a_of_type_Boolean)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.i("CameraProxy", 2, "[takePicture]Camera is not previewing...");
-              }
-              awjd.a(paramMessage);
-              return;
-            }
-            if (((awjc)localObject3).jdField_a_of_type_JavaIoFile == null)
-            {
-              this.a.jdField_a_of_type_Awix.a(2, new Object[] { "take picture error" });
-              awjd.a(paramMessage);
-              return;
-            }
-            ((awij)localObject5).a(((awjc)localObject3).jdField_a_of_type_JavaIoFile, ((awjc)localObject3).jdField_a_of_type_AndroidGraphicsRect, ((awjc)localObject3).jdField_a_of_type_Ahns, ((awjc)localObject3).jdField_a_of_type_Int, ((awjc)localObject3).jdField_a_of_type_Boolean, ((awjc)localObject3).jdField_b_of_type_Int);
-            break;
-            i = ((Integer)((Object[])(Object[])paramMessage.obj)[0]).intValue();
-            awij.a().b(i);
-            break;
-            localObject3 = (String)((Object[])(Object[])paramMessage.obj)[0];
-            awij.a().b((String)localObject3);
-            break;
-            localObject3 = (Object[])paramMessage.obj;
-            i = ((Integer)localObject3[0]).intValue();
-            if ((localObject3[1] instanceof awgs))
-            {
-              localObject3 = (awgs)localObject3[1];
-              if (Camera2Control.a().b())
-              {
-                awgx.a(1, "[Camera2] camera2 is opening!");
-                awjd.a(paramMessage);
-                return;
-              }
-              i = Camera2Control.a().a(i, (awgs)localObject3);
-              if (i == 0) {
-                break;
-              }
-              bhcs.b("CameraProxy", 1, "【Camera2 Open Error】EVENT_CAMERA2_ERROR:" + i);
-              this.a.jdField_a_of_type_Awix.a(13, new Object[] { Integer.valueOf(i) });
-              break;
-              localObject3 = (SurfaceTexture)((Object[])(Object[])paramMessage.obj)[0];
-              Camera2Control.a().a((SurfaceTexture)localObject3);
-              bhcs.a("CameraProxy", 1, "【Camera2】PREVIEW_START");
-              break;
-              localObject3 = (Camera.PreviewCallback)((Object[])(Object[])paramMessage.obj)[0];
-              Camera2Control.a().a((Camera.PreviewCallback)localObject3);
-              break;
-              Camera2Control.a().e();
-              bhcs.a("CameraProxy", 1, "【Camera2】CAMERA2_RELEASE");
-              break;
-              localObject7 = (Object[])paramMessage.obj;
-              localObject5 = (awim)localObject7[0];
-              localObject8 = (awim)localObject7[1];
-              bool1 = ((Boolean)localObject7[4]).booleanValue();
-              localObject3 = new StringBuilder();
-              Camera2Control.a();
-              localObject6 = Camera2Control.a + "#" + localObject5 + "#" + localObject8;
-              if (QLog.isColorLevel()) {
-                QLog.i("CameraProxy", 2, "[handleMessage]CAMERA2_SET_PARAMS,wantedSize = " + localObject5 + " , viewSize = " + localObject8 + ",resolutionMode:" + bool1);
-              }
-              localObject3 = (awjb)this.a.jdField_b_of_type_JavaUtilMap.get(localObject6);
-              if (localObject3 == null)
-              {
-                localObject3 = new awjb();
-                this.a.jdField_b_of_type_JavaUtilMap.put(localObject6, localObject3);
-                if (!((awjb)localObject3).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-                {
-                  localObject6 = Camera2Control.a().a();
-                  if (!bool1) {}
-                  for (localObject5 = awgx.a(((awim)localObject5).jdField_a_of_type_Int, ((awim)localObject5).jdField_b_of_type_Int, ((awim)localObject8).jdField_a_of_type_Int, ((awim)localObject8).jdField_b_of_type_Int, (awgr)localObject6);; localObject5 = awgx.b(((awim)localObject5).jdField_a_of_type_Int, ((awim)localObject5).jdField_b_of_type_Int, ((awim)localObject8).jdField_a_of_type_Int, ((awim)localObject8).jdField_b_of_type_Int, (awgr)localObject6))
-                  {
-                    if ((localObject5 == null) || (localObject5.length < 2)) {
-                      break label5293;
-                    }
-                    localObject6 = localObject5[0];
-                    localObject5 = localObject5[1];
-                    localObject8 = new awim(Math.max(((awim)localObject8).jdField_a_of_type_Int, ((awim)localObject8).jdField_b_of_type_Int), Math.min(((awim)localObject8).jdField_a_of_type_Int, ((awim)localObject8).jdField_b_of_type_Int));
-                    localObject8 = Camera2Control.a().a((awim)localObject8);
-                    if (Camera2Control.a().a((awim)localObject6)) {
-                      break;
-                    }
-                    this.a.jdField_a_of_type_Awix.a(14, new Object[] { "[Camera2]setCamera2 previewSize error!" });
-                    awjd.a(paramMessage);
-                    return;
-                  }
-                  if (!Camera2Control.a().b((awim)localObject5))
-                  {
-                    this.a.jdField_a_of_type_Awix.a(14, new Object[] { "[Camera2]setCamera2 pictureSize error!" });
-                    awjd.a(paramMessage);
-                    return;
-                  }
-                  if (!Camera2Control.a().a(((Integer)localObject7[3]).intValue()))
-                  {
-                    this.a.jdField_a_of_type_Awix.a(14, new Object[] { "[Camera2]setCamera2 fps error!" });
-                    awjd.a(paramMessage);
-                    return;
-                  }
-                  ((awjb)localObject3).jdField_a_of_type_Awim = ((awim)localObject6);
-                  ((awjb)localObject3).jdField_b_of_type_Awim = ((awim)localObject5);
-                  ((awjb)localObject3).c = ((awim)localObject8);
-                  ((awjb)localObject3).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true);
-                }
-                while (Camera2Control.a().a((awjb)localObject3))
-                {
-                  localObject3 = Camera2Control.a().b();
-                  localObject5 = Camera2Control.a().a();
-                  this.a.jdField_a_of_type_Awix.a(14, new Object[] { localObject3, localObject5 });
-                  break;
-                }
-                this.a.jdField_a_of_type_Awix.a(14, new Object[] { "[Camera2]setCamera2ParamOnce error!" });
-                awjd.a(paramMessage);
-                return;
-                if (QLog.isColorLevel()) {
-                  QLog.i("CameraProxy", 2, "[handleMessage]CAMERA2_PICTURE_TAKE");
-                }
-                localObject3 = (awjc)paramMessage.obj;
-                if (((awjc)localObject3).jdField_a_of_type_JavaIoFile == null)
-                {
-                  this.a.jdField_a_of_type_Awix.a(2, new Object[] { "take picture error" });
-                  awjd.a(paramMessage);
-                  return;
-                }
-                localObject5 = new awgt();
-                ((awgt)localObject5).jdField_a_of_type_Ahns = ((awjc)localObject3).jdField_a_of_type_Ahns;
-                ((awgt)localObject5).jdField_a_of_type_Boolean = ((awjc)localObject3).jdField_a_of_type_Boolean;
-                ((awgt)localObject5).jdField_a_of_type_Int = ((awjc)localObject3).jdField_a_of_type_Int;
-                ((awgt)localObject5).jdField_a_of_type_JavaIoFile = ((awjc)localObject3).jdField_a_of_type_JavaIoFile;
-                ((awgt)localObject5).jdField_a_of_type_AndroidGraphicsRect = ((awjc)localObject3).jdField_a_of_type_AndroidGraphicsRect;
-                Camera2Control.a().a((awgt)localObject5);
-                break;
-                if (QLog.isColorLevel()) {
-                  QLog.i("CameraProxy", 2, "[handleMessage]CAMERA2_STOP_VIDEO");
-                }
-                Camera2Control.a().c();
-                break;
-                localObject3 = (awiz)paramMessage.obj;
-                Camera2Control.a().a((awiz)localObject3);
-                break;
-                i = ((Integer)((Object[])(Object[])paramMessage.obj)[0]).intValue();
-                Camera2Control.a().a(i);
-                break;
-                bool1 = ((Boolean)((Object[])(Object[])paramMessage.obj)[0]).booleanValue();
-                Camera2Control.a().a(bool1);
-                break;
-                Camera2Control.a().a();
-                break;
-                if (QLog.isColorLevel()) {
-                  QLog.i("CameraProxy", 2, "[handleMessage]CAMERA2_START_VIDEO");
-                }
-                Camera2Control.a().b();
-                break;
-                awgx.a(2, "[Camera2] error:" + paramMessage.arg1);
-                bhcs.b("CameraProxy", 1, "【Camera2 Open Error】CAMERA2_ERROR_CALLBACK:" + paramMessage.arg1);
-                i = paramMessage.arg1;
-                switch (i)
-                {
-                case -203: 
-                case -202: 
-                case -201: 
-                  this.a.jdField_a_of_type_Awix.a(14, new Object[] { "[Camera2]setCamera2 previewSize error:" + i });
-                  break;
-                case -105: 
-                case -102: 
-                  this.a.jdField_a_of_type_Awix.a(13, new Object[] { Integer.valueOf(i) });
-                }
-              }
-            }
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            for (;;)
-            {
-              continue;
-              label5293:
-              localObject5 = null;
-              localObject6 = null;
-              continue;
-              continue;
-              Object localObject4 = null;
-            }
+            localArrayList1.add(localObject5);
           }
         }
+        label847:
+        if (!TextUtils.isEmpty(localawnd.d))
+        {
+          localObject1 = new awno(localawnd.d, localawnd.e, localawnd.jdField_a_of_type_Long);
+          ((awno)localObject1).a(paramBoolean2);
+          localArrayList1.add(localObject1);
+        }
       }
-      label5314:
-      bool1 = false;
-      break label5326;
-      label5320:
-      continue;
-      label5323:
-      continue;
-      label5326:
-      localObject5 = "";
-      continue;
-      label5334:
-      localObject5 = "";
-      continue;
-      label5342:
-      localObject5 = "";
-      continue;
-      label5350:
-      localObject5 = " :[Preview Selector Error]";
-      bool1 = bool2;
+    }
+    label1026:
+    for (;;)
+    {
+      break;
+      if (((List)localObject4).size() > 0) {
+        if (!jdField_b_of_type_Boolean) {
+          break label1017;
+        }
+      }
+      label1017:
+      for (i = 2;; i = 1)
+      {
+        awvy.a("all_result", "exp_content", i, 0, new String[] { paramList, awvy.a((List)localObject4), "", awvy.a("dynamic_unite_search.1", (List)localObject2) });
+        if (localArrayList2.size() > 0) {
+          awvy.a("all_result", "load_content", new String[] { paramList, awvy.a(localArrayList2), "", awvy.a("dynamic_unite_search.1", (List)localObject2) });
+        }
+        jdField_a_of_type_Boolean = false;
+        return localArrayList1;
+      }
+      label1023:
+      break label271;
     }
   }
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public static List<Long> a(long[] paramArrayOfLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraProxy", 2, "[onAutoFocus]success " + paramBoolean);
+    ArrayList localArrayList = new ArrayList(paramArrayOfLong.length);
+    int i = 0;
+    while (i < paramArrayOfLong.length)
+    {
+      localArrayList.add(Long.valueOf(paramArrayOfLong[i]));
+      i += 1;
     }
-    paramCamera = a();
-    awij.a().a(paramCamera);
+    return localArrayList;
+  }
+  
+  public static void a()
+  {
+    jdField_a_of_type_JavaUtilHashMap.clear();
+    jdField_b_of_type_JavaUtilHashMap.clear();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.uniteSearch.SearchUtil", 2, "clearCache");
+    }
+  }
+  
+  public static void a(TextView paramTextView)
+  {
+    float f = paramTextView.getResources().getDimensionPixelSize(2131298187) / paramTextView.getResources().getDisplayMetrics().densityDpi * ajwe.a.densityDpi;
+    if (f > 0.0F) {
+      paramTextView.setMaxWidth((int)f);
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      localObject = (balw)((QQAppInterface)localObject).getManager(203);
+      if ((localObject != null) && (((balw)localObject).b(paramString))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public static long[] a(List<Long> paramList)
+  {
+    long[] arrayOfLong = new long[paramList.size()];
+    int i = 0;
+    while (i < paramList.size())
+    {
+      arrayOfLong[i] = ((Long)paramList.get(i)).longValue();
+      i += 1;
+    }
+    return arrayOfLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awiu
  * JD-Core Version:    0.7.0.1
  */

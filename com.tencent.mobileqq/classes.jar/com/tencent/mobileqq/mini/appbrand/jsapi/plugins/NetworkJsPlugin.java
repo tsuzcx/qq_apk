@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import badq;
+import bbev;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
@@ -38,7 +38,7 @@ public class NetworkJsPlugin
   {
     if (this.jsPluginEngine.getServiceRuntime() != null)
     {
-      switch (badq.a(this.jsPluginEngine.getServiceRuntime().getContextEx()))
+      switch (bbev.a(this.jsPluginEngine.getServiceRuntime().getContextEx()))
       {
       default: 
         return "unknown";

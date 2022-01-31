@@ -1,67 +1,86 @@
-import android.text.TextUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.DownloadListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
+import tencent.im.troop_search_popclassifc.popclassifc.RspBody;
+import tencent.im.troop_search_searchtab.searchtab.RspBody;
 
 public class myb
+  implements BusinessObserver
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static myb jdField_a_of_type_Myb;
-  private URLDrawable.DownloadListener jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener = new myc(this);
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ArrayList<String> b = new ArrayList();
+  protected int a;
+  protected WeakReference<mya> a;
+  protected WeakReference<QQAppInterface> b;
   
-  public static myb a()
+  public myb(mya parammya, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if (jdField_a_of_type_Myb == null) {
-      jdField_a_of_type_Myb = new myb();
-    }
-    return jdField_a_of_type_Myb;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammya);
+    this.b = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    boolean bool2 = false;
+    mya localmya = (mya)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject1 = (QQAppInterface)this.b.get();
+    Object localObject2;
+    if (QLog.isColorLevel())
     {
-      if ((this.jdField_a_of_type_ComTencentImageURLDrawable == null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-      {
-        String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-        this.jdField_a_of_type_ComTencentImageURLDrawable = axwd.a(str);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setDownloadListener(this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
-        if (QLog.isColorLevel()) {
-          QLog.d("AdvertisementCoverPreloadManager", 2, "startImageDownload url:" + str);
+      localObject2 = new StringBuilder().append("InfoReqObserver: type=").append(paramInt).append(", reqType=").append(this.jdField_a_of_type_Int).append(", isSucc=").append(paramBoolean).append(", cbIsNull=");
+      if (localmya != null) {
+        break label270;
+      }
+    }
+    label269:
+    label270:
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      localObject2 = ((StringBuilder)localObject2).append(bool1).append(", appIsNull=");
+      bool1 = bool2;
+      if (localObject1 == null) {
+        bool1 = true;
+      }
+      QLog.d("AddContactTroopHandler", 2, bool1);
+      if ((localmya != null) && (localObject1 != null)) {
+        if ((paramBoolean) && (paramBundle != null)) {
+          try
+          {
+            paramBundle = paramBundle.getByteArray("data");
+            if (paramBundle != null)
+            {
+              localObject1 = (myc)((QQAppInterface)localObject1).getManager(80);
+              if (this.jdField_a_of_type_Int == 1)
+              {
+                localObject2 = new popclassifc.RspBody();
+                ((popclassifc.RspBody)localObject2).mergeFrom(paramBundle);
+                ((myc)localObject1).a((popclassifc.RspBody)localObject2);
+                localmya.a();
+                return;
+              }
+              if (this.jdField_a_of_type_Int != 2) {
+                break label269;
+              }
+              localObject2 = new searchtab.RspBody();
+              ((searchtab.RspBody)localObject2).mergeFrom(paramBundle);
+              ((myc)localObject1).a((searchtab.RspBody)localObject2);
+              localmya.a();
+              return;
+            }
+          }
+          catch (Exception paramBundle)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("AddContactTroopHandler", 2, "InfoReqObserver exp:", paramBundle);
+            }
+          }
+        } else {
+          localmya.b();
         }
       }
       return;
     }
-  }
-  
-  public void a(ArrayList<String> paramArrayList)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramArrayList == null) || (paramArrayList.size() <= 0)) {
-        break label118;
-      }
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        String str = (String)paramArrayList.next();
-        if ((!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(str)))
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          if (QLog.isColorLevel()) {
-            QLog.d("AdvertisementCoverPreloadManager", 2, "addImagesToPreload url:" + str);
-          }
-        }
-      }
-    }
-    a();
-    label118:
   }
 }
 

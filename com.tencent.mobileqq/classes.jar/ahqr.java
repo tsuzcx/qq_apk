@@ -1,42 +1,75 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.selectmember.FriendTabView;
+import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.PinnedFooterExpandableListView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ahqr
-  implements bely
+  extends ahpv
+  implements Cloneable
 {
-  public ahqr(FriendTabView paramFriendTabView) {}
+  private String d;
   
-  public void a()
+  public ahqr(Context paramContext)
   {
-    this.a.a = true;
-    FriendTabView.a(this.a).setFooterEnable(false);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131699610);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
+  public void a(String paramString)
   {
-    if (!this.a.a)
+    this.d = paramString;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    QLog.d("TroopSpecialAttentionMsg", 2, "deSerialize");
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
-      if (paramInt - 1 >= 0) {
-        paramPinnedFooterExpandableListView.b(paramInt - 1);
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      this.c = paramArrayOfByte.getString("messageNavInfo");
+      this.d = paramArrayOfByte.getString("senderUin");
+      if ((this.c != null) && (this.c.length() != 0)) {
+        this.jdField_a_of_type_Azmk.a(this.c);
       }
-      for (;;)
-      {
-        this.a.a = true;
-        FriendTabView.a(this.a).setFooterEnable(false);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendTabView", 2, "header group unusal: " + paramInt);
-        }
-      }
-    }
-    if (paramPinnedFooterExpandableListView.c(paramInt))
-    {
-      paramPinnedFooterExpandableListView.b(paramInt);
       return;
     }
-    paramPinnedFooterExpandableListView.a(paramInt);
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("time", this.jdField_a_of_type_Int);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      localJSONObject.put("senderUin", this.d);
+      if (this.jdField_a_of_type_Azmk != null) {
+        this.c = this.jdField_a_of_type_Azmk.a();
+      }
+      localJSONObject.put("messageNavInfo", this.c);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+    return localJSONObject.toString().getBytes();
   }
 }
 

@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aecb;
+import aena;
 import com.tencent.mobileqq.apollo.view.FrameGifView;
 
 public class CmGameChatPie$15
   implements Runnable
 {
-  public CmGameChatPie$15(aecb paramaecb, boolean paramBoolean) {}
+  public CmGameChatPie$15(aena paramaena, boolean paramBoolean) {}
   
   public void run()
   {
     if (this.a)
     {
-      if (aecb.b(this.this$0).b() == 3)
+      if (aena.b(this.this$0).b() == 3)
       {
-        aecb.b(this.this$0).b();
+        aena.b(this.this$0).b();
         return;
       }
-      aecb.b(this.this$0).setImageResource(2130838936);
+      aena.b(this.this$0).setImageResource(2130838957);
       return;
     }
-    aecb.b(this.this$0).c();
-    aecb.b(this.this$0).setImageResource(2130838934);
+    aena.b(this.this$0).c();
+    aena.b(this.this$0).setImageResource(2130838955);
   }
 }
 

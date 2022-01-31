@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfz;
+import beka;
 import com.tencent.qqmini.sdk.core.widget.KeyboardLayout;
 
 class InputJsPlugin$3
   implements Runnable
 {
-  InputJsPlugin$3(InputJsPlugin paramInputJsPlugin, bdfz parambdfz) {}
+  InputJsPlugin$3(InputJsPlugin paramInputJsPlugin, beka parambeka) {}
   
   public void run()
   {

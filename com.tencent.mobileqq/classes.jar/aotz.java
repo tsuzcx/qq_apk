@@ -1,93 +1,112 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForFile;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class aotz
-  implements aotv
+  extends aoue
 {
-  protected QQAppInterface a;
-  protected FileManagerEntity a;
-  private final String a;
-  
-  public aotz(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
+  public aotz(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = "VideoForC2C<QFile>";
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
+    super(paramQQAppInterface, paramContext);
   }
   
-  public long a()
+  protected ImageView a(acun paramacun)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
+    if (paramacun == null) {}
+    while (!(paramacun instanceof adxa)) {
+      return null;
+    }
+    return ((adxa)paramacun).a;
   }
   
-  public String a()
+  protected void a(acun paramacun, ImageView paramImageView)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "";
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = ((float)paramLong / (float)this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 16, null, 0, null);
-  }
-  
-  public void a(aojh paramaojh)
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid))
-    {
-      a(true);
-      paramaojh.a(-6101, BaseApplication.getContext().getResources().getString(2131627250));
-      QLog.e("VideoForC2C<QFile>", 2, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "],[getOnlinePlay]  uuid is null");
+    if (paramacun == null) {}
+    while (!(paramacun instanceof adxa)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType = 1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend, false, new aoua(this, paramaojh));
+    ((adxa)paramacun).a = paramImageView;
   }
   
-  public void a(String paramString)
+  protected void a(View paramView, acun paramacun, ChatMessage paramChatMessage, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath(paramString);
-    File localFile = new File(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.localModifyTime = localFile.lastModified();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOLfileSessionId = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = 1.0F;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setCloudType(3);
-    apck.e(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 11, new Object[] { paramString, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize), Boolean.valueOf(true), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strServerPath }, 0, null);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
-    if (paramBoolean)
+    if ((paramChatMessage == null) || (paramChatMessage.isMultiMsg)) {}
+    int i;
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 12, null, 2, null);
+      do
+      {
+        do
+        {
+          return;
+          QLog.i("OfflineFileBubblePauseHandler", 1, "handlePauseClick: type[" + paramInt + "]");
+        } while ((paramInt == -1) || (!(paramChatMessage instanceof MessageForFile)));
+        paramView = (MessageForFile)paramChatMessage;
+        paramacun = apue.a(this.a, paramView);
+      } while (paramacun == null);
+      if (paramView.istroop == 3000) {}
+      for (i = 3; paramInt == 0; i = 1)
+      {
+        axqw.b(this.a, "dc00898", "", "", "0X800A7F1", "0X800A7F1", i, 0, "", "", "", "");
+        this.a.a().a(paramacun.nSessionId);
+        return;
+      }
+    } while (paramInt != 1);
+    axqw.b(this.a, "dc00898", "", "", "0X800A7F2", "0X800A7F2", i, 0, "", "", "", "");
+    a(new aoua(this, i, paramacun));
   }
   
-  public boolean a()
+  protected boolean a(ChatMessage paramChatMessage)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 16;
+    if (paramChatMessage == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return false;
+        } while ((paramChatMessage.isMultiMsg) || (!(paramChatMessage instanceof MessageForFile)));
+        paramChatMessage = (MessageForFile)paramChatMessage;
+        paramChatMessage = apue.a(this.a, paramChatMessage);
+      } while (paramChatMessage == null);
+      if (QLog.isColorLevel()) {
+        QLog.i("OfflineFileBubblePauseHandler", 1, "needShowPauseIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "]");
+      }
+      if ((paramChatMessage.nOpType == 0) && (paramChatMessage.status == 2)) {
+        return true;
+      }
+    } while ((paramChatMessage.nOpType != 3) || (paramChatMessage.status != 2));
+    return true;
   }
   
-  public String b()
+  protected boolean b(ChatMessage paramChatMessage)
   {
-    return apbo.a().c() + becz.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid);
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName;
+    if (paramChatMessage == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return false;
+        } while ((paramChatMessage.isMultiMsg) || (!(paramChatMessage instanceof MessageForFile)));
+        paramChatMessage = (MessageForFile)paramChatMessage;
+        paramChatMessage = apue.a(this.a, paramChatMessage);
+      } while (paramChatMessage == null);
+      if (QLog.isColorLevel()) {
+        QLog.i("OfflineFileBubblePauseHandler", 1, "needShowPauseIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "]");
+      }
+      if ((paramChatMessage.nOpType == 0) && (paramChatMessage.status == 3)) {
+        return true;
+      }
+    } while ((paramChatMessage.nOpType != 3) || (paramChatMessage.status != 3));
+    return true;
   }
 }
 

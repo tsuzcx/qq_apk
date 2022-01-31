@@ -1,34 +1,18 @@
-import android.os.SystemClock;
-import com.tribe.async.async.JobSegment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
 
-public abstract class vfu<IN, OUT>
-  extends JobSegment<IN, OUT>
+public final class vfu
+  implements Parcelable.Creator<EditTakeGifSource>
 {
-  protected long a;
-  private final String a;
-  private long b;
-  
-  public vfu()
+  public EditTakeGifSource a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.publish.edit." + getClass().getSimpleName());
+    return new EditTakeGifSource(paramParcel);
   }
   
-  public void call(IN paramIN)
+  public EditTakeGifSource[] a(int paramInt)
   {
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    super.call(paramIN);
-  }
-  
-  public void notifyError(Error paramError)
-  {
-    this.b = SystemClock.uptimeMillis();
-    super.notifyError(paramError);
-  }
-  
-  public void notifyResult(OUT paramOUT)
-  {
-    this.b = SystemClock.uptimeMillis();
-    super.notifyResult(paramOUT);
+    return new EditTakeGifSource[paramInt];
   }
 }
 

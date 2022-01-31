@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import com.tencent.aekit.plugin.core.IDetect;
 import com.tencent.ttpic.baseutils.api.ApiHelper;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
@@ -14,22 +15,40 @@ class AEDetector$2$1
   
   public void run()
   {
-    String str = this.val$detect.getModuleType();
-    Handler localHandler = (Handler)AEDetector.access$200(this.this$1.this$0).get(str);
+    try
+    {
+      localObject1 = this.val$detect.getModuleType();
+      localObject1 = (Handler)AEDetector.access$200(this.this$1.this$0).get(localObject1);
+      if (localObject1 == null) {
+        break label86;
+      }
+      localObject1 = ((Handler)localObject1).getLooper();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Object localObject1;
+        label69:
+        LogUtils.e("AEDetector", localException);
+        continue;
+        label86:
+        Object localObject2 = null;
+      }
+    }
     this.val$detect.clear();
-    if ((localHandler != null) && (localHandler.getLooper() != null))
+    if (localObject1 != null)
     {
       if (!ApiHelper.hasJellyBeanMR2()) {
-        break label88;
+        break label69;
       }
-      ((Handler)AEDetector.access$200(this.this$1.this$0).get(str)).getLooper().quitSafely();
+      ((Looper)localObject1).quitSafely();
     }
     for (;;)
     {
       this.this$1.val$countDownLatch.countDown();
       return;
-      label88:
-      ((Handler)AEDetector.access$200(this.this$1.this$0).get(str)).getLooper().quit();
+      ((Looper)localObject1).quit();
     }
   }
 }

@@ -9,32 +9,32 @@ import com.tencent.pts.utils.PTSViewDecorationUtil.RoundedCorner;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
-import obj;
-import pei;
-import rct;
-import rcw;
+import omu;
+import pqc;
+import rph;
+import rpk;
 
 public class PTSImageView
   extends KandianUrlImageView
-  implements IView<pei>
+  implements IView<pqc>
 {
   private PTSViewDecorationUtil.RoundedCorner jdField_a_of_type_ComTencentPtsUtilsPTSViewDecorationUtil$RoundedCorner;
   private final String jdField_a_of_type_JavaLangString = "PTSImageView";
   private URL jdField_a_of_type_JavaNetURL;
-  private pei jdField_a_of_type_Pei;
+  private pqc jdField_a_of_type_Pqc;
   private String b;
   
-  public PTSImageView(pei parampei)
+  public PTSImageView(pqc parampqc)
   {
-    super(parampei.getContext());
-    this.jdField_a_of_type_Pei = parampei;
-    this.jdField_a_of_type_ComTencentPtsUtilsPTSViewDecorationUtil$RoundedCorner = new PTSViewDecorationUtil.RoundedCorner(this.jdField_a_of_type_Pei);
+    super(parampqc.getContext());
+    this.jdField_a_of_type_Pqc = parampqc;
+    this.jdField_a_of_type_ComTencentPtsUtilsPTSViewDecorationUtil$RoundedCorner = new PTSViewDecorationUtil.RoundedCorner(this.jdField_a_of_type_Pqc);
     setScaleType(ImageView.ScaleType.FIT_XY);
   }
   
-  public pei a()
+  public pqc a()
   {
-    return this.jdField_a_of_type_Pei;
+    return this.jdField_a_of_type_Pqc;
   }
   
   public void draw(Canvas paramCanvas)
@@ -48,8 +48,8 @@ public class PTSImageView
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    rcw localrcw = this.jdField_a_of_type_Rct.a();
-    if ((localrcw == null) || (localrcw.a)) {
+    rpk localrpk = this.jdField_a_of_type_Rph.a();
+    if ((localrpk == null) || (localrpk.a)) {
       setImageSrc(this.b);
     }
   }
@@ -72,7 +72,7 @@ public class PTSImageView
       for (;;)
       {
         QLog.d("PTSImageView", 2, "[setImageSrc], mPathUrl = " + this.jdField_a_of_type_JavaNetURL);
-        obj.a(this, this.jdField_a_of_type_JavaNetURL, getContext());
+        omu.a(this, this.jdField_a_of_type_JavaNetURL, getContext());
         return;
         QLog.d("PTSImageView", 2, "[setImageSrc], current path unchanged ");
       }

@@ -1,18 +1,41 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.QQRecorder;
+import com.tencent.qphone.base.util.QLog;
 
 public class adbk
-  extends GestureDetector.SimpleOnGestureListener
+  extends Handler
 {
-  public adbk(ArkAppRootLayout paramArkAppRootLayout) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public adbk(CommonRecordSoundPanel paramCommonRecordSoundPanel, Looper paramLooper)
   {
-    if (ArkAppRootLayout.a(this.a) != null) {
-      ArkAppRootLayout.a(this.a).a();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 16711687: 
+      this.a.b(102);
+      return;
+    case 16711686: 
+      if (QLog.isColorLevel()) {
+        QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
+      }
+      CommonRecordSoundPanel.a(this.a).c();
+      bbbr.b(2131230744, false);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(16711686);
+      bbbr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false);
+      return;
     }
-    return super.onSingleTapUp(paramMotionEvent);
+    this.a.b(1);
+    this.a.b();
+    bcpw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131698543), 1).a();
   }
 }
 

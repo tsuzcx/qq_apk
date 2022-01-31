@@ -1,43 +1,81 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendFeedView;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import com.tencent.qphone.base.util.QLog;
 
 public class anot
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+  extends BitmapDrawable
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  ansk jdField_a_of_type_Ansk;
-  public bgrz a;
-  public ExtendFriendFeedView a;
+  public int a;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(2);
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   
-  public anot(View paramView, Context paramContext, ansk paramansk, bgrz parambgrz)
+  public anot(Resources paramResources, Bitmap paramBitmap)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedView = ((ExtendFriendFeedView)paramView);
-    this.jdField_a_of_type_Bgrz = parambgrz;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Ansk = paramansk;
-    if (this.jdField_a_of_type_Bgrz != null) {
-      this.jdField_a_of_type_Bgrz.a(this.jdField_a_of_type_Bgrz.a(), new anou(this));
-    }
+    super(paramResources, paramBitmap);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
   }
   
-  public void a(anot paramanot, anpv paramanpv, int paramInt)
+  protected Rect a(Rect paramRect)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedView != null) && (paramanpv != null))
+    if (getBitmap() == null) {
+      return this.jdField_a_of_type_AndroidGraphicsRect;
+    }
+    int i = getBitmap().getHeight();
+    int k = getBitmap().getWidth();
+    if (paramRect == null) {
+      return new Rect(0, 0, k, i);
+    }
+    QLog.d("chatbg", 1, "dstRect = " + paramRect);
+    QLog.d("chatbg", 1, "img width = " + k + " img height = " + i);
+    if (this.jdField_a_of_type_Int < paramRect.height()) {
+      this.jdField_a_of_type_Int = paramRect.height();
+    }
+    int j;
+    if (this.jdField_a_of_type_Int / paramRect.width() >= i / k)
     {
-      int i = paramanot.getPosition();
-      paramanot.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedView.setFeedBgParams(i, paramanpv.mVoiceUrl, paramInt, false);
+      j = paramRect.width() * i / this.jdField_a_of_type_Int;
+      k = (int)((k - j) * 0.5D);
+      if (this.jdField_a_of_type_Int > paramRect.height()) {
+        i = getBitmap().getHeight() * paramRect.height() / this.jdField_a_of_type_Int;
+      }
     }
-    if ((this.jdField_a_of_type_Bgrz != null) && (paramanpv != null) && (paramanpv.mAlumbasicdata != null)) {
-      paramanot.jdField_a_of_type_Bgrz.a(paramanpv.mAlumbasicdata, paramanot.getAdapterPosition());
+    for (paramRect = new Rect(k, 0, j + k, i);; paramRect = new Rect(0, i, k, j + i))
+    {
+      QLog.d("chatbg", 1, " result = " + paramRect + " chatWindowHeight " + this.jdField_a_of_type_Int);
+      return paramRect;
+      j = paramRect.height() * k / paramRect.width();
+      i = (int)((i - this.jdField_a_of_type_Int * k / paramRect.width()) * 0.5D);
     }
   }
   
-  public void onClick(View paramView) {}
+  public void draw(Canvas paramCanvas)
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    {
+      Rect localRect = getBounds();
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, localRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+  }
+  
+  public int getOpacity()
+  {
+    return 0;
+  }
+  
+  protected void onBoundsChange(Rect paramRect)
+  {
+    this.jdField_a_of_type_AndroidGraphicsRect = a(getBounds());
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

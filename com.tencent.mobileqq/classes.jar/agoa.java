@@ -1,82 +1,120 @@
-import Wallet.SkinInfo;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.widget.NumberCheckBox;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.DragView;
+import java.util.ArrayList;
 
 public class agoa
+  implements bfpe
 {
-  public static boolean a;
-  public static int c = 0;
-  public int a;
-  public SkinInfo a;
-  public RedPacketInfoBase a;
-  public String a;
-  public int b;
-  public String b = "";
+  public agoa(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public agoa(SkinInfo paramSkinInfo)
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_WalletSkinInfo = new SkinInfo();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = new RedPacketInfoBase();
-    this.jdField_a_of_type_JavaLangString = paramSkinInfo.skin_name;
-    this.jdField_a_of_type_WalletSkinInfo = paramSkinInfo;
-  }
+  public void a(AdapterView<?> paramAdapterView) {}
   
-  public agoa(String paramString)
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_WalletSkinInfo = new SkinInfo();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = new RedPacketInfoBase();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static int a(List<agoa> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoPreviewActivity", 2, " onItemSelected position=" + paramInt);
+    }
+    LocalMediaInfo localLocalMediaInfo = this.a.b(this.a.jdField_a_of_type_Agoz.a(paramInt));
+    if (this.a.E)
     {
-      agoa localagoa = (agoa)paramList.next();
-      if (c == localagoa.jdField_a_of_type_WalletSkinInfo.skin_id) {
-        return localagoa.jdField_a_of_type_WalletSkinInfo.skin_id;
+      if ((localLocalMediaInfo == null) || (this.a.a(localLocalMediaInfo.path) != 1)) {
+        break label444;
+      }
+      if (this.a.jdField_a_of_type_Agqu != null)
+      {
+        agrc localagrc = new agrc();
+        localagrc.jdField_a_of_type_Boolean = false;
+        localagrc.jdField_a_of_type_JavaLangString = localLocalMediaInfo.path;
+        this.a.jdField_a_of_type_Agqu.a(paramAdapterView, localagrc);
+      }
+      if (paramView != null)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371918));
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      }
+      if ((this.a.b != 0) && (this.a.b != 1) && (this.a.b != 3000)) {
+        break label432;
+      }
+      PhotoPreviewActivity.b(this.a, 8);
+    }
+    for (;;)
+    {
+      this.a.t = paramInt;
+      try
+      {
+        this.a.jdField_a_of_type_ComTencentWidgetDragView.setOriginRect(this.a.b((String)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.t)).thumbRect);
+        if (PhotoPreviewActivity.c(this.a))
+        {
+          PhotoPreviewActivity.a(this.a, this.a.t);
+          this.a.g();
+          if (!this.a.w)
+          {
+            if (this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 1) {
+              break label590;
+            }
+            this.a.d.setText(paramInt + 1 + " / " + this.a.jdField_a_of_type_JavaUtilArrayList.size());
+          }
+          paramAdapterView = (String)paramAdapterView.getAdapter().getItem(paramInt);
+          if ((this.a.a(paramAdapterView) == 1) && (!this.a.g)) {
+            this.a.f();
+          }
+          if (PhotoPreviewActivity.c(this.a)) {
+            PhotoPreviewActivity.a(this.a, (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.t));
+          }
+          return;
+          label432:
+          PhotoPreviewActivity.c(this.a, 8);
+          continue;
+          label444:
+          PhotoPreviewActivity.c(this.a, 0);
+          if (this.a.jdField_a_of_type_Agqu == null) {
+            continue;
+          }
+          this.a.jdField_a_of_type_Agqu.a(null, null);
+        }
+      }
+      catch (Exception paramView)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel())
+          {
+            QLog.d("PhotoPreviewActivity", 2, bfnd.a(paramView));
+            continue;
+            if (this.a.c.contains(Integer.valueOf(this.a.t)))
+            {
+              int i = this.a.c.indexOf(Integer.valueOf(this.a.t));
+              if (i != -1) {
+                PhotoPreviewActivity.a(this.a, i + 1);
+              } else {
+                this.a.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setChecked(false);
+              }
+            }
+            else
+            {
+              this.a.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setChecked(false);
+              continue;
+              label590:
+              this.a.d.setText(this.a.getResources().getString(2131695336));
+            }
+          }
+        }
       }
     }
-    return -1;
-  }
-  
-  public static void a(List<agoa> paramList)
-  {
-    Collections.sort(paramList, new agob());
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if (!(paramObject instanceof agoa)) {
-        break;
-      }
-    } while (this.jdField_a_of_type_WalletSkinInfo.skin_id == ((agoa)paramObject).jdField_a_of_type_WalletSkinInfo.skin_id);
-    return false;
-    return super.equals(paramObject);
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("");
-    localStringBuffer.append("background : " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.background + " | ");
-    localStringBuffer.append("icon : " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.icon + " | ");
-    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agoa
  * JD-Core Version:    0.7.0.1
  */

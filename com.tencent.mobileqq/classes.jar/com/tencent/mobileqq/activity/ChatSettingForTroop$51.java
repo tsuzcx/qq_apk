@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aali;
-import babr;
-import bafb;
+import aava;
+import bbcv;
+import bbgg;
 
 public class ChatSettingForTroop$51
   implements Runnable
@@ -19,11 +19,11 @@ public class ChatSettingForTroop$51
     do
     {
       return;
-      this.this$0.a = babr.a(this.this$0, 230);
+      this.this$0.a = bbcv.a(this.this$0, 230);
       this.this$0.a.setMessage(this.a);
-      aali localaali = new aali(this);
-      this.this$0.a.setPositiveButton(2131625463, localaali);
-      this.this$0.a.setNegativeButton(2131625035, localaali);
+      aava localaava = new aava(this);
+      this.this$0.a.setPositiveButton(2131691035, localaava);
+      this.this$0.a.setNegativeButton(2131690596, localaava);
     } while (this.this$0.a.isShowing());
     this.this$0.a.show();
   }

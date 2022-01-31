@@ -1,56 +1,59 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedCommentList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedCommentList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetCommentList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCommentList;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
 public class szn
-  extends slz
+  extends tbd
 {
-  public static final String a;
-  public uiv a;
+  int jdField_a_of_type_Int;
+  public final String a;
+  String b;
   
-  static
+  public szn(szh paramszh, String paramString, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = skt.a("StorySvc.feed_comment_list_775");
+    this.jdField_a_of_type_JavaLangString = sxp.a("StorySvc.get_comment_list");
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public String a()
   {
-    return jdField_a_of_type_JavaLangString;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public slu a(byte[] paramArrayOfByte)
+  public tbe a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspFeedCommentList localRspFeedCommentList = new qqstory_service.RspFeedCommentList();
+    qqstory_service.RspGetCommentList localRspGetCommentList = new qqstory_service.RspGetCommentList();
     try
     {
-      localRspFeedCommentList.mergeFrom(paramArrayOfByte);
-      return new szo(localRspFeedCommentList);
+      localRspGetCommentList.mergeFrom(paramArrayOfByte);
+      return new szo(this.jdField_a_of_type_Szh, localRspGetCommentList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      veg.d("Q.qqstory:GetCommentListRequest", "" + paramArrayOfByte);
     }
+    return null;
   }
   
   protected byte[] a()
   {
-    qqstory_service.ReqFeedCommentList localReqFeedCommentList = new qqstory_service.ReqFeedCommentList();
-    localReqFeedCommentList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Uiv.jdField_a_of_type_JavaLangString));
-    if (this.jdField_a_of_type_Uiv.jdField_b_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_Uiv.jdField_b_of_type_JavaLangString = "";
+    qqstory_service.ReqGetCommentList localReqGetCommentList = new qqstory_service.ReqGetCommentList();
+    localReqGetCommentList.vid.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqGetCommentList.latest_comment_id.set(this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory:GetCommentListRequest", 2, "getCommentListData by latest_comment_id: " + this.jdField_a_of_type_Int);
     }
-    localReqFeedCommentList.cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Uiv.jdField_b_of_type_JavaLangString));
-    localReqFeedCommentList.source.set(this.jdField_a_of_type_Uiv.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Uiv.jdField_b_of_type_Int != -1) {
-      localReqFeedCommentList.type.set(this.jdField_a_of_type_Uiv.jdField_b_of_type_Int);
-    }
-    return localReqFeedCommentList.toByteArray();
+    return localReqGetCommentList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetCommentListRequest{ vid=" + this.b + ", startCommentID=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

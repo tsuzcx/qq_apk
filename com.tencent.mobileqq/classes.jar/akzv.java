@@ -1,24 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.5;
-import cooperation.wadl.ipc.WadlParams;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.ar.ARRecord.VideoEncoderCore;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class akzv
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public akzv(ArkAppDownloadModule.5 param5) {}
+  private WeakReference<VideoEncoderCore> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public akzv(Looper paramLooper, VideoEncoderCore paramVideoEncoderCore)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    super(paramLooper);
+    this.a = new WeakReference(paramVideoEncoderCore);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a != null) {}
+    for (VideoEncoderCore localVideoEncoderCore = (VideoEncoderCore)this.a.get();; localVideoEncoderCore = null)
+    {
+      switch (paramMessage.what)
+      {
+      }
+      do
+      {
+        do
+        {
+          return;
+        } while (localVideoEncoderCore == null);
+        paramMessage = (Object[])paramMessage.obj;
+        try
+        {
+          VideoEncoderCore.a(localVideoEncoderCore, (byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
+          return;
+        }
+        catch (Exception paramMessage)
+        {
+          QLog.e("VideoEncoderCore", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
+        }
+      } while (VideoEncoderCore.a(localVideoEncoderCore) == null);
+      VideoEncoderCore.a(localVideoEncoderCore).a(3);
+      return;
     }
-    awqx.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "8", "", this.a.a.a, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akzv
  * JD-Core Version:    0.7.0.1
  */

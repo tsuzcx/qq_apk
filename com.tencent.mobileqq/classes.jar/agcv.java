@@ -1,17 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import com.tencent.qphone.base.util.QLog;
 
-public class agcv
-  implements View.OnClickListener
+class agcv
+  extends akfl
 {
-  public agcv(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  agcv(agch paramagch) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.a.a(false);
-    LpReportInfo_pf00064.allReport(603, 3);
+    if (QLog.isColorLevel()) {
+      QLog.d("MainAssistObserver", 2, "RedpointObserver, onUpdateSettingMe");
+    }
+    this.a.e();
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MainAssistObserver", 2, "RedpointObserver, onNotifyLebaRedTouch");
+    }
+    this.a.g();
   }
 }
 

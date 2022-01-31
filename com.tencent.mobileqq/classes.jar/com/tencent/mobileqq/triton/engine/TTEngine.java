@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import com.tencent.mobileqq.triton.annotation.JNIModule;
 import com.tencent.mobileqq.triton.api.TTChannel;
 import com.tencent.mobileqq.triton.api.http.NativeHttp;
-import com.tencent.mobileqq.triton.api.subpackage.NativeSubpackage;
 import com.tencent.mobileqq.triton.audio.TTAudioPlayerManager;
 import com.tencent.mobileqq.triton.bridge.TTJSBridge;
 import com.tencent.mobileqq.triton.bridge.TTJSInnerEngine;
@@ -45,6 +44,7 @@ import com.tencent.mobileqq.triton.sdk.game.MiniGameInfo;
 import com.tencent.mobileqq.triton.utils.CanvasRecorder;
 import com.tencent.mobileqq.triton.utils.SystemInfoManager;
 import com.tencent.mobileqq.triton.views.GameUserInfoBtnManager;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executor;
 
@@ -78,14 +78,13 @@ public class TTEngine
   private IQQEnv mQQEnv;
   private volatile RenderContext mRenderContext;
   private volatile ScriptService mScriptEngine;
-  @TTNativeCall
-  private NativeSubpackage mSubpackage;
   private SystemInfoManager mSystemInfoManager;
   @TTNativeCall
   private TTChannel mTTChannel;
   private volatile int mTargetFPS;
   @TTNativeCall
   private long nativeTTAppHandle;
+  private HashMap<String, Boolean> optionalSoLoadStatusMap;
   
   public TTEngine()
   {
@@ -93,7 +92,6 @@ public class TTEngine
     this.nativeTTAppHandle = 0L;
     this.mTTChannel = new TTChannel(this);
     this.mFontBitmapManager = new FontBitmapManager(this);
-    this.mSubpackage = new NativeSubpackage(this);
     this.mNativeHttp = new NativeHttp(this);
     this.mGameUserInfoBtnManager = new GameUserInfoBtnManager(this);
     this.mLifecycleManager = new LifecycleManager();
@@ -146,7 +144,7 @@ public class TTEngine
   
   public void createTTApp()
   {
-    JNICaller.TTEngine.nativeCreateTTApp(this, getRenderContext(), getCanvasRecorder(), getTTChannel(), getUserInfoBtnManager(), (GameLauncher)getGameLauncher(), (NativeHttp)getNativeHttp(), getFontBitmapManager(), getNativeSubpackage(), this.mInspectorBridge);
+    JNICaller.TTEngine.nativeCreateTTApp(this, getRenderContext(), getCanvasRecorder(), getTTChannel(), getUserInfoBtnManager(), (GameLauncher)getGameLauncher(), (NativeHttp)getNativeHttp(), getFontBitmapManager(), this.mInspectorBridge);
   }
   
   public APIProxy getApiProxy()
@@ -244,15 +242,20 @@ public class TTEngine
     return this.mNativeHttp;
   }
   
-  public NativeSubpackage getNativeSubpackage()
-  {
-    return this.mSubpackage;
-  }
-  
   public long getNativeTTAppHandle()
   {
     return this.nativeTTAppHandle;
   }
+  
+  public boolean getOptionalSoLoadStatus(String paramString)
+  {
+    if ((this.optionalSoLoadStatusMap != null) && (!this.optionalSoLoadStatusMap.isEmpty()) && (this.optionalSoLoadStatusMap.containsKey(paramString))) {
+      return ((Boolean)this.optionalSoLoadStatusMap.get(paramString)).booleanValue();
+    }
+    return false;
+  }
+  
+  public native int getProcessedMessageCount();
   
   public IQQEnv getQQEnv()
   {
@@ -338,6 +341,7 @@ public class TTEngine
         TTLog.e("TTEngine", "initEngine loadSo fail!");
         return 1001;
       }
+      this.optionalSoLoadStatusMap = TTSoLoader.loadOptionalSoList();
       getQQEnv().reportDC04266(1002, null);
       if (paramIInspectorAgent != null) {
         this.mInspectorBridge = new TTEngine.InspectorBridge(paramIInspectorAgent, null);
@@ -370,7 +374,7 @@ public class TTEngine
   
   public boolean isGLThread()
   {
-    return JSThread.isJSThread();
+    return (this.mScriptEngine != null) && (this.mScriptEngine.isJSThread());
   }
   
   public int loadScriptPathWithCodeCache(int paramInt, @NonNull String paramString1, @NonNull String paramString2, @NonNull String paramString3)
@@ -391,9 +395,11 @@ public class TTEngine
   
   public native long nativeCanvasPresent();
   
-  public native void nativeCreateTTApp(RenderContext paramRenderContext, CanvasRecorder paramCanvasRecorder, TTChannel paramTTChannel, GameUserInfoBtnManager paramGameUserInfoBtnManager, GameLauncher paramGameLauncher, NativeHttp paramNativeHttp, FontBitmapManager paramFontBitmapManager, NativeSubpackage paramNativeSubpackage, TTEngine.InspectorBridge paramInspectorBridge);
+  public native void nativeCreateTTApp(RenderContext paramRenderContext, CanvasRecorder paramCanvasRecorder, TTChannel paramTTChannel, GameUserInfoBtnManager paramGameUserInfoBtnManager, GameLauncher paramGameLauncher, NativeHttp paramNativeHttp, FontBitmapManager paramFontBitmapManager, TTEngine.InspectorBridge paramInspectorBridge);
   
   public native void nativeDiposeTTApp();
+  
+  public native void nativeEnableJankTrace(boolean paramBoolean);
   
   public native boolean nativeEnvInit();
   
@@ -531,6 +537,11 @@ public class TTEngine
   public void setEnableCodeCache(boolean paramBoolean)
   {
     this.mEnableCodeCache = paramBoolean;
+  }
+  
+  public void setEnableJankCanary(boolean paramBoolean)
+  {
+    JNICaller.TTEngine.nativeEnableJankTrace(this, paramBoolean);
   }
   
   public void setEngineListener(ITTEngine.IListener paramIListener)

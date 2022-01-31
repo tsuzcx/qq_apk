@@ -9,7 +9,7 @@ class ReciteRecordLayout$10
   
   public void run()
   {
-    this.this$0.a.setText(2131632002);
+    this.this$0.a.setText(2131697721);
   }
 }
 

@@ -66,7 +66,7 @@ public class DittoTextArea
   private int mMaxLines = 2147483647;
   private int mOldMaxLines = 2147483647;
   private TextPaint mPaint;
-  public String mText = "";
+  protected String mText = "";
   public boolean mTextBold = false;
   public Typeface mTypeface = Typeface.DEFAULT;
   public int shadowBgColor = 0;
@@ -82,7 +82,7 @@ public class DittoTextArea
   
   private Integer generateCacheKey()
   {
-    return Integer.valueOf((this.mText.toString() + "_" + this.mCurTextColor + "_" + this.mCurrTextSize + "_" + this.mLayoutAlignment + "_" + this.mEllipsize + "_" + this.letterSpace + "_" + this.mFontFamily).hashCode());
+    return Integer.valueOf((this.mText + "_" + this.mCurTextColor + "_" + this.mCurrTextSize + "_" + this.mLayoutAlignment + "_" + this.mEllipsize + "_" + this.letterSpace + "_" + this.mFontFamily).hashCode());
   }
   
   private int getDesiredHeight()
@@ -113,9 +113,14 @@ public class DittoTextArea
   
   private Layout makeSingleLayout(int paramInt1, BoringLayout.Metrics paramMetrics, int paramInt2, Layout.Alignment paramAlignment, boolean paramBoolean1, TextUtils.TruncateAt paramTruncateAt, boolean paramBoolean2)
   {
-    if (paramMetrics == UNKNOWN_BORING)
+    String str;
+    if (this.mText == null)
     {
-      BoringLayout.Metrics localMetrics = BoringLayout.isBoring(this.mText, this.mPaint, this.mBoring);
+      str = "";
+      if (paramMetrics != UNKNOWN_BORING) {
+        break label296;
+      }
+      BoringLayout.Metrics localMetrics = BoringLayout.isBoring(str, this.mPaint, this.mBoring);
       paramMetrics = localMetrics;
       if (localMetrics != null)
       {
@@ -123,25 +128,29 @@ public class DittoTextArea
         paramMetrics = localMetrics;
       }
     }
+    label296:
     for (;;)
     {
       if (paramMetrics != null)
       {
-        if ((paramMetrics.width <= paramInt1) && ((paramTruncateAt == null) || (paramMetrics.width <= paramInt2))) {
-          return BoringLayout.make(this.mText, this.mPaint, paramInt1, paramAlignment, this.mLineSpacingMult, this.mLineSpacingAdd, paramMetrics, this.mIncludeFontPadding);
+        if ((paramMetrics.width <= paramInt1) && ((paramTruncateAt == null) || (paramMetrics.width <= paramInt2)))
+        {
+          return BoringLayout.make(str, this.mPaint, paramInt1, paramAlignment, this.mLineSpacingMult, this.mLineSpacingAdd, paramMetrics, this.mIncludeFontPadding);
+          str = this.mText;
+          break;
         }
         if ((paramBoolean1) && (paramMetrics.width <= paramInt1)) {
-          return BoringLayout.make(this.mText, this.mPaint, paramInt1, paramAlignment, this.mLineSpacingMult, this.mLineSpacingAdd, paramMetrics, this.mIncludeFontPadding, paramTruncateAt, paramInt2);
+          return BoringLayout.make(str, this.mPaint, paramInt1, paramAlignment, this.mLineSpacingMult, this.mLineSpacingAdd, paramMetrics, this.mIncludeFontPadding, paramTruncateAt, paramInt2);
         }
         if (paramBoolean1) {
-          return StaticLayoutWithMaxLines.create(this.mText, 0, this.mText.length(), this.mPaint, paramInt1, paramAlignment, this.mLineSpacingMult, this.mLineSpacingAdd, this.mIncludeFontPadding, paramTruncateAt, paramInt2, this.mMaxLines);
+          return StaticLayoutWithMaxLines.create(str, 0, str.length(), this.mPaint, paramInt1, paramAlignment, this.mLineSpacingMult, this.mLineSpacingAdd, this.mIncludeFontPadding, paramTruncateAt, paramInt2, this.mMaxLines);
         }
-        return new StaticLayout(this.mText, this.mPaint, paramInt1, paramAlignment, this.mLineSpacingMult, this.mLineSpacingAdd, this.mIncludeFontPadding);
+        return new StaticLayout(str, this.mPaint, paramInt1, paramAlignment, this.mLineSpacingMult, this.mLineSpacingAdd, this.mIncludeFontPadding);
       }
       if (paramBoolean1) {
-        return StaticLayoutWithMaxLines.create(this.mText, 0, this.mText.length(), this.mPaint, paramInt1, paramAlignment, this.mLineSpacingMult, this.mLineSpacingAdd, this.mIncludeFontPadding, paramTruncateAt, paramInt2, this.mMaxLines);
+        return StaticLayoutWithMaxLines.create(str, 0, str.length(), this.mPaint, paramInt1, paramAlignment, this.mLineSpacingMult, this.mLineSpacingAdd, this.mIncludeFontPadding, paramTruncateAt, paramInt2, this.mMaxLines);
       }
-      return new StaticLayout(this.mText, this.mPaint, paramInt1, paramAlignment, this.mLineSpacingMult, this.mLineSpacingAdd, this.mIncludeFontPadding);
+      return new StaticLayout(str, this.mPaint, paramInt1, paramAlignment, this.mLineSpacingMult, this.mLineSpacingAdd, this.mIncludeFontPadding);
     }
   }
   
@@ -217,7 +226,7 @@ public class DittoTextArea
       paramInt1 = DittoTextArea.TextCache.access$100(this.mCacheText) - this.paddingLeft - this.paddingRight;
       DittoTextArea.TextCache.access$002(this.mCacheText, makeNewLayout(paramInt1, this.mBoring, paramInt1, false));
       if (i != 1073741824) {
-        break label352;
+        break label368;
       }
       DittoTextArea.TextCache.access$202(this.mCacheText, paramInt2);
     }
@@ -225,22 +234,32 @@ public class DittoTextArea
     {
       setMeasuredDimension(DittoTextArea.TextCache.access$100(this.mCacheText), DittoTextArea.TextCache.access$200(this.mCacheText));
       return;
-      this.mBoring = BoringLayout.isBoring(this.mText, this.mPaint, UNKNOWN_BORING);
-      if ((this.mBoring == null) || (this.mBoring == UNKNOWN_BORING)) {
-        DittoTextArea.TextCache.access$102(this.mCacheText, (int)Layout.getDesiredWidth(this.mText, this.mPaint));
+      Object localObject;
+      if (this.mText == null)
+      {
+        localObject = "";
+        label233:
+        this.mBoring = BoringLayout.isBoring((CharSequence)localObject, this.mPaint, UNKNOWN_BORING);
+        if ((this.mBoring != null) && (this.mBoring != UNKNOWN_BORING)) {
+          break label350;
+        }
+        DittoTextArea.TextCache.access$102(this.mCacheText, (int)Layout.getDesiredWidth((CharSequence)localObject, this.mPaint));
       }
       for (;;)
       {
-        DittoTextArea.TextCache localTextCache = this.mCacheText;
-        DittoTextArea.TextCache.access$102(localTextCache, DittoTextArea.TextCache.access$100(localTextCache) + (this.paddingLeft + this.paddingRight));
+        localObject = this.mCacheText;
+        DittoTextArea.TextCache.access$102((DittoTextArea.TextCache)localObject, DittoTextArea.TextCache.access$100((DittoTextArea.TextCache)localObject) + (this.paddingLeft + this.paddingRight));
         if (j != -2147483648) {
           break;
         }
         DittoTextArea.TextCache.access$102(this.mCacheText, Math.min(paramInt1, DittoTextArea.TextCache.access$100(this.mCacheText)));
         break;
+        localObject = this.mText;
+        break label233;
+        label350:
         DittoTextArea.TextCache.access$102(this.mCacheText, this.mBoring.width);
       }
-      label352:
+      label368:
       DittoTextArea.TextCache.access$202(this.mCacheText, getDesiredHeight());
       if (i == -2147483648) {
         DittoTextArea.TextCache.access$202(this.mCacheText, Math.min(paramInt2, DittoTextArea.TextCache.access$200(this.mCacheText)));
@@ -305,197 +324,196 @@ public class DittoTextArea
     //   1: istore_2
     //   2: aload_0
     //   3: aload_1
-    //   4: invokespecial 466	com/tencent/ditto/area/DittoArea:setLayoutAttr	(Lcom/tencent/ditto/shell/LayoutAttrSet;)V
+    //   4: invokespecial 465	com/tencent/ditto/area/DittoArea:setLayoutAttr	(Lcom/tencent/ditto/shell/LayoutAttrSet;)V
     //   7: aload_0
-    //   8: getfield 251	com/tencent/ditto/widget/DittoTextArea:mPaint	Landroid/text/TextPaint;
+    //   8: getfield 250	com/tencent/ditto/widget/DittoTextArea:mPaint	Landroid/text/TextPaint;
     //   11: ifnonnull +40 -> 51
     //   14: aload_0
-    //   15: new 287	android/text/TextPaint
+    //   15: new 286	android/text/TextPaint
     //   18: dup
     //   19: iconst_1
-    //   20: invokespecial 469	android/text/TextPaint:<init>	(I)V
-    //   23: putfield 251	com/tencent/ditto/widget/DittoTextArea:mPaint	Landroid/text/TextPaint;
+    //   20: invokespecial 468	android/text/TextPaint:<init>	(I)V
+    //   23: putfield 250	com/tencent/ditto/widget/DittoTextArea:mPaint	Landroid/text/TextPaint;
     //   26: aload_0
-    //   27: getfield 251	com/tencent/ditto/widget/DittoTextArea:mPaint	Landroid/text/TextPaint;
+    //   27: getfield 250	com/tencent/ditto/widget/DittoTextArea:mPaint	Landroid/text/TextPaint;
     //   30: aload_0
-    //   31: invokevirtual 439	com/tencent/ditto/widget/DittoTextArea:getHost	()Lcom/tencent/ditto/area/DittoHost;
-    //   34: invokeinterface 445 1 0
-    //   39: invokevirtual 451	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   42: invokevirtual 473	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   45: getfield 478	android/util/DisplayMetrics:density	F
-    //   48: putfield 479	android/text/TextPaint:density	F
+    //   31: invokevirtual 438	com/tencent/ditto/widget/DittoTextArea:getHost	()Lcom/tencent/ditto/area/DittoHost;
+    //   34: invokeinterface 444 1 0
+    //   39: invokevirtual 450	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   42: invokevirtual 472	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
+    //   45: getfield 477	android/util/DisplayMetrics:density	F
+    //   48: putfield 478	android/text/TextPaint:density	F
     //   51: aload_1
     //   52: ifnull +639 -> 691
     //   55: aload_1
     //   56: ldc 53
     //   58: aconst_null
-    //   59: invokevirtual 485	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   59: invokevirtual 484	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   62: ifnull +29 -> 91
     //   65: aload_1
     //   66: ldc 53
     //   68: aconst_null
-    //   69: invokevirtual 485	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   69: invokevirtual 484	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   72: astore 4
     //   74: aload 4
-    //   76: invokestatic 491	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   76: invokestatic 490	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   79: ifne +12 -> 91
     //   82: aload_0
     //   83: aload 4
-    //   85: invokestatic 497	com/tencent/ditto/utils/DittoResourcesUtil:parseColor	(Ljava/lang/String;)I
-    //   88: invokevirtual 500	com/tencent/ditto/widget/DittoTextArea:setTextColor	(I)V
+    //   85: invokestatic 496	com/tencent/ditto/utils/DittoResourcesUtil:parseColor	(Ljava/lang/String;)I
+    //   88: invokevirtual 499	com/tencent/ditto/widget/DittoTextArea:setTextColor	(I)V
     //   91: aload_1
     //   92: ldc 21
     //   94: aconst_null
-    //   95: invokevirtual 485	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   95: invokevirtual 484	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   98: astore 4
     //   100: aload 4
     //   102: ifnull +12 -> 114
     //   105: aload_0
     //   106: aload 4
-    //   108: invokestatic 497	com/tencent/ditto/utils/DittoResourcesUtil:parseColor	(Ljava/lang/String;)I
-    //   111: invokevirtual 503	com/tencent/ditto/widget/DittoTextArea:setLinkColor	(I)V
+    //   108: invokestatic 496	com/tencent/ditto/utils/DittoResourcesUtil:parseColor	(Ljava/lang/String;)I
+    //   111: invokevirtual 502	com/tencent/ditto/widget/DittoTextArea:setLinkColor	(I)V
     //   114: aload_1
     //   115: ldc 56
-    //   117: invokevirtual 507	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
+    //   117: invokevirtual 506	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
     //   120: ifeq +16 -> 136
     //   123: aload_0
     //   124: aload_1
     //   125: ldc 56
     //   127: bipush 15
-    //   129: invokevirtual 510	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;I)I
+    //   129: invokevirtual 509	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;I)I
     //   132: i2f
-    //   133: invokevirtual 514	com/tencent/ditto/widget/DittoTextArea:setTextSize	(F)V
+    //   133: invokevirtual 513	com/tencent/ditto/widget/DittoTextArea:setTextSize	(F)V
     //   136: aload_1
     //   137: ldc 24
-    //   139: invokevirtual 507	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
+    //   139: invokevirtual 506	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
     //   142: ifeq +15 -> 157
     //   145: aload_0
     //   146: aload_1
     //   147: ldc 24
     //   149: ldc 119
-    //   151: invokevirtual 510	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;I)I
-    //   154: invokevirtual 517	com/tencent/ditto/widget/DittoTextArea:setMaxLines	(I)V
+    //   151: invokevirtual 509	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;I)I
+    //   154: invokevirtual 516	com/tencent/ditto/widget/DittoTextArea:setMaxLines	(I)V
     //   157: aload_1
     //   158: ldc 18
-    //   160: invokevirtual 507	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
+    //   160: invokevirtual 506	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
     //   163: ifeq +14 -> 177
     //   166: aload_0
     //   167: aload_1
     //   168: ldc 18
     //   170: iconst_2
-    //   171: invokevirtual 510	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;I)I
-    //   174: invokevirtual 520	com/tencent/ditto/widget/DittoTextArea:setLineSpace	(I)V
+    //   171: invokevirtual 509	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;I)I
+    //   174: invokevirtual 519	com/tencent/ditto/widget/DittoTextArea:setLineSpace	(I)V
     //   177: aload_1
     //   178: ldc 50
-    //   180: invokevirtual 507	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
+    //   180: invokevirtual 506	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
     //   183: ifeq +21 -> 204
     //   186: aload_1
     //   187: ldc 50
     //   189: iconst_0
-    //   190: invokevirtual 510	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;I)I
+    //   190: invokevirtual 509	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;I)I
     //   193: iconst_1
     //   194: if_icmpne +249 -> 443
     //   197: iconst_1
     //   198: istore_3
     //   199: aload_0
     //   200: iload_3
-    //   201: invokevirtual 523	com/tencent/ditto/widget/DittoTextArea:setTextBold	(Z)V
+    //   201: invokevirtual 522	com/tencent/ditto/widget/DittoTextArea:setTextBold	(Z)V
     //   204: aload_1
     //   205: ldc 44
     //   207: aconst_null
-    //   208: invokevirtual 485	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   208: invokevirtual 484	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   211: ifnull +26 -> 237
     //   214: aload_1
     //   215: ldc 44
     //   217: aconst_null
-    //   218: invokevirtual 485	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   218: invokevirtual 484	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   221: astore 4
     //   223: aload 4
-    //   225: invokestatic 491	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   225: invokestatic 490	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   228: ifne +9 -> 237
     //   231: aload_0
     //   232: aload 4
-    //   234: invokevirtual 526	com/tencent/ditto/widget/DittoTextArea:setText	(Ljava/lang/String;)V
-    //   237: ldc_w 527
+    //   234: invokevirtual 525	com/tencent/ditto/widget/DittoTextArea:setText	(Ljava/lang/String;)V
+    //   237: ldc_w 526
     //   240: astore 4
     //   242: aload_1
     //   243: ldc 47
-    //   245: invokevirtual 507	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
+    //   245: invokevirtual 506	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
     //   248: ifeq +14 -> 262
     //   251: aload_1
     //   252: ldc 47
-    //   254: ldc_w 527
-    //   257: invokevirtual 485	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   254: ldc_w 526
+    //   257: invokevirtual 484	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   260: astore 4
     //   262: aload 4
-    //   264: invokevirtual 209	java/lang/String:hashCode	()I
+    //   264: invokevirtual 208	java/lang/String:hashCode	()I
     //   267: lookupswitch	default:+33->300, -1371700497:+211->478, -1047432319:+181->448, 1015327489:+195->462
     //   301: istore_2
     //   302: iload_2
     //   303: tableswitch	default:+25 -> 328, 0:+191->494, 1:+389->692, 2:+399->702
     //   329: iconst_m1
-    //   330: sipush 22971
-    //   333: nop
-    //   334: return
+    //   330: bipush 89
+    //   332: new 177	java/lang/StringBuilder
     //   335: dup
     //   336: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   339: ldc_w 531
-    //   342: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   339: ldc_w 530
+    //   342: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   345: aload 4
-    //   347: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   350: ldc_w 533
-    //   353: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   356: invokevirtual 205	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   359: invokespecial 535	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   347: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   350: ldc_w 532
+    //   353: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   356: invokevirtual 202	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   359: invokespecial 534	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
     //   362: athrow
     //   363: astore 5
-    //   365: ldc_w 537
+    //   365: ldc_w 536
     //   368: new 177	java/lang/StringBuilder
     //   371: dup
     //   372: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   375: ldc_w 539
-    //   378: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   375: ldc_w 538
+    //   378: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   381: aload 4
-    //   383: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   386: ldc_w 541
-    //   389: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   392: invokevirtual 205	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   383: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   386: ldc_w 540
+    //   389: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   392: invokevirtual 202	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   395: aload 5
-    //   397: invokestatic 547	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   397: invokestatic 546	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   400: goto -309 -> 91
     //   403: astore 5
-    //   405: ldc_w 537
+    //   405: ldc_w 536
     //   408: new 177	java/lang/StringBuilder
     //   411: dup
     //   412: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   415: ldc_w 539
-    //   418: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   415: ldc_w 538
+    //   418: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   421: aload 4
-    //   423: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   426: ldc_w 541
-    //   429: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   432: invokevirtual 205	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   423: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   426: ldc_w 540
+    //   429: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   432: invokevirtual 202	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   435: aload 5
-    //   437: invokestatic 547	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   437: invokestatic 546	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   440: goto -326 -> 114
     //   443: iconst_0
     //   444: istore_3
     //   445: goto -246 -> 199
     //   448: aload 4
-    //   450: ldc_w 527
-    //   453: invokevirtual 420	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   450: ldc_w 526
+    //   453: invokevirtual 419	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   456: ifeq -156 -> 300
     //   459: goto -157 -> 302
     //   462: aload 4
-    //   464: ldc_w 549
-    //   467: invokevirtual 420	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   464: ldc_w 548
+    //   467: invokevirtual 419	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   470: ifeq -170 -> 300
     //   473: iconst_1
     //   474: istore_2
     //   475: goto -173 -> 302
     //   478: aload 4
-    //   480: ldc_w 551
-    //   483: invokevirtual 420	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   480: ldc_w 550
+    //   483: invokevirtual 419	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   486: ifeq -186 -> 300
     //   489: iconst_2
     //   490: istore_2
@@ -505,57 +523,57 @@ public class DittoTextArea
     //   498: putfield 140	com/tencent/ditto/widget/DittoTextArea:mLayoutAlignment	Landroid/text/Layout$Alignment;
     //   501: aload_1
     //   502: ldc 31
-    //   504: invokevirtual 507	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
+    //   504: invokevirtual 506	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
     //   507: ifeq +14 -> 521
     //   510: aload_0
     //   511: aload_1
     //   512: ldc 31
     //   514: fconst_0
-    //   515: invokevirtual 554	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;F)F
+    //   515: invokevirtual 553	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;F)F
     //   518: putfield 147	com/tencent/ditto/widget/DittoTextArea:shadowDx	F
     //   521: aload_1
     //   522: ldc 35
-    //   524: invokevirtual 507	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
+    //   524: invokevirtual 506	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
     //   527: ifeq +14 -> 541
     //   530: aload_0
     //   531: aload_1
     //   532: ldc 35
     //   534: fconst_0
-    //   535: invokevirtual 554	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;F)F
+    //   535: invokevirtual 553	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;F)F
     //   538: putfield 149	com/tencent/ditto/widget/DittoTextArea:shadowDy	F
     //   541: aload_1
     //   542: ldc 39
-    //   544: invokevirtual 507	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
+    //   544: invokevirtual 506	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
     //   547: ifeq +14 -> 561
     //   550: aload_0
     //   551: aload_1
     //   552: ldc 39
     //   554: fconst_0
-    //   555: invokevirtual 554	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;F)F
+    //   555: invokevirtual 553	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;F)F
     //   558: putfield 151	com/tencent/ditto/widget/DittoTextArea:shadowRadius	F
     //   561: aload_1
     //   562: ldc 27
-    //   564: invokevirtual 507	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
+    //   564: invokevirtual 506	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
     //   567: ifeq +23 -> 590
     //   570: aload_1
     //   571: ldc 27
-    //   573: ldc_w 556
-    //   576: invokevirtual 485	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   573: ldc_w 555
+    //   576: invokevirtual 484	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   579: astore 4
     //   581: aload_0
     //   582: aload 4
-    //   584: invokestatic 497	com/tencent/ditto/utils/DittoResourcesUtil:parseColor	(Ljava/lang/String;)I
+    //   584: invokestatic 496	com/tencent/ditto/utils/DittoResourcesUtil:parseColor	(Ljava/lang/String;)I
     //   587: putfield 153	com/tencent/ditto/widget/DittoTextArea:shadowBgColor	I
     //   590: aload_1
     //   591: ldc 14
-    //   593: invokevirtual 507	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
+    //   593: invokevirtual 506	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
     //   596: ifeq +14 -> 610
     //   599: aload_0
     //   600: aload_1
     //   601: ldc 14
     //   603: fconst_0
-    //   604: invokevirtual 554	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;F)F
-    //   607: invokevirtual 559	com/tencent/ditto/widget/DittoTextArea:setLetterSpace	(F)V
+    //   604: invokevirtual 553	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;F)F
+    //   607: invokevirtual 558	com/tencent/ditto/widget/DittoTextArea:setLetterSpace	(F)V
     //   610: aload_0
     //   611: getfield 147	com/tencent/ditto/widget/DittoTextArea:shadowDx	F
     //   614: ldc 145
@@ -575,7 +593,7 @@ public class DittoTextArea
     //   641: getfield 153	com/tencent/ditto/widget/DittoTextArea:shadowBgColor	I
     //   644: ifeq +26 -> 670
     //   647: aload_0
-    //   648: getfield 251	com/tencent/ditto/widget/DittoTextArea:mPaint	Landroid/text/TextPaint;
+    //   648: getfield 250	com/tencent/ditto/widget/DittoTextArea:mPaint	Landroid/text/TextPaint;
     //   651: aload_0
     //   652: getfield 151	com/tencent/ditto/widget/DittoTextArea:shadowRadius	F
     //   655: aload_0
@@ -584,42 +602,42 @@ public class DittoTextArea
     //   660: getfield 149	com/tencent/ditto/widget/DittoTextArea:shadowDy	F
     //   663: aload_0
     //   664: getfield 153	com/tencent/ditto/widget/DittoTextArea:shadowBgColor	I
-    //   667: invokevirtual 563	android/text/TextPaint:setShadowLayer	(FFFI)V
+    //   667: invokevirtual 562	android/text/TextPaint:setShadowLayer	(FFFI)V
     //   670: aload_1
     //   671: ldc 8
-    //   673: invokevirtual 507	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
+    //   673: invokevirtual 506	com/tencent/ditto/shell/LayoutAttrSet:hasAttr	(Ljava/lang/String;)Z
     //   676: ifeq +15 -> 691
     //   679: aload_0
     //   680: aload_1
     //   681: ldc 8
     //   683: ldc 162
-    //   685: invokevirtual 485	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   688: invokevirtual 565	com/tencent/ditto/widget/DittoTextArea:setFontFamily	(Ljava/lang/String;)V
+    //   685: invokevirtual 484	com/tencent/ditto/shell/LayoutAttrSet:getAttr	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   688: invokevirtual 564	com/tencent/ditto/widget/DittoTextArea:setFontFamily	(Ljava/lang/String;)V
     //   691: return
     //   692: aload_0
-    //   693: getstatic 567	android/text/Layout$Alignment:ALIGN_OPPOSITE	Landroid/text/Layout$Alignment;
+    //   693: getstatic 566	android/text/Layout$Alignment:ALIGN_OPPOSITE	Landroid/text/Layout$Alignment;
     //   696: putfield 140	com/tencent/ditto/widget/DittoTextArea:mLayoutAlignment	Landroid/text/Layout$Alignment;
     //   699: goto -198 -> 501
     //   702: aload_0
-    //   703: getstatic 569	android/text/Layout$Alignment:ALIGN_CENTER	Landroid/text/Layout$Alignment;
+    //   703: getstatic 568	android/text/Layout$Alignment:ALIGN_CENTER	Landroid/text/Layout$Alignment;
     //   706: putfield 140	com/tencent/ditto/widget/DittoTextArea:mLayoutAlignment	Landroid/text/Layout$Alignment;
     //   709: goto -208 -> 501
     //   712: astore 5
     //   714: aconst_null
     //   715: astore 4
-    //   717: ldc_w 537
+    //   717: ldc_w 536
     //   720: new 177	java/lang/StringBuilder
     //   723: dup
     //   724: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   727: ldc_w 539
-    //   730: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   727: ldc_w 538
+    //   730: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   733: aload 4
-    //   735: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   738: ldc_w 541
-    //   741: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   744: invokevirtual 205	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   735: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   738: ldc_w 540
+    //   741: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   744: invokevirtual 202	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   747: aload 5
-    //   749: invokestatic 547	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   749: invokestatic 546	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   752: goto -162 -> 590
     //   755: astore 5
     //   757: goto -40 -> 717

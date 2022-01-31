@@ -1,130 +1,330 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.lang.ref.WeakReference;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract class ajfb
-  extends ajew
+public class ajfb
 {
-  public static final int MM_APPID = 1000277;
-  public final QQAppInterface app;
-  public final AppInterface mApp;
+  public int a;
+  public aiwr a;
+  private ajfc jdField_a_of_type_Ajfc;
+  public SharedPreferences a;
+  public String a;
+  public WeakReference<BaseChatPie> a;
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  public AtomicBoolean a;
+  public boolean a;
+  public int b;
+  public String b;
+  public WeakReference<QQAppInterface> b;
+  public AtomicBoolean b;
+  public boolean b;
+  public int c;
+  public WeakReference<aivb> c;
+  private AtomicBoolean c;
+  public int d;
+  private WeakReference<ajfm> jdField_d_of_type_JavaLangRefWeakReference;
+  private AtomicBoolean jdField_d_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+  public int e = 0;
+  private int f;
   
-  protected ajfb(AppInterface paramAppInterface)
+  public ajfb(QQAppInterface paramQQAppInterface)
   {
-    if ((paramAppInterface instanceof QQAppInterface)) {}
-    for (this.app = ((QQAppInterface)paramAppInterface);; this.app = null)
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_d_of_type_Int = -1;
+    if (paramQQAppInterface == null)
     {
-      this.mApp = paramAppInterface;
+      QLog.e("cmshow_scripted_SpriteContext", 1, "[SpriteContext], app is null.");
+      return;
+    }
+    a(paramQQAppInterface);
+    this.jdField_b_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
+    a();
+    this.jdField_a_of_type_AndroidContentSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
+    b();
+  }
+  
+  public int a()
+  {
+    return this.f;
+  }
+  
+  public aivb a()
+  {
+    if (this.jdField_c_of_type_JavaLangRefWeakReference == null) {
+      return null;
+    }
+    return (aivb)this.jdField_c_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public ajfc a()
+  {
+    return this.jdField_a_of_type_Ajfc;
+  }
+  
+  public ajfm a()
+  {
+    if (this.jdField_d_of_type_JavaLangRefWeakReference == null) {
+      return null;
+    }
+    return (ajfm)this.jdField_d_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public BaseChatPie a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      return null;
+    }
+    return (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public QQAppInterface a()
+  {
+    if (this.jdField_b_of_type_JavaLangRefWeakReference == null) {
+      return null;
+    }
+    return (QQAppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_Int = airz.a(a());
+  }
+  
+  public void a(int paramInt)
+  {
+    aivb localaivb = a();
+    if (localaivb != null) {
+      localaivb.setBubbleType(paramInt);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.e = paramInt2;
+    if (this.e == 0)
+    {
+      if ((1 != paramInt1) && (3000 != paramInt1)) {
+        break label43;
+      }
+      this.jdField_c_of_type_Int = 1;
+    }
+    for (;;)
+    {
+      a(this.jdField_c_of_type_Int);
+      return;
+      label43:
+      if (paramInt1 == 0) {
+        this.jdField_c_of_type_Int = 0;
+      }
+    }
+  }
+  
+  public void a(aivb paramaivb)
+  {
+    this.jdField_c_of_type_JavaLangRefWeakReference = new WeakReference(paramaivb);
+  }
+  
+  public void a(aiwr paramaiwr)
+  {
+    this.jdField_a_of_type_Aiwr = paramaiwr;
+  }
+  
+  public void a(ajfc paramajfc)
+  {
+    this.jdField_a_of_type_Ajfc = paramajfc;
+  }
+  
+  public void a(ajfm paramajfm)
+  {
+    this.jdField_d_of_type_JavaLangRefWeakReference = new WeakReference(paramajfm);
+  }
+  
+  public void a(BaseChatPie paramBaseChatPie)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_JavaUtilSet.add(paramString);
+        return;
+      }
+      finally {}
+      this.jdField_a_of_type_JavaUtilSet.remove(paramString);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      this.jdField_d_of_type_Int = i;
+      if (this.jdField_a_of_type_AndroidContentSharedPreferences != null) {
+        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("sprite_hide_key" + this.jdField_b_of_type_JavaLangString, this.jdField_d_of_type_Int).commit();
+      }
       return;
     }
   }
   
-  protected ajfb(QQAppInterface paramQQAppInterface)
+  public boolean a()
   {
-    this.app = paramQQAppInterface;
-    this.mApp = paramQQAppInterface;
+    return (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 3000);
   }
   
-  public static <T extends MessageMicro<T>> T decodeOidb(String paramString, byte[] paramArrayOfByte, Class<T> paramClass)
+  protected boolean a(String paramString)
   {
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
     try
     {
-      paramArrayOfByte = (oidb_sso.OIDBSSOPkg)localOIDBSSOPkg.mergeFrom(paramArrayOfByte);
-      if ((!paramArrayOfByte.uint32_result.has()) || (paramArrayOfByte.uint32_result.get() != 0) || (!paramArrayOfByte.bytes_bodybuffer.has()) || (paramArrayOfByte.bytes_bodybuffer.get() == null))
+      boolean bool = this.jdField_a_of_type_JavaUtilSet.contains(paramString);
+      return bool;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidContentSharedPreferences != null) {
+      this.jdField_d_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("sprite_hide_key" + this.jdField_b_of_type_JavaLangString, -1);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.f = paramInt;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+    }
+  }
+  
+  protected boolean b()
+  {
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+      while (localIterator.hasNext())
       {
-        if (QLog.isColorLevel()) {
-          QLog.e(paramString, 2, "sso check fail " + paramArrayOfByte.uint32_result.get());
-        }
-        return null;
+        String str = (String)localIterator.next();
+        QLog.i("cmshow_scripted_SpriteContext", 1, "cmshow should hide from:" + str);
+        ajlq.a(this.f, 10, 104, new Object[] { "cmshow should hide from:", str });
       }
+      i = this.jdField_a_of_type_JavaUtilSet.size();
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    finally {}
+    int i;
+    if (i > 0) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    }
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    }
+    if (this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilSet.clear();
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+    }
+  }
+  
+  public boolean c()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean == null) {
+      return false;
+    }
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    if (this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+    }
+  }
+  
+  public boolean d()
+  {
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean == null) {
+      return false;
+    }
+    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public boolean e()
+  {
+    if (!f()) {
+      return true;
+    }
+    if (this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean == null) {
+      return false;
+    }
+    return this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public boolean f()
+  {
+    if (this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicBoolean == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e(paramString, 2, "merge fail " + paramArrayOfByte.toString());
-      }
-      return null;
+      this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+      this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(airz.e());
     }
-    try
-    {
-      paramClass = (MessageMicro)paramClass.newInstance();
-      paramClass.mergeFrom(paramArrayOfByte.bytes_bodybuffer.get().toByteArray());
-      return paramClass;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(paramString, 2, "rspBody merge fail " + paramArrayOfByte.toString());
-      }
-      return null;
-    }
-    catch (Exception paramString) {}
-    return null;
-  }
-  
-  protected void checkReportErrorToMM(FromServiceMsg paramFromServiceMsg)
-  {
-    if (reportErrorToMM(paramFromServiceMsg))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("msgCmdFilter", 2, "-->report MM:cmd=" + paramFromServiceMsg.getServiceCmd() + ",error code=" + paramFromServiceMsg.getBusinessFailCode() + ",uin=" + getCurrentAccountUin());
-      }
-      bcad.a().a(paramFromServiceMsg.getServiceCmd(), 100, paramFromServiceMsg.getBusinessFailCode(), getCurrentAccountUin(), 1000277, ajjy.a(2131635470) + paramFromServiceMsg.getServiceCmd(), true);
-    }
-  }
-  
-  public String getCurrentAccountUin()
-  {
-    return this.mApp.getCurrentAccountUin();
-  }
-  
-  public List<ajfe> getObservers(int paramInt)
-  {
-    return this.mApp.getBusinessObserver(paramInt);
-  }
-  
-  protected final boolean isPbReq(ToServiceMsg paramToServiceMsg)
-  {
-    boolean bool = false;
-    if (paramToServiceMsg != null) {
-      bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
-    }
-    return bool;
-  }
-  
-  protected boolean reportErrorToMM(FromServiceMsg paramFromServiceMsg)
-  {
-    return (!paramFromServiceMsg.isSuccess()) && ((paramFromServiceMsg.getServiceCmd().equals("EncounterSvc.ReqGetEncounter")) || (paramFromServiceMsg.getServiceCmd().equals("RoamClientSvr.GetQualify")) || (paramFromServiceMsg.getServiceCmd().equals("NeighborSvc.ReqGetPoint")));
-  }
-  
-  public void send(ToServiceMsg paramToServiceMsg)
-  {
-    this.mApp.sendToService(paramToServiceMsg);
-  }
-  
-  public final void sendPbReq(ToServiceMsg paramToServiceMsg)
-  {
-    if (paramToServiceMsg != null)
-    {
-      paramToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
-      this.mApp.sendToService(paramToServiceMsg);
-    }
+    return this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajfb
  * JD-Core Version:    0.7.0.1
  */

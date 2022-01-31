@@ -1,21 +1,48 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class mtr
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public ImageView b;
-  TextView b;
-  public ImageView c;
-  TextView c;
-  public ImageView d;
+  public static int a(View paramView, int paramInt)
+  {
+    paramView = paramView.getTag(paramInt);
+    if (paramView == null) {
+      return 2147483647;
+    }
+    if ((paramView instanceof Integer)) {
+      return ((Integer)paramView).intValue();
+    }
+    a("getInt", paramInt, paramView);
+    return 2147483647;
+  }
   
-  mtr(mtc parammtc) {}
+  public static String a(View paramView, int paramInt)
+  {
+    paramView = paramView.getTag(paramInt);
+    if (paramView == null) {
+      return null;
+    }
+    if ((paramView instanceof String)) {
+      return (String)paramView;
+    }
+    a("getStr", paramInt, paramView);
+    return null;
+  }
+  
+  static void a(String paramString, int paramInt, Object paramObject)
+  {
+    if (AudioHelper.d())
+    {
+      paramString = paramString + ajyc.a(2131714725) + paramInt + "], object[" + paramObject.getClass().getSimpleName() + "]";
+      QLog.w("TagIndex", 1, paramString, new Throwable("打印调用栈"));
+      throw new ClassCastException(paramString);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mtr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,67 +1,23 @@
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.lang.ref.WeakReference;
 
-public class ngt
+class ngt
+  implements View.OnClickListener
 {
-  public static void a(Drawable paramDrawable)
-  {
-    if (!a()) {
-      QLog.i("DailyDynamicHeaderBackgroundController", 1, "blurBackground, isNeedToBlurBackground : NO");
-    }
-    while (!(paramDrawable instanceof URLDrawable)) {
-      return;
-    }
-    ((URLDrawable)paramDrawable).setDecodeHandler(new ngu());
-  }
+  ngt(nfu paramnfu, nmv paramnmv) {}
   
-  public static void a(ImageView paramImageView)
+  public void onClick(View paramView)
   {
-    if (paramImageView == null) {
-      return;
-    }
-    if (b())
-    {
-      paramImageView.setColorFilter(855638016, PorterDuff.Mode.DARKEN);
-      return;
-    }
-    paramImageView.clearColorFilter();
-  }
-  
-  private static boolean a()
-  {
-    Object localObject = (ohd)((QQAppInterface)obz.a()).getManager(163);
-    if (localObject != null)
-    {
-      localObject = ((ohd)localObject).a().a();
-      if (localObject != null)
-      {
-        localObject = ((JSONObject)localObject).optString("is_blur_background", "0");
-        QLog.i("DailyDynamicHeaderBackgroundController", 1, "isNeedToBlurBackground, isBlurBackground = " + (String)localObject);
-        return "1".equals(localObject);
-      }
-    }
-    return false;
-  }
-  
-  private static boolean b()
-  {
-    Object localObject = (ohd)((QQAppInterface)obz.a()).getManager(163);
-    if (localObject != null)
-    {
-      localObject = ((ohd)localObject).a().a();
-      if (localObject != null)
-      {
-        localObject = ((JSONObject)localObject).optString("is_cover_background", "0");
-        QLog.i("DailyDynamicHeaderBackgroundController", 1, "isNeedGrayLayer, isCoverBackground = " + (String)localObject);
-        return "1".equals(localObject);
-      }
-    }
-    return false;
+    paramView = new Intent((Context)this.jdField_a_of_type_Nfu.a.get(), ScannerActivity.class);
+    paramView.putExtra("from", this.jdField_a_of_type_Nfu.a.getClass().getName());
+    paramView.putExtra("finishAfterSucc", true);
+    ((BaseActivity)this.jdField_a_of_type_Nfu.a.get()).startActivity(paramView);
+    nfu.a(this.jdField_a_of_type_Nfu, this.jdField_a_of_type_Nmv.a);
   }
 }
 

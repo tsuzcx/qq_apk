@@ -1,33 +1,19 @@
-import android.support.v4.util.ArraySet;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import java.util.Comparator;
 
 public class acns
+  implements Comparator<acnu>
 {
-  private static ArraySet<Long> a = new ArraySet();
+  private acns(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public static void a()
+  public int a(acnu paramacnu1, acnu paramacnu2)
   {
-    a.clear();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    if (!a.contains(Long.valueOf(paramMessageRecord.uniseq)))
-    {
-      a.add(Long.valueOf(paramMessageRecord.uniseq));
-      awqx.b(paramQQAppInterface, "dc00898", "", "", "0X800A52B", "0X800A52B", 0, 0, "", "", "", "");
-    }
-  }
-  
-  public static void a(MessageRecord paramMessageRecord)
-  {
-    a.add(Long.valueOf(paramMessageRecord.uniseq));
+    return paramacnu1.f.compareToIgnoreCase(paramacnu2.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acns
  * JD-Core Version:    0.7.0.1
  */

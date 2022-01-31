@@ -1,17 +1,25 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.video.multivideo.MultiVideoLoadingFooter;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class qlr
-  implements View.OnLayoutChangeListener
+class qlr
+  extends Handler
 {
-  public qlr(MultiVideoLoadingFooter paramMultiVideoLoadingFooter) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public qlr(qlj paramqlj, Looper paramLooper)
   {
-    this.a.removeOnLayoutChangeListener(this);
-    this.a.getLayoutParams().height = (((View)this.a.getParent()).getHeight() * 2 / 3);
-    this.a.setLayoutParams(this.a.getLayoutParams());
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while (qlj.a(this.a) == null);
+    qlj.a(this.a).a(4, null, null, 0L);
   }
 }
 

@@ -1,4 +1,5 @@
-// INTERNAL ERROR //
+public class bihy {}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     bihy

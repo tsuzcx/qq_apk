@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.jsp;
 
-import azcm;
+import badh;
 
 public class TroopNoticeJsHandler$3
   implements Runnable
 {
-  public TroopNoticeJsHandler$3(azcm paramazcm, String paramString) {}
+  public TroopNoticeJsHandler$3(badh parambadh, String paramString) {}
   
   public void run()
   {

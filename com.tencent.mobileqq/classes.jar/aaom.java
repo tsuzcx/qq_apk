@@ -1,17 +1,22 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import android.content.DialogInterface.OnCancelListener;
 
-class aaom
-  implements DialogInterface.OnClickListener
+public final class aaom
+  implements DialogInterface.OnCancelListener
 {
-  aaom(aaok paramaaok) {}
+  public aaom(aaqf paramaaqf, aaqe paramaaqe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.a.a();
-    DevlockQuickLoginActivity.c(this.a.a);
-    DevlockQuickLoginActivity.c(this.a.a, 0, 2130772001);
+    if (this.jdField_a_of_type_Aaqf.a) {
+      axqw.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
+    }
+    if (this.jdField_a_of_type_Aaqe != null) {
+      this.jdField_a_of_type_Aaqe.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

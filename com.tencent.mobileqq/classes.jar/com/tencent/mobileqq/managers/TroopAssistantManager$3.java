@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.managers;
 
-import ariz;
-import atmp;
+import asfb;
+import aukn;
 import com.tencent.mobileqq.data.TroopAssistantData;
 
 public class TroopAssistantManager$3
   implements Runnable
 {
-  public TroopAssistantManager$3(ariz paramariz, atmp paramatmp, TroopAssistantData paramTroopAssistantData) {}
+  public TroopAssistantManager$3(asfb paramasfb, aukn paramaukn, TroopAssistantData paramTroopAssistantData) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Atmp.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData);
+    this.jdField_a_of_type_Aukn.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData);
   }
 }
 

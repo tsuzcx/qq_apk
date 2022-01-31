@@ -1,31 +1,18 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.WordNavView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import com.tencent.widget.AbsListView;
 
 public class rhx
-  extends GestureDetector.SimpleOnGestureListener
+  implements bfob
 {
-  private rhx(WordNavView paramWordNavView) {}
+  public rhx(SlideActiveAnimController paramSlideActiveAnimController) {}
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    float f = paramMotionEvent.getY();
-    Iterator localIterator = WordNavView.a(this.a).entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if ((f >= ((Float)localEntry.getKey()).floatValue() - this.a.getHeight() / WordNavView.a(this.a).size() / 2) && (f <= ((Float)localEntry.getKey()).floatValue() + this.a.getHeight() / WordNavView.a(this.a).size() / 2)) {
-        if (WordNavView.a(this.a) != null) {
-          WordNavView.a(this.a).a((String)localEntry.getValue());
-        }
-      }
+    if (paramInt == 0) {
+      this.a.e = false;
     }
-    return super.onSingleTapUp(paramMotionEvent);
   }
 }
 

@@ -1,48 +1,30 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import cooperation.plugin.PluginInfo;
-import cooperation.troop.TroopManageProxyActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import java.util.HashMap;
+import java.util.Map;
 
 public class aqtv
-  implements wiu
+  implements View.OnClickListener
 {
-  public aqtv(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public aqtv(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public void a(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    int i = 12;
-    if (paramBundle != null)
-    {
-      if (paramBundle.getBoolean("isSuccess"))
-      {
-        paramBundle = new Intent();
-        paramBundle.putExtra("troop_uin", this.jdField_a_of_type_JavaLangString);
-        if (this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a() != null) {
-          i = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().switchRequestCode(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin, (byte)12);
-        }
-        TroopManageProxyActivity.a("troop_manage_plugin.apk", PluginInfo.j, TroopManageProxyActivity.class, this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a(), paramBundle, TroopManageProxyActivity.a(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a()), "com.tencent.mobileqq.activity.TroopSetJoinTypeActivity", this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().getAccount(), i);
-      }
+    QQGameFeedWebFragment.a(this.a).setVisibility(8);
+    if (QQGameFeedWebFragment.a(this.a) != null) {
+      QQGameFeedWebFragment.a(this.a).setCurrentItem(0);
     }
-    else {
-      return;
-    }
-    paramBundle = new JSONObject();
-    try
-    {
-      paramBundle.put("gc", this.jdField_a_of_type_JavaLangString);
-      paramBundle.put("ret", 1);
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.m, new String[] { paramBundle.toString() });
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
+    paramView = (String)QQGameFeedWebFragment.a(this.a).getTag();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(Integer.valueOf(1), paramView);
+    localHashMap.put(Integer.valueOf(2), "");
+    localHashMap.put(Integer.valueOf(3), "20");
+    localHashMap.put(Integer.valueOf(24), "1");
+    yod.a(ajae.a(), "769", "205031", "", "76901", "1", "160", localHashMap);
   }
 }
 

@@ -1,56 +1,28 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
+import java.net.URL;
 
-public class nlr
-  implements CompoundButton.OnCheckedChangeListener
+class nlr
+  implements spd
 {
-  public nlr(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  nlr(nlq paramnlq, View paramView, ResizeURLImageView paramResizeURLImageView) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(URL paramURL, int paramInt) {}
+  
+  public void a(URL paramURL, Throwable paramThrowable)
   {
-    ReadInJoySettingActivity.c(this.a, paramBoolean);
-    int i;
-    label51:
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
-    {
-      bbmy.a(this.a.getBaseContext(), 2, 2131652746, 2000).a();
-      ReadInJoySettingActivity.a(this.a).setText(2131652745);
-      if (!paramBoolean) {
-        break label149;
-      }
-      i = 1;
-      bgmq.e(i);
-      bgmq.a(paramBoolean);
-      bgmq.a(true);
-      localQQAppInterface = this.a.a;
-      if (!paramBoolean) {
-        break label154;
-      }
-      paramCompoundButton = "0X8008236";
-      label80:
-      if (!paramBoolean) {
-        break label160;
-      }
-    }
-    label149:
-    label154:
-    label160:
-    for (String str = "0X8008236";; str = "0X8008235")
-    {
-      ndn.a(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "", "", "", "", false);
-      return;
-      bbmy.a(this.a.getBaseContext(), 2, 2131652744, 2000).a();
-      ReadInJoySettingActivity.a(this.a).setText(2131652748);
-      break;
-      i = 0;
-      break label51;
-      paramCompoundButton = "0X8008235";
-      break label80;
-    }
+    this.jdField_a_of_type_Nlq.a = 3;
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131369490).setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131365892).setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131365892).setOnClickListener(new nls(this));
+  }
+  
+  public void a(URL paramURL, rpg paramrpg)
+  {
+    this.jdField_a_of_type_Nlq.a = 2;
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131369490).setVisibility(8);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewResizeURLImageView.setPublicAccountImageDownListener(null);
+    nlq.a(this.jdField_a_of_type_Nlq, null);
   }
 }
 

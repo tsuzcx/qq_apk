@@ -1,71 +1,78 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.app.IndividualRedPacketManager.VIPHBStrategy.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.TMG.sdk.AVAudioCtrl;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVRoomMulti.AVCustomData;
+import com.tencent.TMG.sdk.AVRoomMulti.EventListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
 
-public class ajld
-  implements ackp
+class ajld
+  implements AVRoomMulti.EventListener
 {
-  private QQAppInterface a;
+  ajld(ajlc paramajlc) {}
   
-  public ajld(QQAppInterface paramQQAppInterface)
+  public void onCameraSettingNotify(int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onDisableAudioIssue() {}
+  
+  public void onEndpointsUpdateInfo(int paramInt, String[] paramArrayOfString)
   {
-    this.a = paramQQAppInterface;
+    QLog.i("AVManager", 1, String.format("onEndpointsUpdateInfo|eventid=%d", new Object[] { Integer.valueOf(paramInt) }));
+    if (this.a.jdField_a_of_type_Ajlg != null) {
+      this.a.jdField_a_of_type_Ajlg.a(paramInt, paramArrayOfString);
+    }
   }
   
-  public void a() {}
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  public void onEnterRoomComplete(int paramInt, String paramString)
   {
-    if ((paramRedPacketInfo == null) || (TextUtils.isEmpty(paramRedPacketInfo.templateId))) {
-      return;
+    QLog.i("AVManager", 1, "mRoomEventListener.onEnterRoomComplete| result = " + paramInt + paramString);
+    if (paramInt != 0) {
+      this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(ajkz.b(), 2, "VIPHBStrategy.get Id = " + paramRedPacketInfo.templateId + "content = " + paramRedPacketInfo.jdField_a_of_type_JavaLangString);
+    if (this.a.jdField_a_of_type_Ajlf != null) {
+      this.a.jdField_a_of_type_Ajlf.a(paramInt, paramString);
     }
-    Object localObject = (ajkz)this.a.getManager(131);
-    if ((localObject == null) || (!((ajkz)localObject).c()) || (((ajkz)localObject).c.get()))
-    {
-      String str;
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        str = ajkz.b();
-        localStringBuilder = new StringBuilder().append("VIPHBStrategy get fail! Redpacket Disable or no TemplateInfo! ");
-        if (localObject != null) {
-          break label150;
-        }
-      }
-      label150:
-      for (localObject = "redPacketManager == null";; localObject = "isShowRedpacket:" + ((ajkz)localObject).a().jdField_a_of_type_Boolean + ", PacketEnable:" + ((ajkz)localObject).b() + ", mIsSDCardError:" + ((ajkz)localObject).c.get())
-      {
-        QLog.d(str, 2, (String)localObject);
-        CustomizeStrategyFactory.a().a(paramRedPacketInfo);
-        return;
-      }
-    }
-    ThreadManager.post(new IndividualRedPacketManager.VIPHBStrategy.1(this, (ajkz)localObject, paramRedPacketInfo), 8, null, true);
   }
   
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, aeav paramaeav)
+  public void onExitRoomComplete()
   {
-    if ((paramRedPacketInfo != null) && ((paramaeav instanceof aebb)))
-    {
-      paramaeav = (aebb)paramaeav;
-      paramRedPacketInfo.jdField_a_of_type_AndroidGraphicsBitmap = paramaeav.jdField_a_of_type_AndroidGraphicsBitmap;
-      paramRedPacketInfo.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = paramaeav.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
-      paramRedPacketInfo.jdField_a_of_type_Acko = paramaeav.jdField_a_of_type_Acko;
-      paramRedPacketInfo.b = paramaeav.jdField_a_of_type_Boolean;
+    QLog.i("AVManager", 1, "mRoomEventListener.onExitRoomComplete");
+    this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
+    if (this.a.jdField_a_of_type_Ajlg != null) {
+      this.a.jdField_a_of_type_Ajlg.a();
     }
   }
+  
+  public void onHwStateChangeNotify(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString) {}
+  
+  public void onPrivilegeDiffNotify(int paramInt) {}
+  
+  public void onRecvCustomData(AVRoomMulti.AVCustomData paramAVCustomData, String paramString) {}
+  
+  public void onRoomDisconnect(int paramInt, String paramString)
+  {
+    if (this.a.jdField_a_of_type_Ajlg != null) {
+      this.a.jdField_a_of_type_Ajlg.a(paramInt, paramString);
+    }
+  }
+  
+  public void onRoomEvent(int paramInt1, int paramInt2, Object paramObject) {}
+  
+  public void onSemiAutoRecvCameraVideo(String[] paramArrayOfString)
+  {
+    QLog.i("AVManager", 1, String.format("onSemiAutoRecvCameraVideo", new Object[0]));
+    if (this.a.jdField_a_of_type_Ajlg != null) {
+      this.a.jdField_a_of_type_Ajlg.a(paramArrayOfString);
+    }
+  }
+  
+  public void onSemiAutoRecvMediaFileVideo(String[] paramArrayOfString) {}
+  
+  public void onSemiAutoRecvScreenVideo(String[] paramArrayOfString) {}
+  
+  public void onSwitchRoomComplete(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajld
  * JD-Core Version:    0.7.0.1
  */

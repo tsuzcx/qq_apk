@@ -1,22 +1,33 @@
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
-class acll
-  extends axvs
+public class acll
+  extends ajtq
 {
-  acll(aclk paramaclk, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public acll(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    this.a.a(paramMessage);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.systemmsg.TroopRequestActivity", 2, "onCardDownload() isSuccess = " + paramBoolean + "  data:" + paramObject);
+    }
+    if (paramObject == null) {}
+    Card localCard;
+    do
+    {
+      do
+      {
+        return;
+      } while ((!paramBoolean) || (!(paramObject instanceof Card)));
+      localCard = (Card)paramObject;
+    } while ((localCard.uin == null) || (!localCard.uin.equals(this.a.b)));
+    TroopRequestActivity.a(this.a, (Card)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acll
  * JD-Core Version:    0.7.0.1
  */

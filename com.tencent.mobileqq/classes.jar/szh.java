@@ -1,54 +1,86 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDeleteVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDeleteVideo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class szh
-  extends slz<tbf>
+  extends taz
 {
-  private static final String b = skt.a("StorySvc.video_show_delete");
-  public String a;
+  public static final String a;
+  public static final String b = sxp.a("StorySvc.del_feed_comment");
+  public static final String c = sxp.a("StorySvc.get_comment_list");
+  protected int a;
+  protected szv a;
+  protected boolean a;
+  private String d;
   
-  public szh(String paramString)
+  static
   {
-    this.a = paramString;
+    jdField_a_of_type_JavaLangString = sxp.a("StorySvc.add_feed_comment");
   }
   
-  public String a()
+  public szh(szv paramszv)
   {
-    return b;
+    this.jdField_a_of_type_Szv = paramszv;
   }
   
-  public tbf a(byte[] paramArrayOfByte)
+  public static void a(CommentEntry paramCommentEntry, tbf paramtbf)
   {
-    qqstory_service.RspDeleteVideo localRspDeleteVideo = new qqstory_service.RspDeleteVideo();
+    paramCommentEntry = new szl(paramCommentEntry, paramtbf);
+    paramtbf = new szm(paramtbf);
+    tbb.a().a(paramCommentEntry, paramtbf);
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    long l = System.currentTimeMillis();
+    Object localObject1 = null;
     try
     {
-      localRspDeleteVideo.mergeFrom(paramArrayOfByte);
-      return new tbf(localRspDeleteVideo);
+      Object localObject2 = new JSONObject();
+      ((JSONObject)localObject2).putOpt("vid", paramString3);
+      ((JSONObject)localObject2).putOpt("feedid", paramString4);
+      ((JSONObject)localObject2).putOpt("pvid", paramString5);
+      ((JSONObject)localObject2).putOpt("styles", new JSONArray(paramString6));
+      localObject2 = ((JSONObject)localObject2).toString();
+      localObject1 = localObject2;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    catch (JSONException localJSONException)
     {
-      paramArrayOfByte.printStackTrace();
+      for (;;)
+      {
+        QLog.e("Q.qqstory:FeedCommentDataProvider", 2, "addGamePKComment jsonException " + localJSONException);
+      }
     }
-    return null;
+    a(paramString1, null, paramString2, l, paramInt, localObject1, 4, new szi(paramString1, paramInt, l, paramString2, paramString3, paramString4, paramString5, paramString6));
   }
   
-  protected byte[] a()
+  public static void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, String paramString4, int paramInt2, tbf paramtbf)
   {
-    qqstory_service.ReqDeleteVideo localReqDeleteVideo = new qqstory_service.ReqDeleteVideo();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(ByteStringMicro.copyFromUtf8(this.a));
-    localReqDeleteVideo.vid_list.addAll(localArrayList);
-    return localReqDeleteVideo.toByteArray();
+    paramString1 = new szj(paramString1, paramString2, paramString3, paramLong, paramInt1, paramString4, paramInt2, paramtbf);
+    paramString2 = new szk(paramtbf);
+    tbb.a().a(paramString1, paramString2);
   }
   
-  public String toString()
+  public static void b(CommentEntry paramCommentEntry, tbf paramtbf)
   {
-    return "DeleteVideoRequest{vid='" + this.a + '\'' + '}';
+    paramCommentEntry = new szj(paramCommentEntry, paramtbf);
+    paramtbf = new szk(paramtbf);
+    tbb.a().a(paramCommentEntry, paramtbf);
+  }
+  
+  public void a()
+  {
+    a(this.jdField_a_of_type_Szv.a.feedId, 0);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    paramString = new szn(this, paramString, paramInt);
+    szo localszo = new szo(this);
+    tbb.a().a(paramString, localszo);
   }
 }
 

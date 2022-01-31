@@ -1,18 +1,27 @@
-import com.tencent.open.agent.OpenAuthorityFragment;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
 
-public class bbxk
-  implements bbyd
+class bbxk
+  extends MQLruCache<String, Object>
 {
-  public bbxk(OpenAuthorityFragment paramOpenAuthorityFragment) {}
-  
-  public void a()
+  bbxk(bbxj parambbxj, int paramInt)
   {
-    this.a.l();
+    super(paramInt);
+  }
+  
+  protected int a(String paramString, Object paramObject)
+  {
+    if ((paramObject != null) && ((paramObject instanceof Bitmap)))
+    {
+      paramString = (Bitmap)paramObject;
+      return paramString.getRowBytes() * paramString.getHeight();
+    }
+    return super.sizeOfObj(paramString, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbxk
  * JD-Core Version:    0.7.0.1
  */

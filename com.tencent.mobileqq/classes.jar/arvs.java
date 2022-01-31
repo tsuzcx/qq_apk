@@ -1,27 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.16;
 
 public class arvs
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
-  public arvs(MultiCardFragment paramMultiCardFragment) {}
+  public arvs(LocationDialogUtil.16 param16) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onAnimationCancel(paramAnimator);
-    MultiCardFragment.c(this.a);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    MultiCardFragment.c(this.a);
+    paramDialogInterface = arzl.a(this.a.a.app);
+    paramDialogInterface.a(3);
+    paramDialogInterface.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arvs
  * JD-Core Version:    0.7.0.1
  */

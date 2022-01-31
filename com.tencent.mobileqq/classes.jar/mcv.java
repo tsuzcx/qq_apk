@@ -1,23 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
 
-final class mcv
-  implements mcf
+public class mcv
+  implements mht
 {
-  public void a(int paramInt)
+  public mcv(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  
+  public void a()
   {
-    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onError " + paramInt);
-    mct.a(false, paramInt);
+    this.a.j = true;
+    this.a.L();
   }
   
-  public void a(String paramString)
+  public void b()
   {
-    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onStart " + paramString);
-  }
-  
-  public void b(String paramString)
-  {
-    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onFinish " + paramString);
-    mct.a(true, 0);
+    this.a.j = false;
   }
 }
 

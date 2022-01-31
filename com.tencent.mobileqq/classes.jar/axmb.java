@@ -1,101 +1,109 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.view.Surface;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
 
+@TargetApi(14)
 public class axmb
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  private String a;
-  private String b;
-  private String c;
+  SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  public Surface a;
+  axmc jdField_a_of_type_Axmc;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
+  EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+  EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
+  EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
+  boolean jdField_a_of_type_Boolean;
   
-  public axmb a()
+  public axmb()
   {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    return a("999").a(localBaseApplication, "999_540", "999_540");
+    a();
   }
   
-  public axmb a(Context paramContext, String paramString1, String paramString2)
+  void a()
   {
-    paramContext = a(paramContext);
-    this.b = (paramContext + paramString1 + ".zip");
-    this.c = (paramContext + paramString1 + File.separator + paramString2 + File.separator);
-    return this;
+    this.jdField_a_of_type_Axmc = new axmc();
+    this.jdField_a_of_type_Axmc.a();
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Axmc.a());
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
+    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
   }
   
-  public axmb a(String paramString)
+  public void b()
   {
-    this.a = paramString;
-    return this;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String a(Context paramContext)
-  {
-    paramContext = paramContext.getDir("theme_810", 0).getAbsolutePath();
-    StringBuilder localStringBuilder = aciy.a().append(paramContext);
-    if (!paramContext.endsWith(File.separator)) {
-      localStringBuilder.append(File.separator);
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 != null)
+    {
+      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentContext().equals(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)) {
+        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
+      }
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroySurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
     }
-    return this.a + File.separator;
+    this.jdField_a_of_type_AndroidViewSurface.release();
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = null;
+    this.jdField_a_of_type_Axmc = null;
+    this.jdField_a_of_type_AndroidViewSurface = null;
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
   }
   
-  public boolean a()
+  @SuppressLint({"NewApi"})
+  public void c()
   {
-    return new File(this.b).exists();
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      for (;;)
+      {
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (!bool) {
+          try
+          {
+            this.jdField_a_of_type_JavaLangObject.wait(5000L);
+            if (!this.jdField_a_of_type_Boolean) {
+              throw new RuntimeException("Surface frame wait timed out");
+            }
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            Thread.currentThread().interrupt();
+          }
+        }
+      }
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Axmc.a("before updateTexImage");
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
   }
   
-  public axmb b()
+  public void d()
   {
-    return a(BaseApplicationImpl.getContext(), "test", "test");
+    this.jdField_a_of_type_Axmc.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
   }
   
-  public String b()
+  public void onFrameAvailable(SurfaceTexture arg1)
   {
-    return ThemeUtil.getThemeConfigID(this.a);
-  }
-  
-  public String b(Context paramContext)
-  {
-    paramContext = a(paramContext);
-    return paramContext + "3_" + b() + ".cfg";
-  }
-  
-  public boolean b()
-  {
-    return new File(this.c).exists();
-  }
-  
-  public axmb c()
-  {
-    this.b = null;
-    this.c = null;
-    return this;
-  }
-  
-  public String c()
-  {
-    return this.b;
-  }
-  
-  public String d()
-  {
-    return this.c;
-  }
-  
-  public String toString()
-  {
-    return this.b;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        throw new RuntimeException("mFrameAvailable already set, frame could be dropped");
+      }
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangObject.notifyAll();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axmb
  * JD-Core Version:    0.7.0.1
  */

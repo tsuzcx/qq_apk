@@ -1,16 +1,25 @@
-class azxa
-  extends ajhi
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+
+public class azxa
+  implements DialogInterface.OnClickListener
 {
-  private azxa(azwz paramazwz) {}
+  public azxa(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b(1007, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), paramString });
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    PublishHomeWorkFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azxa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.av.opengl;
 
-import awlw;
+import axlc;
 import com.tencent.av.opengl.texture.YUVTexture;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.startup.step.UpdateAvSo;
@@ -9,9 +9,8 @@ import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
-import len;
-import leo;
-import lfi;
+import lpe;
+import lpz;
 
 public class GraphicRenderMgr
 {
@@ -22,9 +21,8 @@ public class GraphicRenderMgr
   public static boolean soloaded;
   public static boolean soloadedPTV;
   public int decoderPtrRef;
-  private len mAutoFocusCallback;
+  private lpe mAutoFocusCallback;
   private Object mAutoFocusCallbackLock = new Object();
-  leo mSetBeautyOrFaceConfigInfo = new leo();
   
   private GraphicRenderMgr()
   {
@@ -48,13 +46,13 @@ public class GraphicRenderMgr
   
   public static void loadPtuSO()
   {
-    if (lfi.a())
+    if (lpz.a())
     {
-      soloadedPTV = awlw.a();
-      ptuSoVersion = awlw.b();
+      soloadedPTV = axlc.a();
+      ptuSoVersion = axlc.b();
     }
     if (QLog.isColorLevel()) {
-      QLog.w("GraphicRenderMgr", 1, "loadPtuSO, soloadedPTV[" + soloadedPTV + "], ptuSoVersion[" + ptuSoVersion + "], isSupported[" + lfi.a() + "]");
+      QLog.w("GraphicRenderMgr", 1, "loadPtuSO, soloadedPTV[" + soloadedPTV + "], ptuSoVersion[" + ptuSoVersion + "], isSupported[" + lpz.a() + "]");
     }
   }
   
@@ -68,7 +66,6 @@ public class GraphicRenderMgr
       BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
       SoLoadUtil.a(localBaseApplication, "c++_shared", 0, false);
       SoLoadUtil.a(localBaseApplication, "xplatform", 0, false);
-      SoLoadUtil.a(localBaseApplication, "stlport_shared", 0, false);
       UpdateAvSo.b(l, localBaseApplication, "SDKCommon", true);
       UpdateAvSo.a(l, localBaseApplication, "SDKCommon", true);
       UpdateAvSo.b(l, localBaseApplication, "qav_graphics", true);
@@ -100,7 +97,7 @@ public class GraphicRenderMgr
   
   public native int getBeautyConfig();
   
-  public native int getRecvDecoderFrameFunctionptr();
+  public native long getRecvDecoderFrameFunctionptr();
   
   public native void nativeRotatePlane(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3);
   
@@ -146,70 +143,56 @@ public class GraphicRenderMgr
   
   public void setBeautyOrFaceConfig(int paramInt1, int paramInt2)
   {
-    k = -1;
     i = 0;
     try
     {
       j = getBeautyConfig();
       i = j;
+      j = i;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
     {
-      for (;;)
+      try
       {
         int j;
-        try
+        do
         {
-          setBeautyConfig(j);
-          this.mSetBeautyOrFaceConfigInfo.a(paramInt1, paramInt2, j, i, k);
-          return;
-          localUnsatisfiedLinkError1 = localUnsatisfiedLinkError1;
-          localUnsatisfiedLinkError1.printStackTrace();
-        }
-        catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
+          for (;;)
+          {
+            setBeautyConfig(i);
+            if (QLog.isColorLevel()) {
+              QLog.d("GraphicRenderMgr", 1, "setBeautyOrFaceConfig, [" + j + " --> " + i + "], level[" + paramInt1 + "], type[" + paramInt2 + "]");
+            }
+            return;
+            localUnsatisfiedLinkError1 = localUnsatisfiedLinkError1;
+            localUnsatisfiedLinkError1.printStackTrace();
+            j = 0;
+          }
+        } while (paramInt2 != 1);
+        i = j % 100 + paramInt1 * 100;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
+      {
+        for (;;)
         {
           localUnsatisfiedLinkError2.printStackTrace();
-          continue;
-        }
-        if (paramInt2 == 1)
-        {
-          k = i % 100;
-          j = paramInt1 * 100 + k;
-          try
-          {
-            setBeautyConfig(j);
-            i = -1;
-          }
-          catch (UnsatisfiedLinkError localUnsatisfiedLinkError3)
-          {
-            localUnsatisfiedLinkError3.printStackTrace();
-            i = -1;
-          }
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("GraphicRenderMgr", 1, "setBeautyOrFaceConfig, thisLevel[" + i + "], level[" + paramInt1 + "], type[" + paramInt2 + "]");
-          }
-          i = -1;
-          j = -1;
         }
       }
     }
     if (paramInt2 == 0)
     {
-      i = i / 100 * 100;
-      j = Math.min(paramInt1, 99) + i;
+      i = j / 100 * 100 + Math.min(paramInt1, 99);
+      if (j == i) {}
     }
   }
   
   public native void setFocusConfig(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2);
   
-  public void setFocusDetectCallback(len paramlen)
+  public void setFocusDetectCallback(lpe paramlpe)
   {
     synchronized (this.mAutoFocusCallbackLock)
     {
-      this.mAutoFocusCallback = paramlen;
+      this.mAutoFocusCallback = paramlpe;
       return;
     }
   }
@@ -220,7 +203,7 @@ public class GraphicRenderMgr
   
   public native void setLowlightAndVideoDenoiseInfo(int[] paramArrayOfInt);
   
-  public native void setProcessEncodeFrameFunctionPtr(int paramInt);
+  public native void setProcessEncodeFrameFunctionPtr(long paramLong);
   
   public native boolean setYuvFrame(String paramString, int paramInt1, ByteBuffer paramByteBuffer, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
 }

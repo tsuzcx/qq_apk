@@ -1,120 +1,59 @@
-import NS_MOBILE_OPERATION.PicInfo;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.mobileqq.activity.miniaio.MiniECommerceExposeDataReportHelper.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.widget.ListView;
+import mqq.os.MqqHandler;
 
 public class aggf
+  implements adih
 {
-  private static volatile aggf a;
-  private static volatile int c;
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<String> a;
-  public HashMap<String, LocalMediaInfo> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public ArrayList<Integer> b;
-  public HashMap<String, LocalMediaInfo> b;
-  public boolean b;
-  public String c;
-  public ArrayList<String> c;
-  public HashMap<String, PicInfo> c;
-  public boolean c;
-  private boolean d;
+  private adgd jdField_a_of_type_Adgd;
+  private aggy jdField_a_of_type_Aggy;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new MiniECommerceExposeDataReportHelper.1(this);
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  private aggf()
+  aggf(aggy paramaggy)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_Int = ((int)axwv.a());
+    this.jdField_a_of_type_Aggy = paramaggy;
   }
   
-  public static aggf a()
+  private ListView a()
   {
-    return a(false);
+    return this.jdField_a_of_type_Aggy.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
   }
   
-  public static aggf a(boolean paramBoolean)
+  public void a(int paramInt)
   {
-    if (paramBoolean)
+    switch (paramInt)
     {
-      jdField_a_of_type_Aggf = new aggf();
-      return jdField_a_of_type_Aggf;
-    }
-    if (jdField_a_of_type_Aggf == null) {}
-    try
-    {
-      if (jdField_a_of_type_Aggf == null) {
-        jdField_a_of_type_Aggf = new aggf();
-      }
-      return jdField_a_of_type_Aggf;
-    }
-    finally {}
-  }
-  
-  public int a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    int i = 0;
-    if (localIterator.hasNext())
-    {
-      if (baaf.a((LocalMediaInfo)((Map.Entry)localIterator.next()).getValue()) != 1) {
-        break label57;
-      }
-      i += 1;
-    }
-    label57:
-    for (;;)
-    {
-      break;
-      return i;
-    }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      jdField_c_of_type_Int += 1;
+    default: 
+    case 2: 
+    case 4: 
+    case 17: 
+      do
+      {
+        do
+        {
+          return;
+          this.jdField_a_of_type_Adgd = new adgd();
+          return;
+        } while (this.b);
+        this.b = true;
+        ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 800L);
+        return;
+      } while (!this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Adgd.b(this.jdField_a_of_type_Aggy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
       return;
     }
-    finally {}
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    this.jdField_a_of_type_Adgd = null;
+    ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public void a(boolean paramBoolean)
+  public int[] a()
   {
-    this.d = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    if (Build.VERSION.SDK_INT < 17) {
-      return false;
-    }
-    return this.d;
-  }
-  
-  public void b()
-  {
-    try
-    {
-      jdField_c_of_type_Int -= 1;
-      if (jdField_c_of_type_Int == 0) {
-        jdField_a_of_type_Aggf = null;
-      }
-      return;
-    }
-    finally {}
+    return new int[] { 2, 4, 11, 17, 10 };
   }
 }
 

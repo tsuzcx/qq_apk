@@ -1,30 +1,24 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class aamn
-  extends akif
+  implements DialogInterface.OnClickListener
 {
-  public aamn(Conversation paramConversation) {}
+  public aamn(BaseChatPie paramBaseChatPie, boolean paramBoolean) {}
   
-  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (paramList != null))
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
-      }
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        AppletsAccountInfo localAppletsAccountInfo = (AppletsAccountInfo)paramList.next();
-        if (localAppletsAccountInfo != null) {
-          this.a.a(9, localAppletsAccountInfo.uin, 1038);
-        }
-      }
+    default: 
+      return;
+    case 0: 
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
+      return;
     }
+    BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_Boolean);
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
   }
 }
 

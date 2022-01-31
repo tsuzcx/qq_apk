@@ -1,44 +1,57 @@
+import CliLogSvc.strupbuff;
+import android.os.Bundle;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class axbk
-  extends axbe
+  extends xop
 {
-  private int f;
-  private int g;
+  private static final String[] a = { "CliLogSvc" };
   
-  public axbk(int paramInt1, int paramInt2, int paramInt3)
+  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    super(paramInt1, 4, 0);
-    this.f = paramInt2;
-    this.g = paramInt3;
-  }
-  
-  public axbk(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super(paramInt1, 4, paramInt4);
-    this.f = paramInt2;
-    this.g = paramInt3;
-  }
-  
-  protected void a(int paramInt, float paramFloat)
-  {
-    this.a = ((int)(this.f + (this.g - this.f) * paramFloat));
-    if (this.g - this.f > 0) {
-      if (this.a >= this.g) {
-        this.a = this.g;
-      }
-    }
-    for (;;)
+    paramUniPacket.setServantName("QQService.CliLogSvc.MainServantObj");
+    paramUniPacket.setFuncName("UploadReq");
+    String[] arrayOfString = paramToServiceMsg.extraData.getStringArray("data");
+    strupbuff localstrupbuff = new strupbuff();
+    HashMap localHashMap = new HashMap();
+    ArrayList localArrayList = new ArrayList();
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
     {
-      super.a(paramInt, paramFloat);
-      return;
-      if (this.a <= this.g) {
-        this.a = this.g;
-      }
+      localArrayList.add(arrayOfString[i].getBytes());
+      i += 1;
     }
+    if (paramToServiceMsg.extraData.containsKey("log_key")) {}
+    for (paramToServiceMsg = paramToServiceMsg.extraData.getString("log_key");; paramToServiceMsg = "PLUG_PB")
+    {
+      localHashMap.put(paramToServiceMsg, localArrayList);
+      localstrupbuff.setLogstring(localHashMap);
+      paramUniPacket.put("Data", localstrupbuff);
+      return true;
+    }
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    if ("CliLogSvc.UploadReq".equals(paramToServiceMsg.getServiceCmd())) {
+      return b(paramToServiceMsg, paramUniPacket);
+    }
+    return false;
+  }
+  
+  public String[] a()
+  {
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axbk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,29 @@
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface aajf
+public class aajf
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void a();
+  public aajf(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public abstract void a(adyb paramadyb);
-  
-  public abstract void a(ChatMessage paramChatMessage);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(adyb paramadyb);
-  
-  public abstract void b(ChatMessage paramChatMessage);
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    boolean bool = true;
+    if (!bbev.d(this.a.getActivity()))
+    {
+      AssistantSettingActivity.a(this.a, 2131694672, 1);
+      paramCompoundButton = this.a;
+      if (!paramBoolean) {}
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        AssistantSettingActivity.a(paramCompoundButton, paramBoolean, this);
+        return;
+      }
+    }
+    ((ajtk)this.a.app.a(2)).q(paramBoolean);
+  }
 }
 
 

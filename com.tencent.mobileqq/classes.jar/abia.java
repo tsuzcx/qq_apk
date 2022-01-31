@@ -1,20 +1,21 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.activity.GesturePWDGuideActivity;
 
 public class abia
-  implements ScaleGestureDetector.OnScaleGestureListener
+  implements View.OnClickListener
 {
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return false;
-  }
+  public abia(GesturePWDGuideActivity paramGesturePWDGuideActivity) {}
   
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  public void onClick(View paramView)
   {
-    return true;
+    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
+    this.a.startActivityForResult(paramView, 999);
+    this.a.overridePendingTransition(2130771997, 2130771990);
+    axqw.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_Gesture_password", 0, 0, "", "", "", "");
   }
-  
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

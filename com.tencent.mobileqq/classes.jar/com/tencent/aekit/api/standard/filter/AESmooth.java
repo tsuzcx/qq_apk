@@ -13,7 +13,6 @@ public class AESmooth
   private float lookUpIntensity;
   private String lookUpPath;
   private PTFaceAttr mFaceAttr;
-  private boolean mIsApplied = false;
   private boolean mIsTakePhoto = false;
   private boolean mIsVeryLowEndDevice;
   private TTBeautyV5PrefixFilterGroup mSmoothFilter = new TTBeautyV5PrefixFilterGroup();

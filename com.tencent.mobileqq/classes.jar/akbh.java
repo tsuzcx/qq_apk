@@ -1,68 +1,57 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.BaseConstants;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.List;
+import tencent.im.nearfield_group.nearfield_group.BusiRespHead;
 
 public class akbh
+  implements ajtg
 {
-  private static boolean a;
-  private static boolean b;
+  public void a(aonh paramaonh) {}
   
-  public static void a(MessageRecord paramMessageRecord)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("param_FailCode", String.valueOf(paramMessageRecord.istroop));
-    awrn.a(BaseApplication.getContext()).a(null, "actInvalidMessageRecord", false, 0L, 0L, localHashMap, "");
-  }
+  public void a(aonl paramaonl) {}
   
-  public static void a(String paramString)
+  public void a(nearfield_group.BusiRespHead paramBusiRespHead) {}
+  
+  public void a(nearfield_group.BusiRespHead paramBusiRespHead, String paramString) {}
+  
+  public void a(nearfield_group.BusiRespHead paramBusiRespHead, List<aonh> paramList) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (!a)
+    switch (paramInt)
     {
-      a = true;
-      c("reportSaveInvalidUserError");
-      awpu.a(new RuntimeException(), paramString);
     }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    if ((paramInt == 1008) && (paramQQAppInterface != null))
+    do
     {
-      paramQQAppInterface = ((ajjj)paramQQAppInterface.getManager(51)).c(paramString);
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.isFriend())) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public static void b(String paramString)
-  {
-    if (!b)
-    {
-      b = true;
-      c("reportInvalidRefredshLastMsg");
-      awpu.a(new RuntimeException(), paramString);
-    }
-  }
-  
-  public static void c(String paramString)
-  {
-    StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
-    StringBuilder localStringBuilder = new StringBuilder(512);
-    int j = arrayOfStackTraceElement.length;
-    int i = 0;
-    while (i < j)
-    {
-      localStringBuilder.append(arrayOfStackTraceElement[i].toString()).append("\n");
-      i += 1;
-    }
-    QLog.i(paramString, 1, localStringBuilder.toString());
+      do
+      {
+        return;
+        if ((paramBoolean) && (paramObject != null))
+        {
+          paramObject = (Object[])paramObject;
+          a((nearfield_group.BusiRespHead)paramObject[0], (List)paramObject[1]);
+          return;
+        }
+        a(null, null);
+        return;
+        if ((paramBoolean) && (paramObject != null))
+        {
+          a((nearfield_group.BusiRespHead)((Object[])(Object[])paramObject)[0]);
+          return;
+        }
+        a(null);
+        return;
+        if ((paramBoolean) && (paramObject != null))
+        {
+          paramObject = (Object[])paramObject;
+          a((nearfield_group.BusiRespHead)paramObject[0], (String)paramObject[1]);
+          return;
+        }
+        a(null, "");
+        return;
+      } while ((!paramBoolean) || (paramObject == null));
+      a((aonh)((Object[])(Object[])paramObject)[0]);
+      return;
+    } while ((!paramBoolean) || (paramObject == null));
+    a((aonl)((Object[])(Object[])paramObject)[0]);
   }
 }
 

@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class aesu
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  aesu(aest paramaest, int paramInt) {}
+  aesu(aerv paramaerv) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_Aest.a != null) {
-      this.jdField_a_of_type_Aest.a.a(paramView, this.jdField_a_of_type_Int);
-    }
+    this.a.g = null;
   }
 }
 

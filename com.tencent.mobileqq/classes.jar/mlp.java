@@ -1,58 +1,92 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.mobileqq.widget.QQMapView;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class mlp
-  implements Animation.AnimationListener
 {
-  public mlp(PoiMapActivity paramPoiMapActivity, TranslateAnimation paramTranslateAnimation1, Dialog paramDialog, int paramInt, TranslateAnimation paramTranslateAnimation2) {}
+  public static String a;
+  private static mlp jdField_a_of_type_Mlp;
+  private final int jdField_a_of_type_Int = 40;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private boolean jdField_a_of_type_Boolean;
+  private mlq[] jdField_a_of_type_ArrayOfMlq;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  static
   {
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getLayoutParams();
-    LinearLayout.LayoutParams localLayoutParams1 = (LinearLayout.LayoutParams)PoiMapActivity.a(this.jdField_a_of_type_ComTencentBizPoiMapActivity).getLayoutParams();
-    ViewGroup.LayoutParams localLayoutParams2 = PoiMapActivity.a(this.jdField_a_of_type_ComTencentBizPoiMapActivity).getLayoutParams();
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
+    jdField_a_of_type_JavaLangString = "VoiceChangeData";
+  }
+  
+  public static mlp a()
+  {
+    if (jdField_a_of_type_Mlp == null) {}
+    try
     {
-      this.jdField_a_of_type_AndroidAppDialog.show();
-      localLayoutParams.height = (this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getHeight() + this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(this.jdField_a_of_type_Int / 2, true);
-    }
-    for (;;)
-    {
-      localLayoutParams1.height = -1;
-      localLayoutParams2.height = -1;
-      PoiMapActivity.b(this.jdField_a_of_type_ComTencentBizPoiMapActivity).setLayoutParams(localLayoutParams2);
-      PoiMapActivity.b(this.jdField_a_of_type_ComTencentBizPoiMapActivity).setLayoutParams(localLayoutParams1);
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.setLayoutParams(localLayoutParams);
-      PoiMapActivity.c(this.jdField_a_of_type_ComTencentBizPoiMapActivity).setEnabled(true);
-      if ((this.jdField_a_of_type_ComTencentBizPoiMapActivity.h) && (paramAnimation == this.b)) {
-        this.jdField_a_of_type_ComTencentBizPoiMapActivity.i();
+      if (jdField_a_of_type_Mlp == null) {
+        jdField_a_of_type_Mlp = new mlp();
       }
+      return jdField_a_of_type_Mlp;
+    }
+    finally {}
+  }
+  
+  protected void a(String paramString)
+  {
+    if (paramString == null) {
       return;
-      if (paramAnimation == this.b)
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_ArrayOfMlq = null;
+      try
       {
-        localLayoutParams.height = (this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getHeight() - this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(-this.jdField_a_of_type_Int / 2, true);
+        Object localObject2 = new JSONObject(paramString);
+        if (((JSONObject)localObject2).has("voices"))
+        {
+          localObject2 = ((JSONObject)localObject2).getJSONArray("voices");
+          lcl.d(jdField_a_of_type_JavaLangString, "parseConfig|voices size= " + ((JSONArray)localObject2).length());
+          this.jdField_a_of_type_ArrayOfMlq = new mlq[((JSONArray)localObject2).length()];
+          int i = 0;
+          while (i < ((JSONArray)localObject2).length())
+          {
+            JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(i);
+            mlq localmlq = new mlq();
+            localmlq.jdField_a_of_type_JavaLangString = localJSONObject.getString("name");
+            localmlq.jdField_b_of_type_JavaLangString = localJSONObject.getString("icon1");
+            localmlq.c = localJSONObject.getString("icon2");
+            localmlq.jdField_a_of_type_Int = Integer.parseInt(localJSONObject.getString("type"));
+            localmlq.jdField_b_of_type_Int = Integer.parseInt(localJSONObject.getString("vip_level"));
+            this.jdField_a_of_type_ArrayOfMlq[i] = localmlq;
+            i += 1;
+          }
+        }
+        paramString = finally;
+      }
+      catch (JSONException localJSONException)
+      {
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "parseConfig, JSONException, \ncontent[" + paramString + "]", localJSONException);
+        this.jdField_a_of_type_ArrayOfMlq = null;
+        return;
       }
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public mlq[] a()
+  {
+    if (this.jdField_a_of_type_ArrayOfMlq == null) {
+      a(lcy.b(172).jdField_a_of_type_JavaLangString);
+    }
+    if ((this.jdField_a_of_type_ArrayOfMlq == null) && (!this.jdField_a_of_type_Boolean))
+    {
+      mlr.a("0X8007EFD", "");
+      this.jdField_a_of_type_Boolean = true;
+    }
+    return this.jdField_a_of_type_ArrayOfMlq;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mlp
  * JD-Core Version:    0.7.0.1
  */

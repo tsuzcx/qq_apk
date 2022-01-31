@@ -1,56 +1,73 @@
 import android.content.Context;
-import android.text.Editable;
-import android.widget.EditText;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.app.MobileQQ;
+import org.json.JSONObject;
 
-public class ajtv
+class ajtv
+  extends bbwf
 {
-  private int a;
-  private int b;
+  ajtv(ajtu paramajtu) {}
   
-  public ajtv(QQAppInterface paramQQAppInterface)
+  public void onDone(bbwg parambbwg)
   {
-    TroopManager.a(paramQQAppInterface);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, String paramString, int paramInt, ChatMessage paramChatMessage)
-  {
-    String str;
-    if (paramEditText != null)
+    super.onDone(parambbwg);
+    parambbwg = parambbwg.a();
+    if ((parambbwg.containsKey("version")) && (parambbwg.containsKey("json_name")))
     {
-      str = "";
-      if (paramInt != 0) {
-        break label166;
-      }
-      this.a = ((int)(Math.random() * TroopManager.c.size()));
-      if (TroopManager.c.size() != 1) {
-        break label124;
-      }
-      str = (String)TroopManager.c.get(0);
-      TroopManager.a(paramQQAppInterface);
-    }
-    label166:
-    for (;;)
-    {
-      Object localObject = (ajjj)paramQQAppInterface.getManager(51);
-      localObject = babh.h(paramQQAppInterface, paramChatMessage.frienduin, paramChatMessage.senderuin);
-      paramEditText.setText(azef.a(paramQQAppInterface, paramContext, paramString, paramChatMessage.senderuin, (String)localObject, false, paramEditText, true, true));
-      paramEditText.append(str);
-      paramEditText.setSelection(paramEditText.getText().length());
-      return;
-      label124:
-      if (this.a < TroopManager.c.size())
+      int i = parambbwg.getInt("version", -1);
+      parambbwg = parambbwg.getString("json_name");
+      if (bbnq.e.d.equals(parambbwg))
       {
-        str = (String)TroopManager.c.get(this.a);
-        TroopManager.c.remove(this.a);
-        continue;
-        if (this.b < TroopManager.d.size())
+        Object localObject = new File(this.a.a.getApplication().getApplicationContext().getFilesDir(), bbnq.e.a);
+        if ((((File)localObject).exists()) && (((File)localObject).isFile()))
         {
-          str = (String)TroopManager.d.get(this.b);
-          this.b = ((this.b + 1) % TroopManager.d.size());
+          localObject = bbdj.a((File)localObject);
+          try
+          {
+            localObject = new JSONObject((String)localObject);
+            long l = ((JSONObject)localObject).getLong("timestamp") / 1000L;
+            if (Math.abs(i - l) <= 5L)
+            {
+              bbnq.a(this.a.a.getApplication().getApplicationContext(), parambbwg, i);
+              if (QLog.isColorLevel()) {
+                QLog.i("ClubContentUpdateHandler", 2, "json file update success!");
+              }
+              boolean bool1 = true;
+              if (((JSONObject)localObject).has("enableX5Report"))
+              {
+                boolean bool2 = ((JSONObject)localObject).getBoolean("enableX5Report");
+                bool1 = bool2;
+                if (QLog.isColorLevel())
+                {
+                  QLog.i("ClubContentUpdateHandler", 2, "json file got isEnableX5Report: " + bool2);
+                  bool1 = bool2;
+                }
+              }
+              parambbwg = this.a.a.getApplication().getApplicationContext().getSharedPreferences("WebView_X5_Report", 4);
+              parambbwg.edit().putBoolean("enableX5Report", bool1).commit();
+              parambbwg.edit().putLong("read_vas_asyncCookie", 0L).commit();
+            }
+            for (;;)
+            {
+              ajtu.a(this.a, (JSONObject)localObject);
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.i("ClubContentUpdateHandler", 2, "json file update get old file!");
+              }
+            }
+            return;
+          }
+          catch (Exception parambbwg)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("ClubContentUpdateHandler", 2, "Parse webview josn Exception:" + parambbwg.toString());
+            }
+          }
         }
       }
     }

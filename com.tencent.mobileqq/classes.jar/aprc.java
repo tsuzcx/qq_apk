@@ -1,26 +1,30 @@
-import NS_MINI_APP_MISC.MISC.StAppPlayingInfo;
-import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.widget.LinearLayout;
 
 class aprc
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aprc(aprb paramaprb, MISC.StAppPlayingInfo paramStAppPlayingInfo) {}
+  aprc(apqx paramapqx) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StAppPlayingInfo.appMetaInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StAppPlayingInfo.appMetaInfo.appId.get())) && (paramView != null)) {
-      MiniAppLauncher.launchMiniAppById(paramView.getContext(), this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StAppPlayingInfo.appMetaInfo.appId.get(), null, null, null, null, aprb.a(this.jdField_a_of_type_Aprb));
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
+      if ((apqx.a(this.a).getVisibility() == 0) && (Math.abs(apqx.a(this.a).getAlpha() - f) >= 0.02F)) {
+        apqx.a(this.a).setAlpha(f);
+      }
+      if ((apqx.a(this.a).getVisibility() == 0) && (Math.abs(apqx.a(this.a).getAlpha() - f) >= 0.02F)) {
+        apqx.a(this.a).setAlpha(f);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aprc
  * JD-Core Version:    0.7.0.1
  */

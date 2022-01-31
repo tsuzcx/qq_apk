@@ -1,42 +1,108 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.graphics.Color;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.ark.ArkTextureView;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aqsd
-  extends WebViewPlugin
+  extends PagerAdapter
 {
-  public static final String a = aqsd.class.getSimpleName();
+  public aqsd(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
   
-  public aqsd()
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    this.mPluginNameSpace = "MixSearchWeb";
+    paramViewGroup.removeView((View)paramObject);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public int getCount()
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length == 0)) {
-      return false;
-    }
-    if (!"MixSearchWeb".equals(paramString2)) {
-      return false;
-    }
-    if (("setSearchBarWord".equals(paramString3)) && ((this.mRuntime.a() instanceof MixSearchWebFragment))) {
-      try
+    return QQGamePubAccountFragment.a(this.a).size() + 1;
+  }
+  
+  public int getItemPosition(Object paramObject)
+  {
+    return -2;
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (paramInt < QQGamePubAccountFragment.a(this.a).size()) {}
+    for (MessageRecord localMessageRecord = (MessageRecord)QQGamePubAccountFragment.a(this.a).get(paramInt);; localMessageRecord = null)
+    {
+      aqsx localaqsx = aqti.a(localMessageRecord, this.a.getActivity());
+      if (localaqsx == null)
       {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        ((MixSearchWebFragment)this.mRuntime.a()).a(paramJsBridgeListener.optString("searchWord"), paramJsBridgeListener.optString("placeholder"));
-        return true;
+        if (QLog.isColorLevel()) {
+          QLog.d("QQGamePubAccountFragment", 2, "headerView = null");
+        }
+        return null;
       }
-      catch (JSONException paramJsBridgeListener)
+      this.a.a.add(localaqsx);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQGamePubAccountFragment", 2, "headerView = " + localaqsx.getClass().getSimpleName());
+      }
+      RelativeLayout localRelativeLayout = new RelativeLayout(paramViewGroup.getContext());
+      if (((View)localaqsx).getParent() != null) {
+        ((ViewGroup)((View)localaqsx).getParent()).removeView((View)localaqsx);
+      }
+      RelativeLayout.LayoutParams localLayoutParams3 = new RelativeLayout.LayoutParams(-1, -2);
+      localLayoutParams3.addRule(13, ((View)localaqsx).getId());
+      TextView localTextView;
+      RelativeLayout.LayoutParams localLayoutParams1;
+      if (localMessageRecord != null)
       {
-        QLog.e(a, 1, "handleJsRequest: e = " + paramJsBridgeListener);
+        localTextView = new TextView(this.a.getActivity());
+        localTextView.setTextColor(-1);
+        localTextView.setTextSize(1, 10.0F);
+        localTextView.setBackgroundColor(Color.parseColor("#4D000000"));
+        localTextView.setText(bbkb.a(this.a.getActivity(), 3, localMessageRecord.time * 1000L));
+        localTextView.setPadding(12, 0, 12, 0);
+        localTextView.setId(2131377270);
+        RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
+        localLayoutParams1 = localLayoutParams2;
+        if (localLayoutParams2 == null) {
+          localLayoutParams1 = new RelativeLayout.LayoutParams(-2, actn.a(15.0F, this.a.getResources()));
+        }
+        localTextView.setGravity(17);
+        localLayoutParams1.addRule(14);
+        localLayoutParams1.addRule(10);
+        localTextView.bringToFront();
+      }
+      for (;;)
+      {
+        localRelativeLayout.addView((View)localaqsx, localLayoutParams3);
+        if ((localTextView != null) && (localLayoutParams1 != null)) {
+          localRelativeLayout.addView(localTextView, localLayoutParams1);
+        }
+        paramViewGroup.addView(localRelativeLayout, localLayoutParams3);
+        localaqsx.a(localMessageRecord, this.a.getActivity());
+        if (localMessageRecord == null) {
+          return localRelativeLayout;
+        }
+        if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForArkApp)))
+        {
+          paramViewGroup = (ArkTextureView)localaqsx;
+          ((View)localaqsx).setOnTouchListener(new aqse(this, paramViewGroup));
+        }
+        return localRelativeLayout;
+        localTextView = null;
+        localLayoutParams1 = null;
       }
     }
-    return false;
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

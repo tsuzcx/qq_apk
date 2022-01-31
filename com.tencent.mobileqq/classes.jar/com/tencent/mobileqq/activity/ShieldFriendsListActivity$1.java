@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ajjj;
+import ajxn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ class ShieldFriendsListActivity$1
   
   public void run()
   {
-    ArrayList localArrayList = ((ajjj)this.this$0.app.getManager(51)).a();
+    ArrayList localArrayList = ((ajxn)this.this$0.app.getManager(51)).a();
     this.this$0.runOnUiThread(new ShieldFriendsListActivity.1.1(this, localArrayList));
   }
 }

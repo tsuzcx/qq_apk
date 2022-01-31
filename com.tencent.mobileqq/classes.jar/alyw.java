@@ -1,69 +1,50 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.confess.ConfessNewsBgView;
-import com.tencent.mobileqq.confess.data.TroopConfessMsg;
-import com.tencent.mobileqq.confess.data.TroopConfessMsgItem;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import tencent.im.oidb.cmd0x74b.oidb_0x74b.VideoHeadInfo;
 
-class alyw
-  extends acju
+public class alyw
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ConfessNewsBgView jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView;
-  private TextView b;
-  private View jdField_c_of_type_AndroidViewView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
+  public int a;
+  public String a;
   
-  public void a(TroopConfessMsg paramTroopConfessMsg)
+  public static alyw a(oidb_0x74b.VideoHeadInfo paramVideoHeadInfo)
   {
-    if (paramTroopConfessMsg == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopConfessItemBuilder", 2, "TroopConfessViewHolder bindData null is troopConfessMsgItem.");
-      }
+    Object localObject;
+    if (paramVideoHeadInfo == null) {
+      localObject = null;
     }
+    alyw localalyw;
     do
     {
-      return;
-      if ((paramTroopConfessMsg.items != null) && (!paramTroopConfessMsg.items.isEmpty())) {
-        break;
+      return localObject;
+      localalyw = new alyw();
+      if (paramVideoHeadInfo.str_url.has()) {
+        localalyw.jdField_a_of_type_JavaLangString = paramVideoHeadInfo.str_url.get();
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopConfessItemBuilder", 2, "TroopConfessViewHolder bindData items is null or empty.");
-    return;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopConfessMsg.getConfessToNick());
-    this.b.setText(((TroopConfessMsgItem)paramTroopConfessMsg.items.get(0)).topic);
-    String str2 = ((TroopConfessMsgItem)paramTroopConfessMsg.items.get(0)).topic;
-    float f = alyl.a(str2);
-    int i;
-    if (f > 8.0F)
+      localObject = localalyw;
+    } while (!paramVideoHeadInfo.uint32_video_size.has());
+    localalyw.jdField_a_of_type_Int = paramVideoHeadInfo.uint32_video_size.get();
+    return localalyw;
+  }
+  
+  public static ArrayList<alyw> a(List<oidb_0x74b.VideoHeadInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      this.b.setTextSize(1, 24.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 18.0F);
-      this.b.setLineSpacing(0.0F, 1.1F);
-      str1 = str2;
-      if (f <= 12.0F)
-      {
-        str1 = str2;
-        if (alyl.a(str2)) {
-          i = (int)(f * 0.7D);
-        }
+      alyw localalyw = a((oidb_0x74b.VideoHeadInfo)paramList.next());
+      if (localalyw != null) {
+        localArrayList.add(localalyw);
       }
     }
-    for (String str1 = str2.substring(0, i) + "\n" + str2.substring(i, str2.length());; str1 = str2)
-    {
-      this.b.setText(str1);
-      if (paramTroopConfessMsg.totalCount > 1) {
-        break;
-      }
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      return;
-      this.b.setTextSize(1, 24.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 18.0F);
-      this.b.setLineSpacing(0.0F, 1.0F);
-    }
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(String.format(ajjy.a(2131649485), new Object[] { Integer.valueOf(paramTroopConfessMsg.totalCount - 1) }));
+    return localArrayList;
   }
 }
 

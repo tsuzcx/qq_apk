@@ -1,56 +1,80 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class afoe
-  implements View.OnClickListener
+  implements afnv
 {
-  public afoe(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public afoe(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject == null) || (!(localObject instanceof Integer))) {}
     int i;
+    if ((TroopInfo.hasPayPrivilege(paramInt, 128)) && (TroopInfo.hasPayPrivilege(paramInt, 512)))
+    {
+      i = 1;
+      if (i == 0) {
+        break label155;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopNotifyAndRecommendView", 2, "onTroopPrivilege payTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt);
+      }
+      afnu.a(this.a.jdField_a_of_type_AndroidContentContext, paramString);
+      afnu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
+        this.a.jdField_a_of_type_Bcpq.dismiss();
+      }
+      axqw.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "pay_troop", "", "", "");
+    }
+    label155:
     do
     {
       return;
-      i = ((Integer)localObject).intValue();
-    } while (i < 0);
-    paramView = paramView.findViewById(2131312430);
-    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof Boolean))) {}
-    for (boolean bool = ((Boolean)paramView.getTag()).booleanValue();; bool = false)
+      i = 0;
+      break;
+      paramStructMsg = afnu.a(paramString);
+      if (paramStructMsg == null) {
+        break label293;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopNotifyAndRecommendView", 2, "onTroopPrivilege normalTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt + ", sendSystemMsgAction-----");
+      }
+      TroopNotifyAndRecommendView.a(this.a, 1, (structmsg.StructMsg)paramStructMsg.get());
+    } while (paramStructMsg.msg.group_msg_type.get() != 2);
+    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_contacts", "", "notice", "agree_invite", 0, 0, paramString, "", "0", "0");
+    axqw.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "normal_troop", "", "", "");
+    return;
+    label293:
+    if (QLog.isColorLevel()) {
+      QLog.e("TroopNotifyAndRecommendView", 2, "NotificationView onTroopPrivilege cache error--------------");
+    }
+    axqw.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "normal_troop_error", "", "", "");
+  }
+  
+  public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
+  {
+    if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
+      this.a.jdField_a_of_type_Bcpq.dismiss();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("TroopNotifyAndRecommendView", 2, "NotificationView onTroopPrivilege network! error rspTroopUin = " + paramString1);
+    }
+    paramString1 = this.a.jdField_a_of_type_AndroidContentContext;
+    if (paramInt1 == 72) {}
+    for (paramInt1 = 2131690026;; paramInt1 = 2131690025)
     {
-      if (bool)
-      {
-        paramView = (afou)this.a.jdField_a_of_type_Afoy.getItem(i);
-        this.a.a(paramView);
-        if ((this.a.jdField_d_of_type_AndroidAppDialog != null) && (this.a.jdField_d_of_type_AndroidAppDialog.isShowing())) {
-          this.a.jdField_d_of_type_AndroidAppDialog.dismiss();
-        }
-        if (this.a.jdField_d_of_type_Int != 11) {
-          break;
-        }
-        awqx.b(this.a.b, "CliOper", "", "", "0X8006218", "0X8006218", 0, 0, "", "", "", "");
-        return;
-      }
-      paramView = (afou)this.a.jdField_a_of_type_Afow.getItem(i);
-      this.a.a(paramView);
-      if (this.a.jdField_d_of_type_Int == 11) {
-        awqx.b(this.a.b, "CliOper", "", "", "0X8006219", "0X8006219", 0, 0, "", "", "", "");
-      }
-      if (this.a.jdField_d_of_type_Int != 18) {
-        break;
-      }
-      awqx.b(this.a.b, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "mber_clk", 0, 0, this.a.c, "", "", "");
+      bcpw.a(paramString1, paramInt1, 1).a();
+      axqw.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "err", "", "", "");
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afoe
  * JD-Core Version:    0.7.0.1
  */

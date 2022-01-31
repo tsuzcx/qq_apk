@@ -1,71 +1,8 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
 
-class atvw
-  extends RecyclerView.OnScrollListener
+public abstract interface atvw
 {
-  atvw(atvv paramatvv, PersonalityLabelInfo paramPersonalityLabelInfo) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelGalleryActivity", 2, "onScrollStateChanged newState:" + paramInt);
-    }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelGalleryActivity", 2, "onScrolled dx:" + paramInt1 + " dy:" + paramInt2);
-    }
-    int i;
-    int j;
-    if (paramInt1 > 0)
-    {
-      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
-      paramInt2 = paramRecyclerView.getChildCount();
-      i = paramRecyclerView.getItemCount();
-      j = paramRecyclerView.findLastVisibleItemPositions(null)[0];
-      paramRecyclerView = PersonalityLabelGalleryActivity.c(this.jdField_a_of_type_Atvv.a).get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id));
-      if (paramRecyclerView == null) {
-        break label271;
-      }
-      if (((Integer)paramRecyclerView).intValue() != 1) {
-        break label252;
-      }
-      paramInt1 = 1;
-    }
-    for (;;)
-    {
-      atwd localatwd;
-      if ((!PersonalityLabelGalleryActivity.b(this.jdField_a_of_type_Atvv.a)) && (paramInt1 == 0) && (paramInt2 > 0) && (j >= i - 1))
-      {
-        PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Atvv.a, true);
-        QLog.i("PersonalityLabelGalleryActivity", 2, "load more photos");
-        localatwd = (atwd)this.jdField_a_of_type_Atvv.a.app.a(112);
-        if (!PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Atvv.a)) {
-          break label257;
-        }
-      }
-      label257:
-      for (paramRecyclerView = this.jdField_a_of_type_Atvv.a.app.getCurrentAccountUin();; paramRecyclerView = PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Atvv.a))
-      {
-        localatwd.a(paramRecyclerView, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id, 20, (byte[])PersonalityLabelGalleryActivity.b(this.jdField_a_of_type_Atvv.a).get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id)));
-        return;
-        label252:
-        paramInt1 = 0;
-        break;
-      }
-      label271:
-      paramInt1 = 0;
-    }
-  }
+  public abstract void a(boolean paramBoolean1, List<atwv> paramList, boolean paramBoolean2, int paramInt);
 }
 
 

@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bfvz;
+import bhek;
 
 public class CoverCacheData$PackageInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<PackageInfo> CREATOR = new bfvz();
+  public static final Parcelable.Creator<PackageInfo> CREATOR = new bhek();
   public int a;
   public String a;
   public int b;

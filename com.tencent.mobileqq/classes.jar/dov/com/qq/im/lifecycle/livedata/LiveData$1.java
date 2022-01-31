@@ -1,18 +1,18 @@
 package dov.com.qq.im.lifecycle.livedata;
 
-import bhwc;
+import bjnx;
 
 public class LiveData$1
   implements Runnable
 {
-  public LiveData$1(bhwc parambhwc) {}
+  public LiveData$1(bjnx parambjnx) {}
   
   public void run()
   {
-    synchronized (bhwc.a(this.this$0))
+    synchronized (bjnx.a(this.this$0))
     {
-      Object localObject2 = bhwc.b(this.this$0);
-      bhwc.a(this.this$0, bhwc.b());
+      Object localObject2 = bjnx.b(this.this$0);
+      bjnx.a(this.this$0, bjnx.b());
       this.this$0.b(localObject2);
       return;
     }

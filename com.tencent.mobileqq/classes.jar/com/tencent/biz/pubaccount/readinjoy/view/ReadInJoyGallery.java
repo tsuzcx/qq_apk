@@ -5,8 +5,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import com.tencent.widget.Gallery;
-import qqk;
-import qql;
+import rcw;
+import rcx;
 
 public class ReadInJoyGallery
   extends Gallery
@@ -15,8 +15,8 @@ public class ReadInJoyGallery
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
   ViewConfiguration jdField_a_of_type_AndroidViewViewConfiguration = ViewConfiguration.get(getContext());
-  protected qqk a;
-  private qql jdField_a_of_type_Qql;
+  protected rcw a;
+  private rcx jdField_a_of_type_Rcx;
   boolean jdField_a_of_type_Boolean = false;
   float jdField_b_of_type_Float;
   boolean jdField_b_of_type_Boolean = false;
@@ -32,22 +32,22 @@ public class ReadInJoyGallery
   public ReadInJoyGallery(Context paramContext)
   {
     super(paramContext);
-    K_();
+    I_();
   }
   
   public ReadInJoyGallery(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    K_();
+    I_();
   }
   
   public ReadInJoyGallery(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    K_();
+    I_();
   }
   
-  protected void K_()
+  protected void I_()
   {
     setMaxScale(2.147484E+009F);
     this.jdField_a_of_type_Int = (ViewConfiguration.get(getContext()).getScaledTouchSlop() / 3);
@@ -56,8 +56,8 @@ public class ReadInJoyGallery
   public void a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     super.a(paramInt1, paramInt2, paramBoolean);
-    if (this.jdField_a_of_type_Qql != null) {
-      this.jdField_a_of_type_Qql.a(paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Rcx != null) {
+      this.jdField_a_of_type_Rcx.a(paramInt1, paramInt2);
     }
   }
   
@@ -127,8 +127,8 @@ public class ReadInJoyGallery
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Qqk != null) {
-      this.jdField_a_of_type_Qqk.a();
+    if (this.jdField_a_of_type_Rcw != null) {
+      this.jdField_a_of_type_Rcw.a();
     }
     return super.onDoubleTap(paramMotionEvent);
   }
@@ -186,14 +186,14 @@ public class ReadInJoyGallery
     this.k = paramBoolean;
   }
   
-  public void setOnDoubleTapListener(qqk paramqqk)
+  public void setOnDoubleTapListener(rcw paramrcw)
   {
-    this.jdField_a_of_type_Qqk = paramqqk;
+    this.jdField_a_of_type_Rcw = paramrcw;
   }
   
-  public void setOnScrollChangeListener(qql paramqql)
+  public void setOnScrollChangeListener(rcx paramrcx)
   {
-    this.jdField_a_of_type_Qql = paramqql;
+    this.jdField_a_of_type_Rcx = paramrcx;
   }
 }
 

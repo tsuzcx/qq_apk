@@ -1,23 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.magic.models.PFile;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-public final class oof
-  implements Parcelable.Creator<PFile>
+public abstract interface oof
 {
-  public PFile a(Parcel paramParcel)
-  {
-    return new PFile(paramParcel);
-  }
-  
-  public PFile[] a(int paramInt)
-  {
-    return new PFile[paramInt];
-  }
+  public abstract void a(BaseResp paramBaseResp);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oof
  * JD-Core Version:    0.7.0.1
  */

@@ -1,62 +1,74 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0x438.oidb_0x438.RedBagInfo;
 
 public class agjl
-  extends Handler
+  extends aume
 {
-  agjl(agjk paramagjk, Looper paramLooper)
+  private agjl(ContactListView paramContactListView) {}
+  
+  protected void a(boolean paramBoolean)
   {
-    super(paramLooper);
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactListView", 2, "onHideContact isSuccess=" + paramBoolean);
+    }
+    if ((paramBoolean) && (this.a.jdField_a_of_type_Int == 5)) {
+      this.a.j();
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    int i = paramMessage.what;
-    boolean bool;
-    if (paramMessage.arg1 == 1)
+    if ((!paramBoolean) || (!bbev.d(this.a.getContext())))
     {
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("PasswdRedBagManager", 2, "receive passwdredbags from group or disgroup, isSuccess = " + bool);
+      this.a.i();
+      this.a.g();
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i = this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.d();
+    if (!paramBoolean1)
+    {
+      this.a.i();
+      this.a.g();
+      if (((i == 0) || (i == 7)) && ((this.a.jdField_a_of_type_Int != 2) || (!(this.a.jdField_a_of_type_Aqbc instanceof aqgb))) && (this.a.b == 0)) {
+        this.a.a(2131718737, 3000L);
       }
-      if (bool) {
-        break label56;
+    }
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    } while (!this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.e());
+    this.a.a(2131719281, 0L, false);
+  }
+  
+  protected void d(boolean paramBoolean, int paramInt)
+  {
+    if (paramBoolean)
+    {
+      this.a.i();
+      ContactListView.a(this.a, true);
+      if ((paramInt & 0x1) == 0) {
+        this.a.g();
       }
     }
     for (;;)
     {
-      return;
-      bool = false;
-      break;
-      label56:
-      if ((i == 1) || (i == 0))
-      {
-        ThreadManager.getFileThreadHandler().post(new PasswdRedBagManager.1.1(this, i));
-        paramMessage = (List)paramMessage.obj;
-        if (paramMessage != null)
-        {
-          paramMessage = paramMessage.iterator();
-          while (paramMessage.hasNext())
-          {
-            oidb_0x438.RedBagInfo localRedBagInfo = (oidb_0x438.RedBagInfo)paramMessage.next();
-            this.a.a(localRedBagInfo);
-          }
-        }
+      if (this.a.jdField_a_of_type_Int == 6) {
+        this.a.f();
       }
+      return;
+      this.a.g();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agjl
  * JD-Core Version:    0.7.0.1
  */

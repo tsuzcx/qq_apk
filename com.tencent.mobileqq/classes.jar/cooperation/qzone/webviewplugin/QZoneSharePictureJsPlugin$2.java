@@ -1,15 +1,15 @@
 package cooperation.qzone.webviewplugin;
 
-import bgic;
+import bhqv;
 
 public class QZoneSharePictureJsPlugin$2
   implements Runnable
 {
-  public QZoneSharePictureJsPlugin$2(bgic parambgic, String[] paramArrayOfString) {}
+  public QZoneSharePictureJsPlugin$2(bhqv parambhqv, String[] paramArrayOfString) {}
   
   public void run()
   {
-    bgic.a(this.this$0, this.a[0]);
+    bhqv.a(this.this$0, this.a[0]);
   }
 }
 

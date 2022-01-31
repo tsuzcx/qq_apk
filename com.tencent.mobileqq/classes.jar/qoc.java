@@ -1,6 +1,22 @@
-public abstract interface qoc
+import org.json.JSONObject;
+
+public class qoc
 {
-  public abstract void a();
+  public long a;
+  public String a;
+  public String b;
+  public String c;
+  
+  qoc(qny paramqny, JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("sActivityId");
+    this.b = paramJSONObject.optString("sGiftName");
+    this.c = paramJSONObject.optString("sNeedRole");
+    this.jdField_a_of_type_Long = paramJSONObject.optInt("iGiftId");
+  }
 }
 
 

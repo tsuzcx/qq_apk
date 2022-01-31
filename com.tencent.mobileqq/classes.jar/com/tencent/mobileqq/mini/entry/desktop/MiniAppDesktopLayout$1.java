@@ -2,7 +2,6 @@ package com.tencent.mobileqq.mini.entry.desktop;
 
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.widget.ARMapHongBaoListView;
 
 class MiniAppDesktopLayout$1
   extends RecyclerView.OnScrollListener
@@ -20,12 +19,7 @@ class MiniAppDesktopLayout$1
     this.this$0.stopSwitchIconAnimation();
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if ((MiniAppDesktopLayout.access$000(this.this$0) != null) && (MiniAppDesktopLayout.access$000(this.this$0).isDirty())) {
-      MiniAppDesktopLayout.access$000(this.this$0).invalidate();
-    }
-  }
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
 }
 
 

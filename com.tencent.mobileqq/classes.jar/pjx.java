@@ -1,93 +1,91 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotQuestion;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import java.util.List;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAvatarView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.qphone.base.util.QLog;
 
 public class pjx
-  implements View.OnClickListener
+  extends ViewBase
 {
-  public pjx(ComponentContentHotQuestion paramComponentContentHotQuestion) {}
+  private NativeAvatarView a;
   
-  public void onClick(View paramView)
+  public pjx(VafContext paramVafContext)
   {
-    opw localopw = this.a.jdField_a_of_type_Pjg.a();
-    ArticleInfo localArticleInfo = localopw.a();
-    Object localObject1 = (ppv)localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(0);
-    Object localObject2;
-    if ((localArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 12) && (((ppv)localObject1).jdField_a_of_type_Ppx != null))
+    super(paramVafContext);
+    this.a = new NativeAvatarView(paramVafContext.getContext());
+  }
+  
+  public void a(pax parampax)
+  {
+    this.a.setModel(parampax);
+  }
+  
+  public void a(pax parampax, boolean paramBoolean)
+  {
+    this.a.setModel(parampax, paramBoolean);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public boolean onClick()
+  {
+    super.onClick();
+    return true;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
     {
-      localObject2 = new Intent((Activity)this.a.jdField_a_of_type_AndroidContentContext, ReadInJoyDeliverUGCActivity.class);
-      ((Intent)localObject2).putExtra("arg_topic_id", String.valueOf(String.valueOf(((ppv)localObject1).jdField_a_of_type_Ppx.jdField_b_of_type_Int)));
-      ((Intent)localObject2).putExtra("support_topic", true);
-      ((Intent)localObject2).putExtra("support_linkify", true);
+    default: 
+      return super.setAttribute(paramInt, paramObject);
+    }
+    if ((paramObject instanceof Long)) {
+      this.a.setUin(((Long)paramObject).longValue());
+    }
+    return true;
+  }
+  
+  public boolean setAttribute(int paramInt, String paramString)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return super.setAttribute(paramInt, paramString);
     }
     try
     {
-      paramView = new String(baaw.decode(((ppv)localObject1).jdField_a_of_type_Ppx.jdField_b_of_type_JavaLangString, 0));
-      ((Intent)localObject2).putExtra("is_from_poly_topic", true);
-      if (localopw.e() == 70)
-      {
-        bool = true;
-        ((Intent)localObject2).putExtra("is_from_dian_dian", bool);
-        ((Intent)localObject2).putExtra("arg_topic_name", paramView);
-        ((Intent)localObject2).putExtra("arg_ad_tag", ((ppv)localObject1).jdField_a_of_type_Ppx.c);
-        this.a.getContext().startActivity((Intent)localObject2);
-        localObject2 = new JSONObject();
-      }
-      try
-      {
-        ((JSONObject)localObject2).put("channel_id", localopw.e());
-        if (((ppv)localObject1).jdField_a_of_type_Ppw == null) {
-          break label388;
-        }
-        paramView = ((ppv)localObject1).jdField_a_of_type_Ppw.a;
-        ((JSONObject)localObject2).put("rowkey", paramView);
-        if (((ppv)localObject1).jdField_a_of_type_Ppx == null) {
-          break label396;
-        }
-        i = ((ppv)localObject1).jdField_a_of_type_Ppx.jdField_b_of_type_Int;
-        ((JSONObject)localObject2).put("topicid", i);
-      }
-      catch (Exception paramView)
-      {
-        for (;;)
-        {
-          int i;
-          paramView.printStackTrace();
-          continue;
-          paramView = "2";
-        }
-      }
-      localObject1 = localArticleInfo.mFeedId + "";
-      if (obz.o(localArticleInfo))
-      {
-        paramView = "1";
-        ndn.a(null, "CliOper", "", "", "0X800982C", "0X800982C", 0, 0, (String)localObject1, paramView, localArticleInfo.mStrategyId + "", ((JSONObject)localObject2).toString(), false);
-        return;
-      }
+      this.a.setUin(Long.valueOf(paramString).longValue());
+      return true;
     }
-    catch (Exception paramView)
+    catch (NumberFormatException paramString)
     {
-      for (;;)
-      {
-        paramView.printStackTrace();
-        paramView = "";
-        continue;
-        boolean bool = false;
-        continue;
-        label388:
-        paramView = Integer.valueOf(0);
-        continue;
-        label396:
-        i = 0;
-      }
+      QLog.e("AvatarView", 1, paramString, new Object[0]);
     }
+    return false;
   }
 }
 

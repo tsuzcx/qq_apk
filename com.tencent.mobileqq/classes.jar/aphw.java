@@ -1,82 +1,77 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.data.MessageForPic;
+import android.support.annotation.NonNull;
+import com.tencent.commonsdk.util.HexUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
-class aphw
-  implements View.OnClickListener
+public class aphw
+  extends aphu
 {
-  aphw(aphp paramaphp, String paramString, apib paramapib) {}
+  final long jdField_a_of_type_Long;
+  final byte[] jdField_a_of_type_ArrayOfByte;
+  final byte[] b;
   
-  public void onClick(View paramView)
+  public aphw(String paramString1, String paramString2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, long paramLong, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6)
   {
-    awqx.b(this.jdField_a_of_type_Aphp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800514A", "0X800514A", 0, 0, "", "", "", "");
-    paramView = this.jdField_a_of_type_Aphp.jdField_a_of_type_AndroidOsBundle.getParcelable("FORWARD_MSG_FOR_PIC");
-    if ((paramView instanceof MessageForPic))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardBaseOption", 2, "getImageEditListener from MessageForPic");
-      }
-      paramView = (MessageForPic)paramView;
-      File localFile = new File(paramView.path);
-      if (((localFile == null) || (!localFile.exists()) || (localFile.length() != paramView.size)) || (paramView != null)) {
-        aphp.a(this.jdField_a_of_type_Aphp, paramView, this.jdField_a_of_type_JavaLangString);
-      }
-    }
+    super(paramString1, paramString2, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte5;
+    this.b = paramArrayOfByte6;
+  }
+  
+  public boolean a()
+  {
+    if (!super.a()) {}
     do
     {
       do
       {
-        return;
-        if (!(paramView instanceof AIOImageData)) {
+        do
+        {
+          return false;
+          if (this.jdField_a_of_type_Long != 0L) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mGroupCode is err");
+        return false;
+        if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length != 0)) {
           break;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardOption.ForwardBaseOption", 2, "getImageEditListener from AIOImageData");
-        }
-        paramView = (AIOImageData)paramView;
-        if ((paramView.a(4)) && (paramView.a(4) != null))
-        {
-          aphp.a(this.jdField_a_of_type_Aphp, paramView, this.jdField_a_of_type_JavaLangString);
-          return;
-        }
-        if ((paramView.a(2)) && (paramView.a(2) != null))
-        {
-          aphp.a(this.jdField_a_of_type_Aphp, paramView, this.jdField_a_of_type_JavaLangString);
-          return;
-        }
       } while (!QLog.isColorLevel());
-      QLog.d("ForwardOption.ForwardBaseOption", 2, "Edit Forward Image: image does not exist");
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardBaseOption", 2, "getImageEditListener from other");
-      }
-      paramView = this.jdField_a_of_type_Aphp.jdField_a_of_type_AndroidOsBundle.getString("forward_filepath");
-      if (paramView != null)
-      {
-        aphp.a(this.jdField_a_of_type_Aphp, paramView, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      if (this.jdField_a_of_type_Aphp.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("key_flag_from_plugin", false))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardOption.ForwardBaseOption", 2, "Edit Forward Image: from QZone");
-        }
-        this.jdField_a_of_type_Aphp.jdField_a_of_type_AndroidOsBundle.putBoolean("FORWARD_IS_QZONE_SHARE", true);
-        aphp.a(this.jdField_a_of_type_Aphp, this.jdField_a_of_type_Aphp.b, this.jdField_a_of_type_JavaLangString);
-        return;
+      QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBufUuid is err");
+      return false;
+      if ((this.b != null) && (this.b.length != 0)) {
+        break;
       }
     } while (!QLog.isColorLevel());
-    QLog.d("ForwardOption.ForwardBaseOption", 2, "Edit Forward Image: Unknown source");
+    QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBufUploadKey is err");
+    return false;
+    return true;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append(super.toString()).append(" mGroupCode:").append(this.jdField_a_of_type_Long).append(" uuid:");
+    if (this.jdField_a_of_type_ArrayOfByte != null)
+    {
+      str = HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte);
+      localStringBuilder = localStringBuilder.append(str).append(" mBufUploadKey:");
+      if (this.b == null) {
+        break label88;
+      }
+    }
+    label88:
+    for (String str = HexUtil.bytes2HexStr(this.b);; str = "")
+    {
+      return str;
+      str = "";
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aphw
  * JD-Core Version:    0.7.0.1
  */

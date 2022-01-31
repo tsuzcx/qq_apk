@@ -1,12 +1,21 @@
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.widget.AutoCompleteTextView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
-public abstract interface ahsa
+public class ahsa
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(ResultRecord paramResultRecord, boolean paramBoolean);
+  public ahsa(LoginView paramLoginView) {}
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void b(String paramString);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface = this.a.a.getText().toString();
+    if (!TextUtils.isEmpty(paramDialogInterface)) {
+      this.a.b(paramDialogInterface);
+    }
+  }
 }
 
 

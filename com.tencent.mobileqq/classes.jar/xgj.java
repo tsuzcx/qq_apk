@@ -1,80 +1,192 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Gallery;
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Environment;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.util.QZLog;
+import java.io.File;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-class xgj
-  implements xgv
+public class xgj
 {
-  xgj(xgi paramxgi) {}
+  public static String a;
+  private static xgj jdField_a_of_type_Xgj;
+  private Map<String, xgl> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   
-  public void b()
+  private xgj()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryComponent", 2, "gallery onEnterAnimationEnd");
-    }
-    if (this.a.jdField_a_of_type_ComTencentWidgetGallery.getVisibility() != 0) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-    }
-    this.a.b();
-    if ((this.a.jdField_a_of_type_Xgu != null) && (!this.a.jdField_a_of_type_Xgu.a())) {
-      this.a.jdField_a_of_type_Xgu.a();
-    }
+    a(BaseApplicationImpl.getContext());
   }
   
-  public void c()
+  private String a(Context paramContext)
   {
-    if (this.a.jdField_a_of_type_Xgz.a().b) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
-    }
-    this.a.c();
-    if ((this.a.jdField_a_of_type_Xgu != null) && (this.a.jdField_a_of_type_Xgu.a())) {
-      this.a.jdField_a_of_type_Xgu.b();
-    }
-  }
-  
-  public void d()
-  {
-    if (this.a.jdField_a_of_type_Xgz.a().b) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
-    }
-    if (this.a.jdField_a_of_type_Xgh != null) {
-      this.a.jdField_a_of_type_Xgh.a(4);
-    }
-    if ((this.a.jdField_a_of_type_Xgu != null) && (this.a.jdField_a_of_type_Xgu.a())) {
-      this.a.jdField_a_of_type_Xgu.b();
-    }
-    this.a.d();
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.e();
-  }
-  
-  public void e()
-  {
-    this.a.e();
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
     {
-      localStringBuilder = new StringBuilder().append("gallery onExitAnimationEnd ");
-      if (this.a.jdField_a_of_type_Xgz.a() != this.a) {
-        break label87;
+      paramContext = paramContext.getExternalFilesDir("video_story");
+      if (paramContext != null) {
+        jdField_a_of_type_JavaLangString = paramContext.getAbsolutePath();
       }
     }
-    label87:
-    for (boolean bool = true;; bool = false)
+    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
     {
-      QLog.d("GalleryComponent", 2, bool);
-      if (this.a.jdField_a_of_type_Xgz.a() != this.a) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidAppActivity.finish();
-      return;
+      paramContext = Environment.getExternalStorageDirectory().getAbsolutePath();
+      jdField_a_of_type_JavaLangString = paramContext + "/Tencent/MobileQQ/" + "video_story";
     }
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-    this.a.l();
+    QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "intDownLoadRoot" + jdField_a_of_type_JavaLangString);
+    return null;
+  }
+  
+  public static xgj a()
+  {
+    try
+    {
+      if (jdField_a_of_type_Xgj == null) {
+        jdField_a_of_type_Xgj = new xgj();
+      }
+      xgj localxgj = jdField_a_of_type_Xgj;
+      return localxgj;
+    }
+    finally {}
+  }
+  
+  public String a(String paramString)
+  {
+    try
+    {
+      paramString = paramString.split("/");
+      paramString = paramString[(paramString.length - 1)];
+      paramString = paramString.substring(0, paramString.indexOf(".zip"));
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return "";
+  }
+  
+  public void a(String paramString, Downloader.DownloadListener paramDownloadListener)
+  {
+    QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:" + paramString);
+    if (TextUtils.isEmpty(paramString)) {
+      QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:url is empty" });
+    }
+    String str1;
+    String str2;
+    xgl localxgl;
+    bbwl localbbwl;
+    bbwg localbbwg;
+    Bundle localBundle;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          str1 = a(paramString);
+          if (TextUtils.isEmpty(str1))
+          {
+            QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:prefixId is empty" });
+            return;
+          }
+          QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:prefixId:" + str1);
+          if (b(str1))
+          {
+            QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:resource has download");
+            return;
+          }
+          if (c(str1))
+          {
+            QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:resource on download");
+            return;
+          }
+          if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+          {
+            QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:mDownLoadRoot is empty" });
+            return;
+          }
+          str2 = jdField_a_of_type_JavaLangString + "/" + str1 + ".zip";
+        } while (TextUtils.isEmpty(paramString));
+        localxgl = new xgl(this, null);
+        this.jdField_a_of_type_JavaUtilMap.put(str1, localxgl);
+        localbbwl = ((bbwi)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(47)).a(1);
+      } while (localbbwl == null);
+      localbbwg = new bbwg(paramString, new File(str2));
+      localbbwg.b = 1;
+      localBundle = new Bundle();
+    } while (localbbwl == null);
+    localbbwl.a(localbbwg, new xgk(this, paramDownloadListener, str2, localxgl, str1, paramString), localBundle);
+  }
+  
+  public void a(xfu paramxfu)
+  {
+    if (paramxfu != null) {
+      a(paramxfu.a(), null);
+    }
+  }
+  
+  public void a(xfw paramxfw)
+  {
+    if (paramxfw != null) {
+      a(paramxfw.a(), null);
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    paramString = a(paramString);
+    if (!TextUtils.isEmpty(paramString)) {
+      return b(paramString);
+    }
+    return false;
+  }
+  
+  public String b(String paramString)
+  {
+    return jdField_a_of_type_JavaLangString + "/" + a(paramString);
+  }
+  
+  public boolean b(String paramString)
+  {
+    Object localObject = jdField_a_of_type_JavaLangString + "/" + paramString;
+    if (new File((String)localObject + ".zip").exists())
+    {
+      QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "upZip failed:" + paramString);
+      return false;
+    }
+    boolean bool2;
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      bool2 = new File((String)localObject).exists();
+      bool1 = bool2;
+      if (bool2)
+      {
+        localObject = new xgl(this, null);
+        xgl.a((xgl)localObject, 0);
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+      }
+    }
+    for (boolean bool1 = bool2;; bool1 = false) {
+      return bool1;
+    }
+  }
+  
+  public boolean c(String paramString)
+  {
+    paramString = (xgl)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null) {
+      return (xgl.a(paramString) == -1) || (xgl.a(paramString) == 1);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xgj
  * JD-Core Version:    0.7.0.1
  */

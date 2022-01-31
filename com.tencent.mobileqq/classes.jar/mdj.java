@@ -1,55 +1,29 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
-import com.tencent.common.app.AppInterface;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.HorizontalScrollView;
+import com.tencent.av.ui.EffectSettingUi;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 
-public final class mdj
-  extends lwf
+public class mdj
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  WeakReference<ZimuToolbar> a;
+  public mdj(EffectSettingUi paramEffectSettingUi, ViewTreeObserver paramViewTreeObserver, HorizontalScrollView paramHorizontalScrollView) {}
   
-  public mdj(AppInterface paramAppInterface, Context paramContext, ArrayList<lxf> paramArrayList, HorizontalListView paramHorizontalListView, ZimuToolbar paramZimuToolbar)
+  @TargetApi(16)
+  public void onGlobalLayout()
   {
-    super(paramAppInterface, paramContext, paramArrayList, paramHorizontalListView);
-    this.a = new WeakReference(paramZimuToolbar);
-  }
-  
-  public void a(String paramString1, long paramLong, String paramString2)
-  {
-    boolean bool1 = false;
-    int j;
-    int i;
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      j = getCount();
-      i = 1;
-      if (i < j)
-      {
-        lxf locallxf = a(i);
-        if ((locallxf != null) && (paramString2.equals(locallxf.a))) {
-          bool1 = true;
-        }
-      }
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.jdField_a_of_type_AndroidViewViewTreeObserver.removeOnGlobalLayoutListener(this);
     }
     for (;;)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.w("QAVPtvTemplateAdapter", 1, "setSelectedItem, id[" + paramString2 + "], find[" + bool1 + "], seq[" + paramLong + "], from[" + paramString1 + "], mCurSelectedPosition[" + this.d + "]");
-      }
-      j = this.d;
-      boolean bool2 = a(i);
-      if (bool2) {
-        a(paramLong, this.d);
-      }
-      QLog.w("QAVPtvTemplateAdapter", 1, "setSelectedItem end, from[" + paramString1 + "], seq[" + paramLong + "], id[" + paramString2 + "], find[" + bool1 + "], index[" + i + "], Pos[" + j + "->" + this.d + "], selectResult[" + bool2 + "]");
+      QLog.w("EffectSettingUi", 1, "onGlobalLayout");
+      this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setTag(new Object());
+      this.jdField_a_of_type_ComTencentAvUiEffectSettingUi.c();
       return;
-      i += 1;
-      break;
-      i = 1;
+      this.jdField_a_of_type_AndroidViewViewTreeObserver.removeGlobalOnLayoutListener(this);
     }
   }
 }

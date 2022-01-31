@@ -1,30 +1,67 @@
-import java.nio.ByteBuffer;
+import android.content.Context;
+import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
 public class tsd
 {
-  int jdField_a_of_type_Int;
-  public long a;
-  ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  public boolean a;
-  public boolean b;
-  
-  public tsd()
+  public static void a(Context paramContext, String paramString, tsf paramtsf, bcpq parambcpq)
   {
-    a();
+    ThreadManager.getUIHandler().post(new StoryShareEncryptHelper.2(paramString, parambcpq, paramContext, paramtsf));
   }
   
-  public void a()
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaNioByteBuffer = null;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
+    paramString = paramString.split("&");
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String[] arrayOfString = paramString[i].split("=");
+      if (arrayOfString.length == 2) {
+        paramHashMap.put(arrayOfString[0], arrayOfString[1]);
+      }
+      i += 1;
+    }
   }
   
-  public String toString()
+  public static void a(HashMap<String, String> paramHashMap)
   {
-    return "FrameInfo{buffer=" + this.jdField_a_of_type_Int + ", data=" + this.jdField_a_of_type_JavaNioByteBuffer + ", presentationTimeUs=" + this.jdField_a_of_type_Long + ", endOfStream=" + this.jdField_a_of_type_Boolean + ", representationChanged=" + this.b + '}';
+    HashMap<String, String> localHashMap = null;
+    Iterator localIterator = paramHashMap.keySet().iterator();
+    paramHashMap = localHashMap;
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if ((!str.equals("src_type")) && (!str.equals("version")) && (!str.equals("from_leba")) && (!str.equals("leba_resid")) && (!str.equals("config_res_plugin_item_name")) && (!str.equals("redtouch_click_timestamp")) && (!str.equals("lebaVersion")) && (!str.equals("redid")))
+      {
+        localHashMap = paramHashMap;
+        if (QLog.isColorLevel())
+        {
+          if (paramHashMap != null) {
+            break label144;
+          }
+          paramHashMap = new StringBuilder();
+        }
+        for (;;)
+        {
+          paramHashMap.append(str);
+          localHashMap = paramHashMap;
+          localIterator.remove();
+          paramHashMap = localHashMap;
+          break;
+          label144:
+          paramHashMap.append('|');
+        }
+      }
+    }
+    if ((paramHashMap != null) && (QLog.isColorLevel())) {
+      QLog.d("Q.qqstory.share.trans.helper", 2, "remove attrs:" + paramHashMap);
+    }
   }
 }
 

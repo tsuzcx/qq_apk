@@ -1,76 +1,40 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CSettingFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimTipsInfo;
-import java.lang.ref.WeakReference;
-import java.util.List;
-import mqq.app.TicketManagerImpl;
-import mqq.os.MqqHandler;
 
 public class afxp
-  extends MqqHandler
+  implements aatr
 {
-  private WeakReference<ContactListView> a;
+  public afxp(ChatHistoryC2CSettingFragment paramChatHistoryC2CSettingFragment) {}
   
-  public afxp(ContactListView paramContactListView)
+  public void a(Activity paramActivity)
   {
-    this.a = new WeakReference(paramContactListView);
+    bcpw.a(paramActivity, 2, 2131691511, 0).b(this.a.getActivity().getTitleBarHeight());
+    paramActivity.setResult(-1);
+    paramActivity.finish();
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    ContactListView localContactListView = (ContactListView)this.a.get();
-    if (localContactListView == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ContactListView", 2, "UiHandler() handleMessage a == null");
-      }
+    if (paramInt == 0) {
+      axqw.b(paramQQAppInterface, "dc00898", "", "", "0X800A17D", "0X800A17D", 2, 0, "", "", "", "");
     }
-    do
-    {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        case 3: 
-        case 7: 
-        default: 
-          throw new RuntimeException("Unknown message: " + paramMessage.what);
-        case 1: 
-          if ((ContactListView.a(localContactListView)) && (!localContactListView.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.e()))
-          {
-            localContactListView.g();
-            ContactListView.a(localContactListView, false);
-          }
-          localContactListView.j();
-          return;
-        case 2: 
-          localContactListView.j();
-        }
-      } while (badq.d(localContactListView.getContext()));
-      localContactListView.i();
-      localContactListView.b(ajjy.a(2131636710));
+    while (paramInt != 1) {
       return;
-      localContactListView.b = ((List)paramMessage.obj);
-      localContactListView.jdField_a_of_type_Ahzo.a(localContactListView.b);
-      localContactListView.jdField_a_of_type_Ahzo.notifyDataSetChanged();
-      return;
-      paramMessage = ContactListView.a(localContactListView).getAccount();
-      localObject = (TicketManagerImpl)ContactListView.a(localContactListView).getManager(2);
-    } while (localObject == null);
-    Object localObject = ((TicketManagerImpl)localObject).getA2(paramMessage);
-    if (QLog.isColorLevel()) {
-      QLog.i("ContactListView", 2, "a2 = " + (String)localObject);
     }
-    QQPimGetTipsInfoIPC.a().a(ContactListView.a(localContactListView), ContactListView.a(localContactListView), paramMessage, (String)localObject);
-    return;
-    ContactListView.a(localContactListView, (QQPimTipsInfo)paramMessage.obj);
-    return;
-    localContactListView.i();
-    localContactListView.l();
+    axqw.b(paramQQAppInterface, "dc00898", "", "", "0X800A17F", "0X800A17F", 2, 0, "", "", "", "");
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (paramInt == 0) {
+      axqw.b(paramQQAppInterface, "dc00898", "", "", "0X800A17E", "0X800A17E", 2, 0, "", "", "", "");
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    axqw.b(paramQQAppInterface, "dc00898", "", "", "0X800A180", "0X800A180", 2, 0, "", "", "", "");
   }
 }
 

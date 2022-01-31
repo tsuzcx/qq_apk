@@ -1,27 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import mqq.os.MqqHandler;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.qwallet.fragment.ExclusiveHbFragment;
 
-class agzm
-  implements View.OnClickListener
+public class agzm
+  extends ahac
 {
-  private final int jdField_a_of_type_Int;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  public agzm(ExclusiveHbFragment paramExclusiveHbFragment) {}
   
-  public agzm(int paramInt, MqqHandler paramMqqHandler)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-  }
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(this.jdField_a_of_type_Int);
+    ExclusiveHbFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agzm
  * JD-Core Version:    0.7.0.1
  */

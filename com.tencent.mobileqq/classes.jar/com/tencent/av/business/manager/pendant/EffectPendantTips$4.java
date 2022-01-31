@@ -1,18 +1,18 @@
 package com.tencent.av.business.manager.pendant;
 
-import kyc;
-import lqb;
+import liu;
+import mat;
 
 public class EffectPendantTips$4
   implements Runnable
 {
-  public EffectPendantTips$4(kyc paramkyc) {}
+  public EffectPendantTips$4(liu paramliu) {}
   
   public void run()
   {
     try
     {
-      lqb.a(kyc.a(this.this$0), 1016);
+      mat.a(liu.a(this.this$0), 1016);
       return;
     }
     catch (Exception localException)

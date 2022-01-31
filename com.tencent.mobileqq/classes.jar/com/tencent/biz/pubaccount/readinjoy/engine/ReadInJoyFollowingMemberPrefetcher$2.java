@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import java.util.List;
-import ogx;
+import osi;
 
 public class ReadInJoyFollowingMemberPrefetcher$2
   implements Runnable
 {
-  public ReadInJoyFollowingMemberPrefetcher$2(ogx paramogx, List paramList, boolean paramBoolean) {}
+  public ReadInJoyFollowingMemberPrefetcher$2(osi paramosi, List paramList, boolean paramBoolean) {}
   
   public void run()
   {
-    ogx.a(this.this$0, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
+    osi.a(this.this$0, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,7 +1,16 @@
 package com.tencent.mobileqq.Doraemon.test;
 
-import ajed;
-import ajjy;
+import aabp;
+import aabu;
+import aaeh;
+import aaei;
+import aaej;
+import aaek;
+import aael;
+import aaen;
+import aaeo;
+import ajsf;
+import ajyc;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -22,39 +31,30 @@ import com.tencent.mobileqq.widget.FormSwitchItem;
 import java.io.File;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zrw;
-import zsb;
-import zuo;
-import zup;
-import zuq;
-import zur;
-import zus;
-import zuu;
-import zuv;
 
 public class TestAppFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener
 {
   public int a;
+  public aabp a;
   public EditText a;
   private RadioGroup a;
   public String a;
-  public zrw a;
   private RadioGroup b;
   public String b;
   public String c = "101469453";
   
   public TestAppFragment()
   {
-    this.jdField_a_of_type_JavaLangString = (ajed.aT + "/Tencent/com/tencent/mobileqq/");
+    this.jdField_a_of_type_JavaLangString = (ajsf.aV + "/Tencent/com/tencent/mobileqq/");
     this.jdField_b_of_type_JavaLangString = "openapi";
     this.jdField_a_of_type_Int = 5;
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Zrw.a("login", null, new zus(this));
+    this.jdField_a_of_type_Aabp.a("login", null, new aael(this));
   }
   
   public void a()
@@ -73,38 +73,38 @@ public class TestAppFragment
     localLinearLayout.addView(localEditText2);
     localBuilder.setView(localLinearLayout);
     localBuilder.setTitle("输入appid&type");
-    localBuilder.setPositiveButton(ajjy.a(2131649056), new zuq(this, localEditText1, localEditText2)).setNegativeButton(ajjy.a(2131649060), new zup(this));
+    localBuilder.setPositiveButton(ajyc.a(2131714845), new aaej(this, localEditText1, localEditText2)).setNegativeButton(ajyc.a(2131714849), new aaei(this));
     localBuilder.create().show();
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = (FormSwitchItem)this.mContentView.findViewById(2131299517);
+    paramLayoutInflater = (FormSwitchItem)this.mContentView.findViewById(2131365085);
     paramLayoutInflater.setChecked(new File(this.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString).exists());
-    paramLayoutInflater.setOnCheckedChangeListener(new zuo(this));
-    this.mContentView.findViewById(2131301880).setOnClickListener(this);
-    this.mContentView.findViewById(2131303887).setOnClickListener(this);
-    this.mContentView.findViewById(2131303890).setOnClickListener(this);
-    this.mContentView.findViewById(2131303888).setOnClickListener(this);
-    this.mContentView.findViewById(2131301431).setOnClickListener(this);
-    this.mContentView.findViewById(2131301429).setOnClickListener(this);
-    this.mContentView.findViewById(2131298646).setOnClickListener(this);
-    this.mContentView.findViewById(2131301432).setOnClickListener(this);
-    this.mContentView.findViewById(2131301427).setOnClickListener(this);
-    this.mContentView.findViewById(2131301430).setOnClickListener(this);
-    this.mContentView.findViewById(2131309396).setOnClickListener(this);
-    this.mContentView.findViewById(2131302571).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131305471));
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)this.mContentView.findViewById(2131309482));
-    this.jdField_b_of_type_AndroidWidgetRadioGroup = ((RadioGroup)this.mContentView.findViewById(2131309481));
-    zsb.a();
-    this.jdField_a_of_type_Zrw = zsb.a(getActivity(), 3, "101480522");
+    paramLayoutInflater.setOnCheckedChangeListener(new aaeh(this));
+    this.mContentView.findViewById(2131367497).setOnClickListener(this);
+    this.mContentView.findViewById(2131369562).setOnClickListener(this);
+    this.mContentView.findViewById(2131369565).setOnClickListener(this);
+    this.mContentView.findViewById(2131369563).setOnClickListener(this);
+    this.mContentView.findViewById(2131367041).setOnClickListener(this);
+    this.mContentView.findViewById(2131367039).setOnClickListener(this);
+    this.mContentView.findViewById(2131364204).setOnClickListener(this);
+    this.mContentView.findViewById(2131367042).setOnClickListener(this);
+    this.mContentView.findViewById(2131367037).setOnClickListener(this);
+    this.mContentView.findViewById(2131367040).setOnClickListener(this);
+    this.mContentView.findViewById(2131375143).setOnClickListener(this);
+    this.mContentView.findViewById(2131368191).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131371164));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)this.mContentView.findViewById(2131375230));
+    this.jdField_b_of_type_AndroidWidgetRadioGroup = ((RadioGroup)this.mContentView.findViewById(2131375229));
+    aabu.a();
+    this.jdField_a_of_type_Aabp = aabu.a(getActivity(), 3, "101480522");
   }
   
   public int getContentLayoutId()
   {
-    return 2131493430;
+    return 2131558993;
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -122,18 +122,18 @@ public class TestAppFragment
     {
     default: 
       return;
-    case 2131301880: 
-      this.jdField_a_of_type_Zrw.a("hello", null, new zuu(this.jdField_a_of_type_AndroidWidgetEditText));
+    case 2131367497: 
+      this.jdField_a_of_type_Aabp.a("hello", null, new aaen(this.jdField_a_of_type_AndroidWidgetEditText));
       return;
-    case 2131303887: 
-      this.jdField_a_of_type_Zrw.a("login", null, new zuu(this.jdField_a_of_type_AndroidWidgetEditText));
+    case 2131369562: 
+      this.jdField_a_of_type_Aabp.a("login", null, new aaen(this.jdField_a_of_type_AndroidWidgetEditText));
       return;
-    case 2131303890: 
-      this.jdField_a_of_type_Zrw.a("loginSilent", null, new zuu(this.jdField_a_of_type_AndroidWidgetEditText));
+    case 2131369565: 
+      this.jdField_a_of_type_Aabp.a("loginSilent", null, new aaen(this.jdField_a_of_type_AndroidWidgetEditText));
       return;
-    case 2131303888: 
-      paramView = new zuv(getActivity());
-      paramView.c(ajjy.a(2131649058));
+    case 2131369563: 
+      paramView = new aaeo(getActivity());
+      paramView.c(ajyc.a(2131714847));
       paramView.b("appName");
       paramView.d("desc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\n");
       paramView.f("negativeButton");
@@ -143,22 +143,22 @@ public class TestAppFragment
       paramView.a("https://seeklogo.com/images/T/twitter-icon-square-logo-108D17D373-seeklogo.com.png");
       paramView.show();
       return;
-    case 2131301431: 
-      this.jdField_a_of_type_Zrw.a("getSkey", localJSONObject, new zuu(this.jdField_a_of_type_AndroidWidgetEditText));
+    case 2131367041: 
+      this.jdField_a_of_type_Aabp.a("getSkey", localJSONObject, new aaen(this.jdField_a_of_type_AndroidWidgetEditText));
       return;
-    case 2131301432: 
-      this.jdField_a_of_type_Zrw.a("getUserInfo", localJSONObject, new zuu(this.jdField_a_of_type_AndroidWidgetEditText));
+    case 2131367042: 
+      this.jdField_a_of_type_Aabp.a("getUserInfo", localJSONObject, new aaen(this.jdField_a_of_type_AndroidWidgetEditText));
       return;
-    case 2131301427: 
-      this.jdField_a_of_type_Zrw.a("getAppFriends", localJSONObject, new zuu(this.jdField_a_of_type_AndroidWidgetEditText));
+    case 2131367037: 
+      this.jdField_a_of_type_Aabp.a("getAppFriends", localJSONObject, new aaen(this.jdField_a_of_type_AndroidWidgetEditText));
       return;
-    case 2131301429: 
-      this.jdField_a_of_type_Zrw.a("getLocation", null, new zuu(this.jdField_a_of_type_AndroidWidgetEditText));
+    case 2131367039: 
+      this.jdField_a_of_type_Aabp.a("getLocation", null, new aaen(this.jdField_a_of_type_AndroidWidgetEditText));
       return;
-    case 2131298646: 
-      this.jdField_a_of_type_Zrw.a("getCity", null, new zuu(this.jdField_a_of_type_AndroidWidgetEditText));
+    case 2131364204: 
+      this.jdField_a_of_type_Aabp.a("getCity", null, new aaen(this.jdField_a_of_type_AndroidWidgetEditText));
       return;
-    case 2131301430: 
+    case 2131367040: 
       switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
       {
       default: 
@@ -181,8 +181,8 @@ public class TestAppFragment
         localJSONObject.put("rankValueType", i);
         localJSONObject.put("rankOrderType", j);
         label496:
-        this.jdField_a_of_type_Zrw.a("getRankingList", localJSONObject, new zuu(this.jdField_a_of_type_AndroidWidgetEditText));
-        this.jdField_a_of_type_Zrw.a("loginSilent", null, new zur(this, this.jdField_a_of_type_AndroidWidgetEditText, localJSONObject));
+        this.jdField_a_of_type_Aabp.a("getRankingList", localJSONObject, new aaen(this.jdField_a_of_type_AndroidWidgetEditText));
+        this.jdField_a_of_type_Aabp.a("loginSilent", null, new aaek(this, this.jdField_a_of_type_AndroidWidgetEditText, localJSONObject));
         return;
         i = 1;
         continue;
@@ -203,10 +203,10 @@ public class TestAppFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Zrw != null)
+    if (this.jdField_a_of_type_Aabp != null)
     {
-      this.jdField_a_of_type_Zrw.b();
-      this.jdField_a_of_type_Zrw = null;
+      this.jdField_a_of_type_Aabp.b();
+      this.jdField_a_of_type_Aabp = null;
     }
   }
 }

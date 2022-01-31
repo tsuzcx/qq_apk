@@ -1,18 +1,20 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.Conversation;
+import mqq.app.QQPermissionCallback;
 
-public class aaxy
-  implements CompoundButton.OnCheckedChangeListener
+class aaxy
+  implements QQPermissionCallback
 {
-  public aaxy(GeneralSettingActivity paramGeneralSettingActivity) {}
+  aaxy(aaxx paramaaxx, View paramView) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    axkz.a(paramBoolean);
-    if (paramBoolean) {
-      axkz.a(new aaxz(this.a.jdField_a_of_type_Abry, this.a.jdField_a_of_type_AndroidViewView));
-    }
+    bbcv.b(aaxx.a(this.jdField_a_of_type_Aaxx).a());
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_Aaxx.b(this.jdField_a_of_type_AndroidViewView);
   }
 }
 

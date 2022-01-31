@@ -1,104 +1,72 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusAnimationItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import android.graphics.drawable.BitmapDrawable;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.PopupWindow;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.widget.RangeButtonView;
+import java.util.ArrayList;
 import java.util.List;
-import org.json.JSONObject;
 
 public class qzz
 {
-  public static float a()
+  private int jdField_a_of_type_Int;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private bfun jdField_a_of_type_Bfun;
+  private List<bfur> jdField_a_of_type_JavaUtilList;
+  private List<String> b;
+  
+  public qzz(LayoutInflater paramLayoutInflater)
   {
-    float f = ((Float)bgmq.a("readinjoy_font_size_sp", Float.valueOf(-1.0F))).floatValue();
-    if (f == -1.0F) {
-      return 16.0F;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
+  }
+  
+  public qzx a()
+  {
+    qzx localqzx = new qzx(null);
+    Object localObject = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559045, null);
+    qzx.a(localqzx, new PopupWindow((View)localObject, -1, -2));
+    qzx.a(localqzx).setBackgroundDrawable(new BitmapDrawable());
+    qzx.a(localqzx).setOutsideTouchable(true);
+    localObject = (RangeButtonView)((View)localObject).findViewById(2131366557);
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      this.jdField_a_of_type_JavaUtilList.add(new bfur(ajyc.a(2131704698), TypedValue.applyDimension(1, 15.0F, ajwe.a)));
+      this.jdField_a_of_type_JavaUtilList.add(new bfur(ajyc.a(2131704695), TypedValue.applyDimension(1, 16.0F, ajwe.a)));
+      this.jdField_a_of_type_JavaUtilList.add(new bfur(ajyc.a(2131704696), TypedValue.applyDimension(1, 17.0F, ajwe.a)));
+      this.jdField_a_of_type_JavaUtilList.add(new bfur(ajyc.a(2131704697), TypedValue.applyDimension(1, 18.0F, ajwe.a)));
+      this.jdField_a_of_type_JavaUtilList.add(new bfur(ajyc.a(2131704699), TypedValue.applyDimension(1, 20.0F, ajwe.a)));
     }
-    return Utils.px2dp(f);
-  }
-  
-  private static void a(String paramString)
-  {
-    QLog.e("FastWebPTSUtils", 1, "errorUrl!! detail:" + paramString);
-    throw new IllegalArgumentException(paramString);
-  }
-  
-  public static void a(List<BaseData> paramList)
-  {
-    if (paramList == null) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        while (!paramList.hasNext()) {
-          paramList = paramList.iterator();
-        }
-        localObject = (BaseData)paramList.next();
-      } while (!(localObject instanceof ProteusItemData));
-      localObject = (ProteusItemData)localObject;
-    } while ((((ProteusItemData)localObject).t != 1) || (((ProteusItemData)localObject).f));
-    if (((ProteusItemData)localObject).b != null) {}
-    for (paramList = ((ProteusItemData)localObject).b.toString();; paramList = "data error!!")
-    {
-      a(paramList);
-      return;
+    ((RangeButtonView)localObject).setTitleData(this.jdField_a_of_type_JavaUtilList);
+    qzx.a(localqzx, this.jdField_a_of_type_JavaUtilList);
+    if (this.jdField_a_of_type_Bfun != null) {
+      ((RangeButtonView)localObject).setOnChangerListener(this.jdField_a_of_type_Bfun);
     }
-  }
-  
-  public static void a(List<BaseData> paramList, float paramFloat)
-  {
-    if (paramList == null) {}
-    for (;;)
+    ((RangeButtonView)localObject).setThumbPosition(this.jdField_a_of_type_Int);
+    if ((this.b == null) || (this.b.isEmpty()))
     {
-      return;
-      paramFloat = Utils.px2dp(paramFloat);
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        Object localObject = (BaseData)paramList.next();
-        try
-        {
-          if ((localObject instanceof ProteusItemData))
-          {
-            localObject = (ProteusItemData)localObject;
-            if ((((ProteusItemData)localObject).t == 1) && (((ProteusItemData)localObject).s == 1)) {
-              ((ProteusItemData)localObject).b.put("attribute_text_size", String.valueOf(paramFloat));
-            }
-          }
-        }
-        catch (Exception localException) {}
-      }
+      this.b = new ArrayList();
+      this.b.add(BaseApplicationImpl.getApplication().getString(2131691110));
+      this.b.add(BaseApplicationImpl.getApplication().getString(2131691111));
+      this.b.add(BaseApplicationImpl.getApplication().getString(2131691112));
+      this.b.add(BaseApplicationImpl.getApplication().getString(2131691113));
+      this.b.add(BaseApplicationImpl.getApplication().getString(2131691114));
     }
+    ((RangeButtonView)localObject).setContentDescList(this.b);
+    return localqzx;
   }
   
-  public static void a(List<BaseData> paramList, boolean paramBoolean)
+  public qzz a(int paramInt)
   {
-    if (paramList == null) {}
-    BaseData localBaseData;
-    do
-    {
-      return;
-      while (!paramList.hasNext()) {
-        paramList = paramList.iterator();
-      }
-      localBaseData = (BaseData)paramList.next();
-    } while (!(localBaseData instanceof ProteusAnimationItemData));
-    ((ProteusAnimationItemData)localBaseData).a(paramBoolean);
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
   }
   
-  public static boolean a(BaseData paramBaseData)
+  public qzz a(bfun parambfun)
   {
-    if ((paramBaseData.p == 26) && ((paramBaseData instanceof ProteusItemData)) && (((ProteusItemData)paramBaseData).t == 1)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if ((paramBaseData.p == 18) || (paramBaseData.p == 22) || (paramBaseData.p == 0)) {
-        bool = true;
-      }
-      return bool;
-    }
+    this.jdField_a_of_type_Bfun = parambfun;
+    return this;
   }
 }
 

@@ -1,19 +1,14 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 class agdw
-  implements DialogInterface.OnClickListener
+  implements Comparator<ager>
 {
-  agdw(agdp paramagdp) {}
+  agdw(agdv paramagdv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(ager paramager1, ager paramager2)
   {
-    if (paramInt == 0)
-    {
-      this.a.b();
-      agdp.a(this.a).moveTaskToBack(true);
-    }
+    return (int)(paramager2.a.time - paramager1.a.time);
   }
 }
 

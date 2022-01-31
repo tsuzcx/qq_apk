@@ -1,18 +1,19 @@
-import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 
-public abstract interface apeq
+public final class apeq
+  implements Parcelable.Creator<ForwardFileInfo>
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  public ForwardFileInfo a(Parcel paramParcel)
+  {
+    return new ForwardFileInfo(paramParcel, null);
+  }
   
-  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
-  
-  public abstract void a(String paramString, long paramLong, Bundle paramBundle);
-  
-  public abstract void b(int paramInt, Bundle paramBundle);
-  
-  public abstract void c(int paramInt, Bundle paramBundle);
-  
-  public abstract void d(int paramInt, Bundle paramBundle);
+  public ForwardFileInfo[] a(int paramInt)
+  {
+    return new ForwardFileInfo[paramInt];
+  }
 }
 
 

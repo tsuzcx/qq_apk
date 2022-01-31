@@ -1,20 +1,43 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import org.apache.http.entity.ByteArrayEntity;
 
-class bifa
-  extends AnimatorListenerAdapter
+public class bifa
+  extends ByteArrayEntity
 {
-  bifa(biez parambiez) {}
+  protected final int a;
+  protected final int b;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public bifa(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    biez.a(this.a).sendEmptyMessageDelayed(1, 1500L);
+    super(paramArrayOfByte);
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public InputStream getContent()
+  {
+    return new ByteArrayInputStream(this.content, this.a, this.b);
+  }
+  
+  public long getContentLength()
+  {
+    return this.b;
+  }
+  
+  public void writeTo(OutputStream paramOutputStream)
+  {
+    if (paramOutputStream == null) {
+      throw new IllegalArgumentException("Output stream may not be null");
+    }
+    paramOutputStream.write(this.content, this.a, this.b);
+    paramOutputStream.flush();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bifa
  * JD-Core Version:    0.7.0.1
  */

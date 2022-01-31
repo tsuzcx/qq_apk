@@ -1,19 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.together.ui.WatchPanelView;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.startup.step.BroadcastReportRegister;
+import mqq.app.AppCallback;
 
 public class axnx
-  implements DownloadParams.DecodeHandler
+  implements AppCallback
 {
-  public axnx(WatchPanelView paramWatchPanelView) {}
+  public axnx(BroadcastReportRegister paramBroadcastReportRegister) {}
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public void onSendBroadcast(Context paramContext, Intent paramIntent)
   {
-    if (paramBitmap == null) {
-      return null;
+    try
+    {
+      amae.a(paramIntent);
+      return;
     }
-    return bacm.b(paramBitmap, 6.0F, this.a.a, this.a.a);
+    catch (Throwable paramContext) {}
   }
 }
 

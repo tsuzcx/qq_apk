@@ -1,25 +1,47 @@
-import android.text.TextWatcher;
+import android.text.Layout;
+import android.text.SpannedString;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.EditText;
+import android.view.View.OnTouchListener;
 import android.widget.TextView;
 
-public class azbo
-  extends azaz<azaj>
+class azbo
+  implements View.OnTouchListener
 {
-  public TextWatcher a;
-  public EditText a;
-  public TextView a;
+  azbo(azbm paramazbm) {}
   
-  public azbo(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131311387));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131299950));
+    int i = paramMotionEvent.getAction();
+    TextView localTextView = (TextView)paramView;
+    CharSequence localCharSequence = localTextView.getText();
+    if (((localCharSequence instanceof SpannedString)) && (i == 1))
+    {
+      i = (int)paramMotionEvent.getX();
+      int j = (int)paramMotionEvent.getY();
+      int k = localTextView.getTotalPaddingLeft();
+      int m = localTextView.getTotalPaddingTop();
+      int n = localTextView.getScrollX();
+      int i1 = localTextView.getScrollY();
+      paramMotionEvent = localTextView.getLayout();
+      i = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(j - m + i1), i - k + n);
+      paramMotionEvent = (ClickableSpan[])((SpannedString)localCharSequence).getSpans(i, i, ClickableSpan.class);
+      if (paramMotionEvent.length != 0) {
+        paramMotionEvent[0].onClick(localTextView);
+      }
+    }
+    else
+    {
+      return true;
+    }
+    paramView.performClick();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     azbo
  * JD-Core Version:    0.7.0.1
  */

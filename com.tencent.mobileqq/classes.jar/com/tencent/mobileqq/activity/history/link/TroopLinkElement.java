@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.history.link;
 
 import android.text.TextUtils;
-import atmo;
+import aukm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -13,7 +13,7 @@ import mqq.app.AppRuntime;
 import org.json.JSONObject;
 
 public class TroopLinkElement
-  extends atmo
+  extends aukm
   implements Serializable
 {
   private static final String TAG = "TroopLinkElement";

@@ -11,29 +11,29 @@ import com.tencent.gdtad.views.canvas.framework.GdtCanvasPageView;
 import com.tencent.gdtad.views.video.GdtVideoCommonView;
 import com.tencent.gdtad.views.video.GdtVideoData;
 import java.lang.ref.WeakReference;
-import yny;
-import ypm;
-import yqj;
-import yqo;
-import yrr;
-import yrt;
+import yxs;
+import yzg;
+import zad;
+import zag;
+import zbj;
+import zbl;
 
 public class GdtCanvasVideoComponentView
   extends GdtCanvasComponentView
-  implements yrr, yrt
+  implements zbj, zbl
 {
   public static int a;
   private static int b;
   private GdtCanvasVideoComponentData jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsVideoGdtCanvasVideoComponentData;
   private GdtCanvasPageView jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasPageView;
   private GdtVideoCommonView jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView;
-  private yqj jdField_a_of_type_Yqj;
+  private zad jdField_a_of_type_Zad;
   private int c;
   
-  public GdtCanvasVideoComponentView(Context paramContext, WeakReference<yqo> paramWeakReference, GdtCanvasVideoComponentData paramGdtCanvasVideoComponentData, yqj paramyqj, GdtCanvasPageView paramGdtCanvasPageView)
+  public GdtCanvasVideoComponentView(Context paramContext, WeakReference<zag> paramWeakReference, GdtCanvasVideoComponentData paramGdtCanvasVideoComponentData, zad paramzad, GdtCanvasPageView paramGdtCanvasPageView)
   {
     super(paramContext, paramWeakReference);
-    this.jdField_a_of_type_Yqj = paramyqj;
+    this.jdField_a_of_type_Zad = paramzad;
     this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasPageView = paramGdtCanvasPageView;
     a(paramContext, paramGdtCanvasVideoComponentData);
   }
@@ -74,9 +74,9 @@ public class GdtCanvasVideoComponentView
     for (paramContext = a().ad;; paramContext = null)
     {
       ((GdtVideoData)localObject).setAd(paramContext);
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.setData((GdtVideoData)localObject, this.jdField_a_of_type_Yqj);
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.setData((GdtVideoData)localObject, this.jdField_a_of_type_Zad);
       this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.setLoadListener(this);
-      this.jdField_a_of_type_Ypm = new ypm(new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView), new WeakReference(this), 0.5F);
+      this.jdField_a_of_type_Yzg = new yzg(new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView), new WeakReference(this), 0.5F);
       return;
     }
   }
@@ -109,9 +109,9 @@ public class GdtCanvasVideoComponentView
     return this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsVideoGdtCanvasVideoComponentData;
   }
   
-  public ypm a()
+  public yzg a()
   {
-    return this.jdField_a_of_type_Ypm;
+    return this.jdField_a_of_type_Yzg;
   }
   
   public void a()
@@ -120,7 +120,7 @@ public class GdtCanvasVideoComponentView
     if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null)
     {
       this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a();
-      yny.c("GdtCanvasVideoComponentView", "onViewResume " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
+      yxs.c("GdtCanvasVideoComponentView", "onViewResume " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
     }
   }
   
@@ -140,8 +140,8 @@ public class GdtCanvasVideoComponentView
     if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null)
     {
       this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.b();
-      this.jdField_a_of_type_Yqj.a(new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView));
-      yny.c("GdtCanvasVideoComponentView", "onViewPause " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
+      this.jdField_a_of_type_Zad.a(new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView));
+      yxs.c("GdtCanvasVideoComponentView", "onViewPause " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
     }
   }
   

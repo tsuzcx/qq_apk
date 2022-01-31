@@ -1,78 +1,40 @@
-import android.content.Context;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.manager.Manager;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.CompInfoBase;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class vuz
-  implements Manager
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private vvb jdField_a_of_type_Vvb;
+  public final int a;
+  public final String a;
+  public final boolean a;
+  public final String b;
+  public final String c;
+  public final String d;
   
-  public vuz(QQAppInterface paramQQAppInterface)
+  public vuz(qqstory_struct.CompInfoBase paramCompInfoBase)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_Vvb != null) {
-      this.jdField_a_of_type_Vvb.a();
-    }
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_Vvb != null) {
-      this.jdField_a_of_type_Vvb.b();
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Vvb != null)
+    this.jdField_a_of_type_JavaLangString = paramCompInfoBase.title.get();
+    this.b = paramCompInfoBase.backgroud_url.get();
+    this.c = paramCompInfoBase.compared_vid.get();
+    if (paramCompInfoBase.is_compared_able.get() == 1) {}
+    for (;;)
     {
-      this.jdField_a_of_type_Vvb.c();
-      this.jdField_a_of_type_Vvb = null;
+      this.jdField_a_of_type_Boolean = bool;
+      this.d = paramCompInfoBase.icon_url.get();
+      this.jdField_a_of_type_Int = paramCompInfoBase.oa_task_id.get();
+      return;
+      bool = false;
     }
   }
   
-  public void a(int paramInt)
+  public String toString()
   {
-    switch (paramInt)
-    {
-    case 1: 
-    default: 
-      return;
-    case 2: 
-      b();
-      return;
-    case 3: 
-      c();
-      return;
-    }
-    a();
-  }
-  
-  public void a(Context paramContext, ScannerParams paramScannerParams)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if ((paramScannerParams.f) && (!paramScannerParams.d) && (this.jdField_a_of_type_Vvb == null)) {
-      this.jdField_a_of_type_Vvb = new vvb(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-  }
-  
-  public void onDestroy()
-  {
-    a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
+    return "CompInfoBase{title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", linkUrl='" + this.b + '\'' + ", comparedVid='" + this.c + '\'' + ", isComparedAble=" + this.jdField_a_of_type_Boolean + ", iconUrl='" + this.d + '\'' + ", taskId=" + this.jdField_a_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vuz
  * JD-Core Version:    0.7.0.1
  */

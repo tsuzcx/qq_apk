@@ -1,14 +1,13 @@
+import android.graphics.Bitmap;
+import android.view.animation.Animation;
+
 public abstract interface vnq
 {
-  public abstract void onFailure(String paramString);
+  public abstract void a(Animation paramAnimation);
   
-  public abstract void onFinish(boolean paramBoolean);
+  public abstract Bitmap b();
   
-  public abstract void onProgress(String paramString);
-  
-  public abstract void onStart();
-  
-  public abstract void onSuccess(String paramString);
+  public abstract void b(Animation paramAnimation);
 }
 
 

@@ -1,38 +1,115 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiBaseInfo;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiBaseInfo.QQEmoConfigItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anwl
-  implements Animation.AnimationListener
+  extends QQSysAndEmojiBaseInfo
 {
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
-  
-  public anwl(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt, View paramView)
+  public int a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {}
-    do
+    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt)))) {}
+    for (int i = Integer.parseInt(((QQSysAndEmojiBaseInfo.QQEmoConfigItem)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).QCid);; i = -1)
     {
-      return;
-      if (this.jdField_a_of_type_Int == 0)
+      int j = i;
+      if (i == -1)
       {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        return;
+        j = i;
+        if (paramInt >= 0)
+        {
+          j = i;
+          if (paramInt < ayjw.d.length) {
+            j = ayjw.d[paramInt];
+          }
+        }
       }
-    } while (this.jdField_a_of_type_Int != 1);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      return j;
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public ArrayList<Integer> a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.jdField_a_of_type_JavaUtilArrayList;
+    }
+    ArrayList localArrayList = new ArrayList(anya.b);
+    int i = 0;
+    while (i < anya.b)
+    {
+      localArrayList.add(Integer.valueOf(i));
+      i += 1;
+    }
+    return localArrayList;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a()
+  {
+    Object localObject = a();
+    if (localObject != null)
+    {
+      JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("emoji");
+      if (localJSONArray != null)
+      {
+        if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+          this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+        }
+        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        }
+        this.jdField_a_of_type_JavaUtilHashMap.clear();
+        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        long l = System.currentTimeMillis();
+        int i = 0;
+        for (;;)
+        {
+          if (i < localJSONArray.length())
+          {
+            localObject = null;
+            try
+            {
+              JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+              localObject = localJSONObject;
+              localObject = (QQSysAndEmojiBaseInfo.QQEmoConfigItem)arly.a((JSONObject)localObject, QQSysAndEmojiBaseInfo.QQEmoConfigItem.class);
+            }
+            catch (JSONException localJSONException)
+            {
+              try
+              {
+                int j = Integer.parseInt(((QQSysAndEmojiBaseInfo.QQEmoConfigItem)localObject).AQLid);
+                this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(j), localObject);
+                if (!a((QQSysAndEmojiBaseInfo.QQEmoConfigItem)localObject)) {
+                  this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
+                }
+                i += 1;
+                continue;
+                localJSONException = localJSONException;
+                localJSONException.printStackTrace();
+              }
+              catch (NumberFormatException localNumberFormatException)
+              {
+                for (;;)
+                {
+                  QLog.d("QQSysAndEmojiBaseInfo", 1, new Object[] { "error occur in emoji AQLid:", ((QQSysAndEmojiBaseInfo.QQEmoConfigItem)localObject).AQLid });
+                }
+              }
+            }
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "emoji configItem:", Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()), " ,orderlist:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), " ,cost:", Long.valueOf(System.currentTimeMillis() - l) });
+        }
+      }
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    axqw.b(null, "dc00898", "", "", "0X800A7A3", "0X800A7A3", a(paramInt1), 0, String.valueOf(paramInt2), "", "", "");
+  }
 }
 
 

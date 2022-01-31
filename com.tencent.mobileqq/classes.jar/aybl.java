@@ -1,20 +1,32 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-
 public class aybl
-  implements View.OnTouchListener
+  extends aybg
 {
-  public aybl(TribeVideoPreviewFragment paramTribeVideoPreviewFragment) {}
+  private int f;
+  private int g;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aybl(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.getActivity().finish();
+    super(paramInt1, 16, 0);
+    this.f = paramInt2;
+    this.g = paramInt3;
+  }
+  
+  protected void a(int paramInt, float paramFloat)
+  {
+    this.b = ((int)(this.f + (this.g - this.f) * paramFloat));
+    if (this.g - this.f > 0) {
+      if (this.b >= this.g) {
+        this.b = this.g;
+      }
     }
-    return true;
+    for (;;)
+    {
+      super.a(paramInt, paramFloat);
+      return;
+      if (this.b <= this.g) {
+        this.b = this.g;
+      }
+    }
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.contacts.view.pullrefresh;
 
-import afhn;
-import afho;
-import afhp;
-import afhq;
-import afhr;
-import afht;
-import afhv;
-import afhw;
+import aftk;
+import aftl;
+import aftm;
+import aftn;
+import afto;
+import aftq;
+import afts;
+import aftt;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -25,13 +25,13 @@ import com.tencent.widget.ListView;
 
 public class CommonRefreshLayout
   extends ViewGroup
-  implements afhn
+  implements aftk
 {
   private float jdField_a_of_type_Float = 0.5F;
   private int jdField_a_of_type_Int = 200;
-  private afhp jdField_a_of_type_Afhp;
-  afhq jdField_a_of_type_Afhq = new afho(this);
-  private afht jdField_a_of_type_Afht;
+  private aftm jdField_a_of_type_Aftm;
+  aftn jdField_a_of_type_Aftn = new aftl(this);
+  private aftq jdField_a_of_type_Aftq;
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private AutoScroller jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller;
@@ -125,7 +125,7 @@ public class CommonRefreshLayout
         this.j = ViewConfiguration.get(paramContext).getScaledTouchSlop();
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller = new AutoScroller(this);
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller.a(this);
-        this.l = getResources().getDimensionPixelOffset(2131167544);
+        this.l = getResources().getDimensionPixelOffset(2131298637);
         return;
       }
       label362:
@@ -197,13 +197,13 @@ public class CommonRefreshLayout
         f1 = this.jdField_c_of_type_Float - this.i;
       }
     }
-    if (afhr.c(this.k))
+    if (afto.c(this.k))
     {
       int m = this.i;
       if (c()) {
         m = this.i - ((int)this.jdField_b_of_type_Float - this.l);
       }
-      this.jdField_a_of_type_Afhq.a(m, false, false);
+      this.jdField_a_of_type_Aftn.a(m, false, false);
     }
     c(f1);
   }
@@ -214,7 +214,7 @@ public class CommonRefreshLayout
       return;
     }
     this.i = ((int)(this.i + paramFloat));
-    if ((afhr.c(this.k)) || (afhr.f(this.k))) {
+    if ((afto.c(this.k)) || (afto.f(this.k))) {
       this.h = this.i;
     }
     g();
@@ -224,7 +224,7 @@ public class CommonRefreshLayout
   
   private boolean d()
   {
-    return (this.jdField_c_of_type_Boolean) && (!afhw.a(this.jdField_a_of_type_AndroidViewView)) && (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Float > 0.0F);
+    return (this.jdField_c_of_type_Boolean) && (!aftt.a(this.jdField_a_of_type_AndroidViewView)) && (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Float > 0.0F);
   }
   
   private void f()
@@ -279,7 +279,7 @@ public class CommonRefreshLayout
   
   private void h()
   {
-    if (afhr.b(this.k))
+    if (afto.b(this.k))
     {
       this.i = ((int)(this.jdField_b_of_type_Float + 0.5F));
       this.h = this.i;
@@ -290,7 +290,7 @@ public class CommonRefreshLayout
     do
     {
       return;
-      if (afhr.a(this.k))
+      if (afto.a(this.k))
       {
         this.i = 0;
         this.h = 0;
@@ -299,7 +299,7 @@ public class CommonRefreshLayout
         invalidate();
         return;
       }
-    } while (!afhr.h(this.k));
+    } while (!afto.h(this.k));
     this.i = ((int)(this.jdField_b_of_type_Float + 0.5F) - this.l);
     this.h = this.i;
     g();
@@ -309,7 +309,7 @@ public class CommonRefreshLayout
   
   private void i()
   {
-    if (afhr.d(this.k)) {
+    if (afto.d(this.k)) {
       if (c()) {
         c();
       }
@@ -319,23 +319,23 @@ public class CommonRefreshLayout
       return;
       k();
       return;
-      if (afhr.e(this.k))
+      if (afto.e(this.k))
       {
-        this.jdField_a_of_type_Afhq.b();
+        this.jdField_a_of_type_Aftn.b();
         l();
         return;
       }
-      if (afhr.b(this.k))
+      if (afto.b(this.k))
       {
         b();
         return;
       }
-      if ((afhr.j(this.k)) || (afhr.k(this.k)))
+      if ((afto.j(this.k)) || (afto.k(this.k)))
       {
         c();
         return;
       }
-    } while ((!afhr.l(this.k)) && (!afhr.i(this.k)));
+    } while ((!afto.l(this.k)) && (!afto.i(this.k)));
     d();
   }
   
@@ -367,16 +367,16 @@ public class CommonRefreshLayout
   
   public void a()
   {
-    if (afhr.e(this.k))
+    if (afto.e(this.k))
     {
       a(-3);
       h();
-      this.jdField_a_of_type_Afhq.c();
+      this.jdField_a_of_type_Aftn.c();
     }
     do
     {
       return;
-      if (afhr.b(this.k))
+      if (afto.b(this.k))
       {
         if (c()) {
           a(1);
@@ -384,19 +384,19 @@ public class CommonRefreshLayout
         for (;;)
         {
           h();
-          this.jdField_a_of_type_Afhq.d();
+          this.jdField_a_of_type_Aftn.d();
           return;
           a(0);
         }
       }
-      if (afhr.d(this.k))
+      if (afto.d(this.k))
       {
         if (this.jdField_b_of_type_Boolean)
         {
           this.jdField_b_of_type_Boolean = false;
           a(-3);
           h();
-          this.jdField_a_of_type_Afhq.c();
+          this.jdField_a_of_type_Aftn.c();
           return;
         }
         if (c()) {
@@ -405,35 +405,35 @@ public class CommonRefreshLayout
         for (;;)
         {
           h();
-          this.jdField_a_of_type_Afhq.d();
+          this.jdField_a_of_type_Aftn.d();
           return;
           a(0);
         }
       }
-      if ((afhr.j(this.k)) || (afhr.k(this.k)))
+      if ((afto.j(this.k)) || (afto.k(this.k)))
       {
         a(1);
         h();
         return;
       }
-    } while ((!afhr.l(this.k)) && (!afhr.i(this.k)));
+    } while ((!afto.l(this.k)) && (!afto.i(this.k)));
     a(0);
     h();
   }
   
   public void a(float paramFloat)
   {
-    if (afhr.d(this.k)) {
-      this.jdField_a_of_type_Afhq.a(this.i, false, true);
+    if (afto.d(this.k)) {
+      this.jdField_a_of_type_Aftn.a(this.i, false, true);
     }
     for (;;)
     {
       c(paramFloat);
       return;
-      if (afhr.e(this.k)) {
-        this.jdField_a_of_type_Afhq.a(this.i, false, true);
-      } else if (afhr.b(this.k)) {
-        this.jdField_a_of_type_Afhq.a(this.i, true, true);
+      if (afto.e(this.k)) {
+        this.jdField_a_of_type_Aftn.a(this.i, false, true);
+      } else if (afto.b(this.k)) {
+        this.jdField_a_of_type_Aftn.a(this.i, true, true);
       }
     }
   }
@@ -452,7 +452,7 @@ public class CommonRefreshLayout
   
   public boolean b()
   {
-    return afhr.c(this.k);
+    return afto.c(this.k);
   }
   
   public void c()
@@ -476,16 +476,16 @@ public class CommonRefreshLayout
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Afhp != null) {
-      this.jdField_a_of_type_Afhp.onFlingScrollHeader(this.k, -this.i);
+    if (this.jdField_a_of_type_Aftm != null) {
+      this.jdField_a_of_type_Aftm.onFlingScrollHeader(this.k, -this.i);
     }
     super.dispatchDraw(paramCanvas);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Afhp != null) {
-      this.jdField_a_of_type_Afhp.onTouchMoving(this, -this.i, paramMotionEvent);
+    if (this.jdField_a_of_type_Aftm != null) {
+      this.jdField_a_of_type_Aftm.onTouchMoving(this, -this.i, paramMotionEvent);
     }
     switch (paramMotionEvent.getAction())
     {
@@ -501,7 +501,7 @@ public class CommonRefreshLayout
   {
     a(0);
     h();
-    this.jdField_a_of_type_Afhq.d();
+    this.jdField_a_of_type_Aftn.d();
     this.jdField_b_of_type_Float = 0.0F;
   }
   
@@ -531,9 +531,9 @@ public class CommonRefreshLayout
       if ((m <= 0) || (m >= 4)) {
         break;
       }
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131310931));
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131310932);
-    } while ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidViewViewGroup == null) || (!(this.jdField_a_of_type_AndroidViewViewGroup instanceof afhv)));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131376740));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131376741);
+    } while ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidViewViewGroup == null) || (!(this.jdField_a_of_type_AndroidViewViewGroup instanceof afts)));
     this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
     return;
     throw new IllegalStateException("Children num must equal or less than 3");
@@ -562,10 +562,10 @@ public class CommonRefreshLayout
         f1 = a(paramMotionEvent, this.jdField_f_of_type_Int);
         this.jdField_e_of_type_Float = f1;
         this.jdField_g_of_type_Float = f1;
-        if ((afhr.d(this.k)) || (afhr.e(this.k))) {
+        if ((afto.d(this.k)) || (afto.e(this.k))) {
           this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller.a();
         }
-        if (((afhr.d(this.k)) || (afhr.e(this.k))) && (m == 0))
+        if (((afto.d(this.k)) || (afto.e(this.k))) && (m == 0))
         {
           return true;
           if (this.jdField_f_of_type_Int == -1) {
@@ -596,10 +596,10 @@ public class CommonRefreshLayout
               break label67;
             }
             bool1 = bool2;
-            if (afhr.b(this.k)) {
+            if (afto.b(this.k)) {
               break label67;
             }
-            if (!afhr.f(this.k)) {
+            if (!afto.f(this.k)) {
               break;
             }
             return true;
@@ -666,14 +666,14 @@ public class CommonRefreshLayout
         if ((Math.abs(f3) >= Math.abs(f4)) && (Math.abs(f3) > this.j)) {
           return false;
         }
-        if ((afhr.a(this.k)) && (this.jdField_a_of_type_Afhp != null) && (f4 > 0.0F))
+        if ((afto.a(this.k)) && (this.jdField_a_of_type_Aftm != null) && (f4 > 0.0F))
         {
           a(3);
           if (this.jdField_a_of_type_AndroidViewViewGroup.getVisibility() != 0) {
             this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
           }
         }
-        if (afhr.g(this.k))
+        if (afto.g(this.k))
         {
           if (f4 >= 0.0F) {
             break;
@@ -681,7 +681,7 @@ public class CommonRefreshLayout
           a(2);
           b(f4);
         }
-        if ((afhr.h(this.k)) || (afhr.i(this.k)))
+        if ((afto.h(this.k)) || (afto.i(this.k)))
         {
           if (f4 >= 0.0F) {
             break label419;
@@ -689,13 +689,13 @@ public class CommonRefreshLayout
           a(2);
           b(f4);
         }
-        if (((afhr.a(this.k)) || (afhr.h(this.k))) && (f4 > 0.0F) && (d()))
+        if (((afto.a(this.k)) || (afto.h(this.k))) && (f4 > 0.0F) && (d()))
         {
-          this.jdField_a_of_type_Afhq.a();
+          this.jdField_a_of_type_Aftn.a();
           a(-1);
         }
-      } while (!afhr.c(this.k));
-      if ((afhr.d(this.k)) || (afhr.e(this.k))) {
+      } while (!afto.c(this.k));
+      if ((afto.d(this.k)) || (afto.e(this.k))) {
         if (this.i >= this.jdField_b_of_type_Float) {
           a(-2);
         }
@@ -721,7 +721,7 @@ public class CommonRefreshLayout
         break label252;
         a(-1);
         continue;
-        if ((f4 < 0.0F) && (this.jdField_a_of_type_Afhp != null)) {
+        if ((f4 < 0.0F) && (this.jdField_a_of_type_Aftm != null)) {
           a(2);
         }
       }
@@ -743,14 +743,14 @@ public class CommonRefreshLayout
     }
   }
   
-  public void setMiniAppScrollListener(afhp paramafhp)
+  public void setMiniAppScrollListener(aftm paramaftm)
   {
-    this.jdField_a_of_type_Afhp = paramafhp;
+    this.jdField_a_of_type_Aftm = paramaftm;
   }
   
-  public void setOnRefreshListener(afht paramafht)
+  public void setOnRefreshListener(aftq paramaftq)
   {
-    this.jdField_a_of_type_Afht = paramafht;
+    this.jdField_a_of_type_Aftq = paramaftq;
   }
   
   public void setRefreshCompleteDelayDuration(int paramInt)
@@ -775,12 +775,12 @@ public class CommonRefreshLayout
         if (!paramBoolean) {
           break;
         }
-      } while (!afhr.a(this.k));
+      } while (!afto.a(this.k));
       a(-1);
       j();
       return;
-    } while (!afhr.b(this.k));
-    this.jdField_a_of_type_Afhq.d();
+    } while (!afto.b(this.k));
+    this.jdField_a_of_type_Aftn.d();
     postDelayed(new CommonRefreshLayout.1(this), this.jdField_c_of_type_Int);
   }
   

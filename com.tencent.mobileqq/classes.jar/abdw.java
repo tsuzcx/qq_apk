@@ -1,21 +1,16 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import java.util.List;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import java.util.ArrayList;
 
 public class abdw
-  implements View.OnClickListener
+  implements bfoq
 {
-  public abdw(NearbyActivity paramNearbyActivity) {}
+  public abdw(FriendProfileCardActivity paramFriendProfileCardActivity, ArrayList paramArrayList, bfol parambfol) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = 0;
-    while (i < this.a.a.size())
-    {
-      ((View.OnClickListener)this.a.a.get(i)).onClick(paramView);
-      i += 1;
-    }
+    ((bbkw)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a();
+    this.jdField_a_of_type_Bfol.e();
   }
 }
 

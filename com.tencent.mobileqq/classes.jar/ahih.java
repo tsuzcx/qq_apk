@@ -1,28 +1,38 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.21;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.21.1.1;
-import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.report.SpringHbReportManager;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.report.SpringHbReportManager.ReportInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class ahih
-  implements ahkn
 {
-  public ahih(NewFlowCameraActivity.21.1.1 param1) {}
-  
-  public void a(int paramInt)
+  public static void a(String paramString, int paramInt1, int paramInt2, Map<String, String> paramMap)
   {
-    if (paramInt == 0)
+    a(paramString, paramInt1, paramInt2, paramMap, false);
+  }
+  
+  public static void a(String paramString, int paramInt1, int paramInt2, Map<String, String> paramMap, boolean paramBoolean)
+  {
+    paramString = SpringHbReportManager.ReportInfo.create(paramString, paramInt1, paramInt2, paramMap, paramBoolean);
+    if ((paramString == null) || (!paramString.isValid()))
     {
-      NewFlowCameraActivity.b(this.a.a.a.this$0, true);
-      if (this.a.a.a.this$0.d.getVisibility() == 0)
-      {
-        this.a.a.a.this$0.d.setVisibility(8);
-        this.a.a.a.this$0.a.a(NewFlowCameraActivity.a(this.a.a.a.this$0));
+      if (QLog.isColorLevel()) {
+        QLog.i("springHb_report_SpringHbReporter", 2, "[report] reportInfo is invalid" + paramString);
       }
       return;
     }
-    NewFlowCameraActivity.b(this.a.a.a.this$0, false);
-    this.a.a.a.this$0.a.a(NewFlowCameraActivity.a(this.a.a.a.this$0));
+    paramMap = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramMap instanceof QQAppInterface))
+    {
+      ((SpringHbReportManager)((QQAppInterface)paramMap).getManager(344)).a(paramString);
+      return;
+    }
+    paramMap = new Bundle();
+    paramMap.putSerializable("key1", paramString);
+    QIPCClientHelper.getInstance().callServer("SpringHbIPCModule", "ReportData", paramMap, null);
   }
 }
 

@@ -1,31 +1,34 @@
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class amyg
+  implements ampd<String>
 {
-  public int a;
-  public String a;
   public boolean a;
   
-  public amyg(String paramString, int paramInt)
+  public void a(String paramString)
   {
-    this(paramString, paramInt, true);
-  }
-  
-  public amyg(String paramString, int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("ComboObject:");
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append(',').append(this.jdField_a_of_type_Int).append(',').append(this.jdField_a_of_type_Boolean);
-    return localStringBuffer.toString();
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("QFileIPv6ConfigBean", 1, "receiveAllConfigs|type: 449configContent is empty");
+      return;
+    }
+    try
+    {
+      this.a = new JSONObject(paramString).getJSONObject("ipv6Config").getBoolean("allSwitch");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QFileIPv6ConfigBean", 1, paramString, new Object[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amyg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class nkm
-  implements moc
+class nkm
+  implements DialogInterface.OnClickListener
 {
-  public nkm(ReadInJoyFeedsActivity.1 param1) {}
+  nkm(nke paramnke, JsResult paramJsResult) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
-    }
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

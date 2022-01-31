@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bdcz;
-import bdeg;
-import bdfz;
+import begz;
+import beig;
+import beka;
+import beuc;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import org.json.JSONException;
@@ -14,40 +14,44 @@ import org.json.JSONObject;
 class InternalJSPlugin$1
   implements Runnable
 {
-  InternalJSPlugin$1(InternalJSPlugin paramInternalJSPlugin, bdfz parambdfz) {}
+  InternalJSPlugin$1(InternalJSPlugin paramInternalJSPlugin, beka parambeka) {}
   
   public void run()
   {
-    Object localObject = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-    String[] arrayOfString = null;
-    localObject = bdeg.a(this.this$0.mContext, String.valueOf(((MiniAppProxy)localObject).getAccount()), this.this$0.mMiniAppContext.a().appId);
-    if (localObject != null)
+    Object localObject2 = beig.a(this.this$0.mContext, String.valueOf(beuc.a().a()), this.this$0.mMiniAppContext.a().appId);
+    String[] arrayOfString;
+    if (localObject2 != null)
     {
-      arrayOfString = ((bdeg)localObject).a("");
-      ((bdeg)localObject).a();
+      arrayOfString = ((beig)localObject2).a("");
+      ((beig)localObject2).a();
     }
-    if ((arrayOfString != null) && (arrayOfString.length == 2) && (TextUtils.isEmpty(arrayOfString[1]))) {
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getMiniAppStoreAppList(1, new InternalJSPlugin.1.1(this));
-    }
-    if ((arrayOfString != null) && (arrayOfString.length == 2))
+    for (;;)
     {
-      localObject = new JSONObject();
-      try
-      {
-        ((JSONObject)localObject).put("data", arrayOfString[0]);
-        ((JSONObject)localObject).put("dataType", arrayOfString[1]);
-        this.val$req.a((JSONObject)localObject);
-        return;
+      if ((arrayOfString != null) && (arrayOfString.length == 2) && (TextUtils.isEmpty(arrayOfString[1]))) {
+        ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getMiniAppStoreAppList(1, new InternalJSPlugin.1.1(this));
       }
-      catch (JSONException localJSONException)
+      if ((arrayOfString != null) && (arrayOfString.length == 2))
       {
-        for (;;)
+        localObject2 = new JSONObject();
+        try
         {
-          localJSONException.printStackTrace();
+          ((JSONObject)localObject2).put("data", arrayOfString[0]);
+          ((JSONObject)localObject2).put("dataType", arrayOfString[1]);
+          this.val$req.a((JSONObject)localObject2);
+          return;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
         }
       }
+      this.val$req.b();
+      return;
+      Object localObject1 = null;
     }
-    this.val$req.b();
   }
 }
 

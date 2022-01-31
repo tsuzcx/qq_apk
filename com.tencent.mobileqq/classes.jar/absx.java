@@ -1,17 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import java.util.List;
 
-public class absx
-  implements DialogInterface.OnClickListener
+class absx
+  implements View.OnClickListener
 {
-  public absx(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  absx(absw paramabsw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    awqx.b(this.a.app, "dc00898", "", "", "0X8007547", "0X8007547", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
-    this.a.finish();
+    paramView = paramView.getTag();
+    if ((paramView instanceof absv))
+    {
+      paramView = (absv)paramView;
+      if ((paramView.a >= 0) && (paramView.a < this.a.a.a.size()))
+      {
+        paramView = (ProfileLabelInfo)this.a.a.a.remove(paramView.a);
+        this.a.a.a(this.a.a.a.size());
+        this.a.notifyDataSetChanged();
+        absw.a(this.a, paramView);
+        axqw.b(this.a.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
+      }
+    }
   }
 }
 

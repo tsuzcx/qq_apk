@@ -1,22 +1,14 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 class aene
   implements View.OnClickListener
 {
-  aene(aend paramaend) {}
+  aene(aena paramaena) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(aend.a(this.a), QQBrowserActivity.class);
-    paramView.putExtra("url", String.format("https://openmobile.qq.com/TeamGame/index.html?_wv=1031&uin=%s&team_id=%s&srcSessionType=%d&srcSessionUin=%s", new Object[] { aend.a(this.a).getAccount(), aend.a(this.a), Integer.valueOf(aqae.a(aend.a(this.a).jdField_a_of_type_Int)), aend.a(this.a).jdField_a_of_type_JavaLangString }));
-    aend.a(this.a).startActivity(paramView);
-    bcad.a().a(aend.a(this.a).getCurrentAccountUin(), "", "", "2000", "2016", "0", false);
+    this.a.w(true);
   }
 }
 

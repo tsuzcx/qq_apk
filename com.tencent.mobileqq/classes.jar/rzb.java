@@ -1,61 +1,37 @@
-import NS_KING_INTERFACE.stPostFeedDingRsp;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager.PlayStartVideoRunnable;
+import com.tencent.qphone.base.util.QLog;
 
-final class rzb
-  implements ryo
+public class rzb
+  implements ooa
 {
-  rzb(Handler paramHandler, int paramInt) {}
+  public rzb(VideoPlayManager.PlayStartVideoRunnable paramPlayStartVideoRunnable) {}
   
-  public void a(ryz paramryz)
+  public void a(ood paramood)
   {
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-    if ((paramryz == null) || (paramryz.jdField_a_of_type_JavaLangObject == null))
-    {
-      localMessage.what = 4302;
-      localMessage.obj = Integer.valueOf(-1);
-      Log.e(rza.a, "点赞失败:-1");
+    if (QLog.isColorLevel()) {
+      QLog.d("Viola.VideoPlayManager", 2, "UUIDToUrlCallback Callback vid=" + paramood.jdField_b_of_type_JavaLangString + ", url=" + paramood.jdField_a_of_type_JavaLangString + ", isH265=" + paramood.jdField_a_of_type_Boolean + ", isHWCodec=" + paramood.jdField_b_of_type_Boolean + ", fileBitRate=" + paramood.c);
     }
-    for (;;)
+    if ((VideoPlayManager.PlayStartVideoRunnable.a(this.a) != null) && (paramood.jdField_b_of_type_JavaLangString.equals(VideoPlayManager.PlayStartVideoRunnable.a(this.a).a.jdField_a_of_type_JavaLangString))) {
+      if (TextUtils.isEmpty(paramood.jdField_a_of_type_JavaLangString)) {
+        if (VideoPlayManager.a(this.a.this$0) != null) {
+          VideoPlayManager.a(this.a.this$0).a(null, 123, 107, 0, "UUIDToUrlCallback vid2url ERROR ", null);
+        }
+      }
+    }
+    while (!QLog.isColorLevel())
     {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
       return;
-      if ((paramryz.jdField_a_of_type_JavaLangObject instanceof stPostFeedDingRsp))
+      if (paramood.jdField_a_of_type_Int == 1)
       {
-        stPostFeedDingRsp localstPostFeedDingRsp = (stPostFeedDingRsp)paramryz.jdField_a_of_type_JavaLangObject;
-        if (localstPostFeedDingRsp == null)
-        {
-          Log.e(rza.a, "服务器失败！！！");
-          localMessage.what = 4302;
-          localMessage.obj = Integer.valueOf(paramryz.jdField_a_of_type_Int);
-        }
-        else
-        {
-          int i = localstPostFeedDingRsp.is_ding;
-          localMessage.what = 4301;
-          localMessage.obj = Integer.valueOf(i);
-          paramryz = new Intent("weishi_public_account_ding_state_change");
-          paramryz.putExtra("position", this.jdField_a_of_type_Int);
-          paramryz.putExtra("is_ding", i);
-          BaseApplication.getContext().sendBroadcast(paramryz);
-          Log.e(rza.a, "发送了点赞广播");
-          if (i == 0) {
-            Log.e(rza.a, "请求后变成：没有点赞-by微视");
-          } else {
-            Log.e(rza.a, "请求后变成：已经点赞-by微视");
-          }
-        }
+        VideoPlayManager.PlayStartVideoRunnable.a(this.a).a(paramood.jdField_b_of_type_JavaLangString, paramood.jdField_a_of_type_JavaLangString, 1, VideoPlayManager.PlayStartVideoRunnable.a(this.a), 0L, VideoPlayManager.PlayStartVideoRunnable.a(this.a).a.d, paramood.jdField_b_of_type_Boolean, true, false);
+        return;
       }
-      else
-      {
-        Log.e(rza.a, "点赞失败:-2");
-        localMessage.what = 4302;
-        localMessage.obj = Integer.valueOf(-2);
-      }
+      VideoPlayManager.PlayStartVideoRunnable.a(this.a).a(paramood.jdField_b_of_type_JavaLangString, paramood.jdField_a_of_type_JavaLangString, 2, VideoPlayManager.PlayStartVideoRunnable.a(this.a), 0L, VideoPlayManager.PlayStartVideoRunnable.a(this.a).a.d, paramood.jdField_b_of_type_Boolean, true, false);
+      return;
     }
+    QLog.d("Viola.VideoPlayManager", 2, "vid2url换回来后，当前视频已经不再播放，vid:" + paramood.jdField_b_of_type_JavaLangString + " url:" + paramood.jdField_a_of_type_JavaLangString);
   }
 }
 

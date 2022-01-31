@@ -1,190 +1,111 @@
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.activity.ExtendGridView;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.Pic_list;
+import com.tencent.mobileqq.troop.data.TroopBarMyBar;
+import com.tencent.mobileqq.troop.widget.PublishItemContainer;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Hashtable;
 
 public class azgn
+  extends Handler
 {
-  public static long a(byte[] paramArrayOfByte)
-  {
-    long l = 0L;
-    int i = 0;
-    while (i < 4)
-    {
-      l += ((paramArrayOfByte[i] & 0xFF) << (3 - i) * 8);
-      i += 1;
-    }
-    return l;
-  }
+  public azgn(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public static ArrayList<azgo> a(long paramLong, DataInputStream paramDataInputStream, int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramDataInputStream.read(new byte[10]);
-    paramDataInputStream.read(new byte[3]);
-    paramDataInputStream.readByte();
-    paramDataInputStream.readInt();
-    paramDataInputStream.readInt();
-    paramDataInputStream.readInt();
-    paramDataInputStream.readInt();
-    paramDataInputStream.readByte();
-    paramDataInputStream.readByte();
-    paramDataInputStream.readByte();
-    paramDataInputStream.readByte();
-    int i = paramDataInputStream.readShort();
-    paramDataInputStream.read(new byte[i]);
-    int j = paramDataInputStream.readShort();
-    paramDataInputStream.read(new byte[j]);
-    int m;
-    for (i = i + 36 + 2 + j; i < paramInt1; i = i + 3 + m)
+    if (this.a.isFinishing()) {
+      return;
+    }
+    long l1;
+    label254:
+    long l2;
+    label418:
+    long l3;
+    switch (paramMessage.what)
     {
-      int k = paramDataInputStream.readByte();
-      m = paramDataInputStream.readShort();
-      j = 0;
-      Object localObject1 = null;
-      Object localObject4 = null;
-      if (j < m)
+    default: 
+      return;
+    case 1001: 
+      if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing()))
       {
-        int i1 = paramDataInputStream.readByte();
-        int n = paramDataInputStream.readShort();
-        Object localObject5 = new byte[n];
-        paramDataInputStream.read((byte[])localObject5);
-        Object localObject2;
-        Object localObject3;
-        if (k == 3) {
-          if (i1 == 2)
-          {
-            localObject5 = new String((byte[])localObject5);
-            if (((String)localObject5).startsWith("{"))
-            {
-              i1 = ((String)localObject5).lastIndexOf('}');
-              localObject2 = localObject4;
-              localObject3 = localObject1;
-              if (i1 != -1)
-              {
-                localObject2 = localObject4;
-                localObject3 = localObject1;
-                if (((String)localObject5).length() > 1)
-                {
-                  localObject2 = ((String)localObject5).substring(1, i1).replaceAll("-", "").toUpperCase();
-                  localObject3 = localObject1;
-                }
-              }
-            }
-          }
-        }
-        for (;;)
-        {
-          j = j + 3 + n;
-          localObject4 = localObject2;
-          localObject1 = localObject3;
-          break;
-          i1 = ((String)localObject5).lastIndexOf('.');
-          localObject2 = localObject4;
-          localObject3 = localObject1;
-          if (i1 != -1)
-          {
-            localObject2 = localObject4;
-            localObject3 = localObject1;
-            if (((String)localObject5).length() > 1)
-            {
-              localObject2 = ((String)localObject5).substring(0, i1).toUpperCase();
-              localObject3 = localObject1;
-              continue;
-              localObject2 = localObject4;
-              localObject3 = localObject1;
-              if (i1 == 4)
-              {
-                long l = a((byte[])localObject5);
-                localObject2 = localObject4;
-                localObject3 = localObject1;
-                if (!TextUtils.isEmpty(localObject4))
-                {
-                  localObject2 = localObject4;
-                  localObject3 = localObject1;
-                  if (l != -1L)
-                  {
-                    localObject3 = localObject1;
-                    if (localObject1 == null) {
-                      localObject3 = new azgo();
-                    }
-                    ((azgo)localObject3).jdField_a_of_type_Long = paramLong;
-                    ((azgo)localObject3).jdField_a_of_type_Int = paramInt2;
-                    ((azgo)localObject3).b = l;
-                    ((azgo)localObject3).jdField_a_of_type_JavaLangString = localObject4;
-                    localArrayList.add(localObject3);
-                    localObject2 = localObject4;
-                    continue;
-                    if (k == 5)
-                    {
-                      localObject2 = localObject4;
-                      localObject3 = localObject1;
-                      if (i1 == 255)
-                      {
-                        localObject2 = localObject4;
-                        localObject3 = localObject1;
-                      }
-                    }
-                    else
-                    {
-                      localObject2 = localObject4;
-                      localObject3 = localObject1;
-                      if (k == 6)
-                      {
-                        localObject2 = localObject4;
-                        localObject3 = localObject1;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
+        this.a.c(false);
+        this.a.rightViewText.setEnabled(true);
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setItemEnable(true);
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.setEnabled(true);
+        bcpw.a(this.a.getActivity(), 2131696544, 1).b(this.a.getTitleBarHeight());
+        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar != null) {
+          break label254;
         }
       }
-    }
-    return localArrayList;
-  }
-  
-  public static ArrayList<azgo> a(long paramLong, byte[] paramArrayOfByte, int paramInt)
-  {
-    ArrayList localArrayList1 = new ArrayList();
-    HashMap localHashMap = new HashMap();
-    paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte);
-    DataInputStream localDataInputStream = new DataInputStream(paramArrayOfByte);
-    int i = 0;
-    while (i < paramInt)
-    {
-      localDataInputStream.readShort();
-      localDataInputStream.readShort();
-      localDataInputStream.readInt();
-      localDataInputStream.readInt();
-      localDataInputStream.readInt();
-      localDataInputStream.readByte();
-      localDataInputStream.readInt();
-      localDataInputStream.readInt();
-      int j = localDataInputStream.readInt();
-      localDataInputStream.readInt();
-      ArrayList localArrayList2 = a(paramLong, localDataInputStream, localDataInputStream.readShort(), j);
-      int k = localArrayList2.size();
-      j = 0;
-      while (j < k)
+      for (localObject = "0";; localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar.jdField_c_of_type_JavaLangString)
       {
-        azgo localazgo = (azgo)localArrayList2.get(j);
-        if (!localHashMap.containsKey(Long.valueOf(localazgo.b)))
-        {
-          localArrayList1.add(localazgo);
-          localHashMap.put(Long.valueOf(localazgo.b), Boolean.valueOf(true));
-        }
-        j += 1;
+        bair.a("pub_page", "fail", (String)localObject, "51", TroopBarPublishActivity.b(this.a), "");
+        QLog.d("tribe_publish_TroopBarPublishActivity", 2, "uploadVideoThumb failed " + paramMessage.obj);
+        TroopBarPublishActivity.a(this.a, null);
+        l1 = vyi.a(TroopBarPublishActivity.c(this.a));
+        bair.a(this.a.getActivity(), "tribe_video", "video_thumb_upload", paramMessage.arg1, String.valueOf(l1), "", "");
+        return;
       }
-      i += 1;
+    case 1003: 
+      localObject = (TroopBarPublishActivity.Pic_list)bair.a.get(TroopBarPublishActivity.c(this.a));
+      if (localObject != null)
+      {
+        this.a.jdField_a_of_type_Azaj.d = ((TroopBarPublishActivity.Pic_list)localObject).url;
+        QLog.d("tribe_publish_TroopBarPublishActivity", 2, "uploadVideoThumb succ " + paramMessage.obj);
+        l1 = vyi.a(TroopBarPublishActivity.c(this.a));
+        bair.a(this.a.getActivity(), "tribe_video", "video_thumb_upload", paramMessage.arg1, String.valueOf(l1), String.valueOf(paramMessage.arg2), "");
+        if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Azaj.jdField_a_of_type_JavaLangString)) {
+          break label418;
+        }
+        this.a.b(this.a.H, true);
+      }
+      for (;;)
+      {
+        TroopBarPublishActivity.a(this.a, null);
+        return;
+        if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
+          this.a.l();
+        }
+      }
+    case 1011: 
+      paramMessage = (azci)paramMessage.obj;
+      this.a.jdField_a_of_type_Azaj.b = paramMessage.jdField_c_of_type_JavaLangString;
+      this.a.jdField_a_of_type_Azaj.jdField_a_of_type_JavaLangString = paramMessage.b;
+      TroopBarPublishActivity.a(this.a, null);
+      if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
+        this.a.l();
+      }
+      l1 = vyi.a(paramMessage.jdField_a_of_type_JavaLangString);
+      l2 = SystemClock.elapsedRealtime();
+      l3 = paramMessage.jdField_a_of_type_Long;
+      bair.a(this.a.getActivity(), "tribe_video", "video_upload", 0, String.valueOf(l1), String.valueOf(l2 - l3), "");
+      return;
     }
-    localDataInputStream.close();
-    paramArrayOfByte.close();
-    localHashMap.clear();
-    return localArrayList1;
+    Object localObject = (azci)paramMessage.obj;
+    if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing()))
+    {
+      bcpw.a(this.a, 2131696544, 1).b(this.a.getTitleBarHeight());
+      this.a.c(false);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar != null) {
+        break label732;
+      }
+    }
+    label732:
+    for (paramMessage = "0";; paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar.jdField_c_of_type_JavaLangString)
+    {
+      bair.a("pub_page", "fail", paramMessage, "52", TroopBarPublishActivity.b(this.a), "");
+      l1 = vyi.a(((azci)localObject).jdField_a_of_type_JavaLangString);
+      l2 = SystemClock.elapsedRealtime();
+      l3 = ((azci)localObject).jdField_a_of_type_Long;
+      bair.a(this.a.getActivity(), "tribe_video", "video_upload", ((azci)localObject).jdField_c_of_type_Int, String.valueOf(l1), String.valueOf(l2 - l3), "");
+      TroopBarPublishActivity.a(this.a, null);
+      return;
+    }
   }
 }
 

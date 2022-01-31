@@ -1,25 +1,28 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.annotation.TargetApi;
+import android.graphics.Outline;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewOutlineProvider;
 
+@TargetApi(21)
 public class bfpy
+  extends ViewOutlineProvider
 {
-  private static bfpy a;
-  public String a;
-  public String b;
+  private float a;
   
-  public static bfpy a()
+  public bfpy(float paramFloat)
   {
-    if (jdField_a_of_type_Bfpy == null) {
-      jdField_a_of_type_Bfpy = new bfpy();
-    }
-    jdField_a_of_type_Bfpy.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    jdField_a_of_type_Bfpy.b = null;
-    return jdField_a_of_type_Bfpy;
+    this.a = paramFloat;
+  }
+  
+  public void getOutline(View paramView, Outline paramOutline)
+  {
+    paramOutline.setRoundRect(new Rect(0, 0, paramView.getWidth(), paramView.getHeight()), this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfpy
  * JD-Core Version:    0.7.0.1
  */

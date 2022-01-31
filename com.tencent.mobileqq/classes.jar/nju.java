@@ -1,24 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity.13.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-
-public class nju
-  implements begy
+public abstract interface nju
 {
-  public nju(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  public abstract boolean a(int paramInt);
   
-  public void onDismiss()
-  {
-    if ((!this.a.a) && (this.a.j != -1)) {
-      ThreadManager.getUIHandler().postDelayed(new ReadInJoyBaseDeliverActivity.13.1(this), 300L);
-    }
-    this.a.a = false;
-  }
+  public abstract boolean b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nju
  * JD-Core Version:    0.7.0.1
  */

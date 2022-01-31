@@ -1,24 +1,36 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import mqq.os.MqqHandler;
+import java.util.List;
 
-class bbch
-  implements View.OnClickListener
+public class bbch
+  extends bbcg
 {
-  bbch(bbce parambbce) {}
+  public String b;
+  public List<Integer> b;
+  public String c;
+  public List<Integer> c;
+  public String d;
+  public List<Integer> d;
   
-  public void onClick(View paramView)
+  public bbcg a()
   {
-    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(102));
+    bbcg localbbcg = new bbcg();
+    localbbcg.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localbbcg.jdField_a_of_type_JavaUtilList = this.jdField_b_of_type_JavaUtilList;
+    localbbcg.jdField_a_of_type_Int = 1;
+    return localbbcg;
+  }
+  
+  public bbcg b()
+  {
+    bbcg localbbcg = new bbcg();
+    localbbcg.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+    localbbcg.jdField_a_of_type_JavaUtilList = this.jdField_c_of_type_JavaUtilList;
+    localbbcg.jdField_a_of_type_Int = 2;
+    return localbbcg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbch
  * JD-Core Version:    0.7.0.1
  */

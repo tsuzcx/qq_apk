@@ -1,30 +1,23 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.music.SongInfo;
 
-class asvx
-  implements alxp
+public final class asvx
+  implements Parcelable.Creator<SongInfo>
 {
-  asvx(asvw paramasvw, IphonePickerView paramIphonePickerView, begr parambegr) {}
-  
-  public void a()
+  public SongInfo a(Parcel paramParcel)
   {
-    if ((this.jdField_a_of_type_Begr != null) && (this.jdField_a_of_type_Begr.isShowing()))
-    {
-      asvw.a(this.jdField_a_of_type_Asvw, this.jdField_a_of_type_Asvw.b, false);
-      this.jdField_a_of_type_Begr.dismiss();
-    }
+    return new SongInfo(paramParcel, null);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public SongInfo[] a(int paramInt)
   {
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    this.jdField_a_of_type_Asvw.b.setTag(Byte.valueOf((byte)paramInt1));
-    this.jdField_a_of_type_Asvw.b.setText(asvw.a(this.jdField_a_of_type_Asvw).a(0, paramInt1));
+    return new SongInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     asvx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryBannerInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class qkq
-  implements Parcelable.Creator<DiscoveryBannerInfo>
+class qkq
+  implements View.OnClickListener
 {
-  public DiscoveryBannerInfo a(Parcel paramParcel)
-  {
-    return new DiscoveryBannerInfo(paramParcel);
-  }
+  qkq(qko paramqko) {}
   
-  public DiscoveryBannerInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new DiscoveryBannerInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "mShareActionSheet cancle button OnClick");
+    }
+    if (qko.a(this.a).isShowing()) {
+      qko.a(this.a).dismiss();
+    }
   }
 }
 

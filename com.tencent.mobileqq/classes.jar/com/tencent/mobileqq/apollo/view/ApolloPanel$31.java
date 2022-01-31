@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.apollo.view;
 
-import aifg;
+import airz;
 import android.text.TextUtils;
-import bajr;
 import com.tencent.mobileqq.DrawerPushItem;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -59,8 +59,8 @@ class ApolloPanel$31
             bool1 = bool3;
             if (localJSONObject != null)
             {
-              aifg localaifg = (aifg)this.this$0.a.a.getManager(153);
-              ApolloPanel.a(this.this$0, localaifg.a(this.jdField_a_of_type_JavaLangString, (String)localObject, localJSONObject, bool2, 6));
+              airz localairz = (airz)this.this$0.a.a.getManager(153);
+              ApolloPanel.a(this.this$0, localairz.a(this.jdField_a_of_type_JavaLangString, (String)localObject, localJSONObject, bool2, 6));
               localObject = ApolloPanel.a(this.this$0);
               bool1 = bool3;
               if (localObject == null) {}
@@ -81,7 +81,7 @@ class ApolloPanel$31
             }
             ApolloPanel.a(this.this$0, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, ApolloPanel.a(this.this$0).icon_url);
             ApolloPanel.c(this.this$0);
-            bajr.a(this.this$0.a.a, "cmshow", "Apollo", "house_new_view", ApolloUtil.b(this.this$0.a.b()), 0, new String[] { ApolloPanel.a(this.this$0).msg_id });
+            VipUtils.a(this.this$0.a.a, "cmshow", "Apollo", "house_new_view", ApolloUtil.b(this.this$0.a.b()), 0, new String[] { ApolloPanel.a(this.this$0).msg_id });
           }
           bool1 = true;
           ApolloPanel.a(this.this$0, bool1);

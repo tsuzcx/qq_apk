@@ -1,7 +1,8 @@
 package cooperation.qzone.pfc.opencv;
 
 import android.graphics.Bitmap;
-import bget;
+import bhni;
+import com.tencent.common.config.AppSetting;
 import cooperation.qzone.LocalMultiProcConfig;
 import java.io.File;
 
@@ -24,7 +25,7 @@ public class QzoneVision
     //   6: istore_0
     //   7: iload_0
     //   8: ifeq +118 -> 126
-    //   11: getstatic 25	bget:a	Ljava/io/File;
+    //   11: getstatic 25	bhni:a	Ljava/io/File;
     //   14: invokevirtual 31	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   17: astore_1
     //   18: ldc 33
@@ -115,30 +116,33 @@ public class QzoneVision
     if (c()) {
       return true;
     }
-    bget.a().b();
+    bhni.a().b();
     return false;
   }
   
   public static boolean c()
   {
-    Object localObject = bget.a.getAbsolutePath();
-    localObject = new File((String)localObject + "/photoQulatitySo.zip");
-    boolean bool = LocalMultiProcConfig.getBool(bget.e, true);
-    if (!bget.a().a(bget.e, bool)) {
+    Object localObject = bhni.a.getAbsolutePath();
+    if (AppSetting.b) {}
+    for (localObject = new File((String)localObject + "/gifAntishake64.zip");; localObject = new File((String)localObject + "/photoQulatitySo.zip"))
+    {
+      bool = LocalMultiProcConfig.getBool(bhni.e, true);
+      if (bhni.a().a(bhni.e, bool)) {
+        break;
+      }
       if (((File)localObject).exists()) {
         ((File)localObject).delete();
       }
-    }
-    do
-    {
       return false;
-      bool = LocalMultiProcConfig.getBool(bget.d, true);
-      if (bget.a().a(bget.d, bool)) {
-        break;
+    }
+    boolean bool = LocalMultiProcConfig.getBool(bhni.d, true);
+    if (!bhni.a().a(bhni.d, bool))
+    {
+      if (((File)localObject).exists()) {
+        ((File)localObject).delete();
       }
-    } while (!((File)localObject).exists());
-    ((File)localObject).delete();
-    return false;
+      return false;
+    }
     return true;
   }
   

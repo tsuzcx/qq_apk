@@ -1,59 +1,80 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtPreLoader.1;
+import com.tencent.gdtad.aditem.GdtPreLoader.2;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ysx
-  extends ysw
+public final class ysx
 {
-  private int b;
+  private static volatile ysx a;
   
-  public ysx(JSONObject paramJSONObject)
+  public static ysx a()
   {
-    a(paramJSONObject);
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String a()
-  {
-    String str = super.a();
+    if (a == null) {}
     try
     {
-      Object localObject = new JSONObject(str);
-      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("patch7zUrl", this.jdField_b_of_type_JavaLangString);
-      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("patch7zSize", this.jdField_b_of_type_Int);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
+      if (a == null) {
+        a = new ysx();
+      }
+      return a;
     }
-    catch (JSONException localJSONException)
+    finally {}
+  }
+  
+  private void b(GdtAd paramGdtAd)
+  {
+    if ((paramGdtAd == null) || (!paramGdtAd.isValid()) || (TextUtils.isEmpty(paramGdtAd.getCanvas()))) {}
+    for (;;)
     {
-      QLog.d("PatchLogTag", 1, "DexPatchItemConfigArtGeN writeToJsonString", localJSONException);
+      return;
+      int i = paramGdtAd.getDestType();
+      int j = paramGdtAd.getProductType();
+      if (((i == 4) && (j == 1000)) || (paramGdtAd.isAppXiJing()) || (paramGdtAd.isAppXiJingDefault())) {}
+      for (i = 1; i != 0; i = 0) {
+        try
+        {
+          Object localObject = new JSONObject(paramGdtAd.getCanvas());
+          String str = ((JSONObject)localObject).optString("canvas_json_key");
+          localObject = ((JSONObject)localObject).optString("canvas_json_url");
+          if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty((CharSequence)localObject))) {
+            break label138;
+          }
+          yyr.a().a(paramGdtAd, str, (String)localObject);
+          return;
+        }
+        catch (JSONException paramGdtAd)
+        {
+          yxs.d("GdtPreLoader", "preloadCanvasJsonAfterAdLoaded error", paramGdtAd);
+          return;
+        }
+      }
     }
-    return str;
+    label138:
+    yxs.d("GdtPreLoader", "preloadCanvasJsonAfterAdLoaded error");
   }
   
-  protected void a(JSONObject paramJSONObject)
+  private void c(GdtAd paramGdtAd)
   {
-    super.a(paramJSONObject);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("patch7zUrl", null);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("patch7zSize", 0);
+    yxs.a("GdtPreLoader", "preloadVideoAfterAdLoaded() called with: ad = [" + paramGdtAd + "]");
+    if (!paramGdtAd.isVideoSplice()) {
+      return;
+    }
+    new Handler(Looper.getMainLooper()).post(new GdtPreLoader.2(this, paramGdtAd));
   }
   
-  public boolean a(boolean paramBoolean)
+  public void a(GdtAd paramGdtAd)
   {
-    return super.a(paramBoolean);
+    new Handler(Looper.getMainLooper()).post(new GdtPreLoader.1(this, paramGdtAd));
+    c(paramGdtAd);
+    b(paramGdtAd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ysx
  * JD-Core Version:    0.7.0.1
  */

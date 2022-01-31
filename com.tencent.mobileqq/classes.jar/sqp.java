@@ -1,33 +1,51 @@
-import com.tencent.biz.qqstory.model.TroopNickNameManager.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-
 public class sqp
-  extends ajuc
 {
-  sqp(sqo paramsqo) {}
+  private long jdField_a_of_type_Long = -1L;
+  public String a;
+  private boolean jdField_a_of_type_Boolean;
+  private long b;
+  public String b;
   
-  protected void a(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
+  public sqp()
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onGetTroopMemberCardInfoResult suc=").append(paramBoolean).append(" size=");
-      if (paramArrayList != null) {
-        break label78;
-      }
-    }
-    label78:
-    for (int i = 0;; i = paramArrayList.size())
-    {
-      QLog.d("TroopNickNameManager", 2, i);
-      if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-        ThreadManager.executeOnSubThread(new TroopNickNameManager.1.1(this, paramArrayList));
-      }
-      return;
-    }
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public long b()
+  {
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+  }
+  
+  public String toString()
+  {
+    return "ScanInfo{lastAlbum=" + this.jdField_a_of_type_Long + ", lastPic=" + this.jdField_b_of_type_Long + ", isIncScan=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

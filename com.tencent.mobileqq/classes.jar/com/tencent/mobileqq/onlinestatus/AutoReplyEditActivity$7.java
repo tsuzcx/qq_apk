@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import beex;
+import bfmr;
 
 class AutoReplyEditActivity$7
   implements Runnable
@@ -9,7 +9,7 @@ class AutoReplyEditActivity$7
   
   public void run()
   {
-    beex.a(AutoReplyEditActivity.a(this.this$0));
+    bfmr.a(AutoReplyEditActivity.a(this.this$0));
   }
 }
 

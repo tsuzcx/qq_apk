@@ -1,30 +1,26 @@
-public abstract interface aklr
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.util.Comparator;
+
+public class aklr
+  implements Comparator<File>
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public aklr(CleanCache paramCleanCache) {}
   
-  public abstract void a(aklz paramaklz);
-  
-  public abstract int b();
-  
-  public abstract int c();
-  
-  public abstract String c();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract boolean d();
-  
-  public abstract void e();
-  
-  public abstract boolean e();
-  
-  public abstract void f();
+  public int a(File paramFile1, File paramFile2)
+  {
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    if (paramFile2.lastModified() - paramFile1.lastModified() < 0L) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aklr
  * JD-Core Version:    0.7.0.1
  */

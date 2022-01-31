@@ -1,81 +1,22 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class audp
-  implements audl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private audn jdField_a_of_type_Audn;
-  private ArrayList<audl> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public audp(ScanOcrView paramScanOcrView) {}
   
-  public audm a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramArrayOfByte = new audm(paramArrayOfByte, paramInt1, paramInt2);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    for (;;)
-    {
-      Object localObject = paramArrayOfByte;
-      audl localaudl;
-      audm localaudm;
-      if (localIterator.hasNext())
-      {
-        localaudl = (audl)localIterator.next();
-        if (this.jdField_a_of_type_Audn != null) {
-          this.jdField_a_of_type_Audn.a(localaudl, paramArrayOfByte);
-        }
-        localaudm = localaudl.a(paramArrayOfByte.jdField_a_of_type_ArrayOfByte, paramArrayOfByte.b, paramArrayOfByte.jdField_a_of_type_Int);
-        localObject = localaudm;
-        if (localaudm != null)
-        {
-          localObject = localaudm;
-          if (localaudm.jdField_a_of_type_ArrayOfByte != null)
-          {
-            if (localaudm.jdField_a_of_type_Int != 0) {
-              break label121;
-            }
-            localObject = localaudm;
-          }
-        }
-      }
-      return localObject;
-      label121:
-      paramArrayOfByte = localaudm;
-      if (this.jdField_a_of_type_Audn != null)
-      {
-        this.jdField_a_of_type_Audn.b(localaudl, localaudm);
-        paramArrayOfByte = localaudm;
-      }
-    }
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((audl)localIterator.next()).a();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((audl)localIterator.next()).a(paramInt1, paramInt2, paramInt3);
-    }
-  }
-  
-  public void a(audl paramaudl)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramaudl);
-  }
-  
-  public void a(audn paramaudn)
-  {
-    this.jdField_a_of_type_Audn = paramaudn;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.a.e = i;
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     audp
  * JD-Core Version:    0.7.0.1
  */

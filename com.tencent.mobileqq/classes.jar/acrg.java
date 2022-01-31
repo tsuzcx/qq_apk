@@ -1,16 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class acrg
-  implements View.OnTouchListener
+  extends akjz
 {
-  public acrg(VoiceTextEditPanel paramVoiceTextEditPanel) {}
+  public acrg(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ActivateFriends.MainActivity", 2, "onReceiveBirthDayPushUpdate");
+    }
+    ActivateFriendActivity.b(this.a);
   }
 }
 

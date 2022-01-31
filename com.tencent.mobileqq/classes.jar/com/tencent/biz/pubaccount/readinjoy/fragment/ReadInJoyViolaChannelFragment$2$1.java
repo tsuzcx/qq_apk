@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import okr;
-import rko;
+import owd;
+import rxe;
 
 public class ReadInJoyViolaChannelFragment$2$1
   implements Runnable
 {
-  public ReadInJoyViolaChannelFragment$2$1(okr paramokr) {}
+  public ReadInJoyViolaChannelFragment$2$1(owd paramowd) {}
   
   public void run()
   {

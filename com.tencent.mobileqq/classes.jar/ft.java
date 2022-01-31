@@ -1,95 +1,159 @@
-import android.os.Handler;
-import android.os.Message;
-import com.etrump.mixlayout.ETDecoration;
-import com.etrump.mixlayout.ETFont;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.net.Proxy;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import org.apache.http.client.HttpClient;
+import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.conn.scheme.PlainSocketFactory;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.DefaultHttpRoutePlanner;
+import org.apache.http.impl.conn.SingleClientConnManager;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 
 public class ft
-  extends Handler
 {
-  public void handleMessage(Message paramMessage)
+  private static final Uri a = Uri.parse("content://telephony/carriers/preferapn");
+  
+  private static int a()
   {
-    fq localfq = (fq)paramMessage.obj;
-    if (localfq == null) {}
-    ETTextView localETTextView;
+    int i = -1;
+    if (fj.a() < 11) {
+      i = Proxy.getDefaultPort();
+    }
+    String str;
     do
     {
-      do
-      {
-        do
-        {
-          return;
-          localETTextView = (ETTextView)localfq.jdField_a_of_type_JavaLangRefWeakReference.get();
-        } while ((localETTextView == null) || (ETTextView.a(localETTextView) == null));
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        }
-      } while ((!localETTextView.g()) || (ETTextView.jdField_a_of_type_AndroidOsHandler == null));
-      ETTextView.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, fq.a(localETTextView)).sendToTarget();
-      return;
-    } while (!localETTextView.g());
-    boolean bool;
-    int i;
-    if ((ETTextView.a(localETTextView).a() == localfq.jdField_a_of_type_AndroidGraphicsBitmap) && (localETTextView.jdField_a_of_type_Long == localfq.jdField_a_of_type_Long) && (ETTextView.a(localETTextView) != null) && (ETTextView.a(localETTextView).currentFrameIndex() == localfq.jdField_a_of_type_Int) && (localETTextView.jdField_a_of_type_ComEtrumpMixlayoutETFont != null) && (localETTextView.jdField_a_of_type_ComEtrumpMixlayoutETFont.equals(localfq.jdField_a_of_type_Fh.jdField_a_of_type_ComEtrumpMixlayoutETFont))) {
-      if ((ETTextView.a(localETTextView)) && (ETTextView.b(localETTextView)) && (ETTextView.f) && (!ETTextView.c(localETTextView)))
-      {
-        bool = true;
-        if (!bool) {
-          break label388;
-        }
-        localETTextView.invalidate();
-        paramMessage = ETTextView.a(localETTextView);
-        if (!paramMessage.nextFrame()) {
-          break label319;
-        }
-        i = paramMessage.getFrameDelay();
-        int j = (int)(System.currentTimeMillis() - localfq.b);
-        if (j <= 0) {
-          break label385;
-        }
-        i -= j;
-        label268:
-        paramMessage = obtainMessage(0, fq.a(localETTextView));
-        if (i > 1) {
-          break label308;
-        }
-        sendMessage(paramMessage);
-        label290:
-        bool = true;
-      }
-    }
-    label385:
-    label388:
-    for (;;)
+      return i;
+      str = System.getProperty("http.proxyPort");
+    } while (TextUtils.isEmpty(str));
+    try
     {
-      ETTextView.a(localETTextView, bool);
-      return;
-      bool = false;
-      break;
-      label308:
-      sendMessageDelayed(paramMessage, i);
-      break label290;
-      label319:
-      localETTextView.d = false;
-      localETTextView.postInvalidateDelayed(100L);
-      if ((localETTextView.jdField_a_of_type_Fs != null) && (localETTextView.jdField_a_of_type_ComEtrumpMixlayoutETFont != null)) {
-        localETTextView.jdField_a_of_type_Fs.a(localETTextView.jdField_a_of_type_ComTencentMobileqqDataChatMessage, localETTextView.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
-      }
-      bool = false;
-      continue;
-      QLog.e("ETTextView", 2, "this textView reused!");
-      return;
-      break label268;
+      i = Integer.parseInt(str);
+      return i;
     }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      localNumberFormatException.printStackTrace();
+    }
+    return -1;
+  }
+  
+  public static fv a()
+  {
+    String str;
+    if (a())
+    {
+      str = a();
+      if (str != null)
+      {
+        if (str.equalsIgnoreCase("cmwap")) {
+          return new fv("10.0.0.172", 80, null);
+        }
+        if (str.equalsIgnoreCase("3gwap")) {
+          return new fv("10.0.0.172", 80, null);
+        }
+        if (str.equalsIgnoreCase("uniwap")) {
+          return new fv("10.0.0.172", 80, null);
+        }
+        if (str.equalsIgnoreCase("ctwap")) {
+          return new fv("10.0.0.200", 80, null);
+        }
+      }
+    }
+    else
+    {
+      str = b();
+      int i = a();
+      if ((!TextUtils.isEmpty(str)) && (!"10.0.0.172".equals(str)) && (!"10.0.0.200".equals(str)) && (i >= 0)) {
+        return new fv(str, i, null);
+      }
+    }
+    return null;
+  }
+  
+  public static String a()
+  {
+    if (AppNetConnInfo.getRecentNetworkInfo() == null) {}
+    do
+    {
+      return null;
+      if (AppNetConnInfo.isWifiConn()) {
+        return "wifi";
+      }
+    } while ((!AppNetConnInfo.isMobileConn()) || (AppNetConnInfo.getCurrentAPN() == null));
+    return AppNetConnInfo.getCurrentAPN().toLowerCase();
+  }
+  
+  public static HttpClient a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
+  {
+    Object localObject2 = new BasicHttpParams();
+    HttpConnectionParams.setConnectionTimeout((HttpParams)localObject2, paramInt2);
+    HttpConnectionParams.setSoTimeout((HttpParams)localObject2, paramInt3);
+    Object localObject1 = new SchemeRegistry();
+    ((SchemeRegistry)localObject1).register(new Scheme("http", PlainSocketFactory.getSocketFactory(), paramInt1));
+    if (paramBoolean) {}
+    for (localObject1 = new ThreadSafeClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1);; localObject1 = new SingleClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1))
+    {
+      localObject2 = new DefaultHttpClient((ClientConnectionManager)localObject1, (HttpParams)localObject2);
+      ((DefaultHttpClient)localObject2).setRoutePlanner(new DefaultHttpRoutePlanner(((ClientConnectionManager)localObject1).getSchemeRegistry()));
+      return localObject2;
+    }
+  }
+  
+  public static HttpClient a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2)
+  {
+    Object localObject2 = new BasicHttpParams();
+    HttpConnectionParams.setConnectionTimeout((HttpParams)localObject2, paramInt1);
+    HttpConnectionParams.setSoTimeout((HttpParams)localObject2, paramInt2);
+    if (paramBoolean2 == true) {
+      return new DefaultHttpClient((HttpParams)localObject2);
+    }
+    Object localObject1 = new SchemeRegistry();
+    ((SchemeRegistry)localObject1).register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+    try
+    {
+      ((SchemeRegistry)localObject1).register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
+      if (paramBoolean1)
+      {
+        localObject1 = new ThreadSafeClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1);
+        localObject2 = new DefaultHttpClient((ClientConnectionManager)localObject1, (HttpParams)localObject2);
+        ((DefaultHttpClient)localObject2).setRoutePlanner(new DefaultHttpRoutePlanner(((ClientConnectionManager)localObject1).getSchemeRegistry()));
+        return localObject2;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+        continue;
+        localObject1 = new SingleClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1);
+      }
+    }
+  }
+  
+  public static boolean a()
+  {
+    return AppNetConnInfo.isMobileConn();
+  }
+  
+  private static String b()
+  {
+    if (fj.a() < 11) {
+      return Proxy.getDefaultHost();
+    }
+    return System.getProperty("http.proxyHost");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ft
  * JD-Core Version:    0.7.0.1
  */

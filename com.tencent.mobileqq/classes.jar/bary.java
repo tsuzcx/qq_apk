@@ -1,41 +1,29 @@
-import android.net.Uri;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
 
 public class bary
-  extends batl
+  implements View.OnClickListener
 {
-  public bary(PathTraceManager paramPathTraceManager, String paramString1, String paramString2) {}
+  public bary(TroopInteractGiftAnimationController.1.1 param1) {}
   
-  public void onDone(batm parambatm)
+  public void onClick(View paramView)
   {
-    super.onDone(parambatm);
-    if (QLog.isColorLevel()) {
-      QLog.d("PathTraceManager", 1, "voice down");
-    }
-    parambatm = new File(this.jdField_a_of_type_JavaLangString);
-    try
+    this.a.a.this$0.b();
+    paramView = this.a.a.this$0;
+    paramView.jdField_a_of_type_Int += 1;
+    if (this.a.a.this$0.jdField_a_of_type_Boolean)
     {
-      mpx.a(parambatm, PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager));
-      i = 1;
+      this.a.a.this$0.jdField_a_of_type_Boolean = false;
+      this.a.a.this$0.a(this.a.a.a, this.a.a.a.frienduin, this.a.a.a.interactId, this.a.a.a.animationPackageId, this.a.a.this$0.jdField_a_of_type_Int, false);
     }
-    catch (IOException parambatm)
-    {
-      for (;;)
-      {
-        QLog.i("PathTraceManager", 1, "unzip fail");
-        int i = 0;
-      }
+    if (this.a.a.this$0.jdField_a_of_type_Int % 5 == 0) {
+      this.a.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a(this.a.a.a.animationPackageId + "");
     }
-    if (i != 0)
-    {
-      QLog.d("PathTraceManager", 1, "unzip success");
-      if (this.b != null) {
-        baan.a(Uri.fromFile(new File(PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager), this.b + ".mp3")), false, true);
-      }
-    }
+    axqw.b(null, "dc00899", "Grp_flower", "", "inter_gift", "clk_ball", 0, 0, this.a.a.a.frienduin, "", "", "");
   }
 }
 

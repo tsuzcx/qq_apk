@@ -1,113 +1,48 @@
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.TextView;
 
-public abstract class bion
+public class bion
+  extends bijx
 {
-  public double a;
-  private float a;
-  @Deprecated
-  public int a;
-  public Drawable a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  private int c = 5;
-  public String c;
-  public String d;
-  public String e;
-  private String f;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public bion(@NonNull String paramString)
+  public bion(ViewStub paramViewStub)
   {
-    this.jdField_a_of_type_Float = 0.05F;
-    this.jdField_a_of_type_Double = 1.0D;
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalStateException("FacePackage'id can not be null.");
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramViewStub);
   }
   
-  public float a()
+  protected void a(View paramView)
   {
-    return this.jdField_a_of_type_Float;
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365839);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365841));
   }
   
-  public int a()
+  public void b()
   {
-    return this.c;
+    a();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692630);
   }
   
-  public abstract String a();
-  
-  public abstract String a(int paramInt);
-  
-  public void a(String paramString)
+  public void c()
   {
-    int i;
-    if (TextUtils.isEmpty(paramString))
+    if (a())
     {
-      urk.e("FacePackage", "config json is empty.");
-      i = 0;
-      if (i == 0)
-      {
-        urk.e("FacePackage", "config json is illegal, use default value, type : %s", new Object[] { a() });
-        if (!"NormalFacePackage".equals(a())) {
-          break label240;
-        }
-        if (!"1".equals(this.jdField_a_of_type_JavaLangString)) {
-          break label226;
-        }
-        this.c = 5;
-        this.jdField_a_of_type_Float = 0.05F;
-      }
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    for (;;)
-    {
-      for (;;)
-      {
-        this.f = null;
-        return;
-        try
-        {
-          JSONObject localJSONObject = new JSONObject(paramString);
-          this.c = localJSONObject.getInt("amount");
-          this.jdField_a_of_type_Float = Float.valueOf(localJSONObject.getString("spacing")).floatValue();
-          this.jdField_a_of_type_Double = localJSONObject.optDouble("scale", 1.0D);
-          if ((this.c < 1) || (this.jdField_a_of_type_Float < 0.0F) || (this.jdField_a_of_type_Float >= 0.5D))
-          {
-            urk.e("FacePackage", "config json is illegal : %s", new Object[] { paramString });
-            i = 0;
-            break;
-          }
-          this.f = paramString;
-          i = 1;
-        }
-        catch (Exception localException)
-        {
-          urk.e("FacePackage", "parse config json error : " + paramString + ", exception : " + localException.toString());
-          i = 0;
-        }
-      }
-      break;
-      label226:
-      this.c = 5;
-      this.jdField_a_of_type_Float = 0.05F;
-      continue;
-      label240:
-      if (!"LocationFacePackage".equals(a())) {
-        break label266;
-      }
-      this.c = 4;
-      this.jdField_a_of_type_Float = 0.1F;
-    }
-    label266:
-    throw new IllegalStateException("unknown face package, type:" + a());
   }
   
-  public abstract int b();
+  public void d()
+  {
+    if (!a()) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
 }
 
 

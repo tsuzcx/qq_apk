@@ -1,25 +1,20 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class abok
-  extends MqqHandler
+  implements DialogInterface.OnClickListener
 {
-  public abok(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
+  public abok(NotificationActivity paramNotificationActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
     this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abok
  * JD-Core Version:    0.7.0.1
  */

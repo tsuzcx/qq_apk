@@ -1,57 +1,124 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.ApolloJscLibData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class anpc
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+  extends anpi
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ansk jdField_a_of_type_Ansk;
+  public static final String a;
   
-  public anpc(View paramView, ansk paramansk)
+  static
   {
-    super(paramView);
-    this.jdField_a_of_type_Ansk = paramansk;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312678));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(anue.a);
+    if (AppSetting.b) {}
+    for (String str = "android.qq.apollo.jsc820_64";; str = "android.qq.apollo.jsc820")
+    {
+      a = str;
+      return;
+    }
   }
   
-  public void a(anpc paramanpc, anpv paramanpv)
+  public anpc(QQAppInterface paramQQAppInterface)
   {
-    String str = "";
-    boolean bool = false;
-    switch (paramanpv.mFooterType)
+    super(a, paramQQAppInterface);
+  }
+  
+  public static void a()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-    default: 
-      paramanpv = str;
+      localObject = (anox)((QQAppInterface)localObject).getManager(77);
+      if (localObject != null)
+      {
+        localObject = (anpc)((anox)localObject).a(a);
+        if (localObject != null)
+        {
+          ((anpc)localObject).a(true);
+          QLog.i("ApolloSoLoader_JscHandler", 1, "restartDownload jscLib");
+        }
+      }
+    }
+  }
+  
+  public int a()
+  {
+    return 10072;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return ApolloJscLibData.class;
+  }
+  
+  public String a()
+  {
+    return "ApolloSoLoader_JscHandler";
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.i("ApolloSoLoader_JscHandler", 1, "[doOnDownloadSuccess] jsc:" + paramString);
+    XmlData localXmlData = a();
+    if (localXmlData != null) {
+      QLog.i("ApolloSoLoader_JscHandler", 1, "version:" + localXmlData.Version);
+    }
+    int i;
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      i = 1;
+      if (i != 0) {
+        ajlq.a(10, null, new int[] { 1 });
+      }
+      if (new File(paramString).exists())
+      {
+        if (bfmz.a(paramString, 0)) {
+          break label189;
+        }
+        if (localXmlData != null)
+        {
+          localXmlData.loadState = 0;
+          localXmlData.Version = 0;
+          anow.a(localXmlData, new String[] { "loadState", "Version" });
+        }
+        QLog.e("ApolloSoLoader_JscHandler", 1, "[doOnDownloadSuccess],unzip apollo jsclib failed!");
+        if (i != 0)
+        {
+          ajlq.a(10, 201, 1001, new Object[] { "unzip jsc lib failed" });
+          ajoo.a = true;
+        }
+      }
     }
     for (;;)
     {
-      paramanpc.jdField_a_of_type_AndroidWidgetTextView.setText(paramanpv);
-      paramanpc.jdField_a_of_type_AndroidWidgetTextView.setEnabled(bool);
+      super.a(paramString);
       return;
-      paramanpv = ajjy.a(2131638922);
-      continue;
-      paramanpv = ajjy.a(2131638924);
-      bool = true;
-      continue;
-      paramanpv = ajjy.a(2131638923);
+      i = 0;
+      break;
+      label189:
+      if (i != 0) {
+        ajlq.a(10, 201, 0, new Object[] { "libjsc so download success" });
+      }
+      ajoo.a("after_JSC_downloaded");
     }
   }
   
-  public void onClick(View paramView)
+  public boolean a()
   {
-    if (this.jdField_a_of_type_Ansk != null) {
-      this.jdField_a_of_type_Ansk.b();
-    }
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     anpc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
-class bgyw
+public abstract interface bgyw
 {
-  public static bgys a = new bgys(null);
+  public abstract void a(boolean paramBoolean, int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgyw
  * JD-Core Version:    0.7.0.1
  */

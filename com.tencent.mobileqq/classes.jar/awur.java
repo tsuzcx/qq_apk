@@ -1,62 +1,113 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.ArrayList;
+import java.util.List;
 
-public class awur
-  extends Drawable
+public abstract class awur
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -16777216;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private int b;
-  private int c;
+  public int a;
+  public long a;
+  public final awus a;
+  public String a;
+  public int b;
   
-  public awur(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public awur(GroupSearchEngine paramGroupSearchEngine, awus paramawus, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_Float = paramInt4;
+    this.jdField_a_of_type_Awus = paramawus;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = paramInt;
   }
   
-  public void draw(Canvas paramCanvas)
+  protected abstract awof a(List<awog> paramList, String paramString);
+  
+  public List<awof> a(awvg paramawvg)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    Rect localRect = getBounds();
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = localRect.top;
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = localRect.left;
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = localRect.right;
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = localRect.bottom;
-    paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    boolean bool2 = false;
+    long l = System.currentTimeMillis();
+    if (paramawvg.jdField_a_of_type_AndroidOsBundle == null) {
+      paramawvg.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    }
+    paramawvg.jdField_a_of_type_AndroidOsBundle.putBoolean("searchRequestFromHome", true);
+    ArrayList localArrayList = new ArrayList();
+    List localList = this.jdField_a_of_type_Awus.a(paramawvg);
+    this.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
+    if ((localList != null) && (!localList.isEmpty()))
+    {
+      awof localawof = a(localList, paramawvg.jdField_a_of_type_JavaLangString);
+      if (((localawof instanceof awnq)) && (localawof.a() != null) && (localawof.a().size() > 0)) {
+        paramawvg.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
+      }
+      boolean bool1;
+      if (localawof != null)
+      {
+        bool1 = bool2;
+        if (localawof.a() != null)
+        {
+          bool1 = bool2;
+          if (localawof.a().size() > localawof.a()) {
+            bool1 = true;
+          }
+        }
+        if (!(localawof instanceof bgqe)) {
+          break label385;
+        }
+      }
+      for (;;)
+      {
+        localArrayList.add(localawof);
+        localawof = b(localList, paramawvg.jdField_a_of_type_JavaLangString);
+        if (((localawof instanceof awnq)) && (localawof.a() != null) && (localawof.a().size() > 0)) {
+          paramawvg.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
+        }
+        if (localawof != null)
+        {
+          localArrayList.add(new awnn(localawof));
+          localArrayList.add(localawof);
+        }
+        localawof = c(localList, paramawvg.jdField_a_of_type_JavaLangString);
+        if (((localawof instanceof awns)) && (localawof.a() != null) && (localawof.a().size() > 0)) {
+          paramawvg.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
+        }
+        if (localawof != null)
+        {
+          localArrayList.add(new awnn(localawof));
+          localArrayList.add(localawof);
+        }
+        this.jdField_a_of_type_Int = localList.size();
+        return localArrayList;
+        label385:
+        if ((localawof instanceof apfl)) {
+          localArrayList.add(new awnn(localawof, ajyc.a(2131705380), bool1));
+        } else if (bbma.e(GroupSearchEngine.a(this.jdField_b_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine)) == 1) {
+          localArrayList.add(new awnn(localawof, localawof.a().toString() + " " + this.jdField_a_of_type_Long + "ms", bool1));
+        } else if ((localawof instanceof awny)) {
+          localArrayList.add(new awnn(localawof, ajyc.a(2131705360), true));
+        } else if ((localawof instanceof awnu)) {
+          localArrayList.add(new awnn(localawof, localawof.a(), bool1));
+        } else if ((localawof instanceof awly)) {
+          localArrayList.add(new awnn(localawof, ajyc.a(2131705368), bool1));
+        } else {
+          localArrayList.add(new awnn(localawof));
+        }
+      }
+    }
+    this.jdField_a_of_type_Int = 0;
+    return localArrayList;
   }
   
-  public int getIntrinsicHeight()
+  protected awof b(List<awog> paramList, String paramString)
   {
-    return this.c;
+    return null;
   }
   
-  public int getIntrinsicWidth()
+  protected awof c(List<awog> paramList, String paramString)
   {
-    return this.b;
+    return null;
   }
-  
-  public int getOpacity()
-  {
-    return 0;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awur
  * JD-Core Version:    0.7.0.1
  */

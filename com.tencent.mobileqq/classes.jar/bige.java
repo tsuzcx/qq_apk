@@ -1,20 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
 class bige
-  extends SimpleJob<Object>
+  implements agmj
 {
-  bige(bigb parambigb, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
-  {
-    super(paramString1);
-  }
+  bige(bify parambify) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    urp.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
-    return null;
+    if (!paramBoolean)
+    {
+      this.a.a(101);
+      return;
+    }
+    this.a.a(this.a.a, paramLocalMediaInfo);
   }
 }
 

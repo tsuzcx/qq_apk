@@ -1,21 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Queue;
 
-public class qtt
-  extends Handler
+class qtt
+  extends npw
 {
-  public qtt(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  private qtt(qto paramqto) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    super.handleMessage(paramMessage);
-    if (paramMessage.what == ReadInjoyXRecyclerView.b) {
-      this.a.b();
+    super.a(paramBoolean, paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoFullPlayController", 2, "onGetRecommend:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
+      qto.a(this.a).addAll(qto.a(this.a).a(paramBundle));
+      this.a.f();
     }
   }
 }

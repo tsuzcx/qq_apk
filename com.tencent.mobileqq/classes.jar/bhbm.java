@@ -1,51 +1,98 @@
-import android.content.Context;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.ttpic.baseutils.string.StringUtils;
+import GIFT_MALL_PROTOCOL.DouFuInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.FeedsManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.birthdaynotice.BirthDayNoticeManager.1;
+import cooperation.vip.manager.MonitorManager;
+import java.lang.ref.WeakReference;
+import java.util.Set;
+import mqq.app.NewIntent;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
-class bhbm
-  implements View.OnClickListener
+public class bhbm
 {
-  bhbm(bhbk parambhbk) {}
+  private static bhbn a = new bhbn();
   
-  public void onClick(View paramView)
+  private static JSONObject a(DouFuInfo paramDouFuInfo)
   {
-    if (bhbk.a(this.a).getText().length() > bhbk.a(this.a))
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      bbmy.a(this.a.getContext(), this.a.getContext().getString(2131624262, new Object[] { Integer.valueOf(bhbk.a(this.a)) }), 1).a();
-      return;
+      localJSONObject.put("friendUin", paramDouFuInfo.uin);
+      localJSONObject.put("background", paramDouFuInfo.background);
+      localJSONObject.put("time", paramDouFuInfo.birthday);
+      localJSONObject.put("blessing", paramDouFuInfo.blessing);
+      localJSONObject.put("link", paramDouFuInfo.doufu_link);
+      localJSONObject.put("icon", paramDouFuInfo.icon);
+      return localJSONObject;
     }
-    if (bhbk.a(this.a) != null) {
-      localObject = null;
+    catch (Exception paramDouFuInfo)
+    {
+      QLog.e("BirthDayNoticeManager", 1, "error convert to json " + paramDouFuInfo);
+      MonitorManager.a().a(19, 4, "convert to json error " + paramDouFuInfo, false);
+    }
+    return localJSONObject;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    String str = paramSessionInfo.a;
+    Set localSet = paramQQAppInterface.a().a();
+    long l1;
+    long l3;
+    if ((localSet != null) && (localSet.contains(str)) && (a(paramQQAppInterface, paramSessionInfo.a)))
+    {
+      l1 = paramQQAppInterface.a().b();
+      l3 = System.currentTimeMillis() / 1000L;
+      if (l3 - l1 >= 86400L)
+      {
+        QLog.i("BirthDayNoticeManager", 2, "requestBirthDayNotice ");
+        paramSessionInfo = new NewIntent(BaseApplicationImpl.getApplication(), axbq.class);
+        l1 = 0L;
+      }
     }
     try
     {
-      paramView = bhbk.a(this.a).getText().toString();
-      localObject = paramView;
+      long l2 = Long.parseLong(paramQQAppInterface.getCurrentAccountUin());
+      l1 = l2;
     }
-    catch (IndexOutOfBoundsException paramView)
+    catch (Exception localException)
     {
-      label98:
-      break label98;
+      for (;;)
+      {
+        QLog.e("BirthDayNoticeManager", 1, "get uin error " + localException);
+      }
     }
-    paramView = (View)localObject;
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      paramView = StringUtils.removeUTF8Emoji((String)localObject);
+    paramSessionInfo.putExtra("selfuin", l1);
+    a.a = new WeakReference(paramQQAppInterface);
+    paramQQAppInterface.registObserver(a);
+    paramQQAppInterface.startServlet(paramSessionInfo);
+    paramQQAppInterface.a().c(l3);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (asxb.a(paramQQAppInterface, paramString, 5L, false) != null) {}
+    while ((asxb.a(paramQQAppInterface, paramString, 12L, false) != null) || (asxb.a(paramQQAppInterface, paramString, false) != null)) {
+      return true;
     }
-    Object localObject = paramView;
-    if (!TextUtils.isEmpty(paramView)) {
-      localObject = paramView.replaceAll("\\r|\\n", "");
-    }
-    bhbk.a(this.a).a((String)localObject);
-    this.a.dismiss();
+    return false;
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, DouFuInfo paramDouFuInfo)
+  {
+    JSONObject localJSONObject = a(paramDouFuInfo);
+    long l = FeedsManager.getToken(String.valueOf(paramDouFuInfo.uin));
+    ThreadManager.getSubThreadHandler().post(new BirthDayNoticeManager.1(paramDouFuInfo, paramQQAppInterface, localJSONObject, l));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhbm
  * JD-Core Version:    0.7.0.1
  */

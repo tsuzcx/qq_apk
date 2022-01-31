@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import befq;
+import bfnk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.extras.PullToRefreshRecyclerView;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +18,7 @@ public class FakeExtendFeedsFragment
 {
   private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private befq jdField_a_of_type_Befq;
+  private bfnk jdField_a_of_type_Bfnk;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private PullToRefreshRecyclerView jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshExtrasPullToRefreshRecyclerView;
   
@@ -27,15 +27,15 @@ public class FakeExtendFeedsFragment
     super.onCreate(paramBundle);
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = getActivity();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app;
-    this.jdField_a_of_type_Befq = new befq(Looper.getMainLooper(), null);
+    this.jdField_a_of_type_Bfnk = new bfnk(Looper.getMainLooper(), null);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131495170, null);
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshExtrasPullToRefreshRecyclerView = ((PullToRefreshRecyclerView)paramLayoutInflater.findViewById(2131306454));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560745, null);
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshExtrasPullToRefreshRecyclerView = ((PullToRefreshRecyclerView)paramLayoutInflater.findViewById(2131372151));
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshExtrasPullToRefreshRecyclerView.a());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setId(2131309276);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setId(2131375020);
     return paramLayoutInflater;
   }
   

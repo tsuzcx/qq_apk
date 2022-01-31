@@ -1,147 +1,121 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
-import com.tencent.mobileqq.fragment.CommonTabFragment;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
+import java.util.UUID;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
 
-public final class apnu
-  extends baxr
-  implements TouchWebView.OnScrollChangedListener
+class apnu
+  extends xbd
 {
-  public int a;
-  public boolean a;
-  public boolean b;
-  boolean c = false;
+  apnu(apnm paramapnm, apmz paramapmz) {}
   
-  public apnu(CommonTabFragment paramCommonTabFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
   {
-    super(paramContext, paramActivity, paramAppInterface);
-    super.preInitPluginEngine();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null) {}
-    for (long l = System.currentTimeMillis();; l = 0L)
+    if (this.jdField_a_of_type_Apmz == null) {}
+    Object localObject;
+    label612:
+    do
     {
-      this.jdField_a_of_type_Boolean = true;
-      mkw.a();
-      if (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo != null) {
-        this.mUrl = this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo.tabUrl;
-      }
-      if (!TextUtils.isEmpty(this.mUrl)) {
-        if (!this.mUrl.contains("?")) {
-          break label351;
-        }
-      }
-      label351:
-      for (this.mUrl += "&";; this.mUrl += "?")
+      do
       {
-        this.mUrl += this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_JavaLangString;
-        this.mWebview = new TouchWebView(this.mContext);
-        buildBaseWebView(this.mInterface);
-        this.c = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
-        if (this.c) {
-          this.mWebview.setMask(true);
-        }
-        this.mWebview.setBackgroundColor(-1);
-        this.mWebview.setOnScrollChangedListener(this);
-        setmTimeBeforeLoadUrl(System.currentTimeMillis());
-        if (QLog.isDevelopLevel()) {
-          asfl.a("WebSpeedTrace", "mTimeBeforeLoadUrl", new Object[] { Long.valueOf(this.mTimeBeforeLoadUrl) });
-        }
-        this.mWebview.loadUrl(this.mUrl);
-        if (QLog.isColorLevel()) {
-          asfl.a("AbsWebView", new Object[] { "HotChatWebView.init", this.mUrl });
-        }
-        if ((this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.k != 0L)) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.k = (System.currentTimeMillis() - l);
-        if (!QLog.isDevelopLevel()) {
-          break;
-        }
-        asfl.a("WebSpeedTrace", "mInitWebViewTime", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.k) });
+        do
+        {
+          return;
+          if (paramDownloadFileRspBody == null)
+          {
+            if (QLog.isDevelopLevel()) {
+              QLog.e("TroopFileModel<FileAssistant>", 4, "error DownloadFileRspBody is null!!!!!");
+            }
+            this.jdField_a_of_type_Apmz.c();
+            return;
+          }
+          long l = paramBundle.getLong("troopUin");
+          localObject = TroopFileTransferManager.a(l);
+          if (localObject == null)
+          {
+            if (QLog.isDevelopLevel()) {
+              QLog.e("TroopFileModel<FileAssistant>", 4, "bad troopUin" + l);
+            }
+            this.jdField_a_of_type_Apmz.c();
+            return;
+          }
+          paramBundle = paramBundle.getString("itemKey");
+          if (paramBundle == null)
+          {
+            this.jdField_a_of_type_Apmz.c();
+            return;
+          }
+          localObject = ((TroopFileTransferManager)localObject).a(UUID.fromString(paramBundle));
+          if (localObject == null)
+          {
+            if (QLog.isDevelopLevel()) {
+              QLog.e("TroopFileModel<FileAssistant>", 4, "bad item key" + paramBundle);
+            }
+            this.jdField_a_of_type_Apmz.c();
+            return;
+          }
+          paramInt = paramDownloadFileRspBody.int32_ret_code.get();
+          if (QLog.isDevelopLevel()) {
+            QLog.e("TroopFileModel<FileAssistant>", 4, String.format("onRspDownload - retCode: %d", new Object[] { Integer.valueOf(paramInt) }));
+          }
+          ((TroopFileTransferManager.Item)localObject).cookieValue = bbdm.a(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
+          if (((TroopFileTransferManager.Item)localObject).cookieValue != null) {
+            ((TroopFileTransferManager.Item)localObject).cookieValue = ((TroopFileTransferManager.Item)localObject).cookieValue.toLowerCase();
+          }
+          ((TroopFileTransferManager.Item)localObject).DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
+          ((TroopFileTransferManager.Item)localObject).DownloadUrl = bbdm.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+          ((TroopFileTransferManager.Item)localObject).Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
+          ((TroopFileTransferManager.Item)localObject).NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
+          if ((paramInt != -133) && (paramInt != -132) && (paramInt != -134)) {
+            break;
+          }
+          this.jdField_a_of_type_Apmz.c();
+        } while (!QLog.isDevelopLevel());
+        QLog.i("TroopFileModel<FileAssistant>", 4, "file invalidate retCode = " + paramInt);
         return;
+        if ((paramInt != -103) && (paramInt != -301)) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.i("TroopFileModel<FileAssistant>", 4, "file invalidate retCode = " + paramInt);
+      return;
+      paramDownloadFileRspBody = apjx.a(((TroopFileTransferManager.Item)localObject).DownloadIp, ((TroopFileTransferManager.Item)localObject).DownloadUrl, ((TroopFileTransferManager.Item)localObject).FilePath, ((TroopFileTransferManager.Item)localObject).cookieValue, "");
+      if (!TextUtils.isEmpty(paramDownloadFileRspBody))
+      {
+        this.jdField_a_of_type_Apmz.a(paramDownloadFileRspBody, ((TroopFileTransferManager.Item)localObject).cookieValue);
+        if (QLog.isColorLevel()) {
+          QLog.e("zivonchen", 2, "url = " + paramDownloadFileRspBody + ", cookies = " + ((TroopFileTransferManager.Item)localObject).cookieValue);
+        }
+        if (this.jdField_a_of_type_Apnm.a.a() != null)
+        {
+          paramDownloadFileRspBody = String.valueOf(this.jdField_a_of_type_Apnm.a.a().TroopUin);
+          if (this.jdField_a_of_type_Apnm.a.a() == null) {
+            break label612;
+          }
+        }
+        for (paramBundle = apue.b(this.jdField_a_of_type_Apnm.a.a().nFileType);; paramBundle = "unknow")
+        {
+          axqw.b(null, "dc00899", "Grp_files", "", "oper", "Clk_pre_video", 0, 0, paramDownloadFileRspBody, "", paramBundle, "1");
+          return;
+          paramDownloadFileRspBody = "";
+          break;
+        }
       }
-    }
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    super.doOnCreate(paramIntent);
-  }
-  
-  public void b()
-  {
-    super.doOnResume();
-  }
-  
-  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
-  {
-    if (paramArrayList != null) {
-      paramArrayList.add(new bbey());
-    }
-  }
-  
-  public void c()
-  {
-    super.doOnPause();
-  }
-  
-  public void d()
-  {
-    super.doOnDestroy();
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_Apqf != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_Apqf.b(false).a(true);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_Apqf.a();
-    }
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    this.b = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_Apqf != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_Apqf.b(true).a(true);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_Apqf.a();
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.b != null) && (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.b.getVisibility() != 8)) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.b.setVisibility(8);
-    }
-  }
-  
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
-  {
-    if (this.mWebview != null) {
-      this.jdField_a_of_type_Int = this.mWebview.getWebScrollY();
-    }
+      this.jdField_a_of_type_Apmz.c();
+    } while (!QLog.isColorLevel());
+    QLog.e("zivonchen", 2, "url = " + paramDownloadFileRspBody + ", cookies = " + ((TroopFileTransferManager.Item)localObject).cookieValue);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apnu
  * JD-Core Version:    0.7.0.1
  */

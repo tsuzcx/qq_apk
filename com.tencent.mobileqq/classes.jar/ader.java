@@ -1,14 +1,9 @@
-import android.content.Context;
-import com.tencent.mobileqq.data.ChatMessage;
-
-class ader
-  implements bbrx
+final class ader
+  implements adek<adeq>
 {
-  ader(adeq paramadeq, ChatMessage paramChatMessage, Context paramContext) {}
-  
-  public void a(int paramInt)
+  public adeq a(adeh paramadeh)
   {
-    apck.a(this.jdField_a_of_type_Adeq.a, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_AndroidContentContext);
+    return new adeq(paramadeh);
   }
 }
 

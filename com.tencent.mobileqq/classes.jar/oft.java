@@ -1,36 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class oft
-  implements View.OnClickListener
+  implements ViewBase.OnClickListener
 {
-  oft(ofs paramofs) {}
+  oft(ofe paramofe, ViewBase paramViewBase) {}
   
-  public void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    int i = ((ofu)paramView.getTag()).getAdapterPosition() - ofs.a(this.a).c();
-    int j = this.a.getItemViewType(i);
-    ArticleInfo localArticleInfo = (ArticleInfo)ofs.a(this.a, i);
-    if (localArticleInfo == null)
-    {
-      QLog.d("ReadInJoyDynamicChannelAdapter", 1, "onItemClick onClick articleInfo is null.");
-      return;
+    onk.a(this.jdField_a_of_type_Ofe.jdField_a_of_type_Ohv.a().getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData());
+    if (this.jdField_a_of_type_Ofe.jdField_a_of_type_Ohv.a() != null) {
+      this.jdField_a_of_type_Ofe.jdField_a_of_type_Ohv.a().g(this.jdField_a_of_type_Ofe.jdField_a_of_type_Oii);
     }
-    QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onItemClick, position = ", Integer.valueOf(i), ", itemViewType = ", Integer.valueOf(j) });
-    this.a.a(i, paramView);
-    localArticleInfo.invalidateProteusTemplateBean();
-    obz.a = localArticleInfo;
-    ogy.a().a(localArticleInfo.mArticleID, System.currentTimeMillis());
-    this.a.notifyItemChanged(i);
-    obz.b(ofs.a(this.a), localArticleInfo, (int)localArticleInfo.mChannelID);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oft
  * JD-Core Version:    0.7.0.1
  */

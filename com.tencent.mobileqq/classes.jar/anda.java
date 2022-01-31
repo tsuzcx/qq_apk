@@ -1,101 +1,61 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Checkable;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.emosm.view.DragSortItemView;
-import com.tencent.mobileqq.emosm.view.DragSortItemViewCheckable;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class anda
-  extends BaseAdapter
+  extends ampb<ancz>
 {
-  private ListAdapter jdField_a_of_type_AndroidWidgetListAdapter;
-  
-  public anda(DragSortListView paramDragSortListView, ListAdapter paramListAdapter)
+  public static ancz a()
   {
-    this.jdField_a_of_type_AndroidWidgetListAdapter = paramListAdapter;
-    this.jdField_a_of_type_AndroidWidgetListAdapter.registerDataSetObserver(new andb(this, paramDragSortListView));
+    return (ancz)ampm.a().a(344);
   }
   
-  public boolean areAllItemsEnabled()
+  public int a()
   {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.areAllItemsEnabled();
+    return 344;
   }
   
-  public int getCount()
+  @NonNull
+  public ancz a(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
+    return new ancz();
   }
   
-  public Object getItem(int paramInt)
+  @Nullable
+  public ancz a(ampi[] paramArrayOfampi)
   {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItem(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemId(paramInt);
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemViewType(paramInt);
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView != null)
-    {
-      paramViewGroup = (DragSortItemView)paramView;
-      View localView1 = paramViewGroup.getChildAt(0);
-      View localView2 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, localView1, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
-      paramView = paramViewGroup;
-      if (localView2 != localView1)
-      {
-        if (localView1 != null) {
-          paramViewGroup.removeViewAt(0);
-        }
-        paramViewGroup.addView(localView2);
-        paramView = paramViewGroup;
-      }
-      DragSortListView.a(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeaderViewsCount() + paramInt, paramView, true);
-      return paramView;
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
+      return ancz.a(paramArrayOfampi);
     }
-    paramViewGroup = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, null, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
-    if ((paramViewGroup instanceof Checkable)) {}
-    for (paramView = new DragSortItemViewCheckable(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext());; paramView = new DragSortItemView(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext()))
-    {
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-      paramView.addView(paramViewGroup);
-      break;
-    }
+    return null;
   }
   
-  public int getViewTypeCount()
+  public Class<ancz> a()
   {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getViewTypeCount();
+    return ancz.class;
   }
   
-  public boolean hasStableIds()
+  public void a(int paramInt) {}
+  
+  public void a(ancz paramancz) {}
+  
+  public int b()
   {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.hasStableIds();
+    return 0;
   }
   
-  public boolean isEmpty()
+  public boolean b()
   {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.isEmpty();
+    return false;
   }
   
-  public boolean isEnabled(int paramInt)
+  public boolean c()
   {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.isEnabled(paramInt);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anda
  * JD-Core Version:    0.7.0.1
  */

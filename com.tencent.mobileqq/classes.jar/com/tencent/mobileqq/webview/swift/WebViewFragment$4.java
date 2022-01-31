@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift;
 
 import android.app.Activity;
-import bchb;
+import bdlc;
 
 class WebViewFragment$4
   implements Runnable
@@ -10,8 +10,8 @@ class WebViewFragment$4
   
   public void run()
   {
-    if (bchb.d()) {
-      bchb.a().a(this.a);
+    if (bdlc.d()) {
+      bdlc.a().a(this.a);
     }
   }
 }

@@ -1,11 +1,12 @@
-class ruh
-  implements rru
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.ViewGroup;
+
+public abstract interface ruh
 {
-  ruh(rug paramrug) {}
+  public abstract View a(ViewGroup paramViewGroup);
   
-  public void a() {}
-  
-  public void b() {}
+  public abstract void a(rue paramrue1, @Nullable rue paramrue2, int paramInt);
 }
 
 

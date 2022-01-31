@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import apcc;
+import aptw;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,7 +20,7 @@ class QfileLocalFileMediaTabView$1
     String str;
     if ((this.this$0.f) && ((QfileLocalFileMediaTabView.a(this.this$0) & 0x1) > 0))
     {
-      localMap = apcc.c(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
+      localMap = aptw.c(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
       if (localMap != null)
       {
         localIterator = localMap.keySet().iterator();
@@ -35,7 +35,7 @@ class QfileLocalFileMediaTabView$1
     }
     if ((this.this$0.f) && ((QfileLocalFileMediaTabView.a(this.this$0) & 0x2) > 0))
     {
-      localMap = apcc.b(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
+      localMap = aptw.b(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
       if (localMap != null)
       {
         localIterator = localMap.keySet().iterator();

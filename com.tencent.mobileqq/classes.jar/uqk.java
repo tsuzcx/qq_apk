@@ -1,45 +1,22 @@
+import android.os.Handler;
 import android.view.View;
-import java.util.ArrayList;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper.3.1;
 
-class uqk
-  extends ulp
+public class uqk
+  implements View.OnFocusChangeListener
 {
-  uqk(upw paramupw) {}
+  uqk(uqh paramuqh) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, unw paramunw)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    boolean bool;
-    switch (paramView.getId())
-    {
-    default: 
-      if (upw.a(this.a).a().size() <= 0) {
-        break label149;
-      }
-      paramView = this.a;
-      if (!upw.a(this.a))
-      {
-        bool = true;
-        upw.a(paramView, bool);
-        upw.a(this.a);
-        if (!upw.a(this.a)) {
-          break label143;
-        }
-      }
-      break;
+    if (!paramBoolean) {
+      this.a.b();
     }
-    label143:
-    for (paramView = "1";; paramView = "2")
-    {
-      urp.a("mystory", "clk_fold", 0, 0, new String[] { paramView, "2" });
-      urp.a("home_page", "exp_share_day", 0, 0, new String[0]);
+    while (uqh.a(this.a)) {
       return;
-      upw.a(this.a, upw.a(this.a), paramView);
-      return;
-      bool = false;
-      break;
     }
-    label149:
-    upw.a(this.a, upw.a(this.a), paramView);
+    new Handler().postDelayed(new DetailCommentHelper.3.1(this), 200L);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.viola.ui.view.overscroll;
 
+import android.animation.ValueAnimator;
 import android.util.Property;
 import android.view.View;
 
@@ -10,6 +11,10 @@ public abstract class AbsOverScrollDecorator$AnimationAttributes
   public Property<View, Float> mProperty;
   
   protected abstract void init(View paramView);
+  
+  protected abstract void onAnimationEnd();
+  
+  protected abstract void onUpdate(ValueAnimator paramValueAnimator);
 }
 
 

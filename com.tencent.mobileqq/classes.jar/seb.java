@@ -1,24 +1,35 @@
-public class seb
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
+
+class seb
+  implements rcj
 {
-  public static int a(int paramInt)
+  seb(sdz paramsdz) {}
+  
+  public boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    switch (paramInt)
+    if (!bbev.g(sdv.a(this.a.a)))
     {
-    case 1: 
-    case 2: 
-    case 5: 
-    case 6: 
-    default: 
-      return 6;
-    case 4: 
-      return 10;
+      bcpw.a(sdv.a(this.a.a), 1, sdv.a(this.a.a).getString(2131718330), 0).a();
+      return false;
     }
-    return 10;
+    paramView = onk.a();
+    osj.a().a(Long.valueOf(paramView).longValue(), this.a.a.a(paramArrayList));
+    bcpw.a(sdv.a(this.a.a), -1, sdv.a(this.a.a).getString(2131699663), 0).b(sdv.a(this.a.a).getResources().getDimensionPixelSize(2131298865));
+    sdv.a(this.a.a).dismiss();
+    if (sdv.a(this.a.a) != null) {
+      sdv.a(this.a.a).a(sdv.a(this.a.a), sdv.e(this.a.a), sdv.a(this.a.a), paramArrayList);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     seb
  * JD-Core Version:    0.7.0.1
  */

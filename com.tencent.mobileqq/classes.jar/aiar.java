@@ -1,19 +1,26 @@
-import java.util.Comparator;
-import org.json.JSONObject;
-
-class aiar
-  implements Comparator<JSONObject>
+public class aiar
 {
-  aiar(aiaq paramaiaq) {}
+  public int a;
+  public boolean a;
   
-  public int a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
+  public static int a(int paramInt)
   {
-    return Long.valueOf(paramJSONObject2.optLong("time")).compareTo(Long.valueOf(paramJSONObject1.optLong("time")));
+    switch (paramInt)
+    {
+    case 90: 
+    default: 
+      return 0;
+    case 0: 
+      return 270;
+    case 180: 
+      return 90;
+    }
+    return 180;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aiar
  * JD-Core Version:    0.7.0.1
  */

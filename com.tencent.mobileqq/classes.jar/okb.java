@@ -1,99 +1,104 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class okb
-  extends nhw
-  implements View.OnClickListener
+class okb
+  implements BusinessObserver
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ReadInJoyBaseListViewGroup jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
-  private qoe jdField_a_of_type_Qoe;
-  private boolean jdField_a_of_type_Boolean;
-  private View b;
+  okb(ojx paramojx, BaseCommentData paramBaseCommentData) {}
   
-  public okb(Activity paramActivity)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramActivity);
-  }
-  
-  private void i()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      this.b = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131306882);
-    }
-  }
-  
-  public ViewGroup a()
-  {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup = new ReadInJoyProteusFamilyListViewGroup(this, 0, 0, 0, null, 2131494457);
-    this.jdField_a_of_type_Qoe = ((ReadInJoyProteusFamilyListViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup).a();
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    super.a(paramViewGroup);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    i();
-  }
-  
-  public void a(boolean paramBoolean, List<BaseArticleInfo> paramList)
-  {
-    if (!this.jdField_a_of_type_Boolean)
+    int i = 1;
+    String str = "";
+    if (paramBoolean) {}
+    for (;;)
     {
-      a();
-      this.jdField_a_of_type_Boolean = true;
-    }
-    if (this.b != null) {
-      this.b.setVisibility(8);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null)
-    {
-      if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+      try
       {
-        ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.getParent() != null) {
-          ((ViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.getParent()).removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup);
+        byte[] arrayOfByte = paramBundle.getByteArray("data");
+        if (arrayOfByte == null) {
+          break label229;
         }
-        this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup, localLayoutParams);
+        paramBundle = new WebSsoBody.WebSsoResponseBody();
+        try
+        {
+          paramBundle.mergeFrom(arrayOfByte);
+          paramInt = paramBundle.ret.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("ReadInJoyCommentSSOModule", 2, "commentReport ret=" + paramBundle.data.get());
+          }
+          if (paramInt == 0) {
+            break label179;
+          }
+          try
+          {
+            paramBundle = new JSONObject(paramBundle.data.get()).optString("msg");
+            paramInt = 0;
+          }
+          catch (JSONException paramBundle)
+          {
+            paramBundle.printStackTrace();
+            paramInt = 0;
+            paramBundle = str;
+            continue;
+          }
+          if ((paramInt == 0) && (ojx.a(this.jdField_a_of_type_Ojx) != null)) {
+            ojx.a(this.jdField_a_of_type_Ojx).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, paramBundle);
+          }
+          return;
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          localInvalidProtocolBufferMicroException.printStackTrace();
+          continue;
+        }
+        paramBundle.printStackTrace();
       }
-      ((ReadInJoyProteusFamilyListViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup).a(true, paramList);
+      catch (Exception paramBundle)
+      {
+        paramInt = 0;
+      }
+      for (;;)
+      {
+        for (;;)
+        {
+          paramBundle = str;
+          break;
+          label179:
+          paramBundle = str;
+          paramInt = i;
+          try
+          {
+            if (ojx.a(this.jdField_a_of_type_Ojx) == null) {
+              break;
+            }
+            ojx.a(this.jdField_a_of_type_Ojx).a(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
+            paramBundle = str;
+            paramInt = i;
+          }
+          catch (Exception paramBundle)
+          {
+            paramInt = 1;
+          }
+        }
+      }
+      label229:
+      paramInt = 0;
+      paramBundle = str;
     }
   }
-  
-  public void c()
-  {
-    super.c();
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Qoe != null) {
-      this.jdField_a_of_type_Qoe.a();
-    }
-  }
-  
-  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     okb
  * JD-Core Version:    0.7.0.1
  */

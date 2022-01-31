@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import ajfi;
+import ajtk;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class AccountOnlineStateActivity$3
@@ -10,9 +10,9 @@ class AccountOnlineStateActivity$3
   
   public void run()
   {
-    ajfi localajfi = (ajfi)AccountOnlineStateActivity.a(this.this$0).a(2);
-    if (localajfi != null) {
-      localajfi.C();
+    ajtk localajtk = (ajtk)AccountOnlineStateActivity.a(this.this$0).a(2);
+    if (localajtk != null) {
+      localajtk.C();
     }
   }
 }

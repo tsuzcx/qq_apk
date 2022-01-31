@@ -4,14 +4,14 @@ import NS_MOBILE_FEEDS.stPhotoTag;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bfwd;
+import bheo;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ImageTagInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ImageTagInfo> CREATOR = new bfwd();
+  public static final Parcelable.Creator<ImageTagInfo> CREATOR = new bheo();
   public int a;
   public String a;
   public int b;

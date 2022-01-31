@@ -1,21 +1,42 @@
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.widget.Toast;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import java.lang.ref.WeakReference;
 
-class xcs
-  implements QQPermissionCallback
+public class xcs
+  extends baks
 {
-  xcs(xco paramxco) {}
+  public xcs(TroopGiftPanel paramTroopGiftPanel, int paramInt, xce paramxce) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(int paramInt)
   {
-    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user denied = ");
-    babr.a(this.a.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
+    axqw.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_suc", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Xce.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mud.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(int paramInt, String paramString)
   {
-    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user grant = ");
-    xco.g(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
+    }
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = ajyc.a(2131715404);
+    }
+    bcpw.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext, str, 0).b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getResources().getDimensionPixelSize(2131298865)).show();
+    axqw.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_fail", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Xce.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mud.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    super.b(paramInt, paramString);
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = ajyc.a(2131715416);
+    }
+    bcpw.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext, str, 0).b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getResources().getDimensionPixelSize(2131298865)).show();
   }
 }
 

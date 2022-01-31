@@ -1,46 +1,29 @@
-public abstract interface ahlj
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+
+class ahlj
+  implements View.OnClickListener
 {
-  public abstract void A();
+  ahlj(ahkf paramahkf) {}
   
-  public abstract void B();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract int d();
-  
-  public abstract void g(boolean paramBoolean);
-  
-  public abstract void o();
-  
-  public abstract void p();
-  
-  public abstract void q();
-  
-  public abstract void r();
-  
-  public abstract void s();
-  
-  public abstract void t();
-  
-  public abstract void u();
-  
-  public abstract void v();
-  
-  public abstract void x();
-  
-  public abstract void y();
-  
-  public abstract void z();
+  public void onClick(View paramView)
+  {
+    if (akva.a().a() == 4) {
+      axqw.b(ahkf.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, akuz.b(), akva.b(), akva.a(), "0");
+    }
+    for (;;)
+    {
+      this.a.a(14, 0);
+      this.a.a(-1, null);
+      return;
+      axqw.b(ahkf.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, akuz.b(), akva.b(), akva.a(), "0");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahlj
  * JD-Core Version:    0.7.0.1
  */

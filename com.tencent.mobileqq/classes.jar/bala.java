@@ -1,98 +1,75 @@
-import android.annotation.TargetApi;
-import android.net.SSLCertificateSocketFactory;
-import android.os.Build.VERSION;
-import java.lang.reflect.Method;
-import java.net.InetAddress;
-import java.net.Socket;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLPeerUnverifiedException;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xdad.cmd0xdad.RspBody;
 
-public class bala
-  extends SSLSocketFactory
+class bala
+  extends mxl
 {
-  private final String jdField_a_of_type_JavaLangString = "SniSSLSocketFactory";
-  HostnameVerifier jdField_a_of_type_JavaxNetSslHostnameVerifier;
-  private String b;
+  bala(bakt parambakt, baks parambaks, xce paramxce) {}
   
-  public bala(String paramString, HostnameVerifier paramHostnameVerifier)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.b = paramString;
-    this.jdField_a_of_type_JavaxNetSslHostnameVerifier = paramHostnameVerifier;
-  }
-  
-  public Socket createSocket()
-  {
-    return null;
-  }
-  
-  public Socket createSocket(String paramString, int paramInt)
-  {
-    return null;
-  }
-  
-  public Socket createSocket(String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2)
-  {
-    return null;
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress, int paramInt)
-  {
-    return null;
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress1, int paramInt1, InetAddress paramInetAddress2, int paramInt2)
-  {
-    return null;
-  }
-  
-  @TargetApi(17)
-  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
-  {
-    paramString = paramSocket.getInetAddress();
-    if (paramBoolean) {
-      paramSocket.close();
-    }
-    SSLCertificateSocketFactory localSSLCertificateSocketFactory = (SSLCertificateSocketFactory)SSLCertificateSocketFactory.getDefault(0);
-    paramSocket = (SSLSocket)localSSLCertificateSocketFactory.createSocket(paramString, paramInt);
-    paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
-    if (Build.VERSION.SDK_INT >= 17) {
-      localSSLCertificateSocketFactory.setHostname(paramSocket, this.b);
-    }
-    for (;;)
+    if ((paramInt != 0) || (paramArrayOfByte == null) || (this.jdField_a_of_type_Baks == null))
     {
-      paramString = paramSocket.getSession();
-      if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier == null) {
-        this.jdField_a_of_type_JavaxNetSslHostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "send_oidb_0xdad. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_Baks);
       }
-      if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier.verify(this.b, paramString)) {
-        break;
-      }
-      throw new SSLPeerUnverifiedException("Cannot verify hostname: " + this.b);
-      try
+      if (this.jdField_a_of_type_Baks != null)
       {
-        paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { this.b });
+        if (paramArrayOfByte != null) {
+          paramBundle = new cmd0xdad.RspBody();
+        }
       }
-      catch (Exception paramString) {}
+      else {
+        try
+        {
+          paramBundle.mergeFrom(paramArrayOfByte);
+          paramArrayOfByte = paramBundle.errmsg.get();
+          this.jdField_a_of_type_Baks.b(paramInt, paramArrayOfByte);
+          return;
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i(".troop.send_gift", 2, "send_oidb_0xdad. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
+          }
+          this.jdField_a_of_type_Baks.a(-1, "InvalidProtocolBufferMicroException");
+          return;
+        }
+      }
+      this.jdField_a_of_type_Baks.a(paramInt, "sso request error or callback is null.");
+      return;
     }
-    return paramSocket;
-  }
-  
-  public String[] getDefaultCipherSuites()
-  {
-    return new String[0];
-  }
-  
-  public String[] getSupportedCipherSuites()
-  {
-    return new String[0];
+    cmd0xdad.RspBody localRspBody;
+    try
+    {
+      localRspBody = new cmd0xdad.RspBody();
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramInt = (int)localRspBody.retcode.get();
+      if ((paramInt == 0) && (paramBundle != null))
+      {
+        this.jdField_a_of_type_Baks.a(this.jdField_a_of_type_Xce.a);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "send_oidb_0x6b6. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
+      }
+      this.jdField_a_of_type_Baks.a(-1, "InvalidProtocolBufferMicroException");
+      return;
+    }
+    paramArrayOfByte = localRspBody.errmsg.get();
+    this.jdField_a_of_type_Baks.b(paramInt, paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bala
  * JD-Core Version:    0.7.0.1
  */

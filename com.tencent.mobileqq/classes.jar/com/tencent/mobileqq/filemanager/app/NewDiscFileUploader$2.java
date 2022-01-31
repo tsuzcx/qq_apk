@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aofm;
-import aopf;
+import aowg;
+import apgo;
 
 public class NewDiscFileUploader$2
   implements Runnable
 {
-  public NewDiscFileUploader$2(aofm paramaofm) {}
+  public NewDiscFileUploader$2(aowg paramaowg) {}
   
   public void run()
   {

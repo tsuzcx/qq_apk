@@ -1,39 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class nhv
-  extends Handler
+  implements View.OnClickListener
 {
-  private WeakReference<nhr> a;
+  public nhv(AccountDetailActivity paramAccountDetailActivity, Dialog paramDialog) {}
   
-  public nhv(nhr paramnhr)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramnhr);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    nhr localnhr = (nhr)this.a.get();
-    if (localnhr == null) {}
-    do
-    {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        case 1: 
-          nhr.a(localnhr);
-          return;
-        }
-      } while (nhr.a(localnhr) == null);
-      nhr.a(localnhr).a(nhr.a(localnhr));
-      return;
-    } while (nhr.a(localnhr) == null);
-    nhr.a(localnhr).b();
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 

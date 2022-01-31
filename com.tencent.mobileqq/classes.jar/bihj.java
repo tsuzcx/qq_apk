@@ -1,33 +1,37 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.View;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.CameraFocusView;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bihj
+class bihj
+  extends avsq
 {
-  @NonNull
-  public abstract Context a();
+  public bihj(bihi parambihi, CameraFocusView paramCameraFocusView)
+  {
+    super(paramCameraFocusView);
+  }
   
-  public abstract Intent a(bitz parambitz);
+  protected void a(CameraCaptureView paramCameraCaptureView, float paramFloat1, float paramFloat2)
+  {
+    super.a(paramCameraCaptureView, paramFloat1, paramFloat2 - paramCameraCaptureView.getTop());
+  }
   
-  @NonNull
-  public abstract View a();
-  
-  public abstract void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3);
-  
-  public abstract void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3, boolean paramBoolean);
-  
-  public abstract void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong);
-  
-  public abstract void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong, DialogInterface.OnDismissListener paramOnDismissListener);
-  
-  public abstract void b();
-  
-  @Nullable
-  public abstract Activity getActivity();
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("GLGestureListener", 2, "event : (" + paramMotionEvent.getX() + "," + paramMotionEvent.getY() + ")");
+      QLog.d("GLGestureListener", 2, "view : (" + bihi.a(this.a).getLeft() + "," + bihi.a(this.a).getRight() + "," + bihi.a(this.a).getTop() + "," + bihi.a(this.a).getBottom() + ")");
+    }
+    if ((paramMotionEvent.getX() > bihi.a(this.a).getRight() / 2) || (paramMotionEvent.getY() < bihi.a(this.a).getTop()) || (paramMotionEvent.getY() > bihi.a(this.a).getBottom()))
+    {
+      QLog.d("GLGestureListener", 2, "touch out");
+      return false;
+    }
+    QLog.d("GLGestureListener", 2, "touch in");
+    return super.onTouchEvent(paramMotionEvent, paramBoolean);
+  }
 }
 
 

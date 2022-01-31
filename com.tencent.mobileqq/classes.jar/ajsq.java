@@ -1,1132 +1,128 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Process;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.MemoryManager;
+import com.tencent.mobileqq.msf.core.net.patch.PatchSharedPreUtil;
+import com.tencent.mobileqq.startup.step.SetSplash;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import tencent.im.oidb.cmd0x7a0.oidb_0x7a0.LoginSig;
-import tencent.im.oidb.cmd0x7a0.oidb_0x7a0.ReqBody;
-import tencent.im.oidb.cmd0x7a0.oidb_0x7a0.RspBody;
-import tencent.im.oidb.cmd0x7a1.oidb_0x7a1.ReqBody;
-import tencent.im.oidb.cmd0x7a1.oidb_0x7a1.RspBody;
-import tencent.im.oidb.cmd0x7a2.oidb_0x7a2.ReqBody;
-import tencent.im.oidb.cmd0x7a2.oidb_0x7a2.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import mqq.app.AppRuntime;
 
 public class ajsq
-  extends ajfb
+  extends ajyb
 {
-  public ajsq(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  private String a;
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  protected void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SUB_ACCOUNT", 2, "handlerBindSubAccount() time = " + System.currentTimeMillis());
-    }
-    String str3;
-    String str1;
-    String str2;
-    axau localaxau;
-    int i;
-    boolean bool1;
-    label264:
-    boolean bool2;
-    if (paramToServiceMsg != null)
+    this.c += 1L;
+    this.d += 1L;
+    if ((this.d == 1L) && (SetSplash.a()) && (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null))
     {
-      str3 = paramToServiceMsg.getUin();
-      str1 = paramToServiceMsg.extraData.getString("subAccount");
-      str2 = paramToServiceMsg.extraData.getString("fromWhere");
-      localaxau = new axau();
-      if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
-      try
-      {
-        localaxau.jdField_a_of_type_Int = 1000;
-        notifyUI(0, false, localaxau);
-        if (!QLog.isColorLevel()) {
-          break label1661;
-        }
-        QLog.d("SUB_ACCOUNT", 2, "handlerBindSubAccount() req == null || resp == null");
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("setsplash", 2, "needshowsplashtoday , kill myself");
       }
-      catch (Exception paramToServiceMsg)
-      {
-        bool1 = false;
-      }
-      i = paramFromServiceMsg.getResultCode();
-      localaxau.jdField_b_of_type_JavaLangString = str3;
-      localaxau.c = str1;
-      if (i == 1000)
-      {
-        paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
-        try
-        {
-          paramObject = (oidb_sso.OIDBSSOPkg)paramFromServiceMsg.mergeFrom((byte[])paramObject);
-          paramFromServiceMsg = paramObject;
-        }
-        catch (InvalidProtocolBufferMicroException paramObject)
-        {
-          for (;;)
-          {
-            label369:
-            if (!QLog.isColorLevel()) {
-              break label398;
-            }
-            QLog.d("SUB_ACCOUNT", 2, "handlerBindSubAccount() oidb_sso parseFrom byte InvalidProtocolBufferMicroException ");
-            paramObject.printStackTrace();
-            continue;
-            if ((paramFromServiceMsg.uint32_result.has()) && (paramFromServiceMsg.uint32_result.get() == 0)) {
-              break label515;
-            }
-            paramToServiceMsg = new HashMap();
-            paramToServiceMsg.put("param_FailCode", "12008");
-            paramToServiceMsg.put("fail_step", "uint32_not_rs");
-            paramToServiceMsg.put("fail_location", "bindhandle");
-            awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBDBindProtol", false, 0L, 0L, paramToServiceMsg, "");
-            localaxau.jdField_a_of_type_Int = 1001;
-            notifyUI(0, false, localaxau);
-            if (!QLog.isColorLevel()) {
-              break label1661;
-            }
-            QLog.d("SUB_ACCOUNT", 2, "handlerBindSubAccount() !pkg.hasUint32Result() || pkg.getUint32Result() != 0 ");
-            return;
-            if ((paramFromServiceMsg.bytes_bodybuffer.has()) && (paramFromServiceMsg.bytes_bodybuffer.get() != null)) {
-              break label625;
-            }
-            paramToServiceMsg = new HashMap();
-            paramToServiceMsg.put("param_FailCode", "12008");
-            paramToServiceMsg.put("fail_step", "body_buff_not");
-            paramToServiceMsg.put("fail_location", "bindhandle");
-            awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBDBindProtol", false, 0L, 0L, paramToServiceMsg, "");
-            localaxau.jdField_a_of_type_Int = 1000;
-            notifyUI(0, false, localaxau);
-            if (!QLog.isColorLevel()) {
-              break label1661;
-            }
-            QLog.d("SUB_ACCOUNT", 2, "handlerBindSubAccount() !pkg.hasBytesBodybuffer() || pkg.getBytesBodybuffer() == null");
-            return;
-            paramObject = paramFromServiceMsg.bytes_bodybuffer.get().toByteArray();
-            paramFromServiceMsg = new oidb_0x7a0.RspBody();
-            try
-            {
-              paramObject = (oidb_0x7a0.RspBody)paramFromServiceMsg.mergeFrom(paramObject);
-              paramFromServiceMsg = paramObject;
-              if (paramFromServiceMsg != null) {
-                break label771;
-              }
-              paramToServiceMsg = new HashMap();
-              paramToServiceMsg.put("param_FailCode", "12012");
-              paramToServiceMsg.put("fail_step", "rsp_null");
-              paramToServiceMsg.put("fail_location", "bindhandle");
-              awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBDBindProtol", false, 0L, 0L, paramToServiceMsg, "");
-              localaxau.jdField_a_of_type_Int = 1000;
-              notifyUI(0, false, localaxau);
-              if (!QLog.isColorLevel()) {
-                break label1661;
-              }
-              QLog.d("SUB_ACCOUNT", 2, "handlerBindSubAccount() rsp == null");
-              return;
-            }
-            catch (InvalidProtocolBufferMicroException paramObject)
-            {
-              for (;;)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("SUB_ACCOUNT", 2, "handlerBindSubAccount() oidb_0x7a0 parseFrom byte InvalidProtocolBufferMicroException");
-                }
-                paramObject.printStackTrace();
-              }
-              i = paramFromServiceMsg.uint32_result.get();
-              localaxau.jdField_b_of_type_Int = i;
-              if (!QLog.isColorLevel()) {
-                break label819;
-              }
-              QLog.d("SUB_ACCOUNT", 2, "handlerBindSubAccount() rspResult = " + i);
-              if (i != 0) {
-                break label1019;
-              }
-              paramFromServiceMsg = new HashMap();
-              paramFromServiceMsg.put("param_FailCode", "12009");
-              paramFromServiceMsg.put("fail_step", "sucess_0");
-              paramFromServiceMsg.put("fail_location", "bindhandle");
-              awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBDBindProtol", true, 0L, 0L, paramFromServiceMsg, "");
-              try
-              {
-                localaxau.jdField_a_of_type_Int = 0;
-                paramFromServiceMsg = (axat)this.app.getManager(61);
-                paramToServiceMsg = paramToServiceMsg.extraData.getString("subaccount_a2");
-                if (paramFromServiceMsg != null)
-                {
-                  paramFromServiceMsg.a(localaxau);
-                  paramFromServiceMsg.a(str1, 1);
-                  paramFromServiceMsg.a(str1, paramToServiceMsg, true);
-                }
-                axam.a(this.app, (byte)1, str1);
-                axam.b(this.app, false, str1);
-                axam.a(this.app, str1, false);
-                if (AccountManageActivity.class.getSimpleName().equals(str2)) {
-                  awqx.b(this.app, "CliOper", "", "", "0X8004003", "0X8004003", 0, 0, "", "", "", "");
-                }
-                bool1 = true;
-              }
-              catch (Exception paramToServiceMsg)
-              {
-                bool1 = true;
-              }
-              paramToServiceMsg = new HashMap();
-              paramToServiceMsg.put("param_FailCode", "12011");
-              paramToServiceMsg.put("fail_step", "Bind_fail_rsp_" + i);
-              paramToServiceMsg.put("fail_location", "bindhandle");
-              bool1 = false;
-              if (i == 1000) {
-                break label1662;
-              }
-              if (i != 1001) {
-                break label1096;
-              }
-            }
-          }
-        }
-        if (paramFromServiceMsg == null)
-        {
-          paramToServiceMsg = new HashMap();
-          paramToServiceMsg.put("param_FailCode", "12007");
-          paramToServiceMsg.put("fail_step", "pkg_null");
-          paramToServiceMsg.put("fail_location", "bindhandle");
-          awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBDBindProtol", false, 0L, 0L, paramToServiceMsg, "");
-          localaxau.jdField_a_of_type_Int = 1000;
-          notifyUI(0, false, localaxau);
-          if (!QLog.isColorLevel()) {
-            break label1661;
-          }
-          QLog.d("SUB_ACCOUNT", 2, "handlerBindSubAccount() pkg == null ");
-          return;
-          paramToServiceMsg.printStackTrace();
-          paramFromServiceMsg = new HashMap();
-          paramFromServiceMsg.put("param_FailCode", "12013");
-          paramFromServiceMsg.put("fail_step", "exception");
-          paramFromServiceMsg.put("fail_location", "bindhandle");
-          awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBDBindProtol", false, 0L, 0L, paramFromServiceMsg, "");
-          bool2 = bool1;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("SUB_ACCOUNT", 2, "handlerBindSubAccount() last exception errormsg = " + paramToServiceMsg.getMessage());
-            bool2 = bool1;
-          }
-          bool1 = bool2;
-        }
-      }
+      axqw.a(null, "CliOper", "", "", "0X800483B", "0X800483B", 0, 0, "", "", "", "");
+      System.exit(-1);
     }
-    for (;;)
+    float f2 = MemoryManager.a().a();
+    float f1;
+    long l;
+    if (akai.a().d > 0.0F)
     {
-      label373:
-      notifyUI(0, bool1, localaxau);
-      return;
-      label398:
-      label625:
-      label1019:
-      awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBDBindProtol", bool1, 0L, 0L, paramToServiceMsg, "");
-      label515:
-      label771:
-      label819:
-      label1096:
-      localaxau.jdField_a_of_type_JavaLangString = paramFromServiceMsg.str_errmsg.get();
-      switch (i)
+      f1 = akai.a().d;
+      if (akai.a().b <= 0L) {
+        break label416;
+      }
+      l = akai.a().b;
+      label131:
+      if ((akai.a().c) && (f2 >= f1) && (this.c >= l)) {
+        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(5, this.jdField_a_of_type_JavaLangString);
+      }
+      int i = ajxz.a().a(MemoryManager.a(Process.myPid()));
+      int j = ajxz.a().a(this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Array2dOfLong, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b);
+      l = ajxz.a().b[(i + j)] / 12000;
+      if (this.c < l) {
+        break label424;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(5, this.jdField_a_of_type_JavaLangString);
+      label250:
+      if ((this.d != 50L) && (this.d != 51L)) {
+        break label510;
+      }
+      GuardManager.b(true);
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(false, new String[0]);
+      Object localObject = zcu.a(BaseApplicationImpl.sApplication, "dex");
+      if ((localObject != null) && (((zct)localObject).a(BaseApplicationImpl.sApplication, false)))
       {
-      }
-      for (;;)
-      {
-        label1156:
-        paramToServiceMsg = String.valueOf(paramFromServiceMsg.uint64_err_uin.get());
-        if ((str1 != null) && (paramToServiceMsg.equalsIgnoreCase(str1)))
+        localObject = ((zct)localObject).b();
+        if ((PatchSharedPreUtil.getPatchVerifyStatus(BaseApplicationImpl.sApplication, (String)localObject)) && (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) && ((zck.jdField_a_of_type_Int == 0) || (!zck.jdField_a_of_type_JavaLangString.equals(localObject))))
         {
-          localaxau.jdField_a_of_type_Int = 1004;
-          this.app.updateSubAccountLogin(localaxau.c, false);
-          if (!QLog.isColorLevel()) {
-            break label1743;
-          }
-          QLog.d("SUB_ACCOUNT", 2, "handlerBindSubAccount() ERRORTYPE_SUBACCOUNT_A2_ERROR");
-          break label1743;
-          localaxau.jdField_a_of_type_Int = 1002;
-          if (!QLog.isColorLevel()) {
-            break label1404;
-          }
-          QLog.d("SUB_ACCOUNT", 2, "handlerBindSubAccount() ERRORTYPE_MAIN_HADBIND_ANOTHER");
-          bool1 = false;
-          break label373;
-          localaxau.jdField_a_of_type_Int = 1003;
-          if (!QLog.isColorLevel()) {
-            break label1404;
-          }
-          QLog.d("SUB_ACCOUNT", 2, "handlerBindSubAccount() ERRORTYPE_SUB_HADBIND_ANOTHER");
-          bool1 = false;
-          break label373;
-        }
-        if ((str3 != null) && (str3.equalsIgnoreCase(paramToServiceMsg)))
-        {
-          localaxau.jdField_a_of_type_Int = 1005;
-          if (!QLog.isColorLevel()) {
-            break label1743;
-          }
-          QLog.d("SUB_ACCOUNT", 2, "handlerBindSubAccount() ERRORTYPE_MAINACCOUNT_A2_ERROR");
-          break label1743;
-        }
-        localaxau.jdField_a_of_type_Int = 1000;
-        if (!QLog.isColorLevel()) {
-          break label1743;
-        }
-        QLog.d("SUB_ACCOUNT", 2, "handlerBindSubAccount() ERRORTYPE_UNKNOW");
-        break label1743;
-        label1404:
-        label1661:
-        label1662:
-        do
-        {
-          for (;;)
-          {
-            if (i == 1221)
-            {
-              localaxau.jdField_a_of_type_Int = 1011;
-              if (!QLog.isColorLevel()) {
-                break label1404;
-              }
-              QLog.d("SUB_ACCOUNT", 2, "handlerBindSubAccount() ERRORTYPE_EQLIP_LOCK_FAIL");
-              bool1 = false;
-              break label373;
-            }
-            localaxau.jdField_a_of_type_Int = 1000;
-            if (QLog.isColorLevel()) {
-              QLog.d("SUB_ACCOUNT", 2, "handlerBindSubAccount() ERRORTYPE_UNKNOW");
-            }
-            bool1 = false;
-            break label373;
-            boolean bool3 = false;
-            bool1 = false;
-            if ((i == 1002) || (i == 1013)) {}
-            try
-            {
-              paramToServiceMsg = new HashMap();
-              paramToServiceMsg.put("param_FailCode", "12010");
-              paramToServiceMsg.put("fail_step", "timeout");
-              paramToServiceMsg.put("fail_location", "bindhandle");
-              awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBDBindProtol", false, 0L, 0L, paramToServiceMsg, "");
-              localaxau.jdField_a_of_type_Int = 1007;
-              bool2 = bool3;
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("SUB_ACCOUNT", 2, "handlerBindSubAccount() ERRORTYPE_SERVER_TIMEOUT");
-              bool1 = false;
-            }
-            catch (Exception paramToServiceMsg) {}
-          }
-          paramToServiceMsg = new HashMap();
-          paramToServiceMsg.put("param_FailCode", "12012");
-          paramToServiceMsg.put("fail_step", "fali_end_rs_" + i);
-          paramToServiceMsg.put("fail_location", "bindhandle");
-          awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBDBindProtol", false, 0L, 0L, paramToServiceMsg, "");
-          localaxau.jdField_a_of_type_Int = 1000;
-          bool2 = bool3;
-          if (!QLog.isColorLevel()) {
-            break label369;
-          }
-          QLog.d("SUB_ACCOUNT", 2, "handlerBindSubAccount() ERRORTYPE_UNKNOW last");
-          bool2 = bool3;
-          break label369;
-          break label264;
-          break label264;
-          str2 = null;
-          str1 = null;
-          str3 = null;
-          break;
-          return;
-          bool1 = true;
-          break label1096;
-          if ((i == 1200) || (i == 1214) || (i == 1215) || (i == 1218) || (i == 1232) || (i == 1233) || (i == 1240) || (i == 1241)) {
-            break label1156;
-          }
-        } while (i != 1242);
-      }
-      label1743:
-      bool1 = false;
-    }
-  }
-  
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SUB_ACCOUNT", 2, "handlerUnBindSubAccount() start");
-    }
-    String str1;
-    String str2;
-    axau localaxau;
-    int i;
-    boolean bool1;
-    label301:
-    boolean bool2;
-    if (paramToServiceMsg != null)
-    {
-      str1 = paramToServiceMsg.extraData.getString("subAccount");
-      str2 = paramToServiceMsg.getUin();
-      localaxau = new axau();
-      if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
-      try
-      {
-        paramToServiceMsg = new HashMap();
-        paramToServiceMsg.put("param_FailCode", "12007");
-        paramToServiceMsg.put("fail_step", "rep_null");
-        paramToServiceMsg.put("fail_location", "SubBind");
-        awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBUnbindProtol", false, 0L, 0L, paramToServiceMsg, "");
-        localaxau.jdField_a_of_type_Int = 1000;
-        notifyUI(1, false, localaxau);
-        if (!QLog.isColorLevel()) {
-          break label1496;
-        }
-        QLog.d("SUB_ACCOUNT", 2, "handlerUnBindSubAccount() req == null || resp == null");
-        return;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        bool1 = false;
-      }
-      i = paramFromServiceMsg.getResultCode();
-      localaxau.jdField_b_of_type_JavaLangString = str2;
-      localaxau.c = str1;
-      if (i == 1000)
-      {
-        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-        try
-        {
-          paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom((byte[])paramObject);
-          paramToServiceMsg = paramFromServiceMsg;
-        }
-        catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-        {
-          for (;;)
-          {
-            label409:
-            if (QLog.isColorLevel()) {
-              QLog.d("SUB_ACCOUNT", 2, "handlerUnBindSubAccount() oidb_sso parseFrom byte InvalidProtocolBufferMicroException");
-            }
-            paramFromServiceMsg.printStackTrace();
-          }
-          if ((paramToServiceMsg.uint32_result.has()) && (paramToServiceMsg.uint32_result.get() == 0)) {
-            break label560;
-          }
-          paramToServiceMsg = new HashMap();
-          paramToServiceMsg.put("param_FailCode", "12008");
-          paramToServiceMsg.put("fail_step", "pkg32rs_null");
-          paramToServiceMsg.put("fail_location", "SubBind");
-          awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBUnbindProtol", false, 0L, 0L, paramToServiceMsg, "");
-          localaxau.jdField_a_of_type_Int = 1001;
-          notifyUI(1, false, localaxau);
-          if (!QLog.isColorLevel()) {
-            break label1496;
-          }
-          QLog.d("SUB_ACCOUNT", 2, "handlerUnBindSubAccount() !pkg.hasUint32Result() || pkg.getUint32Result() != 0");
-          return;
-          if ((paramToServiceMsg.bytes_bodybuffer.has()) && (paramToServiceMsg.bytes_bodybuffer.get() != null)) {
-            break label674;
-          }
-          paramToServiceMsg = new HashMap();
-          paramToServiceMsg.put("param_FailCode", "12008");
-          paramToServiceMsg.put("fail_step", "bytebody_null");
-          paramToServiceMsg.put("fail_location", "SubBind");
-          awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBUnbindProtol", false, 0L, 0L, paramToServiceMsg, "");
-          localaxau.jdField_a_of_type_Int = 1000;
-          notifyUI(1, false, localaxau);
-          if (!QLog.isColorLevel()) {
-            break label1496;
-          }
-          QLog.d("SUB_ACCOUNT", 2, "handlerUnBindSubAccount() !pkg.hasBytesBodybuffer() || pkg.getBytesBodybuffer() == null");
-          return;
-          paramFromServiceMsg = paramToServiceMsg.bytes_bodybuffer.get().toByteArray();
-          paramToServiceMsg = new oidb_0x7a1.RspBody();
-          try
-          {
-            paramFromServiceMsg = (oidb_0x7a1.RspBody)paramToServiceMsg.mergeFrom(paramFromServiceMsg);
-            paramToServiceMsg = paramFromServiceMsg;
-          }
-          catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("SUB_ACCOUNT", 2, "handlerUnBindSubAccount() oidb_0x7a1 parseFrom byte InvalidProtocolBufferMicroException");
-              }
-              paramFromServiceMsg.printStackTrace();
-            }
-            i = paramToServiceMsg.uint32_result.get();
-            localaxau.jdField_b_of_type_Int = i;
-            localaxau.jdField_a_of_type_JavaLangString = paramToServiceMsg.str_errmsg.get();
-            if (!QLog.isColorLevel()) {
-              break label1497;
-            }
-          }
-          if (paramToServiceMsg != null) {
-            break label824;
-          }
-          paramToServiceMsg = new HashMap();
-          paramToServiceMsg.put("param_FailCode", "12012");
-          paramToServiceMsg.put("fail_step", "rsp_null");
-          paramToServiceMsg.put("fail_location", "SubBind");
-          awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBUnbindProtol", false, 0L, 0L, paramToServiceMsg, "");
-          localaxau.jdField_a_of_type_Int = 1000;
-          notifyUI(1, false, localaxau);
-          if (!QLog.isColorLevel()) {
-            break label1496;
-          }
-          QLog.d("SUB_ACCOUNT", 2, "handlerUnBindSubAccount() rsp == null");
-          return;
-          QLog.d("SUB_ACCOUNT", 2, "handlerUnBindSubAccount()  rspResult = " + i);
-        }
-        if (paramToServiceMsg == null)
-        {
-          paramToServiceMsg = new HashMap();
-          paramToServiceMsg.put("param_FailCode", "12008");
-          paramToServiceMsg.put("fail_step", "pkg_null");
-          paramToServiceMsg.put("fail_location", "SubBind");
-          awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBUnbindProtol", false, 0L, 0L, paramToServiceMsg, "");
-          localaxau.jdField_a_of_type_Int = 1000;
-          notifyUI(1, false, localaxau);
-          if (!QLog.isColorLevel()) {
-            break label1496;
-          }
-          QLog.d("SUB_ACCOUNT", 2, "handlerUnBindSubAccount() pkg == null");
-          return;
-          paramToServiceMsg.printStackTrace();
-          paramFromServiceMsg = new HashMap();
-          paramFromServiceMsg.put("param_FailCode", "12013");
-          paramFromServiceMsg.put("fail_step", "exception");
-          paramFromServiceMsg.put("fail_location", "SubBind");
-          awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBUnbindProtol", false, 0L, 0L, paramFromServiceMsg, "");
-          bool2 = bool1;
-          if (QLog.isColorLevel())
-          {
-            QLog.e("SUB_ACCOUNT", 2, "handlerUnBindSubAccount:   error e = " + paramToServiceMsg.getMessage());
-            bool2 = bool1;
-          }
-          bool1 = bool2;
+          QLog.d("PatchLogTag", 1, "GuardManager exit to install patch, target patchName=" + (String)localObject + ", installed patchName=" + zck.jdField_a_of_type_JavaLangString + ", installStatus=" + zck.jdField_a_of_type_Int);
+          System.exit(-1);
         }
       }
     }
-    for (;;)
-    {
-      label413:
-      notifyUI(1, bool1, localaxau);
-      return;
-      for (;;)
-      {
-        for (;;)
-        {
-          for (;;)
-          {
-            label560:
-            label824:
-            paramFromServiceMsg = new HashMap();
-            label674:
-            paramFromServiceMsg.put("param_FailCode", "12011");
-            paramFromServiceMsg.put("fail_step", "rspResult_" + i);
-            paramFromServiceMsg.put("fail_location", "SubBind");
-            awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBUnbindProtol", false, 0L, 0L, paramFromServiceMsg, "");
-            if ((i != 1200) && (i != 1214) && (i != 1215) && (i != 1218) && (i != 1232) && (i != 1233) && (i != 1240) && (i != 1241) && (i != 1242)) {
-              break label1240;
-            }
-            paramToServiceMsg = String.valueOf(paramToServiceMsg.uint64_err_uin.get());
-            if ((str1 == null) || (!paramToServiceMsg.equalsIgnoreCase(str1))) {
-              break label1174;
-            }
-            if (!QLog.isColorLevel()) {
-              break label1535;
-            }
-            QLog.e("SUB_ACCOUNT", 2, "handlerUnBindSubAccount: server error happen subaccount a2 error? not it is not happan");
-            break label1535;
-            paramToServiceMsg = new HashMap();
-            paramToServiceMsg.put("param_FailCode", "12009");
-            paramToServiceMsg.put("fail_step", "rspResult_0");
-            paramToServiceMsg.put("fail_location", "SubBind");
-            awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBUnbindProtol", true, 0L, 0L, paramToServiceMsg, "");
-            bool1 = true;
-            try
-            {
-              localaxau.jdField_a_of_type_Int = 0;
-              axam.a(this.app, str1);
-            }
-            catch (Exception paramToServiceMsg)
-            {
-              bool1 = true;
-            }
-          }
-          break;
-          label1174:
-          if ((str2 != null) && (str2.equalsIgnoreCase(paramToServiceMsg)))
-          {
-            localaxau.jdField_a_of_type_Int = 1005;
-            if (!QLog.isColorLevel()) {
-              break label1535;
-            }
-            QLog.e("SUB_ACCOUNT", 2, "handlerUnBindSubAccount: ERRORTYPE_MAINACCOUNT_A2_ERROR");
-            break label1535;
-          }
-          localaxau.jdField_a_of_type_Int = 1000;
-          if (!QLog.isColorLevel()) {
-            break label1535;
-          }
-          QLog.e("SUB_ACCOUNT", 2, "handlerUnBindSubAccount: ERRORTYPE_UNKNOW");
-          break label1535;
-          label1240:
-          localaxau.jdField_a_of_type_Int = 1000;
-          if (QLog.isColorLevel()) {
-            QLog.e("SUB_ACCOUNT", 2, "handlerUnBindSubAccount: ERRORTYPE_UNKNOW");
-          }
-          bool1 = false;
-          break label413;
-          boolean bool3 = false;
-          bool1 = false;
-          if ((i == 1002) || (i == 1013)) {}
-          try
-          {
-            paramToServiceMsg = new HashMap();
-            paramToServiceMsg.put("param_FailCode", "12010");
-            paramToServiceMsg.put("fail_step", "timeout");
-            paramToServiceMsg.put("fail_location", "SubBind");
-            awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBUnbindProtol", false, 0L, 0L, paramToServiceMsg, "");
-            localaxau.jdField_a_of_type_Int = 1007;
-            bool2 = bool3;
-            if (!QLog.isColorLevel()) {
-              break label409;
-            }
-            QLog.e("SUB_ACCOUNT", 2, "handlerUnBindSubAccount: ERRORTYPE_SERVER_TIMEOUT");
-            bool1 = false;
-          }
-          catch (Exception paramToServiceMsg) {}
-        }
-        paramToServiceMsg = new HashMap();
-        paramToServiceMsg.put("param_FailCode", "12012");
-        paramToServiceMsg.put("fail_step", "error");
-        paramToServiceMsg.put("fail_location", "SubBind");
-        awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBUnbindProtol", false, 0L, 0L, paramToServiceMsg, "");
-        localaxau.jdField_a_of_type_Int = 1000;
-        bool2 = bool3;
-        if (!QLog.isColorLevel()) {
-          break label409;
-        }
-        QLog.e("SUB_ACCOUNT", 2, "handlerUnBindSubAccount: ERRORTYPE_UNKNOW last");
-        bool2 = bool3;
-        break label409;
-        break label301;
-        str2 = null;
-        str1 = null;
-        break;
-        label1496:
-        return;
-        label1497:
-        switch (i)
-        {
-        }
-      }
-      label1535:
-      bool1 = false;
-    }
-  }
-  
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SUB_ACCOUNT", 2, "handlerGetBindSubAccount:");
-    }
-    axau localaxau = new axau();
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
-    try
-    {
-      paramToServiceMsg = new HashMap();
-      paramToServiceMsg.put("param_FailCode", "12007");
-      paramToServiceMsg.put("fail_step", "req_null");
-      paramToServiceMsg.put("fail_location", "SubBind");
-      awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBGetbindProtol", false, 0L, 0L, paramToServiceMsg, "");
-      localaxau.jdField_a_of_type_Int = 1000;
-      notifyUI(2, false, localaxau);
-      if (!QLog.isColorLevel()) {
-        break label2103;
-      }
-      QLog.d("SUB_ACCOUNT", 2, "handlerGetBindSubAccount: req == null || resp == null");
-      return;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      bool1 = false;
-      i = 1;
-    }
-    int i = paramFromServiceMsg.getResultCode();
-    localaxau.jdField_b_of_type_JavaLangString = paramToServiceMsg.getUin();
-    boolean bool1;
-    int j;
-    boolean bool2;
-    if (i == 1000)
-    {
-      paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-      try
-      {
-        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom((byte[])paramObject);
-        paramToServiceMsg = paramFromServiceMsg;
-      }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-      {
-        for (;;)
-        {
-          paramFromServiceMsg.printStackTrace();
-        }
-        if ((paramToServiceMsg.uint32_result.has()) && (paramToServiceMsg.uint32_result.get() == 0)) {
-          break label531;
-        }
-        paramToServiceMsg = new HashMap();
-        paramToServiceMsg.put("param_FailCode", "12008");
-        paramToServiceMsg.put("fail_step", "pkguint32_null");
-        paramToServiceMsg.put("fail_location", "SubBind");
-        awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBGetbindProtol", false, 0L, 0L, paramToServiceMsg, "");
-        localaxau.jdField_a_of_type_Int = 1001;
-        notifyUI(2, false, localaxau);
-        if (!QLog.isColorLevel()) {
-          break label2103;
-        }
-        QLog.d("SUB_ACCOUNT", 2, "handlerGetBindSubAccount: !pkg.hasUint32Result() || pkg.getUint32Result() != 0");
-        return;
-        label531:
-        if ((paramToServiceMsg.bytes_bodybuffer.has()) && (paramToServiceMsg.bytes_bodybuffer.get() != null)) {
-          break label645;
-        }
-        paramToServiceMsg = new HashMap();
-        paramToServiceMsg.put("param_FailCode", "12008");
-        paramToServiceMsg.put("fail_step", "bytebody_null");
-        paramToServiceMsg.put("fail_location", "SubBind");
-        awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBGetbindProtol", false, 0L, 0L, paramToServiceMsg, "");
-        localaxau.jdField_a_of_type_Int = 1000;
-        notifyUI(2, false, localaxau);
-        if (!QLog.isColorLevel()) {
-          break label2103;
-        }
-        QLog.d("SUB_ACCOUNT", 2, "handlerGetBindSubAccount: !pkg.hasBytesBodybuffer() || pkg.getBytesBodybuffer() == null");
-        return;
-        label645:
-        paramFromServiceMsg = paramToServiceMsg.bytes_bodybuffer.get().toByteArray();
-        paramToServiceMsg = new oidb_0x7a2.RspBody();
-        try
-        {
-          paramFromServiceMsg = (oidb_0x7a2.RspBody)paramToServiceMsg.mergeFrom(paramFromServiceMsg);
-          paramToServiceMsg = paramFromServiceMsg;
-        }
-        catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("SUB_ACCOUNT", 2, "handlerGetBindSubAccount: parseFrom byte InvalidProtocolBufferMicroException ");
-            }
-            paramFromServiceMsg.printStackTrace();
-          }
-          i = paramToServiceMsg.uint32_result.get();
-          localaxau.jdField_b_of_type_Int = i;
-          localaxau.jdField_a_of_type_JavaLangString = paramToServiceMsg.str_errmsg.get();
-          switch (i)
-          {
-          }
-        }
-        if (paramToServiceMsg != null) {
-          break label796;
-        }
-        paramToServiceMsg = new HashMap();
-        paramToServiceMsg.put("param_FailCode", "12012");
-        paramToServiceMsg.put("fail_step", "bytebody_null");
-        paramToServiceMsg.put("fail_location", "SubBind");
-        awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBGetbindProtol", false, 0L, 0L, paramToServiceMsg, "");
-        localaxau.jdField_a_of_type_Int = 1000;
-        notifyUI(2, false, localaxau);
-        if (!QLog.isColorLevel()) {
-          break label2103;
-        }
-        QLog.d("SUB_ACCOUNT", 2, "handlerGetBindSubAccount: rsp == null");
-        return;
-      }
-      if (paramToServiceMsg == null)
-      {
-        paramToServiceMsg = new HashMap();
-        paramToServiceMsg.put("param_FailCode", "12008");
-        paramToServiceMsg.put("fail_step", "pkg_null");
-        paramToServiceMsg.put("fail_location", "SubBind");
-        awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBGetbindProtol", false, 0L, 0L, paramToServiceMsg, "");
-        localaxau.jdField_a_of_type_Int = 1000;
-        notifyUI(2, false, localaxau);
-        if (QLog.isColorLevel())
-        {
-          QLog.d("SUB_ACCOUNT", 2, "handlerGetBindSubAccount: pkg == null");
-          return;
-          paramFromServiceMsg = new HashMap();
-          paramFromServiceMsg.put("param_FailCode", "12013");
-          paramFromServiceMsg.put("fail_step", "exception");
-          paramFromServiceMsg.put("fail_location", "SubBind");
-          awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBGetbindProtol", false, 0L, 0L, paramFromServiceMsg, "");
-          paramToServiceMsg.printStackTrace();
-          j = i;
-          bool2 = bool1;
-          if (QLog.isColorLevel())
-          {
-            QLog.e("SUB_ACCOUNT", 2, "handlerGetBindSubAccount: exception happen e = " + paramToServiceMsg.getMessage());
-            bool2 = bool1;
-            j = i;
-          }
-          if (j != 0) {
-            notifyUI(2, bool2, localaxau);
-          }
-        }
-      }
-      else
-      {
-        label796:
-        label844:
-        paramToServiceMsg = new HashMap();
-        paramToServiceMsg.put("param_FailCode", "12011");
-        paramToServiceMsg.put("fail_step", "rspResult_" + i);
-        paramToServiceMsg.put("fail_location", "SubBind");
-        awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBGetbindProtol", false, 0L, 0L, paramToServiceMsg, "");
-        if ((i == 1200) || (i == 1214) || (i == 1215) || (i == 1218) || (i == 1232) || (i == 1233) || (i == 1240) || (i == 1241) || (i == 1242))
-        {
-          localaxau.jdField_a_of_type_Int = 1005;
-          if (!QLog.isColorLevel()) {
-            break label2128;
-          }
-          QLog.d("SUB_ACCOUNT", 2, "handlerGetBindSubAccount: get main account a2 error rspResult = " + i);
-          i = 1;
-          bool1 = false;
-          break label2107;
-          paramFromServiceMsg = new HashMap();
-          paramFromServiceMsg.put("param_FailCode", "12009");
-          paramFromServiceMsg.put("fail_step", "success_0");
-          paramFromServiceMsg.put("fail_location", "SubBind");
-          awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBGetbindProtol", true, 0L, 0L, paramFromServiceMsg, "");
-          paramFromServiceMsg = (axat)this.app.getManager(61);
-          paramObject = paramFromServiceMsg.a();
-        }
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        localaxau.jdField_a_of_type_Int = 0;
-        localaxau.a(paramToServiceMsg, paramObject);
-        paramObject = localaxau.b();
-        if ((paramObject != null) && (paramObject.size() > 0))
-        {
-          paramToServiceMsg = (axam)this.app.getManager(62);
-          paramObject = paramObject.iterator();
-          if (paramObject.hasNext())
-          {
-            paramToServiceMsg.a((String)paramObject.next(), 1);
-            continue;
-          }
-        }
-        String str;
-        if (localaxau.c())
-        {
-          paramFromServiceMsg.a(localaxau);
-          paramToServiceMsg = localaxau.a();
-          if ((paramToServiceMsg != null) && (paramToServiceMsg.size() > 0))
-          {
-            paramObject = paramToServiceMsg.iterator();
-            if (paramObject.hasNext())
-            {
-              str = (String)paramObject.next();
-              if (QLog.isColorLevel()) {
-                QLog.d("SUB_ACCOUNT", 2, "handlerGetBindSubAccount() hint is new,msg num=1, subUin=" + str);
-              }
-              i = 1 - this.app.a().a(str, 7000);
-              if (i == 0) {
-                continue;
-              }
-              this.app.a().c(str, 7000, i);
-              continue;
-            }
-          }
-          paramObject = localaxau.jdField_a_of_type_JavaUtilArrayList.iterator();
-          i = 1;
-        }
-        try
-        {
-          if (paramObject.hasNext())
-          {
-            str = (String)paramObject.next();
-            bool2 = paramToServiceMsg.contains(str);
-            bool1 = false;
-            localObject = axam.a(this.app, str);
-            if (localObject != null) {
-              bool1 = ((Boolean)((Pair)localObject).second).booleanValue();
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("SUB_ACCOUNT", 2, "handlerGetBindSubAccount() subUin=" + str + " isLogin = " + bool1);
-            }
-            if (bool1) {
-              paramFromServiceMsg.a(str, 1);
-            }
-          }
-        }
-        catch (Exception paramToServiceMsg)
-        {
-          Object localObject;
-          bool1 = true;
-        }
-        try
-        {
-          localObject = axau.a(localaxau);
-          ((axau)localObject).c = str;
-          this.app.getSubAccountKey(this.app.getAccount(), ((axau)localObject).c, new ajsr(this, (axau)localObject, paramFromServiceMsg, bool2));
-          i = 0;
-        }
-        catch (Exception paramToServiceMsg)
-        {
-          i = 0;
-          bool1 = true;
-        }
-        if (paramFromServiceMsg.a(str, 2))
-        {
-          j = 1 - this.app.a().a(str, 7000);
-          if (j != 0)
-          {
-            this.app.a().c(str, 7000, j);
-            this.app.a().a(new String[] { ajed.x, str });
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("SUB_ACCOUNT", 2, "handlerGetBindSubAccount() hint need to verify,msg num=1, subUin=" + str);
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SUB_ACCOUNT", 2, "handlerGetBindSubAccount, has subaccount but islogin is false");
-        }
-        paramFromServiceMsg.a(str, null, bool2);
-        continue;
-        bool1 = true;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("SUB_ACCOUNT", 2, "handlerGetBindSubAccount, not has subaccount");
-        }
-        localaxau.jdField_a_of_type_Int = 1008;
-        axam.a(this.app, "sub.uin.all");
-        i = 1;
-        bool1 = true;
-        continue;
-        localaxau.jdField_a_of_type_Int = 1000;
-        localaxau.jdField_b_of_type_Boolean = true;
-        if (!QLog.isColorLevel()) {
-          break label2128;
-        }
-        QLog.d("SUB_ACCOUNT", 2, "handlerGetBindSubAccount: get main account error rspResult = " + i);
-        break label2128;
-        paramToServiceMsg = new HashMap();
-        paramToServiceMsg.put("param_FailCode", "12010");
-        paramToServiceMsg.put("fail_step", "timeout");
-        paramToServiceMsg.put("fail_location", "SubBind");
-        awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBGetbindProtol", false, 0L, 0L, paramToServiceMsg, "");
-        localaxau.jdField_a_of_type_Int = 1007;
-        if (QLog.isColorLevel()) {
-          QLog.e("SUB_ACCOUNT", 2, "handlerGetBindSubAccount: timeout");
-        }
-        localaxau.jdField_b_of_type_Boolean = true;
-        break label2128;
-        if (i == 2901)
-        {
-          i = paramToServiceMsg.extraData.getInt("fastResendCount", 0);
-          paramToServiceMsg = paramToServiceMsg.extraData.getByteArray("request_ByteArray");
-          paramFromServiceMsg = createToServiceMsg("OidbSvc.0x7a2_0");
-          if (i + 1 < 3)
-          {
-            paramFromServiceMsg.setEnableFastResend(true);
-            paramFromServiceMsg.extraData.putInt("fastResendCount", i + 1);
-            paramFromServiceMsg.extraData.putByteArray("request_ByteArray", paramToServiceMsg);
-          }
-          paramFromServiceMsg.putWupBuffer(paramToServiceMsg);
-          if (QLog.isColorLevel()) {
-            QLog.d("SUB_ACCOUNT", 2, "handlerGetBindSubAccount() result==2901, resend count=" + i + " setFastResend=" + paramFromServiceMsg.isFastResendEnabled());
-          }
-          sendPbReq(paramFromServiceMsg);
-          return;
-        }
-        paramToServiceMsg = new HashMap();
-        paramToServiceMsg.put("param_FailCode", "12012");
-        paramToServiceMsg.put("fail_step", "result_" + i);
-        paramToServiceMsg.put("fail_location", "SubBind");
-        awrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "actSBGetbindProtol", false, 0L, 0L, paramToServiceMsg, "");
-        localaxau.jdField_a_of_type_Int = 1000;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("SUB_ACCOUNT", 2, "handlerGetBindSubAccount: ERRORTYPE_UNKNOW last");
-        continue;
-        break;
-        break;
-        label2103:
-        return;
-        break label844;
-        label2107:
-        j = i;
-        bool2 = bool1;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        i = 1;
-        bool1 = true;
-      }
-      break;
-      label2128:
-      i = 1;
-      bool1 = false;
-      continue;
-      if (i != 1002) {
-        if (i != 1013) {}
-      }
-    }
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SUB_ACCOUNT", 2, "getBindSubAccount: start");
-    }
-    Object localObject1 = new oidb_0x7a2.ReqBody();
-    ((oidb_0x7a2.ReqBody)localObject1).uint32_flag.set(1);
-    Object localObject2 = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(1954);
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_result.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x7a2.ReqBody)localObject1).toByteArray()));
-    localObject1 = ((oidb_sso.OIDBSSOPkg)localObject2).toByteArray();
-    localObject2 = createToServiceMsg("OidbSvc.0x7a2_0");
-    ((ToServiceMsg)localObject2).setEnableFastResend(true);
-    ((ToServiceMsg)localObject2).extraData.putInt("fastResendCount", 0);
-    ((ToServiceMsg)localObject2).extraData.putByteArray("request_ByteArray", (byte[])localObject1);
-    ((ToServiceMsg)localObject2).putWupBuffer((byte[])localObject1);
-    sendPbReq((ToServiceMsg)localObject2);
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SUB_ACCOUNT", 2, "unBindSubAccount: start");
-    }
-    Object localObject1 = new oidb_0x7a1.ReqBody();
-    ((oidb_0x7a1.ReqBody)localObject1).uint32_flag.set(1);
-    Object localObject2 = babp.a();
-    if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-      ((oidb_0x7a1.ReqBody)localObject1).str_imei.set((String)localObject2);
-    }
-    ((oidb_0x7a1.ReqBody)localObject1).uint64_bind_uin.set(Long.parseLong(paramString));
-    ((oidb_0x7a1.ReqBody)localObject1).uint32_clt_appid.set(this.app.getAppid());
-    localObject2 = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(1953);
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_result.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x7a1.ReqBody)localObject1).toByteArray()));
-    localObject1 = createToServiceMsg("OidbSvc.0x7a1_0");
-    ((ToServiceMsg)localObject1).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject2).toByteArray());
-    ((ToServiceMsg)localObject1).extraData.putString("subAccount", paramString);
-    sendPbReq((ToServiceMsg)localObject1);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SUB_ACCOUNT", 2, "bindSubAccount() start");
-    }
-    oidb_0x7a0.LoginSig localLoginSig = new oidb_0x7a0.LoginSig();
-    Object localObject3 = null;
-    Object localObject1 = localObject3;
-    if (paramString2 != null) {}
-    try
-    {
-      localObject1 = bakz.a(paramString2);
-      if (localObject1 != null) {
-        localLoginSig.bytes_sig.set(ByteStringMicro.copyFrom((byte[])localObject1));
-      }
-      localLoginSig.uint32_type.set(8);
-      localLoginSig.uint32_appid.set(16);
-      localObject1 = new oidb_0x7a0.ReqBody();
-      ((oidb_0x7a0.ReqBody)localObject1).uint32_flag.set(1);
-      ((oidb_0x7a0.ReqBody)localObject1).msg_bind_uin_sig.set(localLoginSig);
-      localObject3 = babp.a();
-      if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-        ((oidb_0x7a0.ReqBody)localObject1).str_imei.set((String)localObject3);
-      }
-      ((oidb_0x7a0.ReqBody)localObject1).uint64_bind_uin.set(Long.parseLong(paramString1));
-      ((oidb_0x7a0.ReqBody)localObject1).uint32_clt_appid.set(this.app.getAppid());
-      localObject3 = new oidb_sso.OIDBSSOPkg();
-      ((oidb_sso.OIDBSSOPkg)localObject3).uint32_command.set(1952);
-      ((oidb_sso.OIDBSSOPkg)localObject3).uint32_result.set(0);
-      ((oidb_sso.OIDBSSOPkg)localObject3).uint32_service_type.set(0);
-      ((oidb_sso.OIDBSSOPkg)localObject3).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x7a0.ReqBody)localObject1).toByteArray()));
-      localObject1 = createToServiceMsg("OidbSvc.0x7a0_0");
-      ((ToServiceMsg)localObject1).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject3).toByteArray());
-      ((ToServiceMsg)localObject1).extraData.putString("subAccount", paramString1);
-      ((ToServiceMsg)localObject1).extraData.putString("subaccount_a2", paramString2);
-      if (paramString3 != null) {
-        ((ToServiceMsg)localObject1).extraData.putString("fromWhere", paramString3);
-      }
-      sendPbReq((ToServiceMsg)localObject1);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        Object localObject2 = localObject3;
-      }
-    }
-  }
-  
-  protected Class<? extends ajfe> observerClass()
-  {
-    return ajss.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if ((str == null) || (str.length() == 0)) {}
+    label416:
+    label424:
+    label510:
     do
     {
       return;
-      if ("OidbSvc.0x7a0_0".equalsIgnoreCase(str))
+      f1 = 0.95F;
+      break;
+      l = 50L;
+      break label131;
+      if (this.d == 1L)
       {
-        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
+        MemoryManager.a().a(1L);
+        MemoryManager.a().a("BG_GUARD");
+        break label250;
       }
-      if ("OidbSvc.0x7a1_0".equalsIgnoreCase(str))
+      if ((this.d != 3L) && (this.d != 4L)) {
+        break label250;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(false, new String[] { "com.tencent.mobileqq:qzone", "com.tencent.mobileqq:mini", "com.tencent.mobileqq:tool", this.jdField_a_of_type_JavaLangString });
+      break label250;
+      if ((this.d == GuardManager.e) || (this.d == GuardManager.e + 1))
       {
-        b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
+        if (!"com.tencent.mobileqq:qzone".equals(this.jdField_a_of_type_JavaLangString)) {
+          this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(false, "com.tencent.mobileqq:qzone");
+        }
+        GuardManager.b(false);
       }
-    } while (!"OidbSvc.0x7a2_0".equalsIgnoreCase(str));
-    try
-    {
-      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      return;
+    } while (((this.d != GuardManager.d) && (this.d != GuardManager.d + 1)) || ("com.tencent.mobileqq:tool".equals(this.jdField_a_of_type_JavaLangString)));
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(false, "com.tencent.mobileqq:tool");
+  }
+  
+  protected void a(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(3, paramString);
+    if ("com.tencent.mobileqq".equals(paramString)) {
+      altu.a();
     }
-    catch (VerifyError paramToServiceMsg)
-    {
-      QLog.e("SUB_ACCOUNT", 2, "handlerGetBindSubAccount VerifyError: " + paramToServiceMsg.getMessage());
+  }
+  
+  protected void b()
+  {
+    if (this.c > 2L) {
+      this.c -= 2L;
+    }
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if ("fake_p_msg".equals(paramString)) {
+      this.c = (ajxz.a().a(this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Array2dOfLong, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b, MemoryManager.a(Process.myPid())) / 12000L - 2L);
+    }
+    CoreService.startCoreService(ajxz.a().a);
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b();
+    amae.a();
+    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(1, 0L, 0L);
+    if ("com.tencent.mobileqq".equals(paramString)) {
+      altu.b();
     }
   }
 }

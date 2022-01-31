@@ -1,33 +1,15 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class aamp
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public aamp(Conversation paramConversation) {}
+  public aamp(BaseChatPie paramBaseChatPie) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel())
-    {
-      paramView = new StringBuilder().append("statusTitle onTouch event :").append(paramMotionEvent.toString()).append(", mGestureDetector is null ");
-      if (this.a.a == null) {
-        break label81;
-      }
-    }
-    label81:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("Q.recent", 2, bool);
-      if (this.a.a != null) {
-        this.a.a.onTouchEvent(paramMotionEvent);
-      }
-      return true;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

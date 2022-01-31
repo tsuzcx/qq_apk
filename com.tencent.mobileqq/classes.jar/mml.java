@@ -1,85 +1,126 @@
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import com.tencent.biz.ProtoUtils.StoryProtocolObserver.1;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
+import java.util.List;
 
-public abstract class mml
-  implements BusinessObserver
+public class mml
 {
-  public final long a;
-  public WeakReference<QQAppInterface> a;
-  public boolean a;
+  public static final Object a;
+  private static mml jdField_b_of_type_Mml;
+  private static int jdField_c_of_type_Int;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private ayki jdField_a_of_type_Ayki;
+  private String jdField_a_of_type_JavaLangString;
+  private mml jdField_a_of_type_Mml;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private String jdField_c_of_type_JavaLangString;
+  private String d;
+  private String e;
   
-  public mml()
+  static
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    jdField_a_of_type_JavaLangObject = new Object();
   }
   
-  private void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static mml a()
   {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    String str = paramBundle.getString("cmd");
-    if (paramBoolean)
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      localObject = paramBundle.getByteArray("data");
-      if ((localObject != null) && (localObject.length > 0))
+      if (jdField_b_of_type_Mml != null)
       {
-        paramBundle = a(0, (byte[])localObject, paramBundle);
-        if (paramBundle != null)
-        {
-          paramInt = paramBundle.error_code.get();
-          paramBundle = paramBundle.error_desc.get().toStringUtf8();
-          if (paramInt == 0) {
-            urk.a("Q.qqstory.net:StoryProtocolObserver", "get cmd:%s success take time:%d data length=%d", str, Long.valueOf(l), Integer.valueOf(localObject.length));
-          }
-          for (;;)
-          {
-            urp.b("story_net", str, 0, paramInt, new String[] { paramBundle, String.valueOf(l), urp.a(BaseApplication.getContext()) });
-            return;
-            urk.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:%s error:%d msg:%s take time:%d data length%d", new Object[] { str, Integer.valueOf(paramInt), paramBundle, Long.valueOf(l), Integer.valueOf(localObject.length) });
-          }
-        }
-        urk.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:%s error. response is null", new Object[] { str });
-        urp.b("story_net", str, 0, 940002, new String[] { "response is null", String.valueOf(l), urp.a(BaseApplication.getContext()) });
-        return;
+        mml localmml = jdField_b_of_type_Mml;
+        jdField_b_of_type_Mml = localmml.jdField_a_of_type_Mml;
+        localmml.jdField_a_of_type_Mml = null;
+        jdField_c_of_type_Int -= 1;
+        return localmml;
       }
-      a(-1, null, paramBundle);
-      urk.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:" + str + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
-      urp.b("story_net", str, 0, 940002, new String[] { "rsp data error", String.valueOf(l), urp.a(BaseApplication.getContext()) });
-      return;
+      return new mml();
     }
-    paramInt = paramBundle.getInt("data_error_code");
-    Object localObject = paramBundle.getString("data_error_msg");
-    a(paramInt, null, paramBundle);
-    urk.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:" + str + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
-    urp.b("story_net", str, 0, paramInt, new String[] { localObject, String.valueOf(l), urp.a(BaseApplication.getContext()) });
   }
   
-  public abstract qqstory_struct.ErrorInfo a(int paramInt, @Nullable byte[] paramArrayOfByte, Bundle paramBundle);
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static void a(List<mml> paramList)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    for (;;)
     {
-      a(paramInt, paramBoolean, paramBundle);
+      return;
+      int i = paramList.size() - 1;
+      while (i >= 0)
+      {
+        mml localmml = (mml)paramList.remove(i);
+        if (localmml != null) {
+          localmml.a();
+        }
+        i -= 1;
+      }
+    }
+  }
+  
+  public CharSequence a()
+  {
+    return this.jdField_a_of_type_Ayki;
+  }
+  
+  public String a()
+  {
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Ayki = null;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.d = null;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.e = null;
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_c_of_type_Int < 200)
+      {
+        this.jdField_a_of_type_Mml = jdField_b_of_type_Mml;
+        jdField_b_of_type_Mml = this;
+        jdField_c_of_type_Int += 1;
+      }
       return;
     }
-    ThreadManager.post(new ProtoUtils.StoryProtocolObserver.1(this, paramInt, paramBoolean, paramBundle), 5, null, false);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Ayki = lkx.a(paramString, 16);
+  }
+  
+  public String b()
+  {
+    return this.e;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+  }
+  
+  public void c(String paramString)
+  {
+    this.e = paramString;
+  }
+  
+  public String toString()
+  {
+    return "VideoChatMessage{type=" + this.jdField_a_of_type_Int + ", content='" + this.jdField_a_of_type_Ayki + '\'' + ", filepath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", sendState=" + this.jdField_b_of_type_Int + ", time='" + this.jdField_b_of_type_JavaLangString + '\'' + ", header='" + this.jdField_c_of_type_JavaLangString + '\'' + ", imageUrl='" + this.d + '\'' + ", voiceTime=" + this.jdField_a_of_type_Long + ", msgId='" + this.e + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mml
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,83 @@
-import cooperation.vip.jsoninflate.model.AlumBasicData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QavImageData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
 
 public class anpv
+  extends anpi
 {
-  public static final int FOOTER_TYPE_LOADING = 0;
-  public static final int FOOTER_TYPE_LOAD_FAIL = 1;
-  public static final int FOOTER_TYPE_LOAD_OVER = 2;
-  public static final int TYPE_EMTPY = 2;
-  public static final int TYPE_FEED = 0;
-  public static final int TYPE_FEED_ADV = 4;
-  public static final int TYPE_FEED_BANNER = 6;
-  public static final int TYPE_FOOTER = 1;
-  public static final int TYPE_MATCH = 3;
-  public static final int TYPE_MINI_RECOMM = 5;
-  public boolean mAddFriendVerified;
-  public AlumBasicData mAlumbasicdata;
-  public int mAvailLikeCount;
-  public boolean mBigVipHide;
-  public int mBigVipLevel;
-  public String mDeclaration;
-  public int mFooterType;
-  public int mGender;
-  public boolean mIsMyFeed;
-  public boolean mLiked;
-  public String mNickName;
-  public int mPopularity;
-  public String mStrRecomTrace;
-  public int mTemplateId;
-  public int mType;
-  public String mUin;
-  public boolean mVipHide;
-  public int mVipLevel;
-  public int mVipType;
-  public int mVoiceDuration;
-  public String mVoiceUrl;
-  public boolean mbAllowStrangerVote;
+  QQAppInterface b = null;
   
-  public boolean equals(Object paramObject)
+  public anpv(QQAppInterface paramQQAppInterface)
   {
-    return (paramObject != null) && ((paramObject instanceof anpv)) && (azzz.a(((anpv)paramObject).mUin, this.mUin));
+    super("qq.android.qav.image2", paramQQAppInterface);
+    this.b = paramQQAppInterface;
+  }
+  
+  public int a()
+  {
+    return 10047;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return QavImageData.class;
+  }
+  
+  public String a()
+  {
+    return "qavDownloadImageDuration";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavImageHandler", 2, "download success: " + paramString);
+    }
+    try
+    {
+      bbdj.a(paramString, mrv.b(), false);
+      super.a(paramString);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    QavImageData localQavImageData = (QavImageData)a();
+    if ((localQavImageData != null) && (!localQavImageData.autoDownload))
+    {
+      localQavImageData.autoDownload = true;
+      anow.a(localQavImageData, new String[] { "autoDownload" });
+    }
+    super.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean h()
+  {
+    return ((QavImageData)a()).autoDownload;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     anpv
  * JD-Core Version:    0.7.0.1
  */

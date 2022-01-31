@@ -1,29 +1,35 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment.7;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class bjea
-  implements DialogInterface.OnClickListener
+  implements bjdz
 {
-  public bjea(CaptureQmcfSoDownloadFragment.7 param7) {}
+  private float jdField_a_of_type_Float;
+  private File jdField_a_of_type_JavaIoFile;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface = this.a.this$0.getActivity();
-    if (paramInt == 1)
+    if ((this.jdField_a_of_type_JavaIoFile == null) || (!this.jdField_a_of_type_JavaIoFile.exists()))
     {
-      CaptureQmcfSoDownloadFragment.a(this.a.this$0).setCameraPermissionResult(false);
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", paramDialogInterface.getPackageName(), null));
-      paramDialogInterface.startActivity(localIntent);
+      if (QLog.isColorLevel()) {
+        QLog.i("OriginalBgmRecognizer", 2, "recognize: invoked. info: audioFile not exist. mTargetAudioFile = " + this.jdField_a_of_type_JavaIoFile);
+      }
       return;
     }
-    paramDialogInterface.finish();
+    bjed localbjed = (bjed)bjae.a().c(10);
+    localbjed.a(this.jdField_a_of_type_Float);
+    localbjed.a(this.jdField_a_of_type_JavaIoFile);
+    localbjed.c();
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(File paramFile)
+  {
+    this.jdField_a_of_type_JavaIoFile = paramFile;
   }
 }
 

@@ -1,10 +1,10 @@
 package com.etrump.mixlayout;
 
-import bajo;
+import bbkv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import eipc.EIPCResult;
-import gf;
+import hy;
 import java.io.File;
 import java.util.Vector;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -12,12 +12,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class VasFontIPCModule$1
   implements Runnable
 {
-  public VasFontIPCModule$1(gf paramgf, int paramInt, QQAppInterface paramQQAppInterface) {}
+  public VasFontIPCModule$1(hy paramhy, int paramInt, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     Object localObject;
-    if (new File(bajo.a() + "libvipfont808.so").exists())
+    if (new File(bbkv.a() + "libvipfont808.so").exists())
     {
       localObject = EIPCResult.createResult(0, null);
       this.this$0.callbackResult(this.jdField_a_of_type_Int, (EIPCResult)localObject);
@@ -27,11 +27,11 @@ public class VasFontIPCModule$1
       do
       {
         return;
-        gf.a(this.this$0).add(Integer.valueOf(this.jdField_a_of_type_Int));
-      } while (!gf.a(this.this$0).compareAndSet(false, true));
+        hy.a(this.this$0).add(Integer.valueOf(this.jdField_a_of_type_Int));
+      } while (!hy.a(this.this$0).compareAndSet(false, true));
       localObject = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(184);
     } while (localObject == null);
-    ((VasQuickUpdateManager)localObject).downloadItem(1004L, "libVipFont_808", "VasFontIPCModule");
+    ((VasQuickUpdateManager)localObject).downloadItem(1004L, VasQuickUpdateManager.SCID_HYFONT_SO, "VasFontIPCModule");
   }
 }
 

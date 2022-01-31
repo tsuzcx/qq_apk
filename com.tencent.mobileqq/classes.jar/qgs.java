@@ -1,12 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.Spanned;
+import java.util.Comparator;
 
-class qgs
-  implements DialogInterface.OnClickListener
+public class qgs
+  implements Comparator<Object>
 {
-  qgs(qgq paramqgq) {}
+  private Spanned a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public qgs(Spanned paramSpanned)
+  {
+    this.a = paramSpanned;
+  }
+  
+  public int compare(Object paramObject1, Object paramObject2)
+  {
+    int i = this.a.getSpanStart(paramObject1);
+    int j = this.a.getSpanStart(paramObject2);
+    if (i > j) {
+      return 1;
+    }
+    if (i < j) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

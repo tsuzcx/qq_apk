@@ -1,14 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class aggo
-  implements DialogInterface.OnClickListener
+public class aggo
 {
-  aggo(aggm paramaggm, Runnable paramRunnable) {}
+  public String a;
+  private String b;
+  private String c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aggo(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    this.b = paramString1;
+    this.c = paramString2;
+  }
+  
+  public String a()
+  {
+    return this.b;
+  }
+  
+  public String b()
+  {
+    return this.c;
   }
 }
 

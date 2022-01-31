@@ -1,52 +1,44 @@
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.BiuObserver.1;
 import com.tencent.mobileqq.app.ThreadManager;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
-class sgg
-  implements Executor
+public class sgg
+  extends osp
 {
-  private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private final Queue<Runnable> jdField_a_of_type_JavaUtilQueue;
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private int b;
+  final int jdField_a_of_type_Int;
+  final String jdField_a_of_type_JavaLangString;
   
-  private sgg(@NonNull String paramString, int paramInt1, @IntRange(from=0L) int paramInt2)
+  public sgg(sfn paramsfn, String paramString, int paramInt)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void execute(@NonNull Runnable paramRunnable)
+  public void a(long paramLong, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilQueue.offer(paramRunnable);
-    int i = this.jdField_a_of_type_JavaUtilQueue.size();
-    if (i > Runtime.getRuntime().availableProcessors()) {
-      urk.b(this.jdField_a_of_type_JavaLangString, "too many runnable remained in the queue, size " + i);
-    }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= this.jdField_a_of_type_Int)
+    super.a(paramLong, paramInt, paramString);
+    QLog.d("PublicAccountH5AbilityPlugin", 2, "[onBiuResult] " + paramLong + " " + paramInt + " errorMsg");
+    try
     {
-      urk.b(this.jdField_a_of_type_JavaLangString, "current number of task threshold is " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-      while (!this.jdField_a_of_type_JavaUtilQueue.isEmpty())
-      {
-        paramRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
-        if (paramRunnable != null) {
-          ThreadManager.excute(paramRunnable, this.b, new sgh(this, paramRunnable), false);
-        }
-      }
+      paramString = new JSONObject();
+      paramString.put("feedsId", String.valueOf(paramLong));
+      paramString.put("retCode", paramInt);
+      paramString.put("feedsType", this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Sfn.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      ThreadManager.getUIHandler().post(new PublicAccountH5AbilityPlugin.BiuObserver.1(this));
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("PublicAccountH5AbilityPlugin", 1, "[onBiuResult] ", paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sgg
  * JD-Core Version:    0.7.0.1
  */

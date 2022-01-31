@@ -3,9 +3,9 @@ package cooperation.qqindividuality;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
-import awqx;
-import beez;
-import bfcz;
+import axqw;
+import bfmt;
+import bgkq;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
@@ -15,8 +15,8 @@ public abstract class QQIndividualityBaseBridgeActivity
   extends IphoneTitleBarActivity
   implements Handler.Callback
 {
-  protected beez a;
-  protected bfcz a;
+  protected bfmt a;
+  protected bgkq a;
   
   public abstract void a();
   
@@ -27,7 +27,7 @@ public abstract class QQIndividualityBaseBridgeActivity
       if (QLog.isColorLevel()) {
         QLog.d("QQIndividuality", 2, "handlePluginInfo null == pluginInfo");
       }
-      this.jdField_a_of_type_Beez.sendEmptyMessageDelayed(1000, 200L);
+      this.jdField_a_of_type_Bfmt.sendEmptyMessageDelayed(1000, 200L);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -39,17 +39,17 @@ public abstract class QQIndividualityBaseBridgeActivity
     default: 
       return;
     case -2: 
-      this.jdField_a_of_type_Beez.sendEmptyMessage(1001);
+      this.jdField_a_of_type_Bfmt.sendEmptyMessage(1001);
       return;
     case 0: 
-      this.jdField_a_of_type_Bfcz.a("qqindividuality_plugin.apk");
-      this.jdField_a_of_type_Beez.sendEmptyMessageDelayed(1000, 200L);
+      this.jdField_a_of_type_Bgkq.a("qqindividuality_plugin.apk");
+      this.jdField_a_of_type_Bfmt.sendEmptyMessageDelayed(1000, 200L);
     case 1: 
     case 2: 
-      this.jdField_a_of_type_Beez.sendEmptyMessageDelayed(1000, 200L);
+      this.jdField_a_of_type_Bfmt.sendEmptyMessageDelayed(1000, 200L);
       return;
     case 3: 
-      this.jdField_a_of_type_Beez.sendEmptyMessageDelayed(1000, 200L);
+      this.jdField_a_of_type_Bfmt.sendEmptyMessageDelayed(1000, 200L);
       return;
     }
     b();
@@ -60,20 +60,20 @@ public abstract class QQIndividualityBaseBridgeActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Beez = new beez(this);
-    this.jdField_a_of_type_Bfcz = ((bfcz)this.app.getManager(27));
-    this.jdField_a_of_type_Beez.postDelayed(new QQIndividualityBaseBridgeActivity.1(this), 300L);
+    this.jdField_a_of_type_Bfmt = new bfmt(this);
+    this.jdField_a_of_type_Bgkq = ((bgkq)this.app.getManager(27));
+    this.jdField_a_of_type_Bfmt.postDelayed(new QQIndividualityBaseBridgeActivity.1(this), 300L);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Beez != null)
+    if (this.jdField_a_of_type_Bfmt != null)
     {
-      this.jdField_a_of_type_Beez.removeMessages(1000);
-      this.jdField_a_of_type_Beez.removeMessages(200);
-      this.jdField_a_of_type_Beez.removeMessages(1001);
+      this.jdField_a_of_type_Bfmt.removeMessages(1000);
+      this.jdField_a_of_type_Bfmt.removeMessages(200);
+      this.jdField_a_of_type_Bfmt.removeMessages(1001);
     }
   }
   
@@ -87,10 +87,10 @@ public abstract class QQIndividualityBaseBridgeActivity
       return true;
       if (!isFinishing())
       {
-        a("qqindividuality_plugin.apk", this.jdField_a_of_type_Bfcz.a("qqindividuality_plugin.apk"));
+        a("qqindividuality_plugin.apk", this.jdField_a_of_type_Bgkq.a("qqindividuality_plugin.apk"));
         continue;
         QLog.e("QQIndividuality", 2, "install plugin action error");
-        awqx.b(null, "CliOper", "", "", "ep_mall", "0X8006A99", 0, 0, "", "", "", "");
+        axqw.b(null, "CliOper", "", "", "ep_mall", "0X8006A99", 0, 0, "", "", "", "");
       }
     }
   }

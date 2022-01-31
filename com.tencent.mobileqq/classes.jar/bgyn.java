@@ -1,14 +1,22 @@
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
 
-public abstract interface bgyn
+public class bgyn
+  implements View.OnClickListener
 {
-  public abstract void a(VideoMaterial paramVideoMaterial);
+  public bgyn(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public void onClick(View paramView)
+  {
+    this.a.a = true;
+    this.a.d();
+    this.a.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgyn
  * JD-Core Version:    0.7.0.1
  */

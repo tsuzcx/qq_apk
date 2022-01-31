@@ -1,18 +1,19 @@
-import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
 
-public abstract interface apet
+public final class apet
+  implements Parcelable.Creator<OfflineFileInfo>
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  public OfflineFileInfo a(Parcel paramParcel)
+  {
+    return new OfflineFileInfo(paramParcel);
+  }
   
-  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
-  
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract void a(String paramString, Bundle paramBundle);
-  
-  public abstract void b(Bundle paramBundle);
-  
-  public abstract void c(Bundle paramBundle);
+  public OfflineFileInfo[] a(int paramInt)
+  {
+    return new OfflineFileInfo[paramInt];
+  }
 }
 
 

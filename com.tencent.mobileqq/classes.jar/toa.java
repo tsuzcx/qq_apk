@@ -1,49 +1,31 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class toa
-  extends tjt
+  extends syq
 {
-  public final ErrorMessage a;
-  public final boolean a;
-  public final String b;
+  public List<QQUserUIItem> a = new ArrayList();
   
-  public toa(@NonNull ErrorMessage paramErrorMessage, boolean paramBoolean)
+  public toa(qqstory_service.RspConvertUinAndUnionId paramRspConvertUinAndUnionId)
   {
-    super(new tjs("ERROR_" + paramErrorMessage));
-    this.b = null;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add("ERROR");
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilMap.put("ERROR", "ERROR");
-  }
-  
-  public toa(@NonNull String paramString, boolean paramBoolean)
-  {
-    super(new tjs("LOADING_" + paramString));
-    this.b = paramString;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = null;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add("LOADING");
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilMap.put("LOADING", "LOADING");
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null;
-  }
-  
-  public boolean c()
-  {
-    return this.b != null;
+    super(paramRspConvertUinAndUnionId.result);
+    paramRspConvertUinAndUnionId = paramRspConvertUinAndUnionId.user_list.get();
+    if (paramRspConvertUinAndUnionId != null)
+    {
+      paramRspConvertUinAndUnionId = paramRspConvertUinAndUnionId.iterator();
+      while (paramRspConvertUinAndUnionId.hasNext())
+      {
+        qqstory_struct.UserInfo localUserInfo = (qqstory_struct.UserInfo)paramRspConvertUinAndUnionId.next();
+        QQUserUIItem localQQUserUIItem = new QQUserUIItem();
+        localQQUserUIItem.convertFrom(localUserInfo);
+        this.a.add(localQQUserUIItem);
+      }
+    }
   }
 }
 

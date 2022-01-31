@@ -1,23 +1,25 @@
-import com.tencent.widget.AbsListView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class aica
-  implements begh
+  implements View.OnTouchListener
 {
-  aica(aibw paramaibw) {}
+  aica(aibz paramaibz) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramInt != 0) {
-      return;
+    if (paramMotionEvent.getAction() == 0)
+    {
+      aibz.a(this.a).x = ((int)paramMotionEvent.getRawX());
+      aibz.a(this.a).y = ((int)paramMotionEvent.getRawY());
     }
-    this.a.d();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aica
  * JD-Core Version:    0.7.0.1
  */

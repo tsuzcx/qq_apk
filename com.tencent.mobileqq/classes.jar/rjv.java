@@ -1,48 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.viola.adapter.IBridgeAdapter;
-import com.tencent.viola.adapter.IBridgeAdapter.OnInovkeCallback;
-import com.tencent.viola.core.ViolaInstance;
-import java.util.ArrayList;
+import android.view.View;
 
-public class rjv
-  implements IBridgeAdapter
+public abstract interface rjv
 {
-  public rjv()
-  {
-    registerModuleFunction();
-  }
-  
-  public ArrayList<String> getAdapterUnRegisterFunction()
-  {
-    return null;
-  }
-  
-  public void registerModuleFunction() {}
-  
-  public void titleUiInvoke(String paramString, Object paramObject, IBridgeAdapter.OnInovkeCallback paramOnInovkeCallback, ViolaInstance paramViolaInstance)
-  {
-    if (paramViolaInstance == null) {
-      break label5;
-    }
-    for (;;)
-    {
-      label5:
-      return;
-      if (("change_title_transparent".equals(paramString)) && ((paramObject instanceof Boolean)))
-      {
-        paramString = paramViolaInstance.getFragment();
-        if (paramString == null) {
-          break;
-        }
-        if ((paramString instanceof ViolaFragment)) {}
-        for (paramString = ((ViolaFragment)paramString).a(); paramString != null; paramString = null)
-        {
-          paramString.a(((Boolean)paramObject).booleanValue());
-          return;
-        }
-      }
-    }
-  }
+  public abstract void a(int paramInt, View paramView);
 }
 
 

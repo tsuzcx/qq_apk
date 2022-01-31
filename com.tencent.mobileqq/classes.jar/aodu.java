@@ -1,21 +1,14 @@
-class aodu
-  extends aoft
+import com.tencent.mobileqq.data.MessageForPic;
+
+public abstract interface aodu
 {
-  aodu(aodq paramaodq, aodv paramaodv) {}
+  public abstract void a(int paramInt, MessageForPic paramMessageForPic);
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Aodv.a(paramString2);
-      return;
-    }
-    this.jdField_a_of_type_Aodv.a(paramInt, paramString1);
-  }
+  public abstract void a(boolean paramBoolean, MessageForPic paramMessageForPic);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aodu
  * JD-Core Version:    0.7.0.1
  */

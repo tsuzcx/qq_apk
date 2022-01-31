@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.view;
 
-import aify;
+import aisr;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.BaseChatPie;

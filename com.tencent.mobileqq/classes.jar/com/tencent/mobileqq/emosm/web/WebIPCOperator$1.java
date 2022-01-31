@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emosm.web;
 
-import anfc;
-import anfe;
+import anvl;
+import anvn;
 
 public class WebIPCOperator$1
   implements Runnable
 {
-  public WebIPCOperator$1(anfc paramanfc, anfe paramanfe) {}
+  public WebIPCOperator$1(anvl paramanvl, anvn paramanvn) {}
   
   public void run()
   {

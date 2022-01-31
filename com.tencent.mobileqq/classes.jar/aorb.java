@@ -1,68 +1,25 @@
-import android.app.Activity;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
 public class aorb
+  implements Cloneable
 {
-  public static View.OnClickListener a(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString)
-  {
-    return new aorf(paramActivity, paramFileManagerEntity, paramString);
-  }
+  public int a;
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public Object a;
+  public int b;
+  public TextView b;
+  public int c;
+  public TextView c;
   
-  public static View.OnClickListener a(Activity paramActivity, String paramString)
-  {
-    return new aorl(paramActivity, paramString);
-  }
-  
-  public static View.OnClickListener a(aotc paramaotc, FileManagerEntity paramFileManagerEntity)
-  {
-    return new aorh(paramFileManagerEntity, paramaotc);
-  }
-  
-  public static View.OnClickListener a(aotc paramaotc, FileManagerEntity paramFileManagerEntity, Activity paramActivity)
-  {
-    return new aori(paramFileManagerEntity, paramActivity, paramaotc);
-  }
-  
-  public static View.OnClickListener a(aotc paramaotc, String paramString)
-  {
-    return new aorc(paramString, paramaotc);
-  }
-  
-  public static View.OnClickListener a(FileManagerEntity paramFileManagerEntity, Activity paramActivity)
-  {
-    return a(paramFileManagerEntity, paramActivity, false);
-  }
-  
-  public static View.OnClickListener a(FileManagerEntity paramFileManagerEntity, Activity paramActivity, boolean paramBoolean)
-  {
-    return new aoro(paramFileManagerEntity, paramActivity, paramBoolean);
-  }
-  
-  public static View.OnClickListener b(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString)
-  {
-    return new aorg(paramActivity, paramFileManagerEntity, paramString);
-  }
-  
-  public static View.OnClickListener b(aotc paramaotc, FileManagerEntity paramFileManagerEntity)
-  {
-    return new aorj(paramFileManagerEntity, paramaotc);
-  }
-  
-  public static View.OnClickListener b(aotc paramaotc, String paramString)
-  {
-    return new aork(paramString, paramaotc);
-  }
-  
-  public static View.OnClickListener c(aotc paramaotc, FileManagerEntity paramFileManagerEntity)
-  {
-    return new aorm(paramaotc, paramFileManagerEntity);
-  }
-  
-  public static View.OnClickListener d(aotc paramaotc, FileManagerEntity paramFileManagerEntity)
-  {
-    return new aorn(paramaotc, paramFileManagerEntity);
-  }
+  public aorb(aora paramaora) {}
 }
 
 

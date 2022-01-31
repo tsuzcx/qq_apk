@@ -5,66 +5,66 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import qhp;
-import qji;
+import qtu;
+import qvn;
 
 public class VideoVolumeControl$1
   implements Runnable
 {
-  public VideoVolumeControl$1(qji paramqji) {}
+  public VideoVolumeControl$1(qvn paramqvn) {}
   
   public void run()
   {
-    if (qji.a(this.this$0)) {
-      if (qji.a(this.this$0) != null)
+    if (qvn.a(this.this$0)) {
+      if (qvn.a(this.this$0) != null)
       {
-        qji.a(this.this$0).requestAudioFocus(null, 3, 2);
+        qvn.a(this.this$0).requestAudioFocus(null, 3, 2);
         break label71;
       }
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "mRequestOrAbandonAudioFocusCallBack isFocusAudio:" + qji.a(this.this$0));
+        QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "mRequestOrAbandonAudioFocusCallBack isFocusAudio:" + qvn.a(this.this$0));
       }
       label71:
       return;
-      if (qji.a(this.this$0) != null)
+      if (qvn.a(this.this$0) != null)
       {
-        Iterator localIterator = qji.a(this.this$0).keySet().iterator();
+        Iterator localIterator = qvn.a(this.this$0).keySet().iterator();
         Object localObject;
         for (;;)
         {
           if (localIterator.hasNext())
           {
-            localObject = (qhp)localIterator.next();
-            if ((localObject != null) && (((qhp)localObject).a()))
+            localObject = (qtu)localIterator.next();
+            if ((localObject != null) && (((qtu)localObject).b()) && (!((qtu)localObject).a()))
             {
               if (!QLog.isColorLevel()) {
                 break;
               }
-              QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "checkPlayState  IsPlaying When abandonAudioFocus:" + localObject);
+              QLog.w("Q.readinjoy.video.VideoVolumeControl", 2, "checkPlayState  IsPlaying & not Mute When abandonAudioFocus:" + localObject);
               return;
             }
           }
         }
-        localIterator = qji.b(this.this$0).keySet().iterator();
+        localIterator = qvn.b(this.this$0).keySet().iterator();
         for (;;)
         {
           if (localIterator.hasNext())
           {
             localObject = (VideoFeedsPlayManager)localIterator.next();
-            if ((localObject != null) && (((VideoFeedsPlayManager)localObject).c()))
+            if ((localObject != null) && (((VideoFeedsPlayManager)localObject).d()) && (!((VideoFeedsPlayManager)localObject).c()))
             {
               if (!QLog.isColorLevel()) {
                 break;
               }
-              QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "checkPlayState  IsPlaying When abandonAudioFocus:" + localObject);
+              QLog.w("Q.readinjoy.video.VideoVolumeControl", 2, "checkPlayState  IsPlaying & not Mute When abandonAudioFocus:" + localObject);
               return;
             }
           }
         }
-        qji.a(this.this$0).abandonAudioFocus(null);
+        qvn.a(this.this$0).abandonAudioFocus(null);
       }
     }
   }

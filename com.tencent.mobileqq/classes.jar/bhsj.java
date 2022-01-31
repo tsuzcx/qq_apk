@@ -1,139 +1,354 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import android.graphics.Typeface;
-import android.text.TextPaint;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.webviewplugin.QzoneRecommedPhotoJsPlugin.1;
+import cooperation.qzone.webviewplugin.QzoneRecommedPhotoJsPlugin.2;
+import cooperation.qzone.webviewplugin.QzoneRecommedPhotoJsPlugin.3;
+import cooperation.qzone.webviewplugin.QzoneRecommedPhotoJsPlugin.4;
+import cooperation.qzone.webviewplugin.QzoneRecommedPhotoJsPlugin.5;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bhsj
+  extends bhrq
+  implements bhko
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private String jdField_a_of_type_JavaLangString = "";
-  private int jdField_b_of_type_Int;
-  private TextPaint jdField_b_of_type_AndroidTextTextPaint = new TextPaint();
-  private int c;
+  private ConcurrentHashMap<String, String> a;
   
-  public bhsj(int paramInt1, int paramInt2)
+  public bhsj()
   {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  private void a(Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, Paint paramPaint)
+  private Bundle a(Bundle paramBundle, String paramString)
   {
-    paramCanvas.drawText(paramString, paramFloat1, paramFloat2, paramPaint);
-  }
-  
-  private void a(String paramString, Paint paramPaint, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Rect localRect = new Rect();
-    paramPaint.getTextBounds(paramString, 0, paramString.length(), localRect);
-    while ((localRect.width() + paramInt3 > paramInt1 * 0.8F) || (localRect.height() + paramInt3 > paramInt2 * 0.8F))
-    {
-      paramPaint.setTextSize(paramPaint.getTextSize() - 2.0F);
-      paramPaint.getTextBounds(paramString, 0, paramString.length(), localRect);
-    }
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public void a()
-  {
-    Typeface localTypeface = bhct.a().a("zaozigongfangsubai.ttf");
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
-    this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString.trim();
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.eraseColor(0);
-    }
-  }
-  
-  public void b()
-  {
-    a();
-    this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_AndroidTextTextPaint.getTextSize());
-    this.jdField_b_of_type_AndroidTextTextPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidTextTextPaint.setStrokeWidth(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.getTextBounds(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsRect);
-    float f1 = this.jdField_a_of_type_AndroidGraphicsRect.height();
-    int i = this.jdField_a_of_type_JavaLangString.indexOf("\r\n");
-    float f2;
-    if (i < 0)
-    {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        return;
+    if (paramBundle.containsKey("data")) {
+      try
+      {
+        paramBundle = paramBundle.getBundle("data");
+        if (paramBundle == null) {
+          QLog.e("QzoneRecommedPhotoJsPlugin", 1, "call js function,bundle is empty");
+        }
+        return paramBundle;
       }
-      a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_AndroidTextTextPaint, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_b_of_type_AndroidTextTextPaint.getTextSize());
-      f2 = f1 / 2.0F + (Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.ascent()) - this.jdField_a_of_type_AndroidTextTextPaint.descent()) / 2.0F;
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_a_of_type_JavaLangString, (this.jdField_b_of_type_Int - this.jdField_b_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangString)) / 2.0F, (this.c - f1) / 2.0F + f2, this.jdField_b_of_type_AndroidTextTextPaint);
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_a_of_type_JavaLangString, (this.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangString)) / 2.0F, (this.c - f1) / 2.0F + f2, this.jdField_a_of_type_AndroidTextTextPaint);
+      catch (Exception paramBundle)
+      {
+        QLog.w("QzoneRecommedPhotoJsPlugin", 1, "onWebEvent error", paramBundle);
+        i(paramString);
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidGraphicsCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidTextTextPaint);
+      return null;
+      i(paramString);
+    }
+  }
+  
+  private String a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return bhrl.a(paramString, 200, 200, true);
+    }
+    return "";
+  }
+  
+  private void a(String paramString)
+  {
+    a("cmd.getEventVideoAlbumState", paramString, new QzoneRecommedPhotoJsPlugin.1(this), true);
+  }
+  
+  private void a(String paramString, Bundle paramBundle, bhsn parambhsn)
+  {
+    Bundle localBundle;
+    if ((paramBundle != null) && (parambhsn != null))
+    {
+      localBundle = a(paramBundle, paramString);
+      if (localBundle != null) {
+        paramBundle = new JSONObject();
+      }
+    }
+    try
+    {
+      parambhsn.a(paramBundle, localBundle);
+      if (paramString != null) {
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramString, new String[] { paramBundle.toString() });
+      }
       return;
-      String str1 = this.jdField_a_of_type_JavaLangString.substring(0, i);
-      String str2 = this.jdField_a_of_type_JavaLangString.substring("\r\n".length() + i);
-      a(str1, this.jdField_b_of_type_AndroidTextTextPaint, this.jdField_b_of_type_Int, this.c / 2, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_b_of_type_AndroidTextTextPaint.getTextSize());
-      f2 = f1 / 2.0F + (Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.ascent()) - this.jdField_a_of_type_AndroidTextTextPaint.descent()) / 2.0F;
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, str1, (this.jdField_b_of_type_Int - this.jdField_b_of_type_AndroidTextTextPaint.measureText(str1)) / 2.0F, this.c * 0.25F - f1 / 2.0F + f2, this.jdField_b_of_type_AndroidTextTextPaint);
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, str1, (this.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidTextTextPaint.measureText(str1)) / 2.0F, this.c * 0.25F - f1 / 2.0F + f2, this.jdField_a_of_type_AndroidTextTextPaint);
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, str2, (this.jdField_b_of_type_Int - this.jdField_b_of_type_AndroidTextTextPaint.measureText(str2)) / 2.0F, this.c * 0.65F - f1 / 2.0F + f2, this.jdField_b_of_type_AndroidTextTextPaint);
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, str2, (this.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidTextTextPaint.measureText(str2)) / 2.0F, this.c * 0.65F - f1 / 2.0F + f2, this.jdField_a_of_type_AndroidTextTextPaint);
+    }
+    catch (Throwable parambhsn)
+    {
+      for (;;)
+      {
+        QLog.e("QzoneRecommedPhotoJsPlugin", 1, "onCallJsBridge.setData error", parambhsn);
+      }
     }
   }
   
-  public void b(String paramString)
+  private void a(String paramString1, String paramString2, Runnable paramRunnable, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor(paramString));
-  }
-  
-  public void c()
-  {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    try
+    {
+      String str = new JSONObject(paramString2).optString("callback");
+      if ((paramBoolean) && (TextUtils.isEmpty(str))) {
+        return;
+      }
+      if (!TextUtils.isEmpty(paramString1)) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, str);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bhsv.class).post(paramRunnable);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      QLog.w("QzoneRecommedPhotoJsPlugin", 1, "handleRunnable error" + paramString2, paramString1);
     }
   }
   
-  public void c(String paramString)
+  private void b(String paramString)
   {
-    this.jdField_b_of_type_AndroidTextTextPaint.setColor(Color.parseColor(paramString));
+    try
+    {
+      paramString = new JSONObject(paramString).optString("callback");
+      if (!TextUtils.isEmpty(paramString))
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("cmd.getRecommedPhoto", paramString);
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bhsv.class).post(new QzoneRecommedPhotoJsPlugin.2(this));
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.w("QzoneRecommedPhotoJsPlugin", 1, "handleGetRecommendphoto error", paramString);
+    }
+  }
+  
+  private void c(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString).optString("photoEventID");
+      Intent localIntent = new Intent("action_enter_to_qzone_recommend_photo");
+      localIntent.putExtra("param.formSchemeToRecommend", true);
+      localIntent.putExtra("param.photoUnikey", paramString);
+      bgxy.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), bgyf.a(), localIntent, 0);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.w("QzoneRecommedPhotoJsPlugin", 1, "handleForwardToRecommedPhoto error", paramString);
+    }
+  }
+  
+  private void d(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      Bundle localBundle = new Bundle();
+      localBundle.putString("recommend_on", paramString.optString("recommend_on"));
+      localBundle.putString("recommendPush_on", paramString.optString("recommendPush_on"));
+      localBundle.putString("recommendChatCachePhoto_on", paramString.optString("recommendChatCachePhoto_on"));
+      bhkl.a().a().a(localBundle);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.w("QzoneRecommedPhotoJsPlugin", 1, "handleSetShouldScanPhotoEventState error", paramString);
+    }
+  }
+  
+  private void e(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      Bundle localBundle = new Bundle();
+      localBundle.putString("event_video_album_state", paramString.optString("event_video_album_state"));
+      bhkl.a().a().b(localBundle);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.w("QzoneRecommedPhotoJsPlugin", 1, "handleSetEventVideoAlbumState error", paramString);
+    }
+  }
+  
+  private void f(String paramString)
+  {
+    a("cmd.getLocalPhotoSwitcher", paramString, new QzoneRecommedPhotoJsPlugin.3(this), true);
+  }
+  
+  private void g(String paramString)
+  {
+    a("cmd.getQuickMakeDynamicStatus", paramString, new QzoneRecommedPhotoJsPlugin.4(this), true);
+  }
+  
+  private void h(String paramString)
+  {
+    a("cmd.setQuickMakeDynamicStatus", paramString, new QzoneRecommedPhotoJsPlugin.5(this, paramString), false);
+  }
+  
+  private void i(String paramString)
+  {
+    if (paramString == null) {
+      return;
+    }
+    QLog.w("QzoneRecommedPhotoJsPlugin", 1, "errorCallBack error");
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("code", -1);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramString, new String[] { localJSONObject.toString() });
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.w("QzoneRecommedPhotoJsPlugin", 1, "errorCallBack error", paramString);
+    }
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (("getEventVideoAlbumState".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      bhkl.a().a(this);
+      a(paramVarArgs[0]);
+      return true;
+    }
+    if (("setEventVideoAlbumState".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      e(paramVarArgs[0]);
+      return true;
+    }
+    if (("getRecommendPhotoEvent".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      bhkl.a().a(this);
+      b(paramVarArgs[0]);
+      return true;
+    }
+    if (("enterPhotoEventDetail".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      c(paramVarArgs[0]);
+      return true;
+    }
+    if (("setShouldScanPhotoEventState".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      d(paramVarArgs[0]);
+      return true;
+    }
+    if (("getShouldScanPhotoEventState".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      bhkl.a().a(this);
+      f(paramVarArgs[0]);
+      return true;
+    }
+    if (("getQuickMakeDynamicStatus".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      bhkl.a().a(this);
+      g(paramVarArgs[0]);
+      return true;
+    }
+    if (("setQuickMakeDynamicStatus".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      h(paramVarArgs[0]);
+      return true;
+    }
+    return false;
+  }
+  
+  public void onWebEvent(String paramString, Bundle paramBundle)
+  {
+    if (paramBundle == null) {}
+    String str;
+    Object localObject1;
+    do
+    {
+      return;
+      str = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if (!"cmd.getRecommedPhoto".equals(paramString)) {
+        break;
+      }
+      localObject1 = a(paramBundle, str);
+    } while (localObject1 == null);
+    for (;;)
+    {
+      int i;
+      try
+      {
+        paramString = new JSONObject();
+        paramString.put("code", 0);
+        paramString.put("photoEventID", ((Bundle)localObject1).getString("photoEventID"));
+        paramString.put("title", ((Bundle)localObject1).getString("title"));
+        paramString.put("time", ((Bundle)localObject1).getString("time"));
+        paramString.put("mediaCount", ((Bundle)localObject1).getInt("mediaCount"));
+        paramBundle = ((Bundle)localObject1).getIntegerArrayList("dataType");
+        localObject1 = ((Bundle)localObject1).getStringArrayList("dataPath");
+        JSONArray localJSONArray = new JSONArray();
+        if ((paramBundle != null) && (paramBundle.size() > 0) && (localObject1 != null) && (((ArrayList)localObject1).size() > 0) && (paramBundle.size() == ((ArrayList)localObject1).size()))
+        {
+          i = 0;
+          if (i < paramBundle.size())
+          {
+            Object localObject2 = new JSONObject();
+            ((JSONObject)localObject2).put("imageData", "data:image/jpg;base64," + a((String)((ArrayList)localObject1).get(i)));
+            ((JSONObject)localObject2).put("type", paramBundle.get(i));
+            localJSONArray.put(localObject2);
+            if (((Integer)paramBundle.get(i)).intValue() != 3) {
+              break label444;
+            }
+            localObject2 = new File((String)((ArrayList)localObject1).get(i));
+            if (!((File)localObject2).exists()) {
+              break label444;
+            }
+            ((File)localObject2).delete();
+            break label444;
+          }
+          paramString.put("thumbInfos", localJSONArray);
+          if (str == null) {
+            break;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(str, new String[] { paramString.toString() });
+          return;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        QLog.w("QzoneRecommedPhotoJsPlugin", 1, "onWebEvent error", paramString);
+        return;
+      }
+      i(str);
+      return;
+      if ("cmd.getLocalPhotoSwitcher".equals(paramString))
+      {
+        a(str, paramBundle, new bhsk(this));
+        return;
+      }
+      if ("cmd.getQuickMakeDynamicStatus".equals(paramString))
+      {
+        a(str, paramBundle, new bhsl(this));
+        return;
+      }
+      if (!"cmd.getEventVideoAlbumState".equals(paramString)) {
+        break;
+      }
+      a(str, paramBundle, new bhsm(this));
+      return;
+      label444:
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhsj
  * JD-Core Version:    0.7.0.1
  */

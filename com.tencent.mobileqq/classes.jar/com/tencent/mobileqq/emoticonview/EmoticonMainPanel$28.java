@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import ankb;
+import aoak;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
@@ -13,20 +13,20 @@ class EmoticonMainPanel$28
   {
     List localList = this.this$0.jdField_a_of_type_JavaUtilList;
     int i;
-    ankb localankb;
+    aoak localaoak;
     if (localList != null)
     {
       i = 0;
       if (i < localList.size())
       {
-        localankb = (ankb)localList.get(i);
-        if ((localankb == null) || (localankb.a != 11)) {}
+        localaoak = (aoak)localList.get(i);
+        if ((localaoak == null) || (localaoak.a != 11)) {}
       }
     }
     for (;;)
     {
-      if ((localankb != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter != null)) {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.a(localankb);
+      if ((localaoak != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter != null)) {
+        this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.a(localaoak);
       }
       while (!QLog.isColorLevel())
       {
@@ -36,7 +36,7 @@ class EmoticonMainPanel$28
       }
       QLog.d("EmoticonMainPanel", 2, "updateCameraEmoticonPanel cameraInfo can not find");
       return;
-      localankb = null;
+      localaoak = null;
     }
   }
 }

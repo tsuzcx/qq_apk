@@ -1,19 +1,14 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
-
 public class bijz
-  implements bikd
+  extends bijy
 {
-  public static final String[] a = { "AtLayer0", "AtLayer1", "AtLayer2", "AtLayer3", "AtLayer4", "AtLayer5" };
-  
-  public void a(List<bika> paramList, DoodleView paramDoodleView)
+  public int a(int paramInt)
   {
-    int i = 0;
-    while (i < a.length)
-    {
-      paramList.add(new biis(paramDoodleView, a[i]));
-      i += 1;
-    }
+    return paramInt;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return paramInt > 0;
   }
 }
 

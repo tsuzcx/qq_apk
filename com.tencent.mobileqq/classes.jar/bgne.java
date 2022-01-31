@@ -1,21 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
+import cooperation.qlink.QlinkBridgeActivity;
 
-class bgne
+public class bgne
   implements DialogInterface.OnDismissListener
 {
-  bgne(bgnd parambgnd, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  public bgne(QlinkBridgeActivity paramQlinkBridgeActivity) {}
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgne
  * JD-Core Version:    0.7.0.1
  */

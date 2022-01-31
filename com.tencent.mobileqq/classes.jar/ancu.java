@@ -1,21 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.data.EmoticonPackage;
-
-class ancu
-  implements DialogInterface.OnClickListener
+public class ancu
 {
-  ancu(ancs paramancs, EmoticonPackage paramEmoticonPackage, View paramView) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ancr.a(this.jdField_a_of_type_Ancs.a, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage, this.jdField_a_of_type_AndroidViewView);
-  }
+  public String a;
+  public String[] a;
+  public String b;
+  public String[] b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ancu
  * JD-Core Version:    0.7.0.1
  */

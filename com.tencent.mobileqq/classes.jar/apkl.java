@@ -1,45 +1,28 @@
-import android.os.Build.VERSION;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.MaxHeightRelativelayout;
+import android.content.Intent;
 
-class apkl
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class apkl
 {
-  apkl(apkk paramapkk) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private int c;
   
-  public void onGlobalLayout()
+  public apkl a(Intent paramIntent)
   {
-    if (apkk.a(this.a) != null)
-    {
-      if (Build.VERSION.SDK_INT >= 16) {
-        apkk.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
-      }
-      if ((apkk.a(this.a) != null) && (this.a.a != null))
-      {
-        if (apkk.a(this.a).getLineCount() <= 1) {
-          break label144;
-        }
-        apkk.a(this.a).setGravity(19);
-      }
-    }
-    for (;;)
-    {
-      if (apkk.a(this.a).getHeight() >= bajq.a(apkk.a(this.a) + 2))
-      {
-        this.a.a.setMaxHeight(bajq.a(450.0F));
-        this.a.a.requestLayout();
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardPreviewTextController", 2, " reset height ");
-        }
-      }
-      return;
-      label144:
-      apkk.a(this.a).setGravity(17);
-    }
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("targetUin");
+    this.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("srcDiscGroup");
+    this.jdField_a_of_type_Int = paramIntent.getIntExtra("peerType", 0);
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("rootEntrace", true);
+    this.jdField_b_of_type_Int = paramIntent.getIntExtra("busiType", 0);
+    this.c = paramIntent.getIntExtra("enterfrom", 0);
+    return this;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

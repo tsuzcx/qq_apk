@@ -1,23 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public final class bidc
-  implements Parcelable.Creator<EditTakeVideoSource>
+public class bidc
+  extends RemoteCommand
 {
-  public EditTakeVideoSource a(Parcel paramParcel)
+  private static bidd jdField_a_of_type_Bidd;
+  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
+  
+  public bidc()
   {
-    return new EditTakeVideoSource(paramParcel);
+    super("weiyun.notify_state");
   }
   
-  public EditTakeVideoSource[] a(int paramInt)
+  public void a(bidd parambidd)
   {
-    return new EditTakeVideoSource[paramInt];
+    jdField_a_of_type_Bidd = parambidd;
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    paramOnInvokeFinishLinstener = new Bundle();
+    int i = paramBundle.getInt("param_state", jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+    if (i != jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())
+    {
+      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(i);
+      if (jdField_a_of_type_Bidd != null) {
+        jdField_a_of_type_Bidd.a(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      }
+    }
+    return paramOnInvokeFinishLinstener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bidc
  * JD-Core Version:    0.7.0.1
  */

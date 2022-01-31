@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import ajjy;
-import atnz;
+import ajyc;
+import aulx;
 import java.io.File;
 
 public class MessageForFile
@@ -13,11 +13,11 @@ public class MessageForFile
   public long fileSize;
   public String fileSizeString;
   public String fileType;
-  @atnz
+  @aulx
   public long originalMsgUid;
-  @atnz
+  @aulx
   public long originalTime;
-  @atnz
+  @aulx
   public long originalmsgShseq;
   public int status;
   public String[] tempMsg;
@@ -52,7 +52,7 @@ public class MessageForFile
   
   public String getSummaryMsg()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append(ajjy.a(2131640781));
+    StringBuilder localStringBuilder = new StringBuilder().append(ajyc.a(2131706566));
     if (this.fileName == null) {}
     for (String str = "";; str = this.fileName) {
       return str;

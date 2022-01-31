@@ -1,28 +1,27 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import mqq.os.MqqHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class abvo
-  extends ajuc
+  extends BroadcastReceiver
 {
-  public abvo(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public abvo(QQMapActivity paramQQMapActivity) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.a.sendEmptyMessage(1);
+    if ((paramIntent.getAction().equals("android.intent.action.SCREEN_OFF")) && (!this.a.p) && (!this.a.q) && (GesturePWDUtils.getGesturePWDState(this.a, this.a.k) == 2) && (GesturePWDUtils.getGesturePWDMode(this.a, this.a.k) == 21))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("qqbaseactivity", 2, "qqmapactivity.start lock. receive lock.");
       }
+      paramContext = new Intent(this.a, GesturePWDUnlockActivity.class);
+      QQMapActivity.a(this.a, paramContext);
+      this.a.q = true;
     }
-    while ((paramInt1 != 2) || (paramInt2 != 0)) {
-      return;
-    }
-    ariz.a().b(paramString, this.a.app);
-    this.a.c();
-  }
-  
-  protected void b(String paramString)
-  {
-    this.a.c();
   }
 }
 

@@ -12,33 +12,33 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import awqx;
-import badq;
+import axqw;
+import bbev;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import krx;
-import ksn;
-import kur;
-import kvq;
-import leb;
-import loj;
-import lor;
-import lpt;
-import lqb;
-import lru;
-import lsh;
-import lsi;
-import lsj;
-import lsk;
-import lwx;
-import mht;
-import mig;
-import miu;
+import lcl;
+import ldc;
+import lfg;
+import lgf;
+import los;
+import lzb;
+import lzj;
+import mal;
+import mat;
+import mck;
+import mda;
+import mdb;
+import mdc;
+import mdd;
+import mho;
 import mqq.app.BaseActivity;
+import mss;
+import mtf;
+import mtt;
 
 public class DoubleVideoMeetingCtrlUI
   extends VideoControlUI
@@ -49,18 +49,18 @@ public class DoubleVideoMeetingCtrlUI
   DoubleVideoMeetingCtrlUI.QueryPeerVideoRunnable jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI$QueryPeerVideoRunnable = new DoubleVideoMeetingCtrlUI.QueryPeerVideoRunnable(this);
   Runnable jdField_a_of_type_JavaLangRunnable = null;
   String jdField_a_of_type_JavaLangString = null;
-  kur jdField_a_of_type_Kur = new lsj(this);
-  lwx jdField_a_of_type_Lwx = null;
-  mht jdField_a_of_type_Mht = null;
+  lfg jdField_a_of_type_Lfg = new mdc(this);
+  mho jdField_a_of_type_Mho = null;
+  mss jdField_a_of_type_Mss = null;
   public boolean a;
   public long b;
   String b;
   public boolean b;
   public boolean c;
   
-  public DoubleVideoMeetingCtrlUI(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity, ViewGroup paramViewGroup, lru paramlru)
+  public DoubleVideoMeetingCtrlUI(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity, ViewGroup paramViewGroup, mck parammck)
   {
-    super(paramVideoAppInterface, paramAVActivity, paramViewGroup, paramlru);
+    super(paramVideoAppInterface, paramAVActivity, paramViewGroup, parammck);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
@@ -75,7 +75,7 @@ public class DoubleVideoMeetingCtrlUI
   
   protected int a()
   {
-    return 2131493936;
+    return 2131559504;
   }
   
   public int a(int paramInt)
@@ -86,38 +86,38 @@ public class DoubleVideoMeetingCtrlUI
   
   void a()
   {
-    kvq localkvq = this.jdField_a_of_type_ComTencentAvVideoController.a();
-    boolean bool = localkvq.k;
+    lgf locallgf = this.jdField_a_of_type_ComTencentAvVideoController.a();
+    boolean bool = locallgf.k;
     long l = AudioHelper.b();
     if (QLog.isColorLevel()) {
-      QLog.w(this.jdField_c_of_type_JavaLangString, 1, "resumeVideo, remoteHasVideo[" + bool + "], displayViewList[" + localkvq.jdField_c_of_type_JavaUtilArrayList.size() + "], seq[" + l + "], \nsessionInfo[" + localkvq + "]");
+      QLog.w(this.jdField_c_of_type_JavaLangString, 1, "resumeVideo, remoteHasVideo[" + bool + "], displayViewList[" + locallgf.jdField_c_of_type_JavaUtilArrayList.size() + "], seq[" + l + "], \nsessionInfo[" + locallgf + "]");
     }
-    if ((localkvq.jdField_d_of_type_Int == 4) && (!localkvq.j) && ((localkvq.jdField_c_of_type_JavaUtilArrayList.size() == 0) || (!bool)))
+    if ((locallgf.jdField_d_of_type_Int == 4) && (!locallgf.j) && ((locallgf.jdField_c_of_type_JavaUtilArrayList.size() == 0) || (!bool)))
     {
-      localkvq.a(l, "resumeVideo", 3);
+      locallgf.a(l, "resumeVideo", 3);
       QLog.w(this.jdField_c_of_type_JavaLangString, 1, "resumeVideo, fix SessionType");
     }
     ArrayList localArrayList = new ArrayList();
-    leb localleb = new leb();
-    localleb.jdField_a_of_type_Long = Long.valueOf(localkvq.jdField_d_of_type_JavaLangString).longValue();
-    localleb.jdField_a_of_type_Int = 1;
-    localArrayList.add(localleb);
-    localleb = new leb();
-    localleb.jdField_a_of_type_Long = Long.valueOf(localkvq.jdField_d_of_type_JavaLangString).longValue();
-    localleb.jdField_a_of_type_Int = 2;
-    localArrayList.add(localleb);
-    this.jdField_b_of_type_Lru.update(null, new Object[] { Integer.valueOf(104), localArrayList });
-    if ((localkvq.a(this.jdField_b_of_type_Long, 1) == -1) || (localkvq.j))
+    los locallos = new los();
+    locallos.jdField_a_of_type_Long = Long.valueOf(locallgf.jdField_d_of_type_JavaLangString).longValue();
+    locallos.jdField_a_of_type_Int = 1;
+    localArrayList.add(locallos);
+    locallos = new los();
+    locallos.jdField_a_of_type_Long = Long.valueOf(locallgf.jdField_d_of_type_JavaLangString).longValue();
+    locallos.jdField_a_of_type_Int = 2;
+    localArrayList.add(locallos);
+    this.jdField_b_of_type_Mck.update(null, new Object[] { Integer.valueOf(104), localArrayList });
+    if ((locallgf.a(this.jdField_b_of_type_Long, 1) == -1) || (locallgf.j))
     {
       if (QLog.isColorLevel()) {
         QLog.d(this.jdField_c_of_type_JavaLangString, 2, "Go On Stage ");
       }
       this.jdField_a_of_type_ComTencentAvVideoController.k();
     }
-    if ((localkvq.j) && (!localkvq.k)) {
+    if ((locallgf.j) && (!locallgf.k)) {
       this.jdField_c_of_type_Boolean = true;
     }
-    if (localkvq.jdField_c_of_type_JavaUtilArrayList.size() > 0) {
+    if (locallgf.jdField_c_of_type_JavaUtilArrayList.size() > 0) {
       p();
     }
     K();
@@ -129,7 +129,7 @@ public class DoubleVideoMeetingCtrlUI
     if (QLog.isColorLevel()) {
       QLog.w(this.jdField_c_of_type_JavaLangString, 1, "avSwitch, sessionType[" + paramInt + "], seq[" + l + "]");
     }
-    View localView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131299756);
+    View localView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365324);
     AVActivity localAVActivity = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     boolean bool1;
     if (paramInt == 3)
@@ -155,8 +155,8 @@ public class DoubleVideoMeetingCtrlUI
       if (this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int == 3) {}
       for (boolean bool2 = true;; bool2 = false)
       {
-        this.jdField_a_of_type_Mig.c(bool2);
-        this.jdField_a_of_type_Mig.b(bool2);
+        this.jdField_a_of_type_Mtf.c(bool2);
+        this.jdField_a_of_type_Mtf.b(bool2);
         a(Boolean.valueOf(bool1));
         f(l, 65535);
         this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(102) });
@@ -164,7 +164,7 @@ public class DoubleVideoMeetingCtrlUI
         if (paramInt != 4) {
           break label334;
         }
-        localView.setBackgroundColor(this.jdField_a_of_type_AndroidContentResResources.getColor(2131101491));
+        localView.setBackgroundColor(this.jdField_a_of_type_AndroidContentResResources.getColor(2131167087));
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
@@ -221,19 +221,19 @@ public class DoubleVideoMeetingCtrlUI
     if (QLog.isColorLevel()) {
       QLog.w(this.jdField_c_of_type_JavaLangString, 1, "onClick, id[" + AudioHelper.a(paramView, paramView.getId()) + "], seq[" + paramLong + "]");
     }
-    kvq localkvq = this.jdField_a_of_type_ComTencentAvVideoController.a();
-    String str = localkvq.jdField_d_of_type_JavaLangString;
+    lgf locallgf = this.jdField_a_of_type_ComTencentAvVideoController.a();
+    String str = locallgf.jdField_d_of_type_JavaLangString;
     switch (paramView.getId())
     {
     default: 
       if (QLog.isColorLevel()) {
         QLog.e(this.jdField_c_of_type_JavaLangString, 2, "Error View Id.ID=" + paramView.getId());
       }
-    case 2131306501: 
-    case 2131306503: 
-    case 2131629967: 
-    case 2131306805: 
-    case 2131629971: 
+    case 2131372198: 
+    case 2131372200: 
+    case 2131695648: 
+    case 2131372515: 
+    case 2131695652: 
       do
       {
         do
@@ -252,9 +252,9 @@ public class DoubleVideoMeetingCtrlUI
                 QLog.i("double_2_multi", 2, "onClick in meeting");
               }
               DoubleVideoCtrlUI.a(a(), this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, true);
-              super.y(paramLong);
-              awqx.b(null, "CliOper", "", "", "0X8005205", "0X8005205", 0, 0, "", "", "", "");
-            } while (!lor.f());
+              super.z(paramLong);
+              axqw.b(null, "CliOper", "", "", "0X8005205", "0X8005205", 0, 0, "", "", "", "");
+            } while (!lzj.f());
             paramView = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
           } while ((paramView == null) || (!(paramView instanceof AVActivity)));
           paramView = (AVActivity)paramView;
@@ -263,71 +263,71 @@ public class DoubleVideoMeetingCtrlUI
       } while (paramView == null);
       paramView.c();
       return;
-    case 2131298509: 
-    case 2131299482: 
-    case 2131306804: 
+    case 2131364067: 
+    case 2131365050: 
+    case 2131372514: 
       P();
       return;
-    case 2131306511: 
-    case 2131306512: 
+    case 2131372208: 
+    case 2131372209: 
       QLog.d(this.jdField_c_of_type_JavaLangString, 1, "onClick QavPanel.ViewID.HANG_UP");
       g(true);
-      if (this.jdField_a_of_type_Lwx != null)
+      if (this.jdField_a_of_type_Mho != null)
       {
-        this.jdField_a_of_type_Lwx.a(new lsi(this, paramLong));
+        this.jdField_a_of_type_Mho.a(new mdb(this, paramLong));
         return;
       }
-      miu.a().b(paramLong);
-      if (!localkvq.Q) {
-        super.y(paramLong);
+      mtt.a().b(paramLong);
+      if (!locallgf.Q) {
+        super.z(paramLong);
       }
       this.jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, this.jdField_a_of_type_Long, true, 0);
-      super.x(paramLong);
+      super.y(paramLong);
       b(true);
-      awqx.b(null, "CliOper", "", "", "0X8005206", "0X8005206", 0, 0, "", "", "", "");
+      axqw.b(null, "CliOper", "", "", "0X8005206", "0X8005206", 0, 0, "", "", "", "");
       return;
-    case 2131306517: 
+    case 2131372214: 
       c(paramLong, paramView);
       return;
-    case 2131306509: 
+    case 2131372206: 
       QLog.d(this.jdField_c_of_type_JavaLangString, 1, "onClick QavPanel.ViewID.HAND_FREE");
-      this.jdField_a_of_type_Miu.d();
-      if ((localkvq.N) && (localkvq.a != null)) {
-        awqx.b(null, "CliOper", "", "", "0X8005202", "0X8005202", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Mtt.a(mtt.c);
+      if ((locallgf.N) && (locallgf.a != null)) {
+        axqw.b(null, "CliOper", "", "", "0X8005202", "0X8005202", 0, 0, "", "", "", "");
       }
       for (;;)
       {
-        super.y(paramLong);
+        super.z(paramLong);
         return;
-        awqx.b(null, "CliOper", "", "", "0X8005201", "0X8005201", 0, 0, "", "", "", "");
+        axqw.b(null, "CliOper", "", "", "0X8005201", "0X8005201", 0, 0, "", "", "", "");
       }
-    case 2131306514: 
+    case 2131372211: 
       QLog.d(this.jdField_c_of_type_JavaLangString, 1, "avideo onClick QavPanel.ViewID.HIDE");
       a();
-      awqx.b(null, "CliOper", "", "", "0X8005207", "0X8005207", 0, 0, "", "", "", "");
-      if (localkvq.j)
+      axqw.b(null, "CliOper", "", "", "0X8005207", "0X8005207", 0, 0, "", "", "", "");
+      if (locallgf.j)
       {
-        awqx.b(null, "CliOper", "", "", "0X8005214", "0X8005214", 0, 0, "", "", "", "");
+        axqw.b(null, "CliOper", "", "", "0X8005214", "0X8005214", 0, 0, "", "", "", "");
         return;
       }
-      awqx.b(null, "CliOper", "", "", "0X8005217", "0X8005217", 0, 0, "", "", "", "");
+      axqw.b(null, "CliOper", "", "", "0X8005217", "0X8005217", 0, 0, "", "", "", "");
       return;
-    case 2131306809: 
+    case 2131372519: 
       QLog.w(this.jdField_c_of_type_JavaLangString, 1, "onClick, switch_camera, seq[" + paramLong + "]");
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(107), Long.valueOf(paramLong) });
       return;
-    case 2131306516: 
+    case 2131372213: 
       QLog.d(this.jdField_c_of_type_JavaLangString, 1, "onClick QavPanel.ViewID.LEAVE_MSG");
-      int i = localkvq.i;
-      paramView = localkvq.jdField_e_of_type_JavaLangString;
+      int i = locallgf.i;
+      paramView = locallgf.jdField_e_of_type_JavaLangString;
       this.jdField_a_of_type_ComTencentAvVideoController.a(i, str, paramView, null, true);
       return;
     }
     f(paramLong, paramView);
   }
   
-  public void a(long paramLong, ArrayList<leb> paramArrayList)
+  public void a(long paramLong, ArrayList<los> paramArrayList)
   {
     if (paramArrayList.size() == 0)
     {
@@ -341,13 +341,13 @@ public class DoubleVideoMeetingCtrlUI
     {
       if (i < paramArrayList.size())
       {
-        if ((((leb)paramArrayList.get(i)).jdField_a_of_type_Long == this.jdField_b_of_type_Long) && (!this.jdField_a_of_type_ComTencentAvVideoController.a().j)) {
+        if ((((los)paramArrayList.get(i)).jdField_a_of_type_Long == this.jdField_b_of_type_Long) && (!this.jdField_a_of_type_ComTencentAvVideoController.a().j)) {
           paramArrayList.remove(i);
         }
       }
       else
       {
-        this.jdField_b_of_type_Lru.update(null, new Object[] { Integer.valueOf(103), paramArrayList, Long.valueOf(paramLong) });
+        this.jdField_b_of_type_Mck.update(null, new Object[] { Integer.valueOf(103), paramArrayList, Long.valueOf(paramLong) });
         if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0) {
           break;
         }
@@ -366,14 +366,14 @@ public class DoubleVideoMeetingCtrlUI
     if (g()) {}
     do
     {
-      kvq localkvq;
+      lgf locallgf;
       do
       {
         do
         {
           return;
-          localkvq = this.jdField_a_of_type_ComTencentAvVideoController.a();
-        } while (localkvq.an);
+          locallgf = this.jdField_a_of_type_ComTencentAvVideoController.a();
+        } while (locallgf.an);
         f(paramLong, 65535);
         if (!paramBoolean) {
           break;
@@ -382,11 +382,11 @@ public class DoubleVideoMeetingCtrlUI
           QLog.d(this.jdField_c_of_type_JavaLangString, 2, "Go On Stage onAfterOpenCamera");
         }
         this.jdField_a_of_type_ComTencentAvVideoController.k();
-        if ((paramInt == 3) && (!localkvq.N) && ("DEVICE_EARPHONE".equals(localkvq.p))) {
-          this.jdField_a_of_type_Miu.d();
+        if ((paramInt == 3) && (!locallgf.N) && ("DEVICE_EARPHONE".equals(locallgf.q))) {
+          this.jdField_a_of_type_Mtt.d();
         }
-      } while ((localkvq.k) || (this.jdField_a_of_type_ComTencentAvUiQavPanel == null));
-      a(localkvq.jdField_d_of_type_Int);
+      } while ((locallgf.k) || (this.jdField_a_of_type_ComTencentAvUiQavPanel == null));
+      a(locallgf.jdField_d_of_type_Int);
       return;
     } while (!QLog.isColorLevel());
     QLog.d(this.jdField_c_of_type_JavaLangString, 2, "Open Camera Failed");
@@ -406,14 +406,14 @@ public class DoubleVideoMeetingCtrlUI
       d("showOrClosePeerVideo");
       return;
     }
-    leb localleb = new leb();
-    localleb.jdField_a_of_type_Long = paramLong2;
-    localleb.jdField_a_of_type_Int = paramInt;
+    los locallos = new los();
+    locallos.jdField_a_of_type_Long = paramLong2;
+    locallos.jdField_a_of_type_Int = paramInt;
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(localleb);
-    this.jdField_b_of_type_Lru.update(null, new Object[] { Integer.valueOf(104), localArrayList });
+    localArrayList.add(locallos);
+    this.jdField_b_of_type_Mck.update(null, new Object[] { Integer.valueOf(104), localArrayList });
     if (paramInt == 2) {
-      lqb.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
+      mat.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
     }
     if (this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaUtilArrayList.size() > 0)
     {
@@ -440,7 +440,7 @@ public class DoubleVideoMeetingCtrlUI
           return;
         } while (super.h());
         if (paramInt1 == 2) {
-          lqb.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
+          mat.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
         }
         long l1 = Long.valueOf(???).longValue();
         l2 = Long.valueOf(paramString2).longValue();
@@ -450,32 +450,32 @@ public class DoubleVideoMeetingCtrlUI
           QLog.d(this.jdField_c_of_type_JavaLangString, 2, "onVideoViewChange-->BigViewIndex = " + paramInt1 + " ,SmallViewIndex = " + paramInt2);
         }
       } while ((paramInt1 == -1) || (l2 == -1L));
-      paramString2 = (leb)this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaUtilArrayList.get(paramInt1);
-      leb localleb = (leb)this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaUtilArrayList.get(paramInt2);
-      localleb.jdField_a_of_type_Boolean = true;
+      paramString2 = (los)this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaUtilArrayList.get(paramInt1);
+      los locallos = (los)this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaUtilArrayList.get(paramInt2);
+      locallos.jdField_a_of_type_Boolean = true;
       paramString2.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaUtilArrayList.set(paramInt1, localleb);
+      this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaUtilArrayList.set(paramInt1, locallos);
       this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaUtilArrayList.set(paramInt2, paramString2);
       synchronized (this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_JavaUtilArrayList)
       {
-        this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_JavaUtilArrayList.set(paramInt1, localleb);
+        this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_JavaUtilArrayList.set(paramInt1, locallos);
         this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_JavaUtilArrayList.set(paramInt2, paramString2);
         this.jdField_a_of_type_ComTencentAvVideoController.a().c();
         p();
         if (l2 == this.jdField_b_of_type_Long)
         {
-          awqx.b(null, "CliOper", "", "", "0X800520E", "0X800520E", 0, 0, "", "", "", "");
+          axqw.b(null, "CliOper", "", "", "0X800520E", "0X800520E", 0, 0, "", "", "", "");
           return;
         }
       }
     } while (l2 != this.jdField_a_of_type_Long);
-    awqx.b(null, "CliOper", "", "", "0X800520F", "0X800520F", 0, 0, "", "", "", "");
+    axqw.b(null, "CliOper", "", "", "0X800520F", "0X800520F", 0, 0, "", "", "", "");
     if (this.jdField_b_of_type_Boolean)
     {
-      awqx.b(null, "CliOper", "", "", "0X8005213", "0X8005213", 0, 0, "", "", "", "");
+      axqw.b(null, "CliOper", "", "", "0X8005213", "0X8005213", 0, 0, "", "", "", "");
       return;
     }
-    awqx.b(null, "CliOper", "", "", "0X8005212", "0X8005212", 0, 0, "", "", "", "");
+    axqw.b(null, "CliOper", "", "", "0X8005212", "0X8005212", 0, 0, "", "", "", "");
   }
   
   void a(boolean paramBoolean)
@@ -496,9 +496,9 @@ public class DoubleVideoMeetingCtrlUI
   {
     Object localObject = this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_JavaLangString;
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), localObject, Boolean.valueOf(false) });
-    if (!lor.f()) {
+    if (!lzj.f()) {
       if ((this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int == 4) && (this.jdField_a_of_type_ComTencentAvVideoController.a().j)) {
-        super.a(2131630116, 1, this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131167766));
+        super.a(2131695803, 1, this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131298865));
       }
     }
     do
@@ -514,7 +514,7 @@ public class DoubleVideoMeetingCtrlUI
       } while (localObject == null);
       localObject = ((AVActivity)localObject).a();
     } while (localObject == null);
-    ((loj)localObject).a();
+    ((lzb)localObject).a();
     return false;
   }
   
@@ -526,15 +526,15 @@ public class DoubleVideoMeetingCtrlUI
       return false;
     case 24: 
     case 25: 
-      this.jdField_a_of_type_Miu.a();
+      this.jdField_a_of_type_Mtt.a();
       return false;
     }
     if (this.jdField_a_of_type_ComTencentAvVideoController.a().j)
     {
-      awqx.b(null, "CliOper", "", "", "0X8005215", "0X8005215", 0, 0, "", "", "", "");
+      axqw.b(null, "CliOper", "", "", "0X8005215", "0X8005215", 0, 0, "", "", "", "");
       return false;
     }
-    awqx.b(null, "CliOper", "", "", "0X8005218", "0X8005218", 0, 0, "", "", "", "");
+    axqw.b(null, "CliOper", "", "", "0X8005218", "0X8005218", 0, 0, "", "", "", "");
     return false;
   }
   
@@ -545,7 +545,7 @@ public class DoubleVideoMeetingCtrlUI
       this.jdField_a_of_type_ComTencentAvVideoController.a().a(paramLong, "checkRemoteHasVideo.1", false, true);
       return false;
     }
-    if ((this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaUtilArrayList.size() == 1) && (((leb)this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long == this.jdField_b_of_type_Long))
+    if ((this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaUtilArrayList.size() == 1) && (((los)this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long == this.jdField_b_of_type_Long))
     {
       this.jdField_a_of_type_ComTencentAvVideoController.a().a(paramLong, "checkRemoteHasVideo.2", false, true);
       return false;
@@ -559,19 +559,19 @@ public class DoubleVideoMeetingCtrlUI
     super.b();
     if (this.jdField_a_of_type_ComTencentAvUiQavPanel != null)
     {
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131493987);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131559557);
       this.jdField_a_of_type_ComTencentAvUiQavPanel.e();
       Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       if (localActivity != null)
       {
-        this.jdField_a_of_type_Miu = miu.a();
-        this.jdField_a_of_type_ComTencentAvUiQavPanel.a(this.jdField_a_of_type_Miu);
-        this.jdField_a_of_type_Mig = mig.a(this.jdField_a_of_type_Mig, localActivity, this.jdField_a_of_type_ComTencentAvVideoController, this.jdField_a_of_type_Miu);
-        this.jdField_a_of_type_Mig.a(true);
-        this.jdField_a_of_type_Miu.a();
+        this.jdField_a_of_type_Mtt = mtt.a();
+        this.jdField_a_of_type_ComTencentAvUiQavPanel.a(this.jdField_a_of_type_Mtt);
+        this.jdField_a_of_type_Mtf = mtf.a(this.jdField_a_of_type_Mtf, localActivity, this.jdField_a_of_type_ComTencentAvVideoController, this.jdField_a_of_type_Mtt);
+        this.jdField_a_of_type_Mtf.a(true);
+        this.jdField_a_of_type_Mtt.a();
       }
     }
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131306538));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372235));
     if ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)
     {
       if (QLog.isColorLevel()) {
@@ -580,7 +580,7 @@ public class DoubleVideoMeetingCtrlUI
       b(true);
       return;
     }
-    this.jdField_a_of_type_Lwx = new lwx((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentAvVideoController, 2, this.jdField_a_of_type_ComTencentAvUiQavPanel, this.jdField_c_of_type_AndroidWidgetRelativeLayout, null, this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131306555), this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131306683), null);
+    this.jdField_a_of_type_Mho = new mho((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentAvVideoController, 2, this.jdField_a_of_type_ComTencentAvUiQavPanel, this.jdField_c_of_type_AndroidWidgetRelativeLayout, null, this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372254), this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372385), null);
   }
   
   public void b(long paramLong)
@@ -590,21 +590,21 @@ public class DoubleVideoMeetingCtrlUI
       QLog.w(this.jdField_c_of_type_JavaLangString, 1, "onResume, seq[" + paramLong + "]");
     }
     super.b(paramLong);
-    mig localmig;
+    mtf localmtf;
     if (this.jdField_a_of_type_ComTencentAvVideoController != null)
     {
       this.jdField_a_of_type_ComTencentAvVideoController.a().an = false;
       this.jdField_a_of_type_ComTencentAvVideoController.a().am = false;
       if (this.jdField_a_of_type_ComTencentAvVideoController.a().J)
       {
-        super.w(paramLong);
-        localmig = this.jdField_a_of_type_Mig;
+        super.x(paramLong);
+        localmtf = this.jdField_a_of_type_Mtf;
         if (this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int != 3) {
           break label172;
         }
         bool1 = true;
-        localmig.c(bool1);
-        localmig = this.jdField_a_of_type_Mig;
+        localmtf.c(bool1);
+        localmtf = this.jdField_a_of_type_Mtf;
         if (this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int != 3) {
           break label177;
         }
@@ -614,7 +614,7 @@ public class DoubleVideoMeetingCtrlUI
     label177:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      localmig.b(bool1);
+      localmtf.b(bool1);
       a();
       e();
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(0, this.jdField_a_of_type_JavaLangString);
@@ -659,10 +659,10 @@ public class DoubleVideoMeetingCtrlUI
     Bitmap localBitmap = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i, str, null, true, true);
     str = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(i, str, null);
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131306556));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372255));
     }
     if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131306557));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372256));
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
@@ -677,7 +677,7 @@ public class DoubleVideoMeetingCtrlUI
     if (!this.jdField_a_of_type_ComTencentAvVideoController.a().q())
     {
       super.e(paramInt);
-      y(l);
+      z(l);
     }
   }
   
@@ -696,27 +696,29 @@ public class DoubleVideoMeetingCtrlUI
   {
     if (a(paramLong, "android.permission.RECORD_AUDIO", null))
     {
-      if (!this.jdField_a_of_type_ComTencentAvVideoController.h()) {
-        break label109;
+      boolean bool = this.jdField_a_of_type_ComTencentAvVideoController.h();
+      q(bool);
+      if (!bool) {
+        break label119;
       }
       this.jdField_a_of_type_ComTencentAvVideoController.a("DoubleVideoMeetingCtrlUI.doMute.1", this.jdField_a_of_type_Long, true);
-      super.l(2131306517);
+      super.l(2131372214);
       if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
         this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(108) });
       }
-      awqx.b(null, "CliOper", "", "", "0X8005204", "0X8005204", 0, 0, "", "", "", "");
+      axqw.b(null, "CliOper", "", "", "0X8005204", "0X8005204", 0, 0, "", "", "", "");
     }
     for (;;)
     {
-      super.y(paramLong);
+      super.z(paramLong);
       return;
-      label109:
+      label119:
       this.jdField_a_of_type_ComTencentAvVideoController.a("DoubleVideoMeetingCtrlUI.doMute.2", this.jdField_a_of_type_Long, false);
-      super.k(2131306517);
+      super.k(2131372214);
       if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
         this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(109) });
       }
-      awqx.b(null, "CliOper", "", "", "0X8005203", "0X8005203", 0, 0, "", "", "", "");
+      axqw.b(null, "CliOper", "", "", "0X8005203", "0X8005203", 0, 0, "", "", "", "");
     }
   }
   
@@ -725,10 +727,10 @@ public class DoubleVideoMeetingCtrlUI
     if (g()) {
       return;
     }
-    kvq localkvq = this.jdField_a_of_type_ComTencentAvVideoController.a();
-    if (!localkvq.k)
+    lgf locallgf = this.jdField_a_of_type_ComTencentAvVideoController.a();
+    if (!locallgf.k)
     {
-      a(localkvq.jdField_d_of_type_Int);
+      a(locallgf.jdField_d_of_type_Int);
       return;
     }
     f(paramLong, 65535);
@@ -746,27 +748,27 @@ public class DoubleVideoMeetingCtrlUI
         QLog.w(this.jdField_c_of_type_JavaLangString, 1, "onCreate, SessionType[" + this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int + "], localHasVideo[" + this.jdField_a_of_type_ComTencentAvVideoController.a().j + "], seq[" + l + "]");
       }
       b();
-      this.jdField_a_of_type_Miu.c();
-      this.jdField_a_of_type_Miu.a(this.jdField_d_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Kur);
+      this.jdField_a_of_type_Mtt.c();
+      this.jdField_a_of_type_Mtt.a(this.jdField_d_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Lfg);
       this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_JavaLangString;
       try
       {
         this.jdField_a_of_type_Long = Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue();
-        this.jdField_a_of_type_Mht = mht.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-        f(l);
+        this.jdField_a_of_type_Mss = mss.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+        k(l);
         c();
-        if (this.jdField_a_of_type_Lwx == null) {
+        if (this.jdField_a_of_type_Mho == null) {
           continue;
         }
-        this.jdField_a_of_type_Lwx.a();
+        this.jdField_a_of_type_Mho.a();
         return;
       }
       catch (NumberFormatException localNumberFormatException)
       {
         for (;;)
         {
-          krx.e(this.jdField_c_of_type_JavaLangString, localNumberFormatException.getMessage());
+          lcl.e(this.jdField_c_of_type_JavaLangString, localNumberFormatException.getMessage());
         }
       }
     }
@@ -777,16 +779,16 @@ public class DoubleVideoMeetingCtrlUI
   public void d(long paramLong)
   {
     QLog.w(this.jdField_c_of_type_JavaLangString, 1, "onDestroy, seq[" + paramLong + "]");
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Kur);
-    this.jdField_a_of_type_Mig.c(false);
-    this.jdField_a_of_type_Mig.b(false);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Lfg);
+    this.jdField_a_of_type_Mtf.c(false);
+    this.jdField_a_of_type_Mtf.b(false);
     if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
       this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
     }
-    if (this.jdField_a_of_type_Lwx != null)
+    if (this.jdField_a_of_type_Mho != null)
     {
-      this.jdField_a_of_type_Lwx.b();
-      this.jdField_a_of_type_Lwx = null;
+      this.jdField_a_of_type_Mho.b();
+      this.jdField_a_of_type_Mho = null;
     }
     super.d(paramLong);
   }
@@ -806,8 +808,8 @@ public class DoubleVideoMeetingCtrlUI
     }
     for (;;)
     {
-      y(paramLong);
-      j(paramLong, 2131629967);
+      z(paramLong);
+      j(paramLong, 2131695648);
       return;
       label116:
       if (QLog.isColorLevel()) {
@@ -815,7 +817,7 @@ public class DoubleVideoMeetingCtrlUI
       }
       j(paramLong);
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(106), Long.valueOf(paramLong) });
-      l(paramLong);
+      m(paramLong);
     }
   }
   
@@ -831,15 +833,15 @@ public class DoubleVideoMeetingCtrlUI
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_c_of_type_JavaLangString, 2, "showOrHideAcceptBtn-->isShow = " + paramBoolean);
     }
-    if (this.jdField_a_of_type_Lpt != null) {
-      this.jdField_a_of_type_Lpt.a(paramBoolean, new lsk(this));
+    if (this.jdField_a_of_type_Mal != null) {
+      this.jdField_a_of_type_Mal.a(paramBoolean, new mdd(this));
     }
     if (paramBoolean)
     {
-      lqb.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1030);
+      mat.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1030);
       return;
     }
-    lqb.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1030);
+    mat.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1030);
   }
   
   void e()
@@ -851,13 +853,13 @@ public class DoubleVideoMeetingCtrlUI
       return;
     }
     if (this.jdField_a_of_type_ComTencentAvVideoController.h()) {
-      super.k(2131306517);
+      super.k(2131372214);
     }
     for (;;)
     {
       a(this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int);
       return;
-      super.l(2131306517);
+      super.l(2131372214);
     }
   }
   
@@ -874,44 +876,6 @@ public class DoubleVideoMeetingCtrlUI
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
       return;
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    }
-  }
-  
-  void f(long paramLong)
-  {
-    Object localObject = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_c_of_type_JavaLangString, 2, "processExtraData-->can not get the activity");
-      }
-      b(true);
-    }
-    for (;;)
-    {
-      return;
-      localObject = ((AVActivity)localObject).getIntent();
-      if (localObject != null) {}
-      for (boolean bool = ((Intent)localObject).getBooleanExtra("isEnter", false); bool; bool = false)
-      {
-        miu.a().b(paramLong);
-        miu.a();
-        miu.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-        localObject = ksn.a().b(ksn.a(100, String.valueOf(this.jdField_a_of_type_Long), new int[0]));
-        if ((localObject != null) && (((kvq)localObject).jdField_g_of_type_Int == 0))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e(this.jdField_c_of_type_JavaLangString, 2, "Wrong state, finish activity");
-          }
-          b(true);
-        }
-        for (;;)
-        {
-          g(paramLong, 2131630125);
-          return;
-          this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, 3, this.jdField_a_of_type_Long, null, false);
-        }
-      }
     }
   }
   
@@ -932,27 +896,71 @@ public class DoubleVideoMeetingCtrlUI
   
   public void j(long paramLong) {}
   
-  public void k(long paramLong)
+  void k(long paramLong)
+  {
+    Object localObject = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_c_of_type_JavaLangString, 2, "processExtraData-->can not get the activity");
+      }
+      b(true);
+    }
+    for (;;)
+    {
+      return;
+      localObject = ((AVActivity)localObject).getIntent();
+      if (localObject != null) {}
+      for (boolean bool = ((Intent)localObject).getBooleanExtra("isEnter", false); bool; bool = false)
+      {
+        mtt.a().b(paramLong);
+        mtt.a();
+        mtt.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+        localObject = ldc.a().b(ldc.a(100, String.valueOf(this.jdField_a_of_type_Long), new int[0]));
+        if ((localObject != null) && (((lgf)localObject).jdField_g_of_type_Int == 0))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e(this.jdField_c_of_type_JavaLangString, 2, "Wrong state, finish activity");
+          }
+          b(true);
+        }
+        for (;;)
+        {
+          g(paramLong, 2131695812);
+          return;
+          this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, 3, this.jdField_a_of_type_Long, null, false);
+        }
+      }
+    }
+  }
+  
+  void l()
+  {
+    super.G();
+    this.jdField_a_of_type_ComTencentAvUiQavPanel.a(this.jdField_a_of_type_Msy);
+  }
+  
+  public void l(long paramLong)
   {
     if (QLog.isColorLevel()) {
       QLog.w(this.jdField_c_of_type_JavaLangString, 1, "onPause, seq[" + paramLong + "]");
     }
-    super.k(paramLong);
+    super.l(paramLong);
     if (this.jdField_a_of_type_ComTencentAvVideoController != null)
     {
       this.jdField_a_of_type_ComTencentAvVideoController.a().an = true;
       this.jdField_a_of_type_ComTencentAvVideoController.a().am = true;
-      if (((!lor.f()) || ((!badq.h((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get())) && (!this.jdField_a_of_type_ComTencentAvVideoController.a().ao))) && (this.jdField_a_of_type_ComTencentAvVideoController.a().j))
+      if (((!lzj.f()) || ((!bbev.h((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get())) && (!this.jdField_a_of_type_ComTencentAvVideoController.a().ao))) && (this.jdField_a_of_type_ComTencentAvVideoController.a().j))
       {
         this.jdField_a_of_type_ComTencentAvVideoController.v();
-        this.jdField_b_of_type_Lru.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(paramLong) });
+        this.jdField_b_of_type_Mck.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(paramLong) });
         if (this.jdField_a_of_type_ComTencentAvUiQavPanel != null) {
-          this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131306809, 8);
+          this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131372519, 8);
         }
         this.jdField_a_of_type_ComTencentAvVideoController.a().m = true;
       }
       if (this.jdField_a_of_type_ComTencentAvVideoController.a().J) {
-        super.x(paramLong);
+        super.y(paramLong);
       }
       f("OnPause");
       this.jdField_a_of_type_ComTencentAvVideoController.f();
@@ -963,24 +971,18 @@ public class DoubleVideoMeetingCtrlUI
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI$QueryPeerVideoRunnable);
   }
   
-  void l()
-  {
-    super.G();
-    this.jdField_a_of_type_ComTencentAvUiQavPanel.a(this.jdField_a_of_type_Mhz);
-  }
-  
-  public void l(long paramLong)
-  {
-    this.jdField_a_of_type_ComTencentAvVideoController.v();
-    f(paramLong, 65535);
-  }
-  
   void m()
   {
     g(true);
-    if (this.jdField_a_of_type_Lwx != null) {
-      this.jdField_a_of_type_Lwx.a(new lsh(this));
+    if (this.jdField_a_of_type_Mho != null) {
+      this.jdField_a_of_type_Mho.a(new mda(this));
     }
+  }
+  
+  public void m(long paramLong)
+  {
+    this.jdField_a_of_type_ComTencentAvVideoController.v();
+    f(paramLong, 65535);
   }
   
   public void p()
@@ -1007,7 +1009,7 @@ public class DoubleVideoMeetingCtrlUI
     int i = 0;
     while (i < this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaUtilArrayList.size())
     {
-      if (((leb)this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Long != this.jdField_b_of_type_Long) {
+      if (((los)this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Long != this.jdField_b_of_type_Long) {
         this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_e_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaUtilArrayList.get(i));
       }
       i += 1;
@@ -1024,8 +1026,8 @@ public class DoubleVideoMeetingCtrlUI
     if (QLog.isColorLevel()) {
       QLog.i(this.jdField_c_of_type_JavaLangString, 2, "cancelNotification");
     }
-    if (this.jdField_a_of_type_Mht != null) {
-      this.jdField_a_of_type_Mht.a(this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Mss != null) {
+      this.jdField_a_of_type_Mss.a(this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaLangString);
     }
     this.jdField_a_of_type_ComTencentAvVideoController.t();
   }
@@ -1043,11 +1045,11 @@ public class DoubleVideoMeetingCtrlUI
         if (QLog.isColorLevel()) {
           QLog.i(this.jdField_c_of_type_JavaLangString, 2, "showNotification quit[" + this.jdField_a_of_type_Boolean + "], inMeetingRoom[" + this.jdField_a_of_type_ComTencentAvVideoController.a().J + "]");
         }
-      } while ((this.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentAvVideoController.a().J) || (ksn.a().a()));
+      } while ((this.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentAvVideoController.a().J) || (ldc.a().a()));
       str = this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_e_of_type_JavaLangString;
       localBitmap = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0, this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_JavaLangString, null, true, true);
-    } while (this.jdField_a_of_type_Mht == null);
-    this.jdField_a_of_type_Mht.a(this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaLangString, str, localBitmap, String.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_g_of_type_Long), 48, 0, this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int);
+    } while (this.jdField_a_of_type_Mss == null);
+    this.jdField_a_of_type_Mss.a(this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaLangString, str, localBitmap, String.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_g_of_type_Long), 48, 0, this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int);
     this.jdField_a_of_type_ComTencentAvVideoController.s();
   }
 }

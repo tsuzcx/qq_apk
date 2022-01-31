@@ -1,23 +1,24 @@
-import MWIFI.SCGet3rdCloudCheck;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasResEngine.VasResDrawable;
+import org.apache.http.Header;
 
-final class bbrp
-  implements ajvk
+public class bbrp
 {
-  bbrp(QQAppInterface paramQQAppInterface, ajvj paramajvj) {}
+  public int a;
+  public String a;
+  public Header[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void a(int paramInt)
+  public bbrp(VasResDrawable paramVasResDrawable)
   {
-    if ((paramInt == 3) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajvj);
-    }
+    this.jdField_a_of_type_JavaLangString = "";
   }
-  
-  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbrp
  * JD-Core Version:    0.7.0.1
  */

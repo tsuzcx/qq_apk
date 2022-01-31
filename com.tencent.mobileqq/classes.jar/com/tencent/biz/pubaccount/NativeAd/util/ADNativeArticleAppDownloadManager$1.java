@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.NativeAd.util;
 
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import nax;
-import nrw;
+import nly;
+import odg;
 
 public class ADNativeArticleAppDownloadManager$1
   implements Runnable
 {
-  public ADNativeArticleAppDownloadManager$1(nax paramnax, ViewBase paramViewBase, int paramInt1, int paramInt2) {}
+  public ADNativeArticleAppDownloadManager$1(nly paramnly, ViewBase paramViewBase, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase instanceof nrw))) {
-      ((nrw)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase).a(this.jdField_a_of_type_Int, this.b);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase instanceof odg))) {
+      ((odg)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase).a(this.jdField_a_of_type_Int, this.b);
     }
   }
 }

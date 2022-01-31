@@ -1,13 +1,29 @@
-import android.view.MotionEvent;
-import android.view.View;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.biz.qqstory.storyHome.memory.view.StoryMemoriesListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public abstract interface utw
+public class utw
+  extends QQUIEventReceiver<utu, tcg>
 {
-  public abstract void a(MotionEvent paramMotionEvent);
+  public utw(@NonNull utu paramutu)
+  {
+    super(paramutu);
+  }
   
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2);
+  public void a(@NonNull utu paramutu, @NonNull tcg paramtcg)
+  {
+    if (paramtcg.a)
+    {
+      veg.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive delete share group member event. %s.", paramtcg);
+      utu.a(paramutu).a.h();
+    }
+  }
   
-  public abstract void onClick(View paramView);
+  public Class acceptEventClass()
+  {
+    return tcg.class;
+  }
 }
 
 

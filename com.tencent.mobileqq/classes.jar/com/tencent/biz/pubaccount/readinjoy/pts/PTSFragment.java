@@ -15,15 +15,15 @@ import com.tencent.pts.core.PTSAppInstance.Builder;
 import com.tencent.pts.core.PTSThreadUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import nio;
-import niq;
-import obz;
-import pdn;
-import pdo;
-import pdp;
-import pdq;
-import pen;
-import peo;
+import nty;
+import nua;
+import onk;
+import ppf;
+import ppg;
+import pph;
+import ppi;
+import pqh;
+import pqi;
 
 public class PTSFragment
   extends PublicBaseFragment
@@ -31,7 +31,7 @@ public class PTSFragment
   private Activity jdField_a_of_type_AndroidAppActivity;
   private PTSAppInstance jdField_a_of_type_ComTencentPtsCorePTSAppInstance;
   public final String a;
-  niq jdField_a_of_type_Niq = new pdp(this);
+  nua jdField_a_of_type_Nua = new pph(this);
   private String b;
   private String c;
   
@@ -50,8 +50,8 @@ public class PTSFragment
   
   private void a(View paramView)
   {
-    nio.a().a(9999, this.jdField_a_of_type_Niq);
-    this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance.addOnRecyclerViewScrollListener(new pdq(this));
+    nty.a().a(9999, this.jdField_a_of_type_Nua);
+    this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance.addOnRecyclerViewScrollListener(new ppi(this));
   }
   
   private void a(ViewGroup paramViewGroup)
@@ -60,31 +60,31 @@ public class PTSFragment
     while (!TextUtils.equals(this.b, "daily_feeds")) {
       return;
     }
-    paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131494329, paramViewGroup);
-    View localView1 = paramViewGroup.findViewById(2131303952);
-    View localView2 = paramViewGroup.findViewById(2131303962);
-    ((TextView)paramViewGroup.findViewById(2131312560)).setVisibility(8);
-    localView1.setOnClickListener(new pdn(this));
-    localView2.setOnClickListener(new pdo(this));
+    paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131559900, paramViewGroup);
+    View localView1 = paramViewGroup.findViewById(2131369626);
+    View localView2 = paramViewGroup.findViewById(2131369635);
+    ((TextView)paramViewGroup.findViewById(2131378384)).setVisibility(8);
+    localView1.setOnClickListener(new ppf(this));
+    localView2.setOnClickListener(new ppg(this));
   }
   
   private void b()
   {
-    pen.a("0X800A7C7", "", "", "", new peo().a("page_name", this.b).a());
+    pqh.a("0X800A7C7", "", "", "", new pqi().a("page_name", this.b).a());
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     this.jdField_a_of_type_AndroidAppActivity = getActivity();
     a();
-    paramViewGroup = paramLayoutInflater.inflate(2131494425, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.inflate(2131559995, paramViewGroup, false);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramViewGroup.setFitsSystemWindows(true);
       paramViewGroup.setPadding(0, ImmersiveUtils.getStatusBarHeight(paramLayoutInflater.getContext()), 0, 0);
     }
-    paramLayoutInflater = (ViewGroup)paramViewGroup.findViewById(2131299149);
-    a((ViewGroup)paramViewGroup.findViewById(2131311557));
+    paramLayoutInflater = (ViewGroup)paramViewGroup.findViewById(2131364709);
+    a((ViewGroup)paramViewGroup.findViewById(2131377373));
     paramBundle = PTSJSBridgeManager.getInstance().getJSBridge(this.jdField_a_of_type_AndroidAppActivity);
     this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance = new PTSAppInstance.Builder().withActivity(this.jdField_a_of_type_AndroidAppActivity).withRootView(paramLayoutInflater).withRootNodeType(0).withPTSJSBridge(paramBundle).withAppName(this.b).withAppPath(this.c).build();
     this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance.onCreate();
@@ -98,7 +98,7 @@ public class PTSFragment
     QLog.i("PTSFragment", 1, "[onDestroy]");
     super.onDestroy();
     PTSThreadUtil.runOnSubThread(new PTSFragment.1(this, this.jdField_a_of_type_AndroidAppActivity));
-    nio.a().b(9999, this.jdField_a_of_type_Niq);
+    nty.a().b(9999, this.jdField_a_of_type_Nua);
   }
   
   public void onFinish()
@@ -117,7 +117,7 @@ public class PTSFragment
   public void onResume()
   {
     super.onResume();
-    obz.a(this.jdField_a_of_type_AndroidAppActivity, true, obz.a(this.jdField_a_of_type_AndroidAppActivity));
+    onk.a(this.jdField_a_of_type_AndroidAppActivity, true, onk.a(this.jdField_a_of_type_AndroidAppActivity));
     this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance.onResume();
   }
 }

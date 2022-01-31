@@ -1,22 +1,12 @@
-import android.os.Message;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.weiyun.sdk.download.DownloadType;
 
-class biem
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface biem
 {
-  biem(bief parambief) {}
-  
-  public void onGlobalLayout()
-  {
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.getViewTreeObserver().removeGlobalOnLayoutListener(bief.a(this.a));
-    this.a.jdField_a_of_type_Bigb.a(Message.obtain(null, 20));
-  }
+  public abstract void a(bidr parambidr, DownloadType paramDownloadType, biej parambiej);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import afwc;
+import agib;
 
 public class AvatarPendantActivity$22$2
   implements Runnable
 {
-  public AvatarPendantActivity$22$2(afwc paramafwc, String paramString) {}
+  public AvatarPendantActivity$22$2(agib paramagib, String paramString) {}
   
   public void run()
   {
-    if (AvatarPendantActivity.a(this.jdField_a_of_type_Afwc.a))
+    if (AvatarPendantActivity.a(this.jdField_a_of_type_Agib.a))
     {
-      AvatarPendantActivity.b(this.jdField_a_of_type_Afwc.a, this.jdField_a_of_type_JavaLangString);
-      AvatarPendantActivity.a(this.jdField_a_of_type_Afwc.a, false);
+      AvatarPendantActivity.b(this.jdField_a_of_type_Agib.a, this.jdField_a_of_type_JavaLangString);
+      AvatarPendantActivity.a(this.jdField_a_of_type_Agib.a, false);
     }
   }
 }

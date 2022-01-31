@@ -1,44 +1,49 @@
 package com.tencent.youtu.ytagreflectlivecheck.controller;
 
+import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface;
+import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectSettings;
+import com.tencent.youtu.ytagreflectlivecheck.data.YTActReflectData;
+import com.tencent.youtu.ytagreflectlivecheck.jni.JNIUtils;
+import com.tencent.youtu.ytagreflectlivecheck.jni.YTAGReflectLiveCheckJNIInterface;
+import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.EncodeReflectData;
+import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.FullPack;
+import com.tencent.youtu.ytagreflectlivecheck.manager.ProcessManager;
 import com.tencent.youtu.ytagreflectlivecheck.manager.ProcessManager.ProcessFinishResult;
-import com.tencent.youtu.ytagreflectlivecheck.requester.LightDiffResponse;
-import com.tencent.youtu.ytagreflectlivecheck.requester.UploadVideoRequesterV2.UploadVideoResponse;
-import com.tencent.youtu.ytcommon.tools.YTException;
-import com.tencent.youtu.ytcommon.tools.wejson.WeJson;
+import com.tencent.youtu.ytagreflectlivecheck.requester.UploadVideoRequesterV3;
+import com.tencent.youtu.ytagreflectlivecheck.requester.UploadVideoRequesterV3.ActReflectResponse;
+import com.tencent.youtu.ytagreflectlivecheck.worker.DataWorker;
+import com.tencent.youtu.ytagreflectlivecheck.worker.TimeCounter;
+import com.tencent.youtu.ytcommon.tools.YTLogger;
 
 class FinishController$1
-  implements UploadVideoRequesterV2.UploadVideoResponse
+  implements UploadVideoRequesterV3.ActReflectResponse
 {
-  FinishController$1(FinishController paramFinishController, ProcessManager.ProcessFinishResult paramProcessFinishResult, long paramLong) {}
+  FinishController$1(FinishController paramFinishController, UploadVideoRequesterV3 paramUploadVideoRequesterV3, ProcessManager.ProcessFinishResult paramProcessFinishResult, long paramLong) {}
   
-  public void onFailed(int paramInt, String paramString)
+  public void onFailed(String paramString)
   {
-    this.val$checkResult.onFailed(FinishController.access$200(), "Upload video failed.[" + paramInt + "]", "Maybe net error? return code: " + paramInt + " message: " + paramString, this.val$tag);
+    TimeCounter.ins("sdk请求动作图片信息").end(false);
+    this.val$checkResult.onFailed(FinishController.access$300(), "Get ActReflectData failed", "received response: " + paramString, this.val$tag);
   }
   
-  public void onSuccess(String paramString)
+  public void onSuccess(YTActReflectData paramYTActReflectData)
   {
-    try
+    FullPack localFullPack = null;
+    TimeCounter.ins("sdk请求动作图片信息").end(false);
+    TimeCounter.ins("sdk处理反光数据").begin();
+    if (YTAGReflectLiveCheckInterface.getAGSettings().isEncodeReflectData) {}
+    for (EncodeReflectData localEncodeReflectData = YTAGReflectLiveCheckJNIInterface.getInstance().FRGetEncodeReflectData();; localEncodeReflectData = null)
     {
-      LightDiffResponse localLightDiffResponse = (LightDiffResponse)new WeJson().fromJson(paramString, LightDiffResponse.class);
-      if (localLightDiffResponse != null)
-      {
-        if ((localLightDiffResponse.reflect_live_code == 0) && (localLightDiffResponse.picture_live_code == 0))
-        {
-          this.val$checkResult.onSuccess(true, localLightDiffResponse, paramString, this.val$tag);
-          return;
-        }
-        this.val$checkResult.onSuccess(false, localLightDiffResponse, paramString, this.val$tag);
-        return;
+      TimeCounter.ins("sdk处理反光数据").end(false);
+      if (ProcessManager.dataWorker() != null) {
+        break;
       }
-    }
-    catch (Exception localException)
-    {
-      YTException.report(localException);
-      this.val$checkResult.onFailed(FinishController.access$100(), "Upload video response json decode failed.", "received response: " + paramString, this.val$tag);
+      YTLogger.e("YoutuLightLiveCheck", "On reflect success failed: dataworker is null");
       return;
+      localFullPack = YTAGReflectLiveCheckJNIInterface.getInstance().FRGetAGin();
     }
-    this.val$checkResult.onFailed(FinishController.access$000(), "Upload video call back decode return nil.", "received response: " + paramString, this.val$tag);
+    paramYTActReflectData = JNIUtils.getActionReflectLiveReq(localFullPack, localEncodeReflectData, paramYTActReflectData, ProcessManager.dataWorker().mRgbConfigCode);
+    this.val$uploadVideoRequester.request(paramYTActReflectData, new FinishController.1.1(this));
   }
 }
 

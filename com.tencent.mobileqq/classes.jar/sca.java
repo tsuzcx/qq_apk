@@ -1,16 +1,16 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
-import com.tencent.widget.GridView;
+import android.view.ViewGroup;
+import java.util.ArrayList;
 
-public class sca
+class sca
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public VideoFeedsAlphaMaskView a;
-  GridView jdField_a_of_type_ComTencentWidgetGridView;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  ArrayList<ViewGroup> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  
+  private sca(sbx paramsbx) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sca
  * JD-Core Version:    0.7.0.1
  */

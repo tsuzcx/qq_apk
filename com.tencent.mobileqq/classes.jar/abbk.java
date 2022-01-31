@@ -1,28 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
-class abbk
-  implements Animation.AnimationListener
+public class abbk
+  implements View.OnClickListener
 {
-  abbk(abbj paramabbj, boolean paramBoolean) {}
+  public abbk(FontSettingActivity paramFontSettingActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Boolean) && (abbj.a(this.jdField_a_of_type_Abbj) != null) && (abbj.a(this.jdField_a_of_type_Abbj).size() >= 2)) {
-      abbj.a(this.jdField_a_of_type_Abbj).sendEmptyMessageDelayed(1688002, 1400L);
+    if (ajwe.a(this.a, FontSettingActivity.a(this.a), true)) {
+      ajwe.a();
     }
-    if (abbj.a(this.jdField_a_of_type_Abbj) != null)
-    {
-      abbj.a(this.jdField_a_of_type_Abbj).a();
-      abbj.a(this.jdField_a_of_type_Abbj, null);
-    }
+    this.a.finish();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,30 +1,23 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.HotRecommendFeedPlayInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
 
 public class tjo
-  extends tjg<HotRecommendFeedPlayInfo>
 {
-  public tjo(HotRecommendFeedPlayInfo paramHotRecommendFeedPlayInfo)
+  public int a;
+  public VideoCollectionItem a;
+  
+  public tjo(int paramInt, VideoCollectionItem paramVideoCollectionItem)
   {
-    super(paramHotRecommendFeedPlayInfo);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem = paramVideoCollectionItem;
   }
   
-  public uiw a(String paramString)
+  public String toString()
   {
-    paramString = new uiw(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
-    paramString.b = ((HotRecommendFeedPlayInfo)this.a).mPullType;
-    return paramString;
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, tjy paramtjy)
-  {
-    ArrayList localArrayList = new ArrayList();
-    tjh localtjh = new tjh(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, new uiw(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
-    localtjh.a.b = ((HotRecommendFeedPlayInfo)this.a).mPullType;
-    localArrayList.add(localtjh);
-    paramtjy.a(new ErrorMessage(), localArrayList, true);
+    StringBuilder localStringBuilder = new StringBuilder().append("StateVideoCollectionItem{itemKey=").append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key).append(", operation=");
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (String str = "delete";; str = "update") {
+      return str + '}';
+    }
   }
 }
 

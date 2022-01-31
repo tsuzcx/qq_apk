@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark.API;
 
-import adaj;
-import alat;
+import adll;
+import alpf;
 import com.tencent.ark.ark;
 import com.tencent.ark.ark.Container;
 import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
@@ -11,7 +11,7 @@ import java.lang.ref.WeakReference;
 public class ArkAppModuleReg$ModuleQQ$15
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$15(alat paramalat, long paramLong) {}
+  public ArkAppModuleReg$ModuleQQ$15(alpf paramalpf, long paramLong) {}
   
   public void run()
   {
@@ -27,11 +27,11 @@ public class ArkAppModuleReg$ModuleQQ$15
           return;
         } while (!(BaseActivity.sTopActivity instanceof ArkFullScreenAppActivity));
         localArkFullScreenAppActivity = (ArkFullScreenAppActivity)BaseActivity.sTopActivity;
-        localObject = adaj.a((ark.Container)localObject);
+        localObject = adll.a((ark.Container)localObject);
       } while (localObject == null);
-      localObject = (adaj)((WeakReference)localObject).get();
+      localObject = (adll)((WeakReference)localObject).get();
     } while (localObject == null);
-    localArkFullScreenAppActivity.a((adaj)localObject, true);
+    localArkFullScreenAppActivity.a((adll)localObject, true);
   }
 }
 

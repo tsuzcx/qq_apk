@@ -1,33 +1,16 @@
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+
 public class una
-  extends umy
+  implements unp
 {
-  public Object a;
-  public String a;
+  public una(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public una(Object paramObject)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "InitParamSimpleStep";
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    if (this.a.a != null) {
+      this.a.a.a(paramString);
+    }
   }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    d();
-  }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 

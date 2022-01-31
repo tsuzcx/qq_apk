@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import acnx;
-import acos;
+import acyq;
+import aczl;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.animation.AnimationUtils;
-import babp;
-import beel;
+import bbct;
+import bfmf;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 
@@ -20,8 +20,8 @@ public class MoveToBottomScroller
   float jdField_a_of_type_Float = 1.0F;
   public int a;
   private long jdField_a_of_type_Long;
-  acnx jdField_a_of_type_Acnx;
-  acos jdField_a_of_type_Acos;
+  acyq jdField_a_of_type_Acyq;
+  aczl jdField_a_of_type_Aczl;
   ListView jdField_a_of_type_ComTencentWidgetListView;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
@@ -47,12 +47,12 @@ public class MoveToBottomScroller
     jdField_b_of_type_Int = 50;
   }
   
-  public MoveToBottomScroller(ListView paramListView, acnx paramacnx)
+  public MoveToBottomScroller(ListView paramListView, acyq paramacyq)
   {
     this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
-    this.jdField_a_of_type_Acnx = paramacnx;
+    this.jdField_a_of_type_Acyq = paramacyq;
     this.jdField_c_of_type_Int = ViewConfiguration.get(this.jdField_a_of_type_ComTencentWidgetListView.getContext()).getScaledMinimumFlingVelocity();
-    if (babp.d() / 1048576L > 512L) {}
+    if (bbct.d() / 1048576L > 512L) {}
     for (;;)
     {
       this.jdField_b_of_type_Boolean = bool;
@@ -130,13 +130,13 @@ public class MoveToBottomScroller
           i1 = 1;
         }
         int i2;
-        if ((this.jdField_a_of_type_ComTencentWidgetListView.getFooterViewsCount() > 0) && (this.jdField_a_of_type_Acnx.jdField_a_of_type_Int >= 0)) {
+        if ((this.jdField_a_of_type_ComTencentWidgetListView.getFooterViewsCount() > 0) && (this.jdField_a_of_type_Acyq.jdField_a_of_type_Int >= 0)) {
           if (this.jdField_d_of_type_Int > 1)
           {
             i2 = this.jdField_d_of_type_Int - 1;
             label448:
             this.jdField_d_of_type_Int = i2;
-            this.n = this.jdField_a_of_type_Acnx.jdField_a_of_type_Int;
+            this.n = this.jdField_a_of_type_Acyq.jdField_a_of_type_Int;
             label464:
             i2 = this.n;
             this.n = (this.jdField_d_of_type_Int * this.jdField_a_of_type_ComTencentWidgetListView.getHeight() / i1 + i2);
@@ -173,16 +173,16 @@ public class MoveToBottomScroller
     }
   }
   
-  public void a(acos paramacos)
+  public void a(aczl paramaczl)
   {
-    this.jdField_a_of_type_Acos = paramacos;
+    this.jdField_a_of_type_Aczl = paramaczl;
   }
   
   public void b()
   {
     this.jdField_c_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Acos != null) {
-      this.jdField_a_of_type_Acos.ao_();
+    if (this.jdField_a_of_type_Aczl != null) {
+      this.jdField_a_of_type_Aczl.al_();
     }
     this.jdField_a_of_type_ComTencentWidgetListView.removeCallbacks(this);
   }
@@ -298,7 +298,7 @@ public class MoveToBottomScroller
         this.jdField_c_of_type_Float -= this.jdField_b_of_type_Float * i3;
         i1 = (int)(this.n - this.jdField_c_of_type_Float * (this.m - i3) / 2.0F);
         break;
-        i1 = (int)(beel.a(i3 / this.m) * this.n);
+        i1 = (int)(bfmf.a(i3 / this.m) * this.n);
         break;
         i1 = (int)(i3 / this.m * this.n);
         break;

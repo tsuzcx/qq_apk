@@ -1,15 +1,15 @@
 package com.tencent.biz.videostory.video;
 
-import wyl;
+import xhl;
 
 public class MediaCodecGLFrameFetcher$2
   implements Runnable
 {
-  public MediaCodecGLFrameFetcher$2(wyl paramwyl) {}
+  public MediaCodecGLFrameFetcher$2(xhl paramxhl) {}
   
   public void run()
   {
-    wyl.b(this.this$0);
+    xhl.b(this.this$0);
   }
 }
 

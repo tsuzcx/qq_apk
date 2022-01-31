@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.emosm;
 
-import anab;
-import anac;
-import andr;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -11,17 +8,20 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
-import anfc;
+import anqj;
+import anqk;
+import antz;
+import anvl;
 import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
 
 public class Client
-  implements andr
+  implements antz
 {
   public static final String tag = "Q.emoji.web.Client";
-  private ServiceConnection mConnection = new anab(this);
+  private ServiceConnection mConnection = new anqj(this);
   public boolean mIsBound;
-  public final Messenger mMessenger = new Messenger(new anac(this, Looper.getMainLooper()));
+  public final Messenger mMessenger = new Messenger(new anqk(this, Looper.getMainLooper()));
   public Messenger mService = null;
   
   public void doBindService(Context paramContext)
@@ -85,12 +85,12 @@ public class Client
   
   public void onDisconnectWithService()
   {
-    anfc.a().b();
+    anvl.a().b();
   }
   
   public void onPushMsgFromServer(Bundle paramBundle)
   {
-    anfc.a().d(paramBundle);
+    anvl.a().d(paramBundle);
   }
   
   public boolean onReqToServer(Bundle paramBundle)
@@ -133,7 +133,7 @@ public class Client
   {
     try
     {
-      anfc.a().c(paramBundle);
+      anvl.a().c(paramBundle);
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)

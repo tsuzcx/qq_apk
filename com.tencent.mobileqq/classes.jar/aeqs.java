@@ -1,23 +1,22 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class aeqs
-  implements DialogInterface.OnClickListener
+class aeqs
+  implements View.OnClickListener
 {
-  public aeqs(boolean paramBoolean, Context paramContext) {}
+  aeqs(aeqd paramaeqd, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
-    }
+    paramView = ((HotChatManager)this.jdField_a_of_type_Aeqd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60)).a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Aeqd.jdField_a_of_type_Ajyv.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeqs
  * JD-Core Version:    0.7.0.1
  */

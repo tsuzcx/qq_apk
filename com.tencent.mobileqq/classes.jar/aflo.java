@@ -1,33 +1,77 @@
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.app.FriendListHandler.AddBatchPhoneFriendResult;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aflo
+  extends ajxl
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
-  private TextView c;
+  public aflo(SystemMsgListView paramSystemMsgListView) {}
   
-  aflo(afll paramafll, View paramView)
+  public void onAddBatchPhoneFriend(boolean paramBoolean, ArrayList<FriendListHandler.AddBatchPhoneFriendResult> paramArrayList)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131302772);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131303580));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131303586));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131311622));
-    this.b = ((TextView)paramView.findViewById(2131299354));
-    this.c = ((TextView)paramView.findViewById(2131305156));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131299468));
+    if (paramBoolean) {
+      SystemMsgListView.a(this.a).c();
+    }
+  }
+  
+  public void onGetConnectionsPerson(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetConnectionsPerson " + paramBoolean + " " + paramInt1 + " " + paramInt2);
+    }
+    if (paramBoolean)
+    {
+      localafml = SystemMsgListView.a(this.a).a();
+      if ((localafml != null) && (localafml.a()) && (localafml.a == paramInt2) && (!SystemMsgListView.a(this.a, paramInt2, paramInt3))) {
+        SystemMsgListView.a(this.a).a(0L);
+      }
+    }
+    while (paramInt1 != 1205)
+    {
+      afml localafml;
+      return;
+    }
+    SystemMsgListView.a(this.a).a(0L);
+  }
+  
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetMayKnowRecommend " + paramBoolean);
+    }
+    if (paramBoolean) {
+      SystemMsgListView.a(this.a).c();
+    }
+  }
+  
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  {
+    if (paramBoolean) {
+      SystemMsgListView.a(this.a).c();
+    }
+  }
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  {
+    if (paramBoolean1)
+    {
+      paramString = paramBundle.getString("uin");
+      int i = paramBundle.getInt("source_id");
+      paramBundle = paramBundle.getString("extra");
+      if (((i == 3006) || (i == 3075)) && ("ContactMatchBuilder".equals(paramBundle))) {
+        this.a.a(paramString);
+      }
+      if (bldc.a(i)) {
+        SystemMsgListView.a(this.a).c();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aflo
  * JD-Core Version:    0.7.0.1
  */

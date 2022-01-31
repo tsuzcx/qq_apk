@@ -1,192 +1,651 @@
 import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.app.ActivityManager;
+import android.app.ActivityManager.MemoryInfo;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.SparseIntArray;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.data.CmGamePushItem;
-import com.tencent.mobileqq.apollo.process.ui.framework.CmGameFloatView;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.ims.antiphishingAlertQuery.RequestPack;
+import com.tencent.ims.antiphishingAlertQuery.ResponsePack;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
-import org.json.JSONObject;
+import com.tencent.smtt.sdk.WebView;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 public class aird
-  implements begw
+  extends WebViewPlugin
+  implements BusinessObserver
 {
-  public aird(CmGameFloatView paramCmGameFloatView) {}
+  private int jdField_a_of_type_Int = 1;
+  private airh jdField_a_of_type_Airh = new airh();
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private bcjd jdField_a_of_type_Bcjd = new bcjd();
+  BrowserAppInterface jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface = null;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  private String jdField_a_of_type_JavaLangString = "Antiphishing";
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = 1;
+  private boolean jdField_b_of_type_Boolean = true;
+  private final int c = 0;
+  private final int d = 1;
   
-  public void OnClick(View paramView, int paramInt)
+  public aird()
   {
-    CmGameFloatView.a(this.a).dismiss();
-    switch (CmGameFloatView.a(this.a).get(paramInt))
+    this.mPluginNameSpace = "InputClickEvent";
+  }
+  
+  private String a()
+  {
+    if (this.mRuntime != null)
     {
-    case 4: 
-    case 7: 
-    case 8: 
-    default: 
-      return;
-    case 0: 
-      if ((this.a.jdField_a_of_type_Aipj != null) && (this.a.jdField_a_of_type_Aipj.a()))
-      {
-        QLog.d("cmframe_CmGameFloatView", 1, "pack up game");
-        this.a.f();
-        if (this.a.jdField_a_of_type_Ailv != null) {
-          this.a.jdField_a_of_type_Ailv.c();
-        }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) || ((this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter != 0) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter != 1) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter != 7))) {
-          break label1088;
-        }
+      AppInterface localAppInterface = this.mRuntime.a();
+      localObject = localAppInterface;
+      if (localAppInterface == null) {
+        localObject = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
       }
-      break;
+      if (localObject == null) {
+        return null;
+      }
     }
-    label291:
-    label1082:
-    label1088:
-    for (paramInt = 0;; paramInt = 1)
+    for (Object localObject = ((AppInterface)localObject).getApplication().getFilesDir().getAbsolutePath() + File.separator + "antiphishingconfig.xml";; localObject = null) {
+      return localObject;
+    }
+  }
+  
+  private void a(int paramInt)
+  {
+    try
     {
-      int i;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null)
+      axqw.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "UserChoose", 0, paramInt, "", "", "", "");
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  private void a(String paramString1, int paramInt, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, paramInt, paramString2);
+    }
+  }
+  
+  private boolean a(Context paramContext, String paramString, int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        a(this.jdField_a_of_type_JavaLangString, 2, "Toast Already Shown! yoffset ");
+      }
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      a(this.jdField_a_of_type_JavaLangString, 2, "Show Toast! yoffset =  " + paramInt);
+    }
+    this.jdField_a_of_type_Boolean = true;
+    if ((this.jdField_a_of_type_AndroidWidgetFrameLayout == null) && (this.mRuntime != null) && (this.mRuntime.a() != null)) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.mRuntime.a().findViewById(2131362566));
+    }
+    if ((this.jdField_a_of_type_Bcjd != null) && (this.jdField_a_of_type_AndroidWidgetFrameLayout != null))
+    {
+      this.jdField_a_of_type_Bcjd.a(2131720325, 3000, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+      this.jdField_a_of_type_Bcjd.a(paramString);
+      return true;
+    }
+    return false;
+  }
+  
+  private boolean a(String paramString)
+  {
+    int i = 0;
+    if (paramString == null) {
+      return false;
+    }
+    paramString.toLowerCase();
+    try
+    {
+      String str1 = new URL(paramString).getHost();
+      if (QLog.isColorLevel()) {
+        a(this.jdField_a_of_type_JavaLangString, 2, " Is QQ Domain, input url  : " + nax.b(paramString, new String[0]) + " Domain = " + str1);
+      }
+      if ((str1.endsWith("qq.com")) || (str1.endsWith("tencent.com")) || (str1.endsWith("imqq.com")) || (str1.endsWith("wanggou.com")) || (str1.endsWith("paipai.com")) || (str1.endsWith("tenpay.com")) || (str1.endsWith("yixun.com")) || (str1.endsWith("weiyun.com")) || (str1.endsWith("soso.com")) || (str1.endsWith("myapp.com")) || (str1.endsWith("wechat.com")) || (str1.endsWith("gaopeng.com")) || (str1.endsWith("pengyou.com")) || (str1.endsWith("51buy.com")) || (str1.endsWith("weishi.com")) || (str1.endsWith("qqumall.com")) || (str1.endsWith("vip.surex.cn")))
       {
-        i = this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter;
-        label212:
-        if (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) {
-          break label291;
+        bool1 = true;
+        if (!a())
+        {
+          bool2 = bool1;
+          if (!bool1)
+          {
+            bool2 = bool1;
+            if (this.jdField_a_of_type_Airh != null)
+            {
+              ArrayList localArrayList = this.jdField_a_of_type_Airh.a();
+              bool2 = bool1;
+              if (localArrayList != null)
+              {
+                bool2 = bool1;
+                if (i < localArrayList.size())
+                {
+                  if (!str1.endsWith((String)localArrayList.get(i))) {
+                    break label379;
+                  }
+                  if (QLog.isColorLevel()) {
+                    a(this.jdField_a_of_type_JavaLangString, 2, " Is trust Domain, match config, input url  : " + paramString + " Domain = " + str1);
+                  }
+                  bool2 = true;
+                }
+              }
+            }
+          }
+          return bool2;
         }
       }
-      for (paramView = String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId);; paramView = "")
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      for (;;)
       {
-        bajr.a(null, "cmshow", "Apollo", "miniature_game", i, paramInt, new String[] { paramView });
-        return;
-        paramView = this.a.jdField_a_of_type_Aipj.a();
-        if ((paramView == null) || (paramView.isFinishing())) {
+        boolean bool1;
+        String str2 = "";
+        continue;
+        label379:
+        i += 1;
+        continue;
+        boolean bool2 = bool1;
+        if (QLog.isColorLevel())
+        {
+          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Low Memory !");
+          bool2 = bool1;
+          continue;
+          bool1 = false;
+        }
+      }
+    }
+  }
+  
+  private boolean a(String paramString, airg paramairg)
+  {
+    if (paramString == null) {
+      return false;
+    }
+    String str = paramString.trim().toLowerCase().replace(" ", "");
+    if (str.endsWith("@qq.com")) {}
+    for (int i = 1;; i = 0)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+      for (paramString = this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface;; paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)
+      {
+        if (paramString == null) {
+          break label98;
+        }
+        paramString = paramString.getApplication().getAllAccounts();
+        if ((paramString != null) && (paramString.size() != 0)) {
+          break label100;
+        }
+        if (!QLog.isColorLevel()) {
           break;
         }
-        paramView.finish();
-        break;
-        i = 0;
-        break label212;
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uin number is zero!");
+        return false;
       }
-      if ((this.a.jdField_a_of_type_Aipj != null) && (this.a.jdField_a_of_type_Aipj.a()) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null)) {}
+      label98:
+      break;
+      label100:
+      int j = 0;
+      label103:
+      Object localObject;
+      if (j < paramString.size())
+      {
+        localObject = (SimpleAccount)paramString.get(j);
+        if (localObject != null) {
+          break label158;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "sAccount == null!");
+        }
+      }
+      label158:
+      do
+      {
+        do
+        {
+          j += 1;
+          break label103;
+          break;
+          localObject = ((SimpleAccount)localObject).getUin();
+        } while (localObject == null);
+        if (((String)localObject).equalsIgnoreCase(str))
+        {
+          paramairg.jdField_a_of_type_JavaLangString = ((String)localObject);
+          paramairg.jdField_a_of_type_Int = 1;
+          return true;
+        }
+      } while ((i != 1) || (!str.contains((CharSequence)localObject)));
+      paramairg.jdField_a_of_type_JavaLangString = ((String)localObject);
+      paramairg.jdField_a_of_type_Int = 2;
+      return true;
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    int i = this.jdField_a_of_type_Int + 1;
+    this.jdField_a_of_type_Int = i;
+    if (i > 1000000) {
+      this.jdField_a_of_type_Int = 1;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, Long paramLong, int paramInt5)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Send a Packet to Server!, xffset = " + paramInt1 + " yoffset = " + paramInt2 + " nWidth = " + paramInt3 + " nHeight = " + paramInt4 + " url=" + paramString + " uin=" + paramLong + " AccountType = " + paramInt5);
+    }
+    if ((paramLong.longValue() == 0L) || (paramString == null)) {}
+    for (;;)
+    {
+      return;
+      antiphishingAlertQuery.RequestPack localRequestPack = new antiphishingAlertQuery.RequestPack();
+      localRequestPack.u32_app_type.set(2);
+      localRequestPack.u64_input_uin.set(paramLong.longValue());
+      localRequestPack.u32_account_type.set(paramInt5);
+      localRequestPack.u32_ctrl_height.set(paramInt4);
+      localRequestPack.u32_ctrl_width.set(paramInt3);
+      localRequestPack.i32_xoffset.set(paramInt1);
+      localRequestPack.i32_yoffset.set(paramInt2);
+      localRequestPack.str_url.set(paramString);
+      localRequestPack.u32_seq.set(this.jdField_a_of_type_Int);
+      localRequestPack.u32_proto_ver.set(1);
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+      for (paramString = this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface; (paramString != null) && (this.mRuntime.a() != null); paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)
+      {
+        paramLong = new NewIntent(this.mRuntime.a().getApplicationContext(), mxh.class);
+        paramLong.putExtra("uin", paramString.getAccount());
+        paramLong.putExtra("data", localRequestPack.toByteArray());
+        paramLong.putExtra("cmd", "SecuritySvc.UrlQuery");
+        paramLong.setObserver(this);
+        paramString.startServlet(paramLong);
+        return;
+      }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (a(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        a(this.jdField_a_of_type_JavaLangString, 2, "IS QQ Domain! ");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      a(this.jdField_a_of_type_JavaLangString, 2, "The url is not QQ Domain and load js into webview");
+    }
+    callJs("(function(){var objs = document.getElementsByTagName(\"input\");for(var i=0;i<objs.length;i++){if(objs[i].type!='password'){objs[i].addEventListener('blur',function(e){  var valText =e.srcElement.value;var rect  = this.getBoundingClientRect();  var xoffset = rect.left + (document.documentElement.scrollLeft || document.body.scrollLeft || 0 ); var yoffset = rect.top + (document.documentElement.scrollTop || document.body.scrollTop || 0 ); var xWidth = rect.right - rect.left; var yHeight = rect.bottom -rect.top; valText = valText.replace(\"/\", \"_\"); if(valText.indexOf(\"/\") == -1){ var para = \"jsbridge://InputClickEvent/onClickInputCtrl/0/\" + valText + \"/\" + xoffset + \"/\" + yoffset + \"/\" + xWidth + \"/\" + yHeight;  window.open(para);}}, false);}}})();");
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      if (QLog.isColorLevel()) {
+        a(this.jdField_a_of_type_JavaLangString, 2, "Dlg Already Shown! ");
+      }
+    }
+    Activity localActivity;
+    do
+    {
+      return;
+      this.jdField_a_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "On Show Dialog !");
+      }
+      localActivity = this.mRuntime.a();
+    } while (localActivity == null);
+    Object localObject1;
+    if (paramString4.equals(""))
+    {
+      localObject1 = null;
+      if (!paramString3.equals("")) {
+        break label121;
+      }
+    }
+    label121:
+    for (Object localObject2 = null;; localObject2 = new airf(this))
+    {
+      bbcv.a(localActivity, 230, paramString1, paramString2, paramString3, paramString4, (DialogInterface.OnClickListener)localObject1, (DialogInterface.OnClickListener)localObject2).show();
+      return;
+      localObject1 = new aire(this);
+      break;
+    }
+  }
+  
+  public void a(String paramString, String... paramVarArgs)
+  {
+    if (paramVarArgs.length < 5) {
+      if (QLog.isColorLevel()) {
+        QLog.d("antiphishing", 2, "Parameter size < 5");
+      }
+    }
+    String str1;
+    String str2;
+    String str3;
+    CustomWebView localCustomWebView;
+    do
+    {
+      return;
+      paramString = paramVarArgs[0];
+      str1 = paramVarArgs[1];
+      str2 = paramVarArgs[2];
+      str3 = paramVarArgs[3];
+      paramVarArgs = paramVarArgs[4];
+      if (QLog.isColorLevel()) {
+        QLog.d("antiphishing", 2, "value:" + paramString + " xoffset:" + str1 + " yoffset:" + str2 + " xWidth:" + str3 + " yHeight:" + paramVarArgs);
+      }
+      localCustomWebView = this.mRuntime.a();
+    } while (localCustomWebView == null);
+    a(paramString, localCustomWebView.getUrl(), str1, str2, str3, paramVarArgs);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      a(this.jdField_a_of_type_JavaLangString, 2, "bShow =  " + paramBoolean);
+    }
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+    for (Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface; localObject == null; localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) {
+      return true;
+    }
+    localObject = (ActivityManager)((AppRuntime)localObject).getApplication().getSystemService("activity");
+    ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
+    ((ActivityManager)localObject).getMemoryInfo(localMemoryInfo);
+    return localMemoryInfo.lowMemory;
+  }
+  
+  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    if (this.jdField_a_of_type_Boolean == true) {
+      if (QLog.isColorLevel()) {
+        a(this.jdField_a_of_type_JavaLangString, 2, "Already Shown Tips!!");
+      }
+    }
+    airg localairg;
+    do
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        a(this.jdField_a_of_type_JavaLangString, 2, "Js is call back!");
+      }
+      localairg = new airg(this);
+      if (a(paramString1, localairg)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    a(this.jdField_a_of_type_JavaLangString, 2, "The input value is not uin!");
+    return false;
+    try
+    {
+      long l = Long.parseLong(localairg.jdField_a_of_type_JavaLangString);
+      int i = (int)Float.parseFloat(paramString3);
+      int j = (int)Float.parseFloat(paramString4);
+      int k = (int)Float.parseFloat(paramString5);
+      float f = Float.parseFloat(paramString6);
+      a(i, j, k, (int)f, paramString2, Long.valueOf(l), localairg.jdField_a_of_type_Int);
+      return true;
+    }
+    catch (Exception paramString1) {}
+    return false;
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map paramMap)
+  {
+    if (paramLong == 8589934594L)
+    {
+      a();
+      a(paramString);
+    }
+    do
+    {
+      return false;
+      if (paramLong == 8589934597L)
+      {
+        a(false);
+        return false;
+      }
+    } while ((paramLong == 8589934595L) || (paramLong != 2L));
+    a(true);
+    return false;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (("InputClickEvent".equalsIgnoreCase(paramString2)) && ("onClickInputCtrl".equalsIgnoreCase(paramString3)))
+    {
+      a(paramString1, paramVarArgs);
+      return true;
+    }
+    return false;
+  }
+  
+  public void onActivityReady()
+  {
+    airh localairh = this.jdField_a_of_type_Airh;
+    String str = a();
+    if (this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface != null) {}
+    for (Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getApplication();; localObject = this.mRuntime.a())
+    {
+      localairh.a(str, (Context)localObject);
+      return;
+    }
+  }
+  
+  public void onAppRuntimeReady(AppInterface paramAppInterface)
+  {
+    if ((paramAppInterface instanceof QQAppInterface)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramAppInterface);
+    }
+    while (!(paramAppInterface instanceof BrowserAppInterface)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface = ((BrowserAppInterface)paramAppInterface);
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Received AlertQuery Server Packet! type = " + paramInt);
+    }
+    if (!this.jdField_b_of_type_Boolean) {}
+    Context localContext;
+    String str;
+    Object localObject1;
+    Object localObject3;
+    Object localObject2;
+    do
+    {
+      do
+      {
+        return;
+      } while ((!paramBoolean) || (this.mRuntime.a() == null));
+      localContext = this.mRuntime.a().getApplicationContext();
+      str = localContext.getString(2131719126);
+      localObject1 = localContext.getString(2131719125);
+      localObject3 = localContext.getString(2131719124);
+      localObject2 = localContext.getString(2131719123);
+    } while ((!paramBoolean) || (paramBundle == null));
+    antiphishingAlertQuery.ResponsePack localResponsePack = new antiphishingAlertQuery.ResponsePack();
+    for (;;)
+    {
       try
       {
-        paramView = new JSONObject();
-        paramView.put("gameId", this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId);
-        paramView.put("isSelectFriend", 1);
-        paramView.put("gameMode", this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameMode);
-        paramView.put("roomId", this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.roomId);
-        this.a.jdField_a_of_type_Aipj.b(paramView.toString());
-        if (this.a.jdField_a_of_type_Ailv != null) {
-          this.a.jdField_a_of_type_Ailv.b();
+        localResponsePack.mergeFrom(paramBundle.getByteArray("data"));
+        paramInt = 0;
+        int i = 0;
+        if (localResponsePack.u32_alert_type.has()) {
+          paramInt = localResponsePack.u32_alert_type.get();
         }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null)
+        if (localResponsePack.u32_default_wording.has()) {
+          i = localResponsePack.u32_default_wording.get();
+        }
+        if (paramInt == 1)
         {
-          paramView = String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId);
-          bajr.a(null, "cmshow", "Apollo", "clk_share", 0, 0, new String[] { paramView });
+          if (QLog.isColorLevel()) {
+            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Safe Url! No ALert !");
+          }
+          paramInt = 0;
+          paramBundle = null;
+          localObject1 = null;
+          if (localResponsePack.u32_svr_url_ver.has()) {
+            paramInt = localResponsePack.u32_svr_url_ver.get();
+          }
+          if (localResponsePack.str_download_link.has()) {
+            paramBundle = localResponsePack.str_download_link.get();
+          }
+          if (localResponsePack.str_hash.has()) {
+            localObject1 = localResponsePack.str_hash.get();
+          }
+          if ((paramInt != 0) && (paramBundle != null) && (localObject1 != null)) {
+            continue;
+          }
+          if (!QLog.isDevelopLevel()) {
+            break;
+          }
+          QLog.d(this.jdField_a_of_type_JavaLangString, 4, "onReceive: types unknow !");
+          return;
+        }
+        if (i == 2)
+        {
+          if ((paramInt == 2) && (localResponsePack.str_toast.has()))
+          {
+            localObject4 = localResponsePack.str_toast.get().toString();
+            str = "";
+            paramBundle = (Bundle)localObject2;
+            localObject2 = str;
+            if (QLog.isColorLevel()) {
+              QLog.d(this.jdField_a_of_type_JavaLangString, 2, "toasttext:" + (String)localObject4 + "strDialogTitle" + (String)localObject1 + "strDialogText" + (String)localObject3 + " strDialogLeftBtnText:" + (String)localObject2 + " StrDialogRightBtnText:" + paramBundle);
+            }
+            i = 0;
+            if (localResponsePack.u32_seq.has()) {
+              i = localResponsePack.u32_seq.get();
+            }
+            if (i != this.jdField_a_of_type_Int) {
+              continue;
+            }
+            if (paramInt == 2)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onReceive: Show Tips");
+              }
+              a(localContext, (String)localObject4, 104);
+            }
+          }
+          else
+          {
+            if (paramInt != 3) {
+              break label753;
+            }
+            paramBundle = (Bundle)localObject1;
+            if (localResponsePack.str_dialog_title.has()) {
+              paramBundle = localResponsePack.str_dialog_title.get().toString();
+            }
+            localObject1 = localObject3;
+            if (localResponsePack.str_dialog_text.has()) {
+              localObject1 = localResponsePack.str_dialog_text.get().toString();
+            }
+            if (localResponsePack.str_dialog_btn_left.has())
+            {
+              localObject2 = localResponsePack.str_dialog_btn_left.get().toString();
+              if (localResponsePack.str_dialog_btn_right.has())
+              {
+                localObject3 = localResponsePack.str_dialog_btn_right.get().toString();
+                localObject4 = paramBundle;
+                paramBundle = (Bundle)localObject3;
+                localObject3 = localObject1;
+                localObject1 = localObject4;
+                localObject4 = str;
+              }
+            }
+            else
+            {
+              localObject2 = "";
+              continue;
+            }
+            localObject4 = paramBundle;
+            paramBundle = "";
+            localObject3 = localObject1;
+            localObject1 = localObject4;
+            localObject4 = str;
+            continue;
+          }
+          if (paramInt == 3)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onReceive: Show Dlg");
+            }
+            a((String)localObject1, (String)localObject3, (String)localObject2, paramBundle);
+            continue;
+          }
+          if (!QLog.isDevelopLevel()) {
+            continue;
+          }
+          QLog.d(this.jdField_a_of_type_JavaLangString, 4, "onReceive: UnknowType ");
+          continue;
+          if (!QLog.isDevelopLevel()) {
+            continue;
+          }
+          QLog.d(this.jdField_a_of_type_JavaLangString, 4, "onReceive: Sequence Changed!");
+          continue;
+          if (this.jdField_a_of_type_Airh == null) {
+            break;
+          }
+          this.jdField_a_of_type_Airh.a(paramInt, paramBundle, (String)localObject1, localContext);
           return;
         }
       }
-      catch (Exception paramView)
+      catch (Exception paramBundle)
       {
-        for (;;)
-        {
-          QLog.e("cmframe_CmGameFloatView", 1, "share game error, e=", paramView);
-          continue;
-          paramView = "";
-        }
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null)
-      {
-        paramInt = this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) {
-          break label631;
-        }
-      }
-      label631:
-      for (paramView = String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId);; paramView = "")
-      {
-        bajr.a(null, "cmshow", "Apollo", "about_game", paramInt, 0, new String[] { paramView });
-        paramView = new Intent();
-        paramView.putExtra("extra_startcheckparam", this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
-        PublicFragmentActivity.a(this.a.jdField_a_of_type_Aipj.a(), paramView, ApolloGameInfoFragment.class, 10000);
-        if (this.a.jdField_a_of_type_Ailv == null) {
-          break;
-        }
-        this.a.jdField_a_of_type_Ailv.d();
-        return;
-        paramInt = 0;
-        break label518;
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) {
-        break;
-      }
-      ApolloGameUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId, null);
-      bajr.a(null, "cmshow", "Apollo", "clk_create_shortcut", 0, 0, new String[] { String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId) });
-      return;
-      this.a.b();
-      return;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) || (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.pushItem == null)) {
-        break;
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.pushItem.is_show_red == 1)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.pushItem.is_show_red = 0;
-        CmGameFloatView.a(this.a).setVisibility(8);
-        if (CmGameFloatView.a(this.a) != null) {
-          CmGameFloatView.a(this.a).a(CmGameFloatView.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.pushItem.content, 0);
-        }
-        paramView = new Bundle();
-        paramView.putSerializable("CmGamePushItem", this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.pushItem);
-        QIPCClientHelper.getInstance().callServer("cm_game_module", "action_update_game_push", paramView, null);
-      }
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.pushItem.url;
-      Activity localActivity = (Activity)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
-      if ((!TextUtils.isEmpty(paramView)) && (localActivity != null)) {
-        aing.b(localActivity, paramView);
-      }
-      for (paramInt = 0;; paramInt = 1)
-      {
-        bajr.a(null, "cmshow", "Apollo", "clk_promote", this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.src, paramInt, new String[] { String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId), this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.pushItem.msg_id });
         return;
       }
-      paramView = BaseApplicationImpl.getApplication().getSharedPreferences("cmgame_sp", 0);
-      boolean bool2 = paramView.getBoolean("game_debug_tool_switch", true);
-      paramView = paramView.edit();
-      if (!bool2) {}
-      for (boolean bool1 = true;; bool1 = false)
-      {
-        paramView.putBoolean("game_debug_tool_switch", bool1).commit();
-        if (this.a.jdField_a_of_type_MqqUtilWeakReference == null) {
-          break;
-        }
-        paramView = (Activity)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
-        if ((paramView == null) || (!(paramView instanceof ApolloGameActivity))) {
-          break;
-        }
-        paramView = (ApolloGameActivity)paramView;
-        if ((bool2) || (!aikb.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam))) {
-          break label1082;
-        }
-        paramView.b(true);
-        return;
-      }
-      paramView.b(false);
-      return;
+      label753:
+      Object localObject4 = "";
+      paramBundle = (Bundle)localObject2;
+      localObject2 = localObject4;
+      localObject4 = str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aird
  * JD-Core Version:    0.7.0.1
  */

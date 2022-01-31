@@ -1,62 +1,92 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateEngine.TagItemInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class baqq
-  extends baqp
+  extends QIPCModule
 {
-  private void a(String paramString1, long paramLong, String paramString2)
+  public static baqq a;
+  private baqs a;
+  
+  private baqq()
   {
-    QLog.e("EmptyCallback", 1, "call empty method:" + paramString1 + " with " + paramLong + "_" + paramString2, new Exception());
+    super("Module_CheckInServer");
   }
   
-  protected void _onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  public static baqq a()
   {
-    a("_onCompleted", paramLong, paramString1);
+    if (jdField_a_of_type_Baqq == null) {}
+    try
+    {
+      if (jdField_a_of_type_Baqq == null) {
+        jdField_a_of_type_Baqq = new baqq();
+      }
+      return jdField_a_of_type_Baqq;
+    }
+    finally {}
   }
   
-  protected void _onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
+  private void a()
   {
-    a("_onProgress", paramLong1, paramString1);
+    if (this.jdField_a_of_type_Baqs != null)
+    {
+      this.jdField_a_of_type_Baqs.d();
+      this.jdField_a_of_type_Baqs = null;
+    }
   }
   
-  public boolean canUpdate(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2)
+  public void a(boolean paramBoolean, int paramInt, Bundle paramBundle)
   {
-    a("canUpdate", paramLong, paramString1);
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("Module_CheckInServer", 2, "notifyUploadResult callbackId" + paramInt + ", data = " + paramBundle.toString());
+    }
+    paramBundle = EIPCResult.createResult(0, paramBundle);
+    a();
+    callbackResult(paramInt, paramBundle);
   }
   
-  public boolean deleteFiles(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
+  public void onAccountChange()
   {
-    a("deleteFiles", paramLong, paramString);
-    return true;
+    super.onAccountChange();
+    a();
   }
   
-  public void download(QQAppInterface paramQQAppInterface, long paramLong, String paramString, baof parambaof, boolean paramBoolean)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    a("download", paramLong, paramString);
-  }
-  
-  public long getBID()
-  {
-    return 0L;
-  }
-  
-  public VasQuickUpdateEngine.TagItemInfo getItemInfo(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
-  {
-    a("getItemInfo", paramLong, paramString);
-    return null;
-  }
-  
-  public boolean isFileExists(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
-  {
-    a("isFileExists", paramLong, paramString);
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("Module_CheckInServer", 2, "action = " + paramString + ", params = " + paramBundle + ",callbackId=" + paramInt);
+    }
+    a();
+    baqp localbaqp;
+    if (("ACTION_UPLOAD_PIC".equals(paramString)) || ("ACTION_UPLOAD_VIDEO".equals(paramString)))
+    {
+      localbaqp = new baqp();
+      if ("ACTION_UPLOAD_PIC".equals(paramString))
+      {
+        localbaqp.jdField_a_of_type_JavaLangString = paramBundle.getString("BUNDLE_NAME_FILEPATH");
+        paramString = new baqr(localbaqp, paramInt);
+        this.jdField_a_of_type_Baqs = paramString;
+        paramString.a();
+      }
+    }
+    for (;;)
+    {
+      return null;
+      localbaqp.jdField_a_of_type_JavaLangString = paramBundle.getString("BUNDLE_NAME_FILEPATH");
+      localbaqp.b = paramBundle.getString("BUNDLE_NAME_COVER");
+      localbaqp.jdField_a_of_type_Long = paramBundle.getLong("BUNDLE_NAME_VIDEOTIME");
+      paramString = new baqu(localbaqp, paramInt);
+      break;
+      if ("ACTION_CANCEL".equals(paramString)) {
+        a();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     baqq
  * JD-Core Version:    0.7.0.1
  */

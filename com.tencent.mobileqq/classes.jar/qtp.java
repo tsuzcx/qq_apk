@@ -1,10 +1,4 @@
-public class qtp
-{
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-}
+class qtp {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

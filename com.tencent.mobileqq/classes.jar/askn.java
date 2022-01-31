@@ -1,39 +1,29 @@
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
+import mqq.manager.Manager;
 
-public class askn
-  implements asnb
+public abstract interface askn
+  extends Manager
 {
-  public askn(StoryPlayController paramStoryPlayController) {}
+  public abstract int a();
   
-  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    int j = 1;
-    int i = 1;
-    if (paramInt1 != 100)
-    {
-      paramString1 = this.a.jdField_a_of_type_Asna.a.a;
-      if (this.a.jdField_a_of_type_Asna.c()) {}
-      for (;;)
-      {
-        asms.a(paramString1, i, String.valueOf(paramInt1), String.valueOf(paramInt2));
-        return;
-        i = 2;
-      }
-    }
-    asms.e();
-    paramString1 = StoryPlayController.a(this.a);
-    if (this.a.jdField_a_of_type_Asna.c()) {}
-    for (paramInt1 = j;; paramInt1 = 2)
-    {
-      asms.a(paramString1, paramInt1, this.a.jdField_a_of_type_Boolean);
-      return;
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     askn
  * JD-Core Version:    0.7.0.1
  */

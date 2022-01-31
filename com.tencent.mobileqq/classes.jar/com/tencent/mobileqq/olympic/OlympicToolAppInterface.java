@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.olympic;
 
-import ajfb;
-import ajfe;
-import akiy;
-import akoc;
-import alie;
+import ajtd;
+import ajtg;
+import akxk;
+import alco;
+import alws;
 import android.content.Intent;
 import android.os.Bundle;
-import athe;
-import athf;
-import atmq;
-import awqx;
-import axrr;
-import axso;
+import aufd;
+import aufe;
+import auko;
+import axqw;
+import ayry;
+import aysv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -34,11 +34,11 @@ public class OlympicToolAppInterface
   extends AppInterface
   implements IToolProcEventListener
 {
-  athe jdField_a_of_type_Athe = null;
-  public athf a;
-  private axso jdField_a_of_type_Axso;
-  public HashMap<Integer, ajfb> a;
-  public List<ajfe> a;
+  aufd jdField_a_of_type_Aufd = null;
+  public aufe a;
+  private aysv jdField_a_of_type_Aysv;
+  public HashMap<Integer, ajtd> a;
+  public List<ajtg> a;
   Map<Integer, Manager> jdField_a_of_type_JavaUtilMap = new HashMap(20);
   
   public OlympicToolAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
@@ -46,42 +46,42 @@ public class OlympicToolAppInterface
     super(paramBaseApplicationImpl, paramString);
   }
   
-  public ajfb a(int paramInt)
+  public ajtd a(int paramInt)
   {
-    ajfb localajfb1 = (ajfb)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    if (localajfb1 == null) {}
+    ajtd localajtd1 = (ajtd)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    if (localajtd1 == null) {}
     for (;;)
     {
-      ajfb localajfb2;
+      ajtd localajtd2;
       synchronized (this.jdField_a_of_type_JavaUtilHashMap)
       {
-        localajfb2 = (ajfb)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-        if (localajfb2 == null) {
+        localajtd2 = (ajtd)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+        if (localajtd2 == null) {
           break label106;
         }
-        return localajfb2;
-        if (localajfb1 != null) {
-          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localajfb1);
+        return localajtd2;
+        if (localajtd1 != null) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localajtd1);
         }
-        return localajfb1;
+        return localajtd1;
       }
-      Object localObject2 = new alie(this);
+      Object localObject2 = new alws(this);
       continue;
-      localObject2 = new akiy(this);
+      localObject2 = new akxk(this);
       continue;
       return localObject2;
       label106:
-      localObject2 = localajfb2;
+      localObject2 = localajtd2;
       switch (paramInt)
       {
       }
-      localObject2 = localajfb2;
+      localObject2 = localajtd2;
     }
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Athf.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    this.jdField_a_of_type_Aufe.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
   }
   
   public void addManager(int paramInt, Manager paramManager)
@@ -92,15 +92,15 @@ public class OlympicToolAppInterface
     this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramManager);
   }
   
-  public void addObserver(ajfe paramajfe)
+  public void addObserver(ajtg paramajtg)
   {
-    addObserver(paramajfe, false);
+    addObserver(paramajtg, false);
   }
   
-  public void addObserver(ajfe paramajfe, boolean paramBoolean)
+  public void addObserver(ajtg paramajtg, boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramajfe)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramajfe);
+    if (!this.jdField_a_of_type_JavaUtilList.contains(paramajtg)) {
+      this.jdField_a_of_type_JavaUtilList.add(paramajtg);
     }
   }
   
@@ -114,7 +114,7 @@ public class OlympicToolAppInterface
     return AppSetting.a();
   }
   
-  public List<ajfe> getBusinessObserver(int paramInt)
+  public List<ajtg> getBusinessObserver(int paramInt)
   {
     if (paramInt == 0) {
       return this.jdField_a_of_type_JavaUtilList;
@@ -127,7 +127,7 @@ public class OlympicToolAppInterface
     return getAccount();
   }
   
-  public atmq getEntityManagerFactory(String paramString)
+  public auko getEntityManagerFactory(String paramString)
   {
     return null;
   }
@@ -137,12 +137,12 @@ public class OlympicToolAppInterface
     return "module_olympic";
   }
   
-  public axrr getNetEngine(int paramInt)
+  public ayry getNetEngine(int paramInt)
   {
-    if (this.jdField_a_of_type_Axso == null) {
-      this.jdField_a_of_type_Axso = new axso();
+    if (this.jdField_a_of_type_Aysv == null) {
+      this.jdField_a_of_type_Aysv = new aysv();
     }
-    return this.jdField_a_of_type_Axso.a(this, paramInt);
+    return this.jdField_a_of_type_Aysv.a(this, paramInt);
   }
   
   public void onBeforeExitProc()
@@ -158,7 +158,7 @@ public class OlympicToolAppInterface
       QLog.i("olympic.OlympicToolAppInterface", 2, "onCreate");
     }
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Athf = new athf(this);
+    this.jdField_a_of_type_Aufe = new aufe(this);
     this.jdField_a_of_type_JavaUtilList = new Vector();
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
     AudioHelper.a(this.app, getLongAccountUin());
@@ -167,7 +167,7 @@ public class OlympicToolAppInterface
   public void onDestroy()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("olympic.OlympicToolAppInterface", 2, "onDestroy ,FaceScanModelsLoader.hasFaceModelInit = " + akoc.b);
+      QLog.i("olympic.OlympicToolAppInterface", 2, "onDestroy ,FaceScanModelsLoader.hasFaceModelInit = " + alco.b);
     }
     super.onDestroy();
     if (this.mHwEngine != null) {
@@ -191,25 +191,25 @@ public class OlympicToolAppInterface
     return false;
   }
   
-  public void removeObserver(ajfe paramajfe)
+  public void removeObserver(ajtg paramajtg)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(paramajfe);
+    this.jdField_a_of_type_JavaUtilList.remove(paramajtg);
   }
   
   public void reportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
   {
-    awqx.b(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    axqw.b(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
   }
   
   public void sendToService(ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_Athf.a(paramToServiceMsg);
+    this.jdField_a_of_type_Aufe.a(paramToServiceMsg);
   }
   
   public void start(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Athe = new athe(this, null);
-    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_Athe);
+    this.jdField_a_of_type_Aufd = new aufd(this, null);
+    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_Aufd);
     super.start(paramBoolean);
   }
 }

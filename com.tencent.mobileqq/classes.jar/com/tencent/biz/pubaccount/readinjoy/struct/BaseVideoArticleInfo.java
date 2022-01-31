@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
-import atmo;
-import atnz;
+import aukm;
+import aulx;
 import com.tencent.mobileqq.pb.CodedInputStreamMicro;
 import com.tencent.mobileqq.pb.CodedOutputStreamMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -20,25 +20,25 @@ import java.util.Iterator;
 import java.util.List;
 import localpb.readinjoy.Readinjoy.ArticleSummary;
 import localpb.readinjoy.Readinjoy.VideoData;
-import pow;
-import psc;
-import qij;
+import qas;
+import qea;
+import quo;
 
 public class BaseVideoArticleInfo
-  extends atmo
+  extends aukm
   implements Parcelable, Cloneable, Comparable<BaseVideoArticleInfo>
 {
-  public static final Parcelable.Creator<BaseVideoArticleInfo> CREATOR = new pow();
+  public static final Parcelable.Creator<BaseVideoArticleInfo> CREATOR = new qas();
   public static final String TAG = "VideoArticleInfo";
   public int adsJumpType;
   public String adsJumpUrl;
   public long algorithmID;
   public String articleContentUrl;
   public long articleID;
-  @atnz
+  @aulx
   public List<BaseVideoArticleInfo> articleList;
   public byte[] articleListBytes;
-  @atnz
+  @aulx
   public List<Readinjoy.ArticleSummary> articleListObj;
   public int articleStyle;
   public byte[] businessInfo;
@@ -47,7 +47,7 @@ public class BaseVideoArticleInfo
   public int commentCount;
   public int feedsType;
   public boolean isUgc;
-  @atnz
+  @aulx
   public List<SimpleChannelInfo> labelList;
   public String pagePicUrl;
   public String pushContext;
@@ -64,10 +64,10 @@ public class BaseVideoArticleInfo
   public String title;
   public int uptime;
   public int videoCount;
-  @atnz
-  public psc videoData;
+  @aulx
+  public qea videoData;
   public byte[] videoDataBytes;
-  @atnz
+  @aulx
   public Readinjoy.VideoData videoDataObj;
   public int videoPlayCount;
   public String videoReportInfo;
@@ -137,7 +137,7 @@ public class BaseVideoArticleInfo
         try
         {
           localVideoData.mergeFrom(this.videoDataBytes);
-          this.videoData = qij.a(localVideoData);
+          this.videoData = quo.a(localVideoData);
         }
         catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
         {
@@ -193,7 +193,7 @@ public class BaseVideoArticleInfo
     {
       this.videoDataObj.mergeFrom(this.videoDataBytes);
       if (this.videoDataObj != null) {
-        this.videoData = qij.a(this.videoDataObj);
+        this.videoData = quo.a(this.videoDataObj);
       }
       if ((this.articleListBytes != null) && (this.articleListBytes.length > 0))
       {
@@ -219,7 +219,7 @@ public class BaseVideoArticleInfo
         int i = 0;
         while (i < this.articleListObj.size())
         {
-          this.articleList.add(qij.a((Readinjoy.ArticleSummary)this.articleListObj.get(i)));
+          this.articleList.add(quo.a((Readinjoy.ArticleSummary)this.articleListObj.get(i)));
           i += 1;
         }
       }
@@ -238,7 +238,7 @@ public class BaseVideoArticleInfo
   {
     if (this.videoData != null)
     {
-      this.videoDataObj = qij.a(this.videoData);
+      this.videoDataObj = quo.a(this.videoData);
       if (this.videoDataObj != null) {
         this.videoDataBytes = this.videoDataObj.toByteArray();
       }
@@ -253,7 +253,7 @@ public class BaseVideoArticleInfo
       {
         localObject2 = (BaseVideoArticleInfo)((Iterator)localObject1).next();
         if (localObject2 != null) {
-          this.articleListObj.add(qij.a((BaseVideoArticleInfo)localObject2));
+          this.articleListObj.add(quo.a((BaseVideoArticleInfo)localObject2));
         }
       }
       if (!this.articleListObj.isEmpty())

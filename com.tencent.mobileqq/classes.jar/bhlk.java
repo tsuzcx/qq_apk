@@ -1,19 +1,23 @@
-import android.support.annotation.NonNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.share.QZoneShareActivity;
+import cooperation.qzone.share.QZoneShareActivity.4.2;
 
-class bhlk
-  implements bhmf
+public class bhlk
+  implements DialogInterface.OnClickListener
 {
-  bhlk(bhlj parambhlj) {}
+  public bhlk(QZoneShareActivity.4.2 param2) {}
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return azjg.b(paramString);
+    QLog.e("QZoneShare", 1, "dialog click ");
+    this.a.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhlk
  * JD-Core Version:    0.7.0.1
  */

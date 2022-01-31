@@ -1,10 +1,16 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-public abstract interface adzb
+public class adzb
+  extends acun
 {
-  public abstract boolean a(PhotoListPanel paramPhotoListPanel);
+  public RelativeLayout a;
+  public DoodleMsgLayout a;
+  public MessageProgressView a;
   
-  public abstract boolean b(PhotoListPanel paramPhotoListPanel);
+  public adzb(ScribbleItemBuilder paramScribbleItemBuilder) {}
 }
 
 

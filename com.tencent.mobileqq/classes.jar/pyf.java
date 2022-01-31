@@ -1,51 +1,24 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager.5;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPolymericPullAnimatorView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import org.json.JSONObject;
 
 public class pyf
-  implements azgl
+  implements View.OnClickListener
 {
-  public pyf(ReadInJoyWebDataManager.5 param5) {}
+  public pyf(ComponentPolymericPullAnimatorView paramComponentPolymericPullAnimatorView, ArticleInfo paramArticleInfo, JSONObject paramJSONObject) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramJSONObject != null)
+    onk.e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericPullAnimatorView.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.d);
+    String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId + "";
+    if (onk.o(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {}
+    for (paramView = "1";; paramView = "2")
     {
-      this.a.this$0.a(this.a.b, Integer.toString(pye.b));
-      try
-      {
-        if ((this.a.jdField_a_of_type_Pyj != null) && ((this.a.jdField_a_of_type_Pyj instanceof pyj))) {
-          this.a.jdField_a_of_type_Pyj.a(paramJSONObject);
-        }
-        paramBundle = paramJSONObject.toString();
-        pye.a(this.a.this$0, this.a.b, paramBundle);
-        if (this.a.jdField_a_of_type_OrgJsonJSONObject != null)
-        {
-          this.a.jdField_a_of_type_OrgJsonJSONObject.put("data", paramBundle);
-          this.a.this$0.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject.toString(), "", this.a.jdField_a_of_type_OrgJsonJSONObject);
-        }
-      }
-      catch (JSONException paramBundle)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:storeParams putData JSONException :" + paramBundle);
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result :" + paramJSONObject);
-      }
-    }
-    do
-    {
+      noo.a(null, "CliOper", "", "", "0X800982B", "0X800982B", 0, 0, str, paramView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId + "", this.jdField_a_of_type_OrgJsonJSONObject.toString(), false);
       return;
-      this.a.this$0.a(this.a.b, Integer.toString(pye.a));
-    } while (!QLog.isColorLevel());
-    QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result null");
+    }
   }
 }
 

@@ -21,6 +21,8 @@ import android.widget.FrameLayout.LayoutParams;
 import com.tencent.viola.annotation.JSMethod;
 import com.tencent.viola.annotation.VComponentProp;
 import com.tencent.viola.commons.IReportDelegate;
+import com.tencent.viola.compatible.VComponentCompat;
+import com.tencent.viola.compatible.VListCompat;
 import com.tencent.viola.core.ViolaEnvironment;
 import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.core.ViolaInstance.ViolaPageListener;
@@ -86,39 +88,44 @@ public class VRecyclerList
   
   private void calAndSetContentSize()
   {
-    int i = 0;
-    DomObject localDomObject = getDomObject();
-    if (localDomObject != null)
-    {
-      if (this.mOrientation == 1)
-      {
-        int k;
-        for (j = 0; i < localDomObject.getChildCount(); j = k)
-        {
-          k = j;
-          if (localDomObject.getChild(i) != null) {
-            k = (int)(j + localDomObject.getChild(i).getLayoutHeight());
-          }
-          i += 1;
-        }
-        setContentWidth((int)localDomObject.getLayoutWidth());
-        setContentHeight(j);
-      }
-    }
-    else {
-      return;
-    }
-    i = 0;
     int j = 0;
-    while (i < getChildCount())
+    DomObject localDomObject1 = getDomObject();
+    if (localDomObject1 == null) {}
+    boolean bool;
+    int k;
+    int i;
+    DomObject localDomObject2;
+    do
     {
-      VComponent localVComponent = (VComponent)this.mChildren.get(i);
-      float f = j;
-      j = (int)(localVComponent.getDomObject().getLayoutWidth() + f);
-      i += 1;
+      return;
+      int m = localDomObject1.getDomChildCount();
+      bool = isVertical();
+      k = 0;
+      i = 0;
+      if (k >= m) {
+        break;
+      }
+      localDomObject2 = localDomObject1.getChild(k);
+    } while (localDomObject2 == null);
+    if (bool) {
+      i = (int)(i + localDomObject2.getLayoutHeight());
     }
-    setContentWidth(j);
-    setContentHeight((int)localDomObject.getLayoutHeight());
+    for (;;)
+    {
+      k += 1;
+      break;
+      j = (int)(j + localDomObject2.getLayoutWidth());
+    }
+    if (bool) {
+      j = (int)localDomObject1.getLayoutWidth();
+    }
+    for (;;)
+    {
+      super.setContentWidth(j);
+      super.setContentHeight(i);
+      return;
+      i = (int)localDomObject1.getLayoutHeight();
+    }
   }
   
   private float calFinalDistance(float paramFloat, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
@@ -371,25 +378,31 @@ public class VRecyclerList
     if (this.mRealParentView == null) {
       return;
     }
-    this.mRealParentView.add(((VRecyclerView)getHostView()).getRefreshMoveOberver());
+    this.mRealParentView.addInFirst(((VRecyclerView)getHostView()).getRefreshMoveOberver());
     this.mRealParentView.setContentViewProvider(paramContentViewProvider);
   }
   
-  private void setFooterView(View paramView)
+  private void setFooterView(VFooterLayout paramVFooterLayout)
   {
-    if (this.mRealParentView == null) {
+    if (this.mRealParentView == null) {}
+    do
+    {
       return;
-    }
-    this.mRealParentView.setFooterView(paramView);
+      this.mRealParentView.setFooterView(paramVFooterLayout);
+    } while (!isCompatMode());
+    paramVFooterLayout.setListener((VListCompat)getCompator());
   }
   
-  private void setHeadView(View paramView)
+  private void setHeadView(VRefreshLayout paramVRefreshLayout)
   {
-    if (this.mRealParentView == null) {
+    if (this.mRealParentView == null) {}
+    do
+    {
       return;
-    }
-    this.mRealParentView.add(((VRefreshLayout)paramView).getRefreshMoveOberver());
-    this.mRealParentView.setHeaderView(paramView);
+      this.mRealParentView.add(paramVRefreshLayout.getRefreshMoveOberver());
+      this.mRealParentView.setHeaderView(paramVRefreshLayout);
+    } while (!isCompatMode());
+    paramVRefreshLayout.addOnHeaderStateChangeListener((VListCompat)getCompator());
   }
   
   private void setReadParentOverFlow(boolean paramBoolean)
@@ -574,6 +587,14 @@ public class VRecyclerList
     this.mNeedNotifyDataChange = false;
   }
   
+  @JSMethod
+  public void callExposureReport()
+  {
+    if (isCompatMode()) {
+      ((VListCompat)getCompator()).callExposureReport();
+    }
+  }
+  
   public void createChildViewAt(int paramInt)
   {
     Object localObject = rearrangeIndexAndGetChild(paramInt);
@@ -582,13 +603,18 @@ public class VRecyclerList
       localObject = (VComponent)((Pair)localObject).first;
       ((VComponent)localObject).createView();
       if ((((VComponent)localObject).getRealView() instanceof VRefreshLayout)) {
-        setHeadView(((VComponent)localObject).getRealView());
+        setHeadView((VRefreshLayout)((VComponent)localObject).getRealView());
       }
       setContentView((VRefreshContentView.ContentViewProvider)getHostView());
       if ((((VComponent)localObject).getRealView() instanceof VFooterLayout)) {
-        setFooterView(((VComponent)localObject).getRealView());
+        setFooterView((VFooterLayout)((VComponent)localObject).getRealView());
       }
     }
+  }
+  
+  public <T extends VComponentCompat> T createCompator()
+  {
+    return new VListCompat(this, this.mDomObj);
   }
   
   public void createViewImpl()
@@ -698,7 +724,7 @@ public class VRecyclerList
         mHorizontalRecycledViewPool = new RecyclerView.RecycledViewPool();
       }
       localVRecyclerView.setRecycledViewPool(mHorizontalRecycledViewPool);
-      OverScrollHelper.setUpOverScroll(localVRecyclerView, 1);
+      OverScrollHelper.setUpOverScroll(localVRecyclerView, 1, localVRecyclerView);
       localVRecyclerView.setHorizontalScrollBarEnabled(false);
     }
     for (;;)
@@ -746,6 +772,11 @@ public class VRecyclerList
   public boolean isReuse()
   {
     return this.mOrientation == 0;
+  }
+  
+  public boolean isVertical()
+  {
+    return this.mOrientation == 1;
   }
   
   public void judgeIfNeedAppearEvent(VCell paramVCell)
@@ -915,6 +946,9 @@ public class VRecyclerList
     if (this.mOrientation == 1) {
       tryScrollEvent(paramVRecyclerView, paramInt3, paramInt4);
     }
+    if (isCompatMode()) {
+      ((VListCompat)getCompator()).onScroll();
+    }
     listFireScrollEvent("scroll", paramInt1, paramInt2);
     onRichGestureScroll(paramInt1, paramInt2);
   }
@@ -926,17 +960,20 @@ public class VRecyclerList
   
   public void onScrollStateChanged(VRecyclerView paramVRecyclerView, int paramInt1, int paramInt2)
   {
-    boolean bool = true;
+    if (isCompatMode()) {
+      ((VListCompat)getCompator()).onScrollStateChanged(paramInt1);
+    }
     String str;
     if ((getInstance() != null) && (getInstance().getViolaPageListener() != null) && (this.mOrientation == 1))
     {
       paramVRecyclerView = getInstance().getViolaPageListener();
       str = getRef();
       if (this.mOrientation != 1) {
-        break label84;
+        break label102;
       }
     }
-    for (;;)
+    label102:
+    for (boolean bool = true;; bool = false)
     {
       paramVRecyclerView.onScrollStateChanged(str, paramInt1, paramInt2, bool);
       paramVRecyclerView = ViolaSDKManager.getInstance().getReportDelegate();
@@ -944,8 +981,6 @@ public class VRecyclerList
         paramVRecyclerView.dropFrameMonitor(paramInt1, ViolaEnvironment.LIST_KANDIAN_VIOLA);
       }
       return;
-      label84:
-      bool = false;
     }
   }
   
@@ -1088,7 +1123,7 @@ public class VRecyclerList
       if (paramVRecyclerView != null) {
         ((VRecyclerView)this.mHost).setLayoutParams(paramVRecyclerView);
       }
-      setContentWidth(paramInt1);
+      calAndSetContentSize();
       return;
       if ((((VRecyclerView)this.mHost).getParent() instanceof VRefreshViewGroup))
       {

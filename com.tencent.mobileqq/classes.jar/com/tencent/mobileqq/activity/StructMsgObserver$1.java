@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import abtf;
-import acgk;
+import acdr;
+import acqz;
 
 public class StructMsgObserver$1
   implements Runnable
 {
-  public StructMsgObserver$1(abtf paramabtf, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  public StructMsgObserver$1(acdr paramacdr, String paramString1, int paramInt, String paramString2, String paramString3) {}
   
   public void run()
   {
-    acgk.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
+    acqz.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 

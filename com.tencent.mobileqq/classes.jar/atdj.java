@@ -1,151 +1,36 @@
-import android.os.Bundle;
-import android.util.Base64;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.oidb_0x5e1.RspBody;
-import tencent.im.oidb.oidb_0x87a.RspBody;
-import tencent.im.oidb.oidb_0x87c.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
-public class atdj
-  implements BusinessObserver
+class atdj
+  implements bcij<oidb_0x8e4.RspBody>
 {
-  public void a() {}
+  atdj(atdi paramatdi) {}
   
-  public void a(String paramString1, int paramInt, String paramString2) {}
-  
-  public void a(String paramString1, String paramString2) {}
-  
-  public void a(oidb_0x5e1.RspBody paramRspBody) {}
-  
-  public void a(oidb_0x87a.RspBody paramRspBody) {}
-  
-  public void a(oidb_0x87c.RspBody paramRspBody) {}
-  
-  public void a(byte[] paramArrayOfByte) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    String str = paramBundle.getString("cmd");
-    Object localObject;
-    if (!paramBoolean)
+    if (paramInt == 0)
     {
-      localObject = paramBundle.getString("dataErrorMsg", "");
-      paramInt = paramBundle.getInt("dataErrorCode");
-      QLog.e("LoginVerifyObserver", 1, "LoginVerifyObserver onReceive error, code is : " + paramInt + ", error msg is : " + (String)localObject + " cmd is : " + str);
-      a(str, paramInt, (String)localObject);
+      paramRspBody = paramRspBody.poi_info;
+      String str = paramRspBody.bytes_uid.get().toStringUtf8();
+      this.a.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
     }
     do
     {
       return;
-      QLog.d("LoginVerifyObserver", 1, "LoginVerifyObserver success, cmd is : " + str);
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle == null)
-      {
-        QLog.e("LoginVerifyObserver", 1, "LoginVerifyObserver onReceive success but data is null");
-        a(str, -1, "data is null");
-        return;
-      }
-      if ("getTmpkey".equals(str))
-      {
-        try
-        {
-          paramBundle = new JSONObject(new String(paramBundle));
-          paramInt = paramBundle.optInt("ret", -1);
-          if (paramInt == 0)
-          {
-            a(paramBundle.optString("openid"), paramBundle.optString("tmpkey"));
-            return;
-          }
-        }
-        catch (JSONException paramBundle)
-        {
-          QLog.e("LoginVerifyObserver", 1, "getTmpKey error : JSONException " + paramBundle.getMessage());
-          a(str, -1, paramBundle.getMessage());
-          return;
-        }
-        paramBundle = paramBundle.optString("errmsg");
-        a(str, paramInt, paramBundle);
-        QLog.e("LoginVerifyObserver", 1, "getTmpError, ret : " + paramInt + "  error : " + paramBundle);
-        return;
-      }
-      if ("getAppConfig".equals(str))
-      {
-        try
-        {
-          paramBundle = new JSONObject(new String(paramBundle));
-          paramInt = paramBundle.optInt("ret", -1);
-          if (paramInt == 0)
-          {
-            a(Base64.decode(paramBundle.optString("appconf_rsp"), 11));
-            return;
-          }
-        }
-        catch (JSONException paramBundle)
-        {
-          QLog.e("LoginVerifyObserver", 1, "getAppconf error : JSONException " + paramBundle.getMessage());
-          a(str, -1, paramBundle.getMessage());
-          return;
-        }
-        paramBundle = paramBundle.optString("errmsg");
-        a(str, paramInt, paramBundle);
-        QLog.e("LoginVerifyObserver", 1, "getAppconf, ret : " + paramInt + "  error : " + paramBundle);
-        return;
-      }
-      try
-      {
-        localObject = new oidb_sso.OIDBSSOPkg();
-        ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom(paramBundle);
-        paramInt = ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get();
-        if (paramInt != 0)
-        {
-          paramBundle = ((oidb_sso.OIDBSSOPkg)localObject).str_error_msg.get();
-          a(str, paramInt, paramBundle);
-          QLog.e("LoginVerifyObserver", 1, "sso result error, ret : " + paramInt + "  error : " + paramBundle);
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        a(str, -1, paramBundle.getMessage());
-        return;
-      }
-      paramBundle = ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get().toByteArray();
-      if ("OidbSvc.0x5e1_295".equals(str))
-      {
-        localObject = new oidb_0x5e1.RspBody();
-        ((oidb_0x5e1.RspBody)localObject).mergeFrom(paramBundle);
-        a((oidb_0x5e1.RspBody)localObject);
-        return;
-      }
-      if ("OidbSvc.0x87c_108".equals(str))
-      {
-        localObject = new oidb_0x87c.RspBody();
-        ((oidb_0x87c.RspBody)localObject).mergeFrom(paramBundle);
-        a((oidb_0x87c.RspBody)localObject);
-        return;
-      }
-      if ("OidbSvc.0x87a_108".equals(str))
-      {
-        localObject = new oidb_0x87a.RspBody();
-        ((oidb_0x87a.RspBody)localObject).mergeFrom(paramBundle);
-        a((oidb_0x87a.RspBody)localObject);
-        return;
-      }
-    } while (!"OidbSvc.0x587_63".equals(str));
-    a();
+      this.a.a.a(paramInt, paramRspBody, ajyc.a(2131705062));
+    } while (!QLog.isColorLevel());
+    QLog.d("GameRoomInviteActivity", 2, "start game failed! code = " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atdj
  * JD-Core Version:    0.7.0.1
  */

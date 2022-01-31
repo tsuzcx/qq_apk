@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import ajjy;
-import babr;
-import bafb;
+import ajyc;
+import bbcv;
+import bbgg;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class TaskManager$24$1
@@ -12,7 +12,7 @@ class TaskManager$24$1
   
   public void run()
   {
-    babr.a(BaseActivity.sTopActivity, 232, this.val$title, this.val$message, "OK", ajjy.a(2131648939), new TaskManager.24.1.1(this), new TaskManager.24.1.2(this)).show();
+    bbcv.a(BaseActivity.sTopActivity, 232, this.val$title, this.val$message, "OK", ajyc.a(2131714728), new TaskManager.24.1.1(this), new TaskManager.24.1.2(this)).show();
   }
 }
 

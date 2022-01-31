@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.BaseVMPeakActivity;
+import mqq.app.QQPermissionCallback;
 
 class bhtj
-  implements View.OnClickListener
+  implements QQPermissionCallback
 {
-  bhtj(bhtg parambhtg) {}
+  bhtj(bhth parambhth, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bhtg.a(this.a).finish();
+    bbcv.b(this.jdField_a_of_type_Bhth.mRuntime.a());
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bhth.a(this.jdField_a_of_type_Bhth, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhtj
  * JD-Core Version:    0.7.0.1
  */

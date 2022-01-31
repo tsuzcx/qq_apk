@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class absz
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  public absz(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  public absz(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 4) {
-      this.a.finish();
-    }
-    return false;
+    this.a.a.dismiss();
   }
 }
 

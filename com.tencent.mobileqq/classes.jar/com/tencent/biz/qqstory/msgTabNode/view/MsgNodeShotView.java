@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.msgTabNode.view;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -15,16 +15,16 @@ import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsg
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
-import stg;
-import stk;
-import urk;
-import vms;
+import tgc;
+import tgg;
+import veg;
+import vzo;
 
 public class MsgNodeShotView
   extends StoryMsgNodeFrameLayout
 {
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private stk jdField_a_of_type_Stk;
+  private tgg jdField_a_of_type_Tgg;
   
   public MsgNodeShotView(@NonNull Context paramContext)
   {
@@ -43,17 +43,17 @@ public class MsgNodeShotView
     return this.jdField_b_of_type_AndroidWidgetTextView.getText().toString();
   }
   
-  public stk a()
+  public tgg a()
   {
-    return this.jdField_a_of_type_Stk;
+    return this.jdField_a_of_type_Tgg;
   }
   
   protected void a(String paramString)
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845559);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845742);
     }
-    vms.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView, paramString, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, "msg_tab_thumb");
+    vzo.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView, paramString, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, "msg_tab_thumb");
   }
   
   public void c()
@@ -63,30 +63,30 @@ public class MsgNodeShotView
   
   public void d()
   {
-    Object localObject = ((stg)QQStoryContext.a().getManager(252)).a();
-    if ((localObject != null) && (((stk)localObject).a()))
+    Object localObject = ((tgc)QQStoryContext.a().getManager(252)).a();
+    if ((localObject != null) && (((tgg)localObject).a()))
     {
-      this.jdField_a_of_type_Stk = new stk();
-      this.jdField_a_of_type_Stk.a((stk)localObject);
-      urk.c("Q.qqstory.config.takevideo", "bindData config=" + ((stk)localObject).b + " id=" + ((stk)localObject).d);
-      setNodeName(this.jdField_a_of_type_Stk.b, false);
+      this.jdField_a_of_type_Tgg = new tgg();
+      this.jdField_a_of_type_Tgg.a((tgg)localObject);
+      veg.c("Q.qqstory.config.takevideo", "bindData config=" + ((tgg)localObject).b + " id=" + ((tgg)localObject).d);
+      setNodeName(this.jdField_a_of_type_Tgg.b, false);
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845559);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845742);
       }
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      if (this.jdField_a_of_type_Stk.a.endsWith(".gif"))
+      if (this.jdField_a_of_type_Tgg.a.endsWith(".gif"))
       {
         ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "msg_tab_thumb";
         ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
-        ((URLDrawable.URLDrawableOptions)localObject).mGifRoundCorner = vms.a(getContext(), 3.0F);
+        ((URLDrawable.URLDrawableOptions)localObject).mGifRoundCorner = vzo.a(getContext(), 3.0F);
         ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.jdField_a_of_type_Int;
         ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.jdField_b_of_type_Int;
         ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        localObject = URLDrawable.getDrawable(this.jdField_a_of_type_Stk.a, (URLDrawable.URLDrawableOptions)localObject);
+        localObject = URLDrawable.getDrawable(this.jdField_a_of_type_Tgg.a, (URLDrawable.URLDrawableOptions)localObject);
         if ((((URLDrawable)localObject).getStatus() == 1) && (((URLDrawable)localObject).getCurrDrawable() != null))
         {
-          urk.a("Q.qqstory.msgTab.MsgNodeShotView", "setImageByURLDrawable() %s, %s, not start download!", this.jdField_a_of_type_Stk.a, localObject);
+          veg.a("Q.qqstory.msgTab.MsgNodeShotView", "setImageByURLDrawable() %s, %s, not start download!", this.jdField_a_of_type_Tgg.a, localObject);
           this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageDrawable((Drawable)localObject);
         }
       }
@@ -103,12 +103,12 @@ public class MsgNodeShotView
       }
       ((URLDrawable)localObject).startDownload();
       break;
-      a(this.jdField_a_of_type_Stk.a);
+      a(this.jdField_a_of_type_Tgg.a);
       continue;
-      urk.b("Q.qqstory.msgTab.MsgNodeShotView", "normal info");
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageResource(2130845559);
-      setNodeName(ajjy.a(2131641159), false);
-      this.jdField_a_of_type_Stk = null;
+      veg.b("Q.qqstory.msgTab.MsgNodeShotView", "normal info");
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageResource(2130845742);
+      setNodeName(ajyc.a(2131706944), false);
+      this.jdField_a_of_type_Tgg = null;
     }
   }
 }

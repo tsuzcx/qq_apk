@@ -1,32 +1,49 @@
 package com.google.android.filament.gltfio;
 
+import android.support.annotation.IntRange;
+
 public class Animator
 {
-  private long mNativeAnimatorObject;
-  private long startTime = 0L;
+  private long mNativeObject;
   
-  public Animator(long paramLong)
+  Animator(long paramLong)
   {
-    this.mNativeAnimatorObject = paramLong;
+    this.mNativeObject = paramLong;
   }
   
-  private static native void nApplyAnimation(long paramLong, double paramDouble);
+  private static native void nApplyAnimation(long paramLong, int paramInt, float paramFloat);
   
-  private static native long nGetAnimationCount(long paramLong);
+  private static native int nGetAnimationCount(long paramLong);
   
-  public void applyAnimation()
+  private static native float nGetAnimationDuration(long paramLong, int paramInt);
+  
+  private static native String nGetAnimationName(long paramLong, int paramInt);
+  
+  private static native void nUpdateBoneMatrices(long paramLong);
+  
+  public void applyAnimation(@IntRange(from=0L) int paramInt, float paramFloat)
   {
-    long l = System.currentTimeMillis();
-    if (this.startTime <= 0L) {
-      this.startTime = l;
-    }
-    double d = (l - this.startTime) / 1000.0D;
-    nApplyAnimation(this.mNativeAnimatorObject, d);
+    nApplyAnimation(this.mNativeObject, paramInt, paramFloat);
   }
   
-  public long getAnimationCount()
+  public int getAnimationCount()
   {
-    return nGetAnimationCount(this.mNativeAnimatorObject);
+    return nGetAnimationCount(this.mNativeObject);
+  }
+  
+  public float getAnimationDuration(@IntRange(from=0L) int paramInt)
+  {
+    return nGetAnimationDuration(this.mNativeObject, paramInt);
+  }
+  
+  public String getAnimationName(@IntRange(from=0L) int paramInt)
+  {
+    return nGetAnimationName(this.mNativeObject, paramInt);
+  }
+  
+  public void updateBoneMatrices()
+  {
+    nUpdateBoneMatrices(this.mNativeObject);
   }
 }
 

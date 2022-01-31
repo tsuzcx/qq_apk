@@ -1,18 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.dataline.util.file.ImageInfo;
-
-public final class ex
-  implements Parcelable.Creator<ImageInfo>
+class ex
+  extends ajuv
 {
-  public ImageInfo a(Parcel paramParcel)
-  {
-    return new ImageInfo(paramParcel, null);
-  }
+  ex(ew paramew) {}
   
-  public ImageInfo[] a(int paramInt)
+  protected void b()
   {
-    return new ImageInfo[paramInt];
+    ew.a(this.a, 1);
   }
 }
 

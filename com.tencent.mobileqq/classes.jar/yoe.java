@@ -1,26 +1,61 @@
-import android.text.TextUtils;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.gdt.landing_page_collect_data.LandingPageCollectData;
+import android.content.Context;
+import android.provider.Settings.Secure;
+import android.telephony.TelephonyManager;
+import java.io.File;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
+import java.util.UUID;
 
 public class yoe
+  extends bdey
 {
-  public GdtAd a;
-  public landing_page_collect_data.LandingPageCollectData a;
+  private static final String b = ;
   
-  public yoe()
+  public static String a()
   {
-    this.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData = new landing_page_collect_data.LandingPageCollectData();
+    return b + File.separator + ".GameCenterWebBuffer" + File.separator + "Images/games";
   }
   
-  public boolean a()
+  public static String a(Context paramContext)
   {
-    return (this.jdField_a_of_type_ComTencentGdtadAditemGdtAd != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getUrlForAction())) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getTraceId())) && (this.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData != null) && (this.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.has());
+    Object localObject = (TelephonyManager)paramContext.getSystemService("phone");
+    String str = "" + ((TelephonyManager)localObject).getDeviceId();
+    localObject = "" + ((TelephonyManager)localObject).getSimSerialNumber();
+    long l1 = ("" + Settings.Secure.getString(paramContext.getContentResolver(), "android_id")).hashCode();
+    long l2 = str.hashCode();
+    return new UUID(l1, ((String)localObject).hashCode() | l2 << 32).toString();
+  }
+  
+  public static String b()
+  {
+    try
+    {
+      InetAddress localInetAddress;
+      do
+      {
+        localObject = NetworkInterface.getNetworkInterfaces();
+        Enumeration localEnumeration;
+        while (!localEnumeration.hasMoreElements())
+        {
+          if (!((Enumeration)localObject).hasMoreElements()) {
+            break;
+          }
+          localEnumeration = ((NetworkInterface)((Enumeration)localObject).nextElement()).getInetAddresses();
+        }
+        localInetAddress = (InetAddress)localEnumeration.nextElement();
+      } while (localInetAddress.isLoopbackAddress());
+      Object localObject = localInetAddress.getHostAddress().toString();
+      return localObject;
+    }
+    catch (SocketException localSocketException) {}
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yoe
  * JD-Core Version:    0.7.0.1
  */

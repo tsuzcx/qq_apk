@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import acba;
-import ajjj;
+import aclm;
+import ajxn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
@@ -9,18 +9,18 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopRequestActivity$14$1
   implements Runnable
 {
-  public TroopRequestActivity$14$1(acba paramacba, String paramString) {}
+  public TroopRequestActivity$14$1(aclm paramaclm, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Acba.a.app != null)
+    if (this.jdField_a_of_type_Aclm.a.app != null)
     {
-      localObject = (ajjj)this.jdField_a_of_type_Acba.a.app.getManager(51);
+      localObject = (ajxn)this.jdField_a_of_type_Aclm.a.app.getManager(51);
       if (localObject != null)
       {
-        localObject = ((ajjj)localObject).b(this.jdField_a_of_type_JavaLangString);
+        localObject = ((ajxn)localObject).b(this.jdField_a_of_type_JavaLangString);
         if (localObject != null) {
-          this.jdField_a_of_type_Acba.a.runOnUiThread(new TroopRequestActivity.14.1.1(this, (Card)localObject));
+          this.jdField_a_of_type_Aclm.a.runOnUiThread(new TroopRequestActivity.14.1.1(this, (Card)localObject));
         }
       }
     }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import bajq;
+import bbkx;
 
 public class MessageForGrayTips$HightlightItem
 {
@@ -9,7 +9,7 @@ public class MessageForGrayTips$HightlightItem
   public int groupId;
   public String icon;
   public String iconAlt;
-  private int iconSize = bajq.b(16.0F);
+  private int iconSize = bbkx.b(16.0F);
   public String mMsgActionData;
   public String mMsg_A_ActionData;
   public boolean needUpdateNick;

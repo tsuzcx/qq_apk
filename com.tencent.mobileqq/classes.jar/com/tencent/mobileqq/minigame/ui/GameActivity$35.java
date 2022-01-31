@@ -1,26 +1,33 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 class GameActivity$35
   implements Runnable
 {
-  GameActivity$35(GameActivity paramGameActivity) {}
+  GameActivity$35(GameActivity paramGameActivity, String paramString) {}
   
   public void run()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("miniAppID", GameActivity.access$4700(this.this$0).appId);
-    localBundle.putString("param_proc_name", BaseApplicationImpl.getApplication().getQQProcessName());
-    localBundle.putString("param_proc_modulename", "mini_app_client_module");
-    this.this$0.onProcessForeGround(localBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("[minigame] GameActivity", 1, "onResume--onRefreshMiniBadge");
+    try
+    {
+      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.val$reportUrl).openConnection();
+      localHttpURLConnection.setRequestMethod("GET");
+      localHttpURLConnection.setConnectTimeout(10000);
+      localHttpURLConnection.setReadTimeout(10000);
+      localHttpURLConnection.setUseCaches(false);
+      localHttpURLConnection.setInstanceFollowRedirects(true);
+      localHttpURLConnection.connect();
+      int i = localHttpURLConnection.getResponseCode();
+      QLog.i("[minigame] GameActivity", 1, "reportBannerAd rspCode" + i);
+      return;
     }
-    this.this$0.onRefreshMiniBadge(localBundle);
+    catch (Throwable localThrowable)
+    {
+      QLog.i("[minigame] GameActivity", 1, "reportBannerAd error, url = " + this.val$reportUrl, localThrowable);
+    }
   }
 }
 

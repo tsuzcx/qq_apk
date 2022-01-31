@@ -1,25 +1,23 @@
-import android.util.Property;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.image.ApngImage;
+import dov.com.qq.im.ae.play.AEPlayShowPageView;
 
-class biwp
-  extends Property<biwo, Float>
+public class biwp
+  extends RecyclerView.OnScrollListener
 {
-  biwp(biwo parambiwo, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public biwp(AEPlayShowPageView paramAEPlayShowPageView) {}
   
-  public Float a(biwo parambiwo)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (parambiwo != null) {
-      return Float.valueOf(biwo.a(parambiwo));
+    if (paramInt == 0) {
+      ApngImage.resumeAll();
     }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(biwo parambiwo, Float paramFloat)
-  {
-    if (parambiwo != null) {
-      biwo.a(parambiwo, paramFloat.floatValue());
+    for (;;)
+    {
+      super.onScrollStateChanged(paramRecyclerView, paramInt);
+      return;
+      ApngImage.pauseAll();
     }
   }
 }

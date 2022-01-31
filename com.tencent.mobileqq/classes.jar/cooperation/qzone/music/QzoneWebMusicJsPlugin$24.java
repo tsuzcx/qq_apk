@@ -1,8 +1,8 @@
 package cooperation.qzone.music;
 
-import bbac;
-import bgbz;
-import bgcb;
+import bcdb;
+import bhkl;
+import bhkn;
 import com.tencent.common.app.AppInterface;
 
 class QzoneWebMusicJsPlugin$24
@@ -12,7 +12,7 @@ class QzoneWebMusicJsPlugin$24
   
   public void run()
   {
-    bgbz.a().a().a(this.this$0.mRuntime.a().getLongAccountUin(), this.a, this.b, this.c);
+    bhkl.a().a().a(this.this$0.mRuntime.a().getLongAccountUin(), this.a, this.b, this.c);
   }
 }
 

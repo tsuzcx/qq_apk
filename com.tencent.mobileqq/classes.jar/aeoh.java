@@ -1,32 +1,51 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import java.util.ArrayList;
 
 class aeoh
-  implements View.OnClickListener
+  extends ajvl
 {
-  aeoh(aeog paramaeog) {}
+  aeoh(aeoe paramaeoe) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    QQAppInterface localQQAppInterface;
-    String str;
-    if (this.a.a())
+    paramObject = (ArrayList)paramObject;
+    int i = paramObject.indexOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    if ((i != -1) && (paramBoolean))
     {
-      ariz.a().a(aeog.a(this.a), aeog.a(this.a).a);
-      aeog.a(this.a).a();
-      localQQAppInterface = aeog.a(this.a);
-      str = aeog.a(this.a).a;
-      if (aeog.a(this.a).b(aeog.a(this.a).a) != 3) {
-        break label112;
+      if (((Boolean)paramObject.get(i + 1)).booleanValue()) {
+        this.a.b(false, false);
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000)
+      {
+        paramObject = ((ajvk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        if ((paramObject != null) && (paramObject.discussionName != null))
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramObject.discussionName;
+          this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, paramObject.uin, this.a.e);
+        }
       }
     }
-    label112:
-    for (paramView = "1";; paramView = "0")
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000))
     {
-      awqx.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "Clk_close", 0, 0, str, paramView, "", "");
-      return;
+      paramString = ((ajvk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(paramString);
+      if ((paramString != null) && (paramString.discussionName != null))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramString.discussionName;
+        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, paramString.uin, this.a.e);
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) {
+      this.a.H();
     }
   }
 }

@@ -1,46 +1,30 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
 
 public class amhh
-  extends alzl<amhg>
+  extends ampb<amhg>
 {
   public static amhg a()
   {
-    amhg localamhg2 = (amhg)alzw.a().a(493);
-    amhg localamhg1 = localamhg2;
-    if (localamhg2 == null) {
-      localamhg1 = new amhg();
-    }
-    return localamhg1;
+    return (amhg)ampm.a().a(586);
   }
   
   public int a()
   {
-    return 493;
+    return 586;
   }
   
   @NonNull
   public amhg a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchBusinessConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
     return new amhg();
   }
   
   @Nullable
-  public amhg a(alzs[] paramArrayOfalzs)
+  public amhg a(ampi[] paramArrayOfampi)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchBusinessConfProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchBusinessConfProcessor", 2, "onParsed " + paramArrayOfalzs.length);
-      }
-      return amhg.a(paramArrayOfalzs[0]);
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
+      return amhg.a(paramArrayOfampi[0].a);
     }
     return null;
   }
@@ -50,30 +34,9 @@ public class amhh
     return amhg.class;
   }
   
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchBusinessConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
+  public void a(int paramInt) {}
   
-  public void a(amhg paramamhg)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramamhg == null) {
-        break label43;
-      }
-    }
-    label43:
-    for (paramamhg = paramamhg.toString();; paramamhg = " empty")
-    {
-      QLog.d("SearchBusinessConfProcessor", 2, paramamhg);
-      return;
-    }
-  }
+  public void a(amhg paramamhg) {}
   
   public int b()
   {
@@ -92,7 +55,7 @@ public class amhh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amhh
  * JD-Core Version:    0.7.0.1
  */

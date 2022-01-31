@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.troop.troopCard;
 
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import azeq;
-import babr;
-import bafb;
+import baft;
+import bbcv;
+import bbgg;
 
 public class VisitorTroopCardFragment$16
   implements Runnable
 {
-  VisitorTroopCardFragment$16(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
+  VisitorTroopCardFragment$16(VisitorTroopCardFragment paramVisitorTroopCardFragment, String paramString) {}
   
   public void run()
   {
@@ -21,10 +19,11 @@ public class VisitorTroopCardFragment$16
     do
     {
       return;
-      this.this$0.a = babr.a(this.this$0.getActivity(), 230);
-      this.this$0.a.setMessage(this.this$0.getActivity().getResources().getString(2131654578));
-      azeq localazeq = new azeq(this);
-      this.this$0.a.setPositiveButton(2131625463, localazeq);
+      this.this$0.a = bbcv.a(this.this$0.getActivity(), 230);
+      this.this$0.a.setMessage(this.a);
+      baft localbaft = new baft(this);
+      this.this$0.a.setPositiveButton(2131691035, localbaft);
+      this.this$0.a.setNegativeButton(2131690596, localbaft);
     } while (this.this$0.a.isShowing());
     this.this$0.a.show();
   }

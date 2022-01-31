@@ -4,23 +4,23 @@ import android.view.View;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
 import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
 import com.tribe.async.dispatch.Dispatcher;
-import sgi;
-import thu;
-import uhu;
-import urk;
+import ste;
+import tuq;
+import uuq;
+import veg;
 
 public class MemoriesVideoListSegment$5
   implements Runnable
 {
-  public MemoriesVideoListSegment$5(uhu paramuhu, MemoriesInnerListView paramMemoriesInnerListView, int paramInt, String paramString) {}
+  public MemoriesVideoListSegment$5(uuq paramuuq, MemoriesInnerListView paramMemoriesInnerListView, int paramInt, String paramString) {}
   
   public void run()
   {
     View localView = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewMemoriesInnerListView.getChildAt(this.jdField_a_of_type_Int);
     if (localView != null)
     {
-      urk.a("Q.qqstory.memories.MemoriesVideoListSegment", "doScrollHorizal broadcast close animation2 %s", this.jdField_a_of_type_JavaLangString);
-      sgi.a().dispatch(new thu(new AnimationParam(localView), this.jdField_a_of_type_JavaLangString));
+      veg.a("Q.qqstory.memories.MemoriesVideoListSegment", "doScrollHorizal broadcast close animation2 %s", this.jdField_a_of_type_JavaLangString);
+      ste.a().dispatch(new tuq(new AnimationParam(localView), this.jdField_a_of_type_JavaLangString));
     }
   }
 }

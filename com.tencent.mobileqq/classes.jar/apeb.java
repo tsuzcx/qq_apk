@@ -1,218 +1,99 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.LayerDrawable;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.minigame.utils.DpUtil;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import eipc.EIPCResult;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class apeb
+class apeb
+  extends QIPCModule
 {
-  public static int a(QQAppInterface paramQQAppInterface)
+  public apeb(apea paramapea, String paramString)
   {
-    if (paramQQAppInterface == null) {
-      return 106;
-    }
-    return DpUtil.dip2px(paramQQAppInterface.getApp(), 53.0F);
+    super(paramString);
   }
   
-  private static int a(String paramString)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    return Integer.decode(paramString).intValue() | 0xFF000000;
-  }
-  
-  public static List<amln> a()
-  {
-    return (List)amlo.a().a().get("wording");
-  }
-  
-  private static List<amln> a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    paramString = apdh.a(paramString).toLowerCase().replace(".", "");
-    return (List)amlo.a().a().get(paramString);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, View paramView, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, apee paramapee)
-  {
-    if ((paramTeamWorkFileImportInfo == null) || (paramActivity == null)) {}
-    do
+    bdht.c("WeiyunDownloadServiceIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
+    Object localObject;
+    QQAppInterface localQQAppInterface;
+    if (paramBundle == null)
     {
-      return;
-      paramActivity = paramActivity.getResources();
-    } while (paramActivity == null);
-    Object localObject = a(paramTeamWorkFileImportInfo.b);
-    ArrayList localArrayList = new ArrayList();
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      if (paramTeamWorkFileImportInfo.a != 1)
-      {
-        paramTeamWorkFileImportInfo = ((List)localObject).iterator();
-        while (paramTeamWorkFileImportInfo.hasNext())
-        {
-          localObject = (amln)paramTeamWorkFileImportInfo.next();
-          if (((amln)localObject).b() != 2) {
-            localArrayList.add(localObject);
-          }
-        }
+      localObject = null;
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        apea.a = (String)localObject;
       }
-      localArrayList.addAll((Collection)localObject);
+      if (!TextUtils.isEmpty(paramString))
+      {
+        localQQAppInterface = apea.a(this.a);
+        if (localQQAppInterface != null) {
+          break label103;
+        }
+        bdht.c("WeiyunDownloadServiceIPC", "onCall action but appInterface is null");
+      }
     }
-    a(paramQQAppInterface, paramActivity, paramView, localArrayList, paramapee);
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, Resources paramResources, View paramView, List<amln> paramList, apee paramapee)
-  {
-    if ((paramView == null) || (paramapee == null) || (paramList == null) || (paramList.size() == 0)) {}
-    ViewGroup localViewGroup;
+    label103:
     do
     {
-      return;
-      paramResources = (ViewGroup)paramView.findViewById(2131300770);
-      localViewGroup = (ViewGroup)paramView.findViewById(2131297806);
-    } while ((paramResources == null) || (localViewGroup == null));
-    paramView.setVisibility(8);
-    paramResources.setVisibility(8);
-    localViewGroup.setVisibility(8);
-    LayoutInflater localLayoutInflater = (LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater");
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      amln localamln = (amln)paramList.next();
-      View localView;
-      URLDrawable.URLDrawableOptions localURLDrawableOptions;
-      switch (localamln.a())
+      do
       {
-      default: 
-        QLog.w("TencentDocConvertABTestUtil", 2, "can not show edit entrance");
+        return null;
+        localObject = paramBundle.getString("process");
         break;
-      case 1: 
-        paramView.setVisibility(0);
-        paramResources.setVisibility(0);
-        localView = localLayoutInflater.inflate(2131494919, paramResources, false);
-        Object localObject1 = (GradientDrawable)paramResources.getBackground();
-        if (localObject1 != null)
-        {
-          ((GradientDrawable)localObject1).setAlpha(Math.round(localamln.a() * 255.0F));
-          if (TextUtils.isEmpty(localamln.a())) {}
+        if (((!"WeiyunDownloadServiceIPC_Action__Download".equals(paramString)) && (!"WeiyunDownloadServiceIPC_Action__Resume".equals(paramString))) || (paramBundle == null)) {
+          break label394;
         }
-        try
-        {
-          ((GradientDrawable)localObject1).setColor(a(localamln.a()));
-          if (TextUtils.isEmpty(localamln.c())) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("WeiyunDownloadServiceIPC", 2, "AIDL : start weiyunDownload");
         }
-        catch (NumberFormatException localNumberFormatException1)
+        localObject = (String)paramBundle.get("file_id");
+        if (TextUtils.isEmpty((CharSequence)localObject))
         {
-          try
-          {
-            ((TextView)localView.findViewById(2131312247)).setTextColor(a(localamln.c()));
-            if (!TextUtils.isEmpty(localamln.b())) {
-              ((TextView)localView.findViewById(2131312247)).setText(localamln.b());
-            }
-            if (!TextUtils.isEmpty(localamln.d()))
-            {
-              localObject1 = (URLImageView)localView.findViewById(2131302889);
-              localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-              ((URLImageView)localObject1).setImageDrawable(URLDrawable.getDrawable(localamln.d(), localURLDrawableOptions));
-            }
-            localView.setOnClickListener(new apec(paramQQAppInterface, localamln.e(), paramapee, localamln));
-            if (localamln.b() == 2) {
-              paramapee.a((ImageView)localView.findViewById(2131312776));
-            }
-            awqx.b(paramQQAppInterface, "dc00898", "", "", localamln.f(), localamln.f(), 0, 0, "", "", "", "");
-            paramResources.addView(localView);
-            continue;
-            localNumberFormatException1 = localNumberFormatException1;
-            QLog.e("TencentDocConvertABTestUtil", 1, "parse bg color fail", localNumberFormatException1);
-          }
-          catch (NumberFormatException localNumberFormatException2)
-          {
-            for (;;)
-            {
-              QLog.e("TencentDocConvertABTestUtil", 1, "parse text color fail", localNumberFormatException2);
-            }
-          }
+          bdht.c("WeiyunDownloadServiceIPC", "onCall action but file_id is null");
+          return null;
         }
-      case 2: 
-        paramView.setVisibility(0);
-        localViewGroup.setVisibility(0);
-        localView = localLayoutInflater.inflate(2131494919, paramResources, false);
-        Object localObject2 = (LayerDrawable)localViewGroup.getBackground();
-        if (localObject2 != null)
-        {
-          localObject2 = (GradientDrawable)((LayerDrawable)localObject2).findDrawableByLayerId(2131297459);
-          ((GradientDrawable)localObject2).setAlpha(Math.round(localamln.a() * 255.0F));
-          if (TextUtils.isEmpty(localamln.a())) {}
+        FileManagerEntity localFileManagerEntity = localQQAppInterface.a().c((String)localObject);
+        localObject = localFileManagerEntity;
+        if (localFileManagerEntity != null) {
+          break label213;
         }
-        try
-        {
-          ((GradientDrawable)localObject2).setColor(a(localamln.a()));
-          if (TextUtils.isEmpty(localamln.c())) {}
-        }
-        catch (NumberFormatException localNumberFormatException3)
-        {
-          try
-          {
-            ((TextView)localView.findViewById(2131312247)).setTextColor(a(localamln.c()));
-            if (!TextUtils.isEmpty(localamln.b())) {
-              ((TextView)localView.findViewById(2131312247)).setText(localamln.b());
-            }
-            if (!TextUtils.isEmpty(localamln.d()))
-            {
-              localObject2 = (URLImageView)localView.findViewById(2131302889);
-              localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-              ((URLImageView)localObject2).setImageDrawable(URLDrawable.getDrawable(localamln.d(), localURLDrawableOptions));
-            }
-            localView.setOnClickListener(new aped(paramQQAppInterface, localamln.e(), paramapee, localamln));
-            if (localamln.b() == 2) {
-              paramapee.a((ImageView)localView.findViewById(2131312776));
-            }
-            awqx.b(paramQQAppInterface, "dc00898", "", "", localamln.f(), localamln.f(), 0, 0, "", "", "", "");
-            localViewGroup.addView(localView);
-            continue;
-            localNumberFormatException3 = localNumberFormatException3;
-            QLog.e("TencentDocConvertABTestUtil", 1, "parse bg color fail", localNumberFormatException3);
-          }
-          catch (NumberFormatException localNumberFormatException4)
-          {
-            for (;;)
-            {
-              QLog.e("TencentDocConvertABTestUtil", 1, "parse text color fail", localNumberFormatException4);
-            }
-          }
-        }
+      } while ("WeiyunDownloadServiceIPC_Action__Resume".equals(paramString));
+      localObject = apue.a(paramBundle);
+      localQQAppInterface.a().b((FileManagerEntity)localObject);
+      paramString = (String)paramBundle.get("downloadId");
+      ((FileManagerEntity)localObject).nOpType = 50;
+      ((FileManagerEntity)localObject).cloudType = 2;
+      ((FileManagerEntity)localObject).miniAppDownloadId = paramString;
+      apea.a(this.a).put(paramString, Long.valueOf(((FileManagerEntity)localObject).nSessionId));
+      if (apue.b(((FileManagerEntity)localObject).getFilePath()))
+      {
+        paramString = new Bundle();
+        paramString.putString("taskId", ((FileManagerEntity)localObject).miniAppDownloadId);
+        paramString.putString("filePath", ((FileManagerEntity)localObject).getFilePath());
+        QIPCServerHelper.getInstance().callClient(apea.a, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Suc", paramString, null);
+        paramString = new Bundle();
+        paramString.putString("taskId", ((FileManagerEntity)localObject).miniAppDownloadId);
+        paramString.putInt("retCode", 1);
+        paramString.putString("retMsg", "");
+        QIPCServerHelper.getInstance().callClient(apea.a, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Complete", paramString, null);
+        return null;
       }
+      localQQAppInterface.a().a((FileManagerEntity)localObject);
+      localQQAppInterface.a().a(((FileManagerEntity)localObject).nSessionId);
+      return null;
+    } while (((!"WeiyunDownloadServiceIPC_Action__Cancel".equals(paramString)) && (!"WeiyunDownloadServiceIPC_Action__Pause".equals(paramString))) || (paramBundle == null));
+    label213:
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiyunDownloadServiceIPC", 2, "AIDL : end weiyunDownload");
     }
-  }
-  
-  public static boolean a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
-  {
-    return (paramTeamWorkFileImportInfo != null) && (a(paramTeamWorkFileImportInfo.b));
-  }
-  
-  public static boolean a(String paramString)
-  {
-    paramString = a(paramString);
-    return (paramString != null) && (paramString.size() > 0) && (((amln)paramString.get(0)).a() != 0);
+    label394:
+    paramString = paramBundle.getString("downloadId");
+    localQQAppInterface.a().a(((Long)apea.a(this.a).get(paramString)).longValue());
+    return null;
   }
 }
 

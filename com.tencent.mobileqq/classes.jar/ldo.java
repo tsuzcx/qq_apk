@@ -1,27 +1,14 @@
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.av.VideoController;
+import java.util.Comparator;
 
 public class ldo
-  extends kur
+  implements Comparator<ldw>
 {
-  public ldo(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public ldo(VideoController paramVideoController) {}
   
-  protected void a(long paramLong, ArrayList<kth> paramArrayList, int paramInt1, int paramInt2)
+  public int a(ldw paramldw1, ldw paramldw2)
   {
-    GaInviteLockActivity.a(this.a, paramLong, paramArrayList, paramInt1);
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onMembersChange");
-    }
-    if ((paramLong != this.a.a) || (paramBoolean)) {}
-    while (((paramInt != 10) && (paramInt != 1)) || (!this.a.isResume())) {
-      return;
-    }
-    GaInviteLockActivity.a(this.a, paramInt);
+    return (int)(paramldw1.d - paramldw2.d);
   }
 }
 

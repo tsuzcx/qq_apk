@@ -1,75 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.jsp.QQApiPlugin.3;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
 
 public class aqsh
-  implements bbsh
+  implements View.OnClickListener
 {
-  public aqsh(QQApiPlugin.3 param3) {}
+  public aqsh(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onClick(View paramView)
   {
-    if ((this.a.this$0.c == null) || (!this.a.this$0.c.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    boolean bool;
-    switch (paramBaseResp.errCode)
+    if (QQGamePubAccountFragment.a(this.a) != null)
     {
-    case -1: 
-    default: 
-      vvp.a(1, 2131653595);
-      bool = false;
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(this.a.this$0.jdField_a_of_type_JavaLangString))
-      {
-        this.a.this$0.callJs(this.a.this$0.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(bool) });
-        return;
-        vvp.a(2, 2131653612);
-        if ((this.a.this$0.jdField_a_of_type_Bbes != null) && (this.a.this$0.jdField_a_of_type_Bbev != null))
-        {
-          int i;
-          label171:
-          String str1;
-          String str2;
-          String str3;
-          if ("2".equals(this.a.jdField_a_of_type_JavaLangString))
-          {
-            i = 1009;
-            paramBaseResp = this.a.this$0.jdField_a_of_type_Bbes.f();
-            str1 = this.a.this$0.jdField_a_of_type_Bbes.g();
-            str2 = this.a.b;
-            str3 = AccountDetailActivity.a(this.a.this$0.jdField_a_of_type_Bbev.b());
-            String str4 = this.a.this$0.jdField_a_of_type_Bbes.h();
-            if ((str4 == null) || ("".equals(str4))) {
-              break label314;
-            }
-            ndn.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, paramBaseResp, this.a.this$0.jdField_a_of_type_Bbev.b(), str3, false);
-          }
-          for (;;)
-          {
-            bool = true;
-            break;
-            i = 1004;
-            break label171;
-            label314:
-            if ("2".equals(this.a.jdField_a_of_type_JavaLangString)) {
-              i = 1003;
-            }
-            ndn.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str1, paramBaseResp, str2, str3, false);
-          }
-          bool = false;
-        }
+      QQGamePubAccountFragment.a(this.a).scrollToPosition(0);
+      QQGamePubAccountFragment.a(this.a).setVisibility(8);
+      if (this.a.a != null) {
+        this.a.a.setCurrentItem(0);
       }
-      else
-      {
-        this.a.this$0.callJs4OpenApiIfNeeded("shareMsg", 0, String.valueOf(bool));
-        return;
-      }
-      bool = true;
     }
+    paramView = (String)QQGamePubAccountFragment.a(this.a).getTag();
+    yod.a(ajae.a(), "769", "205031", "", "76901", "1", "160", new String[] { paramView, "", "20" });
   }
 }
 

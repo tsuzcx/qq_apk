@@ -1,34 +1,136 @@
-import com.tencent.av.redpacket.AVRedPacketManager.LocalEmojiInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalFrameSyncInfo;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Typeface;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface ljn
+public abstract class ljn
+  implements mny
 {
-  public abstract void a();
+  protected int a;
+  protected Bitmap a;
+  protected Canvas a;
+  protected Paint a;
+  protected lhh a;
+  protected mnz a;
+  protected boolean a;
+  protected int b;
+  protected boolean b;
   
-  public abstract void a(int paramInt);
+  public ljn(lhh paramlhh, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Int = 32;
+    this.jdField_b_of_type_Int = 255;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Lhh = paramlhh;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
   
-  public abstract void a(int paramInt, List<AVRedPacketManager.LocalEmojiInfo> paramList);
+  public abstract int a();
   
-  public abstract void a(int paramInt, ljo paramljo);
+  public int a(long paramLong)
+  {
+    return 0;
+  }
   
-  public abstract void a(int paramInt, boolean paramBoolean);
+  Bitmap a()
+  {
+    Object localObject3 = null;
+    Object localObject4 = null;
+    Object localObject1 = null;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Lhh.a))
+    {
+      lcl.c("ARZimuItemTask", "TextUtils.isEmpty(mSentenceInfo.src_text) == null");
+      localObject3 = localObject1;
+    }
+    do
+    {
+      for (;;)
+      {
+        return localObject3;
+        lcl.c("ARZimuItemTask", "build:" + toString());
+        localObject1 = localObject3;
+        Object localObject2 = localObject4;
+        try
+        {
+          int i = a();
+          localObject1 = localObject3;
+          localObject2 = localObject4;
+          int j = b();
+          localObject1 = localObject3;
+          localObject2 = localObject4;
+          localObject3 = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+          localObject1 = localObject3;
+          localObject2 = localObject3;
+          this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap((Bitmap)localObject3);
+          localObject1 = localObject3;
+          localObject2 = localObject3;
+          a(this.jdField_a_of_type_AndroidGraphicsCanvas, i, j);
+          return localObject3;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          localObject3 = localObject1;
+          if (QLog.isColorLevel())
+          {
+            QLog.e("ARZimuItemTask", 2, localOutOfMemoryError.getMessage());
+            return localObject1;
+          }
+        }
+        catch (Exception localException)
+        {
+          localObject3 = localOutOfMemoryError;
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("ARZimuItemTask", 2, localException.getMessage());
+    return localOutOfMemoryError;
+  }
   
-  public abstract void a(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo);
+  protected abstract void a(Canvas paramCanvas, int paramInt1, int paramInt2);
   
-  public abstract void a(boolean paramBoolean);
+  public void a(Typeface paramTypeface, int paramInt, mnz parammnz)
+  {
+    if (paramTypeface != null) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(paramTypeface);
+    }
+    this.jdField_a_of_type_Mnz = parammnz;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramInt);
+  }
   
-  public abstract boolean a();
+  public void a(lhh paramlhh)
+  {
+    this.jdField_a_of_type_Lhh = paramlhh;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_b_of_type_Boolean = true;
+  }
   
-  public abstract void b();
+  public void a(boolean paramBoolean) {}
   
-  public abstract void b(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo);
+  public boolean a()
+  {
+    return false;
+  }
   
-  public abstract void d();
+  public abstract int b();
   
-  public abstract void e();
+  public Bitmap b()
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = a();
+    }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
   
-  public abstract void f();
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
 }
 
 

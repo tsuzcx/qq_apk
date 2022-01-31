@@ -1,33 +1,51 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aejb;
-import ajtg;
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class TroopChatPie$38
+class TroopChatPie$38
   implements Runnable
 {
-  public TroopChatPie$38(aejb paramaejb) {}
+  TroopChatPie$38(TroopChatPie paramTroopChatPie) {}
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing())) {}
+    if (TextUtils.isEmpty(this.this$0.j)) {}
+    Object localObject;
     do
     {
       return;
-      ajtg localajtg = (ajtg)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-      String str = this.this$0.a().jdField_a_of_type_JavaLangString;
-      if (!TextUtils.isEmpty(str))
-      {
-        localajtg.t(str);
-        return;
+      localObject = ((TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(this.this$0.j);
+    } while (localObject != null);
+    String str1;
+    String str2;
+    if (QLog.isColorLevel())
+    {
+      str1 = this.this$0.jdField_a_of_type_JavaLangString;
+      str2 = this.this$0.j;
+      if (localObject == null) {
+        break label165;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i(this.this$0.jdField_a_of_type_JavaLangString, 2, "mGetOnlineMemberTipsRunnable, getSessionInfo().curFriendUin == null");
+    }
+    label165:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.i(str1, 2, String.format("checkSelfInTroop %s %s", new Object[] { str2, Boolean.valueOf(bool) }));
+      localObject = BaseApplicationImpl.getContext();
+      if (localObject != null) {
+        ThreadManager.getUIHandler().post(new TroopChatPie.38.1(this, (Context)localObject));
+      }
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.j, 1);
+      this.this$0.a().post(new TroopChatPie.38.2(this));
+      return;
+    }
   }
 }
 

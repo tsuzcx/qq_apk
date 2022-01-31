@@ -1,62 +1,15 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-import com.tencent.biz.pubaccount.readinjoy.struct.LebaKDCellInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class pdh
+class pdh
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public Bundle a;
-  public SelectPositionModule.PositionData a;
-  public LebaKDCellInfo a;
-  public String a;
-  public List<Long> a;
-  public pev a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b;
-  public List<Long> b;
-  public boolean b;
-  public byte[] b;
-  public int c;
-  public long c;
-  public String c;
-  public List<ogo> c;
-  public boolean c;
-  public int d;
-  public long d;
-  public List<pdg> d;
-  public boolean d;
-  public int e = 1;
-  public long e;
-  public boolean e;
-  public int f;
-  public boolean f;
-  public int g;
-  public boolean g;
-  public int h;
-  public boolean h;
-  public int i = 1;
-  public boolean i;
-  public int j;
+  pdh(pdb parampdb, String paramString1, String paramString2) {}
   
-  public pdh()
+  public void onClick(View paramView)
   {
-    this.jdField_c_of_type_Int = 1;
-    this.jdField_c_of_type_Long = -1L;
-    this.jdField_c_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public static int a(ogo paramogo)
-  {
-    if (paramogo.a == 13) {
-      return 11;
-    }
-    return 1;
+    pdb.a(2, this.jdField_a_of_type_JavaLangString);
+    onk.a(pdb.a(this.jdField_a_of_type_Pdb), this.b);
   }
 }
 

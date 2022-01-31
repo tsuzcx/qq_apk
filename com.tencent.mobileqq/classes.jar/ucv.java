@@ -1,29 +1,8 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
+import android.view.View;
 
-public class ucv
-  extends SimpleObserver<ucw>
+public abstract interface ucv
 {
-  public ucv(ucr paramucr) {}
-  
-  public void a(ucw paramucw)
-  {
-    super.onNext(paramucw);
-    ucr.a(this.a, paramucw, false, new ErrorMessage());
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    urk.d("Q.qqstory.detail.DetailFeedAllInfoPuller", "refresh data cancel");
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    ucr.a(this.a, null, false, (ErrorMessage)paramError);
-  }
+  public abstract void a(View paramView, float paramFloat);
 }
 
 

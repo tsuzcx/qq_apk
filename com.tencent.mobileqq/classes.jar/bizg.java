@@ -1,214 +1,912 @@
-import android.os.Message;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
-import dov.com.qq.im.capture.music.QQMusicDownloader;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.aekit.api.standard.GLCapabilities;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
 
 public class bizg
-  extends bifz
 {
-  private final acjg jdField_a_of_type_Acjg = new bizi(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private bhim jdField_a_of_type_Bhim = new bizh(this);
-  private AudioPlayer jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer;
-  private MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-  private QzoneVerticalVideoTopicInfo jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo;
+  private static Long jdField_a_of_type_JavaLangLong = Long.valueOf(-1L);
+  private int jdField_a_of_type_Int = -1;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long = -1L;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int;
+  private long jdField_c_of_type_Long;
+  private String jdField_c_of_type_JavaLangString = "none";
+  private boolean jdField_c_of_type_Boolean;
+  private int jdField_d_of_type_Int = -1;
+  private long jdField_d_of_type_Long;
+  private String jdField_d_of_type_JavaLangString = "none";
+  private boolean jdField_d_of_type_Boolean = true;
+  private long jdField_e_of_type_Long;
+  private String jdField_e_of_type_JavaLangString = "-1";
+  private long jdField_f_of_type_Long;
+  private String jdField_f_of_type_JavaLangString = "none";
+  private long jdField_g_of_type_Long = -1L;
+  private String jdField_g_of_type_JavaLangString = "none";
+  private long jdField_h_of_type_Long = -1L;
+  private String jdField_h_of_type_JavaLangString;
+  private long jdField_i_of_type_Long;
+  private String jdField_i_of_type_JavaLangString;
+  private long jdField_j_of_type_Long = 1L;
+  private String jdField_j_of_type_JavaLangString = "none";
+  private long jdField_k_of_type_Long = 1L;
+  private String jdField_k_of_type_JavaLangString = "none";
+  private String l = "none";
+  private String m = "#ffffff";
+  private String n = "";
   
-  public bizg(biyt parambiyt, QzoneVerticalVideoTopicInfo paramQzoneVerticalVideoTopicInfo)
+  private long a()
   {
-    super(parambiyt);
-    this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo = paramQzoneVerticalVideoTopicInfo;
+    return System.currentTimeMillis() - this.jdField_b_of_type_Long;
   }
   
-  private void a(MusicItemInfo paramMusicItemInfo)
+  public static bizg a()
   {
-    paramMusicItemInfo = QQMusicDownloader.a(paramMusicItemInfo.mUrl, paramMusicItemInfo.getLocalPath(), this.jdField_a_of_type_Bhim);
-    if (paramMusicItemInfo != null) {
-      QQMusicDownloader.a(paramMusicItemInfo, this.jdField_a_of_type_Bhim);
-    }
+    return bizi.a();
   }
   
-  private boolean a(MusicItemInfo paramMusicItemInfo)
+  private HashMap<String, String> a(String paramString1, int paramInt, String paramString2)
   {
-    if (paramMusicItemInfo == null) {}
-    while (((paramMusicItemInfo.mType == 5) || (paramMusicItemInfo.mType == 1)) && (!bace.b(paramMusicItemInfo.getLocalPath()))) {
-      return false;
-    }
-    return true;
-  }
-  
-  private void b(MusicItemInfo paramMusicItemInfo)
-  {
-    if (this.b) {}
-    do
+    HashMap localHashMap = new HashMap();
+    if ((this.jdField_d_of_type_Int == 4) || (this.jdField_d_of_type_Int == 5) || (this.jdField_d_of_type_Int == 6) || (this.jdField_d_of_type_Int == 7) || (this.jdField_d_of_type_Int == 2))
     {
-      return;
-      k();
-    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer == null) || (paramMusicItemInfo == null) || (!a(paramMusicItemInfo)));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a(paramMusicItemInfo.getLocalPath());
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(a()).inflate(2131496258, null);
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131312545)).setText(this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.e());
-    Object localObject = (URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131303004);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.g())) {
-      ((URLImageView)localObject).setBackgroundURL(this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.g());
+      localHashMap.put("face_id", this.jdField_d_of_type_JavaLangString);
+      localHashMap.put("content_type", jdField_a_of_type_JavaLangLong.toString());
+      localHashMap.put("MD5", paramString1);
+      paramString1 = new DecimalFormat("0.00").format(this.jdField_b_of_type_Int / 100.0F);
+      String str = new DecimalFormat("0.00").format(this.jdField_c_of_type_Int / 100.0F);
+      localHashMap.put("beauty_value", paramString1);
+      localHashMap.put("facial_value", str);
+      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        break label414;
+      }
+      localHashMap.put("filter_id", this.jdField_b_of_type_JavaLangString);
+      label172:
+      localHashMap.put("duration", "" + this.jdField_a_of_type_Long);
+      localHashMap.put("cameraId", bizf.a(ahua.jdField_a_of_type_Int));
+      if (jdField_a_of_type_JavaLangLong.longValue() != 1L) {
+        break label427;
+      }
+      localHashMap.put("resolution", bimt.a.d());
     }
     for (;;)
     {
-      localObject = (RelativeLayout)a(2131299943);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(12);
-      localLayoutParams.bottomMargin = aciy.a(110.0F, a());
-      localLayoutParams.leftMargin = aciy.a(10.0F, a());
-      ((RelativeLayout)localObject).addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-      return;
-      ((URLImageView)localObject).setVisibility(8);
-    }
-  }
-  
-  private void j()
-  {
-    if (this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.a())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = new MusicItemInfo();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mSongMid = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.a();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mMusicName = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.b();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mUrl = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.c();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mType = 1;
-      bigl localbigl = (bigl)this.jdField_a_of_type_Bigb.a(bigl.class);
-      if (localbigl != null) {
-        localbigl.a(true);
+      localHashMap.put("post_type", String.valueOf(paramInt));
+      localHashMap.put("receive_type", paramString2);
+      localHashMap.put("face_index", String.valueOf(this.jdField_a_of_type_Int));
+      localHashMap.put("face_from", this.jdField_e_of_type_JavaLangString);
+      localHashMap.put("face_tab", this.jdField_f_of_type_JavaLangString);
+      localHashMap.put("face_type", this.jdField_d_of_type_Int + "");
+      if ((this.jdField_d_of_type_Int != 4) && (this.jdField_d_of_type_Int != 5) && (this.jdField_d_of_type_Int != 6) && (this.jdField_d_of_type_Int != 7)) {
+        break label470;
       }
-      if (a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo)) {
-        this.jdField_a_of_type_Boolean = true;
+      localHashMap.put("face_uin", this.jdField_d_of_type_JavaLangString + UserAction.getQIMEI());
+      return localHashMap;
+      localHashMap.put("face_id", this.jdField_c_of_type_JavaLangString);
+      break;
+      label414:
+      localHashMap.put("filter_id", "none");
+      break label172;
+      label427:
+      if (jdField_a_of_type_JavaLangLong.longValue() == 2L) {
+        localHashMap.put("resolution", bimt.a.g());
+      } else {
+        localHashMap.put("resolution", "none");
       }
     }
-    else
-    {
-      return;
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+    label470:
+    localHashMap.put("face_uin", this.jdField_c_of_type_JavaLangString + UserAction.getQIMEI());
+    return localHashMap;
   }
   
-  private void k()
+  private HashMap<String, String> i(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer == null)
+    HashMap localHashMap = new HashMap(6);
+    localHashMap.put("face_id", paramString);
+    localHashMap.put("face_tab", this.jdField_f_of_type_JavaLangString);
+    localHashMap.put("face_type", this.jdField_d_of_type_Int + "");
+    localHashMap.put("face_index", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("face_from", this.jdField_e_of_type_JavaLangString);
+    localHashMap.put("face_uin", paramString + UserAction.getQIMEI());
+    return localHashMap;
+  }
+  
+  public String a()
+  {
+    return this.jdField_j_of_type_JavaLangString;
+  }
+  
+  public HashMap<String, String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  public HashMap<String, String> a(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("ret_code", "" + paramInt1);
+    localHashMap.put("req_cost", paramString1);
+    localHashMap.put("cmd_id", paramString2);
+    localHashMap.put("res_code", String.valueOf(paramInt2));
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> a(long paramLong)
+  {
+    HashMap localHashMap = new HashMap();
+    if ((this.jdField_d_of_type_Int == 4) || (this.jdField_d_of_type_Int == 5) || (this.jdField_d_of_type_Int == 6) || (this.jdField_d_of_type_Int == 7) || (this.jdField_d_of_type_Int == 2))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = new AudioPlayer(a(), this.jdField_a_of_type_Acjg);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.b(3);
+      localHashMap.put("face_id", this.jdField_d_of_type_JavaLangString);
+      localHashMap.put("content_type", jdField_a_of_type_JavaLangLong.toString());
+      String str1 = new DecimalFormat("0.00").format(this.jdField_b_of_type_Int / 100.0F);
+      String str2 = new DecimalFormat("0.00").format(this.jdField_c_of_type_Int / 100.0F);
+      localHashMap.put("beauty_value", str1);
+      localHashMap.put("facial_value", str2);
+      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        break label230;
+      }
+      localHashMap.put("filter_id", this.jdField_b_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      localHashMap.put("duration", bizf.a(Long.valueOf(System.currentTimeMillis() - paramLong)));
+      localHashMap.put("cameraId", bizf.a(ahua.jdField_a_of_type_Int));
+      if (jdField_a_of_type_JavaLangLong.longValue() != 1L) {
+        break label242;
+      }
+      localHashMap.put("resolution", bimt.a.d());
+      return localHashMap;
+      localHashMap.put("face_id", this.jdField_c_of_type_JavaLangString);
+      break;
+      label230:
+      localHashMap.put("filter_id", "none");
+    }
+    label242:
+    if (jdField_a_of_type_JavaLangLong.longValue() == 2L)
+    {
+      localHashMap.put("resolution", bimt.a.g());
+      return localHashMap;
+    }
+    localHashMap.put("resolution", "none");
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> a(Long paramLong)
+  {
+    HashMap localHashMap = new HashMap();
+    if ((paramLong.longValue() == -1L) || (paramLong.longValue() == 3L)) {
+      localHashMap.put("receive_type", paramLong.toString());
+    }
+    for (;;)
+    {
+      localHashMap.put("content_type", jdField_a_of_type_JavaLangLong.toString());
+      return localHashMap;
+      if ((paramLong.longValue() == 3000L) || (paramLong.longValue() == 1L)) {
+        localHashMap.put("receive_type", "2");
+      } else {
+        localHashMap.put("receive_type", "1");
+      }
     }
   }
   
-  private void l()
+  public HashMap<String, String> a(String paramString)
   {
-    if (this.b) {
-      return;
-    }
-    this.jdField_a_of_type_Bigb.a(Message.obtain(null, 3, 1, 0));
-    n();
-    b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+    return i(paramString);
   }
   
-  private void n()
+  public HashMap<String, String> a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null)
+    String str;
+    if (paramInt == 1) {
+      str = "2";
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.c();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = null;
+      if ((this.jdField_h_of_type_JavaLangString == null) || (!this.jdField_h_of_type_JavaLangString.equals(paramString)))
+      {
+        this.jdField_h_of_type_JavaLangString = paramString;
+        this.jdField_i_of_type_JavaLangString = bdhv.d(QQStoryContext.a().getAccount() + bizf.a());
+      }
+      return a(paramString, 2, str);
+      if (paramInt == 0) {
+        str = "1";
+      } else {
+        str = "3";
+      }
+    }
+  }
+  
+  public HashMap<String, String> a(String paramString1, int paramInt, long paramLong1, long paramLong2, String paramString2)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("material_id", paramString1);
+    localHashMap.put("ret", String.valueOf(paramInt));
+    localHashMap.put("duration", String.valueOf(paramLong1));
+    localHashMap.put("zip_size", String.valueOf(paramLong2));
+    localHashMap.put("MD5", paramString2);
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> a(String paramString, long paramLong)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("face_id", paramString);
+    localHashMap.put("cost_time", String.valueOf(paramLong));
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> a(String paramString1, boolean paramBoolean, float paramFloat, double paramDouble1, double paramDouble2, String paramString2)
+  {
+    HashMap localHashMap = new HashMap();
+    if (paramBoolean) {}
+    for (paramString2 = "1";; paramString2 = "2")
+    {
+      localHashMap.put("cameraId", paramString2);
+      localHashMap.put("frame_rate", String.format("%.2f", new Object[] { Float.valueOf(paramFloat) }));
+      localHashMap.put("face_id", paramString1);
+      return localHashMap;
+    }
+  }
+  
+  public HashMap<String, String> a(boolean paramBoolean)
+  {
+    HashMap localHashMap = new HashMap();
+    if (paramBoolean) {}
+    for (String str = "1";; str = "0")
+    {
+      localHashMap.put("base_res_ready", str);
+      return localHashMap;
+    }
+  }
+  
+  public HashMap<String, String> a(boolean paramBoolean, int paramInt1, int paramInt2, long paramLong)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("packageId", String.valueOf(paramInt1));
+    if (paramBoolean)
+    {
+      str = "1";
+      localHashMap.put("ret_code", str);
+      localHashMap.put("packageName", "");
+      localHashMap.put("cost_time", String.valueOf(paramLong));
+      if (!paramBoolean) {
+        break label96;
+      }
+    }
+    label96:
+    for (String str = "0";; str = String.valueOf(paramInt2))
+    {
+      localHashMap.put("error_code", str);
+      return localHashMap;
+      str = "0";
+      break;
     }
   }
   
   public void a()
   {
-    super.a();
-    d();
-    j();
+    String str = bizf.a();
+    this.jdField_a_of_type_JavaUtilHashMap.put("operation_time", str);
+    bizq.b("AEBaseReportParam", "【operation_time】:" + str);
   }
   
-  public void a(int paramInt, @NonNull bitz parambitz)
+  public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath())))
+    int i1;
+    if (paramInt <= 3)
     {
-      parambitz.a.backgroundMusicPath = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath();
-      parambitz.a.isMuteRecordVoice = true;
-      parambitz.a.backgroundMusicOffset = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart;
-      parambitz.a.backgroundMusicDuration = ((int)ShortVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath()));
-      if (parambitz.a.backgroundMusicDuration <= 0) {
-        parambitz.a.backgroundMusicPath = null;
+      i1 = paramInt;
+      if (paramInt >= -1) {}
+    }
+    else
+    {
+      i1 = -1;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put("sex", "" + i1);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.put("op_in", String.valueOf(paramInt));
+    if ((paramString != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.put("activity_id", paramString);
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put("activity_id", "none");
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.put("fromuin", paramString);
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put("fromuin", "none");
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public HashMap<String, String> b()
+  {
+    return i(this.jdField_d_of_type_JavaLangString);
+  }
+  
+  public HashMap<String, String> b(long paramLong)
+  {
+    long l1 = -1L;
+    HashMap localHashMap = new HashMap();
+    if ((this.jdField_d_of_type_Int == 4) || (this.jdField_d_of_type_Int == 5) || (this.jdField_d_of_type_Int == 6) || (this.jdField_d_of_type_Int == 7) || (this.jdField_d_of_type_Int == 2))
+    {
+      localHashMap.put("face_id", this.jdField_d_of_type_JavaLangString);
+      localHashMap.put("content_type", jdField_a_of_type_JavaLangLong.toString());
+      localObject = new DecimalFormat("0.00").format(this.jdField_b_of_type_Int / 100.0F);
+      String str = new DecimalFormat("0.00").format(this.jdField_c_of_type_Int / 100.0F);
+      localHashMap.put("beauty_value", localObject);
+      localHashMap.put("facial_value", str);
+      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        break label472;
+      }
+      localHashMap.put("filter_id", this.jdField_b_of_type_JavaLangString);
+      label169:
+      localObject = new StringBuilder().append("");
+      if (paramLong != -1L) {
+        break label485;
+      }
+      paramLong = l1;
+      label193:
+      localHashMap.put("duration", paramLong);
+      localHashMap.put("cameraId", bizf.a(ahua.jdField_a_of_type_Int));
+      localHashMap.put("face_index", String.valueOf(this.jdField_a_of_type_Int));
+      localHashMap.put("face_from", this.jdField_e_of_type_JavaLangString);
+      localHashMap.put("face_tab", this.jdField_f_of_type_JavaLangString);
+      localHashMap.put("face_type", this.jdField_d_of_type_Int + "");
+      if (this.jdField_d_of_type_Int != 7) {
+        break label494;
+      }
+      localHashMap.put("face_uin", this.jdField_d_of_type_JavaLangString + UserAction.getQIMEI());
+      label333:
+      localHashMap.put("preview_view_size", bimt.a.a());
+      localHashMap.put("configed_preview_resolution", bimt.a.b());
+      localHashMap.put("configed_capture_resolution", bimt.a.c());
+      localHashMap.put("render_resolution", bimt.a.e());
+      if (jdField_a_of_type_JavaLangLong.longValue() != 1L) {
+        break label528;
+      }
+      localHashMap.put("resolution", bimt.a.d());
+      label418:
+      if (jdField_a_of_type_JavaLangLong.longValue() != 1L) {
+        break label579;
+      }
+      if (!bimt.a.jdField_b_of_type_Boolean) {
+        break label571;
       }
     }
+    label528:
+    label571:
+    for (Object localObject = "screenshot";; localObject = "camera")
+    {
+      localHashMap.put("photo_capture_mode", localObject);
+      return localHashMap;
+      localHashMap.put("face_id", this.jdField_c_of_type_JavaLangString);
+      break;
+      label472:
+      localHashMap.put("filter_id", "none");
+      break label169;
+      label485:
+      paramLong /= 1000L;
+      break label193;
+      label494:
+      localHashMap.put("face_uin", this.jdField_c_of_type_JavaLangString + UserAction.getQIMEI());
+      break label333;
+      if (jdField_a_of_type_JavaLangLong.longValue() == 2L)
+      {
+        localHashMap.put("resolution", bimt.a.g());
+        break label418;
+      }
+      localHashMap.put("resolution", "none");
+      break label418;
+    }
+    label579:
+    localHashMap.put("photo_capture_mode", "none");
+    return localHashMap;
   }
   
-  protected boolean a(Message paramMessage)
+  public HashMap<String, String> b(String paramString)
   {
-    switch (paramMessage.what)
+    HashMap localHashMap = new HashMap();
+    if (TextUtils.isEmpty(paramString))
     {
+      localHashMap.put("filter_id", "none");
+      return localHashMap;
+    }
+    localHashMap.put("filter_id", paramString);
+    return localHashMap;
+  }
+  
+  public void b()
+  {
+    int i2 = -1;
+    int i1;
+    if (AppNetConnInfo.isWifiConn()) {
+      i1 = 1;
     }
     for (;;)
     {
-      return super.a(paramMessage);
-      n();
-      b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-    }
-  }
-  
-  public void a_(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    case 1: 
-    default: 
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
-      break;
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_AndroidViewView == null);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_a_of_type_JavaUtilHashMap.put("network_type", String.valueOf(i1));
+      UserAction.setLogAble(false, false);
       return;
-    } while (this.jdField_a_of_type_AndroidViewView == null);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      i1 = i2;
+      switch (AppNetConnInfo.getMobileInfo())
+      {
+      case 0: 
+      default: 
+        i1 = i2;
+        break;
+      case 1: 
+        i1 = 2;
+        break;
+      case 2: 
+        i1 = 3;
+        break;
+      case 3: 
+        i1 = 4;
+        break;
+      case 4: 
+        i1 = 5;
+      }
+    }
   }
   
-  public void bf_()
+  public void b(int paramInt)
   {
-    this.b = true;
-    super.bf_();
-    n();
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void b(long paramLong)
+  {
+    jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong);
+  }
+  
+  public void b(String paramString)
+  {
+    QLog.d("AEBaseReportParam", 4, "[setExperimentID] experimentID = " + paramString);
+    if ((paramString == null) || (TextUtils.isEmpty(paramString)))
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.put("expirement_id", "none");
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put("expirement_id", paramString);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public HashMap<String, String> c()
+  {
+    return i(this.jdField_d_of_type_JavaLangString);
+  }
+  
+  public HashMap<String, String> c(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("filter_id", paramString);
+    return localHashMap;
+  }
+  
+  public void c()
+  {
+    this.jdField_b_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_d_of_type_Int = paramInt;
+  }
+  
+  public void c(long paramLong)
+  {
+    e();
+    this.jdField_c_of_type_Long = paramLong;
+    this.jdField_c_of_type_Boolean = this.jdField_d_of_type_Boolean;
+    this.jdField_d_of_type_Boolean = false;
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_j_of_type_Long = 2L;
+      return;
+    }
+    this.jdField_j_of_type_Long = 1L;
+  }
+  
+  public boolean c()
+  {
+    if ((this.jdField_c_of_type_Long <= 0L) || (this.jdField_d_of_type_Long <= 0L) || (this.jdField_e_of_type_Long <= 0L) || (this.jdField_f_of_type_Long <= 0L)) {}
+    while ((this.jdField_d_of_type_Long - this.jdField_c_of_type_Long > 120000L) || (this.jdField_e_of_type_Long - this.jdField_c_of_type_Long > 120000L) || (this.jdField_f_of_type_Long - this.jdField_c_of_type_Long > 120000L)) {
+      return false;
+    }
+    return true;
+  }
+  
+  public HashMap<String, String> d()
+  {
+    return i(this.jdField_d_of_type_JavaLangString);
+  }
+  
+  public HashMap<String, String> d(String paramString)
+  {
+    return i(paramString);
+  }
+  
+  public void d()
+  {
+    this.jdField_h_of_type_JavaLangString = null;
+    this.jdField_i_of_type_JavaLangString = null;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void d(long paramLong)
+  {
+    this.jdField_i_of_type_Long = paramLong;
+  }
+  
+  public void d(String paramString)
+  {
+    this.jdField_d_of_type_JavaLangString = paramString;
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_k_of_type_Long = 2L;
+      return;
+    }
+    this.jdField_k_of_type_Long = 1L;
+  }
+  
+  public HashMap<String, String> e()
+  {
+    HashMap localHashMap = new HashMap(1);
+    localHashMap.put("face_id", bizj.a().a("camera_ad_op_id", "", 4));
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> e(String paramString)
+  {
+    return bizf.a(g(), i(paramString));
+  }
+  
+  public void e()
+  {
+    this.jdField_c_of_type_Long = 0L;
+    this.jdField_d_of_type_Long = 0L;
+    this.jdField_e_of_type_Long = 0L;
+    this.jdField_f_of_type_Long = 0L;
+    this.jdField_c_of_type_Boolean = false;
+  }
+  
+  public void e(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void e(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public HashMap<String, String> f()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("duration", bizf.a(Long.valueOf(a())));
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> f(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("emoticon_id", paramString);
+    return localHashMap;
   }
   
   public void f()
   {
-    this.b = false;
-    super.f();
-    if (this.jdField_a_of_type_Boolean) {
-      l();
+    if (this.jdField_d_of_type_Long == 0L) {
+      this.jdField_d_of_type_Long = System.currentTimeMillis();
     }
+  }
+  
+  public void f(String paramString)
+  {
+    this.jdField_e_of_type_JavaLangString = paramString;
+  }
+  
+  public HashMap<String, String> g()
+  {
+    if (TextUtils.isEmpty(this.jdField_i_of_type_JavaLangString)) {}
+    for (String str = bdhv.d(QQStoryContext.a().getAccount() + bizf.a());; str = this.jdField_i_of_type_JavaLangString) {
+      return a(str, 1, "-1");
+    }
+  }
+  
+  public HashMap<String, String> g(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("filter_id", paramString);
+    return localHashMap;
   }
   
   public void g()
   {
-    super.g();
+    if (this.jdField_e_of_type_Long == 0L) {
+      this.jdField_e_of_type_Long = System.currentTimeMillis();
+    }
+  }
+  
+  public void g(String paramString)
+  {
+    this.jdField_f_of_type_JavaLangString = paramString;
+  }
+  
+  public HashMap<String, String> h()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("content_type", jdField_a_of_type_JavaLangLong.toString());
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> h(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("text_content", paramString);
+    i(paramString);
+    return localHashMap;
+  }
+  
+  public void h()
+  {
+    if (this.jdField_f_of_type_Long == 0L) {
+      this.jdField_f_of_type_Long = System.currentTimeMillis();
+    }
+  }
+  
+  public void h(String paramString)
+  {
+    this.jdField_k_of_type_JavaLangString = paramString;
+  }
+  
+  public HashMap<String, String> i()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("duration_first_frame", bizf.a(Long.valueOf(this.jdField_d_of_type_Long - this.jdField_c_of_type_Long)));
+    localHashMap.put("duration_bottom_bar", bizf.a(Long.valueOf(this.jdField_e_of_type_Long - this.jdField_c_of_type_Long)));
+    localHashMap.put("duration_photo_btn", bizf.a(Long.valueOf(this.jdField_f_of_type_Long - this.jdField_c_of_type_Long)));
+    String str;
+    if (bizf.b()) {
+      str = "first_launch";
+    }
+    for (;;)
+    {
+      localHashMap.put("launch_type", str);
+      return localHashMap;
+      if (this.jdField_c_of_type_Boolean) {
+        str = "cold_launch";
+      } else {
+        str = "warm_launch";
+      }
+    }
+  }
+  
+  public void i()
+  {
+    this.jdField_g_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void i(String paramString)
+  {
+    this.l = paramString;
+  }
+  
+  public HashMap<String, String> j()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("OpenGL", GLCapabilities.getGlesVersion());
+    localHashMap.put("shader", String.valueOf(GLCapabilities.isFilamentShaderCompileSucceed()));
+    return localHashMap;
+  }
+  
+  public void j()
+  {
+    this.jdField_h_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void j(String paramString)
+  {
+    this.m = paramString;
+  }
+  
+  public HashMap<String, String> k()
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_h_of_type_Long;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("duration", bizf.a(Long.valueOf(l1 - l2)));
+    return localHashMap;
+  }
+  
+  public void k()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(this.jdField_a_of_type_JavaLangString);
+    String str = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).format(new Date());
+    localStringBuilder.append(" ");
+    localStringBuilder.append(str);
+    this.n = bdhu.a(localStringBuilder.toString());
+  }
+  
+  public void k(String paramString)
+  {
+    this.jdField_j_of_type_JavaLangString = paramString;
+  }
+  
+  public HashMap<String, String> l()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("duration", bizf.a(Long.valueOf(this.jdField_i_of_type_Long)));
+    localHashMap.put("cutout_type", Long.toString(this.jdField_j_of_type_Long));
+    localHashMap.put("countdown_type", Long.toString(this.jdField_k_of_type_Long));
+    Object localObject = new DecimalFormat("0.00").format(this.jdField_b_of_type_Int / 100.0F);
+    String str = new DecimalFormat("0.00").format(this.jdField_c_of_type_Int / 100.0F);
+    localHashMap.put("beauty_value", localObject);
+    localHashMap.put("facial_value", str);
+    localObject = bkqo.a().c(0);
+    if (localObject != null) {}
+    for (this.jdField_k_of_type_JavaLangString = ((QIMFilterCategoryItem)localObject).jdField_a_of_type_JavaLangString;; this.jdField_k_of_type_JavaLangString = "none")
+    {
+      localHashMap.put("filter_id", this.jdField_k_of_type_JavaLangString);
+      localHashMap.put("cameraId", bizf.a(ahua.jdField_a_of_type_Int));
+      localHashMap.put("emoticon_id", this.jdField_j_of_type_JavaLangString);
+      return localHashMap;
+    }
+  }
+  
+  public void l()
+  {
+    this.jdField_j_of_type_Long = 1L;
+    this.jdField_k_of_type_Long = 1L;
+  }
+  
+  public HashMap<String, String> m()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("emoticon_id", this.jdField_j_of_type_JavaLangString);
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> n()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("duration", bizf.a(Long.valueOf(this.jdField_i_of_type_Long)));
+    localHashMap.put("cutout_type", Long.toString(this.jdField_j_of_type_Long));
+    localHashMap.put("countdown_type", Long.toString(this.jdField_k_of_type_Long));
+    Object localObject = new DecimalFormat("0.00").format(this.jdField_b_of_type_Int / 100.0F);
+    String str = new DecimalFormat("0.00").format(this.jdField_c_of_type_Int / 100.0F);
+    localHashMap.put("beauty_value", localObject);
+    localHashMap.put("facial_value", str);
+    localHashMap.put("cameraId", bizf.a(ahua.jdField_a_of_type_Int));
+    localHashMap.put("emoticon_id", this.jdField_j_of_type_JavaLangString);
+    localHashMap.put("text_content", this.l);
+    if (this.l.equals("none"))
+    {
+      localHashMap.put("text_color", "none");
+      localObject = bkqo.a().c(0);
+      if (localObject == null) {
+        break label249;
+      }
+    }
+    label249:
+    for (this.jdField_k_of_type_JavaLangString = ((QIMFilterCategoryItem)localObject).jdField_a_of_type_JavaLangString;; this.jdField_k_of_type_JavaLangString = "none")
+    {
+      localHashMap.put("filter_id", this.jdField_k_of_type_JavaLangString);
+      if (this.n.equals("")) {
+        k();
+      }
+      localHashMap.put("MD5", this.n);
+      return localHashMap;
+      localHashMap.put("text_color", this.m);
+      break;
+    }
+  }
+  
+  public HashMap<String, String> o()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("duration", bizf.a(Long.valueOf(this.jdField_i_of_type_Long)));
+    localHashMap.put("cutout_type", Long.toString(this.jdField_j_of_type_Long));
+    localHashMap.put("countdown_type", Long.toString(this.jdField_k_of_type_Long));
+    Object localObject = new DecimalFormat("0.00").format(this.jdField_b_of_type_Int / 100.0F);
+    String str = new DecimalFormat("0.00").format(this.jdField_c_of_type_Int / 100.0F);
+    localHashMap.put("beauty_value", localObject);
+    localHashMap.put("facial_value", str);
+    localHashMap.put("cameraId", bizf.a(ahua.jdField_a_of_type_Int));
+    localHashMap.put("text_content", this.l);
+    if (!localHashMap.containsKey("emoticon_id")) {
+      localHashMap.put("emoticon_id", this.jdField_j_of_type_JavaLangString);
+    }
+    localObject = bkqo.a().c(0);
+    if (localObject != null)
+    {
+      this.jdField_k_of_type_JavaLangString = ((QIMFilterCategoryItem)localObject).jdField_a_of_type_JavaLangString;
+      localHashMap.put("filter_id", this.jdField_k_of_type_JavaLangString);
+      if (!localHashMap.containsKey("text_color"))
+      {
+        if (!this.l.equals("none")) {
+          break label263;
+        }
+        localHashMap.put("text_color", "none");
+      }
+    }
+    for (;;)
+    {
+      if (this.n.equals("")) {
+        k();
+      }
+      localHashMap.put("MD5", this.n);
+      return localHashMap;
+      this.jdField_k_of_type_JavaLangString = "none";
+      break;
+      label263:
+      localHashMap.put("text_color", this.m);
+    }
   }
 }
 

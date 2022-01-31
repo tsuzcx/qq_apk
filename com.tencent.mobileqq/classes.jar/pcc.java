@@ -1,56 +1,20 @@
-import android.support.v7.widget.RecyclerView.OnChildAttachStateChangeListener;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeVideoView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.ProteusRecycleView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
+import java.util.Comparator;
 
 class pcc
-  implements RecyclerView.OnChildAttachStateChangeListener
+  implements Comparator<WeiShiVideoArticleInfo>
 {
-  pcc(pbz parampbz) {}
+  pcc(pcb parampcb) {}
   
-  public void onChildViewAttachedToWindow(View paramView)
+  public int a(WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo1, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo2)
   {
-    if ((paramView instanceof Container))
-    {
-      if (pbz.a(this.a) != null)
-      {
-        int j = pbz.a(this.a).getChildCount();
-        int i = 0;
-        while (i < j)
-        {
-          Iterator localIterator = ((Container)pbz.a(this.a).getChildAt(i)).getViewIdMapping().entrySet().iterator();
-          while (localIterator.hasNext())
-          {
-            Object localObject = (Map.Entry)localIterator.next();
-            if ((((Map.Entry)localObject).getValue() instanceof paj))
-            {
-              localObject = (paj)((Map.Entry)localObject).getValue();
-              if ((((paj)localObject).getNativeView() instanceof NativeVideoView))
-              {
-                localObject = (NativeVideoView)((paj)localObject).getNativeView();
-                if (localObject != null) {
-                  ((NativeVideoView)localObject).setVideoPlayListener(new pcd(this));
-                }
-              }
-            }
-          }
-          i += 1;
-        }
-      }
-      omf.a((Container)paramView);
+    if (paramWeiShiVideoArticleInfo1.recommendSeq == paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return 0;
     }
-  }
-  
-  public void onChildViewDetachedFromWindow(View paramView)
-  {
-    if ((paramView instanceof Container)) {
-      omf.b((Container)paramView);
+    if (paramWeiShiVideoArticleInfo1.recommendSeq > paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return -1;
     }
+    return 1;
   }
 }
 

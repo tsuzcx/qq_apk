@@ -1,29 +1,24 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 
 public class acex
-  extends atog
+  implements View.OnClickListener
 {
-  public acex(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public acex(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
-    }
-    this.a.a();
-    if (paramBoolean1)
+    if (this.a.jdField_a_of_type_Bcbv != null)
     {
-      if (paramBoolean2)
-      {
-        VerifyPhoneNumActivity.a(this.a, true);
-        VerifyPhoneNumActivity.c(this.a);
-        return;
+      this.a.jdField_a_of_type_Bcbv.jdField_a_of_type_Bcfm.d = false;
+      this.a.jdField_a_of_type_Bcbv.jdField_a_of_type_Bcfm.a = Boolean.valueOf(true);
+      if (this.a.jdField_a_of_type_Bcfj != null) {
+        this.a.jdField_a_of_type_Bcfj.j();
       }
-      VerifyPhoneNumActivity.c(this.a);
-      return;
     }
-    VerifyPhoneNumActivity.c(this.a);
+    this.a.onClick(this.a.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView);
+    this.a.a(0);
   }
 }
 

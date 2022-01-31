@@ -1,16 +1,56 @@
-import com.tencent.widget.AbsListView;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-class qqo
-  extends omr
+public class qqo
 {
-  qqo(qqm paramqqm, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public int a;
+  public long a;
+  public Bundle a;
+  public View a;
+  public ViewGroup a;
+  public VideoInfo a;
+  public qbw a;
+  public qbx a;
+  public qjv a;
+  public qub a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  
+  public qqo()
   {
-    super(paramString);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
   }
   
-  public void a(oml paramoml)
+  public void a(String paramString, boolean paramBoolean)
   {
-    paramoml.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
+    try
+    {
+      this.jdField_a_of_type_AndroidOsBundle.putBoolean(paramString, paramBoolean);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public boolean a(String paramString, boolean paramBoolean)
+  {
+    try
+    {
+      paramBoolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean(paramString, paramBoolean);
+      return paramBoolean;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
   }
 }
 

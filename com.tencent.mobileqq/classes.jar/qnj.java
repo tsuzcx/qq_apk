@@ -1,16 +1,18 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 
 class qnj
-  implements View.OnClickListener
+  extends bfmg
 {
-  qnj(qni paramqni, nik paramnik) {}
+  qnj(qng paramqng, AlphaAnimation paramAlphaAnimation) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Nik.i();
-    this.jdField_a_of_type_Qni.b();
+    this.jdField_a_of_type_Qng.a.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

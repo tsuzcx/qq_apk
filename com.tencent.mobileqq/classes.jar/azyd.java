@@ -1,41 +1,134 @@
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-class azyd
-  extends ajhw
+public final class azyd
 {
-  azyd(azyc paramazyc) {}
+  private static int jdField_a_of_type_Int = 4000;
+  private static final Map<String, azye> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(2);
   
-  public void a(boolean paramBoolean, FaceInfo paramFaceInfo)
+  private static void a(azye paramazye, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onUpdateStrangerHead.faceInfo=" + paramFaceInfo + ", isSuccess=" + paramBoolean);
-    }
-    if ((this.a.b) || (this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramFaceInfo == null)) {}
-    while ((paramFaceInfo.b != this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b) || (!this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a.equals(paramFaceInfo.a))) {
-      return;
-    }
-    if ((this.a.jdField_a_of_type_Ajhw != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.a.jdField_a_of_type_Ajhw);
-    }
-    if (paramBoolean)
+    if ((paramazye != null) && (paramazye.jdField_a_of_type_JavaIoByteArrayOutputStream != null))
     {
-      paramFaceInfo = this.a.b();
-      if (paramFaceInfo != null)
+      if (paramazye.jdField_a_of_type_JavaIoByteArrayOutputStream.size() > 0)
       {
-        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramFaceInfo);
+        if (paramazye.jdField_a_of_type_JavaIoFile == null)
+        {
+          File localFile = new File(paramazye.jdField_a_of_type_JavaLangString);
+          if (!localFile.exists()) {
+            localFile.createNewFile();
+          }
+          paramazye.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile, true);
+          paramazye.jdField_a_of_type_JavaIoFile = localFile;
+        }
+        paramazye.jdField_a_of_type_JavaIoByteArrayOutputStream.writeTo(paramazye.jdField_a_of_type_JavaIoFileOutputStream);
+      }
+      if (paramBoolean)
+      {
+        if (paramazye.jdField_a_of_type_JavaIoFileOutputStream != null)
+        {
+          paramazye.jdField_a_of_type_JavaIoFileOutputStream.flush();
+          paramazye.jdField_a_of_type_JavaIoFileOutputStream.close();
+          paramazye.jdField_a_of_type_JavaIoFileOutputStream = null;
+        }
+        paramazye.jdField_a_of_type_JavaIoFile = null;
+      }
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    b(paramString);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if ((azye)jdField_a_of_type_JavaUtilMap.get(paramString) == null)
+    {
+      azye localazye = new azye();
+      localazye.jdField_a_of_type_JavaLangString = paramString;
+      jdField_a_of_type_JavaUtilMap.put(paramString, localazye);
+    }
+    return true;
+  }
+  
+  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt)
+  {
+    paramString = (azye)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null)
+    {
+      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream == null) {
+        paramString.jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream(paramInt << 1);
+      }
+      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.write(paramArrayOfByte, 0, paramInt);
+      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.size() < jdField_a_of_type_Int) {}
+    }
+    try
+    {
+      a(paramString, false);
+      label66:
+      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
+      return true;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      break label66;
+    }
+  }
+  
+  private static void b(String paramString)
+  {
+    azye localazye = (azye)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if ((localazye == null) || (localazye.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
+    try
+    {
+      localazye.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
+      label31:
+      if (localazye.jdField_a_of_type_JavaIoFileOutputStream != null) {}
+      try
+      {
+        localazye.jdField_a_of_type_JavaIoFileOutputStream.close();
+        label45:
+        localazye.jdField_a_of_type_JavaIoFileOutputStream = null;
+        jdField_a_of_type_JavaUtilMap.remove(paramString);
         return;
       }
-      this.a.a();
-      return;
+      catch (Exception localException1)
+      {
+        break label45;
+      }
     }
-    this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, null);
+    catch (Exception localException2)
+    {
+      break label31;
+    }
+  }
+  
+  public static boolean b(String paramString)
+  {
+    azye localazye = (azye)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if ((localazye != null) && (localazye.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
+    try
+    {
+      a(localazye, true);
+      label29:
+      localazye.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
+      b(paramString);
+      return true;
+    }
+    catch (IOException localIOException)
+    {
+      break label29;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azyd
  * JD-Core Version:    0.7.0.1
  */

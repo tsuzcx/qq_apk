@@ -3,14 +3,14 @@ package com.etrump.mixlayout;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
-import fc;
+import gv;
 
 public class AnimatedImageDrawable
   extends AnimationDrawable
 {
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
-  private fc jdField_a_of_type_Fc;
+  private gv jdField_a_of_type_Gv;
   
   public int a()
   {
@@ -25,8 +25,8 @@ public class AnimatedImageDrawable
   public void a()
   {
     this.jdField_a_of_type_Int = ((this.jdField_a_of_type_Int + 1) % getNumberOfFrames());
-    if (this.jdField_a_of_type_Fc != null) {
-      this.jdField_a_of_type_Fc.a(this.jdField_a_of_type_AndroidViewView);
+    if (this.jdField_a_of_type_Gv != null) {
+      this.jdField_a_of_type_Gv.a(this.jdField_a_of_type_AndroidViewView);
     }
   }
 }

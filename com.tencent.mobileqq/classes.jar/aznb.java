@@ -1,11 +1,17 @@
-import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.widget.URLThemeImageView;
 
-public class aznb
-  extends acuw
+class aznb
 {
-  public View a;
+  public ViewGroup a;
+  public ImageView a;
   public TextView a;
+  public URLThemeImageView a;
+  public TextView b;
+  
+  aznb(azmu paramazmu) {}
 }
 
 

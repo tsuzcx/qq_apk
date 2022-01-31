@@ -1,29 +1,16 @@
 public class laz
+  extends law
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = "";
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString = "";
-  int jdField_c_of_type_Int = 0;
-  String jdField_c_of_type_JavaLangString = "";
-  int jdField_d_of_type_Int = 0;
-  String jdField_d_of_type_JavaLangString = "";
-  int jdField_e_of_type_Int = 0;
-  String jdField_e_of_type_JavaLangString = "";
-  int f = 0;
-  int g = 0;
-  int h = 0;
-  int i = 0;
-  int j = 0;
-  int k = 0;
-  int l = 0;
-  int m = 0;
+  private final byte[] a = { -89, -34, -67, 60, 35, 96, 30, -47, 119, 15, 33, -8, 27, -105, 120, -21, -107, 19, 72, 121, 115, 87, -7, 41, -2, 121, -54, -113, 33, -87, -47, 43, -103, -61, 84, -9, 115, 74, 69, 19, -31, -19, 67, 12, -110, -104, 34, -109, 48, -110, 20, -113, 71, 84, -39, -90 };
   
-  public laz(lap paramlap) {}
+  public String a()
+  {
+    return a(this.a, a());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     laz
  * JD-Core Version:    0.7.0.1
  */

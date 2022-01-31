@@ -1,19 +1,38 @@
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.qqstory.storyHome.VideoEncodeActivity;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.lang.ref.WeakReference;
 
 public class ubx
-  implements RadioGroup.OnCheckedChangeListener
+  implements DialogInterface.OnDismissListener
 {
-  public ubx(VideoEncodeActivity paramVideoEncodeActivity) {}
+  private final WeakReference<VideoViewVideoHolder> jdField_a_of_type_JavaLangRefWeakReference;
+  private final boolean jdField_a_of_type_Boolean;
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public ubx(VideoViewVideoHolder paramVideoViewVideoHolder, boolean paramBoolean)
   {
-    paramRadioGroup = (RadioButton)paramRadioGroup.findViewById(paramInt);
-    VideoEncodeActivity.a(this.a, (String)paramRadioGroup.getTag());
-    urk.d("Q.qqstory:VideoEncodeActivity", "select fake vid %s", new Object[] { VideoEncodeActivity.a(this.a) });
-    VideoEncodeActivity.a(this.a);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVideoViewVideoHolder);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    paramDialogInterface = (VideoViewVideoHolder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramDialogInterface != null)
+    {
+      if ((paramDialogInterface.a()) && (!paramDialogInterface.a().isFinishing())) {
+        break label40;
+      }
+      veg.b("OnNewGuideDialogDismissListener", "activity token invalid, preventing from showing dialog");
+    }
+    label40:
+    while (paramDialogInterface.e()) {
+      return;
+    }
+    paramDialogInterface.c(this.jdField_a_of_type_Boolean);
+    paramDialogInterface.d();
+    paramDialogInterface.a = null;
   }
 }
 

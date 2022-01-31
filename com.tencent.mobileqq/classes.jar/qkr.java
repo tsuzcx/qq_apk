@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public final class qkr
-  implements Parcelable.Creator<DiscoveryInfo>
+class qkr
+  implements DialogInterface.OnDismissListener
 {
-  public DiscoveryInfo a(Parcel paramParcel)
-  {
-    return new DiscoveryInfo(paramParcel);
-  }
+  qkr(qko paramqko) {}
   
-  public DiscoveryInfo[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new DiscoveryInfo[paramInt];
+    if (qko.a(this.a) != null) {
+      qko.a(this.a).a(qko.a(this.a), qko.b(this.a), false, false);
+    }
+    qko.a(this.a, true);
+    qko.b(this.a, false);
   }
 }
 

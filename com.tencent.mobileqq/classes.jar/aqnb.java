@@ -1,37 +1,37 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class aqnb
-  extends BroadcastReceiver
+public class aqnb
 {
-  aqnb(aqmw paramaqmw) {}
+  public int a;
+  public String a;
+  public ArrayList<aqmz> a;
+  public HashMap<String, String> a;
+  public int b;
+  public String b;
+  public ArrayList<String> b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aqnb()
   {
-    paramContext = paramIntent.getAction();
-    int i;
-    if ((paramContext.equals(aqlr.a(aqmw.b(this.a)))) || (paramContext.equals(aqlr.d(aqmw.b(this.a)))))
-    {
-      i = paramIntent.getIntExtra("key_state", -1);
-      paramContext = aqmw.a(this.a, i);
-    }
-    switch (i)
-    {
-    default: 
-      return;
-    case 9: 
-    case 100: 
-      this.a.callJs("notifyJsCallback", new String[] { paramContext.toString() });
-      return;
-    }
-    aqnc.a.a = 0L;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mMd5= ").append(this.jdField_a_of_type_JavaLangString).append("\n").append("baseWidth= ").append(this.jdField_a_of_type_Int).append("\n").append("baseHeight= ").append(this.jdField_b_of_type_Int).append("\n").append("mLanguage= ").append(this.jdField_b_of_type_JavaLangString).append("\n");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqnb
  * JD-Core Version:    0.7.0.1
  */

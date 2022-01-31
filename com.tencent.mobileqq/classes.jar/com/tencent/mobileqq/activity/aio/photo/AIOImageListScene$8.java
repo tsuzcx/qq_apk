@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import advs;
-import adxf;
-import adxg;
-import adyb;
+import aegr;
+import aeie;
+import aeif;
+import aeja;
 
 public class AIOImageListScene$8
   implements Runnable
 {
-  public AIOImageListScene$8(adxg paramadxg, long paramLong, boolean paramBoolean) {}
+  public AIOImageListScene$8(aeif paramaeif, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
     if (this.this$0.a != null)
     {
-      adyb localadyb = this.this$0.a.a();
+      aeja localaeja = this.this$0.a.a();
       if (this.this$0.a.a(this.jdField_a_of_type_Long) != null) {
         this.this$0.h();
       }
-      if ((this.jdField_a_of_type_Boolean) && (localadyb != null) && (this.jdField_a_of_type_Long == localadyb.a.f)) {
-        advs.a(adxg.r(this.this$0));
+      if ((this.jdField_a_of_type_Boolean) && (localaeja != null) && (this.jdField_a_of_type_Long == localaeja.a.f)) {
+        aegr.a(aeif.r(this.this$0));
       }
     }
   }

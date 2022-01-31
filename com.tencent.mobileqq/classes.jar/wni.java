@@ -1,22 +1,29 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public class wni
-  implements AdapterView.OnItemClickListener
+class wni
+  implements TextView.OnEditorActionListener
 {
-  public wni(TroopGiftPanel paramTroopGiftPanel) {}
+  wni(wne paramwne) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.onTabSelected(0, paramInt);
-    paramView.setSelected(true);
+    switch (paramInt)
+    {
+    case 5: 
+    default: 
+      return false;
+    }
+    if (wne.a(this.a) != null) {
+      wne.a(this.a).a();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wni
  * JD-Core Version:    0.7.0.1
  */

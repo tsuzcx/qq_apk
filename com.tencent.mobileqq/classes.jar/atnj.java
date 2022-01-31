@@ -1,61 +1,27 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.RoamSetting;
-import com.tencent.mobileqq.persistence.NoColumnError;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class atnj
-  extends atna
+class atnj
+  implements View.OnTouchListener
 {
-  public atnj()
-  {
-    this.a = 2;
-  }
+  atnj(atni paramatni) {}
   
-  public atmo a(atmo paramatmo, Cursor paramCursor, boolean paramBoolean, atmz paramatmz)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramatmo = (RoamSetting)paramatmo;
-    if (paramatmz == null)
+    switch (paramMotionEvent.getAction())
     {
-      paramatmo.path = paramCursor.getString(paramCursor.getColumnIndex("path"));
-      paramatmo.value = paramCursor.getString(paramCursor.getColumnIndex("value"));
-      return paramatmo;
-    }
-    int i = paramCursor.getColumnIndex("path");
-    if (i == -1) {
-      paramatmz.a(new NoColumnError("path", String.class));
     }
     for (;;)
     {
-      i = paramCursor.getColumnIndex("value");
-      if (i != -1) {
-        break;
-      }
-      paramatmz.a(new NoColumnError("value", String.class));
-      return paramatmo;
-      paramatmo.path = paramCursor.getString(i);
+      return true;
+      this.a.dismiss();
     }
-    paramatmo.value = paramCursor.getString(i);
-    return paramatmo;
-  }
-  
-  public String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,path TEXT UNIQUE ,value TEXT)");
-    return localStringBuilder.toString();
-  }
-  
-  public void a(atmo paramatmo, ContentValues paramContentValues)
-  {
-    paramatmo = (RoamSetting)paramatmo;
-    paramContentValues.put("path", paramatmo.path);
-    paramContentValues.put("value", paramatmo.value);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atnj
  * JD-Core Version:    0.7.0.1
  */

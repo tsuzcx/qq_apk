@@ -1,57 +1,42 @@
-import android.os.Handler;
-import com.tencent.mobileqq.teamworkforgroup.GPadInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.MotionEvent;
 
-class axjk
-  extends axim
+public class axjk
 {
-  axjk(axjb paramaxjb) {}
+  final float jdField_a_of_type_Float;
+  final int jdField_a_of_type_Int;
+  final long jdField_a_of_type_Long;
+  final float[] jdField_a_of_type_ArrayOfFloat;
+  final int[] jdField_a_of_type_ArrayOfInt;
+  final float jdField_b_of_type_Float;
+  final int jdField_b_of_type_Int;
+  final float[] jdField_b_of_type_ArrayOfFloat;
+  final int c;
   
-  public void a(boolean paramBoolean1, int paramInt1, String arg3, List<GPadInfo> paramList, int paramInt2, boolean paramBoolean2)
+  public axjk(MotionEvent paramMotionEvent)
   {
-    ??? = this.a;
-    ???.jdField_a_of_type_Int -= 1;
-    if ((paramBoolean1) && (paramInt1 == 0)) {
-      for (;;)
-      {
-        synchronized (this.a.jdField_a_of_type_JavaLangObject)
-        {
-          if (this.a.jdField_a_of_type_JavaUtilList != null)
-          {
-            this.a.jdField_a_of_type_JavaUtilList.clear();
-            this.a.c = paramInt2;
-            this.a.e = paramBoolean2;
-            if (paramList == null) {
-              break;
-            }
-            this.a.jdField_b_of_type_Int = paramList.size();
-          }
-        }
-        synchronized (this.a.jdField_a_of_type_JavaLangObject)
-        {
-          this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
-          ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5);
-          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
-          return;
-          this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
-          continue;
-          paramList = finally;
-          throw paramList;
-        }
-      }
-    }
-    if (this.a.jdField_b_of_type_Boolean) {}
-    for (??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);; ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5))
+    this.jdField_a_of_type_Int = paramMotionEvent.getActionMasked();
+    this.jdField_b_of_type_Int = paramMotionEvent.getPointerCount();
+    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_b_of_type_Int];
+    this.jdField_a_of_type_ArrayOfFloat = new float[this.jdField_b_of_type_Int];
+    this.jdField_b_of_type_ArrayOfFloat = new float[this.jdField_b_of_type_Int];
+    int i = 0;
+    while (i < this.jdField_b_of_type_Int)
     {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
-      return;
+      this.jdField_a_of_type_ArrayOfInt[i] = paramMotionEvent.getPointerId(i);
+      this.jdField_a_of_type_ArrayOfFloat[i] = paramMotionEvent.getX(i);
+      this.jdField_b_of_type_ArrayOfFloat[i] = paramMotionEvent.getY(i);
+      i += 1;
     }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    i = paramMotionEvent.getActionIndex();
+    this.c = paramMotionEvent.getPointerId(i);
+    this.jdField_a_of_type_Float = paramMotionEvent.getX(i);
+    this.jdField_b_of_type_Float = paramMotionEvent.getY(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axjk
  * JD-Core Version:    0.7.0.1
  */

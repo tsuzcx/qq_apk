@@ -1,25 +1,37 @@
-class afgh
-  implements aroi
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+
+public class afgh
+  extends Handler
 {
-  afgh(afgd paramafgd) {}
+  public afgh(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public void a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.c(false);
-    afgd.a(this.a);
+    if (SearchBaseFragment.a(this.a) != null) {
+      SearchBaseFragment.a(this.a).sendMessage(Message.obtain(paramMessage));
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.a();
+      return;
+    case 1: 
+      this.a.a((String)paramMessage.obj);
+      return;
+    case 2: 
+      this.a.g();
+      return;
+    }
+    this.a.c();
   }
-  
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void b(int paramInt) {}
-  
-  public void c(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afgh
  * JD-Core Version:    0.7.0.1
  */

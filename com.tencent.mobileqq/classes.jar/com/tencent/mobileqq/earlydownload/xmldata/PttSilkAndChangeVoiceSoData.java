@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import amzv;
+import anqd;
 
 public class PttSilkAndChangeVoiceSoData
   extends XmlData
 {
-  @amzv(a=true, b=true)
+  @anqd(a=true, b=true)
   public boolean amrV5So;
-  @amzv(a=true, b=true)
+  @anqd(a=true, b=true)
   public boolean amrV7So;
-  @amzv(a=true, b=true)
+  @anqd(a=true, b=true)
   public boolean amrV8So;
-  @amzv(a=true, b=true)
+  @anqd(a=true, b=true)
   public boolean mipsSo;
-  @amzv(a=true, b=true)
+  @anqd(a=true, b=true)
   public String version = "";
-  @amzv(a=true, b=true)
+  @anqd(a=true, b=true)
   public boolean x86So;
   
   public String getSharedPreferencesName()

@@ -1,60 +1,43 @@
-import java.io.File;
-import java.util.HashMap;
+import NS_COMM.COMM.StCommonExt;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import mqq.app.AppRuntime;
 
-public abstract class wks
+class wks
+  implements View.OnClickListener
 {
-  wks jdField_a_of_type_Wks;
-  wkt jdField_a_of_type_Wkt;
-  String c;
-  String d;
+  wks(wkq paramwkq) {}
   
-  public wks(wju paramwju, wkt paramwkt, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Wkt = paramwkt;
-    this.c = paramString;
-  }
-  
-  public File a()
-  {
-    int i = this.c.indexOf("_");
-    Object localObject = this.c.substring(i + 1, this.c.length());
-    localObject = new File(wju.jdField_a_of_type_JavaLangString + File.separator + (String)localObject);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    return localObject;
-  }
-  
-  public wke a()
-  {
-    synchronized (this.b.jdField_a_of_type_JavaLangObject)
+    paramView = new StringBuilder(wip.b(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
+    if (this.a.a() != null) {}
+    for (;;)
     {
-      wke localwke = (wke)this.b.jdField_a_of_type_JavaUtilHashMap.get(this.c);
-      return localwke;
-    }
-  }
-  
-  public abstract void a();
-  
-  public File b()
-  {
-    File localFile = new File(wju.jdField_a_of_type_JavaLangString + File.separator + "cache");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return localFile;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Wks != null) {
-      this.jdField_a_of_type_Wks.a();
+      try
+      {
+        paramView.append(URLEncoder.encode(this.a.a().attachInfo.get(), "UTF-8"));
+        xhe.b("auth_follow", "clk_more", 0, 0, new String[0]);
+        wiv.a(paramView.toString());
+        return;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        localUnsupportedEncodingException.printStackTrace();
+        continue;
+      }
+      QLog.d(wkq.a, 0, "jump more recommend H5 page with no attach info!");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wks
  * JD-Core Version:    0.7.0.1
  */

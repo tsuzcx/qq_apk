@@ -1,16 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
 
-class abhg
-  implements DialogInterface.OnCancelListener
+public class abhg
+  extends xpz
 {
-  abhg(abhe paramabhe) {}
+  public abhg(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public xpg a(Activity paramActivity, xpm paramxpm)
   {
-    this.a.a.setResult(4003);
-    this.a.a.finish();
+    return super.a(paramActivity, paramxpm);
+  }
+  
+  public xpi a(Activity paramActivity, xpm paramxpm)
+  {
+    this.a.a = new ausv((FriendProfilePicBrowserActivity)paramActivity, paramxpm);
+    return this.a.a;
+  }
+  
+  public xpm a(Activity paramActivity)
+  {
+    paramActivity = new atoe(this.a, FriendProfilePicBrowserActivity.a(this.a));
+    paramActivity.a(FriendProfilePicBrowserActivity.a(this.a));
+    return paramActivity;
+  }
+  
+  public xpn a(Activity paramActivity, xpm paramxpm)
+  {
+    return null;
   }
 }
 

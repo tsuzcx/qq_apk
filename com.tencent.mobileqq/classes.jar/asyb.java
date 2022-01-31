@@ -1,98 +1,108 @@
-import android.os.Bundle;
-import appoint.define.appoint_define.PublisherInfo;
-import com.tencent.mobileqq.data.StrangerInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-import com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x66b.Oidb_0x66b.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class asyb
-  extends mmn
 {
-  public asyb(NearbyProfileFragment paramNearbyProfileFragment) {}
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public boolean c;
+  public long d;
+  public String d;
+  public boolean d;
+  public long e;
+  public long f;
+  public long g;
+  public long h;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public asyb()
   {
-    if (paramInt == 0)
+    this.jdField_b_of_type_Int = 999;
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+  }
+  
+  public float a()
+  {
+    if (c()) {}
+    while (a()) {
+      return 0.4F;
+    }
+    return 1.0F;
+  }
+  
+  public void a(asyc paramasyc)
+  {
+    this.jdField_a_of_type_Long = paramasyc.jdField_a_of_type_Long;
+    this.jdField_b_of_type_Long = paramasyc.jdField_b_of_type_Long;
+    this.jdField_a_of_type_Float = paramasyc.jdField_a_of_type_Float;
+    this.jdField_c_of_type_Long = paramasyc.jdField_c_of_type_Long;
+    this.jdField_d_of_type_Long = paramasyc.jdField_d_of_type_Long;
+    this.e = paramasyc.e;
+    this.f = paramasyc.f;
+    this.g = paramasyc.g;
+    this.jdField_a_of_type_Boolean = paramasyc.jdField_b_of_type_Boolean;
+    this.h = paramasyc.h;
+    this.jdField_c_of_type_JavaLangString = paramasyc.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = paramasyc.jdField_b_of_type_JavaLangString;
+    this.jdField_d_of_type_JavaLangString = paramasyc.jdField_c_of_type_JavaLangString;
+    this.jdField_d_of_type_Boolean = paramasyc.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a()
+  {
+    boolean bool = true;
+    if ((this.jdField_a_of_type_Long == 12L) || (this.jdField_a_of_type_Long == 1L) || (this.jdField_a_of_type_Long == 2L) || (this.jdField_a_of_type_Long == 3L)) {
+      bool = false;
+    }
+    do
     {
-      paramBundle = new oidb_sso.OIDBSSOPkg();
-      try
-      {
-        paramArrayOfByte = (oidb_sso.OIDBSSOPkg)paramBundle.mergeFrom((byte[])paramArrayOfByte);
-        if (paramArrayOfByte != null)
-        {
-          paramInt = paramArrayOfByte.uint32_result.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyProfileFragment", 2, "handle_oidb_0x66b_0|oidb_sso.OIDBSSOPkg.result " + paramInt);
-          }
-        }
-        paramBundle = new Oidb_0x66b.RspBody();
+      return bool;
+      if ((!asxk.c(this.jdField_a_of_type_Long)) && (this.jdField_a_of_type_Long != 7L)) {
+        break;
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        try
-        {
-          paramBundle.mergeFrom(paramArrayOfByte.bytes_bodybuffer.get().toByteArray());
-          paramArrayOfByte = new NearbyMyTabCard();
-          if (!paramBundle.rpt_msg_vistor_info.has()) {
-            break label307;
-          }
-          paramArrayOfByte.visitors.clear();
-          paramBundle = paramBundle.rpt_msg_vistor_info.get().iterator();
-          while (paramBundle.hasNext())
-          {
-            Object localObject = (appoint_define.PublisherInfo)paramBundle.next();
-            if (localObject != null)
-            {
-              localObject = StrangerInfo.convertFrom((appoint_define.PublisherInfo)localObject);
-              if (localObject != null) {
-                paramArrayOfByte.visitors.add(localObject);
-              }
-            }
-          }
-          paramArrayOfByte = paramArrayOfByte;
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyProfileFragment", 2, "handle_oidb_0x66b_0|oidb_sso parseFrom byte " + paramArrayOfByte.toString());
-          }
-          paramArrayOfByte = paramBundle;
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyProfileFragment", 2, "handle_oidb_0x66b_0|oidb_sso parseFrom byte " + paramArrayOfByte.toString());
-          }
-        }
-      }
-    }
-    else
-    {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyProfileFragment", 2, "handleGetNearbyMyTab visitor info is: " + paramArrayOfByte.visitors.toString());
-    }
-    for (;;)
-    {
-      NearbyProfileFragment.a(this.a, paramArrayOfByte.visitors);
-      return;
-      label307:
       if (QLog.isColorLevel()) {
-        QLog.i("NearbyProfileFragment", 2, "handleGetNearbyMyTay has no visitor info.");
+        QLog.i("MutualMarkForDisplayInfo", 2, "isInTwinkling icon_status:" + this.f + " currentMillis:" + NetConnInfoCenter.getServerTimeMillis() + " icon_status_end_time:" + this.g);
       }
+    } while ((this.f == 2L) && (NetConnInfoCenter.getServerTimeMillis() < this.g * 1000L));
+    while (!asxk.a(this.jdField_d_of_type_Long * 1000L)) {
+      return false;
     }
+    return true;
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Long == 5L) || (this.jdField_a_of_type_Long == 6L) || (this.jdField_a_of_type_Long == 8L) || (this.jdField_a_of_type_Long == 4L);
+  }
+  
+  public boolean c()
+  {
+    return this.f == 1L;
+  }
+  
+  public boolean d()
+  {
+    if ((this.jdField_c_of_type_Boolean) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {}
+    while ((this.jdField_c_of_type_Int == 0) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {
+      return false;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asyb
  * JD-Core Version:    0.7.0.1
  */

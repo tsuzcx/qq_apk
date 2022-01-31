@@ -1,9 +1,6 @@
 package com.tencent.tmassistantbase.util;
 
-public enum m
-{
-  private m() {}
-}
+public abstract interface m {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

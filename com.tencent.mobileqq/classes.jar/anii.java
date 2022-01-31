@@ -1,19 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Game;
+import com.tencent.mobileqq.data.IPSiteModel.GameRich;
+import java.util.ArrayList;
+import java.util.List;
 
-public class anii
-  implements arol<String, Integer>
+public final class anii
+  implements Parcelable.Creator
 {
-  public anii(EmoticonMainPanel paramEmoticonMainPanel, int paramInt) {}
-  
-  public Integer a(String paramString)
+  public IPSiteModel.Game a(Parcel paramParcel)
   {
-    EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a);
-    int i = this.jdField_a_of_type_Int;
-    if (!TextUtils.isEmpty(paramString)) {
-      i = EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, paramString);
+    IPSiteModel.Game localGame = new IPSiteModel.Game();
+    localGame.cover = paramParcel.readString();
+    localGame.desc = paramParcel.readString();
+    localGame.id = paramParcel.readString();
+    localGame.jumpUrl = paramParcel.readString();
+    localGame.name = paramParcel.readString();
+    localGame.recommDesc = paramParcel.readString();
+    if (localGame.gameRiches == null) {
+      localGame.gameRiches = new ArrayList();
     }
-    return Integer.valueOf(i);
+    localGame.gameRiches.clear();
+    paramParcel.readList(localGame.gameRiches, IPSiteModel.GameRich.class.getClassLoader());
+    return localGame;
+  }
+  
+  public IPSiteModel.Game[] a(int paramInt)
+  {
+    return new IPSiteModel.Game[paramInt];
   }
 }
 

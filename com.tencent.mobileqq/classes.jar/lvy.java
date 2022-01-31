@@ -1,63 +1,29 @@
-import android.content.res.Resources;
-import android.widget.Button;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import com.tencent.av.ui.MultiVideoEnterPageMembersControlUI;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment.3;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment.3.1;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public class lvy
-  extends kvw
+  implements bcwh
 {
-  public lvy(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public lvy(RedPacketShareFragment.3.1 param1) {}
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  public void a(BaseResp paramBaseResp)
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null))
-    {
-      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, empty");
+    if ((RedPacketShareFragment.d(this.a.a.this$0) == null) || (!RedPacketShareFragment.d(this.a.a.this$0).equals(paramBaseResp.transaction))) {
       return;
     }
-    if (paramLong != this.a.jdField_a_of_type_Long)
+    QLog.d("RedPacketShareFragment", 1, "WL_DEBUG ActionSheetAdapter.CHANNEL_WX_FRIEND onWXShareResp resp.errCode = " + paramBaseResp.errCode);
+    switch (paramBaseResp.errCode)
     {
-      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, ignore");
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
       return;
-    }
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin(), paramLong, this.a.b);
-      this.a.b(paramInt2);
-      return;
-    }
-    if (paramInt3 == -5)
-    {
-      if (this.a.jdField_a_of_type_Boolean) {
-        if ((this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI != null) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI.length > 1) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1] != null)) {
-          this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1].b.setVisibility(8);
-        }
-      }
-      for (;;)
-      {
-        bbmy.a(this.a, 2131627598, 1).b(MultiVideoEnterPageActivity.b(this.a).getDimensionPixelSize(2131167766));
-        return;
-        this.a.jdField_a_of_type_Lvx.b.setVisibility(8);
-      }
-    }
-    bbmy.a(this.a, 2131627597, 1).b(MultiVideoEnterPageActivity.c(this.a).getDimensionPixelSize(2131167766));
-  }
-  
-  protected void c(long paramLong)
-  {
-    super.c(paramLong);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin:" + paramLong + ", mRelationId = " + this.a.jdField_a_of_type_Long);
-    }
-    if ((paramLong != 0L) && (paramLong == this.a.jdField_a_of_type_Long))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin matched");
-      }
-      this.a.finish();
+      RedPacketShareFragment.a("0X8008CF8", 3);
     }
   }
 }

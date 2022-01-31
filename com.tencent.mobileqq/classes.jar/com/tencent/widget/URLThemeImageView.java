@@ -3,15 +3,15 @@ package com.tencent.widget;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import beog;
-import beoh;
+import bfwa;
+import bfwb;
 import com.tencent.image.URLImageView;
 
 public class URLThemeImageView
   extends URLImageView
-  implements beoh
+  implements bfwb
 {
-  public beog a;
+  public bfwa a;
   
   public URLThemeImageView(Context paramContext)
   {
@@ -54,7 +54,7 @@ public class URLThemeImageView
     if (paramBoolean)
     {
       if (this.a == null) {
-        this.a = new beog();
+        this.a = new bfwa();
       }
       this.a.a(true);
     }

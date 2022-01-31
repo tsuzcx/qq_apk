@@ -1,30 +1,19 @@
-public class wbb
+class wbb
 {
-  public static String a(long paramLong)
+  public int a;
+  public byte[] a;
+  public int b;
+  
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    long l = paramLong;
-    if (paramLong < 0L) {
-      l = 0L;
-    }
-    String str1 = ajjy.a(2131638935);
-    if (l < 10000L) {
-      return String.valueOf(l);
-    }
-    if (l < 10000000L)
-    {
-      str1 = String.valueOf(l / 10000.0D + 0.05D);
-      return str1.substring(0, str1.indexOf(".") + 2) + "w";
-    }
-    if (l < 100000000L) {
-      return l / 10000L + "w";
-    }
-    String str2 = String.valueOf(l / 100000000.0D);
-    return str2.substring(0, str2.indexOf(".") + 2) + str1;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wbb
  * JD-Core Version:    0.7.0.1
  */

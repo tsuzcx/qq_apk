@@ -1,59 +1,129 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimGetTipsInfoIPC.GetContactTipsRunnable;
-import cooperation.qqpim.QQPimGetTipsInfoIPC.NoticeClickTipsRunnable;
-import cooperation.qqpim.QQPimTipsInfo;
-import eipc.EIPCResult;
+import android.util.Pair;
+import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
-public class bfkt
-  extends QIPCModule
+public abstract class bfkt
 {
-  public bfkt(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC, String paramString)
+  private static int a(ByteBuffer paramByteBuffer)
   {
-    super(paramString);
+    a(paramByteBuffer);
+    int j = paramByteBuffer.capacity();
+    if (j < 22) {}
+    for (;;)
+    {
+      return -1;
+      int k = Math.min(j - 22, 65535);
+      int i = 0;
+      while (i < k)
+      {
+        int m = j - 22 - i;
+        if ((paramByteBuffer.getInt(m) == 101010256) && (a(paramByteBuffer, m + 20) == i)) {
+          return m;
+        }
+        i += 1;
+      }
+    }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  private static int a(ByteBuffer paramByteBuffer, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bfkr.a, 2, "QQPimGetTipsInfoIPC.onCall()" + paramString);
+    return paramByteBuffer.getShort(paramInt) & 0xFFFF;
+  }
+  
+  public static long a(ByteBuffer paramByteBuffer)
+  {
+    a(paramByteBuffer);
+    return a(paramByteBuffer, paramByteBuffer.position() + 16);
+  }
+  
+  private static long a(ByteBuffer paramByteBuffer, int paramInt)
+  {
+    return paramByteBuffer.getInt(paramInt) & 0xFFFFFFFF;
+  }
+  
+  public static Pair<ByteBuffer, Long> a(RandomAccessFile paramRandomAccessFile)
+  {
+    Object localObject;
+    if (paramRandomAccessFile.length() < 22L) {
+      localObject = null;
     }
-    if (bfkr.g.equals(paramString)) {
-      if (QQPimGetTipsInfoIPC.a() != -1) {}
-    }
-    while ((!bfkr.h.equals(paramString)) || (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L))
+    Pair localPair;
+    do
     {
-      do
-      {
-        do
-        {
-          return null;
-        } while (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L);
-        QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
-        if (QQPimGetTipsInfoIPC.a() == 0)
-        {
-          QQPimGetTipsInfoIPC.a(-1);
-          ThreadManager.postImmediately(new QQPimGetTipsInfoIPC.GetContactTipsRunnable(this.a, QQPimGetTipsInfoIPC.a(this.a), QQPimGetTipsInfoIPC.b(this.a)), null, true);
-          return null;
-        }
-      } while (QQPimGetTipsInfoIPC.a() != 1);
-      QQPimGetTipsInfoIPC.a(-1);
-      ThreadManager.postImmediately(new QQPimGetTipsInfoIPC.NoticeClickTipsRunnable(this.a, null), null, true);
-      return null;
+      return localObject;
+      localPair = a(paramRandomAccessFile, 0);
+      localObject = localPair;
+    } while (localPair != null);
+    return a(paramRandomAccessFile, 65535);
+  }
+  
+  private static Pair<ByteBuffer, Long> a(RandomAccessFile paramRandomAccessFile, int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt > 65535)) {
+      throw new IllegalArgumentException("maxCommentSize: " + paramInt);
     }
-    QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
-    paramString = new QQPimTipsInfo();
-    paramString.a = 0;
-    QQPimGetTipsInfoIPC.a(this.a).a(paramString);
-    return null;
+    long l = paramRandomAccessFile.length();
+    if (l < 22L) {}
+    ByteBuffer localByteBuffer;
+    do
+    {
+      return null;
+      localByteBuffer = ByteBuffer.allocate((int)Math.min(paramInt, l - 22L) + 22);
+      localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+      l -= localByteBuffer.capacity();
+      paramRandomAccessFile.seek(l);
+      paramRandomAccessFile.readFully(localByteBuffer.array(), localByteBuffer.arrayOffset(), localByteBuffer.capacity());
+      paramInt = a(localByteBuffer);
+    } while (paramInt == -1);
+    localByteBuffer.position(paramInt);
+    paramRandomAccessFile = localByteBuffer.slice();
+    paramRandomAccessFile.order(ByteOrder.LITTLE_ENDIAN);
+    return Pair.create(paramRandomAccessFile, Long.valueOf(l + paramInt));
+  }
+  
+  private static void a(ByteBuffer paramByteBuffer)
+  {
+    if (paramByteBuffer.order() != ByteOrder.LITTLE_ENDIAN) {
+      throw new IllegalArgumentException("ByteBuffer byte order must be little endian");
+    }
+  }
+  
+  private static void a(ByteBuffer paramByteBuffer, int paramInt, long paramLong)
+  {
+    if ((paramLong < 0L) || (paramLong > 4294967295L)) {
+      throw new IllegalArgumentException("uint32 value of out range: " + paramLong);
+    }
+    paramByteBuffer.putInt(paramByteBuffer.position() + paramInt, (int)paramLong);
+  }
+  
+  static void a(ByteBuffer paramByteBuffer, long paramLong)
+  {
+    a(paramByteBuffer);
+    a(paramByteBuffer, paramByteBuffer.position() + 16, paramLong);
+  }
+  
+  public static final boolean a(RandomAccessFile paramRandomAccessFile, long paramLong)
+  {
+    paramLong -= 20L;
+    if (paramLong < 0L) {}
+    do
+    {
+      return false;
+      paramRandomAccessFile.seek(paramLong);
+    } while (paramRandomAccessFile.readInt() != 1347094023);
+    return true;
+  }
+  
+  public static long b(ByteBuffer paramByteBuffer)
+  {
+    a(paramByteBuffer);
+    return a(paramByteBuffer, paramByteBuffer.position() + 12);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfkt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajjy;
+import ajyc;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -16,8 +16,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import azmg;
-import azmh;
+import bank;
+import banl;
 import com.tencent.mobileqq.R.styleable;
 
 public class ExpandableTextView
@@ -28,8 +28,8 @@ public class ExpandableTextView
   private int jdField_a_of_type_Int;
   private SparseBooleanArray jdField_a_of_type_AndroidUtilSparseBooleanArray;
   protected TextView a;
-  private azmg jdField_a_of_type_Azmg;
-  private azmh jdField_a_of_type_Azmh;
+  private bank jdField_a_of_type_Bank;
+  private banl jdField_a_of_type_Banl;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -69,9 +69,9 @@ public class ExpandableTextView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131300183));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365782));
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131300181));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365780));
     TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
     if (this.jdField_b_of_type_Boolean) {}
     for (String str = this.jdField_a_of_type_JavaLangString;; str = this.jdField_b_of_type_JavaLangString)
@@ -91,7 +91,7 @@ public class ExpandableTextView
     this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(3);
     this.jdField_b_of_type_JavaLangString = paramAttributeSet.getString(2);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = ajjy.a(2131638445);
+      this.jdField_a_of_type_JavaLangString = ajyc.a(2131704230);
     }
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
       this.jdField_b_of_type_JavaLangString = "";
@@ -126,8 +126,8 @@ public class ExpandableTextView
       if (this.jdField_a_of_type_AndroidUtilSparseBooleanArray != null) {
         this.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.f, this.jdField_b_of_type_Boolean);
       }
-    } while (this.jdField_a_of_type_Azmg == null);
-    paramView = this.jdField_a_of_type_Azmg;
+    } while (this.jdField_a_of_type_Bank == null);
+    paramView = this.jdField_a_of_type_Bank;
     TextView localTextView1 = this.jdField_a_of_type_AndroidWidgetTextView;
     TextView localTextView2 = this.jdField_b_of_type_AndroidWidgetTextView;
     if (!this.jdField_b_of_type_Boolean) {}
@@ -177,10 +177,10 @@ public class ExpandableTextView
       if (this.jdField_b_of_type_Boolean)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(this.jdField_c_of_type_Int);
-        if (this.jdField_a_of_type_Azmh == null) {
-          this.jdField_a_of_type_Azmh = new azmh(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_c_of_type_Int);
+        if (this.jdField_a_of_type_Banl == null) {
+          this.jdField_a_of_type_Banl = new banl(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_c_of_type_Int);
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_Azmh);
+        this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_Banl);
       }
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       super.onMeasure(paramInt1, paramInt2);
@@ -189,9 +189,9 @@ public class ExpandableTextView
     this.jdField_a_of_type_Int = getMeasuredHeight();
   }
   
-  public void setOnExpandStateChangeListener(azmg paramazmg)
+  public void setOnExpandStateChangeListener(bank parambank)
   {
-    this.jdField_a_of_type_Azmg = paramazmg;
+    this.jdField_a_of_type_Bank = parambank;
   }
   
   public void setOrientation(int paramInt)

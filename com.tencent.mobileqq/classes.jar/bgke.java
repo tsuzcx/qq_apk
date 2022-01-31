@@ -1,29 +1,41 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.util.QZLog;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.hce.HcePluginInstallActivity;
+import org.json.JSONObject;
 
-class bgke
-  extends BroadcastReceiver
+public class bgke
+  implements aabm
 {
-  bgke(bgkd parambgkd) {}
+  public bgke(HcePluginInstallActivity paramHcePluginInstallActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    try
-    {
-      paramContext = paramIntent.getStringExtra("callback");
-      int i = paramIntent.getIntExtra("ret", 1);
-      QZLog.i("QzoneWanbaJsPlugin", "收到广播消息 callback=" + paramContext + ",ret=" + i);
-      this.a.a.callJs(paramContext, new String[] { "{'ret':" + i + "}" });
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("HcePluginInstallActivity", 2, "mApiCallback onFailure code:" + paramInt + "msg:" + paramString);
     }
-    catch (Exception paramContext)
-    {
-      QZLog.e("QzoneWanbaJsPlugin", "callback error", paramContext);
-    }
+    bcpw.a(this.a.getApplicationContext(), ajyc.a(2131705432), 0).a();
+    this.a.finish();
   }
+  
+  public void onPermission(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HcePluginInstallActivity", 2, "mApiCallback onPermission " + paramInt);
+    }
+    bcpw.a(this.a.getApplicationContext(), ajyc.a(2131705434), 0).a();
+    this.a.finish();
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null) {
+      HcePluginInstallActivity.a(this.a, paramJSONObject.optString("openid"));
+    }
+    HcePluginInstallActivity.b(this.a);
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

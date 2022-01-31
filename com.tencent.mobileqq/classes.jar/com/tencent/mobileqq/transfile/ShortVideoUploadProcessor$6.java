@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import axqf;
-import axwk;
+import ayqm;
+import aywr;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -88,13 +88,13 @@ class ShortVideoUploadProcessor$6
       break;
     }
     label657:
-    Object localObject2 = this.this$0.jdField_a_of_type_Axqf;
-    Object localObject3 = this.this$0.jdField_a_of_type_Axqf;
+    Object localObject2 = this.this$0.jdField_a_of_type_Ayqm;
+    Object localObject3 = this.this$0.jdField_a_of_type_Ayqm;
     ShortVideoUploadProcessor localShortVideoUploadProcessor2 = this.this$0;
     long l = this.this$0.q;
     localShortVideoUploadProcessor2.s = l;
-    ((axqf)localObject3).e = l;
-    ((axqf)localObject2).a = l;
+    ((ayqm)localObject3).e = l;
+    ((ayqm)localObject2).a = l;
     ShortVideoUploadProcessor.b(this.this$0, this.a.jdField_c_of_type_Boolean);
     if (QLog.isColorLevel()) {
       QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG> submitFollowedSlice mNeedSyncStory = " + ShortVideoUploadProcessor.a(this.this$0));

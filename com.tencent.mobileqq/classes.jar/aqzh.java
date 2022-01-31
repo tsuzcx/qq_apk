@@ -1,28 +1,64 @@
-import android.util.Pair;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
 import com.tencent.qphone.base.util.QLog;
 
-class aqzh
-  implements aqzn
+public class aqzh
+  extends BroadcastReceiver
 {
-  aqzh(aqzc paramaqzc, int paramInt, String paramString) {}
+  private final String jdField_a_of_type_JavaLangString = "reason";
+  private final String b = "homekey";
   
-  public Pair<Integer, String> a()
-  {
-    return new Pair(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
-  }
+  public aqzh(HotPicPageView paramHotPicPageView) {}
   
-  public aqyu a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (aqzc.a(this.jdField_a_of_type_Aqzc) == null) {
-      QLog.d("LocationHandler", 1, "[LocationManager] getLocation: invoked. location null detected");
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("HotPicManagerHotPicPageView", 2, "onReceive ===>" + paramContext);
     }
-    return new aqyu(this.jdField_a_of_type_Aqzc.app.c(), aqzc.a(this.jdField_a_of_type_Aqzc), aqzc.a(this.jdField_a_of_type_Aqzc));
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext)) {
+      HotPicPageView.b = true;
+    }
+    label49:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            break label49;
+            break label49;
+            do
+            {
+              return;
+            } while ("android.intent.action.SCREEN_ON".equals(paramContext));
+            if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
+            {
+              HotPicPageView.b = true;
+              return;
+            }
+          } while (("tencent.av.v2q.StopVideoChat".equals(paramContext)) || (!paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")));
+          paramContext = paramIntent.getStringExtra("reason");
+          if (paramContext != null) {
+            break;
+          }
+        } while ((this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a == null) || (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a.a != 3));
+        paramContext = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a.a();
+      } while (paramContext == null);
+      paramContext.d();
+      return;
+    } while (!paramContext.equals("homekey"));
+    HotPicPageView.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     aqzh
  * JD-Core Version:    0.7.0.1
  */

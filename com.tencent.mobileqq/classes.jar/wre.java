@@ -1,34 +1,18 @@
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
+import java.util.concurrent.ThreadFactory;
 
-class wre
-  implements bhwg<wsh>
+public final class wre
+  implements ThreadFactory
 {
-  wre(wrc paramwrc) {}
-  
-  public void a(@Nullable wsh paramwsh)
+  public Thread newThread(Runnable paramRunnable)
   {
-    if (paramwsh == null) {}
-    do
-    {
-      return;
-      if (paramwsh == wsh.a)
-      {
-        wrc.a(this.a).setVisibility(8);
-        return;
-      }
-      if (paramwsh == wsh.c)
-      {
-        wrc.a(this.a);
-        return;
-      }
-    } while (paramwsh != wsh.b);
-    wrc.a(this.a).setVisibility(8);
+    paramRunnable = new Thread(paramRunnable);
+    paramRunnable.setName("pre-loader-pool-" + paramRunnable.getId());
+    return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wre
  * JD-Core Version:    0.7.0.1
  */

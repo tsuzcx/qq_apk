@@ -1,30 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
 class pzr
-  extends Handler
+  extends pyx
 {
-  public pzr(pzj parampzj, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  pzr(pzi parampzi, AppInterface paramAppInterface) {}
   
-  public void handleMessage(Message paramMessage)
+  public Drawable a()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (pzj.a(this.a) == null);
-    pzj.a(this.a).a(4, null, null, 0L);
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_video_selected");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     pzr
  * JD-Core Version:    0.7.0.1
  */

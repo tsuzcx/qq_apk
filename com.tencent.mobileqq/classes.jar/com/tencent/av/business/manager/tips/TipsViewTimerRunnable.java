@@ -3,8 +3,8 @@ package com.tencent.av.business.manager.tips;
 import android.os.Handler;
 import android.os.SystemClock;
 import com.tencent.av.app.VideoAppInterface;
-import kyu;
-import lqd;
+import ljk;
+import mav;
 
 public class TipsViewTimerRunnable
   implements Runnable
@@ -12,26 +12,26 @@ public class TipsViewTimerRunnable
   volatile long jdField_a_of_type_Long = 0L;
   VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   Object jdField_a_of_type_JavaLangObject = new Object();
-  volatile lqd jdField_a_of_type_Lqd = null;
+  volatile mav jdField_a_of_type_Mav = null;
   volatile boolean jdField_a_of_type_Boolean = false;
   volatile long jdField_b_of_type_Long = 0L;
-  volatile lqd jdField_b_of_type_Lqd = null;
+  volatile mav jdField_b_of_type_Mav = null;
   
   public TipsViewTimerRunnable(VideoAppInterface paramVideoAppInterface)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
   }
   
-  private boolean a(lqd paramlqd, long paramLong)
+  private boolean a(mav parammav, long paramLong)
   {
     boolean bool = true;
-    if ((paramlqd == null) || (paramlqd.a())) {
+    if ((parammav == null) || (parammav.a())) {
       bool = false;
     }
     for (;;)
     {
       return bool;
-      if (SystemClock.elapsedRealtime() - paramLong >= paramlqd.c() * 1000) {}
+      if (SystemClock.elapsedRealtime() - paramLong >= parammav.c() * 1000) {}
       for (int i = 1; i != 0; i = 0) {
         return false;
       }
@@ -49,29 +49,29 @@ public class TipsViewTimerRunnable
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
   }
   
-  public lqd a()
+  public mav a()
   {
-    return this.jdField_a_of_type_Lqd;
+    return this.jdField_a_of_type_Mav;
   }
   
   public void a()
   {
-    lqd locallqd = this.jdField_a_of_type_Lqd;
-    this.jdField_a_of_type_Lqd = null;
+    mav localmav = this.jdField_a_of_type_Mav;
+    this.jdField_a_of_type_Mav = null;
     this.jdField_a_of_type_Long = 0L;
-    kyu localkyu = (kyu)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(11);
-    if (localkyu != null) {
-      localkyu.a(locallqd);
+    ljk localljk = (ljk)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(11);
+    if (localljk != null) {
+      localljk.a(localmav);
     }
   }
   
-  public boolean a(lqd paramlqd)
+  public boolean a(mav parammav)
   {
-    if (paramlqd == null) {
+    if (parammav == null) {
       return false;
     }
-    this.jdField_a_of_type_Lqd = paramlqd;
-    if (!paramlqd.a())
+    this.jdField_a_of_type_Mav = parammav;
+    if (!parammav.a())
     {
       this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
       this.jdField_a_of_type_Boolean = true;
@@ -82,29 +82,29 @@ public class TipsViewTimerRunnable
     return true;
   }
   
-  public lqd b()
+  public mav b()
   {
-    return this.jdField_b_of_type_Lqd;
+    return this.jdField_b_of_type_Mav;
   }
   
   public void b()
   {
-    lqd locallqd = this.jdField_b_of_type_Lqd;
-    this.jdField_b_of_type_Lqd = null;
+    mav localmav = this.jdField_b_of_type_Mav;
+    this.jdField_b_of_type_Mav = null;
     this.jdField_b_of_type_Long = 0L;
-    kyu localkyu = (kyu)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(11);
-    if (localkyu != null) {
-      localkyu.b(locallqd);
+    ljk localljk = (ljk)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(11);
+    if (localljk != null) {
+      localljk.b(localmav);
     }
   }
   
-  public boolean b(lqd paramlqd)
+  public boolean b(mav parammav)
   {
-    if (paramlqd == null) {
+    if (parammav == null) {
       return false;
     }
-    this.jdField_b_of_type_Lqd = paramlqd;
-    if (!paramlqd.a())
+    this.jdField_b_of_type_Mav = parammav;
+    if (!parammav.a())
     {
       this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
       this.jdField_a_of_type_Boolean = true;
@@ -119,10 +119,10 @@ public class TipsViewTimerRunnable
   {
     boolean bool2 = true;
     boolean bool1 = false;
-    if (a(this.jdField_a_of_type_Lqd, this.jdField_a_of_type_Long))
+    if (a(this.jdField_a_of_type_Mav, this.jdField_a_of_type_Long))
     {
       bool1 = true;
-      if (!a(this.jdField_b_of_type_Lqd, this.jdField_b_of_type_Long)) {
+      if (!a(this.jdField_b_of_type_Mav, this.jdField_b_of_type_Long)) {
         break label55;
       }
       bool1 = bool2;

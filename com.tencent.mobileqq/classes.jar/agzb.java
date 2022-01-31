@@ -1,22 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.qphone.base.util.QLog;
 
-class agzb
-  implements View.OnClickListener
+public class agzb
+  extends BroadcastReceiver
 {
-  agzb(agxq paramagxq) {}
+  private agzb(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a(21, 0);
-    this.a.a(-1, null);
-    awqx.b(agxq.a(this.a).app, "CliOper", "", "", "QQWIFI", "clk_buleClose", 0, 0, "", "", "", "");
+    if ((!"troop_hblist_broadcast_action".equals(paramIntent.getAction())) || (!TroopUnAccalimedRedPacketList.b(this.a))) {}
+    do
+    {
+      int i;
+      do
+      {
+        do
+        {
+          return;
+          i = paramIntent.getIntExtra("result_code", 0);
+          int j = paramIntent.getIntExtra("grap_hb_state", 0);
+          paramContext = paramIntent.getStringExtra("listid");
+          if (QLog.isColorLevel()) {
+            QLog.d(TroopUnAccalimedRedPacketList.b(), 2, "RedPacketRefreshReceiver|resultCode:" + i + "|listId: " + paramContext + "|grabHbState: " + j);
+          }
+          if (i != -20180322) {
+            break;
+          }
+          if (TroopUnAccalimedRedPacketList.b(this.a) != null) {
+            TroopUnAccalimedRedPacketList.b(this.a).setVisibility(8);
+          }
+        } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+        return;
+      } while (i != -20180323);
+      if (TroopUnAccalimedRedPacketList.b(this.a) != null) {
+        TroopUnAccalimedRedPacketList.b(this.a).setVisibility(0);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
+      }
+    } while ((TroopUnAccalimedRedPacketList.a(this.a) == null) || (TextUtils.isEmpty(paramContext)));
+    TroopUnAccalimedRedPacketList.a(this.a).a(paramContext);
+    ahbe.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a), paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agzb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,14 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class apaa
-  implements apca
+  implements DialogInterface.OnClickListener
 {
-  apaa(aozy paramaozy, List paramList, apad paramapad) {}
+  apaa(aozx paramaozx, apac paramapac) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    apck.a(this.jdField_a_of_type_JavaUtilList, aozy.a(this.jdField_a_of_type_Aozy));
-    if (this.jdField_a_of_type_Apad != null) {
-      this.jdField_a_of_type_Apad.a(2, 0);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Apad != null) {
-      this.jdField_a_of_type_Apad.a(2, 1);
-    }
+    this.jdField_a_of_type_Apac.a();
   }
 }
 

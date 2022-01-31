@@ -1,71 +1,22 @@
-import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.util.ArrayList;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class afzq
-  extends BaseAdapter
+  implements View.OnTouchListener
 {
-  public afzq(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public afzq(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public String a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((CameraPreviewActivity.a(this.a) != null) && (paramInt < CameraPreviewActivity.a(this.a).size()) && (paramInt >= 0)) {
-      return (String)CameraPreviewActivity.a(this.a).get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    if (CameraPreviewActivity.a(this.a) != null) {
-      return CameraPreviewActivity.a(this.a).size();
-    }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    if (paramMotionEvent.getAction() == 1)
     {
-      paramView = this.a.getLayoutInflater().inflate(2131493815, null);
-      paramViewGroup = new afzr();
-      paramViewGroup.a = ((URLImageView)paramView.findViewById(2131306220));
-      paramView.setTag(paramViewGroup);
+      this.a.x();
+      paramView = this.a.o;
+      this.a.a("Clk_find", paramView, "");
     }
-    for (;;)
-    {
-      Object localObject = a(paramInt);
-      if (localObject == null) {
-        break;
-      }
-      localObject = new File((String)localObject);
-      if (((File)localObject).exists()) {}
-      try
-      {
-        paramViewGroup.a.setImageDrawable(URLDrawable.getDrawable(((File)localObject).toURL(), CameraPreviewActivity.a(this.a), CameraPreviewActivity.b(this.a), CameraPreviewActivity.a(this.a), null, true));
-        return paramView;
-      }
-      catch (MalformedURLException paramViewGroup)
-      {
-        paramViewGroup.printStackTrace();
-        return paramView;
-      }
-      paramViewGroup = (afzr)paramView.getTag();
-    }
-    paramViewGroup.a.setImageDrawable(null);
-    return paramView;
+    return true;
   }
 }
 

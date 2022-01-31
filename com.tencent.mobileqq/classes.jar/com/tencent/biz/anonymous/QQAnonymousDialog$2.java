@@ -1,11 +1,11 @@
 package com.tencent.biz.anonymous;
 
-import mnk;
+import myj;
 
 public class QQAnonymousDialog$2
   implements Runnable
 {
-  public QQAnonymousDialog$2(mnk parammnk) {}
+  public QQAnonymousDialog$2(myj parammyj) {}
   
   public void run()
   {

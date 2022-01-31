@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.servlet;
 
-import awcj;
+import axbr;
 
 public class CliNotifyPush$1
   implements Runnable
 {
-  public CliNotifyPush$1(awcj paramawcj) {}
+  public CliNotifyPush$1(axbr paramaxbr) {}
   
   public void run()
   {
-    awcj.a(this.this$0);
+    axbr.a(this.this$0);
   }
 }
 

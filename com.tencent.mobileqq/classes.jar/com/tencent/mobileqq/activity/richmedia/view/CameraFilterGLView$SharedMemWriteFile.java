@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import ahnu;
+import aiam;
 import android.os.SystemClock;
-import awib;
-import awjf;
-import awma;
-import awmb;
+import axhh;
+import axil;
+import axlg;
+import axlh;
 import com.tencent.maxvideo.common.AVIOStruct;
 import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
 import com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
@@ -16,10 +16,10 @@ public class CameraFilterGLView$SharedMemWriteFile
   implements Runnable
 {
   public int a;
-  public ahnu a;
-  public awjf a;
-  public awma a;
-  public awmb a;
+  public aiam a;
+  public axil a;
+  public axlg a;
+  public axlh a;
   public AVIOStruct a;
   public AtomicReference<SVHwEncoder> a;
   public boolean a;
@@ -32,21 +32,21 @@ public class CameraFilterGLView$SharedMemWriteFile
   {
     SystemClock.uptimeMillis();
     QLog.d("PtvFilterUtils", 4, "PtvFilterUtils_onDrawFrame[writeSharedMemtoFileDegree]frameIndex=" + this.jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct.pFrameIndex);
-    int i = PtvFilterUtils.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 4, true, false, this.c, this.jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct, this.jdField_a_of_type_Awmb.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.d);
+    int i = PtvFilterUtils.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 4, true, false, this.c, this.jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct, this.jdField_a_of_type_Axlh.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.d);
     SVHwEncoder localSVHwEncoder = (SVHwEncoder)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
     if (localSVHwEncoder != null)
     {
-      awib localawib = localSVHwEncoder.a();
-      if (localawib == null) {
+      axhh localaxhh = localSVHwEncoder.a();
+      if (localaxhh == null) {
         break label235;
       }
-      localawib.jdField_a_of_type_Int = 0;
-      localawib.jdField_a_of_type_Boolean = false;
-      localawib.jdField_b_of_type_Boolean = true;
-      localawib.jdField_b_of_type_Int = localawib.jdField_a_of_type_ArrayOfByte.length;
-      localawib.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct.vFrameTime;
-      if (PtvFilterUtils.a(localawib.jdField_a_of_type_ArrayOfByte) == 0) {
-        localSVHwEncoder.a(localawib, true);
+      localaxhh.jdField_a_of_type_Int = 0;
+      localaxhh.jdField_a_of_type_Boolean = false;
+      localaxhh.jdField_b_of_type_Boolean = true;
+      localaxhh.jdField_b_of_type_Int = localaxhh.jdField_a_of_type_ArrayOfByte.length;
+      localaxhh.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct.vFrameTime;
+      if (PtvFilterUtils.a(localaxhh.jdField_a_of_type_ArrayOfByte) == 0) {
+        localSVHwEncoder.a(localaxhh, true);
       }
     }
     if (i == 0) {
@@ -57,9 +57,9 @@ public class CameraFilterGLView$SharedMemWriteFile
       if ((i != 0) && (QLog.isColorLevel())) {
         QLog.d("PtvFilterUtils", 2, "PtvFilterUtils_onDrawFrame[writeSharedMemtoFileDegree]err=" + i);
       }
-      this.jdField_a_of_type_Awmb.a();
-      this.jdField_a_of_type_Awjf.b();
-      if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Awma.a()) && (this.jdField_a_of_type_Ahnu != null)) {}
+      this.jdField_a_of_type_Axlh.a();
+      this.jdField_a_of_type_Axil.b();
+      if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Axlg.a()) && (this.jdField_a_of_type_Aiam != null)) {}
       return;
       label235:
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.set(null);

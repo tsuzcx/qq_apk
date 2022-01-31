@@ -1,40 +1,8 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
-
-class apac
-  implements apca
+public abstract interface apac
 {
-  apac(aozy paramaozy, List paramList, aodw paramaodw, apad paramapad) {}
+  public abstract void a();
   
-  public void a()
-  {
-    apcb.d(aozy.a(this.jdField_a_of_type_Aozy).getString(2131627191));
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-        if (bace.b(localFileManagerEntity.getFilePath())) {
-          this.jdField_a_of_type_Aodw.a(localFileManagerEntity.getFilePath(), "", aozy.a(this.jdField_a_of_type_Aozy).getCurrentAccountUin(), 0, false);
-        } else {
-          this.jdField_a_of_type_Aodw.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
-        }
-      }
-    }
-    if (this.jdField_a_of_type_Apad != null) {
-      this.jdField_a_of_type_Apad.a(4, 0);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Apad != null) {
-      this.jdField_a_of_type_Apad.a(4, 1);
-    }
-  }
+  public abstract void b();
 }
 
 

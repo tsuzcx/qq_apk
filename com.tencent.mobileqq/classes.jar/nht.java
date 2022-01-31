@@ -1,89 +1,72 @@
-import android.content.res.Configuration;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.List;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import java.io.UnsupportedEncodingException;
+import org.json.JSONObject;
 
-class nht
-  extends ohe
+public class nht
+  extends Handler
 {
-  nht(nhr paramnhr) {}
+  public nht(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nhr.a(this.a)).a(paramInt);
-    }
-  }
-  
-  public void a(int paramInt, ArticleInfo paramArticleInfo, String paramString1, String paramString2)
-  {
-    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nhr.a(this.a)).a(paramInt, paramArticleInfo, paramString1, paramString2);
-    }
-  }
-  
-  public void a(int paramInt, List<Long> paramList)
-  {
-    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nhr.a(this.a)).a(paramInt, paramList);
-    }
-  }
-  
-  public void a(Configuration paramConfiguration)
-  {
-    if (nhr.a(this.a) != null)
+    switch (paramMessage.what)
     {
-      nhr.a(this.a).d();
-      nhr.a(this.a).e();
+    default: 
+      return;
+    case 3: 
+      this.a.P();
+      return;
+    case 1: 
+      if (this.a.c)
+      {
+        this.a.j();
+        this.a.L();
+      }
+      for (;;)
+      {
+        this.a.c(this.a.getIntent());
+        return;
+        this.a.j();
+      }
+    case 2: 
+      paramMessage = new Intent();
+      paramMessage.putExtra("isNeedFinish", true);
+      this.a.setResult(-1, paramMessage);
+      this.a.finish();
+      return;
+    case 4: 
+      paramMessage = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+      paramMessage.putExtra("BSafeReportPost", true);
+      try
+      {
+        if (this.a.a != null) {
+          paramMessage.putExtra("SafeReportData", this.a.a.toString().getBytes("utf-8"));
+        }
+        paramMessage.putExtra("hide_more_buttonbutton", true);
+        paramMessage.putExtra("ishiderefresh", true);
+        paramMessage.putExtra("ishidebackforward", true);
+        this.a.startActivity(paramMessage.putExtra("url", "http://jubao.mp.qq.com/mobile/reportAccount"));
+        return;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        for (;;)
+        {
+          localUnsupportedEncodingException.printStackTrace();
+        }
+      }
     }
-    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nhr.a(this.a)).a(paramConfiguration);
-    }
-  }
-  
-  public void a(TopBannerInfo paramTopBannerInfo)
-  {
-    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nhr.a(this.a)).a(paramTopBannerInfo);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nhr.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
-    }
-  }
-  
-  public void as_()
-  {
-    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nhr.a(this.a)).q();
-    }
-  }
-  
-  public void b(int paramInt, List<Long> paramList)
-  {
-    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nhr.a(this.a)).c(paramInt, paramList);
-    }
-  }
-  
-  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nhr.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
-    }
-  }
-  
-  public void c(int paramInt, List<Long> paramList)
-  {
-    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup)))
-    {
-      ((ReadInJoyListViewGroup)nhr.a(this.a)).b(paramInt, paramList);
-      nhr.a(this.a, true);
-    }
+    paramMessage = new AlphaAnimation(1.0F, 0.0F);
+    paramMessage.setDuration(500L);
+    this.a.d.startAnimation(paramMessage);
+    this.a.d.setVisibility(8);
   }
 }
 

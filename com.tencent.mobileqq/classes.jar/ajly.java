@@ -1,22 +1,60 @@
 import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
-class ajly
-  implements BusinessObserver
+public class ajly
 {
-  ajly(ajls paramajls, String paramString) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static void a(String paramString, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager", 2, "setRecommendTroopDeleted uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
-    }
+    if (paramBundle == null) {}
+    int i;
+    do
+    {
+      String str;
+      for (;;)
+      {
+        return;
+        try
+        {
+          if (ajlu.a())
+          {
+            i = paramBundle.getInt("featureId");
+            str = paramBundle.getString("featureKey");
+            if ("action_begin_trace".equals(paramString))
+            {
+              ajlu.a().a(i, str, paramBundle);
+              return;
+            }
+          }
+        }
+        catch (Exception paramString)
+        {
+          QLog.e("TraceReport", 1, paramString, new Object[0]);
+          return;
+        }
+      }
+      if ("action_end_trace".equals(paramString))
+      {
+        ajlu.a().b(i, str, paramBundle);
+        return;
+      }
+      if ("action_report_span".equals(paramString))
+      {
+        ajlu.a().c(i, str, paramBundle);
+        return;
+      }
+      if ("action_update_trace".equals(paramString))
+      {
+        ajlu.a().a(i, paramBundle);
+        return;
+      }
+    } while (!"action_enable_trace".equals(paramString));
+    boolean bool = paramBundle.getBoolean("enable");
+    ajlu.a().a(i, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajly
  * JD-Core Version:    0.7.0.1
  */

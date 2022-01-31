@@ -1,38 +1,42 @@
-import android.app.Activity;
-import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
-import java.util.ArrayList;
+import com.tencent.mobileqq.apollo.FriendCardApolloViewController;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public abstract interface aiun
+public class aiun
+  extends bbqu
 {
-  public abstract String a();
+  private java.lang.ref.WeakReference<FriendCardApolloViewController> a;
   
-  public abstract String a(int paramInt, ApolloWebAvatarParam paramApolloWebAvatarParam);
+  public aiun(FriendCardApolloViewController paramFriendCardApolloViewController)
+  {
+    this.a = new mqq.util.WeakReference(paramFriendCardApolloViewController);
+  }
   
-  public abstract String a(aiuk paramaiuk);
-  
-  public abstract String a(String paramString);
-  
-  public abstract String a(ArrayList<ApolloWebAvatarParam> paramArrayList);
-  
-  public abstract String a(int[] paramArrayOfInt);
-  
-  public abstract void a(int paramInt, int[] paramArrayOfInt);
-  
-  public abstract void a(Activity paramActivity, String paramString1, String paramString2);
-  
-  public abstract void a(ArrayList<String> paramArrayList);
-  
-  public abstract void a(boolean paramBoolean, float paramFloat1, float paramFloat2);
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract String b(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d(int paramInt);
+  protected void onGetExploreMsg(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean) {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendCardApolloViewController", 1, "[onGetExploreMsg] get info end");
+        }
+        paramObject = new JSONObject((String)paramObject);
+        if (paramObject.optInt("entry_id", -1) != 2) {
+          return;
+        }
+        FriendCardApolloViewController localFriendCardApolloViewController = (FriendCardApolloViewController)this.a.get();
+        if (localFriendCardApolloViewController == null) {
+          return;
+        }
+        FriendCardApolloViewController.a(localFriendCardApolloViewController, paramObject.optString("icon_url"));
+        QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] iconUrl:" + FriendCardApolloViewController.a(localFriendCardApolloViewController));
+        return;
+      }
+      catch (Exception paramObject) {}
+    } else if (QLog.isColorLevel()) {
+      QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] result:" + paramBoolean);
+    }
+  }
 }
 
 

@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import azvv;
+import bawz;
 import com.tencent.mobileqq.widget.AutoBgFrameLayout;
 import com.tencent.mobileqq.widget.RoundImageView;
 
@@ -44,14 +44,14 @@ public class SmallColorNoteItem
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (paramBoolean) {}
-    for (this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131493252, null);; this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131493251, null))
+    for (this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558808, null);; this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558807, null))
     {
       View localView = this.jdField_a_of_type_AndroidViewView;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131299162));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgFrameLayout = ((AutoBgFrameLayout)localView.findViewById(2131305247));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)localView.findViewById(2131305248));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131305258));
-      this.b = ((TextView)localView.findViewById(2131305256));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131364723));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgFrameLayout = ((AutoBgFrameLayout)localView.findViewById(2131370921));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)localView.findViewById(2131370922));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370932));
+      this.b = ((TextView)localView.findViewById(2131370930));
       return;
     }
   }
@@ -74,7 +74,7 @@ public class SmallColorNoteItem
     this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     ((ViewGroup.LayoutParams)localObject).height = paramInt1;
     float f = 1.0F * paramInt1 / paramInt2;
-    paramInt1 = (int)(azvv.a(getContext(), 6.0F) * f);
+    paramInt1 = (int)(bawz.a(getContext(), 6.0F) * f);
     localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
     int i;
     if (this.jdField_a_of_type_Boolean)
@@ -86,14 +86,14 @@ public class SmallColorNoteItem
       i = paramInt1;
       label73:
       ((RelativeLayout)localObject).setPadding(paramInt2, paramInt1, i, paramInt1);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setmRadius((int)(azvv.a(getContext(), 3.0F) * f), false);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setmRadius((int)(bawz.a(getContext(), 3.0F) * f), false);
       localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).height = ((int)(azvv.a(getContext(), 20.0F) * f));
-      ((RelativeLayout.LayoutParams)localObject).width = ((int)(azvv.a(getContext(), 20.0F) * f));
+      ((RelativeLayout.LayoutParams)localObject).height = ((int)(bawz.a(getContext(), 20.0F) * f));
+      ((RelativeLayout.LayoutParams)localObject).width = ((int)(bawz.a(getContext(), 20.0F) * f));
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize((int)(8.0F * f));
       this.b.setTextSize((int)(f * 6.0F));
       localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-      paramInt1 = Math.max(azvv.a(getContext(), 2.0F), (int)(azvv.a(getContext(), 4.0F) * f));
+      paramInt1 = Math.max(bawz.a(getContext(), 2.0F), (int)(bawz.a(getContext(), 4.0F) * f));
       if (!this.jdField_a_of_type_Boolean) {
         break label297;
       }

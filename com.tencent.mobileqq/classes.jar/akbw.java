@@ -1,44 +1,108 @@
-import android.annotation.SuppressLint;
-import android.util.Pair;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgReqBody;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgRspBody;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class akbw
+  extends ajtd
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static Map<Integer, Pair<String, Integer>> jdField_a_of_type_JavaUtilMap;
+  protected QQAppInterface a;
   
-  public static int a(int paramInt)
+  public akbw(QQAppInterface paramQQAppInterface)
   {
-    return ((Integer)((Pair)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).second).intValue();
+    super(paramQQAppInterface);
+    this.a = paramQQAppInterface;
   }
   
-  public static String a(int paramInt)
+  protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    return (String)((Pair)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).first;
-  }
-  
-  public static Map<Integer, Pair<String, Integer>> a()
-  {
-    if (jdField_a_of_type_JavaUtilMap == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    int i;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
+      i = 1;
+    }
+    for (;;)
     {
-      if (jdField_a_of_type_JavaUtilMap == null) {
-        a();
+      paramFromServiceMsg = (avpm)this.a.getManager(65);
+      if (i != 0)
+      {
+        NumRedMsg.NumMsgRspBody localNumMsgRspBody = new NumRedMsg.NumMsgRspBody();
+        try
+        {
+          localNumMsgRspBody.mergeFrom((byte[])paramObject);
+          if (localNumMsgRspBody.i_retcode.get() == 0)
+          {
+            paramFromServiceMsg.a(localNumMsgRspBody, paramToServiceMsg, true);
+            return;
+            i = 0;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramObject)
+        {
+          for (;;)
+          {
+            paramObject.printStackTrace();
+            if (QLog.isColorLevel()) {
+              QLog.i("NumRedMsgHandler", 2, "mergeFrom failed");
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("NumRedMsgHandler", 2, "rsp code != 0 , error msg == " + localNumMsgRspBody.str_errmsg.get());
+          }
+          paramFromServiceMsg.a(localNumMsgRspBody, paramToServiceMsg, false);
+          return;
+        }
       }
-      return jdField_a_of_type_JavaUtilMap;
+    }
+    paramFromServiceMsg.a(null, paramToServiceMsg, false);
+  }
+  
+  public void a(List<NumRedMsg.NumMsgBusi> paramList, int paramInt, String paramString, long[] paramArrayOfLong)
+  {
+    NumRedMsg.NumMsgReqBody localNumMsgReqBody = new NumRedMsg.NumMsgReqBody();
+    localNumMsgReqBody.i_proto_ver.set(1);
+    localNumMsgReqBody.ui_plat_id.set(109);
+    localNumMsgReqBody.str_client_ver.set("8.2.8.4440");
+    localNumMsgReqBody.ui64_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(paramList);
+    localNumMsgReqBody.rpt_num_msg.set(localArrayList);
+    paramList = new ToServiceMsg("mobileqq.service", this.a.getCurrentAccountUin(), "red_touch_num_svr.get_num_msg");
+    paramList.putWupBuffer(localNumMsgReqBody.toByteArray());
+    paramList.extraData.putInt("NumMsgListenerKey", paramInt);
+    paramList.extraData.putLongArray("NumMsgIDList", paramArrayOfLong);
+    paramList.extraData.putString("NumMsgListenerCmd", paramString);
+    sendPbReq(paramList);
+    if (QLog.isColorLevel()) {
+      QLog.i("NumRedMsgHandler", 2, "sendPbReq called.");
     }
   }
   
-  @SuppressLint({"UseSparseArrays"})
-  private static void a()
+  protected Class<? extends ajtg> observerClass()
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(193), Pair.create("video_processor", Integer.valueOf(9002)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(734), Pair.create("video_processor", Integer.valueOf(9003)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(524), Pair.create("discuss_update_processor", Integer.valueOf(9010)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(736), Pair.create("info_update_processor", Integer.valueOf(9011)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(526), Pair.create("slave_master_processor", Integer.valueOf(9012)));
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("red_touch_num_svr.get_num_msg".equals(paramFromServiceMsg.getServiceCmd()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("NumRedMsgHandler", 2, "onReceive called.");
+      }
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 

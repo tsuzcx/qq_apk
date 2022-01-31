@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.inputstatus;
 
-import aqjm;
+import ardr;
 
 public class InputStatusHelper$2
   implements Runnable
 {
-  public InputStatusHelper$2(aqjm paramaqjm) {}
+  public InputStatusHelper$2(ardr paramardr) {}
   
   public void run()
   {
-    aqjm.a(this.this$0, 3);
+    ardr.a(this.this$0, 3);
   }
 }
 

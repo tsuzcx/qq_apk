@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.music.QQPlayerService;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class arzn
-  implements alur
+class arzn
+  implements DialogInterface.OnDismissListener
 {
-  public arzn(QQPlayerService paramQQPlayerService) {}
+  arzn(arzm paramarzm) {}
   
-  public void a(boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((QQPlayerService.b()) && (QQPlayerService.a(this.a) != null) && (!QQPlayerService.a(this.a).c())) {
-      QQPlayerService.a(this.a).e();
-    }
+    this.a.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arzn
  * JD-Core Version:    0.7.0.1
  */

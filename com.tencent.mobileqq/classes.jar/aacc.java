@@ -1,69 +1,40 @@
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.AutoLoginHelper.4.1;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import mqq.observer.AccountObserver;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class aacc
-  extends AccountObserver
+class aacc
+  extends SimpleObserver<asiu>
 {
-  aacc(aabz paramaabz) {}
+  aacc(aacb paramaacb, aacl paramaacl) {}
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt, byte[] paramArrayOfByte)
+  public void a(asiu paramasiu)
   {
-    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt, paramArrayOfByte);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AutoLoginHelper", 4, String.format(Locale.getDefault(), "onLoginFailed, ret: %s, uin: %s, msg: %s, alias: %s", new Object[] { Integer.valueOf(paramInt), aabz.a(this.a), paramString2, paramString1 }));
-    }
-    this.a.c = false;
-    aabz.a(this.a);
-    if (aabz.a(this.a) != null)
+    aacl localaacl = this.jdField_a_of_type_Aacl;
+    if (paramasiu.c == 1) {}
+    for (int i = 2;; i = 3)
     {
-      paramString1 = new Intent(aabz.a(this.a), LoginActivity.class);
-      paramString1.putExtra("uin", aabz.a(this.a));
-      paramString1.putExtra("tab_index", MainFragment.b);
-      paramString1.addFlags(131072);
-      aabz.a(this.a).startActivity(paramString1);
-      aabz.a(this.a).finish();
+      localaacl.a(paramasiu, i);
+      return;
     }
   }
   
-  public void onLoginSuccess(String paramString1, String paramString2)
+  public void onError(@NonNull Error paramError)
   {
-    super.onLoginSuccess(paramString1, paramString2);
-    this.a.c = false;
     if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onLoginSuccess ");
+      QLog.i("DoraemonOpenAPI.permissionHelper", 2, "onError: " + paramError.getMessage());
     }
-  }
-  
-  public void onLoginTimeout(String paramString)
-  {
-    super.onLoginTimeout(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onLoginTimeout ");
-    }
-    this.a.c = false;
-    aabz.a(this.a);
-    aabz.a(this.a).a.post(new AutoLoginHelper.4.1(this));
-  }
-  
-  public void onUserCancel(String paramString)
-  {
-    super.onUserCancel(paramString);
-    this.a.c = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onUserCancel ");
+    if ((paramError instanceof AppInfoError)) {}
+    for (int i = ((AppInfoError)paramError).type;; i = 0)
+    {
+      this.jdField_a_of_type_Aacl.a(null, i);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aacc
  * JD-Core Version:    0.7.0.1
  */

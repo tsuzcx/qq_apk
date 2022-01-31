@@ -1,84 +1,76 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.util.TypedValue;
-import android.view.animation.AlphaAnimation;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.galleryactivity.GalleryPageView.3;
-import com.tencent.widget.AdapterView;
+import NS_QQ_STORY_CLIENT.CLIENT.StUinTime;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.servlet.MiniAppAbstractServlet;
+import com.tencent.mobileqq.mini.servlet.MiniAppObserver;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.Packet;
 
 public class xha
-  extends xgh
+  extends MiniAppAbstractServlet
 {
-  public int a;
-  AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-  public TextView a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new GalleryPageView.3(this);
-  xgi jdField_a_of_type_Xgi;
-  private boolean jdField_a_of_type_Boolean = true;
-  public AlphaAnimation b = new AlphaAnimation(1.0F, 0.0F);
-  
-  public xha()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Int = 3;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(paramInt);
-  }
-  
-  public void a(Activity paramActivity, xgi paramxgi, int paramInt)
-  {
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramxgi.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramActivity);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(12, -1);
-    localLayoutParams.addRule(14, -1);
-    localLayoutParams.bottomMargin = ((int)TypedValue.applyDimension(1, this.jdField_a_of_type_Int, paramActivity.getResources().getDisplayMetrics()) + paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#e6e9e9e9"));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 15.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131301292);
-    localRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(300L);
-    this.b.setDuration(300L);
-    this.jdField_a_of_type_Xgi = paramxgi;
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new xhb(this));
-    this.b.setAnimationListener(new xhc(this));
-  }
-  
-  public void a(AdapterView paramAdapterView, int paramInt)
-  {
-    if (paramAdapterView.getCount() > 1)
+    Bundle localBundle = new Bundle();
+    if (paramFromServiceMsg != null) {}
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt + 1 + "/" + paramAdapterView.getCount());
-      if (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 4)
+      try
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-        if (this.jdField_a_of_type_Boolean)
+        PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+        localStQWebRsp.mergeFrom(bblm.b(paramFromServiceMsg.getWupBuffer()));
+        localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
+        if (paramFromServiceMsg.isSuccess())
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
-          this.jdField_a_of_type_Boolean = false;
+          localBundle.putParcelable("key_get_story_feed_list", paramFromServiceMsg);
+          notifyObserver(paramIntent, 1031, true, localBundle, MiniAppObserver.class);
+          super.onReceive(paramIntent, paramFromServiceMsg);
           return;
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 2000L);
-        return;
+        QLog.e("GetMineStoryFeedListServlet", 2, "inform GetMineStoryFeedListServlet isSuccess false");
+        notifyObserver(paramIntent, 1031, false, localBundle, MiniAppObserver.class);
+        continue;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-      this.jdField_a_of_type_AndroidWidgetTextView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 2000L);
-      return;
+      catch (Throwable localThrowable)
+      {
+        QLog.e("GetMineStoryFeedListServlet", 1, localThrowable + "onReceive error");
+        notifyObserver(paramIntent, 1031, false, localBundle, MiniAppObserver.class);
+        continue;
+      }
+      QLog.e("GetMineStoryFeedListServlet", 2, "inform GetMineStoryFeedListServlet resultcode fail.");
+      notifyObserver(paramIntent, 1031, false, localBundle, MiniAppObserver.class);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    int i = paramIntent.getIntExtra("key_index", -1);
+    int j = paramIntent.getIntExtra("key_list_tyep", -1);
+    long l1 = paramIntent.getLongExtra("key_uin", 0L);
+    long l2 = paramIntent.getLongExtra("key_newest_time", 0L);
+    Object localObject1 = new CLIENT.StUinTime();
+    ((CLIENT.StUinTime)localObject1).newestTime.set(l2);
+    ((CLIENT.StUinTime)localObject1).uin.set(l1);
+    Object localObject2 = new xgy(j, (CLIENT.StUinTime)localObject1);
+    localObject1 = getTraceId();
+    localObject2 = ((xgy)localObject2).encode(paramIntent, i, (String)localObject1);
+    QLog.e("GetMineStoryFeedListServlet", 2, "GetMineStoryFeedListServlet trace id = " + (String)localObject1);
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new byte[4];
+    }
+    paramPacket.setSSOCommand("LightAppSvc.qq_story_client.GetStoryFeedList");
+    paramPacket.putSendData(bblm.a((byte[])localObject1));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xha
  * JD-Core Version:    0.7.0.1
  */

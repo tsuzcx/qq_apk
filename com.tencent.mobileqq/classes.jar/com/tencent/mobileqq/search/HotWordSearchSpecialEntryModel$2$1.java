@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search;
 
-import avij;
+import awic;
 
 class HotWordSearchSpecialEntryModel$2$1
   implements Runnable

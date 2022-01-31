@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vip;
 
-import batg;
+import bbwa;
 
 class AioVipKeywordHelper$1$1
   implements Runnable

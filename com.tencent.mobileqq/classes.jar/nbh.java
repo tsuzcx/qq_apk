@@ -1,35 +1,58 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils.3;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.nio.ByteBuffer;
 
 public class nbh
-  implements BusinessObserver
+  extends nbj
 {
-  public nbh(NativeAdUtils.3 param3) {}
+  public int a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public byte a(int paramInt)
   {
-    if (paramBoolean) {}
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        if ((localWebSsoResponseBody.ret.has()) && (localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
-          QLog.d("NativeAdUtils", 2, " new report success");
-        }
-      }
-      return;
+    paramInt = this.c + paramInt;
+    if (a(paramInt, 1)) {
+      return this.jdField_a_of_type_JavaNioByteBuffer.get(paramInt);
     }
-    catch (Exception paramBundle)
-    {
-      paramBundle.printStackTrace();
+    return 0;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return a(this.c - 4, true);
+  }
+  
+  public String a(int paramInt)
+  {
+    return b(this.c + paramInt * 4);
+  }
+  
+  public nbh a(int paramInt, ByteBuffer paramByteBuffer)
+  {
+    if ((paramInt < 0) || (paramByteBuffer.capacity() < paramInt + 4)) {
+      return null;
     }
+    this.jdField_a_of_type_Int = paramByteBuffer.getInt(paramInt);
+    this.c = (paramInt + 4);
+    this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
+    return this;
+  }
+  
+  public nbh a(int paramInt, nbh paramnbh)
+  {
+    return paramnbh.a(a(this.c + paramInt * 4), this.jdField_a_of_type_JavaNioByteBuffer);
+  }
+  
+  public nbi a(int paramInt)
+  {
+    return a(paramInt, new nbi());
+  }
+  
+  public nbi a(int paramInt, nbi paramnbi)
+  {
+    return paramnbi.a(a(this.c + paramInt * 4), this.jdField_a_of_type_JavaNioByteBuffer);
   }
 }
 

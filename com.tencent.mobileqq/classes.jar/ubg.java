@@ -1,43 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
 
 public class ubg
-  extends SimpleJob<Void>
+  implements View.OnClickListener
 {
-  public ubg(QQStoryMainController paramQQStoryMainController, String paramString)
-  {
-    super(paramString);
-  }
+  public ubg(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    vlm.a(this.a.jdField_a_of_type_AndroidAppActivity);
-    ((sia)sqg.a(6)).c();
-    tri.a(this.a.jdField_a_of_type_AndroidAppActivity).a(this.a.jdField_a_of_type_AndroidAppActivity);
-    PngQuantUtils.a(QQStoryContext.a());
-    ((sgm)sqg.a(4)).c();
-    axvg.g();
-    ((spz)sqg.a(10)).c();
-    urk.d("QQStoryMainController", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(sis.a()) });
-    tfk.a().a(this.a.jdField_a_of_type_AndroidAppActivity, 3);
-    urk.b("QQStoryMainController", "queueIdle loadShortVideoSo start");
-    ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    urk.b("QQStoryMainController", "queueIdle loadShortVideoSo end");
-    urk.b("QQStoryMainController", "queueIdle startDownloadFilterSo start");
-    this.a.b = awlw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
-    urk.b("QQStoryMainController", "queueIdle startDownloadFilterSo end");
-    urk.b("QQStoryMainController", "queueIdle preloadFrameDrawable start");
-    QQStoryLoadingView.a(this.a.jdField_a_of_type_AndroidAppActivity);
-    urk.b("QQStoryMainController", "queueIdle preloadFrameDrawable end");
-    return null;
+    if (!bbev.g(this.a.jdField_a_of_type_AndroidViewView.getContext()))
+    {
+      bcpw.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131694607, 0).a();
+      return;
+    }
+    VideoViewVideoHolder.a(this.a, 2);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+    this.a.a();
   }
 }
 

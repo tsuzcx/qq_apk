@@ -1,31 +1,20 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class atuv
-  extends RecyclerView.ItemDecoration
+class atuv
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
+  atuv(atur paramatur, atwv paramatwv, atuy paramatuy) {}
   
-  public atuv(CustomCoverFragment paramCustomCoverFragment, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    if (!(paramView.getTag() instanceof atus))
+    if (!bbev.g(this.jdField_a_of_type_Atur.jdField_a_of_type_AndroidContentContext))
     {
-      paramRect.left = 0;
+      bcpw.a(this.jdField_a_of_type_Atur.jdField_a_of_type_AndroidContentContext, 1, ajyc.a(2131701018), 0).a();
       return;
     }
-    int i = paramRecyclerView.getChildLayoutPosition(paramView) - 1;
-    float f = this.jdField_a_of_type_Int * 2 * 1.0F / 3.0F;
-    paramRect.left = ((int)(i % 3 * (this.jdField_a_of_type_Int - f)));
-    paramRect.right = ((int)(f - i % 3 * (this.jdField_a_of_type_Int - f)));
+    ((atvq)this.jdField_a_of_type_Atur.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263)).a(this.jdField_a_of_type_Atwv.c, this.jdField_a_of_type_Atwv.a, this.jdField_a_of_type_Atwv.d, new atuw(this));
   }
 }
 

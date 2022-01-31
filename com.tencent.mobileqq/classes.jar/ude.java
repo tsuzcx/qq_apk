@@ -1,22 +1,13 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import java.io.File;
+import org.json.JSONObject;
 
-final class ude
-  extends ClickableSpan
+public abstract interface ude
 {
-  ude(udf paramudf, String paramString, int paramInt) {}
+  public abstract void a(String paramString, File paramFile, int paramInt, JSONObject paramJSONObject);
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Udf.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-  }
+  public abstract void a(String paramString1, String paramString2, int paramInt);
   
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(paramTextPaint.getColor());
-    paramTextPaint.setUnderlineText(false);
-  }
+  public abstract void a(String paramString1, String paramString2, File paramFile);
 }
 
 

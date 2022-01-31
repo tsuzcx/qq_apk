@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/qzone_skin_feed_background_color" />
+    <solid android:color="#ffffffff" />
+    <corners android:radius="4.0dip" />
+    <stroke android:width="1.0px" android:color="#ffe3e3e3" />
 </shape>

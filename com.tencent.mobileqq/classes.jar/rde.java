@@ -1,25 +1,19 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.Map;
+import java.util.Set;
 
 public class rde
-  implements Animator.AnimatorListener
+  extends oyg
 {
-  public rde(ZImageView paramZImageView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public rde(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, Set paramSet, Map paramMap)
   {
-    ZImageView.a(this.a);
+    super(paramString);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(oya paramoya)
   {
-    ZImageView.a(this.a);
+    paramoya.a(this.jdField_a_of_type_JavaUtilSet, this.jdField_a_of_type_JavaUtilMap);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

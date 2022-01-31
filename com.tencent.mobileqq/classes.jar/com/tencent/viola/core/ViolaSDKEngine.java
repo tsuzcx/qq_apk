@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.tencent.viola.bridge.ViolaBridgeManager;
 import com.tencent.viola.module.Association;
+import com.tencent.viola.module.BackAndroidModule;
 import com.tencent.viola.module.BaseModule;
 import com.tencent.viola.module.DeviceModule;
 import com.tencent.viola.module.EventModule;
@@ -162,6 +163,7 @@ public class ViolaSDKEngine
       registerModule("association", Association.class, true);
       registerModule("monitor", MonitorModule.class, true);
       registerModule("device", DeviceModule.class, false);
+      registerModule("backAndroid", BackAndroidModule.class, false);
       baseRegisterInit = true;
       return;
     }

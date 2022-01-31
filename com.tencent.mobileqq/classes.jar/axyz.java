@@ -1,13 +1,12 @@
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class axyz
-  extends axzi
+class axyz
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public ArrayList<axuh> a = new ArrayList();
-  public boolean a;
-  public String b;
+  axyz(axyw paramaxyw) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

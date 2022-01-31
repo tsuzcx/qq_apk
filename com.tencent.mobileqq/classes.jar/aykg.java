@@ -1,44 +1,68 @@
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.widget.PinnedFooterExpandableListView;
-import java.util.ArrayList;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
-public class aykg
-  implements ayla
+class aykg
+  extends aykh
 {
-  public aykg(NewTroopContactView paramNewTroopContactView) {}
+  private aykr a;
   
-  public ArrayList<ResultRecord> a()
+  aykg(@NonNull String paramString, int paramInt1, int paramInt2)
   {
-    return this.a.c;
+    super(3, paramString);
+    if (paramString.length() >= 6)
+    {
+      char[] arrayOfChar = new char[3];
+      arrayOfChar[0] = paramString.charAt(3);
+      arrayOfChar[1] = paramString.charAt(4);
+      arrayOfChar[2] = ((char)(paramString.charAt(5) & 0xFF));
+      int i = 0;
+      if (i < 3)
+      {
+        if (arrayOfChar[i] == 'ú') {
+          arrayOfChar[i] = '\n';
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (arrayOfChar[i] == 'þ') {
+            arrayOfChar[i] = '\r';
+          }
+        }
+      }
+      if (paramInt1 == 511) {
+        bool = true;
+      }
+      this.a = new aykr(arrayOfChar, paramInt2, true, bool);
+    }
   }
   
-  public void a()
+  float a(@NonNull Paint paramPaint)
   {
-    this.a.jdField_a_of_type_Ayju.notifyDataSetChanged();
-    if (this.a.jdField_a_of_type_Ayju.getGroupCount() > 0)
+    if (this.a != null)
     {
-      Groups localGroups1 = this.a.jdField_a_of_type_Ayju.a(1007L);
-      Groups localGroups2 = this.a.jdField_a_of_type_Ayju.a(1008L);
-      if ((localGroups1 != null) || (localGroups2 != null))
+      paramPaint = this.a.a();
+      if (paramPaint != null)
       {
-        this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.a(0);
-        this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setIsNeedScrollPositionTop(true);
-        this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.smoothScrollToPositionFromTop(1, 0, 0);
-      }
-      if (localGroups1 != null) {
-        this.a.jdField_a_of_type_Ayky.a();
-      }
-      if (localGroups2 != null) {
-        this.a.jdField_a_of_type_Ayky.c();
+        float f = paramPaint.getBounds().width();
+        if (QLog.isColorLevel()) {
+          QLog.d("NickWrapper", 2, "getWidth small span width " + f);
+        }
+        return f;
       }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("NickWrapper", 2, "getWidth with error drawable");
+    }
+    return 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aykg
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import befm;
+import bfng;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -52,9 +52,9 @@ public class PreloadingFragment
   private static final boolean mEnableDBCache;
   private static LruCache<String, PreloadingFragment.MiniAppConfigCache> sMiniAppConfigCache;
   private Bundle mBundle;
-  private LinearLayout mLoadingView = (LinearLayout)this.mRootView.findViewById(2131303826);
+  private LinearLayout mLoadingView = (LinearLayout)this.mRootView.findViewById(2131369501);
   private ResultReceiver mResultReceiver;
-  private View mRootView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131493696, null);
+  private View mRootView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559265, null);
   private Handler mUIHandler;
   
   static
@@ -142,7 +142,7 @@ public class PreloadingFragment
       if (MiniAppLauncher.isMiniAppSchemeV2(paramString1)) {
         try
         {
-          paramString2 = (String)befm.a(paramString1).get("_mappid");
+          paramString2 = (String)bfng.a(paramString1).get("_mappid");
           QLog.d("PreloadingFragment", 4, "scheme: appid:  " + paramString2);
           if (!TextUtils.isEmpty(paramString2))
           {
@@ -491,8 +491,8 @@ public class PreloadingFragment
     QLog.i("miniapp-start", 1, "LoadingFragment onCreateView");
     if (this.mRootView == null)
     {
-      this.mRootView = LayoutInflater.from(getActivity()).inflate(2131493696, null);
-      this.mLoadingView = ((LinearLayout)this.mRootView.findViewById(2131303826));
+      this.mRootView = LayoutInflater.from(getActivity()).inflate(2131559265, null);
+      this.mLoadingView = ((LinearLayout)this.mRootView.findViewById(2131369501));
     }
     return this.mRootView;
   }

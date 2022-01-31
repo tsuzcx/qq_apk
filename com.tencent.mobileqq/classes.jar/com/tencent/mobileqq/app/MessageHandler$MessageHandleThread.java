@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import ajmi;
+import akar;
 import java.util.ArrayList;
 
 class MessageHandler$MessageHandleThread
   extends Thread
 {
-  ArrayList<ajmi> a;
+  ArrayList<akar> a;
   public boolean a;
   public volatile boolean b;
   
-  public MessageHandler$MessageHandleThread(ArrayList<ajmi> paramArrayList)
+  public MessageHandler$MessageHandleThread(ArrayList<akar> paramArrayList)
   {
     this.jdField_a_of_type_Boolean = true;
     Object localObject;
@@ -68,7 +68,7 @@ class MessageHandler$MessageHandleThread
     //   52: invokevirtual 69	java/util/ArrayList:size	()I
     //   55: ifle +1252 -> 1307
     //   58: ldc 71
-    //   60: invokestatic 76	beoj:a	(Ljava/lang/String;)V
+    //   60: invokestatic 76	bfwd:a	(Ljava/lang/String;)V
     //   63: iload_1
     //   64: istore_2
     //   65: aload_0
@@ -90,7 +90,7 @@ class MessageHandler$MessageHandleThread
     //   91: getfield 22	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   94: iconst_0
     //   95: invokevirtual 80	java/util/ArrayList:remove	(I)Ljava/lang/Object;
-    //   98: checkcast 82	ajmi
+    //   98: checkcast 82	akar
     //   101: astore 11
     //   103: iconst_0
     //   104: istore_1
@@ -110,10 +110,10 @@ class MessageHandler$MessageHandleThread
     //   129: invokestatic 88	java/lang/System:currentTimeMillis	()J
     //   132: lstore 6
     //   134: aload 11
-    //   136: getfield 91	ajmi:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   136: getfield 91	akar:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   139: ifnull +605 -> 744
     //   142: aload 11
-    //   144: getfield 91	ajmi:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   144: getfield 91	akar:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   147: invokevirtual 94	java/lang/Object:hashCode	()I
     //   150: istore_2
     //   151: iload_2
@@ -130,7 +130,7 @@ class MessageHandler$MessageHandleThread
     //   173: ldc 96
     //   175: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   178: aload 11
-    //   180: getfield 99	ajmi:jdField_a_of_type_Int	I
+    //   180: getfield 99	akar:jdField_a_of_type_Int	I
     //   183: invokevirtual 102	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   186: ldc 104
     //   188: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -143,7 +143,7 @@ class MessageHandler$MessageHandleThread
     //   205: iload_2
     //   206: istore_3
     //   207: aload 11
-    //   209: getfield 99	ajmi:jdField_a_of_type_Int	I
+    //   209: getfield 99	akar:jdField_a_of_type_Int	I
     //   212: tableswitch	default:+1140 -> 1352, 1:+537->749, 2:+583->795, 3:+616->828, 4:+641->853, 5:+852->1064
     //   249: getfield 15	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:this$0	Lcom/tencent/mobileqq/app/MessageHandler;
     //   252: getfield 110	com/tencent/mobileqq/app/MessageHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
@@ -159,7 +159,7 @@ class MessageHandler$MessageHandleThread
     //   277: ldc 121
     //   279: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   282: aload 11
-    //   284: getfield 99	ajmi:jdField_a_of_type_Int	I
+    //   284: getfield 99	akar:jdField_a_of_type_Int	I
     //   287: invokevirtual 102	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   290: ldc 104
     //   292: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -252,13 +252,13 @@ class MessageHandler$MessageHandleThread
     //   480: ifeq +29 -> 509
     //   483: aload_0
     //   484: getfield 15	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:this$0	Lcom/tencent/mobileqq/app/MessageHandler;
-    //   487: getfield 171	com/tencent/mobileqq/app/MessageHandler:a	Lawao;
-    //   490: invokevirtual 176	awao:c	()Z
+    //   487: getfield 171	com/tencent/mobileqq/app/MessageHandler:a	Lawzw;
+    //   490: invokevirtual 176	awzw:c	()Z
     //   493: ifeq +16 -> 509
     //   496: aload_0
     //   497: getfield 15	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:this$0	Lcom/tencent/mobileqq/app/MessageHandler;
-    //   500: getfield 171	com/tencent/mobileqq/app/MessageHandler:a	Lawao;
-    //   503: invokevirtual 178	awao:b	()Z
+    //   500: getfield 171	com/tencent/mobileqq/app/MessageHandler:a	Lawzw;
+    //   503: invokevirtual 178	awzw:b	()Z
     //   506: ifne +24 -> 530
     //   509: aload_0
     //   510: getfield 15	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:this$0	Lcom/tencent/mobileqq/app/MessageHandler;
@@ -292,7 +292,7 @@ class MessageHandler$MessageHandleThread
     //   573: invokevirtual 185	com/tencent/mobileqq/app/MessageHandler:notifyUI	(IZLjava/lang/Object;)V
     //   576: aload_0
     //   577: getfield 15	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:this$0	Lcom/tencent/mobileqq/app/MessageHandler;
-    //   580: invokestatic 195	com/tencent/mobileqq/app/MessageHandler:d	(Lcom/tencent/mobileqq/app/MessageHandler;)Z
+    //   580: getfield 196	com/tencent/mobileqq/app/MessageHandler:e	Z
     //   583: ifeq +72 -> 655
     //   586: aload_0
     //   587: getfield 15	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:this$0	Lcom/tencent/mobileqq/app/MessageHandler;
@@ -311,7 +311,7 @@ class MessageHandler$MessageHandleThread
     //   618: aload_0
     //   619: getfield 15	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:this$0	Lcom/tencent/mobileqq/app/MessageHandler;
     //   622: invokestatic 137	com/tencent/mobileqq/app/MessageHandler:a	(Lcom/tencent/mobileqq/app/MessageHandler;)Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   625: invokevirtual 198	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   625: invokevirtual 199	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   628: ifne +24 -> 652
     //   631: aload_0
     //   632: getfield 15	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:this$0	Lcom/tencent/mobileqq/app/MessageHandler;
@@ -324,8 +324,8 @@ class MessageHandler$MessageHandleThread
     //   649: invokevirtual 30	java/lang/Object:notifyAll	()V
     //   652: aload 11
     //   654: monitorexit
-    //   655: invokestatic 201	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:yield	()V
-    //   658: invokestatic 203	beoj:a	()V
+    //   655: invokestatic 202	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:yield	()V
+    //   658: invokestatic 204	bfwd:a	()V
     //   661: goto -625 -> 36
     //   664: iload_1
     //   665: istore_2
@@ -338,7 +338,7 @@ class MessageHandler$MessageHandleThread
     //   677: new 45	java/lang/StringBuilder
     //   680: dup
     //   681: invokespecial 46	java/lang/StringBuilder:<init>	()V
-    //   684: ldc 205
+    //   684: ldc 206
     //   686: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   689: aload_0
     //   690: invokevirtual 56	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:getName	()Ljava/lang/String;
@@ -349,8 +349,8 @@ class MessageHandler$MessageHandleThread
     //   703: istore_2
     //   704: aload_0
     //   705: getfield 22	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   708: ldc2_w 206
-    //   711: invokevirtual 211	java/lang/Object:wait	(J)V
+    //   708: ldc2_w 207
+    //   711: invokevirtual 212	java/lang/Object:wait	(J)V
     //   714: iload_1
     //   715: iconst_1
     //   716: iadd
@@ -369,232 +369,232 @@ class MessageHandler$MessageHandleThread
     //   734: astore 11
     //   736: iload_2
     //   737: istore_1
-    //   738: invokestatic 203	beoj:a	()V
+    //   738: invokestatic 204	bfwd:a	()V
     //   741: goto -80 -> 661
     //   744: iconst_0
     //   745: istore_2
     //   746: goto -595 -> 151
     //   749: aload_0
     //   750: getfield 15	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:this$0	Lcom/tencent/mobileqq/app/MessageHandler;
-    //   753: ldc 213
-    //   755: invokevirtual 216	com/tencent/mobileqq/app/MessageHandler:a	(Ljava/lang/String;)Lakac;
+    //   753: ldc 214
+    //   755: invokevirtual 217	com/tencent/mobileqq/app/MessageHandler:a	(Ljava/lang/String;)Lakoo;
     //   758: sipush 1002
     //   761: iconst_3
     //   762: anewarray 27	java/lang/Object
     //   765: dup
     //   766: iconst_0
     //   767: aload 11
-    //   769: getfield 219	ajmi:jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg	Lcom/tencent/qphone/base/remote/ToServiceMsg;
+    //   769: getfield 220	akar:jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg	Lcom/tencent/qphone/base/remote/ToServiceMsg;
     //   772: aastore
     //   773: dup
     //   774: iconst_1
     //   775: aload 11
-    //   777: getfield 222	ajmi:jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg	Lcom/tencent/qphone/base/remote/FromServiceMsg;
+    //   777: getfield 223	akar:jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg	Lcom/tencent/qphone/base/remote/FromServiceMsg;
     //   780: aastore
     //   781: dup
     //   782: iconst_2
     //   783: aload 11
-    //   785: getfield 91	ajmi:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   785: getfield 91	akar:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   788: aastore
-    //   789: invokevirtual 227	akac:a	(I[Ljava/lang/Object;)V
+    //   789: invokevirtual 228	akoo:a	(I[Ljava/lang/Object;)V
     //   792: goto -544 -> 248
     //   795: aload_0
     //   796: getfield 15	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:this$0	Lcom/tencent/mobileqq/app/MessageHandler;
     //   799: aload 11
-    //   801: getfield 219	ajmi:jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg	Lcom/tencent/qphone/base/remote/ToServiceMsg;
+    //   801: getfield 220	akar:jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg	Lcom/tencent/qphone/base/remote/ToServiceMsg;
     //   804: aload 11
-    //   806: getfield 222	ajmi:jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg	Lcom/tencent/qphone/base/remote/FromServiceMsg;
+    //   806: getfield 223	akar:jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg	Lcom/tencent/qphone/base/remote/FromServiceMsg;
     //   809: aload 11
-    //   811: getfield 91	ajmi:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   814: invokestatic 230	com/tencent/mobileqq/app/MessageHandler:a	(Lcom/tencent/mobileqq/app/MessageHandler;Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/Object;)V
+    //   811: getfield 91	akar:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   814: invokestatic 231	com/tencent/mobileqq/app/MessageHandler:a	(Lcom/tencent/mobileqq/app/MessageHandler;Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/Object;)V
     //   817: goto -569 -> 248
     //   820: astore 11
-    //   822: invokestatic 203	beoj:a	()V
+    //   822: invokestatic 204	bfwd:a	()V
     //   825: aload 11
     //   827: athrow
     //   828: aload_0
     //   829: getfield 15	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:this$0	Lcom/tencent/mobileqq/app/MessageHandler;
     //   832: aload 11
-    //   834: getfield 219	ajmi:jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg	Lcom/tencent/qphone/base/remote/ToServiceMsg;
+    //   834: getfield 220	akar:jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg	Lcom/tencent/qphone/base/remote/ToServiceMsg;
     //   837: aload 11
-    //   839: getfield 222	ajmi:jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg	Lcom/tencent/qphone/base/remote/FromServiceMsg;
+    //   839: getfield 223	akar:jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg	Lcom/tencent/qphone/base/remote/FromServiceMsg;
     //   842: aload 11
-    //   844: getfield 91	ajmi:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   847: invokestatic 232	com/tencent/mobileqq/app/MessageHandler:b	(Lcom/tencent/mobileqq/app/MessageHandler;Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/Object;)V
+    //   844: getfield 91	akar:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   847: invokestatic 233	com/tencent/mobileqq/app/MessageHandler:b	(Lcom/tencent/mobileqq/app/MessageHandler;Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/Object;)V
     //   850: goto -602 -> 248
     //   853: aload 11
-    //   855: getfield 91	ajmi:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   855: getfield 91	akar:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   858: ifnull +96 -> 954
     //   861: aload 11
-    //   863: getfield 91	ajmi:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   866: instanceof 234
+    //   863: getfield 91	akar:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   866: instanceof 235
     //   869: ifeq +85 -> 954
     //   872: aload 11
-    //   874: getfield 91	ajmi:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   877: checkcast 234	MessageSvcPack/GroupInfo
+    //   874: getfield 91	akar:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   877: checkcast 235	MessageSvcPack/GroupInfo
     //   880: astore 12
     //   882: aload_0
     //   883: getfield 15	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:this$0	Lcom/tencent/mobileqq/app/MessageHandler;
     //   886: getfield 110	com/tencent/mobileqq/app/MessageHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   889: invokevirtual 237	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   889: invokevirtual 238	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
     //   892: astore 13
     //   894: aload 12
-    //   896: getfield 240	MessageSvcPack/GroupInfo:lGroupCode	J
+    //   896: getfield 241	MessageSvcPack/GroupInfo:lGroupCode	J
     //   899: lstore 6
     //   901: aload 12
-    //   903: getfield 243	MessageSvcPack/GroupInfo:lMemberSeq	J
+    //   903: getfield 244	MessageSvcPack/GroupInfo:lMemberSeq	J
     //   906: lstore 8
     //   908: aload_0
     //   909: getfield 15	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:this$0	Lcom/tencent/mobileqq/app/MessageHandler;
     //   912: getfield 110	com/tencent/mobileqq/app/MessageHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   915: invokevirtual 246	com/tencent/mobileqq/app/QQAppInterface:a	()Lawao;
+    //   915: invokevirtual 247	com/tencent/mobileqq/app/QQAppInterface:a	()Lawzw;
     //   918: aload 12
-    //   920: getfield 240	MessageSvcPack/GroupInfo:lGroupCode	J
-    //   923: invokestatic 251	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   926: invokevirtual 254	awao:a	(Ljava/lang/String;)I
+    //   920: getfield 241	MessageSvcPack/GroupInfo:lGroupCode	J
+    //   923: invokestatic 252	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   926: invokevirtual 255	awzw:a	(Ljava/lang/String;)I
     //   929: iconst_2
     //   930: if_icmpne +437 -> 1367
     //   933: iconst_1
     //   934: istore 10
     //   936: aload 13
     //   938: lload 6
-    //   940: invokestatic 251	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   940: invokestatic 252	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   943: iconst_1
     //   944: lload 8
     //   946: iload 10
-    //   948: invokevirtual 259	com/tencent/mobileqq/app/message/QQMessageFacade:a	(Ljava/lang/String;IJZ)V
+    //   948: invokevirtual 260	com/tencent/mobileqq/app/message/QQMessageFacade:a	(Ljava/lang/String;IJZ)V
     //   951: goto -703 -> 248
     //   954: aload 11
-    //   956: getfield 91	ajmi:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   956: getfield 91	akar:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   959: ifnull -711 -> 248
     //   962: aload 11
-    //   964: getfield 91	ajmi:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   967: instanceof 261
+    //   964: getfield 91	akar:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   967: instanceof 262
     //   970: ifeq -722 -> 248
     //   973: aload 11
-    //   975: getfield 91	ajmi:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   978: checkcast 261	msf/registerproxy/register_proxy$GroupList
+    //   975: getfield 91	akar:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   978: checkcast 262	msf/registerproxy/register_proxy$GroupList
     //   981: astore 12
     //   983: aload_0
     //   984: getfield 15	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:this$0	Lcom/tencent/mobileqq/app/MessageHandler;
     //   987: getfield 110	com/tencent/mobileqq/app/MessageHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   990: invokevirtual 237	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   990: invokevirtual 238	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
     //   993: astore 13
     //   995: aload 12
-    //   997: getfield 265	msf/registerproxy/register_proxy$GroupList:group_code	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   1000: invokevirtual 269	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   997: getfield 266	msf/registerproxy/register_proxy$GroupList:group_code	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1000: invokevirtual 270	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   1003: lstore 6
     //   1005: aload 12
-    //   1007: getfield 272	msf/registerproxy/register_proxy$GroupList:member_seq	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   1010: invokevirtual 269	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   1007: getfield 273	msf/registerproxy/register_proxy$GroupList:member_seq	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1010: invokevirtual 270	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   1013: lstore 8
     //   1015: aload_0
     //   1016: getfield 15	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:this$0	Lcom/tencent/mobileqq/app/MessageHandler;
     //   1019: getfield 110	com/tencent/mobileqq/app/MessageHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1022: invokevirtual 246	com/tencent/mobileqq/app/QQAppInterface:a	()Lawao;
+    //   1022: invokevirtual 247	com/tencent/mobileqq/app/QQAppInterface:a	()Lawzw;
     //   1025: aload 12
-    //   1027: getfield 265	msf/registerproxy/register_proxy$GroupList:group_code	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   1030: invokevirtual 269	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   1033: invokestatic 251	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   1036: invokevirtual 254	awao:a	(Ljava/lang/String;)I
+    //   1027: getfield 266	msf/registerproxy/register_proxy$GroupList:group_code	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1030: invokevirtual 270	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   1033: invokestatic 252	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1036: invokevirtual 255	awzw:a	(Ljava/lang/String;)I
     //   1039: iconst_2
     //   1040: if_icmpne +333 -> 1373
     //   1043: iconst_1
     //   1044: istore 10
     //   1046: aload 13
     //   1048: lload 6
-    //   1050: invokestatic 251	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1050: invokestatic 252	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   1053: iconst_1
     //   1054: lload 8
     //   1056: iload 10
-    //   1058: invokevirtual 259	com/tencent/mobileqq/app/message/QQMessageFacade:a	(Ljava/lang/String;IJZ)V
+    //   1058: invokevirtual 260	com/tencent/mobileqq/app/message/QQMessageFacade:a	(Ljava/lang/String;IJZ)V
     //   1061: goto -813 -> 248
     //   1064: aload 11
-    //   1066: getfield 91	ajmi:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   1066: getfield 91	akar:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   1069: ifnull +98 -> 1167
     //   1072: aload 11
-    //   1074: getfield 91	ajmi:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   1077: instanceof 274
+    //   1074: getfield 91	akar:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   1077: instanceof 275
     //   1080: ifeq +87 -> 1167
     //   1083: aload 11
-    //   1085: getfield 91	ajmi:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   1088: checkcast 274	MessageSvcPack/stConfNumInfo
+    //   1085: getfield 91	akar:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   1088: checkcast 275	MessageSvcPack/stConfNumInfo
     //   1091: astore 12
     //   1093: aload_0
     //   1094: getfield 15	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:this$0	Lcom/tencent/mobileqq/app/MessageHandler;
     //   1097: getfield 110	com/tencent/mobileqq/app/MessageHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1100: invokevirtual 237	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   1100: invokevirtual 238	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
     //   1103: astore 13
     //   1105: aload 12
-    //   1107: getfield 277	MessageSvcPack/stConfNumInfo:lConfUin	J
+    //   1107: getfield 278	MessageSvcPack/stConfNumInfo:lConfUin	J
     //   1110: lstore 6
     //   1112: aload 12
-    //   1114: getfield 280	MessageSvcPack/stConfNumInfo:uMemberMsgSeq	J
+    //   1114: getfield 281	MessageSvcPack/stConfNumInfo:uMemberMsgSeq	J
     //   1117: lstore 8
     //   1119: aload_0
     //   1120: getfield 15	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:this$0	Lcom/tencent/mobileqq/app/MessageHandler;
     //   1123: getfield 110	com/tencent/mobileqq/app/MessageHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1126: invokevirtual 246	com/tencent/mobileqq/app/QQAppInterface:a	()Lawao;
+    //   1126: invokevirtual 247	com/tencent/mobileqq/app/QQAppInterface:a	()Lawzw;
     //   1129: aload 12
-    //   1131: getfield 277	MessageSvcPack/stConfNumInfo:lConfUin	J
-    //   1134: invokestatic 251	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   1137: invokevirtual 282	awao:b	(Ljava/lang/String;)I
+    //   1131: getfield 278	MessageSvcPack/stConfNumInfo:lConfUin	J
+    //   1134: invokestatic 252	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1137: invokevirtual 283	awzw:b	(Ljava/lang/String;)I
     //   1140: iconst_2
     //   1141: if_icmpne +238 -> 1379
     //   1144: iconst_1
     //   1145: istore 10
     //   1147: aload 13
     //   1149: lload 6
-    //   1151: invokestatic 251	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1151: invokestatic 252	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   1154: sipush 3000
     //   1157: lload 8
     //   1159: iload 10
-    //   1161: invokevirtual 259	com/tencent/mobileqq/app/message/QQMessageFacade:a	(Ljava/lang/String;IJZ)V
+    //   1161: invokevirtual 260	com/tencent/mobileqq/app/message/QQMessageFacade:a	(Ljava/lang/String;IJZ)V
     //   1164: goto -916 -> 248
     //   1167: aload 11
-    //   1169: getfield 91	ajmi:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   1169: getfield 91	akar:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   1172: ifnull -924 -> 248
     //   1175: aload 11
-    //   1177: getfield 91	ajmi:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   1180: instanceof 284
+    //   1177: getfield 91	akar:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   1180: instanceof 285
     //   1183: ifeq -935 -> 248
     //   1186: aload 11
-    //   1188: getfield 91	ajmi:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   1191: checkcast 284	msf/registerproxy/register_proxy$DiscussList
+    //   1188: getfield 91	akar:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   1191: checkcast 285	msf/registerproxy/register_proxy$DiscussList
     //   1194: astore 12
     //   1196: aload_0
     //   1197: getfield 15	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:this$0	Lcom/tencent/mobileqq/app/MessageHandler;
     //   1200: getfield 110	com/tencent/mobileqq/app/MessageHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1203: invokevirtual 237	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   1203: invokevirtual 238	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
     //   1206: astore 13
     //   1208: aload 12
-    //   1210: getfield 287	msf/registerproxy/register_proxy$DiscussList:discuss_code	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   1213: invokevirtual 269	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   1210: getfield 288	msf/registerproxy/register_proxy$DiscussList:discuss_code	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1213: invokevirtual 270	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   1216: lstore 6
     //   1218: aload 12
-    //   1220: getfield 288	msf/registerproxy/register_proxy$DiscussList:member_seq	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   1223: invokevirtual 269	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   1220: getfield 289	msf/registerproxy/register_proxy$DiscussList:member_seq	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1223: invokevirtual 270	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   1226: lstore 8
     //   1228: aload_0
     //   1229: getfield 15	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:this$0	Lcom/tencent/mobileqq/app/MessageHandler;
     //   1232: getfield 110	com/tencent/mobileqq/app/MessageHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1235: invokevirtual 246	com/tencent/mobileqq/app/QQAppInterface:a	()Lawao;
+    //   1235: invokevirtual 247	com/tencent/mobileqq/app/QQAppInterface:a	()Lawzw;
     //   1238: aload 12
-    //   1240: getfield 287	msf/registerproxy/register_proxy$DiscussList:discuss_code	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   1243: invokevirtual 269	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   1246: invokestatic 251	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   1249: invokevirtual 282	awao:b	(Ljava/lang/String;)I
+    //   1240: getfield 288	msf/registerproxy/register_proxy$DiscussList:discuss_code	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1243: invokevirtual 270	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   1246: invokestatic 252	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1249: invokevirtual 283	awzw:b	(Ljava/lang/String;)I
     //   1252: iconst_2
     //   1253: if_icmpne +26 -> 1279
     //   1256: iconst_1
     //   1257: istore 10
     //   1259: aload 13
     //   1261: lload 6
-    //   1263: invokestatic 251	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1263: invokestatic 252	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   1266: sipush 3000
     //   1269: lload 8
     //   1271: iload 10
-    //   1273: invokevirtual 259	com/tencent/mobileqq/app/message/QQMessageFacade:a	(Ljava/lang/String;IJZ)V
+    //   1273: invokevirtual 260	com/tencent/mobileqq/app/message/QQMessageFacade:a	(Ljava/lang/String;IJZ)V
     //   1276: goto -1028 -> 248
     //   1279: iconst_0
     //   1280: istore 10
@@ -613,7 +613,7 @@ class MessageHandler$MessageHandleThread
     //   1304: aload 12
     //   1306: athrow
     //   1307: aload_0
-    //   1308: invokevirtual 289	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:a	()V
+    //   1308: invokevirtual 290	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:a	()V
     //   1311: invokestatic 41	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1314: ifeq +32 -> 1346
     //   1317: ldc 43
@@ -621,7 +621,7 @@ class MessageHandler$MessageHandleThread
     //   1320: new 45	java/lang/StringBuilder
     //   1323: dup
     //   1324: invokespecial 46	java/lang/StringBuilder:<init>	()V
-    //   1327: ldc_w 291
+    //   1327: ldc_w 292
     //   1330: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1333: aload_0
     //   1334: invokevirtual 56	com/tencent/mobileqq/app/MessageHandler$MessageHandleThread:getName	()Ljava/lang/String;

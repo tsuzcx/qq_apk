@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.multicard;
 
-import arvk;
+import asro;
 import java.util.List;
 import java.util.Map;
 

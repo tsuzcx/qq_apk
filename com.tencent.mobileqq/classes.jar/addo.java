@@ -1,17 +1,30 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
-class addo
-  extends acjc
+public class addo
+  implements adde
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
-  TextView d;
-  TextView e;
+  public addo(DoodlePanel paramDoodlePanel) {}
   
-  addo(addl paramaddl) {}
+  public void a(int paramInt)
+  {
+    DoodlePanel.a(this.a);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 2)
+    {
+      if (!DoodlePanel.a(this.a))
+      {
+        DoodlePanel.a(this.a, true);
+        addp localaddp = new addp(this);
+        bbcv.a(this.a.getContext(), 230, null, this.a.getContext().getString(2131689898), null, this.a.getContext().getString(2131689887), localaddp, null).show();
+      }
+      return;
+    }
+    bcpw.a(this.a.getContext(), this.a.getContext().getString(2131689890), 0).a();
+  }
 }
 
 

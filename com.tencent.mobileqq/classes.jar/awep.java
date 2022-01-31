@@ -1,89 +1,164 @@
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.res.AssetManager;
+import android.os.AsyncTask;
+import android.util.SparseArray;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 class awep
+  extends AsyncTask<Void, Integer, Integer>
 {
-  public static String a()
+  awep(aweo paramaweo) {}
+  
+  private void a(long paramLong)
   {
-    String str = BaseApplicationImpl.getApplication().getSharedPreferences("other_res_short_video_mgr_sp", 4).getString("other_res_sv_md5_version_soname_key", "other_res000_0");
-    boolean bool = awdu.a(str, 1);
-    VideoEnvironment.a("ShortVideoOtherResourceMgr", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
-    if (bool) {
-      return str;
+    long l = aweo.a(this.a).getLong("k_icon", 0L);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask clearIcons " + l + ", " + paramLong + ", " + 104L);
     }
-    return "other_res000_0";
-  }
-  
-  static boolean a()
-  {
-    return true;
-  }
-  
-  static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
-  {
-    return false;
-  }
-  
-  static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    paramQQAppInterface = b();
-    paramQQAppInterface = paramQQAppInterface + paramString1 + File.separator;
-    File localFile = new File(paramQQAppInterface);
-    if (localFile.exists()) {
-      if ((a().equals(paramString1)) && (awdu.b(paramQQAppInterface, "other_res_config_file"))) {
-        VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:[checkUnzipFileListSizeIsOK]success=true", null);
+    Object localObject;
+    if (l < paramLong)
+    {
+      localObject = null;
+      if (paramLong <= 104L) {
+        break label180;
       }
     }
     for (;;)
     {
-      return false;
-      bace.a(paramQQAppInterface);
-      VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:[deleteDirectory|already exists]unzipPath=" + paramQQAppInterface, null);
-      boolean bool = localFile.mkdirs();
-      VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:[exists]mkOK=" + bool, null);
       try
       {
-        bace.a(paramString2, paramQQAppInterface, false);
-        bool = awdu.b(paramQQAppInterface, "other_res_config_file");
-        VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK success=" + bool, null);
-        if (bool)
-        {
-          bool = a(paramString1);
-          VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK saveOK=" + bool, null);
-          if (bool) {
-            continue;
-          }
-          bool = a(paramString1);
-          VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK[two]saveOK=" + bool, null);
-          return false;
-        }
+        InputStream localInputStream = aweo.a(this.a).getApp().getAssets().open("rich_status.xml");
+        localObject = localInputStream;
       }
-      catch (Exception paramQQAppInterface)
+      catch (Exception localException)
       {
-        paramQQAppInterface.printStackTrace();
-        return true;
+        localException.printStackTrace();
+        continue;
+      }
+      localObject = (SparseArray)aweo.a(this.a, localObject)[0];
+      if (aweo.a(this.a, (SparseArray)localObject, aweo.a(this.a))) {
+        aweo.a(this.a).edit().putLong("k_icon", paramLong).commit();
+      }
+      return;
+      try
+      {
+        label180:
+        FileInputStream localFileInputStream = new FileInputStream(new File(aweo.a(this.a).getApp().getFilesDir(), "rich_status.xml"));
+        localObject = localFileInputStream;
+      }
+      catch (FileNotFoundException localFileNotFoundException)
+      {
+        localFileNotFoundException.printStackTrace();
       }
     }
-    return true;
   }
   
-  private static boolean a(String paramString)
+  protected Integer a(Void... paramVarArgs)
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("other_res_short_video_mgr_sp", 4).edit();
-    localEditor.putString("other_res_sv_md5_version_soname_key", paramString);
-    return localEditor.commit();
+    long l = aweo.a(this.a).getLong("k_version", 0L);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "updateActions_Local with file " + l + ", " + 104L);
+    }
+    if (l > 104L) {}
+    ArrayList localArrayList;
+    label221:
+    for (;;)
+    {
+      try
+      {
+        paramVarArgs = new FileInputStream(new File(aweo.a(this.a).getApp().getFilesDir(), "rich_status.xml"));
+        if (paramVarArgs != null) {
+          break label221;
+        }
+        Object localObject;
+        paramVarArgs = null;
+      }
+      catch (FileNotFoundException paramVarArgs)
+      {
+        try
+        {
+          localObject = aweo.a(this.a).getApp().getAssets().open("rich_status.xml");
+          paramVarArgs = (Void[])localObject;
+          l = 104L;
+          localObject = aweo.a(this.a, paramVarArgs);
+          paramVarArgs = (SparseArray)localObject[0];
+          localArrayList = (ArrayList)localObject[1];
+          if ((paramVarArgs != null) && (paramVarArgs.size() != 0) && (localArrayList != null) && (localArrayList.size() != 0)) {
+            break;
+          }
+          publishProgress(new Integer[] { Integer.valueOf(-1) });
+          a(l);
+          return Integer.valueOf(100);
+        }
+        catch (IOException localIOException)
+        {
+          localIOException.printStackTrace();
+        }
+        paramVarArgs = paramVarArgs;
+        paramVarArgs.printStackTrace();
+      }
+    }
+    for (;;)
+    {
+      synchronized (aweo.a(this.a))
+      {
+        if ((!isCancelled()) && (aweo.a(this.a).size() == 0))
+        {
+          aweo.a(this.a, paramVarArgs);
+          aweo.a(this.a).clear();
+          aweo.a(this.a).addAll(localArrayList);
+          publishProgress(new Integer[] { Integer.valueOf(102) });
+        }
+      }
+      cancel(true);
+    }
   }
   
-  public static String b()
+  protected void a(Integer paramInteger)
   {
-    String str = awlw.a(VideoEnvironment.a());
-    return str + "other_res_cache" + File.separator;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onPostExecute " + paramInteger);
+    }
+    aweo.a(this.a, null);
+    if (101 == aweo.a(this.a, false)) {
+      aweo.a(this.a);
+    }
+    this.a.a(false);
+  }
+  
+  protected void a(Integer... paramVarArgs)
+  {
+    int i = paramVarArgs[0].intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onProgressUpdate " + i);
+    }
+    if (aweo.a(this.a) != null)
+    {
+      paramVarArgs = aweo.a(this.a).iterator();
+      while (paramVarArgs.hasNext()) {
+        ((awcb)paramVarArgs.next()).a(i, 300);
+      }
+    }
+    hy.a().c(i, 300);
+  }
+  
+  protected void onCancelled()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onCancelled");
+    }
+    aweo.a(this.a, null);
   }
 }
 

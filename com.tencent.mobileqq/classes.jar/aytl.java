@@ -1,179 +1,382 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
+import android.os.SystemClock;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.filemanager.forward.TroopFileToTroopForwarder.2;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.io.File;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.BaseConstants;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.PhantomReference;
+import java.lang.ref.ReferenceQueue;
+import java.util.HashMap;
+import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class aytl
-  extends ayub
 {
-  wlz a;
+  static int jdField_a_of_type_Int;
+  public static long a;
+  static PhantomReference<Object> jdField_a_of_type_JavaLangRefPhantomReference;
+  static ReferenceQueue<Object> jdField_a_of_type_JavaLangRefReferenceQueue = new ReferenceQueue();
+  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
+  public static ConcurrentHashMap<String, Long> a;
+  public static boolean a;
+  static int jdField_b_of_type_Int;
+  static long jdField_b_of_type_Long;
+  public static boolean b;
+  static int jdField_c_of_type_Int;
+  static long jdField_c_of_type_Long;
+  static boolean jdField_c_of_type_Boolean;
+  static long d;
   
-  protected aytl(long paramLong, TroopFileTransferManager.Item paramItem)
+  static
   {
-    super(paramLong, paramItem);
-    this.jdField_a_of_type_Wlz = new aytm(this);
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  public static aytl a(long paramLong, TroopFileTransferManager.Item paramItem)
+  public static final int a(int paramInt1, int paramInt2)
   {
-    if (paramLong == 0L)
-    {
-      aysb.a("TroopFileToTroopForwarder", aysb.a, "getTroop2TroopForwarder. troopuin=0");
-      return null;
-    }
-    if (paramItem == null)
-    {
-      aysb.a("TroopFileToTroopForwarder", aysb.a, "getTroop2TroopForwarder. item=null");
-      return null;
-    }
-    if (paramItem.Id == null)
-    {
-      aysb.a("TroopFileToTroopForwarder", aysb.a, "getTroop2TroopForwarder. item.id=null");
-      return null;
-    }
-    if (paramItem.ForwardTroopuin == 0L)
-    {
-      aysb.a("TroopFileToTroopForwarder", aysb.a, "getTroop2TroopForwarder. ForwardTroopuin=0");
-      return null;
-    }
-    if ((paramItem.BusId != 102) && (paramItem.BusId != 104))
-    {
-      aysb.a("TroopFileToTroopForwarder", aysb.a, "getTroop2TroopForwarder. BusId err:" + paramItem.BusId);
-      return null;
-    }
-    if (TextUtils.isEmpty(paramItem.ForwardPath))
-    {
-      aysb.a("TroopFileToTroopForwarder", aysb.a, "getTroop2TroopForwarder. ForwardPath=null");
-      return null;
-    }
-    return new aytl(paramLong, paramItem);
+    return (paramInt2 & 0xF) + paramInt1 * 100;
   }
   
-  private final void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
+  public static void a()
   {
-    paramString2 = ayrz.a();
-    aysb.c("TroopFileToTroopForwarder", aysb.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult isSuccess:true retCode:" + paramInt1);
-    if (paramInt1 < 0)
+    int i = lmb.f();
+    int j = lmb.e();
+    long l1 = lmb.c();
+    long l2 = bbct.d() / 1048576L;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
+    localHashMap.put("cpuArch", String.valueOf(i));
+    localHashMap.put("numCores", String.valueOf(j));
+    localHashMap.put("maxFreq", String.valueOf(l1));
+    localHashMap.put("memory", String.valueOf(l2));
+    localHashMap.put("param_FailCode", String.valueOf(i));
+    axrl.a(BaseApplication.getContext()).a(null, "actPttCpuArch", false, 0L, 0L, localHashMap, "");
+  }
+  
+  public static void a(int paramInt)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(paramInt));
+    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
+    axrl.a(BaseApplication.getContext()).a(null, "actPttLongPressFate2", false, 0L, 0L, localHashMap, "");
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("type", String.valueOf(paramInt1));
+    if (jdField_b_of_type_Int != 0) {}
+    for (long l1 = jdField_c_of_type_Long / jdField_b_of_type_Int;; l1 = 0L)
     {
-      paramInt2 = 207;
-      switch (paramInt1)
+      if (jdField_c_of_type_Int != 0) {}
+      for (long l2 = d / jdField_c_of_type_Int;; l2 = 0L)
       {
-      default: 
-        paramString1 = paramString3;
-        paramInt1 = paramInt2;
-      }
-      for (;;)
-      {
-        paramString1 = new azie(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardTroopuin, 5, paramInt1, paramString1);
-        ayrl.a(this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 5, paramString1);
-        if (paramString2 == null) {
-          break;
-        }
-        paramString1 = paramString2.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.entrySessionID);
-        if (paramString1 != null)
+        localHashMap.put("consumePerFrame", String.valueOf(l1));
+        localHashMap.put("releasePerGc", String.valueOf(l2));
+        localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
+        if (QLog.isColorLevel())
         {
-          long l = paramString1.structMsgSeq;
-          paramString2.a().b("" + this.d, 1, l);
+          QLog.e("PttInfoCollector", 2, "reportSoundProcessCost gcCount=" + jdField_a_of_type_Int + " type=" + paramInt1 + " time" + paramInt2);
+          QLog.e("PttInfoCollector", 2, "reportSoundProcessCost consume=" + l1 + " release=" + l2);
         }
+        axrl.a(BaseApplication.getContext()).a(null, "actPttGcCount", true, paramInt2, jdField_a_of_type_Int, localHashMap, "");
+        jdField_a_of_type_Int = 0;
+        jdField_c_of_type_Boolean = false;
+        jdField_a_of_type_JavaLangRefReferenceQueue.poll();
+        jdField_b_of_type_Long = 0L;
+        jdField_c_of_type_Long = 0L;
+        d = 0L;
+        jdField_b_of_type_Int = 0;
+        jdField_c_of_type_Int = 0;
         return;
-        paramInt1 = 202;
-        paramString1 = paramString3;
-        continue;
-        paramInt1 = 600;
-        paramString1 = paramString3;
-        continue;
-        paramInt1 = 701;
-        paramString1 = paramString3;
-        continue;
-        paramInt1 = 706;
-        paramString1 = ajjy.a(2131649553);
-        continue;
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId == 102)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId = 104;
-          if (paramString2 != null)
-          {
-            aysb.b("TroopFileToTroopForwarder", aysb.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult: space no enough. fowrd temp.");
-            wln.a(paramString2, false, this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.d, 0L, this.jdField_a_of_type_Wlz);
-            return;
-          }
-          paramInt1 = 204;
-          paramString1 = paramString3;
-        }
-        else
-        {
-          paramInt1 = 204;
-          paramString1 = paramString3;
-          continue;
-          paramInt1 = -139;
-          paramString1 = paramString3;
-          continue;
-          if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile)) && (new File(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile).exists()))
-          {
-            aysb.b("TroopFileToTroopForwarder", aysb.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult: -6101. start local uploadl.");
-            ayue.a().a(this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, null);
-            return;
-          }
-          paramInt1 = 603;
-          paramString1 = paramString3;
-          continue;
-          paramInt1 = 705;
-          paramString1 = paramString3;
-        }
       }
-      aysb.a("TroopFileToTroopForwarder", aysb.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult fail. removeMsgByUniseq fail.");
+    }
+  }
+  
+  public static void a(long paramLong1, int paramInt1, long paramLong2, int paramInt2)
+  {
+    HashMap localHashMap;
+    if (Math.abs(jdField_a_of_type_JavaUtilRandom.nextInt() % 100) < 10)
+    {
+      int i = lmb.f();
+      int j = lmb.e();
+      long l1 = lmb.c();
+      long l2 = bbct.d() / 1048576L;
+      localHashMap = new HashMap();
+      localHashMap.put("cpuArch", String.valueOf(i));
+      localHashMap.put("numCores", String.valueOf(j));
+      localHashMap.put("maxFreq", String.valueOf(l1));
+      localHashMap.put("memory", String.valueOf(l2));
+      if (paramInt2 <= 2) {
+        break label172;
+      }
+    }
+    label172:
+    for (boolean bool = jdField_b_of_type_Boolean;; bool = jdField_a_of_type_Boolean)
+    {
+      localHashMap.put("v7so", String.valueOf(bool));
+      localHashMap.put("type", String.valueOf(paramInt2));
+      localHashMap.put("maxFrameCost", String.valueOf(paramLong2));
+      axrl.a(BaseApplication.getContext()).a(null, "actPttProcessFrameCost", true, paramLong1, paramInt1, localHashMap, "");
       return;
     }
-    new Handler(Looper.getMainLooper()).post(new TroopFileToTroopForwarder.2(this));
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath = paramString1;
-    aysb.c("TroopFileToTroopForwarder", aysb.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult sucess. mItem.FilePath:" + paramString1);
-    paramString3 = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(this.d);
-    if (paramString3 != null) {
-      paramString3.e = paramString1;
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    axqw.b(paramQQAppInterface, "CliOper", "", "", "0X80059B1", "0X80059B1", paramInt, 0, "", "", "", "8.2.8");
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 0) {
+      paramInt1 = 9999;
     }
-    if (paramString2 != null)
+    for (;;)
     {
-      paramString2 = paramString2.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.entrySessionID);
-      if (paramString2 != null) {
-        paramString2.strTroopFilePath = paramString1;
+      axqw.b(paramQQAppInterface, "CliOper", "", "", "0X8005C1D", "0X8005C1D", paramInt1, paramInt2, "", "", "", "8.2.8");
+      return;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, MessageRecord paramMessageRecord)
+  {
+    int i = 1;
+    if (!(paramMessageRecord instanceof MessageForPtt)) {}
+    for (;;)
+    {
+      return;
+      if (paramMessageRecord.getPttStreamFlag() != 10001)
+      {
+        if (!paramMessageRecord.isSend()) {
+          break;
+        }
+        if (((MessageForPtt)paramMessageRecord).voiceChangeFlag == 1) {}
+        while ((i != 0) && (paramInt == 1001))
+        {
+          a(paramQQAppInterface, 4);
+          return;
+          i = 0;
+        }
+      }
+    }
+    switch (paramInt)
+    {
+    case 2002: 
+    case 2004: 
+    default: 
+      return;
+    case 2001: 
+      a(paramQQAppInterface, 2);
+      return;
+    case 2003: 
+      a(paramQQAppInterface, 1);
+      return;
+    }
+    a(paramQQAppInterface, 3);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      axqw.b(paramQQAppInterface, "CliOper", "", "", "0X8005C1C", "0X8005C1C", i * 10 + paramInt1 * 100 + paramInt2, 0, "", "", "", "8.2.8");
+      return;
+    }
+  }
+  
+  public static void a(String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt, long paramLong)
+  {
+    for (;;)
+    {
+      try
+      {
+        localObject = (Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        if ((localObject == null) || (((Long)localObject).longValue() <= 0L)) {
+          continue;
+        }
+        if (!paramBoolean1) {
+          continue;
+        }
+        str = "pttSendTotalCost";
+      }
+      catch (Exception paramString)
+      {
+        Object localObject;
+        String str;
+        long l1;
+        long l2;
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.e("PttInfoCollector", 2, "report sendcost error" + paramString);
+        return;
+        if (!paramBoolean1) {
+          continue;
+        }
+        continue;
+      }
+      l1 = SystemClock.uptimeMillis();
+      l2 = ((Long)localObject).longValue();
+      localObject = new HashMap();
+      ((HashMap)localObject).put("isVoiceChange", String.valueOf(paramInt));
+      ((HashMap)localObject).put(BaseConstants.RDM_NoChangeFailCode, "");
+      axrl.a(BaseApplication.getContext()).a(null, str, paramBoolean2, l1 - l2, paramLong, (HashMap)localObject, "");
+      if ((!paramBoolean1) || (!jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))) {
+        return;
+      }
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      return;
+      str = "offlinePttHandleCost";
+      continue;
+      paramBoolean2 = true;
+    }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    HashMap localHashMap = new HashMap();
+    axrl.a(BaseApplication.getContext()).a(null, "actPttDownloadStream2Offline", paramBoolean, 0L, 0L, localHashMap, "");
+  }
+  
+  public static void a(boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3)
+  {
+    if ((paramLong1 == 1000L) || (paramLong1 == 1001L) || (paramLong1 == 10002L) || (paramLong1 == 10004L) || (paramLong1 == 1002L) || (paramLong1 == 1003L) || (paramLong1 == 1004L) || (paramLong1 == 1005L) || (paramLong1 == 1006L) || (paramLong1 == 1008L) || (paramLong1 == 1009L) || (paramLong1 == 1010L) || (paramLong1 == 1011L) || (paramLong1 == 1020L) || (paramLong1 == 1021L) || (paramLong1 == 1022L) || (paramLong1 == 1023L) || (paramLong1 == 1024L) || (paramLong1 == 1025L))
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("param_FailCode", String.valueOf(paramLong1));
+      axrl.a(BaseApplication.getContext()).a(null, "actAllC2CPttUp", paramBoolean, paramLong2, paramLong3, localHashMap, "");
+    }
+  }
+  
+  public static void a(boolean paramBoolean, String paramString)
+  {
+    int i = 1;
+    if (paramString.equals("codecsilk")) {
+      if (paramBoolean)
+      {
+        jdField_a_of_type_Boolean = true;
+        i = 0;
       }
     }
     for (;;)
     {
-      ayrl.a(this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 7, 0);
-      j();
+      paramString = new HashMap();
+      paramString.put("param_FailCode", String.valueOf(i));
+      paramString.put(BaseConstants.RDM_NoChangeFailCode, "");
+      axrl.a(BaseApplication.getContext()).a(null, "actPttSoUpdate", false, 0L, 0L, paramString, "");
       return;
-      aysb.a("TroopFileToTroopForwarder", aysb.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult sucess. update entity.strTroopFilePath fail.");
+      jdField_a_of_type_Boolean = false;
+      continue;
+      if (paramBoolean)
+      {
+        jdField_b_of_type_Boolean = true;
+        i = 2;
+      }
+      else
+      {
+        i = 3;
+        jdField_b_of_type_Boolean = false;
+      }
     }
   }
   
-  private int b()
+  public static void b()
   {
-    QQAppInterface localQQAppInterface = ayrz.a();
-    if (localQQAppInterface == null)
+    c();
+    d();
+  }
+  
+  public static void b(int paramInt)
+  {
+    axrl localaxrl = axrl.a(BaseApplication.getContext());
+    long l = SystemClock.uptimeMillis() - jdField_a_of_type_Long;
+    if (l > 0L)
     {
-      aysb.a("TroopFileToTroopForwarder", aysb.a, "[" + this.jdField_a_of_type_JavaLangString + "] startTroop2Troop app=null");
-      return -1;
+      HashMap localHashMap = new HashMap();
+      localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
+      localaxrl.a("", "PTTCostUntilPrepare", true, l, paramInt, localHashMap, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("PttInfoCollector", 2, "COST : " + l + " from : " + paramInt);
+      }
     }
-    aysb.c("TroopFileToTroopForwarder", aysb.a, "[" + this.jdField_a_of_type_JavaLangString + "] startTroop2Troop. BusId:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId + " ForwardBusId:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardBusId + " ForwardPath:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardPath + " entrySessionID:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.entrySessionID + " with:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.width + " height:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.height);
-    wln.a(localQQAppInterface, false, this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.d, 0L, this.jdField_a_of_type_Wlz);
-    ayrl.a(this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 4, 0);
-    return 0;
   }
   
-  public int a()
+  public static void b(boolean paramBoolean)
   {
-    return b();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
+    axrl.a(BaseApplication.getContext()).a(null, "actPttNoRangeFailed", paramBoolean, 0L, 0L, localHashMap, "");
+  }
+  
+  private static void c()
+  {
+    if (jdField_a_of_type_JavaLangRefReferenceQueue.poll() != null)
+    {
+      jdField_a_of_type_Int += 1;
+      jdField_c_of_type_Boolean = false;
+      if (QLog.isColorLevel()) {
+        QLog.e("PttInfoCollector", 2, "gc occurred:" + jdField_a_of_type_Int);
+      }
+    }
+    if (!jdField_c_of_type_Boolean)
+    {
+      jdField_a_of_type_JavaLangRefPhantomReference = new PhantomReference(new Object(), jdField_a_of_type_JavaLangRefReferenceQueue);
+      jdField_c_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        QLog.e("PttInfoCollector", 2, "add object enqueue to detect gc");
+      }
+    }
+  }
+  
+  public static void c(int paramInt)
+  {
+    axrl localaxrl = axrl.a(BaseApplication.getContext());
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
+    localHashMap.put("param_FailCode", String.valueOf(paramInt));
+    localaxrl.a("", "PTTStraightRecordCount", false, 0L, 0L, localHashMap, "");
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PttInfoCollector", 4, "pttStraightRecordCount " + paramInt);
+    }
+  }
+  
+  private static void d()
+  {
+    try
+    {
+      Runtime localRuntime = Runtime.getRuntime();
+      long l1 = localRuntime.freeMemory();
+      long l2 = localRuntime.totalMemory();
+      if (jdField_b_of_type_Long != 0L)
+      {
+        if (l2 - l1 <= jdField_b_of_type_Long) {
+          break label64;
+        }
+        jdField_c_of_type_Long += l2 - l1 - jdField_b_of_type_Long;
+        jdField_b_of_type_Int += 1;
+      }
+      for (;;)
+      {
+        jdField_b_of_type_Long = l2 - l1;
+        return;
+        label64:
+        d += jdField_b_of_type_Long - (l2 - l1);
+        jdField_c_of_type_Int += 1;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aytl
  * JD-Core Version:    0.7.0.1
  */

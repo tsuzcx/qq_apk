@@ -1,4 +1,7 @@
-public abstract interface bjku {}
+public abstract interface bjku
+{
+  public abstract void U();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

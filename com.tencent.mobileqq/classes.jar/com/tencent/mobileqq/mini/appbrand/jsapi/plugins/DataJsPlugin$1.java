@@ -44,6 +44,7 @@ final class DataJsPlugin$1
     add("openWeRunSetting");
     add("getNativeWeRunData");
     add("subscribeAppMsg");
+    add("getGroupInfoExtra");
     add("getCloudTicket");
   }
 }

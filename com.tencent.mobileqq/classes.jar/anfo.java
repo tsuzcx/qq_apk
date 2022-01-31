@@ -1,25 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.danmaku.core.DanmakuManager;
 
-class anfo
-  extends anfx
+public class anfo
+  implements anft
 {
-  anfo(anfj paramanfj, String paramString, Object paramObject) {}
+  public anfo(DanmakuManager paramDanmakuManager) {}
   
-  public void a(EmoticonPackage arg1, int paramInt, Bundle paramBundle)
+  public void a(anfv paramanfv)
   {
-    if (???.epId.equals(this.jdField_a_of_type_JavaLangString)) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaLangObject.notify();
-        return;
-      }
-    }
+    DanmakuManager.a(this.a).a(paramanfv);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anfo
  * JD-Core Version:    0.7.0.1
  */

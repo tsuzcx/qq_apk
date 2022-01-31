@@ -1,22 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
 class ouh
-  implements pjv
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  ouh(ouc paramouc, opw paramopw, Container paramContainer, int paramInt) {}
+  ouh(oug paramoug) {}
   
-  public void a(int paramInt)
+  public boolean onPreDraw()
   {
-    Object localObject = this.jdField_a_of_type_Opw.a().mSocialFeedInfo.a;
-    ArrayList localArrayList = ((pqz)localObject).a;
-    if ((localArrayList == null) || (localArrayList.size() == 0)) {
-      return;
-    }
-    localObject = (pra)((pqz)localObject).a.get(paramInt);
-    ouc.a(this.jdField_a_of_type_Ouc, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Opw.a(), (int)((pra)localObject).a, this.jdField_a_of_type_Opw.a().innerUniqueID, this.jdField_a_of_type_Int, paramInt, this.jdField_a_of_type_Opw.a());
+    View localView = ReadInJoyChannelPanelFragment.a(this.a.a).getChildAt(ReadInJoyChannelPanelFragment.a(this.a.a).getChildCount() - 1);
+    Object localObject = new int[2];
+    localView.getLocationOnScreen((int[])localObject);
+    localObject = this.a.a.a(oug.a(this.a), (int[])localObject);
+    ReadInJoyChannelPanelFragment.a(localObject[0], 0.0F, localObject[1], 0.0F, localView);
+    ReadInJoyChannelPanelFragment.a(this.a.a).getViewTreeObserver().removeOnPreDrawListener(oug.a(this.a));
+    return false;
   }
 }
 

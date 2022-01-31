@@ -1,17 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-
-public class nco
-  implements DialogInterface.OnCancelListener
+public abstract interface nco
 {
-  public nco(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

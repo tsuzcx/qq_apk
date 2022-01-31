@@ -1,24 +1,52 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import java.io.File;
+import java.io.OutputStream;
 
 public class adld
-  extends RecyclerView.ViewHolder
+  extends ayog
 {
-  public ImageView a;
-  public ProgressBar a;
-  public TextView a;
-  public ImageView b;
-  
-  public adld(View paramView)
+  public static final String a(int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131306096));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131306095));
-    this.b = ((ImageView)paramView.findViewById(2131306093));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131306097));
+    return ajmu.d + paramInt + "/panelGif.gif";
+  }
+  
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    if (paramURLDrawableHandler != null) {
+      paramURLDrawableHandler.onFileDownloadStarted();
+    }
+    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof Integer)))
+    {
+      paramDownloadParams = (Integer)paramDownloadParams.tag;
+      paramOutputStream = new File(a(paramDownloadParams.intValue()));
+      if (paramOutputStream.exists())
+      {
+        if (paramURLDrawableHandler != null) {
+          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
+        }
+        return paramOutputStream;
+      }
+      paramOutputStream.getParentFile().mkdirs();
+      if ((BaseApplicationImpl.sApplication != null) && (!bbev.g(BaseApplicationImpl.sApplication)) && (paramURLDrawableHandler != null)) {
+        paramURLDrawableHandler.onFileDownloadFailed(0);
+      }
+      paramDownloadParams = new bbwg("https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_action_" + paramDownloadParams + "/preview.gif", paramOutputStream);
+      paramDownloadParams.b = 1;
+      paramDownloadParams.p = false;
+      if (bbwi.a(paramDownloadParams, null) == 0)
+      {
+        if (paramURLDrawableHandler != null) {
+          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
+        }
+        return paramOutputStream;
+      }
+    }
+    if (paramURLDrawableHandler != null) {
+      paramURLDrawableHandler.onFileDownloadFailed(0);
+    }
+    return null;
   }
 }
 

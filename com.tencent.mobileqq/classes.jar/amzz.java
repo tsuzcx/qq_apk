@@ -1,21 +1,12 @@
-import java.util.List;
+import java.util.HashMap;
 
-class amzz
-  implements anaf
+public class amzz
 {
-  amzz(amzx paramamzx, anaf paramanaf) {}
-  
-  public void a(List<anht> paramList)
-  {
-    this.jdField_a_of_type_Amzx.a(paramList);
-    if (this.jdField_a_of_type_Anaf != null) {
-      this.jdField_a_of_type_Anaf.a(paramList);
-    }
-  }
+  public HashMap<String, anaa> a = new HashMap();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amzz
  * JD-Core Version:    0.7.0.1
  */

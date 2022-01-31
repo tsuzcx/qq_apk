@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.observer;
 
 import android.os.Bundle;
-import atdk;
+import atzo;
 
 public class QZoneObserver$1
   implements Runnable
 {
-  public QZoneObserver$1(atdk paramatdk, boolean paramBoolean, Bundle paramBundle) {}
+  public QZoneObserver$1(atzo paramatzo, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {

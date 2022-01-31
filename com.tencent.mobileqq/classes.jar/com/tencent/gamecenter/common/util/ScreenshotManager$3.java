@@ -6,29 +6,29 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import yfn;
+import yor;
 
 public class ScreenshotManager$3
   implements Runnable
 {
-  public ScreenshotManager$3(yfn paramyfn, WebView paramWebView) {}
+  public ScreenshotManager$3(yor paramyor, WebView paramWebView) {}
   
   public void run()
   {
-    QLog.i("ScreenshotManager", 1, "addMaskAsync mRemoveCall=" + yfn.a(this.this$0));
-    if ((yfn.a(this.this$0) != null) && (!yfn.a(this.this$0))) {}
+    QLog.i("ScreenshotManager", 1, "addMaskAsync mRemoveCall=" + yor.a(this.this$0));
+    if ((yor.a(this.this$0) != null) && (!yor.a(this.this$0))) {}
     try
     {
-      if (yfn.a(this.this$0) == null)
+      if (yor.a(this.this$0) == null)
       {
-        yfn.a(this.this$0, new ImageView(this.a.getContext()));
-        yfn.a(this.this$0).setScaleType(ImageView.ScaleType.FIT_XY);
+        yor.a(this.this$0, new ImageView(this.a.getContext()));
+        yor.a(this.this$0).setScaleType(ImageView.ScaleType.FIT_XY);
       }
-      yfn.a(this.this$0).setImageBitmap(yfn.a(this.this$0));
+      yor.a(this.this$0).setImageBitmap(yor.a(this.this$0));
       this.this$0.a();
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
-      ((ViewGroup)this.a.getParent()).addView(yfn.a(this.this$0), localLayoutParams);
-      yfn.a(this.this$0).setVisibility(0);
+      ((ViewGroup)this.a.getParent()).addView(yor.a(this.this$0), localLayoutParams);
+      yor.a(this.this$0).setVisibility(0);
       return;
     }
     catch (Throwable localThrowable)

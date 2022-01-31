@@ -1,47 +1,148 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import cooperation.qqreader.QRBridgeActivity;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class bgta
-  implements EIPClientConnectListener
+public class bgta
 {
-  bgta(bgsy parambgsy, long paramLong) {}
+  private static final bgta jdField_a_of_type_Bgta = new bgta();
+  private int jdField_a_of_type_Int = 300;
+  private long jdField_a_of_type_Long = 100L;
+  private boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int = 300;
+  private boolean jdField_b_of_type_Boolean = true;
+  private int jdField_c_of_type_Int = 100;
+  private boolean jdField_c_of_type_Boolean = true;
   
-  public void connectFailed()
+  private bgta()
   {
-    bgsy.a(this.jdField_a_of_type_Bgsy, false);
-    bgsy.b(this.jdField_a_of_type_Bgsy, false);
-    synchronized (bgsy.a(this.jdField_a_of_type_Bgsy))
+    a(bgvs.a(BaseApplicationImpl.getContext()));
+    a();
+  }
+  
+  public static bgta a()
+  {
+    return jdField_a_of_type_Bgta;
+  }
+  
+  private void a()
+  {
+    bgwi.a(bgwi.b, new bgtb(this), true);
+  }
+  
+  private void a(String paramString)
+  {
+    label155:
+    label158:
+    label161:
+    do
     {
-      bgsy.a(this.jdField_a_of_type_Bgsy).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("WadlQIPCConnector", 2, "connectFailed:" + bgsy.a(this.jdField_a_of_type_Bgsy));
+      for (;;)
+      {
+        int i;
+        try
+        {
+          JSONArray localJSONArray = new JSONObject(paramString).getJSONArray("configs");
+          paramString = null;
+          i = 0;
+          if (i >= localJSONArray.length()) {
+            break label158;
+          }
+          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+          String str = localJSONObject.getString("version");
+          if ("*".equals(str))
+          {
+            paramString = localJSONObject;
+            break label161;
+          }
+          if (!str.contains("8.2.8")) {
+            break label155;
+          }
+          paramString = localJSONObject;
+        }
+        catch (Exception paramString)
+        {
+          bgvo.a("QRLocalManager", "json parse err", paramString);
+          return;
+        }
+        this.jdField_a_of_type_Boolean = paramString.optBoolean("aioEntryEnable");
+        this.jdField_b_of_type_Boolean = paramString.optBoolean("previewEntryEnable");
+        this.jdField_c_of_type_Boolean = paramString.optBoolean("moreEntryEnable");
+        this.jdField_a_of_type_Long = paramString.optInt("aioFileSizeLimit");
+        this.jdField_a_of_type_Int = paramString.optInt("addBookshelfDuration");
+        this.jdField_b_of_type_Int = paramString.optInt("goBookshelfDuration");
+        this.jdField_c_of_type_Int = paramString.optInt("splitChapterParaMaxNum");
+        return;
+        break label161;
+        break;
+        i += 1;
       }
+    } while (paramString != null);
+  }
+  
+  private boolean a()
+  {
+    if (!bgtc.a().a())
+    {
+      bgtc.a().a();
+      return false;
+    }
+    return true;
+  }
+  
+  public void a(Context paramContext, String paramString, boolean paramBoolean)
+  {
+    Intent localIntent1 = new Intent(paramContext, QRBridgeActivity.class);
+    localIntent1.putExtra("readtype", "31");
+    localIntent1.putExtra("stay", "1");
+    Intent localIntent2 = new Intent();
+    localIntent2.putExtra("com.qqreader.pureader.FILE_PATH", paramString);
+    if (paramBoolean) {
+      localIntent2.putExtra("ChannelID", "100328");
+    }
+    for (;;)
+    {
+      localIntent1.putExtras(localIntent2);
+      paramContext.startActivity(localIntent1);
       return;
+      localIntent2.putExtra("ChannelID", "100330");
     }
   }
   
-  public void connectSuccess(EIPCConnection arg1)
+  public boolean a(@NonNull FileManagerEntity paramFileManagerEntity)
   {
-    long l = System.currentTimeMillis();
-    if (??? != null) {
-      bgsy.a(this.jdField_a_of_type_Bgsy, ???.procName);
+    if (paramFileManagerEntity.status != 1) {
+      return false;
     }
-    bgsy.a(this.jdField_a_of_type_Bgsy, true);
-    bgsy.b(this.jdField_a_of_type_Bgsy, false);
-    synchronized (bgsy.a(this.jdField_a_of_type_Bgsy))
-    {
-      bgsy.a(this.jdField_a_of_type_Bgsy).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("WadlQIPCConnector", 2, "connectSuccess:" + bgsy.a(this.jdField_a_of_type_Bgsy) + "|" + (l - this.jdField_a_of_type_Long));
-      }
-      return;
+    return a(paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize);
+  }
+  
+  public boolean a(String paramString, long paramLong)
+  {
+    if (paramLong < this.jdField_a_of_type_Long * 1024L) {}
+    while ((!this.jdField_a_of_type_Boolean) || (!a()) || (TextUtils.isEmpty(paramString))) {
+      return false;
     }
+    return paramString.toLowerCase().endsWith(".txt");
+  }
+  
+  public boolean b(FileManagerEntity paramFileManagerEntity)
+  {
+    if (paramFileManagerEntity == null) {}
+    while (!paramFileManagerEntity.fileName.toLowerCase().endsWith(".txt")) {
+      return false;
+    }
+    return this.jdField_c_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgta
  * JD-Core Version:    0.7.0.1
  */

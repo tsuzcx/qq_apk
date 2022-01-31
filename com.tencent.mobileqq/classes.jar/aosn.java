@@ -1,25 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.ReqBody;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
 
 public class aosn
+  implements DialogInterface.OnClickListener
 {
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    return "http://" + paramString1 + "/ftn_handler/" + paramString2 + "/?fname=" + bach.b(paramString3) + paramString5;
-  }
+  public aosn(QfileLocalFileAppTabView.1.1 param1) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, aosp paramaosp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramLong < 0L) {
-      return;
-    }
-    oidb_0x6e7.ReqBody localReqBody = new oidb_0x6e7.ReqBody();
-    localReqBody.uint64_group_code.set(paramLong);
-    localReqBody.str_app_src.set("android");
-    localReqBody.str_version.set("8.2.6");
-    mmj.b(paramQQAppInterface, new aoso(paramaosp), localReqBody.toByteArray(), "OidbSvc.oidb_0x6e7", 1767, 0, null);
+    paramDialogInterface.dismiss();
   }
 }
 

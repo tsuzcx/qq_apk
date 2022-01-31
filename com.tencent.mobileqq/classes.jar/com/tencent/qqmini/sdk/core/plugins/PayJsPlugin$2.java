@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bdcz;
-import bdfx;
-import bdfz;
-import bdgi;
-import bdnw;
-import bdyv;
+import begz;
+import bejy;
+import beka;
+import beki;
+import besl;
+import bfgc;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -18,7 +18,7 @@ import org.json.JSONObject;
 class PayJsPlugin$2
   implements AsyncResult
 {
-  PayJsPlugin$2(PayJsPlugin paramPayJsPlugin, JSONObject paramJSONObject, bdfz parambdfz) {}
+  PayJsPlugin$2(PayJsPlugin paramPayJsPlugin, JSONObject paramJSONObject, beka parambeka) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -55,7 +55,7 @@ class PayJsPlugin$2
             if (localMiniAppInfo != null)
             {
               paramJSONObject = this.this$0.mApkgInfo.d + "_" + localMiniAppInfo.verType;
-              str1 = bdyv.b(paramJSONObject);
+              str1 = bfgc.b(paramJSONObject);
               this.this$0.mContext.getSharedPreferences("keyMiniGamePayEnv", 4).edit().putString("keyMiniGamePayEnvAppidVertype", str1).commit();
               this.val$jsonObject.put("miniAppVertypeStr", paramJSONObject);
             }
@@ -64,7 +64,7 @@ class PayJsPlugin$2
           {
             for (;;)
             {
-              bdnw.b("PayJsPlugin", "setEnv error", paramJSONObject);
+              besl.b("PayJsPlugin", "setEnv error", paramJSONObject);
             }
           }
           this.this$0.handleRechargeGame(this.val$req, localActivity, this.val$jsonObject.toString(), String.valueOf(this.val$req.b), false);
@@ -79,12 +79,12 @@ class PayJsPlugin$2
         PayJsPlugin.access$200(this.this$0, this.val$req, null, "activity is null");
         return;
       }
-      bdgi.a(new PayJsPlugin.2.1(this, str1));
-      bdnw.d("PayJsPlugin", "handleNativeRequest result = " + i);
+      beki.a(new PayJsPlugin.2.1(this, str1));
+      besl.d("PayJsPlugin", "handleNativeRequest result = " + i);
       PayJsPlugin.access$200(this.this$0, this.val$req, null, str1);
       return;
     }
-    bdnw.d("PayJsPlugin", "checkOfferId isSuc = " + paramBoolean);
+    besl.d("PayJsPlugin", "checkOfferId isSuc = " + paramBoolean);
     PayJsPlugin.access$200(this.this$0, this.val$req, null, "checkOfferId fail");
   }
 }

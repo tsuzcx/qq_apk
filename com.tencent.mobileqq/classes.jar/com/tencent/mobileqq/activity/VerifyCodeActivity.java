@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import aceq;
-import acer;
-import aces;
-import acet;
-import aceu;
+import acpf;
+import acpg;
+import acph;
+import acpi;
+import acpj;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import azvq;
+import bawu;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.widget.ClearableEditText;
@@ -25,7 +25,7 @@ public class VerifyCodeActivity
   extends IphoneTitleBarActivity
 {
   final int jdField_a_of_type_Int = 4;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aceu(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new acpj(this);
   private View jdField_a_of_type_AndroidViewView;
   public ImageView a;
   public TextView a;
@@ -40,7 +40,7 @@ public class VerifyCodeActivity
   public VerifyCodeActivity()
   {
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqObserverServerNotifyObserver = new aceq(this);
+    this.jdField_a_of_type_MqqObserverServerNotifyObserver = new acpf(this);
   }
   
   private void a(Intent paramIntent)
@@ -94,15 +94,15 @@ public class VerifyCodeActivity
             localObject2 = "";
           }
           if (arrayOfByte != null) {
-            this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(azvq.a(arrayOfByte, 0, arrayOfByte.length));
+            this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bawu.a(arrayOfByte, 0, arrayOfByte.length));
           }
           this.jdField_a_of_type_MqqObserverServerNotifyObserver.setSeq(i);
           this.jdField_a_of_type_MqqObserverServerNotifyObserver.setKey((String)localObject2);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131302593));
+          this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131368214));
           this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setClearButtonStyle(1);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(new acet(this));
-          this.jdField_a_of_type_AndroidViewView = findViewById(2131313514);
-          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131309302));
+          this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(new acpi(this));
+          this.jdField_a_of_type_AndroidViewView = findViewById(2131379349);
+          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375047));
           this.jdField_a_of_type_MqqManagerVerifyCodeManager = ((VerifyCodeManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(6));
           this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
           this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -128,9 +128,9 @@ public class VerifyCodeActivity
   
   private void c()
   {
-    setTitle(2131654815);
-    setLeftButton(2131625035, new acer(this));
-    setRightHighlightButton(2131626982, new aces(this));
+    setTitle(2131720713);
+    setLeftButton(2131690596, new acpg(this));
+    setRightHighlightButton(2131692600, new acph(this));
   }
   
   public void a()
@@ -185,10 +185,10 @@ public class VerifyCodeActivity
       super.finish();
       return false;
     }
-    super.setContentView(2131496993);
-    setContentBackgroundResource(2130838503);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131313003));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131305263));
+    super.setContentView(2131562590);
+    setContentBackgroundResource(2130838514);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378828));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370937));
     a(paramBundle);
     paramBundle = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHandler(LoginActivity.class);
     if (paramBundle != null) {

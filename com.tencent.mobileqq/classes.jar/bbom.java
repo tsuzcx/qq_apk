@@ -1,10 +1,10 @@
-public abstract interface bbom
+public class bbom
 {
-  public abstract void onTabSelected(int paramInt1, int paramInt2);
+  public static final String a = bbuv.a(ajsf.aW + "rbt");
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbom
  * JD-Core Version:    0.7.0.1
  */

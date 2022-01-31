@@ -1,30 +1,14 @@
-import UserGrowth.stH5OpInfo;
-import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONObject;
 
-class ryf
-  implements sar
+public class ryf
+  implements ryg
 {
-  ryf(rye paramrye, Context paramContext, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed) {}
+  public ryf(BridgeModule paramBridgeModule) {}
   
-  public void a(String paramString, int paramInt)
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    rye.a(this.jdField_a_of_type_Rye, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, paramString, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 501);
-    rzw.a(114, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.type, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
-    WSPublicAccReport.getInstance().reportOperationCard("gzh_click", 1000003, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    rye.a(this.jdField_a_of_type_Rye, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-  }
-  
-  public void c(String paramString, int paramInt)
-  {
-    rye.a(this.jdField_a_of_type_Rye, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-    rzw.a(115, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.type, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
-    WSPublicAccReport.getInstance().reportOperationCard("gzh_click", 1000002, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
+    this.a.invokeCallJS(paramString, paramJSONObject);
   }
 }
 

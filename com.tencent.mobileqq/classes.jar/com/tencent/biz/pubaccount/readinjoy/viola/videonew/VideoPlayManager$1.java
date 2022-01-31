@@ -2,28 +2,28 @@ package com.tencent.biz.pubaccount.readinjoy.viola.videonew;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
-import qhw;
-import rml;
-import rmm;
+import qub;
+import rzc;
+import rzd;
 
 public class VideoPlayManager$1
   implements Runnable
 {
-  VideoPlayManager$1(VideoPlayManager paramVideoPlayManager, rmm paramrmm) {}
+  VideoPlayManager$1(VideoPlayManager paramVideoPlayManager, rzd paramrzd) {}
   
   public void run()
   {
-    rmm.a(this.a, VideoPlayManager.a(this.this$0, this.a));
-    if ((rmm.a(this.a) != null) && (VideoPlayManager.a(this.this$0) != null))
+    rzd.a(this.a, VideoPlayManager.a(this.this$0, this.a));
+    if ((rzd.a(this.a) != null) && (VideoPlayManager.a(this.this$0) != null))
     {
-      rmm.a(this.a).a(this.a.a);
-      VideoPlayManager.a(this.this$0).add(rmm.a(this.a));
+      rzd.a(this.a).a(this.a.a);
+      VideoPlayManager.a(this.this$0).add(rzd.a(this.a));
       VideoPlayManager.a(this.this$0).post(new VideoPlayManager.1.1(this));
     }
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("Viola.VideoPlayManager", 2, "createVideoPlayerAndPlay aysnc run error : playerParam.videoPlayer = " + rmm.a(this.a) + ", mUIHandler = " + VideoPlayManager.a(this.this$0));
+    QLog.d("Viola.VideoPlayManager", 2, "createVideoPlayerAndPlay aysnc run error : playerParam.videoPlayer = " + rzd.a(this.a) + ", mUIHandler = " + VideoPlayManager.a(this.this$0));
   }
 }
 

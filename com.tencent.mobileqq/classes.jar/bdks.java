@@ -1,31 +1,39 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager.17;
 
-class bdks
-  implements ServiceConnection
+public class bdks
+  implements DialogInterface.OnClickListener
 {
-  bdks(bdkr parambdkr) {}
+  public bdks(DownloadManager.17 param17) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bdkr.a(this.a, bdkv.a(paramIBinder));
-    bdnw.c("minisdk-start_AppBrandProxy", "onServiceConnected:" + bdkr.a(this.a));
-    bdkr.a(this.a, false);
-    bdkr.a(this.a);
-    bdkr.b(this.a);
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    bdkr.a(this.a, null);
-    bdnw.c("minisdk-start_AppBrandProxy", "onServiceDisconnected.");
-    bdkr.a(this.a, false);
+    try
+    {
+      paramDialogInterface.dismiss();
+      label6:
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdkm.b);
+      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdkm.j);
+      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdkm.f);
+      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdkm.i);
+      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdkm.l);
+      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bdkm.y, true);
+      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
+      this.a.this$0.a(10, paramDialogInterface);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdks
  * JD-Core Version:    0.7.0.1
  */

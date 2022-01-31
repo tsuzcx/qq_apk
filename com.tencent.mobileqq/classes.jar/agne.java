@@ -1,27 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
 public class agne
-  implements View.OnClickListener
+  implements aptu
 {
-  public agne(LingHbFragment paramLingHbFragment) {}
+  public agne(PhotoListActivity paramPhotoListActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    QLog.i("LingHbFragment", 2, "change others...");
-    if (this.a.channel == 65536) {}
-    for (paramView = "yyhongbao.word.change";; paramView = "klhongbao.word.change")
-    {
-      this.a.addUploadData(paramView, "");
-      return;
-    }
+    this.a.j();
+  }
+  
+  public void b()
+  {
+    this.a.c.setClickable(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agne
  * JD-Core Version:    0.7.0.1
  */

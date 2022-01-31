@@ -1,12 +1,19 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 
 public class abpx
+  implements View.OnClickListener
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  public abpx(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
+    this.a.startActivity(paramView);
+  }
 }
 
 

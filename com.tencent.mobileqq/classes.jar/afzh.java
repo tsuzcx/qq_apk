@@ -1,24 +1,34 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.media.ThumbnailUtils;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.net.URL;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
 public class afzh
-  implements axwp
+  implements View.OnClickListener
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  LocalMediaInfo jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+  public afzh(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public afzh(Context paramContext, LocalMediaInfo paramLocalMediaInfo)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
-  }
-  
-  public Bitmap a(URL paramURL)
-  {
-    return ThumbnailUtils.extractThumbnail(ThumbnailUtils.createVideoThumbnail(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path, 3), this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbWidth, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbHeight);
+    if ((this.a.d == 15) && (ChatHistoryTroopMemberFragment.a(this.a).size() > 0))
+    {
+      paramView = new Intent();
+      paramView.putExtra("param_deleted_uins", ChatHistoryTroopMemberFragment.a(this.a));
+      this.a.getActivity().setResult(-1, paramView);
+      if ((this.a.f == null) || (!this.a.f.equals(this.a.getActivity().app.getCurrentAccountUin()))) {
+        break label171;
+      }
+    }
+    label171:
+    for (int i = 0;; i = 1)
+    {
+      axqw.b(this.a.getActivity().app, "dc00899", "Grp_mber", "", "mber_list", "del_inacmem", 0, 0, this.a.c, "" + i, "1", ChatHistoryTroopMemberFragment.a(this.a).toString());
+      this.a.getActivity().finish();
+      return;
+    }
   }
 }
 

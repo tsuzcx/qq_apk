@@ -5,8 +5,8 @@ import android.os.Looper;
 import android.os.Message;
 import com.tencent.viola.ui.adapter.VRecyclerViewAdapter;
 import com.tencent.viola.ui.dom.DomObject;
+import com.tencent.viola.ui.view.list.VRecyclerView;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 class VRecyclerList$RVUpdateOps
@@ -23,22 +23,33 @@ class VRecyclerList$RVUpdateOps
     super(Looper.getMainLooper());
   }
   
+  private void doDelayNotifyItemChange(VRecyclerList.UpdateOp paramUpdateOp)
+  {
+    if (VRecyclerList.UpdateOp.access$400(paramUpdateOp) == 0) {
+      if ((this.this$0.getHostView() != null) && (((VRecyclerView)this.this$0.getHostView()).isComputingLayout())) {
+        ((VRecyclerView)this.this$0.getHostView()).post(new VRecyclerList.RVUpdateOps.2(this, paramUpdateOp));
+      }
+    }
+    while (VRecyclerList.UpdateOp.access$400(paramUpdateOp) != 1)
+    {
+      return;
+      VRecyclerList.access$100(this.this$0).notifyItemInsert(VRecyclerList.UpdateOp.access$500(paramUpdateOp), VRecyclerList.UpdateOp.access$600(paramUpdateOp));
+      return;
+    }
+    if ((this.this$0.getHostView() != null) && (((VRecyclerView)this.this$0.getHostView()).isComputingLayout()))
+    {
+      ((VRecyclerView)this.this$0.getHostView()).post(new VRecyclerList.RVUpdateOps.3(this, paramUpdateOp));
+      return;
+    }
+    VRecyclerList.access$100(this.this$0).notifyItemRemove(VRecyclerList.UpdateOp.access$500(paramUpdateOp));
+  }
+  
   private void handleBatch()
   {
     if (VRecyclerList.access$100(this.this$0) == null) {
       return;
     }
-    Iterator localIterator = this.mBatchList.iterator();
-    while (localIterator.hasNext())
-    {
-      VRecyclerList.UpdateOp localUpdateOp = (VRecyclerList.UpdateOp)localIterator.next();
-      if (VRecyclerList.UpdateOp.access$200(localUpdateOp) == 0) {
-        VRecyclerList.access$100(this.this$0).notifyItemInsert(VRecyclerList.UpdateOp.access$300(localUpdateOp), VRecyclerList.UpdateOp.access$400(localUpdateOp));
-      } else if (VRecyclerList.UpdateOp.access$200(localUpdateOp) == 1) {
-        VRecyclerList.access$100(this.this$0).notifyItemRemove(VRecyclerList.UpdateOp.access$300(localUpdateOp));
-      }
-    }
-    this.mBatchList.clear();
+    post(new VRecyclerList.RVUpdateOps.1(this));
   }
   
   private void sendDelayBatchMsg()

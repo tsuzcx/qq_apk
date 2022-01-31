@@ -1,48 +1,25 @@
-import org.xmlpull.v1.XmlSerializer;
+import com.tencent.mobileqq.app.MessageHandler;
 
 public class awzz
-  extends awwo
 {
-  public awzz()
-  {
-    this.a = "vote";
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
   
-  public String a()
+  public awzz(awzw paramawzw, String paramString, int paramInt, long paramLong1, long paramLong2)
   {
-    return "VoteCover";
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "vote");
-    if (this.S == null) {}
-    for (String str = "";; str = this.S)
-    {
-      paramXmlSerializer.attribute(null, "cover", str);
-      paramXmlSerializer.endTag(null, "vote");
-      return;
-    }
-  }
-  
-  public boolean a(awwc paramawwc)
-  {
-    if (paramawwc == null) {
-      return true;
-    }
-    paramawwc = paramawwc.a("cover");
-    if (paramawwc != null) {}
-    for (;;)
-    {
-      this.S = paramawwc;
-      return true;
-      paramawwc = "";
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_b_of_type_Int = MessageHandler.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awzz
  * JD-Core Version:    0.7.0.1
  */

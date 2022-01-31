@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bbbc;
+import bcec;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.manager.TicketManager;
@@ -21,7 +21,7 @@ final class SwiftBrowserCookieMonster$9
             localObject1 = (TicketManager)((AppRuntime)localObject1).getManager(2);
             if (localObject1 != null)
             {
-              SwiftBrowserCookieMonster.a = new bbbc();
+              SwiftBrowserCookieMonster.a = new bcec();
               ((TicketManager)localObject1).registTicketManagerListener(SwiftBrowserCookieMonster.a);
             }
           }

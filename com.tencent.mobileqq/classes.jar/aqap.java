@@ -1,72 +1,99 @@
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.HashMap;
+import java.util.Map;
+
 public class aqap
 {
-  aqaq a;
-  
-  public aqap(int paramInt)
+  public static Object a(Map<String, Object> paramMap, Class<?> paramClass)
   {
-    this.a = new aqaq(paramInt);
-  }
-  
-  public static String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 1: 
-      return "graytip";
-    case 2: 
-      return "nor_text";
-    case 3: 
-      return "url";
-    case 4: 
-      return "qq";
-    case 5: 
-      return "img";
-    case 6: 
-      return "dialog";
-    case 7: 
-      return "title";
-    case 8: 
-      return "alter";
-    case 9: 
-      return "btn";
+    Object localObject1 = null;
+    Object localObject2 = null;
+    int i = 0;
+    if (paramMap == null) {
+      return localObject2;
     }
-    return "item";
-  }
-  
-  public static String b(int paramInt)
-  {
-    switch (paramInt)
+    localObject2 = localObject1;
+    for (;;)
     {
-    default: 
-      return "";
-    case 1: 
-      return "align";
-    case 2: 
-      return "text";
-    case 3: 
-      return "size";
-    case 4: 
-      return "jump";
-    case 5: 
-      return "color";
-    case 6: 
-      return "uin";
-    case 7: 
-      return "name";
+      Field localField;
+      try
+      {
+        localObject1 = paramClass.newInstance();
+        localObject2 = localObject1;
+        Field[] arrayOfField = localObject1.getClass().getDeclaredFields();
+        localObject2 = localObject1;
+        int j = arrayOfField.length;
+        localObject2 = localObject1;
+        if (i >= j) {
+          break;
+        }
+        localField = arrayOfField[i];
+        localObject2 = localObject1;
+        int k = localField.getModifiers();
+        localObject2 = localObject1;
+        if (Modifier.isStatic(k)) {
+          break label195;
+        }
+        localObject2 = localObject1;
+        if (Modifier.isFinal(k)) {
+          break label195;
+        }
+        localObject2 = localObject1;
+        localField.setAccessible(true);
+        localObject2 = localObject1;
+        if (paramMap.containsKey(localField.getName()))
+        {
+          localObject2 = localObject1;
+          localField.set(localObject1, paramMap.get(localField.getName()));
+        }
+      }
+      catch (Exception paramMap)
+      {
+        paramMap.printStackTrace();
+        return localObject2;
+      }
+      localObject2 = localObject1;
+      QLog.e("QFlutter.ModelUtils", 1, String.format("mapToObject, %s.%s is null", new Object[] { paramClass.getSimpleName(), localField.getName() }));
+      label195:
+      i += 1;
     }
-    return "src";
   }
   
-  public aqaq a()
+  public static Map a(Object paramObject)
   {
-    return this.a;
-  }
-  
-  public String toString()
-  {
-    return aqaq.a(this.a, 0);
+    Object localObject;
+    if (paramObject == null) {
+      localObject = null;
+    }
+    for (;;)
+    {
+      return localObject;
+      localHashMap = new HashMap();
+      try
+      {
+        Field[] arrayOfField = paramObject.getClass().getDeclaredFields();
+        int j = arrayOfField.length;
+        int i = 0;
+        for (;;)
+        {
+          localObject = localHashMap;
+          if (i >= j) {
+            break;
+          }
+          localObject = arrayOfField[i];
+          ((Field)localObject).setAccessible(true);
+          localHashMap.put(((Field)localObject).getName(), ((Field)localObject).get(paramObject));
+          i += 1;
+        }
+        return localHashMap;
+      }
+      catch (Exception paramObject)
+      {
+        paramObject.printStackTrace();
+      }
+    }
   }
 }
 

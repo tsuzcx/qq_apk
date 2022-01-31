@@ -97,6 +97,7 @@ public class DeviceUtils
   private static String sCpuName;
   private static long sMaxCpuFreq;
   private static int sTotalMemory;
+  private static DeviceInstance.SOC_CLASS socClassCache;
   
   static
   {
@@ -174,24 +175,24 @@ public class DeviceUtils
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
-    //   3: new 211	java/net/URL
+    //   3: new 213	java/net/URL
     //   6: dup
     //   7: aload_0
-    //   8: invokespecial 212	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   11: invokevirtual 216	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   14: checkcast 218	java/net/HttpURLConnection
+    //   8: invokespecial 214	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   11: invokevirtual 218	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   14: checkcast 220	java/net/HttpURLConnection
     //   17: astore_0
     //   18: iconst_1
-    //   19: invokestatic 222	java/net/HttpURLConnection:setFollowRedirects	(Z)V
+    //   19: invokestatic 224	java/net/HttpURLConnection:setFollowRedirects	(Z)V
     //   22: aload_0
-    //   23: ldc 224
-    //   25: invokevirtual 227	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   23: ldc 226
+    //   25: invokevirtual 229	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   28: aload_0
-    //   29: ldc 229
-    //   31: ldc 231
-    //   33: invokevirtual 235	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   29: ldc 231
+    //   31: ldc 233
+    //   33: invokevirtual 237	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   36: aload_0
-    //   37: invokevirtual 239	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   37: invokevirtual 241	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   40: astore_3
     //   41: sipush 1024
     //   44: newarray byte
@@ -209,7 +210,7 @@ public class DeviceUtils
     //   63: arraylength
     //   64: iload_1
     //   65: isub
-    //   66: invokevirtual 245	java/io/InputStream:read	([BII)I
+    //   66: invokevirtual 247	java/io/InputStream:read	([BII)I
     //   69: istore_2
     //   70: iload_2
     //   71: iflt +10 -> 81
@@ -218,25 +219,25 @@ public class DeviceUtils
     //   76: iadd
     //   77: istore_1
     //   78: goto -28 -> 50
-    //   81: new 146	java/lang/String
+    //   81: new 148	java/lang/String
     //   84: dup
     //   85: aload 4
-    //   87: ldc 247
-    //   89: invokespecial 250	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   87: ldc 249
+    //   89: invokespecial 252	java/lang/String:<init>	([BLjava/lang/String;)V
     //   92: astore 4
     //   94: aload_3
     //   95: ifnull +7 -> 102
     //   98: aload_3
-    //   99: invokevirtual 253	java/io/InputStream:close	()V
+    //   99: invokevirtual 255	java/io/InputStream:close	()V
     //   102: aload_0
     //   103: ifnull +7 -> 110
     //   106: aload_0
-    //   107: invokevirtual 256	java/net/HttpURLConnection:disconnect	()V
+    //   107: invokevirtual 258	java/net/HttpURLConnection:disconnect	()V
     //   110: aload 4
     //   112: areturn
     //   113: astore_0
     //   114: aload_0
-    //   115: invokevirtual 193	java/lang/Exception:printStackTrace	()V
+    //   115: invokevirtual 195	java/lang/Exception:printStackTrace	()V
     //   118: goto -8 -> 110
     //   121: astore 4
     //   123: aconst_null
@@ -248,20 +249,20 @@ public class DeviceUtils
     //   130: aload_3
     //   131: astore 5
     //   133: aload 4
-    //   135: invokevirtual 257	java/net/MalformedURLException:printStackTrace	()V
+    //   135: invokevirtual 259	java/net/MalformedURLException:printStackTrace	()V
     //   138: aload_3
     //   139: ifnull +7 -> 146
     //   142: aload_3
-    //   143: invokevirtual 253	java/io/InputStream:close	()V
+    //   143: invokevirtual 255	java/io/InputStream:close	()V
     //   146: aload_0
     //   147: ifnull +7 -> 154
     //   150: aload_0
-    //   151: invokevirtual 256	java/net/HttpURLConnection:disconnect	()V
+    //   151: invokevirtual 258	java/net/HttpURLConnection:disconnect	()V
     //   154: aconst_null
     //   155: areturn
     //   156: astore_0
     //   157: aload_0
-    //   158: invokevirtual 193	java/lang/Exception:printStackTrace	()V
+    //   158: invokevirtual 195	java/lang/Exception:printStackTrace	()V
     //   161: goto -7 -> 154
     //   164: astore 4
     //   166: aconst_null
@@ -273,19 +274,19 @@ public class DeviceUtils
     //   173: aload_3
     //   174: astore 5
     //   176: aload 4
-    //   178: invokevirtual 258	java/io/IOException:printStackTrace	()V
+    //   178: invokevirtual 260	java/io/IOException:printStackTrace	()V
     //   181: aload_3
     //   182: ifnull +7 -> 189
     //   185: aload_3
-    //   186: invokevirtual 253	java/io/InputStream:close	()V
+    //   186: invokevirtual 255	java/io/InputStream:close	()V
     //   189: aload_0
     //   190: ifnull -36 -> 154
     //   193: aload_0
-    //   194: invokevirtual 256	java/net/HttpURLConnection:disconnect	()V
+    //   194: invokevirtual 258	java/net/HttpURLConnection:disconnect	()V
     //   197: goto -43 -> 154
     //   200: astore_0
     //   201: aload_0
-    //   202: invokevirtual 193	java/lang/Exception:printStackTrace	()V
+    //   202: invokevirtual 195	java/lang/Exception:printStackTrace	()V
     //   205: goto -51 -> 154
     //   208: astore_0
     //   209: aconst_null
@@ -293,16 +294,16 @@ public class DeviceUtils
     //   211: aload_3
     //   212: ifnull +7 -> 219
     //   215: aload_3
-    //   216: invokevirtual 253	java/io/InputStream:close	()V
+    //   216: invokevirtual 255	java/io/InputStream:close	()V
     //   219: aload 4
     //   221: ifnull +8 -> 229
     //   224: aload 4
-    //   226: invokevirtual 256	java/net/HttpURLConnection:disconnect	()V
+    //   226: invokevirtual 258	java/net/HttpURLConnection:disconnect	()V
     //   229: aload_0
     //   230: athrow
     //   231: astore_3
     //   232: aload_3
-    //   233: invokevirtual 193	java/lang/Exception:printStackTrace	()V
+    //   233: invokevirtual 195	java/lang/Exception:printStackTrace	()V
     //   236: goto -7 -> 229
     //   239: astore 5
     //   241: aconst_null
@@ -420,27 +421,27 @@ public class DeviceUtils
   public static String getCpuName()
   {
     // Byte code:
-    //   0: new 329	java/io/BufferedReader
+    //   0: new 331	java/io/BufferedReader
     //   3: dup
-    //   4: new 331	java/io/FileReader
+    //   4: new 333	java/io/FileReader
     //   7: dup
-    //   8: ldc_w 333
-    //   11: invokespecial 334	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   14: invokespecial 337	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   8: ldc_w 335
+    //   11: invokespecial 336	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   14: invokespecial 339	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   17: astore_1
     //   18: aload_1
     //   19: astore_0
     //   20: aload_1
-    //   21: invokevirtual 340	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   21: invokevirtual 342	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   24: astore_2
     //   25: aload_2
     //   26: ifnull +106 -> 132
     //   29: aload_1
     //   30: astore_0
     //   31: aload_2
-    //   32: ldc_w 342
+    //   32: ldc_w 344
     //   35: iconst_2
-    //   36: invokevirtual 346	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
+    //   36: invokevirtual 348	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
     //   39: astore_3
     //   40: aload_1
     //   41: astore_0
@@ -453,56 +454,56 @@ public class DeviceUtils
     //   50: aload_3
     //   51: iconst_0
     //   52: aaload
-    //   53: invokevirtual 349	java/lang/String:trim	()Ljava/lang/String;
-    //   56: invokevirtual 352	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   59: ldc_w 354
-    //   62: invokevirtual 357	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   53: invokevirtual 351	java/lang/String:trim	()Ljava/lang/String;
+    //   56: invokevirtual 354	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   59: ldc_w 356
+    //   62: invokevirtual 359	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   65: ifeq +57 -> 122
     //   68: aload_1
     //   69: astore_0
-    //   70: getstatic 85	com/tencent/ttpic/baseutils/device/DeviceUtils:TAG	Ljava/lang/String;
-    //   73: new 160	java/lang/StringBuilder
+    //   70: getstatic 87	com/tencent/ttpic/baseutils/device/DeviceUtils:TAG	Ljava/lang/String;
+    //   73: new 162	java/lang/StringBuilder
     //   76: dup
-    //   77: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   80: ldc_w 359
-    //   83: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: invokespecial 163	java/lang/StringBuilder:<init>	()V
+    //   80: ldc_w 361
+    //   83: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   86: aload_2
-    //   87: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   90: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   93: invokestatic 364	com/tencent/ttpic/baseutils/log/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   87: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   93: invokestatic 366	com/tencent/ttpic/baseutils/log/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   96: aload_1
     //   97: astore_0
     //   98: aload_3
     //   99: iconst_1
     //   100: aaload
-    //   101: invokevirtual 349	java/lang/String:trim	()Ljava/lang/String;
+    //   101: invokevirtual 351	java/lang/String:trim	()Ljava/lang/String;
     //   104: astore_2
     //   105: aload_1
     //   106: ifnull +7 -> 113
     //   109: aload_1
-    //   110: invokevirtual 365	java/io/BufferedReader:close	()V
+    //   110: invokevirtual 367	java/io/BufferedReader:close	()V
     //   113: aload_2
     //   114: areturn
     //   115: astore_0
     //   116: aload_0
-    //   117: invokevirtual 258	java/io/IOException:printStackTrace	()V
+    //   117: invokevirtual 260	java/io/IOException:printStackTrace	()V
     //   120: aload_2
     //   121: areturn
     //   122: aload_1
     //   123: astore_0
     //   124: aload_1
-    //   125: invokevirtual 340	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   125: invokevirtual 342	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   128: astore_2
     //   129: goto -104 -> 25
     //   132: aload_1
     //   133: ifnull +7 -> 140
     //   136: aload_1
-    //   137: invokevirtual 365	java/io/BufferedReader:close	()V
-    //   140: ldc_w 319
+    //   137: invokevirtual 367	java/io/BufferedReader:close	()V
+    //   140: ldc_w 321
     //   143: areturn
     //   144: astore_0
     //   145: aload_0
-    //   146: invokevirtual 258	java/io/IOException:printStackTrace	()V
+    //   146: invokevirtual 260	java/io/IOException:printStackTrace	()V
     //   149: goto -9 -> 140
     //   152: astore_2
     //   153: aconst_null
@@ -510,15 +511,15 @@ public class DeviceUtils
     //   155: aload_1
     //   156: astore_0
     //   157: aload_2
-    //   158: invokevirtual 366	java/io/FileNotFoundException:printStackTrace	()V
+    //   158: invokevirtual 368	java/io/FileNotFoundException:printStackTrace	()V
     //   161: aload_1
     //   162: ifnull -22 -> 140
     //   165: aload_1
-    //   166: invokevirtual 365	java/io/BufferedReader:close	()V
+    //   166: invokevirtual 367	java/io/BufferedReader:close	()V
     //   169: goto -29 -> 140
     //   172: astore_0
     //   173: aload_0
-    //   174: invokevirtual 258	java/io/IOException:printStackTrace	()V
+    //   174: invokevirtual 260	java/io/IOException:printStackTrace	()V
     //   177: goto -37 -> 140
     //   180: astore_2
     //   181: aconst_null
@@ -526,15 +527,15 @@ public class DeviceUtils
     //   183: aload_1
     //   184: astore_0
     //   185: aload_2
-    //   186: invokevirtual 258	java/io/IOException:printStackTrace	()V
+    //   186: invokevirtual 260	java/io/IOException:printStackTrace	()V
     //   189: aload_1
     //   190: ifnull -50 -> 140
     //   193: aload_1
-    //   194: invokevirtual 365	java/io/BufferedReader:close	()V
+    //   194: invokevirtual 367	java/io/BufferedReader:close	()V
     //   197: goto -57 -> 140
     //   200: astore_0
     //   201: aload_0
-    //   202: invokevirtual 258	java/io/IOException:printStackTrace	()V
+    //   202: invokevirtual 260	java/io/IOException:printStackTrace	()V
     //   205: goto -65 -> 140
     //   208: astore_1
     //   209: aconst_null
@@ -542,12 +543,12 @@ public class DeviceUtils
     //   211: aload_0
     //   212: ifnull +7 -> 219
     //   215: aload_0
-    //   216: invokevirtual 365	java/io/BufferedReader:close	()V
+    //   216: invokevirtual 367	java/io/BufferedReader:close	()V
     //   219: aload_1
     //   220: athrow
     //   221: astore_0
     //   222: aload_0
-    //   223: invokevirtual 258	java/io/IOException:printStackTrace	()V
+    //   223: invokevirtual 260	java/io/IOException:printStackTrace	()V
     //   226: goto -7 -> 219
     //   229: astore_1
     //   230: goto -19 -> 211
@@ -645,44 +646,50 @@ public class DeviceUtils
   
   public static DeviceInstance.SOC_CLASS getDeviceSocClass(Context paramContext)
   {
+    if (socClassCache != null) {
+      return socClassCache;
+    }
     if (isVeryHighEndDevice(paramContext)) {
-      return DeviceInstance.SOC_CLASS.V_HIGH;
+      paramContext = DeviceInstance.SOC_CLASS.V_HIGH;
     }
-    if (isHighEndDevice(paramContext)) {
-      return DeviceInstance.SOC_CLASS.HIGH;
+    for (;;)
+    {
+      socClassCache = paramContext;
+      return paramContext;
+      if (isHighEndDevice(paramContext)) {
+        paramContext = DeviceInstance.SOC_CLASS.HIGH;
+      } else if (isMiddleEndDevice(paramContext)) {
+        paramContext = DeviceInstance.SOC_CLASS.NORMAL;
+      } else if (isLowEndDevice(paramContext)) {
+        paramContext = DeviceInstance.SOC_CLASS.LOW;
+      } else if (isVeryLowEndDevice(paramContext)) {
+        paramContext = DeviceInstance.SOC_CLASS.V_LOW;
+      } else {
+        paramContext = DeviceInstance.SOC_CLASS.NULL;
+      }
     }
-    if (isMiddleEndDevice(paramContext)) {
-      return DeviceInstance.SOC_CLASS.NORMAL;
-    }
-    if (isLowEndDevice(paramContext)) {
-      return DeviceInstance.SOC_CLASS.LOW;
-    }
-    if (isVeryLowEndDevice(paramContext)) {
-      return DeviceInstance.SOC_CLASS.V_LOW;
-    }
-    return DeviceInstance.SOC_CLASS.NULL;
   }
   
   public static File getExternalFilesDir(Context paramContext)
   {
-    File localFile2 = paramContext.getExternalFilesDir(null);
-    File localFile1 = localFile2;
-    if (localFile2 == null)
+    File localFile = paramContext.getExternalFilesDir(null);
+    Object localObject = localFile;
+    if (localFile == null)
     {
-      paramContext = "/Android/data/" + paramContext.getPackageName() + "/files/";
-      localFile1 = new File(Environment.getExternalStorageDirectory().getPath() + paramContext);
+      localObject = "/Android/data/" + paramContext.getPackageName() + "/files/";
+      localObject = new File(paramContext.getExternalFilesDir(null) + (String)localObject);
     }
-    return localFile1;
+    return localObject;
   }
   
   public static File getExternalFilesDir(Context paramContext, String paramString)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (isExternalStorageAvailable())
+    if (isExternalStorageAvailable(paramContext))
     {
       localObject1 = localObject2;
-      if (isExternalStorageSpaceEnough(52428800L)) {
+      if (isExternalStorageSpaceEnough(paramContext, 52428800L)) {
         localObject1 = getExternalFilesDir(paramContext).getPath();
       }
     }
@@ -841,7 +848,7 @@ public class DeviceUtils
     //   3: astore_3
     //   4: aconst_null
     //   5: astore_1
-    //   6: invokestatic 590	java/net/NetworkInterface:getNetworkInterfaces	()Ljava/util/Enumeration;
+    //   6: invokestatic 591	java/net/NetworkInterface:getNetworkInterfaces	()Ljava/util/Enumeration;
     //   9: astore 6
     //   11: iconst_0
     //   12: istore_0
@@ -854,7 +861,7 @@ public class DeviceUtils
     //   23: aload_2
     //   24: astore_3
     //   25: aload 6
-    //   27: invokeinterface 595 1 0
+    //   27: invokeinterface 596 1 0
     //   32: ifeq +185 -> 217
     //   35: iload_0
     //   36: ifne +181 -> 217
@@ -863,47 +870,47 @@ public class DeviceUtils
     //   42: aload_2
     //   43: astore_3
     //   44: aload 6
-    //   46: invokeinterface 598 1 0
-    //   51: checkcast 586	java/net/NetworkInterface
-    //   54: invokevirtual 601	java/net/NetworkInterface:getInetAddresses	()Ljava/util/Enumeration;
+    //   46: invokeinterface 599 1 0
+    //   51: checkcast 587	java/net/NetworkInterface
+    //   54: invokevirtual 602	java/net/NetworkInterface:getInetAddresses	()Ljava/util/Enumeration;
     //   57: astore 5
     //   59: aload_2
     //   60: astore 4
     //   62: aload_2
     //   63: astore_3
     //   64: aload 5
-    //   66: invokeinterface 595 1 0
+    //   66: invokeinterface 596 1 0
     //   71: ifeq +254 -> 325
     //   74: aload_2
     //   75: astore 4
     //   77: aload_2
     //   78: astore_3
     //   79: aload 5
-    //   81: invokeinterface 598 1 0
-    //   86: checkcast 603	java/net/InetAddress
+    //   81: invokeinterface 599 1 0
+    //   86: checkcast 604	java/net/InetAddress
     //   89: astore 7
     //   91: aload_2
     //   92: astore 4
     //   94: aload_2
     //   95: astore_3
     //   96: aload 7
-    //   98: invokevirtual 626	java/net/InetAddress:isSiteLocalAddress	()Z
+    //   98: invokevirtual 627	java/net/InetAddress:isSiteLocalAddress	()Z
     //   101: ifne +56 -> 157
     //   104: aload_2
     //   105: astore 4
     //   107: aload_2
     //   108: astore_3
     //   109: aload 7
-    //   111: invokevirtual 606	java/net/InetAddress:isLoopbackAddress	()Z
+    //   111: invokevirtual 607	java/net/InetAddress:isLoopbackAddress	()Z
     //   114: ifne +43 -> 157
     //   117: aload_2
     //   118: astore 4
     //   120: aload_2
     //   121: astore_3
     //   122: aload 7
-    //   124: invokevirtual 611	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   127: ldc_w 628
-    //   130: invokevirtual 631	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   124: invokevirtual 612	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   127: ldc_w 629
+    //   130: invokevirtual 632	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   133: iconst_m1
     //   134: if_icmpne +23 -> 157
     //   137: aload_2
@@ -911,7 +918,7 @@ public class DeviceUtils
     //   140: aload_2
     //   141: astore_3
     //   142: aload 7
-    //   144: invokevirtual 611	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   144: invokevirtual 612	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
     //   147: astore 5
     //   149: iconst_1
     //   150: istore_0
@@ -923,23 +930,23 @@ public class DeviceUtils
     //   160: aload_2
     //   161: astore_3
     //   162: aload 7
-    //   164: invokevirtual 626	java/net/InetAddress:isSiteLocalAddress	()Z
+    //   164: invokevirtual 627	java/net/InetAddress:isSiteLocalAddress	()Z
     //   167: ifeq -108 -> 59
     //   170: aload_2
     //   171: astore 4
     //   173: aload_2
     //   174: astore_3
     //   175: aload 7
-    //   177: invokevirtual 606	java/net/InetAddress:isLoopbackAddress	()Z
+    //   177: invokevirtual 607	java/net/InetAddress:isLoopbackAddress	()Z
     //   180: ifne -121 -> 59
     //   183: aload_2
     //   184: astore 4
     //   186: aload_2
     //   187: astore_3
     //   188: aload 7
-    //   190: invokevirtual 611	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   193: ldc_w 628
-    //   196: invokevirtual 631	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   190: invokevirtual 612	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   193: ldc_w 629
+    //   196: invokevirtual 632	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   199: iconst_m1
     //   200: if_icmpne -141 -> 59
     //   203: aload_2
@@ -947,20 +954,20 @@ public class DeviceUtils
     //   206: aload_2
     //   207: astore_3
     //   208: aload 7
-    //   210: invokevirtual 611	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   210: invokevirtual 612	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
     //   213: astore_2
     //   214: goto -155 -> 59
     //   217: aload_1
-    //   218: invokestatic 139	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   218: invokestatic 141	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   221: ifne +5 -> 226
     //   224: aload_1
     //   225: areturn
-    //   226: invokestatic 633	com/tencent/ttpic/baseutils/device/DeviceUtils:getExternalLocalIpAddress	()Ljava/lang/String;
+    //   226: invokestatic 634	com/tencent/ttpic/baseutils/device/DeviceUtils:getExternalLocalIpAddress	()Ljava/lang/String;
     //   229: astore_3
     //   230: aload_3
     //   231: astore_1
     //   232: aload_3
-    //   233: invokestatic 139	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   233: invokestatic 141	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   236: ifeq -12 -> 224
     //   239: aload_2
     //   240: areturn
@@ -968,18 +975,18 @@ public class DeviceUtils
     //   243: aconst_null
     //   244: astore_3
     //   245: aload 4
-    //   247: invokevirtual 634	java/net/SocketException:printStackTrace	()V
+    //   247: invokevirtual 635	java/net/SocketException:printStackTrace	()V
     //   250: aload_2
     //   251: astore_1
     //   252: aload_2
-    //   253: invokestatic 139	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   253: invokestatic 141	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   256: ifeq -32 -> 224
-    //   259: invokestatic 633	com/tencent/ttpic/baseutils/device/DeviceUtils:getExternalLocalIpAddress	()Ljava/lang/String;
+    //   259: invokestatic 634	com/tencent/ttpic/baseutils/device/DeviceUtils:getExternalLocalIpAddress	()Ljava/lang/String;
     //   262: astore_2
     //   263: aload_2
     //   264: astore_1
     //   265: aload_2
-    //   266: invokestatic 139	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   266: invokestatic 141	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   269: ifeq -45 -> 224
     //   272: aload_3
     //   273: areturn
@@ -993,14 +1000,14 @@ public class DeviceUtils
     //   281: aload_2
     //   282: astore_1
     //   283: aload_2
-    //   284: invokestatic 139	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   284: invokestatic 141	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   287: ifeq -63 -> 224
-    //   290: invokestatic 633	com/tencent/ttpic/baseutils/device/DeviceUtils:getExternalLocalIpAddress	()Ljava/lang/String;
+    //   290: invokestatic 634	com/tencent/ttpic/baseutils/device/DeviceUtils:getExternalLocalIpAddress	()Ljava/lang/String;
     //   293: astore_2
     //   294: aload_2
     //   295: astore_1
     //   296: aload_2
-    //   297: invokestatic 139	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   297: invokestatic 141	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   300: ifeq -76 -> 224
     //   303: aload_3
     //   304: areturn
@@ -1074,45 +1081,45 @@ public class DeviceUtils
   public static long getMaxCpuFreq()
   {
     // Byte code:
-    //   0: getstatic 93	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
+    //   0: getstatic 95	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
     //   3: lconst_0
     //   4: lcmp
     //   5: ifle +7 -> 12
-    //   8: getstatic 93	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
+    //   8: getstatic 95	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
     //   11: lreturn
     //   12: iconst_0
     //   13: istore_0
     //   14: iload_0
-    //   15: invokestatic 650	com/tencent/ttpic/baseutils/device/DeviceUtils:getNumCores	()I
+    //   15: invokestatic 651	com/tencent/ttpic/baseutils/device/DeviceUtils:getNumCores	()I
     //   18: if_icmpge +194 -> 212
-    //   21: new 141	java/io/File
+    //   21: new 143	java/io/File
     //   24: dup
-    //   25: new 160	java/lang/StringBuilder
+    //   25: new 162	java/lang/StringBuilder
     //   28: dup
-    //   29: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   32: ldc_w 652
-    //   35: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: invokespecial 163	java/lang/StringBuilder:<init>	()V
+    //   32: ldc_w 653
+    //   35: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   38: iload_0
-    //   39: invokevirtual 558	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   42: ldc_w 654
-    //   45: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: invokespecial 173	java/io/File:<init>	(Ljava/lang/String;)V
+    //   39: invokevirtual 559	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   42: ldc_w 655
+    //   45: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   51: invokespecial 175	java/io/File:<init>	(Ljava/lang/String;)V
     //   54: astore_2
     //   55: aload_2
-    //   56: invokevirtual 181	java/io/File:exists	()Z
+    //   56: invokevirtual 183	java/io/File:exists	()Z
     //   59: ifeq +214 -> 273
     //   62: sipush 128
     //   65: newarray byte
     //   67: astore_3
-    //   68: new 656	java/io/FileInputStream
+    //   68: new 657	java/io/FileInputStream
     //   71: dup
     //   72: aload_2
-    //   73: invokespecial 659	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   73: invokespecial 660	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   76: astore_2
     //   77: aload_2
     //   78: aload_3
-    //   79: invokevirtual 662	java/io/FileInputStream:read	([B)I
+    //   79: invokevirtual 663	java/io/FileInputStream:read	([B)I
     //   82: pop
     //   83: iconst_0
     //   84: istore_1
@@ -1135,81 +1142,81 @@ public class DeviceUtils
     //   109: iadd
     //   110: istore_1
     //   111: goto -26 -> 85
-    //   114: new 146	java/lang/String
+    //   114: new 148	java/lang/String
     //   117: dup
     //   118: aload_3
     //   119: iconst_0
     //   120: iload_1
-    //   121: invokespecial 665	java/lang/String:<init>	([BII)V
-    //   124: invokestatic 203	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   127: invokestatic 668	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   121: invokespecial 666	java/lang/String:<init>	([BII)V
+    //   124: invokestatic 205	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   127: invokestatic 669	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   130: astore_3
     //   131: aload_3
-    //   132: invokevirtual 671	java/lang/Integer:intValue	()I
+    //   132: invokevirtual 672	java/lang/Integer:intValue	()I
     //   135: i2l
-    //   136: getstatic 93	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
+    //   136: getstatic 95	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
     //   139: lcmp
     //   140: ifle +11 -> 151
     //   143: aload_3
-    //   144: invokevirtual 671	java/lang/Integer:intValue	()I
+    //   144: invokevirtual 672	java/lang/Integer:intValue	()I
     //   147: i2l
-    //   148: putstatic 93	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
+    //   148: putstatic 95	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
     //   151: aload_2
-    //   152: invokevirtual 672	java/io/FileInputStream:close	()V
+    //   152: invokevirtual 673	java/io/FileInputStream:close	()V
     //   155: goto +118 -> 273
     //   158: astore_3
     //   159: aload_2
-    //   160: invokevirtual 672	java/io/FileInputStream:close	()V
+    //   160: invokevirtual 673	java/io/FileInputStream:close	()V
     //   163: goto +110 -> 273
     //   166: astore_2
-    //   167: ldc2_w 673
-    //   170: putstatic 93	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
-    //   173: ldc_w 676
-    //   176: new 160	java/lang/StringBuilder
+    //   167: ldc2_w 674
+    //   170: putstatic 95	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
+    //   173: ldc_w 677
+    //   176: new 162	java/lang/StringBuilder
     //   179: dup
-    //   180: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   183: ldc_w 678
-    //   186: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   189: getstatic 93	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
-    //   192: invokevirtual 543	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   195: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   198: invokestatic 547	com/tencent/ttpic/baseutils/log/LogUtils:v	(Ljava/lang/String;Ljava/lang/String;)V
-    //   201: getstatic 93	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
+    //   180: invokespecial 163	java/lang/StringBuilder:<init>	()V
+    //   183: ldc_w 679
+    //   186: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   189: getstatic 95	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
+    //   192: invokevirtual 544	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   195: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   198: invokestatic 548	com/tencent/ttpic/baseutils/log/LogUtils:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   201: getstatic 95	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
     //   204: lreturn
     //   205: astore_3
     //   206: aload_2
-    //   207: invokevirtual 672	java/io/FileInputStream:close	()V
+    //   207: invokevirtual 673	java/io/FileInputStream:close	()V
     //   210: aload_3
     //   211: athrow
-    //   212: getstatic 93	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
-    //   215: ldc2_w 673
+    //   212: getstatic 95	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
+    //   215: ldc2_w 674
     //   218: lcmp
     //   219: ifne -46 -> 173
-    //   222: new 656	java/io/FileInputStream
+    //   222: new 657	java/io/FileInputStream
     //   225: dup
-    //   226: ldc_w 333
-    //   229: invokespecial 679	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   226: ldc_w 335
+    //   229: invokespecial 680	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   232: astore_2
-    //   233: ldc_w 681
+    //   233: ldc_w 682
     //   236: aload_2
-    //   237: invokestatic 685	com/tencent/ttpic/baseutils/device/DeviceUtils:parseFileForValue	(Ljava/lang/String;Ljava/io/FileInputStream;)I
+    //   237: invokestatic 686	com/tencent/ttpic/baseutils/device/DeviceUtils:parseFileForValue	(Ljava/lang/String;Ljava/io/FileInputStream;)I
     //   240: sipush 1000
     //   243: imul
     //   244: istore_0
     //   245: iload_0
     //   246: i2l
-    //   247: getstatic 93	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
+    //   247: getstatic 95	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
     //   250: lcmp
     //   251: ifle +8 -> 259
     //   254: iload_0
     //   255: i2l
-    //   256: putstatic 93	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
+    //   256: putstatic 95	com/tencent/ttpic/baseutils/device/DeviceUtils:sMaxCpuFreq	J
     //   259: aload_2
-    //   260: invokevirtual 672	java/io/FileInputStream:close	()V
+    //   260: invokevirtual 673	java/io/FileInputStream:close	()V
     //   263: goto -90 -> 173
     //   266: astore_3
     //   267: aload_2
-    //   268: invokevirtual 672	java/io/FileInputStream:close	()V
+    //   268: invokevirtual 673	java/io/FileInputStream:close	()V
     //   271: aload_3
     //   272: athrow
     //   273: iload_0
@@ -1530,42 +1537,42 @@ public class DeviceUtils
   public static long getTotalRamMemory(Context paramContext)
   {
     // Byte code:
-    //   0: getstatic 876	android/os/Build$VERSION:SDK_INT	I
+    //   0: getstatic 877	android/os/Build$VERSION:SDK_INT	I
     //   3: bipush 16
     //   5: if_icmplt +42 -> 47
-    //   8: new 878	android/app/ActivityManager$MemoryInfo
+    //   8: new 879	android/app/ActivityManager$MemoryInfo
     //   11: dup
-    //   12: invokespecial 879	android/app/ActivityManager$MemoryInfo:<init>	()V
+    //   12: invokespecial 880	android/app/ActivityManager$MemoryInfo:<init>	()V
     //   15: astore 4
     //   17: aload_0
-    //   18: ldc_w 381
-    //   21: invokevirtual 387	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   24: checkcast 389	android/app/ActivityManager
+    //   18: ldc_w 383
+    //   21: invokevirtual 389	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   24: checkcast 391	android/app/ActivityManager
     //   27: aload 4
-    //   29: invokevirtual 882	android/app/ActivityManager:getMemoryInfo	(Landroid/app/ActivityManager$MemoryInfo;)V
+    //   29: invokevirtual 883	android/app/ActivityManager:getMemoryInfo	(Landroid/app/ActivityManager$MemoryInfo;)V
     //   32: aload 4
     //   34: ifnull +9 -> 43
     //   37: aload 4
-    //   39: getfield 885	android/app/ActivityManager$MemoryInfo:totalMem	J
+    //   39: getfield 886	android/app/ActivityManager$MemoryInfo:totalMem	J
     //   42: lreturn
-    //   43: ldc2_w 673
+    //   43: ldc2_w 674
     //   46: lreturn
-    //   47: new 656	java/io/FileInputStream
+    //   47: new 657	java/io/FileInputStream
     //   50: dup
-    //   51: ldc_w 887
-    //   54: invokespecial 679	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   51: ldc_w 888
+    //   54: invokespecial 680	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   57: astore_0
-    //   58: ldc_w 889
+    //   58: ldc_w 890
     //   61: aload_0
-    //   62: invokestatic 685	com/tencent/ttpic/baseutils/device/DeviceUtils:parseFileForValue	(Ljava/lang/String;Ljava/io/FileInputStream;)I
+    //   62: invokestatic 686	com/tencent/ttpic/baseutils/device/DeviceUtils:parseFileForValue	(Ljava/lang/String;Ljava/io/FileInputStream;)I
     //   65: istore_1
     //   66: iload_1
     //   67: i2l
-    //   68: ldc2_w 798
+    //   68: ldc2_w 799
     //   71: lmul
     //   72: lstore_2
     //   73: aload_0
-    //   74: invokevirtual 672	java/io/FileInputStream:close	()V
+    //   74: invokevirtual 673	java/io/FileInputStream:close	()V
     //   77: lload_2
     //   78: lreturn
     //   79: astore_0
@@ -1573,11 +1580,11 @@ public class DeviceUtils
     //   81: lreturn
     //   82: astore 4
     //   84: aload_0
-    //   85: invokevirtual 672	java/io/FileInputStream:close	()V
+    //   85: invokevirtual 673	java/io/FileInputStream:close	()V
     //   88: aload 4
     //   90: athrow
     //   91: astore_0
-    //   92: ldc2_w 673
+    //   92: ldc2_w 674
     //   95: lreturn
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1671,37 +1678,37 @@ public class DeviceUtils
     return DeviceInstance.getInstance().getDeviceSocClass(DeviceAttrs.getInstance().str_deviceSocInfo).value != DeviceInstance.SOC_CLASS.NULL.value;
   }
   
-  public static boolean isExternalStorageAvailable()
+  public static boolean isExternalStorageAvailable(Context paramContext)
   {
     boolean bool = false;
     try
     {
       if (("mounted".equals(Environment.getExternalStorageState())) || (!Environment.isExternalStorageRemovable()))
       {
-        new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath());
+        new StatFs(paramContext.getExternalFilesDir(null).getAbsolutePath());
         bool = true;
       }
       return bool;
     }
-    catch (Exception localException) {}
+    catch (Exception paramContext) {}
     return false;
   }
   
-  public static boolean isExternalStorageSpaceEnough(long paramLong)
+  public static boolean isExternalStorageSpaceEnough(Context paramContext, long paramLong)
   {
     boolean bool = false;
-    File localFile = Environment.getExternalStorageDirectory();
+    paramContext = paramContext.getExternalFilesDir(null);
     try
     {
-      long l = getAvailableSize(new StatFs(localFile.getAbsolutePath()));
+      long l = getAvailableSize(new StatFs(paramContext.getAbsolutePath()));
       if (l > paramLong) {
         bool = true;
       }
       return bool;
     }
-    catch (IllegalArgumentException localIllegalArgumentException)
+    catch (IllegalArgumentException paramContext)
     {
-      localIllegalArgumentException.printStackTrace();
+      paramContext.printStackTrace();
     }
     return false;
   }

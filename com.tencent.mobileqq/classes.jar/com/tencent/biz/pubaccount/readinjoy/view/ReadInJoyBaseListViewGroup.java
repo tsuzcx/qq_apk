@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
-import bgmq;
+import bhvh;
 import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,17 +16,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import nhw;
-import obl;
-import obz;
-import ogy;
-import pov;
-import psj;
-import psn;
-import qnv;
-import qpr;
-import qps;
-import ruf;
+import ntg;
+import omw;
+import onk;
+import osj;
+import qar;
+import qeh;
+import qel;
+import raf;
+import rcc;
+import rcd;
+import sgx;
 
 public abstract class ReadInJoyBaseListViewGroup
   extends FrameLayout
@@ -36,28 +36,28 @@ public abstract class ReadInJoyBaseListViewGroup
   public final String a;
   List<KandianProgressView> jdField_a_of_type_JavaUtilList = new ArrayList();
   public Map<String, KandianProgressView> a;
-  protected nhw a;
-  protected obl a;
-  public psn a;
-  qnv jdField_a_of_type_Qnv = new qps(this);
+  protected ntg a;
+  protected omw a;
+  public qel a;
+  raf jdField_a_of_type_Raf = new rcd(this);
   protected boolean a;
   
-  public ReadInJoyBaseListViewGroup(nhw paramnhw, int paramInt, obl paramobl)
+  public ReadInJoyBaseListViewGroup(ntg paramntg, int paramInt, omw paramomw)
   {
-    super(paramnhw.a());
+    super(paramntg.a());
     this.jdField_a_of_type_JavaLangString = "ReadInJoyBaseListViewGroup";
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_Psn = new qpr(this);
+    this.jdField_a_of_type_Qel = new rcc(this);
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Nhw = paramnhw;
-    if (paramobl == null)
+    this.jdField_a_of_type_Ntg = paramntg;
+    if (paramomw == null)
     {
-      this.jdField_a_of_type_Obl = new obl();
-      this.jdField_a_of_type_Obl.a = bgmq.a(paramInt, (QQAppInterface)obz.a());
+      this.jdField_a_of_type_Omw = new omw();
+      this.jdField_a_of_type_Omw.a = bhvh.a(paramInt, (QQAppInterface)onk.a());
       return;
     }
-    this.jdField_a_of_type_Obl = paramobl;
-    this.jdField_a_of_type_Obl.b = 1;
+    this.jdField_a_of_type_Omw = paramomw;
+    this.jdField_a_of_type_Omw.b = 1;
   }
   
   private void a(Bundle paramBundle, String paramString)
@@ -82,7 +82,7 @@ public abstract class ReadInJoyBaseListViewGroup
         this.jdField_a_of_type_JavaUtilMap.put(str, localObject);
         return;
         label106:
-        localObject = new KandianProgressView(a(), paramBundle, this.jdField_a_of_type_Qnv);
+        localObject = new KandianProgressView(a(), paramBundle, this.jdField_a_of_type_Raf);
       }
     }
     ((View)localObject).setTag(paramString);
@@ -108,14 +108,14 @@ public abstract class ReadInJoyBaseListViewGroup
   
   private void b()
   {
-    Iterator localIterator = psj.a().iterator();
+    Iterator localIterator = qeh.a().iterator();
     while (localIterator.hasNext())
     {
       Intent localIntent = (Intent)localIterator.next();
       String str = localIntent.getStringExtra("mTaskID");
       QLog.d("KandianVideoUpload", 1, "is loading fail view:" + str + "map size" + this.jdField_a_of_type_JavaUtilMap.size());
       if (this.jdField_a_of_type_JavaUtilMap.get(str) == null) {
-        KandianVideoUploadService.a(localIntent.getExtras(), this.jdField_a_of_type_Psn);
+        KandianVideoUploadService.a(localIntent.getExtras(), this.jdField_a_of_type_Qel);
       }
     }
   }
@@ -127,7 +127,7 @@ public abstract class ReadInJoyBaseListViewGroup
   
   public Activity a()
   {
-    return this.jdField_a_of_type_Nhw.a();
+    return this.jdField_a_of_type_Ntg.a();
   }
   
   public void a() {}
@@ -136,9 +136,9 @@ public abstract class ReadInJoyBaseListViewGroup
   
   public abstract void a(Map<Integer, Boolean> paramMap);
   
-  public abstract void a(Map<Long, pov> paramMap, boolean paramBoolean);
+  public abstract void a(Map<Long, qar> paramMap, boolean paramBoolean);
   
-  public abstract void a(Set<Long> paramSet, Map<Long, pov> paramMap);
+  public abstract void a(Set<Long> paramSet, Map<Long, qar> paramMap);
   
   public abstract void a(boolean paramBoolean);
   
@@ -151,7 +151,7 @@ public abstract class ReadInJoyBaseListViewGroup
   
   public abstract void b(Map<Integer, Boolean> paramMap);
   
-  public void c(Map<Integer, pov> paramMap) {}
+  public void c(Map<Integer, qar> paramMap) {}
   
   public void d() {}
   
@@ -164,7 +164,7 @@ public abstract class ReadInJoyBaseListViewGroup
   public void h()
   {
     b();
-    KandianVideoUploadService.a(this.jdField_a_of_type_Psn);
+    KandianVideoUploadService.a(this.jdField_a_of_type_Qel);
   }
   
   public void i()
@@ -177,8 +177,8 @@ public abstract class ReadInJoyBaseListViewGroup
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      ruf.a(null, "KANDIAN_NEW_FEEDS_LOAD_ARTICLE");
-      ogy.a().a(this.jdField_a_of_type_Int, 20, 9223372036854775807L, true);
+      sgx.a(null, "KANDIAN_NEW_FEEDS_LOAD_ARTICLE");
+      osj.a().a(this.jdField_a_of_type_Int, 20, 9223372036854775807L, true);
       return;
     }
     QLog.d("ReadInJoyBaseListViewGroup", 2, new Object[] { "has loaded article, mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int) });

@@ -1,142 +1,73 @@
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 import java.util.List;
 
-public class bitp
-  extends BaseAdapter
-  implements behi, bits
+class bitp
+  implements bjob<bisc>
 {
-  private int jdField_a_of_type_Int;
-  private List<bitr> jdField_a_of_type_JavaUtilList = new ArrayList();
+  bitp(bitj parambitj) {}
   
-  public bitp(@NonNull List<bitr> paramList)
+  public void a(@Nullable bisc parambisc)
   {
-    if (paramList.isEmpty()) {
-      urk.d("Q.qqstory.publish.editPermissionListAdapter", "part list is empty.");
-    }
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    a();
-    paramList = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramList.hasNext()) {
-      ((bitr)paramList.next()).a(this);
-    }
-  }
-  
-  @NonNull
-  private bitq a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int j;
-    for (int i = 0; localIterator.hasNext(); i = j)
+    int i = 0;
+    bitj.a(this.a).a().a(bitj.a(this.a));
+    if (parambisc != null)
     {
-      bitr localbitr = (bitr)localIterator.next();
-      j = localbitr.a() + i;
-      if (paramInt <= j - 1) {
-        return new bitq(localbitr, paramInt - i);
-      }
-    }
-    throw new IllegalStateException("unable find PermissionPart, position:" + paramInt);
-  }
-  
-  private void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    for (int i = 0; localIterator.hasNext(); i = ((bitr)localIterator.next()).a() + i) {}
-    this.jdField_a_of_type_Int = i;
-  }
-  
-  @Nullable
-  public bitr a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      bitr localbitr = (bitr)localIterator.next();
-      if (localbitr.a) {
-        return localbitr;
-      }
-    }
-    return null;
-  }
-  
-  public void a(bitr parambitr)
-  {
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    bitq localbitq = a(paramInt);
-    return localbitq.jdField_a_of_type_Bitr.a(localbitq.jdField_a_of_type_Int);
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject = a(paramInt);
-    bitr localbitr = ((bitq)localObject).jdField_a_of_type_Bitr;
-    paramInt = ((bitq)localObject).jdField_a_of_type_Int;
-    localObject = paramView;
-    if (paramView == null) {
-      localObject = localbitr.a(paramInt, paramViewGroup);
-    }
-    localbitr.a(paramInt, (View)localObject);
-    return localObject;
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 5;
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    a();
-    super.notifyDataSetChanged();
-  }
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramView = a(paramInt);
-    paramAdapterView = paramView.jdField_a_of_type_Bitr;
-    if (!paramAdapterView.c) {}
-    do
-    {
-      return;
-      paramAdapterView.a(paramView.jdField_a_of_type_Int);
-    } while ((paramAdapterView instanceof bito));
-    paramAdapterView.b(true);
-    paramView = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramView.hasNext())
-    {
-      bitr localbitr = (bitr)paramView.next();
-      if (localbitr != paramAdapterView)
+      QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "Obtained recognizedEmotion", "=====" + parambisc });
+      QLog.d("AEGIFChunkPreviewFragment", 4, "emo ===" + parambisc.jdField_a_of_type_JavaLangString + "text ===" + parambisc.jdField_a_of_type_Int + "material ====" + parambisc.jdField_b_of_type_Int);
+      if (parambisc.jdField_a_of_type_JavaLangString == null)
       {
-        localbitr.b(false);
-        localbitr.a(false);
+        parambisc.jdField_a_of_type_Int = 0;
+        parambisc.jdField_b_of_type_Int = 6;
+        parambisc.jdField_a_of_type_JavaLangString = "default";
+      }
+      if ((parambisc.jdField_a_of_type_JavaUtilList != null) && (parambisc.jdField_a_of_type_JavaUtilList.size() == 0)) {
+        parambisc.jdField_a_of_type_JavaUtilList.addAll(biso.jdField_a_of_type_JavaUtilList);
+      }
+      Object localObject;
+      if (parambisc.jdField_a_of_type_JavaLangString.equals("default"))
+      {
+        localObject = ajyc.a(2131699965);
+        bitj.a(this.a).setText((CharSequence)localObject);
+      }
+      for (;;)
+      {
+        if (i < parambisc.jdField_a_of_type_Int)
+        {
+          localObject = new bisj();
+          ((bisj)localObject).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = null;
+          ((bisj)localObject).jdField_a_of_type_JavaLangString = ((String)parambisc.jdField_a_of_type_JavaUtilList.get(i % parambisc.jdField_a_of_type_JavaUtilList.size()));
+          ((bisj)localObject).jdField_b_of_type_Int = 2;
+          if (bitj.a(this.a).size() < bitj.a(this.a)) {}
+        }
+        else
+        {
+          bitj.a(this.a).a(bitj.a(this.a), parambisc.jdField_a_of_type_JavaLangString);
+          bitj.a(this.a).b().a(bitj.a(this.a), new bitq(this, parambisc));
+          bitj.a(this.a).a().a(bitj.a(this.a), new bitr(this, parambisc));
+          return;
+          localObject = (String)bitj.a(this.a).get(parambisc.jdField_a_of_type_JavaLangString);
+          localObject = ajyc.a(2131699960) + (String)localObject + ajyc.a(2131699967);
+          break;
+        }
+        bitj.a(this.a).add(localObject);
+        bitj.a(this.a).notifyItemInserted(bitj.a(this.a).size() - 1);
+        biuz localbiuz = new biuz();
+        localbiuz.jdField_b_of_type_JavaLangString = ((bisj)localObject).jdField_a_of_type_JavaLangString;
+        localbiuz.jdField_a_of_type_Int = (i + 1);
+        bitj.a(this.a).a(localbiuz);
+        i += 1;
       }
     }
-    notifyDataSetChanged();
+    QLog.d("AEGIFChunkPreviewFragment", 4, "Recognized emotion bean is null");
+    parambisc = new bisj();
+    parambisc.jdField_b_of_type_JavaLangString = "";
+    parambisc.jdField_a_of_type_JavaLangString = "";
+    parambisc.jdField_b_of_type_Int = 2;
+    parambisc.jdField_a_of_type_Int = 11;
+    bitj.a(this.a).add(parambisc);
   }
 }
 

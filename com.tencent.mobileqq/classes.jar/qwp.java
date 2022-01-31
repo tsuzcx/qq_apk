@@ -1,57 +1,60 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
 import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0xc6d.oidb_cmd0xc6d.ModuleInfo;
-import tencent.im.oidb.cmd0xc6d.oidb_cmd0xc6d.TextCardInfo;
+import java.util.Iterator;
 
-public class qwp
-  extends ohe
+abstract class qwp
 {
-  public qwp(FastWebActivity paramFastWebActivity) {}
+  protected long a;
+  private ArrayList<qwp> a;
+  protected long b;
   
-  public void a(ArrayList<String> paramArrayList, List<oidb_cmd0xc6d.ModuleInfo> paramList, List<oidb_cmd0xc6d.TextCardInfo> paramList1)
+  qwp()
   {
-    Object localObject = rac.a(23, paramArrayList);
-    if (FastWebActivity.a(this.a) != null) {}
-    for (paramArrayList = FastWebActivity.a(this.a).innerUniqueID;; paramArrayList = "")
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  abstract long a(long paramLong);
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((qwp)localIterator.next()).a();
+    }
+    this.b = 0L;
+  }
+  
+  public void a(long paramLong)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((qwp)localIterator.next()).a(paramLong);
+    }
+    this.b = a(paramLong);
+    if (this.b < 0L) {
+      this.b = 0L;
+    }
+    if ((float)Math.abs(this.b - this.jdField_a_of_type_Long) / (float)this.jdField_a_of_type_Long < 0.2F)
     {
-      if ((TextUtils.isEmpty(paramArrayList)) || (FastWebActivity.a(this.a) == null)) {}
-      do
-      {
-        return;
-        int i = 0;
-        while (i < ((List)localObject).size())
-        {
-          BaseData localBaseData = (BaseData)((List)localObject).get(i);
-          if ((localBaseData instanceof ProteusItemData)) {
-            rac.a(FastWebActivity.a(this.a), (ProteusItemData)localBaseData, 3, this.a.a);
-          }
-          rau.b(FastWebActivity.a(this.a), localBaseData, FastWebActivity.a(this.a));
-          i += 1;
-        }
-        localObject = ogy.a().a();
-        if (localObject != null) {
-          ((oph)localObject).a(paramArrayList, FastWebActivity.a(this.a));
-        }
-        FastWebActivity.c(this.a, 23);
-        if (paramList != null)
-        {
-          qzp.a(FastWebActivity.a(this.a), FastWebActivity.a(this.a), FastWebActivity.a(this.a), paramList, FastWebActivity.a(this.a), this.a.a);
-          FastWebActivity.c(this.a, 26);
-        }
-        if (paramList1 != null)
-        {
-          qzp.b(FastWebActivity.a(this.a), FastWebActivity.a(this.a), FastWebActivity.a(this.a), paramList1, FastWebActivity.a(this.a), this.a.a);
-          FastWebActivity.c(this.a, 26);
-        }
-      } while (FastWebActivity.a(this.a) == null);
-      FastWebActivity.a(this.a).notifyDataSetChanged();
+      this.jdField_a_of_type_Long = Math.max(this.b, this.jdField_a_of_type_Long);
       return;
     }
+    this.jdField_a_of_type_Long = this.b;
+  }
+  
+  protected void a(qwp paramqwp)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramqwp) < 0) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramqwp);
+    }
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((qwp)localIterator.next()).b();
+    }
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 

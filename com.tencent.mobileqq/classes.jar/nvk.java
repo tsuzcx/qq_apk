@@ -1,20 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class nvk
-  implements nyx
+  extends Editable.Factory
 {
-  public nvk(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  public nvk(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void a(int paramInt)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if (paramInt != 2) {
-      this.a.d();
+    if ((paramCharSequence instanceof ods)) {
+      return (Editable)paramCharSequence;
     }
+    return new ods(paramCharSequence, 3, 20);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nvk
  * JD-Core Version:    0.7.0.1
  */

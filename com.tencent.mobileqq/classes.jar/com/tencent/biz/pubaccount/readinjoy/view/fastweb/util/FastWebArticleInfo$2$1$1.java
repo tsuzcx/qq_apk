@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import ohb;
-import qzu;
+import osm;
+import rmm;
 
 public class FastWebArticleInfo$2$1$1
   implements Runnable
 {
-  public FastWebArticleInfo$2$1$1(qzu paramqzu) {}
+  public FastWebArticleInfo$2$1$1(rmm paramrmm) {}
   
   public void run()
   {
-    ohb.a().c();
+    osm.a().c();
   }
 }
 

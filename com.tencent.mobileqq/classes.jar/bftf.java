@@ -1,54 +1,28 @@
-import GIFT_MALL_PROTOCOL.doufu_piece_req;
-import GIFT_MALL_PROTOCOL.doufu_piece_rsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.Map;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.text.style.ReplacementSpan;
 
 public class bftf
-  extends QzoneExternalRequest
+  extends ReplacementSpan
 {
-  private doufu_piece_req a;
+  private int a;
   
-  public bftf(long paramLong, Map<String, String> paramMap)
+  public bftf(int paramInt)
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.needCompress = false;
-    this.a = new doufu_piece_req(paramLong, paramMap);
+    this.a = paramInt;
   }
   
-  public static doufu_piece_rsp a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
-  {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
-    }
-    do
-    {
-      return paramArrayOfByte;
-      paramArrayOfInt = (doufu_piece_rsp)decode(paramArrayOfByte, "getDofuPieceInfo", paramArrayOfInt);
-      paramArrayOfByte = paramArrayOfInt;
-    } while (paramArrayOfInt != null);
-    return null;
-  }
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint) {}
   
-  public String getCmdString()
-  {
-    return "QzoneNewService.getDofuPieceInfo";
-  }
-  
-  public JceStruct getReq()
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
     return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "getDofuPieceInfo";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bftf
  * JD-Core Version:    0.7.0.1
  */

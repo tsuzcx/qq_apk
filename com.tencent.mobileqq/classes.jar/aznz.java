@@ -1,19 +1,21 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-class aznz
-  extends aznw
+public class aznz
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public long b;
   
-  aznz(azny paramazny)
+  public aznz()
   {
-    super(paramazny.a);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    return "TroopCreateAdvanceData{resultCode=" + this.jdField_a_of_type_Int + ", groupSize=" + this.jdField_b_of_type_Int + ", troopCode=" + this.jdField_a_of_type_Long + ", troopUin=" + this.jdField_b_of_type_Long + '}';
   }
 }
 

@@ -1,33 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
+import android.support.annotation.Nullable;
+import android.view.View;
 
-public class bivt
-  implements Animator.AnimatorListener
+class bivt
+  implements bjob<Boolean>
 {
-  public bivt(SlideBottomPanel paramSlideBottomPanel) {}
+  bivt(bivq parambivq) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    if (this.a.jdField_a_of_type_Bivd != null) {
-      this.a.jdField_a_of_type_Bivd.displayPanelFinish();
+    if (paramBoolean == null) {
+      return;
     }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_Boolean = false;
-    if (this.a.jdField_a_of_type_Bivd != null) {
-      this.a.jdField_a_of_type_Bivd.displayPanelFinish();
+    View localView = bivq.a(this.a);
+    if ((paramBoolean.booleanValue()) && (bivq.b(this.a))) {}
+    for (int i = 0;; i = 4)
+    {
+      localView.setVisibility(i);
+      return;
     }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_Boolean = true;
   }
 }
 

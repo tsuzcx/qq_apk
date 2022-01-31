@@ -1,16 +1,25 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-class qyn
-  implements ViewFactory.FoundClickableViewListener
+public class qyn
 {
-  qyn(qym paramqym, Context paramContext) {}
-  
-  public void onFound(ViewBase paramViewBase)
-  {
-    paramViewBase.setOnClickListener(new qyo(this));
-  }
+  public View a;
+  public ViewGroup a;
+  public ImageView a;
+  public SeekBar a;
+  public TextView a;
+  public URLImageView a;
+  public ViewGroup b;
+  public SeekBar b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
 }
 
 

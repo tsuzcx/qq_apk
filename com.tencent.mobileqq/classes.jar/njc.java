@@ -1,40 +1,72 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import com.tencent.widget.ListView;
-import java.util.List;
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class njc
-  extends rbg
 {
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private List<TabChannelCoverInfo> jdField_a_of_type_JavaUtilList;
-  protected ohe a;
-  private qsz jdField_a_of_type_Qsz;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static njc jdField_a_of_type_Njc;
+  private URLDrawable.DownloadListener jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener = new njd(this);
+  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<String> b = new ArrayList();
   
-  protected void a() {}
-  
-  public void a(ListView paramListView)
+  public static njc a()
   {
-    paramListView.addHeaderView(this.jdField_a_of_type_AndroidViewViewGroup);
+    if (jdField_a_of_type_Njc == null) {
+      jdField_a_of_type_Njc = new njc();
+    }
+    return jdField_a_of_type_Njc;
   }
   
-  public void a(Map<Integer, pov> paramMap)
+  private void a()
   {
-    if (this.jdField_a_of_type_Qsz != null) {
-      this.jdField_a_of_type_Qsz.a(paramMap);
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if ((this.jdField_a_of_type_ComTencentImageURLDrawable == null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      {
+        String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        this.jdField_a_of_type_ComTencentImageURLDrawable = aywk.a(str);
+        this.jdField_a_of_type_ComTencentImageURLDrawable.setDownloadListener(this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener);
+        this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
+        if (QLog.isColorLevel()) {
+          QLog.d("AdvertisementCoverPreloadManager", 2, "startImageDownload url:" + str);
+        }
+      }
+      return;
     }
   }
   
-  public void b()
+  public void a(ArrayList<String> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    ohb.a().b(this.jdField_a_of_type_Ohe);
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramArrayList == null) || (paramArrayList.size() <= 0)) {
+        break label118;
+      }
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        String str = (String)paramArrayList.next();
+        if ((!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(str)))
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.add(str);
+          if (QLog.isColorLevel()) {
+            QLog.d("AdvertisementCoverPreloadManager", 2, "addImagesToPreload url:" + str);
+          }
+        }
+      }
+    }
+    a();
+    label118:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     njc
  * JD-Core Version:    0.7.0.1
  */

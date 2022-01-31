@@ -1,15 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bavp
-  implements View.OnClickListener
+final class bavp
+  implements DownloadParams.DecodeHandler
 {
-  public bavp(LiangHaoBuyFragment paramLiangHaoBuyFragment) {}
-  
-  public void onClick(View paramView)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    LiangHaoBuyFragment.a(this.a);
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 2);
+    paramDownloadParams = (int[])localObject;
+    float f2 = bbct.a();
+    float f1 = f2;
+    if (f2 < 0.01F) {
+      f1 = 1.0F;
+    }
+    paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
+    paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
+    return bbdr.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 

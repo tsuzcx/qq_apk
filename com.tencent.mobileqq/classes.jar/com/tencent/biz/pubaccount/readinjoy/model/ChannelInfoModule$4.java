@@ -1,25 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import ohb;
-import opc;
-import oqr;
+import osm;
+import pad;
+import pbt;
 
 public class ChannelInfoModule$4
   implements Runnable
 {
-  public ChannelInfoModule$4(opc paramopc, boolean paramBoolean, List paramList) {}
+  public ChannelInfoModule$4(pad parampad, boolean paramBoolean, List paramList) {}
   
   public void run()
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      ohb.a().d(false, null);
+      osm.a().d(false, null);
       return;
     }
-    oqr.a().a(this.jdField_a_of_type_JavaUtilList);
+    pbt.a().a(this.jdField_a_of_type_JavaUtilList);
     this.this$0.f(this.jdField_a_of_type_JavaUtilList);
-    ohb.a().d(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList);
+    osm.a().d(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

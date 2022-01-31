@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import aamd;
-import abai;
 import android.support.v4.app.FragmentManager;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.Contacts;
 import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Leba;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -12,8 +12,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
-import ohp;
-import rtr;
+import ota;
+import sgj;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public final class ReadinjoySPEventReport$2
@@ -23,14 +23,14 @@ public final class ReadinjoySPEventReport$2
   {
     ArrayList localArrayList;
     oidb_cmd0x80a.AttributeList localAttributeList;
-    if (ohp.b(8))
+    if (ota.b(8))
     {
       localArrayList = new ArrayList();
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(1);
       localAttributeList.att_name.set("DTHasRed");
       PBStringField localPBStringField = localAttributeList.att_value;
-      if (!ohp.b()) {
+      if (!ota.b()) {
         break label189;
       }
       localObject = String.valueOf(1);
@@ -62,16 +62,16 @@ public final class ReadinjoySPEventReport$2
         localAttributeList.att_name.set("tab");
         localAttributeList.att_value.set((String)localObject);
         localArrayList.add(localAttributeList);
-        rtr.a(8, localArrayList);
-        ohp.b(System.currentTimeMillis());
+        sgj.a(8, localArrayList);
+        ota.b(System.currentTimeMillis());
         return;
         label189:
         localObject = String.valueOf(0);
         break;
         label197:
-        if (((String)localObject).equals(aamd.class.getName())) {
+        if (((String)localObject).equals(Contacts.class.getName())) {
           localObject = "2";
-        } else if (((String)localObject).equals(abai.class.getName())) {
+        } else if (((String)localObject).equals(Leba.class.getName())) {
           localObject = "4";
         } else if (((String)localObject).equals(ReadinjoyTabFrame.class.getName())) {
           localObject = "3";

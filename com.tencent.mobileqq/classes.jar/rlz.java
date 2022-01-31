@@ -1,12 +1,18 @@
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+
 class rlz
-  extends rly
+  implements View.OnLongClickListener
 {
-  String b;
+  rlz(rlw paramrlw, View paramView, ProteusItemData paramProteusItemData) {}
   
-  public rlz(String paramString1, int paramInt, boolean paramBoolean, String paramString2)
+  public boolean onLongClick(View paramView)
   {
-    super(paramString1, paramInt, paramBoolean);
-    this.b = paramString2;
+    paramView = new bblr();
+    paramView.a(0, ajyc.a(2131716880));
+    bbcc.a(this.jdField_a_of_type_AndroidViewView, paramView, new rma(this), new rmb(this));
+    return true;
   }
 }
 

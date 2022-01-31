@@ -10,8 +10,8 @@ import android.text.TextUtils;
 import com.tencent.hlyyb.downloader.DownloaderTask;
 import com.tencent.tmassistant.common.jce.BoutiqueGameConfig;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.l;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.k;
 import com.tencent.tmdownloader.internal.downloadservice.ApkDownloadManager;
 import java.io.File;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class b
   
   private b()
   {
-    l.a().postDelayed(new c(this), 10000L);
+    k.a().postDelayed(new c(this), 10000L);
   }
   
   public static b a()
@@ -41,7 +41,7 @@ public class b
   
   private void a(String paramString, com.tencent.tmdownloader.internal.downloadservice.c paramc, long paramLong)
   {
-    ac.c("BoutiqueGameRT", "[doInstallReportDir]:" + paramString);
+    ab.c("BoutiqueGameRT", "[doInstallReportDir]:" + paramString);
     long l2 = 0L;
     Object localObject = GlobalUtil.getInstance().getContext();
     String str2 = "";
@@ -66,7 +66,7 @@ public class b
       str2 = com.tencent.dlsdk.yybutil.apkchannel.a.a((String)localObject);
       str1 = str2;
       l1 = l2;
-      ac.c("BoutiqueGameRT", "[doInstallReportDir] Read channelId time cost:" + (System.currentTimeMillis() - l3) + "ms, path = " + (String)localObject);
+      ab.c("BoutiqueGameRT", "[doInstallReportDir] Read channelId time cost:" + (System.currentTimeMillis() - l3) + "ms, path = " + (String)localObject);
       l1 = l2;
       str1 = str2;
     }
@@ -74,7 +74,7 @@ public class b
     {
       for (;;)
       {
-        ac.e("BoutiqueGameRT", "[doInstallReportDir] read installed fileSize error:" + localThrowable.getMessage());
+        ab.e("BoutiqueGameRT", "[doInstallReportDir] read installed fileSize error:" + localThrowable.getMessage());
       }
     }
     paramString = paramLong + "|" + Build.BRAND + "|" + Build.MODEL + "|" + GlobalUtil.getInstance().getImei() + "|" + paramString + "|" + str1 + "|" + paramc.b + "|" + l1 + "|" + paramc.x + "|" + GlobalUtil.getInstance().getAppVersionCode() + "|" + paramc.u;
@@ -85,7 +85,7 @@ public class b
   
   private void b()
   {
-    ac.c("BoutiqueGameRT", "do init task");
+    ab.c("BoutiqueGameRT", "do init task");
     Object localObject = (BoutiqueGameConfig)com.tencent.tmdownloader.internal.storage.b.a().a("key_recommend_games_config", BoutiqueGameConfig.class);
     if ((localObject != null) && (((BoutiqueGameConfig)localObject).pkgList != null) && (((BoutiqueGameConfig)localObject).pkgList.size() != 0)) {
       localObject = ((BoutiqueGameConfig)localObject).pkgList.iterator();
@@ -103,7 +103,7 @@ public class b
         }
         if ((!TextUtils.isEmpty(localc.A)) && (localc.A.endsWith("SENDED")))
         {
-          ac.c("BoutiqueGameRT", str + ": task SENDED!" + localc.A);
+          ab.c("BoutiqueGameRT", str + ": task SENDED!" + localc.A);
           continue;
         }
         if (!com.tencent.tmdownloader.internal.downloadservice.a.a(str, 0)) {}
@@ -117,12 +117,12 @@ public class b
           a(str, localc, localPackageInfo.lastUpdateTime);
           continue;
         }
-        ac.c("BoutiqueGameRT", str + ": time ERROR, " + "packageInfo.lastUpdateTime=" + localPackageInfo.lastUpdateTime + "di.mEndTime=" + localc.u + "time distance=" + l);
+        ab.c("BoutiqueGameRT", str + ": time ERROR, " + "packageInfo.lastUpdateTime=" + localPackageInfo.lastUpdateTime + "di.mEndTime=" + localc.u + "time distance=" + l);
       }
       catch (Throwable localThrowable) {}
-      ac.c("BoutiqueGameRT", str + ": NOT INSTALLED!");
+      ab.c("BoutiqueGameRT", str + ": NOT INSTALLED!");
       continue;
-      ac.c("BoutiqueGameRT", "config pkg is empty!");
+      ab.c("BoutiqueGameRT", "config pkg is empty!");
       return;
     }
   }
@@ -132,7 +132,7 @@ public class b
     paramc.u = System.currentTimeMillis();
     if ((!TextUtils.isEmpty(paramc.r)) && (GlobalUtil.isRecommendGame(paramc.r)))
     {
-      ac.c("BoutiqueGameRT", "[doDownloadSuccReport]" + paramc.r + "is bgg");
+      ab.c("BoutiqueGameRT", "[doDownloadSuccReport]" + paramc.r + "is bgg");
       l2 = 0L;
       l1 = l2;
       for (;;)
@@ -148,13 +148,13 @@ public class b
           long l3 = System.currentTimeMillis();
           l1 = l2;
           paramDownloaderTask = com.tencent.dlsdk.yybutil.apkchannel.a.a(str);
-          ac.e("BoutiqueGameRT", "[doDownloadSuccReport] read dowloaded fileSize error:" + localThrowable1.getMessage());
+          ab.e("BoutiqueGameRT", "[doDownloadSuccReport] read dowloaded fileSize error:" + localThrowable1.getMessage());
         }
         catch (Throwable localThrowable1)
         {
           try
           {
-            ac.c("BoutiqueGameRT", "[doDownloadSuccReport] Read channelId time cost:" + (System.currentTimeMillis() - l3) + "ms, path = " + str);
+            ab.c("BoutiqueGameRT", "[doDownloadSuccReport] Read channelId time cost:" + (System.currentTimeMillis() - l3) + "ms, path = " + str);
             l1 = l2;
             paramc = paramc.u + "|" + Build.BRAND + "|" + Build.MODEL + "|" + GlobalUtil.getInstance().getImei() + "|" + paramc.r + "|" + paramc.s + "|" + paramDownloaderTask + "|" + paramc.b + "|" + l1 + "|" + paramc.x + "|" + GlobalUtil.getInstance().getAppVersionCode();
             SDKReportManager2.getInstance().postReport(2004, paramc);
@@ -172,7 +172,7 @@ public class b
         }
       }
     }
-    ac.e("BoutiqueGameRT", "download complete, mTaskPackageName is empty! || not bgg");
+    ab.e("BoutiqueGameRT", "download complete, mTaskPackageName is empty! || not bgg");
   }
   
   public void a(String paramString)
@@ -180,13 +180,13 @@ public class b
     com.tencent.tmdownloader.internal.downloadservice.c localc = ApkDownloadManager.getInstance().queryDownloadInfoByPkgName(paramString);
     if ((localc == null) || (localc.g != 4) || ((!TextUtils.isEmpty(localc.A)) && (localc.A.endsWith("SENDED"))))
     {
-      ac.e("BoutiqueGameRT", "[doInstallSuccReport] di is NULL OR di.mStatus != DOWNLOAD_STATUS_SUCCEED OR SENDED!");
+      ab.e("BoutiqueGameRT", "[doInstallSuccReport] di is NULL OR di.mStatus != DOWNLOAD_STATUS_SUCCEED OR SENDED!");
       return;
     }
-    ac.c("BoutiqueGameRT", "[doInstallSuccReport] di = " + localc.r + "|" + localc.I + "|" + localc.s + "|" + localc.j + "|" + localc.x + "|" + localc.b);
+    ab.c("BoutiqueGameRT", "[doInstallSuccReport] di = " + localc.r + "|" + localc.I + "|" + localc.s + "|" + localc.j + "|" + localc.x + "|" + localc.b);
     if ((!TextUtils.isEmpty(paramString)) && (GlobalUtil.isRecommendGame(paramString)))
     {
-      ac.c("BoutiqueGameRT", "install complete, " + paramString + " is bgg");
+      ab.c("BoutiqueGameRT", "install complete, " + paramString + " is bgg");
       long l2 = 0L;
       Object localObject = GlobalUtil.getInstance().getContext();
       String str2 = "";
@@ -211,7 +211,7 @@ public class b
         str2 = com.tencent.dlsdk.yybutil.apkchannel.a.a((String)localObject);
         str1 = str2;
         l1 = l2;
-        ac.c("BoutiqueGameRT", "[doInstallSuccReport] Read channelId time cost:" + (System.currentTimeMillis() - l3) + "ms, path = " + (String)localObject);
+        ab.c("BoutiqueGameRT", "[doInstallSuccReport] Read channelId time cost:" + (System.currentTimeMillis() - l3) + "ms, path = " + (String)localObject);
         l1 = l2;
         str1 = str2;
       }
@@ -219,7 +219,7 @@ public class b
       {
         for (;;)
         {
-          ac.e("BoutiqueGameRT", "[doInstallSuccReport] read installed fileSize error:" + localThrowable.getMessage());
+          ab.e("BoutiqueGameRT", "[doInstallSuccReport] read installed fileSize error:" + localThrowable.getMessage());
         }
       }
       paramString = System.currentTimeMillis() + "|" + Build.BRAND + "|" + Build.MODEL + "|" + GlobalUtil.getInstance().getImei() + "|" + paramString + "|" + localc.s + "|" + str1 + "|" + localc.b + "|" + l1 + "|" + localc.x + "|" + GlobalUtil.getInstance().getAppVersionCode() + "|" + localc.u;
@@ -228,7 +228,7 @@ public class b
       com.tencent.tmdownloader.internal.storage.a.a().a(localc);
       return;
     }
-    ac.e("BoutiqueGameRT", "install complete, pkgName is empty!");
+    ab.e("BoutiqueGameRT", "install complete, pkgName is empty!");
   }
 }
 

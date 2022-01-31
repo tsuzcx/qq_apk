@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.widget.TextView;
-import baov;
+import bbqs;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class FriendProfileCardActivity$30
@@ -11,7 +11,7 @@ class FriendProfileCardActivity$30
   
   public void run()
   {
-    ((baov)this.this$0.app.getManager(235)).a(false);
+    ((bbqs)this.this$0.app.getManager(235)).a(false);
     this.a.setVisibility(8);
   }
 }

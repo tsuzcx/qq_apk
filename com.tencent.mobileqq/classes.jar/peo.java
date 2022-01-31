@@ -1,95 +1,54 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import org.json.JSONObject;
 
 public class peo
+  implements phs
 {
-  private JSONObject a;
-  
-  public peo()
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    this.a = new JSONObject();
-    a();
+    return null;
   }
   
-  public peo(String paramString)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        this.a = new JSONObject(paramString);
-        a();
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("PTSReport", 1, "e = " + paramString);
-        this.a = new JSONObject();
-        a();
-        return;
-      }
+    long l2 = 0L;
+    if (paramBaseArticleInfo == null) {
+      return null;
     }
-    this.a = new JSONObject();
-    a();
-  }
-  
-  private void a()
-  {
-    for (;;)
+    long l1 = l2;
+    if (paramBaseArticleInfo.mSocialFeedInfo != null)
     {
-      try
-      {
-        this.a.put("os", "1");
-        this.a.put("version", "8.2.6");
-        this.a.put("pts_engine_version", pdu.a().a());
-        this.a.put("pts_app_version", pds.a().a());
-        this.a.put("sdk_version", String.valueOf(Build.VERSION.SDK_INT));
-        JSONObject localJSONObject = this.a;
-        if (!TextUtils.isEmpty(Build.BRAND))
-        {
-          String str1 = Build.BRAND;
-          localJSONObject.put("device_brand", str1);
-          localJSONObject = this.a;
-          if (!TextUtils.isEmpty(Build.MODEL))
-          {
-            str1 = Build.MODEL;
-            localJSONObject.put("device_model", str1);
-            this.a.put("is_debug", "0");
-            return;
-          }
-          str1 = "";
-          continue;
-        }
-        String str2 = "";
-      }
-      catch (JSONException localJSONException)
-      {
-        QLog.e("PTSReport", 1, "[initCommonField], e = " + localJSONException);
-        return;
+      l1 = l2;
+      if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
+        l1 = paramBaseArticleInfo.mSocialFeedInfo.a.a;
       }
     }
+    return new pdp().a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l1).f(paramBaseArticleInfo).g(paramBaseArticleInfo).i(paramBaseArticleInfo).j(paramBaseArticleInfo).k(paramBaseArticleInfo).C(paramBaseArticleInfo).q(paramBaseArticleInfo).r(paramBaseArticleInfo).v(paramBaseArticleInfo).w(paramBaseArticleInfo).A(paramBaseArticleInfo).B(paramBaseArticleInfo).a("ReadInjoy_original_cell").F(paramBaseArticleInfo).E(paramBaseArticleInfo).H(paramBaseArticleInfo).I(paramBaseArticleInfo).a();
   }
   
-  public String a()
+  public void a(int paramInt1, Container paramContainer, pax parampax, int paramInt2)
   {
-    return this.a.toString();
+    paramContainer = paramContainer.getVirtualView();
+    Object localObject = (pjx)paramContainer.findViewBaseByName("id_info_avator");
+    if (localObject != null) {
+      ((pjx)localObject).a(parampax);
+    }
+    localObject = (pjv)paramContainer.findViewBaseByName("id_article_comment");
+    if (localObject != null) {
+      ((pjv)localObject).a(parampax);
+    }
+    pmr.a(paramContainer, parampax.a());
+    pen.a(paramContainer, parampax);
+    pmr.b(paramContainer, parampax);
   }
   
-  public peo a(String paramString1, String paramString2)
+  public boolean a(int paramInt, Container paramContainer, pax parampax, ViewBase paramViewBase)
   {
-    try
-    {
-      this.a.put(paramString1, paramString2);
-      return this;
-    }
-    catch (JSONException paramString1)
-    {
-      QLog.e("PTSReport", 1, "[addString], e = " + paramString1);
-    }
-    return this;
+    return false;
   }
 }
 

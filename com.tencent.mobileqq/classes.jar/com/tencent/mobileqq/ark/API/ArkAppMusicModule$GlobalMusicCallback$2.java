@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark.API;
 
-import albg;
-import albh;
+import alpu;
+import alpv;
 import com.tencent.mobileqq.music.SongInfo;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -10,16 +10,16 @@ import java.util.Iterator;
 public class ArkAppMusicModule$GlobalMusicCallback$2
   implements Runnable
 {
-  public ArkAppMusicModule$GlobalMusicCallback$2(albh paramalbh, SongInfo paramSongInfo) {}
+  public ArkAppMusicModule$GlobalMusicCallback$2(alpv paramalpv, SongInfo paramSongInfo) {}
   
   public void run()
   {
-    Iterator localIterator = albg.a.iterator();
+    Iterator localIterator = alpu.a.iterator();
     while (localIterator.hasNext())
     {
-      albg localalbg = (albg)((WeakReference)localIterator.next()).get();
-      if (localalbg != null) {
-        localalbg.a(this.a);
+      alpu localalpu = (alpu)((WeakReference)localIterator.next()).get();
+      if (localalpu != null) {
+        localalpu.a(this.a);
       }
     }
   }

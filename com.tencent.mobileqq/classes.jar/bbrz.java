@@ -1,200 +1,36 @@
-import com.wifisdk.ui.api.RProxy.Impl;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bbrz
-  implements RProxy.Impl
+class bbrz
+  implements View.OnClickListener
 {
-  public void init()
+  bbrz(bbry parambbry) {}
+  
+  public void onClick(View paramView)
   {
-    com.wifisdk.ui.api.RProxy.anim.tmsdk_wifi_secure_rotate = 2130772325;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_bg_color = 2131101468;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_custom_main_color = 2131101469;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_floor_text_color = 2131101470;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_gray = 2131101471;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_item_header_bg = 2131101472;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_item_ssid_color = 2131101473;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_button_bg = 2131101474;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_header_checking1 = 2131101475;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_header_checking2 = 2131101476;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_header_high_danger = 2131101477;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_header_normal = 2131101478;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_item_right_text_danger = 2131101479;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_item_right_text_safe = 2131101480;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_item_text = 2131101481;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_recommend_item_sub_text = 2131101482;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_recommend_item_text = 2131101483;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_white = 2131101484;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_best_icon_margin_left = 2131167777;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_button_margin_left = 2131167778;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_button_margin_right = 2131167779;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_button_text_size = 2131167780;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_des_padding = 2131167781;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_height = 2131167782;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_height_landscape = 2131167783;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_image_margin_left = 2131167784;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_image_margin_right = 2131167785;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_star_inside_padding = 2131167786;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_list_item_ssid_max_width = 2131167787;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_no_text = 2131167788;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_poi_margin_left = 2131167789;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_ssid_text_size = 2131167790;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_star_margin_left = 2131167791;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_star_size = 2131167792;
-    com.wifisdk.ui.api.RProxy.drawable.aio_tips_webview_default = 2130838174;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_banner_button_shape = 2130849257;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_banner_progress_selector = 2130849258;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_banner_progress_text_selector = 2130849259;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_floor_button_shape = 2130849260;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_floor_icon = 2130849261;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_floor_logo = 2130849262;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_floor_progress_selector = 2130849263;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_icon_no_wifi = 2130849264;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_item_button_shape = 2130849265;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_item_button_shape_pressed = 2130849266;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_item_connect_button_selector = 2130849267;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_logo = 2130849268;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_permission_button_shape = 2130849269;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_secure_checking = 2130849270;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_secure_item_loading = 2130849271;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_secure_item_risk = 2130849272;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_secure_item_safe = 2130849273;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_secure_risk = 2130849274;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_secure_rotate = 2130849275;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_secure_round = 2130849276;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_secure_safe = 2130849277;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_star_off = 2130849278;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_star_on = 2130849279;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_subway_tag = 2130849280;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_tag = 2130849281;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_tick_icon = 2130849282;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_title_back = 2130849283;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_title_gradient = 2130849284;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_vip_icon = 2130849285;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_1_1 = 2130849286;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_1_2 = 2130849287;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_1_3 = 2130849288;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_1_4 = 2130849289;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_5_1 = 2130849290;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_5_2 = 2130849291;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_5_3 = 2130849292;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_5_4 = 2130849293;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_config_1 = 2130849294;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_config_2 = 2130849295;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_config_3 = 2130849296;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_config_4 = 2130849297;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_banner_button = 2131311644;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_banner_progress = 2131311645;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_banner_progress_text = 2131311646;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_bottom_anchor = 2131311647;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_bottom_banner = 2131311648;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_bottom_icon = 2131311649;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_btn_layout = 2131311650;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_checking_img = 2131311651;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_checking_img_rotate = 2131311652;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_checking_img_round = 2131311653;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_checking_state = 2131311654;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_connect = 2131311655;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_description = 2131311656;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_floor_button = 2131311657;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_floor_content = 2131311658;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_floor_des = 2131311659;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_floor_icon = 2131311660;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_floor_main_title = 2131311661;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_floor_progress = 2131311662;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_floor_progress_text = 2131311663;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_floor_tip = 2131311664;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_floor_title = 2131311665;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_frag_container = 2131311666;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_latency_layout = 2131311667;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_list_empty_hint = 2131311668;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_list_header_line_for_security = 2131311669;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_list_header_rotate = 2131311670;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_list_header_text = 2131311671;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_list_layout = 2131311672;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_listview = 2131311673;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_middle_container = 2131311674;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_permission_layout = 2131311675;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_permission_layout_btn = 2131311676;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_permission_layout_des = 2131311677;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_permission_layout_icon = 2131311678;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_permission_layout_title = 2131311679;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_quality = 2131311680;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_recommend_button = 2131311681;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_recommend_sub_text = 2131311682;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_recommend_text = 2131311683;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_score = 2131311684;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_star1 = 2131311685;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_star2 = 2131311686;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_star3 = 2131311687;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_star4 = 2131311688;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_star5 = 2131311689;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_tip = 2131311690;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_title_back_text = 2131311691;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_title_container = 2131311692;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_title_text = 2131311693;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_tv = 2131311694;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_wifi_disable_layout = 2131311695;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_wifi_icon = 2131311696;
-    com.wifisdk.ui.api.RProxy.id.wifi_sdk_security_header_container = 2131313612;
-    com.wifisdk.ui.api.RProxy.id.wifi_sdk_security_item_left_text = 2131313613;
-    com.wifisdk.ui.api.RProxy.id.wifi_sdk_security_item_right_img = 2131313614;
-    com.wifisdk.ui.api.RProxy.id.wifi_sdk_security_item_right_text = 2131313615;
-    com.wifisdk.ui.api.RProxy.id.wifi_sdk_security_list = 2131313616;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_activity_fragment = 2131497023;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_activity_main_full = 2131497024;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_activity_title = 2131497025;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_common_view = 2131497026;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_floor_view = 2131497027;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_list_item_header = 2131497028;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_list_view_item = 2131497029;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_security_check_item = 2131497030;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_security_check_view = 2131497031;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_security_check_view_header = 2131497032;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_security_result_recomand_item = 2131497033;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_banner_btn_install = 2131654385;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_banner_btn_no_wifi = 2131654386;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_connect = 2131654387;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_connection_success = 2131654388;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_download_wifi_manager_tip = 2131654389;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_floor_btn_text = 2131654390;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_floor_content_des = 2131654391;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_floor_content_title = 2131654392;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_floor_main_title = 2131654393;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_floor_tip = 2131654394;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_no_wifi_btn = 2131654395;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_no_wifi_des = 2131654396;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_no_wifi_title = 2131654397;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_checking = 2131654398;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_cloud_item1 = 2131654399;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_cloud_item2 = 2131654400;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_cloud_item3 = 2131654401;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_cloud_item4 = 2131654402;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_cloud_item5 = 2131654403;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_cloud_title = 2131654404;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_downloading_wifiapp = 2131654405;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_high_risk_bt_text = 2131654406;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_high_risk_sub_text = 2131654407;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_high_risk_text = 2131654408;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_item_danger = 2131654409;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_item_safe = 2131654410;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_local_item_ip = 2131654411;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_local_item_link_speed = 2131654412;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_local_item_mac = 2131654413;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_local_item_security_type = 2131654414;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_local_item_signal_level = 2131654415;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_local_item_ssid = 2131654416;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_local_title = 2131654417;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_normal_risk_bt_text = 2131654418;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_normal_risk_sub_text = 2131654419;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_normal_risk_text = 2131654420;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_result = 2131654421;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_see_more_wifi = 2131654422;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_updating_list = 2131654423;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_wifi_list_main_title = 2131654424;
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131373683: 
+      this.a.dismiss();
+      return;
+    case 2131373681: 
+      if (this.a.a != null) {
+        this.a.a.a();
+      }
+      this.a.dismiss();
+      return;
+    }
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbrz
  * JD-Core Version:    0.7.0.1
  */

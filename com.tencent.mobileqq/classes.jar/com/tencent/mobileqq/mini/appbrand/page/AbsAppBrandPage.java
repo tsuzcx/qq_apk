@@ -96,9 +96,9 @@ public abstract class AbsAppBrandPage
   
   private void initKeyBoardConfirmView()
   {
-    this.keyBoardConfirmView = LayoutInflater.from(getContext().getApplicationContext()).inflate(2131493694, null);
+    this.keyBoardConfirmView = LayoutInflater.from(getContext().getApplicationContext()).inflate(2131559263, null);
     this.keyBoardConfirmView.setVisibility(8);
-    ((TextView)this.keyBoardConfirmView.findViewById(2131304532)).setOnClickListener(new AbsAppBrandPage.1(this));
+    ((TextView)this.keyBoardConfirmView.findViewById(2131370214)).setOnClickListener(new AbsAppBrandPage.1(this));
     addView(this.keyBoardConfirmView);
   }
   
@@ -150,6 +150,8 @@ public abstract class AbsAppBrandPage
   public abstract PageWebview getWebView(int paramInt);
   
   public abstract PageWebview getWebView(String paramString);
+  
+  public abstract WebviewContainer getWebviewContainerByUrl(String paramString);
   
   public boolean hasToastView()
   {
@@ -222,7 +224,6 @@ public abstract class AbsAppBrandPage
       QLog.d("AbsAppBrandPage", 4, "onPageForeground");
     }
     this.isShow = true;
-    setVisibility(0);
   }
   
   public void setAppBrandRuntime(AppBrandRuntime paramAppBrandRuntime)

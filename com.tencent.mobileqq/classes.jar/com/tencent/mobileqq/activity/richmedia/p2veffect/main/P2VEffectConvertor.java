@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.richmedia.p2veffect.main;
 
 import android.graphics.Bitmap;
 import android.opengl.GLSurfaceView;
-import bgfg;
+import bhnv;
 import com.tencent.mobileqq.activity.richmedia.p2veffect.listener.IControllerFilterProvider;
 import com.tencent.mobileqq.activity.richmedia.p2veffect.listener.IControllerPrepareListener;
 import com.tencent.mobileqq.activity.richmedia.p2veffect.listener.IFastRenderCallback;
@@ -18,7 +18,7 @@ public class P2VEffectConvertor
   
   public P2VEffectConvertor(GLSurfaceView paramGLSurfaceView, IControllerPrepareListener paramIControllerPrepareListener)
   {
-    this.p2vEffectController = bgfg.a("com.tencent.mobileqq.activity.richmedia.p2veffect.P2VEffectsController", getParamsClass(new Class[] { GLSurfaceView.class, IControllerPrepareListener.class }), new Object[] { paramGLSurfaceView, paramIControllerPrepareListener });
+    this.p2vEffectController = bhnv.a("com.tencent.mobileqq.activity.richmedia.p2veffect.P2VEffectsController", getParamsClass(new Class[] { GLSurfaceView.class, IControllerPrepareListener.class }), new Object[] { paramGLSurfaceView, paramIControllerPrepareListener });
   }
   
   private Class[] getParamsClass(Class... paramVarArgs)
@@ -35,77 +35,77 @@ public class P2VEffectConvertor
   
   public void addPlayerCallback(IP2VEnginePlayerCallback paramIP2VEnginePlayerCallback)
   {
-    bgfg.a(this.p2vEffectController, "addPlayerCallback", false, getParamsClass(new Class[] { IP2VEnginePlayerCallback.class }), new Object[] { paramIP2VEnginePlayerCallback });
+    bhnv.a(this.p2vEffectController, "addPlayerCallback", false, getParamsClass(new Class[] { IP2VEnginePlayerCallback.class }), new Object[] { paramIP2VEnginePlayerCallback });
   }
   
   public void cancelSave(IOnStopCompleteListener paramIOnStopCompleteListener)
   {
-    bgfg.a(this.p2vEffectController, "cancelSave", false, getParamsClass(new Class[] { IOnStopCompleteListener.class }), new Object[] { paramIOnStopCompleteListener });
+    bhnv.a(this.p2vEffectController, "cancelSave", false, getParamsClass(new Class[] { IOnStopCompleteListener.class }), new Object[] { paramIOnStopCompleteListener });
   }
   
   public void onDestroy()
   {
-    bgfg.a(this.p2vEffectController, "onDestroy", false, null, null);
+    bhnv.a(this.p2vEffectController, "onDestroy", false, null, null);
   }
   
   public void pausePlay()
   {
-    bgfg.a(this.p2vEffectController, "pausePlay", false, null, null);
+    bhnv.a(this.p2vEffectController, "pausePlay", false, null, null);
   }
   
   public void prepare()
   {
-    bgfg.a(this.p2vEffectController, "prepare", false, null, null);
+    bhnv.a(this.p2vEffectController, "prepare", false, null, null);
   }
   
   public void requestDraw()
   {
-    bgfg.a(this.p2vEffectController, "requestDraw", false, null, null);
+    bhnv.a(this.p2vEffectController, "requestDraw", false, null, null);
   }
   
   public void resetVideoIndex()
   {
-    bgfg.a(this.p2vEffectController, "resetVideoIndex", false, null, null);
+    bhnv.a(this.p2vEffectController, "resetVideoIndex", false, null, null);
   }
   
   public void save(String paramString, IFastRenderCallback paramIFastRenderCallback)
   {
-    bgfg.a(this.p2vEffectController, "save", false, getParamsClass(new Class[] { String.class, IFastRenderCallback.class }), new Object[] { paramString, paramIFastRenderCallback });
+    bhnv.a(this.p2vEffectController, "save", false, getParamsClass(new Class[] { String.class, IFastRenderCallback.class }), new Object[] { paramString, paramIFastRenderCallback });
   }
   
   public void setFilterProvider(IControllerFilterProvider paramIControllerFilterProvider)
   {
-    bgfg.a(this.p2vEffectController, "setFilterProvider", false, getParamsClass(new Class[] { IControllerFilterProvider.class }), new Object[] { paramIControllerFilterProvider });
+    bhnv.a(this.p2vEffectController, "setFilterProvider", false, getParamsClass(new Class[] { IControllerFilterProvider.class }), new Object[] { paramIControllerFilterProvider });
   }
   
   public void setMediaItems(ArrayList<MediaItem> paramArrayList)
   {
-    bgfg.a(this.p2vEffectController, "setMediaItems", false, getParamsClass(new Class[] { ArrayList.class }), new Object[] { paramArrayList });
+    bhnv.a(this.p2vEffectController, "setMediaItems", false, getParamsClass(new Class[] { ArrayList.class }), new Object[] { paramArrayList });
   }
   
   public void setSquareTypeAndColor(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    bgfg.a(this.p2vEffectController, "setSquareTypeAndColor", false, getParamsClass(new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    bhnv.a(this.p2vEffectController, "setSquareTypeAndColor", false, getParamsClass(new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
   }
   
   public void setWaterMarkerBitmap(Bitmap paramBitmap)
   {
-    bgfg.a(this.p2vEffectController, "setWaterMarkerBitmap", false, getParamsClass(new Class[] { Bitmap.class }), new Object[] { paramBitmap });
+    bhnv.a(this.p2vEffectController, "setWaterMarkerBitmap", false, getParamsClass(new Class[] { Bitmap.class }), new Object[] { paramBitmap });
   }
   
   public void setWaterMarkerEnable(boolean paramBoolean)
   {
-    bgfg.a(this.p2vEffectController, "setWaterMarkerEnable", false, getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
+    bhnv.a(this.p2vEffectController, "setWaterMarkerEnable", false, getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   public void startPlay(boolean paramBoolean)
   {
-    bgfg.a(this.p2vEffectController, "startPlay", false, getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
+    bhnv.a(this.p2vEffectController, "startPlay", false, getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   public void stopPlay()
   {
-    bgfg.a(this.p2vEffectController, "stopPlay", false, null, null);
+    bhnv.a(this.p2vEffectController, "stopPlay", false, null, null);
   }
 }
 

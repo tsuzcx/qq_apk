@@ -1,27 +1,12 @@
-import android.os.Handler;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.25.1;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.25.2;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
-
-public class ayas
-  implements TVK_IMediaPlayer.OnInfoListener
+class ayas
 {
-  public ayas(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  Object jdField_a_of_type_JavaLangObject;
+  String jdField_a_of_type_JavaLangString;
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public ayas(String paramString, Object paramObject)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.25.1(this));
-      continue;
-      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.25.2(this));
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
 }
 

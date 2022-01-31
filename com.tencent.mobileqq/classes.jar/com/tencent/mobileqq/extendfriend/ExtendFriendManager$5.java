@@ -1,40 +1,40 @@
 package com.tencent.mobileqq.extendfriend;
 
-import anoe;
-import anoh;
-import anoi;
-import anok;
-import ansv;
+import aoep;
+import aoes;
+import aoet;
+import aoev;
+import aojh;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class ExtendFriendManager$5
   implements Runnable
 {
-  public ExtendFriendManager$5(anoe paramanoe) {}
+  public ExtendFriendManager$5(aoep paramaoep) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ExtendFriendManagerLimitchat", 2, "checkToDownloadResource");
     }
-    if (!anoe.a(this.this$0)) {
+    if (!aoep.a(this.this$0)) {
       QLog.d("ExtendFriendManagerLimitchat", 2, "checkToDownloadResource !inited");
     }
-    if (!ansv.a())
+    if (!aojh.a())
     {
-      if (anoe.a(this.this$0) == null) {
+      if (aoep.a(this.this$0) == null) {
         QLog.d("ExtendFriendManagerLimitchat", 2, "mConfig  IS NOT READY");
       }
     }
     else {
       return;
     }
-    Object localObject = ansv.a();
-    if (anoe.a(this.this$0).a != null)
+    Object localObject = aojh.a();
+    if (aoep.a(this.this$0).a != null)
     {
-      localObject = (anoi)anoe.a(this.this$0).a.get(localObject);
-      anoe.a(this.this$0).a((anoi)localObject);
+      localObject = (aoet)aoep.a(this.this$0).a.get(localObject);
+      aoep.a(this.this$0).a((aoet)localObject);
       return;
     }
     QLog.d("ExtendFriendManagerLimitchat", 2, " limitChatResList IS NOT READY");

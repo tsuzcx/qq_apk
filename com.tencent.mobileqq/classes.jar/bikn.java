@@ -1,15 +1,9 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.graphics.Bitmap;
+import java.util.ArrayList;
 
-class bikn
-  implements FileFilter
+public abstract interface bikn
 {
-  bikn(bikm parambikm) {}
-  
-  public boolean accept(File paramFile)
-  {
-    return (paramFile.isDirectory()) && (paramFile.getName().startsWith("emoji_folder_"));
-  }
+  public abstract void a(Bitmap paramBitmap, ArrayList<biko> paramArrayList, bikp parambikp);
 }
 
 

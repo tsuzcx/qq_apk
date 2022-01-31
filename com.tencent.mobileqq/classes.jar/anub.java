@@ -1,20 +1,25 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import org.json.JSONObject;
 
-class anub
-  implements AudioManager.OnAudioFocusChangeListener
+public class anub
+  extends nrf
 {
-  anub(anua paramanua) {}
+  public anub(MessengerService paramMessengerService) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public void a(Object paramObject)
   {
-    if ((anua.a(this.a) != null) && (paramInt == -1) && (anua.a(this.a) != null)) {
-      anua.a(this.a).c(false);
+    if (this.a.a != null)
+    {
+      this.a.a.putString("data", bazb.a(paramObject).toString());
+      this.a.a(this.a.a);
+      this.a.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anub
  * JD-Core Version:    0.7.0.1
  */

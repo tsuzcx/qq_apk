@@ -10,7 +10,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class INTERFACE$StGetNAppForJumpRsp
   extends MessageMicro<StGetNAppForJumpRsp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64 }, new String[] { "extInfo", "native_appid", "ios_bundleid", "ios_schema", "appName", "android_pkg", "ios_donwload_url", "onlyOpen" }, new Object[] { null, "", "", "", "", "", "", Integer.valueOf(0) }, StGetNAppForJumpRsp.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64, 74 }, new String[] { "extInfo", "native_appid", "ios_bundleid", "ios_schema", "appName", "android_pkg", "ios_donwload_url", "onlyOpen", "android_donwload_url" }, new Object[] { null, "", "", "", "", "", "", Integer.valueOf(0), "" }, StGetNAppForJumpRsp.class);
+  public final PBStringField android_donwload_url = PBField.initString("");
   public final PBStringField android_pkg = PBField.initString("");
   public final PBStringField appName = PBField.initString("");
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();

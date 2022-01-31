@@ -1,12 +1,12 @@
 package dov.com.tencent.mobileqq.activity.richmedia.state;
 
-import bjao;
-import bjax;
+import bkra;
+import bkrj;
 
 public class RMVideoInitState$5
   implements Runnable
 {
-  public RMVideoInitState$5(bjao parambjao) {}
+  public RMVideoInitState$5(bkra parambkra) {}
   
   public void run()
   {

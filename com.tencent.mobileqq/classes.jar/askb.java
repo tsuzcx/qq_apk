@@ -1,29 +1,51 @@
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class askb
+  extends Handler
 {
-  public boolean a;
+  public askb() {}
   
-  protected void a() {}
-  
-  public void a(int paramInt, Object... paramVarArgs)
+  public askb(Looper paramLooper)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 4124: 
-      a();
-      return;
-    }
-    a((BusinessInfoCheckUpdate.AppInfo)paramVarArgs[0]);
+    super(paramLooper);
   }
   
-  public void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
+  public void handleMessage(Message paramMessage)
+  {
+    int i = paramMessage.what;
+    Object localObject = (Object[])paramMessage.obj;
+    if (i == 1)
+    {
+      if (ChatBackgroundManager.c < 3)
+      {
+        paramMessage = (String)localObject[0];
+        localObject = (QQAppInterface)localObject[1];
+        ChatBackgroundManager.a((QQAppInterface)localObject, paramMessage, axrl.a(BaseApplication.getContext()));
+        ChatBackgroundManager.c += 1;
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeDownloadTrace", 2, "reportTimes is:" + ChatBackgroundManager.c);
+        }
+        Message localMessage = ChatBackgroundManager.a.obtainMessage();
+        localMessage.what = 1;
+        localMessage.obj = new Object[] { paramMessage, localObject };
+        ChatBackgroundManager.a.sendMessageDelayed(localMessage, 120000L);
+      }
+    }
+    else {
+      return;
+    }
+    ChatBackgroundManager.c = 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     askb
  * JD-Core Version:    0.7.0.1
  */

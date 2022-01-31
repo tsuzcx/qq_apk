@@ -1,15 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Set;
 
-class akec
-  implements View.OnClickListener
+public class akec
+  extends ajxl
 {
-  akec(akdz paramakdz) {}
+  public akec(QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    awqx.b(null, "dc00898", "", "", "0X8009ACD", "0X8009ACD", 0, 0, "", "", "", "");
-    this.a.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAppInterface_friendListObserver", 2, "onUpdateFriendInfo uin:" + paramString + ",isSuccess:" + paramBoolean);
+    }
+    if (this.a.jdField_a_of_type_JavaUtilSet.contains(paramString))
+    {
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a.a() == 1) && (paramString != null) && (paramString.equals(((QQMessageFacade.Message)this.a.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a.a().get(0)).frienduin)) && (this.a.isBackground_Pause) && (this.a.f()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQAppInterface_friendListObserver", 2, "update notifcation");
+        }
+        QQAppInterface.a(this.a, (QQMessageFacade.Message)this.a.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a.a().get(0), false);
+      }
+      this.a.jdField_a_of_type_JavaUtilSet.remove(paramString);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAppInterface_friendListObserver", 2, "removeObserver");
+    }
+    this.a.removeObserver(this);
   }
 }
 

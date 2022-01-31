@@ -1,30 +1,18 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.view.animation.Transformation;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
 
 public class mwl
-  implements begw
+  implements bbkq<Integer>
 {
-  public mwl(AccountDetailActivity paramAccountDetailActivity) {}
+  public mwl(PoiMapActivity paramPoiMapActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(bbkk<Integer> parambbkk, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    if (this.a.o) {
-      return;
-    }
-    this.a.o = true;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.a.dismiss();
-      return;
-      this.a.q();
-      continue;
-      this.a.E();
-      continue;
-      AccountDetailActivity.a(this.a, this.a.d);
-    }
+    parambbkk = (FrameLayout.LayoutParams)PoiMapActivity.c(this.a).getLayoutParams();
+    parambbkk.bottomMargin = (this.a.q + this.a.t);
+    PoiMapActivity.c(this.a).setLayoutParams(parambbkk);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aeng;
-import aeoa;
-import aeob;
-import ajjy;
+import aeyb;
+import aeyw;
+import aeyx;
+import ajyc;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -11,9 +11,9 @@ import android.text.TextUtils;
 import android.text.format.Time;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
-import awao;
-import awbi;
-import awqx;
+import awzw;
+import axaq;
+import axqw;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -26,10 +26,10 @@ import java.util.List;
 import mqq.os.MqqHandler;
 
 public class SougouInputGrayTips
-  implements aeng, Runnable
+  implements aeyb, Runnable
 {
   private final long jdField_a_of_type_Long = 604800000L;
-  private aeob jdField_a_of_type_Aeob;
+  private aeyx jdField_a_of_type_Aeyx;
   private Context jdField_a_of_type_AndroidContentContext;
   private Time jdField_a_of_type_AndroidTextFormatTime;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
@@ -38,10 +38,10 @@ public class SougouInputGrayTips
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
-  public SougouInputGrayTips(QQAppInterface paramQQAppInterface, aeob paramaeob, Context paramContext, SessionInfo paramSessionInfo)
+  public SougouInputGrayTips(QQAppInterface paramQQAppInterface, aeyx paramaeyx, Context paramContext, SessionInfo paramSessionInfo)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aeob = paramaeob;
+    this.jdField_a_of_type_Aeyx = paramaeyx;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
   }
@@ -85,7 +85,7 @@ public class SougouInputGrayTips
   {
     long l1 = System.currentTimeMillis();
     paramContext = a(paramContext);
-    if ((paramContext.contains(ajjy.a(2131648430))) || (paramContext.contains("QQ输入法"))) {}
+    if ((paramContext.contains(ajyc.a(2131714219))) || (paramContext.contains("QQ输入法"))) {}
     for (boolean bool = true;; bool = false)
     {
       long l2 = System.currentTimeMillis();
@@ -98,8 +98,8 @@ public class SougouInputGrayTips
   
   public MessageRecord a(Object... paramVarArgs)
   {
-    paramVarArgs = awbi.a(-1014);
-    long l = awao.a();
+    paramVarArgs = axaq.a(-1014);
+    long l = awzw.a();
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     paramVarArgs.init(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str, "", l, -1043, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, l);
     paramVarArgs.isread = true;
@@ -122,7 +122,7 @@ public class SougouInputGrayTips
   
   public int[] a()
   {
-    return aeoa.a;
+    return aeyw.a;
   }
   
   public int b()
@@ -211,7 +211,7 @@ public class SougouInputGrayTips
       }
       i = 0;
       label483:
-      l1 = awao.a() * 1000L;
+      l1 = awzw.a() * 1000L;
       if (!TextUtils.isEmpty(str1))
       {
         if (this.jdField_a_of_type_AndroidTextFormatTime == null) {
@@ -247,11 +247,11 @@ public class SougouInputGrayTips
         QLog.d("SougouInputGrayTips", 2, "has never shown sougouInput Gray Tips");
       }
       label782:
-      if (!this.jdField_a_of_type_Aeob.a(this, new Object[0])) {
+      if (!this.jdField_a_of_type_Aeyx.a(this, new Object[0])) {
         break;
       }
       localSharedPreferences.edit().putString((String)localObject1, String.valueOf(l1)).putString((String)localObject2, String.valueOf(i + 1)).commit();
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80047CE", "0X80047CE", 0, 0, "", "", "", "");
+      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80047CE", "0X80047CE", 0, 0, "", "", "", "");
       return;
       bool = false;
     }

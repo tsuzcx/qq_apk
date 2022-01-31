@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 
 public class CommonlyUsedTroop
-  extends atmo
+  extends aukm
 {
   public long addedTimestamp;
-  @atoc
+  @auma
   public String troopUin;
 }
 

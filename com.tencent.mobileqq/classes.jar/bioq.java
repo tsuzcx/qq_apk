@@ -1,8 +1,24 @@
-public abstract interface bioq
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+class bioq
+  implements Animation.AnimationListener
 {
-  public abstract void a(boolean paramBoolean);
+  bioq(biop parambiop) {}
   
-  public abstract void c();
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (biop.a(this.a) != null)
+    {
+      biop.a(this.a).clearAnimation();
+      biop.a(this.a).setVisibility(8);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

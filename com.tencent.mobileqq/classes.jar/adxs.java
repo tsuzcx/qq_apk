@@ -1,34 +1,34 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import com.tencent.qphone.base.util.QLog;
 
 public class adxs
-  extends awfs
+  extends tth
 {
-  public adxs(AIOImageProviderService paramAIOImageProviderService, long paramLong, int paramInt1, int paramInt2) {}
+  public adxs(QQStoryItemBuilder paramQQStoryItemBuilder, adxu paramadxu, long paramLong, boolean paramBoolean) {}
   
-  public void a(int paramInt)
+  public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    adyh localadyh = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
-    if (localadyh != null) {
-      localadyh.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramInt, 0L, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.share", 2, "QQStoryItemBuilder requestVideoInfo: errorCode = " + paramInt + ", storyVideoItem = " + paramStoryVideoItem);
     }
-  }
-  
-  public void a(int paramInt, awfk paramawfk)
-  {
-    adyh localadyh = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
-    if (paramawfk.jdField_a_of_type_Int == 0)
+    if ((paramInt == 0) && (paramStoryVideoItem != null))
     {
-      paramawfk = (atpb)paramawfk.jdField_a_of_type_JavaLangObject;
-      if (localadyh != null) {
-        localadyh.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, 1, paramawfk.b, false);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramawfk.b);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Adxu, this.jdField_b_of_type_Long, paramStoryVideoItem, this.jdField_b_of_type_Boolean);
       return;
     }
-    if (localadyh != null) {
-      localadyh.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, 2, "step:" + paramawfk.jdField_a_of_type_Atpr.a + ", desc:" + paramawfk.jdField_a_of_type_Atpr.b, false);
+    if (paramInt == 10100)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("QQStoryItemBuilder", 2, "onGetVideo video has deleted");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Adxu, this.jdField_b_of_type_Long);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E");
+    if (QLog.isColorLevel()) {
+      QLog.w("QQStoryItemBuilder", 2, "onGetVideo video error");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Adxu, this.jdField_b_of_type_Long);
   }
 }
 

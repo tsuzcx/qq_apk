@@ -1,24 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import mqq.app.AppRuntime;
-
-public class mnr
+public abstract interface mnr
 {
-  TroopMemberApiService a;
+  public abstract void a(int paramInt, Throwable paramThrowable);
   
-  public mnr(TroopMemberApiService paramTroopMemberApiService)
-  {
-    this.a = paramTroopMemberApiService;
-  }
+  public abstract void a(String paramString);
   
-  public void a(AppRuntime paramAppRuntime, Bundle paramBundle)
-  {
-    if (paramBundle == null) {}
-  }
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mnr
  * JD-Core Version:    0.7.0.1
  */

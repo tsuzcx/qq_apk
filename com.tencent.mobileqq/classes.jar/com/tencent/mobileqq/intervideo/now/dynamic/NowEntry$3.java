@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.intervideo.now.dynamic;
 
 import android.os.Bundle;
-import aqnu;
-import aqox;
+import arhz;
+import arjc;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class NowEntry$3
   implements Runnable
 {
-  public NowEntry$3(aqox paramaqox, AtomicBoolean paramAtomicBoolean, Bundle paramBundle) {}
+  public NowEntry$3(arjc paramarjc, AtomicBoolean paramAtomicBoolean, Bundle paramBundle) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class NowEntry$3
     {
       QLog.i("DynamicNow | NowEntry", 1, "download cover pic timeout!");
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      aqox.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle);
+      arjc.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle);
     }
   }
 }

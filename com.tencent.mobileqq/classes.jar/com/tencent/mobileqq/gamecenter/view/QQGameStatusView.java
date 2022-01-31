@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -14,9 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import apyr;
-import apzh;
-import apzi;
+import aqst;
+import aqtj;
+import aqtk;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 
@@ -27,7 +27,7 @@ public class QQGameStatusView
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private apzi jdField_a_of_type_Apzi;
+  private aqtk jdField_a_of_type_Aqtk;
   private ScrollTextView jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView;
   private String jdField_a_of_type_JavaLangString = "";
   private boolean jdField_a_of_type_Boolean;
@@ -48,21 +48,21 @@ public class QQGameStatusView
   
   private void c()
   {
-    LayoutInflater.from(getContext()).inflate(2131493511, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131302344));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131312363));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131303242));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131312218));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(ajjy.a(2131644537));
+    LayoutInflater.from(getContext()).inflate(2131559080, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367964));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378189));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131368909));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378041));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(ajyc.a(2131710322));
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new apzh(this));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new aqtj(this));
   }
   
   private void d()
   {
     this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView = new ScrollTextView(getContext());
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView.setId(2131312182);
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView.setId(2131378004);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeAllViews();
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView, localLayoutParams);
   }
@@ -94,22 +94,22 @@ public class QQGameStatusView
       this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
       this.jdField_a_of_type_Int = paramInt;
       return;
-      paramString = ajjy.a(2131644539);
+      paramString = ajyc.a(2131710324);
       a(true);
       continue;
-      paramString = ajjy.a(2131644541);
+      paramString = ajyc.a(2131710326);
       a(true);
       continue;
-      paramString = ajjy.a(2131644543);
+      paramString = ajyc.a(2131710328);
       a(true);
       continue;
-      paramString = ajjy.a(2131644545);
+      paramString = ajyc.a(2131710330);
       a(true);
       continue;
-      paramString = ajjy.a(2131644538);
+      paramString = ajyc.a(2131710323);
       a(true);
       continue;
-      paramString = ajjy.a(2131644544);
+      paramString = ajyc.a(2131710329);
       a(false);
     }
   }
@@ -124,18 +124,18 @@ public class QQGameStatusView
   public void a(String paramString1, String paramString2, String paramString3, String[] paramArrayOfString, int paramInt, boolean paramBoolean)
   {
     this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845983);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846164);
     this.jdField_a_of_type_AndroidWidgetTextView.setText("");
     d();
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(ajjy.a(2131644542));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(ajyc.a(2131710327));
     this.jdField_a_of_type_Int = 2;
     a(true);
     this.jdField_a_of_type_Boolean = false;
     if (!TextUtils.isEmpty(paramString2))
     {
       paramString1 = URLDrawable.URLDrawableOptions.obtain();
-      paramString1.mLoadingDrawable = getResources().getDrawable(2130845983);
-      paramString1.mFailedDrawable = getResources().getDrawable(2130845983);
+      paramString1.mLoadingDrawable = getResources().getDrawable(2130846164);
+      paramString1.mFailedDrawable = getResources().getDrawable(2130846164);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(URLDrawable.getDrawable(paramString2, paramString1));
     }
     if (!TextUtils.isEmpty(paramString2)) {
@@ -152,17 +152,17 @@ public class QQGameStatusView
     while (paramInt <= 0) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView.setText(paramInt + ajjy.a(2131644546));
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView.setText(paramInt + ajyc.a(2131710331));
   }
   
   public void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(apyr.a(new ColorDrawable(-16776961), new ColorDrawable(-16776961), "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big@2x.png", "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big_click@2x.png"));
+      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(aqst.a(new ColorDrawable(-16776961), new ColorDrawable(-16776961), "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big@2x.png", "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big_click@2x.png"));
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(apyr.a(new ColorDrawable(Color.parseColor("#fdb106")), new ColorDrawable(Color.parseColor("#fdb106")), "https://i.gtimg.cn/channel/imglib/201908/upload_054783d98dd3b4888304e66fa1f8e7fa.png", "https://i.gtimg.cn/channel/imglib/201908/upload_054783d98dd3b4888304e66fa1f8e7fa.png"));
+    this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(aqst.a(new ColorDrawable(Color.parseColor("#fdb106")), new ColorDrawable(Color.parseColor("#fdb106")), "https://i.gtimg.cn/channel/imglib/201908/upload_054783d98dd3b4888304e66fa1f8e7fa.png", "https://i.gtimg.cn/channel/imglib/201908/upload_054783d98dd3b4888304e66fa1f8e7fa.png"));
   }
   
   public void b()
@@ -176,9 +176,9 @@ public class QQGameStatusView
     super.onFinishInflate();
   }
   
-  public void setListener(apzi paramapzi)
+  public void setListener(aqtk paramaqtk)
   {
-    this.jdField_a_of_type_Apzi = paramapzi;
+    this.jdField_a_of_type_Aqtk = paramaqtk;
   }
 }
 

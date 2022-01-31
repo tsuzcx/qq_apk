@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.shortvideo.util.FileUtil;
 import com.tencent.mobileqq.shortvideo.util.SimpleAudioPlayer;
 import com.tencent.mobileqq.shortvideo.util.VideoUtil;
+import com.tencent.mobileqq.sveffects.libsveffects.BuildConfig;
 import com.tencent.sveffects.Logger;
 import com.tencent.sveffects.SdkContext;
 import com.tencent.ttpic.openapi.util.VideoPrefsUtil;
@@ -65,6 +66,9 @@ public class DecodePlayer
   {
     SdkContext.getInstance().getLogger().e("DecodePlayer", "onDecodeError errorCode = " + paramInt, paramThrowable);
     stopMusic();
+    if (BuildConfig.DEBUG) {
+      throw new RuntimeException(paramThrowable);
+    }
   }
   
   public void onDecodeFinish()

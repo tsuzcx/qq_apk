@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import atmo;
+import aukm;
 
 public class CardEntry
-  extends atmo
+  extends aukm
 {
   public static final int CARD_LIST_TYPE_DISCOVER = 0;
   public static final int CARD_LIST_TYPE_NEARBY = 1;

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.entry;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 
 public class MiniAppExposureManager$CardModuleExposureData
-  implements MiniAppExposureManager.BaseExposureReport
+  extends MiniAppExposureManager.BaseExposureReport
 {
   private String actionType;
   private String reserves;

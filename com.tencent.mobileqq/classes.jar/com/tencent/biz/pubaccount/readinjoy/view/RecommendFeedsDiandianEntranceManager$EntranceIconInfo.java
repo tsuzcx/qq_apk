@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import qvg;
-import rik;
+import rhs;
+import rva;
 
 public class RecommendFeedsDiandianEntranceManager$EntranceIconInfo
-  implements Parcelable, rik
+  implements Parcelable, rva
 {
-  public static final Parcelable.Creator<EntranceIconInfo> CREATOR = new qvg();
+  public static final Parcelable.Creator<EntranceIconInfo> CREATOR = new rhs();
   public int a;
   public RecommendFeedsDiandianEntranceManager.ExtraInfo a;
   public String a;

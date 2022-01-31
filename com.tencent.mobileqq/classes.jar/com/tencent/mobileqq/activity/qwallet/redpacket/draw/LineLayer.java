@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import actc;
-import actt;
-import actw;
-import agqz;
-import agsk;
-import agsm;
-import agsn;
+import addv;
+import adem;
+import adep;
+import ahdo;
+import ahez;
+import ahfb;
+import ahfc;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -27,19 +27,19 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class LineLayer
-  extends agqz
-  implements agsm, agsn
+  extends ahdo
+  implements ahfb, ahfc
 {
   public static final int a;
   private long jdField_a_of_type_Long;
-  private actc jdField_a_of_type_Actc = new actc();
-  private actw jdField_a_of_type_Actw;
-  private agsk jdField_a_of_type_Agsk;
+  private addv jdField_a_of_type_Addv = new addv();
+  private adep jdField_a_of_type_Adep;
+  private ahez jdField_a_of_type_Ahez;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private LineLayer.LoadTempFileJob jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer$LoadTempFileJob;
-  private List<actw> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<adep> jdField_a_of_type_JavaUtilList = new ArrayList();
   private Map<Integer, String> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   private int jdField_b_of_type_Int = jdField_a_of_type_Int;
   private Map<Integer, Integer> jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
@@ -62,9 +62,9 @@ public class LineLayer
     super(paramDoodleView);
   }
   
-  private void a(Canvas paramCanvas, actw paramactw, boolean paramBoolean)
+  private void a(Canvas paramCanvas, adep paramadep, boolean paramBoolean)
   {
-    paramactw.a(paramCanvas, paramBoolean);
+    paramadep.a(paramCanvas, paramBoolean);
   }
   
   private int[] a()
@@ -81,7 +81,7 @@ public class LineLayer
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      actw localactw = (actw)localIterator.next();
+      adep localadep = (adep)localIterator.next();
       arrayOfInt[0] += 1;
     }
     return arrayOfInt;
@@ -116,7 +116,7 @@ public class LineLayer
       j = this.e;
       while (j < this.jdField_a_of_type_JavaUtilList.size() - 1)
       {
-        a(this.jdField_a_of_type_AndroidGraphicsCanvas, (actw)this.jdField_a_of_type_JavaUtilList.get(j), false);
+        a(this.jdField_a_of_type_AndroidGraphicsCanvas, (adep)this.jdField_a_of_type_JavaUtilList.get(j), false);
         j += 1;
       }
       this.f = 0;
@@ -124,12 +124,12 @@ public class LineLayer
     }
     for (;;)
     {
-      actw localactw = (actw)this.jdField_a_of_type_JavaUtilList.get(this.e);
-      j = localactw.a();
+      adep localadep = (adep)this.jdField_a_of_type_JavaUtilList.get(this.e);
+      j = localadep.a();
       if (j <= this.f) {
         break;
       }
-      localactw.a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.f, j);
+      localadep.a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.f, j);
       this.f = j;
       if (this.f != 1) {
         break;
@@ -156,12 +156,12 @@ public class LineLayer
     return this.jdField_b_of_type_Int;
   }
   
-  public final actc a()
+  public final addv a()
   {
-    return this.jdField_a_of_type_Actc;
+    return this.jdField_a_of_type_Addv;
   }
   
-  public List<actt> a()
+  public List<adem> a()
   {
     if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
       return null;
@@ -170,10 +170,10 @@ public class LineLayer
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      actw localactw = (actw)localIterator.next();
-      actt localactt = new actt();
-      localactt.a(localactw.a());
-      localArrayList.add(localactt);
+      adep localadep = (adep)localIterator.next();
+      adem localadem = new adem();
+      localadem.a(localadep.a());
+      localArrayList.add(localadem);
     }
     return localArrayList;
   }
@@ -187,7 +187,7 @@ public class LineLayer
   public void a(int paramInt1, int paramInt2)
   {
     super.a(paramInt1, paramInt2);
-    this.jdField_a_of_type_Actc.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Addv.a(paramInt1, paramInt2);
     d();
   }
   
@@ -235,7 +235,7 @@ public class LineLayer
     ((Paint)localObject).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
     this.jdField_a_of_type_AndroidGraphicsCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, (Paint)localObject);
     this.e = (paramInt2 - 1);
-    paramBitmap = (actw)this.jdField_a_of_type_JavaUtilList.get(this.e);
+    paramBitmap = (adep)this.jdField_a_of_type_JavaUtilList.get(this.e);
     if (paramBitmap != null)
     {
       this.f = paramBitmap.a();
@@ -249,9 +249,9 @@ public class LineLayer
     super.a();
   }
   
-  public void a(agsk paramagsk)
+  public void a(ahez paramahez)
   {
-    this.jdField_a_of_type_Agsk = paramagsk;
+    this.jdField_a_of_type_Ahez = paramahez;
   }
   
   public void a(boolean paramBoolean)
@@ -259,7 +259,7 @@ public class LineLayer
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_b_of_type_JavaUtilMap.clear();
     this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_Actw = null;
+    this.jdField_a_of_type_Adep = null;
     this.h = 0;
     ThreadManager.post(new LineLayer.ClearTempFileJob(this), 5, null, true);
     if (paramBoolean)
@@ -382,12 +382,12 @@ public class LineLayer
     int m = 0;
     if (this.h > 10000)
     {
-      if (this.jdField_a_of_type_Agsk != null)
+      if (this.jdField_a_of_type_Ahez != null)
       {
-        this.jdField_a_of_type_Agsk.a(2, 10000);
-        this.jdField_a_of_type_Agsk.b();
+        this.jdField_a_of_type_Ahez.a(2, 10000);
+        this.jdField_a_of_type_Ahez.b();
       }
-      this.jdField_a_of_type_Actw = null;
+      this.jdField_a_of_type_Adep = null;
       return false;
     }
     float f1 = paramMotionEvent.getX();
@@ -400,39 +400,39 @@ public class LineLayer
       for (;;)
       {
         return true;
-        if (this.jdField_a_of_type_Agsk != null) {
-          this.jdField_a_of_type_Agsk.a();
+        if (this.jdField_a_of_type_Ahez != null) {
+          this.jdField_a_of_type_Ahez.a();
         }
-        this.jdField_a_of_type_Actw = new actw(this.jdField_a_of_type_Actc, a(), null, this.g);
-        this.jdField_a_of_type_Actw.a();
+        this.jdField_a_of_type_Adep = new adep(this.jdField_a_of_type_Addv, a(), null, this.g);
+        this.jdField_a_of_type_Adep.a();
         this.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_Actw.a(f1, f2);
-        this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Actw);
+        this.jdField_a_of_type_Adep.a(f1, f2);
+        this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Adep);
         this.h = c();
         continue;
         long l1 = System.currentTimeMillis();
         long l2 = this.jdField_a_of_type_Long;
-        if (this.jdField_a_of_type_Actw != null)
+        if (this.jdField_a_of_type_Adep != null)
         {
-          this.jdField_a_of_type_Actw.a(f1, f2, l1 - l2);
+          this.jdField_a_of_type_Adep.a(f1, f2, l1 - l2);
           this.h += 1;
         }
       }
     }
-    if (this.jdField_a_of_type_Agsk != null) {
-      this.jdField_a_of_type_Agsk.b();
+    if (this.jdField_a_of_type_Ahez != null) {
+      this.jdField_a_of_type_Ahez.b();
     }
-    if (this.jdField_a_of_type_Actw != null)
+    if (this.jdField_a_of_type_Adep != null)
     {
-      this.jdField_a_of_type_Actw.a(false);
+      this.jdField_a_of_type_Adep.a(false);
       d();
-      this.jdField_a_of_type_Actw.a(true);
-      this.f = this.jdField_a_of_type_Actw.a();
+      this.jdField_a_of_type_Adep.a(true);
+      this.f = this.jdField_a_of_type_Adep.a();
       if (this.f == 1) {
         this.f = 0;
       }
     }
-    this.jdField_a_of_type_Actw = null;
+    this.jdField_a_of_type_Adep = null;
     this.h = c();
     paramMotionEvent = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
     int j = 0;
@@ -461,7 +461,7 @@ public class LineLayer
       int n;
       for (k = 0; m < j; k = n + k)
       {
-        n = ((actw)this.jdField_a_of_type_JavaUtilList.get(m)).b();
+        n = ((adep)this.jdField_a_of_type_JavaUtilList.get(m)).b();
         m += 1;
       }
       if (k + 100 >= this.h) {
@@ -481,7 +481,7 @@ public class LineLayer
       return 0;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    for (int j = 0; localIterator.hasNext(); j = ((actw)localIterator.next()).b() + j) {}
+    for (int j = 0; localIterator.hasNext(); j = ((adep)localIterator.next()).b() + j) {}
     return j;
   }
   

@@ -1,31 +1,22 @@
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
+import com.tencent.widget.AbsListView;
 
 public class rer
-  extends pba
+  implements bfob
 {
-  private final String a;
+  public rer(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
   
-  public rer(int paramInt1, int paramInt2, int paramInt3, String paramString)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramInt1, paramInt2, paramInt3);
-    this.a = paramString;
+    this.a.a(new ret(this, "onListViewScroll", paramAbsListView, paramInt1, paramInt2, paramInt3));
   }
   
-  public rer(String paramString, int paramInt)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    super(-12084769, paramInt, 860716207);
-    this.a = paramString;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public void onClick(View paramView)
-  {
-    super.onClick(paramView);
-    obz.a(paramView.getContext(), this.a);
+    this.a.a(new res(this, "onScrollStateChanged", paramAbsListView, paramInt));
+    if ((onk.a()) && (paramInt != 0)) {
+      aaad.a().a("proteus_family_feeds");
+    }
   }
 }
 

@@ -1,16 +1,13 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
-
-public class bimr
-  implements bikd
+class bimr
+  implements xfd
 {
-  public bimr(DoodleLayout paramDoodleLayout) {}
+  bimr(bimj parambimj, Runnable paramRunnable) {}
   
-  public void a(List<bika> paramList, DoodleView paramDoodleView)
+  public void a()
   {
-    paramList.add(this.a.jdField_a_of_type_Bijw);
-    paramList.add(this.a.jdField_a_of_type_Biji);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 

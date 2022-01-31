@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:background="@drawable/skin_header_bar_bg" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+    <View android:id="@id/j1w" android:background="@drawable/skin_header_bar_bg" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:background="@drawable/skin_header_bar_bg" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_below="@id/j1w">
         <TextView android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="96.0dip" android:layout_marginRight="96.0dip" android:text="@null" android:singleLine="true" android:layout_centerInParent="true" style="@style/TitleText" />
         <RelativeLayout android:id="@id/gjf" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="0.0dip" android:layout_toRightOf="@id/ivTitleName" android:layout_centerVertical="true">
             <ImageView android:id="@id/gib" android:focusable="false" android:clickable="false" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="1.0dip" android:scaleType="fitXY" android:layout_centerVertical="true" android:contentDescription="@null" />

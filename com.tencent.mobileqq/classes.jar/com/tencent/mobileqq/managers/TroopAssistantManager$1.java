@@ -2,8 +2,8 @@ package com.tencent.mobileqq.managers;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import ariz;
-import baih;
+import asfb;
+import bbjo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import java.util.Set;
 public class TroopAssistantManager$1
   implements Runnable
 {
-  public TroopAssistantManager$1(ariz paramariz, QQAppInterface paramQQAppInterface) {}
+  public TroopAssistantManager$1(asfb paramasfb, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -43,7 +43,7 @@ public class TroopAssistantManager$1
     }
     finally {}
     if (localObject1 != null) {
-      baih.a(this.a.getApp().getSharedPreferences(this.a.getAccount(), 0).edit(), "troop_assis_new_unread_list", (Object[])localObject1).commit();
+      bbjo.a(this.a.getApp().getSharedPreferences(this.a.getAccount(), 0).edit(), "troop_assis_new_unread_list", (Object[])localObject1).commit();
     }
   }
 }

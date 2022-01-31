@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import amsx;
 import android.content.Context;
 import android.text.SpannableString;
 import android.text.TextUtils;
+import anje;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
@@ -131,7 +131,7 @@ public class MessageForNearbyMarketGrayTips
         }
         for (;;)
         {
-          localSpannableString.setSpan(new amsx(paramQQAppInterface, paramContext, this.mId, -12541697, i, this.mLink, this.mScene, this), j, k, 33);
+          localSpannableString.setSpan(new anje(paramQQAppInterface, paramContext, this.mId, -12541697, i, this.mLink, this.mScene, this), j, k, 33);
           return localSpannableString;
           if (TextUtils.isEmpty(this.mLink)) {
             break;

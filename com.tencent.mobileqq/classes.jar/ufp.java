@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
-
-public final class ufp
-  implements Parcelable.Creator<CardItem.CardVideoInfo>
+public abstract interface ufp
 {
-  public CardItem.CardVideoInfo a(Parcel paramParcel)
-  {
-    return new CardItem.CardVideoInfo(paramParcel);
-  }
-  
-  public CardItem.CardVideoInfo[] a(int paramInt)
-  {
-    return new CardItem.CardVideoInfo[paramInt];
-  }
+  public abstract void a_(ufk paramufk);
 }
 
 

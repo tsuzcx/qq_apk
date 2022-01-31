@@ -1,13 +1,13 @@
-import cooperation.wadl.ipc.WadlResult;
-import java.util.ArrayList;
+import cooperation.qqpim.QQPimGetTipsInfoIPC.NoticeClickTipsRunnable;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public abstract interface bgso
+public class bgso
+  implements EIPCResultCallback
 {
-  public abstract void onQueryCallback(ArrayList<WadlResult> paramArrayList);
+  public bgso(QQPimGetTipsInfoIPC.NoticeClickTipsRunnable paramNoticeClickTipsRunnable) {}
   
-  public abstract void onQueryCallbackVia(ArrayList<WadlResult> paramArrayList);
-  
-  public abstract void onWadlTaskStatusChanged(WadlResult paramWadlResult);
+  public void onCallback(EIPCResult paramEIPCResult) {}
 }
 
 

@@ -1,81 +1,11 @@
-import com.tencent.av.ui.ConferenceFlyTicketActivity;
-import com.tencent.qphone.base.util.QLog;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.av.opengl.program.TextureProgram;
 
 public class lrp
-  extends mjm
+  extends TextureProgram
 {
-  public lrp(ConferenceFlyTicketActivity paramConferenceFlyTicketActivity)
+  public lrp()
   {
-    SSLSocketFactory.getSocketFactory().setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
-  }
-  
-  public void a(mjq parammjq)
-  {
-    String str3 = "";
-    if (parammjq.a.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      try
-      {
-        String str1 = new String(parammjq.a.jdField_a_of_type_ArrayOfByte, "UTF-8");
-        if (str1 != null)
-        {
-          try
-          {
-            JSONObject localJSONObject = new JSONObject(str1);
-            i = localJSONObject.getInt("retcode");
-            if (QLog.isColorLevel()) {
-              QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "OnAfterCreateDiscussionAsyncTask.onPostDownloadComplete : retcode = " + i);
-            }
-            str1 = str3;
-            if (localJSONObject.has("result"))
-            {
-              localJSONObject = localJSONObject.getJSONObject("result");
-              str1 = str3;
-              if (localJSONObject.has("result_code")) {
-                str1 = localJSONObject.getString("result_code");
-              }
-            }
-          }
-          catch (JSONException localJSONException)
-          {
-            Object localObject;
-            if (!QLog.isColorLevel()) {
-              break label368;
-            }
-            QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onPostDownloadComplete : result_code = " + "" + ",retcode = " + -2);
-            str2 = "";
-            i = -2;
-            continue;
-            this.a.jdField_a_of_type_Ajhf.c(Long.parseLong(this.a.h));
-            this.a.a(1, 0);
-            return;
-          }
-          QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "OnAfterCreateDiscussionAsyncTask, IsSucc[" + parammjq.a.jdField_a_of_type_Boolean + "], retcode[" + i + "], result_code[" + str1 + "], mDiscID[" + this.a.h + "]");
-          if ((i == 0) && (str1.equals("0")))
-          {
-            this.a.jdField_a_of_type_Ajhf.a(Long.parseLong(this.a.h), this.a.c);
-            this.a.a(this.a.h, this.a.c);
-            this.a.finish();
-            return;
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onPostDownloadComplete :" + localException.toString());
-        }
-        localObject = null;
-        continue;
-      }
-      label368:
-      String str2 = "";
-      int i = 1;
-    }
+    super("uniform  mat4   uMatrix;\nuniform  mat4 uTextureMatrix;\nattribute vec2  aPosition ;\nvarying vec2 vTextureCoord;\nvoid main(void)\n{\nvec4 pos = vec4(aPosition, 0.0, 1.0);\n gl_Position = uMatrix * pos;\n vTextureCoord = (uTextureMatrix * (pos+vec4(0.5,0.5,0.0,0.0))).xy;\n}\n", "#ifdef GL_ES\nprecision highp float;\n#endif\nvarying vec2 vTextureCoord;\t\t\t\t//vTextureCoord;\nuniform sampler2D uTextureSampler0;\t\t\t// 原始纹理 rgba\nuniform float fWidth;\t\t\t// 纹理宽 短边\nuniform float fHeight;\t\t\t// 纹理高 长边\n\nvoid main() {\n\n  vec2 samplingPos =vec2(0.0,0.0);\n\tvec4 texel=vec4(0.0,0.0,0.0,0.0);\n\t\n\tvec3 offset = vec3(0.0, 0.5, 0.5);\n\t//颜色系数矩阵\n\tvec3 ycoeff = vec3(0.2990, 0.5870, 0.1140);\n\tvec3 ucoeff = vec3(-0.1687,-0.3313, 0.5);\n\tvec3 vcoeff = vec3(0.5,-0.4187,-0.0813);\n\n\tvec2 nowTxtPos = vTextureCoord;\n\tvec2 size = vec2(fWidth, fHeight);\n\n\tvec2 yScale = vec2(1,1);\n\tvec2 uvScale = vec2(4,2);\n\tvec2 hehe =vec2(0.5,0.5);\n\n/*\n    顶点旋转后，纹理坐标原点变为右下角，x轴向上，y轴向左\n\trbg纹理大小为 w*h， fbo 纹理大小为 (w/4)*(h*3/2)\n    fbo中yuv420数据保存在纹理左侧1/4处，从上到下为 V ,U，Y\n    V占用空间为w/4 * h/4,U占用空间为w/4 * h/4, Y占用空间为w/4 * h\n\n*/\n\tif(nowTxtPos.y <=1.0 &&  nowTxtPos.x <= 1.0 && nowTxtPos.x >= 0.8333333333333333)//采集V   纵轴 5/6 到1\n\t{\n        if(nowTxtPos.y < 0.5){//先写第二行，再写第一行，glreadPixel是从下往上反着读的\n             nowTxtPos.y += 0.5;\n        }else{\n             nowTxtPos.y -= 0.5;\n        }\n\n        float newOffset = 0.0;\n        if(nowTxtPos.y < 0.5){ //采集下一行\n               newOffset =2.0;\n        }\n        if(nowTxtPos.y > 0.5){ //不减前半部分无法采样\n              nowTxtPos.y -= 0.5;\n        }\n\n        nowTxtPos.x = nowTxtPos.x* 1.5; //恢复为RGB中比例\n        nowTxtPos.x -=1.25; //scale后纹理坐标返回 (1,1)\n\t\tvec2 basePos1 = (nowTxtPos * size +hehe);//rgb 中的像素点\n        vec2 basePos =vec2(int(basePos1.x),int(basePos1.y))* uvScale;//取整\n\n\t\t//得到像素坐标\n        float v1,v2,v3,v4;\n        basePos.x -=newOffset; //从左上角往右往下写yuv\n        //1\n        basePos.x+=0.0;\n        basePos.y+=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tv1 = dot(texel.rgb, vcoeff);\n\t\tv1 += offset.z;\n\t\t//2\n        basePos.y -=2.0;//隔列采样\n        basePos.x -=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tv2 = dot(texel.rgb, vcoeff);\n\t\tv2 += offset.z;\n\t\t//3\n        basePos.y -=2.0;//隔列采样\n        basePos.x -=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tv3 = dot(texel.rgb, vcoeff);\n\t\tv3 += offset.z;\n\t\t//4\n        basePos.y -=2.0;//隔列采样\n        basePos.x -=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tv4 = dot(texel.rgb, vcoeff);\n\t\tv4 += offset.z;\n\t\t//写入V值\n        gl_FragColor = vec4(v1, v2, v3, v4);\n\n\t\t\n\t}\n\t//奇数行采集U\n\telse if(nowTxtPos.y <= 1.0 && nowTxtPos.x >= 0.6666666666666667 && nowTxtPos.x < 0.8333333333333333 )//采集U   纵轴 4/6 到5/6\n\t{\n        if(nowTxtPos.y < 0.5){//先写第二行，再写第一行，glreadPixel是从下往上反着读的\n             nowTxtPos.y += 0.5;\n        }else{\n             nowTxtPos.y -= 0.5;\n        }\n\n        float newOffset = 0.0;\n        if(nowTxtPos.y < 0.5){ //采集下一行\n              newOffset =2.0;\n        }\n        if(nowTxtPos.y > 0.5){ //不减前半部分无法采样\n              nowTxtPos.y -= 0.5;\n        }\n\n\t\tnowTxtPos.x = nowTxtPos.x* 1.5; //恢复为RGB中比例\n\t\tnowTxtPos.x -=1.0; //scale 后纹理坐标返回 (1,1)\n\t\tvec2 basePos1 = (nowTxtPos * size +hehe) ; \n        vec2 basePos =vec2(int(basePos1.x),int(basePos1.y))* uvScale;//取整\n\n\n        basePos.x -= newOffset;\n        //得到像素坐标\n        float u1,u2,u3,u4;\n        //1\n        basePos.x+=0.0;\n        basePos.y+=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tu1 = dot(texel.rgb, ucoeff);\n\t\tu1 += offset.y;\n\t\t//2\n        basePos.y -=2.0;//隔列采样\n        basePos.x -=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tu2 = dot(texel.rgb, ucoeff);\n\t\tu2 += offset.y;\n\t\t//3\n        basePos.y -=2.0;//隔列采样\n        basePos.x -=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tu3 = dot(texel.rgb, ucoeff);\n\t\tu3 += offset.y;\n\t\t//4\n        basePos.y -=2.0;//隔列采样\n        basePos.x -=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tu4 = dot(texel.rgb, ucoeff);\n\t\tu4 += offset.y;\n\t\t//写入U值\n        gl_FragColor = vec4(u1, u2, u3, u4);\n\t}else if(nowTxtPos.y <= 1.0 && nowTxtPos.x >= 0.0 && nowTxtPos.x <= 0.6666666666666667){ //采集Y值 纵轴 0 到4/6\n          \t    nowTxtPos.x = nowTxtPos.x* 1.5; //恢复为RGB中比例\n\n\n                // y base postion\n                vec2 basePos1 = (nowTxtPos * size +hehe) ; //  0.99996的情况？\n                vec2 basePos =vec2(int(basePos1.x),int(basePos1.y))* yScale;//取整\n\n          \t\tfloat y1,y2,y3,y4;\n\n          \t\t //1\n          \t\tsamplingPos =  basePos / size;\n          \t\ttexel = texture2D(uTextureSampler0, samplingPos);\n          \t\ty1 = dot(texel.rgb, ycoeff);\n          \t\ty1 += offset.x;\n\n          \t    //2\n          \t\tbasePos.y -= 1.0;\n          \t\tsamplingPos = basePos/size;\n          \t\ttexel = texture2D(uTextureSampler0, samplingPos);\n          \t\ty2 = dot(texel.rgb, ycoeff);\n          \t\ty2 += offset.x;\n\n          \t//3\n          \t\tbasePos.y -= 1.0;\n          \t\tsamplingPos = basePos/size;\n          \t\ttexel = texture2D(uTextureSampler0, samplingPos);\n          \t\ty3 = dot(texel.rgb, ycoeff);\n          \t\ty3 += offset.x;\n\n          \t//4\n          \t\tbasePos.y -= 1.0;\n          \t\tsamplingPos = basePos/size;\n          \t\ttexel = texture2D(uTextureSampler0, samplingPos);\n          \t\ty4 = dot(texel.rgb, ycoeff);\n          \t\ty4 += offset.x;\n\n          \t\t//写入亮度值\n          \t\tgl_FragColor = vec4(y1, y2, y3, y4);\n\n          \t\t}\n\telse\n\t{\n\t\tgl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);\n\t}\n}", new lru[] { new lrt("aPosition"), new lrv("uMatrix"), new lrv("uAlpha"), new lrv("uTextureMatrix"), new lrv("uTextureSampler0"), new lrv("uTextureSampler1"), new lrv("uTextureSampler2"), new lrv("fWidth"), new lrv("fHeight"), new lrv("colorMat"), new lrv("yuvFormat"), new lrv("leavel") }, false);
   }
 }
 

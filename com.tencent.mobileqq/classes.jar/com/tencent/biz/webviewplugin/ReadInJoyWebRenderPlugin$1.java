@@ -1,18 +1,18 @@
 package com.tencent.biz.webviewplugin;
 
 import android.text.TextUtils;
-import bbcx;
-import xdm;
+import bcfx;
+import xmm;
 
 public class ReadInJoyWebRenderPlugin$1
   implements Runnable
 {
-  public ReadInJoyWebRenderPlugin$1(xdm paramxdm) {}
+  public ReadInJoyWebRenderPlugin$1(xmm paramxmm) {}
   
   public void run()
   {
-    if (!TextUtils.isEmpty(xdm.a(this.this$0))) {
-      bbcx.a(xdm.a(this.this$0));
+    if (!TextUtils.isEmpty(xmm.a(this.this$0))) {
+      bcfx.a(xmm.a(this.this$0));
     }
   }
 }

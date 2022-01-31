@@ -1,81 +1,82 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.barrage.BarrageView;
-import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
+import com.tencent.open.base.BspatchUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.io.File;
 
 class aiuh
-  implements aiij
+  extends bbwf
 {
-  aiuh(aiug paramaiug) {}
+  aiuh(aiug paramaiug, File paramFile, aiuj paramaiuj) {}
   
-  public void a(int paramInt1, int paramInt2, String paramString)
+  public void onDone(bbwg parambbwg)
   {
+    super.onDone(parambbwg);
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewController", 2, new Object[] { "[onCompleteRender] taskId=", Integer.valueOf(paramInt1), ", roleName=", paramString, ", errCode=", Integer.valueOf(paramInt2) });
+      QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch task.getStatus:" + parambbwg.a());
     }
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("ApolloViewController", 1, "[onCompleteRender] roleName null");
-    }
-    do
+    if (3 == parambbwg.a())
     {
-      do
+      if (this.jdField_a_of_type_JavaIoFile.exists())
       {
-        do
+        String str = this.jdField_a_of_type_Aiuj.e();
+        parambbwg = this.jdField_a_of_type_Aiuj.c();
+        if (BspatchUtil.a(str, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), parambbwg))
         {
-          return;
-          if (!aiug.a(this.a).containsKey(paramString))
+          try
           {
-            QLog.e("ApolloViewController", 1, "[onCompleteRender] roleName not showing");
+            str = bdhv.a(parambbwg);
+            if (QLog.isColorLevel()) {
+              QLog.d("rscContent_CmShowRscUpdateHandler", 2, " downloadZipAndPatch onDone dstMd5:" + str + " result.mMd5:" + this.jdField_a_of_type_Aiuj.d);
+            }
+            if (aiug.a(this.jdField_a_of_type_Aiuj, str))
+            {
+              if (aiug.a(this.jdField_a_of_type_Aiuj))
+              {
+                nay.a(new File(parambbwg), this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
+                if (QLog.isColorLevel()) {
+                  QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch unZipFile ok file path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " dstpath:" + parambbwg);
+                }
+              }
+              for (;;)
+              {
+                aiug.a(this.jdField_a_of_type_Aiug, this.jdField_a_of_type_Aiuj.jdField_e_of_type_Int, this.jdField_a_of_type_Aiuj);
+                return;
+                boolean bool = bbdj.d(parambbwg, this.jdField_a_of_type_Aiuj.b() + this.jdField_a_of_type_Aiuj.jdField_e_of_type_JavaLangString);
+                QLog.i("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch no need unzip copy:" + bool);
+              }
+            }
+            QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambbwg.getMessage());
+          }
+          catch (Exception parambbwg)
+          {
+            this.jdField_a_of_type_JavaIoFile.delete();
+            QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambbwg.getMessage());
+            return;
+            QLog.e("rscContent_CmShowRscUpdateHandler", 1, "dstMd5 != result.mMd5");
+            aiug.a(this.jdField_a_of_type_Aiug, this.jdField_a_of_type_Aiuj);
             return;
           }
-          if ((aiug.a(this.a) == null) || (TextUtils.isEmpty(aiug.a(this.a).apolloId)) || (!aiug.a(this.a).apolloId.equals(paramString))) {
-            break;
+          catch (OutOfMemoryError parambbwg)
+          {
+            this.jdField_a_of_type_JavaIoFile.delete();
+            if (!QLog.isColorLevel()) {
+              return;
+            }
           }
-          aiug.b(this.a);
-          if (this.a.c != 5) {
-            this.a.jdField_a_of_type_Int = 1;
-          }
-          paramString = aiug.a(this.a).obtainMessage(18, 1, 0);
-          aiug.a(this.a).sendMessage(paramString);
-          this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.stopLoopDelayed(15000L);
-        } while (TextUtils.isEmpty(aiug.a(this.a)));
-        if (!aiug.a(this.a)) {
-          break;
         }
-      } while ((aiug.a(this.a) != 1) || (this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView == null));
-      this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.b();
-      return;
-      if (aiug.a(this.a) != 1) {
-        break;
+        else
+        {
+          QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch patchFile error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+          aiug.a(this.jdField_a_of_type_Aiug, this.jdField_a_of_type_Aiuj);
+        }
       }
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.a(true);
-    return;
-    this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a(1, aiug.a(this.a).apolloId, "Bubble");
-    return;
-    synchronized (aiug.a(this.a))
-    {
-      if (aiug.a(this.a).containsKey(paramString))
+      else
       {
-        Message localMessage = aiug.a(this.a).obtainMessage(28);
-        localMessage.obj = paramString;
-        aiug.a(this.a).sendMessage(localMessage);
-        this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.stopLoopDelayed(15000L);
+        aiug.a(this.jdField_a_of_type_Aiug, this.jdField_a_of_type_Aiuj);
+        QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch patchFile no exist path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " task.getStatus()->" + parambbwg.a());
       }
-      return;
     }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewController", 2, new Object[] { "[onStartRender] taskId=", Integer.valueOf(paramInt), ", roleName=", paramString });
-    }
-    if ((aiug.a(this.a) != null) && (!TextUtils.isEmpty(aiug.a(this.a).apolloId)) && (aiug.a(this.a).apolloId.equals(paramString))) {
-      aiug.a(this.a);
+    else {
+      QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch  file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " task.getStatus()->" + parambbwg.a());
     }
   }
 }

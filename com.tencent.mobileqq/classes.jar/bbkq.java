@@ -1,35 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.widget.PagingScrollView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Transformation;
 
-public class bbkq
-  implements View.OnTouchListener
+public abstract interface bbkq<T>
 {
-  public bbkq(PagingScrollView paramPagingScrollView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (this.a.mIsOnSpecialView)
-    {
-      int i = paramMotionEvent.getAction();
-      if ((i == 1) || (i == 3))
-      {
-        this.a.mIsOnSpecialView = false;
-        this.a.getParent().requestDisallowInterceptTouchEvent(false);
-        if (QLog.isDevelopLevel()) {
-          QLog.i("PageScrollView", 4, "C.TE ACT_UP or CANCEL");
-        }
-      }
-    }
-    return false;
-  }
+  public abstract void a(bbkk<T> parambbkk, float paramFloat, T paramT, Transformation paramTransformation);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbkq
  * JD-Core Version:    0.7.0.1
  */

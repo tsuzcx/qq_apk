@@ -1,22 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class aaeu
-  implements DialogInterface.OnCancelListener
+public class aaeu
+  implements View.OnClickListener
 {
-  public aaeu(aagn paramaagn, aagm paramaagm) {}
+  public aaeu(AboutActivity paramAboutActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Aagn.a) {
-      awqx.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
-    }
-    if (this.jdField_a_of_type_Aagm != null) {
-      this.jdField_a_of_type_Aagm.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    paramView = new Intent(this.a, QQBrowserActivity.class);
+    paramView.putExtra("uin", this.a.app.getCurrentAccountUin());
+    this.a.startActivity(paramView.putExtra("url", AboutActivity.a(this.a)));
+    axqw.b(this.a.app, "CliOper", "", "", "0X8005745", "0X8005745", 0, 0, "", "", "", "");
   }
 }
 

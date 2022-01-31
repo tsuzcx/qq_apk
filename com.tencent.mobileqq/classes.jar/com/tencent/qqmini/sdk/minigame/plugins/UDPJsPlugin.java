@@ -1,15 +1,20 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
+import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import bdfz;
-import bdgr;
-import bdnw;
+import beka;
+import beku;
+import besl;
+import bfgv;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,6 +29,7 @@ public class UDPJsPlugin
   private static final String TAG = "UDPPlugin";
   private static final AtomicInteger UDP_TASK_ID_COUNTER = new AtomicInteger();
   private final SparseArray<UDPJsPlugin.UDPTask> mTaskRegistry = new SparseArray();
+  private volatile Set<String> mUdpIpWhiteSet;
   
   static
   {
@@ -42,6 +48,11 @@ public class UDPJsPlugin
       return;
     }
     catch (JSONException paramString) {}
+  }
+  
+  private boolean getEnableDebug(String paramString)
+  {
+    return bfgv.a().getBoolean(paramString + "_debug", false);
   }
   
   private void handleTaskOperation(JSONObject paramJSONObject1, JSONObject paramJSONObject2, String paramString, int paramInt, UDPJsPlugin.UDPTask paramUDPTask)
@@ -85,9 +96,9 @@ public class UDPJsPlugin
           break;
         }
         paramJSONObject1.put("errMsg", "invalid address :[" + str + "]");
-        bdnw.a("UDPPlugin", "invalid address :[" + str + "]");
+        besl.a("UDPPlugin", "invalid address :[" + str + "]");
         return;
-        localObject1 = bdgr.a(this.mMiniAppContext, paramJSONObject2, "message");
+        localObject1 = beku.a(this.mMiniAppContext, paramJSONObject2, "message");
         int k = paramJSONObject2.optInt("offset");
         int m = paramJSONObject2.optInt("length", -1);
         i = m;
@@ -95,7 +106,7 @@ public class UDPJsPlugin
         paramJSONObject2 = localObject2;
         if (localObject1 != null)
         {
-          localObject1 = ((bdgr)localObject1).a;
+          localObject1 = ((beku)localObject1).a;
           i = m;
           j = k;
           paramJSONObject2 = (JSONObject)localObject1;
@@ -144,7 +155,10 @@ public class UDPJsPlugin
           InetAddress localInetAddress = InetAddress.getByName(paramString);
           if ((!localInetAddress.isLoopbackAddress()) && (!localInetAddress.isAnyLocalAddress()) && (!localInetAddress.isMulticastAddress()))
           {
-            boolean bool = localInetAddress.isSiteLocalAddress();
+            if (localInetAddress.isSiteLocalAddress()) {
+              return localInetAddress;
+            }
+            boolean bool = isUdpIpValid(paramString);
             if (bool) {
               return localInetAddress;
             }
@@ -152,22 +166,22 @@ public class UDPJsPlugin
         }
         catch (UnknownHostException localUnknownHostException)
         {
-          bdnw.a("UDPPlugin", "valid address [" + paramString + "]", localUnknownHostException);
+          besl.a("UDPPlugin", "valid address [" + paramString + "]", localUnknownHostException);
         }
       }
     }
     return null;
   }
   
-  public String createUDPTask(bdfz parambdfz)
+  public String createUDPTask(beka parambeka)
   {
-    parambdfz = new JSONObject();
+    parambeka = new JSONObject();
     try
     {
       UDPJsPlugin.UDPTask localUDPTask = new UDPJsPlugin.UDPTask(this);
       this.mTaskRegistry.put(localUDPTask.taskId, localUDPTask);
-      parambdfz.put("udpTaskId", localUDPTask.taskId);
-      return parambdfz.toString();
+      parambeka.put("udpTaskId", localUDPTask.taskId);
+      return parambeka.toString();
     }
     catch (IOException localIOException)
     {
@@ -175,7 +189,7 @@ public class UDPJsPlugin
       {
         try
         {
-          parambdfz.put("errMsg", localIOException.getMessage());
+          parambeka.put("errMsg", localIOException.getMessage());
         }
         catch (JSONException localJSONException1) {}
       }
@@ -186,52 +200,84 @@ public class UDPJsPlugin
       {
         try
         {
-          parambdfz.put("errMsg", localJSONException2.getMessage());
+          parambeka.put("errMsg", localJSONException2.getMessage());
         }
         catch (JSONException localJSONException3) {}
       }
     }
   }
   
-  public String operateUDPTask(bdfz parambdfz)
+  public boolean isUdpIpValid(String paramString)
+  {
+    if (this.mMiniAppInfo == null) {
+      return false;
+    }
+    if (this.mMiniAppInfo.skipDomainCheck == 1)
+    {
+      besl.a("[mini] http.udp", "udp ip检查 skip: " + paramString);
+      return true;
+    }
+    if ((this.mMiniAppInfo.verType != 3) && (getEnableDebug(this.mMiniAppInfo.appId)))
+    {
+      besl.a("[mini] http.udp", "debug opened and not online version, skip:" + paramString);
+      return true;
+    }
+    if (this.mUdpIpWhiteSet == null) {}
+    try
+    {
+      if (this.mUdpIpWhiteSet == null) {
+        this.mUdpIpWhiteSet = new HashSet(this.mMiniAppInfo.udpIpList);
+      }
+      return this.mUdpIpWhiteSet.contains(paramString);
+    }
+    finally {}
+  }
+  
+  public void onDestroy()
+  {
+    this.mUdpIpWhiteSet = null;
+    super.onDestroy();
+  }
+  
+  public String operateUDPTask(beka parambeka)
   {
     localJSONObject = new JSONObject();
     for (;;)
     {
       try
       {
-        parambdfz = new JSONObject(parambdfz.b);
-        String str = parambdfz.optString("operation");
-        int i = parambdfz.optInt("udpTaskId");
+        parambeka = new JSONObject(parambeka.b);
+        String str = parambeka.optString("operation");
+        int i = parambeka.optInt("udpTaskId");
         UDPJsPlugin.UDPTask localUDPTask = (UDPJsPlugin.UDPTask)this.mTaskRegistry.get(i);
         if (localUDPTask == null) {
           continue;
         }
-        handleTaskOperation(localJSONObject, parambdfz, str, i, localUDPTask);
-        parambdfz = localJSONObject.optString("errMsg", null);
-        if (parambdfz != null) {
-          callbackError(parambdfz, i);
+        handleTaskOperation(localJSONObject, parambeka, str, i, localUDPTask);
+        parambeka = localJSONObject.optString("errMsg", null);
+        if (parambeka != null) {
+          callbackError(parambeka, i);
         }
       }
-      catch (IOException parambdfz)
+      catch (IOException parambeka)
       {
         try
         {
-          localJSONObject.put("errMsg", parambdfz.getMessage());
+          localJSONObject.put("errMsg", parambeka.getMessage());
         }
-        catch (JSONException parambdfz) {}
+        catch (JSONException parambeka) {}
         continue;
       }
-      catch (JSONException parambdfz)
+      catch (JSONException parambeka)
       {
         try
         {
-          localJSONObject.put("errMsg", parambdfz.getMessage());
+          localJSONObject.put("errMsg", parambeka.getMessage());
         }
-        catch (JSONException parambdfz) {}
+        catch (JSONException parambeka) {}
         continue;
       }
-      return "";
+      return localJSONObject.toString();
       localJSONObject.put("errMsg", "task already closed");
     }
   }

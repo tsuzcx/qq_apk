@@ -1,9 +1,17 @@
-class adgq
-  implements begy
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+
+public class adgq
+  implements View.OnClickListener
 {
-  adgq(adgp paramadgp) {}
+  public adgq(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public void onDismiss() {}
+  public void onClick(View paramView)
+  {
+    AIOLongShotHelper.a(this.a).performClick();
+  }
 }
 
 

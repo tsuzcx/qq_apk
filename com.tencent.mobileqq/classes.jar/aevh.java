@@ -1,16 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-
 public class aevh
-  implements View.OnClickListener
 {
-  public aevh(SearchBaseActivity paramSearchBaseActivity) {}
+  public double a;
+  public double b;
   
-  public void onClick(View paramView)
+  public aevh(double paramDouble1, double paramDouble2)
   {
-    this.a.setResult(1);
-    this.a.finish();
+    this.a = paramDouble1;
+    this.b = paramDouble2;
+  }
+  
+  public aevh(aevh paramaevh)
+  {
+    a(paramaevh);
+  }
+  
+  public void a(aevh paramaevh)
+  {
+    this.a = paramaevh.a;
+    this.b = paramaevh.b;
+  }
+  
+  public String toString()
+  {
+    return "Acceleration{ax=" + this.a + ", ay=" + this.b + '}';
   }
 }
 

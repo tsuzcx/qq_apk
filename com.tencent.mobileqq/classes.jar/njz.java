@@ -1,23 +1,37 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.5;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.5.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import mqq.os.MqqHandler;
 
 public class njz
-  extends Editable.Factory
+  implements TVK_SDKMgr.InstallListener
 {
-  public njz(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  public njz(VideoCoverView.5 param5) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    if ((paramCharSequence instanceof nsi)) {
-      return (Editable)paramCharSequence;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverView", 2, "installSDK onInstalledFailed arg0=" + paramInt);
     }
-    return new nsi(paramCharSequence, 3, 20);
+    this.a.this$0.b = false;
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverView", 2, "installSDK onInstalledSuccessed");
+    }
+    this.a.this$0.b = true;
+    ThreadManager.getUIHandler().post(new VideoCoverView.5.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     njz
  * JD-Core Version:    0.7.0.1
  */

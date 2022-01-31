@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
 import android.os.Handler;
-import atmp;
-import atmq;
+import aukn;
+import auko;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 
 class TroopManager$9
@@ -12,16 +12,16 @@ class TroopManager$9
   
   public void run()
   {
-    atmp localatmp = this.this$0.a.getEntityManagerFactory().createEntityManager();
+    aukn localaukn = this.this$0.a.getEntityManagerFactory().createEntityManager();
     if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.getStatus() == 1000) {
-      localatmp.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      localaukn.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
     }
     for (;;)
     {
-      localatmp.a();
+      localaukn.a();
       this.jdField_a_of_type_AndroidOsHandler.post(new TroopManager.9.1(this));
       return;
-      localatmp.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      localaukn.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
     }
   }
 }

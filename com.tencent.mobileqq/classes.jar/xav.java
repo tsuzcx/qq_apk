@@ -1,80 +1,101 @@
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileListRspBody;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileListRspBody.Item;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
 
-public class xav
-  extends WebViewPlugin
+public abstract class xav
+  extends mxm
 {
-  public static final String a = xav.class.getSimpleName();
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
-    }
-    if ("arcard".equals(paramString2)) {
-      if ("isEntranceSupport".equals(paramString3)) {
-        if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-          break label328;
-        }
-      }
-    }
-    for (;;)
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      try
+      if (QLog.isColorLevel())
       {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        QLog.d(a, 2, "handleJsRequest jsonobject is " + paramJsBridgeListener.toString());
-        paramJsBridgeListener = paramJsBridgeListener.optString("callback");
-        if (!akmz.a())
-        {
-          bool1 = true;
-          paramString1 = new JSONObject();
-          paramString1.put("is_entrance_support", bool1);
-          callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-          bool1 = bool2;
-          return bool1;
-        }
-        bool1 = false;
-        continue;
-        if (!"isModelSupport".equals(paramString3)) {
-          break label296;
+        localObject1 = new StringBuilder().append("GetFileListObserver, errorCode=").append(paramInt).append(", has data=");
+        if (paramArrayOfByte == null) {
+          break label73;
         }
       }
-      catch (JSONException paramJsBridgeListener)
+      label73:
+      for (bool = true;; bool = false)
       {
-        paramJsBridgeListener.printStackTrace();
-        return false;
+        QLog.i("TroopFileProtocol", 2, bool);
+        a(false, false, 0, 0, 0, null, null, paramBundle);
+        return;
       }
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        QLog.d(a, 2, "handleJsRequest jsonobject is " + paramJsBridgeListener.toString());
-        paramJsBridgeListener = paramJsBridgeListener.optString("callback");
-        bool1 = aklk.a();
-        paramString1 = new JSONObject();
-        paramString1.put("is_device_support", bool1);
-        callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-        bool1 = bool2;
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        paramJsBridgeListener.printStackTrace();
-        return false;
-      }
-      label296:
-      boolean bool1 = super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
-      continue;
-      bool1 = super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
-      continue;
-      label328:
-      bool1 = false;
     }
+    Object localObject1 = new oidb_0x6d8.RspBody();
+    try
+    {
+      ((oidb_0x6d8.RspBody)localObject1).mergeFrom(paramArrayOfByte);
+      if (!((oidb_0x6d8.RspBody)localObject1).file_list_info_rsp.has())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopFileProtocol", 2, "no FileList rsp.");
+        }
+        a(false, false, 0, 0, 0, null, null, paramBundle);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileProtocol", 2, "merge data exception," + paramArrayOfByte.toString());
+      }
+      a(false, false, 0, 0, 0, null, null, paramBundle);
+      return;
+    }
+    localObject1 = (oidb_0x6d8.GetFileListRspBody)((oidb_0x6d8.RspBody)localObject1).file_list_info_rsp.get();
+    if (((oidb_0x6d8.GetFileListRspBody)localObject1).int32_ret_code.has())
+    {
+      i = ((oidb_0x6d8.GetFileListRspBody)localObject1).int32_ret_code.get();
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileProtocol", 2, "GetFileListObserver, retCode=" + i);
+      }
+      if (i < 0)
+      {
+        if (i == -1000)
+        {
+          a(true, false, 0, i, 0, null, null, paramBundle);
+          return;
+        }
+        a(false, false, 0, 0, 0, null, null, paramBundle);
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileProtocol", 2, "GetFileListObserver, has not redCode");
+      }
+      a(false, false, 0, 0, 0, null, null, paramBundle);
+      return;
+    }
+    int i = ((oidb_0x6d8.GetFileListRspBody)localObject1).uint32_all_file_count.get();
+    boolean bool = ((oidb_0x6d8.GetFileListRspBody)localObject1).bool_is_end.get();
+    int j = ((oidb_0x6d8.GetFileListRspBody)localObject1).uint32_next_index.get();
+    paramArrayOfByte = ((oidb_0x6d8.GetFileListRspBody)localObject1).bytes_context.get();
+    Object localObject2 = ((oidb_0x6d8.GetFileListRspBody)localObject1).rpt_item_list.get();
+    localObject1 = new ArrayList();
+    localObject2 = ((List)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      ((List)localObject1).add(new azpg((oidb_0x6d8.GetFileListRspBody.Item)((Iterator)localObject2).next()));
+    }
+    a(true, bool, i, paramInt, j, paramArrayOfByte, (List)localObject1, paramBundle);
   }
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, ByteStringMicro paramByteStringMicro, List<azpg> paramList, Bundle paramBundle);
 }
 
 

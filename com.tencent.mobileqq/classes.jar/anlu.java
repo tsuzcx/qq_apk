@@ -1,57 +1,29 @@
-import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.mobileqq.datareportviewer.ReportData;
+import java.util.HashMap;
 
 class anlu
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  anlu(anlt paramanlt, aniz paramaniz) {}
+  anlu(anls paramanls) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Intent localIntent = new Intent();
-    label41:
-    String str2;
-    if (this.jdField_a_of_type_Aniz.jdField_a_of_type_Boolean)
+    paramContext = (ReportData)paramIntent.getSerializableExtra("reportData");
+    paramIntent = (anlv)anls.a(this.a).get(paramContext.actionName);
+    if ((paramIntent != null) && (paramIntent.b()))
     {
-      localIntent.putExtra("emoji_to_dressup", true);
-      if (this.jdField_a_of_type_Anlt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        break label212;
-      }
-      paramView = "";
-      str2 = this.jdField_a_of_type_Anlt.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
-      if (!this.jdField_a_of_type_Aniz.jdField_a_of_type_Boolean) {
-        break label226;
-      }
-    }
-    label212:
-    label226:
-    for (String str1 = "1";; str1 = "2")
-    {
-      VasWebviewUtil.reportCommercialDrainage(paramView, "ep_mall", "0X8007192", null, 1, 0, 0, null, str2, str1);
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Anlt.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Anlt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, String.valueOf(this.jdField_a_of_type_Anlt.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId), false, localIntent, true);
-      awqx.b(this.jdField_a_of_type_Anlt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007192", 0, 0, "", this.jdField_a_of_type_Anlt.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, "2", "");
-      return;
-      if ((this.jdField_a_of_type_Anlt.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x1) != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localIntent.putExtra("emoji_is_original", bool);
-        localIntent.putExtra("emoji_author_id", this.jdField_a_of_type_Aniz.jdField_a_of_type_Int);
-        break;
-      }
-      paramView = this.jdField_a_of_type_Anlt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      break label41;
+      this.a.a();
+      anls.a(this.a).a(paramContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anlu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qqdataline.ipc.MessageRecordParcel;
+import android.os.Bundle;
 
-public final class bfhk
-  implements Parcelable.Creator<MessageRecordParcel>
+class bfhk
+  extends mxm
 {
-  public MessageRecordParcel a(Parcel paramParcel)
+  protected bfii a;
+  protected byte[] a;
+  
+  public bfhk(byte[] paramArrayOfByte, bfii parambfii)
   {
-    return MessageRecordParcel.a(paramParcel);
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Bfii = parambfii;
   }
   
-  public MessageRecordParcel[] a(int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return new MessageRecordParcel[paramInt];
+    if (this.jdField_a_of_type_Bfii != null) {
+      this.jdField_a_of_type_Bfii.a(paramInt, this.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfhk
  * JD-Core Version:    0.7.0.1
  */

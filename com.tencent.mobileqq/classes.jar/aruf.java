@@ -1,41 +1,133 @@
-import android.view.View;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.LayoutParams;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import com.tencent.qphone.base.util.QLog;
 
 public class aruf
-  extends arun
+  extends artw
 {
-  private final MultiAIOBaseViewPager a;
-  
-  public aruf(MultiAIOBaseViewPager paramMultiAIOBaseViewPager)
+  public aruf(BaseChatPie paramBaseChatPie)
   {
-    this.a = paramMultiAIOBaseViewPager;
+    super(paramBaseChatPie);
   }
   
-  public int a(View paramView1, View paramView2)
+  public static aruf a(BaseChatPie paramBaseChatPie)
   {
-    paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
-    paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
-    if (paramView1.a != paramView2.a)
+    return (aruf)paramBaseChatPie.a(33);
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof TroopChatPie)) {
+      ((TroopChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).bF();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+    if (QLog.isColorLevel()) {
+      QLog.i("BaseListenTogetherPanel_Troop", 2, "onShowTroopType hasAnythingDiglog2Show:" + paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(52)).c(this.jdField_a_of_type_Aruc.jdField_a_of_type_JavaLangString);
+    boolean bool = false;
+    if (localTroopInfo != null) {
+      bool = localTroopInfo.isAdmin();
+    }
+    return bool;
+  }
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin().equalsIgnoreCase(this.jdField_a_of_type_Aruc.c)) {
+      return true;
+    }
+    return a();
+  }
+  
+  public void c()
+  {
+    super.c();
+    this.jdField_a_of_type_Aruc.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Aruc.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
+    if (this.jdField_a_of_type_Aruc.jdField_a_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_Aruc.jdField_a_of_type_JavaLangString = "";
+    }
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c();
+    this.jdField_a_of_type_Arub = new arub();
+    this.jdField_a_of_type_Arub.jdField_a_of_type_JavaLangString = "Grp_AIO";
+    int i = arrl.a(str, this.jdField_a_of_type_Aruc.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Arub.jdField_a_of_type_Int = i;
+    this.jdField_a_of_type_Arub.b = this.jdField_a_of_type_Aruc.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void g()
+  {
+    super.g();
+    this.c = true;
+  }
+  
+  protected void h()
+  {
+    if (!this.b) {}
+    for (;;)
     {
-      if (paramView1.a) {
-        return 1;
+      return;
+      if ((this.jdField_a_of_type_Aruc.jdField_a_of_type_Int == 1) && (!TextUtils.isEmpty(this.jdField_a_of_type_Aruc.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Aruc.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession != null) && (this.jdField_a_of_type_Aruc.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.c) && (this.jdField_a_of_type_Aruc.b != 3)) {
+        if (this.jdField_a_of_type_Aruc.jdField_a_of_type_Boolean) {
+          try
+          {
+            if (arrl.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "listen_together_allow_start_admin_guide", false, false)) {
+              continue;
+            }
+            arrl.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "listen_together_allow_start_admin_guide", true, false);
+            bbgg localbbgg = bbcv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230);
+            localbbgg.setMessage("一起听歌允许群成员开启，你可以在一起听歌-设置 中关闭此权限。").setTitle("一起听歌功能更新").setPositiveButton("知道了", new arug(this, localbbgg));
+            localbbgg.show();
+            return;
+          }
+          catch (Exception localException1)
+          {
+            arrl.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "listen_together_allow_start_admin_guide", true, false);
+            QLog.e("BaseListenTogetherPanel_Troop", 1, "showAllowMemStartGuide, admin exception:", localException1);
+            return;
+          }
+        } else {
+          try
+          {
+            Object localObject = arrl.a(this.jdField_a_of_type_Aruc.jdField_a_of_type_Int, this.jdField_a_of_type_Aruc.jdField_a_of_type_JavaLangString);
+            if (!arrl.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, (String)localObject, false, false))
+            {
+              arrl.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, (String)localObject, true, false);
+              localObject = bbcv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230);
+              ((bbgg)localObject).setMessage("本群支持群成员开启一起听歌功能").setTitle("一起听歌功能更新").setPositiveButton("知道了", new aruh(this, (bbgg)localObject));
+              ((bbgg)localObject).show();
+              return;
+            }
+          }
+          catch (Exception localException2)
+          {
+            String str = arrl.a(this.jdField_a_of_type_Aruc.jdField_a_of_type_Int, this.jdField_a_of_type_Aruc.jdField_a_of_type_JavaLangString);
+            arrl.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, str, true, false);
+            QLog.e("BaseListenTogetherPanel_Troop", 1, "showAllowMemStartGuide mem exception:", localException2);
+          }
+        }
       }
-      return -1;
     }
-    int i = this.a.a();
-    if (i == paramView1.b) {
-      return 1;
-    }
-    if (i == paramView2.b) {
-      return -1;
-    }
-    return paramView1.b - paramView2.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aruf
  * JD-Core Version:    0.7.0.1
  */

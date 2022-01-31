@@ -1,15 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
 public class abbu
-  extends atdh
+  implements DialogInterface.OnClickListener
 {
-  public abbu(LoginInfoActivity paramLoginInfoActivity) {}
+  public abbu(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LoginInfoActivity.a(this.a);
-    LoginInfoActivity.b(this.a);
+    paramDialogInterface = ForwardFriendListActivity.a(this.a).getInputValue();
+    if (!TextUtils.isEmpty(paramDialogInterface))
+    {
+      ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
+      Intent localIntent = new Intent();
+      localIntent.putExtras(this.a.getIntent().getExtras());
+      localIntent.putExtra("extra_choose_friend_name", paramDialogInterface);
+      this.a.setResult(-1, localIntent);
+      this.a.finish();
+    }
   }
 }
 

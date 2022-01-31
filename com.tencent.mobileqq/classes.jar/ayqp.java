@@ -1,77 +1,109 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Vector;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.os.Message;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.transfile.C2CPttDownloadProcessor;
+import com.tencent.mobileqq.transfile.GroupPttDownloadProcessor;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
 public class ayqp
+  implements bbmi
 {
-  public ayqr a;
-  private Comparator<ayqt> a;
-  public Vector<ayqt> a;
-  public AtomicBoolean a;
-  public boolean a;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private ayvz jdField_a_of_type_Ayvz = new ayqq(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
+  private String d;
+  private String e;
   
-  public ayqp()
+  public ayqp(long paramLong1, String paramString1, QQAppInterface paramQQAppInterface, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong2, int paramInt2)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_JavaUtilVector = new Vector();
-    this.jdField_a_of_type_JavaUtilComparator = new ayqq(this);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString5;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.e = paramString4;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Ayvz.addFilter(new Class[] { aypf.class, aypj.class, GroupPttDownloadProcessor.class, C2CPttDownloadProcessor.class });
+    paramQQAppInterface.a().a(this.jdField_a_of_type_Ayvz);
   }
   
-  public void a(String paramString)
+  private void b()
   {
-    int i = 0;
-    for (;;)
+    a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_b_of_type_JavaLangString + this.jdField_a_of_type_Long);
+    Message localMessage = new Message();
+    localMessage.what = 1005;
+    ayqm localayqm = new ayqm(this.jdField_b_of_type_JavaLangString, this.c, 0);
+    localayqm.jdField_b_of_type_Int = 1;
+    localayqm.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
+    localMessage.obj = localayqm;
+    localMessage.arg1 = 0;
+    ayoz.a(localMessage, ayqp.class, 0L);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.e, this.d, this.jdField_b_of_type_Long, this.jdField_b_of_type_Int);
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_b_of_type_JavaLangString + this.jdField_a_of_type_Long);
+    if ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 1001) || (this.jdField_a_of_type_Int == 10002) || (this.jdField_a_of_type_Int == 3000))
     {
-      try
+      if (this.jdField_a_of_type_Int == 1001) {}
+      for (long l = AppSetting.c;; l = ayxc.b())
       {
-        paramString = new JSONObject(paramString);
-        Object localObject = paramString.optJSONArray("effectSwitch");
-        if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+        int i = (int)l;
+        if (new File(this.c).length() > i)
         {
-          if (((JSONArray)localObject).getJSONObject(0).optInt("androidSwitch") == 1)
-          {
-            bool = true;
-            this.jdField_a_of_type_Boolean = bool;
-          }
+          bbdr.a(-1L, this.jdField_a_of_type_Int, true, "group_compress", "ForwardImageProcessor.uploadImage");
+          this.c = bbdr.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), this.c, i);
         }
-        else
-        {
-          paramString = paramString.optJSONArray("grayMsgList");
-          if ((paramString != null) && (paramString.length() > 0))
-          {
-            if (i < paramString.length())
-            {
-              localObject = paramString.getJSONObject(i);
-              ayqt localayqt = new ayqt();
-              localayqt.a((JSONObject)localObject);
-              this.jdField_a_of_type_JavaUtilVector.add(localayqt);
-              i += 1;
-              continue;
-            }
-            Collections.sort(this.jdField_a_of_type_JavaUtilVector, this.jdField_a_of_type_JavaUtilComparator);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopEnterEffect.Config", 2, "config mergeFromJSON enable = " + this.jdField_a_of_type_Boolean + " graytips: " + this.jdField_a_of_type_JavaUtilVector.size());
-          }
-          return;
+        if (bbdr.a(null, this.c, 5, null, "ForwardImageProcessor.handleMessage.compress")) {
+          break;
         }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("TroopEnterEffect.Config", 1, "mergeFromJSON error: " + paramString.getMessage());
         return;
       }
-      boolean bool = false;
     }
+    aywa localaywa = new aywa();
+    localaywa.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+    localaywa.c = this.jdField_b_of_type_JavaLangString;
+    localaywa.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localaywa.jdField_b_of_type_Int = 1;
+    localaywa.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    localaywa.jdField_a_of_type_Boolean = true;
+    localaywa.e = 1009;
+    localaywa.i = this.c;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localaywa);
   }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Ayvz);
+  }
+  
+  public void a(bbmg parambbmg1, bbmg parambbmg2) {}
+  
+  public void a(String paramString) {}
+  
+  public boolean a(bbmg parambbmg1, bbmg parambbmg2, int paramInt)
+  {
+    return false;
+  }
+  
+  public void b(bbmg parambbmg1, bbmg parambbmg2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayqp
  * JD-Core Version:    0.7.0.1
  */

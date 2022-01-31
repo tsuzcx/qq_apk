@@ -1,50 +1,43 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.haoliyou.JefsClass;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqbd
-  implements alls
+class aqbd
+  implements DialogInterface.OnClickListener
 {
-  public aqbd(JefsClass paramJefsClass, Runnable paramRunnable, WeakReference paramWeakReference, String paramString) {}
+  aqbd(aqbc paramaqbc) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!paramBoolean1) || ((paramBoolean2) && (this.jdField_a_of_type_JavaLangRunnable != null)))
+    switch (paramInt)
     {
-      JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_JavaLangRunnable);
+    default: 
       return;
-    }
-    paramString1 = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramString1 != null) {
-      if ((paramString1 instanceof BaseActivity))
-      {
-        paramString1 = ((BaseActivity)paramString1).app;
-        if (this.jdField_a_of_type_JavaLangString != null) {
-          break label111;
-        }
+    case 0: 
+      if (QLog.isColorLevel()) {
+        QLog.i("ForwardOption.ForwardBaseOption", 2, "qbShowShareResultDialog back");
       }
-    }
-    label111:
-    for (paramString2 = "";; paramString2 = this.jdField_a_of_type_JavaLangString)
-    {
-      awqx.b(paramString1, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, "1", "", paramString2, "");
+      if (!this.a.a.isFinishing()) {
+        aqbc.a(this.a).dismiss();
+      }
+      this.a.a.finish();
       return;
-      paramString1 = null;
-      break;
-      paramString1 = null;
-      break;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaLangRunnable != null;
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardBaseOption", 2, "-->qbShowShareResultDialog--stay");
+    }
+    this.a.a.finish();
+    paramDialogInterface = new Intent(this.a.a, SplashActivity.class);
+    paramDialogInterface.addFlags(335544320);
+    this.a.a.startActivity(paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqbd
  * JD-Core Version:    0.7.0.1
  */

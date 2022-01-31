@@ -1,14 +1,6 @@
-import android.os.Handler;
-
-class uqf
-  implements ume
+public abstract interface uqf
 {
-  uqf(uqe paramuqe) {}
-  
-  public void a(ulj paramulj)
-  {
-    upw.a(this.a.a).sendMessage(upw.a(this.a.a).obtainMessage(0, paramulj));
-  }
+  public abstract void a(uqg paramuqg);
 }
 
 

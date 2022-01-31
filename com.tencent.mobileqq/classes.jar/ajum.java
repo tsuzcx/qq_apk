@@ -1,118 +1,87 @@
-import PayMQQ.UniPayRequest;
-import PayMQQ.UniPayResponse;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import com.tencent.mobileqq.utils.ChnToSpell;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.Comparator;
 
 public class ajum
-  extends ajfb
+  implements Comparator<DiscussionMemberInfo>
 {
-  private ArrayList<ajun> a = new ArrayList();
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public ajum(QQAppInterface paramQQAppInterface)
+  public ajum(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    super(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Boolean = paramString2.equals(paramString1);
   }
   
-  private void a()
+  public int a(DiscussionMemberInfo paramDiscussionMemberInfo1, DiscussionMemberInfo paramDiscussionMemberInfo2)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((ajun)localIterator.next()).a();
+    int i = -1;
+    if (paramDiscussionMemberInfo1.memberUin.equals(this.jdField_a_of_type_JavaLangString)) {
+      if (!this.jdField_a_of_type_Boolean) {}
     }
-  }
-  
-  public void a(ajun paramajun)
-  {
-    if (paramajun == null) {}
-    while (this.a.contains(paramajun)) {
-      return;
-    }
-    this.a.add(paramajun);
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.app == null) {
-      paramString = new UniPayRequest(this.mApp.getCurrentAccountUin(), "android" + paramString);
-    }
-    for (ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.mApp.getCurrentAccountUin(), "VipSTCheckServer.UinPay");; localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "VipSTCheckServer.UinPay"))
-    {
-      localToServiceMsg.extraData.putSerializable("UniPayRequest", paramString);
-      super.send(localToServiceMsg);
-      return;
-      paramString = new UniPayRequest(this.app.getCurrentAccountUin(), "android" + paramString);
-    }
-  }
-  
-  public void b(ajun paramajun)
-  {
-    if ((paramajun != null) && (this.a.contains(paramajun))) {
-      this.a.remove(paramajun);
-    }
-  }
-  
-  protected Class<? extends ajfe> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null)) {}
+    String str1;
+    String str2;
     do
     {
       do
       {
-        return;
-        str1 = paramToServiceMsg.getServiceCmd();
-      } while (TextUtils.isEmpty(str1));
-      if ((str1.compareTo("VipSTCheckServer.UinPay") == 0) && (QLog.isColorLevel())) {
-        QLog.i("UniPayHandler", 2, "req---" + paramToServiceMsg + ",res----" + paramFromServiceMsg + ",data-----" + paramObject);
+        return 1;
+        return -1;
+        if (paramDiscussionMemberInfo2.memberUin.equals(this.jdField_a_of_type_JavaLangString))
+        {
+          if (this.jdField_a_of_type_Boolean) {}
+          for (;;)
+          {
+            return i;
+            i = 1;
+          }
+        }
+        paramDiscussionMemberInfo1 = bbcl.a(paramDiscussionMemberInfo1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        paramDiscussionMemberInfo2 = bbcl.a(paramDiscussionMemberInfo2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        if ((paramDiscussionMemberInfo1 == null) || (paramDiscussionMemberInfo1.length() == 0))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("ContactUtils", 2, "lhsName is null");
+          }
+          throw new NullPointerException("com.tencent.mobileqq.utils.ContactUtils int compare lhsName is null for check ");
+        }
+        if ((paramDiscussionMemberInfo2 == null) || (paramDiscussionMemberInfo2.length() == 0))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("ContactUtils", 2, "rhsName is null");
+          }
+          throw new NullPointerException("com.tencent.mobileqq.utils.ContactUtils  int compare rhsName is null for check ");
+        }
+        if ((!Character.isDigit(paramDiscussionMemberInfo1.charAt(0))) && (!Character.isDigit(paramDiscussionMemberInfo2.charAt(0)))) {
+          break;
+        }
+        if ((Character.isDigit(paramDiscussionMemberInfo1.charAt(0))) && (Character.isDigit(paramDiscussionMemberInfo2.charAt(0)))) {
+          return paramDiscussionMemberInfo1.charAt(0) - paramDiscussionMemberInfo2.charAt(0);
+        }
+      } while (Character.isDigit(paramDiscussionMemberInfo1.charAt(0)));
+      return -1;
+      str1 = ChnToSpell.a(paramDiscussionMemberInfo1, 1);
+      str2 = ChnToSpell.a(paramDiscussionMemberInfo2, 1);
+      if ((str1.length() == 0) || (str2.length() == 0)) {
+        return -str1.compareTo(str2);
       }
-    } while (str1.compareTo("VipSTCheckServer.UinPay") != 0);
-    paramFromServiceMsg = (UniPayResponse)paramObject;
-    paramToServiceMsg = paramFromServiceMsg.getSUin();
-    int i = paramFromServiceMsg.getIShowOpen();
-    int j = paramFromServiceMsg.getIUniPayType();
-    new HashMap();
-    Object localObject = paramFromServiceMsg.getMapResponse();
-    paramFromServiceMsg = (String)((Map)localObject).get("cur_st");
-    paramObject = (String)((Map)localObject).get("net_mobile_club");
-    String str1 = (String)((Map)localObject).get("open_month");
-    String str2 = (String)((Map)localObject).get("platform");
-    String str3 = (String)((Map)localObject).get("ret");
-    String str4 = (String)((Map)localObject).get("show_open");
-    String str5 = (String)((Map)localObject).get("uin");
-    localObject = (String)((Map)localObject).get("uin_pay_type");
-    if (QLog.isColorLevel()) {
-      QLog.d("UniPayHandler", 2, "sUin==" + paramToServiceMsg + ",isShowOpen==" + i + ",iUniPayType==" + j);
+      if (str1.charAt(0) != str2.charAt(0)) {
+        break;
+      }
+      if ((bbjw.b(paramDiscussionMemberInfo1.charAt(0))) && (bbjw.b(paramDiscussionMemberInfo2.charAt(0)))) {
+        return paramDiscussionMemberInfo1.charAt(0) - paramDiscussionMemberInfo2.charAt(0);
+      }
+    } while (Character.isLetter(paramDiscussionMemberInfo1.charAt(0)));
+    if (Character.isLetter(paramDiscussionMemberInfo2.charAt(0))) {
+      return -1;
     }
-    SharedPreferences.Editor localEditor = this.app.getApp().getSharedPreferences("uniPaySp_" + paramToServiceMsg, 4).edit();
-    localEditor.putString("sUin", paramToServiceMsg);
-    localEditor.putInt("isShowOpen", i);
-    localEditor.putInt("iUinpPayType", j);
-    localEditor.putString("cur_st", paramFromServiceMsg);
-    localEditor.putString("net_mobile_club", paramObject);
-    localEditor.putString("open_month", str1);
-    localEditor.putString("platform", str2);
-    localEditor.putString("ret", str3);
-    localEditor.putString("show_open", str4);
-    localEditor.putString("uin", str5);
-    localEditor.putString("uin_pay_type", (String)localObject);
-    localEditor.commit();
-    a();
+    return str1.compareTo(str2);
+    return str1.charAt(0) - str2.charAt(0);
   }
 }
 

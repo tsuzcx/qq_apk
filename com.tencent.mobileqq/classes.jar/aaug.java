@@ -1,25 +1,16 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class aaug
-  implements beha
+  implements DialogInterface.OnClickListener
 {
-  public aaug(FriendProfileCardActivity paramFriendProfileCardActivity, begr parambegr, int paramInt) {}
+  public aaug(ChatSettingForTroop paramChatSettingForTroop, boolean paramBoolean) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    View localView1 = this.jdField_a_of_type_Begr.a.findViewById(this.jdField_a_of_type_Int);
-    if (localView1 == null) {}
-    for (localView1 = null;; localView1 = localView1.findViewById(2131296378))
-    {
-      View localView2 = FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, localView1, 5, 5, 7, 5);
-      if (localView1 != null) {
-        new RedTouch(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, localView2).a(53).a().a(azyk.a());
-      }
-      this.jdField_a_of_type_Begr.a(null);
-      return;
+    if (this.jdField_a_of_type_Boolean) {
+      axqw.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
     }
   }
 }

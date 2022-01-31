@@ -1,39 +1,188 @@
-import android.graphics.RectF;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Process;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadRegulator;
+import com.tencent.qphone.base.util.QLog;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class aktm
+  extends Handler
 {
-  public int a;
-  public RectF a;
-  public String a;
-  aktl[] a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
+  public static int a;
+  public static long a;
+  private aktb a;
+  private long b;
+  private long c;
+  private long d;
   
-  public aktm()
+  static
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_c_of_type_Int = -1;
+    jdField_a_of_type_Int = -1000;
   }
   
-  public String toString()
+  public aktm(Looper paramLooper, QQAppInterface paramQQAppInterface, aktb paramaktb)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ssoErrCode:").append(this.jdField_a_of_type_Int).append(",ssoErrMsg:").append(this.jdField_a_of_type_JavaLangString).append(",errCode:").append(this.jdField_b_of_type_Int).append(",errMsg:").append(this.jdField_b_of_type_JavaLangString).append(",sessionId:").append(this.jdField_c_of_type_JavaLangString).append(",moreUrl:").append(this.d);
-    int i = 0;
-    while ((this.jdField_a_of_type_ArrayOfAktl != null) && (i < this.jdField_a_of_type_ArrayOfAktl.length))
+    super(paramLooper);
+    this.jdField_a_of_type_Aktb = paramaktb;
+    this.b = System.currentTimeMillis();
+  }
+  
+  public void a()
+  {
+    removeCallbacksAndMessages(null);
+  }
+  
+  public void dispatchMessage(Message paramMessage)
+  {
+    ThreadRegulator.a().b();
+    super.dispatchMessage(paramMessage);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    jdField_a_of_type_Int = Process.myTid();
+    jdField_a_of_type_Long = SystemClock.currentThreadTimeMillis();
+    long l2 = System.currentTimeMillis();
+    long l3 = SystemClock.currentThreadTimeMillis();
+    Object localObject1 = (akti)paramMessage.obj;
+    label266:
+    boolean bool;
+    do
     {
-      localStringBuilder.append("\n{index=").append(i).append(":").append(this.jdField_a_of_type_ArrayOfAktl[i].toString()).append("}\n");
-      i += 1;
+      for (;;)
+      {
+        try
+        {
+          int i = paramMessage.what;
+          switch (i)
+          {
+          default: 
+            this.d += SystemClock.currentThreadTimeMillis() - l3;
+            this.c += System.currentTimeMillis() - l2;
+            if (System.currentTimeMillis() - this.b > 300000L)
+            {
+              paramMessage = new StringBuilder(100);
+              paramMessage.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
+              paramMessage.append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
+              localObject1 = (aktj)this.jdField_a_of_type_Aktb.a(1);
+              if (localObject1 != null) {
+                paramMessage.append(((aktj)localObject1).a());
+              }
+              localObject1 = (aktn)this.jdField_a_of_type_Aktb.a(2);
+              if (localObject1 != null) {
+                paramMessage.append(((aktn)localObject1).a()).append("\n");
+              }
+              QLog.d("Q.fts.BgCpu.Total", 1, paramMessage.toString());
+              this.d = 0L;
+              this.c = 0L;
+              this.b = System.currentTimeMillis();
+            }
+            return;
+          }
+        }
+        finally
+        {
+          l1 = this.d;
+          this.d = (SystemClock.currentThreadTimeMillis() - l3 + l1);
+          l1 = this.c;
+          this.c = (System.currentTimeMillis() - l2 + l1);
+          if (System.currentTimeMillis() - this.b <= 300000L) {
+            continue;
+          }
+          localObject1 = new StringBuilder(100);
+          ((StringBuilder)localObject1).append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
+          ((StringBuilder)localObject1).append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
+          Object localObject2 = (aktj)this.jdField_a_of_type_Aktb.a(1);
+          if (localObject2 == null) {
+            continue;
+          }
+          ((StringBuilder)localObject1).append(((aktj)localObject2).a());
+          localObject2 = (aktn)this.jdField_a_of_type_Aktb.a(2);
+          if (localObject2 == null) {
+            continue;
+          }
+          ((StringBuilder)localObject1).append(((aktn)localObject2).a()).append("\n");
+          QLog.d("Q.fts.BgCpu.Total", 1, ((StringBuilder)localObject1).toString());
+          this.d = 0L;
+          this.c = 0L;
+          this.b = System.currentTimeMillis();
+        }
+        if (((akti)localObject1).c()) {
+          sendMessageDelayed(obtainMessage(2, localObject1), 30000L);
+        } else if (QLog.isColorLevel()) {
+          QLog.w("Q.fts.sync_worker", 2, "readSyncedCursor is false!!");
+        }
+      }
+      removeMessages(2, localObject1);
+      if (((akti)localObject1).d()) {
+        ((akti)localObject1).e();
+      }
+      bool = this.jdField_a_of_type_Aktb.b;
+      if (!bool) {
+        break;
+      }
+      this.d += SystemClock.currentThreadTimeMillis() - l3;
+      this.c += System.currentTimeMillis() - l2;
+    } while (System.currentTimeMillis() - this.b <= 300000L);
+    paramMessage = new StringBuilder(100);
+    paramMessage.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
+    paramMessage.append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
+    localObject1 = (aktj)this.jdField_a_of_type_Aktb.a(1);
+    if (localObject1 != null) {
+      paramMessage.append(((aktj)localObject1).a());
     }
-    return localStringBuilder.toString();
+    localObject1 = (aktn)this.jdField_a_of_type_Aktb.a(2);
+    if (localObject1 != null) {
+      paramMessage.append(((aktn)localObject1).a()).append("\n");
+    }
+    QLog.d("Q.fts.BgCpu.Total", 1, paramMessage.toString());
+    this.d = 0L;
+    this.c = 0L;
+    this.b = System.currentTimeMillis();
+    return;
+    paramMessage = obtainMessage(2, localObject1);
+    if (((akti)localObject1).f()) {}
+    for (long l1 = 15000L;; l1 = 30000L)
+    {
+      sendMessageDelayed(paramMessage, l1);
+      break;
+      removeMessages(3, localObject1);
+      ((akti)localObject1).e();
+      bool = this.jdField_a_of_type_Aktb.b;
+      if (!bool) {
+        break;
+      }
+      this.d += SystemClock.currentThreadTimeMillis() - l3;
+      this.c += System.currentTimeMillis() - l2;
+      if (System.currentTimeMillis() - this.b <= 300000L) {
+        break label266;
+      }
+      paramMessage = new StringBuilder(100);
+      paramMessage.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
+      paramMessage.append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
+      localObject1 = (aktj)this.jdField_a_of_type_Aktb.a(1);
+      if (localObject1 != null) {
+        paramMessage.append(((aktj)localObject1).a());
+      }
+      localObject1 = (aktn)this.jdField_a_of_type_Aktb.a(2);
+      if (localObject1 != null) {
+        paramMessage.append(((aktn)localObject1).a()).append("\n");
+      }
+      QLog.d("Q.fts.BgCpu.Total", 1, paramMessage.toString());
+      this.d = 0L;
+      this.c = 0L;
+      this.b = System.currentTimeMillis();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aktm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import atjg;
-import atkc;
-import bbmy;
+import auhf;
+import auib;
+import bcpw;
 import java.util.List;
 
 public class AccountOnlineStateActivity$4$1
   implements Runnable
 {
-  public AccountOnlineStateActivity$4$1(atjg paramatjg, boolean paramBoolean, List paramList) {}
+  public AccountOnlineStateActivity$4$1(auhf paramauhf, boolean paramBoolean, List paramList) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean) {
-      if (AccountOnlineStateActivity.a(this.jdField_a_of_type_Atjg.a) != null) {
-        AccountOnlineStateActivity.a(this.jdField_a_of_type_Atjg.a).a(this.jdField_a_of_type_JavaUtilList);
+      if (AccountOnlineStateActivity.a(this.jdField_a_of_type_Auhf.a) != null) {
+        AccountOnlineStateActivity.a(this.jdField_a_of_type_Auhf.a).a(this.jdField_a_of_type_JavaUtilList);
       }
     }
-    while (AccountOnlineStateActivity.a(this.jdField_a_of_type_Atjg.a) == null) {
+    while (AccountOnlineStateActivity.a(this.jdField_a_of_type_Auhf.a) == null) {
       return;
     }
-    bbmy.a(AccountOnlineStateActivity.a(this.jdField_a_of_type_Atjg.a), 1, 2131624746, 1).a();
+    bcpw.a(AccountOnlineStateActivity.a(this.jdField_a_of_type_Auhf.a), 1, 2131690307, 1).a();
   }
 }
 

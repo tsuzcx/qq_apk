@@ -2,16 +2,16 @@ package com.tencent.biz.pubaccount.readinjoy;
 
 import android.view.View;
 import com.tencent.mobileqq.app.BaseActivity;
-import ngv;
+import nsf;
 
 public class DailyDynamicHeaderViewController$9
   implements Runnable
 {
-  public DailyDynamicHeaderViewController$9(ngv paramngv) {}
+  public DailyDynamicHeaderViewController$9(nsf paramnsf) {}
   
   public void run()
   {
-    ngv.a(this.this$0, (BaseActivity)ngv.a(this.this$0).getContext(), new DailyDynamicHeaderViewController.9.1(this));
+    nsf.a(this.this$0, (BaseActivity)nsf.a(this.this$0).getContext(), new DailyDynamicHeaderViewController.9.1(this));
   }
 }
 

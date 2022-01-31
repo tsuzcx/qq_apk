@@ -1,30 +1,24 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 
-final class awcs
-  implements awcu
+public class awcs
+  implements DialogInterface.OnClickListener
 {
-  awcs(BusinessObserver paramBusinessObserver) {}
+  public awcs(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("dataErrorMsg", paramString);
-    localBundle.putInt("dataErrorCode", paramInt);
-    this.a.onReceive(0, false, localBundle);
-  }
-  
-  public void a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putByteArray("data", paramString.getBytes());
-    localBundle.putString("cmd", "getAppConfig");
-    this.a.onReceive(0, true, localBundle);
+    SignTextEditFragment.a(this.a, "");
+    paramDialogInterface.dismiss();
+    this.a.b.obtainMessage(6, null).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     awcs
  * JD-Core Version:    0.7.0.1
  */

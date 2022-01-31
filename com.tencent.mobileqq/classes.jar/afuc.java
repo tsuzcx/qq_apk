@@ -1,57 +1,22 @@
-import android.support.v4.util.SparseArrayCompat;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 
 public class afuc
+  implements URLDrawable.URLDrawableListener
 {
-  private SparseArrayCompat<SparseArrayCompat<acxg>> a = new SparseArrayCompat(15);
-  private SparseArrayCompat<acxf> b = new SparseArrayCompat();
+  public afuc(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public afuc(afuz paramafuz)
-  {
-    a(1, new afvn(paramafuz));
-    a(2, new afuy(paramafuz));
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  private void a(int paramInt, acxg paramacxg)
-  {
-    this.b.put(paramInt, paramacxg);
-    int[] arrayOfInt = paramacxg.a();
-    int j = arrayOfInt.length;
-    int i = 0;
-    while (i < j)
-    {
-      int k = arrayOfInt[i];
-      SparseArrayCompat localSparseArrayCompat2 = (SparseArrayCompat)this.a.get(k);
-      SparseArrayCompat localSparseArrayCompat1 = localSparseArrayCompat2;
-      if (localSparseArrayCompat2 == null)
-      {
-        localSparseArrayCompat1 = new SparseArrayCompat();
-        this.a.put(k, localSparseArrayCompat1);
-      }
-      localSparseArrayCompat1.put(paramInt, paramacxg);
-      i += 1;
-    }
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public <T extends acxf> T a(int paramInt)
-  {
-    return (acxf)this.b.get(paramInt);
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void a(int paramInt)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)this.a.get(paramInt);
-    if (localSparseArrayCompat == null) {}
-    for (;;)
-    {
-      return;
-      int j = localSparseArrayCompat.size();
-      int i = 0;
-      while (i < j)
-      {
-        ((acxg)localSparseArrayCompat.valueAt(i)).a(paramInt);
-        i += 1;
-      }
-    }
+    EmoticonGroupStoreFragment.a(this.a).invalidate();
   }
 }
 

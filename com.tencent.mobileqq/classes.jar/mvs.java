@@ -1,28 +1,20 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import java.lang.ref.WeakReference;
+import android.graphics.drawable.Drawable;
 
-class mvs
-  implements View.OnClickListener
+public class mvs
 {
-  mvs(mut parammut, nbu paramnbu) {}
+  public Drawable a;
+  public final String a;
+  public mvj a;
+  public String b;
   
-  public void onClick(View paramView)
+  public boolean equals(Object paramObject)
   {
-    paramView = new Intent((Context)this.jdField_a_of_type_Mut.a.get(), ScannerActivity.class);
-    paramView.putExtra("from", this.jdField_a_of_type_Mut.a.getClass().getName());
-    paramView.putExtra("finishAfterSucc", true);
-    ((BaseActivity)this.jdField_a_of_type_Mut.a.get()).startActivity(paramView);
-    mut.a(this.jdField_a_of_type_Mut, this.jdField_a_of_type_Nbu.a);
+    return ((paramObject instanceof mvs)) && (((mvs)paramObject).a.equals(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mvs
  * JD-Core Version:    0.7.0.1
  */

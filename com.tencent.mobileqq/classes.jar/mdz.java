@@ -1,39 +1,15 @@
-import com.tencent.av.app.VideoAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
 public class mdz
-  extends mfk
+  implements View.OnClickListener
 {
-  public lls a;
-  public mec a;
+  public mdz(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  mdz(med parammed)
+  public void onClick(View paramView)
   {
-    super(parammed);
-    this.jdField_a_of_type_Lls = new mea(this);
-  }
-  
-  void a()
-  {
-    meb localmeb = new meb(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(localmeb);
-  }
-  
-  public void a(mec parammec)
-  {
-    med localmed = a();
-    if (localmed == null) {
-      return;
-    }
-    localmed.a(parammec);
-  }
-  
-  public void b(mec parammec)
-  {
-    med localmed = a();
-    if (localmed == null) {
-      return;
-    }
-    localmed.b(parammec);
+    this.a.finish();
   }
 }
 

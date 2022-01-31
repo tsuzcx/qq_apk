@@ -1,31 +1,36 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
-
-public class agme
-  implements PopupWindow.OnDismissListener
+final class agme
+  extends aglx
 {
-  public agme(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
-  
-  public void onDismiss()
+  public boolean a()
   {
-    RedPacketManager.getInstance().onActiveAccount();
-    if ((TroopUnAccalimedRedPacketList.a(this.a) != null) && (agmh.a(TroopUnAccalimedRedPacketList.a(this.a)) != null))
+    return true;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (!super.a(paramString)) {}
+    String[] arrayOfString;
+    do
     {
-      agmh.a(TroopUnAccalimedRedPacketList.a(this.a)).clear();
-      TroopUnAccalimedRedPacketList.a(this.a).notifyDataSetChanged();
-    }
-    if ((!TroopUnAccalimedRedPacketList.a(this.a)) && (TroopUnAccalimedRedPacketList.a(this.a) != null)) {
-      agwj.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.keyback", "", "");
-    }
+      return false;
+      arrayOfString = agmo.a(paramString);
+    } while ((arrayOfString != null) && ((("image".equals(arrayOfString[0])) && (agmo.a(arrayOfString[1])) && (!arrayOfString[1].equals("gif"))) || (agmo.b(paramString))));
+    return true;
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public boolean d()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agme
  * JD-Core Version:    0.7.0.1
  */

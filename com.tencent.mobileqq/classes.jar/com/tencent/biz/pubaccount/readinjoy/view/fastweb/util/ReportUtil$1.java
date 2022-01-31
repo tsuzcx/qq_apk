@@ -4,10 +4,10 @@ import android.os.Parcel;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import obz;
+import onk;
 import org.json.JSONException;
 import org.json.JSONObject;
-import raz;
+import rnr;
 
 public final class ReportUtil$1
   implements Runnable
@@ -45,7 +45,7 @@ public final class ReportUtil$1
         break label148;
       }
     }
-    JSONObject localJSONObject = obz.a(localBaseActivity, localArticleInfo, (int)localArticleInfo.mChannelID, "2");
+    JSONObject localJSONObject = onk.a(localBaseActivity, localArticleInfo, (int)localArticleInfo.mChannelID, "2");
     label148:
     for (;;)
     {
@@ -53,7 +53,7 @@ public final class ReportUtil$1
       {
         localJSONObject.put("rowkey", localArticleInfo.innerUniqueID);
         localJSONObject.put("duration", l1 - l2);
-        raz.a(localArticleInfo, "0X800A732", localJSONObject.toString());
+        rnr.a(localArticleInfo, "0X800A732", localJSONObject.toString());
         return;
       }
       catch (JSONException localJSONException)

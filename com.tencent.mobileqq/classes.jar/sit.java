@@ -1,25 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-final class sit
-  implements DialogInterface.OnClickListener
+public class sit
 {
-  sit(List paramList) {}
+  private static final Map<String, Object> a = new HashMap();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      sis.a((String)localIterator.next());
-    }
-    paramDialogInterface.dismiss();
-  }
+  public static void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sit
  * JD-Core Version:    0.7.0.1
  */

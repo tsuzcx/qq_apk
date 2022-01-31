@@ -1,77 +1,92 @@
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.biz.pubaccount.readinjoy.viewmodels.ArticleViewModel.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
+import com.tencent.image.AbstractGifImage;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
 public class rix
-  implements oqi
+  implements bfob
 {
-  private final BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence = "";
-  private riy<CharSequence> jdField_a_of_type_Riy = new riy("");
-  private riy<CharSequence> b = new riy("");
-  private riy<CharSequence> c = new riy("");
+  public rix(FastWebActivity paramFastWebActivity) {}
   
-  private rix(BaseArticleInfo paramBaseArticleInfo)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
-    this.jdField_a_of_type_JavaLangCharSequence = paz.a((ArticleInfo)paramBaseArticleInfo);
-    this.c.a(rja.a(paramBaseArticleInfo, this));
-    this.jdField_a_of_type_Riy.a(rja.b(paramBaseArticleInfo, this));
-    this.b.a(rja.c(paramBaseArticleInfo, this));
-  }
-  
-  public static rix a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    return new rix(paramBaseArticleInfo);
-  }
-  
-  private void a()
-  {
-    ThreadManager.executeOnSubThread(new ArticleViewModel.1(this));
-  }
-  
-  public BaseArticleInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-  }
-  
-  public CharSequence a()
-  {
-    a();
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public riy<CharSequence> a()
-  {
-    return this.jdField_a_of_type_Riy;
-  }
-  
-  public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArticleViewModel", 2, "[onLoadUserInfoSucceed] uin=" + paramString + " userInfo: " + paramReadInJoyUserInfo);
+    if (FastWebActivity.a(this.a) != null)
+    {
+      FastWebActivity.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      FastWebActivity.a(this.a).a(this.a.app, paramAbsListView, paramInt1, paramInt2);
     }
-    this.c.a(rja.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this));
-    this.jdField_a_of_type_Riy.a(rja.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this));
-    this.b.a(rja.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this));
+    FastWebActivity.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (FastWebActivity.a(this.a) != null) {
+      FastWebActivity.a(this.a).a(FastWebActivity.a(this.a), FastWebActivity.a(this.a).getFirstVisiblePosition(), paramInt2);
+    }
+    FastWebActivity.a(this.a, paramAbsListView, paramInt1 + paramInt2 - 1, false);
+    FastWebActivity.a(this.a, 0);
+    if ((paramAbsListView.getChildAt(0).getTop() == 0) && (paramInt1 == 0))
+    {
+      QLog.d(FastWebActivity.a(this.a), 2, "on scroller top");
+      FastWebActivity.a(this.a, 1);
+    }
+    if (paramInt2 + paramInt1 == paramInt3)
+    {
+      QLog.d(FastWebActivity.a(this.a), 2, "on scroller bottom");
+      FastWebActivity.a(this.a, 2);
+    }
   }
   
-  public void a(String paramString1, String paramString2)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    QLog.e("ArticleViewModel", 1, "[onLoadUserInfoFailed] uin=" + paramString1 + ", msg=" + paramString2);
-  }
-  
-  public riy<CharSequence> b()
-  {
-    return this.b;
-  }
-  
-  public riy<CharSequence> c()
-  {
-    return this.c;
+    boolean bool1 = FastWebActivity.a(this.a, FastWebActivity.a(this.a).getLastVisiblePosition());
+    String str;
+    if (bool1)
+    {
+      str = "list_comment_kandian";
+      if (paramInt != 0) {
+        break label310;
+      }
+      AbstractGifImage.resumeAll();
+      int i = FastWebActivity.a(this.a).getFirstVisiblePosition();
+      FastWebActivity.e(this.a);
+      FastWebActivity.b(this.a, i);
+      aaad.a().a(str, false);
+      label70:
+      boolean bool2 = FastWebActivity.b(this.a, FastWebActivity.a(this.a).getFirstVisiblePosition());
+      rnr.a(paramAbsListView, paramInt, FastWebActivity.a(this.a).innerUniqueID, FastWebActivity.a(this.a, paramAbsListView, paramInt), bool2);
+      if (FastWebActivity.a(this.a) != null) {
+        FastWebActivity.a(this.a).a(paramAbsListView, paramInt);
+      }
+      FastWebActivity.a(this.a).a(paramAbsListView, paramInt);
+      FastWebActivity.f(this.a);
+      if (FastWebActivity.a(this.a) != null) {
+        FastWebActivity.a(this.a).a(paramAbsListView, paramInt);
+      }
+      if (paramInt == 1) {
+        FastWebActivity.e(this.a);
+      }
+      if (!bool1) {
+        break label324;
+      }
+      FastWebActivity.a(this.a).a();
+      if ((FastWebActivity.a(this.a) != null) && (FastWebActivity.a(this.a) != null) && (FastWebActivity.a(this.a).a() != null)) {
+        FastWebActivity.a(this.a).a().a(FastWebActivity.a(this.a).getFirstVisiblePosition() - FastWebActivity.a(this.a).getCount(), FastWebActivity.a(this.a).getLastVisiblePosition() - FastWebActivity.a(this.a).getCount());
+      }
+    }
+    for (;;)
+    {
+      this.a.a(paramAbsListView, paramInt);
+      return;
+      str = "list_kandian_native_web";
+      break;
+      label310:
+      AbstractGifImage.pauseAll();
+      aaad.a().a(str);
+      break label70;
+      label324:
+      FastWebActivity.a(this.a).b();
+    }
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import aobr;
+import aosl;
 
 public class QfileBaseLocalFileTabView$7$3
   implements Runnable
 {
-  public QfileBaseLocalFileTabView$7$3(aobr paramaobr) {}
+  public QfileBaseLocalFileTabView$7$3(aosl paramaosl) {}
   
   public void run()
   {

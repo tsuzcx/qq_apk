@@ -1,52 +1,24 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.QimVideoInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class sro
+class sro
+  implements Animation.AnimationListener
 {
-  public String a;
-  public String b;
-  public String c;
+  sro(srn paramsrn) {}
   
-  public sro(qqstory_struct.QimVideoInfo paramQimVideoInfo)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = paramQimVideoInfo.qim_unionid.get().toStringUtf8();
-    this.b = paramQimVideoInfo.qim_feedID.get().toStringUtf8();
-    this.c = paramQimVideoInfo.qim_vid.get().toStringUtf8();
+    this.a.b.setVisibility(8);
+    this.a.d.setVisibility(8);
+    this.a.g.setVisibility(8);
   }
   
-  public static sro a(byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return null;
-    }
-    qqstory_struct.QimVideoInfo localQimVideoInfo = new qqstory_struct.QimVideoInfo();
-    try
-    {
-      localQimVideoInfo.mergeFrom(paramArrayOfByte);
-      return new sro(localQimVideoInfo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      urk.c("QimVideoInfoItem", "Error: parse db bytes error.", paramArrayOfByte);
-    }
-    return null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public byte[] a()
-  {
-    qqstory_struct.QimVideoInfo localQimVideoInfo = new qqstory_struct.QimVideoInfo();
-    localQimVideoInfo.qim_vid.set(ByteStringMicro.copyFromUtf8(this.c));
-    localQimVideoInfo.qim_unionid.set(ByteStringMicro.copyFromUtf8(this.a));
-    localQimVideoInfo.qim_feedID.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localQimVideoInfo.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "QimVideoInfoItem{mOwnerUnionId='" + this.a + '\'' + ", mFeedId='" + this.b + '\'' + ", mVid='" + this.c + '\'' + '}';
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

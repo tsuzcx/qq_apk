@@ -1,32 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-final class akuj
-  implements axrs
+public abstract class akuj
 {
-  public void a(axsp paramaxsp, axsq paramaxsq)
+  public String businessId;
+  public boolean observerOnUiThread;
+  
+  public akuj(String paramString)
   {
-    if ((paramaxsp == null) || (paramaxsq == null)) {}
-    while (!(paramaxsp instanceof axro)) {
-      return;
-    }
-    axro localaxro = (axro)paramaxsp;
-    localaxro.jdField_a_of_type_Long += paramaxsq.c;
-    paramaxsq.c = 0L;
-    paramaxsq = "bytes=" + localaxro.jdField_a_of_type_Long + "-";
-    localaxro.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaxsq);
-    paramaxsq = localaxro.jdField_a_of_type_JavaLangString;
-    if (paramaxsq.contains("range="))
-    {
-      paramaxsq = paramaxsq.substring(0, paramaxsq.lastIndexOf("range="));
-      localaxro.jdField_a_of_type_JavaLangString = (paramaxsq + "range=" + localaxro.jdField_a_of_type_Long);
-    }
-    QLog.i("AREngine_ARResourceDownload", 1, "IBreakDownFix. url = " + ((axro)paramaxsp).jdField_a_of_type_JavaLangString + ", offset=" + localaxro.jdField_a_of_type_Long);
+    this.businessId = paramString;
   }
+  
+  public akuj(String paramString, boolean paramBoolean)
+  {
+    this.businessId = paramString;
+    this.observerOnUiThread = paramBoolean;
+  }
+  
+  public void onConsecutiveFailure(int paramInt1, int paramInt2, boolean paramBoolean) {}
+  
+  public abstract void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo);
+  
+  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akuj
  * JD-Core Version:    0.7.0.1
  */

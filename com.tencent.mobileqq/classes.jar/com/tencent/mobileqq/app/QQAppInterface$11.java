@@ -1,13 +1,28 @@
 package com.tencent.mobileqq.app;
 
-import azih;
+import awyl;
+import mqq.manager.Manager;
 
 class QQAppInterface$11
   implements Runnable
 {
   QQAppInterface$11(QQAppInterface paramQQAppInterface) {}
   
-  public void run() {}
+  public void run()
+  {
+    if (this.this$0.a != null) {
+      this.this$0.a.c();
+    }
+    int i = 0;
+    while (i < QQAppInterface.a(this.this$0).length)
+    {
+      Manager localManager = QQAppInterface.a(this.this$0)[i];
+      if (localManager != null) {
+        localManager.onDestroy();
+      }
+      i += 1;
+    }
+  }
 }
 
 

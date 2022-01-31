@@ -1,15 +1,23 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.MobileQQ;
 
 class apni
-  extends RecyclerView.ViewHolder
+  implements DialogInterface.OnClickListener
 {
-  public int a = apnb.b;
+  apni(apnd paramapnd) {}
   
-  public apni(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramView);
-    paramView.setTag(this);
+    this.a.c();
+    this.a.a.removeObserver(apnd.a(this.a));
+    Intent localIntent = new Intent(this.a.a.getApplication(), LiteActivity.class);
+    localIntent.addFlags(67108864);
+    this.a.a.getApplication().startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 

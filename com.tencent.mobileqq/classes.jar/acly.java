@@ -1,30 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.IntimateInfo;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.AccountDetail;
 
-class acly
-  implements DialogInterface.OnClickListener
+public class acly
+  extends baiz
 {
-  acly(aclw paramaclw) {}
+  public acly(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
   {
-    if ((!TextUtils.isEmpty(this.a.a)) && (aclw.a(this.a) != null))
+    if ((paramBoolean) && (paramAccountDetail != null))
     {
-      if (aclw.a(this.a) == 1) {
-        aclw.b(this.a, this.a.a);
-      }
+      this.a.j.setText(paramAccountDetail.name);
+      this.a.b.setVisibility(0);
+      this.a.e();
     }
-    else {
-      return;
-    }
-    aclw.a(this.a, this.a.a, aclw.a(this.a).maskType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acly
  * JD-Core Version:    0.7.0.1
  */

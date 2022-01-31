@@ -1,49 +1,49 @@
 package com.tencent.mobileqq.ark;
 
-import aldh;
-import aldj;
-import aldl;
-import axxj;
+import alrv;
+import alrx;
+import alrz;
+import ayxq;
 import java.lang.ref.WeakReference;
 
 public class ArkAiDictUpdateMgr$8$1$1
   implements Runnable
 {
-  public ArkAiDictUpdateMgr$8$1$1(aldh paramaldh, byte[] paramArrayOfByte, boolean paramBoolean) {}
+  public ArkAiDictUpdateMgr$8$1$1(alrv paramalrv, byte[] paramArrayOfByte, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aldh.a.jdField_a_of_type_Aldl.jdField_a_of_type_JavaLangRefWeakReference == null)
+    if (this.jdField_a_of_type_Alrv.a.jdField_a_of_type_Alrz.jdField_a_of_type_JavaLangRefWeakReference == null)
     {
       ArkAppCenter.c("ArkApp.Dict.Update", "downloadDictFile, weakPreDownloadCtrl is null, return");
       return;
     }
-    axxj localaxxj = (axxj)this.jdField_a_of_type_Aldh.a.jdField_a_of_type_Aldl.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localaxxj == null)
+    ayxq localayxq = (ayxq)this.jdField_a_of_type_Alrv.a.jdField_a_of_type_Alrz.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localayxq == null)
     {
       ArkAppCenter.c("ArkApp.Dict.Update", "downloadDictFile, preDownloadController is null, return");
       return;
     }
     byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
     long l;
-    if (this.jdField_a_of_type_Aldh.a.jdField_a_of_type_Aldl.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Alrv.a.jdField_a_of_type_Alrz.jdField_a_of_type_Boolean) {
       if (this.jdField_a_of_type_Boolean)
       {
-        String str = this.jdField_a_of_type_Aldh.a.jdField_a_of_type_JavaLangString;
+        String str = this.jdField_a_of_type_Alrv.a.jdField_a_of_type_JavaLangString;
         if (arrayOfByte == null)
         {
           l = 0L;
-          localaxxj.a(str, l);
+          localayxq.a(str, l);
         }
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Aldh.a.jdField_a_of_type_Aldj.a(arrayOfByte);
+      this.jdField_a_of_type_Alrv.a.jdField_a_of_type_Alrx.a(arrayOfByte);
       return;
       l = arrayOfByte.length;
       break;
-      localaxxj.a(this.jdField_a_of_type_Aldh.a.jdField_a_of_type_JavaLangString, -1L);
+      localayxq.a(this.jdField_a_of_type_Alrv.a.jdField_a_of_type_JavaLangString, -1L);
       arrayOfByte = null;
     }
   }

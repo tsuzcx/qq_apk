@@ -1,118 +1,71 @@
-import java.util.HashMap;
+import android.animation.AnimatorSet;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class bbag
+final class bbag
+  implements bbah<T>
 {
-  public static final HashMap<String, Long> a = new HashMap();
+  bbag(AtomicBoolean paramAtomicBoolean, audu paramaudu, bbah parambbah, WebView paramWebView, AnimatorSet paramAnimatorSet) {}
   
-  static
+  public T a(Bitmap paramBitmap)
   {
-    a.put(bbey.a, Long.valueOf(4294967295L));
-    a.put("Qzone", Long.valueOf(4294967295L));
-    a.put("qzDynamicAlbum", Long.valueOf(4294967295L));
-    a.put("QZImagePicker", Long.valueOf(4294967295L));
-    a.put("checkin", Long.valueOf(4294967295L));
-    a.put("qzlive", Long.valueOf(4294967295L));
-    a.put("PublicAccountJs", Long.valueOf(4L));
-    a.put("offline", Long.valueOf(3L));
-    a.put(xcn.class.getSimpleName(), Long.valueOf(3L));
-    a.put(xdh.a, Long.valueOf(11L));
-    a.put("UrlSaveVerifyV2", Long.valueOf(3L));
-    a.put("forceHttps", Long.valueOf(1L));
-    a.put("qqmusic", Long.valueOf(3L));
-    a.put("emoji", Long.valueOf(32L));
-    a.put("msgRoam", Long.valueOf(1L));
-    a.put("qw.pay", Long.valueOf(32L));
-    a.put("qw_pay", Long.valueOf(32L));
-    a.put("cj", Long.valueOf(32L));
-    a.put("common", Long.valueOf(32L));
-    a.put("readinjoy", Long.valueOf(16777216L));
-    a.put("ArkSecurity", Long.valueOf(3L));
-    a.put("miniApp", Long.valueOf(3L));
-    a.put("gameCenter", Long.valueOf(3L));
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      QLog.e("ScreenShotUtil", 1, "onScreenshotFinish isCanceled");
+      this.jdField_a_of_type_Audu.dismiss();
+      return null;
+    }
+    if (paramBitmap == null)
+    {
+      QLog.e("ScreenShotUtil", 1, "onScreenshotFinish bitmap is null");
+      this.jdField_a_of_type_Audu.dismiss();
+      return null;
+    }
+    return this.jdField_a_of_type_Bbah.a(paramBitmap);
   }
   
-  public static String a(long paramLong)
+  public void a(Exception paramException)
   {
-    String str = "";
-    if (paramLong == 1L) {
-      str = "http";
-    }
-    do
+    this.jdField_a_of_type_Bbah.a(paramException);
+    this.jdField_a_of_type_Audu.dismiss();
+  }
+  
+  public void a(T paramT, Bitmap paramBitmap)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      return str;
-      if (paramLong == 2L) {
-        return "https";
+      QLog.e("ScreenShotUtil", 1, "postBitmap isCanceled");
+      this.jdField_a_of_type_Audu.dismiss();
+      return;
+    }
+    if (paramT == null)
+    {
+      QLog.e("ScreenShotUtil", 1, "postBitmap t is null");
+      this.jdField_a_of_type_Audu.dismiss();
+      return;
+    }
+    if (paramBitmap == null)
+    {
+      QLog.e("ScreenShotUtil", 1, "postBitmap bitmap is null");
+      this.jdField_a_of_type_Audu.dismiss();
+      this.jdField_a_of_type_Bbah.a(new NullPointerException("postBitmap bitmap is null"));
+      return;
+    }
+    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView.getContext() != null) && (this.jdField_a_of_type_Audu.isShowing()))
+    {
+      if (this.jdField_a_of_type_AndroidAnimationAnimatorSet.isRunning()) {
+        this.jdField_a_of_type_AndroidAnimationAnimatorSet.end();
       }
-      if (paramLong == 4L) {
-        return "publicaccount";
-      }
-      if (paramLong == 8L) {
-        return "pay";
-      }
-      if (paramLong == 16L) {
-        return "qqvip";
-      }
-      if (paramLong == 32L) {
-        return "qqjsbridge";
-      }
-      if (paramLong == 64L) {
-        return "tel";
-      }
-      if (paramLong == 128L) {
-        return "sms";
-      }
-      if (paramLong == 256L) {
-        return "mqqapi";
-      }
-      if (paramLong == 512L) {
-        return "mqqopensdkapi";
-      }
-      if (paramLong == 1024L) {
-        return "mqqmdpass";
-      }
-      if (paramLong == 2048L) {
-        return "mqq";
-      }
-      if (paramLong == 4096L) {
-        return "qapp";
-      }
-      if (paramLong == 8192L) {
-        return "mqqflyticket";
-      }
-      if (paramLong == 16384L) {
-        return "mqqwpa";
-      }
-      if (paramLong == 32768L) {
-        return "wtloginmqq";
-      }
-      if (paramLong == 65536L) {
-        return "qqwifi";
-      }
-      if (paramLong == 131072L) {
-        return "apollo";
-      }
-      if (paramLong == 262144L) {
-        return "mqqverifycode";
-      }
-      if (paramLong == 524288L) {
-        return "mqqconnect";
-      }
-      if (paramLong == 1048576L) {
-        return "mqqvoipivr";
-      }
-      if (paramLong == 2097152L) {
-        return "mqqdevlock";
-      }
-      if (paramLong == 4194304L) {
-        return "qqfav";
-      }
-    } while (paramLong != 16777216L);
-    return "readinjoy";
+      this.jdField_a_of_type_Audu.dismiss();
+    }
+    this.jdField_a_of_type_Bbah.a(paramT, paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbag
  * JD-Core Version:    0.7.0.1
  */

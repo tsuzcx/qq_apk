@@ -1,39 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
 public class abrm
-  implements CompoundButton.OnCheckedChangeListener
+  implements bfos
 {
-  public abrm(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
+  public abrm(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onDismiss()
   {
-    boolean bool = true;
-    if (((paramCompoundButton == this.a.a.a()) || (paramCompoundButton == this.a.b.a())) && (!badq.d(this.a.getActivity())))
-    {
-      this.a.a(2131629009, 0);
-      SettingUncommUsedContactsActivity localSettingUncommUsedContactsActivity = this.a;
-      if (!paramBoolean)
-      {
-        paramBoolean = bool;
-        SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, paramCompoundButton, paramBoolean);
-      }
+    if (this.a.a) {
+      this.a.finish();
     }
-    do
-    {
-      return;
-      paramBoolean = false;
-      break;
-      if (paramCompoundButton == this.a.a.a())
-      {
-        this.a.app.f(paramBoolean, true);
-        return;
-      }
-    } while (paramCompoundButton != this.a.b.a());
-    this.a.app.g(paramBoolean, true);
   }
 }
 

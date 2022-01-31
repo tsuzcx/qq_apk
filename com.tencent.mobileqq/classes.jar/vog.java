@@ -1,20 +1,6 @@
-import java.io.IOException;
-
-class vog
+public abstract interface vog
 {
-  Process a(String[] paramArrayOfString)
-  {
-    try
-    {
-      Process localProcess = Runtime.getRuntime().exec(paramArrayOfString);
-      return localProcess;
-    }
-    catch (IOException localIOException)
-    {
-      urk.c("Q.qqstory.ffmpeg.FFmpeg", "Exception while trying to run: " + paramArrayOfString, localIOException);
-    }
-    return null;
-  }
+  public abstract void a();
 }
 
 

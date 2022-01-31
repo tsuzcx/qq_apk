@@ -1,53 +1,53 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetWeather;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWeather;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class tnl
-  extends tog
-  implements View.OnClickListener
+  extends syv<tow>
 {
-  public tnl(@NonNull ViewGroup paramViewGroup)
+  private static final String a = sxp.a("StorySvc.get_weather");
+  public final int c;
+  public final int d;
+  public final int e;
+  
+  public tnl(int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramViewGroup);
-    this.a.findViewById(2131302254).setOnClickListener(this);
-    this.a.findViewById(2131311381).setOnClickListener(this);
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  public String a()
   {
-    return paramViewGroup;
+    return a;
   }
   
-  public void a(int paramInt1, int paramInt2, @NonNull tnz paramtnz, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
+  public syq a(byte[] paramArrayOfByte)
   {
-    super.a(paramInt1, paramInt2, paramtnz, paramStoryPlayerGroupHolder);
-    if (bjeh.a)
+    qqstory_service.RspGetWeather localRspGetWeather = new qqstory_service.RspGetWeather();
+    try
     {
-      paramStoryPlayerGroupHolder = (RelativeLayout.LayoutParams)this.a.findViewById(2131302254).getLayoutParams();
-      paramStoryPlayerGroupHolder.topMargin = (vms.a(this.a.getContext(), 5.0F) + 114);
-      this.a.findViewById(2131302254).setLayoutParams(paramStoryPlayerGroupHolder);
+      localRspGetWeather.mergeFrom(paramArrayOfByte);
+      return new tow(localRspGetWeather);
     }
-    a().a(this, paramInt1, paramInt2, paramtnz);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
   }
   
-  public void a(boolean paramBoolean)
+  protected byte[] a()
   {
-    super.a(paramBoolean);
-    a().a(this, paramBoolean);
-  }
-  
-  protected void b()
-  {
-    super.b();
-    a().a(this);
-  }
-  
-  public void onClick(View paramView)
-  {
-    a().a(this, paramView);
+    qqstory_service.ReqGetWeather localReqGetWeather = new qqstory_service.ReqGetWeather();
+    localReqGetWeather.coordinate.set(this.c);
+    localReqGetWeather.longitude.set(this.d);
+    localReqGetWeather.latitude.set(this.e);
+    return localReqGetWeather.toByteArray();
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.Advertisement.fragment;
 
 import android.support.v4.view.ViewPager;
-import mxz;
+import nja;
 
 public class VideoCoverFragment$3$2
   implements Runnable
 {
-  public VideoCoverFragment$3$2(mxz parammxz) {}
+  public VideoCoverFragment$3$2(nja paramnja) {}
   
   public void run()
   {

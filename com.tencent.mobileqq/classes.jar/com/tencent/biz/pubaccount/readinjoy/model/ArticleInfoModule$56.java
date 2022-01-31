@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.text.TextUtils;
-import atmp;
+import aukn;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleExposureInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -9,12 +9,12 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import ooq;
+import ozr;
 
 public class ArticleInfoModule$56
   implements Runnable
 {
-  public ArticleInfoModule$56(ooq paramooq, int paramInt) {}
+  public ArticleInfoModule$56(ozr paramozr, int paramInt) {}
   
   public void run()
   {
@@ -30,11 +30,11 @@ public class ArticleInfoModule$56
           localConcurrentHashMap.put(localArticleExposureInfo.rowkey, localArticleExposureInfo);
         }
       }
-      localObject = (ConcurrentHashMap)ooq.c(this.this$0).get(Integer.valueOf(this.a));
+      localObject = (ConcurrentHashMap)ozr.c(this.this$0).get(Integer.valueOf(this.a));
       if ((localObject != null) && (((ConcurrentHashMap)localObject).size() > 0)) {
         localConcurrentHashMap.putAll((Map)localObject);
       }
-      ooq.c(this.this$0).put(Integer.valueOf(this.a), localConcurrentHashMap);
+      ozr.c(this.this$0).put(Integer.valueOf(this.a), localConcurrentHashMap);
     }
     QLog.d("ArticleInfoModule", 1, "loadFeedsExposureInfo from db , channelID : " + this.a + ", result : " + localList);
   }

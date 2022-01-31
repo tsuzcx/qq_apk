@@ -4,9 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bdmd;
-import bdmn;
-import bdnw;
+import beqn;
+import beqw;
+import besl;
 import com.tencent.qqmini.sdk.launcher.annotation.JsonORM;
 import java.io.Serializable;
 import org.json.JSONObject;
@@ -14,22 +14,22 @@ import org.json.JSONObject;
 public class BaseLibInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<BaseLibInfo> CREATOR = new bdmn();
+  public static final Parcelable.Creator<BaseLibInfo> CREATOR = new beqw();
   public static final String KEY_1 = "key1";
   public static final String KEY_2 = "key2";
   public static final String KEY_3 = "key3";
   public static final String KEY_4 = "key4";
   public static final String KEY_5 = "key5";
   public static final String LOG_TAG = "BaseLibInfo";
-  @bdmd(a="key4")
+  @beqn(a="key4")
   public String baseLibDesc;
-  @bdmd(a="key2")
+  @beqn(a="key2")
   public String baseLibKey;
-  @bdmd(a="key5")
+  @beqn(a="key5")
   public int baseLibType;
-  @bdmd(a="key1")
+  @beqn(a="key1")
   public String baseLibUrl;
-  @bdmd(a="key3")
+  @beqn(a="key3")
   public String baseLibVersion;
   
   public BaseLibInfo() {}
@@ -63,7 +63,7 @@ public class BaseLibInfo
       }
       catch (Exception paramJSONObject)
       {
-        bdnw.d("BaseLibInfo", "BaseLibInfo create from json failed ", paramJSONObject);
+        besl.d("BaseLibInfo", "BaseLibInfo create from json failed ", paramJSONObject);
         return null;
       }
     }
@@ -134,7 +134,7 @@ public class BaseLibInfo
     }
     catch (Exception localException)
     {
-      bdnw.d("BaseLibInfo", "BaseLibInfo convert to json failed ", localException);
+      besl.d("BaseLibInfo", "BaseLibInfo convert to json failed ", localException);
     }
     return localJSONObject;
   }

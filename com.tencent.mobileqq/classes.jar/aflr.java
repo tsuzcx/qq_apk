@@ -1,42 +1,27 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CMediaFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class aflr
-  extends aodp
+  extends akke
 {
-  public aflr(ChatHistoryC2CMediaFragment paramChatHistoryC2CMediaFragment) {}
+  public aflr(SystemMsgListView paramSystemMsgListView) {}
   
-  protected void a(int paramInt, long paramLong, String paramString)
-  {
-    if ((bgtg.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
-    }
-  }
-  
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    if ((bgtg.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  protected void a(boolean paramBoolean, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryMediaBaseFragment", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
+      QLog.i("NewFriendVerification.manager", 2, "ui.onRefreshBlockedEntrance");
     }
-    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
-    if ((paramString1 != null) && (paramString1.nOpType == 6) && (bgtg.a(paramInt2)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    if (((Activity)SystemMsgListView.a(this.a)).isFinishing()) {}
+    while ((!paramBoolean) || (SystemMsgListView.a(this.a) == null)) {
+      return;
     }
+    SystemMsgListView.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aflr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,70 @@
-import android.os.Bundle;
-import android.os.SystemClock;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.FriendListHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageForTroopNotification;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 
-class aebv
-  implements BusinessObserver
+public class aebv
+  implements View.OnClickListener
 {
-  aebv(aebk paramaebk) {}
+  public aebv(StructingMsgItemBuilder paramStructingMsgItemBuilder, AbsShareMsg paramAbsShareMsg, MessageForStructing paramMessageForStructing, ChatMessage paramChatMessage, long paramLong, View.OnClickListener paramOnClickListener) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {
-      this.a.A(2131629887);
+    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID == 81)
+    {
+      vel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, "clk_play");
+      actn.n = true;
+      if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a()) {
+        break label162;
+      }
     }
     for (;;)
     {
-      ChatActivityUtils.b();
       return;
-      try
+      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID != 98) {
+        break;
+      }
+      int i;
+      label79:
+      String str1;
+      label94:
+      String str3;
+      if ((axxs.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mExtraData) & 0x2) != 0)
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
-          localFollowResponse.mergeFrom(paramBundle);
-          paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-          if (paramInt == 0)
-          {
-            ((FriendListHandler)this.a.a.a(1)).a(true, false);
-            paramBundle = (ajho)this.a.a.a(21);
-            if (paramBundle != null) {
-              paramBundle.a(SystemClock.uptimeMillis());
-            }
-          }
-          else if (paramInt == 58)
-          {
-            this.a.A(2131629884);
-          }
-          else if (paramInt == 65)
-          {
-            this.a.A(2131629857);
-          }
-          else if (paramInt == 20)
-          {
-            this.a.A(2131629858);
-          }
-          else
-          {
-            this.a.A(2131629887);
-          }
+        i = 1;
+        if (!asyu.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, "isFaceScoreSecondMember")) {
+          break label149;
+        }
+        str1 = "2";
+        str3 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin;
+        if (i == 0) {
+          break label155;
         }
       }
-      catch (Exception paramBundle) {}
+      label149:
+      label155:
+      for (String str2 = "2";; str2 = "1")
+      {
+        asyu.a("clk_obj", str3, new String[] { str1, "", "", str2 });
+        break;
+        i = 0;
+        break label79;
+        str1 = "1";
+        break label94;
+      }
+      label162:
+      if ((((bbzg)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(76)).b(this.jdField_a_of_type_Long)) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID == 38)) {}
+      while ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing instanceof MessageForTroopNotification))
+      {
+        paramView = (MessageForTroopNotification)this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
+        axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "AIOchat", "obj_clk", 0, 0, paramView.frienduin, "" + paramView.feedType, "", "");
+        return;
+        this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+      }
     }
   }
 }

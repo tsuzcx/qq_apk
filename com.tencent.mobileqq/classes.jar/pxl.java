@@ -1,29 +1,39 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.view.View;
-import android.view.animation.DecelerateInterpolator;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class pxl
-  extends AnimatorListenerAdapter
+public class pxl
+  implements pca
 {
-  pxl(pxk parampxk) {}
+  public pxl(ComponentHeaderRecommend paramComponentHeaderRecommend) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if ((pxk.a(this.a) != null) && (pxk.a(this.a).h != null))
+    ComponentHeaderRecommend.a(this.a).setText(ajyc.a(2131702291));
+    ComponentHeaderRecommend.a(this.a).setTextColor(Color.parseColor("#BBBBBB"));
+    ComponentHeaderRecommend.a(this.a).setEnabled(false);
+    ComponentHeaderRecommend.a(this.a).getPaint().setFakeBoldText(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentHeaderRecommend", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
+    }
+    ArticleInfo localArticleInfo;
+    String str;
+    if ((this.a.a.a != null) && (this.a.a.a.a() != null))
     {
-      pxk.a(this.a).h.setVisibility(0);
-      paramAnimator = new AnimatorSet();
-      ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(pxk.a(this.a).h, "alpha", new float[] { 0.0F, 1.0F });
-      localObjectAnimator1.setDuration(200L);
-      localObjectAnimator1.setInterpolator(new DecelerateInterpolator());
-      ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(pxk.a(this.a).h, "translationY", new float[] { aciy.a(15.0F, pxk.a(this.a).h.getResources()), 0.0F });
-      localObjectAnimator2.setDuration(200L);
-      localObjectAnimator2.setInterpolator(new DecelerateInterpolator());
-      paramAnimator.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
-      paramAnimator.start();
+      localArticleInfo = this.a.a.a.a();
+      str = onk.a(localArticleInfo.mAlgorithmID, onk.a(localArticleInfo), this.a.a.a.e(), 0, 0, bbev.h(this.a.getContext()), ComponentHeaderRecommend.a(this.a) + "", null, localArticleInfo.innerUniqueID, null, localArticleInfo);
+      if (!shx.a(this.a.a.a.e())) {
+        break label305;
+      }
+    }
+    label305:
+    for (paramString = "0X800941D";; paramString = "0X80080EC")
+    {
+      noo.a(null, ComponentHeaderRecommend.a(this.a) + "", paramString, paramString, 0, 0, String.valueOf(localArticleInfo.mFeedId), String.valueOf(localArticleInfo.mArticleID), Integer.toString(localArticleInfo.mStrategyId), str, false);
+      return;
     }
   }
 }

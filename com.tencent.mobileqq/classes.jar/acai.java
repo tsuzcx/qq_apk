@@ -1,19 +1,50 @@
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SearchFriendListActivity;
+import java.util.ArrayList;
 
 public class acai
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  public acai(TroopMemberListActivity paramTroopMemberListActivity) {}
+  private acai(SearchFriendListActivity paramSearchFriendListActivity) {}
   
-  public void onClick(View paramView)
+  public int getCount()
   {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
-    if (this.a.d == 11) {
-      awqx.b(this.a.app, "CliOper", "", "", "0X8006215", "0X8006215", 0, 0, "1", "", "", "");
+    return SearchFriendListActivity.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= SearchFriendListActivity.a(this.a).size())) {
+      return null;
     }
+    return SearchFriendListActivity.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null)
+    {
+      localView = this.a.getLayoutInflater().inflate(2131562367, paramViewGroup, false);
+      paramView = new acaj();
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367407));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370830));
+      paramView.b = ((TextView)localView.findViewById(2131364964));
+      localView.setTag(paramView);
+      localView.setOnClickListener(this.a);
+    }
+    this.a.a(localView, paramInt);
+    return localView;
   }
 }
 

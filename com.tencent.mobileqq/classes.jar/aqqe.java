@@ -1,19 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
+import java.util.HashMap;
+import java.util.Map;
 
 class aqqe
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  aqqe(aqqc paramaqqc, bafb parambafb) {}
+  aqqe(aqqa paramaqqa, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bafb.dismiss();
+    paramView = new HashMap();
+    yod.a(paramView, this.jdField_a_of_type_JavaLangString);
+    paramView.put(Integer.valueOf(2), this.jdField_a_of_type_JavaLangString);
+    paramView.put(Integer.valueOf(10), "0");
+    yod.a(ajae.a(), "769", "205711", this.jdField_a_of_type_Aqqa.a().gameAppId, "76905", "1", "160", paramView);
+    aqqa.a(this.jdField_a_of_type_Aqqa).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqqe
  * JD-Core Version:    0.7.0.1
  */

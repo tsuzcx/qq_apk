@@ -1,327 +1,104 @@
-import android.app.Notification;
-import android.graphics.Bitmap;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.service.AVPbInfo;
-import com.tencent.av.service.AVServiceForQQ;
-import com.tencent.av.service.AVServiceForQQ.AVServiceForQQStub.1;
-import com.tencent.av.service.AVServiceForQQ.AVServiceForQQStub.2;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.av.core.VcControllerImpl;
+import com.tencent.mobileqq.pb.CodedInputStreamMicro;
+import com.tencent.mobileqq.pb.WireFormatMicro;
+import java.io.IOException;
 
-public class llr
-  extends llz
+public abstract class llr
 {
-  private llr(AVServiceForQQ paramAVServiceForQQ) {}
+  private VcControllerImpl a;
   
-  public int a(long paramLong, int paramInt)
+  public static byte a(byte[] paramArrayOfByte)
   {
-    Object localObject;
-    label72:
-    int i;
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
-    {
-      localObject = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-      if ((localObject == null) || (!((VideoController)localObject).e) || (((VideoController)localObject).a().C != paramInt) || (((VideoController)localObject).a().jdField_g_of_type_Long != paramLong)) {
-        break label117;
-      }
-      localObject = ((VideoController)localObject).c().iterator();
-      paramInt = 0;
-      i = paramInt;
-      if (!((Iterator)localObject).hasNext()) {
-        break label120;
-      }
-      if (((kth)((Iterator)localObject).next()).c != 1) {
-        break label123;
-      }
-      paramInt += 1;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 3)) {
+      return -1;
     }
-    label117:
-    label120:
-    label123:
-    for (;;)
-    {
-      break label72;
-      localObject = VideoController.a();
-      break;
-      i = 0;
-      return i;
-    }
+    return paramArrayOfByte[2];
   }
   
-  public AVPbInfo a(byte[] paramArrayOfByte)
+  public static boolean a(byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "processQCallPush in AVServiceForQQ");
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(); localVideoController != null; localVideoController = VideoController.a()) {
-      return localVideoController.a(paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();; localVideoController = VideoController.a())
-    {
-      localVideoController.a("startSpeak", localVideoController.jdField_a_of_type_Long, true, true);
-      return;
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    b();
-    VideoController localVideoController;
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
-    {
-      localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-      if (!localVideoController.e) {
-        break label90;
-      }
-      if (paramLong == 0L) {
-        paramLong = localVideoController.jdField_a_of_type_Long;
-      }
-      localVideoController.a(localVideoController.c, localVideoController.jdField_a_of_type_Long, 95);
-    }
-    for (;;)
-    {
-      localVideoController.a(0, 0, null);
-      ksn.a().a().a();
-      ksn.a().a().b();
-      return;
-      localVideoController = VideoController.a();
-      break;
-      label90:
-      localVideoController.a(AVServiceForQQ.a(this.a), paramLong, 96);
-    }
-  }
-  
-  public void a(long paramLong, String paramString)
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(); (localVideoController.e) && (localVideoController.a().az); localVideoController = VideoController.a()) {
-      return;
-    }
-    long l = AudioHelper.b();
-    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "enterRoom, groupId[" + paramLong + "], nickname[" + paramString + "], seq[" + l + "]");
-    localVideoController.a().a("enterRoom", true);
-    AVServiceForQQ.a(this.a, miu.a());
-    AVServiceForQQ.a(this.a).a(null);
-    AVServiceForQQ.a(this.a).c();
-    AVServiceForQQ.a(this.a).d();
-    if ((ksn.a().a().jdField_a_of_type_Kvs.jdField_a_of_type_Int == 3) && ((paramLong == -1L) || (paramLong == ksn.a().a().jdField_a_of_type_Kvs.jdField_a_of_type_Long)))
-    {
-      AVServiceForQQ.a(this.a, true);
-      this.a.b = ksn.a().a().c;
-      if ((!AVServiceForQQ.a(this.a)) && (localVideoController.e))
-      {
-        localVideoController.a(localVideoController.c, localVideoController.jdField_a_of_type_Long, 94);
-        ksn.a().a().b();
-        ksn.a().a().a();
-      }
-      ksn.a().b(this.a.b);
-      if (AVServiceForQQ.a(this.a)) {
-        break label457;
-      }
-      AVServiceForQQ.a(this.a).b();
-      AVServiceForQQ.a(this.a).a("DEVICE_EARPHONE;DEVICE_SPEAKERPHONE;DEVICE_BLUETOOTHHEADSET;DEVICE_WIREDHEADSET;");
-      AVServiceForQQ.a(this.a).a();
-      localVideoController.f(false);
-      label344:
-      if (!localVideoController.e) {
-        break label567;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "StartOrEnterGAudio already in room");
-      }
-    }
-    for (;;)
-    {
-      localVideoController.a().a(l, "enterRoom", 3);
-      localVideoController.a().jdField_a_of_type_Kvr.b = paramString;
-      localVideoController.a().az = true;
-      return;
-      this.a.b = ksn.a(AVServiceForQQ.a(this.a), String.valueOf(paramLong), new int[0]);
-      ksn.a().a(this.a.b, false);
-      AVServiceForQQ.a(this.a, false);
-      break;
-      label457:
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "IsAccompanyReturn");
-      }
-      AVServiceForQQ.a(this.a).a();
-      if (ksn.a().b(this.a.b).jdField_g_of_type_Boolean)
-      {
-        localVideoController.a("enterRoom", ksn.a().b(this.a.b).jdField_a_of_type_Kvs.jdField_a_of_type_Long, false, false);
-        break label344;
-      }
-      localVideoController.a("enterRoom", ksn.a().b(this.a.b).jdField_a_of_type_Kvs.jdField_a_of_type_Long, true, false);
-      break label344;
-      label567:
-      int i = localVideoController.a(AVServiceForQQ.a(this.a), paramLong, AVServiceForQQ.b(this.a), new long[] { this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin() }, false);
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "enterRoom result = " + i);
-      }
-      new Handler(Looper.getMainLooper()).post(new AVServiceForQQ.AVServiceForQQStub.2(this, i));
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();; localVideoController = VideoController.a())
-    {
-      if (localVideoController != null) {
-        localVideoController.y(paramString);
-      }
-      return;
-    }
-  }
-  
-  public void a(String paramString, Bitmap paramBitmap)
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();; localVideoController = VideoController.a())
-    {
-      if (localVideoController != null) {
-        localVideoController.a(paramString, paramBitmap);
-      }
-      return;
-    }
-  }
-  
-  public void a(llv paramllv) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();; localVideoController = VideoController.a())
-    {
-      localVideoController.e(paramBoolean);
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean, Notification paramNotification)
-  {
-    if (Build.VERSION.SDK_INT < 18) {}
-    for (;;)
-    {
-      return;
-      if (!paramBoolean) {
-        break;
-      }
-      if (paramNotification != null) {}
-      for (this.a.jdField_a_of_type_AndroidAppNotification = paramNotification; this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null; this.a.jdField_a_of_type_AndroidAppNotification = new Notification())
-      {
-        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new AVServiceForQQ.AVServiceForQQStub.1(this));
-        return;
-      }
-    }
+    paramArrayOfByte = CodedInputStreamMicro.newInstance(paramArrayOfByte);
     try
-    {
-      this.a.stopForeground(true);
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "setAvServiceForegroud stop foreground.");
-      this.a.jdField_a_of_type_AndroidAppNotification = null;
-      return;
-    }
-    catch (Throwable paramNotification)
     {
       for (;;)
       {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "setAvServiceForegroud stop foreground fail", paramNotification);
+        int i = paramArrayOfByte.readTag();
+        if (i == 0) {
+          break;
+        }
+        if (WireFormatMicro.getTagFieldNumber(i) == 2) {
+          return true;
+        }
+        paramArrayOfByte.skipField(i);
       }
+      return false;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
     }
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public final byte a(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();; localVideoController = VideoController.a())
-    {
-      if (localVideoController != null) {
-        localVideoController.c(paramArrayOfByte);
-      }
-      return;
-    }
-  }
-  
-  public void b()
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();; localVideoController = VideoController.a())
-    {
-      localVideoController.a("stopSpeak", localVideoController.jdField_a_of_type_Long, false, true);
-      return;
-    }
-  }
-  
-  public void b(byte[] paramArrayOfByte)
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();; localVideoController = VideoController.a())
-    {
-      if (localVideoController != null) {
-        localVideoController.d(paramArrayOfByte);
-      }
-      return;
-    }
-  }
-  
-  public void c()
-  {
-    long l = AudioHelper.b();
-    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "exitQQCall, seq[" + l + "]");
-    VideoController localVideoController;
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
-    {
-      localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-      miu.a().b(l);
-      localVideoController.a().f = false;
-      localVideoController.a(localVideoController.a().d, 224);
-      localVideoController.b(224);
-      if (localVideoController.a().w == -1) {
-        break label220;
-      }
+    byte b2 = 1;
+    byte b1;
+    if (this.a == null) {
+      b1 = 3;
     }
     for (;;)
     {
-      localVideoController.a().s = true;
-      krx.c(this.a.jdField_a_of_type_JavaLangString, "DataReport onClose: ");
-      kxg.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      kzf.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      kyf.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      lrm.b(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
-      mba.a(localVideoController.a());
-      localVideoController.b(localVideoController.a().d, localVideoController.a().w);
-      localVideoController.a().jdField_g_of_type_Boolean = false;
-      return;
-      localVideoController = VideoController.a();
-      break;
-      label220:
-      localVideoController.a().w = 0;
+      return b1;
+      b1 = b2;
+      if (paramArrayOfByte1 != null) {
+        try
+        {
+          int i = this.a.onRecvVideoCallBytesForSharp(paramArrayOfByte1);
+          b1 = b2;
+          if (i >= 0) {
+            return 0;
+          }
+        }
+        catch (Throwable paramArrayOfByte1) {}
+      }
     }
+    return 1;
   }
   
-  public void c(byte[] paramArrayOfByte)
+  public final void a(VcControllerImpl paramVcControllerImpl)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();; localVideoController = VideoController.a())
-    {
-      if (localVideoController != null) {
-        localVideoController.f(paramArrayOfByte);
-      }
-      return;
-    }
+    this.a = paramVcControllerImpl;
   }
+  
+  public abstract void a(byte[] paramArrayOfByte, long paramLong);
+  
+  public final byte b(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    byte b2 = 1;
+    byte b1;
+    if (this.a == null) {
+      b1 = 3;
+    }
+    for (;;)
+    {
+      return b1;
+      b1 = b2;
+      if (paramArrayOfByte1 != null) {
+        try
+        {
+          int i = this.a.onRecvVideoCallBytesForSharpC2SACK(paramArrayOfByte1);
+          b1 = b2;
+          if (i >= 0) {
+            return 0;
+          }
+        }
+        catch (Throwable paramArrayOfByte1) {}
+      }
+    }
+    return 1;
+  }
+  
+  public abstract void b(byte[] paramArrayOfByte);
 }
 
 

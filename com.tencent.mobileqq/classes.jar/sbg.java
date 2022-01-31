@@ -1,21 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 
 public class sbg
-  implements View.OnClickListener
+  extends wpv
 {
-  public sbg(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
-  
-  public void onClick(View paramView)
+  public sbg(FolderFollowTabFragment paramFolderFollowTabFragment, Bundle paramBundle)
   {
-    PublicAccountImageCollectionCommentActivity.a(this.a);
-    PublicAccountImageCollectionCommentActivity.a(this.a, 0);
+    super(paramBundle);
   }
+  
+  protected BaseWidgetView a(ViewGroup paramViewGroup, wpc paramwpc)
+  {
+    return FolderFollowTabFragment.a(this.a);
+  }
+  
+  public void a(Bundle paramBundle) {}
+  
+  public void a(wpn paramwpn) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sbg
  * JD-Core Version:    0.7.0.1
  */

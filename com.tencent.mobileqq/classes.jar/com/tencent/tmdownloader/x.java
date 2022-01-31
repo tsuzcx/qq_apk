@@ -3,7 +3,7 @@ package com.tencent.tmdownloader;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import com.tencent.tmdownloader.internal.downloadclient.c;
 
 class x
@@ -20,7 +20,7 @@ class x
       do
       {
         return;
-        ac.c("TMADownloadSDKService", "MSG_INIT_YYBMG......");
+        ab.c("TMADownloadSDKService", "MSG_INIT_YYBMG......");
       } while ((GlobalUtil.getInstance().getQQDownloaderAPILevel() < 5) && (GlobalUtil.getInstance().getQQDownloaderConnectLevel() < 1));
       if (TMAssistantDownloadService.access$200(this.a) == null) {
         TMAssistantDownloadService.access$202(this.a, new c());
@@ -30,7 +30,7 @@ class x
       sendEmptyMessage(1);
       return;
     }
-    ac.c("TMADownloadSDKService", "MSG_HANDSHAKE_YYB......");
+    ab.c("TMADownloadSDKService", "MSG_HANDSHAKE_YYB......");
     TMAssistantDownloadService.access$200(this.a).a();
   }
 }

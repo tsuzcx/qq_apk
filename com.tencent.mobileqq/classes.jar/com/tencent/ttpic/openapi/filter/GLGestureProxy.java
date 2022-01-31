@@ -43,6 +43,33 @@ public final class GLGestureProxy
     return "MotionEvent.ACTION_CANCEL";
   }
   
+  public void addListener(GLGestureListener paramGLGestureListener)
+  {
+    if (paramGLGestureListener == null) {
+      return;
+    }
+    int k = paramGLGestureListener.onGetPriority();
+    if (this.mGLGestureList.size() == 0)
+    {
+      this.mGLGestureList.add(paramGLGestureListener);
+      return;
+    }
+    int m = this.mGLGestureList.size();
+    int i = 0;
+    int j = -1;
+    while ((i < m) && (k >= ((GLGestureListener)this.mGLGestureList.get(i)).onGetPriority()))
+    {
+      j = i + 1;
+      i += 1;
+    }
+    if (j == -1)
+    {
+      this.mGLGestureList.add(0, paramGLGestureListener);
+      return;
+    }
+    this.mGLGestureList.add(j, paramGLGestureListener);
+  }
+  
   public boolean checkDownPointerInRecorderView(float paramFloat1, float paramFloat2)
   {
     if (this.mRecorderView != null)
@@ -188,33 +215,6 @@ public final class GLGestureProxy
     if (this.mGLGestureList.contains(paramGLGestureListener)) {
       this.mGLGestureList.remove(paramGLGestureListener);
     }
-  }
-  
-  public void setListener(GLGestureListener paramGLGestureListener)
-  {
-    if (paramGLGestureListener == null) {
-      return;
-    }
-    int k = paramGLGestureListener.onGetPriority();
-    if (this.mGLGestureList.size() == 0)
-    {
-      this.mGLGestureList.add(paramGLGestureListener);
-      return;
-    }
-    int m = this.mGLGestureList.size();
-    int i = 0;
-    int j = -1;
-    while ((i < m) && (k >= ((GLGestureListener)this.mGLGestureList.get(i)).onGetPriority()))
-    {
-      j = i + 1;
-      i += 1;
-    }
-    if (j == -1)
-    {
-      this.mGLGestureList.add(0, paramGLGestureListener);
-      return;
-    }
-    this.mGLGestureList.add(j, paramGLGestureListener);
   }
 }
 

@@ -1,22 +1,56 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.9.1;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.9.1.1.1;
-import com.tencent.viola.core.ViolaEnvironment;
+import android.util.SparseArray;
+import java.util.Stack;
 
-public class rnk
-  implements azwa
+class rnk
 {
-  public rnk(ViolaBaseView.9.1 param1) {}
+  SparseArray<Integer> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  Stack<String> jdField_a_of_type_JavaUtilStack = new Stack();
+  SparseArray<Object> b = new SparseArray();
   
-  public void onInfo(long paramLong, double paramDouble)
+  public int a()
   {
-    if (ViolaBaseView.a(this.a.a.a) == 0.0D)
+    int j = -1;
+    int i = 3;
+    int k = 0;
+    if (k < this.jdField_a_of_type_AndroidUtilSparseArray.size())
     {
-      ViolaBaseView.a(this.a.a.a, paramDouble);
-      ViolaBaseView.a(this.a.a.a).addReportData(ViolaEnvironment.KEY_FRAME_PAGE, String.format("%.2f", new Object[] { Double.valueOf(ViolaBaseView.a(this.a.a.a)) }));
+      if (this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(k) <= j) {
+        break label72;
+      }
+      i = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(k);
+      j = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(k)).intValue();
     }
-    new Handler().postDelayed(new ViolaBaseView.9.1.1.1(this), 500L);
+    for (;;)
+    {
+      int m = k + 1;
+      k = j;
+      j = i;
+      i = k;
+      k = m;
+      break;
+      return i;
+      label72:
+      m = j;
+      j = i;
+      i = m;
+    }
+  }
+  
+  public int b()
+  {
+    int i = this.jdField_a_of_type_JavaUtilStack.size() - 1;
+    while (i >= 0)
+    {
+      String str = (String)this.jdField_a_of_type_JavaUtilStack.get(i);
+      if (rng.a().equals(str)) {
+        return 3;
+      }
+      if (rng.b().equals(str)) {
+        return 2;
+      }
+      i -= 1;
+    }
+    return 1;
   }
 }
 

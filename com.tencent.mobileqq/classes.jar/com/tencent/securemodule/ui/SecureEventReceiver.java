@@ -4,10 +4,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import com.tencent.securemodule.aw;
 import com.tencent.securemodule.impl.AppInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
-import sm.ay;
 
 public class SecureEventReceiver
   extends BroadcastReceiver
@@ -16,7 +16,7 @@ public class SecureEventReceiver
   {
     Log.d("", "dafsdjflkjewoqiruoeiuroiqjdfklajsdlkj");
     if ("1000020".equals(paramIntent.getAction())) {
-      ay.a(paramContext);
+      aw.a(paramContext);
     }
     do
     {
@@ -31,7 +31,7 @@ public class SecureEventReceiver
               return;
               if ("1000021".equals(paramIntent.getAction()))
               {
-                ay.b(paramContext);
+                aw.b(paramContext);
                 return;
               }
               if (!"1000022".equals(paramIntent.getAction())) {
@@ -40,38 +40,38 @@ public class SecureEventReceiver
               paramIntent = (ArrayList)paramIntent.getSerializableExtra("data");
               if ((paramIntent != null) && (paramIntent.size() > 0))
               {
-                ay.a(paramContext, paramIntent.size());
+                aw.a(paramContext, paramIntent.size());
                 paramIntent = paramIntent.iterator();
                 while (paramIntent.hasNext()) {
-                  ay.a(paramContext, (AppInfo)paramIntent.next());
+                  aw.a(paramContext, (AppInfo)paramIntent.next());
                 }
               }
             }
             if ("1000023".equals(paramIntent.getAction()))
             {
-              ay.c(paramContext);
+              aw.c(paramContext);
               return;
             }
             if (!"1000024".equals(paramIntent.getAction())) {
               break;
             }
           } while (paramIntent.getBooleanExtra("key_download_listener", false));
-          ay.f(paramContext);
+          aw.f(paramContext);
           return;
           if (!"1000025".equals(paramIntent.getAction())) {
             break;
           }
         } while (paramIntent.getBooleanExtra("key_download_listener", false));
-        ay.a(paramContext, paramIntent.getBundleExtra("data"));
+        aw.a(paramContext, paramIntent.getBundleExtra("data"));
         return;
         if (!"1000027".equals(paramIntent.getAction())) {
           break;
         }
       } while (paramIntent.getBooleanExtra("key_download_listener", false));
-      ay.b(paramContext, paramIntent.getBundleExtra("data"));
+      aw.b(paramContext, paramIntent.getBundleExtra("data"));
       return;
     } while ((!"1000026".equals(paramIntent.getAction())) || (paramIntent.getBooleanExtra("key_download_listener", false)));
-    ay.e(paramContext);
+    aw.e(paramContext);
   }
 }
 

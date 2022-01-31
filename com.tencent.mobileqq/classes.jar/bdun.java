@@ -1,52 +1,46 @@
-import android.text.TextUtils;
-import com.tencent.tissue.v8rt.engine.SpeedUtil;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qidian.QidianProfileCardActivity.QidianCompoundProfileItem;
 
-public class bdun
-  extends bdur
+public final class bdun
+  implements Parcelable.Creator<QidianProfileCardActivity.QidianCompoundProfileItem>
 {
-  private bdur jdField_a_of_type_Bdur;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  
-  public bdun(bdum parambdum, int paramInt)
+  public QidianProfileCardActivity.QidianCompoundProfileItem a(Parcel paramParcel)
   {
-    super(parambdum, Integer.valueOf(paramInt));
-  }
-  
-  public bdun a(bdur parambdur)
-  {
-    this.jdField_a_of_type_Bdur = parambdur;
-    return this;
-  }
-  
-  public void a()
-  {
-    super.a();
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    boolean bool2 = true;
+    QidianProfileCardActivity.QidianCompoundProfileItem localQidianCompoundProfileItem = new QidianProfileCardActivity.QidianCompoundProfileItem();
+    localQidianCompoundProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localQidianCompoundProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localQidianCompoundProfileItem.c = paramParcel.readString();
+    if (paramParcel.readByte() != 0)
     {
-      this.jdField_a_of_type_Bdum.a(bdum.a);
-      return;
+      bool1 = true;
+      localQidianCompoundProfileItem.jdField_a_of_type_Boolean = bool1;
+      localQidianCompoundProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
+      if (paramParcel.readByte() == 0) {
+        break label103;
+      }
     }
-    if ((!TextUtils.isEmpty(this.b)) && (this.b.contains("QLogic.js"))) {
-      SpeedUtil.DEFAULT.event("runQLogicJs start " + this.jdField_a_of_type_Bdum);
+    label103:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localQidianCompoundProfileItem.jdField_b_of_type_Boolean = bool1;
+      localQidianCompoundProfileItem.d = paramParcel.readString();
+      localQidianCompoundProfileItem.e = paramParcel.readString();
+      return localQidianCompoundProfileItem;
+      bool1 = false;
+      break;
     }
-    this.jdField_a_of_type_Bdum.a(this.jdField_a_of_type_JavaLangString, new bduo(this), this.b);
   }
   
-  public void a(String paramString)
+  public QidianProfileCardActivity.QidianCompoundProfileItem[] a(int paramInt)
   {
-    a(paramString, null);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    return new QidianProfileCardActivity.QidianCompoundProfileItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bdun
  * JD-Core Version:    0.7.0.1
  */

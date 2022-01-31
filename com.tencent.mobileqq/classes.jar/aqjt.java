@@ -1,37 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.Callable;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
 
-class aqjt
-  implements Callable<File>
+public class aqjt
+  implements CompoundButton.OnCheckedChangeListener
 {
-  aqjt(aqjs paramaqjs) {}
+  public aqjt(TempMsgSettingFragment paramTempMsgSettingFragment) {}
   
-  public File a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    try
-    {
-      boolean bool = aqjs.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.i("shadow::CdnPmUpdater", 2, "isNeedDownload:" + bool);
-      }
-      if (!bool)
-      {
-        localFile = this.a.getLatest();
-        return localFile;
-      }
-      File localFile = this.a.a();
-      return localFile;
-    }
-    finally
-    {
-      aqjs.a(this.a, false);
-    }
+    ((ases)this.a.a.getManager(303)).a((short)-23309, paramBoolean, true);
+    axqw.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 5, 5, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqjt
  * JD-Core Version:    0.7.0.1
  */

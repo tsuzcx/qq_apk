@@ -1,87 +1,62 @@
-import android.graphics.Bitmap;
-import android.opengl.GLES20;
-import android.opengl.GLUtils;
-import android.support.annotation.Nullable;
+import com.tencent.upload.uinterface.data.UpsImageUploadTask;
 
 public class auyn
+  extends auyl
 {
-  public static int a(int paramInt)
+  public long b;
+  public byte[] c;
+  public int g;
+  public int h;
+  public int i;
+  public String i;
+  public int j;
+  public String j;
+  public int k;
+  protected String k;
+  public int l = 1;
+  
+  public auyn(long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2)
   {
-    return a(paramInt, null, 9729, 9729, 33071, 33071);
+    super(paramLong, paramString1, paramArrayOfByte);
+    this.jdField_g_of_type_Int = 13;
+    this.jdField_k_of_type_Int = 3;
+    this.jdField_k_of_type_JavaLangString = paramString2;
   }
   
-  public static int a(int paramInt, Bitmap paramBitmap)
+  public auyl a()
   {
-    return a(paramInt, paramBitmap, 9729, 9729, 33071, 33071);
+    UpsImageUploadTask localUpsImageUploadTask = new UpsImageUploadTask(this.jdField_g_of_type_JavaLangString);
+    localUpsImageUploadTask.dataType = this.jdField_g_of_type_Int;
+    localUpsImageUploadTask.fileId = this.jdField_i_of_type_JavaLangString;
+    localUpsImageUploadTask.flowId = this.jdField_e_of_type_Int;
+    localUpsImageUploadTask.iBatchID = this.b;
+    localUpsImageUploadTask.iBatchUploadCount = this.jdField_h_of_type_Int;
+    localUpsImageUploadTask.iBusiNessType = this.jdField_i_of_type_Int;
+    localUpsImageUploadTask.iCurrentUploadOrder = this.jdField_j_of_type_Int;
+    localUpsImageUploadTask.iSync = this.jdField_c_of_type_Int;
+    localUpsImageUploadTask.iUin = this.jdField_a_of_type_Long;
+    localUpsImageUploadTask.iUploadType = this.jdField_k_of_type_Int;
+    localUpsImageUploadTask.keepRaw = this.l;
+    localUpsImageUploadTask.md5 = this.jdField_h_of_type_JavaLangString;
+    localUpsImageUploadTask.preupload = this.jdField_d_of_type_Int;
+    localUpsImageUploadTask.reportRefer = this.jdField_d_of_type_JavaLangString;
+    localUpsImageUploadTask.sBusinessId = this.jdField_k_of_type_JavaLangString;
+    localUpsImageUploadTask.sCommand = this.jdField_j_of_type_JavaLangString;
+    localUpsImageUploadTask.sRefer = this.jdField_e_of_type_JavaLangString;
+    localUpsImageUploadTask.transferData = this.jdField_a_of_type_JavaUtilMap;
+    localUpsImageUploadTask.uiRefer = this.f;
+    localUpsImageUploadTask.uploadTaskCallback = this.jdField_a_of_type_ComTencentUploadUinterfaceIUploadTaskCallback;
+    localUpsImageUploadTask.vBusiNessData = this.jdField_c_of_type_ArrayOfByte;
+    localUpsImageUploadTask.vLoginData = this.jdField_a_of_type_ArrayOfByte;
+    this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask = localUpsImageUploadTask;
+    return this;
   }
   
-  public static int a(int paramInt1, @Nullable Bitmap paramBitmap, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(1, arrayOfInt, 0);
-    a("glGenTextures");
-    GLES20.glBindTexture(paramInt1, arrayOfInt[0]);
-    a("glBindTexture " + arrayOfInt[0]);
-    GLES20.glTexParameterf(paramInt1, 10241, paramInt2);
-    GLES20.glTexParameterf(paramInt1, 10240, paramInt3);
-    GLES20.glTexParameteri(paramInt1, 10242, paramInt4);
-    GLES20.glTexParameteri(paramInt1, 10243, paramInt5);
-    if (paramBitmap != null) {
-      GLUtils.texImage2D(3553, 0, paramBitmap, 0);
-    }
-    a("glTexParameter");
-    return arrayOfInt[0];
-  }
-  
-  public static void a(int paramInt)
-  {
-    a(paramInt, null);
-  }
-  
-  public static void a(int paramInt1, int paramInt2, @Nullable Bitmap paramBitmap, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
-  {
-    GLES20.glBindTexture(paramInt2, paramInt1);
-    a("glBindTexture " + paramInt1);
-    GLES20.glTexParameterf(paramInt2, 10241, paramInt3);
-    GLES20.glTexParameterf(paramInt2, 10240, paramInt4);
-    GLES20.glTexParameteri(paramInt2, 10242, paramInt5);
-    GLES20.glTexParameteri(paramInt2, 10243, paramInt6);
-    if (paramBitmap != null) {
-      GLUtils.texImage2D(3553, 0, paramBitmap, 0);
-    }
-    a("glTexParameter");
-  }
-  
-  public static void a(int paramInt, @Nullable Bitmap paramBitmap)
-  {
-    a(paramInt, 3553, paramBitmap, 9729, 9729, 33071, 33071);
-  }
-  
-  public static void a(String paramString)
-  {
-    int i = GLES20.glGetError();
-    if (i != 0) {
-      urk.e("FlowEdit_GlUtil", paramString + ": glError 0x" + Integer.toHexString(i));
-    }
-  }
-  
-  public static int[] a(int paramInt)
-  {
-    int[] arrayOfInt = new int[paramInt];
-    GLES20.glGenTextures(paramInt, arrayOfInt, 0);
-    a("glGenTextures");
-    return arrayOfInt;
-  }
-  
-  public static void b(int paramInt)
-  {
-    GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
-    a("glDeleteTextures");
-  }
+  protected void a(int paramInt, Object... paramVarArgs) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auyn
  * JD-Core Version:    0.7.0.1
  */

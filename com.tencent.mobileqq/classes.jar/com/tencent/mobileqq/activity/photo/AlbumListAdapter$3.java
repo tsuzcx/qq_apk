@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.photo;
 
-import afze;
+import aglc;
 import java.util.List;
 
 public class AlbumListAdapter$3
   implements Runnable
 {
-  public AlbumListAdapter$3(afze paramafze, List paramList) {}
+  public AlbumListAdapter$3(aglc paramaglc, List paramList) {}
   
   public void run()
   {

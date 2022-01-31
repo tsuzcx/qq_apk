@@ -17,8 +17,8 @@ class d
       this.a.e = 0;
       this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = false;
       c.a(this.a).invalidate();
-      if (c.a(this.a).jdField_a_of_type_Fs != null) {
-        c.a(this.a).jdField_a_of_type_Fs.a(c.a(this.a).jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
+      if (c.a(this.a).mAnimationListener != null) {
+        c.a(this.a).mAnimationListener.a(c.a(this.a).mMessage, this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
       }
     }
     while (i <= this.a.e) {

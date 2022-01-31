@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.Emoticon;
 
-public class aane
-  extends atdh
+class aane
+  implements asko<Emoticon>
 {
-  public aane(Conversation paramConversation) {}
+  aane(aand paramaand, int paramInt1, int paramInt2, String paramString) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void a(Emoticon paramEmoticon)
   {
-    super.a(paramBoolean1, paramBoolean2, paramInt);
-    if ((paramBoolean1) && (paramInt != 2) && (Conversation.b(this.a))) {
-      auql.a(this.a);
-    }
+    adug.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Aand.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aand.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aand.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
   }
 }
 

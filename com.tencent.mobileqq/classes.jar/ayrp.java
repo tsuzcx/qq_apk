@@ -1,37 +1,36 @@
-import android.os.Bundle;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.http.HttpResponse;
+import org.apache.http.impl.client.DefaultRedirectHandler;
+import org.apache.http.protocol.HttpContext;
 
-public class ayrp
+final class ayrp
+  extends DefaultRedirectHandler
 {
-  static long a;
-  public int a;
-  public Bundle a;
-  public ayrq a;
-  public String a;
-  public mmn a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public boolean b;
-  public int c = 3;
-  public int d = 25;
-  public int e = 450000;
-  public int f = 1;
-  
-  public ayrp()
+  public URI getLocationURI(HttpResponse paramHttpResponse, HttpContext paramHttpContext)
   {
-    this.jdField_a_of_type_Int = 480000;
-    this.jdField_b_of_type_Int = 9;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    long l = jdField_a_of_type_Long + 1L;
-    jdField_a_of_type_Long = l;
-    this.jdField_b_of_type_Long = l;
+    URI localURI = super.getLocationURI(paramHttpResponse, paramHttpContext);
+    paramHttpResponse = paramHttpContext.getAttribute("mobileqq_report_flag");
+    if ((paramHttpResponse != null) && ((paramHttpResponse instanceof Integer)) && (((Integer)paramHttpResponse).intValue() > 0))
+    {
+      Object localObject = paramHttpContext.getAttribute("mobileqq_direct_uri");
+      paramHttpResponse = localObject;
+      if (localObject == null)
+      {
+        paramHttpResponse = new ArrayList();
+        paramHttpContext.setAttribute("mobileqq_direct_uri", paramHttpResponse);
+      }
+      if ((paramHttpResponse != null) && ((paramHttpResponse instanceof List))) {
+        ((List)paramHttpResponse).add(localURI);
+      }
+    }
+    return localURI;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayrp
  * JD-Core Version:    0.7.0.1
  */

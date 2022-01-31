@@ -1,12 +1,26 @@
-class vjo
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class vjo
+  extends QQUIEventReceiver<QQStoryTakeVideoCloseAnimationActivity, vbu>
 {
-  static void a(String paramString1, String paramString2) {}
+  public vjo(@NonNull QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity)
+  {
+    super(paramQQStoryTakeVideoCloseAnimationActivity);
+  }
   
-  static void b(String paramString1, String paramString2) {}
+  public void a(@NonNull QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity, @NonNull vbu paramvbu)
+  {
+    if (paramvbu != null) {
+      paramQQStoryTakeVideoCloseAnimationActivity.a(paramvbu.a, paramvbu.b, paramvbu.c, paramvbu.d);
+    }
+  }
   
-  static void c(String paramString1, String paramString2) {}
-  
-  static void d(String paramString1, String paramString2) {}
+  public Class acceptEventClass()
+  {
+    return vbu.class;
+  }
 }
 
 

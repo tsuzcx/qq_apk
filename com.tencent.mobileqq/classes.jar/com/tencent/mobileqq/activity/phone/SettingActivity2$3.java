@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.phone;
 
-import afyy;
+import agkw;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class SettingActivity2$3
@@ -12,11 +12,11 @@ public class SettingActivity2$3
   {
     if (this.this$0.c == null)
     {
-      this.this$0.c = new afyy(this);
+      this.this$0.c = new agkw(this);
       this.this$0.app.registObserver(this.this$0.c);
     }
     this.this$0.app.a(new SettingActivity2.3.2(this));
-    this.this$0.a(2131653452, 1000L, true);
+    this.this$0.a(2131719281, 1000L, true);
   }
 }
 

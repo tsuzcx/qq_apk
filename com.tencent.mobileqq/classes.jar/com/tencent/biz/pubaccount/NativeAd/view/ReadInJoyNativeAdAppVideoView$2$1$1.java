@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.NativeAd.view;
 
-import nbo;
+import nmp;
 
 public class ReadInJoyNativeAdAppVideoView$2$1$1
   implements Runnable
 {
-  public ReadInJoyNativeAdAppVideoView$2$1$1(nbo paramnbo) {}
+  public ReadInJoyNativeAdAppVideoView$2$1$1(nmp paramnmp) {}
   
   public void run()
   {

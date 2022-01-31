@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import ajjy;
-import bbmy;
+import ajyc;
+import bcpw;
 import com.tencent.mobileqq.mini.appbrand.utils.ShareUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -20,7 +20,7 @@ class ProgressWebView$6$2
       return;
     }
     QLog.e("ProgressWebView", 1, "sharePicToQQ failed, because of picture downloadFailed");
-    bbmy.a(ProgressWebView.access$300(this.this$1.this$0), 1, ajjy.a(2131642723), 0).a();
+    bcpw.a(ProgressWebView.access$300(this.this$1.this$0), 1, ajyc.a(2131708508), 0).a();
   }
 }
 

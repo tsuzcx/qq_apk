@@ -13,6 +13,7 @@ import NS_MINI_INTERFACE.INTERFACE.StDeveloperInfo;
 import NS_MINI_INTERFACE.INTERFACE.StDomainConfig;
 import NS_MINI_INTERFACE.INTERFACE.StExtConfigInfo;
 import NS_MINI_INTERFACE.INTERFACE.StFirstPage;
+import NS_MINI_INTERFACE.INTERFACE.StIdeConfig;
 import NS_MINI_INTERFACE.INTERFACE.StMDebugInfo;
 import NS_MINI_INTERFACE.INTERFACE.StMainPageExtInfo;
 import NS_MINI_INTERFACE.INTERFACE.StMotionPicInfo;
@@ -55,7 +56,7 @@ import java.util.Set;
 import mqq.app.AppRuntime;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import ynv;
+import yxr;
 
 public class MiniAppInfo
   implements Parcelable, Serializable
@@ -68,6 +69,7 @@ public class MiniAppInfo
   public static final String TAG = "[mini] MiniAppInfo";
   public static final String TAG_DB = "miniapp-db";
   public String amsAdInfo;
+  public String apngUrl;
   public String appId;
   public AppMode appMode = new AppMode();
   public String appStoreAnimPicUrl;
@@ -89,6 +91,9 @@ public class MiniAppInfo
   public FirstPageInfo firstPage;
   public String friendMessageQuery = "";
   public String iconUrl;
+  public String ide_extraAppid;
+  public String ide_extraData;
+  public String ide_scene;
   public boolean isSupportBlueBar;
   public boolean isSupportOffline;
   public MiniGamePluginInfo miniGamePluginInfo;
@@ -110,6 +115,7 @@ public class MiniAppInfo
   public int skipDomainCheck;
   public List<String> socketDomainList;
   public List<SubPkgInfo> subpkgs;
+  public int tianshuAdId;
   public long timestamp;
   public long tinyId;
   public int topType;
@@ -142,10 +148,10 @@ public class MiniAppInfo
   
   private MiniAppInfo(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6, String paramString7, long paramLong, List<INTERFACE.StSubPkgInfo> paramList, String paramString8, INTERFACE.StFirstPage paramStFirstPage, INTERFACE.StApiRightController paramStApiRightController, INTERFACE.StMDebugInfo paramStMDebugInfo)
   {
-    this(paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2, paramInt3, paramString5, paramString6, paramString7, paramLong, paramList, paramString8, paramStFirstPage, paramStApiRightController, paramStMDebugInfo, null, null, null, "", 0, null, null, 0, false, false, "", null, 0, null, null, null, null);
+    this(paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2, paramInt3, paramString5, paramString6, paramString7, paramLong, paramList, paramString8, paramStFirstPage, paramStApiRightController, paramStMDebugInfo, null, null, null, "", 0, null, null, 0, false, false, "", null, 0, null, null, null, null, null);
   }
   
-  private MiniAppInfo(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6, String paramString7, long paramLong, List<INTERFACE.StSubPkgInfo> paramList, String paramString8, INTERFACE.StFirstPage paramStFirstPage, INTERFACE.StApiRightController paramStApiRightController, INTERFACE.StMDebugInfo paramStMDebugInfo, INTERFACE.StDomainConfig paramStDomainConfig, INTERFACE.StMainPageExtInfo paramStMainPageExtInfo, INTERFACE.StDeveloperInfo paramStDeveloperInfo, String paramString9, int paramInt4, Map<String, String> paramMap, INTERFACE.StAppMode paramStAppMode, int paramInt5, boolean paramBoolean1, boolean paramBoolean2, String paramString10, String paramString11, int paramInt6, COMM.StCommonExt paramStCommonExt, List<INTERFACE.StExtConfigInfo> paramList1, INTERFACE.StAppBasicInfo paramStAppBasicInfo, String paramString12)
+  private MiniAppInfo(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6, String paramString7, long paramLong, List<INTERFACE.StSubPkgInfo> paramList, String paramString8, INTERFACE.StFirstPage paramStFirstPage, INTERFACE.StApiRightController paramStApiRightController, INTERFACE.StMDebugInfo paramStMDebugInfo, INTERFACE.StDomainConfig paramStDomainConfig, INTERFACE.StMainPageExtInfo paramStMainPageExtInfo, INTERFACE.StDeveloperInfo paramStDeveloperInfo, String paramString9, int paramInt4, Map<String, String> paramMap, INTERFACE.StAppMode paramStAppMode, int paramInt5, boolean paramBoolean1, boolean paramBoolean2, String paramString10, String paramString11, int paramInt6, COMM.StCommonExt paramStCommonExt, List<INTERFACE.StExtConfigInfo> paramList1, INTERFACE.StAppBasicInfo paramStAppBasicInfo, INTERFACE.StOperationInfo paramStOperationInfo, INTERFACE.StIdeConfig paramStIdeConfig)
   {
     this.appId = paramString1;
     this.name = paramString2;
@@ -303,10 +309,10 @@ public class MiniAppInfo
       }
       this.versionUpdateTime = paramStAppBasicInfo.versionUpdateTime.get();
       if (!paramStAppBasicInfo.pkgType.has()) {
-        break label1273;
+        break label1337;
       }
       if (paramStAppBasicInfo.pkgType.get() != 1) {
-        break label1265;
+        break label1329;
       }
       this.engineType = 1;
     }
@@ -320,12 +326,22 @@ public class MiniAppInfo
       }
       this.shareId = paramStAppBasicInfo.shareId.get();
       this.via = paramStAppBasicInfo.via.get();
-      this.amsAdInfo = paramString12;
+      if (paramStOperationInfo != null)
+      {
+        this.amsAdInfo = paramStOperationInfo.amsAdInfo.get();
+        this.tianshuAdId = paramStOperationInfo.tianshuAdId.get();
+      }
+      if (paramStIdeConfig != null)
+      {
+        this.ide_scene = paramStIdeConfig.scene.get();
+        this.ide_extraAppid = paramStIdeConfig.extraAppid.get();
+        this.ide_extraData = paramStIdeConfig.extraData.get();
+      }
       return;
-      label1265:
+      label1329:
       this.engineType = 0;
       continue;
-      label1273:
+      label1337:
       this.engineType = this.reportType;
     }
   }
@@ -396,6 +412,11 @@ public class MiniAppInfo
     localMiniAppInfo.shareId = paramMiniAppInfo.shareId;
     localMiniAppInfo.via = paramMiniAppInfo.via;
     localMiniAppInfo.amsAdInfo = paramMiniAppInfo.amsAdInfo;
+    localMiniAppInfo.apngUrl = paramMiniAppInfo.apngUrl;
+    localMiniAppInfo.ide_scene = paramMiniAppInfo.ide_scene;
+    localMiniAppInfo.ide_extraAppid = paramMiniAppInfo.ide_extraAppid;
+    localMiniAppInfo.ide_extraData = paramMiniAppInfo.ide_extraData;
+    localMiniAppInfo.tianshuAdId = paramMiniAppInfo.tianshuAdId;
     return localMiniAppInfo;
   }
   
@@ -409,7 +430,7 @@ public class MiniAppInfo
     }
     try
     {
-      paramJSONObject = from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(ynv.a(new INTERFACE.StApiAppInfo(), paramJSONObject)));
+      paramJSONObject = from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(yxr.a(new INTERFACE.StApiAppInfo(), paramJSONObject)));
       return paramJSONObject;
     }
     catch (Exception paramJSONObject)
@@ -459,7 +480,7 @@ public class MiniAppInfo
     boolean bool2 = getSupportBlueBar(paramStApiAppInfo);
     if (paramStApiAppInfo.supportOffline.get() == 1) {}
     for (boolean bool1 = true;; bool1 = false) {
-      return new MiniAppInfo(str1, str2, str3, str4, i, 0, j, str5, str6, str7, 0L, localList, str8, localStFirstPage, localStApiRightController, localStMDebugInfo, localStDomainConfig, localStMainPageExtInfo, localStDeveloperInfo, null, k, localMap, localStAppMode, m, bool2, bool1, getRecommendIconUrl(paramStApiAppInfo), paramStApiAppInfo.extendData.get(), paramStApiAppInfo.appNoCacheExt.clearAuths.get(), paramStApiAppInfo.extInfo, paramStApiAppInfo.extConfig.get(), (INTERFACE.StAppBasicInfo)paramStApiAppInfo.basicInfo.get(), paramStApiAppInfo.operInfo.amsAdInfo.get());
+      return new MiniAppInfo(str1, str2, str3, str4, i, 0, j, str5, str6, str7, 0L, localList, str8, localStFirstPage, localStApiRightController, localStMDebugInfo, localStDomainConfig, localStMainPageExtInfo, localStDeveloperInfo, null, k, localMap, localStAppMode, m, bool2, bool1, getRecommendIconUrl(paramStApiAppInfo), paramStApiAppInfo.extendData.get(), paramStApiAppInfo.appNoCacheExt.clearAuths.get(), paramStApiAppInfo.extInfo, paramStApiAppInfo.extConfig.get(), (INTERFACE.StAppBasicInfo)paramStApiAppInfo.basicInfo.get(), (INTERFACE.StOperationInfo)paramStApiAppInfo.operInfo.get(), (INTERFACE.StIdeConfig)paramStApiAppInfo.basicInfo.ideConfig.get());
     }
   }
   
@@ -475,6 +496,7 @@ public class MiniAppInfo
     localMiniAppInfo.tinyId = paramStUserAppInfo.tinyid.get();
     localMiniAppInfo.appStoreAnimPicUrl = paramStUserAppInfo.bgPic.get();
     localMiniAppInfo.motionPics = getMotionPics(paramStUserAppInfo.motionPics.get());
+    localMiniAppInfo.apngUrl = paramStUserAppInfo.apngUrl.get();
     return localMiniAppInfo;
   }
   
@@ -1002,7 +1024,7 @@ public class MiniAppInfo
         }
       } while (!(paramObject instanceof MiniAppInfo));
       paramObject = (MiniAppInfo)paramObject;
-    } while ((!TextUtils.equals(paramObject.appId, this.appId)) || (!TextUtils.equals(paramObject.name, this.name)) || (!TextUtils.equals(paramObject.iconUrl, this.iconUrl)) || (!TextUtils.equals(paramObject.downloadUrl, this.downloadUrl)) || (paramObject.verType != this.verType) || (paramObject.engineType != this.engineType) || (paramObject.reportType != this.reportType) || (!TextUtils.equals(paramObject.version, this.version)) || (!FirstPageInfo.equals(this.firstPage, paramObject.firstPage)) || (!DebugInfo.equals(this.debugInfo, paramObject.debugInfo)) || (!domainEquals(this.requestDomainList, paramObject.requestDomainList)) || (!domainEquals(this.socketDomainList, paramObject.socketDomainList)) || (!domainEquals(this.downloadFileDomainList, paramObject.downloadFileDomainList)) || (!domainEquals(this.uploadFileDomainList, paramObject.uploadFileDomainList)) || (!domainEquals(this.businessDomainList, paramObject.businessDomainList)) || (!this.udpIpList.equals(paramObject.udpIpList)) || (!TextUtils.equals(paramObject.extraData, this.extraData)) || (!TextUtils.equals(paramObject.shareId, this.shareId)) || (!TextUtils.equals(paramObject.via, this.via)));
+    } while ((!TextUtils.equals(paramObject.appId, this.appId)) || (!TextUtils.equals(paramObject.name, this.name)) || (!TextUtils.equals(paramObject.iconUrl, this.iconUrl)) || (!TextUtils.equals(paramObject.downloadUrl, this.downloadUrl)) || (paramObject.verType != this.verType) || (paramObject.engineType != this.engineType) || (paramObject.reportType != this.reportType) || (!TextUtils.equals(paramObject.version, this.version)) || (!FirstPageInfo.equals(this.firstPage, paramObject.firstPage)) || (!DebugInfo.equals(this.debugInfo, paramObject.debugInfo)) || (!domainEquals(this.requestDomainList, paramObject.requestDomainList)) || (!domainEquals(this.socketDomainList, paramObject.socketDomainList)) || (!domainEquals(this.downloadFileDomainList, paramObject.downloadFileDomainList)) || (!domainEquals(this.uploadFileDomainList, paramObject.uploadFileDomainList)) || (!domainEquals(this.businessDomainList, paramObject.businessDomainList)) || (!this.udpIpList.equals(paramObject.udpIpList)) || (!TextUtils.equals(paramObject.extraData, this.extraData)) || (!TextUtils.equals(paramObject.shareId, this.shareId)) || (!TextUtils.equals(paramObject.via, this.via)) || (!TextUtils.equals(paramObject.ide_scene, this.ide_scene)) || (!TextUtils.equals(paramObject.ide_extraAppid, this.ide_extraAppid)) || (!TextUtils.equals(paramObject.ide_extraData, this.ide_extraData)));
     return true;
   }
   
@@ -1047,7 +1069,12 @@ public class MiniAppInfo
   
   public boolean isInternalApp()
   {
-    return (this.appMode != null) && (this.appMode.interMode) && (!isEngineTypeMiniGame());
+    return (this.appMode != null) && (this.appMode.interMode);
+  }
+  
+  public boolean isLimitedAccessApp()
+  {
+    return (this.appMode != null) && (this.appMode.isLimitedAccess);
   }
   
   public boolean isReportTypeMiniApp()
@@ -1074,6 +1101,7 @@ public class MiniAppInfo
     this.firstPage = paramMiniAppInfo.firstPage;
     this.appStoreAnimPicUrl = paramMiniAppInfo.appStoreAnimPicUrl;
     this.motionPics = paramMiniAppInfo.motionPics;
+    this.apngUrl = paramMiniAppInfo.apngUrl;
     if ((this.miniGamePluginInfo == null) && (paramMiniAppInfo.miniGamePluginInfo != null)) {
       this.miniGamePluginInfo = paramMiniAppInfo.miniGamePluginInfo;
     }
@@ -1156,10 +1184,10 @@ public class MiniAppInfo
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
       if (!this.isSupportOffline) {
-        break label449;
+        break label489;
       }
     }
-    label449:
+    label489:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
@@ -1180,6 +1208,11 @@ public class MiniAppInfo
       paramParcel.writeString(this.shareId);
       paramParcel.writeString(this.via);
       paramParcel.writeString(this.amsAdInfo);
+      paramParcel.writeString(this.apngUrl);
+      paramParcel.writeString(this.ide_scene);
+      paramParcel.writeString(this.ide_extraAppid);
+      paramParcel.writeString(this.ide_extraData);
+      paramParcel.writeInt(this.tianshuAdId);
       return;
       paramInt = 0;
       break;

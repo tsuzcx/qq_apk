@@ -1,361 +1,213 @@
 import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.av.AVFunChat.AVFunChatMessage;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalEmojiInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalFrameSyncInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalHitInfo;
-import com.tencent.av.redpacket.ui.RedPacketGameView;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.av.business.manager.support.SupportFace.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class ljh
-  implements Handler.Callback, ljn
+  extends ljf
 {
-  public int a;
-  public Handler a;
-  public VideoAppInterface a;
-  public AVRedPacketManager a;
-  public AVActivity a;
-  public Handler b = new Handler(ThreadManager.getFileThreadLooper(), this);
+  private boolean a;
+  private int c = -1;
+  private int d = -1;
+  private int e = -1;
+  private int f = -1;
   
-  public ljh(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
+  public ljh(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_ComTencentAvUiAVActivity = paramAVActivity;
-    this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager = ((AVRedPacketManager)paramVideoAppInterface.a(6));
-    this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager.a(this);
+    super(paramVideoAppInterface);
   }
   
-  private RedPacketGameView a()
+  private boolean a()
   {
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131299757);
-    Object localObject1 = null;
-    Object localObject2;
-    View localView;
-    if (localViewGroup != null)
-    {
-      localObject2 = (RedPacketGameView)localViewGroup.findViewById(2131306744);
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = new RedPacketGameView(localViewGroup.getContext(), this.jdField_a_of_type_ComTencentAvUiAVActivity);
-        if (this.jdField_a_of_type_ComTencentAvUiAVActivity.a != null) {
-          break label114;
-        }
-        i = 0;
-        ((RedPacketGameView)localObject1).setScoreMarginTop(i);
-        localObject2 = new RelativeLayout.LayoutParams(-1, -1);
-        localView = localViewGroup.findViewById(2131306713);
-        if (localView == null) {
-          break label128;
-        }
-      }
-    }
-    label128:
-    for (int i = localViewGroup.indexOfChild(localView);; i = -1)
-    {
-      localViewGroup.addView((View)localObject1, i, (ViewGroup.LayoutParams)localObject2);
-      return localObject1;
-      label114:
-      i = this.jdField_a_of_type_ComTencentAvUiAVActivity.a.e();
-      break;
-    }
+    return lpz.b();
   }
   
-  private void c(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo)
+  private boolean b()
   {
-    int i = 3;
-    paramLocalFrameSyncInfo = paramLocalFrameSyncInfo.localHitInfo;
-    if (paramLocalFrameSyncInfo.topWordTipType == 1) {}
-    for (;;)
-    {
-      if (i != -1) {
-        this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager.a(i, false);
-      }
-      if (paramLocalFrameSyncInfo.comboCnt > 0) {
-        this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager.a(6, false);
-      }
-      return;
-      if (paramLocalFrameSyncInfo.topWordTipType == 2) {
-        i = 2;
-      } else if (paramLocalFrameSyncInfo.topWordTipType == 3) {
-        i = 4;
-      } else if (paramLocalFrameSyncInfo.topWordTipType == 4) {
-        i = 5;
-      } else {
-        i = -1;
-      }
-    }
+    return lpz.d();
   }
   
   private boolean c()
   {
-    return this.jdField_a_of_type_Int != -1;
+    return lpz.c();
   }
   
-  private void h()
+  private boolean d()
   {
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131299757);
-    RedPacketGameView localRedPacketGameView = (RedPacketGameView)localViewGroup.findViewById(2131306744);
-    if (localRedPacketGameView != null)
+    return lpz.d();
+  }
+  
+  public int a(String paramString)
+  {
+    if ("normal".equalsIgnoreCase(paramString)) {
+      return this.c;
+    }
+    if ("interact".equalsIgnoreCase(paramString)) {
+      return this.d;
+    }
+    if ("SUPPORT_SWITCH_FACE".equalsIgnoreCase(paramString)) {
+      return this.e;
+    }
+    if ("creative".equalsIgnoreCase(paramString)) {
+      return this.f;
+    }
+    return -1;
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      bdse.a().postDelayed(new SupportFace.1(this), 1100L);
+    }
+    lcl.c("SupportFace", "onReceiveSupportMessage type:" + paramInt + "|" + paramString);
+    if (paramString != null)
     {
-      localRedPacketGameView.e();
-      localViewGroup.removeView(localRedPacketGameView);
-    }
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.onGameFinish," + this.jdField_a_of_type_Int);
-    }
-    if (!c()) {}
-    while (this.jdField_a_of_type_Int == 5) {
-      return;
-    }
-    this.jdField_a_of_type_Int = 5;
-    c();
-    h();
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.showGameRunning, " + this.jdField_a_of_type_Int + "," + paramInt);
-    }
-    if (!c()) {}
-    while (this.jdField_a_of_type_Int == 4) {
-      return;
-    }
-    this.jdField_a_of_type_Int = 4;
-    c();
-    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131306744);
-    localRedPacketGameView.setVisibility(0);
-    localRedPacketGameView.b(false);
-    if (paramInt == 2) {
-      localRedPacketGameView.c();
-    }
-    this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager.a(7, true);
-  }
-  
-  public void a(int paramInt, List<AVRedPacketManager.LocalEmojiInfo> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.showGameReady, " + this.jdField_a_of_type_Int + "," + paramInt);
-    }
-    if (!a()) {}
-    while (this.jdField_a_of_type_Int == 3) {
-      return;
-    }
-    this.jdField_a_of_type_Int = 3;
-    c();
-    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131306744);
-    localRedPacketGameView.setVisibility(0);
-    localRedPacketGameView.a(paramInt, paramList);
-  }
-  
-  public void a(int paramInt, ljo paramljo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.preLoadRes,mState = " + this.jdField_a_of_type_Int + ",type = " + paramInt + ",manager = " + this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager);
-    }
-    try
-    {
-      long l1 = System.currentTimeMillis();
-      RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131306744);
-      if (localRedPacketGameView != null) {
-        localRedPacketGameView.a(this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager);
+      if (!paramString.equals("SUPPORT_TRUE")) {
+        break label122;
       }
-      for (boolean bool = true;; bool = false)
-      {
-        long l2 = System.currentTimeMillis();
-        if (QLog.isColorLevel()) {
-          QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.preLoadRes,suc = " + bool + ",type = " + paramInt + ",cost = " + (l2 - l1));
-        }
-        if (paramljo == null) {
-          break;
-        }
-        paramljo.a(bool, paramInt);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.preLoadRes  not init");
-        }
+      if (paramInt != 1) {
+        break label83;
       }
-      return;
+      this.c = 1;
     }
-    catch (Exception paramljo)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.preLoadRes  exception", paramljo);
-      }
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (!a()) {}
-    RedPacketGameView localRedPacketGameView;
+    label83:
+    label122:
     do
     {
-      return;
-      localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131306744);
-      if (paramInt == AVRedPacketManager.jdField_a_of_type_Int)
+      return false;
+      if (paramInt == 3)
       {
-        localRedPacketGameView.b(paramBoolean);
-        return;
+        this.c = 1;
+        this.d = 1;
+        return false;
       }
-      if (paramInt == AVRedPacketManager.b)
+      if (paramInt == 14)
       {
-        localRedPacketGameView.c(paramBoolean);
-        return;
+        this.f = 1;
+        lcl.c("SupportFace", "onReceiveSupportMessage  support reason 1:");
+        return false;
       }
-      if (paramInt == AVRedPacketManager.c)
+      return true;
+      if (paramString.equals("SUPPORT_FALSE"))
       {
-        localRedPacketGameView.d(paramBoolean);
-        return;
+        if (paramInt == 1)
+        {
+          this.c = 0;
+          this.d = 0;
+        }
+        for (;;)
+        {
+          return true;
+          if (paramInt == 3)
+          {
+            this.d = 0;
+          }
+          else if (paramInt == 14)
+          {
+            this.f = 0;
+            lcl.c("SupportFace", "onReceiveSupportMessage not support reason 1:");
+          }
+        }
       }
-    } while (paramInt != AVRedPacketManager.d);
-    localRedPacketGameView.e(paramBoolean);
-  }
-  
-  public void a(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.onEmojiHit, " + this.jdField_a_of_type_Int + ",localFrameSyncInfo=" + paramLocalFrameSyncInfo);
-    }
-    if (!c()) {
-      return;
-    }
-    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131306744);
-    localRedPacketGameView.setVisibility(0);
-    localRedPacketGameView.a(paramLocalFrameSyncInfo);
-    c(paramLocalFrameSyncInfo);
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    Object localObject = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131306744);
-    if (this.jdField_a_of_type_Int == -1)
+      if (paramString.equals("SUPPORT_SWITCH_FACE"))
+      {
+        if (paramInt == 3) {
+          this.e = 1;
+        }
+        return true;
+      }
+      if (paramString.equals("SUPPORT_CREATIVECOP_TRUE"))
+      {
+        if (paramInt == 14)
+        {
+          this.f = 1;
+          lcl.c("SupportFace", "onReceiveSupportMessage  support reason 2:");
+        }
+        return true;
+      }
+    } while (!paramString.equals("SUPPORT_CREATIVECOP_FALSE"));
+    if (paramInt == 14)
     {
-      RedPacketGameView localRedPacketGameView = a();
-      localObject = localRedPacketGameView;
-      if (localRedPacketGameView != null)
-      {
-        this.jdField_a_of_type_Int = 1;
-        localObject = localRedPacketGameView;
+      this.f = 0;
+      lcl.c("SupportFace", "onReceiveSupportMessage  not support reason 2:");
+    }
+    return true;
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool = false;
+    lcl.d("SupportFace", String.format("isSelfSupport| device info:mode=%s,sdkVersion=%d,cpuFreq=%d,cpuCount=%d,memCapacity=%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_b_of_type_Int), Long.valueOf(this.jdField_b_of_type_Long) }));
+    if ("normal".equalsIgnoreCase(paramString)) {
+      bool = a();
+    }
+    do
+    {
+      return bool;
+      if ("interact".equalsIgnoreCase(paramString)) {
+        return b();
       }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "initUI," + this.jdField_a_of_type_Int + "," + localObject);
-    }
-    return localObject != null;
+      if ("SUPPORT_SWITCH_FACE".equalsIgnoreCase(paramString)) {
+        return d();
+      }
+    } while (!"creative".equalsIgnoreCase(paramString));
+    return c();
   }
   
   public void b()
   {
-    if (!c()) {
+    boolean bool2 = lji.b();
+    if (axef.a(BaseApplicationImpl.getContext()) == 1) {}
+    boolean bool3;
+    boolean bool4;
+    boolean bool5;
+    boolean bool6;
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      VideoController localVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+      bool3 = a();
+      if ((bool3) && (bool2)) {
+        localVideoController.a(1, "SUPPORT_TRUE");
+      }
+      bool4 = d();
+      if ((bool4) && (bool2)) {
+        localVideoController.a(3, "SUPPORT_SWITCH_FACE");
+      }
+      bool5 = b();
+      if ((bool5) && (bool2)) {
+        localVideoController.a(3, "SUPPORT_TRUE");
+      }
+      bool6 = c();
+      if ((bool6) && (bool1))
+      {
+        AVFunChat.AVFunChatMessage localAVFunChatMessage = new AVFunChat.AVFunChatMessage();
+        localAVFunChatMessage.uint64_type.set(14L);
+        localAVFunChatMessage.enum_operator.set(1);
+        localAVFunChatMessage.str_msg.set("SUPPORT_CREATIVECOP_TRUE");
+        localVideoController.a(14, localAVFunChatMessage);
+      }
+      if ((!bool3) || (!bool4) || (!bool5) || (!bool6)) {
+        break;
+      }
       return;
     }
-    ((RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131306744)).d();
-  }
-  
-  public void b(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.onUpdateFrameInfo, " + this.jdField_a_of_type_Int + "," + paramLocalFrameSyncInfo);
-    }
-    if (!c()) {
-      return;
-    }
-    ((RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131306744)).b(paramLocalFrameSyncInfo);
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Int != -1;
+    QLog.w("SupportFace", 1, "sendSupportMsg, normal[" + bool3 + "], switchfaceStandard[" + bool4 + "], interact[" + bool5 + "], creativePendant[" + bool6 + "], isSOExist[" + bool2 + "],isPagSoExist[" + bool1 + "]");
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Int == -1) {}
-    while ((b()) || (!QLog.isColorLevel())) {
-      return;
-    }
-    QLog.d("AVRedPacketManager", 2, "gameMode");
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.showRedPacketSend, " + this.jdField_a_of_type_Int);
-    }
-    if (!a()) {}
-    while (this.jdField_a_of_type_Int == 2) {
-      return;
-    }
-    this.jdField_a_of_type_Int = 2;
-    c();
-    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131306744);
-    localRedPacketGameView.setVisibility(0);
-    localRedPacketGameView.a();
-  }
-  
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.showRedPacketCome, " + this.jdField_a_of_type_Int);
-    }
-    if (!a()) {}
-    while (this.jdField_a_of_type_Int == 2) {
-      return;
-    }
-    this.jdField_a_of_type_Int = 2;
-    c();
-    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131306744);
-    localRedPacketGameView.setVisibility(0);
-    localRedPacketGameView.b();
-  }
-  
-  public void f()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.showReceiverUserGuide, " + this.jdField_a_of_type_Int);
-    }
-    if (!a()) {}
-    RedPacketGameView localRedPacketGameView;
-    do
-    {
-      return;
-      localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131306744);
-    } while (localRedPacketGameView == null);
-    localRedPacketGameView.f();
-  }
-  
-  public void g()
-  {
-    if (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager != null) {
-      this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager.a(null);
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.what;
-    return false;
+    this.jdField_a_of_type_Boolean = false;
+    this.c = -1;
+    this.d = -1;
+    this.e = -1;
+    this.f = -1;
+    lcl.c("SupportFace", "SupportFace restore:");
   }
 }
 

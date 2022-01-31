@@ -1,22 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import android.content.Context;
+import java.io.File;
 
-public class bifk
-  implements DialogInterface.OnDismissListener
+final class bifk
+  implements biek
 {
-  public bifk(EditVideoGuide paramEditVideoGuide) {}
+  bifk(String paramString1, String paramString2, bifm parambifm, Context paramContext, File paramFile1, File paramFile2) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(String paramString, long paramLong, float paramFloat)
   {
-    this.a.jdField_a_of_type_Int = 2;
-    this.a.b = 2;
-    this.a.jdField_a_of_type_Bigb.a(5);
+    if (this.jdField_a_of_type_Bifm != null) {
+      this.jdField_a_of_type_Bifm.a(paramLong, paramFloat);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
+  {
+    if (paramBoolean) {
+      bidy.a().a(bifj.a(), this.jdField_a_of_type_JavaLangString, "SoHelper", new bifl(this));
+    }
+    while (this.jdField_a_of_type_Bifm == null) {
+      return;
+    }
+    this.jdField_a_of_type_Bifm.a(paramString3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bifk
  * JD-Core Version:    0.7.0.1
  */

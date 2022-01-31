@@ -1,161 +1,74 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QWalletHelper;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetPotentialFriendListReq;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetPotentialFriendListRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import org.json.JSONObject;
 
 public class bezo
-  extends RemoteCommand
+  extends bfad
 {
-  private static Bundle jdField_a_of_type_AndroidOsBundle;
-  boolean jdField_a_of_type_Boolean;
+  private CloudStorage.StGetPotentialFriendListReq a = new CloudStorage.StGetPotentialFriendListReq();
   
-  public bezo(String paramString, boolean paramBoolean)
+  public bezo(COMM.StCommonExt paramStCommonExt, String paramString)
   {
-    super(paramString);
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramStCommonExt != null) {
+      this.a.ext.set(paramStCommonExt);
+    }
+    this.a.appid.set(paramString);
   }
   
-  public static Bundle a(Bundle paramBundle)
+  protected String a()
   {
+    return "mini_app_cloudstorage";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    CloudStorage.StGetPotentialFriendListRsp localStGetPotentialFriendListRsp = new CloudStorage.StGetPotentialFriendListRsp();
     try
     {
-      Bundle localBundle = jdField_a_of_type_AndroidOsBundle;
-      jdField_a_of_type_AndroidOsBundle = paramBundle;
-      return localBundle;
-    }
-    finally
-    {
-      paramBundle = finally;
-      throw paramBundle;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = PluginCommunicationHandler.getInstance();
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.register(new bezo("cacomicetinfo", true));
-    }
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    Intent localIntent = new Intent();
-    localIntent.addCategory("android.intent.category.LAUNCHER");
-    localIntent.addFlags(268435456);
-    rtr.a(localIntent, paramQQAppInterface, BaseApplication.getContext(), paramString, -1);
-  }
-  
-  private boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    paramQQAppInterface = (ajoy)paramQQAppInterface.getManager(56);
-    if (paramQQAppInterface != null) {
-      return paramQQAppInterface.b(paramString) != null;
-    }
-    return false;
-  }
-  
-  private Bundle b(Bundle paramBundle)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof QQAppInterface))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicRemoteCommand", 2, "onRemoteInvoke cannot get QQAppInterface");
+      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      localStGetPotentialFriendListRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      if (localStGetPotentialFriendListRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("response", localStGetPotentialFriendListRsp);
+        paramArrayOfByte.put("resultCode", 0);
+        paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
+        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+        return paramArrayOfByte;
       }
+      besl.a("GetPotentialFriendListRequest", "onResponse fail.rsp = null");
       return null;
     }
-    localObject = (QQAppInterface)localObject;
-    String str = paramBundle.getString("cacomicetinfo");
-    if ("Remotecall_getPublicAccountState".equals(str))
+    catch (Exception paramArrayOfByte)
     {
-      paramBundle = paramBundle.getString("uin");
-      if (!TextUtils.isEmpty(paramBundle))
-      {
-        boolean bool = a((QQAppInterface)localObject, paramBundle);
-        paramBundle = new Bundle();
-        paramBundle.putBoolean("state", bool);
-        return paramBundle;
-      }
+      besl.a("GetPotentialFriendListRequest", "onResponse fail." + paramArrayOfByte);
     }
-    else
-    {
-      if (!"Remotecall_showPublicAccountDetail".equals(str)) {
-        break label123;
-      }
-      paramBundle = paramBundle.getString("uin");
-      if (!TextUtils.isEmpty(paramBundle)) {
-        a((QQAppInterface)localObject, paramBundle);
-      }
-    }
-    for (;;)
-    {
-      return null;
-      label123:
-      if ("Remotecall_getUserStatus".equals(str))
-      {
-        paramBundle = new Bundle();
-        if (bajr.b((QQAppInterface)localObject)) {
-          paramBundle.putInt("userStatus", 3);
-        }
-        for (;;)
-        {
-          return paramBundle;
-          if (bajr.c((QQAppInterface)localObject)) {
-            paramBundle.putInt("userStatus", 2);
-          } else {
-            paramBundle.putInt("userStatus", 1);
-          }
-        }
-      }
-      if ("Remotecall_initQbPlugin".equals(str)) {
-        try
-        {
-          QWalletHelper.preloadQWallet((AppInterface)localObject);
-          if (QLog.isColorLevel()) {
-            QLog.i("VipComicRemoteCommand", 2, "preloadQWallet()");
-          }
-          paramBundle = new Bundle();
-          paramBundle.putBoolean("success", true);
-          return paramBundle;
-        }
-        catch (Exception paramBundle)
-        {
-          paramBundle.printStackTrace();
-        }
-      } else if ("Remotecall_showComicBar".equals(str))
-      {
-        if (((QQAppInterface)localObject).getHandler(Conversation.class) != null) {
-          a(paramBundle);
-        }
-      }
-      else if (QLog.isColorLevel()) {
-        QLog.d("VipComicRemoteCommand", 2, "onRemoteInvoke unknow invokeCmd");
-      }
-    }
+    return null;
   }
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  protected byte[] a()
   {
-    paramBundle = b(paramBundle);
-    if (paramOnInvokeFinishLinstener != null) {
-      paramOnInvokeFinishLinstener.onInvokeFinish(paramBundle);
-    }
-    return paramBundle;
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "GetPotentialFriendList";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bezo
  * JD-Core Version:    0.7.0.1
  */

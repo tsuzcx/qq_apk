@@ -1,24 +1,56 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.graphics.RectF;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class bcnx
-  extends BroadcastReceiver
+public final class bcnx
 {
-  bcnx(bcnw parambcnw) {}
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  public ayki a;
+  private List<RectF> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private List<ayki> b = new ArrayList();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private bcnx(ayki paramayki)
   {
-    boolean bool = "tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction());
-    bcnt.c("CallingStateMonitor", String.format("onVideoChattingStateChanged isChatting=%s", new Object[] { Boolean.valueOf(bool) }));
-    if (bcnw.a(this.a) != null) {
-      bcnw.a(this.a).c(bool);
+    this.jdField_a_of_type_Ayki = paramayki;
+  }
+  
+  private void a(RectF paramRectF, ayki paramayki)
+  {
+    int j;
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      int i = 0;
+      j = i;
+      if (!localIterator.hasNext()) {
+        break label63;
+      }
+      if (!paramRectF.equals((RectF)localIterator.next())) {
+        break label91;
+      }
+      i = 1;
+    }
+    label63:
+    label91:
+    for (;;)
+    {
+      break;
+      j = 0;
+      if (j == 0)
+      {
+        this.jdField_a_of_type_JavaUtilList.add(paramRectF);
+        this.b.add(paramayki);
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcnx
  * JD-Core Version:    0.7.0.1
  */

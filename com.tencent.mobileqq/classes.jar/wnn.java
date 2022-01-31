@@ -1,36 +1,41 @@
-import android.content.res.Resources;
-import android.widget.Button;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class wnn
-  extends azjp
+class wnn
+  implements AbsListView.OnScrollListener
 {
-  public wnn(TroopGiftPanel paramTroopGiftPanel) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void a(int paramInt)
+  wnn(wnl paramwnl) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super.a(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetButton.setText(TroopGiftPanel.a(this.a));
-    TroopGiftPanel.a(this.a, 0L);
+    if ((paramInt3 > 0) && (paramAbsListView.getFirstVisiblePosition() + paramInt2 >= paramInt3))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void a(int paramInt, String paramString)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    super.a(paramInt, paramString);
-    bbmy.a(this.a.jdField_a_of_type_AndroidContentContext, ajjy.a(2131649633), 0).b(this.a.getResources().getDimensionPixelSize(2131167766));
-    TroopGiftPanel.a(true);
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    super.b(paramInt, paramString);
-    bbmy.a(this.a.jdField_a_of_type_AndroidContentContext, ajjy.a(2131649600), 0).b(this.a.getResources().getDimensionPixelSize(2131167766));
-    TroopGiftPanel.a(true);
+    if ((this.jdField_a_of_type_Boolean) && (paramInt == 0) && (!wnl.a(this.jdField_a_of_type_Wnl)) && (!wnl.b(this.jdField_a_of_type_Wnl)))
+    {
+      QLog.i(wnl.a(), 1, "onLastItemVisible");
+      wnl.a(this.jdField_a_of_type_Wnl, wnl.a(this.jdField_a_of_type_Wnl).a(wnl.a(this.jdField_a_of_type_Wnl)));
+      if (wnl.a(this.jdField_a_of_type_Wnl) != null)
+      {
+        wnl.a(this.jdField_a_of_type_Wnl).a(wnl.a(this.jdField_a_of_type_Wnl), true);
+        wnl.a(this.jdField_a_of_type_Wnl, true);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wnn
  * JD-Core Version:    0.7.0.1
  */

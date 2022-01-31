@@ -1,30 +1,19 @@
-import android.app.Activity;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class adgi
-  extends ClickableSpan
+  implements DialogInterface.OnClickListener
 {
-  adgi(adfw paramadfw) {}
+  adgi(adgh paramadgh, BaseActivity paramBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      paramView = begr.a(this.a.jdField_a_of_type_AndroidContentContext);
-      paramView.b(2131654456);
-      paramView.c(2131625035);
-      paramView.a(new adgj(this));
-      paramView.a(new adgk(this, paramView));
-      paramView.show();
-      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    adgh.a(null);
+    if (adgh.a(this.jdField_a_of_type_Adgh) != null) {
+      adgh.a(this.jdField_a_of_type_Adgh).b();
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
   }
 }
 

@@ -325,8 +325,11 @@ class TbsWizard
   public String getCrashExtraMessage()
   {
     String str = null;
-    Object localObject2 = this.mDexLoader.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "invokeStaticMethod", new Class[] { Boolean.TYPE, String.class, String.class, [Ljava.lang.Class.class, [Ljava.lang.Object.class }, new Object[] { Boolean.valueOf(true), "com.tencent.smtt.util.CrashTracker", "getCrashExtraInfo", null, new Object[0] });
-    Object localObject1 = localObject2;
+    Object localObject1 = this.mDexLoader;
+    Object localObject2 = Boolean.TYPE;
+    Object[] arrayOfObject = new Object[0];
+    localObject2 = ((DexLoader)localObject1).invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "invokeStaticMethod", new Class[] { localObject2, String.class, String.class, [Ljava.lang.Class.class, [Ljava.lang.Object.class }, new Object[] { Boolean.valueOf(true), "com.tencent.smtt.util.CrashTracker", "getCrashExtraInfo", null, arrayOfObject });
+    localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = this.mDexLoader.invokeStaticMethod("com.tencent.smtt.util.CrashTracker", "getCrashExtraInfo", null, new Object[0]);
     }
@@ -353,7 +356,7 @@ class TbsWizard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsWizard
  * JD-Core Version:    0.7.0.1
  */

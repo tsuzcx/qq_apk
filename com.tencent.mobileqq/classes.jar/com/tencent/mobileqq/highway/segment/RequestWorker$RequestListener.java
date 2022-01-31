@@ -273,6 +273,14 @@ class RequestWorker$RequestListener
       RequestWorker.access$300(this.this$0).remove(Integer.valueOf(this.req.getHwSeq()));
       return;
     }
+    if ((paramHwResponse.isIpv6) && (paramHwResponse.retCode == 97))
+    {
+      BdhLogUtil.LogEvent("R", "handleResponse , ipv6 illegal user");
+      this.this$0.engine.mConnManager.onIPV6IllegalUserErr(this.req.sendConnId);
+      RequestWorker.access$100(this.this$0, this.req);
+      scheduleRetry(paramHwResponse.buzRetCode, 0L);
+      return;
+    }
     if ((paramHwResponse.shouldRetry) && (this.req.buzRetryCount < 3))
     {
       localObject = this.req;

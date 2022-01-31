@@ -1,6 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bibg;
+import bjsd;
 
 class EditVideoGuide$GotoLocationPageDelayRunnable
   implements Runnable
@@ -9,9 +9,9 @@ class EditVideoGuide$GotoLocationPageDelayRunnable
   
   public void run()
   {
-    bibg localbibg = (bibg)this.this$0.a(bibg.class);
-    if (localbibg != null) {
-      localbibg.c();
+    bjsd localbjsd = (bjsd)this.this$0.a(bjsd.class);
+    if (localbjsd != null) {
+      localbjsd.c();
     }
   }
 }

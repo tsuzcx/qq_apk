@@ -1,18 +1,14 @@
-import java.util.Comparator;
+import javax.microedition.khronos.opengles.GL11;
 
-class lqw
-  implements Comparator<leb>
+public abstract interface lqw
 {
-  lqw(lqu paramlqu) {}
+  public abstract int a();
   
-  public int a(leb paramleb1, leb paramleb2)
-  {
-    if (paramleb1.a) {}
-    while (paramleb2.a) {
-      return -1;
-    }
-    return 0;
-  }
+  public abstract void a(int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  
+  public abstract void a(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  
+  public abstract void b(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2);
 }
 
 

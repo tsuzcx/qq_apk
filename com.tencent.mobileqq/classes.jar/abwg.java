@@ -1,18 +1,34 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
 
 public class abwg
-  implements View.OnClickListener
+  extends Handler
 {
-  public abwg(TroopDisbandActivity paramTroopDisbandActivity, Dialog paramDialog) {}
+  public abwg(QQSettingCleanActivity paramQQSettingCleanActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    switch (paramMessage.what)
+    {
     }
+    do
+    {
+      return;
+      if (!this.a.isFinishing())
+      {
+        this.a.a.a(this.a.getString(2131690809));
+        this.a.a.d(2130848617);
+        this.a.a.b(false);
+      }
+      sendEmptyMessageDelayed(1, 1000L);
+      return;
+    } while ((this.a.a == null) || (!this.a.a.isShowing()));
+    this.a.a.cancel();
+    this.a.a.a(this.a.getString(2131690811));
+    this.a.a.c(true);
+    this.a.a.a(false);
+    this.a.a.b(true);
   }
 }
 

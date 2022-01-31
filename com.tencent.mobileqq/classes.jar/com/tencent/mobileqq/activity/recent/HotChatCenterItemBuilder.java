@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ahai;
-import ahaz;
-import ahba;
-import ahbe;
-import ahdb;
-import aiyu;
-import ajjy;
+import ahmx;
+import ahno;
+import ahnp;
+import ahnt;
+import ahpq;
+import ajmw;
+import ajyc;
 import android.content.Context;
 import android.util.SparseArray;
 import android.view.View;
@@ -16,9 +16,8 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.TextView;
-import atmp;
-import atmq;
-import bajr;
+import aukn;
+import auko;
 import com.tencent.biz.pubaccount.ecshopassit.RecentItemEcShop;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.cur.DragTextView;
@@ -30,13 +29,14 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ApolloGameData;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ThemeImageView;
 import java.lang.ref.WeakReference;
 
 public class HotChatCenterItemBuilder
-  extends ahaz
+  extends ahno
   implements View.OnClickListener, Runnable
 {
   private SparseArray<SparseArray<ApolloGameRedDot>> jdField_a_of_type_AndroidUtilSparseArray;
@@ -68,52 +68,52 @@ public class HotChatCenterItemBuilder
     return false;
   }
   
-  public View a(int paramInt, Object paramObject, ahbe paramahbe, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahdb paramahdb)
+  public View a(int paramInt, Object paramObject, ahnt paramahnt, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahpq paramahpq)
   {
-    if ((this.jdField_a_of_type_Ahai != null) && (this.jdField_a_of_type_Ahai.a != null) && (this.jdField_a_of_type_JavaLangRefWeakReference == null))
+    if ((this.jdField_a_of_type_Ahmx != null) && (this.jdField_a_of_type_Ahmx.a != null) && (this.jdField_a_of_type_JavaLangRefWeakReference == null))
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_Ahai.a);
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_Ahmx.a);
       a();
     }
-    paramahdb = null;
-    paramViewGroup = paramahdb;
+    paramahpq = null;
+    paramViewGroup = paramahpq;
     if (paramView != null)
     {
-      paramViewGroup = paramahdb;
-      if ((paramView.getTag() instanceof ahba)) {
-        paramViewGroup = (ahba)paramView.getTag();
+      paramViewGroup = paramahpq;
+      if ((paramView.getTag() instanceof ahnp)) {
+        paramViewGroup = (ahnp)paramView.getTag();
       }
     }
     Object localObject;
     if (paramViewGroup == null)
     {
-      paramahdb = new ahba();
-      localObject = a(paramContext, 2131493062, paramahdb);
-      paramahdb.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)((View)localObject).findViewById(2131302061));
-      paramahdb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)((View)localObject).findViewById(2131312826));
-      paramahdb.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131303219));
-      paramahdb.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131299195));
-      paramahdb.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(16908308));
-      paramahdb.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131310659));
-      paramahdb.c = ((TextView)((View)localObject).findViewById(2131301546));
-      paramahdb.d = ((TextView)((View)localObject).findViewById(2131300220));
-      paramahdb.e = ((TextView)((View)localObject).findViewById(16908309));
-      paramahdb.e.setGravity(16);
-      a((View)localObject, paramahdb.jdField_a_of_type_AndroidWidgetTextView, paramContext);
-      ((View)localObject).setTag(paramahdb);
+      paramahpq = new ahnp();
+      localObject = a(paramContext, 2131558614, paramahpq);
+      paramahpq.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)((View)localObject).findViewById(2131367679));
+      paramahpq.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)((View)localObject).findViewById(2131378650));
+      paramahpq.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131368885));
+      paramahpq.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131364757));
+      paramahpq.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(16908308));
+      paramahpq.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131376452));
+      paramahpq.c = ((TextView)((View)localObject).findViewById(2131367157));
+      paramahpq.d = ((TextView)((View)localObject).findViewById(2131365818));
+      paramahpq.e = ((TextView)((View)localObject).findViewById(16908309));
+      paramahpq.e.setGravity(16);
+      a((View)localObject, paramahpq.jdField_a_of_type_AndroidWidgetTextView, paramContext);
+      ((View)localObject).setTag(paramahpq);
       paramView = (View)localObject;
-      paramViewGroup = paramahdb;
-      if (this.jdField_a_of_type_Ahai != null)
+      paramViewGroup = paramahpq;
+      if (this.jdField_a_of_type_Ahmx != null)
       {
-        paramahdb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_Ahai.a());
-        paramViewGroup = paramahdb;
+        paramahpq.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_Ahmx.a());
+        paramViewGroup = paramahpq;
         paramView = (View)localObject;
       }
     }
     for (;;)
     {
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(Integer.valueOf(paramInt));
-      if (AppSetting.c) {
+      if (AppSetting.d) {
         paramView.setContentDescription(null);
       }
       label630:
@@ -121,57 +121,57 @@ public class HotChatCenterItemBuilder
       if ((paramViewGroup != null) && ((paramObject instanceof RecentBaseData)))
       {
         localObject = (RecentBaseData)paramObject;
-        paramahdb = null;
-        if (paramahbe != null) {
-          paramahdb = paramahbe.a((RecentBaseData)localObject);
+        paramahpq = null;
+        if (paramahnt != null) {
+          paramahpq = paramahnt.a((RecentBaseData)localObject);
         }
-        a(paramView, (RecentBaseData)localObject, paramContext, paramahdb);
+        a(paramView, (RecentBaseData)localObject, paramContext, paramahpq);
         if ((paramObject instanceof RecentItemEcShop))
         {
           paramViewGroup.jdField_a_of_type_ComTencentWidgetThemeImageView.setOnClickListener(paramOnClickListener);
           paramViewGroup.jdField_a_of_type_ComTencentWidgetThemeImageView.setTag(-1, Integer.valueOf(paramInt));
-          if (AppSetting.c) {
-            paramViewGroup.jdField_a_of_type_ComTencentWidgetThemeImageView.setContentDescription(String.format(ajjy.a(2131639751), new Object[] { ((RecentItemEcShop)paramObject).b() }));
+          if (AppSetting.d) {
+            paramViewGroup.jdField_a_of_type_ComTencentWidgetThemeImageView.setContentDescription(String.format(ajyc.a(2131705536), new Object[] { ((RecentItemEcShop)paramObject).b() }));
           }
         }
-        localObject = paramView.findViewById(2131309349);
-        paramahbe = paramView.findViewById(2131297078);
-        View localView = paramView.findViewById(2131297079);
-        paramahdb = paramView.findViewById(2131297081);
+        localObject = paramView.findViewById(2131375095);
+        paramahnt = paramView.findViewById(2131362617);
+        View localView = paramView.findViewById(2131362618);
+        paramahpq = paramView.findViewById(2131362620);
         a(paramContext, paramView, paramInt, paramObject, paramViewGroup, paramOnClickListener);
         ((View)localObject).setOnClickListener(paramOnClickListener);
-        paramahbe.setOnClickListener(this);
+        paramahnt.setOnClickListener(this);
         ((View)localObject).setTag(-1, Integer.valueOf(paramInt));
-        paramahbe.setTag(-1, Integer.valueOf(paramInt));
-        paramahbe.setTag(-100, paramOnClickListener);
+        paramahnt.setTag(-1, Integer.valueOf(paramInt));
+        paramahnt.setTag(-100, paramOnClickListener);
         localView.setLongClickable(true);
         localView.setOnLongClickListener(paramOnLongClickListener);
         localView.setTag(-1, Integer.valueOf(paramInt));
-        if (((paramObject instanceof RecentHotchatItem)) && (this.jdField_a_of_type_Ahai != null) && (this.jdField_a_of_type_Ahai.a != null))
+        if (((paramObject instanceof RecentHotchatItem)) && (this.jdField_a_of_type_Ahmx != null) && (this.jdField_a_of_type_Ahmx.a != null))
         {
           paramViewGroup = (RecentHotchatItem)paramObject;
-          paramObject = (TextView)paramView.findViewById(2131297082);
-          paramOnClickListener = ApolloGameUtil.a(paramViewGroup.c(), this.jdField_a_of_type_Ahai.a);
+          paramObject = (TextView)paramView.findViewById(2131362621);
+          paramOnClickListener = ApolloGameUtil.a(paramViewGroup.c(), this.jdField_a_of_type_Ahmx.a);
           if (paramOnClickListener == null) {
             break label904;
           }
           paramObject.setText(paramOnClickListener.mTipsWording);
-          paramObject = paramahbe.getTag();
+          paramObject = paramahnt.getTag();
           if ((paramObject != null) && ((paramObject instanceof RedTouch))) {
             break label965;
           }
-          paramObject = new RedTouch(paramContext, paramahdb).a(19).a();
-          paramahbe.setTag(paramObject);
+          paramObject = new RedTouch(paramContext, paramahpq).a(19).a();
+          paramahnt.setTag(paramObject);
           label671:
-          if (!a(this.jdField_a_of_type_Ahai.a, paramViewGroup.c())) {
+          if (!a(this.jdField_a_of_type_Ahmx.a, paramViewGroup.c())) {
             break label989;
           }
-          paramahbe.setTag(-200, Integer.valueOf(paramViewGroup.c()));
-          paramahbe.setTag(-300, paramObject);
-          paramahbe = new BusinessInfoCheckUpdate.RedTypeInfo();
-          paramahbe.red_type.set(0);
-          paramObject.a(paramahbe);
-          paramObject = ApolloGameUtil.a(paramViewGroup.c(), this.jdField_a_of_type_Ahai.a);
+          paramahnt.setTag(-200, Integer.valueOf(paramViewGroup.c()));
+          paramahnt.setTag(-300, paramObject);
+          paramahnt = new BusinessInfoCheckUpdate.RedTypeInfo();
+          paramahnt.red_type.set(0);
+          paramObject.a(paramahnt);
+          paramObject = ApolloGameUtil.a(paramViewGroup.c(), this.jdField_a_of_type_Ahmx.a);
           if (paramObject != null) {
             break label973;
           }
@@ -189,7 +189,7 @@ public class HotChatCenterItemBuilder
       label981:
       for (paramObject = "";; paramObject = paramObject.mActId)
       {
-        bajr.a(null, "cmshow", "Apollo", "reddot_show", paramInt, 0, new String[] { String.valueOf(i), String.valueOf(0), paramObject });
+        VipUtils.a(null, "cmshow", "Apollo", "reddot_show", paramInt, 0, new String[] { String.valueOf(i), String.valueOf(0), paramObject });
         return paramView;
         if (paramViewGroup == null) {
           break;
@@ -204,11 +204,11 @@ public class HotChatCenterItemBuilder
         paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
         break;
         paramInt = paramViewGroup.c();
-        paramOnClickListener = ((aiyu)this.jdField_a_of_type_Ahai.a.getManager(155)).a(paramInt);
+        paramOnClickListener = ((ajmw)this.jdField_a_of_type_Ahmx.a.getManager(155)).a(paramInt);
         if (paramOnClickListener == null) {
           break label630;
         }
-        paramObject.setText(String.format(ajjy.a(2131639750), new Object[] { paramOnClickListener.name }));
+        paramObject.setText(String.format(ajyc.a(2131705535), new Object[] { paramOnClickListener.name }));
         break label630;
         paramObject = (RedTouch)paramObject;
         break label671;
@@ -220,7 +220,7 @@ public class HotChatCenterItemBuilder
         QLog.d("HotChatCenterItemBuilder", 2, "[getView] no red dot");
       }
       paramObject.b();
-      paramahdb.setVisibility(0);
+      paramahpq.setVisibility(0);
       return paramView;
     }
   }
@@ -251,11 +251,11 @@ public class HotChatCenterItemBuilder
   {
     if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
     {
-      atmp localatmp = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getEntityManagerFactory().createEntityManager();
-      if (localatmp != null) {
+      aukn localaukn = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getEntityManagerFactory().createEntityManager();
+      if (localaukn != null) {
         synchronized (this.jdField_a_of_type_JavaLangObject)
         {
-          this.jdField_a_of_type_AndroidUtilSparseArray = ApolloGameUtil.a(localatmp);
+          this.jdField_a_of_type_AndroidUtilSparseArray = ApolloGameUtil.a(localaukn);
           return;
         }
       }

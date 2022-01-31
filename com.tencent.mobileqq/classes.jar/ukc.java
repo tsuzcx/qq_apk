@@ -1,62 +1,26 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
 
-public class ukc
-  extends sgl<ujx, snl>
+class ukc
+  extends mxm
 {
-  public ukc(ujx paramujx)
-  {
-    super(paramujx);
-  }
+  ukc(ujx paramujx, boolean paramBoolean) {}
   
-  public void a(@NonNull ujx paramujx, @NonNull snl paramsnl)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (((ujx.a(paramujx) == 12) && (paramsnl.jdField_a_of_type_Int == 3)) || ((ujx.a(paramujx) == 10) && (paramsnl.jdField_a_of_type_Int == 0) && (paramsnl.b != 1))) {
-      return;
-    }
-    Object localObject = paramujx.a(paramsnl.jdField_a_of_type_JavaLangString);
-    if (localObject == null)
+    if (paramInt != 0)
     {
-      urk.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramsnl.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    if (!(localObject instanceof uio))
-    {
-      urk.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not commentLike type!! feedId:%s", new Object[] { paramsnl.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    localObject = (uio)localObject;
-    if ((paramsnl.b == 1) || (paramsnl.b == 2))
-    {
-      if (paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null) {
-        ((CommentLikeFeedItem)((uio)localObject).a).mCommentCount = paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
-      }
-      ((uio)localObject).a(((spd)sqg.a(17)).a(paramsnl.jdField_a_of_type_JavaLangString, false), true);
-      urk.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s comment update after count:%d", paramsnl.jdField_a_of_type_JavaLangString, Integer.valueOf(((uio)localObject).b().size()));
-    }
-    for (;;)
-    {
-      ujx.a(paramujx).b(paramsnl.jdField_a_of_type_JavaLangString);
-      return;
-      if (paramsnl.b == 3)
+      paramArrayOfByte = this.a;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
       {
-        if (paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
-        {
-          ((CommentLikeFeedItem)((uio)localObject).a).mHadLike = paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike;
-          ((CommentLikeFeedItem)((uio)localObject).a).mLikeCount = paramsnl.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount;
-        }
-        ((uio)localObject).b(((sps)sqg.a(15)).a(paramsnl.jdField_a_of_type_JavaLangString, false), true);
+        paramArrayOfByte.a(7, bool);
+        this.a.a(0, this.a.a.getString(2131720533));
+        return;
       }
     }
+    ((tcv)tdc.a(10)).b("story_publish_flag_compress", Boolean.valueOf(this.b));
   }
-  
-  public Class acceptEventClass()
-  {
-    return snl.class;
-  }
-  
-  public void b(@NonNull ujx paramujx, @NonNull snl paramsnl) {}
 }
 
 

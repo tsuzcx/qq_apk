@@ -1,36 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
 
 class axmv
-  extends ajuc
+  implements axnm
 {
-  axmv(axmt paramaxmt) {}
+  axmv(axmu paramaxmu, axnb paramaxnb) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void a(SoConfig.SoInfo paramSoInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherControlManager", 2, "onTroopManagerSuccess,reqType=" + paramInt1 + ", result=" + paramInt2 + ", troopUin=" + paramString);
-    }
-    if ((paramInt2 == 0) && ((paramInt1 == 9) || (paramInt1 == 2)))
+    long l = axmu.a(this.jdField_a_of_type_Axmu).a;
+    StringBuilder localStringBuilder = new StringBuilder().append("is64bit=");
+    if (axnf.a()) {}
+    for (int i = 1;; i = 0)
     {
-      Iterator localIterator = axmt.a(this.a).entrySet().iterator();
-      while (localIterator.hasNext()) {
-        ((axne)((Map.Entry)localIterator.next()).getValue()).a(paramInt1, paramInt2, paramString);
-      }
-    }
-  }
-  
-  protected void b(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherControlManager", 2, "onPassiveExit, troopUin=" + paramString + ", reason=" + paramInt);
-    }
-    Iterator localIterator = axmt.a(this.a).entrySet().iterator();
-    while (localIterator.hasNext()) {
-      ((axne)((Map.Entry)localIterator.next()).getValue()).a(paramString, paramInt);
+      VACDReportUtil.a(l, null, "load.item.getconfig.end", i + "&v=" + axmu.a(), SoConfig.SoInfo.getReportCode(paramSoInfo), null);
+      axmu.a(this.jdField_a_of_type_Axmu, this.jdField_a_of_type_Axnb, paramSoInfo);
+      return;
     }
   }
 }

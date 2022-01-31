@@ -1,33 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-
-class qbw
-  extends ohe
+public class qbw
 {
-  private qbw(qbq paramqbq) {}
-  
-  public void f(boolean paramBoolean)
-  {
-    qbq.b(this.a, paramBoolean);
-    if (paramBoolean) {
-      this.a.d();
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsFloatWindowManager", 2, "onVideoFeedsFloatingWindowVisibilityChange: " + paramBoolean);
-      }
-      return;
-      this.a.e();
-    }
-  }
-  
-  public void i()
-  {
-    this.a.f();
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsFloatWindowManager", 2, "onVideoFeedsFloatingWindowDismiss");
-    }
-  }
+  public static int a = 1;
+  public static int b = 2;
+  public static int c = 3;
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public int d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public int f;
+  public int g;
 }
 
 

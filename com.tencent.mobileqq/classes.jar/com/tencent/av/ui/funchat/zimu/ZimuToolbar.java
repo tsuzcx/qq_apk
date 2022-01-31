@@ -1,6 +1,6 @@
 package com.tencent.av.ui.funchat.zimu;
 
-import ajjy;
+import ajyc;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.view.View;
@@ -19,39 +19,39 @@ import java.util.BitSet;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import krx;
-import kvq;
-import kwi;
-import kwj;
-import kxa;
-import kyo;
-import kzd;
-import kze;
-import kzf;
-import lbk;
-import lqb;
-import lrg;
-import lsa;
-import lwl;
-import lxe;
-import lxf;
-import mdi;
-import mdj;
+import lcl;
+import lgf;
+import lgx;
+import lgy;
+import lhp;
+import lje;
+import ljt;
+import lju;
+import ljv;
+import lmb;
+import mat;
+import mbz;
+import mcq;
+import mhd;
+import mhv;
+import mhw;
+import moh;
+import moi;
 
 public class ZimuToolbar
   extends BaseToolbar
-  implements kxa<ZimuItem>, lwl
+  implements lhp<ZimuItem>, mhd
 {
   private static final String TAG = "ZimuToolbar";
   private static final int ZIMU_CPU_CORE_THRESHOLD = 8;
   private static final int ZIMU_CPU_FREQ_THRESHOLD = 1800000;
   private boolean mARZimuEnable;
-  private mdj mAdapter;
-  private mdi mItemEvent;
+  private moi mAdapter;
+  private moh mItemEvent;
   private HorizontalListView mListView;
-  private kyo mSupportManager;
-  lrg mUIInfo = null;
-  private kze mZimuManager;
+  private lje mSupportManager;
+  mbz mUIInfo = null;
+  private lju mZimuManager;
   
   public ZimuToolbar(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
   {
@@ -62,13 +62,13 @@ public class ZimuToolbar
   {
     QLog.w("ZimuToolbar", 1, "cancleZimu, 取消字幕选择, seq[" + paramLong + "], isTranslation[" + this.mZimuManager.c() + "]");
     this.mZimuManager.a("onSelectZimuItem", paramLong);
-    new lsa(paramLong, "onSelectZimuItem", 3, paramString).a(this.mApp);
-    kwj.a(this.mApp, "onSelectZimuItem", paramLong, "EMPTY_ITEM", false);
+    new mcq(paramLong, "onSelectZimuItem", 3, paramString).a(this.mApp);
+    lgy.a(this.mApp, "onSelectZimuItem", paramLong, "EMPTY_ITEM", false);
   }
   
   private boolean checkDimmStatus(String paramString)
   {
-    krx.c("ZimuToolbar", "checkDimmStatus id = " + paramString);
+    lcl.c("ZimuToolbar", "checkDimmStatus id = " + paramString);
     int i = this.mSupportManager.a(0, "735");
     int j = this.mSupportManager.a(0, "750");
     switch (i)
@@ -80,36 +80,36 @@ public class ZimuToolbar
     {
       paramString = (AVActivity)this.mActivity.get();
       if ((i != 0) && (paramString != null)) {
-        lqb.a(this.mApp, 1010, i);
+        mat.a(this.mApp, 1010, i);
       }
       return false;
       if (j == 1) {
         break;
       }
-      i = 2131630096;
+      i = 2131695783;
       continue;
-      i = 2131630095;
+      i = 2131695782;
     }
   }
   
   private boolean checkNeedUpdateList()
   {
     boolean bool = this.mARZimuEnable;
-    this.mARZimuEnable = kzd.a();
+    this.mARZimuEnable = ljt.a();
     return (!bool) || (!this.mARZimuEnable);
   }
   
   public static boolean isShow(VideoAppInterface paramVideoAppInterface)
   {
     if (paramVideoAppInterface != null) {
-      return kze.a(paramVideoAppInterface);
+      return lju.a(paramVideoAppInterface);
     }
     return false;
   }
   
   public static boolean isSupport()
   {
-    int i = lbk.e();
+    int i = lmb.e();
     if (i >= 8) {}
     long l;
     do
@@ -118,7 +118,7 @@ public class ZimuToolbar
       if (i < 4) {
         break;
       }
-      l = lbk.c();
+      l = lmb.c();
     } while ((l != 0L) && (l >= 1800000L));
     return false;
   }
@@ -149,13 +149,13 @@ public class ZimuToolbar
         if (i == 0) {
           break label241;
         }
-        bool = ((kwi)this.mApp.a(1)).a();
+        bool = ((lgx)this.mApp.a(1)).a();
         QLog.w("ZimuToolbar", 1, "selectZimu, 选择新字幕, id[" + str + "->" + paramString + "], isSuccessCreateTranslation[" + bool + "], seq[" + paramLong + "], isTranslation[" + this.mZimuManager.c() + "], ZimuItem[" + localZimuItem + "]");
-        new lsa(paramLong, "onSelectZimuItem", 1, paramString).a(this.mApp);
+        new mcq(paramLong, "onSelectZimuItem", 1, paramString).a(this.mApp);
         if (!bool) {
           break label211;
         }
-        kwj.a(this.mApp, "onSelectZimuItem", paramLong, paramString, true);
+        lgy.a(this.mApp, "onSelectZimuItem", paramLong, paramString, true);
         this.mZimuManager.b("onSelectZimuItem_" + paramString, paramLong);
       }
       label211:
@@ -189,7 +189,7 @@ public class ZimuToolbar
     }
   }
   
-  ArrayList<lxf> convertItemInfo(List<ZimuItem> paramList)
+  ArrayList<mhw> convertItemInfo(List<ZimuItem> paramList)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramList != null)
@@ -214,12 +214,12 @@ public class ZimuToolbar
         }
         else
         {
-          localObject = new lxf();
-          ((lxf)localObject).jdField_a_of_type_JavaLangString = paramList.getId();
-          ((lxf)localObject).b = paramList.getIconurl();
-          ((lxf)localObject).jdField_a_of_type_Boolean = paramList.isUsable();
-          ((lxf)localObject).c = paramList.getId();
-          ((lxf)localObject).d = paramList.getDesc();
+          localObject = new mhw();
+          ((mhw)localObject).jdField_a_of_type_JavaLangString = paramList.getId();
+          ((mhw)localObject).b = paramList.getIconurl();
+          ((mhw)localObject).jdField_a_of_type_Boolean = paramList.isUsable();
+          ((mhw)localObject).c = paramList.getId();
+          ((mhw)localObject).d = paramList.getDesc();
           localArrayList.add(localObject);
         }
       }
@@ -227,15 +227,15 @@ public class ZimuToolbar
     return localArrayList;
   }
   
-  public lrg getUIInfo()
+  public mbz getUIInfo()
   {
     if (this.mUIInfo == null)
     {
-      this.mUIInfo = new lrg();
+      this.mUIInfo = new mbz();
       this.mUIInfo.d = 6;
-      this.mUIInfo.f = 2131494015;
-      this.mUIInfo.e = 2130841686;
-      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131630512);
+      this.mUIInfo.f = 2131559586;
+      this.mUIInfo.e = 2130841780;
+      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131696215);
     }
     return this.mUIInfo;
   }
@@ -243,21 +243,21 @@ public class ZimuToolbar
   public String getUnableInfo()
   {
     if (this.mActivity.get() != null) {
-      return ((AVActivity)this.mActivity.get()).getResources().getString(2131630086);
+      return ((AVActivity)this.mActivity.get()).getResources().getString(2131695773);
     }
     return "";
   }
   
-  ArrayList<lxf> insertEmptyItem(ArrayList<lxf> paramArrayList)
+  ArrayList<mhw> insertEmptyItem(ArrayList<mhw> paramArrayList)
   {
-    lxf locallxf = new lxf();
-    locallxf.jdField_a_of_type_JavaLangString = "-1";
-    paramArrayList.add(0, locallxf);
-    locallxf = new lxf();
-    locallxf.jdField_a_of_type_JavaLangString = "0";
-    locallxf.b = String.valueOf(2130841594);
-    locallxf.d = ajjy.a(2131651245);
-    paramArrayList.add(1, locallxf);
+    mhw localmhw = new mhw();
+    localmhw.jdField_a_of_type_JavaLangString = "-1";
+    paramArrayList.add(0, localmhw);
+    localmhw = new mhw();
+    localmhw.jdField_a_of_type_JavaLangString = "0";
+    localmhw.b = String.valueOf(2130841686);
+    localmhw.d = ajyc.a(2131717036);
+    paramArrayList.add(1, localmhw);
     return paramArrayList;
   }
   
@@ -273,23 +273,23 @@ public class ZimuToolbar
   
   protected void notifyEvent(Integer paramInteger, Object paramObject)
   {
-    krx.c("ZimuToolbar", "notifyEvent :" + paramInteger + "|" + paramObject);
+    lcl.c("ZimuToolbar", "notifyEvent :" + paramInteger + "|" + paramObject);
     this.mApp.a(new Object[] { paramInteger, paramObject });
   }
   
   public void onCreate(long paramLong, AVActivity paramAVActivity)
   {
-    this.mSupportManager = ((kyo)this.mApp.a(5));
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131302046));
+    this.mSupportManager = ((lje)this.mApp.a(5));
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131367664));
     this.mListView.setStayDisplayOffsetZero(true);
-    this.mZimuManager = ((kze)this.mApp.a(0));
+    this.mZimuManager = ((lju)this.mApp.a(0));
     ArrayList localArrayList2 = convertItemInfo(this.mZimuManager.a(null));
     ArrayList localArrayList1 = localArrayList2;
     if (localArrayList2.size() > 0) {
       localArrayList1 = insertEmptyItem(localArrayList2);
     }
-    this.mAdapter = new mdj(this.mApp, paramAVActivity, localArrayList1, this.mListView, this);
-    this.mItemEvent = new mdi(this);
+    this.mAdapter = new moi(this.mApp, paramAVActivity, localArrayList1, this.mListView, this);
+    this.mItemEvent = new moh(this);
     this.mAdapter.a(this.mItemEvent);
     this.mAdapter.a(this);
     this.mAdapter.b(true);
@@ -322,19 +322,19 @@ public class ZimuToolbar
       return;
     }
     if (paramZimuItem == null) {}
-    kvq localkvq;
+    lgf locallgf;
     for (paramZimuItem = "0";; paramZimuItem = paramZimuItem.getId())
     {
       QLog.w("ZimuToolbar", 1, "onItemSelectedChanged begin, id[" + paramZimuItem + "], seq[" + paramLong + "]");
       this.mAdapter.a("onItemSelectedChanged", paramLong, paramZimuItem);
-      localkvq = VideoController.a().a();
-      if (!kzd.a(paramZimuItem)) {
+      locallgf = VideoController.a().a();
+      if (!ljt.a(paramZimuItem)) {
         break;
       }
-      localkvq.a.set(4);
+      locallgf.a.set(4);
       return;
     }
-    localkvq.a.clear(4);
+    locallgf.a.clear(4);
   }
   
   public void onProgressUpdate(ZimuItem paramZimuItem, int paramInt)
@@ -357,7 +357,7 @@ public class ZimuToolbar
         while (localIterator.hasNext())
         {
           ZimuItem localZimuItem = (ZimuItem)localIterator.next();
-          if (kzd.a(localZimuItem.getId())) {
+          if (ljt.a(localZimuItem.getId())) {
             ((List)localObject2).add(localZimuItem);
           }
         }
@@ -377,7 +377,7 @@ public class ZimuToolbar
     for (localObject1 = "0";; localObject1 = ((ZimuItem)localObject1).getId())
     {
       localObject2 = localObject1;
-      if (kzd.a((String)localObject1))
+      if (ljt.a((String)localObject1))
       {
         localObject2 = localObject1;
         if (!this.mARZimuEnable) {
@@ -386,7 +386,7 @@ public class ZimuToolbar
       }
       this.mAdapter.a("onShow", paramLong, (String)localObject2);
       if (paramInt != getUIInfo().d) {
-        kzf.a("0X80085CA", "");
+        ljv.a("0X80085CA", "");
       }
       this.mZimuManager.a(paramLong, this);
       if (!((String)localObject2).equalsIgnoreCase("0")) {
@@ -396,16 +396,16 @@ public class ZimuToolbar
     }
   }
   
-  public void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, lxf paramlxf, lxe paramlxe)
+  public void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, mhw parammhw, mhv parammhv)
   {
-    paramAppInterface = (ZimuItem)this.mZimuManager.a(paramlxf.jdField_a_of_type_JavaLangString);
+    paramAppInterface = (ZimuItem)this.mZimuManager.a(parammhw.jdField_a_of_type_JavaLangString);
     if (paramAppInterface != null)
     {
       this.mZimuManager.a(paramLong, paramAppInterface);
       return;
     }
     QLog.w("ZimuToolbar", 1, "startDownloadTemplate, item为空, seq[" + paramLong + "]");
-    paramlxe.a(paramLong, paramlxf.jdField_a_of_type_JavaLangString, false);
+    parammhv.a(paramLong, parammhw.jdField_a_of_type_JavaLangString, false);
   }
 }
 

@@ -1,35 +1,38 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
-import java.util.Iterator;
-import java.util.List;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataRsp;
 
-public class biqh
-  implements ViewPager.OnPageChangeListener
+public abstract class biqh
+  implements ajtg
 {
-  public biqh(FaceViewPager paramFaceViewPager) {}
+  public void a(boolean paramBoolean, int paramInt) {}
   
-  public void onPageScrollStateChanged(int paramInt)
-  {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((biqi)localIterator.next()).e(paramInt);
-    }
-  }
+  public void a(boolean paramBoolean, bisc parambisc) {}
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((biqi)localIterator.next()).a(paramInt1, paramFloat, paramInt2);
-    }
-  }
+  protected void a(boolean paramBoolean, GetFontDataRsp paramGetFontDataRsp) {}
   
-  public void onPageSelected(int paramInt)
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void b(boolean paramBoolean, int paramInt) {}
+  
+  public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((biqi)localIterator.next()).c(paramInt);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, (bisc)paramObject);
+      return;
+    case 2: 
+      a(paramBoolean, ((Boolean)paramObject).booleanValue());
+      return;
+    case 3: 
+      a(paramBoolean, ((Integer)paramObject).intValue());
+      return;
+    case 4: 
+      a(paramBoolean, (GetFontDataRsp)paramObject);
+      return;
     }
+    b(paramBoolean, ((Integer)paramObject).intValue());
   }
 }
 

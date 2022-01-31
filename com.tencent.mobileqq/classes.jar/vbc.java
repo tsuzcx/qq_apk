@@ -1,26 +1,10 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.Arrays;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 
-public class vbc
-  implements uyq
+public abstract interface vbc
 {
-  @NonNull
-  private final uyn[] a;
-  
-  public vbc(uyn... paramVarArgs)
-  {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-      throw new IllegalArgumentException("layers should not be null or empty");
-    }
-    this.a = paramVarArgs;
-  }
-  
-  public void a(List<uyn> paramList, DoodleView paramDoodleView)
-  {
-    paramList.addAll(Arrays.asList(this.a));
-  }
+  public abstract void a(View paramView, VideoListFeedItem paramVideoListFeedItem, QQUserUIItem paramQQUserUIItem, int paramInt);
 }
 
 

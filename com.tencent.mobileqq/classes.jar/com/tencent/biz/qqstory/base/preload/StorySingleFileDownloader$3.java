@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.base.preload;
 
 import java.util.Map;
-import shp;
-import sif;
+import sul;
+import svb;
 
 public class StorySingleFileDownloader$3
   implements Runnable
 {
-  public StorySingleFileDownloader$3(sif paramsif, String paramString, int paramInt) {}
+  public StorySingleFileDownloader$3(svb paramsvb, String paramString, int paramInt) {}
   
   public void run()
   {
-    Object localObject = shp.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    localObject = (shp)sif.a(this.this$0).get(localObject);
+    Object localObject = sul.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    localObject = (sul)svb.a(this.this$0).get(localObject);
     if (localObject != null) {
-      ((shp)localObject).a.remove("DOWNLOAD_TASK_KEY_LISTENER");
+      ((sul)localObject).a.remove("DOWNLOAD_TASK_KEY_LISTENER");
     }
   }
 }

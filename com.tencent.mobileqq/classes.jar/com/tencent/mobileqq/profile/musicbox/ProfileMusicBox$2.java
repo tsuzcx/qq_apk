@@ -2,20 +2,20 @@ package com.tencent.mobileqq.profile.musicbox;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import atyz;
-import baig;
+import auwy;
+import bbjn;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class ProfileMusicBox$2
   implements Runnable
 {
-  public ProfileMusicBox$2(atyz paramatyz) {}
+  public ProfileMusicBox$2(auwy paramauwy) {}
   
   public void run()
   {
     SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("showMusicBoxRed", 0).edit();
     localEditor.putBoolean("showRed", false);
-    baig.a(localEditor);
+    bbjn.a(localEditor);
   }
 }
 

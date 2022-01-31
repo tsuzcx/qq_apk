@@ -1,30 +1,31 @@
 package com.tencent.qqmini.sdk.runtime.flutter;
 
 import android.content.Context;
-import bdlq;
-import bdlr;
-import bdnw;
-import bdws;
-import bdwv;
-import bdwx;
-import bdwz;
-import bdxa;
-import bdxb;
-import bdxc;
-import bdxz;
+import bepv;
+import bepw;
+import besl;
+import bfdf;
+import bfdj;
+import bfdl;
+import bfdn;
+import bfdo;
+import bfdp;
+import bfds;
+import bfdu;
+import bfer;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class FlutterRuntimeLoader
-  extends bdlq
+  extends bepv
 {
-  public static final bdlr<FlutterRuntimeLoader> CREATOR = new bdws();
+  public static final bepw<FlutterRuntimeLoader> CREATOR = new bfdf();
   public static final String TAG = "FlutterRuntimeLoader";
-  private bdwv apkgLoadTask;
-  private bdwx baselibLoadTask;
-  private bdwz preloadFlagTask;
-  public bdxa runtimeCreateTask;
-  private bdxb runtimeInitTask;
-  public bdxc serviceInitTask;
+  private bfdj apkgLoadTask;
+  private bfdl baselibLoadTask;
+  private bfdn preloadFlagTask;
+  public bfdo runtimeCreateTask;
+  private bfdp runtimeInitTask;
+  public bfds serviceInitTask;
   
   public FlutterRuntimeLoader(Context paramContext)
   {
@@ -32,22 +33,20 @@ public class FlutterRuntimeLoader
     getAppStateManager().c = true;
   }
   
-  public bdxz[] createTasks()
+  public bfer[] createTasks()
   {
     Context localContext = this.mContext;
-    this.runtimeCreateTask = new bdxa(localContext, this);
+    this.runtimeCreateTask = new bfdo(localContext, this);
     this.runtimeCreateTask.a(true);
-    this.runtimeInitTask = new bdxb(localContext, this);
+    this.runtimeInitTask = new bfdp(localContext, this);
     this.runtimeInitTask.a(true);
-    this.baselibLoadTask = new bdwx(localContext, this);
-    this.apkgLoadTask = new bdwv(localContext, this);
+    this.baselibLoadTask = new bfdl(localContext, this);
+    this.apkgLoadTask = new bfdj(localContext, this);
     this.apkgLoadTask.a(true);
-    this.serviceInitTask = new bdxc(localContext, this);
-    this.serviceInitTask.a(true);
-    this.preloadFlagTask = new bdwz(localContext, this);
+    this.serviceInitTask = new bfdu(localContext, this);
+    this.preloadFlagTask = new bfdn(localContext, this);
     this.runtimeInitTask.a(this.preloadFlagTask.a(this.serviceInitTask.a(this.baselibLoadTask).a(this.runtimeCreateTask))).a(this.apkgLoadTask);
-    addTasks(new bdxz[] { this.runtimeInitTask, this.preloadFlagTask, this.serviceInitTask, this.baselibLoadTask, this.runtimeCreateTask, this.apkgLoadTask });
-    return new bdxz[] { this.runtimeInitTask };
+    return new bfer[] { this.runtimeInitTask };
   }
   
   public boolean dismissLoadingAfterLoaded()
@@ -61,32 +60,32 @@ public class FlutterRuntimeLoader
     this.apkgLoadTask.a(paramMiniAppInfo);
   }
   
-  public void onTaskDone(bdxz parambdxz)
+  public void onTaskDone(bfer parambfer)
   {
-    if (parambdxz == null) {
+    if (parambfer == null) {
       return;
     }
-    bdnw.a("FlutterRuntimeLoader", "onTaskDone " + parambdxz);
-    if (!parambdxz.d())
+    besl.a("FlutterRuntimeLoader", "onTaskDone " + parambfer);
+    if (!parambfer.d())
     {
       notifyRuntimeEvent(12, new Object[0]);
-      onRuntimeLoadResult(parambdxz.jdField_a_of_type_Int, parambdxz.jdField_a_of_type_JavaLangString);
+      onRuntimeLoadResult(parambfer.jdField_a_of_type_Int, parambfer.jdField_a_of_type_JavaLangString);
       return;
     }
-    if (parambdxz == this.preloadFlagTask) {
+    if (parambfer == this.preloadFlagTask) {
       notifyRuntimeEvent(3, new Object[0]);
     }
     for (;;)
     {
-      super.onTaskDone(parambdxz);
+      super.onTaskDone(parambfer);
       return;
-      if (parambdxz == this.runtimeCreateTask)
+      if (parambfer == this.runtimeCreateTask)
       {
         if (this.runtimeCreateTask.d()) {
           this.mRuntime = this.runtimeCreateTask.a();
         }
       }
-      else if (parambdxz == this.runtimeInitTask)
+      else if (parambfer == this.runtimeInitTask)
       {
         if (this.runtimeInitTask.d())
         {
@@ -95,7 +94,7 @@ public class FlutterRuntimeLoader
         }
         this.mIsRunning = false;
       }
-      else if ((parambdxz == this.apkgLoadTask) && (this.apkgLoadTask.d()) && (this.mMiniAppInfo != null))
+      else if ((parambfer == this.apkgLoadTask) && (this.apkgLoadTask.d()) && (this.mMiniAppInfo != null))
       {
         this.mMiniAppInfo.apkgInfo = this.apkgLoadTask.a();
       }

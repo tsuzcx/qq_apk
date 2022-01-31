@@ -1,20 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.6;
+import android.view.View;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class arak
-  implements DialogInterface.OnClickListener
+  implements aran
 {
-  public arak(LocationDialogUtil.6 param6) {}
+  public arak(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    aqzw.a(this.a.b, "0X800A76A");
+    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
+    if ((this.a.jdField_a_of_type_Int == 2) && (this.a.jdField_a_of_type_Araq != null))
+    {
+      this.a.jdField_a_of_type_Araq.a(0, paramView);
+      return;
+    }
+    if ((this.a.jdField_a_of_type_Int == 3) && (this.a.jdField_a_of_type_Araq != null)) {
+      this.a.jdField_a_of_type_Araq.a(4, paramView);
+    }
+    for (;;)
+    {
+      QLog.d("HotVideoRelativeLayout", 2, "click base view");
+      return;
+      if ((this.a.jdField_a_of_type_Int == 4) && (this.a.jdField_a_of_type_Araq != null)) {
+        this.a.jdField_a_of_type_Araq.a(1, paramView);
+      } else if ((this.a.jdField_a_of_type_Int == 6) && (this.a.jdField_a_of_type_Araq != null)) {
+        this.a.jdField_a_of_type_Araq.a(2, paramView);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     arak
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,20 @@
-import QC.UniLoginCheckRsp;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.1.1.1;
 
-class barb
-  implements ajfe
+public class barb
+  implements aybh
 {
-  private WeakReference<bara> a;
+  public barb(TroopGiftAnimationController.1 param1) {}
   
-  public barb(bara parambara)
+  public void a()
   {
-    this.a = new WeakReference(parambara);
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    bara localbara = (bara)this.a.get();
-    if (localbara == null) {}
-    while (!(paramObject instanceof UniLoginCheckRsp)) {
-      return;
-    }
-    localbara.a(((UniLoginCheckRsp)paramObject).stKeyWord);
+    this.a.this$0.a.post(new TroopGiftAnimationController.1.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     barb
  * JD-Core Version:    0.7.0.1
  */

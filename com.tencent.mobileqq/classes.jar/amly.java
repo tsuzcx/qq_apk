@@ -1,65 +1,57 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class amly
+  extends MSFServlet
 {
-  public String a;
-  public boolean a;
-  public String[] a;
-  public String b;
-  public String c;
-  
-  public amly(JSONObject paramJSONObject)
+  public String[] getPreferSSOCommands()
   {
-    try
-    {
-      String str = paramJSONObject.getString("extension");
-      if (str != null) {
-        this.jdField_a_of_type_ArrayOfJavaLangString = str.split("\\|");
-      }
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("text");
-      this.b = paramJSONObject.getString("tShow");
-      this.c = paramJSONObject.getString("tPress");
-      return;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      QLog.e("TencentDocLocalCooperationBean", 1, paramJSONObject.getLocalizedMessage(), paramJSONObject);
-    }
+    return new String[] { "OnlinePush.ReqPush", "MessageSvc.PushGroupMsg", "MessageSvc.PushForceOffline", "MessageSvc.PushNotify", "MessageSvc.PushForceOffline", "MessageSvc.RequestPushStatus", "MessageSvc.RequestBatchPushFStatus", "MessageSvc.PushFStatus", "AccostSvc.SvrMsg", "ADMsgSvc.PushMsg", "StreamSvr.PushStreamMsg", "friendlist.getOnlineFriend", "MessageSvc.PushReaded", "OnlinePush.PbPushTransMsg", "baseSdk.Msf.NotifyResp", "RegPrxySvc.PushParam", "OnlinePush.PbPushGroupMsg", "OnlinePush.PbPushDisMsg", "OnlinePush.PbC2CMsgSync", "OnlinePush.PbPushC2CMsg", "StatSvc.SvcReqKikOut", "NearFieldTranFileSvr.NotifyList", "NearFieldDiscussSvr.NotifyList", "RegPrxySvc.QueryIpwdStat", "StatSvc.SvcReqMSFLoginNotify" };
   }
   
-  public boolean a(String paramString)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int i;
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
+    if (paramIntent != null)
     {
-      bool1 = bool2;
-      if (paramString != null) {
-        i = 0;
-      }
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
     }
     for (;;)
     {
-      bool1 = bool2;
-      if (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+      if ((getAppRuntime() instanceof QQAppInterface)) {
+        ((QQAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
+      }
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent != null)
       {
-        if (paramString.equals(this.jdField_a_of_type_ArrayOfJavaLangString[i])) {
-          bool1 = true;
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
         }
       }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amly
  * JD-Core Version:    0.7.0.1
  */

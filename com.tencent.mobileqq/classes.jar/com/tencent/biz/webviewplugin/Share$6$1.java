@@ -1,18 +1,65 @@
 package com.tencent.biz.webviewplugin;
 
 import android.app.Activity;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import xdt;
-import xdw;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextUtils;
+import bbjj;
+import bcci;
+import bchv;
+import bcpq;
+import bded;
+import com.tencent.common.app.AppInterface;
+import java.lang.ref.WeakReference;
+import xmt;
 
-public class Share$6$1
+class Share$6$1
   implements Runnable
 {
-  public Share$6$1(xdw paramxdw, GetAppInfoProto.GetAppinfoResponse paramGetAppinfoResponse) {}
+  Share$6$1(Share.6 param6, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Xdw.a.a(this.jdField_a_of_type_Xdw.a.a.getApplicationContext(), this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse);
+    Object localObject = (bcci)this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
+    String str1;
+    String str2;
+    if ((localObject != null) && ((localObject instanceof bchv)) && (((bchv)localObject).b()) && (!this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_AndroidAppActivity.isFinishing()))
+    {
+      if ((this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_Bcpq.isShowing())) {
+        this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_Bcpq.dismiss();
+      }
+      str1 = String.format("mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.pubaccount.AccountDetailActivity&uin=%s", new Object[] { this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.b });
+      str2 = String.format("mqqapi://card/show_pslcard?src_type=internal&card_type=public_account&uin=%s&version=1", new Object[] { this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.b });
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        break label431;
+      }
+    }
+    label431:
+    for (localObject = this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.jdField_a_of_type_JavaLangString;; localObject = this.jdField_a_of_type_JavaLangString)
+    {
+      String str3 = String.format(this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131696697), new Object[] { this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.c });
+      bbjj.a(this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_AndroidAppActivity, 1001, 146, "struct_msg_from_h5", this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.b, (String)localObject, this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.c, this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.d, str3, this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.e, "web", null, null, null, "plugin", null, str1, str2, "http://url.cn/JS8oE7", this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.f, null);
+      int j = 0;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        j = 1;
+      }
+      int i = j;
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.d)) {
+        i = j | 0x2;
+      }
+      j = i;
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.c)) {
+        j = i | 0x4;
+      }
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("report_type", "102");
+      ((Bundle)localObject).putString("act_type", "14");
+      ((Bundle)localObject).putString("intext_3", "1");
+      ((Bundle)localObject).putString("intext_2", "" + j);
+      ((Bundle)localObject).putString("stringext_1", "" + this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.e);
+      bded.a().a((Bundle)localObject, "", this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), false);
+      return;
+    }
   }
 }
 

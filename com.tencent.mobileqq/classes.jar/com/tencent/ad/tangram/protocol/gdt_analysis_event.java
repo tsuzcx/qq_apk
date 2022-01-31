@@ -42,10 +42,18 @@ public final class gdt_analysis_event
   public static final int EVENT_METHOD_INVOKE = 1051;
   public static final int EVENT_METHOD_JSBRIDGE = 1052;
   public static final int EVENT_MUID_SOURCE_TYPE = 1075;
+  public static final int EVENT_PRELOAD_INTERSTITIAL_END = 1082;
+  public static final int EVENT_PRELOAD_INTERSTITIAL_START = 1081;
+  public static final int EVENT_PRELOAD_INTERSTITIAL_STATUS_CHANGED = 1083;
   public static final int EVENT_PRELOAD_QQ_MINI_PROGRM_FAILED = 1012;
   public static final int EVENT_PRELOAD_QQ_MINI_PROGRM_START = 1010;
   public static final int EVENT_PRELOAD_QQ_MINI_PROGRM_SUCCESS = 1011;
   public static final int EVENT_SHOW_BANNER = 1054;
+  public static final int EVENT_SHOW_INTERSTITIAL_CLOSED = 1080;
+  public static final int EVENT_SHOW_INTERSTITIAL_DISPLAYED = 1079;
+  public static final int EVENT_SHOW_INTERSTITIAL_LOAD_ARK_VIEW_END = 1078;
+  public static final int EVENT_SHOW_INTERSTITIAL_LOAD_ARK_VIEW_START = 1077;
+  public static final int EVENT_SHOW_INTERSTITIAL_START = 1076;
   public static final int EVENT_SHOW_REWARDED_VIDEO = 1055;
   public static final int EVENT_STATISTICS_END = 1057;
   public static final int EVENT_STATISTICS_START = 1056;
@@ -89,6 +97,7 @@ public final class gdt_analysis_event
   public int phoneType = -2147483648;
   public String posId;
   public int statisticsType = -2147483648;
+  public int status = -2147483648;
   public String url;
 }
 

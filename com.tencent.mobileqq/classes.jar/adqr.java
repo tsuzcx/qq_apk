@@ -1,34 +1,69 @@
-import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.immersion.stickersampleapp.HapticManager;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.ViewAnimation;
+import com.tencent.qphone.base.util.QLog;
 
-public class adqr
-  implements ajuh
+class adqr
+  extends AnimatorListenerAdapter
 {
-  public adqr(StructingMsgItemBuilder paramStructingMsgItemBuilder, MessageForStructing paramMessageForStructing, BaseChatItemLayout paramBaseChatItemLayout) {}
+  adqr(adqg paramadqg, adqs paramadqs, MessageForPoke paramMessageForPoke) {}
   
-  public void a(View paramView, long paramLong, int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq != paramLong) {}
-    do
+    int i = 1;
+    super.onAnimationEnd(paramAnimator);
+    adqg.f = false;
+    this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+    this.jdField_a_of_type_Adqs.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
+    this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+    if ((!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (this.jdField_a_of_type_Adqs.b == adqg.a()) && (!(this.jdField_a_of_type_Adqg.jdField_a_of_type_AndroidContentContext instanceof ChatHistoryActivity)) && (!adqg.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
+      this.jdField_a_of_type_Adqs.c.setVisibility(0);
+    }
+    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isPlayed) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.setPlayed(this.jdField_a_of_type_Adqg.b);
+    }
+    if (!adwl.a("fullscreen", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId))
     {
-      return;
-      paramView = (StructMsgForGeneralShare)this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg;
-      if (paramInt1 != 1001) {
-        paramInt2 = 100;
+      if (ajfj.a(this.jdField_a_of_type_Adqg.b).d == 1) {
+        i = 0;
       }
-      paramView.setProgress(paramInt2);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.findViewById(2131310766);
-    } while (!(paramView instanceof ProgressBar));
-    ((ProgressBar)paramView).setProgress(paramInt2);
-    if (paramInt2 == 100) {}
-    for (paramInt1 = 8;; paramInt1 = 0)
+      if (i != 0)
+      {
+        ajfa.a(this.jdField_a_of_type_Adqg.b, "vas_poke", false);
+        if (QLog.isColorLevel()) {
+          QLog.i("GivingHeart.sprite", 2, "show sprite (normal) in bubble.");
+        }
+      }
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    adqg.f = true;
+    if (adwl.a()) {
+      HapticManager.a().a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId), 2);
+    }
+    adwh.a().a(7, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend());
+    if (this.jdField_a_of_type_Adqg.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.isAnimating()) {
+      this.jdField_a_of_type_Adqg.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.endAnimation();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) {
+      this.jdField_a_of_type_Adqg.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.setEnableXCoordinateMirrored(false);
+    }
+    for (;;)
     {
-      paramView.setVisibility(paramInt1);
+      adwl.a(this.jdField_a_of_type_Adqg.b, this.jdField_a_of_type_Adqg.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adqg.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, null, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId, "view_aio");
       return;
+      this.jdField_a_of_type_Adqg.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.setEnableXCoordinateMirrored(true);
     }
   }
 }

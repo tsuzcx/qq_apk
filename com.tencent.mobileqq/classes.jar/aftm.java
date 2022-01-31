@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
 
-class aftm
-  implements View.OnClickListener
+public abstract interface aftm
 {
-  aftm(afth paramafth) {}
+  public abstract void onFlingScrollHeader(int paramInt1, int paramInt2);
   
-  public void onClick(View paramView)
-  {
-    afth.a(this.a, paramView);
-    this.a.dismiss();
-  }
+  public abstract void onTouchMoving(CommonRefreshLayout paramCommonRefreshLayout, int paramInt, MotionEvent paramMotionEvent);
+  
+  public abstract int onViewCompleteAfterRefresh(boolean paramBoolean);
 }
 
 

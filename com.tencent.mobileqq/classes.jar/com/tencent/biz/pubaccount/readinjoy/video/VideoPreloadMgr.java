@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import qht;
-import qhw;
+import qty;
+import qub;
 
 public class VideoPreloadMgr
 {
   private static String jdField_a_of_type_JavaLangString = "VideoPreloadMgr";
-  private qht jdField_a_of_type_Qht;
-  private qhw jdField_a_of_type_Qhw;
+  private qty jdField_a_of_type_Qty;
+  private qub jdField_a_of_type_Qub;
 }
 
 

@@ -1,77 +1,55 @@
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import java.util.ArrayList;
 
-public class svy
-  extends svq
+public final class svy
+  extends ssk
 {
-  public svy(ViewGroup paramViewGroup)
+  public StoryVideoItem a;
+  public GeneralFeedItem a;
+  public ArrayList<svx> a;
+  public final boolean a;
+  public StoryVideoItem b;
+  public boolean b;
+  public boolean c;
+  
+  public svy(boolean paramBoolean)
   {
-    super(paramViewGroup);
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  protected String a(QQUserUIItem paramQQUserUIItem)
+  public static boolean a(int paramInt)
   {
-    String str = super.a(paramQQUserUIItem);
-    paramQQUserUIItem = str;
-    if (str == null) {
-      paramQQUserUIItem = ajjy.a(2131647465);
+    return (paramInt == 940006) || (paramInt == 940007) || (paramInt == 940017) || (paramInt == 940018) || (paramInt == 941001) || (paramInt == 941002) || (paramInt == ayvn.a(940017)) || (paramInt == ayvn.a(9042)) || (paramInt == ayvn.a(9070)) || (paramInt == ayvn.a(9071)) || (paramInt / 100 == ayvn.a(999000) / 100) || ((paramInt >= 5100) && (paramInt <= 5108));
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == 941001) || (paramInt == 941002);
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
+      return false;
     }
-    return paramQQUserUIItem;
+    return this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isTroopLocalVideoOnly();
   }
   
-  public void a()
+  public boolean b()
   {
-    this.a.setTag(2131307635, null);
+    return this.jdField_b_of_type_Boolean;
   }
   
-  protected void a(String paramString)
+  public boolean c()
   {
-    c(paramString);
+    return (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0);
   }
   
-  protected void a(String paramString, boolean paramBoolean, ssm paramssm)
+  public String toString()
   {
-    if ((!TextUtils.isEmpty(paramssm.j)) && (!paramBoolean))
-    {
-      this.a.setNodeName(paramString, paramssm.j);
-      return;
-    }
-    super.a(paramString, paramBoolean, paramssm);
-  }
-  
-  public void a(ssm paramssm)
-  {
-    super.a(paramssm);
-    this.a.setDisplayState(2);
-    String str;
-    if (!TextUtils.equals((String)this.a.getTag(2131307635), paramssm.jdField_a_of_type_JavaLangString))
-    {
-      if ((paramssm.jdField_a_of_type_JavaUtilList == null) || (paramssm.jdField_a_of_type_JavaUtilList.size() <= 0)) {
-        break label168;
-      }
-      str = ((ste)paramssm.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString;
-      Iterator localIterator = paramssm.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        ste localste = (ste)localIterator.next();
-        if (!localste.jdField_a_of_type_Boolean) {
-          str = localste.jdField_a_of_type_JavaLangString;
-        }
-      }
-    }
-    for (;;)
-    {
-      urp.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramssm.jdField_a_of_type_JavaLangString, "1", "", str });
-      this.a.setTag(2131307635, paramssm.jdField_a_of_type_JavaLangString);
-      return;
-      continue;
-      label168:
-      str = "";
-    }
+    return "StoryVideoPublishStatusEvent{mFakeStoryVideoItem=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", mSucStoryVideoItem=" + this.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", mCommentLikeFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem + ", mShareGroupFakeItems=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
   }
 }
 

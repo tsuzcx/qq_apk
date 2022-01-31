@@ -1,8 +1,8 @@
 package dov.com.tencent.mobileqq.activity.richmedia;
 
-import autt;
-import biyu;
-import bjac;
+import avtc;
+import bkpg;
+import bkqo;
 
 public class QzoneEditPictureActivity$1
   implements Runnable
@@ -11,9 +11,9 @@ public class QzoneEditPictureActivity$1
   
   public void run()
   {
-    bedt.a = true;
-    autt.b();
-    bjac.a().a(this.this$0.a(), new biyu(this), true);
+    bflj.a = true;
+    avtc.b();
+    bkqo.a().a(this.this$0.a(), new bkpg(this), true);
   }
 }
 

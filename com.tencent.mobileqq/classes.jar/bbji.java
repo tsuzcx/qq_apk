@@ -1,71 +1,67 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.util.Pair;
-import android.util.SparseArray;
 import android.view.View;
-import android.widget.PopupWindow;
-import android.widget.PopupWindow.OnDismissListener;
-import java.util.ArrayList;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 
 public class bbji
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  private SparseArray<bbjl> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  public PopupWindow a;
-  bbjm jdField_a_of_type_Bbjm;
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   
-  public bbji(Context paramContext)
+  private void a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bbjm = new bbjm(this, paramContext);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setWindowLayoutMode(-1, -1);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(true);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new ColorDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131099869)));
-  }
-  
-  public bbji a(int paramInt, View paramView, bbjk parambbjk)
-  {
-    bbjl localbbjl = (bbjl)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localbbjl != null) {
-      localbbjl.jdField_a_of_type_JavaUtilArrayList.add(new Pair(paramView, parambbjk));
+    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
     }
-    return this;
   }
   
-  public bbji a(View paramView, int paramInt)
+  private void a(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
+    if (paramView != null)
     {
-      bbjl localbbjl = new bbjl(this, null);
-      localbbjl.jdField_a_of_type_AndroidViewView = paramView;
-      if (paramView.isShown())
-      {
-        localbbjl.jdField_a_of_type_ArrayOfInt = new int[2];
-        paramView.getLocationOnScreen(localbbjl.jdField_a_of_type_ArrayOfInt);
+      paramView = paramView.getParent();
+      if ((paramView != null) && ((paramView instanceof ViewGroup))) {
+        a((ViewGroup)paramView);
       }
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localbbjl);
     }
-    return this;
   }
   
-  public void a(PopupWindow.OnDismissListener paramOnDismissListener)
+  private void a(ViewGroup paramViewGroup)
   {
-    a(paramOnDismissListener, true);
+    if (paramViewGroup != null) {
+      paramViewGroup.removeAllViews();
+    }
   }
   
-  public void a(PopupWindow.OnDismissListener paramOnDismissListener, boolean paramBoolean)
+  void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(this.jdField_a_of_type_Bbjm);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(new View(this.jdField_a_of_type_AndroidContentContext), 0, 0, 0);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(paramOnDismissListener);
-    this.jdField_a_of_type_Bbjm.setOnClickListener(new bbjj(this, paramBoolean));
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(paramInt);
+    }
+  }
+  
+  void a(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
+  {
+    a(this.jdField_a_of_type_AndroidViewView);
+    a(paramView);
+    if (paramView != null) {
+      paramView.setLayoutParams(paramLayoutParams);
+    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    a();
+  }
+  
+  public void a(RelativeLayout paramRelativeLayout)
+  {
+    a(this.jdField_a_of_type_AndroidViewViewGroup);
+    a(paramRelativeLayout);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbji
  * JD-Core Version:    0.7.0.1
  */

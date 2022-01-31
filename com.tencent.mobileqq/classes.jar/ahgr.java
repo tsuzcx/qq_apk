@@ -1,10 +1,24 @@
-public abstract interface ahgr
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringBigInsertPage.4.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class ahgr
+  implements ahbt
 {
-  public abstract void a();
+  ahgr(ahgn paramahgn) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract void b();
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SpringBigInsertPage", 2, "onResult: " + paramInt + ", path: " + paramPathResult.filePath);
+    }
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.filePath))) {
+      ahgn.a(this.a).a().runOnUiThread(new SpringBigInsertPage.4.1(this, paramPathResult));
+    }
+  }
 }
 
 

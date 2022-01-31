@@ -1,16 +1,16 @@
 package cooperation.qzone.webviewplugin;
 
-import bgje;
+import bhrx;
 import java.util.ArrayList;
 
 public class QzonePhotoWallPlugin$2
   implements Runnable
 {
-  public QzonePhotoWallPlugin$2(bgje parambgje, ArrayList paramArrayList) {}
+  public QzonePhotoWallPlugin$2(bhrx parambhrx, ArrayList paramArrayList) {}
   
   public void run()
   {
-    bgje.a(this.this$0, this.a, true);
+    bhrx.a(this.this$0, this.a, false);
   }
 }
 

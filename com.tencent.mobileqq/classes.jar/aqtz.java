@@ -1,39 +1,123 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import android.graphics.Color;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.gamecenter.view.MoreMsgHeaderView;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class aqtz
-  implements wiu
+public class aqtz
+  extends PagerAdapter
 {
-  aqtz(aqty paramaqty, String paramString) {}
+  private aqtz(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public void a(Bundle paramBundle)
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    if (paramBundle.getBoolean("isSuccess", false))
+    paramViewGroup.removeView((View)paramObject);
+  }
+  
+  public int getCount()
+  {
+    if ((QQGameFeedWebFragment.a(this.a) == null) || (QQGameFeedWebFragment.a(this.a).size() == 0)) {
+      return 1;
+    }
+    return QQGameFeedWebFragment.a(this.a).size() + 1;
+  }
+  
+  public int getItemPosition(Object paramObject)
+  {
+    return -2;
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    Object localObject2 = null;
+    Object localObject1;
+    if ((QQGameFeedWebFragment.a(this.a) == null) || (QQGameFeedWebFragment.a(this.a).size() == 0))
     {
-      int i = paramBundle.getInt("appid");
-      Object localObject = paramBundle.getString("openId");
-      if ((i != this.jdField_a_of_type_Aqty.jdField_a_of_type_JavaLangInteger.intValue()) || (!((String)localObject).equals(this.jdField_a_of_type_Aqty.jdField_a_of_type_JavaLangString))) {
-        break label120;
-      }
-      paramBundle = paramBundle.getString("uin");
-      if (!TextUtils.isEmpty(paramBundle))
+      localObject1 = this.a.a();
+      paramViewGroup.addView((View)localObject1);
+      return localObject1;
+    }
+    for (;;)
+    {
+      synchronized (QQGameFeedWebFragment.a(this.a))
       {
-        localObject = new Intent(this.jdField_a_of_type_Aqty.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(), FriendProfileCardActivity.class);
-        ((Intent)localObject).putExtra("troopUin", this.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject).putExtra("memberUin", paramBundle);
-        this.jdField_a_of_type_Aqty.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a().startActivity((Intent)localObject);
+        if (paramInt >= QQGameFeedWebFragment.a(this.a).size()) {
+          break label534;
+        }
+        localQQGameMsgInfo = (QQGameMsgInfo)QQGameFeedWebFragment.a(this.a).get(paramInt);
+        aqsx localaqsx = aqti.a(localQQGameMsgInfo, this.a.getActivity());
+        if (((localaqsx instanceof MoreMsgHeaderView)) && (paramInt != QQGameFeedWebFragment.a(this.a).size())) {
+          return null;
+        }
+        if (localaqsx == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("GameWebPage", 2, "headerView = null");
+          }
+          return null;
+        }
+        this.a.a.add(localaqsx);
+        if (QLog.isColorLevel()) {
+          QLog.d("GameWebPage", 2, "headerView = " + localaqsx.getClass().getSimpleName());
+        }
+        RelativeLayout localRelativeLayout = new RelativeLayout(paramViewGroup.getContext());
+        if (((View)localaqsx).getParent() != null) {
+          ((ViewGroup)((View)localaqsx).getParent()).removeView((View)localaqsx);
+        }
+        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
+        localLayoutParams.addRule(13, ((View)localaqsx).getId());
+        if (localQQGameMsgInfo == null) {
+          break label529;
+        }
+        TextView localTextView = new TextView(this.a.getActivity());
+        localTextView.setTextColor(-1);
+        localTextView.setTextSize(1, 10.0F);
+        localTextView.setBackgroundColor(Color.parseColor("#4D000000"));
+        localTextView.setText(bbkb.a(this.a.getActivity(), 3, localQQGameMsgInfo.msgTime * 1000L));
+        localTextView.setPadding(12, 0, 12, 0);
+        localTextView.setId(2131377270);
+        localObject1 = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
+        if (localObject1 == null)
+        {
+          localObject1 = new RelativeLayout.LayoutParams(-2, actn.a(15.0F, this.a.getResources()));
+          localTextView.setGravity(17);
+          ((RelativeLayout.LayoutParams)localObject1).addRule(14);
+          ((RelativeLayout.LayoutParams)localObject1).addRule(10);
+          localTextView.bringToFront();
+          localObject2 = localObject1;
+          localObject1 = localTextView;
+          localRelativeLayout.addView((View)localaqsx, localLayoutParams);
+          if ((localObject1 != null) && (localObject2 != null)) {
+            localRelativeLayout.addView((View)localObject1, localObject2);
+          }
+          paramViewGroup.addView(localRelativeLayout, localLayoutParams);
+          if (localQQGameMsgInfo != null)
+          {
+            localaqsx.a(localQQGameMsgInfo, this.a.getActivity());
+            return localRelativeLayout;
+          }
+          localaqsx.a(new QQGameMsgInfo(), this.a.getActivity());
+        }
       }
+      continue;
+      label529:
+      localObject1 = null;
+      continue;
+      label534:
+      QQGameMsgInfo localQQGameMsgInfo = null;
     }
-    label120:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("UiApiPlugin", 2, "appId != appID || !openId.equals(openID)");
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

@@ -1,34 +1,49 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.AECamera.qudong.AETemplateInfoFragment;
-import mqq.util.WeakReference;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class agij
-  implements View.OnClickListener
+public class agij
 {
-  agij(agii paramagii) {}
+  public static List<agik> a;
   
-  public void onClick(View paramView)
+  public static void a(JSONObject paramJSONObject)
   {
-    if (agii.a(this.a))
+    int i = 2;
+    if ((paramJSONObject != null) && (paramJSONObject.has("entryList")))
     {
-      QLog.d("PhotoPreviewLogicAEPlay", 2, "need more pic.");
-      agii.a(this.a, String.format(((NewPhotoPreviewActivity)this.a.a.get()).getString(2131624249), new Object[] { Integer.valueOf(agii.a(this.a).jdField_a_of_type_Int) }));
-      return;
+      paramJSONObject = paramJSONObject.optJSONArray("entryList");
+      ArrayList localArrayList = new ArrayList();
+      if (paramJSONObject.length() > 2) {}
+      for (;;)
+      {
+        int j = 0;
+        while (j < i)
+        {
+          JSONObject localJSONObject = paramJSONObject.optJSONObject(j);
+          agik localagik = new agik();
+          localagik.jdField_a_of_type_Int = localJSONObject.optInt("id");
+          Object localObject = localJSONObject.optJSONObject("image");
+          if (localObject != null)
+          {
+            localObject = ((JSONObject)localObject).optString("src");
+            if (!TextUtils.isEmpty((CharSequence)localObject)) {
+              localagik.jdField_a_of_type_JavaLangString = ("https://gxh.vip.qq.com/xydata" + (String)localObject);
+            }
+          }
+          localagik.c = localJSONObject.optString("name");
+          localagik.d = localJSONObject.optString("desc");
+          localagik.jdField_b_of_type_JavaLangString = localJSONObject.optString("url");
+          localagik.jdField_a_of_type_Boolean = localJSONObject.optBoolean("isShow", true);
+          localagik.jdField_b_of_type_Int = localJSONObject.optInt("tag", 0);
+          localArrayList.add(localagik);
+          j += 1;
+        }
+        i = paramJSONObject.length();
+      }
+      a = localArrayList;
     }
-    ((NewPhotoPreviewActivity)this.a.a.get()).b.setClickable(false);
-    paramView = new Intent();
-    paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", agii.b(this.a).jdField_a_of_type_JavaUtilArrayList);
-    paramView.putExtra("pic_choose_in_node_id", ((NewPhotoPreviewActivity)this.a.a.get()).getIntent().getIntExtra("pic_choose_in_node_id", 0));
-    paramView.putExtra("pic_result_back_type", 0);
-    AETemplateInfoFragment.a((Context)this.a.a.get(), paramView);
-    bhci.a().v();
-    ((NewPhotoPreviewActivity)this.a.a.get()).finish();
   }
 }
 

@@ -3,8 +3,8 @@ package com.tencent.biz.pubaccount;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
-import azvv;
-import bacm;
+import bawz;
+import bbdr;
 import com.tencent.qphone.base.util.QLog;
 
 class AccountDetailActivity$32
@@ -16,9 +16,9 @@ class AccountDetailActivity$32
   {
     try
     {
-      int i = azvv.a(this.this$0, 110.0F);
-      Bitmap localBitmap = bacm.a(this.a, i, i);
-      this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(bacm.c(localBitmap, i, i));
+      int i = bawz.a(this.this$0, 110.0F);
+      Bitmap localBitmap = bbdr.a(this.a, i, i);
+      this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(bbdr.c(localBitmap, i, i));
       this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
       return;
     }

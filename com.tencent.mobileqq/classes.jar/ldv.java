@@ -1,13 +1,6 @@
-public class ldv
+public abstract interface ldv
 {
-  public long a;
-  public long b;
-  
-  public ldv(long paramLong1, long paramLong2)
-  {
-    this.a = paramLong1;
-    this.b = paramLong2;
-  }
+  public abstract void a();
 }
 
 

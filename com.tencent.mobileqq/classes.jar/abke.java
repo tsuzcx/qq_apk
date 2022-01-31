@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
 
 public class abke
-  implements alva
+  implements DialogInterface.OnDismissListener
 {
-  public abke(QQBrowserActivity paramQQBrowserActivity) {}
+  public abke(LbsBaseActivity paramLbsBaseActivity, Runnable paramRunnable) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeClose");
-  }
-  
-  public void b()
-  {
-    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeNotClose");
+    if (!LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.a();
+      return;
+    }
+    LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity, this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

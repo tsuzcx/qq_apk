@@ -1,90 +1,73 @@
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
+import android.app.Activity;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.widget.ListView;
 
 public class obs
 {
-  private static String a(String paramString)
+  @Nullable
+  private obt a;
+  
+  public void a()
   {
-    paramString = paramString.getBytes();
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
-    {
-      paramString[i] = ((byte)(paramString[i] ^ 0xB6));
-      i += 1;
+    if (this.a != null) {
+      this.a.a();
     }
-    return baaw.encodeToString(paramString, 2);
   }
   
-  public static void a()
+  public void a(Activity paramActivity, ListView paramListView)
   {
-    Object localObject1 = obz.a().getApplication().getPackageManager();
-    Object localObject2 = ((PackageManager)localObject1).getInstalledPackages(0);
-    String str = obz.a();
-    if (localObject2 != null)
+    if ((oaw.a().a() == 1) && (oaw.c()))
     {
-      ArrayList localArrayList = new ArrayList();
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
+      str = oaw.a().a();
+      i = oaw.a().b();
+      if (i != 1) {}
+    }
+    while (!QLog.isColorLevel())
+    {
+      String str;
+      int i;
+      return;
+      if (apvb.a(str))
       {
-        PackageInfo localPackageInfo = (PackageInfo)((Iterator)localObject2).next();
-        try
-        {
-          if (((PackageManager)localObject1).getLaunchIntentForPackage(localPackageInfo.packageName) != null)
-          {
-            JSONObject localJSONObject = new JSONObject();
-            localJSONObject.put("package_name", localPackageInfo.packageName);
-            localJSONObject.put("version_name", localPackageInfo.versionName);
-            localJSONObject.put("first_install_time", localPackageInfo.firstInstallTime);
-            localJSONObject.put("last_update_time", localPackageInfo.lastUpdateTime);
-            localArrayList.add(localJSONObject);
-          }
+        this.a = new obt(paramActivity, paramListView, str);
+        this.a.a(i);
+        paramActivity = oaw.a().a();
+        if (paramActivity != null) {
+          nzq.b(paramActivity, true, "no error");
         }
-        catch (JSONException localJSONException)
-        {
-          QLog.e("ReadInJoyRUA", 2, "reportUserApps: ", localJSONException);
-        }
+        oaw.a().a = this;
       }
-      int k = localArrayList.size();
-      int m = k / 4;
-      int i = 0;
-      while (i < m + 1)
+      for (;;)
       {
-        localObject1 = new JSONArray();
-        int j = 0;
-        while (j < 4)
-        {
-          int n = i * 4 + j;
-          if (n >= k) {
-            break;
-          }
-          ((JSONArray)localObject1).put(localArrayList.get(n));
-          j += 1;
+        QLog.d("ReadInJoySuperMaskAd", 1, "preview mode value = " + oaw.a().d());
+        oaw.a().a();
+        return;
+        oaw.a().a(3);
+        paramActivity = oaw.a().a();
+        if (paramActivity != null) {
+          nzq.b(paramActivity, false, "apng not exit");
         }
-        localObject1 = a(((JSONArray)localObject1).toString());
-        localObject2 = new HashMap();
-        ((HashMap)localObject2).put("uin", str);
-        ((HashMap)localObject2).put("data", localObject1);
-        QLog.d("ReadInJoyRUA", 2, "reportUserApps: " + (String)localObject1);
-        awrn.a(obz.a().getApplication()).a(str, "actKandianRUA", true, 1L, 0L, (HashMap)localObject2, null, false);
-        i += 1;
       }
     }
+    QLog.i("KandianAdPandentMask", 2, "status: " + oaw.a().a() + " Aladdin: " + oaw.c());
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.a != null) {
+      this.a.b(paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.a != null) && (obt.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     obs
  * JD-Core Version:    0.7.0.1
  */

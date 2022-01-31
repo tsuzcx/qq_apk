@@ -1,16 +1,19 @@
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-public class adua
-  implements adcz
+class adua
+  implements bcjb
 {
-  public adua(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  adua(adtw paramadtw) {}
   
-  public void onUpdate(int paramInt)
+  public void a(View paramView)
   {
-    if (paramInt == 23) {
-      UnlimitedBladeWorks.a(this.a).start();
+    if (arqn.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) {
+      return;
     }
+    actn.n = true;
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

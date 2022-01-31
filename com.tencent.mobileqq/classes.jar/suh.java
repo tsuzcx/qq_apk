@@ -1,65 +1,60 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqQQStoryGuide;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspQQStoryGuide;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.common.app.AppInterface;
 
-public class suh
-  extends slz
+class suh
+  implements suk
 {
-  public static String a = skt.a("StorySvc.new_user_guide");
-  public String b;
-  public String c;
+  protected ayrz a;
   
-  public suh(String paramString1, String paramString2)
+  private suh(suc paramsuc)
   {
-    this.b = paramString1;
-    this.c = paramString2;
+    this.jdField_a_of_type_Ayrz = new suj(this);
   }
   
-  public String a()
+  protected ayry a()
   {
-    return a;
-  }
-  
-  public slu a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspQQStoryGuide localRspQQStoryGuide = new qqstory_service.RspQQStoryGuide();
-    try
-    {
-      localRspQQStoryGuide.mergeFrom(paramArrayOfByte);
-      return new sui(localRspQQStoryGuide);
+    AppInterface localAppInterface = bjae.a();
+    if (localAppInterface != null) {
+      return localAppInterface.getNetEngine(0);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    return null;
+  }
+  
+  public void a(sul paramsul)
+  {
+    paramsul.jdField_d_of_type_Int = 0;
+    ayrv localayrv = new ayrv();
+    localayrv.jdField_a_of_type_JavaLangString = paramsul.jdField_d_of_type_JavaLangString;
+    localayrv.jdField_a_of_type_Int = 0;
+    localayrv.jdField_c_of_type_JavaLangString = paramsul.e;
+    localayrv.jdField_d_of_type_JavaLangString = paramsul.f;
+    localayrv.e = paramsul.g;
+    localayrv.jdField_c_of_type_Int = 3;
+    localayrv.a(paramsul);
+    localayrv.jdField_a_of_type_Ayrz = this.jdField_a_of_type_Ayrz;
+    paramsul.a = localayrv;
+    localayrv.jdField_a_of_type_Aysa = new sui(this);
+    ayry localayry = a();
+    if (localayry != null) {
+      localayry.a(localayrv);
+    }
+    veg.a("AsyncFileDownloader", "start download with base downloader, task = %s", paramsul);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public void b(sul paramsul)
+  {
+    ayrv localayrv = paramsul.a;
+    if (localayrv != null)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
+      if (a() != null) {
+        a().b(localayrv);
       }
+      veg.b("AsyncFileDownloader", String.format("cancel task with base downloader, task = %s", new Object[] { paramsul }));
     }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqQQStoryGuide localReqQQStoryGuide = new qqstory_service.ReqQQStoryGuide();
-    try
-    {
-      localReqQQStoryGuide.to_uid.set(Long.valueOf(this.b).longValue());
-      localReqQQStoryGuide.version.set(this.c);
-      return localReqQQStoryGuide.toByteArray();
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        localReqQQStoryGuide.to_uid.set(0L);
-      }
-    }
-  }
-  
-  public String toString()
-  {
-    return "QQStoryGuideRequest{toUid='" + this.b + '\'' + "version='" + this.c + '\'' + '}';
   }
 }
 

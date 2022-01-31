@@ -32,8 +32,8 @@ public class POIAdapter
     this.mInflater = LayoutInflater.from(paramContext);
     this.blueColor = Color.rgb(0, 121, 255);
     ThemeUtil.getCurrentThemeInfo().getString("themeId");
-    this.textGray = paramContext.getResources().getColor(2131101333);
-    this.textBlack = paramContext.getResources().getColor(2131101260);
+    this.textGray = paramContext.getResources().getColor(2131166928);
+    this.textBlack = paramContext.getResources().getColor(2131166854);
   }
   
   public void addPoiList(List<LBSShare.POI> paramList, boolean paramBoolean)
@@ -77,10 +77,10 @@ public class POIAdapter
     if (paramView == null)
     {
       paramViewGroup = new POIAdapter.PoiItemViewHolder();
-      paramView = this.mInflater.inflate(2131495974, null);
-      paramViewGroup.nameTextView = ((TextView)paramView.findViewById(2131304994));
-      paramViewGroup.addrTextView = ((TextView)paramView.findViewById(2131296588));
-      paramViewGroup.chooseView = paramView.findViewById(2131310033);
+      paramView = this.mInflater.inflate(2131561566, null);
+      paramViewGroup.nameTextView = ((TextView)paramView.findViewById(2131370660));
+      paramViewGroup.addrTextView = ((TextView)paramView.findViewById(2131362129));
+      paramViewGroup.chooseView = paramView.findViewById(2131375797);
       paramViewGroup.chooseView.setVisibility(4);
       paramViewGroup.detailView = paramView;
       paramView.setTag(paramViewGroup);

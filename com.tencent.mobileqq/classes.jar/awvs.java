@@ -1,41 +1,21 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.search.util.PAOfflineSearchManager.1.1;
 
 public class awvs
-  extends Animation
+  implements mzb
 {
-  int jdField_a_of_type_Int;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  
-  public awvs(ViewGroup paramViewGroup)
+  public void loaded(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * (1.0F - paramFloat)));
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
-    if (paramFloat == 1.0F)
-    {
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-      paramTransformation.height = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
+    if (paramInt == 0) {
+      ThreadManager.post(new PAOfflineSearchManager.1.1(this), 0, null, true);
     }
   }
   
-  public boolean willChangeBounds()
-  {
-    return true;
-  }
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awvs
  * JD-Core Version:    0.7.0.1
  */

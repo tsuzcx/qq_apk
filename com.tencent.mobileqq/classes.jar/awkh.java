@@ -1,136 +1,67 @@
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import java.util.HashMap;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class awkh
+class awkh
+  implements bfrw
 {
-  private static int jdField_a_of_type_Int;
-  private static volatile boolean jdField_a_of_type_Boolean;
-  private static long[] jdField_a_of_type_ArrayOfLong = new long[20];
-  private static int jdField_b_of_type_Int;
-  private static volatile boolean jdField_b_of_type_Boolean;
-  private static long[] jdField_b_of_type_ArrayOfLong = new long[20];
-  private static int jdField_c_of_type_Int;
-  private static long[] jdField_c_of_type_ArrayOfLong = new long[20];
-  private static int jdField_d_of_type_Int;
-  private static long[] jdField_d_of_type_ArrayOfLong = new long[20];
+  awkh(awkg paramawkg, HorizontalListView paramHorizontalListView) {}
   
-  public static void a()
+  public void a()
   {
-    if ((jdField_c_of_type_Int == 20) && (!jdField_a_of_type_Boolean))
+    int i = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getCurrentX();
+    long l1 = bbct.k();
+    long l2 = bawz.a(this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getContext(), 13.5F);
+    float f = Math.round((float)(i + (l1 - l2)) / this.jdField_a_of_type_Awkg.jdField_a_of_type_Float);
+    i = 0;
+    for (;;)
     {
-      if (!jdField_b_of_type_Boolean) {}
-      for (int i = 1;; i = 0)
+      if ((i < f) && (i < this.jdField_a_of_type_Awkg.jdField_a_of_type_JavaUtilList.size()))
       {
-        jdField_b_of_type_Boolean = true;
-        jdField_a_of_type_Boolean = true;
-        l = 0L;
-        j = 0;
-        while (j < jdField_c_of_type_Int)
+        awox localawox = (awox)this.jdField_a_of_type_Awkg.jdField_a_of_type_JavaUtilList.get(i);
+        awiv localawiv;
+        JSONObject localJSONObject;
+        if (awiu.b.containsKey(localawox))
         {
-          l += jdField_c_of_type_ArrayOfLong[j];
-          d1 = jdField_c_of_type_ArrayOfLong[j] / 1000.0D;
-          QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[FrameBuffer]temp=" + d1 + "ms framefpsOnce=" + 1000.0D / d1);
-          j += 1;
+          localawiv = (awiv)awiu.b.get(localawox);
+          if (!localawiv.jdField_a_of_type_Boolean)
+          {
+            localawiv.jdField_a_of_type_Boolean = true;
+            localJSONObject = new JSONObject();
+          }
+        }
+        try
+        {
+          localJSONObject.put("project", awso.a());
+          localJSONObject.put("event_src", "client");
+          localJSONObject.put("get_src", "web");
+          localJSONObject.put("obj_lct", localawiv.jdField_a_of_type_Int);
+          localJSONObject.put("extra_info", localawox.b);
+          localJSONObject.put("tepl", localawox.f);
+          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+          awso.a(localQQAppInterface, new ReportModelDC02528().module("all_result").action("exp_item").obj1(localawox.a + "").obj2(localawox.j).ver1(localawiv.jdField_a_of_type_JavaLangString).ver2(awso.a(this.jdField_a_of_type_Awkg.jdField_a_of_type_Int)).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + awiu.a));
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            QLog.e(awkg.jdField_a_of_type_JavaLangString, 2, "e = " + localJSONException);
+          }
         }
       }
-      double d1 = l / 1000.0D / 20.0D;
-      if (QLog.isColorLevel()) {
-        QLog.d("SVFilterPreprocessFpsTest", 2, "SVFilterPreprocessFpsTest[FrameBuffer]avg=" + d1 + "ms avgfps=" + 1000.0D / d1);
-      }
-      if (i != 0) {
-        awkf.a("sv_preprocess_frame_buffer", d1);
-      }
-      long l = 0L;
-      int j = 0;
-      while (j < jdField_d_of_type_Int)
-      {
-        l += jdField_d_of_type_ArrayOfLong[j];
-        d1 = jdField_d_of_type_ArrayOfLong[j] / 1000.0D;
-        QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[ClipVideo]temp=" + d1 + "ms ClipVideoFpsOnce=" + 1000.0D / d1);
-        j += 1;
-      }
-      d1 = l / 1000.0D / 20.0D;
-      if (QLog.isColorLevel()) {
-        QLog.d("SVFilterPreprocessFpsTest", 2, "SVFilterPreprocessFpsTest[ClipVideo]avg=" + d1 + "ms avgfps=" + 1000.0D / d1);
-      }
-      if (i != 0) {
-        awkf.a("sv_preprocess_clip_video", d1);
-      }
-      l = 0L;
-      j = 0;
-      while (j < 20)
-      {
-        d1 = (jdField_b_of_type_ArrayOfLong[j] - jdField_a_of_type_ArrayOfLong[j]) / 1000.0D;
-        l = (l + d1);
-        QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[TotalTime]temp=" + d1 + "ms InputfpsOnce=" + 1000.0D / d1);
-        j += 1;
-      }
-      d1 = l / 20L;
-      QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[TotalTime]avg=" + d1 + "ms avgInputfps_Process=" + 1000.0D / d1);
-      if (i != 0) {
-        awkf.a("sv_preprocess_total_time", d1);
-      }
-      d1 = (jdField_b_of_type_ArrayOfLong[19] - jdField_a_of_type_ArrayOfLong[0]) / 1000.0D / 20.0D;
-      if (QLog.isColorLevel()) {
-        QLog.d("SVFilterPreprocessFpsTest", 2, "SVFilterPreprocessFpsTest[TotalTime]avg=" + d1 + "ms avgInputfps_Camera=" + 1000.0D / d1);
-      }
-    }
-  }
-  
-  public static void a(long paramLong)
-  {
-    if (jdField_a_of_type_Int < 20)
-    {
-      long[] arrayOfLong = jdField_a_of_type_ArrayOfLong;
-      int i = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = i + 1;
-      arrayOfLong[i] = paramLong;
-    }
-  }
-  
-  public static void b()
-  {
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 0;
-    jdField_c_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public static void b(long paramLong)
-  {
-    if (jdField_b_of_type_Int < 20)
-    {
-      long[] arrayOfLong = jdField_b_of_type_ArrayOfLong;
-      int i = jdField_b_of_type_Int;
-      jdField_b_of_type_Int = i + 1;
-      arrayOfLong[i] = paramLong;
-    }
-  }
-  
-  public static void c(long paramLong)
-  {
-    if (jdField_c_of_type_Int < 20)
-    {
-      long[] arrayOfLong = jdField_c_of_type_ArrayOfLong;
-      int i = jdField_c_of_type_Int;
-      jdField_c_of_type_Int = i + 1;
-      arrayOfLong[i] = paramLong;
-    }
-  }
-  
-  public static void d(long paramLong)
-  {
-    if (jdField_d_of_type_Int < 20)
-    {
-      long[] arrayOfLong = jdField_d_of_type_ArrayOfLong;
-      int i = jdField_d_of_type_Int;
-      jdField_d_of_type_Int = i + 1;
-      arrayOfLong[i] = paramLong;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awkh
  * JD-Core Version:    0.7.0.1
  */

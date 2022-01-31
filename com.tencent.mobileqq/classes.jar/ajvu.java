@@ -1,70 +1,55 @@
-import com.tencent.mobileqq.app.addfriendverifi.data.AddFriendBlockedInfo;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.FaceDownloader;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import mqq.os.MqqHandler;
 
 public class ajvu
-  implements ajfe
+  extends MqqHandler
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
-  
-  protected void a(boolean paramBoolean, String paramString) {}
-  
-  public void a(boolean paramBoolean, List<AddFriendBlockedInfo> paramList, String paramString) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString) {}
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public ajvu(FaceDownloader paramFaceDownloader, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerification.obsever", 2, " onUpdate() type =" + paramInt + " isSuccess = " + paramBoolean);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage == null) {}
+    while (paramMessage.what != 100) {
+      return;
     }
-    switch (paramInt)
+    int i = 0;
+    label16:
+    if (i < this.a.b.size())
     {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("NewFriendVerification.obsever", 2, " default type =" + paramInt);
+      paramMessage = (ajvx)this.a.b.get(i);
+      if (paramMessage != null) {
+        break label56;
       }
-      return;
-    case 1: 
-      b(paramBoolean, null);
-      return;
-    case 2: 
-      a(paramBoolean, null);
-      return;
-    case 3: 
-      paramObject = (Object[])paramObject;
-      boolean bool1 = ((Boolean)paramObject[0]).booleanValue();
-      boolean bool2 = ((Boolean)paramObject[1]).booleanValue();
-      paramObject = (String)paramObject[2];
+    }
+    for (;;)
+    {
+      i += 1;
+      break label16;
+      break;
+      label56:
       if (QLog.isColorLevel()) {
-        QLog.d("NewFriendVerification.obsever", 2, " isShowEntrance =" + bool1 + " isShowRedPoint =" + bool2);
+        QLog.i("Q.qqhead.FaceDownloader", 2, "handle download finish task.faceInfo=" + paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo + ",bitmap=" + paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
       }
-      a(paramBoolean, bool1, bool2, paramObject);
-      return;
-    case 4: 
-      paramObject = (Object[])paramObject;
-      List localList = (List)paramObject[0];
-      String str = (String)paramObject[1];
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
+      if ((paramMessage != null) && (paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo != null) && (paramMessage.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.a.a.size() > 0))
       {
-        localStringBuilder = new StringBuilder().append(" blockedInfos =");
-        if (localList == null) {
-          break label297;
+        int j = 0;
+        while (j < this.a.a.size())
+        {
+          ((ajvv)this.a.a.get(j)).a(true, paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
+          j += 1;
         }
       }
-      label297:
-      for (paramObject = Integer.valueOf(localList.size());; paramObject = " is null")
-      {
-        QLog.d("NewFriendVerification.obsever", 2, paramObject);
-        a(paramBoolean, localList, str);
-        return;
-      }
+      this.a.b.remove(i);
+      i -= 1;
     }
-    paramObject = (Object[])paramObject;
-    a(((Boolean)paramObject[0]).booleanValue(), (String)paramObject[1]);
   }
 }
 

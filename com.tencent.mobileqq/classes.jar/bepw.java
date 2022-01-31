@@ -1,36 +1,20 @@
 import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.view.Window;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.os.Bundle;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class bepw
+public abstract interface bepw<T>
 {
-  private final int jdField_a_of_type_Int;
-  private final boolean jdField_a_of_type_Boolean;
-  private final boolean b;
+  public abstract T a(Context paramContext, Bundle paramBundle);
   
-  private bepw(Window paramWindow, boolean paramBoolean)
-  {
-    if (paramWindow.getContext().getResources().getConfiguration().orientation == 1) {}
-    for (;;)
-    {
-      this.b = bool;
-      this.jdField_a_of_type_Int = ImmersiveUtils.getStatusBarHeight(paramWindow.getContext());
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-      bool = false;
-    }
-  }
+  public abstract void a(Bundle paramBundle);
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  public abstract boolean a(Bundle paramBundle);
+  
+  public abstract boolean a(MiniAppInfo paramMiniAppInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bepw
  * JD-Core Version:    0.7.0.1
  */

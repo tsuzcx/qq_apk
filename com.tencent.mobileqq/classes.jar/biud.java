@@ -1,53 +1,38 @@
-import android.graphics.Bitmap.CompressFormat;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tribe.async.async.JobContext;
-import java.lang.ref.WeakReference;
+import android.graphics.Rect;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class biud
-  extends biuq<bitz, bitz>
+class biud
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public WeakReference<bibk> a;
+  biud(biua parambiua, View paramView1, View paramView2, View paramView3) {}
   
-  public biud(bibk parambibk)
+  public void onGlobalLayout()
   {
-    this.a = new WeakReference(parambibk);
-  }
-  
-  protected void a(JobContext paramJobContext, bitz parambitz)
-  {
-    paramJobContext = (bibk)this.a.get();
-    if (paramJobContext == null)
+    Log.d("AEGIFTextEditFragment", "onGlobalLayout");
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+    if (this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - localRect.bottom > 150)
     {
-      urk.e("Q.qqstory.publish.editGenerateInteractPasterImageSegment", "EditInteractExport is null, return directly.");
-      notifyResult(parambitz);
-      return;
-    }
-    paramJobContext = paramJobContext.a();
-    if (paramJobContext == null)
-    {
-      urk.e("Q.qqstory.publish.editGenerateInteractPasterImageSegment", "interact bitmap is null, return directly.");
-      notifyResult(parambitz);
-      return;
-    }
-    String str = biut.a(parambitz.jdField_a_of_type_Int, parambitz.b, ".png");
-    try
-    {
-      if (vlc.a(paramJobContext, Bitmap.CompressFormat.PNG, 60, str))
+      int[] arrayOfInt = new int[2];
+      this.b.getLocationInWindow(arrayOfInt);
+      int i = arrayOfInt[1];
+      int j = this.b.getHeight();
+      int k = localRect.bottom;
+      if (!biua.b(this.jdField_a_of_type_Biua))
       {
-        parambitz.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.putExtra("il_pic", str);
-        notifyResult(parambitz);
-        return;
+        this.b.scrollBy(0, i + j - k);
+        biua.a(this.jdField_a_of_type_Biua, this.c, localRect.bottom / 2);
       }
-    }
-    catch (Exception paramJobContext)
-    {
-      urk.c("Q.qqstory.publish.editGenerateInteractPasterImageSegment", "compressToFile Exception :", paramJobContext);
-      super.notifyError(new ErrorMessage(-1, "should generate video thumb first !"));
+      biua.a(this.jdField_a_of_type_Biua, true);
       return;
     }
-    urk.e("Q.qqstory.publish.editGenerateInteractPasterImageSegment", "compressToFile failed.");
-    super.notifyError(new ErrorMessage(-1, "compress interact bitmap failed !"));
+    this.b.scrollTo(0, 0);
+    if (biua.b(this.jdField_a_of_type_Biua)) {
+      biua.a(this.jdField_a_of_type_Biua, this.c, localRect.bottom / 2);
+    }
+    biua.a(this.jdField_a_of_type_Biua, false);
   }
 }
 

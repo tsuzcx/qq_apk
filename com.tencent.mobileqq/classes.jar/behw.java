@@ -1,32 +1,21 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnScrollChangedListener;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.widget.BubblePopupWindow;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
+import com.tencent.qqmini.sdk.core.auth.ui.PermissionSettingFragment;
 
 public class behw
-  implements ViewTreeObserver.OnScrollChangedListener
+  implements DialogInterface.OnClickListener
 {
-  public behw(BubblePopupWindow paramBubblePopupWindow) {}
+  public behw(PermissionSettingFragment paramPermissionSettingFragment, CompoundButton paramCompoundButton) {}
   
-  public void onScrollChanged()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (BubblePopupWindow.a(this.a) != null) {}
-    for (View localView = (View)BubblePopupWindow.a(this.a).get();; localView = null)
-    {
-      if ((localView != null) && (BubblePopupWindow.a(this.a) != null))
-      {
-        WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)BubblePopupWindow.a(this.a).getLayoutParams();
-        BubblePopupWindow.a(this.a, localView, localLayoutParams, BubblePopupWindow.a(this.a), BubblePopupWindow.b(this.a));
-        this.a.a(localLayoutParams.x, localLayoutParams.y, -1, -1, true);
-      }
-      return;
-    }
+    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     behw
  * JD-Core Version:    0.7.0.1
  */

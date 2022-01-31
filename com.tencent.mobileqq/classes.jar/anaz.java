@@ -1,37 +1,61 @@
-import android.os.Handler;
-import android.os.Message;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class anaz
-  extends ajhy
+public class anaz
+  extends ampb<anay>
 {
-  anaz(anaw paramanaw) {}
-  
-  public void a(boolean paramBoolean)
+  public static anay a()
   {
-    anaw.a(this.a).clear();
+    return (anay)ampm.a().a(500);
   }
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public int a()
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.e();
-    }
+    return 500;
   }
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  @NonNull
+  public anay a(int paramInt)
   {
-    if ((paramObject != null) && ((paramObject instanceof Integer)) && (anaw.a(this.a) != null)) {
-      anaw.a(this.a).obtainMessage(208, paramObject).sendToTarget();
+    return new anay();
+  }
+  
+  @Nullable
+  public anay a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
+      return anay.a(paramArrayOfampi);
     }
-    if ((this.a.a != null) && (paramBoolean)) {
-      this.a.a.e();
-    }
+    return null;
+  }
+  
+  public Class<anay> a()
+  {
+    return anay.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(anay paramanay) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anaz
  * JD-Core Version:    0.7.0.1
  */

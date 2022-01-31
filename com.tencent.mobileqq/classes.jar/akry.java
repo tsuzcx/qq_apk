@@ -1,18 +1,19 @@
-import com.tencent.YTFace.model.FaceStatus;
+import com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager;
+import com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager.ScanSpaceTask;
 
 public class akry
+  implements abwf
 {
-  public int a = 3000;
-  public FaceStatus[] a;
+  public akry(ScanSpaceManager.ScanSpaceTask paramScanSpaceTask) {}
   
-  public String toString()
+  public void a(int paramInt)
   {
-    return "ARCloudRecogReqFaceInfo{timeout = " + this.a + '}';
+    ScanSpaceManager.a(this.a.this$0, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akry
  * JD-Core Version:    0.7.0.1
  */

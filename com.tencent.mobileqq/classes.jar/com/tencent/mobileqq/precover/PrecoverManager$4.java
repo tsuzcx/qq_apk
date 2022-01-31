@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.precover;
 
-import attv;
-import attw;
+import aurt;
+import auru;
 
 public class PrecoverManager$4
   implements Runnable
 {
-  public PrecoverManager$4(attv paramattv) {}
+  public PrecoverManager$4(aurt paramaurt) {}
   
   public void run()
   {
-    attv.a(this.this$0).a();
+    aurt.a(this.this$0).a();
   }
 }
 

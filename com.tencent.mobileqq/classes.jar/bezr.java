@@ -1,89 +1,64 @@
-import android.os.Bundle;
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import java.io.File;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StGetSDKOpenKeyTokenReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetSDKOpenKeyTokenRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import org.json.JSONObject;
 
 public class bezr
+  extends bfad
 {
-  public static long a;
+  private INTERFACE.StGetSDKOpenKeyTokenReq a = new INTERFACE.StGetSDKOpenKeyTokenReq();
   
-  public static String a()
+  public bezr(COMM.StCommonExt paramStCommonExt)
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    return new File(localBaseApplicationImpl.getFilesDir(), "comic_so").getAbsolutePath() + File.separator;
-  }
-  
-  public static void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipComicSoHelper", 2, "initComicPlayerSoWithSubProcess");
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
     }
-    Bundle localBundle = new Bundle();
-    QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "getPlayerSo", localBundle, null);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  protected String a()
   {
-    if (!new File(a() + "libqgplayer_765.so").exists())
+    return "mini_program_auth";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    INTERFACE.StGetSDKOpenKeyTokenRsp localStGetSDKOpenKeyTokenRsp = new INTERFACE.StGetSDKOpenKeyTokenRsp();
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicSoHelper", 2, "initComicPlayerSo start download");
-      }
-      ((VasQuickUpdateManager)paramQQAppInterface.getManager(184)).downloadItem(1004L, "libqgplayer_765", "comic");
-    }
-    while (!QLog.isColorLevel()) {
-      try
+      localStGetSDKOpenKeyTokenRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetSDKOpenKeyTokenRsp != null)
       {
-        a = SystemClock.elapsedRealtime();
-        awpy.a(paramQQAppInterface, "sendtdbank|b_sng_qqvip_qqcomic|soDownload", "1|" + a + "|0", true);
-        return;
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("token", localStGetSDKOpenKeyTokenRsp.token.get());
+        return paramArrayOfByte;
       }
-      catch (Throwable paramQQAppInterface)
-      {
-        paramQQAppInterface.printStackTrace();
-        return;
-      }
+      besl.a("GetSDKOpenKeyTokenRequest", "onResponse fail.rsp = null");
+      return null;
     }
-    QLog.d("VipComicSoHelper", 2, "initComicPlayerSo has exists");
+    catch (Exception paramArrayOfByte)
+    {
+      besl.a("GetSDKOpenKeyTokenRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  protected byte[] a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipComicSoHelper", 2, "onSoDownloadCompleted");
-    }
-    if (bajo.a(a() + "libQGamePlayer.zip", a(), "libqgplayer_765.so")) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicSoHelper", 2, "comic player unCompressSo success");
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        long l1 = SystemClock.elapsedRealtime();
-        long l2 = a;
-        awpy.a(paramQQAppInterface, "sendtdbank|b_sng_qqvip_qqcomic|soDownload", "2|" + (l1 - l2) + "|" + paramInt, true);
-        return;
-      }
-      catch (Throwable paramQQAppInterface)
-      {
-        paramQQAppInterface.printStackTrace();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicSoHelper", 2, "comic player unCompressSo failure");
-      }
-    }
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "GetSDKOpenKeyToken";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bezr
  * JD-Core Version:    0.7.0.1
  */

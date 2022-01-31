@@ -1,25 +1,37 @@
 package com.tencent.qqmini.sdk.ui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Window;
-import bdye;
-import bdyn;
+import bfff;
+import bffu;
 
 public class MiniTranslucentFragmentActivity
   extends MiniFragmentActivity
 {
   public static void a(Activity paramActivity, Intent paramIntent, Class<? extends MiniBaseFragment> paramClass, int paramInt)
   {
-    bdye.a(paramActivity, paramIntent, MiniTranslucentFragmentActivity.class, paramClass, paramInt);
+    bfff.a(paramActivity, paramIntent, MiniTranslucentFragmentActivity.class, paramClass, paramInt);
+  }
+  
+  public static void a(Context paramContext, Intent paramIntent, Class<? extends MiniBaseFragment> paramClass)
+  {
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.setClass(paramContext, MiniTranslucentFragmentActivity.class);
+    localIntent.putExtra("public_fragment_class", paramClass.getName());
+    paramContext.startActivity(localIntent);
   }
   
   public void onCreate(@Nullable Bundle paramBundle)
   {
     getWindow().addFlags(67108864);
-    bdyn.b(this);
+    bffu.b(this);
     super.onCreate(paramBundle);
   }
   

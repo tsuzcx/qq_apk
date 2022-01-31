@@ -1,37 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.Switch;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 
 public class nli
-  implements bbmu
+  implements bfos
 {
-  public nli(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public nli(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void a()
+  public void onDismiss()
   {
-    boolean bool2 = true;
-    Object localObject;
-    if (this.a.a)
-    {
-      localObject = this.a;
-      if (ReadInJoySettingActivity.a(this.a)) {
-        break label61;
-      }
-      bool1 = true;
-      ReadInJoySettingActivity.a((ReadInJoySettingActivity)localObject, bool1);
-      localObject = ReadInJoySettingActivity.a(this.a);
-      if (ReadInJoySettingActivity.a(this.a)) {
-        break label66;
-      }
-    }
-    label61:
-    label66:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      ((Switch)localObject).setChecked(bool1);
-      return;
-      bool1 = false;
-      break;
-    }
+    ReadInJoyNativeAdFragment.a(this.a, false);
   }
 }
 

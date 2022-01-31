@@ -1,24 +1,25 @@
-import android.content.Intent;
-import android.net.Uri;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.av.widget.stageview.StageEffectView;
+import java.util.Comparator;
 
-class mvm
-  implements View.OnClickListener
+public class mvm
+  implements Comparator<Integer>
 {
-  mvm(mut parammut, String paramString) {}
+  public mvm(StageEffectView paramStageEffectView) {}
   
-  public void onClick(View paramView)
+  public int a(Integer paramInteger1, Integer paramInteger2)
   {
-    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    ((BaseActivity)this.jdField_a_of_type_Mut.a.get()).startActivity(paramView);
+    paramInteger1 = (mvt)this.a.getChildAt(paramInteger1.intValue()).getTag();
+    paramInteger2 = (mvt)this.a.getChildAt(paramInteger2.intValue()).getTag();
+    if (paramInteger1.c < paramInteger2.c) {
+      return 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mvm
  * JD-Core Version:    0.7.0.1
  */

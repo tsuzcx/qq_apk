@@ -1,39 +1,19 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.widget.XListView;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class mmf
-  implements TextWatcher
+class mmf
+  implements View.OnClickListener
 {
-  public mmf(PoiMapActivity paramPoiMapActivity) {}
+  mmf(mme parammme) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if (TextUtils.isEmpty(paramEditable))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-      this.a.jdField_a_of_type_Mme.notifyDataSetChanged();
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-    this.a.a(paramEditable);
+    mme.a(this.a);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mmf
  * JD-Core Version:    0.7.0.1
  */

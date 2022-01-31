@@ -1,402 +1,211 @@
-import android.annotation.TargetApi;
-import android.app.AppOpsManager;
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Looper;
-import android.text.TextPaint;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+import android.graphics.Color;
+import android.support.annotation.ColorInt;
+import android.support.annotation.FloatRange;
+import android.support.annotation.IntRange;
+import android.support.annotation.NonNull;
 
-public class bbmy
+public final class bbmy
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static bbnd jdField_a_of_type_Bbnd = new bbnd(Looper.getMainLooper(), null);
-  private static Class jdField_a_of_type_JavaLangClass;
-  private static Field jdField_a_of_type_JavaLangReflectField;
-  private static Method jdField_a_of_type_JavaLangReflectMethod;
-  private static BlockingQueue<bbnc> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean;
-  private int c = 0;
+  private static final ThreadLocal<double[]> a = new ThreadLocal();
   
-  public bbmy(Context paramContext)
+  @FloatRange(from=0.0D, to=1.0D)
+  public static double a(@ColorInt int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_AndroidContentResResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    double[] arrayOfDouble = a();
+    a(paramInt, arrayOfDouble);
+    return arrayOfDouble[1] / 100.0D;
   }
   
-  @TargetApi(19)
-  public static int a()
+  public static double a(@ColorInt int paramInt1, @ColorInt int paramInt2)
   {
-    int i = 1;
-    try
-    {
-      if (Build.VERSION.SDK_INT < 19) {
-        return 2;
-      }
-      boolean bool;
-      if (Build.VERSION.SDK_INT >= 24) {
-        bool = QQNotificationManager.getInstance().areNotificationsEnabled(BaseApplicationImpl.getContext());
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d("PushOpenNotify", 2, new Object[] { "isNotificationEnabled,  isEnabled, ", Boolean.valueOf(bool) });
-        break;
-        AppOpsManager localAppOpsManager = (AppOpsManager)BaseApplicationImpl.sApplication.getSystemService("appops");
-        ApplicationInfo localApplicationInfo = BaseApplicationImpl.sApplication.getApplicationInfo();
-        String str = BaseApplicationImpl.sApplication.getApplicationContext().getPackageName();
-        int j = localApplicationInfo.uid;
-        if (jdField_a_of_type_JavaLangClass == null) {
-          jdField_a_of_type_JavaLangClass = Class.forName(AppOpsManager.class.getName());
-        }
-        if (jdField_a_of_type_JavaLangReflectMethod == null) {
-          jdField_a_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getMethod("checkOpNoThrow", new Class[] { Integer.TYPE, Integer.TYPE, String.class });
-        }
-        if (jdField_a_of_type_JavaLangReflectField == null) {
-          jdField_a_of_type_JavaLangReflectField = jdField_a_of_type_JavaLangClass.getDeclaredField("OP_POST_NOTIFICATION");
-        }
-        int k = ((Integer)jdField_a_of_type_JavaLangReflectField.get(Integer.class)).intValue();
-        j = ((Integer)jdField_a_of_type_JavaLangReflectMethod.invoke(localAppOpsManager, new Object[] { Integer.valueOf(k), Integer.valueOf(j), str })).intValue();
-        if (j == 0) {
-          bool = true;
-        } else {
-          bool = false;
-        }
-      }
-      while (bool) {}
+    if (Color.alpha(paramInt2) != 255) {
+      throw new IllegalArgumentException("background can not be translucent: #" + Integer.toHexString(paramInt2));
     }
-    catch (Throwable localThrowable)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PushOpenNotify", 2, " isNotificationEnabled, get except, " + localThrowable.getMessage());
-      }
-      i = 2;
-      return i;
+    int i = paramInt1;
+    if (Color.alpha(paramInt1) < 255) {
+      i = a(paramInt1, paramInt2);
     }
-    return 0;
+    double d1 = a(i) + 0.05D;
+    double d2 = a(paramInt2) + 0.05D;
+    return Math.max(d1, d2) / Math.min(d1, d2);
   }
   
-  public static int a(int paramInt)
+  private static float a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    case 3: 
-    case 6: 
-    default: 
-      return 2130838991;
-    case 1: 
-    case 4: 
-      return 2130846702;
+    if (paramFloat1 < paramFloat2) {
+      return paramFloat2;
     }
-    return 2130846703;
+    if (paramFloat1 > paramFloat3) {
+      return paramFloat3;
+    }
+    return paramFloat1;
   }
   
-  public static bbmy a(Context paramContext, int paramInt1, int paramInt2)
+  public static int a(@ColorInt int paramInt1, @ColorInt int paramInt2)
   {
-    return a(paramContext, 0, paramInt1, paramInt2);
+    int i = Color.alpha(paramInt2);
+    int j = Color.alpha(paramInt1);
+    int k = c(j, i);
+    return Color.argb(k, a(Color.red(paramInt1), j, Color.red(paramInt2), i, k), a(Color.green(paramInt1), j, Color.green(paramInt2), i, k), a(Color.blue(paramInt1), j, Color.blue(paramInt2), i, k));
   }
   
-  public static bbmy a(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  public static int a(@ColorInt int paramInt1, @ColorInt int paramInt2, float paramFloat)
   {
-    paramContext = new bbmy(paramContext);
-    paramContext.a(a(paramInt1));
-    paramContext.b(paramInt1);
-    paramContext.c(paramInt2);
-    paramContext.d(paramInt3);
-    return paramContext;
-  }
-  
-  public static bbmy a(Context paramContext, int paramInt1, CharSequence paramCharSequence, int paramInt2)
-  {
-    paramContext = new bbmy(paramContext);
-    paramContext.a(a(paramInt1));
-    paramContext.b(paramInt1);
-    paramContext.a(paramCharSequence);
-    paramContext.d(paramInt2);
-    return paramContext;
-  }
-  
-  public static bbmy a(Context paramContext, CharSequence paramCharSequence, int paramInt)
-  {
-    return a(paramContext, 0, paramCharSequence, paramInt);
-  }
-  
-  public static boolean a()
-  {
-    return ((!Build.BRAND.equals("Meizu")) || (!Build.MODEL.equals("U20"))) && ((!Build.BRAND.equals("Meizu")) || (!Build.MODEL.equals("M3s"))) && ((!Build.BRAND.equals("xiaolajiao")) || (!Build.MODEL.equals("HLJ-GM-Q1"))) && ((!Build.BRAND.equals("UOOGOU")) || (!Build.MODEL.equals("UOOGOU"))) && ((!Build.BRAND.equals("samsung")) || (!Build.MODEL.equals("SM-A9000"))) && (!DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.UICfg.name(), "1").equals("0"));
-  }
-  
-  public static boolean a(boolean paramBoolean)
-  {
-    if (Build.VERSION.SDK_INT < 11) {}
+    int j = 0;
+    int i = 255;
+    if (Color.alpha(paramInt2) != 255) {
+      throw new IllegalArgumentException("background can not be translucent: #" + Integer.toHexString(paramInt2));
+    }
+    if (a(b(paramInt1, 255), paramInt2) < paramFloat) {
+      m = -1;
+    }
+    int k;
     do
     {
-      return false;
-      if ((jdField_a_of_type_Int == -1) || (paramBoolean))
+      do
       {
-        int i = jdField_a_of_type_Int;
-        jdField_a_of_type_Int = a();
-        if (QLog.isColorLevel()) {
-          QLog.d("QQToast", 2, "canUseCustomToast = " + jdField_a_of_type_Int);
-        }
-        if ((i == 0) && (jdField_a_of_type_Int == 1))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQToast", 2, "Temp Report mark: now Notification from disable to Enabled ");
-          }
-          awqx.b(null, "dc00898", "", "", "0X8009ACA", "0X8009ACA", 0, 0, "", "", "", "");
-        }
-      }
-    } while (jdField_a_of_type_Int == 1);
-    return true;
-  }
-  
-  public static int b(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 0: 
-    case 3: 
-    case 6: 
-    default: 
-      return -15550475;
-    case 1: 
-    case 4: 
-      return -1;
-    }
-    return -7745469;
-  }
-  
-  public static boolean b()
-  {
-    return Build.BOARD.contains("mx2");
-  }
-  
-  private static int c(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 0: 
-    case 2: 
-    case 3: 
-    case 5: 
-    case 6: 
-    default: 
-      return -16777216;
-    }
-    return -16578533;
-  }
-  
-  public Toast a()
-  {
-    Toast localToast;
-    if (b())
-    {
-      localToast = a(b());
-      localToast.show();
+        return m;
+        k = 0;
+        m = i;
+      } while (k > 10);
+      m = i;
+    } while (i - j <= 1);
+    int m = (j + i) / 2;
+    if (a(b(paramInt1, m), paramInt2) < paramFloat) {
+      j = m;
     }
     for (;;)
     {
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      return localToast;
-      localToast = a(0);
-      localToast.show();
-    }
-  }
-  
-  public Toast a(int paramInt)
-  {
-    return a(paramInt, 2131495546, null);
-  }
-  
-  public Toast a(int paramInt1, int paramInt2, View.OnTouchListener paramOnTouchListener)
-  {
-    bbnb localbbnb = new bbnb(this.jdField_a_of_type_AndroidContentContext);
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt2, null);
-    Object localObject = localView.findViewById(2131311701);
-    if (Build.VERSION.SDK_INT >= 21) {
-      ((View)localObject).setElevation(6.0F);
-    }
-    AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772215);
-    localView.findViewById(2131311707);
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      localObject = (ImageView)localView.findViewById(2131311705);
-      ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      ((ImageView)localObject).setColorFilter(b(this.jdField_b_of_type_Int), PorterDuff.Mode.MULTIPLY);
-      if (this.jdField_a_of_type_JavaLangCharSequence != null)
-      {
-        localObject = (TextView)localView.findViewById(2131311708);
-        ((TextView)localObject).setTextColor(c(this.jdField_b_of_type_Int));
-        ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangCharSequence);
-        String str = this.jdField_a_of_type_JavaLangCharSequence.toString();
-        TextPaint localTextPaint = ((TextView)localObject).getPaint();
-        float f1 = localTextPaint.measureText(str);
-        DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics();
-        float f2 = localDisplayMetrics.densityDpi / 160 * 50;
-        f2 = localDisplayMetrics.widthPixels - f2;
-        if (f1 > f2) {
-          ((TextView)localObject).setTextSize(2, ((TextView)localObject).getTextSize() * 5.0F / 6.0F / localDisplayMetrics.density);
-        }
-        if (this.jdField_a_of_type_Boolean)
-        {
-          f1 = localTextPaint.measureText(str);
-          if (f1 > f2) {
-            ((TextView)localObject).setTextSize(2, ((TextView)localObject).getTextSize() * f2 / f1 / localDisplayMetrics.scaledDensity);
-          }
-        }
-      }
-      if (!a()) {
-        break label372;
-      }
-      localbbnb.setGravity(55, 0, 0);
-    }
-    for (;;)
-    {
-      localbbnb.setView(localView);
-      localbbnb.setDuration(this.c);
-      if (a()) {
-        localView.setOnTouchListener(new bbmz(this, localbbnb, paramOnTouchListener));
-      }
-      return localbbnb;
-      ((ImageView)localView.findViewById(2131311705)).setVisibility(8);
+      k += 1;
       break;
-      label372:
-      if (paramInt1 == 6316128) {
-        localbbnb.setGravity(55, 0, b());
+      i = m;
+    }
+  }
+  
+  private static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    if (paramInt5 == 0) {
+      return 0;
+    }
+    return (paramInt1 * 255 * paramInt2 + paramInt3 * paramInt4 * (255 - paramInt2)) / (paramInt5 * 255);
+  }
+  
+  public static void a(@IntRange(from=0L, to=255L) int paramInt1, @IntRange(from=0L, to=255L) int paramInt2, @IntRange(from=0L, to=255L) int paramInt3, @NonNull double[] paramArrayOfDouble)
+  {
+    if (paramArrayOfDouble.length != 3) {
+      throw new IllegalArgumentException("outXyz must have a length of 3.");
+    }
+    double d1 = paramInt1 / 255.0D;
+    double d2;
+    label66:
+    double d3;
+    if (d1 < 0.04045D)
+    {
+      d1 /= 12.92D;
+      d2 = paramInt2 / 255.0D;
+      if (d2 >= 0.04045D) {
+        break label194;
+      }
+      d2 /= 12.92D;
+      d3 = paramInt3 / 255.0D;
+      if (d3 >= 0.04045D) {
+        break label215;
+      }
+    }
+    label194:
+    label215:
+    for (d3 /= 12.92D;; d3 = Math.pow((d3 + 0.055D) / 1.055D, 2.4D))
+    {
+      paramArrayOfDouble[0] = (100.0D * (0.4124D * d1 + 0.3576D * d2 + 0.1805D * d3));
+      paramArrayOfDouble[1] = (100.0D * (0.2126D * d1 + 0.7152D * d2 + 0.0722D * d3));
+      paramArrayOfDouble[2] = ((d3 * 0.9505D + (d2 * 0.1192D + d1 * 0.0193D)) * 100.0D);
+      return;
+      d1 = Math.pow((d1 + 0.055D) / 1.055D, 2.4D);
+      break;
+      d2 = Math.pow((d2 + 0.055D) / 1.055D, 2.4D);
+      break label66;
+    }
+  }
+  
+  public static void a(@IntRange(from=0L, to=255L) int paramInt1, @IntRange(from=0L, to=255L) int paramInt2, @IntRange(from=0L, to=255L) int paramInt3, @NonNull float[] paramArrayOfFloat)
+  {
+    float f1 = paramInt1 / 255.0F;
+    float f3 = paramInt2 / 255.0F;
+    float f5 = paramInt3 / 255.0F;
+    float f6 = Math.max(f1, Math.max(f3, f5));
+    float f7 = Math.min(f1, Math.min(f3, f5));
+    float f2 = f6 - f7;
+    float f4 = (f6 + f7) / 2.0F;
+    if (f6 == f7)
+    {
+      f1 = 0.0F;
+      f2 = 0.0F;
+      f3 = f2 * 60.0F % 360.0F;
+      f2 = f3;
+      if (f3 < 0.0F) {
+        f2 = f3 + 360.0F;
+      }
+      paramArrayOfFloat[0] = a(f2, 0.0F, 360.0F);
+      paramArrayOfFloat[1] = a(f1, 0.0F, 1.0F);
+      paramArrayOfFloat[2] = a(f4, 0.0F, 1.0F);
+      return;
+    }
+    if (f6 == f1) {
+      f1 = (f3 - f5) / f2 % 6.0F;
+    }
+    for (;;)
+    {
+      f3 = f2 / (1.0F - Math.abs(2.0F * f4 - 1.0F));
+      f2 = f1;
+      f1 = f3;
+      break;
+      if (f6 == f3) {
+        f1 = (f5 - f1) / f2 + 2.0F;
       } else {
-        localbbnb.setGravity(55, 0, c());
+        f1 = (f1 - f3) / f2 + 4.0F;
       }
     }
   }
   
-  public void a()
+  public static void a(@ColorInt int paramInt, @NonNull double[] paramArrayOfDouble)
   {
-    this.jdField_a_of_type_Boolean = true;
+    a(Color.red(paramInt), Color.green(paramInt), Color.blue(paramInt), paramArrayOfDouble);
   }
   
-  public void a(int paramInt)
+  public static void a(@ColorInt int paramInt, @NonNull float[] paramArrayOfFloat)
   {
-    a(this.jdField_a_of_type_AndroidContentResResources.getDrawable(paramInt));
+    a(Color.red(paramInt), Color.green(paramInt), Color.blue(paramInt), paramArrayOfFloat);
   }
   
-  public void a(Drawable paramDrawable)
+  private static double[] a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-  }
-  
-  public void a(bbna parambbna)
-  {
-    parambbna = new bbnc(this, parambbna);
-    jdField_a_of_type_JavaUtilConcurrentBlockingQueue.add(parambbna);
-    jdField_a_of_type_Bbnd.sendEmptyMessage(1);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQToast", 2, "current queue size is " + jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size());
-    }
-  }
-  
-  public void a(CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-  }
-  
-  public int b()
-  {
-    try
+    double[] arrayOfDouble2 = (double[])a.get();
+    double[] arrayOfDouble1 = arrayOfDouble2;
+    if (arrayOfDouble2 == null)
     {
-      int i = Resources.getSystem().getDimensionPixelSize(Resources.getSystem().getIdentifier("status_bar_height", "dimen", "android"));
-      return i;
+      arrayOfDouble1 = new double[3];
+      a.set(arrayOfDouble1);
     }
-    catch (Exception localException) {}
-    return (int)(this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().density * 25.0F + 0.5D);
+    return arrayOfDouble1;
   }
   
-  public Toast b(int paramInt)
+  @ColorInt
+  public static int b(@ColorInt int paramInt1, @IntRange(from=0L, to=255L) int paramInt2)
   {
-    Toast localToast = a(paramInt);
-    localToast.show();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Boolean = false;
-    return localToast;
-  }
-  
-  public Toast b(int paramInt1, int paramInt2, View.OnTouchListener paramOnTouchListener)
-  {
-    paramOnTouchListener = a(paramInt1, paramInt2, paramOnTouchListener);
-    paramOnTouchListener.show();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Boolean = false;
-    return paramOnTouchListener;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public int c()
-  {
-    try
-    {
-      int i = Resources.getSystem().getDimensionPixelSize(Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android"));
-      return i;
+    if ((paramInt2 < 0) || (paramInt2 > 255)) {
+      throw new IllegalArgumentException("alpha must be between 0 and 255.");
     }
-    catch (Exception localException) {}
-    return (int)(this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().density * 44.0F + 0.5D);
+    return 0xFFFFFF & paramInt1 | paramInt2 << 24;
   }
   
-  public void c(int paramInt)
+  private static int c(int paramInt1, int paramInt2)
   {
-    a(this.jdField_a_of_type_AndroidContentResResources.getString(paramInt));
-  }
-  
-  public boolean c()
-  {
-    if (this.c == 0) {}
-    for (long l = 2000L; (System.currentTimeMillis() - this.jdField_a_of_type_Long > l) || (this.jdField_b_of_type_Boolean); l = 3500L) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void d(int paramInt)
-  {
-    this.c = paramInt;
+    return 255 - (255 - paramInt2) * (255 - paramInt1) / 255;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbmy
  * JD-Core Version:    0.7.0.1
  */

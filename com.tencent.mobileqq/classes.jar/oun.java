@@ -1,26 +1,16 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import cooperation.liveroom.LiveRoomProxyActivity;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyFragmentWithSubChannel;
 
-class oun
-  implements View.OnClickListener
+public class oun
+  implements AdapterView.OnItemClickListener
 {
-  oun(ouk paramouk, opw paramopw, qoe paramqoe) {}
+  public oun(ReadInJoyFragmentWithSubChannel paramReadInJoyFragmentWithSubChannel) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((this.jdField_a_of_type_Opw.a() != null) && (this.jdField_a_of_type_Opw.a().mSocialFeedInfo != null) && (this.jdField_a_of_type_Opw.a().mSocialFeedInfo.a != null)) {
-      LiveRoomProxyActivity.open(this.jdField_a_of_type_Qoe.a(), this.jdField_a_of_type_Opw.a().mSocialFeedInfo.a.c, "kandian biu feed click");
-    }
-    qpj localqpj;
-    do
-    {
-      return;
-      localqpj = this.jdField_a_of_type_Qoe.a();
-    } while (localqpj == null);
-    localqpj.a(paramView, this.jdField_a_of_type_Opw.a(), 2);
+    this.a.a(paramView, paramInt);
   }
 }
 

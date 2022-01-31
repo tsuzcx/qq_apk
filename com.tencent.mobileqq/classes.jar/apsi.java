@@ -1,21 +1,33 @@
-import android.content.Intent;
-import android.view.ViewGroup;
-
-public abstract interface apsi
+public abstract class apsi
 {
-  public abstract void a();
+  private apsh a;
   
-  public abstract void a(Intent paramIntent);
+  public static String a(String paramString1, String paramString2, String paramString3)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramString3);
+    return localStringBuilder.toString();
+  }
   
-  public abstract void a(ViewGroup paramViewGroup);
+  public apsh a()
+  {
+    return this.a;
+  }
   
-  public abstract void b();
+  public abstract String a();
   
-  public abstract void c();
+  public void a(apsh paramapsh)
+  {
+    this.a = paramapsh;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apsi
  * JD-Core Version:    0.7.0.1
  */

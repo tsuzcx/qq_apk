@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public class bjcv
-  implements DialogInterface.OnClickListener
+class bjcv
+  extends AnimatorListenerAdapter
 {
-  public bjcv(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  bjcv(bjct parambjct) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ShortVideoPlayActivity.b(this.a);
+    this.a.b.setVisibility(8);
   }
 }
 

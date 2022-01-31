@@ -1,61 +1,78 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMonitorValue;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import java.util.List;
 
 public class urn
-  extends slz
+  extends sth<uqy, svy>
 {
-  public String a;
-  private int c;
-  private int d;
-  
-  public String a()
+  public urn(uqy paramuqy)
   {
-    return skt.a("StoryMonitorSvc.client_monitor_report");
+    super(paramuqy);
   }
   
-  public slu a(byte[] paramArrayOfByte)
+  private void c(@NonNull uqy paramuqy, @NonNull svy paramsvy)
   {
-    qqstory_service.RspMonitorValue localRspMonitorValue = new qqstory_service.RspMonitorValue();
-    try
+    if ((uqy.a(paramuqy) == null) || (!uqy.a(paramuqy).a.date.equals(paramsvy.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.date)))
     {
-      localRspMonitorValue.mergeFrom(paramArrayOfByte);
-      return new uro(localRspMonitorValue);
+      veg.b(this.TAG, "ignore this upload status event. %s.", paramsvy.toString());
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-    return null;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.c = paramInt1;
-    this.d = paramInt2;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqMonitorValue localReqMonitorValue = new qqstory_service.ReqMonitorValue();
-    localReqMonitorValue.ID.set(this.c);
-    if (this.d > 0) {
-      localReqMonitorValue.Value.set(this.d);
-    }
+    veg.a(this.TAG, "receive upload status change event. %s.", paramsvy.toString());
+    int i = 0;
     for (;;)
     {
-      if (this.a != null) {
-        localReqMonitorValue.errmsg.set(ByteStringMicro.copyFromUtf8(this.a));
+      StoryVideoItem localStoryVideoItem;
+      if (i < uqy.a(paramuqy).a().size())
+      {
+        localStoryVideoItem = (StoryVideoItem)uqy.a(paramuqy).a().get(i);
+        if (!localStoryVideoItem.equals(paramsvy.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem)) {
+          break label159;
+        }
+        if (paramsvy.b != null) {
+          break label135;
+        }
+        localStoryVideoItem.copy(paramsvy.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
       }
-      return localReqMonitorValue.toByteArray();
-      localReqMonitorValue.Value.set(1);
+      for (;;)
+      {
+        paramuqy.a();
+        veg.d(this.TAG, "can't find the video whose state has been changed.");
+        return;
+        label135:
+        uqy.a(paramuqy).a(localStoryVideoItem);
+        uqy.a(paramuqy).a(paramsvy.b, i);
+      }
+      label159:
+      i += 1;
     }
   }
   
-  public String toString()
+  public void a(@NonNull uqy paramuqy, @NonNull svy paramsvy)
   {
-    return "MonitorValueRequest{ID=" + this.c + ", value=" + this.d + ", msg=" + this.a + '}';
+    if (paramsvy.a()) {
+      veg.b(this.TAG, "ignore this upload status event, because it's a troop video.");
+    }
+    do
+    {
+      return;
+      if (paramsvy.c())
+      {
+        veg.a(this.TAG, "receive share group video upload status change event. %s.", paramsvy.toString());
+        return;
+      }
+    } while (!paramsvy.b());
+    veg.a(this.TAG, "receive personal video upload status change event. %s.", paramsvy.toString());
+    c(paramuqy, paramsvy);
   }
+  
+  public Class acceptEventClass()
+  {
+    return svy.class;
+  }
+  
+  public void b(@NonNull uqy paramuqy, @NonNull svy paramsvy) {}
 }
 
 

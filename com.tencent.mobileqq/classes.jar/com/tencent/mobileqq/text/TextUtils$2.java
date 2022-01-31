@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.text;
 
 import android.graphics.drawable.Drawable;
-import axku;
-import axkv;
+import ayla;
+import aylb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public final class TextUtils$2
   implements Runnable
 {
-  public TextUtils$2(int paramInt, axkv paramaxkv) {}
+  public TextUtils$2(int paramInt, aylb paramaylb) {}
   
   public void run()
   {
-    Drawable localDrawable = axku.a(BaseApplicationImpl.getContext().getResources(), this.jdField_a_of_type_Int);
-    if ((localDrawable != null) && (this.jdField_a_of_type_Axkv != null)) {
-      this.jdField_a_of_type_Axkv.a(localDrawable);
+    Drawable localDrawable = ayla.a(BaseApplicationImpl.getContext().getResources(), this.jdField_a_of_type_Int);
+    if ((localDrawable != null) && (this.jdField_a_of_type_Aylb != null)) {
+      this.jdField_a_of_type_Aylb.a(localDrawable);
     }
   }
 }

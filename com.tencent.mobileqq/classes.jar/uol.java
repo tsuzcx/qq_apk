@@ -1,14 +1,25 @@
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
 
 class uol
-  implements begy
+  extends SimpleObserver<Void>
 {
-  uol(uoh paramuoh, int paramInt) {}
+  uol(uoj paramuoj, uon paramuon) {}
   
-  public void onDismiss()
+  public void a(Void paramVoid)
   {
-    ukt localukt = (ukt)this.jdField_a_of_type_Uoh.a.a().get(this.jdField_a_of_type_Int);
-    uoh.a(this.jdField_a_of_type_Uoh, localukt, "clk_hide");
+    super.onNext(paramVoid);
+    veg.b("QQStoryTakeVideoHelper", "generate video manifest success.");
+    this.jdField_a_of_type_Uoj.a = 2;
+    this.jdField_a_of_type_Uon.a();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    veg.e("QQStoryTakeVideoHelper", "generate video manifest failed.");
+    this.jdField_a_of_type_Uoj.a = -1;
+    this.jdField_a_of_type_Uon.b();
   }
 }
 

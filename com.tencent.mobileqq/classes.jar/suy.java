@@ -1,18 +1,23 @@
+import android.annotation.TargetApi;
+import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
+import com.tencent.biz.qqstory.base.preload.PreloadQueue;
+import java.util.List;
+
+@TargetApi(14)
 public class suy
-  extends sfo
+  implements sux
 {
-  public String a;
-  public tjs a;
+  public suy(suw paramsuw) {}
   
-  public suy(tjs paramtjs, String paramString)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Tjs = paramtjs;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String toString()
-  {
-    return "UpdateMsgTabCoverEvent{, groupId=" + this.jdField_a_of_type_Tjs + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    int i = paramInt + 1;
+    if (i < this.a.jdField_a_of_type_JavaUtilList.size())
+    {
+      PreloadQueue localPreloadQueue = (PreloadQueue)this.a.jdField_a_of_type_JavaUtilList.get(i);
+      veg.b("Q.qqstory.download.preload.PreloadDownloaderManager", "queue " + paramInt + " download completed , turn to " + localPreloadQueue.getId());
+      this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a(localPreloadQueue);
+    }
   }
 }
 

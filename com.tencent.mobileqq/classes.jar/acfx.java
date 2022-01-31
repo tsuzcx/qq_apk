@@ -1,35 +1,54 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class acfx
-  implements baqd
+  extends ajxl
 {
-  public acfx(VisitorsActivity paramVisitorsActivity, String paramString) {}
+  public acfx(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void a()
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app.getCurrentAccountUin(), "thumbup", "click_getit", "", 1, 0, 0, "", this.jdField_a_of_type_JavaLangString, "");
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity, QQBrowserActivity.class);
-    localIntent.putExtra("fragmentStyle", 3);
-    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/dbzan.html?_nav_alpha=0");
-    localIntent.putExtra("isTransparentTitle", true);
-    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-    this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.startActivity(localIntent);
+    if (this.a.jdField_a_of_type_Aiqd == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!paramBoolean1);
+      this.a.jdField_a_of_type_JavaUtilMap = asfb.a().a(this.a.app, this.a.jdField_a_of_type_JavaUtilList);
+    } while (this.a.jdField_a_of_type_JavaUtilMap == null);
+    this.a.jdField_a_of_type_Aiqd.a(this.a.jdField_a_of_type_JavaUtilMap);
+    this.a.jdField_a_of_type_Aiqd.notifyDataSetChanged();
+    this.a.b();
   }
   
-  public void b()
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VisitorsActivity", 2, "ZanDoubleDialog: onRightClick: ");
+    if (this.a.jdField_a_of_type_Aiqd == null) {
+      return;
     }
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app.getCurrentAccountUin(), "thumbup", "click_pay", "", 1, 0, 0, "", this.jdField_a_of_type_JavaLangString, "");
-    baoz.a(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity, "mvip.n.a.dbzan_dbzan", "CJCLUBT", 3, false, true);
-    VisitorsActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity).set(true);
+    if ((paramBoolean) && (paramMap != null))
+    {
+      Iterator localIterator = paramMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        Integer localInteger = (Integer)paramMap.get(str);
+        if (localInteger != null) {
+          this.a.jdField_a_of_type_JavaUtilMap.put(str, localInteger);
+        }
+      }
+      this.a.jdField_a_of_type_Aiqd.a(this.a.jdField_a_of_type_JavaUtilMap);
+      this.a.jdField_a_of_type_Aiqd.notifyDataSetChanged();
+      this.a.b();
+      return;
+    }
+    this.a.jdField_a_of_type_Aiqd.notifyDataSetChanged();
+    this.a.b();
+    bcpw.a(this.a.app.getApp(), 1, this.a.getString(2131720538), 0).b(this.a.getTitleBarHeight());
   }
 }
 

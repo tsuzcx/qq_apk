@@ -1,180 +1,79 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.graphics.Color;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.VideoColumnSubscribeHandler.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.QueryKdVideoColumnReq;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.ReqBody;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.SubscribeVideoColumnReq;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class npd
+  extends ajtd
 {
-  private static String a(String paramString)
+  public static final String a = npd.class.getSimpleName();
+  
+  public npd(AppInterface paramAppInterface)
   {
-    String str = "0";
-    try
+    super(paramAppInterface);
+  }
+  
+  private void b(int paramInt)
+  {
+    oidb_0xd4b.ReqBody localReqBody = new oidb_0xd4b.ReqBody();
+    localReqBody.msg_subscribe_video_column_req.uint32_video_column_id.set(paramInt);
+    localReqBody.msg_query_kd_video_column_req.uint32_query_sub_status.set(1);
+    super.sendPbReq(super.makeOIDBPkg("OidbSvc.0xd4b", 3403, 1, localReqBody.toByteArray()));
+  }
+  
+  public void a(int paramInt)
+  {
+    ThreadManager.excute(new VideoColumnSubscribeHandler.1(this, paramInt), 16, null, true);
+  }
+  
+  protected Class<? extends ajtg> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        str = String.format("%.3f", new Object[] { Float.valueOf((float)Long.parseLong(paramString) * 1.0F / 1048576.0F) });
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 2, "onReceive() isSuccess = " + bool);
       }
-      return str;
-    }
-    catch (Exception paramString) {}
-    return "0";
-  }
-  
-  public static void a(Context paramContext, DialogInterface.OnClickListener paramOnClickListener, SpannableStringBuilder paramSpannableStringBuilder, String paramString1, String paramString2, String paramString3)
-  {
-    bafb localbafb = new bafb(paramContext, 2131690181);
-    localbafb.setContentView(2131493323);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localbafb.getMessageTextView().getLayoutParams();
-    localLayoutParams.leftMargin = aciy.a(30.0F, paramContext.getResources());
-    localLayoutParams.rightMargin = aciy.a(30.0F, paramContext.getResources());
-    localLayoutParams.width = -1;
-    localbafb.getMessageTextView().setLayoutParams(localLayoutParams);
-    localbafb.setMessage(paramSpannableStringBuilder);
-    localbafb.setTitle(paramString1);
-    localbafb.setPositiveButton(paramString2, new npf(paramOnClickListener));
-    localbafb.setNegativeButton(paramString3, new npg());
-    localbafb.show();
-  }
-  
-  public static void a(Context paramContext, AdData paramAdData, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if ((paramAdData == null) || (paramAdData.a == null)) {
-      return;
-    }
-    bafb localbafb = new bafb(paramContext, 2131690181);
-    localbafb.setContentView(2131493323);
-    paramContext = ajjy.a(2131647064);
-    if (!TextUtils.isEmpty(paramAdData.a.t)) {
-      paramContext = paramAdData.a.t;
-    }
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramContext);
-    String str3 = ajjy.a(2131647060);
-    String str4 = "#E06F00";
-    String str2 = str4;
-    String str1 = str3;
-    if (!TextUtils.isEmpty(paramAdData.a.u))
-    {
-      str2 = str4;
-      str1 = str3;
-      if (!TextUtils.isEmpty(paramAdData.a.v))
+      if (bool)
       {
-        str1 = paramAdData.a.u;
-        str2 = paramAdData.a.v;
-      }
-    }
-    if (paramContext.contains(str1))
-    {
-      int i = paramContext.indexOf(str1);
-      int j = str1.length();
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor(str2)), i, j + i, 33);
-    }
-    localbafb.setMessage(localSpannableStringBuilder);
-    paramContext = ajjy.a(2131647138);
-    if (!TextUtils.isEmpty(paramAdData.a.w)) {
-      paramContext = paramAdData.a.w;
-    }
-    localbafb.setTitle(paramContext);
-    localbafb.setPositiveButton(ajjy.a(2131647279), new npe(paramOnClickListener));
-    localbafb.show();
-  }
-  
-  public static void a(Context paramContext, AdData paramAdData, boolean paramBoolean1, boolean paramBoolean2, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if ((paramAdData == null) || (paramAdData.a == null)) {
-      return;
-    }
-    String str1;
-    SpannableStringBuilder localSpannableStringBuilder;
-    String str2;
-    if (!paramBoolean1)
-    {
-      str1 = ajjy.a(2131647154);
-      if (!a(paramAdData.a.q).equals("0")) {
-        str1 = String.format(ajjy.a(2131647023), new Object[] { a(paramAdData.a.q) });
-      }
-      if (!TextUtils.isEmpty(paramAdData.a.s)) {
-        str1 = paramAdData.a.s;
-      }
-      localSpannableStringBuilder = new SpannableStringBuilder(str1);
-      if (!paramBoolean2)
-      {
-        String str4 = ajjy.a(2131647281);
-        String str5 = "#E06F00";
-        String str3 = str5;
-        str2 = str4;
-        if (!TextUtils.isEmpty(paramAdData.a.u))
+        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+        try
         {
-          str3 = str5;
-          str2 = str4;
-          if (!TextUtils.isEmpty(paramAdData.a.v))
+          paramToServiceMsg.mergeFrom((byte[])paramObject);
+          if (paramToServiceMsg.uint32_result.has())
           {
-            str2 = paramAdData.a.u;
-            str3 = paramAdData.a.v;
+            if (QLog.isColorLevel()) {
+              QLog.d(a, 2, "onReceive() pkg.uint32_result = " + paramToServiceMsg.uint32_result.get());
+            }
+          }
+          else if (QLog.isColorLevel())
+          {
+            QLog.d(a, 2, "onReceive() pkg.uint32_result is null ");
+            return;
           }
         }
-        if (str1.contains(str2))
+        catch (InvalidProtocolBufferMicroException paramToServiceMsg)
         {
-          int i = str1.indexOf(str2);
-          int j = str2.length();
-          localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor(str3)), i, j + i, 33);
+          if (QLog.isColorLevel()) {
+            QLog.d(a, 2, "onReceive() exception = " + paramToServiceMsg.getMessage());
+          }
         }
       }
-      str1 = ajjy.a(2131647278);
-      if (paramBoolean2) {
-        str1 = ajjy.a(2131647249);
-      }
-      if (TextUtils.isEmpty(paramAdData.a.w)) {
-        break label363;
-      }
-      str1 = paramAdData.a.w;
+      return;
     }
-    label363:
-    for (;;)
-    {
-      str2 = ajjy.a(2131646940);
-      if (bady.a(BaseApplicationImpl.getContext(), paramAdData.a.b)) {
-        str2 = ajjy.a(2131647085);
-      }
-      if (paramBoolean2) {}
-      for (paramAdData = ajjy.a(2131647209);; paramAdData = ajjy.a(2131646914))
-      {
-        a(paramContext, paramOnClickListener, localSpannableStringBuilder, str1, str2, paramAdData);
-        return;
-        str1 = ajjy.a(2131647132);
-        if (TextUtils.isEmpty(paramAdData.a.t)) {
-          break;
-        }
-        str1 = paramAdData.a.t;
-        break;
-      }
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(ajjy.a(2131647024));
-    String str2 = ajjy.a(2131647182);
-    String str1 = ajjy.a(2131646939);
-    if (bady.a(BaseApplicationImpl.getContext(), paramString)) {
-      str1 = ajjy.a(2131647218);
-    }
-    a(paramContext, paramOnClickListener, localSpannableStringBuilder, str2, str1, ajjy.a(2131647332));
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(String.format(ajjy.a(2131647196), new Object[] { a(paramString1) }));
-    String str = ajjy.a(2131647101);
-    paramString1 = ajjy.a(2131647345);
-    if (bady.a(BaseApplicationImpl.getContext(), paramString2)) {
-      paramString1 = ajjy.a(2131647313);
-    }
-    a(paramContext, paramOnClickListener, localSpannableStringBuilder, str, paramString1, ajjy.a(2131647071));
   }
 }
 

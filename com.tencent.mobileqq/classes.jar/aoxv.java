@@ -1,117 +1,57 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import java.util.UUID;
 
-public class aoxv
-  extends aoxt
-  implements View.OnClickListener, aovm
+class aoxv
+  implements azuy
 {
-  protected long a;
-  protected boolean a;
+  aoxv(aoxu paramaoxu) {}
   
-  public aoxv(aovk paramaovk, Activity paramActivity)
+  public void a(UUID paramUUID, boolean paramBoolean, int paramInt, azux paramazux)
   {
-    super(paramaovk, paramActivity);
-  }
-  
-  public void a()
-  {
-    super.a();
-    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131627219);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(str, false, this);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(false);
-    if ((!TVK_SDKMgr.isInstalled(BaseApplicationImpl.getContext())) || (this.jdField_a_of_type_Aovk.c()))
+    if (aoxu.a(this.a))
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(true);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(false);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("PreviewVideoSimpleFilePresenter", 4, "executeOnNetWorkThread setCanPreview false-------------");
-      }
-    }
-    if ((this.jdField_a_of_type_Aovk.a(this)) && (QLog.isColorLevel())) {
-      QLog.d("PreviewVideoSimpleFilePresenter", 2, "requestWhitelist 本地信息为空!!!!");
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreviewVideoSimpleFilePresenter", 2, "clickPlay url = " + paramString1 + ", cookie = " + paramString2);
-    }
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, VipVideoPlayActivity.class);
-      localIntent.putExtra("vtype", 2);
-      localIntent.putExtra("video_url", paramString1);
-      localIntent.putExtra("video_url_cookies", "FTN5K=" + paramString2);
-      localIntent.putExtra("screenOrientation", "portrait");
-      localIntent.putExtra("report_bus_type", "bus_type_troop_file_cloud_play");
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 100);
-    }
-    this.jdField_a_of_type_Aovk.a(3);
-  }
-  
-  public void aD_()
-  {
-    if (badq.h(BaseApplicationImpl.getContext())) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(BaseApplicationImpl.getContext().getString(2131627220));
-    }
-    while (this.jdField_a_of_type_Aovk.i())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(false);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(false);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(BaseApplicationImpl.getContext().getString(2131627222));
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(true);
-  }
-  
-  public void aE_()
-  {
-    if (this.jdField_a_of_type_Boolean) {
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone but has been stopped WorkerId[" + aoxu.a(this.a) + "] filename " + aoxu.a(this.a));
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(false);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PreviewVideoSimpleFilePresenter", 4, "executeOnNetWorkThread setCanPreview false-------------");
-    }
-    this.jdField_a_of_type_Aovk.a(4);
-  }
-  
-  public void c() {}
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+    if (!paramBoolean)
     {
-    }
-    do
-    {
-      return;
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 500L) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("PreviewVideoSimpleFilePresenter", 2, "click online preview video too fast");
-    return;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Aovk.c())
-    {
-      bbmy.a(BaseApplicationImpl.getContext(), 1, ajjy.a(2131642631), 0).b(this.jdField_a_of_type_Aovk.l());
+      paramBoolean = paramazux.d();
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone failed canResume[" + paramBoolean + "] errCode[" + paramInt + "] WorkerId[" + aoxu.a(this.a) + "] filename " + aoxu.a(this.a));
+      aoxu.a(this.a).a(aowt.a(aoxu.a(this.a), false), paramBoolean);
       return;
     }
-    this.jdField_a_of_type_Aovk.a(this);
+    paramUUID = paramazux.c();
+    String str1 = paramazux.d();
+    paramInt = paramazux.a();
+    String str2 = paramazux.a();
+    aoxu.a(this.a, paramazux.b());
+    int i = paramazux.b();
+    int j = paramazux.c();
+    int k = paramazux.d();
+    aoxu.a(this.a).putString("_m_ForwardMd5", paramUUID);
+    aoxu.a(this.a).putString("_m_ForwardSha", str1);
+    aoxu.a(this.a).putString("_m_ForwardBusType", String.valueOf(paramInt));
+    aoxu.a(this.a).putString("_m_ForwardUuid", str2);
+    aoxu.a(this.a).putString("_m_ForwardSize", String.valueOf(aoxu.a(this.a)));
+    if (i != 0) {
+      aoxu.a(this.a).putString("_m_ForwardImgWidth", String.valueOf(i));
+    }
+    if (j != 0) {
+      aoxu.a(this.a).putString("_m_ForwardImgHeight", String.valueOf(j));
+    }
+    if (k != 0) {
+      aoxu.a(this.a).putString("_m_ForwardDuration", String.valueOf(k));
+    }
+    aoxu.a(this.a).putString("_m_ForwardFileType", String.valueOf(3));
+    if (aowt.a(this.a.a) == null)
+    {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone mApp is null WorkerId[" + aoxu.a(this.a) + "] filename " + aoxu.a(this.a));
+      aoxu.a(this.a).a(aowt.a(aoxu.a(this.a), false), false);
+      return;
+    }
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone woll call sendFeeds WorkerId[" + aoxu.a(this.a) + "] filename " + aoxu.a(this.a));
+    aowt.a(aowt.a(this.a.a), aoxu.b(this.a), paramInt, str2, aoxu.a(this.a), 0, i, j, k, false, aoxu.a(this.a), aoxu.a(this.a));
   }
 }
 

@@ -7,28 +7,28 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-import bhhl;
-import bhpp;
-import bhqt;
-import bhqw;
-import birb;
+import bjcd;
+import bjkh;
+import bjll;
+import bjlo;
+import bkhw;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.capture.music.humrecognition.view.BgmRecognitionProviderView;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import vms;
+import vzo;
 
 public class ProviderViewEditContainer
   extends FrameLayout
 {
   private int jdField_a_of_type_Int = 100;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private bhhl jdField_a_of_type_Bhhl;
-  private bhpp jdField_a_of_type_Bhpp;
-  private bhqt jdField_a_of_type_Bhqt;
-  private bhqw jdField_a_of_type_Bhqw;
+  private bjcd jdField_a_of_type_Bjcd;
+  private bjkh jdField_a_of_type_Bjkh;
+  private bjll jdField_a_of_type_Bjll;
+  private bjlo jdField_a_of_type_Bjlo;
   private ProviderView jdField_a_of_type_DovComQqImCaptureViewProviderView;
   private HashMap<Integer, ProviderView> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private int[] jdField_a_of_type_ArrayOfInt = { 103, 109, 111, 113 };
@@ -91,16 +91,16 @@ public class ProviderViewEditContainer
         if (!((StaticStickerProviderView)localObject1).d())
         {
           ((StaticStickerProviderView)localObject1).a(null);
-          ((StaticStickerProviderView)localObject1).setOnFaceSelectedListener(this.jdField_a_of_type_Bhhl);
+          ((StaticStickerProviderView)localObject1).setOnFaceSelectedListener(this.jdField_a_of_type_Bjcd);
         }
         ((StaticStickerProviderView)localObject1).setCaptureScene(this.b);
         ((StaticStickerProviderView)localObject1).i();
         ((StaticStickerProviderView)localObject1).c();
         if ((paramVarArgs != null) && (paramVarArgs.length == 1)) {
-          ((StaticStickerProviderView)localObject1).a((birb)paramVarArgs[0]);
+          ((StaticStickerProviderView)localObject1).a((bkhw)paramVarArgs[0]);
         }
         paramVarArgs = getLayoutParams();
-        paramInt = vms.a(getContext(), 206.0F);
+        paramInt = vzo.a(getContext(), 206.0F);
         if (paramVarArgs.height != paramInt)
         {
           paramVarArgs.height = paramInt;
@@ -113,8 +113,8 @@ public class ProviderViewEditContainer
         {
           ((MusicFragmentProviderView)localObject1).d(250);
           ((MusicFragmentProviderView)localObject1).a(null);
-          if (this.jdField_a_of_type_Bhpp != null) {
-            ((MusicFragmentProviderView)localObject1).setProviderViewListener(this.jdField_a_of_type_Bhpp);
+          if (this.jdField_a_of_type_Bjkh != null) {
+            ((MusicFragmentProviderView)localObject1).setProviderViewListener(this.jdField_a_of_type_Bjkh);
           }
         }
         ((MusicFragmentProviderView)localObject1).setCaptureScene(this.b);
@@ -122,7 +122,7 @@ public class ProviderViewEditContainer
           ((MusicFragmentProviderView)localObject1).setMusicProviderView((MusicItemInfo)paramVarArgs[0]);
         }
         paramVarArgs = getLayoutParams();
-        paramInt = vms.a(getContext(), 250.0F);
+        paramInt = vzo.a(getContext(), 250.0F);
         if (paramVarArgs.height != paramInt)
         {
           paramVarArgs.height = paramInt;
@@ -141,14 +141,14 @@ public class ProviderViewEditContainer
         {
           paramVarArgs.d(250);
           paramVarArgs.a(null);
-          if (this.jdField_a_of_type_Bhpp != null) {
-            paramVarArgs.setProviderViewListener(this.jdField_a_of_type_Bhpp);
+          if (this.jdField_a_of_type_Bjkh != null) {
+            paramVarArgs.setProviderViewListener(this.jdField_a_of_type_Bjkh);
           }
         }
         paramVarArgs.setCaptureScene(this.b);
         paramVarArgs.c();
         paramVarArgs = getLayoutParams();
-        paramInt = vms.a(getContext(), 250.0F);
+        paramInt = vzo.a(getContext(), 250.0F);
         if (paramVarArgs.height != paramInt)
         {
           paramVarArgs.height = paramInt;
@@ -161,7 +161,7 @@ public class ProviderViewEditContainer
       if (!((VideoSegmentPickerProviderView)localObject1).d())
       {
         ((VideoSegmentPickerProviderView)localObject1).setCaptureScene(this.b);
-        ((VideoSegmentPickerProviderView)localObject1).setListener(this.jdField_a_of_type_Bhqw);
+        ((VideoSegmentPickerProviderView)localObject1).setListener(this.jdField_a_of_type_Bjlo);
         ((VideoSegmentPickerProviderView)localObject1).a(null);
       }
       if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0)) {
@@ -171,14 +171,14 @@ public class ProviderViewEditContainer
     for (paramInt = ((VideoSegmentPickerProviderView)localObject1).b() + this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();; paramInt = 0)
     {
       localObject2 = getLayoutParams();
-      int i = vms.a(getContext(), 95.0F);
+      int i = vzo.a(getContext(), 95.0F);
       if (paramInt > 0) {}
       for (((ViewGroup.LayoutParams)localObject2).height = paramInt;; ((ViewGroup.LayoutParams)localObject2).height = i)
       {
         setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof birb)))
+        if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof bkhw)))
         {
-          ((VideoSegmentPickerProviderView)localObject1).setItems((birb)paramVarArgs[0]);
+          ((VideoSegmentPickerProviderView)localObject1).setItems((bkhw)paramVarArgs[0]);
           ((VideoSegmentPickerProviderView)localObject1).c();
         }
         this.jdField_a_of_type_Int = 111;
@@ -188,14 +188,14 @@ public class ProviderViewEditContainer
       if (!((VideoCoverPickerProviderView)localObject1).d())
       {
         ((VideoCoverPickerProviderView)localObject1).setCaptureScene(this.b);
-        ((VideoCoverPickerProviderView)localObject1).setListener(this.jdField_a_of_type_Bhqt);
+        ((VideoCoverPickerProviderView)localObject1).setListener(this.jdField_a_of_type_Bjll);
         ((VideoCoverPickerProviderView)localObject1).a(null);
       }
       if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof Long))) {
         ((VideoCoverPickerProviderView)localObject1).setCoverFrameTime(((Long)paramVarArgs[0]).longValue());
       }
       paramVarArgs = getLayoutParams();
-      i = vms.a(getContext(), 185.0F);
+      i = vzo.a(getContext(), 185.0F);
       paramInt = i;
       if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
         paramInt = i + this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
@@ -253,7 +253,7 @@ public class ProviderViewEditContainer
     if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView != null)
     {
       if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_Int == 111)) {
-        setBackgroundColor(2131099748);
+        setBackgroundColor(2131165285);
       }
       this.jdField_a_of_type_DovComQqImCaptureViewProviderView.d();
       this.jdField_a_of_type_DovComQqImCaptureViewProviderView.setVisibility(8);
@@ -318,24 +318,24 @@ public class ProviderViewEditContainer
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
   }
   
-  public void setProviderViewListener(bhpp parambhpp)
+  public void setProviderViewListener(bjkh parambjkh)
   {
-    this.jdField_a_of_type_Bhpp = parambhpp;
+    this.jdField_a_of_type_Bjkh = parambjkh;
   }
   
-  public void setStickerListener(bhhl parambhhl)
+  public void setStickerListener(bjcd parambjcd)
   {
-    this.jdField_a_of_type_Bhhl = parambhhl;
+    this.jdField_a_of_type_Bjcd = parambjcd;
   }
   
-  public void setVideoCoverPickerListener(bhqt parambhqt)
+  public void setVideoCoverPickerListener(bjll parambjll)
   {
-    this.jdField_a_of_type_Bhqt = parambhqt;
+    this.jdField_a_of_type_Bjll = parambjll;
   }
   
-  public void setVideoSegmentPickerListener(bhqw parambhqw)
+  public void setVideoSegmentPickerListener(bjlo parambjlo)
   {
-    this.jdField_a_of_type_Bhqw = parambhqw;
+    this.jdField_a_of_type_Bjlo = parambjlo;
   }
 }
 

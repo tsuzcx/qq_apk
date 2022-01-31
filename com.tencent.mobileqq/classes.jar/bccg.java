@@ -1,30 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.appcommon.now.download.local.DownloadNativeApi.1;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.ui.WebViewTopTabView;
 
-public class bccg
-  implements DialogInterface.OnClickListener
+class bccg
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public bccg(DownloadNativeApi.1 param1) {}
+  bccg(bccf parambccf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    try
+    paramInt = this.a.a(paramRadioGroup);
+    if (((QQBrowserActivity)this.a.a.a).b != paramInt)
     {
-      paramDialogInterface.dismiss();
-      label6:
-      bcce.a(this.a.this$0).onDownloadCancel(this.a.a);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      break label6;
+      paramRadioGroup = QQBrowserActivity.a(paramInt, (QQBrowserActivity)this.a.a.a);
+      ((QQBrowserActivity)this.a.a.a).b = paramInt;
+      if ((paramRadioGroup.a != null) && (paramRadioGroup.a.a != null)) {
+        paramRadioGroup.a.a.setSelectedTab(paramInt);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bccg
  * JD-Core Version:    0.7.0.1
  */

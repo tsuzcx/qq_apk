@@ -1,12 +1,33 @@
-public class vnc
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+
+final class vnc
+  implements Animator.AnimatorListener
 {
-  public long a;
-  public long b;
+  vnc(vnd paramvnd, ValueAnimator paramValueAnimator) {}
   
-  public vnc(long paramLong1, long paramLong2)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
+    if (this.jdField_a_of_type_Vnd != null) {
+      this.jdField_a_of_type_Vnd.d(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Vnd != null) {
+      this.jdField_a_of_type_Vnd.c(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Vnd != null) {
+      this.jdField_a_of_type_Vnd.b(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    }
   }
 }
 

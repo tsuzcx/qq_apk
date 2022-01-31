@@ -1,33 +1,19 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask;
-
 public class bdhl
-  extends Handler
+  extends bdhn
 {
-  public bdhl(Looper paramLooper)
+  public static bdhl a()
   {
-    super(paramLooper);
+    return new bdhl();
   }
   
-  public void handleMessage(Message paramMessage)
+  public String a()
   {
-    bdhj localbdhj = (bdhj)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      AsyncTask.b(localbdhj.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask, localbdhj.jdField_a_of_type_ArrayOfJavaLangObject[0]);
-      return;
-    }
-    localbdhj.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask.a(localbdhj.jdField_a_of_type_ArrayOfJavaLangObject);
+    return b() + "|" + c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdhl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,35 @@
-import android.graphics.Bitmap;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.widget.FrameLayout.LayoutParams;
 
-public abstract class qxr
+public abstract interface qxr
 {
-  public static int a;
-  public float a;
-  public View a;
-  public BaseData a;
-  protected qxt a;
-  public float b = 14.0F;
-  public int b;
-  public int c = 16;
-  public int d = 18;
+  public abstract long a();
   
-  static
-  {
-    jdField_a_of_type_Int = 31;
-  }
+  public abstract qxs a(int paramInt);
   
-  public qxr() {}
+  public abstract void a(int paramInt);
   
-  public qxr(View paramView, BaseData paramBaseData)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void a() {}
+  public abstract void a(View paramView, int paramInt, FrameLayout.LayoutParams paramLayoutParams);
   
-  public abstract void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean);
+  public abstract void a(qxp<qxs> paramqxp);
   
-  public void a(String paramString, Bitmap paramBitmap) {}
+  public abstract void a(boolean paramBoolean);
   
-  public void a(qxt paramqxt)
-  {
-    this.jdField_a_of_type_Qxt = paramqxt;
-  }
+  public abstract void b();
   
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData2;
-    a(paramBaseData1, paramBaseData2, paramBoolean);
-  }
+  public abstract void b(int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

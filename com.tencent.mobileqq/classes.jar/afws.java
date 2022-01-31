@@ -1,32 +1,14 @@
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity.10.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 
 public class afws
-  extends ajjh
+  implements agby
 {
-  public afws(BindNumberActivity paramBindNumberActivity) {}
+  public afws(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void onGetFriendsHasBindPhone(boolean paramBoolean, int paramInt, List<String> paramList)
+  public void a(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      if (paramList != null) {
-        break label95;
-      }
-    }
-    label95:
-    for (Object localObject = "null";; localObject = Integer.valueOf(paramList.size()))
-    {
-      QLog.i("BindNumberActivity", 2, String.format("onGetFriendsHasBindPhone [%s, %s, %s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), localObject }));
-      if (paramBoolean) {
-        this.a.runOnUiThread(new BindNumberActivity.10.1(this, paramInt, paramList));
-      }
-      this.a.app.removeObserver(this.a.a);
-      this.a.a = null;
-      return;
-    }
+    this.a.a.a(paramMotionEvent);
   }
 }
 

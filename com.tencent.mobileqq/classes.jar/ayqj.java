@@ -1,674 +1,777 @@
-import com.tencent.mobileqq.activity.TroopNotificationCache;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.ConversationInfo;
-import com.tencent.mobileqq.data.MessageForGrayTips;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.troop.data.TroopMessageManager.1;
-import com.tencent.mobileqq.troop.data.TroopTipsEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.RoundRectBitmap;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.image.URLDrawableHandler;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
 
 public class ayqj
-  extends akab
+  extends ayog
 {
-  public static long b;
-  public int a;
-  public long a;
-  private HashMap<String, HashSet<String>> a;
-  public boolean a;
-  public int b;
-  public int c;
+  protected BaseApplicationImpl a;
   
-  public ayqj(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
+  public ayqj(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    super(paramQQAppInterface, paramQQMessageFacade);
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.a = paramBaseApplicationImpl;
   }
   
-  public int a(int paramInt, ConversationInfo paramConversationInfo)
+  public static Bitmap a(Drawable paramDrawable)
   {
-    if (akaq.a(paramConversationInfo) > 0)
+    if ((paramDrawable instanceof BitmapDrawable)) {
+      return ((BitmapDrawable)paramDrawable).getBitmap();
+    }
+    Bitmap localBitmap = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_4444);
+    Canvas localCanvas = new Canvas(localBitmap);
+    paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+    paramDrawable.draw(localCanvas);
+    return localBitmap;
+  }
+  
+  private RoundRectBitmap a(Bitmap paramBitmap)
+  {
+    for (;;)
     {
-      HotChatManager localHotChatManager = (HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60);
-      if (paramInt == 2)
+      float f3;
+      int j;
+      int n;
+      int k;
+      int i1;
+      try
       {
-        if ((!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramConversationInfo.uin, paramConversationInfo.type)) && (this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a().b(paramConversationInfo.uin, paramConversationInfo.type)) && (!localHotChatManager.b(paramConversationInfo.uin))) {
-          return akaq.a(paramConversationInfo);
+        f3 = this.a.getResources().getDisplayMetrics().density;
+        int m = this.a.getResources().getDisplayMetrics().densityDpi;
+        j = apuw.c;
+        i = apuw.jdField_a_of_type_Int;
+        n = paramBitmap.getWidth();
+        k = paramBitmap.getHeight();
+        Paint localPaint = new Paint(1);
+        localPaint.setColor(-16777216);
+        i1 = apuw.e;
+        int i2 = apuw.f;
+        if ((n >= i2) && (k >= i2)) {
+          break label339;
         }
-        return 0;
+        if (n < k)
+        {
+          k = (int)(j / n * k + 0.5F);
+          if (k <= i) {
+            break label310;
+          }
+          Bitmap localBitmap = Bitmap.createBitmap(j, i, aywk.b);
+          localBitmap.setDensity(m);
+          new Canvas(localBitmap).drawBitmap(paramBitmap, null, new Rect(0, 0, j, i), localPaint);
+          return new RoundRectBitmap(localBitmap, 14.0F * f3);
+        }
+        k = (int)(j / k * n + 0.5F);
+        if (k <= i) {
+          break label332;
+        }
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        float f1;
+        float f2;
+        return new RoundRectBitmap(paramBitmap, 8.0F);
+      }
+      if (n > k)
+      {
+        f1 = i / n;
+        if (n > k)
+        {
+          f2 = j / k;
+          f1 = Math.max(f1, f2);
+          j = (int)(n * f1 + 0.5F);
+          i = (int)(f1 * k + 0.5F);
+        }
+      }
+      else
+      {
+        f1 = i / k;
+        continue;
+      }
+      f2 = j / n;
+      continue;
+      label310:
+      int i = k;
+      continue;
+      for (;;)
+      {
+        k = i;
+        i = j;
+        j = k;
+        break;
+        label332:
+        i = k;
+      }
+      label339:
+      if ((n < i1) && (k < i1))
+      {
+        j = (int)(n * f3 + 0.5F);
+        i = (int)(k * f3 + 0.5F);
       }
     }
-    return super.a(paramInt, paramConversationInfo);
   }
   
-  public MessageForGrayTips a(QQAppInterface paramQQAppInterface, String paramString, TroopTipsEntity paramTroopTipsEntity)
+  /* Error */
+  private Object b(DownloadParams paramDownloadParams, ayqk paramayqk)
   {
-    int n = 0;
-    if ((paramString == null) || (paramTroopTipsEntity == null))
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_3
+    //   2: aconst_null
+    //   3: astore 8
+    //   5: aconst_null
+    //   6: astore 7
+    //   8: aload_2
+    //   9: getfield 148	ayqk:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   12: astore 10
+    //   14: aload 10
+    //   16: ifnonnull +8 -> 24
+    //   19: aload 7
+    //   21: astore_2
+    //   22: aload_2
+    //   23: areturn
+    //   24: new 150	java/io/File
+    //   27: dup
+    //   28: aload 10
+    //   30: invokespecial 153	java/io/File:<init>	(Ljava/lang/String;)V
+    //   33: astore 11
+    //   35: aload 11
+    //   37: invokestatic 159	com/tencent/image/GifDrawable:isGifFile	(Ljava/io/File;)Z
+    //   40: ifeq +63 -> 103
+    //   43: aload_2
+    //   44: getfield 162	ayqk:jdField_a_of_type_Boolean	Z
+    //   47: ifeq +56 -> 103
+    //   50: aload 7
+    //   52: astore_2
+    //   53: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   56: ifeq -34 -> 22
+    //   59: ldc 170
+    //   61: iconst_2
+    //   62: new 172	java/lang/StringBuilder
+    //   65: dup
+    //   66: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   69: ldc 175
+    //   71: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: aload 11
+    //   76: invokevirtual 183	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   79: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   82: ldc 185
+    //   84: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   87: aload 10
+    //   89: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   92: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   95: invokestatic 192	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   98: aconst_null
+    //   99: areturn
+    //   100: astore_1
+    //   101: aload_1
+    //   102: athrow
+    //   103: new 194	android/graphics/BitmapFactory$Options
+    //   106: dup
+    //   107: invokespecial 195	android/graphics/BitmapFactory$Options:<init>	()V
+    //   110: astore 12
+    //   112: aload 12
+    //   114: getstatic 197	aywk:a	Landroid/graphics/Bitmap$Config;
+    //   117: putfield 200	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
+    //   120: aload 12
+    //   122: sipush 160
+    //   125: putfield 203	android/graphics/BitmapFactory$Options:inDensity	I
+    //   128: aload 12
+    //   130: sipush 160
+    //   133: putfield 206	android/graphics/BitmapFactory$Options:inTargetDensity	I
+    //   136: aload 12
+    //   138: sipush 160
+    //   141: putfield 209	android/graphics/BitmapFactory$Options:inScreenDensity	I
+    //   144: aload_1
+    //   145: aload 10
+    //   147: invokestatic 215	com/tencent/image/JpegExifReader:readOrientation	(Ljava/lang/String;)I
+    //   150: putfield 220	com/tencent/image/DownloadParams:outOrientation	I
+    //   153: aload 12
+    //   155: iconst_1
+    //   156: putfield 223	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   159: new 225	java/io/FileInputStream
+    //   162: dup
+    //   163: aload 11
+    //   165: invokevirtual 183	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   168: invokespecial 226	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   171: astore 7
+    //   173: new 228	java/io/BufferedInputStream
+    //   176: dup
+    //   177: aload 7
+    //   179: invokespecial 231	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   182: astore_2
+    //   183: iconst_2
+    //   184: newarray byte
+    //   186: astore 9
+    //   188: aload_2
+    //   189: aload 9
+    //   191: invokevirtual 235	java/io/BufferedInputStream:read	([B)I
+    //   194: pop
+    //   195: aload 9
+    //   197: iconst_0
+    //   198: baload
+    //   199: bipush 66
+    //   201: if_icmpeq +77 -> 278
+    //   204: aload 9
+    //   206: iconst_1
+    //   207: baload
+    //   208: istore 4
+    //   210: iload 4
+    //   212: bipush 77
+    //   214: if_icmpeq +64 -> 278
+    //   217: aload_2
+    //   218: ifnull +7 -> 225
+    //   221: aload_2
+    //   222: invokevirtual 238	java/io/BufferedInputStream:close	()V
+    //   225: aload 7
+    //   227: ifnull +8 -> 235
+    //   230: aload 7
+    //   232: invokevirtual 239	java/io/FileInputStream:close	()V
+    //   235: aload 12
+    //   237: iconst_1
+    //   238: putfield 223	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   241: aload 11
+    //   243: invokevirtual 183	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   246: aload 12
+    //   248: invokestatic 245	com/tencent/image/SafeBitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   251: pop
+    //   252: aload 12
+    //   254: getfield 248	android/graphics/BitmapFactory$Options:outHeight	I
+    //   257: ifeq +11 -> 268
+    //   260: aload 12
+    //   262: getfield 251	android/graphics/BitmapFactory$Options:outWidth	I
+    //   265: ifne +171 -> 436
+    //   268: new 253	java/io/IOException
+    //   271: dup
+    //   272: ldc 255
+    //   274: invokespecial 256	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   277: athrow
+    //   278: aload_2
+    //   279: iconst_4
+    //   280: newarray byte
+    //   282: invokevirtual 235	java/io/BufferedInputStream:read	([B)I
+    //   285: pop
+    //   286: aload_2
+    //   287: ldc2_w 257
+    //   290: invokevirtual 262	java/io/BufferedInputStream:skip	(J)J
+    //   293: pop2
+    //   294: iconst_4
+    //   295: newarray byte
+    //   297: astore 9
+    //   299: aload_2
+    //   300: aload 9
+    //   302: invokevirtual 235	java/io/BufferedInputStream:read	([B)I
+    //   305: pop
+    //   306: aload_0
+    //   307: aload 9
+    //   309: invokevirtual 264	ayqj:a	([B)I
+    //   312: istore 4
+    //   314: iconst_4
+    //   315: newarray byte
+    //   317: astore 9
+    //   319: aload_2
+    //   320: aload 9
+    //   322: invokevirtual 235	java/io/BufferedInputStream:read	([B)I
+    //   325: pop
+    //   326: aload_0
+    //   327: aload 9
+    //   329: invokevirtual 264	ayqj:a	([B)I
+    //   332: invokestatic 268	java/lang/Math:abs	(I)I
+    //   335: istore 5
+    //   337: iload 4
+    //   339: iflt +14 -> 353
+    //   342: iload 4
+    //   344: iload 5
+    //   346: imul
+    //   347: ldc_w 269
+    //   350: if_icmple -133 -> 217
+    //   353: invokestatic 273	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   356: invokevirtual 276	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   359: ldc_w 277
+    //   362: invokevirtual 281	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   365: invokestatic 283	ayqj:a	(Landroid/graphics/drawable/Drawable;)Landroid/graphics/Bitmap;
+    //   368: astore 9
+    //   370: aload 9
+    //   372: astore_1
+    //   373: aload_2
+    //   374: ifnull +7 -> 381
+    //   377: aload_2
+    //   378: invokevirtual 238	java/io/BufferedInputStream:close	()V
+    //   381: aload_1
+    //   382: astore_2
+    //   383: aload 7
+    //   385: ifnull -363 -> 22
+    //   388: aload 7
+    //   390: invokevirtual 239	java/io/FileInputStream:close	()V
+    //   393: aload_1
+    //   394: areturn
+    //   395: aload_2
+    //   396: ifnull +7 -> 403
+    //   399: aload_2
+    //   400: invokevirtual 238	java/io/BufferedInputStream:close	()V
+    //   403: aload 7
+    //   405: ifnull -170 -> 235
+    //   408: aload 7
+    //   410: invokevirtual 239	java/io/FileInputStream:close	()V
+    //   413: goto -178 -> 235
+    //   416: aload_2
+    //   417: ifnull +7 -> 424
+    //   420: aload_2
+    //   421: invokevirtual 238	java/io/BufferedInputStream:close	()V
+    //   424: aload 7
+    //   426: ifnull +8 -> 434
+    //   429: aload 7
+    //   431: invokevirtual 239	java/io/FileInputStream:close	()V
+    //   434: aload_1
+    //   435: athrow
+    //   436: aload 12
+    //   438: aload 12
+    //   440: aload_1
+    //   441: getfield 286	com/tencent/image/DownloadParams:reqWidth	I
+    //   444: aload_1
+    //   445: getfield 289	com/tencent/image/DownloadParams:reqHeight	I
+    //   448: invokestatic 294	ayoh:b	(Landroid/graphics/BitmapFactory$Options;II)I
+    //   451: putfield 297	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   454: aload 12
+    //   456: getfield 248	android/graphics/BitmapFactory$Options:outHeight	I
+    //   459: aload 12
+    //   461: getfield 251	android/graphics/BitmapFactory$Options:outWidth	I
+    //   464: imul
+    //   465: ldc_w 298
+    //   468: if_icmple +55 -> 523
+    //   471: ldc 170
+    //   473: iconst_1
+    //   474: new 172	java/lang/StringBuilder
+    //   477: dup
+    //   478: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   481: ldc_w 300
+    //   484: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   487: aload 12
+    //   489: getfield 248	android/graphics/BitmapFactory$Options:outHeight	I
+    //   492: invokevirtual 303	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   495: ldc_w 305
+    //   498: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   501: aload 12
+    //   503: getfield 251	android/graphics/BitmapFactory$Options:outWidth	I
+    //   506: invokevirtual 303	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   509: ldc_w 307
+    //   512: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   515: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   518: invokestatic 310	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   521: aconst_null
+    //   522: areturn
+    //   523: aload 12
+    //   525: getfield 251	android/graphics/BitmapFactory$Options:outWidth	I
+    //   528: istore 4
+    //   530: aload 12
+    //   532: getfield 248	android/graphics/BitmapFactory$Options:outHeight	I
+    //   535: istore 4
+    //   537: aload 12
+    //   539: iconst_0
+    //   540: putfield 223	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   543: aconst_null
+    //   544: astore_2
+    //   545: aload 8
+    //   547: astore_1
+    //   548: iload_3
+    //   549: iconst_3
+    //   550: if_icmpgt +219 -> 769
+    //   553: aload_2
+    //   554: astore_1
+    //   555: aload 11
+    //   557: invokevirtual 183	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   560: aload 12
+    //   562: invokestatic 245	com/tencent/image/SafeBitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   565: astore_2
+    //   566: aload_2
+    //   567: ifnonnull +177 -> 744
+    //   570: aload_2
+    //   571: astore_1
+    //   572: new 64	java/lang/OutOfMemoryError
+    //   575: dup
+    //   576: new 172	java/lang/StringBuilder
+    //   579: dup
+    //   580: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   583: ldc_w 312
+    //   586: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   589: aload 10
+    //   591: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   594: ldc_w 314
+    //   597: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   600: iload_3
+    //   601: invokevirtual 303	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   604: ldc_w 316
+    //   607: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   610: aload 11
+    //   612: invokevirtual 183	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   615: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   618: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   621: invokespecial 317	java/lang/OutOfMemoryError:<init>	(Ljava/lang/String;)V
+    //   624: athrow
+    //   625: astore_2
+    //   626: aload_1
+    //   627: ifnull +7 -> 634
+    //   630: aload_1
+    //   631: invokevirtual 320	android/graphics/Bitmap:recycle	()V
+    //   634: aload_2
+    //   635: ifnull +151 -> 786
+    //   638: aload_2
+    //   639: invokevirtual 323	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   642: astore_2
+    //   643: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   646: ifeq +77 -> 723
+    //   649: ldc 170
+    //   651: iconst_2
+    //   652: new 172	java/lang/StringBuilder
+    //   655: dup
+    //   656: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   659: ldc_w 325
+    //   662: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   665: iload_3
+    //   666: invokevirtual 303	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   669: ldc_w 327
+    //   672: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   675: aload 12
+    //   677: getfield 297	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   680: invokevirtual 303	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   683: ldc_w 329
+    //   686: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   689: aload 11
+    //   691: invokevirtual 183	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   694: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   697: ldc 185
+    //   699: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   702: aload 10
+    //   704: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   707: ldc_w 331
+    //   710: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   713: aload_2
+    //   714: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   717: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   720: invokestatic 192	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   723: aload 12
+    //   725: aload 12
+    //   727: getfield 297	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   730: iconst_2
+    //   731: imul
+    //   732: putfield 297	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   735: iload_3
+    //   736: iconst_1
+    //   737: iadd
+    //   738: istore_3
+    //   739: aload_1
+    //   740: astore_2
+    //   741: goto -196 -> 545
+    //   744: aload_2
+    //   745: astore_1
+    //   746: getstatic 336	android/os/Build$VERSION:SDK_INT	I
+    //   749: bipush 11
+    //   751: if_icmplt +16 -> 767
+    //   754: aload_2
+    //   755: astore_1
+    //   756: aload_2
+    //   757: invokestatic 342	com/tencent/image/SliceBitmap:needSlice	(Landroid/graphics/Bitmap;)Z
+    //   760: istore 6
+    //   762: iload 6
+    //   764: ifeq +3 -> 767
+    //   767: aload_2
+    //   768: astore_1
+    //   769: aload_1
+    //   770: astore_2
+    //   771: aload_1
+    //   772: ifnonnull -750 -> 22
+    //   775: new 253	java/io/IOException
+    //   778: dup
+    //   779: ldc_w 344
+    //   782: invokespecial 256	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   785: athrow
+    //   786: aconst_null
+    //   787: astore_2
+    //   788: goto -145 -> 643
+    //   791: astore_1
+    //   792: aconst_null
+    //   793: astore_2
+    //   794: goto -378 -> 416
+    //   797: astore_1
+    //   798: goto -382 -> 416
+    //   801: astore_2
+    //   802: aconst_null
+    //   803: astore_2
+    //   804: goto -409 -> 395
+    //   807: astore 9
+    //   809: goto -414 -> 395
+    //   812: astore_2
+    //   813: aconst_null
+    //   814: astore_2
+    //   815: aconst_null
+    //   816: astore 7
+    //   818: goto -423 -> 395
+    //   821: astore_1
+    //   822: aconst_null
+    //   823: astore 7
+    //   825: aconst_null
+    //   826: astore_2
+    //   827: goto -411 -> 416
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	830	0	this	ayqj
+    //   0	830	1	paramDownloadParams	DownloadParams
+    //   0	830	2	paramayqk	ayqk
+    //   1	738	3	i	int
+    //   208	328	4	j	int
+    //   335	12	5	k	int
+    //   760	3	6	bool	boolean
+    //   6	818	7	localFileInputStream	java.io.FileInputStream
+    //   3	543	8	localObject1	Object
+    //   186	185	9	localObject2	Object
+    //   807	1	9	localException	Exception
+    //   12	691	10	str	String
+    //   33	657	11	localFile	File
+    //   110	616	12	localOptions	BitmapFactory.Options
+    // Exception table:
+    //   from	to	target	type
+    //   35	50	100	java/lang/Exception
+    //   53	98	100	java/lang/Exception
+    //   103	159	100	java/lang/Exception
+    //   221	225	100	java/lang/Exception
+    //   230	235	100	java/lang/Exception
+    //   235	268	100	java/lang/Exception
+    //   268	278	100	java/lang/Exception
+    //   377	381	100	java/lang/Exception
+    //   388	393	100	java/lang/Exception
+    //   399	403	100	java/lang/Exception
+    //   408	413	100	java/lang/Exception
+    //   420	424	100	java/lang/Exception
+    //   429	434	100	java/lang/Exception
+    //   434	436	100	java/lang/Exception
+    //   436	521	100	java/lang/Exception
+    //   523	543	100	java/lang/Exception
+    //   555	566	100	java/lang/Exception
+    //   572	625	100	java/lang/Exception
+    //   630	634	100	java/lang/Exception
+    //   638	643	100	java/lang/Exception
+    //   643	723	100	java/lang/Exception
+    //   723	735	100	java/lang/Exception
+    //   746	754	100	java/lang/Exception
+    //   756	762	100	java/lang/Exception
+    //   775	786	100	java/lang/Exception
+    //   555	566	625	java/lang/OutOfMemoryError
+    //   572	625	625	java/lang/OutOfMemoryError
+    //   746	754	625	java/lang/OutOfMemoryError
+    //   756	762	625	java/lang/OutOfMemoryError
+    //   173	183	791	finally
+    //   183	195	797	finally
+    //   278	337	797	finally
+    //   353	370	797	finally
+    //   173	183	801	java/lang/Exception
+    //   183	195	807	java/lang/Exception
+    //   278	337	807	java/lang/Exception
+    //   353	370	807	java/lang/Exception
+    //   159	173	812	java/lang/Exception
+    //   159	173	821	finally
+  }
+  
+  int a(byte[] paramArrayOfByte)
+  {
+    return (paramArrayOfByte[3] & 0xFF) << 24 | (paramArrayOfByte[2] & 0xFF) << 16 | (paramArrayOfByte[1] & 0xFF) << 8 | paramArrayOfByte[0] & 0xFF;
+  }
+  
+  public ayqk a(URL paramURL)
+  {
+    boolean bool2 = true;
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageManager", 2, "addTroopTipsMessage parm null");
-      }
-      return null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageManager", 2, "addTroopTipsMessage troopTipsEntity.optShowLatest:" + paramTroopTipsEntity.optShowLatest);
-    }
-    int j;
-    int k;
-    label150:
-    int m;
-    if (((paramQQAppInterface.a().a() == 1) && (paramString.equals(paramQQAppInterface.a().a()))) || (paramTroopTipsEntity.need2InsertIntoMsgListRightNow()))
-    {
-      paramString = paramQQAppInterface.a(1).b(paramString, 1);
-      if (paramString == null)
+      paramURL = paramURL.getFile().split("\\|");
+      ayqk localayqk = new ayqk(this);
+      localayqk.jdField_a_of_type_JavaLangString = paramURL[0];
+      localayqk.jdField_a_of_type_Int = Integer.parseInt(paramURL[1]);
+      localayqk.jdField_b_of_type_Int = Integer.parseInt(paramURL[2]);
+      localayqk.jdField_a_of_type_Long = Long.parseLong(paramURL[3]);
+      if (paramURL.length > 4)
       {
-        j = 0;
-        i = n;
-        if (paramTroopTipsEntity.repeatInterval > 0)
+        if (Integer.parseInt(paramURL[4]) == 1)
         {
-          i = n;
-          if (j > 0)
-          {
-            if (paramTroopTipsEntity.repeatInterval >= paramString.size()) {
-              break label299;
-            }
-            k = paramTroopTipsEntity.repeatInterval;
-            m = 0;
-            label153:
-            i = n;
-            if (m < k)
-            {
-              MessageRecord localMessageRecord = (MessageRecord)paramString.get(j - k + m);
-              if ((localMessageRecord.msgtype != 2024) || (!String.valueOf(paramTroopTipsEntity.serviceType).equals(localMessageRecord.getExtInfoFromExtStr("gray_tips_serviceType")))) {
-                break label310;
-              }
-              if (!QLog.isColorLevel()) {
-                break label355;
-              }
-              QLog.i("Q.msg.BaseMessageManager", 2, String.format("processTroopTipsEntity discard seq:%s interval:%d", new Object[] { Long.valueOf(paramTroopTipsEntity.msgSeq), Integer.valueOf(paramTroopTipsEntity.repeatInterval) }));
-            }
+          bool1 = true;
+          localayqk.jdField_a_of_type_Boolean = bool1;
+        }
+      }
+      else
+      {
+        if (paramURL.length > 5)
+        {
+          if (Integer.parseInt(paramURL[5]) != 1) {
+            break label172;
+          }
+          bool1 = true;
+          label106:
+          localayqk.jdField_b_of_type_Boolean = bool1;
+        }
+        if (paramURL.length > 6)
+        {
+          if (Integer.parseInt(paramURL[6]) != 1) {
+            break label177;
+          }
+          bool1 = true;
+          label132:
+          localayqk.c = bool1;
+        }
+        if (paramURL.length > 7) {
+          if (Integer.parseInt(paramURL[7]) != 1) {
+            break label182;
           }
         }
       }
-    }
-    label299:
-    label310:
-    label355:
-    for (int i = 1;; i = 1)
-    {
-      paramTroopTipsEntity.read = true;
-      paramQQAppInterface = (azlf)paramQQAppInterface.getManager(81);
-      if ((paramQQAppInterface != null) && (i == 0))
+      label172:
+      label177:
+      label182:
+      for (boolean bool1 = bool2;; bool1 = false)
       {
-        return paramQQAppInterface.b(paramTroopTipsEntity);
-        j = paramString.size();
+        localayqk.d = bool1;
+        return localayqk;
+        bool1 = false;
         break;
-        k = paramString.size();
-        break label150;
-        m += 1;
-        break label153;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.BaseMessageManager", 2, "saveTroopTips");
-        }
-        paramString = (azlf)paramQQAppInterface.getManager(81);
-        if (paramString != null) {
-          paramString.a(paramQQAppInterface, paramTroopTipsEntity);
-        }
+        bool1 = false;
+        break label106;
+        bool1 = false;
+        break label132;
       }
       return null;
     }
+    catch (Exception paramURL) {}
   }
   
-  protected String a(String paramString1, String paramString2)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramString1)) {}
-    for (paramString2 = ajjy.a(2131649865); paramString2 == null; paramString2 = babh.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, paramString1)) {
-      return paramString1;
+    paramOutputStream = a(paramDownloadParams.url);
+    if ((paramOutputStream == null) || (paramOutputStream.jdField_a_of_type_JavaLangString == null)) {
+      return new File(ajsf.aV);
     }
-    return paramString2;
+    return new File(paramOutputStream.jdField_a_of_type_JavaLangString);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ArrayList<TroopNotificationCache> paramArrayList, int paramInt1, int paramInt2, int paramInt3)
+  public Object a(DownloadParams paramDownloadParams, ayqk paramayqk)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageManager", 2, "addTroopNotificationMessage");
-    }
-    paramString1 = paramQQAppInterface.a(1).e(String.valueOf(paramString2), 1);
-    if ((paramString1 != null) && (!paramString1.isEmpty()) && (paramInt1 == 23))
-    {
-      paramString1 = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      Iterator localIterator = paramArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        TroopNotificationCache localTroopNotificationCache = (TroopNotificationCache)localIterator.next();
-        localTroopNotificationCache.read = true;
-        localTroopNotificationCache.currentUin = paramQQAppInterface.getCurrentAccountUin();
-        paramString1.a(localTroopNotificationCache);
-      }
-      paramString1.a();
-    }
-    azkm.a(paramQQAppInterface, paramString2, paramArrayList, paramInt2, paramInt3);
-  }
-  
-  public void a(MessageRecord paramMessageRecord, atmp paramatmp, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, ajzz paramajzz)
-  {
-    if (paramMessageRecord == null) {
-      return;
-    }
-    Map localMap1 = paramajzz.jdField_a_of_type_JavaUtilMap;
-    Map localMap2 = paramajzz.b;
-    Map localMap3 = paramajzz.c;
-    Object localObject2 = paramajzz.jdField_a_of_type_Arom;
-    Object localObject1 = paramajzz.jdField_a_of_type_Akeu;
-    if (paramMessageRecord.time == 0L) {
-      paramMessageRecord.time = awao.a();
-    }
-    if (paramMessageRecord.msgseq == 0L) {
-      paramMessageRecord.msgseq = ((int)paramMessageRecord.time);
-    }
-    String str1 = paramMessageRecord.frienduin;
-    String str2 = paramMessageRecord.senderuin;
-    int j = paramMessageRecord.istroop;
-    long l1 = paramMessageRecord.time;
-    RecentUser localRecentUser = ((akeu)localObject1).a(str1, paramMessageRecord.istroop);
-    if (localObject2 != null)
-    {
-      localObject1 = ((arom)localObject2).a(str1);
-      if (localObject1 != null) {
-        if (((aylt)localObject1).b() != paramMessageRecord.shmsgseq) {
-          localObject1 = null;
-        }
-      }
+    paramDownloadParams = paramayqk.jdField_a_of_type_JavaLangString;
+    if (paramDownloadParams == null) {
+      paramDownloadParams = null;
     }
     for (;;)
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(str1);
-      if (j == 1)
-      {
-        if ((localRecentUser.msgType == 23) || (localObject1 == null) || (((aylt)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, str1) != 23)) {
-          break label1047;
-        }
-        if ((i != 1) && (i != 4)) {
-          break label990;
-        }
-        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Appear_atsign_norm", 0, 0, localRecentUser.uin, "", "", "");
-        label246:
-        if ((!paramMessageRecord.isSend()) && (localObject1 != null) && (((aylt)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, str1) == 17) && (((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60)).b(str1)) && (MessageForQQWalletMsg.isRedPacketMsg(paramMessageRecord))) {
-          awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005C8D", "0X8005C8D", 0, 0, "", "", "", "");
-        }
-        if (MessageForQQWalletMsg.isCommandRedPacketMsg(paramMessageRecord))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.msg.BaseMessageManager", 2, "group command red packet, UI_BUSY");
-          }
-          mqq.app.MainService.sPwdPacketTime = System.currentTimeMillis();
-          azzv.a(true);
-        }
-        if (paramMessageRecord.senderuin.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-          ajzm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord.frienduin, j, paramMessageRecord);
-        }
-      }
-      int k;
-      if ((localObject1 != null) && (((aylt)localObject1).a()))
-      {
-        k = ((aylt)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, str1);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.BaseMessageManager.troop.special_msg.special_attention", 2, "addMessageRecord, bizType" + k + "|ru.msgType:" + localRecentUser.msgType);
-        }
-        if (aylt.a(k, localRecentUser.msgType))
-        {
-          localRecentUser.msgType = k;
-          localRecentUser.msg = aylt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str1, (aylt)localObject1, localRecentUser.msg, paramMessageRecord, true);
-          if (!ariz.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str1))
-          {
-            localRecentUser.uin = str1;
-            if ((j == 1000) || (j == 1020) || (j == 1004)) {
-              localRecentUser.troopUin = str2;
-            }
-            localRecentUser.setType(j);
-            if (l1 > localRecentUser.lastmsgtime) {
-              localRecentUser.lastmsgtime = l1;
-            }
-            localMap1.put(akbm.a(str1, j), localRecentUser);
-          }
-          if ((j == 1) || (j == 3000))
-          {
-            if (k != 8) {
-              break label1583;
-            }
-            localObject2 = "";
-            if (i != 2) {
-              break label1569;
-            }
-            localObject2 = "msg_assist";
-            label651:
-            awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "oper", (String)localObject2, 0, 0, str1, "", "", "");
-          }
-        }
-        label685:
-        if ((j == 1) && ((k == 23) || (k == 22)) && (!mnf.a(paramMessageRecord)) && (azlj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "atMeOrReplyMe")))
-        {
-          localObject2 = paramMessageRecord.frienduin;
-          String str3 = paramMessageRecord.senderuin;
-          long l2 = paramMessageRecord.time;
-          long l3 = paramMessageRecord.msgseq;
-          ThreadManager.getSubThreadHandler().post(new TroopMessageManager.1(this, (String)localObject2, str3, k, l2, l3));
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.msg.BaseMessageManager", 2, "markAtOrReplyMeMsgInTroop|" + l3);
-          }
-        }
-      }
-      if (localMap1.containsKey(akbm.a(localRecentUser.uin, localRecentUser.getType()))) {}
-      for (localObject2 = (RecentUser)localMap1.get(akbm.a(localRecentUser.uin, localRecentUser.getType()));; localObject2 = localRecentUser)
-      {
-        if (((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60)).b(str1)) {
-          if ((!localMap3.containsKey(akbm.a(str1, j))) || (((MessageRecord)localMap3.get(akbm.a(str1, j))).time <= paramMessageRecord.time)) {
-            localMap3.put(akbm.a(str1, j), paramMessageRecord);
-          }
-        }
-        for (;;)
-        {
-          super.a(paramMessageRecord, paramatmp, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramajzz);
-          paramatmp = axft.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          paramatmp.a(paramMessageRecord);
-          paramatmp.a();
-          return;
-          if (!paramMessageRecord.isread) {
-            break label2235;
-          }
-          ((arom)localObject2).b(str1);
-          localObject1 = null;
-          break;
-          label990:
-          if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(localRecentUser.uin) != 2) {
-            break label246;
-          }
-          awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Appear_atsign_grphelper", 0, 0, localRecentUser.uin, "", "", "");
-          break label246;
-          label1047:
-          boolean bool;
-          if ((localRecentUser.msgType != 17) && (localRecentUser.msgType != 22) && (localRecentUser.msgType != 23) && (localObject1 != null) && (((aylt)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, str1) == 17))
-          {
-            bool = paramMessageRecord instanceof MessageForQQWalletMsg;
-            if ((i == 3) || (i == 4))
-            {
-              if (bool)
-              {
-                awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Appear_hongbaoSign_allscreen", 0, 0, localRecentUser.uin, "", "", "");
-                break label246;
-              }
-              awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Appear_sfsign_allscreen", 0, 0, localRecentUser.uin, "", "", "");
-              break label246;
-            }
-            if (i == 2)
-            {
-              if (bool)
-              {
-                awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Appear_hongbaoSign_grphelper", 0, 0, localRecentUser.uin, "", "", "");
-                break label246;
-              }
-              awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Appear_sfsign_grphelper", 0, 0, localRecentUser.uin, "", "", "");
-              break label246;
-            }
-            if (i != 1) {
-              break label246;
-            }
-            awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Appear_sfsign_norm", 0, 0, localRecentUser.uin, "", "", "");
-            break label246;
-          }
-          if ((localRecentUser.msgType == 17) || (localRecentUser.msgType == 22) || (localRecentUser.msgType == 23) || (localRecentUser.msgType == 13) || (localObject1 == null) || (((aylt)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, str1) != 13)) {
-            break label246;
-          }
-          if ((i == 3) || (i == 4)) {
-            awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Appear_atall_allscreen", 0, 0, localRecentUser.uin, "", "", "");
-          }
-          for (;;)
-          {
-            if (!QLog.isColorLevel()) {
-              break label1567;
-            }
-            QLog.d("Q.msg.BaseMessageManager.troop.special_msg", 2, "addMessageRecord");
-            break;
-            if (i == 2) {
-              awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Appear_atall_grphelper", 0, 0, localRecentUser.uin, "", "", "");
-            } else if (i == 1) {
-              awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Appear_atall_norm", 0, 0, localRecentUser.uin, "", "", "");
-            }
-          }
-          label1567:
-          break label246;
-          label1569:
-          if (i != 1) {
-            break label651;
-          }
-          localObject2 = "msg_public";
-          break label651;
-          label1583:
-          if (k != 22) {
-            break label685;
-          }
-          if (j == 3000) {}
-          for (localObject2 = "Grp_Dis_replyMsg";; localObject2 = "Grp_replyMsg")
-          {
-            awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", (String)localObject2, "", "Msglist", "Appear_replySign", 0, 0, localRecentUser.troopUin, "" + i, "", "");
-            if ((i != 3) && (i != 4)) {
-              break label1718;
-            }
-            awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", (String)localObject2, "", "Msglist", "Appear_replySign_allscreen", 0, 0, localRecentUser.troopUin, "", "", "");
-            break;
-          }
-          label1718:
-          if (i != 2) {
-            break label685;
-          }
-          awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", (String)localObject2, "", "Msglist", "Appear_replySign_grphelper", 0, 0, localRecentUser.troopUin, "", "", "");
-          break label685;
-          if ((!akbm.g(paramMessageRecord.msgtype)) && (!akbm.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord)))
-          {
-            if ((j == 1) && (i != 1) && (i != 4))
-            {
-              if (localObject1 == null) {}
-              for (i = 0;; i = ((aylt)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, str1))
-              {
-                if ((i == 17) || (i == 23) || (i == 16) || (i == 13) || (i == 5) || (i == 26) || (i == 18) || (i == 22) || (i == 14) || (i == 4) || (i == 10))
-                {
-                  ((RecentUser)localObject2).uin = str1;
-                  if ((j == 1000) || (j == 1020) || (j == 1004)) {
-                    ((RecentUser)localObject2).troopUin = str2;
-                  }
-                  ((RecentUser)localObject2).setType(j);
-                  if (l1 > ((RecentUser)localObject2).lastmsgtime) {
-                    ((RecentUser)localObject2).lastmsgtime = l1;
-                  }
-                  localMap1.put(akbm.a(str1, j), localObject2);
-                  if (QLog.isColorLevel()) {
-                    QLog.d("Q.msg.BaseMessageManager.troop.special_msg", 2, "addMessageRecord, MsgBizType:" + i + "uin:" + ((RecentUser)localObject2).uin);
-                  }
-                }
-                if ((!ariz.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str1)) || ((localMap2.containsKey(akbm.a(str1, j))) && (((MessageRecord)localMap2.get(akbm.a(str1, j))).time > paramMessageRecord.time))) {
-                  break;
-                }
-                localMap2.put(akbm.a(str1, j), paramMessageRecord);
-                break;
-              }
-            }
-            if ((paramMessageRecord.isLongMsg()) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessageRecord)))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.i("Q.msg.BaseMessageManager", 2, "addMessageRecord, long msg uncompleted");
-              }
-            }
-            else
-            {
-              ((RecentUser)localObject2).uin = str1;
-              ((RecentUser)localObject2).setType(j);
-              bool = true;
-              if ((paramMessageRecord instanceof MessageForUniteGrayTip)) {
-                bool = ((MessageForUniteGrayTip)paramMessageRecord).tipParam.d;
-              }
-              if ((l1 > ((RecentUser)localObject2).lastmsgtime) && (bool)) {
-                ((RecentUser)localObject2).lastmsgtime = l1;
-              }
-              localMap1.put(akbm.a(str1, j), localObject2);
-            }
-          }
-        }
-      }
-      label2235:
-      continue;
-      localObject1 = null;
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    super.a(paramString, paramInt);
-    ProxyManager localProxyManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    RecentUser localRecentUser = localProxyManager.a().a(paramString, paramInt);
-    d(paramString, paramInt, 9223372036854775807L);
-    if ((localRecentUser.shouldShowInRecentList()) || (localRecentUser.msgType == 11))
-    {
-      localRecentUser.cleanMsgAndMsgData(localRecentUser.msgType);
-      localProxyManager.a().a(localRecentUser);
-    }
-    if (paramInt == 1)
-    {
-      paramInt = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(paramString);
-      if ((paramInt != 1) && (paramInt != 4))
-      {
-        ahay.a().a(localRecentUser.uin + "-" + localRecentUser.getType());
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(localRecentUser);
-      }
-    }
-  }
-  
-  public void a(String paramString, int paramInt, long paramLong, boolean paramBoolean)
-  {
-    super.a(paramString, paramInt, paramLong, paramBoolean);
-    azlm localazlm = (azlm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(164);
-    if (localazlm != null) {
-      localazlm.a(paramString);
-    }
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2, String paramString3, long paramLong)
-  {
-    int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(paramString1);
-    if ((paramInt == 1) && (i != 1) && (i != 4))
-    {
-      if (i == 2) {
-        paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-      }
+      return paramDownloadParams;
+      File localFile = new File(paramDownloadParams);
       try
       {
-        ariz.a().a(paramString1, paramLong, paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        paramString2.a();
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(null);
-        return;
+        paramDownloadParams = new BitmapFactory.Options();
+        paramDownloadParams.inPreferredConfig = aywk.b;
+        paramDownloadParams.inDensity = 160;
+        paramDownloadParams.inTargetDensity = 160;
+        paramDownloadParams.inScreenDensity = 160;
+        paramDownloadParams.inJustDecodeBounds = false;
+        paramayqk = SafeBitmapFactory.decodeFile(localFile.getAbsolutePath(), paramDownloadParams);
+        paramDownloadParams = paramayqk;
+        if (paramayqk == null) {
+          continue;
+        }
+        paramDownloadParams = a(paramayqk);
+        if (!paramayqk.equals(paramDownloadParams.mBitmap)) {
+          paramayqk.recycle();
+        }
+        paramayqk = new RoundRectBitmap(new aywy(localFile.getAbsolutePath()).a(paramDownloadParams.mBitmap), paramDownloadParams.mCornerRadius, paramDownloadParams.mBoardColor, paramDownloadParams.mBorderWidth);
+        paramDownloadParams = paramayqk;
+        if (this.a == null) {
+          continue;
+        }
+        paramayqk.mDisplayWidth = this.a.getResources().getDisplayMetrics().widthPixels;
+        paramayqk.mDisplayHeight = this.a.getResources().getDisplayMetrics().heightPixels;
+        return paramayqk;
       }
-      finally
+      catch (Exception paramDownloadParams)
       {
-        paramString2.a();
+        throw paramDownloadParams;
       }
     }
-    super.a(paramString1, paramInt, paramString2, paramString3, paramLong);
   }
   
-  public void a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public boolean a()
   {
-    super.a(paramString, paramInt, paramBoolean1, paramBoolean2);
-    azlm localazlm = (azlm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(164);
-    if (localazlm != null) {
-      localazlm.a(paramString);
+    return false;
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramFile = agld.a(BaseApplicationImpl.getContext());
+    paramURLDrawableHandler = a(paramDownloadParams.url);
+    if (paramURLDrawableHandler == null) {
+      paramFile = null;
     }
-  }
-  
-  public void a(String paramString, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
-  {
-    super.a(paramString, paramInt1, paramBoolean1, paramBoolean2, paramInt2);
-    azlm localazlm = (azlm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(164);
-    if (localazlm != null) {
-      localazlm.a(paramString);
-    }
-  }
-  
-  /* Error */
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: new 90	java/lang/StringBuilder
-    //   5: dup
-    //   6: invokespecial 91	java/lang/StringBuilder:<init>	()V
-    //   9: lload_2
-    //   10: invokevirtual 475	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   13: ldc_w 343
-    //   16: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: lload 4
-    //   21: invokevirtual 475	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   24: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   27: astore 6
-    //   29: aload_0
-    //   30: getfield 27	ayqj:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   33: aload_1
-    //   34: invokevirtual 623	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   37: ifeq +23 -> 60
-    //   40: aload_0
-    //   41: getfield 27	ayqj:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   44: aload_1
-    //   45: invokevirtual 624	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   48: checkcast 626	java/util/HashSet
-    //   51: aload 6
-    //   53: invokevirtual 629	java/util/HashSet:add	(Ljava/lang/Object;)Z
-    //   56: pop
-    //   57: aload_0
-    //   58: monitorexit
-    //   59: return
-    //   60: new 626	java/util/HashSet
-    //   63: dup
-    //   64: invokespecial 630	java/util/HashSet:<init>	()V
-    //   67: astore 7
-    //   69: aload 7
-    //   71: aload 6
-    //   73: invokevirtual 629	java/util/HashSet:add	(Ljava/lang/Object;)Z
-    //   76: pop
-    //   77: aload_0
-    //   78: getfield 27	ayqj:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   81: aload_1
-    //   82: aload 7
-    //   84: invokevirtual 631	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   87: pop
-    //   88: goto -31 -> 57
-    //   91: astore_1
-    //   92: aload_0
-    //   93: monitorexit
-    //   94: aload_1
-    //   95: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	96	0	this	ayqj
-    //   0	96	1	paramString	String
-    //   0	96	2	paramLong1	long
-    //   0	96	4	paramLong2	long
-    //   27	45	6	str	String
-    //   67	16	7	localHashSet	HashSet
-    // Exception table:
-    //   from	to	target	type
-    //   2	57	91	finally
-    //   60	88	91	finally
-  }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b.containsKey(akbm.a(paramString, paramInt));
-  }
-  
-  protected String b(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramString1)) {}
-    for (paramString2 = ajjy.a(2131649866); paramString2 == null; paramString2 = babh.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, paramString1)) {
-      return paramString1;
-    }
-    return paramString2;
-  }
-  
-  protected void b(String paramString, int paramInt, long paramLong)
-  {
-    super.b(paramString, paramInt, paramLong);
-    d(paramString, paramInt, paramLong);
-  }
-  
-  public void b(String paramString, long paramLong1, long paramLong2)
-  {
-    try
+    label107:
+    do
     {
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+      int i;
+      do
       {
-        HashSet localHashSet = (HashSet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        localHashSet.remove(paramLong1 + "" + paramLong2);
-        if (localHashSet.isEmpty())
+        return paramFile;
+        if (apue.a(paramURLDrawableHandler.jdField_a_of_type_JavaLangString) == 2) {}
+        for (i = 1;; i = 0)
         {
-          this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-          setChanged();
-          notifyObservers();
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.msg.BaseMessageManager.trooptroop_pull_msg.troop_parallel_pull_msg", 2, "并发拉取完成，troopUin:" + paramString);
+          if ((!paramURLDrawableHandler.jdField_a_of_type_Boolean) || (paramURLDrawableHandler.c) || (i != 0)) {
+            break label107;
           }
+          if (!paramURLDrawableHandler.d) {
+            break;
+          }
+          return a(paramDownloadParams, paramURLDrawableHandler);
+        }
+        paramDownloadParams = (Bitmap)b(paramDownloadParams, paramURLDrawableHandler);
+        paramFile = paramDownloadParams;
+      } while (!paramURLDrawableHandler.jdField_b_of_type_Boolean);
+      return apue.a(this.a, paramDownloadParams, 16);
+      if (paramURLDrawableHandler.c)
+      {
+        paramFile = aptw.a(this.a, paramURLDrawableHandler.jdField_a_of_type_JavaLangString);
+        if (paramFile != null) {
+          paramFile = a(paramFile);
         }
       }
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  /* Error */
-  public boolean b(String paramString)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 27	ayqj:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   6: aload_1
-    //   7: invokevirtual 623	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   10: istore_2
-    //   11: iload_2
-    //   12: ifeq +9 -> 21
-    //   15: iconst_0
-    //   16: istore_2
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: iload_2
-    //   20: ireturn
-    //   21: iconst_1
-    //   22: istore_2
-    //   23: goto -6 -> 17
-    //   26: astore_1
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: aload_1
-    //   30: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	31	0	this	ayqj
-    //   0	31	1	paramString	String
-    //   10	13	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	11	26	finally
-  }
-  
-  public void c(String paramString, int paramInt, long paramLong)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramInt) > 0) {
-      d(paramString, paramInt, paramLong);
-    }
-    super.c(paramString, paramInt, paramLong);
+      for (;;)
+      {
+        paramDownloadParams = paramFile;
+        if (paramFile == null)
+        {
+          paramFile = BaseApplicationImpl.getContext();
+          i = apue.a(paramURLDrawableHandler.jdField_a_of_type_JavaLangString);
+          paramDownloadParams = a(paramFile.getResources().getDrawable(apue.a(i)));
+        }
+        if (paramDownloadParams != null) {
+          break;
+        }
+        return null;
+        paramFile = a(BaseApplicationImpl.getContext().getResources().getDrawable(2130843443));
+        continue;
+        paramFile = paramFile.a(paramDownloadParams.url, new ayql(this));
+      }
+      paramFile = paramDownloadParams;
+    } while (!paramURLDrawableHandler.jdField_b_of_type_Boolean);
+    return apue.a(this.a, paramDownloadParams, 16);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayqj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,27 @@
-import Wallet.PopDialog;
-import Wallet.SkinInfo;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class agoh
+public class agoh
   implements DialogInterface.OnClickListener
 {
-  agoh(agog paramagog, agoa paramagoa) {}
+  public agoh(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_Agoa.a.pop_dialog.left_url;
-    if (!TextUtils.isEmpty(paramDialogInterface)) {
-      bfod.a(agod.a(this.jdField_a_of_type_Agog.a), paramDialogInterface);
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoPreviewActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
+    if (this.a.b != null) {
+      this.a.b.setClickable(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agoh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,82 +1,100 @@
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.redtouch.VipBannerInfo.2;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import mqq.os.MqqHandler;
 
 public class avpv
-  implements avom
+  implements avpr
 {
-  public int a;
-  public int b;
-  public int c;
+  public avpv(VipBannerInfo.2 param2) {}
   
-  public int a()
+  public boolean a(avpu paramavpu)
   {
-    return 0;
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = -1;
-    switch (paramInt)
-    {
-    }
+    if (paramavpu == null) {}
+    label385:
+    label390:
+    label396:
+    label400:
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.uniteSearch.SearchResultGroupModelImpl", 2, "getPosition(). type=" + paramInt + "  position=" + i);
+      return false;
+      int i;
+      label86:
+      int j;
+      label163:
+      label187:
+      int k;
+      if (1 == paramavpu.jdField_b_of_type_Int)
+      {
+        this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("blue_banner_time_out" + this.a.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getAccount(), System.currentTimeMillis() + paramavpu.jdField_a_of_type_Long).commit();
+        paramavpu.jdField_b_of_type_Long = paramavpu.jdField_a_of_type_Long;
+        i = 1;
+        if (paramavpu.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo == null) {
+          break label378;
+        }
+        m = paramavpu.jdField_a_of_type_Int;
+        if ((1 != paramavpu.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.iNewFlag.get()) || (i == 0) || (TextUtils.isEmpty(paramavpu.jdField_b_of_type_JavaLangString)) || (m < 1) || (m > 4)) {
+          continue;
+        }
+        if ((1 != m) || (VipUtils.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityConversation.a))) {
+          break label380;
+        }
+        i = 1;
+        if ((2 != m) || (VipUtils.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityConversation.a))) {
+          break label385;
+        }
+        j = 1;
+        if ((3 != m) || (!VipUtils.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityConversation.a))) {
+          break label390;
+        }
+        k = 1;
+        label212:
+        if ((4 != m) || (!VipUtils.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityConversation.a))) {
+          break label396;
+        }
       }
-      return i;
-      i = this.a;
-      continue;
-      i = this.b;
-      continue;
-      i = this.c;
+      for (int m = 1;; m = 0)
+      {
+        if ((i == 0) && (j == 0) && (k == 0) && (m == 0)) {
+          break label400;
+        }
+        this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(9);
+        Message localMessage = this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(8, paramavpu);
+        localMessage.obj = paramavpu;
+        this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+        return true;
+        long l = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getLong("blue_banner_time_out" + this.a.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getAccount(), -1L);
+        if (l > System.currentTimeMillis())
+        {
+          paramavpu.jdField_b_of_type_Long = (l - System.currentTimeMillis());
+          i = 1;
+          break label86;
+        }
+        i = 0;
+        break label86;
+        label378:
+        break;
+        label380:
+        i = 0;
+        break label163;
+        j = 0;
+        break label187;
+        k = 0;
+        break label212;
+      }
     }
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public List<avon> a()
-  {
-    return null;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a = paramInt2;
-      return;
-    case 2: 
-      this.b = paramInt2;
-      return;
-    }
-    this.c = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    a(2, paramInt1);
-    a(1, paramInt2);
-    a(3, paramInt3);
-  }
-  
-  public void a(View paramView) {}
-  
-  public String b()
-  {
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avpv
  * JD-Core Version:    0.7.0.1
  */

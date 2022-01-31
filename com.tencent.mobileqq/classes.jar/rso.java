@@ -1,53 +1,22 @@
-import com.tencent.image.URLDrawableHandler;
+import android.view.animation.Animation;
+import java.util.ArrayList;
+import java.util.List;
 
-public class rso
-  implements URLDrawableHandler
+class rso
+  extends bfmg
 {
-  private URLDrawableHandler jdField_a_of_type_ComTencentImageURLDrawableHandler;
-  private rsn jdField_a_of_type_Rsn;
+  rso(rsn paramrsn) {}
   
-  public rso(URLDrawableHandler paramURLDrawableHandler, rsn paramrsn)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler = paramURLDrawableHandler;
-    this.jdField_a_of_type_Rsn = paramrsn;
-  }
-  
-  public rsn a()
-  {
-    return this.jdField_a_of_type_Rsn;
-  }
-  
-  public void doCancel()
-  {
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.doCancel();
-  }
-  
-  public boolean isCancelled()
-  {
-    return this.jdField_a_of_type_ComTencentImageURLDrawableHandler.isCancelled();
-  }
-  
-  public void onFileDownloadFailed(int paramInt)
-  {
-    this.jdField_a_of_type_Rsn.a(false, paramInt);
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(paramInt);
-  }
-  
-  public void onFileDownloadStarted()
-  {
-    this.jdField_a_of_type_Rsn.b();
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadStarted();
-  }
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    this.jdField_a_of_type_Rsn.a(true, 0);
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadSucceed(paramLong);
-  }
-  
-  public void publishProgress(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.publishProgress(paramInt);
+    super.onAnimationEnd(paramAnimation);
+    if (rsm.a(this.a.a) != null)
+    {
+      paramAnimation = new ArrayList();
+      paramAnimation.add(rsm.a(this.a.a));
+      rsm.a(this.a.a).a(paramAnimation, rsm.a(this.a.a));
+      bcpw.a(this.a.a.a, 2, 2131718443, 0).a();
+    }
   }
 }
 

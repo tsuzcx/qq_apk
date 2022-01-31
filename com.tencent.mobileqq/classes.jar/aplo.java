@@ -1,17 +1,21 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class aplo
-  implements apij
+public class aplo
+  extends apll
 {
-  aplo(apln paramapln) {}
+  private final String a;
   
-  public void a()
+  public aplo(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
   {
-    QLog.d("ForwardOption.ForwardSdkShareOption", 1, "--> mD55ResultListener onResult");
-    ((aply)this.a.a.getManager(350)).a().a(null);
-    this.a.x();
-    this.a.a();
+    super(paramQQAppInterface, paramFileManagerEntity);
+    this.jdField_a_of_type_JavaLangString = "VideoForDisc<QFile>";
+  }
+  
+  public void a(apab paramapab)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType = 1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, new aplp(this, paramapab));
   }
 }
 

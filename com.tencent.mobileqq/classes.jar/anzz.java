@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
+import com.tencent.qphone.base.util.QLog;
 
-class anzz
-  implements apca
+public class anzz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  anzz(anzx paramanzx, FileManagerEntity paramFileManagerEntity) {}
+  public anzz(EmotionKeywordLayout paramEmotionKeywordLayout) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    QfileBaseCloudFileTabView.f(this.jdField_a_of_type_Anzx.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionKeywordLayout", 2, "show:offset=" + f);
+    }
+    if (EmotionKeywordLayout.a(this.a) != null) {
+      EmotionKeywordLayout.a(this.a).setTranslationY(f);
+    }
   }
-  
-  public void b() {}
 }
 
 

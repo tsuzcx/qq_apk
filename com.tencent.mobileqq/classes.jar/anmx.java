@@ -1,59 +1,98 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.dating.NearbyTransitActivity;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 public class anmx
-  extends anfx
+  extends ajyt
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private anla jdField_a_of_type_Anla;
-  private bbms jdField_a_of_type_Bbms;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public anmx(NearbyTransitActivity paramNearbyTransitActivity) {}
   
-  public anmx(AIOEmotionFragment paramAIOEmotionFragment) {}
-  
-  public void a(int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, anla paramanla, SessionInfo paramSessionInfo, bbms parambbms)
+  protected void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, String paramString4, Boolean paramBoolean1)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Anla = paramanla;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Bbms = parambbms;
-  }
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOEmotionFragment", 2, "onJsonComplete:" + paramEmoticonPackage.epId + " ,currEpid:" + this.jdField_a_of_type_Anla.a.epId);
-    }
-    if (paramInt == 0)
-    {
-      if (Long.parseLong(paramEmoticonPackage.epId) != Long.parseLong(this.jdField_a_of_type_Anla.a.epId)) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putInt("emosm_json_last_download_timestamp", (int)(System.currentTimeMillis() / 1000L)).commit();
-      adje.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Anla, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bbms, true);
-      paramBundle = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a.obtainMessage(1000);
-      paramBundle.obj = paramEmoticonPackage.name;
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a.sendMessage(paramBundle);
+    anmg.a("NearbyTransitActivity", new Object[] { "onJoinHotChat", Boolean.valueOf(NearbyTransitActivity.a(this.a)), Boolean.valueOf(paramBoolean), paramString1 });
+    NearbyTransitActivity.a("onJoinHotChat", 1);
+    if (NearbyTransitActivity.a(this.a)) {
       return;
     }
-    adje.a(this.jdField_a_of_type_Int + 1000, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Anla, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bbms, true);
+    NearbyTransitActivity.a(this.a).removeMessages(2);
+    NearbyTransitActivity.a(this.a).removeMessages(5);
+    if (this.a.jdField_a_of_type_Bcpt != null) {
+      this.a.jdField_a_of_type_Bcpt.b();
+    }
+    paramBoolean1 = Message.obtain();
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString1))) {
+      paramBoolean1.what = 3;
+    }
+    for (paramBoolean1.obj = new Object[] { paramString1, paramString2, paramString4 };; paramBoolean1.obj = paramString1)
+    {
+      NearbyTransitActivity.a(this.a).sendMessage(paramBoolean1);
+      return;
+      paramString1 = paramString3;
+      if (TextUtils.isEmpty(paramString3)) {
+        paramString1 = NearbyTransitActivity.jdField_a_of_type_JavaLangString;
+      }
+      paramBoolean1.what = 1;
+      paramBoolean1.arg1 = 11;
+    }
+  }
+  
+  public void a(boolean paramBoolean, HotChatInfo paramHotChatInfo, Common.WifiPOIInfo paramWifiPOIInfo, int paramInt, String paramString)
+  {
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString))
+    {
+      str = paramString;
+      if (paramHotChatInfo != null) {
+        str = paramHotChatInfo.name;
+      }
+    }
+    if ((NearbyTransitActivity.a(this.a) == 1) && (!bbbd.a(str, NearbyTransitActivity.a(this.a)))) {}
+    do
+    {
+      return;
+      NearbyTransitActivity.a("onQuickJoinHotChat", 1);
+      anmg.a("NearbyTransitActivity", new Object[] { "onQuickJoinHotChat", Boolean.valueOf(NearbyTransitActivity.a(this.a)), Boolean.valueOf(paramBoolean), Integer.valueOf(NearbyTransitActivity.a(this.a)), Integer.valueOf(paramInt), str, paramHotChatInfo, paramWifiPOIInfo });
+    } while (NearbyTransitActivity.a(this.a));
+    NearbyTransitActivity.a(this.a).removeMessages(2);
+    NearbyTransitActivity.a(this.a).removeMessages(5);
+    if (this.a.jdField_a_of_type_Bcpt != null) {
+      this.a.jdField_a_of_type_Bcpt.b();
+    }
+    paramWifiPOIInfo = Message.obtain();
+    if (paramBoolean) {
+      if ((paramHotChatInfo != null) && ((paramInt == 1) || (paramInt == 2)))
+      {
+        paramWifiPOIInfo.what = 3;
+        paramWifiPOIInfo.obj = new Object[] { paramHotChatInfo.troopUin, paramHotChatInfo.troopCode, paramHotChatInfo.name };
+      }
+    }
+    while ((NearbyTransitActivity.b(this.a) == 1) && (paramWifiPOIInfo.what == 3) && (paramHotChatInfo.mFissionRoomNum > 0))
+    {
+      atbp.a("NearbyTransitActivity", new Object[] { "onQuickJoinHotChat allocate room success,is to showing entering tip " });
+      paramString = Message.obtain();
+      paramString.what = 5;
+      paramString.obj = String.format(this.a.getResources().getString(2131693302), new Object[] { Integer.valueOf(paramHotChatInfo.mFissionRoomNum) });
+      NearbyTransitActivity.a(this.a).sendMessage(paramString);
+      NearbyTransitActivity.a(this.a).sendMessageDelayed(paramWifiPOIInfo, 600L);
+      return;
+      paramWifiPOIInfo.what = 1;
+      paramWifiPOIInfo.arg1 = 5;
+      paramWifiPOIInfo.obj = NearbyTransitActivity.jdField_a_of_type_JavaLangString;
+      continue;
+      paramWifiPOIInfo.what = 1;
+      paramWifiPOIInfo.arg1 = (paramInt + 100);
+      paramWifiPOIInfo.obj = asyv.a(paramInt);
+    }
+    NearbyTransitActivity.a(this.a).sendMessage(paramWifiPOIInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     anmx
  * JD-Core Version:    0.7.0.1
  */

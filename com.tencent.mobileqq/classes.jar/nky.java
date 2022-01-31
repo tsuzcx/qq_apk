@@ -1,19 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.EncryptUinInfo;
+import java.util.List;
 
-public class nky
-  implements moc
+public abstract class nky
+  implements ajtg
 {
-  public nky(ReadInJoyNewFeedsActivity.2 param2) {}
+  protected abstract void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle);
   
-  public void loaded(String paramString, int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2378 html web resource finish");
+    if (paramObject != null) {}
+    try
+    {
+      paramObject = (Bundle)paramObject;
+      a(paramBoolean, paramObject.getParcelableArrayList("KEY_ENCRYPT_RESULT_LIST"), paramObject);
+      return;
     }
+    catch (Exception paramObject) {}
+    a(false, null, new Bundle());
+    return;
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

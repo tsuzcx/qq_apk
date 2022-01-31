@@ -1,55 +1,90 @@
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.widget.ArrayAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class pus
-  extends ArrayAdapter<TagInfo>
+  extends pqt
 {
-  final Set<TagInfo> a = new LinkedHashSet();
-  
-  public pus(@NonNull Context paramContext, int paramInt)
+  public pus(Context paramContext, baxk parambaxk, rap paramrap)
   {
-    super(paramContext, paramInt);
-  }
-  
-  public void a(@Nullable TagInfo paramTagInfo)
-  {
-    if (!this.a.contains(paramTagInfo))
-    {
-      this.a.add(paramTagInfo);
-      super.add(paramTagInfo);
+    super(paramContext, parambaxk, paramrap);
+    if (QLog.isColorLevel()) {
+      QLog.d("FeedItemCellTypeUgcPlain", 2, "ugc plain create");
     }
   }
   
-  public void a(TagInfo... paramVarArgs)
+  public pqt a()
   {
-    addAll(Arrays.asList(paramVarArgs));
+    this.jdField_a_of_type_Boolean = true;
+    return d(this.jdField_a_of_type_Rap, this.jdField_a_of_type_Baxk).q().l().g().n().j();
   }
   
-  public void addAll(@NonNull Collection<? extends TagInfo> paramCollection)
+  public pqt d()
   {
-    paramCollection = new LinkedHashSet(paramCollection);
-    paramCollection.removeAll(this.a);
-    this.a.addAll(paramCollection);
-    super.addAll(paramCollection);
+    if (QLog.isColorLevel()) {
+      QLog.d("FeedItemCellTypeUgcPlain", 2, "ugc plain layout");
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout);
+    return this;
   }
   
-  public void b(@Nullable TagInfo paramTagInfo)
+  public pqt e()
   {
-    this.a.remove(paramTagInfo);
-    super.remove(paramTagInfo);
+    return null;
   }
   
-  public void clear()
+  public pqt g()
   {
-    super.clear();
-    this.a.clear();
+    return super.g();
+  }
+  
+  public pqt o()
+  {
+    super.o();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    return this;
+  }
+  
+  public pqt p()
+  {
+    super.p();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_Prb);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.a(this.jdField_a_of_type_Prb);
+    }
+    return this;
   }
 }
 

@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class prl
-  implements Parcelable.Creator<TagInfo>
+class prl
+  implements View.OnClickListener
 {
-  public TagInfo a(Parcel paramParcel)
-  {
-    return new TagInfo(paramParcel);
-  }
+  prl(prf paramprf) {}
   
-  public TagInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new TagInfo[paramInt];
+    paramView = this.a.jdField_a_of_type_Rap.a();
+    if (paramView != null) {
+      paramView.a(null, ((pax)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
   }
 }
 

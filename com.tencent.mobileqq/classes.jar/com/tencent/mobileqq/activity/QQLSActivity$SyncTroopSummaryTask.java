@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import babh;
-import befq;
+import bbcl;
+import bfnk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.CopyOnWriteArraySet;
@@ -9,15 +9,15 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public class QQLSActivity$SyncTroopSummaryTask
   implements Runnable
 {
-  befq jdField_a_of_type_Befq;
+  bfnk jdField_a_of_type_Bfnk;
   String jdField_a_of_type_JavaLangString;
   WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   String b;
   
-  public QQLSActivity$SyncTroopSummaryTask(QQAppInterface paramQQAppInterface, befq parambefq, String paramString1, String paramString2)
+  public QQLSActivity$SyncTroopSummaryTask(QQAppInterface paramQQAppInterface, bfnk parambfnk, String paramString1, String paramString2)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_Befq = parambefq;
+    this.jdField_a_of_type_Bfnk = parambfnk;
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
   }
@@ -26,11 +26,11 @@ public class QQLSActivity$SyncTroopSummaryTask
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     String str = this.b.concat(this.jdField_a_of_type_JavaLangString);
-    if ((localQQAppInterface != null) && (this.jdField_a_of_type_Befq != null) && (!QQLSActivity.a().contains(str)))
+    if ((localQQAppInterface != null) && (this.jdField_a_of_type_Bfnk != null) && (!QQLSActivity.a().contains(str)))
     {
       QQLSActivity.a().add(str);
-      babh.h(localQQAppInterface, this.b, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Befq.sendEmptyMessage(17);
+      bbcl.h(localQQAppInterface, this.b, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Bfnk.sendEmptyMessage(17);
     }
   }
 }

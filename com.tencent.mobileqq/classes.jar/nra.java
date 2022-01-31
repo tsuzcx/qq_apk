@@ -1,21 +1,34 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
+import org.json.JSONObject;
 
-class nra
-  implements View.OnSystemUiVisibilityChangeListener
+public class nra
 {
-  nra(nqz paramnqz) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public String toString()
   {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (paramInt = 4866;; paramInt = 771)
-    {
-      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
-      return;
-    }
+    return bazb.a(this).toString();
   }
 }
 

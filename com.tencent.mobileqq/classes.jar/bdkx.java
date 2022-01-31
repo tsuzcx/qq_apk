@@ -1,152 +1,82 @@
 import android.os.Bundle;
-import android.os.Process;
-import android.os.RemoteException;
 import android.text.TextUtils;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.open.downloadnew.DownloaderGetCodeClient.1;
+import eipc.EIPCResultCallback;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
 public class bdkx
 {
-  private static bdkx jdField_a_of_type_Bdkx;
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private static volatile bdkx jdField_a_of_type_Bdkx;
+  private EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new bdky(this);
+  private Map<String, Boolean> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, List<bdkf>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, String> b = new ConcurrentHashMap();
   
   public static bdkx a()
   {
     if (jdField_a_of_type_Bdkx == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    try
     {
       if (jdField_a_of_type_Bdkx == null) {
         jdField_a_of_type_Bdkx = new bdkx();
       }
       return jdField_a_of_type_Bdkx;
     }
+    finally {}
   }
   
-  public void a(String paramString, Bundle paramBundle, bdkz parambdkz)
+  private String a(String paramString, int paramInt)
   {
-    int j = 2;
-    int i = -1;
-    if (TextUtils.isEmpty(paramString)) {}
-    Object localObject;
+    return paramString + "_" + paramInt;
+  }
+  
+  private void a(String paramString, bdkf parambdkf)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (parambdkf == null)) {}
+    List localList1;
     do
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  bdnw.b("MiniAppCmdServlet", "sendCmd cmd=" + paramString);
-                  if ((paramBundle == null) || ("cmd_exit_qq".equals(paramString)))
-                  {
-                    Process.killProcess(Process.myPid());
-                    return;
-                  }
-                  if ("cmd_update_baselib".equals(paramString))
-                  {
-                    if (paramBundle != null) {
-                      paramBundle.getString("version");
-                    }
-                    bdoa.a().a(new bdky(this, parambdkz, paramString));
-                    return;
-                  }
-                  if (!"cmd_upload_ark_share_image".equals(paramString)) {
-                    break;
-                  }
-                } while (paramBundle != null);
-                bdnw.d("MiniAppCmdServlet", "onMiniAppCmd cmd = " + paramString + ", bundle is null");
-                return;
-                if (!"cmd_share_ark_async_message".equals(paramString)) {
-                  break;
-                }
-              } while (paramBundle != null);
-              bdnw.d("MiniAppCmdServlet", "onMiniAppCmd cmd = " + paramString + ", bundle is null");
-              return;
-            } while ("cmd_dc_report_log_key_data".equals(paramString));
-            if (!"cmd_rebind_engine_channel".equals(paramString)) {
-              break;
-            }
-            if (paramBundle != null) {
-              i = paramBundle.getInt("bundle_key_app_type", -1);
-            }
-            bdnw.b("MiniAppCmdServlet", "[MiniEng] CMD_RELOAD_ENGINE_CHANNEL appType:" + i);
-          } while ((i != 0) && (i != 1));
-          paramBundle = new Bundle();
-          localObject = bdom.a();
-          if (i == 1) {}
-          for (i = 2;; i = 3)
-          {
-            paramBundle.putParcelable("engineChannel", ((bdom)localObject).a(i));
-            if (parambdkz == null) {
-              break;
-            }
-            try
-            {
-              parambdkz.a(true, paramBundle);
-              return;
-            }
-            catch (RemoteException paramBundle)
-            {
-              bdnw.d("MiniAppCmdServlet", "cmd response exception. cmd=" + paramString, paramBundle);
-              return;
-            }
-          }
-          if (!"cmd_rebind_engine_channel_new".equals(paramString)) {
-            break;
-          }
-          if (paramBundle != null) {
-            i = paramBundle.getInt("bundle_key_app_type", -1);
-          }
-          bdnw.b("MiniAppCmdServlet", "[MiniEng] CMD_RELOAD_ENGINE_CHANNEL appType:" + i);
-        } while ((i != 0) && (i != 1));
-        paramBundle = new Bundle();
-        localObject = bdom.a();
-        if (i == 1) {}
-        for (i = j;; i = 3)
-        {
-          paramBundle.putParcelable("engineChannel", ((bdom)localObject).a(i));
-          if (parambdkz == null) {
-            break;
-          }
-          try
-          {
-            parambdkz.a(true, paramBundle);
-            return;
-          }
-          catch (RemoteException paramBundle)
-          {
-            bdnw.d("MiniAppCmdServlet", "cmd response exception. cmd=" + paramString, paramBundle);
-            return;
-          }
-        }
-        if (!"cmd_update_pull_down_entry_list".equals(paramString)) {
-          break;
-        }
-      } while (paramBundle != null);
-      bdnw.d("MiniAppCmdServlet", "onMiniAppCmd cmd = " + paramString + ", bundle is null");
       return;
-    } while (!"launch_report2".equals(paramString));
-    if (paramBundle != null)
-    {
-      paramBundle.setClassLoader(bdsc.class.getClassLoader());
-      paramString = (MiniAppInfo)paramBundle.getParcelable("app_config");
-      parambdkz = paramBundle.getString("sub_action");
-      localObject = paramBundle.getString("path");
-      bdsc.a(parambdkz, paramBundle.getString("reserves"), (String)localObject, paramString);
-      return;
+      List localList2 = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      localList1 = localList2;
+      if (localList2 == null) {
+        localList1 = Collections.synchronizedList(new ArrayList());
+      }
+    } while (localList1.contains(parambdkf));
+    localList1.add(parambdkf);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localList1);
+  }
+  
+  public void a(String paramString, int paramInt, bdkf parambdkf)
+  {
+    a(a(paramString, paramInt), parambdkf);
+    parambdkf = new Bundle();
+    parambdkf.putString("PackageName", paramString);
+    parambdkf.putInt("VersionCode", paramInt);
+    bdht.c("DownloaderGetCodeClient", paramString + "_" + paramInt + " begin getApkCode ......");
+    this.jdField_a_of_type_JavaUtilMap.put(a(paramString, paramInt), Boolean.valueOf(true));
+    QIPCClientHelper.getInstance().callServer("Module_DownloaderGetCodeServer", "DownloaderWriteCodeIPC_Action__GetCode", parambdkf, this.jdField_a_of_type_EipcEIPCResultCallback);
+    ThreadManager.getSubThreadHandler().postDelayed(new DownloaderGetCodeClient.1(this, paramString, paramInt, parambdkf), 3000L);
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt, bdkf parambdkf)
+  {
+    if (!TextUtils.isEmpty(paramString1)) {
+      this.b.put(a(paramString2, paramInt), paramString1);
     }
-    bdnw.d("MiniAppCmdServlet", "onMiniAppCmd cmd = " + paramString + ", bundle is null");
+    a(paramString2, paramInt, parambdkf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdkx
  * JD-Core Version:    0.7.0.1
  */

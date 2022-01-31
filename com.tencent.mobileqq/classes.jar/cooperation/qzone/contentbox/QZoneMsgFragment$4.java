@@ -1,38 +1,26 @@
 package cooperation.qzone.contentbox;
 
-import android.os.Handler;
-import bfug;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.contentbox.model.QZoneMsgEntityNew;
-import java.util.ArrayList;
 
 class QZoneMsgFragment$4
   implements Runnable
 {
-  QZoneMsgFragment$4(QZoneMsgFragment paramQZoneMsgFragment, bfug parambfug) {}
+  QZoneMsgFragment$4(QZoneMsgFragment paramQZoneMsgFragment, String paramString) {}
   
   public void run()
   {
-    ArrayList localArrayList = this.a.a();
-    if ((localArrayList == null) || (localArrayList.size() == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onActivityCreated  本地没有缓存 qzoneMessageRsp==null ");
-      }
-    }
-    do
+    QQMessageFacade localQQMessageFacade = this.this$0.a.a();
+    QQMessageFacade.Message localMessage = localQQMessageFacade.a("2290230341", 1008);
+    if (localMessage != null)
     {
+      localMessage.saveExtInfoToExtStr("qzone_msg_box_promot", this.a);
+      localQQMessageFacade.a("2290230341", 1008, localMessage.uniseq, "extStr", localMessage.extStr);
       return;
-      if (!QZoneMsgFragment.a(this.this$0))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onActivityCreated  刷新结果还没有返回，使用本地缓存显示");
-        }
-        QZoneMsgFragment.a(this.this$0, (QZoneMsgEntityNew)localArrayList.get(0));
-        QZoneMsgFragment.a(this.this$0).post(new QZoneMsgFragment.4.1(this, localArrayList));
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onActivityCreated  界面已经刷新，不再使用本地缓存");
+    }
+    QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "updatePromptText message==null  ");
   }
 }
 

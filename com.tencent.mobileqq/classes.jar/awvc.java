@@ -1,21 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
+import java.util.Set;
 
 public class awvc
-  implements View.OnTouchListener
+  extends awts
 {
-  public awvc(StructMsgForGeneralShare paramStructMsgForGeneralShare, acmv paramacmv) {}
+  public final awvd a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public awvc(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
   {
-    return this.jdField_a_of_type_Acmv.onTouch(paramView, paramMotionEvent);
+    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
+    this.a = new awvd(paramQQAppInterface);
+  }
+  
+  public Comparator<awoc> a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awvc
  * JD-Core Version:    0.7.0.1
  */

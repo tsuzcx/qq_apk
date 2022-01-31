@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import afvr;
-import awez;
+import aghq;
+import axeh;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
 public class AvatarPendantActivity$13$2
   implements Runnable
 {
-  public AvatarPendantActivity$13$2(afvr paramafvr) {}
+  public AvatarPendantActivity$13$2(aghq paramaghq) {}
   
   public void run()
   {
     if (!VideoEnvironment.e(this.a.a.app)) {
-      awez.a(this.a.a.app);
+      axeh.a(this.a.a.app);
     }
   }
 }

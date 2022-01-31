@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import atvd;
-import atvf;
+import autb;
+import autd;
 import java.util.List;
 
 public class PLUploadManager$1
   implements Runnable
 {
-  public PLUploadManager$1(atvd paramatvd, List paramList, long paramLong) {}
+  public PLUploadManager$1(autb paramautb, List paramList, long paramLong) {}
   
   public void run()
   {

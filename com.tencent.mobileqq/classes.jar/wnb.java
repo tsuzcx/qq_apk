@@ -1,52 +1,45 @@
-import org.json.JSONObject;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.biz.subscribe.comment.CommentEditText;
 
 public class wnb
+  implements TextWatcher
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public String e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
+  int jdField_a_of_type_Int = -1;
+  String jdField_a_of_type_JavaLangString = null;
   
-  public wnb(JSONObject paramJSONObject, int paramInt)
+  public wnb(CommentEditText paramCommentEditText) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("goodsWord");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("gifUrl");
-    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("pngUrl");
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("packageID");
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("quantity");
-    this.jdField_c_of_type_Int = paramJSONObject.optInt("playRule");
-    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("selectedWording");
-    this.jdField_d_of_type_Int = paramJSONObject.optInt("giftValue");
-    this.jdField_e_of_type_Int = paramJSONObject.optInt("giftID");
-    this.f = paramJSONObject.optInt("giftPrice");
-    this.jdField_c_of_type_Boolean = paramJSONObject.optBoolean("isFreeGift");
-    this.h = paramJSONObject.optInt("addTime");
-    this.i = paramJSONObject.optInt("freegiftlimit");
-    this.g = paramInt;
-    this.j = paramJSONObject.optInt("svip");
-    this.k = paramJSONObject.optInt("year_svip");
-    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("svip_logo");
+    if (this.jdField_a_of_type_JavaLangString != null)
+    {
+      int i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setText(this.jdField_a_of_type_JavaLangString);
+      if (i > this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.length()) {
+        this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setSelection(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.length());
+      }
+    }
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    paramInt2 = paramCharSequence.toString().indexOf("[/", paramInt1);
+    int i = paramCharSequence.toString().indexOf(']', paramInt1);
+    if ((paramInt2 >= paramInt1) && (paramInt2 < paramInt1 + paramInt3) && ((i > paramInt1 + paramInt3) || (i == -1)))
+    {
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.getSelectionEnd();
+      this.jdField_a_of_type_JavaLangString = (paramCharSequence.subSequence(0, paramInt2).toString() + paramCharSequence.subSequence(paramInt1 + paramInt3, paramCharSequence.length()));
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wnb
  * JD-Core Version:    0.7.0.1
  */

@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import zpg;
+import zyy;
 
 public class ToService
   implements Parcelable
 {
-  public static final Parcelable.Creator<ToService> CREATOR = new zpg();
+  public static final Parcelable.Creator<ToService> CREATOR = new zyy();
   public int a;
   public long a;
   public Bundle a;

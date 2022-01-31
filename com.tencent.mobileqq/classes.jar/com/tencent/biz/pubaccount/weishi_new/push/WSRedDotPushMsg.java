@@ -5,14 +5,14 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import org.json.JSONObject;
-import rzh;
-import rzn;
+import smd;
+import smj;
 
 public class WSRedDotPushMsg
-  extends rzh
+  extends smd
   implements Parcelable
 {
-  public static final Parcelable.Creator<WSRedDotPushMsg> CREATOR = new rzn();
+  public static final Parcelable.Creator<WSRedDotPushMsg> CREATOR = new smj();
   public String mFeedIds;
   public IWSPushBaseStrategy mStrategyInfo;
   

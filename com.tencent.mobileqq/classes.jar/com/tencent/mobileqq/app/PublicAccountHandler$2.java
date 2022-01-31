@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import nfp;
+import nqq;
 
 class PublicAccountHandler$2
   implements Runnable
@@ -9,9 +9,9 @@ class PublicAccountHandler$2
   
   public void run()
   {
-    nfp localnfp = (nfp)this.this$0.app.getManager(88);
-    if (localnfp != null) {
-      localnfp.a(null, "FollowList");
+    nqq localnqq = (nqq)this.this$0.app.getManager(88);
+    if (localnqq != null) {
+      localnqq.a(null, "FollowList");
     }
   }
 }

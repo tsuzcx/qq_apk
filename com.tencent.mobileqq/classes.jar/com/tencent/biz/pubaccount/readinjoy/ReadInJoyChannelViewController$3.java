@@ -2,16 +2,16 @@ package com.tencent.biz.pubaccount.readinjoy;
 
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 import java.util.Map;
-import nhx;
+import nth;
 
 public class ReadInJoyChannelViewController$3
   implements Runnable
 {
-  public ReadInJoyChannelViewController$3(nhx paramnhx, Map paramMap1, boolean paramBoolean, Map paramMap2, String paramString) {}
+  public ReadInJoyChannelViewController$3(nth paramnth, Map paramMap1, boolean paramBoolean, Map paramMap2, String paramString) {}
   
   public void run()
   {
-    ((ReadInJoyListViewGroup)nhx.a(this.this$0)).a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
+    ((ReadInJoyListViewGroup)nth.a(this.this$0)).a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 

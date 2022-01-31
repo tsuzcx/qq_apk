@@ -1,31 +1,68 @@
-import android.os.Message;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 class aiui
-  implements aiil
+  extends bbwf
 {
-  aiui(aiug paramaiug, DisplayMetrics paramDisplayMetrics, aiuk paramaiuk) {}
+  aiui(aiug paramaiug, File paramFile, aiuj paramaiuj) {}
   
-  public void onNotifyLongTouch(String paramString) {}
-  
-  public void onNotifyStatusChanged(int paramInt, String paramString) {}
-  
-  public void onSurfaceReady(int paramInt1, int paramInt2)
+  public void onDone(bbwg parambbwg)
   {
-    this.jdField_a_of_type_Aiug.jdField_c_of_type_Boolean = true;
-    float f = this.jdField_a_of_type_AndroidUtilDisplayMetrics.density;
-    this.jdField_a_of_type_Aiug.jdField_c_of_type_Float = (paramInt1 / 2 / f);
-    if ((this.jdField_a_of_type_Aiug.b != null) && (this.jdField_a_of_type_Aiug.a != null) && (aiug.a(this.jdField_a_of_type_Aiug) != null))
-    {
-      this.jdField_a_of_type_Aiug.b.onExecDispose();
-      this.jdField_a_of_type_Aiug.a.onExecDispose();
-      Message localMessage = aiug.a(this.jdField_a_of_type_Aiug).obtainMessage(19, this.jdField_a_of_type_Aiuk.c, this.jdField_a_of_type_Aiuk.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Aiuk.a) {
-        localMessage.obj = Float.valueOf(this.jdField_a_of_type_Aiuk.jdField_b_of_type_Float);
-      }
-      aiug.a(this.jdField_a_of_type_Aiug).sendMessageDelayed(localMessage, 100L);
+    super.onDone(parambbwg);
+    if (QLog.isColorLevel()) {
+      QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip task.getStatus:" + parambbwg.a());
     }
+    if (3 == parambbwg.a())
+    {
+      if (this.jdField_a_of_type_JavaIoFile.exists()) {
+        try
+        {
+          parambbwg = bdhv.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+          if (QLog.isColorLevel()) {
+            QLog.d("rscContent_CmShowRscUpdateHandler", 2, " downloadAllZip onDone dstMd5:" + parambbwg + " result.mMd5:" + this.jdField_a_of_type_Aiuj.d);
+          }
+          if (aiug.a(this.jdField_a_of_type_Aiuj, parambbwg))
+          {
+            if (aiug.a(this.jdField_a_of_type_Aiuj))
+            {
+              nay.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
+              if (QLog.isColorLevel()) {
+                QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip unZipFile ok file path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+              }
+            }
+            for (;;)
+            {
+              aiug.a(this.jdField_a_of_type_Aiug, this.jdField_a_of_type_Aiuj.jdField_e_of_type_Int, this.jdField_a_of_type_Aiuj);
+              return;
+              boolean bool = bbdj.d(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Aiuj.b() + this.jdField_a_of_type_Aiuj.jdField_e_of_type_JavaLangString);
+              QLog.i("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip no need unzip copy:" + bool);
+            }
+          }
+          QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip  file error path- no exist:" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+        }
+        catch (Exception parambbwg)
+        {
+          aiug.a(this.jdField_a_of_type_Aiug, this.jdField_a_of_type_Aiuj.jdField_e_of_type_Int);
+          this.jdField_a_of_type_JavaIoFile.delete();
+          QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambbwg.getMessage());
+          return;
+          QLog.e("rscContent_CmShowRscUpdateHandler", 1, "dstMd5 != result.mMd5");
+          aiug.a(this.jdField_a_of_type_Aiug, this.jdField_a_of_type_Aiuj.jdField_e_of_type_Int);
+          return;
+        }
+        catch (OutOfMemoryError parambbwg)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambbwg.getMessage());
+          }
+          this.jdField_a_of_type_JavaIoFile.delete();
+          return;
+        }
+      }
+      aiug.a(this.jdField_a_of_type_Aiug, this.jdField_a_of_type_Aiuj.jdField_e_of_type_Int);
+      return;
+    }
+    QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip  file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " task.getStatus()->" + parambbwg.a());
   }
 }
 

@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
-import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.mini.widget.MapContext;
@@ -17,10 +15,8 @@ class MapViewJsPlugin$1
   
   public void run()
   {
-    Object localObject1 = ((AppBrandPageContainer)this.this$0.jsPluginEngine.appBrandRuntime.getContainer()).getPageByWebViewId(this.val$webview.getPageWebViewId());
-    if (localObject1 != null) {}
-    Object localObject2;
-    for (localObject1 = ((AbsAppBrandPage)localObject1).getCurrentWebviewContainer(); localObject1 != null; localObject2 = null) {
+    Object localObject = this.this$0.jsPluginEngine.getWebviewContainer(this.val$webview);
+    if (localObject != null) {
       try
       {
         JSONObject localJSONObject1 = new JSONObject(this.val$jsonParams);
@@ -29,11 +25,11 @@ class MapViewJsPlugin$1
         JSONObject localJSONObject2 = new JSONObject();
         localJSONObject2.put("containerId", i);
         String str = this.this$0.jsPluginEngine.appBrandRuntime.appId;
-        ((WebviewContainer)localObject1).insertMap(i, j, localJSONObject1.optString("subKey"), str);
-        localObject1 = ((WebviewContainer)localObject1).getMapContext(i);
-        if (localObject1 != null)
+        ((WebviewContainer)localObject).insertMap(i, j, localJSONObject1.optString("subKey"), str);
+        localObject = ((WebviewContainer)localObject).getMapContext(i);
+        if (localObject != null)
         {
-          ((MapContext)localObject1).updateMap(localJSONObject1);
+          ((MapContext)localObject).updateMap(localJSONObject1);
           this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$eventName, localJSONObject2, this.val$callbackId);
           return;
         }
@@ -44,7 +40,6 @@ class MapViewJsPlugin$1
       {
         QLog.e("[mini] MapViewJsPlugin", 1, this.val$eventName + " error.", localJSONException);
         this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$eventName, null, this.val$callbackId);
-        return;
       }
     }
   }

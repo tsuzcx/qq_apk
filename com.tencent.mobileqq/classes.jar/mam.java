@@ -1,21 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.VideoLayerUI;
-import com.tencent.av.widget.RotateLayout;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class mam
-  implements Animation.AnimationListener
+class mam
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private mam(VideoLayerUI paramVideoLayerUI) {}
+  mam(mal parammal) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onGlobalLayout()
   {
-    VideoLayerUI.a(this.a).setVisibility(4);
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a(false);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

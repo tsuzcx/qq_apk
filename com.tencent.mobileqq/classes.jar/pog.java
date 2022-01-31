@@ -1,40 +1,31 @@
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import java.io.File;
-import java.io.OutputStream;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import java.util.List;
 
-public class pog
-  extends axoa
+class pog
+  implements ViewBase.OnClickListener
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramDownloadParams = paramDownloadParams.urlStr;
-    if (paramDownloadParams.startsWith("readinjoy_skin_gif://")) {
-      paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif://", "");
-    }
-    for (;;)
-    {
-      paramOutputStream = new File(paramOutputStream);
-      if (!paramOutputStream.exists()) {
-        break;
-      }
-      return paramOutputStream;
-      paramOutputStream = paramDownloadParams;
-      if (paramDownloadParams.startsWith("readinjoy_skin_gif:")) {
-        paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif:", "");
-      }
-    }
-    return null;
-  }
+  pog(poc parampoc) {}
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void onClick(ViewBase paramViewBase)
   {
-    return new poh(this, paramFile, false, false, 0, 0, 0.0F);
+    if ((this.a.jdField_a_of_type_Pob.a != null) && (this.a.jdField_a_of_type_Pob.a.a() != null)) {
+      olr.a(this.a.jdField_a_of_type_Pob.a.a(), this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+    }
+    olr.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+    if ((pob.a(this.a.jdField_a_of_type_Pob) != null) && (this.a.jdField_a_of_type_Int < pob.a(this.a.jdField_a_of_type_Pob).size()))
+    {
+      onk.a(pob.a(this.a.jdField_a_of_type_Pob).getContext(), (BaseArticleInfo)pob.a(this.a.jdField_a_of_type_Pob).get(this.a.jdField_a_of_type_Int), paramViewBase.getEventAttachedData());
+      return;
+    }
+    onk.a(pob.a(this.a.jdField_a_of_type_Pob).getContext(), paramViewBase.getEventAttachedData());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pog
  * JD-Core Version:    0.7.0.1
  */

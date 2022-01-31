@@ -1,5 +1,13 @@
 package com.tencent.mobileqq.minigame.ui;
 
+import com.tencent.mobileqq.mini.report.MiniAppReportManager2;
+import com.tencent.mobileqq.mini.report.MiniGamePerformanceStatics;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.mobileqq.mini.report.MiniReportManager;
+import com.tencent.mobileqq.triton.sdk.ITTEngine;
+import com.tencent.mobileqq.triton.sdk.game.IGameLauncher;
+import com.tencent.qphone.base.util.QLog;
+
 class GameActivity$31
   implements Runnable
 {
@@ -7,7 +15,20 @@ class GameActivity$31
   
   public void run()
   {
-    this.this$0.moveTaskToBack(true);
+    GameActivity.access$3202(this.this$0, System.currentTimeMillis());
+    QLog.e("[minigame] GameActivity", 1, "start launchGame, execJS");
+    GameActivity.access$000(this.this$0).recordInitialMemory();
+    MiniProgramLpReportDC04239.reportPageView(this.this$0.mGameAppConfig, "1", null, "load", null);
+    MiniAppReportManager2.reportPageView("2load", null, null, this.this$0.mGameAppConfig);
+    GameActivity.access$3100(this.this$0, 1);
+    MiniReportManager.reportEventType(this.this$0.mGameAppConfig, 1007, "1");
+    IGameLauncher localIGameLauncher = GameActivity.access$1100(this.this$0).getGameLauncher();
+    if (localIGameLauncher != null)
+    {
+      localIGameLauncher.launchGame();
+      return;
+    }
+    QLog.e("[minigame] GameActivity", 1, "launchGame execJS fail");
   }
 }
 

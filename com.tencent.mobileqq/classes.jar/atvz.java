@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-class atvz
-  implements DialogInterface.OnClickListener
+final class atvz
+  implements athy
 {
-  atvz(atvv paramatvv) {}
+  atvz(atwg paramatwg, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
+    if (this.jdField_a_of_type_Atwg != null) {
+      this.jdField_a_of_type_Atwg.a(false, null, true, this.jdField_a_of_type_Int);
     }
   }
 }

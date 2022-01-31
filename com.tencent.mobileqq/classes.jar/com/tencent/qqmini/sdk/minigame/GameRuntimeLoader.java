@@ -2,37 +2,39 @@ package com.tencent.qqmini.sdk.minigame;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bdfx;
-import bdlq;
-import bdlr;
-import bdlx;
-import bdnw;
-import bdnx;
-import bdpd;
-import bdpy;
-import bdqa;
-import bdqm;
-import bdqp;
-import bdqr;
-import bdqs;
-import bdsc;
-import bdsx;
-import bdxz;
+import bejy;
+import bepv;
+import bepw;
+import beqh;
+import besl;
+import besm;
+import beul;
+import bevc;
+import bevi;
+import bevy;
+import bewb;
+import bewc;
+import bewe;
+import bewf;
+import bexz;
+import beyu;
+import bfer;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.manager.InstalledEngine;
 
 public class GameRuntimeLoader
-  extends bdlq
+  extends bepv
 {
-  public static final bdlr<GameRuntimeLoader> CREATOR = new bdpd();
+  public static final bepw<GameRuntimeLoader> CREATOR = new beul();
   public static final String LOG_TAG = "GameRuntimeLoader";
   private boolean baseEngineLoaded;
-  private bdqm mGameEngineLoadTask;
-  private bdqp mGpkgLoadTask;
-  private bdqr mInitGameRuntimeTask;
-  private bdqs mMiniAppInfoLoadTask;
-  private bdpy miniGamePkg;
+  private bevy mGameEngineLoadTask;
+  private bewb mGameRuntimeCreateTask;
+  private bewc mGpkgLoadTask;
+  private bewe mInitGameRuntimeTask;
+  private bewf mMiniAppInfoLoadTask;
+  private bevc miniGamePkg;
   
   private GameRuntimeLoader(Context paramContext)
   {
@@ -57,33 +59,39 @@ public class GameRuntimeLoader
     return bool1;
   }
   
-  private void onGameEngineLoadTaskDone(bdqm parambdqm)
+  private void onGameEngineLoadTaskDone(bevy parambevy)
   {
-    if (!parambdqm.d())
+    if (!parambevy.d())
     {
       this.baseEngineLoaded = false;
-      parambdqm = parambdqm.a();
-      if (parambdqm != null)
+      parambevy = parambevy.a();
+      if (parambevy != null)
       {
-        bdsx.a(parambdqm, "1", null, "page_view", "load_fail", "baselib_task_fail", "");
-        bdsc.a("2launch_fail", "baselib_task_fail", null, parambdqm);
-        if (parambdqm != null) {
-          parambdqm = parambdqm.appId;
+        beyu.a(parambevy, "1", null, "page_view", "load_fail", "baselib_task_fail", "");
+        bexz.a("2launch_fail", "baselib_task_fail", null, parambevy);
+        if (parambevy != null) {
+          parambevy = parambevy.appId;
         }
       }
-      notifyRuntimeEvent(2013, new Object[0]);
+      notifyRuntimeEvent(2013, new Object[] { Integer.valueOf(this.mGameEngineLoadTask.jdField_a_of_type_Int) });
       return;
     }
     this.baseEngineLoaded = true;
     notifyRuntimeEvent(2012, new Object[0]);
   }
   
-  private void onGpkgLoadAsyncTaskDone(bdqp parambdqp)
+  private void onGameRuntimeCreateTask(bewb parambewb)
   {
-    if (parambdqp.d())
+    this.mRuntime = parambewb.a();
+  }
+  
+  private void onGpkgLoadAsyncTaskDone(bewc parambewc)
+  {
+    if (parambewc.d())
     {
-      this.miniGamePkg = parambdqp.a();
-      bdqa.a().a(this.miniGamePkg);
+      this.miniGamePkg = parambewc.a();
+      bevi.a().a(this.miniGamePkg);
+      bevi.a().a(this.mMiniAppInfo);
       notifyRuntimeEvent(2002, new Object[0]);
     }
     for (;;)
@@ -92,44 +100,44 @@ public class GameRuntimeLoader
       return;
       notifyRuntimeEvent(2003, new Object[0]);
       this.miniGamePkg = null;
-      parambdqp = parambdqp.a();
-      if (parambdqp != null)
+      parambewc = parambewc.a();
+      if (parambewc != null)
       {
-        bdsx.a(parambdqp, "1", null, "page_view", "load_fail", "pkg_task_fail", "");
-        bdsc.a("2launch_fail", "pkg_task_fail", null, parambdqp);
-        if (parambdqp != null) {
-          parambdqp = parambdqp.appId;
+        beyu.a(parambewc, "1", null, "page_view", "load_fail", "pkg_task_fail", "");
+        bexz.a("2launch_fail", "pkg_task_fail", null, parambewc);
+        if (parambewc != null) {
+          parambewc = parambewc.appId;
         }
       }
     }
   }
   
-  private void onInitGameRuntimeTaskDone(bdqr parambdqr)
+  private void onInitGameRuntimeTaskDone(bewe parambewe)
   {
-    this.mRuntime = parambdqr.a();
-    onRuntimeLoadResult(0, "Load runtime successfully");
     this.mIsRunning = false;
+    notifyRuntimeEvent(2031, new Object[0]);
+    onRuntimeLoadResult(0, "Load runtime successfully");
   }
   
-  private void onMiniAppInfoLoadTaskDone(bdqs parambdqs)
+  private void onMiniAppInfoLoadTaskDone(bewf parambewf)
   {
-    if (!parambdqs.d()) {
+    if (!parambewf.d()) {
       return;
     }
-    this.mMiniAppInfo = parambdqs.a();
-    bdlx.a().a(this.mMiniAppInfo);
+    this.mMiniAppInfo = parambewf.a();
+    beqh.a().a(this.mMiniAppInfo);
     this.mGpkgLoadTask.a(this.mMiniAppInfo);
   }
   
-  public bdxz[] createTasks()
+  public bfer[] createTasks()
   {
-    this.mMiniAppInfoLoadTask = new bdqs(this.mContext, this);
-    this.mGameEngineLoadTask = new bdqm(this.mContext, this);
-    this.mGpkgLoadTask = new bdqp(this.mContext, this);
-    this.mInitGameRuntimeTask = new bdqr(this.mContext, this);
-    this.mInitGameRuntimeTask.a(this.mGameEngineLoadTask).a(this.mGpkgLoadTask.a(this.mMiniAppInfoLoadTask));
-    addTasks(new bdxz[] { this.mGameEngineLoadTask, this.mGpkgLoadTask, this.mInitGameRuntimeTask, this.mMiniAppInfoLoadTask });
-    return new bdxz[] { this.mInitGameRuntimeTask };
+    this.mGameRuntimeCreateTask = new bewb(this.mContext, this);
+    this.mMiniAppInfoLoadTask = new bewf(this.mContext, this);
+    this.mGameEngineLoadTask = new bevy(this.mContext, this);
+    this.mGpkgLoadTask = new bewc(this.mContext, this);
+    this.mInitGameRuntimeTask = new bewe(this.mContext, this);
+    this.mInitGameRuntimeTask.a(this.mGameEngineLoadTask.a(this.mGameRuntimeCreateTask)).a(this.mGpkgLoadTask.a(this.mMiniAppInfoLoadTask));
+    return new bfer[] { this.mInitGameRuntimeTask };
   }
   
   public boolean dismissLoadingAfterLoaded()
@@ -151,21 +159,12 @@ public class GameRuntimeLoader
     return null;
   }
   
-  public String getEngineVersion()
-  {
-    InstalledEngine localInstalledEngine = this.mGameEngineLoadTask.a();
-    if ((localInstalledEngine != null) && (localInstalledEngine.b == 3)) {
-      return String.valueOf(localInstalledEngine.jdField_a_of_type_ComTencentQqminiSdkManagerEngineVersion);
-    }
-    return "";
-  }
-  
   public ITTEngine getGameEngine()
   {
     return this.mGameEngineLoadTask.a();
   }
   
-  public bdpy getMiniGamePkg()
+  public bevc getMiniGamePkg()
   {
     return this.miniGamePkg;
   }
@@ -173,39 +172,41 @@ public class GameRuntimeLoader
   public boolean isGameReadyStart(MiniAppInfo paramMiniAppInfo)
   {
     boolean bool = isGamePkgReady(paramMiniAppInfo);
-    bdnw.b("GameRuntimeLoader", "[MiniEng]isGameReadyStart:" + bool + ",baseEngineLoaded:" + this.baseEngineLoaded);
+    besl.b("GameRuntimeLoader", "[MiniEng]isGameReadyStart:" + bool + ",baseEngineLoaded:" + this.baseEngineLoaded);
     return (this.baseEngineLoaded) && (bool);
   }
   
   public void loadMiniAppInfo(MiniAppInfo paramMiniAppInfo)
   {
-    paramMiniAppInfo.apkgInfo = new bdfx(bdnx.a(this.mMiniAppInfo), paramMiniAppInfo);
+    paramMiniAppInfo.apkgInfo = new bejy(besm.a(this.mMiniAppInfo), paramMiniAppInfo);
     this.mMiniAppInfoLoadTask.a(paramMiniAppInfo);
     this.mGameEngineLoadTask.a(paramMiniAppInfo);
     this.mGpkgLoadTask.a(paramMiniAppInfo);
     super.loadMiniAppInfo(paramMiniAppInfo);
   }
   
-  public void onTaskDone(bdxz parambdxz)
+  public void onTaskDone(bfer parambfer)
   {
-    if (parambdxz == null) {}
+    if (parambfer == null) {}
     for (;;)
     {
       return;
-      bdnw.b("GameRuntimeLoader", "[MiniEng]" + parambdxz + " done! succ:" + parambdxz.d());
-      if ((parambdxz instanceof bdqp)) {
-        onGpkgLoadAsyncTaskDone((bdqp)parambdxz);
+      besl.b("GameRuntimeLoader", "[MiniEng]" + parambfer + " done! succ:" + parambfer.d());
+      if ((parambfer instanceof bewb)) {
+        onGameRuntimeCreateTask((bewb)parambfer);
       }
-      while (parambdxz.c())
+      while (parambfer.c())
       {
-        updateFlow(parambdxz);
+        updateFlow(parambfer);
         return;
-        if ((parambdxz instanceof bdqm)) {
-          onGameEngineLoadTaskDone((bdqm)parambdxz);
-        } else if ((parambdxz instanceof bdqs)) {
-          onMiniAppInfoLoadTaskDone((bdqs)parambdxz);
-        } else if ((parambdxz instanceof bdqr)) {
-          onInitGameRuntimeTaskDone((bdqr)parambdxz);
+        if ((parambfer instanceof bewc)) {
+          onGpkgLoadAsyncTaskDone((bewc)parambfer);
+        } else if ((parambfer instanceof bevy)) {
+          onGameEngineLoadTaskDone((bevy)parambfer);
+        } else if ((parambfer instanceof bewf)) {
+          onMiniAppInfoLoadTaskDone((bewf)parambfer);
+        } else if ((parambfer instanceof bewe)) {
+          onInitGameRuntimeTaskDone((bewe)parambfer);
         }
       }
     }

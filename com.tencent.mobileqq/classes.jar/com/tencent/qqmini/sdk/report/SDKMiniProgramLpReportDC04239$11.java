@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.report;
 
-import bdsr;
-import bdsx;
+import beyo;
+import beyu;
 
 public final class SDKMiniProgramLpReportDC04239$11
   implements Runnable
 {
   public void run()
   {
-    String str = bdsx.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-    bdsx.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, str, null, "drop_down", this.jdField_a_of_type_JavaLangString, this.b);
-    bdsr.a().b();
+    String str = beyu.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+    beyu.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, str, null, "drop_down", this.jdField_a_of_type_JavaLangString, this.b);
+    beyo.a().b();
   }
 }
 

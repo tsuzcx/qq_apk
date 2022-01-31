@@ -1,93 +1,170 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class avrs
-  extends avsf
 {
-  private Drawable a;
+  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public avrs(azwg paramazwg)
+  public avrs(String paramString)
   {
-    super(paramazwg);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + File.separator + "audio_data_cache" + File.separator);
+    paramString = new File(this.jdField_a_of_type_JavaLangString);
+    boolean bool1 = paramString.mkdirs();
+    boolean bool2 = paramString.isDirectory();
+    if ((!bool1) && (!bool2))
+    {
+      paramString = new RuntimeException("AudioDataCache: mkd=" + bool1 + " isdir=" + bool2);
+      QLog.e("AudioDataCache", 2, paramString, new Object[0]);
+      awag.a(paramString);
+    }
   }
   
-  private void a(avww paramavww, TextView paramTextView, boolean paramBoolean)
+  private static void a(String paramString, Throwable paramThrowable)
   {
-    if (paramBoolean)
+    if (QLog.isColorLevel())
     {
-      if (this.a == null)
-      {
-        this.a = paramavww.a().getContext().getResources().getDrawable(2130841234);
-        this.a.setBounds(0, 0, ImmersiveUtils.a(15.0F), ImmersiveUtils.a(15.0F));
+      if (paramThrowable != null) {
+        QLog.d("AudioDataCache", 2, "[@] " + paramString, paramThrowable);
       }
-      paramTextView.setCompoundDrawables(null, null, this.a, null);
+    }
+    else {
       return;
     }
-    paramTextView.setCompoundDrawables(null, null, null, null);
+    QLog.d("AudioDataCache", 2, "[@] " + paramString);
   }
   
-  private void b(avww paramavww, avon paramavon)
+  /* Error */
+  public String a()
   {
-    TextView localTextView = paramavww.a();
-    Context localContext;
-    boolean bool;
-    if ((localTextView != null) && (paramavon != null))
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: new 17	java/lang/StringBuilder
+    //   5: dup
+    //   6: invokespecial 18	java/lang/StringBuilder:<init>	()V
+    //   9: ldc 83
+    //   11: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14: aload_0
+    //   15: getfield 85	avrs:b	Ljava/lang/String;
+    //   18: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   24: aconst_null
+    //   25: invokestatic 87	avrs:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   28: new 17	java/lang/StringBuilder
+    //   31: dup
+    //   32: invokespecial 18	java/lang/StringBuilder:<init>	()V
+    //   35: aload_0
+    //   36: getfield 15	avrs:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   39: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: aload_0
+    //   43: getfield 85	avrs:b	Ljava/lang/String;
+    //   46: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   52: astore_1
+    //   53: aload_0
+    //   54: getfield 89	avrs:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
+    //   57: astore_2
+    //   58: aload_2
+    //   59: ifnull +10 -> 69
+    //   62: aload_0
+    //   63: getfield 89	avrs:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
+    //   66: invokevirtual 94	java/io/FileOutputStream:close	()V
+    //   69: aload_0
+    //   70: monitorexit
+    //   71: aload_1
+    //   72: areturn
+    //   73: astore_1
+    //   74: aload_0
+    //   75: monitorexit
+    //   76: aload_1
+    //   77: athrow
+    //   78: astore_2
+    //   79: goto -10 -> 69
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	82	0	this	avrs
+    //   52	20	1	str	String
+    //   73	4	1	localObject	Object
+    //   57	2	2	localFileOutputStream	FileOutputStream
+    //   78	1	2	localIOException	IOException
+    // Exception table:
+    //   from	to	target	type
+    //   2	58	73	finally
+    //   62	69	73	finally
+    //   62	69	78	java/io/IOException
+  }
+  
+  public void a()
+  {
+    File localFile;
+    try
     {
-      localContext = localTextView.getContext();
-      if (!(paramavon instanceof avpr)) {
-        break label73;
+      a("initCache: oldpath=" + this.b + " mOutStream=" + this.jdField_a_of_type_JavaIoFileOutputStream, null);
+      this.b = axlv.a();
+      String str = this.jdField_a_of_type_JavaLangString + this.b;
+      localFile = new File(str);
+      if (localFile.exists()) {
+        throw new RuntimeException("AudioDataCache: file exists| " + str);
       }
-      paramavon = ((avpr)paramavon).a();
-      if ((paramavon != null) && (localContext != null))
+    }
+    finally {}
+    try
+    {
+      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
+      a("initCache: newPath=" + this.b, null);
+      return;
+    }
+    catch (FileNotFoundException localFileNotFoundException)
+    {
+      for (;;)
       {
-        if (paramavon.certifiedGrade <= 0L) {
-          break label68;
+        this.jdField_a_of_type_JavaIoFileOutputStream = null;
+      }
+    }
+  }
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    try
+    {
+      FileOutputStream localFileOutputStream = this.jdField_a_of_type_JavaIoFileOutputStream;
+      bool1 = bool2;
+      if (localFileOutputStream != null) {}
+      try
+      {
+        this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
+        bool1 = true;
+      }
+      catch (IOException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          paramArrayOfByte.printStackTrace();
+          a("writeData: exp=", paramArrayOfByte);
+          bool1 = bool2;
         }
-        bool = true;
-        a(paramavww, localTextView, bool);
       }
+      return bool1;
     }
-    label68:
-    label73:
-    do
-    {
-      do
-      {
-        return;
-        bool = false;
-        break;
-      } while (!(paramavon instanceof avnr));
-      paramavon = (avnr)paramavon;
-    } while ((paramavon == null) || (localContext == null));
-    a(paramavww, localTextView, paramavon.b());
+    finally {}
   }
   
-  protected void a(avww paramavww, avon paramavon)
+  public String b()
   {
-    super.a(paramavww, paramavon);
-    if ((paramavon instanceof avpr))
-    {
-      Object localObject = (avpr)paramavon;
-      PublicAccountInfo localPublicAccountInfo = ((avpr)localObject).a();
-      if ((localPublicAccountInfo != null) && (localPublicAccountInfo.displayNumber != null) && (localPublicAccountInfo.displayNumber.equalsIgnoreCase(((avpr)localObject).a())))
-      {
-        localObject = new SpannableString(localPublicAccountInfo.name);
-        ((SpannableString)localObject).setSpan(new ForegroundColorSpan(-16734752), 0, localPublicAccountInfo.name.length(), 33);
-        paramavww.a().setText((CharSequence)localObject);
-      }
-    }
-    b(paramavww, paramavon);
+    return this.jdField_a_of_type_JavaLangString + this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avrs
  * JD-Core Version:    0.7.0.1
  */

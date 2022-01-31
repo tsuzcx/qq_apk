@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.hotpic;
 
 import android.view.View;
-import aqgp;
-import aqgx;
-import aqhl;
-import awqx;
+import arar;
+import araz;
+import arbn;
+import axqw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ import java.lang.ref.WeakReference;
 public class PresenceInterfaceImpl$5
   implements Runnable
 {
-  public PresenceInterfaceImpl$5(aqgx paramaqgx) {}
+  public PresenceInterfaceImpl$5(araz paramaraz) {}
   
   public void run()
   {
@@ -21,15 +21,15 @@ public class PresenceInterfaceImpl$5
       return;
     }
     this.this$0.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.this$0.jdField_a_of_type_Aqhl.a(this.this$0.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.jdField_a_of_type_AndroidViewView);
+    this.this$0.jdField_a_of_type_Arbn.a(this.this$0.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.jdField_a_of_type_AndroidViewView);
     if ((this.this$0.jdField_a_of_type_JavaLangRefWeakReference != null) && ((HotPicPageView)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {}
     for (boolean bool = HotPicPageView.a;; bool = false)
     {
-      this.this$0.jdField_a_of_type_Aqhl.a(this.this$0.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.jdField_a_of_type_Aqgp.c, this.this$0.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.jdField_a_of_type_Aqgp.d, 0L, this.this$0.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.jdField_a_of_type_Aqgp.a, bool);
-      if (this.this$0.jdField_a_of_type_Aqhl.a()) {}
+      this.this$0.jdField_a_of_type_Arbn.a(this.this$0.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.jdField_a_of_type_Arar.c, this.this$0.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.jdField_a_of_type_Arar.d, 0L, this.this$0.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.jdField_a_of_type_Arar.a, bool);
+      if (this.this$0.jdField_a_of_type_Arbn.a()) {}
       for (String str = "0X8007ED5";; str = "0X8007ED6")
       {
-        awqx.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+        axqw.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "dc00898", "", "", str, str, 0, 0, "", "", "", "");
         QLog.d("PresenceInterfaceImpl", 2, "have run mVideoPlayControl.startPlay");
         return;
       }

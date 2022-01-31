@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import ajgm;
-import bakz;
+import ajuo;
+import bbmj;
 import com.tencent.litetransfersdk.LiteTransferWrapper;
 import com.tencent.litetransfersdk.MsgSCBody;
 import com.tencent.litetransfersdk.ProtocolHelper;
@@ -13,7 +13,7 @@ import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
 public class DataLineHandler$6
   implements Runnable
 {
-  public DataLineHandler$6(ajgm paramajgm, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt) {}
+  public DataLineHandler$6(ajuo paramajuo, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt) {}
   
   public void run()
   {
@@ -45,7 +45,7 @@ public class DataLineHandler$6
             break;
           }
           arrayOfByte = new byte[i];
-          bakz.a(arrayOfByte, 0, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer(), 4, i);
+          bbmj.a(arrayOfByte, 0, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer(), 4, i);
         }
         if (arrayOfByte == null) {
           break;

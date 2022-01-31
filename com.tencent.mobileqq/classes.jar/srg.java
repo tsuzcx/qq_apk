@@ -1,31 +1,55 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.PBInt32Field;
 
-class srg
-  implements slx<srh, sri>
+public class srg
 {
-  private srg(sre paramsre) {}
+  private double a;
+  private double b;
   
-  public void a(@NonNull srh paramsrh, @Nullable sri paramsri, @NonNull ErrorMessage paramErrorMessage)
+  public srg(double paramDouble1, double paramDouble2)
   {
-    if ((paramsri != null) && (paramsri.jdField_a_of_type_Int == 0) && (paramErrorMessage.isSuccess()))
-    {
-      this.a.jdField_a_of_type_JavaUtilList.addAll(paramsri.jdField_a_of_type_JavaUtilList);
-      urk.d("VideoFilterManager", "new filter count %d, current total count %d, isEnd=%s, cookie=%s", new Object[] { Integer.valueOf(paramsri.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), Boolean.valueOf(paramsri.jdField_a_of_type_Boolean), paramsri.jdField_a_of_type_JavaLangString });
-      if ((paramsri.jdField_a_of_type_Boolean) || (paramsri.jdField_a_of_type_JavaUtilList.isEmpty()))
-      {
-        urk.d("VideoFilterManager", "get filter full list finish, frequency = %d s", new Object[] { Integer.valueOf(paramsri.b) });
-        this.a.a(true, paramsri.b);
-        return;
-      }
-      this.a.c = paramsri.jdField_a_of_type_JavaLangString;
-      this.a.c();
-      return;
+    this.a = paramDouble1;
+    this.b = paramDouble2;
+  }
+  
+  public double a()
+  {
+    return this.a;
+  }
+  
+  public qqstory_struct.GpsMsg a()
+  {
+    qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
+    localGpsMsg.setHasFlag(true);
+    localGpsMsg.lat.set((int)(a() * 1000000.0D));
+    localGpsMsg.lng.set((int)(b() * 1000000.0D));
+    return localGpsMsg;
+  }
+  
+  public double b()
+  {
+    return this.b;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
     }
-    urk.c("VideoFilterManager", "get filter failed %s", paramErrorMessage);
-    this.a.a(false, 0);
+    if (!(paramObject instanceof srg)) {
+      return false;
+    }
+    return (((srg)paramObject).a == this.a) && (((srg)paramObject).b == this.b);
+  }
+  
+  public int hashCode()
+  {
+    return "Gps".hashCode() + (int)(this.a * 1000000.0D) + (int)(this.b * 1000000.0D);
+  }
+  
+  public String toString()
+  {
+    return "Gps{lat=" + this.a + ", lng=" + this.b + '}';
   }
 }
 

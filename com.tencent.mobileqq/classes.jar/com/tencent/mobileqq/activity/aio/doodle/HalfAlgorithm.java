@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import acts;
-import actu;
-import actz;
-import acud;
-import acue;
-import acuf;
-import acuh;
-import acui;
+import adel;
+import aden;
+import ades;
+import adew;
+import adex;
+import adey;
+import adfa;
+import adfb;
 import android.graphics.Path;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -15,19 +15,19 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Lactu;>;
+import java.util.List<Laden;>;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class HalfAlgorithm
-  extends acts
-  implements acui
+  extends adel
+  implements adfb
 {
   private int jdField_a_of_type_Int;
-  private acue jdField_a_of_type_Acue = new acue();
+  private adex jdField_a_of_type_Adex = new adex();
   private Path jdField_a_of_type_AndroidGraphicsPath;
-  private List<actz> jdField_a_of_type_JavaUtilList;
-  private Map<Integer, acuf> jdField_a_of_type_JavaUtilMap;
+  private List<ades> jdField_a_of_type_JavaUtilList;
+  private Map<Integer, adey> jdField_a_of_type_JavaUtilMap;
   
   private void a()
   {
@@ -41,28 +41,28 @@ public class HalfAlgorithm
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
   }
   
-  private void a(List<actz> paramList1, List<actz> paramList2)
+  private void a(List<ades> paramList1, List<ades> paramList2)
   {
     if ((paramList2 == null) || (paramList1 == null) || (paramList2.size() == 0)) {
       return;
     }
     long l;
     if (paramList1.size() > 0) {
-      l = ((actz)paramList1.get(paramList1.size() - 1)).a();
+      l = ((ades)paramList1.get(paramList1.size() - 1)).a();
     }
-    for (int i = ((actz)paramList1.get(paramList1.size() - 1)).a();; i = 0)
+    for (int i = ((ades)paramList1.get(paramList1.size() - 1)).a();; i = 0)
     {
-      if (((actz)paramList2.get(0)).a() == l)
+      if (((ades)paramList2.get(0)).a() == l)
       {
         QLog.d("DoodleAlgorithm", 2, "addjust time and seg :" + l);
         Iterator localIterator = paramList2.iterator();
         while (localIterator.hasNext())
         {
-          actz localactz = (actz)localIterator.next();
-          if (localactz.a() != l) {
+          ades localades = (ades)localIterator.next();
+          if (localades.a() != l) {
             break;
           }
-          localactz.a(localactz.a() + i + 1);
+          localades.a(localades.a() + i + 1);
         }
       }
       paramList1.addAll(paramList2);
@@ -71,14 +71,14 @@ public class HalfAlgorithm
     }
   }
   
-  private boolean a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong1, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, long paramLong2, Path paramPath, List<actz> paramList)
+  private boolean a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong1, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, long paramLong2, Path paramPath, List<ades> paramList)
   {
     paramPath.moveTo(paramFloat1, paramFloat2);
     paramPath.quadTo(paramFloat4, paramFloat5, paramFloat6, paramFloat7);
     return a(paramList, paramPath, paramFloat3, paramFloat8, paramLong1, paramLong2);
   }
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, Path paramPath, List<actz> paramList)
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, Path paramPath, List<ades> paramList)
   {
     if (paramPath == null) {}
     do
@@ -86,13 +86,13 @@ public class HalfAlgorithm
       return;
       paramPath.reset();
       paramPath.moveTo(paramFloat1, paramFloat2);
-      this.jdField_a_of_type_Acue.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+      this.jdField_a_of_type_Adex.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
     } while (paramList == null);
     paramList.clear();
     a();
   }
   
-  public void a(int paramInt, boolean paramBoolean, Path paramPath, List<actz> paramList)
+  public void a(int paramInt, boolean paramBoolean, Path paramPath, List<ades> paramList)
   {
     if (this.jdField_a_of_type_JavaUtilMap == null) {
       return;
@@ -105,12 +105,12 @@ public class HalfAlgorithm
     }
     synchronized (this.jdField_a_of_type_JavaUtilMap)
     {
-      acuf localacuf = new acuf();
-      localacuf.jdField_a_of_type_Int = paramInt;
-      localacuf.jdField_a_of_type_Boolean = paramBoolean;
-      localacuf.jdField_a_of_type_AndroidGraphicsPath = paramPath;
-      localacuf.jdField_a_of_type_JavaUtilList = paramList;
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localacuf);
+      adey localadey = new adey();
+      localadey.jdField_a_of_type_Int = paramInt;
+      localadey.jdField_a_of_type_Boolean = paramBoolean;
+      localadey.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+      localadey.jdField_a_of_type_JavaUtilList = paramList;
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localadey);
       if (this.jdField_a_of_type_JavaUtilMap.size() == this.jdField_a_of_type_Int)
       {
         this.jdField_a_of_type_JavaUtilMap.notifyAll();
@@ -120,17 +120,17 @@ public class HalfAlgorithm
     }
   }
   
-  public void a(Path paramPath, List<actz> paramList)
+  public void a(Path paramPath, List<ades> paramList)
   {
     if (paramList == null)
     {
-      this.jdField_a_of_type_Acue.a();
-      paramPath.quadTo(this.jdField_a_of_type_Acue.c.jdField_a_of_type_Float, this.jdField_a_of_type_Acue.c.b, this.jdField_a_of_type_Acue.b.jdField_a_of_type_Float, this.jdField_a_of_type_Acue.b.b);
+      this.jdField_a_of_type_Adex.a();
+      paramPath.quadTo(this.jdField_a_of_type_Adex.c.jdField_a_of_type_Float, this.jdField_a_of_type_Adex.c.b, this.jdField_a_of_type_Adex.b.jdField_a_of_type_Float, this.jdField_a_of_type_Adex.b.b);
       return;
     }
     a();
-    this.jdField_a_of_type_Acue.a();
-    if (a(this.jdField_a_of_type_Acue.a.jdField_a_of_type_Float, this.jdField_a_of_type_Acue.a.b, this.jdField_a_of_type_Acue.a.c, this.jdField_a_of_type_Acue.a.jdField_a_of_type_Long, this.jdField_a_of_type_Acue.c.jdField_a_of_type_Float, this.jdField_a_of_type_Acue.c.b, this.jdField_a_of_type_Acue.b.jdField_a_of_type_Float, this.jdField_a_of_type_Acue.b.b, this.jdField_a_of_type_Acue.b.c, this.jdField_a_of_type_Acue.b.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilList))
+    this.jdField_a_of_type_Adex.a();
+    if (a(this.jdField_a_of_type_Adex.a.jdField_a_of_type_Float, this.jdField_a_of_type_Adex.a.b, this.jdField_a_of_type_Adex.a.c, this.jdField_a_of_type_Adex.a.jdField_a_of_type_Long, this.jdField_a_of_type_Adex.c.jdField_a_of_type_Float, this.jdField_a_of_type_Adex.c.b, this.jdField_a_of_type_Adex.b.jdField_a_of_type_Float, this.jdField_a_of_type_Adex.b.b, this.jdField_a_of_type_Adex.b.c, this.jdField_a_of_type_Adex.b.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilList))
     {
       if (this.jdField_a_of_type_JavaUtilList.size() > 0)
       {
@@ -146,7 +146,7 @@ public class HalfAlgorithm
     QLog.d("DoodleAlgorithm", 2, "finish failed:" + System.currentTimeMillis());
   }
   
-  public void a(List<actu> paramList, Path paramPath, List<actz> paramList1)
+  public void a(List<aden> paramList, Path paramPath, List<ades> paramList1)
   {
     if ((paramList == null) || (paramList.size() == 0) || (paramPath == null) || (paramList1 == null)) {
       return;
@@ -156,16 +156,16 @@ public class HalfAlgorithm
     int i = 1;
     if (paramList.hasNext())
     {
-      actu localactu = (actu)paramList.next();
+      aden localaden = (aden)paramList.next();
       if (i != 0)
       {
-        a(localactu.a(), localactu.b(), localactu.c(), localactu.a(), paramPath, null);
+        a(localaden.a(), localaden.b(), localaden.c(), localaden.a(), paramPath, null);
         i = 0;
       }
       for (;;)
       {
         break;
-        b(localactu.a(), localactu.b(), localactu.c(), localactu.a(), paramPath, null);
+        b(localaden.a(), localaden.b(), localaden.c(), localaden.a(), paramPath, null);
       }
     }
     a(paramPath, null);
@@ -173,7 +173,7 @@ public class HalfAlgorithm
     QLog.d("DoodleAlgorithm", 2, "patchpath end:" + paramList1.size());
   }
   
-  public void a(List<actu> arg1, Path paramPath, List<actz> paramList1, int paramInt)
+  public void a(List<aden> arg1, Path paramPath, List<ades> paramList1, int paramInt)
   {
     if ((??? == null) || (???.size() == 0) || (paramPath == null) || (paramList1 == null)) {}
     int i;
@@ -194,11 +194,11 @@ public class HalfAlgorithm
         if (!???.hasNext()) {
           break label178;
         }
-        localObject1 = (actu)???.next();
+        localObject1 = (aden)???.next();
         if (paramInt == 0) {
           break label149;
         }
-        a(((actu)localObject1).a(), ((actu)localObject1).b(), ((actu)localObject1).c(), ((actu)localObject1).a(), paramPath, paramList1);
+        a(((aden)localObject1).a(), ((aden)localObject1).b(), ((aden)localObject1).c(), ((aden)localObject1).a(), paramPath, paramList1);
         paramInt = 0;
       }
       for (;;)
@@ -206,7 +206,7 @@ public class HalfAlgorithm
         break label86;
         i = 0;
         break;
-        b(((actu)localObject1).a(), ((actu)localObject1).b(), ((actu)localObject1).c(), ((actu)localObject1).a(), paramPath, paramList1);
+        b(((aden)localObject1).a(), ((aden)localObject1).b(), ((aden)localObject1).c(), ((aden)localObject1).a(), paramPath, paramList1);
       }
       a(paramPath, paramList1);
       QLog.d("DoodleAlgorithm", 2, "before merge:" + paramList1.size());
@@ -228,18 +228,18 @@ public class HalfAlgorithm
     this.jdField_a_of_type_JavaUtilMap.clear();
     QLog.d("DoodleAlgorithm", 2, "transPath begin multithread begin");
     Object localObject2 = ???.iterator();
-    ??? = (List<actu>)localObject1;
+    ??? = (List<aden>)localObject1;
     while (((Iterator)localObject2).hasNext())
     {
-      localObject1 = (actu)((Iterator)localObject2).next();
+      localObject1 = (aden)((Iterator)localObject2).next();
       if (??? == null)
       {
-        ??? = new acuh();
+        ??? = new adfa();
         ???.a(paramInt);
-        ???.a(((actu)localObject1).a(), ((actu)localObject1).b(), ((actu)localObject1).c(), ((actu)localObject1).a());
-        paramPath.moveTo(((actu)localObject1).a(), ((actu)localObject1).b());
+        ???.a(((aden)localObject1).a(), ((aden)localObject1).b(), ((aden)localObject1).c(), ((aden)localObject1).a());
+        paramPath.moveTo(((aden)localObject1).a(), ((aden)localObject1).b());
       }
-      else if (???.a(((actu)localObject1).a(), ((actu)localObject1).b(), ((actu)localObject1).c(), ((actu)localObject1).a()))
+      else if (???.a(((aden)localObject1).a(), ((aden)localObject1).b(), ((aden)localObject1).c(), ((aden)localObject1).a()))
       {
         localObject1 = ???.a();
         i = this.jdField_a_of_type_Int + 1;
@@ -266,13 +266,13 @@ public class HalfAlgorithm
         localObject1 = this.jdField_a_of_type_JavaUtilMap.values().iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          localObject2 = (acuf)((Iterator)localObject1).next();
-          if (((acuf)localObject2).jdField_a_of_type_AndroidGraphicsPath != null) {
-            paramPath.addPath(((acuf)localObject2).jdField_a_of_type_AndroidGraphicsPath);
+          localObject2 = (adey)((Iterator)localObject1).next();
+          if (((adey)localObject2).jdField_a_of_type_AndroidGraphicsPath != null) {
+            paramPath.addPath(((adey)localObject2).jdField_a_of_type_AndroidGraphicsPath);
           }
-          if (((acuf)localObject2).jdField_a_of_type_JavaUtilList != null)
+          if (((adey)localObject2).jdField_a_of_type_JavaUtilList != null)
           {
-            a(paramList1, ((acuf)localObject2).jdField_a_of_type_JavaUtilList);
+            a(paramList1, ((adey)localObject2).jdField_a_of_type_JavaUtilList);
             continue;
             paramPath = finally;
             throw paramPath;
@@ -307,20 +307,20 @@ public class HalfAlgorithm
     }
   }
   
-  public void b(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, Path paramPath, List<actz> paramList)
+  public void b(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, Path paramPath, List<ades> paramList)
   {
     if (paramPath == null) {
       return;
     }
     if (paramList == null)
     {
-      this.jdField_a_of_type_Acue.a(paramFloat1, paramFloat2, paramFloat3, paramLong, true);
-      paramPath.quadTo(this.jdField_a_of_type_Acue.c.jdField_a_of_type_Float, this.jdField_a_of_type_Acue.c.b, this.jdField_a_of_type_Acue.b.jdField_a_of_type_Float, this.jdField_a_of_type_Acue.b.b);
+      this.jdField_a_of_type_Adex.a(paramFloat1, paramFloat2, paramFloat3, paramLong, true);
+      paramPath.quadTo(this.jdField_a_of_type_Adex.c.jdField_a_of_type_Float, this.jdField_a_of_type_Adex.c.b, this.jdField_a_of_type_Adex.b.jdField_a_of_type_Float, this.jdField_a_of_type_Adex.b.b);
       return;
     }
     a();
-    boolean bool = a(this.jdField_a_of_type_Acue.b.jdField_a_of_type_Float, this.jdField_a_of_type_Acue.b.b, this.jdField_a_of_type_Acue.b.c, this.jdField_a_of_type_Acue.b.jdField_a_of_type_Long, this.jdField_a_of_type_Acue.d.jdField_a_of_type_Float, this.jdField_a_of_type_Acue.d.b, (this.jdField_a_of_type_Acue.d.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.jdField_a_of_type_Acue.d.b + paramFloat2) / 2.0F, (this.jdField_a_of_type_Acue.d.c + paramFloat3) / 2.0F, (this.jdField_a_of_type_Acue.d.jdField_a_of_type_Long + paramLong) / 2L, this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Acue.a(paramFloat1, paramFloat2, paramFloat3, paramLong, bool);
+    boolean bool = a(this.jdField_a_of_type_Adex.b.jdField_a_of_type_Float, this.jdField_a_of_type_Adex.b.b, this.jdField_a_of_type_Adex.b.c, this.jdField_a_of_type_Adex.b.jdField_a_of_type_Long, this.jdField_a_of_type_Adex.d.jdField_a_of_type_Float, this.jdField_a_of_type_Adex.d.b, (this.jdField_a_of_type_Adex.d.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.jdField_a_of_type_Adex.d.b + paramFloat2) / 2.0F, (this.jdField_a_of_type_Adex.d.c + paramFloat3) / 2.0F, (this.jdField_a_of_type_Adex.d.jdField_a_of_type_Long + paramLong) / 2L, this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Adex.a(paramFloat1, paramFloat2, paramFloat3, paramLong, bool);
     if (bool)
     {
       if (this.jdField_a_of_type_JavaUtilList.size() > 0)

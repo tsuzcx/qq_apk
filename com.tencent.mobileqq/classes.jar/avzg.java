@@ -1,46 +1,71 @@
-import android.os.Environment;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class avzg
+class avzg
+  extends Handler
 {
-  public static final String a;
-  public static final String b;
-  public static final String c;
-  public static final String d;
-  public static String e;
-  public static String f;
+  protected WeakReference<avzf> a;
   
-  static
+  public avzg(avzf paramavzf1, Looper paramLooper, avzf paramavzf2)
   {
-    int i = 0;
-    try
+    super(paramLooper);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramavzf2);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    avzf localavzf = (avzf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localavzf == null)
     {
-      boolean bool = "mounted".equals(Environment.getExternalStorageState());
-      i = bool;
-    }
-    catch (Exception localException)
-    {
-      label13:
-      File localFile;
-      break label13;
-    }
-    if (i != 0) {}
-    for (localFile = new File(ajed.aU);; localFile = BaseApplicationImpl.getApplication().getCacheDir())
-    {
-      a = new File(localFile, "dov_ptv_template_dov").getPath() + File.separator + "camera_story_default_template.json";
-      b = new File(localFile, "dov_ptv_template_dov").getPath() + File.separator + "camera_emo_default_template.json";
-      c = new File(localFile, "dov_ptv_template_dov").getPath() + File.separator + "camera_play_show_default_template.json";
-      d = new File(localFile, "dov_ptv_template_dov").getPath() + File.separator + "camera_play_show_updated_template.json";
-      e = "";
-      f = "";
+      if (QLog.isColorLevel()) {
+        QLog.w("HWAudioEncoder", 2, "AudioEncodeHandler.handleMessage: encoder is null");
+      }
       return;
     }
+    int i = paramMessage.what;
+    switch (i)
+    {
+    default: 
+      throw new RuntimeException("Unhandled msg what=" + i);
+    case 1: 
+      paramMessage = (Object[])paramMessage.obj;
+      try
+      {
+        localavzf.a((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
+        return;
+      }
+      catch (Exception paramMessage)
+      {
+        QLog.e("HWAudioEncoder", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
+        avzf.a(this.jdField_a_of_type_Avzf);
+        return;
+      }
+    case 2: 
+      this.jdField_a_of_type_Avzf.a();
+      return;
+    case 3: 
+      paramMessage = (String)paramMessage.obj;
+      try
+      {
+        avzf.a(this.jdField_a_of_type_Avzf, paramMessage);
+        return;
+      }
+      catch (Exception paramMessage)
+      {
+        QLog.e("HWAudioEncoder", 1, "AudioEncodeHandler start fail.", paramMessage);
+        avzf.a(this.jdField_a_of_type_Avzf);
+        return;
+      }
+    }
+    this.jdField_a_of_type_Avzf.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avzg
  * JD-Core Version:    0.7.0.1
  */

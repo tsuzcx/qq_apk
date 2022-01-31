@@ -1,34 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.widget.AdapterView;
 
 public class azeu
-  implements Animation.AnimationListener
+  implements bfpc
 {
-  public azeu(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
+  public azeu(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      return;
-    }
-    if (paramAnimation == this.a.b) {
-      VisitorTroopCardFragment.a(this.a, false);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setFocusable(true);
-    this.a.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramAnimation == this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation)) {
-      VisitorTroopCardFragment.a(this.a, true);
-    }
+    this.a.finish();
   }
 }
 

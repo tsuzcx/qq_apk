@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import aioe;
+import ajbc;
 
 public class CmGameAvHandler$7
   implements Runnable
 {
-  public CmGameAvHandler$7(aioe paramaioe) {}
+  public CmGameAvHandler$7(ajbc paramajbc) {}
   
   public void run()
   {
-    aioe.a(this.this$0, true);
+    ajbc.a(this.this$0, true);
   }
 }
 

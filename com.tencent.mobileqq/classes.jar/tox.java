@@ -1,25 +1,51 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspPublishVideo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tox
-  implements View.OnClickListener
+  extends syq
 {
-  public tox(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public long a;
+  public String a;
+  public List<tny> a;
+  public long b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onClick(View paramView)
+  public tox(qqstory_service.RspPublishVideo paramRspPublishVideo)
   {
-    if (!badq.g(this.a.jdField_a_of_type_AndroidViewView.getContext()))
-    {
-      bbmy.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131628946, 0).a();
-      return;
+    super(paramRspPublishVideo.result);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = paramRspPublishVideo.create_time.get();
+    this.jdField_a_of_type_JavaLangString = paramRspPublishVideo.feed_id.get().toStringUtf8();
+    this.c = String.valueOf(paramRspPublishVideo.date.get());
+    this.b = paramRspPublishVideo.video_index.get();
+    if (paramRspPublishVideo.story_id.has()) {
+      this.d = paramRspPublishVideo.story_id.get().toStringUtf8();
     }
-    urk.d(this.a.jdField_a_of_type_JavaLangString, "video view error, retry, show loading view");
-    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-    this.a.a(10, true, "retry play");
+    if (paramRspPublishVideo.vid.has()) {
+      this.e = paramRspPublishVideo.vid.get().toStringUtf8();
+    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramRspPublishVideo = paramRspPublishVideo.group_feed_list.get().iterator();
+    while (paramRspPublishVideo.hasNext())
+    {
+      qqstory_group.GroupFeed localGroupFeed = (qqstory_group.GroupFeed)paramRspPublishVideo.next();
+      this.jdField_a_of_type_JavaUtilList.add(new tny(localGroupFeed));
+    }
+  }
+  
+  public String toString()
+  {
+    return "PublishStoryVideoRespond{createTime=" + this.jdField_a_of_type_Long + ", feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", date='" + this.c + '\'' + ", storyId='" + this.d + '\'' + ", videoIndex=" + this.b + ", vid=" + this.e + ", addShareGroupFeeds=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

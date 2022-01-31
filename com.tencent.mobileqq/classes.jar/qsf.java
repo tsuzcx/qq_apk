@@ -1,21 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
-import com.tencent.widget.AbsListView;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class qsf
-  implements begh
+class qsf
+  implements URLDrawable.URLDrawableListener
 {
-  public qsf(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
+  qsf(qrw paramqrw) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a.a(new qsh(this, "onListViewScroll", paramAbsListView, paramInt1, paramInt2, paramInt3));
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.a(new qsg(this, "onScrollStateChanged", paramAbsListView, paramInt));
-    if ((obz.a()) && (paramInt != 0)) {
-      zqk.a().a("proteus_family_feeds");
+    if ((qrw.a(this.a) != null) && (qrw.a(this.a).getStatus() == 1) && ((qrw.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    {
+      paramURLDrawable = (RegionDrawable)qrw.a(this.a).getCurrDrawable();
+      qrw.a(this.a, paramURLDrawable.getBitmap());
     }
   }
 }

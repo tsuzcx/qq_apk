@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import aytz;
+import azup;
 
 public class TroopFileScaner$2
   implements Runnable
 {
-  public TroopFileScaner$2(aytz paramaytz, long paramLong) {}
+  public TroopFileScaner$2(azup paramazup, long paramLong) {}
   
   public void run()
   {
-    aytz.a(this.this$0, this.a);
-    aytz.a(this.this$0);
+    azup.a(this.this$0, this.a);
+    azup.a(this.this$0);
   }
 }
 

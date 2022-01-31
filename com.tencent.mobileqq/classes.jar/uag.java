@@ -1,19 +1,10 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import java.util.ArrayList;
 
 public class uag
-  implements vqk
+  extends ssk
 {
-  public uag(StoryPickerFragment paramStoryPickerFragment) {}
-  
-  public void a() {}
-  
-  public boolean a(boolean paramBoolean)
-  {
-    if (this.a.jdField_a_of_type_Ugl != null) {
-      this.a.jdField_a_of_type_Ugl.a(this.a.jdField_a_of_type_Uau.a());
-    }
-    return true;
-  }
+  public ArrayList<String> a;
+  public boolean a = true;
 }
 
 

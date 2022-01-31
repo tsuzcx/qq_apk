@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aayc;
+import abhz;
 
 public class GesturePWDCreateActivity$2$3
   implements Runnable
 {
-  public GesturePWDCreateActivity$2$3(aayc paramaayc) {}
+  public GesturePWDCreateActivity$2$3(abhz paramabhz) {}
   
   public void run()
   {

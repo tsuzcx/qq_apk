@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import ahqh;
+import aicz;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 
 public class CreateFaceToFaceDiscussionActivity$9
@@ -10,7 +10,7 @@ public class CreateFaceToFaceDiscussionActivity$9
   
   public void run()
   {
-    SosoInterface.a(new ahqh(this, 0, true, false, 60000L, false, false, "CreateFaceToFaceDiscussionActivity"));
+    SosoInterface.a(new aicz(this, 0, true, false, 60000L, false, false, "CreateFaceToFaceDiscussionActivity"));
   }
 }
 

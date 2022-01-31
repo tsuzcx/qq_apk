@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import bbmy;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 final class ApolloUtil$9
   implements Runnable
 {
+  ApolloUtil$9(String paramString) {}
+  
   public void run()
   {
-    bbmy localbbmy = bbmy.a(BaseApplicationImpl.getApplication(), 1, this.a, 1);
-    localbbmy.a();
-    localbbmy.a();
+    bcpw.a(BaseApplicationImpl.getContext(), this.a, 0).a();
   }
 }
 

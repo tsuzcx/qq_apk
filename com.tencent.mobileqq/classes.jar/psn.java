@@ -1,14 +1,23 @@
-import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
-public abstract interface psn
+class psn
+  implements View.OnTouchListener
 {
-  public abstract void a(Bundle paramBundle, float paramFloat);
+  psn(psi parampsi, LinearLayout paramLinearLayout, RelativeLayout paramRelativeLayout) {}
   
-  public abstract void a(Bundle paramBundle, int paramInt, float paramFloat);
-  
-  public abstract void a(Bundle paramBundle, String paramString);
-  
-  public abstract void a(String paramString);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
+    }
+    return false;
+  }
 }
 
 

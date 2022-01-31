@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.data.MarkFaceMessage;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
-class arob
-  implements arol<MarkFaceMessage, anla>
+public class arob
+  implements View.OnClickListener
 {
-  arob(arnz paramarnz, MarkFaceMessage paramMarkFaceMessage) {}
+  public arob(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public anla a(MarkFaceMessage paramMarkFaceMessage)
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_Arnz.a(this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+    }
   }
 }
 

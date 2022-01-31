@@ -1,29 +1,21 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.LocalMultiProcConfig;
 
-public class bgzv
-  extends RecyclerView.ViewHolder
+public final class bgzv
+  implements DialogInterface.OnClickListener
 {
-  public Button a;
-  public EditText a;
-  public ImageView a;
-  public boolean a;
-  
-  public bgzv(bgzn parambgzn, View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131299936));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131299701));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131309417));
-    this.jdField_a_of_type_Boolean = false;
+    if (LocalMultiProcConfig.getBool("qz_safe_mode_no_tip", false)) {
+      LocalMultiProcConfig.putBool("comboqz_protect_enable", false);
+    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgzv
  * JD-Core Version:    0.7.0.1
  */

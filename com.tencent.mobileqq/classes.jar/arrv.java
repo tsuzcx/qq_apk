@@ -1,37 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
 public class arrv
+  implements bfoq
 {
-  private boolean a;
+  public arrv(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, boolean paramBoolean, arsq paramarsq) {}
   
-  public static arrv a(String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
-    }
-    try
-    {
-      arrv localarrv = new arrv();
-      if (new JSONObject(paramString).optInt("isChatMigrateEnable", 0) == 1) {}
-      for (;;)
+    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
+    if (this.jdField_a_of_type_Boolean) {
+      switch (paramInt)
       {
-        localarrv.a = bool;
-        return localarrv;
-        bool = false;
       }
-      return null;
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      QLog.e("MsgBackupConfigProcessor", 2, "MsgBackupConfigData parse error", paramString);
+      this.jdField_a_of_type_Arsq.b(false);
+      if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+        ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+      }
+      return;
+      arrl.a(ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment), this.jdField_a_of_type_Arsq.a().e, this.jdField_a_of_type_Arsq.a().b);
+      continue;
+      this.jdField_a_of_type_Arsq.g();
+      continue;
+      this.jdField_a_of_type_Arsq.g();
     }
-  }
-  
-  public boolean a()
-  {
-    return this.a;
   }
 }
 

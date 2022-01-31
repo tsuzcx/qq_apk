@@ -1,19 +1,19 @@
-import android.util.LruCache;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class tya
-  extends LruCache<String, txs>
+  implements Animation.AnimationListener
 {
-  tya(txz paramtxz, int paramInt)
+  tya(txw paramtxw) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramInt);
+    this.a.dismiss();
   }
   
-  protected void a(boolean paramBoolean, String paramString, txs paramtxs1, txs paramtxs2)
-  {
-    super.entryRemoved(paramBoolean, paramString, paramtxs1, paramtxs2);
-    txq.a("story.icon.ShareGroupIconManager", "entryRemoved key = %s" + paramString);
-    paramtxs1.a();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

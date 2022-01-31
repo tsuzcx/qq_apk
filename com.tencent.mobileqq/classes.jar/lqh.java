@@ -1,66 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Process;
 
-public class lqh
+public abstract class lqh
+  extends lql
 {
-  public static String a;
-  private static lqh jdField_a_of_type_Lqh;
-  private int jdField_a_of_type_Int = -1;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
+  protected Handler a;
   
-  static
+  public lqh()
   {
-    jdField_a_of_type_JavaLangString = "AIOTopRightButtonConfig";
+    HandlerThread localHandlerThread = new HandlerThread("OffscreenGLThread" + (int)(Math.random() * 100.0D));
+    localHandlerThread.start();
+    this.a = new lqi(localHandlerThread.getLooper(), this);
   }
   
-  public static lqh a()
+  protected abstract void a(Message paramMessage);
+  
+  protected void b()
   {
-    try
-    {
-      if (jdField_a_of_type_Lqh == null) {
-        jdField_a_of_type_Lqh = new lqh();
-      }
-      return jdField_a_of_type_Lqh;
-    }
-    finally {}
+    super.b();
+    Process.setThreadPriority(0);
+    lcl.c("GLContextThread", "init: ");
   }
   
-  public void a(String paramString)
+  protected void d()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_Int = 1;
-      if (TextUtils.isEmpty(paramString)) {
-        return;
-      }
-    }
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if ((paramString.has("AVFromRightCornerEnable")) && (!paramString.getBoolean("AVFromRightCornerEnable"))) {
-        this.jdField_a_of_type_Int = 0;
-      }
-      return;
-      paramString = finally;
-      throw paramString;
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "updateConfig, JSONException", paramString);
-      }
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (this.jdField_a_of_type_Int == -1) {
-      a(ksj.b(192).jdField_a_of_type_JavaLangString);
-    }
-    return this.jdField_a_of_type_Int == 1;
+    super.e();
+    this.a.getLooper().quit();
   }
 }
 

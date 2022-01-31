@@ -1,88 +1,27 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.SignatureHandler;
-import com.tencent.mobileqq.richstatus.HistorySignItem;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
 
 public class aveo
-  extends avfa
+  implements bfoq
 {
-  private aveo(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  public aveo(QCallDetailActivity paramQCallDetailActivity, String paramString, bfol parambfol) {}
   
-  protected void a(boolean paramBoolean, List<byte[]> paramList, List<Integer> paramList1)
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("onDeleteStatus. isSuccess=").append(paramBoolean).append(", keyListSize=").append(paramList.size()).append(", errorCodeSize=");
-      if (paramList1 != null) {
-        break label231;
-      }
-    }
-    label231:
-    for (paramList1 = "null";; paramList1 = Integer.valueOf(paramList1.size()))
-    {
-      QLog.d("SignatureHistoryFragment", 2, paramList1);
-      if ((SignatureHistoryFragment.a(this.a) != null) && (SignatureHistoryFragment.a(this.a).isShowing())) {
-        SignatureHistoryFragment.a(this.a).dismiss();
-      }
-      if ((!paramBoolean) || (paramList == null)) {
-        break label419;
-      }
-      if (this.a.getActivity() != null) {
-        this.a.a(2, 2131625938);
-      }
-      paramList = paramList.iterator();
-      for (;;)
-      {
-        if (!paramList.hasNext()) {
-          break label244;
-        }
-        paramList1 = (byte[])paramList.next();
-        localObject = SignatureHistoryFragment.b(this.a).iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          HistorySignItem localHistorySignItem = (HistorySignItem)((Iterator)localObject).next();
-          if ((localHistorySignItem == null) || (localHistorySignItem.richStatus == null) || (!localHistorySignItem.richStatus.feedsId.equals(new String(paramList1)))) {
-            break;
-          }
-          ((Iterator)localObject).remove();
-        }
-      }
-    }
-    label244:
-    if (SignatureHistoryFragment.b(this.a).size() == 0) {
-      SignatureHistoryFragment.a(this.a, 3);
-    }
-    SignatureHistoryFragment.a(this.a).clear();
-    SignatureHistoryFragment.b(this.a, false);
-    SignatureHistoryFragment.a(this.a).setText(2131653751);
-    SignatureHistoryFragment.b(this.a, false);
-    if (SignatureHistoryFragment.a(this.a) != null) {
-      SignatureHistoryFragment.a(this.a).notifyDataSetChanged();
-    }
-    for (;;)
-    {
-      if ((paramBoolean) && (this.a.getActivity() != null))
-      {
-        BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).edit().putBoolean(SignatureHistoryFragment.b(this.a) + "_has_history_sig_del_key", true).apply();
-        if (this.a.a != null) {
-          this.a.a.a(Long.parseLong(SignatureHistoryFragment.a(this.a)));
-        }
-      }
+    if ((QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == null) || (paramInt >= QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).length)) {
       return;
-      label419:
-      if (this.a.getActivity() != null) {
-        this.a.a(1, 2131633590);
-      }
     }
+    switch (QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity)[paramInt])
+    {
+    default: 
+      return;
+    }
+    paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.startActivity(paramView);
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8005AF9", "0X8005AF9", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Bfol.dismiss();
   }
 }
 

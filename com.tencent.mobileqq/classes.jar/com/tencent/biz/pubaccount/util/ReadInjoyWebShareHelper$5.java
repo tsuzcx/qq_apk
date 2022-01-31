@@ -4,28 +4,28 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import bbac;
-import bcad;
-import bcaj;
+import bcdb;
+import bded;
+import bdej;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import java.io.IOException;
 import java.util.Map;
-import mpl;
-import rus;
+import nam;
+import shk;
 
 public class ReadInjoyWebShareHelper$5
   implements Runnable
 {
-  public ReadInjoyWebShareHelper$5(rus paramrus, String paramString1, boolean paramBoolean1, Map paramMap, Runnable paramRunnable, boolean paramBoolean2, String paramString2) {}
+  public ReadInjoyWebShareHelper$5(shk paramshk, String paramString1, boolean paramBoolean1, Map paramMap, Runnable paramRunnable, boolean paramBoolean2, String paramString2) {}
   
   public void run()
   {
     int i = 1;
     try
     {
-      localObject1 = mpl.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
+      localObject1 = nam.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
       if (localObject1 == null) {
         break label135;
       }
@@ -55,9 +55,9 @@ public class ReadInjoyWebShareHelper$5
     }
     this.jdField_a_of_type_JavaUtilMap.put("image", localObject1);
     label135:
-    if (rus.a(this.this$0).a().getClass().getName().equalsIgnoreCase("com.tencent.qqreadinjoy.detailspage.ReadInJoyArticleDetailActivity"))
+    if (shk.a(this.this$0).a().getClass().getName().equalsIgnoreCase("com.tencent.qqreadinjoy.detailspage.ReadInJoyArticleDetailActivity"))
     {
-      rus.a(this.this$0).a().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
+      shk.a(this.this$0).a().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
       localObject1 = new Bundle();
       ((Bundle)localObject1).putString("report_type", "102");
       ((Bundle)localObject1).putString("act_type", "96");
@@ -77,11 +77,11 @@ public class ReadInjoyWebShareHelper$5
     label359:
     for (i = 3;; i = 4)
     {
-      ((Bundle)localObject1).putString("intext_3", bcaj.b(i));
+      ((Bundle)localObject1).putString("intext_3", bdej.b(i));
       ((Bundle)localObject1).putString("stringext_1", this.jdField_b_of_type_JavaLangString);
-      bcad.a().a((Bundle)localObject1, "", rus.a(this.this$0).a().getAccount(), false);
+      bded.a().a((Bundle)localObject1, "", shk.a(this.this$0).a().getAccount(), false);
       return;
-      rus.a(this.this$0).a().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
+      shk.a(this.this$0).a().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
       break;
       i = 0;
       break label231;

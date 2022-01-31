@@ -1,41 +1,30 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.widget.AbsListView;
+import mqq.util.WeakReference;
 
-public class aguh
-  extends alih
+class aguh
+  implements bfob
 {
-  private agui jdField_a_of_type_Agui;
+  aguh(agug paramagug) {}
   
-  private aguh(agud paramagud, View paramView)
-  {
-    super(paramView);
-  }
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(Drawable paramDrawable)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    try
+    if ((agug.a(this.a)) && (paramInt == 0) && (((NewPhotoListActivity)this.a.a.get()).jdField_a_of_type_ComTencentWidgetGestureSelectGridView != null) && (((NewPhotoListActivity)this.a.a.get()).jdField_a_of_type_Agru != null) && (agug.a(this.a).a != null)) {
+      agug.a(this.a);
+    }
+    if (paramInt == 0)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-      this.jdField_a_of_type_Agui = new agui(this, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      int j = this.jdField_a_of_type_AndroidViewView.getWidth();
-      int i = j;
-      if (j == 0) {
-        i = awmc.a;
-      }
-      j = aciy.a(375.0F, this.jdField_a_of_type_AndroidViewView.getResources());
-      a(i - j - 0, 0, j, aciy.a(30.0F, this.jdField_a_of_type_AndroidViewView.getResources()), this.jdField_a_of_type_AndroidViewView);
+      aaad.a().a("list_photo", false);
       return;
     }
-    catch (Throwable paramDrawable)
-    {
-      QLog.e("springHb_SpringHbLightPendantHolder", 1, paramDrawable, new Object[0]);
-    }
+    aaad.a().a("list_photo");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aguh
  * JD-Core Version:    0.7.0.1
  */

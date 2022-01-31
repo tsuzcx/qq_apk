@@ -1,21 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppMusicModule.GlobalMusicCallback.1;
+import com.tencent.mobileqq.ark.API.ArkAppMusicModule.GlobalMusicCallback.2;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.music.SongInfo;
 
-public class alpv
-  implements DialogInterface.OnClickListener
+public final class alpv
+  implements asvu
 {
-  public alpv(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, String paramString) {}
+  private String a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public alpv(String paramString)
   {
-    CardPicGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    this.a = paramString;
+  }
+  
+  public String getToken()
+  {
+    return alpu.a();
+  }
+  
+  public void onPlaySongChanged(SongInfo paramSongInfo)
+  {
+    ArkAppCenter.a().post(this.a, new ArkAppMusicModule.GlobalMusicCallback.2(this, paramSongInfo));
+  }
+  
+  public void onPlayStateChanged(int paramInt)
+  {
+    ArkAppCenter.a().post(this.a, new ArkAppMusicModule.GlobalMusicCallback.1(this, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alpv
  * JD-Core Version:    0.7.0.1
  */

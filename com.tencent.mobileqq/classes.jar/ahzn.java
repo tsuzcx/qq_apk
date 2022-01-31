@@ -1,23 +1,23 @@
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.richmedia.subtitles.WordingItem;
 
-public class ahzn
+public final class ahzn
+  implements Parcelable.Creator<WordingItem>
 {
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public Object a;
-  public String a;
-  public TextView b;
+  public WordingItem a(Parcel paramParcel)
+  {
+    return new WordingItem(paramParcel);
+  }
   
-  public ahzn(ahzm paramahzm) {}
+  public WordingItem[] a(int paramInt)
+  {
+    return new WordingItem[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahzn
  * JD-Core Version:    0.7.0.1
  */

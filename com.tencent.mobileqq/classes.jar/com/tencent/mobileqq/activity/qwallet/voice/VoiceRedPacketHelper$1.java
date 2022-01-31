@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.qwallet.voice;
 
-import agwx;
+import ahjm;
 import android.content.Context;
-import bbmy;
+import bcpw;
 
 public class VoiceRedPacketHelper$1
   implements Runnable
 {
-  public VoiceRedPacketHelper$1(agwx paramagwx, Context paramContext, int paramInt1, int paramInt2) {}
+  public VoiceRedPacketHelper$1(ahjm paramahjm, Context paramContext, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    bbmy.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, 0).b(this.b);
+    bcpw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, 0).b(this.b);
   }
 }
 

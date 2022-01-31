@@ -1,25 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public abstract class vuo
-  implements DialogInterface.OnCancelListener, DialogInterface.OnClickListener
+public final class vuo
+  implements FilenameFilter
 {
-  public abstract void a();
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public boolean accept(File paramFile, String paramString)
   {
-    a();
-  }
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    a();
+    return paramString.endsWith(".mp4");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vuo
  * JD-Core Version:    0.7.0.1
  */

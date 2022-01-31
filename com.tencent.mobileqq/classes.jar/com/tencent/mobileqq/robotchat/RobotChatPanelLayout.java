@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.robotchat;
 
-import aeis;
+import aetp;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import avgg;
-import azgu;
-import azks;
-import azna;
-import aznc;
-import aznd;
-import baig;
+import awfz;
+import bahx;
+import balw;
+import baoe;
+import baog;
+import baoh;
+import bbjn;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
@@ -36,39 +36,39 @@ public class RobotChatPanelLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private String a(String paramString1, String paramString2, aznc paramaznc, azks paramazks)
+  private String a(String paramString1, String paramString2, baog parambaog, balw parambalw)
   {
     String str = "";
     int i;
-    if (paramaznc.jdField_b_of_type_Boolean)
+    if (parambaog.jdField_b_of_type_Boolean)
     {
-      paramaznc.jdField_b_of_type_Boolean = false;
-      paramazks.a();
-      i = paramaznc.jdField_b_of_type_Aznd.c.indexOf("content=");
+      parambaog.jdField_b_of_type_Boolean = false;
+      parambalw.a();
+      i = parambaog.jdField_b_of_type_Baoh.c.indexOf("content=");
       paramString2 = str;
       if (i > 0) {
-        paramString2 = paramaznc.jdField_b_of_type_Aznd.c.substring(i + 8);
+        paramString2 = parambaog.jdField_b_of_type_Baoh.c.substring(i + 8);
       }
-      str = paramaznc.jdField_b_of_type_Aznd.jdField_a_of_type_JavaLangString;
-      paramazks = paramString2;
+      str = parambaog.jdField_b_of_type_Baoh.jdField_a_of_type_JavaLangString;
+      parambalw = paramString2;
       paramString2 = str;
     }
     for (;;)
     {
-      b("1", paramString1, paramazks, paramaznc);
+      b("1", paramString1, parambalw, parambaog);
       return paramString2;
-      str = paramaznc.a.jdField_a_of_type_JavaLangString;
-      paramaznc.jdField_b_of_type_Boolean = true;
-      paramazks.a(paramString1, paramString2);
-      i = paramaznc.a.c.indexOf("content=");
+      str = parambaog.a.jdField_a_of_type_JavaLangString;
+      parambaog.jdField_b_of_type_Boolean = true;
+      parambalw.a(paramString1, paramString2);
+      i = parambaog.a.c.indexOf("content=");
       if (i > 0)
       {
-        paramazks = paramaznc.a.c.substring(i + 8);
+        parambalw = parambaog.a.c.substring(i + 8);
         paramString2 = str;
       }
       else
       {
-        paramazks = "";
+        parambalw = "";
         paramString2 = str;
       }
     }
@@ -76,7 +76,7 @@ public class RobotChatPanelLayout
   
   private void b(String paramString)
   {
-    if (this.jdField_a_of_type_Azks == null) {}
+    if (this.jdField_a_of_type_Balw == null) {}
     label99:
     do
     {
@@ -85,7 +85,7 @@ public class RobotChatPanelLayout
         do
         {
           return;
-          paramString = this.jdField_a_of_type_Azks.a("1", paramString);
+          paramString = this.jdField_a_of_type_Balw.a("1", paramString);
           if (paramString == null) {
             break label99;
           }
@@ -112,21 +112,21 @@ public class RobotChatPanelLayout
     QLog.d("RobotChatPanelLayout", 2, "data is null");
   }
   
-  public String a(aznc paramaznc)
+  public String a(baog parambaog)
   {
-    if (this.jdField_a_of_type_Azks == null)
+    if (this.jdField_a_of_type_Balw == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("RobotChatPanelLayout", 2, "troopRobotManager = null");
       }
-      paramaznc = null;
+      parambaog = null;
     }
     String str;
     do
     {
-      return paramaznc;
-      str = a(this.jdField_a_of_type_JavaLangString, this.b, paramaznc, this.jdField_a_of_type_Azks);
-      paramaznc = str;
+      return parambaog;
+      str = a(this.jdField_a_of_type_JavaLangString, this.b, parambaog, this.jdField_a_of_type_Balw);
+      parambaog = str;
     } while (!QLog.isColorLevel());
     QLog.d("RobotChatPanelLayout", 2, "talking: " + str);
     return str;
@@ -137,9 +137,9 @@ public class RobotChatPanelLayout
     super.a();
   }
   
-  public void a(aznc paramaznc)
+  public void a(baog parambaog)
   {
-    if (this.jdField_a_of_type_Azks == null) {
+    if (this.jdField_a_of_type_Balw == null) {
       if (QLog.isColorLevel()) {
         QLog.e("RobotChatPanelLayout", 2, "troopRobotManager = null");
       }
@@ -147,22 +147,22 @@ public class RobotChatPanelLayout
     do
     {
       return;
-      a(getContext(), paramaznc.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, false, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+      a(getContext(), parambaog.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, false, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
     } while (!QLog.isColorLevel());
-    QLog.d("RobotChatPanelLayout", 2, "send to robot: " + paramaznc.a.jdField_a_of_type_JavaLangString);
+    QLog.d("RobotChatPanelLayout", 2, "send to robot: " + parambaog.a.jdField_a_of_type_JavaLangString);
   }
   
-  public void a(aznc paramaznc, String paramString)
+  public void a(baog parambaog, String paramString)
   {
-    azgu.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "0X800A48C", this.jdField_a_of_type_JavaLangString, paramString);
+    bahx.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "0X800A48C", this.jdField_a_of_type_JavaLangString, paramString);
   }
   
-  public void a(String paramString1, String paramString2, aeis paramaeis, azna paramazna)
+  public void a(String paramString1, String paramString2, aetp paramaetp, baoe parambaoe)
   {
-    super.a(paramString1, paramString2, paramaeis, paramazna);
+    super.a(paramString1, paramString2, paramaetp, parambaoe);
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
-    if (this.jdField_a_of_type_Azks == null) {
+    if (this.jdField_a_of_type_Balw == null) {
       if (QLog.isColorLevel()) {
         QLog.e("RobotChatPanelLayout", 2, "troopRobotManager = null");
       }
@@ -179,8 +179,8 @@ public class RobotChatPanelLayout
         if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_JavaLangString.equals(paramString1))) {
           a(false);
         }
-        int i = baig.an(getContext(), "1_" + paramString1);
-        this.jdField_a_of_type_Azks.a(l, i, new avgg(this, l, i, paramString1, paramazna));
+        int i = bbjn.an(getContext(), "1_" + paramString1);
+        this.jdField_a_of_type_Balw.a(l, i, new awfz(this, l, i, paramString1, parambaoe));
         return;
       }
       catch (Exception paramString2)
@@ -193,25 +193,25 @@ public class RobotChatPanelLayout
     }
   }
   
-  public void b(aznc paramaznc)
+  public void b(baog parambaog)
   {
-    if (this.jdField_a_of_type_Azks == null)
+    if (this.jdField_a_of_type_Balw == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("RobotChatPanelLayout", 2, "troopRobotManager = null");
       }
       return;
     }
-    int i = paramaznc.a.c.indexOf("content=");
+    int i = parambaog.a.c.indexOf("content=");
     if (i > 0) {}
-    for (String str = paramaznc.a.c.substring(i + 8);; str = null)
+    for (String str = parambaog.a.c.substring(i + 8);; str = null)
     {
-      a(getContext(), paramaznc.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, true, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
-      a("1", this.jdField_a_of_type_JavaLangString, str, paramaznc);
+      a(getContext(), parambaog.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, true, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+      a("1", this.jdField_a_of_type_JavaLangString, str, parambaog);
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.d("RobotChatPanelLayout", 2, "send to server: " + paramaznc.a.jdField_a_of_type_JavaLangString);
+      QLog.d("RobotChatPanelLayout", 2, "send to server: " + parambaog.a.jdField_a_of_type_JavaLangString);
       return;
     }
   }

@@ -1,66 +1,79 @@
-import android.annotation.TargetApi;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.Window;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.immersive.SystemBarCompact;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.13.1;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.13.2;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.13.3;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aoqu
-  implements aotd
+  extends aouj
 {
-  public aoqu(FileBrowserActivity paramFileBrowserActivity) {}
+  public aoqu(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  @TargetApi(14)
-  public void a()
+  protected void a(apev paramapev)
   {
-    if (ImmersiveUtils.isSupporImmersive() == 1)
+    if (paramapev == null) {}
+    do
     {
-      RelativeLayout localRelativeLayout = (RelativeLayout)this.a.findViewById(2131309737);
-      localRelativeLayout.setFitsSystemWindows(true);
-      localRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this.a), 0, 0);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    FileBrowserActivity.a(this.a, (TextView)this.a.findViewById(2131302847));
-    FileBrowserActivity.a(this.a).setTextSize(1, 19.0F);
-    FileBrowserActivity.a(this.a).setText(this.a.a.a());
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    FileBrowserActivity.a(this.a, paramBoolean);
-    View localView = this.a.findViewById(2131309581);
-    if (!FileBrowserActivity.a(this.a))
-    {
-      localView.setVisibility(0);
-      if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.mSystemBarComp != null))
+      FileManagerEntity localFileManagerEntity;
+      do
       {
-        int i = this.a.getResources().getColor(2131101315);
-        this.a.mSystemBarComp.setStatusColor(i);
-        this.a.mSystemBarComp.setStatusBarColor(i);
-        if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-          this.a.mSystemBarComp.setStatusBarDrawable(this.a.getResources().getDrawable(2130845215));
+        return;
+        if (!(paramapev.a instanceof FileManagerEntity)) {
+          break;
+        }
+        localFileManagerEntity = (FileManagerEntity)paramapev.a;
+      } while ((paramapev.b == null) || (paramapev.b.length() <= 0));
+      localFileManagerEntity.strThumbPath = paramapev.b;
+      QfileBaseCloudFileTabView.k(this.a).a().c(localFileManagerEntity);
+      this.a.i();
+      return;
+    } while (!(paramapev.a instanceof WeiYunFileInfo));
+    this.a.i();
+  }
+  
+  protected void a(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
+  {
+    apeh.a(paramString1);
+    apue.a(paramInteger.intValue(), paramString2);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(false);
+  }
+  
+  protected void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    paramString2 = apeh.a(paramString1);
+    if ((!this.a.b(paramString2)) && (this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    {
+      paramString2 = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (paramString2.hasNext())
+      {
+        WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)paramString2.next();
+        if (localWeiYunFileInfo.a.equalsIgnoreCase(paramString1) == true) {
+          this.a.b(localWeiYunFileInfo);
         }
       }
-      this.a.getWindow().setFlags(0, 1024);
-      return;
     }
-    localView.setVisibility(8);
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.mSystemBarComp != null))
-    {
-      this.a.mSystemBarComp.setStatusColor(0);
-      this.a.mSystemBarComp.setStatusBarColor(0);
-      if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-        this.a.mSystemBarComp.setStatusBarDrawable(null);
-      }
-    }
-    this.a.getWindow().setFlags(1024, 1024);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(false);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    QfileBaseCloudFileTabView.a(this.a, new QfileBaseCloudFileTabView.13.1(this));
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    QfileBaseCloudFileTabView.b(this.a, new QfileBaseCloudFileTabView.13.2(this, paramLong2));
+  }
+  
+  protected void b()
+  {
+    super.b();
+    QfileBaseCloudFileTabView.c(this.a, new QfileBaseCloudFileTabView.13.3(this));
   }
 }
 

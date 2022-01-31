@@ -1,8 +1,8 @@
-import com.tencent.aekit.openrender.internal.Frame;
-
 public abstract interface lgt
 {
-  public abstract void a(Frame paramFrame, lgq paramlgq);
+  public abstract lpf a();
+  
+  public abstract void a(String paramString, lpf paramlpf);
 }
 
 

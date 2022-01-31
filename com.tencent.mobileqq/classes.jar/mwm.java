@@ -1,31 +1,35 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.widget.QQMapView;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.UiSettings;
 
 public class mwm
-  implements begw
+  implements Animation.AnimationListener
 {
-  public mwm(AccountDetailActivity paramAccountDetailActivity) {}
+  public mwm(PoiMapActivity paramPoiMapActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.o) {
-      return;
+    if (PoiMapActivity.g(this.a) != null) {
+      PoiMapActivity.h(this.a).getMap().getUiSettings().setLogoPositionWithMargin(0, 0, 0, 0, 0);
     }
-    this.a.o = true;
-    switch (paramInt)
-    {
+    paramAnimation = (FrameLayout.LayoutParams)this.a.b.getLayoutParams();
+    paramAnimation.bottomMargin = (-this.a.p);
+    this.a.b.setLayoutParams(paramAnimation);
+    if ((this.a.e != null) && (this.a.e.getVisibility() != 0)) {
+      this.a.e.setVisibility(0);
     }
-    for (;;)
-    {
-      this.a.a.dismiss();
-      return;
-      this.a.q();
-      continue;
-      this.a.E();
-      continue;
-      this.a.G();
-    }
+    PoiMapActivity.e(this.a).clearAnimation();
+    this.a.a = false;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,103 +1,63 @@
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.HashMap;
+import java.io.IOException;
+import java.net.URL;
 
 public class azfv
-  extends batl
+  extends AsyncTask<Void, Void, Bundle>
 {
-  azfv(azfo paramazfo) {}
+  public azfv(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void onDone(batm parambatm)
+  protected Bundle a(Void... paramVarArgs)
   {
-    azga localazga = new azga();
-    Bundle localBundle = parambatm.a();
-    String str1 = localBundle.getString("GiftAnimationId");
-    String str2 = localBundle.getString("TroopUin");
-    int i = localBundle.getInt("GiftAnimationType");
-    boolean bool = localBundle.getBoolean("GiftIsInteract");
-    localazga.jdField_a_of_type_Boolean = true;
-    localazga.jdField_a_of_type_JavaLangString = str1;
-    azgb.a().setChanged();
-    azgb.a().notifyObservers(localazga);
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAnimationControlManager", 2, "onDone Id=" + str1 + " task:" + parambatm);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("forward_type", 1);
+    paramVarArgs = new File(ajsf.bX);
+    if (!paramVarArgs.exists()) {
+      paramVarArgs.mkdirs();
     }
-    awqx.b(null, "P_CliOper", "P_CliOper", "", "troop_gift_animation", "download", 0, parambatm.a, str1, "", "", "");
-    if (parambatm.a == 0)
+    String str = ajsf.bX + this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_JavaLangString + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    paramVarArgs = str;
+    if (!new File(str).exists()) {}
+    try
     {
-      parambatm = new File(azkd.a(str1, i, bool));
-      if (parambatm.exists()) {}
-      try
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
+      localBundle.putBoolean("forward_urldrawable", true);
+      localBundle.putString("forward_urldrawable_thumb_url", this.jdField_a_of_type_JavaLangString);
+      localBundle.putString("forward_filepath", paramVarArgs);
+      localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+      localBundle.putString("forward_extra", paramVarArgs);
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.l)
       {
-        bace.a(parambatm.getAbsolutePath(), ajed.cs, false);
-        parambatm.delete();
-        this.a.jdField_a_of_type_JavaUtilHashMap.put(str1, Integer.valueOf(3));
-        awqx.b(null, "P_CliOper", "Grp_flower", "", "grp_aio", "anime_suc", 1, 0, str2, "", "", "");
-        if (((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) || (this.a.jdField_a_of_type_AndroidAppActivity != null)) && (!azfo.jdField_a_of_type_JavaLangString.equals(this.a.b))) {}
-        return;
+        localBundle.putString("forward_thumb", paramVarArgs);
+        localBundle.putBoolean("key_flag_from_plugin", true);
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        parambatm.delete();
-      }
+      return localBundle;
     }
-    this.a.jdField_a_of_type_JavaUtilHashMap.put(localObject, Integer.valueOf(4));
-    i = badq.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication());
-    if (i == 1) {
-      i = 0;
-    }
-    for (;;)
+    catch (IOException paramVarArgs)
     {
-      if ((!(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aego)) && (!(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aefe))) {
-        break label428;
-      }
-      ajnb.a("gift_aio", "fail_cartoon", str2, "", "", "");
-      break;
-      if (i == 2) {
-        i = 3;
-      } else if (i == 3) {
-        i = 2;
-      } else if (i == 4) {
-        i = 1;
-      } else {
-        i = 4;
-      }
+      QLog.e("foward", 2, "IOException", paramVarArgs);
     }
-    label428:
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
-    {
-      parambatm = "0";
-      label441:
-      if (!mnf.a().a(str2)) {
-        break label521;
-      }
-    }
-    label521:
-    for (int j = 2;; j = 1)
-    {
-      awqx.b(null, "P_CliOper", "Grp_flower", "", "grp_aio", "anime_fail", j, 0, str2, localObject + "", parambatm, i + "");
-      break;
-      parambatm = "1";
-      break label441;
-    }
+    return null;
   }
   
-  public boolean onStart(batm parambatm)
+  protected void a(Bundle paramBundle)
   {
-    String str = parambatm.a().getString("GiftAnimationId");
-    azga localazga = new azga();
-    localazga.jdField_a_of_type_Boolean = false;
-    localazga.jdField_a_of_type_JavaLangString = str;
-    azgb.a().setChanged();
-    azgb.a().notifyObservers(localazga);
-    return super.onStart(parambatm);
+    if (paramBundle == null)
+    {
+      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, ajyc.a(2131715211), 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getTitleBarHeight());
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtras(paramBundle);
+    aqbc.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, localIntent, 21);
+    TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, "0X8006A81", "0X8006A95");
   }
 }
 

@@ -1099,26 +1099,6 @@ public class DeviceInfo
     //   231	249	416	java/lang/Throwable
   }
   
-  public static long getFreeSdCard()
-  {
-    if (!checkIsHaveCard()) {
-      return 0L;
-    }
-    try
-    {
-      StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
-      int i = localStatFs.getBlockSize();
-      int j = localStatFs.getAvailableBlocks();
-      long l = j;
-      return i * l;
-    }
-    catch (Throwable localThrowable)
-    {
-      LogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting available size of SD card.", localThrowable);
-    }
-    return -2L;
-  }
-  
   @SuppressLint({"HardwareIds"})
   public static String getHardwareSerialNumber()
   {
@@ -1177,7 +1157,7 @@ public class DeviceInfo
     //   10: astore 5
     //   12: new 243	java/io/File
     //   15: dup
-    //   16: ldc_w 569
+    //   16: ldc_w 546
     //   19: invokespecial 246	java/io/File:<init>	(Ljava/lang/String;)V
     //   22: invokevirtual 249	java/io/File:exists	()Z
     //   25: ifeq +347 -> 372
@@ -1185,7 +1165,7 @@ public class DeviceInfo
     //   31: dup
     //   32: new 446	java/io/FileReader
     //   35: dup
-    //   36: ldc_w 569
+    //   36: ldc_w 546
     //   39: invokespecial 449	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   42: invokespecial 296	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   45: astore_1
@@ -1220,7 +1200,7 @@ public class DeviceInfo
     //   88: astore_3
     //   89: new 243	java/io/File
     //   92: dup
-    //   93: ldc_w 571
+    //   93: ldc_w 548
     //   96: invokespecial 246	java/io/File:<init>	(Ljava/lang/String;)V
     //   99: invokevirtual 249	java/io/File:exists	()Z
     //   102: ifeq +49 -> 151
@@ -1230,7 +1210,7 @@ public class DeviceInfo
     //   110: dup
     //   111: new 446	java/io/FileReader
     //   114: dup
-    //   115: ldc_w 571
+    //   115: ldc_w 548
     //   118: invokespecial 449	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   121: invokespecial 296	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   124: astore_1
@@ -1261,7 +1241,7 @@ public class DeviceInfo
     //   163: astore_3
     //   164: new 243	java/io/File
     //   167: dup
-    //   168: ldc_w 573
+    //   168: ldc_w 550
     //   171: invokespecial 246	java/io/File:<init>	(Ljava/lang/String;)V
     //   174: invokevirtual 249	java/io/File:exists	()Z
     //   177: ifeq +192 -> 369
@@ -1271,7 +1251,7 @@ public class DeviceInfo
     //   185: dup
     //   186: new 446	java/io/FileReader
     //   189: dup
-    //   190: ldc_w 573
+    //   190: ldc_w 550
     //   193: invokespecial 449	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   196: invokespecial 296	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   199: astore_2
@@ -1324,7 +1304,7 @@ public class DeviceInfo
     //   265: aload_0
     //   266: astore_2
     //   267: ldc 10
-    //   269: ldc_w 575
+    //   269: ldc_w 552
     //   272: aload_1
     //   273: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   276: aload 4
@@ -1553,18 +1533,18 @@ public class DeviceInfo
     // Byte code:
     //   0: aconst_null
     //   1: astore 6
-    //   3: ldc2_w 642
+    //   3: ldc2_w 619
     //   6: lstore_2
     //   7: new 446	java/io/FileReader
     //   10: dup
-    //   11: ldc_w 645
+    //   11: ldc_w 622
     //   14: invokespecial 449	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   17: astore 8
     //   19: new 282	java/io/BufferedReader
     //   22: dup
     //   23: aload 8
     //   25: sipush 2048
-    //   28: invokespecial 648	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   28: invokespecial 625	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
     //   31: astore 7
     //   33: aload 7
     //   35: invokevirtual 299	java/io/BufferedReader:readLine	()Ljava/lang/String;
@@ -1583,14 +1563,14 @@ public class DeviceInfo
     //   63: aload 8
     //   65: ifnull +10 -> 75
     //   68: aload 8
-    //   70: invokevirtual 649	java/io/FileReader:close	()V
+    //   70: invokevirtual 626	java/io/FileReader:close	()V
     //   73: lload_2
     //   74: lstore_0
     //   75: lload_0
     //   76: lreturn
     //   77: astore 6
     //   79: ldc 10
-    //   81: ldc_w 651
+    //   81: ldc_w 628
     //   84: aload 6
     //   86: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   89: goto -28 -> 61
@@ -1599,20 +1579,20 @@ public class DeviceInfo
     //   96: ldc_w 468
     //   99: aload 6
     //   101: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   104: ldc2_w 642
+    //   104: ldc2_w 619
     //   107: lreturn
     //   108: aload 6
-    //   110: ldc_w 653
+    //   110: ldc_w 630
     //   113: iconst_2
-    //   114: invokevirtual 656	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
+    //   114: invokevirtual 633	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
     //   117: iconst_1
     //   118: aaload
     //   119: invokevirtual 360	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   122: ldc_w 658
+    //   122: ldc_w 635
     //   125: ldc_w 418
-    //   128: invokevirtual 662	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   128: invokevirtual 639	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   131: invokevirtual 464	java/lang/String:trim	()Ljava/lang/String;
-    //   134: invokestatic 668	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   134: invokestatic 645	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   137: lstore_0
     //   138: aload 7
     //   140: invokevirtual 299	java/io/BufferedReader:readLine	()Ljava/lang/String;
@@ -1628,34 +1608,34 @@ public class DeviceInfo
     //   162: aload 8
     //   164: ifnull -89 -> 75
     //   167: aload 8
-    //   169: invokevirtual 649	java/io/FileReader:close	()V
-    //   172: ldc2_w 642
+    //   169: invokevirtual 626	java/io/FileReader:close	()V
+    //   172: ldc2_w 619
     //   175: lreturn
     //   176: astore 6
     //   178: ldc 10
     //   180: ldc_w 468
     //   183: aload 6
     //   185: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   188: ldc2_w 642
+    //   188: ldc2_w 619
     //   191: lreturn
     //   192: astore 6
     //   194: ldc 10
-    //   196: ldc_w 651
+    //   196: ldc_w 628
     //   199: aload 6
     //   201: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   204: goto -44 -> 160
     //   207: aload 6
-    //   209: ldc_w 653
+    //   209: ldc_w 630
     //   212: iconst_2
-    //   213: invokevirtual 656	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
+    //   213: invokevirtual 633	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
     //   216: iconst_1
     //   217: aaload
     //   218: invokevirtual 360	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   221: ldc_w 658
+    //   221: ldc_w 635
     //   224: ldc_w 418
-    //   227: invokevirtual 662	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   227: invokevirtual 639	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   230: invokevirtual 464	java/lang/String:trim	()Ljava/lang/String;
-    //   233: invokestatic 668	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   233: invokestatic 645	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   236: lstore 4
     //   238: aload 7
     //   240: invokevirtual 299	java/io/BufferedReader:readLine	()Ljava/lang/String;
@@ -1671,45 +1651,45 @@ public class DeviceInfo
     //   262: aload 8
     //   264: ifnull -189 -> 75
     //   267: aload 8
-    //   269: invokevirtual 649	java/io/FileReader:close	()V
-    //   272: ldc2_w 642
+    //   269: invokevirtual 626	java/io/FileReader:close	()V
+    //   272: ldc2_w 619
     //   275: lreturn
     //   276: astore 6
     //   278: ldc 10
     //   280: ldc_w 468
     //   283: aload 6
     //   285: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   288: ldc2_w 642
+    //   288: ldc2_w 619
     //   291: lreturn
     //   292: astore 6
     //   294: ldc 10
-    //   296: ldc_w 651
+    //   296: ldc_w 628
     //   299: aload 6
     //   301: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   304: goto -44 -> 260
     //   307: aload 6
-    //   309: ldc_w 653
+    //   309: ldc_w 630
     //   312: iconst_2
-    //   313: invokevirtual 656	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
+    //   313: invokevirtual 633	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
     //   316: iconst_1
     //   317: aaload
     //   318: invokevirtual 360	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   321: ldc_w 658
+    //   321: ldc_w 635
     //   324: ldc_w 418
-    //   327: invokevirtual 662	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   327: invokevirtual 639	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   330: invokevirtual 464	java/lang/String:trim	()Ljava/lang/String;
-    //   333: invokestatic 668	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   333: invokestatic 645	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   336: lstore_2
     //   337: lload_2
-    //   338: ldc2_w 669
+    //   338: ldc2_w 646
     //   341: lmul
     //   342: lconst_0
     //   343: lload_0
-    //   344: ldc2_w 669
+    //   344: ldc2_w 646
     //   347: lmul
     //   348: ladd
     //   349: lload 4
-    //   351: ldc2_w 669
+    //   351: ldc2_w 646
     //   354: lmul
     //   355: ladd
     //   356: ladd
@@ -1723,7 +1703,7 @@ public class DeviceInfo
     //   370: aload 8
     //   372: ifnull -297 -> 75
     //   375: aload 8
-    //   377: invokevirtual 649	java/io/FileReader:close	()V
+    //   377: invokevirtual 626	java/io/FileReader:close	()V
     //   380: lload_2
     //   381: lreturn
     //   382: astore 6
@@ -1735,7 +1715,7 @@ public class DeviceInfo
     //   395: lreturn
     //   396: astore 6
     //   398: ldc 10
-    //   400: ldc_w 651
+    //   400: ldc_w 628
     //   403: aload 6
     //   405: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   408: goto -40 -> 368
@@ -1743,7 +1723,7 @@ public class DeviceInfo
     //   413: aconst_null
     //   414: astore 7
     //   416: ldc 10
-    //   418: ldc_w 672
+    //   418: ldc_w 649
     //   421: aload 8
     //   423: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   426: aload 7
@@ -1753,12 +1733,12 @@ public class DeviceInfo
     //   436: aload 6
     //   438: ifnull +8 -> 446
     //   441: aload 6
-    //   443: invokevirtual 649	java/io/FileReader:close	()V
-    //   446: ldc2_w 530
+    //   443: invokevirtual 626	java/io/FileReader:close	()V
+    //   446: ldc2_w 650
     //   449: lreturn
     //   450: astore 7
     //   452: ldc 10
-    //   454: ldc_w 651
+    //   454: ldc_w 628
     //   457: aload 7
     //   459: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   462: goto -26 -> 436
@@ -1780,12 +1760,12 @@ public class DeviceInfo
     //   498: aload 8
     //   500: ifnull +8 -> 508
     //   503: aload 8
-    //   505: invokevirtual 649	java/io/FileReader:close	()V
+    //   505: invokevirtual 626	java/io/FileReader:close	()V
     //   508: aload 6
     //   510: athrow
     //   511: astore 7
     //   513: ldc 10
-    //   515: ldc_w 651
+    //   515: ldc_w 628
     //   518: aload 7
     //   520: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   523: goto -25 -> 498
@@ -1891,21 +1871,21 @@ public class DeviceInfo
     //   1: astore 7
     //   3: new 446	java/io/FileReader
     //   6: dup
-    //   7: ldc_w 645
+    //   7: ldc_w 622
     //   10: invokespecial 449	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   13: astore 6
     //   15: new 282	java/io/BufferedReader
     //   18: dup
     //   19: aload 6
     //   21: sipush 2048
-    //   24: invokespecial 648	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   24: invokespecial 625	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
     //   27: astore 5
     //   29: aload 5
     //   31: invokevirtual 299	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   34: astore 4
     //   36: aload 4
     //   38: ifnonnull +64 -> 102
-    //   41: ldc2_w 642
+    //   41: ldc2_w 619
     //   44: lstore_2
     //   45: aload 5
     //   47: ifnull +8 -> 55
@@ -1916,14 +1896,14 @@ public class DeviceInfo
     //   57: aload 6
     //   59: ifnull +10 -> 69
     //   62: aload 6
-    //   64: invokevirtual 649	java/io/FileReader:close	()V
+    //   64: invokevirtual 626	java/io/FileReader:close	()V
     //   67: lload_2
     //   68: lstore_0
     //   69: lload_0
     //   70: lreturn
     //   71: astore 4
     //   73: ldc 10
-    //   75: ldc_w 651
+    //   75: ldc_w 628
     //   78: aload 4
     //   80: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   83: goto -28 -> 55
@@ -1932,23 +1912,23 @@ public class DeviceInfo
     //   90: ldc_w 468
     //   93: aload 4
     //   95: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   98: ldc2_w 642
+    //   98: ldc2_w 619
     //   101: lreturn
     //   102: aload 4
-    //   104: ldc_w 653
+    //   104: ldc_w 630
     //   107: iconst_2
-    //   108: invokevirtual 656	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
+    //   108: invokevirtual 633	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
     //   111: iconst_1
     //   112: aaload
     //   113: invokevirtual 360	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   116: ldc_w 658
+    //   116: ldc_w 635
     //   119: ldc_w 418
-    //   122: invokevirtual 662	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   122: invokevirtual 639	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   125: invokevirtual 464	java/lang/String:trim	()Ljava/lang/String;
-    //   128: invokestatic 668	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   128: invokestatic 645	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   131: lstore_0
     //   132: lload_0
-    //   133: ldc2_w 669
+    //   133: ldc2_w 646
     //   136: lmul
     //   137: lstore_2
     //   138: aload 5
@@ -1960,7 +1940,7 @@ public class DeviceInfo
     //   150: aload 6
     //   152: ifnull -83 -> 69
     //   155: aload 6
-    //   157: invokevirtual 649	java/io/FileReader:close	()V
+    //   157: invokevirtual 626	java/io/FileReader:close	()V
     //   160: lload_2
     //   161: lreturn
     //   162: astore 4
@@ -1972,7 +1952,7 @@ public class DeviceInfo
     //   175: lreturn
     //   176: astore 4
     //   178: ldc 10
-    //   180: ldc_w 651
+    //   180: ldc_w 628
     //   183: aload 4
     //   185: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   188: goto -40 -> 148
@@ -1982,7 +1962,7 @@ public class DeviceInfo
     //   196: aload 7
     //   198: astore 5
     //   200: ldc 10
-    //   202: ldc_w 675
+    //   202: ldc_w 654
     //   205: aload 6
     //   207: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   210: aload 5
@@ -1992,12 +1972,12 @@ public class DeviceInfo
     //   220: aload 4
     //   222: ifnull +8 -> 230
     //   225: aload 4
-    //   227: invokevirtual 649	java/io/FileReader:close	()V
-    //   230: ldc2_w 530
+    //   227: invokevirtual 626	java/io/FileReader:close	()V
+    //   230: ldc2_w 650
     //   233: lreturn
     //   234: astore 5
     //   236: ldc 10
-    //   238: ldc_w 651
+    //   238: ldc_w 628
     //   241: aload 5
     //   243: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   246: goto -26 -> 220
@@ -2019,12 +1999,12 @@ public class DeviceInfo
     //   282: aload 6
     //   284: ifnull +8 -> 292
     //   287: aload 6
-    //   289: invokevirtual 649	java/io/FileReader:close	()V
+    //   289: invokevirtual 626	java/io/FileReader:close	()V
     //   292: aload 4
     //   294: athrow
     //   295: astore 5
     //   297: ldc 10
-    //   299: ldc_w 651
+    //   299: ldc_w 628
     //   302: aload 5
     //   304: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   307: goto -25 -> 282
@@ -2279,26 +2259,6 @@ public class DeviceInfo
       return (String)systemProperties.get(paramString);
     }
     return "fail";
-  }
-  
-  public static long getTotalSdCard()
-  {
-    if (!checkIsHaveCard()) {
-      return 0L;
-    }
-    try
-    {
-      StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
-      int i = localStatFs.getBlockSize();
-      int j = localStatFs.getBlockCount();
-      long l = j;
-      return i * l;
-    }
-    catch (Throwable localThrowable)
-    {
-      LogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting total size of SD card.", localThrowable);
-    }
-    return -2L;
   }
   
   public static String getVersion()

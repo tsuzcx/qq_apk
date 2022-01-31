@@ -1,29 +1,20 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
-class wgc
-  implements bbsh
+public class wgc
+  implements DialogInterface.OnDismissListener
 {
-  wgc(wfz paramwfz) {}
+  public wgc(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((wfz.a(this.a) == null) || (!wfz.a(this.a).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
-    {
-    case -2: 
-    case -1: 
-    default: 
-      bbmy.a(this.a.a, 1, ajjy.a(2131648855), 0).a();
-      return;
-    }
-    bbmy.a(this.a.a, 2, ajjy.a(2131648857), 0).a();
+    this.a.f = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wgc
  * JD-Core Version:    0.7.0.1
  */

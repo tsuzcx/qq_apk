@@ -1,30 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
-import com.tencent.mobileqq.app.QQAppInterface;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.MoreChannelItem;
 
-class qdp
-  implements View.OnClickListener
+public class qdp
 {
-  qdp(qdn paramqdn) {}
+  public String a;
+  public String b;
   
-  public void onClick(View paramView)
+  public static qdp a(oidb_cmd0xbc9.MoreChannelItem paramMoreChannelItem)
   {
-    qcn.a(qdn.a(this.a), qdn.a(this.a).a);
-    paramView = new JSONObject();
-    try
+    qdp localqdp = new qdp();
+    localqdp.a = paramMoreChannelItem.bytes_title.get().toStringUtf8();
+    localqdp.b = paramMoreChannelItem.bytes_link_url.get().toStringUtf8();
+    return localqdp;
+  }
+  
+  public oidb_cmd0xbc9.MoreChannelItem a()
+  {
+    oidb_cmd0xbc9.MoreChannelItem localMoreChannelItem = new oidb_cmd0xbc9.MoreChannelItem();
+    if (!TextUtils.isEmpty(this.a))
     {
-      paramView.put("uin", qdn.a(this.a).getCurrentAccountUin());
-      label45:
-      ndn.a(null, null, "0X8009BF2", "0X8009BF2", 0, 0, "", "", "", new.a(null, null, qdn.a(this.a).a.a.a, qdn.a(this.a).a.a.g, paramView), false);
-      return;
+      localMoreChannelItem.bytes_title.set(ByteStringMicro.copyFromUtf8(this.a));
+      localMoreChannelItem.bytes_link_url.set(ByteStringMicro.copyFromUtf8(this.b));
     }
-    catch (Exception localException)
-    {
-      break label45;
-    }
+    return localMoreChannelItem;
   }
 }
 

@@ -1,23 +1,21 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3.3.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class acok
-  extends beem
+  implements DialogInterface.OnClickListener
 {
-  acok(acoh paramacoh) {}
+  public acok(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((acoh.a(this.a) != null) && (acoh.a(this.a).isShown())) {
-      this.a.a.post(new ComboAnimation3.3.1(this));
-    }
+    UpgradeActivity.a(this.a);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acok
  * JD-Core Version:    0.7.0.1
  */

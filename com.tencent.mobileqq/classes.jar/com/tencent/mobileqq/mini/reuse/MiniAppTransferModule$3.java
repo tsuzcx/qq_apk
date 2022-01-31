@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.reuse;
 
-import ajfo;
+import ajtq;
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.Conversation;
@@ -10,7 +10,7 @@ import eipc.EIPCResult;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class MiniAppTransferModule$3
-  extends ajfo
+  extends ajtq
 {
   MiniAppTransferModule$3(MiniAppTransferModule paramMiniAppTransferModule) {}
   

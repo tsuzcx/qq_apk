@@ -1,11 +1,11 @@
 package dov.com.qq.im;
 
-import agak;
+import agmi;
 import android.media.MediaFormat;
-import bace;
-import bhdi;
-import bhdj;
-import bjlx;
+import bbdj;
+import bify;
+import bifz;
+import blci;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
@@ -16,16 +16,16 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import voc;
+import way;
 
 public class QIMCameraCaptureUnit$10
   implements Runnable
 {
-  public QIMCameraCaptureUnit$10(bhdi parambhdi, List paramList) {}
+  public QIMCameraCaptureUnit$10(bify parambify, List paramList) {}
   
   public void run()
   {
-    voc localvoc = new voc();
+    way localway = new way();
     ArrayList localArrayList1 = new ArrayList(this.a.size());
     ArrayList localArrayList2 = new ArrayList(this.a.size());
     this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult = new CameraCaptureView.VideoCaptureResult();
@@ -48,28 +48,28 @@ public class QIMCameraCaptureUnit$10
       if (localArrayList2.size() != this.a.size()) {
         break label509;
       }
-      localObject1 = this.this$0.a() + File.separator + "audio_data_cache" + File.separator + bjlx.a();
-      localvoc.a(localArrayList2, (String)localObject1);
+      localObject1 = this.this$0.a() + File.separator + "audio_data_cache" + File.separator + blci.a();
+      localway.a(localArrayList2, (String)localObject1);
       this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.audioDataFilePath = ((String)localObject1);
       this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoMp4FilePath = ((String)localObject2);
       this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.type = ((CameraCaptureView.VideoCaptureResult)this.a.get(0)).type;
       this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.orientation = ((CameraCaptureView.VideoCaptureResult)this.a.get(0)).orientation;
-      bhdi.a(this.this$0, new LocalMediaInfo());
-      bhdi.a(this.this$0).path = this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoMp4FilePath;
-      bhdi.a(this.this$0).mMimeType = "video";
+      bify.a(this.this$0, new LocalMediaInfo());
+      bify.a(this.this$0).path = this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoMp4FilePath;
+      bify.a(this.this$0).mMimeType = "video";
       localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a();
       if (localObject1 == null) {
         break label562;
       }
-      bool = localvoc.a(localArrayList1, (String)localObject2, 0, 0, (MediaFormat)localObject1);
+      bool = localway.a(localArrayList1, (String)localObject2, 0, 0, (MediaFormat)localObject1);
       if (!AudioHelper.f()) {
         break label542;
       }
-      bhdi.a(this.this$0).mTransferPosList = localvoc.a(localArrayList1, (String)localObject2);
+      bify.a(this.this$0).mTransferPosList = localway.a(localArrayList1, (String)localObject2);
       if (QLog.isColorLevel()) {
         QLog.d("QIMCameraCaptureUnit", 2, "[segmentCapture] onSegmentVideoCaptured segment video merge result: " + bool);
       }
-      agak.a(BaseApplicationImpl.getContext()).a(new bhdj(this), bhdi.a(this.this$0));
+      agmi.a(BaseApplicationImpl.getContext()).a(new bifz(this), bify.a(this.this$0));
     }
     label509:
     while (!QLog.isColorLevel()) {
@@ -78,9 +78,9 @@ public class QIMCameraCaptureUnit$10
         boolean bool;
         return;
         localObject1 = this.this$0.a() + "/noaudio";
-        bace.c((String)localObject1);
+        bbdj.c((String)localObject1);
         break;
-        bhdi.a(this.this$0).mTransferPosList = localvoc.a(localArrayList1);
+        bify.a(this.this$0).mTransferPosList = localway.a(localArrayList1);
       }
     }
     label542:

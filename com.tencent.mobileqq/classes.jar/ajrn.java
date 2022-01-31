@@ -1,68 +1,158 @@
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.SVIPHandler.1;
-import com.tencent.mobileqq.bubble.BubbleDiyEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.data.ApolloActionPackage;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArraySet;
 
 public class ajrn
-  implements ajfe
+  extends BaseAdapter
 {
-  public ajrn(SVIPHandler.1 param1, almr paramalmr) {}
+  int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private List<ApolloActionPackage> jdField_a_of_type_JavaUtilList;
+  private int b = -1;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public ajrn(Context paramContext)
   {
-    try
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+    this.jdField_a_of_type_Int = paramContext.getResources().getColor(2131165549);
+  }
+  
+  public Drawable a(ApolloActionPackage paramApolloActionPackage)
+  {
+    ApolloActionPackage localApolloActionPackage = null;
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    URLDrawable localURLDrawable2;
+    if (!TextUtils.isEmpty(paramApolloActionPackage.mIconSelectedUrl))
     {
-      String str1 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler$1.this$0.b());
-      if ((paramObject instanceof List))
+      localURLDrawable2 = ajhu.a("" + paramApolloActionPackage.mIconSelectedUrl.hashCode(), null, paramApolloActionPackage.mIconSelectedUrl, true);
+      localURLDrawable1 = localURLDrawable2;
+      if (localURLDrawable2 != null) {
+        localURLDrawable2.startDownload();
+      }
+    }
+    for (URLDrawable localURLDrawable1 = localURLDrawable2;; localURLDrawable1 = null)
+    {
+      if (!TextUtils.isEmpty(paramApolloActionPackage.mIconUnselectedUrl))
       {
-        paramObject = (List)paramObject;
-        if (paramObject.size() > 0)
+        paramApolloActionPackage = ajhu.a("" + paramApolloActionPackage.mIconUnselectedUrl.hashCode(), null, paramApolloActionPackage.mIconUnselectedUrl, true);
+        localApolloActionPackage = paramApolloActionPackage;
+        if (paramApolloActionPackage != null)
         {
-          paramObject = paramObject.iterator();
-          while (paramObject.hasNext())
-          {
-            Object localObject = (BubbleDiyEntity)paramObject.next();
-            String str2;
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topLeftId))
-            {
-              str2 = "BubbleDiyFetcher_" + str1 + "_TL_" + ((BubbleDiyEntity)localObject).topLeftId;
-              this.jdField_a_of_type_Almr.b.add(str2);
-            }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topRightId))
-            {
-              str2 = "BubbleDiyFetcher_" + str1 + "_TR_" + ((BubbleDiyEntity)localObject).topRightId;
-              this.jdField_a_of_type_Almr.b.add(str2);
-            }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomRightId))
-            {
-              str2 = "BubbleDiyFetcher_" + str1 + "_BR_" + ((BubbleDiyEntity)localObject).bottomRightId;
-              this.jdField_a_of_type_Almr.b.add(str2);
-            }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomLeftId))
-            {
-              localObject = "BubbleDiyFetcher_" + str1 + "_BL_" + ((BubbleDiyEntity)localObject).bottomLeftId;
-              this.jdField_a_of_type_Almr.b.add(localObject);
-            }
-          }
+          paramApolloActionPackage.startDownload();
+          localApolloActionPackage = paramApolloActionPackage;
         }
       }
-      return;
+      if (localURLDrawable1 != null) {
+        localStateListDrawable.addState(new int[] { 16842913 }, localURLDrawable1);
+      }
+      if (localApolloActionPackage != null) {
+        localStateListDrawable.addState(new int[] { -16842913 }, localApolloActionPackage);
+      }
+      return localStateListDrawable;
     }
-    catch (Exception paramObject)
+  }
+  
+  public ApolloActionPackage a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return null;
+    }
+    return (ApolloActionPackage)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public List<ApolloActionPackage> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public void a(List<ApolloActionPackage> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  @TargetApi(14)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("SVIPHandler", 2, paramObject.getMessage());
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558623, paramViewGroup, false);
+      paramViewGroup = new ajro(this);
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131376787));
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setActivated(true);
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setFocusable(true);
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setEnabled(true);
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131376784);
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_Int);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376785));
+      paramView.setTag(paramViewGroup);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      localObject = paramViewGroup.jdField_a_of_type_AndroidViewView;
+      if (paramInt == getCount() - 1) {
+        break label227;
       }
     }
-    this.jdField_a_of_type_Almr.b();
+    label227:
+    for (int i = 0;; i = 4)
+    {
+      ((View)localObject).setVisibility(i);
+      localObject = a(paramInt);
+      if (localObject != null)
+      {
+        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(a((ApolloActionPackage)localObject));
+        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(((ApolloActionPackage)localObject).name);
+        if ((((ApolloActionPackage)localObject).isUpdate) && (NetConnInfoCenter.getServerTimeMillis() >= ((ApolloActionPackage)localObject).redStartTime)) {
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        }
+      }
+      if (paramInt != this.b) {
+        break label233;
+      }
+      paramView.setSelected(true);
+      return paramView;
+      paramViewGroup = (ajro)paramView.getTag();
+      break;
+    }
+    label233:
+    paramView.setSelected(false);
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajrn
  * JD-Core Version:    0.7.0.1
  */

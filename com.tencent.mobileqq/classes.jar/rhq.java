@@ -1,23 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
+import com.tencent.widget.BubblePopupWindow;
 
 public class rhq
-  implements rhj
+  implements View.OnClickListener
 {
-  private final ViewPagerCompat a;
+  public rhq(ReadinjoyTabbar paramReadinjoyTabbar) {}
   
-  public rhq(ViewPagerCompat paramViewPagerCompat)
+  public void onClick(View paramView)
   {
-    this.a = paramViewPagerCompat;
+    if ((ReadinjoyTabbar.a(this.a) != null) && (ReadinjoyTabbar.a(this.a).b())) {}
+    try
+    {
+      ReadinjoyTabbar.a(this.a).a(3, 257, null, true);
+      ReadinjoyTabbar.a(this.a).b();
+      return;
+    }
+    catch (Exception paramView) {}
   }
-  
-  public void a(rho paramrho)
-  {
-    this.a.setCurrentItem(paramrho.a());
-  }
-  
-  public void b(rho paramrho) {}
-  
-  public void c(rho paramrho) {}
 }
 
 

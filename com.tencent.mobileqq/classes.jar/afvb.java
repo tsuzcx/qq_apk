@@ -1,12 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class afvb
-  implements baim
+  implements DialogInterface.OnClickListener
 {
-  afvb(afuz paramafuz) {}
+  afvb(afur paramafur) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    afuz.a(this.a, baik.a(paramInt));
-    this.a.a.height = afuz.a(this.a);
+    if (paramInt == 0) {
+      afur.a(this.a);
+    }
   }
 }
 

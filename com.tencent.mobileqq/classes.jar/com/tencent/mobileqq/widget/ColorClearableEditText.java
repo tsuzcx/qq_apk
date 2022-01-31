@@ -19,9 +19,9 @@ import android.text.Spannable;
 import android.text.TextPaint;
 import android.text.style.CharacterStyle;
 import android.util.AttributeSet;
-import axkk;
-import bbha;
-import bbhb;
+import aykp;
+import bcka;
+import bckb;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -32,8 +32,8 @@ public class ColorClearableEditText
   private int jdField_a_of_type_Int;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private bbhb jdField_a_of_type_Bbhb = new bbhb();
-  private ArrayList<bbha> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private bckb jdField_a_of_type_Bckb = new bckb();
+  private ArrayList<bcka> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private float[] jdField_a_of_type_ArrayOfFloat;
   private int[] jdField_a_of_type_ArrayOfInt;
   private int jdField_b_of_type_Int;
@@ -78,38 +78,38 @@ public class ColorClearableEditText
     float f = 0.0F;
     if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      Object localObject = (bbha)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      switch (((bbha)localObject).c)
+      Object localObject = (bcka)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      switch (((bcka)localObject).c)
       {
       }
       for (;;)
       {
         i += 1;
         break;
-        localPointF.x += getPaint().measureText(((bbha)localObject).jdField_a_of_type_JavaLangString);
-        getPaint().getTextBounds(((bbha)localObject).jdField_a_of_type_JavaLangString, 0, ((bbha)localObject).jdField_a_of_type_JavaLangString.length(), localRect);
+        localPointF.x += getPaint().measureText(((bcka)localObject).jdField_a_of_type_JavaLangString);
+        getPaint().getTextBounds(((bcka)localObject).jdField_a_of_type_JavaLangString, 0, ((bcka)localObject).jdField_a_of_type_JavaLangString.length(), localRect);
         f = Math.max(f, localRect.height());
         continue;
-        localObject = (axkk)((bbha)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
-        localPointF.x += ((axkk)localObject).a().getBounds().width();
-        f = Math.max(f, ((axkk)localObject).a().getBounds().height());
+        localObject = (aykp)((bcka)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
+        localPointF.x += ((aykp)localObject).a().getBounds().width();
+        f = Math.max(f, ((aykp)localObject).a().getBounds().height());
       }
     }
     localPointF.y = f;
     return localPointF;
   }
   
-  public static void a(List<bbha> paramList, bbhb parambbhb, Spannable paramSpannable)
+  public static void a(List<bcka> paramList, bckb parambckb, Spannable paramSpannable)
   {
     paramList.clear();
     CharacterStyle[] arrayOfCharacterStyle = (CharacterStyle[])paramSpannable.getSpans(0, paramSpannable.length(), CharacterStyle.class);
     if (arrayOfCharacterStyle.length == 0)
     {
-      paramList.add(new bbha(1, 0, paramSpannable.length(), paramSpannable.toString(), null));
+      paramList.add(new bcka(1, 0, paramSpannable.length(), paramSpannable.toString(), null));
       return;
     }
-    parambbhb.a(paramSpannable);
-    Arrays.sort(arrayOfCharacterStyle, parambbhb);
+    parambckb.a(paramSpannable);
+    Arrays.sort(arrayOfCharacterStyle, parambckb);
     int j = 0;
     int i = 0;
     label76:
@@ -120,21 +120,21 @@ public class ColorClearableEditText
       m = paramSpannable.getSpanStart(arrayOfCharacterStyle[i]);
       k = paramSpannable.getSpanEnd(arrayOfCharacterStyle[i]);
       if (m > j) {
-        paramList.add(new bbha(1, j, m, paramSpannable.subSequence(j, m).toString(), null));
+        paramList.add(new bcka(1, j, m, paramSpannable.subSequence(j, m).toString(), null));
       }
-      parambbhb = paramSpannable.subSequence(m, k).toString();
-      if (!(arrayOfCharacterStyle[i] instanceof axkk)) {
+      parambckb = paramSpannable.subSequence(m, k).toString();
+      if (!(arrayOfCharacterStyle[i] instanceof aykp)) {
         break label279;
       }
     }
     label279:
     for (j = 2;; j = 3)
     {
-      paramList.add(new bbha(j, m, k, parambbhb, arrayOfCharacterStyle[i]));
+      paramList.add(new bcka(j, m, k, parambckb, arrayOfCharacterStyle[i]));
       if ((i == arrayOfCharacterStyle.length - 1) && (k < paramSpannable.length()))
       {
-        parambbhb = paramSpannable.subSequence(k, paramSpannable.length()).toString();
-        paramList.add(new bbha(1, k, paramSpannable.length(), parambbhb, null));
+        parambckb = paramSpannable.subSequence(k, paramSpannable.length()).toString();
+        paramList.add(new bcka(1, k, paramSpannable.length(), parambckb, null));
       }
       i += 1;
       j = k;
@@ -143,14 +143,14 @@ public class ColorClearableEditText
     }
   }
   
-  public ArrayList<bbha> a()
+  public ArrayList<bcka> a()
   {
     return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
   public void a()
   {
-    a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Bbhb, getText());
+    a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Bckb, getText());
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -162,10 +162,10 @@ public class ColorClearableEditText
     Paint localPaint;
     int i;
     int j;
-    bbha localbbha;
+    bcka localbcka;
     if (this.jdField_a_of_type_Int != 0)
     {
-      a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Bbhb, getText());
+      a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Bckb, getText());
       localObject = a();
       f3 = ((PointF)localObject).x;
       f6 = ((PointF)localObject).y;
@@ -184,8 +184,8 @@ public class ColorClearableEditText
         j = 0;
         while (j < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          localbbha = (bbha)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-          switch (localbbha.c)
+          localbcka = (bcka)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+          switch (localbcka.c)
           {
           default: 
             j += 1;
@@ -195,7 +195,7 @@ public class ColorClearableEditText
             if (i != 0) {
               break label1096;
             }
-            getPaint().getTextBounds(localbbha.jdField_a_of_type_JavaLangString, 0, localbbha.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsRect);
+            getPaint().getTextBounds(localbcka.jdField_a_of_type_JavaLangString, 0, localbcka.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsRect);
             i = this.jdField_a_of_type_AndroidGraphicsRect.height();
           }
         }
@@ -209,9 +209,9 @@ public class ColorClearableEditText
     {
       int k = 0;
       float f2;
-      if (k < localbbha.jdField_a_of_type_JavaLangString.length())
+      if (k < localbcka.jdField_a_of_type_JavaLangString.length())
       {
-        float f7 = getPaint().measureText(localbbha.jdField_a_of_type_JavaLangString, k, k + 1);
+        float f7 = getPaint().measureText(localbcka.jdField_a_of_type_JavaLangString, k, k + 1);
         if (this.jdField_b_of_type_Int == 1)
         {
           f2 = f1;
@@ -245,7 +245,7 @@ public class ColorClearableEditText
         }
       }
       break label196;
-      f1 += ((axkk)localbbha.jdField_a_of_type_AndroidTextStyleCharacterStyle).a().getBounds().width();
+      f1 += ((aykp)localbcka.jdField_a_of_type_AndroidTextStyleCharacterStyle).a().getBounds().width();
       break label196;
       localObject = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
       getPaint().setShader((Shader)localObject);
@@ -291,8 +291,8 @@ public class ColorClearableEditText
       j = 0;
       if (j < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        localbbha = (bbha)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-        switch (localbbha.c)
+        localbcka = (bcka)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+        switch (localbcka.c)
         {
         }
         for (;;)
@@ -300,9 +300,9 @@ public class ColorClearableEditText
           j += 1;
           break;
           k = 0;
-          while (k < localbbha.jdField_a_of_type_JavaLangString.length())
+          while (k < localbcka.jdField_a_of_type_JavaLangString.length())
           {
-            f2 = getPaint().measureText(localbbha.jdField_a_of_type_JavaLangString, k, k + 1);
+            f2 = getPaint().measureText(localbcka.jdField_a_of_type_JavaLangString, k, k + 1);
             localPaint.setColor(this.jdField_a_of_type_ArrayOfInt[(i % this.jdField_a_of_type_ArrayOfInt.length)]);
             localPaint.setStyle(Paint.Style.FILL);
             ((Canvas)localObject).drawRect(f1, 0.0F, f1 + f2, f6, localPaint);
@@ -311,7 +311,7 @@ public class ColorClearableEditText
             f1 += f2;
           }
           continue;
-          f1 += ((axkk)localbbha.jdField_a_of_type_AndroidTextStyleCharacterStyle).a().getBounds().width();
+          f1 += ((aykp)localbcka.jdField_a_of_type_AndroidTextStyleCharacterStyle).a().getBounds().width();
         }
       }
       localObject = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);

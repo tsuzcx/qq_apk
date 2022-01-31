@@ -1,27 +1,92 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.RemoteCallbackList;
+import android.os.RemoteException;
+import com.tencent.mobileqq.ar.ArConfigService;
 import com.tencent.qphone.base.util.QLog;
 
-class albp
-  extends aldv
+public class albp
+  implements aljr
 {
-  albp(albo paramalbo, String paramString1, String paramString2) {}
+  public albp(ArConfigService paramArConfigService) {}
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (!paramBoolean)
-    {
-      QLog.i("ArkApp", 1, "ArkAppSchemeCenter.AppSchemeHandler.get packagename failed.");
-      return;
+    if (ArConfigService.c(this.a) != null) {
+      try
+      {
+        int j = ArConfigService.c(this.a).beginBroadcast();
+        int i = 0;
+        for (;;)
+        {
+          if (i >= j) {
+            break label106;
+          }
+          try
+          {
+            ((alel)ArConfigService.c(this.a).getBroadcastItem(i)).a(paramInt1, paramInt2);
+            i += 1;
+          }
+          catch (RemoteException localRemoteException)
+          {
+            for (;;)
+            {
+              localRemoteException.printStackTrace();
+            }
+          }
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onProgress error:" + localException.getMessage());
+        }
+      }
     }
-    albo.a((albo)paramObject, paramString2, this.jdField_a_of_type_JavaLangString, this.b, paramString1);
-    BaseApplication.getContext().getSharedPreferences("arkappid2pkname_entry", 4).edit().putString(paramString2, paramString1).commit();
+    label106:
+    ArConfigService.c(this.a).finishBroadcast();
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (ArConfigService.c(this.a) != null) {}
+    for (;;)
+    {
+      int i;
+      try
+      {
+        int j = ArConfigService.c(this.a).beginBroadcast();
+        i = 0;
+        if (i >= j) {
+          break label129;
+        }
+        if (paramBoolean) {}
+        try
+        {
+          ((alel)ArConfigService.c(this.a).getBroadcastItem(i)).a(paramInt);
+        }
+        catch (RemoteException localRemoteException)
+        {
+          localRemoteException.printStackTrace();
+        }
+        ((alel)ArConfigService.c(this.a).getBroadcastItem(i)).b(paramInt, 0);
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onFinish error:" + localException.getMessage());
+        }
+      }
+      return;
+      label129:
+      ArConfigService.c(this.a).finishBroadcast();
+      return;
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     albp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,75 +1,64 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import java.util.List;
-import tencent.im.nearfield_discuss.nearfield_discuss.UserProfile;
+import android.content.Context;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ahqi
-  extends BaseAdapter
+  extends ahpv
 {
-  ahqj jdField_a_of_type_Ahqj;
-  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  
-  public ahqi(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity)
+  public ahqi(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramCreateFaceToFaceDiscussionActivity.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131697700);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   
-  public int getCount()
+  public void a(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.size() < 50) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.size() + 1;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList == null) {
-      return null;
-    }
-    return (nearfield_discuss.UserProfile)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131495205, null);
-      this.jdField_a_of_type_Ahqj = new ahqj(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity);
-      this.jdField_a_of_type_Ahqj.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131302061));
-      this.jdField_a_of_type_Ahqj.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131304981));
-      paramView.setTag(this.jdField_a_of_type_Ahqj);
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      if (this.jdField_a_of_type_Azmk == null) {
+        this.jdField_a_of_type_Azmk = new azmk();
+      }
+      this.jdField_a_of_type_Azmk.a(paramArrayOfByte.getString("messageNavInfo"));
+      return;
     }
-    while ((paramInt == getCount() - 1) && (getCount() < 50))
+    catch (JSONException paramArrayOfByte)
     {
-      CreateFaceToFaceDiscussionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, paramView);
-      return paramView;
-      this.jdField_a_of_type_Ahqj = ((ahqj)paramView.getTag());
-      if (this.jdField_a_of_type_Ahqj.jdField_a_of_type_Boolean)
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Azmk != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Azmk.a());
+      }
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131495205, null);
-        this.jdField_a_of_type_Ahqj = new ahqj(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity);
-        this.jdField_a_of_type_Ahqj.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131302061));
-        this.jdField_a_of_type_Ahqj.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131304981));
-        paramView.setTag(this.jdField_a_of_type_Ahqj);
-        this.jdField_a_of_type_Ahqj.jdField_a_of_type_Boolean = false;
+        localJSONException.printStackTrace();
       }
     }
-    CreateFaceToFaceDiscussionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, paramView, (nearfield_discuss.UserProfile)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.get(paramInt));
-    return paramView;
   }
 }
 

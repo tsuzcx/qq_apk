@@ -1,28 +1,16 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class apml
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  apml(apmf paramapmf) {}
+  apml(apme paramapme, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((apmf.a(this.a) == null) || (apmf.a(this.a).isFinishing())) {}
-    do
-    {
-      return;
-      paramContext = apjd.a(paramIntent.getStringExtra("key_share_image_by_server"));
-    } while (paramContext == null);
-    if (TextUtils.isEmpty(paramContext))
-    {
-      apmf.a(this.a, apmf.a(this.a).getIntent().getExtras());
-      return;
-    }
-    apmf.a(this.a, paramContext);
+    axqw.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
+    apvk.a(this.jdField_a_of_type_Apme.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Apme.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
 }
 

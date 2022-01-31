@@ -1,9 +1,17 @@
-final class vll
-  extends stu
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
+
+public class vll
+  implements vlm
 {
-  public String a()
+  public void a(List<vlj> paramList, DoodleView paramDoodleView)
   {
-    return sfz.n;
+    vkp localvkp = new vkp(paramDoodleView);
+    vkz localvkz = new vkz(paramDoodleView);
+    paramDoodleView = new vld(paramDoodleView);
+    paramList.add(localvkp);
+    paramList.add(localvkz);
+    paramList.add(paramDoodleView);
   }
 }
 

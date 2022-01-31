@@ -1,46 +1,33 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-class npw
-  implements nqd
+public class npw
+  implements ajtg
 {
-  npw(npv paramnpv) {}
+  protected void a(boolean paramBoolean, Bundle paramBundle) {}
   
-  public void a(GiftServiceBean paramGiftServiceBean)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Object localObject = npv.a(this.a).getText().toString();
-    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!((String)localObject).equals(paramGiftServiceBean.t)))
+    if (paramObject != null)
     {
-      npv.a(this.a, paramGiftServiceBean);
-      npv.a(this.a).setText(paramGiftServiceBean.t);
-      npv.b(this.a, null);
-      if (npv.a(this.a)) {
-        npv.c(this.a, null);
-      }
-      npv.b(this.a).setText("");
-      npv.c(this.a).setText("");
-      npv.a(this.a, new ArrayList());
-      localObject = npv.a(this.a).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        GiftServiceBean localGiftServiceBean = (GiftServiceBean)((Iterator)localObject).next();
-        if ((!TextUtils.isEmpty(localGiftServiceBean.ck)) && (localGiftServiceBean.ck.equals(paramGiftServiceBean.ck)) && (localGiftServiceBean.c.equals(paramGiftServiceBean.v))) {
-          npv.b(this.a).add(localGiftServiceBean);
-        }
-      }
-      if (npv.b(this.a).size() <= 0)
-      {
-        paramGiftServiceBean = new GiftServiceBean();
-        paramGiftServiceBean.t = ajjy.a(2131639486);
-        paramGiftServiceBean.v = "0";
-        npv.b(this.a).add(paramGiftServiceBean);
-      }
-      npv.a(this.a);
+      paramObject = (Bundle)paramObject;
+      if (paramObject.getInt("VALUE_OBSERVER_TAG") == hashCode()) {}
     }
+    while (!QLog.isColorLevel())
+    {
+      return;
+      try
+      {
+        a(paramBoolean, paramObject);
+        return;
+      }
+      catch (Exception paramObject)
+      {
+        paramObject.printStackTrace();
+        return;
+      }
+    }
+    QLog.e("VideoPlayRecommendObserver", 2, "onUpdate: error, data null");
   }
 }
 

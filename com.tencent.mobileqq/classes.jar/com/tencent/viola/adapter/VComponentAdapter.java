@@ -1,5 +1,6 @@
 package com.tencent.viola.adapter;
 
+import android.text.TextPaint;
 import com.tencent.viola.commons.ImageAdapterHolder;
 import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.ui.component.image.ImageAction;
@@ -17,6 +18,8 @@ public abstract interface VComponentAdapter
   public abstract void setImage(String paramString, VImageView paramVImageView, ImageAdapterHolder paramImageAdapterHolder, ViolaInstance paramViolaInstance, boolean paramBoolean);
   
   public abstract void setImgSpan(String paramString, int paramInt1, int paramInt2, ImageAdapterHolder paramImageAdapterHolder);
+  
+  public abstract boolean useCustomFont(TextPaint paramTextPaint, String paramString, int paramInt);
 }
 
 

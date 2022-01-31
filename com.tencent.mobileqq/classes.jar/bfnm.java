@@ -1,267 +1,491 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.net.Uri;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Display;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.WindowManager;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import cooperation.qqreader.QRBridgeActivity;
-import cooperation.qqreader.net.BusinessTask;
-import cooperation.qqreader.ui.ReaderBaseWebActivity;
-import java.util.Arrays;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.StringReader;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
-import org.json.JSONObject;
+import java.util.Set;
+import java.util.zip.InflaterInputStream;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
 
-public final class bfnm
+public class bfnm
+  extends ajtd
+  implements Handler.Callback
 {
-  public static boolean a;
-  private static boolean b;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+  private HashMap<String, bfnn> jdField_a_of_type_JavaUtilHashMap;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public static int a()
+  public bfnm(QQAppInterface paramQQAppInterface)
   {
-    return BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+    super(paramQQAppInterface);
   }
   
-  public static long a(Context paramContext)
+  public static Long a()
   {
-    long l1 = bfnl.a(paramContext);
-    if (l1 == -1L)
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(11, 0);
+    localCalendar.set(13, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(14, 1);
+    return Long.valueOf(new Timestamp(localCalendar.getTimeInMillis()).getTime());
+  }
+  
+  private HashMap<String, bfnn> a()
+  {
+    int i = 0;
+    for (;;)
     {
-      bfnl.a(paramContext);
-      return 0L;
+      HashMap localHashMap2;
+      try
+      {
+        if (this.b) {
+          break label414;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("NCtr", 2, "[init]");
+        }
+        SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("config_prefile", 0);
+        this.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean("config_should_limit_" + this.app.getAccount(), false);
+        Object localObject2 = localSharedPreferences.getString("extra_limit_uins_" + this.app.getAccount(), "");
+        if (QLog.isColorLevel()) {
+          QLog.d("NCtr", 2, "LimitUins:[" + ((String)localObject2).toString() + "]");
+        }
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label409;
+        }
+        localObject2 = ((String)localObject2).split(",");
+        localHashMap2 = new HashMap();
+        int j = localObject2.length;
+        if (i < j)
+        {
+          Object localObject3 = localObject2[i];
+          Object localObject4 = localSharedPreferences.getString("extra_limit_entry_" + this.mApp.getAccount() + "_" + (String)localObject3, "");
+          if (!TextUtils.isEmpty((CharSequence)localObject4))
+          {
+            localObject3 = ((String)localObject4).split(",");
+            localObject4 = new bfnn(this, localObject3[0], Integer.valueOf(localObject3[1]).intValue(), Integer.valueOf(localObject3[2]).intValue(), Long.valueOf(localObject3[3]).longValue(), Integer.valueOf(localObject3[4]).intValue());
+            localHashMap2.put(localObject3[0], localObject4);
+            if (QLog.isColorLevel()) {
+              QLog.d("NCtr", 2, "LimitEntry:[" + ((bfnn)localObject4).toString() + "]");
+            }
+          }
+          else if (QLog.isColorLevel())
+          {
+            QLog.d("NCtr", 2, "LimitEntry is null [" + (String)localObject3 + "]");
+          }
+        }
+      }
+      finally {}
+      this.jdField_a_of_type_JavaUtilHashMap = localHashMap2;
+      label409:
+      this.b = true;
+      label414:
+      HashMap localHashMap1 = this.jdField_a_of_type_JavaUtilHashMap;
+      return localHashMap1;
+      i += 1;
     }
-    long l2 = System.currentTimeMillis();
-    bfnl.a(paramContext);
-    return l2 - l1;
   }
   
-  @Nullable
-  public static Bitmap a(Drawable paramDrawable)
+  private void a(Context paramContext, String paramString)
   {
-    if (paramDrawable == null) {
-      return null;
-    }
-    int i = paramDrawable.getIntrinsicWidth();
-    int j = paramDrawable.getIntrinsicHeight();
-    if (paramDrawable.getOpacity() != -1) {}
-    for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = Bitmap.Config.RGB_565)
+    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)))
     {
-      localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      paramDrawable.setBounds(0, 0, i, j);
-      paramDrawable.draw(localCanvas);
-      return localObject;
+      bfnn localbfnn = (bfnn)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      paramContext = paramContext.getSharedPreferences("config_prefile", 0).edit();
+      paramContext.putString("extra_limit_entry_" + this.mApp.getAccount() + "_" + paramString, localbfnn.toString());
+      paramContext.apply();
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NCtr", 2, "[updateLimitEntrySP]" + paramString + " " + bool);
+      }
+      return;
     }
   }
   
-  @Nullable
-  public static Bitmap a(String paramString)
+  public int a(Context paramContext, String paramString)
   {
-    return a(a(paramString));
+    return paramContext.getSharedPreferences("config_prefile", 0).getInt("config_appid_" + paramString, 0);
   }
   
-  public static Drawable a(@ColorInt int paramInt1, int paramInt2)
+  public void a(String paramString)
   {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setCornerRadius(paramInt2);
-    localGradientDrawable.setColor(paramInt1);
-    return localGradientDrawable;
-  }
-  
-  @Nullable
-  public static Drawable a(String paramString)
-  {
-    Object localObject = null;
-    if (!TextUtils.isEmpty(paramString))
+    int i = 0;
+    Object localObject1 = BaseApplicationImpl.getContext().getSharedPreferences("config_prefile", 0);
+    Object localObject2 = ((SharedPreferences)localObject1).getString("extra_limit_uins_" + paramString, "");
+    localObject1 = ((SharedPreferences)localObject1).edit();
+    ((SharedPreferences.Editor)localObject1).remove("config_version_" + paramString);
+    ((SharedPreferences.Editor)localObject1).remove("config_appid_" + paramString);
+    ((SharedPreferences.Editor)localObject1).remove("config_should_limit_" + paramString);
+    ((SharedPreferences.Editor)localObject1).remove("extra_limit_uins__" + paramString);
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
-      localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(0);
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(0);
-      localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-      if ((((URLDrawable)localObject).getStatus() == 2) || (((URLDrawable)localObject).getStatus() == 3)) {
-        ((URLDrawable)localObject).restartDownload();
+      localObject2 = ((String)localObject2).split(",");
+      int j = localObject2.length;
+      while (i < j)
+      {
+        String str = localObject2[i];
+        ((SharedPreferences.Editor)localObject1).remove("extra_limit_entry_" + paramString + "_" + str);
+        i += 1;
       }
     }
-    else
-    {
-      return localObject;
-    }
-    ((URLDrawable)localObject).startDownload();
-    return localObject;
+    ((SharedPreferences.Editor)localObject1).apply();
   }
   
-  @Nullable
-  public static Object a(String paramString, JSONObject paramJSONObject)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    Object localObject1;
-    if (paramJSONObject == null)
+    Message localMessage = Message.obtain();
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    localMessage.obj = paramString;
+    localMessage.what = 0;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    boolean bool3 = true;
+    boolean bool1 = true;
+    for (;;)
     {
-      localObject1 = null;
-      return localObject1;
+      long l;
+      try
+      {
+        if (!QLog.isColorLevel()) {
+          break label523;
+        }
+        QLog.d("NCtr", 2, "shouldNotify uin " + paramString + " type " + paramInt);
+      }
+      finally {}
+      Object localObject = a();
+      boolean bool2 = bool3;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        bool2 = bool3;
+        if (localObject != null)
+        {
+          bool2 = bool3;
+          if (((HashMap)localObject).containsKey(paramString))
+          {
+            l = a().longValue();
+            localObject = (bfnn)((HashMap)localObject).get(paramString);
+            if (QLog.isColorLevel()) {
+              QLog.d("NCtr", 2, "todayBeginTime = " + new Date(l) + "----" + l + " ，entry.mBaseLineTime = " + new Date(((bfnn)localObject).jdField_a_of_type_Long) + "----" + ((bfnn)localObject).jdField_a_of_type_Long);
+            }
+            if (((bfnn)localObject).jdField_a_of_type_Long >= 1L) {
+              continue;
+            }
+            if (((bfnn)localObject).b <= 0) {
+              continue;
+            }
+            ((bfnn)localObject).jdField_a_of_type_Long = l;
+            ((bfnn)localObject).c += 1;
+            paramInt = 1;
+            bool2 = bool1;
+            if (paramInt != 0)
+            {
+              localObject = Message.obtain();
+              ((Message)localObject).what = 1;
+              ((Message)localObject).obj = paramString;
+              this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+              bool2 = bool1;
+            }
+          }
+        }
+      }
+      if (!bool2) {
+        axqw.b(this.app, "dc00898", "", paramString, "0X8009995", "0X8009995", 0, 0, "" + System.currentTimeMillis(), "", "", "");
+      }
+      axqw.b(this.app, "dc00898", "", paramString, "0X8009996", "0X8009996", 0, 0, "" + System.currentTimeMillis(), "", "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("NCtr", 2, "uin " + paramString + " shouldNotify is " + bool2);
+      }
+      label416:
+      return bool2;
+      paramInt = 0;
+      bool1 = false;
+      continue;
+      if ((int)((l - ((bfnn)localObject).jdField_a_of_type_Long) / 86400000L) >= ((bfnn)localObject).jdField_a_of_type_Int)
+      {
+        ((bfnn)localObject).jdField_a_of_type_Long = l;
+        ((bfnn)localObject).c = 0;
+        paramInt = 1;
+        if ((((bfnn)localObject).b > 0) && (((bfnn)localObject).c < ((bfnn)localObject).b))
+        {
+          ((bfnn)localObject).c += 1;
+          paramInt = 1;
+        }
+        else
+        {
+          bool1 = false;
+        }
+      }
+      else
+      {
+        paramInt = 0;
+        continue;
+        label523:
+        do
+        {
+          bool2 = true;
+          break label416;
+          if ((paramInt == 7200) || (paramInt == 1008)) {
+            break;
+          }
+        } while (paramInt != 7220);
+      }
     }
-    Iterator localIterator = paramJSONObject.keys();
-    if ((localIterator == null) || (!localIterator.hasNext())) {
+  }
+  
+  public byte[] a(byte[] paramArrayOfByte)
+  {
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    try
+    {
+      paramArrayOfByte = new InflaterInputStream(new ByteArrayInputStream(paramArrayOfByte));
+      byte[] arrayOfByte = new byte[256];
+      for (;;)
+      {
+        int i = paramArrayOfByte.read(arrayOfByte);
+        if (-1 == i) {
+          break;
+        }
+        localByteArrayOutputStream.write(arrayOfByte, 0, i);
+      }
+      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
+    }
+    catch (Throwable paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("NCtr", 1, "inflateConfigString fail", paramArrayOfByte);
+      }
       return null;
     }
+    return paramArrayOfByte;
+  }
+  
+  public int b(Context paramContext, String paramString)
+  {
+    return paramContext.getSharedPreferences("config_prefile", 0).getInt("config_version_" + paramString, 0);
+  }
+  
+  public void b(String paramString, int paramInt1, int paramInt2)
+  {
+    Object localObject1;
+    HashMap localHashMap;
+    Object localObject2;
+    int m;
+    boolean bool;
+    int j;
+    int k;
+    int i;
+    Object localObject3;
+    label156:
+    String str;
     for (;;)
     {
       try
       {
-        localObject1 = paramJSONObject.get((String)localObject1);
-        if ((localObject1 instanceof JSONObject))
+        localObject1 = a();
+        if (localObject1 != null)
         {
-          Object localObject2 = a(paramString, (JSONObject)localObject1);
-          localObject1 = localObject2;
-          if (localObject2 != null) {
-            break;
+          localObject1 = (HashMap)((HashMap)localObject1).clone();
+          localHashMap = new HashMap();
+          if (QLog.isColorLevel()) {
+            QLog.i("NCtr", 1, "sourceString : " + paramString);
           }
+          localObject2 = XmlPullParserFactory.newInstance().newPullParser();
+          ((XmlPullParser)localObject2).setInput(new StringReader(paramString));
+          m = ((XmlPullParser)localObject2).getEventType();
+          bool = false;
+          paramString = "";
+          j = 0;
+          k = 0;
+          i = 50;
+          if (m == 1) {
+            break label915;
+          }
+          localObject3 = ((XmlPullParser)localObject2).getName();
+        }
+        switch (m)
+        {
+        case 0: 
+          this.jdField_a_of_type_Boolean = bool;
+          localObject2 = BaseApplicationImpl.getContext().getSharedPreferences("config_prefile", 0).edit();
+          localObject3 = this.mApp.getAccount();
+          ((SharedPreferences.Editor)localObject2).putInt("config_version_" + (String)localObject3, paramInt1);
+          ((SharedPreferences.Editor)localObject2).putInt("config_appid_" + (String)localObject3, paramInt2);
+          ((SharedPreferences.Editor)localObject2).apply();
+          ((SharedPreferences.Editor)localObject2).putBoolean("config_should_limit_" + (String)localObject3, bool);
+          if ((localObject1 == null) || (((HashMap)localObject1).size() <= 0)) {
+            break label648;
+          }
+          localObject1 = ((HashMap)localObject1).keySet().iterator();
+          if (!((Iterator)localObject1).hasNext()) {
+            break label648;
+          }
+          str = (String)((Iterator)localObject1).next();
+          ((SharedPreferences.Editor)localObject2).remove("extra_limit_entry_" + (String)localObject3 + "_" + paramString);
+          continue;
+          localObject1 = null;
         }
       }
-      catch (Exception localException2)
+      catch (Exception paramString)
       {
-        continue;
-      }
-      if (localIterator.hasNext())
-      {
-        localObject1 = (String)localIterator.next();
-        if (!paramString.equals(localObject1)) {}
-      }
-      else
-      {
-        try
-        {
-          localObject1 = paramJSONObject.get((String)localObject1);
-          return localObject1;
+        if (QLog.isColorLevel()) {
+          QLog.e("NCtr", 1, "parse fail", paramString);
         }
-        catch (Exception localException1) {}
-        return null;
+        return;
       }
-    }
-  }
-  
-  public static String a()
-  {
-    if ("-1".equals(ReaderBaseWebActivity.a)) {
-      return QRBridgeActivity.a;
-    }
-    return ReaderBaseWebActivity.a;
-  }
-  
-  public static String a(@NonNull Activity paramActivity)
-  {
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    paramActivity.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
-    return localDisplayMetrics.heightPixels + "x" + localDisplayMetrics.widthPixels;
-  }
-  
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    Uri localUri;
-    Object localObject;
-    do
-    {
-      do
+      continue;
+      break label918;
+      if (((String)localObject3).equalsIgnoreCase("body"))
       {
-        do
-        {
-          return paramString;
-          localUri = Uri.parse(paramString);
-          if (!localUri.getPath().contains("bookDetails.html")) {
-            break;
-          }
-          localObject = localUri.getQueryParameter("id");
-        } while (TextUtils.isEmpty((CharSequence)localObject));
-        return localUri.getScheme() + "://" + localUri.getHost() + "/club/client/read/6/rel/book_outDetail.html?ChannelID=100060&_wv=1&_wwv=4&bid=" + (String)localObject;
-      } while (!localUri.getPath().contains("bookDetail_index.html"));
-      String str = localUri.getQueryParameter("nbid");
-      localObject = str;
-      if (TextUtils.isEmpty(str)) {
-        localObject = localUri.getQueryParameter("bid");
-      }
-    } while (TextUtils.isEmpty((CharSequence)localObject));
-    return localUri.getScheme() + "://" + localUri.getHost() + "/club/client/read/6/rel/bookDetail_out_detail.html?ChannelID=100060&_wv=1&_wwv=4&nbid=" + (String)localObject;
-  }
-  
-  public static void a(Activity paramActivity)
-  {
-    boolean bool = false;
-    if (b) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (paramActivity == null);
-        paramActivity = paramActivity.getIntent();
-      } while (paramActivity == null);
-      paramActivity = paramActivity.getStringExtra("readerDpcConfig");
-      Log.i("Utility", "initReaderDPC dpc = " + paramActivity);
-    } while (TextUtils.isEmpty(paramActivity));
-    Integer[] arrayOfInteger = new Integer[6];
-    Arrays.fill(arrayOfInteger, Integer.valueOf(0));
-    if (DeviceProfileManager.a(paramActivity, arrayOfInteger, new ajhd()) >= arrayOfInteger.length)
-    {
-      if (arrayOfInteger[5].intValue() == 1) {
+        if (Integer.valueOf(((XmlPullParser)localObject2).getAttributeValue(0)).intValue() != 1) {
+          break label929;
+        }
         bool = true;
+        break label926;
       }
-      a = bool;
+      if (((String)localObject3).equalsIgnoreCase("puin"))
+      {
+        paramString = ((XmlPullParser)localObject2).nextText();
+        break label918;
+      }
+      if (((String)localObject3).equalsIgnoreCase("day"))
+      {
+        j = Integer.valueOf(((XmlPullParser)localObject2).nextText()).intValue();
+        break label918;
+      }
+      if (!((String)localObject3).equalsIgnoreCase("enableTimes")) {
+        break label918;
+      }
+      k = Integer.valueOf(((XmlPullParser)localObject2).nextText()).intValue();
+      break label918;
+      if (!((String)localObject3).equalsIgnoreCase("entry")) {
+        break label918;
+      }
+      if ((localObject1 != null) && (((HashMap)localObject1).containsKey(paramString)))
+      {
+        localObject3 = (bfnn)((HashMap)localObject1).get(paramString);
+        ((HashMap)localObject1).remove(paramString);
+        if ((j == ((bfnn)localObject3).jdField_a_of_type_Int) && (k == ((bfnn)localObject3).b))
+        {
+          localHashMap.put(paramString, localObject3);
+          break label935;
+        }
+        localHashMap.put(paramString, new bfnn(this, paramString, j, k, 0L, 0));
+        break label935;
+      }
+      localHashMap.put(paramString, new bfnn(this, paramString, j, k, 0L, 0));
+      break label935;
     }
-    b = true;
-  }
-  
-  public static void a(Context paramContext)
-  {
-    BusinessTask localBusinessTask = new BusinessTask("GetEnterShelfOnOffTask");
-    localBusinessTask.a(new bfnn(paramContext), true);
-    localBusinessTask.a();
-  }
-  
-  public static void a(View paramView, float paramFloat)
-  {
-    if ((paramView.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))
+    label648:
+    label915:
+    label918:
+    label926:
+    label929:
+    label935:
+    label951:
+    for (;;)
     {
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-      localMarginLayoutParams.topMargin = ((int)paramFloat);
-      paramView.setLayoutParams(localMarginLayoutParams);
+      m = ((XmlPullParser)localObject2).next();
+      break;
+      paramString = new StringBuilder();
+      if (localHashMap.size() > 0)
+      {
+        localObject1 = localHashMap.keySet().iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          str = (String)((Iterator)localObject1).next();
+          bfnn localbfnn = (bfnn)localHashMap.get(str);
+          ((SharedPreferences.Editor)localObject2).putString("extra_limit_entry_" + (String)localObject3 + "_" + str, localbfnn.toString());
+          paramString.append(str).append(",");
+          if (QLog.isColorLevel()) {
+            QLog.d("NCtr", 2, "LimitEntry:[" + localbfnn.toString() + "]");
+          }
+        }
+        ((SharedPreferences.Editor)localObject2).putString("extra_limit_uins_" + (String)localObject3, paramString.substring(0, paramString.length() - 1));
+        if (QLog.isColorLevel()) {
+          QLog.d("NCtr", 2, "LimitUins:[" + paramString.substring(0, paramString.length() - 1) + "].mShouldLimit" + this.jdField_a_of_type_Boolean);
+        }
+      }
+      ((SharedPreferences.Editor)localObject2).apply();
+      this.jdField_a_of_type_JavaUtilHashMap = localHashMap;
+      return;
+      break label156;
+      for (;;)
+      {
+        if (i > 0) {
+          break label951;
+        }
+        break;
+        for (;;)
+        {
+          break;
+          bool = false;
+        }
+        paramString = "";
+        j = 0;
+        k = 0;
+        i -= 1;
+      }
     }
   }
   
-  public static int b()
+  public boolean handleMessage(Message paramMessage)
   {
-    return BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().heightPixels;
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      b((String)paramMessage.obj, paramMessage.arg1, paramMessage.arg2);
+      continue;
+      paramMessage = (String)paramMessage.obj;
+      a(BaseApplicationImpl.getContext(), paramMessage);
+    }
   }
   
-  public static String b()
+  protected Class<? extends ajtg> observerClass()
   {
-    DisplayMetrics localDisplayMetrics = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics();
-    return localDisplayMetrics.heightPixels + "x" + localDisplayMetrics.widthPixels;
+    return null;
   }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_AndroidOsHandler = null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfnm
  * JD-Core Version:    0.7.0.1
  */

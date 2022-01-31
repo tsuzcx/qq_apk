@@ -14,6 +14,7 @@ public class DesktopDittoInfo
   extends DesktopItemInfo
 {
   public Map<String, MiniAppInfo> appInfoMap = new HashMap();
+  public int currentIndex;
   public String dittoDls;
   public MiniAppInfo jumpMoreInfo;
   public String title;
@@ -24,6 +25,11 @@ public class DesktopDittoInfo
     this.dragEnable = false;
     this.dropEnable = false;
     this.deleteEnable = false;
+  }
+  
+  public void incrementIndex()
+  {
+    this.currentIndex += 1;
   }
   
   public void mergePbData(INTERFACE.StModuleInfo paramStModuleInfo)
@@ -42,6 +48,7 @@ public class DesktopDittoInfo
         }
       }
     }
+    this.currentIndex = 0;
   }
   
   public String toString()

@@ -1,20 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.database.Cursor;
+import android.os.Parcel;
 
-class bddx
-  implements DialogInterface.OnClickListener
+final class bddx
+  implements bdjv<bddw>
 {
-  bddx(bddu parambddu, String paramString, boolean paramBoolean) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    bddu.a(this.jdField_a_of_type_Bddu).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Bddu.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    return 0;
+  }
+  
+  public bddw a(Cursor paramCursor)
+  {
+    Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("data"));
+    if (localObject == null) {
+      return null;
+    }
+    paramCursor = Parcel.obtain();
+    paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
+    paramCursor.setDataPosition(0);
+    localObject = new bddw();
+    ((bddw)localObject).a(paramCursor);
+    paramCursor.recycle();
+    return localObject;
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public bdjw[] a()
+  {
+    return new bdjw[] { new bdjw("groupId", "INTEGER UNIQUE"), new bdjw("data", "BLOB") };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bddx
  * JD-Core Version:    0.7.0.1
  */

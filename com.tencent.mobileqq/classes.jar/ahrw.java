@@ -1,6 +1,5 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 class ahrw
   implements DialogInterface.OnClickListener
@@ -9,20 +8,7 @@ class ahrw
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.d == 36) {
-      if (this.a.a.a == 1) {
-        this.a.a.m();
-      }
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      awqx.b(null, "CliOper", "", "", "0X8004CEE", "0X8004CEE", 0, 0, "", "", "", "");
-      return;
-      this.a.a.a();
-      continue;
-      this.a.a.a();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

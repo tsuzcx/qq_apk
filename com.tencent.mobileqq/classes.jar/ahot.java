@@ -1,36 +1,19 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.activity.richmedia.view.SensorFrameImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class ahot
-  implements SensorEventListener
+class ahot
+  implements DialogInterface.OnDismissListener
 {
-  public ahot(SensorFrameImageView paramSensorFrameImageView) {}
+  ahot(ahoq paramahoq) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramSensorEvent.sensor.getType())
-    {
-    }
-    for (;;)
-    {
-      SensorFrameImageView.a(this.a);
-      SensorFrameImageView.b(this.a);
-      return;
-      SensorFrameImageView.a(this.a, paramSensorEvent.values);
-      continue;
-      SensorFrameImageView.b(this.a, paramSensorEvent.values);
-      continue;
-      SensorFrameImageView.c(this.a, paramSensorEvent.values);
-    }
+    ahoq.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahot
  * JD-Core Version:    0.7.0.1
  */

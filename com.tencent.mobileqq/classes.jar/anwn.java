@@ -1,48 +1,25 @@
-public class anwn
-  extends anwq
+class anwn
 {
+  public int a;
   public String a;
   public String b;
   public String c;
-  public String d;
   
-  public anwn(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public anwn(anwm paramanwm, String paramString1, String paramString2, int paramInt)
   {
-    super(2, paramString1);
-    this.a = paramString2;
-    this.b = paramString3;
-    this.c = paramString4;
-    this.d = paramString5;
-    if (this.b == null) {
-      this.b = "";
-    }
-    if (this.e == null) {
-      this.e = "";
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString1.substring(paramString1.lastIndexOf("/") + 1);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public boolean equals(Object paramObject)
+  public String a()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof anwn))
-    {
-      paramObject = (anwn)paramObject;
-      bool1 = bool2;
-      if (this.b.equals(paramObject.b))
-      {
-        bool1 = bool2;
-        if (this.e.equals(paramObject.e)) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public String toString()
-  {
-    return this.e + "_" + this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,18 +1,19 @@
-public abstract interface ayne
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class ayne
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  ayne(ayna paramayna) {}
   
-  public abstract void a(long paramLong);
-  
-  public abstract void b();
-  
-  public abstract void b(long paramLong);
-  
-  public abstract void c(long paramLong);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayne
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,10 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
-
-public abstract interface amsl
+public class amsl
 {
-  public abstract void a(View paramView, MessageForDeviceFile paramMessageForDeviceFile);
+  public String a = "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amsl
  * JD-Core Version:    0.7.0.1
  */

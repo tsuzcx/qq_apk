@@ -1,8 +1,12 @@
-public abstract interface adam
+class adam
+  implements adan
 {
-  public abstract boolean a(adaj paramadaj);
+  adam(adal paramadal) {}
   
-  public abstract boolean a(adaj paramadaj, String paramString1, String paramString2);
+  public void a()
+  {
+    this.a.b();
+  }
 }
 
 

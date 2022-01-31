@@ -1,26 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.util.SparseArray;
+import com.tencent.qphone.base.util.QLog;
 
-class oak
-  implements ViewBase.OnClickListener
+public class oak
 {
-  oak(oah paramoah, ViewBase paramViewBase) {}
+  public SparseArray<oaj> a = new SparseArray();
   
-  public void onClick(ViewBase paramViewBase)
+  public oak()
   {
-    if (this.jdField_a_of_type_Oah.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean != null)
-    {
-      oag.a(this.jdField_a_of_type_Oah.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.findViewById(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getName()));
-      oag.a(this.jdField_a_of_type_Oah.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
+    if (QLog.isColorLevel()) {
+      QLog.d("ExposureSupplementUtil", 2, "create ExposureSupplementUtilManager");
     }
-    obz.e(this.jdField_a_of_type_Oah.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData());
+  }
+  
+  public oaj a(int paramInt)
+  {
+    return (oaj)this.a.get(paramInt);
+  }
+  
+  public void a(int paramInt, oaj paramoaj)
+  {
+    this.a.put(paramInt, paramoaj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     oak
  * JD-Core Version:    0.7.0.1
  */

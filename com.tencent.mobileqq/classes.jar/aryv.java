@@ -1,19 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.widget.ImageView;
 
 class aryv
-  implements DialogInterface.OnClickListener
 {
-  aryv(aryq paramaryq) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aryv(View paramView)
   {
-    aryq.a(this.a);
+    this.a = ((ImageView)aryt.a(paramView, 2131369539));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aryv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import abwd;
-import abwe;
+import acgp;
+import acgq;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import azri;
-import azrj;
-import bbtm;
-import bcfs;
-import behi;
+import basm;
+import basn;
+import bcxm;
+import bdjt;
+import bfpc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.widget.AdapterView;
@@ -19,43 +19,43 @@ import java.util.ArrayList;
 
 public class TroopClassChoiceActivity
   extends IphoneTitleBarActivity
-  implements behi
+  implements bfpc
 {
-  private abwe jdField_a_of_type_Abwe;
-  public azri a;
+  private acgq jdField_a_of_type_Acgq;
+  public basm a;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   String jdField_a_of_type_JavaLangString;
-  public ArrayList<azri> a;
+  public ArrayList<basm> a;
   private String b;
   
   private void b()
   {
     Object localObject = getIntent();
     this.b = String.valueOf(((Intent)localObject).getStringExtra("troopGroupClassExt"));
-    azri localazri = azrj.a(this).a();
-    if ((localazri != null) && (this.b.equals(localazri.b)))
+    basm localbasm = basn.a(this).a();
+    if ((localbasm != null) && (this.b.equals(localbasm.b)))
     {
-      this.jdField_a_of_type_Azri = localazri;
+      this.jdField_a_of_type_Basm = localbasm;
       this.jdField_a_of_type_JavaLangString = ((Intent)localObject).getStringExtra("id");
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         break label113;
       }
-      this.jdField_a_of_type_JavaUtilArrayList = azrj.a(this).a();
+      this.jdField_a_of_type_JavaUtilArrayList = basn.a(this).a();
     }
     for (;;)
     {
-      bcfs.a(bbtm.a().a());
+      bdjt.a(bcxm.a().a());
       a();
       return;
-      this.jdField_a_of_type_Azri = azrj.a(this).a(this, this.b);
+      this.jdField_a_of_type_Basm = basn.a(this).a(this, this.b);
       break;
       label113:
-      this.jdField_a_of_type_JavaUtilArrayList = azrj.a(this).a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaUtilArrayList = basn.a(this).a(this.jdField_a_of_type_JavaLangString);
       if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
       {
-        localObject = (azri)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-        if (((azri)localObject).jdField_a_of_type_Azri != null) {
-          setTitle(((azri)localObject).jdField_a_of_type_Azri.jdField_a_of_type_JavaLangString);
+        localObject = (basm)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        if (((basm)localObject).jdField_a_of_type_Basm != null) {
+          setTitle(((basm)localObject).jdField_a_of_type_Basm.jdField_a_of_type_JavaLangString);
         }
       }
     }
@@ -63,16 +63,16 @@ public class TroopClassChoiceActivity
   
   private void c()
   {
-    setContentBackgroundResource(2130838503);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131311878));
+    setContentBackgroundResource(2130838514);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131377699));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_Abwe = new abwe(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Abwe);
+    this.jdField_a_of_type_Acgq = new acgq(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Acgq);
   }
   
   public void a()
   {
-    azrj.a(BaseApplicationImpl.getContext()).a(this.b, new abwd(this));
+    basn.a(BaseApplicationImpl.getContext()).a(this.b, new acgp(this));
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -87,15 +87,15 @@ public class TroopClassChoiceActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131496931);
-    setTitle(2131654531);
+    super.setContentView(2131562531);
+    setTitle(2131720427);
     b();
     c();
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (azri)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramAdapterView = (basm)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     if ((paramAdapterView.jdField_a_of_type_JavaUtilArrayList != null) && (paramAdapterView.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (!paramAdapterView.b.equals("10015")) && (!paramAdapterView.b.equals("10017")))
     {
       paramView = new Intent(this, TroopClassChoiceActivity.class);
@@ -104,7 +104,7 @@ public class TroopClassChoiceActivity
       startActivityForResult(paramView, 11);
       return;
     }
-    azrj.a(this).a(paramAdapterView);
+    basn.a(this).a(paramAdapterView);
     paramView = new Intent();
     paramView.putExtra("id", paramAdapterView.b);
     setResult(-1, paramView);

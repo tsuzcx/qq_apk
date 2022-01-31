@@ -1,123 +1,213 @@
-import android.content.Context;
-import android.graphics.PointF;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
-import dov.com.qq.im.video.PngsCreateWorkingQueue.1;
-import dov.com.qq.im.video.PngsCreateWorkingQueue.3;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.Semaphore;
+import android.os.Looper;
+import android.view.View;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.webview.controller.BaseTranslucentController.2;
 
 public class biam
 {
-  private static String jdField_a_of_type_JavaLangString = "PngsCreateWorkingQueue";
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private biak jdField_a_of_type_Biak = new biak();
-  private biao jdField_a_of_type_Biao;
-  private biap jdField_a_of_type_Biap;
+  private long jdField_a_of_type_Long;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bian(this);
+  protected Handler a;
+  protected QQBrowserActivity a;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new BaseTranslucentController.2(this);
+  private volatile boolean jdField_a_of_type_Boolean;
+  private volatile boolean b;
   
-  public biam(String paramString, List<List<List<PointF>>> paramList, List<List<float[]>> paramList1, double paramDouble, boolean paramBoolean, Context paramContext)
+  public biam(QQBrowserActivity paramQQBrowserActivity)
   {
-    this.jdField_a_of_type_Biap = new biap(paramString, paramList, paramList1, paramDouble, paramBoolean);
-    paramString = new HandlerThread("PngsCreateWorkingQueue");
-    paramString.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramString.getLooper());
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    QZLog.i("BaseTranslucentControll", "current controller = " + getClass().getName());
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity = paramQQBrowserActivity;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   
-  private void a()
+  private void f()
   {
-    Iterator localIterator = this.jdField_a_of_type_Biak.a.iterator();
-    while (localIterator.hasNext())
+    if (this.jdField_a_of_type_Boolean) {}
+    for (;;)
     {
-      String str = (String)localIterator.next();
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "clear frame files, dir = " + str);
-      bace.a(str);
-    }
-  }
-  
-  private void b(biaj parambiaj)
-  {
-    String[] arrayOfString = new String[1];
-    arrayOfString[0] = "";
-    Semaphore localSemaphore = new Semaphore(0);
-    bhsi localbhsi = (bhsi)bhsh.jdField_a_of_type_JavaUtilList.get(bhsh.jdField_a_of_type_ArrayOfInt[(parambiaj.jdField_a_of_type_Int % bhsh.jdField_a_of_type_ArrayOfInt.length)]);
-    float f1 = 0.81F;
-    float f2 = 0.16F;
-    if (parambiaj.b.contains("\n"))
-    {
-      f1 = 0.67F;
-      f2 = 0.3F;
-    }
-    int i;
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      j = (int)(DeviceUtils.getScreenWidth(this.jdField_a_of_type_AndroidContentContext) * 0.44F) + 1;
-      if (this.jdField_a_of_type_AndroidContentContext == null) {
-        break label242;
-      }
-      i = azvv.a(this.jdField_a_of_type_AndroidContentContext, 2.0F) * 320 / j;
-      label119:
-      if (this.jdField_a_of_type_AndroidContentContext == null) {
-        break label248;
-      }
-    }
-    label242:
-    label248:
-    for (int j = azvv.c(this.jdField_a_of_type_AndroidContentContext, 23.0F) * 320 / j;; j = 19)
-    {
-      this.jdField_a_of_type_Biap.a(parambiaj.b, j, localbhsi.jdField_a_of_type_JavaLangString, localbhsi.b, i, 0.0F, f1, 1.0F, f2);
-      this.jdField_a_of_type_Biap.a(parambiaj.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Biap.a(new bian(this, parambiaj, arrayOfString, localSemaphore));
+      return;
       try
       {
-        localSemaphore.acquire();
-        if (this.jdField_a_of_type_Biao != null) {
-          this.jdField_a_of_type_Biao.a(parambiaj.jdField_a_of_type_Int, arrayOfString[0]);
+        QZLog.i("BaseTranslucentControll", "registerBroadcast");
+        IntentFilter localIntentFilter = new IntentFilter();
+        String[] arrayOfString = a();
+        if (arrayOfString != null)
+        {
+          int j = arrayOfString.length;
+          int i = 0;
+          while (i < j)
+          {
+            localIntentFilter.addAction(arrayOfString[i]);
+            i += 1;
+          }
+        }
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (bool) {
+          continue;
+        }
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
+          this.jdField_a_of_type_Boolean = true;
+          return;
+        }
+        catch (Exception localException1)
+        {
+          QZLog.e("BaseTranslucentControll", "regist receiver error:", localException1);
+          return;
         }
         return;
       }
-      catch (InterruptedException parambiaj)
+      catch (Exception localException2)
       {
-        parambiaj.printStackTrace();
+        QZLog.e("BaseTranslucentControll", "registerBroadcast error", localException2);
       }
-      j = 1920;
-      break;
-      i = 5;
-      break label119;
     }
   }
   
-  public biak a()
+  private void g()
   {
-    return this.jdField_a_of_type_Biak;
+    try
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        QZLog.i("BaseTranslucentControll", "removeBroadcast");
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+          this.jdField_a_of_type_Boolean = false;
+          return;
+        }
+        catch (Exception localException1)
+        {
+          for (;;)
+          {
+            QZLog.e("BaseTranslucentControll", "unregisterReceiver error ", localException1);
+          }
+        }
+      }
+      return;
+    }
+    catch (Exception localException2)
+    {
+      QZLog.e("BaseTranslucentControll", "removeBroadcast error", localException2);
+    }
   }
   
-  public void a(biaj parambiaj)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreateWorkingQueue.1(this, parambiaj));
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    a(false);
+    f();
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 6100L);
   }
   
-  public void a(biao parambiao)
+  public void a(Intent paramIntent) {}
+  
+  protected void a(View paramView)
   {
-    this.jdField_a_of_type_Biao = parambiao;
+    if (!this.b)
+    {
+      this.b = true;
+      QZLog.i("BaseTranslucentControll", "setAlpha(1)");
+      if (paramView != null) {
+        paramView.setAlpha(1.0F);
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b() != null)
+        {
+          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b().getWebView();
+          if (paramView != null)
+          {
+            Object localObject = paramView.getTag(2131374580);
+            if ((localObject == null) || (!((Boolean)localObject).booleanValue())) {
+              break label119;
+            }
+            i = 1;
+            paramView.setTag(2131374577, Boolean.TRUE);
+            if (i != 0)
+            {
+              QZLog.i("BaseTranslucentControll", "tiantai jsReady true,notify webview.");
+              bhrv.a(paramView);
+              return;
+            }
+            QZLog.i("BaseTranslucentControll", "tiantai jsReady false,not notify webview.");
+            return;
+          }
+        }
+      }
+      catch (Exception paramView)
+      {
+        QZLog.e("BaseTranslucentControll", "notify webview qzRoofStartAnimation fail.", paramView);
+      }
+      return;
+      label119:
+      int i = 0;
+    }
   }
   
   public void a(boolean paramBoolean)
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "stop, clearFiles = " + paramBoolean);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreateWorkingQueue.3(this, paramBoolean));
-    this.jdField_a_of_type_AndroidContentContext = null;
+    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131364706);
+    if (localView == null) {
+      return;
+    }
+    if (!paramBoolean)
+    {
+      if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 6000L)
+      {
+        localView.setAlpha(0.0F);
+        this.b = false;
+        QZLog.i("BaseTranslucentControll", "setAlpha(0)");
+        return;
+      }
+      QZLog.i("BaseTranslucentControll", "isLoadSuccess = true，setAlpha(1)");
+      a(localView);
+      return;
+    }
+    QZLog.i("BaseTranslucentControll", "isLoadSuccess = false，setAlpha(1)");
+    a(localView);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String[] a()
+  {
+    return null;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
+  {
+    g();
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public void e()
+  {
+    a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     biam
  * JD-Core Version:    0.7.0.1
  */

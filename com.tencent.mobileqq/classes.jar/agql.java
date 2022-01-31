@@ -1,26 +1,53 @@
-public class agql
+import android.app.Activity;
+import android.os.Build.VERSION;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+
+class agql
+  implements bfoq
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
+  agql(agqk paramagqk, bfol parambfol) {}
   
-  public agql(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-  }
-  
-  public String toString()
-  {
-    return "ShowInfo{Red=" + this.jdField_a_of_type_Boolean + ",Corner=" + this.jdField_b_of_type_Boolean + ",con='" + this.jdField_a_of_type_JavaLangString + '\'' + ",buf='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    if ((this.jdField_a_of_type_Agqk.jdField_a_of_type_ArrayOfInt == null) || (paramInt >= this.jdField_a_of_type_Agqk.jdField_a_of_type_ArrayOfInt.length)) {
+      return;
+    }
+    switch (this.jdField_a_of_type_Agqk.jdField_a_of_type_ArrayOfInt[paramInt])
+    {
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Bfol.dismiss();
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+      if (Build.VERSION.SDK_INT >= 23)
+      {
+        if (this.jdField_a_of_type_Agqk.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.CAMERA") != 0) {
+          ((BaseActivity)this.jdField_a_of_type_Agqk.jdField_a_of_type_AndroidAppActivity).requestPermissions(new agqm(this), 1, new String[] { "android.permission.CAMERA" });
+        } else {
+          agqk.a(this.jdField_a_of_type_Agqk);
+        }
+      }
+      else
+      {
+        agqk.a(this.jdField_a_of_type_Agqk);
+        continue;
+        agqs.b(this.jdField_a_of_type_Agqk.jdField_a_of_type_AndroidAppActivity, agqs.d(this.jdField_a_of_type_Agqk.c));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agql
  * JD-Core Version:    0.7.0.1
  */

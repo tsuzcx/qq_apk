@@ -1,92 +1,47 @@
-import android.content.Context;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.ark.ArkPanelPagerAdapter;
-import com.tencent.widget.XPanelContainer;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 
-public class alfl
-  extends RelativeLayout
+class alfl
+  implements SensorEventListener
 {
-  public int a;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  alfl(alfk paramalfk) {}
   
-  public alfl(ArkPanelPagerAdapter paramArkPanelPagerAdapter, Context paramContext, AttributeSet paramAttributeSet)
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    int k = paramArkPanelPagerAdapter.a();
-    int m = paramArkPanelPagerAdapter.b();
-    int n = aciy.a(15.0F, getContext().getResources());
-    int i = 0;
-    while (i < m)
-    {
-      paramArkPanelPagerAdapter = new LinearLayout(paramContext);
-      int j = (XPanelContainer.jdField_a_of_type_Int - XPanelContainer.d - n) / m;
-      paramAttributeSet = new RelativeLayout.LayoutParams(-1, j);
-      paramAttributeSet.leftMargin = aciy.a(20.0F, getContext().getResources());
-      paramAttributeSet.rightMargin = aciy.a(20.0F, getContext().getResources());
-      paramArkPanelPagerAdapter.setOrientation(0);
-      if (i == 0) {}
-      for (paramAttributeSet.topMargin = (XPanelContainer.d / (m + 1));; paramAttributeSet.topMargin = (j * i + XPanelContainer.d * (i + 2) / (m + 1) / 2))
-      {
-        j = 0;
-        while (j < k)
-        {
-          Object localObject = new LinearLayout.LayoutParams(-1, -1);
-          ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
-          if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-            this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-          }
-          View localView = LayoutInflater.from(paramContext).inflate(2131493206, null);
-          paramArkPanelPagerAdapter.addView(localView, (ViewGroup.LayoutParams)localObject);
-          localObject = new alfm();
-          ((alfm)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131302182));
-          ((alfm)localObject).b = ((ImageView)localView.findViewById(2131300748));
-          ((alfm)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131311234));
-          localView.setTag(localObject);
-          j += 1;
-        }
-      }
-      addView(paramArkPanelPagerAdapter, paramAttributeSet);
-      i += 1;
+    double d1 = 1.0D;
+    if (1 != paramSensorEvent.sensor.getType()) {
+      return;
     }
-    setTag(Integer.valueOf(XPanelContainer.d));
-  }
-  
-  public void a()
-  {
-    int i = 0;
-    while (i < getChildCount())
+    paramSensorEvent = paramSensorEvent.values;
+    float f1 = paramSensorEvent[0];
+    float f2 = paramSensorEvent[1];
+    double d2 = Math.sqrt(f1 * f1 + f2 * f2);
+    d2 = f2 / d2;
+    if (d2 > 1.0D) {}
+    for (;;)
     {
-      Object localObject = getChildAt(i);
-      if (localObject != null)
-      {
-        localObject = (alfm)((View)localObject).getTag();
-        if ((localObject != null) && (((alfm)localObject).jdField_a_of_type_AndroidWidgetImageView != null)) {
-          ((alfm)localObject).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
-        }
+      d2 = Math.acos(d1);
+      d1 = d2;
+      if (f1 < 0.0F) {
+        d1 = 6.283185307179586D - d2;
       }
-      i += 1;
+      int i = (int)(d1 * 57.295779513082323D);
+      alfk.a(this.a, (i + 45) / 90 * 90);
+      return;
+      if (d2 < -1.0D) {
+        d1 = -1.0D;
+      } else {
+        d1 = d2;
+      }
     }
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alfl
  * JD-Core Version:    0.7.0.1
  */

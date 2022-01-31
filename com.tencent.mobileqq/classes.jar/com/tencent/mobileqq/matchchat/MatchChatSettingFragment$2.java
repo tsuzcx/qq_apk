@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.matchchat;
 
-import ajzj;
-import antc;
-import arjg;
-import awqx;
+import aknv;
+import aoep;
+import aojo;
+import asfj;
+import axqw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
@@ -15,10 +16,11 @@ class MatchChatSettingFragment$2
   
   public void run()
   {
-    awqx.b(MatchChatSettingFragment.a(this.this$0), "dc00898", "", "", "0X800A699", "0X800A699", 0, 0, "", "", "", "");
-    arjg.a(MatchChatSettingFragment.a(this.this$0));
-    antc.b(MatchChatSettingFragment.a(this.this$0));
-    ((ajzj)MatchChatSettingFragment.a(this.this$0).getManager(285)).a();
+    axqw.b(MatchChatSettingFragment.a(this.this$0), "dc00898", "", "", "0X800A699", "0X800A699", 0, 0, "", "", "", "");
+    asfj.a(MatchChatSettingFragment.a(this.this$0));
+    aojo.b(MatchChatSettingFragment.a(this.this$0));
+    ((aoep)MatchChatSettingFragment.a(this.this$0).getManager(264)).c();
+    ((aknv)MatchChatSettingFragment.a(this.this$0).getManager(285)).a();
     ThreadManager.getUIHandler().post(new MatchChatSettingFragment.2.1(this));
   }
 }

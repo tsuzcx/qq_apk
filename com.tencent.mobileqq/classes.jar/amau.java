@@ -1,24 +1,50 @@
+import android.database.sqlite.SQLiteDatabase;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.QQEntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import java.util.HashMap;
+import java.util.Map;
+
 public class amau
-  extends amas
+  extends QQEntityManagerFactory
 {
-  private ambg jdField_a_of_type_Ambg;
-  private ambq jdField_a_of_type_Ambq;
+  private static Map<String, Class<?>> a = new HashMap();
   
-  public amau(String paramString, ambg paramambg, ambq paramambq)
+  static
   {
-    super(paramString);
-    this.jdField_a_of_type_Ambg = paramambg;
-    this.jdField_a_of_type_Ambq = paramambq;
+    a.put(RockDownloadInfo.class.getSimpleName(), RockDownloadInfo.class);
   }
   
-  public ambq a()
+  public amau()
   {
-    return this.jdField_a_of_type_Ambq;
+    super("RockDownload");
   }
+  
+  public akfv build(String paramString)
+  {
+    if (this.dbHelper == null)
+    {
+      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 1);
+      this.dbHelper = new akfv(this.mInnerDbHelper);
+    }
+    return this.dbHelper;
+  }
+  
+  public void createDatabase(SQLiteDatabase paramSQLiteDatabase)
+  {
+    paramSQLiteDatabase.execSQL(auln.a(new RockDownloadInfo()));
+  }
+  
+  public String getPackageName()
+  {
+    return getClass().getPackage().getName();
+  }
+  
+  public void upgradeDatabase(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amau
  * JD-Core Version:    0.7.0.1
  */

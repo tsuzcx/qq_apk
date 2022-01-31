@@ -1,25 +1,13 @@
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class abiq
-  extends ajfo
+  implements DialogInterface.OnClickListener
 {
-  public abiq(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  public abiq(GroupManagerActivity paramGroupManagerActivity) {}
   
-  protected void onCardLabelUpdate(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      this.a.setResult(-1);
-      this.a.b(2131654149);
-    }
-    for (;;)
-    {
-      this.a.a = false;
-      this.a.finish();
-      return;
-      this.a.b(2131654147);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

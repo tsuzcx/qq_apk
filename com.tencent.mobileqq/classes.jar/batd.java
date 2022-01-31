@@ -1,29 +1,84 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.data.MessageForTroopEffectPic;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsController.2;
+import com.tencent.mobileqq.trooppiceffects.view.NormalPicView;
+import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView;
+import com.tencent.mobileqq.trooppiceffects.view.ShakePicView;
+import com.tencent.mobileqq.trooppiceffects.view.VideoPicView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 public class batd
-  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public batd(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  protected Handler a;
+  protected ViewGroup a;
+  protected batp a;
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public batd(ViewGroup paramViewGroup)
   {
-    if (QLog.isColorLevel())
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    axqw.b(null, "dc00899", "show_pic", "", paramString1, paramString2, 0, 0, "", "", "", "");
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Batp != null) && (this.jdField_a_of_type_AndroidViewViewGroup != null))
     {
-      paramTVK_IMediaPlayer = new StringBuilder();
-      paramTVK_IMediaPlayer.append("video player error model=" + paramInt1);
-      paramTVK_IMediaPlayer.append(",what=" + paramInt2);
-      paramTVK_IMediaPlayer.append(",extra=" + paramInt3);
-      paramTVK_IMediaPlayer.append(",detailInfo=" + paramString);
-      QLog.d("VipVideoPlayActivity", 2, paramTVK_IMediaPlayer.toString());
+      this.jdField_a_of_type_Batp.b();
+      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_Batp.a());
+      this.jdField_a_of_type_Batp = null;
     }
-    long l1 = SystemClock.elapsedRealtime();
-    long l2 = VipVideoPlayActivity.b(this.a);
-    this.a.a("play_error", paramInt1, paramInt2, l1 - l2, paramString);
-    return false;
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public void a(int paramInt1, Bitmap paramBitmap, int paramInt2, batf parambatf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopPicEffectsController", 2, "showPicEffect");
+    }
+    if ((this.jdField_a_of_type_Batp == null) && (this.jdField_a_of_type_AndroidViewViewGroup != null)) {
+      switch (paramInt1)
+      {
+      default: 
+        this.jdField_a_of_type_Batp = new NormalPicView(this.jdField_a_of_type_AndroidViewViewGroup.getContext());
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_Batp.a(), -1, paramInt2);
+      this.jdField_a_of_type_Batp.setBitmap(paramBitmap);
+      this.jdField_a_of_type_Batp.a();
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopPicEffectsController.2(this, parambatf), 6000L);
+      return;
+      this.jdField_a_of_type_Batp = new PhantomPicView(this.jdField_a_of_type_AndroidViewViewGroup.getContext());
+      continue;
+      this.jdField_a_of_type_Batp = new ShakePicView(this.jdField_a_of_type_AndroidViewViewGroup.getContext());
+      continue;
+      this.jdField_a_of_type_Batp = new VideoPicView(this.jdField_a_of_type_AndroidViewViewGroup.getContext(), paramInt1);
+    }
+  }
+  
+  public void a(TroopChatPie paramTroopChatPie, MessageForTroopEffectPic paramMessageForTroopEffectPic, boolean paramBoolean)
+  {
+    aunt localaunt = aunj.a(6, 1536, 1);
+    aunl localaunl = paramMessageForTroopEffectPic.getPicDownloadInfo();
+    localaunt.a(paramMessageForTroopEffectPic, localaunl);
+    localaunt.a(new bate(this, localaunl, paramTroopChatPie, paramMessageForTroopEffectPic, paramBoolean));
+    aunj.a(localaunt, paramTroopChatPie.a);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = null;
   }
 }
 

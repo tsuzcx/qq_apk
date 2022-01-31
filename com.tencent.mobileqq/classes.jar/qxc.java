@@ -1,15 +1,8 @@
-import android.database.DataSetObserver;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-class qxc
-  extends DataSetObserver
+public abstract interface qxc
 {
-  qxc(qxb paramqxb) {}
-  
-  public void onChanged()
-  {
-    super.onChanged();
-    this.a.notifyDataSetChanged();
-  }
+  public abstract void d(VideoInfo paramVideoInfo);
 }
 
 

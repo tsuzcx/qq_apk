@@ -1,76 +1,39 @@
-import android.content.Intent;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager.27.1;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import cooperation.qzone.report.lp.LpReportInfo_dc00307;
-import cooperation.qzone.report.lp.LpReportManager;
-import java.net.URLEncoder;
-import mqq.os.MqqHandler;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
 public class agym
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  agym(agxq paramagxq, String paramString, Long paramLong, int paramInt) {}
+  public agym(TransactionActivity paramTransactionActivity) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (!agxq.a(this.jdField_a_of_type_Agxq)) {
-      return;
-    }
-    agxq.a(this.jdField_a_of_type_Agxq, false);
-    new Handler().postDelayed(new BannerManager.27.1(this), 1000L);
-    paramView = (QQAppInterface)agxq.a(this.jdField_a_of_type_Agxq).getAppRuntime();
-    String str = paramView.getCurrentAccountUin();
-    Object localObject = new StringBuilder(this.jdField_a_of_type_JavaLangString);
-    ((StringBuilder)localObject).append("?");
-    ((StringBuilder)localObject).append("uin=");
-    ((StringBuilder)localObject).append(str);
-    ((StringBuilder)localObject).append("&plat=1");
-    ((StringBuilder)localObject).append("&app=1");
-    ((StringBuilder)localObject).append("&version=8.2.6.4370");
-    ((StringBuilder)localObject).append("&device=" + URLEncoder.encode(Build.DEVICE));
-    ((StringBuilder)localObject).append("&system=" + Build.VERSION.RELEASE);
-    ((StringBuilder)localObject).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
-    localObject = ((StringBuilder)localObject).toString();
-    Intent localIntent = new Intent();
-    localIntent.putExtra("portraitOnly", true);
-    localIntent.putExtra("url", (String)localObject);
-    localIntent.putExtra("uin", str);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hide_more_button", true);
-    VasWebviewUtil.openQQBrowserActivity(agxq.a(this.jdField_a_of_type_Agxq), (String)localObject, 32768L, localIntent, false, -1);
-    if (this.jdField_a_of_type_JavaLangLong.longValue() == 3L)
-    {
-      paramView = paramView.getHandler(Conversation.class);
-      if (paramView == null) {}
-    }
-    try
-    {
-      paramView.sendMessage(paramView.obtainMessage(1134044));
-      paramView = new LpReportInfo_dc00307(LpReportInfo_dc00307.ACTION_TYPE_RED_PACK, LpReportInfo_dc00307.SUB_ACTION_TYPE_RED_PACK_CLICK, this.jdField_a_of_type_Int);
-      LpReportManager.getInstance().reportToDC00307(paramView, false, true);
-      awqx.a(agxq.a(this.jdField_a_of_type_Agxq).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 9, 0, "", "", "", "");
-      return;
-    }
-    catch (Exception paramView)
-    {
-      for (;;)
+    if (TransactionActivity.b(this.a).getText().length() > 4) {
+      if (!TransactionActivity.b(this.a).isEnabled())
       {
-        paramView.fillInStackTrace();
+        TransactionActivity.b(this.a).setEnabled(true);
+        TransactionActivity.b(this.a).setClickable(true);
+        this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.enable", "", "", TransactionActivity.b(this.a), "");
       }
     }
+    while (!TransactionActivity.b(this.a).isEnabled()) {
+      return;
+    }
+    TransactionActivity.b(this.a).setClickable(false);
+    TransactionActivity.b(this.a).setEnabled(false);
+    this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.disable", "", "", TransactionActivity.b(this.a), "");
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agym
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,121 @@
-import com.tencent.open.appstore.js.DownloadInterfaceNew;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
 
 public class bcdf
-  implements bcgv
 {
-  public bcdf(DownloadInterfaceNew paramDownloadInterfaceNew, String paramString) {}
+  public static final HashMap<String, Long> a = new HashMap();
   
-  public void a(int paramInt, String paramString)
+  static
   {
-    bcds.e("DownloadInterfaceNew", "[innerQuery] [onException] errorCode=" + paramInt + ", errorMsg=" + paramString);
+    a.put(bchy.a, Long.valueOf(4294967295L));
+    a.put("Qzone", Long.valueOf(4294967295L));
+    a.put("qzDynamicAlbum", Long.valueOf(4294967295L));
+    a.put("QZImagePicker", Long.valueOf(4294967295L));
+    a.put("checkin", Long.valueOf(4294967295L));
+    a.put("qzlive", Long.valueOf(4294967295L));
+    a.put("PublicAccountJs", Long.valueOf(4L));
+    a.put("offline", Long.valueOf(3L));
+    a.put(xln.class.getSimpleName(), Long.valueOf(3L));
+    a.put(xmh.a, Long.valueOf(11L));
+    a.put("UrlSaveVerifyV2", Long.valueOf(3L));
+    a.put("forceHttps", Long.valueOf(1L));
+    a.put("qqmusic", Long.valueOf(3L));
+    a.put("emoji", Long.valueOf(32L));
+    a.put("msgRoam", Long.valueOf(1L));
+    a.put("qw.pay", Long.valueOf(32L));
+    a.put("qw_pay", Long.valueOf(32L));
+    a.put("cj", Long.valueOf(32L));
+    a.put("common", Long.valueOf(32L));
+    a.put("readinjoy", Long.valueOf(16777216L));
+    a.put("ArkSecurity", Long.valueOf(3L));
+    a.put("miniApp", Long.valueOf(3L));
+    a.put("gameCenter", Long.valueOf(3L));
   }
   
-  public void a(List<DownloadInfo> paramList)
+  public static String a(long paramLong)
   {
-    bcds.c("DownloadInterfaceNew", "[innerQuery] onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject.put("packagename", localDownloadInfo.e);
-          localJSONObject.put("versioncode", localDownloadInfo.b);
-          localJSONObject.put("url", localDownloadInfo.d);
-          localJSONObject.put("pro", localDownloadInfo.f);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
-          localJSONObject.put("download_from", localDownloadInfo.h);
-          localJSONObject.put("writecodestate", localDownloadInfo.j);
-          localJSONArray.put(localJSONObject);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-      }
+    String str = "";
+    if (paramLong == 1L) {
+      str = "http";
     }
-    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
-    bcds.c("DownloadInterfaceNew", "[innerQuery] querySucess : " + paramList);
-    DownloadInterfaceNew.a(this.jdField_a_of_type_ComTencentOpenAppstoreJsDownloadInterfaceNew, paramList);
+    do
+    {
+      return str;
+      if (paramLong == 2L) {
+        return "https";
+      }
+      if (paramLong == 4L) {
+        return "publicaccount";
+      }
+      if (paramLong == 8L) {
+        return "pay";
+      }
+      if (paramLong == 16L) {
+        return "qqvip";
+      }
+      if (paramLong == 32L) {
+        return "qqjsbridge";
+      }
+      if (paramLong == 64L) {
+        return "tel";
+      }
+      if (paramLong == 128L) {
+        return "sms";
+      }
+      if (paramLong == 256L) {
+        return "mqqapi";
+      }
+      if (paramLong == 512L) {
+        return "mqqopensdkapi";
+      }
+      if (paramLong == 1024L) {
+        return "mqqmdpass";
+      }
+      if (paramLong == 2048L) {
+        return "mqq";
+      }
+      if (paramLong == 4096L) {
+        return "qapp";
+      }
+      if (paramLong == 8192L) {
+        return "mqqflyticket";
+      }
+      if (paramLong == 16384L) {
+        return "mqqwpa";
+      }
+      if (paramLong == 32768L) {
+        return "wtloginmqq";
+      }
+      if (paramLong == 65536L) {
+        return "qqwifi";
+      }
+      if (paramLong == 131072L) {
+        return "apollo";
+      }
+      if (paramLong == 262144L) {
+        return "mqqverifycode";
+      }
+      if (paramLong == 524288L) {
+        return "mqqconnect";
+      }
+      if (paramLong == 1048576L) {
+        return "mqqvoipivr";
+      }
+      if (paramLong == 2097152L) {
+        return "mqqdevlock";
+      }
+      if (paramLong == 4194304L) {
+        return "qqfav";
+      }
+      if (paramLong == 16777216L) {
+        return "readinjoy";
+      }
+    } while (paramLong != 33554432L);
+    return "nowmqqapi";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcdf
  * JD-Core Version:    0.7.0.1
  */

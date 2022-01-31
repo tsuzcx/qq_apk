@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aciy;
+import actn;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 
@@ -13,7 +13,7 @@ class TroopInviteStatusFragment$3
   {
     if ((this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (!this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()))
     {
-      Intent localIntent = aciy.a(new Intent(this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, SplashActivity.class), null);
+      Intent localIntent = actn.a(new Intent(this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, SplashActivity.class), null);
       localIntent.putExtra("uin", this.this$0.jdField_a_of_type_JavaLangString);
       localIntent.putExtra("uintype", 1);
       localIntent.putExtra("uinname", this.this$0.b);

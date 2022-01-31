@@ -9,10 +9,10 @@ public class NotificationLimiterUtil
     s_notificationLimiter = paramNotificationLimiter;
   }
   
-  public static boolean shouldNotify()
+  public static boolean shouldNotify(int paramInt)
   {
     if (s_notificationLimiter != null) {
-      return s_notificationLimiter.shouldNotify();
+      return s_notificationLimiter.shouldNotify(paramInt);
     }
     return true;
   }

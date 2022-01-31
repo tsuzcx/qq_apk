@@ -1,23 +1,41 @@
-import android.app.Activity;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint.FontMetrics;
+import android.text.TextPaint;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.AccountDetail;
-import java.lang.ref.WeakReference;
+import com.tencent.av.widget.stageview.StageMemberView;
 
-class mvu
-  implements View.OnClickListener
+public class mvu
+  extends View
 {
-  mvu(mut parammut, nbu paramnbu) {}
-  
-  public void onClick(View paramView)
+  public mvu(StageMemberView paramStageMemberView, Context paramContext)
   {
-    wmi.b((Activity)this.jdField_a_of_type_Mut.jdField_a_of_type_JavaLangRefWeakReference.get(), new wmk(this.jdField_a_of_type_Mut.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, mut.a(this.jdField_a_of_type_Mut));
-    mut.a(this.jdField_a_of_type_Mut, this.jdField_a_of_type_Nbu.jdField_a_of_type_JavaLangString);
+    super(paramContext);
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    float f;
+    if (StageMemberView.a(this.a) != null)
+    {
+      f = -StageMemberView.a(this.a).getFontMetrics().ascent;
+      if (this.a.a == null) {
+        break label76;
+      }
+      StageMemberView.a(this.a).setColor(this.a.a.a);
+    }
+    for (;;)
+    {
+      paramCanvas.drawText(StageMemberView.a(this.a), 0.0F, f, StageMemberView.a(this.a));
+      return;
+      label76:
+      StageMemberView.a(this.a).setColor(-1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mvu
  * JD-Core Version:    0.7.0.1
  */

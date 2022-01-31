@@ -14,31 +14,31 @@ class OpenDataPlugin$9
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    GameLog.getInstance().i("OpenDataPlugin", "getGroupCloudStorage callback appid:" + GameInfoManager.g().getAppId() + ", isSuc" + paramBoolean + ", ret:" + String.valueOf(paramJSONObject));
+    GameLog.getInstance().i("OpenDataPlugin", "getUserCloudStorage callback appid:" + GameInfoManager.g().getAppId() + ", isSuc" + paramBoolean + ", ret:" + String.valueOf(paramJSONObject));
     JSONObject localJSONObject = new JSONObject();
     if (paramBoolean) {
       try
       {
         localJSONObject.put("state", "success");
-        if ((paramJSONObject != null) && (paramJSONObject.get("data") != null)) {
-          localJSONObject.put("data", paramJSONObject.get("data"));
+        if ((paramJSONObject != null) && (paramJSONObject.has("KVDataList"))) {
+          localJSONObject.put("KVDataList", paramJSONObject.get("KVDataList"));
         }
         for (;;)
         {
-          this.this$0.jsPluginEngine.callbackJsEventOK(this.val$jsRuntime, "getGroupCloudStorage", localJSONObject, this.val$callbackId);
+          this.this$0.jsPluginEngine.callbackJsEventOK(this.val$jsRuntime, "getUserCloudStorage", localJSONObject, this.val$callbackId);
           return;
-          localJSONObject.put("data", paramJSONObject);
+          localJSONObject.put("KVDataList", "[]");
         }
         localJSONObject.put("state", "fail");
       }
       catch (Throwable paramJSONObject)
       {
-        GameLog.getInstance().e("OpenDataPlugin", "getGroupCloudStorage error " + paramJSONObject.getMessage());
-        this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "getGroupCloudStorage", null, this.val$callbackId);
+        GameLog.getInstance().e("OpenDataPlugin", "getUserCloudStorage error " + paramJSONObject.getMessage());
+        this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "getUserCloudStorage", null, this.val$callbackId);
         return;
       }
     }
-    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "getGroupCloudStorage", localJSONObject, this.val$callbackId);
+    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, "getUserCloudStorage", localJSONObject, this.val$callbackId);
   }
 }
 

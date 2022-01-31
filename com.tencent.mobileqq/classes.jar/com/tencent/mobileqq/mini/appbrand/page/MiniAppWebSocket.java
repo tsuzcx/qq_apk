@@ -5,9 +5,9 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.text.TextUtils;
-import badq;
-import bajq;
-import bfpk;
+import bbev;
+import bbkx;
+import bgxr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -119,7 +119,7 @@ public class MiniAppWebSocket
           str1 = this.mApkgInfo.appConfig.config.getVerTypeStr();
         }
       }
-      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = JSON.parse('%1$s'); Object.assign(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s'); __qqConfig.envVersion='" + str1 + "';__qqConfig.QUA='" + bfpk.a() + "';var __wxIndexPage = 'page/index/index.html';", new Object[] { localJSONObject2.toString(), localJSONObject1.toString() });
+      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = JSON.parse('%1$s'); Object.assign(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s'); __qqConfig.envVersion='" + str1 + "';__qqConfig.QUA='" + bgxr.a() + "';var __wxIndexPage = 'page/index/index.html';", new Object[] { localJSONObject2.toString(), localJSONObject1.toString() });
       str1 = str2;
       if (Boolean.valueOf(StorageUtil.getPreference().getBoolean(this.mApkgInfo.appId + "_debug", false)).booleanValue()) {
         str1 = str2 + "__qqConfig.debug =true;";
@@ -142,9 +142,9 @@ public class MiniAppWebSocket
       localJSONObject.put("device_name", Build.DEVICE);
       localJSONObject.put("device_model", Build.MODEL);
       localJSONObject.put("os", Build.VERSION.SDK_INT);
-      localJSONObject.put("qq_version", "8.2.6");
+      localJSONObject.put("qq_version", "8.2.8");
       localJSONObject.put("pixel_ratio", "3");
-      localJSONObject.put("screen_width", bajq.a());
+      localJSONObject.put("screen_width", bbkx.a());
       localJSONObject.put("publib", AppLoaderFactory.getAppLoaderManager().getBaseLibInfo().baseLibVersion);
       return localJSONObject;
     }
@@ -209,7 +209,7 @@ public class MiniAppWebSocket
   
   int getNetworkType()
   {
-    int i = badq.b(BaseApplicationImpl.getContext());
+    int i = bbev.b(BaseApplicationImpl.getContext());
     if (i == 5) {
       return 1;
     }

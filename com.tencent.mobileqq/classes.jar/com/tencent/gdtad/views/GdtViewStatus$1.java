@@ -1,11 +1,11 @@
 package com.tencent.gdtad.views;
 
-import ypm;
+import yzg;
 
 public class GdtViewStatus$1
   implements Runnable
 {
-  public GdtViewStatus$1(ypm paramypm) {}
+  public GdtViewStatus$1(yzg paramyzg) {}
   
   public void run()
   {

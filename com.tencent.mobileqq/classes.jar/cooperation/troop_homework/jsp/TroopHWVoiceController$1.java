@@ -3,20 +3,20 @@ package cooperation.troop_homework.jsp;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import bgnv;
-import bgoj;
+import bhwp;
+import bhxg;
 
 public class TroopHWVoiceController$1
   implements Runnable
 {
-  public TroopHWVoiceController$1(bgoj parambgoj) {}
+  public TroopHWVoiceController$1(bhxg parambhxg) {}
   
   public void run()
   {
-    String str = bgnv.a(bgoj.a(this.this$0));
+    String str = bhwp.a(bhxg.a(this.this$0));
     if (!TextUtils.isEmpty(str))
     {
-      Message localMessage = bgoj.a(this.this$0).obtainMessage();
+      Message localMessage = bhxg.a(this.this$0).obtainMessage();
       localMessage.what = 0;
       localMessage.obj = str;
       localMessage.sendToTarget();

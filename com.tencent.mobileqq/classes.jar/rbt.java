@@ -1,13 +1,6 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-
-public class rbt
+public abstract interface rbt
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  rbs jdField_a_of_type_Rbs;
-  TextView b;
-  TextView c;
+  public abstract void c();
 }
 
 

@@ -14,19 +14,19 @@ class OrientationDetector$2
   public void onOrientationChanged(int paramInt)
   {
     if (!OrientationDetector.access$300(this.this$0, paramInt)) {}
-    label136:
+    label197:
     for (;;)
     {
       return;
       int j = OrientationDetector.access$100(this.this$0);
       int i;
-      if (((paramInt >= 0) && (paramInt <= 30)) || (paramInt > 330)) {
+      if (((paramInt >= 0) && (paramInt <= OrientationDetector.access$400(this.this$0))) || (paramInt > 360 - OrientationDetector.access$400(this.this$0))) {
         i = 1;
       }
       for (;;)
       {
         if (i == OrientationDetector.access$100(this.this$0)) {
-          break label136;
+          break label197;
         }
         OrientationDetector.access$102(this.this$0, i);
         if (this.val$listener == null) {
@@ -34,21 +34,21 @@ class OrientationDetector$2
         }
         this.val$listener.onOrientationChanged(i);
         return;
-        if ((paramInt > 70) && (paramInt <= 110))
+        if ((paramInt > 90 - OrientationDetector.access$500(this.this$0)) && (paramInt <= OrientationDetector.access$500(this.this$0) + 90))
         {
           i = 8;
         }
-        else if ((paramInt > 150) && (paramInt <= 210))
+        else if ((paramInt > 180 - OrientationDetector.access$400(this.this$0)) && (paramInt <= OrientationDetector.access$400(this.this$0) + 180))
         {
           i = 9;
         }
         else
         {
           i = j;
-          if (paramInt > 250)
+          if (paramInt > 270 - OrientationDetector.access$500(this.this$0))
           {
             i = j;
-            if (paramInt <= 290) {
+            if (paramInt <= OrientationDetector.access$500(this.this$0) + 270) {
               i = 0;
             }
           }

@@ -1,127 +1,56 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
+import android.os.Build.VERSION;
+import android.os.MessageQueue.IdleHandler;
+import android.view.WindowManager.BadTokenException;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class alzf
+  implements MessageQueue.IdleHandler
 {
-  public static byte a;
-  private static alzh jdField_a_of_type_Alzh;
-  public static amnt a;
-  private static HttpCommunicator jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator;
-  private static ArrayList<alzg> jdField_a_of_type_JavaUtilArrayList;
-  static amno[] jdField_a_of_type_ArrayOfAmno;
-  public static byte b;
-  static amnt b;
-  private boolean jdField_a_of_type_Boolean = true;
+  public alzf(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  static
+  public boolean queueIdle()
   {
-    jdField_a_of_type_Byte = 3;
-    jdField_b_of_type_Byte = 1;
-  }
-  
-  public alzf(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator = paramQQAppInterface.getHttpCommunicatort();
-    jdField_a_of_type_Alzh = new alzh(paramQQAppInterface.getApp(), paramString);
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_Amnt = new amnt((short)24, (byte)0);
-    jdField_b_of_type_Amnt = new amnt((short)12, (byte)1);
-    jdField_a_of_type_ArrayOfAmno = new amno[] { jdField_a_of_type_Amnt, jdField_b_of_type_Amnt };
-    jdField_a_of_type_Alzh.a();
-  }
-  
-  public static alzh a()
-  {
-    return jdField_a_of_type_Alzh;
-  }
-  
-  public static HttpCommunicator a()
-  {
-    return jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator;
-  }
-  
-  public static String a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if (localAppRuntime != null) {
-      return localAppRuntime.getAccount();
+    if (axho.d(axho.b)) {
+      this.a.a(true);
     }
-    return null;
-  }
-  
-  public static String a(String paramString1, int paramInt, String paramString2)
-  {
-    paramString1 = new StringBuffer(alzh.a(paramString1, paramInt).trim());
-    if (paramString2 != null)
+    for (;;)
     {
-      paramString2 = paramString2.trim();
-      if (paramString2.length() > 0)
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
+      DynamicAvatarRecordActivity.a(this.a);
+      if (Build.VERSION.SDK_INT < 14) {
+        this.a.jdField_a_of_type_Bbgg = bbcv.a(this.a, 230).setMessage(ajyc.a(2131703565)).setPositiveButton(this.a.getString(2131694087), new alzg(this));
+      }
+      try
       {
-        if (paramString2.charAt(0) != '&') {
-          paramString1.append('&');
+        this.a.jdField_a_of_type_Bbgg.setCancelable(false);
+        this.a.jdField_a_of_type_Bbgg.show();
+        if (QLog.isColorLevel()) {
+          QLog.i("PEAK_CAMERA", 2, "Added camera view.");
         }
-        paramString1.append(paramString2);
+        return false;
+        this.a.a(false);
+      }
+      catch (WindowManager.BadTokenException localBadTokenException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("DynamicAvatarRecordActivity", 2, "", localBadTokenException);
+          }
+        }
       }
     }
-    return paramString1.toString();
-  }
-  
-  public static ArrayList<alzg> a()
-  {
-    return jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_Alzh = null;
-    if (jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator != null) {
-      jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.b();
-    }
-    jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator = null;
-  }
-  
-  public int a(int paramInt)
-  {
-    return jdField_a_of_type_ArrayOfAmno[paramInt].a();
-  }
-  
-  public long a(int paramInt1, int paramInt2)
-  {
-    return ((amnt)jdField_a_of_type_ArrayOfAmno[paramInt1]).a(paramInt2);
-  }
-  
-  public Bitmap a(int paramInt1, int paramInt2)
-  {
-    return ((amnt)jdField_a_of_type_ArrayOfAmno[paramInt1]).a(paramInt2);
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    return ((amnt)jdField_a_of_type_ArrayOfAmno[paramInt1]).c(paramInt2);
-  }
-  
-  public short a(int paramInt1, int paramInt2)
-  {
-    return ((amnt)jdField_a_of_type_ArrayOfAmno[paramInt1]).a(paramInt2);
-  }
-  
-  public String b(int paramInt1, int paramInt2)
-  {
-    return ((amnt)jdField_a_of_type_ArrayOfAmno[paramInt1]).a(paramInt2);
-  }
-  
-  public String c(int paramInt1, int paramInt2)
-  {
-    return ((amnt)jdField_a_of_type_ArrayOfAmno[paramInt1]).b(paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alzf
  * JD-Core Version:    0.7.0.1
  */

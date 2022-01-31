@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import com.tencent.qphone.base.util.QLog;
 
-public class luq
-  implements DialogInterface.OnClickListener
+class luq
+  implements luy
 {
-  public luq(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion, long paramLong) {}
+  luq(lup paramlup) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f(this.jdField_a_of_type_Long);
+    if (QLog.isColorLevel()) {
+      QLog.d("RedPacketGameEmojiAnimation", 2, "onShow called, needDetectFace set true");
+    }
+    if (this.a.a != null) {
+      this.a.a.c = true;
+    }
   }
 }
 

@@ -1,66 +1,89 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.SpannableString;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.3;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
 
-public class apbx
+class apbx
+  extends apbi
 {
-  public static void a(Context paramContext, int paramInt1, int paramInt2, apca paramapca)
+  public apbx(apbe paramapbe)
   {
-    Object localObject = paramContext;
-    if (paramContext == null) {
-      localObject = BaseActivity.sTopActivity;
-    }
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FMDialogUtil<FileAssistant>", 2, "show dialog fail, context is null!");
-      }
-      return;
-    }
-    a((Context)localObject, ((Context)localObject).getString(paramInt1), ((Context)localObject).getString(paramInt2), paramapca);
+    super(paramapbe);
   }
   
-  public static void a(Context paramContext, String paramString, int paramInt, apca paramapca)
+  protected String a()
   {
-    Object localObject = paramContext;
-    if (paramContext == null) {
-      localObject = BaseActivity.sTopActivity;
-    }
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FMDialogUtil<FileAssistant>", 2, "show dialog fail, context is null!");
-      }
-      return;
-    }
-    a((Context)localObject, paramString, ((Context)localObject).getString(paramInt), paramapca);
+    return "StateLocalFailedWhenRecv";
   }
   
-  public static void a(Context paramContext, String paramString, CharSequence paramCharSequence, apca paramapca)
+  protected void a()
   {
-    apby localapby = new apby(paramapca);
-    paramapca = new apbz(paramapca);
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread()) {}
-    do
+    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      new Handler(localLooper).post(new FMDialogUtil.3(paramContext, paramCharSequence, paramString, localapby, paramapca));
-      do
-      {
-        return;
-      } while (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()));
-      if ((paramCharSequence instanceof String))
-      {
-        babr.a(paramContext, 230, paramString, (String)paramCharSequence, 2131626797, 2131626802, localapby, paramapca).show();
-        return;
-      }
-    } while (!(paramCharSequence instanceof SpannableString));
-    babr.a(paramContext, 230, paramString, paramCharSequence, 2131626797, 2131626802, localapby, paramapca).show();
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    apbe.c(this.jdField_a_of_type_Apbe, 9, 14);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateUploadingWhenRecv)");
+    this.jdField_a_of_type_Apbi = new apck(this.jdField_a_of_type_Apbe);
+    this.jdField_a_of_type_Apbe.a(true, 0L);
+    this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 16, null, 0, null);
+  }
+  
+  protected void a(int paramInt1, int paramInt2)
+  {
+    b(paramInt1, paramInt2);
+  }
+  
+  protected void a(int paramInt, String paramString)
+  {
+    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    apbe.a(this.jdField_a_of_type_Apbe, 9, 12, true);
+    a("StateExcepInvalidWhenRecv");
+    this.jdField_a_of_type_Apbi = new apbt(this.jdField_a_of_type_Apbe);
+  }
+  
+  protected void a(long paramLong)
+  {
+    b(paramLong);
+  }
+  
+  protected boolean a(int paramInt, String paramString, long paramLong)
+  {
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return false;
+    }
+    localFileManagerEntity.Uuid = new String(paramString);
+    localFileManagerEntity.fProgress = 0.0F;
+    if ((apue.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
+      this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
+    }
+    this.jdField_a_of_type_Apbe.a(paramLong, localFileManagerEntity.peerUin);
+    localFileManagerEntity.setCloudType(1);
+    apbe.b(this.jdField_a_of_type_Apbe, 1, 0);
+    apbe.c(this.jdField_a_of_type_Apbe, 1, 0);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateGotoOffFileProcess)");
+    this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
+    this.jdField_a_of_type_Apbi = new apbu(this.jdField_a_of_type_Apbe);
+    return true;
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    apbe.a(this.jdField_a_of_type_Apbe, 11, 9, true);
+    a("StateCancelUploadWhenRecv");
+    this.jdField_a_of_type_Apbi = new apbl(this.jdField_a_of_type_Apbe);
   }
 }
 

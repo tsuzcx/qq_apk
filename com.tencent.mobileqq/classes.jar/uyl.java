@@ -1,16 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 
-class uyl
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract class uyl
 {
-  uyl(uyj paramuyj) {}
+  public abstract void a(int paramInt, View paramView, Object paramObject, vas paramvas);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.g();
-  }
+  public void b(int paramInt, View paramView, Object paramObject, vas paramvas) {}
 }
 
 

@@ -1,12 +1,18 @@
-import android.os.Bundle;
+import android.widget.PopupWindow.OnDismissListener;
 
-public abstract interface bfsd
+class bfsd
+  implements PopupWindow.OnDismissListener
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  bfsd(bfsc parambfsc) {}
+  
+  public void onDismiss()
+  {
+    this.a.a(1.0F);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfsd
  * JD-Core Version:    0.7.0.1
  */

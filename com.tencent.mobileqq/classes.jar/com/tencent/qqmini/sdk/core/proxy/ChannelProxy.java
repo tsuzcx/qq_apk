@@ -1,8 +1,10 @@
 package com.tencent.qqmini.sdk.core.proxy;
 
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
 import android.os.Bundle;
-import bddn;
-import bddp;
+import beho;
+import behq;
 import com.tencent.qqmini.sdk.launcher.model.PluginInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,6 +12,10 @@ import org.json.JSONObject;
 
 public abstract interface ChannelProxy
 {
+  public abstract void JudgeTiming(String paramString1, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4, String paramString2, int paramInt5, String paramString3, AsyncResult paramAsyncResult);
+  
+  public abstract void ReportExecute(String paramString1, int paramInt, String paramString2, String paramString3, AsyncResult paramAsyncResult);
+  
   public abstract void batchGetContact(ArrayList<String> paramArrayList, AsyncResult paramAsyncResult);
   
   public abstract void checkNavigateRight(String paramString1, String paramString2, AsyncResult paramAsyncResult);
@@ -30,6 +36,8 @@ public abstract interface ChannelProxy
   
   public abstract void getFriendCloudStorage(String paramString, String[] paramArrayOfString, AsyncResult paramAsyncResult);
   
+  public abstract void getGdtAd(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap, AsyncResult paramAsyncResult);
+  
   public abstract void getGroupCloudStorage(String paramString1, String paramString2, String[] paramArrayOfString, AsyncResult paramAsyncResult);
   
   public abstract void getGroupShareInfo(String paramString1, String paramString2, AsyncResult paramAsyncResult);
@@ -42,7 +50,13 @@ public abstract interface ChannelProxy
   
   public abstract void getPhoneNumber(String paramString, AsyncResult paramAsyncResult);
   
+  public abstract void getPotentialFriendList(COMM.StCommonExt paramStCommonExt, String paramString, AsyncResult paramAsyncResult);
+  
   public abstract void getRobotUin(String paramString, AsyncResult paramAsyncResult);
+  
+  public abstract void getSDKOpenKeyToken(COMM.StCommonExt paramStCommonExt, AsyncResult paramAsyncResult);
+  
+  public abstract void getShareInfo(MiniProgramShare.StAdaptShareInfoReq paramStAdaptShareInfoReq, AsyncResult paramAsyncResult);
   
   public abstract void getTcbTicket(String paramString1, String paramString2, AsyncResult paramAsyncResult);
   
@@ -56,11 +70,15 @@ public abstract interface ChannelProxy
   
   public abstract void getUserInfoOpenData(String paramString1, String paramString2, String[] paramArrayOfString, AsyncResult paramAsyncResult);
   
+  public abstract void getUserInteractiveStorage(COMM.StCommonExt paramStCommonExt, String paramString, String[] paramArrayOfString, AsyncResult paramAsyncResult);
+  
   public abstract void getUserSetting(String paramString1, String paramString2, String paramString3, AsyncResult paramAsyncResult);
   
   public abstract void httpReport(Bundle paramBundle);
   
   public abstract void login(String paramString, AsyncResult paramAsyncResult);
+  
+  public abstract void modifyFriendInteractiveStorage(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, HashMap<String, String> paramHashMap, AsyncResult paramAsyncResult);
   
   public abstract void queryCurrency(String paramString1, String paramString2, int paramInt1, int paramInt2, AsyncResult paramAsyncResult);
   
@@ -68,7 +86,7 @@ public abstract interface ChannelProxy
   
   public abstract void report(byte[] paramArrayOfByte, String paramString1, String paramString2, AsyncResult paramAsyncResult);
   
-  public abstract void setAuth(String paramString, bddn parambddn, AsyncResult paramAsyncResult);
+  public abstract void setAuth(String paramString, beho parambeho, AsyncResult paramAsyncResult);
   
   public abstract void setPersonalizeInfo(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, AsyncResult paramAsyncResult);
   
@@ -78,7 +96,9 @@ public abstract interface ChannelProxy
   
   public abstract boolean updateBaseLib(String paramString, boolean paramBoolean1, boolean paramBoolean2, AsyncResult paramAsyncResult);
   
-  public abstract void updateUserSetting(String paramString, bddp parambddp, AsyncResult paramAsyncResult);
+  public abstract void updateUserSetting(String paramString, behq parambehq, AsyncResult paramAsyncResult);
+  
+  public abstract void useUserApp(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, COMM.StCommonExt paramStCommonExt, AsyncResult paramAsyncResult);
   
   public abstract void verifyPlugin(String paramString, ArrayList<PluginInfo> paramArrayList, AsyncResult paramAsyncResult);
   

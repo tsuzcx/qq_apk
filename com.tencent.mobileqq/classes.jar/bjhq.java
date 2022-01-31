@@ -1,18 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.RectF;
 
-final class bjhq
-  implements bisp<Boolean, bisv>
+public class bjhq
+  extends bjgf
 {
-  bjhq(Object paramObject) {}
+  private int a;
   
-  public Void a(Boolean arg1, bisv parambisv)
+  public bjhq(int paramInt)
   {
-    QLog.e(bjhp.a(), 2, "MediaCodecThumbnailGenerator finished().");
-    synchronized (this.a)
-    {
-      this.a.notifyAll();
-      return null;
-    }
+    this.a = paramInt;
+  }
+  
+  void a(int paramInt, bjgg parambjgg)
+  {
+    RectF localRectF = parambjgg.a;
+    localRectF.top += this.a * paramInt;
+    parambjgg = parambjgg.a;
+    parambjgg.bottom += this.a * paramInt;
   }
 }
 

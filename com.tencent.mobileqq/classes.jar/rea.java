@@ -1,17 +1,25 @@
-import java.util.HashMap;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.44.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.44.2;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class rea
+  implements osb
 {
-  public int a;
-  public final HashMap<String, String> a;
-  public ofb a;
-  public boolean a;
+  public rea(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public rea()
+  public void a(MessageRecord paramMessageRecord) {}
+  
+  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = 1002;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Ofb = new ofb();
+    this.a.a().runOnUiThread(new ReadInJoyListViewGroup.44.2(this));
+  }
+  
+  public void b(MessageRecord paramMessageRecord)
+  {
+    this.a.a().runOnUiThread(new ReadInJoyListViewGroup.44.1(this));
   }
 }
 

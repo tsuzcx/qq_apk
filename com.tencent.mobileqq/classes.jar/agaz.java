@@ -1,21 +1,14 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import java.util.Comparator;
 
 public class agaz
-  implements View.OnClickListener
+  implements Comparator<agau>
 {
-  public agaz(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity) {}
+  public agaz(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onClick(View paramView)
+  public int a(agau paramagau1, agau paramagau2)
   {
-    paramView = this.a.getIntent();
-    String str = paramView.getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
-    int i = paramView.getIntExtra("PhotoConst.CLIP_WIDTH", 0);
-    PhotoUtils.a(paramView, this.a, str, i, i, 1080, 1080, azyk.a());
-    awqx.b(this.a.app, "dc00898", "", "", "0X800723F", "0X800723F", 0, 0, "", "", "", "");
+    return paramagau1.f.compareToIgnoreCase(paramagau2.f);
   }
 }
 

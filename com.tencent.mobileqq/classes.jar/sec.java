@@ -1,52 +1,26 @@
-import java.util.List;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
 
-public class sec
+class sec
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public int a;
-  public String a;
-  public List<String> a;
-  public int b;
-  public String b;
-  public int c;
+  sec(sdz paramsdz) {}
   
-  public sec() {}
-  
-  public sec(scp paramscp)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramscp.jdField_e_of_type_Int;
-    if (paramscp.g > 0) {}
-    for (int i = paramscp.g;; i = seb.a(this.jdField_a_of_type_Int))
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 5894;; paramInt = 1799)
     {
-      this.jdField_b_of_type_Int = i;
-      this.jdField_a_of_type_JavaLangString = paramscp.jdField_e_of_type_JavaLangString;
-      this.jdField_b_of_type_JavaLangString = paramscp.d;
-      this.c = paramscp.f;
-      this.jdField_a_of_type_JavaUtilList = paramscp.jdField_a_of_type_JavaUtilList;
+      sdv.a(this.a.a).getWindow().getDecorView().setSystemUiVisibility(paramInt);
       return;
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder1 = new StringBuilder("BaseSplitConfig =[");
-    localStringBuilder1.append(" type=").append(this.jdField_a_of_type_Int);
-    localStringBuilder1.append(" mTransId=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder1.append(" mTextId=").append(this.c);
-    localStringBuilder1.append(" mAlbumMinPicCount=").append(this.jdField_b_of_type_Int);
-    localStringBuilder1.append(" mAlbumDesc=").append(this.jdField_a_of_type_JavaLangString);
-    StringBuilder localStringBuilder2 = localStringBuilder1.append(" mTransList=");
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (String str = "";; str = this.jdField_a_of_type_JavaUtilList.toString())
-    {
-      localStringBuilder2.append(str);
-      localStringBuilder1.append("]");
-      return localStringBuilder1.toString();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sec
  * JD-Core Version:    0.7.0.1
  */

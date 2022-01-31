@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aclw;
+import acwp;
 import android.support.v4.app.FragmentActivity;
-import bfsz;
+import bhbh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QzonePluginProxyActivity;
@@ -10,15 +10,15 @@ import cooperation.qzone.QzonePluginProxyActivity;
 public class IntimateInfoView$1
   implements Runnable
 {
-  public IntimateInfoView$1(aclw paramaclw, FragmentActivity paramFragmentActivity, QQAppInterface paramQQAppInterface) {}
+  public IntimateInfoView$1(acwp paramacwp, FragmentActivity paramFragmentActivity, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     try
     {
       QzonePluginProxyActivity.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-      bfsz.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      bfsz.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      bhbh.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      bhbh.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       return;
     }
     catch (Throwable localThrowable)

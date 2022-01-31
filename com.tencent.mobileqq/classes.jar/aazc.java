@@ -1,19 +1,32 @@
-import android.view.MotionEvent;
+import android.app.Dialog;
+import android.graphics.Color;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import mqq.os.MqqHandler;
 
 public class aazc
-  implements View.OnTouchListener
+  implements bckz
 {
-  public aazc(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  public aazc(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    this.a.app.a().a(DiscussionInfoCardActivity.a(this.a), 3000);
+    this.a.app.a().e(DiscussionInfoCardActivity.a(this.a), 3000);
+    ajfa.a(this.a.app, "chat_history_confirm_del_msg");
+    paramDialog = this.a.app.getHandler(Conversation.class);
+    paramView = paramDialog.obtainMessage(1017);
+    paramView.obj = DiscussionInfoCardActivity.a(this.a);
+    paramView.arg1 = 3000;
+    paramDialog.sendMessage(paramView);
+    bcpw.a(this.a, 2, this.a.getString(2131690819), 0).a();
+    if (this.a.a != null) {
+      ((TextView)this.a.a.findViewById(2131377350)).setTextColor(Color.parseColor("#cccccc"));
     }
-    return false;
   }
 }
 

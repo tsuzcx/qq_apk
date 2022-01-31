@@ -1,66 +1,78 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
-import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoRsp;
 
-class ndz
+public class ndz
   implements BusinessObserver
 {
-  private NewIntent a;
-  
-  ndz(NewIntent paramNewIntent)
-  {
-    this.a = paramNewIntent;
-  }
-  
-  private void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QualityReporter", 2, "onSuccess: ");
-    }
-  }
-  
-  private void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QualityReporter", 2, "onError: code=" + paramInt + ", msg=" + paramString);
-    }
-  }
+  public ndz(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.setObserver(null);
-    if (paramBoolean)
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "success:" + String.valueOf(paramBoolean));
+    }
+    if (!paramBoolean) {
+      if (!EqqAccountDetailActivity.a(this.a)) {
+        this.a.d(2131695568);
+      }
+    }
+    for (;;)
     {
-      cc_sso_report_svr.ReportInfoRsp localReportInfoRsp;
+      EqqAccountDetailActivity.a(this.a);
+      if (EqqAccountDetailActivity.b(this.a) == 0) {
+        EqqAccountDetailActivity.a(this.a);
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("crmtest", 4, "receive sendCrmDetailInfoRequest, ts=" + System.currentTimeMillis());
+      }
+      return;
+      if (paramBoolean) {}
       try
       {
         paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null)
+        if (paramBundle != null)
         {
-          a(-123, "data null");
-          return;
+          mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
+          localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
+          if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
+          {
+            if ((this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail == null) || ((localGetEqqAccountDetailInfoResponse.seqno.has()) && (localGetEqqAccountDetailInfoResponse.seqno.get() != this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.seqno)))
+            {
+              this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetEqqAccountDetailInfoResponse = localGetEqqAccountDetailInfoResponse;
+              paramBundle = new EqqDetail(this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetEqqAccountDetailInfoResponse);
+              if ((EqqAccountDetailActivity.b(this.a)) && (paramBundle.followType == 1))
+              {
+                this.a.a(paramBundle, false);
+                continue;
+              }
+              this.a.a(paramBundle, true);
+              continue;
+            }
+            if ((!EqqAccountDetailActivity.c(this.a)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.followType != 1)) {
+              continue;
+            }
+            this.a.f();
+            continue;
+          }
+          this.a.d(2131695568);
+          continue;
         }
-        localReportInfoRsp = new cc_sso_report_svr.ReportInfoRsp();
-        localReportInfoRsp.mergeFrom(paramBundle);
-        if ((localReportInfoRsp.ret_code.has()) && (localReportInfoRsp.ret_code.get() == 0))
-        {
-          a();
-          return;
+        if (EqqAccountDetailActivity.d(this.a)) {
+          continue;
         }
+        this.a.d(2131695568);
       }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
+      catch (Exception paramBundle) {}
+      if (!EqqAccountDetailActivity.e(this.a)) {
+        this.a.d(2131695568);
       }
-      a(localReportInfoRsp.ret_code.get(), localReportInfoRsp.ret_msg.get());
-      return;
     }
-    a(-123, "success=false");
   }
 }
 

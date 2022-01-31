@@ -1,44 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.QLifeCommentActivity;
 
 public class azed
+  implements DialogInterface.OnClickListener
 {
-  private static azed jdField_a_of_type_Azed = new azed();
-  String jdField_a_of_type_JavaLangString;
+  public azed(QLifeCommentActivity paramQLifeCommentActivity, bbgg parambbgg) {}
   
-  public static azed a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return jdField_a_of_type_Azed;
-  }
-  
-  public void a() {}
-  
-  public void a(BaseChatPie paramBaseChatPie) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, azee paramazee) {}
-  
-  public void a(String paramString1, String paramString2, String paramString3) {}
-  
-  public boolean a()
-  {
-    return !TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean a(String paramString)
-  {
-    return true;
-  }
-  
-  public void b() {}
-  
-  public boolean b(String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      return false;
+    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {
+      this.jdField_a_of_type_Bbgg.cancel();
     }
-    return paramString.equals(this.jdField_a_of_type_JavaLangString);
+    QLifeCommentActivity.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityQLifeCommentActivity);
+    axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "qlife_comment", "cancel", 0, 0, "", "", "", this.jdField_a_of_type_ComTencentMobileqqTroopActivityQLifeCommentActivity.z);
   }
 }
 

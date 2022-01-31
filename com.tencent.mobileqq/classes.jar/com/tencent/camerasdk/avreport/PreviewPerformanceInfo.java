@@ -52,31 +52,41 @@ public class PreviewPerformanceInfo
   
   public void destroy()
   {
-    this.mHandler.post(new PreviewPerformanceInfo.5(this));
+    if (this.mHandler != null) {
+      this.mHandler.post(new PreviewPerformanceInfo.5(this));
+    }
   }
   
   public void report()
   {
     initHandler();
-    this.mHandler.post(new PreviewPerformanceInfo.4(this));
+    if (this.mHandler != null) {
+      this.mHandler.post(new PreviewPerformanceInfo.4(this));
+    }
   }
   
   public void setResolution(int paramInt1, int paramInt2)
   {
     initHandler();
-    this.mHandler.post(new PreviewPerformanceInfo.1(this, paramInt1, paramInt2));
+    if (this.mHandler != null) {
+      this.mHandler.post(new PreviewPerformanceInfo.1(this, paramInt1, paramInt2));
+    }
   }
   
   public void setStickerID(String paramString)
   {
     initHandler();
-    this.mHandler.post(new PreviewPerformanceInfo.2(this, paramString));
+    if (this.mHandler != null) {
+      this.mHandler.post(new PreviewPerformanceInfo.2(this, paramString));
+    }
   }
   
   public void updateInfo(long paramLong)
   {
     initHandler();
-    this.mHandler.post(new PreviewPerformanceInfo.3(this, paramLong));
+    if (this.mHandler != null) {
+      this.mHandler.post(new PreviewPerformanceInfo.3(this, paramLong));
+    }
   }
 }
 

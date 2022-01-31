@@ -1,18 +1,10 @@
-import android.os.SystemClock;
-
-public class lhp
+public abstract interface lhp<T>
 {
-  private static volatile long a;
+  public abstract void onDownloadFinish(long paramLong, T paramT, boolean paramBoolean);
   
-  public static long a()
-  {
-    return a;
-  }
+  public abstract void onItemSelectedChanged(long paramLong, T paramT);
   
-  public static void a()
-  {
-    a = SystemClock.uptimeMillis();
-  }
+  public abstract void onProgressUpdate(T paramT, int paramInt);
 }
 
 

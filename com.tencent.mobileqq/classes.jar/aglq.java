@@ -1,25 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.TopayManager.5.1;
-
 public class aglq
-  implements DialogInterface.OnClickListener
+  extends aglx
 {
-  public aglq(TopayManager.5.1 param1) {}
+  private aglx i;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aglq(aglx paramaglx)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    this.i = paramaglx;
+  }
+  
+  public boolean a()
+  {
+    return this.i.a();
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (!super.a(paramString)) {
+      return false;
     }
-    paramDialogInterface.dismiss();
+    String[] arrayOfString = agmo.a(paramString);
+    if ((arrayOfString != null) && ("image".equals(arrayOfString[0])) && ("gif".equals(arrayOfString[1]))) {
+      return true;
+    }
+    return this.i.a(paramString);
+  }
+  
+  public boolean b()
+  {
+    return this.i.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aglq
  * JD-Core Version:    0.7.0.1
  */

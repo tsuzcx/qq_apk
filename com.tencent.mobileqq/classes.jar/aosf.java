@@ -1,26 +1,24 @@
-import java.util.HashMap;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
 
-public final class aosf
-  implements axrs
+public class aosf
+  implements View.OnLongClickListener
 {
-  public void a(axsp paramaxsp, axsq paramaxsq)
+  public aosf(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  
+  public boolean onLongClick(View paramView)
   {
-    if ((paramaxsp == null) || (paramaxsq == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramaxsp instanceof axro));
-      paramaxsp = (axro)paramaxsp;
-      paramaxsp.jdField_a_of_type_Long += paramaxsq.c;
-      paramaxsq.c = 0L;
-      paramaxsq = "bytes=" + paramaxsp.jdField_a_of_type_Long + "-";
-      paramaxsp.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaxsq);
-      paramaxsq = paramaxsp.jdField_a_of_type_JavaLangString;
-    } while (!paramaxsq.contains("range="));
-    paramaxsq = paramaxsq.substring(0, paramaxsq.lastIndexOf("range="));
-    paramaxsp.jdField_a_of_type_JavaLangString = (paramaxsq + "range=" + paramaxsp.jdField_a_of_type_Long);
+    if ((paramView == null) || (QfileBaseLocalFileTabView.a(this.a))) {
+      return false;
+    }
+    paramView.setSelected(true);
+    bblr localbblr = new bblr();
+    localbblr.a(2131366634, paramView.getContext().getString(2131692752));
+    localbblr.a(2131364979, paramView.getContext().getString(2131691507));
+    this.a.a = bbcc.a(paramView, localbblr, new aosg(this, paramView), new aosi(this, paramView));
+    return true;
   }
 }
 

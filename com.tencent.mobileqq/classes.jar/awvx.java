@@ -1,15 +1,63 @@
-import android.widget.TextView;
-import com.tencent.biz.now.NowVideoLayout;
+import java.util.HashMap;
+import java.util.Map;
 
 public class awvx
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  NowVideoLayout jdField_a_of_type_ComTencentBizNowNowVideoLayout;
-  TextView b;
+  private static int jdField_a_of_type_Int;
+  private static String jdField_a_of_type_JavaLangString = "";
+  private static Map<Integer, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  
+  public static int a(int paramInt)
+  {
+    Integer localInteger = (Integer)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    if (localInteger == null) {
+      return 0;
+    }
+    return localInteger.intValue();
+  }
+  
+  public static String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public static void a()
+  {
+    try
+    {
+      jdField_a_of_type_JavaLangString = "";
+      jdField_a_of_type_Int = 0;
+      jdField_a_of_type_JavaUtilMap.clear();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return;
+      try
+      {
+        jdField_a_of_type_Int += 1;
+        jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaLangString + paramInt + "|";
+        jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Integer.valueOf(jdField_a_of_type_Int));
+      }
+      finally {}
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awvx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,44 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.1;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.2;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
+import com.tencent.mobileqq.data.ActivateFriendItem;
+import java.util.ArrayList;
 
 public class acrn
-  implements INetInfoHandler
+  extends ajxl
 {
-  public acrn(VoiceTextEditPanel paramVoiceTextEditPanel) {}
+  public acrn(ActivateFriendView paramActivateFriendView) {}
   
-  public void onNetMobile2None()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VoiceTextEditPanel", 2, "onNetMobile2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
+    int i = 0;
+    for (;;)
+    {
+      if (i < ActivateFriendView.a(this.a).size())
+      {
+        String str = String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin);
+        if (paramString.equals(str))
+        {
+          paramString = bbcl.b(ActivateFriendView.a(this.a), str, false);
+          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(paramString);
+        }
+      }
+      else
+      {
+        return;
+      }
+      i += 1;
     }
-    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.1(this));
   }
   
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VoiceTextEditPanel", 2, "onNetWifi2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
+    int i = 0;
+    while (i < ActivateFriendView.a(this.a).size())
+    {
+      String str = bbcl.j(ActivateFriendView.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin));
+      ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(str);
+      i += 1;
     }
-    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.2(this));
   }
 }
 

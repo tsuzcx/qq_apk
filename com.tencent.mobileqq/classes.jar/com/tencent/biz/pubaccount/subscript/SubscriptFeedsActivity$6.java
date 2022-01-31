@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.subscript;
 
-import aciy;
+import actn;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
@@ -19,8 +19,8 @@ class SubscriptFeedsActivity$6
       int i = this.a;
       int j = arrayOfInt[0];
       int k = this.b;
-      int m = aciy.a(2.0F, this.this$0.getResources());
-      SubscriptFeedsActivity.a(this.this$0).showAsDropDown(this.this$0.rightViewText, i - j - k - m, -aciy.a(5.0F, this.this$0.getResources()));
+      int m = actn.a(2.0F, this.this$0.getResources());
+      SubscriptFeedsActivity.a(this.this$0).showAsDropDown(this.this$0.rightViewText, i - j - k - m, -actn.a(5.0F, this.this$0.getResources()));
       return;
     }
     catch (Exception localException)

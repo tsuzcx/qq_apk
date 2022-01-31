@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.identification;
 
 import android.os.Bundle;
-import aqif;
+import arco;
 
 public class IdentificationIpcServer$1
   implements Runnable
 {
-  public IdentificationIpcServer$1(aqif paramaqif, Bundle paramBundle) {}
+  public IdentificationIpcServer$1(arco paramarco, Bundle paramBundle) {}
   
   public void run()
   {
-    aqif.a(this.this$0, this.a);
+    arco.a(this.this$0, this.a);
   }
 }
 

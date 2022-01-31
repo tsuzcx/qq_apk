@@ -1,31 +1,22 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CardProfile;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.ocr.TranslateFragment;
+import java.util.List;
 
-class aubv
-  implements asel
+public class aubv
+  implements PopupWindow.OnDismissListener
 {
-  aubv(aubu paramaubu, CardProfile paramCardProfile, ImageView paramImageView) {}
+  public aubv(TranslateFragment paramTranslateFragment, auad paramauad) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public void onDismiss()
   {
-    this.jdField_a_of_type_Aubu.a(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile, this.jdField_a_of_type_AndroidWidgetImageView, paramBoolean);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_Aubu.a;
-    String str1;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
+    TranslateFragment.b(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, null);
+    if ((this.jdField_a_of_type_Auad.c != null) && (this.jdField_a_of_type_Auad.c.size() > 1))
     {
-      str1 = "1";
-      if (!paramBoolean) {
-        break label69;
-      }
-    }
-    label69:
-    for (String str2 = "2";; str2 = "1")
-    {
-      ased.a(localQQAppInterface, "detail_like", paramString, str1, "", "", str2);
-      return;
-      str1 = "2";
-      break;
+      Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment.getResources().getDrawable(2130845297);
+      TranslateFragment.b(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment).setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
     }
   }
 }

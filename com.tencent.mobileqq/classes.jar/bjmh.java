@@ -1,14 +1,19 @@
-public abstract interface bjmh
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+final class bjmh
+  implements EIPCResultCallback
 {
-  public abstract bjmi a(int paramInt1, int paramInt2);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(Throwable paramThrowable);
-  
-  public abstract void b();
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    if (paramEIPCResult != null)
+    {
+      boolean bool = paramEIPCResult.data.getBoolean("key_result");
+      QLog.d("PeakIpcController", 2, "reSendMessage result:" + bool);
+    }
+  }
 }
 
 

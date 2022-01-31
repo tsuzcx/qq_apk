@@ -1,37 +1,25 @@
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-class bbrb
-  implements IVideoInnerStatusListener
+public class bbrb
 {
-  bbrb(bbra parambbra) {}
-  
-  public void notifyVideoClose(int paramInt)
+  public static void a(String paramString, int paramInt)
   {
-    this.a.b();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("authResult", String.valueOf(paramInt));
+    axrl.a(BaseApplication.getContext()).a("", paramString, false, 0L, -1L, localHashMap, "", true);
   }
   
-  public void notifyVideoSeek(int paramInt)
+  public static void a(String paramString1, String paramString2)
   {
-    if (bbra.a(this.a) != null)
-    {
-      paramInt = (int)(paramInt * bbra.a(this.a).c() / 100.0D);
-      bbra.a(this.a, paramInt);
-    }
-  }
-  
-  public void notifyVideoStart()
-  {
-    bbra.a(this.a);
-  }
-  
-  public void notifyVideoStop()
-  {
-    bbra.b(this.a);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errCode", paramString2);
+    axrl.a(BaseApplication.getContext()).a("", paramString1, false, 0L, -1L, localHashMap, "", true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbrb
  * JD-Core Version:    0.7.0.1
  */

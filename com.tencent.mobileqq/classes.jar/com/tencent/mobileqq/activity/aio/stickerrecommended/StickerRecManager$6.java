@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import aemi;
-import atmp;
+import aexd;
+import aukn;
 
 public class StickerRecManager$6
   implements Runnable
 {
-  public StickerRecManager$6(aemi paramaemi, String paramString) {}
+  public StickerRecManager$6(aexd paramaexd, String paramString) {}
   
   public void run()
   {
-    aemi.a(this.this$0).a(StickerRecommendEntity.class.getSimpleName(), "usrMessage=?", new String[] { this.a });
+    aexd.a(this.this$0).a(StickerRecommendEntity.class.getSimpleName(), "usrMessage=?", new String[] { this.a });
   }
 }
 

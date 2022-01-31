@@ -1,21 +1,48 @@
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher.1;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeWatched;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class tgq
-  implements bjis
+  extends syv<tgr>
 {
-  public tgq(FollowCaptureLauncher.1 param1) {}
+  static final String a = sxp.a("StorySvc.msgtab_node_watched");
+  public long b;
+  public String b;
+  public int c;
+  public int d;
   
-  public void a()
+  public String a()
   {
-    FollowCaptureLauncher.a(this.a.this$0).sendEmptyMessage(65541);
+    return a;
   }
   
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void b()
+  public syq a(byte[] paramArrayOfByte)
   {
-    FollowCaptureLauncher.a(this.a.this$0).sendEmptyMessage(65542);
+    qqstory_service.RspMsgTabNodeWatched localRspMsgTabNodeWatched = new qqstory_service.RspMsgTabNodeWatched();
+    try
+    {
+      localRspMsgTabNodeWatched.mergeFrom(paramArrayOfByte);
+      return new tgr(localRspMsgTabNodeWatched);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      veg.d("Q.qqstory.msgTab:ReqMsgTabNodeWatched", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqMsgTabNodeWatched localReqMsgTabNodeWatched = new qqstory_service.ReqMsgTabNodeWatched();
+    localReqMsgTabNodeWatched.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    localReqMsgTabNodeWatched.node_type.set(this.c);
+    localReqMsgTabNodeWatched.operation.set(this.d);
+    localReqMsgTabNodeWatched.recommend_id.set(this.jdField_b_of_type_Long);
+    return localReqMsgTabNodeWatched.toByteArray();
   }
 }
 

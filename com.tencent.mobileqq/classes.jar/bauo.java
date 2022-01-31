@@ -1,108 +1,66 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.vip.diy.common.DIYImageView;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.unifiedebug.SnapshotService;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
 
 public class bauo
-  extends bgqa
+  extends bcal
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public bauo(String paramString1, View paramView, @NonNull String paramString2)
+  public bauo(Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
   {
-    super(paramString1, paramView);
-    if ((paramView != null) && ((paramView instanceof DIYImageView))) {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((DIYImageView)paramView).a();
-    }
-    this.jdField_a_of_type_JavaLangString = paramString2;
-  }
-  
-  private ImageView.ScaleType a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return ImageView.ScaleType.CENTER_CROP;
-    }
-    if ("center_crop".equals(paramString)) {
-      return ImageView.ScaleType.CENTER_CROP;
-    }
-    if ("fit_center".equals(paramString)) {
-      return ImageView.ScaleType.FIT_CENTER;
-    }
-    return ImageView.ScaleType.CENTER_CROP;
+    super(paramContext, paramActivity, paramAppInterface);
+    super.preInitPluginEngine();
+    this.mWebview = new TouchWebView(this.mContext);
+    buildBaseWebView(paramAppInterface);
   }
   
   public void a()
   {
-    super.a();
-    if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidWidgetImageView == null)) {}
-    ViewGroup.LayoutParams localLayoutParams1;
-    ViewGroup.LayoutParams localLayoutParams2;
-    do
-    {
-      return;
-      if ((this.jdField_a_of_type_AndroidViewView.getParent() != null) && ((this.jdField_a_of_type_AndroidViewView.getParent() instanceof ViewGroup))) {
-        ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).setClipChildren(false);
-      }
-      localLayoutParams1 = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      localLayoutParams2 = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    } while ((localLayoutParams1 == null) || (localLayoutParams2 == null));
-    localLayoutParams2.width = localLayoutParams1.width;
-    localLayoutParams2.height = localLayoutParams1.height;
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams2);
+    super.doOnResume();
   }
   
-  protected void a(String paramString)
+  public void a(Intent paramIntent)
   {
-    String str = paramString;
-    if (!paramString.startsWith("http")) {
-      str = this.jdField_a_of_type_JavaLangString + paramString;
+    super.doOnCreate(paramIntent);
+  }
+  
+  public void a(String paramString)
+  {
+    if (bcgf.jdField_a_of_type_Boolean)
+    {
+      bcgc.a(this.mWebview, bcgf.jdField_a_of_type_JavaLangString);
+      bcgf.jdField_a_of_type_Boolean = false;
     }
-    if (!befm.a(str)) {}
-    do
-    {
-      return;
-      paramString = URLDrawable.URLDrawableOptions.obtain();
-      if ((this.jdField_a_of_type_Int > 0) && (this.b > 0))
-      {
-        paramString.mRequestWidth = this.jdField_a_of_type_Int;
-        paramString.mRequestHeight = this.b;
-      }
-      paramString.mLoadingDrawable = axwd.a;
-      paramString.mFailedDrawable = axwd.a;
-      paramString.mPlayGifImage = false;
-      paramString = URLDrawable.getDrawable(str, paramString);
-    } while (paramString == null);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+    this.mUrl = paramString;
+    this.mWebview.loadUrl(this.mUrl);
   }
   
-  protected void a(String paramString1, String paramString2)
+  public void b()
   {
-    super.a(paramString1, paramString2);
-    if (!(this.jdField_a_of_type_AndroidViewView instanceof DIYImageView)) {
-      vkw.a("JsonInflateViewModel current view type illegal!", new Object[0]);
+    super.doOnPause();
+  }
+  
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  {
+    if (paramArrayList != null) {
+      paramArrayList.add(new bchy());
     }
-    do
-    {
-      return;
-      if ("content".equals(paramString1))
-      {
-        a(paramString2);
-        return;
-      }
-    } while (!"scale_type".equals(paramString1));
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(a(paramString2));
   }
   
-  protected void b()
+  public void c()
   {
-    super.b();
+    super.doOnDestroy();
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+    paramWebView.loadUrl("javascript:" + SnapshotService.jdField_a_of_type_JavaLangString);
   }
 }
 

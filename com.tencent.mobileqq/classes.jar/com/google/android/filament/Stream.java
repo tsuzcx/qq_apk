@@ -31,11 +31,13 @@ public class Stream
   
   private static native void nDestroyBuilder(long paramLong);
   
+  private static native int nGetStreamType(long paramLong);
+  
   private static native long nGetTimestamp(long paramLong);
   
-  private static native boolean nIsNative(long paramLong);
-  
   private static native int nReadPixels(long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, Buffer paramBuffer, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, Object paramObject, Runnable paramRunnable);
+  
+  private static native void nSetAcquiredImage(long paramLong1, long paramLong2, Object paramObject1, Object paramObject2, Runnable paramRunnable);
   
   private static native void nSetDimensions(long paramLong, int paramInt1, int paramInt2);
   
@@ -52,14 +54,14 @@ public class Stream
     return this.mNativeObject;
   }
   
+  public Stream.StreamType getStreamType()
+  {
+    return Stream.StreamType.values()[nGetStreamType(getNativeObject())];
+  }
+  
   public long getTimestamp()
   {
     return nGetTimestamp(getNativeObject());
-  }
-  
-  public boolean isNative()
-  {
-    return nIsNative(getNativeObject());
   }
   
   public void readPixels(@IntRange(from=0L) int paramInt1, @IntRange(from=0L) int paramInt2, @IntRange(from=0L) int paramInt3, @IntRange(from=0L) int paramInt4, @NonNull Texture.PixelBufferDescriptor paramPixelBufferDescriptor)
@@ -70,6 +72,11 @@ public class Stream
     if (nReadPixels(getNativeObject(), this.mNativeEngine, paramInt1, paramInt2, paramInt3, paramInt4, paramPixelBufferDescriptor.storage, paramPixelBufferDescriptor.storage.remaining(), paramPixelBufferDescriptor.left, paramPixelBufferDescriptor.top, paramPixelBufferDescriptor.type.ordinal(), paramPixelBufferDescriptor.alignment, paramPixelBufferDescriptor.stride, paramPixelBufferDescriptor.format.ordinal(), paramPixelBufferDescriptor.handler, paramPixelBufferDescriptor.callback) < 0) {
       throw new BufferOverflowException();
     }
+  }
+  
+  public void setAcquiredImage(Object paramObject1, Object paramObject2, Runnable paramRunnable)
+  {
+    nSetAcquiredImage(getNativeObject(), this.mNativeEngine, paramObject1, paramObject2, paramRunnable);
   }
   
   public void setDimensions(@IntRange(from=0L) int paramInt1, @IntRange(from=0L) int paramInt2)

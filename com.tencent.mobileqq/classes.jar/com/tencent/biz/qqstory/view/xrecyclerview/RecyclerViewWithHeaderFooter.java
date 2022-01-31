@@ -10,14 +10,14 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import vre;
-import vri;
+import wea;
+import wee;
 
 public class RecyclerViewWithHeaderFooter
   extends RecyclerView
 {
   private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private vri jdField_a_of_type_Vri;
+  private wee jdField_a_of_type_Wee;
   public boolean a;
   private final List<View> b = new ArrayList();
   
@@ -73,17 +73,17 @@ public class RecyclerViewWithHeaderFooter
     }
     else
     {
-      localObject = new vre(paramAdapter);
+      localObject = new wea(paramAdapter);
       paramAdapter = this.jdField_a_of_type_JavaUtilList.iterator();
       while (paramAdapter.hasNext()) {
-        ((vre)localObject).a((View)paramAdapter.next());
+        ((wea)localObject).a((View)paramAdapter.next());
       }
       paramAdapter = this.b.iterator();
       while (paramAdapter.hasNext()) {
-        ((vre)localObject).b((View)paramAdapter.next());
+        ((wea)localObject).b((View)paramAdapter.next());
       }
-      if (this.jdField_a_of_type_Vri != null) {
-        ((vre)localObject).a(this.jdField_a_of_type_Vri);
+      if (this.jdField_a_of_type_Wee != null) {
+        ((wea)localObject).a(this.jdField_a_of_type_Wee);
       }
     }
     super.setAdapter((RecyclerView.Adapter)localObject);

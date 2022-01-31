@@ -1,14 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-final class apct
-  implements DialogInterface.OnClickListener
+class apct
+  implements apal
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  apct(apcs paramapcs) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString1, boolean paramBoolean, int paramInt, String paramString2, long paramLong)
+  {
+    apcs.c(this.a, paramString1);
+    apcs.a(this.a).a().a(paramBoolean, 60, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), paramString2, paramString1 });
+    apcs.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apct
  * JD-Core Version:    0.7.0.1
  */

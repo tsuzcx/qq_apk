@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import abju;
-import ajjy;
+import abtu;
+import ajyc;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,13 +15,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bbmy;
+import bcpw;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import vms;
+import vzo;
 
 public class QQNotifySettingFragment
   extends QQNotifySettingBaseFragment
@@ -43,17 +43,17 @@ public class QQNotifySettingFragment
     localIntent.putExtra("key_busid", URLDecoder.decode(paramString2));
     localIntent.putExtra("key_schema", URLDecoder.decode(paramString3));
     localIntent.putExtra("key_domain", URLDecoder.decode(paramString4));
-    abju.a(paramContext, localIntent, PublicTransFragmentActivity.class, QQNotifySettingFragment.class);
+    abtu.a(paramContext, localIntent, PublicTransFragmentActivity.class, QQNotifySettingFragment.class);
   }
   
   public View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
   {
-    return paramLayoutInflater.inflate(2131495032, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2131560606, paramViewGroup, false);
   }
   
   public void a()
   {
-    bbmy.a(getActivity(), ajjy.a(2131644790), 0).a();
+    bcpw.a(getActivity(), ajyc.a(2131710575), 0).a();
   }
   
   public void b(int paramInt, String paramString)
@@ -69,9 +69,9 @@ public class QQNotifySettingFragment
         break label136;
       }
       this.jdField_a_of_type_AndroidWidgetButton.setTag("1");
-      this.jdField_a_of_type_AndroidWidgetButton.setText(ajjy.a(2131644786));
-      this.c.setText(ajjy.a(2131644792));
-      this.d.setText(ajjy.a(2131644788));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(ajyc.a(2131710571));
+      this.c.setText(ajyc.a(2131710577));
+      this.d.setText(ajyc.a(2131710573));
       paramString = URLDrawable.URLDrawableOptions.obtain();
       paramString.mRequestHeight = this.jdField_a_of_type_AndroidWidgetImageView.getHeight();
       paramString.mRequestWidth = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
@@ -113,7 +113,7 @@ public class QQNotifySettingFragment
   public void onClick(View paramView)
   {
     super.onClick(paramView);
-    if (paramView.getId() == 2131312258) {
+    if (paramView.getId() == 2131378078) {
       a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
     }
   }
@@ -121,18 +121,18 @@ public class QQNotifySettingFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131302954));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368587));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131302952));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368585));
     paramLayoutInflater = URLDrawable.URLDrawableOptions.obtain();
-    paramLayoutInflater.mRequestHeight = vms.a(getActivity(), 106.0F);
-    paramLayoutInflater.mRequestWidth = vms.a(getActivity(), 195.0F);
+    paramLayoutInflater.mRequestHeight = vzo.a(getActivity(), 106.0F);
+    paramLayoutInflater.mRequestWidth = vzo.a(getActivity(), 195.0F);
     paramLayoutInflater = URLDrawable.getDrawable("https://i.gtimg.cn/channel/imglib/201907/upload_a69bf0fc5262c4bc452dd03f6b95a9c0.png", paramLayoutInflater);
     if (paramLayoutInflater != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramLayoutInflater);
     }
-    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131302953));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131312258));
+    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368586));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378078));
     this.c.setOnClickListener(this);
     return this.jdField_a_of_type_AndroidViewView;
   }

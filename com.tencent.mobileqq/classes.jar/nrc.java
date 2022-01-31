@@ -1,93 +1,76 @@
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.mobileqq.widget.WebViewProgressBar;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
+import org.json.JSONObject;
 
 class nrc
-  extends ysc
+  implements View.OnClickListener
 {
-  nrc(nqz paramnqz, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
-  {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
-  }
+  nrc(nrb paramnrb, int paramInt, JSONObject paramJSONObject, Context paramContext, MessageRecord paramMessageRecord) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void onClick(View paramView)
   {
-    super.onPageFinished(paramWebView, paramString);
-    if (QLog.isColorLevel())
+    switch (this.jdField_a_of_type_Int)
     {
-      QLog.d(nqz.a(), 2, "loadForm onPageFinished url:" + paramString + ", costTime:" + (SystemClock.currentThreadTimeMillis() - nqz.a(this.a)));
-      QLog.d(nqz.a(), 2, "onPageFinished: TOTAL costTime=" + (SystemClock.currentThreadTimeMillis() - nqz.b(this.a)));
     }
-    if (nqz.a(this.a) != null) {
-      nqz.a(this.a).a((byte)2);
-    }
-    if (nqz.a(this.a) != null) {
-      nqz.a(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(nqz.a(), 2, "onReceivedError:" + paramInt + "，" + paramString1 + ", " + paramString2);
-    }
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    super.onReceivedTitle(paramWebView, paramString);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(nqz.a(), 2, "shouldOverrideUrlLoading url:" + paramString);
-    }
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {
-      return true;
-    }
-    Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
-    if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+    for (;;)
     {
-      if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
+      if ((nrb.a(this.jdField_a_of_type_Nrb) != null) && (nrb.a(this.jdField_a_of_type_Nrb).isShowing())) {
+        nrb.a(this.jdField_a_of_type_Nrb).dismiss();
       }
-    }
-    paramString = Uri.parse(paramString);
-    localObject = paramString.getScheme();
-    if (mkw.a().a(paramWebView.getUrl(), (String)localObject).booleanValue())
-    {
-      paramWebView = new Intent("android.intent.action.VIEW", paramString);
-      paramWebView.addFlags(268435456);
-    }
-    try
-    {
-      this.mContext.startActivity(paramWebView);
-      return false;
-    }
-    catch (ActivityNotFoundException paramWebView)
-    {
-      for (;;)
+      return;
+      paramView = this.jdField_a_of_type_OrgJsonJSONObject.optString("action_url", "");
+      if (!bbjw.a(paramView))
       {
-        Log.e("AbsWebView", paramWebView.toString());
+        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", paramView);
+        localIntent.putExtra("big_brother_source_key", "biz_src_gzh_qqgw");
+        ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivity(localIntent);
+        continue;
+        ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForArkApp))
+        {
+          paramView = (MessageForArkApp)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+          if (paramView.arkContainer != null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("EcshopAdHelper", 2, "doOnEvent ARKAPP_TYPE_DESTROY");
+            }
+            paramView.arkContainer.doOnEvent(2);
+          }
+        }
+        ((nqx)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(8, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        bcpw.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692381), 1).a();
+        continue;
+        ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForArkApp))
+        {
+          paramView = (MessageForArkApp)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+          if (paramView.arkContainer != null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("EcshopAdHelper", 2, "doOnEvent ARKAPP_TYPE_DESTROY");
+            }
+            paramView.arkContainer.doOnEvent(2);
+          }
+        }
+        ((nqx)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(7, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        bcpw.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692381), 1).a();
       }
     }
   }

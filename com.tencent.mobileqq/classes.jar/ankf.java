@@ -1,32 +1,30 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter.1;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter.1.1;
-import com.tencent.widget.AbsListView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class ankf
-  implements begh
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public ankf(EmotionPanelViewPagerAdapter.1.1 param1) {}
+  public ankf(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramInt == 0) || (paramInt == 2))
-    {
-      URLDrawable.resume();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter$1.jdField_a_of_type_Int == 1) {
-        EmotionPanelViewPagerAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter$1.this$0, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter$1.jdField_a_of_type_ComTencentWidgetListView);
-      }
-      return;
+    akrz.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(akrz.jdField_a_of_type_JavaLangString, 0).edit().putBoolean(akrz.b, paramBoolean).commit();
+    bcpw.a(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getApplicationContext(), ajyc.a(2131702859), 1).a();
+    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
+      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).b(false);
     }
-    URLDrawable.pause();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ankf
  * JD-Core Version:    0.7.0.1
  */

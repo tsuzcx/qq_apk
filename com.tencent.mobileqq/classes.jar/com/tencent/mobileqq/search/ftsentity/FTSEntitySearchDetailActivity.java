@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.ftsentity;
 
-import aciy;
-import ajhh;
+import actn;
+import ajvk;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +14,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import babh;
+import bbcl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.persistence.fts.FTSEntity;
@@ -50,7 +50,7 @@ public class FTSEntitySearchDetailActivity
       }
       return;
     }
-    int i = ((ajhh)this.app.getManager(53)).a(paramString2);
+    int i = ((ajvk)this.app.getManager(53)).a(paramString2);
     if (i <= 0)
     {
       paramTextView.setText(paramString1);
@@ -58,7 +58,7 @@ public class FTSEntitySearchDetailActivity
     }
     int j = getResources().getDisplayMetrics().widthPixels;
     paramString2 = (RelativeLayout.LayoutParams)((View)paramTextView.getParent()).getLayoutParams();
-    int k = aciy.a(207.0F, getResources());
+    int k = actn.a(207.0F, getResources());
     TextPaint localTextPaint = paramTextView.getPaint();
     float f2 = j - k - localTextPaint.measureText(String.format("(%d人)", new Object[] { Integer.valueOf(i) })) - 4.0F * getResources().getDisplayMetrics().density;
     String str = paramString1;
@@ -113,21 +113,21 @@ public class FTSEntitySearchDetailActivity
     super.doOnCreate(paramBundle);
     this.b = jdField_a_of_type_JavaUtilList;
     this.jdField_a_of_type_Int = getIntent().getIntExtra("extra_key_fts_type", 0);
-    setContentView(2131493264);
+    setContentView(2131558822);
     paramBundle = getIntent().getStringExtra("uin");
     int i = getIntent().getIntExtra("uinType", -1);
     if (i == 3000) {
-      a(babh.a(this.app, paramBundle, i), paramBundle, this.centerView);
+      a(bbcl.a(this.app, paramBundle, i), paramBundle, this.centerView);
     }
     for (;;)
     {
       Object localObject = super.getSupportFragmentManager();
       paramBundle = FTSEntitySearchDetailFragment.a(getIntent().getStringExtra("original_keyword"), getIntent().getStringExtra("segment_keyword"), this.b);
       localObject = ((FragmentManager)localObject).beginTransaction();
-      ((FragmentTransaction)localObject).replace(2131299146, paramBundle);
+      ((FragmentTransaction)localObject).replace(2131364706, paramBundle);
       ((FragmentTransaction)localObject).commit();
       return true;
-      super.setTitle(babh.a(this.app, paramBundle, i));
+      super.setTitle(bbcl.a(this.app, paramBundle, i));
     }
   }
   

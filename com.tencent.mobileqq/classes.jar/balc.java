@@ -1,42 +1,68 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xa48.oidb_0xa48.RspBody;
+import tencent.im.oidb.cmd0xa48.oidb_0xa48.SendItem;
+import tencent.im.oidb.cmd0xa48.oidb_0xa48.SendListRsp;
 
-public class balc
+class balc
+  extends mxl
 {
-  public static boolean a()
-  {
-    return (a("meizu", null, null)) && (Build.VERSION.SDK_INT > 20);
-  }
+  balc(bakt parambakt, baks parambaks) {}
   
-  public static boolean a(String paramString1, String paramString2, String paramString3)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    boolean bool1 = false;
-    if (!TextUtils.isEmpty(paramString1)) {
-      bool1 = paramString1.equalsIgnoreCase(Build.MANUFACTURER);
-    }
-    boolean bool2;
-    if (!bool1) {
-      bool2 = bool1;
-    }
-    do
+    int j = 0;
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      do
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "requestGiftMemberList. onResult error=" + paramInt + " data=" + paramArrayOfByte);
+      }
+      this.jdField_a_of_type_Baks.a(paramInt, "");
+      return;
+    }
+    paramBundle = new oidb_0xa48.RspBody();
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = new long[paramBundle.msg_send_list_rsp.rpt_today_birth.size()];
+      int i = 0;
+      while (i < paramArrayOfByte.length)
       {
-        return bool2;
-        if (!TextUtils.isEmpty(paramString2)) {
-          bool1 = paramString2.equalsIgnoreCase(Build.BRAND);
-        }
-        bool2 = bool1;
-      } while (!bool1);
-      bool2 = bool1;
-    } while (TextUtils.isEmpty(paramString3));
-    return paramString3.equalsIgnoreCase(Build.MODEL);
+        paramArrayOfByte[i] = ((oidb_0xa48.SendItem)paramBundle.msg_send_list_rsp.rpt_today_birth.get(i)).uint64_uin.get();
+        i += 1;
+      }
+      long[] arrayOfLong1 = new long[paramBundle.msg_send_list_rsp.rpt_send_gift.size()];
+      i = 0;
+      while (i < arrayOfLong1.length)
+      {
+        arrayOfLong1[i] = ((oidb_0xa48.SendItem)paramBundle.msg_send_list_rsp.rpt_send_gift.get(i)).uint64_uin.get();
+        i += 1;
+      }
+      long[] arrayOfLong2 = new long[paramBundle.msg_send_list_rsp.rpt_recv_gift.size()];
+      i = j;
+      while (i < arrayOfLong2.length)
+      {
+        arrayOfLong2[i] = ((oidb_0xa48.SendItem)paramBundle.msg_send_list_rsp.rpt_recv_gift.get(i)).uint64_uin.get();
+        i += 1;
+      }
+      this.jdField_a_of_type_Baks.a(paramArrayOfByte, arrayOfLong1, arrayOfLong2);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "requestGiftMemberList. error=" + QLog.getStackTraceString(paramArrayOfByte));
+      }
+      this.jdField_a_of_type_Baks.a(paramInt, "InvalidProtocolBufferMicroException");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     balc
  * JD-Core Version:    0.7.0.1
  */

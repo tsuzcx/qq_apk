@@ -1,37 +1,63 @@
-import android.content.Intent;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.av.gameplay.GPNativeSoLoader.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.io.File;
+import mqq.os.MqqHandler;
 
 public class lmz
-  implements awgj
 {
-  final WeakReference<QQServiceForAV> a;
+  public static boolean a;
+  private static boolean b;
   
-  lmz(QQServiceForAV paramQQServiceForAV)
+  public static byte a(String paramString)
   {
-    this.a = new WeakReference(paramQQServiceForAV);
+    byte b1 = 0;
+    if (paramString == null) {
+      return -1;
+    }
+    lna locallna = lna.a();
+    String str = lni.a() + "lib" + paramString + ".so";
+    if (QLog.isColorLevel()) {
+      QLog.i("Qav_GamePlayNativeSoLoader", 2, "start arNativeSo: " + str);
+    }
+    Object localObject = new File(str);
+    if ((!a) && (((File)localObject).exists())) {}
+    for (;;)
+    {
+      try
+      {
+        System.load(str);
+        b = true;
+        localObject = "null";
+        if (locallna != null) {
+          localObject = locallna.b;
+        }
+        QLog.w("Qav_GamePlayNativeSoLoader", 1, "loadGamePlayNativeSo, libPath[" + str + "], libName[" + paramString + "], md5[" + (String)localObject + "], isLoadSo[" + b + "], result[" + b1 + "]");
+        return b1;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      {
+        b1 = -3;
+        QLog.i("Qav_GamePlayNativeSoLoader", 1, "loadGamePlayNativeSo load fail", localUnsatisfiedLinkError);
+        continue;
+      }
+      b1 = -2;
+    }
   }
   
-  public void a(int paramInt, long paramLong1, long paramLong2) {}
-  
-  public void a(int paramInt1, boolean paramBoolean, int paramInt2)
+  public static boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQServiceForAV", 2, "onAEResDownloadResult, package[" + paramInt1 + ", isDownloaded[" + paramBoolean + ", errorType[" + paramInt2 + "]");
-    }
-    Object localObject = (QQServiceForAV)this.a.get();
-    if (localObject != null)
+    if (b) {}
+    do
     {
-      localObject = (QQAppInterface)((QQServiceForAV)localObject).a();
-      Intent localIntent = new Intent("tencent.video.q2v.ptusoDownloadRet");
-      localIntent.putExtra("packageIdx", paramInt1);
-      localIntent.putExtra("isDownloaded", paramBoolean);
-      localIntent.putExtra("errorType", paramInt2);
-      ((QQAppInterface)localObject).getApp().sendBroadcast(localIntent);
-    }
+      return true;
+      if (!lnb.a().b()) {
+        break;
+      }
+    } while (a("qavgameplayengine") == 0);
+    return false;
+    ThreadManager.getUIHandler().post(new GPNativeSoLoader.1());
+    return false;
   }
 }
 

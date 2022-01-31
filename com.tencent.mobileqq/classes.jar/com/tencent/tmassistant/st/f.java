@@ -3,7 +3,7 @@ package com.tencent.tmassistant.st;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 
 class f
   extends Handler
@@ -15,19 +15,19 @@ class f
   
   public void handleMessage(Message paramMessage)
   {
-    ac.c("SDKReportManager2", ">>mPostHandler handleMessage enter");
+    ab.c("SDKReportManager2", ">>mPostHandler handleMessage enter");
     if (paramMessage.what == 1)
     {
-      ac.c("SDKReportManager2", ">>mPostHandler msg = MSG_POST_REPORT");
+      ab.c("SDKReportManager2", ">>mPostHandler msg = MSG_POST_REPORT");
       SDKReportManager2.access$000(this.a);
     }
     for (;;)
     {
-      ac.c("SDKReportManager2", ">>mPostHandler handleMessage exit");
+      ab.c("SDKReportManager2", ">>mPostHandler handleMessage exit");
       return;
       if (paramMessage.what == 2)
       {
-        ac.c("SDKReportManager2", ">>mPostHandler msg = MSG_BATCH_REPORT");
+        ab.c("SDKReportManager2", ">>mPostHandler msg = MSG_BATCH_REPORT");
         SDKReportManager2.access$100(this.a);
       }
     }

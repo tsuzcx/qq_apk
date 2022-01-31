@@ -3,19 +3,21 @@ package com.tencent.qqmini.sdk.core.proxy.service;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.ResultReceiver;
+import android.text.TextUtils;
 import android.util.Log;
-import bdcz;
-import bdel;
-import bdfr;
-import bdgb;
-import bdhg;
-import bdnw;
-import bdzf;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import beil;
+import beru;
+import besi;
+import besl;
+import beyu;
+import bffj;
+import bffk;
+import bffl;
+import com.tencent.qqmini.sdk.core.auth.ui.PermissionSettingFragment;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.IChoosePhotoListner;
@@ -23,22 +25,31 @@ import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.SenderListener;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.ui.MiniTranslucentFragmentActivity;
 import com.tencent.qqmini.sdk.ui.MoreFragment;
+import com.tencent.qqmini.sdk.ui.MoreItem;
+import cooperation.vip.pb.TianShuAccess.AdItem;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MiniAppProxyDefault
   extends MiniAppProxy
 {
   private static final String TAG = "MiniAppProxyDefault";
-  private static boolean isOpenMonitor;
   
-  private void showMoreFragment(bdcz parambdcz, Activity paramActivity, Intent paramIntent)
+  private void reportClick(besi parambesi, String paramString)
   {
-    MiniTranslucentFragmentActivity.a(paramActivity, paramIntent, MoreFragment.class, 9527);
-    paramActivity.overridePendingTransition(0, 0);
-    bdel.a().a(new MiniAppProxyDefault.1(this, parambdcz));
+    if (TextUtils.isEmpty(paramString)) {}
+    while (!parambesi.a().isEngineTypeMiniGame()) {
+      return;
+    }
+    beyu.a(parambesi.a(), beyu.a(parambesi.a()), null, "user_click", "more_button", paramString);
   }
   
   public boolean addPublicAccount(String paramString1, String paramString2, AsyncResult paramAsyncResult)
+  {
+    return false;
+  }
+  
+  public boolean addShortcut(Activity paramActivity, MiniAppInfo paramMiniAppInfo, AsyncResult paramAsyncResult)
   {
     return false;
   }
@@ -53,6 +64,11 @@ public class MiniAppProxyDefault
     return false;
   }
   
+  public boolean downloadApp(Context paramContext, MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    return false;
+  }
+  
   public boolean enterQRCode(Context paramContext, boolean paramBoolean, AsyncResult paramAsyncResult)
   {
     return false;
@@ -61,6 +77,11 @@ public class MiniAppProxyDefault
   public String getAccount()
   {
     return "10000";
+  }
+  
+  public String getAppId()
+  {
+    return "";
   }
   
   public String getAppName()
@@ -73,11 +94,6 @@ public class MiniAppProxyDefault
     return "8.0.5";
   }
   
-  public Class getBrowserClass()
-  {
-    return null;
-  }
-  
   public String getDeviceInfo()
   {
     return "android";
@@ -88,12 +104,7 @@ public class MiniAppProxyDefault
     return null;
   }
   
-  public boolean getEnableDebug(String paramString)
-  {
-    return bdzf.a().getBoolean(paramString + "_debug", false);
-  }
-  
-  public boolean getLocation(String paramString, boolean paramBoolean, AsyncResult paramAsyncResult)
+  public boolean getLocation(Context paramContext, String paramString, boolean paramBoolean, AsyncResult paramAsyncResult)
   {
     return false;
   }
@@ -105,7 +116,18 @@ public class MiniAppProxyDefault
   
   public int getLoginType()
   {
-    return 3;
+    return 0;
+  }
+  
+  public bffl getMoreItemSelectedListener()
+  {
+    return new DefaultMoreItemSelectedListener();
+  }
+  
+  public ArrayList<MoreItem> getMoreItems(bffj parambffj)
+  {
+    parambffj.a("QQ", 2130840731).b("QQ空间", 2130840732).c("微信好友", 2130840733).d("微信朋友圈", 2130840734).e("关于", 2130840697).f("举报", 2130840730).g("调试", 2130840697).h("性能", 2130840697);
+    return parambffj.a();
   }
   
   public String getNickName()
@@ -131,6 +153,16 @@ public class MiniAppProxyDefault
   public String getPlatformQUA()
   {
     return "";
+  }
+  
+  public String getPlatformVersionString()
+  {
+    return null;
+  }
+  
+  public String getSoPath()
+  {
+    return null;
   }
   
   public boolean isDebugVersion()
@@ -190,65 +222,57 @@ public class MiniAppProxyDefault
     Log.v(paramString1, paramString2, paramThrowable);
   }
   
-  public void onCapsuleButtonMoreClick(bdcz parambdcz)
-  {
-    bdnw.a("MiniAppProxyDefault", "onCapsuleButtonMoreClick");
-    Activity localActivity = parambdcz.a();
-    if ((localActivity == null) || (localActivity.isFinishing()))
-    {
-      bdnw.c("MiniAppProxyDefault", "Activity is not exiting, no need to response more button");
-      return;
-    }
-    MiniAppInfo localMiniAppInfo = parambdcz.a();
-    if (localMiniAppInfo == null)
-    {
-      bdnw.c("MiniAppProxyDefault", "MiniAppInfo is null, no need to response more button");
-      return;
-    }
-    bdgb localbdgb = (bdgb)parambdcz.a(bdfr.a());
-    if (localMiniAppInfo.verType != 3)
-    {
-      localbdgb.b = true;
-      localbdgb.c = true;
-    }
-    if (bdhg.a("MiniApp", "mini_app_share_to_wx_switcher", 1) != 1)
-    {
-      localbdgb.f = false;
-      localbdgb.g = false;
-    }
-    localbdgb.a = parambdcz.f();
-    Intent localIntent = new Intent();
-    localIntent.putExtra("miniAppID", localMiniAppInfo.appId);
-    localIntent.putExtra("miniAppName", localMiniAppInfo.name);
-    localIntent.putExtra("isOpenMonitorPanel", isOpenMonitor);
-    localIntent.putExtra("debugEnable", getEnableDebug(localMiniAppInfo.appId));
-    localIntent.putExtra("showDebug", localbdgb.b);
-    localIntent.putExtra("showMonitor", localbdgb.c);
-    localIntent.putExtra("menuStyle", MiniAppEnv.g().getMenuStyle());
-    localIntent.putExtra("showShareQQ", localbdgb.e);
-    localIntent.putExtra("showShareQzone", localbdgb.d);
-    localIntent.putExtra("showShareWeChatFriends", localbdgb.f);
-    localIntent.putExtra("showShareWeChatMoment", localbdgb.g);
-    localIntent.putExtra("showDetail", true);
-    localIntent.putExtra("showComplaint", true);
-    if (Build.VERSION.SDK_INT >= 21) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localIntent.putExtra("addShortcut", bool);
-      localIntent.putExtra("showBackHome", -1);
-      localIntent.putExtra("isLandscape", localbdgb.a);
-      localIntent.putExtra("isSpecialMiniApp", false);
-      localIntent.putExtra("key_mini_app_version_type", 1);
-      localIntent.putExtra("key_mini_app_info", localMiniAppInfo);
-      localIntent.putExtra("key_mini_app_is_game", true);
-      showMoreFragment(parambdcz, localActivity, localIntent);
-      return;
-    }
-  }
+  public void notifyMiniAppInfo(MiniAppInfo paramMiniAppInfo) {}
   
-  public boolean openAppDetailPage(Context paramContext, String paramString1, String paramString2)
+  public boolean onCapsuleButtonCloseClick(besi parambesi)
   {
     return false;
+  }
+  
+  public boolean onCapsuleButtonMoreClick(besi parambesi)
+  {
+    besl.a("MiniAppProxyDefault", "onCapsuleButtonMoreClick");
+    if (parambesi == null)
+    {
+      besl.c("MiniAppProxyDefault", "miniRuntime is null, no need to response more button");
+      return true;
+    }
+    Activity localActivity = parambesi.a();
+    if ((localActivity == null) || (localActivity.isFinishing()))
+    {
+      besl.c("MiniAppProxyDefault", "Activity is not exiting, no need to response more button");
+      return true;
+    }
+    MiniAppInfo localMiniAppInfo = parambesi.a();
+    if (localMiniAppInfo == null)
+    {
+      besl.c("MiniAppProxyDefault", "MiniAppInfo is null, no need to response more button");
+      return true;
+    }
+    beru localberu = parambesi.a();
+    if (localberu == null)
+    {
+      besl.c("MiniAppProxyDefault", "ShareState is null, no need to response more button");
+      return true;
+    }
+    Intent localIntent = new Intent();
+    Object localObject = new bffk();
+    ((bffk)localObject).a = localberu.e;
+    ((bffk)localObject).b = localberu.d;
+    ((bffk)localObject).c = localberu.f;
+    ((bffk)localObject).d = localberu.g;
+    ((bffk)localObject).e = localberu.b;
+    ((bffk)localObject).f = localberu.c;
+    ((bffk)localObject).g = true;
+    ((bffk)localObject).h = true;
+    localObject = getMoreItems(new bffj().a((bffk)localObject));
+    localIntent.putExtra("key_orientation_landscape", localberu.a);
+    localIntent.putExtra("key_mini_app_info", localMiniAppInfo);
+    localIntent.putParcelableArrayListExtra("key_more_item_list", (ArrayList)localObject);
+    beil.a().a(new MiniAppProxyDefault.1(this, parambesi));
+    MiniTranslucentFragmentActivity.a(localActivity, localIntent, MoreFragment.class, 9527);
+    reportClick(parambesi, "open");
+    return true;
   }
   
   public boolean openChoosePhotoActivity(Activity paramActivity, int paramInt, MiniAppProxy.IChoosePhotoListner paramIChoosePhotoListner)
@@ -266,7 +290,18 @@ public class MiniAppProxyDefault
     return false;
   }
   
+  public boolean openPermissionSettingsActivity(Activity paramActivity, String paramString1, String paramString2)
+  {
+    PermissionSettingFragment.a(paramActivity, paramString1, paramString2, 5);
+    return true;
+  }
+  
   public boolean openRobotProfileCard(Context paramContext, String paramString1, String paramString2)
+  {
+    return false;
+  }
+  
+  public boolean openSchema(Activity paramActivity, String paramString, ResultReceiver paramResultReceiver)
   {
     return false;
   }
@@ -277,6 +312,32 @@ public class MiniAppProxyDefault
   }
   
   public boolean startAddFriendActivity(Context paramContext, String paramString1, String paramString2)
+  {
+    return false;
+  }
+  
+  public boolean startBrowserActivity(Activity paramActivity, Intent paramIntent)
+  {
+    paramIntent.setAction("android.intent.action.VIEW");
+    paramIntent.setData(Uri.parse(paramIntent.getStringExtra("url")));
+    paramActivity.startActivity(paramIntent);
+    return true;
+  }
+  
+  public boolean startBrowserActivityForResult(Activity paramActivity, Intent paramIntent, int paramInt)
+  {
+    paramIntent.setAction("android.intent.action.VIEW");
+    paramIntent.setData(Uri.parse(paramIntent.getStringExtra("url")));
+    paramActivity.startActivityForResult(paramIntent, paramInt);
+    return false;
+  }
+  
+  public boolean tianshuReport(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
+  {
+    return false;
+  }
+  
+  public boolean tianshuRequestAdv(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3, AsyncResult paramAsyncResult)
   {
     return false;
   }

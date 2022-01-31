@@ -1,18 +1,18 @@
 package dov.com.tencent.biz.qqstory.takevideo.linker;
 
-import bism;
+import bkja;
 
 public class LinkerObject$1
   implements Runnable
 {
-  public LinkerObject$1(bism parambism, String paramString) {}
+  public LinkerObject$1(bkja parambkja, String paramString) {}
   
   public void run()
   {
-    bism localbism = bism.a(this.a);
-    this.this$0.b = localbism.b;
-    this.this$0.c = localbism.c;
-    this.this$0.a = localbism.a;
+    bkja localbkja = bkja.a(this.a);
+    this.this$0.b = localbkja.b;
+    this.this$0.c = localbkja.c;
+    this.this$0.a = localbkja.a;
   }
 }
 

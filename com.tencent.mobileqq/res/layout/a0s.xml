@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingLeft="@dimen/ajk" android:paddingTop="@dimen/aln" android:paddingRight="@dimen/ajk" android:paddingBottom="@dimen/all" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@drawable/jm" android:paddingLeft="@dimen/ajk" android:paddingTop="@dimen/aln" android:paddingRight="@dimen/ajk" android:paddingBottom="@dimen/all" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <include android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/a0k" />
     <RelativeLayout android:id="@id/idf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">

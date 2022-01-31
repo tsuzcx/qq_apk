@@ -1,33 +1,17 @@
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.theme.effect.QEffectLottieImageView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.effect.engine.QEffectData;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class axmq
-  implements OnCompositionLoadedListener
+class axmq
+  extends aymm
 {
-  public axmq(QEffectLottieImageView paramQEffectLottieImageView) {}
+  axmq(axmp paramaxmp) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public boolean a(int paramInt)
   {
-    if ((QLog.isColorLevel()) || (paramLottieComposition == null)) {
-      QLog.e(QEffectLottieImageView.a(this.a), 1, "onCompositionLoaded: composition= " + paramLottieComposition);
-    }
-    if (paramLottieComposition == null) {
-      return;
-    }
-    if (QEffectLottieImageView.a(this.a))
-    {
-      QLog.e(QEffectLottieImageView.a(this.a), 1, "onCompositionLoaded: mIsStop " + QEffectLottieImageView.a(this.a));
-      return;
-    }
-    this.a.cancelAnimation();
-    this.a.setComposition(paramLottieComposition);
-    this.a.setProgress(0.0F);
-    this.a.setRepeatCount(QEffectLottieImageView.a(this.a).repeat);
-    this.a.setVisibility(0);
-    this.a.playAnimation();
+    QLog.i("SimpleUILog.SimpleUIHandler", 1, String.format("emptyCallback postSwitch %d", new Object[] { Integer.valueOf(paramInt) }));
+    axmp.a(this.a).set(-2147483648);
+    axmp.b(this.a).set(-2147483648);
+    return super.a(paramInt);
   }
 }
 

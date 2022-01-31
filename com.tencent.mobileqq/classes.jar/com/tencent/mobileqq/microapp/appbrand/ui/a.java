@@ -2,11 +2,11 @@ package com.tencent.mobileqq.microapp.appbrand.ui;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
-import avwk;
+import awwd;
 import com.tencent.mobileqq.microapp.app.b;
 
 final class a
-  implements avwk
+  implements awwd
 {
   a(AppBrandUI paramAppBrandUI) {}
   

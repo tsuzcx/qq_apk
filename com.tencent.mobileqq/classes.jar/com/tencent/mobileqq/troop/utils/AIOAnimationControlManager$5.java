@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.utils;
 
-import azfo;
+import bagr;
 
 public class AIOAnimationControlManager$5
   implements Runnable
 {
-  public AIOAnimationControlManager$5(azfo paramazfo, boolean paramBoolean) {}
+  public AIOAnimationControlManager$5(bagr parambagr, boolean paramBoolean) {}
   
   public void run()
   {

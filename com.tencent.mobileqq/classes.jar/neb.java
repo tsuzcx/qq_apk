@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoAdInfo.NegFeedback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
 
-public final class neb
-  implements Parcelable.Creator<VideoAdInfo.NegFeedback>
+public class neb
+  implements View.OnClickListener
 {
-  public VideoAdInfo.NegFeedback a(Parcel paramParcel)
-  {
-    return new VideoAdInfo.NegFeedback(paramParcel);
-  }
+  public neb(EqqAccountDetailActivity paramEqqAccountDetailActivity, boolean paramBoolean1, String paramString, boolean paramBoolean2, nmv paramnmv) {}
   
-  public VideoAdInfo.NegFeedback[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new VideoAdInfo.NegFeedback[paramInt];
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.b);
+    EqqAccountDetailActivity.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_Nmv.jdField_a_of_type_JavaLangString);
   }
 }
 

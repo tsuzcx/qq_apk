@@ -1,10 +1,10 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-public abstract interface awef
+public class awef
 {
-  public abstract MessageRecord a(awel paramawel);
-  
-  public abstract MessageRecord a(awfo paramawfo);
+  public ProgressBar a;
+  public TextView a;
 }
 
 

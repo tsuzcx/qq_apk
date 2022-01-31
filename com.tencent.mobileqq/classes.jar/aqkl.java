@@ -1,104 +1,101 @@
-import android.content.Context;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.shadow.core.common.LoggerFactory;
-import com.tencent.shadow.dynamic.host.DynamicPluginManager;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
+import com.tencent.mobileqq.data.IntimateInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public final class aqkl
+public class aqkl
+  implements ajtg
 {
-  public static final IVPluginDataReporter a;
-  private static boolean a;
+  protected void a(boolean paramBoolean, long paramLong) {}
   
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
-    a();
-  }
+  protected void a(boolean paramBoolean, long paramLong, ArrayList<Long> paramArrayList) {}
   
-  public static aqkc a(Context paramContext, String paramString1, String paramString2)
-  {
-    try
-    {
-      paramContext = (aqkc)ajtb.a(192).submit(new aqkm(paramContext, paramString1)).get(20L, TimeUnit.SECONDS);
-      return paramContext;
-    }
-    catch (TimeoutException paramContext)
-    {
-      jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("updateException").d1(paramContext.toString()).report();
-      throw paramContext;
-    }
-    catch (InterruptedException paramContext)
-    {
-      jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("updateException").d1(paramContext.toString()).report();
-      throw paramContext;
-    }
-    catch (ExecutionException paramContext)
-    {
-      jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("updateException").d1(paramContext.toString()).report();
-      throw paramContext;
-    }
-  }
+  protected void a(boolean paramBoolean, String paramString) {}
   
-  public static void a()
-  {
-    if (!jdField_a_of_type_Boolean)
-    {
-      LoggerFactory.setILoggerFactory(aqjz.a());
-      jdField_a_of_type_Boolean = true;
-    }
-  }
+  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public static aqkc b(Context paramContext, String paramString1, String paramString2)
+  protected void a(boolean paramBoolean, String paramString, IntimateInfo paramIntimateInfo) {}
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
+  
+  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject) {}
+  
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    l1 = System.currentTimeMillis();
-    jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(paramString1).opType("CdnGetBizPm").toUin(paramString2);
-    aqjv localaqjv = new aqjv(paramString1);
-    if (localaqjv.getLatest() != null) {
-      return new aqkk(paramString1, new DynamicPluginManager(localaqjv));
-    }
-    paramContext = new aqjs(paramContext, paramString1, paramString2, "7_1");
-    if (QLog.isColorLevel()) {
-      QLog.i("shadow::Shadow", 2, "wasUpdating:" + paramContext.wasUpdating() + " getLatest:" + paramContext.getLatest());
-    }
-    if ((paramContext.wasUpdating()) || (paramContext.getLatest() == null)) {}
-    for (bool = true;; bool = false)
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("shadow::Shadow", 2, "needWaitingUpdate:" + bool);
-      }
-      paramString2 = paramContext.update();
-      if (bool) {}
-      try
+    }
+    do
+    {
+      do
       {
-        paramString2.get();
-        l2 = System.currentTimeMillis();
-        paramContext = new aqkk(paramString1, new DynamicPluginManager(paramContext));
-        jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(Boolean.toString(bool)).d2(Long.toString(l2 - l1)).opResult(0).report();
-        return paramContext;
-      }
-      catch (ExecutionException paramContext)
-      {
-        l2 = System.currentTimeMillis();
-        jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(Boolean.toString(bool)).d2(Long.toString(l2 - l1)).opResult(1).report();
-        throw paramContext;
-      }
-      catch (InterruptedException paramContext)
-      {
-        long l2 = System.currentTimeMillis();
-        jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(Boolean.toString(bool)).d2(Long.toString(l2 - l1)).opResult(2).report();
-        throw paramContext;
-      }
-    }
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                if ((paramObject instanceof Object[]))
+                {
+                  paramObject = (Object[])paramObject;
+                  a(paramBoolean, (String)paramObject[0], (IntimateInfo)paramObject[1]);
+                  return;
+                }
+                a(false, "", null);
+                return;
+                if ((paramObject instanceof Object[]))
+                {
+                  paramObject = (Object[])paramObject;
+                  a(paramBoolean, (String)paramObject[0], ((Boolean)paramObject[1]).booleanValue());
+                  return;
+                }
+                a(paramBoolean, "", false);
+                return;
+                if ((paramObject instanceof Object[]))
+                {
+                  a(paramBoolean, (String)((Object[])(Object[])paramObject)[0]);
+                  return;
+                }
+                a(false, "");
+                return;
+                if ((paramObject instanceof Object[]))
+                {
+                  paramObject = (Object[])paramObject;
+                  a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
+                  return;
+                }
+                a(false, "", -1, -1, -1);
+                return;
+                if ((paramBoolean) && ((paramObject instanceof Object[])))
+                {
+                  a(paramBoolean, (Object[])paramObject);
+                  return;
+                }
+                a(false, null);
+                return;
+              } while (!(paramObject instanceof Object[]));
+              paramObject = (Object[])paramObject;
+            } while (paramObject.length < 2);
+            a(paramBoolean, ((Long)paramObject[0]).longValue(), (ArrayList)paramObject[1]);
+            return;
+          } while (!(paramObject instanceof Object[]));
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length < 1);
+        a(paramBoolean, ((Long)paramObject[0]).longValue());
+        return;
+      } while (!(paramObject instanceof Object[]));
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length < 2);
+    a(paramBoolean, (HashMap)paramObject[0], paramObject[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqkl
  * JD-Core Version:    0.7.0.1
  */

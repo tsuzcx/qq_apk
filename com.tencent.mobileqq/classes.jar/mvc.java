@@ -1,40 +1,27 @@
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
+import android.view.View.OnClickListener;
+import com.tencent.av.widget.RatingBar;
 
-class mvc
-  implements begw
+public class mvc
+  implements View.OnClickListener
 {
-  mvc(mut parammut, begr parambegr) {}
+  public mvc(RatingBar paramRatingBar) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Mut.f) {
-      return;
-    }
-    this.jdField_a_of_type_Mut.f = true;
-    if (paramInt == 0) {
-      this.jdField_a_of_type_Mut.jdField_a_of_type_Int = 0;
-    }
-    for (;;)
+    if (RatingBar.a(this.a))
     {
-      this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Mut.jdField_a_of_type_Akig);
-      this.jdField_a_of_type_Mut.jdField_a_of_type_Akig = new akig(new mvd(this));
-      this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Mut.jdField_a_of_type_Akig);
-      akil.a(this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Mut.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      if (paramInt == 1) {
-        this.jdField_a_of_type_Mut.jdField_a_of_type_Int = 2;
-      } else if (paramInt == 2) {
-        this.jdField_a_of_type_Mut.jdField_a_of_type_Int = 1;
+      RatingBar.a(this.a, this.a.indexOfChild(paramView) + 1);
+      this.a.setStar(RatingBar.a(this.a), true);
+      if (RatingBar.a(this.a) != null) {
+        RatingBar.a(this.a).a(RatingBar.a(this.a), RatingBar.a(this.a));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mvc
  * JD-Core Version:    0.7.0.1
  */

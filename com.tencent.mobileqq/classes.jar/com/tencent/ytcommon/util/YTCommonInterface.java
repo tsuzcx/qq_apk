@@ -5,6 +5,11 @@ import com.tencent.ytcommon.auth.Auth;
 
 public class YTCommonInterface
 {
+  public static int getAuthResult()
+  {
+    return Auth.getAuthResult();
+  }
+  
   public static long getEndTime()
   {
     return Auth.getEndTime();

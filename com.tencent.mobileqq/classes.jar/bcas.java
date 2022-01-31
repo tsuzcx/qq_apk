@@ -1,92 +1,35 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.SparseArray;
-import com.tencent.tmassistant.common.jce.StatItem;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
-class bcas
-  extends Handler
+public class bcas
 {
-  bcas(bcar parambcar, Looper paramLooper)
+  public static bcbv a(bcfj parambcfj)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int i;
-    Object localObject2;
-    if (paramMessage.what == 1)
+    int j = 0;
+    int i = j;
+    if (parambcfj.a != null)
     {
-      localObject1 = bcar.a(this.a).keySet();
-      if ((localObject1 != null) && (((Set)localObject1).size() > 0))
-      {
-        paramMessage = new ArrayList();
-        localObject1 = ((Set)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          i = ((Integer)((Iterator)localObject1).next()).intValue();
-          localObject2 = new StatItem();
-          ((StatItem)localObject2).type = i;
-          ((StatItem)localObject2).records = ((ArrayList)bcar.a(this.a).get(Integer.valueOf(i)));
-          paramMessage.add(localObject2);
-        }
-        bcar.a(this.a).clear();
-        if (paramMessage.size() > 0)
-        {
-          i = bcar.a(this.a).a(paramMessage);
-          bcar.a(this.a).put(i, paramMessage);
-        }
+      i = j;
+      if (parambcfj.a.a() != null) {
+        i = parambcfj.a.a().getIntExtra("titleBarStyle", 0);
       }
     }
-    while (paramMessage.what != 2) {
-      return;
+    bgvo.d("SwiftWebTitleBuilder", "title bar style is" + i);
+    if (i == 1) {
+      return new bgif(parambcfj);
     }
-    Object localObject1 = bcaf.a().a();
-    paramMessage = new ArrayList();
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      i = ((Integer)((Iterator)localObject1).next()).intValue();
-      Object localObject3 = bcaf.a().a(String.valueOf(i));
-      localObject2 = new ArrayList();
-      if (localObject3 != null)
-      {
-        localObject3 = ((List)localObject3).iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          Serializable localSerializable = (Serializable)((Iterator)localObject3).next();
-          try
-          {
-            ((ArrayList)localObject2).add((String)localSerializable);
-          }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
-          }
-        }
-      }
-      if (((ArrayList)localObject2).size() > 0) {
-        paramMessage.add(new StatItem(i, (ArrayList)localObject2));
-      }
+    if (i == 2) {
+      return new bccf(parambcfj);
     }
-    if (paramMessage.size() > 0)
-    {
-      i = bcar.a(this.a).a(paramMessage);
-      bcar.b(this.a).put(i, paramMessage);
+    if (i == 3) {
+      return new bgwb(parambcfj);
     }
-    bcar.a(this.a).sendEmptyMessageDelayed(2, bcar.a(this.a));
+    return new bcbv(parambcfj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcas
  * JD-Core Version:    0.7.0.1
  */

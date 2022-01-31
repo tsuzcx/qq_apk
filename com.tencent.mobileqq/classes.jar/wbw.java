@@ -1,10 +1,19 @@
-public abstract interface wbw
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class wbw
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString, wbv paramwbv);
+  wbw(wbu paramwbu) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wbw
  * JD-Core Version:    0.7.0.1
  */

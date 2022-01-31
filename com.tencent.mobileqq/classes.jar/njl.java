@@ -1,30 +1,71 @@
-import android.os.Bundle;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.emosm.Client;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class njl
-  implements MessageQueue.IdleHandler
+class njl
+  implements INetInfoHandler
 {
-  public njl(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
+  nji a;
   
-  public boolean queueIdle()
+  public njl(nji paramnji1, nji paramnji2)
   {
-    if (!anfc.a().a())
-    {
-      anfc.a().a().doBindService(BaseApplicationImpl.getApplication());
-      anfc.a().a(new njm(this));
-      return false;
+    this.a = paramnji2;
+  }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void onNetMobile2None()
+  {
+    nji.c("onNetMobile2None");
+    if (this.a != null) {
+      nji.b(this.a);
     }
-    Bundle localBundle = anah.a("ipc_kandian_hb_close_guid", "onPageStarted", 0, new Bundle());
-    anfc.a().a(localBundle);
-    return false;
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    nji.c("onNetMobile2Wifi");
+    if (this.a != null) {
+      nji.b(this.a);
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    nji.c("onNetNone2Mobile");
+    if (this.a != null) {
+      nji.b(this.a);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    nji.c("onNetNone2Wifi");
+    if (this.a != null) {
+      nji.b(this.a);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    nji.c("onNetWifi2Mobile");
+    if (this.a != null) {
+      nji.b(this.a);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    nji.c("onNetWifi2None");
+    if (this.a != null) {
+      nji.b(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     njl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,81 @@
-import android.graphics.Rect;
+import android.os.Bundle;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleImageView;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletAioBodyReserve;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-public class aele
-  implements aelf
+class aele
+  implements View.OnClickListener
 {
-  public aele(StickerBubbleListView paramStickerBubbleListView) {}
+  aele(aelc paramaelc) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    if (((paramView instanceof StickerBubbleImageView)) && (paramView.getVisibility() == 0))
+    if (paramView.getTag() == null) {}
+    MessageForQQWalletMsg localMessageForQQWalletMsg;
+    Object localObject2;
+    do
     {
-      ((StickerBubbleImageView)paramView).a();
-      if ((StickerBubbleListView.a(this.a) == null) || (StickerBubbleListView.a(this.a).get() != paramView)) {
-        StickerBubbleListView.a(this.a, new WeakReference((StickerBubbleImageView)paramView));
+      agvz localagvz;
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (this.a.jdField_a_of_type_Agyv != null) {
+              this.a.jdField_a_of_type_Agyv.a(9);
+            }
+            l = System.currentTimeMillis();
+          } while (!ahix.a(aelc.jdField_a_of_type_Long, l));
+          aelc.jdField_a_of_type_Long = l;
+          localMessageForQQWalletMsg = (MessageForQQWalletMsg)paramView.getTag();
+          localObject1 = localMessageForQQWalletMsg.mQQWalletRedPacketMsg;
+          localagvz = (agvz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(125);
+          if (!mye.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+            break;
+          }
+          localagvz.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 9);
+        } while (!QLog.isColorLevel());
+        QLog.d("PasswdRedBagManager", 2, "current is in Anonymous, dont show passwdredbag tips");
+        return;
+        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) {
+          break;
+        }
+        localObject2 = (bakk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(48);
+        boolean bool = ((bakk)localObject2).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        localObject2 = ((bakk)localObject2).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, false);
+        if ((!bool) && ((localObject2 == null) || (!((bakq)localObject2).jdField_a_of_type_Boolean))) {
+          break;
+        }
+        localagvz.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 9);
+      } while (!QLog.isColorLevel());
+      QLog.d("PasswdRedBagManager", 2, "current is in TroopMemberGag, dont show passwdredbag tips");
+      return;
+      localObject2 = localagvz.a(((QQWalletRedPacketMsg)localObject1).redPacketId);
+      long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
+      if ((localObject2 == null) || ((!((agvy)localObject2).jdField_a_of_type_Boolean) && (!((agvy)localObject2).b) && (!((agvy)localObject2).c) && (((agvy)localObject2).jdField_a_of_type_Long >= l))) {
+        break;
       }
-      paramView = (View)paramView.getParent();
-      View localView = (View)paramView.getParent();
-      if (StickerBubbleListView.a(this.a) == null) {
-        StickerBubbleListView.a(this.a, new Rect());
-      }
-      Rect localRect = StickerBubbleListView.a(this.a);
-      int i = localView.getLeft();
-      int j = paramView.getLeft();
-      int k = localView.getTop();
-      int m = paramView.getTop();
-      int n = localView.getLeft();
-      int i1 = paramView.getRight();
-      int i2 = localView.getTop();
-      localRect.set(i + j, k + m, n + i1, paramView.getBottom() + i2);
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleListView", 2, "notifyItemViewTouchDown with rect: " + StickerBubbleListView.a(this.a));
-      }
-    }
+      localagvz.a(((QQWalletRedPacketMsg)localObject1).redPacketId, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+      l = VACDReportUtil.a(null, "qqwallet", "graphb", "pwd.click", "msgType=19", 0, null);
+      paramView = ahjm.b(localMessageForQQWalletMsg);
+      Object localObject1 = new Bundle();
+      ((Bundle)localObject1).putString("feedsid", localMessageForQQWalletMsg.mQQWalletRedPacketMsg.body.feedId);
+      localagvz.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (agvy)localObject2, l, 262144, paramView, localMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.skinId, localMessageForQQWalletMsg.fromHBList, (Bundle)localObject1);
+    } while (!QLog.isColorLevel());
+    QLog.d("PasswdRedBagManager", 2, "click open passwdredbag, isPasswdRedBagOpen=" + ((agvy)localObject2).jdField_a_of_type_Boolean + ",isPasswdRedBagFinish=" + ((agvy)localObject2).b + ",isPasswdRedBagOverDue=" + ((agvy)localObject2).c);
+    return;
+    RedPacketEmojiFragment.a(paramView.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, localMessageForQQWalletMsg);
   }
 }
 

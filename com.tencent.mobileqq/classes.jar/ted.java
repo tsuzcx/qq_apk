@@ -1,27 +1,43 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetFilterList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class ted
-  extends tcq
+public class ted
+  extends syv<tee>
 {
-  ted(tdo paramtdo, StoryVideoItem paramStoryVideoItem, tew paramtew)
+  @NonNull
+  public final String a;
+  public final int c;
+  
+  public ted(@NonNull String paramString)
   {
-    super(paramStoryVideoItem);
+    this(paramString, 20);
   }
   
-  public boolean b()
+  public ted(@NonNull String paramString, int paramInt)
   {
-    String str = (String)a("result");
-    vkw.a(str);
-    vkw.a(this.jdField_a_of_type_Tew.d);
-    if (this.jdField_a_of_type_Tew.d == null)
-    {
-      this.jdField_a_of_type_Tew.d = "";
-      urk.c(this.b, "imageLocalPath is null", new Throwable());
-    }
-    a("DownloadPic2FileJob_iiu", str);
-    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_Tew.d);
-    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_Tew.a));
-    return true;
+    this.a = paramString;
+    this.c = paramInt;
+  }
+  
+  public String a()
+  {
+    return sxp.a("StorySvc.video_filter_list");
+  }
+  
+  public syq a(byte[] paramArrayOfByte)
+  {
+    return new tee(paramArrayOfByte);
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetFilterList localReqGetFilterList = new qqstory_service.ReqGetFilterList();
+    localReqGetFilterList.count.set(this.c);
+    localReqGetFilterList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    return localReqGetFilterList.toByteArray();
   }
 }
 

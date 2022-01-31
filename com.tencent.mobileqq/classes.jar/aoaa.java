@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
+import com.tencent.qphone.base.util.QLog;
 
-class aoaa
-  implements apca
+public class aoaa
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aoaa(anzx paramanzx, WeiYunFileInfo paramWeiYunFileInfo) {}
+  public aoaa(EmotionKeywordLayout paramEmotionKeywordLayout) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    FileManagerEntity localFileManagerEntity = apck.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo);
-    QfileBaseCloudFileTabView.i(this.jdField_a_of_type_Anzx.a).a().b(localFileManagerEntity);
-    QfileBaseCloudFileTabView.j(this.jdField_a_of_type_Anzx.a).a().a(localFileManagerEntity);
-    this.jdField_a_of_type_Anzx.a.a(localFileManagerEntity);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionKeywordLayout", 2, "hide:offset=" + f);
+    }
+    if (EmotionKeywordLayout.a(this.a) != null) {
+      EmotionKeywordLayout.a(this.a).setTranslationY(f);
+    }
   }
-  
-  public void b() {}
 }
 
 

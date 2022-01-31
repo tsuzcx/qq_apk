@@ -1,11 +1,31 @@
-class unu
-  implements und
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import com.tribe.async.dispatch.Subscriber;
+import java.lang.ref.WeakReference;
+import java.util.List;
+
+public class unu
+  implements Subscriber
 {
-  unu(unj paramunj) {}
+  private WeakReference<QQStoryBaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a()
+  public unu(QQStoryBaseActivity paramQQStoryBaseActivity1, QQStoryBaseActivity paramQQStoryBaseActivity2)
   {
-    urk.d("Q.qqstory.home.StoryListPresenter", "ParallelStepExecutor finish requestAllDataFromNet steps");
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQStoryBaseActivity2);
+  }
+  
+  public void accept(@NonNull List<Class<? extends Dispatcher.Dispatchable>> paramList)
+  {
+    paramList.add(vya.class);
+  }
+  
+  public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
+  {
+    paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramDispatchable != null) {
+      paramDispatchable.c();
+    }
   }
 }
 

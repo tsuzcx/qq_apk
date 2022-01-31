@@ -1,174 +1,286 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.CaptureComboText.1;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.os.IBinder;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+import cooperation.qzone.util.QZLog;
+import java.lang.reflect.Method;
+import java.util.HashMap;
 
-public class bhlw
-  extends bhgn
+public abstract class bhlw
 {
-  private float jdField_a_of_type_Float;
-  private bhmd jdField_a_of_type_Bhmd = new bhlx(this);
-  private DynamicTextConfigManager.DynamicTextConfigBean jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean;
-  private DynamicTextConfigManager jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager;
-  private String jdField_a_of_type_JavaLangString;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private float b;
-  private float c;
-  private volatile float jdField_d_of_type_Float;
-  private volatile int jdField_d_of_type_Int = 2;
+  bhlx jdField_a_of_type_Bhlx = new bhlx(this);
+  HashMap<Integer, bhlv> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public bhlw(@NonNull String paramString, @NonNull List<String> paramList, float paramFloat1, float paramFloat2, float paramFloat3)
+  private ai a()
   {
-    super(null);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager = ((DynamicTextConfigManager)bhfm.a(7));
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText id is: " + paramString);
+    try
+    {
+      ai localai = aj.a((IBinder)Class.forName("android.os.ServiceManager").getMethod("getService", new Class[] { String.class }).invoke(null, new Object[] { "isub" }));
+      return localai;
+    }
+    catch (Throwable localThrowable)
+    {
+      QZLog.e("UniKingCardHelper/SimManager", "getIsub error:" + localThrowable.getMessage());
+    }
+    return null;
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
     }
   }
   
-  public float a()
+  private void a(int paramInt, bhlv parambhlv)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText getProgress, progress is: " + this.jdField_d_of_type_Float);
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), parambhlv);
     }
-    return this.jdField_d_of_type_Float * 0.01F;
   }
   
-  public int a()
+  private int b(Context paramContext)
   {
-    if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean == null)
+    try
     {
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.c();
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_JavaLangString);
-    }
-    int i;
-    if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean == null) {
-      i = 2;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QComboDText", 2, "CaptureComboText getState, state is: " + i + " id is: " + this.jdField_a_of_type_JavaLangString);
+      String str = bhlt.a(paramContext);
+      paramContext = str;
+      if (TextUtils.isEmpty(str)) {
+        paramContext = bgxq.a().b();
       }
-      return i;
-      if ((this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean)) && (this.jdField_d_of_type_Int == 2)) {
-        i = 3;
-      } else {
-        i = this.jdField_d_of_type_Int;
-      }
-    }
-  }
-  
-  public int a(Activity paramActivity, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QComboDText", 2, "apply ComboText");
-    }
-    if ((this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean == null) || (!this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean))) {}
-    DoodleLayout localDoodleLayout;
-    DynamicTextItem localDynamicTextItem;
-    do
-    {
-      do
-      {
-        do
-        {
-          return 0;
-        } while (paramActivity == null);
-        localDoodleLayout = bhnz.a().a(paramInt);
-      } while ((localDoodleLayout == null) || (localDoodleLayout.a() == null));
-      localDoodleLayout.a().b(4);
-      localDynamicTextItem = new bhlz().a(Integer.valueOf(this.jdField_a_of_type_JavaLangString).intValue(), this.jdField_a_of_type_JavaUtilList);
-    } while (localDynamicTextItem == null);
-    float f = bjlo.a * this.c / localDynamicTextItem.a();
-    bijq localbijq = new bijq(this.jdField_a_of_type_Float * bjlo.a, this.b * bjlo.a, f, 0.0F, 0.0F, 0.0F, localDynamicTextItem.a(), localDynamicTextItem.b());
-    if (localDoodleLayout.a().a(localbijq, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper, localDoodleLayout.d()) != null)
-    {
-      localDynamicTextItem.a(true);
-      localDoodleLayout.a().b(localDynamicTextItem);
-      localDoodleLayout.a().k();
+      a(10, paramContext);
+      a(10, Boolean.valueOf(true));
       return 0;
     }
-    bbmy.a(paramActivity, paramActivity.getString(2131632580), 0).a();
-    ThreadManager.getUIHandler().post(new CaptureComboText.1(this, localDoodleLayout));
-    return 0;
+    catch (Throwable paramContext)
+    {
+      QZLog.e("UniKingCardHelper/SimManager", "initMainIMSI error:" + paramContext.getMessage());
+    }
+    return -3;
   }
   
-  public void a(Activity paramActivity, int paramInt)
+  private int c(Context paramContext)
   {
-    if (paramActivity != null)
+    try
     {
-      paramActivity = bhnz.a().a(paramInt);
-      if ((paramActivity != null) && (paramActivity.a() != null))
+      b(10, bhlt.b(paramContext));
+      return 0;
+    }
+    catch (Throwable paramContext)
+    {
+      QZLog.e("UniKingCardHelper/SimManager", "initMainPhoneNum error:" + paramContext.getMessage());
+    }
+    return -3;
+  }
+  
+  abstract int a(ai paramai);
+  
+  int a(Context paramContext)
+  {
+    try
+    {
+      paramContext = (TelephonyManager)paramContext.getSystemService("phone");
+      Method localMethod = TelephonyManager.class.getMethod("isMultiSimEnabled", new Class[0]);
+      if (localMethod != null)
       {
-        paramActivity.a().b(4);
-        paramActivity.a().f();
-        paramActivity.a().k();
+        boolean bool = ((Boolean)localMethod.invoke(paramContext, new Object[0])).booleanValue();
+        if (bool) {
+          return 10;
+        }
+        return 11;
       }
+    }
+    catch (Throwable paramContext)
+    {
+      QZLog.e("UniKingCardHelper/SimManager", "isMultiSimEnabled error:" + paramContext.getMessage());
+    }
+    return -3;
+  }
+  
+  abstract int a(Context paramContext, int[] paramArrayOfInt);
+  
+  public bhlv a()
+  {
+    int j = 0;
+    int i;
+    Object localObject;
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      i = 0;
+      if (i <= 10)
+      {
+        localObject = a(i);
+        if ((localObject == null) || (!((bhlv)localObject).a()) || (TextUtils.isEmpty(((bhlv)localObject).b()))) {}
+      }
+    }
+    bhlv localbhlv;
+    label98:
+    do
+    {
+      return localObject;
+      i += 1;
+      break;
+      if (this.jdField_a_of_type_JavaUtilHashMap != null)
+      {
+        i = 0;
+        for (;;)
+        {
+          if (i > 10) {
+            break label98;
+          }
+          localbhlv = a(i);
+          if (localbhlv != null)
+          {
+            localObject = localbhlv;
+            if (localbhlv.a()) {
+              break;
+            }
+          }
+          i += 1;
+        }
+      }
+      if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+        break label132;
+      }
+      localbhlv = a(10);
+      if (localbhlv == null) {
+        break label132;
+      }
+      localObject = localbhlv;
+    } while (!TextUtils.isEmpty(localbhlv.b()));
+    label132:
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      i = j;
+      for (;;)
+      {
+        if (i > 10) {
+          break label169;
+        }
+        localbhlv = a(i);
+        localObject = localbhlv;
+        if (localbhlv != null) {
+          break;
+        }
+        i += 1;
+      }
+    }
+    label169:
+    return null;
+  }
+  
+  bhlv a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt)))) {
+      return (bhlv)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    }
+    return null;
+  }
+  
+  void a(int paramInt, Boolean paramBoolean)
+  {
+    bhlv localbhlv2 = a(paramInt);
+    bhlv localbhlv1 = localbhlv2;
+    if (localbhlv2 == null) {
+      localbhlv1 = new bhlv();
+    }
+    localbhlv1.a(paramBoolean.booleanValue());
+    a(paramInt, localbhlv1);
+  }
+  
+  void a(int paramInt, String paramString)
+  {
+    bhlv localbhlv2 = a(paramInt);
+    bhlv localbhlv1 = localbhlv2;
+    if (localbhlv2 == null) {
+      localbhlv1 = new bhlv();
+    }
+    localbhlv1.a(paramString);
+    a(paramInt, localbhlv1);
+  }
+  
+  public void a(Context paramContext)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    long l = System.currentTimeMillis();
+    try
+    {
+      a();
+      b(paramContext);
+      c(paramContext);
+      ai localai = a();
+      j = 2;
+      int[] arrayOfInt2 = null;
+      int[] arrayOfInt1 = null;
+      i = j;
+      if (localai != null) {
+        arrayOfInt1 = arrayOfInt2;
+      }
+      try
+      {
+        arrayOfInt2 = localai.a();
+        i = j;
+        arrayOfInt1 = arrayOfInt2;
+        if (arrayOfInt2 != null)
+        {
+          arrayOfInt1 = arrayOfInt2;
+          i = arrayOfInt2.length;
+          arrayOfInt1 = arrayOfInt2;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          QZLog.e("UniKingCardHelper/SimManager", "getActiveSubIdList error:" + localThrowable.getMessage());
+          i = j;
+        }
+      }
+      this.jdField_a_of_type_Bhlx.jdField_a_of_type_Int = i;
+      if ((i > 1) && (a(paramContext) != 11))
+      {
+        this.jdField_a_of_type_Bhlx.jdField_a_of_type_Boolean = true;
+        a(paramContext, arrayOfInt1);
+        b(paramContext, arrayOfInt1);
+        if (a(localai) != 0) {
+          c(paramContext, arrayOfInt1);
+        }
+      }
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      int j;
+      int i;
+      QZLog.e("UniKingCardHelper/SimManager", "initAllInfo error:" + paramContext.getMessage());
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_Bhlx.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
     }
   }
   
-  public int b()
+  abstract int b(Context paramContext, int[] paramArrayOfInt);
+  
+  void b(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText download, state is: " + this.jdField_d_of_type_Int);
+    bhlv localbhlv2 = a(paramInt);
+    bhlv localbhlv1 = localbhlv2;
+    if (localbhlv2 == null) {
+      localbhlv1 = new bhlv();
     }
-    if ((this.jdField_d_of_type_Int == 1) || (this.jdField_d_of_type_Int == 3)) {
-      return this.jdField_d_of_type_Int;
-    }
-    if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean == null) {
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean == null)
-    {
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.c();
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QComboDText", 2, "CaptureComboText download, bean is null.");
-      }
-      this.jdField_d_of_type_Int = 2;
-      return 2;
-    }
-    a();
-    if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QComboDText", 2, "startDownload dynamicText is usable.");
-      }
-      b();
-      this.jdField_d_of_type_Int = 3;
-      return 2;
-    }
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean, this.jdField_a_of_type_Bhmd);
-    this.jdField_d_of_type_Int = 1;
-    return 1;
+    localbhlv1.b(paramString);
+    a(paramInt, localbhlv1);
   }
   
-  public String toString()
-  {
-    return "Text@" + Arrays.toString(this.jdField_a_of_type_JavaUtilList.toArray()) + "@" + hashCode();
-  }
+  abstract int c(Context paramContext, int[] paramArrayOfInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhlw
  * JD-Core Version:    0.7.0.1
  */

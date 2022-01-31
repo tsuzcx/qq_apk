@@ -1,11 +1,6 @@
-import android.os.Environment;
-import java.io.File;
-
-public final class rvp
+public abstract interface rvp<T>
 {
-  public static final String a = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_PICTURES + File.separator + "Screenshots" + File.separator;
-  public static final String b = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_DCIM + File.separator + "Screenshots" + File.separator;
-  public static final String c = Environment.getExternalStorageDirectory() + File.separator + ajjy.a(2131647795) + File.separator;
+  public abstract void a(rvo<T> paramrvo);
 }
 
 

@@ -1,19 +1,22 @@
-class nxl
-  extends nyf
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+
+public class nxl
+  implements TopGestureLayout.OnGestureListener
 {
-  nxl(nxd paramnxd)
+  public nxl(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
+  
+  public void flingLToR()
   {
-    super(paramnxd, null);
+    ReadInJoyVideoSubChannelActivity.a(this.a, true);
+    this.a.finish();
   }
   
-  void a(nyi paramnyi)
-  {
-    paramnyi.onCommentStateError(1001);
-  }
+  public void flingRToL() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nxl
  * JD-Core Version:    0.7.0.1
  */

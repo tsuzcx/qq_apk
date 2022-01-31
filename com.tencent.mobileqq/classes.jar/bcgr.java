@@ -1,39 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager.17;
-
 public class bcgr
-  implements DialogInterface.OnClickListener
 {
-  public bcgr(DownloadManager.17 param17) {}
+  public int a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String toString()
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      label6:
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bcgl.b);
-      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bcgl.j);
-      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bcgl.f);
-      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bcgl.i);
-      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bcgl.l);
-      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bcgl.y, true);
-      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
-      this.a.this$0.a(10, paramDialogInterface);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      break label6;
-    }
+    return "url=" + this.jdField_a_of_type_JavaLangString + " ,method=" + this.b + " ,jsonHeader=" + this.c + " ,body=" + this.d + " ," + this.e + " ,rspBase64=" + this.jdField_a_of_type_Boolean + " ,timeout=" + this.jdField_a_of_type_Int + " ,userInfo=" + this.jdField_a_of_type_JavaLangObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcgr
  * JD-Core Version:    0.7.0.1
  */

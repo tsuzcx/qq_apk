@@ -1,13 +1,56 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class nrv
-  implements ViewBase.IBuilder
+  extends ampb<nrt>
 {
-  public ViewBase build(VafContext paramVafContext)
+  public static nrt a()
   {
-    return new nru(paramVafContext);
+    return (nrt)ampm.a().a(593);
+  }
+  
+  public int a()
+  {
+    return 593;
+  }
+  
+  public Class<nrt> a()
+  {
+    return nrt.class;
+  }
+  
+  @NonNull
+  public nrt a(int paramInt)
+  {
+    return new nrt();
+  }
+  
+  @Nullable
+  public nrt a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi == null) || (paramArrayOfampi.length == 0)) {
+      return new nrt();
+    }
+    return nrt.a(paramArrayOfampi[0].a);
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(nrt paramnrt) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

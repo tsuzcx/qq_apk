@@ -1,52 +1,37 @@
-public class auya
-  extends auxr
+import QC.UniBusiSimpleItemDetail;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+
+class auya
+  implements View.OnClickListener
 {
-  public android.opengl.EGLContext a;
-  public javax.microedition.khronos.egl.EGLContext a;
-  public int c;
+  auya(auxz paramauxz, UniBusiSimpleItemDetail paramUniBusiSimpleItemDetail) {}
   
-  public auya(auxr paramauxr)
+  public void onClick(View paramView)
   {
-    super(paramauxr.jdField_a_of_type_JavaLangString, paramauxr.jdField_a_of_type_Int, paramauxr.jdField_b_of_type_Boolean, paramauxr.jdField_a_of_type_Boolean, paramauxr.jdField_a_of_type_Long, paramauxr.jdField_b_of_type_Long);
-  }
-  
-  public auya(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, long paramLong2)
-  {
-    super(paramString, paramInt, paramBoolean1, paramBoolean2, paramLong1, paramLong2);
-  }
-  
-  public boolean a(auxr paramauxr)
-  {
-    boolean bool = super.a(paramauxr);
-    if ((paramauxr instanceof auya))
+    if ((auxz.a(this.jdField_a_of_type_Auxz) == 5) && (auxz.a(this.jdField_a_of_type_Auxz) != null) && (!((StickyNotePublishFragment)auxz.a(this.jdField_a_of_type_Auxz)).a()))
     {
-      paramauxr = (auya)paramauxr;
-      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != paramauxr.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)
-      {
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramauxr.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-        bool = true;
-      }
-      if (this.jdField_a_of_type_AndroidOpenglEGLContext != paramauxr.jdField_a_of_type_AndroidOpenglEGLContext)
-      {
-        this.jdField_a_of_type_AndroidOpenglEGLContext = paramauxr.jdField_a_of_type_AndroidOpenglEGLContext;
-        bool = true;
-      }
-      if (this.c != paramauxr.c)
-      {
-        this.c = paramauxr.c;
-        return true;
-      }
+      bcpw.a(auxz.a(this.jdField_a_of_type_Auxz), ajyc.a(2131715130), 0).a();
+      return;
     }
-    else
+    auxz.a(this.jdField_a_of_type_Auxz, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId);
+    if (9 == auxz.a(this.jdField_a_of_type_Auxz)) {}
+    for (paramView = "1";; paramView = "2")
     {
-      throw new IllegalArgumentException("should be FlowDecodeConfig's instance");
+      VasWebviewUtil.reportCommercialDrainage("friend_wall", "item_click", "", 0, "", paramView);
+      this.jdField_a_of_type_Auxz.notifyDataSetChanged();
+      auxz.a(this.jdField_a_of_type_Auxz, this.jdField_a_of_type_QCUniBusiSimpleItemDetail);
+      auxz.a(this.jdField_a_of_type_Auxz, true);
+      this.jdField_a_of_type_Auxz.a(auxz.a(this.jdField_a_of_type_Auxz), this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.feeType, this.jdField_a_of_type_Auxz.a);
+      return;
     }
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auya
  * JD-Core Version:    0.7.0.1
  */

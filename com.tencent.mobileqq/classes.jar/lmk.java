@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.LBSInfo;
+import android.os.SystemClock;
 
-public final class lmk
-  implements Parcelable.Creator<LBSInfo>
+public class lmk
 {
-  public LBSInfo a(Parcel paramParcel)
-  {
-    return new LBSInfo(paramParcel);
-  }
+  public float a;
+  public long a;
   
-  public LBSInfo[] a(int paramInt)
+  public lmk(lmj paramlmj, float paramFloat)
   {
-    return new LBSInfo[paramInt];
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
   }
 }
 

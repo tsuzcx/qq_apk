@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agcx;
+import agov;
 
 class PhotoPreviewActivity$8$2$1
   implements Runnable

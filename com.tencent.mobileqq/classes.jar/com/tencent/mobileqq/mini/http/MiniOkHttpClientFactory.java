@@ -5,7 +5,7 @@ import com.squareup.okhttp.ConnectionPool;
 import com.squareup.okhttp.Dispatcher;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Protocol;
-import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
+import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
 import java.io.File;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
@@ -71,7 +71,7 @@ public class MiniOkHttpClientFactory
     requestClient = createClientWithTimeout(paramLong1);
     uploadClient = createClientWithTimeout(paramLong2);
     downloadClient = createClientWithTimeout(paramLong3);
-    Cache localCache = new Cache(new File(MiniAppFileManager.getInstance().getRootFileDir(), "http_cache"), 10485760L);
+    Cache localCache = new Cache(new File(MiniAppGlobal.getMiniCacheFilePath(), "http_cache"), 10485760L);
     downloadClientWithCache = downloadClient.clone();
     downloadClientWithCache.setCache(localCache);
   }

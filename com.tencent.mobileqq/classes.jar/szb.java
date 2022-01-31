@@ -1,49 +1,30 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.LikeEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedLike;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.Map;
 
 public class szb
-  extends slu
+  extends SimpleJob<Void>
 {
-  public List<szc> a;
-  
-  public szb(ErrorMessage paramErrorMessage)
+  public szb(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, Bundle paramBundle, byte[] paramArrayOfByte)
   {
-    super(paramErrorMessage.errorCode, paramErrorMessage.errorMsg);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    super(paramString);
   }
   
-  public szb(qqstory_service.RspBatchFeedLike paramRspBatchFeedLike)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    super(paramRspBatchFeedLike.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramRspBatchFeedLike = paramRspBatchFeedLike.feed_like_info_list.get().iterator();
-    while (paramRspBatchFeedLike.hasNext())
+    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("storySeq");
+    paramJobContext = (syv)QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).remove(Integer.valueOf(i));
+    if (paramJobContext == null)
     {
-      Object localObject = (qqstory_struct.FeedLikeInfo)paramRspBatchFeedLike.next();
-      szc localszc = new szc();
-      localszc.jdField_a_of_type_JavaLangString = ((qqstory_struct.FeedLikeInfo)localObject).feed_id.get().toStringUtf8();
-      localszc.b = ((qqstory_struct.FeedLikeInfo)localObject).has_like.get();
-      localszc.jdField_a_of_type_Int = ((qqstory_struct.FeedLikeInfo)localObject).like_total_count.get();
-      localszc.jdField_a_of_type_JavaUtilList = new ArrayList();
-      localObject = ((qqstory_struct.FeedLikeInfo)localObject).like_list.get().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)((Iterator)localObject).next());
-        localLikeEntry.feedId = localszc.jdField_a_of_type_JavaLangString;
-        localszc.jdField_a_of_type_JavaUtilList.add(localLikeEntry);
-      }
-      this.jdField_a_of_type_JavaUtilList.add(localszc);
+      veg.d("Q.qqstory.net:QQStoryCmdHandler", "can't find request");
+      return null;
     }
+    QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler, paramJobContext, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_AndroidOsBundle);
+    return null;
   }
 }
 

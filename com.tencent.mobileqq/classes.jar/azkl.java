@@ -1,38 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.troop.utils.TroopNameHelper.GenTroopNameTask;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
-public class azkl
-  implements Comparable<azkl>
+class azkl
+  implements View.OnClickListener
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  azkl(azkk paramazkk) {}
   
-  public azkl(TroopNameHelper.GenTroopNameTask paramGenTroopNameTask) {}
-  
-  public int a(@NonNull azkl paramazkl)
+  public void onClick(View paramView)
   {
-    int i = -1;
-    if ((this.f != null) && (paramazkl.f != null)) {
-      i = this.f.compareTo(paramazkl.f);
-    }
-    do
-    {
-      do
-      {
-        return i;
-        if (this.f != null) {
-          break;
-        }
-      } while (paramazkl.f == null);
-      return 1;
-    } while (paramazkl.f == null);
-    return 0;
+    GroupManagerActivity.a((Activity)azkk.a(this.a));
   }
 }
 

@@ -1,15 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.av.random.RandomWebProtocol;
+import org.json.JSONObject;
 
 public class lti
-  implements DialogInterface.OnDismissListener
+  extends ltg
 {
-  public lti(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
+  boolean jdField_b_of_type_Boolean;
+  int c;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public lti(RandomWebProtocol paramRandomWebProtocol, ltg paramltg, String paramString, boolean paramBoolean, int paramInt)
   {
-    this.a.b();
+    super(paramRandomWebProtocol, paramltg);
+    this.a = 2;
+    this.c = paramString;
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.c = paramInt;
+    this.d = "[m] RequestMulti";
+  }
+  
+  String a()
+  {
+    this.a = null;
+    try
+    {
+      this.a = new JSONObject().put("session_type", this.c);
+      return super.a();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
   }
 }
 

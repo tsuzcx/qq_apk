@@ -1,34 +1,26 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class njt
-  implements begw
+class njt
+  extends Handler
 {
-  public njt(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  njt(njs paramnjs, Looper paramLooper)
   {
-    if (this.a.a) {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.jdField_a_of_type_Boolean) {
       return;
     }
-    this.a.a = true;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.b.dismiss();
-      return;
-      this.a.j();
-      this.a.finish();
-      continue;
-      this.a.k();
-    }
+    this.a.a(this.a.jdField_a_of_type_Int, this.a.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     njt
  * JD-Core Version:    0.7.0.1
  */

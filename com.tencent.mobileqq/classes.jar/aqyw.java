@@ -1,57 +1,48 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.util.SparseArray;
+import com.tencent.mobileqq.hotpic.HotPicTagInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aqyw
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public aqyw(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  private SparseArray<HotPicTagInfo> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private ArrayList<HotPicTagInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public String a()
+  public HotPicTagInfo a(int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return (HotPicTagInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
   }
   
-  public boolean a(int paramInt, String paramString)
+  public List<HotPicTagInfo> a()
   {
-    return (this.jdField_a_of_type_Int == paramInt) && (this.jdField_a_of_type_JavaLangString.equals(paramString));
+    return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
-  public boolean equals(@Nullable Object paramObject)
+  public void a()
   {
-    if (!(paramObject instanceof aqyw)) {}
-    do
-    {
-      return false;
-      paramObject = (aqyw)paramObject;
-    } while ((this.jdField_a_of_type_Int != paramObject.a()) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.a())));
-    return true;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
   }
   
-  public int hashCode()
+  public void a(HotPicTagInfo paramHotPicTagInfo)
   {
-    return this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.hashCode();
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramHotPicTagInfo);
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramHotPicTagInfo.tagId, paramHotPicTagInfo);
   }
   
-  @NonNull
-  public String toString()
+  public HotPicTagInfo b(int paramInt)
   {
-    return "RoomKey{mHashCode='" + hashCode() + ", mSessionType=" + this.jdField_a_of_type_Int + ", mSessionUin=" + this.jdField_a_of_type_JavaLangString + '}';
+    return (HotPicTagInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     aqyw
  * JD-Core Version:    0.7.0.1
  */

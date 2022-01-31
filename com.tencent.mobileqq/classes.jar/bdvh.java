@@ -1,23 +1,31 @@
-import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
 
-public class bdvh
-  implements bdvg
+class bdvh
+  implements bfoq
 {
-  public bdvh(PageWebviewContainer paramPageWebviewContainer) {}
+  bdvh(bdvg parambdvg, Intent paramIntent, bfol parambfol) {}
   
-  public void a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    NativeViewContainer localNativeViewContainer = PageWebviewContainer.a(this.a);
-    if (PageWebviewContainer.a(this.a)) {
-      paramInt = 0;
+    switch (paramInt)
+    {
     }
-    localNativeViewContainer.scrollTo(0, paramInt);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      paramView = this.jdField_a_of_type_AndroidContentIntent.getExtras();
+      if ((paramView.containsKey("request_type")) && (paramView.containsKey("uin")) && (paramView.containsKey("sigt")) && (paramView.containsKey("nickname"))) {
+        bdvf.a(this.jdField_a_of_type_Bdvg.a, paramView);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bdvh
  * JD-Core Version:    0.7.0.1
  */

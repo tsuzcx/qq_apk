@@ -1,28 +1,23 @@
+import android.content.Context;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-import com.tencent.widget.AdapterView;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class okd
-  implements behi
+class okd
+  implements View.OnClickListener
 {
-  public okd(ReadInJoySelectPositionFragment paramReadInJoySelectPositionFragment) {}
+  okd(okc paramokc, oii paramoii, Context paramContext) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (paramInt <= 0) {}
-    do
-    {
-      return;
-      paramAdapterView = (orn)ReadInJoySelectPositionFragment.a(this.a).get(paramInt - 1);
-    } while (paramAdapterView.a != 2);
-    this.a.a(new SelectPositionModule.PositionData(paramAdapterView.d, paramAdapterView.c, paramAdapterView.b, paramAdapterView.e));
+    QLog.d(okc.a(this.jdField_a_of_type_Okc), 1, "getBottomGuideView : " + okc.b(this.jdField_a_of_type_Okc));
+    okc.a(this.jdField_a_of_type_Okc, "0X8009FEA", this.jdField_a_of_type_Oii.a);
+    onk.a(this.jdField_a_of_type_AndroidContentContext, okc.b(this.jdField_a_of_type_Okc));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     okd
  * JD-Core Version:    0.7.0.1
  */

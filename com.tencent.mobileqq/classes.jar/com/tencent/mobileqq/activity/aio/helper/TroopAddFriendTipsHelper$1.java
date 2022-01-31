@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import acym;
-import ajtg;
+import adjn;
+import akhq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 
 public class TroopAddFriendTipsHelper$1
   implements Runnable
 {
-  public TroopAddFriendTipsHelper$1(acym paramacym, String paramString) {}
+  public TroopAddFriendTipsHelper$1(adjn paramadjn, String paramString) {}
   
   public void run()
   {
-    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((ajtg)acym.a(this.this$0).a(20)).a();
+    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((akhq)adjn.a(this.this$0).a(20)).a();
     localTroopBatchAddFriendMgr.c(this.a);
     localTroopBatchAddFriendMgr.a(this.a, null, 1);
     localTroopBatchAddFriendMgr.f(this.a);

@@ -13,12 +13,13 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-import aqfz;
-import aqga;
-import aqgc;
-import belr;
+import arab;
+import arac;
+import arae;
+import bftl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
@@ -42,8 +43,8 @@ public class HotPicTab
   int jdField_a_of_type_Int = -1;
   private Context jdField_a_of_type_AndroidContentContext;
   public final Paint a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new aqfz(this);
-  aqga jdField_a_of_type_Aqga;
+  private Handler jdField_a_of_type_AndroidOsHandler = new arab(this);
+  arac jdField_a_of_type_Arac;
   private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
   private int jdField_b_of_type_Int = -1;
@@ -58,8 +59,8 @@ public class HotPicTab
     f = (int)(4.0F * localResources.getDisplayMetrics().density + 0.5F);
     g = 14;
     jdField_b_of_type_Float = localResources.getDisplayMetrics().density;
-    h = localResources.getColor(2131101268);
-    i = localResources.getColor(2131101260);
+    h = localResources.getColor(2131166862);
+    i = localResources.getColor(2131166854);
   }
   
   public HotPicTab(Context paramContext, AttributeSet paramAttributeSet)
@@ -92,9 +93,9 @@ public class HotPicTab
   
   public HotPicTagInfo a()
   {
-    if (this.jdField_a_of_type_Aqga != null)
+    if (this.jdField_a_of_type_Arac != null)
     {
-      Object localObject = this.jdField_a_of_type_Aqga.a;
+      Object localObject = this.jdField_a_of_type_Arac.a;
       if (((List)localObject).size() > this.mCurrentlySelectedAdapterIndex)
       {
         localObject = (HotPicTagInfo)((List)localObject).get(this.mCurrentlySelectedAdapterIndex);
@@ -111,23 +112,29 @@ public class HotPicTab
     setAdapter(null);
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     setOnItemClickListener(null);
-    this.jdField_a_of_type_Aqga = null;
+    this.jdField_a_of_type_Arac = null;
     this.jdField_a_of_type_JavaUtilSet.clear();
   }
   
   public void a(List<HotPicTagInfo> paramList, int paramInt)
   {
     boolean bool1 = false;
-    paramList = new ArrayList(paramList);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(g * jdField_b_of_type_Float + 0.5F);
-    Iterator localIterator = paramList.iterator();
+    if (ThemeUtil.isNowThemeIsNight(null, false, null)) {}
+    Iterator localIterator;
     HotPicTagInfo localHotPicTagInfo;
-    int k;
-    for (int j = 0; localIterator.hasNext(); j = k + j)
+    for (int j = 2131165288;; j = 2131167148)
     {
-      localHotPicTagInfo = (HotPicTagInfo)localIterator.next();
-      k = (int)((int)(this.jdField_b_of_type_AndroidGraphicsPaint.measureText(localHotPicTagInfo.tagName) + 0.5F) + jdField_b_of_type_Float * 26.0F);
-      this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(k));
+      setBackgroundResource(j);
+      paramList = new ArrayList(paramList);
+      this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(g * jdField_b_of_type_Float + 0.5F);
+      localIterator = paramList.iterator();
+      int k;
+      for (j = 0; localIterator.hasNext(); j = k + j)
+      {
+        localHotPicTagInfo = (HotPicTagInfo)localIterator.next();
+        k = (int)((int)(this.jdField_b_of_type_AndroidGraphicsPaint.measureText(localHotPicTagInfo.tagName) + 0.5F) + jdField_b_of_type_Float * 26.0F);
+        this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(k));
+      }
     }
     if (j < d)
     {
@@ -146,9 +153,9 @@ public class HotPicTab
         this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
       }
     }
-    this.jdField_a_of_type_Aqga = new aqga(this, paramList, this.jdField_a_of_type_JavaUtilArrayList, bool1);
+    this.jdField_a_of_type_Arac = new arac(this, paramList, this.jdField_a_of_type_JavaUtilArrayList, bool1);
     this.jdField_a_of_type_Int = paramInt;
-    setAdapter(this.jdField_a_of_type_Aqga);
+    setAdapter(this.jdField_a_of_type_Arac);
   }
   
   public void dispatchDraw(Canvas paramCanvas)
@@ -172,7 +179,7 @@ public class HotPicTab
         localView = getSelectedView();
         if ((localView != null) && (localView.getTag() != null))
         {
-          localObject = ((aqgc)localView.getTag()).a;
+          localObject = ((arae)localView.getTag()).a;
           n = (int)(localView.getLeft() + ((TextView)localObject).getLeft() - jdField_b_of_type_Float * 5.0F);
           m = localView.getLeft();
           m = (int)(((TextView)localObject).getRight() + m + jdField_b_of_type_Float * 5.0F);
@@ -198,10 +205,10 @@ public class HotPicTab
         if ((localView == null) || (localView.getTag() == null)) {
           break label314;
         }
-        localObject = (aqgc)localView.getTag();
-        k = (int)(localView.getLeft() + ((aqgc)localObject).a.getLeft() - jdField_b_of_type_Float * 5.0F);
+        localObject = (arae)localView.getTag();
+        k = (int)(localView.getLeft() + ((arae)localObject).a.getLeft() - jdField_b_of_type_Float * 5.0F);
         j = localView.getLeft();
-        j = (int)(((aqgc)localObject).a.getRight() + j + jdField_b_of_type_Float * 5.0F);
+        j = (int)(((arae)localObject).a.getRight() + j + jdField_b_of_type_Float * 5.0F);
         break;
         n = 0;
         break label121;
@@ -213,7 +220,7 @@ public class HotPicTab
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (AppSetting.c) {
+    if (AppSetting.d) {
       return true;
     }
     return super.onKeyDown(paramInt, paramKeyEvent);

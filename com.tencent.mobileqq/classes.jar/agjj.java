@@ -1,72 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimTipsInfo;
 
 public class agjj
+  implements bgsn
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  @Deprecated
-  public boolean c;
-  public String d;
-  public String e;
-  public String f;
+  public agjj(ContactListView paramContactListView) {}
   
-  public agjj() {}
-  
-  public agjj(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
+  public void a(QQPimTipsInfo paramQQPimTipsInfo)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_Long = paramLong;
-    this.d = paramString4;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_c_of_type_Boolean = paramBoolean3;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public agjj(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, String paramString5)
-  {
-    this(paramString1, paramString2, paramString3, paramLong, paramString4, paramBoolean1, paramBoolean2, paramBoolean3, paramInt);
-    this.e = paramString5;
-  }
-  
-  public agjj(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, String paramString5, String paramString6)
-  {
-    this(paramString1, paramString2, paramString3, paramLong, paramString4, paramBoolean1, paramBoolean2, paramBoolean3, paramInt, paramString5);
-    this.f = paramString6;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Long < NetConnInfoCenter.getServerTime();
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject instanceof agjj))
-    {
-      paramObject = (agjj)paramObject;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break label24;
-      }
+    if (paramQQPimTipsInfo == null) {
+      return;
     }
-    label24:
-    while (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
-      return false;
-    }
-    return true;
+    QLog.i("ContactListView", 2, "getQQPimTips() callback ");
+    bgsu.b(this.a.getContext(), paramQQPimTipsInfo);
+    Message localMessage = new Message();
+    localMessage.what = 6;
+    localMessage.obj = paramQQPimTipsInfo;
+    this.a.a.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agjj
  * JD-Core Version:    0.7.0.1
  */

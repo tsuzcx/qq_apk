@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import akjr;
-import akpm;
+import akyd;
+import aldy;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -19,10 +19,10 @@ import java.util.ArrayList;
 public class ArCloudConfigInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArCloudConfigInfo> CREATOR = new akpm();
+  public static final Parcelable.Creator<ArCloudConfigInfo> CREATOR = new aldy();
   public static int f = 3;
   public int a;
-  public akjr a;
+  public akyd a;
   public ARRelationShip a;
   public ArAwardInfo a;
   public ArFeatureInfo a;

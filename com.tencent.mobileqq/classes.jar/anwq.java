@@ -1,36 +1,9 @@
-public abstract class anwq
+public class anwq
 {
-  public int a = 1;
-  public String e;
-  
-  public anwq(int paramInt, String paramString)
-  {
-    this.a = paramInt;
-    this.e = paramString;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject instanceof anwq))
-    {
-      paramObject = (anwq)paramObject;
-      if (this.e == null) {
-        if ((this.a != paramObject.a) || (paramObject.e != null)) {}
-      }
-      while ((this.a == paramObject.a) && (this.e.equals(paramObject.e)))
-      {
-        return true;
-        return false;
-      }
-      return false;
-    }
-    return false;
-  }
-  
-  public String toString()
-  {
-    return this.e;
-  }
+  int a = 0;
+  public String a;
+  public boolean a;
+  String b;
 }
 
 

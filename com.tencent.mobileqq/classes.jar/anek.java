@@ -1,58 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloBaseInfo;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.accounts.AccountManagerCallback;
+import android.accounts.AccountManagerFuture;
+import com.tencent.qphone.base.util.QLog;
 
 class anek
-  implements aiud
+  implements AccountManagerCallback<Boolean>
 {
-  anek(aned paramaned, int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, int paramInt2, boolean paramBoolean, String paramString2, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
+  anek(aneh paramaneh) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void run(AccountManagerFuture<Boolean> paramAccountManagerFuture)
   {
-    paramString = new Bundle();
-    int i;
-    if (paramBoolean) {
-      if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-      {
-        paramArrayOfInt = ((aifg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        if (paramArrayOfInt == null) {
-          break label235;
-        }
-        i = paramArrayOfInt.apolloVipFlag;
-        paramInt2 = paramArrayOfInt.apolloVipLevel;
-      }
-    }
-    for (;;)
-    {
-      paramString.putInt("apollo_apolloVipFlag", i);
-      paramString.putInt("apollo_apolloVipLevel", paramInt2);
-      paramString.putBoolean("apollo_is_svip", bajr.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-      paramString.putInt("apollo_result", 0);
-      paramString.putInt("apollo_partnerRoleId", paramInt1);
-      paramString.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
-      paramString.putInt("apollo_previewAction", this.jdField_b_of_type_Int);
-      paramString.putBoolean("apollo_previewOnFrame", this.jdField_a_of_type_Boolean);
-      paramString.putString("apollo_id", this.jdField_b_of_type_JavaLangString);
-      paramString.putString("title", this.c);
-      paramString.putString("subTitle", this.d);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      paramString.putInt("apollo_result", 1);
-      paramString.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      label235:
-      paramInt2 = 0;
-      i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Manager", 2, "removeSyncAccount | is done = " + paramAccountManagerFuture.isDone());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anek
  * JD-Core Version:    0.7.0.1
  */

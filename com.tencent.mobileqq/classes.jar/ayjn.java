@@ -1,90 +1,19 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ayjn
-  extends VasWebviewJsPlugin
+class ayjn
+  implements View.OnClickListener
 {
-  public static String a;
-  protected Context a;
-  protected AppInterface a;
+  ayjn(ayjf paramayjf) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = "TroopUpgradePlugin";
-  }
-  
-  public ayjn()
-  {
-    this.mPluginNameSpace = "Troop";
-  }
-  
-  public long getPluginBusiness()
-  {
-    return 2147614720L;
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
-    }
-    if ("Troop".equals(paramString2)) {}
-    try
-    {
-      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-      if (paramJsBridgeListener == null) {
-        return false;
-      }
-    }
-    catch (JSONException paramJsBridgeListener)
-    {
-      for (;;)
-      {
-        paramJsBridgeListener.printStackTrace();
-        paramJsBridgeListener = null;
-      }
-    }
-    catch (Exception paramJsBridgeListener)
-    {
-      int i;
-      do
-      {
-        for (;;)
-        {
-          paramJsBridgeListener.printStackTrace();
-          paramJsBridgeListener = null;
-        }
-        if (!"updateMaxMemberNum".equals(paramString3)) {
-          break;
-        }
-        paramString1 = paramJsBridgeListener.optString("groupId", "");
-        i = paramJsBridgeListener.optInt("type", 0);
-      } while ((TextUtils.isEmpty(paramString1)) || (i == 0));
-      paramJsBridgeListener = new Bundle();
-      paramJsBridgeListener.putString("groupId", paramString1);
-      paramJsBridgeListener.putInt("type", i);
-      sendRemoteReq(anah.a("notifyTroopUpgradeSuccess", "", this.mOnRemoteResp.key, paramJsBridgeListener), true, false);
-    }
-    return true;
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    this.jdField_a_of_type_AndroidContentContext = this.mRuntime.a();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mRuntime.a();
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayjn
  * JD-Core Version:    0.7.0.1
  */

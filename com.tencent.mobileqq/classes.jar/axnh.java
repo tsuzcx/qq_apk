@@ -1,105 +1,35 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
+import com.tencent.mobileqq.soload.LoadExtResult;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
 
-public class axnh
-  implements axni
+class axnh
+  implements axne
 {
-  aqqi jdField_a_of_type_Aqqi;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  axnh(axng paramaxng, axna paramaxna) {}
   
-  public axnh(QQAppInterface paramQQAppInterface)
+  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aqqi = ((aqqi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(338));
-  }
-  
-  public int a()
-  {
-    return 7;
-  }
-  
-  public bafb a()
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    return axms.b;
-  }
-  
-  public void a() {}
-  
-  public void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, @Nullable Map<String, axnf> paramMap, @Nullable Bundle paramBundle)
-  {
-    QLog.i("WatchTogetherManager", 1, "notifySessionChange  serviceType = " + paramInt1 + " from = " + paramInt3);
-  }
-  
-  public void a(Context paramContext, SessionInfo paramSessionInfo, int paramInt)
-  {
-    if (paramInt == 4) {
-      this.jdField_a_of_type_Aqqi.a();
-    }
-  }
-  
-  public void a(axnf paramaxnf, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject)
-  {
-    QLog.i("WatchTogetherManager", 1, "onPushMessageReceive");
-    this.jdField_a_of_type_Aqqi.a((WatchTogetherSession)paramaxnf, paramInt);
-  }
-  
-  public boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, Map<String, axnf> paramMap, @Nullable Bundle paramBundle)
-  {
-    if (paramInt2 == 0) {}
-    for (paramContext = "2";; paramContext = "")
+    synchronized (axng.a(this.jdField_a_of_type_Axng))
     {
-      QLog.i("WatchTogetherManager", 1, "start  groupuin = " + paramString + " miniapp_from = " + paramContext);
-      WatchTogetherSession localWatchTogetherSession = (WatchTogetherSession)paramMap.get("2_1_" + paramString);
-      paramMap = localWatchTogetherSession;
-      if (localWatchTogetherSession == null) {}
-      try
-      {
-        paramMap = (WatchTogetherSession)axng.a(2, 1, paramString);
-        this.jdField_a_of_type_Aqqi.a(paramContext, paramMap, paramBundle);
-        return false;
+      Object localObject2 = (List)axng.a(this.jdField_a_of_type_Axng).get(this.jdField_a_of_type_Axna);
+      axng.a(this.jdField_a_of_type_Axng).remove(this.jdField_a_of_type_Axna);
+      if (QLog.isColorLevel()) {
+        QLog.i("SoLoadWidget.SoLoadManager", 2, "load resCode=" + paramInt + ", loadExtResult=" + paramLoadExtResult + ",loadParam=" + this.jdField_a_of_type_Axna + ",ls=" + localObject2);
       }
-      catch (Throwable paramString)
+      if (localObject2 != null)
       {
-        for (;;)
+        ??? = ((List)localObject2).iterator();
+        while (((Iterator)???).hasNext())
         {
-          paramMap = localWatchTogetherSession;
+          localObject2 = (axne)((Iterator)???).next();
+          if (localObject2 != null) {
+            ((axne)localObject2).onLoadResult(paramInt, paramLoadExtResult);
+          }
         }
       }
     }
-  }
-  
-  public boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, Map<String, axnf> paramMap, @Nullable Bundle paramBundle)
-  {
-    return true;
-  }
-  
-  public boolean b(Context paramContext, String paramString, int paramInt1, int paramInt2, Map<String, axnf> paramMap, @Nullable Bundle paramBundle)
-  {
-    paramContext = (WatchTogetherSession)paramMap.get("2_1_" + paramString);
-    QLog.i("WatchTogetherManager", 1, "join  groupuin = " + paramString + " from = " + paramInt2);
-    if (paramInt2 == 2) {
-      this.jdField_a_of_type_Aqqi.a("4", paramContext, paramBundle);
-    }
-    while ((paramInt2 != 1) || (paramContext == null)) {
-      return false;
-    }
-    if ((!TextUtils.isEmpty(paramContext.a)) && (!paramContext.a.contains("fromid"))) {
-      paramContext.a = (paramContext.a + "&fromid=" + "10011");
-    }
-    this.jdField_a_of_type_Aqqi.a(paramContext, paramBundle);
-    return false;
   }
 }
 

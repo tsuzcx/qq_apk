@@ -1,46 +1,31 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.common.app.AppInterface;
-import java.lang.ref.WeakReference;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.biz.subscribe.comment.CommentView;
+import com.tencent.biz.subscribe.comment.ReplyContainer;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
-class wod
-  implements TextView.OnEditorActionListener
+public class wod
+  implements View.OnClickListener
 {
-  wod(wob paramwob, TroopGiftPanel paramTroopGiftPanel) {}
+  public wod(CommentView paramCommentView) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 6)
+    if ((CommentView.a(this.a) != null) && (CommentView.a(this.a).vecReply.size() > 0))
     {
-      this.jdField_a_of_type_Wob.c();
-      paramTextView = this.jdField_a_of_type_Wob.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
-      if (!TextUtils.isEmpty(paramTextView))
-      {
-        this.jdField_a_of_type_Wob.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(paramTextView);
-        this.jdField_a_of_type_Wob.b();
-        if (!mnf.a().a(this.jdField_a_of_type_Wob.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a())) {
-          break label194;
-        }
-      }
-      label194:
-      for (paramInt = 2;; paramInt = 1)
-      {
-        awqx.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_numok", paramInt, 0, this.jdField_a_of_type_Wob.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_Wob.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mje.a((AppInterface)this.jdField_a_of_type_Wob.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get(), ((AppInterface)this.jdField_a_of_type_Wob.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get()).getCurrentAccountUin(), this.jdField_a_of_type_Wob.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
-        return true;
-        this.jdField_a_of_type_Wob.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a("1");
-        break;
-      }
+      CommentView.a(this.a).a(paramView, 10, CommentView.a(this.a), CommentView.a(this.a));
+      this.a.jdField_a_of_type_Woe.b.setVisibility(8);
+      this.a.jdField_a_of_type_Woe.a.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentBizSubscribeCommentReplyContainer.setVisibility(0);
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wod
  * JD-Core Version:    0.7.0.1
  */

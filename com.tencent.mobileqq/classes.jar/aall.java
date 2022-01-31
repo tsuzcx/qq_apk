@@ -1,44 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
 
 public class aall
-  implements bgnt
+  extends Handler
 {
-  public aall(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aall(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  public void a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    int i = 0;
-    boolean bool;
-    Object localObject;
-    if (paramInt == 0)
+    switch (paramMessage.what)
     {
-      this.a.b = true;
-      bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim();
-      localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[5];
-      if (localObject != null) {
-        if (!bool) {
-          break label88;
-        }
-      }
-    }
-    label88:
-    for (paramInt = 0;; paramInt = 8)
-    {
-      ((View)localObject).setVisibility(paramInt);
-      localObject = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[6];
-      if (localObject != null)
-      {
-        paramInt = i;
-        if (bool) {
-          paramInt = 3;
-        }
-        ((FormSimpleItem)localObject).setBgType(paramInt);
-      }
+    default: 
       return;
     }
+    this.a.c();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131720648);
+    }
+    this.a.a(paramMessage, 1);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adsh;
-import ajex;
+import aedg;
+import ajsz;
 import android.app.Activity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.HashMap;
@@ -11,17 +11,17 @@ public final class TroopFileItemBuilder$1
 {
   public void run()
   {
-    adsh.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ayqd, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
+    aedg.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Azqt, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
     long l1 = 0L;
-    if (adsh.a.containsKey(this.jdField_a_of_type_JavaLangString)) {
-      l1 = ((Long)adsh.a.get(this.jdField_a_of_type_JavaLangString)).longValue();
+    if (aedg.a.containsKey(this.jdField_a_of_type_JavaLangString)) {
+      l1 = ((Long)aedg.a.get(this.jdField_a_of_type_JavaLangString)).longValue();
     }
     long l2 = System.currentTimeMillis();
     if (l2 - l1 > 10000L)
     {
-      ajex localajex = (ajex)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).runOnUiThread(new TroopFileItemBuilder.1.1(this, localajex));
-      adsh.a.put(this.jdField_a_of_type_JavaLangString, Long.valueOf(l2));
+      ajsz localajsz = (ajsz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).runOnUiThread(new TroopFileItemBuilder.1.1(this, localajsz));
+      aedg.a.put(this.jdField_a_of_type_JavaLangString, Long.valueOf(l2));
     }
   }
 }

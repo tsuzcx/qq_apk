@@ -1,14 +1,12 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aock
-  implements behy
+  implements DialogInterface.OnClickListener
 {
-  aock(aoch paramaoch, View paramView) {}
+  aock(aoci paramaoci) {}
   
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

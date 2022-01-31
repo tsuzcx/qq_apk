@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import advp;
+import aego;
 import android.widget.ImageView;
 
 class AIOGalleryAdapter$2

@@ -1,67 +1,66 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import com.tencent.mobileqq.tribe.TribeVideoPublishParams;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import java.lang.ref.WeakReference;
 
 public class vsd
-  extends ValueAnimator
 {
-  private ValueAnimator.AnimatorUpdateListener jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener;
-  private View jdField_a_of_type_AndroidViewView;
+  public final int a;
+  public final PublishVideoEntry a;
+  public final EditVideoParams.EditSource a;
+  public final EditVideoParams a;
+  public PublishParam a;
+  public TribeVideoPublishParams a;
+  public LpReportInfo_pf00064 a;
+  public String a;
+  public WeakReference<View> a;
+  public vsh a;
+  public vsj a;
+  public boolean a;
+  public int b = 1;
+  public String b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public boolean d;
   
-  private vsd(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  public vsd(EditVideoParams paramEditVideoParams)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    setObjectValues(new Object[] { new vsg(paramFloat1, paramFloat2, paramFloat3), new vsg(paramFloat4, paramFloat5, paramFloat6) });
-    setEvaluator(new vsh(null));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new vse(this, a(paramView));
-    addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
+    this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo_pf00064 = new LpReportInfo_pf00064();
+    this.jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams = new TribeVideoPublishParams();
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams = paramEditVideoParams;
+    this.jdField_a_of_type_Int = paramEditVideoParams.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource = paramEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoLabel = paramEditVideoParams.a("story_default_label");
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.putExtra("enable_flow_decode", Boolean.valueOf(avxp.b));
   }
   
-  private CircularRevealCompatLayout a(View paramView)
+  public View a()
   {
-    if ((paramView instanceof CircularRevealCompatLayout)) {
-      return (CircularRevealCompatLayout)paramView;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
-    if ((localViewGroup instanceof CircularRevealCompatLayout)) {
-      return (CircularRevealCompatLayout)localViewGroup;
-    }
-    CircularRevealCompatLayout localCircularRevealCompatLayout = new CircularRevealCompatLayout(paramView.getContext());
-    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    int i = localViewGroup.indexOfChild(paramView);
-    localViewGroup.removeView(paramView);
-    localCircularRevealCompatLayout.addView(paramView, new ViewGroup.LayoutParams(-1, -1));
-    localViewGroup.addView(localCircularRevealCompatLayout, i, localLayoutParams);
-    return localCircularRevealCompatLayout;
+    return null;
   }
   
-  public static vsd a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  public void a(View paramView)
   {
-    return new vsd(paramView, paramInt1, paramInt2, paramFloat1, paramInt1, paramInt2, paramFloat2);
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getParent();
-    if ((localObject instanceof CircularRevealCompatLayout))
+    if (paramView == null)
     {
-      localObject = (CircularRevealCompatLayout)localObject;
-      ((CircularRevealCompatLayout)localObject).removeView(this.jdField_a_of_type_AndroidViewView);
-      ViewGroup localViewGroup = (ViewGroup)((CircularRevealCompatLayout)localObject).getParent();
-      ViewGroup.LayoutParams localLayoutParams = ((CircularRevealCompatLayout)localObject).getLayoutParams();
-      int i = localViewGroup.indexOfChild((View)localObject);
-      localViewGroup.removeView((View)localObject);
-      localViewGroup.addView(this.jdField_a_of_type_AndroidViewView, i, localLayoutParams);
+      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      return;
     }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
   }
   
-  public void removeAllUpdateListeners()
+  public String toString()
   {
-    super.removeAllUpdateListeners();
-    addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
+    return "GenerateContext{, businessId='" + this.jdField_a_of_type_Int + '\'' + '}';
   }
 }
 

@@ -1,22 +1,22 @@
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aaoq
+public final class aaoq
   implements DialogInterface.OnClickListener
 {
-  public aaoq(DialogActivity paramDialogActivity) {}
+  public aaoq(aaqf paramaaqf, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, aaqe paramaaqe) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList conform to setting.");
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent("android.settings.IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS", Uri.parse("package:" + this.a.getPackageName()));
-    this.a.startActivity(paramDialogInterface);
-    this.a.finish();
+    this.jdField_a_of_type_Aaqf.d = false;
+    this.jdField_a_of_type_Aaqf.e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aaqe, this.jdField_a_of_type_Aaqf);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

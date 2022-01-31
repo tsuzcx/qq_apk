@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import atmo;
+import aukm;
 
 public class ReadInJoyEntityManagerFactory$VerifyEntity
-  extends atmo
+  extends aukm
 {
   public String flags = "readinjoy_message_node_verify_entity";
   public String name = "";

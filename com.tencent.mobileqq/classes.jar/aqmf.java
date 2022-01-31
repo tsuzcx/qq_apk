@@ -1,48 +1,37 @@
-import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqmf
+  implements aqme
 {
-  private static final String jdField_a_of_type_JavaLangString = "PTT|" + aqmf.class.getSimpleName();
-  aqmh jdField_a_of_type_Aqmh;
-  private aqmi jdField_a_of_type_Aqmi;
-  private aqmi b = new aqmg(this);
-  
-  public aqmf(Context paramContext, int paramInt)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_Aqmh = new aqmh(this, paramContext);
+    if (a()) {
+      QLog.d(paramString1, paramInt, paramString2);
+    }
   }
   
-  public int a()
+  public boolean a()
   {
-    this.jdField_a_of_type_Aqmh.a();
-    return 0;
+    return QLog.isColorLevel();
   }
   
-  public String a()
+  public void b(String paramString1, int paramInt, String paramString2)
   {
-    return ".m4a";
+    if (a()) {
+      QLog.i(paramString1, paramInt, paramString2);
+    }
   }
   
-  public void a(String paramString, aqmi paramaqmi)
+  public void c(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_Aqmi = paramaqmi;
-    this.jdField_a_of_type_Aqmh.a(paramString, this.b);
-  }
-  
-  public int b()
-  {
-    this.jdField_a_of_type_Aqmh.b();
-    return 0;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Aqmh.a();
+    if (a()) {
+      QLog.e(paramString1, paramInt, paramString2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqmf
  * JD-Core Version:    0.7.0.1
  */

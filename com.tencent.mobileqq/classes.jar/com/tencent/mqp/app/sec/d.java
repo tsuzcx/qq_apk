@@ -5,7 +5,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.provider.Settings.Secure;
 import android.text.TextUtils;
-import bdzl;
+import bfhb;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -72,7 +72,7 @@ public class d
     }
     for (;;)
     {
-      String str2 = bdzl.b(2);
+      String str2 = bfhb.b(2);
       if (str2 == null) {
         str2 = "";
       }
@@ -90,12 +90,12 @@ public class d
           if (localObject1 != null) {}
           for (localObject1 = ((QQAppInterface)localObject1).getCurrentAccountUin();; localObject1 = "")
           {
-            Object localObject3 = bdzl.b(1);
+            Object localObject3 = bfhb.b(1);
             Object localObject2 = localObject3;
             if (localObject3 == null) {
               localObject2 = "";
             }
-            Object localObject4 = bdzl.b(3);
+            Object localObject4 = bfhb.b(3);
             localObject3 = localObject4;
             if (localObject4 == null) {
               localObject3 = "";

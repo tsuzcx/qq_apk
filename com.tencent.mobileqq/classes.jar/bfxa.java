@@ -1,23 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastUrl;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
-public final class bfxa
-  implements Parcelable.Creator<BroadcastUrl>
+public class bfxa
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public BroadcastUrl a(Parcel paramParcel)
-  {
-    return new BroadcastUrl(paramParcel);
-  }
+  public bfxa(XPanelContainer paramXPanelContainer, int paramInt) {}
   
-  public BroadcastUrl[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new BroadcastUrl[paramInt];
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("XPanelContainer", 2, "colseAnim resetPosition");
+      }
+      XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, 0);
+      return;
+    }
+    XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.jdField_a_of_type_Int - i);
+    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfxa
  * JD-Core Version:    0.7.0.1
  */

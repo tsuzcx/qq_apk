@@ -1,19 +1,25 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.text.TextUtils;
 
-class bfve
-  implements FileFilter
+public class bfve
 {
-  bfve(bfva parambfva) {}
+  public float a;
+  public int a;
+  public String a;
+  public boolean a;
   
-  public boolean accept(File paramFile)
+  public bfve()
   {
-    return paramFile.getName().endsWith(".ftf");
+    this.jdField_a_of_type_Float = 1.0F;
+  }
+  
+  public boolean a(bfve parambfve)
+  {
+    return (parambfve != null) && (this.jdField_a_of_type_Int == parambfve.jdField_a_of_type_Int) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, parambfve.jdField_a_of_type_JavaLangString)) && (Math.abs(this.jdField_a_of_type_Float - parambfve.jdField_a_of_type_Float) < 0.001F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfve
  * JD-Core Version:    0.7.0.1
  */

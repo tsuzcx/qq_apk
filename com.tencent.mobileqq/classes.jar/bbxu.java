@@ -1,51 +1,93 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.OpenCardContainer;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.util.Locale;
+import mqq.observer.AccountObserver;
 
-public class bbxu
-  extends Handler
+class bbxu
+  extends AccountObserver
 {
-  public bbxu(OpenCardContainer paramOpenCardContainer, Looper paramLooper)
+  final Intent jdField_a_of_type_AndroidContentIntent;
+  final bbxw jdField_a_of_type_Bbxw;
+  final String jdField_a_of_type_JavaLangString;
+  
+  bbxu(Intent paramIntent, String paramString, bbxw parambbxw)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bbxw = parambbxw;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onRegisterCommitPassRespWithLhSig(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    switch (paramMessage.what)
-    {
-    }
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentIntent);
+    if (paramArrayOfByte2 != null) {}
     for (;;)
     {
-      super.handleMessage(paramMessage);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("OpenCardContainer", 2, "-->handleMessage MSG_UPDATE");
-      }
-      OpenCardContainer.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      continue;
-      if ((paramMessage.obj instanceof String))
+      try
       {
-        Object localObject = (String)paramMessage.obj;
-        localObject = this.a.a((String)localObject);
-        if ((localObject != null) && (((URLDrawable)localObject).getStatus() == 1))
-        {
-          this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)localObject);
-          Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 10001).sendToTarget();
+        paramArrayOfByte2 = new String(paramArrayOfByte2, "utf-8");
+        if (QLog.isDevelopLevel()) {
+          QLog.i("LHLoginMng", 4, String.format(Locale.getDefault(), "onRegisterCommitPassRespWithLhSig isSuccess: %s, code: %s, uin: %s, error: %s, contactSig: %s, lhsig: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString, paramArrayOfByte2, MD5.toMD5(paramArrayOfByte1), MD5.toMD5(paramArrayOfByte3) }));
         }
+        if (paramInt != 0) {
+          break label311;
+        }
+        paramBoolean = true;
+        if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString))) {
+          break label283;
+        }
+        paramBoolean = false;
+        if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length != 0)) {
+          break label298;
+        }
+        paramBoolean = false;
+        if (!TextUtils.isEmpty(paramArrayOfByte2)) {
+          break label316;
+        }
+        paramString = BaseApplicationImpl.getContext().getString(2131717132);
+        localIntent.putExtra("key_register_prompt_info", paramString);
+        if ((paramArrayOfByte3 != null) && (paramArrayOfByte3.length > 0)) {
+          localIntent.putExtra("key_register_lhsig", paramArrayOfByte3);
+        }
+        if (QLog.isDevelopLevel()) {
+          bbxx.a("LHLoginMng -- onRegisterCommitPassRespWithLhSig", localIntent);
+        }
+        if (this.jdField_a_of_type_Bbxw != null) {
+          this.jdField_a_of_type_Bbxw.a(localIntent, paramBoolean, this.jdField_a_of_type_JavaLangString, paramArrayOfByte3, paramString);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("LHLoginMng", 2, String.format(Locale.getDefault(), "onRegisterCommitPassRespWithLhSig, lhUin: %s, isSuc: %s, error: %s, code: %s", new Object[] { this.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) }));
+        }
+        return;
       }
+      catch (UnsupportedEncodingException paramArrayOfByte2)
+      {
+        paramArrayOfByte2.printStackTrace();
+      }
+      paramArrayOfByte2 = null;
+      continue;
+      label283:
+      localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
+      continue;
+      label298:
+      localIntent.putExtra("key_register_sign", paramArrayOfByte1);
+      continue;
+      label311:
+      paramBoolean = false;
+      continue;
+      label316:
+      paramString = paramArrayOfByte2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbxu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.gallery.presenter;
 
-import apue;
+import aqoe;
 import com.tencent.TMG.utils.QLog;
 
-class AIOGalleryBasePresenter$ImmersionTimerRunnable
+public class AIOGalleryBasePresenter$ImmersionTimerRunnable
   implements Runnable
 {
   AIOGalleryBasePresenter$ImmersionTimerRunnable(AIOGalleryBasePresenter paramAIOGalleryBasePresenter) {}
@@ -14,8 +14,8 @@ class AIOGalleryBasePresenter$ImmersionTimerRunnable
       QLog.d("AIOGalleryBasePresenter", 0, "ImmersionTimerRunnable run");
     }
     this.this$0.jdField_a_of_type_Boolean = true;
-    if (this.this$0.jdField_a_of_type_Apue != null) {
-      this.this$0.jdField_a_of_type_Apue.c(false);
+    if (this.this$0.jdField_a_of_type_Aqoe != null) {
+      this.this$0.jdField_a_of_type_Aqoe.c(false);
     }
   }
 }

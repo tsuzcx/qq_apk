@@ -1,78 +1,76 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.report.SpringHbReportManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import tencent.im.new_year_2014.Unisso.UniSsoServerRsp;
-import tencent.im.new_year_2020.newyear_report.NYReportRsp;
+import java.io.FileInputStream;
 
 public class agvq
-  implements BusinessObserver
+  extends agvp
 {
-  public agvq(SpringHbReportManager paramSpringHbReportManager, long paramLong) {}
+  private static final byte[] a;
+  private static final byte[] b;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("springHb_report_SpringHbReportManager", 2, "[reportlistener] onReceive:type:" + paramInt + ",isSucc:" + paramBoolean + ",reqSeq:" + this.jdField_a_of_type_Long);
-    }
+    jdField_a_of_type_ArrayOfByte = "WEBP".getBytes();
+    jdField_b_of_type_ArrayOfByte = "RIFF".getBytes();
+  }
+  
+  public agvq(String paramString)
+  {
+    super(paramString);
+    this.jdField_a_of_type_JavaLangString = "PhotoIncompatibleWebp";
+    this.jdField_b_of_type_JavaLangString = "reportGenerateWebp";
+  }
+  
+  static boolean a(String paramString)
+  {
+    byte[] arrayOfByte = new byte[16];
+    int i;
     for (;;)
     {
       try
       {
-        SpringHbReportManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalReportSpringHbReportManager, this.jdField_a_of_type_Long);
-        Object localObject = paramBundle.getByteArray("data");
-        if ((localObject == null) || (!paramBoolean)) {
-          break;
+        new FileInputStream(paramString).read(arrayOfByte);
+        if (arrayOfByte.length >= 12) {
+          break label98;
         }
-        paramBundle = new Unisso.UniSsoServerRsp();
-        paramBundle.mergeFrom((byte[])localObject);
-        long l = paramBundle.ret.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("springHb_report_SpringHbReportManager", 1, new Object[] { "[reportlistener] unissoRes=", Long.valueOf(l) });
-        }
-        localObject = new newyear_report.NYReportRsp();
-        ((newyear_report.NYReportRsp)localObject).mergeFrom(paramBundle.rspdata.get().toByteArray());
-        paramInt = ((newyear_report.NYReportRsp)localObject).ret.get();
-        if (paramInt == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("springHb_report_SpringHbReportManager", 2, "[reportlistener] onreceive success:" + localObject);
-          }
-          if (paramInt == 110002)
-          {
-            SpringHbReportManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalReportSpringHbReportManager, true);
-            SpringHbReportManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalReportSpringHbReportManager, this.jdField_a_of_type_Long, paramInt);
-            paramInt = ((newyear_report.NYReportRsp)localObject).batchSize.get();
-            SpringHbReportManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalReportSpringHbReportManager, paramInt);
-            paramInt = ((newyear_report.NYReportRsp)localObject).reportLevel.get();
-            SpringHbReportManager.c(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalReportSpringHbReportManager, paramInt);
-            paramInt = ((newyear_report.NYReportRsp)localObject).reportLevelTime.get();
-            SpringHbReportManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalReportSpringHbReportManager, paramInt);
-          }
-        }
-        else
-        {
-          QLog.e("springHb_report_SpringHbReportManager", 1, "[reportlistener] onreceive fail:" + localObject);
-          continue;
-        }
-        SpringHbReportManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalReportSpringHbReportManager, false);
+        return false;
       }
-      catch (Throwable paramBundle)
+      catch (Exception paramString)
       {
-        paramBundle.printStackTrace();
-        QLog.e("springHb_report_SpringHbReportManager", 1, "[reportlistener] onreceive fail exception:" + paramBundle.getMessage());
-        return;
+        paramString.printStackTrace();
       }
+      if (i >= jdField_b_of_type_ArrayOfByte.length) {
+        break label103;
+      }
+      if (jdField_b_of_type_ArrayOfByte[i] != arrayOfByte[i]) {
+        break;
+      }
+      i += 1;
+    }
+    for (;;)
+    {
+      if (i < 12)
+      {
+        int j = jdField_a_of_type_ArrayOfByte[(i - 8)];
+        int k = arrayOfByte[i];
+        if (j == k) {
+          i += 1;
+        }
+      }
+      else
+      {
+        return true;
+      }
+      return false;
+      label98:
+      i = 0;
+      break;
+      label103:
+      i = 8;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agvq
  * JD-Core Version:    0.7.0.1
  */

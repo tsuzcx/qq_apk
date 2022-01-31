@@ -1,106 +1,76 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.apollo.game.ApolloGameConfig.1;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
 
-public class aila
+final class aila
+  extends akuj
 {
-  static {}
-  
-  public static int a(String paramString)
+  aila(String paramString, boolean paramBoolean, NewIntent paramNewIntent, QQAppInterface paramQQAppInterface)
   {
-    int i = -1;
-    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
-    if (localSharedPreferences != null) {
-      i = localSharedPreferences.getInt(paramString, -1);
-    }
-    return i;
+    super(paramString, paramBoolean);
   }
   
-  public static int a(String paramString, QQAppInterface paramQQAppInterface)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    int j = -1;
-    if (paramQQAppInterface != null)
+    int j = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("weatherManager", 2, "startLocation onLocationFinish");
+    }
+    StringBuilder localStringBuilder;
+    boolean bool;
+    if (QLog.isColorLevel())
     {
-      paramQQAppInterface = (aifg)paramQQAppInterface.getManager(153);
-      int i;
-      if ("aio.city.game".equals(paramString))
+      localStringBuilder = new StringBuilder().append("errCode ：").append(paramInt).append(" info is null ---> ");
+      if (paramSosoLbsInfo != null) {
+        break label158;
+      }
+      bool = true;
+    }
+    for (;;)
+    {
+      QLog.d("weatherManager", 2, bool);
+      int i = j;
+      if (paramInt == 0)
       {
         i = j;
-        if (paramQQAppInterface != null)
+        if (paramSosoLbsInfo != null)
         {
-          if (!paramQQAppInterface.d) {
-            break label45;
-          }
-          i = ailb.d;
+          i = j;
+          if (paramSosoLbsInfo.a == null) {}
         }
       }
-      label45:
-      do
+      try
       {
-        do
+        i = Integer.parseInt(paramSosoLbsInfo.a.f);
+        if (QLog.isColorLevel()) {
+          QLog.d("weatherManager", 2, "LocalInfo" + i);
+        }
+        this.jdField_a_of_type_MqqAppNewIntent.putExtra("adcode", i);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(this.jdField_a_of_type_MqqAppNewIntent);
+        return;
+        label158:
+        bool = false;
+      }
+      catch (Throwable paramSosoLbsInfo)
+      {
+        for (;;)
         {
-          do
-          {
-            for (;;)
-            {
-              return i;
-              i = -1;
-            }
-            i = j;
-          } while (!"drawer.game".equals(paramString));
           i = j;
-        } while (paramQQAppInterface == null);
-        i = j;
-      } while (!paramQQAppInterface.e);
-      return ailb.b;
+          if (QLog.isColorLevel())
+          {
+            QLog.e("weatherManager", 2, paramSosoLbsInfo, new Object[0]);
+            i = j;
+          }
+        }
+      }
     }
-    QLog.e("ApolloGameConfig", 1, "app is null");
-    return -1;
-  }
-  
-  public static String a(String paramString)
-  {
-    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getString(paramString, "");
-    }
-    return "";
-  }
-  
-  public static void a()
-  {
-    ThreadManager.post(new ApolloGameConfig.1(), 8, null, true);
-  }
-  
-  public static boolean a(String paramString, int paramInt)
-  {
-    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
-    if (localSharedPreferences != null)
-    {
-      localSharedPreferences.edit().putInt(paramString, paramInt).apply();
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
-    if (localSharedPreferences != null)
-    {
-      localSharedPreferences.edit().putString(paramString1, paramString2).apply();
-      return true;
-    }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aila
  * JD-Core Version:    0.7.0.1
  */

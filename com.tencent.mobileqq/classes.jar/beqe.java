@@ -1,41 +1,33 @@
-import android.animation.Animator;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.ViewGroup;
 
-class beqe
-  extends beqk
+public abstract interface beqe
 {
-  beqe(beqc parambeqc, RecyclerView.ViewHolder paramViewHolder1, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt3, RecyclerView.ViewHolder paramViewHolder2)
-  {
-    super(parambeqc, paramViewHolder1, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
-  }
+  public abstract void onActivityResult(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    if (this.b) {}
-    for (;;)
-    {
-      return;
-      if (this.jdField_a_of_type_Int <= 0) {
-        this.jdField_a_of_type_Beqc.mCallback.clearView(this.jdField_a_of_type_Beqc.mRecyclerView, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-      }
-      while (this.jdField_a_of_type_Beqc.mOverdrawChild == this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView)
-      {
-        this.jdField_a_of_type_Beqc.removeChildDrawingOrderCallbackIfNecessary(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView);
-        return;
-        this.jdField_a_of_type_Beqc.mPendingCleanup.add(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView);
-        this.jdField_a_of_type_Boolean = true;
-        if (this.jdField_a_of_type_Int > 0) {
-          this.jdField_a_of_type_Beqc.postDispatchSwipe(this, this.jdField_a_of_type_Int);
-        }
-      }
-    }
-  }
+  public abstract boolean onBackPressed(Activity paramActivity);
+  
+  public abstract void onCreate(Activity paramActivity, Bundle paramBundle, ViewGroup paramViewGroup);
+  
+  public abstract void onDestroy(Activity paramActivity);
+  
+  public abstract void onNewIntent(Activity paramActivity, Intent paramIntent);
+  
+  public abstract void onPause(Activity paramActivity);
+  
+  public abstract void onRequestPermissionsResult(Activity paramActivity, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt);
+  
+  public abstract void onResume(Activity paramActivity);
+  
+  public abstract void onStart(Activity paramActivity);
+  
+  public abstract void onStop(Activity paramActivity);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beqe
  * JD-Core Version:    0.7.0.1
  */

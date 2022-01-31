@@ -18,10 +18,10 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import azvv;
-import qck;
-import qcl;
-import qcm;
+import bawz;
+import qoi;
+import qoj;
+import qok;
 
 public class VideoFeedsGuideView
   extends View
@@ -32,9 +32,9 @@ public class VideoFeedsGuideView
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private qck jdField_a_of_type_Qck;
-  private qcl jdField_a_of_type_Qcl;
-  private qcm jdField_a_of_type_Qcm;
+  private qoi jdField_a_of_type_Qoi;
+  private qoj jdField_a_of_type_Qoj;
+  private qok jdField_a_of_type_Qok;
   public int b;
   private int c;
   private int d;
@@ -77,20 +77,20 @@ public class VideoFeedsGuideView
   
   private void a()
   {
-    this.b = azvv.a(getContext(), 150.0F);
-    this.jdField_a_of_type_Int = azvv.a(getContext(), 180.0F);
-    this.c = azvv.a(getContext(), 8.0F);
-    this.e = azvv.a(getContext(), 70.0F);
-    this.g = azvv.a(getContext(), 70.0F);
+    this.b = bawz.a(getContext(), 150.0F);
+    this.jdField_a_of_type_Int = bawz.a(getContext(), 180.0F);
+    this.c = bawz.a(getContext(), 8.0F);
+    this.e = bawz.a(getContext(), 70.0F);
+    this.g = bawz.a(getContext(), 70.0F);
     this.d = this.e;
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130842454);
-    this.jdField_a_of_type_Qck = new qck(this, null);
-    this.jdField_a_of_type_Qcl = new qcl(this, null);
-    this.jdField_a_of_type_Qcm = new qcm(this, null);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130842528);
+    this.jdField_a_of_type_Qoi = new qoi(this, null);
+    this.jdField_a_of_type_Qoj = new qoj(this, null);
+    this.jdField_a_of_type_Qok = new qok(this, null);
   }
   
   private void a(Canvas paramCanvas)
@@ -110,7 +110,7 @@ public class VideoFeedsGuideView
     {
       invalidate();
       if (paramBoolean) {
-        this.jdField_a_of_type_Qck.sendEmptyMessageDelayed(0, 300L);
+        this.jdField_a_of_type_Qoi.sendEmptyMessageDelayed(0, 300L);
       }
       return;
       this.h = 0;
@@ -123,7 +123,7 @@ public class VideoFeedsGuideView
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this, "alpha", new float[] { 0.0F, 1.0F });
     localObjectAnimator.setDuration(200L);
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, this.d });
-    localValueAnimator.addUpdateListener(this.jdField_a_of_type_Qcm);
+    localValueAnimator.addUpdateListener(this.jdField_a_of_type_Qok);
     localValueAnimator.setDuration(500L);
     localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
     AnimatorSet localAnimatorSet = new AnimatorSet();
@@ -133,7 +133,7 @@ public class VideoFeedsGuideView
     localObjectAnimator.setStartDelay(400L);
     this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(localObjectAnimator).after(localAnimatorSet);
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(this.jdField_a_of_type_Qcl);
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(this.jdField_a_of_type_Qoj);
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
   }
   

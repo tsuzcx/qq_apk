@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
-import tnp;
-import tnq;
+import ual;
+import uam;
 
 public class StoryPlayerGlobalHolder$1
   implements Runnable
 {
-  public StoryPlayerGlobalHolder$1(tnp paramtnp) {}
+  public StoryPlayerGlobalHolder$1(ual paramual) {}
   
   public void run()
   {
-    tnp.a(this.this$0).a(this.this$0.a.c());
+    ual.a(this.this$0).a(this.this$0.a.c());
   }
 }
 

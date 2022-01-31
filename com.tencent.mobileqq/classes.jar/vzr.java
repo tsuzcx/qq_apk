@@ -1,20 +1,22 @@
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-
 public class vzr
-  implements Dispatcher.Dispatchable
 {
-  public int a;
-  public Object a;
+  bcpq a;
   
-  public vzr(int paramInt, Object... paramVarArgs)
+  vzr(bcpq parambcpq)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangObject = paramVarArgs;
+    this.a = parambcpq;
+  }
+  
+  public void a()
+  {
+    if ((this.a != null) && (this.a.isShowing())) {
+      this.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vzr
  * JD-Core Version:    0.7.0.1
  */

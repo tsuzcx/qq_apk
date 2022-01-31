@@ -1,33 +1,36 @@
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class acfy
-  extends ajrp
+  extends ajta
 {
-  public acfy(VisitorsActivity paramVisitorsActivity) {}
+  public acfy(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void a()
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VisitorsActivity", 2, "onVipStatusChanged: ");
-    }
-    if ((this.a.app != null) && (bajr.b(this.a.app)))
+    if (paramInt2 != 0)
     {
-      this.a.a(true);
-      this.a.b(true);
-      if (VisitorsActivity.b(this.a).compareAndSet(true, false))
+      paramString1 = paramString2;
+      if (!this.a.isFinishing())
       {
-        if (VisitorsActivity.a(this.a).get())
+        paramString1 = paramString2;
+        if (this.a.isResume())
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("VisitorsActivity", 2, "onVipStatusChanged: showDialog");
+          paramString1 = paramString2;
+          if (TextUtils.isEmpty(paramString2)) {
+            paramString1 = this.a.getResources().getString(2131694927);
           }
-          babr.a(this.a, 232, null, ajjy.a(2131651025), null, ajjy.a(2131651022), new acfz(this), null).show();
+          bcpw.a(this.a, 1, paramString1, 0).a();
         }
-        this.a.removeObserver(VisitorsActivity.a(this.a));
       }
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopAssistantActivity", 2, "onSetCommonUsedTroop error, retCode = " + paramInt2 + " , wording = " + paramString1);
+      }
+      return;
     }
+    this.a.c();
   }
 }
 

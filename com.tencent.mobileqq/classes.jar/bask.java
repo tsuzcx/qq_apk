@@ -1,72 +1,38 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
+import tencent.im.oidb.cmd0x962.oidb_0x962.FinishInfo;
+import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
 
-public class bask
-  extends RemoteCommand
+class bask
+  extends baks
 {
-  public bask()
-  {
-    super("running_plugin_cmd");
-  }
+  bask(barx parambarx, int paramInt, String paramString, MessageForDeliverGiftTips paramMessageForDeliverGiftTips, boolean paramBoolean) {}
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
   {
-    paramOnInvokeFinishLinstener = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramOnInvokeFinishLinstener != null) && ((paramOnInvokeFinishLinstener instanceof QQAppInterface))) {}
-    for (paramOnInvokeFinishLinstener = (QQAppInterface)paramOnInvokeFinishLinstener;; paramOnInvokeFinishLinstener = null)
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopInteractGiftAnimationController", 2, "reportInteract: errorCode = " + paramInt + ", times = " + this.jdField_a_of_type_Int + ", giftID = " + this.jdField_a_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState = paramRspBody.uint32_play_state.get();
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.alreadyPlayMicroseconds = paramRspBody.uint64_already_pay_microseconds.get();
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.playTotalMicroseconds = paramRspBody.uint64_play_total_microseconds.get();
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState == 2) && (paramRspBody.msg_finish_info.has()))
     {
-      switch (paramBundle.getInt("CommondType"))
-      {
-      }
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return null;
-              if (paramOnInvokeFinishLinstener == null) {
-                break;
-              }
-              paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.getHandler(Conversation.class);
-            } while (paramOnInvokeFinishLinstener == null);
-            try
-            {
-              Message localMessage = paramOnInvokeFinishLinstener.obtainMessage(1134043);
-              long l = paramBundle.getLong("runningState");
-              paramBundle = paramBundle.getString("cookieUrl");
-              JSONObject localJSONObject = new JSONObject();
-              localJSONObject.put("runningState", l);
-              localJSONObject.put("cookieUrl", paramBundle);
-              localMessage.obj = localJSONObject;
-              paramOnInvokeFinishLinstener.sendMessage(localMessage);
-              return null;
-            }
-            catch (JSONException paramBundle)
-            {
-              return null;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.e("SportRemoteCommond", 2, "showRunningBar null");
-          return null;
-        } while (paramOnInvokeFinishLinstener == null);
-        paramBundle = paramOnInvokeFinishLinstener.getHandler(Conversation.class);
-      } while (paramBundle == null);
-      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134044), 1000L);
-      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134040), 1000L);
-      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134050), 1000L);
-      return null;
+      paramRspBody = (oidb_0x962.FinishInfo)paramRspBody.msg_finish_info.get();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactText = paramRspBody.bytes_text.get().toStringUtf8();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.participateNum = paramRspBody.uint32_participate_num.get();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstUin = paramRspBody.uint64_first_uin.get();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstNickname = paramRspBody.bytes_first_nick_name.get().toStringUtf8();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interacEndtUrl = paramRspBody.bytes_url.get().toStringUtf8();
+    }
+    if ((this.jdField_a_of_type_Barx.a != null) && (this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_Barx.a.a.getEntityManagerFactory().createEntityManager().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
     }
   }
 }

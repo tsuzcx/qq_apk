@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import alyc;
+import amns;
 import com.tencent.qphone.base.util.QLog;
 
 class MessageHandler$16
@@ -12,8 +12,8 @@ class MessageHandler$16
   {
     try
     {
-      alyc.b(this.this$0.app, false);
-      alyc.a(this.this$0.app, false);
+      amns.b(this.this$0.app, false);
+      amns.a(this.this$0.app, false);
       this.this$0.e(this.a);
       return;
     }

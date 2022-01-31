@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.search.model;
 
-import avmp;
-import avmq;
-import avmr;
+import awmi;
+import awmj;
+import awmk;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,18 +10,18 @@ import java.util.List;
 public class BusinessGroupWord
   implements Serializable
 {
-  public avmp clueWordItem;
-  public avmq groupID;
-  public List<avmr> hotWordItemList;
+  public awmi clueWordItem;
+  public awmj groupID;
+  public List<awmk> hotWordItemList;
   
   public BusinessGroupWord() {}
   
-  public BusinessGroupWord(avmq paramavmq, List<avmr> paramList, avmp paramavmp)
+  public BusinessGroupWord(awmj paramawmj, List<awmk> paramList, awmi paramawmi)
   {
-    this.groupID = paramavmq;
+    this.groupID = paramawmj;
     this.hotWordItemList = new ArrayList();
     this.hotWordItemList = paramList;
-    this.clueWordItem = paramavmp;
+    this.clueWordItem = paramawmi;
   }
 }
 

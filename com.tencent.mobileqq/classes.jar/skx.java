@@ -1,16 +1,20 @@
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import java.util.ArrayList;
 
-public class skx
+abstract interface skx
 {
-  public static boolean a(QQStoryAutoPlayView paramQQStoryAutoPlayView, MotionEvent paramMotionEvent)
-  {
-    return slq.a(paramQQStoryAutoPlayView, paramMotionEvent);
-  }
+  public abstract void a(Context paramContext, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed);
+  
+  public abstract void a(Context paramContext, int paramInt, ArrayList<stSimpleMetaFeed> paramArrayList, stSimpleMetaFeed paramstSimpleMetaFeed);
+  
+  public abstract void a(Context paramContext, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt);
+  
+  public abstract boolean a(Context paramContext, int paramInt, ArrayList<stSimpleMetaFeed> paramArrayList, stSimpleMetaFeed paramstSimpleMetaFeed);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     skx
  * JD-Core Version:    0.7.0.1
  */

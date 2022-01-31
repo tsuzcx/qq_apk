@@ -1,184 +1,57 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.text.SpannableString;
-import android.text.style.ImageSpan;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.qqmini.sdk.core.widget.ActionSheetDialog.1;
-import com.tencent.qqmini.sdk.core.widget.ActionSheetDialog.3;
-import java.util.ArrayList;
+import android.os.Bundle;
+import mqq.manager.WtloginManager;
+import mqq.observer.SSOAccountObserver;
+import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
+import oicq.wlogin_sdk.tools.RSACrypt;
+import oicq.wlogin_sdk.tools.util;
 
-public class bdib
-  extends Dialog
-  implements DialogInterface.OnCancelListener
+class bdib
+  extends SSOAccountObserver
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private ArrayList<Button> jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  bdib(bdia parambdia) {}
   
-  private void a()
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
+    if (this.a.jdField_a_of_type_Bdic != null) {
+      this.a.jdField_a_of_type_Bdic.a();
     }
-    int m = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int k = 0;
-    Object localObject1;
-    label63:
-    Object localObject2;
-    if (k < m)
+  }
+  
+  public void onGetA1WithA1(String paramString, int paramInt1, byte[] paramArrayOfByte, int paramInt2, Bundle paramBundle)
+  {
+    if (paramInt1 == 0)
     {
-      localObject1 = (Button)this.jdField_a_of_type_JavaUtilArrayList.get(k);
-      int j = ((Integer)((Button)localObject1).getTag()).intValue();
-      int i;
-      if ((k == 0) && (m == 1))
+      paramBundle = new WloginSimpleInfo();
+      if (this.a.jdField_a_of_type_MqqManagerWtloginManager != null) {
+        this.a.jdField_a_of_type_MqqManagerWtloginManager.GetBasicUserInfo(paramString, paramBundle);
+      }
+      paramString = "" + paramBundle._uin;
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
       {
-        i = 2130840675;
-        switch (j)
-        {
-        default: 
-          j = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100149);
+        util.LOGD("outA1 buff: " + util.buf_to_string(paramArrayOfByte));
+        paramArrayOfByte = new RSACrypt(bcxm.a().a()).EncryptData(this.a.a(bcxm.a().a(), this.a.jdField_a_of_type_Long, 1L), paramArrayOfByte);
+        util.LOGD("encrypt buff:" + util.buf_to_string(paramArrayOfByte));
+        if (this.a.jdField_a_of_type_Bdic != null) {
+          this.a.jdField_a_of_type_Bdic.a(paramString, paramArrayOfByte);
         }
       }
-      for (;;)
-      {
-        ((Button)localObject1).setBackgroundResource(i);
-        ((Button)localObject1).setTextColor(j);
-        k += 1;
-        break;
-        if ((k == 0) && (m > 1))
-        {
-          i = 2130840678;
-          break label63;
-        }
-        if ((k == m - 1) && (m > 1))
-        {
-          i = 2130840665;
-          break label63;
-        }
-        i = 2130840672;
-        break label63;
-        j = -16777216;
-        ((Button)localObject1).setTextSize(0, this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131166142));
-        ((Button)localObject1).setClickable(false);
-        ((Button)localObject1).setVisibility(8);
-        a(((Button)localObject1).getText().toString());
-        continue;
-        j = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100152);
-        continue;
-        bdyn.a(getContext(), 8.0F);
-        j = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100149);
-        localObject2 = new SpannableString(((Button)localObject1).getText());
-        Object localObject3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840805);
-        ((Drawable)localObject3).setBounds(0, 0, ((Drawable)localObject3).getIntrinsicWidth(), ((Drawable)localObject3).getIntrinsicHeight());
-        localObject3 = new ImageSpan((Drawable)localObject3, 1);
-        if ((((SpannableString)localObject2).length() >= 1) && (((SpannableString)localObject2).charAt(((SpannableString)localObject2).length() - 1) == '@')) {
-          ((SpannableString)localObject2).setSpan(localObject3, ((SpannableString)localObject2).length() - 1, ((SpannableString)localObject2).length(), 33);
-        }
-        ((Button)localObject1).setText((CharSequence)localObject2);
-      }
     }
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131493721, null);
-      localObject2 = (Button)((View)localObject1).findViewById(2131296377);
-      ((Button)localObject2).setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-      ((Button)localObject2).setText(2131628566);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-      this.jdField_b_of_type_Boolean = true;
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public TextView a(String paramString)
-  {
-    try
-    {
-      Button localButton = new Button(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localButton, 0);
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localButton.getLayoutParams();
-      localLayoutParams.width = -1;
-      localLayoutParams.height = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131166113));
-      localLayoutParams.gravity = 17;
-      localButton.setLayoutParams(localLayoutParams);
-      localButton.setTextSize(0, this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131166142));
-      localButton.setText(paramString);
-      localButton.setTextColor(-16777216);
-      localButton.setBackgroundResource(2130840678);
-      localButton.setClickable(false);
-      return localButton;
-    }
-    catch (Exception paramString)
-    {
-      bdnw.d("ActionSheetDialog", "e:" + paramString.toString());
-    }
-    return null;
-  }
-  
-  public void dismiss()
-  {
-    if (this.c)
-    {
-      this.c = false;
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ActionSheetDialog.3(this), 0L);
-    }
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(null);
+    while (this.a.jdField_a_of_type_Bdic == null) {
       return;
     }
-    catch (Exception paramDialogInterface) {}
+    this.a.jdField_a_of_type_Bdic.a();
   }
   
-  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
   {
-    if (paramInt == 82) {
-      dismiss();
+    if (this.a.jdField_a_of_type_Bdic != null) {
+      this.a.jdField_a_of_type_Bdic.a();
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
-  }
-  
-  public void show()
-  {
-    super.show();
-    a();
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
-    this.c = true;
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ActionSheetDialog.1(this), 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdib
  * JD-Core Version:    0.7.0.1
  */

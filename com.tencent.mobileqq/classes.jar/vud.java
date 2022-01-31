@@ -1,21 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class vud
-  implements DialogInterface.OnClickListener
+class vud
+  extends bjde
 {
-  public vud(QRLoginMgrActivity paramQRLoginMgrActivity) {}
+  vud(vuc paramvuc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, boolean paramBoolean) {}
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    QRLoginMgrActivity.a(this.a, true, 0L);
-    awqx.b(null, "dc00898", "", "", "0X800A478", "0X800A478", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowPhotoListManager", 2, "SlideShowPhotoListManager onFinish key=" + paramString + " result=" + paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vud
  * JD-Core Version:    0.7.0.1
  */

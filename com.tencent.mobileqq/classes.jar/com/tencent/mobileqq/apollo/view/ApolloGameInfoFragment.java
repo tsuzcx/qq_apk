@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.view;
 
-import aciy;
-import ajbd;
-import ajbe;
-import ajjy;
+import actn;
+import ajpf;
+import ajpg;
+import ajyc;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -18,8 +18,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import azwg;
-import azwh;
+import baxk;
+import baxl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -33,12 +33,12 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class ApolloGameInfoFragment
   extends PublicBaseFragment
-  implements azwh
+  implements baxl
 {
   public int a;
-  private ajbe jdField_a_of_type_Ajbe;
+  private ajpg jdField_a_of_type_Ajpg;
   public RelativeLayout a;
-  private azwg jdField_a_of_type_Azwg;
+  private baxk jdField_a_of_type_Baxk;
   public CmGameStartChecker.StartCheckParam a;
   public BaseActivity a;
   public ApolloGameData a;
@@ -51,93 +51,93 @@ public class ApolloGameInfoFragment
   
   public void a(View paramView, LayoutInflater paramLayoutInflater)
   {
-    paramView = (RelativeLayout)paramView.findViewById(2131311638);
+    paramView = (RelativeLayout)paramView.findViewById(2131377452);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramView.setFitsSystemWindows(true);
       paramView.setPadding(0, ImmersiveUtils.getStatusBarHeight(paramLayoutInflater.getContext()), 0, 0);
     }
-    paramLayoutInflater = (NavBarCommon)paramView.findViewById(2131309578);
-    ((TextView)paramLayoutInflater.findViewById(2131302804)).setText(ajjy.a(2131634550));
-    paramLayoutInflater.setOnItemSelectListener(new ajbd(this));
+    paramLayoutInflater = (NavBarCommon)paramView.findViewById(2131375327);
+    ((TextView)paramLayoutInflater.findViewById(2131368429)).setText(ajyc.a(2131700338));
+    paramLayoutInflater.setOnItemSelectListener(new ajpf(this));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
     paramLayoutInflater = new ImageView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
     paramLayoutInflater.setBackgroundColor(-7829368);
     Object localObject1 = new RelativeLayout.LayoutParams(-1, 1);
-    ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131309578);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131375327);
     paramLayoutInflater.setId(this.b);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramLayoutInflater, (ViewGroup.LayoutParams)localObject1);
     paramLayoutInflater = new URLImageView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    localObject1 = new RelativeLayout.LayoutParams(aciy.a(90.0F, getResources()), aciy.a(90.0F, getResources()));
-    ((RelativeLayout.LayoutParams)localObject1).topMargin = aciy.a(45.0F, getResources());
+    localObject1 = new RelativeLayout.LayoutParams(actn.a(90.0F, getResources()), actn.a(90.0F, getResources()));
+    ((RelativeLayout.LayoutParams)localObject1).topMargin = actn.a(45.0F, getResources());
     ((RelativeLayout.LayoutParams)localObject1).addRule(14);
     ((RelativeLayout.LayoutParams)localObject1).addRule(3, this.b);
-    paramLayoutInflater.setBackgroundResource(2130839070);
+    paramLayoutInflater.setBackgroundResource(2130839098);
     paramLayoutInflater.setId(this.c);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramLayoutInflater, (ViewGroup.LayoutParams)localObject1);
     localObject1 = new ImageView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    ((ImageView)localObject1).setImageResource(2130838328);
-    Object localObject2 = new RelativeLayout.LayoutParams(aciy.a(90.0F, getResources()), aciy.a(90.0F, getResources()));
+    ((ImageView)localObject1).setImageResource(2130838336);
+    Object localObject2 = new RelativeLayout.LayoutParams(actn.a(90.0F, getResources()), actn.a(90.0F, getResources()));
     ((RelativeLayout.LayoutParams)localObject2).addRule(5, this.c);
     ((RelativeLayout.LayoutParams)localObject2).addRule(6, this.c);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject1 = new TextView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
     localObject2 = new RelativeLayout.LayoutParams(-2, -2);
     ((TextView)localObject1).setTextSize(18.0F);
-    ((TextView)localObject1).setText(ajjy.a(2131634567));
-    ((RelativeLayout.LayoutParams)localObject2).topMargin = aciy.a(20.0F, getResources());
+    ((TextView)localObject1).setText(ajyc.a(2131700355));
+    ((RelativeLayout.LayoutParams)localObject2).topMargin = actn.a(20.0F, getResources());
     ((RelativeLayout.LayoutParams)localObject2).addRule(14);
     ((RelativeLayout.LayoutParams)localObject2).addRule(3, this.c);
     ((TextView)localObject1).setId(this.d);
     ((TextView)localObject1).setTextColor(-16777216);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-    localObject2 = new ajbe(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, ajjy.a(2131634591));
+    localObject2 = new ajpg(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, ajyc.a(2131700379));
     Object localObject3 = new RelativeLayout.LayoutParams(-1, -2);
     ((RelativeLayout.LayoutParams)localObject3).addRule(3, this.d);
-    ((RelativeLayout.LayoutParams)localObject3).topMargin = aciy.a(40.0F, getResources());
-    ((ajbe)localObject2).setId(this.e);
-    ((ajbe)localObject2).b(ajjy.a(2131634559));
+    ((RelativeLayout.LayoutParams)localObject3).topMargin = actn.a(40.0F, getResources());
+    ((ajpg)localObject2).setId(this.e);
+    ((ajpg)localObject2).b(ajyc.a(2131700347));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
-    this.jdField_a_of_type_Ajbe = new ajbe(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, ajjy.a(2131634590));
+    this.jdField_a_of_type_Ajpg = new ajpg(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, ajyc.a(2131700378));
     localObject3 = new RelativeLayout.LayoutParams(-1, -2);
     ((RelativeLayout.LayoutParams)localObject3).addRule(3, this.e);
-    this.jdField_a_of_type_Ajbe.setId(this.f);
+    this.jdField_a_of_type_Ajpg.setId(this.f);
     ((RelativeLayout.LayoutParams)localObject3).topMargin = -1;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Ajbe, (ViewGroup.LayoutParams)localObject3);
-    localObject3 = new ajbe(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, ajjy.a(2131634566));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Ajpg, (ViewGroup.LayoutParams)localObject3);
+    localObject3 = new ajpg(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, ajyc.a(2131700354));
     Object localObject4 = new RelativeLayout.LayoutParams(-1, -2);
     ((RelativeLayout.LayoutParams)localObject4).addRule(3, this.f);
-    ((ajbe)localObject3).setId(this.g);
+    ((ajpg)localObject3).setId(this.g);
     ((RelativeLayout.LayoutParams)localObject4).topMargin = -1;
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(-1);
     localObject4 = new RelativeLayout.LayoutParams(-1, -1);
-    ((RelativeLayout.LayoutParams)localObject4).addRule(3, 2131309578);
+    ((RelativeLayout.LayoutParams)localObject4).addRule(3, 2131375327);
     paramView.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, (ViewGroup.LayoutParams)localObject4);
     if (this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData != null) {
       try
       {
         paramView = URLDrawable.URLDrawableOptions.obtain();
         localObject4 = getResources();
-        paramView.mLoadingDrawable = ((Resources)localObject4).getDrawable(2130838331);
-        paramView.mFailedDrawable = ((Resources)localObject4).getDrawable(2130838331);
-        paramView.mRequestWidth = aciy.a(90.0F, getResources());
+        paramView.mLoadingDrawable = ((Resources)localObject4).getDrawable(2130838339);
+        paramView.mFailedDrawable = ((Resources)localObject4).getDrawable(2130838339);
+        paramView.mRequestWidth = actn.a(90.0F, getResources());
         paramView.mRequestHeight = paramView.mRequestWidth;
         paramLayoutInflater.setImageDrawable(URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.logoUrl, paramView));
         ((TextView)localObject1).setText(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.name);
-        ((ajbe)localObject2).b(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.developerName);
-        ((ajbe)localObject3).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameId, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.openId);
-        paramView = this.jdField_a_of_type_Azwg.a(1, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin), 0, (byte)2);
+        ((ajpg)localObject2).b(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.developerName);
+        ((ajpg)localObject3).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameId, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.openId);
+        paramView = this.jdField_a_of_type_Baxk.a(1, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin), 0, (byte)2);
         if (paramView == null)
         {
           if (QLog.isColorLevel()) {
             QLog.d("apollo_cmGame_ApolloGameInfoFragment", 2, "logoUrl is null:" + this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin);
           }
-          this.jdField_a_of_type_Azwg.a(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin, 200, false, 1, true, (byte)0, 2);
+          this.jdField_a_of_type_Baxk.a(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin, 200, false, 1, true, (byte)0, 2);
         }
         if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin)) || ("0".equals(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin)))
         {
-          this.jdField_a_of_type_Ajbe.setVisibility(8);
+          this.jdField_a_of_type_Ajpg.setVisibility(8);
           return;
         }
       }
@@ -145,10 +145,10 @@ public class ApolloGameInfoFragment
       {
         for (;;)
         {
-          paramLayoutInflater.setImageResource(2130838331);
+          paramLayoutInflater.setImageResource(2130838339);
           QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, paramView, new Object[0]);
         }
-        this.jdField_a_of_type_Ajbe.a(paramView, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin);
+        this.jdField_a_of_type_Ajpg.a(paramView, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin);
         return;
       }
     }
@@ -178,17 +178,17 @@ public class ApolloGameInfoFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramViewGroup = paramLayoutInflater.inflate(2131493317, paramViewGroup, false);
-    this.jdField_a_of_type_Azwg = new azwg(getActivity().app);
-    this.jdField_a_of_type_Azwg.a(this);
+    paramViewGroup = paramLayoutInflater.inflate(2131558877, paramViewGroup, false);
+    this.jdField_a_of_type_Baxk = new baxk(getActivity().app);
+    this.jdField_a_of_type_Baxk.a(this);
     a(paramViewGroup, paramLayoutInflater);
     return paramViewGroup;
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (!"0".equals(paramString)) && (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin)) && (paramBitmap != null) && (this.jdField_a_of_type_Ajbe != null)) {
-      this.jdField_a_of_type_Ajbe.a(paramBitmap, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin);
+    if ((!TextUtils.isEmpty(paramString)) && (!"0".equals(paramString)) && (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin)) && (paramBitmap != null) && (this.jdField_a_of_type_Ajpg != null)) {
+      this.jdField_a_of_type_Ajpg.a(paramBitmap, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin);
     }
   }
   
@@ -198,10 +198,10 @@ public class ApolloGameInfoFragment
       QLog.d("apollo_cmGame_ApolloGameInfoFragment", 2, "[onDestory] destory");
     }
     super.onDestroy();
-    if (this.jdField_a_of_type_Azwg != null)
+    if (this.jdField_a_of_type_Baxk != null)
     {
-      this.jdField_a_of_type_Azwg.d();
-      this.jdField_a_of_type_Azwg = null;
+      this.jdField_a_of_type_Baxk.d();
+      this.jdField_a_of_type_Baxk = null;
     }
   }
   

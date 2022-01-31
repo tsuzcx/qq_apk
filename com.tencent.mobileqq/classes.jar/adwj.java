@@ -1,18 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-
 class adwj
-  implements bbmj
 {
-  adwj(advv paramadvv) {}
+  public int a;
+  public long a;
   
-  public void a(bbmh parambbmh)
+  adwj(adwh paramadwh)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AIOGalleryScene", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambbmh);
-    }
+    this.jdField_a_of_type_Long = -1L;
   }
-  
-  public void a(bbmh parambbmh, int paramInt1, int paramInt2) {}
 }
 
 

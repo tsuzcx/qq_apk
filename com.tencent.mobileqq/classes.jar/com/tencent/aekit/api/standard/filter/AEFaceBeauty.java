@@ -19,7 +19,8 @@ public class AEFaceBeauty
   private float faceFeatureNormalAlpha;
   private FaceFeatureParam faceFeatureParam;
   private float faceFeatureSoftlightAlpha;
-  private boolean isApplied = false;
+  private boolean isAllwaysRender = true;
+  private boolean isBeautyNeedRender = false;
   private boolean isLoadSo = false;
   private boolean isVeryLowDevice = false;
   private int lipsLutAlpha;
@@ -39,12 +40,17 @@ public class AEFaceBeauty
   
   private void configFilter() {}
   
+  private boolean isAllZeroLevel()
+  {
+    return (this.colorToneLevel == 50) && (this.beautyLevel + this.eyeLightenLevel + this.removePounchLevel + this.removeWrinklesLevel + this.removeWrinkles2Level + this.contrastRatioLevel == 0);
+  }
+  
   public void apply()
   {
-    if (!this.isApplied)
+    if (!this.mIsApplied)
     {
       this.mBeautyFaceList.initial();
-      this.isApplied = true;
+      this.mIsApplied = true;
     }
   }
   
@@ -53,12 +59,12 @@ public class AEFaceBeauty
     if (this.mBeautyFaceList != null) {
       this.mBeautyFaceList.clear();
     }
-    this.isApplied = false;
+    this.mIsApplied = false;
   }
   
   public boolean isValid()
   {
-    return this.isApplied;
+    return this.mIsApplied;
   }
   
   public String printParamInfo()
@@ -68,22 +74,19 @@ public class AEFaceBeauty
   
   public Frame render(Frame paramFrame)
   {
-    configFilter();
-    Frame localFrame = paramFrame;
-    if (this.mBeautyFaceList != null)
+    if (this.isBeautyNeedRender) {}
+    do
     {
-      localFrame = paramFrame;
-      if (this.mFaceAttr != null)
-      {
-        localFrame = paramFrame;
-        if (this.mFaceAttr.getFaceCount() > 0)
-        {
-          this.mBeautyFaceList.updateVideoSize(this.mVideoWidth, this.mVideoHeight, this.mFaceScale);
-          localFrame = this.mBeautyFaceList.render2(paramFrame, this.mFaceAttr.getAllFacePoints(), this.mFaceAttr.getPointsVis(), this.mFaceAttr.getFaceStatusList(), this.isVeryLowDevice, this.isLoadSo);
-        }
-      }
-    }
-    return localFrame;
+      return paramFrame;
+      configFilter();
+    } while ((this.mBeautyFaceList == null) || (this.mFaceAttr == null) || (this.mFaceAttr.getFaceCount() <= 0));
+    this.mBeautyFaceList.updateVideoSize(this.mVideoWidth, this.mVideoHeight, this.mFaceScale);
+    return this.mBeautyFaceList.render2(paramFrame, this.mFaceAttr.getAllFacePoints(), this.mFaceAttr.getPointsVis(), this.mFaceAttr.getFaceStatusList(), this.isVeryLowDevice, this.isLoadSo);
+  }
+  
+  public void setAllwaysRender(boolean paramBoolean)
+  {
+    this.isAllwaysRender = paramBoolean;
   }
   
   public void setFaceAttr(PTFaceAttr paramPTFaceAttr)
@@ -95,39 +98,37 @@ public class AEFaceBeauty
   {
     switch (AEFaceBeauty.1.$SwitchMap$com$tencent$ttpic$openapi$config$BeautyRealConfig$TYPE[paramTYPE.ordinal()])
     {
-    default: 
+    }
+    for (;;)
+    {
+      if ((!this.isAllwaysRender) && (isAllZeroLevel())) {
+        this.isBeautyNeedRender = true;
+      }
       return;
-    case 1: 
       this.beautyLevel = paramInt;
       this.mBeautyFaceList.setBeautyLevel(this.beautyLevel / 100.0F);
-      return;
-    case 2: 
+      continue;
       this.eyeLightenLevel = paramInt;
       this.mBeautyFaceList.setEyeOpacity(this.eyeLightenLevel / 100.0F);
-      return;
-    case 3: 
+      continue;
       this.toothWhitenLevel = paramInt;
       this.mBeautyFaceList.setToothWhitenAlpha(this.toothWhitenLevel / 80.0F);
-      return;
-    case 4: 
+      continue;
       this.removePounchLevel = paramInt;
       this.mBeautyFaceList.setEyePouchOpacity(this.removePounchLevel / 100.0F);
-      return;
-    case 5: 
+      continue;
       this.removeWrinklesLevel = paramInt;
       this.mBeautyFaceList.setSmoothOpacity(this.removeWrinklesLevel / 100.0F);
-      return;
-    case 6: 
+      continue;
       this.removeWrinkles2Level = paramInt;
       this.mBeautyFaceList.setSmoothOpacity2(this.removeWrinkles2Level / 100.0F);
-      return;
-    case 7: 
+      continue;
       this.colorToneLevel = paramInt;
       this.mBeautyFaceList.setSkinColorAlpha((this.colorToneLevel - 50) / 50.0F);
-      return;
+      continue;
+      this.contrastRatioLevel = paramInt;
+      this.mBeautyFaceList.setContrastLevel(this.contrastRatioLevel);
     }
-    this.contrastRatioLevel = paramInt;
-    this.mBeautyFaceList.setContrastLevel(this.contrastRatioLevel);
   }
   
   public void setFaceFeatureMultiplyAlpha(float paramFloat)

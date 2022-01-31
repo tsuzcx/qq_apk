@@ -1,29 +1,7 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
-
-class afin
-  implements ViewPager.OnPageChangeListener
-{
-  afin(afim paramafim) {}
-  
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
-  {
-    EmoticonFromGroupEntity localEmoticonFromGroupEntity = afim.a(this.a).a(paramInt);
-    if (localEmoticonFromGroupEntity != null)
-    {
-      afim.a(this.a, localEmoticonFromGroupEntity);
-      afim.b(this.a, localEmoticonFromGroupEntity);
-    }
-  }
-}
+class afin {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,63 @@
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import BOSSStrategyCenter.tAdvDesc;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
+import org.json.JSONObject;
 
-public abstract class bhzp
-  extends bhht
+public class bhzp
+  extends ahmr
 {
-  protected bheq a;
-  protected boolean b;
-  public boolean c;
-  protected boolean d;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public bhzp(CaptureModeController paramCaptureModeController)
+  public bhzp(tAdvDesc paramtAdvDesc)
   {
-    super(paramCaptureModeController);
-    this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController = paramCaptureModeController;
-    this.jdField_a_of_type_Bhdi = this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.jdField_a_of_type_Bhdi;
-    if ((this.jdField_a_of_type_Bhdi instanceof bheq)) {
-      this.jdField_a_of_type_Bheq = ((bheq)this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.jdField_a_of_type_Bhdi);
-    }
+    super(paramtAdvDesc);
   }
   
-  public int a()
+  protected void a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    super.a();
+    if ((this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc == null) || (TextUtils.isEmpty(this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data)))
     {
-      b(this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.jdField_a_of_type_Boolean);
+      QLog.e("QbossADBannerConfigInfo", 1, "parseJsonFromAdvDesc error with data = null");
       return;
     }
-    b();
-  }
-  
-  public void b()
-  {
-    this.b = false;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = true;
-    this.c = false;
-    this.d = paramBoolean;
-  }
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f()
-  {
-    this.c = true;
-    this.b = false;
+    String str = this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data;
+    try
+    {
+      Object localObject = new JSONObject(str);
+      this.c = ((JSONObject)localObject).optString("topText");
+      this.d = ((JSONObject)localObject).optString("bottomText");
+      this.e = ((JSONObject)localObject).optString("textColor");
+      this.f = ((JSONObject)localObject).optString("cartoon");
+      this.g = ((JSONObject)localObject).optString("cartoon_md5");
+      this.h = ((JSONObject)localObject).optString("cartoonNum");
+      localObject = new bhzr(this, null);
+      ((ahms)localObject).a = this.f;
+      ((ahms)localObject).b = this.g;
+      if (!TextUtils.isEmpty(this.f)) {
+        ((ahms)localObject).c = (QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.f.hashCode())) + ".zip");
+      }
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(2, localObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      QLog.e("QbossADBannerConfigInfo", 1, "qboss banner parseJson error msg = " + localException.getMessage());
+      bhkd.a().a(2741, this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.task_id, 102, "CountDownBanner json parseError exception = " + localException.getMessage() + " json string = " + str);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhzp
  * JD-Core Version:    0.7.0.1
  */

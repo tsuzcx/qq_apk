@@ -1,103 +1,65 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import mqq.util.WeakReference;
 
 public class alvr
-  extends alzl<alvs>
+  extends agtc
 {
-  private static boolean a;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private String b;
   
-  public static boolean e()
+  private alvr(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    alvs localalvs = (alvs)alzw.a().a(576);
-    if ((localalvs != null) && (!TextUtils.isEmpty(localalvs.a))) {
-      a = "1".equals(localalvs.a);
-    }
-    return a;
+    super(paramNewPhotoPreviewActivity);
   }
   
-  public int a()
+  public static agss b(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    return 576;
-  }
-  
-  @NonNull
-  public alvs a(int paramInt)
-  {
-    return new alvs();
-  }
-  
-  public alvs a(String paramString)
-  {
+    if ((jdField_a_of_type_Agss == null) || (jdField_a_of_type_Agss.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {}
     try
     {
-      paramString = new JSONObject(paramString).optString("IsDanmuEnable");
-      if (QLog.isColorLevel()) {
-        QLog.e("DanmuConfProcessor", 2, "parse conf, IsDanmuEnable:" + paramString);
+      if ((jdField_a_of_type_Agss == null) || (jdField_a_of_type_Agss.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {
+        jdField_a_of_type_Agss = new alvr(paramNewPhotoPreviewActivity);
       }
-      paramString = new alvs(paramString.trim());
-      return paramString;
+      return jdField_a_of_type_Agss;
     }
-    catch (JSONException paramString)
+    finally {}
+  }
+  
+  protected void a(Intent paramIntent)
+  {
+    super.a(paramIntent);
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("key_ark_app_res_path");
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("key_should_compress", false);
+    this.b = paramIntent.getStringExtra("key_ark_app_engine_res_dir");
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ("FROM_PHOTO_LIST".equals(this.jdField_a_of_type_Agsr.jdField_a_of_type_JavaLangString))
     {
-      paramString.printStackTrace();
+      Intent localIntent = ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getIntent();
+      localIntent.putExtra("PhotoConst.ALWAYS_SHOW_NUMBER_WHEN_ONLY_ONE_IMAGE", true);
+      localIntent.putExtra("key_ark_app_res_path", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("key_should_compress", this.jdField_a_of_type_Boolean);
+      localIntent.putExtra("key_ark_app_engine_res_dir", this.b);
+      localIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
+      localIntent.putExtra("enter_from", 3);
     }
-    return null;
+    super.a(paramBoolean);
   }
   
-  @Nullable
-  public alvs a(alzs[] paramArrayOfalzs)
+  protected void c()
   {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
-    {
-      alvs localalvs = a(paramArrayOfalzs[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("DanmuConfProcessor", 2, "onParsed " + paramArrayOfalzs[0].a);
-      }
-      return localalvs;
-    }
-    return new alvs();
-  }
-  
-  public Class<alvs> a()
-  {
-    return alvs.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(alvs paramalvs)
-  {
-    if ((paramalvs != null) && (!TextUtils.isEmpty(paramalvs.a)))
-    {
-      a = "1".equals(paramalvs.a);
-      if (QLog.isColorLevel()) {
-        QLog.e("DanmuConfProcessor", 2, "onUpdate, isDanmuEnable:" + a);
-      }
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    super.c();
+    ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b.setOnClickListener(new alvs(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alvr
  * JD-Core Version:    0.7.0.1
  */

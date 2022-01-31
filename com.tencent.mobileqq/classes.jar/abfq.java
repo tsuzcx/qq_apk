@@ -1,68 +1,84 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import mqq.app.MobileQQ;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader.ColorScreenListener.1;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayDeque;
 
 public class abfq
-  implements CompoundButton.OnCheckedChangeListener
+  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
 {
-  public abfq(NotifyPushSettingActivity paramNotifyPushSettingActivity, ajfi paramajfi) {}
+  public int a;
+  public long a;
+  private boolean a;
+  public long b;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public abfq(FriendProfileCardActivity.ColorScreenLoader paramColorScreenLoader, long paramLong)
   {
-    if (AppSetting.c) {
-      NotifyPushSettingActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity).setContentDescription("PC离线时自动启动QQ手机版");
-    }
-    QQAppInterface localQQAppInterface;
-    int i;
-    if (!NotifyPushSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity))
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = ((paramColorScreenLoader.jdField_a_of_type_Apze.jdField_a_of_type_Int + 1) * paramLong);
+    if (Build.VERSION.SDK_INT == 15) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (paramBoolean) {
-        awqx.b(null, "CliOper", "", "", "0X8004972", "0X8004972", 0, 1, "", "", "", "");
-      }
-    }
-    else
-    {
-      if ((!badq.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getApplicationContext())) || (!NotifyPushSettingActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity))) {
-        break label182;
-      }
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app;
-      if (!paramBoolean) {
-        break label171;
-      }
-      i = 1;
-      label94:
-      if (!paramBoolean) {
-        break label176;
-      }
-    }
-    label171:
-    label176:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      awqx.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "PC_active", 0, i, paramCompoundButton, "", "", "");
-      if (!NotifyPushSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity)) {
-        this.jdField_a_of_type_Ajfi.b(paramBoolean);
-      }
+      this.jdField_a_of_type_Boolean = bool;
       return;
-      awqx.b(null, "CliOper", "", "", "0X8004972", "0X8004972", 0, 0, "", "", "", "");
-      break;
-      i = 0;
-      break label94;
     }
-    label182:
-    NotifyPushSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, false);
-    paramCompoundButton = NotifyPushSettingActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity);
-    if (!NotifyPushSettingActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity).a()) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramCompoundButton.setChecked(paramBoolean);
-      NotifyPushSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, true);
-      bbmy.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getApplication().getString(2131629294), 0).b(5);
-      return;
+  }
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorScreenManager", 2, "onAnimationEnd: " + this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.jdField_a_of_type_Int);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.this$0.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.this$0.b.post(new FriendProfileCardActivity.ColorScreenLoader.ColorScreenListener.1(this));
+    while (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.this$0.jdField_a_of_type_JavaUtilArrayDeque.isEmpty()) {
+      ((Message)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.this$0.jdField_a_of_type_JavaUtilArrayDeque.removeFirst()).sendToTarget();
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Int += 1;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileCardActivity", 2, "onAnimationStart: " + this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.jdField_a_of_type_Int);
+    }
+  }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      try
+      {
+        float f = (paramValueAnimator.getAnimatedFraction() + this.jdField_a_of_type_Int) * (float)this.jdField_a_of_type_Long;
+        if (f <= (float)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.jdField_a_of_type_Apze.jdField_a_of_type_Long)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.this$0.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAlpha(f / (float)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.jdField_a_of_type_Apze.jdField_a_of_type_Long);
+          return;
+        }
+        if ((this.b > 0L) && ((float)this.b - f <= (float)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.jdField_a_of_type_Apze.b))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.this$0.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAlpha(((float)this.b - f) / (float)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.jdField_a_of_type_Apze.b);
+          return;
+        }
+      }
+      catch (Exception paramValueAnimator)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        QLog.e("FriendProfileCardActivity", 1, "onAnimationUpdate: ", paramValueAnimator);
+      }
     }
   }
 }

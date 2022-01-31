@@ -1,26 +1,53 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Intent;
+import android.os.Bundle;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bhtq
-  implements EIPCResultCallback
+public class bhtq
 {
-  bhtq(bhtg parambhtg) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public static void a(bcdb parambcdb, String... paramVarArgs)
   {
-    QLog.d("AEGIFChunkPreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD onCallback");
-    if (paramEIPCResult.code == 0)
-    {
-      QLog.d("AEGIFChunkPreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code == 0");
+    int i = 0;
+    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
       return;
     }
-    QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code != 0, eipcResult.code == ", Integer.valueOf(paramEIPCResult.code), ", msg = ", paramEIPCResult.e.getMessage() });
+    try
+    {
+      paramVarArgs = new JSONObject(paramVarArgs[0]);
+      int k = paramVarArgs.optInt("facade", -1);
+      int m = paramVarArgs.optInt("feedskin", -1);
+      int n = paramVarArgs.optInt("avatar", -1);
+      int i1 = paramVarArgs.optInt("float", -1);
+      int i2 = paramVarArgs.optInt("customvip", -1);
+      int i3 = paramVarArgs.optInt("praise", -1);
+      int i4 = paramVarArgs.optInt("player", -1);
+      boolean bool = paramVarArgs.optBoolean("isAfter785", false);
+      int j = paramVarArgs.optInt("diyHome", -1);
+      paramVarArgs = new Intent("action_personalize_js2qzone");
+      Bundle localBundle = new Bundle();
+      localBundle.putString("cmd", "SetPersonalizeFinished");
+      localBundle.putInt("facade", k);
+      localBundle.putInt("feedskin", m);
+      localBundle.putInt("avatar", n);
+      localBundle.putInt("floatObject", i1);
+      localBundle.putInt("customvip", i2);
+      localBundle.putInt("praise", i3);
+      localBundle.putInt("player", i4);
+      if (bool) {
+        i = 1;
+      }
+      localBundle.putInt("isAfter785", i);
+      localBundle.putInt("diyHome", j);
+      paramVarArgs.putExtras(localBundle);
+      bgxy.a(parambcdb.a(), bgyf.a(), paramVarArgs);
+      return;
+    }
+    catch (JSONException parambcdb) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhtq
  * JD-Core Version:    0.7.0.1
  */

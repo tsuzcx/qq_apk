@@ -1,14 +1,11 @@
-import android.os.Bundle;
-
-public abstract interface bcgf
+public class bcgf
 {
-  public abstract int a(String paramString1, int paramInt, String paramString2, Bundle paramBundle);
-  
-  public abstract void a(String paramString, int paramInt, Bundle paramBundle);
+  public static String a;
+  public static boolean a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcgf
  * JD-Core Version:    0.7.0.1
  */

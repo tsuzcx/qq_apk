@@ -1,22 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.AdReport;
 
-class qdl
-  extends ajjh
+public class qdl
 {
-  qdl(qdi paramqdi, QQAppInterface paramQQAppInterface) {}
+  public String a;
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public static qdl a(oidb_cmd0xbc9.AdReport paramAdReport)
   {
-    if (paramBoolean)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("VALUE_USER_UIN_TO_GET_NICK_NAME", paramString);
-      localBundle.putString("VALUE_USER_NICK_NAME", babh.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, true));
-      QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_GET_NICK_NAME_BY_UIN", localBundle, null);
-    }
+    qdl localqdl = new qdl();
+    localqdl.a = paramAdReport.bytes_report_url.get().toStringUtf8();
+    return localqdl;
+  }
+  
+  public oidb_cmd0xbc9.AdReport a()
+  {
+    oidb_cmd0xbc9.AdReport localAdReport = new oidb_cmd0xbc9.AdReport();
+    localAdReport.bytes_report_url.set(ByteStringMicro.copyFromUtf8(this.a));
+    return localAdReport;
   }
 }
 

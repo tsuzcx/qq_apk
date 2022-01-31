@@ -1,36 +1,19 @@
-import android.os.Looper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
 class aacd
-  implements bavt
+  extends JobSegment<asiu, asiu>
 {
-  private final WeakReference<aabz> a;
+  aacd(aacb paramaacb, String paramString, int paramInt) {}
   
-  aacd(aabz paramaabz)
+  protected void a(JobContext paramJobContext, asiu paramasiu)
   {
-    this.a = new WeakReference(paramaabz);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-      if (QLog.isColorLevel()) {
-        QLog.i("AutoLoginHelper", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
-      }
-    }
-    aabz localaabz;
-    do
-    {
-      return;
-      localaabz = (aabz)this.a.get();
-    } while (localaabz == null);
-    localaabz.a(paramString, paramBoolean);
+    asiz.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new aace(this, this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aacd
  * JD-Core Version:    0.7.0.1
  */

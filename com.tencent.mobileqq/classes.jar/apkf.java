@@ -1,14 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService.1;
 
-class apkf
-  implements View.OnClickListener
+public class apkf
+  implements MediaPlayer.OnPreparedListener
 {
-  apkf(apkd paramapkd) {}
+  public apkf(FileViewMusicService.1 param1, MediaPlayer paramMediaPlayer) {}
   
-  public void onClick(View paramView)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    apkd.a(this.a);
+    int i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService$1.a.a(i);
   }
 }
 

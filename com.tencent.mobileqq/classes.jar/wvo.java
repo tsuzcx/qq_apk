@@ -1,41 +1,29 @@
-import android.content.Context;
-import android.graphics.PointF;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearSmoothScroller;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
+import java.util.ArrayList;
 
 class wvo
-  extends LinearSmoothScroller
+  implements View.OnClickListener
 {
-  public wvo(wvn paramwvn, Context paramContext)
-  {
-    super(paramContext);
-  }
+  wvo(wvn paramwvn, int paramInt) {}
   
-  public int calculateDxToMakeVisible(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    return wvn.a(this.a).a(-this.a.g);
-  }
-  
-  public int calculateDyToMakeVisible(View paramView, int paramInt)
-  {
-    return wvn.a(this.a).b(-this.a.g);
-  }
-  
-  public int calculateTimeForScrolling(int paramInt)
-  {
-    return (int)(Math.max(0.01F, Math.min(Math.abs(paramInt), this.a.d) / this.a.d) * wvn.a(this.a));
-  }
-  
-  @Nullable
-  public PointF computeScrollVectorForPosition(int paramInt)
-  {
-    return new PointF(wvn.a(this.a).a(this.a.g), wvn.a(this.a).b(this.a.g));
+    if (this.jdField_a_of_type_Int < wvn.a(this.jdField_a_of_type_Wvn).size())
+    {
+      wvn.b(this.jdField_a_of_type_Wvn).remove(this.jdField_a_of_type_Int);
+      ((ArrayList)this.jdField_a_of_type_Wvn.a.a()).remove(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Wvn.notifyDataSetChanged();
+      if (CommodityListView.a(this.jdField_a_of_type_Wvn.a) != null) {
+        CommodityListView.a(this.jdField_a_of_type_Wvn.a).a(wvn.c(this.jdField_a_of_type_Wvn).size());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wvo
  * JD-Core Version:    0.7.0.1
  */

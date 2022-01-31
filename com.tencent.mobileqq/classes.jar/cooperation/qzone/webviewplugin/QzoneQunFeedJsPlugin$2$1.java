@@ -1,31 +1,31 @@
 package cooperation.qzone.webviewplugin;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.content.Context;
-import babr;
-import bafb;
-import bbac;
-import bgjg;
-import bgji;
-import bgjj;
-import bgjk;
+import bbcv;
+import bbgg;
+import bcdb;
+import bhsa;
+import bhsc;
+import bhsd;
+import bhse;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public class QzoneQunFeedJsPlugin$2$1
   implements Runnable
 {
-  public QzoneQunFeedJsPlugin$2$1(bgji parambgji) {}
+  public QzoneQunFeedJsPlugin$2$1(bhsc parambhsc) {}
   
   public void run()
   {
-    bgjg.a(this.a.jdField_a_of_type_Bgjg, this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
-    Activity localActivity = this.a.jdField_a_of_type_Bgjg.a.mRuntime.a();
-    if (bgjg.a(this.a.jdField_a_of_type_Bgjg) == null) {
-      bgjg.a(this.a.jdField_a_of_type_Bgjg, babr.a(localActivity, 230).setTitle(ajjy.a(2131646487)).setMessage(ajjy.a(2131646491)).setPositiveButton(ajjy.a(2131646488), new bgjk(this)).setNegativeButton(localActivity.getString(2131652318), new bgjj(this)));
+    bhsa.a(this.a.jdField_a_of_type_Bhsa, this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    Activity localActivity = this.a.jdField_a_of_type_Bhsa.a.mRuntime.a();
+    if (bhsa.a(this.a.jdField_a_of_type_Bhsa) == null) {
+      bhsa.a(this.a.jdField_a_of_type_Bhsa, bbcv.a(localActivity, 230).setTitle(ajyc.a(2131712275)).setMessage(ajyc.a(2131712279)).setPositiveButton(ajyc.a(2131712276), new bhse(this)).setNegativeButton(localActivity.getString(2131718137), new bhsd(this)));
     }
-    if (!bgjg.a(this.a.jdField_a_of_type_Bgjg).isShowing()) {
-      bgjg.a(this.a.jdField_a_of_type_Bgjg).show();
+    if (!bhsa.a(this.a.jdField_a_of_type_Bhsa).isShowing()) {
+      bhsa.a(this.a.jdField_a_of_type_Bhsa).show();
     }
   }
 }

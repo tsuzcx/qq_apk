@@ -1,41 +1,23 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.Comparator;
 
-class aiqg
-  implements aijr
+public class aiqg
+  implements Comparator<TroopInfo>
 {
-  aiqg(aiqf paramaiqf) {}
-  
-  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  public int a(TroopInfo paramTroopInfo1, TroopInfo paramTroopInfo2)
   {
-    aiqf localaiqf = this.a;
-    if (aiqf.a(this.a).jdField_b_of_type_Boolean)
-    {
-      paramStartCheckParam = aiqf.a(this.a).e;
-      aiqf.a(localaiqf, paramStartCheckParam);
-      if (!"message".equals(aiqf.a(this.a).f)) {
-        break label101;
-      }
+    if (paramTroopInfo1.lastMsgTime > paramTroopInfo2.lastMsgTime) {
+      return -1;
     }
-    label101:
-    for (int i = 1;; i = 0)
-    {
-      bajr.a(null, "cmshow", "Apollo", "download_confirm", i, 3, new String[] { String.valueOf(aiqf.a(this.a).jdField_b_of_type_Int) });
-      return;
-      paramStartCheckParam = aiqf.a(this.a).d;
-      break;
+    if (paramTroopInfo1.lastMsgTime < paramTroopInfo2.lastMsgTime) {
+      return 1;
     }
-  }
-  
-  public void b(CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    if (aiqf.a(this.a) != null) {
-      aiqf.a(this.a).c(-10001, aiqf.a(this.a).jdField_b_of_type_JavaLangString);
-    }
+    return ajuj.a(paramTroopInfo1.mComparePartInt, paramTroopInfo1.mCompareSpell, paramTroopInfo2.mComparePartInt, paramTroopInfo2.mCompareSpell);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aiqg
  * JD-Core Version:    0.7.0.1
  */

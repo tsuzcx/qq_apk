@@ -1,12 +1,23 @@
-public abstract interface nvz
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
+import com.tencent.qphone.base.util.QLog;
+
+public class nvz
+  implements mzb
 {
-  public abstract void a(boolean paramBoolean, String paramString1, String paramString2);
+  public nvz(ReadInJoyFeedsActivity.1 param1) {}
   
-  public abstract void b(int paramInt);
+  public void loaded(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseActivity", 2, "load 3256 html web resource finish");
+    }
+  }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nvz
  * JD-Core Version:    0.7.0.1
  */

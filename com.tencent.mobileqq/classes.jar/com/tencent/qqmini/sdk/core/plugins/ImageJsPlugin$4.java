@@ -3,8 +3,8 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bdfz;
-import bdnw;
+import beka;
+import besl;
 
 class ImageJsPlugin$4
   extends BroadcastReceiver
@@ -14,7 +14,7 @@ class ImageJsPlugin$4
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    bdnw.a("ImageJsPlugin", String.format("receiver.onReceive action=%s", new Object[] { paramContext }));
+    besl.a("ImageJsPlugin", String.format("receiver.onReceive action=%s", new Object[] { paramContext }));
     if ("micro_api_choose_image".equals(paramContext))
     {
       paramContext = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");

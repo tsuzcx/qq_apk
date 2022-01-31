@@ -1,24 +1,12 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
+import android.view.animation.Interpolator;
 
-class ucl
-  extends ParallelJobSegment<uiv, uci>
+public final class ucl
+  implements Interpolator
 {
-  public ucl(uch paramuch)
+  public float getInterpolation(float paramFloat)
   {
-    this(paramuch, "RequestCommentListSegment");
-  }
-  
-  public ucl(uch paramuch, String paramString)
-  {
-    super(paramString);
-  }
-  
-  protected void a(JobContext paramJobContext, uiv paramuiv)
-  {
-    szn localszn = new szn();
-    localszn.a = paramuiv;
-    slv.a().a(localszn, new ucm(this, paramJobContext, paramuiv));
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 

@@ -1,96 +1,47 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.AddFriendActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class avnp
-  extends avoo
 {
-  private AccountSearchPb.record jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private String jdField_a_of_type_JavaLangString;
-  private CharSequence b;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public avnp(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  public static avnp a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = paramrecord;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-  }
-  
-  public CharSequence a()
-  {
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(View paramView)
-  {
-    AddFriendActivity.a((Activity)paramView.getContext(), new SearchResultItem(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record), ((BaseActivity)paramView.getContext()).app, true, 1);
-    avwf.a(this.jdField_a_of_type_JavaLangString, 70, 0, paramView);
-    avwf.a(this.jdField_a_of_type_JavaLangString, 70, paramView, false);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    StringBuilder localStringBuilder;
-    if (this.b == null)
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    avnp localavnp = new avnp();
+    try
     {
-      localStringBuilder = new StringBuilder().append("(");
-      if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() == 0L) {
-        break label78;
-      }
+      paramString = new JSONObject(paramString);
+      localavnp.jdField_a_of_type_Int = paramString.optInt("animationType");
+      localavnp.jdField_a_of_type_JavaLangString = paramString.optString("boxZipUrl", null);
+      localavnp.b = paramString.optString("giftZipUrl", null);
+      localavnp.c = paramString.optString("giftParticleUrl", null);
+      localavnp.d = paramString.optString("lottieUrl", null);
+      return localavnp;
     }
-    label78:
-    for (String str = String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get());; str = this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.mobile.get())
+    catch (Exception paramString)
     {
-      this.b = avwf.a(str + ")", this.jdField_a_of_type_JavaLangString);
-      return this.b;
+      paramString.printStackTrace();
+      QLog.e("QzoneGiftManager", 1, "handleFlashChatConfig failed" + paramString);
     }
+    return localavnp;
   }
   
-  public String b()
+  public String toString()
   {
-    if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() != 0L) {
-      return String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get());
-    }
-    return this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.mobile.get();
-  }
-  
-  public int c()
-  {
-    if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() != 0L) {
-      return 1;
-    }
-    return 11;
-  }
-  
-  public CharSequence c()
-  {
-    return ajjy.a(2131639560);
-  }
-  
-  public CharSequence d()
-  {
-    return null;
+    return " mBoxZipUrl = " + this.jdField_a_of_type_JavaLangString + " mGiftZipUrl = " + this.b + " mGiftUrl = " + this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avnp
  * JD-Core Version:    0.7.0.1
  */

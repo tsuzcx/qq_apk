@@ -1,42 +1,75 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.util.QQAvatarFHDDecoder.1.1;
+import com.tencent.mobileqq.util.QQAvatarFHDDecoder.1.2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class bazu
-  implements View.OnTouchListener
+  extends ajxl
 {
-  public bazu(WebViewFragment paramWebViewFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    switch (paramMotionEvent.getAction())
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-    default: 
-      bool1 = false;
+      localStringBuilder = new StringBuilder().append("onGetHeadInfo ").append(paramBoolean).append(" ");
+      if (paramSetting == null) {
+        break label99;
+      }
     }
-    do
+    label99:
+    for (String str = paramSetting.uin;; str = "")
     {
-      return bool1;
-      bool1 = bool2;
-    } while (paramView != this.a.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "vg onTouch");
+      QLog.i("QQAvatarFHDDecoder", 2, str);
+      if ((paramSetting != null) && (paramSetting.uin != null) && (paramSetting.uin.equals(bazt.a(this.a)))) {
+        ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.1(this, paramSetting), 128, null, true);
+      }
+      return;
     }
-    paramView = new HashMap(2);
-    paramView.put("X", Integer.valueOf((int)paramMotionEvent.getX()));
-    paramView.put("Y", Integer.valueOf((int)paramMotionEvent.getY()));
-    this.a.a(8589934606L, paramView);
-    return true;
+  }
+  
+  public void onGetHeadInfoEmpty(boolean paramBoolean, int paramInt, List<String> paramList)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onGetHeadInfoEmpty ").append(paramBoolean).append(" ").append(paramInt).append(" ");
+      if (paramList == null) {
+        break label138;
+      }
+    }
+    label138:
+    for (String str = paramList.toString();; str = "")
+    {
+      QLog.i("QQAvatarFHDDecoder", 2, str);
+      if (paramList != null)
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          str = (String)paramList.next();
+          if ((str != null) && (str.equals(bazt.a(this.a))))
+          {
+            if (!paramBoolean) {
+              break label145;
+            }
+            ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.2(this, str), 128, null, true);
+          }
+        }
+      }
+      return;
+    }
+    label145:
+    bazt.a(this.a).obtainMessage(1).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bazu
  * JD-Core Version:    0.7.0.1
  */

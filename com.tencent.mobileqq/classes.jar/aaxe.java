@@ -1,14 +1,14 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aaxe
-  implements Handler.Callback
+  implements DialogInterface.OnClickListener
 {
-  aaxe(aaxd paramaaxd) {}
+  aaxe(aaxc paramaaxc) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
+    paramDialogInterface.dismiss();
   }
 }
 

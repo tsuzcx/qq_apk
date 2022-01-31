@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import ajjy;
-import bbmy;
+import ajyc;
+import bcpw;
 import com.tencent.mobileqq.gamecenter.view.QQGameStatusView;
 import cooperation.wadl.ipc.WadlParams;
 import cooperation.wadl.ipc.WadlResult;
@@ -32,7 +32,7 @@ class QQGamePubAccountFragment$15
     if (this.a.b == 7)
     {
       if (this.this$0.getActivity() != null) {
-        bbmy.a(this.this$0.getActivity(), ajjy.a(2131644530), 0).a();
+        bcpw.a(this.this$0.getActivity(), ajyc.a(2131710315), 0).a();
       }
       QQGamePubAccountFragment.a(this.this$0).a(this.a.a.a, 2);
       return;

@@ -1,6 +1,19 @@
-public abstract interface bbte
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+
+public class bbte
+  implements TouchWebView.OnScrollChangedListener
 {
-  public abstract void exec(String paramString, bbtb parambbtb);
+  public bbte(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  {
+    if (this.a.a != null) {
+      this.a.a.scrollBy(0, paramInt2 - paramInt4);
+    }
+  }
 }
 
 

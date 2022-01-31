@@ -5,12 +5,12 @@ import android.opengl.GLES20;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import autt;
-import auwn;
-import auwo;
-import awje;
-import bedt;
-import bgxr;
+import avtc;
+import avwe;
+import avwf;
+import axik;
+import bflj;
+import biht;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
@@ -28,8 +28,8 @@ public class SimpleEffectsCaptureView
   implements CameraInterFace
 {
   private static QQFilterRenderManager jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
-  private auwn jdField_a_of_type_Auwn;
-  private auwo jdField_a_of_type_Auwo;
+  private avwe jdField_a_of_type_Avwe;
+  private avwf jdField_a_of_type_Avwf;
   protected QQFilterRenderManager a;
   private short[] jdField_a_of_type_ArrayOfShort;
   private float[] jdField_b_of_type_ArrayOfFloat = new float[50];
@@ -41,8 +41,8 @@ public class SimpleEffectsCaptureView
   
   static
   {
-    bedt.a();
-    bgxr.a();
+    bflj.a();
+    biht.a();
     VideoPrefsUtil.init(BaseApplicationImpl.getContext(), ShortVideoUtils.a());
   }
   
@@ -88,7 +88,7 @@ public class SimpleEffectsCaptureView
   {
     paramArrayOfByte = a(paramArrayOfByte, paramInt1, paramInt2);
     paramInt2 >>= 1;
-    paramInt1 = awje.q;
+    paramInt1 = axik.q;
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture != null) {
       paramInt1 = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.a();
     }
@@ -104,8 +104,8 @@ public class SimpleEffectsCaptureView
     if (QLog.isColorLevel()) {
       QLog.d("SimpleEffectsCaptureView", 2, "onAudioFrames length=" + paramInt2 + " shData.length: " + paramArrayOfByte.length + " duration: " + i + " countRefreshMs: " + i1);
     }
-    if (this.jdField_a_of_type_Auwn != null) {
-      this.jdField_a_of_type_Auwn.a(n, this.jdField_b_of_type_ArrayOfFloat);
+    if (this.jdField_a_of_type_Avwe != null) {
+      this.jdField_a_of_type_Avwe.a(n, this.jdField_b_of_type_ArrayOfFloat);
     }
   }
   
@@ -150,8 +150,8 @@ public class SimpleEffectsCaptureView
       localQQFilterRenderManager.setParam("key_width", String.valueOf(this.n));
       localQQFilterRenderManager.setParam("key_height", String.valueOf(this.o));
       i = localQQFilterRenderManager.drawFrame(paramInt);
-      if (this.jdField_a_of_type_Auwo != null) {
-        this.jdField_a_of_type_Auwo.a(System.currentTimeMillis());
+      if (this.jdField_a_of_type_Avwf != null) {
+        this.jdField_a_of_type_Avwf.a(System.currentTimeMillis());
       }
       return i;
     }
@@ -243,9 +243,9 @@ public class SimpleEffectsCaptureView
     }
   }
   
-  public void setAudioVolumeListener(auwn paramauwn)
+  public void setAudioVolumeListener(avwe paramavwe)
   {
-    this.jdField_a_of_type_Auwn = paramauwn;
+    this.jdField_a_of_type_Avwe = paramavwe;
   }
   
   public void setBeauty(int paramInt)
@@ -269,9 +269,9 @@ public class SimpleEffectsCaptureView
     this.m = paramBoolean;
   }
   
-  public void setFaceEffectListener(auwo paramauwo)
+  public void setFaceEffectListener(avwf paramavwf)
   {
-    this.jdField_a_of_type_Auwo = paramauwo;
+    this.jdField_a_of_type_Avwf = paramavwf;
   }
   
   protected void u()
@@ -287,7 +287,7 @@ public class SimpleEffectsCaptureView
       if (QLog.isColorLevel()) {
         QLog.d("SimpleEffectsCaptureView", 2, "QQFilterRenderManager initQQFilterManger");
       }
-      this.l = autt.b();
+      this.l = avtc.b();
       QQFilterRenderManager localQQFilterRenderManager = new QQFilterRenderManager(new int[] { 25 });
       this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = localQQFilterRenderManager;
       jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = localQQFilterRenderManager;

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.shortvideo;
 
-import aweg;
-import awej;
-import awer;
-import awey;
+import axdo;
+import axdr;
+import axdz;
+import axeg;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 
 public class ShortVideoPreDownloader$3
   implements Runnable
 {
-  public ShortVideoPreDownloader$3(awer paramawer, awej paramawej, MessageForShortVideo paramMessageForShortVideo, awey paramawey) {}
+  public ShortVideoPreDownloader$3(axdz paramaxdz, axdr paramaxdr, MessageForShortVideo paramMessageForShortVideo, axeg paramaxeg) {}
   
   public void run()
   {
-    awer.a("consumeShortVideoThumb", "start download thumb, fileType=" + this.jdField_a_of_type_Awej.e + ", uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-    aweg.a(this.jdField_a_of_type_Awey, this.this$0.a);
+    axdz.a("consumeShortVideoThumb", "start download thumb, fileType=" + this.jdField_a_of_type_Axdr.e + ", uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+    axdo.a(this.jdField_a_of_type_Axeg, this.this$0.a);
   }
 }
 

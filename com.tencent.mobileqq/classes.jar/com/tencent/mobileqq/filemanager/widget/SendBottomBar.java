@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import ajjy;
+import ajyc;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -24,30 +24,30 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aobe;
-import aonj;
-import aonm;
-import apbx;
-import apcb;
-import apci;
-import apck;
-import apdh;
-import apdj;
-import apft;
-import apfv;
-import apfw;
-import apfx;
-import apfy;
-import apfz;
-import apgd;
-import apgi;
-import apgj;
-import axea;
-import bafb;
-import bbms;
-import begr;
-import behe;
-import bffc;
+import aory;
+import apee;
+import apeh;
+import aptr;
+import aptv;
+import apuc;
+import apue;
+import apvb;
+import apvd;
+import apxw;
+import apxy;
+import apxz;
+import apya;
+import apyb;
+import apyc;
+import apyg;
+import apyl;
+import apym;
+import ayec;
+import bbgg;
+import bcpq;
+import bfol;
+import bfoy;
+import bgmt;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -75,27 +75,27 @@ public class SendBottomBar
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new apfx(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new apya(this);
   private View jdField_a_of_type_AndroidViewView;
   private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aobe jdField_a_of_type_Aobe;
-  private apdj jdField_a_of_type_Apdj;
-  public bafb a;
-  public bbms a;
-  public begr a;
+  private aory jdField_a_of_type_Aory;
+  private apvd jdField_a_of_type_Apvd;
+  public bbgg a;
+  public bcpq a;
+  public bfol a;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private BaseFileAssistantActivity jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity;
   private QQBlurView jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
   private boolean jdField_a_of_type_Boolean;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new apfy(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new apyb(this);
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private boolean jdField_b_of_type_Boolean;
-  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new apfz(this);
+  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new apyc(this);
   private TextView jdField_c_of_type_AndroidWidgetTextView;
   private boolean jdField_c_of_type_Boolean;
-  private View.OnClickListener jdField_d_of_type_AndroidViewView$OnClickListener = new apgd(this);
+  private View.OnClickListener jdField_d_of_type_AndroidViewView$OnClickListener = new apyg(this);
   private TextView jdField_d_of_type_AndroidWidgetTextView;
   private boolean jdField_d_of_type_Boolean = true;
   private TextView jdField_e_of_type_AndroidWidgetTextView;
@@ -104,9 +104,9 @@ public class SendBottomBar
   public SendBottomBar(Context paramContext)
   {
     super(paramContext, null);
-    this.jdField_a_of_type_Begr = null;
-    this.jdField_a_of_type_Bafb = null;
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131494898, this);
+    this.jdField_a_of_type_Bfol = null;
+    this.jdField_a_of_type_Bbgg = null;
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560469, this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     h();
   }
@@ -114,9 +114,9 @@ public class SendBottomBar
   public SendBottomBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Begr = null;
-    this.jdField_a_of_type_Bafb = null;
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131494898, this, true);
+    this.jdField_a_of_type_Bfol = null;
+    this.jdField_a_of_type_Bbgg = null;
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560469, this, true);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     h();
   }
@@ -130,22 +130,22 @@ public class SendBottomBar
     if (!c()) {
       return false;
     }
-    this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new apft(this));
+    this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new apxw(this));
     Object localObject = "";
     switch (i)
     {
     }
     for (;;)
     {
-      localObject = apck.a("排序方式:\n" + (String)localObject, (String)localObject, null);
+      localObject = apue.a("排序方式:\n" + (String)localObject, (String)localObject, null);
       this.jdField_d_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
       return true;
-      localObject = ajjy.a(2131648002);
+      localObject = ajyc.a(2131713789);
       continue;
-      localObject = ajjy.a(2131648011);
+      localObject = ajyc.a(2131713798);
       continue;
-      localObject = ajjy.a(2131648028);
+      localObject = ajyc.a(2131713815);
     }
   }
   
@@ -154,17 +154,17 @@ public class SendBottomBar
     int[] arrayOfInt = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a();
     if (arrayOfInt == null)
     {
-      this.jdField_a_of_type_Begr = null;
+      this.jdField_a_of_type_Bfol = null;
       return false;
     }
     int j = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.g();
-    this.jdField_a_of_type_Begr = ((begr)behe.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, null));
+    this.jdField_a_of_type_Bfol = ((bfol)bfoy.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, null));
     int k = arrayOfInt.length;
     int i = 0;
     while (i < k)
     {
       int m = arrayOfInt[i];
-      begr localbegr;
+      bfol localbfol;
       String str;
       boolean bool;
       switch (m)
@@ -173,57 +173,57 @@ public class SendBottomBar
         i += 1;
         break;
       case 1: 
-        localbegr = this.jdField_a_of_type_Begr;
-        str = ajjy.a(2131647996);
+        localbfol = this.jdField_a_of_type_Bfol;
+        str = ajyc.a(2131713783);
         if (j == m) {}
         for (bool = true;; bool = false)
         {
-          localbegr.a(str, bool);
+          localbfol.a(str, bool);
           break;
         }
       case 0: 
-        localbegr = this.jdField_a_of_type_Begr;
-        str = ajjy.a(2131648012);
+        localbfol = this.jdField_a_of_type_Bfol;
+        str = ajyc.a(2131713799);
         if (j == m) {}
         for (bool = true;; bool = false)
         {
-          localbegr.a(str, bool);
+          localbfol.a(str, bool);
           break;
         }
       case 2: 
-        localbegr = this.jdField_a_of_type_Begr;
-        str = ajjy.a(2131648003);
+        localbfol = this.jdField_a_of_type_Bfol;
+        str = ajyc.a(2131713790);
         if (j == m) {}
         for (bool = true;; bool = false)
         {
-          localbegr.a(str, bool);
+          localbfol.a(str, bool);
           break;
         }
       }
     }
-    this.jdField_a_of_type_Begr.d(ajjy.a(2131648008));
-    this.jdField_a_of_type_Begr.a(new apfw(this));
+    this.jdField_a_of_type_Bfol.d(ajyc.a(2131713795));
+    this.jdField_a_of_type_Bfol.a(new apxz(this));
     return true;
   }
   
   private void h()
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = ((BaseFileAssistantActivity)this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131306212));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131305215));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131298619));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131310066));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371909));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370887));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364177));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375830));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_d_of_type_AndroidViewView$OnClickListener);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131306209));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371906));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131299735));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131365303));
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131299736));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365304));
     this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131310043);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131375807);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     if (1 == this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.b()) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131648006));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131713793));
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getAppRuntime());
     this.jdField_d_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getBoolean("_fm_select_showd", false);
@@ -231,15 +231,15 @@ public class SendBottomBar
   
   private void i()
   {
-    apci.a("0x80087C5");
-    b(2131629460);
+    apuc.a("0x80087C5");
+    b(2131695141);
     new Handler().postDelayed(new SendBottomBar.6(this), 100L);
   }
   
   private void j()
   {
     Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a();
-    Object localObject3 = aonm.a();
+    Object localObject3 = apeh.a();
     Object localObject1 = new ArrayList();
     localObject3 = ((Set)localObject3).iterator();
     while (((Iterator)localObject3).hasNext()) {
@@ -279,7 +279,7 @@ public class SendBottomBar
           localObject2 = new Bundle();
           ((Bundle)localObject2).putStringArrayList("string_filepaths", (ArrayList)localObject1);
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-          bffc.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, 16, (Bundle)localObject2);
+          bgmt.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, 16, (Bundle)localObject2);
         }
         else
         {
@@ -299,7 +299,7 @@ public class SendBottomBar
     boolean bool = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.d();
     if ((1 == i) && (!bool))
     {
-      apbx.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, 2131632667, 2131632666, new apgi(this));
+      aptr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, 2131698403, 2131698402, new apyl(this));
       return;
     }
     j();
@@ -325,48 +325,48 @@ public class SendBottomBar
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.c();
     if (localObject1 == null) {
       if (i == 5) {
-        localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131632302) + this.jdField_a_of_type_AndroidContentContext.getString(2131627006) + aonm.b() + this.jdField_a_of_type_AndroidContentContext.getString(2131627007);
+        localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698028) + this.jdField_a_of_type_AndroidContentContext.getString(2131692643) + apeh.b() + this.jdField_a_of_type_AndroidContentContext.getString(2131692644);
       }
     }
     for (;;)
     {
-      long l = aonm.d();
+      long l = apeh.d();
       Object localObject2 = "";
       if (l > 0L)
       {
-        localObject2 = this.jdField_a_of_type_AndroidContentContext.getString(2131626853) + apdh.a(l);
+        localObject2 = this.jdField_a_of_type_AndroidContentContext.getString(2131692466) + apvb.a(l);
         this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(null);
       }
       Object localObject3 = localObject2;
-      if (aonm.e() > 0L)
+      if (apeh.e() > 0L)
       {
         localObject3 = localObject2;
-        if (!apck.a(this.jdField_a_of_type_AndroidContentContext)) {
-          localObject3 = (String)localObject2 + this.jdField_a_of_type_AndroidContentContext.getString(2131626854) + apdh.a(aonm.e());
+        if (!apue.a(this.jdField_a_of_type_AndroidContentContext)) {
+          localObject3 = (String)localObject2 + this.jdField_a_of_type_AndroidContentContext.getString(2131692467) + apvb.a(apeh.e());
         }
       }
-      if (apck.a(this.jdField_a_of_type_AndroidContentContext)) {
-        localObject3 = this.jdField_a_of_type_AndroidContentContext.getString(2131626853) + aonm.b() + ajjy.a(2131648005);
+      if (apue.a(this.jdField_a_of_type_AndroidContentContext)) {
+        localObject3 = this.jdField_a_of_type_AndroidContentContext.getString(2131692466) + apeh.b() + ajyc.a(2131713792);
       }
       if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetCheckBox.getVisibility() == 0))
       {
-        l = aonm.b();
+        l = apeh.b();
         this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
         this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
         if (l > 99L) {
-          localObject1 = ajjy.a(2131648009);
+          localObject1 = ajyc.a(2131713796);
         }
         for (;;)
         {
           if (b())
           {
-            this.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131648013));
-            localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131099734);
+            this.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131713800));
+            localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131165271);
             this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
             this.jdField_a_of_type_AndroidWidgetTextView.setTextColor((ColorStateList)localObject1);
             this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 17.0F);
             this.jdField_a_of_type_AndroidWidgetCheckBox.setCompoundDrawables(null, null, null, null);
-            this.jdField_a_of_type_AndroidWidgetCheckBox.setTextColor(getResources().getColor(2131101267));
+            this.jdField_a_of_type_AndroidWidgetCheckBox.setTextColor(getResources().getColor(2131166861));
             this.jdField_a_of_type_AndroidWidgetCheckBox.setTextSize(1, 17.0F);
             if (l > 0L)
             {
@@ -377,24 +377,24 @@ public class SendBottomBar
               return;
               if (i == 6001)
               {
-                localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131626801) + this.jdField_a_of_type_AndroidContentContext.getString(2131627006) + aonm.b() + this.jdField_a_of_type_AndroidContentContext.getString(2131627007);
+                localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692402) + this.jdField_a_of_type_AndroidContentContext.getString(2131692643) + apeh.b() + this.jdField_a_of_type_AndroidContentContext.getString(2131692644);
                 break;
               }
               if (i == 10006)
               {
-                localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131629116);
+                localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694793);
                 break;
               }
-              localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131626855) + this.jdField_a_of_type_AndroidContentContext.getString(2131627006) + aonm.b() + this.jdField_a_of_type_AndroidContentContext.getString(2131627007);
+              localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131692468) + this.jdField_a_of_type_AndroidContentContext.getString(2131692643) + apeh.b() + this.jdField_a_of_type_AndroidContentContext.getString(2131692644);
               break;
               if (l == 0L)
               {
-                localObject1 = ajjy.a(2131648016);
+                localObject1 = ajyc.a(2131713803);
                 this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
                 this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
                 continue;
               }
-              localObject1 = ajjy.a(2131648026) + String.valueOf(l) + ")";
+              localObject1 = ajyc.a(2131713813) + String.valueOf(l) + ")";
               continue;
             }
             this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
@@ -406,17 +406,17 @@ public class SendBottomBar
         return;
       }
       boolean bool1;
-      if ((this.jdField_c_of_type_Boolean) && (!apck.a(this.jdField_a_of_type_AndroidContentContext)))
+      if ((this.jdField_c_of_type_Boolean) && (!apue.a(this.jdField_a_of_type_AndroidContentContext)))
       {
-        l = aonm.b();
-        localObject1 = ajjy.a(2131648014) + String.valueOf(l) + ")";
+        l = apeh.b();
+        localObject1 = ajyc.a(2131713801) + String.valueOf(l) + ")";
         this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
         this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_e_of_type_AndroidWidgetTextView.setText((CharSequence)localObject3);
         this.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
         localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
-        if (aonm.b() > 0L) {}
+        if (apeh.b() > 0L) {}
         for (bool1 = true;; bool1 = false)
         {
           ((TextView)localObject2).setEnabled(bool1);
@@ -435,21 +435,21 @@ public class SendBottomBar
         {
           this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
           this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-          if (apck.a(this.jdField_a_of_type_AndroidContentContext)) {
-            if (aonm.b() == 0L)
+          if (apue.a(this.jdField_a_of_type_AndroidContentContext)) {
+            if (apeh.b() == 0L)
             {
               this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-              if (apck.a() == null) {
+              if (apue.a() == null) {
                 break label1209;
               }
               bool1 = true;
               label979:
               this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
               if (1 == this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.b()) {
-                this.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131648000));
+                this.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131713787));
               }
               localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
-              if (aonm.b() <= 0L) {
+              if (apeh.b() <= 0L) {
                 break label1214;
               }
             }
@@ -467,7 +467,7 @@ public class SendBottomBar
         {
           this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
           this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-          this.jdField_d_of_type_AndroidWidgetTextView.setText(2131632646);
+          this.jdField_d_of_type_AndroidWidgetTextView.setText(2131698382);
           localObject2 = (RelativeLayout.LayoutParams)this.jdField_d_of_type_AndroidWidgetTextView.getLayoutParams();
           ((RelativeLayout.LayoutParams)localObject2).addRule(9);
           this.jdField_d_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
@@ -475,7 +475,7 @@ public class SendBottomBar
         }
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131632646);
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131698382);
         break;
         this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_d_of_type_AndroidWidgetTextView.setText((CharSequence)localObject3);
@@ -499,12 +499,12 @@ public class SendBottomBar
   {
     if (!AppNetConnInfo.isNetSupport())
     {
-      apcb.a(2131628882);
+      aptv.a(2131694543);
       return;
     }
-    if ((apck.a()) && (aonm.c() > aonj.a()))
+    if ((apue.a()) && (apeh.c() > apee.a()))
     {
-      apck.a(true, this.jdField_a_of_type_AndroidContentContext, new apgj(this), paramInt);
+      apue.a(true, this.jdField_a_of_type_AndroidContentContext, new apym(this), paramInt);
       return;
     }
     c();
@@ -554,8 +554,8 @@ public class SendBottomBar
   public void b()
   {
     Object localObject2 = null;
-    Object localObject1 = aonm.a();
-    ArrayList localArrayList = aonm.b();
+    Object localObject1 = apeh.a();
+    ArrayList localArrayList = apeh.b();
     TeamWorkFileImportInfo localTeamWorkFileImportInfo = new TeamWorkFileImportInfo();
     label148:
     int i;
@@ -565,7 +565,7 @@ public class SendBottomBar
         localObject1 = (FileInfo)((Set)localObject1).iterator().next();
         localTeamWorkFileImportInfo.c = ((FileInfo)localObject1).c();
         localTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString = ((FileInfo)localObject1).d();
-        localTeamWorkFileImportInfo.e = apck.a(((FileInfo)localObject1).d());
+        localTeamWorkFileImportInfo.e = apue.a(((FileInfo)localObject1).d());
         localTeamWorkFileImportInfo.jdField_d_of_type_Int = 10;
         localTeamWorkFileImportInfo.jdField_d_of_type_Long = ((FileInfo)localObject1).a();
         if ((this.jdField_a_of_type_AndroidContentContext == null) || (!(this.jdField_a_of_type_AndroidContentContext instanceof FMActivity))) {
@@ -611,7 +611,7 @@ public class SendBottomBar
       if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseFileAssistantActivity)) {}
       for (i = ((BaseFileAssistantActivity)this.jdField_a_of_type_AndroidContentContext).c();; i = 0)
       {
-        axea.a(localTeamWorkFileImportInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i);
+        ayec.a(localTeamWorkFileImportInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i);
         if (localObject1 != null) {
           ((Activity)localObject1).finish();
         }
@@ -659,25 +659,25 @@ public class SendBottomBar
   
   void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Bbms != null) {
+    if (this.jdField_a_of_type_Bcpq != null) {
       d();
     }
     for (;;)
     {
-      if (!this.jdField_a_of_type_Bbms.isShowing()) {
-        this.jdField_a_of_type_Bbms.show();
+      if (!this.jdField_a_of_type_Bcpq.isShowing()) {
+        this.jdField_a_of_type_Bcpq.show();
       }
       return;
-      this.jdField_a_of_type_Bbms = new bbms(SplashActivity.sTopActivity, SplashActivity.sTopActivity.getResources().getDimensionPixelSize(2131167766));
-      this.jdField_a_of_type_Bbms.setCancelable(false);
-      this.jdField_a_of_type_Bbms.a(ajjy.a(2131648029));
-      this.jdField_a_of_type_Bbms.show();
+      this.jdField_a_of_type_Bcpq = new bcpq(SplashActivity.sTopActivity, SplashActivity.sTopActivity.getResources().getDimensionPixelSize(2131298865));
+      this.jdField_a_of_type_Bcpq.setCancelable(false);
+      this.jdField_a_of_type_Bcpq.a(ajyc.a(2131713816));
+      this.jdField_a_of_type_Bcpq.show();
     }
   }
   
   public void c()
   {
-    b(2131629460);
+    b(2131695141);
     new Handler().postDelayed(new SendBottomBar.10(this), 100L);
   }
   
@@ -685,8 +685,8 @@ public class SendBottomBar
   {
     try
     {
-      if ((this.jdField_a_of_type_Bbms != null) && (this.jdField_a_of_type_Bbms.isShowing())) {
-        this.jdField_a_of_type_Bbms.cancel();
+      if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing())) {
+        this.jdField_a_of_type_Bcpq.cancel();
       }
       return;
     }
@@ -718,7 +718,7 @@ public class SendBottomBar
     while (!ThemeUtil.isDefaultOrDIYTheme(false)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)findViewById(2131312968));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)findViewById(2131378793));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(localListView);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView);
@@ -750,22 +750,22 @@ public class SendBottomBar
     }
   }
   
-  public void setClickListener(apdj paramapdj)
+  public void setClickListener(apvd paramapvd)
   {
-    this.jdField_a_of_type_Apdj = paramapdj;
+    this.jdField_a_of_type_Apvd = paramapvd;
   }
   
   public void setDocsCheck(boolean paramBoolean)
   {
     boolean bool;
-    if ((paramBoolean) && ((this.jdField_a_of_type_Boolean) || (aonm.b())))
+    if ((paramBoolean) && ((this.jdField_a_of_type_Boolean) || (apeh.b())))
     {
       bool = true;
       this.jdField_c_of_type_Boolean = bool;
       if (QLog.isDebugVersion()) {
-        QLog.i("TeamWorkSender", 1, "docsCheck[" + paramBoolean + "],bCheckSendToDocs[" + this.jdField_a_of_type_Boolean + "], selectAllDocs[" + aonm.b() + "] ,hasSelectDocsFile[" + aonm.c() + "]");
+        QLog.i("TeamWorkSender", 1, "docsCheck[" + paramBoolean + "],bCheckSendToDocs[" + this.jdField_a_of_type_Boolean + "], selectAllDocs[" + apeh.b() + "] ,hasSelectDocsFile[" + apeh.c() + "]");
       }
-      if (aonm.b() != 0L) {
+      if (apeh.b() != 0L) {
         break label284;
       }
       this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
@@ -787,16 +787,16 @@ public class SendBottomBar
         }
         this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setText(ajjy.a(2131648010));
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setOnClickListener(new apfv(this));
+        this.jdField_a_of_type_AndroidWidgetCheckBox.setText(ajyc.a(2131713797));
+        this.jdField_a_of_type_AndroidWidgetCheckBox.setOnClickListener(new apxy(this));
         this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
         this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-        apci.a("0X800942A");
+        apuc.a("0X800942A");
         return;
         bool = false;
         break;
-      } while ((aonm.b() <= 0L) || (aonm.c()));
+      } while ((apeh.b() <= 0L) || (apeh.c()));
       this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
       this.jdField_a_of_type_Boolean = false;
     }
@@ -834,15 +834,15 @@ public class SendBottomBar
       if (!paramBoolean) {
         break;
       }
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setText(ajjy.a(2131647999));
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setText(ajyc.a(2131713786));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setText(ajjy.a(2131648023));
+    this.jdField_a_of_type_AndroidWidgetCheckBox.setText(ajyc.a(2131713810));
   }
   
-  public void setSelectEvent(aobe paramaobe)
+  public void setSelectEvent(aory paramaory)
   {
-    this.jdField_a_of_type_Aobe = paramaobe;
+    this.jdField_a_of_type_Aory = paramaory;
   }
   
   public void setSelectedAllMode()
@@ -860,10 +860,10 @@ public class SendBottomBar
     this.jdField_d_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
     this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131648022));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131713809));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_c_of_type_AndroidViewView$OnClickListener);
     if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
-      this.jdField_e_of_type_AndroidWidgetTextView.setBackgroundDrawable(getResources().getDrawable(2130838503));
+      this.jdField_e_of_type_AndroidWidgetTextView.setBackgroundDrawable(getResources().getDrawable(2130838514));
     }
   }
 }

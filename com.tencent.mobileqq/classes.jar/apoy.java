@@ -1,25 +1,39 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.qqprotect.qsec.QSecFramework;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 
-public class apoy
-  implements View.OnTouchListener
+class apoy
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public apoy(NearbyHybridFragment paramNearbyHybridFragment) {}
+  apoy(apox paramapox) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if ((paramMotionEvent.getAction() == 1) && (QSecFramework.a().a(1001).booleanValue())) {
-      QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(83), Integer.valueOf(1), Integer.valueOf(6), "clickWeb", null }, null);
+    if ((paramBoolean) && (this.a.a != null))
+    {
+      this.a.a.a(paramInt);
+      this.a.b(paramInt);
     }
-    return false;
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    apox.a(this.a, false);
+    if ((this.a.a != null) && (!this.a.a.b(apox.a(this.a)))) {
+      this.a.a.d();
+    }
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    apox.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apoy
  * JD-Core Version:    0.7.0.1
  */

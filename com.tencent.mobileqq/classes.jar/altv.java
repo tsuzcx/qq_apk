@@ -1,17 +1,17 @@
-import android.view.View;
+import com.tencent.ark.ark.PlayerStub;
+import com.tencent.ark.ark.PlayerStubFactory;
 
-public class altv
-  extends alts
+final class altv
+  implements ark.PlayerStubFactory
 {
-  public void a(alti paramalti, int paramInt, boolean paramBoolean)
+  public ark.PlayerStub CreateStub()
   {
-    super.a(paramalti, paramInt, paramBoolean);
-    paramalti.b.setBackgroundResource(2130838966);
+    return new altu();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     altv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,224 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import android.support.annotation.NonNull;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import com.tencent.qphone.base.util.QLog;
 
-class vlb
-  extends Handler
+public class vlb
+  extends vlj
+  implements Drawable.Callback
 {
-  vlb(vla paramvla) {}
+  public static final String a;
+  public int a;
+  public vlc a;
+  public vpr a;
+  public vps a;
+  public boolean a;
   
-  vlb(vla paramvla, Handler paramHandler)
+  static
   {
-    super(paramHandler.getLooper());
+    jdField_a_of_type_JavaLangString = vlb.class.getSimpleName();
   }
   
-  public void handleMessage(Message paramMessage)
+  public vlb(DoodleView paramDoodleView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      throw new RuntimeException("Unknown message " + paramMessage);
-    case 1: 
-      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onShowPress(this.a.jdField_a_of_type_AndroidViewMotionEvent);
+    super(paramDoodleView);
+    this.jdField_a_of_type_Vpr = new vpr();
+    this.jdField_a_of_type_Vpr.a(false);
+    this.jdField_a_of_type_Vpr.a(6.0F);
+    this.jdField_a_of_type_Vpr.b(0.2F);
+  }
+  
+  private void a(MotionEvent paramMotionEvent)
+  {
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    if (this.jdField_a_of_type_Vpr.b(this.jdField_a_of_type_Vps, f1, f2)) {
+      if (this.jdField_a_of_type_Vlc != null) {
+        this.jdField_a_of_type_Vlc.a(this.jdField_a_of_type_Vps);
+      }
     }
+    while ((this.jdField_a_of_type_Vpr.a(this.jdField_a_of_type_Vps, f1, f2)) || (!this.jdField_a_of_type_Vpr.a(this.jdField_a_of_type_Vps, f1, f2, true)) || (this.jdField_a_of_type_Vlc == null) || (this.jdField_a_of_type_Vps == null)) {
+      return;
+    }
+    veg.b(jdField_a_of_type_JavaLangString, "click the item:" + this.jdField_a_of_type_Vps);
+    this.jdField_a_of_type_Vlc.a(this.jdField_a_of_type_Vps, 0, 0);
+  }
+  
+  private boolean a(float paramFloat1, float paramFloat2)
+  {
+    return this.jdField_a_of_type_Vpr.a(this.jdField_a_of_type_Vps, paramFloat1, paramFloat2, true);
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public vps a()
+  {
+    return this.jdField_a_of_type_Vps;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Vps = null;
+    this.jdField_a_of_type_Vpr.a();
+  }
+  
+  protected void a(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_Vps == null) {
+      return;
+    }
+    paramCanvas.save();
+    this.jdField_a_of_type_Vps.a(paramCanvas);
+    paramCanvas.restore();
+  }
+  
+  public void a(vlc paramvlc)
+  {
+    this.jdField_a_of_type_Vlc = paramvlc;
+  }
+  
+  public void a(vps paramvps)
+  {
+    this.jdField_a_of_type_Vps = paramvps;
+    if (this.jdField_a_of_type_Vps == null) {}
     do
     {
       return;
-      this.a.a();
-      return;
-    } while (this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener == null);
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onSingleTapConfirmed(this.a.jdField_a_of_type_AndroidViewMotionEvent);
-      return;
-    }
-    this.a.b = true;
+      if ((this.jdField_a_of_type_Vps instanceof vlf))
+      {
+        this.jdField_a_of_type_Vpr.a(6.0F);
+        this.jdField_a_of_type_Vpr.b(0.2F);
+        return;
+      }
+    } while (!(this.jdField_a_of_type_Vps instanceof vkt));
+    this.jdField_a_of_type_Vpr.a(18.0F);
+    this.jdField_a_of_type_Vpr.b(0.2F);
   }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  protected boolean a(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Vps = null;
+    g();
+  }
+  
+  public void b(Canvas paramCanvas)
+  {
+    throw new IllegalStateException("TextFaceEditLayer should not save");
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Vps != null;
+  }
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    if (this.jdField_a_of_type_Vpr.a(this.jdField_a_of_type_Vps, f1, f2, true))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "accept inside x:" + paramMotionEvent.getX() + " y:" + paramMotionEvent.getY());
+      }
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "accept outside x:" + paramMotionEvent.getX() + " y:" + paramMotionEvent.getY());
+    }
+    return false;
+  }
+  
+  public boolean c(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean e(MotionEvent paramMotionEvent)
+  {
+    if (this.jdField_a_of_type_Vlk != null) {
+      this.jdField_a_of_type_Vlk.a(this, paramMotionEvent);
+    }
+    int i = (int)paramMotionEvent.getY();
+    int j = Math.abs(i - this.jdField_a_of_type_Int);
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Vpr.a(paramMotionEvent, true);
+      if (this.jdField_a_of_type_Vps == null) {
+        break;
+      }
+      this.jdField_a_of_type_Vlc.a(this.jdField_a_of_type_Vps.f, this.jdField_a_of_type_Vps.k, (int)this.jdField_a_of_type_Vps.l, (int)this.jdField_a_of_type_Vps.m, this.jdField_a_of_type_Vps.a, this.jdField_a_of_type_Vps.e, 2);
+      return true;
+      this.jdField_a_of_type_Int = i;
+      this.jdField_a_of_type_Boolean = false;
+      if (this.jdField_a_of_type_Vps != null)
+      {
+        this.jdField_a_of_type_Vps.e = false;
+        this.jdField_a_of_type_Vps.f = false;
+      }
+      a(paramMotionEvent.getX(0), paramMotionEvent.getY(0));
+      if (this.jdField_a_of_type_Vps != null)
+      {
+        this.jdField_a_of_type_Vpr.a(this.jdField_a_of_type_Vps);
+        continue;
+        if (this.jdField_a_of_type_Vps != null) {
+          this.jdField_a_of_type_Vps.f = true;
+        }
+        if (j > 10)
+        {
+          this.jdField_a_of_type_Boolean = true;
+          continue;
+          if (this.jdField_a_of_type_Vps != null)
+          {
+            this.jdField_a_of_type_Vps.e = false;
+            this.jdField_a_of_type_Vps.f = false;
+          }
+          if (!this.jdField_a_of_type_Boolean) {
+            a(paramMotionEvent);
+          }
+          this.jdField_a_of_type_Vpr.a();
+          continue;
+          if (this.jdField_a_of_type_Vps != null)
+          {
+            this.jdField_a_of_type_Vps.e = true;
+            continue;
+            if (this.jdField_a_of_type_Vps != null) {
+              this.jdField_a_of_type_Vps.e = false;
+            }
+          }
+        }
+      }
+    }
+    this.jdField_a_of_type_Vlc.a(false, 0.0F, 0, 0, null, false, 2);
+    return true;
+  }
+  
+  public void invalidateDrawable(@NonNull Drawable paramDrawable)
+  {
+    g();
+  }
+  
+  public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
+  
+  public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable) {}
 }
 
 

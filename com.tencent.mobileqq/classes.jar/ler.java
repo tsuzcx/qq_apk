@@ -1,44 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.av.VideoController;
+import com.tencent.qphone.base.util.QLog;
 
 public class ler
 {
-  private static ler a;
-  
-  public static ler a()
+  public static void a(long paramLong, VideoController paramVideoController, let paramlet, les paramles)
   {
-    if (a != null) {
-      return a;
-    }
-    try
+    long l1 = System.currentTimeMillis();
+    String str = paramlet.a();
+    paramVideoController = paramVideoController.a(paramLong, paramlet.a(), str.getBytes());
+    long l2 = System.currentTimeMillis();
+    if (paramVideoController == null) {}
+    for (paramVideoController = "";; paramVideoController = new String(paramVideoController))
     {
-      a = new ler();
-      ler localler = a;
-      return localler;
+      QLog.w("DeviceCapability", 1, "doCodecTest, codec[" + paramlet.jdField_a_of_type_Int + "], sampleMD5[" + paramlet.jdField_a_of_type_JavaLangString + "], cmdParams[" + str + "], result[" + paramVideoController + "], cost[" + (l2 - l1) + "], seq[" + paramLong + "]");
+      paramlet = new lpd('=', ';');
+      paramlet.a(paramVideoController);
+      paramles.a(paramlet.a("i_resultCode", -99), "", 0, paramlet.a("i_delay", -99), null);
+      return;
     }
-    catch (Exception localException) {}
-    return null;
-  }
-  
-  public float a()
-  {
-    float f;
-    try
-    {
-      f = Float.parseFloat(kvz.a(BaseApplicationImpl.getContext()).a("sharp/beauty_3/ratio", "1.0"));
-      if (f <= 0.0F) {
-        return 1.0F;
-      }
-    }
-    catch (Exception localException)
-    {
-      return 1.0F;
-    }
-    return f;
-  }
-  
-  public boolean a()
-  {
-    return kvz.a(BaseApplicationImpl.getContext()).a("sharp/beauty_3/flag", 0) == 1;
   }
 }
 

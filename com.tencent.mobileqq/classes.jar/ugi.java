@@ -1,46 +1,117 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.View;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import com.tribe.async.dispatch.Subscriber;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-class ugi
-  extends QQUIEventReceiver<ugh, swq>
+public abstract class ugi
+  implements IEventReceiver
 {
-  public ugi(@NonNull ugh paramugh)
+  private long a;
+  protected Map<Subscriber, String> a;
+  protected Set<tyz> a;
+  public ugf a;
+  protected boolean a;
+  public boolean b;
+  
+  public Map<Subscriber, String> a()
   {
-    super(paramugh);
+    return null;
   }
   
-  public void a(@NonNull ugh paramugh, @NonNull swq paramswq)
+  public Set<tyz> a()
   {
-    if (!TextUtils.equals(String.valueOf(paramugh.hashCode()), paramswq.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    urk.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video collection list. %s.", paramswq);
-    if (paramswq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    return null;
+  }
+  
+  public void a()
+  {
+    Iterator localIterator;
+    Object localObject;
+    if ((this.jdField_a_of_type_JavaUtilMap != null) && (!this.jdField_a_of_type_JavaUtilMap.isEmpty()))
     {
-      if (paramswq.jdField_a_of_type_Int != -1) {
-        paramugh.jdField_a_of_type_Int = paramswq.jdField_a_of_type_Int;
-      }
-      paramugh.jdField_a_of_type_Boolean = true;
-      paramugh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = null;
-      if (paramswq.e)
+      localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (localIterator.hasNext())
       {
-        paramugh.a(paramswq.jdField_a_of_type_JavaUtilList, paramswq.c, paramswq.jdField_a_of_type_Boolean);
-        paramugh.b = paramswq.jdField_a_of_type_Boolean;
+        localObject = (Subscriber)((Map.Entry)localIterator.next()).getKey();
+        ste.a().unRegisterSubscriber((Subscriber)localObject);
       }
+      this.jdField_a_of_type_JavaUtilMap.clear();
     }
-    for (;;)
+    if ((this.jdField_a_of_type_JavaUtilSet != null) && (!this.jdField_a_of_type_JavaUtilSet.isEmpty()))
     {
-      ugh.a(paramugh).a(paramswq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
-      return;
-      paramugh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramswq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
+      localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (tyz)localIterator.next();
+        this.jdField_a_of_type_Ugf.b((tyz)localObject);
+      }
+      this.jdField_a_of_type_JavaUtilSet.clear();
     }
   }
   
-  public Class acceptEventClass()
+  public final void a(@NonNull ugf paramugf, int paramInt, @NonNull uav paramuav)
   {
-    return swq.class;
+    ugf.a(paramugf, paramInt);
+    this.jdField_a_of_type_Ugf = paramugf;
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      Object localObject1 = a();
+      if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
+      {
+        Iterator localIterator = ((Map)localObject1).entrySet().iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject2 = (Map.Entry)localIterator.next();
+          Subscriber localSubscriber = (Subscriber)((Map.Entry)localObject2).getKey();
+          localObject2 = (String)((Map.Entry)localObject2).getValue();
+          ste.a().registerSubscriber((String)localObject2, localSubscriber);
+        }
+        if (this.jdField_a_of_type_JavaUtilMap == null) {
+          this.jdField_a_of_type_JavaUtilMap = new HashMap();
+        }
+        this.jdField_a_of_type_JavaUtilMap.putAll((Map)localObject1);
+      }
+      localObject1 = a();
+      if ((localObject1 != null) && (!((Set)localObject1).isEmpty()))
+      {
+        if (this.jdField_a_of_type_JavaUtilSet == null) {
+          this.jdField_a_of_type_JavaUtilSet = new HashSet();
+        }
+        this.jdField_a_of_type_JavaUtilSet.addAll((Collection)localObject1);
+      }
+      this.jdField_a_of_type_Boolean = true;
+    }
+    a(paramugf.a, paramuav);
+  }
+  
+  public final void a(ugj paramugj, uav paramuav)
+  {
+    paramugj.a();
+    b(paramugj, paramuav);
+  }
+  
+  public boolean a(View paramView)
+  {
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
+      return false;
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    return true;
+  }
+  
+  public abstract void b(ugj paramugj, uav paramuav);
+  
+  public boolean isValidate()
+  {
+    return this.b;
   }
 }
 

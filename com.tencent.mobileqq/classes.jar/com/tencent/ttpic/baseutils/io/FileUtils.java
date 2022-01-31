@@ -25,6 +25,7 @@ import java.util.List;
 
 public class FileUtils
 {
+  public static final String MD5_SALT = "aekit";
   public static final String PIC_POSTFIX_JPEG = ".jpg";
   public static final String PIC_POSTFIX_PNG = ".png";
   public static final String PIC_POSTFIX_WEBP = ".webp";
@@ -33,7 +34,8 @@ public class FileUtils
   public static final String RES_PREFIX_HTTPS = "https://";
   public static final String RES_PREFIX_STORAGE = "/";
   public static final FileUtils.AssetFileComparator SIMPLE_ASSET_COMPARATOR = new FileUtils.2();
-  public static final FileUtils.FileComparator SIMPLE_FILE_COMPARATOR = new FileUtils.3();
+  public static final FileUtils.AssetFileComparator SIMPLE_ASSET_MD5_COMPARATOR = new FileUtils.3();
+  public static final FileUtils.FileComparator SIMPLE_FILE_COMPARATOR = new FileUtils.4();
   private static final String TAG = FileUtils.class.getSimpleName();
   
   public static void CopyAssetsMaterialToExternalStorage(Context paramContext, String paramString)
@@ -111,143 +113,143 @@ public class FileUtils
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 137	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 146	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifeq +5 -> 9
     //   7: aconst_null
     //   8: areturn
     //   9: aload_0
-    //   10: invokevirtual 65	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   10: invokevirtual 74	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   13: astore_0
     //   14: aload_0
     //   15: aload_1
-    //   16: invokevirtual 186	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   16: invokevirtual 195	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   19: astore_2
     //   20: aload_2
-    //   21: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   21: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   24: aload_1
     //   25: areturn
     //   26: astore_2
     //   27: aconst_null
-    //   28: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   28: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   31: aload_1
-    //   32: ldc 194
-    //   34: invokevirtual 108	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   32: ldc 203
+    //   34: invokevirtual 117	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
     //   37: iconst_m1
     //   38: if_icmpeq +68 -> 106
-    //   41: new 75	java/lang/StringBuilder
+    //   41: new 84	java/lang/StringBuilder
     //   44: dup
-    //   45: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   45: invokespecial 85	java/lang/StringBuilder:<init>	()V
     //   48: aload_1
     //   49: iconst_0
     //   50: aload_1
     //   51: bipush 46
-    //   53: invokevirtual 197	java/lang/String:lastIndexOf	(I)I
+    //   53: invokevirtual 206	java/lang/String:lastIndexOf	(I)I
     //   56: iconst_1
     //   57: iadd
-    //   58: invokevirtual 112	java/lang/String:substring	(II)Ljava/lang/String;
-    //   61: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   64: ldc 199
-    //   66: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   69: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   58: invokevirtual 121	java/lang/String:substring	(II)Ljava/lang/String;
+    //   61: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: ldc 208
+    //   66: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   72: astore_1
     //   73: aload_0
     //   74: aload_1
-    //   75: invokevirtual 186	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   75: invokevirtual 195	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   78: astore_0
     //   79: aload_0
-    //   80: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   80: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   83: aload_1
     //   84: areturn
     //   85: astore_0
     //   86: aconst_null
-    //   87: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   87: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   90: aload_0
     //   91: athrow
     //   92: astore_0
     //   93: aconst_null
-    //   94: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   94: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   97: aconst_null
     //   98: areturn
     //   99: astore_0
     //   100: aconst_null
-    //   101: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   101: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   104: aload_0
     //   105: athrow
-    //   106: new 75	java/lang/StringBuilder
+    //   106: new 84	java/lang/StringBuilder
     //   109: dup
-    //   110: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   110: invokespecial 85	java/lang/StringBuilder:<init>	()V
     //   113: aload_1
-    //   114: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: ldc 8
-    //   119: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   114: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: ldc 11
+    //   119: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   125: astore_2
     //   126: aload_0
     //   127: aload_2
-    //   128: invokevirtual 186	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   128: invokevirtual 195	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   131: astore_3
     //   132: aload_3
-    //   133: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   133: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   136: aload_2
     //   137: areturn
     //   138: astore_2
     //   139: aconst_null
-    //   140: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
-    //   143: new 75	java/lang/StringBuilder
+    //   140: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   143: new 84	java/lang/StringBuilder
     //   146: dup
-    //   147: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   147: invokespecial 85	java/lang/StringBuilder:<init>	()V
     //   150: aload_1
-    //   151: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   154: ldc 14
-    //   156: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   159: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   151: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   154: ldc 17
+    //   156: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   159: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   162: astore_2
     //   163: aload_0
     //   164: aload_2
-    //   165: invokevirtual 186	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   165: invokevirtual 195	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   168: astore_3
     //   169: aload_3
-    //   170: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   170: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   173: aload_2
     //   174: areturn
     //   175: astore_0
     //   176: aconst_null
-    //   177: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   177: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   180: aload_0
     //   181: athrow
     //   182: astore_2
     //   183: aconst_null
-    //   184: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
-    //   187: new 75	java/lang/StringBuilder
+    //   184: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   187: new 84	java/lang/StringBuilder
     //   190: dup
-    //   191: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   191: invokespecial 85	java/lang/StringBuilder:<init>	()V
     //   194: aload_1
-    //   195: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   198: ldc 11
-    //   200: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   203: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   195: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   198: ldc 14
+    //   200: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   203: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   206: astore_1
     //   207: aload_0
     //   208: aload_1
-    //   209: invokevirtual 186	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   209: invokevirtual 195	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   212: astore_0
     //   213: aload_0
-    //   214: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   214: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   217: aload_1
     //   218: areturn
     //   219: astore_0
     //   220: aconst_null
-    //   221: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   221: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   224: aload_0
     //   225: athrow
     //   226: astore_0
     //   227: aconst_null
-    //   228: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   228: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   231: aconst_null
     //   232: areturn
     //   233: astore_0
     //   234: aconst_null
-    //   235: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   235: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   238: aload_0
     //   239: athrow
     // Local variable table:
@@ -359,7 +361,7 @@ public class FileUtils
   
   public static boolean copyAssets(Context paramContext, String paramString1, String paramString2)
   {
-    return copyAssets(paramContext, paramString1, paramString2, SIMPLE_ASSET_COMPARATOR);
+    return copyAssets(paramContext, paramString1, paramString2, SIMPLE_ASSET_MD5_COMPARATOR);
   }
   
   public static boolean copyAssets(Context paramContext, String paramString1, String paramString2, FileUtils.AssetFileComparator paramAssetFileComparator)
@@ -408,31 +410,31 @@ public class FileUtils
     //   9: iconst_0
     //   10: istore 4
     //   12: aload_1
-    //   13: invokevirtual 159	java/io/File:exists	()Z
+    //   13: invokevirtual 168	java/io/File:exists	()Z
     //   16: ifeq +8 -> 24
     //   19: aload_1
-    //   20: invokevirtual 215	java/io/File:delete	()Z
+    //   20: invokevirtual 224	java/io/File:delete	()Z
     //   23: pop
-    //   24: new 242	java/io/FileOutputStream
+    //   24: new 251	java/io/FileOutputStream
     //   27: dup
     //   28: aload_1
-    //   29: invokespecial 244	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   29: invokespecial 253	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   32: astore_1
-    //   33: new 246	java/io/BufferedInputStream
+    //   33: new 255	java/io/BufferedInputStream
     //   36: dup
-    //   37: new 248	java/io/FileInputStream
+    //   37: new 257	java/io/FileInputStream
     //   40: dup
     //   41: aload_0
-    //   42: invokespecial 249	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   45: invokespecial 251	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   42: invokespecial 258	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   45: invokespecial 260	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   48: astore_0
-    //   49: invokestatic 257	com/tencent/ttpic/baseutils/io/ByteArrayPool:getGenericInstance	()Lcom/tencent/ttpic/baseutils/io/ByteArrayPool;
+    //   49: invokestatic 266	com/tencent/ttpic/baseutils/io/ByteArrayPool:getGenericInstance	()Lcom/tencent/ttpic/baseutils/io/ByteArrayPool;
     //   52: sipush 4096
-    //   55: invokevirtual 261	com/tencent/ttpic/baseutils/io/ByteArrayPool:getBuf	(I)[B
+    //   55: invokevirtual 270	com/tencent/ttpic/baseutils/io/ByteArrayPool:getBuf	(I)[B
     //   58: astore 5
     //   60: aload_0
     //   61: aload 5
-    //   63: invokevirtual 265	java/io/BufferedInputStream:read	([B)I
+    //   63: invokevirtual 274	java/io/BufferedInputStream:read	([B)I
     //   66: istore_2
     //   67: iload_2
     //   68: iconst_m1
@@ -441,9 +443,9 @@ public class FileUtils
     //   73: aload 5
     //   75: iconst_0
     //   76: iload_2
-    //   77: invokevirtual 269	java/io/FileOutputStream:write	([BII)V
+    //   77: invokevirtual 278	java/io/FileOutputStream:write	([BII)V
     //   80: aload_1
-    //   81: invokevirtual 272	java/io/FileOutputStream:flush	()V
+    //   81: invokevirtual 281	java/io/FileOutputStream:flush	()V
     //   84: goto -24 -> 60
     //   87: astore 5
     //   89: aload_0
@@ -455,30 +457,30 @@ public class FileUtils
     //   97: aload_0
     //   98: ifnull +7 -> 105
     //   101: aload_0
-    //   102: invokevirtual 273	java/io/FileOutputStream:close	()V
+    //   102: invokevirtual 282	java/io/FileOutputStream:close	()V
     //   105: iload 4
     //   107: istore_3
     //   108: aload_1
     //   109: ifnull +10 -> 119
     //   112: aload_1
-    //   113: invokevirtual 274	java/io/BufferedInputStream:close	()V
+    //   113: invokevirtual 283	java/io/BufferedInputStream:close	()V
     //   116: iload 4
     //   118: istore_3
     //   119: iload_3
     //   120: ireturn
-    //   121: invokestatic 257	com/tencent/ttpic/baseutils/io/ByteArrayPool:getGenericInstance	()Lcom/tencent/ttpic/baseutils/io/ByteArrayPool;
+    //   121: invokestatic 266	com/tencent/ttpic/baseutils/io/ByteArrayPool:getGenericInstance	()Lcom/tencent/ttpic/baseutils/io/ByteArrayPool;
     //   124: aload 5
-    //   126: invokevirtual 278	com/tencent/ttpic/baseutils/io/ByteArrayPool:returnBuf	([B)V
+    //   126: invokevirtual 287	com/tencent/ttpic/baseutils/io/ByteArrayPool:returnBuf	([B)V
     //   129: iconst_1
     //   130: istore_3
     //   131: aload_1
     //   132: ifnull +7 -> 139
     //   135: aload_1
-    //   136: invokevirtual 273	java/io/FileOutputStream:close	()V
+    //   136: invokevirtual 282	java/io/FileOutputStream:close	()V
     //   139: aload_0
     //   140: ifnull -21 -> 119
     //   143: aload_0
-    //   144: invokevirtual 274	java/io/BufferedInputStream:close	()V
+    //   144: invokevirtual 283	java/io/BufferedInputStream:close	()V
     //   147: iconst_1
     //   148: ireturn
     //   149: astore_0
@@ -492,13 +494,13 @@ public class FileUtils
     //   158: aload_1
     //   159: ifnull +7 -> 166
     //   162: aload_1
-    //   163: invokevirtual 273	java/io/FileOutputStream:close	()V
+    //   163: invokevirtual 282	java/io/FileOutputStream:close	()V
     //   166: iload 4
     //   168: istore_3
     //   169: aload_0
     //   170: ifnull -51 -> 119
     //   173: aload_0
-    //   174: invokevirtual 274	java/io/BufferedInputStream:close	()V
+    //   174: invokevirtual 283	java/io/BufferedInputStream:close	()V
     //   177: iconst_0
     //   178: ireturn
     //   179: astore_0
@@ -510,11 +512,11 @@ public class FileUtils
     //   185: aload_1
     //   186: ifnull +7 -> 193
     //   189: aload_1
-    //   190: invokevirtual 273	java/io/FileOutputStream:close	()V
+    //   190: invokevirtual 282	java/io/FileOutputStream:close	()V
     //   193: aload 5
     //   195: ifnull +8 -> 203
     //   198: aload 5
-    //   200: invokevirtual 274	java/io/BufferedInputStream:close	()V
+    //   200: invokevirtual 283	java/io/BufferedInputStream:close	()V
     //   203: aload_0
     //   204: athrow
     //   205: astore_1
@@ -635,17 +637,17 @@ public class FileUtils
   public static boolean copyFile(InputStream paramInputStream, String paramString)
   {
     // Byte code:
-    //   0: new 242	java/io/FileOutputStream
+    //   0: new 251	java/io/FileOutputStream
     //   3: dup
     //   4: aload_1
-    //   5: invokespecial 296	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 305	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   8: astore_1
     //   9: sipush 4096
     //   12: newarray byte
     //   14: astore_3
     //   15: aload_0
     //   16: aload_3
-    //   17: invokevirtual 284	java/io/InputStream:read	([B)I
+    //   17: invokevirtual 293	java/io/InputStream:read	([B)I
     //   20: istore_2
     //   21: iload_2
     //   22: ifle +24 -> 46
@@ -653,28 +655,28 @@ public class FileUtils
     //   26: aload_3
     //   27: iconst_0
     //   28: iload_2
-    //   29: invokevirtual 287	java/io/OutputStream:write	([BII)V
+    //   29: invokevirtual 296	java/io/OutputStream:write	([BII)V
     //   32: goto -17 -> 15
     //   35: astore_3
     //   36: aload_0
-    //   37: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   37: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   40: aload_1
-    //   41: invokestatic 299	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   41: invokestatic 308	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   44: iconst_0
     //   45: ireturn
     //   46: aload_0
-    //   47: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   47: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   50: aload_1
-    //   51: invokestatic 299	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   51: invokestatic 308	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   54: iconst_1
     //   55: ireturn
     //   56: astore_3
     //   57: aconst_null
     //   58: astore_1
     //   59: aload_0
-    //   60: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   60: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   63: aload_1
-    //   64: invokestatic 299	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   64: invokestatic 308	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   67: aload_3
     //   68: athrow
     //   69: astore_3
@@ -716,83 +718,83 @@ public class FileUtils
     //   0: aconst_null
     //   1: astore 5
     //   3: aload_0
-    //   4: invokestatic 137	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: invokestatic 146	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   7: ifne +10 -> 17
     //   10: aload_1
-    //   11: invokestatic 137	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   11: invokestatic 146	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   14: ifeq +14 -> 28
-    //   17: getstatic 41	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
-    //   20: ldc_w 305
-    //   23: invokestatic 308	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   17: getstatic 45	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
+    //   20: ldc_w 314
+    //   23: invokestatic 317	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   26: iconst_0
     //   27: ireturn
-    //   28: new 73	java/io/File
+    //   28: new 82	java/io/File
     //   31: dup
     //   32: aload_1
-    //   33: invokespecial 96	java/io/File:<init>	(Ljava/lang/String;)V
+    //   33: invokespecial 105	java/io/File:<init>	(Ljava/lang/String;)V
     //   36: astore 6
     //   38: aload 6
-    //   40: invokevirtual 159	java/io/File:exists	()Z
+    //   40: invokevirtual 168	java/io/File:exists	()Z
     //   43: ifeq +51 -> 94
     //   46: aload_2
     //   47: ifnull +34 -> 81
     //   50: aload_2
     //   51: aload_0
     //   52: aload 6
-    //   54: invokeinterface 313 3 0
+    //   54: invokeinterface 322 3 0
     //   59: ifeq +22 -> 81
-    //   62: getstatic 41	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
-    //   65: ldc_w 315
-    //   68: invokestatic 318	com/tencent/ttpic/baseutils/log/LogUtils:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   62: getstatic 45	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
+    //   65: ldc_w 324
+    //   68: invokestatic 327	com/tencent/ttpic/baseutils/log/LogUtils:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   71: aconst_null
-    //   72: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   72: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   75: aconst_null
-    //   76: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   76: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   79: iconst_1
     //   80: ireturn
     //   81: aload 6
-    //   83: invokevirtual 206	java/io/File:isDirectory	()Z
+    //   83: invokevirtual 215	java/io/File:isDirectory	()Z
     //   86: ifeq +8 -> 94
     //   89: aload 6
-    //   91: invokestatic 322	com/tencent/ttpic/baseutils/io/FileUtils:delete	(Ljava/io/File;)V
+    //   91: invokestatic 331	com/tencent/ttpic/baseutils/io/FileUtils:delete	(Ljava/io/File;)V
     //   94: aload 6
-    //   96: invokevirtual 326	java/io/File:getParentFile	()Ljava/io/File;
+    //   96: invokevirtual 335	java/io/File:getParentFile	()Ljava/io/File;
     //   99: astore_1
     //   100: aload_1
-    //   101: invokevirtual 329	java/io/File:isFile	()Z
+    //   101: invokevirtual 338	java/io/File:isFile	()Z
     //   104: ifeq +7 -> 111
     //   107: aload_1
-    //   108: invokestatic 322	com/tencent/ttpic/baseutils/io/FileUtils:delete	(Ljava/io/File;)V
+    //   108: invokestatic 331	com/tencent/ttpic/baseutils/io/FileUtils:delete	(Ljava/io/File;)V
     //   111: aload_1
-    //   112: invokevirtual 159	java/io/File:exists	()Z
+    //   112: invokevirtual 168	java/io/File:exists	()Z
     //   115: ifne +49 -> 164
     //   118: aload_1
-    //   119: invokevirtual 100	java/io/File:mkdirs	()Z
+    //   119: invokevirtual 109	java/io/File:mkdirs	()Z
     //   122: ifne +42 -> 164
-    //   125: getstatic 41	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
-    //   128: new 75	java/lang/StringBuilder
+    //   125: getstatic 45	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
+    //   128: new 84	java/lang/StringBuilder
     //   131: dup
-    //   132: invokespecial 76	java/lang/StringBuilder:<init>	()V
-    //   135: ldc_w 331
-    //   138: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: invokespecial 85	java/lang/StringBuilder:<init>	()V
+    //   135: ldc_w 340
+    //   138: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   141: aload_1
-    //   142: invokevirtual 83	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   145: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   148: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   151: invokestatic 308	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   142: invokevirtual 92	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   145: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   151: invokestatic 317	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   154: aconst_null
-    //   155: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   155: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   158: aconst_null
-    //   159: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   159: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   162: iconst_0
     //   163: ireturn
-    //   164: new 248	java/io/FileInputStream
+    //   164: new 257	java/io/FileInputStream
     //   167: dup
     //   168: aload_0
-    //   169: invokespecial 332	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   169: invokespecial 341	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   172: astore_2
     //   173: aload_2
-    //   174: invokevirtual 336	java/io/InputStream:available	()I
+    //   174: invokevirtual 345	java/io/InputStream:available	()I
     //   177: istore_3
     //   178: iload_3
     //   179: ifgt +20 -> 199
@@ -801,25 +803,25 @@ public class FileUtils
     //   185: aload 5
     //   187: astore_0
     //   188: aload_2
-    //   189: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   189: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   192: aload_0
-    //   193: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   193: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   196: iload 4
     //   198: ireturn
-    //   199: new 338	java/io/BufferedOutputStream
+    //   199: new 347	java/io/BufferedOutputStream
     //   202: dup
-    //   203: new 242	java/io/FileOutputStream
+    //   203: new 251	java/io/FileOutputStream
     //   206: dup
     //   207: aload 6
-    //   209: invokespecial 244	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   212: invokespecial 340	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   209: invokespecial 253	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   212: invokespecial 349	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   215: astore_0
     //   216: sipush 1024
     //   219: newarray byte
     //   221: astore_1
     //   222: aload_2
     //   223: aload_1
-    //   224: invokevirtual 284	java/io/InputStream:read	([B)I
+    //   224: invokevirtual 293	java/io/InputStream:read	([B)I
     //   227: istore_3
     //   228: iload_3
     //   229: ifle +62 -> 291
@@ -827,30 +829,30 @@ public class FileUtils
     //   233: aload_1
     //   234: iconst_0
     //   235: iload_3
-    //   236: invokevirtual 287	java/io/OutputStream:write	([BII)V
+    //   236: invokevirtual 296	java/io/OutputStream:write	([BII)V
     //   239: goto -17 -> 222
     //   242: astore 5
     //   244: aload_2
     //   245: astore_1
     //   246: aload 5
     //   248: astore_2
-    //   249: getstatic 41	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
-    //   252: ldc_w 342
+    //   249: getstatic 45	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
+    //   252: ldc_w 351
     //   255: iconst_1
     //   256: anewarray 4	java/lang/Object
     //   259: dup
     //   260: iconst_0
     //   261: aload_2
-    //   262: invokevirtual 343	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   262: invokevirtual 352	java/lang/Throwable:toString	()Ljava/lang/String;
     //   265: aastore
-    //   266: invokestatic 347	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   269: invokestatic 308	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   266: invokestatic 356	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   269: invokestatic 317	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   272: aload 6
-    //   274: invokestatic 322	com/tencent/ttpic/baseutils/io/FileUtils:delete	(Ljava/io/File;)V
+    //   274: invokestatic 331	com/tencent/ttpic/baseutils/io/FileUtils:delete	(Ljava/io/File;)V
     //   277: aload_1
-    //   278: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   278: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   281: aload_0
-    //   282: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   282: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   285: iconst_0
     //   286: istore 4
     //   288: goto -92 -> 196
@@ -863,9 +865,9 @@ public class FileUtils
     //   300: aconst_null
     //   301: astore_0
     //   302: aload_2
-    //   303: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   303: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   306: aload_0
-    //   307: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   307: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   310: aload_1
     //   311: athrow
     //   312: astore_1
@@ -937,29 +939,29 @@ public class FileUtils
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 353	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   1: invokevirtual 362	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   4: iload_1
-    //   5: invokevirtual 359	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
+    //   5: invokevirtual 368	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
     //   8: astore 4
-    //   10: new 73	java/io/File
+    //   10: new 82	java/io/File
     //   13: dup
     //   14: aload_2
-    //   15: invokespecial 96	java/io/File:<init>	(Ljava/lang/String;)V
+    //   15: invokespecial 105	java/io/File:<init>	(Ljava/lang/String;)V
     //   18: astore_3
-    //   19: new 242	java/io/FileOutputStream
+    //   19: new 251	java/io/FileOutputStream
     //   22: dup
     //   23: aload_2
-    //   24: invokespecial 296	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   24: invokespecial 305	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   27: astore_2
     //   28: aload_2
     //   29: astore_0
     //   30: aload 4
-    //   32: invokestatic 363	com/tencent/ttpic/baseutils/io/IOUtils:toByteArray	(Ljava/io/InputStream;)[B
+    //   32: invokestatic 372	com/tencent/ttpic/baseutils/io/IOUtils:toByteArray	(Ljava/io/InputStream;)[B
     //   35: astore 5
     //   37: aload_2
     //   38: astore_0
     //   39: aload_3
-    //   40: invokevirtual 367	java/io/File:length	()J
+    //   40: invokevirtual 376	java/io/File:length	()J
     //   43: aload 5
     //   45: arraylength
     //   46: i2l
@@ -969,23 +971,23 @@ public class FileUtils
     //   52: astore_0
     //   53: aload 5
     //   55: aload_2
-    //   56: invokestatic 370	com/tencent/ttpic/baseutils/io/IOUtils:write	([BLjava/io/OutputStream;)V
+    //   56: invokestatic 379	com/tencent/ttpic/baseutils/io/IOUtils:write	([BLjava/io/OutputStream;)V
     //   59: aload_2
     //   60: astore_0
     //   61: aload_2
-    //   62: invokevirtual 272	java/io/FileOutputStream:flush	()V
+    //   62: invokevirtual 281	java/io/FileOutputStream:flush	()V
     //   65: aload 4
-    //   67: invokevirtual 371	java/io/InputStream:close	()V
+    //   67: invokevirtual 380	java/io/InputStream:close	()V
     //   70: aload_2
     //   71: ifnull +11 -> 82
     //   74: aload_2
-    //   75: invokevirtual 272	java/io/FileOutputStream:flush	()V
+    //   75: invokevirtual 281	java/io/FileOutputStream:flush	()V
     //   78: aload_2
-    //   79: invokevirtual 273	java/io/FileOutputStream:close	()V
+    //   79: invokevirtual 282	java/io/FileOutputStream:close	()V
     //   82: return
     //   83: astore_0
     //   84: aload_0
-    //   85: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   85: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   88: return
     //   89: astore_3
     //   90: aconst_null
@@ -993,19 +995,19 @@ public class FileUtils
     //   92: aload_2
     //   93: astore_0
     //   94: aload_3
-    //   95: invokevirtual 372	java/lang/Exception:printStackTrace	()V
+    //   95: invokevirtual 381	java/lang/Exception:printStackTrace	()V
     //   98: aload 4
-    //   100: invokevirtual 371	java/io/InputStream:close	()V
+    //   100: invokevirtual 380	java/io/InputStream:close	()V
     //   103: aload_2
     //   104: ifnull -22 -> 82
     //   107: aload_2
-    //   108: invokevirtual 272	java/io/FileOutputStream:flush	()V
+    //   108: invokevirtual 281	java/io/FileOutputStream:flush	()V
     //   111: aload_2
-    //   112: invokevirtual 273	java/io/FileOutputStream:close	()V
+    //   112: invokevirtual 282	java/io/FileOutputStream:close	()V
     //   115: return
     //   116: astore_0
     //   117: aload_0
-    //   118: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   118: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   121: return
     //   122: astore_0
     //   123: aconst_null
@@ -1013,31 +1015,31 @@ public class FileUtils
     //   125: aload_2
     //   126: astore_0
     //   127: aload 4
-    //   129: invokevirtual 375	java/io/InputStream:reset	()V
+    //   129: invokevirtual 384	java/io/InputStream:reset	()V
     //   132: aload_2
     //   133: astore_0
     //   134: aload 4
     //   136: aload_2
-    //   137: invokestatic 377	com/tencent/ttpic/baseutils/io/FileUtils:copyFile	(Ljava/io/InputStream;Ljava/io/OutputStream;)Z
+    //   137: invokestatic 386	com/tencent/ttpic/baseutils/io/FileUtils:copyFile	(Ljava/io/InputStream;Ljava/io/OutputStream;)Z
     //   140: pop
     //   141: aload 4
-    //   143: invokevirtual 371	java/io/InputStream:close	()V
+    //   143: invokevirtual 380	java/io/InputStream:close	()V
     //   146: aload_2
     //   147: ifnull -65 -> 82
     //   150: aload_2
-    //   151: invokevirtual 272	java/io/FileOutputStream:flush	()V
+    //   151: invokevirtual 281	java/io/FileOutputStream:flush	()V
     //   154: aload_2
-    //   155: invokevirtual 273	java/io/FileOutputStream:close	()V
+    //   155: invokevirtual 282	java/io/FileOutputStream:close	()V
     //   158: return
     //   159: astore_0
     //   160: aload_0
-    //   161: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   161: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   164: return
     //   165: astore_3
     //   166: aload_2
     //   167: astore_0
     //   168: aload_3
-    //   169: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   169: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   172: goto -31 -> 141
     //   175: astore_3
     //   176: aload_0
@@ -1045,18 +1047,18 @@ public class FileUtils
     //   178: aload_3
     //   179: astore_0
     //   180: aload 4
-    //   182: invokevirtual 371	java/io/InputStream:close	()V
+    //   182: invokevirtual 380	java/io/InputStream:close	()V
     //   185: aload_2
     //   186: ifnull +11 -> 197
     //   189: aload_2
-    //   190: invokevirtual 272	java/io/FileOutputStream:flush	()V
+    //   190: invokevirtual 281	java/io/FileOutputStream:flush	()V
     //   193: aload_2
-    //   194: invokevirtual 273	java/io/FileOutputStream:close	()V
+    //   194: invokevirtual 282	java/io/FileOutputStream:close	()V
     //   197: aload_0
     //   198: athrow
     //   199: astore_2
     //   200: aload_2
-    //   201: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   201: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   204: goto -7 -> 197
     //   207: astore_0
     //   208: aconst_null
@@ -1263,24 +1265,24 @@ public class FileUtils
     //   0: aconst_null
     //   1: astore 5
     //   3: aload_0
-    //   4: invokevirtual 65	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   4: invokevirtual 74	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   7: astore 6
     //   9: aload 6
     //   11: aload_1
-    //   12: invokevirtual 407	android/content/res/AssetManager:openFd	(Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+    //   12: invokevirtual 416	android/content/res/AssetManager:openFd	(Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
     //   15: astore_0
     //   16: aload_0
-    //   17: invokevirtual 412	android/content/res/AssetFileDescriptor:getLength	()J
+    //   17: invokevirtual 421	android/content/res/AssetFileDescriptor:getLength	()J
     //   20: lstore_3
     //   21: aload_0
     //   22: ifnull +7 -> 29
     //   25: aload_0
-    //   26: invokevirtual 413	android/content/res/AssetFileDescriptor:close	()V
+    //   26: invokevirtual 422	android/content/res/AssetFileDescriptor:close	()V
     //   29: lload_3
     //   30: lreturn
     //   31: astore_0
     //   32: aload_0
-    //   33: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   33: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   36: lload_3
     //   37: lreturn
     //   38: astore_0
@@ -1289,24 +1291,24 @@ public class FileUtils
     //   41: aload_0
     //   42: ifnull +7 -> 49
     //   45: aload_0
-    //   46: invokevirtual 413	android/content/res/AssetFileDescriptor:close	()V
+    //   46: invokevirtual 422	android/content/res/AssetFileDescriptor:close	()V
     //   49: aload 6
     //   51: aload_1
-    //   52: invokevirtual 186	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   52: invokevirtual 195	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   55: astore_0
     //   56: aload_0
-    //   57: invokevirtual 336	java/io/InputStream:available	()I
+    //   57: invokevirtual 345	java/io/InputStream:available	()I
     //   60: istore_2
     //   61: iload_2
     //   62: i2l
     //   63: lstore_3
     //   64: aload_0
-    //   65: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   65: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   68: lload_3
     //   69: lreturn
     //   70: astore_0
     //   71: aload_0
-    //   72: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   72: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   75: goto -26 -> 49
     //   78: astore_1
     //   79: aconst_null
@@ -1314,25 +1316,25 @@ public class FileUtils
     //   81: aload_0
     //   82: ifnull +7 -> 89
     //   85: aload_0
-    //   86: invokevirtual 413	android/content/res/AssetFileDescriptor:close	()V
+    //   86: invokevirtual 422	android/content/res/AssetFileDescriptor:close	()V
     //   89: aload_1
     //   90: athrow
     //   91: astore_0
     //   92: aload_0
-    //   93: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   93: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   96: goto -7 -> 89
     //   99: astore_0
     //   100: aload 5
     //   102: astore_0
     //   103: aload_0
-    //   104: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   107: ldc2_w 414
+    //   104: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   107: ldc2_w 423
     //   110: lreturn
     //   111: astore_1
     //   112: aconst_null
     //   113: astore_0
     //   114: aload_0
-    //   115: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   115: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   118: aload_1
     //   119: athrow
     //   120: astore_1
@@ -1365,6 +1367,245 @@ public class FileUtils
     //   56	61	124	java/io/IOException
     //   16	21	128	finally
     //   16	21	132	java/io/IOException
+  }
+  
+  /* Error */
+  public static String getAssetsMD5(Context paramContext, String paramString1, String paramString2)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 7
+    //   3: aload 7
+    //   5: astore 6
+    //   7: aload_0
+    //   8: ifnull +22 -> 30
+    //   11: aload 7
+    //   13: astore 6
+    //   15: aload_1
+    //   16: invokestatic 146	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   19: ifne +11 -> 30
+    //   22: aload_2
+    //   23: ifnonnull +10 -> 33
+    //   26: aload 7
+    //   28: astore 6
+    //   30: aload 6
+    //   32: areturn
+    //   33: aload_0
+    //   34: invokevirtual 74	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   37: astore_0
+    //   38: aload_0
+    //   39: aload_1
+    //   40: invokevirtual 195	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   43: astore_0
+    //   44: aload_0
+    //   45: astore_1
+    //   46: aload_0
+    //   47: invokevirtual 345	java/io/InputStream:available	()I
+    //   50: istore_3
+    //   51: iload_3
+    //   52: ifgt +24 -> 76
+    //   55: aload 7
+    //   57: astore 6
+    //   59: aload_0
+    //   60: ifnull -30 -> 30
+    //   63: aload_0
+    //   64: invokevirtual 380	java/io/InputStream:close	()V
+    //   67: aconst_null
+    //   68: areturn
+    //   69: astore_0
+    //   70: aload_0
+    //   71: invokestatic 302	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
+    //   74: aconst_null
+    //   75: areturn
+    //   76: aload_0
+    //   77: astore_1
+    //   78: ldc_w 428
+    //   81: invokestatic 434	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   84: astore 8
+    //   86: aload_0
+    //   87: astore_1
+    //   88: sipush 4096
+    //   91: newarray byte
+    //   93: astore 6
+    //   95: aload_0
+    //   96: astore_1
+    //   97: aload_0
+    //   98: aload 6
+    //   100: invokevirtual 293	java/io/InputStream:read	([B)I
+    //   103: istore_3
+    //   104: iload_3
+    //   105: ifle +45 -> 150
+    //   108: aload_0
+    //   109: astore_1
+    //   110: aload 8
+    //   112: aload 6
+    //   114: iconst_0
+    //   115: iload_3
+    //   116: invokevirtual 437	java/security/MessageDigest:update	([BII)V
+    //   119: goto -24 -> 95
+    //   122: astore_2
+    //   123: aload_0
+    //   124: astore_1
+    //   125: aload_2
+    //   126: invokestatic 302	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
+    //   129: aload 7
+    //   131: astore 6
+    //   133: aload_0
+    //   134: ifnull -104 -> 30
+    //   137: aload_0
+    //   138: invokevirtual 380	java/io/InputStream:close	()V
+    //   141: aconst_null
+    //   142: areturn
+    //   143: astore_0
+    //   144: aload_0
+    //   145: invokestatic 302	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
+    //   148: aconst_null
+    //   149: areturn
+    //   150: aload_0
+    //   151: astore_1
+    //   152: aload 8
+    //   154: aload_2
+    //   155: invokevirtual 441	java/lang/String:getBytes	()[B
+    //   158: invokevirtual 443	java/security/MessageDigest:update	([B)V
+    //   161: aload_0
+    //   162: astore_1
+    //   163: new 84	java/lang/StringBuilder
+    //   166: dup
+    //   167: invokespecial 85	java/lang/StringBuilder:<init>	()V
+    //   170: astore 6
+    //   172: aload_0
+    //   173: astore_1
+    //   174: aload 8
+    //   176: invokevirtual 446	java/security/MessageDigest:digest	()[B
+    //   179: astore 8
+    //   181: aload_0
+    //   182: astore_1
+    //   183: aload 8
+    //   185: arraylength
+    //   186: istore 4
+    //   188: iconst_0
+    //   189: istore_3
+    //   190: goto +96 -> 286
+    //   193: aload_0
+    //   194: astore_1
+    //   195: aload 6
+    //   197: aload_2
+    //   198: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   201: pop
+    //   202: aload_0
+    //   203: astore_1
+    //   204: aload 6
+    //   206: iload 5
+    //   208: invokestatic 451	java/lang/Integer:toHexString	(I)Ljava/lang/String;
+    //   211: invokevirtual 454	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   214: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   217: pop
+    //   218: iload_3
+    //   219: iconst_1
+    //   220: iadd
+    //   221: istore_3
+    //   222: goto +64 -> 286
+    //   225: aload_0
+    //   226: astore_1
+    //   227: aload 6
+    //   229: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   232: astore_2
+    //   233: aload_2
+    //   234: astore_1
+    //   235: aload_1
+    //   236: astore 6
+    //   238: aload_0
+    //   239: ifnull -209 -> 30
+    //   242: aload_0
+    //   243: invokevirtual 380	java/io/InputStream:close	()V
+    //   246: aload_1
+    //   247: areturn
+    //   248: astore_0
+    //   249: aload_0
+    //   250: invokestatic 302	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
+    //   253: aload_1
+    //   254: areturn
+    //   255: astore_0
+    //   256: aconst_null
+    //   257: astore_1
+    //   258: aload_1
+    //   259: ifnull +7 -> 266
+    //   262: aload_1
+    //   263: invokevirtual 380	java/io/InputStream:close	()V
+    //   266: aload_0
+    //   267: athrow
+    //   268: astore_1
+    //   269: aload_1
+    //   270: invokestatic 302	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
+    //   273: goto -7 -> 266
+    //   276: astore_0
+    //   277: goto -19 -> 258
+    //   280: astore_2
+    //   281: aconst_null
+    //   282: astore_0
+    //   283: goto -160 -> 123
+    //   286: iload_3
+    //   287: iload 4
+    //   289: if_icmpge -64 -> 225
+    //   292: aload 8
+    //   294: iload_3
+    //   295: baload
+    //   296: sipush 255
+    //   299: iand
+    //   300: istore 5
+    //   302: iload 5
+    //   304: bipush 16
+    //   306: if_icmpge +10 -> 316
+    //   309: ldc_w 456
+    //   312: astore_2
+    //   313: goto -120 -> 193
+    //   316: ldc 157
+    //   318: astore_2
+    //   319: goto -126 -> 193
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	322	0	paramContext	Context
+    //   0	322	1	paramString1	String
+    //   0	322	2	paramString2	String
+    //   50	245	3	i	int
+    //   186	104	4	j	int
+    //   206	101	5	k	int
+    //   5	232	6	localObject1	Object
+    //   1	129	7	localObject2	Object
+    //   84	209	8	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   63	67	69	java/lang/Exception
+    //   46	51	122	java/lang/Exception
+    //   78	86	122	java/lang/Exception
+    //   88	95	122	java/lang/Exception
+    //   97	104	122	java/lang/Exception
+    //   110	119	122	java/lang/Exception
+    //   152	161	122	java/lang/Exception
+    //   163	172	122	java/lang/Exception
+    //   174	181	122	java/lang/Exception
+    //   183	188	122	java/lang/Exception
+    //   195	202	122	java/lang/Exception
+    //   204	218	122	java/lang/Exception
+    //   227	233	122	java/lang/Exception
+    //   137	141	143	java/lang/Exception
+    //   242	246	248	java/lang/Exception
+    //   38	44	255	finally
+    //   262	266	268	java/lang/Exception
+    //   46	51	276	finally
+    //   78	86	276	finally
+    //   88	95	276	finally
+    //   97	104	276	finally
+    //   110	119	276	finally
+    //   125	129	276	finally
+    //   152	161	276	finally
+    //   163	172	276	finally
+    //   174	181	276	finally
+    //   183	188	276	finally
+    //   195	202	276	finally
+    //   204	218	276	finally
+    //   227	233	276	finally
+    //   38	44	280	java/lang/Exception
   }
   
   private static long getFileLength(String paramString)
@@ -1715,36 +1956,36 @@ public class FileUtils
     //   1: astore_3
     //   2: aconst_null
     //   3: astore 4
-    //   5: new 75	java/lang/StringBuilder
+    //   5: new 84	java/lang/StringBuilder
     //   8: dup
-    //   9: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   9: invokespecial 85	java/lang/StringBuilder:<init>	()V
     //   12: astore 5
     //   14: aload_0
-    //   15: invokevirtual 65	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   15: invokevirtual 74	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   18: aload_1
-    //   19: invokevirtual 186	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   19: invokevirtual 195	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   22: astore_0
-    //   23: new 517	java/io/BufferedReader
+    //   23: new 527	java/io/BufferedReader
     //   26: dup
-    //   27: new 519	java/io/InputStreamReader
+    //   27: new 529	java/io/InputStreamReader
     //   30: dup
     //   31: aload_0
-    //   32: ldc_w 521
-    //   35: invokespecial 522	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
-    //   38: invokespecial 525	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   32: ldc_w 531
+    //   35: invokespecial 532	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   38: invokespecial 535	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   41: astore_2
     //   42: aload_2
-    //   43: invokevirtual 528	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   43: invokevirtual 538	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   46: astore_1
     //   47: aload_1
     //   48: ifnull +47 -> 95
     //   51: aload 5
     //   53: aload_1
-    //   54: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   57: pop
     //   58: aload 5
-    //   60: ldc_w 530
-    //   63: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: ldc_w 540
+    //   63: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   66: pop
     //   67: goto -25 -> 42
     //   70: astore_3
@@ -1755,18 +1996,18 @@ public class FileUtils
     //   75: aload_3
     //   76: astore_2
     //   77: aload_2
-    //   78: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   78: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   81: aload_0
-    //   82: invokestatic 532	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
+    //   82: invokestatic 542	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
     //   85: aload_1
-    //   86: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   86: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   89: aload 5
-    //   91: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   91: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   94: areturn
     //   95: aload_2
-    //   96: invokestatic 532	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
+    //   96: invokestatic 542	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
     //   99: aload_0
-    //   100: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   100: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   103: goto -14 -> 89
     //   106: astore_1
     //   107: aconst_null
@@ -1774,9 +2015,9 @@ public class FileUtils
     //   109: aload_3
     //   110: astore_2
     //   111: aload_2
-    //   112: invokestatic 532	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
+    //   112: invokestatic 542	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
     //   115: aload_0
-    //   116: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   116: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   119: aload_1
     //   120: athrow
     //   121: astore_1
@@ -1849,53 +2090,53 @@ public class FileUtils
     //   9: aload 5
     //   11: astore_2
     //   12: aload_1
-    //   13: ldc 17
-    //   15: invokevirtual 143	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   13: ldc 20
+    //   15: invokevirtual 152	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   18: ifeq +36 -> 54
     //   21: aload 4
     //   23: astore_3
     //   24: aload 5
     //   26: astore_2
     //   27: aload_0
-    //   28: invokevirtual 65	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   28: invokevirtual 74	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   31: aload_1
-    //   32: invokestatic 506	com/tencent/ttpic/baseutils/io/FileUtils:getRealPath	(Ljava/lang/String;)Ljava/lang/String;
-    //   35: invokevirtual 186	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   32: invokestatic 517	com/tencent/ttpic/baseutils/io/FileUtils:getRealPath	(Ljava/lang/String;)Ljava/lang/String;
+    //   35: invokevirtual 195	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   38: astore_0
     //   39: aload_0
     //   40: astore_3
     //   41: aload_0
     //   42: astore_2
     //   43: aload_0
-    //   44: invokestatic 535	com/tencent/ttpic/baseutils/io/FileUtils:loadByteArray	(Ljava/io/InputStream;)[B
+    //   44: invokestatic 545	com/tencent/ttpic/baseutils/io/FileUtils:loadByteArray	(Ljava/io/InputStream;)[B
     //   47: astore_1
     //   48: aload_0
-    //   49: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   49: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   52: aload_1
     //   53: areturn
     //   54: aload 4
     //   56: astore_3
     //   57: aload 5
     //   59: astore_2
-    //   60: new 248	java/io/FileInputStream
+    //   60: new 257	java/io/FileInputStream
     //   63: dup
     //   64: aload_1
-    //   65: invokespecial 332	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   65: invokespecial 341	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   68: astore_0
     //   69: goto -30 -> 39
     //   72: astore_0
     //   73: aload_3
     //   74: astore_2
     //   75: aload_0
-    //   76: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   76: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   79: aload_3
-    //   80: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   80: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   83: iconst_0
     //   84: newarray byte
     //   86: areturn
     //   87: astore_0
     //   88: aload_2
-    //   89: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   89: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   92: aload_0
     //   93: athrow
     // Local variable table:
@@ -1926,15 +2167,15 @@ public class FileUtils
     //   0: sipush 1024
     //   3: newarray byte
     //   5: astore 4
-    //   7: new 537	java/io/ByteArrayOutputStream
+    //   7: new 547	java/io/ByteArrayOutputStream
     //   10: dup
-    //   11: invokespecial 538	java/io/ByteArrayOutputStream:<init>	()V
+    //   11: invokespecial 548	java/io/ByteArrayOutputStream:<init>	()V
     //   14: astore_3
     //   15: aload_3
     //   16: astore_2
     //   17: aload_0
     //   18: aload 4
-    //   20: invokevirtual 284	java/io/InputStream:read	([B)I
+    //   20: invokevirtual 293	java/io/InputStream:read	([B)I
     //   23: istore_1
     //   24: iload_1
     //   25: iconst_m1
@@ -1945,7 +2186,7 @@ public class FileUtils
     //   32: aload 4
     //   34: iconst_0
     //   35: iload_1
-    //   36: invokevirtual 539	java/io/ByteArrayOutputStream:write	([BII)V
+    //   36: invokevirtual 549	java/io/ByteArrayOutputStream:write	([BII)V
     //   39: goto -24 -> 15
     //   42: astore_2
     //   43: aload_3
@@ -1955,30 +2196,30 @@ public class FileUtils
     //   47: aload_0
     //   48: astore_2
     //   49: aload_3
-    //   50: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   50: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   53: aload_0
-    //   54: invokestatic 299	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   54: invokestatic 308	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   57: iconst_0
     //   58: newarray byte
     //   60: areturn
     //   61: aload_3
     //   62: astore_2
     //   63: aload_3
-    //   64: invokevirtual 540	java/io/ByteArrayOutputStream:flush	()V
+    //   64: invokevirtual 550	java/io/ByteArrayOutputStream:flush	()V
     //   67: aload_3
     //   68: astore_2
     //   69: aload_3
-    //   70: invokevirtual 542	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   70: invokevirtual 552	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   73: astore_0
     //   74: aload_3
-    //   75: invokestatic 299	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   75: invokestatic 308	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   78: aload_0
     //   79: areturn
     //   80: astore_0
     //   81: aconst_null
     //   82: astore_2
     //   83: aload_2
-    //   84: invokestatic 299	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   84: invokestatic 308	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   87: aload_0
     //   88: athrow
     //   89: astore_0
@@ -2016,56 +2257,56 @@ public class FileUtils
   public static String loadRawResourceString(Context paramContext, int paramInt)
   {
     // Byte code:
-    //   0: new 519	java/io/InputStreamReader
+    //   0: new 529	java/io/InputStreamReader
     //   3: dup
     //   4: aload_0
-    //   5: invokevirtual 353	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   5: invokevirtual 362	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   8: iload_1
-    //   9: invokevirtual 359	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
-    //   12: invokespecial 545	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   9: invokevirtual 368	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
+    //   12: invokespecial 555	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   15: astore_0
-    //   16: new 517	java/io/BufferedReader
+    //   16: new 527	java/io/BufferedReader
     //   19: dup
     //   20: aload_0
-    //   21: invokespecial 525	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   21: invokespecial 535	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   24: astore_2
-    //   25: new 75	java/lang/StringBuilder
+    //   25: new 84	java/lang/StringBuilder
     //   28: dup
-    //   29: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   29: invokespecial 85	java/lang/StringBuilder:<init>	()V
     //   32: astore_3
     //   33: aload_2
-    //   34: invokevirtual 528	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   34: invokevirtual 538	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   37: astore 4
     //   39: aload 4
     //   41: ifnull +31 -> 72
     //   44: aload_3
     //   45: aload 4
-    //   47: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   50: pop
     //   51: aload_3
     //   52: bipush 10
-    //   54: invokevirtual 548	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   54: invokevirtual 558	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   57: pop
     //   58: goto -25 -> 33
     //   61: astore_3
     //   62: aload_0
-    //   63: invokestatic 532	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
+    //   63: invokestatic 542	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
     //   66: aload_2
-    //   67: invokestatic 532	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
+    //   67: invokestatic 542	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
     //   70: aconst_null
     //   71: areturn
     //   72: aload_0
-    //   73: invokestatic 532	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
+    //   73: invokestatic 542	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
     //   76: aload_2
-    //   77: invokestatic 532	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
+    //   77: invokestatic 542	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
     //   80: aload_3
-    //   81: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   81: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   84: areturn
     //   85: astore_3
     //   86: aload_0
-    //   87: invokestatic 532	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
+    //   87: invokestatic 542	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
     //   90: aload_2
-    //   91: invokestatic 532	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
+    //   91: invokestatic 542	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
     //   94: aload_3
     //   95: athrow
     // Local variable table:
@@ -2091,36 +2332,36 @@ public class FileUtils
     // Byte code:
     //   0: aconst_null
     //   1: astore_1
-    //   2: new 75	java/lang/StringBuilder
+    //   2: new 84	java/lang/StringBuilder
     //   5: dup
-    //   6: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   6: invokespecial 85	java/lang/StringBuilder:<init>	()V
     //   9: astore 4
-    //   11: new 248	java/io/FileInputStream
+    //   11: new 257	java/io/FileInputStream
     //   14: dup
     //   15: aload_0
-    //   16: invokespecial 332	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   16: invokespecial 341	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   19: astore_2
-    //   20: new 517	java/io/BufferedReader
+    //   20: new 527	java/io/BufferedReader
     //   23: dup
-    //   24: new 519	java/io/InputStreamReader
+    //   24: new 529	java/io/InputStreamReader
     //   27: dup
     //   28: aload_2
-    //   29: ldc_w 521
-    //   32: invokespecial 522	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
-    //   35: invokespecial 525	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   29: ldc_w 531
+    //   32: invokespecial 532	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   35: invokespecial 535	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   38: astore_0
     //   39: aload_0
-    //   40: invokevirtual 528	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   40: invokevirtual 538	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   43: astore_1
     //   44: aload_1
     //   45: ifnull +51 -> 96
     //   48: aload 4
     //   50: aload_1
-    //   51: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   54: pop
     //   55: aload 4
-    //   57: ldc_w 530
-    //   60: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: ldc_w 540
+    //   60: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   63: pop
     //   64: goto -25 -> 39
     //   67: astore_3
@@ -2128,21 +2369,21 @@ public class FileUtils
     //   69: astore_1
     //   70: aload_3
     //   71: astore_2
-    //   72: getstatic 41	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
+    //   72: getstatic 45	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
     //   75: aload_2
-    //   76: invokevirtual 551	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   79: invokestatic 318	com/tencent/ttpic/baseutils/log/LogUtils:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   76: invokevirtual 561	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   79: invokestatic 327	com/tencent/ttpic/baseutils/log/LogUtils:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   82: aload_0
-    //   83: invokestatic 532	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
+    //   83: invokestatic 542	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
     //   86: aload_1
-    //   87: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   87: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   90: aload 4
-    //   92: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   92: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   95: areturn
     //   96: aload_0
-    //   97: invokestatic 532	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
+    //   97: invokestatic 542	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
     //   100: aload_2
-    //   101: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   101: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   104: goto -14 -> 90
     //   107: astore_1
     //   108: aconst_null
@@ -2150,9 +2391,9 @@ public class FileUtils
     //   110: aconst_null
     //   111: astore_2
     //   112: aload_0
-    //   113: invokestatic 532	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
+    //   113: invokestatic 542	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
     //   116: aload_2
-    //   117: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   117: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   120: aload_1
     //   121: athrow
     //   122: astore_1
@@ -2308,26 +2549,26 @@ public class FileUtils
     //   0: aconst_null
     //   1: astore 6
     //   3: aload_1
-    //   4: invokestatic 137	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: invokestatic 146	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   7: ifne +10 -> 17
     //   10: aload_2
-    //   11: invokestatic 137	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   11: invokestatic 146	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   14: ifeq +14 -> 28
-    //   17: getstatic 41	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
-    //   20: ldc_w 305
-    //   23: invokestatic 308	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   17: getstatic 45	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
+    //   20: ldc_w 314
+    //   23: invokestatic 317	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   26: iconst_0
     //   27: ireturn
     //   28: aload_0
-    //   29: invokevirtual 65	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   29: invokevirtual 74	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   32: astore 8
-    //   34: new 73	java/io/File
+    //   34: new 82	java/io/File
     //   37: dup
     //   38: aload_2
-    //   39: invokespecial 96	java/io/File:<init>	(Ljava/lang/String;)V
+    //   39: invokespecial 105	java/io/File:<init>	(Ljava/lang/String;)V
     //   42: astore 7
     //   44: aload 7
-    //   46: invokevirtual 159	java/io/File:exists	()Z
+    //   46: invokevirtual 168	java/io/File:exists	()Z
     //   49: ifeq +52 -> 101
     //   52: aload_3
     //   53: ifnull +35 -> 88
@@ -2335,59 +2576,59 @@ public class FileUtils
     //   57: aload_0
     //   58: aload_1
     //   59: aload 7
-    //   61: invokeinterface 621 4 0
+    //   61: invokeinterface 631 4 0
     //   66: ifeq +22 -> 88
-    //   69: getstatic 41	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
-    //   72: ldc_w 315
-    //   75: invokestatic 318	com/tencent/ttpic/baseutils/log/LogUtils:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   69: getstatic 45	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
+    //   72: ldc_w 324
+    //   75: invokestatic 327	com/tencent/ttpic/baseutils/log/LogUtils:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   78: aconst_null
-    //   79: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   79: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   82: aconst_null
-    //   83: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   83: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   86: iconst_1
     //   87: ireturn
     //   88: aload 7
-    //   90: invokevirtual 206	java/io/File:isDirectory	()Z
+    //   90: invokevirtual 215	java/io/File:isDirectory	()Z
     //   93: ifeq +8 -> 101
     //   96: aload 7
-    //   98: invokestatic 322	com/tencent/ttpic/baseutils/io/FileUtils:delete	(Ljava/io/File;)V
+    //   98: invokestatic 331	com/tencent/ttpic/baseutils/io/FileUtils:delete	(Ljava/io/File;)V
     //   101: aload 7
-    //   103: invokevirtual 326	java/io/File:getParentFile	()Ljava/io/File;
+    //   103: invokevirtual 335	java/io/File:getParentFile	()Ljava/io/File;
     //   106: astore_0
     //   107: aload_0
-    //   108: invokevirtual 329	java/io/File:isFile	()Z
+    //   108: invokevirtual 338	java/io/File:isFile	()Z
     //   111: ifeq +7 -> 118
     //   114: aload_0
-    //   115: invokestatic 322	com/tencent/ttpic/baseutils/io/FileUtils:delete	(Ljava/io/File;)V
+    //   115: invokestatic 331	com/tencent/ttpic/baseutils/io/FileUtils:delete	(Ljava/io/File;)V
     //   118: aload_0
-    //   119: invokevirtual 159	java/io/File:exists	()Z
+    //   119: invokevirtual 168	java/io/File:exists	()Z
     //   122: ifne +49 -> 171
     //   125: aload_0
-    //   126: invokevirtual 100	java/io/File:mkdirs	()Z
+    //   126: invokevirtual 109	java/io/File:mkdirs	()Z
     //   129: ifne +42 -> 171
-    //   132: getstatic 41	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
-    //   135: new 75	java/lang/StringBuilder
+    //   132: getstatic 45	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
+    //   135: new 84	java/lang/StringBuilder
     //   138: dup
-    //   139: invokespecial 76	java/lang/StringBuilder:<init>	()V
-    //   142: ldc_w 331
-    //   145: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   139: invokespecial 85	java/lang/StringBuilder:<init>	()V
+    //   142: ldc_w 340
+    //   145: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   148: aload_0
-    //   149: invokevirtual 83	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   152: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   155: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   158: invokestatic 308	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   149: invokevirtual 92	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   152: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   155: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   158: invokestatic 317	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   161: aconst_null
-    //   162: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   162: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   165: aconst_null
-    //   166: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   166: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   169: iconst_0
     //   170: ireturn
     //   171: aload 8
     //   173: aload_1
-    //   174: invokevirtual 186	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   174: invokevirtual 195	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   177: astore_0
     //   178: aload_0
-    //   179: invokevirtual 336	java/io/InputStream:available	()I
+    //   179: invokevirtual 345	java/io/InputStream:available	()I
     //   182: istore 4
     //   184: iload 4
     //   186: ifgt +20 -> 206
@@ -2396,25 +2637,25 @@ public class FileUtils
     //   192: aload 6
     //   194: astore_1
     //   195: aload_0
-    //   196: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   196: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   199: aload_1
-    //   200: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   200: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   203: iload 5
     //   205: ireturn
-    //   206: new 338	java/io/BufferedOutputStream
+    //   206: new 347	java/io/BufferedOutputStream
     //   209: dup
-    //   210: new 242	java/io/FileOutputStream
+    //   210: new 251	java/io/FileOutputStream
     //   213: dup
     //   214: aload 7
-    //   216: invokespecial 244	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   219: invokespecial 340	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   216: invokespecial 253	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   219: invokespecial 349	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   222: astore_2
     //   223: sipush 1024
     //   226: newarray byte
     //   228: astore_1
     //   229: aload_0
     //   230: aload_1
-    //   231: invokevirtual 284	java/io/InputStream:read	([B)I
+    //   231: invokevirtual 293	java/io/InputStream:read	([B)I
     //   234: istore 4
     //   236: iload 4
     //   238: ifle +63 -> 301
@@ -2422,7 +2663,7 @@ public class FileUtils
     //   242: aload_1
     //   243: iconst_0
     //   244: iload 4
-    //   246: invokevirtual 287	java/io/OutputStream:write	([BII)V
+    //   246: invokevirtual 296	java/io/OutputStream:write	([BII)V
     //   249: goto -20 -> 229
     //   252: astore_3
     //   253: aload_0
@@ -2431,23 +2672,23 @@ public class FileUtils
     //   256: astore_0
     //   257: aload_3
     //   258: astore_2
-    //   259: getstatic 41	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
-    //   262: ldc_w 623
+    //   259: getstatic 45	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
+    //   262: ldc_w 633
     //   265: iconst_1
     //   266: anewarray 4	java/lang/Object
     //   269: dup
     //   270: iconst_0
     //   271: aload_2
-    //   272: invokevirtual 343	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   272: invokevirtual 352	java/lang/Throwable:toString	()Ljava/lang/String;
     //   275: aastore
-    //   276: invokestatic 347	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   279: invokestatic 308	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   276: invokestatic 356	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   279: invokestatic 317	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   282: aload 7
-    //   284: invokestatic 322	com/tencent/ttpic/baseutils/io/FileUtils:delete	(Ljava/io/File;)V
+    //   284: invokestatic 331	com/tencent/ttpic/baseutils/io/FileUtils:delete	(Ljava/io/File;)V
     //   287: aload_1
-    //   288: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   288: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   291: aload_0
-    //   292: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   292: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   295: iconst_0
     //   296: istore 5
     //   298: goto -95 -> 203
@@ -2462,9 +2703,9 @@ public class FileUtils
     //   312: aconst_null
     //   313: astore_2
     //   314: aload_0
-    //   315: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   315: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   318: aload_2
-    //   319: invokestatic 320	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   319: invokestatic 329	com/tencent/ttpic/baseutils/io/FileUtils:closeSilently	(Ljava/io/Closeable;)V
     //   322: aload_1
     //   323: athrow
     //   324: astore_1
@@ -2561,31 +2802,31 @@ public class FileUtils
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 137	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 146	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifeq +5 -> 9
     //   7: aconst_null
     //   8: areturn
-    //   9: new 73	java/io/File
+    //   9: new 82	java/io/File
     //   12: dup
     //   13: aload_0
-    //   14: invokespecial 96	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: invokespecial 105	java/io/File:<init>	(Ljava/lang/String;)V
     //   17: astore 4
     //   19: aload 4
-    //   21: invokevirtual 159	java/io/File:exists	()Z
+    //   21: invokevirtual 168	java/io/File:exists	()Z
     //   24: ifeq -17 -> 7
     //   27: aload 4
-    //   29: invokevirtual 367	java/io/File:length	()J
+    //   29: invokevirtual 376	java/io/File:length	()J
     //   32: l2i
     //   33: istore_2
-    //   34: new 537	java/io/ByteArrayOutputStream
+    //   34: new 547	java/io/ByteArrayOutputStream
     //   37: dup
     //   38: iload_2
-    //   39: invokespecial 633	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   39: invokespecial 643	java/io/ByteArrayOutputStream:<init>	(I)V
     //   42: astore_0
-    //   43: new 248	java/io/FileInputStream
+    //   43: new 257	java/io/FileInputStream
     //   46: dup
     //   47: aload 4
-    //   49: invokespecial 249	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   49: invokespecial 258	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   52: astore 8
     //   54: iload_2
     //   55: sipush 4096
@@ -2594,9 +2835,9 @@ public class FileUtils
     //   62: astore 5
     //   64: aload 8
     //   66: astore 4
-    //   68: invokestatic 257	com/tencent/ttpic/baseutils/io/ByteArrayPool:getGenericInstance	()Lcom/tencent/ttpic/baseutils/io/ByteArrayPool;
+    //   68: invokestatic 266	com/tencent/ttpic/baseutils/io/ByteArrayPool:getGenericInstance	()Lcom/tencent/ttpic/baseutils/io/ByteArrayPool;
     //   71: sipush 4096
-    //   74: invokevirtual 261	com/tencent/ttpic/baseutils/io/ByteArrayPool:getBuf	(I)[B
+    //   74: invokevirtual 270	com/tencent/ttpic/baseutils/io/ByteArrayPool:getBuf	(I)[B
     //   77: astore 6
     //   79: aload 6
     //   81: astore 4
@@ -2613,7 +2854,7 @@ public class FileUtils
     //   99: astore 4
     //   101: aload 8
     //   103: aload 6
-    //   105: invokevirtual 457	java/io/FileInputStream:read	([B)I
+    //   105: invokevirtual 490	java/io/FileInputStream:read	([B)I
     //   108: istore_3
     //   109: aload_0
     //   110: astore 5
@@ -2623,7 +2864,7 @@ public class FileUtils
     //   117: aload 6
     //   119: iconst_0
     //   120: iload_3
-    //   121: invokevirtual 539	java/io/ByteArrayOutputStream:write	([BII)V
+    //   121: invokevirtual 549	java/io/ByteArrayOutputStream:write	([BII)V
     //   124: iload_1
     //   125: iload_3
     //   126: iadd
@@ -2633,9 +2874,9 @@ public class FileUtils
     //   132: astore 5
     //   134: aload 8
     //   136: astore 4
-    //   138: invokestatic 257	com/tencent/ttpic/baseutils/io/ByteArrayPool:getGenericInstance	()Lcom/tencent/ttpic/baseutils/io/ByteArrayPool;
+    //   138: invokestatic 266	com/tencent/ttpic/baseutils/io/ByteArrayPool:getGenericInstance	()Lcom/tencent/ttpic/baseutils/io/ByteArrayPool;
     //   141: sipush 12288
-    //   144: invokevirtual 261	com/tencent/ttpic/baseutils/io/ByteArrayPool:getBuf	(I)[B
+    //   144: invokevirtual 270	com/tencent/ttpic/baseutils/io/ByteArrayPool:getBuf	(I)[B
     //   147: astore 6
     //   149: aload 6
     //   151: astore 4
@@ -2645,9 +2886,9 @@ public class FileUtils
     //   159: astore 5
     //   161: aload 8
     //   163: astore 4
-    //   165: invokestatic 257	com/tencent/ttpic/baseutils/io/ByteArrayPool:getGenericInstance	()Lcom/tencent/ttpic/baseutils/io/ByteArrayPool;
+    //   165: invokestatic 266	com/tencent/ttpic/baseutils/io/ByteArrayPool:getGenericInstance	()Lcom/tencent/ttpic/baseutils/io/ByteArrayPool;
     //   168: sipush 4096
-    //   171: invokevirtual 261	com/tencent/ttpic/baseutils/io/ByteArrayPool:getBuf	(I)[B
+    //   171: invokevirtual 270	com/tencent/ttpic/baseutils/io/ByteArrayPool:getBuf	(I)[B
     //   174: astore 6
     //   176: iconst_0
     //   177: istore_1
@@ -2656,39 +2897,39 @@ public class FileUtils
     //   182: astore 5
     //   184: aload 8
     //   186: astore 4
-    //   188: invokestatic 257	com/tencent/ttpic/baseutils/io/ByteArrayPool:getGenericInstance	()Lcom/tencent/ttpic/baseutils/io/ByteArrayPool;
+    //   188: invokestatic 266	com/tencent/ttpic/baseutils/io/ByteArrayPool:getGenericInstance	()Lcom/tencent/ttpic/baseutils/io/ByteArrayPool;
     //   191: aload 6
-    //   193: invokevirtual 278	com/tencent/ttpic/baseutils/io/ByteArrayPool:returnBuf	([B)V
+    //   193: invokevirtual 287	com/tencent/ttpic/baseutils/io/ByteArrayPool:returnBuf	([B)V
     //   196: aload_0
     //   197: astore 5
     //   199: aload 8
     //   201: astore 4
     //   203: aload_0
-    //   204: invokevirtual 542	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   204: invokevirtual 552	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   207: astore 6
     //   209: aload 6
     //   211: astore 4
     //   213: aload_0
     //   214: ifnull +7 -> 221
     //   217: aload_0
-    //   218: invokevirtual 634	java/io/ByteArrayOutputStream:close	()V
+    //   218: invokevirtual 644	java/io/ByteArrayOutputStream:close	()V
     //   221: aload 4
     //   223: astore_0
     //   224: aload 8
     //   226: ifnull +11 -> 237
     //   229: aload 8
-    //   231: invokevirtual 467	java/io/FileInputStream:close	()V
+    //   231: invokevirtual 491	java/io/FileInputStream:close	()V
     //   234: aload 4
     //   236: astore_0
     //   237: aload_0
     //   238: areturn
     //   239: astore_0
-    //   240: getstatic 41	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
-    //   243: ldc_w 636
+    //   240: getstatic 45	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
+    //   243: ldc_w 646
     //   246: aload_0
     //   247: iconst_0
     //   248: anewarray 4	java/lang/Object
-    //   251: invokestatic 639	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
+    //   251: invokestatic 649	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
     //   254: aload 4
     //   256: astore_0
     //   257: goto -20 -> 237
@@ -2701,30 +2942,30 @@ public class FileUtils
     //   269: astore 5
     //   271: aload_0
     //   272: astore 4
-    //   274: getstatic 41	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
-    //   277: ldc_w 641
+    //   274: getstatic 45	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
+    //   277: ldc_w 651
     //   280: aload 6
     //   282: iconst_0
     //   283: anewarray 4	java/lang/Object
-    //   286: invokestatic 639	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
+    //   286: invokestatic 649	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
     //   289: aload 7
     //   291: ifnull +8 -> 299
     //   294: aload 7
-    //   296: invokevirtual 634	java/io/ByteArrayOutputStream:close	()V
+    //   296: invokevirtual 644	java/io/ByteArrayOutputStream:close	()V
     //   299: aload_0
     //   300: ifnull +7 -> 307
     //   303: aload_0
-    //   304: invokevirtual 467	java/io/FileInputStream:close	()V
+    //   304: invokevirtual 491	java/io/FileInputStream:close	()V
     //   307: aconst_null
     //   308: astore_0
     //   309: goto -72 -> 237
     //   312: astore_0
-    //   313: getstatic 41	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
-    //   316: ldc_w 636
+    //   313: getstatic 45	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
+    //   316: ldc_w 646
     //   319: aload_0
     //   320: iconst_0
     //   321: anewarray 4	java/lang/Object
-    //   324: invokestatic 639	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
+    //   324: invokestatic 649	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
     //   327: aconst_null
     //   328: astore_0
     //   329: goto -92 -> 237
@@ -2736,20 +2977,20 @@ public class FileUtils
     //   339: aload_0
     //   340: ifnull +7 -> 347
     //   343: aload_0
-    //   344: invokevirtual 634	java/io/ByteArrayOutputStream:close	()V
+    //   344: invokevirtual 644	java/io/ByteArrayOutputStream:close	()V
     //   347: aload 4
     //   349: ifnull +8 -> 357
     //   352: aload 4
-    //   354: invokevirtual 467	java/io/FileInputStream:close	()V
+    //   354: invokevirtual 491	java/io/FileInputStream:close	()V
     //   357: aload 6
     //   359: athrow
     //   360: astore_0
-    //   361: getstatic 41	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
-    //   364: ldc_w 636
+    //   361: getstatic 45	com/tencent/ttpic/baseutils/io/FileUtils:TAG	Ljava/lang/String;
+    //   364: ldc_w 646
     //   367: aload_0
     //   368: iconst_0
     //   369: anewarray 4	java/lang/Object
-    //   372: invokestatic 639	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
+    //   372: invokestatic 649	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
     //   375: goto -18 -> 357
     //   378: astore 6
     //   380: aconst_null
@@ -2828,63 +3069,63 @@ public class FileUtils
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 353	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   1: invokevirtual 362	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   4: iload_1
-    //   5: invokevirtual 359	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
+    //   5: invokevirtual 368	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
     //   8: astore_0
-    //   9: new 519	java/io/InputStreamReader
+    //   9: new 529	java/io/InputStreamReader
     //   12: dup
     //   13: aload_0
-    //   14: invokespecial 545	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   14: invokespecial 555	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   17: astore_2
-    //   18: new 517	java/io/BufferedReader
+    //   18: new 527	java/io/BufferedReader
     //   21: dup
     //   22: aload_2
-    //   23: invokespecial 525	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   23: invokespecial 535	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   26: astore_3
-    //   27: new 75	java/lang/StringBuilder
+    //   27: new 84	java/lang/StringBuilder
     //   30: dup
-    //   31: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   31: invokespecial 85	java/lang/StringBuilder:<init>	()V
     //   34: astore 4
     //   36: aload_3
-    //   37: invokevirtual 528	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   37: invokevirtual 538	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   40: astore 5
     //   42: aload 5
     //   44: ifnull +38 -> 82
     //   47: aload 4
     //   49: aload 5
-    //   51: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   54: pop
     //   55: aload 4
     //   57: bipush 10
-    //   59: invokevirtual 548	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   59: invokevirtual 558	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   62: pop
     //   63: goto -27 -> 36
     //   66: astore 4
     //   68: aload_0
-    //   69: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   69: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   72: aload_2
-    //   73: invokestatic 532	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
+    //   73: invokestatic 542	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
     //   76: aload_3
-    //   77: invokestatic 532	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
+    //   77: invokestatic 542	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
     //   80: aconst_null
     //   81: areturn
     //   82: aload_0
-    //   83: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   83: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   86: aload_2
-    //   87: invokestatic 532	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
+    //   87: invokestatic 542	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
     //   90: aload_3
-    //   91: invokestatic 532	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
+    //   91: invokestatic 542	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
     //   94: aload 4
-    //   96: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   96: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   99: areturn
     //   100: astore 4
     //   102: aload_0
-    //   103: invokestatic 192	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   103: invokestatic 201	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   106: aload_2
-    //   107: invokestatic 532	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
+    //   107: invokestatic 542	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
     //   110: aload_3
-    //   111: invokestatic 532	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
+    //   111: invokestatic 542	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Reader;)V
     //   114: aload 4
     //   116: athrow
     // Local variable table:
@@ -2910,40 +3151,40 @@ public class FileUtils
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 137	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 146	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifeq +5 -> 9
     //   7: aconst_null
     //   8: areturn
-    //   9: new 75	java/lang/StringBuilder
+    //   9: new 84	java/lang/StringBuilder
     //   12: dup
-    //   13: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   13: invokespecial 85	java/lang/StringBuilder:<init>	()V
     //   16: astore 5
     //   18: aload_1
-    //   19: ldc 17
-    //   21: invokevirtual 143	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   19: ldc 20
+    //   21: invokevirtual 152	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   24: ifeq +189 -> 213
     //   27: aload_0
-    //   28: invokevirtual 65	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   28: invokevirtual 74	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   31: aload_1
-    //   32: ldc 17
-    //   34: invokevirtual 426	java/lang/String:length	()I
-    //   37: invokevirtual 146	java/lang/String:substring	(I)Ljava/lang/String;
-    //   40: invokevirtual 186	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   32: ldc 20
+    //   34: invokevirtual 467	java/lang/String:length	()I
+    //   37: invokevirtual 155	java/lang/String:substring	(I)Ljava/lang/String;
+    //   40: invokevirtual 195	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   43: astore_0
-    //   44: new 517	java/io/BufferedReader
+    //   44: new 527	java/io/BufferedReader
     //   47: dup
-    //   48: new 519	java/io/InputStreamReader
+    //   48: new 529	java/io/InputStreamReader
     //   51: dup
     //   52: aload_0
-    //   53: invokespecial 545	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   56: invokespecial 525	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   53: invokespecial 555	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   56: invokespecial 535	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   59: astore_1
     //   60: aload_1
     //   61: astore_3
     //   62: aload_0
     //   63: astore_2
     //   64: aload_1
-    //   65: invokevirtual 528	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   65: invokevirtual 538	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   68: astore 4
     //   70: aload 4
     //   72: ifnull +51 -> 123
@@ -2953,7 +3194,7 @@ public class FileUtils
     //   78: astore_2
     //   79: aload 5
     //   81: aload 4
-    //   83: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   86: pop
     //   87: goto -27 -> 60
     //   90: astore 4
@@ -2962,42 +3203,42 @@ public class FileUtils
     //   94: aload_0
     //   95: astore_2
     //   96: aload 4
-    //   98: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   98: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   101: aload_1
     //   102: ifnull +7 -> 109
     //   105: aload_1
-    //   106: invokevirtual 644	java/io/BufferedReader:close	()V
+    //   106: invokevirtual 654	java/io/BufferedReader:close	()V
     //   109: aload_0
     //   110: ifnull +7 -> 117
     //   113: aload_0
-    //   114: invokevirtual 371	java/io/InputStream:close	()V
+    //   114: invokevirtual 380	java/io/InputStream:close	()V
     //   117: aload 5
-    //   119: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   119: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   122: areturn
     //   123: aload_1
     //   124: ifnull +7 -> 131
     //   127: aload_1
-    //   128: invokevirtual 644	java/io/BufferedReader:close	()V
+    //   128: invokevirtual 654	java/io/BufferedReader:close	()V
     //   131: aload_0
     //   132: ifnull -15 -> 117
     //   135: aload_0
-    //   136: invokevirtual 371	java/io/InputStream:close	()V
+    //   136: invokevirtual 380	java/io/InputStream:close	()V
     //   139: goto -22 -> 117
     //   142: astore_0
     //   143: aload_0
-    //   144: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   144: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   147: goto -30 -> 117
     //   150: astore_1
     //   151: aload_1
-    //   152: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   152: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   155: goto -24 -> 131
     //   158: astore_1
     //   159: aload_1
-    //   160: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   160: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   163: goto -54 -> 109
     //   166: astore_0
     //   167: aload_0
-    //   168: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   168: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   171: goto -54 -> 117
     //   174: astore_1
     //   175: aconst_null
@@ -3007,33 +3248,33 @@ public class FileUtils
     //   179: aload_3
     //   180: ifnull +7 -> 187
     //   183: aload_3
-    //   184: invokevirtual 644	java/io/BufferedReader:close	()V
+    //   184: invokevirtual 654	java/io/BufferedReader:close	()V
     //   187: aload_0
     //   188: ifnull +7 -> 195
     //   191: aload_0
-    //   192: invokevirtual 371	java/io/InputStream:close	()V
+    //   192: invokevirtual 380	java/io/InputStream:close	()V
     //   195: aload_1
     //   196: athrow
     //   197: astore_2
     //   198: aload_2
-    //   199: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   199: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   202: goto -15 -> 187
     //   205: astore_0
     //   206: aload_0
-    //   207: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   207: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   210: goto -15 -> 195
-    //   213: new 517	java/io/BufferedReader
+    //   213: new 527	java/io/BufferedReader
     //   216: dup
-    //   217: new 646	java/io/FileReader
+    //   217: new 656	java/io/FileReader
     //   220: dup
     //   221: aload_1
-    //   222: invokespecial 647	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   225: invokespecial 525	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   222: invokespecial 657	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   225: invokespecial 535	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   228: astore_1
     //   229: aload_1
     //   230: astore_0
     //   231: aload_1
-    //   232: invokevirtual 528	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   232: invokevirtual 538	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   235: astore_2
     //   236: aload_2
     //   237: ifnull +41 -> 278
@@ -3041,31 +3282,31 @@ public class FileUtils
     //   241: astore_0
     //   242: aload 5
     //   244: aload_2
-    //   245: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   245: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   248: pop
     //   249: goto -20 -> 229
     //   252: astore_2
     //   253: aload_1
     //   254: astore_0
     //   255: aload_2
-    //   256: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   256: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   259: aload_1
     //   260: ifnull -143 -> 117
     //   263: aload_1
-    //   264: invokevirtual 644	java/io/BufferedReader:close	()V
+    //   264: invokevirtual 654	java/io/BufferedReader:close	()V
     //   267: goto -150 -> 117
     //   270: astore_0
     //   271: aload_0
-    //   272: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   272: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   275: goto -158 -> 117
     //   278: aload_1
     //   279: ifnull -162 -> 117
     //   282: aload_1
-    //   283: invokevirtual 644	java/io/BufferedReader:close	()V
+    //   283: invokevirtual 654	java/io/BufferedReader:close	()V
     //   286: goto -169 -> 117
     //   289: astore_0
     //   290: aload_0
-    //   291: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   291: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   294: goto -177 -> 117
     //   297: astore_1
     //   298: aconst_null
@@ -3073,12 +3314,12 @@ public class FileUtils
     //   300: aload_0
     //   301: ifnull +7 -> 308
     //   304: aload_0
-    //   305: invokevirtual 644	java/io/BufferedReader:close	()V
+    //   305: invokevirtual 654	java/io/BufferedReader:close	()V
     //   308: aload_1
     //   309: athrow
     //   310: astore_0
     //   311: aload_0
-    //   312: invokevirtual 119	java/io/IOException:printStackTrace	()V
+    //   312: invokevirtual 128	java/io/IOException:printStackTrace	()V
     //   315: goto -7 -> 308
     //   318: astore_1
     //   319: goto -19 -> 300
@@ -3152,35 +3393,35 @@ public class FileUtils
   public static com.tencent.ttpic.baseutils.bitmap.BitmapUtils.SAVE_STATUS save(String paramString, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: new 73	java/io/File
+    //   0: new 82	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 96	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 105	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_2
     //   9: aload_2
-    //   10: invokevirtual 326	java/io/File:getParentFile	()Ljava/io/File;
-    //   13: invokevirtual 159	java/io/File:exists	()Z
+    //   10: invokevirtual 335	java/io/File:getParentFile	()Ljava/io/File;
+    //   13: invokevirtual 168	java/io/File:exists	()Z
     //   16: ifne +11 -> 27
     //   19: aload_2
-    //   20: invokevirtual 326	java/io/File:getParentFile	()Ljava/io/File;
-    //   23: invokevirtual 100	java/io/File:mkdirs	()Z
+    //   20: invokevirtual 335	java/io/File:getParentFile	()Ljava/io/File;
+    //   23: invokevirtual 109	java/io/File:mkdirs	()Z
     //   26: pop
-    //   27: new 242	java/io/FileOutputStream
+    //   27: new 251	java/io/FileOutputStream
     //   30: dup
     //   31: aload_0
-    //   32: invokespecial 296	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   32: invokespecial 305	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   35: astore_2
     //   36: aload_2
     //   37: astore_0
     //   38: aload_2
     //   39: aload_1
-    //   40: invokevirtual 651	java/io/OutputStream:write	([B)V
+    //   40: invokevirtual 661	java/io/OutputStream:write	([B)V
     //   43: aload_2
     //   44: astore_0
-    //   45: getstatic 657	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_SUCCESS	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
+    //   45: getstatic 667	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_SUCCESS	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
     //   48: astore_1
     //   49: aload_2
-    //   50: invokestatic 299	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   50: invokestatic 308	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   53: aload_1
     //   54: areturn
     //   55: astore_3
@@ -3189,20 +3430,20 @@ public class FileUtils
     //   58: aload_1
     //   59: astore_0
     //   60: aload_3
-    //   61: invokestatic 293	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
+    //   61: invokestatic 302	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
     //   64: aload_1
     //   65: astore_0
-    //   66: getstatic 660	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_FAILED	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
+    //   66: getstatic 670	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_FAILED	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
     //   69: astore_2
     //   70: aload_1
-    //   71: invokestatic 299	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   71: invokestatic 308	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   74: aload_2
     //   75: areturn
     //   76: astore_1
     //   77: aconst_null
     //   78: astore_0
     //   79: aload_0
-    //   80: invokestatic 299	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   80: invokestatic 308	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   83: aload_1
     //   84: athrow
     //   85: astore_1
@@ -3238,27 +3479,27 @@ public class FileUtils
     //   1: astore_3
     //   2: aconst_null
     //   3: astore 4
-    //   5: new 242	java/io/FileOutputStream
+    //   5: new 251	java/io/FileOutputStream
     //   8: dup
     //   9: aload_0
-    //   10: invokespecial 244	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   10: invokespecial 253	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   13: astore_2
-    //   14: new 662	java/io/BufferedWriter
+    //   14: new 672	java/io/BufferedWriter
     //   17: dup
-    //   18: new 664	java/io/OutputStreamWriter
+    //   18: new 674	java/io/OutputStreamWriter
     //   21: dup
     //   22: aload_2
-    //   23: ldc_w 521
-    //   26: invokespecial 667	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;Ljava/lang/String;)V
-    //   29: invokespecial 670	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
+    //   23: ldc_w 531
+    //   26: invokespecial 677	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;Ljava/lang/String;)V
+    //   29: invokespecial 680	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
     //   32: astore_0
     //   33: aload_0
     //   34: aload_1
-    //   35: invokevirtual 672	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   35: invokevirtual 682	java/io/BufferedWriter:write	(Ljava/lang/String;)V
     //   38: aload_2
-    //   39: invokestatic 299	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   39: invokestatic 308	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   42: aload_0
-    //   43: invokestatic 674	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Writer;)V
+    //   43: invokestatic 684	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Writer;)V
     //   46: return
     //   47: astore_2
     //   48: aconst_null
@@ -3266,11 +3507,11 @@ public class FileUtils
     //   50: aload 4
     //   52: astore_1
     //   53: aload_2
-    //   54: invokestatic 293	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
+    //   54: invokestatic 302	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
     //   57: aload_1
-    //   58: invokestatic 299	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   58: invokestatic 308	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   61: aload_0
-    //   62: invokestatic 674	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Writer;)V
+    //   62: invokestatic 684	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Writer;)V
     //   65: return
     //   66: astore_0
     //   67: aconst_null
@@ -3278,9 +3519,9 @@ public class FileUtils
     //   69: aload_3
     //   70: astore_1
     //   71: aload_2
-    //   72: invokestatic 299	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   72: invokestatic 308	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   75: aload_1
-    //   76: invokestatic 674	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Writer;)V
+    //   76: invokestatic 684	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Writer;)V
     //   79: aload_0
     //   80: athrow
     //   81: astore_0
@@ -3345,21 +3586,21 @@ public class FileUtils
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: new 662	java/io/BufferedWriter
+    //   2: new 672	java/io/BufferedWriter
     //   5: dup
-    //   6: new 677	java/io/FileWriter
+    //   6: new 687	java/io/FileWriter
     //   9: dup
     //   10: aload_0
-    //   11: invokespecial 678	java/io/FileWriter:<init>	(Ljava/lang/String;)V
-    //   14: invokespecial 670	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
+    //   11: invokespecial 688	java/io/FileWriter:<init>	(Ljava/lang/String;)V
+    //   14: invokespecial 680	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
     //   17: astore_2
     //   18: aload_2
     //   19: astore_0
     //   20: aload_2
     //   21: aload_1
-    //   22: invokevirtual 672	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   22: invokevirtual 682	java/io/BufferedWriter:write	(Ljava/lang/String;)V
     //   25: aload_2
-    //   26: invokestatic 674	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Writer;)V
+    //   26: invokestatic 684	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Writer;)V
     //   29: return
     //   30: astore_3
     //   31: aconst_null
@@ -3367,15 +3608,15 @@ public class FileUtils
     //   33: aload_1
     //   34: astore_0
     //   35: aload_3
-    //   36: invokestatic 293	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
+    //   36: invokestatic 302	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
     //   39: aload_1
-    //   40: invokestatic 674	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Writer;)V
+    //   40: invokestatic 684	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Writer;)V
     //   43: return
     //   44: astore_0
     //   45: aload_3
     //   46: astore_1
     //   47: aload_1
-    //   48: invokestatic 674	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Writer;)V
+    //   48: invokestatic 684	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/Writer;)V
     //   51: aload_0
     //   52: athrow
     //   53: astore_2

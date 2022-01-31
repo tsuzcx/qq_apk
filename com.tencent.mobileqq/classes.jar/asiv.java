@@ -1,77 +1,71 @@
-import android.content.res.Resources;
-import android.graphics.Paint;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.miniapp.MiniAppInfoManager.1;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class asiv
-  implements View.OnClickListener
 {
-  public asiv(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  Map<String, asiu> a = new ConcurrentHashMap();
   
-  public void onClick(View paramView)
+  asiu a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if ((ChooseInterestTagActivity.a(this.a) == 3) || (ChooseInterestTagActivity.a(this.a) == 2) || (ChooseInterestTagActivity.a(this.a) == 1) || (ChooseInterestTagActivity.a(this.a) == 4))
+    asiu localasiu = (asiu)this.a.get(paramString);
+    if ((localasiu != null) && (paramBoolean)) {
+      if (!a(localasiu, paramInt1, paramInt2)) {}
+    }
+    while (!QLog.isColorLevel())
     {
-      paramView = (InterestTagInfo)paramView.getTag();
-      if (paramView != null)
-      {
-        ChooseInterestTagActivity.a(this.a).remove(paramView);
-        ChooseInterestTagActivity.a(this.a, paramView);
-        ChooseInterestTagActivity.b(this.a, paramView);
+      return localasiu;
+      return null;
+    }
+    QLog.d("MiniAppInfoManager", 2, new Object[] { "getAppInfoFromCache cache invalid. cacheKey=", paramString });
+    return localasiu;
+  }
+  
+  void a(asiu paramasiu, int paramInt, asix paramasix)
+  {
+    ThreadManagerV2.excute(new MiniAppInfoManager.1(this, paramasix, paramasiu, paramInt), 128, null, true);
+  }
+  
+  boolean a(asiu paramasiu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppInfoManager", 2, new Object[] { "verifyAppInfo. appState=", Integer.valueOf(paramasiu.jdField_c_of_type_Int) });
+    }
+    return (paramasiu != null) && (paramasiu.jdField_c_of_type_Int == 1);
+  }
+  
+  boolean a(asiu paramasiu, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppInfoManager", 2, new Object[] { "getAppInfoFromCache cache valid. cacheKey=", paramasiu.h });
+    }
+    if (paramInt2 == 1)
+    {
+      if (paramasiu.jdField_c_of_type_Long <= NetConnInfoCenter.getServerTimeMillis()) {}
+    }
+    else {
+      while ((paramInt2 == 0) && (((paramInt1 == 1) && (paramasiu.a > NetConnInfoCenter.getServerTimeMillis())) || ((paramInt1 == 2) && (paramasiu.b > NetConnInfoCenter.getServerTimeMillis())))) {
+        return true;
       }
     }
-    do
-    {
-      for (;;)
-      {
-        return;
-        try
-        {
-          int[] arrayOfInt = new int[2];
-          paramView.getLocationInWindow(arrayOfInt);
-          if (arrayOfInt[0] > 0)
-          {
-            InterestTagInfo localInterestTagInfo = (InterestTagInfo)paramView.getTag();
-            if (localInterestTagInfo != null)
-            {
-              Paint localPaint = new Paint();
-              localPaint.setTextSize((float)(ChooseInterestTagActivity.a(this.a) * 14.0F + 0.5D));
-              localPaint.setColor(this.a.getResources().getColor(2131101317));
-              localPaint.setFakeBoldText(false);
-              localPaint.setAntiAlias(true);
-              Object localObject2 = localInterestTagInfo.tagName;
-              Object localObject1 = localObject2;
-              if (TextUtils.isEmpty((CharSequence)localObject2)) {
-                localObject1 = " ";
-              }
-              localObject2 = localObject1;
-              if (((String)localObject1).length() > 8) {
-                localObject2 = ((String)localObject1).substring(0, 8) + "...";
-              }
-              float f = localPaint.measureText((String)localObject2);
-              int i = (int)(ChooseInterestTagActivity.a(this.a) * 64.0F + 0.5D + f);
-              localObject1 = new asjl(this.a, arrayOfInt[0], i);
-              ((asjl)localObject1).a(ChooseInterestTagActivity.a(this.a));
-              ((asjl)localObject1).a(localInterestTagInfo);
-              ((asjl)localObject1).showAsDropDown(paramView, -(int)((i - 40.0F * ChooseInterestTagActivity.a(this.a)) / 2.0F), 10);
-              return;
-            }
-          }
-        }
-        catch (Exception paramView) {}
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.i("choose_interest_tag", 4, paramView.getMessage());
+    return false;
+  }
+  
+  boolean b(asiu paramasiu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppInfoManager", 2, new Object[] { "verifyDownloadUrl. downloadUrl=", paramasiu.f });
+    }
+    return !TextUtils.isEmpty(paramasiu.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     asiv
  * JD-Core Version:    0.7.0.1
  */

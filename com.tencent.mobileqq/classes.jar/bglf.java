@@ -1,29 +1,12 @@
-import com.tencent.biz.ui.TouchWebView;
-import cooperation.qzone.webviewwrapper.IWebviewListener;
+import java.io.File;
+import java.io.FilenameFilter;
 
 class bglf
-  implements bglj
+  implements FilenameFilter
 {
-  bglf(bgle parambgle, IWebviewListener paramIWebviewListener) {}
-  
-  public void a()
+  public boolean accept(File paramFile, String paramString)
   {
-    if (bgle.a(this.jdField_a_of_type_Bgle) == null) {}
-    do
-    {
-      return;
-      if (bgle.a(this.jdField_a_of_type_Bgle).getVisibility() != 0) {
-        bgle.a(this.jdField_a_of_type_Bgle).setVisibility(0);
-      }
-    } while (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener == null);
-    this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onPageFinished();
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener != null) {
-      this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onReceiveError(paramInt, paramString1, paramString2);
-    }
+    return paramString.endsWith(this.a);
   }
 }
 

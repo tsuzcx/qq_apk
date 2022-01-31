@@ -1,132 +1,24 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule.1;
-import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule.3;
-import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule.4;
-import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule.5;
-import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import tencent.im.oidb.cmd0x6e4.oidb_cmd0x6e4.RspBody;
-import tencent.im.oidb.cmd0x6e5.oidb_cmd0x6e5.ReqBody;
-import tencent.im.oidb.cmd0x6e5.oidb_cmd0x6e5.RspBody;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class opx
-  extends oqg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private HashMap<Integer, InterestLabelInfo> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<InterestLabelInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  public opx(DailyTipsFoldUtils.1 param1, View paramView, int paramInt) {}
   
-  public opx(AppInterface paramAppInterface, atmp paramatmp, ExecutorService paramExecutorService, pdc parampdc, Handler paramHandler)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramAppInterface, paramatmp, paramExecutorService, parampdc, paramHandler);
-  }
-  
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    Object localObject = null;
-    oidb_cmd0x6e5.RspBody localRspBody = new oidb_cmd0x6e5.RspBody();
-    boolean bool = false;
-    if (pde.a(paramFromServiceMsg, paramObject, localRspBody) == 0)
-    {
-      if (localRspBody.uint64_uin.has()) {
-        localRspBody.uint64_uin.get();
-      }
-      if ((!localRspBody.rpt_uint32_default_interest_label_id_list.has()) || (localRspBody.rpt_uint32_default_interest_label_id_list.get() == null)) {
-        break label195;
-      }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
+    int i = (int)(this.jdField_a_of_type_Int * f);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.smoothScrollToPositionFromTop(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.getHeaderViewsCount(), -i, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("DailyTipsFoldUtils", 2, "percent = " + f + ", scrollHeight = " + i);
     }
-    label195:
-    for (paramFromServiceMsg = localRspBody.rpt_uint32_default_interest_label_id_list.get();; paramFromServiceMsg = null)
-    {
-      paramToServiceMsg = localObject;
-      if (localRspBody.rpt_interest_label_list.has())
-      {
-        paramToServiceMsg = localObject;
-        if (localRspBody.rpt_interest_label_list.get() != null) {
-          paramToServiceMsg = pdb.a(localRspBody.rpt_interest_label_list.get(), paramFromServiceMsg);
-        }
-      }
-      if ((this.jdField_a_of_type_Boolean) && ((!localRspBody.rpt_uint64_last_interest_label_id_list.has()) || (localRspBody.rpt_uint64_last_interest_label_id_list.get() == null) || (localRspBody.rpt_uint64_last_interest_label_id_list.get().size() <= 0)))
-      {
-        ohb.a().a(true);
-        bool = true;
-      }
-      for (;;)
-      {
-        a(bool, paramToServiceMsg);
-        return;
-        paramToServiceMsg = pdb.a(null, null);
-        continue;
-        bool = true;
-      }
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
-  {
-    oidb_cmd0x6e5.ReqBody localReqBody = new oidb_cmd0x6e5.ReqBody();
-    long l = Long.valueOf(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()).longValue();
-    localReqBody.uint64_uin.set(l);
-    localReqBody.uint32_req_all_interest_label_list.set(paramInt1);
-    localReqBody.uint32_req_default_interest_label_id_list.set(paramInt2);
-    localReqBody.uint32_req_last_interest_label_id_list.set(paramInt3);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    a(pde.a("OidbSvc.0x6e5", 1765, 0, localReqBody.toByteArray()));
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x6e5")) {
-      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
-    while (!paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x6e4")) {
-      return;
-    }
-    b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-  }
-  
-  public void a(List<InterestLabelInfo> paramList)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new InterestLabelInfoModule.5(this, paramList));
-    }
-  }
-  
-  public void a(boolean paramBoolean, List<InterestLabelInfo> paramList)
-  {
-    if (paramList != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new InterestLabelInfoModule.3(this, paramList));
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new InterestLabelInfoModule.1(this));
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new InterestLabelInfoModule.4(this, paramInt));
-  }
-  
-  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    b(pde.a(paramFromServiceMsg, paramObject, new oidb_cmd0x6e4.RspBody()));
   }
 }
 

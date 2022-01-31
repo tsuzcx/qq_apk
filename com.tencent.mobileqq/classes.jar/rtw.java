@@ -1,25 +1,8 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil.19;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-public class rtw
-  implements azgl
+public abstract interface rtw
 {
-  public rtw(PublicAccountUtil.19 param19) {}
-  
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
-  {
-    if (paramJSONObject != null) {
-      if (QLog.isColorLevel()) {
-        QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result :" + paramJSONObject);
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result null");
-  }
+  public abstract void a(BaseArticleInfo paramBaseArticleInfo, int paramInt);
 }
 
 

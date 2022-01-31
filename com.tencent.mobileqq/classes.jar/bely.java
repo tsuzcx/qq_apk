@@ -1,15 +1,9 @@
-import android.view.View;
-import com.tencent.widget.PinnedFooterExpandableListView;
-
-public abstract interface bely
-{
-  public abstract void a();
-  
-  public abstract void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt);
-}
+public class bely
+  implements belx
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bely
  * JD-Core Version:    0.7.0.1
  */

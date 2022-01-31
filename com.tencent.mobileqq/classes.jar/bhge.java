@@ -1,45 +1,83 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import dov.com.qq.im.capture.data.TransitionCategoryItem;
+import android.text.TextUtils;
 
 public class bhge
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  TransitionCategoryItem jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem;
-  boolean jdField_a_of_type_Boolean = false;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private bhgd jdField_a_of_type_Bhgd;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
+  private String d;
+  private String e = "";
+  private String f = "";
+  private String g;
   
-  public void a(boolean paramBoolean)
+  public bhgd a()
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem != null))
-    {
-      if (!paramBoolean) {
-        break label45;
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130843524);
-      }
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      throw new IllegalArgumentException("moduleId can not be null");
     }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130843558);
-    return;
-    label45:
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130843555);
+    return new bhgd(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.f, this.g, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_Bhgd);
+  }
+  
+  public bhge a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public bhge a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public bhge a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public bhge b(String paramString)
+  {
+    this.b = paramString;
+    return this;
+  }
+  
+  public bhge c(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public bhge d(String paramString)
+  {
+    this.d = paramString;
+    return this;
+  }
+  
+  public bhge e(String paramString)
+  {
+    this.e = paramString;
+    return this;
+  }
+  
+  public bhge f(String paramString)
+  {
+    this.f = paramString;
+    return this;
+  }
+  
+  public bhge g(String paramString)
+  {
+    this.g = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhge
  * JD-Core Version:    0.7.0.1
  */

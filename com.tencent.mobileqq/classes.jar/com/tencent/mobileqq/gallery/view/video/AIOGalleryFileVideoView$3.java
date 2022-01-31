@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.gallery.view.video;
 
-import apvm;
+import aqpn;
 
 public class AIOGalleryFileVideoView$3
   implements Runnable
 {
-  public AIOGalleryFileVideoView$3(apvm paramapvm) {}
+  public AIOGalleryFileVideoView$3(aqpn paramaqpn) {}
   
   public void run()
   {

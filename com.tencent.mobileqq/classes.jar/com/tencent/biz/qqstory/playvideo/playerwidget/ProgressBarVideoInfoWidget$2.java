@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.playvideo.playerwidget;
 
-import tqg;
-import twd;
+import udc;
+import uiz;
 
 public class ProgressBarVideoInfoWidget$2
   implements Runnable
 {
-  public ProgressBarVideoInfoWidget$2(twd paramtwd, tqg paramtqg) {}
+  public ProgressBarVideoInfoWidget$2(uiz paramuiz, udc paramudc) {}
   
   public void run()
   {

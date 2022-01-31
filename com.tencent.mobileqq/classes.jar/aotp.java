@@ -1,60 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentMediaFileTabView;
 
 public class aotp
-  implements alsd
+  extends apvd
 {
-  private String a;
+  public aotp(QfileRecentMediaFileTabView paramQfileRecentMediaFileTabView) {}
   
-  public aotp(String paramString)
+  public void a()
   {
-    this.a = paramString;
-    if (bace.b(this.a)) {
-      this.a = new File(this.a).getAbsolutePath();
-    }
+    this.a.a.a().b();
   }
   
-  private String a()
+  public void b()
   {
-    try
-    {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("file_color_note_local_path", this.a);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
-    }
-    catch (JSONException localJSONException) {}
-    return "";
+    this.a.a.a().p();
   }
   
-  public ColorNote getColorNote()
+  public void c()
   {
-    if (!bace.b(this.a))
-    {
-      QLog.i("LocalFileColorNoteServiceInfo", 1, "getColorNote: loacl file path is null");
-      return null;
-    }
-    alsl localalsl = new alsl();
-    localalsl.a(17039360);
-    String str = apdq.b(5, this.a);
-    if (QLog.isColorLevel()) {
-      QLog.i("LocalFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
-    }
-    localalsl.a(str);
-    str = apck.a(this.a);
-    localalsl.b(str);
-    localalsl.c(apdh.a(apck.a(this.a)));
-    int i = apck.a(apck.a(str));
-    localalsl.d("resdrawable://" + i);
-    str = a();
-    if (!TextUtils.isEmpty(str)) {
-      localalsl.a(str.getBytes());
-    }
-    return localalsl.a();
+    this.a.a.a().q();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().s();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().t();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 

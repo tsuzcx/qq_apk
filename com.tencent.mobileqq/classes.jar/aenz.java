@@ -1,11 +1,18 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public abstract interface aenz
-  extends aeod
+class aenz
+  implements DialogInterface.OnClickListener
 {
-  public abstract int a();
+  aenz(aenv paramaenv) {}
   
-  public abstract View a(Object... paramVarArgs);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    ybr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.g);
+    this.a.g = "";
+  }
 }
 
 

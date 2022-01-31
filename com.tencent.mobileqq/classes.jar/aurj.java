@@ -1,37 +1,40 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.portal.PortalManager.ComboNumber;
+import com.tencent.mobileqq.portal.PortalManager.LogoConfig;
+import java.util.List;
 
 public class aurj
-  implements Manager
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ConcurrentHashMap<Long, ChatMessage> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public void a() {}
   
-  public aurj(QQAppInterface paramQQAppInterface)
+  public void a(int paramInt, aurk paramaurk) {}
+  
+  public void a(long paramLong1, int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, Bitmap paramBitmap4, Bitmap paramBitmap5, Bitmap paramBitmap6, Bitmap paramBitmap7, List<PortalManager.LogoConfig> paramList, String paramString, long paramLong2, boolean paramBoolean, long paramLong3) {}
+  
+  public void a(long paramLong1, int paramInt1, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong2, boolean paramBoolean, int paramInt2, Bitmap paramBitmap4, Bitmap paramBitmap5, List<PortalManager.LogoConfig> paramList, List<PortalManager.ComboNumber> paramList1, Bitmap paramBitmap6, long paramLong3, Bitmap paramBitmap7, Bitmap paramBitmap8) {}
+  
+  public void a(boolean paramBoolean, String paramString, aurk paramaurk) {}
+  
+  public boolean a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    return false;
   }
   
-  public ChatMessage a(long paramLong)
+  public boolean a(Bitmap paramBitmap)
   {
-    return (ChatMessage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+    return false;
   }
   
-  public void a(ChatMessage paramChatMessage)
+  public boolean a(Bitmap paramBitmap, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramChatMessage.uniseq), paramChatMessage);
+    return false;
   }
   
-  public ChatMessage b(long paramLong)
-  {
-    return (ChatMessage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong));
-  }
+  public void b() {}
   
-  public void onDestroy()
+  public boolean b()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    return false;
   }
 }
 

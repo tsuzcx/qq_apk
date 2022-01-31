@@ -4,7 +4,7 @@
     <View android:id="@id/aaz" android:layout_width="fill_parent" android:layout_height="0.0dip" />
     <RelativeLayout android:id="@id/eg2" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <ImageView android:id="@id/close" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginTop="33.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/qzone_skin_plusmenu_close" android:scaleType="center" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        <ImageView android:id="@id/ea" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:src="@drawable/c14" android:scaleType="center" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/cp9" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:src="@drawable/dfw" android:scaleType="center" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
         <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="5.0dip" android:layout_below="@id/close">
             <com.qzone.business.plusunion.plusoperation.OverScrollView android:id="@id/iia" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="40.0dip">
                 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">

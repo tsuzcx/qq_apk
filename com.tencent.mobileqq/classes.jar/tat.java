@@ -1,60 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqReportEvil;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspReportEvil;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
 public class tat
-  extends slz<tce>
+  implements View.OnTouchListener
 {
-  public static final String a = skt.a("StorySvc.video_report_evil");
-  public long b;
-  public String b;
-  public final int c;
-  public String c;
+  public tat(StoryInputBarView paramStoryInputBarView) {}
   
-  public String a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return a;
-  }
-  
-  public tce a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspReportEvil localRspReportEvil = new qqstory_service.RspReportEvil();
-    try
+    if (paramMotionEvent.getAction() == 0)
     {
-      localRspReportEvil.mergeFrom(paramArrayOfByte);
-      return new tce(localRspReportEvil);
+      StoryInputBarView.a(this.a);
+      if (this.a.jdField_a_of_type_Boolean) {
+        break label94;
+      }
+      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_Uou.jdField_a_of_type_Boolean);
+      paramView = this.a;
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
+        break label89;
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    label89:
+    for (boolean bool = true;; bool = false)
     {
-      paramArrayOfByte.printStackTrace();
+      paramView.jdField_a_of_type_Boolean = bool;
+      return false;
     }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqReportEvil localReqReportEvil = new qqstory_service.ReqReportEvil();
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localReqReportEvil.vid.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    }
-    if (this.jdField_b_of_type_Long != 0L) {
-      localReqReportEvil.tuin.set(this.jdField_b_of_type_Long);
-    }
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      localReqReportEvil.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-    }
-    localReqReportEvil.type.set(this.jdField_c_of_type_Int);
-    return localReqReportEvil.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "ReportEvilRequest{impeachType=" + this.jdField_c_of_type_Int + ", vid='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    label94:
+    this.a.a();
+    return false;
   }
 }
 

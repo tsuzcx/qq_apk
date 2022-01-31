@@ -1,154 +1,161 @@
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.ForwardStep.1;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.msf.sdk.report.IMTAReporter;
+import com.tencent.mobileqq.msf.sdk.report.MTAReportManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.stat.StatConfig;
+import com.tencent.stat.StatReportStrategy;
+import com.tencent.stat.StatServiceImpl;
+import com.tencent.stat.StatSpecifyReportedInfo;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Properties;
 
-public abstract class axql
+public class axql
+  implements IMTAReporter
 {
-  protected long a;
-  private axql jdField_a_of_type_Axql;
-  protected String a;
-  protected AtomicBoolean a;
-  private axql[] jdField_a_of_type_ArrayOfAxql;
-  public AtomicBoolean b = new AtomicBoolean(false);
+  private static volatile axql jdField_a_of_type_Axql;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private StatSpecifyReportedInfo jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo = new StatSpecifyReportedInfo();
+  private volatile String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  axql(axqk paramaxqk)
+  private axql(Context paramContext)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_JavaLangString = "ForwardStep";
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    this.jdField_a_of_type_Boolean = axqg.a(this.jdField_a_of_type_AndroidContentContext, true);
   }
   
-  public void a()
+  public static axql a(Context paramContext)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 4, this.jdField_a_of_type_JavaLangString + "|doStep");
-    }
-    if ((this.jdField_a_of_type_ArrayOfAxql != null) && (this.jdField_a_of_type_ArrayOfAxql.length > 0))
+    if (jdField_a_of_type_Axql == null) {}
+    try
     {
-      axql[] arrayOfaxql = this.jdField_a_of_type_ArrayOfAxql;
-      int m = arrayOfaxql.length;
-      int j = 0;
-      int i = 1;
-      for (;;)
+      if (jdField_a_of_type_Axql == null) {
+        jdField_a_of_type_Axql = new axql(paramContext);
+      }
+      return jdField_a_of_type_Axql;
+    }
+    finally {}
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    StatConfig.setStatSendStrategy(StatReportStrategy.PERIOD);
+    StatConfig.setSendPeriodMinutes(30);
+    StatConfig.setEnableSmartReporting(true);
+    StatConfig.setStatReportUrl("http://sngmta.qq.com:80/mstat/report/");
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (str != null)
+    {
+      StatConfig.setCustomUserId(this.jdField_a_of_type_AndroidContentContext, str);
+      if (paramBoolean)
       {
-        k = i;
-        if (j >= m) {
-          break;
+        this.jdField_a_of_type_JavaLangString = null;
+        StatServiceImpl.reportQQ(this.jdField_a_of_type_AndroidContentContext, str, this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo);
+        localObject = BaseApplicationImpl.getApplication().getRuntime();
+        if (!(localObject instanceof QQAppInterface)) {
+          break label175;
         }
-        axql localaxql = arrayOfaxql[j];
-        if (QLog.isDevelopLevel()) {
-          QLog.d("Q.share.ForwardSdkShareProcessor", 4, this.jdField_a_of_type_JavaLangString + "|finished=" + localaxql.a() + ",processing=" + localaxql.b());
-        }
-        if (!localaxql.a())
-        {
-          if (!localaxql.b()) {
-            localaxql.a();
-          }
-          i = 0;
-        }
-        j += 1;
       }
     }
-    int k = 1;
-    if ((k != 0) && (!a()) && (!b()))
+    label175:
+    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      d();
-    }
-  }
-  
-  void a(axql[] paramArrayOfaxql)
-  {
-    this.jdField_a_of_type_ArrayOfAxql = paramArrayOfaxql;
-    if ((this.jdField_a_of_type_ArrayOfAxql != null) && (this.jdField_a_of_type_ArrayOfAxql.length > 0))
-    {
-      paramArrayOfaxql = this.jdField_a_of_type_ArrayOfAxql;
-      int j = paramArrayOfaxql.length;
-      int i = 0;
-      while (i < j)
-      {
-        paramArrayOfaxql[i].jdField_a_of_type_Axql = this;
-        i += 1;
+      Date localDate = new Date(NetConnInfoCenter.getServerTimeMillis());
+      axqw.b((QQAppInterface)localObject, "dc00898", "", "", "0X80075F3", "0X80075F3", 0, 0, new SimpleDateFormat("yyyyMMdd", Locale.US).format(localDate), "", "", "");
+      MTAReportManager.setMTAReporter(jdField_a_of_type_Axql);
+      if (QLog.isColorLevel()) {
+        QLog.d("MTAReportController", 2, "calledBeforeStat:" + str + ", " + paramBoolean);
       }
+      return;
     }
   }
   
-  protected boolean a()
+  public void a(String paramString)
   {
-    return false;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void b()
+  public void a(boolean paramBoolean)
   {
-    long l = 0L;
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 4, this.jdField_a_of_type_JavaLangString + "|doNextStep");
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    if (this.jdField_a_of_type_Long != 0L) {
-      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    StatConfig.setDebugEnable(paramBoolean);
+  }
+  
+  public void b(String paramString)
+  {
+    StatConfig.setMTAPreferencesFileName(paramString);
+  }
+  
+  public void initMtaConfig(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo.setAppKey(paramString2);
+    this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo.setInstallChannel(paramString1);
+    StatConfig.setEnableConcurrentProcess(true);
+    StatConfig.setAutoExceptionCaught(false);
+    StatServiceImpl.setContext(this.jdField_a_of_type_AndroidContentContext);
+    b(false);
+  }
+  
+  public boolean isMtaSupported()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void reportKVEvent(String paramString, Properties paramProperties)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, this.jdField_a_of_type_JavaLangString + "|finished,cost=" + l);
+      QLog.d("MTAReportController", 2, "reportKVEvent " + paramString + " \n\t\t" + paramProperties);
     }
-    apmt.a(this.jdField_a_of_type_JavaLangString, l);
-    if ((this.jdField_a_of_type_Axql != null) && (!this.b.get())) {
-      this.jdField_a_of_type_Axqk.a.a.post(new ForwardSdkShareProcessor.ForwardStep.1(this));
-    }
+    b(true);
+    StatServiceImpl.trackCustomKVEvent(this.jdField_a_of_type_AndroidContentContext, paramString, paramProperties, this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo);
   }
   
-  protected boolean b()
+  public void reportTimeKVEvent(String paramString, Properties paramProperties, int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
-  public void c()
-  {
-    long l = 0L;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    if (this.jdField_a_of_type_Long != 0L) {
-      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    }
-    QLog.d("Q.share.ForwardSdkShareProcessor", 1, this.jdField_a_of_type_JavaLangString + "|doError,cost=" + l);
-    this.jdField_a_of_type_Axqk.d();
-  }
-  
-  protected abstract void d();
-  
-  protected void e()
-  {
-    if (a()) {}
-    for (;;)
-    {
+    if (!this.jdField_a_of_type_Boolean) {
       return;
-      this.b.set(true);
-      if ((this.jdField_a_of_type_ArrayOfAxql != null) && (this.jdField_a_of_type_ArrayOfAxql.length > 0))
-      {
-        axql[] arrayOfaxql = this.jdField_a_of_type_ArrayOfAxql;
-        int j = arrayOfaxql.length;
-        int i = 0;
-        while (i < j)
-        {
-          arrayOfaxql[i].e();
-          i += 1;
-        }
-      }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("MTAReportController", 2, "reportKVEvent " + paramString + " " + paramInt + "\n\t\t" + paramProperties);
+    }
+    b(true);
+    StatServiceImpl.trackCustomKVTimeIntervalEvent(this.jdField_a_of_type_AndroidContentContext, paramString, paramProperties, paramInt, this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo);
   }
   
-  public void f()
+  public void trackBeginPage(String paramString)
   {
-    long l = 0L;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    if (this.jdField_a_of_type_Long != 0L) {
-      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
     }
-    QLog.d("Q.share.ForwardSdkShareProcessor", 1, this.jdField_a_of_type_JavaLangString + "|doCancel,cost=" + l);
+    if (QLog.isColorLevel()) {
+      QLog.d("MTAReportController", 2, "trackBeginPage " + paramString);
+    }
+    b(true);
+    StatServiceImpl.trackBeginPage(this.jdField_a_of_type_AndroidContentContext, paramString, this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo);
+  }
+  
+  public void trackEndPage(String paramString)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MTAReportController", 2, "trackEndPage " + paramString);
+    }
+    b(true);
+    StatServiceImpl.trackEndPage(this.jdField_a_of_type_AndroidContentContext, paramString, this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axql
  * JD-Core Version:    0.7.0.1
  */

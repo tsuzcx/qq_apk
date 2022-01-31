@@ -1,24 +1,20 @@
-import com.tencent.mobileqq.chat.ui.MessageNotificationSettingFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class alrr
-  extends ajuc
+class alrr
+  implements alry
 {
-  public alrr(MessageNotificationSettingFragment paramMessageNotificationSettingFragment) {}
+  alrr(alrq paramalrq) {}
   
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MessageNotificationSettingFragment", 2, "onOIDB0XA80_0_Ret: invoked.  isSuccess : " + paramBoolean + " op: " + paramInt1 + " type: " + Integer.toHexString(paramInt2));
-    }
-    if (paramBoolean) {
-      MessageNotificationSettingFragment.a(this.a).a(paramString1, paramInt1, paramInt2);
-    }
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, full update result, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.a.jdField_a_of_type_Alrw.a }));
+    if (paramBoolean) {}
+    this.a.jdField_a_of_type_Alry.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alrr
  * JD-Core Version:    0.7.0.1
  */

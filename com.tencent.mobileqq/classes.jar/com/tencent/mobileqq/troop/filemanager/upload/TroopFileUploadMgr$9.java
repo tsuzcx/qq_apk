@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import ayue;
+import azuu;
 import java.util.HashSet;
 
 public class TroopFileUploadMgr$9
   implements Runnable
 {
-  public TroopFileUploadMgr$9(ayue paramayue) {}
+  public TroopFileUploadMgr$9(azuu paramazuu) {}
   
   public void run()
   {
     HashSet localHashSet = new HashSet();
     this.this$0.a(1, localHashSet);
-    ayue.a(this.this$0, 1, new Object[] { localHashSet });
+    azuu.a(this.this$0, 1, new Object[] { localHashSet });
   }
 }
 

@@ -1,19 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class qsj
-  extends ajjh
+public abstract interface qsj
 {
-  public qsj(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
+  public abstract void a(VideoInfo paramVideoInfo);
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if (((this.a.a == 0) || (this.a.a == 70)) && (paramBoolean))
-    {
-      QLog.d("ReadinJoyProteusFamilyListViewGroup", 1, "onUpdateFriendInfo uin:" + paramString);
-      this.a.k();
-    }
-  }
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

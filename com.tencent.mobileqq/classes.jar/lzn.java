@@ -1,46 +1,63 @@
 import com.tencent.av.VideoController;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class lzn
-  implements lxc
+class lzn
+  extends lkg
 {
-  public lzn(VideoInviteActivity paramVideoInviteActivity, long paramLong) {}
+  lzn(lzm paramlzm) {}
   
-  public void a()
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null)
-    {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131306670, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131297382, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131297394, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131297393, false);
+    if (QLog.isColorLevel()) {
+      QLog.w("SmallScreenVideoController", 1, "onAfterOpenCamera, success[" + paramBoolean + "], preSessionType[" + paramInt + "], seq[" + paramLong + "]");
     }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d = false;
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i)
+    if (paramBoolean)
     {
-      long l = mfy.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, 3, l);
-      if (!this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h)
+      if ((this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (lzj.f()) && ((paramInt == 1) || (paramInt == 3)) && (this.a.jdField_a_of_type_Lzr != null))
       {
-        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h = true;
-        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, l, 2);
+        this.a.jdField_a_of_type_Lzr.a(true, false);
+        this.a.jdField_a_of_type_Lzr.c(paramLong, this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils.a());
       }
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.e = true;
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
+      return;
+    }
+    String str;
+    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null))
+    {
+      str = "";
+      if (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().p()) {
+        break label250;
+      }
+      str = "0X8004894";
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.overridePendingTransition(0, 2130772163);
+      axqw.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
+      if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+        break;
+      }
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(38), Integer.valueOf(2), Long.valueOf(paramLong) });
       return;
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 246);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(246);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 0);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
+      label250:
+      if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().f == 1) {
+        str = "0X8004888";
+      } else if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().f == 2) {
+        str = "0X800488E";
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean) {}
+  
+  protected void b() {}
+  
+  protected void b(long paramLong, boolean paramBoolean)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().i == 1011) || (this.a.jdField_a_of_type_ComTencentAvVideoController.f)))
+    {
+      this.a.jdField_a_of_type_Lzr.a(false, false);
+      this.a.jdField_a_of_type_Lzr.s_();
     }
   }
 }

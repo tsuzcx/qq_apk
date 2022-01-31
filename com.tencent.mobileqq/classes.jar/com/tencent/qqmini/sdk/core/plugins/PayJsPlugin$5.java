@@ -2,7 +2,9 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_APP_PAY.MiniAppMidasPay.StQueryStarCurrencyRsp;
-import bdnw;
+import android.text.TextUtils;
+import besl;
+import bfgt;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
@@ -17,7 +19,7 @@ class PayJsPlugin$5
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    bdnw.a("PayJsPlugin", "invokeMidasQuery receive isSuc= " + paramBoolean + " ret=" + paramJSONObject);
+    besl.b("PayJsPlugin", "invokeMidasQuery receive isSuc= " + paramBoolean + " ret=" + paramJSONObject);
     if (paramJSONObject == null) {
       paramJSONObject = new JSONObject();
     }
@@ -34,34 +36,38 @@ class PayJsPlugin$5
       }
       catch (JSONException paramJSONObject)
       {
-        bdnw.d("PayJsPlugin", "invokeMidasQuery JSONException ", paramJSONObject);
+        besl.d("PayJsPlugin", "invokeMidasQuery JSONException ", paramJSONObject);
         return;
       }
       try
       {
-        MiniAppMidasPay.StQueryStarCurrencyRsp localStQueryStarCurrencyRsp = (MiniAppMidasPay.StQueryStarCurrencyRsp)paramJSONObject.get("response");
+        Object localObject = (MiniAppMidasPay.StQueryStarCurrencyRsp)paramJSONObject.get("response");
         int i = paramJSONObject.getInt("resultCode");
-        paramJSONObject = paramJSONObject.getString("errMsg");
+        String str = paramJSONObject.getString("errMsg");
+        paramJSONObject = new JSONObject();
         JSONObject localJSONObject1 = new JSONObject();
-        JSONObject localJSONObject2 = new JSONObject();
-        JSONObject localJSONObject3 = new JSONObject(new HashMap());
-        localJSONObject2.put("attachInfo", localStQueryStarCurrencyRsp.extInfo.attachInfo.get());
-        localJSONObject2.put("mapInfo", localJSONObject3);
-        localJSONObject1.put("resultCode", i);
-        localJSONObject1.put("errMsg", paramJSONObject);
-        localJSONObject1.put("extInfo", localJSONObject2);
-        localJSONObject1.put("rechargeNum", localStQueryStarCurrencyRsp.rechargeNum.get());
-        localJSONObject1.put("remainder", localStQueryStarCurrencyRsp.remainder.get());
-        bdnw.a("PayJsPlugin", "invokeMidasQuery receive isSuc= " + paramBoolean + " resObj=" + localJSONObject1.toString());
+        JSONObject localJSONObject2 = new JSONObject(new HashMap());
+        localJSONObject1.put("attachInfo", ((MiniAppMidasPay.StQueryStarCurrencyRsp)localObject).extInfo.attachInfo.get());
+        localJSONObject1.put("mapInfo", localJSONObject2);
+        paramJSONObject.put("resultCode", i);
+        paramJSONObject.put("errMsg", str);
+        paramJSONObject.put("extInfo", localJSONObject1);
+        paramJSONObject.put("rechargeNum", ((MiniAppMidasPay.StQueryStarCurrencyRsp)localObject).rechargeNum.get());
+        paramJSONObject.put("remainder", ((MiniAppMidasPay.StQueryStarCurrencyRsp)localObject).remainder.get());
+        localObject = ((MiniAppMidasPay.StQueryStarCurrencyRsp)localObject).offerid.get();
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!bfgt.a())) {
+          this.this$0.mRealOfferId = ((String)localObject);
+        }
+        besl.b("PayJsPlugin", "invokeMidasQuery receive isSuc= " + paramBoolean + " resObj=" + paramJSONObject.toString());
         if (this.val$listener != null)
         {
-          this.val$listener.onResult(true, localJSONObject1);
+          this.val$listener.onResult(true, paramJSONObject);
           return;
         }
       }
       catch (Throwable paramJSONObject)
       {
-        bdnw.d("PayJsPlugin", "invokeMidasQuery failed", paramJSONObject);
+        besl.d("PayJsPlugin", "invokeMidasQuery failed", paramJSONObject);
       }
     }
   }

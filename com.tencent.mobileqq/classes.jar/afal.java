@@ -1,15 +1,18 @@
-import android.graphics.Bitmap;
+import android.graphics.Paint;
 
-class afal
-  implements avck
+public class afal
 {
-  afal(afak paramafak) {}
+  public final Paint a;
+  public final float[] a;
+  public final String[] a;
+  public final Paint b;
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public afal(float[] paramArrayOfFloat, String[] paramArrayOfString, Paint paramPaint1, Paint paramPaint2)
   {
-    if ((paramInt2 == 200) && (paramBitmap != null)) {
-      this.a.notifyDataSetChanged();
-    }
+    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_AndroidGraphicsPaint = paramPaint1;
+    this.b = paramPaint2;
   }
 }
 

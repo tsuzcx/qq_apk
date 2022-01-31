@@ -1,25 +1,32 @@
-public class alyj
+class alyj
 {
-  public float a;
-  public int a;
-  public boolean a;
-  public int b;
-  public int c;
+  static final float[] a;
   
-  public alyj(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, float paramFloat)
+  static
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Float = paramFloat;
+    int k = 0;
+    a = new float[8192];
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= 8192) {
+        break;
+      }
+      a[i] = ((float)Math.sin((i + 0.5F) / 8192.0F * 6.283186F));
+      i += 1;
+    }
+    while (j < 360)
+    {
+      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.sin(j * 0.01745329F));
+      j += 90;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alyj
  * JD-Core Version:    0.7.0.1
  */

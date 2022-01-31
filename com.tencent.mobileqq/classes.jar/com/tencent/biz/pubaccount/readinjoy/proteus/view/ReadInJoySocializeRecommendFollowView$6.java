@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import ogy;
-import ozx;
+import osj;
+import plp;
 
 public class ReadInJoySocializeRecommendFollowView$6
   implements Runnable
 {
-  public ReadInJoySocializeRecommendFollowView$6(ozx paramozx, RecommendFollowInfo paramRecommendFollowInfo) {}
+  public ReadInJoySocializeRecommendFollowView$6(plp paramplp, RecommendFollowInfo paramRecommendFollowInfo) {}
   
   public void run()
   {
-    ogy localogy = ogy.a();
+    osj localosj = osj.a();
     long l = this.a.uin;
     if (this.a.isFollowed) {}
     for (int i = 2;; i = 1)
     {
-      localogy.b(l, i);
+      localosj.b(l, i);
       return;
     }
   }

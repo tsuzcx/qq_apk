@@ -1,21 +1,30 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
 
 public class afiq
-  extends RecyclerView.ViewHolder
+  implements mya
 {
-  TextView a;
+  public afiq(GroupSearchRecommendView paramGroupSearchRecommendView) {}
   
-  afiq(View paramView)
+  public void a()
   {
-    super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131312663));
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+      return;
+    }
+    GroupSearchRecommendView.a(this.a).sendEmptyMessage(2);
+  }
+  
+  public void b()
+  {
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+      return;
+    }
+    GroupSearchRecommendView.a(this.a).sendEmptyMessage(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afiq
  * JD-Core Version:    0.7.0.1
  */

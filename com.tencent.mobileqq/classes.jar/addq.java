@@ -1,16 +1,25 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceText;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
-class addq
+public class addq
   implements DialogInterface.OnClickListener
 {
-  addq(addp paramaddp, MessageForDeviceText paramMessageForDeviceText) {}
+  public addq(DoodlePanel paramDoodlePanel) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((xvq)this.jdField_a_of_type_Addp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a(this.jdField_a_of_type_Addp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Addp.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Addp.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceText);
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    }
+    if (DoodlePanel.a(this.a) != null) {
+      DoodlePanel.a(this.a).a(false, false);
+    }
+    DoodlePanel.a(this.a);
   }
 }
 

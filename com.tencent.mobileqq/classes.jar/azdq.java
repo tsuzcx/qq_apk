@@ -1,8 +1,16 @@
 import android.view.View;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import com.tencent.widget.AdapterView;
 
-public abstract interface azdq
+public class azdq
+  implements bfpc
 {
-  public abstract void a(View paramView);
+  public azdq(MediaPreviewActivity paramMediaPreviewActivity) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    this.a.onBackPressed();
+  }
 }
 
 

@@ -1,6 +1,5 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay;
 
-import amym;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -14,6 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import anou;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 import com.tencent.biz.qqstory.widget.InteractContainerLayout;
@@ -26,20 +26,20 @@ import com.tribe.async.dispatch.Dispatcher.Dispatchable;
 import java.io.File;
 import java.util.List;
 import org.json.JSONObject;
-import sgi;
-import skx;
-import sqd;
-import sqg;
-import sqy;
-import syu;
-import ukt;
-import ull;
-import ulo;
-import ulq;
-import uod;
-import urk;
-import urp;
-import vlt;
+import ste;
+import sxt;
+import tcz;
+import tdc;
+import tdu;
+import tlq;
+import uxp;
+import uyh;
+import uyk;
+import uym;
+import vaz;
+import veg;
+import vel;
+import vyp;
 
 public class QQStoryAutoPlayView
   extends FrameLayout
@@ -53,10 +53,10 @@ public class QQStoryAutoPlayView
   private AutoPlayImageView jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView;
   private InteractContainerLayout jdField_a_of_type_ComTencentBizQqstoryWidgetInteractContainerLayout;
   private PollContainerLayout jdField_a_of_type_ComTencentBizQqstoryWidgetPollContainerLayout;
-  private syu jdField_a_of_type_Syu;
-  private ull jdField_a_of_type_Ull;
-  private ulo jdField_a_of_type_Ulo;
-  private uod jdField_a_of_type_Uod;
+  private tlq jdField_a_of_type_Tlq;
+  private uyh jdField_a_of_type_Uyh;
+  private uyk jdField_a_of_type_Uyk;
+  private vaz jdField_a_of_type_Vaz;
   private boolean jdField_a_of_type_Boolean;
   private long b;
   private long c = -1L;
@@ -90,9 +90,9 @@ public class QQStoryAutoPlayView
     this.jdField_a_of_type_ComTencentBizQqstoryWidgetInteractContainerLayout = new InteractContainerLayout(getContext());
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView = new AutoPlayImageView(getContext());
     MessageProgressView localMessageProgressView = new MessageProgressView(getContext());
-    this.jdField_a_of_type_Uod = new uod(localMessageProgressView);
-    this.jdField_a_of_type_Uod.a();
-    this.jdField_a_of_type_Syu = new syu();
+    this.jdField_a_of_type_Vaz = new vaz(localMessageProgressView);
+    this.jdField_a_of_type_Vaz.a();
+    this.jdField_a_of_type_Tlq = new tlq();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     super.addView(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView, new FrameLayout.LayoutParams(-1, -1));
@@ -102,7 +102,7 @@ public class QQStoryAutoPlayView
     super.addView(localMessageProgressView, new FrameLayout.LayoutParams(-1, -1));
     super.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_Uod.a(4);
+    this.jdField_a_of_type_Vaz.a(4);
   }
   
   private void k()
@@ -112,8 +112,8 @@ public class QQStoryAutoPlayView
     do
     {
       return;
-      urk.b("Q.qqstory.home.QQStoryAutoPlayView", "QQStoryAutoPlayView---- reportWatchVideo ------coverUrl=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getThumbUrl());
-      localStoryVideoItem = this.jdField_a_of_type_Ull.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      veg.b("Q.qqstory.home.QQStoryAutoPlayView", "QQStoryAutoPlayView---- reportWatchVideo ------coverUrl=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getThumbUrl());
+      localStoryVideoItem = this.jdField_a_of_type_Uyh.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
     } while (localStoryVideoItem == null);
     Object localObject;
     if (!TextUtils.isEmpty(localStoryVideoItem.shareGroupId))
@@ -121,8 +121,8 @@ public class QQStoryAutoPlayView
       localObject = localStoryVideoItem.shareGroupId;
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        localObject = new sqy((String)localObject, localStoryVideoItem);
-        sgi.a().dispatch((Dispatcher.Dispatchable)localObject);
+        localObject = new tdu((String)localObject, localStoryVideoItem);
+        ste.a().dispatch((Dispatcher.Dispatchable)localObject);
       }
       localObject = "";
       if (TextUtils.isEmpty(localStoryVideoItem.mOwnerUid)) {
@@ -132,24 +132,24 @@ public class QQStoryAutoPlayView
     }
     for (;;)
     {
-      this.jdField_a_of_type_Syu.a(localStoryVideoItem.mVid, (String)localObject, 79, false, localStoryVideoItem.mCreateTime);
+      this.jdField_a_of_type_Tlq.a(localStoryVideoItem.mVid, (String)localObject, 79, false, localStoryVideoItem.mCreateTime);
       return;
       localObject = localStoryVideoItem.mOwnerUid;
       break;
       label150:
-      urk.e("Q.qqstory.home.QQStoryAutoPlayView", "this story item info incomplete .vid=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      veg.e("Q.qqstory.home.QQStoryAutoPlayView", "this story item info incomplete .vid=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
     }
   }
   
   private void l()
   {
-    if ((this.jdField_a_of_type_Ull == null) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.isFakeFeedItem())) {
+    if ((this.jdField_a_of_type_Uyh == null) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.isFakeFeedItem())) {
       return;
     }
-    StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_Ull.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+    StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_Uyh.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
     if (localStoryVideoItem == null)
     {
-      urk.e("Q.qqstory.home.QQStoryAutoPlayView", "QQStoryAutoPlayView reportAutoPlayStory but getVideo is null, vid=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      veg.e("Q.qqstory.home.QQStoryAutoPlayView", "QQStoryAutoPlayView reportAutoPlayStory but getVideo is null, vid=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
       return;
     }
     int i;
@@ -159,7 +159,7 @@ public class QQStoryAutoPlayView
     if (localStoryVideoItem.mIsPicture == 1)
     {
       i = 1;
-      j = urp.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
+      j = vel.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
       l1 = localStoryVideoItem.mVideoDuration;
       l2 = this.b;
       str3 = "";
@@ -185,8 +185,8 @@ public class QQStoryAutoPlayView
         String str2 = str3;
         continue;
       }
-      urp.b("auto_play", "auto_play_720", this.jdField_a_of_type_Ull.a(), i, new String[] { String.valueOf(j), String.valueOf(l1), String.valueOf(l2), str1 });
-      ulq.c("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "reportAutoPlayStory dev url= ", localStoryVideoItem.getThumbUrl() });
+      vel.b("auto_play", "auto_play_720", this.jdField_a_of_type_Uyh.a(), i, new String[] { String.valueOf(j), String.valueOf(l1), String.valueOf(l2), str1 });
+      uym.c("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "reportAutoPlayStory dev url= ", localStoryVideoItem.getThumbUrl() });
       return;
       i = 0;
       break;
@@ -196,24 +196,24 @@ public class QQStoryAutoPlayView
   
   private void m()
   {
-    if ((this.jdField_a_of_type_Ull == null) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.isFakeFeedItem())) {
+    if ((this.jdField_a_of_type_Uyh == null) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.isFakeFeedItem())) {
       return;
     }
-    StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_Ull.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+    StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_Uyh.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
     if (localStoryVideoItem == null)
     {
-      urk.e("Q.qqstory.home.QQStoryAutoPlayView", "QQStoryAutoPlayView reportAutoPlayStory but getVideo is null, vid=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      veg.e("Q.qqstory.home.QQStoryAutoPlayView", "QQStoryAutoPlayView reportAutoPlayStory but getVideo is null, vid=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
       return;
     }
     if ((TextUtils.isEmpty(localStoryVideoItem.mVideoUrl)) || (localStoryVideoItem.mVideoDuration < 0L) || (localStoryVideoItem.mSourceType == -1)) {
-      localStoryVideoItem = ((sqd)sqg.a(5)).c(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      localStoryVideoItem = ((tcz)tdc.a(5)).c(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
     }
     String str3;
     for (;;)
     {
       if (localStoryVideoItem == null)
       {
-        urk.e("Q.qqstory.home.QQStoryAutoPlayView", "QQStoryAutoPlayView reportAutoPlayStory but queryVideoFromDb is null, vid=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+        veg.e("Q.qqstory.home.QQStoryAutoPlayView", "QQStoryAutoPlayView reportAutoPlayStory but queryVideoFromDb is null, vid=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
         return;
       }
       int i;
@@ -223,7 +223,7 @@ public class QQStoryAutoPlayView
       if (localStoryVideoItem.mIsPicture == 1)
       {
         i = 1;
-        str4 = String.valueOf(urp.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem));
+        str4 = String.valueOf(vel.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem));
         str5 = String.valueOf(localStoryVideoItem.mVideoDuration);
         str6 = String.valueOf(this.b);
         str3 = "";
@@ -244,8 +244,8 @@ public class QQStoryAutoPlayView
           localJSONObject.put("info_error", localStoryVideoItem.mErrorCode);
           localJSONObject.put("video_origin", localStoryVideoItem.mSourceType);
           localJSONObject.put("mobile_type", Build.MODEL);
-          localJSONObject.put("wifi_ssid", vlt.b(getContext()));
-          localJSONObject.put("wifi_mac", vlt.a(getContext()));
+          localJSONObject.put("wifi_ssid", vyp.b(getContext()));
+          localJSONObject.put("wifi_mac", vyp.a(getContext()));
           str1 = localJSONObject.toString();
         }
         catch (Exception localException)
@@ -254,12 +254,12 @@ public class QQStoryAutoPlayView
           String str2 = str3;
           continue;
         }
-        urp.a("play_video", "auto_play", this.jdField_a_of_type_Ull.a(), i, new String[] { str4, str5, str6, str1 });
-        urp.b("auto_play", "auto_play_720", this.jdField_a_of_type_Ull.a(), i, new String[] { str4, str5, str6, str1 });
-        urp.b("auto_play", "auto_play_scenes", this.jdField_a_of_type_Ull.a(), this.jdField_a_of_type_Ull.b(), new String[] { String.valueOf(this.b), localStoryVideoItem.mVid });
+        vel.a("play_video", "auto_play", this.jdField_a_of_type_Uyh.a(), i, new String[] { str4, str5, str6, str1 });
+        vel.b("auto_play", "auto_play_720", this.jdField_a_of_type_Uyh.a(), i, new String[] { str4, str5, str6, str1 });
+        vel.b("auto_play", "auto_play_scenes", this.jdField_a_of_type_Uyh.a(), this.jdField_a_of_type_Uyh.b(), new String[] { String.valueOf(this.b), localStoryVideoItem.mVid });
         this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.isReportedAutoPlay = true;
-        ulq.c("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "reportAutoPlayStory ", Integer.valueOf(this.jdField_a_of_type_Ull.b()), ",url= ", localStoryVideoItem.getThumbUrl() });
-        ulq.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "reportAutoPlayStory:", Integer.valueOf(this.jdField_a_of_type_Ull.a()), "|", Integer.valueOf(i), "|", str4, "|", str5, "|", str6, "|", str1 });
+        uym.c("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "reportAutoPlayStory ", Integer.valueOf(this.jdField_a_of_type_Uyh.b()), ",url= ", localStoryVideoItem.getThumbUrl() });
+        uym.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "reportAutoPlayStory:", Integer.valueOf(this.jdField_a_of_type_Uyh.a()), "|", Integer.valueOf(i), "|", str4, "|", str5, "|", str6, "|", str1 });
         return;
         i = 0;
         break;
@@ -283,27 +283,27 @@ public class QQStoryAutoPlayView
     return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView;
   }
   
-  public QQStoryAutoPlayView a(ull paramull)
+  public QQStoryAutoPlayView a(uyh paramuyh)
   {
-    this.jdField_a_of_type_Ull = paramull;
+    this.jdField_a_of_type_Uyh = paramuyh;
     return this;
   }
   
-  public uod a()
+  public vaz a()
   {
-    return this.jdField_a_of_type_Uod;
+    return this.jdField_a_of_type_Vaz;
   }
   
   public void a()
   {
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.c();
-    ulq.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "QQStoryAutoPlayView--", Integer.valueOf(hashCode()), "-- release completed:", Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.jdField_a_of_type_Boolean), "---", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.a()), "---coverUrl=", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getThumbUrl() });
+    uym.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "QQStoryAutoPlayView--", Integer.valueOf(hashCode()), "-- release completed:", Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.jdField_a_of_type_Boolean), "---", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.a()), "---coverUrl=", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getThumbUrl() });
     g();
   }
   
   public void a(File paramFile1, File paramFile2)
   {
-    ulq.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "QQStoryAutoPlayView--view-", Integer.valueOf(hashCode()), "- startPlay ---", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.a()), "---coverUrl=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getThumbUrl() });
+    uym.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "QQStoryAutoPlayView--view-", Integer.valueOf(hashCode()), "- startPlay ---", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.a()), "---coverUrl=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getThumbUrl() });
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.c()) {
       k();
     }
@@ -311,28 +311,28 @@ public class QQStoryAutoPlayView
     StoryVideoItem localStoryVideoItem;
     for (String str = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getThumbUrl();; str = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.a())
     {
-      localStoryVideoItem = this.jdField_a_of_type_Ull.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      localStoryVideoItem = this.jdField_a_of_type_Uyh.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
       if (localStoryVideoItem != null) {
         break;
       }
-      urk.e("Q.qqstory.home.QQStoryAutoPlayView", "QQStoryAutoPlayView startPlay but getVideo is null, vid=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      veg.e("Q.qqstory.home.QQStoryAutoPlayView", "QQStoryAutoPlayView startPlay but getVideo is null, vid=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
       return;
     }
-    urk.a("Q.qqstory.home.QQStoryAutoPlayView", "QQStoryAutoPlayView startPlay w= %s ,h= %s , coverUrl=%s", Integer.valueOf(localStoryVideoItem.mVideoWidth), Integer.valueOf(localStoryVideoItem.mVideoHeight), str);
+    veg.a("Q.qqstory.home.QQStoryAutoPlayView", "QQStoryAutoPlayView startPlay w= %s ,h= %s , coverUrl=%s", Integer.valueOf(localStoryVideoItem.mVideoWidth), Integer.valueOf(localStoryVideoItem.mVideoHeight), str);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.a(str, localStoryVideoItem.mVideoWidth, localStoryVideoItem.mVideoHeight, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.uniqueKey(), paramFile1.getAbsolutePath());
     if ((paramFile2 != null) && (paramFile2.exists())) {}
     try
     {
       paramFile1 = URLDrawable.URLDrawableOptions.obtain();
       paramFile1.mUseAutoScaleParams = false;
-      paramFile1.mLoadingDrawable = new amym(0, localStoryVideoItem.mVideoWidth, localStoryVideoItem.mVideoHeight);
+      paramFile1.mLoadingDrawable = new anou(0, localStoryVideoItem.mVideoWidth, localStoryVideoItem.mVideoHeight);
       paramFile1.mMemoryCacheKeySuffix = "qqstory_mask";
       paramFile1.mRequestHeight = getHeight();
       paramFile1.mRequestWidth = (localStoryVideoItem.mVideoWidth * getHeight() / localStoryVideoItem.mVideoHeight);
       paramFile1 = URLDrawable.getDrawable(paramFile2, paramFile1);
       if ((paramFile1.getStatus() == 2) || (paramFile1.getStatus() == 3))
       {
-        ulq.c("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "drawable restartDownload" });
+        uym.c("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "drawable restartDownload" });
         paramFile1.restartDownload();
       }
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -342,18 +342,18 @@ public class QQStoryAutoPlayView
     {
       for (;;)
       {
-        urk.e("Q.qqstory.home.QQStoryAutoPlayView", "get maskFile error:" + paramFile1);
+        veg.e("Q.qqstory.home.QQStoryAutoPlayView", "get maskFile error:" + paramFile1);
       }
     }
     d();
   }
   
-  public void a(List<ukt> paramList)
+  public void a(List<uxp> paramList)
   {
-    if (this.jdField_a_of_type_Ull != null)
+    if (this.jdField_a_of_type_Uyh != null)
     {
-      urk.b("Q.qqstory.home.QQStoryAutoPlayView", "QQStoryAutoPlayView requestPlay");
-      this.jdField_a_of_type_Ull.a(this, paramList);
+      veg.b("Q.qqstory.home.QQStoryAutoPlayView", "QQStoryAutoPlayView requestPlay");
+      this.jdField_a_of_type_Uyh.a(this, paramList);
     }
   }
   
@@ -369,14 +369,14 @@ public class QQStoryAutoPlayView
   
   public void b()
   {
-    ulq.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "QQStoryAutoPlayView--view=", Integer.valueOf(super.hashCode()), "-- pausePlay ---" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.a() + "---coverUrl=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getThumbUrl() });
+    uym.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "QQStoryAutoPlayView--view=", Integer.valueOf(super.hashCode()), "-- pausePlay ---" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.a() + "---coverUrl=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getThumbUrl() });
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.a();
     e();
   }
   
   public void c()
   {
-    ulq.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "QQStoryAutoPlayView--view=", Integer.valueOf(super.hashCode()), "-- resumePlay ---" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.a() + "---coverUrl=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getThumbUrl() });
+    uym.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "QQStoryAutoPlayView--view=", Integer.valueOf(super.hashCode()), "-- resumePlay ---" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.a() + "---coverUrl=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getThumbUrl() });
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.b();
     f();
   }
@@ -386,7 +386,7 @@ public class QQStoryAutoPlayView
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.b = 0L;
     this.c = this.jdField_a_of_type_Long;
-    ulq.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "recordStartTime---view=", Integer.valueOf(super.hashCode()), "--mStartPlayTime=", Long.valueOf(this.jdField_a_of_type_Long), ",mHaveBeenPlayedTime=", Long.valueOf(this.b) });
+    uym.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "recordStartTime---view=", Integer.valueOf(super.hashCode()), "--mStartPlayTime=", Long.valueOf(this.jdField_a_of_type_Long), ",mHaveBeenPlayedTime=", Long.valueOf(this.b) });
   }
   
   public void e()
@@ -394,7 +394,7 @@ public class QQStoryAutoPlayView
     if (this.jdField_a_of_type_Long > 0L) {
       this.b = (System.currentTimeMillis() - this.jdField_a_of_type_Long + this.b);
     }
-    ulq.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "recordPauseTime--view=", Integer.valueOf(super.hashCode()), "---mStartPlayTime=", Long.valueOf(this.jdField_a_of_type_Long), ",mHaveBeenPlayedTime=", Long.valueOf(this.b) });
+    uym.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "recordPauseTime--view=", Integer.valueOf(super.hashCode()), "---mStartPlayTime=", Long.valueOf(this.jdField_a_of_type_Long), ",mHaveBeenPlayedTime=", Long.valueOf(this.b) });
     this.jdField_a_of_type_Long = -1L;
   }
   
@@ -403,12 +403,12 @@ public class QQStoryAutoPlayView
     if (this.jdField_a_of_type_Long == -1L) {
       this.jdField_a_of_type_Long = System.currentTimeMillis();
     }
-    ulq.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "recordResumeTime--view=", Integer.valueOf(super.hashCode()), "---mStartPlayTime=", Long.valueOf(this.jdField_a_of_type_Long), ",mHaveBeenPlayedTime=", Long.valueOf(this.b) });
+    uym.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "recordResumeTime--view=", Integer.valueOf(super.hashCode()), "---mStartPlayTime=", Long.valueOf(this.jdField_a_of_type_Long), ",mHaveBeenPlayedTime=", Long.valueOf(this.b) });
   }
   
   public void g()
   {
-    ulq.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "recordReleaseTime---view=", Integer.valueOf(super.hashCode()), "----mStartPlayTime=", Long.valueOf(this.jdField_a_of_type_Long), ",mHaveBeenPlayedTime=", Long.valueOf(this.b) });
+    uym.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "recordReleaseTime---view=", Integer.valueOf(super.hashCode()), "----mStartPlayTime=", Long.valueOf(this.jdField_a_of_type_Long), ",mHaveBeenPlayedTime=", Long.valueOf(this.b) });
     if ((this.jdField_a_of_type_Long == -1L) && (this.b > 0L)) {
       m();
     }
@@ -417,7 +417,7 @@ public class QQStoryAutoPlayView
   
   public void h()
   {
-    ulq.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "reportAutoPlayWhenPageSwitch---view=", Integer.valueOf(super.hashCode()), "----mStartPlayTime=", Long.valueOf(this.jdField_a_of_type_Long), ",mHaveBeenPlayedTime=", Long.valueOf(this.b) });
+    uym.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "reportAutoPlayWhenPageSwitch---view=", Integer.valueOf(super.hashCode()), "----mStartPlayTime=", Long.valueOf(this.jdField_a_of_type_Long), ",mHaveBeenPlayedTime=", Long.valueOf(this.b) });
     if (this.b > 0L)
     {
       m();
@@ -431,7 +431,7 @@ public class QQStoryAutoPlayView
   
   public void i()
   {
-    ulq.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "recordReleaseTimeForDev---view=", Integer.valueOf(super.hashCode()), "----mStartPlayTime_dev=", Long.valueOf(this.c), ",mHaveBeenPlayedTime_dev=", Long.valueOf(this.d) });
+    uym.b("Q.qqstory.home.QQStoryAutoPlayView", new Object[] { "recordReleaseTimeForDev---view=", Integer.valueOf(super.hashCode()), "----mStartPlayTime_dev=", Long.valueOf(this.c), ",mHaveBeenPlayedTime_dev=", Long.valueOf(this.d) });
     if ((this.jdField_a_of_type_Long == -1L) && (this.b > 0L))
     {
       this.d = 0L;
@@ -454,30 +454,30 @@ public class QQStoryAutoPlayView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Ulo != null)
+    if (this.jdField_a_of_type_Uyk != null)
     {
       paramView = paramView.getContext().getClass().getSimpleName();
       if (!StoryVideoItem.isFakeVid(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid)) {
         break label89;
       }
-      urk.a("Q.qqstory.home.QQStoryAutoPlayView", "video card click, has video info of fake vid = %s, current activity = %s", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramView);
-      urp.b("play_video", "home_video_info_state", 0, 1, new String[] { paramView });
+      veg.a("Q.qqstory.home.QQStoryAutoPlayView", "video card click, has video info of fake vid = %s, current activity = %s", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramView);
+      vel.b("play_video", "home_video_info_state", 0, 1, new String[] { paramView });
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ulo.a(this, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Uyk.a(this, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_Int);
       return;
       label89:
-      StoryVideoItem localStoryVideoItem = ((sqd)sqg.a(5)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      StoryVideoItem localStoryVideoItem = ((tcz)tdc.a(5)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
       if ((localStoryVideoItem != null) && (!TextUtils.isEmpty(localStoryVideoItem.getVideoUrl())))
       {
-        urk.a("Q.qqstory.home.QQStoryAutoPlayView", "video card click, has video info of vid = %s, current activity = %s", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramView);
-        urp.b("play_video", "home_video_info_state", 0, 2, new String[] { paramView });
+        veg.a("Q.qqstory.home.QQStoryAutoPlayView", "video card click, has video info of vid = %s, current activity = %s", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramView);
+        vel.b("play_video", "home_video_info_state", 0, 2, new String[] { paramView });
       }
       else
       {
-        urk.d("Q.qqstory.home.QQStoryAutoPlayView", "video card click, has *no* video info of vid = %s, current activity = %s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramView });
-        urp.b("play_video", "home_video_info_state", 0, 3, new String[] { paramView });
+        veg.d("Q.qqstory.home.QQStoryAutoPlayView", "video card click, has *no* video info of vid = %s, current activity = %s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramView });
+        vel.b("play_video", "home_video_info_state", 0, 3, new String[] { paramView });
       }
     }
   }
@@ -489,21 +489,21 @@ public class QQStoryAutoPlayView
   
   public boolean onLongClick(View paramView)
   {
-    if (this.jdField_a_of_type_Ulo != null) {
-      this.jdField_a_of_type_Ulo.b(this, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Uyk != null) {
+      this.jdField_a_of_type_Uyk.b(this, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_Int);
     }
     return true;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    skx.a(this, paramMotionEvent);
+    sxt.a(this, paramMotionEvent);
     return super.onTouchEvent(paramMotionEvent);
   }
   
   public void setCoverUrl(String paramString, int paramInt1, int paramInt2)
   {
-    urk.b("Q.qqstory.home.QQStoryAutoPlayView", "setCoverUrl:" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getThumbUrl());
+    veg.b("Q.qqstory.home.QQStoryAutoPlayView", "setCoverUrl:" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getThumbUrl());
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.setCoverUrl(paramString, paramInt1, paramInt2);
   }
   
@@ -511,7 +511,7 @@ public class QQStoryAutoPlayView
   {
     if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.b()))
     {
-      urk.d("Q.qqstory.home.QQStoryAutoPlayView", "setImageDrawable but data have no change. so ignore this called.");
+      veg.d("Q.qqstory.home.QQStoryAutoPlayView", "setImageDrawable but data have no change. so ignore this called.");
       return;
     }
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayImageView.c();
@@ -531,7 +531,7 @@ public class QQStoryAutoPlayView
     if (paramStoryVideoItem == null)
     {
       str = "";
-      urk.a("Q.qqstory.home.QQStoryAutoPlayView", "QQStoryAutoPlayView setItemData mPosition=%s url=%s", Integer.valueOf(paramInt), str);
+      veg.a("Q.qqstory.home.QQStoryAutoPlayView", "QQStoryAutoPlayView setItemData mPosition=%s url=%s", Integer.valueOf(paramInt), str);
       if ((paramStoryVideoItem != null) && (paramStoryVideoItem.equals(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem))) {
         break label87;
       }
@@ -553,9 +553,9 @@ public class QQStoryAutoPlayView
     }
   }
   
-  public void setStoryCoverClickListener(ulo paramulo)
+  public void setStoryCoverClickListener(uyk paramuyk)
   {
-    this.jdField_a_of_type_Ulo = paramulo;
+    this.jdField_a_of_type_Uyk = paramuyk;
   }
 }
 

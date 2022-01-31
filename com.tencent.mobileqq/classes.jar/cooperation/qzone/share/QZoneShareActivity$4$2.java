@@ -1,18 +1,28 @@
 package cooperation.qzone.share;
 
-import bbmy;
-import bgcx;
+import bbcv;
+import bbgg;
+import bcpw;
+import bhlj;
+import bhlk;
 
 public class QZoneShareActivity$4$2
   implements Runnable
 {
-  public QZoneShareActivity$4$2(bgcx parambgcx, String paramString, long paramLong) {}
+  public QZoneShareActivity$4$2(bhlj parambhlj, long paramLong, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bgcx.a.k();
-    bbmy.a(this.jdField_a_of_type_Bgcx.a, 1, this.jdField_a_of_type_JavaLangString + "(" + this.jdField_a_of_type_Long + ")", 1).a();
-    this.jdField_a_of_type_Bgcx.a.finish();
+    if ((this.jdField_a_of_type_Long == -100070004L) || (this.jdField_a_of_type_Long == -1000710003L))
+    {
+      this.jdField_a_of_type_Bhlj.a.k();
+      bbcv.a(this.jdField_a_of_type_Bhlj.a, 233, this.jdField_a_of_type_Bhlj.a.getString(2131719480), this.jdField_a_of_type_JavaLangString, new bhlk(this), null).show();
+      return;
+    }
+    this.jdField_a_of_type_Bhlj.a.k();
+    QZoneShareActivity.e(this.jdField_a_of_type_Bhlj.a);
+    bcpw.a(this.jdField_a_of_type_Bhlj.a, 1, 2131694282, 1).a();
+    this.jdField_a_of_type_Bhlj.a.finish();
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import aioh;
+import ajbf;
 
 public class CmGameAvHandler$15$2
   implements Runnable
 {
-  public CmGameAvHandler$15$2(aioh paramaioh) {}
+  public CmGameAvHandler$15$2(ajbf paramajbf) {}
   
   public void run() {}
 }

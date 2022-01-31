@@ -1,9 +1,45 @@
-import java.io.File;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class lfh
 {
-  public static final String a = ajed.aU + "qav" + File.separator + "effect" + File.separator;
-  public static final String b = ajed.aU + "qav" + File.separator + "effect";
+  private static String jdField_a_of_type_JavaLangString = "GBatteryMonitor";
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new lfi(this);
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public lfh(VideoAppInterface paramVideoAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+  }
+  
+  public void a()
+  {
+    IntentFilter localIntentFilter = new IntentFilter("android.intent.action.BATTERY_CHANGED");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public void b()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+        this.jdField_a_of_type_Boolean = false;
+      }
+      return;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "video exit IllegalArgumentException ", localIllegalArgumentException);
+    }
+  }
 }
 
 

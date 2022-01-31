@@ -3,7 +3,7 @@ package com.tencent.av.ui;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import kvq;
+import lgf;
 
 class DoubleVideoCtrlUI$9
   implements Runnable
@@ -16,7 +16,7 @@ class DoubleVideoCtrlUI$9
       return;
     }
     String str = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-    int i = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().O;
+    int i = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().Q;
     QLog.w(this.this$0.c, 1, "onResume, setGlass, nCurrentSwitch[" + i + "]");
     this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(42), str, Integer.valueOf(i) });
     DoubleVideoCtrlUI.a(this.this$0, true);

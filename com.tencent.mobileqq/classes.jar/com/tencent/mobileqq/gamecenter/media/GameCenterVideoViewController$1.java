@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.gamecenter.media;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
-import badq;
-import bbmy;
+import bbev;
+import bcpw;
 import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
 
 class GameCenterVideoViewController$1
@@ -13,16 +13,16 @@ class GameCenterVideoViewController$1
   
   public void run()
   {
-    String str = ajjy.a(2131639236);
-    if (!badq.g(this.this$0.getContext())) {
-      str = this.this$0.getContext().getString(2131652572);
+    String str = ajyc.a(2131705021);
+    if (!bbev.g(this.this$0.getContext())) {
+      str = this.this$0.getContext().getString(2131718391);
     }
     for (;;)
     {
-      bbmy.a(this.this$0.getContext(), 1, str, 0).b(0);
+      bcpw.a(this.this$0.getContext(), 1, str, 0).b(0);
       return;
       if (GameCenterVideoViewController.a(this.this$0).type == 1) {
-        str = ajjy.a(2131639243);
+        str = ajyc.a(2131705028);
       }
     }
   }

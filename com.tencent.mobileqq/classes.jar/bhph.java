@@ -1,25 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.widget.AdapterView;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class bhph
-  implements DialogInterface.OnClickListener
+public abstract class bhph<T>
+  extends Handler
 {
-  public bhph(MusicProviderView paramMusicProviderView, AdapterView paramAdapterView, View paramView, int paramInt, long paramLong) {}
+  private WeakReference<T> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bhph(T paramT)
   {
-    paramDialogInterface.dismiss();
-    MusicProviderView.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_Bhpp.k();
-    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.onItemClick(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    this.a = new WeakReference(paramT);
+  }
+  
+  public abstract void a(T paramT, Message paramMessage);
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    Object localObject = this.a.get();
+    if (localObject != null) {
+      a(localObject, paramMessage);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhph
  * JD-Core Version:    0.7.0.1
  */

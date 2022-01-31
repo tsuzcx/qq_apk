@@ -1,43 +1,56 @@
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.LinearLayout.LayoutParams;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class awvr
-  extends Animation
 {
-  int jdField_a_of_type_Int;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  static awvr jdField_a_of_type_Awvr;
+  public String a;
+  ArrayList<aukm> jdField_a_of_type_JavaUtilArrayList = null;
+  HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public boolean a;
+  public boolean b = true;
+  public boolean c = false;
   
-  public awvr(ViewGroup paramViewGroup)
+  awvr()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    int i = View.MeasureSpec.makeMeasureSpec(0, 0);
-    int j = View.MeasureSpec.makeMeasureSpec(0, 0);
-    this.jdField_a_of_type_AndroidViewViewGroup.measure(i, j);
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getMeasuredHeight();
-    paramViewGroup = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramViewGroup.height = 0;
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramViewGroup);
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = "0";
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public static awvr a()
   {
-    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
+    try
+    {
+      if (jdField_a_of_type_Awvr == null) {
+        jdField_a_of_type_Awvr = new awvr();
+      }
+      awvr localawvr = jdField_a_of_type_Awvr;
+      return localawvr;
+    }
+    finally {}
   }
   
-  public boolean willChangeBounds()
+  public void a()
   {
-    return true;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (paramString == null) {
+      return false;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+    return this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awvr
  * JD-Core Version:    0.7.0.1
  */

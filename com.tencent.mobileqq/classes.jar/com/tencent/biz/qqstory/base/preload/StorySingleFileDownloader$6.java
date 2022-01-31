@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.base.preload;
 
-import sif;
-import sig;
+import svb;
+import svc;
 
 public class StorySingleFileDownloader$6
   implements Runnable
 {
-  public StorySingleFileDownloader$6(sif paramsif, sig paramsig, String paramString, int paramInt) {}
+  public StorySingleFileDownloader$6(svb paramsvb, svc paramsvc, String paramString, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Sig.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Svc.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

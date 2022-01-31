@@ -1,153 +1,85 @@
+import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.NetworkInfo;
-import android.os.Build;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBDoubleField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal.HostInterface;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal.UploadServerInfoCallback;
-import com.tencent.weiyun.transmission.upload.UploadFile;
-import com.tencent.weiyun.transmission.upload.UploadType;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskPicBackupReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.FileExtInfo;
-import cooperation.weiyun.channel.pb.WeiyunPB.QqSdkFileUploadMsgReq;
-import mqq.app.AppRuntime;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
 
-class bgto
-  implements WeiyunTransmissionGlobal.HostInterface
+public class bgto
 {
-  private final String a;
-  
-  bgto(String paramString)
+  public static int a(Context paramContext)
   {
-    this.a = paramString;
+    return a(paramContext, "QR_USERPREF58", -1);
   }
   
-  public void fetchUploadServerInfo(UploadFile paramUploadFile, UploadType paramUploadType, WeiyunTransmissionGlobal.UploadServerInfoCallback paramUploadServerInfoCallback)
+  public static int a(@NonNull Context paramContext, String paramString, int paramInt)
   {
-    if (paramUploadFile.cmdType == 1)
+    return paramContext.getSharedPreferences("QR_OUT_SETTING", 0).getInt(paramString, paramInt);
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    int j = 0;
+    int i = j;
+    int k;
+    if (paramQQAppInterface != null)
     {
-      localObject = new WeiyunPB.DiskPicBackupReq();
-      if (paramUploadFile.fileName != null) {
-        ((WeiyunPB.DiskPicBackupReq)localObject).filename.set(paramUploadFile.fileName);
+      k = VipUtils.a(paramQQAppInterface, paramString);
+      if ((k & 0x4) == 0) {
+        break label26;
       }
-      ((WeiyunPB.DiskPicBackupReq)localObject).file_exist_option.set(paramUploadType.ordinal());
-      ((WeiyunPB.DiskPicBackupReq)localObject).upload_type.set(0);
-      ((WeiyunPB.DiskPicBackupReq)localObject).auto_create_user.set(false);
-      ((WeiyunPB.DiskPicBackupReq)localObject).auto_flag.set(paramUploadFile.autoBackupFlag);
-      ((WeiyunPB.DiskPicBackupReq)localObject).backup_dir_name.set(Build.MODEL);
-      if ((paramUploadFile.isCompress) && (!TextUtils.isEmpty(paramUploadFile.compressedPath)))
-      {
-        if (paramUploadFile.compressedSha != null) {
-          ((WeiyunPB.DiskPicBackupReq)localObject).file_sha.set(bgwl.a(paramUploadFile.compressedSha));
-        }
-        ((WeiyunPB.DiskPicBackupReq)localObject).file_size.set(paramUploadFile.compressedSize);
-        ((WeiyunPB.DiskPicBackupReq)localObject).first_256k_crc.set((int)bgwe.a(paramUploadFile.compressedPath, 262144L));
-        if (!TextUtils.isEmpty(paramUploadFile.mimeType))
-        {
-          paramUploadType = new WeiyunPB.FileExtInfo();
-          paramUploadType.take_time.set(paramUploadFile.takenTime);
-          paramUploadType.latitude.set(paramUploadFile.latitude);
-          paramUploadType.longitude.set(paramUploadFile.longitude);
-          if (!paramUploadFile.mimeType.startsWith("image")) {
-            break label311;
-          }
-          paramUploadType.group_id.set(1);
-          ((WeiyunPB.DiskPicBackupReq)localObject).ext_info.set(paramUploadType);
-        }
-        bguo.a((WeiyunPB.DiskPicBackupReq)localObject, new bgtp(this, paramUploadServerInfoCallback, paramUploadFile));
-      }
+      i = 2;
     }
-    label311:
-    while (paramUploadFile.cmdType != 0) {
-      for (;;)
-      {
-        return;
-        if (paramUploadFile.sha != null) {
-          ((WeiyunPB.DiskPicBackupReq)localObject).file_sha.set(bgwl.a(paramUploadFile.sha));
-        }
-        ((WeiyunPB.DiskPicBackupReq)localObject).file_size.set(paramUploadFile.fileSize);
-        ((WeiyunPB.DiskPicBackupReq)localObject).first_256k_crc.set((int)bgwe.a(paramUploadFile.localPath, 262144L));
-        continue;
-        if (!paramUploadFile.mimeType.startsWith("video")) {}
-      }
-    }
-    Object localObject = new WeiyunPB.QqSdkFileUploadMsgReq();
-    if (paramUploadFile.fileName != null) {
-      ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).filename.set(paramUploadFile.fileName);
-    }
-    ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).file_exist_option.set(paramUploadType.ordinal());
-    ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).upload_type.set(0);
-    ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).auto_create_user.set(false);
-    ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).pdir_key.set(bgwl.a(paramUploadFile.pDirKey));
-    ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).ppdir_key.set(bgwl.a(paramUploadFile.pPDirKey));
-    ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).use_mutil_channel.set(WeiyunTransmissionGlobal.getInstance().isNativeUpload());
-    if ((paramUploadFile.isCompress) && (!TextUtils.isEmpty(paramUploadFile.compressedPath)))
+    label26:
+    do
     {
-      if (paramUploadFile.compressedSha != null) {
-        ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).file_sha.set(bgwl.a(paramUploadFile.compressedSha));
-      }
-      ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).file_size.set(paramUploadFile.compressedSize);
-      if (!TextUtils.isEmpty(paramUploadFile.mimeType))
-      {
-        paramUploadType = new WeiyunPB.FileExtInfo();
-        paramUploadType.take_time.set(paramUploadFile.takenTime);
-        paramUploadType.latitude.set(paramUploadFile.latitude);
-        paramUploadType.longitude.set(paramUploadFile.longitude);
-        if (!paramUploadFile.mimeType.startsWith("image")) {
-          break label619;
-        }
-        paramUploadType.group_id.set(1);
-      }
-    }
-    for (;;)
+      return i;
+      i = j;
+    } while ((k & 0x2) == 0);
+    return 1;
+  }
+  
+  public static short a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    return VipUtils.a(paramQQAppInterface, paramString);
+  }
+  
+  public static void a(Context paramContext, int paramInt)
+  {
+    a(paramContext, "QR_USERPREF58", paramInt);
+  }
+  
+  public static void a(Context paramContext, int paramInt, boolean paramBoolean)
+  {
+    a(paramContext, "QR_USERPREF58", paramInt);
+    a(paramContext, "QR_USERPREF_FROM_NET", paramBoolean);
+  }
+  
+  public static void a(@NonNull Context paramContext, String paramString, int paramInt)
+  {
+    paramContext = paramContext.getSharedPreferences("QR_OUT_SETTING", 0).edit();
+    paramContext.putInt(paramString, paramInt);
+    paramContext.commit();
+  }
+  
+  public static void a(@NonNull Context paramContext, String paramString, boolean paramBoolean)
+  {
+    paramContext = paramContext.getSharedPreferences("QR_OUT_SETTING", 0).edit();
+    paramContext.putBoolean(paramString, paramBoolean);
+    paramContext.commit();
+  }
+  
+  public static boolean a(AppInterface paramAppInterface)
+  {
+    if (paramAppInterface != null)
     {
-      ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).ext_info.set(paramUploadType);
-      bguo.a((WeiyunPB.QqSdkFileUploadMsgReq)localObject, new bgtq(this, paramUploadServerInfoCallback, paramUploadFile));
-      return;
-      if (paramUploadFile.sha != null) {
-        ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).file_sha.set(bgwl.a(paramUploadFile.sha));
+      paramAppInterface = (akdi)paramAppInterface.getManager(56);
+      if (paramAppInterface != null) {
+        return paramAppInterface.b("1805987832") != null;
       }
-      ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).file_size.set(paramUploadFile.fileSize);
-      break;
-      label619:
-      if (!paramUploadFile.mimeType.startsWith("video")) {}
     }
-  }
-  
-  public int getCurrentIsp()
-  {
-    return 0;
-  }
-  
-  public String getCurrentUid()
-  {
-    return this.a + BaseApplicationImpl.getApplication().getRuntime().getAccount();
-  }
-  
-  public long getCurrentUin()
-  {
-    return BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-  }
-  
-  public NetworkInfo getRecentNetworkInfo()
-  {
-    return AppNetConnInfo.getRecentNetworkInfo();
-  }
-  
-  public SharedPreferences getSharedPreferences(String paramString, int paramInt)
-  {
-    return SharedPreferencesProxyManager.getInstance().getProxy(paramString, paramInt);
+    return false;
   }
 }
 

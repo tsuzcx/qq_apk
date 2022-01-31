@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class anvb
-  implements DialogInterface.OnClickListener
+class anvb
+  implements acsv
 {
-  public anvb(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  anvb(anul paramanul) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.a = false;
-    this.a.doOnBackPressed();
-    awqx.b(null, "P_CliOper", "Grp_set", "", "Radar_grp_admin", "Clk_quit", 0, 0, this.a.d, "", "", "");
+    QLog.i("MessengerService$IncomingHandler", 2, "@qqnotify delete faield ");
   }
 }
 

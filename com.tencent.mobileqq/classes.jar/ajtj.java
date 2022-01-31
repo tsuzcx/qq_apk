@@ -1,23 +1,39 @@
-import org.xmlpull.v1.XmlSerializer;
+import com.tencent.mobileqq.data.CameraEmotionData;
 
-final class ajtj
-  extends awwo
+public class ajtj
+  implements ajtg
 {
-  ajtj(String paramString)
-  {
-    super(paramString);
-  }
+  protected void a() {}
   
-  public void a(XmlSerializer paramXmlSerializer)
+  protected void a(int paramInt) {}
+  
+  protected void a(int paramInt, CameraEmotionData paramCameraEmotionData) {}
+  
+  protected void a(boolean paramBoolean, int paramInt) {}
+  
+  protected void b(int paramInt) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramXmlSerializer.startTag(null, "picture");
-    if (this.S == null) {}
-    for (String str = "";; str = this.S)
+    switch (paramInt)
     {
-      paramXmlSerializer.attribute(null, "cover", str);
-      paramXmlSerializer.endTag(null, "picture");
+    default: 
+      return;
+    case 1: 
+      paramObject = (Object[])paramObject;
+      a(((Integer)paramObject[0]).intValue(), (CameraEmotionData)paramObject[1]);
+      return;
+    case 2: 
+      a(((Integer)paramObject).intValue());
+      return;
+    case 3: 
+      b(((Integer)paramObject).intValue());
+      return;
+    case 4: 
+      a();
       return;
     }
+    a(paramBoolean, ((Integer)paramObject).intValue());
   }
 }
 

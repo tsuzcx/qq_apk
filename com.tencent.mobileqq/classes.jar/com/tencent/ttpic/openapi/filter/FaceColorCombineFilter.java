@@ -23,7 +23,6 @@ public class FaceColorCombineFilter
   private boolean isMaskLoad = false;
   private int[] lastCurve = new int[256];
   private boolean lastStable = true;
-  private boolean mIsApplied = false;
   private int[] mTextures = new int[2];
   
   public FaceColorCombineFilter()

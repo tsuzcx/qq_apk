@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.antiphing;
 
-import aieo;
-import aier;
+import airh;
+import airk;
 import android.content.Context;
 import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
@@ -9,23 +9,23 @@ import com.tencent.qphone.base.util.QLog;
 public class AntiphishingUrlConfig$2
   implements Runnable
 {
-  public AntiphishingUrlConfig$2(aieo paramaieo, Context paramContext, String paramString1, String paramString2) {}
+  public AntiphishingUrlConfig$2(airh paramairh, Context paramContext, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if (aieo.a() > 3000000L)
+    if (airh.a() > 3000000L)
     {
-      if (new aier(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, aieo.b(this.this$0), this.b, false))
+      if (new airk(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, airh.b(this.this$0), this.b, false))
       {
-        QLog.d(aieo.a(this.this$0), 1, "Successfully Update Config!");
-        aieo.a(this.this$0).sendEmptyMessage(aieo.a(this.this$0));
+        QLog.d(airh.a(this.this$0), 1, "Successfully Update Config!");
+        airh.a(this.this$0).sendEmptyMessage(airh.a(this.this$0));
       }
     }
     else {
       return;
     }
-    aieo.a(this.this$0).sendEmptyMessage(aieo.b(this.this$0));
-    QLog.d(aieo.a(this.this$0), 1, "Update Config Error!");
+    airh.a(this.this$0).sendEmptyMessage(airh.b(this.this$0));
+    QLog.d(airh.a(this.this$0), 1, "Update Config Error!");
   }
 }
 

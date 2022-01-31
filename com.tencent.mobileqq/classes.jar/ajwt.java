@@ -1,33 +1,17 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class ajwt
-  implements ajgy
+  extends apyr
 {
-  public void a(boolean paramBoolean)
+  public ajwt(FrameHelperActivity paramFrameHelperActivity) {}
+  
+  public void a()
   {
-    if (paramBoolean) {
-      paramBoolean = awrn.a(3);
+    if (this.a.a.hasMessages(17)) {
+      this.a.a.removeMessages(17);
     }
-    for (;;)
-    {
-      try
-      {
-        QLog.e("QQInitHandler_WalLog", 1, new Object[] { "onDpcPullFinished, isEnable: ", Boolean.valueOf(paramBoolean) });
-        if (paramBoolean) {
-          continue;
-        }
-        bace.d(ajrl.a);
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("QQInitHandler", 1, "onDpcPullFinished, get switch error", localThrowable);
-        continue;
-      }
-      DeviceProfileManager.b(this);
-      return;
-      bace.a(ajrl.a);
-    }
+    this.a.a.sendEmptyMessage(17);
   }
 }
 

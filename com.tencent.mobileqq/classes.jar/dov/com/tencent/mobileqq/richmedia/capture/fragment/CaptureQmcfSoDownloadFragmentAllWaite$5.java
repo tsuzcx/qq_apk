@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.richmedia.capture.fragment;
 
-import bbmy;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,7 +16,7 @@ class CaptureQmcfSoDownloadFragmentAllWaite$5
     }
     if (!this.jdField_a_of_type_Boolean)
     {
-      bbmy.a(BaseApplicationImpl.getContext(), 2131652956, 0).a();
+      bcpw.a(BaseApplicationImpl.getContext(), 2131718781, 0).a();
       CaptureQmcfSoDownloadFragmentAllWaite.a(this.this$0, -1);
       return;
     }

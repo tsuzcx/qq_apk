@@ -1,28 +1,22 @@
-import android.media.MediaCodec.BufferInfo;
+import android.graphics.PointF;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.ProfileTagView;
+import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.widget.RatioLayout;
 
-class avaa
+public class avaa
+  implements bbkq<PointF>
 {
-  private final int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
-  private final int b;
-  private final int c;
+  public avaa(ProfileTagView paramProfileTagView, VipTagView paramVipTagView) {}
   
-  private avaa(int paramInt1, int paramInt2, MediaCodec.BufferInfo paramBufferInfo)
+  public void a(bbkk<PointF> parambbkk, float paramFloat, PointF paramPointF, Transformation paramTransformation)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Long = paramBufferInfo.presentationTimeUs;
-    this.c = paramBufferInfo.flags;
-  }
-  
-  private void a(MediaCodec.BufferInfo paramBufferInfo, int paramInt)
-  {
-    paramBufferInfo.set(paramInt, this.b, this.jdField_a_of_type_Long, this.c);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, paramPointF.x, paramPointF.y);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avaa
  * JD-Core Version:    0.7.0.1
  */

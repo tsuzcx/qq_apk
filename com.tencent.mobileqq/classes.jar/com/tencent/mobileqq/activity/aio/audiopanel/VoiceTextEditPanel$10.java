@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.content.res.Resources;
 import android.widget.EditText;
-import bbmy;
+import bcpw;
 import java.util.concurrent.atomic.AtomicInteger;
 
 class VoiceTextEditPanel$10
@@ -17,7 +17,7 @@ class VoiceTextEditPanel$10
     VoiceTextEditPanel.a(this.this$0).setText("");
     VoiceTextEditPanel.a(this.this$0).setFocusableInTouchMode(true);
     VoiceTextEditPanel.a(this.this$0).set(5);
-    bbmy.a(this.this$0.getContext(), ajjy.a(2131651063), 0).b(this.this$0.getContext().getResources().getDimensionPixelSize(2131167766));
+    bcpw.a(this.this$0.getContext(), ajyc.a(2131716854), 0).b(this.this$0.getContext().getResources().getDimensionPixelSize(2131298865));
   }
 }
 

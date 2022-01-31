@@ -1,27 +1,33 @@
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
+import java.util.Iterator;
 import java.util.List;
 
-public class atar
+class atar
+  extends avpl
 {
-  public long a;
-  public aslp a;
-  public List<atap> a;
-  public boolean a;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n;
+  atar(ataq paramataq, QQAppInterface paramQQAppInterface) {}
+  
+  public void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList)
+  {
+    if (("nearby_num_red_dot".equals(paramString)) && (paramList != null))
+    {
+      paramString = paramList.iterator();
+      while (paramString.hasNext())
+      {
+        paramList = (NumRedMsg.NumMsgBusi)paramString.next();
+        this.jdField_a_of_type_Ataq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList.ui_appid.get(), paramList.str_path.get(), paramList.str_ext.get());
+      }
+      akfi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+      if ((paramString != null) && (paramString.a("businessbase_processor") != null)) {
+        paramString.a("businessbase_processor").a(105, true, null);
+      }
+    }
+  }
 }
 
 

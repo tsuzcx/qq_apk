@@ -1,114 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.extendfriend.bean.GroupInfo;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
 
 public class aohc
+  extends aoeu
 {
-  private ajey jdField_a_of_type_Ajey = new aohe(this);
-  private aodp jdField_a_of_type_Aodp = new aohd(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ConcurrentHashMap<String, apao> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private boolean jdField_a_of_type_Boolean;
+  public aohc(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
   
-  public aohc(QQAppInterface paramQQAppInterface)
+  protected void a(boolean paramBoolean1, List<GroupInfo> paramList, boolean paramBoolean2, long paramLong, boolean paramBoolean3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_Aodp != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Aodp);
-    }
-    if (this.jdField_a_of_type_Ajey != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajey);
-    }
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_Aodp != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aodp);
-    }
-    if (this.jdField_a_of_type_Ajey != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajey);
-    }
-  }
-  
-  public apao a(String paramString1, String paramString2, String paramString3)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)
+    try
     {
-      QLog.e("QFileMultiControlManager<QFile>", 1, "req map is null.if you forget init manager?");
-      return null;
-    }
-    paramString1 = apao.a(paramString1, paramString2, paramString3);
-    return (apao)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
+      ExtendFriendGroupFragment.a(this.a, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramList);
       return;
     }
-    QLog.i("QFileMultiControlManager<QFile>", 1, "initFileControlManager");
-    this.jdField_a_of_type_Boolean = true;
-    c();
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  public void a(apao paramapao)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)
+    catch (Exception paramList)
     {
-      QLog.e("QFileMultiControlManager<QFile>", 1, "req map is null.if you forget init manager?");
-      return;
+      QLog.e("ExtendFriendGroupFragment", 1, "mExtendFriendObserver exception", paramList);
     }
-    if (paramapao == null)
-    {
-      QLog.e("QFileMultiControlManager<QFile>", 1, "req is null.");
-      return;
-    }
-    String str = paramapao.a();
-    if (TextUtils.isEmpty(str))
-    {
-      QLog.e("QFileMultiControlManager<QFile>", 1, "controlKey is null.");
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramapao.a(), paramapao);
-    QLog.e("QFileMultiControlManager<QFile>", 1, "addFileControlReq: controlKey[" + str + "]");
-  }
-  
-  public void b()
-  {
-    QLog.i("QFileMultiControlManager<QFile>", 1, "clearFileControlManager");
-    this.jdField_a_of_type_Boolean = false;
-    d();
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
-  }
-  
-  public void b(apao paramapao)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)
-    {
-      QLog.e("QFileMultiControlManager<QFile>", 1, "req map is null.if you forget init manager?");
-      return;
-    }
-    paramapao = paramapao.a();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramapao);
-    QLog.e("QFileMultiControlManager<QFile>", 1, "removeFileContolReq: controlKey[" + paramapao + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aohc
  * JD-Core Version:    0.7.0.1
  */

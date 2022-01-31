@@ -16,19 +16,19 @@ import com.tencent.widget.ListView;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import nuo;
-import nvb;
-import nve;
-import nvn;
-import nwx;
-import nyi;
+import ofz;
+import ogm;
+import ogp;
+import ogy;
+import oii;
+import ojt;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class KdCommentList
   extends VDiv
-  implements nvb, nve, nvn, nyi
+  implements ogm, ogp, ogy, ojt
 {
   public static final String EVENT_CHANGE = "change";
   public static final String EVENT_COMMENT_CHANGE = "commentChange";
@@ -140,7 +140,7 @@ public class KdCommentList
   public void onActivityDestroy()
   {
     super.onActivityDestroy();
-    nuo.a().b(this);
+    ofz.a().b(this);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -151,17 +151,17 @@ public class KdCommentList
     }
   }
   
-  public void onCommentCreate(boolean paramBoolean, nwx paramnwx, List<nwx> paramList, int paramInt)
+  public void onCommentCreate(boolean paramBoolean, oii paramoii, List<oii> paramList, int paramInt)
   {
     if (!this.mAppendEvents.contains("change")) {}
     while (!paramBoolean) {
       return;
     }
-    paramnwx = new JSONObject();
+    paramoii = new JSONObject();
     try
     {
-      paramnwx.put("commentChange", 1);
-      fireCommentListEvent(paramnwx);
+      paramoii.put("commentChange", 1);
+      fireCommentListEvent(paramoii);
       return;
     }
     catch (JSONException paramList)
@@ -173,19 +173,19 @@ public class KdCommentList
     }
   }
   
-  public void onCommentCreate(boolean paramBoolean1, nwx paramnwx, boolean paramBoolean2, List<nwx> paramList, int paramInt) {}
+  public void onCommentCreate(boolean paramBoolean1, oii paramoii, boolean paramBoolean2, List<oii> paramList, int paramInt) {}
   
-  public void onCommentDelete(int paramInt1, boolean paramBoolean, nwx paramnwx, int paramInt2)
+  public void onCommentDelete(int paramInt1, boolean paramBoolean, oii paramoii, int paramInt2)
   {
     if (!this.mAppendEvents.contains("change")) {}
     while (!paramBoolean) {
       return;
     }
-    paramnwx = new JSONObject();
+    paramoii = new JSONObject();
     try
     {
-      paramnwx.put("commentChange", -1);
-      fireCommentListEvent(paramnwx);
+      paramoii.put("commentChange", -1);
+      fireCommentListEvent(paramoii);
       return;
     }
     catch (JSONException localJSONException)
@@ -199,11 +199,11 @@ public class KdCommentList
   
   public void onCommentLikeOrDislike(boolean paramBoolean, String paramString, int paramInt1, int paramInt2) {}
   
-  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<nwx> paramList, boolean paramBoolean2, int paramInt2, int paramInt3) {}
+  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<oii> paramList, boolean paramBoolean2, int paramInt2, int paramInt3) {}
   
-  public void onCommentLoadMore(int paramInt1, boolean paramBoolean1, List<nwx> paramList, boolean paramBoolean2, int paramInt2) {}
+  public void onCommentLoadMore(int paramInt1, boolean paramBoolean1, List<oii> paramList, boolean paramBoolean2, int paramInt2) {}
   
-  public void onCommentReply(boolean paramBoolean, nwx paramnwx) {}
+  public void onCommentReply(boolean paramBoolean, oii paramoii) {}
   
   public void onCommentStateError(int paramInt) {}
   

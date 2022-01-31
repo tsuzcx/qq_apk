@@ -1,18 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.qphone.base.util.QLog;
+import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
 
 public class ablz
-  implements DialogInterface.OnDismissListener
+  extends atzn
 {
-  public ablz(QQMapActivity paramQQMapActivity) {}
+  public ablz(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
   {
-    if ((this.a.l) && (!this.a.m) && (!this.a.k)) {
-      this.a.finish();
-    }
-    this.a.m = false;
+    LoginInfoActivity.a(this.a, paramSecureCheckResponse);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    bcpw.a(this.a, paramString2, 0).a();
+    QLog.e("LoginInfoActivity.AccDevSec", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
   }
 }
 

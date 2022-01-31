@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import axcl;
+import aycn;
 
 public class Texture$2
   implements Runnable
 {
-  public Texture$2(axcl paramaxcl) {}
+  public Texture$2(aycn paramaycn) {}
   
   public void run()
   {

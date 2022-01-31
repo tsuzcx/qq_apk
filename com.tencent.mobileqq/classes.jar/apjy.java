@@ -1,56 +1,43 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.RspBody;
 
-public class apjy
+final class apjy
+  extends mxm
 {
-  public static int a(int paramInt, double paramDouble)
-  {
-    float f = 1.0F;
-    if (paramInt > 150) {
-      f = paramInt / 100;
-    }
-    if (paramDouble <= 1.5D) {
-      return (int)(f * 9.0F);
-    }
-    if (paramDouble <= 2.0D) {
-      return (int)(f * 9.0F);
-    }
-    return (int)(f * 4.0F);
-  }
+  apjy(apjz paramapjz) {}
   
-  public static Drawable a(Bitmap paramBitmap)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    Object localObject = null;
-    Bitmap localBitmap = bacm.a(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
-    paramBitmap = localObject;
-    if (localBitmap != null) {
-      paramBitmap = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), localBitmap);
+    if (paramInt == 0) {
+      paramBundle = new oidb_0x6e7.RspBody();
     }
-    return paramBitmap;
-  }
-  
-  public static Drawable a(Bitmap paramBitmap, double paramDouble)
-  {
-    Object localObject = null;
-    Bitmap localBitmap = bacm.a(paramBitmap, a(0, paramDouble));
-    paramBitmap = localObject;
-    if (localBitmap != null) {
-      paramBitmap = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), localBitmap);
-    }
-    return paramBitmap;
-  }
-  
-  public static Drawable a(Drawable paramDrawable, double paramDouble)
-  {
-    return a(azzg.a(paramDrawable), paramDouble);
-  }
-  
-  public static final boolean a(Intent paramIntent)
-  {
-    return (paramIntent != null) && (paramIntent.hasExtra("report")) && ("Music_gene_aio".equals(paramIntent.getStringExtra("report")));
+    do
+    {
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, "is_white = " + paramBundle.uint32_is_white.get() + ", req_interval = " + paramBundle.uint32_interval.get());
+        }
+        if (this.a != null) {
+          this.a.a(paramBundle.uint32_is_white.get(), paramBundle.uint32_interval.get());
+        }
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, QLog.getStackTraceString(paramArrayOfByte));
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("zivonchen", 2, "requestWhiteList() errorCode = " + paramInt);
+      }
+    } while (this.a == null);
+    this.a.a(0, -1);
   }
 }
 

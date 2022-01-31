@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.nearby.now.share;
 
 import android.text.TextUtils;
-import ascz;
-import asme;
-import asmg;
-import asmr;
-import awrb;
+import aszd;
+import atii;
+import atik;
+import ativ;
+import axra;
 
 public class ShortVideoShareUtil$1$2$1
   implements Runnable
 {
-  public ShortVideoShareUtil$1$2$1(asmg paramasmg, ascz paramascz) {}
+  public ShortVideoShareUtil$1$2$1(atik paramatik, aszd paramaszd) {}
   
   public void run()
   {
-    awrb localawrb = new awrb(this.jdField_a_of_type_Asmg.a.a).a("dc00899").b("grp_lbs").c("video").d("playpage_fw_suc").e(asmr.d);
-    int i = this.jdField_a_of_type_Ascz.b();
-    String str2 = asmr.a;
-    if (TextUtils.equals(asmr.a, "2")) {}
-    for (String str1 = asmr.c;; str1 = "")
+    axra localaxra = new axra(this.jdField_a_of_type_Atik.a.a).a("dc00899").b("grp_lbs").c("video").d("playpage_fw_suc").e(ativ.d);
+    int i = this.jdField_a_of_type_Aszd.b();
+    String str2 = ativ.a;
+    if (TextUtils.equals(ativ.a, "2")) {}
+    for (String str1 = ativ.c;; str1 = "")
     {
-      localawrb.a(new String[] { "2", String.valueOf(i), str2, str1 }).a();
+      localaxra.a(new String[] { "2", String.valueOf(i), str2, str1 }).a();
       return;
     }
   }

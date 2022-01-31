@@ -1,57 +1,87 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Iterator;
+import java.util.List;
 
 public class awqn
-  extends alzl<awqo>
+  extends awqq
 {
-  public int a()
+  private List<PhoneContact> a;
+  
+  public awqn(baxk parambaxk, awqu paramawqu, List<PhoneContact> paramList)
   {
-    return 577;
+    super(parambaxk, paramawqu);
+    this.a = paramList;
   }
   
-  @NonNull
-  public awqo a(int paramInt)
+  public void b(awog paramawog, awwp paramawwp)
   {
-    return new awqo();
-  }
-  
-  @Nullable
-  public awqo a(alzs[] paramArrayOfalzs)
-  {
-    awqo localawqo = new awqo();
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0) && (paramArrayOfalzs[0] != null)) {
-      awqo.a(localawqo, paramArrayOfalzs[0].a);
+    boolean bool = true;
+    super.b(paramawog, paramawwp);
+    int i;
+    int j;
+    if (paramawwp.c() != null)
+    {
+      paramawog = (awmy)paramawog;
+      if (this.a != null)
+      {
+        Iterator localIterator = this.a.iterator();
+        i = 0;
+        j = i;
+        if (!localIterator.hasNext()) {
+          break label101;
+        }
+        if (((PhoneContact)localIterator.next()).contactID != paramawog.a.contactID) {
+          break label197;
+        }
+        paramawwp.c().setText(ajyc.a(2131702516));
+        i = 1;
+      }
     }
-    return localawqo;
+    label191:
+    label197:
+    for (;;)
+    {
+      break;
+      j = 0;
+      label101:
+      if (!TextUtils.isEmpty(paramawog.c()))
+      {
+        paramawwp.c().setText(paramawog.c());
+        j = 1;
+      }
+      paramawog = paramawwp.c();
+      if (j != 0)
+      {
+        i = 0;
+        paramawog.setVisibility(i);
+        paramawog = paramawwp.a();
+        if (j != 0) {
+          break label191;
+        }
+      }
+      for (;;)
+      {
+        paramawog.setClickable(bool);
+        if (paramawwp.a() != null) {
+          paramawwp.a().setVisibility(8);
+        }
+        return;
+        i = 8;
+        break;
+        bool = false;
+      }
+    }
   }
   
-  public Class<awqo> a()
-  {
-    return awqo.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(awqo paramawqo) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public void d(awog paramawog, awwp paramawwp) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awqn
  * JD-Core Version:    0.7.0.1
  */

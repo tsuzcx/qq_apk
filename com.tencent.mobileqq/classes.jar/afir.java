@@ -1,21 +1,15 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class afir
-  extends RecyclerView.ViewHolder
+public abstract interface afir
 {
-  TextView a;
+  public abstract Activity a();
   
-  afir(View paramView)
-  {
-    super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131312639));
-  }
+  public abstract QQAppInterface a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afir
  * JD-Core Version:    0.7.0.1
  */

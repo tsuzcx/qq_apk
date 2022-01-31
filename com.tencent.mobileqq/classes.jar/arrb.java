@@ -1,33 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class arrb
-  implements bbpw
+  extends ajxl
 {
-  public arrb(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
+  public arrb(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void a(View paramView, int paramInt)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    int i = 2;
-    if (paramInt == 1)
+    QLog.i("ListenTogether.Manager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
+    if (paramBoolean)
     {
-      arsc.a("MsgBackup.MsgBackupSelectionFragment", "click cancel btn mfrom = %d,  pcHandler = %b", new Object[] { Integer.valueOf(MsgBackupSelectionFragment.a(this.a)), Boolean.valueOf(arpa.c) });
-      if (MsgBackupSelectionFragment.a(this.a) != 0) {
-        break label79;
-      }
-      paramInt = i;
-      if (MsgBackupSelectionFragment.a(this.a)) {
-        paramInt = 3;
-      }
-      arsa.a("0X800A242", paramInt);
-    }
-    for (;;)
-    {
-      this.a.onBackEvent();
-      return;
-      label79:
-      if ((arpa.c) && (arop.a().a() == 1)) {
-        arsa.a("0X800A266", 5);
+      String str = arrl.a(2, String.valueOf(paramObject));
+      if (ListenTogetherManager.a(this.a).equals(str))
+      {
+        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).g = 3;
+        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).h = 3;
+        arqo.b(ListenTogetherManager.a(this.a), String.valueOf(paramObject), false);
+        this.a.a(true, (ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a)), 1007);
+        this.a.a(2, String.valueOf(paramObject), false);
       }
     }
   }

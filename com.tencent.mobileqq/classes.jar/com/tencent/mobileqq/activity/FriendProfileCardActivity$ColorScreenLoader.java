@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aavs;
-import aavt;
-import aavu;
+import abfo;
+import abfp;
+import abfq;
 import android.os.Bundle;
-import aphb;
-import bapb;
+import apze;
+import bbqy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import com.tencent.mobileqq.dinifly.LottieComposition;
@@ -16,10 +16,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class FriendProfileCardActivity$ColorScreenLoader
-  implements bapb<aphb>, Runnable
+  implements bbqy<apze>, Runnable
 {
   public int a;
-  public aphb a;
+  public apze a;
   public LottieComposition a;
   
   public FriendProfileCardActivity$ColorScreenLoader(FriendProfileCardActivity paramFriendProfileCardActivity, int paramInt)
@@ -27,29 +27,29 @@ public class FriendProfileCardActivity$ColorScreenLoader
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(aphb paramaphb, Object paramObject)
+  public void a(apze paramapze, Object paramObject)
   {
-    if ((paramaphb == null) || (!this.this$0.isValidate()))
+    if ((paramapze == null) || (!this.this$0.isValidate()))
     {
-      QLog.e("ColorScreenManager", 1, "early return, config is " + paramaphb);
+      QLog.e("ColorScreenManager", 1, "early return, config is " + paramapze);
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("ColorScreenManager", 2, "onComplete, anim file is " + paramaphb.jdField_a_of_type_JavaLangString);
+      QLog.d("ColorScreenManager", 2, "onComplete, anim file is " + paramapze.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_Aphb = paramaphb;
+    this.jdField_a_of_type_Apze = paramapze;
     try
     {
-      paramaphb = new FileInputStream(paramaphb.jdField_a_of_type_JavaLangString);
+      paramapze = new FileInputStream(paramapze.jdField_a_of_type_JavaLangString);
       paramObject = new Bundle();
       paramObject.putString("key", "lottie_colorscreen_" + String.valueOf(this.jdField_a_of_type_Int) + "unzip");
       paramObject.putString("path", this.this$0.getFilesDir().getAbsolutePath() + "/" + "color_screen" + "/" + this.jdField_a_of_type_Int + "/" + "unzip" + "/images/");
-      LottieComposition.Factory.fromInputStreamWithCacheBitmap(this.this$0, paramaphb, this.this$0.a.getLottieDrawable(), new aavs(this), paramObject, BaseApplicationImpl.sImageCache);
+      LottieComposition.Factory.fromInputStreamWithCacheBitmap(this.this$0, paramapze, this.this$0.a.getLottieDrawable(), new abfo(this), paramObject, BaseApplicationImpl.sImageCache);
       return;
     }
-    catch (FileNotFoundException paramaphb)
+    catch (FileNotFoundException paramapze)
     {
-      QLog.e("ColorScreenManager", 1, "colorScreen", paramaphb);
+      QLog.e("ColorScreenManager", 1, "colorScreen", paramapze);
     }
   }
   
@@ -61,21 +61,21 @@ public class FriendProfileCardActivity$ColorScreenLoader
     do
     {
       return;
-      if (this.this$0.d == this.jdField_a_of_type_Int)
+      if (this.this$0.b == this.jdField_a_of_type_Int)
       {
         if (QLog.isColorLevel()) {
           QLog.d("ColorScreenManager", 2, "play : " + this.jdField_a_of_type_Int);
         }
         this.this$0.a.cancelAnimation();
-        this.this$0.a.setImageAssetDelegate(new aavt(this));
+        this.this$0.a.setImageAssetDelegate(new abfp(this));
         try
         {
-          aavu localaavu = new aavu(this, this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition.getDuration());
+          abfq localabfq = new abfq(this, this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition.getDuration());
           this.this$0.a.setComposition(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition);
           this.this$0.a.setProgress(0.0F);
-          this.this$0.a.setRepeatCount(this.jdField_a_of_type_Aphb.jdField_a_of_type_Int);
-          this.this$0.a.addAnimatorListener(localaavu);
-          this.this$0.a.addAnimatorUpdateListener(localaavu);
+          this.this$0.a.setRepeatCount(this.jdField_a_of_type_Apze.jdField_a_of_type_Int);
+          this.this$0.a.addAnimatorListener(localabfq);
+          this.this$0.a.addAnimatorUpdateListener(localabfq);
           this.this$0.a.setVisibility(0);
           this.this$0.a.playAnimation();
           return;
@@ -87,7 +87,7 @@ public class FriendProfileCardActivity$ColorScreenLoader
         }
       }
     } while (!QLog.isColorLevel());
-    QLog.d("ColorScreenManager", 2, "won't play old anim: " + this.jdField_a_of_type_Int + " because have new anim: " + this.this$0.d);
+    QLog.d("ColorScreenManager", 2, "won't play old anim: " + this.jdField_a_of_type_Int + " because have new anim: " + this.this$0.b);
   }
 }
 

@@ -1,12 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class aybf
-  implements View.OnClickListener
+public class aybf
 {
-  aybf(aybe paramaybe) {}
+  public float a;
+  public float b;
   
-  public void onClick(View paramView) {}
+  public aybf(float paramFloat1, float paramFloat2)
+  {
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+  }
 }
 
 

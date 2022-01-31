@@ -1,19 +1,16 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SplashActivity;
 
 class agcz
-  implements apca
+  implements DialogInterface.OnClickListener
 {
-  agcz(agcx paramagcx) {}
+  agcz(agch paramagch) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.j();
-  }
-  
-  public void b()
-  {
-    this.a.a.b.setClickable(true);
+    paramDialogInterface.dismiss();
+    this.a.a.finish();
   }
 }
 

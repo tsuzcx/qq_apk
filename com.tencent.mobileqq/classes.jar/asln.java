@@ -1,79 +1,145 @@
-import android.net.Uri;
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.FeedsProtocol.GetMediaDetailRsp;
-import com.tencent.pb.now.FeedsProtocol.MediaInfo;
-import com.tencent.pb.now.FeedsProtocol.PicFeedsInfo;
-import com.tencent.pb.now.FeedsProtocol.ShortVideoInfo;
-import com.tencent.pb.now.FeedsProtocol.TextFeed;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForMarketFace;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
 public class asln
-  extends askz
+  implements askz
 {
-  private String a;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  public asln() {}
   
-  public asln()
+  public asln(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = "PlayListDataModel";
+    this();
   }
   
-  private void a(FeedsProtocol.GetMediaDetailRsp paramGetMediaDetailRsp)
+  public static asnn a(MsgBackupResEntity paramMsgBackupResEntity)
   {
-    paramGetMediaDetailRsp = paramGetMediaDetailRsp.media_list.get().iterator();
-    while (paramGetMediaDetailRsp.hasNext())
+    switch (paramMsgBackupResEntity.msgType)
     {
-      FeedsProtocol.MediaInfo localMediaInfo = (FeedsProtocol.MediaInfo)paramGetMediaDetailRsp.next();
-      if ((localMediaInfo.type.get() != 1) && (localMediaInfo.type.get() != 2)) {
-        if (localMediaInfo.type.get() == 3) {
-          a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.ShortVideoInfo)localMediaInfo.short_video.get(), this.jdField_a_of_type_JavaUtilArrayList);
-        } else if (localMediaInfo.type.get() == 5) {
-          a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.PicFeedsInfo)localMediaInfo.pic_info.get(), this.jdField_a_of_type_JavaUtilArrayList);
-        } else if (localMediaInfo.type.get() == 6) {
-          a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.TextFeed)localMediaInfo.text_feed.get(), this.jdField_a_of_type_JavaUtilArrayList);
+    default: 
+      return null;
+    case 1: 
+      return new asnq(paramMsgBackupResEntity);
+    case 2: 
+      return new asnv(paramMsgBackupResEntity);
+    }
+    return new asns(paramMsgBackupResEntity);
+  }
+  
+  public static asnt a(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForPic)) {
+      return new asnp((MessageForPic)paramMessageRecord);
+    }
+    if ((paramMessageRecord instanceof MessageForShortVideo)) {
+      return new asnu((MessageForShortVideo)paramMessageRecord);
+    }
+    if ((paramMessageRecord instanceof MessageForPtt)) {
+      return new asnr((MessageForPtt)paramMessageRecord);
+    }
+    if ((paramMessageRecord instanceof MessageForMarketFace)) {
+      return new asnl(paramMessageRecord);
+    }
+    if ((paramMessageRecord instanceof MessageForMixedMsg)) {
+      return new asno((MessageForMixedMsg)paramMessageRecord);
+    }
+    return null;
+  }
+  
+  public aslm a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    paramMessageRecord = a(paramMsgBackupResEntity);
+    if (paramMessageRecord != null) {
+      return paramMessageRecord.a();
+    }
+    return new aslm();
+  }
+  
+  public String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    return null;
+  }
+  
+  public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
+  {
+    paramMessageRecord = a(paramMessageRecord);
+    if (paramMessageRecord != null)
+    {
+      paramMessageRecord.a();
+      Object localObject = paramMessageRecord.a();
+      if (QLog.isColorLevel()) {
+        paramMessageRecord.a("onExport");
+      }
+      if (localObject != null)
+      {
+        paramList.addAll((Collection)localObject);
+        if (QLog.isColorLevel())
+        {
+          paramList = paramList.iterator();
+          while (paramList.hasNext())
+          {
+            localObject = (MsgBackupResEntity)paramList.next();
+            if (QLog.isColorLevel()) {
+              paramMessageRecord.a("export resEntity:" + ((MsgBackupResEntity)localObject).toLogString());
+            }
+          }
         }
       }
     }
   }
   
-  public int a()
+  public boolean a(MessageRecord paramMessageRecord)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    new aslv(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_b_of_type_JavaLangString + "&start=" + this.jdField_b_of_type_Int + "&num=" + 10, new aslo(this));
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if ("1".equals(paramBundle.getString("isLocal"))) {}
-    do
+    if (paramMessageRecord != null)
     {
-      return;
-      paramBundle = paramBundle.getString("raw_url");
-      this.jdField_b_of_type_JavaLangString = Uri.parse(paramBundle).getQuery();
-    } while (!QLog.isColorLevel());
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "PlayListDataModel, url=" + paramBundle);
+      paramMessageRecord = a(paramMessageRecord);
+      if (paramMessageRecord != null) {
+        return paramMessageRecord.a();
+      }
+    }
+    return false;
   }
   
-  public boolean a()
+  public boolean a(MsgBackupResEntity paramMsgBackupResEntity)
   {
-    return this.jdField_a_of_type_Boolean;
+    return (paramMsgBackupResEntity.msgType == 1) || (paramMsgBackupResEntity.msgType == 2) || (paramMsgBackupResEntity.msgType == 3);
+  }
+  
+  public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
+  {
+    asnt localasnt = a(paramMessageRecord);
+    if (localasnt != null)
+    {
+      if (QLog.isColorLevel()) {
+        localasnt.a("onImport,uniseq:" + paramMessageRecord.uniseq + " msg:" + paramMessageRecord);
+      }
+      localasnt.b();
+      if (paramList != null)
+      {
+        paramMessageRecord = paramList.iterator();
+        while (paramMessageRecord.hasNext())
+        {
+          paramList = a((MsgBackupResEntity)paramMessageRecord.next());
+          if (paramList != null) {
+            paramList.a();
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asln
  * JD-Core Version:    0.7.0.1
  */

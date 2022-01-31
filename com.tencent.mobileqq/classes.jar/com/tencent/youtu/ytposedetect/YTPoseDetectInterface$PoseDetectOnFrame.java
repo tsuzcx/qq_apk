@@ -7,6 +7,8 @@ public abstract interface YTPoseDetectInterface$PoseDetectOnFrame
   public static final int DETECT_NOT_INIT_MODEL = 2;
   public static final int DETECT_SUCCESS = 0;
   
+  public abstract void onCanReflect();
+  
   public abstract void onFailed(int paramInt, String paramString1, String paramString2);
   
   public abstract void onRecordingDone(byte[][] paramArrayOfByte, int paramInt1, int paramInt2);

@@ -12,8 +12,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import azzj;
-import azzm;
+import bban;
+import bbaq;
 
 public class SquareRoundFrameLayout
   extends FrameLayout
@@ -49,7 +49,7 @@ public class SquareRoundFrameLayout
   private void b()
   {
     StateListDrawable localStateListDrawable = new StateListDrawable();
-    Object localObject = new azzm(getResources().getColor(2131099755), getWidth(), getHeight());
+    Object localObject = new bbaq(getResources().getColor(2131165292), getWidth(), getHeight());
     localStateListDrawable.addState(new int[] { 16842919, 16842910 }, (Drawable)localObject);
     localObject = new ColorDrawable(0);
     localStateListDrawable.addState(new int[0], (Drawable)localObject);
@@ -76,7 +76,7 @@ public class SquareRoundFrameLayout
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramInt1 != 0) && (paramInt2 != 0) && ((paramInt1 != paramInt3) || (paramInt2 != paramInt4))) {
-      this.a = azzj.a(paramInt1, paramInt2);
+      this.a = bban.a(paramInt1, paramInt2);
     }
   }
 }

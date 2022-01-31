@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import qzk;
-import qzm;
+import rmc;
+import rme;
 
 public class BiuLikeFusionManager$4$1
   implements Runnable
 {
-  public BiuLikeFusionManager$4$1(qzm paramqzm, boolean paramBoolean) {}
+  public BiuLikeFusionManager$4$1(rme paramrme, boolean paramBoolean) {}
   
   public void run()
   {
-    qzk.a(this.jdField_a_of_type_Qzm.jdField_a_of_type_Qzk, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Qzm.jdField_a_of_type_JavaLangString);
+    rmc.a(this.jdField_a_of_type_Rme.jdField_a_of_type_Rmc, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Rme.jdField_a_of_type_JavaLangString);
   }
 }
 

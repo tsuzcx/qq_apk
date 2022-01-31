@@ -1,10 +1,27 @@
-import com.tencent.mobileqq.data.MessageForPic;
-
-public abstract interface annj
+public class annj
 {
-  public abstract void a(int paramInt, MessageForPic paramMessageForPic);
+  public int a;
+  public String a;
+  public boolean a;
+  public String b = "";
+  public String c = "";
   
-  public abstract void a(boolean paramBoolean, MessageForPic paramMessageForPic);
+  public annj()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("enable:").append(this.jdField_a_of_type_Boolean).append(",");
+    localStringBuilder.append("mPlainContent:").append(this.jdField_a_of_type_JavaLangString).append(",");
+    localStringBuilder.append("mHighLightContent:").append(this.b).append(",");
+    localStringBuilder.append("times:").append(this.jdField_a_of_type_Int).append(",");
+    localStringBuilder.append("mJumpLinkUrls:").append(this.c).append(",");
+    return localStringBuilder.toString();
+  }
 }
 
 

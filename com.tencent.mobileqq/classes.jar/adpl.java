@@ -1,15 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.content.Context;
+import com.tencent.mobileqq.data.MessageForFile;
 
-public class adpl
-  implements ValueAnimator.AnimatorUpdateListener
+class adpl
+  implements bcvx
 {
-  public adpl(SixCombolEffectView paramSixCombolEffectView, adpz paramadpz) {}
+  adpl(adpi paramadpi, MessageForFile paramMessageForFile, Context paramContext) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Adpz.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    apue.a(this.jdField_a_of_type_Adpi.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
   }
 }
 

@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import com.tencent.aekit.openrender.internal.Frame;
 
-public final class biuu
-  implements Parcelable.Creator<PublishParam>
+public abstract interface biuu
 {
-  public PublishParam a(Parcel paramParcel)
-  {
-    return new PublishParam(paramParcel);
-  }
+  public abstract void a();
   
-  public PublishParam[] a(int paramInt)
-  {
-    return new PublishParam[paramInt];
-  }
+  public abstract void a(Frame paramFrame);
+  
+  public abstract void b();
 }
 
 

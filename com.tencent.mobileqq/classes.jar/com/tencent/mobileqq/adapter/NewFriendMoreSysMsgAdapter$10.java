@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.adapter;
 
-import aibm;
-import ajph;
-import atcu;
-import atdf;
+import aiof;
+import akdr;
+import atyy;
+import atzj;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class NewFriendMoreSysMsgAdapter$10
   implements Runnable
 {
-  public NewFriendMoreSysMsgAdapter$10(aibm paramaibm, atcu paramatcu) {}
+  public NewFriendMoreSysMsgAdapter$10(aiof paramaiof, atyy paramatyy) {}
   
   public void run()
   {
-    ((ajph)this.this$0.a.getManager(257)).b(((atdf)this.a).a);
+    ((akdr)this.this$0.a.getManager(257)).b(((atzj)this.a).a);
     this.this$0.a.runOnUiThread(new NewFriendMoreSysMsgAdapter.10.1(this));
   }
 }

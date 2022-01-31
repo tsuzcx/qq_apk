@@ -1,68 +1,101 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Set;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class avsr
-  extends avqx
+  implements GLGestureListener
 {
-  private Set<String> b;
+  protected View a;
+  private avss a;
+  protected ProviderContainerView a;
+  protected AEMaterialPanel a;
+  protected AEProviderContainerView a;
+  protected QIMProviderContainerView a;
   
-  public avsr(azwg paramazwg, avrb paramavrb, Set<String> paramSet1, Set<String> paramSet2)
+  public avsr() {}
+  
+  public avsr(QIMProviderContainerView paramQIMProviderContainerView)
   {
-    super(paramazwg, paramavrb, paramSet1);
-    this.b = paramSet2;
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView = paramQIMProviderContainerView;
   }
   
-  public void b(avon paramavon, avww paramavww)
+  public void a(View paramView)
   {
-    super.b(paramavon, paramavww);
-    if (paramavww.c() != null)
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(avss paramavss)
+  {
+    this.jdField_a_of_type_Avss = paramavss;
+  }
+  
+  public void a(AEMaterialPanel paramAEMaterialPanel)
+  {
+    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel = paramAEMaterialPanel;
+  }
+  
+  public void a(AEProviderContainerView paramAEProviderContainerView)
+  {
+    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView = paramAEProviderContainerView;
+  }
+  
+  public int onGetPriority()
+  {
+    return 1060;
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  {
+    int j = paramMotionEvent.getPointerCount();
+    int k = paramMotionEvent.getAction() & 0xFF;
+    Object localObject = new StringBuilder().append("action: ").append(k).append(" event Y: ").append(paramMotionEvent.getY()).append(" container view height: ");
+    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel == null) {}
+    for (int i = 0;; i = this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.getHeight())
     {
-      localObject = paramavon.b();
-      if ((this.b != null) && (this.b.contains(localObject))) {
-        paramavww.c().setText(ajjy.a(2131647941));
-      }
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    boolean bool = azgu.b((QQAppInterface)localObject, paramavon.b());
-    if ((localObject instanceof QQAppInterface))
-    {
-      if (!(paramavww instanceof avwq)) {
-        break label165;
-      }
-      ((avwq)paramavww).a(bool);
-    }
-    for (;;)
-    {
-      if (paramavww.a() != null)
+      bizq.a("CameraProviderViewGesture", i);
+      if ((j == 1) && (!paramBoolean)) {}
+      switch (k)
       {
-        if ((!(paramavon instanceof avni)) && (!(paramavon instanceof avmv)) && (!(paramavon instanceof avnd))) {
-          break;
-        }
-        if (paramavww.c() != null) {
-          paramavww.c().setVisibility(8);
-        }
-        paramavww.a().setVisibility(0);
-      }
-      return;
-      label165:
-      if ((paramavww instanceof avyp)) {
-        ((avyp)paramavww).a(bool);
+      default: 
+        return false;
       }
     }
-    if (paramavww.c() != null) {
-      paramavww.c().setVisibility(0);
+    if (this.jdField_a_of_type_AndroidViewView != null) {}
+    for (localObject = this.jdField_a_of_type_AndroidViewView;; localObject = GLGestureProxy.getInstance().getGLSurfaceView())
+    {
+      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.getHeight())) {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a();
+      }
+      if ((localObject != null) && (this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.getHeight()))
+      {
+        this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setCloseEventTouch(true);
+        this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.c();
+        this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setCloseEventTouch(false);
+      }
+      if ((localObject != null) && (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.getHeight()))
+      {
+        bizq.a("CameraProviderViewGesture", "in hide close panel.");
+        this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.a(true);
+      }
+      if ((localObject != null) && (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.getHeight())) {
+        this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.d();
+      }
+      if (this.jdField_a_of_type_Avss == null) {
+        break;
+      }
+      this.jdField_a_of_type_Avss.a();
+      return false;
     }
-    paramavww.a().setVisibility(8);
   }
-  
-  public void d(avon paramavon, avww paramavww) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     avsr
  * JD-Core Version:    0.7.0.1
  */

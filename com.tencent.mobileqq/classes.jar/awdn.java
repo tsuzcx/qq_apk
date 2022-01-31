@@ -1,35 +1,47 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.graphics.drawable.Drawable;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class awdn
-  extends MSFServlet
+public final class awdn
+  implements anyb
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
+  public awdn(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket) {}
-  
-  public void service(Intent paramIntent)
+  public void a(anyc paramanyc)
   {
-    String str = paramIntent.getAction();
-    if ((str != null) && ("gif_ui_show".equals(str)))
+    if (paramanyc != null) {}
+    try
     {
-      int i = paramIntent.getIntExtra("gif_ui_show_bid", 0);
-      long l = paramIntent.getLongExtra("gif_ui_show_seq", 0L);
-      paramIntent = new Bundle();
-      paramIntent.putInt("gif_ui_show_bid", i);
-      paramIntent.putLong("gif_ui_show_seq", l);
-      notifyObserver(null, 0, true, paramIntent, atdl.class);
+      paramanyc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
       return;
     }
-    super.service(paramIntent);
+    catch (Throwable paramanyc) {}
   }
+  
+  public void a(anyc paramanyc1, anyc paramanyc2, Drawable paramDrawable) {}
+  
+  public boolean a(anyc paramanyc)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    ayla.a(this.jdField_a_of_type_AndroidWidgetEditText);
+  }
+  
+  public void b(anyc paramanyc) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     awdn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,56 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.text.TextUtils;
-import bace;
+import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import java.io.File;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class FileJsPlugin$12
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$12(FileJsPlugin paramFileJsPlugin, String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt) {}
+  FileJsPlugin$12(FileJsPlugin paramFileJsPlugin, String paramString1, JSONObject paramJSONObject, JsRuntime paramJsRuntime, String paramString2, int paramInt) {}
   
   public String run()
   {
-    if (MiniAppFileManager.getInstance().getWxFileType(this.val$filePath) == 9999) {
-      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "invalid path" + this.val$filePath, this.val$callbackId);
+    if ((TextUtils.isEmpty(this.val$dirPath)) || (this.val$params.isNull("dirPath"))) {
+      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "invalid path", this.val$callbackId);
     }
-    String str = MiniAppFileManager.getInstance().getAbsolutePath(this.val$filePath);
-    if (TextUtils.isEmpty(str)) {
-      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "no such file or directory, open " + this.val$filePath, this.val$callbackId);
+    Object localObject = MiniAppFileManager.getInstance().getAbsolutePath(this.val$dirPath);
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "no such file or directory, open " + this.val$dirPath, this.val$callbackId);
     }
-    if (new File(str).isDirectory()) {
-      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "operation not permitted, unlink " + this.val$filePath, this.val$callbackId);
+    if (!new VFSFile((String)localObject).isDirectory()) {
+      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "not a directory " + this.val$dirPath, this.val$callbackId);
     }
-    if (!new File(str).exists()) {
-      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "no such file or directory, open " + this.val$filePath, this.val$callbackId);
+    VFSFile[] arrayOfVFSFile = new VFSFile((String)localObject).listFiles();
+    localObject = new JSONObject();
+    JSONArray localJSONArray = new JSONArray();
+    if (arrayOfVFSFile != null)
+    {
+      int j = arrayOfVFSFile.length;
+      int i = 0;
+      while (i < j)
+      {
+        VFSFile localVFSFile = arrayOfVFSFile[i];
+        if (localVFSFile != null) {
+          localJSONArray.put(localVFSFile.getName());
+        }
+        i += 1;
+      }
     }
-    bace.a(str, false);
-    return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, this.val$callbackId);
+    try
+    {
+      ((JSONObject)localObject).put("files", localJSONArray);
+      label247:
+      return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, (JSONObject)localObject, this.val$callbackId);
+    }
+    catch (JSONException localJSONException)
+    {
+      break label247;
+    }
   }
 }
 

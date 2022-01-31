@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import awlp;
+import axkv;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class NativeSoLoader$1
@@ -8,10 +8,10 @@ public final class NativeSoLoader$1
 {
   public void run()
   {
-    if (!awlp.a().get())
+    if (!axkv.a().get())
     {
-      boolean bool = awlp.a("TKGLRenderer");
-      awlp.a().getAndSet(bool);
+      boolean bool = axkv.a("TKGLRenderer");
+      axkv.a().getAndSet(bool);
     }
   }
 }

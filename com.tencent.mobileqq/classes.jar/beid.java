@@ -1,23 +1,75 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.CirclePageIndicator.SavedState;
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
 
-public final class beid
-  implements Parcelable.Creator<CirclePageIndicator.SavedState>
+final class beid
 {
-  public CirclePageIndicator.SavedState a(Parcel paramParcel)
+  private long jdField_a_of_type_Long;
+  private beib jdField_a_of_type_Beib;
+  private final String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private final long[] jdField_a_of_type_ArrayOfLong;
+  
+  private beid(behy parambehy, String paramString)
   {
-    return new CirclePageIndicator.SavedState(paramParcel, null);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfLong = new long[behy.a(parambehy)];
   }
   
-  public CirclePageIndicator.SavedState[] a(int paramInt)
+  private IOException a(String[] paramArrayOfString)
   {
-    return new CirclePageIndicator.SavedState[paramInt];
+    throw new IOException("unexpected journal line: " + Arrays.toString(paramArrayOfString));
+  }
+  
+  private void a(String[] paramArrayOfString)
+  {
+    if (paramArrayOfString.length != behy.a(this.jdField_a_of_type_Behy)) {
+      throw a(paramArrayOfString);
+    }
+    int i = 0;
+    try
+    {
+      while (i < paramArrayOfString.length)
+      {
+        this.jdField_a_of_type_ArrayOfLong[i] = Long.parseLong(paramArrayOfString[i]);
+        i += 1;
+      }
+      return;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      throw a(paramArrayOfString);
+    }
+  }
+  
+  public File a(int paramInt)
+  {
+    return new File(behy.a(this.jdField_a_of_type_Behy), this.jdField_a_of_type_JavaLangString + "." + paramInt);
+  }
+  
+  public String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+    int j = arrayOfLong.length;
+    int i = 0;
+    while (i < j)
+    {
+      long l = arrayOfLong[i];
+      localStringBuilder.append(' ').append(l);
+      i += 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public File b(int paramInt)
+  {
+    return new File(behy.a(this.jdField_a_of_type_Behy), this.jdField_a_of_type_JavaLangString + "." + paramInt + ".tmp");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beid
  * JD-Core Version:    0.7.0.1
  */

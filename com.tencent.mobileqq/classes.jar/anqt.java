@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.extendfriend.bean.GroupInfo;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class anqt
+public final class anqt
 {
-  public long a;
-  public List<GroupInfo> a;
-  public boolean a;
-  
-  public String toString()
+  public static anqe a(QQAppInterface paramQQAppInterface, anqx paramanqx, int paramInt)
   {
-    return "CacheData{mList.size()=" + this.jdField_a_of_type_JavaUtilList.size() + ", mLoadOver=" + this.jdField_a_of_type_Boolean + ", mUpdateTime=" + this.jdField_a_of_type_Long + '}';
+    switch (paramInt)
+    {
+    default: 
+      return new anrh(paramQQAppInterface, paramanqx);
+    case 0: 
+      return new anrh(paramQQAppInterface, paramanqx);
+    }
+    return new anqf(paramQQAppInterface, paramanqx);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anqt
  * JD-Core Version:    0.7.0.1
  */

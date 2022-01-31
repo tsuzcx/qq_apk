@@ -1,18 +1,19 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbVideoView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
-class ahhr
-  implements Handler.Callback
+public class ahhr
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  ahhr(ahhq paramahhq) {}
+  public ahhr(SpringHbVideoView paramSpringHbVideoView) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "check timeout. reqCookie:" + paramMessage.what);
+    QLog.i("springHb_SpringHbVideoView", 1, String.format("TVK_IMediaPlayer.onError model=%s what=%s position=%s detailInfo=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString }));
+    if (SpringHbVideoView.a(this.a) != null) {
+      SpringHbVideoView.a(this.a).a(paramInt2, paramInt3, paramString, paramObject);
     }
-    ahhq.a(this.a, false, null, paramMessage.what);
     return false;
   }
 }

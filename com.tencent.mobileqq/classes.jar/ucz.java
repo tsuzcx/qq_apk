@@ -1,36 +1,22 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.LayoutParams;
+import java.util.Comparator;
 
-class ucz
-  implements slx<udb, udc>
+public class ucz
+  implements Comparator<View>
 {
-  ucz(ucy paramucy, boolean paramBoolean) {}
-  
-  public void a(@NonNull udb paramudb, @Nullable udc arg2, @NonNull ErrorMessage paramErrorMessage)
+  public int a(View paramView1, View paramView2)
   {
-    paramudb = new uda(paramErrorMessage, ucy.a(this.jdField_a_of_type_Ucy));
-    paramudb.jdField_b_of_type_Boolean = false;
-    paramudb.jdField_a_of_type_Boolean = ucy.a(this.jdField_a_of_type_Ucy);
-    paramudb.jdField_a_of_type_Int = ucy.a(this.jdField_a_of_type_Ucy);
-    if ((??? == null) || (paramErrorMessage.isFail()))
+    paramView1 = (XViewPager.LayoutParams)paramView1.getLayoutParams();
+    paramView2 = (XViewPager.LayoutParams)paramView2.getLayoutParams();
+    if (paramView1.a != paramView2.a)
     {
-      sgi.a().dispatch(paramudb);
-      return;
+      if (paramView1.a) {
+        return 1;
+      }
+      return -1;
     }
-    paramudb.jdField_c_of_type_Int = ???.jdField_c_of_type_Int;
-    paramudb.jdField_b_of_type_Int = ???.jdField_b_of_type_Int;
-    paramudb.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
-    paramudb.jdField_c_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    ((sps)sqg.a(15)).a(paramudb.jdField_a_of_type_JavaUtilList, ucy.a(this.jdField_a_of_type_Ucy), ucy.c(this.jdField_a_of_type_Ucy), true);
-    synchronized (this.jdField_a_of_type_Ucy)
-    {
-      ucy.a(this.jdField_a_of_type_Ucy, true);
-      sgi.a().dispatch(paramudb);
-      urk.a("Q.qqstory.detail:DetailLikeListLoader", "dispatch like list return from network: %s", paramudb);
-      return;
-    }
+    return paramView1.b - paramView2.b;
   }
 }
 

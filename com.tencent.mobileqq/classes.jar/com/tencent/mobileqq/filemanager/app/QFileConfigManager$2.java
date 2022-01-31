@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.filemanager.app;
 
 import android.os.Bundle;
-import aofy;
+import aows;
 import com.tencent.qphone.base.util.QLog;
 
 public class QFileConfigManager$2
   implements Runnable
 {
-  public QFileConfigManager$2(aofy paramaofy, Bundle paramBundle) {}
+  public QFileConfigManager$2(aows paramaows, Bundle paramBundle) {}
   
   public void run()
   {
     if ((!this.a.containsKey("troop_video_preivew")) || (!this.a.containsKey("troop_video_preivew_for_svip")) || (!this.a.containsKey("troop_video_preivew_for_yearsvip"))) {
       return;
     }
-    aofy.a(this.this$0, this.a.getBoolean("troop_video_preivew", false));
-    aofy.b(this.this$0, this.a.getBoolean("troop_video_preivew_for_svip", false));
-    aofy.c(this.this$0, this.a.getBoolean("troop_video_preivew_for_yearsvip", false));
-    QLog.i("QFileConfigManager", 1, "setFileCommonConfig: set common config. enableTroopVidePreview[" + aofy.a(this.this$0) + "] enableTroopVidePreviewForSVIP[" + aofy.b(this.this$0) + "] enableTroopVidePreviewForYearSVIP[" + aofy.c(this.this$0) + "]");
+    aows.a(this.this$0, this.a.getBoolean("troop_video_preivew", false));
+    aows.b(this.this$0, this.a.getBoolean("troop_video_preivew_for_svip", false));
+    aows.c(this.this$0, this.a.getBoolean("troop_video_preivew_for_yearsvip", false));
+    QLog.i("QFileConfigManager", 1, "setFileCommonConfig: set common config. enableTroopVidePreview[" + aows.a(this.this$0) + "] enableTroopVidePreviewForSVIP[" + aows.b(this.this$0) + "] enableTroopVidePreviewForYearSVIP[" + aows.c(this.this$0) + "]");
   }
 }
 

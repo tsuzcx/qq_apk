@@ -1,33 +1,29 @@
-import android.content.Context;
-import android.view.View.MeasureSpec;
-import android.widget.FrameLayout;
-import com.tencent.widget.GridView;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
 
-class anna
-  extends FrameLayout
+public class anna
 {
-  public anna(anmy paramanmy, Context paramContext)
+  public View a;
+  public RelativeLayout a;
+  public TextView a;
+  public HeartLayout a;
+  public View b;
+  
+  public boolean a()
   {
-    super(paramContext);
+    return (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.b != null);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public boolean a(View paramView1, TextView paramTextView, View paramView2, RelativeLayout paramRelativeLayout, HeartLayout paramHeartLayout)
   {
-    int i = anmy.a(this.a).getPaddingLeft() + getPaddingLeft();
-    if (i != paramInt1) {
-      offsetLeftAndRight(i - paramInt1);
-    }
-    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  protected void onMeasure(int paramInt1, int paramInt2)
-  {
-    super.onMeasure(View.MeasureSpec.makeMeasureSpec(anmy.a(this.a).getMeasuredWidth() - anmy.a(this.a).getPaddingLeft() - anmy.a(this.a).getPaddingRight(), View.MeasureSpec.getMode(paramInt1)), paramInt2);
+    return (this.jdField_a_of_type_AndroidViewView == paramView1) && (this.jdField_a_of_type_AndroidWidgetTextView == paramTextView) && (this.b == paramView2) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout == paramRelativeLayout) && (this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout == paramHeartLayout);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     anna
  * JD-Core Version:    0.7.0.1
  */

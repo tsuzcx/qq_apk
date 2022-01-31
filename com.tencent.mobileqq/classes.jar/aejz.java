@@ -1,17 +1,15 @@
-import android.content.Context;
-import android.widget.ScrollView;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
-class aejz
-  extends ScrollView
+public class aejz
+  implements bcvx
 {
-  aejz(aejb paramaejb, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public aejz(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
   
-  public void setOverScrollMode(int paramInt)
+  public void a(int paramInt)
   {
-    super.setOverScrollMode(2);
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 

@@ -1,23 +1,20 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
 
 public class aavt
-  implements ImageAssetDelegate
+  implements DialogInterface.OnCancelListener
 {
-  public aavt(FriendProfileCardActivity.ColorScreenLoader paramColorScreenLoader) {}
+  public aavt(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aavt
  * JD-Core Version:    0.7.0.1
  */

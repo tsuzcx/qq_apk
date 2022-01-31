@@ -1,14 +1,10 @@
-public class amkh
+public abstract interface amkh
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public abstract void onServiceSyncSucc(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amkh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,19 @@
-public abstract interface qbd
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.FusionBiuInfo;
+
+public final class qbd
+  implements Parcelable.Creator<FusionBiuInfo>
 {
-  public abstract void a(boolean paramBoolean);
+  public FusionBiuInfo a(Parcel paramParcel)
+  {
+    return new FusionBiuInfo(paramParcel);
+  }
   
-  public abstract void b();
+  public FusionBiuInfo[] a(int paramInt)
+  {
+    return new FusionBiuInfo[paramInt];
+  }
 }
 
 

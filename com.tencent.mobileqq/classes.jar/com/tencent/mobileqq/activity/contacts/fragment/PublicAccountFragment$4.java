@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import ajoy;
+import akdi;
 
 class PublicAccountFragment$4
   implements Runnable

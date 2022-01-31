@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.qphone.base.util.QLog;
-import nab;
-import ogy;
-import pys;
+import nlc;
+import osj;
+import qks;
 
 public class VideoAdExposureManager$1
   implements Runnable
 {
-  public VideoAdExposureManager$1(pys parampys, int paramInt1, int paramInt2, nab paramnab) {}
+  public VideoAdExposureManager$1(qks paramqks, int paramInt1, int paramInt2, nlc paramnlc) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("VideoAdExposureManager", 2, "fetchAnotherAd refreshChannelAdvertisementFormServer reqType=" + this.jdField_a_of_type_Int);
     }
-    ogy.a().a(this.b, this.jdField_a_of_type_Int, 0, 10000, this.jdField_a_of_type_Nab);
+    osj.a().a(this.b, this.jdField_a_of_type_Int, 0, 10000, this.jdField_a_of_type_Nlc);
   }
 }
 

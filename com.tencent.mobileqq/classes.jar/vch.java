@@ -1,8 +1,12 @@
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
 public abstract interface vch
 {
-  public abstract int a();
+  public abstract void a(String paramString1, String paramString2);
   
-  public abstract vbx a(int paramInt);
+  public abstract void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage);
+  
+  public abstract void b(String paramString1, String paramString2);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.comment;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -20,7 +20,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import anhs;
+import anyb;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.CommentEntry;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
@@ -31,20 +31,20 @@ import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XEditTextEx;
-import smz;
-import snw;
-import snx;
-import sny;
-import snz;
-import soa;
-import spz;
-import sqg;
-import srk;
-import uby;
-import udd;
-import upb;
-import urp;
-import vms;
+import szv;
+import tas;
+import tat;
+import tau;
+import tav;
+import taw;
+import tcv;
+import tdc;
+import teg;
+import uou;
+import upz;
+import vbx;
+import vel;
+import vzo;
 
 public class StoryInputBarView
   extends RelativeLayout
@@ -58,15 +58,15 @@ public class StoryInputBarView
   public Button a;
   public FrameLayout a;
   public ImageButton a;
-  anhs jdField_a_of_type_Anhs = new soa(this);
+  anyb jdField_a_of_type_Anyb = new taw(this);
   public CommentEntry a;
   public CommentLikeFeedItem a;
   public BubbleTextView a;
   protected SystemEmoticonPanel a;
   public XEditTextEx a;
-  public smz a;
-  public uby a;
-  private upb jdField_a_of_type_Upb;
+  public szv a;
+  public uou a;
+  private vbx jdField_a_of_type_Vbx;
   public boolean a;
   private int b;
   public View b;
@@ -97,15 +97,15 @@ public class StoryInputBarView
   {
     if (paramBoolean)
     {
-      spz localspz = (spz)sqg.a(10);
-      if (!((Boolean)localspz.b("has_show_at_video_intro", Boolean.valueOf(false))).booleanValue())
+      tcv localtcv = (tcv)tdc.a(10);
+      if (!((Boolean)localtcv.b("has_show_at_video_intro", Boolean.valueOf(false))).booleanValue())
       {
         BubbleTextView localBubbleTextView = new BubbleTextView(paramContext);
-        localBubbleTextView.setPadding(vms.a(paramContext, 10.0F), vms.a(paramContext, 11.0F), vms.a(paramContext, 10.0F), vms.a(paramContext, 11.0F));
+        localBubbleTextView.setPadding(vzo.a(paramContext, 10.0F), vzo.a(paramContext, 11.0F), vzo.a(paramContext, 10.0F), vzo.a(paramContext, 11.0F));
         localBubbleTextView.setIncludeFontPadding(false);
         localBubbleTextView.setTextSize(1, 16.0F);
         localBubbleTextView.setTextColor(-1);
-        localBubbleTextView.setText(ajjy.a(2131648647));
+        localBubbleTextView.setText(ajyc.a(2131714436));
         localBubbleTextView.a();
         Object localObject = paramView.getParent();
         if ((localObject != null) && (!(localObject instanceof RelativeLayout))) {
@@ -123,13 +123,13 @@ public class StoryInputBarView
             }
             localLayoutParams.addRule(8, ((ViewGroup)paramView.getParent()).getId());
           }
-          for (localLayoutParams.bottomMargin = vms.a(paramContext, 55.0F);; localLayoutParams.bottomMargin = (-vms.a(paramContext, 1.0F)))
+          for (localLayoutParams.bottomMargin = vzo.a(paramContext, 55.0F);; localLayoutParams.bottomMargin = (-vzo.a(paramContext, 1.0F)))
           {
-            localLayoutParams.leftMargin = vms.a(paramContext, 12.0F);
+            localLayoutParams.leftMargin = vzo.a(paramContext, 12.0F);
             ((RelativeLayout)localObject).addView(localBubbleTextView, localLayoutParams);
-            localBubbleTextView.setOnClickListener(new snz(paramEditText));
-            localspz.b("has_show_at_video_intro", Boolean.valueOf(true));
-            urp.a("home_page", "guide_at", 0, 0, new String[0]);
+            localBubbleTextView.setOnClickListener(new tav(paramEditText));
+            localtcv.b("has_show_at_video_intro", Boolean.valueOf(true));
+            vel.a("home_page", "guide_at", 0, 0, new String[0]);
             return localBubbleTextView;
             label265:
             localLayoutParams.addRule(2, paramView.getId());
@@ -148,7 +148,7 @@ public class StoryInputBarView
     int i;
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
     {
-      i = urp.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+      i = vel.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
       if (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe()) {
         break label100;
       }
@@ -156,7 +156,7 @@ public class StoryInputBarView
     label100:
     for (String str = "1";; str = "2")
     {
-      urp.a("home_page", "switch_face", i, 0, new String[] { str, urp.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      vel.a("home_page", "switch_face", i, 0, new String[] { str, vel.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
       return;
     }
   }
@@ -190,44 +190,44 @@ public class StoryInputBarView
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495648, this, true);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561239, this, true);
     if (this.jdField_b_of_type_Int != 0) {}
-    for (View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495740, null, false);; localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495618, null, false))
+    for (View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561331, null, false);; localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561209, null, false))
     {
-      ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131307584)).addView(localView);
-      this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)this.jdField_a_of_type_AndroidViewView.findViewById(2131300153));
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131300033));
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel = TroopBarPublishUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.jdField_a_of_type_Anhs);
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131299125);
+      ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373297)).addView(localView);
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)this.jdField_a_of_type_AndroidViewView.findViewById(2131365750));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365629));
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel = TroopBarPublishUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.jdField_a_of_type_Anyb);
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131364685);
       if (QQStoryContext.a())
       {
-        localView.setBackgroundColor(paramContext.getResources().getColor(2131100757));
-        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundColor(paramContext.getResources().getColor(2131100756));
-        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setHintTextColor(paramContext.getResources().getColor(2131100758));
+        localView.setBackgroundColor(paramContext.getResources().getColor(2131166350));
+        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundColor(paramContext.getResources().getColor(2131166349));
+        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setHintTextColor(paramContext.getResources().getColor(2131166351));
       }
-      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131300014));
+      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131365595));
       this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131301272));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131366883));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnEditorActionListener(new snw(this));
-      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnTouchListener(new snx(this));
-      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnFocusChangeListener(new sny(this));
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnEditorActionListener(new tas(this));
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnTouchListener(new tat(this));
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnFocusChangeListener(new tau(this));
       return;
     }
   }
   
-  public void a(smz paramsmz, CommentEntry paramCommentEntry)
+  public void a(szv paramszv, CommentEntry paramCommentEntry)
   {
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null) {
       return;
     }
     b();
-    this.jdField_a_of_type_Smz = paramsmz;
+    this.jdField_a_of_type_Szv = paramszv;
     this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
     boolean bool;
     if (this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry != null)
     {
-      paramsmz = this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorName;
+      paramszv = this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorName;
       if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorName))
       {
         if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().getRelationType() != 2) {
@@ -237,7 +237,7 @@ public class StoryInputBarView
         if (!(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner() instanceof QQUserUIItem)) {
           break label177;
         }
-        paramsmz = (QQUserUIItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
+        paramszv = (QQUserUIItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
         if (!bool) {
           break label177;
         }
@@ -245,14 +245,14 @@ public class StoryInputBarView
     }
     label158:
     label177:
-    for (paramsmz = paramsmz.qq;; paramsmz = null)
+    for (paramszv = paramszv.qq;; paramszv = null)
     {
-      paramsmz = udd.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUnionId, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUin, bool, paramsmz);
-      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setHint(ajjy.a(2131648646) + paramsmz + "：");
+      paramszv = upz.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUnionId, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUin, bool, paramszv);
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setHint(ajyc.a(2131714435) + paramszv + "：");
       return;
       bool = false;
       break;
-      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setHint(ajjy.a(2131648648));
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setHint(ajyc.a(2131714437));
       return;
     }
   }
@@ -261,8 +261,8 @@ public class StoryInputBarView
   {
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     setKeyBoardState(true);
-    if (this.jdField_a_of_type_Upb != null) {
-      this.jdField_a_of_type_Upb.c();
+    if (this.jdField_a_of_type_Vbx != null) {
+      this.jdField_a_of_type_Vbx.c();
     }
   }
   
@@ -271,15 +271,15 @@ public class StoryInputBarView
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     setKeyBoardState(false);
     f();
-    if (this.jdField_a_of_type_Upb != null) {
-      this.jdField_a_of_type_Upb.b();
+    if (this.jdField_a_of_type_Vbx != null) {
+      this.jdField_a_of_type_Vbx.b();
     }
   }
   
   public void d()
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) && (this.jdField_a_of_type_Uby != null)) {
-      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this.jdField_a_of_type_Uby);
+    if ((this.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) && (this.jdField_a_of_type_Uou != null)) {
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this.jdField_a_of_type_Uou);
     }
   }
   
@@ -300,8 +300,8 @@ public class StoryInputBarView
         if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.getVisibility() == 0)
         {
           f();
-          if (this.jdField_a_of_type_Upb != null) {
-            this.jdField_a_of_type_Upb.d();
+          if (this.jdField_a_of_type_Vbx != null) {
+            this.jdField_a_of_type_Vbx.d();
           }
           setKeyBoardState(true);
           return;
@@ -312,13 +312,13 @@ public class StoryInputBarView
         paramView = this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
       } while (paramView.length() <= 0);
       setKeyBoardState(false);
-      if (this.jdField_a_of_type_Smz != null) {
-        this.jdField_a_of_type_Smz.a(paramView, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      if (this.jdField_a_of_type_Szv != null) {
+        this.jdField_a_of_type_Szv.a(paramView, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
       }
       c();
       this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
-    } while (this.jdField_a_of_type_Upb == null);
-    this.jdField_a_of_type_Upb.a(paramView, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+    } while (this.jdField_a_of_type_Vbx == null);
+    this.jdField_a_of_type_Vbx.a(paramView, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
   }
   
   public void setFeedItemData(CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt1, int paramInt2, boolean paramBoolean)
@@ -330,22 +330,22 @@ public class StoryInputBarView
     this.jdField_a_of_type_Int = paramInt1;
     if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId)))
     {
-      if (this.jdField_a_of_type_Uby == null)
+      if (this.jdField_a_of_type_Uou == null)
       {
-        this.jdField_a_of_type_Uby = new uby(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, "1_", paramInt2, paramBoolean);
-        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(this.jdField_a_of_type_Uby);
+        this.jdField_a_of_type_Uou = new uou(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, "1_", paramInt2, paramBoolean);
+        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(this.jdField_a_of_type_Uou);
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_Uby.b = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId;
-    this.jdField_a_of_type_Uby.a = paramBoolean;
+    this.jdField_a_of_type_Uou.b = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId;
+    this.jdField_a_of_type_Uou.a = paramBoolean;
   }
   
-  public void setInputViewHideListener(upb paramupb)
+  public void setInputViewHideListener(vbx paramvbx)
   {
-    this.jdField_a_of_type_Upb = paramupb;
+    this.jdField_a_of_type_Vbx = paramvbx;
   }
   
   public void setKeyBoardState(boolean paramBoolean)

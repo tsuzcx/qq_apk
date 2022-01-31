@@ -1,20 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public class agra
-  implements View.OnClickListener
+class agra
+  implements agqy
 {
-  public agra(ChooseItemView paramChooseItemView) {}
+  agra(agqz paramagqz) {}
   
-  public void onClick(View paramView)
+  public void a(long paramLong, float paramFloat, String paramString)
   {
-    this.a.a();
+    agqz.a(this.a).put(Long.valueOf(paramLong), Float.valueOf(paramFloat));
+    agqz.a(this.a).a(paramLong, paramFloat, paramString);
+  }
+  
+  public void b(long paramLong)
+  {
+    QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onDownloadSuccess:" + paramLong);
+    agqz.a(this.a).b(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agra
  * JD-Core Version:    0.7.0.1
  */

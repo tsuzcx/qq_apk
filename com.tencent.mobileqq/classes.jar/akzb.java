@@ -1,23 +1,52 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.3;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class akzb
-  implements ArkAppCacheMgr.OnGetAppIcon
+class akzb
+  extends BroadcastReceiver
 {
-  public akzb(ArkAppDeviceModule.ObserverMethod.3 param3, bafb parambafb) {}
+  akzb(akza paramakza) {}
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramBitmap != null) {
-      ((ImageView)this.jdField_a_of_type_Bafb.findViewById(2131299538)).setImageBitmap(paramBitmap);
-    }
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    do
+    {
+      int i;
+      int j;
+      do
+      {
+        do
+        {
+          return;
+        } while ((!"tencent.businessnotify.qq.to.subprocess".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("bussinessType", 0) != 2));
+        switch (paramIntent.getIntExtra("event", 0))
+        {
+        default: 
+          return;
+        case 1: 
+          paramContext = paramIntent.getStringExtra("bussinessSubName");
+          i = paramIntent.getIntExtra("download_Index", 0);
+          j = paramIntent.getIntExtra("download_Progress", 0);
+          if (AudioHelper.e()) {
+            QLog.w(this.a.c, 1, "receive notify, index[" + i + "], progress[" + j + "]");
+          }
+          break;
+        }
+      } while (this.a.a == null);
+      this.a.a.b(paramContext, i, j);
+      return;
+      paramContext = paramIntent.getStringExtra("config_Content");
+      this.a.b(paramContext);
+    } while (this.a.a == null);
+    this.a.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akzb
  * JD-Core Version:    0.7.0.1
  */

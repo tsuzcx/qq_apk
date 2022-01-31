@@ -1,12 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
-public final class aafo
-  implements DialogInterface.OnClickListener
+public class aafo
+  extends akhc
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aafo(AccountManageActivity paramAccountManageActivity) {}
+  
+  protected void a(boolean paramBoolean, ayaw paramayaw)
   {
-    paramDialogInterface.dismiss();
+    AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+  }
+  
+  protected void b(boolean paramBoolean, ayaw paramayaw)
+  {
+    AccountManageActivity.a(this.a, false);
+  }
+  
+  protected void c(boolean paramBoolean, ayaw paramayaw)
+  {
+    AccountManageActivity.a(this.a, false);
   }
 }
 

@@ -1,10 +1,86 @@
-public abstract interface vxq
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class vxq
+  extends tce
+  implements syt<tnj, tou>
 {
-  public abstract void a();
+  String jdField_a_of_type_JavaLangString;
+  tcn jdField_a_of_type_Tcn;
+  boolean jdField_a_of_type_Boolean;
+  String b;
+  
+  public void a(List<StoryVideoItem> paramList, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Tcn == null)
+    {
+      tcf localtcf = new tcf();
+      localtcf.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      localtcf.jdField_a_of_type_Boolean = paramBoolean;
+      localtcf.b = true;
+      localtcf.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      localtcf.jdField_a_of_type_Int = paramList.size();
+      ste.a().dispatch(localtcf);
+      return;
+    }
+    this.jdField_a_of_type_Tcn.a(paramList, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Tcn = null;
+  }
+  
+  public void a(@NonNull tnj paramtnj, @Nullable tou paramtou, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.troopstory.singleSync", 2, "onResp code=" + paramErrorMessage.errorCode);
+    }
+    paramtnj = new StoryVideoItem();
+    paramtnj.mVid = this.b;
+    paramtnj.mStoryType = 2;
+    if ((paramtou != null) && (paramErrorMessage.isSuccess()))
+    {
+      paramtnj = paramtou.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramtnj.hasNext())
+      {
+        paramErrorMessage = (StoryVideoItem)paramtnj.next();
+        if (this.b.equals(paramErrorMessage.mVid)) {
+          if (paramErrorMessage.mErrorCode != 0) {
+            break;
+          }
+        }
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        ((sto)tdc.a(28)).a(paramtou.b);
+        a(paramtou.jdField_a_of_type_JavaUtilList, false);
+        return;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      if (paramtou == null) {}
+      for (paramtnj = new ArrayList();; paramtnj = paramtou.jdField_a_of_type_JavaUtilList)
+      {
+        a(paramtnj, false);
+        return;
+      }
+    }
+  }
+  
+  public boolean isValidate()
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vxq
  * JD-Core Version:    0.7.0.1
  */

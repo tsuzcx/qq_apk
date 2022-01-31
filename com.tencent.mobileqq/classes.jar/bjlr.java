@@ -1,13 +1,30 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.lang.ref.WeakReference;
 
 public class bjlr
-  implements FileFilter
+  implements URLDrawable.URLDrawableListener
 {
-  public boolean accept(File paramFile)
+  private final WeakReference<TextView> a;
+  
+  public bjlr(TextView paramTextView)
   {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
+    this.a = new WeakReference(paramTextView);
+  }
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = (TextView)this.a.get();
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setVisibility(8);
+    }
   }
 }
 

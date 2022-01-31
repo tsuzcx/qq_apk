@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version;
 
-import ssm;
-import stf;
+import tfi;
+import tgb;
 
 public final class RecommendActivityViewHolder$1
   implements Runnable
 {
-  public RecommendActivityViewHolder$1(ssm paramssm) {}
+  public RecommendActivityViewHolder$1(tfi paramtfi) {}
   
   public void run()
   {
-    stf.d(this.a);
+    tgb.d(this.a);
   }
 }
 

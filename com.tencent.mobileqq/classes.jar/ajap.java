@@ -1,19 +1,16 @@
-import java.io.File;
-import java.util.Comparator;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ajap
-  implements Comparator<File>
+class ajap
+  implements MediaPlayer.OnErrorListener
 {
-  public int a(File paramFile1, File paramFile2)
+  ajap(ajao paramajao) {}
+  
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if ((paramFile1.exists()) && (paramFile2.exists()))
-    {
-      if (paramFile1.lastModified() - paramFile2.lastModified() > 0L) {
-        return 1;
-      }
-      return -1;
-    }
-    return 0;
+    QLog.e("CmGameAudioPlayer", 1, "what " + paramInt1 + " ext " + paramInt2);
+    return false;
   }
 }
 

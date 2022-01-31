@@ -1,183 +1,173 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.ecshopassit.EcShopData;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.AccountDetail;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class nfr
-  extends BroadcastReceiver
+public class nfr
 {
-  nfr(nfp paramnfp) {}
+  protected Context a;
+  protected View.OnClickListener a;
+  protected bfpc a;
+  String a;
+  protected ArrayList<nmv> a;
+  protected nfb a;
+  String b;
   
-  public void onReceive(Context arg1, Intent paramIntent)
+  public nfr(Context paramContext, ArrayList<nmv> paramArrayList, nfb paramnfb, String paramString1, String paramString2)
   {
-    if ((paramIntent == null) || (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
-    for (;;)
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new nfs(this);
+    this.jdField_a_of_type_Bfpc = new nft(this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_Nfb = paramnfb;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+  }
+  
+  public static ArrayList<nmv> a(nmu paramnmu, int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramnmu != null) && (paramnmu.jdField_a_of_type_JavaUtilList != null))
     {
-      return;
-      ??? = paramIntent.getAction();
-      Object localObject;
-      if ("action_get_PA_head".equals(???))
+      Iterator localIterator = paramnmu.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        ??? = paramIntent.getStringExtra("uin");
-        if ((TextUtils.isEmpty(???)) || (this.a.jdField_a_of_type_Azwg == null)) {
-          continue;
-        }
-        paramIntent = this.a.jdField_a_of_type_Azwg.a(1, ???);
-        if (paramIntent != null)
-        {
-          localObject = new Intent("action_decode_finish");
-          ((Intent)localObject).putExtra("bitmap", paramIntent);
-          ((Intent)localObject).putExtra("uin", ???);
-          BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject);
-          return;
-        }
-        this.a.jdField_a_of_type_Azwg.a(???, 1, true);
-        return;
-      }
-      int i;
-      boolean bool;
-      long l;
-      if ("action_shop_set_read".equals(???))
-      {
-        localObject = paramIntent.getStringExtra("uin");
-        i = paramIntent.getIntExtra("unReadNum", 0);
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          continue;
-        }
-        bool = paramIntent.getBooleanExtra("needDelete", false);
-        synchronized (nfp.a(this.a))
-        {
-          paramIntent = (EcShopData)nfp.a(this.a).get(localObject);
-          if (paramIntent == null) {
-            continue;
-          }
-          ??? = null;
-          paramIntent = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-          if (paramIntent != null) {
-            ??? = paramIntent.a((String)localObject, 1008);
-          }
-          if (??? != null)
+        nmv localnmv = (nmv)localIterator.next();
+        if ((localnmv.jdField_b_of_type_Int == 0) || ((localnmv.jdField_b_of_type_Int == 1) && (paramInt == 1))) {}
+        for (int i = 1; i != 0; i = 0) {
+          switch (paramnmu.jdField_a_of_type_Int)
           {
-            ahcq.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, 1008);
-            paramIntent = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-            if (paramIntent != null) {
-              paramIntent.a(???.frienduin, ???.istroop, true);
+          default: 
+            break;
+          case 2: 
+            if (localnmv.jdField_c_of_type_Int != 23) {
+              break label162;
+            }
+            if ((TextUtils.isEmpty(localnmv.e)) || (TextUtils.isEmpty(localnmv.jdField_b_of_type_JavaLangString))) {
+              break;
+            }
+            localArrayList.add(localnmv);
+            break;
+          }
+        }
+        label162:
+        if (!TextUtils.isEmpty(localnmv.e))
+        {
+          localArrayList.add(localnmv);
+          continue;
+          if (localnmv.jdField_c_of_type_Int == 23)
+          {
+            if ((!TextUtils.isEmpty(localnmv.e)) && (!TextUtils.isEmpty(localnmv.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localnmv.jdField_b_of_type_JavaLangString))) {
+              localArrayList.add(localnmv);
             }
           }
-          if (!bool) {
-            continue;
+          else if ((!TextUtils.isEmpty(localnmv.e)) && (!TextUtils.isEmpty(localnmv.jdField_a_of_type_JavaLangString))) {
+            localArrayList.add(localnmv);
           }
-          this.a.b((String)localObject);
-          if (((String)localObject).equals(nfp.g))
-          {
-            l = nfp.a().getLong("ad_id", 0L);
-            ((ngh)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88)).a(134246438, null, null, null, null, l, false);
-            ??? = nfp.a().edit();
-            ???.remove("ad_id");
-            ???.putBoolean("is_ad_added", false);
-            ???.commit();
-            nfp.g = "";
-            return;
-          }
-        }
-        awqx.b(null, "dc00899", "Pb_account_lifeservice", (String)localObject, "0X80064D2", "0X80064D2", 0, 0, "" + i, "", "", "");
-        return;
-      }
-      if ("action_folder_set_read".equals(???))
-      {
-        ??? = paramIntent.getStringExtra("uin");
-        if (!TextUtils.isEmpty(???))
-        {
-          ??? = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(???, 1008);
-          if (??? != null) {
-            this.a.a(???.time);
-          }
-        }
-        ??? = nfp.a();
-        this.a.e = false;
-        if (???.getBoolean("folder_reddot", false)) {
-          ???.edit().putBoolean("folder_reddot", false).commit();
-        }
-        ??? = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
-        if (??? == null) {
-          continue;
-        }
-        ???.sendEmptyMessage(1009);
-        return;
-      }
-      if ("action_folder_destroy".equals(???))
-      {
-        if (paramIntent.getLongExtra("stay_time", 0L) >= this.a.jdField_a_of_type_Long) {
-          nfp.a().edit().putLong("last_stay_folder", System.currentTimeMillis());
-        }
-        this.a.f = false;
-        return;
-      }
-      if ("action_folder_msg_change".equals(???))
-      {
-        ??? = paramIntent.getStringExtra("msg");
-        i = paramIntent.getIntExtra("type", -1);
-        paramIntent = this.a.a();
-        if ((TextUtils.isEmpty(???)) || (paramIntent == null)) {
-          continue;
-        }
-        paramIntent = nfp.a().edit();
-        paramIntent.putString("str_ecshop_diy", ???);
-        paramIntent.putInt("last_show_time1", (int)(System.currentTimeMillis() / 1000L));
-        paramIntent.putInt("FOLDER_MSG_TYPE", i);
-        paramIntent.putString("PUSH_JUMP_URL", "");
-        paramIntent.commit();
-        return;
-      }
-      if ("action_set_folder_tab_red".equals(???))
-      {
-        nfp.a().edit().putBoolean("folder_tab_red", true).commit();
-        return;
-      }
-      if (!"action_follow_status".equals(???)) {
-        continue;
-      }
-      ??? = paramIntent.getStringExtra("puin");
-      if (TextUtils.isEmpty(???)) {
-        continue;
-      }
-      try
-      {
-        l = Long.parseLong(???);
-        if (l == -1L) {
-          continue;
-        }
-        bool = ((ajoy)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56)).a(Long.valueOf(l));
-        paramIntent = new Intent("action_follow_status_finish");
-        paramIntent.putExtra("isFollow", bool);
-        paramIntent.putExtra("uin", String.valueOf(l));
-        BaseApplicationImpl.getContext().sendBroadcast(paramIntent);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("EcShopAssistantManager", 2, "follow_status uin:" + ??? + ",isfollow:" + bool);
-        return;
-      }
-      catch (Exception paramIntent)
-      {
-        for (;;)
-        {
-          l = -1L;
         }
       }
     }
+    return localArrayList;
+  }
+  
+  public void a(nmv paramnmv)
+  {
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject1 != null) && ((localObject1 instanceof QQAppInterface))) {}
+    for (localObject1 = (QQAppInterface)localObject1;; localObject1 = null)
+    {
+      Object localObject2;
+      if (localObject1 != null)
+      {
+        localObject2 = (akdi)((QQAppInterface)localObject1).getManager(56);
+        if (localObject2 != null)
+        {
+          localObject2 = ((akdi)localObject2).a(this.jdField_a_of_type_JavaLangString);
+          if ((localObject2 == null) || (((AccountDetail)localObject2).followType != 1)) {}
+        }
+      }
+      for (int i = 1;; i = 0)
+      {
+        if ((this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof AccountDetailActivity))) {}
+        for (int j = noo.a((QQAppInterface)localObject1, this.jdField_a_of_type_JavaLangString, null);; j = 1)
+        {
+          if ((paramnmv.jdField_a_of_type_Int == 3) && (paramnmv.jdField_c_of_type_Int == 23))
+          {
+            paramnmv = paramnmv.jdField_b_of_type_JavaLangString;
+            localObject1 = new nex();
+            ((nex)localObject1).a(paramnmv);
+            localObject1 = ((nex)localObject1).a.jdField_c_of_type_JavaLangString;
+            localObject2 = this.jdField_a_of_type_JavaLangString;
+            if (i != 0)
+            {
+              paramnmv = "02";
+              noo.a(null, (String)localObject2, "0X80077F9", "0X80077F9", 0, 0, "2", (String)localObject1, paramnmv, String.valueOf(j), false);
+            }
+          }
+          while (paramnmv.jdField_a_of_type_Int != 1) {
+            for (;;)
+            {
+              return;
+              paramnmv = "01";
+            }
+          }
+          paramnmv = Uri.parse(paramnmv.jdField_c_of_type_JavaLangString);
+          try
+          {
+            paramnmv = paramnmv.getQueryParameter("article_id");
+            if (TextUtils.isEmpty(paramnmv))
+            {
+              paramnmv = "";
+              localObject2 = this.jdField_a_of_type_JavaLangString;
+              if (i != 0)
+              {
+                localObject1 = "02";
+                noo.a(null, (String)localObject2, "0X80077F9", "0X80077F9", 0, 0, "1", paramnmv, (String)localObject1, String.valueOf(j), false);
+                return;
+              }
+            }
+          }
+          catch (Exception paramnmv)
+          {
+            for (;;)
+            {
+              paramnmv.printStackTrace();
+              paramnmv = null;
+              continue;
+              localObject1 = "01";
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public boolean a(ArrayList<nmv> paramArrayList)
+  {
+    if (paramArrayList.size() != this.jdField_a_of_type_JavaUtilArrayList.size()) {
+      return false;
+    }
+    int i = 0;
+    for (;;)
+    {
+      if (i >= paramArrayList.size()) {
+        break label49;
+      }
+      if (paramArrayList.get(i) != this.jdField_a_of_type_JavaUtilArrayList.get(i)) {
+        break;
+      }
+      i += 1;
+    }
+    label49:
+    return true;
   }
 }
 

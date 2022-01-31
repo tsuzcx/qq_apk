@@ -1,49 +1,77 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordReport.1;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordReport.2;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordReport.3;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordReport.4;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class akku
+  extends akks
 {
-  private static akku a;
-  
-  public static akku a()
+  public akku(QQAppInterface paramQQAppInterface, akkr paramakkr)
   {
-    if (a == null) {
-      a = new akku();
+    super(paramQQAppInterface, paramakkr, AppletsAccountInfo.class);
+  }
+  
+  public AppletsAccountInfo a(String paramString)
+  {
+    return (AppletsAccountInfo)a(paramString);
+  }
+  
+  protected String a(aukm paramaukm)
+  {
+    return ((AppletsAccountInfo)paramaukm).uin;
+  }
+  
+  public void a(AppletsAccountInfo paramAppletsAccountInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletAccountCache", 2, "saveAppletsAccount AppletsAccount = " + paramAppletsAccountInfo);
     }
-    return a;
+    a(paramAppletsAccountInfo);
+    this.jdField_a_of_type_Akkr.c();
   }
   
-  public void a()
+  protected void b() {}
+  
+  public void c()
   {
-    QLog.d("ARRecordReport", 2, "reportPreRecordStart");
-    ThreadManager.post(new ARRecordReport.1(this), 5, null, false);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    List localList = ((aukn)localObject).a(AppletsAccountInfo.class);
+    ((aukn)localObject).a();
+    if (localList != null)
+    {
+      d();
+      localObject = localList.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        AppletsAccountInfo localAppletsAccountInfo = (AppletsAccountInfo)((Iterator)localObject).next();
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(String.valueOf(localAppletsAccountInfo.uin), localAppletsAccountInfo);
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("doInit size = ");
+      if (localList != null) {
+        break label118;
+      }
+    }
+    label118:
+    for (int i = 0;; i = localList.size())
+    {
+      QLog.d("AppletAccountCache", 2, i);
+      return;
+    }
   }
   
-  public void a(int paramInt)
+  public void d()
   {
-    QLog.d("ARRecordReport", 2, String.format("reportRecordFail failType=%s", new Object[] { Integer.valueOf(paramInt) }));
-    ThreadManager.post(new ARRecordReport.4(this, paramInt), 5, null, false);
-  }
-  
-  public void a(int paramInt, long paramLong)
-  {
-    QLog.d("ARRecordReport", 2, String.format("reportRecordSuccess successType=%s videoLength=%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) }));
-    ThreadManager.post(new ARRecordReport.3(this, paramInt, paramLong), 5, null, false);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    QLog.d("ARRecordReport", 2, String.format("reportActiveRecordStart inPreRecord=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    ThreadManager.post(new ARRecordReport.2(this, paramBoolean), 5, null, false);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akku
  * JD-Core Version:    0.7.0.1
  */

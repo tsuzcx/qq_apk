@@ -1,84 +1,102 @@
-import android.graphics.Color;
+import android.content.Context;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeCommentTextView;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerTriplePicItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import org.json.JSONObject;
 
 public class nza
-  extends TextBase
+  implements rkk, rkm
 {
-  private static final int jdField_a_of_type_Int = Color.parseColor("#262626");
-  private NativeCommentTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView;
-  private final int b = 5;
-  private final int c = Utils.dp2px(16.0D);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
+  private rmt jdField_a_of_type_Rmt = new rmt();
   
-  public nza(VafContext paramVafContext)
+  public int a(BaseData paramBaseData)
   {
-    super(paramVafContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView = new NativeCommentTextView(paramVafContext.getContext());
-  }
-  
-  public void a(nwk paramnwk, View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setModel(paramnwk, paramView);
-  }
-  
-  public void a(nwk paramnwk, View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setModel(paramnwk, paramView, paramInt);
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setTextSize(0, this.c);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setLineSpacing(Utils.rp2px(5.0D), 1.0F);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setIncludeFontPadding(false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setTextColor(jdField_a_of_type_Int);
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
+    int i = -1;
+    if ((paramBaseData instanceof ProteusBannerTriplePicItemData)) {
+      i = oal.a((ProteusBannerTriplePicItemData)paramBaseData);
     }
-    do
-    {
-      return super.setAttribute(paramInt, paramObject);
-    } while (!(paramObject instanceof nwx));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setCommentModel((nwx)paramObject);
-    return true;
+    return i;
   }
+  
+  public rkj a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new poo();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
+      olr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "native_article");
+    }
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      this.jdField_a_of_type_AndroidContentContext = paramContext;
+    }
+    ProteusItemData localProteusItemData = (ProteusItemData)paramBaseData;
+    paramBaseData = null;
+    try
+    {
+      paramViewGroup = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localProteusItemData.a);
+      paramBaseData = paramViewGroup;
+      olr.a(((Container)paramViewGroup).getVirtualView(), localProteusItemData.a.getViewBean());
+      paramBaseData = paramViewGroup;
+      str = localProteusItemData.b.toString();
+      paramBaseData = paramViewGroup;
+    }
+    catch (Exception paramViewGroup)
+    {
+      for (;;)
+      {
+        boolean bool;
+        String str = "error!! msg=" + paramViewGroup.toString();
+      }
+    }
+    bool = false;
+    paramViewGroup = paramBaseData;
+    if (paramBaseData == null)
+    {
+      paramViewGroup = new View(paramContext);
+      bool = true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("WebFastProteusViewAdBannerTriplePicCreator", 1, "createViewHolder viewIsNull=" + bool + "  proteusData=" + str);
+    }
+    return new nzb(this, paramViewGroup, localProteusItemData);
+  }
+  
+  public void a() {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return (paramBaseData != null) && (paramBaseData.p == 24);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Rmt.a();
+  }
+  
+  public void c() {}
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Rmt.b();
+  }
+  
+  public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nza
  * JD-Core Version:    0.7.0.1
  */

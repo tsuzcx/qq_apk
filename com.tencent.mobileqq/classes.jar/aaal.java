@@ -1,59 +1,50 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity.14.1;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
 public class aaal
-  implements belq
+  extends SQLiteOpenHelper
 {
-  public aaal(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  private static aaal a;
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  private aaal(Context paramContext)
   {
-    if (this.a.jdField_a_of_type_Boolean)
+    super(paramContext, "sdk_db", null, 3);
+  }
+  
+  public static aaal a(Context paramContext)
+  {
+    if (a == null) {}
+    try
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.ar_();
-      return;
+      if (a == null) {
+        a = new aaal(paramContext);
+      }
+      return a;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
+    finally {}
   }
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountActivity", 2, "onViewCompleteVisableAndReleased begin refresh");
-    }
-    if (this.a.b())
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
-      this.a.b = true;
-      AssociatedAccountActivity.b(this.a, false, true);
-      return true;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
-    this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new AssociatedAccountActivity.14.1(this), 800L);
-    return true;
+    paramSQLiteDatabase.execSQL("CREATE TABLE result_objects (_id INTEGER PRIMARY KEY AUTOINCREMENT,params TEXT,is_real_time TINYINT,uin BIGINT,status TINYINT,occur_time BIGINT);");
+    paramSQLiteDatabase.execSQL("CREATE TABLE upload_errors (_id INTEGER PRIMARY KEY AUTOINCREMENT,uin BIGINT,plugin SMALLINT,uploadtime BIGINT,error_code SMALLINT,error_msg TEXT,http_get TEXT,status TINYINT);");
+    paramSQLiteDatabase.execSQL("CREATE TABLE drop_frame (_id INTEGER PRIMARY KEY AUTOINCREMENT,uin BIGINT,scene TEXT,state TINYINT,drop_duration LONG,drop_count LONG,range_0 INT,range_1 INT,range_2_4 INT,range_4_8 INT,range_8_15 INT,range_over_15 INT,status TINYINT);");
+    paramSQLiteDatabase.execSQL("CREATE TABLE configs (_id INTEGER PRIMARY KEY AUTOINCREMENT,plugin SMALLINT,user_sample_ratio INT,threshold FLOAT,max_report_num INT,event_sample_ratio FLOAT,stack_depth INT);");
   }
   
-  public void b(int paramInt, View paramView, ListView paramListView)
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
+    paramSQLiteDatabase.execSQL("Drop table if exists result_objects");
+    paramSQLiteDatabase.execSQL("Drop table if exists upload_errors");
+    paramSQLiteDatabase.execSQL("Drop table if exists drop_frame");
+    paramSQLiteDatabase.execSQL("Drop table if exists configs");
+    onCreate(paramSQLiteDatabase);
   }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaal
  * JD-Core Version:    0.7.0.1
  */

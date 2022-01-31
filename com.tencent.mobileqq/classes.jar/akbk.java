@@ -1,407 +1,508 @@
-import android.content.ContentResolver;
-import android.database.CharArrayBuffer;
-import android.database.ContentObserver;
-import android.database.Cursor;
-import android.database.DataSetObserver;
-import android.net.Uri;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.NearbyFlowerManager.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.GrayTipsInfo;
+import com.tencent.mobileqq.data.GrayTipsSpan;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.data.MessageForNewGrayTips;
 import com.tencent.mobileqq.data.MessageRecord;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.manager.Manager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class akbk
-  implements Cursor
+public class akbk
+  implements Manager
 {
-  private int jdField_a_of_type_Int = -1;
-  private List<MessageRecord> jdField_a_of_type_JavaUtilList;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = { "_id", "selfuin", "frienduin", "senderuin", "time", "msg", "msgtype", "isread", "issend", "msgseq", "shmsgseq", "istroop", "extraflag", "troopnick", "friendnick", "versionCode", "msgData", "vipBubbleID", "msgUid", "uniseq", "sendFailCode", "versionCode" };
+  public static int b;
+  public static int c;
+  public static final String e = ajyc.a(2131707143);
+  public static final String f = ajyc.a(2131707151);
+  public static final String g = ajyc.a(2131707146);
+  public int a;
+  public Handler a;
+  public QQAppInterface a;
+  public String a;
+  public HashMap<String, Long> a;
+  Map<String, Long> a;
+  public String b;
+  Map<String, Long> b;
+  public String c;
+  public String d;
   
-  protected akbk(List<MessageRecord> paramList)
+  static
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    jdField_c_of_type_Int = 60;
   }
   
-  private Object a(int paramInt)
+  public akbk(QQAppInterface paramQQAppInterface)
   {
-    MessageRecord localMessageRecord = (MessageRecord)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
-    switch (paramInt)
-    {
-    default: 
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_b_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    a();
+  }
+  
+  public static final akbk a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
       return null;
-    case 0: 
-    case 1: 
-      return Long.valueOf(localMessageRecord.msgId);
-    case 2: 
-      return localMessageRecord.selfuin;
-    case 3: 
-      return localMessageRecord.frienduin;
-    case 4: 
-      return localMessageRecord.senderuin;
-    case 5: 
-      return Long.valueOf(localMessageRecord.time);
-    case 6: 
-      return localMessageRecord.msg;
-    case 7: 
-      return Integer.valueOf(localMessageRecord.msgtype);
-    case 8: 
-      if (localMessageRecord.isread) {}
-      for (paramInt = 1;; paramInt = 0) {
-        return Integer.valueOf(paramInt);
-      }
-    case 9: 
-      return Integer.valueOf(localMessageRecord.issend);
-    case 10: 
-      return Long.valueOf(localMessageRecord.msgseq);
-    case 11: 
-      return Long.valueOf(localMessageRecord.shmsgseq);
-    case 12: 
-      return Integer.valueOf(localMessageRecord.istroop);
-    case 13: 
-      return Integer.valueOf(localMessageRecord.extraflag);
-    case 14: 
-      return babh.a(akbj.a(this.jdField_a_of_type_Akbj), localMessageRecord.senderuin, localMessageRecord.frienduin, 1, 0);
-    case 15: 
-      if (localMessageRecord.istroop == 3000) {
-        return babh.d(akbj.b(this.jdField_a_of_type_Akbj), localMessageRecord.senderuin);
-      }
-      if (localMessageRecord.istroop == 1) {
-        return ((TroopManager)akbj.c(this.jdField_a_of_type_Akbj).getManager(52)).a(localMessageRecord.senderuin);
-      }
-      return babh.a(akbj.d(this.jdField_a_of_type_Akbj), localMessageRecord.senderuin);
-    case 16: 
-      return Integer.valueOf(((ajjj)akbj.e(this.jdField_a_of_type_Akbj).getManager(51)).b(localMessageRecord.frienduin));
-    case 17: 
-      return Integer.valueOf(localMessageRecord.versionCode);
-    case 18: 
-      return localMessageRecord.msgData;
-    case 19: 
-      return Long.valueOf(localMessageRecord.vipBubbleID);
-    case 20: 
-      return Long.valueOf(localMessageRecord.msgUid);
-    case 21: 
-      return Long.valueOf(localMessageRecord.uniseq);
-    case 22: 
-      return Integer.valueOf(localMessageRecord.sendFailCode);
     }
-    return Integer.valueOf(localMessageRecord.versionCode);
+    return (akbk)paramQQAppInterface.getManager(124);
   }
   
-  public void close() {}
-  
-  public void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer)
+  private SharedPreferences a()
   {
-    throw new UnsupportedOperationException();
+    return BaseApplicationImpl.sApplication.getSharedPreferences("nearby_flower_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
   }
   
-  public void deactivate() {}
-  
-  public byte[] getBlob(int paramInt)
+  private GrayTipsInfo a(String paramString1, String paramString2, AbsStructMsg paramAbsStructMsg)
   {
-    localObject = a(paramInt);
-    if ((localObject instanceof byte[])) {
-      return (byte[])localObject;
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyFlowerManager", 2, "shouldShowTip start");
     }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    try
+    int j = 0;
+    int i = 0;
+    Object localObject6 = null;
+    Object localObject1 = null;
+    Object localObject4 = null;
+    Object localObject3 = null;
+    Object localObject5 = null;
+    Object localObject2 = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramString1)) {}
+    for (boolean bool = true;; bool = false)
     {
-      ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(localByteArrayOutputStream);
-      localObjectOutputStream.writeObject(localObject);
-      localObjectOutputStream.flush();
-      localObject = localByteArrayOutputStream.toByteArray();
-      try
-      {
-        localObjectOutputStream.close();
-        localByteArrayOutputStream.close();
-        return localObject;
+      if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+        this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
       }
-      catch (IOException localIOException1) {}
-    }
-    catch (IOException localIOException2)
-    {
+      long l = awzw.a();
+      if (!bool) {
+        if (((Boolean)atbg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "sp_file_nearby_flower_tip", 0, "nearby_flower_tip_first_flag", Boolean.valueOf(true))).booleanValue())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("NearbyFlowerManager", 2, "shouldShowTip first rec");
+          }
+          localObject1 = this.jdField_c_of_type_JavaLangString;
+          localObject4 = this.d;
+          localObject3 = localObject2;
+          if (Friends.isValidUin(paramString1)) {
+            localObject3 = String.format("https://imgcache.qq.com/club/client/flower/release/html/gift_mall.html?ADTAG=%s&_bid=2050&sourceType=%d&_handle=1&_wv=2147347&platId=1&qqVersion=%s", new Object[] { "aio.m.xiaohuitiao", Integer.valueOf(1), "8.2.8" });
+          }
+          atbg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "sp_file_nearby_flower_tip", 0, "nearby_flower_tip_first_flag", Boolean.valueOf(false));
+          axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80060B6", "0X80060B6", 0, 0, "", "", "", "");
+          localObject2 = localObject4;
+          i = 1;
+        }
+      }
       for (;;)
       {
-        localObject = null;
+        localObject4 = null;
+        if (i != 0)
+        {
+          localObject1 = a(bool, (String)localObject1, paramAbsStructMsg);
+          paramAbsStructMsg = new GrayTipsInfo();
+          paramAbsStructMsg.text = ((String)localObject1);
+          localObject4 = paramAbsStructMsg;
+          if (!TextUtils.isEmpty((CharSequence)localObject2))
+          {
+            localObject4 = paramAbsStructMsg;
+            if (((String)localObject1).contains((CharSequence)localObject2))
+            {
+              i = ((String)localObject1).indexOf((String)localObject2);
+              localObject1 = new GrayTipsSpan(i, ((String)localObject2).length() + i, (String)localObject3);
+              localObject2 = new ArrayList();
+              ((ArrayList)localObject2).add(localObject1);
+              paramAbsStructMsg.spans = ((ArrayList)localObject2);
+              localObject4 = paramAbsStructMsg;
+            }
+          }
+        }
+        paramAbsStructMsg = this.jdField_a_of_type_JavaUtilHashMap;
+        if (bool) {}
+        for (;;)
+        {
+          paramAbsStructMsg.put(paramString2, Long.valueOf(l));
+          return localObject4;
+          localObject2 = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
+          if ((localObject2 != null) && (l - ((Long)localObject2).longValue() <= jdField_c_of_type_Int)) {
+            break label590;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("NearbyFlowerManager", 2, "shouldShowTip rec >60s");
+          }
+          localObject1 = a(paramAbsStructMsg);
+          if (TextUtils.isEmpty((CharSequence)localObject1)) {
+            break label584;
+          }
+          axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80060B8", "0X80060B8", 0, 0, "", "", "", "");
+          localObject2 = null;
+          i = 1;
+          break;
+          Long localLong = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2);
+          if (localLong != null)
+          {
+            localObject1 = localObject6;
+            i = j;
+            localObject3 = localObject5;
+            localObject2 = localObject4;
+            if (l - localLong.longValue() <= jdField_c_of_type_Int) {
+              break;
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("NearbyFlowerManager", 2, "shouldShowTip send >60s");
+          }
+          localObject1 = this.jdField_a_of_type_JavaLangString;
+          axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80060B5", "0X80060B5", 0, 0, "", "", "", "");
+          i = 1;
+          localObject3 = localObject5;
+          localObject2 = localObject4;
+          break;
+          paramString2 = paramString1;
+        }
+        label584:
+        localObject2 = null;
+        continue;
+        label590:
+        localObject2 = null;
       }
     }
-    localIOException1.printStackTrace();
-    return localObject;
   }
   
-  public int getColumnCount()
+  private String a(AbsStructMsg paramAbsStructMsg)
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangString.length;
+    String str = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyFlowerManager", 2, "getFlowerFlorid");
+    }
+    Object localObject = str;
+    if ((paramAbsStructMsg instanceof StructMsgForGeneralShare))
+    {
+      paramAbsStructMsg = (StructMsgForGeneralShare)paramAbsStructMsg;
+      localObject = str;
+      if (paramAbsStructMsg.getItemCount() > 0)
+      {
+        paramAbsStructMsg = paramAbsStructMsg.getItemByIndex(0);
+        if (!(paramAbsStructMsg instanceof axwz)) {
+          break label147;
+        }
+        paramAbsStructMsg = ((axwz)paramAbsStructMsg).a.getString("cMean");
+      }
+    }
+    for (;;)
+    {
+      if ((!TextUtils.isEmpty(paramAbsStructMsg)) && (this.jdField_b_of_type_JavaLangString.contains("XX朵YY")))
+      {
+        str = this.jdField_b_of_type_JavaLangString.replace("XX朵YY", paramAbsStructMsg);
+        localObject = str;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("NearbyFlowerManager", 2, "getFlowerFlorid,cMean:" + paramAbsStructMsg + " wording:" + str);
+          localObject = str;
+        }
+      }
+      label147:
+      do
+      {
+        return localObject;
+        if (!(paramAbsStructMsg instanceof axyi)) {
+          break label248;
+        }
+        paramAbsStructMsg = ((axyi)paramAbsStructMsg).a.iterator();
+        do
+        {
+          if (!paramAbsStructMsg.hasNext()) {
+            break;
+          }
+          localObject = (axun)paramAbsStructMsg.next();
+        } while (!(localObject instanceof StructMsgItemTitle));
+        paramAbsStructMsg = ((StructMsgItemTitle)localObject).b();
+        break;
+        localObject = str;
+      } while (!QLog.isColorLevel());
+      QLog.i("NearbyFlowerManager", 2, "getFlowerFlorid,cMean:" + paramAbsStructMsg + " wording:" + null);
+      return null;
+      label248:
+      paramAbsStructMsg = null;
+    }
   }
   
-  public int getColumnIndex(String paramString)
+  private String a(boolean paramBoolean, String paramString, AbsStructMsg paramAbsStructMsg)
   {
-    if ("_id".equalsIgnoreCase(paramString)) {
-      return 1;
+    String str = paramString;
+    if (paramString.contains("Ta"))
+    {
+      str = paramString;
+      if ((paramAbsStructMsg instanceof StructMsgForGeneralShare))
+      {
+        paramAbsStructMsg = (StructMsgForGeneralShare)paramAbsStructMsg;
+        str = paramString;
+        if (paramAbsStructMsg.getItemCount() > 0)
+        {
+          axun localaxun = paramAbsStructMsg.getItemByIndex(0);
+          str = paramString;
+          if ((localaxun instanceof axwz))
+          {
+            if (!paramBoolean) {
+              break label118;
+            }
+            paramAbsStructMsg = "rSex";
+            paramAbsStructMsg = ((axwz)localaxun).a.getString(paramAbsStructMsg);
+            str = paramString;
+            if (!TextUtils.isEmpty(paramAbsStructMsg)) {
+              if (Integer.valueOf(paramAbsStructMsg).intValue() != 2) {
+                break label125;
+              }
+            }
+          }
+        }
+      }
     }
-    if ("selfuin".equals(paramString)) {
-      return 2;
+    label118:
+    label125:
+    for (paramAbsStructMsg = ajyc.a(2131707142);; paramAbsStructMsg = ajyc.a(2131707152))
+    {
+      str = paramString.replace("Ta", paramAbsStructMsg);
+      return str;
+      paramAbsStructMsg = "sSex";
+      break;
     }
-    if ("frienduin".equals(paramString)) {
-      return 3;
-    }
-    if ("senderuin".equals(paramString)) {
-      return 4;
-    }
-    if ("time".equals(paramString)) {
-      return 5;
-    }
-    if ("msg".equals(paramString)) {
-      return 6;
-    }
-    if ("msgtype".equals(paramString)) {
-      return 7;
-    }
-    if ("isread".equals(paramString)) {
-      return 8;
-    }
-    if ("issend".equals(paramString)) {
-      return 9;
-    }
-    if ("msgseq".equals(paramString)) {
-      return 10;
-    }
-    if ("shmsgseq".equals(paramString)) {
-      return 11;
-    }
-    if ("istroop".equals(paramString)) {
-      return 12;
-    }
-    if ("extraflag".equals(paramString)) {
-      return 13;
-    }
-    if ("troopnick".equals(paramString)) {
-      return 14;
-    }
-    if ("friendnick".equals(paramString)) {
-      return 15;
-    }
-    if ("friendstatus".equals(paramString)) {
-      return 16;
-    }
-    if ("versionCode".equals(paramString)) {
-      return 17;
-    }
-    if ("msgData".equals(paramString)) {
-      return 18;
-    }
-    if ("vipBubbleID".equals(paramString)) {
-      return 19;
-    }
-    if ("msgUid".equals(paramString)) {
-      return 20;
-    }
-    if ("uniseq".equals(paramString)) {
-      return 21;
-    }
-    if ("sendFailCode".equals(paramString)) {
-      return 22;
-    }
-    if ("versionCode".equals(paramString)) {
-      return 23;
-    }
-    return -1;
   }
   
-  public int getColumnIndexOrThrow(String paramString)
+  private void a()
   {
-    if (getColumnIndex(paramString) < 0) {
-      throw new IllegalArgumentException();
-    }
-    return getColumnIndex(paramString);
+    this.jdField_a_of_type_JavaLangString = ((String)atbg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "sp_file_nearby_flower_tip", 0, "senderGrayTip", e));
+    this.jdField_b_of_type_JavaLangString = ((String)atbg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "sp_file_nearby_flower_tip", 0, "receiverGrayTip", "Ta送了你XX朵YY，快和Ta说声谢谢吧。"));
+    this.jdField_c_of_type_JavaLangString = ((String)atbg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "sp_file_nearby_flower_tip", 0, "exchangeGrayTip", f));
+    this.d = ((String)atbg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "sp_file_nearby_flower_tip", 0, "exchangeHighLight", g));
+    jdField_b_of_type_Int = ((Integer)atbg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "sp_file_nearby_flower_tip", 0, "openFlag", Integer.valueOf(jdField_b_of_type_Int))).intValue();
+    this.jdField_a_of_type_Int = ((Integer)atbg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "sp_file_nearby_flower_tip", 0, "scoreThreshold", Integer.valueOf(0))).intValue();
   }
   
-  public String getColumnName(int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if ((paramInt > 0) && (paramInt < this.jdField_a_of_type_ArrayOfJavaLangString.length)) {
-      return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+    ThreadManager.postImmediately(new NearbyFlowerManager.1(paramQQAppInterface, paramString), null, true);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    axqw.b(null, "dc00899", "grp_lbs", "", paramString1, paramString2, 0, 0, paramString3, paramString4, paramString5, paramString6);
+  }
+  
+  public MessageRecord a(String paramString1, String paramString2, int paramInt, AbsStructMsg paramAbsStructMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyFlowerManager", 2, "insertFlowerTipMsg start");
+    }
+    paramString2 = a(paramString1, paramString2, paramAbsStructMsg);
+    if (paramString2 != null)
+    {
+      paramAbsStructMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      long l = awzw.a();
+      MessageForNewGrayTips localMessageForNewGrayTips = (MessageForNewGrayTips)axaq.a(-2037);
+      localMessageForNewGrayTips.init(paramAbsStructMsg, paramString1, paramAbsStructMsg, paramString2.text, l, -2037, paramInt, l);
+      localMessageForNewGrayTips.isread = true;
+      localMessageForNewGrayTips.spans = paramString2.spans;
+      localMessageForNewGrayTips.updateMsgData();
+      if (QLog.isColorLevel()) {
+        QLog.i("NearbyFlowerManager", 2, "insertFlowerTipMsg has grayTip");
+      }
+      return localMessageForNewGrayTips;
     }
     return null;
   }
   
-  public String[] getColumnNames()
+  public String a(String paramString)
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangString;
+    return paramString + "_key_time_joinhotchat";
   }
   
-  public int getCount()
+  public void a(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    long l = awzw.a();
+    a().edit().putLong(a(paramString), l);
+    this.jdField_b_of_type_JavaUtilMap.put(paramString, Long.valueOf(l));
   }
   
-  public double getDouble(int paramInt)
+  public void a(String paramString1, String paramString2)
   {
-    throw new UnsupportedOperationException();
-  }
-  
-  public Bundle getExtras()
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  public float getFloat(int paramInt)
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  public int getInt(int paramInt)
-  {
-    return ((Integer)a(paramInt)).intValue();
-  }
-  
-  public long getLong(int paramInt)
-  {
-    return ((Long)a(paramInt)).longValue();
-  }
-  
-  public Uri getNotificationUri()
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  public int getPosition()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public short getShort(int paramInt)
-  {
-    return ((Short)a(paramInt)).shortValue();
-  }
-  
-  public String getString(int paramInt)
-  {
-    return String.valueOf(a(paramInt));
-  }
-  
-  public int getType(int paramInt)
-  {
-    return 0;
-  }
-  
-  public boolean getWantsAllOnMoveCalls()
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  public boolean isAfterLast()
-  {
-    return this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilList.size() - 1;
-  }
-  
-  public boolean isBeforeFirst()
-  {
-    return this.jdField_a_of_type_Int > 0;
-  }
-  
-  public boolean isClosed()
-  {
-    return false;
-  }
-  
-  public boolean isFirst()
-  {
-    return this.jdField_a_of_type_Int == 0;
-  }
-  
-  public boolean isLast()
-  {
-    return this.jdField_a_of_type_Int == this.jdField_a_of_type_JavaUtilList.size() - 1;
-  }
-  
-  public boolean isNull(int paramInt)
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  public boolean move(int paramInt)
-  {
-    if ((this.jdField_a_of_type_Int + paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (this.jdField_a_of_type_Int + paramInt >= 0))
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyFlowerManager", 2, "handleGetNewConfig:" + paramString2);
+    }
+    if (TextUtils.isEmpty(paramString2)) {
+      return;
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_Int += paramInt;
-      return true;
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramString2);
+        if (!localJSONObject.has("senderGrayTip")) {
+          break label447;
+        }
+        paramString2 = localJSONObject.getString("senderGrayTip");
+        if (!localJSONObject.has("receiverGrayTip")) {
+          break label469;
+        }
+        str1 = localJSONObject.getString("receiverGrayTip");
+        if (!localJSONObject.has("exchangeGrayTip")) {
+          break label476;
+        }
+        str2 = localJSONObject.getString("exchangeGrayTip");
+        if (!localJSONObject.has("exchangeHighLight")) {
+          break label483;
+        }
+        str3 = localJSONObject.getString("exchangeHighLight");
+        if (!localJSONObject.has("openFlag")) {
+          break label453;
+        }
+        i = localJSONObject.getInt("openFlag");
+        if (!localJSONObject.has("groupAnimationScore")) {
+          break label460;
+        }
+        j = localJSONObject.getInt("groupAnimationScore");
+        if ((!TextUtils.isEmpty(paramString2)) && (!paramString2.equals(this.jdField_a_of_type_JavaLangString)))
+        {
+          this.jdField_a_of_type_JavaLangString = paramString2;
+          atbg.a(paramString1, "sp_file_nearby_flower_tip", 0, "senderGrayTip", this.jdField_a_of_type_JavaLangString);
+        }
+        if ((!TextUtils.isEmpty(str1)) && (!paramString2.equals(this.jdField_b_of_type_JavaLangString)))
+        {
+          this.jdField_b_of_type_JavaLangString = str1;
+          atbg.a(paramString1, "sp_file_nearby_flower_tip", 0, "receiverGrayTip", this.jdField_b_of_type_JavaLangString);
+        }
+        if ((!TextUtils.isEmpty(str2)) && (!paramString2.equals(this.jdField_c_of_type_JavaLangString)))
+        {
+          this.jdField_c_of_type_JavaLangString = str2;
+          atbg.a(paramString1, "sp_file_nearby_flower_tip", 0, "exchangeGrayTip", this.jdField_c_of_type_JavaLangString);
+        }
+        if ((!TextUtils.isEmpty(str3)) && (!paramString2.equals(this.d)))
+        {
+          this.d = str3;
+          atbg.a(paramString1, "sp_file_nearby_flower_tip", 0, "exchangeHighLight", this.d);
+        }
+        if (i != jdField_b_of_type_Int)
+        {
+          jdField_b_of_type_Int = i;
+          atbg.a(paramString1, "sp_file_nearby_flower_tip", 0, "openFlag", Integer.valueOf(jdField_b_of_type_Int));
+        }
+        if (j != this.jdField_a_of_type_Int)
+        {
+          this.jdField_a_of_type_Int = j;
+          atbg.a(paramString1, "sp_file_nearby_flower_tip", 0, "scoreThreshold", Integer.valueOf(this.jdField_a_of_type_Int));
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("NearbyFlowerManager", 2, "handleGetNewConfig parse success");
+        return;
+      }
+      catch (JSONException paramString1) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("NearbyFlowerManager", 2, "handleGetNewConfig parse exception:" + paramString1);
+      paramString1.printStackTrace();
+      return;
+      label447:
+      paramString2 = "";
+      continue;
+      label453:
+      int i = jdField_b_of_type_Int;
+      continue;
+      label460:
+      int j = this.jdField_a_of_type_Int;
+      continue;
+      label469:
+      String str1 = "";
+      continue;
+      label476:
+      String str2 = "";
+      continue;
+      label483:
+      String str3 = "";
     }
-    return false;
   }
   
-  public boolean moveToFirst()
+  public void a(List<HotChatInfo> paramList)
   {
-    boolean bool = false;
-    this.jdField_a_of_type_Int = 0;
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-      bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyFlowerManager", 2, "onGetJoinedHotchats:" + paramList.size());
     }
-    return bool;
-  }
-  
-  public boolean moveToLast()
-  {
-    this.jdField_a_of_type_Int = (this.jdField_a_of_type_JavaUtilList.size() - 1);
-    return true;
-  }
-  
-  public boolean moveToNext()
-  {
-    if (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilList.size() - 1)
+    Object localObject1 = a();
+    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject1).edit();
+    try
     {
-      this.jdField_a_of_type_Int += 1;
-      return true;
+      localObject1 = ((SharedPreferences)localObject1).getAll();
+      if (localObject1 == null) {
+        return;
+      }
     }
-    return false;
-  }
-  
-  public boolean moveToPosition(int paramInt)
-  {
-    if ((paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (paramInt >= 0))
+    catch (NullPointerException localNullPointerException)
     {
-      this.jdField_a_of_type_Int = paramInt;
-      return true;
+      for (;;)
+      {
+        Object localObject2 = null;
+      }
     }
-    return false;
-  }
-  
-  public boolean moveToPrevious()
-  {
-    if (this.jdField_a_of_type_Int > 0)
+    catch (Exception localException)
     {
-      this.jdField_a_of_type_Int -= 1;
-      return true;
+      String str;
+      for (;;)
+      {
+        str = null;
+      }
+      HashSet localHashSet = new HashSet();
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        localHashSet.add(((HotChatInfo)paramList.next()).troopUin);
+      }
+      paramList = str.entrySet().iterator();
+      while (paramList.hasNext())
+      {
+        str = (String)((Map.Entry)paramList.next()).getKey();
+        if (!localHashSet.contains(str))
+        {
+          localEditor.remove(str);
+          if (QLog.isColorLevel()) {
+            QLog.i("NearbyFlowerManager", 2, "onGetJoinedHotchats.remove:" + str);
+          }
+        }
+      }
+      localEditor.commit();
     }
-    return false;
   }
   
-  public void registerContentObserver(ContentObserver paramContentObserver) {}
-  
-  public void registerDataSetObserver(DataSetObserver paramDataSetObserver) {}
-  
-  public boolean requery()
+  public void b(String paramString)
   {
-    return false;
+    a().edit().remove(a(paramString));
+    this.jdField_b_of_type_JavaUtilMap.put(paramString, Long.valueOf(0L));
   }
   
-  public Bundle respond(Bundle paramBundle)
+  public void onDestroy()
   {
-    throw new UnsupportedOperationException();
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
-  
-  public void setExtras(Bundle paramBundle) {}
-  
-  public void setNotificationUri(ContentResolver paramContentResolver, Uri paramUri)
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  public void unregisterContentObserver(ContentObserver paramContentObserver) {}
-  
-  public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver) {}
 }
 
 

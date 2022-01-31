@@ -1,59 +1,32 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.hardware.display.DisplayManager;
-import android.hardware.display.DisplayManager.DisplayListener;
-import android.os.Handler;
-import android.view.Display;
-import android.view.WindowManager;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-@TargetApi(17)
 public class akqq
-  implements DisplayManager.DisplayListener
+  implements apeg
 {
-  private int jdField_a_of_type_Int;
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final Display jdField_a_of_type_AndroidViewDisplay;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  public akqq(QQMessageFacade paramQQMessageFacade, MessageForFile paramMessageForFile, FileManagerEntity paramFileManagerEntity) {}
   
-  @TargetApi(23)
-  public akqq(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService(WindowManager.class)).getDefaultDisplay();
-  }
-  
-  @TargetApi(23)
   public void a()
   {
-    ((DisplayManager)this.jdField_a_of_type_AndroidContentContext.getSystemService(DisplayManager.class)).registerDisplayListener(this, new Handler());
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop).c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Boolean = true;
+    if ((paramInt == -6101) || (paramInt == -7003))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
+      QQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade).a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    }
+    QQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade).a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop, akri.h, 0);
   }
-  
-  @TargetApi(23)
-  public void b()
-  {
-    ((DisplayManager)this.jdField_a_of_type_AndroidContentContext.getSystemService(DisplayManager.class)).unregisterDisplayListener(this);
-  }
-  
-  public void onDisplayAdded(int paramInt) {}
-  
-  public void onDisplayChanged(int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void onDisplayRemoved(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akqq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,163 +1,263 @@
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.net.http.SslCertificate;
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.text.TextUtils;
-import android.util.Log;
-import android.util.SparseArray;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.network.module.common.NetworkState.NetworkStateListener;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.tmassistant.common.jce.StatItem;
-import com.tencent.tmassistant.common.jce.StatReportRequest;
-import com.tencent.tmassistant.common.jce.StatReportResponse;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.webview.AbsWebView.WebViewClientImpl.1;
+import com.tencent.mobileqq.webview.AbsWebView.WebViewClientImpl.2;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.SslError;
+import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebView.HitTestResult;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class bcar
-  implements bcap, NetworkState.NetworkStateListener
+  extends WebViewClient
 {
-  private static bcar jdField_a_of_type_Bcar;
-  private long jdField_a_of_type_Long = 1800000L;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private SparseArray<ArrayList<StatItem>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private bcao jdField_a_of_type_Bcao = new bcao();
-  private Map<Integer, ArrayList<String>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private SparseArray<ArrayList<StatItem>> b = new SparseArray();
+  private bcar(bcal parambcal) {}
   
-  private bcar()
+  protected WebResourceResponse a(WebView paramWebView, String paramString)
   {
-    this.jdField_a_of_type_Bcao.a(this);
-    a();
+    Object localObject2 = null;
+    WebViewPluginEngine localWebViewPluginEngine = ((CustomWebView)paramWebView).getPluginEngine();
+    if (localWebViewPluginEngine == null) {
+      return null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "doInterceptRequest url = " + paramString);
+    }
+    String str1;
+    if (!TextUtils.isEmpty(paramString)) {
+      if (paramString.startsWith("https://jsbridge/"))
+      {
+        str1 = paramString.replace("https://jsbridge/", "jsbridge://");
+        str2 = str1;
+        if (QLog.isColorLevel()) {
+          QLog.d("AbsWebView", 2, "doInterceptRequest  https://jsbridge/ temp url = " + str1);
+        }
+      }
+    }
+    for (String str2 = str1;; str2 = null)
+    {
+      if ((!TextUtils.isEmpty(str2)) && (this.b.mWebview != null))
+      {
+        ThreadManagerV2.getUIHandlerV2().post(new AbsWebView.WebViewClientImpl.1(this, localWebViewPluginEngine, str2));
+        return new WebResourceResponse("text/html", "utf-8", null);
+        if (!paramString.startsWith("http://jsbridge/")) {
+          break label341;
+        }
+        str1 = paramString.replace("http://jsbridge/", "jsbridge://");
+        break;
+      }
+      if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge")) && (this.b.mWebview != null)) {
+        ThreadManagerV2.getUIHandlerV2().post(new AbsWebView.WebViewClientImpl.2(this, localWebViewPluginEngine, paramString));
+      }
+      try
+      {
+        paramWebView = this.b.doInterceptRequest(paramWebView, paramString);
+        if ((paramWebView instanceof WebResourceResponse)) {
+          paramWebView = (WebResourceResponse)paramWebView;
+        }
+        Object localObject1 = null;
+      }
+      catch (Exception localException1)
+      {
+        for (;;)
+        {
+          try
+          {
+            QLog.i("AbsWebView", 1, "doInterceptRequest: resource intercept by sonic.");
+            if (paramWebView != null) {
+              continue;
+            }
+          }
+          catch (Exception localException2)
+          {
+            continue;
+          }
+          try
+          {
+            paramString = (WebResourceResponse)localWebViewPluginEngine.a(paramString, 8L);
+            paramWebView = paramString;
+            return paramWebView;
+          }
+          catch (Exception paramString)
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e("AbsWebView", 2, "shouldInterceptRequest got exception!", paramString);
+          }
+          localException1 = localException1;
+          paramWebView = localObject2;
+          QLog.e("AbsWebView", 1, "shouldInterceptRequest:resource intercept by sonic error -> " + localException1.getMessage());
+          continue;
+          continue;
+          paramWebView = null;
+        }
+      }
+      label341:
+      break;
+    }
   }
   
-  public static bcar a()
+  public void onDetectedBlankScreen(String paramString, int paramInt)
   {
+    QLog.i("AbsWebView", 1, "onDetectedBlankScreen, status: " + paramInt + ", url:" + paramString);
+    this.b.mStateReporter.a(this.b.mInterface, paramString, paramInt);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "onPageFinished:" + paramString);
+    }
+    if (this.b.mProgressBarController != null) {
+      this.b.mProgressBarController.a((byte)2);
+    }
+    super.onPageFinished(paramWebView, paramString);
+    this.b.onPageFinished(paramWebView, paramString);
+    paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
+    if (paramWebView != null) {
+      paramWebView.a(paramString, 8589934594L, null);
+    }
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "onPageStarted:" + paramString);
+    }
+    if (!"about:blank".equalsIgnoreCase(paramString)) {
+      this.b.mStateReporter.a(2);
+    }
+    if ((!this.b.mIsFirstOnPageStart) && (this.b.mProgressBarController != null) && (this.b.mProgressBarController.b() != 0)) {
+      this.b.mProgressBarController.a((byte)0);
+    }
+    if (this.b.mIsFirstOnPageStart)
+    {
+      this.b.mIsFirstOnPageStart = false;
+      this.b.mStartLoadUrlMilliTimeStamp = System.currentTimeMillis();
+    }
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    this.b.onPageStarted(paramWebView, paramString, paramBitmap);
+    paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
+    if (paramWebView != null) {
+      paramWebView.a(paramString, 8589934593L, null);
+    }
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "onReceivedError:" + paramInt + ", desc=" + paramString1 + ", url=" + paramString2);
+    }
+    this.b.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+    paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
+    if (paramWebView != null) {
+      paramWebView.a(paramString2, 8589934595L, paramInt);
+    }
+  }
+  
+  public void onReceivedSslError(WebView paramWebView, SslErrorHandler paramSslErrorHandler, SslError paramSslError)
+  {
+    SslCertificate localSslCertificate = paramSslError.getCertificate();
+    String str = paramWebView.getUrl();
+    paramSslError = new StringBuilder().append("onReceivedSslError:").append(paramSslError.getPrimaryError()).append(", cert=");
+    if (localSslCertificate == null) {}
+    for (paramWebView = "null";; paramWebView = localSslCertificate.toString())
+    {
+      QLog.w("AbsWebView", 1, paramWebView + ", pageUrl=" + nax.b(str, new String[0]));
+      paramSslErrorHandler.cancel();
+      return;
+    }
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "shouldOverrideUrlLoading " + nax.b(paramString, new String[0]));
+    }
+    if ((paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+    {
+      this.b.mPerfFirstLoadTag = false;
+      this.b.mTimeBeforeLoadUrl = System.currentTimeMillis();
+    }
+    if ((TextUtils.isEmpty(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {
+      return true;
+    }
+    if (((paramString.startsWith("http")) || (paramString.startsWith("data:"))) && (!paramString.contains("/cgi-bin/httpconn?htcmd=0x6ff0080"))) {
+      CustomWebView.addContextLog(nax.b(paramString, new String[0]));
+    }
     try
     {
-      if (jdField_a_of_type_Bcar == null) {
-        jdField_a_of_type_Bcar = new bcar();
-      }
-      bcar localbcar = jdField_a_of_type_Bcar;
-      return localbcar;
-    }
-    finally {}
-  }
-  
-  private void a()
-  {
-    HandlerThread localHandlerThread = new HandlerThread("thread_report");
-    localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new bcas(this, localHandlerThread.getLooper());
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-  }
-  
-  public void a(int paramInt, DownloadInfo paramDownloadInfo)
-  {
-    if (BaseApplicationImpl.sProcessId == 7) {}
-    for (int i = 1; (paramDownloadInfo == null) || (i == 0); i = 0) {
-      return;
-    }
-    long l = System.currentTimeMillis() / 1000L;
-    a(9, l + "|" + paramDownloadInfo.jdField_c_of_type_JavaLangString + "|" + paramDownloadInfo.b + "|" + paramDownloadInfo.e + "|" + paramDownloadInfo.jdField_c_of_type_Int + "|" + paramInt + "|" + paramDownloadInfo.jdField_c_of_type_Long + "|" + paramDownloadInfo.h);
-  }
-  
-  public void a(int paramInt1, StatReportRequest paramStatReportRequest, StatReportResponse paramStatReportResponse, int paramInt2)
-  {
-    Log.i("selfupdeReport", "circleTest reportLog onReportFinish errorCode = " + paramInt2);
-    paramStatReportRequest = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
-    if (paramStatReportRequest == null) {
-      paramStatReportRequest = (ArrayList)this.b.get(paramInt1);
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (paramInt2 != 0)
+      if ((paramString.startsWith("http://")) || (paramString.startsWith("https://")))
       {
-        if ((paramStatReportRequest != null) && (paramStatReportRequest.size() > 0) && (i == 0))
+        localObject = paramWebView.getHitTestResult();
+        if ((localObject != null) && (((WebView.HitTestResult)localObject).getType() == 0))
         {
-          SparseArray localSparseArray = new SparseArray();
-          Iterator localIterator = paramStatReportRequest.iterator();
-          while (localIterator.hasNext())
-          {
-            StatItem localStatItem = (StatItem)localIterator.next();
-            paramStatReportResponse = (List)localSparseArray.get(localStatItem.type);
-            paramStatReportRequest = paramStatReportResponse;
-            if (paramStatReportResponse == null)
-            {
-              paramStatReportRequest = new ArrayList();
-              localSparseArray.put(localStatItem.type, paramStatReportRequest);
-            }
-            paramStatReportRequest.addAll(localStatItem.records);
+          if (QLog.isColorLevel()) {
+            QLog.i("AbsWebView", 2, "shouldOverrideUrlLoading detect 302 url: " + paramString);
           }
-          i = localSparseArray.size();
-          paramInt2 = 0;
-          while (paramInt2 < i)
-          {
-            int j = localSparseArray.keyAt(paramInt2);
-            paramStatReportResponse = (List)localSparseArray.get(j);
-            paramStatReportRequest = new ArrayList();
-            paramStatReportResponse = paramStatReportResponse.iterator();
-            while (paramStatReportResponse.hasNext()) {
-              paramStatReportRequest.add((String)paramStatReportResponse.next());
-            }
-            paramStatReportResponse = bcaf.a().a(String.valueOf(j));
-            if (paramStatReportResponse != null) {
-              paramStatReportRequest.addAll(paramStatReportResponse);
-            }
-            bcaf.a().a(String.valueOf(j), paramStatReportRequest);
-            paramInt2 += 1;
-          }
+          this.b.mRedirect302Time = System.currentTimeMillis();
+          this.b.mRedirect302Url = paramString;
+          SwiftBrowserCookieMonster.d();
         }
       }
-      else if ((i != 0) && (paramStatReportRequest != null) && (paramStatReportRequest.size() > 0))
+      Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
+      if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString))) {
+        return true;
+      }
+      if (this.b.shouldOverrideUrlLoading(paramWebView, paramString)) {
+        return true;
+      }
+      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
       {
-        paramStatReportRequest = paramStatReportRequest.iterator();
-        while (paramStatReportRequest.hasNext())
-        {
-          paramStatReportResponse = (StatItem)paramStatReportRequest.next();
-          bcaf.a().a(String.valueOf(paramStatReportResponse.type));
+        if ((localObject == null) || (!((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {
+          break label453;
         }
+        return true;
       }
-      this.jdField_a_of_type_AndroidUtilSparseArray.delete(paramInt1);
-      this.b.delete(paramInt1);
-      return;
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if ((paramInt >= 0) && (!TextUtils.isEmpty(paramString)))
-    {
-      ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      ArrayList localArrayList1 = localArrayList2;
-      if (localArrayList2 == null)
+      if (paramString.startsWith("tnow://openpage/recordstory"))
       {
-        localArrayList1 = new ArrayList();
-        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localArrayList1);
-      }
-      localArrayList1.add(paramString);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 500L);
-    }
-  }
-  
-  public void onNetworkConnect(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+        paramWebView = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
+        paramWebView.setFlags(268435456);
+        this.b.mContext.startActivity(paramWebView);
       }
     }
-    while (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
-      return;
+    catch (RuntimeException paramWebView)
+    {
+      paramString = QLog.getStackTraceString(paramWebView);
+      if (paramString.length() <= 255) {
+        break label448;
+      }
+      for (paramWebView = paramString.substring(0, 255);; paramWebView = paramString)
+      {
+        axqw.b(null, "P_CliOper", "BizTechReport", "", "webview", "exception", 0, 1, 0, paramWebView, "", "", "");
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.e("AbsWebView", 2, paramString);
+        break;
+      }
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+    return true;
+    label448:
+    label453:
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcar
  * JD-Core Version:    0.7.0.1
  */

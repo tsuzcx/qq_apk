@@ -1,38 +1,22 @@
-import android.util.SparseArray;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.4.1;
-import java.util.List;
+import com.tencent.mobileqq.theme.ThemeUtil.2.1;
+import mqq.os.MqqHandler;
 
-public class aymo
-  extends ajtk
+public final class aymo
+  extends aymm
 {
-  aymo(aymm paramaymm, MessageRecord paramMessageRecord, aymp paramaymp) {}
+  public aymo(QQAppInterface paramQQAppInterface) {}
   
-  protected void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList)
+  public boolean a(int paramInt)
   {
-    if (paramBoolean)
-    {
-      if ((paramList != null) && (paramList.size() > 0))
-      {
-        aymm.a(this.jdField_a_of_type_Aymm, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (TroopAioKeywordTipInfo)paramList.get(0), this.jdField_a_of_type_Aymp);
-        synchronized (this.jdField_a_of_type_Aymm.b)
-        {
-          this.jdField_a_of_type_Aymm.b.put(((TroopAioKeywordTipInfo)paramList.get(0)).ruleId, paramList.get(0));
-          ThreadManager.post(new TroopAioKeywordTipManager.4.1(this, paramList), 2, null, true);
-          return;
-        }
-      }
-      aymm.a(this.jdField_a_of_type_Aymm, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Aymp);
-      return;
-    }
-    aymm.a(this.jdField_a_of_type_Aymm, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Aymp);
+    ThreadManager.getSubThreadHandler().postDelayed(new ThemeUtil.2.1(this), 1000L);
+    return super.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aymo
  * JD-Core Version:    0.7.0.1
  */

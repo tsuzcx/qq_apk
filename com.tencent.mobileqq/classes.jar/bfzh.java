@@ -1,36 +1,62 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.QZLog;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import java.util.List;
 
-final class bfzh
-  implements bfzl
+class bfzh
+  extends RecyclerView.AdapterDataObserver
 {
-  public void a(boolean paramBoolean, Context paramContext, bfzm parambfzm)
+  bfzh(bfzg parambfzg) {}
+  
+  public void onChanged()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
+    this.a.notifyDataSetChanged();
+    if (bfzg.a(this.a) != null) {
+      bfzg.a(this.a).a(bfzg.a(this.a));
     }
-    if (paramBoolean)
-    {
-      long l1 = parambfzm.a.getLongExtra("key_launch_time", 0L);
-      if (l1 > 0L)
-      {
-        long l2 = System.currentTimeMillis();
-        QZLog.d("plugin_tag", 1, "IPluginManager onPluginReady Open Plugin Activity timedelay=" + (l2 - l1));
-      }
-      bfzg.b((Activity)paramContext, parambfzm);
-      return;
+  }
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeChanged(bfzg.a(this.a).size() + paramInt1, paramInt2);
+    if (bfzg.a(this.a) != null) {
+      bfzg.a(this.a).a(bfzg.a(this.a));
     }
-    Toast.makeText(BaseApplicationImpl.getContext(), ajjy.a(2131640061), 0).show();
+  }
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
+  {
+    this.a.notifyItemRangeChanged(bfzg.a(this.a).size() + paramInt1, paramInt2, paramObject);
+    if (bfzg.a(this.a) != null) {
+      bfzg.a(this.a).a(bfzg.a(this.a));
+    }
+  }
+  
+  public void onItemRangeInserted(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeInserted(bfzg.a(this.a).size() + paramInt1, paramInt2);
+    if (bfzg.a(this.a) != null) {
+      bfzg.a(this.a).a(bfzg.a(this.a));
+    }
+  }
+  
+  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a.notifyItemMoved(bfzg.a(this.a).size() + paramInt1, bfzg.a(this.a).size() + paramInt2);
+    if (bfzg.a(this.a) != null) {
+      bfzg.a(this.a).a(bfzg.a(this.a));
+    }
+  }
+  
+  public void onItemRangeRemoved(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeRemoved(bfzg.a(this.a).size() + paramInt1, paramInt2);
+    if (bfzg.a(this.a) != null) {
+      bfzg.a(this.a).a(bfzg.a(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfzh
  * JD-Core Version:    0.7.0.1
  */

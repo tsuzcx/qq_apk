@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.transport;
 
-import arpa;
-import arrt;
+import asle;
+import asnx;
 
 class MsgBackupNotifier$8
   implements Runnable
@@ -10,7 +10,7 @@ class MsgBackupNotifier$8
   
   public void run()
   {
-    arpa.a().a().a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+    asle.a().a().a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
   }
 }
 

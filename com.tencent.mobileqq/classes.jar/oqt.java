@@ -1,12 +1,9 @@
-class oqt
-  extends ajpe
+public class oqt
 {
-  oqt(oqs paramoqs) {}
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    this.a.f();
-  }
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
 }
 
 

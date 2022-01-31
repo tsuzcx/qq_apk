@@ -3,8 +3,8 @@ package com.tencent.av.random;
 import android.text.TextUtils;
 import java.util.Iterator;
 import java.util.List;
-import lio;
-import liw;
+import ltf;
+import ltn;
 
 class RandomWebProtocol$1
   extends Thread
@@ -13,16 +13,16 @@ class RandomWebProtocol$1
   
   public void run()
   {
-    liw localliw = new liw(this.this$0);
+    ltn localltn = new ltn(this.this$0);
     if ((!TextUtils.isEmpty(this.a)) && (!TextUtils.equals(this.a, "null"))) {
-      localliw.a = this.this$0.a(this.b, this.a);
+      localltn.a = this.this$0.a(this.b, this.a);
     }
-    if (localliw.a != null) {}
+    if (localltn.a != null) {}
     for (int i = 0;; i = -1)
     {
       Iterator localIterator = this.this$0.a.iterator();
       while (localIterator.hasNext()) {
-        ((lio)localIterator.next()).a(i, localliw);
+        ((ltf)localIterator.next()).a(i, localltn);
       }
     }
   }

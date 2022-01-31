@@ -1,47 +1,25 @@
-public class awtu
-  extends awts
+import java.util.Comparator;
+
+final class awtu
+  implements Comparator<awoc>
 {
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  
-  public awtu()
+  public int a(awoc paramawoc1, awoc paramawoc2)
   {
-    this.a = "";
-    this.b = "";
-    this.c = "";
-    this.d = "";
-  }
-  
-  public String a(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    localStringBuilder.append(this.a).append("|");
-    localStringBuilder.append(this.b).append("|");
-    localStringBuilder.append(this.c).append("|");
-    localStringBuilder.append(this.d).append("|");
-    localStringBuilder.append(this.e).append("|");
-    localStringBuilder.append(this.f).append("|");
-    localStringBuilder.append(this.g).append("|");
-    return localStringBuilder.toString();
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer(64);
-    localStringBuffer.append(this.a).append("|");
-    localStringBuffer.append(this.b).append("|");
-    localStringBuffer.append(this.c).append("|");
-    localStringBuffer.append(this.d).append("|");
-    localStringBuffer.append(this.e).append("|");
-    localStringBuffer.append(this.f).append("|");
-    localStringBuffer.append(this.g).append("|");
-    return localStringBuffer.toString();
+    int j = Long.signum(paramawoc2.b() - paramawoc1.b());
+    int i = j;
+    if (j == 0) {
+      i = Long.signum(paramawoc2.a() - paramawoc1.a());
+    }
+    j = i;
+    if (i == 0) {
+      j = awts.a(paramawoc1, paramawoc2);
+    }
+    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awtu
  * JD-Core Version:    0.7.0.1
  */

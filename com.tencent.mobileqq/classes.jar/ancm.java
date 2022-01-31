@@ -1,49 +1,61 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager.8;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class ancm
-  implements anbt
+  extends ampb<ancl>
 {
-  private int jdField_a_of_type_Int;
-  
-  public ancm(FavroamingManager.8 param8, List paramList) {}
-  
-  public void a(int paramInt, String paramString)
+  public static ancl a()
   {
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(paramInt));
-    this.jdField_a_of_type_Int += 1;
-    if (this.jdField_a_of_type_Int <= this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0.f();
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Ancn != null) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Ancn.a(this.jdField_a_of_type_Int / this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
-      }
+    return (ancl)ampm.a().a(437);
+  }
+  
+  public int a()
+  {
+    return 437;
+  }
+  
+  @NonNull
+  public ancl a(int paramInt)
+  {
+    return new ancl();
+  }
+  
+  @Nullable
+  public ancl a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
+      return ancl.a(paramArrayOfampi);
     }
-    if (this.jdField_a_of_type_Int < this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Int) {
-      if (!anch.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0))
-      {
-        paramString = (String)this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
-        anch.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0, paramString, anch.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0));
-      }
-    }
-    do
-    {
-      return;
-      paramString = anch.s(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0).getHandler(ChatActivity.class);
-      if (paramString != null) {
-        paramString.obtainMessage(10).sendToTarget();
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Ancn == null);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Ancn.a(this.jdField_a_of_type_JavaUtilList);
+    return null;
+  }
+  
+  public Class<ancl> a()
+  {
+    return ancl.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(ancl paramancl) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ancm
  * JD-Core Version:    0.7.0.1
  */

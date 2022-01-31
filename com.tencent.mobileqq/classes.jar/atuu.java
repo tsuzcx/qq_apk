@@ -1,183 +1,65 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
-import java.util.Vector;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class atuu
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+class atuu
+  implements bfoq
 {
-  public atuu(CustomCoverFragment paramCustomCoverFragment) {}
+  atuu(atur paramatur, atuy paramatuy, atwv paramatwv, bfol parambfol) {}
   
-  private void a(atus paramatus)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (CustomCoverFragment.c(this.a))
+    switch (paramInt)
     {
-      paramatus.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130848747);
-      paramatus.jdField_a_of_type_AndroidWidgetButton.setTextColor(-8947849);
-      paramatus.jdField_a_of_type_AndroidWidgetButton.setText(2131629563);
+    default: 
       return;
     }
-    if ((paramatus.jdField_a_of_type_Int == CustomCoverFragment.a(this.a)) && (CustomCoverFragment.a(this.a)))
+    ativ localativ = new ativ().h("data_card").i("feed_inform").d("2").a(this.jdField_a_of_type_Atur.a(this.jdField_a_of_type_Atuy)).b(this.jdField_a_of_type_Atwv.c).c(String.valueOf(this.jdField_a_of_type_Atur.a(this.jdField_a_of_type_Atuy)));
+    if (this.jdField_a_of_type_Atur.jdField_a_of_type_Boolean)
     {
-      paramatus.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130848747);
-      paramatus.jdField_a_of_type_AndroidWidgetButton.setTextColor(-8947849);
-      paramatus.jdField_a_of_type_AndroidWidgetButton.setText(2131653527);
-      return;
-    }
-    paramatus.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130848767);
-    paramatus.jdField_a_of_type_AndroidWidgetButton.setTextColor(-16777216);
-    paramatus.jdField_a_of_type_AndroidWidgetButton.setText(2131629563);
-  }
-  
-  public atwz a(int paramInt)
-  {
-    if ((CustomCoverFragment.a(this.a) != null) && (paramInt > 0) && (paramInt - 1 < CustomCoverFragment.a(this.a).size()) && (CustomCoverFragment.a(this.a) != null))
-    {
-      paramInt = ((Integer)CustomCoverFragment.a(this.a).get(paramInt - 1)).intValue();
-      return CustomCoverFragment.a(this.a).a(paramInt, false);
-    }
-    return null;
-  }
-  
-  public int getItemCount()
-  {
-    if (CustomCoverFragment.a(this.a) == null) {}
-    for (int i = 0;; i = CustomCoverFragment.a(this.a).size()) {
-      return i + 2;
-    }
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt == 0) {
-      return 0;
-    }
-    if ((CustomCoverFragment.a(this.a) != null) && (paramInt > CustomCoverFragment.a(this.a).size())) {
-      return 2;
-    }
-    return 1;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    atwz localatwz;
-    if ((paramViewHolder instanceof atus))
-    {
-      paramViewHolder = (atus)paramViewHolder;
-      localatwz = a(paramInt);
-      if (localatwz != null)
-      {
-        paramViewHolder.jdField_a_of_type_Int = localatwz.jdField_a_of_type_Int;
-        paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localatwz.jdField_a_of_type_JavaLangString);
-        if (TextUtils.isEmpty(localatwz.b))
-        {
-          paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(CustomCoverFragment.a(this.a));
-          paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setTag(Integer.valueOf(localatwz.jdField_a_of_type_Int));
-          paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(localatwz.jdField_a_of_type_Int));
-          label93:
-          a(paramViewHolder);
-        }
+      paramView = "1";
+      localativ.e(paramView).b(this.jdField_a_of_type_Atur.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_Atwv.e)) || (!(this.jdField_a_of_type_Atur.jdField_a_of_type_AndroidContentContext instanceof BaseActivity))) {
+        break label341;
       }
-    }
-    do
-    {
-      do
-      {
-        return;
-        Object localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = CustomCoverFragment.f(this.a);
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = CustomCoverFragment.e(this.a);
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = CustomCoverFragment.a(this.a);
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = CustomCoverFragment.a(this.a);
-        localObject = URLDrawable.getDrawable(localatwz.b, (URLDrawable.URLDrawableOptions)localObject);
-        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-        break;
-        paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setTag(Integer.valueOf(0));
-        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(0));
-        break label93;
-      } while (!(paramViewHolder instanceof atut));
-      paramViewHolder = (atut)paramViewHolder;
-      if (CustomCoverFragment.c(this.a) == 0)
-      {
-        CustomCoverFragment.c(this.a, 3);
-        CustomCoverFragment.a(this.a);
+      paramView = new bazp();
+      if (!(this.jdField_a_of_type_Atwv instanceof atws)) {
+        break label231;
       }
-      if (CustomCoverFragment.c(this.a) == 3)
-      {
-        paramViewHolder.itemView.setVisibility(0);
-        paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-        paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(2131624016);
-        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        paramViewHolder.itemView.setBackgroundResource(2131100611);
-        return;
-      }
-      if (CustomCoverFragment.c(this.a) == 1)
-      {
-        paramViewHolder.itemView.setVisibility(0);
-        paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131100029));
-        paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(2131625057);
-        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        paramViewHolder.itemView.setBackgroundResource(2131101537);
-        return;
-      }
-    } while (CustomCoverFragment.c(this.a) != 2);
-    paramViewHolder.itemView.setVisibility(8);
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    atur localatur = null;
-    if (paramInt == 0)
-    {
-      paramViewGroup = this.a.getActivity().getLayoutInflater().inflate(2131496013, paramViewGroup, false);
-      localatur = new atur(this.a, paramViewGroup);
-    }
-    do
-    {
-      return localatur;
-      if (paramInt == 1)
-      {
-        paramViewGroup = this.a.getActivity().getLayoutInflater().inflate(2131496014, paramViewGroup, false);
-        paramViewGroup = new atus(this.a, paramViewGroup);
-        ((atus)paramViewGroup).jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = CustomCoverFragment.e(this.a);
-        return paramViewGroup;
-      }
-    } while (paramInt != 2);
-    paramViewGroup = this.a.getActivity().getLayoutInflater().inflate(2131495896, paramViewGroup, false);
-    return new atut(this.a, paramViewGroup);
-  }
-  
-  public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)
-  {
-    boolean bool = true;
-    super.onViewAttachedToWindow(paramViewHolder);
-    Object localObject = paramViewHolder.itemView.getLayoutParams();
-    if ((localObject != null) && ((localObject instanceof StaggeredGridLayoutManager.LayoutParams)))
-    {
-      localObject = (StaggeredGridLayoutManager.LayoutParams)localObject;
-      if (getItemViewType(paramViewHolder.getLayoutPosition()) == 1) {
-        break label49;
-      }
+      paramView.b(((atws)this.jdField_a_of_type_Atwv).b);
+      label172:
+      paramView.a(this.jdField_a_of_type_Atwv.n);
+      paramView = paramView.a();
+      bazo.a((BaseActivity)this.jdField_a_of_type_Atur.jdField_a_of_type_AndroidContentContext, 0L, this.jdField_a_of_type_Atwv.e, null, 20006, "", paramView);
     }
     for (;;)
     {
-      ((StaggeredGridLayoutManager.LayoutParams)localObject).setFullSpan(bool);
+      this.jdField_a_of_type_Bfol.dismiss();
       return;
-      label49:
-      bool = false;
+      paramView = "2";
+      break;
+      label231:
+      if ((this.jdField_a_of_type_Atwv instanceof atwu))
+      {
+        paramView.d(((atwu)this.jdField_a_of_type_Atwv).b).b(((atwu)this.jdField_a_of_type_Atwv).a);
+        break label172;
+      }
+      if ((this.jdField_a_of_type_Atwv instanceof atww))
+      {
+        paramView.b(((atww)this.jdField_a_of_type_Atwv).a);
+        break label172;
+      }
+      if ((this.jdField_a_of_type_Atwv instanceof atwy))
+      {
+        paramView.b(((atwy)this.jdField_a_of_type_Atwv).a);
+        break label172;
+      }
+      if (!(this.jdField_a_of_type_Atwv instanceof atwz)) {
+        break label172;
+      }
+      break label172;
+      label341:
+      bcpw.a(this.jdField_a_of_type_Atur.jdField_a_of_type_AndroidContentContext, 2, ajyc.a(2131701024), 0).a();
     }
   }
 }

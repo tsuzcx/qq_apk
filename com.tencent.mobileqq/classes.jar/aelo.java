@@ -1,127 +1,151 @@
-import android.util.SparseIntArray;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
 import java.util.Iterator;
 import java.util.List;
 
 public class aelo
+  extends aels
 {
-  private static final SparseIntArray a = new SparseIntArray();
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aelp(this);
+  private baxk jdField_a_of_type_Baxk;
+  BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   
-  static
+  public aelo(QQAppInterface paramQQAppInterface, aell paramaell, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, acvj paramacvj)
   {
-    a.put(2, 10);
-    a.put(3, 20);
-    a.put(4, 30);
+    super(paramQQAppInterface, paramaell, paramQQWalletTransferMsgElem, paramInt, paramacvj);
   }
   
-  public static <T extends aell> List<T> a(QQAppInterface paramQQAppInterface, List<T> paramList)
+  public void a(baxk parambaxk)
   {
-    paramQQAppInterface = new ArrayList();
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchStickerRecEmoticonUtil", 2, "getSearchStickerRecEmotions stickerRecSearches.size:" + paramList.size());
-      }
-      Collections.sort(paramList, new aelp());
-      if (paramList.size() > 0) {
-        paramQQAppInterface.add(paramList.remove(0));
-      }
-      if (paramList.size() > 0) {
-        a(paramList, paramQQAppInterface);
-      }
-      if (paramList.size() > 0)
-      {
-        Collections.sort(paramList, new aelq());
-        a(paramList, paramQQAppInterface);
-      }
-      if (QLog.isColorLevel()) {
-        paramList = paramQQAppInterface.iterator();
-      }
+    this.jdField_a_of_type_Baxk = parambaxk;
+  }
+  
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
     }
-    else
+    this.jdField_a_of_type_Aell.b.setVisibility(0);
+    this.jdField_a_of_type_Aell.b.setTextColor(-8947849);
+    this.jdField_a_of_type_Aell.b.setText("QQ专属红包");
+    return false;
+  }
+  
+  public void c()
+  {
+    int j = 0;
+    super.c();
+    if ((this.jdField_a_of_type_Aell == null) || (this.jdField_a_of_type_Aell.g == null)) {}
+    for (;;)
     {
-      while (paramList.hasNext())
+      return;
+      if (this.jdField_a_of_type_Aell.g.getVisibility() != 0) {
+        this.jdField_a_of_type_Aell.g.setVisibility(0);
+      }
+      LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      localLinearLayout.setOrientation(0);
+      this.jdField_a_of_type_Aell.g.addView(localLinearLayout);
+      Object localObject = (RelativeLayout.LayoutParams)localLinearLayout.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).width = -2;
+      ((RelativeLayout.LayoutParams)localObject).height = -2;
+      ((RelativeLayout.LayoutParams)localObject).addRule(14, -1);
+      ((RelativeLayout.LayoutParams)localObject).addRule(12, -1);
+      ((RelativeLayout.LayoutParams)localObject).bottomMargin = bawz.a(this.jdField_a_of_type_AndroidContentContext, 25.0F);
+      int k = bawz.a(this.jdField_a_of_type_AndroidContentContext, 1.0F);
+      int i;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.size() <= 1) {
+        i = 0;
+      }
+      while ((j < 5) && (j < this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.size()))
       {
-        aell localaell = (aell)paramList.next();
-        QLog.d("SearchStickerRecEmoticonUtil", 2, "getSearchStickerRecEmotions item.ClickNum:" + localaell.b() + ",item.ExposeNum: " + localaell.a());
+        long l = ((Long)this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.get(j)).longValue();
+        localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+        localLinearLayout.addView((View)localObject);
+        LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((ImageView)localObject).getLayoutParams();
+        localLayoutParams.width = bawz.a(this.jdField_a_of_type_AndroidContentContext, 33.0F);
+        localLayoutParams.height = bawz.a(this.jdField_a_of_type_AndroidContentContext, 33.0F);
+        ((ImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
+        if (j > 0) {
+          localLayoutParams.leftMargin = i;
+        }
+        ((ImageView)localObject).setImageDrawable(baxt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l), (byte)4));
+        ((ImageView)localObject).setBackgroundResource(2130846432);
+        ((ImageView)localObject).setPadding(k, k, k, k);
+        j += 1;
         continue;
-        return paramQQAppInterface;
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.size() == 2) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.size() == 3)) {
+          i = bawz.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
+        } else if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.size() == 4) {
+          i = 0;
+        } else if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.size() >= 5) {
+          i = -bawz.a(this.jdField_a_of_type_AndroidContentContext, 8.0F);
+        } else {
+          i = 0;
+        }
       }
-      QLog.d("SearchStickerRecEmoticonUtil", 2, "getSearchStickerRecEmotions stickerRecEmotionList.size:" + paramQQAppInterface.size());
     }
-    return paramQQAppInterface;
   }
   
-  private static <T extends aell> void a(List<T> paramList1, List<T> paramList2)
+  public void h()
   {
-    if (paramList2 == null) {}
-    aell localaell;
-    do
+    super.h();
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg == null) || (this.jdField_a_of_type_ComTencentMobileqqDataQQWalletRedPacketMsg == null) || (this.jdField_a_of_type_Aell == null) || (this.jdField_a_of_type_Aell.f == null)) {}
+    while ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSender()) || (ahfj.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg))) {
+      return;
+    }
+    View localView = new View(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Aell.f.setVisibility(0);
+    this.jdField_a_of_type_Aell.f.addView(localView);
+    Object localObject = (RelativeLayout.LayoutParams)localView.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).width = bawz.a(this.jdField_a_of_type_AndroidContentContext, 33.5F);
+    ((RelativeLayout.LayoutParams)localObject).height = bawz.a(this.jdField_a_of_type_AndroidContentContext, 33.5F);
+    ((RelativeLayout.LayoutParams)localObject).leftMargin = bawz.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataQQWalletRedPacketMsg.specifyUinList != null)
     {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqDataQQWalletRedPacketMsg.specifyUinList.iterator();
+      Long localLong;
       do
       {
-        return;
-      } while ((paramList1 == null) || (paramList1.isEmpty()));
-      for (localaell = (aell)paramList1.remove(0); (a(paramList2, localaell)) && (paramList1.size() > 0); localaell = (aell)paramList1.remove(0)) {}
-    } while (a(paramList2, localaell));
-    paramList2.add(localaell);
-  }
-  
-  private static <T extends aell> boolean a(List<T> paramList, T paramT)
-  {
-    if ((paramList == null) || (paramT == null)) {
-      return false;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        localLong = (Long)((Iterator)localObject).next();
+      } while (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c().equals(localLong + ""));
     }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    for (int i = 1;; i = 0)
     {
-      Object localObject2 = (aell)paramList.next();
-      if (((aell)localObject2).c() != paramT.c())
+      if (i != 0)
       {
-        Object localObject3;
-        Object localObject1;
-        String str;
-        if ((((aell)localObject2).c() == 2) && (paramT.c() == 4))
-        {
-          localObject2 = (aemg)localObject2;
-          localObject3 = (aeme)paramT;
-          localObject1 = ((aeme)localObject3).a.emoPath;
-          localObject3 = ((aeme)localObject3).a.eId;
-          str = ((aemg)localObject2).a.epId;
-          localObject2 = ((aemg)localObject2).a.eId;
-          if ((localObject1 != null) && (((String)localObject1).equals(str)) && (localObject3 != null) && (((String)localObject3).equals(localObject2))) {
-            return true;
-          }
+        localView.setBackgroundResource(2130846435);
+        localView.setTag(Integer.valueOf(1));
+      }
+      for (;;)
+      {
+        if (((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)) && (((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment() != null)) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
         }
-        else if ((((aell)localObject2).c() == 4) && (paramT.c() == 2))
-        {
-          localObject1 = (aemg)paramT;
-          localObject3 = (aeme)localObject2;
-          localObject2 = ((aeme)localObject3).a.emoPath;
-          localObject3 = ((aeme)localObject3).a.eId;
-          str = ((aemg)localObject1).a.epId;
-          localObject1 = ((aemg)localObject1).a.eId;
-          if ((localObject2 != null) && (((String)localObject2).equals(str)) && (localObject3 != null) && (((String)localObject3).equals(localObject1))) {
-            return true;
-          }
-        }
-        else
-        {
-          if ((((aell)localObject2).c() == 4) && (paramT.c() == 3) && (((aeme)localObject2).b() != null) && (((aeme)localObject2).b().equals(((aelx)paramT).b()))) {
-            return true;
-          }
-          if ((((aell)localObject2).c() == 3) && (paramT.c() == 4) && (((aeme)paramT).b() != null) && (((aeme)paramT).b().equals(((aelx)localObject2).b()))) {
-            return true;
-          }
-        }
+        localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        ahiy.a(localView, 0.6F);
+        return;
+        localView.setBackgroundResource(2130846434);
+        localView.setTag(Integer.valueOf(0));
       }
     }
-    return false;
   }
 }
 

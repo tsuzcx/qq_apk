@@ -1,117 +1,114 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
-class axuf
-  implements ITransactionCallback
+public class axuf
 {
-  axuf(axue paramaxue, long paramLong) {}
+  public final int a;
+  public long a;
+  private String jdField_a_of_type_JavaLangString;
+  private List<axud> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private short jdField_a_of_type_Short;
+  boolean jdField_a_of_type_Boolean = false;
+  private int jdField_b_of_type_Int;
+  public long b;
+  private short jdField_b_of_type_Short;
+  private int jdField_c_of_type_Int;
+  private long jdField_c_of_type_Long;
+  private short jdField_c_of_type_Short = 1;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public axuf(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2)
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-    paramArrayOfByte = (String)paramHashMap.get("tc_p:");
-    String str1 = (String)paramHashMap.get("rep_bdhTrans");
-    String str2 = (String)paramHashMap.get("segspercnt");
-    String str3 = (String)paramHashMap.get("param_conf_segSize");
-    String str4 = (String)paramHashMap.get("param_conf_segNum");
-    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms");
-    }
-    this.jdField_a_of_type_Axue.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", paramArrayOfByte);
-    this.jdField_a_of_type_Axue.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str1);
-    this.jdField_a_of_type_Axue.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str2);
-    this.jdField_a_of_type_Axue.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str3);
-    this.jdField_a_of_type_Axue.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str4);
-    this.jdField_a_of_type_Axue.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
-    this.jdField_a_of_type_Axue.a(l2, l3, l4, l5);
-    this.jdField_a_of_type_Axue.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Axue.b);
-    this.jdField_a_of_type_Axue.d();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Int = avcb.a(paramQQAppInterface, paramInt1, aysy.a().a());
+    avbr.a(paramString);
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public int a()
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-    String str1 = (String)paramHashMap.get("tc_p:");
-    String str2 = (String)paramHashMap.get("rep_bdhTrans");
-    String str3 = (String)paramHashMap.get("segspercnt");
-    String str4 = (String)paramHashMap.get("param_conf_segSize");
-    String str5 = (String)paramHashMap.get("param_conf_segNum");
-    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms ,fileSize:" + this.jdField_a_of_type_Axue.jdField_a_of_type_Axqf.jdField_a_of_type_Long + " transInfo:" + str2);
-    }
-    this.jdField_a_of_type_Axue.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", str1);
-    this.jdField_a_of_type_Axue.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str2);
-    this.jdField_a_of_type_Axue.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str3);
-    this.jdField_a_of_type_Axue.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str4);
-    this.jdField_a_of_type_Axue.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str5);
-    this.jdField_a_of_type_Axue.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
-    this.jdField_a_of_type_Axue.b.b();
-    this.jdField_a_of_type_Axue.b.a = 1;
-    this.jdField_a_of_type_Axue.s = this.jdField_a_of_type_Axue.q;
-    paramHashMap = new Bdh_extinfo.UploadPicExtInfo();
-    try
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public File a()
+  {
+    return new File(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public List<axud> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public short a()
+  {
+    return this.jdField_b_of_type_Short;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Short = 0;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_c_of_type_Long = paramLong;
+  }
+  
+  public void a(short paramShort)
+  {
+    this.jdField_b_of_type_Short = paramShort;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (!paramBoolean)
     {
-      paramHashMap.mergeFrom(paramArrayOfByte, 0, paramArrayOfByte.length);
-      axue.a(this.jdField_a_of_type_Axue, paramHashMap.bytes_download_url.get().toStringUtf8());
-      if (axue.a(this.jdField_a_of_type_Axue) == null)
-      {
-        this.jdField_a_of_type_Axue.a(-1, "URL IS NULL", "", this.jdField_a_of_type_Axue.b);
-        this.jdField_a_of_type_Axue.d();
-        this.jdField_a_of_type_Axue.a(l2, l3, l4, l5);
-        this.jdField_a_of_type_Axue.jdField_a_of_type_Axqf.a();
-        return;
-      }
+      avbr.b(this.jdField_a_of_type_JavaLangString);
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        continue;
-        axue.a(this.jdField_a_of_type_Axue);
-      }
-    }
+    avbr.a(this.jdField_a_of_type_JavaLangString);
   }
   
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart()
+  public void a(byte[] paramArrayOfByte, int paramInt)
   {
-    this.jdField_a_of_type_Axue.d("<BDH_LOG> onTransStart()");
-    this.jdField_a_of_type_Axue.b.a();
+    avbr.a(this.jdField_a_of_type_JavaLangString, paramArrayOfByte, paramInt);
   }
   
-  public void onUpdateProgress(int paramInt)
+  public int b()
   {
-    axue localaxue = this.jdField_a_of_type_Axue;
-    axqf localaxqf = this.jdField_a_of_type_Axue.jdField_a_of_type_Axqf;
-    long l = paramInt;
-    localaxqf.e = l;
-    localaxue.s = l;
-    if ((paramInt <= this.jdField_a_of_type_Axue.q) && (!this.jdField_a_of_type_Axue.o) && (!this.jdField_a_of_type_Axue.k)) {
-      this.jdField_a_of_type_Axue.i();
-    }
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public short b()
+  {
+    return this.jdField_c_of_type_Short;
+  }
+  
+  public void b(short paramShort)
+  {
+    this.jdField_c_of_type_Short = paramShort;
+  }
+  
+  public short c()
+  {
+    return this.jdField_a_of_type_Short;
+  }
+  
+  public void c(short paramShort)
+  {
+    this.jdField_a_of_type_Short = paramShort;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axuf
  * JD-Core Version:    0.7.0.1
  */

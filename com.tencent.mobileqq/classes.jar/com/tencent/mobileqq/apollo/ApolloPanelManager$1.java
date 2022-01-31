@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.apollo;
 
-import aify;
-import airt;
-import aisi;
-import aisl;
-import ajbx;
+import aisr;
+import ajer;
+import ajfg;
+import ajfj;
+import ajpz;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ApolloPanelManager$1
   implements Runnable
 {
-  public ApolloPanelManager$1(aify paramaify, ajbx paramajbx) {}
+  public ApolloPanelManager$1(aisr paramaisr, ajpz paramajpz) {}
   
   public void run()
   {
-    this.this$0.a(this.this$0.a.get(), true, aify.a(this.this$0));
-    if ((this.this$0.a.get() == 0) && (!aify.a(this.this$0)) && (this.this$0.a() != null))
+    this.this$0.a(this.this$0.a.get(), true, aisr.a(this.this$0));
+    if ((this.this$0.a.get() == 0) && (!aisr.a(this.this$0)) && (this.this$0.a() != null))
     {
-      airt localairt = aisl.a(this.this$0.a()).a();
-      if (localairt != null) {
-        localairt.a(this.this$0.b);
+      ajer localajer = ajfj.a(this.this$0.a()).a();
+      if (localajer != null) {
+        localajer.a(this.this$0.b);
       }
     }
-    if ((aify.a(this.this$0)) || (this.this$0.a.get() > 0)) {
-      aify.a(this.this$0, this.a);
+    if ((aisr.a(this.this$0)) || (this.this$0.a.get() > 0)) {
+      aisr.a(this.this$0, this.a);
     }
   }
 }

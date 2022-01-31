@@ -1,30 +1,22 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule.2;
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agpw
-  implements agpa
+final class agpw
+  implements DialogInterface.OnClickListener
 {
-  public agpw(QWalletIPCModule.2 param2, ResultReceiver paramResultReceiver) {}
+  agpw(Activity paramActivity) {}
   
-  public void onDownloadResFinished(String paramString1, int paramInt, String paramString2, ResourceInfo paramResourceInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadModule" + paramString2 + "|" + paramResourceInfo + "|" + System.currentTimeMillis());
+    if (paramInt == 0) {
+      this.a.finish();
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("id", paramString1);
-    localBundle.putInt("result", paramInt);
-    localBundle.putString("path", paramString2);
-    localBundle.putSerializable("res_info", paramResourceInfo);
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agpw
  * JD-Core Version:    0.7.0.1
  */

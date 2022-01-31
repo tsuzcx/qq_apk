@@ -1,56 +1,20 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class vjt
-  extends moa
+final class vjt
+  implements Animation.AnimationListener
 {
-  public boolean a;
+  vjt(View paramView) {}
   
-  public vjt(Context paramContext, String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramContext, paramString);
+    this.a.setAnimation(null);
   }
   
-  public String a()
-  {
-    return "key_for_troop_dynamic";
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(String paramString)
-  {
-    boolean bool = true;
-    this.a = true;
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        if (new JSONObject(paramString).getInt("isShowTroopDynamic") != 1) {
-          break label56;
-        }
-        this.a = bool;
-        return;
-      }
-      catch (JSONException paramString) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("readQuickShotShareToStoryConfig", 2, paramString.getMessage());
-      return;
-      label56:
-      bool = false;
-    }
-  }
-  
-  public String b()
-  {
-    return "key_for_troop_dynamic_version";
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

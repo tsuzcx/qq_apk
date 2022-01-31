@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import atmo;
-import atoc;
+import aukm;
+import auma;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="uin,type")
 public class DraftTextInfo
-  extends atmo
+  extends aukm
 {
   public String mAtInfoStr;
   public String mSourceAtInfoStr;
@@ -24,7 +24,7 @@ public class DraftTextInfo
   public String text;
   public long time;
   public int type;
-  @atoc
+  @auma
   public String uin;
 }
 

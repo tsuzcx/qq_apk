@@ -1,31 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.subscribe.comment.CommentPresenter.5.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class wno
-  implements DialogInterface.OnClickListener
+  implements View.OnLayoutChangeListener
 {
-  public wno(TroopGiftPanel paramTroopGiftPanel) {}
+  wno(wnl paramwnl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    QLog.d(wnl.a(), 2, "OnLayoutChangeListener scrollToReplyView start mScrollToTargetReply" + wnl.c(this.a));
+    if ((wnl.a(this.a) != null) && (wnl.c(this.a))) {
+      wnl.a(this.a, new CommentPresenter.5.1(this));
     }
-    if (paramInt == 1)
-    {
-      baoz.a(this.a.a, "mvip.n.a.qlw_forsvip", "CJCLUBT", 3, false, true);
-      awqx.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_sure_click", 0, 0, "", "", "", "");
-    }
-    while (paramInt != 0) {
-      return;
-    }
-    awqx.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_cancel_click", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wno
  * JD-Core Version:    0.7.0.1
  */

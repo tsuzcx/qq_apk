@@ -1,22 +1,15 @@
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.LayoutParams;
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
 
 public class tqd
-  implements Comparator<View>
+  extends tri
 {
-  public int a(View paramView1, View paramView2)
+  public tqd(@NonNull BannerFeedItem paramBannerFeedItem)
   {
-    paramView1 = (XViewPager.LayoutParams)paramView1.getLayoutParams();
-    paramView2 = (XViewPager.LayoutParams)paramView2.getLayoutParams();
-    if (paramView1.a != paramView2.a)
-    {
-      if (paramView1.a) {
-        return 1;
-      }
-      return -1;
-    }
-    return paramView1.b - paramView2.b;
+    this.a = paramBannerFeedItem.shareInfo.a;
+    this.b = paramBannerFeedItem.shareInfo.b;
+    this.c = paramBannerFeedItem.shareInfo.d;
+    this.d = paramBannerFeedItem.shareInfo.c;
   }
 }
 

@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache.1;
-import java.io.File;
-import java.util.Comparator;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import java.lang.ref.WeakReference;
 
 public class ajxd
-  implements Comparator<File>
+  implements Handler.Callback
 {
-  public ajxd(CleanCache.1 param1) {}
+  private WeakReference<FrameHelperActivity> a;
   
-  public int a(File paramFile1, File paramFile2)
+  public ajxd(FrameHelperActivity paramFrameHelperActivity)
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
+    this.a = new WeakReference(paramFrameHelperActivity);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    FrameHelperActivity localFrameHelperActivity = (FrameHelperActivity)this.a.get();
+    if (localFrameHelperActivity != null) {
+      localFrameHelperActivity.a(paramMessage);
     }
-    return 0;
+    return false;
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aydb;
+import azdl;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class JoinTroopUtil$4
   implements Runnable
 {
-  public JoinTroopUtil$4(aydb paramaydb) {}
+  public JoinTroopUtil$4(azdl paramazdl) {}
   
   public void run()
   {
-    aydb.a(this.this$0, aydb.a(this.this$0).troopUin, 2);
+    azdl.a(this.this$0, azdl.a(this.this$0).troopUin, 2);
     this.this$0.dismiss();
   }
 }

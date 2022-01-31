@@ -1,16 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public abstract interface poj
+public class poj
+  extends RecyclerView.ViewHolder
 {
-  public abstract String a(BaseArticleInfo paramBaseArticleInfo, TemplateBean paramTemplateBean, ViewBase paramViewBase);
-  
-  public abstract void a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void a(Object paramObject);
-  
-  public abstract boolean a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean);
+  public poj(pob parampob, View paramView)
+  {
+    super(paramView);
+  }
 }
 
 

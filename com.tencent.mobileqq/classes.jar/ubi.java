@@ -1,31 +1,18 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 public class ubi
-  extends atdi
+  implements ttg
 {
-  public ubi(QQStoryMainController paramQQStoryMainController) {}
+  public ubi(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  protected void a(Object paramObject)
+  public void a()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    upt localupt;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQStoryMainController", 2, "refresh red point if needed");
-      }
-      paramObject = ((mmy)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(70)).a(52);
-      if (QLog.isColorLevel()) {
-        QLog.i("storyRedDotDebug", 2, "更新小黑条红点:" + mmy.a(paramObject));
-      }
-      localupt = (upt)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.a("MessageNotifySegment");
-    } while (localupt == null);
-    localupt.a(paramObject);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.p();
+    veg.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoaded");
+  }
+  
+  public void b()
+  {
+    veg.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoadedFailed");
   }
 }
 

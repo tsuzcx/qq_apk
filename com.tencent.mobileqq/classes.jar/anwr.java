@@ -1,24 +1,23 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 public class anwr
-  extends anwq
 {
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  
-  public anwr(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
+  public static Bundle a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    super(2, paramString1);
-    this.a = paramString2;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString3;
+    int i = ((akfw)paramQQAppInterface.a(13)).g();
+    if (QLog.isColorLevel()) {
+      QLog.i("EmoticonContentProvider", 2, "call, vipType = " + i);
+    }
+    paramQQAppInterface = new Bundle();
+    paramQQAppInterface.putInt(paramString, i);
+    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anwr
  * JD-Core Version:    0.7.0.1
  */

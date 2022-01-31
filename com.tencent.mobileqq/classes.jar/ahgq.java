@@ -1,43 +1,22 @@
-import android.app.Activity;
-import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class ahgq
-  implements ahgr
+  implements View.OnClickListener
 {
-  ahgq(ahgn paramahgn, ahgr paramahgr) {}
+  ahgq(ahgn paramahgn, String paramString) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ahgn.a(this.jdField_a_of_type_Ahgn, new bbms(ahgn.a(this.jdField_a_of_type_Ahgn), ahgn.a(this.jdField_a_of_type_Ahgn).getResources().getDimensionPixelSize(2131167766)));
-    ahgn.a(this.jdField_a_of_type_Ahgn).c(2131652170);
-    ahgn.a(this.jdField_a_of_type_Ahgn).setCancelable(false);
-    ahgn.a(this.jdField_a_of_type_Ahgn).show();
-    if (this.jdField_a_of_type_Ahgr != null) {
-      this.jdField_a_of_type_Ahgr.a();
+    ahih.a("sq.cptp", 1, 0, null, false);
+    if (!nam.a(this.jdField_a_of_type_JavaLangString))
+    {
+      QLog.d("SpringBigInsertPage", 1, "invalide actionUrl: " + this.jdField_a_of_type_JavaLangString);
+      return;
     }
-  }
-  
-  public void a(String paramString)
-  {
-    if (ahgn.a(this.jdField_a_of_type_Ahgn) != null) {
-      ahgn.a(this.jdField_a_of_type_Ahgn).dismiss();
-    }
-    this.jdField_a_of_type_Ahgn.a(true);
-    ahgn.a(this.jdField_a_of_type_Ahgn, false);
-    if (this.jdField_a_of_type_Ahgr != null) {
-      this.jdField_a_of_type_Ahgr.a(paramString);
-    }
-  }
-  
-  public void b()
-  {
-    if (ahgn.a(this.jdField_a_of_type_Ahgn) != null) {
-      ahgn.a(this.jdField_a_of_type_Ahgn).dismiss();
-    }
-    ahgn.a(this.jdField_a_of_type_Ahgn, false);
-    if (this.jdField_a_of_type_Ahgr != null) {
-      this.jdField_a_of_type_Ahgr.b();
-    }
+    this.jdField_a_of_type_Ahgn.a();
+    ahgn.a(this.jdField_a_of_type_Ahgn, this.jdField_a_of_type_JavaLangString);
   }
 }
 

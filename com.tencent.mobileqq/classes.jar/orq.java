@@ -1,11 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-import java.util.List;
-
-public abstract interface orq
+public class orq
 {
-  public abstract void a(List<orn> paramList);
+  public int a;
+  public String a;
+  public String b;
   
-  public abstract void b(SelectPositionModule.PositionData paramPositionData);
+  public String toString()
+  {
+    return "styleID = " + this.jdField_a_of_type_JavaLangString + ", proteusData = " + this.b + ", rankWeight = " + this.jdField_a_of_type_Int;
+  }
 }
 
 

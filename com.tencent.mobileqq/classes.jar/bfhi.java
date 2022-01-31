@@ -1,80 +1,33 @@
-import android.os.Binder;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class bfhi
-  extends Binder
-  implements bfhh
+class bfhi
+  implements bfjb
 {
-  public bfhi()
-  {
-    attachInterface(this, "cooperation.qqdataline.ipc.IDatalineService");
-  }
+  bfhi(bfhh parambfhh) {}
   
-  public static bfhh a(IBinder paramIBinder)
+  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qqdataline.ipc.IDatalineService");
-    if ((localIInterface != null) && ((localIInterface instanceof bfhh))) {
-      return (bfhh)localIInterface;
-    }
-    return new bfhj(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    String str1 = null;
-    Object localObject = null;
-    switch (paramInt1)
+    if ((paramObject1 != null) && ((paramObject1 instanceof String)) && (paramObject2 != null) && ((paramObject2 instanceof byte[])))
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qqdataline.ipc.IDatalineService");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("cooperation.qqdataline.ipc.IDatalineService");
-      str1 = paramParcel1.readString();
-      if (paramParcel1.readInt() != 0) {
-        localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.CSP", 2, String.format("Cookie: %08X, cmd: %s", new Object[] { Long.valueOf(paramLong1), paramObject1 }));
       }
-      paramParcel1 = a(str1, (Bundle)localObject);
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
+      if (paramLong1 == 0L) {
+        break label99;
       }
-      for (;;)
-      {
-        return true;
-        paramParcel2.writeInt(0);
-      }
+      this.a.a((String)paramObject1, (byte[])paramObject2, new bfhl(this.a, paramLong1));
     }
-    paramParcel1.enforceInterface("cooperation.qqdataline.ipc.IDatalineService");
-    String str2 = paramParcel1.readString();
-    localObject = str1;
-    if (paramParcel1.readInt() != 0) {
-      localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+    for (;;)
+    {
+      return 0;
+      label99:
+      this.a.a((String)paramObject1, (byte[])paramObject2, null);
     }
-    a(str2, (Bundle)localObject);
-    paramParcel2.writeNoException();
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfhi
  * JD-Core Version:    0.7.0.1
  */

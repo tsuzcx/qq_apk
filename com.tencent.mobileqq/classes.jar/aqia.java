@@ -1,18 +1,24 @@
-public abstract interface aqia
+import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+import java.io.File;
+import java.io.FileFilter;
+
+public class aqia
+  implements FileFilter
 {
-  public abstract void a(int paramInt);
+  public aqia(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
   
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public boolean accept(File paramFile)
+  {
+    if (paramFile.getName().endsWith(".png")) {}
+    while (paramFile.getName().endsWith(".jpg")) {
+      return true;
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqia
  * JD-Core Version:    0.7.0.1
  */

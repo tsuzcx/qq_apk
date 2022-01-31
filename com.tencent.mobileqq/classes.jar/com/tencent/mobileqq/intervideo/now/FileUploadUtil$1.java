@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.intervideo.now;
 
 import android.util.Log;
-import aqns;
+import arhx;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +14,7 @@ public final class FileUploadUtil$1
   
   public void run()
   {
-    aqns.a(aqns.a());
+    arhx.a(arhx.a());
     HashMap localHashMap = new HashMap();
     String str = "qiqi" + UUID.randomUUID().toString().replace("-", "");
     Log.i("upload", str);
@@ -24,7 +24,7 @@ public final class FileUploadUtil$1
     localHashMap.put("taskTargetId", this.a);
     try
     {
-      aqns.a("http://upload.huayang.qq.com/cgi-bin/uploadfile", localHashMap, new File(this.b));
+      arhx.a("http://upload.huayang.qq.com/cgi-bin/uploadfile", localHashMap, new File(this.b));
       return;
     }
     catch (Exception localException)

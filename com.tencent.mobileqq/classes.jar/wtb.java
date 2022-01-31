@@ -1,47 +1,29 @@
-import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 class wtb
-  implements bhwg<wsh>
+  implements bfoq
 {
-  wtb(wta paramwta) {}
+  wtb(wsz paramwsz, String paramString1, String paramString2, wtk paramwtk, bfol parambfol) {}
   
-  public void a(@Nullable wsh paramwsh)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramwsh == null) {}
-    do
+    switch (paramInt)
     {
-      return;
-      if (paramwsh == wsh.a)
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      do
       {
-        wta.a(this.a).setImageResource(2130843620);
-        wta.a(this.a).setVisibility(0);
-        wta.a(this.a).setBackgroundResource(2130837645);
-        wta.b(this.a).setBackgroundResource(2130837600);
-        wta.c(this.a).setVisibility(8);
-        wta.d(this.a).setVisibility(8);
         return;
-      }
-      if (paramwsh == wsh.c)
-      {
-        wta.a(this.a).setImageResource(2130843619);
-        wta.a(this.a).setVisibility(0);
-        wta.a(this.a).setBackgroundResource(2130837644);
-        wta.b(this.a).setBackgroundResource(2130837599);
-        wta.c(this.a).setVisibility(0);
-        wta.d(this.a).setVisibility(0);
-        return;
-      }
-    } while (paramwsh != wsh.b);
-    wta.a(this.a).setImageResource(2130843620);
-    wta.a(this.a).setVisibility(8);
+      } while (xeq.a("subScribe_delete_draft"));
+      this.jdField_a_of_type_Wsz.a(this.jdField_a_of_type_JavaLangString, this.b, new wtc(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wtb
  * JD-Core Version:    0.7.0.1
  */

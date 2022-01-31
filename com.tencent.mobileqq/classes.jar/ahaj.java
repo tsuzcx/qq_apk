@@ -1,18 +1,27 @@
-import com.tencent.widget.XListView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.MyAnimationListener;
 
-class ahaj
-  implements sxx
+public class ahaj
+  implements AnimationView.MyAnimationListener
 {
-  ahaj(ahai paramahai) {}
+  public ahaj(ThemeHbFragment paramThemeHbFragment) {}
   
-  public void a()
+  public void onAnimationEnd(AnimationView paramAnimationView) {}
+  
+  public void onAnimationRepeat(AnimationView paramAnimationView) {}
+  
+  public void onAnimationStart(AnimationView paramAnimationView)
   {
-    this.a.a.invalidateViews();
+    if (ThemeHbFragment.a(this.a).getChildCount() > 0) {
+      ThemeHbFragment.a(this.a).removeViewAt(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahaj
  * JD-Core Version:    0.7.0.1
  */

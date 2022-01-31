@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import rcx;
+import rpl;
 
 class ReadInJoyChannelActivity$2
   implements Runnable
@@ -10,8 +10,8 @@ class ReadInJoyChannelActivity$2
   
   public void run()
   {
-    rcx.a().a(true);
-    rcx.a().b(this.this$0.app, NetConnInfoCenter.getServerTimeMillis(), -1, -1);
+    rpl.a().a(true);
+    rpl.a().b(this.this$0.app, NetConnInfoCenter.getServerTimeMillis(), -1, -1);
   }
 }
 

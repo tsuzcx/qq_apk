@@ -1,21 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
 
-class anwb
-  implements Animation.AnimationListener
+public class anwb
 {
-  anwb(anvy paramanvy, int paramInt, boolean paramBoolean) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Anvy.jdField_a_of_type_Float = this.jdField_a_of_type_Anvy.b;
-    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_Anvy.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public double a;
+  public float a = 1.0F;
+  public int a;
+  public Drawable a;
+  public EmojiStickerManager.StickerInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public Drawable b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
 }
 
 

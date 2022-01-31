@@ -1,15 +1,10 @@
-import com.tencent.widget.AbsListView;
-
-public class belw
-  implements begh
+public abstract interface belw<T>
 {
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
+  public abstract T a(belx parambelx);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     belw
  * JD-Core Version:    0.7.0.1
  */

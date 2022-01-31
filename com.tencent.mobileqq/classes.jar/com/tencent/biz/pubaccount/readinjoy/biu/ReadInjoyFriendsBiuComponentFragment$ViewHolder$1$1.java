@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.biu;
 
-import nst;
-import nsu;
+import oed;
+import oee;
 
 public class ReadInjoyFriendsBiuComponentFragment$ViewHolder$1$1
   implements Runnable
 {
-  public ReadInjoyFriendsBiuComponentFragment$ViewHolder$1$1(nsu paramnsu) {}
+  public ReadInjoyFriendsBiuComponentFragment$ViewHolder$1$1(oee paramoee) {}
   
   public void run()
   {
-    nst.a(this.a.a, this.a.a.a);
+    oed.a(this.a.a, this.a.a.a);
   }
 }
 

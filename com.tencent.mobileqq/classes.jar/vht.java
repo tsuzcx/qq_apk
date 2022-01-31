@@ -1,24 +1,20 @@
-import java.io.File;
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public final class vht
-  implements Comparator<File>
+class vht
+  extends SimpleJob<Object>
 {
-  public int a(File paramFile1, File paramFile2)
+  vht(vhp paramvhp, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
   {
-    long l = paramFile1.lastModified() - paramFile2.lastModified();
-    if (l > 0L) {
-      return -1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return 1;
+    super(paramString1);
   }
   
-  public boolean equals(Object paramObject)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    return true;
+    vel.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return null;
   }
 }
 

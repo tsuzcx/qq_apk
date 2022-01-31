@@ -1,20 +1,22 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageButton;
 import com.dataline.activities.LiteActivity;
+import com.tencent.widget.XEditTextEx;
 
 public class bv
-  implements TextWatcher
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   public bv(LiteActivity paramLiteActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onGlobalLayout()
   {
-    this.a.q();
+    if ((this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLineCount() > 3) && (!LiteActivity.a(this.a)) && (!axmt.b()))
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

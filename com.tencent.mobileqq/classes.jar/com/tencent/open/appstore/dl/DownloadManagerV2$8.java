@@ -1,26 +1,26 @@
 package com.tencent.open.appstore.dl;
 
-import bccu;
-import bcds;
+import bdgv;
+import bdht;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
 public class DownloadManagerV2$8
   implements Runnable
 {
-  public DownloadManagerV2$8(bccu parambccu, String paramString, DownloadInfo paramDownloadInfo) {}
+  public DownloadManagerV2$8(bdgv parambdgv, String paramString, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
     try
     {
-      bccu.a(this.this$0).cancelDownloadTask(this.jdField_a_of_type_JavaLangString);
-      bccu.a(this.this$0, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+      bdgv.a(this.this$0).cancelDownloadTask(this.jdField_a_of_type_JavaLangString);
+      bdgv.a(this.this$0, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
       return;
     }
     catch (Exception localException)
     {
-      bcds.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
+      bdht.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
     }
   }
 }

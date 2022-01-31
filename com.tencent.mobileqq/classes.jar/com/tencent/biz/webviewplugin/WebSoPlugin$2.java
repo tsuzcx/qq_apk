@@ -1,18 +1,18 @@
 package com.tencent.biz.webviewplugin;
 
 import android.app.Activity;
-import bbac;
-import bbee;
-import xeh;
+import bcdb;
+import bche;
+import xnh;
 
 public class WebSoPlugin$2
   implements Runnable
 {
-  public WebSoPlugin$2(xeh paramxeh, String paramString) {}
+  public WebSoPlugin$2(xnh paramxnh, String paramString) {}
   
   public void run()
   {
-    if ((bbee.c(this.a)) && (this.this$0.mRuntime != null) && (this.this$0.mRuntime.a() != null)) {
+    if ((bche.c(this.a)) && (this.this$0.mRuntime != null) && (this.this$0.mRuntime.a() != null)) {
       this.this$0.mRuntime.a().runOnUiThread(new WebSoPlugin.2.1(this));
     }
   }

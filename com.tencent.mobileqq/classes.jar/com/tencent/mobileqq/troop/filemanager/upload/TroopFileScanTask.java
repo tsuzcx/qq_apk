@@ -2,9 +2,9 @@ package com.tencent.mobileqq.troop.filemanager.upload;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import aysb;
-import ayty;
-import ayua;
+import azsr;
+import azuo;
+import azuq;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.Timer;
@@ -14,8 +14,8 @@ public class TroopFileScanTask
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private ayty jdField_a_of_type_Ayty;
-  private ayua jdField_a_of_type_Ayua;
+  private azuo jdField_a_of_type_Azuo;
+  private azuq jdField_a_of_type_Azuq;
   private String jdField_a_of_type_JavaLangString;
   private Timer jdField_a_of_type_JavaUtilTimer;
   private boolean jdField_a_of_type_Boolean = true;
@@ -27,41 +27,41 @@ public class TroopFileScanTask
   private byte[] jdField_c_of_type_ArrayOfByte;
   private int d = 0;
   
-  protected TroopFileScanTask(long paramLong, String paramString, ayty paramayty, ayua paramayua)
+  protected TroopFileScanTask(long paramLong, String paramString, azuo paramazuo, azuq paramazuq)
   {
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Ayua = paramayua;
-    this.jdField_a_of_type_Ayty = paramayty;
+    this.jdField_a_of_type_Azuq = paramazuq;
+    this.jdField_a_of_type_Azuo = paramazuo;
   }
   
-  public static TroopFileScanTask a(long paramLong, String paramString, ayty paramayty, ayua paramayua)
+  public static TroopFileScanTask a(long paramLong, String paramString, azuo paramazuo, azuq paramazuq)
   {
     if (TextUtils.isEmpty(paramString))
     {
-      aysb.a("TroopFileScanTask", aysb.jdField_a_of_type_Int, "[" + paramLong + "] getTask filepath=null");
+      azsr.a("TroopFileScanTask", azsr.jdField_a_of_type_Int, "[" + paramLong + "] getTask filepath=null");
       return null;
     }
-    return new TroopFileScanTask(paramLong, paramString, paramayty, paramayua);
+    return new TroopFileScanTask(paramLong, paramString, paramazuo, paramazuq);
   }
   
   private void a(int paramInt, boolean paramBoolean)
   {
     if (this.jdField_a_of_type_Boolean) {
-      aysb.b("TroopFileScanTask", aysb.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] scan fail had stop. errCode:" + paramInt);
+      azsr.b("TroopFileScanTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] scan fail had stop. errCode:" + paramInt);
     }
     do
     {
       return;
-      aysb.c("TroopFileScanTask", aysb.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] scan fail. errCode:" + paramInt + " passiveErr:" + paramBoolean);
+      azsr.c("TroopFileScanTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] scan fail. errCode:" + paramInt + " passiveErr:" + paramBoolean);
       c();
       this.jdField_a_of_type_Boolean = true;
       this.d = paramInt;
-      if (this.jdField_a_of_type_Ayua != null) {
-        this.jdField_a_of_type_Ayua.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long, null, null, null, null, this.d);
+      if (this.jdField_a_of_type_Azuq != null) {
+        this.jdField_a_of_type_Azuq.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long, null, null, null, null, this.d);
       }
-    } while ((paramBoolean) || (this.jdField_a_of_type_Ayty == null));
-    this.jdField_a_of_type_Ayty.a(this.jdField_a_of_type_Long, false, this.d, this);
+    } while ((paramBoolean) || (this.jdField_a_of_type_Azuo == null));
+    this.jdField_a_of_type_Azuo.a(this.jdField_a_of_type_Long, false, this.d, this);
   }
   
   private void a(long paramLong)
@@ -83,7 +83,7 @@ public class TroopFileScanTask
   private void a(boolean paramBoolean)
   {
     if (this.jdField_a_of_type_Boolean) {
-      aysb.b("TroopFileScanTask", aysb.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] scan suc. but had stop. passiveHit:" + paramBoolean);
+      azsr.b("TroopFileScanTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] scan suc. but had stop. passiveHit:" + paramBoolean);
     }
     do
     {
@@ -92,14 +92,14 @@ public class TroopFileScanTask
       String str1 = HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte);
       String str2 = HexUtil.bytes2HexStr(this.jdField_b_of_type_ArrayOfByte);
       String str3 = HexUtil.bytes2HexStr(this.jdField_c_of_type_ArrayOfByte);
-      aysb.c("TroopFileScanTask", aysb.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] scan suc. passiveHit:" + paramBoolean + " md5:" + str1 + " sha1:" + str2 + " sha3:" + str3 + " mWith:" + this.jdField_a_of_type_Int + " mHeight:" + this.jdField_b_of_type_Int + " mDuration:" + this.jdField_c_of_type_Int);
+      azsr.c("TroopFileScanTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] scan suc. passiveHit:" + paramBoolean + " md5:" + str1 + " sha1:" + str2 + " sha3:" + str3 + " mWith:" + this.jdField_a_of_type_Int + " mHeight:" + this.jdField_b_of_type_Int + " mDuration:" + this.jdField_c_of_type_Int);
       this.d = 0;
       this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Ayua != null) {
-        this.jdField_a_of_type_Ayua.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, this.jdField_c_of_type_ArrayOfByte, a(), this.d);
+      if (this.jdField_a_of_type_Azuq != null) {
+        this.jdField_a_of_type_Azuq.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, this.jdField_c_of_type_ArrayOfByte, a(), this.d);
       }
-    } while ((paramBoolean) || (this.jdField_a_of_type_Ayty == null));
-    this.jdField_a_of_type_Ayty.a(this.jdField_a_of_type_Long, true, this.d, this);
+    } while ((paramBoolean) || (this.jdField_a_of_type_Azuo == null));
+    this.jdField_a_of_type_Azuo.a(this.jdField_a_of_type_Long, true, this.d, this);
   }
   
   private void c()
@@ -141,7 +141,7 @@ public class TroopFileScanTask
   
   public void a()
   {
-    aysb.c("TroopFileScanTask", aysb.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] stop");
+    azsr.c("TroopFileScanTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] stop");
     c();
     this.jdField_a_of_type_Boolean = true;
   }
@@ -149,7 +149,7 @@ public class TroopFileScanTask
   public void a(boolean paramBoolean, int paramInt, String paramString, long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, Bundle paramBundle)
   {
     if (this.jdField_a_of_type_Boolean) {
-      aysb.b("TroopFileScanTask", aysb.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] passiveEnd. but had stop");
+      azsr.b("TroopFileScanTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] passiveEnd. but had stop");
     }
     while (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) {
       return;
@@ -176,7 +176,7 @@ public class TroopFileScanTask
   {
     this.jdField_a_of_type_Boolean = false;
     a(90000L);
-    aysb.c("TroopFileScanTask", aysb.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] sart");
+    azsr.c("TroopFileScanTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] sart");
     ThreadManager.post(this, 5, null, true);
     return true;
   }
@@ -193,7 +193,7 @@ public class TroopFileScanTask
   
   public void b()
   {
-    aysb.c("TroopFileScanTask", aysb.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] passiveStart.");
+    azsr.c("TroopFileScanTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] passiveStart.");
     this.jdField_a_of_type_Boolean = false;
     a(90000L);
   }
@@ -218,7 +218,7 @@ public class TroopFileScanTask
     //   3: getfield 25	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_Boolean	Z
     //   6: ifeq +39 -> 45
     //   9: ldc 45
-    //   11: getstatic 49	aysb:jdField_a_of_type_Int	I
+    //   11: getstatic 49	azsr:jdField_a_of_type_Int	I
     //   14: new 51	java/lang/StringBuilder
     //   17: dup
     //   18: invokespecial 52	java/lang/StringBuilder:<init>	()V
@@ -230,10 +230,10 @@ public class TroopFileScanTask
     //   33: ldc 219
     //   35: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   38: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   41: invokestatic 80	aysb:b	(Ljava/lang/String;ILjava/lang/String;)V
+    //   41: invokestatic 80	azsr:b	(Ljava/lang/String;ILjava/lang/String;)V
     //   44: return
     //   45: ldc 45
-    //   47: getstatic 49	aysb:jdField_a_of_type_Int	I
+    //   47: getstatic 49	azsr:jdField_a_of_type_Int	I
     //   50: new 51	java/lang/StringBuilder
     //   53: dup
     //   54: invokespecial 52	java/lang/StringBuilder:<init>	()V
@@ -245,29 +245,29 @@ public class TroopFileScanTask
     //   69: ldc 221
     //   71: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   74: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   77: invokestatic 89	aysb:c	(Ljava/lang/String;ILjava/lang/String;)V
-    //   80: new 223	java/io/File
+    //   77: invokestatic 89	azsr:c	(Ljava/lang/String;ILjava/lang/String;)V
+    //   80: new 223	com/tencent/mm/vfs/VFSFile
     //   83: dup
     //   84: aload_0
     //   85: getfield 31	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   88: invokespecial 226	java/io/File:<init>	(Ljava/lang/String;)V
+    //   88: invokespecial 226	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
     //   91: astore 7
     //   93: aload 7
-    //   95: invokevirtual 229	java/io/File:exists	()Z
+    //   95: invokevirtual 229	com/tencent/mm/vfs/VFSFile:exists	()Z
     //   98: ifeq +21 -> 119
     //   101: aload 7
-    //   103: invokevirtual 232	java/io/File:isFile	()Z
+    //   103: invokevirtual 232	com/tencent/mm/vfs/VFSFile:isFile	()Z
     //   106: ifne +41 -> 147
     //   109: aload 7
-    //   111: invokevirtual 235	java/io/File:length	()J
+    //   111: invokevirtual 235	com/tencent/mm/vfs/VFSFile:length	()J
     //   114: lconst_0
     //   115: lcmp
     //   116: ifge +31 -> 147
     //   119: aload_0
-    //   120: getfield 33	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_Ayua	Layua;
+    //   120: getfield 33	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_Azuq	Lazuq;
     //   123: ifnull +17 -> 140
     //   126: aload_0
-    //   127: getfield 33	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_Ayua	Layua;
+    //   127: getfield 33	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_Azuq	Lazuq;
     //   130: aload_0
     //   131: getfield 29	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_Long	J
     //   134: lconst_0
@@ -279,13 +279,13 @@ public class TroopFileScanTask
     //   146: return
     //   147: aload_0
     //   148: aload 7
-    //   150: invokevirtual 235	java/io/File:length	()J
+    //   150: invokevirtual 235	com/tencent/mm/vfs/VFSFile:length	()J
     //   153: putfield 93	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_b_of_type_Long	J
     //   156: aload_0
-    //   157: getfield 33	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_Ayua	Layua;
+    //   157: getfield 33	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_Azuq	Lazuq;
     //   160: ifnull +20 -> 180
     //   163: aload_0
-    //   164: getfield 33	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_Ayua	Layua;
+    //   164: getfield 33	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_Azuq	Lazuq;
     //   167: aload_0
     //   168: getfield 29	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_Long	J
     //   171: aload_0
@@ -307,22 +307,22 @@ public class TroopFileScanTask
     //   206: ldc 250
     //   208: invokestatic 248	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   211: astore 6
-    //   213: new 252	java/io/FileInputStream
+    //   213: new 252	com/tencent/mm/vfs/VFSFileInputStream
     //   216: dup
     //   217: aload 7
-    //   219: invokespecial 255	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   219: invokespecial 255	com/tencent/mm/vfs/VFSFileInputStream:<init>	(Lcom/tencent/mm/vfs/VFSFile;)V
     //   222: astore 7
     //   224: ldc_w 256
     //   227: newarray byte
     //   229: astore 8
     //   231: aload 7
     //   233: aload 8
-    //   235: invokevirtual 260	java/io/FileInputStream:read	([B)I
+    //   235: invokevirtual 260	com/tencent/mm/vfs/VFSFileInputStream:read	([B)I
     //   238: istore_1
     //   239: iload_1
     //   240: ifge +117 -> 357
     //   243: aload 7
-    //   245: invokevirtual 263	java/io/FileInputStream:close	()V
+    //   245: invokevirtual 263	com/tencent/mm/vfs/VFSFileInputStream:close	()V
     //   248: aload_0
     //   249: aload 5
     //   251: invokevirtual 266	java/security/MessageDigest:digest	()[B
@@ -334,11 +334,11 @@ public class TroopFileScanTask
     //   266: aload_0
     //   267: aload_0
     //   268: getfield 31	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   271: invokestatic 271	apck:b	(Ljava/lang/String;)[B
+    //   271: invokestatic 271	apue:b	(Ljava/lang/String;)[B
     //   274: putfield 136	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_c_of_type_ArrayOfByte	[B
     //   277: aload_0
     //   278: getfield 31	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   281: invokestatic 274	apck:a	(Ljava/lang/String;)I
+    //   281: invokestatic 274	apue:a	(Ljava/lang/String;)I
     //   284: istore_1
     //   285: iload_1
     //   286: ifne +197 -> 483
@@ -352,7 +352,7 @@ public class TroopFileScanTask
     //   304: aload_0
     //   305: getfield 31	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   308: aload 5
-    //   310: invokestatic 285	bacm:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   310: invokestatic 285	bbdr:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   313: pop
     //   314: aload_0
     //   315: aload 5
@@ -394,10 +394,10 @@ public class TroopFileScanTask
     //   378: ladd
     //   379: lstore_2
     //   380: aload_0
-    //   381: getfield 33	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_Ayua	Layua;
+    //   381: getfield 33	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_Azuq	Lazuq;
     //   384: ifnull +21 -> 405
     //   387: aload_0
-    //   388: getfield 33	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_Ayua	Layua;
+    //   388: getfield 33	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_Azuq	Lazuq;
     //   391: aload_0
     //   392: getfield 29	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:jdField_a_of_type_Long	J
     //   395: lload_2
@@ -410,7 +410,7 @@ public class TroopFileScanTask
     //   411: iload 4
     //   413: ifeq -182 -> 231
     //   416: aload 7
-    //   418: invokevirtual 263	java/io/FileInputStream:close	()V
+    //   418: invokevirtual 263	com/tencent/mm/vfs/VFSFileInputStream:close	()V
     //   421: return
     //   422: astore 5
     //   424: aload 5
@@ -426,7 +426,7 @@ public class TroopFileScanTask
     //   445: iconst_0
     //   446: invokespecial 121	com/tencent/mobileqq/troop/filemanager/upload/TroopFileScanTask:a	(IZ)V
     //   449: aload 7
-    //   451: invokevirtual 263	java/io/FileInputStream:close	()V
+    //   451: invokevirtual 263	com/tencent/mm/vfs/VFSFileInputStream:close	()V
     //   454: return
     //   455: astore 5
     //   457: aload 5
@@ -434,7 +434,7 @@ public class TroopFileScanTask
     //   462: return
     //   463: astore 5
     //   465: aload 7
-    //   467: invokevirtual 263	java/io/FileInputStream:close	()V
+    //   467: invokevirtual 263	com/tencent/mm/vfs/VFSFileInputStream:close	()V
     //   470: aload 5
     //   472: athrow
     //   473: astore 6

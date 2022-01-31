@@ -2,9 +2,9 @@ package cooperation.weiyun;
 
 import android.os.Bundle;
 import android.os.Process;
-import aqax;
-import aqay;
-import awao;
+import aquz;
+import aqva;
+import awzw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 
@@ -16,14 +16,14 @@ public final class ResponseHandler$1
   public void run()
   {
     Process.setThreadPriority(10);
-    aqax localaqax = new aqax(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, -5023, 2424833, awao.a());
+    aquz localaquz = new aquz(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, -5023, 2424833, awzw.a());
     Object localObject = new Bundle();
     ((Bundle)localObject).putInt("key_action", 1);
     ((Bundle)localObject).putString("key_action_DATA", this.d);
-    localaqax.a(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int + this.e.length(), (Bundle)localObject);
+    localaquz.a(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int + this.e.length(), (Bundle)localObject);
     localObject = new MessageForUniteGrayTip();
-    ((MessageForUniteGrayTip)localObject).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localaqax);
-    aqay.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject);
+    ((MessageForUniteGrayTip)localObject).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localaquz);
+    aqva.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject);
   }
 }
 

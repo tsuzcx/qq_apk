@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand;
 
-import bbms;
+import bcpq;
 
 class BaseAppBrandRuntime$1
   implements Runnable
@@ -11,7 +11,7 @@ class BaseAppBrandRuntime$1
   {
     if (this.this$0.activity != null)
     {
-      BaseAppBrandRuntime.access$002(this.this$0, new bbms(this.this$0.activity));
+      BaseAppBrandRuntime.access$002(this.this$0, new bcpq(this.this$0.activity));
       BaseAppBrandRuntime.access$000(this.this$0).show();
     }
   }

@@ -1,115 +1,111 @@
 import android.content.Context;
-import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
-class vdl
-  extends vcz<vdk>
+public class vdl
+  extends wcr
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  public static final String KEY = "PlaceholderSegment";
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private vas jdField_a_of_type_Vas;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  protected vdl(vdk paramvdk, @NonNull Context paramContext, ViewGroup paramViewGroup)
+  public vdl(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    super(paramContext, paramViewGroup);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131311132));
+    super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  private void a(int paramInt)
+  public void R_()
   {
-    char[] arrayOfChar = String.valueOf(paramInt).toCharArray();
-    paramInt = 0;
-    Object localObject1;
-    while (paramInt < arrayOfChar.length)
+    S_();
+  }
+  
+  protected void S_()
+  {
+    wcr localwcr = a().a(this.jdField_b_of_type_JavaLangString);
+    if ((localwcr == null) || (localwcr.a() == 0))
     {
-      Object localObject2 = (ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt);
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-        localObject2 = new RelativeLayout.LayoutParams(vms.a(this.jdField_a_of_type_AndroidContentContext, 40.0F), vms.a(this.jdField_a_of_type_AndroidContentContext, 62.0F));
-        if (paramInt != 0) {
-          ((RelativeLayout.LayoutParams)localObject2).leftMargin = vms.a(this.jdField_a_of_type_AndroidContentContext, 1.0F);
-        }
-        ((ImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_CENTER);
-        ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
+      e_(true);
+      return;
+    }
+    e_(false);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public View a(int paramInt, vas paramvas, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (TextView)paramvas.a(2131373311);
+    ImageView localImageView = (ImageView)paramvas.a(2131373312);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      paramViewGroup.setText(ajyc.a(2131708188) + ssi.jdField_a_of_type_JavaLangString + "\n拍摄一段小视频，分享眼前的世界");
+      QQStoryContext.a();
+      if (!ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
+        break label104;
       }
-      a((ImageView)localObject1, arrayOfChar[paramInt]);
-      paramInt += 1;
+      localImageView.setImageResource(this.jdField_b_of_type_Int);
     }
-    paramInt = arrayOfChar.length;
-    while (paramInt < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
+    for (;;)
     {
-      localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeView((View)localObject1);
-      paramInt += 1;
+      return paramvas.a();
+      paramViewGroup.setText(this.jdField_a_of_type_JavaLangString);
+      break;
+      label104:
+      localImageView.setImageResource(this.jdField_a_of_type_Int);
     }
   }
   
-  private void a(ImageView paramImageView, char paramChar)
+  public String a()
   {
-    if (paramImageView == null) {
-      return;
-    }
-    switch (paramChar)
+    return "PlaceholderSegment";
+  }
+  
+  public vas a(int paramInt, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Vas = new vas(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561232, paramViewGroup, false));
+    return this.jdField_a_of_type_Vas;
+  }
+  
+  protected void c()
+  {
+    S_();
+  }
+  
+  public void e()
+  {
+    super.e();
+    if (this.jdField_a_of_type_Vas == null) {}
+    ImageView localImageView;
+    do
     {
-    case '.': 
-    case '/': 
-    default: 
       return;
-    case '-': 
-      paramImageView.setImageResource(2130845763);
-      return;
-    case '0': 
-      paramImageView.setImageResource(2130845764);
-      return;
-    case '1': 
-      paramImageView.setImageResource(2130845765);
-      return;
-    case '2': 
-      paramImageView.setImageResource(2130845766);
-      return;
-    case '3': 
-      paramImageView.setImageResource(2130845767);
-      return;
-    case '4': 
-      paramImageView.setImageResource(2130845768);
-      return;
-    case '5': 
-      paramImageView.setImageResource(2130845769);
-      return;
-    case '6': 
-      paramImageView.setImageResource(2130845770);
-      return;
-    case '7': 
-      paramImageView.setImageResource(2130845771);
-      return;
-    case '8': 
-      paramImageView.setImageResource(2130845772);
+      localImageView = (ImageView)this.jdField_a_of_type_Vas.a(2131373312);
+    } while (localImageView == null);
+    QQStoryContext.a();
+    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null))
+    {
+      localImageView.setImageResource(this.jdField_b_of_type_Int);
       return;
     }
-    paramImageView.setImageResource(2130845773);
-  }
-  
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return LayoutInflater.from(paramContext).inflate(2131495853, paramViewGroup, false);
-  }
-  
-  public void a(vdk paramvdk, int paramInt)
-  {
-    super.a(paramvdk, paramInt);
-    if (paramvdk != null) {
-      a(paramvdk.c);
-    }
+    localImageView.setImageResource(this.jdField_a_of_type_Int);
   }
 }
 

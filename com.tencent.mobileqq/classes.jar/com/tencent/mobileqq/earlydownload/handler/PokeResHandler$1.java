@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.earlydownload.handler;
 
-import adll;
-import amzi;
+import adwl;
 import android.text.TextUtils;
-import bace;
+import anpq;
+import bbdj;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 
 public class PokeResHandler$1
   implements Runnable
 {
-  public PokeResHandler$1(amzi paramamzi, String paramString1, String paramString2) {}
+  public PokeResHandler$1(anpq paramanpq, String paramString1, String paramString2) {}
   
   public void run()
   {
     if (!TextUtils.isEmpty(this.a)) {}
     try
     {
-      String str = this.a + "/poke";
-      bace.a(str, false);
-      bace.a(this.b, str, false);
-      adll.b(this.a + "/poke/");
+      bbdj.a(this.a, false);
+      bbdj.a(this.b, this.a, false);
+      adwl.b(this.a);
       return;
     }
     catch (IOException localIOException)

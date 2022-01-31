@@ -1,40 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
 public class afye
-  extends Handler
+  implements aask
 {
-  private WeakReference<DialogBaseActivity> a;
+  public afye(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
   
-  public afye(DialogBaseActivity paramDialogBaseActivity)
+  public boolean a(boolean paramBoolean)
   {
-    this.a = new WeakReference(paramDialogBaseActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    boolean bool = true;
-    DialogBaseActivity localDialogBaseActivity = (DialogBaseActivity)this.a.get();
-    if (localDialogBaseActivity == null) {
-      return;
+    if (paramBoolean) {
+      bict.a(this.a.getActivity());
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (;;)
-      {
-        localDialogBaseActivity.a(i, bool);
-        return;
-        bool = false;
-      }
-    }
-    localDialogBaseActivity.finish();
+    return false;
   }
 }
 

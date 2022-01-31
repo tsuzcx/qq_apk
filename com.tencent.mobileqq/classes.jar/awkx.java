@@ -1,88 +1,12 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.shortvideo.redbag.VideoRedbagData;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-
-class awkx
-  extends QIPCModule
+public abstract interface awkx
 {
-  awkx(awkw paramawkw, String paramString)
-  {
-    super(paramString);
-  }
+  public abstract void a(String paramString, int paramInt);
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    Object localObject = null;
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if ("CMD_GET_NICK_NAME_BY_UIN".equals(paramString))
-    {
-      paramString = new Bundle();
-      paramString.putString("VALUE_USER_NICK_NAME", babh.b(localQQAppInterface, paramBundle.getString("VALUE_USER_UIN_TO_GET_NICK_NAME"), true));
-      paramBundle = EIPCResult.createSuccessResult(paramString);
-    }
-    boolean bool;
-    do
-    {
-      return paramBundle;
-      if ("CMD_GET_CURRENT_NICK_NAME".equals(paramString))
-      {
-        paramString = localQQAppInterface.getCurrentNickname();
-        paramBundle = new Bundle();
-        paramBundle.putString("VALUE_GET_CURRENT_NICK_NAME", paramString);
-        return EIPCResult.createSuccessResult(paramBundle);
-      }
-      if ("CMD_GET_CURRENT_USER_HEAD".equals(paramString))
-      {
-        paramString = localQQAppInterface.a(1, localQQAppInterface.c(), 200);
-        paramBundle = new Bundle();
-        paramBundle.putString("VALUE_GET_CURRENT_USER_HEAD", paramString);
-        return EIPCResult.createSuccessResult(paramBundle);
-      }
-      if ("CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT".equals(paramString))
-      {
-        paramString = paramBundle.getString("VALUE_MSG_FRIENDUIN");
-        paramInt = paramBundle.getInt("VALUE_MSG_ISTROOP");
-        paramBundle = paramBundle.getString("VALUE_MSG_VIDEO_ID");
-        if (paramBundle != null)
-        {
-          awkk.a(localQQAppInterface).a(paramString, paramInt, paramBundle);
-          VideoRedbagData.updateRewardStat(paramBundle);
-        }
-        return EIPCResult.createSuccessResult(new Bundle());
-      }
-      if ("CMD_QUERY_VIDEO_REDBAG_STAT".equals(paramString))
-      {
-        bool = VideoRedbagData.queryRewardStat(paramBundle.getString("VALUE_MSG_VIDEO_ID"));
-        paramString = new Bundle();
-        paramString.putBoolean("VALUE_MSG_REDBAG_STAT", bool);
-        return EIPCResult.createSuccessResult(paramString);
-      }
-      paramBundle = localObject;
-    } while (!"CMD_DOWNLOAD_PTU_RES".equals(paramString));
-    paramString = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramString instanceof QQAppInterface)) {}
-    for (paramString = (QQAppInterface)paramString;; paramString = null)
-    {
-      paramBundle = new Bundle();
-      if (paramString != null)
-      {
-        bool = awez.b(paramString);
-        paramBundle.putBoolean("VALUE_MSG_DOWNLOAD_PTU_RES", bool);
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoPlayIPCServer", 2, "launchForResult, ptuResDownload = " + bool);
-        }
-      }
-      return EIPCResult.createSuccessResult(paramBundle);
-    }
-  }
+  public abstract void c(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awkx
  * JD-Core Version:    0.7.0.1
  */

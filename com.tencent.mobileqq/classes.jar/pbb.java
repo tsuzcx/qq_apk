@@ -1,104 +1,196 @@
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.kandianreport.ReadInJoyMMapKvStorage;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class pbb
-  implements owc
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new pbc(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private final ProteusItemView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView;
-  private opw jdField_a_of_type_Opw;
-  private boolean jdField_a_of_type_Boolean;
+  public String a;
+  public List<String> a;
+  public String b;
+  public List<String> b;
+  public String c = "";
+  public String d = "";
   
-  public pbb(ProteusItemView paramProteusItemView)
+  public pbb()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView = paramProteusItemView;
-    b();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
   }
   
-  private static float a()
+  public static String a()
   {
+    return a(-1);
+  }
+  
+  public static String a(int paramInt)
+  {
+    for (;;)
+    {
+      try
+      {
+        JSONArray localJSONArray = new JSONArray();
+        if (bhvh.a(paramInt))
+        {
+          if (-1 == paramInt) {
+            break label195;
+          }
+          localObject1 = (String)bhvh.a("DAILY_CHILD_FEEDS_REQUEST_CONFIG" + paramInt, "");
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          {
+            localObject3 = new JSONObject();
+            ((JSONObject)localObject3).put("daily_sub_channel_request_data", localObject1);
+            localJSONArray.put(localObject3);
+          }
+          if (bhvh.x()) {
+            localJSONArray.put(bhvh.a());
+          }
+          return localJSONArray.toString();
+        }
+        Object localObject1 = ReadInJoyMMapKvStorage.getInstance().getValeForKey("KANDIAN_DAILY_SETTING_CONFIG");
+        Object localObject3 = (String)bhvh.a("KANDIAN_DAILY_LCAOL_SETTING_CONFIG", "");
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          break label190;
+        }
+        localObject1 = new JSONArray((String)localObject1);
+        if (!TextUtils.isEmpty((CharSequence)localObject3))
+        {
+          localObject3 = new JSONArray((String)localObject3);
+          a((JSONArray)localObject1, localJSONArray);
+          a((JSONArray)localObject3, localJSONArray);
+          if (!oox.b()) {
+            continue;
+          }
+          localJSONArray.put(pah.a(true));
+          continue;
+        }
+        localObject3 = null;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        return "";
+      }
+      continue;
+      label190:
+      Object localObject2 = null;
+      continue;
+      label195:
+      localObject2 = null;
+    }
+  }
+  
+  public static pbb a(JSONObject paramJSONObject)
+  {
+    int j = 0;
+    pbb localpbb = new pbb();
+    if (paramJSONObject != null)
+    {
+      localpbb.jdField_a_of_type_JavaLangString = paramJSONObject.optString("key");
+      localpbb.jdField_b_of_type_JavaLangString = paramJSONObject.optString("name");
+      localpbb.d = paramJSONObject.optString("value");
+      localpbb.c = paramJSONObject.optString("id");
+      Object localObject = paramJSONObject.optJSONArray("valuelist");
+      int i;
+      if (localObject != null)
+      {
+        localpbb.jdField_b_of_type_JavaUtilList = new ArrayList();
+        i = 0;
+        while (i < ((JSONArray)localObject).length())
+        {
+          String str = ((JSONArray)localObject).optString(i);
+          localpbb.jdField_b_of_type_JavaUtilList.add(str);
+          i += 1;
+        }
+      }
+      paramJSONObject = paramJSONObject.optJSONArray("idlist");
+      if (paramJSONObject != null)
+      {
+        localpbb.jdField_a_of_type_JavaUtilList = new ArrayList();
+        i = j;
+        while (i < paramJSONObject.length())
+        {
+          localObject = paramJSONObject.optString(i);
+          localpbb.jdField_a_of_type_JavaUtilList.add(localObject);
+          i += 1;
+        }
+      }
+    }
+    return localpbb;
+  }
+  
+  private static void a(JSONArray paramJSONArray1, JSONArray paramJSONArray2)
+  {
+    if (paramJSONArray1 != null)
+    {
+      int i = 0;
+      for (;;)
+      {
+        if (i < paramJSONArray1.length())
+        {
+          JSONObject localJSONObject = paramJSONArray1.optJSONObject(i);
+          String str1 = localJSONObject.optString("key");
+          String str2 = localJSONObject.optString("id");
+          if (!TextUtils.isEmpty(str2)) {
+            localJSONObject = new JSONObject();
+          }
+          try
+          {
+            localJSONObject.put(str1, str2);
+            paramJSONArray2.put(localJSONObject);
+            i += 1;
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    Iterator localIterator;
     try
     {
-      float f = Float.valueOf((String)bgmq.a("kandian_daily_wrapper_alpha", "1.0")).floatValue();
-      if ((f >= 0.0F) && (f <= 1.0F)) {
-        return f;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.d("ProteusItemHelper", 1, localException, new Object[] { "" });
-    }
-    return 1.0F;
-  }
-  
-  private boolean a()
-  {
-    return false;
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.a(this);
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    ndn.a(null, "", "0X8009882", "0X8009882", 0, 0, "", "", "", obz.a().b("jump_src", odm.b()).a(), false);
-  }
-  
-  public opw a()
-  {
-    return this.jdField_a_of_type_Opw;
-  }
-  
-  public void a()
-  {
-    if (a())
-    {
-      if (this.jdField_a_of_type_AndroidViewView == null)
+      localJSONObject.put("key", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("name", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("id", this.c);
+      localJSONObject.put("value", this.d);
+      JSONArray localJSONArray1 = new JSONArray();
+      if (this.jdField_b_of_type_JavaUtilList != null)
       {
-        this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.getContext()).inflate(2131494324, null, false);
-        localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131311400);
-        ((TextView)localObject).setTextSize(0, Utils.dp2px(14.0D));
-        ((TextView)localObject).setText(qpt.a(((TextView)localObject).getContext()));
-        f = a();
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130848154);
-        this.jdField_a_of_type_AndroidViewView.getBackground().setAlpha((int)(f * 255.0F));
-        this.jdField_a_of_type_AndroidViewView.setPadding(0, 0, 0, 0);
-        localObject = new RelativeLayout.LayoutParams(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.getWidth(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.getHeight());
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
-        c();
+        localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+        while (localIterator.hasNext()) {
+          localJSONArray1.put((String)localIterator.next());
+        }
       }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localJSONObject.put("valuelist", localJSONException);
     }
-    while (this.jdField_a_of_type_AndroidViewView == null)
+    catch (JSONException localJSONException)
     {
-      Object localObject;
-      float f;
-      return;
+      localJSONException.printStackTrace();
+      return localJSONObject;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.removeView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidViewView = null;
-  }
-  
-  public void a(opw paramopw)
-  {
-    this.jdField_a_of_type_Opw = paramopw;
+    JSONArray localJSONArray2 = new JSONArray();
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        localJSONArray2.put((String)localIterator.next());
+      }
+    }
+    localJSONObject.put("idlist", localJSONArray2);
+    return localJSONObject;
   }
 }
 

@@ -1,381 +1,231 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.intervideo.nowproxy.InitData;
-import com.tencent.intervideo.nowproxy.NowLive;
-import com.tencent.intervideo.nowproxy.QQKandianInterface;
-import com.tencent.intervideo.nowproxy.common.login.LoginData;
-import com.tencent.intervideo.nowproxy.common.login.LoginType;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedChannel;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedDns;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedDownloader;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedLoading;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedLog;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedRecord;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedReport;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedWebView;
-import com.tencent.intervideo.nowproxy.qqshare.CustomizedShareForQQ;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.intervideo.now.NowQQConnectFragment;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.security.InvalidParameterException;
-import java.util.concurrent.atomic.AtomicLong;
-import mqq.app.AppRuntime;
-import mqq.manager.Manager;
-import mqq.manager.TicketManager;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.image.RegionDrawableData;
+import com.tencent.mobileqq.gallery.model.GalleryBaseData;
+import com.tencent.mobileqq.gallery.presenter.AIOGalleryBasePresenter;
+import com.tencent.mobileqq.gallery.view.GalleryBaseAdapter;
+import com.tencent.mobileqq.gallery.view.GalleryUrlImageView;
 
 public class aqod
-  implements aqpy, Manager
+  extends GalleryBaseAdapter
+  implements agpe, aqma
 {
-  public static int a;
-  static allt jdField_a_of_type_Allt = new aqok();
-  private final long jdField_a_of_type_Long = 1800000L;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aqop(this);
-  public aqox a;
-  aqpa jdField_a_of_type_Aqpa;
-  aqqb jdField_a_of_type_Aqqb = new aqol(this);
-  protected QQKandianInterface a;
-  private LoginType jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginType = LoginType.QQConnect;
-  protected CustomizedChannel a;
-  protected CustomizedDns a;
-  protected CustomizedDownloader a;
-  protected CustomizedLoading a;
-  protected CustomizedLog a;
-  protected CustomizedRecord a;
-  protected CustomizedReport a;
-  protected CustomizedWebView a;
-  protected CustomizedShareForQQ a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public String a;
-  private final AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(System.currentTimeMillis() - 1800000L);
-  private zrw jdField_a_of_type_Zrw;
-  public String b;
+  public Context a;
+  public aqnd a;
   
-  static
+  public aqod(Context paramContext)
   {
-    jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public aqod(QQAppInterface paramQQAppInterface)
+  private boolean a(RelativeLayout paramRelativeLayout)
   {
-    this.jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceCustomizedLog = new aqoq(this);
-    this.jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceCustomizedChannel = new aqor(this);
-    this.jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceCustomizedLoading = new aqos(this);
-    this.jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceCustomizedReport = new aqot(this);
-    this.jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceCustomizedDownloader = new aqou(this);
-    this.jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceCustomizedRecord = new aqof(this);
-    this.jdField_a_of_type_ComTencentIntervideoNowproxyQqshareCustomizedShareForQQ = new aqog(this);
-    this.jdField_a_of_type_ComTencentIntervideoNowproxyQQKandianInterface = new aqoh(this);
-    this.jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceCustomizedWebView = new aqoi(this);
-    this.jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceCustomizedDns = new aqoj(this);
-    try
+    if (paramRelativeLayout == null) {}
+    for (;;)
     {
-      QLog.i("XProxy|NowProxy", 1, "DynamicNowManager create app = " + paramQQAppInterface);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-      aqkl.a();
-      aqpc.a().a(paramQQAppInterface);
-      e();
-      f();
-      this.jdField_a_of_type_Aqox = new aqox(paramQQAppInterface);
-      paramQQAppInterface = new IntentFilter();
-      paramQQAppInterface.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
-      paramQQAppInterface.addAction("mqq.intent.action.ACCOUNT_KICKED");
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      QLog.e("XProxy|NowProxy", 1, "initNowSdk exception ", paramQQAppInterface);
-    }
-  }
-  
-  public static int a(String paramString)
-  {
-    int i = 2;
-    if ((paramString.equals("1")) || (paramString.equals("2"))) {
-      i = 1;
-    }
-    return i;
-  }
-  
-  private Bundle a(Bundle paramBundle, NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    paramBundle.putString("KEY_GROUP_UIN", paramNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString);
-    paramBundle.putString("KEY_GROUP_OWNER_UIN", paramNewTogetherRoomMessageData.jdField_b_of_type_JavaLangString);
-    paramBundle.putInt("KEY_ROOM_TYPE", paramNewTogetherRoomMessageData.jdField_a_of_type_Int);
-    paramBundle.putLong("KEY_ROOM_ID", paramNewTogetherRoomMessageData.jdField_a_of_type_Long);
-    paramBundle.putInt("KEY_OLD_ROOM_TYPE", paramNewTogetherRoomMessageData.c);
-    paramBundle.putLong("KEY_OLD_ROOM_ID", paramNewTogetherRoomMessageData.jdField_b_of_type_Long);
-    paramBundle.putString("KEY_ROOM_NAME", paramNewTogetherRoomMessageData.d);
-    paramBundle.putString("KEY_JUMP_SCHEME", paramNewTogetherRoomMessageData.e);
-    paramBundle.putString("KEY_ROOM_COVER", paramNewTogetherRoomMessageData.f);
-    paramBundle.putString("KEY_FROM_ID", paramNewTogetherRoomMessageData.g);
-    return paramBundle;
-  }
-  
-  public static QQAppInterface a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    throw new InvalidParameterException("can't get AppInterface");
-  }
-  
-  private static void a(long paramLong, String paramString1, String paramString2)
-  {
-    String str = paramString1;
-    if (TextUtils.isEmpty(paramString1)) {
-      if (paramLong != 0L) {
-        break label195;
-      }
-    }
-    label195:
-    for (str = "https://now.qq.com/qq/play.html?_bid=2374&_wv=16778245&from=50320";; str = "https://now.qq.com/h5/index.html?_bid=2336&_wv=16778245&from=50320&roomid=" + paramLong)
-    {
-      long l = System.currentTimeMillis();
-      paramString1 = str + "&_t=" + l;
-      aqpc.a().a().a("", String.valueOf(paramLong), paramString2, paramString1);
-      paramString2 = new Intent(BaseApplicationImpl.getContext(), QQBrowserActivity.class);
-      paramString2.putExtra("hide_operation_bar", true);
-      paramString2.putExtra("url", paramString1);
-      paramString2.putExtra("op_type", "now_live");
-      paramString2.putExtra("key_isReadModeEnabled", true);
-      paramString2.setFlags(268435456);
-      paramString2.putExtra("insertPluginsArray", new String[] { "nowlive" });
-      QLog.i("XProxy|NowProxy", 1, "跳转web页面 URL = " + paramString1 + " time = " + l);
-      acgk.a(BaseApplicationImpl.getContext(), paramString2, paramString1);
-      return;
-    }
-  }
-  
-  public static boolean a()
-  {
-    return bady.a(BaseApplicationImpl.getContext(), "com.tencent.now");
-  }
-  
-  private boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.i("XProxy|NowProxy", 1, "isTroopOwner  troopUin is null");
       return false;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      paramString = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(paramString);
-      if (paramString != null)
+      RelativeLayout localRelativeLayout = this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.a();
+      int i = localRelativeLayout.getChildCount() - 1;
+      while (i >= 0)
       {
-        boolean bool = paramString.isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-        QLog.i("XProxy|NowProxy", 1, "isTroopOwner  selfuin is " + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c() + ";isOwner=" + bool);
-        return bool;
+        if (paramRelativeLayout == localRelativeLayout.getChildAt(i)) {
+          return true;
+        }
+        i -= 1;
       }
     }
-    return false;
   }
   
-  public static void b(Bundle paramBundle)
+  public aqmg a(int paramInt)
   {
-    if (a())
-    {
-      Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse("tnow://openpage/startlive?from=1"));
-      if (paramBundle != null) {
-        localIntent.putExtras(paramBundle);
-      }
-      localIntent.setFlags(268435456);
-      BaseApplicationImpl.getContext().startActivity(localIntent);
-      return;
+    if ((this.jdField_a_of_type_Aqnd == null) || (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh == null)) {
+      return null;
     }
-    a(0L, "http://a.app.qq.com/o/simple.jsp?pkgname=com.tencent.now&ckey=CK1339000284644", "beginLive");
+    return this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh.a(paramInt);
   }
   
-  public static void d()
+  public aqoe a()
   {
-    jdField_a_of_type_Int = almh.a().a(jdField_a_of_type_Allt);
+    AIOGalleryBasePresenter localAIOGalleryBasePresenter = a(this.jdField_a_of_type_Aqnd.a());
+    if (localAIOGalleryBasePresenter != null) {
+      return localAIOGalleryBasePresenter.a;
+    }
+    return null;
   }
   
-  private void e()
+  public AIOGalleryBasePresenter a(int paramInt)
   {
-    this.jdField_a_of_type_Aqpa = new aqpa();
-    InitData localInitData = new InitData();
-    localInitData.mAppID = "2";
-    localInitData.mSourceVersion = String.valueOf(amom.a(BaseApplicationImpl.getContext()));
-    localInitData.mSourceUid = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    NowLive.setShadowImp(this.jdField_a_of_type_Aqpa);
-    NowLive.start(BaseApplicationImpl.getContext(), localInitData);
+    paramInt = getItemViewType(paramInt);
+    return this.jdField_a_of_type_Aqnd.a(paramInt);
   }
   
-  private void f()
+  public void a(int paramInt)
   {
-    NowLive.setCustomizedLog(this.jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceCustomizedLog);
-    NowLive.setCustomChannel(this.jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceCustomizedChannel);
-    NowLive.setCustomizedLoading(this.jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceCustomizedLoading);
-    NowLive.setCustomizeReport(this.jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceCustomizedReport);
-    NowLive.setCustomizedDownloader(this.jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceCustomizedDownloader);
-    NowLive.setCustomizedRecord(this.jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceCustomizedRecord);
-    NowLive.setCustomizedShareForQQ(this.jdField_a_of_type_ComTencentIntervideoNowproxyQqshareCustomizedShareForQQ);
-    NowLive.setQQKandianInterface(this.jdField_a_of_type_ComTencentIntervideoNowproxyQQKandianInterface);
-    NowLive.setCustomizedWebView(this.jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceCustomizedWebView);
-    NowLive.setCustomizedDns(this.jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceCustomizedDns);
-  }
-  
-  private void g()
-  {
-    LoginData localLoginData;
-    if (System.currentTimeMillis() - this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get() > 1800000L)
+    aqmb.a().a().a(" AIOGalleryAdapter", 4, "onItemSelected position =" + paramInt);
+    int i = getItemViewType(this.jdField_a_of_type_Aqnd.a());
+    paramInt = getItemViewType(paramInt);
+    if (i != paramInt)
     {
-      localLoginData = new LoginData();
-      TicketManager localTicketManager = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
-      String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      localTicketManager.getA2(str);
-      localLoginData.setLoginType(this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginType);
-      localLoginData.setLoginAppid(16L);
-      localLoginData.setSkey(localTicketManager.getSkey(str).getBytes());
-      localLoginData.setST(localTicketManager.getSt(str, 16));
-      localLoginData.setSTKey(localTicketManager.getStkey(str, 16));
-      localLoginData.setUserId(str);
-      if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        NowLive.login(localLoginData);
+      localAIOGalleryBasePresenter = this.jdField_a_of_type_Aqnd.a(i);
+      if ((localAIOGalleryBasePresenter != null) && (localAIOGalleryBasePresenter.a != null) && (a(localAIOGalleryBasePresenter.a.b))) {
+        this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.a().removeView(localAIOGalleryBasePresenter.a.b);
       }
     }
-    else
+    AIOGalleryBasePresenter localAIOGalleryBasePresenter = this.jdField_a_of_type_Aqnd.a(paramInt);
+    if ((localAIOGalleryBasePresenter != null) && (localAIOGalleryBasePresenter.a != null) && (!a(localAIOGalleryBasePresenter.a.b)))
     {
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+      this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.a().addView(localAIOGalleryBasePresenter.a.b, localLayoutParams);
+    }
+  }
+  
+  public void a(aqnd paramaqnd)
+  {
+    super.a(paramaqnd);
+    this.jdField_a_of_type_Aqnd = paramaqnd;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    this.jdField_a_of_type_Aqnd.o();
+    return true;
+  }
+  
+  public boolean a(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    if (this.jdField_a_of_type_Aqnd != null)
+    {
+      if (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog != null) {
+        this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.c(false);
+      }
+      if (this.jdField_a_of_type_Aqnd.a() != null)
+      {
+        this.jdField_a_of_type_Aqnd.a().d();
+        this.jdField_a_of_type_Aqnd.a().c();
+      }
+    }
+    this.jdField_a_of_type_Aqnd.p();
+    return true;
+  }
+  
+  public int getCount()
+  {
+    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh != null)) {
+      return this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh.a();
+    }
+    return super.getCount();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    aqmg localaqmg = a(paramInt);
+    if ((localaqmg != null) && (localaqmg.a != null)) {
+      return localaqmg.a.a();
+    }
+    return super.getItemViewType(paramInt);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = a(paramInt);
+    GalleryUrlImageView localGalleryUrlImageView = new GalleryUrlImageView(this.jdField_a_of_type_AndroidContentContext);
+    if ((localObject == null) || (((aqmg)localObject).a == null) || (this.jdField_a_of_type_Aqnd == null))
+    {
+      aqmb.a().a().c(" AIOGalleryAdapter", 2, " getView(): position=" + paramInt + " data is null");
+      return localGalleryUrlImageView;
+    }
+    int i = ((aqmg)localObject).a.a();
+    if (this.jdField_a_of_type_Aqnd.a(i) == null) {
+      this.jdField_a_of_type_Aqnd.b(i);
+    }
+    localObject = this.jdField_a_of_type_Aqnd.a(i);
+    if (localObject != null)
+    {
+      localObject = ((AIOGalleryBasePresenter)localObject).a;
+      if (localObject != null)
+      {
+        paramView = ((aqoe)localObject).a(paramInt, paramView, paramViewGroup);
+        if ((paramView != null) && ((paramView.getTag() instanceof aqom))) {
+          ((aqoe)localObject).a((aqom)paramView.getTag());
+        }
+        return paramView;
+      }
+      aqmb.a().a().c(" AIOGalleryAdapter", 2, "getView() aioGalleryBaseView is null");
+      return localGalleryUrlImageView;
+    }
+    aqmb.a().a().c(" AIOGalleryAdapter", 2, "getView() presenter is null");
+    return localGalleryUrlImageView;
+  }
+  
+  public View onCreateView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    aqmb.a().a().a(" AIOGalleryAdapter", 4, "onCreateView position =" + paramInt);
+    paramView = a(paramInt);
+    if (paramView != null)
+    {
+      paramViewGroup = a(paramInt);
+      if ((paramViewGroup != null) && (paramViewGroup.a != null)) {
+        paramViewGroup.a.a(paramInt, paramView);
+      }
+    }
+    return null;
+  }
+  
+  public void onDestroyView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    aqmb.a().a().a(" AIOGalleryAdapter", 4, "onDestroyView position =" + paramInt);
+    AIOGalleryBasePresenter localAIOGalleryBasePresenter = a(paramInt);
+    if ((localAIOGalleryBasePresenter != null) && (localAIOGalleryBasePresenter.a != null)) {
+      localAIOGalleryBasePresenter.a.a(paramInt, paramView, paramViewGroup);
+    }
+  }
+  
+  public void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData)
+  {
+    AIOGalleryBasePresenter localAIOGalleryBasePresenter = a(paramInt);
+    if ((localAIOGalleryBasePresenter != null) && (localAIOGalleryBasePresenter.a != null)) {
+      localAIOGalleryBasePresenter.a.a(paramInt, paramView, paramRegionDrawableData);
+    }
+  }
+  
+  public void onSlot(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    aqmb.a().a().b(" AIOGalleryAdapter", 2, "onSlot(): position = " + paramInt);
+    System.gc();
+  }
+  
+  public void onViewDetached(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean)
+  {
+    aqmb.a().a().b(" AIOGalleryAdapter", 2, "onViewDetached position = " + paramInt);
+    paramViewGroup = a(paramInt);
+    if ((paramViewGroup != null) && (paramViewGroup.a != null))
+    {
+      aqmg localaqmg = a(paramInt);
+      paramViewGroup.a.a(paramInt, paramView, localaqmg);
+    }
+  }
+  
+  public void onscaleBegin(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    AIOGalleryBasePresenter localAIOGalleryBasePresenter = a(paramInt);
+    if ((localAIOGalleryBasePresenter != null) && (localAIOGalleryBasePresenter.a != null)) {
+      localAIOGalleryBasePresenter.a.b(paramInt, paramView, paramViewGroup);
+    }
+    paramView = a(paramInt);
+    if (paramView == null) {
       return;
     }
-    localLoginData.setKey(this.jdField_b_of_type_JavaLangString.getBytes());
-    localLoginData.setAuthAppId("101490787");
-    localLoginData.setOriginalId(this.jdField_a_of_type_JavaLangString);
-    NowLive.login(localLoginData);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(System.currentTimeMillis());
-  }
-  
-  public aqqb a()
-  {
-    return this.jdField_a_of_type_Aqqb;
-  }
-  
-  public void a()
-  {
-    g();
-    this.jdField_a_of_type_Aqox.a();
-  }
-  
-  public void a(Activity paramActivity, Bundle paramBundle)
-  {
-    if ((paramActivity == null) || (paramBundle == null))
-    {
-      QLog.e("XProxy|NowProxy", 1, "activity or bundle is null");
-      return;
-    }
-    long l1 = System.currentTimeMillis();
-    long l2 = ((Long)asfc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "key_nearby_now_qq_connect_auth_time", Long.valueOf(0L))).longValue();
-    QLog.d("XProxy|NowProxy", 1, "now qq connect auth time diff = " + (l1 - l2) / 1000L);
-    if ((this.jdField_a_of_type_Zrw == null) || (l1 - l2 > 1728000000L))
-    {
-      asfc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "key_nearby_now_qq_connect_auth_time", Long.valueOf(l1));
-      zsb.a();
-      this.jdField_a_of_type_Zrw = zsb.a(paramActivity, 6, "101490787");
-    }
-    paramActivity = new WeakReference(paramActivity);
-    this.jdField_a_of_type_Zrw.a("loginSilent", null, new aqoo(this, paramActivity, paramBundle));
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    QLog.i("XProxy|NowProxy", 1, "enter login_type = " + this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginType.ordinal());
-    a(paramBundle, null);
-  }
-  
-  public void a(Bundle paramBundle, aqov paramaqov)
-  {
-    paramBundle.putInt("jumpCallbackId", jdField_a_of_type_Int);
-    paramaqov = new Intent();
-    paramaqov.putExtras(paramBundle);
-    abju.a(paramaqov, PublicTransFragmentActivity.class, NowQQConnectFragment.class);
-  }
-  
-  public void a(ConfigurationService.Config paramConfig) {}
-  
-  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    a();
-  }
-  
-  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, Bundle paramBundle, aqqa paramaqqa)
-  {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    localBundle.putString("mqqScheme", paramNewTogetherRoomMessageData.e);
-    localBundle.putBoolean("fromWatchTogether", true);
-    localBundle.putString("group_uin", paramNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString);
-    localBundle.putString("group_owner_uin", paramNewTogetherRoomMessageData.jdField_b_of_type_JavaLangString);
-    localBundle.putString("group_name", babh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString, false));
-    localBundle.putBoolean("is_group_owner", a(paramNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString));
-    localBundle.putString("roomid", String.valueOf(paramNewTogetherRoomMessageData.jdField_a_of_type_Long));
-    localBundle.putString("fromid", String.valueOf(paramNewTogetherRoomMessageData.g));
-    a(localBundle, new aqoe(this, paramaqqa));
-  }
-  
-  public void b()
-  {
-    BaseApplicationImpl.getContext().sendBroadcast(new Intent("room.close.audio"));
-  }
-  
-  public void b(Bundle paramBundle, aqov paramaqov)
-  {
-    paramBundle.putInt("ctrl_cmd", 1);
-    NowLive.closeRoom(paramBundle, new aqom(this, paramaqov));
-  }
-  
-  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, Bundle paramBundle, aqqa paramaqqa)
-  {
-    b(a(paramBundle, paramNewTogetherRoomMessageData), new aqon(this, paramaqqa));
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      aqnt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-    }
-  }
-  
-  public void onDestroy()
-  {
-    QLog.i("XProxy|NowProxy", 1, "DynamicNowManager onDestroy mApp = " + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    NowLive.killPluginProcess();
-    aqpc.a();
-    ((aqqi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(338)).a(1);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_Zrw = null;
-    NowLive.setCustomizedLog(null);
-    NowLive.setCustomChannel(null);
-    NowLive.setCustomizedLoading(null);
-    NowLive.setCustomizeReport(null);
-    NowLive.setCustomizedDownloader(null);
-    NowLive.setCustomizedRecord(null);
-    NowLive.setCustomizedShareForQQ(null);
-    NowLive.setQQKandianInterface(null);
-    NowLive.setCustomizedWebView(null);
-    NowLive.setCustomizedDns(null);
+    this.jdField_a_of_type_Aqnd.a().c(paramView.hashCode());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqod
  * JD-Core Version:    0.7.0.1
  */

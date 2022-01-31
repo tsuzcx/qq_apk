@@ -1,8 +1,16 @@
-import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
 
-public abstract interface mgt
+public class mgt
+  implements View.OnClickListener
 {
-  public abstract void a(Context paramContext, String paramString);
+  public mgt(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.b();
+  }
 }
 
 

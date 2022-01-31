@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.os.Build.VERSION;
-import awrn;
-import babp;
+import axrl;
+import bbct;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import obz;
+import onk;
 
 class ReadInJoyWebProcessManager$InitWebProcessRunnable
   implements Runnable
@@ -25,15 +25,15 @@ class ReadInJoyWebProcessManager$InitWebProcessRunnable
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
-      localHashMap.put("param_totalMem", String.valueOf(babp.d()));
-      localHashMap.put("param_availableMem", String.valueOf(babp.e()));
-      localHashMap.put("param_cpuNum", String.valueOf(babp.b()));
-      localHashMap.put("param_cpuFreq", String.valueOf(babp.a()));
+      localHashMap.put("param_totalMem", String.valueOf(bbct.d()));
+      localHashMap.put("param_availableMem", String.valueOf(bbct.e()));
+      localHashMap.put("param_cpuNum", String.valueOf(bbct.b()));
+      localHashMap.put("param_cpuFreq", String.valueOf(bbct.a()));
       localHashMap.put("param_preloadLevel", String.valueOf(paramInt));
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.ReadInJoyWebProcessManager", 2, "preloadToolProcessReport:" + localHashMap.toString());
       }
-      awrn.a(this.a.getApp()).a(this.a.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
+      axrl.a(this.a.getApp()).a(this.a.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
       return;
     }
     catch (Exception localException)
@@ -52,8 +52,8 @@ class ReadInJoyWebProcessManager$InitWebProcessRunnable
       WebProcessManager localWebProcessManager = (WebProcessManager)this.a.getManager(13);
       if (localWebProcessManager != null)
       {
-        int i = obz.f();
-        if (obz.g()) {
+        int i = onk.f();
+        if (onk.f()) {
           a(i);
         }
         if (i == 1) {

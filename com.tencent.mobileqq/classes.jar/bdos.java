@@ -1,26 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.manager.EngineVersion;
+import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
 
-public final class bdos
-  implements Parcelable.Creator<EngineVersion>
+public abstract interface bdos
 {
-  public EngineVersion a(Parcel paramParcel)
-  {
-    EngineVersion localEngineVersion = new EngineVersion();
-    localEngineVersion.a = paramParcel.readString();
-    localEngineVersion.b = paramParcel.readString();
-    return localEngineVersion;
-  }
+  public abstract void a(int paramInt, WadlResult paramWadlResult);
   
-  public EngineVersion[] a(int paramInt)
-  {
-    return new EngineVersion[paramInt];
-  }
+  public abstract void a(ArrayList<WadlResult> paramArrayList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdos
  * JD-Core Version:    0.7.0.1
  */

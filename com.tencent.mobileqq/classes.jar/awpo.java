@@ -1,31 +1,82 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Method;
+import java.util.List;
 
 public class awpo
+  implements awof
 {
-  public static void a()
+  public int a;
+  public int b;
+  public int c;
+  
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIPCEnvironmentInit", 2, "tryConnect");
-    }
-    try
+    return 0;
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = -1;
+    switch (paramInt)
     {
-      Method localMethod = BaseApplicationImpl.sApplication.getClassLoader().loadClass("com.tencent.mobileqq.qipc.QIPCEnvironmentInit").getDeclaredMethod("initEnvironment", new Class[0]);
-      localMethod.setAccessible(true);
-      localMethod.invoke(null, new Object[0]);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.uniteSearch.SearchResultGroupModelImpl", 2, "getPosition(). type=" + paramInt + "  position=" + i);
+      }
+      return i;
+      i = this.a;
+      continue;
+      i = this.b;
+      continue;
+      i = this.c;
+    }
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public List<awog> a()
+  {
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a = paramInt2;
+      return;
+    case 2: 
+      this.b = paramInt2;
       return;
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QIPCEnvironmentInit", 2, "tryConnect", localException);
-    }
+    this.c = paramInt2;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    a(2, paramInt1);
+    a(1, paramInt2);
+    a(3, paramInt3);
+  }
+  
+  public void a(View paramView) {}
+  
+  public String b()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awpo
  * JD-Core Version:    0.7.0.1
  */

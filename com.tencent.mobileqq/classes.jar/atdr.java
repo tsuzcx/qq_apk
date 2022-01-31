@@ -1,55 +1,105 @@
-import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SougouSearchInfo;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
-import java.util.List;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class atdr
-  implements ajfe
+  implements bcij<oidb_0x8e4.RspBody>
 {
-  public void a(int paramInt, String paramString, atej paramatej) {}
+  public atdr(GameRoomTransActivity paramGameRoomTransActivity, String paramString, int paramInt) {}
   
-  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult) {}
-  
-  public void a(boolean paramBoolean, String paramString, List<OCRTextSearchInfo.SougouSearchInfo> paramList) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    switch (paramInt)
+    String str3 = null;
+    String str2;
+    if (paramRspBody.string_err_title.has())
     {
-    default: 
-      return;
-    case 1: 
-      paramObject = (Object[])paramObject;
-      if ((paramObject != null) && (paramObject.length == 2))
+      str2 = paramRspBody.string_err_title.get().toStringUtf8();
+      str1 = str2;
+      if (!TextUtils.isEmpty(str2)) {}
+    }
+    for (String str1 = null;; str1 = null)
+    {
+      str2 = str3;
+      if (paramRspBody.string_err_msg.has())
       {
-        a(paramBoolean, (String)paramObject[0], (List)paramObject[1]);
-        return;
-      }
-      a(false, "", null);
-      return;
-    case 2: 
-      Object localObject = (Object[])paramObject;
-      if ((paramObject != null) && (localObject.length == 2))
-      {
-        paramObject = (Integer)localObject[0];
-        localObject = (TranslateResult)localObject[1];
-        if (localObject != null)
-        {
-          a(paramBoolean, paramObject.intValue(), (TranslateResult)localObject);
-          return;
+        str2 = paramRspBody.string_err_msg.get().toStringUtf8();
+        if (!TextUtils.isEmpty(str2)) {
+          break label578;
         }
-        a(false, paramObject.intValue(), null);
+        str2 = str3;
+      }
+      label578:
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("qqBaseActivity", 2, "onAcceptInvite invitedId = " + this.jdField_a_of_type_JavaLangString + " errorCode = " + paramInt + " ,errTitle = " + str1 + " ,errMsgFromServer = " + str2);
+        }
+        if ((paramInt == 1000) || (paramInt == 1001) || (paramInt == 1002) || (paramInt == 1003) || (paramInt == 1007)) {
+          this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgg = atdw.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2);
+        }
+        for (;;)
+        {
+          if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgg != null) {
+            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgg.setOnDismissListener(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
+          }
+          return;
+          if ((paramInt == 1004) || (paramInt == 1006) || (paramInt == 1010) || (paramInt == 1013))
+          {
+            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgg = atdw.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2);
+          }
+          else
+          {
+            if ((paramInt == 0) || (paramInt == 1005))
+            {
+              paramRspBody = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, GameRoomInviteActivity.class);
+              paramRspBody.putExtra("inviteId", this.jdField_a_of_type_JavaLangString);
+              paramRspBody.putExtra("roomNum", this.jdField_a_of_type_Int);
+              GameRoomInviteActivity.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.startActivity(paramRspBody);
+              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.finish();
+              return;
+            }
+            if (paramInt == 1008)
+            {
+              str3 = paramRspBody.string_invite_id.get().toStringUtf8();
+              GameRoomInviteActivity.jdField_a_of_type_JavaLangString = str3;
+              paramInt = this.jdField_a_of_type_Int;
+              if (paramRspBody.uint32_max_member_num.has()) {
+                paramInt = paramRspBody.uint32_max_member_num.get();
+              }
+              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgg = atdw.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2, str3, paramInt);
+            }
+            else if (paramInt == 1009)
+            {
+              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgg = bbcv.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, 230);
+              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgg.setTitle(str1);
+              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgg.setMessage(str2);
+              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgg.setPositiveButton(ajyc.a(2131705132), new atds(this, paramRspBody));
+              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgg.setNegativeButton(2131690331, new atdt(this));
+              if (!this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.isFinishing()) {
+                this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgg.show();
+              }
+            }
+            else
+            {
+              if (TextUtils.isEmpty(str2)) {
+                break;
+              }
+              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgg = atdw.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2);
+            }
+          }
+        }
+        bcpw.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, 1, ajyc.a(2131705108), 1).a();
+        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.finish();
         return;
       }
-      a(false, -1, null);
-      return;
     }
-    paramObject = (Object[])paramObject;
-    if ((paramObject != null) && (paramObject.length == 3))
-    {
-      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], (atej)paramObject[2]);
-      return;
-    }
-    a(-1, "", null);
   }
 }
 

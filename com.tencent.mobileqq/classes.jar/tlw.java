@@ -1,33 +1,62 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchFeedLike;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedLike;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
 
 public class tlw
-  implements udf
+  extends syv
 {
-  private WeakReference<tlv> a;
+  public static final String a;
+  private List<String> a;
+  private int c;
   
-  public tlw(tlv paramtlv)
+  static
   {
-    this.a = new WeakReference(paramtlv);
+    jdField_a_of_type_JavaLangString = sxp.a("StorySvc.feed_like_list_batch_715");
   }
   
-  public void a(String paramString, int paramInt)
+  public tlw(List<String> paramList, boolean paramBoolean)
   {
-    urk.a("Q.qqstory.detail.DetailCommentSegment", "on nick click. unionId = %s.", paramString);
-    tlv localtlv = (tlv)this.a.get();
-    if ((localtlv == null) || (paramInt == 1002) || (paramInt == 1003)) {}
-    do
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
     {
-      return;
-      skt.a(tlv.a(localtlv), 12, paramString);
-    } while ((localtlv.a == null) || (localtlv.a.a == null));
-    paramInt = urp.a(localtlv.a.a);
-    if (localtlv.a.a.getOwner().isMe()) {}
-    for (paramString = "1";; paramString = "2")
-    {
-      urp.a("home_page", "clk_reply_nick", paramInt, 0, new String[] { paramString, urp.a(4444), "", localtlv.a.a.feedId });
+      this.c = i;
       return;
     }
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public syq a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBatchFeedLike localRspBatchFeedLike = new qqstory_service.RspBatchFeedLike();
+    try
+    {
+      localRspBatchFeedLike.mergeFrom(paramArrayOfByte);
+      return new tlx(localRspBatchFeedLike);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqBatchFeedLike localReqBatchFeedLike = new qqstory_service.ReqBatchFeedLike();
+    List localList = a(this.jdField_a_of_type_JavaUtilList);
+    localReqBatchFeedLike.feed_id_list.set(localList);
+    localReqBatchFeedLike.source.set(this.c);
+    return localReqBatchFeedLike.toByteArray();
   }
 }
 

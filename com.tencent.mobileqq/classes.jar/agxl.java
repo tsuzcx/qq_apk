@@ -1,27 +1,26 @@
-import android.os.Message;
-import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.res.Resources;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.widget.ksong.KSongView;
 
-class agxl
-  extends akif
+public class agxl
+  extends bcsq
 {
-  agxl(agxk paramagxk) {}
+  public agxl(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
+  public void a()
   {
-    if ((paramBoolean) && (paramList != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
-      }
-      agxk.a(this.a).obtainMessage(2, 0, 0, paramList).sendToTarget();
-    }
+    super.a();
+    this.a.b = false;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a();
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.getResources().getDrawable(2130846385));
+    this.a.c.setText(ajyc.a(2131713302));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agxl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ar.ARPromotionMgr;
 
-import ajjy;
-import akkd;
-import akkj;
+import ajyc;
+import akyp;
+import akyv;
 import com.tencent.common.app.AppInterface;
 
 public class PromotionResDownload$1
   implements Runnable
 {
-  public PromotionResDownload$1(akkj paramakkj, boolean paramBoolean, AppInterface paramAppInterface, akkd paramakkd) {}
+  public PromotionResDownload$1(akyv paramakyv, boolean paramBoolean, AppInterface paramAppInterface, akyp paramakyp) {}
   
   public void run()
   {
-    akkj.a(this.this$0, ajjy.a(2131642729), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Akkd.e, this.jdField_a_of_type_Akkd.a, this.jdField_a_of_type_Akkd);
+    akyv.a(this.this$0, ajyc.a(2131708514), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Akyp.e, this.jdField_a_of_type_Akyp.a, this.jdField_a_of_type_Akyp);
   }
 }
 

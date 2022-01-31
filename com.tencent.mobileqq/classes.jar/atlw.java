@@ -1,8 +1,19 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.10.1;
+
 public class atlw
+  implements View.OnClickListener
 {
-  public static final boolean a(int paramInt)
+  atlw(atlu paramatlu) {}
+  
+  public void onClick(View paramView)
   {
-    return (paramInt == 1) || (paramInt == 4) || (paramInt == 2);
+    this.a.f(paramView);
+    new ativ().h("video").i("playpage_fw_click").a().a(this.a.a);
+    ThreadManagerV2.excute(new PlayOperationViewModel.10.1(this, (aszd)this.a.a.getManager(106)), 16, null, false);
   }
 }
 

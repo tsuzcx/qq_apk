@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo;
 
-import algw;
+import alvk;
 import android.os.Bundle;
 import android.os.Handler;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -16,10 +16,10 @@ class PhotoListActivity$14
     if (QLog.isColorLevel()) {
       QLog.d("PhotoListActivity", 1, "copy file to res: " + PhotoListActivity.a(this.this$0));
     }
-    String str = algw.a(this.this$0.c, PhotoListActivity.a(this.this$0), PhotoListActivity.m(this.this$0), PhotoListActivity.b(this.this$0));
+    String str = alvk.a(this.this$0.c, PhotoListActivity.a(this.this$0), PhotoListActivity.m(this.this$0), PhotoListActivity.b(this.this$0));
     Bundle localBundle = new Bundle();
     localBundle.putString("bundle_key_info", str);
-    algw.a().a("callbackArk", localBundle, null);
+    alvk.a().a("callbackArk", localBundle, null);
     ThreadManagerV2.getUIHandlerV2().post(new PhotoListActivity.14.1(this));
   }
 }

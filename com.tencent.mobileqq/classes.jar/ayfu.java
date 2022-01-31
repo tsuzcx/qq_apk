@@ -1,115 +1,88 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import java.util.List;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import java.lang.ref.WeakReference;
 
-public class ayfu
-  implements ayca
+class ayfu
+  implements AdapterView.OnItemClickListener
 {
-  public ayfu(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  private bcur jdField_a_of_type_Bcur;
+  private TeamWorkFileImportInfo jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo;
+  private WeakReference<QQBrowserActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<WebView> b;
   
-  public void a(int paramInt1, int paramInt2)
+  ayfu(QQBrowserActivity paramQQBrowserActivity, WebView paramWebView, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, bcur parambcur)
   {
-    int m = 1;
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.getText().length();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.getText().length() <= 0) {
-      break label37;
-    }
-    label37:
-    while ((paramInt1 <= 0) && (paramInt2 <= 0)) {
-      return;
-    }
-    int j = this.a.jdField_a_of_type_Aycg.b.length();
-    int k = this.a.jdField_a_of_type_Aycg.a.length();
-    int n = this.a.jdField_a_of_type_Aycg.c.length() + (j + k);
-    if ((paramInt1 < this.a.J.length() + n) && (paramInt2 < this.a.J.length() + n))
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQBrowserActivity);
+    this.b = new WeakReference(paramWebView);
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo = paramTeamWorkFileImportInfo;
+    this.jdField_a_of_type_Bcur = parambcur;
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    QLog.w("TeamWorkShareActionSheetBuilder", 1, "inner on item click");
+    paramAdapterView = paramView.getTag();
+    if (paramAdapterView == null) {}
+    do
     {
-      if (TroopBarPublishActivity.a(this.a).size() > 1)
+      do
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.clearFocus();
-        beex.b(this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText);
+        return;
+        paramAdapterView = ((bbjh)paramAdapterView).a;
+        if (this.jdField_a_of_type_Bcur != null) {
+          this.jdField_a_of_type_Bcur.a(paramAdapterView, null);
+        }
+      } while (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo == null);
+      QLog.w("TeamWorkShareActionSheetBuilder", 1, "info exist");
+    } while (!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d());
+    QLog.w("TeamWorkShareActionSheetBuilder", 1, "from online preview");
+    paramInt = paramAdapterView.c;
+    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 9) || (paramInt == 10))
+    {
+      paramAdapterView = (WebView)this.b.get();
+      if (paramAdapterView == null) {
+        break label233;
+      }
+    }
+    label233:
+    for (paramAdapterView = paramAdapterView.getUrl();; paramAdapterView = "")
+    {
+      ayfv.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, paramAdapterView, "0X8009F34");
+      paramAdapterView = (QQBrowserActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramAdapterView == null) {
+        break;
+      }
+      if (paramInt == 1)
+      {
+        ayfv.a(paramAdapterView.getIntent(), "0X800A16F");
         return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
-      return;
-    }
-    if (paramInt1 < 0) {
-      if (paramInt2 > this.a.J.length() + n)
+      if ((paramInt == 2) || (paramInt == 9) || (paramInt == 10) || (paramInt == 3) || (paramInt == 12))
       {
-        paramInt1 = paramInt2;
-        label203:
-        if (paramInt1 <= i) {
-          break label439;
-        }
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
-      return;
-      paramInt1 = this.a.J.length() + n;
-      break label203;
-      if (paramInt2 < 0) {
-        if (paramInt1 > this.a.J.length() + n) {
-          label258:
-          if (paramInt1 <= i) {
-            break label434;
-          }
-        }
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
+        ayfv.a(paramAdapterView.getIntent(), "0X800A16E");
         return;
-        paramInt1 = this.a.J.length() + n;
-        break label258;
-        if (TextUtils.isEmpty(this.a.jdField_a_of_type_Aycg.b)) {
-          break;
-        }
-        k = 0;
-        j = paramInt1;
-        if (paramInt1 < this.a.J.length() + n)
-        {
-          j = n + this.a.J.length();
-          k = 1;
-        }
-        if (paramInt2 < this.a.J.length() + n)
-        {
-          paramInt1 = n + this.a.J.length();
-          k = 1;
-        }
-        for (;;)
-        {
-          paramInt2 = j;
-          if (j > i)
-          {
-            k = 1;
-            paramInt2 = i;
-          }
-          if (paramInt1 > i) {
-            k = m;
-          }
-          while (k != 0)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(paramInt2, i);
-            return;
-            i = paramInt1;
-          }
-          break;
-          paramInt1 = paramInt2;
-        }
-        label434:
-        i = paramInt1;
       }
-      label439:
-      i = paramInt1;
+      if (paramInt == 6)
+      {
+        ayfv.a(paramAdapterView.getIntent(), "0X800A170");
+        return;
+      }
+      if (paramInt != 5) {
+        break;
+      }
+      ayfv.a(paramAdapterView.getIntent(), "0X800A171");
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayfu
  * JD-Core Version:    0.7.0.1
  */

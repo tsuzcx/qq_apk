@@ -1,38 +1,36 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
+import android.os.Handler;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.5;
+import com.tencent.qphone.base.util.QLog;
 
 public class aycr
-  extends BroadcastReceiver
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  public aycr(AbsPublishActivity paramAbsPublishActivity) {}
+  public aycr(VideoSprite.5 param5) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    paramContext = paramIntent.getAction();
-    if ("key_photo_delete_action".equals(paramContext))
+    try
     {
-      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
-      this.a.a(i, 9);
-    }
-    do
-    {
-      return;
-      if ("key_audio_delete_action".equals(paramContext))
-      {
-        this.a.a(0);
-        this.a.a = null;
-        azho.a(this.a.o, this.a.p, "del_record", this.a.q, this.a.b, "", "");
-        return;
+      this.a.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+      this.a.this$0.g = true;
+      if (this.a.this$0.jdField_a_of_type_Ayct != null) {
+        this.a.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.this$0, 33L);
       }
-    } while (!"key_audio_play_action".equals(paramContext));
-    azho.a(this.a.o, this.a.p, "preview_record", this.a.q, this.a.b, "", "");
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("VideoSprite", 2, "playVideo: " + QLog.getStackTraceString(paramMediaPlayer));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aycr
  * JD-Core Version:    0.7.0.1
  */

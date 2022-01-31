@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.phone;
 
-import afyr;
-import ajjy;
-import amnv;
+import agkp;
+import ajyc;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import atog;
-import awqx;
-import babh;
+import anec;
+import aume;
+import axqw;
+import bbcl;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
 public class PhoneLaunchActivity
@@ -18,7 +18,7 @@ public class PhoneLaunchActivity
   implements View.OnClickListener
 {
   private Button jdField_a_of_type_AndroidWidgetButton;
-  public atog a;
+  public aume a;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   private boolean c;
@@ -27,7 +27,7 @@ public class PhoneLaunchActivity
   
   private void b()
   {
-    babh.a(2);
+    bbcl.a(2);
     Intent localIntent = new Intent(this, BindNumberActivity.class);
     if (getIntent().getIntExtra("kSrouce", -1) == 8) {
       localIntent.putExtra("kSrouce", 8);
@@ -38,8 +38,8 @@ public class PhoneLaunchActivity
   public void a()
   {
     PhoneLaunchActivity.1 local1 = new PhoneLaunchActivity.1(this);
-    DenyRunnable localDenyRunnable = new DenyRunnable(this, new afyr(this));
-    amnv.a(this, this.app, local1, localDenyRunnable);
+    DenyRunnable localDenyRunnable = new DenyRunnable(this, new agkp(this));
+    anec.a(this, this.app, local1, localDenyRunnable);
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -74,20 +74,20 @@ public class PhoneLaunchActivity
     }
     if (!this.jdField_a_of_type_Boolean) {
       if (getIntent().getStringExtra("leftViewText") == null) {
-        getIntent().putExtra("leftViewText", ajjy.a(2131642220));
+        getIntent().putExtra("leftViewText", ajyc.a(2131708005));
       }
     }
     for (;;)
     {
-      setContentView(2131493806);
-      setTitle(ajjy.a(2131642216));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131305729));
+      setContentView(2131559374);
+      setTitle(ajyc.a(2131708001));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371425));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       if (getIntent().getBooleanExtra("k_start_number", false)) {
         b();
       }
       return true;
-      getIntent().putExtra("leftViewText", ajjy.a(2131642222));
+      getIntent().putExtra("leftViewText", ajyc.a(2131708007));
     }
   }
   
@@ -95,7 +95,7 @@ public class PhoneLaunchActivity
   {
     super.finish();
     if (!this.jdField_a_of_type_Boolean) {
-      overridePendingTransition(2130771990, 2130772279);
+      overridePendingTransition(2130771990, 2130772280);
     }
   }
   
@@ -110,7 +110,7 @@ public class PhoneLaunchActivity
       for (;;)
       {
         if (this.d) {
-          awqx.b(this.app, "CliOper", "", "", "0X8005D10", "0X8005D10", 0, 0, "", "", "", "");
+          axqw.b(this.app, "CliOper", "", "", "0X8005D10", "0X8005D10", 0, 0, "", "", "", "");
         }
         return;
         if (i == 5)
@@ -126,7 +126,7 @@ public class PhoneLaunchActivity
         }
         else
         {
-          a(ajjy.a(2131642218), ajjy.a(2131642217));
+          a(ajyc.a(2131708003), ajyc.a(2131708002));
         }
       }
     }

@@ -1,47 +1,20 @@
-import android.os.Bundle;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoySocializeRecommendFollowView.9.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.oidb_0xc2f.GetFollowUserRecommendListRsp;
-import tencent.im.oidb.oidb_0xc2f.RspBody;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import java.util.Comparator;
 
-public class paf
-  extends mmk
+class paf
+  implements Comparator<ChannelInfo>
 {
-  paf(ozx paramozx) {}
+  paf(pad parampad) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public int a(ChannelInfo paramChannelInfo1, ChannelInfo paramChannelInfo2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "requestRecommendList onResult, errorCode = " + paramInt);
+    if (paramChannelInfo1.mSortOrder == paramChannelInfo2.mSortOrder) {
+      return 0;
     }
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      try
-      {
-        paramBundle = new oidb_0xc2f.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        ozx.a(this.a).mRecommendFollowInfos = pqe.a((oidb_0xc2f.GetFollowUserRecommendListRsp)paramBundle.msg_get_follow_user_recommend_list_rsp.get());
-        if ((ozx.a(this.a).mRecommendFollowInfos.a != null) && (ozx.a(this.a).mRecommendFollowInfos.a.size() >= 3))
-        {
-          ozx.a(this.a).a(ozx.a(this.a).mRecommendFollowInfos.a);
-          ozx.a(this.a).isShowRecommendList = true;
-          ozx.a(this.a);
-          ozx.a(this.a).post(new ReadInJoySocializeRecommendFollowView.9.1(this));
-          return;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ReadInJoySocializeRecommendFollowView", 2, "requestRecommendList onResult, size < 3");
-          return;
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        QLog.e("ReadInJoySocializeRecommendFollowView", 1, "requestRecommendList onResult(), exception = " + paramArrayOfByte.toString());
-      }
+    if (paramChannelInfo1.mSortOrder < paramChannelInfo2.mSortOrder) {
+      return -1;
     }
+    return 1;
   }
 }
 

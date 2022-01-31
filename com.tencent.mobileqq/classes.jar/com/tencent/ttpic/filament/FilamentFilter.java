@@ -9,6 +9,9 @@ import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.view.Surface;
 import com.google.android.filament.FilamentJNI;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.util.GlUtil;
@@ -18,10 +21,12 @@ import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.SurfaceTextureFilter;
 import com.tencent.ttpic.ar.sensor.representation.Matrix;
+import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
+import com.tencent.ttpic.filter.MaterialLoadFinishListener;
 import com.tencent.ttpic.gameplaysdk.model.Range;
 import com.tencent.ttpic.openapi.PTDetectInfo.Builder;
 import com.tencent.ttpic.openapi.PTFaceAttr;
@@ -34,7 +39,10 @@ import com.tencent.ttpic.openapi.model.GLBItemJava;
 import com.tencent.ttpic.openapi.model.NodeItemJava;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.util.VideoMaterialUtil.GLB_FIELD;
 import com.tencent.ttpic.openapi.util.VideoTemplateParser;
+import com.tencent.ttpic.util.ColorUtil;
+import com.tencent.ttpic.util.GsonUtils;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -43,12 +51,14 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.LinkedBlockingDeque;
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
 
 public class FilamentFilter
 {
   private static final boolean DEBUG = true;
   private static final String TAG = FilamentFilter.class.getSimpleName();
   private static final boolean USE_SHARE_CONTEXT = false;
+  public static float averageL = 0.0F;
   private String dataPath;
   private LinkedBlockingDeque<Runnable> drawQueue = new LinkedBlockingDeque();
   private Frame filamentFrame = new Frame();
@@ -60,6 +70,7 @@ public class FilamentFilter
   private final boolean isBloomMaterial;
   private final HashMap<String, Float> jawOpenThresholdMap = new HashMap();
   private byte[] jsonData;
+  private float[] key = { 30.0F, 80.0F };
   private BaseFilter mCopyFilter = new BaseFilter(BaseFilter.getFragmentShader(0));
   private SimpleGLThread mHandler;
   private SurfaceTextureFilter mPreviewFilter = new SurfaceTextureFilter();
@@ -68,10 +79,13 @@ public class FilamentFilter
   private volatile boolean modelLoadSucceed;
   private volatile boolean modelReady;
   private boolean needRender;
+  private MaterialLoadFinishListener onLoadFinishListener;
   private int rotation = 0;
   private int skipFrame;
   private Surface surface;
   private SurfaceTexture surfaceTexture;
+  private long timeFirstRender;
+  private float[] value = { 30000.0F, 80000.0F };
   private int width = -1;
   
   @RequiresApi(api=17)
@@ -229,7 +243,7 @@ public class FilamentFilter
       if (!this.modelLoadSucceed) {
         loadGlbData();
       }
-    } while (paramPTFaceAttr.getFaceInfoList().isEmpty());
+    } while (CollectionUtils.isEmpty(paramPTFaceAttr.getFaceInfoList()));
     int i = 0;
     while (i < this.glbList.size())
     {
@@ -265,6 +279,9 @@ public class FilamentFilter
       i += 1;
     }
     this.filamentJNI.setHeadCount(paramPTFaceAttr.getFaceInfoList().size());
+    this.filamentJNI.setAverageL((float)paramPTFaceAttr.getFaceAverageL());
+    averageL = (float)paramPTFaceAttr.getFaceAverageL();
+    LogUtils.d(TAG, "test for averageL: " + paramPTFaceAttr.getFaceAverageL());
     this.filamentJNI.render();
     this.needRender = true;
   }
@@ -289,10 +306,144 @@ public class FilamentFilter
     LogUtils.d(TAG, "test for filament destory 3");
   }
   
+  public void exportLightParams(JsonObject paramJsonObject)
+  {
+    int j = 0;
+    paramJsonObject = GsonUtils.optJsonObject(paramJsonObject, VideoMaterialUtil.GLB_FIELD.LIGHT.value);
+    if (paramJsonObject != null)
+    {
+      paramJsonObject.addProperty(VideoMaterialUtil.GLB_FIELD.INTENSITY.value, Integer.valueOf(getDirectionIntensity()));
+      Object localObject = GsonUtils.optJsonArray(paramJsonObject, VideoMaterialUtil.GLB_FIELD.DIRECTION.value);
+      int i;
+      if (localObject != null)
+      {
+        float[] arrayOfFloat = this.filamentJNI.getLightDirection();
+        i = 0;
+        while ((i < ((JsonArray)localObject).size()) && (i < 3))
+        {
+          ((JsonArray)localObject).set(i, new JsonPrimitive(Float.valueOf(arrayOfFloat[i])));
+          i += 1;
+        }
+      }
+      paramJsonObject = GsonUtils.optJsonArray(paramJsonObject, VideoMaterialUtil.GLB_FIELD.COLOR.value);
+      if (paramJsonObject != null)
+      {
+        localObject = this.filamentJNI.getDirectionColor();
+        i = j;
+        while ((i < paramJsonObject.size()) && (i < 3))
+        {
+          paramJsonObject.set(i, new JsonPrimitive(Float.valueOf(localObject[i])));
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public boolean exportParams()
+  {
+    JsonObject localJsonObject = VideoTemplateParser.parseVideoMaterialFileAsJSONObject(this.dataPath, "params", true, VideoTemplateParser.decryptListener);
+    Object localObject = GsonUtils.optJsonArray(localJsonObject, VideoMaterialUtil.GLB_FIELD.GLB_LIST.value);
+    if (localObject != null)
+    {
+      localObject = GsonUtils.optJsonObject((JsonArray)localObject, 0);
+      if (localObject == null) {}
+    }
+    try
+    {
+      JsonArray localJsonArray = GsonUtils.optJsonArray((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.TRANSLATE.value);
+      float[] arrayOfFloat;
+      int i;
+      if (localJsonArray != null)
+      {
+        arrayOfFloat = this.filamentJNI.getPosition();
+        i = 0;
+        while ((i < localJsonArray.size()) && (i < 3))
+        {
+          localJsonArray.set(i, new JsonPrimitive(Float.valueOf(arrayOfFloat[i])));
+          i += 1;
+        }
+      }
+      localJsonArray = GsonUtils.optJsonArray((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.SCALE.value);
+      if (localJsonArray != null)
+      {
+        arrayOfFloat = this.filamentJNI.getScale();
+        i = 0;
+        while ((i < localJsonArray.size()) && (i < 3))
+        {
+          localJsonArray.set(i, new JsonPrimitive(Float.valueOf(arrayOfFloat[i])));
+          i += 1;
+        }
+      }
+      localJsonArray = GsonUtils.optJsonArray((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.ROTATE.value);
+      if (localJsonArray != null)
+      {
+        arrayOfFloat = this.filamentJNI.getRotation();
+        i = 0;
+        while ((i < localJsonArray.size()) && (i < 3))
+        {
+          localJsonArray.set(i, new JsonPrimitive(Float.valueOf(arrayOfFloat[i])));
+          i += 1;
+        }
+      }
+      ((JsonObject)localObject).addProperty(VideoMaterialUtil.GLB_FIELD.IBL_INTENSITY.value, Integer.valueOf(this.filamentJNI.getIblIntensity()));
+      ((JsonObject)localObject).addProperty(VideoMaterialUtil.GLB_FIELD.IBL_ROTATION.value, Integer.valueOf(this.filamentJNI.getIblRotation()));
+      exportLightParams((JsonObject)localObject);
+      FileUtils.saveFile(this.dataPath + "/" + "params" + ".json", localJsonObject.toString());
+      return true;
+    }
+    catch (JSONException localJSONException) {}
+    return false;
+  }
+  
+  public String getDirectionColor()
+  {
+    float[] arrayOfFloat = this.filamentJNI.getDirectionColor();
+    return ColorUtil.rgb2Hex(new int[] { (int)arrayOfFloat[0] * 255, (int)arrayOfFloat[1] * 255, (int)arrayOfFloat[2] * 255 });
+  }
+  
+  public int getDirectionIntensity()
+  {
+    return this.filamentJNI.getDirectionIntensity();
+  }
+  
+  public int getIblIntensity()
+  {
+    return this.filamentJNI.getIblIntensity();
+  }
+  
+  public int getIblRotation()
+  {
+    return this.filamentJNI.getIblRotation();
+  }
+  
+  public float[] getLightDirection()
+  {
+    float[] arrayOfFloat = this.filamentJNI.getLightDirection();
+    return FilamentJavaUtil.xyz2lglt(arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[2]);
+  }
+  
+  public float[] getPosition()
+  {
+    return this.filamentJNI.getPosition();
+  }
+  
+  public float[] getRotation()
+  {
+    float[] arrayOfFloat = this.filamentJNI.getRotation();
+    return new float[] { arrayOfFloat[0] * 180.0F / 3.141593F, arrayOfFloat[1] * 180.0F / 3.141593F, arrayOfFloat[2] * 180.0F / 3.141593F };
+  }
+  
+  public float[] getScale()
+  {
+    float[] arrayOfFloat = this.filamentJNI.getScale();
+    return new float[] { arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[2] };
+  }
+  
   public void initial()
   {
     FilaBenchUtil.benchStart(FilamentJavaUtil.BenchTag.INIT.tag);
     FilaBenchUtil.benchStart(FilamentJavaUtil.BenchTag.FIRST_RENDER.tag);
+    FilaBenchUtil.benchStart(FilamentJavaUtil.BenchTag.AFTER_RENDER.tag);
     GlUtil.glGenTextures(this.mPreviewTextureId.length, this.mPreviewTextureId, 0);
     this.mHandler.postJobSync(new FilamentFilter.2(this));
     this.mPreviewFilter.apply();
@@ -308,20 +459,25 @@ public class FilamentFilter
     FilaBenchUtil.benchEnd(FilamentJavaUtil.BenchTag.INIT.tag);
   }
   
+  public boolean isModelReady()
+  {
+    return this.modelReady;
+  }
+  
   public Frame render(Frame paramFrame, AIAttr paramAIAttr, PTFaceAttr paramPTFaceAttr)
   {
     BenchUtil.benchStart("[filament] updateParams");
     resize(paramFrame.width, paramFrame.height, paramPTFaceAttr.getRotation());
     updateParams(paramAIAttr, paramPTFaceAttr);
     BenchUtil.benchEnd("[filament] updateParams");
+    this.timeFirstRender = FilaBenchUtil.benchEnd(FilamentJavaUtil.BenchTag.FIRST_RENDER.tag);
     if (!this.needRender)
     {
       this.skipFrame = 0;
       return paramFrame;
     }
-    FilaBenchUtil.benchEnd(FilamentJavaUtil.BenchTag.FIRST_RENDER.tag);
-    FilaBenchUtil.reset();
     LogUtils.d(TAG, "test for filament render called");
+    FilaBenchUtil.benchStart(FilamentJavaUtil.BenchTag.FIRST_FRAME.tag);
     try
     {
       BenchUtil.benchStart("[filament] wait");
@@ -330,6 +486,12 @@ public class FilamentFilter
       BenchUtil.benchStart("[filament] render");
       paramAIAttr.run();
       BenchUtil.benchEnd("[filament] render");
+      long l = FilaBenchUtil.benchEnd(FilamentJavaUtil.BenchTag.FIRST_FRAME.tag);
+      if ((this.timeFirstRender > 0L) && (this.onLoadFinishListener != null)) {
+        this.onLoadFinishListener.onLoadFinish(l + this.timeFirstRender);
+      }
+      FilaBenchUtil.benchEnd(FilamentJavaUtil.BenchTag.AFTER_RENDER.tag);
+      FilaBenchUtil.reset();
       if (this.skipFrame < 1)
       {
         this.skipFrame += 1;
@@ -361,11 +523,89 @@ public class FilamentFilter
     }
   }
   
-  public void setIblIntensity(int paramInt) {}
+  public void setDirectionColor(String paramString)
+  {
+    if (this.filamentJNI != null)
+    {
+      paramString = ColorUtil.hex2Rgb(paramString);
+      this.filamentJNI.setDirectionColor(paramString[0] / 255.0F, paramString[1] / 255.0F, paramString[2] / 255.0F);
+    }
+  }
   
-  public void setIblRotation(int paramInt) {}
+  public void setDirectionIntensity(int paramInt)
+  {
+    if (this.filamentJNI != null) {
+      this.filamentJNI.setDirectionIntensity(paramInt);
+    }
+  }
+  
+  public void setIblIntensity(int paramInt)
+  {
+    if (this.filamentJNI != null) {
+      this.filamentJNI.setIblIntensity(paramInt);
+    }
+  }
+  
+  public void setIblRotation(int paramInt)
+  {
+    if (this.filamentJNI != null) {
+      this.filamentJNI.setIblDegree(paramInt);
+    }
+  }
+  
+  public void setLightDirection(float paramFloat1, float paramFloat2)
+  {
+    if (this.filamentJNI != null)
+    {
+      float[] arrayOfFloat = FilamentJavaUtil.lglt2xyz(paramFloat1, paramFloat2);
+      this.filamentJNI.setLightDirection(-arrayOfFloat[0], arrayOfFloat[1], -arrayOfFloat[2]);
+    }
+  }
   
   public void setLightIntensity(int paramInt) {}
+  
+  public void setOnLoadFinishListener(MaterialLoadFinishListener paramMaterialLoadFinishListener)
+  {
+    this.onLoadFinishListener = paramMaterialLoadFinishListener;
+  }
+  
+  public void setPosition(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (this.filamentJNI != null) {
+      this.filamentJNI.setPosition(paramFloat1, paramFloat2, paramFloat3);
+    }
+  }
+  
+  public void setRotation(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (this.filamentJNI != null) {
+      this.filamentJNI.setRotation(paramFloat1 * 3.141593F / 180.0F, paramFloat2 * 3.141593F / 180.0F, 3.141593F * paramFloat3 / 180.0F);
+    }
+  }
+  
+  public void setScale(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (this.filamentJNI != null) {
+      this.filamentJNI.setScale(paramFloat1, paramFloat2, paramFloat3);
+    }
+  }
+  
+  public void updateIntensity(float paramFloat, int paramInt1, int paramInt2)
+  {
+    switch (paramInt2)
+    {
+    }
+    for (;;)
+    {
+      if (this.filamentJNI != null) {
+        this.filamentJNI.updateIntensityMap(this.key, this.value);
+      }
+      return;
+      this.key[paramInt1] = paramFloat;
+      continue;
+      this.value[paramInt1] = paramFloat;
+    }
+  }
 }
 
 

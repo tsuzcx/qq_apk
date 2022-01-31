@@ -1,28 +1,38 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-final class los
-  implements Animation.AnimationListener
+public class los
 {
-  los(View paramView, boolean paramBoolean) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  public boolean f;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public los()
   {
-    paramAnimation = this.jdField_a_of_type_AndroidViewView;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 0;; i = 8)
-    {
-      paramAnimation.setVisibility(i);
-      return;
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 4L;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public boolean equals(Object paramObject)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if ((paramObject != null) && ((paramObject instanceof los)))
+    {
+      paramObject = (los)paramObject;
+      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "Uin[" + this.jdField_a_of_type_Long + "], VideoSrcType[" + this.jdField_a_of_type_Int + "], isBig[" + this.jdField_a_of_type_Boolean + "], isRender[" + this.jdField_b_of_type_Boolean + "], isNeedRequest[" + this.c + "], hasRecvData[" + this.d + "], inviteId[" + this.jdField_a_of_type_JavaLangString + "], isMirror[" + this.f + "]";
   }
 }
 

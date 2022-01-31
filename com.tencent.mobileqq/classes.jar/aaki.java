@@ -1,17 +1,62 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import mqq.os.MqqHandler;
 
 public class aaki
-  implements View.OnClickListener
+  extends ajtq
 {
-  public aaki(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
+  public aaki(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onClick(View paramView)
+  protected void onSetSubaccountDisplayThirdQQ(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    boolean bool1 = true;
+    boolean bool2 = AssociatedAccountManageActivity.a(this.a).a();
+    AssociatedAccountManageActivity.a(this.a).removeMessages(8193);
+    AssociatedAccountManageActivity.a(this.a).sendEmptyMessage(8194);
+    Object localObject = AssociatedAccountManageActivity.a(this.a).obtainMessage(8195);
+    int i;
+    if (paramBoolean)
+    {
+      i = 2;
+      ((Message)localObject).arg1 = i;
+      if (!paramBoolean) {
+        break label134;
+      }
+      if (!bool2) {
+        break label128;
+      }
+      i = 2131699488;
+    }
+    for (;;)
+    {
+      ((Message)localObject).arg2 = i;
+      AssociatedAccountManageActivity.a(this.a).sendMessage((Message)localObject);
+      if (!paramBoolean) {
+        break label151;
+      }
+      AssociatedAccountManageActivity.a(this.a);
+      ayao.a(this.a.app, bool2);
+      return;
+      i = 1;
+      break;
+      label128:
+      i = 2131699487;
+      continue;
+      label134:
+      if (bool2) {
+        i = 2131719856;
+      } else {
+        i = 2131719855;
+      }
+    }
+    label151:
+    localObject = this.a;
+    if (!bool2) {}
+    for (paramBoolean = bool1;; paramBoolean = false)
+    {
+      AssociatedAccountManageActivity.a((AssociatedAccountManageActivity)localObject, paramBoolean);
+      return;
     }
   }
 }

@@ -1,28 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 
-public class qtn
-  implements Animator.AnimatorListener
+class qtn
+  extends bfmg
 {
-  public qtn(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
+  qtn(qtk paramqtk, AlphaAnimation paramAlphaAnimation) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.setScaleX(1.0F);
-    this.a.setScaleY(1.0F);
-    this.a.setRotation(0.0F);
-    this.a.setAlpha(1.0F);
-    if (ReadInjoyTabDragAnimationView.a(this.a) != 0) {
-      this.a.a(0);
-    }
+    this.jdField_a_of_type_Qtk.a.s.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

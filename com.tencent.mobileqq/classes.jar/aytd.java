@@ -1,69 +1,52 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 public class aytd
+  extends aejq
 {
-  protected long a;
-  protected ayrp a;
-  protected TroopFileTransferManager.Item a;
-  protected String a;
-  wma a;
-  
-  private aytd(long paramLong, TroopFileTransferManager.Item paramItem)
+  public aytd(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    this.jdField_a_of_type_Wma = new ayte(this);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null) {}
-    for (paramItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString();; paramItem = "")
-    {
-      this.jdField_a_of_type_JavaLangString = paramItem;
-      return;
-    }
+    super(paramBaseApplicationImpl);
   }
   
-  public static aytd a(long paramLong, TroopFileTransferManager.Item paramItem)
+  public File getFile(DownloadParams paramDownloadParams)
   {
-    if (paramLong == 0L)
+    paramDownloadParams = paramDownloadParams.url;
+    try
     {
-      aysb.a("TroopFilePreviewWorker", aysb.a, "getWoker. troopuin=0");
-      return null;
+      File localFile1 = new File(paramDownloadParams.toURI().getPath());
+      return localFile1;
     }
-    if (paramItem == null)
+    catch (URISyntaxException localURISyntaxException)
     {
-      aysb.a("TroopFilePreviewWorker", aysb.a, "getWoker. item=null");
-      return null;
+      try
+      {
+        File localFile2 = new File(paramDownloadParams.toString().replaceFirst("filegalleryorigimage:", ""));
+        return localFile2;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("URLDrawable_", 2, "LocaleFileDownloader getFile error url:" + paramDownloadParams, localException);
+        }
+        return null;
+      }
     }
-    if (paramItem.Id == null)
+    catch (NullPointerException paramDownloadParams)
     {
-      aysb.a("TroopFilePreviewWorker", aysb.a, "getWoker. item.id=null");
-      return null;
+      paramDownloadParams.printStackTrace();
     }
-    return new aytd(paramLong, paramItem);
-  }
-  
-  public UUID a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
-  }
-  
-  public boolean a()
-  {
-    QQAppInterface localQQAppInterface = ayrz.a();
-    if (localQQAppInterface == null)
-    {
-      aysb.a("TroopFilePreviewWorker", aysb.a, "[" + this.jdField_a_of_type_JavaLangString + "] getPreviewInfo app=null");
-      return false;
-    }
-    aysb.c("TroopFilePreviewWorker", aysb.a, "[" + this.jdField_a_of_type_JavaLangString + "] getPreviewInfo");
-    this.jdField_a_of_type_Ayrp = wln.a(localQQAppInterface, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 0, true, false, this.jdField_a_of_type_Wma);
-    return true;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aytd
  * JD-Core Version:    0.7.0.1
  */

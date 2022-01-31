@@ -1,10 +1,21 @@
-public class auqp
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
+
+class auqp
+  extends bfmg
 {
-  public int a;
-  public long a;
-  public String a;
+  auqp(auqi paramauqi) {}
   
-  public auqp(auqn paramauqn) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PortalManager", 2, "RESUME_GESTURE_ANI, " + this.a.d);
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
+  }
 }
 
 

@@ -1,65 +1,25 @@
-import android.content.SharedPreferences;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.widget.stageview.StageEffectView.5.1;
+import com.tencent.av.widget.stageview.StageMemberView;
 
-class mvp
-  implements Handler.Callback
+public class mvp
+  implements Animation.AnimationListener
 {
-  mvp(mut parammut) {}
+  public mvp(StageEffectView.5.1 param1) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramMessage.what)
-    {
-    default: 
-      bool1 = false;
-    }
-    do
-    {
-      do
-      {
-        return bool1;
-        if (QLog.isColorLevel()) {
-          QLog.i("AccountDetailGroupListContainer", 2, "refresh recent list, from_handle");
-        }
-        bool1 = bool2;
-      } while (!this.a.b);
-      bool1 = bool2;
-    } while (this.a.jdField_a_of_type_AndroidViewView == null);
-    this.a.jdField_a_of_type_AndroidContentSharedPreferences = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("public_account_detail_setting_status", 0);
-    int i;
-    if (this.a.jdField_a_of_type_AndroidContentSharedPreferences != null)
-    {
-      i = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getInt("setting_result_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -10000);
-      this.a.jdField_a_of_type_Int = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getInt("setting_status_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -1);
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i != 0) {
-        break;
-      }
-      bool1 = bool2;
-      if (this.a.jdField_a_of_type_Int <= -1) {
-        break;
-      }
-      mut.b(this.a, this.a.jdField_a_of_type_Int);
-      this.a.jdField_a_of_type_AndroidViewView.setOnClickListener(new mvq(this));
-      return true;
-      i = -10000;
-    }
+    this.a.a.a.a(true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mvp
  * JD-Core Version:    0.7.0.1
  */

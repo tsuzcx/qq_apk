@@ -1,33 +1,45 @@
-import com.tencent.qphone.base.util.QLog;
-
-class ayzp
-  extends batl
+public class ayzp
 {
-  ayzp(ayzm paramayzm, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
+  public int c = -1;
+  public int d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public int f;
+  public String g;
+  public String h;
   
-  public void onDone(batm parambatm)
+  public ayzp()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLibraryLoader", 2, "downloadUpdate loaded json = " + parambatm.c + " code = " + parambatm.jdField_a_of_type_Int);
-    }
-    boolean bool = ayzm.a(this.jdField_a_of_type_Ayzm, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLibraryLoader", 2, "downloadUpdate unCompressOffline " + bool);
-    }
-    ayzm.b(this.jdField_a_of_type_Ayzm);
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = true;
   }
   
-  public void onProgress(batm parambatm)
+  public String toString()
   {
-    int i = (int)(parambatm.jdField_a_of_type_Float * 100.0F);
-    if (((i % 10 == 0) || (i > 90)) && (QLog.isColorLevel())) {
-      QLog.d("SoLibraryLoader", 2, "downding progress = " + i);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("result:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(" errCode:");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(" errStr:");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(" reason:");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(" succCnt:");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(" failCnt");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(" isSendByQuickHttp");
+    localStringBuilder.append(this.jdField_d_of_type_Boolean);
+    localStringBuilder.append(" isAllowRetry");
+    localStringBuilder.append(this.jdField_e_of_type_Boolean);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayzp
  * JD-Core Version:    0.7.0.1
  */

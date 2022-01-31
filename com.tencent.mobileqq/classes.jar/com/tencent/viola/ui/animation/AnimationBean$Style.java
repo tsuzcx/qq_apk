@@ -140,7 +140,7 @@ public class AnimationBean$Style
     return FlexConvertUtils.converPxByViewportToRealPx(Float.valueOf(ViolaUtils.fastGetFloat(paramString, 1)), paramInt2);
   }
   
-  private static Pair<Float, Float> parsePivot(@Nullable String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public static Pair<Float, Float> parsePivot(@Nullable String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     if (!TextUtils.isEmpty(paramString))
     {
@@ -218,19 +218,19 @@ public class AnimationBean$Style
     }
   }
   
-  private static Map<Property<View, Float>, Float> parseTransForm(@Nullable String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public static Map<Property<View, Float>, Float> parseTransForm(@Nullable String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     return TransformParser.parseTransForm(paramString, paramInt1, paramInt2, paramInt3);
   }
   
-  private void resetToDefaultIfAbsent()
+  public static void resetToDefaultIfAbsent(Map<Property<View, Float>, Float> paramMap)
   {
     Iterator localIterator = defaultMap.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (!this.transformMap.containsKey(localEntry.getKey())) {
-        this.transformMap.put(localEntry.getKey(), localEntry.getValue());
+      if (!paramMap.containsKey(localEntry.getKey())) {
+        paramMap.put(localEntry.getKey(), localEntry.getValue());
       }
     }
   }
@@ -255,7 +255,7 @@ public class AnimationBean$Style
   {
     this.pivot = parsePivot(paramString1, paramInt1, paramInt2, paramInt3);
     this.transformMap.putAll(parseTransForm(paramString2, paramInt1, paramInt2, paramInt3));
-    resetToDefaultIfAbsent();
+    resetToDefaultIfAbsent(this.transformMap);
     if (this.transformMap.containsKey(CameraDistanceProperty.getInstance())) {
       this.cameraDistance = ((Float)this.transformMap.remove(CameraDistanceProperty.getInstance())).floatValue();
     }

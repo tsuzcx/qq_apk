@@ -1,41 +1,59 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import android.os.SystemClock;
+import android.util.Log;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bbjv
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public bbjv(InputMethodRelativeLayout paramInputMethodRelativeLayout) {}
+  public static long a;
+  private static ConcurrentHashMap<String, Long> a;
   
-  public void onGlobalLayout()
+  static
   {
-    int i;
-    if (this.a.a != null)
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap(8));
+  }
+  
+  public static void a(String paramString, long paramLong) {}
+  
+  public static void a(String paramString1, String paramString2) {}
+  
+  public static boolean a()
+  {
+    return jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey("AIO_Start_cost");
+  }
+  
+  public static final void b(String paramString1, String paramString2)
+  {
+    long l = SystemClock.uptimeMillis();
+    if (paramString1 != null)
     {
-      i = InputMethodRelativeLayout.a(this.a);
-      if (i != InputMethodRelativeLayout.b(this.a))
+      paramString2 = (Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
+      if (paramString2 != null)
       {
-        int j = this.a.getRootView().getHeight();
-        if (j - i <= j / 4) {
-          break label102;
+        jdField_a_of_type_Long = l - paramString2.longValue();
+        paramString1 = paramString1 + ", cost=" + jdField_a_of_type_Long + "|" + QQAppInterface.b + "|" + acte.a;
+        if (!QLog.isColorLevel()) {
+          break label90;
         }
-        InputMethodRelativeLayout.a(this.a, true);
+        QLog.i("AutoMonitor", 2, paramString1);
       }
     }
-    for (;;)
+    label90:
+    while (paramString2 == null)
     {
-      this.a.a.a(InputMethodRelativeLayout.a(this.a), InputMethodRelativeLayout.b(this.a), i);
-      this.a.requestLayout();
-      InputMethodRelativeLayout.a(this.a, i);
       return;
-      label102:
-      InputMethodRelativeLayout.a(this.a, false);
+      Log.i("AutoMonitor", paramString1);
+      return;
     }
+    jdField_a_of_type_Long = 0L;
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString2, Long.valueOf(l));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbjv
  * JD-Core Version:    0.7.0.1
  */

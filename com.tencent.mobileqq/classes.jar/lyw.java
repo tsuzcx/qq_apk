@@ -1,38 +1,31 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.widget.TextView;
-import com.tencent.av.ui.VideoControlUI;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public class lyw
-  implements GestureDetector.OnGestureListener
+class lyw
+  implements bfoq
 {
-  public lyw(VideoControlUI paramVideoControlUI) {}
+  lyw(lys paramlys, long paramLong, bfol parambfol) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    if ((this.a.f != null) && (this.a.f.isShown())) {
-      this.a.q(false);
+    if (QLog.isColorLevel()) {
+      QLog.w("ShareChat", 1, "showChooseTypeActionSheet, which[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "], mIHandle[" + this.jdField_a_of_type_Lys.a + "]");
     }
-    return false;
+    if (this.jdField_a_of_type_Lys.a == null) {
+      return;
+    }
+    paramView = paramView.getContext();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+      this.jdField_a_of_type_Lys.b(this.jdField_a_of_type_Long, paramView);
+      continue;
+      this.jdField_a_of_type_Lys.a(this.jdField_a_of_type_Long, paramView);
+    }
   }
 }
 

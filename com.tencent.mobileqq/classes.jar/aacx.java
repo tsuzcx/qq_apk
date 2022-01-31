@@ -1,30 +1,23 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
 
-public class aacx
-  implements anjp
+class aacx
+  extends aabt
 {
-  public aacx(BaseChatPie paramBaseChatPie) {}
+  aacx(aacw paramaacw, aabm paramaabm) {}
   
-  public void a(int paramInt)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
+    if (paramBundle != null)
     {
-    case 2: 
-    default: 
-      return;
-    case 0: 
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(67);
-      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "slide", 0, 0, "", "", "", this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
+      aaet.a(this.jdField_a_of_type_Aabm, aabo.a(paramBundle));
       return;
     }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(67, 6000L);
+    aaet.a(this.jdField_a_of_type_Aabm, 1, "get user info error, try again");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aacx
  * JD-Core Version:    0.7.0.1
  */

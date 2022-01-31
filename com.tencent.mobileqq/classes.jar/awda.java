@@ -1,25 +1,20 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.servlet.QZoneManagerImp.1.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
 
 public class awda
-  extends ContentObserver
+  implements DialogInterface.OnClickListener
 {
-  awda(awcz paramawcz, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
+  public awda(SignatureEditFragment paramSignatureEditFragment) {}
   
-  public void onChange(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onChange(paramBoolean);
-    ThreadManager.post(new QZoneManagerImp.1.1(this), 8, null, true);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     awda
  * JD-Core Version:    0.7.0.1
  */

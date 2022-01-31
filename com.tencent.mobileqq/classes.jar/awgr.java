@@ -1,25 +1,17 @@
-import android.hardware.camera2.CameraCharacteristics;
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class awgr
+final class awgr
+  implements View.OnClickListener
 {
-  public CameraCharacteristics a;
-  public String a;
-  
-  public awgr(String paramString, CameraCharacteristics paramCameraCharacteristics)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics = paramCameraCharacteristics;
-  }
-  
-  public boolean a()
-  {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics != null);
+    awgq.a(paramView.getContext(), (String)paramView.getTag());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     awgr
  * JD-Core Version:    0.7.0.1
  */

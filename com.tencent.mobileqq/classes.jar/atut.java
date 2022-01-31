@@ -1,23 +1,26 @@
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
 
-public class atut
-  extends RecyclerView.ViewHolder
+class atut
+  implements bfoq
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  atut(atur paramatur, atuy paramatuy, atwv paramatwv, bfol parambfol) {}
   
-  public atut(CustomCoverFragment paramCustomCoverFragment, View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    super(paramView);
-    this.itemView.setTag(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131300993));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131300983));
-    this.itemView.setBackgroundColor(paramCustomCoverFragment.getResources().getColor(2131101537));
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    ativ localativ = new ativ().h("data_card").i("feed_delete").d("2").a(this.jdField_a_of_type_Atur.a(this.jdField_a_of_type_Atuy)).b(this.jdField_a_of_type_Atwv.c).c(String.valueOf(this.jdField_a_of_type_Atur.a(this.jdField_a_of_type_Atuy)));
+    if (this.jdField_a_of_type_Atur.jdField_a_of_type_Boolean) {}
+    for (paramView = "1";; paramView = "2")
+    {
+      localativ.e(paramView).b(this.jdField_a_of_type_Atur.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      atur.a(this.jdField_a_of_type_Atur, this.jdField_a_of_type_Atuy);
+      this.jdField_a_of_type_Bfol.dismiss();
+      return;
+    }
   }
 }
 

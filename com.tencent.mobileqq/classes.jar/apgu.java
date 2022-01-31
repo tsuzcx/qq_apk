@@ -1,22 +1,69 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class apgu
-  extends apgo
+public abstract class apgu
 {
-  public apgu(FlashChatTextEffectView paramFlashChatTextEffectView) {}
+  protected final QQAppInterface a;
   
-  public void b(boolean paramBoolean, Bundle paramBundle)
+  public apgu(QQAppInterface paramQQAppInterface)
   {
-    super.b(paramBoolean, paramBundle);
-    if (paramBoolean) {
-      this.a.b();
+    this.a = paramQQAppInterface;
+  }
+  
+  protected abstract String a(boolean paramBoolean);
+  
+  protected abstract HashMap<String, String> a();
+  
+  public abstract void a();
+  
+  public void a(apgv paramapgv, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
+  {
+    paramapgv = paramapgv.a();
+    paramapgv.putAll(paramExcitingTransferOneSlotComplete.getReportData());
+    axrl localaxrl = axrl.a(BaseApplication.getContext());
+    String str = this.a.getCurrentAccountUin();
+    if (paramExcitingTransferOneSlotComplete.m_SubReason == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localaxrl.a(str, "actPDSlot", bool, 0L, 0L, paramapgv, "");
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (a()) {
+      b(paramBoolean);
+    }
+    HashMap localHashMap = a();
+    if (localHashMap != null) {
+      QLog.i("DataReport", 1, ">>> report: act=" + a(false) + localHashMap.toString());
+    }
+    axrl.a(BaseApplication.getContext()).a(this.a.getCurrentAccountUin(), a(false), paramBoolean, 0L, 0L, localHashMap, "");
+  }
+  
+  protected abstract boolean a();
+  
+  protected abstract HashMap<String, String> b();
+  
+  public abstract void b();
+  
+  public void b(boolean paramBoolean)
+  {
+    HashMap localHashMap = b();
+    if (localHashMap != null)
+    {
+      QLog.i("OldDataReport", 1, ">>> reportOld: act=" + a(true) + localHashMap.toString());
+      axrl.a(BaseApplication.getContext()).a(this.a.getCurrentAccountUin(), a(true), paramBoolean, 0L, 0L, localHashMap, "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apgu
  * JD-Core Version:    0.7.0.1
  */

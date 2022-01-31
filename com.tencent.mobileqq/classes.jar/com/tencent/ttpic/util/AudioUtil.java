@@ -1,12 +1,8 @@
 package com.tencent.ttpic.util;
 
 import com.tencent.ttpic.logic.watermark.FFTData;
-import java.io.File;
-import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.nio.ShortBuffer;
-import java.util.Arrays;
 
 public class AudioUtil
 {
@@ -20,21 +16,6 @@ public class AudioUtil
   public static short byteArrayToShort(byte[] paramArrayOfByte)
   {
     return ByteBuffer.wrap(paramArrayOfByte).order(ByteOrder.nativeOrder()).getShort();
-  }
-  
-  public static void cutOrExtendAudio(String paramString, int paramInt1, int paramInt2, int paramInt3, long paramLong)
-  {
-    try
-    {
-      paramString = new RandomAccessFile(paramString, "rws");
-      paramString.setLength(paramInt1 * paramInt2 * paramLong / 8L / 1000L * paramInt3);
-      paramString.close();
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
   }
   
   public static void fft(AudioUtil.Complex[] paramArrayOfComplex, int paramInt)
@@ -99,102 +80,6 @@ public class AudioUtil
     }
   }
   
-  public static long getAudioDuration(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramString = new File(paramString);
-    if (!paramString.exists()) {
-      return 0L;
-    }
-    return paramString.length() * 1000L / (paramInt1 * paramInt2 * paramInt3 / 8);
-  }
-  
-  public static double getFFTDB(byte[] paramArrayOfByte, int paramInt)
-  {
-    double d1 = 0.0D;
-    int i = paramArrayOfByte.length;
-    paramInt = 0;
-    while (paramInt < i / 2)
-    {
-      int j = paramArrayOfByte[(paramInt * 2)];
-      int k = paramArrayOfByte[(paramInt * 2 + 1)];
-      double d2 = j;
-      double d3 = j;
-      d1 += Math.log10((k * k + d2 * d3) * 4.0D / (i * i)) * 10.0D;
-      paramInt += 1;
-    }
-    return d1 / (i / 2);
-  }
-  
-  public static int getFrameGain(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
-    int i1 = paramArrayOfByte.remaining() / 4;
-    paramArrayOfByte.rewind();
-    paramArrayOfByte.order(ByteOrder.LITTLE_ENDIAN);
-    paramArrayOfByte = paramArrayOfByte.asShortBuffer();
-    int j = 0;
-    double d = 0.0D;
-    int i = -1;
-    if (j < i1)
-    {
-      int k = 0;
-      int n;
-      for (int m = 0; k < 2; m = n)
-      {
-        n = m;
-        if (paramArrayOfByte.remaining() > 0) {
-          n = m + Math.abs(paramArrayOfByte.get());
-        }
-        k += 1;
-      }
-      d += m;
-      k = m / 2;
-      if (i >= k) {
-        break label147;
-      }
-      i = k;
-    }
-    label147:
-    for (;;)
-    {
-      j += 1;
-      break;
-      j = (int)(Math.log10(d / (i1 * 2)) * 20.0D);
-      return (int)Math.sqrt(i);
-    }
-  }
-  
-  public static int getFrameGain(short[] paramArrayOfShort, int paramInt)
-  {
-    int n = paramInt / 2;
-    paramInt = -1;
-    int j = 0;
-    int i = 0;
-    if (j < n)
-    {
-      int m = 0;
-      int k = 0;
-      while (k < 2)
-      {
-        m += Math.abs(paramArrayOfShort[i]);
-        k += 1;
-        i += 1;
-      }
-      k = m / 2;
-      if (paramInt >= k) {
-        break label88;
-      }
-      paramInt = k;
-    }
-    label88:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return (int)((int)Math.sqrt(paramInt) * 0.7D);
-    }
-  }
-  
   public static int getPcmDB16Bit(byte[] paramArrayOfByte, int paramInt)
   {
     paramArrayOfByte = pcm16BitToShort(paramArrayOfByte, paramInt);
@@ -205,25 +90,6 @@ public class AudioUtil
   {
     paramArrayOfByte = pcm8BitTo16Bit(paramArrayOfByte, paramInt);
     return getPcmDBFromShortBuffer(paramArrayOfByte, paramArrayOfByte.length);
-  }
-  
-  public static int getPcmDB8BitV1(byte[] paramArrayOfByte)
-  {
-    int j = 0;
-    int k = paramArrayOfByte.length;
-    int i = 0;
-    double d = 0.0D;
-    while (i < k)
-    {
-      d += Math.abs((short)(paramArrayOfByte[i] - 128 << 8));
-      i += 1;
-    }
-    d /= k;
-    i = j;
-    if (d > 0.0D) {
-      i = (int)(20.0D * Math.log10(d));
-    }
-    return i;
   }
   
   public static int getPcmDBFromShortBuffer(short[] paramArrayOfShort, int paramInt)
@@ -279,11 +145,6 @@ public class AudioUtil
     }
   }
   
-  private static int getSamplesPerFrame()
-  {
-    return 1024;
-  }
-  
   public static short[] pcm16BitToShort(byte[] paramArrayOfByte, int paramInt)
   {
     short[] arrayOfShort = new short[paramInt / 2];
@@ -309,15 +170,6 @@ public class AudioUtil
       i += 1;
     }
     return arrayOfShort;
-  }
-  
-  public static byte[] trimData(byte[] paramArrayOfByte, int paramInt)
-  {
-    int i = paramArrayOfByte.length - 1;
-    while ((i >= 0) && (paramArrayOfByte[i] == paramInt)) {
-      i -= 1;
-    }
-    return Arrays.copyOf(paramArrayOfByte, i + 1);
   }
   
   private static int up2int(int paramInt)

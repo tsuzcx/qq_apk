@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import bccu;
+import bdgv;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import nbe;
-import pxh;
-import yox;
+import nmf;
+import qjf;
+import yyq;
 
 class ADVideoAppDownloadManager$3
   implements Runnable
 {
-  ADVideoAppDownloadManager$3(ADVideoAppDownloadManager paramADVideoAppDownloadManager, pxh parampxh) {}
+  ADVideoAppDownloadManager$3(ADVideoAppDownloadManager paramADVideoAppDownloadManager, qjf paramqjf) {}
   
   public void run()
   {
-    if (nbe.a(ADVideoAppDownloadManager.a(this.this$0), this.a.d))
+    if (nmf.a(ADVideoAppDownloadManager.a(this.this$0), this.a.d))
     {
       QLog.d("ADVideoAppDownloadManager", 1, "already installed." + this.a.d);
       this.this$0.a(this.a, 1, 100);
@@ -29,8 +29,8 @@ class ADVideoAppDownloadManager$3
         {
           QLog.d("ADVideoAppDownloadManager", 1, "already finishDownload." + this.a.d);
           this.this$0.a(this.a, 5, 100);
-          DownloadInfo localDownloadInfo = bccu.a().c(this.a.a);
-          bccu.a().c(localDownloadInfo);
+          DownloadInfo localDownloadInfo = bdgv.a().c(this.a.a);
+          bdgv.a().a(localDownloadInfo);
           return;
         }
         i = ADVideoAppDownloadManager.a(this.this$0, ADVideoAppDownloadManager.a(this.this$0), this.a);
@@ -40,7 +40,7 @@ class ADVideoAppDownloadManager$3
       } while (!QLog.isColorLevel());
       QLog.d("ADVideoAppDownloadManager", 2, "isPkgDownloading.isPkgDownloading." + this.a.d + " " + i);
       return;
-      if (yox.a())
+      if (yyq.a())
       {
         this.this$0.a(this.a, 0);
         return;

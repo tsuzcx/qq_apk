@@ -1,20 +1,9 @@
-import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import mqq.app.AppRuntime;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class agbz
-  extends atdk
+public abstract interface agbz
 {
-  protected void c(boolean paramBoolean, Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof get_albumlist_num_rsp))) {
-      PhotoListActivity.f = ((get_albumlist_num_rsp)paramBundle).album_num;
-    }
-    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(PhotoListActivity.a());
-  }
+  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
 }
 
 

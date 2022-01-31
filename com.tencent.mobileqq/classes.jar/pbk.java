@@ -1,15 +1,26 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
-import com.tencent.widget.AdapterView;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq;
 
 public class pbk
-  implements behi
 {
-  public pbk(NativeGridImageView paramNativeGridImageView) {}
+  private int jdField_a_of_type_Int = 1;
+  private long jdField_a_of_type_Long;
+  private long b = 0L;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq a()
   {
-    NativeGridImageView.a(this.a, paramInt, NativeGridImageView.a(this.a).a());
+    return new ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq(this, null);
+  }
+  
+  public pbk a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public pbk b(long paramLong)
+  {
+    this.b = paramLong;
+    return this;
   }
 }
 

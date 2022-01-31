@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aodp;
+import aouj;
 
 public class FMObserver$1
   implements Runnable
 {
-  public FMObserver$1(aodp paramaodp, Object paramObject) {}
+  public FMObserver$1(aouj paramaouj, Object paramObject) {}
   
   public void run()
   {
-    aodp.a(this.this$0, this.a);
+    aouj.a(this.this$0, this.a);
   }
 }
 

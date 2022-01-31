@@ -1,24 +1,55 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-
-class aybk
-  implements BusinessObserver
+public class aybk
+  extends aybg
 {
-  aybk(aybi paramaybi, aybq paramaybq) {}
+  private float d;
+  private float e;
+  private float f;
+  private float g;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public aybk(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    if (paramBoolean)
+    super(paramInt, 1, 0);
+    this.d = paramFloat1;
+    this.e = paramFloat2;
+    this.f = paramFloat3;
+    this.g = paramFloat4;
+  }
+  
+  protected void a(int paramInt, float paramFloat)
+  {
+    this.a = (this.d + (this.f - this.d) * paramFloat);
+    this.b = (this.e + (this.g - this.e) * paramFloat);
+    if (this.f - this.d > 0.0F)
     {
-      this.jdField_a_of_type_Aybq.k = 1;
-      this.jdField_a_of_type_Aybi.a.a(1, 1);
+      if (this.a >= this.f) {
+        this.a = this.f;
+      }
+      if (this.g - this.e <= 0.0F) {
+        break label162;
+      }
+      if (this.b >= this.g) {
+        this.b = this.g;
+      }
     }
-    while (!QLog.isColorLevel()) {
+    for (;;)
+    {
+      if (paramInt >= this.c)
+      {
+        this.a = this.f;
+        this.b = this.g;
+      }
+      super.a(paramInt, paramFloat);
       return;
+      if (this.a > this.f) {
+        break;
+      }
+      this.a = this.f;
+      break;
+      label162:
+      if (this.b <= this.g) {
+        this.b = this.g;
+      }
     }
-    QLog.d("TribeVideoListPlayerFragment", 2, "dianZan failed!!!");
   }
 }
 

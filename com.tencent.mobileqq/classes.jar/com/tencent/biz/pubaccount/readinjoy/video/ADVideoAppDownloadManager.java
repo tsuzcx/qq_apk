@@ -5,9 +5,9 @@ import android.content.Context;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
-import bady;
-import bccu;
-import bcgn;
+import bbfd;
+import bdgv;
+import bdko;
 import com.tencent.biz.pubaccount.VideoAdInfo;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
@@ -28,37 +28,37 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.os.MqqHandler;
-import nbe;
-import npi;
-import npn;
+import nmf;
+import oat;
+import oay;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pxh;
-import pxi;
-import pxj;
-import pxs;
-import qab;
-import qag;
-import qaq;
-import qeq;
-import yoa;
-import yox;
+import qjf;
+import qjg;
+import qjh;
+import qjr;
+import qmd;
+import qmi;
+import qms;
+import qqo;
+import yxu;
+import yyq;
 
 public class ADVideoAppDownloadManager
-  implements bcgn
+  implements bdko
 {
   private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private ITMAssistantDownloadClientListener jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener = new pxi(this);
+  private ITMAssistantDownloadClientListener jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener = new qjg(this);
   private Runnable jdField_a_of_type_JavaLangRunnable = new ADVideoAppDownloadManager.1(this);
-  protected List<pxh> a;
-  protected ConcurrentHashMap<String, pxh> a;
-  private pxh jdField_a_of_type_Pxh;
-  private pxj jdField_a_of_type_Pxj;
-  private qab jdField_a_of_type_Qab;
-  private qag jdField_a_of_type_Qag;
+  protected List<qjf> a;
+  protected ConcurrentHashMap<String, qjf> a;
+  private qjf jdField_a_of_type_Qjf;
+  private qjh jdField_a_of_type_Qjh;
+  private qmd jdField_a_of_type_Qmd;
+  private qmi jdField_a_of_type_Qmi;
   private boolean jdField_a_of_type_Boolean;
   protected List<ADVideoAppDownloadManager.LoadTask> b;
   private boolean b;
@@ -74,9 +74,9 @@ public class ADVideoAppDownloadManager
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
   }
   
-  private int a(Context paramContext, pxh parampxh)
+  private int a(Context paramContext, qjf paramqjf)
   {
-    if ((paramContext == null) || (parampxh == null)) {}
+    if ((paramContext == null) || (paramqjf == null)) {}
     do
     {
       DownloadInfo localDownloadInfo;
@@ -85,30 +85,30 @@ public class ADVideoAppDownloadManager
         do
         {
           return -1;
-          paramContext = parampxh.d;
-          parampxh = parampxh.jdField_a_of_type_JavaLangString;
-          if ((!TextUtils.isEmpty(paramContext)) && (!TextUtils.isEmpty(parampxh))) {
+          paramContext = paramqjf.d;
+          paramqjf = paramqjf.jdField_a_of_type_JavaLangString;
+          if ((!TextUtils.isEmpty(paramContext)) && (!TextUtils.isEmpty(paramqjf))) {
             break;
           }
         } while (!QLog.isColorLevel());
-        QLog.d("ADVideoAppDownloadManager", 2, "isPkgDownloading pkg:" + paramContext + ", appid:" + parampxh + " false");
+        QLog.d("ADVideoAppDownloadManager", 2, "isPkgDownloading pkg:" + paramContext + ", appid:" + paramqjf + " false");
         return -1;
-        localDownloadInfo = bccu.a().c(paramContext);
+        localDownloadInfo = bdgv.a().c(paramContext);
         if (localDownloadInfo != null) {
           break;
         }
       } while (!QLog.isColorLevel());
-      QLog.d("ADVideoAppDownloadManager", 2, "isPkgDownloading pkg:" + paramContext + ", appid:" + parampxh + " false");
+      QLog.d("ADVideoAppDownloadManager", 2, "isPkgDownloading pkg:" + paramContext + ", appid:" + paramqjf + " false");
       return -1;
       if (localDownloadInfo.a() == 2)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("ADVideoAppDownloadManager", 2, "isPkgDownloading pkg:" + paramContext + ", appid:" + parampxh + " true");
+          QLog.d("ADVideoAppDownloadManager", 2, "isPkgDownloading pkg:" + paramContext + ", appid:" + paramqjf + " true");
         }
         return localDownloadInfo.f;
       }
     } while (!QLog.isColorLevel());
-    QLog.d("ADVideoAppDownloadManager", 2, "isPkgDownloading pkg:" + paramContext + ", appid:" + parampxh + " false");
+    QLog.d("ADVideoAppDownloadManager", 2, "isPkgDownloading pkg:" + paramContext + ", appid:" + paramqjf + " false");
     return -1;
   }
   
@@ -368,18 +368,18 @@ public class ADVideoAppDownloadManager
     return paramJSONObject;
   }
   
-  private void a(Activity paramActivity, pxh parampxh)
+  private void a(Activity paramActivity, qjf paramqjf)
   {
-    if ((paramActivity == null) || (parampxh == null)) {
+    if ((paramActivity == null) || (paramqjf == null)) {
       return;
     }
     paramActivity = new WeakReference(paramActivity);
-    ThreadManager.getSubThreadHandler().post(new ADVideoAppDownloadManager.2(this, parampxh, paramActivity));
+    ThreadManager.getSubThreadHandler().post(new ADVideoAppDownloadManager.2(this, paramqjf, paramActivity));
   }
   
   private void a(boolean paramBoolean, long paramLong) {}
   
-  private boolean a(Context paramContext, pxh parampxh)
+  private boolean a(Context paramContext, qjf paramqjf)
   {
     TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo1 = null;
     boolean bool3 = false;
@@ -387,7 +387,7 @@ public class ADVideoAppDownloadManager
     boolean bool2 = bool1;
     if (paramContext != null)
     {
-      if (parampxh != null) {
+      if (paramqjf != null) {
         break label25;
       }
       bool2 = bool1;
@@ -405,84 +405,84 @@ public class ADVideoAppDownloadManager
           do
           {
             return bool2;
-            str1 = parampxh.d;
-            str2 = parampxh.jdField_a_of_type_JavaLangString;
+            str1 = paramqjf.d;
+            str2 = paramqjf.jdField_a_of_type_JavaLangString;
             bool2 = bool1;
           } while (TextUtils.isEmpty(str1));
           bool2 = bool1;
         } while (TextUtils.isEmpty(str2));
-        localDownloadInfo = bccu.a().c(str1);
+        localDownloadInfo = bdgv.a().c(str1);
         bool2 = bool1;
       } while (localDownloadInfo == null);
-      parampxh = "";
+      paramqjf = "";
       if (TextUtils.isEmpty(localDownloadInfo.l)) {
         break;
       }
-      parampxh = localDownloadInfo.l;
+      paramqjf = localDownloadInfo.l;
       bool1 = bool3;
-      if (!TextUtils.isEmpty(parampxh))
+      if (!TextUtils.isEmpty(paramqjf))
       {
         bool1 = bool3;
-        if (new File(parampxh).exists()) {
+        if (new File(paramqjf).exists()) {
           bool1 = true;
         }
       }
       bool2 = bool1;
     } while (!QLog.isColorLevel());
-    QLog.d("ADVideoAppDownloadManager", 2, "isPkgExist(" + bool1 + ") pkg:" + str1 + ", appid:" + str2 + ", path:" + parampxh);
+    QLog.d("ADVideoAppDownloadManager", 2, "isPkgExist(" + bool1 + ") pkg:" + str1 + ", appid:" + str2 + ", path:" + paramqjf);
     return bool1;
     TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo2;
     if (localDownloadInfo.jdField_c_of_type_Int == 0)
     {
-      localTMAssistantDownloadTaskInfo2 = bccu.a().a(localDownloadInfo.d);
-      paramContext = parampxh;
+      localTMAssistantDownloadTaskInfo2 = bdgv.a().a(localDownloadInfo.d);
+      paramContext = paramqjf;
       if (localTMAssistantDownloadTaskInfo2 != null)
       {
-        paramContext = parampxh;
+        paramContext = paramqjf;
         if (localTMAssistantDownloadTaskInfo2.mState == 4) {
           paramContext = localTMAssistantDownloadTaskInfo2.mSavePath;
         }
       }
-      parampxh = paramContext;
+      paramqjf = paramContext;
       if (TextUtils.isEmpty(paramContext))
       {
-        localTMAssistantDownloadTaskInfo1 = bccu.a().a(localDownloadInfo);
-        parampxh = paramContext;
+        localTMAssistantDownloadTaskInfo1 = bdgv.a().a(localDownloadInfo);
+        paramqjf = paramContext;
       }
     }
     for (;;)
     {
-      paramContext = parampxh;
+      paramContext = paramqjf;
       if (localTMAssistantDownloadTaskInfo1 != null)
       {
-        paramContext = parampxh;
+        paramContext = paramqjf;
         if (localTMAssistantDownloadTaskInfo1.mState == 4) {
           paramContext = localTMAssistantDownloadTaskInfo1.mSavePath;
         }
       }
-      parampxh = paramContext;
+      paramqjf = paramContext;
       if (TextUtils.isEmpty(paramContext)) {
         break;
       }
       localDownloadInfo.l = paramContext;
       localDownloadInfo.a(4);
-      bccu.a().d(localDownloadInfo);
-      parampxh = paramContext;
+      bdgv.a().c(localDownloadInfo);
+      paramqjf = paramContext;
       break;
-      localTMAssistantDownloadTaskInfo2 = bccu.a().a(localDownloadInfo);
-      paramContext = parampxh;
+      localTMAssistantDownloadTaskInfo2 = bdgv.a().a(localDownloadInfo);
+      paramContext = paramqjf;
       if (localTMAssistantDownloadTaskInfo2 != null)
       {
-        paramContext = parampxh;
+        paramContext = paramqjf;
         if (localTMAssistantDownloadTaskInfo2.mState == 4) {
           paramContext = localTMAssistantDownloadTaskInfo2.mSavePath;
         }
       }
-      parampxh = paramContext;
+      paramqjf = paramContext;
       if (TextUtils.isEmpty(paramContext))
       {
-        localTMAssistantDownloadTaskInfo1 = bccu.a().a(localDownloadInfo.d);
-        parampxh = paramContext;
+        localTMAssistantDownloadTaskInfo1 = bdgv.a().a(localDownloadInfo.d);
+        paramqjf = paramContext;
       }
     }
   }
@@ -497,14 +497,14 @@ public class ADVideoAppDownloadManager
     ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_JavaLangRunnable, 128);
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Qab = null;
-    this.jdField_a_of_type_Pxh = null;
+    this.jdField_a_of_type_Qmd = null;
+    this.jdField_a_of_type_Qjf = null;
   }
   
-  protected int a(pxh parampxh)
+  protected int a(qjf paramqjf)
   {
-    if (parampxh != null) {
-      return parampxh.jdField_a_of_type_Int;
+    if (paramqjf != null) {
+      return paramqjf.jdField_a_of_type_Int;
     }
     return 0;
   }
@@ -514,8 +514,8 @@ public class ADVideoAppDownloadManager
     if (QLog.isColorLevel()) {
       QLog.d("ADVideoAppDownloadManager", 2, " doOnResume ");
     }
-    if ((this.jdField_a_of_type_Pxh != null) && (this.jdField_a_of_type_Qab != null) && (this.jdField_a_of_type_Qab.jdField_a_of_type_Qeq != null) && (this.jdField_a_of_type_Qab.jdField_a_of_type_Qeq.a != null) && (npi.d(this.jdField_a_of_type_Qab.jdField_a_of_type_Qeq.a.a))) {
-      b(this.jdField_a_of_type_Pxh, this.jdField_a_of_type_Pxh.jdField_a_of_type_Int);
+    if ((this.jdField_a_of_type_Qjf != null) && (this.jdField_a_of_type_Qmd != null) && (this.jdField_a_of_type_Qmd.jdField_a_of_type_Qqo != null) && (this.jdField_a_of_type_Qmd.jdField_a_of_type_Qqo.a != null) && (oat.d(this.jdField_a_of_type_Qmd.jdField_a_of_type_Qqo.a.a))) {
+      b(this.jdField_a_of_type_Qjf, this.jdField_a_of_type_Qjf.jdField_a_of_type_Int);
     }
   }
   
@@ -527,7 +527,7 @@ public class ADVideoAppDownloadManager
     default: 
       return;
     case 0: 
-      this.jdField_a_of_type_Pxj.d(this.jdField_a_of_type_Pxh);
+      this.jdField_a_of_type_Qjh.d(this.jdField_a_of_type_Qjf);
       return;
     case 3: 
       onDownloadUpdate(new ArrayList(1));
@@ -545,9 +545,9 @@ public class ADVideoAppDownloadManager
     onDownloadError(paramDownloadInfo, 0, "", paramInt);
   }
   
-  public void a(pxh parampxh)
+  public void a(qjf paramqjf)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_Pxj == null) || (parampxh == null) || (!parampxh.a())) {
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_Qjh == null) || (paramqjf == null) || (!paramqjf.a())) {
       QLog.d("ADVideoAppDownloadManager", 1, "initDownloadApp return null");
     }
     do
@@ -562,63 +562,63 @@ public class ADVideoAppDownloadManager
             if (QLog.isColorLevel()) {
               QLog.d("ADVideoAppDownloadManager", 2, "initDownloadApp begin");
             }
-            if (nbe.a(this.jdField_a_of_type_AndroidContentContext, parampxh.d))
+            if (nmf.a(this.jdField_a_of_type_AndroidContentContext, paramqjf.d))
             {
-              QLog.d("ADVideoAppDownloadManager", 1, "already installed." + parampxh.d);
-              this.jdField_a_of_type_Pxj.jdField_a_of_type_Boolean = true;
-              this.jdField_a_of_type_Pxj.a();
-              this.jdField_a_of_type_Pxj.b(parampxh);
+              QLog.d("ADVideoAppDownloadManager", 1, "already installed." + paramqjf.d);
+              this.jdField_a_of_type_Qjh.jdField_a_of_type_Boolean = true;
+              this.jdField_a_of_type_Qjh.a();
+              this.jdField_a_of_type_Qjh.b(paramqjf);
               return;
             }
-            if (a(this.jdField_a_of_type_AndroidContentContext, parampxh))
+            if (a(this.jdField_a_of_type_AndroidContentContext, paramqjf))
             {
-              QLog.d("ADVideoAppDownloadManager", 1, "already finishDownload." + parampxh.d);
-              this.jdField_a_of_type_Pxj.jdField_a_of_type_Boolean = true;
-              this.jdField_a_of_type_Pxj.a();
-              this.jdField_a_of_type_Pxj.c(parampxh);
+              QLog.d("ADVideoAppDownloadManager", 1, "already finishDownload." + paramqjf.d);
+              this.jdField_a_of_type_Qjh.jdField_a_of_type_Boolean = true;
+              this.jdField_a_of_type_Qjh.a();
+              this.jdField_a_of_type_Qjh.c(paramqjf);
               return;
             }
-            int j = a(this.jdField_a_of_type_AndroidContentContext, parampxh);
+            int j = a(this.jdField_a_of_type_AndroidContentContext, paramqjf);
             int i = j;
             if (j == -1)
             {
               i = j;
-              if (parampxh.b > 0) {
-                i = parampxh.b;
+              if (paramqjf.b > 0) {
+                i = paramqjf.b;
               }
             }
-            if ((i < 0) || ((parampxh.jdField_a_of_type_Int != 3) && (parampxh.jdField_a_of_type_Int != 4))) {
+            if ((i < 0) || ((paramqjf.jdField_a_of_type_Int != 3) && (paramqjf.jdField_a_of_type_Int != 4))) {
               break;
             }
             if (QLog.isColorLevel()) {
-              QLog.d("ADVideoAppDownloadManager", 2, "isPkgDownloading.isPkgDownloading." + parampxh.d + " " + i);
+              QLog.d("ADVideoAppDownloadManager", 2, "isPkgDownloading.isPkgDownloading." + paramqjf.d + " " + i);
             }
-            if (parampxh.jdField_a_of_type_Int == 3)
+            if (paramqjf.jdField_a_of_type_Int == 3)
             {
-              this.jdField_a_of_type_Pxj.b(parampxh, i);
+              this.jdField_a_of_type_Qjh.b(paramqjf, i);
               return;
             }
-          } while (parampxh.jdField_a_of_type_Int != 4);
-          this.jdField_a_of_type_Pxj.a(parampxh);
+          } while (paramqjf.jdField_a_of_type_Int != 4);
+          this.jdField_a_of_type_Qjh.a(paramqjf);
           return;
-          if ((!this.jdField_a_of_type_Pxj.jdField_a_of_type_Boolean) && ((!this.jdField_a_of_type_Boolean) || (!yox.a()))) {
+          if ((!this.jdField_a_of_type_Qjh.jdField_a_of_type_Boolean) && ((!this.jdField_a_of_type_Boolean) || (!yyq.a()))) {
             break;
           }
-          if (this.jdField_a_of_type_Pxj.jdField_a_of_type_Boolean)
+          if (this.jdField_a_of_type_Qjh.jdField_a_of_type_Boolean)
           {
             if (QLog.isColorLevel()) {
               QLog.d("ADVideoAppDownloadManager", 2, "autodownload not by userClick");
             }
-            a(parampxh, 0);
+            a(paramqjf, 0);
             return;
           }
-        } while ((!this.jdField_a_of_type_Boolean) || (!yox.a()));
+        } while ((!this.jdField_a_of_type_Boolean) || (!yyq.a()));
         if (!this.c)
         {
           if (QLog.isColorLevel()) {
             QLog.d("ADVideoAppDownloadManager", 2, "autodownload for getAppData <1s");
           }
-          a(parampxh, 0);
+          a(paramqjf, 0);
           return;
         }
       } while (!QLog.isColorLevel());
@@ -628,37 +628,37 @@ public class ADVideoAppDownloadManager
     QLog.d("ADVideoAppDownloadManager", 2, "initDownloadApp DOWNLOAD_NONE.");
   }
   
-  public void a(pxh parampxh, int paramInt)
+  public void a(qjf paramqjf, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ADVideoAppDownloadManager", 2, "startDownload " + parampxh.d + " progress " + paramInt);
+      QLog.d("ADVideoAppDownloadManager", 2, "startDownload " + paramqjf.d + " progress " + paramInt);
     }
-    parampxh.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_Pxj.b(parampxh, paramInt);
+    paramqjf.jdField_a_of_type_Int = 3;
+    this.jdField_a_of_type_Qjh.b(paramqjf, paramInt);
     Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_Pxj.jdField_a_of_type_Boolean = true;
-    a(localActivity, parampxh);
+    this.jdField_a_of_type_Qjh.jdField_a_of_type_Boolean = true;
+    a(localActivity, paramqjf);
   }
   
-  protected void a(pxh parampxh, int paramInt1, int paramInt2) {}
+  protected void a(qjf paramqjf, int paramInt1, int paramInt2) {}
   
-  public void a(qaq paramqaq)
+  public void a(qms paramqms)
   {
-    this.jdField_a_of_type_Qag = paramqaq;
-    if (this.jdField_a_of_type_Qab != null)
+    this.jdField_a_of_type_Qmi = paramqms;
+    if (this.jdField_a_of_type_Qmd != null)
     {
-      this.jdField_a_of_type_Qab.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Qab.c.setVisibility(8);
-      this.jdField_a_of_type_Qab.jdField_a_of_type_Pxs.a(this.jdField_a_of_type_Qab.jdField_a_of_type_Qeq.a);
+      this.jdField_a_of_type_Qmd.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Qmd.c.setVisibility(8);
+      this.jdField_a_of_type_Qmd.jdField_a_of_type_Qjr.a(this.jdField_a_of_type_Qmd.jdField_a_of_type_Qqo.a);
     }
-    if ((paramqaq instanceof qab))
+    if ((paramqms instanceof qmd))
     {
       g();
-      this.jdField_a_of_type_Qab = ((qab)paramqaq);
-      if (this.jdField_a_of_type_Qab != null)
+      this.jdField_a_of_type_Qmd = ((qmd)paramqms);
+      if (this.jdField_a_of_type_Qmd != null)
       {
-        paramqaq = this.jdField_a_of_type_Qab.jdField_a_of_type_Qeq.a;
-        if (paramqaq != null) {
+        paramqms = this.jdField_a_of_type_Qmd.jdField_a_of_type_Qqo.a;
+        if (paramqms != null) {
           break label96;
         }
       }
@@ -668,46 +668,46 @@ public class ADVideoAppDownloadManager
     do
     {
       return;
-      localVideoAdInfo = paramqaq.a;
-    } while ((localVideoAdInfo == null) || (!paramqaq.c) || (!npi.d(localVideoAdInfo)) || (!AdvertisementInfo.isAppAdvertisementInfo(npn.a(localVideoAdInfo))));
-    paramqaq = pxh.a(localVideoAdInfo);
-    if (TextUtils.isEmpty(paramqaq)) {
-      paramqaq = "STUB_PACK_NAME_" + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+      localVideoAdInfo = paramqms.a;
+    } while ((localVideoAdInfo == null) || (!paramqms.c) || (!oat.d(localVideoAdInfo)) || (!AdvertisementInfo.isAppAdvertisementInfo(oay.a(localVideoAdInfo))));
+    paramqms = qjf.a(localVideoAdInfo);
+    if (TextUtils.isEmpty(paramqms)) {
+      paramqms = "STUB_PACK_NAME_" + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
     }
     for (;;)
     {
-      pxh localpxh2 = (pxh)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramqaq);
-      pxh localpxh1 = localpxh2;
-      if (localpxh2 == null) {
-        localpxh1 = pxh.a(localVideoAdInfo);
+      qjf localqjf2 = (qjf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramqms);
+      qjf localqjf1 = localqjf2;
+      if (localqjf2 == null) {
+        localqjf1 = qjf.a(localVideoAdInfo);
       }
-      if (localpxh1 == null) {
+      if (localqjf1 == null) {
         break;
       }
-      localpxh1.d = paramqaq;
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramqaq, localpxh1);
-      this.jdField_a_of_type_Pxh = localpxh1;
-      this.jdField_a_of_type_Pxj = new pxj(this.jdField_a_of_type_Qab, this, this.jdField_a_of_type_AndroidContentContext);
-      bccu.a().a(this);
+      localqjf1.d = paramqms;
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramqms, localqjf1);
+      this.jdField_a_of_type_Qjf = localqjf1;
+      this.jdField_a_of_type_Qjh = new qjh(this.jdField_a_of_type_Qmd, this, this.jdField_a_of_type_AndroidContentContext);
+      bdgv.a().a(this);
       if (QLog.isColorLevel()) {
-        QLog.d("ADVideoAppDownloadManager", 2, " onCenterViewChanged  mState = " + this.jdField_a_of_type_Pxh.jdField_a_of_type_Int);
+        QLog.d("ADVideoAppDownloadManager", 2, " onCenterViewChanged  mState = " + this.jdField_a_of_type_Qjf.jdField_a_of_type_Int);
       }
-      if ((localpxh1.jdField_a_of_type_Int == 4) || (localpxh1.jdField_a_of_type_Int == 3))
+      if ((localqjf1.jdField_a_of_type_Int == 4) || (localqjf1.jdField_a_of_type_Int == 3))
       {
-        this.jdField_a_of_type_Pxj.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Pxj.a();
-        if (localpxh1.jdField_a_of_type_Int != 3) {
+        this.jdField_a_of_type_Qjh.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Qjh.a();
+        if (localqjf1.jdField_a_of_type_Int != 3) {
           break label341;
         }
-        this.jdField_a_of_type_Pxj.b(localpxh1, localpxh1.b);
+        this.jdField_a_of_type_Qjh.b(localqjf1, localqjf1.b);
       }
       for (;;)
       {
         d();
         return;
         label341:
-        if (localpxh1.jdField_a_of_type_Int == 4) {
-          this.jdField_a_of_type_Pxj.a(localpxh1);
+        if (localqjf1.jdField_a_of_type_Int == 4) {
+          this.jdField_a_of_type_Qjh.a(localqjf1);
         }
       }
     }
@@ -725,7 +725,7 @@ public class ADVideoAppDownloadManager
       try
       {
         paramVideoInfo = new JSONObject(paramVideoInfo.a.r);
-        boolean bool2 = bady.a(this.jdField_a_of_type_AndroidContentContext, paramVideoInfo.optString("pkg_name"));
+        boolean bool2 = bbfd.a(this.jdField_a_of_type_AndroidContentContext, paramVideoInfo.optString("pkg_name"));
         if (bool2) {
           return bool1;
         }
@@ -739,55 +739,55 @@ public class ADVideoAppDownloadManager
     }
   }
   
-  public boolean a(pxh parampxh)
+  public boolean a(qjf paramqjf)
   {
-    if (parampxh != null) {
-      ThreadManager.excute(new ADVideoAppDownloadManager.3(this, parampxh), 128, null, true);
+    if (paramqjf != null) {
+      ThreadManager.excute(new ADVideoAppDownloadManager.3(this, paramqjf), 128, null, true);
     }
     return false;
   }
   
   public void b() {}
   
-  void b(pxh parampxh)
+  void b(qjf paramqjf)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ADVideoAppDownloadManager", 2, "startDownload " + parampxh.d);
+      QLog.d("ADVideoAppDownloadManager", 2, "startDownload " + paramqjf.d);
     }
     Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_Pxj.jdField_a_of_type_Boolean = true;
-    a(localActivity, parampxh);
+    this.jdField_a_of_type_Qjh.jdField_a_of_type_Boolean = true;
+    a(localActivity, paramqjf);
   }
   
-  public void b(pxh parampxh, int paramInt)
+  public void b(qjf paramqjf, int paramInt)
   {
-    ThreadManager.executeOnSubThread(new ADVideoAppDownloadManager.6(this, parampxh, paramInt));
+    ThreadManager.executeOnSubThread(new ADVideoAppDownloadManager.6(this, paramqjf, paramInt));
   }
   
   public void c()
   {
     g();
-    bccu.a().b(this);
+    bdgv.a().b(this);
     this.jdField_a_of_type_AndroidContentContext = null;
   }
   
-  public void c(pxh parampxh)
+  public void c(qjf paramqjf)
   {
-    String str = parampxh.jdField_c_of_type_JavaLangString;
+    String str = paramqjf.jdField_c_of_type_JavaLangString;
     if (!TextUtils.isEmpty(str))
     {
-      bccu.a().a(str);
+      bdgv.a().a(str);
       return;
     }
-    ThreadManager.getSubThreadHandler().post(new ADVideoAppDownloadManager.4(this, parampxh));
+    ThreadManager.getSubThreadHandler().post(new ADVideoAppDownloadManager.4(this, paramqjf));
   }
   
   public void d()
   {
-    if ((!this.jdField_b_of_type_Boolean) && (yoa.a(this.jdField_a_of_type_AndroidContentContext)))
+    if ((!this.jdField_b_of_type_Boolean) && (yxu.a(this.jdField_a_of_type_AndroidContentContext)))
     {
       this.jdField_b_of_type_Boolean = true;
-      ADVideoAppDownloadManager.LoadTask localLoadTask = new ADVideoAppDownloadManager.LoadTask(this, this.jdField_a_of_type_Pxh);
+      ADVideoAppDownloadManager.LoadTask localLoadTask = new ADVideoAppDownloadManager.LoadTask(this, this.jdField_a_of_type_Qjf);
       this.jdField_b_of_type_JavaUtilList.add(localLoadTask);
       ThreadManager.excute(localLoadTask, 128, null, true);
     }
@@ -795,7 +795,7 @@ public class ADVideoAppDownloadManager
   
   public void e()
   {
-    if ((yoa.a(this.jdField_a_of_type_AndroidContentContext)) && (!this.jdField_b_of_type_Boolean))
+    if ((yxu.a(this.jdField_a_of_type_AndroidContentContext)) && (!this.jdField_b_of_type_Boolean))
     {
       this.jdField_b_of_type_Boolean = true;
       ThreadManager.excute(this.jdField_a_of_type_JavaLangRunnable, 128, null, true);
@@ -804,17 +804,17 @@ public class ADVideoAppDownloadManager
   
   public void f()
   {
-    if (this.jdField_a_of_type_Pxh == null)
+    if (this.jdField_a_of_type_Qjf == null)
     {
-      this.jdField_a_of_type_Pxj.a(null, 0);
+      this.jdField_a_of_type_Qjh.a(null, 0);
       return;
     }
-    if (this.jdField_a_of_type_Pxh.jdField_a_of_type_Int == 5)
+    if (this.jdField_a_of_type_Qjf.jdField_a_of_type_Int == 5)
     {
-      b(this.jdField_a_of_type_Pxh);
+      b(this.jdField_a_of_type_Qjf);
       return;
     }
-    this.jdField_a_of_type_Pxj.a(this.jdField_a_of_type_Pxh, this.jdField_a_of_type_Pxh.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Qjh.a(this.jdField_a_of_type_Qjf, this.jdField_a_of_type_Qjf.jdField_a_of_type_Int);
   }
   
   public void installSucceed(String paramString1, String paramString2)
@@ -825,7 +825,7 @@ public class ADVideoAppDownloadManager
     DownloadInfo localDownloadInfo = new DownloadInfo();
     localDownloadInfo.jdField_c_of_type_JavaLangString = paramString1;
     localDownloadInfo.e = paramString2;
-    this.jdField_a_of_type_Pxj.a(paramString1, paramString2, this.jdField_a_of_type_Pxh);
+    this.jdField_a_of_type_Qjh.a(paramString1, paramString2, this.jdField_a_of_type_Qjf);
   }
   
   public void onDownloadCancel(DownloadInfo paramDownloadInfo)
@@ -833,7 +833,7 @@ public class ADVideoAppDownloadManager
     if (QLog.isColorLevel()) {
       QLog.d("ADVideoAppDownloadManager", 2, "onDownloadCancel " + paramDownloadInfo.e);
     }
-    this.jdField_a_of_type_Pxj.c(paramDownloadInfo, this.jdField_a_of_type_Pxh);
+    this.jdField_a_of_type_Qjh.c(paramDownloadInfo, this.jdField_a_of_type_Qjf);
   }
   
   public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
@@ -841,7 +841,7 @@ public class ADVideoAppDownloadManager
     if (QLog.isColorLevel()) {
       QLog.d("ADVideoAppDownloadManager", 2, "onDownloadError " + paramDownloadInfo.e);
     }
-    this.jdField_a_of_type_Pxj.a(paramDownloadInfo, paramInt1, paramString, paramInt2, this.jdField_a_of_type_Pxh);
+    this.jdField_a_of_type_Qjh.a(paramDownloadInfo, paramInt1, paramString, paramInt2, this.jdField_a_of_type_Qjf);
   }
   
   public void onDownloadFinish(DownloadInfo paramDownloadInfo)
@@ -849,7 +849,7 @@ public class ADVideoAppDownloadManager
     if (QLog.isColorLevel()) {
       QLog.d("ADVideoAppDownloadManager", 2, "onDownloadFinish " + paramDownloadInfo.e);
     }
-    this.jdField_a_of_type_Pxj.d(paramDownloadInfo, this.jdField_a_of_type_Pxh);
+    this.jdField_a_of_type_Qjh.d(paramDownloadInfo, this.jdField_a_of_type_Qjf);
   }
   
   public void onDownloadPause(DownloadInfo paramDownloadInfo)
@@ -857,15 +857,15 @@ public class ADVideoAppDownloadManager
     if (QLog.isColorLevel()) {
       QLog.d("ADVideoAppDownloadManager", 2, "onDownloadPause " + paramDownloadInfo.e);
     }
-    if ((paramDownloadInfo != null) && (this.jdField_a_of_type_Pxh != null) && (this.jdField_a_of_type_Pxh.d != null) && (this.jdField_a_of_type_Pxh.d.equals(paramDownloadInfo.e)) && (paramDownloadInfo.f != 0) && (paramDownloadInfo.f != 100)) {
-      this.jdField_a_of_type_Pxh.b = paramDownloadInfo.f;
+    if ((paramDownloadInfo != null) && (this.jdField_a_of_type_Qjf != null) && (this.jdField_a_of_type_Qjf.d != null) && (this.jdField_a_of_type_Qjf.d.equals(paramDownloadInfo.e)) && (paramDownloadInfo.f != 0) && (paramDownloadInfo.f != 100)) {
+      this.jdField_a_of_type_Qjf.b = paramDownloadInfo.f;
     }
-    this.jdField_a_of_type_Pxj.a(paramDownloadInfo, this.jdField_a_of_type_Pxh);
+    this.jdField_a_of_type_Qjh.a(paramDownloadInfo, this.jdField_a_of_type_Qjf);
   }
   
   public void onDownloadUpdate(List<DownloadInfo> paramList)
   {
-    this.jdField_a_of_type_Pxj.a(paramList, this.jdField_a_of_type_Pxh);
+    this.jdField_a_of_type_Qjh.a(paramList, this.jdField_a_of_type_Qjf);
   }
   
   public void onDownloadWait(DownloadInfo paramDownloadInfo)
@@ -873,7 +873,7 @@ public class ADVideoAppDownloadManager
     if (QLog.isColorLevel()) {
       QLog.d("ADVideoAppDownloadManager", 2, "onDownloadWait " + paramDownloadInfo.e);
     }
-    this.jdField_a_of_type_Pxj.b(paramDownloadInfo, this.jdField_a_of_type_Pxh);
+    this.jdField_a_of_type_Qjh.b(paramDownloadInfo, this.jdField_a_of_type_Qjf);
   }
   
   public void packageReplaced(String paramString1, String paramString2)
@@ -884,7 +884,7 @@ public class ADVideoAppDownloadManager
     DownloadInfo localDownloadInfo = new DownloadInfo();
     localDownloadInfo.jdField_c_of_type_JavaLangString = paramString1;
     localDownloadInfo.e = paramString2;
-    this.jdField_a_of_type_Pxj.c(paramString1, paramString2, this.jdField_a_of_type_Pxh);
+    this.jdField_a_of_type_Qjh.c(paramString1, paramString2, this.jdField_a_of_type_Qjf);
   }
   
   public void uninstallSucceed(String paramString1, String paramString2)
@@ -895,7 +895,7 @@ public class ADVideoAppDownloadManager
     DownloadInfo localDownloadInfo = new DownloadInfo();
     localDownloadInfo.jdField_c_of_type_JavaLangString = paramString1;
     localDownloadInfo.e = paramString2;
-    this.jdField_a_of_type_Pxj.b(paramString1, paramString2, this.jdField_a_of_type_Pxh);
+    this.jdField_a_of_type_Qjh.b(paramString1, paramString2, this.jdField_a_of_type_Qjf);
   }
 }
 

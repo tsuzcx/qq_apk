@@ -1,44 +1,70 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.LinearGradient;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
-import android.graphics.Shader.TileMode;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import java.util.UUID;
 
-final class azur
-  implements DownloadParams.DecodeHandler
+public class azur
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public TroopFileTransferManager.Item a;
+  public String a;
+  xay jdField_a_of_type_Xay = new azut(this);
+  xbe jdField_a_of_type_Xbe = new azus(this);
+  public long d;
+  
+  protected azur(long paramLong, TroopFileTransferManager.Item paramItem)
   {
-    if (paramBitmap == null) {
+    this.d = paramLong;
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null) {}
+    for (paramItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString();; paramItem = "")
+    {
+      this.jdField_a_of_type_JavaLangString = paramItem;
+      return;
+    }
+  }
+  
+  public static azur a(long paramLong, TroopFileTransferManager.Item paramItem)
+  {
+    if (paramLong == 0L)
+    {
+      azsr.a("TroopFileUploadFeedsSender", azsr.a, "getSender. troopuin=0");
       return null;
     }
-    int i = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
-    paramDownloadParams = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-    RectF localRectF = new RectF(0.0F, 0.0F, i, j);
-    Canvas localCanvas = new Canvas(paramDownloadParams);
-    BitmapShader localBitmapShader = new BitmapShader(paramBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-    Paint localPaint = new Paint();
-    localPaint.setStyle(Paint.Style.FILL);
-    localPaint.setAntiAlias(true);
-    localPaint.setShader(localBitmapShader);
-    localCanvas.drawRoundRect(localRectF, 12.0F, 12.0F, localPaint);
-    localPaint.setShader(new LinearGradient(0.0F, 0.0F, 0.0F, j / 2, Color.parseColor("#80000000"), Color.parseColor("#00000000"), Shader.TileMode.CLAMP));
-    localCanvas.drawRoundRect(localRectF, 12.0F, 12.0F, localPaint);
-    paramBitmap.recycle();
-    return paramDownloadParams;
+    if (paramItem == null)
+    {
+      azsr.a("TroopFileUploadFeedsSender", azsr.a, "getSender. item=null");
+      return null;
+    }
+    if (paramItem.Id == null) {
+      azsr.a("TroopFileUploadFeedsSender", azsr.a, "getSender. item.id=null");
+    }
+    return new azur(paramLong, paramItem);
+  }
+  
+  public long a()
+  {
+    return this.d;
+  }
+  
+  public UUID a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
+  }
+  
+  public void j()
+  {
+    QQAppInterface localQQAppInterface = azsp.a();
+    if (localQQAppInterface == null)
+    {
+      azsr.a("TroopFileUploadFeedsSender", azsr.a, "[" + this.jdField_a_of_type_JavaLangString + "] reqFeedMsgV2 app=null");
+      return;
+    }
+    azsr.c("TroopFileUploadFeedsSender", azsr.a, "[" + this.jdField_a_of_type_JavaLangString + "] reqFeedMsgV2");
+    xap.a(localQQAppInterface, this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Xbe);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azur
  * JD-Core Version:    0.7.0.1
  */

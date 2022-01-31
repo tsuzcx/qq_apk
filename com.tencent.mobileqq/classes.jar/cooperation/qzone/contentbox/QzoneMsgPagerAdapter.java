@@ -5,17 +5,18 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView.ScaleType;
-import bajq;
+import bbkx;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
 import java.util.ArrayList;
 
 public class QzoneMsgPagerAdapter
   extends PagerAdapter
 {
-  private static final int jdField_a_of_type_Int = bajq.a() - bajq.b(24.0F);
-  private static final int jdField_b_of_type_Int = bajq.b(230.0F);
+  private static final int jdField_a_of_type_Int = bbkx.a() - bbkx.b(24.0F);
+  private static final int jdField_b_of_type_Int = bbkx.b(230.0F);
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
   private ArrayList<AnyScaleTypeImageView> jdField_b_of_type_JavaUtilArrayList;
   
@@ -29,6 +30,7 @@ public class QzoneMsgPagerAdapter
       {
         AnyScaleTypeImageView localAnyScaleTypeImageView = new AnyScaleTypeImageView(paramContext);
         localAnyScaleTypeImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        ThemeUtil.setColorFilterIfNeed(localAnyScaleTypeImageView);
         this.jdField_b_of_type_JavaUtilArrayList.add(localAnyScaleTypeImageView);
         j += 1;
       }
@@ -65,7 +67,7 @@ public class QzoneMsgPagerAdapter
     localURLDrawableOptions.mRequestHeight = jdField_b_of_type_Int;
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.get(paramInt) != null))
     {
-      if ((!((String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).startsWith("http")) || (!((String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).startsWith("https"))) {
+      if ((!((String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).startsWith("http")) && (!((String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).startsWith("https"))) {
         break label157;
       }
       localAnyScaleTypeImageView.setImageDrawable(URLDrawable.getDrawable((String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), localURLDrawableOptions));

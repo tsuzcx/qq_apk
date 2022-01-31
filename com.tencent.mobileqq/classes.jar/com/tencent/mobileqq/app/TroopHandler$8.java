@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import awuk;
-import awuq;
+import axum;
+import axus;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
@@ -11,24 +11,24 @@ public final class TroopHandler$8
 {
   public void toXml(ByteArrayOutputStream paramByteArrayOutputStream, String paramString)
   {
-    awuk localawuk = new awuk(this, new awuq());
+    axum localaxum = new axum(this, new axus());
     try
     {
-      localawuk.setOutput(paramByteArrayOutputStream, paramString);
-      localawuk.startDocument(paramString, null);
-      localawuk.startTag(null, "msg");
-      localawuk.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
-      localawuk.attribute(null, "templateID", String.valueOf(this.mMsgTemplateID));
+      localaxum.setOutput(paramByteArrayOutputStream, paramString);
+      localaxum.startDocument(paramString, null);
+      localaxum.startTag(null, "msg");
+      localaxum.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
+      localaxum.attribute(null, "templateID", String.valueOf(this.mMsgTemplateID));
       if (this.mMsgBrief == null) {}
       for (paramByteArrayOutputStream = "";; paramByteArrayOutputStream = this.mMsgBrief)
       {
-        localawuk.attribute(null, "brief", paramByteArrayOutputStream);
-        toContentXml(localawuk);
-        localawuk.startTag(null, "source");
-        localawuk.endTag(null, "source");
-        localawuk.endTag(null, "msg");
-        localawuk.endDocument();
-        localawuk.flush();
+        localaxum.attribute(null, "brief", paramByteArrayOutputStream);
+        toContentXml(localaxum);
+        localaxum.startTag(null, "source");
+        localaxum.endTag(null, "source");
+        localaxum.endTag(null, "msg");
+        localaxum.endDocument();
+        localaxum.flush();
         return;
       }
       return;

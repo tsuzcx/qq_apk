@@ -8,19 +8,19 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 import java.util.List;
-import tmu;
-import tmz;
-import urk;
+import tzq;
+import tzv;
+import veg;
 
 public class InterceptTouchRelativeLayout
   extends RelativeLayout
 {
   private int jdField_a_of_type_Int;
   IgnoreTouchXViewPager jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetIgnoreTouchXViewPager;
-  tmu jdField_a_of_type_Tmu;
-  private tmz jdField_a_of_type_Tmz;
+  tzq jdField_a_of_type_Tzq;
+  private tzv jdField_a_of_type_Tzv;
   boolean jdField_a_of_type_Boolean = false;
-  private tmz jdField_b_of_type_Tmz;
+  private tzv jdField_b_of_type_Tzv;
   boolean jdField_b_of_type_Boolean = false;
   
   public InterceptTouchRelativeLayout(Context paramContext)
@@ -36,9 +36,9 @@ public class InterceptTouchRelativeLayout
   public InterceptTouchRelativeLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Tmu = new tmu(paramContext, "Fake_Pager");
-    this.jdField_a_of_type_Tmz = new tmz(new ThreeDTransformer(true, true));
-    this.jdField_b_of_type_Tmz = new tmz(new VerticalTransformer());
+    this.jdField_a_of_type_Tzq = new tzq(paramContext, "Fake_Pager");
+    this.jdField_a_of_type_Tzv = new tzv(new ThreeDTransformer(true, true));
+    this.jdField_b_of_type_Tzv = new tzv(new VerticalTransformer());
   }
   
   public static MotionEvent a(MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2)
@@ -57,7 +57,7 @@ public class InterceptTouchRelativeLayout
     int m;
     try
     {
-      i = this.jdField_a_of_type_Tmu.a(paramMotionEvent);
+      i = this.jdField_a_of_type_Tzq.a(paramMotionEvent);
       m = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetIgnoreTouchXViewPager.a();
       if (m != 0) {}
       switch (this.jdField_a_of_type_Int)
@@ -80,9 +80,9 @@ public class InterceptTouchRelativeLayout
     a(paramMotionEvent, j, k);
     boolean bool1 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetIgnoreTouchXViewPager.a(paramMotionEvent);
     paramMotionEvent.recycle();
-    urk.a("Q.qqstory.playernew.InterceptTouch", "delivering directly DELIVERING_AS_VERTICAL, scrollState = %d, handled = %s", Integer.valueOf(m), Boolean.valueOf(bool1));
+    veg.a("Q.qqstory.playernew.InterceptTouch", "delivering directly DELIVERING_AS_VERTICAL, scrollState = %d, handled = %s", Integer.valueOf(m), Boolean.valueOf(bool1));
     return true;
-    urk.a("Q.qqstory.playernew.InterceptTouch", "delivering directly DELIVERING_AS_HORIZONTAL, scrollState = %d, handled = %s", Integer.valueOf(m), Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetIgnoreTouchXViewPager.a(paramMotionEvent)));
+    veg.a("Q.qqstory.playernew.InterceptTouch", "delivering directly DELIVERING_AS_HORIZONTAL, scrollState = %d, handled = %s", Integer.valueOf(m), Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetIgnoreTouchXViewPager.a(paramMotionEvent)));
     return true;
     label184:
     Object localObject = ((StoryPlayerGroupAdapter)localObject).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetIgnoreTouchXViewPager.c());
@@ -116,8 +116,8 @@ public class InterceptTouchRelativeLayout
       }
       if (this.jdField_a_of_type_Int == 0)
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetIgnoreTouchXViewPager.setPageTransformer(true, this.jdField_b_of_type_Tmz);
-        localObject = MotionEvent.obtain(tmu.a(this.jdField_a_of_type_Tmu));
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetIgnoreTouchXViewPager.setPageTransformer(true, this.jdField_b_of_type_Tzv);
+        localObject = MotionEvent.obtain(tzq.a(this.jdField_a_of_type_Tzq));
         ((MotionEvent)localObject).setLocation(paramMotionEvent.getX(), paramMotionEvent.getY());
         ((MotionEvent)localObject).setSource(0);
         this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetIgnoreTouchXViewPager.a(a((MotionEvent)localObject, j, k));
@@ -128,7 +128,7 @@ public class InterceptTouchRelativeLayout
       }
       localObject = "UP";
       label428:
-      urk.a("Q.qqstory.playernew.InterceptTouch", "Move direction = %s, Event = %s", localObject, paramMotionEvent);
+      veg.a("Q.qqstory.playernew.InterceptTouch", "Move direction = %s, Event = %s", localObject, paramMotionEvent);
       this.jdField_a_of_type_Int = i;
       localObject = MotionEvent.obtain(paramMotionEvent);
       ((MotionEvent)localObject).setSource(0);
@@ -137,7 +137,7 @@ public class InterceptTouchRelativeLayout
     }
     for (;;)
     {
-      urk.a("Q.qqstory.playernew.InterceptTouch", "delivering = %d, handled = %s", Integer.valueOf(this.jdField_a_of_type_Int), Boolean.valueOf(bool1));
+      veg.a("Q.qqstory.playernew.InterceptTouch", "delivering = %d, handled = %s", Integer.valueOf(this.jdField_a_of_type_Int), Boolean.valueOf(bool1));
       bool1 = bool2;
       if (this.jdField_a_of_type_Int != 0) {
         break;
@@ -164,8 +164,8 @@ public class InterceptTouchRelativeLayout
         {
           if (this.jdField_a_of_type_Int == 0)
           {
-            this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetIgnoreTouchXViewPager.setPageTransformer(true, this.jdField_a_of_type_Tmz);
-            localObject = MotionEvent.obtain(tmu.a(this.jdField_a_of_type_Tmu));
+            this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetIgnoreTouchXViewPager.setPageTransformer(true, this.jdField_a_of_type_Tzv);
+            localObject = MotionEvent.obtain(tzq.a(this.jdField_a_of_type_Tzq));
             ((MotionEvent)localObject).setLocation(paramMotionEvent.getX(), paramMotionEvent.getY());
             this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetIgnoreTouchXViewPager.a((MotionEvent)localObject);
             ((MotionEvent)localObject).recycle();
@@ -173,7 +173,7 @@ public class InterceptTouchRelativeLayout
           if (i == 1) {}
           for (localObject = "Left";; localObject = "Right")
           {
-            urk.a("Q.qqstory.playernew.InterceptTouch", "Move direction = %s, Event = %s", localObject, paramMotionEvent);
+            veg.a("Q.qqstory.playernew.InterceptTouch", "Move direction = %s, Event = %s", localObject, paramMotionEvent);
             this.jdField_a_of_type_Int = i;
             bool1 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetIgnoreTouchXViewPager.a(paramMotionEvent);
             break;

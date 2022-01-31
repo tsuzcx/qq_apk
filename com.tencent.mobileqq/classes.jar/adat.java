@@ -1,46 +1,18 @@
-import android.annotation.TargetApi;
-import android.graphics.Rect;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
 class adat
-  implements ArkViewImplement.LoadCallback
+  implements aybh
 {
-  adat(adas paramadas, MessageForArkApp paramMessageForArkApp, adaw paramadaw) {}
+  adat(adas paramadas) {}
   
-  @TargetApi(14)
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public void a()
   {
-    onLoadState(paramInt1);
-  }
-  
-  @TargetApi(14)
-  public void onLoadState(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppItemBubbleBuilder", 2, new Object[] { "onLoadFinish state=", Integer.valueOf(paramInt), ",app=", this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName });
-    }
-    if (paramInt == 1)
-    {
-      if (!azgu.b(this.jdField_a_of_type_Adas.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.senderuin)) {
-        this.jdField_a_of_type_Adaw.a(this.jdField_a_of_type_Adaw, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-      }
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer.getContainerRect();
-      float f = alem.a();
-      paramInt = (int)((((Rect)localObject).right - ((Rect)localObject).left) * f);
-      int i = (int)((((Rect)localObject).bottom - ((Rect)localObject).top) * f);
-      localObject = this.jdField_a_of_type_Adaw.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getLayoutParams();
-      StringBuilder localStringBuilder = new StringBuilder("ArkFold.onLoadFinish arkContainer rect(");
-      localStringBuilder.append(paramInt).append(",").append(i).append(")").append(", arkView layout rect(").append(((ViewGroup.LayoutParams)localObject).width).append(",").append(((ViewGroup.LayoutParams)localObject).height).append(")").append(", init mArkWidth=").append(adas.b(this.jdField_a_of_type_Adas)).append(",mArkHeight=").append(adas.a(this.jdField_a_of_type_Adas)).append(",app=").append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName);
-      QLog.i("ArkAppItemBubbleBuilder", 1, localStringBuilder.toString());
-      return;
-    }
-    this.jdField_a_of_type_Adaw.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    int i = this.a.a.jdField_a_of_type_Int / 2;
+    int j = (int)(this.a.a.b - bawz.a(this.a.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.a.jdField_a_of_type_Ayck.b / 2.0F);
+    int k = (int)(this.a.a.b - bawz.a(this.a.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.a.jdField_a_of_type_Ayck.b / 2.0F);
+    aybp localaybp = new aybp(new aybg[] { new aybk(450, i, j, i, k), new aybk(450, i, k, i, j) });
+    localaybp.a = true;
+    this.a.a.jdField_a_of_type_Ayck.a(new aybg[] { localaybp });
   }
 }
 

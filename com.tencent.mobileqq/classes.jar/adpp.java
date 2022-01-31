@@ -1,16 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.customviews.PicProgressView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class adpp
-  implements ValueAnimator.AnimatorUpdateListener
+  extends acun
 {
-  public adpp(SixCombolEffectView paramSixCombolEffectView) {}
+  public FrameLayout a;
+  public RelativeLayout a;
+  public URLDrawable a;
+  public PicProgressView a;
+  public BubbleImageView a;
+  public boolean a;
+  public int e;
+  public int f;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public adpp(adpi paramadpi)
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

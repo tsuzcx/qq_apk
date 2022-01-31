@@ -1,23 +1,37 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class thp
-  extends ulp
+  extends QQUIEventReceiver<thk, tjx>
 {
-  public thp(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
-  
-  public void a(int paramInt, View paramView, Object paramObject, unw paramunw)
+  public thp(@NonNull thk paramthk)
   {
-    if ((paramObject instanceof QQUserUIItem))
+    super(paramthk);
+  }
+  
+  public void a(@NonNull thk paramthk, @NonNull tjx paramtjx)
+  {
+    if (paramtjx.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      paramView = (QQUserUIItem)paramObject;
-      skt.a(this.a, 10, paramView.uid);
-      if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem != null)) {
-        urp.a("home_page", "clk_head_list", urp.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem), 0, new String[] { "1", urp.a(this.a.jdField_a_of_type_Int), "", this.a.jdField_a_of_type_JavaLangString });
+      if (QLog.isColorLevel()) {
+        QLog.i("zivonchen", 2, "MsgTabStoryNodeDelegate#GetGroupInfoEventReceiver isSuccess sharegroupInfo: " + paramtjx.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+      }
+      if (paramtjx.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null) {
+        paramthk.a(paramthk.a.a(8, paramtjx.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.shareGroupId));
       }
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i("zivonchen", 2, "MsgTabStoryNodeDelegate#GetGroupInfoEventReceiver errorInfo: " + paramtjx.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", sharegroupInfo = " + paramtjx.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tjx.class;
   }
 }
 

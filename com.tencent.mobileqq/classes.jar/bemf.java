@@ -1,33 +1,30 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.PinnedHeaderExpandableListView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qqmini.sdk.core.widget.ActionSheetDialog.3;
 
 public class bemf
-  implements View.OnTouchListener
+  implements Animation.AnimationListener
 {
-  public bemf(PinnedHeaderExpandableListView paramPinnedHeaderExpandableListView) {}
+  public bemf(ActionSheetDialog.3 param3) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramMotionEvent.getAction() == 1)
+    try
     {
-      long l = this.a.a(this.a.getFirstVisiblePosition());
-      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
-      {
-        int i = ExpandableListView.c(l);
-        if ((PinnedHeaderExpandableListView.a(this.a) == null) || (!PinnedHeaderExpandableListView.a(this.a).a(this.a, paramView, i, PinnedHeaderExpandableListView.a(this.a).getGroupId(i)))) {
-          this.a.b(i);
-        }
-      }
+      beme.a(this.a.this$0);
+      beme.a(this.a.this$0, true);
+      return;
     }
-    return true;
+    catch (Exception paramAnimation) {}
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bemf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager.ChainBuilder;
+import java.util.ArrayList;
 
-public abstract interface auvl
+public class auvl
 {
-  public abstract void a(QQFilterRenderManager.ChainBuilder paramChainBuilder);
-  
-  public abstract void m();
+  public int a;
+  public String a;
+  public ArrayList<auvm> a;
+  public String b;
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auvl
  * JD-Core Version:    0.7.0.1
  */

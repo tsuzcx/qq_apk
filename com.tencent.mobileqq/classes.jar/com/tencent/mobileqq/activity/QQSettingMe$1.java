@@ -14,12 +14,12 @@ class QQSettingMe$1
   public void run()
   {
     this.this$0.a(Boolean.valueOf(this.a));
-    QQSettingMe.a(this.this$0).setImageResource(2130845112);
-    QQSettingMe.b(this.this$0).setImageResource(2130845128);
-    this.this$0.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131100727));
-    TextView localTextView = (TextView)this.this$0.e.findViewById(2131309486);
-    localTextView.setTextColor(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131100725));
-    ((ImageView)this.this$0.e.findViewById(2131302073)).setColorFilter(localTextView.getCurrentTextColor());
+    QQSettingMe.a(this.this$0).setImageResource(2130845198);
+    QQSettingMe.b(this.this$0).setImageResource(2130845214);
+    this.this$0.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166319));
+    TextView localTextView = (TextView)this.this$0.e.findViewById(2131375234);
+    localTextView.setTextColor(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166317));
+    ((ImageView)this.this$0.e.findViewById(2131367691)).setColorFilter(localTextView.getCurrentTextColor());
   }
 }
 

@@ -1,25 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
 class pzk
-  implements TVK_IMediaPlayer.OnCompletionListener
+  extends pyx
 {
-  pzk(pzj parampzj) {}
+  pzk(pzi parampzi, AppInterface paramAppInterface) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public Drawable a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(pzj.a(), 2, "播放器状态回调 onCompletion");
-    }
-    if (pzj.a(this.a) != null) {
-      pzj.a(this.a).a(1, null, pzj.a(this.a), System.currentTimeMillis() - pzj.a(this.a));
-    }
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_mine_selected");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     pzk
  * JD-Core Version:    0.7.0.1
  */

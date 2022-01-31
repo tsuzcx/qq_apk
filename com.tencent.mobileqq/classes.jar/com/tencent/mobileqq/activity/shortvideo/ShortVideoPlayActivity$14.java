@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import ahun;
-import babr;
-import bafb;
+import aihf;
+import bbcv;
+import bbgg;
 
 public class ShortVideoPlayActivity$14
   implements Runnable
@@ -11,8 +11,8 @@ public class ShortVideoPlayActivity$14
   
   public void run()
   {
-    bafb localbafb = babr.a(this.this$0, 232, null, this.a, new ahun(this), null);
-    ShortVideoPlayActivity.a(this.this$0, localbafb);
+    bbgg localbbgg = bbcv.a(this.this$0, 232, null, this.a, new aihf(this), null);
+    ShortVideoPlayActivity.a(this.this$0, localbbgg);
   }
 }
 

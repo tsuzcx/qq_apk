@@ -1,48 +1,23 @@
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.fragment.ShieldFriendsListFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.4.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
 
 public class appv
-  extends ajjh
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  public appv(ShieldFriendsListFragment paramShieldFriendsListFragment) {}
+  appv(appp paramappp) {}
   
-  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    super.onUpdateFriendShieldFlag(paramLong, paramBoolean1, paramBoolean2, paramBoolean3, paramString);
-    if (!paramBoolean2)
-    {
-      paramString = this.a;
-      if (!paramBoolean1)
-      {
-        paramBoolean1 = true;
-        if (ShieldFriendsListFragment.a(paramString, paramLong, paramBoolean1)) {
-          bbmy.a(BaseApplication.getContext(), ajjy.a(2131648204), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131167766));
-        }
-      }
-    }
-    do
-    {
-      return;
-      paramBoolean1 = false;
-      break;
-      if (ShieldFriendsListFragment.a(this.a).a(String.valueOf(paramLong)))
-      {
-        ShieldFriendsListFragment.a(this.a, paramLong, paramBoolean1);
-        return;
-      }
-      paramString = ((ajjj)this.a.getActivity().app.getManager(51)).e(String.valueOf(paramLong));
-    } while ((paramString == null) || (paramString.isShield()));
-    ShieldFriendsListFragment.a(this.a).a(paramString);
-    ShieldFriendsListFragment.a(this.a);
+    new Handler(Looper.getMainLooper()).post(new VideoFilePresenter.4.1(this, paramInt));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     appv
  * JD-Core Version:    0.7.0.1
  */

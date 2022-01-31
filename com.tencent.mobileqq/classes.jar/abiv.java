@@ -1,9 +1,17 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class abiv
+  extends WebViewClient
 {
-  public int a;
-  public TextView a;
+  public abiv(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if (this.a.a(paramString)) {}
+    return true;
+  }
 }
 
 

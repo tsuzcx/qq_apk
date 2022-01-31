@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import anxr;
+import aook;
 import com.tencent.mobileqq.filemanager.widget.FileWebView;
 import com.tencent.qphone.base.util.QLog;
 
 public class FilePreviewActivity$9$1
   implements Runnable
 {
-  public FilePreviewActivity$9$1(anxr paramanxr) {}
+  public FilePreviewActivity$9$1(aook paramaook) {}
   
   public void run()
   {

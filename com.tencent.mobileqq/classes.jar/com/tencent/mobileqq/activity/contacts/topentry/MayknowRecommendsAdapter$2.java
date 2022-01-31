@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.topentry;
 
-import afgm;
+import afsj;
 
 public class MayknowRecommendsAdapter$2
   implements Runnable
 {
-  public MayknowRecommendsAdapter$2(afgm paramafgm) {}
+  public MayknowRecommendsAdapter$2(afsj paramafsj) {}
   
   public void run()
   {

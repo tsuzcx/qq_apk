@@ -1,53 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tribe.async.dispatch.Dispatcher;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.1;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.2;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
-class tvm
-  implements DialogInterface.OnClickListener
+public final class tvm
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  tvm(tvd paramtvd, VideoViewVideoHolder paramVideoViewVideoHolder, StoryVideoItem paramStoryVideoItem, ujk paramujk) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
-    switch (paramInt)
+    synchronized ()
     {
-    case 0: 
-    default: 
+      tvq localtvq = tvk.a();
+      tvk.a().post(new TVKPreloader.2.2(this, localtvq, paramString1, paramInt, paramString2));
       return;
     }
-    this.jdField_a_of_type_Tvd.a("");
-    if (StoryVideoItem.isFakeVid(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid))
+  }
+  
+  public void onPreLoadSucess(String arg1, String paramString2)
+  {
+    synchronized ()
     {
-      ((sis)sqg.a(3)).c(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-      paramDialogInterface = new spl(new ErrorMessage(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, false);
-      paramDialogInterface.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
-      paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
-      if (paramDialogInterface.a == 0L) {
-        paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
-      }
-      sgi.a().dispatch(paramDialogInterface);
-    }
-    for (;;)
-    {
-      urp.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      paramString2 = tvk.a();
+      tvk.a().post(new TVKPreloader.2.1(this, paramString2));
       return;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mStoryType == 2)
-      {
-        ((vju)tfy.a().getManager(208)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 0, false, new tvn(this));
-      }
-      else
-      {
-        this.jdField_a_of_type_Ujk.a(this.jdField_a_of_type_Tvd.a.b, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        this.jdField_a_of_type_Ujk.a(this.jdField_a_of_type_Tvd.a.b, 1, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        new swr().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-      }
     }
   }
 }

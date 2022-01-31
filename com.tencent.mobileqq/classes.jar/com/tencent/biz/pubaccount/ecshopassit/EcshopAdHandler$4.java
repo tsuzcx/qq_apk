@@ -17,20 +17,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-import nfw;
+import nqx;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo.Location;
 import tencent.im.oidb.qqshop.qq_ad.QQAdGet;
 import tencent.im.oidb.qqshop.qq_ad.QQAdGet.Phone;
-import yoy;
-import yoz;
-import ypa;
-import ypb;
+import yys;
+import yyt;
+import yyu;
+import yyv;
 
 public class EcshopAdHandler$4
   implements Runnable
 {
-  public EcshopAdHandler$4(nfw paramnfw, List paramList1, List paramList2, boolean paramBoolean, String paramString) {}
+  public EcshopAdHandler$4(nqx paramnqx, List paramList1, List paramList2, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
@@ -41,13 +41,13 @@ public class EcshopAdHandler$4
       {
         qq_ad.QQAdGet localQQAdGet = new qq_ad.QQAdGet();
         qq_ad.QQAdGet.Phone localPhone = new qq_ad.QQAdGet.Phone();
-        Object localObject1 = new yoz();
-        ((yoz)localObject1).jdField_a_of_type_JavaLangString = "cd22b9";
+        Object localObject1 = new yyt();
+        ((yyt)localObject1).jdField_a_of_type_JavaLangString = "cd22b9";
         long l = System.currentTimeMillis();
-        localObject1 = yoy.a(BaseApplicationImpl.getApplication().getApplicationContext(), (yoz)localObject1);
+        localObject1 = yys.a(BaseApplicationImpl.getApplication().getApplicationContext(), (yyt)localObject1);
         if (localObject1 != null)
         {
-          localObject1 = ((ypa)localObject1).a;
+          localObject1 = ((yyu)localObject1).a;
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder().append("get deviceInfo cost：").append(System.currentTimeMillis() - l).append(", result = ");
@@ -58,7 +58,7 @@ public class EcshopAdHandler$4
           }
           if (localObject1 != null)
           {
-            localPhone.carrier.set(ypb.a(this.this$0.app.getApplication()));
+            localPhone.carrier.set(yyv.a(this.this$0.app.getApplication()));
             localPhone.muid.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid.get());
             localPhone.muid_type.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid_type.get());
             localPhone.conn.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).conn.get());

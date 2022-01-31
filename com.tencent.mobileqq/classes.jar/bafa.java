@@ -1,15 +1,60 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0xe0a.cmd0xe0a.App;
 
 public class bafa
-  extends bafb
 {
-  private int jdField_a_of_type_Int = 2131493333;
-  bakh jdField_a_of_type_Bakh;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int = 0;
+  private String jdField_b_of_type_JavaLangString;
+  private int jdField_c_of_type_Int = -1;
+  private String jdField_c_of_type_JavaLangString;
   
-  public bafa(Context paramContext, int paramInt)
+  public static bafa a(String paramString1, String paramString2)
   {
-    super(paramContext, paramInt);
+    bafa localbafa = new bafa();
+    localbafa.jdField_a_of_type_Long = 999L;
+    localbafa.jdField_a_of_type_JavaLangString = paramString1;
+    localbafa.jdField_b_of_type_JavaLangString = paramString2;
+    localbafa.jdField_c_of_type_JavaLangString = "local";
+    localbafa.jdField_a_of_type_Int = 0;
+    return localbafa;
+  }
+  
+  public static bafa a(cmd0xe0a.App paramApp)
+  {
+    if (paramApp != null)
+    {
+      bafa localbafa = new bafa();
+      localbafa.jdField_a_of_type_Long = paramApp.appid.get();
+      localbafa.jdField_a_of_type_JavaLangString = paramApp.name.get();
+      localbafa.jdField_b_of_type_JavaLangString = paramApp.icon.get();
+      localbafa.jdField_c_of_type_JavaLangString = paramApp.url.get();
+      localbafa.jdField_a_of_type_Int = paramApp.disabled.get();
+      if (paramApp.default_disabled.has()) {
+        localbafa.jdField_c_of_type_Int = paramApp.default_disabled.get();
+      }
+      return localbafa;
+    }
+    return null;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public void a(int paramInt)
@@ -17,43 +62,34 @@ public class bafa
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(bakh parambakh, DialogInterface.OnClickListener paramOnClickListener)
+  public int b()
   {
-    if (parambakh == null) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Bakh = parambakh;
-      String[] arrayOfString = new String[parambakh.a()];
-      int i = 0;
-      while (i < parambakh.a())
-      {
-        arrayOfString[i] = parambakh.a(i).a();
-        i += 1;
-      }
-      setItems(arrayOfString, paramOnClickListener);
-      parambakh = parambakh.a();
-    } while (parambakh == null);
-    setTitle(parambakh);
+    return this.jdField_b_of_type_Int;
   }
   
-  protected int customWhichToCallBack(int paramInt)
+  public String b()
   {
-    bakj localbakj = this.jdField_a_of_type_Bakh.a(paramInt);
-    if (localbakj != null) {
-      return localbakj.a();
-    }
-    return -1;
+    return this.jdField_b_of_type_JavaLangString;
   }
   
-  protected int getDialogListItemLayout()
+  public void b(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public int c()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public String c()
+  {
+    return this.jdField_c_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bafa
  * JD-Core Version:    0.7.0.1
  */

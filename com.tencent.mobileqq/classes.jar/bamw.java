@@ -1,21 +1,49 @@
-import android.content.Context;
+import android.graphics.Bitmap;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.troop.widget.AddedRobotView;
+import com.tencent.qphone.base.util.QLog;
 
-class bamw
-  extends bafb
+public class bamw
+  implements baxl
 {
-  bamw(bamt parambamt, Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  public bamw(AddedRobotView paramAddedRobotView) {}
   
-  public void onBackPressed()
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    super.onBackPressed();
+    QLog.i("AddedRobotView", 1, "onDecodeTaskCompleted uin: " + paramString);
+    if (AddedRobotView.a(this.a) == null) {}
+    for (;;)
+    {
+      return;
+      if (!AddedRobotView.a(this.a).a())
+      {
+        paramInt2 = AddedRobotView.a(this.a).getChildCount();
+        paramInt1 = 0;
+        while (paramInt1 < paramInt2)
+        {
+          Object localObject = AddedRobotView.a(this.a).getChildViewHolder(AddedRobotView.a(this.a).getChildAt(paramInt1));
+          if ((localObject instanceof bamz))
+          {
+            localObject = (bamz)localObject;
+            if ((!TextUtils.isEmpty(((bamz)localObject).jdField_a_of_type_JavaLangString)) && (((bamz)localObject).jdField_a_of_type_JavaLangString.equals(paramString))) {
+              ((bamz)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+            }
+          }
+          else
+          {
+            QLog.i("AddedRobotView", 2, "onDecodeTaskCompleted viewHolder correct uin not found ! ");
+          }
+          paramInt1 += 1;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bamw
  * JD-Core Version:    0.7.0.1
  */

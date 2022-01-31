@@ -1,88 +1,31 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import cooperation.qzone.util.QZLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
-public class agfu
-  extends Handler
+class agfu
+  implements bfpd
 {
-  private final WeakReference<NewPhotoListActivity> a;
+  agfu(agfm paramagfm) {}
   
-  public agfu(NewPhotoListActivity paramNewPhotoListActivity)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = new WeakReference(paramNewPhotoListActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if ((this.a == null) || (this.a.get() == null)) {}
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
+    }
+    if ((this.a.jdField_a_of_type_Agbr.getCount() <= 0) || (paramInt <= 0)) {}
     do
     {
-      Object localObject2;
-      do
-      {
-        Object localObject1;
-        do
-        {
-          do
-          {
-            return;
-            localObject2 = (NewPhotoListActivity)this.a.get();
-            localObject1 = aggf.a().jdField_a_of_type_JavaUtilArrayList;
-            switch (paramMessage.what)
-            {
-            default: 
-              return;
-            case 0: 
-              localObject1 = ((NewPhotoListActivity)localObject2).jdField_a_of_type_Agfv;
-            }
-          } while (localObject1 == null);
-          localObject2 = new ArrayList();
-          ((List)localObject2).addAll(((agfv)localObject1).jdField_a_of_type_JavaUtilArrayList);
-          paramMessage = paramMessage.getData();
-          int i = paramMessage.getInt("ALBUMLIST_POSITION");
-          long l = paramMessage.getLong("ALBUMLIST_ITEM_DURATION");
-          paramMessage = (LocalMediaInfo)((List)localObject2).get(i);
-          paramMessage.mDuration = l;
-          ((List)localObject2).set(i, paramMessage);
-          ((agfv)localObject1).a((List)localObject2);
-          ((agfv)localObject1).notifyDataSetChanged();
-          return;
-          ((NewPhotoListActivity)this.a.get()).jdField_a_of_type_Aggh.a(paramMessage);
-          return;
-          ((NewPhotoListActivity)localObject2).f();
-          QZLog.e("PhotoListActivity", 2, new Object[] { "onEncodeError = ", Integer.valueOf(((Integer)paramMessage.obj).intValue()) });
-          bbmy.a((Context)localObject2, ((NewPhotoListActivity)localObject2).getResources().getString(2131629422), 0).a();
-          return;
-        } while (!(paramMessage.obj instanceof String));
-        String str = (String)paramMessage.obj;
-        paramMessage = (Message)localObject1;
-        if (localObject1 == null) {
-          paramMessage = new ArrayList();
-        }
-        QZLog.d("PhotoListActivity", 2, new Object[] { "MSG_PHOTO_ENCODE_SUCCEED = ", str });
-        if (paramMessage.size() < aggf.a().jdField_a_of_type_Int)
-        {
-          paramMessage.add(str);
-          ((NewPhotoListActivity)localObject2).h();
-        }
-        for (;;)
-        {
-          ((NewPhotoListActivity)localObject2).a(str);
-          return;
-          bbmy.a((Context)localObject2, String.format(((NewPhotoListActivity)localObject2).getResources().getString(2131629421), new Object[] { Integer.valueOf(aggf.a().jdField_a_of_type_Int) }), 0).a();
-        }
-      } while (localObject2 == null);
-      paramMessage = ((NewPhotoListActivity)localObject2).jdField_a_of_type_Agfv;
-    } while (paramMessage == null);
-    paramMessage.notifyDataSetChanged();
+      return true;
+      paramAdapterView = (ager)this.a.jdField_a_of_type_Agbr.getItem(paramInt - 1);
+    } while (paramAdapterView == null);
+    this.a.jdField_a_of_type_Ager = paramAdapterView;
+    paramView.setSelected(true);
+    paramAdapterView = new bblr();
+    paramAdapterView.a(2131364825, ajyc.a(2131715181), 2130838597);
+    paramAdapterView.a(2131366632, this.a.jdField_a_of_type_AndroidContentContext.getString(2131692752), 2130838606);
+    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bbcc.a(paramView, paramAdapterView, agfm.a(this.a), new agfv(this, paramView));
+    return true;
   }
 }
 

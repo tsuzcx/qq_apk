@@ -1,26 +1,32 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.view.SurfaceHolder;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
 
-class wxi
-  implements Animation.AnimationListener
+public class wxi
+  implements IVideoViewBase.IVideoViewCallBack
 {
-  wxi(wxe paramwxe) {}
+  public wxi(TribeVideoPlugin paramTribeVideoPlugin) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    if (wxe.b(this.a) != null) {
-      wxe.b(this.a).setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceCreated");
+    }
+  }
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wxi
  * JD-Core Version:    0.7.0.1
  */

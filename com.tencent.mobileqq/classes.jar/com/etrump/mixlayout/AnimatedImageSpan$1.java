@@ -1,18 +1,18 @@
 package com.etrump.mixlayout;
 
 import android.os.Handler;
-import fd;
+import gw;
 
 public class AnimatedImageSpan$1
   implements Runnable
 {
-  public AnimatedImageSpan$1(fd paramfd, Handler paramHandler) {}
+  public AnimatedImageSpan$1(gw paramgw, Handler paramHandler) {}
   
   public void run()
   {
-    if ((fd.a(this.this$0) != null) && ((fd.a(this.this$0) instanceof AnimatedImageDrawable)))
+    if ((gw.a(this.this$0) != null) && ((gw.a(this.this$0) instanceof AnimatedImageDrawable)))
     {
-      AnimatedImageDrawable localAnimatedImageDrawable = (AnimatedImageDrawable)fd.a(this.this$0);
+      AnimatedImageDrawable localAnimatedImageDrawable = (AnimatedImageDrawable)gw.a(this.this$0);
       localAnimatedImageDrawable.a();
       this.a.postDelayed(this, localAnimatedImageDrawable.a());
     }

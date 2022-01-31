@@ -1,23 +1,63 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView.ScrollStateListener.1;
 
 public class bime
-  extends AnimatorListenerAdapter
+  implements bilz
 {
-  public bime(DoodleEditView paramDoodleEditView, birb parambirb) {}
+  private bime(AEBottomListScrollView paramAEBottomListScrollView) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    urk.b("DoodleEditView", "onAnimationEnd");
-    this.jdField_a_of_type_Birb.n = 1.0F;
+    if (AEBottomListScrollView.a(this.a) == null) {}
+    int i;
+    RecyclerView.ViewHolder localViewHolder;
+    do
+    {
+      return;
+      i = AEBottomListScrollView.a(this.a).b();
+      localViewHolder = this.a.a(i);
+    } while (localViewHolder == null);
+    AEBottomListScrollView.a(this.a, localViewHolder, i);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(float paramFloat)
   {
-    urk.b("DoodleEditView", "onAnimationStart");
+    if (AEBottomListScrollView.a(this.a) == null) {}
+    int i;
+    int j;
+    do
+    {
+      return;
+      i = this.a.a();
+      j = AEBottomListScrollView.a(this.a).a();
+    } while (i == j);
+    AEBottomListScrollView.a(this.a, paramFloat, i, j, this.a.a(i), this.a.a(j));
+  }
+  
+  public void b()
+  {
+    if ((AEBottomListScrollView.a(this.a) == null) && (AEBottomListScrollView.a(this.a) == null)) {}
+    int i;
+    RecyclerView.ViewHolder localViewHolder;
+    do
+    {
+      return;
+      i = AEBottomListScrollView.a(this.a).b();
+      localViewHolder = this.a.a(i);
+    } while (localViewHolder == null);
+    AEBottomListScrollView.b(this.a, localViewHolder, i);
+    AEBottomListScrollView.c(this.a, localViewHolder, i);
+  }
+  
+  public void c()
+  {
+    this.a.post(new AEBottomListScrollView.ScrollStateListener.1(this));
+  }
+  
+  public void d()
+  {
+    AEBottomListScrollView.a(this.a);
   }
 }
 

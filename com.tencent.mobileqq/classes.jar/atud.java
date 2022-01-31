@@ -1,109 +1,32 @@
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PrecoverResource;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
 
 public class atud
-  implements attu
+  implements View.OnClickListener
 {
-  private static atud jdField_a_of_type_Atud;
-  private attv jdField_a_of_type_Attv;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new atue(this, "PrecoverIPCServer_MODEL");
+  public atud(NearbyProfileFragment paramNearbyProfileFragment, xbv paramxbv) {}
   
-  private atud()
+  public void onClick(View paramView)
   {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+    if (this.jdField_a_of_type_Xbv != null) {}
+    for (paramView = this.jdField_a_of_type_Xbv.b;; paramView = "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501")
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-      this.jdField_a_of_type_Attv = ((attv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(179));
-      this.jdField_a_of_type_Attv.a().a(this);
+      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramView);
+      localIntent.putExtra("url", paramView);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.startActivity(localIntent);
+      axqw.b(null, "dc00899", "grp_lbs", "", "rank_data", "clk_gift", 0, 0, "", "", "", "");
+      return;
     }
   }
-  
-  public static atud a()
-  {
-    if (jdField_a_of_type_Atud == null) {}
-    try
-    {
-      if (jdField_a_of_type_Atud == null) {
-        jdField_a_of_type_Atud = new atud();
-      }
-      return jdField_a_of_type_Atud;
-    }
-    finally {}
-  }
-  
-  private EIPCResult a(Bundle paramBundle, int paramInt)
-  {
-    Object localObject1 = null;
-    Object localObject2 = paramBundle.getString("businessId");
-    String str = paramBundle.getString("md5");
-    if (TextUtils.isEmpty(str))
-    {
-      localObject1 = EIPCResult.createResult(10, paramBundle);
-      if (QLog.isColorLevel()) {
-        QLog.d("PrecoverIPCServer", 2, "getResource, md5 emtpy");
-      }
-      paramBundle.putInt("callbackId", paramInt);
-      return localObject1;
-    }
-    if (this.jdField_a_of_type_Attv != null)
-    {
-      localObject1 = this.jdField_a_of_type_Attv.a((String)localObject2, str);
-      if (localObject1 == null) {
-        break label100;
-      }
-      paramBundle.putParcelable("resource", (Parcelable)localObject1);
-      localObject1 = EIPCResult.createSuccessResult(paramBundle);
-    }
-    for (;;)
-    {
-      paramBundle.putInt("callbackId", paramInt);
-      return localObject1;
-      label100:
-      localObject2 = EIPCResult.createResult(12, paramBundle);
-      localObject1 = localObject2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("PrecoverIPCServer", 2, "getResource, RESULT_RESOURCE_NOT_FOUND");
-        localObject1 = localObject2;
-      }
-    }
-  }
-  
-  public QIPCModule a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
-  }
-  
-  public void a(int paramInt, String paramString, PrecoverResource paramPrecoverResource, Object paramObject)
-  {
-    if ((paramObject != null) && ((paramObject instanceof Object[])) && ("PrecoverIPCServer_MODEL".equals(((Object[])(Object[])paramObject)[0])))
-    {
-      int i = ((Integer)((Object[])(Object[])paramObject)[1]).intValue();
-      paramObject = new Bundle();
-      paramObject.putString("key_action", atuc.b);
-      paramObject.putParcelable("resource", paramPrecoverResource);
-      paramObject.putInt("errCode", paramInt);
-      paramObject.putString("errDesc", paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("PrecoverIPCServer", 2, "onDownloadFinish, errCode=" + paramInt + ", errDesc=" + paramString + ", resource" + paramPrecoverResource);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule.callbackResult(i, EIPCResult.createSuccessResult(paramObject));
-    }
-  }
-  
-  public void a(PrecoverResource paramPrecoverResource, Object paramObject, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atud
  * JD-Core Version:    0.7.0.1
  */

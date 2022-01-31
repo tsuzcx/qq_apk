@@ -1,20 +1,33 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.theme.diy.ResData;
+import java.lang.ref.WeakReference;
 
-public class anve
-  implements View.OnClickListener
+class anve
+  implements aymu
 {
-  public anve(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  anve(anul paramanul) {}
   
-  public void onClick(View paramView)
+  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
   {
-    paramView = new Intent(this.a, MoveToGroupActivity.class).putExtra("friendUin", this.a.f).putExtra("mgid", (byte)this.a.l);
-    paramView.putExtra("PARAM_EXECUTE_IMMEDIATELY", false);
-    this.a.startActivityForResult(paramView, 100);
-    awqx.b(null, "CliOper", "", "", "0X80050F1", "0X80050F1", 0, 0, "", "", "", "");
+    paramResData = (MessengerService)this.a.a.get();
+    Bundle localBundle;
+    if (paramResData != null)
+    {
+      localBundle = new Bundle();
+      localBundle.putString("themeId", paramBundle.getString("themeId"));
+      if (paramInt2 != 4) {
+        break label73;
+      }
+    }
+    label73:
+    for (paramInt1 = 0;; paramInt1 = -2)
+    {
+      localBundle.putInt("themeStatus", paramInt1);
+      paramBundle.putBundle("response", localBundle);
+      paramResData.a(paramBundle);
+      return 1;
+    }
   }
 }
 

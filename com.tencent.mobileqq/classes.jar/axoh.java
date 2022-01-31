@@ -1,76 +1,46 @@
-import android.app.Application;
-import android.graphics.Bitmap;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.ProtocolDownloader.Adapter;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.io.File;
-import java.net.URL;
+import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.startup.step.InitMagnifierSDK;
+import com.tencent.mobileqq.startup.step.InitMagnifierSDK.LeakListener.1;
+import com.tencent.mobileqq.startup.step.InitMagnifierSDK.LeakListener.2;
+import java.util.ArrayList;
+import java.util.List;
 
 public class axoh
-  extends ProtocolDownloader.Adapter
+  implements zzw
 {
-  public static int a = 200;
-  
-  public axoh(Application paramApplication) {}
-  
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public List<String> a(String paramString)
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
-    if (!LocalMediaInfo.class.isInstance(paramDownloadParams.tag)) {
-      throw new RuntimeException("Decode info is invalide");
+    if (BaseActivity.sTopActivity != null) {
+      BaseActivity.sTopActivity.runOnUiThread(new InitMagnifierSDK.LeakListener.1(this, paramString));
     }
-    paramURLDrawableHandler = (LocalMediaInfo)paramDownloadParams.tag;
-    for (;;)
-    {
-      try
-      {
-        paramFile = paramDownloadParams.url.getRef();
-        if ("VIDEO".equals(paramFile))
-        {
-          paramFile = new agev(localBaseApplicationImpl, paramURLDrawableHandler);
-          paramFile = afzf.a(localBaseApplicationImpl).a(paramDownloadParams.url, paramFile, paramDownloadParams);
-          if ((paramFile == null) || (paramURLDrawableHandler == null)) {
-            break;
-          }
-          paramURLDrawableHandler.thumbSize = paramFile.getByteCount();
-          return paramFile;
-        }
-        if ("FLOW_THUMB".equals(paramFile))
-        {
-          paramFile = new afzu(localBaseApplicationImpl, paramURLDrawableHandler);
-          continue;
-        }
-        if (!"APP_VIDEO".equals(paramFile)) {
-          break label153;
-        }
-      }
-      catch (NumberFormatException paramFile)
-      {
-        throw new RuntimeException("Decode type is invalid");
-      }
-      paramFile = new afzh(localBaseApplicationImpl, paramURLDrawableHandler);
-      continue;
-      label153:
-      paramFile = new agei(localBaseApplicationImpl, paramURLDrawableHandler);
-    }
-    return paramFile;
+    paramString = new ArrayList(4);
+    paramString.add(zzt.b());
+    paramString.add(zzt.a());
+    paramString.addAll(zzt.b());
+    return paramString;
   }
   
-  public boolean hasDiskFile(DownloadParams paramDownloadParams)
+  public void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    return true;
+    if (BaseActivity.sTopActivity != null) {
+      BaseActivity.sTopActivity.runOnUiThread(new InitMagnifierSDK.LeakListener.2(this, paramString1, paramBoolean, paramString2));
+    }
   }
   
-  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public boolean a(LeakInspector.InspectUUID paramInspectUUID)
   {
-    return new File(ajed.aT);
+    return InitMagnifierSDK.a(paramInspectUUID);
+  }
+  
+  public boolean a(Object paramObject)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axoh
  * JD-Core Version:    0.7.0.1
  */

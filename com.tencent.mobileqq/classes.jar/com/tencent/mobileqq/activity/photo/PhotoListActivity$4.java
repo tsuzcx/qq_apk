@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agca;
+import agny;
 import android.os.AsyncTask;
 
 class PhotoListActivity$4
@@ -12,7 +12,7 @@ class PhotoListActivity$4
   {
     if (this.this$0.a == null)
     {
-      this.this$0.a = new agca(this.this$0);
+      this.this$0.a = new agny(this.this$0);
       this.this$0.a.execute(new Object[0]);
     }
   }

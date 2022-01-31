@@ -1,66 +1,48 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class aqnw
-  implements Manager
 {
-  private QQAppInterface a;
+  private static int a;
+  public ConcurrentHashMap<Long, aqnz> a;
   
-  public aqnw(QQAppInterface paramQQAppInterface)
+  static
   {
-    this.a = paramQQAppInterface;
+    jdField_a_of_type_Int = 900000;
   }
   
-  public void a(String paramString)
+  private aqnw()
   {
-    int j = 0;
-    if (baip.a(paramString))
-    {
-      paramString = BaseApplicationImpl.getContext().getSharedPreferences("now_download_config", 4);
-      paramString.edit().putInt("key_now_download_engine", 0).commit();
-      paramString.edit().putInt("key_now_channel", 0).commit();
-      QLog.e("NowGeneralConfigManager", 4, "NowGeneralConfigManager----parseJson---downloadEngine = 0");
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("now_download_engine"))
-        {
-          i = paramString.getInt("now_download_engine");
-          if (paramString.has("now_channel")) {
-            j = paramString.getInt("now_channel");
-          }
-          QLog.e("NowGeneralConfigManager", 4, "NowGeneralConfigManager----parseJson---downloadEngine = " + i + ", nowChannel = " + j);
-          paramString = BaseApplicationImpl.getContext().getSharedPreferences("now_download_config", 4);
-          paramString.edit().putInt("key_now_download_engine", i).commit();
-          paramString.edit().putInt("key_now_channel", j).commit();
-          return;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-      int i = 0;
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  public void onDestroy() {}
+  public static final aqnw a()
+  {
+    return aqny.a();
+  }
+  
+  public aqnz a(long paramLong)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
+      return (aqnz)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    aqmb.a().a().a(" LongVideoUrlCacheManager", 4, "LongVideoUrlCacheManager,clearCache");
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+  }
+  
+  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), new aqnz(this, paramArrayOfString, paramLong2, paramMessageForShortVideo, paramInt, paramString));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqnw
  * JD-Core Version:    0.7.0.1
  */

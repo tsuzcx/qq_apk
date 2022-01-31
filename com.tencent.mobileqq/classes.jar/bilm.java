@@ -1,39 +1,23 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.InitialLayoutListener.1;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.InitialLayoutListener.2;
-import mqq.os.MqqHandler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
-public class bilm
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class bilm
+  implements Animation.AnimationListener
 {
-  private bilm(bila parambila) {}
+  bilm(bilj parambilj) {}
   
-  public void onGlobalLayout()
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    int i = this.a.jdField_a_of_type_AndroidViewView.getBottom();
-    if (this.a.b < 0)
+    if ((bilj.a(this.a) != null) && (!bilj.a(this.a)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("EditTextDialog", 2, "onGlobalLayout first bottom:" + i);
-      }
-      this.a.b = i;
-      this.a.jdField_a_of_type_MqqOsMqqHandler.post(new EditTextDialog.InitialLayoutListener.1(this));
+      bilj.a(this.a).setAlpha(1.0F);
+      bilj.a(this.a).setVisibility(0);
     }
-    while (this.a.b - i <= this.a.jdField_a_of_type_Int) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("EditTextDialog", 2, "onGlobalLayout second bottom:" + i);
-    }
-    this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-    this.a.b = i;
-    this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
-    this.a.jdField_a_of_type_MqqOsMqqHandler.post(new EditTextDialog.InitialLayoutListener.2(this));
   }
 }
 

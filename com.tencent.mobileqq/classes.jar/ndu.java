@@ -1,29 +1,30 @@
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.data.EqqDetail;
 
 public class ndu
-  extends ndt
+  implements bfoq
 {
-  protected byte[] a(FromServiceMsg paramFromServiceMsg)
+  public ndu(EqqAccountDetailActivity paramEqqAccountDetailActivity, bfol parambfol, String paramString) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    paramFromServiceMsg = super.a(paramFromServiceMsg);
-    if (paramFromServiceMsg != null)
+    this.jdField_a_of_type_Bfol.dismiss();
+    switch (paramInt)
     {
-      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-      try
+    default: 
+    case 0: 
+      do
       {
-        localStQWebRsp.mergeFrom(paramFromServiceMsg);
-        paramFromServiceMsg = localStQWebRsp.busiBuff.get().toByteArray();
-        return paramFromServiceMsg;
-      }
-      catch (Throwable paramFromServiceMsg)
-      {
-        paramFromServiceMsg.printStackTrace();
-      }
+        return;
+      } while (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a == null);
+      nbc.a(EqqAccountDetailActivity.n(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a.name, EqqAccountDetailActivity.m(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "IvrEnterpriseDetailEngineFalse");
+      return;
     }
-    return null;
+    paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.startActivity(paramView);
   }
 }
 

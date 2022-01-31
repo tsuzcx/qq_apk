@@ -1,50 +1,40 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ajsc
-  extends QIPCModule
 {
-  private static ajsc a;
+  int jdField_a_of_type_Int = 0;
+  final List<Long> jdField_a_of_type_JavaUtilList = new ArrayList(5);
   
-  private ajsc()
+  public ajsc(String paramString)
   {
-    super("SignInModule");
-  }
-  
-  public static ajsc a()
-  {
-    if (a == null) {
-      a = new ajsc();
-    }
-    return a;
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    paramInt = paramBundle.getInt("type", 1);
-    int i = paramBundle.getInt("result", 2);
-    int j = paramBundle.getInt("day", 1);
-    if (QLog.isColorLevel()) {
-      QLog.i("DailySignIn", 2, "SignInModule onCall type = " + paramInt + ",result = " + i + ",day = " + j);
-    }
-    if (i == 0)
+    try
     {
-      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      paramString = amor.a(paramString, "troop_member_list_config");
       if (paramString != null)
       {
-        paramString.getPreferences();
-        paramString = (ajfi)paramString.a(2);
-        if (QLog.isColorLevel()) {
-          QLog.i("DailySignIn", 2, "get oidb0x922 by web");
+        Object localObject = new JSONObject(paramString);
+        this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("maxTroopMemberSize");
+        localObject = ((JSONObject)localObject).optJSONArray("troopClassIdList");
+        while ((localObject != null) && (i < ((JSONArray)localObject).length()))
+        {
+          this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(((JSONArray)localObject).optLong(i)));
+          i += 1;
         }
-        paramString.c(0);
       }
+      if (QLog.isColorLevel()) {
+        QLog.i("AddFrdHelper", 2, String.format("TroopMemberListConfig max: %s, idList: %s, config: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), TextUtils.join(",", this.jdField_a_of_type_JavaUtilList), paramString }));
+      }
+      return;
     }
-    return null;
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.troop.data.AudioInfo;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.ArrayList;
+import android.net.Uri;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
 
 public class azhq
+  implements azhj
 {
-  public int a;
-  public AudioInfo a;
-  public TroopBarPOI a;
-  public String a;
-  public ArrayList<String> a;
-  public int b;
-  public String b;
-  public ArrayList<TroopBarPOI> b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
+  public azhq(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  
+  public void a(Uri paramUri)
+  {
+    this.a.a = paramUri;
+  }
 }
 
 

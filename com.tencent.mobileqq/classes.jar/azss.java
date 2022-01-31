@@ -1,27 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
 
-class azss
-  implements DialogInterface.OnDismissListener
+public class azss
 {
-  azss(azsq paramazsq) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public azss(Context paramContext, String paramString1, String paramString2)
   {
-    if ((this.a.jdField_a_of_type_Int == -1) && ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)))
-    {
-      ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopShareUtility", 2, "mShareActionSheet noItemClick, onDismiss");
-      }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramString2.length();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      localStringBuilder.append(", hanzi = " + this.jdField_a_of_type_JavaLangString);
     }
+    if (this.b != null) {
+      localStringBuilder.append(", pinyin = " + this.b);
+    }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azss
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,22 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.KPLProfileCardActivity;
 
 public class abkc
+  implements View.OnTouchListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
-  TextView d;
+  public abkc(KPLProfileCardActivity paramKPLProfileCardActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (!this.a.a)
+    {
+      axqw.b(this.a.app, "dc00898", "", "", "0X8008438", "0X8008438", 0, 0, "", "", "", "");
+      this.a.a = true;
+    }
+    return false;
+  }
 }
 
 

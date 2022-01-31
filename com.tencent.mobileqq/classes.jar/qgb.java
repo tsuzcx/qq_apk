@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
 
-class qgb
-  implements DialogInterface.OnShowListener
+public class qgb
+  implements View.OnTouchListener
 {
-  qgb(qfy paramqfy) {}
+  public qgb(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    qfy.a(this.a, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
-    qfy.a(this.a).getWindow().clearFlags(8);
+    ReadInJoyUgcSearchTopicFragment.a(this.a);
+    return false;
   }
 }
 

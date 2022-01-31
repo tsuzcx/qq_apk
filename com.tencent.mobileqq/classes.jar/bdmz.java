@@ -1,55 +1,39 @@
-import org.json.JSONObject;
+import com.tencent.open.model.AppInfo;
+import java.util.List;
 
 public class bdmz
+  implements ajtg
 {
-  public int a = 60000;
-  public int b = 60000;
-  public int c = 60000;
-  public int d = 60000;
+  protected void a(boolean paramBoolean, List<AppInfo> paramList) {}
   
-  public static bdmz a(JSONObject paramJSONObject)
+  protected void a(boolean paramBoolean, List<AppInfo> paramList, String paramString) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int j = 60000;
-    bdmz localbdmz = new bdmz();
-    if (paramJSONObject == null)
+    switch (paramInt)
     {
-      i = 60000;
-      localbdmz.a = i;
-      if (paramJSONObject != null) {
-        break label72;
+    default: 
+      return;
+    case 0: 
+      if (paramBoolean)
+      {
+        a(paramBoolean, (List)paramObject, null);
+        return;
       }
-      i = 60000;
-      label30:
-      localbdmz.b = i;
-      if (paramJSONObject != null) {
-        break label84;
-      }
-      i = 60000;
-      label42:
-      localbdmz.c = i;
-      if (paramJSONObject != null) {
-        break label96;
-      }
+      a(paramBoolean, null, (String)paramObject);
+      return;
     }
-    label72:
-    label84:
-    label96:
-    for (int i = j;; i = paramJSONObject.optInt("downloadFile", 60000))
+    if (paramBoolean)
     {
-      localbdmz.d = i;
-      return localbdmz;
-      i = paramJSONObject.optInt("request", 60000);
-      break;
-      i = paramJSONObject.optInt("connectSocket", 60000);
-      break label30;
-      i = paramJSONObject.optInt("uploadFile", 60000);
-      break label42;
+      a(paramBoolean, (List)paramObject);
+      return;
     }
+    a(paramBoolean, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdmz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.takevideo.dancemachine;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,13 +8,13 @@ import android.graphics.BitmapFactory.Options;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import uxn;
-import uxo;
+import vkj;
+import vkk;
 
 public class VideoSharer$1
   implements Runnable
 {
-  public VideoSharer$1(uxn paramuxn, int paramInt) {}
+  public VideoSharer$1(vkj paramvkj, int paramInt) {}
   
   public void run()
   {
@@ -71,23 +71,23 @@ public class VideoSharer$1
             if (QLog.isColorLevel()) {
               QLog.d("DanceMachinePKVideoSharer", 2, "share to wechat bitmap ratio  : " + i + "   size : " + j * k / 1024 + "KB  fileSize : " + new File(this.this$0.h).length());
             }
-            if (uxn.a(this.this$0) == null) {
-              uxn.a(this.this$0, new uxo(this, localBitmap));
+            if (vkj.a(this.this$0) == null) {
+              vkj.a(this.this$0, new vkk(this, localBitmap));
             }
             if (this.a == 1)
             {
-              WXShareHelper.a().d(String.valueOf(System.currentTimeMillis()), this.this$0.j, localBitmap, ajjy.a(2131650589), this.this$0.i);
-              WXShareHelper.a().a(uxn.a(this.this$0));
-              uxn.a(this.this$0, 1);
+              WXShareHelper.a().d(String.valueOf(System.currentTimeMillis()), this.this$0.j, localBitmap, ajyc.a(2131716380), this.this$0.i);
+              WXShareHelper.a().a(vkj.a(this.this$0));
+              vkj.a(this.this$0, 1);
               return;
             }
           }
         }
       }
     } while (this.a != 2);
-    WXShareHelper.a().c(String.valueOf(System.currentTimeMillis()), this.this$0.j, localBitmap, ajjy.a(2131650585), this.this$0.i);
-    WXShareHelper.a().a(uxn.a(this.this$0));
-    uxn.a(this.this$0, 2);
+    WXShareHelper.a().c(String.valueOf(System.currentTimeMillis()), this.this$0.j, localBitmap, ajyc.a(2131716376), this.this$0.i);
+    WXShareHelper.a().a(vkj.a(this.this$0));
+    vkj.a(this.this$0, 2);
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aayc;
+import abhz;
 import com.tencent.mobileqq.gesturelock.LockPatternView;
 
 public class GesturePWDCreateActivity$2$2
   implements Runnable
 {
-  public GesturePWDCreateActivity$2$2(aayc paramaayc) {}
+  public GesturePWDCreateActivity$2$2(abhz paramabhz) {}
   
   public void run()
   {

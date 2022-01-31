@@ -1,12 +1,16 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 
 class bigw
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  bigw(bigv parambigv) {}
+  bigw(bigs parambigs) {}
   
-  public void onClick(View paramView) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 

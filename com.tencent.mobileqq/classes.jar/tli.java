@@ -1,65 +1,73 @@
 import android.support.annotation.NonNull;
-import android.view.MotionEvent;
-import android.widget.RelativeLayout;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.OnCommentListViewStateChangeListener.1;
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tli
-  implements tmb
+  extends tjg
+  implements syt<tns, tpb>
 {
-  private tli(tla paramtla) {}
+  protected String a;
+  protected List<tlj> a;
+  
+  public tli(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
   
   public void a()
   {
-    if (!tla.b(this.a)) {
-      this.a.a();
-    }
+    tns localtns = new tns();
+    localtns.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    localtns.b = this.jdField_a_of_type_JavaLangString;
+    syr.a().a(localtns, this);
   }
   
-  public void a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
+  public void a(List<tlj> paramList)
   {
-    if (tla.a(this.a) != null) {
-      tla.a(this.a).a(paramCommentEntry, paramInt1, paramInt2);
-    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
   }
   
-  public void a(@NonNull ucw paramucw, ErrorMessage paramErrorMessage)
+  public void a(@NonNull tns paramtns, @Nullable tpb paramtpb, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (paramErrorMessage.isSuccess())
+    if ((paramErrorMessage.isSuccess()) && (paramtpb != null))
     {
-      tla.a(this.a, paramucw);
-      tla.a(this.a).setVisibility(0);
-      tla.a(this.a, new udl(this.a.getContext(), tla.b(this.a), paramucw, false, 4444, new tlf(this.a, null)));
-      if (tla.a(this.a).a != null) {
-        tla.a(this.a).a.setText(tla.a(this.a).a);
-      }
-      if (tla.a(this.a))
+      paramtns = new tjp(1);
+      paramErrorMessage = (tcp)tdc.a(19);
+      paramtpb = paramtpb.jdField_a_of_type_JavaUtilList;
+      Object localObject1 = paramtpb.iterator();
+      Object localObject2;
+      while (((Iterator)localObject1).hasNext())
       {
-        tla.a(this.a, false);
-        tla.a(this.a).postDelayed(new CommentFloatDialog.OnCommentListViewStateChangeListener.1(this), 100);
+        localObject2 = new tjo(2, paramErrorMessage.a((VideoCollectionItem)((Iterator)localObject1).next()));
+        paramtns.a.add(localObject2);
       }
-      return;
-    }
-    tla.a(this.a).setVisibility(8);
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    if ((paramMotionEvent.getAction() == 1) && (tla.a(this.a) != null) && (tla.a(this.a).a()))
-    {
-      tla.a(this.a).c();
-      return true;
-    }
-    return false;
-  }
-  
-  public void b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
-  {
-    if (tla.a(this.a) != null) {
-      tla.a(this.a).b(paramCommentEntry, paramInt1, paramInt2);
+      paramErrorMessage = (uwa)tdc.a(11);
+      localObject1 = new ArrayList(paramtpb.size());
+      paramtpb = paramtpb.iterator();
+      while (paramtpb.hasNext())
+      {
+        localObject2 = (VideoCollectionItem)paramtpb.next();
+        if (!TextUtils.isEmpty(((VideoCollectionItem)localObject2).feedId))
+        {
+          VideoListFeedItem localVideoListFeedItem = (VideoListFeedItem)paramErrorMessage.a(((VideoCollectionItem)localObject2).feedId);
+          if (localVideoListFeedItem != null)
+          {
+            localVideoListFeedItem.mViewTotalTime = ((VideoCollectionItem)localObject2).viewTimes;
+            ((ArrayList)localObject1).add(localVideoListFeedItem);
+          }
+        }
+      }
+      paramErrorMessage.a((List)localObject1);
+      ste.a().dispatch(paramtns);
     }
   }
 }

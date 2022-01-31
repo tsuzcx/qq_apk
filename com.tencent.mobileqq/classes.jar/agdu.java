@@ -1,20 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.messagesearch.C2CLinkElement;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
 class agdu
-  implements DialogInterface.OnKeyListener
+  implements bfpc
 {
-  agdu(agdp paramagdp) {}
+  agdu(agdn paramagdn) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
-    {
-      this.a.a.dismiss();
-      agdp.a(this.a, agdp.a(this.a), true, Long.valueOf(agdp.b(this.a)).longValue(), true);
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
     }
-    return false;
+    if ((this.a.jdField_a_of_type_Agdm.getCount() <= 0) || (paramInt <= 0)) {
+      return;
+    }
+    paramAdapterView = this.a.jdField_a_of_type_Agdm.a(paramInt - 1);
+    if (paramAdapterView != null)
+    {
+      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("url", paramAdapterView.url);
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      return;
+    }
+    QLog.e("LinkMessageSearchDialog", 2, "link element is null pos:" + paramInt);
   }
 }
 

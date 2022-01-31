@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aklt;
-import akma;
-import akmc;
+import alaf;
+import alam;
+import alao;
 import com.tencent.mobileqq.ar.ARNativeBridge;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARTransferPromotionRenderable$13
   implements Runnable
 {
-  public ARTransferPromotionRenderable$13(akma paramakma, int paramInt) {}
+  public ARTransferPromotionRenderable$13(alam paramalam, int paramInt) {}
   
   public void run()
   {
@@ -19,23 +19,23 @@ public class ARTransferPromotionRenderable$13
     }
     for (;;)
     {
-      akma.d(this.this$0);
+      alam.d(this.this$0);
       return;
-      if ((this.a == 1) && (akma.a(this.this$0) != null) && (akma.a(this.this$0).a.booleanValue())) {
-        akma.a(this.this$0).b(0, 1);
+      if ((this.a == 1) && (alam.a(this.this$0) != null) && (alam.a(this.this$0).a.booleanValue())) {
+        alam.a(this.this$0).b(0, 1);
       }
-      if (akma.a(this.this$0) != null)
+      if (alam.a(this.this$0) != null)
       {
-        akma.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
+        alam.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
         continue;
         if (this.this$0.b == 3)
         {
-          if (akma.a(this.this$0) != null) {
-            akma.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
+          if (alam.a(this.this$0) != null) {
+            alam.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
           }
         }
         else {
-          akma.a(this.this$0, 4, akma.a(this.this$0).c + "360Video.mp4", false, akma.a(this.this$0).d, false);
+          alam.a(this.this$0, 4, alam.a(this.this$0).c + "360Video.mp4", false, alam.a(this.this$0).d, false);
         }
       }
     }

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.microapp.appbrand.page;
 
 import android.content.Context;
 import android.widget.FrameLayout;
-import bbms;
+import bcpq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.microapp.apkg.f;
 import com.tencent.mobileqq.microapp.appbrand.a;
@@ -49,11 +49,11 @@ public final class AppBrandPageContainer
   private void executeDownSubPack(String paramString1, String paramString2)
   {
     WeakReference localWeakReference = new WeakReference(this);
-    bbms localbbms = new bbms(getContext());
-    localbbms.a("正在加载模块...");
-    localbbms.setCancelable(false);
-    localbbms.show();
-    this.appBrandRuntime.c.a(paramString1, new AppBrandPageContainer.1(this, localWeakReference, paramString2, paramString1, localbbms));
+    bcpq localbcpq = new bcpq(getContext());
+    localbcpq.a("正在加载模块...");
+    localbcpq.setCancelable(false);
+    localbcpq.show();
+    this.appBrandRuntime.c.a(paramString1, new AppBrandPageContainer.1(this, localWeakReference, paramString2, paramString1, localbcpq));
   }
   
   private boolean isUrlResReady(String paramString)

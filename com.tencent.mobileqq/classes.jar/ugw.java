@@ -1,45 +1,29 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.text.TextUtils;
 
 public class ugw
-  extends QQUIEventReceiver<ugr, sjc>
+  extends sth<ugn, tah>
 {
-  public ugw(ugr paramugr)
+  public ugw(ugn paramugn)
   {
-    super(paramugr);
+    super(paramugn);
   }
   
-  public void a(@NonNull ugr paramugr, @NonNull sjc paramsjc)
+  public void a(@NonNull ugn paramugn, @NonNull tah paramtah)
   {
-    if (paramsjc.a.isSuccess())
+    if ((paramugn.a != null) && (TextUtils.equals(paramugn.a.b, paramtah.a)))
     {
-      if (!paramsjc.a()) {
-        break label25;
-      }
-      urk.c("Q.qqstory.memories.ProfileFeedPresenter", "ignore this upload status event, because it's a troop video.");
+      veg.a(this.TAG, "receive feed info change event. %s.", paramtah.toString());
+      paramugn.i();
     }
-    label25:
-    do
-    {
-      do
-      {
-        return;
-        if (paramsjc.c())
-        {
-          urk.b("Q.qqstory.memories.ProfileFeedPresenter", "receive share group video upload status change event. %s.", paramsjc.toString());
-          return;
-        }
-      } while (!paramsjc.b());
-      urk.a("Q.qqstory.memories.ProfileFeedPresenter", "receive personal video upload status change event. %s. start to refresh year node list", paramsjc.toString());
-    } while (paramsjc.b == null);
-    ugr.a(paramugr, true);
   }
   
   public Class acceptEventClass()
   {
-    return sjc.class;
+    return tah.class;
   }
+  
+  public void b(@NonNull ugn paramugn, @NonNull tah paramtah) {}
 }
 
 

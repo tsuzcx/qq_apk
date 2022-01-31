@@ -1,20 +1,25 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aevu
-  implements aexb
+  implements aevs
 {
-  public aevu(SearchContactsFragment paramSearchContactsFragment) {}
+  aevu(aevt paramaevt) {}
   
-  public Activity a()
+  public void a()
   {
-    return this.a.a();
+    aevt.a(this.a, aevt.a(this.a));
+    ThreadManager.getUIHandler().post(new StickerBubbleAnimationViewHolder.1.1(this));
   }
   
-  public QQAppInterface a()
+  public void b()
   {
-    return this.a.a;
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleAnimationViewHolder", 2, "onSurfaceDestroyed");
+    }
+    aevt.b(this.a, aevt.a(this.a));
   }
 }
 

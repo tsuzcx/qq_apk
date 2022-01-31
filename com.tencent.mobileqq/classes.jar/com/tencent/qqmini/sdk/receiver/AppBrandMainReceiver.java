@@ -3,10 +3,12 @@ package com.tencent.qqmini.sdk.receiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bdct;
-import bdle;
-import bdnu;
-import bdnw;
+import begs;
+import bepk;
+import besh;
+import besj;
+import besl;
+import com.tencent.qqmini.sdk.launcher.model.LoginInfo;
 
 public class AppBrandMainReceiver
   extends BroadcastReceiver
@@ -14,11 +16,15 @@ public class AppBrandMainReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     Object localObject = paramIntent.getAction();
-    bdnw.b("minisdk-start", "AppBrandTaskPreloadReceiver onReceive action: " + (String)localObject);
-    bdct.a(paramContext.getApplicationContext(), null);
-    localObject = bdle.a().a();
+    besl.b("minisdk-start", "AppBrandTaskPreloadReceiver onReceive action: " + (String)localObject);
+    begs.a(paramContext.getApplicationContext());
+    localObject = (LoginInfo)paramIntent.getParcelableExtra("KEY_LOGININFO");
     if (localObject != null) {
-      ((bdnu)localObject).a(paramContext, paramIntent);
+      bepk.a().a().setLoginInfo((LoginInfo)localObject);
+    }
+    localObject = bepk.a().a();
+    if (localObject != null) {
+      ((besj)localObject).a(paramContext, paramIntent);
     }
   }
 }

@@ -1,35 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.FusionBiuInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
+import android.database.DataSetObserver;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
 
 public class qqa
-  implements nyx
+  extends DataSetObserver
 {
-  public qqa(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
+  public qqa(VideoFeedsListView paramVideoFeedsListView) {}
   
-  public void a(int paramInt)
+  public void onChanged()
   {
-    boolean bool = true;
-    ReadInJoyFastWebBottomSocialView localReadInJoyFastWebBottomSocialView;
-    if (paramInt != 2)
+    VideoFeedsListView localVideoFeedsListView = this.a;
+    if (VideoFeedsListView.a(this.a) != 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      if ((!ReadInJoyFastWebBottomSocialView.a(this.a)) || (ReadInJoyFastWebBottomSocialView.a(this.a).fusionBiuInfo == null)) {
-        break label62;
-      }
-      localReadInJoyFastWebBottomSocialView = this.a;
-      if (ReadInJoyFastWebBottomSocialView.a(this.a).fusionBiuInfo.b) {
-        break label57;
-      }
-    }
-    for (;;)
-    {
-      ReadInJoyFastWebBottomSocialView.a(localReadInJoyFastWebBottomSocialView, bool);
+      VideoFeedsListView.a(localVideoFeedsListView, bool);
       return;
-      label57:
-      bool = false;
     }
-    label62:
-    ReadInJoyFastWebBottomSocialView.a(this.a, true);
+  }
+  
+  public void onInvalidated()
+  {
+    VideoFeedsListView localVideoFeedsListView = this.a;
+    if (VideoFeedsListView.a(this.a) != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      VideoFeedsListView.a(localVideoFeedsListView, bool);
+      return;
+    }
   }
 }
 

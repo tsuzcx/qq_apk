@@ -1,23 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.apollo.view.ApolloSlaveViewBinder.1;
-import com.tencent.mobileqq.apollo.view.ApolloSlaveViewBinder.1.1.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.process.download.CmGameSubRscHandler.2;
 
 public class ajdj
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public ajdj(ApolloSlaveViewBinder.1 param1) {}
+  public ajdj(CmGameSubRscHandler.2 param2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setVisibility(8);
-    this.a.a.postDelayed(new ApolloSlaveViewBinder.1.1.1(this), 300L);
+    if (this.a.a != null) {
+      this.a.a.b(null);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

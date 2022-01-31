@@ -1,54 +1,101 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
-import com.tencent.mobileqq.data.AppShareID;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aadh
-  extends ajgf
+class aadh
+  implements DialogInterface.OnCancelListener, bfoq, bfos
 {
-  public aadh(BaseChatPie paramBaseChatPie) {}
+  aabm jdField_a_of_type_Aabm;
+  bfol jdField_a_of_type_Bfol;
   
-  protected void a(String paramString, int paramInt, ArrayList<QQOperationViopTipTask> paramArrayList)
+  public aadh(bfol parambfol, aabm paramaabm)
   {
-    if (this.a.A()) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (QLog.isDevelopLevel()) {
-            QLog.d("QQOperateVoIP", 4, "on showTips, chatactivity upadte ui");
-          }
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == paramInt)) {
-            break;
-          }
-        } while (!QLog.isDevelopLevel());
-        QLog.d("QQOperateVoIP", 4, "on showTips, uin dosenot equal");
-        return;
-        if ((paramArrayList != null) && (paramArrayList.size() != 0)) {
-          break;
-        }
-      } while (!QLog.isDevelopLevel());
-      QLog.d("QQOperateVoIP", 4, "on showTips,tasklist is null");
-      return;
-    } while (this.a.jdField_a_of_type_Aenu == null);
-    this.a.jdField_a_of_type_Aenu.a(paramArrayList);
+    this.jdField_a_of_type_Bfol = parambfol;
+    this.jdField_a_of_type_Aabm = paramaabm;
   }
   
-  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_Acka != null)) {
-      this.a.jdField_a_of_type_Acka.notifyDataSetChanged();
+    this.jdField_a_of_type_Bfol.dismiss();
+    paramView = new JSONObject();
+    try
+    {
+      paramView.put("cancel", false);
+      paramView.put("tapIndex", paramInt);
+      aaet.a(this.jdField_a_of_type_Aabm, paramView);
+      return;
+    }
+    catch (JSONException paramView)
+    {
+      String str = paramView.getMessage();
+      if (QLog.isColorLevel()) {
+        QLog.w("DoraemonOpenAPI.widget", 2, str, paramView);
+      }
+      aabm localaabm = this.jdField_a_of_type_Aabm;
+      paramView = str;
+      if (str == null) {
+        paramView = "";
+      }
+      aaet.a(localaabm, -2, paramView);
+    }
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    paramDialogInterface = new JSONObject();
+    try
+    {
+      paramDialogInterface.put("cancel", true);
+      paramDialogInterface.put("tapIndex", -1);
+      aaet.a(this.jdField_a_of_type_Aabm, paramDialogInterface);
+      return;
+    }
+    catch (JSONException paramDialogInterface)
+    {
+      String str = paramDialogInterface.getMessage();
+      if (QLog.isColorLevel()) {
+        QLog.w("DoraemonOpenAPI.widget", 2, str, paramDialogInterface);
+      }
+      aabm localaabm = this.jdField_a_of_type_Aabm;
+      paramDialogInterface = str;
+      if (str == null) {
+        paramDialogInterface = "";
+      }
+      aaet.a(localaabm, -2, paramDialogInterface);
+    }
+  }
+  
+  public void onDismiss()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("cancel", true);
+      localJSONObject.put("tapIndex", -1);
+      aaet.a(this.jdField_a_of_type_Aabm, localJSONObject);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      String str = localJSONException.getMessage();
+      if (QLog.isColorLevel()) {
+        QLog.w("DoraemonOpenAPI.widget", 2, str, localJSONException);
+      }
+      aabm localaabm = this.jdField_a_of_type_Aabm;
+      Object localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+      aaet.a(localaabm, -2, (String)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aadh
  * JD-Core Version:    0.7.0.1
  */

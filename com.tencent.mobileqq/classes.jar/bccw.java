@@ -1,23 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import com.tencent.open.appstore.dl.DownloadManagerV2.19;
+import com.tencent.qphone.base.util.QLog;
 
-public class bccw
-  implements DialogInterface.OnClickListener
+class bccw
+  implements bcfr
 {
-  public bccw(DownloadManagerV2.19 param19) {}
+  bccw(bccv parambccv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(Bundle paramBundle)
   {
-    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bcgl.r, false);
-    bccy.a().a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
-    paramDialogInterface.dismiss();
+    int j = this.a.a;
+    int i = -1;
+    long l = System.currentTimeMillis();
+    switch (this.a.a)
+    {
+    }
+    for (;;)
+    {
+      QLog.i("WebViewModule", 1, "CreateLoop:step[" + j + "] -> step[" + this.a.a + "] cost" + (System.currentTimeMillis() - l) + " ms.");
+      return i;
+      i = this.a.a(paramBundle);
+      continue;
+      i = this.a.b(paramBundle);
+      continue;
+      i = this.a.c(paramBundle);
+      continue;
+      i = this.a.d(paramBundle);
+      continue;
+      i = this.a.e(paramBundle);
+      continue;
+      i = this.a.f(paramBundle);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bccw
  * JD-Core Version:    0.7.0.1
  */

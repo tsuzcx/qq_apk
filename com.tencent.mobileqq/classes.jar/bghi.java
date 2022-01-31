@@ -1,119 +1,97 @@
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.os.Bundle;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import java.io.File;
 
 public class bghi
 {
-  public static String a(Map<Integer, Long> paramMap)
+  public static long a;
+  
+  public static String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = paramMap.keySet().iterator();
-    if (localIterator.hasNext())
-    {
-      Object localObject = (Integer)localIterator.next();
-      if (localStringBuilder.length() > 0) {
-        localStringBuilder.append("&");
-      }
-      Long localLong = (Long)paramMap.get(localObject);
-      if (localObject != null) {}
-      for (;;)
-      {
-        try
-        {
-          localObject = URLEncoder.encode(localObject + "", "UTF-8");
-          localStringBuilder.append((String)localObject);
-          localStringBuilder.append("=");
-          if (localLong == null) {
-            break label165;
-          }
-          localObject = URLEncoder.encode(localLong + "", "UTF-8");
-          localStringBuilder.append((String)localObject);
-        }
-        catch (UnsupportedEncodingException paramMap)
-        {
-          throw new RuntimeException("This method requires UTF-8 encoding support", paramMap);
-        }
-        localObject = "";
-        continue;
-        label165:
-        localObject = "";
-      }
-    }
-    return localStringBuilder.toString();
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    return new File(localBaseApplicationImpl.getFilesDir(), "comic_so").getAbsolutePath() + File.separator;
   }
   
-  public static Map<Integer, Long> a(String paramString)
+  public static void a()
   {
-    int i = 0;
-    HashMap localHashMap = new HashMap();
-    paramString = paramString.split("&");
-    int j = paramString.length;
-    if (i < j)
-    {
-      String[] arrayOfString = paramString[i].split("=");
-      if (arrayOfString.length != 2) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        try
-        {
-          localHashMap.put(Integer.valueOf(URLDecoder.decode(arrayOfString[0], "UTF-8")), Long.valueOf(URLDecoder.decode(arrayOfString[1], "UTF-8")));
-        }
-        catch (UnsupportedEncodingException paramString)
-        {
-          throw new RuntimeException("This method requires UTF-8 encoding support", paramString);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("VipComicSoHelper", 2, "initComicPlayerSoWithSubProcess");
     }
-    return localHashMap;
+    Bundle localBundle = new Bundle();
+    QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "getPlayerSo", localBundle, null);
   }
   
-  public static String b(Map<Integer, Long> paramMap)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = paramMap.keySet().iterator();
-    if (localIterator.hasNext())
-    {
-      Object localObject = (Integer)localIterator.next();
-      if (localStringBuilder.length() > 0) {
-        localStringBuilder.append(",");
-      }
-      Long localLong = (Long)paramMap.get(localObject);
-      if (localObject != null) {}
-      for (;;)
-      {
-        try
-        {
-          localObject = URLEncoder.encode(localObject + "", "UTF-8");
-          localStringBuilder.append((String)localObject);
-          localStringBuilder.append("_");
-          if (localLong == null) {
-            break label165;
-          }
-          localObject = URLEncoder.encode(localLong + "", "UTF-8");
-          localStringBuilder.append((String)localObject);
-        }
-        catch (UnsupportedEncodingException paramMap)
-        {
-          throw new RuntimeException("This method requires UTF-8 encoding support", paramMap);
-        }
-        localObject = "";
-        continue;
-        label165:
-        localObject = "";
+    if (AppSetting.b) {
+      if (QLog.isColorLevel()) {
+        QLog.w("VipComicSoHelper", 2, "download comic qgplayer, the apk is for cup 64, but not supported for now");
       }
     }
-    return localStringBuilder.toString();
+    do
+    {
+      return;
+      if (!new File(a() + "libqgplayer_765.so").exists())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VipComicSoHelper", 2, "initComicPlayerSo start download");
+        }
+        ((VasQuickUpdateManager)paramQQAppInterface.getManager(184)).downloadItem(1004L, VasQuickUpdateManager.SCID_COMIC_PLAYER_SO, "comic");
+        try
+        {
+          a = SystemClock.elapsedRealtime();
+          axpw.a(paramQQAppInterface, "sendtdbank|b_sng_qqvip_qqcomic|soDownload", "1|" + a + "|0", true);
+          return;
+        }
+        catch (Throwable paramQQAppInterface)
+        {
+          paramQQAppInterface.printStackTrace();
+          return;
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("VipComicSoHelper", 2, "initComicPlayerSo has exists");
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VipComicSoHelper", 2, "onSoDownloadCompleted");
+    }
+    if (bbkv.a(a() + "libQGamePlayer.zip", a(), "libqgplayer_765.so")) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicSoHelper", 2, "comic player unCompressSo success");
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        long l1 = SystemClock.elapsedRealtime();
+        long l2 = a;
+        axpw.a(paramQQAppInterface, "sendtdbank|b_sng_qqvip_qqcomic|soDownload", "2|" + (l1 - l2) + "|" + paramInt, true);
+        return;
+      }
+      catch (Throwable paramQQAppInterface)
+      {
+        paramQQAppInterface.printStackTrace();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicSoHelper", 2, "comic player unCompressSo failure");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bghi
  * JD-Core Version:    0.7.0.1
  */

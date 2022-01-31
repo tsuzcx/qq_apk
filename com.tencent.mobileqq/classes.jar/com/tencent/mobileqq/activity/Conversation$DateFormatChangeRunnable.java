@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import ahcw;
+import ahpl;
 import android.provider.Settings.System;
-import axam;
+import ayao;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.os.MqqHandler;
@@ -15,10 +15,10 @@ public class Conversation$DateFormatChangeRunnable
   public void run()
   {
     Object localObject = Settings.System.getString(this.this$0.a().getContentResolver(), "date_format");
-    if ((this.this$0.jdField_a_of_type_Ahai != null) && (ahcw.a().a((String)localObject)) && (this.this$0.f)) {
+    if ((this.this$0.jdField_a_of_type_Ahmx != null) && (ahpl.a().a((String)localObject)) && (this.this$0.f)) {
       this.this$0.a(1014, 0L, false);
     }
-    axam.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject);
+    ayao.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject);
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
       localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(TroopAssistantActivity.class);

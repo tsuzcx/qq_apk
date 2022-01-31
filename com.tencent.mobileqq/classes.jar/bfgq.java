@@ -1,21 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import com.tencent.qqmini.sdk.utils.MiniSDKConst.AdConst.1;
+import java.util.HashMap;
 
 public class bfgq
-  implements DialogInterface.OnClickListener
 {
-  public bfgq(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.finish();
-  }
+  public static final HashMap<Integer, String> a = new MiniSDKConst.AdConst.1();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfgq
  * JD-Core Version:    0.7.0.1
  */

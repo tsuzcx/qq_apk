@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.widget.CompoundButton;
-import awnq;
+import axmp;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class GeneralSettingActivity$12
@@ -11,9 +11,9 @@ class GeneralSettingActivity$12
   
   public void run()
   {
-    if (!((awnq)this.this$0.app.a(154)).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, true))
+    if (!((axmp)this.this$0.app.a(154)).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, true))
     {
-      this.this$0.a(2131653570, 0);
+      this.this$0.a(2131719399, 0);
       GeneralSettingActivity localGeneralSettingActivity = this.this$0;
       CompoundButton localCompoundButton = this.jdField_a_of_type_AndroidWidgetCompoundButton;
       if (!this.b) {}

@@ -1,14 +1,19 @@
 package com.tencent.viola.ui.view.overscroll;
 
+import android.animation.ValueAnimator;
 import android.support.annotation.RequiresApi;
 import android.view.View;
+import java.lang.ref.WeakReference;
 
 public class HorizontalOverScrollBounceEffectDecorator$AnimationAttributesHorizontal
   extends AbsOverScrollDecorator.AnimationAttributes
 {
-  public HorizontalOverScrollBounceEffectDecorator$AnimationAttributesHorizontal()
+  private WeakReference<HorizontalOverScrollBounceEffectDecorator> weakRef;
+  
+  public HorizontalOverScrollBounceEffectDecorator$AnimationAttributesHorizontal(HorizontalOverScrollBounceEffectDecorator paramHorizontalOverScrollBounceEffectDecorator)
   {
     this.mProperty = View.TRANSLATION_X;
+    this.weakRef = new WeakReference(paramHorizontalOverScrollBounceEffectDecorator);
   }
   
   @RequiresApi(api=11)
@@ -16,6 +21,22 @@ public class HorizontalOverScrollBounceEffectDecorator$AnimationAttributesHorizo
   {
     this.mAbsOffset = paramView.getTranslationX();
     this.mMaxOffset = paramView.getWidth();
+  }
+  
+  protected void onAnimationEnd()
+  {
+    HorizontalOverScrollBounceEffectDecorator localHorizontalOverScrollBounceEffectDecorator = (HorizontalOverScrollBounceEffectDecorator)this.weakRef.get();
+    if (localHorizontalOverScrollBounceEffectDecorator != null) {
+      localHorizontalOverScrollBounceEffectDecorator.onUpdate(null);
+    }
+  }
+  
+  protected void onUpdate(ValueAnimator paramValueAnimator)
+  {
+    HorizontalOverScrollBounceEffectDecorator localHorizontalOverScrollBounceEffectDecorator = (HorizontalOverScrollBounceEffectDecorator)this.weakRef.get();
+    if (localHorizontalOverScrollBounceEffectDecorator != null) {
+      localHorizontalOverScrollBounceEffectDecorator.onUpdate(paramValueAnimator);
+    }
   }
 }
 

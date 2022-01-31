@@ -1,82 +1,94 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetCollectionVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCollectionVideoList;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqAddFeedComment;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class szj
-  extends slz
+  extends tbd
 {
-  public static final String a = skt.a("StorySvc.new_get_date_share_list");
-  public static final String b = skt.a("StorySvc.get_share_video_info_list");
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public int g;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  CommentEntry jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
+  String jdField_a_of_type_JavaLangString;
+  tbf jdField_a_of_type_Tbf;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  int jdField_c_of_type_Int;
+  String jdField_c_of_type_JavaLangString;
+  String d;
   
-  public szj()
+  public szj(CommentEntry paramCommentEntry, tbf paramtbf)
   {
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_d_of_type_Int = -1;
+    this(paramCommentEntry.feedId, paramCommentEntry.replierUnionId, paramCommentEntry.content, paramCommentEntry.fakeId, paramCommentEntry.pbType, paramCommentEntry.extras, paramCommentEntry.commentType, paramtbf);
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
+  }
+  
+  public szj(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, String paramString4, int paramInt2, tbf paramtbf)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    this.d = paramString4;
+    this.jdField_a_of_type_Tbf = paramtbf;
+    paramString1 = vel.a("home_page-comment_suc-d1");
+    if (TextUtils.isEmpty(paramString1)) {}
+    for (paramInt1 = 0;; paramInt1 = Integer.parseInt(paramString1))
+    {
+      this.jdField_a_of_type_Int = paramInt1;
+      return;
+    }
   }
   
   public String a()
   {
-    if (this.jdField_e_of_type_JavaLangString == null) {
-      return a;
-    }
-    return b;
+    return szh.jdField_a_of_type_JavaLangString;
   }
   
-  public slu a(byte[] paramArrayOfByte)
+  public tbe a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspGetCollectionVideoList localRspGetCollectionVideoList = new qqstory_service.RspGetCollectionVideoList();
+    qqstory_service.RspAddFeedComment localRspAddFeedComment = new qqstory_service.RspAddFeedComment();
     try
     {
-      localRspGetCollectionVideoList.mergeFrom(paramArrayOfByte);
-      return new tbh(this.jdField_c_of_type_JavaLangString, localRspGetCollectionVideoList);
+      localRspAddFeedComment.mergeFrom(paramArrayOfByte);
+      return new szk(localRspAddFeedComment, this.jdField_a_of_type_Tbf);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      veg.d("Q.qqstory:FeedCommentDataProvider", "" + paramArrayOfByte);
     }
+    return null;
   }
   
   protected byte[] a()
   {
-    qqstory_service.ReqGetCollectionVideoList localReqGetCollectionVideoList = new qqstory_service.ReqGetCollectionVideoList();
-    localReqGetCollectionVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_d_of_type_JavaLangString));
-    localReqGetCollectionVideoList.count.set(this.jdField_c_of_type_Int);
-    if (this.jdField_e_of_type_JavaLangString == null)
-    {
-      localReqGetCollectionVideoList.collection_id.set(this.jdField_d_of_type_Int);
-      if (this.jdField_e_of_type_Int != -1) {
-        localReqGetCollectionVideoList.time_zone.set(this.jdField_e_of_type_Int);
-      }
+    qqstory_service.ReqAddFeedComment localReqAddFeedComment = new qqstory_service.ReqAddFeedComment();
+    localReqAddFeedComment.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    localReqAddFeedComment.content.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    localReqAddFeedComment.fake_id.set(this.jdField_a_of_type_Long);
+    localReqAddFeedComment.source.set(this.jdField_a_of_type_Int);
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localReqAddFeedComment.reply_union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    }
+    if (this.jdField_b_of_type_Int == 1) {
+      localReqAddFeedComment.type.set(1);
     }
     for (;;)
     {
-      vkw.a(this.jdField_c_of_type_JavaLangString);
-      localReqGetCollectionVideoList.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-      localReqGetCollectionVideoList.video_dir.set(this.g);
-      return localReqGetCollectionVideoList.toByteArray();
-      localReqGetCollectionVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_e_of_type_JavaLangString));
-      localReqGetCollectionVideoList.identify.set(this.f);
+      localReqAddFeedComment.comment_type.set(this.jdField_c_of_type_Int);
+      if (!TextUtils.isEmpty(this.d)) {
+        localReqAddFeedComment.extras.set(ByteStringMicro.copyFromUtf8(this.d));
+      }
+      return localReqAddFeedComment.toByteArray();
+      localReqAddFeedComment.type.set(0);
     }
-  }
-  
-  public String toString()
-  {
-    return super.toString() + " GetCollectionVideoListRequest{targetUid=" + this.jdField_c_of_type_JavaLangString + ", startCookie='" + this.jdField_d_of_type_JavaLangString + ", count=" + this.jdField_c_of_type_Int + ", collectionId=" + this.jdField_d_of_type_Int + ", timeZoneOffset=" + this.jdField_e_of_type_Int + '\'' + '}';
   }
 }
 

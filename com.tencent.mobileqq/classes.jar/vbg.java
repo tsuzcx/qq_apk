@@ -1,65 +1,93 @@
-import android.graphics.PointF;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.storyHome.model.TagUserItem;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.VideoListLayout;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 import java.util.List;
 
-public class vbg
-  implements uyi
+class vbg
+  implements bfoq
 {
-  private vbg(DoodleLayout paramDoodleLayout) {}
+  vbg(vbd paramvbd, bfol parambfol, int paramInt, uxp paramuxp) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.d(3);
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (paramFloat == 1.0F) {
-      this.a.jdField_a_of_type_Uzn.a(this.a.a().a());
-    }
-  }
-  
-  public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3) {}
-  
-  public boolean a(uyj paramuyj)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView != null) && (paramuyj != null))
+    this.jdField_a_of_type_Bfol.e();
+    switch (paramInt)
     {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.setVisibility(0);
-      Object localObject;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b())
+    }
+    Object localObject2;
+    do
+    {
+      do
       {
-        localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a();
-        ((vcw)localObject).d = false;
-        if (!(localObject instanceof uxx)) {
-          break label124;
+        return;
+        vbd.b(this.jdField_a_of_type_Vbd, this.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_Uxp.a().type != 3) {
+          break;
         }
-        uxt localuxt = this.a.a();
-        if (localuxt != null) {
-          localuxt.a.add((uxx)localObject);
+      } while (!(this.jdField_a_of_type_Uxp.a().getOwner() instanceof QQUserUIItem));
+      paramView = ((QQUserUIItem)this.jdField_a_of_type_Uxp.a().getOwner()).qq;
+      localObject1 = new StringBuilder();
+      localObject2 = this.jdField_a_of_type_Vbd.a(this.jdField_a_of_type_Int);
+      if (localObject2 != null)
+      {
+        localObject2 = (VideoListLayout)((vas)localObject2).a(2131373272);
+        if (localObject2 != null)
+        {
+          localObject2 = ((VideoListLayout)localObject2).a();
+          if (localObject2 != null)
+          {
+            paramInt = ((StoryHomeHorizontalListView)localObject2).getFirstVisiblePosition();
+            while (paramInt <= ((StoryHomeHorizontalListView)localObject2).getLastVisiblePosition())
+            {
+              List localList = this.jdField_a_of_type_Uxp.d();
+              if ((paramInt >= 0) && (paramInt < localList.size()))
+              {
+                ((StringBuilder)localObject1).append(((StoryVideoItem)localList.get(paramInt)).mVid);
+                if (paramInt < ((StoryHomeHorizontalListView)localObject2).getLastVisiblePosition()) {
+                  ((StringBuilder)localObject1).append(",");
+                }
+              }
+              paramInt += 1;
+            }
+          }
         }
       }
-      for (;;)
+      vel.c("video_nenegative", "close_IDrecommend", 0, 0, new String[] { "", paramView, "", ((StringBuilder)localObject1).toString() });
+      return;
+    } while ((this.jdField_a_of_type_Uxp.a().type != 6) || (!(this.jdField_a_of_type_Uxp.a().getOwner() instanceof TagUserItem)));
+    long l = ((TagUserItem)this.jdField_a_of_type_Uxp.a().getOwner()).tagId;
+    paramView = new StringBuilder();
+    Object localObject1 = this.jdField_a_of_type_Vbd.a(this.jdField_a_of_type_Int);
+    if (localObject1 != null)
+    {
+      localObject1 = (VideoListLayout)((vas)localObject1).a(2131373272);
+      if (localObject1 != null)
       {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a(paramuyj);
-        paramuyj.d = true;
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.requestLayout();
-        return true;
-        label124:
-        if ((localObject instanceof uyj))
+        localObject1 = ((VideoListLayout)localObject1).a();
+        if (localObject1 != null)
         {
-          localObject = this.a.a();
-          if (localObject != null) {
-            ((uyh)localObject).d();
+          paramInt = ((StoryHomeHorizontalListView)localObject1).getFirstVisiblePosition();
+          while (paramInt <= ((StoryHomeHorizontalListView)localObject1).getLastVisiblePosition())
+          {
+            localObject2 = this.jdField_a_of_type_Uxp.d();
+            if ((paramInt >= 0) && (paramInt < ((List)localObject2).size()))
+            {
+              paramView.append(((StoryVideoItem)((List)localObject2).get(paramInt)).mVid);
+              if (paramInt < ((StoryHomeHorizontalListView)localObject1).getLastVisiblePosition()) {
+                paramView.append(",");
+              }
+            }
+            paramInt += 1;
           }
         }
       }
     }
-    return false;
+    vel.c("video_nenegative", "close_newsrecommend", 0, 0, new String[] { "", String.valueOf(l), "", paramView.toString() });
   }
-  
-  public void b() {}
 }
 
 

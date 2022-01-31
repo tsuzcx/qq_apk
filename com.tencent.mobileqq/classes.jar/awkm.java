@@ -1,25 +1,21 @@
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
 
 class awkm
-  implements adcx
+  implements View.OnClickListener
 {
-  awkm(awkk paramawkk, CustomFrameAnimationDrawable paramCustomFrameAnimationDrawable) {}
+  awkm(awkk paramawkk) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Awkk.c > 0) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.h();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.c();
-    awkk localawkk = this.jdField_a_of_type_Awkk;
-    localawkk.c += 1;
+    this.a.a.b(this.a.a.b);
+    this.a.a.e.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awkm
  * JD-Core Version:    0.7.0.1
  */

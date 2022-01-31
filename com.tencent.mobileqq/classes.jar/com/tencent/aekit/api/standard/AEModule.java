@@ -26,13 +26,15 @@ import java.util.concurrent.Executor;
 
 public class AEModule
 {
-  private static final String AEKIT_VERSION = "1.5.0";
+  private static final String[] AEKIT_FORMER_VERSION = { "1.0.0", "1.1.0", "1.2.0", "1.3.0", "1.4.0", "1.5.0", "1.6.0", "1.7.0", "1.7.1" };
+  private static final String AEKIT_VERSION = "1.7.1";
   private static final String AEKIT_VERSION_FILE = "aekit_meta.txt";
   public static final String DEFAULT_LICENSE_NAME = "com_tencent_2118.lic";
   private static final String TAG = "AEKitModule";
   private static String aekitVersion = null;
   private static boolean debugMode = false;
   private static boolean enableDefaultBasic3 = false;
+  private static boolean enableReducedMeidaLibrary = false;
   private static DecryptListener mDecryptListener = new AEModule.1();
   private static String mLicense;
   private static int mLicenseInitType;
@@ -59,6 +61,11 @@ public class AEModule
     return sContext;
   }
   
+  public static String[] getFormerVersions()
+  {
+    return AEKIT_FORMER_VERSION;
+  }
+  
   public static String getLicense()
   {
     return mLicense;
@@ -80,14 +87,14 @@ public class AEModule
       return aekitVersion;
     }
     if (sContext == null) {
-      aekitVersion = "1.5.0";
+      aekitVersion = "1.7.1";
     }
     for (;;)
     {
       return aekitVersion;
       String str = FileUtils.loadAssetsString(sContext, "aekit_meta.txt");
       if (TextUtils.isEmpty(str)) {
-        aekitVersion = "1.5.0";
+        aekitVersion = "1.7.1";
       } else {
         aekitVersion = str.split("\n")[0];
       }
@@ -104,7 +111,7 @@ public class AEModule
       }
     }
     label29:
-    for (aekitVersion = "1.5.0";; aekitVersion = paramContext.split("\n")[0]) {
+    for (aekitVersion = "1.7.1";; aekitVersion = paramContext.split("\n")[0]) {
       return aekitVersion;
     }
   }
@@ -117,6 +124,7 @@ public class AEModule
     mSoPath = paramAEModuleConfig.getSoDir();
     mLicense = paramAEModuleConfig.getLicense();
     mLicenseInitType = paramAEModuleConfig.getLicenseInitType();
+    enableReducedMeidaLibrary = paramAEModuleConfig.isEnableReducedMeidaLibrary();
     SharedPreferences localSharedPreferences = paramAEModuleConfig.getPreferences();
     boolean bool1 = paramAEModuleConfig.isFramebufferFetchEnable();
     boolean bool2 = paramAEModuleConfig.isEnableResourceCheck();
@@ -180,6 +188,11 @@ public class AEModule
   public static boolean isEnableDefaultBasic3()
   {
     return enableDefaultBasic3;
+  }
+  
+  public static boolean isEnableReducedMeidaLibrary()
+  {
+    return enableReducedMeidaLibrary;
   }
   
   public static boolean isStrictMode()

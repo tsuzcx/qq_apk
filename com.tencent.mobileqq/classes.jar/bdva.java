@@ -1,21 +1,46 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qqmini.sdk.runtime.core.page.BrandPageWebview.4;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qidian.proto.mobileqq_qidian.GroupItem;
 
 public class bdva
-  implements Animation.AnimationListener
 {
-  public bdva(BrandPageWebview.4 param4) {}
+  public int a;
+  public long a;
+  public String a;
   
-  public void onAnimationEnd(Animation paramAnimation) {}
+  public bdva() {}
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public bdva(mobileqq_qidian.GroupItem paramGroupItem)
+  {
+    a(paramGroupItem);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public mobileqq_qidian.GroupItem a()
+  {
+    mobileqq_qidian.GroupItem localGroupItem = new mobileqq_qidian.GroupItem();
+    localGroupItem.uint64_groupid.set(this.jdField_a_of_type_Long);
+    localGroupItem.uint32_group_level.set(this.jdField_a_of_type_Int);
+    localGroupItem.str_group_name.set(this.jdField_a_of_type_JavaLangString);
+    return localGroupItem;
+  }
+  
+  public void a(mobileqq_qidian.GroupItem paramGroupItem)
+  {
+    if (paramGroupItem.uint64_groupid.has()) {
+      this.jdField_a_of_type_Long = paramGroupItem.uint64_groupid.get();
+    }
+    if (paramGroupItem.uint32_group_level.has()) {
+      this.jdField_a_of_type_Int = paramGroupItem.uint32_group_level.get();
+    }
+    if (paramGroupItem.str_group_name.has()) {
+      this.jdField_a_of_type_JavaLangString = paramGroupItem.str_group_name.get();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bdva
  * JD-Core Version:    0.7.0.1
  */

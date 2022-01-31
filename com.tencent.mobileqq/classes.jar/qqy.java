@@ -1,16 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
 public class qqy
-  extends omr
+  extends osp
 {
-  public qqy(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
-  {
-    super(paramString);
-  }
+  private qqy(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void a(oml paramoml)
+  public void j()
   {
-    paramoml.d();
+    if ((this.a.getActivity() instanceof VideoFeedsPlayActivity))
+    {
+      ((VideoFeedsPlayActivity)this.a.getActivity()).d();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
   }
 }
 

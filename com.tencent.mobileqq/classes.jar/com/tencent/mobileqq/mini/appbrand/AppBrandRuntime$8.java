@@ -30,7 +30,7 @@ class AppBrandRuntime$8
     try
     {
       localAbsAppBrandPage.setVisibility(0);
-      Animation localAnimation = AnimationUtils.loadAnimation(AppLoaderFactory.getAppLoaderManager().getContext(), 2130772255);
+      Animation localAnimation = AnimationUtils.loadAnimation(AppLoaderFactory.getAppLoaderManager().getContext(), 2130772256);
       localAnimation.setAnimationListener(new AppBrandRuntime.8.1(this));
       localAbsAppBrandPage.setAnimation(localAnimation);
       return;

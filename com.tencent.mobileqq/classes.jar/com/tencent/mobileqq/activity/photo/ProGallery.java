@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agdf;
-import agdg;
+import agpd;
+import agpe;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
-import apsl;
+import aqma;
 import com.tencent.image.RegionDrawableData;
 import com.tencent.widget.Gallery;
 
@@ -16,9 +16,9 @@ public class ProGallery
   extends Gallery
 {
   private int jdField_a_of_type_Int = 1;
-  private agdf jdField_a_of_type_Agdf;
-  private agdg jdField_a_of_type_Agdg;
-  private apsl jdField_a_of_type_Apsl;
+  private agpd jdField_a_of_type_Agpd;
+  private agpe jdField_a_of_type_Agpe;
+  private aqma jdField_a_of_type_Aqma;
   
   public ProGallery(Context paramContext)
   {
@@ -37,23 +37,23 @@ public class ProGallery
   
   public void a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_Agdg != null) {
-      this.jdField_a_of_type_Agdg.onscaleBegin(paramInt, paramView, paramViewGroup);
+    if (this.jdField_a_of_type_Agpe != null) {
+      this.jdField_a_of_type_Agpe.onscaleBegin(paramInt, paramView, paramViewGroup);
     }
   }
   
   public void a(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Agdg != null) {
-      this.jdField_a_of_type_Agdg.onViewDetached(paramInt, paramView, paramViewGroup, paramBoolean);
+    if (this.jdField_a_of_type_Agpe != null) {
+      this.jdField_a_of_type_Agpe.onViewDetached(paramInt, paramView, paramViewGroup, paramBoolean);
     }
   }
   
   public void a(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData)
   {
     super.a(paramInt, paramView, paramRegionDrawableData);
-    if (this.jdField_a_of_type_Agdg != null) {
-      this.jdField_a_of_type_Agdg.onShowAreaChanged(paramInt, paramView, paramRegionDrawableData);
+    if (this.jdField_a_of_type_Agpe != null) {
+      this.jdField_a_of_type_Agpe.onShowAreaChanged(paramInt, paramView, paramRegionDrawableData);
     }
   }
   
@@ -61,7 +61,7 @@ public class ProGallery
   {
     int k = 0;
     int n = this.jdField_a_of_type_Int;
-    if ((n == 0) || (this.jdField_a_of_type_Agdg == null)) {}
+    if ((n == 0) || (this.jdField_a_of_type_Agpe == null)) {}
     int m;
     label34:
     do
@@ -99,40 +99,40 @@ public class ProGallery
           if (paramInt < 0) {
             break;
           }
-          this.jdField_a_of_type_Agdg.onDestroyView(paramInt, null, paramViewGroup);
+          this.jdField_a_of_type_Agpe.onDestroyView(paramInt, null, paramViewGroup);
           return;
-          this.jdField_a_of_type_Agdg.onCreateView(j, null, paramViewGroup);
+          this.jdField_a_of_type_Agpe.onCreateView(j, null, paramViewGroup);
           i += 1;
           break label34;
         }
-        this.jdField_a_of_type_Agdg.onCreateView(j, null, paramViewGroup);
+        this.jdField_a_of_type_Agpe.onCreateView(j, null, paramViewGroup);
         i += 1;
       }
       paramInt = paramInt + n + 1;
     } while (paramInt >= m);
     label158:
-    this.jdField_a_of_type_Agdg.onDestroyView(paramInt, null, paramViewGroup);
+    this.jdField_a_of_type_Agpe.onDestroyView(paramInt, null, paramViewGroup);
   }
   
   public void b(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_Agdg != null) {
-      this.jdField_a_of_type_Agdg.onSlot(paramInt, paramView, paramViewGroup);
+    if (this.jdField_a_of_type_Agpe != null) {
+      this.jdField_a_of_type_Agpe.onSlot(paramInt, paramView, paramViewGroup);
     }
   }
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Apsl != null) {
-      this.jdField_a_of_type_Apsl.a(paramMotionEvent);
+    if (this.jdField_a_of_type_Aqma != null) {
+      this.jdField_a_of_type_Aqma.a(paramMotionEvent);
     }
     return super.onDoubleTap(paramMotionEvent);
   }
   
   public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Apsl != null) {
-      this.jdField_a_of_type_Apsl.a(paramScaleGestureDetector);
+    if (this.jdField_a_of_type_Aqma != null) {
+      this.jdField_a_of_type_Aqma.a(paramScaleGestureDetector);
     }
     return super.onScale(paramScaleGestureDetector);
   }
@@ -140,26 +140,26 @@ public class ProGallery
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
     boolean bool = super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    if (this.jdField_a_of_type_Agdf != null) {
-      this.jdField_a_of_type_Agdf.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    if (this.jdField_a_of_type_Agpd != null) {
+      this.jdField_a_of_type_Agpd.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
     return bool;
   }
   
-  public void setGalleryScaleListener(apsl paramapsl)
+  public void setGalleryScaleListener(aqma paramaqma)
   {
-    this.jdField_a_of_type_Apsl = paramapsl;
+    this.jdField_a_of_type_Aqma = paramaqma;
   }
   
-  public void setGestureListener(agdf paramagdf)
+  public void setGestureListener(agpd paramagpd)
   {
-    this.jdField_a_of_type_Agdf = paramagdf;
+    this.jdField_a_of_type_Agpd = paramagpd;
   }
   
-  public void setOnNoBlankListener(agdg paramagdg)
+  public void setOnNoBlankListener(agpe paramagpe)
   {
-    if (paramagdg != this.jdField_a_of_type_Agdg) {
-      this.jdField_a_of_type_Agdg = paramagdg;
+    if (paramagpe != this.jdField_a_of_type_Agpe) {
+      this.jdField_a_of_type_Agpe = paramagpe;
     }
   }
   
@@ -168,7 +168,7 @@ public class ProGallery
     int m = 0;
     super.setSelection(paramInt);
     int n = this.jdField_a_of_type_Int;
-    if ((n == 0) || (this.jdField_a_of_type_Agdg == null)) {}
+    if ((n == 0) || (this.jdField_a_of_type_Agpe == null)) {}
     label193:
     for (;;)
     {
@@ -207,7 +207,7 @@ public class ProGallery
         }
         while (paramInt <= i)
         {
-          this.jdField_a_of_type_Agdg.onDestroyView(paramInt, null, this);
+          this.jdField_a_of_type_Agpe.onDestroyView(paramInt, null, this);
           paramInt += 1;
         }
         break;

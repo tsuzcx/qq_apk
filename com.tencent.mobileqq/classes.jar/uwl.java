@@ -1,46 +1,35 @@
-import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.Vector;
 
-public class uwl
-  extends uwy
+class uwl
+  implements syt<tlz, tma>
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  public String a;
-  public boolean a;
-  private long jdField_b_of_type_Long;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  public String b;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
+  uwl(uwk paramuwk, JobContext paramJobContext, uvx paramuvx) {}
   
-  public uwl(int paramInt, Bitmap paramBitmap)
+  public void a(@NonNull tlz paramtlz, @Nullable tma arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    super(paramInt, paramBitmap);
-    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public uwl a(Bitmap paramBitmap)
-  {
-    paramBitmap = new uwl(this.jdField_c_of_type_Int, paramBitmap);
-    paramBitmap.jdField_b_of_type_AndroidGraphicsBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
-    paramBitmap.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    paramBitmap.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-    paramBitmap.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    paramBitmap.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
-    paramBitmap.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    paramBitmap.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramBitmap.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    this.jdField_c_of_type_Boolean = false;
-    this.d = false;
-    this.jdField_a_of_type_Boolean = false;
-    return paramBitmap;
-  }
-  
-  public String toString()
-  {
-    return "Mp4VideoFragmentInfo{index=" + this.jdField_c_of_type_Int + ", bitmap=" + this.jdField_c_of_type_AndroidGraphicsBitmap + ", startTime=" + this.jdField_a_of_type_Long + ", endTime=" + this.jdField_b_of_type_Long + ", mRevertFailed=" + this.jdField_a_of_type_Boolean + '}';
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      veg.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed basic info pull segment cancel on net respond");
+      return;
+    }
+    tma localtma = ???;
+    if (??? == null) {
+      localtma = new tma(paramErrorMessage);
+    }
+    if (paramErrorMessage.isFail()) {
+      veg.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for feed info request");
+    }
+    synchronized (this.jdField_a_of_type_Uwk)
+    {
+      uwk.a(this.jdField_a_of_type_Uwk, localtma);
+      uwk.a(this.jdField_a_of_type_Uwk).remove(paramtlz);
+      uwk.a(this.jdField_a_of_type_Uwk, this.jdField_a_of_type_Uvx);
+      return;
+    }
   }
 }
 

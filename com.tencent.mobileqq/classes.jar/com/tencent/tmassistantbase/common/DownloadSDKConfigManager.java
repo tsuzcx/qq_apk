@@ -4,8 +4,8 @@ import android.content.Context;
 import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.tmassistant.common.jce.NewQqCenterConfig;
-import com.tencent.tmassistantbase.util.ac;
-import com.tencent.tmassistantbase.util.l;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.k;
 import com.tencent.tmdownloader.internal.storage.b;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,7 +20,7 @@ public class DownloadSDKConfigManager
   {
     NewQqCenterConfig localNewQqCenterConfig = b.a().c();
     if (localNewQqCenterConfig == null) {
-      ac.e("DownloadSDKConfigManager", "[canGotoNewDetailPage] cfg is empty!");
+      ab.e("DownloadSDKConfigManager", "[canGotoNewDetailPage] cfg is empty!");
     }
     while (localNewQqCenterConfig.entranceSwitch != 1) {
       return true;
@@ -33,7 +33,7 @@ public class DownloadSDKConfigManager
     Object localObject = b.a().c();
     if ((localObject == null) || (((NewQqCenterConfig)localObject).enterOldViaList == null) || (TextUtils.isEmpty(paramString)))
     {
-      ac.e("DownloadSDKConfigManager", "[canGotoNewDetailPage] cfg is empty!");
+      ab.e("DownloadSDKConfigManager", "[canGotoNewDetailPage] cfg is empty!");
       return true;
     }
     if (((NewQqCenterConfig)localObject).detailSwitch == 0) {
@@ -58,7 +58,7 @@ public class DownloadSDKConfigManager
     NewQqCenterConfig localNewQqCenterConfig = b.a().c();
     if ((localNewQqCenterConfig == null) || (localNewQqCenterConfig.appNewsUrlMap == null) || (TextUtils.isEmpty(paramString)))
     {
-      ac.e("DownloadSDKConfigManager", "[getPageUrl] cfg is empty!");
+      ab.e("DownloadSDKConfigManager", "[getPageUrl] cfg is empty!");
       return "";
     }
     return (String)localNewQqCenterConfig.appNewsUrlMap.get(paramString);
@@ -67,12 +67,12 @@ public class DownloadSDKConfigManager
   public static boolean isDownloadUrlBlocked(Context paramContext, String paramString)
   {
     long l = System.currentTimeMillis();
-    l.a().post(new c());
-    ac.c("DownloadSDKConfigManager", "<checkDownloadUrl>url is : " + paramString);
+    k.a().post(new c());
+    ab.c("DownloadSDKConfigManager", "<checkDownloadUrl>url is : " + paramString);
     paramContext = b.a().a(paramContext);
     if ((TextUtils.isEmpty(paramString)) || (paramContext == null) || (paramContext.size() == 0))
     {
-      ac.c("DownloadSDKConfigManager", "<checkDownloadUrl> blackList isEmpty or null,time cost = " + (System.currentTimeMillis() - l) + "ms");
+      ab.c("DownloadSDKConfigManager", "<checkDownloadUrl> blackList isEmpty or null,time cost = " + (System.currentTimeMillis() - l) + "ms");
       return false;
     }
     paramContext = paramContext.iterator();
@@ -81,17 +81,17 @@ public class DownloadSDKConfigManager
       String str = (String)paramContext.next();
       if (paramString.contains(str))
       {
-        ac.c("DownloadSDKConfigManager", "<checkDownloadUrl> contains : " + str + ",time cost = " + (System.currentTimeMillis() - l) + "ms");
+        ab.c("DownloadSDKConfigManager", "<checkDownloadUrl> contains : " + str + ",time cost = " + (System.currentTimeMillis() - l) + "ms");
         return true;
       }
     }
-    ac.c("DownloadSDKConfigManager", "<checkDownloadUrl> non key word match return false ,time cost = " + (System.currentTimeMillis() - l) + "ms");
+    ab.c("DownloadSDKConfigManager", "<checkDownloadUrl> non key word match return false ,time cost = " + (System.currentTimeMillis() - l) + "ms");
     return false;
   }
   
   public static void refreshNewAppCenterConfig()
   {
-    l.a().post(new d());
+    k.a().post(new d());
   }
 }
 

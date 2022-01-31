@@ -1,74 +1,40 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.2;
+import com.tencent.mobileqq.data.RockDownloadInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class amar
-  extends alzl<amaq>
+  extends amam
 {
-  public static void b()
+  public amar(RockDownloaderManager.2 param2) {}
+  
+  public void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt)
   {
-    amaq localamaq = (amaq)alzw.a().a(430);
-    amaq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), false, localamaq);
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloaderManager", 2, new Object[] { "onFail: RockDownloadInfo=", paramRockDownloadInfo, " errorMsg=", paramString, " errorCode=", Integer.valueOf(paramInt) });
+    }
   }
   
-  public int a()
+  public void a(ArrayList<RockDownloadInfo> paramArrayList)
   {
-    return 430;
-  }
-  
-  @NonNull
-  public amaq a(int paramInt)
-  {
-    return new amaq();
-  }
-  
-  @Nullable
-  public amaq a(alzs[] paramArrayOfalzs)
-  {
-    return amaq.a(paramArrayOfalzs);
-  }
-  
-  public Class<amaq> a()
-  {
-    return amaq.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.e("ApolloConfig_GrayProcessor", 1, "onReqFailed: " + paramInt);
-  }
-  
-  public void a(amaq paramamaq)
-  {
-    QLog.w("ApolloConfig_GrayProcessor", 1, "onUpdate");
-    amaq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, paramamaq);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)paramArrayList.next();
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloaderManager", 2, new Object[] { "onSuccess:", localRockDownloadInfo });
+      }
+      boolean bool = amas.b(localRockDownloadInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloaderManager", 2, new Object[] { "install success=", Boolean.valueOf(bool) });
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amar
  * JD-Core Version:    0.7.0.1
  */

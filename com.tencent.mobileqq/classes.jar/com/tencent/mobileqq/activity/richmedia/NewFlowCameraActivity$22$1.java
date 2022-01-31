@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ahii;
+import ahuz;
 import android.widget.LinearLayout;
 
 public class NewFlowCameraActivity$22$1
   implements Runnable
 {
-  public NewFlowCameraActivity$22$1(ahii paramahii) {}
+  public NewFlowCameraActivity$22$1(ahuz paramahuz) {}
   
   public void run()
   {

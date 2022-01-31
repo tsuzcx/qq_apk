@@ -1,26 +1,273 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.EffectConfigBase;
+import com.tencent.av.business.manager.zimu.ZimuItem;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class lju
-  implements SoundPool.OnLoadCompleteListener
+public class lju
+  extends EffectConfigBase<ZimuItem>
+  implements lht
 {
-  lju(ljt paramljt, ljv paramljv) {}
+  protected boolean a;
+  boolean b = false;
+  boolean c = false;
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public lju(VideoAppInterface paramVideoAppInterface)
   {
-    paramSoundPool = this.jdField_a_of_type_Ljt;
-    paramSoundPool.c += 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("SoundPoolHelper", 2, "loadMusic onLoadComplete,sampleId = " + paramInt1 + ",status = " + paramInt2 + ",loadedCount = " + this.jdField_a_of_type_Ljt.c + ",musicCount = " + this.jdField_a_of_type_Ljt.b);
+    super(paramVideoAppInterface);
+  }
+  
+  public static SharedPreferences a(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("qav_zimu", 4);
+  }
+  
+  public static void a(Context paramContext, int paramInt)
+  {
+    paramContext = a(paramContext).edit();
+    paramContext.putInt("qav_zimu_is_show", paramInt);
+    paramContext.commit();
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface)
+  {
+    ((lju)paramVideoAppInterface.a(0)).b();
+    return a(paramVideoAppInterface.getApp()).getInt("qav_zimu_is_show", 0) == 1;
+  }
+  
+  private boolean b(String paramString)
+  {
+    boolean bool = true;
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        if (!paramString.has("switch")) {
+          return bool;
+        }
+        paramString = paramString.getString("switch");
+        lcl.c("EffectZimuManager", "parse ZIMU:" + paramString);
+        if ((!TextUtils.isEmpty(paramString)) && (paramString.equalsIgnoreCase("off")))
+        {
+          a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), 0);
+          return true;
+        }
+        a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), 1);
+        return true;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
+    } else {
+      bool = false;
     }
-    if (paramInt2 == 0) {
-      this.jdField_a_of_type_Ljt.a.add(Integer.valueOf(paramInt1));
+    return bool;
+  }
+  
+  public int a()
+  {
+    return 216;
+  }
+  
+  public Class<?> a()
+  {
+    return ZimuItem.class;
+  }
+  
+  public List<ZimuItem> a(int paramInt, String paramString)
+  {
+    List localList = super.a(paramInt, paramString);
+    b(paramString);
+    return localList;
+  }
+  
+  public List<ZimuItem> a(String paramString)
+  {
+    paramString = super.a(paramString);
+    ArrayList localArrayList = new ArrayList();
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      localArrayList.addAll(paramString);
     }
-    if (this.jdField_a_of_type_Ljt.c == this.jdField_a_of_type_Ljt.b) {
-      this.jdField_a_of_type_Ljv.a();
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    super.a();
+    lhs locallhs = (lhs)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
+    if (locallhs != null) {
+      locallhs.a(3001, this);
     }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if ((paramInt == 3002) || (paramInt == 3003)) {
+      a(AudioHelper.b(), "");
+    }
+  }
+  
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    QLog.w("EffectZimuManager", 1, "onSessionStatusChanged, event[" + paramInt + "], seq[" + paramLong + "]");
+    ((lgx)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1)).a();
+    new mcq(paramLong, "onSessionStatusChanged", 2, null).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+  }
+  
+  public void a(String paramString, long paramLong)
+  {
+    if (this.b)
+    {
+      lha locallha = (lha)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0);
+      locallha.a(paramString, paramLong, "TransInfo.ExitSession", null);
+      locallha.onDestroy();
+      ((lgx)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1)).a();
+    }
+    this.b = false;
+    ltr.a().b(4);
+  }
+  
+  public void a(String paramString1, boolean paramBoolean, long paramLong, String paramString2)
+  {
+    ltr.a().a(4);
+    if (!this.b)
+    {
+      lgx locallgx = (lgx)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1);
+      locallgx.a(paramString1, "TransInfoCreate.CreateSession", paramLong, paramString2);
+      locallgx.onDestroy();
+      this.c = paramBoolean;
+    }
+    this.b = true;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    int j;
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      int i = 0;
+      j = i;
+      if (!localIterator.hasNext()) {
+        break label77;
+      }
+      ZimuItem localZimuItem = (ZimuItem)localIterator.next();
+      if ((!ljt.a(localZimuItem.getId())) || (localZimuItem.isUsable() == paramBoolean)) {
+        break label82;
+      }
+      localZimuItem.setUsable(paramBoolean);
+      i = 1;
+    }
+    label77:
+    label82:
+    for (;;)
+    {
+      break;
+      j = 0;
+      if (j != 0) {}
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(long paramLong, ZimuItem paramZimuItem)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("EffectZimuManager", 1, "setCurrentItem, seq[" + paramLong + "], item[" + paramZimuItem + "]", new Throwable("打印调用栈"));
+    }
+    boolean bool = super.a(paramLong, paramZimuItem);
+    Object localObject;
+    if (bool)
+    {
+      if (paramZimuItem == null)
+      {
+        localObject = null;
+        ljv.a((String)localObject);
+        b("setCurrentItem_" + (String)localObject + "_" + paramLong, false);
+      }
+    }
+    else
+    {
+      localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+      if (this.jdField_a_of_type_Lhq != null) {
+        break label208;
+      }
+    }
+    label208:
+    for (int i = 4;; i = 5)
+    {
+      ((VideoAppInterface)localObject).a(new Object[] { Integer.valueOf(165), Integer.valueOf(i) });
+      if (paramZimuItem != null)
+      {
+        localObject = (lhs)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
+        if (localObject != null) {
+          ((lhs)localObject).a(3001, paramZimuItem.getId());
+        }
+      }
+      return bool;
+      localObject = paramZimuItem.getId();
+      break;
+    }
+  }
+  
+  protected boolean a(String paramString)
+  {
+    return b(a());
+  }
+  
+  public int b()
+  {
+    if ((ZimuItem)a() == null) {}
+    return 4;
+  }
+  
+  public void b(String paramString, long paramLong)
+  {
+    ltr.a().a(4);
+    if (this.b)
+    {
+      lha locallha = (lha)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0);
+      locallha.a(paramString, paramLong, "TransInfo.ChangeSession", null);
+      locallha.onDestroy();
+    }
+  }
+  
+  public void b(String paramString, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    {
+      QLog.w("EffectZimuManager", 1, "setRecievedSentence, from[" + paramString + "], mIsRecieveSentence[" + this.jdField_a_of_type_Boolean + "->" + paramBoolean + "]");
+      this.jdField_a_of_type_Boolean = paramBoolean;
+    }
+  }
+  
+  public boolean b()
+  {
+    return this.c;
+  }
+  
+  public boolean c()
+  {
+    return this.b;
   }
 }
 

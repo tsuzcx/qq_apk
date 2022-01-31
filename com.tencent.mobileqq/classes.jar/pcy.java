@@ -1,24 +1,98 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import android.support.annotation.NonNull;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableCallBack;
-import com.tencent.image.URLDrawable;
+import com.tencent.biz.pubaccount.readinjoy.preload.util.FeedsPreloadExposeReport.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
 
-class pcy
-  implements Drawable.Callback
+public class pcy
 {
-  pcy(pcx parampcx, DrawableUtil.DrawableCallBack paramDrawableCallBack, URLDrawable paramURLDrawable) {}
-  
-  public void invalidateDrawable(@NonNull Drawable paramDrawable)
+  public static void a(List<ArticleInfo> paramList, String paramString)
   {
-    QLog.i("Q.readinjoy.proteus", 1, "invalidateDrawable: ");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(true, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    QLog.d("FeedsPreloadExposeReport", 1, "reportFeedsExposeRewrite.");
+    Object localObject = (oso)((QQAppInterface)onk.a()).getManager(163);
+    if (localObject != null)
+    {
+      localObject = ((oso)localObject).a();
+      pcv.a().a(new FeedsPreloadExposeReport.1((osj)localObject, paramList, paramString));
+      return;
+    }
+    QLog.d("FeedsPreloadExposeReport", 1, "readInJoyLogicManager is null.");
   }
   
-  public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
+  public static void a(boolean paramBoolean, long paramLong, int paramInt)
+  {
+    String str = onk.a();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("retCode", String.valueOf(paramInt));
+    localHashMap.put("uin", str);
+    AppRuntime localAppRuntime = onk.a();
+    if ((localAppRuntime == null) || (paramLong < 0L) || (paramLong > 30000L))
+    {
+      QLog.d("FeedsPreloadExposeReport", 1, "app is null or cost is not available, reportFeedsPreloadExposeMonitorData");
+      return;
+    }
+    axrl.a(localAppRuntime.getApplication()).a(str, "actFeedsPreloadExposeReport", paramBoolean, paramLong, 0L, localHashMap, null);
+  }
   
-  public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable) {}
+  private static List<ReportInfo> b(List<ArticleInfo> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      paramList = new ArrayList(paramList).iterator();
+      while (paramList.hasNext())
+      {
+        Object localObject1 = (ArticleInfo)paramList.next();
+        Object localObject2;
+        if ((onk.t((BaseArticleInfo)localObject1)) && (((ArticleInfo)localObject1).mNewPolymericInfo != null) && (((ArticleInfo)localObject1).mNewPolymericInfo.a != null))
+        {
+          localObject1 = ((ArticleInfo)localObject1).mNewPolymericInfo.a.iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (qbr)((Iterator)localObject1).next();
+            ReportInfo localReportInfo = new ReportInfo();
+            localReportInfo.mUin = onk.a();
+            localReportInfo.mOperation = 56;
+            localReportInfo.mSourceArticleId = ((qbr)localObject2).a;
+            localReportInfo.mInnerId = ((qbr)localObject2).g;
+            localReportInfo.mAlgorithmId = ((int)((qbr)localObject2).b);
+            localReportInfo.mGWCommonData = "";
+            localArrayList.add(localReportInfo);
+          }
+        }
+        else
+        {
+          localObject2 = new ReportInfo();
+          ((ReportInfo)localObject2).mUin = onk.a();
+          ((ReportInfo)localObject2).mOperation = 56;
+          ((ReportInfo)localObject2).mSourceArticleId = ((ArticleInfo)localObject1).mArticleID;
+          ((ReportInfo)localObject2).mInnerId = ((ArticleInfo)localObject1).innerUniqueID;
+          ((ReportInfo)localObject2).mAlgorithmId = ((int)((ArticleInfo)localObject1).mAlgorithmID);
+          ((ReportInfo)localObject2).mGWCommonData = ((ArticleInfo)localObject1).mGWCommonData;
+          localArrayList.add(localObject2);
+          if (((ArticleInfo)localObject1).hasOnlyTwoVideoFeeds())
+          {
+            localObject1 = (ArticleInfo)((ArticleInfo)localObject1).mSubArtilceList.get(0);
+            localObject2 = new ReportInfo();
+            ((ReportInfo)localObject2).mUin = onk.a();
+            ((ReportInfo)localObject2).mOperation = 56;
+            ((ReportInfo)localObject2).mSourceArticleId = ((ArticleInfo)localObject1).mArticleID;
+            ((ReportInfo)localObject2).mInnerId = ((ArticleInfo)localObject1).innerUniqueID;
+            ((ReportInfo)localObject2).mAlgorithmId = ((int)((ArticleInfo)localObject1).mAlgorithmID);
+            ((ReportInfo)localObject2).mGWCommonData = ((ArticleInfo)localObject1).mGWCommonData;
+            localArrayList.add(localObject2);
+          }
+        }
+      }
+    }
+    return localArrayList;
+  }
 }
 
 

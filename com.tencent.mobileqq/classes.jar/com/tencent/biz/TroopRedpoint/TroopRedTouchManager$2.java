@@ -1,19 +1,19 @@
 package com.tencent.biz.TroopRedpoint;
 
-import bace;
+import bbdj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import mmy;
 import mqq.app.MobileQQ;
+import mxx;
 import tencent.im.oidb.cmd0x791.oidb_0x791.GetRedDotRes;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
 public class TroopRedTouchManager$2
   implements Runnable
 {
-  public TroopRedTouchManager$2(mmy parammmy, oidb_0x791.GetRedDotRes paramGetRedDotRes) {}
+  public TroopRedTouchManager$2(mxx parammxx, oidb_0x791.GetRedDotRes paramGetRedDotRes) {}
   
   public void run()
   {
@@ -23,11 +23,11 @@ public class TroopRedTouchManager$2
     {
       try
       {
-        bace.a((String)localObject1, this.a.toByteArray(), false);
+        bbdj.a((String)localObject1, this.a.toByteArray(), false);
         localObject1 = new StringBuilder("saveLocalFile==>");
         while (i < this.a.rpt_msg_reddot_info.size())
         {
-          ((StringBuilder)localObject1).append(mmy.a((oidb_0x791.RedDotInfo)this.a.rpt_msg_reddot_info.get(i)));
+          ((StringBuilder)localObject1).append(mxx.a((oidb_0x791.RedDotInfo)this.a.rpt_msg_reddot_info.get(i)));
           i += 1;
         }
       }

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.location.net;
 
-import aqzc;
+import aruq;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 
 public class LocationHandler$9
   implements Runnable
 {
-  public LocationHandler$9(aqzc paramaqzc) {}
+  public LocationHandler$9(aruq paramaruq) {}
   
   public void run()
   {

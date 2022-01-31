@@ -1,47 +1,47 @@
 package com.tencent.mobileqq.data;
 
-import amvt;
-import amvx;
-import amvy;
 import android.text.TextUtils;
-import atmo;
-import atnz;
-import atoc;
+import anmb;
+import anmf;
+import anmg;
+import aukm;
+import aulx;
+import auma;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DatingInfo
-  extends atmo
+  extends aukm
 {
-  @atnz
+  @aulx
   private static final int FLAG_MASK_COMMENT_NEW_OVER = 32;
-  @atnz
+  @aulx
   private static final int FLAG_MASK_STRANGER_NEW_OVER = 8;
-  @atnz
+  @aulx
   private static final int FLAG_MASK_VISIT_NEW_OVER = 2;
-  @atnz
+  @aulx
   public static final int TYPE_COMMENT = 1;
-  @atnz
-  private List<amvt> commentList = new ArrayList(20);
+  @aulx
+  private List<anmb> commentList = new ArrayList(20);
   public String commentPacked;
-  @atoc
+  @auma
   public String datingId;
   public int datingSubject;
   public long datingTime;
-  @atnz
+  @aulx
   public boolean isInit;
-  @atnz
+  @aulx
   public long lastUpdateTime;
-  @atnz
+  @aulx
   private int nPrivateFlag;
   public int owner;
-  @atnz
+  @aulx
   public String strDatingTime;
-  @atnz
-  private List<amvx> strangerInfos = new ArrayList(20);
+  @aulx
+  private List<anmf> strangerInfos = new ArrayList(20);
   public String strangerInfosPacked;
-  @atnz
-  private List<amvx> visitorInfos = new ArrayList(20);
+  @aulx
+  private List<anmf> visitorInfos = new ArrayList(20);
   public String visitorInfosPacked;
   
   public boolean equals(Object paramObject)
@@ -72,13 +72,13 @@ public class DatingInfo
   public void init()
   {
     if (this.datingTime == 0L) {}
-    for (this.strDatingTime = "";; this.strDatingTime = amvy.a(this.datingTime, this.datingSubject, false))
+    for (this.strDatingTime = "";; this.strDatingTime = anmg.a(this.datingTime, this.datingSubject, false))
     {
-      amvx.a(this.visitorInfos, this.visitorInfosPacked);
+      anmf.a(this.visitorInfos, this.visitorInfosPacked);
       this.nPrivateFlag |= 0x2;
-      amvt.a(this.commentList, this.commentPacked);
+      anmb.a(this.commentList, this.commentPacked);
       this.nPrivateFlag |= 0x20;
-      amvx.a(this.strangerInfos, this.strangerInfosPacked);
+      anmf.a(this.strangerInfos, this.strangerInfosPacked);
       this.nPrivateFlag |= 0x8;
       return;
     }
@@ -101,11 +101,11 @@ public class DatingInfo
       {
         if ((this.nPrivateFlag & 0x8) == 8)
         {
-          this.strangerInfosPacked = amvx.a(this.strangerInfos);
+          this.strangerInfosPacked = anmf.a(this.strangerInfos);
           synchronized (this.visitorInfos)
           {
             if ((this.nPrivateFlag & 0x2) == 2) {
-              this.visitorInfosPacked = amvx.a(this.visitorInfos);
+              this.visitorInfosPacked = anmf.a(this.visitorInfos);
             }
           }
         }
@@ -114,7 +114,7 @@ public class DatingInfo
       {
         if ((this.nPrivateFlag & 0x8) == 8)
         {
-          this.commentPacked = amvt.a(this.commentList);
+          this.commentPacked = anmb.a(this.commentList);
           return;
           this.strangerInfosPacked = "";
           continue;

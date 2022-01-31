@@ -1,23 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.GpsInfo4LocalImage;
-
-public final class bfwc
-  implements Parcelable.Creator<GpsInfo4LocalImage>
+public abstract interface bfwc
 {
-  public GpsInfo4LocalImage a(Parcel paramParcel)
-  {
-    return new GpsInfo4LocalImage(paramParcel.readFloat(), paramParcel.readFloat());
-  }
+  public abstract void a();
   
-  public GpsInfo4LocalImage[] a(int paramInt)
-  {
-    return null;
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfwc
  * JD-Core Version:    0.7.0.1
  */

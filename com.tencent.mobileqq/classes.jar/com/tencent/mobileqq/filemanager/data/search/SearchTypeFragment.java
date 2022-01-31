@@ -13,7 +13,7 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import aoos;
+import apfn;
 import com.tencent.mobileqq.filemanager.widget.SearchFileFlowLayout;
 import java.util.Iterator;
 import java.util.List;
@@ -25,7 +25,7 @@ public class SearchTypeFragment
   public int a;
   private SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
   private View jdField_a_of_type_AndroidViewView;
-  private aoos jdField_a_of_type_Aoos;
+  private apfn jdField_a_of_type_Apfn;
   private SearchFileFlowLayout jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSearchFileFlowLayout;
   public String a;
   public List<Integer> a;
@@ -33,10 +33,10 @@ public class SearchTypeFragment
   
   public View a(int paramInt1, int paramInt2, int paramInt3)
   {
-    FrameLayout localFrameLayout = (FrameLayout)LayoutInflater.from(getActivity()).inflate(2131494908, (ViewGroup)this.jdField_a_of_type_AndroidViewView, false);
-    LinearLayout localLinearLayout = (LinearLayout)localFrameLayout.findViewById(2131303763);
-    TextView localTextView = (TextView)localFrameLayout.findViewById(2131312512);
-    ((ImageView)localFrameLayout.findViewById(2131303046)).setImageDrawable(getResources().getDrawable(this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt1)));
+    FrameLayout localFrameLayout = (FrameLayout)LayoutInflater.from(getActivity()).inflate(2131560479, (ViewGroup)this.jdField_a_of_type_AndroidViewView, false);
+    LinearLayout localLinearLayout = (LinearLayout)localFrameLayout.findViewById(2131369437);
+    TextView localTextView = (TextView)localFrameLayout.findViewById(2131378337);
+    ((ImageView)localFrameLayout.findViewById(2131368683)).setImageDrawable(getResources().getDrawable(this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt1)));
     localTextView.setText(this.b.get(paramInt1));
     localLinearLayout.setTag(Integer.valueOf(paramInt1));
     localLinearLayout.setOnClickListener(this);
@@ -44,9 +44,9 @@ public class SearchTypeFragment
     return localFrameLayout;
   }
   
-  public void a(aoos paramaoos)
+  public void a(apfn paramapfn)
   {
-    this.jdField_a_of_type_Aoos = paramaoos;
+    this.jdField_a_of_type_Apfn = paramapfn;
   }
   
   public void a(List<Integer> paramList, int paramInt)
@@ -67,32 +67,32 @@ public class SearchTypeFragment
   public void onClick(View paramView)
   {
     paramView = (Integer)paramView.getTag();
-    if (this.jdField_a_of_type_Aoos != null) {
-      this.jdField_a_of_type_Aoos.a(paramView.intValue());
+    if (this.jdField_a_of_type_Apfn != null) {
+      this.jdField_a_of_type_Apfn.a(paramView.intValue());
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(13, 2130843145);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(3, 2130843455);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(2, 2130843459);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(0, 2130843458);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(1, 2130843456);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(11, 2130843457);
-    this.b.put(13, 2131631901);
-    this.b.put(3, 2131631899);
-    this.b.put(2, 2131631904);
-    this.b.put(0, 2131631900);
-    this.b.put(1, 2131631902);
-    this.b.put(11, 2131631903);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(13, 2130843228);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(3, 2130843539);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(2, 2130843543);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(0, 2130843542);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(1, 2130843540);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(11, 2130843541);
+    this.b.put(13, 2131697615);
+    this.b.put(3, 2131697613);
+    this.b.put(2, 2131697618);
+    this.b.put(0, 2131697614);
+    this.b.put(1, 2131697616);
+    this.b.put(11, 2131697617);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131494906, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSearchFileFlowLayout = ((SearchFileFlowLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131300736));
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560477, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSearchFileFlowLayout = ((SearchFileFlowLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366346));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSearchFileFlowLayout.post(new SearchTypeFragment.1(this));
     return this.jdField_a_of_type_AndroidViewView;
   }

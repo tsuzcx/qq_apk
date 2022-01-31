@@ -1,18 +1,27 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
 
-class qzh
-  implements View.OnLongClickListener
+public class qzh
+  implements View.OnClickListener
 {
-  qzh(qze paramqze, View paramView, ProteusItemData paramProteusItemData) {}
+  long jdField_a_of_type_Long = 0L;
   
-  public boolean onLongClick(View paramView)
+  public qzh(BaseTabbar paramBaseTabbar, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    paramView = new bakh();
-    paramView.a(0, ajjy.a(2131651089));
-    baay.a(this.jdField_a_of_type_AndroidViewView, paramView, new qzi(this), new qzj(this));
-    return true;
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 300L)
+    {
+      this.jdField_a_of_type_Long = 0L;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a.a(this.jdField_a_of_type_Int);
+      }
+      return;
+    }
+    this.jdField_a_of_type_Long = l;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.setSelectedTab(this.jdField_a_of_type_Int, true);
   }
 }
 

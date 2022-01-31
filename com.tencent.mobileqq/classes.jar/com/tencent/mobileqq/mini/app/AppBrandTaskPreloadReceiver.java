@@ -26,19 +26,26 @@ public class AppBrandTaskPreloadReceiver
   public static final String ACTION_PRELOAD_INTERNAL_APP = "mini_preload_internal_app";
   public static final String INTENT_KEY_RETCODE = "key_retcode";
   public static final String LOG_TAG = "AppBrandReceiver";
-  private static int killOtherGamesOnStartFlag = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameKillOtherGamesOnStart", 0);
+  private static int killOtherGamesOnStartFlag = -1;
+  
+  private boolean needKillOtherGamesOnStart()
+  {
+    boolean bool = false;
+    if (killOtherGamesOnStartFlag == -1) {
+      killOtherGamesOnStartFlag = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameKillOtherGamesOnStart", 0);
+    }
+    if (killOtherGamesOnStartFlag == 0) {
+      bool = true;
+    }
+    return bool;
+  }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = 0;
     String str = paramIntent.getAction();
     QLog.i("miniapp-start", 1, "AppBrandTaskPreloadReceiver onReceive action: " + str);
-    if ("mini_process_kill".equals(str))
-    {
-      if (killOtherGamesOnStartFlag == 0) {
-        i = 1;
-      }
-      if ((i == 0) && (AppLoaderManager.sMiniAppInterface != null)) {
+    if ("mini_process_kill".equals(str)) {
+      if ((!needKillOtherGamesOnStart()) && (AppLoaderManager.sMiniAppInterface != null)) {
         AppLoaderManager.sMiniAppInterface.exitProcess();
       }
     }
@@ -47,7 +54,7 @@ public class AppBrandTaskPreloadReceiver
       return;
       if ("mini_baselib_updated".equals(str))
       {
-        i = paramIntent.getIntExtra("key_retcode", 0);
+        int i = paramIntent.getIntExtra("key_retcode", 0);
         AppLoaderFactory.getAppLoaderManager().onBaseLibUpdateResult(i);
         QLog.i("AppBrandReceiver", 1, "[MiniEng] mini_baselib_updated" + i + "," + BaseApplicationImpl.getApplication().getQQProcessName());
         return;

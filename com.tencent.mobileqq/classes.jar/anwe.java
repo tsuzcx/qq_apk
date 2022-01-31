@@ -1,15 +1,12 @@
-import android.view.animation.Interpolator;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-class anwe
-  implements Interpolator
+public abstract interface anwe
 {
-  anwe(anvy paramanvy) {}
+  public abstract void a(EmoticonPackage paramEmoticonPackage);
   
-  public float getInterpolation(float paramFloat)
-  {
-    paramFloat -= 1.0F;
-    return 1.0F - paramFloat * (paramFloat * paramFloat * paramFloat);
-  }
+  public abstract void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2);
+  
+  public abstract void b(EmoticonPackage paramEmoticonPackage);
 }
 
 

@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.datareportviewer;
 
-import ajjy;
-import amus;
-import amut;
-import amvk;
-import bbmy;
+import ajyc;
+import anla;
+import anlb;
+import anls;
+import bcpw;
 import java.util.ArrayList;
 
 public class DataReportSettingFragment$4$1
   implements Runnable
 {
-  public DataReportSettingFragment$4$1(amus paramamus, ArrayList paramArrayList) {}
+  public DataReportSettingFragment$4$1(anla paramanla, ArrayList paramArrayList) {}
   
   public void run()
   {
-    amvk.a().a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Amus.a.a.notifyDataSetChanged();
-    bbmy.a(this.jdField_a_of_type_Amus.a.getActivity(), ajjy.a(2131636983), 0).a();
+    anls.a().a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Anla.a.a.notifyDataSetChanged();
+    bcpw.a(this.jdField_a_of_type_Anla.a.getActivity(), ajyc.a(2131702767), 0).a();
   }
 }
 

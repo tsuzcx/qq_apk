@@ -1,22 +1,11 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.List;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.BackOffGroupInfo;
 
 public class qaj
-  extends qae
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup = (ViewGroup)this.itemView.findViewById(2131303826);
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar = (ProgressBar)this.itemView.findViewById(2131303832);
-  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.itemView.findViewById(2131303835);
-  
-  public qaj(View paramView, int paramInt)
-  {
-    super(paramView, paramInt);
-  }
-  
-  public void a(pzs parampzs, LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean) {}
+  public List<oidb_cmd0x68b.BackOffGroupInfo> a;
+  public List<ArticleInfo> b;
 }
 
 

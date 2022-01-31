@@ -1,34 +1,88 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class bbre
-  implements MediaPlayer.OnPreparedListener
 {
-  public bbre(VideoTextureView paramVideoTextureView) {}
+  private static int a = 57600;
+  private static int b = -1;
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  private static Bitmap a(Bitmap paramBitmap)
   {
-    if (VideoTextureView.a(this.a) != null)
+    double d2 = -1.0D;
+    int i;
+    double d1;
+    if (a > 0)
     {
-      VideoTextureView.a(this.a).start();
-      VideoTextureView.a(this.a, VideoTextureView.a(this.a).getDuration());
+      i = paramBitmap.getWidth() * paramBitmap.getHeight();
+      d1 = d2;
+      if (i > a) {
+        d1 = Math.sqrt(a / i);
+      }
     }
-    if (VideoTextureView.a() != null)
+    while (d1 <= 0.0D)
     {
-      VideoTextureView.a().onVideoStart(VideoTextureView.a(this.a));
-      VideoTextureView.a().onVideoProgressUpdate(0);
-      VideoTextureView.a().onVideoSize(VideoTextureView.a(this.a).getVideoWidth(), VideoTextureView.a(this.a).getVideoHeight());
+      return paramBitmap;
+      d1 = d2;
+      if (b > 0)
+      {
+        i = Math.max(paramBitmap.getWidth(), paramBitmap.getHeight());
+        d1 = d2;
+        if (i > b) {
+          d1 = b / i;
+        }
+      }
     }
-    if (VideoTextureView.a(this.a) != null) {
-      VideoTextureView.a(this.a).post(this.a.a);
+    try
+    {
+      paramBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)Math.ceil(paramBitmap.getWidth() * d1), (int)Math.ceil(d1 * paramBitmap.getHeight()), false);
+      return paramBitmap;
     }
+    catch (OutOfMemoryError paramBitmap)
+    {
+      QLog.e("VasPalette", 1, "scaleBitmapDown failed.", paramBitmap);
+    }
+    return null;
+  }
+  
+  public static List<bbrf> a(Bitmap paramBitmap)
+  {
+    if (paramBitmap != null)
+    {
+      paramBitmap = a(paramBitmap);
+      if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+      {
+        bbrh localbbrh = new bbrh();
+        try
+        {
+          localbbrh.a(a(paramBitmap), 16);
+          paramBitmap.recycle();
+          return localbbrh.a();
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          for (;;)
+          {
+            QLog.e("VasPalette", 1, localOutOfMemoryError.getMessage());
+          }
+        }
+      }
+    }
+    return null;
+  }
+  
+  private static int[] a(Bitmap paramBitmap)
+  {
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    int[] arrayOfInt = new int[i * j];
+    paramBitmap.getPixels(arrayOfInt, 0, i, 0, 0, i, j);
+    return arrayOfInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbre
  * JD-Core Version:    0.7.0.1
  */

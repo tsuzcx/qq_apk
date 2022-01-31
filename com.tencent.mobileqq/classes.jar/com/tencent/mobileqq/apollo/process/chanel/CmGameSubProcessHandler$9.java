@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import aios;
-import aizj;
+import ajbq;
+import ajnl;
 
 public class CmGameSubProcessHandler$9
   implements Runnable
 {
-  public CmGameSubProcessHandler$9(aios paramaios) {}
+  public CmGameSubProcessHandler$9(ajbq paramajbq) {}
   
   public void run()
   {
-    if (aios.a(this.this$0) != null) {
-      aios.a(this.this$0).a();
+    if (ajbq.a(this.this$0) != null) {
+      ajbq.a(this.this$0).a();
     }
   }
 }

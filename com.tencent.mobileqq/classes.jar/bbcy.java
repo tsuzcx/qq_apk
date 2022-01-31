@@ -1,28 +1,19 @@
-import android.os.SystemClock;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bbcy
+final class bbcy
+  implements DialogInterface.OnClickListener
 {
-  final long a;
-  public final String a;
-  public final String b;
-  public final String c;
+  bbcy(bbgg parambbgg) {}
   
-  bbcy(String paramString1, String paramString2, String paramString3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-  }
-  
-  boolean a()
-  {
-    return SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long > 300000L;
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbcy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.utils;
 
-import ajjy;
+import ajyc;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Window;
-import babr;
-import bafb;
-import vln;
-import vlo;
+import bbcv;
+import bbgg;
+import vyj;
+import vyk;
 
 public final class FileUtils$1
   implements Runnable
@@ -16,13 +16,13 @@ public final class FileUtils$1
   
   public void run()
   {
-    bafb localbafb = babr.a(this.a, 230);
-    localbafb.setMessage(ajjy.a(2131638789));
-    localbafb.setNegativeButton(ajjy.a(2131638791), new vln(this));
-    localbafb.setPositiveButton(ajjy.a(2131638790), new vlo(this));
-    localbafb.setCancelable(false);
-    localbafb.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    localbafb.show();
+    bbgg localbbgg = bbcv.a(this.a, 230);
+    localbbgg.setMessage(ajyc.a(2131704574));
+    localbbgg.setNegativeButton(ajyc.a(2131704576), new vyj(this));
+    localbbgg.setPositiveButton(ajyc.a(2131704575), new vyk(this));
+    localbbgg.setCancelable(false);
+    localbbgg.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    localbbgg.show();
   }
 }
 

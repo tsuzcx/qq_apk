@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import oqf;
-import ptk;
+import pbg;
+import qfi;
 
 public class ReadInJoyDraftboxFragment$1
   implements Runnable
@@ -11,7 +11,7 @@ public class ReadInJoyDraftboxFragment$1
   public void run()
   {
     if (ReadInJoyDraftboxFragment.a(this.this$0) != null) {
-      ReadInJoyDraftboxFragment.a(this.this$0).a(new ptk(this));
+      ReadInJoyDraftboxFragment.a(this.this$0).a(new qfi(this));
     }
   }
 }

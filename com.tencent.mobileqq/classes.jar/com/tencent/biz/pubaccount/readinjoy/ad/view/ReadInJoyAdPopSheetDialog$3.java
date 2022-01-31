@@ -4,24 +4,24 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.qphone.base.util.QLog;
-import nqz;
+import oci;
 
 public class ReadInJoyAdPopSheetDialog$3
   implements Runnable
 {
-  public ReadInJoyAdPopSheetDialog$3(nqz paramnqz, String paramString) {}
+  public ReadInJoyAdPopSheetDialog$3(oci paramoci, String paramString) {}
   
   public void run()
   {
     long l = SystemClock.currentThreadTimeMillis();
-    nqz.a(this.this$0, nqz.a(this.this$0));
+    oci.a(this.this$0, oci.a(this.this$0));
     if (QLog.isColorLevel()) {
-      QLog.d(nqz.a(), 2, "init webview costTime=" + (SystemClock.currentThreadTimeMillis() - l));
+      QLog.d(oci.a(), 2, "init webview costTime=" + (SystemClock.currentThreadTimeMillis() - l));
     }
-    if ((!TextUtils.isEmpty(this.a)) && (nqz.a(this.this$0) != null))
+    if ((!TextUtils.isEmpty(this.a)) && (oci.a(this.this$0) != null))
     {
-      nqz.a(this.this$0, SystemClock.currentThreadTimeMillis());
-      nqz.a(this.this$0).post(new ReadInJoyAdPopSheetDialog.3.1(this));
+      oci.a(this.this$0, SystemClock.currentThreadTimeMillis());
+      oci.a(this.this$0).post(new ReadInJoyAdPopSheetDialog.3.1(this));
     }
   }
 }

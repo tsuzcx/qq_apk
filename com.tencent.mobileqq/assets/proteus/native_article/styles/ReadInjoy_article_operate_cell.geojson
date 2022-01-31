@@ -23,9 +23,25 @@
                     "type":"match_parent"
                 },
                 "attributes":{
-                    "setBackgroundColorString:":"#D9FFFFFF",
-                    "setBorderWidthString:":"0.5",
-                    "setBorderColorString:":"#E6E6E6"
+                    "setBackgroundColorString:":"#D9FFFFFF"
+                }
+            },
+            {
+                "view_type": "UIView",
+                "view_id": "id_label_separator_line_top",
+                "default_visible":"YES",
+                "margin_left": "0",
+                "margin_top": "0",
+                "height": {
+                    "type": "absolutely",
+                    "value": "0.5"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "attributes":{
+                    "setFrameString:":"-1",
+                    "setBackgroundColorString:":"#E6E6E6"
                 }
             },
             {
@@ -94,16 +110,16 @@
                 "view_id":"id_comment",
                 "event_type":"cmd_comment_click",
                 "right_of_view":"id_write_comment_layout",
+                "margin_left":"7",
                 "default_visible":"YES",
                 "align_parent_center_vertical":"YES",
-                "margin_left":"18",
                 "height":{
-                    "type":"relative",
-                    "value":"24"
+                        "type":"relative",
+				        "value":"46"
                 },
                 "width":{
                     "type":"relative",
-                    "value":"24"
+                    "value":"46"
                 },
                 "attributes":{
                     "setImage:": "NativeArticleComment"
@@ -112,16 +128,16 @@
             {
                 "view_type":"UILabel",
                 "view_id":"id_comment_count",
+                "event_type":"cmd_comment_click",
                 "above_of_view":"id_comment",
                 "right_of_view":"id_comment",
-                "padding_left":"3",
-                "padding_right":"3",
-                "margin_left":"-9",
-                "event_type":"cmd_comment_click",
-                "margin_bottom":"-9",
+                "padding_left":"3.5",
+                "padding_right":"3.5",
+                "margin_left":"-20",
+                "margin_bottom":"-20.5",
                 "height":{
                     "type":"relative",
-                    "value":"12"
+                    "value":"11"
                 },
                 "width":{
                     "type":"wrap_content"
@@ -130,7 +146,7 @@
                     "setText:":"$comment_count",
                     "setTextColorString:":"$count_txt_color",
                     "setBackgroundColorString:":"$count_bg_color",
-                    "setCornerRadiusString:":"6",
+                    "setCornerRadiusString:":"5.5",
                     "setTextAlignmentString:":"1",
                     "setAndroidFontFilePath:iOSFontName:size:":[
                         "",
@@ -143,16 +159,16 @@
                 "view_type":"ReadInJoyLikeButton",
                 "view_id":"id_like",
                 "right_of_view":"id_comment",
+                "margin_left":"4",
                 "align_parent_center_vertical":"YES",
                 "event_type":"cmd_like_click",
-                "margin_left":"28",
                 "height":{
-                    "type":"relative",
-                    "value":"24"
+                        "type":"relative",
+				        "value":"46"
                 },
                 "width":{
                     "type":"relative",
-                    "value":"24"
+                    "value":"46"
                 },
                 "attributes":{
                     "setImages:colors:direction:forStates:":[
@@ -167,17 +183,17 @@
                 "view_type":"UIButton",
                 "view_id":"id_collect",
                 "right_of_view":"id_like",
+                "margin_left":"4",
                 "default_visible":"YES",
                 "event_type":"cmd_collect_click",
                 "align_parent_center_vertical":"YES",
-                "margin_left":"28",
                 "height":{
-                    "type":"relative",
-                    "value":"24"
+                        "type":"relative",
+				        "value":"46"
                 },
                 "width":{
                     "type":"relative",
-                    "value":"24"
+                    "value":"46"
                 },
                 "attributes":{
                     "setImages:colors:direction:forStates:":[
@@ -192,17 +208,17 @@
                 "view_type":"UIButton",
                 "view_id":"id_biu",
                 "right_of_view":"id_collect",
+                "margin_left":"4",
                 "event_type":"cmd_biu_click",
                 "default_visible":"YES",
                 "align_parent_center_vertical":"YES",
-                "margin_left":"28",
                 "height":{
-                    "type":"relative",
-                    "value":"24"
+                        "type":"relative",
+				        "value":"46"
                 },
                 "width":{
                     "type":"relative",
-                    "value":"24"
+                    "value":"46"
                 },
                 "attributes":{
                     "setImage:": "NativeArticleBiu"

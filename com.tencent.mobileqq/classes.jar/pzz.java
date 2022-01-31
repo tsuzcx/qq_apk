@@ -1,30 +1,21 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.AdReport;
 
-class pzz
-  extends GestureDetector.SimpleOnGestureListener
+public class pzz
 {
-  pzz(pzy parampzy) {}
+  public String a;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public static pzz a(oidb_0x5bd.AdReport paramAdReport)
   {
-    if ((pzy.a(this.a) != null) && (pzy.a(this.a).a != null)) {
-      this.a.a.a(pzy.a(this.a).a, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
-    }
-    return true;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if ((pzy.a(this.a) != null) && (pzy.a(this.a).d != null)) {
-      this.a.a.onClick(pzy.a(this.a).d);
-    }
-    return true;
+    pzz localpzz = new pzz();
+    localpzz.a = paramAdReport.bytes_report_url.get().toStringUtf8();
+    return localpzz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     pzz
  * JD-Core Version:    0.7.0.1
  */

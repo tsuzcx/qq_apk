@@ -1,64 +1,50 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.SimpleAdapter;
-import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FollowingListFragment;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentAccountSummary;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public class pve
-  extends SimpleAdapter
+  extends ClickableSpan
+  implements rfs
 {
-  public pve(Context paramContext, List<? extends Map<String, ?>> paramList, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  private int jdField_a_of_type_Int = -1;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  boolean jdField_a_of_type_Boolean;
+  
+  public pve(ComponentAccountSummary paramComponentAccountSummary, ArticleInfo paramArticleInfo, int paramInt)
   {
-    super(paramList, paramInt, paramArrayOfString, paramArrayOfInt, arrayOfInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected void a(View paramView, ResultRecord paramResultRecord) {}
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void a(boolean paramBoolean)
   {
-    Map localMap = (Map)getItem(paramInt);
-    ResultRecord localResultRecord = ResultRecord.a((String)localMap.get("key_uin"), (String)localMap.get("key_name"));
-    if (FollowingListFragment.a(this.a).contains(localResultRecord)) {
-      localMap.put("key_checked", Boolean.valueOf(true));
-    }
-    for (;;)
-    {
-      paramView = super.getView(paramInt, paramView, paramViewGroup);
-      a(paramView, localResultRecord);
-      return paramView;
-      localMap.put("key_checked", Boolean.valueOf(false));
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
+      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
     }
   }
   
-  public void setViewImage(ImageView paramImageView, String paramString)
+  public void onClick(View paramView)
   {
-    super.setViewImage(paramImageView, paramString);
-    if (paramImageView.getId() == 2131302061) {}
-    try
+    onk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 3);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
+    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.jdField_a_of_type_Int;; i = 16119285)
     {
-      Object localObject = this.a.getResources().getDrawable(2130839687);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-      localObject = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-      ((URLDrawable)localObject).setTag(azue.a(140, 140));
-      ((URLDrawable)localObject).setDecodeHandler(azue.o);
-      paramImageView.setImageDrawable((Drawable)localObject);
+      paramTextPaint.bgColor = i;
+      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
       return;
-    }
-    catch (Exception paramImageView)
-    {
-      QLog.e("FollowingListFragment", 2, "setViewImage: " + paramString, paramImageView);
     }
   }
 }

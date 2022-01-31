@@ -1,37 +1,33 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.os.Process;
+import com.tencent.av.core.SDKConfigInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class llw
-  extends Binder
-  implements llv
+public class llw
 {
-  public static llv a(IBinder paramIBinder)
+  private final SDKConfigInfo a = new SDKConfigInfo(null);
+  
+  public llw()
   {
-    if (paramIBinder == null) {
-      return null;
+    int i = Process.myPid();
+    Iterator localIterator = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses().iterator();
+    while (localIterator.hasNext())
+    {
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localIterator.next();
+      if (localRunningAppProcessInfo.pid == i) {
+        SDKConfigInfo.access$102(this.a, localRunningAppProcessInfo.processName);
+      }
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IAVServiceCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof llv))) {
-      return (llv)localIInterface;
-    }
-    return new llx(paramIBinder);
+    lcl.a("SDKConfigInfo", this.a.toString());
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public SDKConfigInfo a()
   {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.av.service.IAVServiceCallback");
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceCallback");
-    a(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
-    return true;
+    return this.a;
   }
 }
 

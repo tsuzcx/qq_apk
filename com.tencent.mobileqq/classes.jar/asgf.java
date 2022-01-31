@@ -1,44 +1,45 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.mediafocus.MediaFocusController;
+import com.tencent.mobileqq.mediafocus.MediaFocusController.1;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.Stack;
 
-class asgf
-  implements View.OnClickListener
+public class asgf
+  implements EIPCResultCallback
 {
-  asgf(asge paramasge, int paramInt1, long paramLong, String paramString1, String paramString2, int paramInt2) {}
+  public asgf(MediaFocusController.1 param1, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (this.jdField_a_of_type_Int == 1)
+    boolean bool1;
+    boolean bool2;
+    long l;
+    if (paramEIPCResult.data != null)
     {
-      paramView = new Intent(this.jdField_a_of_type_Asge.a, SplashActivity.class);
-      paramView.putExtra("uin", this.jdField_a_of_type_Long + "");
-      paramView.putExtra("uintype", 1);
-      paramView.putExtra("troop_uin", this.jdField_a_of_type_Long + "");
-      paramView.putExtra("uinname", this.jdField_a_of_type_JavaLangString);
-      paramView.putExtra("isGameRoom", true);
-      paramView = aciy.a(paramView, new int[] { 1, 2 });
-      this.jdField_a_of_type_Asge.a.startActivity(paramView);
-      if ((this.jdField_a_of_type_Asge.a instanceof ChatActivity)) {
-        ((ChatActivity)this.jdField_a_of_type_Asge.a).finish();
+      bool1 = paramEIPCResult.data.getBoolean("isProcessRunning");
+      bool2 = paramEIPCResult.data.getBoolean("isItemExist");
+      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+      if ((!bool1) || (!bool2)) {
+        break label75;
       }
-      awqx.b(null, "dc00899", "Grp_wolf", "", "in_game", "active_ball", 0, 0, "", "", "", "");
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("MediaFocusController", 2, new Object[] { "notifyFocusChanged not the same process but existed, cost:", Long.valueOf(l) });
+      }
     }
-    paramView = aciy.a(new Intent(this.jdField_a_of_type_Asge.a, GameRoomInviteActivity.class), new int[] { 2 });
-    paramView.putExtra("inviteId", this.jdField_b_of_type_JavaLangString);
-    paramView.putExtra("roomNum", this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_Asge.a.startActivity(paramView);
-    this.jdField_a_of_type_Asge.a();
+    return;
+    label75:
+    MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0).pop();
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaFocusController", 2, new Object[] { "notifyFocusChanged isProcessRun:", Boolean.valueOf(bool1), " ,isItmeExist:", Boolean.valueOf(bool2), " ,stack:", Integer.valueOf(MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0).size()), " ,cost:", Long.valueOf(l) });
+    }
+    MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0, this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asgf
  * JD-Core Version:    0.7.0.1
  */

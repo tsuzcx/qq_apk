@@ -1,6 +1,6 @@
-public abstract interface lgs
+public class lgs
 {
-  public abstract void a();
+  public int[] a = { 9, 11 };
 }
 
 

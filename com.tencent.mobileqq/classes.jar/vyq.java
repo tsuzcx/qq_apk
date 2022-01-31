@@ -1,29 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
-class vyq
-  implements View.OnClickListener
+final class vyq
+  implements INetEventHandler
 {
-  vyq(vyo paramvyo) {}
+  vyq(Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    if (!vxu.c())
+    if (paramBoolean)
     {
-      paramView = vyo.a(this.a);
-      if (paramView != null)
-      {
-        this.a.c(paramView);
-        if (this.a.a() != null) {
-          this.a.a().c(paramView);
-        }
-      }
+      vyp.a(this.a);
+      return;
     }
+    vyp.a("");
+    vyp.b("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vyq
  * JD-Core Version:    0.7.0.1
  */

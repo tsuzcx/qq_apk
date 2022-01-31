@@ -2,18 +2,18 @@ package com.tencent.mobileqq.utils;
 
 import android.content.Context;
 import android.os.Bundle;
-import badr;
-import bchb;
+import bbew;
+import bdlc;
 import java.lang.ref.WeakReference;
 
 public class NewUpgradeDialog$8
   implements Runnable
 {
-  public NewUpgradeDialog$8(badr parambadr, Bundle paramBundle) {}
+  public NewUpgradeDialog$8(bbew parambbew, Bundle paramBundle) {}
   
   public void run()
   {
-    bchb.a().a((Context)this.this$0.a.get(), this.a, false, false);
+    bdlc.a().a((Context)this.this$0.a.get(), this.a, false, false);
   }
 }
 

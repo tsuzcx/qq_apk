@@ -1,14 +1,17 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
+import com.tribe.async.dispatch.Dispatcher;
 
-public abstract interface tzn
+class tzn
+  extends uai
 {
-  public abstract void a();
+  tzn(tzm paramtzm) {}
   
-  public abstract void a(String paramString1, int paramInt, View paramView, String paramString2);
-  
-  public abstract void a(String paramString1, long paramLong, StoryVideoItem paramStoryVideoItem, int paramInt, String paramString2, List<String> paramList);
+  public void g()
+  {
+    super.g();
+    tzm.a(this.a, false);
+    ste.a().unRegisterSubscriber(tzm.a(this.a));
+    ste.a().unRegisterSubscriber(tzm.a(this.a));
+  }
 }
 
 

@@ -1,49 +1,209 @@
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.content.res.Configuration;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
-public class apos
-  implements View.OnClickListener
+public abstract class apos
+  implements apqo
 {
-  public apos(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public Activity a;
+  protected Bundle a;
+  protected apkm a;
+  protected apkn a;
+  public apmx a;
+  private apqn jdField_a_of_type_Apqn;
+  private boolean jdField_a_of_type_Boolean = true;
+  protected boolean b;
+  protected boolean c;
   
-  public void onClick(View paramView)
+  public apos(apmx paramapmx, Activity paramActivity)
   {
-    Object localObject = (String)asfc.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin(), "nearby_mine_page_url", "");
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.NearbyHybridFragment", 2, "onClick, server mine url=" + (String)localObject);
-    }
-    paramView = (View)localObject;
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      paramView = "https://nearby.qq.com/nearby-index/mine.html?_bid=3027&_wv=16777218";
-    }
-    localObject = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", paramView);
-    this.a.getActivity().startActivity((Intent)localObject);
-    asfl.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "my_click", 0);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch == null) {}
-    for (boolean bool = false;; bool = this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.a())
+    this.jdField_a_of_type_Apmx = paramapmx;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  public apqn a()
+  {
+    return this.jdField_a_of_type_Apqn;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_Apmx.b();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Apmx == null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a().a(42);
-      try
-      {
-        awqx.b(null, "dc00899", "grp_lbs", "", "entry", "nearby_frag_mine_click_tmp", 0, 0, bool + "", "", "", "");
-        return;
-      }
-      catch (Exception paramView) {}
+      QLog.w("FileBrowserPresenter<FileAssistant>", 1, "FileBrowserPresenter init: but model is null");
+      return;
     }
+    if (this.jdField_a_of_type_Apqn == null)
+    {
+      QLog.w("FileBrowserPresenter<FileAssistant>", 1, "FileBrowserPresenter init: but fileViewer is null");
+      return;
+    }
+    this.jdField_a_of_type_Apqn.a(this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_Apqn.a();
+    b();
+    this.jdField_a_of_type_Apqn.a(new apot(this));
+    if (this.jdField_a_of_type_Apmx.i() == 4)
+    {
+      this.jdField_a_of_type_Apqn.b(true);
+      this.jdField_a_of_type_Apqn.a(false);
+      b(this.jdField_a_of_type_Apmx.a());
+    }
+    this.jdField_a_of_type_Apqn.a(this);
+    if ((!this.jdField_a_of_type_Apmx.i()) && (this.jdField_a_of_type_Boolean) && (this.c)) {
+      axqw.b(null, "dc00898", "", "", "0X800A687", "0X800A687", 0, 0, "", "", "", "");
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(Configuration paramConfiguration) {}
+  
+  public void a(Bundle paramBundle)
+  {
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public void a(apkm paramapkm)
+  {
+    this.jdField_a_of_type_Apkm = paramapkm;
+  }
+  
+  public void a(apkn paramapkn)
+  {
+    this.jdField_a_of_type_Apkn = paramapkn;
+  }
+  
+  protected void a(apqn paramapqn)
+  {
+    this.jdField_a_of_type_Apqn = paramapqn;
+  }
+  
+  public abstract boolean a();
+  
+  protected void b()
+  {
+    this.c = false;
+    this.b = false;
+    int i = this.jdField_a_of_type_Apmx.i();
+    Object localObject;
+    if (i == 6)
+    {
+      this.jdField_a_of_type_AndroidAppActivity.getString(2131692501);
+      if (this.jdField_a_of_type_Apmx.h() == 1) {}
+      for (localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131692502);; localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131692501))
+      {
+        this.jdField_a_of_type_Apqn.a((String)localObject + "(" + bbdi.a(this.jdField_a_of_type_Apmx.c()) + ")", new apou(this));
+        this.jdField_a_of_type_Apqn.b(false);
+        this.jdField_a_of_type_Apqn.a(true);
+        return;
+        this.c = true;
+      }
+    }
+    if (i == 2)
+    {
+      this.jdField_a_of_type_Apqn.a(ajyc.a(2131704489), new apov(this));
+      this.jdField_a_of_type_Apqn.a(true);
+      return;
+    }
+    if (i == 4)
+    {
+      this.jdField_a_of_type_Apqn.b(true);
+      b(this.jdField_a_of_type_Apmx.a());
+      this.jdField_a_of_type_Apqn.a(false);
+      return;
+    }
+    if (i == 5)
+    {
+      this.jdField_a_of_type_Apqn.a(false);
+      return;
+    }
+    if ((this.jdField_a_of_type_Apmx.f() == 9501) && (bbev.h(this.jdField_a_of_type_AndroidAppActivity)))
+    {
+      localObject = this.jdField_a_of_type_Apmx.a();
+      if (localObject != null) {
+        ((aple)localObject).a();
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Apqn.b(false);
+      this.jdField_a_of_type_Apqn.a(true);
+      return;
+      this.c = true;
+      this.jdField_a_of_type_Apqn.a(ajyc.a(2131704486) + bbdi.a(this.jdField_a_of_type_Apmx.c()) + ")", new apow(this));
+    }
+  }
+  
+  protected void b(float paramFloat)
+  {
+    int i = (int)((float)this.jdField_a_of_type_Apmx.c() * paramFloat);
+    int j = this.jdField_a_of_type_Apmx.h();
+    if (j == 1) {
+      this.jdField_a_of_type_Apqn.a(this.jdField_a_of_type_AndroidAppActivity.getString(2131692885) + "(" + apvb.a(i) + "/" + apvb.a(this.jdField_a_of_type_Apmx.c()) + ")");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Apqn.a((int)(100.0F * paramFloat));
+      return;
+      if (j == 4) {
+        this.jdField_a_of_type_Apqn.a(this.jdField_a_of_type_AndroidAppActivity.getString(2131692864) + "(" + apvb.a(i) + "/" + apvb.a(this.jdField_a_of_type_Apmx.c()) + ")");
+      } else {
+        this.jdField_a_of_type_Apqn.a(this.jdField_a_of_type_AndroidAppActivity.getString(2131692846) + "(" + apvb.a(i) + "/" + apvb.a(this.jdField_a_of_type_Apmx.c()) + ")");
+      }
+    }
+  }
+  
+  public abstract boolean b();
+  
+  public void i() {}
+  
+  public void j() {}
+  
+  public void k() {}
+  
+  public void l() {}
+  
+  protected void m()
+  {
+    int i = this.jdField_a_of_type_Apmx.h();
+    if ((i == 2) || (i == 4)) {
+      if (this.jdField_a_of_type_Apmx.a() != null) {
+        this.jdField_a_of_type_Apmx.a().b();
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Apqn.b(false);
+      b();
+      return;
+      if ((i == 1) && (this.jdField_a_of_type_Apmx.a() != null)) {
+        this.jdField_a_of_type_Apmx.a().b();
+      }
+    }
+  }
+  
+  protected void n()
+  {
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
+  }
+  
+  public void o()
+  {
+    n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apos
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ final class j
 {
   protected SimpleDateFormat a()
   {
-    return new SimpleDateFormat("yyyyMMdd");
+    return new SimpleDateFormat("yyyyMMddHH");
   }
 }
 

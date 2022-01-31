@@ -1,38 +1,8 @@
-import com.tencent.common.app.AppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONObject;
-
-class aivv
+public class aivv
 {
-  public int a;
-  public String a;
-  public final List<aivw> a;
-  
-  public aivv()
+  public static boolean a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public JSONObject a(String paramString, AppInterface paramAppInterface)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramAppInterface == null)) {
-      return null;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((aivw)localIterator.next()).a(paramString, localJSONObject, paramAppInterface);
-    }
-    return localJSONObject;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mClientId:").append(this.jdField_a_of_type_Int).append(" mCmdSSOName:").append(this.jdField_a_of_type_JavaLangString).append(" mParameters:").append(this.jdField_a_of_type_JavaUtilList);
-    return localStringBuilder.toString();
+    return ("cs.close_room.local".equals(paramString)) || ("cs.create_room.local".equals(paramString)) || ("sc.force_stop_game.local".equals(paramString)) || ("cs.get_dress_path.local".equals(paramString)) || ("cs.join_room.local".equals(paramString)) || ("cs.game_tips.local".equals(paramString)) || ("cs.make_room_min.local".equals(paramString)) || ("cs.first_frame_drawn.local".equals(paramString)) || ("cs.share_game_result.local".equals(paramString)) || ("sc.init_global_var.local".equals(paramString)) || ("cs.report_data_2_compass.local".equals(paramString)) || ("cs.report_data_2_backstage.local".equals(paramString)) || ("cs.report_event.local".equals(paramString)) || ("cs.report_flow_data.local".equals(paramString)) || ("cs.encrypt_data.local".equals(paramString)) || ("cs.decrypt_data.local".equals(paramString)) || ("cs.get_server_ip_port.local".equals(paramString)) || ("cs.save_recommend_ip.local".equals(paramString)) || ("cs.game_start.local".equals(paramString)) || ("cs.check_pubAccount_state.local".equals(paramString)) || ("cs.enter_pubAccount_card.local".equals(paramString)) || ("cs.invite_friends.local".equals(paramString)) || ("cs.send_b2c_redpacket.local".equals(paramString)) || ("cs.finish_group_whiteface.local".equals(paramString)) || ("cs.ready_play_whiteface.local".equals(paramString)) || ("cs.on_get_open_key.local".equals(paramString)) || ("cs.apolloGameWebMessage.local".equals(paramString)) || ("cs.openFloatTransparentView.local".equals(paramString)) || ("cs.openWebView.local".equals(paramString)) || ("cs.show_apollo_panel.local".equals(paramString)) || ("cs.slave_action_status_notify.local".equals(paramString)) || ("cs.qta_notify_test_result.local".equals(paramString)) || ("cs.share_pic.local".equals(paramString)) || ("cs.single_action_status_changed.local".equals(paramString)) || ("cs.audioRoom_enter.local".equals(paramString)) || ("cs.audioRoom_exit.local".equals(paramString)) || ("cs.audioRoom_set_mic.local".equals(paramString)) || ("cs.audioRoom_set_speaker.local".equals(paramString)) || ("cs.script_action_status_notify.local".equals(paramString)) || ("cs.script_get_dress_data.local".equals(paramString)) || ("cs.script_change_panel_status.local".equals(paramString)) || ("cs.script_sprite_status_change.local".equals(paramString)) || ("cs.script_get_show_action.local".equals(paramString)) || ("cs.script_is_allow_play_audio.local".equals(paramString)) || ("cs.script_show_barrage.local".equals(paramString)) || ("cs.script_send_action_msg.local".equals(paramString)) || ("cs.script_show_toast.local".equals(paramString)) || ("cs.script_get_config.local".equals(paramString)) || ("cs.script_get_nickname.local".equals(paramString)) || ("cs.script_get_action_data.local".equals(paramString)) || ("cs.send_game_msg.local".equals(paramString)) || ("cs.share_game_in_ark.local".equals(paramString)) || ("cs.h5_communicate.local".equals(paramString)) || ("cs.get_cm3D_state.local".equals(paramString)) || ("cs.trace_begin.local".equals(paramString)) || ("cs.trace_end.local".equals(paramString)) || ("cs.trace_span_begin.local".equals(paramString)) || ("cs.trace_span_end.local".equals(paramString)) || ("cs.trace_log.local".equals(paramString));
   }
 }
 

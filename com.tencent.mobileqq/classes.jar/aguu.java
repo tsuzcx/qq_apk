@@ -1,22 +1,39 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbFullScreenVideoFragment;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import mqq.util.WeakReference;
 
-public class aguu
-  implements View.OnSystemUiVisibilityChangeListener
+class aguu
+  implements View.OnClickListener
 {
-  public aguu(SpringHbFullScreenVideoFragment paramSpringHbFullScreenVideoFragment, ViewGroup paramViewGroup) {}
+  aguu(agut paramagut) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramInt & 0x4) == 0) {
-      this.jdField_a_of_type_AndroidViewViewGroup.setSystemUiVisibility(3846);
+    if (agut.a(this.a))
+    {
+      QLog.d("PhotoPreviewLogicAEPlay", 2, "need more pic.");
+      agut.a(this.a, String.format(((NewPhotoPreviewActivity)this.a.a.get()).getString(2131689791), new Object[] { Integer.valueOf(agut.a(this.a).jdField_a_of_type_Int) }));
+      return;
     }
+    ((NewPhotoPreviewActivity)this.a.a.get()).b.setClickable(false);
+    paramView = new Intent();
+    paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", agut.b(this.a).jdField_a_of_type_JavaUtilArrayList);
+    paramView.putExtra("pic_choose_in_node_id", ((NewPhotoPreviewActivity)this.a.a.get()).getIntent().getIntExtra("pic_choose_in_node_id", 0));
+    paramView.putExtra("pic_result_back_type", 0);
+    AETemplateInfoFragment.a((Context)this.a.a.get(), paramView);
+    bizc.a().x();
+    ((NewPhotoPreviewActivity)this.a.a.get()).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aguu
  * JD-Core Version:    0.7.0.1
  */

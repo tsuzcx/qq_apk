@@ -1,36 +1,94 @@
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.contacts.view.IndexBar;
+import com.tencent.mobileqq.activity.contacts.view.IndexBarTipsLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
 
-final class baej
-  extends ajuc
+public class baej
+  implements afsz
 {
-  baej(long paramLong, String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
+  public Context a;
+  private final View jdField_a_of_type_AndroidViewView;
+  public baem a;
+  public IndexBar a;
+  public IndexBarTipsLayout a;
+  public QQAppInterface a;
+  public XListView a;
+  private String jdField_a_of_type_JavaLangString = "";
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString, Object[] paramArrayOfObject)
+  public baej(QQAppInterface paramQQAppInterface, Context paramContext, TroopChatPie paramTroopChatPie, View paramView, XListView paramXListView)
   {
-    if (this.jdField_a_of_type_Long != paramLong) {
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
+    this.jdField_a_of_type_Baem = new baem(this, paramTroopChatPie);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Baem);
+    a();
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewIndexBarTipsLayout = ((IndexBarTipsLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368075));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewIndexBar = ((IndexBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131368074));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewIndexBar.setOnIndexBarTouchListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewIndexBarTipsLayout.setVisibility(8);
+  }
+  
+  public void a(String paramString, int paramInt, float paramFloat)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewIndexBarTipsLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewIndexBarTipsLayout.setText(paramString, paramFloat);
     }
-    paramTroopInfo = new StringBuilder().append("onOIDB0X88D_0_Ret[").append(this.jdField_a_of_type_JavaLangString).append("], troopuin[").append(paramLong).append("], nFlag[").append(paramInt1).append("], isMyFlag[");
-    if ((paramInt1 & 0x1) != 0) {}
-    for (boolean bool = true;; bool = false)
+    if (!this.jdField_a_of_type_JavaLangString.equals(paramString))
     {
-      QLog.w("QAVGroupConfig", 1, bool + "], isSuccess[" + paramBoolean + "], result[" + paramInt2 + "], strErrorMsg[" + paramString + "]");
-      if (paramInt1 != 480) {
-        break;
+      this.jdField_a_of_type_JavaLangString = paramString;
+      if (!"★".equals(paramString)) {
+        break label50;
       }
-      if (paramBoolean) {
-        baem.a(this.jdField_a_of_type_JavaLangString + ".onOIDB0X88D_0_Ret", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
+    }
+    label50:
+    do
+    {
       return;
+      paramInt = this.jdField_a_of_type_Baem.a(paramString);
+    } while (paramInt == -1);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(paramInt + this.jdField_a_of_type_ComTencentWidgetXListView.getHeaderViewsCount());
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("ListViewWrapper", 2, new Object[] { "onLetterTouching: invoked. ", " touching: ", Boolean.valueOf(paramBoolean) });
+    }
+    if (!paramBoolean) {
+      this.jdField_a_of_type_JavaLangString = "";
+    }
+    IndexBarTipsLayout localIndexBarTipsLayout;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewIndexBarTipsLayout != null)
+    {
+      localIndexBarTipsLayout = this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewIndexBarTipsLayout;
+      if (!paramBoolean) {
+        break label67;
+      }
+    }
+    for (;;)
+    {
+      localIndexBarTipsLayout.setVisibility(i);
+      return;
+      label67:
+      i = 8;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baej
  * JD-Core Version:    0.7.0.1
  */

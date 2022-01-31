@@ -1,28 +1,39 @@
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import java.util.ArrayList;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import cooperation.qzone.LocalMultiProcConfig;
 
 public class abpp
-  implements abpr
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abpp(ScoreQAVFragment paramScoreQAVFragment) {}
+  public abpp(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramView = (Button)paramView.findViewById(2131307761);
-    if (paramView.isSelected())
-    {
-      paramView.setSelected(false);
-      this.a.a(paramInt);
-      if (this.a.a.size() != 0) {}
+    LocalMultiProcConfig.putBooleanAsync(this.a.getString(2131718847) + this.a.a, paramBoolean);
+    if (AppSetting.d) {
+      NotifyPushSettingActivity.e(this.a).setContentDescription(ajyc.a(2131707658));
     }
-    do
+    QQAppInterface localQQAppInterface = this.a.app;
+    int i;
+    if (paramBoolean)
     {
+      i = 1;
+      if (!paramBoolean) {
+        break label109;
+      }
+    }
+    label109:
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    {
+      axqw.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_about_me", 0, i, paramCompoundButton, "", "", "");
       return;
-      paramView.setSelected(true);
-      this.a.a.add(Integer.valueOf(paramInt));
-    } while (this.a.a.size() <= 0);
+      i = 0;
+      break;
+    }
   }
 }
 

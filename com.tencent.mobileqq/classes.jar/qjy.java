@@ -1,27 +1,55 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+import java.lang.ref.WeakReference;
 
 class qjy
-  extends Handler
+  extends OrientationEventListener
 {
-  qjy(qjv paramqjv, Looper paramLooper)
+  qjy(qjx paramqjx, Context paramContext, WeakReference paramWeakReference)
   {
-    super(paramLooper);
+    super(paramContext);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onOrientationChanged(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideofeedsUserGuideController", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
+    if (!qjx.a(this.jdField_a_of_type_Qjx, paramInt)) {
+      break label11;
     }
-    switch (paramMessage.what)
+    label11:
+    label159:
+    for (;;)
     {
-    default: 
       return;
+      if (!(this.jdField_a_of_type_Qjx.a() instanceof SplashActivity))
+      {
+        int i = qjx.a(this.jdField_a_of_type_Qjx);
+        if (((paramInt >= 0) && (paramInt <= 30)) || (paramInt > 330)) {
+          paramInt = 1;
+        }
+        for (;;)
+        {
+          if (paramInt == qjx.a(this.jdField_a_of_type_Qjx)) {
+            break label159;
+          }
+          qjx.a(this.jdField_a_of_type_Qjx, paramInt);
+          if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+            break;
+          }
+          ((qjz)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramInt);
+          return;
+          if ((paramInt > 70) && (paramInt <= 110)) {
+            paramInt = 8;
+          } else if ((paramInt > 150) && (paramInt <= 210)) {
+            paramInt = 9;
+          } else if ((paramInt > 250) && (paramInt <= 290)) {
+            paramInt = 0;
+          } else {
+            paramInt = i;
+          }
+        }
+      }
     }
-    this.a.a();
   }
 }
 

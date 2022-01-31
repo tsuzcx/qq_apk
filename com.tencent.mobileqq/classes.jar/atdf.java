@@ -1,30 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QIMNotifyAddFriend;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class atdf
-  extends atcu
+  implements bcij<oidb_0x8e4.RspBody>
 {
-  public QIMNotifyAddFriend a;
+  public atdf(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public atdf(QIMNotifyAddFriend paramQIMNotifyAddFriend)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend = paramQIMNotifyAddFriend;
-    this.jdField_a_of_type_Long = paramQIMNotifyAddFriend.pushTime;
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    return "getMessage";
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.hasRead;
+    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
+    {
+      this.a.b = paramRspBody.string_invite_id.get().toStringUtf8();
+      GameRoomInviteActivity.a = this.a.b;
+    }
+    for (;;)
+    {
+      this.a.a(true);
+      return;
+      paramRspBody = this.a;
+      GameRoomInviteActivity.a = null;
+      paramRspBody.b = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atdf
  * JD-Core Version:    0.7.0.1
  */

@@ -4,13 +4,13 @@ import android.content.ClipData;
 import android.content.ClipData.Item;
 import android.content.ClipboardManager;
 import android.content.Context;
-import bdfz;
+import beka;
 import org.json.JSONObject;
 
 class ClipboardJsPlugin$1
   implements Runnable
 {
-  ClipboardJsPlugin$1(ClipboardJsPlugin paramClipboardJsPlugin, bdfz parambdfz) {}
+  ClipboardJsPlugin$1(ClipboardJsPlugin paramClipboardJsPlugin, beka parambeka) {}
   
   public void run()
   {

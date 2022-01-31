@@ -4,17 +4,17 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bite;
-import bitf;
+import bkjs;
+import bkjt;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class VideoCoverSegmentPicker
   extends RelativeLayout
-  implements bitf
+  implements bkjt
 {
   private VideoCoverSegmentRangeView jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoCoverSegmentRangeView;
-  private WeakReference<bite> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<bkjs> jdField_a_of_type_JavaLangRefWeakReference;
   
   public VideoCoverSegmentPicker(Context paramContext)
   {
@@ -46,23 +46,23 @@ public class VideoCoverSegmentPicker
   
   public void a(long paramLong)
   {
-    bite localbite = null;
+    bkjs localbkjs = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbite = (bite)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbkjs = (bkjs)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbite != null) {
-      localbite.a(paramLong);
+    if (localbkjs != null) {
+      localbkjs.a(paramLong);
     }
   }
   
   public void a(List<Long> paramList)
   {
-    bite localbite = null;
+    bkjs localbkjs = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbite = (bite)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbkjs = (bkjs)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbite != null) {
-      localbite.a(paramList);
+    if (localbkjs != null) {
+      localbkjs.a(paramList);
     }
   }
   
@@ -73,9 +73,9 @@ public class VideoCoverSegmentPicker
     }
   }
   
-  public boolean a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, bite parambite, boolean paramBoolean2)
+  public boolean a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, bkjs parambkjs, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambite);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambkjs);
     if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoCoverSegmentRangeView != null) {
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoCoverSegmentRangeView.a(paramString, paramLong1, paramLong2, paramInt1, paramInt2, paramInt3, paramBoolean1, this, paramBoolean2);
     }

@@ -1,23 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
 
-public class aqfj
-  implements DialogInterface.OnClickListener
+class aqfj
+  extends mxm
 {
-  public aqfj(HotPicPageView paramHotPicPageView, aqfp paramaqfp, int paramInt) {}
+  aqfj(aqfb paramaqfb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this.jdField_a_of_type_Aqfp, this.jdField_a_of_type_Int);
-    QLog.d("HotPicManagerHotPicPageView", 2, "User allowed downd");
+    if ((this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (this.a.j)) {}
+    do
+    {
+      return;
+      this.a.x();
+      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      }
+      if (paramInt == 16)
+      {
+        this.a.L();
+        return;
+      }
+    } while (!aqfb.a(this.a));
+    this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
+    this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
+    this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", aqas.e.intValue());
+    this.a.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqfj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,143 +1,90 @@
+import android.app.Activity;
 import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.ImageInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webview.utils.WebStateReporter.1;
-import com.tencent.mobileqq.webview.utils.WebStateReporter.2;
+import com.tencent.mobileqq.utils.ForwardSendPicUtil.1;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class bbdl
 {
-  public static HashMap<String, Integer> a;
-  public static int c;
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public long c;
-  
-  static
+  private static String a(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_c_of_type_Int = 6;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_c_of_type_Long = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("WebStateReporter_report", 2, "Current State = " + paramInt);
+    String str = bbdr.a(paramContext, paramString, paramInt);
+    ImageInfo localImageInfo = new ImageInfo();
+    if (paramBoolean) {}
+    for (int i = 7;; i = 4)
+    {
+      bbdr.a(i, paramContext, paramString, str, true, localImageInfo, paramInt);
+      return localImageInfo.b;
     }
   }
   
-  public void a(long paramLong)
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, String paramString3, boolean paramBoolean, Context paramContext)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    return a(paramQQAppInterface, paramString1, paramString2, paramInt, paramString3, paramBoolean, paramContext, 0);
   }
   
-  public void a(Context paramContext)
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, String paramString3, boolean paramBoolean, Context paramContext, int paramInt2)
   {
-    paramContext = new File(paramContext.getFilesDir(), balu.e.jdField_a_of_type_JavaLangString);
-    if (!paramContext.exists()) {}
-    do
+    Object localObject;
+    if ((paramContext instanceof Activity))
     {
-      do
+      localObject = ((Activity)paramContext).getIntent();
+      if (localObject == null) {}
+    }
+    for (boolean bool = ((Intent)localObject).getBooleanExtra("isFromFavorites", false);; bool = false)
+    {
+      localObject = "ForwardSendPicUtil.sendPicTo." + paramContext.getClass().getSimpleName();
+      bbdr.a(-1L, paramInt1, true, "image_send_prepare", (String)localObject + ", isQzoneShare=" + paramBoolean);
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardSendPicUtil", 2, "[@]call compressImage start!");
+      }
+      paramString1 = a(paramContext, paramString1, paramInt1, paramBoolean);
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardSendPicUtil", 2, "[@]call compressImage end!");
+      }
+      if (!bbdj.b(paramString1))
       {
-        return;
-        paramContext = bace.a(paramContext);
-      } while (TextUtils.isEmpty(paramContext));
-      try
-      {
-        paramContext = new JSONObject(paramContext);
-        int i = paramContext.getInt("sample_rate");
-        jdField_a_of_type_JavaUtilHashMap.put("sample_rate", Integer.valueOf(i));
-        JSONArray localJSONArray = paramContext.getJSONArray("rules");
-        int j = localJSONArray.length();
-        i = 0;
-        while (i < j)
-        {
-          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
-          jdField_a_of_type_JavaUtilHashMap.put(localJSONObject.getString("distUrl"), Integer.valueOf(localJSONObject.getInt("rate")));
-          i += 1;
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardSendPicUtil", 2, "sendPicTo,pic not exist,return false!");
         }
-        jdField_c_of_type_Int = paramContext.getInt("tail_number");
-        return;
+        return false;
       }
-      catch (JSONException paramContext) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("WebStateReporter", 2, "" + paramContext);
-  }
-  
-  public void a(Context paramContext, long paramLong, String paramString, boolean paramBoolean)
-  {
-    if ((paramContext == null) || (paramLong <= 0L) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-      this.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
-      this.jdField_a_of_type_Boolean = false;
-    }
-    try
-    {
-      i = badq.a(paramContext);
-      switch (i)
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardSendPicUtil", 2, "[@]call addAndSendPicMsgRecord start!");
+      }
+      if (paramString1 != null)
       {
-      default: 
-        String str1 = "Unknown";
-        ThreadManager.post(new WebStateReporter.1(this, paramBoolean, paramString, paramContext, paramLong, str1), 5, null, false);
-        return;
+        int i = 1009;
+        if (bool) {
+          i = 1053;
+        }
+        paramContext = new auoc();
+        paramContext.a(paramString1);
+        paramContext.d(i);
+        paramContext.d(paramString2);
+        paramContext.c(ayvu.d);
+        paramContext.e(paramString3);
+        paramContext.c(paramQQAppInterface.getCurrentAccountUin());
+        paramContext.e(paramInt1);
+        paramString2 = aunj.a(2, i);
+        paramString2.a(paramContext.a());
+        paramString2.c = paramInt2;
+        aunj.a(paramString2, paramQQAppInterface);
+        ThreadManager.post(new ForwardSendPicUtil.1(paramString1, paramInt1, paramQQAppInterface), 5, null, false);
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        int i = 0;
-        continue;
-        String str2 = "2G";
-        continue;
-        str2 = "3G";
-        continue;
-        str2 = "4G";
-        continue;
-        str2 = "wifi";
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardSendPicUtil", 2, "[@]call addAndSendPicMsgRecord end!");
       }
+      return true;
     }
-  }
-  
-  public void a(AppInterface paramAppInterface, String paramString, int paramInt)
-  {
-    if (paramInt == 0) {}
-    for (;;)
-    {
-      return;
-      if (paramAppInterface == null) {}
-      for (long l = 0L; !TextUtils.isEmpty(paramString); l = paramAppInterface.getLongAccountUin())
-      {
-        ThreadManager.post(new WebStateReporter.2(this, paramString, l, paramInt), 5, null, false);
-        return;
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbdl
  * JD-Core Version:    0.7.0.1
  */

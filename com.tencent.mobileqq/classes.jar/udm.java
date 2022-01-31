@@ -1,20 +1,18 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-
 class udm
-  implements TextView.OnEditorActionListener
+  implements udh
 {
-  udm(udl paramudl) {}
+  public udh a;
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  private udm(udi paramudi) {}
+  
+  public void a_(udc paramudc)
   {
-    if (paramInt == 4)
-    {
-      this.a.d();
-      return true;
+    if (udi.a(this.jdField_a_of_type_Udi) != null) {
+      udi.a(this.jdField_a_of_type_Udi).a(0L, paramudc.b(), paramudc);
     }
-    return false;
+    if (this.jdField_a_of_type_Udh != null) {
+      this.jdField_a_of_type_Udh.a_(paramudc);
+    }
   }
 }
 

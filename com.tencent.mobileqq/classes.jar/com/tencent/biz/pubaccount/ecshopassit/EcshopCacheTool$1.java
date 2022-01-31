@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
 import android.support.v4.app.FragmentActivity;
-import atmp;
+import aukn;
 import com.tencent.mobileqq.data.Friends;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import ngf;
+import nrg;
 
 public class EcshopCacheTool$1
   implements Runnable
 {
-  public EcshopCacheTool$1(ngf paramngf) {}
+  public EcshopCacheTool$1(nrg paramnrg) {}
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_Atmp.a(Friends.class, " SELECT * FROM Friends ", new String[0]);
+    Object localObject = this.this$0.jdField_a_of_type_Aukn.a(Friends.class, " SELECT * FROM Friends ", new String[0]);
     this.this$0.jdField_a_of_type_JavaUtilMap = new HashMap();
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {

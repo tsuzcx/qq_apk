@@ -8,14 +8,14 @@ final class AEFilterSupport$CheckAEFilterTask
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("AEFilterSupport", 2, "CheckAEFilterTask before[" + AEFilterSupport.a() + "]");
+      QLog.i("AEFilterSupport", 2, "CheckAEFilterTask before[" + AEFilterSupport.b() + "]");
     }
-    if (AEFilterSupport.a() != 1) {
+    if (AEFilterSupport.b() != 1) {
       AEFilterSupport.a();
     }
     AEFilterSupport.a(null);
     if (QLog.isColorLevel()) {
-      QLog.i("AEFilterSupport", 2, "CheckAEFilterTask after[" + AEFilterSupport.a() + "]");
+      QLog.i("AEFilterSupport", 2, "CheckAEFilterTask after[" + AEFilterSupport.b() + "]");
     }
   }
 }

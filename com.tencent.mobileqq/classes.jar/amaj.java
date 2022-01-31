@@ -1,26 +1,27 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
+import com.tencent.mobileqq.haoliyou.JefsClass;
+
 public class amaj
+  implements DialogInterface.OnClickListener
 {
-  @aqrf(a="poll_interval")
-  public int a;
-  @aqrf(a="jump_url")
-  public String a;
-  @aqrf(a="search_empty_show_troop_recommend")
-  public int b;
+  public amaj(JumpConfirmFragment paramJumpConfirmFragment) {}
   
-  public amaj()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = 10;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public static amaj a(String paramString)
-  {
-    return (amaj)aqrg.a(paramString, amaj.class);
+    JefsClass.getInstance().b(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
+    if (JumpConfirmFragment.b(this.a) == null) {}
+    for (paramDialogInterface = "";; paramDialogInterface = JumpConfirmFragment.b(this.a))
+    {
+      axqw.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, "1", "", paramDialogInterface, "");
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amaj
  * JD-Core Version:    0.7.0.1
  */

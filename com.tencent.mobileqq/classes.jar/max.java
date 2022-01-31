@@ -1,190 +1,52 @@
-import android.app.Dialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.graphics.drawable.Drawable;
 
 public class max
-  extends Dialog
-  implements View.OnClickListener
+  extends mav
 {
-  private int jdField_a_of_type_Int;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private Context jdField_a_of_type_AndroidContentContext;
-  public Handler a;
-  View jdField_a_of_type_AndroidViewView;
-  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  public TextView a;
-  public VideoController a;
-  public Runnable a;
-  maw jdField_a_of_type_Maw;
-  public boolean a;
-  View jdField_b_of_type_AndroidViewView;
-  boolean jdField_b_of_type_Boolean;
-  View jdField_c_of_type_AndroidViewView;
-  boolean jdField_c_of_type_Boolean;
+  protected Drawable a;
+  protected String b;
+  protected int k = 0;
   
-  private void c()
+  public max(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
   {
-    int i = 2130841702;
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().ay) {
-      i = 2130841703;
-    }
-    this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
   }
   
-  void a()
+  public max(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, int paramInt5, String paramString2)
   {
-    if (this.jdField_a_of_type_Maw.getCount() == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131630561);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().R == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131630560);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131630559);
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString1);
+    this.b = paramString2;
+    this.k = paramInt5;
   }
   
-  public void b()
+  public int a()
   {
-    if (this.jdField_a_of_type_ComTencentAvVideoController == null)
-    {
-      krx.e("VoiceChangeChooseDialog", "updateDialogStyle mVideoController is null!!");
-      return;
-    }
-    boolean bool;
-    if ((this.jdField_a_of_type_ComTencentAvVideoController.a().d == 2) || (this.jdField_a_of_type_ComTencentAvVideoController.a().d == 4))
-    {
-      bool = true;
-      this.jdField_b_of_type_Boolean = bool;
-      if (!this.jdField_b_of_type_Boolean) {
-        break label118;
-      }
-      this.jdField_a_of_type_Maw.a(-1);
-      this.jdField_b_of_type_AndroidViewView.setBackgroundColor(16777216);
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-534962398);
-      this.jdField_c_of_type_AndroidViewView.setBackgroundColor(-16777216);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
-    }
-    for (;;)
-    {
-      c();
-      return;
-      bool = false;
-      break;
-      label118:
-      this.jdField_a_of_type_Maw.a(-16777216);
-      this.jdField_b_of_type_AndroidViewView.setBackgroundColor(-2147483648);
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1);
-      this.jdField_c_of_type_AndroidViewView.setBackgroundColor(-2170912);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-8947849);
-      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-16777216);
-    }
+    return 1;
   }
   
-  public void dismiss()
+  public Drawable a()
   {
-    super.dismiss();
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_AndroidContentContext = null;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_Maw = null;
-    this.jdField_a_of_type_ComTencentAvVideoController = null;
+    return this.a;
   }
   
-  public void onClick(View paramView)
+  public void a(Drawable paramDrawable)
   {
-    boolean bool = true;
-    switch (paramView.getId())
-    {
-    default: 
-      if (!this.jdField_c_of_type_Boolean)
-      {
-        this.jdField_c_of_type_Boolean = true;
-        paramView = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772123);
-        paramView.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-        this.jdField_a_of_type_AndroidViewView.startAnimation(paramView);
-      }
-    case 2131304067: 
-      return;
-    }
-    paramView = this.jdField_a_of_type_ComTencentAvVideoController.a();
-    if (!this.jdField_a_of_type_ComTencentAvVideoController.a().ay)
-    {
-      paramView.ay = bool;
-      if (this.jdField_a_of_type_ComTencentAvVideoController.a().R != 0)
-      {
-        this.jdField_a_of_type_ComTencentAvVideoController.c(this.jdField_a_of_type_ComTencentAvVideoController.a().ay);
-        if (!this.jdField_a_of_type_ComTencentAvVideoController.a().ay) {
-          break label196;
-        }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131630559);
-      }
-    }
-    for (;;)
-    {
-      c();
-      if (this.jdField_a_of_type_ComTencentAvVideoController.a().ay) {
-        break label224;
-      }
-      lqb.a((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 1017);
-      mba.a("0X8007EF4", "");
-      return;
-      bool = false;
-      break;
-      label196:
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131630558);
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_Int = 0;
-    }
-    label224:
-    mba.a("0X8007EF3", "");
+    this.a = paramDrawable;
   }
   
-  public void show()
+  public String b()
   {
-    int j = 1;
-    int k = 0;
-    super.show();
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView.startAnimation(AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772124));
-    int i = k;
-    if (this.jdField_a_of_type_Maw.getCount() == 0)
-    {
-      this.jdField_a_of_type_Maw.a(may.a().a());
-      i = k;
-      if (this.jdField_a_of_type_Maw.getCount() != 0) {
-        i = 1;
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().R == 0) {
-      i = j;
-    }
-    for (;;)
-    {
-      if (i != 0) {
-        this.jdField_a_of_type_Maw.notifyDataSetChanged();
-      }
-      a();
-      return;
-    }
+    return this.b;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.k = paramInt;
+  }
+  
+  public int k()
+  {
+    return this.k;
   }
 }
 

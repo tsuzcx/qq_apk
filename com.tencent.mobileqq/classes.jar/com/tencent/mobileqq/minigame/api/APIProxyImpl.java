@@ -12,16 +12,10 @@ import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.QQFriendsJsPlugin;
 import com.tencent.mobileqq.mini.http.MiniOkHttpClientFactory;
 import com.tencent.mobileqq.mini.out.activity.PermissionSettingFragment;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
-import com.tencent.mobileqq.minigame.gpkg.MiniGamePkg;
 import com.tencent.mobileqq.minigame.manager.GameInfoManager;
-import com.tencent.mobileqq.minigame.manager.MiniGameAuthorizeManager;
-import com.tencent.mobileqq.minigame.utils.GameLog;
 import com.tencent.mobileqq.triton.sdk.APICallback;
 import com.tencent.mobileqq.triton.sdk.APIProxy;
-import com.tencent.mobileqq.triton.sdk.ITSubPackage;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
-import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
 
 public class APIProxyImpl
@@ -82,20 +76,7 @@ public class APIProxyImpl
   
   public void doAddFriend(Context paramContext, String paramString, APICallback paramAPICallback)
   {
-    QQFriendsJsPlugin.doAddFriend(paramContext, GameInfoManager.g().getAppId(), paramString, new APIProxyImpl.5(this, paramAPICallback));
-  }
-  
-  public void getUserInfo(boolean paramBoolean, String paramString, APICallback paramAPICallback)
-  {
-    QLog.i("APIProxyImpl", 1, "getUserInfo " + GameInfoManager.g().getAppId());
-    if (2 != MiniGameAuthorizeManager.getInstance().getAuthFlag(GameInfoManager.g().getAppId(), "scope.userInfo"))
-    {
-      QLog.i("APIProxyImpl", 1, "begin requestAuthorize before getUserInfo()");
-      MiniGameAuthorizeManager.getInstance().requestAuthorize(GameInfoManager.g().getAppId(), "scope.userInfo", new APIProxyImpl.3(this, paramBoolean, paramString, paramAPICallback));
-      return;
-    }
-    QLog.i("APIProxyImpl", 1, "getUserInfo directly");
-    MiniAppCmdUtil.getInstance().getUserInfo(GameInfoManager.g().getAppId(), paramBoolean, paramString, new APIProxyImpl.4(this, paramAPICallback));
+    QQFriendsJsPlugin.doAddFriend(paramContext, GameInfoManager.g().getAppId(), paramString, new APIProxyImpl.2(this, paramAPICallback));
   }
   
   public void gotoPermissionSetting(Activity paramActivity)
@@ -109,16 +90,6 @@ public class APIProxyImpl
       return;
     }
     performRequest(paramLong, paramString1, paramString2, paramString3, null, paramString4, paramString5, paramArrayOfString);
-  }
-  
-  public void loadSubPackage(long paramLong1, long paramLong2, String paramString, ITSubPackage paramITSubPackage)
-  {
-    MiniGamePkg localMiniGamePkg = GameInfoManager.g().getMiniGamePkg();
-    if (localMiniGamePkg != null)
-    {
-      GameLog.getInstance().i("subpackage", "start loadSubPackage:" + paramString + ", gameId:" + localMiniGamePkg.appId + ", gameName:" + localMiniGamePkg.apkgName);
-      localMiniGamePkg.downloadSubPack(paramString, new APIProxyImpl.2(this, paramString, paramITSubPackage, paramLong1, paramLong2));
-    }
   }
   
   public void setTTEngine(ITTEngine paramITTEngine)

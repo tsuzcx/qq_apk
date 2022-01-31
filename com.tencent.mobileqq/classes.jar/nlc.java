@@ -1,14 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
-
 public class nlc
-  implements pod
 {
-  public nlc(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public int a;
+  public long a;
+  public int b;
+  public int c;
   
-  public void a(int paramInt, String paramString, BaseResData paramBaseResData)
+  public boolean a()
   {
-    this.a.a(paramInt, paramString, paramBaseResData);
+    return this.b == 1;
+  }
+  
+  public String toString()
+  {
+    return "materialId = " + this.jdField_a_of_type_Int + " ,repeatedReqFlag=" + this.b + " kdPos=" + this.c + ",adPosID=" + this.jdField_a_of_type_Long;
   }
 }
 

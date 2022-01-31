@@ -1,36 +1,18 @@
-import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class adfy
-  extends ClickableSpan
+  extends asrl
 {
-  adfy(adfw paramadfw, String paramString) {}
-  
-  public void onClick(View paramView)
+  adfy(adfx paramadfx, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, String paramString)
   {
-    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    awqx.b(this.jdField_a_of_type_Adfw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Adfw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X800491B", "0X800491B", 0, 0, "", "", "", "");
-    try
-    {
-      this.jdField_a_of_type_Adfw.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      return;
-    }
-    catch (ActivityNotFoundException paramView)
-    {
-      paramView.printStackTrace();
-    }
+    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramString);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void a(boolean paramBoolean)
   {
-    paramTextPaint.setColor(-16732929);
-    paramTextPaint.setUnderlineText(false);
+    this.a.a(true);
   }
 }
 

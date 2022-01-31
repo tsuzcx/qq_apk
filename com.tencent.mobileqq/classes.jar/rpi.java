@@ -1,12 +1,10 @@
-import android.view.ViewGroup;
-import java.util.ArrayList;
-
-class rpi
+public abstract interface rpi
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ArrayList<ViewGroup> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public abstract void a(rpk paramrpk, int paramInt);
   
-  private rpi(rpf paramrpf) {}
+  public abstract void a(rpk paramrpk, Throwable paramThrowable);
+  
+  public abstract void a(rpk paramrpk, rpg paramrpg);
 }
 
 

@@ -1,19 +1,12 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
-public class sye
-  implements slx<syf, syg>
+final class sye
+  implements InvocationHandler
 {
-  public void a(String paramString)
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    paramString = new syf(this, paramString);
-    slv.a().a(paramString, this);
-  }
-  
-  public void a(@NonNull syf paramsyf, @Nullable syg paramsyg, @NonNull ErrorMessage paramErrorMessage)
-  {
-    new syh(paramErrorMessage, paramsyf.b);
+    return null;
   }
 }
 

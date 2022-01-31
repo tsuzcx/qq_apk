@@ -1,29 +1,18 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.os.MqqHandler;
-
-final class bgts
-  implements apca
+class bgts
+  implements bgtg
 {
-  bgts(ArrayList paramArrayList1, QQAppInterface paramQQAppInterface, ArrayList paramArrayList2, ArrayList paramArrayList3, ArrayList paramArrayList4, MqqHandler paramMqqHandler, int paramInt) {}
+  bgts(bgtr parambgtr) {}
   
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      MessageForFile localMessageForFile = (MessageForFile)localIterator.next();
-      apck.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForFile, BaseActivity.sTopActivity, true);
+    if (bgtr.a(this.a) != null) {
+      bgtr.a(this.a);
     }
-    if (bgtr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, this.c, this.d, this.jdField_a_of_type_MqqOsMqqHandler, this.jdField_a_of_type_Int)) {
-      bbmy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131627191, 0).b(this.jdField_a_of_type_Int);
+    while (bgtr.a(this.a) == null) {
+      return;
     }
+    bgtr.a(this.a, bgtr.a(this.a));
   }
-  
-  public void b() {}
 }
 
 

@@ -1,10 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-public final class ajtt
-  implements DialogInterface.OnClickListener
+public abstract interface ajtt
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract boolean l();
 }
 
 

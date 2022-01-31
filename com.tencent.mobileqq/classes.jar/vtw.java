@@ -1,20 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class vtw
-  implements DialogInterface.OnCancelListener
+class vtw
+  implements View.OnClickListener
 {
-  public vtw(QRLoginAuthActivity paramQRLoginAuthActivity) {}
+  vtw(vtu paramvtu, int paramInt) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    if (vtu.a(this.jdField_a_of_type_Vtu) != null) {
+      vtu.a(this.jdField_a_of_type_Vtu).a(this.jdField_a_of_type_Int);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vtw
  * JD-Core Version:    0.7.0.1
  */

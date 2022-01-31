@@ -1,32 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 public class acrb
-  implements Animation.AnimationListener
+  implements Comparator<MessageRecord>
 {
-  public acrb(PressToSpeakPanel paramPressToSpeakPanel) {}
+  public acrb(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
+    long l2 = paramMessageRecord1.time - paramMessageRecord2.time;
+    long l1 = l2;
+    if (l2 == 0L) {
+      l1 = paramMessageRecord1.getId() - paramMessageRecord2.getId();
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
+    if (l1 > 0L) {
+      return -1;
     }
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationStart is called,time is:" + System.currentTimeMillis());
+    if (l1 < 0L) {
+      return 1;
     }
+    return 0;
   }
 }
 

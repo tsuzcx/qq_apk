@@ -3,7 +3,7 @@ package com.tencent.tmdownloader.internal.downloadclient;
 import android.content.Context;
 import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import com.tencent.tmassistantsdk.internal.b.b;
 import com.tencent.tmassistantsdk.internal.openSDK.param.jce.BatchSDKDownloadActionResponse;
 import com.tencent.tmassistantsdk.internal.openSDK.param.jce.SubScribeSDKDownloadTaskByViaResponse;
@@ -23,20 +23,20 @@ public class c
   
   public static byte[] a(JceStruct paramJceStruct, String paramString)
   {
-    ac.c(a, "jceStruct = " + paramJceStruct);
+    ab.c(a, "jceStruct = " + paramJceStruct);
     paramJceStruct = com.tencent.tmassistantsdk.internal.openSDK.param.a.a(paramJceStruct, paramString);
     if (paramJceStruct != null)
     {
       paramJceStruct = com.tencent.tmassistantsdk.internal.openSDK.param.a.a(paramJceStruct);
       if ((paramJceStruct != null) && (paramJceStruct.length > 0))
       {
-        ac.c(a, "return sendData length = " + paramJceStruct.length);
+        ab.c(a, "return sendData length = " + paramJceStruct.length);
         return paramJceStruct;
       }
-      ac.c(a, "handleUriAction sendData = null");
+      ab.c(a, "handleUriAction sendData = null");
       return null;
     }
-    ac.c(a, "handleUriAction IPCRequest = null");
+    ab.c(a, "handleUriAction IPCRequest = null");
     return null;
   }
   
@@ -49,7 +49,7 @@ public class c
   {
     this.d = paramContext;
     this.e = paramString;
-    ac.c(a, "initYYBClient yybOpenClient......" + this.b);
+    ab.c(a, "initYYBClient yybOpenClient......" + this.b);
     if (this.b == null) {
       try
       {

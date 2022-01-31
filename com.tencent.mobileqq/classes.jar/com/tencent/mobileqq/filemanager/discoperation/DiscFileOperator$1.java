@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.discoperation;
 
-import aopd;
-import aopf;
+import apgm;
+import apgo;
 
 public class DiscFileOperator$1
   implements Runnable
 {
-  public DiscFileOperator$1(aopd paramaopd) {}
+  public DiscFileOperator$1(apgm paramapgm) {}
   
   public void run()
   {

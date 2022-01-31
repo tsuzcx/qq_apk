@@ -4,23 +4,23 @@ import android.app.Activity;
 import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
 import android.view.ViewGroup;
-import bdcz;
-import bdfz;
-import bdit;
-import bdjb;
-import bdnw;
+import begz;
+import beka;
+import bemw;
+import bene;
+import besl;
 
 class UIJsPlugin$1
   implements Runnable
 {
-  UIJsPlugin$1(UIJsPlugin paramUIJsPlugin, String paramString1, String paramString2, String paramString3, int paramInt, boolean paramBoolean, bdfz parambdfz) {}
+  UIJsPlugin$1(UIJsPlugin paramUIJsPlugin, String paramString1, String paramString2, String paramString3, int paramInt, boolean paramBoolean, beka parambeka) {}
   
   public void run()
   {
     if ("loading".equals(this.val$icon))
     {
       if (UIJsPlugin.access$000(this.this$0) == null) {
-        UIJsPlugin.access$002(this.this$0, new bdjb(this.this$0.mMiniAppContext.a(), (ViewGroup)this.this$0.mMiniAppContext.a().findViewById(16908290)));
+        UIJsPlugin.access$002(this.this$0, new bene(this.this$0.mMiniAppContext.a(), (ViewGroup)this.this$0.mMiniAppContext.a().findViewById(16908290)));
       }
       for (;;)
       {
@@ -34,7 +34,7 @@ class UIJsPlugin$1
     {
       try
       {
-        UIJsPlugin.access$102(this.this$0, new bdit(this.this$0.mMiniAppContext.a()));
+        UIJsPlugin.access$102(this.this$0, new bemw(this.this$0.mMiniAppContext.a()));
         if (TextUtils.isEmpty(this.val$imagePath)) {
           break label236;
         }
@@ -46,14 +46,14 @@ class UIJsPlugin$1
       }
       catch (Throwable localThrowable)
       {
-        bdnw.d("UIJsPlugin", "showToastView error.", localThrowable);
+        besl.d("UIJsPlugin", "showToastView error.", localThrowable);
       }
       break;
       label236:
       if ("none".equals(this.val$icon)) {
         UIJsPlugin.access$100(this.this$0).b(-1);
       } else {
-        UIJsPlugin.access$100(this.this$0).a(bdjb.a(this.val$icon));
+        UIJsPlugin.access$100(this.this$0).a(bene.a(this.val$icon));
       }
     }
   }

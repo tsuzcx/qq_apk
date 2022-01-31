@@ -1,28 +1,10 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.GeneralSettingActivity.ThemeCallback.1;
-import mqq.util.WeakReference;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.DevlockPushActivity;
 
 public class aaxz
-  extends axmg
+  extends Handler
 {
-  WeakReference<abry> a;
-  WeakReference<View> b;
-  
-  aaxz(abry paramabry, View paramView)
-  {
-    this.a = new WeakReference(paramabry);
-    this.b = new WeakReference(paramView);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    abry localabry = (abry)this.a.get();
-    View localView = (View)this.b.get();
-    if ((localabry != null) && (localView != null)) {
-      localView.post(new GeneralSettingActivity.ThemeCallback.1(this, localabry, localView));
-    }
-    return super.a(paramInt);
-  }
+  public aaxz(DevlockPushActivity paramDevlockPushActivity) {}
 }
 
 

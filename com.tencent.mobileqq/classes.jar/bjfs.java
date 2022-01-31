@@ -1,16 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
 
-public class bjfs
-  implements View.OnTouchListener
+class bjfs
+  implements bfob
 {
-  public bjfs(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
+  int jdField_a_of_type_Int = 0;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  bjfs(bjfr parambjfr) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    return this.a.a(paramView, paramMotionEvent);
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (bjfr.a(this.jdField_a_of_type_Bjfr).a() != null) && (this.jdField_a_of_type_Int == bjfr.a(this.jdField_a_of_type_Bjfr).a().size() - 1)) {
+      bjfr.a(this.jdField_a_of_type_Bjfr).a();
+    }
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.anim.friendship.impl;
 
-import acph;
+import adaa;
 import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
 public class BoatAnimDirector$1
   implements Runnable
 {
-  public BoatAnimDirector$1(acph paramacph, FriendShipWaveView paramFriendShipWaveView) {}
+  public BoatAnimDirector$1(adaa paramadaa, FriendShipWaveView paramFriendShipWaveView) {}
   
   public void run()
   {

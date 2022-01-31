@@ -1,15 +1,24 @@
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+
 public class nmr
+  implements aptu
 {
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  public nmr(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
   
-  public nmr() {}
-  
-  public nmr(boolean paramBoolean)
+  public void a()
   {
-    this.a = paramBoolean;
+    yxs.a("ReadInJoyNativeAdAppVideoView", "tips onYes mVideoState " + ReadInJoyNativeAdAppVideoView.a(this.a));
+    if (ReadInJoyNativeAdAppVideoView.a(this.a) == 6)
+    {
+      ReadInJoyNativeAdAppVideoView.a(this.a).start();
+      ReadInJoyNativeAdAppVideoView.e(this.a, 5);
+      ReadInJoyNativeAdAppVideoView.a(this.a);
+      ReadInJoyNativeAdAppVideoView.f(this.a, 2);
+    }
   }
+  
+  public void b() {}
 }
 
 

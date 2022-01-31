@@ -1,60 +1,77 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonResp;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
+import tencent.nearby.now.nearby_now_anchor.RspBatchGetAnchorStatus;
 
-public class anmv
-  extends ajhn
+public abstract class anmv
+  extends mxm
 {
-  public anmv(AIOEmotionFragment paramAIOEmotionFragment) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    switch (paramInt)
+    boolean bool4 = false;
+    boolean bool3 = false;
+    Object localObject = null;
+    nearby_now_anchor.RspBatchGetAnchorStatus localRspBatchGetAnchorStatus;
+    boolean bool1;
+    if (paramInt == 0)
     {
+      localRspBatchGetAnchorStatus = new nearby_now_anchor.RspBatchGetAnchorStatus();
+      bool1 = bool4;
     }
-    EmoticonResp localEmoticonResp;
-    int i;
-    label134:
-    QQAppInterface localQQAppInterface;
-    do
+    for (;;)
     {
-      do
+      try
       {
-        return;
-      } while (paramObject == null);
-      localEmoticonResp = (EmoticonResp)paramObject;
-      if (paramBoolean)
-      {
-        i = localEmoticonResp.delEpId;
-        if ((localEmoticonResp.keySeq == null) || (localEmoticonResp.keySeq.equals(""))) {
-          paramObject = ajjy.a(2131634224);
+        localRspBatchGetAnchorStatus.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = localObject;
+        bool2 = bool3;
+        bool1 = bool4;
+        if (localRspBatchGetAnchorStatus.uint32_result.has())
+        {
+          paramArrayOfByte = localObject;
+          bool2 = bool3;
+          bool1 = bool4;
+          if (localRspBatchGetAnchorStatus.uint32_result.get() == 0)
+          {
+            bool1 = true;
+            bool2 = true;
+            paramArrayOfByte = localRspBatchGetAnchorStatus.msg_anchor_stats.get();
+          }
         }
       }
-      for (;;)
+      catch (Exception localException)
       {
-        if (!TextUtils.isEmpty(localEmoticonResp.emoticonId)) {
-          break label134;
-        }
+        paramArrayOfByte = localObject;
+        bool2 = bool1;
         if (!QLog.isColorLevel()) {
-          break;
+          continue;
         }
-        QLog.d("AIOEmotionFragment", 2, "auth type emoticon id is null");
-        return;
-        paramObject = localEmoticonResp.keySeq;
+        QLog.w("Q.msg_box.protocol", 2, localException.toString());
+        paramArrayOfByte = localObject;
+        bool2 = bool1;
         continue;
-        i = -404;
-        paramObject = ajjy.a(2131634225);
       }
-      localQQAppInterface = this.a.a();
-    } while (localQQAppInterface == null);
-    ((arnz)localQQAppInterface.getManager(14)).a(String.valueOf(localEmoticonResp.epId), localEmoticonResp.emoticonId, new anmw(this, paramInt, localQQAppInterface, i, paramObject));
+      a(bool2, paramArrayOfByte, paramBundle);
+      return;
+      paramArrayOfByte = localObject;
+      boolean bool2 = bool3;
+      if (QLog.isColorLevel())
+      {
+        QLog.w("Q.msg_box.protocol", 2, "getNowState failed, errorCode=" + paramInt);
+        paramArrayOfByte = localObject;
+        bool2 = bool3;
+      }
+    }
   }
+  
+  public abstract void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     anmv
  * JD-Core Version:    0.7.0.1
  */

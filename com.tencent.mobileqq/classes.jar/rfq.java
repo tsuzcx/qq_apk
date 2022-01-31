@@ -1,8 +1,32 @@
-public abstract interface rfq
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import java.lang.ref.WeakReference;
+
+public class rfq
+  implements Handler.Callback
 {
-  public abstract void a(int paramInt);
+  private WeakReference<ReadInJoyXListView> a;
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public rfq(ReadInJoyXListView paramReadInJoyXListView)
+  {
+    this.a = new WeakReference(paramReadInJoyXListView);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    if ((this.a != null) && (this.a.get() != null))
+    {
+      ((ReadInJoyXListView)this.a.get()).i();
+      return true;
+    }
+    return true;
+  }
 }
 
 

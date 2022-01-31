@@ -1,14 +1,16 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
 
 public class anjc
+  implements DialogInterface.OnClickListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public URLImageView a;
+  public anjc(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
   
-  public anjc(anja paramanja) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

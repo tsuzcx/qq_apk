@@ -1,19 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import java.util.Map;
 
-class aadp
-  implements DialogInterface.OnClickListener
+public class aadp
+  extends aabw
 {
-  aadp(aadn paramaadn) {}
+  public boolean b;
+  protected String c;
+  public String d;
+  public String e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aadp(Activity paramActivity, int paramInt, String paramString1, String paramString2)
   {
-    paramDialogInterface.dismiss();
+    super(paramActivity, paramInt, paramString1);
+    this.c = paramString2;
+  }
+  
+  protected Map<String, aabn> a()
+  {
+    return aadz.a();
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Int == 2;
+  }
+  
+  protected void c()
+  {
+    aacb.a().a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.c, new aadq(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aadp
  * JD-Core Version:    0.7.0.1
  */

@@ -4,21 +4,21 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import atfh;
-import atmo;
-import atmp;
-import atoc;
+import auci;
+import aukm;
+import aukn;
+import auma;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class OcrRecogResult
-  extends atmo
+  extends aukm
   implements Parcelable
 {
-  public static final Parcelable.Creator<OcrRecogResult> CREATOR = new atfh();
-  @atoc
+  public static final Parcelable.Creator<OcrRecogResult> CREATOR = new auci();
+  @auma
   public String filename;
   public String language;
   public String ocrContent;
@@ -46,54 +46,54 @@ public class OcrRecogResult
     }
   }
   
-  public static OcrRecogResult find(atmp paramatmp, String paramString)
+  public static OcrRecogResult find(aukn paramaukn, String paramString)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (paramatmp != null)
+    if (paramaukn != null)
     {
       localObject1 = localObject2;
       if (!TextUtils.isEmpty(paramString)) {
-        localObject1 = (OcrRecogResult)paramatmp.a(OcrRecogResult.class, "filename=?", new String[] { String.valueOf(paramString) });
+        localObject1 = (OcrRecogResult)paramaukn.a(OcrRecogResult.class, "filename=?", new String[] { String.valueOf(paramString) });
       }
     }
     return localObject1;
   }
   
-  public static void persistOrReplace(atmp paramatmp, OcrRecogResult paramOcrRecogResult)
+  public static void persistOrReplace(aukn paramaukn, OcrRecogResult paramOcrRecogResult)
   {
-    if ((paramatmp != null) && (paramOcrRecogResult != null) && (!TextUtils.isEmpty(paramOcrRecogResult.filename))) {
-      paramatmp.b(paramOcrRecogResult);
+    if ((paramaukn != null) && (paramOcrRecogResult != null) && (!TextUtils.isEmpty(paramOcrRecogResult.filename))) {
+      paramaukn.b(paramOcrRecogResult);
     }
   }
   
-  public static boolean remove(atmp paramatmp, String paramString)
+  public static boolean remove(aukn paramaukn, String paramString)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (paramatmp != null)
+    if (paramaukn != null)
     {
       bool1 = bool2;
       if (!TextUtils.isEmpty(paramString))
       {
-        paramString = find(paramatmp, paramString);
+        paramString = find(paramaukn, paramString);
         bool1 = bool2;
         if (paramString != null) {
-          bool1 = paramatmp.b(paramString);
+          bool1 = paramaukn.b(paramString);
         }
       }
     }
     return bool1;
   }
   
-  public static void removeCache(atmp paramatmp)
+  public static void removeCache(aukn paramaukn)
   {
-    List localList = paramatmp.a(OcrRecogResult.class);
+    List localList = paramaukn.a(OcrRecogResult.class);
     if ((localList != null) && (localList.size() > 50))
     {
       Iterator localIterator = localList.iterator();
       while (localIterator.hasNext()) {
-        paramatmp.b((OcrRecogResult)localIterator.next());
+        paramaukn.b((OcrRecogResult)localIterator.next());
       }
       QLog.d("Q.ocr", 1, "removeCache size:" + localList.size());
     }

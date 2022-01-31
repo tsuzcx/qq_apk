@@ -1,37 +1,104 @@
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import tencent.im.oidb.oidb_0x5e1.RspBody;
-import tencent.im.oidb.oidb_0x5e1.UdcUinData;
+import android.support.annotation.NonNull;
 
 public class aabc
-  extends atdj
 {
-  public aabc(AuthDevActivity paramAuthDevActivity) {}
+  protected int a;
+  protected boolean a;
+  @NonNull
+  protected byte[] a;
+  protected int b;
+  protected boolean b;
+  protected int c;
+  protected boolean c;
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public aabc()
   {
-    super.a(paramString1, paramInt, paramString2);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Int = 1536;
+    this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_b_of_type_Int];
   }
   
-  public void a(oidb_0x5e1.RspBody paramRspBody)
+  protected long a()
   {
-    super.a(paramRspBody);
-    AuthDevActivity.a(this.a, paramRspBody);
-    int i = ((oidb_0x5e1.UdcUinData)AuthDevActivity.a(this.a).rpt_msg_uin_data.get(0)).user_login_guard_face.get();
-    FormSimpleItem localFormSimpleItem = AuthDevActivity.a(this.a);
-    if (i == 1) {}
-    for (paramRspBody = this.a.getString(2131626690);; paramRspBody = this.a.getString(2131626697))
+    boolean bool = false;
+    long l = 0L;
+    int i = 0;
+    while ((i == 0) && (b())) {
+      if (Character.isDigit(this.jdField_a_of_type_Int))
+      {
+        l = l * 10L + (this.jdField_a_of_type_Int - 48);
+        bool = true;
+      }
+      else
+      {
+        i = 1;
+      }
+    }
+    a(bool);
+    return l;
+  }
+  
+  protected void a(char paramChar)
+  {
+    boolean bool = false;
+    while ((!bool) && (b())) {
+      if (this.jdField_a_of_type_Int == paramChar) {
+        bool = true;
+      }
+    }
+    a(bool);
+  }
+  
+  protected boolean a()
+  {
+    b();
+    this.jdField_c_of_type_Boolean = true;
+    return !this.jdField_b_of_type_Boolean;
+  }
+  
+  protected boolean a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean &= paramBoolean;
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  protected boolean b()
+  {
+    if (this.jdField_c_of_type_Boolean)
     {
-      localFormSimpleItem.setRightText(paramRspBody);
-      return;
+      this.jdField_c_of_type_Boolean = false;
+      return !this.jdField_b_of_type_Boolean;
+    }
+    if (this.jdField_c_of_type_Int >= this.jdField_b_of_type_Int) {
+      return false;
+    }
+    int i;
+    if (this.jdField_a_of_type_ArrayOfByte[this.jdField_c_of_type_Int] != -1)
+    {
+      i = this.jdField_a_of_type_ArrayOfByte[this.jdField_c_of_type_Int] & 0xFF;
+      label63:
+      this.jdField_a_of_type_Int = i;
+      this.jdField_c_of_type_Int += 1;
+      if (this.jdField_a_of_type_Int != -1) {
+        break label107;
+      }
+    }
+    label107:
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_b_of_type_Boolean = bool;
+      if (!this.jdField_b_of_type_Boolean) {
+        break;
+      }
+      return false;
+      i = -1;
+      break label63;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aabc
  * JD-Core Version:    0.7.0.1
  */

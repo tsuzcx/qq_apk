@@ -1,30 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class alpg
-  implements View.OnClickListener
+class alpg
+  implements admi
 {
-  public alpg(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  alpg(alpf paramalpf, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = (alpm)paramView.getTag();
-    if (!((ajjj)this.a.app.getManager(51)).b(paramView.a)) {}
-    for (int i = 35;; i = 1)
-    {
-      paramView = new ProfileActivity.AllInOne(paramView.a, i);
-      ProfileActivity.a(this.a, paramView, 1016);
-      return;
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Alpf.a(this.jdField_a_of_type_Long);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    this.jdField_a_of_type_Alpf.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alpg
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,8 @@ import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import bazb;
-import bfnj;
+import bcbv;
+import bgvq;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.smtt.sdk.WebBackForwardList;
@@ -43,7 +43,7 @@ public class ReaderCommentPageFragment
     if (!TextUtils.isEmpty(paramString)) {
       str2 = str1 + "&commentId=" + paramString;
     }
-    return bfnj.a("qqreaderComment") + "&id=" + paramLong + str2;
+    return bgvq.a("qqreaderComment") + "&id=" + paramLong + str2;
   }
   
   private static String a(Intent paramIntent)
@@ -66,7 +66,7 @@ public class ReaderCommentPageFragment
     }
     for (;;)
     {
-      str = bfnj.a("qqreaderReadover") + "&recommend_bid=" + l1;
+      str = bgvq.a("qqreaderReadover") + "&recommend_bid=" + l1;
       paramIntent = a(i, paramIntent, l2);
       if (bool2)
       {
@@ -163,27 +163,27 @@ public class ReaderCommentPageFragment
     super.a(paramIntent, paramString);
     if (this.jdField_a_of_type_Int == 0)
     {
-      this.jdField_a_of_type_Bazb.a.setVisibility(8);
-      this.jdField_a_of_type_Bazb.c.setVisibility(0);
-      this.jdField_a_of_type_Bazb.c.setText("关闭");
-      this.jdField_a_of_type_Bazb.c.setTypeface(Typeface.DEFAULT_BOLD);
+      this.jdField_a_of_type_Bcbv.a.setVisibility(8);
+      this.jdField_a_of_type_Bcbv.c.setVisibility(0);
+      this.jdField_a_of_type_Bcbv.c.setText("关闭");
+      this.jdField_a_of_type_Bcbv.c.setTypeface(Typeface.DEFAULT_BOLD);
     }
     for (;;)
     {
       if ("chapterover".equals(this.jdField_a_of_type_JavaLangString))
       {
-        this.jdField_a_of_type_Bazb.a.setVisibility(0);
-        this.jdField_a_of_type_Bazb.b.setText("章节评论");
-        this.jdField_a_of_type_Bazb.c.setVisibility(0);
-        this.jdField_a_of_type_Bazb.c.setText("书友交流");
-        this.jdField_a_of_type_Bazb.c.setTypeface(Typeface.DEFAULT_BOLD);
+        this.jdField_a_of_type_Bcbv.a.setVisibility(0);
+        this.jdField_a_of_type_Bcbv.b.setText("章节评论");
+        this.jdField_a_of_type_Bcbv.c.setVisibility(0);
+        this.jdField_a_of_type_Bcbv.c.setText("书友交流");
+        this.jdField_a_of_type_Bcbv.c.setTypeface(Typeface.DEFAULT_BOLD);
       }
       return;
       if (this.jdField_a_of_type_Int == 1)
       {
-        this.jdField_a_of_type_Bazb.a.setVisibility(0);
-        this.jdField_a_of_type_Bazb.c.setText("");
-        this.jdField_a_of_type_Bazb.c.setVisibility(8);
+        this.jdField_a_of_type_Bcbv.a.setVisibility(0);
+        this.jdField_a_of_type_Bcbv.c.setText("");
+        this.jdField_a_of_type_Bcbv.c.setVisibility(8);
       }
     }
   }
@@ -192,19 +192,19 @@ public class ReaderCommentPageFragment
   {
     super.b(paramWebView, paramString);
     if ("chapterover".equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Bazb.b.setText("章节评论");
+      this.jdField_a_of_type_Bcbv.b.setText("章节评论");
     }
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_Bazb.a) {
+    if (paramView == this.jdField_a_of_type_Bcbv.a) {
       j();
     }
     do
     {
       return;
-      if (paramView != this.jdField_a_of_type_Bazb.c) {
+      if (paramView != this.jdField_a_of_type_Bcbv.c) {
         break;
       }
       if (("chapterover".equals(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null))

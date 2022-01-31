@@ -1,20 +1,10 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-
-public class affn
-  extends ajjh
+public abstract interface affn
 {
-  public affn(PublicAccountFragment paramPublicAccountFragment) {}
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean) {
-      this.a.i();
-    }
-  }
+  public abstract void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     affn
  * JD-Core Version:    0.7.0.1
  */

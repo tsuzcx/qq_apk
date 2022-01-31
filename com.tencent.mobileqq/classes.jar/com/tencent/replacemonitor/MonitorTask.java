@@ -1,6 +1,6 @@
 package com.tencent.replacemonitor;
 
-import com.tencent.tmassistantbase.util.e;
+import com.tencent.tmassistantbase.util.d;
 import java.util.Map;
 
 public class MonitorTask
@@ -44,7 +44,7 @@ public class MonitorTask
   
   public String toString()
   {
-    return "MonitorTask:" + " id = " + this.id + " packageName = " + this.packageName + " versionCode = " + this.versionCode + " appName = " + this.appName + " fileSize = " + this.fileSize + " fileMd5 = " + this.fileMd5 + " cpChannelId = " + this.cpChannelId + " filePath = " + this.filePath + " downloadUrl = " + this.downloadUrl + " yybAppId = " + this.yybAppId + " yybApkId = " + this.yybApkId + " installDir = " + this.installDir + " lastModifedTime = " + this.lastModifedTime + " additionalId = " + this.additionalId + " traceId = " + this.traceId + " appType = " + this.appType + " lastStep = " + this.lastStep + " isTencentDownload = " + this.isTencentDownload + " externalParams = " + e.a(this.externalParams, "&");
+    return "MonitorTask:" + " id = " + this.id + " packageName = " + this.packageName + " versionCode = " + this.versionCode + " appName = " + this.appName + " fileSize = " + this.fileSize + " fileMd5 = " + this.fileMd5 + " cpChannelId = " + this.cpChannelId + " filePath = " + this.filePath + " downloadUrl = " + this.downloadUrl + " yybAppId = " + this.yybAppId + " yybApkId = " + this.yybApkId + " installDir = " + this.installDir + " lastModifedTime = " + this.lastModifedTime + " additionalId = " + this.additionalId + " traceId = " + this.traceId + " appType = " + this.appType + " lastStep = " + this.lastStep + " isTencentDownload = " + this.isTencentDownload + " externalParams = " + d.a(this.externalParams, "&");
   }
 }
 

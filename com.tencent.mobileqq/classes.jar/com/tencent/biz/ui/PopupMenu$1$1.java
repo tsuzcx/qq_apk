@@ -1,12 +1,12 @@
 package com.tencent.biz.ui;
 
-import wpc;
-import wpd;
+import xef;
+import xeg;
 
 public class PopupMenu$1$1
   implements Runnable
 {
-  public PopupMenu$1$1(wpd paramwpd) {}
+  public PopupMenu$1$1(xeg paramxeg) {}
   
   public void run()
   {

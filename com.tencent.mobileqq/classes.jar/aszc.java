@@ -1,95 +1,52 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
 public class aszc
+  implements INetInfoHandler
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private asyn jdField_a_of_type_Asyn;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private asyn b;
-  private asyn c;
-  private asyn d;
-  private asyn e;
+  private aszc(NearbyAppInterface paramNearbyAppInterface) {}
   
-  public aszc(QQAppInterface paramQQAppInterface, Context paramContext)
+  public void onNetMobile2None()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (NearbyAppInterface.i(this.a) != null) {
+      NearbyAppInterface.j(this.a).onNetMobile2None();
+    }
   }
   
-  public int a()
+  public void onNetMobile2Wifi(String paramString)
   {
-    return 5;
+    if (NearbyAppInterface.g(this.a) != null) {
+      NearbyAppInterface.h(this.a).onNetMobile2Wifi(paramString);
+    }
   }
   
-  public int a(atar paramatar)
+  public void onNetNone2Mobile(String paramString)
   {
-    if ((paramatar instanceof ataq)) {
-      return 0;
+    if (NearbyAppInterface.a(this.a) != null) {
+      NearbyAppInterface.b(this.a).onNetNone2Mobile(paramString);
     }
-    if ((paramatar instanceof atau)) {
-      return 1;
-    }
-    if ((paramatar instanceof atas)) {
-      return 2;
-    }
-    if ((paramatar instanceof atao)) {
-      return 3;
-    }
-    if ((paramatar instanceof atav)) {
-      return 4;
-    }
-    return -1;
   }
   
-  public asyn a(int paramInt)
+  public void onNetNone2Wifi(String paramString)
   {
-    Object localObject = null;
-    if (paramInt == 0) {
-      if (this.jdField_a_of_type_Asyn != null) {
-        localObject = this.jdField_a_of_type_Asyn;
-      }
+    if (NearbyAppInterface.e(this.a) != null) {
+      NearbyAppInterface.f(this.a).onNetNone2Wifi(paramString);
     }
-    do
-    {
-      return localObject;
-      localObject = new asza(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_Asyn = ((asyn)localObject);
-      return localObject;
-      if (paramInt == 1)
-      {
-        if (this.b != null) {
-          return this.b;
-        }
-        localObject = new atak(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.b = ((asyn)localObject);
-        return localObject;
-      }
-      if (paramInt == 2)
-      {
-        if (this.c != null) {
-          return this.c;
-        }
-        localObject = new atah(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.c = ((asyn)localObject);
-        return localObject;
-      }
-      if (paramInt == 3)
-      {
-        if (this.d != null) {
-          return this.d;
-        }
-        localObject = new asyv(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.d = ((asyn)localObject);
-        return localObject;
-      }
-    } while (paramInt != 4);
-    if (this.e != null) {
-      return this.e;
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (NearbyAppInterface.c(this.a) != null) {
+      NearbyAppInterface.d(this.a).onNetWifi2Mobile(paramString);
     }
-    localObject = new atam(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.e = ((asyn)localObject);
-    return localObject;
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (NearbyAppInterface.k(this.a) != null) {
+      NearbyAppInterface.l(this.a).onNetWifi2None();
+    }
   }
 }
 

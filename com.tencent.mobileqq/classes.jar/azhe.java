@@ -1,8 +1,19 @@
-public class azhe
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
+
+public final class azhe
+  implements QQPermissionCallback
 {
-  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
+  public azhe(azhj paramazhj, BaseActivity paramBaseActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    new awrb(null).a("dc00899").b("Grp_tribe").c(paramString1).d(paramString2).a(paramInt1).b(paramInt2).a(paramVarArgs).a();
+    bbcv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_Azhj.a(bair.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, ajsf.bc, 1001));
   }
 }
 

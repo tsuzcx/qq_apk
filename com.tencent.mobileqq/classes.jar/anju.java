@@ -1,37 +1,55 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.QzoneCommonIntent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
 
-public abstract class anju
-  extends angu
+public final class anju
+  implements anjv
 {
-  anfw jdField_a_of_type_Anfw = new anjw(this);
-  anfz jdField_a_of_type_Anfz = new anjv(this);
-  protected int h = 2;
-  
-  public anju(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, anhs paramanhs)
+  public void a(MSFServlet paramMSFServlet, QzoneCommonIntent paramQzoneCommonIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramanhs);
-    anfi.a().a(this.jdField_a_of_type_Anfw);
-    anga.a().a(this.jdField_a_of_type_Anfz);
+    bgxt localbgxt = paramQzoneCommonIntent.getRequest();
+    Object localObject2 = localbgxt.uniKey();
+    int i = localbgxt.a();
+    int[] arrayOfInt = new int[1];
+    String[] arrayOfString = new String[1];
+    Object localObject1 = null;
+    if (!paramFromServiceMsg.isSuccess())
+    {
+      arrayOfInt[0] = (paramFromServiceMsg.getResultCode() + 300000);
+      arrayOfString[0] = paramFromServiceMsg.getBusinessFailMsg();
+      paramFromServiceMsg = (FromServiceMsg)localObject1;
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneCommonIntent", 2, String.format("cmd :%s, success:%b,code:%d, msg:%s", new Object[] { localbgxt.getCmdString(), Boolean.valueOf(QzoneCommonIntent.succeeded(arrayOfInt[0])), Integer.valueOf(arrayOfInt[0]), arrayOfString[0] }));
+      }
+      localObject2 = paramQzoneCommonIntent.getExtras();
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = new Bundle();
+      }
+      ((Bundle)localObject1).putSerializable("key_response", paramFromServiceMsg);
+      ((Bundle)localObject1).putInt("key_response_code", arrayOfInt[0]);
+      ((Bundle)localObject1).putString("key_response_msg", arrayOfString[0]);
+      if (paramQzoneCommonIntent.getObserver() == null) {
+        QLog.e("QzoneCommonIntent", 1, "observer ==null,无法回调，请检查是否有调用setObserver");
+      }
+      if ((paramFromServiceMsg == null) || (!QzoneCommonIntent.succeeded(arrayOfInt[0]))) {
+        break label260;
+      }
+    }
+    label260:
+    for (boolean bool = true;; bool = false)
+    {
+      paramMSFServlet.notifyObserver(paramQzoneCommonIntent, i, bool, (Bundle)localObject1, null);
+      if (arrayOfInt[0] != 1000006) {
+        QzoneCommonIntent.access$000(localbgxt, arrayOfInt[0], arrayOfString[0]);
+      }
+      return;
+      paramFromServiceMsg = bhoi.a(paramFromServiceMsg.getWupBuffer(), (String)localObject2, arrayOfInt, arrayOfString);
+      break;
+    }
   }
-  
-  public void a()
-  {
-    super.a();
-    anfi.a().b(this.jdField_a_of_type_Anfw);
-    anga.a().b(this.jdField_a_of_type_Anfz);
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
-  
-  public void b(EmoticonPackage paramEmoticonPackage) {}
 }
 
 

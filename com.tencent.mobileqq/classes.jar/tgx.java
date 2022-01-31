@@ -1,19 +1,8 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
-
-class tgx
-  implements ViewPager.OnPageChangeListener
+public abstract interface tgx
 {
-  tgx(tgv paramtgv) {}
+  public abstract void a();
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
-  {
-    this.a.a.setSelectedTab(paramInt, true);
-  }
+  public abstract void b();
 }
 
 

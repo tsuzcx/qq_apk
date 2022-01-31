@@ -1,221 +1,112 @@
-import android.app.Activity;
 import android.content.Context;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
+import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.process.chanel.GeneralEventHandler.1;
-import com.tencent.mobileqq.apollo.process.chanel.GeneralEventHandler.2;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
+import java.util.List;
 
 public class aipd
-  implements aioo, Handler.Callback
+  extends BaseAdapter
 {
-  private static long jdField_a_of_type_Long;
-  private int jdField_a_of_type_Int;
-  protected befq a;
-  public WeakReference<Activity> a;
-  private WeakReference<QQAppInterface> b;
+  protected int a;
+  protected akgd a;
+  protected Context a;
+  protected View a;
+  protected QQAppInterface a;
+  public List<String> a;
   
-  public aipd(Activity paramActivity, QQAppInterface paramQQAppInterface, int paramInt)
+  public aipd(Context paramContext, QQAppInterface paramQQAppInterface, View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Befq = new befq(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.b = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidViewView = paramView;
     this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Akgd = ((akgd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(299));
   }
   
-  private void b(String paramString)
+  public String a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("apollochannel_GeneralEventHandler", 2, "startNewGame reqData:" + paramString);
-    }
-    long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long < 1000L) {
-      QLog.e("apollochannel_GeneralEventHandler", 1, "[startNewGame] current - sLastLaunchGameTime < 1000");
-    }
-    do
-    {
-      return;
-      jdField_a_of_type_Long = l;
-    } while (TextUtils.isEmpty(paramString));
-    ThreadManagerV2.excute(new GeneralEventHandler.2(this, paramString), 16, null, false);
-  }
-  
-  public int a()
-  {
-    return 100;
-  }
-  
-  public aije a(String paramString)
-  {
-    aije localaije = new aije();
-    String str = ApolloUtil.a(paramString, "tips");
-    int i = ApolloUtil.a(paramString, "length");
-    if (TextUtils.isEmpty(str)) {
-      return localaije;
-    }
-    paramString = this.jdField_a_of_type_Befq.obtainMessage(255);
-    paramString.obj = str;
-    paramString.arg1 = i;
-    paramString.sendToTarget();
-    return localaije;
-  }
-  
-  public aije a(String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    if (this.b == null) {
-      return null;
-    }
-    if (this.jdField_a_of_type_Int != paramInt2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("apollochannel_GeneralEventHandler", 2, new Object[] { "not the same gameId, self:", Integer.valueOf(this.jdField_a_of_type_Int), "cmd gameId:", Integer.valueOf(paramInt2), ",cmd:", paramString1 });
-      }
-      return new aije();
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
-    if (localQQAppInterface == null) {
-      return null;
-    }
-    if ("general_cmd_ui_show_toast".equals(paramString1)) {
-      return a(paramString2);
-    }
-    if ("cs.get_dress_path.local".equals(paramString1))
-    {
-      aizc.a(localQQAppInterface, paramString1, paramString2, paramInt1);
-      return new aije();
-    }
-    if ("cs.report_data_2_backstage.local".equals(paramString1))
-    {
-      aizc.b(localQQAppInterface, paramString2);
-      return new aije();
-    }
-    if ("cs.report_flow_data.local".equals(paramString1))
-    {
-      aizc.c(localQQAppInterface, paramString2);
-      return new aije();
-    }
-    if ("cs.save_recommend_ip.local".equals(paramString1))
-    {
-      aizc.a(localQQAppInterface, paramString2);
-      return new aije();
-    }
-    if ("cs.openFloatTransparentView.local".equals(paramString1))
-    {
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
-      {
-        aizc.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
-        return new aije();
-      }
-    }
-    else if ("cs.openWebView.local".equals(paramString1))
-    {
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
-      {
-        aizc.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
-        return new aije();
-      }
-    }
-    else
-    {
-      if ("cs.script_get_nickname.local".equals(paramString1))
-      {
-        QQMessageFacade localQQMessageFacade = localQQAppInterface.a();
-        paramInt2 = -1;
-        String str = "";
-        paramString1 = str;
-        paramInt1 = paramInt2;
-        if (localQQMessageFacade != null)
-        {
-          paramString1 = str;
-          paramInt1 = paramInt2;
-          if (localQQMessageFacade.a())
-          {
-            paramString1 = str;
-            paramInt1 = paramInt2;
-            if (!TextUtils.isEmpty(localQQMessageFacade.a()))
-            {
-              paramString1 = localQQMessageFacade.a();
-              paramInt1 = localQQMessageFacade.a();
-            }
-          }
-        }
-        return aisl.a(paramString2, localQQAppInterface, paramInt1, paramString1);
-      }
-      if (!"cs.send_game_msg.local".equals(paramString1)) {
-        break label403;
-      }
-      aizc.a(localQQAppInterface, paramString2, (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    }
-    for (;;)
-    {
-      return null;
-      label403:
-      if ("cs.create_xy.local".equals(paramString1))
-      {
-        b(paramString2);
-      }
-      else if ("cs.open_cm_aio.local".equals(paramString1))
-      {
-        a(paramString2);
-      }
-      else if ("cs.show_one_more_page.local".equals(paramString1))
-      {
-        paramString1 = (aifg)localQQAppInterface.getManager(153);
-        if (paramString1 != null) {
-          paramString1.a().h(paramString2);
-        }
-      }
-    }
+    return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Befq.removeCallbacksAndMessages(null);
-  }
-  
-  void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("apollochannel_GeneralEventHandler", 2, "openCmAIO reqData:" + paramString);
+    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Akgd.a();
+    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    if (!TextUtils.isEmpty(paramString)) {
-      ThreadManagerV2.excute(new GeneralEventHandler.1(this, paramString), 16, null, false);
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    int i = 1;
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return false;
-    } while (!(paramMessage.obj instanceof String));
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    CharSequence localCharSequence = (CharSequence)paramMessage.obj;
-    if (paramMessage.arg1 == 1) {}
     for (;;)
     {
-      bbmy.a(localBaseApplication, localCharSequence, i).a();
-      return false;
-      i = 0;
+      notifyDataSetChanged();
+      return;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559621, paramViewGroup, false);
+      paramViewGroup = new aipe(this);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367530));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367533));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView = ((PressEffectImageView)paramView.findViewById(2131375366));
+      paramViewGroup.b = paramView.findViewById(2131365283);
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView;
+      paramView.setTag(paramViewGroup);
+      paramViewGroup.jdField_a_of_type_Int = paramInt;
+      if (this.jdField_a_of_type_JavaUtilList != null) {
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+      }
+      if (!ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
+        break label210;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991B8"));
+      paramViewGroup.b.setBackgroundColor(Color.parseColor("#040E1C"));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845180);
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839124);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setImageResource(2130845178);
+    }
+    for (;;)
+    {
+      paramView.setOnClickListener(paramViewGroup);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setOnClickListener(paramViewGroup);
+      return paramView;
+      paramViewGroup = (aipe)paramView.getTag();
+      break;
+      label210:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#4D4D4D"));
+      paramViewGroup.b.setBackgroundColor(Color.parseColor("#E6E6E6"));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845179);
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839123);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setImageResource(2130845177);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aipd
  * JD-Core Version:    0.7.0.1
  */

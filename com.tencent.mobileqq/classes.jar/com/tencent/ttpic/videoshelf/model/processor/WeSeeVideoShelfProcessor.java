@@ -8,13 +8,12 @@ import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.openapi.factory.TTPicFilterFactoryLocal;
-import com.tencent.ttpic.openapi.offlineset.OfflineConfig;
+import com.tencent.ttpic.video.AECoderFactory;
+import com.tencent.ttpic.video.AEDecoder;
 import com.tencent.ttpic.videoshelf.filter.VideoShelfAlphaFilter;
 import com.tencent.ttpic.videoshelf.filter.VideoShelfMergeFilter;
 import com.tencent.ttpic.videoshelf.model.edit.NodeGroup;
 import com.tencent.ttpic.videoshelf.model.template.VideoFrameItem;
-import com.tencent.vbox.VboxFactory;
-import com.tencent.vbox.decode.VboxDecoder;
 import com.tencent.vbox.util.VideoUtil;
 import java.io.File;
 import java.util.ArrayList;
@@ -39,7 +38,7 @@ public class WeSeeVideoShelfProcessor
   private List<Long> mFrameStamps = new ArrayList();
   private String mInputVideo;
   private String mLutPath;
-  private VboxDecoder mVideoDecoder;
+  private AEDecoder mVideoDecoder;
   private int mVideoTemplateType;
   private VideoShelfMergeFilter mergeFilter;
   private Frame mergeFrame = new Frame();
@@ -64,7 +63,7 @@ public class WeSeeVideoShelfProcessor
   {
     if (this.mVideoDecoder != null)
     {
-      this.mVideoDecoder.releaseDecoder();
+      this.mVideoDecoder.release();
       this.mVideoDecoder = null;
     }
     if (this.alphaFilter != null)
@@ -139,15 +138,9 @@ public class WeSeeVideoShelfProcessor
     if (this.mFrameStamps != null) {
       Collections.sort(this.mFrameStamps);
     }
-    paramArrayOfInt = this.mInputVideo;
-    if (OfflineConfig.isCouldHardDecode()) {}
-    for (int i = 1;; i = 2)
-    {
-      this.mVideoDecoder = VboxFactory.createDecoder(paramArrayOfInt, i);
-      this.mVideoDecoder.setTexture(this.mDecodeTexture);
-      this.mFrameIndex = 0;
-      return;
-    }
+    this.mVideoDecoder = AECoderFactory.createDecoder(this.mInputVideo);
+    this.mVideoDecoder.setTexture(this.mDecodeTexture);
+    this.mFrameIndex = 0;
   }
   
   public int isPrepareInit()

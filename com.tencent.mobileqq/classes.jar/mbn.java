@@ -1,8 +1,18 @@
-import android.view.MotionEvent;
+import java.util.Comparator;
 
-public abstract interface mbn
+class mbn
+  implements Comparator<los>
 {
-  public abstract boolean a(MotionEvent paramMotionEvent, boolean paramBoolean);
+  mbn(mbm parammbm) {}
+  
+  public int a(los paramlos1, los paramlos2)
+  {
+    if (paramlos1.a) {}
+    while (paramlos2.a) {
+      return 1;
+    }
+    return 0;
+  }
 }
 
 

@@ -1,50 +1,91 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class anat
-  implements URLDrawableDownListener
+public class anat
+  implements ampd<String>
 {
-  anat(anao paramanao, anht paramanht, anau paramanau) {}
+  public String a;
+  public ArrayList<anau> a;
+  private String b = "place_holder";
+  private String c = "data";
+  private String d = "topic_id";
+  private String e = "topic_name";
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public anat()
   {
-    QLog.e("FavEmosmViewPage", 1, "onLoadFailed: " + this.jdField_a_of_type_Anht.toString());
-    anao.a(this.jdField_a_of_type_Anao, this.jdField_a_of_type_Anau.a, this.jdField_a_of_type_Anau);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(String paramString)
   {
-    QLog.e("FavEmosmViewPage", 1, "onLoadFailed: " + this.jdField_a_of_type_Anht.toString());
-    anao.a(this.jdField_a_of_type_Anao, this.jdField_a_of_type_Anau.a, this.jdField_a_of_type_Anau);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    QLog.e("FavEmosmViewPage", 1, "onLoadInterrupted: " + this.jdField_a_of_type_Anht.toString());
-    anao.a(this.jdField_a_of_type_Anao, this.jdField_a_of_type_Anau.a, this.jdField_a_of_type_Anau);
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FavEmosmViewPage", 2, "onLoadProgressed: " + this.jdField_a_of_type_Anht.toString());
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("SigTopicConfig", 1, "SigTopic config content is empty");
+      return;
     }
-    anao.a(this.jdField_a_of_type_Anao, this.jdField_a_of_type_Anau.a, this.jdField_a_of_type_Anau);
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramString);
+        paramString = localJSONObject.optJSONArray(this.c);
+        this.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.b, ajyc.a(2131714155));
+        if (paramString == null) {
+          break;
+        }
+        i = 0;
+        if (i >= paramString.length()) {
+          break;
+        }
+        localJSONObject = paramString.getJSONObject(i);
+        localanau = new anau();
+        localanau.jdField_a_of_type_Int = localJSONObject.optInt(this.d);
+        localanau.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.e);
+        if (!TextUtils.isEmpty(localanau.jdField_a_of_type_JavaLangString)) {
+          break label193;
+        }
+        if (!QLog.isColorLevel()) {
+          break label198;
+        }
+        QLog.e("SigTopicConfig", 2, new Object[] { "SigTopic config parse has invalid item,index=", Integer.valueOf(i) });
+      }
+      catch (JSONException paramString)
+      {
+        int i;
+        anau localanau;
+        QLog.e("SigTopicConfig", 1, "SigTopic config parse exception", paramString);
+        return;
+      }
+      if (j != 0) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(localanau);
+      }
+      i += 1;
+      continue;
+      label193:
+      int j = 1;
+      continue;
+      label198:
+      j = 0;
+    }
   }
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FavEmosmViewPage", 2, "onLoadSuccess: " + this.jdField_a_of_type_Anht.toString());
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+      return "recommend title is " + this.jdField_a_of_type_JavaLangString + ", " + this.jdField_a_of_type_JavaUtilArrayList.toString();
     }
-    anao.a(this.jdField_a_of_type_Anao, this.jdField_a_of_type_Anau.a, this.jdField_a_of_type_Anau);
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anat
  * JD-Core Version:    0.7.0.1
  */

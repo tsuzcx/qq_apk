@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import com.tencent.common.app.BaseApplicationImpl;
 
 class amuv
-  implements DialogInterface.OnClickListener
+  implements bjip
 {
   amuv(amuu paramamuu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString)
   {
-    amvk.a().b(this.a.jdField_a_of_type_Amum);
-    this.a.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment.a.notifyDataSetChanged();
+    bkqo.a(BaseApplicationImpl.getContext(), paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amuv
  * JD-Core Version:    0.7.0.1
  */

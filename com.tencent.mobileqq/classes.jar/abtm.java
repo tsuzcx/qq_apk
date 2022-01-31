@@ -1,75 +1,33 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubAccountBindActivity.5.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class abtm
-  extends ajjh
 {
-  public abtm(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public PublicAccountInfo a;
+  public String a;
+  public String b = "";
   
-  void a(String paramString, int paramInt)
+  public abtm(PublicAccountInfo paramPublicAccountInfo)
   {
-    ThreadManager.getFileThreadHandler().post(new SubAccountBindActivity.5.1(this, paramString, paramInt));
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
   }
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void a(String paramString)
   {
-    int j = 0;
-    if ((!paramBoolean) || (paramString == null)) {}
-    for (;;)
-    {
-      return;
-      int i;
-      if (SubAccountBindActivity.a(this.a) != null) {
-        i = SubAccountBindActivity.a(this.a).getChildCount();
-      }
-      while (j < SubAccountBindActivity.a(this.a).size())
-      {
-        if ((i > j) && (SubAccountBindActivity.a(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.a(this.a).get(j)).getUin())))
-        {
-          a(paramString, j);
-          return;
-        }
-        j += 1;
-        continue;
-        i = 0;
-      }
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
+    this.jdField_a_of_type_JavaLangString = str;
   }
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void b(String paramString)
   {
-    int j = 0;
-    if ((!paramBoolean) || (paramString == null)) {}
-    for (;;)
-    {
-      return;
-      int i;
-      if (SubAccountBindActivity.a(this.a) != null) {
-        i = SubAccountBindActivity.a(this.a).getChildCount();
-      }
-      while (j < SubAccountBindActivity.a(this.a).size())
-      {
-        if ((i > j) && (SubAccountBindActivity.a(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.a(this.a).get(j)).getUin())))
-        {
-          TextView localTextView1 = (TextView)SubAccountBindActivity.a(this.a).getChildAt(j).findViewById(2131304981);
-          TextView localTextView2 = (TextView)SubAccountBindActivity.a(this.a).getChildAt(j).findViewById(2131296287);
-          localTextView1.setText(babh.h(this.a.app, paramString));
-          localTextView2.setText(paramString);
-          a(paramString, j);
-          return;
-        }
-        j += 1;
-        continue;
-        i = 0;
-      }
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
+    this.b = str;
   }
 }
 

@@ -3,8 +3,6 @@ package com.tencent.util;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.os.Environment;
 import com.tencent.filter.QImage;
 import com.tencent.ttpic.AEBaseConfig;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
@@ -152,15 +150,6 @@ public class FilterEngineJNILib
     return arrayOfByte;
   }
   
-  private static String getSDPath()
-  {
-    File localFile = null;
-    if (Environment.getExternalStorageState().equals("mounted")) {
-      localFile = Environment.getExternalStorageDirectory();
-    }
-    return localFile.toString();
-  }
-  
   public static native void nativeCopyImage(Bitmap paramBitmap, long paramLong);
   
   /* Error */
@@ -172,34 +161,34 @@ public class FilterEngineJNILib
     //   4: astore_1
     //   5: aload_1
     //   6: ifnonnull +32 -> 38
-    //   9: ldc 177
+    //   9: ldc 158
     //   11: new 24	java/lang/StringBuilder
     //   14: dup
     //   15: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   18: ldc 179
+    //   18: ldc 160
     //   20: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: aload_0
     //   24: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: ldc 181
+    //   27: ldc 162
     //   29: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   35: invokestatic 184	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   35: invokestatic 165	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   38: aload_1
-    //   39: invokestatic 190	com/tencent/ttpic/baseutils/encrypt/FileEncryptUtils:decryptFile	(Ljava/io/InputStream;)[B
+    //   39: invokestatic 171	com/tencent/ttpic/baseutils/encrypt/FileEncryptUtils:decryptFile	(Ljava/io/InputStream;)[B
     //   42: astore_0
     //   43: aload_1
-    //   44: invokestatic 196	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   44: invokestatic 177	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   47: aload_0
     //   48: areturn
     //   49: astore_1
     //   50: aconst_null
     //   51: astore_0
-    //   52: ldc 177
-    //   54: ldc 198
+    //   52: ldc 158
+    //   54: ldc 179
     //   56: aload_1
     //   57: iconst_0
     //   58: anewarray 4	java/lang/Object
-    //   61: invokestatic 201	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
+    //   61: invokestatic 182	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
     //   64: aload_0
     //   65: areturn
     //   66: astore_1
@@ -246,7 +235,7 @@ public class FilterEngineJNILib
     //   2: new 24	java/lang/StringBuilder
     //   5: dup
     //   6: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   9: ldc 237
+    //   9: ldc 218
     //   11: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   14: aload_1
     //   15: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -268,7 +257,7 @@ public class FilterEngineJNILib
     //   45: aload 5
     //   47: astore_2
     //   48: aload 6
-    //   50: invokevirtual 240	java/io/File:getParentFile	()Ljava/io/File;
+    //   50: invokevirtual 222	java/io/File:getParentFile	()Ljava/io/File;
     //   53: astore 7
     //   55: aload 5
     //   57: astore_2
@@ -296,11 +285,11 @@ public class FilterEngineJNILib
     //   100: new 24	java/lang/StringBuilder
     //   103: dup
     //   104: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   107: ldc 242
+    //   107: ldc 224
     //   109: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   112: aload 6
     //   114: invokevirtual 44	java/io/File:exists	()Z
-    //   117: invokevirtual 245	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   117: invokevirtual 227	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   120: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   123: invokestatic 112	com/tencent/ttpic/baseutils/log/LogUtils:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   126: aload 5
@@ -308,20 +297,20 @@ public class FilterEngineJNILib
     //   129: new 81	java/io/FileOutputStream
     //   132: dup
     //   133: aload_1
-    //   134: invokespecial 246	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   134: invokespecial 228	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   137: astore_1
     //   138: aload_0
     //   139: ifnull +18 -> 157
     //   142: aload_0
-    //   143: getstatic 252	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   143: getstatic 234	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   146: bipush 95
     //   148: aload_1
-    //   149: invokevirtual 256	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   149: invokevirtual 238	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   152: pop
     //   153: aload_1
-    //   154: invokevirtual 259	java/io/FileOutputStream:flush	()V
+    //   154: invokevirtual 241	java/io/FileOutputStream:flush	()V
     //   157: aload_1
-    //   158: invokestatic 262	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   158: invokestatic 244	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   161: iconst_1
     //   162: ireturn
     //   163: astore_1
@@ -330,9 +319,9 @@ public class FilterEngineJNILib
     //   166: aload_0
     //   167: astore_2
     //   168: aload_1
-    //   169: invokevirtual 263	java/lang/Exception:printStackTrace	()V
+    //   169: invokevirtual 245	java/lang/Exception:printStackTrace	()V
     //   172: aload_0
-    //   173: invokestatic 262	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   173: invokestatic 244	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   176: iconst_0
     //   177: ireturn
     //   178: astore_1
@@ -341,14 +330,14 @@ public class FilterEngineJNILib
     //   182: aload_0
     //   183: astore_2
     //   184: aload_1
-    //   185: invokevirtual 264	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   185: invokevirtual 246	java/lang/OutOfMemoryError:printStackTrace	()V
     //   188: aload_0
-    //   189: invokestatic 262	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   189: invokestatic 244	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   192: iconst_0
     //   193: ireturn
     //   194: astore_0
     //   195: aload_2
-    //   196: invokestatic 262	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   196: invokestatic 244	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   199: aload_0
     //   200: athrow
     //   201: astore_0
@@ -410,20 +399,6 @@ public class FilterEngineJNILib
     //   142	157	201	finally
     //   142	157	207	java/lang/OutOfMemoryError
     //   142	157	215	java/lang/Exception
-  }
-  
-  public static void writeToAlbum(long paramLong, int paramInt1, int paramInt2)
-  {
-    if (BitmapUtils.ENABLE_DEBUG)
-    {
-      Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-      LogUtils.d("filter", "writeToAlbum: " + paramInt1 + " " + paramInt2);
-      nativeCopyImage(localBitmap, paramLong);
-      String str = generateName(System.currentTimeMillis());
-      paramInt1 = saveBitmap(localBitmap, getSDPath() + "/filter/" + str + ".jpg");
-      LogUtils.d("filter", "writeToAlbum ret: " + paramInt1);
-      localBitmap.recycle();
-    }
   }
 }
 

@@ -14,6 +14,7 @@ public final class Appconf$AppConfResponse
   extends MessageMicro<AppConfResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__;
+  public final PBBytesField ActionSeq = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBStringField AppName = PBField.initString("");
   public final PBBytesField ColorSeq = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBStringField Debug = PBField.initString("");
@@ -25,8 +26,9 @@ public final class Appconf$AppConfResponse
   
   static
   {
-    ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 48, 58, 66 }, new String[] { "AppName", "Wordings", "Mode", "ColorSeq", "Session", "Ret", "ErrMsg", "Debug" }, new Object[] { "", null, Integer.valueOf(0), localByteStringMicro, "", Integer.valueOf(0), "", "" }, AppConfResponse.class);
+    ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 48, 58, 66, 122 }, new String[] { "AppName", "Wordings", "Mode", "ColorSeq", "Session", "Ret", "ErrMsg", "Debug", "ActionSeq" }, new Object[] { "", null, Integer.valueOf(0), localByteStringMicro1, "", Integer.valueOf(0), "", "", localByteStringMicro2 }, AppConfResponse.class);
   }
 }
 

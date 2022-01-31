@@ -1,27 +1,33 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-public class anri
-  implements CompoundButton.OnCheckedChangeListener
+class anri
+  implements anqn
 {
-  public anri(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
+  anri(anrh paramanrh) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(List<anyc> paramList)
   {
-    ExtendFriendProfileEditFragment.a(this.a.getActivity().app, paramBoolean, new anrj(this, paramBoolean));
-    if (paramBoolean) {}
-    for (paramCompoundButton = "0X8009F0F";; paramCompoundButton = "0X8009F10")
-    {
-      awqx.b(this.a.getActivity().app, "dc00898", "", "", paramCompoundButton, paramCompoundButton, 0, 0, "", "", "", "");
-      return;
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = new ArrayList();
+    }
+    QLog.d("FavEmoRoamingHandler", 1, new Object[] { "fav emoticon size:", Integer.valueOf(((List)localObject).size()) });
+    if (((List)localObject).size() >= ansp.a) {
+      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CFA", "0X8005CFA", 0, 0, "", "", "", "");
+    }
+    if (((List)localObject).size() >= ansp.b) {
+      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CFB", "0X8005CFB", 0, 0, "", "", "", "");
+    }
+    if (this.a.jdField_a_of_type_Anqx != null) {
+      this.a.jdField_a_of_type_Anqx.b((List)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anri
  * JD-Core Version:    0.7.0.1
  */

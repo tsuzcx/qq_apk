@@ -1,45 +1,18 @@
-public class awjf
+import com.tencent.mobileqq.app.QQAppInterface;
+
+class awjf
+  implements bfos
 {
-  public int a;
-  private int b;
-  private int c;
+  awjf(awjd paramawjd, QQAppInterface paramQQAppInterface) {}
   
-  public int a()
+  public void onDismiss()
   {
-    int i = this.b;
-    this.b = (i + 1);
-    return i;
-  }
-  
-  public void a()
-  {
-    this.b = 0;
-    this.a = 0;
-    this.c = 0;
-  }
-  
-  public int b()
-  {
-    int i = this.c;
-    this.c = (i + 1);
-    return i;
-  }
-  
-  public void b()
-  {
-    this.b = 0;
-    this.a = 0;
-    this.c = 0;
-  }
-  
-  public int c()
-  {
-    return this.c;
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92E", "0X800A92E", awjc.a(this.jdField_a_of_type_Awjd.a), 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awjf
  * JD-Core Version:    0.7.0.1
  */

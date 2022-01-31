@@ -1,57 +1,32 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-
-class ayol
-  extends Handler
+public class ayol
 {
-  ayol(ayok paramayok, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  long jdField_b_of_type_Long;
+  String jdField_b_of_type_JavaLangString;
+  String c;
+  String d;
+  String e;
+  String f;
+  String g;
+  String h;
   
-  public void handleMessage(Message paramMessage)
+  public ayol(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong, String paramString7)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 2: 
-    case 3: 
-    case 4: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a = ((List)paramMessage.obj);
-          this.a.a(1000);
-          return;
-          this.a.a = ((List)paramMessage.obj);
-          ayok.a(this.a);
-          this.a.notifyObservers(Integer.valueOf(101));
-        } while (!QLog.isColorLevel());
-        QLog.d("TroopFeedsDataManager", 2, "end load feed: " + System.currentTimeMillis());
-        return;
-        this.a.a = ((List)paramMessage.obj);
-        ayok.b(this.a);
-        this.a.notifyObservers(Integer.valueOf(105));
-      } while (!QLog.isColorLevel());
-      QLog.d("TroopFeedsDataManager.troop.notification_center.auto_pull_down", 2, "end auto pull down feed");
-      return;
-    case 5: 
-      ayok.c(this.a);
-      this.a.notifyObservers(Integer.valueOf(1010));
-      return;
-    }
-    ayok.d(this.a);
-    this.a.notifyObservers(Integer.valueOf(103));
+    this.a = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramString6;
+    this.jdField_b_of_type_Long = paramLong;
+    this.h = paramString7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayol
  * JD-Core Version:    0.7.0.1
  */

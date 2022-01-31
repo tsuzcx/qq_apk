@@ -1,15 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 
-class rhn
-  extends AnimatorListenerAdapter
+public class rhn
+  implements View.OnClickListener
 {
-  rhn(rhl paramrhl, int paramInt) {}
+  public rhn(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Rhl.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Rhl.jdField_a_of_type_Float = 0.0F;
+    PublicTransFragmentActivity.a(this.a.a(), ReadInJoyChannelPanelFragment.class);
   }
 }
 

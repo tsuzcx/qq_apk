@@ -1,38 +1,10 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-
-public class aaao
-  implements begw
+public abstract interface aaao
 {
-  public aaao(AssociatedAccountActivity paramAssociatedAccountActivity, boolean paramBoolean, begr parambegr) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    int i = paramInt;
-    if (!this.jdField_a_of_type_Boolean) {
-      i = paramInt + 1;
-    }
-    this.jdField_a_of_type_Begr.cancel();
-    switch (i)
-    {
-    default: 
-      return;
-    case 0: 
-      AssociatedAccountActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007149", "0X8007149", 0, 0, "", "", "", "");
-      return;
-    case 2: 
-      AssociatedAccountActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007145", "0X8007145", 0, 0, "", "", "", "");
-      return;
-    }
-    AssociatedAccountActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007148", "0X8007148", 0, 0, "", "", "", "");
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaao
  * JD-Core Version:    0.7.0.1
  */

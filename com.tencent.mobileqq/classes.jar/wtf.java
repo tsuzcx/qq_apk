@@ -1,27 +1,17 @@
-import android.support.annotation.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-class wtf
-  implements bhwg<Boolean>
+final class wtf
+  implements DialogInterface.OnDismissListener
 {
-  wtf(wta paramwta) {}
-  
-  public void a(@Nullable Boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramBoolean == null) {
-      return;
-    }
-    wta localwta = this.a;
-    if (!paramBoolean.booleanValue()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      wta.a(localwta, bool);
-      return;
-    }
+    wte.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wtf
  * JD-Core Version:    0.7.0.1
  */

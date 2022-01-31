@@ -1,17 +1,17 @@
 package cooperation.qzone.zipanimate;
 
-import bgmh;
+import bhuy;
 import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
 
 public class ZipDrawableLoader$1
   implements Runnable
 {
-  public ZipDrawableLoader$1(bgmh parambgmh, int paramInt) {}
+  public ZipDrawableLoader$1(bhuy parambhuy, int paramInt) {}
   
   public void run()
   {
-    if (QzoneZipCacheHelper.checkAndDownLoadFileIfNeeded(null, bgmh.a(this.this$0), bgmh.b(this.this$0), bgmh.c(this.this$0), this.a, bgmh.a(this.this$0))) {
-      bgmh.a(this.this$0, true);
+    if (QzoneZipCacheHelper.checkAndDownLoadFileIfNeeded(null, bhuy.a(this.this$0), bhuy.b(this.this$0), bhuy.c(this.this$0), this.a, bhuy.a(this.this$0))) {
+      bhuy.a(this.this$0, true);
     }
   }
 }

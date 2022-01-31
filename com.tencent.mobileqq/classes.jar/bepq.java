@@ -1,35 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-
 class bepq
-  extends Handler
+  implements bepx
 {
-  public bepq()
-  {
-    super(Looper.getMainLooper());
-  }
+  bepq(bepo parambepo, bepx parambepx) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, String paramString, bepv parambepv)
   {
-    switch (paramMessage.what)
+    try
     {
+      if (this.jdField_a_of_type_Bepx != null) {
+        this.jdField_a_of_type_Bepx.a(paramInt, paramString, parambepv);
+      }
+      if (paramInt != 0) {
+        this.jdField_a_of_type_Bepo.a(parambepv);
+      }
+      return;
     }
-    do
+    catch (Throwable paramString)
     {
-      do
-      {
-        return;
-      } while (paramMessage.obj == null);
-      paramMessage = ((WeakReference)paramMessage.obj).get();
-    } while ((paramMessage == null) || (!(paramMessage instanceof bepn)));
-    ((bepn)paramMessage).dismiss();
+      besl.d("minisdk-start_AppRuntimeLoaderManager", "runtime load result exception!", paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bepq
  * JD-Core Version:    0.7.0.1
  */

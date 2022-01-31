@@ -1,39 +1,70 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Rect;
+import android.text.TextUtils;
+import android.util.Log;
+import java.lang.reflect.Field;
 
 public class bekz
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private int b;
-  private int c;
-  
-  private bekz(Bitmap paramBitmap, int paramInt)
+  public static Object a(String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
-    if (paramBitmap != null)
-    {
-      this.b = paramBitmap.getScaledWidth(paramInt);
-      this.c = paramBitmap.getScaledHeight(paramInt);
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_AndroidGraphicsBitmap$Config = paramBitmap.getConfig();
-      return;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    this.jdField_a_of_type_Int = 4;
+    try
+    {
+      paramString = Class.forName(paramString).newInstance();
+      return paramString;
+    }
+    catch (ClassNotFoundException paramString)
+    {
+      Log.e("ReflectionUtil", "ClassNotFoundException: ");
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (IllegalAccessException paramString)
+    {
+      Log.e("ReflectionUtil", "IllegalAccessException: ");
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (InstantiationException paramString)
+    {
+      Log.e("ReflectionUtil", "InstantiationException: ");
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
-  private void a(Rect paramRect)
+  public static Object a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return null;
+    }
+    try
+    {
+      paramString1 = Class.forName(paramString1);
+      paramString1 = paramString1.getField(paramString2).get(paramString1);
+      return paramString1;
+    }
+    catch (NoSuchFieldException paramString1)
+    {
+      Log.w("ReflectionUtil", "NoSuchFieldException: " + paramString1.getMessage());
+      return null;
+    }
+    catch (IllegalAccessException paramString1)
+    {
+      Log.w("ReflectionUtil", "IllegalAccessException: " + paramString1.getMessage());
+      return null;
+    }
+    catch (ClassNotFoundException paramString1)
+    {
+      Log.w("ReflectionUtil", "ClassNotFoundException: " + paramString1.getMessage());
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bekz
  * JD-Core Version:    0.7.0.1
  */

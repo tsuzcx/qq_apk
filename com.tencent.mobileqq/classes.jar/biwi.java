@@ -1,22 +1,12 @@
-import android.util.Property;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class biwi
-  extends Property<biwc, Float>
+  implements DialogInterface.OnClickListener
 {
-  biwi(biwc parambiwc, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  biwi(biwh parambiwh) {}
   
-  public Float a(biwc parambiwc)
-  {
-    return Float.valueOf(biwc.b(parambiwc));
-  }
-  
-  public void a(biwc parambiwc, Float paramFloat)
-  {
-    biwc.a(parambiwc, paramFloat);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,19 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.TopBarInfo;
+import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public final class neq
-  implements Parcelable.Creator<VideoInfo.TopBarInfo>
+public class neq
 {
-  public VideoInfo.TopBarInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.TopBarInfo(paramParcel);
-  }
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  public ImageView a;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public ImageView b;
+  TextView b;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  ImageView d;
+  ImageView e;
   
-  public VideoInfo.TopBarInfo[] a(int paramInt)
-  {
-    return new VideoInfo.TopBarInfo[paramInt];
-  }
+  public neq(ned paramned) {}
 }
 
 

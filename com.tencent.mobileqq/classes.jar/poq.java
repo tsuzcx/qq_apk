@@ -1,59 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.articlesummary.articlesummary.AnswerDetail;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import android.support.annotation.NonNull;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableCallBack;
+import com.tencent.image.URLDrawable;
+import com.tencent.qphone.base.util.QLog;
 
-public class poq
+class poq
+  implements Drawable.Callback
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c = "";
+  poq(pop parampop, DrawableUtil.DrawableCallBack paramDrawableCallBack, URLDrawable paramURLDrawable) {}
   
-  public poq()
+  public void invalidateDrawable(@NonNull Drawable paramDrawable)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    QLog.i("Q.readinjoy.proteus", 1, "invalidateDrawable: ");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(true, this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
   
-  public static poq a(articlesummary.AnswerDetail paramAnswerDetail)
-  {
-    poq localpoq = new poq();
-    if (paramAnswerDetail.question_rowkey.has()) {
-      localpoq.jdField_a_of_type_JavaLangString = paramAnswerDetail.question_rowkey.get();
-    }
-    if (paramAnswerDetail.question_title.has()) {
-      localpoq.jdField_b_of_type_JavaLangString = paramAnswerDetail.question_title.get();
-    }
-    if (paramAnswerDetail.answer_content.has()) {
-      localpoq.c = paramAnswerDetail.answer_content.get();
-    }
-    if (paramAnswerDetail.agreed_num.has()) {
-      localpoq.jdField_a_of_type_Int = paramAnswerDetail.agreed_num.get();
-    }
-    if (paramAnswerDetail.card_style.has()) {
-      localpoq.jdField_b_of_type_Int = paramAnswerDetail.card_style.get();
-    }
-    return localpoq;
-  }
+  public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
   
-  public articlesummary.AnswerDetail a()
-  {
-    articlesummary.AnswerDetail localAnswerDetail = new articlesummary.AnswerDetail();
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localAnswerDetail.question_rowkey.set(this.jdField_a_of_type_JavaLangString);
-    }
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localAnswerDetail.question_title.set(this.jdField_b_of_type_JavaLangString);
-    }
-    if (!TextUtils.isEmpty(this.c)) {
-      localAnswerDetail.answer_content.set(this.c);
-    }
-    localAnswerDetail.agreed_num.set(this.jdField_a_of_type_Int);
-    localAnswerDetail.card_style.set(this.jdField_b_of_type_Int);
-    return localAnswerDetail;
-  }
+  public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable) {}
 }
 
 

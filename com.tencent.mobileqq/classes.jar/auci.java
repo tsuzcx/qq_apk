@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.ptt.LSRecordPanel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
-public abstract interface auci
+public final class auci
+  implements Parcelable.Creator<OcrRecogResult>
 {
-  public abstract void a(boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2, boolean paramBoolean3);
+  public OcrRecogResult a(Parcel paramParcel)
+  {
+    return new OcrRecogResult(paramParcel);
+  }
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, LSRecordPanel paramLSRecordPanel);
-  
-  public abstract void g();
-  
-  public abstract void h();
+  public OcrRecogResult[] a(int paramInt)
+  {
+    return new OcrRecogResult[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auci
  * JD-Core Version:    0.7.0.1
  */

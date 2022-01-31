@@ -1,89 +1,41 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amgl
-  extends alzl<amgk>
 {
-  @NonNull
-  public static amgk a()
+  int a = -1;
+  
+  public static amgl a(String paramString)
   {
-    amgk localamgk2 = (amgk)alzw.a().a(435);
-    amgk localamgk1 = localamgk2;
-    if (localamgk2 == null) {
-      localamgk1 = new amgk();
-    }
-    return localamgk1;
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      try
+      {
+        amgl localamgl = new amgl();
+        localamgl.a = new JSONObject(paramString).getInt("maxcount");
+        amhf.a = localamgl.a;
+        if (QLog.isColorLevel()) {
+          QLog.e("ColorNoteConfigProcessor", 2, "ColorNoteConfigProcessor onParsed maxcount " + localamgl.a);
+        }
+        return localamgl;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ColorNoteConfigProcessor", 2, "ColorNoteConfigProcessor onParsed erro " + paramString.toString());
+    return null;
   }
   
   public int a()
   {
-    return 435;
-  }
-  
-  @NonNull
-  public amgk a(int paramInt)
-  {
-    return new amgk();
-  }
-  
-  @Nullable
-  public amgk a(alzs[] paramArrayOfalzs)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfalzs != null)
-    {
-      localObject1 = localObject2;
-      if (paramArrayOfalzs.length > 0) {
-        localObject1 = amgk.a(paramArrayOfalzs);
-      }
-    }
-    return localObject1;
-  }
-  
-  public Class<amgk> a()
-  {
-    return amgk.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopUrlConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(amgk paramamgk)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopUrlConfProcessor", 2, "onUpdate " + paramamgk.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amgl
  * JD-Core Version:    0.7.0.1
  */

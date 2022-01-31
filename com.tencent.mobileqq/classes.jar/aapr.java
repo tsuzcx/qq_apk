@@ -1,17 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aapr
-  implements View.OnClickListener
+public final class aapr
+  implements DialogInterface.OnClickListener
 {
-  public aapr(DiscussionMemberActivity paramDiscussionMemberActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.setText("");
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

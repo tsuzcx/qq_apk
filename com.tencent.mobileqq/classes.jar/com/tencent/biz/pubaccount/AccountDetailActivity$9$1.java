@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount;
 
-import mxa;
+import nib;
 
 public class AccountDetailActivity$9$1
   implements Runnable
 {
-  public AccountDetailActivity$9$1(mxa parammxa) {}
+  public AccountDetailActivity$9$1(nib paramnib) {}
   
   public void run()
   {

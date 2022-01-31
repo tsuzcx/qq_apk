@@ -1,8 +1,8 @@
 public abstract interface qvi
 {
-  public abstract void a(rik paramrik);
+  public abstract void a(qty paramqty1, qty paramqty2);
   
-  public abstract void b(rik paramrik);
+  public abstract void l();
 }
 
 

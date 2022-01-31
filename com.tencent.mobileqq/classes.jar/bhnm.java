@@ -1,50 +1,109 @@
-import android.text.Spanned;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import cooperation.qzone.util.QZLog;
+import cooperation.qzone.util.QzoneHardwareRestriction;
+import java.io.File;
 
-class bhnm
-  extends bilo
+public class bhnm
 {
-  bhnm(bhnl parambhnl, int paramInt)
-  {
-    super(paramInt);
-  }
+  public static final String a;
+  public static final boolean a;
+  public static final String b;
+  private static boolean b;
+  private static boolean c;
+  private static boolean d;
   
-  public int a(CharSequence paramCharSequence)
+  static
   {
-    return 0;
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    int j = 0;
-    String str = paramCharSequence.subSequence(paramInt1, paramInt2).toString().replaceAll("\n", "");
-    int i;
-    if (paramInt2 - paramInt1 != str.length())
-    {
-      i = 1;
-      if (i == 0) {
-        break label92;
-      }
-      paramInt2 = str.length();
-      paramInt1 = j;
-      paramCharSequence = str;
-    }
-    label92:
+    boolean bool = true;
+    jdField_a_of_type_JavaLangString = bhnm.class.getSimpleName();
+    jdField_b_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "animatedWebpMD5", "4c8590a921c2722051416111dfd57122");
+    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "ENABLE_ANIMATED_WEBP", 1) == 1) {}
     for (;;)
     {
-      paramSpanned = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-      if ((paramSpanned == null) && (i != 0))
-      {
-        return paramCharSequence;
-        i = 0;
-        break;
-      }
-      return paramSpanned;
+      jdField_a_of_type_Boolean = bool;
+      return;
+      bool = false;
     }
+  }
+  
+  public static boolean a()
+  {
+    if (!c) {
+      if ((!jdField_a_of_type_Boolean) || (jdField_b_of_type_Boolean) || (!QzoneHardwareRestriction.meetHardwareRestriction(2, 1))) {
+        break label40;
+      }
+    }
+    label40:
+    for (boolean bool = true;; bool = false)
+    {
+      d = bool;
+      c = true;
+      return d;
+    }
+  }
+  
+  public static boolean b()
+  {
+    if (!a())
+    {
+      QZLog.i(jdField_a_of_type_JavaLangString, "enable animtedWebp false");
+      return false;
+    }
+    if ((!e()) && (c())) {
+      return d();
+    }
+    QzoneModuleManager.getInstance().downloadModule("animatedWebp.so", new bhnn());
+    return false;
+  }
+  
+  public static boolean c()
+  {
+    String str = QzoneModuleManager.getInstance().getModuleFilePath("animatedWebp.so");
+    if (TextUtils.isEmpty(str))
+    {
+      QZLog.i(jdField_a_of_type_JavaLangString, "isWebp SO path not exit");
+      return false;
+    }
+    boolean bool = new File(str).exists();
+    QZLog.i(jdField_a_of_type_JavaLangString, "isWebp SO path exit : " + bool);
+    return bool;
+  }
+  
+  private static boolean d()
+  {
+    try
+    {
+      String str = QzoneModuleManager.getInstance().getModuleFilePath("animatedWebp.so");
+      if (TextUtils.isEmpty(str)) {
+        return false;
+      }
+      System.load(str);
+      return true;
+    }
+    catch (Throwable localThrowable)
+    {
+      jdField_b_of_type_Boolean = true;
+      QZLog.e(jdField_a_of_type_JavaLangString, "load webp so fail", localThrowable);
+    }
+    return false;
+  }
+  
+  private static boolean e()
+  {
+    String str = bdkd.a().getString("PREFERENCE_SO_MD5_KEY", null);
+    if (TextUtils.isEmpty(str)) {}
+    while (!str.equalsIgnoreCase(jdField_b_of_type_JavaLangString)) {
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhnm
  * JD-Core Version:    0.7.0.1
  */

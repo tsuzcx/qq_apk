@@ -1,41 +1,117 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import android.os.Handler;
+import android.os.Looper;
+import com.qq.jce.wup.UniAttribute;
+import com.qq.taf.jce.JceStruct;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.util.QZLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 public class slv
+  implements slj
 {
-  public static volatile slv a;
+  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  protected static final slr a;
+  public static boolean a;
+  public int a;
+  public long a;
+  public transient UniAttribute a;
+  public Object a;
+  public transient String a;
+  private WeakReference<Handler> jdField_a_of_type_JavaLangRefWeakReference;
+  public HashMap<Object, Object> a;
+  public transient slk a;
+  public sll a;
+  public sls a;
+  public int b;
+  public int c;
+  public int d;
   
-  public static slv a()
+  static
   {
-    Object localObject = a;
-    if (localObject == null) {
-      try
-      {
-        slv localslv2 = a;
-        localObject = localslv2;
-        if (localslv2 == null)
-        {
-          localObject = new slv();
-          a = (slv)localObject;
-        }
-        return localObject;
-      }
-      finally {}
-    }
-    return localslv1;
+    jdField_a_of_type_Slr = slr.a();
   }
   
-  public <Request extends slz, Respond extends slu> void a(Request paramRequest, slx<Request, Respond> paramslx)
+  public slv()
   {
-    paramRequest = new slw(paramRequest);
-    paramRequest.jdField_a_of_type_Slx = paramslx;
-    paramRequest.jdField_a_of_type_Slz.a(paramRequest);
-    QQStoryContext.a().a().a(paramRequest.jdField_a_of_type_Slz);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public slv(sls paramsls, Handler paramHandler, slk paramslk, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Sls = paramsls;
+    this.c = paramInt;
+    this.jdField_a_of_type_Slk = paramslk;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (paramHandler != null) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHandler);
+    }
+  }
+  
+  private String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 1000005: 
+    default: 
+      return "";
+    case 1000006: 
+      QZLog.i("QZLog", 1, "WeishiTask\t 网络无连接");
+      return QzoneConfig.getInstance().getConfig("QZoneTextSetting", "NetWorkNotConnect", "网络无连接");
+    case 1000004: 
+      return "";
+    }
+    return "";
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Sls != null)
+    {
+      this.jdField_a_of_type_Sls.a(this.d);
+      if (jdField_a_of_type_Boolean)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        if (this.jdField_a_of_type_Sls.a != null) {
+          this.jdField_a_of_type_Sls.a.display(localStringBuilder, 0);
+        }
+      }
+      sne.a("WeishiTask", "startRunTask: " + this.jdField_a_of_type_Sls.getCmdString() + ", " + this.jdField_a_of_type_Sls.toString());
+    }
+    int i = jdField_a_of_type_Slr.a(this.jdField_a_of_type_Sls, this);
+    if (i != 0) {
+      a(null, i, i, a(i), false, this.jdField_a_of_type_Sll);
+    }
+  }
+  
+  public void a(Object paramObject, int paramInt1, int paramInt2, String paramString, boolean paramBoolean, sll paramsll)
+  {
+    if ((paramObject instanceof UniAttribute)) {
+      this.jdField_a_of_type_ComQqJceWupUniAttribute = ((UniAttribute)paramObject);
+    }
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Sll = paramsll;
+    if (1000006 == paramInt1) {
+      this.jdField_a_of_type_JavaLangString = ajyc.a(2131716918);
+    }
+    slo.a().b(this);
+  }
+  
+  public boolean a()
+  {
+    return (this.b == 0) || (this.b == 1000) || ((Math.abs(this.b) <= 19999) && (Math.abs(this.b) >= 19000));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     slv
  * JD-Core Version:    0.7.0.1
  */

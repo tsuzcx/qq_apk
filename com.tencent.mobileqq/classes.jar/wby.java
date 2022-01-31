@@ -1,21 +1,20 @@
-import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
-import com.tencent.biz.subscribe.component.base.ComponentPageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class wby
-  implements SwipeRefreshLayout.OnRefreshListener
+class wby
+  implements View.OnClickListener
 {
-  public wby(ComponentPageView paramComponentPageView) {}
+  wby(wbu paramwbu) {}
   
-  public void onRefresh()
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
+    vel.a("home_page", "guide_close", 0, 0, new String[0]);
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wby
  * JD-Core Version:    0.7.0.1
  */

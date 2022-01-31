@@ -1,14 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
 
-class afqx
-  implements DialogInterface.OnClickListener
+public class afqx
+  extends ajuv
 {
-  afqx(afqi paramafqi) {}
+  public afqx(DeviceFragment paramDeviceFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void b()
   {
-    paramDialogInterface.dismiss();
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a.d();
+    this.a.a.notifyDataSetChanged();
   }
 }
 

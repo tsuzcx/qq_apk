@@ -1,68 +1,39 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
 
 public class azxd
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private azxf jdField_a_of_type_Azxf;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public azxd(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public azxd(QQAppInterface paramQQAppInterface)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private azxf a()
-  {
-    azxf localazxf = new azxf(new azxe(this));
-    if (QLog.isColorLevel()) {
-      QLog.i("FetchInfoListManager", 2, "createFetchInfoListManager fm: " + localazxf);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("口算开关状态改变 ");
+      if (!paramBoolean) {
+        break label70;
+      }
     }
-    return localazxf;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Azxf != null) {
-      this.jdField_a_of_type_Azxf.a();
+    label70:
+    for (paramCompoundButton = "on";; paramCompoundButton = "off")
+    {
+      QLog.d("PublishHomeWorkFragment", 2, paramCompoundButton);
+      this.a.e = paramBoolean;
+      if (this.a.e) {
+        this.a.a.setChecked(true);
+      }
+      return;
     }
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Azxf == null) {
-      this.jdField_a_of_type_Azxf = a();
-    }
-    this.jdField_a_of_type_Azxf.a(2, paramString, null, null, null);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Azxf == null) {
-      this.jdField_a_of_type_Azxf = a();
-    }
-    this.jdField_a_of_type_Azxf.a(3, paramString1, paramString2, paramString3, paramBundle);
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.jdField_a_of_type_Azxf == null) {
-      this.jdField_a_of_type_Azxf = a();
-    }
-    this.jdField_a_of_type_Azxf.a(1, paramString, null, null, null);
-  }
-  
-  public void c(String paramString)
-  {
-    if (this.jdField_a_of_type_Azxf == null) {
-      this.jdField_a_of_type_Azxf = a();
-    }
-    this.jdField_a_of_type_Azxf.a(4, paramString, null, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azxd
  * JD-Core Version:    0.7.0.1
  */

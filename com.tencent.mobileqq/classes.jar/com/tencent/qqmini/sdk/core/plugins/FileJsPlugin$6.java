@@ -1,43 +1,80 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bdeu;
-import bdfz;
-import java.io.IOException;
+import beiu;
+import beka;
+import bekq;
+import besl;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import org.json.JSONObject;
 
 class FileJsPlugin$6
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$6(FileJsPlugin paramFileJsPlugin, String paramString1, bdfz parambdfz, String paramString2, byte[] paramArrayOfByte, String paramString3) {}
+  FileJsPlugin$6(FileJsPlugin paramFileJsPlugin, String paramString1, beka parambeka, String paramString2, long paramLong) {}
   
   public String run()
   {
-    if (!FileJsPlugin.access$300(this.this$0, this.val$encoding)) {
-      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "invalid encoding " + this.val$encoding);
+    long l = 0L;
+    Object localObject1 = beiu.a().a(this.val$tempFilePath);
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "tempFilePath file not exist");
     }
-    if (bdeu.a().a(this.val$filePath) != 2) {
-      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open " + this.val$filePath);
-    }
-    String str = bdeu.a().c(this.val$filePath);
-    if (!TextUtils.isEmpty(str))
+    if (TextUtils.isEmpty(this.val$filePath))
     {
-      if (str.contains("miniprogramLog")) {
-        return FileJsPlugin.access$200(this.this$0, this.val$req, null);
+      localObject2 = this.this$0.mMiniAppInfo;
+      if (localObject2 != null) {
+        l = ((MiniAppInfo)localObject2).usrFileSizeLimit;
       }
-      try
+      if (!beiu.a().a(1, bekq.a((String)localObject1), this.this$0.mIsMiniGame, l)) {
+        return FileJsPlugin.access$100(this.this$0, this.val$req, null, "the maximum size of the file storage is exceeded");
+      }
+      localObject1 = beiu.a().d(this.val$tempFilePath);
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        if (FileJsPlugin.access$400(this.this$0, this.val$nativeBufferBytes, this.val$data, this.val$encoding, str, true))
+        localObject2 = new JSONObject();
+        try
         {
-          str = FileJsPlugin.access$200(this.this$0, this.val$req, null);
-          return str;
+          ((JSONObject)localObject2).put("savedFilePath", localObject1);
+          besl.a("FileJsPlugin", "saveFile old succeed! [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], saveFilePath:" + (String)localObject1);
+          return FileJsPlugin.access$200(this.this$0, this.val$req, (JSONObject)localObject2);
+        }
+        catch (Throwable localThrowable1)
+        {
+          for (;;)
+          {
+            localThrowable1.printStackTrace();
+          }
         }
       }
-      catch (IOException localIOException)
+      return FileJsPlugin.access$100(this.this$0, this.val$req, null, null);
+    }
+    if (beiu.a().a(this.val$filePath) != 2) {
+      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open " + this.val$filePath);
+    }
+    Object localObject2 = this.this$0.mMiniAppInfo;
+    if (localObject2 != null) {
+      l = ((MiniAppInfo)localObject2).usrFileSizeLimit;
+    }
+    if (!beiu.a().a(2, bekq.a((String)localObject1), this.this$0.mIsMiniGame, l)) {
+      return FileJsPlugin.access$100(this.this$0, this.val$req, null, "the maximum size of the file storage is exceeded");
+    }
+    localObject2 = beiu.a().c(this.val$filePath);
+    bekq.b((String)localObject1, (String)localObject2);
+    localObject1 = new JSONObject();
+    try
+    {
+      ((JSONObject)localObject1).put("savedFilePath", this.val$filePath);
+      besl.a("FileJsPlugin", "saveFile succeed! [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], saveAboPath:" + (String)localObject2);
+      return FileJsPlugin.access$200(this.this$0, this.val$req, (JSONObject)localObject1);
+    }
+    catch (Throwable localThrowable2)
+    {
+      for (;;)
       {
-        return FileJsPlugin.access$100(this.this$0, this.val$req, null, localIOException.getMessage());
+        localThrowable2.printStackTrace();
       }
     }
-    return FileJsPlugin.access$100(this.this$0, this.val$req, null, "no such file or directory, open ");
   }
 }
 

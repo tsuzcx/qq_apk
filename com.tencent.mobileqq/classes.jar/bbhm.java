@@ -1,29 +1,25 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-@TargetApi(16)
-public class bbhm
-  implements behy
+class bbhm
+  implements View.OnClickListener
 {
-  bbhm(ContextMenuTextView paramContextMenuTextView) {}
+  bbhm(bbhl parambbhl, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      ContextMenuTextView.a(this.a, null);
-    }
-    for (;;)
-    {
-      this.a.a = null;
-      return;
-      ContextMenuTextView.b(this.a, null);
-    }
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009BE7", "0X8009BE7", 1, 0, "", "", "", "");
+    this.jdField_a_of_type_Bbhl.hideSoftInputFromWindow();
+    paramView = new aqdz(this.jdField_a_of_type_Bbhl);
+    paramView.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bbhl.addPreviewView(paramView.b());
+    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009AAD", "0X8009AAD", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbhm
  * JD-Core Version:    0.7.0.1
  */

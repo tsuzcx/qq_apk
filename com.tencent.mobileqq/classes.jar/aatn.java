@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class aatn
-  extends ajmm
+  extends akfb
 {
-  public aatn(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public aatn(ChatSettingActivity paramChatSettingActivity) {}
   
-  protected void a()
+  public void a(Object paramObject)
   {
-    this.a.a();
+    if (paramObject != null) {
+      ((Integer)paramObject).intValue();
+    }
   }
 }
 

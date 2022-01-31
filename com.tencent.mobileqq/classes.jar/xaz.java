@@ -1,47 +1,46 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.webviewplugin.BusinessReportPlugin.1;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.MoveFileRspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
 
-public class xaz
-  extends WebViewPlugin
+public abstract class xaz
+  extends mxm
 {
-  private Handler a;
-  public boolean a;
-  
-  public xaz()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.mPluginNameSpace = "JD_REPORT";
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    try
+    if (paramInt != 0)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new BusinessReportPlugin.1(this, paramString));
+      a(false, paramInt, null);
       return;
     }
-    catch (Exception paramString)
+    paramBundle = new oidb_0x6d6.RspBody();
+    try
     {
-      QLog.e("BusinessReporter", 1, "Report Error:" + paramString);
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.MoveFileRspBody)paramBundle.move_file_rsp.get();
+      if (!paramArrayOfByte.int32_ret_code.has()) {
+        break label94;
+      }
+      if (paramArrayOfByte.int32_ret_code.get() == 0)
+      {
+        a(true, 0, paramArrayOfByte.str_parent_folder_id.get());
+        return;
+      }
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null);
+      return;
+    }
+    a(false, paramArrayOfByte.int32_ret_code.get(), null);
+    return;
+    label94:
+    a(false, -1, null);
   }
   
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_Boolean = nfo.a(paramString);
-  }
-  
-  public Object handleEvent(String paramString, long paramLong)
-  {
-    if (paramLong == 8L) {
-      a(paramString);
-    }
-    return null;
-  }
+  protected abstract void a(boolean paramBoolean, int paramInt, String paramString);
 }
 
 

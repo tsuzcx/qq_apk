@@ -1,21 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.wadl.ipc.WadlParams;
+import cooperation.qqpim.QQPimTipsInfo;
 
-public final class bgsn
-  implements Parcelable.Creator<WadlParams>
+public abstract interface bgsn
 {
-  public WadlParams a(Parcel paramParcel)
-  {
-    WadlParams localWadlParams = new WadlParams("");
-    localWadlParams.a(paramParcel);
-    return localWadlParams;
-  }
-  
-  public WadlParams[] a(int paramInt)
-  {
-    return new WadlParams[paramInt];
-  }
+  public abstract void a(QQPimTipsInfo paramQQPimTipsInfo);
 }
 
 

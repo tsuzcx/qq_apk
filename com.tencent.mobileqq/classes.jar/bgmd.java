@@ -1,52 +1,45 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.pluginbridge.BridgeHelper;
+import cooperation.pluginbridge.BridgePluginInstallActivity;
 
-class bgmd
-  extends Handler
+public class bgmd
+  extends BroadcastReceiver
 {
-  bgmd(bgmb parambgmb, Looper paramLooper)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int j = 0;
-    if (this.a.getCallback() == null) {}
-    do
+    paramIntent = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.i("BridgeHelper", 2, "action:" + paramIntent);
+    }
+    if (("bridge.plugin.onresume.broadcast".equals(paramIntent)) || ("bridge.onresume.broadcast".equals(paramIntent))) {}
+    try
     {
-      do
+      paramContext.unregisterReceiver(BridgeHelper.a());
+      BridgeHelper.a(null);
+      if (BridgeHelper.a() != null)
       {
-        return;
-      } while ((paramMessage.what != 1000) || (!bgmb.a(this.a).jdField_a_of_type_Boolean));
-      int k = (int)((float)(SystemClock.uptimeMillis() - this.a.jdField_a_of_type_Long) / (1000.0F / bgmb.a(this.a).jdField_a_of_type_Int));
-      int i;
-      if ((bgmb.a(this.a)) && (bgmb.a(this.a).jdField_a_of_type_Bgmh.a() != 0)) {
-        i = k % bgmb.a(this.a).jdField_a_of_type_Bgmh.a();
+        BridgeHelper.a().dismiss();
+        BridgeHelper.a(null);
       }
+      if ((paramContext instanceof BridgePluginInstallActivity))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("BridgeHelper", 2, "Activity finish!");
+        }
+        ((BridgePluginInstallActivity)paramContext).finish();
+      }
+      return;
+    }
+    catch (Exception paramIntent)
+    {
       for (;;)
       {
-        bgmb.a(this.a).jdField_a_of_type_Bgmh.a(i);
-        if (j != 0) {
-          break;
-        }
-        long l = 1000 / bgmb.a(this.a).jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, (int)l);
-        this.a.invalidateSelf();
-        return;
-        i = k;
-        if (k >= bgmb.a(this.a).jdField_a_of_type_Bgmh.a())
-        {
-          j = 1;
-          i = k;
-        }
+        paramIntent.printStackTrace();
       }
-      this.a.stop();
-      this.a.invalidateSelf();
-    } while (this.a.jdField_a_of_type_Bgme == null);
-    this.a.jdField_a_of_type_Bgme.onAnimationFinished();
+    }
   }
 }
 

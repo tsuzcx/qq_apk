@@ -1,26 +1,26 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.view.QIMCommonLoadingView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class bhfu
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-  QIMCommonLoadingView jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  ImageView d;
+  public bhfu(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, bhfz parambhfz) {}
   
-  public bhfu(bhft parambhft) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    LocalMultiProcConfig.putBool("qzbg_music_mobinet_tips", true);
+    if (this.jdField_a_of_type_Bhfz != null) {
+      this.jdField_a_of_type_Bhfz.a();
+    }
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.isFlowWarningVisible = false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhfu
  * JD-Core Version:    0.7.0.1
  */

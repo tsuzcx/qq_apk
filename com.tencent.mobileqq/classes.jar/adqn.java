@@ -1,48 +1,24 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.mp.mobileqq_mp.SubscribeRequest;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import mqq.app.NewIntent;
+import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class adqn
-  implements bemm
+  extends VasQuickUpdateManager.CallBacker
 {
-  public adqn(StructingMsgItemBuilder paramStructingMsgItemBuilder, ChatMessage paramChatMessage, Activity paramActivity, AbsStructMsg paramAbsStructMsg) {}
+  adqn(adqg paramadqg) {}
   
-  public void a(beml parambeml)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {
-      return;
-    }
-    String str = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("msg_template_id");
-    int i = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop;
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_AndroidAppActivity, ndt.class);
-    localNewIntent.putExtra("cmd", "PubAccountFollowSvc.subscribe");
-    mobileqq_mp.SubscribeRequest localSubscribeRequest = new mobileqq_mp.SubscribeRequest();
-    localSubscribeRequest.msg_id.set(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId);
-    localSubscribeRequest.index.set(parambeml.a);
-    long l1 = 0L;
-    try
+    if ((paramString1.equals("poke.effectList")) && (paramInt1 == 0))
     {
-      long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin);
-      l1 = l2;
+      if (QLog.isColorLevel()) {
+        QLog.d("GivingHeart", 2, "download vas poke list from GivingHeartItemBuilder, update pokeSvipMap now.");
+      }
+      ThreadManager.getFileThreadHandler().post(new GivingHeartItemBuilder.4.1(this));
     }
-    catch (Exception parambeml)
-    {
-      label108:
-      break label108;
-    }
-    localSubscribeRequest.template_id.set(str);
-    localSubscribeRequest.puin.set(l1);
-    localNewIntent.setObserver(new adqo(this, str));
-    localNewIntent.putExtra("data", localSubscribeRequest.toByteArray());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a.startServlet(localNewIntent);
-    StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
   }
 }
 

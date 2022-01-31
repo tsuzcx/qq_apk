@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import abju;
+import abtu;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ class PayJsPlugin$4
       localIntent.putExtras(localBundle);
       localIntent.putExtra("mini_event_seq", this.val$seq);
       localIntent.putExtra("mini_event_name", this.val$eventName);
-      abju.a(this.val$activity, localIntent, PublicTransFragmentActivityForTool.class, MiniGamePayFragment.class, 3002);
+      abtu.a(this.val$activity, localIntent, PublicTransFragmentActivityForTool.class, MiniGamePayFragment.class, 3002);
     }
     while (PayBridgeActivity.a(AppLoaderFactory.getAppLoaderManager().getMiniAppInterface(), this.val$activity, this.this$0.payRecevicer, 6, localBundle).getInt("retCode", -1) == 0)
     {

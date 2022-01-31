@@ -1,61 +1,81 @@
-import android.content.Context;
-import android.os.Environment;
-import android.util.Log;
-import java.io.File;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.open.appcommon.js.DownloadInterface;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bdfk
-  extends bdnm
+  implements bdlw
 {
-  public void loadBaselib(Context paramContext, bdno parambdno)
+  protected String a;
+  
+  public bdfk(DownloadInterface paramDownloadInterface, String paramString)
   {
-    for (;;)
-    {
-      bdnn localbdnn;
-      try
-      {
-        if (isBaseLibInit())
-        {
-          if (parambdno != null) {
-            parambdno.a(0, "", this.mBaselibContent.a());
-          }
-          return;
-        }
-        localbdnn = new bdnn();
-        localbdnn.a = bdgo.a(paramContext, "mini/QView.js");
-        File localFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator, "QLogic.js");
-        if ((localFile.exists()) && (localFile.isFile()))
-        {
-          Log.i("InternalBaselibLoader", "load ServiceJs from " + localFile.getAbsolutePath());
-          localbdnn.b = bdgo.a(localFile);
-          localbdnn.h = localFile.getAbsolutePath();
-          localbdnn.c = bdgo.a(paramContext, "mini/QVConsole.js");
-          localbdnn.d = bdgo.a(paramContext, "mini/QRemoteDebug.js");
-          localbdnn.e = bdgo.a(paramContext, "mini/QWebview.js");
-          localbdnn.f = bdgo.a(paramContext, "mini/QWorker.js");
-          setBaselib(localbdnn);
-          if (parambdno == null) {
-            continue;
-          }
-          if (!isBaseLibInit()) {
-            break label256;
-          }
-          parambdno.a(0, "", this.mBaselibContent.a());
-          continue;
-        }
-        Log.i("InternalBaselibLoader", "load ServiceJs from assets");
-      }
-      finally {}
-      localbdnn.b = bdgo.a(paramContext, "mini/QLogic.js");
-      localbdnn.h = "assets://mini/QLogic.js";
-      continue;
-      label256:
-      parambdno.a(-1, "基础库加载失败", null);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString)
+  {
+    if (!this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.hasRight()) {
+      return;
     }
+    bdht.e("DownloadInterface", "JsCheckUpdateCallback onException >>> " + paramString);
+    paramString = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
+    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramString);
+  }
+  
+  public void a(ArrayList<ApkUpdateDetail> paramArrayList)
+  {
+    if (!this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.hasRight()) {
+      return;
+    }
+    bdht.a("DownloadInterface", "JsCheckUpdateCallback onResult >>> " + paramArrayList.size());
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONArray localJSONArray = new JSONArray();
+    int i = 0;
+    try
+    {
+      while (i < paramArrayList.size())
+      {
+        ApkUpdateDetail localApkUpdateDetail = (ApkUpdateDetail)paramArrayList.get(i);
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("packageName", localApkUpdateDetail.packageName);
+        localJSONObject2.put("newapksize", localApkUpdateDetail.newapksize);
+        localJSONObject2.put("patchsize", localApkUpdateDetail.patchsize);
+        localJSONObject2.put("updatemethod", localApkUpdateDetail.updatemethod);
+        localJSONObject2.put("versioncode", localApkUpdateDetail.versioncode);
+        localJSONObject2.put("versionname", localApkUpdateDetail.versionname);
+        localJSONObject2.put("fileMd5", localApkUpdateDetail.fileMd5);
+        localJSONObject2.put("sigMd5", localApkUpdateDetail.sigMd5);
+        localJSONObject2.put("url", localApkUpdateDetail.url);
+        localJSONArray.put(localJSONObject2);
+        i += 1;
+      }
+      localJSONObject1.put("guid", this.jdField_a_of_type_JavaLangString);
+      localJSONObject1.put("content", localJSONArray.toString());
+      localJSONObject1.put("resultCode", "0");
+      paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{'guid':'" + this.jdField_a_of_type_JavaLangString + "','r':'0','data':'" + localJSONArray.toString() + "'});}void(0);";
+    }
+    catch (JSONException paramArrayList)
+    {
+      for (;;)
+      {
+        paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
+      }
+    }
+    bdht.b("DownloadInterface", ">>checkUpdate jsUrl:" + paramArrayList);
+    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramArrayList);
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdfk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-
-public class quu
-  implements bemm
+class quu
+  implements bfot
 {
-  public quu(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  quu(qur paramqur) {}
   
-  public void a(beml parambeml) {}
+  public void ak_()
+  {
+    if (qur.c(this.a))
+    {
+      qur.c(this.a, false);
+      qur.a(this.a).a(qur.a(this.a), qur.b(this.a), true, false);
+      return;
+    }
+    qur.a(this.a).a(qur.a(this.a), qur.b(this.a), true, true);
+  }
 }
 
 

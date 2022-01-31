@@ -1,21 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ListView;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.PAVideoView;
 
-class axzx
-  implements ValueAnimator.AnimatorUpdateListener
+public class axzx
 {
-  axzx(axzw paramaxzw) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    axzw.a(this.a).setPadding(azvv.a(axzw.a(this.a).getContext(), 8.0F), i, 0, 0);
-  }
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public PAVideoView a;
+  public TextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axzx
  * JD-Core Version:    0.7.0.1
  */

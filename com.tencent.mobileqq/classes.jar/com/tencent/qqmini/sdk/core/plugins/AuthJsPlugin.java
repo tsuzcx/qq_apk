@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bdfx;
-import bdfz;
-import bdml;
-import bdnw;
+import bejy;
+import beka;
+import bequ;
+import besl;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 
 public class AuthJsPlugin
@@ -12,15 +12,15 @@ public class AuthJsPlugin
   private static final String TAG = "AuthJsPlugin";
   private ChannelProxy mChannelProxy;
   
-  public void login(bdfz parambdfz)
+  public void login(beka parambeka)
   {
-    bdnw.a("AuthJsPlugin", "call API_LOGIN callbackId:" + parambdfz.b + " PackageToolVersion:" + this.mApkgInfo.a.b);
-    this.mChannelProxy.login(this.mApkgInfo.d, new AuthJsPlugin.1(this, parambdfz));
+    besl.a("AuthJsPlugin", "call API_LOGIN callbackId:" + parambeka.b + " PackageToolVersion:" + this.mApkgInfo.a.b);
+    this.mChannelProxy.login(this.mApkgInfo.d, new AuthJsPlugin.1(this, parambeka));
   }
   
-  public void refreshSession(bdfz parambdfz)
+  public void refreshSession(beka parambeka)
   {
-    this.mChannelProxy.checkSession(this.mApkgInfo.d, new AuthJsPlugin.2(this, parambdfz));
+    this.mChannelProxy.checkSession(this.mApkgInfo.d, new AuthJsPlugin.2(this, parambeka));
   }
 }
 

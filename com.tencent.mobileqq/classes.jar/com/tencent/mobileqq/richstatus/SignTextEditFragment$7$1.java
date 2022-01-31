@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.richstatus;
 
-import avdc;
+import awcv;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SignTextEditFragment$7$1
   implements Runnable
 {
-  public SignTextEditFragment$7$1(avdc paramavdc) {}
+  public SignTextEditFragment$7$1(awcv paramawcv) {}
   
   public void run()
   {

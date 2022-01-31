@@ -1,34 +1,53 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import mqq.app.QQPermissionCallback;
 
 class aeta
-  implements QQPermissionCallback
+  extends akup
 {
-  aeta(aesz paramaesz) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  aeta(aerv paramaerv, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "requestLBSPermissionOnClickListener deny");
-    }
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener grant");
-    }
-    this.a.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    if (akfu.a("recommend_troop") == null)
+    double d3 = 0.0D;
+    String str;
+    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null) && (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString != null))
     {
-      akfu.a(new aetb(this, "recommend_troop"));
-      return;
+      str = paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;
+      if ((paramSosoLbsInfo == null) || (paramSosoLbsInfo.a == null)) {
+        break label211;
+      }
     }
-    this.a.a.jdField_a_of_type_Aesq.a(false);
+    label211:
+    for (double d1 = paramSosoLbsInfo.a.a;; d1 = 0.0D)
+    {
+      double d2 = d3;
+      if (paramSosoLbsInfo != null)
+      {
+        d2 = d3;
+        if (paramSosoLbsInfo.a != null) {
+          d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onLocationUpdate() latitude=" + d1 + " longitude=" + d2 + ", address=" + str);
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler = ((PublicAccountHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11));
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, d1, d2, str);
+      }
+      return;
+      str = "";
+      break;
+    }
   }
 }
 

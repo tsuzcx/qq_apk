@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.multicard.manager;
 
-import arxi;
+import astm;
 
 public class TroopMemberRecommendManager$1
   implements Runnable
 {
-  public TroopMemberRecommendManager$1(arxi paramarxi) {}
+  public TroopMemberRecommendManager$1(astm paramastm) {}
   
   public void run()
   {
-    arxi.a(this.this$0);
+    astm.a(this.this$0);
   }
 }
 

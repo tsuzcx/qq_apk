@@ -1,68 +1,54 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.nearby.NearbyReportManager.1;
 import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
 public class atbe
+  implements Manager
 {
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  bfms<atbf> jdField_a_of_type_Bfms = new bfms();
+  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
+  public boolean a;
+  
+  public atbe(NearbyAppInterface paramNearbyAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.redtouch.util", 2, "onMedalConfigChanged configOn:" + paramBoolean + " refresh parents");
-    }
-    paramQQAppInterface = (atax)paramQQAppInterface.getManager(160);
-    RedTouchItem localRedTouchItem = paramQQAppInterface.a(10016);
-    if (paramQQAppInterface.a(localRedTouchItem))
-    {
-      localRedTouchItem.isClosed = paramBoolean;
-      paramQQAppInterface.d(10016);
-    }
-    localRedTouchItem = paramQQAppInterface.a(10015);
-    if (paramQQAppInterface.a(localRedTouchItem))
-    {
-      localRedTouchItem.isClosed = paramBoolean;
-      paramQQAppInterface.d(10015);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  public void a()
   {
-    boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("medal_wall_" + paramQQAppInterface.getCurrentAccountUin(), 4).getBoolean("medal_switch_disable", false);
     if (QLog.isColorLevel()) {
-      QLog.d("Q.redtouch.util", 2, "card.medalSwitchDisable=" + bool);
+      QLog.d("NearbyReportManager", 2, "report");
     }
-    if (baig.W(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin()) != 1) {}
-    for (int i = 1;; i = 0)
+    bfms localbfms = this.jdField_a_of_type_Bfms.a();
+    akbm localakbm = (akbm)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(3);
+    boolean bool = this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Bfms.a();
+    ThreadManager.post(new NearbyReportManager.1(this, localbfms, localakbm, bool), 5, null, false);
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3)
+  {
+    atbf localatbf = (atbf)this.jdField_a_of_type_Bfms.a(paramLong);
+    if (localatbf == null)
     {
-      if ((i != 0) && (QLog.isColorLevel())) {
-        QLog.d("Q.redtouch.util", 2, "medal config off");
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyReportManager", 2, "updateRecord ,not exist!! tinyID = " + paramLong);
       }
-      if ((bool) || (i != 0)) {
-        break;
-      }
-      return true;
+      return;
     }
-    return false;
+    localatbf.c += 1;
+    localatbf.d += paramInt1;
+    if (paramInt2 > localatbf.e) {
+      localatbf.e = paramInt2;
+    }
+    localatbf.f |= paramInt3;
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  public void onDestroy()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.redtouch.util", 2, "onLikeRankListConfigChanged configOn:" + paramBoolean + " refresh parents");
-    }
-    paramQQAppInterface = (atax)paramQQAppInterface.getManager(160);
-    RedTouchItem localRedTouchItem = paramQQAppInterface.a(100601);
-    if (paramQQAppInterface.a(localRedTouchItem))
-    {
-      localRedTouchItem.isClosed = paramBoolean;
-      paramQQAppInterface.d(100601);
-    }
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface)
-  {
-    return ((ajll)paramQQAppInterface.getManager(186)).c();
+    this.jdField_a_of_type_Bfms.a();
   }
 }
 

@@ -1,52 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.wadl.WadlJsBridgeDownloadInfo;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.widget.ContextMenuTextView;
 
-public final class bckm
-  implements Parcelable.Creator<WadlJsBridgeDownloadInfo>
+@TargetApi(16)
+public class bckm
+  implements bfps
 {
-  public WadlJsBridgeDownloadInfo a(Parcel paramParcel)
-  {
-    boolean bool2 = true;
-    WadlJsBridgeDownloadInfo localWadlJsBridgeDownloadInfo = new WadlJsBridgeDownloadInfo();
-    localWadlJsBridgeDownloadInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.d = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Long = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.g = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.j = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_e_of_type_Int = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.jdField_f_of_type_Int = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localWadlJsBridgeDownloadInfo.jdField_b_of_type_Boolean = bool1;
-      localWadlJsBridgeDownloadInfo.l = paramParcel.readString();
-      localWadlJsBridgeDownloadInfo.h = paramParcel.readInt();
-      localWadlJsBridgeDownloadInfo.i = paramParcel.readInt();
-      localWadlJsBridgeDownloadInfo.m = paramParcel.readString();
-      if (paramParcel.readByte() == 0) {
-        break label203;
-      }
-    }
-    label203:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localWadlJsBridgeDownloadInfo.jdField_c_of_type_Boolean = bool1;
-      return localWadlJsBridgeDownloadInfo;
-      bool1 = false;
-      break;
-    }
-  }
+  bckm(ContextMenuTextView paramContextMenuTextView) {}
   
-  public WadlJsBridgeDownloadInfo[] a(int paramInt)
+  public void a()
   {
-    return new WadlJsBridgeDownloadInfo[paramInt];
+    if (Build.VERSION.SDK_INT < 16) {
+      ContextMenuTextView.a(this.a, null);
+    }
+    for (;;)
+    {
+      this.a.a = null;
+      return;
+      ContextMenuTextView.b(this.a, null);
+    }
   }
 }
 

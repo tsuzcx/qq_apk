@@ -1,23 +1,16 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
+
 public class afuo
+  extends RecyclerView.ViewHolder
 {
-  public String a;
-  private String b;
-  private String c;
+  TextView a;
   
-  public afuo(String paramString1, String paramString2)
+  afuo(View paramView)
   {
-    this.b = paramString1;
-    this.c = paramString2;
-  }
-  
-  public String a()
-  {
-    return this.b;
-  }
-  
-  public String b()
-  {
-    return this.c;
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131378463));
   }
 }
 

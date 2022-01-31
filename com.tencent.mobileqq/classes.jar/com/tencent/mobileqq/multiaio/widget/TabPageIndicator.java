@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.multiaio.widget;
 
-import ahbe;
-import akaq;
-import akbm;
+import ahnt;
+import akpc;
+import akpy;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -30,21 +30,21 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.OverScroller;
-import artu;
-import arui;
-import arur;
-import arut;
-import aruu;
-import aruv;
-import aruw;
-import arux;
-import aruy;
-import aruz;
-import arva;
-import arvb;
-import arvc;
-import azwh;
-import beih;
+import aspy;
+import asqm;
+import asqv;
+import asqx;
+import asqy;
+import asqz;
+import asra;
+import asrb;
+import asrc;
+import asrd;
+import asre;
+import asrf;
+import asrg;
+import baxl;
+import bfqb;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.cur.DragTextView;
@@ -57,30 +57,31 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.RecentDynamicAvatarView;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
 public class TabPageIndicator
   extends HorizontalScrollView
-  implements arut, azwh
+  implements asqx, baxl
 {
   private static float jdField_b_of_type_Float = 1.0F;
   private static float jdField_c_of_type_Float = 1.333F;
   private float jdField_a_of_type_Float;
   private final int jdField_a_of_type_Int = 99;
   private long jdField_a_of_type_Long;
-  protected ahbe a;
+  protected ahnt a;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private arui jdField_a_of_type_Arui;
-  private arur jdField_a_of_type_Arur;
-  private aruy jdField_a_of_type_Aruy;
-  private arva jdField_a_of_type_Arva;
-  private arvb jdField_a_of_type_Arvb;
-  private arvc jdField_a_of_type_Arvc;
+  private asqm jdField_a_of_type_Asqm;
+  private asqv jdField_a_of_type_Asqv;
+  private asrc jdField_a_of_type_Asrc;
+  private asre jdField_a_of_type_Asre;
+  private asrf jdField_a_of_type_Asrf;
+  private asrg jdField_a_of_type_Asrg;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private IcsLinearLayout jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout;
@@ -92,8 +93,8 @@ public class TabPageIndicator
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
-  private final View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new aruu(this);
-  private List<aruz> jdField_b_of_type_JavaUtilList;
+  private final View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new asqy(this);
+  private List<asrd> jdField_b_of_type_JavaUtilList;
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = -1;
   private boolean jdField_c_of_type_Boolean;
@@ -127,10 +128,10 @@ public class TabPageIndicator
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
     setHorizontalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout = new IcsLinearLayout(paramContext, paramInt);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new aruv(this), new Handler(Looper.getMainLooper()));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new asqz(this), new Handler(Looper.getMainLooper()));
     addView(this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout, new ViewGroup.LayoutParams(-2, -1));
     g();
-    this.jdField_a_of_type_Arur.a(new aruw(this));
+    this.jdField_a_of_type_Asqv.a(new asra(this));
     h();
   }
   
@@ -145,8 +146,8 @@ public class TabPageIndicator
   private void a(View paramView, boolean paramBoolean)
   {
     paramView = paramView.getTag();
-    if ((paramView instanceof arux)) {}
-    for (paramView = (arux)paramView;; paramView = null)
+    if ((paramView instanceof asrb)) {}
+    for (paramView = (asrb)paramView;; paramView = null)
     {
       if (paramView != null)
       {
@@ -164,9 +165,9 @@ public class TabPageIndicator
     }
   }
   
-  private void a(arux paramarux, RecentBaseData paramRecentBaseData, Drawable paramDrawable)
+  private void a(asrb paramasrb, RecentBaseData paramRecentBaseData, Drawable paramDrawable)
   {
-    if ((paramarux == null) || (paramRecentBaseData == null)) {
+    if ((paramasrb == null) || (paramRecentBaseData == null)) {
       return;
     }
     Drawable localDrawable = paramDrawable;
@@ -182,15 +183,15 @@ public class TabPageIndicator
     label68:
     for (;;)
     {
-      localDrawable = this.jdField_a_of_type_Ahbe.a(m, paramRecentBaseData.a());
-      b(paramarux, paramRecentBaseData, localDrawable);
+      localDrawable = this.jdField_a_of_type_Ahnt.a(m, paramRecentBaseData.a());
+      b(paramasrb, paramRecentBaseData, localDrawable);
       return;
     }
   }
   
-  private void b(arux paramarux, RecentBaseData paramRecentBaseData, Drawable paramDrawable)
+  private void b(asrb paramasrb, RecentBaseData paramRecentBaseData, Drawable paramDrawable)
   {
-    if ((paramarux == null) || (paramRecentBaseData == null)) {
+    if ((paramasrb == null) || (paramRecentBaseData == null)) {
       if (QLog.isColorLevel()) {
         QLog.i("TabPageIndicator", 2, "holder|param invalidate");
       }
@@ -213,35 +214,35 @@ public class TabPageIndicator
         if (QLog.isColorLevel()) {
           QLog.i("TabPageIndicator", 2, "bindview user:" + paramRecentBaseData.a());
         }
-        n = ((Integer)ahbe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentBaseData.a(), paramRecentBaseData.a()).first).intValue();
+        n = ((Integer)ahnt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentBaseData.a(), paramRecentBaseData.a()).first).intValue();
         m = n;
         if (n == 103) {
           m = 1;
         }
-        RecentDynamicAvatarView localRecentDynamicAvatarView = paramarux.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView;
+        RecentDynamicAvatarView localRecentDynamicAvatarView = paramasrb.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView;
         QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
         String str = paramRecentBaseData.a();
         if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a.a() == 1)
         {
           bool = true;
           localRecentDynamicAvatarView.setFaceDrawable(localQQAppInterface, paramDrawable, m, str, 100, false, bool, 0);
-          paramarux.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+          paramasrb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
           n = paramRecentBaseData.mUnreadNum;
           if (n <= 99) {
             break label315;
           }
-          paramarux.jdField_a_of_type_JavaLangString = "99+";
+          paramasrb.jdField_a_of_type_JavaLangString = "99+";
           if (n <= 0) {
             break label364;
           }
           if (paramRecentBaseData.mUnreadFlag != 3) {
             break label327;
           }
-          m = 2130843921;
-          paramarux.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(1, null);
-          paramarux.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131100173));
+          m = 2130844001;
+          paramasrb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(1, null);
+          paramasrb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131165763));
           label248:
-          beih.a(paramarux.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, 3, n, m, 99, null);
+          bfqb.a(paramasrb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, 3, n, m, 99, null);
         }
       }
       for (;;)
@@ -249,19 +250,19 @@ public class TabPageIndicator
         if ((!"1103".equals(ThemeUtil.curThemeId)) && (!"2920".equals(ThemeUtil.curThemeId))) {
           break label373;
         }
-        paramarux.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837928);
+        paramasrb.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837937);
         return;
         bool = false;
         break;
-        paramarux.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setImageDrawable(paramDrawable);
+        paramasrb.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setImageDrawable(paramDrawable);
         break label173;
-        paramarux.jdField_a_of_type_JavaLangString = String.valueOf(n);
+        paramasrb.jdField_a_of_type_JavaLangString = String.valueOf(n);
         break label201;
-        m = 2130849057;
-        paramarux.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, null);
-        paramarux.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131101379));
+        m = 2130849292;
+        paramasrb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, null);
+        paramasrb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166974));
         break label248;
-        paramarux.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(4);
+        paramasrb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(4);
       }
     }
   }
@@ -320,9 +321,9 @@ public class TabPageIndicator
       int m = 0;
       while (m < n)
       {
-        aruz localaruz = (aruz)this.jdField_b_of_type_JavaUtilList.get(m);
-        if (localaruz != null) {
-          localaruz.a(paramInt);
+        asrd localasrd = (asrd)this.jdField_b_of_type_JavaUtilList.get(m);
+        if (localasrd != null) {
+          localasrd.a(paramInt);
         }
         m += 1;
       }
@@ -364,9 +365,9 @@ public class TabPageIndicator
     {
       Field localField = HorizontalScrollView.class.getDeclaredField("mScroller");
       localField.setAccessible(true);
-      arur localarur = new arur(getContext());
-      localField.set(this, localarur);
-      this.jdField_a_of_type_Arur = ((arur)localarur);
+      asqv localasqv = new asqv(getContext());
+      localField.set(this, localasqv);
+      this.jdField_a_of_type_Asqv = ((asqv)localasqv);
       return;
     }
     catch (Exception localException)
@@ -379,10 +380,10 @@ public class TabPageIndicator
   {
     try
     {
-      Field localField = HorizontalScrollView.class.getDeclaredField("mMaximumVelocity");
+      Field localField = (Field)Class.class.getDeclaredMethod("getDeclaredField", new Class[] { String.class }).invoke(HorizontalScrollView.class, new Object[] { "mMaximumVelocity" });
       localField.setAccessible(true);
       int m = localField.getInt(this);
-      this.j = artu.a(getContext(), m);
+      this.j = aspy.a(getContext(), m);
       localField.set(this, Integer.valueOf(this.j));
       return;
     }
@@ -431,20 +432,20 @@ public class TabPageIndicator
       QLog.d("MultiAioFragment", 2, "getView position: " + paramInt);
     }
     RecentBaseData localRecentBaseData = (RecentBaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    arux localarux = new arux();
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131493009, null);
-    localarux.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)localView.findViewById(2131310999));
-    localarux.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131312777));
-    localarux.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131297252));
-    localarux.jdField_a_of_type_Int = paramInt;
-    localView.setTag(localarux);
+    asrb localasrb = new asrb();
+    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558561, null);
+    localasrb.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)localView.findViewById(2131376808));
+    localasrb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131378601));
+    localasrb.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362792));
+    localasrb.jdField_a_of_type_Int = paramInt;
+    localView.setTag(localasrb);
     StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_a_of_type_Ahbe != null) {}
-    for (Drawable localDrawable = this.jdField_a_of_type_Ahbe.a(localRecentBaseData);; localDrawable = null)
+    if (this.jdField_a_of_type_Ahnt != null) {}
+    for (Drawable localDrawable = this.jdField_a_of_type_Ahnt.a(localRecentBaseData);; localDrawable = null)
     {
-      b(localarux, localRecentBaseData, localDrawable);
+      b(localasrb, localRecentBaseData, localDrawable);
       localStringBuilder.append(localRecentBaseData.b());
-      if (AppSetting.jdField_c_of_type_Boolean) {
+      if (AppSetting.d) {
         localView.setContentDescription(localStringBuilder.toString());
       }
       return localView;
@@ -470,7 +471,7 @@ public class TabPageIndicator
   {
     try
     {
-      Field localField = HorizontalScrollView.class.getDeclaredField("mMaximumVelocity");
+      Field localField = (Field)Class.class.getDeclaredMethod("getDeclaredField", new Class[] { String.class }).invoke(HorizontalScrollView.class, new Object[] { "mMaximumVelocity" });
       localField.setAccessible(true);
       localField.set(this, Integer.valueOf((int)(this.j * paramFloat)));
       return;
@@ -487,15 +488,15 @@ public class TabPageIndicator
       QLog.d("TabPageIndicator", 2, "onPageSelected() called with: position = [" + paramInt + "]");
     }
     setCurrentItem(paramInt);
-    if (this.jdField_a_of_type_Arui != null) {
-      this.jdField_a_of_type_Arui.a(paramInt);
+    if (this.jdField_a_of_type_Asqm != null) {
+      this.jdField_a_of_type_Asqm.a(paramInt);
     }
   }
   
   public void a(int paramInt1, float paramFloat, int paramInt2)
   {
-    if (this.jdField_a_of_type_Arui != null) {
-      this.jdField_a_of_type_Arui.a(paramInt1, paramFloat, paramInt2);
+    if (this.jdField_a_of_type_Asqm != null) {
+      this.jdField_a_of_type_Asqm.a(paramInt1, paramFloat, paramInt2);
     }
     paramInt1 = (int)((paramInt1 + paramFloat) * this.g);
     if (b())
@@ -507,9 +508,9 @@ public class TabPageIndicator
     }
   }
   
-  public void a(arux paramarux, RecentBaseData paramRecentBaseData)
+  public void a(asrb paramasrb, RecentBaseData paramRecentBaseData)
   {
-    if ((paramarux == null) || (paramRecentBaseData == null))
+    if ((paramasrb == null) || (paramRecentBaseData == null))
     {
       if (QLog.isColorLevel()) {
         QLog.i("TabPageIndicator", 2, "updateItem|invalidate error");
@@ -520,7 +521,7 @@ public class TabPageIndicator
     int m;
     if (n > 99)
     {
-      paramarux.jdField_a_of_type_JavaLangString = "99+";
+      paramasrb.jdField_a_of_type_JavaLangString = "99+";
       if (n <= 0) {
         break label287;
       }
@@ -536,15 +537,15 @@ public class TabPageIndicator
       if (paramRecentBaseData.mUnreadFlag != 3) {
         break label251;
       }
-      m = 2130843921;
-      paramarux.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(1, null);
-      paramarux.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131100173));
+      m = 2130844001;
+      paramasrb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(1, null);
+      paramasrb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131165763));
     }
     for (;;)
     {
-      beih.a(paramarux.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, 3, n, m, 99, null);
+      bfqb.a(paramasrb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, 3, n, m, 99, null);
       return;
-      paramarux.jdField_a_of_type_JavaLangString = String.valueOf(n);
+      paramasrb.jdField_a_of_type_JavaLangString = String.valueOf(n);
       break;
       label147:
       if ((m != 2) && (m != 3) && (m != 4)) {
@@ -555,7 +556,7 @@ public class TabPageIndicator
       label170:
       if (paramRecentBaseData.a() == 3000)
       {
-        if (akbm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentBaseData.a(), paramRecentBaseData.a()))
+        if (akpy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentBaseData.a(), paramRecentBaseData.a()))
         {
           paramRecentBaseData.mUnreadFlag = 3;
           break label79;
@@ -574,30 +575,30 @@ public class TabPageIndicator
       paramRecentBaseData.mUnreadFlag = 1;
       break label79;
       label251:
-      m = 2130849057;
-      paramarux.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, null);
-      paramarux.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131101379));
+      m = 2130849292;
+      paramasrb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, null);
+      paramasrb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166974));
     }
     label287:
-    paramarux.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(4);
+    paramasrb.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(4);
   }
   
-  public void a(aruz paramaruz)
+  public void a(asrd paramasrd)
   {
     if (this.jdField_b_of_type_JavaUtilList == null) {
       this.jdField_b_of_type_JavaUtilList = new ArrayList();
     }
-    this.jdField_b_of_type_JavaUtilList.add(paramaruz);
+    this.jdField_b_of_type_JavaUtilList.add(paramasrd);
   }
   
   public void a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramFragmentActivity;
-    this.f = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDimensionPixelSize(2131167003);
+    this.f = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDimensionPixelSize(2131298095);
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.setPadding(this.f, 0, this.f, 0);
     this.e = getResources().getDisplayMetrics().widthPixels;
-    this.jdField_a_of_type_Ahbe = new ahbe(paramQQAppInterface, this, false);
+    this.jdField_a_of_type_Ahnt = new ahnt(paramQQAppInterface, this, false);
   }
   
   public void a(String paramString, int paramInt)
@@ -616,7 +617,7 @@ public class TabPageIndicator
         if (localObject == null) {
           break label128;
         }
-        localRecentBaseData.mUnreadNum = ((akaq)localObject).a(localRecentBaseData.a(), localRecentBaseData.a());
+        localRecentBaseData.mUnreadNum = ((akpc)localObject).a(localRecentBaseData.a(), localRecentBaseData.a());
         label102:
         if ((this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.a() != m) || (localRecentBaseData.mUnreadNum <= 0)) {
           break label137;
@@ -631,10 +632,10 @@ public class TabPageIndicator
         break label102;
         label137:
         localObject = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildAt(m).getTag();
-        if ((localObject instanceof arux))
+        if ((localObject instanceof asrb))
         {
-          localObject = (arux)localObject;
-          this.jdField_a_of_type_AndroidOsHandler.post(new TabPageIndicator.1(this, (arux)localObject, localRecentBaseData));
+          localObject = (asrb)localObject;
+          this.jdField_a_of_type_AndroidOsHandler.post(new TabPageIndicator.1(this, (asrb)localObject, localRecentBaseData));
         }
         else if (QLog.isColorLevel())
         {
@@ -693,22 +694,22 @@ public class TabPageIndicator
     if (QLog.isColorLevel()) {
       QLog.d("TabPageIndicator", 2, " onPageScrollStateChanged  state = " + paramInt);
     }
-    if (this.jdField_a_of_type_Arui != null) {
-      this.jdField_a_of_type_Arui.b(paramInt);
+    if (this.jdField_a_of_type_Asqm != null) {
+      this.jdField_a_of_type_Asqm.b(paramInt);
     }
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildAt(this.d).getTag();
-    if ((localObject instanceof arux)) {
-      localObject = (arux)localObject;
+    if ((localObject instanceof asrb)) {
+      localObject = (asrb)localObject;
     }
     switch (paramInt)
     {
     default: 
       return;
     case 0: 
-      ((arux)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      ((asrb)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       return;
     }
-    ((arux)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    ((asrb)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
   }
   
   public boolean b()
@@ -732,16 +733,16 @@ public class TabPageIndicator
   public void computeScroll()
   {
     this.jdField_a_of_type_Boolean = false;
-    int m = this.jdField_a_of_type_Arur.getFinalX();
+    int m = this.jdField_a_of_type_Asqv.getFinalX();
     super.computeScroll();
-    if ((this.jdField_a_of_type_Arur.getFinalX() < m) && (QLog.isColorLevel())) {
+    if ((this.jdField_a_of_type_Asqv.getFinalX() < m) && (QLog.isColorLevel())) {
       QLog.d("TabPageIndicator", 2, "computeScroll() called afterComputeFinalX < beforeComputeFinalX");
     }
     requestLayout();
     if (this.h == 2)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("TabPageIndicator", 2, "computeScroll() ScrollX = " + getScrollX() + ", Scroller.FinialX = " + this.jdField_a_of_type_Arur.getFinalX());
+        QLog.d("TabPageIndicator", 2, "computeScroll() ScrollX = " + getScrollX() + ", Scroller.FinialX = " + this.jdField_a_of_type_Asqv.getFinalX());
       }
       if (this.jdField_a_of_type_Boolean) {
         break label187;
@@ -770,8 +771,8 @@ public class TabPageIndicator
   
   public void d()
   {
-    if (this.jdField_a_of_type_Ahbe != null) {
-      this.jdField_a_of_type_Ahbe.a();
+    if (this.jdField_a_of_type_Ahnt != null) {
+      this.jdField_a_of_type_Ahnt.a();
     }
   }
   
@@ -785,8 +786,8 @@ public class TabPageIndicator
       QLog.d("TabPageIndicator", 2, "dispatchTouchEvent() called with: ev = [" + paramMotionEvent + "], handled = " + bool);
     }
     if (bool) {
-      if (this.jdField_a_of_type_Arvc != null) {
-        this.jdField_a_of_type_Arvc.b(this, paramMotionEvent);
+      if (this.jdField_a_of_type_Asrg != null) {
+        this.jdField_a_of_type_Asrg.b(this, paramMotionEvent);
       }
     }
     switch (paramMotionEvent.getActionMasked())
@@ -811,11 +812,11 @@ public class TabPageIndicator
       setScrollState(2);
       invalidate();
       return bool;
-      this.jdField_a_of_type_Arur.forceFinished(true);
-      if (this.jdField_a_of_type_Aruy != null)
+      this.jdField_a_of_type_Asqv.forceFinished(true);
+      if (this.jdField_a_of_type_Asrc != null)
       {
         int m = (int)this.jdField_a_of_type_Float;
-        this.jdField_a_of_type_Aruy.a(m);
+        this.jdField_a_of_type_Asrc.a(m);
       }
     }
   }
@@ -863,8 +864,8 @@ public class TabPageIndicator
       bool = true;
       i3 = getWidth() - getPaddingRight() - getPaddingLeft();
       i4 = getChildAt(0).getWidth();
-      this.jdField_a_of_type_Arur.fling(getScrollX(), getScrollY(), paramInt, 0, 0, Math.max(0, i4 - i3), 0, 0, i3 / 2, 0);
-      n = this.jdField_a_of_type_Arur.getFinalX();
+      this.jdField_a_of_type_Asqv.fling(getScrollX(), getScrollY(), paramInt, 0, 0, Math.max(0, i4 - i3), 0, 0, i3 / 2, 0);
+      n = this.jdField_a_of_type_Asqv.getFinalX();
       m = n / this.g;
       f1 = n * 1.0F / this.g;
       if (QLog.isColorLevel()) {
@@ -895,20 +896,20 @@ public class TabPageIndicator
       i1 = paramInt;
       paramInt = i2;
       if (QLog.isColorLevel()) {
-        QLog.d("TabPageIndicator", 2, "fling() called mPendingFinalX = [" + this.k + "], currentFinalX = [" + this.jdField_a_of_type_Arur.getFinalX() + "]");
+        QLog.d("TabPageIndicator", 2, "fling() called mPendingFinalX = [" + this.k + "], currentFinalX = [" + this.jdField_a_of_type_Asqv.getFinalX() + "]");
       }
-      i2 = Math.abs(this.jdField_a_of_type_Arur.getFinalX() - this.k);
+      i2 = Math.abs(this.jdField_a_of_type_Asqv.getFinalX() - this.k);
       if ((paramInt != 2147483647) && (i2 > paramInt + 1)) {
         QLog.e("TabPageIndicator", 1, "fling: error state deltaDistance " + i2 + ", lastDeltaDistance = " + paramInt);
       }
       label490:
       while (i2 == 0)
       {
-        this.jdField_a_of_type_Arur.forceFinished(true);
+        this.jdField_a_of_type_Asqv.forceFinished(true);
         setScrollState(2);
         super.fling(i1);
         if (QLog.isColorLevel()) {
-          QLog.d("TabPageIndicator", 2, "fling() called with: velocityX = [" + i1 + "], final ScrollX = " + this.jdField_a_of_type_Arur.getFinalX() + ", exec time = " + (SystemClock.uptimeMillis() - l) + " ms");
+          QLog.d("TabPageIndicator", 2, "fling() called with: velocityX = [" + i1 + "], final ScrollX = " + this.jdField_a_of_type_Asqv.getFinalX() + ", exec time = " + (SystemClock.uptimeMillis() - l) + " ms");
         }
         return;
         bool = false;
@@ -925,8 +926,8 @@ public class TabPageIndicator
         n = 1;
         break label236;
       }
-      while (!this.jdField_a_of_type_Arur.isFinished()) {
-        this.jdField_a_of_type_Arur.forceFinished(true);
+      while (!this.jdField_a_of_type_Asqv.isFinished()) {
+        this.jdField_a_of_type_Asqv.forceFinished(true);
       }
       if (bool) {
         if (n != 0) {
@@ -938,7 +939,7 @@ public class TabPageIndicator
         if (QLog.isColorLevel()) {
           QLog.d("TabPageIndicator", 2, "fling() called with: try " + m + ", velocityX = [" + paramInt + "], deltaVelocity = " + i2 + ", deltaDistance = " + i2);
         }
-        this.jdField_a_of_type_Arur.fling(getScrollX(), getScrollY(), paramInt, 0, 0, Math.max(0, i4 - i3), 0, 0, i3 / 2, 0);
+        this.jdField_a_of_type_Asqv.fling(getScrollX(), getScrollY(), paramInt, 0, 0, Math.max(0, i4 - i3), 0, 0, i3 / 2, 0);
         i1 = i2;
         m += 1;
         i2 = paramInt;
@@ -1027,12 +1028,12 @@ public class TabPageIndicator
           break;
         }
         Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildAt(paramInt1).getTag();
-        if (!(localObject1 instanceof arux)) {
+        if (!(localObject1 instanceof asrb)) {
           break label432;
         }
-        localObject1 = (arux)localObject1;
+        localObject1 = (asrb)localObject1;
         int m = paramBitmap.a();
-        m = ((Integer)ahbe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, m, paramBitmap.a()).first).intValue();
+        m = ((Integer)ahnt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, m, paramBitmap.a()).first).intValue();
         if (m == -2147483648) {
           break label432;
         }
@@ -1041,7 +1042,7 @@ public class TabPageIndicator
         if (localObject2 == null) {
           break label432;
         }
-        a((arux)localObject1, paramBitmap, new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), (Bitmap)localObject2));
+        a((asrb)localObject1, paramBitmap, new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), (Bitmap)localObject2));
         bool = true;
         break label432;
       }
@@ -1081,11 +1082,11 @@ public class TabPageIndicator
       for (f1 = Math.min((float)(Math.cos(f1 * 1.570796326794897D) * (jdField_c_of_type_Float - jdField_b_of_type_Float) + d1), jdField_c_of_type_Float);; f1 = jdField_b_of_type_Float)
       {
         localObject = ((View)localObject).getTag();
-        if ((localObject instanceof arux))
+        if ((localObject instanceof asrb))
         {
-          localObject = (arux)localObject;
-          ((arux)localObject).jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setScaleX(f1);
-          ((arux)localObject).jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setScaleY(f1);
+          localObject = (asrb)localObject;
+          ((asrb)localObject).jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setScaleX(f1);
+          ((asrb)localObject).jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setScaleY(f1);
         }
         paramInt1 += 1;
         break;
@@ -1210,9 +1211,9 @@ public class TabPageIndicator
     this.jdField_c_of_type_Int = paramInt;
   }
   
-  public void setOnActionUpNotFling(aruy paramaruy)
+  public void setOnActionUpNotFling(asrc paramasrc)
   {
-    this.jdField_a_of_type_Aruy = paramaruy;
+    this.jdField_a_of_type_Asrc = paramasrc;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
@@ -1221,19 +1222,19 @@ public class TabPageIndicator
     this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
   }
   
-  public void setOnPageChangeListener(arui paramarui)
+  public void setOnPageChangeListener(asqm paramasqm)
   {
-    this.jdField_a_of_type_Arui = paramarui;
+    this.jdField_a_of_type_Asqm = paramasqm;
   }
   
-  public void setOnTabClickListener(arva paramarva)
+  public void setOnTabClickListener(asre paramasre)
   {
-    this.jdField_a_of_type_Arva = paramarva;
+    this.jdField_a_of_type_Asre = paramasre;
   }
   
-  public void setOnTabReselectedListener(arvb paramarvb)
+  public void setOnTabReselectedListener(asrf paramasrf)
   {
-    this.jdField_a_of_type_Arvb = paramarvb;
+    this.jdField_a_of_type_Asrf = paramasrf;
   }
   
   public void setScrollState(int paramInt)
@@ -1245,9 +1246,9 @@ public class TabPageIndicator
     e(paramInt);
   }
   
-  public void setTouchEventConsumer(arvc paramarvc)
+  public void setTouchEventConsumer(asrg paramasrg)
   {
-    this.jdField_a_of_type_Arvc = paramarvc;
+    this.jdField_a_of_type_Asrg = paramasrg;
   }
   
   public void setViewPager(MultiAIOBaseViewPager paramMultiAIOBaseViewPager)

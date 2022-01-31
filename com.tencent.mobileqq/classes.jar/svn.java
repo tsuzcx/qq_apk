@@ -1,13 +1,79 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import java.io.File;
 
 public class svn
-  implements View.OnClickListener
+  extends sve
 {
-  public svn(MsgTabStoryNodeView paramMsgTabStoryNodeView) {}
+  public svn(@NonNull String[] paramArrayOfString)
+  {
+    super(paramArrayOfString);
+  }
   
-  public void onClick(View paramView) {}
+  protected void a(String[] paramArrayOfString, svf paramsvf)
+  {
+    int k = paramArrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i < k)
+      {
+        paramsvf = new File(paramArrayOfString[i]).listFiles();
+        if (paramsvf == null)
+        {
+          i += 1;
+        }
+        else
+        {
+          int m = paramsvf.length;
+          int j = 0;
+          while (j < m)
+          {
+            if (j % 150 == 0) {}
+            try
+            {
+              Thread.sleep(100L);
+              File localFile = paramsvf[j];
+              if (a(localFile)) {
+                a(localFile);
+              }
+              j += 1;
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              for (;;)
+              {
+                veg.e("Q.qqstory.cleaner:UploadTmpVideoCleanStep", "sleep error ,InterruptedException");
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  protected boolean a(File paramFile)
+  {
+    if (!paramFile.isDirectory()) {}
+    while (System.currentTimeMillis() - paramFile.lastModified() <= 86400000L) {
+      return false;
+    }
+    paramFile = paramFile.listFiles();
+    int j = paramFile.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i >= j) {
+        break label60;
+      }
+      if (TextUtils.equals(paramFile[i].getName(), "dont_delete.txt")) {
+        break;
+      }
+      i += 1;
+    }
+    label60:
+    return true;
+  }
 }
 
 

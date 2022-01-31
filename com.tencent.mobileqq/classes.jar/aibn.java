@@ -1,18 +1,10 @@
-import java.util.Comparator;
-
-class aibn
-  implements Comparator<atcu>
+public abstract interface aibn
 {
-  aibn(aibm paramaibm) {}
-  
-  public int a(atcu paramatcu1, atcu paramatcu2)
-  {
-    return (int)(paramatcu2.a - paramatcu1.a);
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aibn
  * JD-Core Version:    0.7.0.1
  */

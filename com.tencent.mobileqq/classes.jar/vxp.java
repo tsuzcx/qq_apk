@@ -1,56 +1,35 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFollowRcmdRsp;
-import android.text.TextUtils;
-import com.tencent.biz.subscribe.network.SubscribeGetFollowRcmdRequest;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.biz.videostory.network.request.VSBaseRequest;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
 
 class vxp
-  implements wxx<CertifiedAccountRead.StGetFollowRcmdRsp>
+  implements syt<tnh, tni>
 {
-  vxp(vxo paramvxo, SubscribeGetFollowRcmdRequest paramSubscribeGetFollowRcmdRequest, vxq paramvxq) {}
+  vxp(vxo paramvxo, JobContext paramJobContext, Integer paramInteger) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFollowRcmdRsp paramStGetFollowRcmdRsp)
+  public void a(@NonNull tnh paramtnh, @Nullable tni paramtni, @NonNull ErrorMessage paramErrorMessage)
   {
-    boolean bool = VSNetworkHelper.a(paramString);
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStGetFollowRcmdRsp == null))
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      if ((!TextUtils.isEmpty(paramString)) && (vxo.a(this.jdField_a_of_type_Vxo) != null)) {
-        bbmy.a(vxo.b(this.jdField_a_of_type_Vxo), 1, paramString, 0).a();
-      }
-      if (!bool)
-      {
-        VSBaseRequest.reMoveCache(this.jdField_a_of_type_ComTencentBizSubscribeNetworkSubscribeGetFollowRcmdRequest);
-        if ((this.jdField_a_of_type_Vxo.getItemCount() == 0) && (this.jdField_a_of_type_Vxq != null)) {
-          this.jdField_a_of_type_Vxq.a();
-        }
-      }
+      veg.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
+      return;
     }
-    do
+    if ((paramErrorMessage.isFail()) || (paramtni == null))
     {
-      do
-      {
-        return;
-        paramString = paramStGetFollowRcmdRsp.rcmdList.get();
-      } while ((bool) && (!vxo.a(this.jdField_a_of_type_Vxo)));
-      if ((paramString != null) && (paramString.size() > 0))
-      {
-        if (vxo.a(this.jdField_a_of_type_Vxo)) {
-          vxo.a(this.jdField_a_of_type_Vxo, false);
-        }
-        vxo.a(this.jdField_a_of_type_Vxo, paramString, paramStGetFollowRcmdRsp.extInfo, true);
-        wye.b("auth_follow", "blank_exp", 0, 0, new String[0]);
-        return;
-      }
-    } while ((bool) || (this.jdField_a_of_type_Vxo.getItemCount() != 0));
-    vxo.b(this.jdField_a_of_type_Vxo, true);
-    this.jdField_a_of_type_Vxo.notifyDataSetChanged();
+      veg.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
+      vxo.a(this.jdField_a_of_type_Vxo, paramErrorMessage);
+      return;
+    }
+    vxo.a(this.jdField_a_of_type_Vxo).a(paramtni.jdField_a_of_type_JavaUtilList, paramtni.jdField_a_of_type_JavaLangString, paramtni.jdField_a_of_type_Boolean);
+    ((uwa)tdc.a(11)).a(paramtni.jdField_a_of_type_JavaUtilList);
+    paramtnh = vxo.a(this.jdField_a_of_type_Vxo).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
+    vxo.a(this.jdField_a_of_type_Vxo, paramtnh);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vxp
  * JD-Core Version:    0.7.0.1
  */

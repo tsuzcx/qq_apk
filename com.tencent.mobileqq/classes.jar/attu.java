@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.data.PrecoverResource;
-
-public abstract interface attu
+class attu
+  implements bfos
 {
-  public abstract void a(int paramInt, String paramString, PrecoverResource paramPrecoverResource, Object paramObject);
+  attu(atte paramatte) {}
   
-  public abstract void a(PrecoverResource paramPrecoverResource, Object paramObject, long paramLong1, long paramLong2);
+  public void onDismiss()
+  {
+    atte.a(this.a, this.a.c, false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     attu
  * JD-Core Version:    0.7.0.1
  */

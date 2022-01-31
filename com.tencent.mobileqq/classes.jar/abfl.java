@@ -1,66 +1,48 @@
-import android.content.res.Resources;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.MultiImageTextView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.data.Card;
 
 public class abfl
-  implements CompoundButton.OnCheckedChangeListener
+  implements bfoq
 {
-  public abfl(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public abfl(FriendProfileCardActivity paramFriendProfileCardActivity, String paramString1, String paramString2, int paramInt, boolean paramBoolean, bfol parambfol) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    int j = mpl.a();
-    int i = j;
-    if (j == -1) {
-      i = 2;
-    }
-    if (i == 0)
+    int i = 60;
+    if (paramInt == 0)
     {
-      bbmy.a(this.a.getActivity(), 1, 2131630710, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131167766));
-      paramCompoundButton = this.a;
-      if (!paramBoolean) {}
-      for (paramBoolean = bool1;; paramBoolean = false)
+      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, EditInfoActivity.class);
+      paramView.putExtra("title", this.jdField_a_of_type_JavaLangString);
+      paramView.putExtra("default_text", this.b);
+      paramView.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataCard.uin);
+      paramView.putExtra("edit_action", this.jdField_a_of_type_Int);
+      paramView.putExtra("max_limit_mode", 1);
+      paramView.putExtra("edit_type", 2);
+      if (this.jdField_a_of_type_Boolean)
       {
-        NotifyPushSettingActivity.a(paramCompoundButton, paramBoolean);
-        return;
+        paramView.putExtra("max_num", 60);
+        paramView.putExtra("isTroopNick", true);
+        paramView.putExtra("troopUin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivityForResult(paramView, 1034);
       }
     }
-    if (NotifyPushSettingActivity.a(this.a).compareAndSet(true, true))
+    else
     {
-      bbmy.a(this.a.getActivity(), 1, 2131632603, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131167766));
-      paramCompoundButton = this.a;
-      if (!paramBoolean) {}
-      for (paramBoolean = bool2;; paramBoolean = false)
-      {
-        NotifyPushSettingActivity.a(paramCompoundButton, paramBoolean);
-        return;
+      if (this.jdField_a_of_type_Bfol != null) {
+        this.jdField_a_of_type_Bfol.dismiss();
       }
-    }
-    NotifyPushSettingActivity.a(this.a, paramBoolean);
-    if (paramBoolean)
-    {
-      paramCompoundButton = ajjy.a(2131641857) + abgh.a(3600000L);
-      NotifyPushSettingActivity.a(this.a).setRightText(paramCompoundButton);
-      NotifyPushSettingActivity.a(this.a).set(true);
-      long l = NetConnInfoCenter.getServerTime();
-      ((ajfi)this.a.app.a(2)).b((int)(3600L + l), "", "not_disturb_from_notify_push_setting_activity");
-      awqx.b(this.a.app, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 1, 60L + "", "0", "", "");
       return;
     }
-    paramCompoundButton = NotifyPushSettingActivity.a(this.a).a().getText().toString();
-    NotifyPushSettingActivity.a(this.a).a().setText("");
-    NotifyPushSettingActivity.a(this.a).set(true);
-    ((ajfi)this.a.app.a(2)).b(0, paramCompoundButton, "not_disturb_from_notify_push_setting_activity");
-    awqx.b(this.a.app, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 2, "0", "0", "", "");
+    if (this.jdField_a_of_type_Int == 2) {}
+    for (paramInt = i;; paramInt = 36)
+    {
+      paramView.putExtra("max_num", paramInt);
+      paramView.putExtra("support_emotion", true);
+      break;
+    }
   }
 }
 

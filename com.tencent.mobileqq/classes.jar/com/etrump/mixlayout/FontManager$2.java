@@ -1,18 +1,18 @@
 package com.etrump.mixlayout;
 
-import bajo;
-import fv;
+import bbkv;
+import ho;
 
 public class FontManager$2
   implements Runnable
 {
-  public FontManager$2(fv paramfv) {}
+  public FontManager$2(ho paramho) {}
   
   public void run()
   {
     this.this$0.a(true);
-    bajo.a(this.this$0.a);
-    fv.a(this.this$0);
+    bbkv.a(this.this$0.a);
+    ho.a(this.this$0);
   }
 }
 

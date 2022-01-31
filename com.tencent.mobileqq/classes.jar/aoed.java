@@ -1,59 +1,91 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-class aoed
-  implements aodv
+public class aoed
 {
-  aoed(aoec paramaoec, String paramString, aoex paramaoex) {}
+  private Map<String, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private byte[] jdField_a_of_type_ArrayOfByte = new byte[1];
+  private Map<String, Integer> b = new HashMap();
+  private Map<String, List<StructMsg.ButtonInfo>> c = new HashMap();
   
-  public void a(int paramInt, String paramString)
+  public int a(String paramString)
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2BuddyTaskExcuter faild");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
-    }
-    for (;;)
+    synchronized (this.jdField_a_of_type_ArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_Aoec.jdField_a_of_type_JavaLangString + "] faild:" + paramInt);
-      }
-      this.jdField_a_of_type_Aoex.a(aoea.a(this.jdField_a_of_type_Aoec.jdField_a_of_type_Long, bool2), bool1);
-      return;
-      if ((paramInt == -6101) || (paramInt == -7003))
+      if ((!TextUtils.isEmpty(paramString)) && (this.b.containsKey(paramString)))
       {
-        bool1 = false;
-        bool2 = true;
+        int i = ((Integer)this.b.get(paramString)).intValue();
+        return i;
       }
-      else
+      return -1;
+    }
+  }
+  
+  public long a(String paramString)
+  {
+    long l2 = -1L;
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    long l1 = l2;
+    try
+    {
+      if (!TextUtils.isEmpty(paramString))
       {
-        bool1 = false;
+        l1 = l2;
+        if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+          l1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get(paramString)).longValue();
+        }
+      }
+      return l1;
+    }
+    finally {}
+  }
+  
+  public List<StructMsg.ButtonInfo> a(String paramString)
+  {
+    synchronized (this.jdField_a_of_type_ArrayOfByte)
+    {
+      if (this.c.containsKey(paramString))
+      {
+        paramString = (List)this.c.get(paramString);
+        return paramString;
+      }
+      return null;
+    }
+  }
+  
+  public void a(String paramString, long paramLong)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      synchronized (this.jdField_a_of_type_ArrayOfByte)
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
+        return;
       }
     }
   }
   
-  public void a(String paramString)
+  public void a(String paramString, List<StructMsg.ButtonInfo> paramList, int paramInt, long paramLong)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "1");
-    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aoec.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aoec.jdField_a_of_type_Long + "");
-    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aoec.c);
-    localBundle.putString("_m_ForwardUuid", paramString);
-    localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aoec.e);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aoec.f);
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_Aoec.jdField_a_of_type_JavaLangString + "] success");
+    if (!TextUtils.isEmpty(paramString)) {
+      synchronized (this.jdField_a_of_type_ArrayOfByte)
+      {
+        if (this.c.containsKey(paramString)) {
+          this.c.remove(paramString);
+        }
+        this.c.put(paramString, paramList);
+        this.b.put(paramString, Integer.valueOf(paramInt));
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
+        return;
+      }
     }
-    this.jdField_a_of_type_Aoex.a(paramString, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aoed
  * JD-Core Version:    0.7.0.1
  */

@@ -1,75 +1,32 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.util.LruCache;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 
-class aliv
-  extends Handler
+final class aliv
+  implements ayrz
 {
-  aliv(alis paramalis, Looper paramLooper)
+  public void a(aysw paramaysw, aysx paramaysx)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1001) {}
-    try
-    {
-      paramMessage = (ArrayList)paramMessage.obj;
-      if ((paramMessage != null) && (paramMessage.size() > 0))
-      {
-        paramMessage = paramMessage.iterator();
-        while (paramMessage.hasNext())
-        {
-          String str1 = (String)paramMessage.next();
-          String str2 = (String)this.a.b.get(str1);
-          Bitmap localBitmap = BitmapFactory.decodeFile(str2);
-          if (localBitmap != null)
-          {
-            localBitmap = this.a.a(localBitmap);
-            if (localBitmap != null)
-            {
-              Message localMessage = Message.obtain();
-              Bundle localBundle = new Bundle();
-              localBundle.putParcelable("bmp", localBitmap);
-              localBundle.putString("uin", str1);
-              localBundle.putString("path", str2);
-              localMessage.obj = localBundle;
-              localMessage.what = 1002;
-              this.a.a.sendMessage(localMessage);
-              if (QLog.isColorLevel()) {
-                QLog.d("NonMainAppHeadLoader", 2, "decodeFile, uin:" + str1);
-              }
-            }
-          }
-        }
-      }
+    if ((paramaysw == null) || (paramaysx == null)) {}
+    while (!(paramaysw instanceof ayrv)) {
       return;
     }
-    catch (OutOfMemoryError paramMessage)
+    ayrv localayrv = (ayrv)paramaysw;
+    localayrv.jdField_a_of_type_Long += paramaysx.c;
+    paramaysx.c = 0L;
+    paramaysx = "bytes=" + localayrv.jdField_a_of_type_Long + "-";
+    localayrv.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysx);
+    paramaysx = localayrv.jdField_a_of_type_JavaLangString;
+    if (paramaysx.contains("range="))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("NonMainAppHeadLoader", 2, "decodeFile, OutOfMemoryError");
-      }
-      return;
+      paramaysx = paramaysx.substring(0, paramaysx.lastIndexOf("range="));
+      localayrv.jdField_a_of_type_JavaLangString = (paramaysx + "range=" + localayrv.jdField_a_of_type_Long);
     }
-    catch (Exception paramMessage)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("NonMainAppHeadLoader", 2, "decodeFile, exception:" + paramMessage.toString());
-    }
+    QLog.i("AREngine_ARResourceDownload", 1, "IBreakDownFix. url = " + ((ayrv)paramaysw).jdField_a_of_type_JavaLangString + ", offset=" + localayrv.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aliv
  * JD-Core Version:    0.7.0.1
  */

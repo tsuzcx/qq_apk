@@ -1,10 +1,38 @@
-import android.widget.RelativeLayout;
+import android.content.Intent;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public abstract interface lxr
+public class lxr
+  implements birb
 {
-  public abstract void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean);
+  final WeakReference<QQServiceForAV> a;
   
-  public abstract void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean);
+  lxr(QQServiceForAV paramQQServiceForAV)
+  {
+    this.a = new WeakReference(paramQQServiceForAV);
+  }
+  
+  public void a(int paramInt, long paramLong1, long paramLong2) {}
+  
+  public void a(int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QQServiceForAV", 2, "onAEResDownloadResult, package[" + paramInt1 + ", isDownloaded[" + paramBoolean + ", errorType[" + paramInt2 + "]");
+    }
+    Object localObject = (QQServiceForAV)this.a.get();
+    if (localObject != null)
+    {
+      localObject = (QQAppInterface)((QQServiceForAV)localObject).a();
+      Intent localIntent = new Intent("tencent.video.q2v.ptusoDownloadRet");
+      localIntent.putExtra("packageIdx", paramInt1);
+      localIntent.putExtra("isDownloaded", paramBoolean);
+      localIntent.putExtra("errorType", paramInt2);
+      ((QQAppInterface)localObject).getApp().sendBroadcast(localIntent);
+    }
+  }
 }
 
 

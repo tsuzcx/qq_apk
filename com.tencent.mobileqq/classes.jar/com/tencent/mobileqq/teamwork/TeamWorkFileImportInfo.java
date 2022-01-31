@@ -3,12 +3,12 @@ package com.tencent.mobileqq.teamwork;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import axeo;
+import ayeq;
 
 public class TeamWorkFileImportInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<TeamWorkFileImportInfo> CREATOR = new axeo();
+  public static final Parcelable.Creator<TeamWorkFileImportInfo> CREATOR = new ayeq();
   public int a;
   public long a;
   public String a;
@@ -34,6 +34,7 @@ public class TeamWorkFileImportInfo
   public boolean f;
   public int g;
   public String g;
+  public boolean g;
   public int h;
   public String h;
   public int i;
@@ -42,10 +43,13 @@ public class TeamWorkFileImportInfo
   public String j;
   public int k;
   public String k;
+  public int l;
   public String l;
   public String m;
   public String n;
   public String o;
+  public String p;
+  public String q;
   
   public TeamWorkFileImportInfo()
   {
@@ -73,38 +77,38 @@ public class TeamWorkFileImportInfo
       this.jdField_a_of_type_Boolean = bool1;
       this.jdField_d_of_type_Int = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
-        break label331;
+        break label363;
       }
       bool1 = true;
       label128:
       this.jdField_b_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label336;
+        break label368;
       }
       bool1 = true;
       label142:
       this.jdField_c_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label341;
+        break label373;
       }
       bool1 = true;
       label156:
       this.jdField_d_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label346;
+        break label378;
       }
       bool1 = true;
       label170:
       this.jdField_e_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label351;
+        break label383;
       }
     }
-    label331:
-    label336:
-    label341:
-    label346:
-    label351:
+    label363:
+    label368:
+    label373:
+    label378:
+    label383:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.jdField_f_of_type_Boolean = bool1;
@@ -117,14 +121,18 @@ public class TeamWorkFileImportInfo
       this.k = paramParcel.readString();
       this.jdField_g_of_type_Int = paramParcel.readInt();
       this.jdField_h_of_type_Int = paramParcel.readInt();
-      this.l = paramParcel.readString();
+      this.jdField_l_of_type_JavaLangString = paramParcel.readString();
       this.jdField_i_of_type_Int = paramParcel.readInt();
       this.jdField_j_of_type_Int = paramParcel.readInt();
       this.jdField_d_of_type_Long = paramParcel.readLong();
       this.jdField_e_of_type_Long = paramParcel.readLong();
-      this.o = paramParcel.readString();
+      this.p = paramParcel.readString();
       this.jdField_f_of_type_JavaLangString = paramParcel.readString();
       this.jdField_c_of_type_Long = paramParcel.readLong();
+      this.jdField_l_of_type_Int = paramParcel.readInt();
+      this.q = paramParcel.readString();
+      this.n = paramParcel.readString();
+      this.o = paramParcel.readString();
       return;
       bool1 = false;
       break;
@@ -151,6 +159,11 @@ public class TeamWorkFileImportInfo
   
   public boolean c()
   {
+    return this.jdField_d_of_type_Int == 13;
+  }
+  
+  public boolean d()
+  {
     return this.jdField_d_of_type_Int == 7;
   }
   
@@ -161,7 +174,7 @@ public class TeamWorkFileImportInfo
   
   public String toString()
   {
-    return "TeamWorkFileImportInfo{peerType=" + this.jdField_a_of_type_Int + ", peerUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileName='" + this.jdField_b_of_type_JavaLangString + '\'' + ", filePath='" + this.jdField_c_of_type_JavaLangString + '\'' + ", msgUniseq=" + this.jdField_a_of_type_Long + ", nSessionId=" + this.jdField_b_of_type_Long + ", troopFilePath='" + this.jdField_d_of_type_JavaLangString + '\'' + ", troopFileBusId=" + this.jdField_b_of_type_Int + ", device=" + this.jdField_c_of_type_Int + ", troopUin='" + this.jdField_e_of_type_JavaLangString + '\'' + ", isNeedDownLoadUrl=" + this.jdField_a_of_type_Boolean + ", entranceFrom=" + this.jdField_d_of_type_Int + ", isFromAIO=" + this.jdField_b_of_type_Boolean + ", isFromDataLine=" + this.jdField_c_of_type_Boolean + ", isOpenTeamWork=" + this.jdField_d_of_type_Boolean + ", isUserClick=" + this.jdField_e_of_type_Boolean + ", isMessageConvert=" + this.jdField_f_of_type_Boolean + ", nFileType=" + this.jdField_e_of_type_Int + ", folderId='" + this.jdField_g_of_type_JavaLangString + '\'' + ", retCode=" + this.jdField_f_of_type_Int + ", errorString='" + this.jdField_h_of_type_JavaLangString + '\'' + ", redirectUrl='" + this.jdField_i_of_type_JavaLangString + '\'' + ", strSendUin='" + this.jdField_j_of_type_JavaLangString + '\'' + ", traceId='" + this.k + '\'' + ", importOption=" + this.jdField_g_of_type_Int + ", urlType=" + this.jdField_h_of_type_Int + ", fileid='" + this.l + '\'' + ", filetype=" + this.jdField_i_of_type_Int + ", fileImportType=" + this.jdField_j_of_type_Int + ", fileSize=" + this.jdField_d_of_type_Long + ", structUniseq=" + this.jdField_e_of_type_Long + ", editedUrl='" + this.o + '\'' + ", srcUrl='" + this.jdField_f_of_type_JavaLangString + '\'' + ", createTime='" + this.jdField_c_of_type_Long + '\'' + '}';
+    return "TeamWorkFileImportInfo{peerType=" + this.jdField_a_of_type_Int + ", peerUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileName='" + this.jdField_b_of_type_JavaLangString + '\'' + ", filePath='" + this.jdField_c_of_type_JavaLangString + '\'' + ", msgUniseq=" + this.jdField_a_of_type_Long + ", nSessionId=" + this.jdField_b_of_type_Long + ", troopFilePath='" + this.jdField_d_of_type_JavaLangString + '\'' + ", troopFileBusId=" + this.jdField_b_of_type_Int + ", device=" + this.jdField_c_of_type_Int + ", troopUin='" + this.jdField_e_of_type_JavaLangString + '\'' + ", isNeedDownLoadUrl=" + this.jdField_a_of_type_Boolean + ", entranceFrom=" + this.jdField_d_of_type_Int + ", isFromAIO=" + this.jdField_b_of_type_Boolean + ", isFromDataLine=" + this.jdField_c_of_type_Boolean + ", isOpenTeamWork=" + this.jdField_d_of_type_Boolean + ", isUserClick=" + this.jdField_e_of_type_Boolean + ", isMessageConvert=" + this.jdField_f_of_type_Boolean + ", nFileType=" + this.jdField_e_of_type_Int + ", folderId='" + this.jdField_g_of_type_JavaLangString + '\'' + ", retCode=" + this.jdField_f_of_type_Int + ", errorString='" + this.jdField_h_of_type_JavaLangString + '\'' + ", redirectUrl='" + this.jdField_i_of_type_JavaLangString + '\'' + ", strSendUin='" + this.jdField_j_of_type_JavaLangString + '\'' + ", traceId='" + this.k + '\'' + ", importOption=" + this.jdField_g_of_type_Int + ", urlType=" + this.jdField_h_of_type_Int + ", fileid='" + this.jdField_l_of_type_JavaLangString + '\'' + ", filetype=" + this.jdField_i_of_type_Int + ", fileImportType=" + this.jdField_j_of_type_Int + ", fileSize=" + this.jdField_d_of_type_Long + ", structUniseq=" + this.jdField_e_of_type_Long + ", editedUrl='" + this.p + '\'' + ", srcUrl='" + this.jdField_f_of_type_JavaLangString + '\'' + ", createTime='" + this.jdField_c_of_type_Long + '\'' + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -183,38 +196,38 @@ public class TeamWorkFileImportInfo
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeInt(this.jdField_d_of_type_Int);
       if (!this.jdField_b_of_type_Boolean) {
-        break label322;
+        break label354;
       }
       paramInt = 1;
       label114:
       paramParcel.writeByte((byte)paramInt);
       if (!this.jdField_c_of_type_Boolean) {
-        break label327;
+        break label359;
       }
       paramInt = 1;
       label129:
       paramParcel.writeByte((byte)paramInt);
       if (!this.jdField_d_of_type_Boolean) {
-        break label332;
+        break label364;
       }
       paramInt = 1;
       label144:
       paramParcel.writeByte((byte)paramInt);
       if (!this.jdField_e_of_type_Boolean) {
-        break label337;
+        break label369;
       }
       paramInt = 1;
       label159:
       paramParcel.writeByte((byte)paramInt);
       if (!this.jdField_f_of_type_Boolean) {
-        break label342;
+        break label374;
       }
     }
-    label322:
-    label327:
-    label332:
-    label337:
-    label342:
+    label354:
+    label359:
+    label364:
+    label369:
+    label374:
     for (paramInt = i1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
@@ -227,14 +240,18 @@ public class TeamWorkFileImportInfo
       paramParcel.writeString(this.k);
       paramParcel.writeInt(this.jdField_g_of_type_Int);
       paramParcel.writeInt(this.jdField_h_of_type_Int);
-      paramParcel.writeString(this.l);
+      paramParcel.writeString(this.jdField_l_of_type_JavaLangString);
       paramParcel.writeInt(this.jdField_i_of_type_Int);
       paramParcel.writeInt(this.jdField_j_of_type_Int);
       paramParcel.writeLong(this.jdField_d_of_type_Long);
       paramParcel.writeLong(this.jdField_e_of_type_Long);
-      paramParcel.writeString(this.o);
+      paramParcel.writeString(this.p);
       paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
       paramParcel.writeLong(this.jdField_c_of_type_Long);
+      paramParcel.writeInt(this.jdField_l_of_type_Int);
+      paramParcel.writeString(this.q);
+      paramParcel.writeString(this.n);
+      paramParcel.writeString(this.o);
       return;
       paramInt = 0;
       break;

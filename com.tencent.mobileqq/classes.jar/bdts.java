@@ -1,69 +1,35 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StGetTCBTicketReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetTCBTicketRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.widget.BubblePopupWindow;
 
 public class bdts
-  extends bdtz
+  implements View.OnLongClickListener
 {
-  private INTERFACE.StGetTCBTicketReq a = new INTERFACE.StGetTCBTicketReq();
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bdtt(this);
+  public BubblePopupWindow a;
+  public String a;
   
-  public bdts(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2)
+  public bdts(QidianProfileCardActivity paramQidianProfileCardActivity)
   {
-    this.a.appid.set(paramString1);
-    this.a.envId.set(paramString2);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  protected String a()
+  public boolean onLongClick(View paramView)
   {
-    return "mini_app_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetTCBTicketRsp localStGetTCBTicketRsp = new INTERFACE.StGetTCBTicketRsp();
-    try
-    {
-      localStGetTCBTicketRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetTCBTicketRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("ticket", localStGetTCBTicketRsp.ticket.get());
-        paramArrayOfByte.put("createTime", localStGetTCBTicketRsp.createTime.get());
-        paramArrayOfByte.put("period", localStGetTCBTicketRsp.period.get());
-        return paramArrayOfByte;
-      }
-      bdnw.a("GetTcbTicketRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      bdnw.a("GetTcbTicketRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetTCBTicket";
+    int i = paramView.getId();
+    this.jdField_a_of_type_JavaLangString = String.valueOf(paramView.getTag());
+    bblr localbblr = new bblr();
+    localbblr.a(i, ajyc.a(2131709745));
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bbcc.a(paramView, localbblr, this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new bdtu(this));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bdts
  * JD-Core Version:    0.7.0.1
  */

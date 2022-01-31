@@ -1,20 +1,22 @@
+import android.view.View;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.widget.AdapterView;
+
 public class amed
+  implements bfpe
 {
-  int a;
+  public amed(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public amed()
-  {
-    this.a = 0;
-  }
+  public void a(AdapterView<?> paramAdapterView) {}
   
-  public amed(int paramInt)
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = paramInt;
+    this.a.b = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amed
  * JD-Core Version:    0.7.0.1
  */

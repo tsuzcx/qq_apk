@@ -1,21 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.text.TextUtils;
 
 public class amvd
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public amvd(DataReportViewer paramDataReportViewer) {}
+  public String a;
+  public boolean a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public amvd(amvc paramamvc)
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+  }
+  
+  public String toString()
+  {
+    return "WebBundleConfig{enable=" + this.jdField_a_of_type_Boolean + ", preloadUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amvd
  * JD-Core Version:    0.7.0.1
  */

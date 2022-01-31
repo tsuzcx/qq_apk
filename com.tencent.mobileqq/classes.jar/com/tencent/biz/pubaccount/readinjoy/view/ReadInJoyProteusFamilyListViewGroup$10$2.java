@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import qsi;
+import reu;
 
 public class ReadInJoyProteusFamilyListViewGroup$10$2
   implements Runnable
 {
-  public ReadInJoyProteusFamilyListViewGroup$10$2(qsi paramqsi) {}
+  public ReadInJoyProteusFamilyListViewGroup$10$2(reu paramreu) {}
   
   public void run()
   {

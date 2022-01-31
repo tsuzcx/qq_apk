@@ -1,13 +1,18 @@
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+
 public class rit
+  implements rvy
 {
-  public static String a()
+  public rit(FastWebActivity paramFastWebActivity) {}
+  
+  public int a()
   {
-    return "0123456789";
+    return FastWebActivity.a(this.a);
   }
   
-  public static String b()
+  public boolean a()
   {
-    return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    return true;
   }
 }
 

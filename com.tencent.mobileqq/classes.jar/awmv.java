@@ -1,109 +1,267 @@
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.view.Surface;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
+import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(14)
 public class awmv
-  implements SurfaceTexture.OnFrameAvailableListener
+  extends awoc
 {
-  SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  public Surface a;
-  awmw jdField_a_of_type_Awmw;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-  EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-  EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
-  boolean jdField_a_of_type_Boolean;
+  protected int a;
+  protected long a;
+  protected TroopInfo a;
+  public String a;
+  protected long b;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
   
-  public awmv()
+  public awmv(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    a();
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_Awmw = new awmw();
-    this.jdField_a_of_type_Awmw.a();
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Awmw.a());
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 != null)
-    {
-      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentContext().equals(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)) {
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
-      }
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroySurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+    super(paramQQAppInterface, paramInt, 0L);
+    this.jdField_b_of_type_Long = awig.V;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = ((TroopManager)paramQQAppInterface.getManager(52)).c(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop()) {
+      this.jdField_b_of_type_Long = awig.G;
     }
-    this.jdField_a_of_type_AndroidViewSurface.release();
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = null;
-    this.jdField_a_of_type_Awmw = null;
-    this.jdField_a_of_type_AndroidViewSurface = null;
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
   }
   
-  @SuppressLint({"NewApi"})
-  public void c()
+  private void a()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    switch (this.jdField_a_of_type_Int)
     {
-      for (;;)
+    default: 
+      this.e = "";
+      this.f = null;
+      return;
+    case 0: 
+      if (!TextUtils.isEmpty(this.c))
       {
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (!bool) {
-          try
-          {
-            this.jdField_a_of_type_JavaLangObject.wait(5000L);
-            if (!this.jdField_a_of_type_Boolean) {
-              throw new RuntimeException("Surface frame wait timed out");
-            }
+        this.e = this.c;
+        this.f = this.jdField_b_of_type_JavaLangString;
+        return;
+      }
+      if (!TextUtils.isEmpty(this.d))
+      {
+        this.e = this.d;
+        this.f = this.jdField_b_of_type_JavaLangString;
+        return;
+      }
+      this.e = this.jdField_b_of_type_JavaLangString;
+      this.f = null;
+      return;
+    case 2: 
+      this.e = this.c;
+      if (!TextUtils.isEmpty(this.d))
+      {
+        this.f = this.d;
+        return;
+      }
+      this.f = this.jdField_b_of_type_JavaLangString;
+      return;
+    }
+    if (!TextUtils.isEmpty(this.c))
+    {
+      this.e = this.c;
+      this.f = this.d;
+      return;
+    }
+    this.e = this.d;
+    this.f = this.jdField_b_of_type_JavaLangString;
+  }
+  
+  protected long a(String paramString)
+  {
+    this.g = paramString;
+    this.jdField_a_of_type_Long = -9223372036854775808L;
+    boolean bool;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop())
+    {
+      bool = false;
+      if (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop()) {
+        break label188;
+      }
+      l = awig.i;
+      label38:
+      l = awvy.a(paramString, this.c, l, false, false, bool);
+      if (l > this.jdField_a_of_type_Long)
+      {
+        this.jdField_a_of_type_Long = l;
+        this.jdField_a_of_type_Int = 2;
+      }
+      if (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop()) {
+        break label195;
+      }
+    }
+    label188:
+    label195:
+    for (long l = awig.h;; l = awig.l)
+    {
+      l = awvy.a(paramString, this.d, l, false, false, bool);
+      if (l > this.jdField_a_of_type_Long)
+      {
+        this.jdField_a_of_type_Long = l;
+        this.jdField_a_of_type_Int = 1;
+      }
+      l = awvy.a(paramString, this.jdField_b_of_type_JavaLangString, awig.o, false, true, true);
+      if (l > this.jdField_a_of_type_Long)
+      {
+        this.jdField_a_of_type_Long = l;
+        this.jdField_a_of_type_Int = 0;
+      }
+      if (this.jdField_a_of_type_Long != -9223372036854775808L)
+      {
+        this.jdField_a_of_type_Long += this.jdField_b_of_type_Long;
+        a();
+      }
+      return this.jdField_a_of_type_Long;
+      bool = true;
+      break;
+      l = awig.q;
+      break label38;
+    }
+  }
+  
+  public Object a()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public String a()
+  {
+    return this.g;
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    String str2;
+    Object localObject;
+    if (awvy.a(this.jdField_b_of_type_Int))
+    {
+      ahpf.a = true;
+      str2 = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).d(this.jdField_a_of_type_JavaLangString);
+      localObject = ((ajxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.jdField_b_of_type_JavaLangString);
+      if (awiu.a(this.jdField_b_of_type_JavaLangString)) {
+        break label390;
+      }
+      if ((localObject == null) || (!((Friends)localObject).isFriend())) {
+        break label276;
+      }
+      ahpf.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, 0, bbcl.a((Friends)localObject), false);
+      awvy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bbcl.a((Friends)localObject), this.jdField_b_of_type_JavaLangString, "", 0);
+    }
+    for (;;)
+    {
+      akgc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.g);
+      awvy.a(this.g, 20, 1, paramView);
+      awvy.a(this.g, 20, paramView, false);
+      awvy.a(this, paramView);
+      if (SearchConfigManager.needSeparate) {
+        awvy.a("search", "contact", "contacts", 0, 0, new String[] { awvy.a(this.jdField_b_of_type_Int) });
+      }
+      if (((a() instanceof String)) && (!this.jdField_b_of_type_Boolean)) {
+        awvy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.g, this.i, (String)a(), e());
+      }
+      if ((paramView.getContext() instanceof UniteSearchActivity))
+      {
+        if ((this.i == null) || (TextUtils.isEmpty(this.i))) {
+          break;
+        }
+        awso.a(null, 0, this.jdField_b_of_type_Int, "0X8009D31", 1, 0, null, null);
+      }
+      return;
+      label276:
+      ahpf.a(paramView.getContext(), this.jdField_b_of_type_JavaLangString, str2, 1000, a().toString(), false);
+      String str1 = a().toString();
+      localObject = str1;
+      if (TextUtils.isEmpty(str1))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(h, 2, "saveSearchHistory title is null");
+        }
+        str1 = c();
+        localObject = str1;
+        if (TextUtils.isEmpty(str1))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(h, 2, "saveSearchHistory titlestr is null");
           }
-          catch (InterruptedException localInterruptedException)
-          {
-            Thread.currentThread().interrupt();
-          }
+          localObject = d();
         }
       }
+      awvy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, this.jdField_b_of_type_JavaLangString, str2, 1000);
+      continue;
+      label390:
+      bahx.a(paramView.getContext(), null, this.jdField_b_of_type_JavaLangString);
+      awvy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a().toString(), this.jdField_b_of_type_JavaLangString, str2, 1000);
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Awmw.a("before updateTexImage");
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+    awso.a(null, 0, this.jdField_b_of_type_Int, "0X8009D37", 0, 0, null, null);
   }
   
-  public void d()
+  public boolean a()
   {
-    this.jdField_a_of_type_Awmw.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    return false;
   }
   
-  public void onFrameAvailable(SurfaceTexture arg1)
+  public String b()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        throw new RuntimeException("mFrameAvailable already set, frame could be dropped");
-      }
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public CharSequence c()
+  {
+    String str = bbcl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, true);
+    if (str != null) {
+      return ajyc.a(2131702521) + str;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangObject.notifyAll();
+    return ajyc.a(2131702513);
+  }
+  
+  public String c()
+  {
+    return this.e;
+  }
+  
+  public int d()
+  {
+    return 1000;
+  }
+  
+  public CharSequence d()
+  {
+    return null;
+  }
+  
+  public String d()
+  {
+    return this.f;
+  }
+  
+  public int e()
+  {
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awmv
  * JD-Core Version:    0.7.0.1
  */

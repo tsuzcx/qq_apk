@@ -1,62 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SubscribeResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
 class adqo
-  implements BusinessObserver
+  implements adnz
 {
-  adqo(adqn paramadqn, String paramString) {}
+  adqo(adqg paramadqg, adqs paramadqs, MessageForPoke paramMessageForPoke) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    if (paramBoolean) {}
+    this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
+    this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+    this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
+    this.jdField_a_of_type_Adqs.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    if ((this.jdField_a_of_type_Adqs.b == adqg.a()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Adqg.a instanceof ChatHistoryActivity)) && (!adqg.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
+      this.jdField_a_of_type_Adqs.c.setVisibility(0);
+    }
     for (;;)
     {
-      int i;
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.SubscribeResponse localSubscribeResponse = new mobileqq_mp.SubscribeResponse();
-          localSubscribeResponse.mergeFrom(paramBundle);
-          paramInt = ((mobileqq_mp.RetInfo)localSubscribeResponse.ret_info.get()).ret_code.get();
-          if (paramInt == 0)
-          {
-            i = 1;
-            paramInt = 1;
-          }
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        paramInt = 0;
-      }
-      try
-      {
-        StructingMsgItemBuilder.a(this.jdField_a_of_type_Adqn.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Adqn.jdField_a_of_type_AndroidAppActivity);
-        awqx.b(this.jdField_a_of_type_Adqn.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a, "dc00899", "Pb_account_lifeservice", "", "0X8006513", "0X8006513", 0, 0, "" + paramInt, "" + this.jdField_a_of_type_JavaLangString, "", "");
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          paramInt = i;
-        }
-      }
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Adqn.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Adqn.jdField_a_of_type_AndroidAppActivity);
-      break label236;
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Adqn.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Adqn.jdField_a_of_type_AndroidAppActivity);
-      break label236;
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Adqn.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Adqn.jdField_a_of_type_AndroidAppActivity);
-      continue;
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Adqn.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Adqn.jdField_a_of_type_AndroidAppActivity);
-      label236:
-      paramInt = 0;
+      this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
+      this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+      return;
+      this.jdField_a_of_type_Adqs.c.setVisibility(8);
     }
   }
 }

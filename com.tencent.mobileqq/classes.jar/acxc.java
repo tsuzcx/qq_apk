@@ -1,34 +1,46 @@
-import android.content.Context;
-import android.graphics.Paint;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Rect;
+import android.widget.ImageView.ScaleType;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 public class acxc
-  implements acxf
+  implements OnCompositionLoadedListener
 {
-  private Paint a;
+  public acxc(IntimateTitleSwitchView paramIntimateTitleSwitchView, String paramString) {}
   
-  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    awqx.b(paramQQAppInterface, "dc00898", "", "", "0X8008C70", "0X8008C70", aeor.a(paramInt), 0, "", "", "", "");
-    paramString = aqdf.a(paramString);
-    if ((paramString != null) && (paramString.length() > 20))
+    if ((paramLottieComposition == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.getVisibility() != 0) || (!this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.c)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("IntimateTitleSwitchView", 0, "composition is null ,return");
+      }
+    }
+    for (;;)
     {
-      bbmy.a(paramContext, ajjy.a(2131639672), 0).a();
-      awqx.b(paramQQAppInterface, "dc00898", "", "", "0X800932C", "0X800932C", 0, 0, "", "", "", "");
-      return false;
+      return;
+      int i = actn.a(75.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.getResources());
+      int j = actn.a(90.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.getResources());
+      Rect localRect = paramLottieComposition.getBounds();
+      float f1 = i / localRect.width();
+      float f2 = j / localRect.height();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.setImageAssetDelegate(new acxd(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.setComposition(paramLottieComposition);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.setScaleXY(f1, f2);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.setScaleType(ImageView.ScaleType.FIT_XY);
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.c) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.getVisibility() == 0)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.playAnimation();
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d("IntimateTitleSwitchView", 0, "onCompositionLoaded playAnim duration: " + this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.getDuration() + " mIsResumed:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.c);
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.cancelAnimation();
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.removeAllLottieOnCompositionLoadedListener();
+      }
     }
-    return true;
-  }
-  
-  public boolean a(Context paramContext, String paramString, EditText paramEditText)
-  {
-    if (this.a == null) {
-      this.a = new Paint();
-    }
-    this.a.setTypeface(paramEditText.getTypeface());
-    this.a.setTextSize(paramEditText.getTextSize());
-    return (paramString.length() < 200) && (!paramString.contains("\n")) && ((int)this.a.measureText(paramString) + aciy.a(45.0F, paramContext.getResources()) + paramEditText.getPaddingLeft() < paramEditText.getMeasuredWidth());
   }
 }
 

@@ -1,30 +1,29 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import com.tencent.aekit.openrender.UniformParam.IntParam;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
 
 public class bisi
-  implements TextWatcher
+  extends BaseFilter
 {
-  public bisi(bisg parambisg) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public bisi()
   {
-    String str = vli.a(paramEditable.toString(), 30);
-    if (str.length() < paramEditable.length()) {
-      paramEditable.replace(0, paramEditable.length(), str);
-    }
-    this.a.jdField_a_of_type_JavaLangString = paramEditable.toString();
+    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nuniform int isAlpha;\nvoid main() \n{\n  highp vec4 color = texture2D(inputImageTexture,textureCoordinate);\n  if(isAlpha == 1) {\n    gl_FragColor = vec4(1.0-color.a,1.0-color.a,1.0-color.a,1.0);\n  } else {\n    gl_FragColor = color;\n  }\n}");
+    addParam(new UniformParam.IntParam("isAlpha", 0));
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    paramCharSequence = paramCharSequence.toString();
-    this.a.jdField_a_of_type_JavaLangString = paramCharSequence;
-    urk.b("Q.qqstory.record.label.QQStoryAddVideoLabelView", "keyword = " + this.a.jdField_a_of_type_JavaLangString);
-    if (this.a.jdField_a_of_type_Bisj != null) {
-      this.a.jdField_a_of_type_Bisj.a(this.a.jdField_a_of_type_JavaLangString);
-    }
+    setPositions(new float[] { paramFloat1, paramFloat4, paramFloat1, paramFloat2, paramFloat3, paramFloat2, paramFloat3, paramFloat4 });
+  }
+  
+  public void a(Frame paramFrame1, Frame paramFrame2)
+  {
+    a(-1.0F, 0.0F, 1.0F, -1.0F);
+    addParam(new UniformParam.IntParam("isAlpha", 1));
+    RenderProcess(paramFrame1.getTextureId(), paramFrame1.width, paramFrame1.height, paramFrame1.width, paramFrame1.height, -1, 0.0D, paramFrame2);
+    a(-1.0F, 1.0F, 1.0F, 0.0F);
+    addParam(new UniformParam.IntParam("isAlpha", 0));
+    RenderProcess(paramFrame1.getTextureId(), paramFrame1.width, paramFrame1.height, paramFrame1.width, paramFrame1.height, -1, 0.0D, paramFrame2);
   }
 }
 

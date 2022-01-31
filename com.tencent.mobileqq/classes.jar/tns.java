@@ -1,28 +1,66 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.io.File;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCollectionViewCount;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCollectionViewCount;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class tns
-  implements tpn
+public class tns
+  extends syv<tpb>
 {
-  private tns(tnp paramtnp) {}
+  public static final String a;
+  public List<tlj> a;
+  public String b;
   
-  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, String paramString2, File paramFile, boolean paramBoolean) {}
-  
-  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, tqg paramtqg) {}
-  
-  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, tqg paramtqg, int paramInt, Object paramObject)
+  static
   {
-    return false;
+    jdField_a_of_type_JavaLangString = sxp.a("StorySvc.get_colleciton_view_count");
   }
   
-  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, tqg paramtqg, boolean paramBoolean)
+  public tns()
   {
-    return this.a.a.a(paramVideoViewVideoHolder, paramtqg, paramBoolean);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void b(VideoViewVideoHolder paramVideoViewVideoHolder, tqg paramtqg) {}
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
   
-  public void c(VideoViewVideoHolder paramVideoViewVideoHolder, tqg paramtqg) {}
+  public syq a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspCollectionViewCount localRspCollectionViewCount = new qqstory_service.RspCollectionViewCount();
+    try
+    {
+      localRspCollectionViewCount.mergeFrom(paramArrayOfByte);
+      return new tpb(this.b, localRspCollectionViewCount);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        veg.d("Q.qqstory:UpdateCollectionViewCountRequest", paramArrayOfByte.toString());
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqCollectionViewCount localReqCollectionViewCount = new qqstory_service.ReqCollectionViewCount();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      tlj localtlj = (tlj)localIterator.next();
+      localReqCollectionViewCount.collection_id.add(localtlj.a());
+    }
+    return localReqCollectionViewCount.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "UpdateCollectionViewCountRequest{mIdList=" + this.jdField_a_of_type_JavaUtilList + '}';
+  }
 }
 
 

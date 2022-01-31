@@ -1,25 +1,10 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-
-class baln
-  extends URLDrawableDownListener.Adapter
+public abstract interface baln
 {
-  baln(balm parambalm) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.a.onLoadFialed(paramURLDrawable, paramThrowable);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.a.onLoadSuccessed(paramURLDrawable);
-  }
+  public abstract void a(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baln
  * JD-Core Version:    0.7.0.1
  */

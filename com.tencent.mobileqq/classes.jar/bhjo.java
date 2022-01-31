@@ -1,23 +1,40 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.part.QIMTemplateItem;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 
-public final class bhjo
-  implements Parcelable.Creator<QIMTemplateItem>
+class bhjo
+  implements bhie
 {
-  public QIMTemplateItem a(Parcel paramParcel)
-  {
-    return new QIMTemplateItem(paramParcel);
-  }
+  bhjo(bhjn parambhjn) {}
   
-  public QIMTemplateItem[] a(int paramInt)
+  public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    return new QIMTemplateItem[paramInt];
+    boolean bool = false;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
+    {
+      paramIntent = bhho.a(paramFromServiceMsg.getWupBuffer());
+      bhjn.a(this.a, paramIntent);
+      bhjn.a(this.a, paramIntent, null);
+      bhgc.a().a(paramIntent);
+      if (this.a.a != null)
+      {
+        paramFromServiceMsg = this.a.a;
+        if (paramIntent != null) {
+          bool = true;
+        }
+        paramFromServiceMsg.a(bool);
+      }
+    }
+    do
+    {
+      return;
+      bhjn.a(this.a, null, null);
+    } while (this.a.a == null);
+    this.a.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhjo
  * JD-Core Version:    0.7.0.1
  */

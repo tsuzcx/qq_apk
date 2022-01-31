@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel.32;
 
 public class anyt
-  implements View.OnClickListener
+  implements bcak
 {
-  public anyt(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public anyt(EmoticonMainPanel.32 param32) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    if (paramBoolean) {
+      this.a.this$0.a.a();
+    }
   }
 }
 

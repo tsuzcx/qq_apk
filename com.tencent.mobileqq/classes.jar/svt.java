@@ -1,60 +1,33 @@
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class svt
-  extends svu
+class svt
+  extends Job<Object, Object, Object>
 {
-  public svt(ViewGroup paramViewGroup)
+  svt(svo paramsvo, String paramString1, String paramString2, StoryVideoItem paramStoryVideoItem)
   {
-    super(paramViewGroup, 2131495711);
+    super(paramString1);
   }
   
-  private void c(ssm paramssm)
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    paramssm.d = false;
-    stf.a(QQStoryContext.a()).a(paramssm);
-    stu localstu = new stu();
-    localstu.jdField_b_of_type_JavaLangString = paramssm.jdField_a_of_type_JavaLangString;
-    localstu.c = paramssm.jdField_a_of_type_Int;
-    localstu.d = 4;
-    localstu.jdField_b_of_type_Long = paramssm.e;
-    slv.a().a(localstu, null);
-  }
-  
-  public void a(ssm paramssm)
-  {
-    super.a(paramssm);
-    if (!TextUtils.isEmpty(paramssm.g)) {
-      c(paramssm.g);
-    }
-    if (!TextUtils.isEmpty(paramssm.j))
+    paramJobContext = new tch(new ErrorMessage(), this.jdField_a_of_type_JavaLangString, true);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)
     {
-      localStoryMsgNodeFrameLayout = this.a;
-      if (TextUtils.isEmpty(paramssm.c)) {}
-      for (str = ajjy.a(2131641158);; str = paramssm.c)
-      {
-        localStoryMsgNodeFrameLayout.setNodeName(str, paramssm.j);
-        if (paramssm.d) {
-          c(paramssm);
-        }
-        return;
+      paramJobContext.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
+      paramJobContext.c = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.shareGroupId;
+      paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
+      if (paramJobContext.a == 0L) {
+        paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
       }
     }
-    StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout = this.a;
-    if (TextUtils.isEmpty(paramssm.c)) {}
-    for (String str = ajjy.a(2131641157);; str = paramssm.c)
-    {
-      localStoryMsgNodeFrameLayout.setNodeName(str, 0);
-      break;
-    }
-  }
-  
-  protected void b(ssm paramssm)
-  {
-    this.a.setDisplayState(6);
-    this.a.a(paramssm);
+    ste.a().dispatch(paramJobContext);
+    return null;
   }
 }
 

@@ -1,137 +1,67 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.biz.lebasearch.SearchProtocol;
-import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
-import com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.ResponseBody;
-import com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.ResultItem;
-import com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.ResultItemGroup;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public final class mrz
-  implements BusinessObserver
+class mrz
+  extends BroadcastReceiver
 {
-  public mrz(Handler paramHandler) {}
+  mrz(mry parammry) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramBoolean)
+    msb localmsb;
+    if (paramIntent.getAction().equals("tencent.video.q2v.getNearByProfile"))
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        Object localObject = new mobileqq_dynamic_search.ResponseBody();
-        for (;;)
-        {
-          try
-          {
-            ((mobileqq_dynamic_search.ResponseBody)localObject).mergeFrom(paramBundle);
-            paramInt = ((mobileqq_dynamic_search.ResponseBody)localObject).retcode.get();
-            if (paramInt != 0)
-            {
-              if (!QLog.isColorLevel()) {
-                break label472;
-              }
-              QLog.d("lebasearch.SearchProtocol", 2, "retcode:" + paramInt);
-              return;
-            }
-            if ((!((mobileqq_dynamic_search.ResponseBody)localObject).item_groups.has()) || (!((mobileqq_dynamic_search.ResultItemGroup)((mobileqq_dynamic_search.ResponseBody)localObject).item_groups.get(0)).result_items.has())) {
-              break label472;
-            }
-            paramBundle = ((mobileqq_dynamic_search.ResultItemGroup)((mobileqq_dynamic_search.ResponseBody)localObject).item_groups.get(0)).result_items.get();
-            localArrayList = new ArrayList();
-            Iterator localIterator = paramBundle.iterator();
-            if (!localIterator.hasNext()) {
-              continue;
-            }
-            localResultItem = (mobileqq_dynamic_search.ResultItem)localIterator.next();
-            localWordItem = new SearchProtocol.WordItem();
-            if (!localResultItem.word.has()) {
-              continue;
-            }
-            localWordItem.word = localResultItem.word.get().toStringUtf8();
-            localWordItem.id = localResultItem.result_id.get().toStringUtf8();
-            if (localResultItem.extension.has())
-            {
-              localObject = localResultItem.extension.get().toStringUtf8();
-              if (QLog.isColorLevel()) {
-                QLog.d("lebasearch.SearchProtocol", 2, "extension info:" + (String)localObject);
-              }
-              paramBoolean = TextUtils.isEmpty((CharSequence)localObject);
-              if (!paramBoolean) {
-                paramBundle = null;
-              }
-            }
-          }
-          catch (InvalidProtocolBufferMicroException paramBundle)
-          {
-            ArrayList localArrayList;
-            mobileqq_dynamic_search.ResultItem localResultItem;
-            SearchProtocol.WordItem localWordItem;
-            if (!QLog.isColorLevel()) {
-              break label472;
-            }
-            QLog.d("lebasearch.SearchProtocol", 2, paramBundle.getMessage());
-            return;
-            paramBundle = this.a.obtainMessage();
-            paramBundle.arg1 = 0;
-            paramBundle.obj = localArrayList;
-            this.a.sendMessage(paramBundle);
-          }
-          try
-          {
-            localObject = new JSONObject((String)localObject);
-            paramBundle = (Bundle)localObject;
-          }
-          catch (JSONException localJSONException)
-          {
-            localJSONException.printStackTrace();
-            continue;
-            paramInt = paramBundle.optInt("type");
-          }
-        }
-        if (paramBundle == null)
-        {
-          paramInt = 0;
-          if ((paramInt == 2) && (localResultItem.jmp_url.has()) && (!TextUtils.isEmpty(localResultItem.jmp_url.get().toStringUtf8())))
-          {
-            localWordItem.type = paramInt;
-            localWordItem.jumpUrl = localResultItem.jmp_url.get().toStringUtf8();
-            paramInt = SearchProtocol.a(paramBundle.optString("color"));
-            if (paramInt == 0) {
-              break label473;
-            }
-          }
-        }
+      paramContext = paramIntent.getStringExtra("uin");
+      localmsb = new msb(this.a);
+      localmsb.jdField_a_of_type_JavaLangString = paramContext;
+      localmsb.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("nickname");
+      localmsb.jdField_a_of_type_Int = paramIntent.getIntExtra("gender", -1);
+      localmsb.jdField_b_of_type_Int = paramIntent.getIntExtra("age", 0);
+      localmsb.jdField_a_of_type_Byte = paramIntent.getByteExtra("constellation", (byte)-1);
+      paramIntent = ldc.a().b(this.a.jdField_a_of_type_JavaLangString);
+      if (paramIntent != null) {
+        break label98;
       }
     }
-    for (;;)
+    label98:
+    do
     {
-      localWordItem.textColor = paramInt;
-      localWordItem.frameColor = SearchProtocol.a(paramBundle.optString("framecolor"));
-      localArrayList.add(localWordItem);
-      break;
-      label472:
       return;
-      label473:
-      paramInt = -16734752;
+      if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
+      {
+        ldw localldw = this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramContext);
+        if (localldw != null)
+        {
+          this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramContext, localmsb.jdField_b_of_type_JavaLangString, false);
+          localldw.jdField_b_of_type_Int = localmsb.jdField_a_of_type_Int;
+        }
+        if (paramContext.equals(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount()))
+        {
+          paramIntent.a.d = localmsb.jdField_a_of_type_Int;
+          paramIntent.a.f = localmsb.jdField_b_of_type_JavaLangString;
+        }
+        if (paramContext.equals(paramIntent.d))
+        {
+          paramIntent.a.c = localmsb.jdField_a_of_type_Int;
+          paramIntent.a.jdField_b_of_type_JavaLangString = localmsb.jdField_b_of_type_JavaLangString;
+        }
+      }
+    } while ((this.a.jdField_a_of_type_Msa == null) || (!this.a.jdField_a_of_type_JavaUtilList.contains(paramContext)));
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyPeopleProfileHelper", 2, "onGetNearbyPeopleProfile uin :" + paramContext + ", nickname:" + localmsb.jdField_b_of_type_JavaLangString + ", gender:" + localmsb.jdField_a_of_type_Int);
     }
+    this.a.jdField_a_of_type_Msa.a(paramContext, localmsb);
+    this.a.jdField_a_of_type_JavaUtilList.remove(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mrz
  * JD-Core Version:    0.7.0.1
  */

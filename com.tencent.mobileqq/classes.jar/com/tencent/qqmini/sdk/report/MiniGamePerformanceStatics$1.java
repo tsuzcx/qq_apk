@@ -1,22 +1,22 @@
 package com.tencent.qqmini.sdk.report;
 
 import android.os.Handler;
-import bdew;
-import bdsg;
-import bdxv;
-import bdxw;
+import beiw;
+import beyd;
+import bfen;
+import bfeo;
 
 public class MiniGamePerformanceStatics$1
   implements Runnable
 {
-  public MiniGamePerformanceStatics$1(bdsg parambdsg) {}
+  public MiniGamePerformanceStatics$1(beyd parambeyd) {}
   
   public void run()
   {
-    float f = bdsg.a(this.this$0);
-    bdsg.a(this.this$0).a(f);
-    bdsg.a(this.this$0).a(f);
-    bdew.a().postDelayed(this, 10000L);
+    float f = beyd.a(this.this$0);
+    beyd.a(this.this$0).a(f);
+    beyd.a(this.this$0).a(f);
+    beiw.a().postDelayed(this, 10000L);
   }
 }
 

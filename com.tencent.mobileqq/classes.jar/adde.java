@@ -1,23 +1,8 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
-
-class adde
-  implements begw
+public abstract interface adde
 {
-  adde(addd paramaddd, MessageForDeviceFile paramMessageForDeviceFile, begr parambegr) {}
+  public abstract void a(int paramInt);
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      this.jdField_a_of_type_Addd.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import anad;
 import android.os.Bundle;
+import anql;
 import com.tencent.qphone.base.util.QLog;
 
 class BubbleUiPlugin$2
-  extends anad
+  extends anql
 {
   BubbleUiPlugin$2(BubbleUiPlugin paramBubbleUiPlugin) {}
   

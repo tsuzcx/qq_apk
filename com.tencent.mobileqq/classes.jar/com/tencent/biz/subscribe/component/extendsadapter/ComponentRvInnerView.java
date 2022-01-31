@@ -5,38 +5,38 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.util.AttributeSet;
 import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 import java.util.ArrayList;
-import wcd;
-import wcf;
-import wch;
+import wpq;
+import wps;
+import wpu;
 
 public class ComponentRvInnerView
   extends RecyclerViewCompat
 {
   private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private wcf jdField_a_of_type_Wcf;
-  private wch jdField_a_of_type_Wch;
+  private wps jdField_a_of_type_Wps;
+  private wpu jdField_a_of_type_Wpu;
   
   public ComponentRvInnerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  public ComponentRvInnerView(Context paramContext, wcf paramwcf)
+  public ComponentRvInnerView(Context paramContext, wps paramwps)
   {
     super(paramContext);
-    this.jdField_a_of_type_Wcf = paramwcf;
+    this.jdField_a_of_type_Wps = paramwps;
     setDescendantFocusability(393216);
-    this.jdField_a_of_type_Wch = new wch(this);
-    setAdapter(this.jdField_a_of_type_Wch);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new wcd(getContext(), 0, false);
+    this.jdField_a_of_type_Wpu = new wpu(this);
+    setAdapter(this.jdField_a_of_type_Wpu);
+    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new wpq(getContext(), 0, false);
     setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
     setOverScrollMode(2);
   }
   
   public void setData(ArrayList paramArrayList)
   {
-    if (this.jdField_a_of_type_Wch != null) {
-      this.jdField_a_of_type_Wch.a(paramArrayList);
+    if (this.jdField_a_of_type_Wpu != null) {
+      this.jdField_a_of_type_Wpu.a(paramArrayList);
     }
   }
   

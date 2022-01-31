@@ -1,18 +1,19 @@
-import android.database.Cursor;
-import android.database.sqlite.SQLiteCursorDriver;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
-import android.database.sqlite.SQLiteQuery;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-
 public class amti
-  implements SQLiteDatabase.CursorFactory
 {
-  private amti(QQEntityManagerFactory paramQQEntityManagerFactory) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public Cursor newCursor(SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
+  amti(String paramString1, String paramString2, String paramString3)
   {
-    return new amtj(this, paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  public String toString()
+  {
+    return "UIElement(" + this.a + ", " + this.b + ", " + this.c + ")";
   }
 }
 

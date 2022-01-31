@@ -1,26 +1,13 @@
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.widget.AbsListView;
-import mqq.util.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
-class aghx
-  implements begh
+public class aghx
+  implements DialogInterface.OnClickListener
 {
-  aghx(aghw paramaghw) {}
+  public aghx(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((aghw.a(this.a)) && (paramInt == 0) && (((NewPhotoListActivity)this.a.a.get()).jdField_a_of_type_ComTencentWidgetGestureSelectGridView != null) && (((NewPhotoListActivity)this.a.a.get()).jdField_a_of_type_Agfv != null) && (aghw.a(this.a).a != null)) {
-      aghw.a(this.a);
-    }
-    if (paramInt == 0)
-    {
-      zqk.a().a("list_photo", false);
-      return;
-    }
-    zqk.a().a("list_photo");
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

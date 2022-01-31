@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
-
-public class slk
+public abstract interface slk
 {
-  public static void a(Object paramObject)
-  {
-    if ((paramObject instanceof QQAppInterface)) {
-      sll.a = new WeakReference((QQAppInterface)paramObject);
-    }
-  }
+  public abstract void a(slv paramslv);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     slk
  * JD-Core Version:    0.7.0.1
  */

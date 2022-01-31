@@ -1,42 +1,40 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contacts.fragment.AlphabetFriendFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.RecommendFriendFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
 
-class afqv
-  extends mps
+public class afqv
 {
-  afqv(afqi paramafqi) {}
-  
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public static ContactsBaseFragment a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MainAssistObserver", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString() + " mOpenId = " + this.a.jdField_b_of_type_JavaLangString);
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.isFinishing()) || (this.a.c)) {}
-    do
+    Object localObject;
+    switch (paramInt)
     {
-      do
-      {
-        return;
-        if (this.a.jdField_a_of_type_Bbms != null) {
-          this.a.jdField_a_of_type_Bbms.hide();
-        }
-        if (this.a.jdField_b_of_type_AndroidOsHandler != null) {
-          this.a.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        }
-        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("MainAssistObserver", 2, "openIdObserver success");
-        }
-      } while ((TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) || (paramOpenID.openID.equals(this.a.jdField_b_of_type_JavaLangString)));
-      this.a.i();
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("MainAssistObserver", 2, "openIdObserver fail");
+    default: 
+      localObject = new FriendFragment();
+    }
+    for (;;)
+    {
+      ((ContactsBaseFragment)localObject).d(paramInt);
+      return localObject;
+      localObject = new RecommendFriendFragment();
+      continue;
+      localObject = new FriendFragment();
+      continue;
+      localObject = new TroopFragment();
+      continue;
+      localObject = new PublicAccountFragment();
+      continue;
+      localObject = new DeviceFragment();
+      continue;
+      localObject = new PhoneContactFragment();
+      continue;
+      localObject = new AlphabetFriendFragment();
+    }
   }
 }
 

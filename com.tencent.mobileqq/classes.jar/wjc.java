@@ -1,26 +1,12 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class wjc
-  extends ajvh
+public abstract interface wjc
 {
-  public wjc(TroopMemberApiService paramTroopMemberApiService) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle)
-  {
-    if (paramBoolean) {
-      this.a.a(145, paramBundle);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("TroopMemberApiService", 2, new Object[] { "onWebPushResp isSuc:", Boolean.valueOf(paramBoolean), " type:", Integer.valueOf(paramInt) });
-  }
+  public abstract void a(List<wko> paramList, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wjc
  * JD-Core Version:    0.7.0.1
  */

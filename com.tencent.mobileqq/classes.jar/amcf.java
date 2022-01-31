@@ -1,92 +1,76 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-
 public class amcf
-  extends alzl<amcg>
+  extends amcd
 {
-  public static int a = 16777216;
-  public static int b = 10240;
+  public float a;
+  public float b;
+  public boolean b;
+  public float c;
+  public boolean c;
+  public float d;
+  public float e;
+  public int e;
+  public float f;
+  public int f;
+  public float g;
+  public int g;
+  public float h;
+  public int h;
+  public int i;
+  public int j = 1;
   
-  public int a()
+  public amcf()
   {
-    return 561;
+    this.jdField_e_of_type_Int = 0;
+    this.jdField_f_of_type_Int = 100;
+    this.jdField_g_of_type_Int = 100;
   }
   
-  @NonNull
-  public amcg a(int paramInt)
+  public amcf a()
   {
-    amcg localamcg = new amcg();
-    localamcg.a = a;
-    localamcg.b = b;
-    return localamcg;
-  }
-  
-  @Nullable
-  public amcg a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length == 0)) {
-      return new amcg();
-    }
-    paramArrayOfalzs = paramArrayOfalzs[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("FavLocalEmoticonsProcessor", 2, "onParsed, content:" + paramArrayOfalzs);
-    }
-    amcg localamcg = new amcg();
-    try
+    amcf localamcf = new amcf();
+    localamcf.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
+    localamcf.jdField_b_of_type_Float = this.d;
+    localamcf.jdField_c_of_type_Float = this.jdField_a_of_type_Float;
+    localamcf.d = this.jdField_b_of_type_Float;
+    this.jdField_a_of_type_JavaLangString += "reverse";
+    boolean bool;
+    if (!this.jdField_b_of_type_Boolean)
     {
-      JSONObject localJSONObject = new JSONObject(paramArrayOfalzs);
-      localamcg.a = Integer.valueOf(localJSONObject.getString("maxPicSize")).intValue();
-      localamcg.b = Integer.valueOf(localJSONObject.getString("maxLongSideLen")).intValue();
-      return localamcg;
+      bool = true;
+      localamcf.jdField_b_of_type_Boolean = bool;
+      localamcf.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      localamcf.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      localamcf.jdField_f_of_type_Int = this.jdField_g_of_type_Int;
+      localamcf.jdField_g_of_type_Int = this.jdField_f_of_type_Int;
+      localamcf.jdField_h_of_type_Int = this.i;
+      localamcf.i = this.jdField_h_of_type_Int;
+      if (!this.jdField_c_of_type_Boolean) {
+        break label214;
+      }
+      localamcf.jdField_e_of_type_Float = this.jdField_e_of_type_Float;
+      localamcf.jdField_g_of_type_Float = this.jdField_g_of_type_Float;
+      localamcf.jdField_f_of_type_Float = this.jdField_f_of_type_Float;
     }
-    catch (Exception localException)
+    for (localamcf.jdField_h_of_type_Float = this.jdField_h_of_type_Float;; localamcf.jdField_h_of_type_Float = this.jdField_f_of_type_Float)
     {
-      QLog.d("FavLocalEmoticonsProcessor", 1, "onParsed error, content:" + paramArrayOfalzs);
-      localamcg.a = a;
-      localamcg.b = b;
+      localamcf.jdField_e_of_type_Int = this.jdField_e_of_type_Int;
+      localamcf.jdField_c_of_type_Boolean = this.jdField_c_of_type_Boolean;
+      localamcf.j = this.j;
+      localamcf.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+      localamcf.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      return localamcf;
+      bool = false;
+      break;
+      label214:
+      localamcf.jdField_e_of_type_Float = this.jdField_g_of_type_Float;
+      localamcf.jdField_g_of_type_Float = this.jdField_e_of_type_Float;
+      localamcf.jdField_f_of_type_Float = this.jdField_h_of_type_Float;
     }
-    return localamcg;
-  }
-  
-  public Class a()
-  {
-    return amcg.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FavLocalEmoticonsProcessor", 2, "onReqFailed");
-    }
-  }
-  
-  public void a(amcg paramamcg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FavLocalEmoticonsProcessor", 2, "onUpdate");
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amcf
  * JD-Core Version:    0.7.0.1
  */

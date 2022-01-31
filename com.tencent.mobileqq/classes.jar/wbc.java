@@ -1,10 +1,24 @@
-public abstract interface wbc
+import java.io.IOException;
+
+class wbc
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  Process a(String[] paramArrayOfString)
+  {
+    try
+    {
+      Process localProcess = Runtime.getRuntime().exec(paramArrayOfString);
+      return localProcess;
+    }
+    catch (IOException localIOException)
+    {
+      veg.c("Q.qqstory.ffmpeg.FFmpeg", "Exception while trying to run: " + paramArrayOfString, localIOException);
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wbc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,56 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedCommentList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedCommentList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-final class tmj
-  extends AnimatorListenerAdapter
+public class tmj
+  extends syv
 {
-  tmj(Animator.AnimatorListener paramAnimatorListener, ViewGroup paramViewGroup, ImageView paramImageView) {}
+  public static final String a;
+  public uvr a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  static
   {
-    super.onAnimationCancel(paramAnimator);
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationCancel(paramAnimator);
+    jdField_a_of_type_JavaLangString = sxp.a("StorySvc.feed_comment_list_775");
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public String a()
   {
-    urk.b("Q.qqstory.playernew.AnimationUtils", "doEnterAnimation, onAnimationEnd");
-    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationEnd(paramAnimator);
-    paramAnimator = ValueAnimator.ofInt(new int[] { 255, 0 });
-    paramAnimator.setStartDelay(400L);
-    paramAnimator.setDuration(400L);
-    paramAnimator.addUpdateListener(new tmk(this));
-    paramAnimator.addListener(new tml(this));
-    paramAnimator.start();
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public syq a(byte[] paramArrayOfByte)
   {
-    super.onAnimationStart(paramAnimator);
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationStart(paramAnimator);
+    qqstory_service.RspFeedCommentList localRspFeedCommentList = new qqstory_service.RspFeedCommentList();
+    try
+    {
+      localRspFeedCommentList.mergeFrom(paramArrayOfByte);
+      return new tmk(localRspFeedCommentList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqFeedCommentList localReqFeedCommentList = new qqstory_service.ReqFeedCommentList();
+    localReqFeedCommentList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Uvr.jdField_a_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Uvr.jdField_b_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_Uvr.jdField_b_of_type_JavaLangString = "";
+    }
+    localReqFeedCommentList.cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Uvr.jdField_b_of_type_JavaLangString));
+    localReqFeedCommentList.source.set(this.jdField_a_of_type_Uvr.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Uvr.jdField_b_of_type_Int != -1) {
+      localReqFeedCommentList.type.set(this.jdField_a_of_type_Uvr.jdField_b_of_type_Int);
+    }
+    return localReqFeedCommentList.toByteArray();
   }
 }
 

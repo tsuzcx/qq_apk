@@ -16,10 +16,10 @@ import android.view.Window;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import azvv;
-import bajq;
-import befo;
-import bjeh;
+import bawz;
+import bbkx;
+import bfni;
+import bkur;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAccessibilityHelper;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
@@ -28,29 +28,29 @@ import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
-import non;
-import obz;
-import odw;
-import qdr;
-import qfs;
-import qft;
-import qky;
-import qkz;
-import qla;
-import qlg;
-import qlh;
-import qlj;
-import qlk;
-import qlm;
-import qln;
-import qlp;
-import qlv;
-import qma;
-import rjb;
+import nzy;
+import onk;
+import oph;
+import qpp;
+import qrq;
+import qrr;
+import qxd;
+import qxe;
+import qxf;
+import qxl;
+import qxm;
+import qxo;
+import qxp;
+import qxr;
+import qxs;
+import qxu;
+import qya;
+import qyf;
+import rwa;
 
 public class MultiVideoFragment
   extends PublicBaseFragment
-  implements View.OnClickListener, qfs, qkz, qlm
+  implements View.OnClickListener, qrq, qxe, qxr
 {
   private static final String jdField_a_of_type_JavaLangString = MultiVideoFragment.class.getSimpleName();
   private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
@@ -61,17 +61,17 @@ public class MultiVideoFragment
   private VideoFeedsRecyclerView jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView;
   private MultiVideoLoadingFooter jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoMultivideoMultiVideoLoadingFooter;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private non jdField_a_of_type_Non;
-  private qft jdField_a_of_type_Qft;
-  private qky jdField_a_of_type_Qky;
-  private qla jdField_a_of_type_Qla;
-  private qlh jdField_a_of_type_Qlh;
-  private qlp jdField_a_of_type_Qlp;
+  private nzy jdField_a_of_type_Nzy;
+  private qrr jdField_a_of_type_Qrr;
+  private qxd jdField_a_of_type_Qxd;
+  private qxf jdField_a_of_type_Qxf;
+  private qxm jdField_a_of_type_Qxm;
+  private qxu jdField_a_of_type_Qxu;
   private ViewGroup b;
   
   private int a()
   {
-    return azvv.a(getActivity(), 44.0F) + bjeh.b(getActivity()) + bajq.a(10.0F);
+    return bawz.a(getActivity(), 44.0F) + bkur.b(getActivity()) + bbkx.a(10.0F);
   }
   
   public static void a(Activity paramActivity, Intent paramIntent, int paramInt)
@@ -80,11 +80,11 @@ public class MultiVideoFragment
     if (paramIntent == null) {
       localIntent = new Intent();
     }
-    if (odw.a())
+    if (oph.a())
     {
-      paramIntent = qlj.a(localIntent);
+      paramIntent = qxo.a(localIntent);
       paramIntent.putInt("requestCode", paramInt);
-      rjb.a(paramActivity, null, "http://viola.qq.com/js/VideoFeeds.js?_rij_violaUrl=1&v_tid=15&v_bundleName=VideoFeeds&hideNav=1&v_nav_immer=1&statusColor=1&v_bid=3811&statusBarStyle=1&v_bg_color=000000", paramIntent, true);
+      rwa.a(paramActivity, null, "http://viola.qq.com/js/VideoFeeds.js?_rij_violaUrl=1&v_tid=15&v_bundleName=VideoFeeds&hideNav=1&v_nav_immer=1&statusColor=1&v_bid=3811&statusBarStyle=1&v_bg_color=000000&v_present_titleHeight=44&v_old_modal=1", paramIntent, true);
       return;
     }
     PublicTransFragmentActivity.b(paramActivity, localIntent, MultiVideoFragment.class, paramInt);
@@ -96,9 +96,9 @@ public class MultiVideoFragment
     if (paramIntent == null) {
       localIntent = new Intent();
     }
-    if (odw.a())
+    if (oph.a())
     {
-      rjb.a(paramContext, null, "http://viola.qq.com/js/VideoFeeds.js?_rij_violaUrl=1&v_tid=15&v_bundleName=VideoFeeds&hideNav=1&v_nav_immer=1&statusColor=1&v_bid=3811&statusBarStyle=1&v_bg_color=000000", qlj.a(localIntent), true);
+      rwa.a(paramContext, null, "http://viola.qq.com/js/VideoFeeds.js?_rij_violaUrl=1&v_tid=15&v_bundleName=VideoFeeds&hideNav=1&v_nav_immer=1&statusColor=1&v_bid=3811&statusBarStyle=1&v_bg_color=000000&v_present_titleHeight=44&v_old_modal=1", qxo.a(localIntent), true);
       return;
     }
     PublicTransFragmentActivity.b(paramContext, localIntent, MultiVideoFragment.class);
@@ -106,13 +106,13 @@ public class MultiVideoFragment
   
   private void a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Qft = new qft(getActivity());
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131494389, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131298935));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131304232));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131304253));
-    this.b = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131304244));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView = ((VideoFeedsRecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131313236));
+    this.jdField_a_of_type_Qrr = new qrr(getActivity());
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559959, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131364495));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369911));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369933));
+    this.b = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131369924));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView = ((VideoFeedsRecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379072));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoMultivideoMultiVideoLoadingFooter = new MultiVideoLoadingFooter(getActivity());
     VideoFeedsAccessibilityHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.setExtraFooterCount(1);
@@ -120,13 +120,13 @@ public class MultiVideoFragment
     int i = a();
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.setSnapOffset(i);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.setHeaderHeight(i);
-    this.jdField_a_of_type_Qlh = new qlh(this, null);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.addOnScrollListener(this.jdField_a_of_type_Qlh);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new qdr(getActivity(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView, 1, false);
+    this.jdField_a_of_type_Qxm = new qxm(this, null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.addOnScrollListener(this.jdField_a_of_type_Qxm);
+    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new qpp(getActivity(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView, 1, false);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Qky = new qky(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView, this.jdField_a_of_type_Qlp.a(), getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.setAdapter(this.jdField_a_of_type_Qky);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.setFlingVelocityIncrease(odw.a());
+    this.jdField_a_of_type_Qxd = new qxd(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView, this.jdField_a_of_type_Qxu.a(), getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.setAdapter(this.jdField_a_of_type_Qxd);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.setFlingVelocityIncrease(oph.a());
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.getMinFlingVelocity() > 10000)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.setFlingVelocityIncrease(0);
@@ -135,13 +135,13 @@ public class MultiVideoFragment
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(odw.a());
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(oph.a());
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      if (bjeh.b()) {
-        qlj.a(getActivity(), this.jdField_a_of_type_AndroidViewViewGroup);
+      if (bkur.b()) {
+        qxo.a(getActivity(), this.jdField_a_of_type_AndroidViewViewGroup);
       }
-      qlj.a(getActivity(), this.b);
-      this.jdField_a_of_type_Non = new non(getActivity(), this.jdField_a_of_type_Qky);
+      qxo.a(getActivity(), this.b);
+      this.jdField_a_of_type_Nzy = new nzy(getActivity(), this.jdField_a_of_type_Qxd);
       return;
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.getMinFlingVelocity() <= 0)
       {
@@ -157,12 +157,12 @@ public class MultiVideoFragment
     }
   }
   
-  private void b(qla paramqla)
+  private void b(qxf paramqxf)
   {
     boolean bool2 = true;
     boolean bool1 = false;
-    if ((paramqla instanceof qlv)) {
-      if (paramqla.a().b(getActivity())) {
+    if ((paramqxf instanceof qya)) {
+      if (paramqxf.a().b(getActivity())) {
         bool2 = false;
       }
     }
@@ -182,11 +182,11 @@ public class MultiVideoFragment
     return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.a();
   }
   
-  public qln a(int paramInt)
+  public qxs a(int paramInt)
   {
     RecyclerView.ViewHolder localViewHolder = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.findViewHolderForLayoutPosition(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.c() + paramInt);
-    if ((localViewHolder instanceof qln)) {
-      return (qln)localViewHolder;
+    if ((localViewHolder instanceof qxs)) {
+      return (qxs)localViewHolder;
     }
     return null;
   }
@@ -195,20 +195,20 @@ public class MultiVideoFragment
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Qky.a(paramInt);
+    this.jdField_a_of_type_Qxd.a(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Qky.notifyItemRangeInserted(paramInt1, paramInt2);
+    this.jdField_a_of_type_Qxd.notifyItemRangeInserted(paramInt1, paramInt2);
   }
   
   public void a(RecyclerView.ViewHolder paramViewHolder)
   {
-    if ((paramViewHolder instanceof qla)) {}
-    for (this.jdField_a_of_type_Qla = ((qla)paramViewHolder);; this.jdField_a_of_type_Qla = null)
+    if ((paramViewHolder instanceof qxf)) {}
+    for (this.jdField_a_of_type_Qxf = ((qxf)paramViewHolder);; this.jdField_a_of_type_Qxf = null)
     {
-      b(this.jdField_a_of_type_Qla);
+      b(this.jdField_a_of_type_Qxf);
       return;
     }
   }
@@ -220,19 +220,19 @@ public class MultiVideoFragment
     this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView, paramInt, paramLayoutParams);
   }
   
-  public void a(qla paramqla)
+  public void a(qxf paramqxf)
   {
-    paramqla.a(this.jdField_a_of_type_Qlp, this, this.jdField_a_of_type_Qlp.a(), this.jdField_a_of_type_Qlp.a());
+    paramqxf.a(this.jdField_a_of_type_Qxu, this, this.jdField_a_of_type_Qxu.a(), this.jdField_a_of_type_Qxu.a());
   }
   
-  public void a(qla paramqla, VideoInfo paramVideoInfo, int paramInt)
+  public void a(qxf paramqxf, VideoInfo paramVideoInfo, int paramInt)
   {
-    this.jdField_a_of_type_Qlp.a(paramqla);
+    this.jdField_a_of_type_Qxu.a(paramqxf);
   }
   
-  public void a(qlk<qln> paramqlk)
+  public void a(qxp<qxs> paramqxp)
   {
-    qlj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView, new qlg(this, paramqlk));
+    qxo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView, new qxl(this, paramqxp));
   }
   
   public void a(boolean paramBoolean)
@@ -246,7 +246,7 @@ public class MultiVideoFragment
       return;
     }
     this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(null);
-    b(this.jdField_a_of_type_Qla);
+    b(this.jdField_a_of_type_Qxf);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
@@ -278,7 +278,7 @@ public class MultiVideoFragment
   
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.jdField_a_of_type_Qlp.a(paramInt, paramKeyEvent)) {
+    if (this.jdField_a_of_type_Qxu.a(paramInt, paramKeyEvent)) {
       return true;
     }
     return super.doOnKeyDown(paramInt, paramKeyEvent);
@@ -291,16 +291,16 @@ public class MultiVideoFragment
   
   public void f()
   {
-    b(this.jdField_a_of_type_Qla);
+    b(this.jdField_a_of_type_Qxf);
   }
   
   protected void g()
   {
-    VideoFeedsPlayManager localVideoFeedsPlayManager = this.jdField_a_of_type_Qlp.a();
+    VideoFeedsPlayManager localVideoFeedsPlayManager = this.jdField_a_of_type_Qxu.a();
     Bundle localBundle = getArguments();
     long l = localVideoFeedsPlayManager.a();
     Object localObject = localVideoFeedsPlayManager.a();
-    if (this.jdField_a_of_type_Qlp.a() == localObject)
+    if (this.jdField_a_of_type_Qxu.a() == localObject)
     {
       localBundle.putInt("VIDEO_PLAY_STATUS", localVideoFeedsPlayManager.a());
       localBundle.putLong("VIDEO_PLAY_POSITION", l);
@@ -326,7 +326,7 @@ public class MultiVideoFragment
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
-    if (befo.d()) {
+    if (bfni.d()) {
       paramActivity.getWindow().setFlags(16777216, 16777216);
     }
     try
@@ -334,9 +334,9 @@ public class MultiVideoFragment
       paramActivity.requestWindowFeature(1);
       label25:
       paramActivity.getWindow().setFlags(1024, 1024);
-      bjeh.a(paramActivity);
-      if (bjeh.b()) {
-        bjeh.c(paramActivity);
+      bkur.a(paramActivity);
+      if (bkur.b()) {
+        bkur.c(paramActivity);
       }
       return;
     }
@@ -353,12 +353,12 @@ public class MultiVideoFragment
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Qlp.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Qxu.a(paramInt1, paramInt2, paramIntent);
   }
   
   public boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_Qlp.a(true)) {
+    if (this.jdField_a_of_type_Qxu.a(true)) {
       return true;
     }
     g();
@@ -372,28 +372,28 @@ public class MultiVideoFragment
     default: 
       return;
     }
-    this.jdField_a_of_type_Qlp.a(false);
+    this.jdField_a_of_type_Qxu.a(false);
     g();
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)obz.a());
-    this.jdField_a_of_type_Qlp = new qma(getActivity(), getArguments(), this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onk.a());
+    this.jdField_a_of_type_Qxu = new qyf(getActivity(), getArguments(), this);
     a(paramLayoutInflater, paramViewGroup);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.a(this);
-    this.jdField_a_of_type_Qlp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView, this.jdField_a_of_type_Qky, this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_Qxu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView, this.jdField_a_of_type_Qxd, this.jdField_a_of_type_AndroidViewView);
     return this.jdField_a_of_type_AndroidViewView;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Qlp != null) {
-      this.jdField_a_of_type_Qlp.g();
+    if (this.jdField_a_of_type_Qxu != null) {
+      this.jdField_a_of_type_Qxu.g();
     }
-    if (this.jdField_a_of_type_Non != null) {
-      this.jdField_a_of_type_Non.b();
+    if (this.jdField_a_of_type_Nzy != null) {
+      this.jdField_a_of_type_Nzy.b();
     }
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView != null) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.d();
@@ -403,13 +403,13 @@ public class MultiVideoFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Qlp.d();
+    this.jdField_a_of_type_Qxu.d();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Qlp.c();
+    this.jdField_a_of_type_Qxu.c();
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

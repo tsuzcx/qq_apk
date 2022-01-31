@@ -1,18 +1,33 @@
-class rqy
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
+import java.lang.ref.WeakReference;
+
+public class rqy
+  extends Handler
 {
-  int a;
-  int b;
-  int c;
-  int d;
+  private WeakReference<ReadInJoySkinAnimManager> a;
   
-  public rqy() {}
-  
-  public rqy(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public rqy(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    this.a = new WeakReference(paramReadInJoySkinAnimManager);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ReadInJoySkinAnimManager localReadInJoySkinAnimManager = (ReadInJoySkinAnimManager)this.a.get();
+    if (localReadInJoySkinAnimManager == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      ReadInJoySkinAnimManager.b(localReadInJoySkinAnimManager);
+      return;
+    }
+    ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager);
   }
 }
 

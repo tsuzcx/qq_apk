@@ -1,29 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import Wallet.PopDialog;
+import Wallet.SkinInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
 
 class ahaw
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  ahaw(ahav paramahav) {}
+  ahaw(ahav paramahav, ahap paramahap) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      paramView.setAlpha(0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-        paramView.setAlpha(1.0F);
-      }
+    paramDialogInterface = this.jdField_a_of_type_Ahap.a.pop_dialog.left_url;
+    if (!TextUtils.isEmpty(paramDialogInterface)) {
+      bgwk.a(ahas.a(this.jdField_a_of_type_Ahav.a), paramDialogInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahaw
  * JD-Core Version:    0.7.0.1
  */

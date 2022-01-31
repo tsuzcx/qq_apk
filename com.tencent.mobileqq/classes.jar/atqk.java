@@ -1,75 +1,60 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.AccountNotMatchException;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import com.tencent.mobileqq.widget.TabBarView;
 
 class atqk
-  implements atqn
+  implements atvo
 {
-  atqk(atqj paramatqj, atpv paramatpv, atqd paramatqd) {}
+  atqk(atpi paramatpi, int paramInt) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, atpw paramatpw) {}
-  
-  public void a(int paramInt, ArrayList<atpw> paramArrayList) {}
-  
-  public void a_(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt, atpw paramatpw) {}
-  
-  public void c(int paramInt, atpw arg2)
+  public void a(int paramInt)
   {
-    atqr localatqr = (atqr)???.a;
-    Object localObject2 = new StringBuilder().append("PresendStatus: destPath:").append(this.jdField_a_of_type_Atpv.jdField_a_of_type_Atqd.g).append(",uuid:").append(this.jdField_a_of_type_Atpv.jdField_a_of_type_JavaLangString).append(",canceled:false, peakCompress:true, peakUpload:true, saveMR:true, transferAsync:true, mainUploadFinish:true, uploadResult:");
-    if (paramInt == 0)
+    if ((this.jdField_a_of_type_Int == -1) && (this.jdField_a_of_type_Atpi.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView != null))
     {
-      ??? = "ResultOk";
-      atpg.a("PresendPicMgrService", "onSend ", ???);
-      atpg.a("PresendPicMgrService", "onSend", " SendResult = " + localatqr);
+      if (paramInt > 0) {
+        this.jdField_a_of_type_Atpi.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(1, false);
+      }
     }
-    for (;;)
+    else
     {
-      synchronized (atqj.a(this.jdField_a_of_type_Atqj))
+      this.jdField_a_of_type_Atpi.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment.a(null);
+      if (this.jdField_a_of_type_Atpi.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView != null)
       {
-        if (!this.jdField_a_of_type_Atqd.f)
-        {
-          if (paramInt == 0)
-          {
-            this.jdField_a_of_type_Atpv.jdField_a_of_type_Atqd.c = 1;
-            atpg.a("PresendPicMgrService", "onSend", " SendButton not clicked, add senReq to mUploadFinishList,senReq = " + this.jdField_a_of_type_Atpv);
-            atqj.a(this.jdField_a_of_type_Atqj).add(this.jdField_a_of_type_Atpv);
-            return;
-            ??? = "ResultFail";
-            break;
-          }
-          this.jdField_a_of_type_Atpv.jdField_a_of_type_Atqd.c = 2;
+        if (this.jdField_a_of_type_Atpi.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a() != 0) {
+          break label160;
+        }
+        localObject = new axra(this.jdField_a_of_type_Atpi.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("datatab_exp");
+        if (this.jdField_a_of_type_Atpi.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e != 2) {
+          break label154;
         }
       }
-      if (paramInt == 0)
-      {
-        try
-        {
-          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(atqj.a(this.jdField_a_of_type_Atqj));
-          localObject2 = (MessageRecord)this.jdField_a_of_type_Atpv.jdField_a_of_type_Atqd.a;
-          ((avau)localQQAppInterface.getManager(326)).a((MessageRecord)localObject2, null);
-          atpg.a("PresendPicMgrService", "onSend", " SendButton has been clicked, sendMessage directly! ,senReq = " + this.jdField_a_of_type_Atpv);
-        }
-        catch (AccountNotMatchException localAccountNotMatchException) {}
-        if (QLog.isColorLevel()) {
-          QLog.d("PresendPicMgrService", 2, "no appRuntime");
-        }
+    }
+    label154:
+    for (String str = "1";; str = "2")
+    {
+      ((axra)localObject).a(new String[] { str }).a();
+      return;
+      this.jdField_a_of_type_Atpi.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(0, false);
+      break;
+    }
+    label160:
+    axra localaxra = new axra(this.jdField_a_of_type_Atpi.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("feedtab_exp");
+    if (this.jdField_a_of_type_Atpi.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2)
+    {
+      str = "1";
+      if (paramInt != 0) {
+        break label250;
       }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("PresendPicMgrService", 2, "onSend SendResult = " + localAccountNotMatchException + ", upload failed");
-      }
+    }
+    label250:
+    for (Object localObject = "1";; localObject = "2")
+    {
+      localaxra.a(new String[] { str, localObject }).a();
+      return;
+      str = "2";
+      break;
     }
   }
-  
-  public void d(int paramInt, atpw paramatpw) {}
 }
 
 

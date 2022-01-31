@@ -1,28 +1,49 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ProfileNameView;
+import android.util.Pair;
 
 public class bbmc
-  implements View.OnClickListener
 {
-  public bbmc(ProfileNameView paramProfileNameView, atwx paramatwx) {}
+  public int a;
+  public Pair<CharSequence, CharSequence> a;
+  public String a;
   
-  public void onClick(View paramView)
+  public bbmc(String paramString, int paramInt, Pair<CharSequence, CharSequence> paramPair)
   {
-    String str = azkf.a().a(this.jdField_a_of_type_Atwx.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atwx.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    localIntent.putExtra("url", str);
-    paramView.getContext().startActivity(localIntent);
-    awqx.b(null, "dc00898", "", "", "0X800A708", "0X800A708", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidUtilPair = paramPair;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder().append("MsgSearchContactInfo{uin='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", uinType=").append(this.jdField_a_of_type_Int).append(", matchTitle=[");
+    if (this.jdField_a_of_type_AndroidUtilPair == null)
+    {
+      localObject = "null";
+      return (String)localObject + "]" + '}';
+    }
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    if (this.jdField_a_of_type_AndroidUtilPair.first == null)
+    {
+      localObject = "null";
+      label92:
+      localStringBuilder2 = localStringBuilder2.append(localObject).append(", ");
+      if (this.jdField_a_of_type_AndroidUtilPair.second != null) {
+        break label142;
+      }
+    }
+    label142:
+    for (Object localObject = "null";; localObject = (CharSequence)this.jdField_a_of_type_AndroidUtilPair.second)
+    {
+      localObject = localObject;
+      break;
+      localObject = (CharSequence)this.jdField_a_of_type_AndroidUtilPair.first;
+      break label92;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbmc
  * JD-Core Version:    0.7.0.1
  */

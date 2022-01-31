@@ -1,127 +1,116 @@
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.business.qvip.QQFriendRelation2Config;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+
 public class bbqn
+  extends QIPCModule
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static long jdField_a_of_type_Long;
+  private static bbqn a;
   
-  public static int a(int paramInt)
+  private bbqn(String paramString)
   {
-    switch (paramInt)
+    super(paramString);
+  }
+  
+  /* Error */
+  public static bbqn a()
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 14	bbqn:a	Lbbqn;
+    //   6: ifnonnull +27 -> 33
+    //   9: ldc 2
+    //   11: monitorenter
+    //   12: getstatic 14	bbqn:a	Lbbqn;
+    //   15: ifnonnull +15 -> 30
+    //   18: new 2	bbqn
+    //   21: dup
+    //   22: ldc 16
+    //   24: invokespecial 17	bbqn:<init>	(Ljava/lang/String;)V
+    //   27: putstatic 14	bbqn:a	Lbbqn;
+    //   30: ldc 2
+    //   32: monitorexit
+    //   33: getstatic 14	bbqn:a	Lbbqn;
+    //   36: astore_0
+    //   37: ldc 2
+    //   39: monitorexit
+    //   40: aload_0
+    //   41: areturn
+    //   42: astore_0
+    //   43: ldc 2
+    //   45: monitorexit
+    //   46: aload_0
+    //   47: athrow
+    //   48: astore_0
+    //   49: ldc 2
+    //   51: monitorexit
+    //   52: aload_0
+    //   53: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   36	5	0	localbbqn	bbqn
+    //   42	5	0	localObject1	java.lang.Object
+    //   48	5	0	localObject2	java.lang.Object
+    // Exception table:
+    //   from	to	target	type
+    //   12	30	42	finally
+    //   30	33	42	finally
+    //   43	46	42	finally
+    //   3	12	48	finally
+    //   33	37	48	finally
+    //   46	48	48	finally
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    int i;
+    boolean bool;
+    if ("is_white_name".equals(paramString))
     {
-    default: 
-      return paramInt;
-    case 0: 
-      return 1;
-    case 1: 
-      return 2;
-    case 3000: 
-      return 4;
+      i = paramBundle.getInt("managerId", -1);
+      if (i == 490)
+      {
+        bool = asxx.a().a();
+        paramString = new Bundle();
+        paramString.putBoolean("isWhiteName", bool);
+        paramString = EIPCResult.createSuccessResult(paramString);
+      }
     }
-    return 3;
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public static void a(int paramInt)
-  {
-    awqx.b(null, "dc00898", "", "", "0X800A496", "0X800A496", paramInt, 0, String.valueOf(paramInt), "", "", "");
-  }
-  
-  public static void b()
-  {
-    awqx.b(null, "dc00898", "", "", "0X800A494", "0X800A494", 0, 0, "", "", "", "");
-  }
-  
-  public static void b(int paramInt)
-  {
-    jdField_a_of_type_Int = paramInt;
-    awqx.b(null, "dc00898", "", "", "0X800A20B", "0X800A20B", paramInt, 0, String.valueOf(paramInt), "", "", "");
-  }
-  
-  public static void c()
-  {
-    awqx.b(null, "dc00898", "", "", "0X800A495", "0X800A495", 0, 0, "", "", "", "");
-  }
-  
-  public static void c(int paramInt)
-  {
-    awqx.b(null, "dc00898", "", "", "0X800A87C", "0X800A87C", jdField_a_of_type_Int, 0, String.valueOf(paramInt / 1000), "", "", "");
-  }
-  
-  public static void d()
-  {
-    awqx.b(null, "dc00898", "", "", "0X800A20C", "0X800A20C", 0, 0, "", "", "", "");
-    d(1);
-  }
-  
-  public static void d(int paramInt)
-  {
-    if (jdField_a_of_type_Long == 0L) {
-      return;
+    for (;;)
+    {
+      callbackResult(paramInt, paramString);
+      return null;
+      if (i == 491)
+      {
+        bool = amyr.c().mIsEnable;
+        paramString = new Bundle();
+        paramString.putBoolean("isWhiteName", bool);
+        paramString = EIPCResult.createSuccessResult(paramString);
+      }
+      else
+      {
+        paramString = EIPCResult.createResult(-1, new Bundle());
+        continue;
+        if ("paySuccess".equals(paramString))
+        {
+          ((akjo)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(27)).notifyUI(5, true, paramBundle);
+          paramString = EIPCResult.createResult(0, null);
+        }
+        else
+        {
+          paramString = null;
+        }
+      }
     }
-    long l1 = System.currentTimeMillis();
-    long l2 = jdField_a_of_type_Long;
-    jdField_a_of_type_Long = 0L;
-    awqx.b(null, "dc00898", "", "", "0X800A87D", "0X800A87D", paramInt, 0, String.valueOf((l1 - l2) / 1000L), "", "", "");
-  }
-  
-  public static void e()
-  {
-    awqx.b(null, "dc00898", "", "", "0X800A20D", "0X800A20D", 0, 0, "", "", "", "");
-    d(2);
-    a();
-  }
-  
-  public static void e(int paramInt)
-  {
-    if (jdField_a_of_type_Long == 0L) {
-      return;
-    }
-    long l1 = System.currentTimeMillis();
-    long l2 = jdField_a_of_type_Long;
-    jdField_a_of_type_Long = 0L;
-    awqx.b(null, "dc00898", "", "", "0X800A87E", "0X800A87E", paramInt, 0, String.valueOf((l1 - l2) / 1000L), "", "", "");
-  }
-  
-  public static void f()
-  {
-    awqx.b(null, "dc00898", "", "", "0X800A20E", "0X800A20E", 0, 0, "", "", "", "");
-    e(2);
-    a();
-  }
-  
-  public static void g()
-  {
-    awqx.b(null, "dc00898", "", "", "0X800A20F", "0X800A20F", 0, 0, "", "", "", "");
-    e(1);
-  }
-  
-  public static void h()
-  {
-    awqx.b(null, "dc00898", "", "", "0X800A210", "0X800A210", 0, 0, "", "", "", "");
-  }
-  
-  public static void i()
-  {
-    awqx.b(null, "dc00898", "", "", "0X800A87F", "0X800A87F", jdField_a_of_type_Int, 0, "", "", "", "");
-  }
-  
-  public static void j()
-  {
-    awqx.b(null, "dc00898", "", "", "0X800A880", "0X800A880", jdField_a_of_type_Int, 0, "", "", "", "");
-  }
-  
-  public static void k()
-  {
-    awqx.b(null, "dc00898", "", "", "0X800A881", "0X800A881", jdField_a_of_type_Int, 0, "", "", "", "");
-    e(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbqn
  * JD-Core Version:    0.7.0.1
  */

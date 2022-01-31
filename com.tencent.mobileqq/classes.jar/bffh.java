@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.ui.MoreItem;
 
-class bffh
-  implements DialogInterface.OnClickListener
+public final class bffh
+  implements Parcelable.Creator<MoreItem>
 {
-  bffh(bffc parambffc) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public MoreItem a(Parcel paramParcel)
   {
-    this.a.a("0X8004857", 1);
-    paramDialogInterface.dismiss();
+    return new MoreItem(paramParcel);
+  }
+  
+  public MoreItem[] a(int paramInt)
+  {
+    return new MoreItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bffh
  * JD-Core Version:    0.7.0.1
  */

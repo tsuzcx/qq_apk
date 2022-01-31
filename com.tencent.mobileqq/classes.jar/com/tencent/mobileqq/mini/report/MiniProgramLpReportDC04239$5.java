@@ -7,7 +7,7 @@ final class MiniProgramLpReportDC04239$5
   
   public void run()
   {
-    MiniProgramLpReportDC04239.access$300(this.val$actionType, this.val$subActionType, this.val$reserves, this.val$reserves2, this.val$reserves3, this.val$reserves4);
+    MiniProgramLpReportDC04239.access$200(this.val$actionType, this.val$subActionType, this.val$reserves, this.val$reserves2, this.val$reserves3, this.val$reserves4);
   }
 }
 

@@ -1,28 +1,43 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import java.util.HashMap;
+import java.util.List;
 
-public class aikf
-  implements Animation.AnimationListener
+class aikf
+  implements aije
 {
-  public aikf(CmGameDebugView paramCmGameDebugView) {}
+  aikf(aikd paramaikd, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean)
   {
-    CmGameDebugView.a(this.a).setVisibility(8);
-    CmGameDebugView.b(this.a).setVisibility(8);
-    CmGameDebugView.a(this.a).clearAnimation();
+    if (paramBoolean) {}
+    try
+    {
+      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Aikd.mRuntime.a().getCurrentAccountUin();
+      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
+      aikd.a(this.jdField_a_of_type_Aikd, this.jdField_a_of_type_JavaLangString, (List)localObject);
+      return;
+    }
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      try
+      {
+        aikd.a(this.jdField_a_of_type_Aikd, this.jdField_a_of_type_JavaLangString, null);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+    }
+    aikd.a(this.jdField_a_of_type_Aikd, this.jdField_a_of_type_JavaLangString, null);
+    return;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aikf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,33 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class adxi
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  adxi(adxh paramadxh) {}
+  final acxn jdField_a_of_type_Acxn;
+  GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new adxj(this));
+  View jdField_a_of_type_AndroidViewView = null;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public adxi(adxg paramadxg, acxn paramacxn)
   {
-    paramDialogInterface.dismiss();
-    adxg.j(this.a.a).setResult(8001);
+    this.jdField_a_of_type_Acxn = paramacxn;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (this.jdField_a_of_type_Acxn != null) {
+      this.jdField_a_of_type_Acxn.onTouch(paramView, paramMotionEvent);
+    }
+    if (this.jdField_a_of_type_AndroidViewGestureDetector != null)
+    {
+      this.jdField_a_of_type_AndroidViewView = paramView;
+      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+      return true;
+    }
+    this.jdField_a_of_type_AndroidViewView = null;
+    return false;
   }
 }
 

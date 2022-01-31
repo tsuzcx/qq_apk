@@ -1,35 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.GradientDrawable;
 
-class aokp
-  extends aoko
+public class aokp
 {
-  public aokp(aokk paramaokk)
+  public static GradientDrawable a(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    super(paramaokk);
-  }
-  
-  protected String a()
-  {
-    return "StateCancelUploadWhenChangeToOff";
-  }
-  
-  protected boolean a()
-  {
-    if (this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return false;
-    }
-    aokk.b(this.jdField_a_of_type_Aokk, 11, 9);
-    aokk.c(this.jdField_a_of_type_Aokk, 11, 9);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateCancelUploadWhenRecv)");
-    this.jdField_a_of_type_Aoko = new aokr(this.jdField_a_of_type_Aokk);
-    return true;
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    localGradientDrawable.setColor(paramInt);
+    localGradientDrawable.setCornerRadii(new float[] { paramFloat1, paramFloat1, paramFloat2, paramFloat2, paramFloat3, paramFloat3, paramFloat4, paramFloat4 });
+    return localGradientDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aokp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,14 @@
+import com.tencent.mobileqq.data.ApolloActionData;
 import java.util.Comparator;
 
 class aitp
-  implements Comparator<aium>
+  implements Comparator<ApolloActionData>
 {
-  aitp(aitm paramaitm) {}
+  aitp(aitn paramaitn) {}
   
-  public int a(aium paramaium1, aium paramaium2)
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    return paramaium1.h - paramaium2.h;
+    return this.a.a(paramApolloActionData2) - this.a.a(paramApolloActionData1);
   }
 }
 

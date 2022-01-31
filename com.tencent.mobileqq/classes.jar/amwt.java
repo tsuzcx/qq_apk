@@ -1,56 +1,37 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem;
-import com.tencent.mobileqq.dating.FansEntity;
-import com.tencent.mobileqq.dating.SayHelloMsgListActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 public class amwt
-  extends asez
 {
-  public amwt(SayHelloMsgListActivity paramSayHelloMsgListActivity) {}
+  public int a;
   
-  public void a(boolean paramBoolean, List<FansEntity> paramList)
+  public static amwt a(String paramString)
   {
-    int i = 0;
-    if (paramBoolean)
+    amwt localamwt = new amwt();
+    try
     {
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
-      {
-        FansEntity localFansEntity = (FansEntity)localIterator.next();
-        RecentBaseData localRecentBaseData = (RecentBaseData)this.a.jdField_a_of_type_JavaUtilMap.get(String.valueOf(localFansEntity.uin));
-        if ((localRecentBaseData != null) && ((localRecentBaseData instanceof RecentSayHelloListItem))) {
-          ((RecentSayHelloListItem)localRecentBaseData).a(localFansEntity);
-        }
-      }
-      awqx.b(this.a.app, "dc00899", "grp_lbs", "", "c2c_tmp", "exp_hi_list", 0, 0, "", "", "", "");
+      localamwt.a = new JSONObject(paramString).optInt("preloadPskey", 0);
+      QLog.d("WVPreloadPskeyConfProcessor", 2, "confBean = " + localamwt.toString());
+      return localamwt;
     }
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null)
+    catch (Exception paramString)
     {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(0);
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(0);
+      while (!QLog.isColorLevel()) {}
+      QLog.e("WVPreloadPskeyConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
     }
-    if (QLog.isDevelopLevel()) {
-      if (paramList != null) {
-        break label187;
-      }
-    }
-    for (;;)
-    {
-      QLog.d("Q.msg_box", 4, "get tags, size is " + i);
-      return;
-      label187:
-      i = paramList.size();
-    }
+    return localamwt;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    localStringBuilder.append("preloadPskey:").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amwt
  * JD-Core Version:    0.7.0.1
  */

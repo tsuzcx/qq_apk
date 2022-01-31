@@ -1,29 +1,19 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-
 class vzw
-  implements TextView.OnEditorActionListener
 {
-  vzw(vzs paramvzs) {}
+  public final int a;
+  public final String a;
+  public final String b;
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public vzw(int paramInt, String paramString1, String paramString2)
   {
-    switch (paramInt)
-    {
-    case 5: 
-    default: 
-      return false;
-    }
-    if (vzs.a(this.a) != null) {
-      vzs.a(this.a).a();
-    }
-    return true;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vzw
  * JD-Core Version:    0.7.0.1
  */

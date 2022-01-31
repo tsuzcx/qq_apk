@@ -1,23 +1,26 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator.5.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class anvm
-  implements Animation.AnimationListener
+  implements anty
 {
-  public anvm(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  anvm(anvl paramanvl) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt)
   {
-    this.a.l = false;
-    this.a.a.setVisibility(8);
-    this.a.e();
+    anvn localanvn = this.a.a(paramInt);
+    if (localanvn != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "on req timeout seq: " + paramInt);
+      }
+      Bundle localBundle = new Bundle();
+      this.a.a(localBundle, 1001);
+      localanvn.a.putBundle("response", localBundle);
+      this.a.a(new WebIPCOperator.5.1(this, localanvn));
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

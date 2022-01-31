@@ -1,36 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
 
-class afrg
-  extends atdh
+public class afrg
+  implements Handler.Callback
 {
-  afrg(afqi paramafqi) {}
+  public afrg(PublicAccountFragment paramPublicAccountFragment) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (paramInt != 2)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGameCenterMsgReceive.type=" + paramInt);
-      }
-    }
-    switch (paramInt)
+    switch (paramMessage.what)
     {
-    case 2: 
-    case 3: 
-    default: 
-      return;
-    case 0: 
-      this.a.g();
-      return;
-    case 1: 
-      this.a.g();
-      return;
-    case 4: 
-      this.a.g();
-      return;
     }
-    this.a.g();
-    this.a.e();
-    this.a.f();
+    for (;;)
+    {
+      return true;
+      this.a.i();
+    }
   }
 }
 

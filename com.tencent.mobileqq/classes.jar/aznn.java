@@ -1,12 +1,29 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.qphone.base.util.QLog;
 
-public class aznn
+class aznn
+  extends GestureDetector.SimpleOnGestureListener
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
+  aznn(aznm paramaznm) {}
   
-  protected aznn(aznl paramaznl) {}
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ScrollTest", 4, "velocityY = " + paramFloat2);
+    }
+    if (paramFloat2 < -10.0F) {}
+    for (;;)
+    {
+      return false;
+      if (paramFloat2 <= 10.0F) {}
+    }
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
 }
 
 

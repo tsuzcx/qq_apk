@@ -1,18 +1,23 @@
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
-public class smj
-  implements Comparator<smh>
+public final class smj
+  implements Parcelable.Creator<WSRedDotPushMsg>
 {
-  private smj(smi paramsmi) {}
-  
-  public int a(smh paramsmh1, smh paramsmh2)
+  public WSRedDotPushMsg a(Parcel paramParcel)
   {
-    return paramsmh2.a - paramsmh1.a;
+    return new WSRedDotPushMsg(paramParcel);
+  }
+  
+  public WSRedDotPushMsg[] a(int paramInt)
+  {
+    return new WSRedDotPushMsg[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     smj
  * JD-Core Version:    0.7.0.1
  */

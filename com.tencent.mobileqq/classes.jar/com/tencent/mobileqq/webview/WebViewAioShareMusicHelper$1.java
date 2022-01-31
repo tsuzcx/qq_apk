@@ -1,17 +1,19 @@
 package com.tencent.mobileqq.webview;
 
-import bayk;
-import bbcj;
+import bcbe;
+import bcfj;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class WebViewAioShareMusicHelper$1
   implements Runnable
 {
-  public WebViewAioShareMusicHelper$1(bayk parambayk, boolean paramBoolean) {}
+  public WebViewAioShareMusicHelper$1(bcbe parambcbe, boolean paramBoolean) {}
   
   public void run()
   {
-    bayk.a(this.this$0).a.a(this.a, bayk.a(this.this$0));
+    if ((bcbe.a(this.this$0) != null) && (bcbe.a(this.this$0).a != null)) {
+      bcbe.a(this.this$0).a.a(this.a, bcbe.a(this.this$0));
+    }
   }
 }
 

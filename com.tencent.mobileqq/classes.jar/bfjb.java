@@ -1,19 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class bfjb
-  implements DialogInterface.OnDismissListener
+public abstract interface bfjb
 {
-  bfjb(bfja parambfja) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a = false;
-  }
+  public abstract int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfjb
  * JD-Core Version:    0.7.0.1
  */

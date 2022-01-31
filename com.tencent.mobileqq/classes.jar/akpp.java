@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public final class akpp
-  implements Parcelable.Creator<ArEffectConfig>
+class akpp
+  implements Comparator<MessageRecord>
 {
-  public ArEffectConfig a(Parcel paramParcel)
-  {
-    return new ArEffectConfig(paramParcel);
-  }
+  akpp(akpo paramakpo) {}
   
-  public ArEffectConfig[] a(int paramInt)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    return new ArEffectConfig[paramInt];
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akpp
  * JD-Core Version:    0.7.0.1
  */

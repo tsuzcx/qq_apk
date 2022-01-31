@@ -1,21 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.ChatSettingForTroop.52;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
 
 public class aalj
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public aalj(ChatSettingForTroop.52 param52) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramInt == 1)
-    {
-      this.a.this$0.a.cancel();
-      this.a.this$0.finish();
-    }
-  }
+  public aalj(AuthDevRenameActivity paramAuthDevRenameActivity) {}
 }
 
 

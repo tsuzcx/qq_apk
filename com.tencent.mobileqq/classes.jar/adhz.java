@@ -1,23 +1,36 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.text.InputFilter;
+import android.text.Spanned;
 
 class adhz
-  implements aqdv
+  implements InputFilter
 {
   adhz(adhy paramadhy) {}
   
-  public void a(View paramView)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HiBoomFont.ItemBuilder", 2, "onDoubleClick");
+    paramInt3 = 4500 - (paramSpanned.length() - (paramInt4 - paramInt3));
+    if (paramInt3 <= 0)
+    {
+      adhy.a(this.a);
+      return "";
     }
-    aciy.n = true;
-    if (this.a.a()) {
-      return;
+    if (paramInt3 >= paramInt2 - paramInt1) {
+      return null;
     }
-    ChatActivityUtils.a(this.a.a, paramView, (FragmentActivity)this.a.b);
+    paramInt3 += paramInt1;
+    paramInt2 = paramInt3;
+    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
+    {
+      paramInt3 -= 1;
+      paramInt2 = paramInt3;
+      if (paramInt3 == paramInt1)
+      {
+        adhy.a(this.a);
+        return "";
+      }
+    }
+    adhy.a(this.a);
+    return paramCharSequence.subSequence(paramInt1, paramInt2);
   }
 }
 

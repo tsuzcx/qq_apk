@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abgi;
 import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
 
-public class Now$1
+class Now$1
   implements Runnable
 {
-  public Now$1(abgi paramabgi) {}
+  Now$1(Now paramNow) {}
   
   public void run()
   {

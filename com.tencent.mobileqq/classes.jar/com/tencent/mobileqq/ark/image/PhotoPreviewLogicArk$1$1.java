@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.ark.image;
 
-import aggf;
-import algw;
-import alhd;
-import alhe;
+import agsb;
+import alvk;
+import alvr;
+import alvs;
 import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
 public class PhotoPreviewLogicArk$1$1
   implements Runnable
 {
-  public PhotoPreviewLogicArk$1$1(alhe paramalhe) {}
+  public PhotoPreviewLogicArk$1$1(alvs paramalvs) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewLogicArk", 2, "ArkApp copy file to res: " + alhd.a(this.a.a));
+      QLog.d("PhotoPreviewLogicArk", 2, "ArkApp copy file to res: " + alvr.a(this.a.a));
     }
-    String str = algw.a(alhd.e(this.a.a).a, alhd.a(this.a.a), alhd.a(this.a.a), alhd.b(this.a.a));
+    String str = alvk.a(alvr.e(this.a.a).a, alvr.a(this.a.a), alvr.a(this.a.a), alvr.b(this.a.a));
     Bundle localBundle = new Bundle();
     localBundle.putString("bundle_key_info", str);
-    algw.a().a("callbackArk", localBundle, null);
+    alvk.a().a("callbackArk", localBundle, null);
   }
 }
 

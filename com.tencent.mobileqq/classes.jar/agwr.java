@@ -1,37 +1,12 @@
-public class agwr
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class agwr
+  implements DialogInterface.OnClickListener
 {
-  public float a;
-  public int a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
-  public float e;
-  public float f;
-  public float g;
-  public float h;
-  public float i;
-  public float j;
-  public float k;
+  agwr(agwq paramagwq) {}
   
-  public agwr(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
-    this.f = paramFloat3;
-    this.d = paramFloat5;
-    this.h = paramFloat5;
-    this.e = paramFloat7;
-    this.j = paramFloat7;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.g = paramFloat4;
-    this.i = paramFloat6;
-    this.k = paramFloat8;
-    this.jdField_c_of_type_Int = paramInt2;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

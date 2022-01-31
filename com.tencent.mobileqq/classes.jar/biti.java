@@ -1,12 +1,28 @@
-public abstract interface biti
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import dov.com.qq.im.ae.gif.giftext.AEGIFTextColorSelectionView;
+
+class biti
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  AEGIFTextColorSelectionView a;
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public biti(@NonNull View paramView)
+  {
+    super(paramView);
+    this.a = ((AEGIFTextColorSelectionView)paramView.findViewById(2131363789));
+  }
   
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
+  public void a(String paramString)
+  {
+    this.a.setColor(paramString);
+  }
   
-  public abstract void c(int paramInt1, int paramInt2, int paramInt3);
+  public void a(boolean paramBoolean)
+  {
+    this.a.a(Boolean.valueOf(paramBoolean));
+  }
 }
 
 

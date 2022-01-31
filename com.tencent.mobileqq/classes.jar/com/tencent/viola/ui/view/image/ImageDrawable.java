@@ -102,7 +102,7 @@ public class ImageDrawable
   private static Bitmap createScaleBitmapForBlur(Drawable paramDrawable, int paramInt1, int paramInt2, ImageView.ScaleType paramScaleType, int paramInt3)
   {
     paramDrawable = drawableToBitmap(paramDrawable, paramInt1, paramInt2, paramScaleType);
-    if (paramDrawable != null) {
+    if ((paramDrawable != null) && (paramInt1 != 0) && (paramInt2 != 0)) {
       return Bitmap.createScaledBitmap(paramDrawable, paramInt1 / paramInt3, paramInt2 / paramInt3, false);
     }
     return null;

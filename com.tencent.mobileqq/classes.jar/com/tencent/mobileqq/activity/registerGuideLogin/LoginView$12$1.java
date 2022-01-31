@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
-import bbms;
+import bcpq;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class LoginView$12$1

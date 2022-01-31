@@ -1,32 +1,33 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class uqm
-  extends QQUIEventReceiver<upw, sjc>
+class uqm
 {
-  public uqm(@NonNull upw paramupw)
+  public int a;
+  public CommentEntry a;
+  private int b = -1;
+  
+  uqm(uqh paramuqh)
   {
-    super(paramupw);
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public void a(@NonNull upw paramupw, @NonNull sjc paramsjc)
+  private void a()
   {
-    if (paramsjc.a())
-    {
-      urk.b(this.TAG, "group video upload");
-      return;
-    }
-    if (!paramsjc.b())
-    {
-      urk.b(this.TAG, "ignore personal video");
-      return;
-    }
-    paramupw.a(paramsjc);
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = null;
+    this.jdField_a_of_type_Int = -1;
+    this.b = -1;
   }
   
-  public Class acceptEventClass()
+  public void a(CommentEntry paramCommentEntry, int paramInt)
   {
-    return sjc.class;
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
+    this.b = paramCommentEntry.commentId;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a(CommentEntry paramCommentEntry)
+  {
+    return paramCommentEntry.commentId != this.b;
   }
 }
 

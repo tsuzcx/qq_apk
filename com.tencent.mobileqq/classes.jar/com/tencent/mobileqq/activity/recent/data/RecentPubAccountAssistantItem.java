@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import acnu;
-import ajoy;
-import akaq;
+import acyn;
+import akdi;
+import akpc;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.config.AppSetting;
@@ -66,12 +66,12 @@ public class RecentPubAccountAssistantItem
         localObject1 = paramQQAppInterface.a();
         if (localObject1 != null)
         {
-          this.mUnreadNum = ((akaq)localObject1).a(localMessage.frienduin, localMessage.istroop);
-          localObject1 = (ajoy)paramQQAppInterface.getManager(56);
+          this.mUnreadNum = ((akpc)localObject1).a(localMessage.frienduin, localMessage.istroop);
+          localObject1 = (akdi)paramQQAppInterface.getManager(56);
           if (localObject1 == null) {
             break label606;
           }
-          localObject2 = ((ajoy)localObject1).b((String)localObject3);
+          localObject2 = ((akdi)localObject1).b((String)localObject3);
           if (localObject2 == null) {
             break label606;
           }
@@ -109,7 +109,7 @@ public class RecentPubAccountAssistantItem
           a(paramQQAppInterface);
           a(paramQQAppInterface, (MsgSummary)localObject2);
           a(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
-          if (!AppSetting.c) {
+          if (!AppSetting.d) {
             break;
           }
           paramQQAppInterface = new StringBuilder(24);
@@ -132,7 +132,7 @@ public class RecentPubAccountAssistantItem
           this.mUnreadNum = 0;
           break;
           ((MsgSummary)localObject2).strContent = "";
-          localObject3 = acnu.a(localMessage);
+          localObject3 = acyn.a(localMessage);
           if ((localObject3 == null) || (((PAMessage)localObject3).items == null) || (((PAMessage)localObject3).items.size() == 0))
           {
             a(localMessage, i, paramQQAppInterface, paramContext, (MsgSummary)localObject2);

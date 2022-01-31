@@ -1,15 +1,12 @@
-import android.animation.ValueAnimator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class vai
-  implements vah
+class vai
+  implements DialogInterface.OnDismissListener
 {
-  public void a(ValueAnimator paramValueAnimator) {}
+  vai(vaf paramvaf) {}
   
-  public void b(ValueAnimator paramValueAnimator) {}
-  
-  public void c(ValueAnimator paramValueAnimator) {}
-  
-  public void d(ValueAnimator paramValueAnimator) {}
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

@@ -1,4 +1,8 @@
-// INTERNAL ERROR //
+public abstract interface qie
+{
+  public abstract void a(awog paramawog);
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qie

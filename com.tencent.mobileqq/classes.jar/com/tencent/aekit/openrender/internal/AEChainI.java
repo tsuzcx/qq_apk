@@ -4,14 +4,29 @@ import java.util.List;
 
 public abstract class AEChainI
 {
+  protected boolean mIsApplied = false;
+  
   public List<String> AI()
   {
     return null;
   }
   
+  public void apply() {}
+  
+  public final void applyChain()
+  {
+    apply();
+    this.mIsApplied = true;
+  }
+  
   public String filterName()
   {
     return getClass().getName();
+  }
+  
+  public boolean isApplied()
+  {
+    return this.mIsApplied;
   }
   
   public abstract Frame render(Frame paramFrame);

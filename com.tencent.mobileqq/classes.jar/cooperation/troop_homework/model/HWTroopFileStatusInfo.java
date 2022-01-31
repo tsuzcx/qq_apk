@@ -1,6 +1,6 @@
 package cooperation.troop_homework.model;
 
-import ayqd;
+import azqt;
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -28,57 +28,57 @@ public class HWTroopFileStatusInfo
   public String sha1;
   public long uniseq;
   
-  public static HWTroopFileStatusInfo parse(ayqd paramayqd)
+  public static HWTroopFileStatusInfo parse(azqt paramazqt)
   {
-    if (paramayqd == null) {
+    if (paramazqt == null) {
       return null;
     }
     HWTroopFileStatusInfo localHWTroopFileStatusInfo = new HWTroopFileStatusInfo();
-    localHWTroopFileStatusInfo.Id = paramayqd.jdField_a_of_type_JavaUtilUUID;
-    localHWTroopFileStatusInfo.SeqId = paramayqd.jdField_a_of_type_Int;
-    localHWTroopFileStatusInfo.uniseq = paramayqd.jdField_a_of_type_Long;
-    localHWTroopFileStatusInfo.TroopUin = paramayqd.jdField_b_of_type_Long;
-    localHWTroopFileStatusInfo.Status = paramayqd.jdField_b_of_type_Int;
-    localHWTroopFileStatusInfo.IsNewStatus = paramayqd.jdField_a_of_type_Boolean;
-    localHWTroopFileStatusInfo.ErrorCode = paramayqd.jdField_c_of_type_Int;
-    localHWTroopFileStatusInfo.UploadTime = paramayqd.jdField_d_of_type_Int;
-    localHWTroopFileStatusInfo.ProgressTotal = paramayqd.jdField_c_of_type_Long;
-    localHWTroopFileStatusInfo.ProgressValue = paramayqd.jdField_d_of_type_Long;
-    localHWTroopFileStatusInfo.LocalFile = paramayqd.jdField_a_of_type_JavaLangString;
-    localHWTroopFileStatusInfo.ThumbnailFile_Small = paramayqd.jdField_b_of_type_JavaLangString;
-    localHWTroopFileStatusInfo.ThumbnailFile_Large = paramayqd.jdField_c_of_type_JavaLangString;
-    localHWTroopFileStatusInfo.FilePath = paramayqd.jdField_e_of_type_JavaLangString;
-    localHWTroopFileStatusInfo.sha1 = paramayqd.f;
-    localHWTroopFileStatusInfo.FileName = paramayqd.g;
-    localHWTroopFileStatusInfo.BusId = paramayqd.jdField_h_of_type_Int;
-    localHWTroopFileStatusInfo.entrySessionID = paramayqd.jdField_e_of_type_Long;
-    localHWTroopFileStatusInfo.NickName = paramayqd.jdField_h_of_type_JavaLangString;
+    localHWTroopFileStatusInfo.Id = paramazqt.jdField_a_of_type_JavaUtilUUID;
+    localHWTroopFileStatusInfo.SeqId = paramazqt.jdField_a_of_type_Int;
+    localHWTroopFileStatusInfo.uniseq = paramazqt.jdField_a_of_type_Long;
+    localHWTroopFileStatusInfo.TroopUin = paramazqt.jdField_b_of_type_Long;
+    localHWTroopFileStatusInfo.Status = paramazqt.jdField_b_of_type_Int;
+    localHWTroopFileStatusInfo.IsNewStatus = paramazqt.jdField_a_of_type_Boolean;
+    localHWTroopFileStatusInfo.ErrorCode = paramazqt.jdField_c_of_type_Int;
+    localHWTroopFileStatusInfo.UploadTime = paramazqt.jdField_d_of_type_Int;
+    localHWTroopFileStatusInfo.ProgressTotal = paramazqt.jdField_c_of_type_Long;
+    localHWTroopFileStatusInfo.ProgressValue = paramazqt.jdField_d_of_type_Long;
+    localHWTroopFileStatusInfo.LocalFile = paramazqt.jdField_a_of_type_JavaLangString;
+    localHWTroopFileStatusInfo.ThumbnailFile_Small = paramazqt.jdField_b_of_type_JavaLangString;
+    localHWTroopFileStatusInfo.ThumbnailFile_Large = paramazqt.jdField_c_of_type_JavaLangString;
+    localHWTroopFileStatusInfo.FilePath = paramazqt.jdField_e_of_type_JavaLangString;
+    localHWTroopFileStatusInfo.sha1 = paramazqt.f;
+    localHWTroopFileStatusInfo.FileName = paramazqt.g;
+    localHWTroopFileStatusInfo.BusId = paramazqt.jdField_h_of_type_Int;
+    localHWTroopFileStatusInfo.entrySessionID = paramazqt.jdField_e_of_type_Long;
+    localHWTroopFileStatusInfo.NickName = paramazqt.jdField_h_of_type_JavaLangString;
     return localHWTroopFileStatusInfo;
   }
   
-  public ayqd toTroopFileStatusInfo()
+  public azqt toTroopFileStatusInfo()
   {
-    ayqd localayqd = new ayqd();
-    localayqd.jdField_a_of_type_JavaUtilUUID = this.Id;
-    localayqd.jdField_a_of_type_Int = this.SeqId;
-    localayqd.jdField_a_of_type_Long = this.uniseq;
-    localayqd.jdField_b_of_type_Long = this.TroopUin;
-    localayqd.jdField_b_of_type_Int = this.Status;
-    localayqd.jdField_a_of_type_Boolean = this.IsNewStatus;
-    localayqd.jdField_c_of_type_Int = this.ErrorCode;
-    localayqd.jdField_d_of_type_Int = this.UploadTime;
-    localayqd.jdField_c_of_type_Long = this.ProgressTotal;
-    localayqd.jdField_d_of_type_Long = this.ProgressValue;
-    localayqd.jdField_a_of_type_JavaLangString = this.LocalFile;
-    localayqd.jdField_b_of_type_JavaLangString = this.ThumbnailFile_Small;
-    localayqd.jdField_c_of_type_JavaLangString = this.ThumbnailFile_Large;
-    localayqd.jdField_e_of_type_JavaLangString = this.FilePath;
-    localayqd.f = this.sha1;
-    localayqd.g = this.FileName;
-    localayqd.jdField_h_of_type_Int = this.BusId;
-    localayqd.jdField_e_of_type_Long = this.entrySessionID;
-    localayqd.jdField_h_of_type_JavaLangString = this.NickName;
-    return localayqd;
+    azqt localazqt = new azqt();
+    localazqt.jdField_a_of_type_JavaUtilUUID = this.Id;
+    localazqt.jdField_a_of_type_Int = this.SeqId;
+    localazqt.jdField_a_of_type_Long = this.uniseq;
+    localazqt.jdField_b_of_type_Long = this.TroopUin;
+    localazqt.jdField_b_of_type_Int = this.Status;
+    localazqt.jdField_a_of_type_Boolean = this.IsNewStatus;
+    localazqt.jdField_c_of_type_Int = this.ErrorCode;
+    localazqt.jdField_d_of_type_Int = this.UploadTime;
+    localazqt.jdField_c_of_type_Long = this.ProgressTotal;
+    localazqt.jdField_d_of_type_Long = this.ProgressValue;
+    localazqt.jdField_a_of_type_JavaLangString = this.LocalFile;
+    localazqt.jdField_b_of_type_JavaLangString = this.ThumbnailFile_Small;
+    localazqt.jdField_c_of_type_JavaLangString = this.ThumbnailFile_Large;
+    localazqt.jdField_e_of_type_JavaLangString = this.FilePath;
+    localazqt.f = this.sha1;
+    localazqt.g = this.FileName;
+    localazqt.jdField_h_of_type_Int = this.BusId;
+    localazqt.jdField_e_of_type_Long = this.entrySessionID;
+    localazqt.jdField_h_of_type_JavaLangString = this.NickName;
+    return localazqt;
   }
 }
 

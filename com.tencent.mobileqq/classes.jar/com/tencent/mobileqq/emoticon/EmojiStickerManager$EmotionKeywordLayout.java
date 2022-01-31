@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import anly;
+import aoci;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.qphone.base.util.QLog;
@@ -44,11 +44,11 @@ public class EmojiStickerManager$EmotionKeywordLayout
         if ((!this.b) && ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c instanceof TopGestureLayout)))
         {
           Object localObject = ((TopGestureLayout)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c).getGestureDetector();
-          if ((localObject instanceof anly))
+          if ((localObject instanceof aoci))
           {
-            localObject = (anly)localObject;
-            ((anly)localObject).a = paramMotionEvent.getRawX();
-            ((anly)localObject).b = paramMotionEvent.getRawY();
+            localObject = (aoci)localObject;
+            ((aoci)localObject).a = paramMotionEvent.getRawX();
+            ((aoci)localObject).b = paramMotionEvent.getRawY();
             this.b = true;
           }
         }
@@ -59,7 +59,7 @@ public class EmojiStickerManager$EmotionKeywordLayout
         }
         if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c != null))
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.be();
+          this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.bg();
           this.jdField_a_of_type_Boolean = false;
           this.b = false;
           this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.onTouchEvent(paramMotionEvent);

@@ -1,28 +1,12 @@
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agcn
-  implements basv
+class agcn
+  implements DialogInterface.OnClickListener
 {
-  public agcn(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  agcn(agcm paramagcm) {}
   
-  public void a(bass parambass)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, "mMediaPlayer onPrepared: ");
-    }
-    SurfaceHolder localSurfaceHolder = this.a.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
-    if ((localSurfaceHolder == null) || (!localSurfaceHolder.getSurface().isValid()))
-    {
-      apcb.a(2131625742);
-      return;
-    }
-    azzn.a(this.a.jdField_a_of_type_AndroidViewSurfaceView, this.a.p, this.a.q, this.a.jdField_a_of_type_Bass.d(), this.a.jdField_a_of_type_Bass.e());
-    parambass.a(localSurfaceHolder);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

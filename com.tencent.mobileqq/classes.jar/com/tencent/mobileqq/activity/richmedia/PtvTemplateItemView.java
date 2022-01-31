@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import aciy;
-import ahjp;
-import ahjs;
+import actn;
+import ahwh;
+import ahwk;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.GradientDrawable;
@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import azue;
+import bavi;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -31,8 +31,8 @@ public class PtvTemplateItemView
   implements View.OnClickListener
 {
   int jdField_a_of_type_Int;
-  ahjp jdField_a_of_type_Ahjp;
-  ahjs jdField_a_of_type_Ahjs;
+  ahwh jdField_a_of_type_Ahwh;
+  ahwk jdField_a_of_type_Ahwk;
   Context jdField_a_of_type_AndroidContentContext;
   View jdField_a_of_type_AndroidViewView;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -63,13 +63,13 @@ public class PtvTemplateItemView
   {
     setLayoutParams(new LinearLayout.LayoutParams(-2, -1));
     setOrientation(0);
-    int k = aciy.a(64.0F, getResources());
-    int m = aciy.a(60.0F, getResources());
-    int j = aciy.a(70.0F, getResources());
-    int n = aciy.a(20.0F, getResources());
-    int i1 = getResources().getColor(2131101260);
-    int i2 = getResources().getColor(2131099760);
-    int i3 = aciy.a(18.0F, getResources());
+    int k = actn.a(64.0F, getResources());
+    int m = actn.a(60.0F, getResources());
+    int j = actn.a(70.0F, getResources());
+    int n = actn.a(20.0F, getResources());
+    int i1 = getResources().getColor(2131166854);
+    int i2 = getResources().getColor(2131165297);
+    int i3 = actn.a(18.0F, getResources());
     int i = paramInt2;
     if (paramInt2 <= 0) {
       i = j;
@@ -92,12 +92,12 @@ public class PtvTemplateItemView
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
     localObject = new RelativeLayout.LayoutParams(i3, i3);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845079);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845163);
     ((RelativeLayout.LayoutParams)localObject).addRule(12);
     ((RelativeLayout.LayoutParams)localObject).addRule(15);
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
-    ((RelativeLayout.LayoutParams)localObject).rightMargin = aciy.a(5.0F, getResources());
-    ((RelativeLayout.LayoutParams)localObject).bottomMargin = aciy.a(2.0F, getResources());
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = actn.a(5.0F, getResources());
+    ((RelativeLayout.LayoutParams)localObject).bottomMargin = actn.a(2.0F, getResources());
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
     this.jdField_b_of_type_ComTencentMobileqqWidgetCircleProgress = new CircleProgress(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_b_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(3.0F);
@@ -126,7 +126,7 @@ public class PtvTemplateItemView
     }
   }
   
-  public void a(int paramInt, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, ahjp paramahjp)
+  public void a(int paramInt, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, ahwh paramahwh)
   {
     if (paramPtvTemplateInfo == null) {}
     do
@@ -134,7 +134,7 @@ public class PtvTemplateItemView
       return;
       setTag(paramPtvTemplateInfo);
       this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_Ahjp = paramahjp;
+      this.jdField_a_of_type_Ahwh = paramahwh;
       if (!TextUtils.isEmpty(paramPtvTemplateInfo.id)) {
         break;
       }
@@ -146,20 +146,20 @@ public class PtvTemplateItemView
     }
     if (!TextUtils.isEmpty(paramPtvTemplateInfo.iconurl))
     {
-      paramahjp = URLDrawable.URLDrawableOptions.obtain();
-      paramInt = aciy.a(60.0F, getResources());
+      paramahwh = URLDrawable.URLDrawableOptions.obtain();
+      paramInt = actn.a(60.0F, getResources());
       GradientDrawable localGradientDrawable = new GradientDrawable();
-      localGradientDrawable.setColor(getResources().getColor(2131100176));
+      localGradientDrawable.setColor(getResources().getColor(2131165766));
       localGradientDrawable.setShape(1);
       localGradientDrawable.setSize(paramInt, paramInt);
-      paramahjp.mRequestWidth = paramInt;
-      paramahjp.mRequestHeight = paramInt;
-      paramahjp.mFailedDrawable = localGradientDrawable;
-      paramahjp.mLoadingDrawable = localGradientDrawable;
-      paramahjp = URLDrawable.getDrawable(paramPtvTemplateInfo.iconurl, paramahjp);
-      paramahjp.setTag(azue.a(paramInt, paramInt));
-      paramahjp.setDecodeHandler(azue.a);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramahjp);
+      paramahwh.mRequestWidth = paramInt;
+      paramahwh.mRequestHeight = paramInt;
+      paramahwh.mFailedDrawable = localGradientDrawable;
+      paramahwh.mLoadingDrawable = localGradientDrawable;
+      paramahwh = URLDrawable.getDrawable(paramPtvTemplateInfo.iconurl, paramahwh);
+      paramahwh.setTag(bavi.a(paramInt, paramInt));
+      paramahwh.setDecodeHandler(bavi.a);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramahwh);
       if ((!paramPtvTemplateInfo.usable) && (!paramPtvTemplateInfo.id.equals("0"))) {
         break label256;
       }
@@ -173,7 +173,7 @@ public class PtvTemplateItemView
       if (!"0".equals(paramPtvTemplateInfo.id)) {
         break;
       }
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130849314);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130849549);
       break;
       label256:
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -207,11 +207,11 @@ public class PtvTemplateItemView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Ahjp != null) {
-      this.jdField_a_of_type_Ahjp.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Ahwh != null) {
+      this.jdField_a_of_type_Ahwh.a(this.jdField_a_of_type_Int);
     }
-    if (this.jdField_a_of_type_Ahjs != null) {
-      this.jdField_a_of_type_Ahjs.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Ahwk != null) {
+      this.jdField_a_of_type_Ahwk.a(this.jdField_a_of_type_Int);
     }
   }
   

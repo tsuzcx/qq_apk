@@ -1,29 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 
 class pgc
-  implements View.OnClickListener
+  implements pnq
 {
-  pgc(pgb parampgb) {}
+  pgc(pgb parampgb, ArticleInfo paramArticleInfo, Container paramContainer) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.jdField_a_of_type_Qoe == null) {}
-    int i;
-    qpg localqpg;
-    do
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a != null)
     {
-      do
-      {
-        return;
-        paramView = ((opw)this.a.jdField_a_of_type_JavaLangObject).a();
-      } while (paramView == null);
-      i = ComponentContentGalleryBiu.a(paramView, this.a.jdField_a_of_type_Qoe);
-      localqpg = this.a.jdField_a_of_type_Qoe.a();
-    } while (localqpg == null);
-    localqpg.a(this.a.jdField_a_of_type_AndroidContentContext, paramView, 0, paramView.innerUniqueID, i, this.a.jdField_a_of_type_Int, 0);
+      UrlJumpInfo localUrlJumpInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a;
+      qol.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), localUrlJumpInfo);
+      pgb.a(this.jdField_a_of_type_Pgb, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, localUrlJumpInfo.e, "");
+    }
   }
 }
 

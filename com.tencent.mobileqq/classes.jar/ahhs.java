@@ -1,19 +1,25 @@
-import android.os.Handler;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbVideoView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
 
-class ahhs
-  extends hn
+public class ahhs
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  private ahhs(ahhq paramahhq) {}
+  public ahhs(SpringHbVideoView paramSpringHbVideoView) {}
   
-  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
+    QLog.i("springHb_SpringHbVideoView", 1, "onInfo what=" + paramInt);
+    switch (paramInt)
+    {
     }
-    if ((ahhq.a(this.a) != null) && (ahhq.a(this.a).hasMessages(paramInt))) {
-      ahhq.a(this.a, paramBoolean, paramArrayList, paramInt);
+    for (;;)
+    {
+      return false;
+      QLog.i("springHb_SpringHbVideoView", 1, "onInfo PLAYER_INFO_START_RENDERING");
+      SpringHbVideoView.a(this.a).removeMessages(100);
+      SpringHbVideoView.a(this.a).sendEmptyMessageDelayed(100, 150L);
     }
   }
 }

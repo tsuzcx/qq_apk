@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.comment.DanmuItemBean;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import eipc.EIPCResult;
 
-public abstract interface alvl
+class alvl
+  implements ajtg
 {
-  public abstract void a(alvf paramalvf, boolean paramBoolean1, boolean paramBoolean2, int paramInt, ArrayList<DanmuItemBean> paramArrayList, List<Long> paramList);
+  alvl(alvk paramalvk, int paramInt) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", paramInt);
+    localBundle.putBoolean("sucess", paramBoolean);
+    localBundle.putString("data", (String)paramObject);
+    paramObject = EIPCResult.createResult(0, localBundle);
+    this.jdField_a_of_type_Alvk.callbackResult(this.jdField_a_of_type_Int, paramObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alvl
  * JD-Core Version:    0.7.0.1
  */

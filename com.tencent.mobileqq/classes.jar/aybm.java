@@ -1,17 +1,39 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-
 public class aybm
-  implements View.OnClickListener
+  extends aybg
 {
-  public aybm(TribeVideoPreviewFragment paramTribeVideoPreviewFragment, String paramString) {}
+  private int f;
+  private int g;
   
-  public void onClick(View paramView)
+  public aybm(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.jdField_a_of_type_JavaLangString);
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().app, "dc00899", "Grp_tribe", "", "post", "save_video", 0, 0, "", "", "", "");
+    super(paramInt1, 4, 0);
+    this.f = paramInt2;
+    this.g = paramInt3;
+  }
+  
+  public aybm(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super(paramInt1, 4, paramInt4);
+    this.f = paramInt2;
+    this.g = paramInt3;
+  }
+  
+  protected void a(int paramInt, float paramFloat)
+  {
+    this.a = ((int)(this.f + (this.g - this.f) * paramFloat));
+    if (this.g - this.f > 0) {
+      if (this.a >= this.g) {
+        this.a = this.g;
+      }
+    }
+    for (;;)
+    {
+      super.a(paramInt, paramFloat);
+      return;
+      if (this.a <= this.g) {
+        this.a = this.g;
+      }
+    }
   }
 }
 

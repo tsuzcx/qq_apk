@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.apollo.ApolloManager.21;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
 
-final class aisf
-  implements aiud
+public class aisf
+  implements mzb
 {
-  aisf(aizh paramaizh, QQAppInterface paramQQAppInterface, int paramInt, int[] paramArrayOfInt) {}
+  public aisf(ApolloManager.21 param21) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void loaded(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_Aizh != null) {
-      this.jdField_a_of_type_Aizh.a(-1L, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, "", "", this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, 22);
+    QLog.d("ApolloManager", 1, new Object[] { "[predownloadForGameCenter] offline pkg bid:", this.a.jdField_a_of_type_JavaLangString, " loaded, param=", paramString, ", code=", Integer.valueOf(paramInt) });
+    if (paramInt == 0) {
+      this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(this.a.b, this.a.jdField_a_of_type_Int).commit();
     }
+    VipUtils.a(this.a.this$0.a, "cmshow", "Apollo", "gamecenter_preload_res_android", 0, paramInt, new String[] { this.a.jdField_a_of_type_JavaLangString, String.valueOf(this.a.jdField_a_of_type_Int) });
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

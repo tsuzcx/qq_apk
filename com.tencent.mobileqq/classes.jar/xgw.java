@@ -1,206 +1,150 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import android.view.View;
-import com.tencent.common.galleryactivity.AnimationView;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import java.util.ArrayList;
-import java.util.Iterator;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.1;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.2;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.3;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.4;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.5;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.6;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.7;
+import com.tencent.biz.videostory.network.request.VSBaseRequest;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.observer.BusinessObserver;
 
 public class xgw
-  extends xgg
+  implements BusinessObserver
 {
-  int jdField_a_of_type_Int;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  protected View a;
-  protected AnimationView a;
-  xgm jdField_a_of_type_Xgm;
-  View b;
-  View c;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private volatile ConcurrentHashMap<Integer, ConcurrentHashMap<Integer, xgx>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public xgw(Activity paramActivity, xgm paramxgm)
+  private void a(int paramInt, Bundle paramBundle, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Xgm = paramxgm;
-    this.jdField_a_of_type_Int = paramActivity.getResources().getDisplayMetrics().densityDpi;
-  }
-  
-  private Drawable a(Rect paramRect1, Rect paramRect2, Rect paramRect3, Rect paramRect4, xgy paramxgy, boolean paramBoolean)
-  {
-    if (paramxgy == null) {}
-    Drawable localDrawable;
-    do
+    Object localObject2 = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    if (localObject2 == null)
     {
-      return null;
-      localDrawable = paramxgy.c();
-      paramRect1 = paramxgy.b();
-    } while ((paramRect1 == null) || (localDrawable == null) || (!paramxgy.a(paramBoolean)));
-    int i = this.jdField_a_of_type_AndroidViewView.getWidth();
-    int j = this.jdField_a_of_type_AndroidViewView.getHeight();
-    int k = localDrawable.getIntrinsicWidth();
-    int m = localDrawable.getIntrinsicHeight();
-    paramRect2.set(0, 0, k, m);
-    paramRect3.set(paramRect1);
-    if ((paramxgy instanceof adyb)) {}
-    for (paramRect2 = ((adyb)paramxgy).a;; paramRect2 = null)
+      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: cmdCallback has All Removed");
+      return;
+    }
+    VSBaseRequest localVSBaseRequest = (VSBaseRequest)paramBundle.getSerializable("key_request_data");
+    if (localVSBaseRequest == null)
     {
-      if ((!befo.e()) && ((localDrawable instanceof URLDrawable)) && ((((URLDrawable)localDrawable).getCurrDrawable() instanceof GifDrawable))) {}
-      for (paramRect1 = xgx.a(k, m, i, j, false, paramRect2);; paramRect1 = null)
+      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: request is null");
+      return;
+    }
+    if (((ConcurrentHashMap)localObject2).get(Integer.valueOf(localVSBaseRequest.getCurrentSeq())) == null)
+    {
+      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: CmdName:" + localVSBaseRequest.getCmdName() + " | TraceId:" + localVSBaseRequest.getTraceId() + " | cmdCallback SeqId:" + localVSBaseRequest.getCurrentSeq() + " is Null or has Removed");
+      return;
+    }
+    Object localObject1 = (FromServiceMsg)paramBundle.getParcelable("key_response_msg");
+    long l1 = paramBundle.getLong("key_send_timestamp");
+    paramBundle = (xgx)((ConcurrentHashMap)localObject2).remove(Integer.valueOf(localVSBaseRequest.getCurrentSeq()));
+    if (paramBundle == null)
+    {
+      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: CmdName:" + localVSBaseRequest.getCmdName() + " | TraceId:" + localVSBaseRequest.getTraceId() + " | cmdCallback SeqId:" + localVSBaseRequest.getCurrentSeq() + " onVSRspCallBack is Null or removed");
+      return;
+    }
+    if (localObject1 != null)
+    {
+      localObject2 = new PROTOCAL.StQWebRsp();
+      long l2;
+      MessageMicro localMessageMicro;
+      try
       {
-        if (paramRect1 == null) {
-          paramRect1 = xgx.a(k, m, i, j, paramRect2);
-        }
-        for (;;)
+        ((PROTOCAL.StQWebRsp)localObject2).mergeFrom(bblm.b(((FromServiceMsg)localObject1).getWupBuffer()));
+        l2 = ((PROTOCAL.StQWebRsp)localObject2).retCode.get();
+        localObject1 = ((PROTOCAL.StQWebRsp)localObject2).errMsg.get().toStringUtf8();
+        localObject2 = ((PROTOCAL.StQWebRsp)localObject2).busiBuff.get().toByteArray();
+        localMessageMicro = localVSBaseRequest.decode((byte[])localObject2);
+        if (localMessageMicro == null)
         {
-          paramRect4.set(paramRect1);
-          return localDrawable;
+          a().post(new VSDispatchObserver.2(this, paramBundle, l2, (String)localObject1));
+          return;
         }
       }
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((xgv)localIterator.next()).b();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public boolean b()
-  {
-    boolean bool = true;
-    if (a()) {
-      return true;
-    }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      f();
-    }
-    Rect localRect1 = new Rect();
-    Rect localRect2 = new Rect();
-    xgy localxgy = this.jdField_a_of_type_Xgm.a();
-    if (localxgy == null) {
-      return false;
-    }
-    Rect localRect3 = localxgy.a();
-    Rect localRect4 = new Rect();
-    Drawable localDrawable = a(null, localRect4, localRect1, localRect2, localxgy, true);
-    this.jdField_a_of_type_Boolean = true;
-    if (localDrawable != null)
-    {
-      this.jdField_b_of_type_Boolean = bool;
-      if (this.jdField_b_of_type_Boolean) {
-        break label126;
+      catch (Exception localException)
+      {
+        a().post(new VSDispatchObserver.4(this, paramBundle, localException));
+        return;
       }
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
+      a().post(new VSDispatchObserver.3(this, paramBoolean, l2, localException, (byte[])localObject2, paramBundle, (String)localObject1, localMessageMicro, l1));
+      return;
     }
-    for (;;)
+    a().post(new VSDispatchObserver.5(this, paramBundle));
+  }
+  
+  private void a(VSBaseRequest paramVSBaseRequest, byte[] paramArrayOfByte)
+  {
+    if (bbjw.a(paramVSBaseRequest.getRequestKey()))
     {
-      return this.jdField_b_of_type_Boolean;
-      bool = false;
-      break;
-      label126:
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setAnimationListener(this);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.jdField_a_of_type_Boolean = localxgy.c;
-      if (localRect3 == null) {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect1, localRect2, localxgy.a(), this.jdField_a_of_type_Long);
-      } else {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect3, localRect4, localRect1, localRect2, this.jdField_a_of_type_Long);
-      }
+      veg.d("VSNetworkHelper| Protocol Cache", "requestKey is empty");
+      return;
+    }
+    ThreadManagerV2.executeOnFileThread(new VSDispatchObserver.6(this, paramVSBaseRequest, paramArrayOfByte));
+  }
+  
+  public Handler a()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    }
+    return this.jdField_a_of_type_AndroidOsHandler;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     }
   }
   
-  public void c()
+  public void a(VSBaseRequest paramVSBaseRequest, MessageMicro paramMessageMicro)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((xgv)localIterator.next()).c();
-    }
+    a().post(new VSDispatchObserver.7(this, paramVSBaseRequest, paramMessageMicro));
   }
   
-  public boolean c()
+  public void a(VSBaseRequest paramVSBaseRequest, xgx paramxgx)
   {
-    if (a()) {
-      return true;
+    int i = paramVSBaseRequest.getCmdName().hashCode();
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i)) == null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(i), new ConcurrentHashMap());
     }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      f();
-    }
-    Rect localRect2 = new Rect();
-    Rect localRect3 = new Rect();
-    xgy localxgy = this.jdField_a_of_type_Xgm.a();
-    Rect localRect1 = null;
-    if (localxgy != null) {
-      localRect1 = localxgy.a();
-    }
-    Rect localRect4 = new Rect();
-    Drawable localDrawable = a(localRect1, localRect4, localRect2, localRect3, localxgy, false);
-    this.jdField_a_of_type_Boolean = true;
-    boolean bool;
-    if (localDrawable != null)
+    try
     {
-      bool = true;
-      this.jdField_b_of_type_Boolean = bool;
-      if (this.jdField_b_of_type_Boolean) {
-        break label127;
-      }
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
+      ((ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i))).put(Integer.valueOf(paramVSBaseRequest.getNewSeq()), paramxgx);
+      return;
     }
-    for (;;)
+    catch (Exception paramVSBaseRequest)
     {
-      return this.jdField_b_of_type_Boolean;
-      bool = false;
-      break;
-      label127:
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setAnimationListener(this);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.jdField_a_of_type_Boolean = localxgy.c;
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect2, localRect3, localxgy.a(), localxgy.c(), localxgy.d(), this.jdField_a_of_type_Long);
-      if (localRect1 == null) {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect2, localRect3, localxgy.a(), localxgy.c(), localxgy.d(), this.jdField_a_of_type_Long);
-      } else {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.b(localDrawable, localRect1, localRect4, localRect2, localRect3, this.jdField_a_of_type_Long);
-      }
+      paramVSBaseRequest.printStackTrace();
+      QLog.e("VSNetworkHelper", 1, "setCallBack exception occur!" + paramVSBaseRequest.toString());
     }
   }
   
-  public void d()
+  public void a(String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((xgv)localIterator.next()).d();
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (paramString != null)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramString.hashCode()));
     }
   }
   
-  public void e()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((xgv)localIterator.next()).e();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131301286);
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView = ((AnimationView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131297010));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131309736);
-    this.c = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131297459);
+    ThreadManagerV2.excute(new VSDispatchObserver.1(this, paramInt, paramBundle, paramBoolean), 16, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xgw
  * JD-Core Version:    0.7.0.1
  */

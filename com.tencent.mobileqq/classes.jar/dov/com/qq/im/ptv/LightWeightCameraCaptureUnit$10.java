@@ -1,21 +1,21 @@
 package dov.com.qq.im.ptv;
 
-import bafb;
-import bhxh;
-import bhxj;
-import bhxk;
-import bhzc;
+import bbgg;
+import bjoz;
+import bjpb;
+import bjpc;
+import bjqu;
 
 public class LightWeightCameraCaptureUnit$10
   implements Runnable
 {
-  public LightWeightCameraCaptureUnit$10(bhxh parambhxh, String paramString) {}
+  public LightWeightCameraCaptureUnit$10(bjoz parambjoz, String paramString) {}
   
   public void run()
   {
-    bhxj localbhxj = new bhxj(this);
-    bhxk localbhxk = new bhxk(this);
-    bafb.showPermissionSettingDialog(this.this$0.a.a(), null, this.a, localbhxj, localbhxj, localbhxk);
+    bjpb localbjpb = new bjpb(this);
+    bjpc localbjpc = new bjpc(this);
+    bbgg.showPermissionSettingDialog(this.this$0.a.a(), null, this.a, localbjpb, localbjpb, localbjpc);
   }
 }
 

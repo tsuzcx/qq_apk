@@ -1,131 +1,148 @@
-import android.os.Handler;
-import com.tencent.qbar.QbarNative.QbarPossibleInfo;
-import com.tencent.qphone.base.util.QLog;
-
 public class akvl
-  extends akuv
+  extends bbwf
 {
-  akur jdField_a_of_type_Akur;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  boolean jdField_a_of_type_Boolean = false;
-  
-  public akvl(Handler paramHandler)
+  /* Error */
+  public void onDone(bbwg parambbwg)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-  }
-  
-  public int a()
-  {
-    try
-    {
-      long l = System.currentTimeMillis();
-      Object localObject = new int[2];
-      localObject[0] = 2;
-      localObject[1] = 0;
-      int i = bcof.b(2, 0, "ANY", "UTF-8");
-      int j = bcof.b((int[])localObject, localObject.length);
-      localObject = bcof.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("QRSession.QRRecog", 2, String.format("initQbar time cost:%sms, initResult=%s readerResult=%s version=%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(i), Integer.valueOf(j), localObject }));
-      }
-      this.jdField_a_of_type_Boolean = true;
-      return 0;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QRSession.QRRecog", 2, "initQbar fail!", localException);
-      }
-    }
-    return -1;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        bcof.b();
-        this.jdField_a_of_type_Boolean = false;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QRSession.QRRecog", 2, "unInitQbar fail!", localException);
-    }
-  }
-  
-  public void a(akuw paramakuw)
-  {
-    this.jdField_a_of_type_Akur = ((akur)paramakuw);
-  }
-  
-  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    boolean bool3 = false;
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = new StringBuilder();
-    boolean bool2 = false;
-    float f2 = 0.0F;
-    long l = System.currentTimeMillis();
-    boolean bool1;
-    float f1;
-    if (bcof.b(paramArrayOfByte, paramInt1, paramInt2, 0) == 1)
-    {
-      bcof.b(localStringBuilder1, localStringBuilder2);
-      bool1 = true;
-      f1 = f2;
-      if (this.jdField_a_of_type_Akur != null)
-      {
-        if (!bool1) {
-          break label211;
-        }
-        this.jdField_a_of_type_Akur.a(localStringBuilder1.toString(), localStringBuilder2.toString(), false);
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel())
-      {
-        if (!bool1) {
-          break label227;
-        }
-        QLog.d("QRSession.QRRecog", 2, String.format("------> recognize QR suc. type=%s data=%s qrRecog minicode_timecost=%d", new Object[] { localStringBuilder1, localStringBuilder2, Long.valueOf(System.currentTimeMillis() - l) }));
-      }
-      return bool1;
-      f1 = f2;
-      bool1 = bool3;
-      if (bcof.c() != 1) {
-        break;
-      }
-      if (bcof.a.hasQrcode == 1) {}
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        f1 = f2;
-        bool2 = paramBoolean;
-        bool1 = bool3;
-        if (!paramBoolean) {
-          break;
-        }
-        f1 = bcof.a.qrcodeAreaRatio;
-        bool2 = paramBoolean;
-        bool1 = bool3;
-        break;
-      }
-      label211:
-      this.jdField_a_of_type_Akur.a(bool2, f1);
-    }
-    label227:
-    QLog.d("QRSession.QRRecog", 2, String.format("------> recognize QR failed. hasQR=%s qrAreaRatio=%s qrRecog minicode_timecost=%d", new Object[] { Boolean.valueOf(bool2), Float.valueOf(f1), Long.valueOf(System.currentTimeMillis() - l) }));
-    return bool1;
+    // Byte code:
+    //   0: aload_0
+    //   1: aload_1
+    //   2: invokespecial 17	bbwf:onDone	(Lbbwg;)V
+    //   5: iconst_3
+    //   6: aload_1
+    //   7: invokevirtual 23	bbwg:a	()I
+    //   10: if_icmpne +107 -> 117
+    //   13: aload_1
+    //   14: getfield 26	bbwg:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   17: invokeinterface 31 1 0
+    //   22: iconst_1
+    //   23: if_icmpne +94 -> 117
+    //   26: aload_1
+    //   27: getfield 34	bbwg:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   30: aload_1
+    //   31: getfield 37	bbwg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   34: invokeinterface 43 2 0
+    //   39: checkcast 45	java/io/File
+    //   42: astore 4
+    //   44: aload 4
+    //   46: invokevirtual 49	java/io/File:exists	()Z
+    //   49: ifeq +68 -> 117
+    //   52: aload 4
+    //   54: new 51	java/lang/StringBuilder
+    //   57: dup
+    //   58: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   61: aload 4
+    //   63: invokevirtual 56	java/io/File:getParent	()Ljava/lang/String;
+    //   66: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: getstatic 63	java/io/File:separator	Ljava/lang/String;
+    //   72: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: invokestatic 71	nay:a	(Ljava/io/File;Ljava/lang/String;)V
+    //   81: aload_1
+    //   82: invokevirtual 74	bbwg:a	()Landroid/os/Bundle;
+    //   85: astore_1
+    //   86: aload_1
+    //   87: ifnull +20 -> 107
+    //   90: aload_1
+    //   91: ldc 76
+    //   93: invokevirtual 82	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   96: lstore_2
+    //   97: lconst_0
+    //   98: lload_2
+    //   99: lcmp
+    //   100: ifeq +7 -> 107
+    //   103: lload_2
+    //   104: invokestatic 88	akvj:b	(J)V
+    //   107: iconst_1
+    //   108: invokestatic 93	airz:b	(Z)V
+    //   111: aload 4
+    //   113: invokevirtual 96	java/io/File:delete	()Z
+    //   116: pop
+    //   117: return
+    //   118: astore_1
+    //   119: invokestatic 101	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   122: ifeq +31 -> 153
+    //   125: ldc 103
+    //   127: iconst_2
+    //   128: new 51	java/lang/StringBuilder
+    //   131: dup
+    //   132: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   135: ldc 105
+    //   137: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   140: aload_1
+    //   141: invokevirtual 108	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   144: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   147: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   150: invokestatic 112	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   153: aload 4
+    //   155: invokevirtual 96	java/io/File:delete	()Z
+    //   158: pop
+    //   159: return
+    //   160: astore_1
+    //   161: return
+    //   162: astore_1
+    //   163: invokestatic 101	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   166: ifeq +31 -> 197
+    //   169: ldc 103
+    //   171: iconst_2
+    //   172: new 51	java/lang/StringBuilder
+    //   175: dup
+    //   176: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   179: ldc 114
+    //   181: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   184: aload_1
+    //   185: invokevirtual 115	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   188: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   191: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   194: invokestatic 112	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   197: aload 4
+    //   199: invokevirtual 96	java/io/File:delete	()Z
+    //   202: pop
+    //   203: return
+    //   204: astore_1
+    //   205: return
+    //   206: astore_1
+    //   207: aload 4
+    //   209: invokevirtual 96	java/io/File:delete	()Z
+    //   212: pop
+    //   213: aload_1
+    //   214: athrow
+    //   215: astore_1
+    //   216: return
+    //   217: astore 4
+    //   219: goto -6 -> 213
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	222	0	this	akvl
+    //   0	222	1	parambbwg	bbwg
+    //   96	8	2	l	long
+    //   42	166	4	localFile	java.io.File
+    //   217	1	4	localException	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   52	86	118	java/lang/Exception
+    //   90	97	118	java/lang/Exception
+    //   103	107	118	java/lang/Exception
+    //   107	111	118	java/lang/Exception
+    //   153	159	160	java/lang/Exception
+    //   52	86	162	java/lang/OutOfMemoryError
+    //   90	97	162	java/lang/OutOfMemoryError
+    //   103	107	162	java/lang/OutOfMemoryError
+    //   107	111	162	java/lang/OutOfMemoryError
+    //   197	203	204	java/lang/Exception
+    //   52	86	206	finally
+    //   90	97	206	finally
+    //   103	107	206	finally
+    //   107	111	206	finally
+    //   119	153	206	finally
+    //   163	197	206	finally
+    //   111	117	215	java/lang/Exception
+    //   207	213	217	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akvl
  * JD-Core Version:    0.7.0.1
  */

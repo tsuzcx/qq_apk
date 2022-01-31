@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.startup.director;
 
-import awoa;
+import axnv;
 import mqq.app.AppActivity;
 
 public class StartupDirector$5
   implements Runnable
 {
-  public StartupDirector$5(awoa paramawoa, AppActivity paramAppActivity) {}
+  public StartupDirector$5(axnv paramaxnv, AppActivity paramAppActivity) {}
   
   public void run()
   {

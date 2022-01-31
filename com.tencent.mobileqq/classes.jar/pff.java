@@ -1,21 +1,18 @@
-import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class pff
-  implements PopupWindow.OnDismissListener
+  implements ViewBase.OnClickListener
 {
-  pff(pez parampez, beki parambeki) {}
+  pff(pfe parampfe, Container paramContainer, pax parampax, int paramInt) {}
   
-  public void onDismiss()
+  public void onClick(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_Beki.a(1.0F);
-    if (this.jdField_a_of_type_Pez.a.b)
-    {
-      qhp localqhp = this.jdField_a_of_type_Pez.a.a();
-      if (localqhp != null)
-      {
-        localqhp.c();
-        this.jdField_a_of_type_Pez.a.b = false;
-      }
+    pfe.a(this.jdField_a_of_type_Pfe, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pax, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("BiuPgcProteusItem", 2, "click gallery summary for jumping to gallery articleinfo = " + this.jdField_a_of_type_Pax.a() + " position = " + this.jdField_a_of_type_Int);
     }
   }
 }

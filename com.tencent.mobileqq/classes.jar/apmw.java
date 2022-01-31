@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import mqq.os.MqqHandler;
 
 class apmw
-  implements View.OnClickListener
+  implements aple
 {
   apmw(apmu paramapmu) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    apmu.a(this.a);
+    this.a.a = System.currentTimeMillis();
+    apmu.a(this.a).sendEmptyMessageDelayed(8001, apmu.a(this.a));
+    apmu.a(this.a).sendEmptyMessageDelayed(8002, apmu.b(this.a));
   }
+  
+  public void b() {}
 }
 
 

@@ -1,39 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.BuddyUploadTaskExcuter.1;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.qphone.base.util.QLog;
 
 class aoxd
-  implements AdapterView.OnItemClickListener
+  implements aowk
 {
-  aoxd(aoxc paramaoxc) {}
+  aoxd(aoxc paramaoxc, ByteStringMicro paramByteStringMicro, String paramString) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(boolean paramBoolean)
   {
-    paramAdapterView = paramView.getTag();
-    if (paramAdapterView == null) {}
-    do
+    aowt.a(this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoxb.jdField_a_of_type_Aowt).a().a(aoxb.a(this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoxb));
+    if (paramBoolean)
     {
-      do
-      {
-        return;
-        ((FileBrowserActivity)this.a.a.a).a.b();
-        paramAdapterView = ((baia)paramAdapterView).a;
-        paramAdapterView.a.onClick(paramView);
-      } while (!"export_auto_open".equals(((FileBrowserActivity)this.a.a.a).a.a()));
-      if (paramAdapterView.c == 2)
-      {
-        awqx.b(null, "dc00898", "", "", "0X800A3B8", "0X800A3B8", 0, 0, "", "", "", "");
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoxb.jdField_a_of_type_JavaLangString + " sendLocalFileToBuddyBySHA uploadFile success");
       }
-      if (paramAdapterView.c == 27)
-      {
-        awqx.b(null, "dc00898", "", "", "0X800A3B9", "0X800A3B9", 0, 0, "", "", "", "");
-        return;
-      }
-    } while (paramAdapterView.c != 6);
-    awqx.b(null, "dc00898", "", "", "0X800A3BA", "0X800A3BA", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Aoxc.jdField_a_of_type_Aowp.a(this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro.toByteArray(), 5000, 3, null);
+      aoxb.a(this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoxb).putString("_m_ForwardUuid", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoxp.a(this.jdField_a_of_type_JavaLangString, aoxb.a(this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoxb));
+      return;
+    }
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoxb.jdField_a_of_type_JavaLangString + " BuddyUploadTaskExcuter faild");
+    this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoxp.a(aowt.a(this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoxb.jdField_a_of_type_Long, false), true);
   }
 }
 

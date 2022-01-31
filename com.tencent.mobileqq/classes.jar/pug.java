@@ -1,21 +1,16 @@
-import android.widget.ArrayAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class pug
-  extends ohe
+class pug
+  implements View.OnClickListener
 {
-  public pug(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
+  pug(puf parampuf) {}
   
-  public void c(List<TagInfo> paramList)
+  public void onClick(View paramView)
   {
-    ReadInJoyVideoSearchTagFragment.a(this.a).setNotifyOnChange(false);
-    ReadInJoyVideoSearchTagFragment.a(this.a).clear();
-    ReadInJoyVideoSearchTagFragment.a(this.a).setNotifyOnChange(true);
-    ReadInJoyVideoSearchTagFragment.a(this.a).addAll(paramList);
-    if (paramList.isEmpty()) {
-      bbmy.a(this.a.getActivity(), 2131652751, 0).a();
+    paramView = this.a.jdField_a_of_type_Rap.a();
+    if (paramView != null) {
+      paramView.a(null, ((pax)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
   }
 }

@@ -1,122 +1,73 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
+import android.os.Bundle;
+import android.util.SparseArray;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
 
 public class bgrw
-  extends BaseAdapter
+  extends RemoteCommand
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private SparseArray<List<bgrx>> a = new SparseArray();
   
-  public bgrw(bgrr parambgrr, Context paramContext)
+  public bgrw(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super("com.tencent.individuality.individualityremotecommand");
+    a(0, new bgry());
   }
   
-  private LayoutInflater a()
+  public boolean a(int paramInt, bgrx parambgrx)
   {
-    if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-      this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    }
-    return this.jdField_a_of_type_AndroidViewLayoutInflater;
-  }
-  
-  private View a()
-  {
-    return a().inflate(2131497007, null);
-  }
-  
-  private void a(bgrx parambgrx, bgry parambgry)
-  {
-    parambgrx = URLDrawable.getDrawable(parambgrx.b, null);
-    parambgry.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(parambgrx);
-    parambgry.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-    parambgry.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_Bgrr.a != null) {
-      return this.jdField_a_of_type_Bgrr.a.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (this.jdField_a_of_type_Bgrr.a != null) {
-      return this.jdField_a_of_type_Bgrr.a.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    if (this.jdField_a_of_type_Bgrr.a != null) {
-      return this.jdField_a_of_type_Bgrr.a.size();
-    }
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    List localList = (List)this.a.get(paramInt);
+    Object localObject = localList;
+    if (localList == null)
     {
-      paramViewGroup = new bgry(this.jdField_a_of_type_Bgrr);
-      paramView = a();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131304242));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131303445));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131299832);
-      paramView.setTag(paramViewGroup);
+      localObject = new ArrayList();
+      this.a.put(paramInt, localObject);
     }
-    while (paramViewGroup == null)
-    {
-      return paramView;
-      paramViewGroup = (bgry)paramView.getTag();
+    if (!((List)localObject).contains(parambgrx)) {
+      return ((List)localObject).add(parambgrx);
     }
-    if (getCount() <= 1)
+    return false;
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    int i = paramBundle.getInt("com.tencent.individuality.individualityremotecommand.id", -1);
+    if (-1 != i)
     {
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      paramView.setBackgroundResource(2130848079);
-    }
-    bgrx localbgrx;
-    for (;;)
-    {
-      localbgrx = (bgrx)getItem(paramInt);
-      if (localbgrx != null) {
-        break;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("IndividualityRemoteCommand", 4, "invoke: dataInvoke=" + paramBundle.toString());
       }
-      return paramView;
-      if (paramInt <= 0)
+      paramOnInvokeFinishLinstener = (List)this.a.get(i);
+      if (paramOnInvokeFinishLinstener == null) {
+        break label100;
+      }
+      paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
+      do
       {
-        paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        paramView.setBackgroundResource(2130848079);
-      }
-      else if (paramInt < getCount() - 1)
-      {
-        paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        paramView.setBackgroundResource(2130848078);
-      }
-      else
-      {
-        paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        paramView.setBackgroundResource(2130848077);
-      }
+        if (!paramOnInvokeFinishLinstener.hasNext()) {
+          break;
+        }
+      } while (!((bgrx)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
     }
-    paramViewGroup.jdField_a_of_type_Bgrx = localbgrx;
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localbgrx.a);
-    if (TextUtils.isEmpty(localbgrx.b)) {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    }
-    a(localbgrx, paramViewGroup);
-    return paramView;
+    label100:
+    do
+    {
+      while (!paramOnInvokeFinishLinstener.hasNext())
+      {
+        do
+        {
+          return paramBundle;
+          paramOnInvokeFinishLinstener = (List)this.a.get(0);
+        } while (paramOnInvokeFinishLinstener == null);
+        paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
+      }
+    } while (!((bgrx)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
+    return paramBundle;
   }
 }
 

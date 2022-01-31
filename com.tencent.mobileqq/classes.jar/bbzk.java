@@ -1,86 +1,263 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.open.agent.SwitchAccountActivity;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bbzk
-  extends GestureDetector.SimpleOnGestureListener
+public class bbzk
+  extends VasWebviewJsPlugin
 {
-  bbzk(bbzj parambbzj) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public bbzk()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (Math.abs(paramFloat1) > Math.abs(paramFloat2))
-    {
-      bool1 = bool2;
-      if (Math.abs(paramFloat1) > 20.0F)
-      {
-        bool1 = bool2;
-        if (!this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a)
-        {
-          this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = true;
-          if (this.a.jdField_a_of_type_AndroidViewView != null) {
-            this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
-          }
-          if ((paramFloat1 < -20.0F) && (this.a.jdField_a_of_type_JavaLangRefWeakReference != null))
-          {
-            paramMotionEvent1 = (View)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-            if (paramMotionEvent1 != null)
-            {
-              paramMotionEvent1 = paramMotionEvent1.findViewById(2131310229);
-              if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() == 0)) {
-                ((ShaderAnimLayout)paramMotionEvent1).e();
-              }
-            }
-            this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
-          }
-          if (paramFloat1 > 20.0F)
-          {
-            if ((this.a.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-              break label245;
-            }
-            paramMotionEvent1 = (View)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-            if (paramMotionEvent1 != this.a.jdField_a_of_type_AndroidViewView)
-            {
-              paramMotionEvent1 = paramMotionEvent1.findViewById(2131310229);
-              if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() == 0)) {
-                ((ShaderAnimLayout)paramMotionEvent1).e();
-              }
-            }
-            this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
-          }
-        }
-      }
+    this.mPluginNameSpace = "gift";
+  }
+  
+  private void a()
+  {
+    Activity localActivity = this.mRuntime.a();
+    if (localActivity != null) {
+      localActivity.finish();
     }
+  }
+  
+  private void a(String paramString)
+  {
+    int i = 0;
+    Activity localActivity = this.mRuntime.a();
+    if (localActivity == null) {}
     for (;;)
     {
-      bool1 = true;
-      return bool1;
-      label245:
-      if (this.a.jdField_a_of_type_AndroidViewView != null)
-      {
-        paramMotionEvent1 = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131310229);
-        if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() != 0))
+      return;
+      if (this.mRuntime.a() != null) {
+        try
         {
-          if (QLog.isColorLevel()) {
-            QLog.i("AccountManage", 2, "show current selectedAccountView");
+          Object localObject = new JSONObject(paramString);
+          paramString = ((JSONObject)localObject).optString("url");
+          localObject = ((JSONObject)localObject).optJSONObject("options");
+          int j;
+          if (localObject != null)
+          {
+            j = ((JSONObject)localObject).optInt("style");
+            i = ((JSONObject)localObject).optInt("animation");
+            label75:
+            if (TextUtils.isEmpty(paramString)) {
+              continue;
+            }
+            localObject = localActivity.getIntent().getExtras();
+            ((Bundle)localObject).putString("leftViewText", "");
+            switch (j)
+            {
+            }
           }
-          ((ShaderAnimLayout)paramMotionEvent1).a();
-          this.a.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.a.jdField_a_of_type_AndroidViewView);
-          this.a.jdField_a_of_type_AndroidViewView = null;
+          for (;;)
+          {
+            Intent localIntent = new Intent(localActivity, QQBrowserActivity.class);
+            localIntent.putExtras((Bundle)localObject);
+            localIntent.putExtra("url", paramString);
+            localIntent.setFlags(0);
+            localActivity.startActivityForResult(localIntent, 100);
+            switch (i)
+            {
+            case 0: 
+            case 1: 
+              localActivity.overridePendingTransition(0, 0);
+              return;
+              ((Bundle)localObject).putBoolean("hide_more_button", false);
+              ((Bundle)localObject).putBoolean("hide_operation_bar", true);
+              continue;
+              ((Bundle)localObject).putBoolean("hide_more_button", true);
+              ((Bundle)localObject).putBoolean("hide_operation_bar", true);
+              continue;
+              ((Bundle)localObject).putBoolean("hide_more_button", false);
+              ((Bundle)localObject).putBoolean("hide_operation_bar", false);
+              ((Bundle)localObject).putString("webStyle", "");
+              continue;
+              ((Bundle)localObject).putBoolean("hide_more_button", true);
+              ((Bundle)localObject).putBoolean("hide_operation_bar", false);
+              ((Bundle)localObject).putString("webStyle", "");
+              break;
+            case 2: 
+              localActivity.overridePendingTransition(2130772278, 0);
+              return;
+              j = 0;
+              break label75;
+            }
+          }
+          return;
+        }
+        catch (JSONException paramString) {}
+      }
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VipGiftPlugin", 2, "method:" + paramString1 + ", json:" + paramString2);
+    }
+    callJs(paramString1, new String[] { paramString2 });
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    if (paramLong == 8589934595L)
+    {
+      paramString = this.mRuntime.a();
+      if (paramString != null) {
+        break label22;
+      }
+    }
+    label22:
+    while (!paramString.getClass().getSimpleName().equals("VipGiftBrowserActivity")) {
+      return false;
+    }
+    paramString.finish();
+    return false;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ("gift".equals(paramString2))
+    {
+      if (("openUrl".equals(paramString3)) && (paramVarArgs.length == 1))
+      {
+        a(paramVarArgs[0]);
+        a();
+      }
+      do
+      {
+        return true;
+        if (("close".equals(paramString3)) && (paramVarArgs.length == 1)) {
+          try
+          {
+            paramString1 = new JSONObject(paramVarArgs[0]);
+            paramJsBridgeListener = paramString1.getString("callback");
+            long l = paramString1.getLong("version");
+            paramString1 = new Bundle();
+            paramString1.putLong("version", l);
+            sendRemoteReq(anqp.a("close_version", paramJsBridgeListener, this.mOnRemoteResp.key, paramString1), false, false);
+            return true;
+          }
+          catch (Exception paramJsBridgeListener)
+          {
+            return true;
+          }
+        }
+        if ("isFlowerVisible".equals(paramString3)) {
+          try
+          {
+            paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
+            paramString1 = new Bundle();
+            sendRemoteReq(anqp.a("getFlowerVisibility", paramJsBridgeListener, this.mOnRemoteResp.key, paramString1), false, false);
+            return true;
+          }
+          catch (JSONException paramJsBridgeListener)
+          {
+            paramJsBridgeListener.printStackTrace();
+            return true;
+          }
+        }
+      } while (!"setFlowerVisibility".equals(paramString3));
+      paramString1 = null;
+      paramJsBridgeListener = paramString1;
+      for (;;)
+      {
+        try
+        {
+          paramString2 = new JSONObject(paramVarArgs[0]);
+          paramJsBridgeListener = paramString1;
+          paramString1 = paramString2.optString("callback");
+          paramJsBridgeListener = paramString1;
+          int i = paramString2.getInt("isVisible");
+          paramJsBridgeListener = paramString1;
+          paramString2 = new Bundle();
+          if (i != 1) {
+            break label322;
+          }
+          bool = true;
+          paramJsBridgeListener = paramString1;
+          paramString2.putBoolean("isVisible", bool);
+          paramJsBridgeListener = paramString1;
+          sendRemoteReq(anqp.a("setFlowerVisibility", paramString1, this.mOnRemoteResp.key, paramString2), false, false);
+          return true;
+        }
+        catch (JSONException paramString1) {}
+        if (TextUtils.isEmpty(paramJsBridgeListener)) {
+          break;
+        }
+        callJs(paramJsBridgeListener, new String[] { String.format("{\"result\": -2, \"message\":\"%s\"}", new Object[] { paramString1 }) });
+        return true;
+        label322:
+        boolean bool = false;
+      }
+    }
+    return false;
+  }
+  
+  public void onResponse(Bundle paramBundle)
+  {
+    JSONObject localJSONObject;
+    String str2;
+    String str1;
+    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.mOnRemoteResp.key))
+    {
+      localJSONObject = new JSONObject();
+      str2 = paramBundle.getString("cmd");
+      str1 = paramBundle.getString("callbackid");
+      paramBundle = paramBundle.getBundle("response");
+      if (str2 != null)
+      {
+        if (!"close_version".equals(str2)) {
+          break label111;
+        }
+        i = paramBundle.getInt("result");
+      }
+    }
+    label111:
+    do
+    {
+      try
+      {
+        localJSONObject.put("result", i);
+        a(str1, localJSONObject.toString());
+        a();
+        return;
+      }
+      catch (JSONException paramBundle)
+      {
+        for (;;)
+        {
+          paramBundle.printStackTrace();
         }
       }
+      if ("getFlowerVisibility".equals(str2))
+      {
+        if (paramBundle.getBoolean("result")) {}
+        for (i = 1;; i = 0)
+        {
+          callJs(str1, new String[] { String.format("{\"result\":0, \"data\":{\"isVisible\":%d}}", new Object[] { Integer.valueOf(i) }) });
+          return;
+        }
+      }
+    } while (!"setFlowerVisibility".equals(str2));
+    int i = paramBundle.getInt("result");
+    if (i == 0) {}
+    for (paramBundle = "{\"result\":0}";; paramBundle = String.format("{\"result\": %d, \"message\":\"Unknown error\"}", new Object[] { Integer.valueOf(i) }))
+    {
+      callJs(str1, new String[] { paramBundle });
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbzk
  * JD-Core Version:    0.7.0.1
  */

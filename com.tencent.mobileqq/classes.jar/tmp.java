@@ -1,83 +1,54 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFriendStoryFeedVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFriendStoryFeedVideoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class tmp
-  extends tmo
+  extends syv<toj>
 {
-  protected Map<String, tmo> a = new HashMap();
+  public String a = "";
+  public String b = "";
+  public int c;
   
-  public tmp(@NonNull ViewGroup paramViewGroup)
+  public String a()
   {
-    super(paramViewGroup);
+    return sxp.a("StorySvc.homepage_feed_loadmore_720");
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  public syq a(byte[] paramArrayOfByte)
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131495800, paramViewGroup, false);
-  }
-  
-  public void a(int paramInt, tjt paramtjt, @NonNull ArrayList<tnz> paramArrayList)
-  {
-    super.a(paramInt, paramtjt, paramArrayList);
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((tmo)localIterator.next()).a(paramInt, paramtjt, paramArrayList);
+    qqstory_service.RspFriendStoryFeedVideoList localRspFriendStoryFeedVideoList = new qqstory_service.RspFriendStoryFeedVideoList();
+    try
+    {
+      localRspFriendStoryFeedVideoList.mergeFrom(paramArrayOfByte);
+      return new toj(localRspFriendStoryFeedVideoList);
     }
-  }
-  
-  public void a(@NonNull tmo paramtmo)
-  {
-    this.a.put(paramtmo.getClass().getName(), paramtmo);
-  }
-  
-  public void a(tmp paramtmp)
-  {
-    super.a(paramtmp);
-    paramtmp = this.a.values().iterator();
-    while (paramtmp.hasNext()) {
-      ((tmo)paramtmp.next()).a(this);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      veg.d("Q.qqstory:GetFeedVideoListRequest", "" + paramArrayOfByte);
     }
+    return null;
   }
   
-  public void a(tnn paramtnn)
+  protected byte[] a()
   {
-    super.a(paramtnn);
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((tmo)localIterator.next()).a(paramtnn);
+    qqstory_service.ReqFriendStoryFeedVideoList localReqFriendStoryFeedVideoList = new qqstory_service.ReqFriendStoryFeedVideoList();
+    if (!TextUtils.isEmpty(this.a)) {
+      localReqFriendStoryFeedVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
     }
-  }
-  
-  @Nullable
-  public tmo b(Class<? extends tmo> paramClass)
-  {
-    return (tmo)this.a.get(paramClass.getName());
-  }
-  
-  protected void b()
-  {
-    super.b();
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((tmo)localIterator.next()).b();
+    if (!TextUtils.isEmpty(this.b)) {
+      localReqFriendStoryFeedVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
     }
+    localReqFriendStoryFeedVideoList.pull_type.set(this.c);
+    return localReqFriendStoryFeedVideoList.toByteArray();
   }
   
-  public void c()
+  public String toString()
   {
-    super.c();
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((tmo)localIterator.next()).c();
-    }
+    return "GetFeedVideoListRequest{, feedId='" + this.b + '\'' + ", startCookie='" + this.a + '\'' + ", pullType=" + this.c + '}';
   }
 }
 

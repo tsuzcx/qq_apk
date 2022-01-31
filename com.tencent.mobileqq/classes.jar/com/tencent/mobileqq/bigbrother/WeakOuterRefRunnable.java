@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.bigbrother;
 
-import almh;
-import awqx;
+import amav;
+import axqw;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
@@ -113,7 +113,7 @@ public class WeakOuterRefRunnable
     if ((this.jdField_a_of_type_JavaLangRunnable != null) && (a()))
     {
       this.jdField_a_of_type_JavaLangRunnable.run();
-      almh.a().a(this.jdField_a_of_type_Int, this.b);
+      amav.a().a(this.jdField_a_of_type_Int, this.b);
       i = 1;
       if (this.jdField_a_of_type_Boolean)
       {
@@ -136,9 +136,9 @@ public class WeakOuterRefRunnable
     label123:
     for (String str3 = "";; str3 = this.jdField_a_of_type_JavaLangString)
     {
-      awqx.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, str1, str2, str3, "");
+      axqw.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, str1, str2, str3, "");
       return;
-      almh.a().a(this.jdField_a_of_type_Int, -3);
+      amav.a().a(this.jdField_a_of_type_Int, -3);
       i = 0;
       break;
       str1 = "";

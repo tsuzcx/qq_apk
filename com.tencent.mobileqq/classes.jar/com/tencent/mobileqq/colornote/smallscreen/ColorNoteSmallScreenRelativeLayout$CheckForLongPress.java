@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.colornote.smallscreen;
 
-import aluk;
+import amka;
 import android.animation.ValueAnimator;
-import java.util.List;
 
 final class ColorNoteSmallScreenRelativeLayout$CheckForLongPress
   implements Runnable
@@ -17,7 +16,6 @@ final class ColorNoteSmallScreenRelativeLayout$CheckForLongPress
       ColorNoteSmallScreenRelativeLayout.b(this.this$0, true);
       ColorNoteSmallScreenRelativeLayout.a(this.this$0, ColorNoteSmallScreenRelativeLayout.a(this.this$0));
       ColorNoteSmallScreenRelativeLayout.a(this.this$0).a();
-      if ((this.this$0.b()) && (ColorNoteSmallScreenRelativeLayout.a(this.this$0).size() == 1)) {}
       ColorNoteSmallScreenRelativeLayout.a(this.this$0).start();
     }
   }

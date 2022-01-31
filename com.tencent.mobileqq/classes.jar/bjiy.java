@@ -1,58 +1,46 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.view.View;
+import android.view.animation.Animation;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class bjiy
-  extends bjiu
 {
-  public bjiz a;
-  public Object a;
-  public boolean a;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public String h;
-  public int i;
-  public String i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
-  public String l;
-  public int m;
-  public String m;
-  public int n;
-  public int o;
-  
-  public String a()
+  public static Animator a(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nShortVideoForwardInfo");
-    localStringBuilder.append("\n |-").append("fromChatType:").append(this.c);
-    localStringBuilder.append("\n |-").append("toChatType:").append(this.d);
-    localStringBuilder.append("\n |-").append("fromBusiType:").append(this.jdField_e_of_type_Int);
-    localStringBuilder.append("\n |-").append("toBusiType:").append(this.f);
-    localStringBuilder.append("\n |-").append("localPath:").append(this.jdField_h_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("md5:").append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("thumbPath:").append(this.jdField_i_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("thumbWidth:").append(this.g);
-    localStringBuilder.append("\n |-").append("thumbHeight:").append(this.jdField_h_of_type_Int);
-    localStringBuilder.append("\n |-").append("sendSizeSpec:").append(this.jdField_i_of_type_Int);
-    localStringBuilder.append("\n |-").append("fileTime:").append(this.jdField_j_of_type_Int);
-    localStringBuilder.append("\n |-").append("fileSource:").append(this.jdField_j_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("uuid:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("fromUin:").append(this.l);
-    localStringBuilder.append("\n |-").append("fromSessionUin:").append(this.m);
-    localStringBuilder.append("\n |-").append("supportProgressive:").append(this.jdField_a_of_type_Boolean);
-    return localStringBuilder.toString();
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt2, paramInt3 });
+    localValueAnimator.addUpdateListener(new bjiz(paramInt1, paramView));
+    return localValueAnimator;
   }
   
-  public String toString()
+  public static Animation a(View paramView, float paramFloat1, float paramFloat2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a());
-    localStringBuilder.append(super.toString());
-    return localStringBuilder.toString();
+    return new bbkk(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new bjja(paramView));
+  }
+  
+  public static void a(List<bjjb> paramList, Animator.AnimatorListener paramAnimatorListener)
+  {
+    if (paramList.size() > 0)
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        bjjb localbjjb = (bjjb)paramList.next();
+        ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(localbjjb.jdField_a_of_type_AndroidViewView, localbjjb.jdField_a_of_type_JavaLangString, new float[] { localbjjb.jdField_a_of_type_Float, localbjjb.jdField_b_of_type_Float }).setDuration(localbjjb.jdField_a_of_type_Long);
+        localObjectAnimator.setStartDelay(localbjjb.jdField_b_of_type_Long);
+        localArrayList.add(localObjectAnimator);
+      }
+      paramList = new AnimatorSet();
+      paramList.playTogether(localArrayList);
+      paramList.addListener(paramAnimatorListener);
+      paramList.start();
+    }
   }
 }
 

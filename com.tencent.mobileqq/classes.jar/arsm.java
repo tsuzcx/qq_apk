@@ -1,22 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
+import com.tencent.qphone.base.util.QLog;
 
-class arsm
-  implements DialogInterface.OnClickListener
+public class arsm
+  implements DownloadParams.DecodeHandler
 {
-  arsm(arsd paramarsd) {}
+  public arsm(FloatIconLayout paramFloatIconLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (bgtr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, arsd.a(this.a), arsd.a(this.a).a(), this.a.jdField_a_of_type_MqqOsMqqHandler)) {
-      arsd.a(this.a).a(false, null, false);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("FloatBaseLayout.Icon", 4, "ROUND_FACE_DECODER");
     }
+    if (paramBitmap == null) {
+      return null;
+    }
+    return bbdr.a(paramBitmap, this.a.d / 2, this.a.d / 2, this.a.d / 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arsm
  * JD-Core Version:    0.7.0.1
  */

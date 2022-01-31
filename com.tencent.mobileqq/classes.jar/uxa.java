@@ -1,27 +1,45 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import java.util.List;
 
 public class uxa
-  implements Animation.AnimationListener
+  extends sth<uwt, uqg>
 {
-  public uxa(ArtFilterItemView paramArtFilterItemView, EditVideoArtFilter paramEditVideoArtFilter) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public uxa(uwt paramuwt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a = false;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.setVisibility(8);
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.a(true);
-    }
+    super(paramuwt);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(@NonNull uwt paramuwt, @NonNull uqg paramuqg)
+  {
+    Object localObject = paramuwt.a(paramuqg.jdField_a_of_type_JavaLangString);
+    if (localObject == null)
+    {
+      veg.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramuqg.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    if (!(localObject instanceof uxr))
+    {
+      veg.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramuqg.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    localObject = (uxr)localObject;
+    if (paramuqg.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      ((uxr)localObject).c(paramuqg.jdField_a_of_type_JavaUtilList, false);
+      ((VideoListFeedItem)((uxr)localObject).a).updateVideoInfo(paramuqg.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
+      veg.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video update after count:%d", paramuqg.jdField_a_of_type_JavaLangString, Integer.valueOf(((uxr)localObject).a().size()));
+    }
+    uwt.a(paramuwt).a((uxr)localObject);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public Class acceptEventClass()
+  {
+    return uqg.class;
+  }
+  
+  public void b(@NonNull uwt paramuwt, @NonNull uqg paramuqg) {}
 }
 
 

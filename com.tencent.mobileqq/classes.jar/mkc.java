@@ -1,58 +1,26 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.os.CountDownTimer;
-import com.tencent.av.widget.ChildLockCircle;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Build.VERSION;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 public class mkc
-  extends CountDownTimer
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int = 1;
-  Resources jdField_a_of_type_AndroidContentResResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
+  public mkc(VideoInviteActivity paramVideoInviteActivity, long paramLong, boolean paramBoolean) {}
   
-  public mkc(ChildLockCircle paramChildLockCircle, long paramLong1, long paramLong2, Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramLong1, paramLong2);
-  }
-  
-  public void onFinish()
-  {
-    ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, ChildLockCircle.b(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle));
-    ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, 0);
-    this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle.postInvalidate();
-    ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle);
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isFinishing()) {}
+    while ((Build.VERSION.SDK_INT >= 17) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isDestroyed())) {
+      return;
+    }
+    if (paramInt == 1)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c(this.jdField_a_of_type_Long);
+      return;
     }
-    if (ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle) != null)
-    {
-      ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle).cancel();
-      ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, null);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ChildLockCircle", 2, "LockAnimation,CountDownTimer finish");
-    }
-  }
-  
-  public void onTick(long paramLong)
-  {
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle.a(this.jdField_a_of_type_AndroidContentResResources, this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-      {
-        ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, this.jdField_a_of_type_AndroidGraphicsBitmap);
-        this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle.postInvalidate();
-      }
-      this.jdField_a_of_type_Int += 1;
-      if (QLog.isColorLevel()) {
-        QLog.d("ChildLockCircle", 2, "LockAnimation, i[" + this.jdField_a_of_type_Int + "]");
-      }
-    }
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity, this.jdField_a_of_type_Boolean, new mkd(this));
   }
 }
 

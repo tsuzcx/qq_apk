@@ -1,52 +1,58 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.model.DeviceFileModel.1.1;
 
-class apmq
-  extends ajhi
+public class apmq
+  extends ybz
 {
-  apmq(apmn paramapmn) {}
+  apmq(apmp paramapmp) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong1, String paramString1, String paramString2, long paramLong2)
+  public void a(Session paramSession, float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardShareCardOption", 2, "onGetFlyTicket: " + paramBoolean + " sigUrl=" + paramString1);
+    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Apkp.a();
+    if (localFileManagerEntity == null) {}
+    while ((this.a.jdField_a_of_type_Apnb == null) || (paramSession.uSessionID != apmp.a(this.a))) {
+      return;
     }
-    if (!paramBoolean)
-    {
-      this.a.x();
-      switch (paramInt)
-      {
-      default: 
-        paramString1 = ajjy.a(2131639037);
-        apmn.c(this.a, null);
-        apmn.a(this.a, false);
-        bbmy.a(this.a.a, 1, paramString1, 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
-      }
-    }
-    while ((apmn.c(this.a) == null) || (Long.parseLong(apmn.c(this.a)) != paramLong2)) {
-      for (;;)
-      {
-        return;
-        paramString1 = ajjy.a(2131639044);
-        continue;
-        paramString1 = ajjy.a(2131639043);
-      }
-    }
-    if (apmn.a(this.a))
-    {
-      apmn.c(this.a, paramString1);
-      apmn.a(this.a, apmn.c(this.a), true);
-    }
-    apmn.a(this.a, false);
+    localFileManagerEntity.fProgress = paramFloat;
+    this.a.jdField_a_of_type_Apnb.a(paramFloat);
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void a(Session paramSession, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ForwardOption.ForwardShareCardOption", 2, "onUpdateDiscussionFaceIcon|[" + paramBoolean1 + ", " + paramString + "]");
+    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Apkp.a();
+    if (localFileManagerEntity == null) {}
+    do
+    {
+      return;
+      if ((this.a.jdField_a_of_type_Apna != null) && (paramSession.uSessionID == apmp.b(this.a)) && (paramBoolean))
+      {
+        localFileManagerEntity.strThumbPath = paramSession.strFilePathSrc;
+        this.a.jdField_a_of_type_Apna.a(String.valueOf(localFileManagerEntity.nSessionId), paramSession.strFilePathSrc);
+      }
+    } while ((this.a.jdField_a_of_type_Apnb == null) || (paramSession.uSessionID != apmp.a(this.a)));
+    if (paramBoolean)
+    {
+      localFileManagerEntity.fProgress = 1.0F;
+      localFileManagerEntity.setFilePath(paramSession.strFilePathSrc);
+      this.a.jdField_a_of_type_Apnb.f();
+      if (this.a.e() == 2)
+      {
+        new Handler(Looper.getMainLooper()).postDelayed(new DeviceFileModel.1.1(this), 1000L);
+        return;
+      }
+      this.a.jdField_a_of_type_Apnb.f();
+      return;
     }
-    if ((apmn.c(this.a) != null) && (apmn.c(this.a).equals(paramString))) {
-      apmn.a(this.a, apmn.c(this.a), false);
+    this.a.jdField_a_of_type_Apnb.g();
+  }
+  
+  public void b(Session paramSession)
+  {
+    if ((this.a.jdField_a_of_type_Apnb != null) && (paramSession.uSessionID == apmp.a(this.a))) {
+      this.a.jdField_a_of_type_Apnb.d();
     }
   }
 }

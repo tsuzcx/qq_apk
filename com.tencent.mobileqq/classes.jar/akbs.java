@@ -1,33 +1,46 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 class akbs
-  implements akae
+  implements askm
 {
-  akbs(akbq paramakbq, String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte) {}
+  akbs(akbo paramakbo) {}
   
-  public ToServiceMsg a()
+  public void a(int paramInt)
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Akbq.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.createToServiceMsg("MessageSvc.PbSendMsg");
-    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putByte("cmd", (byte)0);
-    localToServiceMsg.extraData.putByte("keyType", (byte)0);
-    localToServiceMsg.extraData.putByte("sendType", (byte)0);
-    localToServiceMsg.extraData.putInt("busiType", 1025);
-    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_Long);
-    localToServiceMsg.extraData.putInt("random", this.jdField_a_of_type_Int);
-    localToServiceMsg.extraData.putLong("msgsize", 0L);
-    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_b_of_type_Long));
-    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 9);
-    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_b_of_type_Int);
-    awbn localawbn = new awbn();
-    localawbn.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-    localawbn.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    localToServiceMsg.putWupBuffer(awbg.a(this.jdField_a_of_type_Akbq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 9, this.jdField_a_of_type_JavaLangString, localawbn, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int).toByteArray());
-    return localToServiceMsg;
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onBindStateChanged = " + paramInt);
+    }
+    this.a.d();
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onRecommendCountChanged = " + paramInt);
+    }
+    this.a.d();
+  }
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onUpdateContactList = " + paramInt);
+    }
+    if ((paramInt & 0x1) != 0) {
+      synchronized (akbo.a(this.a))
+      {
+        Iterator localIterator = akbo.a(this.a).iterator();
+        if (localIterator.hasNext()) {
+          ((akbu)localIterator.next()).b();
+        }
+      }
+    }
   }
 }
 

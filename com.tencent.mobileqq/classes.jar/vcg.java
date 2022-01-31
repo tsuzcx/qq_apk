@@ -1,53 +1,74 @@
-import android.content.Context;
-import android.widget.BaseAdapter;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.io.File;
+import java.util.Map;
 
-public abstract class vcg<PACKAGE extends vbx>
-  extends BaseAdapter
+class vcg
+  extends sva
 {
-  public int a;
-  protected Context a;
-  protected PACKAGE a;
-  protected vbz a;
-  
-  public vcg(Context paramContext)
+  public vcg(vcd paramvcd)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super("Q.qqstory.download.preload.FeedVideoPreloader");
   }
   
-  public void a(PACKAGE paramPACKAGE)
+  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, sul paramsul)
   {
-    this.jdField_a_of_type_Vbx = paramPACKAGE;
+    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramsul);
+    a(paramString, paramInt1, paramErrorMessage, paramsul);
   }
   
-  public void a(vbz paramvbz)
+  protected void a(String paramString, int paramInt, ErrorMessage paramErrorMessage, sul paramsul)
   {
-    this.jdField_a_of_type_Vbz = paramvbz;
+    vcf localvcf = this.a.jdField_a_of_type_Vcf;
+    if (localvcf == null) {}
+    label14:
+    label168:
+    do
+    {
+      break label14;
+      do
+      {
+        return;
+      } while (!TextUtils.equals(paramString, localvcf.jdField_a_of_type_JavaLangString));
+      if (paramErrorMessage.isFail()) {
+        if (!TextUtils.isEmpty(localvcf.b)) {
+          break label135;
+        }
+      }
+      for (paramErrorMessage = paramErrorMessage.errorMsg;; paramErrorMessage = paramErrorMessage.errorMsg + " | " + paramErrorMessage.errorMsg)
+      {
+        localvcf.b = paramErrorMessage;
+        localvcf.jdField_a_of_type_Int = (paramInt + 1000);
+        if ((!paramsul.a.containsKey("handleCallback")) || (localvcf.jdField_a_of_type_Boolean)) {
+          break;
+        }
+        localvcf.jdField_a_of_type_Boolean = true;
+        if (!this.a.a(paramString)) {
+          break label168;
+        }
+        if (this.a.jdField_a_of_type_Vch == null) {
+          break;
+        }
+        this.a.jdField_a_of_type_Vch.a(paramString, paramsul.d);
+        return;
+      }
+    } while (this.a.jdField_a_of_type_Vch == null);
+    label135:
+    this.a.jdField_a_of_type_Vch.a(paramString, paramsul.d, localvcf.a());
   }
   
-  public int getCount()
+  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, sul paramsul)
   {
-    if (this.jdField_a_of_type_Vbx == null) {
-      return 0;
+    super.b(paramString, paramInt1, paramFile, paramInt2, paramsul);
+    a(paramString, paramInt1, new ErrorMessage(), paramsul);
+  }
+  
+  public void b(String paramString, int paramInt, sul paramsul)
+  {
+    super.b(paramString, paramInt, paramsul);
+    if ((this.a.jdField_a_of_type_Vch != null) && ((paramInt == 0) || (paramInt == 1))) {
+      this.a.jdField_a_of_type_Vch.b(paramString, paramsul.d);
     }
-    int i = this.jdField_a_of_type_Vbx.b();
-    int j = this.jdField_a_of_type_Vbx.a();
-    if (j < 1) {
-      throw new IllegalArgumentException("per item count < 1 :" + j);
-    }
-    if (i % j == 0) {
-      return i / j;
-    }
-    return i / j + 1;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
   }
 }
 

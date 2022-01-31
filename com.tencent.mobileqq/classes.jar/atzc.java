@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.music.SongInfo;
-
-public abstract interface atzc
+public class atzc
+  extends atyy
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(SongInfo paramSongInfo, boolean paramBoolean);
+  public boolean a()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     atzc
  * JD-Core Version:    0.7.0.1
  */

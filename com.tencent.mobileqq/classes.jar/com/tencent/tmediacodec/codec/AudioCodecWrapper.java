@@ -1,0 +1,40 @@
+package com.tencent.tmediacodec.codec;
+
+import android.media.MediaCodec;
+import com.tencent.tmediacodec.reuse.ReuseHelper;
+import com.tencent.tmediacodec.reuse.ReuseHelper.ReuseType;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tmediacodec/codec/AudioCodecWrapper;", "Lcom/tencent/tmediacodec/codec/ReuseCodecWrapper;", "codec", "Landroid/media/MediaCodec;", "format", "Lcom/tencent/tmediacodec/codec/FormatWrapper;", "(Landroid/media/MediaCodec;Lcom/tencent/tmediacodec/codec/FormatWrapper;)V", "canReuse", "Lcom/tencent/tmediacodec/reuse/ReuseHelper$ReuseType;", "newFormat", "toString", "", "tmediacodec_lib_debug"}, k=1, mv={1, 1, 15})
+public final class AudioCodecWrapper
+  extends ReuseCodecWrapper
+{
+  public AudioCodecWrapper(@NotNull MediaCodec paramMediaCodec, @NotNull FormatWrapper paramFormatWrapper)
+  {
+    super(paramMediaCodec, paramFormatWrapper);
+  }
+  
+  @NotNull
+  public ReuseHelper.ReuseType canReuse(@NotNull FormatWrapper paramFormatWrapper)
+  {
+    Intrinsics.checkParameterIsNotNull(paramFormatWrapper, "newFormat");
+    if (ReuseHelper.isSeamlessAdaptationSupported$default(ReuseHelper.INSTANCE, (ReuseCodecWrapper)this, paramFormatWrapper, false, 4, null)) {
+      return ReuseHelper.ReuseType.KEEP_CODEC_RESULT_YES_WITHOUT_RECONFIGURATION;
+    }
+    return ReuseHelper.ReuseType.KEEP_CODEC_RESULT_NO;
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "AudioCodecWrapper[" + hashCode() + ']';
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+ * Qualified Name:     com.tencent.tmediacodec.codec.AudioCodecWrapper
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,26 +1,72 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.process.AdProcessManager;
+import com.tencent.ad.tangram.process.AdProcessManagerAdapter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.ToolAppRuntime;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 
 public class ysh
-  implements ValueAnimator.AnimatorUpdateListener
+  implements AdProcessManagerAdapter
 {
-  public ysh(GdtVideoImaxFragment paramGdtVideoImaxFragment, float paramFloat1, float paramFloat2, int paramInt) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public Boolean isOnMainProcess()
   {
-    float f = paramValueAnimator.getAnimatedFraction();
-    f = this.jdField_a_of_type_Float + f * (this.b - this.jdField_a_of_type_Float);
-    yny.a("GdtVideoImaxFragment", "onAnimationUpdate() called with: current = [" + f + "]");
-    paramValueAnimator = GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).getLayoutParams();
-    paramValueAnimator.height = ((int)f);
-    GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).setLayoutParams(paramValueAnimator);
-    paramValueAnimator = (ViewGroup.MarginLayoutParams)GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).getLayoutParams();
-    paramValueAnimator.height = Math.abs((int)(this.jdField_a_of_type_Int - f));
-    GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).setLayoutParams(paramValueAnimator);
+    if (BaseApplicationImpl.getApplication() == null) {}
+    while (BaseApplicationImpl.getApplication().getRuntime() == null) {
+      return null;
+    }
+    return Boolean.valueOf(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface);
+  }
+  
+  public Boolean isOnWebProcess()
+  {
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
+    do
+    {
+      return null;
+      localObject = AdProcessManager.INSTANCE.getCurrentProcessName((Context)localObject);
+    } while (TextUtils.isEmpty((CharSequence)localObject));
+    return Boolean.valueOf(TextUtils.equals((CharSequence)localObject, "com.tencent.mobileqq:tool"));
+  }
+  
+  public Boolean isWebProcessRunning()
+  {
+    Object localObject = isWebProcessRunningForPreloading();
+    if ((localObject != null) && (((Boolean)localObject).booleanValue())) {
+      return Boolean.valueOf(true);
+    }
+    localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
+    for (;;)
+    {
+      return null;
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+      if ((localObject != null) && ((localObject instanceof QQAppInterface))) {
+        try
+        {
+          boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
+          return Boolean.valueOf(bool);
+        }
+        catch (Throwable localThrowable)
+        {
+          yxs.d("GdtProcessManagerAdapter", "isWebProcessRunning", localThrowable);
+        }
+      }
+    }
+  }
+  
+  public Boolean isWebProcessRunningForPreloading()
+  {
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
+    do
+    {
+      return null;
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+    } while ((localObject == null) || (!(localObject instanceof ToolAppRuntime)));
+    return Boolean.valueOf(bcfa.s);
   }
 }
 

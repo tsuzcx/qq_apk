@@ -1,19 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class axnl
-  implements Animation.AnimationListener
+  implements EIPCResultCallback
 {
-  axnl(axnk paramaxnk) {}
+  axnl(axnj paramaxnj, axnm paramaxnm) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a.a.e();
+    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null))
+    {
+      paramEIPCResult = (SoConfig.SoInfo)paramEIPCResult.data.getSerializable("res");
+      if (this.jdField_a_of_type_Axnm != null) {
+        this.jdField_a_of_type_Axnm.a(paramEIPCResult);
+      }
+    }
+    while (this.jdField_a_of_type_Axnm == null) {
+      return;
+    }
+    this.jdField_a_of_type_Axnm.a(null);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

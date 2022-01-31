@@ -1,31 +1,48 @@
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public abstract interface aiii
-  extends aijf
+public class aiii
+  implements SurfaceHolder.Callback
 {
-  public abstract void bulkApolloBarrages(String paramString1, String paramString2, boolean paramBoolean);
+  public aiii(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public abstract int getHeight();
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public abstract int getInitHeight();
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + this.a.g + ",mSavedPlayState : " + this.a.a(this.a.h));
+    }
+    if ((this.a.h == 1) && (this.a.g > 0))
+    {
+      this.a.a(this.a.g);
+      this.a.g = 0;
+      this.a.h = 0;
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+  }
   
-  public abstract long getLuaState();
-  
-  public abstract aigt getRenderImpl();
-  
-  public abstract int getWidth();
-  
-  public abstract ApolloRenderDriver getWorker();
-  
-  public abstract void removeAllApolloBarrages(boolean paramBoolean);
-  
-  public abstract void setBubbleType(int paramInt);
-  
-  public abstract void setVisibility(int paramInt);
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
+    }
+    if (this.a.jdField_a_of_type_Bbva != null) {
+      this.a.jdField_a_of_type_Bbva.c();
+    }
+    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aiii
  * JD-Core Version:    0.7.0.1
  */

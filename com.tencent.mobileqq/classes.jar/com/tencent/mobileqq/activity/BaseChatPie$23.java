@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import adrj;
+import aeci;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class BaseChatPie$23
@@ -10,7 +10,7 @@ class BaseChatPie$23
   
   public void run()
   {
-    adrj.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    aeci.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

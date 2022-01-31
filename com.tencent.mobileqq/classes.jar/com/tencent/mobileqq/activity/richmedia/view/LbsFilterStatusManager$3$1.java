@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import ahon;
-import ahoo;
+import aibf;
+import aibg;
 
 public class LbsFilterStatusManager$3$1
   implements Runnable
 {
-  public LbsFilterStatusManager$3$1(ahoo paramahoo) {}
+  public LbsFilterStatusManager$3$1(aibg paramaibg) {}
   
   public void run()
   {
-    ahon.a(this.a.a);
+    aibf.a(this.a.a);
   }
 }
 

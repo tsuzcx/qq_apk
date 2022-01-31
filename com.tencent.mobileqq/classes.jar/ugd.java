@@ -1,34 +1,42 @@
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetShareGroupListReceiver.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
 import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
 public class ugd
-  extends QQUIEventReceiver<uga, uhd>
+  extends QQUIEventReceiver<AbsVideoInfoWidget, tll>
 {
-  public ugd(@NonNull uga paramuga)
+  public ugd(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget)
   {
-    super(paramuga);
+    super(paramAbsVideoInfoWidget);
   }
   
-  public void a(@NonNull uga paramuga, @NonNull uhd paramuhd)
+  public void a(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget, @NonNull tll paramtll)
   {
-    if (paramuhd.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if ((paramtll.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramtll.jdField_a_of_type_JavaUtilList == null)) {}
+    String str;
+    StoryVideoItem localStoryVideoItem;
+    do
     {
-      urk.b("Q.qqstory.memories.MemoriesProfilePresenter", "update share group total count. %d.", Integer.valueOf(paramuhd.jdField_a_of_type_Int));
-      uga.b(paramuga, paramuhd.jdField_a_of_type_Int);
-      if (paramuga.a != null)
+      do
       {
-        paramuga.a.shareGroupCount = uga.b(paramuga);
-        ThreadManager.post(new MemoriesProfilePresenter.GetShareGroupListReceiver.1(this, paramuga), 5, null, false);
-      }
-    }
+        return;
+        while (paramAbsVideoInfoWidget.a == null) {}
+        str = paramAbsVideoInfoWidget.a.a;
+        paramtll = paramtll.jdField_a_of_type_JavaUtilList.iterator();
+      } while (!paramtll.hasNext());
+      localStoryVideoItem = (StoryVideoItem)paramtll.next();
+    } while ((!TextUtils.equals(str, localStoryVideoItem.mVid)) || (!localStoryVideoItem.isBasicInfoOK()));
+    paramAbsVideoInfoWidget.i();
   }
   
   public Class acceptEventClass()
   {
-    return uhd.class;
+    return tll.class;
   }
 }
 

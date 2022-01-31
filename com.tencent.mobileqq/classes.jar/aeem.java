@@ -1,20 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-class aeem
-  implements DialogInterface.OnClickListener
+final class aeem
+  implements mzb
 {
-  aeem(aeeh paramaeeh, boolean paramBoolean, bbfr parambbfr) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void loaded(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Aeeh.ab = true;
-    aeeh.d(this.jdField_a_of_type_Aeeh, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Aeeh.aa = true;
-    if ((this.jdField_a_of_type_Bbfr.a()) && (!this.jdField_a_of_type_Bbfr.b())) {
-      awqx.b(this.jdField_a_of_type_Aeeh.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopSignItemBuilder", 2, "checkUpByBusinessId:2833|param:" + paramString + "|code:" + paramInt);
+    }
+    if ((paramInt == 0) && (paramString == null))
+    {
+      paramString = aeei.a.entrySet().iterator();
+      while (paramString.hasNext()) {
+        ((aeen)((Map.Entry)paramString.next()).getValue()).a(paramInt);
+      }
+      aeei.a.clear();
     }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

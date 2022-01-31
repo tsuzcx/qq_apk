@@ -1,81 +1,44 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-
 public class bbnn
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  
-  public bbnn(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public bbnn(Bitmap paramBitmap, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = (paramInt % 360);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public Matrix a()
-  {
-    Matrix localMatrix = new Matrix();
-    if (this.jdField_a_of_type_Int != 0)
-    {
-      int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
-      int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
-      localMatrix.preTranslate(-i, -j);
-      localMatrix.postRotate(this.jdField_a_of_type_Int);
-      localMatrix.postTranslate(c() / 2, b() / 2);
-    }
-    return localMatrix;
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
   
   public void a(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(Bitmap paramBitmap)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Int / 90 % 2 != 0;
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public int b()
+  public void b(String paramString)
   {
-    if (a()) {
-      return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-    }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    this.b = paramString;
   }
   
-  public int c()
+  public void c(String paramString)
   {
-    if (a()) {
-      return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-    }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    this.c = paramString;
+  }
+  
+  public String toString()
+  {
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbnn
  * JD-Core Version:    0.7.0.1
  */

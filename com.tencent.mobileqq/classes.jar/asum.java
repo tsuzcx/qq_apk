@@ -1,49 +1,20 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class asum
-  extends BaseAdapter
+class asum
+  implements DialogInterface.OnKeyListener
 {
-  private List<PicInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  asum(asul paramasul) {}
   
-  public asum(List<PicInfo> paramList, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    int j = i * 6;
-    int i = j;
-    while ((i < paramInt.size()) && (i < j + 6))
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramInt.get(i));
-      i += 1;
-    }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    return this.jdField_a_of_type_Aste.a(paramInt, (PicInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    return paramInt == 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     asum
  * JD-Core Version:    0.7.0.1
  */

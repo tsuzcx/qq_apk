@@ -1,15 +1,14 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import android.content.DialogInterface.OnClickListener;
 
-public class abrr
-  implements DialogInterface.OnDismissListener
+class abrr
+  implements DialogInterface.OnClickListener
 {
-  public abrr(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  abrr(abrq paramabrq) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    paramDialogInterface.dismiss();
   }
 }
 

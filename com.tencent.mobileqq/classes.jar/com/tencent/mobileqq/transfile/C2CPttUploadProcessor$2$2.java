@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.transfile;
 
-import axpg;
-import axpi;
+import aypn;
+import aypp;
 
 public class C2CPttUploadProcessor$2$2
   implements Runnable
 {
-  public C2CPttUploadProcessor$2$2(axpi paramaxpi, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  public C2CPttUploadProcessor$2$2(aypp paramaypp, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Axpi.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
+    this.jdField_a_of_type_Aypp.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
   }
 }
 

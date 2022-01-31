@@ -1,12 +1,29 @@
-import android.app.Activity;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.flashchat.FlashChatPanel;
 
-public abstract interface apyv
+public class apyv
+  implements acxn
 {
-  public abstract void a(MessageRecord paramMessageRecord, Activity paramActivity);
+  public apyv(FlashChatPanel paramFlashChatPanel) {}
   
-  public abstract void a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity);
+  public boolean onLongClick(View paramView)
+  {
+    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
+    paramView.dispatchTouchEvent(localMotionEvent);
+    localMotionEvent.recycle();
+    return true;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if ((paramView instanceof ArkAppView)) {
+      ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
+    }
+    return true;
+  }
 }
 
 

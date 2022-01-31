@@ -1,52 +1,114 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.RestrictTo;
-import java.util.HashMap;
-import java.util.Map.Entry;
-
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public class bhvu<K, V>
-  extends bhvv<K, V>
+public class bhvu
 {
-  private HashMap<K, bhvy<K, V>> a = new HashMap();
+  public static final String a;
+  public int a;
+  public int b;
+  public String b;
+  public int c = 0;
+  public int d = 0;
   
-  protected bhvy<K, V> a(K paramK)
+  static
   {
-    return (bhvy)this.a.get(paramK);
+    jdField_a_of_type_JavaLangString = Long.toString(1130L);
   }
   
-  public V a(@NonNull K paramK)
+  public bhvu()
   {
-    Object localObject = super.a(paramK);
-    this.a.remove(paramK);
-    return localObject;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 0;
   }
   
-  public V a(@NonNull K paramK, @NonNull V paramV)
+  public int a()
   {
-    bhvy localbhvy = a(paramK);
-    if (localbhvy != null) {
-      return localbhvy.jdField_b_of_type_JavaLangObject;
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      return 0;
     }
-    this.a.put(paramK, a(paramK, paramV));
-    return null;
+    return this.jdField_b_of_type_Int;
   }
   
-  public Map.Entry<K, V> a(K paramK)
+  public int a(bhvu parambhvu)
   {
-    if (a(paramK)) {
-      return ((bhvy)this.a.get(paramK)).jdField_b_of_type_Bhvy;
+    int k = 1;
+    bhvu localbhvu;
+    if (this.jdField_a_of_type_Int > parambhvu.jdField_a_of_type_Int)
+    {
+      localbhvu = parambhvu;
+      parambhvu = this;
     }
-    return null;
+    for (;;)
+    {
+      int i;
+      switch (localbhvu.jdField_a_of_type_Int)
+      {
+      default: 
+        i = 0;
+        j = 0;
+        label64:
+        if (j == 0) {
+          break;
+        }
+      }
+      for (int j = k;; j = 0)
+      {
+        k = j;
+        if (i != 0) {
+          k = j | 0x2;
+        }
+        return k;
+        if (parambhvu.jdField_a_of_type_Int == 0) {
+          break;
+        }
+        i = 1;
+        j = 1;
+        break label64;
+        if ((parambhvu.jdField_a_of_type_Int == 1) && (localbhvu.jdField_b_of_type_Int == parambhvu.jdField_b_of_type_Int)) {
+          break;
+        }
+        i = 1;
+        j = 1;
+        break label64;
+        if ((parambhvu.jdField_a_of_type_Int == 2) && (localbhvu.jdField_b_of_type_JavaLangString.equals(parambhvu.jdField_b_of_type_JavaLangString))) {
+          break;
+        }
+        i = 0;
+        j = 1;
+        break label64;
+        if ((parambhvu.jdField_a_of_type_Int == 3) && (localbhvu.c == parambhvu.c)) {
+          break;
+        }
+        i = 0;
+        j = 1;
+        break label64;
+        if ((parambhvu.jdField_a_of_type_Int == 4) && (localbhvu.jdField_b_of_type_JavaLangString.equals(parambhvu.jdField_b_of_type_JavaLangString))) {
+          break;
+        }
+        i = 0;
+        j = 1;
+        break label64;
+      }
+      localbhvu = this;
+    }
   }
   
-  public boolean a(K paramK)
+  public boolean a()
   {
-    return this.a.containsKey(paramK);
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    do
+    {
+      return true;
+      return false;
+    } while (this.jdField_b_of_type_Int > 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhvu
  * JD-Core Version:    0.7.0.1
  */

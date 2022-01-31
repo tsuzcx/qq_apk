@@ -1,15 +1,39 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract interface myu
+class myu
+  extends Handler
 {
-  public abstract void a(VerticalPagerView paramVerticalPagerView, View paramView, int paramInt);
+  myu(myt parammyt, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("AuthorizeConfig", 2, "clear mJsApiWhiteList");
+      }
+      this.a.a.clear();
+    } while (!(paramMessage.obj instanceof ConcurrentHashMap));
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorizeConfig", 2, "update new mJsApiWhiteList!");
+    }
+    this.a.a.putAll((ConcurrentHashMap)paramMessage.obj);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     myu
  * JD-Core Version:    0.7.0.1
  */

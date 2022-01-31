@@ -1,48 +1,25 @@
-import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
+import com.tencent.image.URLDrawableHandler;
 
 public class rpp
-  implements ajfe
+  implements URLDrawableHandler
 {
-  protected void a(boolean paramBoolean, ArrayList<ReadInJoyArticle> paramArrayList) {}
+  public rpp(RunningJob paramRunningJob) {}
   
-  protected void a(boolean paramBoolean, List<rpu> paramList) {}
+  public void doCancel() {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public boolean isCancelled()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      if (paramObject != null) {
-        try
-        {
-          a(paramBoolean, (ArrayList)paramObject);
-          return;
-        }
-        catch (Exception paramObject)
-        {
-          return;
-        }
-      }
-      a(false, new ArrayList(0));
-      return;
-    }
-    if (paramObject != null) {
-      try
-      {
-        a(paramBoolean, (ArrayList)paramObject);
-        return;
-      }
-      catch (Exception paramObject)
-      {
-        return;
-      }
-    }
-    a(false, new ArrayList(0));
+    return false;
   }
+  
+  public void onFileDownloadFailed(int paramInt) {}
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
+  
+  public void publishProgress(int paramInt) {}
 }
 
 

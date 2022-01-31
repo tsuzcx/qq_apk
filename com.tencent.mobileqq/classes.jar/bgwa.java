@@ -1,6 +1,10 @@
-public abstract interface bgwa
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class bgwa
 {
-  public abstract int a();
+  public ImageView a;
+  public TextView a;
 }
 
 

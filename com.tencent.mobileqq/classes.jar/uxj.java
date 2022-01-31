@@ -1,44 +1,25 @@
+import android.support.annotation.NonNull;
+
 public class uxj
+  extends sth<uwt, tch>
 {
-  private static volatile uxj jdField_a_of_type_Uxj;
-  private uxk jdField_a_of_type_Uxk;
-  
-  public static uxj a()
+  public uxj(uwt paramuwt)
   {
-    if (jdField_a_of_type_Uxj == null) {}
-    try
-    {
-      if (jdField_a_of_type_Uxj == null) {
-        jdField_a_of_type_Uxj = new uxj();
-      }
-      return jdField_a_of_type_Uxj;
-    }
-    finally {}
+    super(paramuwt);
   }
   
-  public void a()
+  public void a(@NonNull uwt paramuwt, @NonNull tch paramtch)
   {
-    this.jdField_a_of_type_Uxk = null;
+    veg.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramtch);
+    uwt.a(paramuwt, paramtch.a);
   }
   
-  public void a(String paramString1, String paramString2)
+  public Class acceptEventClass()
   {
-    if (this.jdField_a_of_type_Uxk != null) {
-      this.jdField_a_of_type_Uxk.a(paramString1, paramString2);
-    }
+    return tch.class;
   }
   
-  public void a(uxk paramuxk)
-  {
-    this.jdField_a_of_type_Uxk = paramuxk;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Uxk != null) {
-      this.jdField_a_of_type_Uxk.W_();
-    }
-  }
+  public void b(@NonNull uwt paramuwt, @NonNull tch paramtch) {}
 }
 
 

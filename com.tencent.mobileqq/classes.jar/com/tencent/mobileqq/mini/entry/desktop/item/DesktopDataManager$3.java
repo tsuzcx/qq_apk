@@ -2,10 +2,14 @@ package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_INTERFACE.INTERFACE.StGetDropdownAppListRsp;
+import NS_MINI_INTERFACE.INTERFACE.StSearchModuleInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONObject;
 
 class DesktopDataManager$3
@@ -13,44 +17,67 @@ class DesktopDataManager$3
 {
   DesktopDataManager$3(DesktopDataManager paramDesktopDataManager) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject arg2)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    long l = 0L;
-    if ((paramBoolean) && (??? != null))
+    if ((paramBoolean) && (paramJSONObject != null))
     {
-      l = ???.optLong("retCode");
-      String str = ???.optString("errMsg");
+      long l = paramJSONObject.optLong("retCode");
+      ??? = paramJSONObject.optString("errMsg");
       if (l != 0L)
       {
-        QLog.e("DesktopDataManager", 1, "loadMoreMyApp, retCode = " + l + ", errMsg = " + str);
+        this.this$0.useLocalDataIfRequestFailed();
+        MiniAppUtils.resetMiniDesktopRequestRefreshTime();
+        QLog.e("DesktopDataManager", 1, "sendUserAppListRequestV2, retCode = " + l + ", errMsg = " + (String)???);
         return;
       }
-      INTERFACE.StGetDropdownAppListRsp localStGetDropdownAppListRsp = (INTERFACE.StGetDropdownAppListRsp)???.opt("response");
-      if (localStGetDropdownAppListRsp != null)
+      paramJSONObject = (INTERFACE.StGetDropdownAppListRsp)paramJSONObject.opt("response");
+      if (paramJSONObject != null)
       {
-        DesktopDataManager.access$700(this.this$0, localStGetDropdownAppListRsp.modules.get());
-        DesktopDataManager.access$302(this.this$0, (COMM.StCommonExt)localStGetDropdownAppListRsp.extInfo.get());
-        if (localStGetDropdownAppListRsp.isFinished.get() == 1) {
-          paramBoolean = true;
-        }
-        synchronized (DesktopDataManager.access$500())
+        QLog.d("DesktopDataManager", 1, "sendUserAppListRequestV2, retCode = " + l + ", errMsg = " + (String)??? + ", useOld = " + paramJSONObject.useOld.get() + ", response : " + paramJSONObject.toString());
+        if (paramJSONObject.useOld.get() == 1)
         {
-          DesktopDataManager.access$608(this.this$0);
-          if ((!paramBoolean) && (DesktopDataManager.access$600(this.this$0) <= 4)) {
-            this.this$0.loadMoreMyApp((COMM.StCommonExt)localStGetDropdownAppListRsp.extInfo.get());
-          }
-          QLog.d("DesktopDataManager", 1, "loadMoreMyApp, retCode = " + l + ", errMsg = " + str + ", isFinished: " + paramBoolean + ", requestCount: " + DesktopDataManager.access$600(this.this$0));
+          QLog.w("DesktopDataManager", 1, "sendUserAppListRequest, reuse old data.");
           return;
-          paramBoolean = false;
+        }
+        DesktopDataManager.access$300(this.this$0).clear();
+        this.this$0.clearRecommendExposureList();
+        DesktopDataManager.access$400(paramJSONObject.realRecommdInternal.get());
+        this.this$0.updateData(paramJSONObject.fixApps.get(), paramJSONObject.modules.get(), (INTERFACE.StSearchModuleInfo)paramJSONObject.searchInfo.get());
+        DesktopDataManager.access$502(this.this$0, (COMM.StCommonExt)paramJSONObject.extInfo.get());
+        MiniAppUtils.saveGdtCookie(DesktopDataManager.access$500(this.this$0));
+        DesktopDataManager.access$602(this.this$0, paramJSONObject.freshInternal.get());
+        int i;
+        if (paramJSONObject.isFinished.get() == 1)
+        {
+          i = 1;
+          if (i != 0) {}
+        }
+        for (;;)
+        {
+          synchronized (DesktopDataManager.access$700())
+          {
+            DesktopDataManager.access$802(this.this$0, 0);
+            this.this$0.loadMoreMyApp((COMM.StCommonExt)paramJSONObject.extInfo.get());
+            ??? = MiniAppUtils.getAppInterface();
+            if (??? != null)
+            {
+              MiniAppUtils.handlePreloadAppDataV2(((AppInterface)???).getApp(), paramJSONObject);
+              MiniAppUtils.updateDesktopRequestTime();
+              return;
+              i = 0;
+            }
+          }
+          QLog.e("DesktopDataManager", 1, "sendUserAppListRequest, app is null.");
         }
       }
-      QLog.e("DesktopDataManager", 1, "loadMoreMyApp failed, response is null.");
+      QLog.e("DesktopDataManager", 1, "sendUserAppListRequestV2 failed.");
       return;
     }
-    if (??? != null) {
-      l = ???.optLong("retCode");
+    if ((paramJSONObject != null) && (paramJSONObject.optLong("retCode") != 1000L)) {
+      MiniAppUtils.resetMiniDesktopRequestRefreshTime();
     }
-    QLog.e("DesktopDataManager", 1, "loadMoreMyApp, isSuccess = " + paramBoolean + ", ret = " + ??? + ", retCode = " + l);
+    this.this$0.useLocalDataIfRequestFailed();
+    QLog.e("DesktopDataManager", 1, "sendUserAppListRequestV2, isSuccess = " + paramBoolean + ", ret = " + paramJSONObject);
   }
 }
 

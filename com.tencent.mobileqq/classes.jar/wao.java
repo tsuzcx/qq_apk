@@ -1,22 +1,35 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
 
-class wao
-  implements View.OnClickListener
+final class wao
+  extends wad
 {
-  wao(wai paramwai, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
+  wao(wad paramwad, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public void onClick(View paramView)
+  public void onFailure(String paramString)
   {
-    vzz.a(this.jdField_a_of_type_Wai.a, vzz.a(this.jdField_a_of_type_Wai.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
-    vzz.a(this.jdField_a_of_type_Wai.a).dismiss();
+    QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 1, paramString);
+    this.jdField_a_of_type_Wad.onFailure(paramString);
+    vel.a("music_composite", "music_clip", 0, 1, new String[0]);
+    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio failed  msg：" + paramString);
+  }
+  
+  public void onStart()
+  {
+    super.onStart();
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio start");
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    paramString = String.valueOf(System.currentTimeMillis() - this.b);
+    vel.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio end cost：" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wao
  * JD-Core Version:    0.7.0.1
  */

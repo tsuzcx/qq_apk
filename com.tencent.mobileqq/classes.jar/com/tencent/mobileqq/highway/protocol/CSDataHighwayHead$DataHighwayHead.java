@@ -14,6 +14,7 @@ public final class CSDataHighwayHead$DataHighwayHead
   public final PBBytesField bytes_build_ver = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_command = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_uin = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBUInt32Field env_id = PBField.initUInt32(0);
   public final PBUInt32Field locale_id = PBField.initUInt32(0);
   public final PBUInt32Field uint32_appid = PBField.initUInt32(0);
   public final PBUInt32Field uint32_command_id = PBField.initUInt32(0);
@@ -27,7 +28,7 @@ public final class CSDataHighwayHead$DataHighwayHead
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 48, 56, 64, 74, 80 }, new String[] { "uint32_version", "bytes_uin", "bytes_command", "uint32_seq", "uint32_retry_times", "uint32_appid", "uint32_dataflag", "uint32_command_id", "bytes_build_ver", "locale_id" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0) }, DataHighwayHead.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 48, 56, 64, 74, 80, 88 }, new String[] { "uint32_version", "bytes_uin", "bytes_command", "uint32_seq", "uint32_retry_times", "uint32_appid", "uint32_dataflag", "uint32_command_id", "bytes_build_ver", "locale_id", "env_id" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0) }, DataHighwayHead.class);
   }
 }
 

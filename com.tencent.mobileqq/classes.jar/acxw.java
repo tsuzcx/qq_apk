@@ -1,4 +1,16 @@
-// INTERNAL ERROR //
+import com.tencent.mobileqq.app.QQAppInterface;
+
+final class acxw
+  implements bfos
+{
+  acxw(QQAppInterface paramQQAppInterface) {}
+  
+  public void onDismiss()
+  {
+    axqw.b(this.a, "CliOper", "", "", "0X8004862", "0X8004862", 0, 0, "", "", "", "");
+  }
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acxw

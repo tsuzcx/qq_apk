@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentNotIntrest;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class pkc
-  implements View.OnClickListener
+  implements ViewBase.IBuilder
 {
-  public pkc(ComponentContentNoteCard paramComponentContentNoteCard) {}
-  
-  public void onClick(View paramView)
+  public ViewBase build(VafContext paramVafContext)
   {
-    ComponentContentNoteCard.a(this.a).onClick(ComponentContentNoteCard.a(this.a).a);
+    return new pkb(paramVafContext);
   }
 }
 

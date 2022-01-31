@@ -1,22 +1,16 @@
-import java.util.Comparator;
+import android.content.DialogInterface;
 
 final class azcf
-  implements Comparator<azch>
+  extends bbdf
 {
-  public int a(azch paramazch1, azch paramazch2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramazch1.b < paramazch2.b) {
-      return -1;
-    }
-    if (paramazch1.b > paramazch2.b) {
-      return 1;
-    }
-    return 0;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     azcf
  * JD-Core Version:    0.7.0.1
  */

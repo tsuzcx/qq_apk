@@ -1,14 +1,20 @@
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 
-public abstract interface azxg
+public class azxg
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void a(int paramInt, List<azxh> paramList);
+  public azxg(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public abstract void a(azxh paramazxh);
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    this.a.a(paramCompoundButton, paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azxg
  * JD-Core Version:    0.7.0.1
  */

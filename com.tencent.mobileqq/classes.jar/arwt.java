@@ -1,28 +1,23 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multicard.MultiCardRootLayout;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
 
 public class arwt
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnClickListener
 {
-  public arwt(MultiCardRootLayout paramMultiCardRootLayout) {}
+  public arwt(LocationPickFragment paramLocationPickFragment, Activity paramActivity) {}
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if ((MultiCardRootLayout.a(this.a)) && (MultiCardRootLayout.a(this.a) != null))
-    {
-      arww localarww = (arww)MultiCardRootLayout.a(this.a).get();
-      if (localarww != null) {
-        localarww.a(this.a);
-      }
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    this.jdField_a_of_type_AndroidAppActivity.setResult(0);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    axqw.b(null, "CliOper", "", "", "0X800A963", "0X800A963", 0, 0, "0", "0", "0", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arwt
  * JD-Core Version:    0.7.0.1
  */

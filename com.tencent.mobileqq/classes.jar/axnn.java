@@ -1,21 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-
-class axnn
-  implements Animation.AnimationListener
+public class axnn
 {
-  axnn(axnm paramaxnm) {}
+  public ampi[] a = new ampi[0];
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public String toString()
   {
-    this.a.a.d.setVisibility(8);
-    this.a.a.a = false;
+    StringBuilder localStringBuilder = new StringBuilder("SoLoadConfBean:");
+    if (this.a != null)
+    {
+      ampi[] arrayOfampi = this.a;
+      int j = arrayOfampi.length;
+      int i = 0;
+      while (i < j)
+      {
+        ampi localampi = arrayOfampi[i];
+        if (localampi != null) {
+          localStringBuilder.append("confItem ").append(localampi.jdField_a_of_type_Int).append(":").append(localampi.jdField_a_of_type_JavaLangString).append("\n");
+        }
+        i += 1;
+      }
+    }
+    return localStringBuilder.toString();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

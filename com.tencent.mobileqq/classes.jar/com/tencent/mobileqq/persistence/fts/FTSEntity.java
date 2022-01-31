@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.persistence.fts;
 
 import android.text.TextUtils;
-import bakq;
+import bbma;
 
 public abstract class FTSEntity
 {
@@ -127,8 +127,8 @@ public abstract class FTSEntity
     {
       doSerialize();
       return;
-      this.mContentIndex = bakq.a(this.mContent);
-      this.mSegmentCount += bakq.a(this.mContentIndex);
+      this.mContentIndex = bbma.a(this.mContent);
+      this.mSegmentCount += bbma.a(this.mContentIndex);
     }
   }
   
@@ -139,8 +139,8 @@ public abstract class FTSEntity
       this.mContentIndex = null;
       return;
     }
-    this.mContentIndex = bakq.a(this.mContent);
-    this.mSegmentCount += bakq.a(this.mContentIndex);
+    this.mContentIndex = bbma.a(this.mContent);
+    this.mSegmentCount += bbma.a(this.mContentIndex);
   }
   
   public void preWriteTwo()

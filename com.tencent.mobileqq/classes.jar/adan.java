@@ -1,8 +1,6 @@
-import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
-
 public abstract interface adan
 {
-  public abstract void a(adaj paramadaj, ArkAppLoadLayout paramArkAppLoadLayout);
+  public abstract void a();
 }
 
 

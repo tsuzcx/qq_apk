@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import awwr;
-import axoa;
-import axwd;
+import axwt;
+import ayog;
+import aywk;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
@@ -10,19 +10,19 @@ import java.net.URL;
 class StructingMsgItemBuilder$12
   implements Runnable
 {
-  StructingMsgItemBuilder$12(StructingMsgItemBuilder paramStructingMsgItemBuilder, awwr paramawwr) {}
+  StructingMsgItemBuilder$12(StructingMsgItemBuilder paramStructingMsgItemBuilder, axwt paramaxwt) {}
   
   public void run()
   {
-    Object localObject = axwd.a(this.a.a, 1);
+    Object localObject = aywk.a(this.a.a, 1);
     if (localObject == null) {}
     for (localObject = null;; localObject = ((URL)localObject).toString())
     {
-      if ((axoa.b((String)localObject)) && (this.a.a.thumbWidthHeightDP != null))
+      if ((ayog.b((String)localObject)) && (this.a.a.thumbWidthHeightDP != null))
       {
-        String str = axoa.d((String)localObject);
+        String str = ayog.d((String)localObject);
         QLog.d("StructingMsgItemBuilder", 1, new Object[] { "big image exists, begin compress urlString=", localObject, ", dst=", str });
-        StructingMsgItemBuilder.a(str, axwd.a(this.a.a, 65537), this.a.a.thumbWidthHeightDP);
+        StructingMsgItemBuilder.a(str, aywk.a(this.a.a, 65537), this.a.a.thumbWidthHeightDP);
       }
       return;
     }

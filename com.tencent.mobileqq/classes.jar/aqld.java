@@ -1,58 +1,48 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
 
-class aqld
-  implements aqkr
+public class aqld
+  implements aqlb
 {
-  aqld(aqkz paramaqkz) {}
-  
-  public void a(List<aqll> paramList)
+  public void a(String paramString1, String paramString2, String paramString3)
   {
-    if (aqkz.a(this.a) == null) {}
+    a(paramString1, paramString2, paramString3, null);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, Throwable paramThrowable)
+  {
+    if ("i".equals(paramString2)) {
+      if (QLog.isColorLevel()) {
+        QLog.i(paramString1, 2, paramString3, paramThrowable);
+      }
+    }
     do
     {
+      do
+      {
+        return;
+        if (!"d".equals(paramString2)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d(paramString1, 2, paramString3, paramThrowable);
       return;
-      Object localObject = new HashMap(aqkz.a(this.a).a().d);
-      ajpv localajpv = aqkz.a(this.a).a();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      if ("w".equals(paramString2))
       {
-        aqll localaqll = (aqll)paramList.next();
-        long[] arrayOfLong = new long[localaqll.jdField_a_of_type_JavaUtilList.size()];
-        int i = 0;
-        while (i < arrayOfLong.length)
-        {
-          arrayOfLong[i] = ((Long)localaqll.jdField_a_of_type_JavaUtilList.get(i)).longValue();
-          i += 1;
-        }
-        ((azlm)aqkz.a(this.a).getManager(164)).a(localaqll.jdField_a_of_type_Long);
-        localajpv.a(1, String.valueOf(localaqll.jdField_a_of_type_Long), localaqll.jdField_a_of_type_Int, arrayOfLong, 14);
-        ((Map)localObject).remove(String.valueOf(localaqll.jdField_a_of_type_Long));
+        QLog.w(paramString1, 2, paramString3, paramThrowable);
+        return;
       }
-      paramList = ((Map)localObject).entrySet().iterator();
-      while (paramList.hasNext())
+      if ("e".equals(paramString2))
       {
-        localObject = (Map.Entry)paramList.next();
-        if (((Integer)((Map.Entry)localObject).getValue()).intValue() == 14) {
-          localajpv.a(1, (String)((Map.Entry)localObject).getKey(), 0, null, 14);
-        }
+        QLog.e(paramString1, 2, paramString3, paramThrowable);
+        return;
       }
-      paramList = aqkz.a(this.a).getHandler(Conversation.class);
-    } while (paramList == null);
-    paramList.sendEmptyMessage(1009);
+    } while (!QLog.isColorLevel());
+    QLog.i(paramString1, 2, paramString3, paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqld
  * JD-Core Version:    0.7.0.1
  */

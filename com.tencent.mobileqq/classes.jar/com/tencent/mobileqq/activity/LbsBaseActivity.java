@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import abaf;
-import abag;
-import abah;
+import abke;
+import abkf;
+import abkg;
 import android.app.Dialog;
 import android.os.Bundle;
-import asfc;
-import azvu;
-import bbmy;
+import atbg;
+import bawy;
+import bcpw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 
@@ -20,7 +20,7 @@ public class LbsBaseActivity
   
   private boolean a()
   {
-    return asfc.a(getAppInterface().getAccount());
+    return atbg.a(getAppInterface().getAccount());
   }
   
   private void c(Runnable paramRunnable)
@@ -30,15 +30,15 @@ public class LbsBaseActivity
   
   private void d(Runnable paramRunnable)
   {
-    paramRunnable = new abaf(this, paramRunnable);
-    this.b = azvu.a(this, 2131626504, a(), 2131626319, 2131626316, new abag(this), new abah(this));
+    paramRunnable = new abke(this, paramRunnable);
+    this.b = bawy.a(this, 2131692090, a(), 2131691902, 2131691899, new abkf(this), new abkg(this));
     this.b.setOnDismissListener(paramRunnable);
     this.b.show();
   }
   
   protected int a()
   {
-    return 2131626499;
+    return 2131692085;
   }
   
   public void a()
@@ -49,7 +49,7 @@ public class LbsBaseActivity
   public void a(int paramInt, String paramString)
   {
     if (isResume()) {
-      bbmy.a(this, paramInt, paramString, 0).b(getTitleBarHeight());
+      bcpw.a(this, paramInt, paramString, 0).b(getTitleBarHeight());
     }
   }
   
@@ -60,15 +60,15 @@ public class LbsBaseActivity
     //   0: aload_1
     //   1: invokevirtual 102	android/app/Dialog:dismiss	()V
     //   4: aload_1
-    //   5: invokestatic 106	zqa:a	(Landroid/app/Dialog;)V
+    //   5: invokestatic 106	zzs:a	(Landroid/app/Dialog;)V
     //   8: return
     //   9: astore_2
     //   10: aload_1
-    //   11: invokestatic 106	zqa:a	(Landroid/app/Dialog;)V
+    //   11: invokestatic 106	zzs:a	(Landroid/app/Dialog;)V
     //   14: return
     //   15: astore_2
     //   16: aload_1
-    //   17: invokestatic 106	zqa:a	(Landroid/app/Dialog;)V
+    //   17: invokestatic 106	zzs:a	(Landroid/app/Dialog;)V
     //   20: aload_2
     //   21: athrow
     // Local variable table:

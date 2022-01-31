@@ -1,25 +1,30 @@
-import android.support.annotation.RestrictTo;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class bhvn
-  implements bhvb
 {
-  private final bhva a;
-  
-  bhvn(bhva parambhva)
+  public static final boolean a(AppInterface paramAppInterface, Context paramContext, Bundle paramBundle, DialogInterface.OnDismissListener paramOnDismissListener, int paramInt)
   {
-    this.a = parambhva;
-  }
-  
-  public void a(bhvg parambhvg, bhvd parambhvd)
-  {
-    this.a.a(parambhvg, parambhvd, false, null);
-    this.a.a(parambhvg, parambhvd, true, null);
+    if (paramBundle == null) {
+      return false;
+    }
+    paramAppInterface = new Intent();
+    paramAppInterface.putExtra("share_data", paramBundle);
+    paramAppInterface.putExtra("readinjoy_launch_style", 2);
+    paramAppInterface.putExtra("readinjoy_launch_source", 11);
+    paramAppInterface.putExtra("channel_id", 9999);
+    axqw.b(null, "CliOper", "", "", "0X80059F4", "0X80059F4", 0, 0, "", "", "", "");
+    bhvh.a((Activity)paramContext, paramAppInterface, paramInt, paramOnDismissListener);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhvn
  * JD-Core Version:    0.7.0.1
  */

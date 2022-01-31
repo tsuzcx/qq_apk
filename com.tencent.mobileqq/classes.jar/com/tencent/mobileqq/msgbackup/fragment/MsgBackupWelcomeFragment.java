@@ -3,8 +3,8 @@ package com.tencent.mobileqq.msgbackup.fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.LinearLayout;
-import arop;
-import arsa;
+import askt;
+import asoe;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.widget.FormSimpleItem;
@@ -16,7 +16,7 @@ public class MsgBackupWelcomeFragment
   protected void b()
   {
     super.b();
-    setTitle(getActivity().getString(2131624801));
+    setTitle(getActivity().getString(2131690362));
   }
   
   protected void c()
@@ -30,11 +30,11 @@ public class MsgBackupWelcomeFragment
     super.d();
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
     this.b.setOnClickListener(this);
-    if (AppSetting.c)
+    if (AppSetting.d)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131624797));
-      this.b.setContentDescription(getString(2131624798));
-      this.vg.setLeftViewName(2131624838);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131690358));
+      this.b.setContentDescription(getString(2131690359));
+      this.vg.setLeftViewName(2131690399);
     }
   }
   
@@ -44,13 +44,13 @@ public class MsgBackupWelcomeFragment
     {
     default: 
       return;
-    case 2131309245: 
-      arsa.a("0X800A22E");
+    case 2131374989: 
+      asoe.a("0X800A22E");
       PublicFragmentActivity.a(getActivity(), MsgBackupMigrateFragment.class, 1000);
       return;
     }
-    arsa.a("0X800A268");
-    arop.a().a(1);
+    asoe.a("0X800A268");
+    askt.a().a(1);
     PublicFragmentActivity.a(getActivity(), MsgBackupPCAuthFragment.class, 1000);
   }
 }

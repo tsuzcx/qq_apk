@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ocr;
 
-import atdt;
-import atgo;
+import auaf;
+import audu;
 
 public class OCRResultActivity$10$4
   implements Runnable
 {
-  public OCRResultActivity$10$4(atdt paramatdt, int paramInt) {}
+  public OCRResultActivity$10$4(auaf paramauaf, int paramInt) {}
   
   public void run()
   {
-    OCRResultActivity.a(this.jdField_a_of_type_Atdt.a).a(this.jdField_a_of_type_Int);
+    OCRResultActivity.a(this.jdField_a_of_type_Auaf.a).a(this.jdField_a_of_type_Int);
   }
 }
 

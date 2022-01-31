@@ -1,7 +1,7 @@
 package cooperation.weiyun;
 
-import bguo;
-import bgwg;
+import bidq;
+import bifi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.PBStringField;
 import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunTrialCouponUseMsgReq;
@@ -16,11 +16,11 @@ public final class TransmissionHelper$5
   {
     WeiyunPB.WeiyunTrialCouponUseMsgReq localWeiyunTrialCouponUseMsgReq = new WeiyunPB.WeiyunTrialCouponUseMsgReq();
     localWeiyunTrialCouponUseMsgReq.business_id.set("upload_speed_up");
-    bguo.a(localWeiyunTrialCouponUseMsgReq, null);
+    bidq.a(localWeiyunTrialCouponUseMsgReq, null);
     if (this.a > 0)
     {
       int i = this.a;
-      bgwg.a(BaseApplicationImpl.getApplication().getApplicationContext(), String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()), "upload_coupon_count", String.valueOf(i - 1));
+      bifi.a(BaseApplicationImpl.getApplication().getApplicationContext(), String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()), "upload_coupon_count", String.valueOf(i - 1));
     }
   }
 }

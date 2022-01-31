@@ -9,10 +9,10 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.io.Serializable;
 import mqq.app.AppRuntime;
-import obz;
+import onk;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ppn;
+import qbj;
 import tencent.im.oidb.cmd0xbe4.oidb_cmd0xbe4.MsgBody;
 import tencent.im.oidb.cmd0xbe4.oidb_cmd0xbe4.MsgContent;
 import tencent.im.oidb.cmd0xbe4.oidb_cmd0xbe4.MsgFolderInfo;
@@ -30,6 +30,7 @@ public class KandianMsgBoxRedPntInfo
   public String feedsID;
   public int feedsType;
   public boolean isExpose;
+  public boolean isFromNotification;
   public boolean isRead;
   public String mArticlePicUrl;
   public String mCardSummary;
@@ -37,6 +38,7 @@ public class KandianMsgBoxRedPntInfo
   public String mIconUrl;
   public String mJumpUrl;
   public int mMsgCnt;
+  public String mMsgId;
   public long mMsgTime;
   public int mMsgType;
   public boolean mNeedShowInFolder;
@@ -95,10 +97,13 @@ public class KandianMsgBoxRedPntInfo
     if (localMsgBody.bytes_jump_url.has()) {
       localKandianMsgBoxRedPntInfo.mJumpUrl = localMsgBody.bytes_jump_url.get().toStringUtf8();
     }
+    if (localMsgBody.str_msgid.has()) {
+      localKandianMsgBoxRedPntInfo.mMsgId = localMsgBody.str_msgid.get();
+    }
     localKandianMsgBoxRedPntInfo.mUin = localMsgBody.uint64_from_uin.get();
     boolean bool;
-    label198:
-    label222:
+    label219:
+    label243:
     oidb_cmd0xbe4.MsgContent localMsgContent;
     if (localMsgBody.msg_folder_info.has())
     {
@@ -108,11 +113,11 @@ public class KandianMsgBoxRedPntInfo
         bool = true;
         localKandianMsgBoxRedPntInfo.mNeedShowInFolder = bool;
         if (!paramMsgGetRsp.bytes_summary.has()) {
-          break label416;
+          break label437;
         }
         localKandianMsgBoxRedPntInfo.mSummary = paramMsgGetRsp.bytes_summary.get().toStringUtf8();
         if (!paramMsgGetRsp.bytes_orange_word.has()) {
-          break label424;
+          break label445;
         }
         localKandianMsgBoxRedPntInfo.mOrangeWord = paramMsgGetRsp.bytes_orange_word.get().toStringUtf8();
       }
@@ -122,34 +127,34 @@ public class KandianMsgBoxRedPntInfo
       localKandianMsgBoxRedPntInfo.dataType = 1;
       localMsgContent = (oidb_cmd0xbe4.MsgContent)localMsgBody.msg_content.get();
       if (!localMsgContent.str_desc.has()) {
-        break label432;
+        break label453;
       }
       paramMsgGetRsp = localMsgContent.str_desc.get();
-      label269:
+      label290:
       localKandianMsgBoxRedPntInfo.mCardSummary = paramMsgGetRsp;
       if (!localMsgContent.str_feeds_pic.has()) {
-        break label439;
+        break label460;
       }
       paramMsgGetRsp = localMsgContent.str_feeds_pic.get();
-      label294:
+      label315:
       localKandianMsgBoxRedPntInfo.mArticlePicUrl = paramMsgGetRsp;
       localKandianMsgBoxRedPntInfo.sysMsgFrom = localMsgContent.uint32_sys_from.get();
       if (!localMsgContent.string_sys_activityid.has()) {
-        break label446;
+        break label467;
       }
       paramMsgGetRsp = localMsgContent.string_sys_activityid.get();
-      label331:
+      label352:
       localKandianMsgBoxRedPntInfo.sysMsgID = paramMsgGetRsp;
       if (!localMsgContent.string_feeds_id.has()) {
-        break label453;
+        break label474;
       }
     }
-    label416:
-    label424:
-    label432:
-    label439:
-    label446:
+    label437:
+    label445:
     label453:
+    label460:
+    label467:
+    label474:
     for (paramMsgGetRsp = localMsgContent.string_feeds_id.get();; paramMsgGetRsp = "")
     {
       localKandianMsgBoxRedPntInfo.feedsID = paramMsgGetRsp;
@@ -162,50 +167,50 @@ public class KandianMsgBoxRedPntInfo
       bool = false;
       break;
       localKandianMsgBoxRedPntInfo.mNeedShowInFolder = false;
-      break label198;
+      break label219;
       localKandianMsgBoxRedPntInfo.mNeedShowInFolder = false;
-      break label222;
+      break label243;
       paramMsgGetRsp = "";
-      break label269;
+      break label290;
       paramMsgGetRsp = "";
-      break label294;
+      break label315;
       paramMsgGetRsp = "";
-      break label331;
+      break label352;
     }
   }
   
   public static KandianMsgBoxRedPntInfo getRedPntInfoFromSp()
   {
-    AppRuntime localAppRuntime = obz.a();
-    KandianMsgBoxRedPntInfo localKandianMsgBoxRedPntInfo2 = (KandianMsgBoxRedPntInfo)obz.a(localAppRuntime, "kandian_msg_box_sp_key_new", true);
+    AppRuntime localAppRuntime = onk.a();
+    KandianMsgBoxRedPntInfo localKandianMsgBoxRedPntInfo2 = (KandianMsgBoxRedPntInfo)onk.a(localAppRuntime, "kandian_msg_box_sp_key_new", true);
     KandianMsgBoxRedPntInfo localKandianMsgBoxRedPntInfo1 = localKandianMsgBoxRedPntInfo2;
     if (localKandianMsgBoxRedPntInfo2 == null)
     {
-      ppn localppn1 = ppn.d();
-      ppn localppn2 = ppn.a();
-      if (localppn1 == null)
+      qbj localqbj1 = qbj.d();
+      qbj localqbj2 = qbj.a();
+      if (localqbj1 == null)
       {
         localKandianMsgBoxRedPntInfo1 = localKandianMsgBoxRedPntInfo2;
-        if (localppn2 == null) {}
+        if (localqbj2 == null) {}
       }
       else
       {
         localKandianMsgBoxRedPntInfo1 = new KandianMsgBoxRedPntInfo();
         localKandianMsgBoxRedPntInfo1.mSeq = -1L;
         localKandianMsgBoxRedPntInfo1.mNeedShowInFolder = false;
-        if (localppn2 != null)
+        if (localqbj2 != null)
         {
-          localKandianMsgBoxRedPntInfo1.mMsgCnt += localppn2.a;
-          localKandianMsgBoxRedPntInfo1.mUin = localppn2.e;
+          localKandianMsgBoxRedPntInfo1.mMsgCnt += localqbj2.a;
+          localKandianMsgBoxRedPntInfo1.mUin = localqbj2.e;
           localKandianMsgBoxRedPntInfo1.mMsgTime = System.currentTimeMillis();
           localKandianMsgBoxRedPntInfo1.mMsgType = 1;
-          localppn2.a(localAppRuntime);
+          localqbj2.a(localAppRuntime);
         }
-        if (localppn1 != null)
+        if (localqbj1 != null)
         {
-          localKandianMsgBoxRedPntInfo1.mMsgCnt += localppn1.a;
+          localKandianMsgBoxRedPntInfo1.mMsgCnt += localqbj1.a;
           localKandianMsgBoxRedPntInfo1.mMsgType = 2;
-          localppn1.d((QQAppInterface)localAppRuntime);
+          localqbj1.d((QQAppInterface)localAppRuntime);
         }
         localKandianMsgBoxRedPntInfo1.asyncWriteToSP();
       }
@@ -215,7 +220,7 @@ public class KandianMsgBoxRedPntInfo
   
   public void asyncWriteToSP()
   {
-    obz.a("kandian_msg_box_sp_key_new", this, true);
+    onk.a("kandian_msg_box_sp_key_new", this, true);
   }
   
   public boolean equals(Object paramObject)
@@ -239,12 +244,17 @@ public class KandianMsgBoxRedPntInfo
   
   public void removeFromSP()
   {
-    obz.a("kandian_msg_box_sp_key_new", true);
+    onk.a("kandian_msg_box_sp_key_new", true);
   }
   
   public String toString()
   {
-    return "KandianMsgBoxRedPntInfo{mSeq=" + this.mSeq + ", mMsgCnt=" + this.mMsgCnt + ", mMsgTime=" + this.mMsgTime + ", mUin=" + this.mUin + ", mMsgType=" + this.mMsgType + ", mJumpUrl='" + this.mJumpUrl + '\'' + ", mIconUrl='" + this.mIconUrl + '\'' + ", isRead=" + this.isRead + ", mNeedShowInFolder=" + this.mNeedShowInFolder + ", mRedType=" + this.mRedType + ", mSummary='" + this.mSummary + '\'' + ", mOrangeWord='" + this.mOrangeWord + '\'' + ", canDoAnimation=" + this.canDoAnimation + ", mCardSummary='" + this.mCardSummary + '\'' + ", mArticlePicUrl='" + this.mArticlePicUrl + '\'' + ", mExtraData='" + this.mExtraData + '\'' + ", isExpose='" + this.isExpose + '\'' + '}';
+    return "KandianMsgBoxRedPntInfo{mSeq=" + this.mSeq + ", mMsgCnt=" + this.mMsgCnt + ", mMsgTime=" + this.mMsgTime + ", mUin=" + this.mUin + ", mMsgType=" + this.mMsgType + ", mJumpUrl='" + this.mJumpUrl + '\'' + ", mIconUrl='" + this.mIconUrl + '\'' + ", mMsgId='" + this.mMsgId + '\'' + ", isRead=" + this.isRead + ", mNeedShowInFolder=" + this.mNeedShowInFolder + ", mRedType=" + this.mRedType + ", mSummary='" + this.mSummary + '\'' + ", mOrangeWord='" + this.mOrangeWord + '\'' + ", canDoAnimation=" + this.canDoAnimation + ", mCardSummary='" + this.mCardSummary + '\'' + ", mArticlePicUrl='" + this.mArticlePicUrl + '\'' + ", mExtraData='" + this.mExtraData + '\'' + ", isExpose='" + this.isExpose + '\'' + '}';
+  }
+  
+  public void writeToSP()
+  {
+    onk.b("kandian_msg_box_sp_key_new", this, true);
   }
 }
 

@@ -7,7 +7,7 @@ class EmosmActivity$5
   
   public void run()
   {
-    this.this$0.d();
+    this.this$0.e();
   }
 }
 

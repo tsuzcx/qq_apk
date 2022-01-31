@@ -1,11 +1,17 @@
-import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adht
+class adht
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
+  adht(adhs paramadhs, boolean paramBoolean) {}
   
-  public adht(HeartBreakCombolEffectView paramHeartBreakCombolEffectView) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      axqw.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    }
+  }
 }
 
 

@@ -3,23 +3,32 @@ package com.tencent.mobileqq.mini.appbrand.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bdct;
-import bdle;
-import bdlu;
+import bcxm;
+import bdgq;
+import bdgr;
+import begs;
+import bepk;
+import beqe;
+import besl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.http.MiniOkHttpClientFactory;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.widget.immersive.ImmersiveUtils;
+import mqq.app.AppRuntime;
+import mqq.manager.TicketManager;
 
 public class AppBrandUI3
   extends BaseActivity
 {
-  private bdlu mUIProxy;
+  private static final String COOKIE_DOMAIN = "qzone.qq.com";
+  private beqe mUIProxy;
   
   private void initUIProxy(Intent paramIntent)
   {
@@ -27,7 +36,12 @@ public class AppBrandUI3
       return;
     }
     paramIntent = (MiniAppInfo)paramIntent.getParcelableExtra("KEY_APPINFO");
-    this.mUIProxy = bdle.a().a(paramIntent);
+    this.mUIProxy = bepk.a().a(paramIntent);
+  }
+  
+  public boolean isWrapContent()
+  {
+    return false;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -46,17 +60,43 @@ public class AppBrandUI3
   public void onCreate(Bundle paramBundle)
   {
     this.mActNeedImmersive = false;
-    bdct.a(getApplicationContext(), null);
+    begs.a(getApplicationContext());
     MiniOkHttpClientFactory.init(30000L, 30000L, 30000L);
     AppBrandProxy.g().onAppStart(BaseApplicationImpl.getApplication().getQQProcessName(), null);
-    bdle.a().a(AppBrandUI3.QQBaselibLoader.g());
-    RelativeLayout localRelativeLayout = new RelativeLayout(this);
-    setContentView(localRelativeLayout);
-    FrameLayout localFrameLayout = new FrameLayout(this);
-    localRelativeLayout.addView(localFrameLayout, new RelativeLayout.LayoutParams(-1, -1));
+    bepk.a().a(AppBrandUI3.QQBaselibLoader.g());
+    Object localObject1 = new RelativeLayout(this);
+    setContentView((View)localObject1);
+    Object localObject2 = new FrameLayout(this);
+    ((RelativeLayout)localObject1).addView((View)localObject2, new RelativeLayout.LayoutParams(-1, -1));
     initUIProxy(getIntent());
-    this.mUIProxy.onCreate(this, paramBundle, localFrameLayout);
+    this.mUIProxy.onCreate(this, paramBundle, (ViewGroup)localObject2);
     super.onCreate(paramBundle);
+    long l1 = System.currentTimeMillis();
+    try
+    {
+      paramBundle = new bdgr(bcxm.a().a());
+      localObject1 = new bdgq();
+      ((bdgq)localObject1).a(true);
+      long l2 = bcxm.a().a();
+      Object localObject3 = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
+      localObject2 = ((TicketManager)localObject3).getSkey(String.valueOf(l2));
+      localObject3 = ((TicketManager)localObject3).getPskey(String.valueOf(l2), "qzone.qq.com");
+      ((bdgq)localObject1).a("qzone.qq.com/", "uin=" + l2 + "; path=/; domain=." + "qzone.qq.com" + ";");
+      ((bdgq)localObject1).a("qzone.qq.com/", "p_uin=" + l2 + "; path=/; domain=." + "qzone.qq.com" + ";");
+      ((bdgq)localObject1).a("qzone.qq.com/", "skey=" + (String)localObject2 + "; path=/; domain=." + "qzone.qq.com" + ";");
+      ((bdgq)localObject1).a("qzone.qq.com/", "p_skey=" + (String)localObject3 + "; path=/; domain=." + "qzone.qq.com" + ";");
+      paramBundle.a();
+      l2 = System.currentTimeMillis();
+      besl.d(AppBrandUI3.class.getSimpleName(), "cost:" + (l2 - l1));
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      for (;;)
+      {
+        paramBundle.printStackTrace();
+      }
+    }
   }
   
   public void onDestroy()

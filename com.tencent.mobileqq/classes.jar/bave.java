@@ -1,34 +1,30 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONException;
 
-class bave
-  extends MqqHandler
+public class bave
 {
-  bave(bavd parambavd) {}
+  public float a;
+  public int a;
+  public String a;
+  public String b;
   
-  public void handleMessage(Message paramMessage)
+  public bave(bavd parambavd, String paramString, float paramFloat)
   {
-    switch (paramMessage.what)
+    this.b = paramString;
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public JSONArray a()
+  {
+    JSONArray localJSONArray = new JSONArray();
+    try
     {
-    default: 
-    case 104: 
-      do
-      {
-        return;
-        paramMessage = (String)paramMessage.obj;
-        if ((this.a.jdField_a_of_type_Auqn != null) && (!TextUtils.isEmpty(paramMessage)))
-        {
-          this.a.jdField_a_of_type_Auqn.a(paramMessage);
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(bavd.jdField_a_of_type_JavaLangString, 2, "captcha sig is empty");
-      return;
+      localJSONArray.put(this.b);
+      localJSONArray.put(this.jdField_a_of_type_Float);
+      return localJSONArray;
     }
-    bavd.a(this.a).finish();
+    catch (JSONException localJSONException) {}
+    return localJSONArray;
   }
 }
 

@@ -1,8 +1,35 @@
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.24.1;
+import com.tencent.qphone.base.util.QLog;
+
 public class rha
+  extends osp
 {
-  public int a;
-  public String a;
-  public String b;
+  public rha(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  
+  public void a(int paramInt, SelectPositionModule.PositionData paramPositionData)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyTabFrame", 2, "onLocationChanged changeType = " + paramInt);
+    }
+    ReadinjoyTabFrame.a(this.a, paramInt, paramPositionData);
+  }
+  
+  public void k()
+  {
+    super.k();
+    if (ReadinjoyTabFrame.a(this.a) != null) {
+      ReadinjoyTabFrame.a(this.a).post(new ReadinjoyTabFrame.24.1(this));
+    }
+  }
+  
+  public void l()
+  {
+    QLog.d("ReadInJoyTabFrame", 2, "onHideChannel");
+    ReadinjoyTabFrame.a(this.a).b();
+  }
 }
 
 

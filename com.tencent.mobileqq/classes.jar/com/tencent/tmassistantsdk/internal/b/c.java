@@ -1,7 +1,7 @@
 package com.tencent.tmassistantsdk.internal.b;
 
 import com.tencent.assistant.sdk.remote.SDKActionCallback.Stub;
-import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.ab;
 import com.tencent.tmdownloader.t;
 import java.util.ArrayList;
 
@@ -12,7 +12,7 @@ class c
   
   public void onActionResult(byte[] paramArrayOfByte)
   {
-    ac.c("TMAssistantDownloadOpenSDKClient", "onActionResult  callBack data:" + paramArrayOfByte + "  mListeners.size:" + this.a.a.size());
+    ab.c("TMAssistantDownloadOpenSDKClient", "onActionResult  callBack data:" + paramArrayOfByte + "  mListeners.size:" + this.a.a.size());
     t.a().a(paramArrayOfByte, this.a.a);
   }
 }

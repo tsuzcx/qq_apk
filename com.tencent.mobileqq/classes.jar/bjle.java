@@ -1,98 +1,29 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import android.app.Activity;
+import dov.com.qq.im.capture.view.StaticStickerProviderView;
 
-class bjle
+public class bjle
+  implements bkfh
 {
-  private BufferedReader jdField_a_of_type_JavaIoBufferedReader;
-  private InputStream jdField_a_of_type_JavaIoInputStream;
-  private InputStreamReader jdField_a_of_type_JavaIoInputStreamReader;
-  public Process a;
+  public bjle(StaticStickerProviderView paramStaticStickerProviderView, Activity paramActivity) {}
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaLangProcess != null)
-    {
-      this.jdField_a_of_type_JavaIoInputStream = this.jdField_a_of_type_JavaLangProcess.getInputStream();
-      this.jdField_a_of_type_JavaIoInputStreamReader = new InputStreamReader(this.jdField_a_of_type_JavaIoInputStream);
-      this.jdField_a_of_type_JavaIoBufferedReader = new BufferedReader(this.jdField_a_of_type_JavaIoInputStreamReader);
+    veg.b("StaticStickerProviderView", "用户点击重新拉取地理贴纸");
+    ((bjeu)bjae.a(4)).a(true, this.jdField_a_of_type_AndroidAppActivity);
+  }
+  
+  public void a(String paramString)
+  {
+    veg.b("StaticStickerProviderView", "用户点击下载：" + paramString);
+    vem.b("0X80075DD");
+    if (!((bkbh)tdc.a(39)).a(paramString, true)) {
+      veg.d("StaticStickerProviderView", "用户点击下载启动失败");
     }
   }
   
-  public void b()
+  public void b(String paramString)
   {
-    if (this.jdField_a_of_type_JavaLangProcess != null) {}
-    try
-    {
-      for (;;)
-      {
-        String str = this.jdField_a_of_type_JavaIoBufferedReader.readLine();
-        if (str == null) {
-          break;
-        }
-        bjlc.a("[@] compressVideo log:" + str, null);
-      }
-      label177:
-      return;
-    }
-    catch (IOException localIOException1)
-    {
-      for (;;)
-      {
-        try
-        {
-          if (this.jdField_a_of_type_JavaIoInputStream != null) {
-            this.jdField_a_of_type_JavaIoInputStream.close();
-          }
-          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
-            this.jdField_a_of_type_JavaIoInputStreamReader.close();
-          }
-          if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
-            this.jdField_a_of_type_JavaIoBufferedReader.close();
-          }
-          return;
-        }
-        catch (IOException localIOException3) {}
-        try
-        {
-          if (this.jdField_a_of_type_JavaIoInputStream != null) {
-            this.jdField_a_of_type_JavaIoInputStream.close();
-          }
-          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
-            this.jdField_a_of_type_JavaIoInputStreamReader.close();
-          }
-          if (this.jdField_a_of_type_JavaIoBufferedReader == null) {
-            continue;
-          }
-          this.jdField_a_of_type_JavaIoBufferedReader.close();
-          return;
-        }
-        catch (IOException localIOException2)
-        {
-          return;
-        }
-      }
-    }
-    finally
-    {
-      try
-      {
-        if (this.jdField_a_of_type_JavaIoInputStream != null) {
-          this.jdField_a_of_type_JavaIoInputStream.close();
-        }
-        if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
-          this.jdField_a_of_type_JavaIoInputStreamReader.close();
-        }
-        if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
-          this.jdField_a_of_type_JavaIoBufferedReader.close();
-        }
-      }
-      catch (IOException localIOException4)
-      {
-        break label177;
-      }
-    }
+    veg.b("StaticStickerProviderView", "用户点击下载取消：" + paramString);
   }
 }
 

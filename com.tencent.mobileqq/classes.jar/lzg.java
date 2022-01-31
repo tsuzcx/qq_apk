@@ -1,52 +1,36 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.av.smallscreen.SmallScreenService;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public class lzg
-  extends kur
+  extends BroadcastReceiver
 {
-  public lzg(VideoInviteActivity paramVideoInviteActivity) {}
+  public lzg(SmallScreenService paramSmallScreenService) {}
   
-  protected void a(long paramLong, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
     long l = AudioHelper.b();
+    paramContext = paramIntent.getAction();
     if (QLog.isColorLevel()) {
-      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onDestroyInviteUI, relationId[" + paramLong + "], seq[" + l + "]");
+      QLog.w("SmallScreenService", 1, "onReceive, action[" + paramContext + "], seq[" + l + "]");
     }
-    boolean bool = this.a.i;
-    if ((bool) && (this.a.c != null) && (this.a.c.equals(String.valueOf(paramLong))))
+    if (paramContext.equals("android.intent.action.NEW_OUTGOING_CALL"))
     {
-      super.a(paramLong);
-      miu.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      this.a.a(l);
-      if ((bool) && (this.a.c.length() > 2) && (paramLong != 0L))
-      {
-        paramLong = Long.valueOf(this.a.c).longValue();
-        if (!this.a.h)
-        {
-          this.a.h = true;
-          if (paramInt != 1) {
-            break label255;
-          }
-          this.a.a().a(l, paramLong, 7);
-        }
+      paramContext = paramIntent.getStringExtra("android.intent.extra.PHONE_NUMBER");
+      if (QLog.isColorLevel()) {
+        QLog.d("SmallScreenService", 2, "onReceive NEW_OUTGOING_CALL phoneNumber = " + paramContext);
       }
     }
-    for (;;)
-    {
-      this.a.e = true;
-      if ((!this.a.l) || (this.a.jdField_a_of_type_Lwx == null) || (this.a.f())) {
-        break;
-      }
-      this.a.jdField_a_of_type_Lwx.a(new lzh(this));
+    while ((!paramContext.equals("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED")) || (this.a.a == null)) {
       return;
-      label255:
-      if (paramInt == 2) {
-        this.a.a().a(l, paramLong, 2);
-      }
     }
-    this.a.finish();
+    this.a.a().removeCallbacks(this.a.a);
+    this.a.a.a = l;
+    this.a.a().postDelayed(this.a.a, 200L);
   }
 }
 

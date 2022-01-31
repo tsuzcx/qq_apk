@@ -1,15 +1,33 @@
-import com.tencent.mobileqq.activity.ChatSettingActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class aajv
-  extends ajqr
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aajv(ChatSettingActivity paramChatSettingActivity) {}
+  public aajv(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void a(Object paramObject)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramObject != null) {
-      ((Integer)paramObject).intValue();
+    if (AppSetting.d) {
+      this.a.f.setContentDescription(ajyc.a(2131700769));
     }
+    paramCompoundButton = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      axqw.b(paramCompoundButton, "CliOper", "", "", "Shake_screenshot", "Shake_screenshot_switch", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131695283), "qqsetting_screenshot_key", paramBoolean);
+      if (!paramBoolean) {
+        break;
+      }
+      this.a.turnOnShake();
+      return;
+    }
+    this.a.turnOffShake();
   }
 }
 

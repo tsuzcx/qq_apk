@@ -2,11 +2,11 @@ package com.tencent.mobileqq.profile;
 
 import android.os.Parcel;
 import android.text.TextUtils;
-import atmo;
-import atmp;
-import atmq;
-import atoc;
-import atxq;
+import aukm;
+import aukn;
+import auko;
+import auma;
+import auvp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.LRULinkedHashMap;
@@ -17,7 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ProfileShoppingPhotoInfo
-  extends atmo
+  extends aukm
 {
   public static final int FOLLOW_TYPE_CANCEL_CARE = 3;
   public static final int FOLLOW_TYPE_NORMAL_CARE = 1;
@@ -32,18 +32,18 @@ public class ProfileShoppingPhotoInfo
   public byte[] picByteData;
   public int seqNo;
   public String shopName;
-  @atoc
+  @auma
   public String uin;
   
-  public static byte[] converPhoto2RawData(List<atxq> paramList)
+  public static byte[] converPhoto2RawData(List<auvp> paramList)
   {
     Object localObject = new ArrayList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      atxq localatxq = (atxq)paramList.next();
-      if (localatxq != null) {
-        ((List)localObject).add(localatxq.a());
+      auvp localauvp = (auvp)paramList.next();
+      if (localauvp != null) {
+        ((List)localObject).add(localauvp.a());
       }
     }
     paramList = Parcel.obtain();
@@ -98,7 +98,7 @@ public class ProfileShoppingPhotoInfo
     }
   }
   
-  public static List<atxq> parseShoppingPhotoJson(String paramString)
+  public static List<auvp> parseShoppingPhotoJson(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     if (TextUtils.isEmpty(paramString)) {}
@@ -124,10 +124,10 @@ public class ProfileShoppingPhotoInfo
                 int j = 0;
                 while (j < m)
                 {
-                  atxq localatxq = new atxq();
-                  localatxq.b = ((JSONArray)localObject).getJSONObject(j).getString("url");
-                  localatxq.a = ((JSONArray)localObject).getJSONObject(j).getJSONArray("pic_url").getString(0);
-                  localArrayList.add(localatxq);
+                  auvp localauvp = new auvp();
+                  localauvp.b = ((JSONArray)localObject).getJSONObject(j).getString("url");
+                  localauvp.a = ((JSONArray)localObject).getJSONObject(j).getJSONArray("pic_url").getString(0);
+                  localArrayList.add(localauvp);
                   j += 1;
                 }
               }
@@ -178,7 +178,7 @@ public class ProfileShoppingPhotoInfo
   }
   
   /* Error */
-  public List<atxq> getPhotoFromRawData()
+  public List<auvp> getPhotoFromRawData()
   {
     // Byte code:
     //   0: new 52	java/util/ArrayList
@@ -230,13 +230,13 @@ public class ProfileShoppingPhotoInfo
     //   97: invokeinterface 69 1 0
     //   102: checkcast 272	java/lang/String
     //   105: astore 5
-    //   107: new 71	atxq
+    //   107: new 71	auvp
     //   110: dup
-    //   111: invokespecial 200	atxq:<init>	()V
+    //   111: invokespecial 200	auvp:<init>	()V
     //   114: astore 6
     //   116: aload 6
     //   118: aload 5
-    //   120: invokevirtual 274	atxq:a	(Ljava/lang/String;)V
+    //   120: invokevirtual 274	auvp:a	(Ljava/lang/String;)V
     //   123: aload_3
     //   124: aload 6
     //   126: invokeinterface 79 2 0
@@ -279,7 +279,7 @@ public class ProfileShoppingPhotoInfo
     //   51	45	4	localObject2	Object
     //   135	25	4	localException	Exception
     //   105	14	5	str	String
-    //   114	11	6	localatxq	atxq
+    //   114	11	6	localauvp	auvp
     // Exception table:
     //   from	to	target	type
     //   21	53	135	java/lang/Exception

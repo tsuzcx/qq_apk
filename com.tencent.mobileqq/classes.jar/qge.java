@@ -1,21 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import android.widget.ArrayAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
+import java.util.List;
 
-class qge
-  implements DialogInterface.OnCancelListener
+public class qge
+  extends osp
 {
-  qge(qfy paramqfy) {}
+  public qge(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void c(List<TagInfo> paramList)
   {
-    qfy.a(this.a, "mShareActionSheet cancle button OnClick");
-    if (qfy.a(this.a) != null) {
-      qfy.a(this.a).c();
+    ReadInJoyVideoSearchTagFragment.a(this.a).setNotifyOnChange(false);
+    ReadInJoyVideoSearchTagFragment.a(this.a).clear();
+    ReadInJoyVideoSearchTagFragment.a(this.a).setNotifyOnChange(true);
+    ReadInJoyVideoSearchTagFragment.a(this.a).addAll(paramList);
+    if (paramList.isEmpty()) {
+      bcpw.a(this.a.getActivity(), 2131718576, 0).a();
     }
-    paramDialogInterface = qfy.a(this.a);
-    qfy.a(this.a, paramDialogInterface, paramDialogInterface.j, paramDialogInterface.g, paramDialogInterface.a, paramDialogInterface.f, -1, -1, true);
   }
 }
 

@@ -1,56 +1,71 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.RspBody;
-import tencent.im.oidb.cmd0x885.oidb_0x885.RspBody;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 class nod
-  extends mmn
+  implements BusinessObserver
 {
-  nod(noc paramnoc) {}
+  nod(nnx paramnnx, NewIntent paramNewIntent, Context paramContext, String paramString, BusinessObserver paramBusinessObserver, QQAppInterface paramQQAppInterface) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    for (boolean bool = true;; bool = false) {
+    Object localObject1 = null;
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    if (!paramBoolean) {
+      return;
+    }
+    for (;;)
+    {
       try
       {
-        paramBundle = new oidb_0x6cf.RspBody();
-        if (paramArrayOfByte != null) {
-          paramBundle.mergeFrom(paramArrayOfByte);
-        }
-        paramBundle = (oidb_0x885.RspBody)paramBundle.msg_ad_rsp.get();
-        if ((paramInt == 0) && (paramArrayOfByte != null)) {
-          paramBundle.mergeFrom(paramArrayOfByte);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("AdMaterialHandler", 2, "errorCode = " + paramInt + ", rspBody.bytes_ad_user_info.has = " + paramBundle.bytes_ad_user_info.has());
-        }
-        if ((paramBundle != null) && (paramBundle.bytes_ad_user_info.has()))
+        localObject2 = paramBundle.getByteArray("data");
+        paramBundle = new mobileqq_mp.SendMenuEventResponse();
+      }
+      catch (Exception paramBundle)
+      {
+        try
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("AdMaterialHandler", 2, "errorCode = " + paramInt + ", rspBody.bytes_ad_user_info = " + paramBundle.bytes_ad_user_info.get().toStringUtf8());
-          }
-          paramArrayOfByte = this.a;
-          if (paramInt == 0)
+          paramBundle.mergeFrom((byte[])localObject2);
+          Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("menuEventSharePre", 0);
+          localObject1 = paramBundle;
+          if (((SharedPreferences)localObject2).contains(this.jdField_a_of_type_JavaLangString))
           {
-            paramArrayOfByte.notifyUI(1, bool, paramBundle.bytes_ad_user_info.get().toStringUtf8());
-            nof.a(null, true, "no error", paramBundle.bytes_ad_user_info.get().toStringUtf8());
+            localObject1 = paramBundle;
+            if (paramBundle.seqno.has())
+            {
+              localObject1 = paramBundle;
+              if (paramBundle.seqno.get() != ((SharedPreferences)localObject2).getInt(this.jdField_a_of_type_JavaLangString, 0))
+              {
+                if (this.jdField_a_of_type_MqqObserverBusinessObserver != null) {
+                  this.jdField_a_of_type_Nnx.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverBusinessObserver, true);
+                }
+                localObject1 = ((SharedPreferences)localObject2).edit();
+                ((SharedPreferences.Editor)localObject1).putInt(this.jdField_a_of_type_JavaLangString, paramBundle.seqno.get());
+                ((SharedPreferences.Editor)localObject1).commit();
+                localObject1 = paramBundle;
+              }
+            }
           }
-        }
-        else
-        {
-          nof.a(null, false, "error with errorcode: " + paramInt, null);
+          if (localObject1 != null) {
+            break;
+          }
           return;
         }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AdMaterialHandler", 2, "Exception error" + QLog.getStackTraceString(paramArrayOfByte));
+        catch (Exception localException)
+        {
+          break label187;
         }
-        return;
+        paramBundle = paramBundle;
+        paramBundle = (Bundle)localObject1;
       }
+      label187:
+      localObject1 = paramBundle;
     }
   }
 }

@@ -1,54 +1,16 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.conn.LiteTcpConnection;
+import java.util.Vector;
 
 public class auwt
-  extends Handler
 {
-  public auwt(LiteTcpConnection paramLiteTcpConnection, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void a()
-  {
-    if (LiteTcpConnection.a(this.a) != null) {
-      LiteTcpConnection.a(this.a).sendEmptyMessage(3);
-    }
-  }
-  
-  public void b()
-  {
-    auwt localauwt = LiteTcpConnection.a(this.a);
-    if (localauwt != null) {
-      localauwt.sendEmptyMessage(2);
-    }
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1) {
-      LiteTcpConnection.a(this.a, LiteTcpConnection.a(this.a));
-    }
-    do
-    {
-      return;
-      if (paramMessage.what == 2)
-      {
-        LiteTcpConnection.a(this.a);
-        return;
-      }
-    } while (paramMessage.what != 3);
-    LiteTcpConnection.a(this.a).quit();
-    LiteTcpConnection.a(this.a, null);
-    LiteTcpConnection.a(this.a, null);
-  }
+  public String a;
+  public Vector<String> a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auwt
  * JD-Core Version:    0.7.0.1
  */

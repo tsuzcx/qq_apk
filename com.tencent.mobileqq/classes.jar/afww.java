@@ -1,88 +1,58 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
+import mqq.os.MqqHandler;
 
 public class afww
-  extends atog
+  extends AccountObserver
 {
-  public afww(BindNumberActivity paramBindNumberActivity) {}
+  public afww(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment, boolean paramBoolean) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
   {
-    this.a.f = false;
-    this.a.a();
-    this.a.b();
-    int i;
-    if (paramBoolean)
+    int j = 1;
+    if (QLog.isColorLevel())
     {
-      String str = babh.a();
-      if (!TextUtils.isEmpty(str)) {
-        awqx.b(this.a.app, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
-      }
-      i = paramBundle.getInt("k_result");
-      if (paramBundle.getBoolean("k_buto_bind", false)) {
-        this.a.c();
-      }
-    }
-    for (;;)
-    {
-      babh.a();
-      this.a.app.unRegistObserver(this.a.a);
-      this.a.a = null;
-      return;
-      if ((i == 104) || (i == 0))
+      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
+      if (paramString2 == null)
       {
-        this.a.b();
-      }
-      else
-      {
-        if (i == 107)
-        {
-          this.a.a(paramBundle);
-          return;
-        }
-        if (i == 106)
-        {
-          this.a.a(null, 2);
-        }
-        else if (i == 227)
-        {
-          this.a.d();
-        }
-        else if (i == 226)
-        {
-          this.a.e();
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("BindNumberActivity", 2, "bind error " + i);
-          }
-          this.a.a(a(i));
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("BindNumberActivity", 2, "onBindMobile failed");
-          }
-          this.a.b(2131652912);
-        }
+        i = 0;
+        QLog.d("Q.history.C2CAllFragment", 2, i);
       }
     }
-  }
-  
-  protected void b(boolean paramBoolean, Bundle paramBundle)
-  {
-    this.a.b();
-    if (paramBoolean) {
-      this.a.b();
-    }
-    for (;;)
+    else
     {
-      this.a.app.unRegistObserver(this.a.a);
-      this.a.a = null;
+      if ((!paramBoolean) || (TextUtils.isEmpty(paramString2))) {
+        break label133;
+      }
+      i = 1;
+      label67:
+      paramString1 = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.obtainMessage(39);
+      if (i == 0) {
+        break label139;
+      }
+      i = 1;
+      label88:
+      paramString1.arg1 = i;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label145;
+      }
+    }
+    label133:
+    label139:
+    label145:
+    for (int i = j;; i = 0)
+    {
+      paramString1.arg2 = i;
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.sendMessage(paramString1);
       return;
-      this.a.b(2131652912);
+      i = paramString2.length();
+      break;
+      i = 0;
+      break label67;
+      i = 0;
+      break label88;
     }
   }
 }

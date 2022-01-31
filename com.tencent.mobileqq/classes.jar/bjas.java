@@ -1,4 +1,7 @@
-public class bjas {}
+public abstract interface bjas
+{
+  public abstract void a(int paramInt);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

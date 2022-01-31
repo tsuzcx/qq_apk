@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abuq
-  implements alot
+  extends akav
 {
-  public abuq(TextPreviewActivity paramTextPreviewActivity) {}
+  public abuq(QQLSActivity paramQQLSActivity) {}
   
-  public void a(alou paramalou)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.a.jdField_a_of_type_Alou = paramalou;
-    if (this.a.i != 0) {
-      paramalou.a(this.a.i);
+    super.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
     }
-    this.a.i = paramalou.a(1, this.a.e, 3, this.a.jdField_a_of_type_Alor);
+    QQLSActivity.a(this.a);
   }
 }
 

@@ -1,27 +1,9 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.common.app.AppInterface;
+import java.util.List;
 
-public class ajtf
-  extends RecyclablePool.Recyclable
+public abstract interface ajtf
 {
-  public int a;
-  public long a;
-  ConcurrentHashMap<String, Long> a;
-  long b;
-  
-  public ajtf()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(4);
-  }
-  
-  public void recycle()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    super.recycle();
-  }
+  public abstract List<String> a(AppInterface paramAppInterface);
 }
 
 

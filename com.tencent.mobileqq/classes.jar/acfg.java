@@ -1,23 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class acfg
-  implements DialogInterface.OnClickListener
+  extends bbwf
 {
-  public acfg(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public acfg(TextPreviewSettingActivity paramTextPreviewSettingActivity, String paramString1, String paramString2)
   {
-    this.a.l();
-    this.a.b(this.a.n);
-    if (bajr.b(this.a.app)) {}
-    for (paramDialogInterface = "4";; paramDialogInterface = "3")
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, mpl.a(), paramDialogInterface, "1");
-      return;
+    super(paramString1, paramString2);
+  }
+  
+  public void onCancel(bbwg parambbwg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambbwg);
     }
+    super.onCancel(parambbwg);
+  }
+  
+  public void onDone(bbwg parambbwg)
+  {
+    super.onDone(parambbwg);
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onDone| task:" + parambbwg);
+    }
+    if (parambbwg.b()) {}
+    do
+    {
+      return;
+      if (parambbwg.a() == -1)
+      {
+        parambbwg = new Message();
+        parambbwg.what = 17;
+        TextPreviewSettingActivity.a(this.a).sendMessage(parambbwg);
+        return;
+      }
+      parambbwg = TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a));
+    } while (parambbwg == null);
+    Message localMessage = new Message();
+    localMessage.what = 18;
+    localMessage.obj = parambbwg;
+    TextPreviewSettingActivity.a(this.a).sendMessage(localMessage);
+  }
+  
+  public boolean onStart(bbwg parambbwg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onStart| task:" + parambbwg);
+    }
+    return super.onStart(parambbwg);
   }
 }
 

@@ -1,50 +1,35 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.data.BmqqAccountType;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Toast;
 import com.tencent.qphone.base.util.QLog;
 
-public class bcpx
-  extends ajfo
+class bcpx
+  implements View.OnTouchListener
 {
-  public bcpx(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  bcpx(bcpw parambcpw, Toast paramToast, View.OnTouchListener paramOnTouchListener) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a();
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Card)))
+    boolean bool = true;
+    if (paramMotionEvent.getAction() == 0)
     {
-      this.a.jdField_a_of_type_Atwx.jdField_a_of_type_ComTencentMobileqqDataCard = ((Card)paramObject);
-      if (QidianProfileCardActivity.b(this.a)) {
-        this.a.a(this.a.jdField_a_of_type_Atwx.jdField_a_of_type_ComTencentMobileqqDataCard.vQzoneCoverInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQToast", 2, "start to cancel toast");
       }
-    }
-  }
-  
-  protected void onGetAccountType(boolean paramBoolean, BmqqAccountType paramBmqqAccountType)
-  {
-    super.onGetAccountType(paramBoolean, paramBmqqAccountType);
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianProfileCardActivity", 2, "onGetAccountType isSuccess: " + paramBoolean + " | type: " + paramBmqqAccountType + " | cardInfo.allinone.uin: " + this.a.jdField_a_of_type_Atwx.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
-    }
-    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.jdField_a_of_type_Atwx != null) && (this.a.jdField_a_of_type_Atwx.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null) && (paramBmqqAccountType.getUin().equals(this.a.jdField_a_of_type_Atwx.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)))
-    {
-      this.a.c = paramBmqqAccountType.getAccountType();
-      this.a.b();
-      if (this.a.c == 1) {
-        this.a.jdField_a_of_type_Bcpn.b(this.a, paramBmqqAccountType);
+      this.jdField_a_of_type_AndroidWidgetToast.cancel();
+      bcpw.a(this.jdField_a_of_type_Bcpw, true);
+      if (this.jdField_a_of_type_AndroidViewView$OnTouchListener != null) {
+        bool = this.jdField_a_of_type_AndroidViewView$OnTouchListener.onTouch(paramView, paramMotionEvent);
       }
+      return bool;
     }
-    else
-    {
-      return;
-    }
-    this.a.a();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcpx
  * JD-Core Version:    0.7.0.1
  */

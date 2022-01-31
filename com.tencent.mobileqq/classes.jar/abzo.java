@@ -1,29 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class abzo
-  implements View.OnClickListener
+public class abzo
+  extends ajsp
 {
-  abzo(abzn paramabzn) {}
+  public abzo(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.a.a.jdField_d_of_type_Boolean = false;
-    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (this.a.a.jdField_d_of_type_Int != 22) {
-      this.a.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (paramBoolean)
+    {
+      if (!TextUtils.isEmpty(this.a.f)) {
+        bcpw.a(this.a.app.getApp(), 2, this.a.f, 0).a();
+      }
+      if (this.a.a == 13) {
+        this.a.b();
+      }
+      this.a.finish();
+      return;
     }
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.a.findViewById(2131302804));
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_b_of_type_AndroidViewView$OnClickListener);
-    if (this.a.a.jdField_a_of_type_Acao != null) {
-      this.a.a.jdField_a_of_type_Acao.a();
-    }
+    bcpw.a(this.a.app.getApp(), 1, ajyc.a(2131713442), 0).a();
   }
 }
 

@@ -1,19 +1,26 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditActivity;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
 
 public class aaqh
-  implements View.OnClickListener
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public aaqh(EditActivity paramEditActivity) {}
+  public aaqh(ChatFragment paramChatFragment) {}
   
-  public void onClick(View paramView)
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
-      EditActivity.a(this.a).dismiss();
+    if (this.a.a != null) {
+      this.a.a.b(paramMotionEvent);
     }
-    this.a.finish();
+  }
+  
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if (this.a.a != null) {
+      return this.a.a.a(paramMotionEvent);
+    }
+    return true;
   }
 }
 

@@ -1,32 +1,39 @@
-import android.app.Dialog;
 import android.os.Handler;
-import android.os.HandlerThread;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qqfav.QfavLeakHelper.2.1;
+import android.os.Looper;
+import android.os.Message;
 
-public final class bfhu
-  implements View.OnClickListener
+class bfhu
+  extends Handler
 {
-  public void onClick(View paramView)
+  public bfhu(bfhm parambfhm, Looper paramLooper)
   {
-    if (this.a != null) {
-      this.a.dismiss();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      bfhm.a(this.a, bfhm.a(this.a, paramMessage.obj));
+      return;
+    case 2: 
+      bfhm.a(this.a, true);
+      bfhm.a(this.a);
+      bfhm.a(this.a, false);
+      return;
+    case 3: 
+      bfhm.a(this.a, paramMessage.obj);
+      return;
     }
-    bbmy.a(BaseApplicationImpl.getApplication(), ajjy.a(2131643813) + "/Tencent/MobileQQ/log/", 1).a();
-    paramView = ThreadManager.newFreeHandlerThread("Qfav-leaker", 10);
-    paramView.start();
-    paramView = paramView.getLooper();
-    if (paramView != null) {
-      new Handler(paramView).post(new QfavLeakHelper.2.1(this));
-    }
+    bfhm.b(this.a, paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfhu
  * JD-Core Version:    0.7.0.1
  */

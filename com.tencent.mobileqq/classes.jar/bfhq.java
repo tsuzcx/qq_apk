@@ -1,47 +1,28 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-class bfhq
-  extends OnPluginInstallListener.Stub
+final class bfhq
+  extends bfht
 {
-  bfhq(bfhp parambfhp) {}
+  public bfim a;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  public bfhq(bfho parambfho, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 2, "install plugin " + paramString + " error! " + paramInt);
-    }
-    try
-    {
-      ThreadManager.post(this.a.a, 5, null, false);
-      return;
-    }
-    catch (Exception paramString) {}
+    super(null);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onInstallFinish(String paramString)
+  public boolean a(String paramString, bfim parambfim)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 2, "install plugin " + paramString + " OK.");
-    }
-    bfhn.a().set(true);
-    try
+    if (paramString.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
     {
-      ThreadManager.post(this.a.a, 5, null, false);
-      return;
+      this.jdField_a_of_type_Bfim = parambfim;
+      return false;
     }
-    catch (Exception paramString) {}
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfhq
  * JD-Core Version:    0.7.0.1
  */

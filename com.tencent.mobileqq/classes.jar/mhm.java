@@ -1,17 +1,21 @@
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PopupDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoLayerUI;
 
-public class mhm
+class mhm
+  implements View.OnClickListener
 {
-  public static PopupDialog a;
-  public int a;
-  public DialogInterface.OnClickListener a;
-  public String a;
-  public boolean a = false;
-  public int b;
-  public DialogInterface.OnClickListener b;
-  public String b;
-  public int c;
+  mhm(mhf parammhf) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!mhf.a(this.a))
+    {
+      this.a.c();
+      mhf.a(this.a).a.c(0L);
+    }
+  }
 }
 
 

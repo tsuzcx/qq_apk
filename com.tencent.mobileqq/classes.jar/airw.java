@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 class airw
-  implements aizh
+  implements INetInfoHandler
 {
-  airw(airv paramairv, boolean paramBoolean) {}
+  public void onNetMobile2None() {}
   
-  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onNetMobile2Wifi(String paramString)
   {
-    this.jdField_a_of_type_Airv.a(this.jdField_a_of_type_Boolean, paramQQAppInterface, paramString1, paramInt1, paramArrayOfInt, paramInt2);
+    ajoo.a("onNetMobile2Wifi");
   }
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    ajoo.a("onNetNone2Wifi");
+  }
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 

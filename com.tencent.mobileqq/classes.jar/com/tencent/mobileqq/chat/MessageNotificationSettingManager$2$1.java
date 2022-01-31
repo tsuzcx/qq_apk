@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.chat;
 
-import alrm;
-import alrn;
-import alrp;
+import amgc;
+import amgd;
+import amgf;
 
 public class MessageNotificationSettingManager$2$1
   implements Runnable
 {
-  public MessageNotificationSettingManager$2$1(alrn paramalrn) {}
+  public MessageNotificationSettingManager$2$1(amgd paramamgd) {}
   
   public void run()
   {
-    if (alrm.a(this.a.jdField_a_of_type_Alrm) != null) {
-      alrm.a(this.a.jdField_a_of_type_Alrm).a(this.a.jdField_a_of_type_Int);
+    if (amgc.a(this.a.jdField_a_of_type_Amgc) != null) {
+      amgc.a(this.a.jdField_a_of_type_Amgc).a(this.a.jdField_a_of_type_Int);
     }
   }
 }

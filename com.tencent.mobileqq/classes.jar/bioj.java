@@ -1,37 +1,26 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+
 public class bioj
+  extends RecyclerView.ViewHolder
 {
-  public static int a;
-  public static int b;
-  public static int c;
-  public float a;
-  public float b;
-  public float c;
-  public float d;
-  public int d;
+  public ImageView a;
   
-  static
+  public bioj(View paramView)
   {
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-    jdField_c_of_type_Int = 3;
+    super(paramView);
+    this.a = ((ImageView)paramView.findViewById(2131377240));
   }
   
-  public bioj() {}
-  
-  public bioj(int paramInt, float paramFloat1, float paramFloat2)
+  public void a()
   {
-    this.jdField_d_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
+    this.a.setImageResource(2130845098);
   }
   
-  public bioj(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void b()
   {
-    this.jdField_d_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
-    this.jdField_d_of_type_Float = paramFloat4;
+    this.a.setImageResource(2130845099);
   }
 }
 

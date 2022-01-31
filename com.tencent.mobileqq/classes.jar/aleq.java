@@ -1,141 +1,128 @@
-import android.database.Cursor;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.QQEntityManagerFactory.SQLiteOpenHelperImpl;
-import com.tencent.mobileqq.utils.SecurityUtile;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.os.IBinder;
+import android.os.Parcel;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-public class aleq
-  extends QQEntityManagerFactory
+class aleq
+  implements aleo
 {
-  public aleq(String paramString)
+  private IBinder a;
+  
+  aleq(IBinder paramIBinder)
   {
-    super(paramString);
+    this.a = paramIBinder;
   }
   
-  private void a(String paramString, android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
+  public void a()
   {
-    System.currentTimeMillis();
-    Cursor localCursor1 = paramSQLiteDatabase.rawQuery("select distinct tbl_name from Sqlite_master", null);
-    ArrayList localArrayList = new ArrayList();
-    String str1;
-    Cursor localCursor2;
-    if (localCursor1 != null) {
-      do
-      {
-        if (!localCursor1.moveToNext()) {
-          break;
-        }
-        str1 = SecurityUtile.b(localCursor1.getString(0));
-        localCursor2 = paramSQLiteDatabase.rawQuery("select sql from sqlite_master where type=? and name=?", new String[] { "table", str1 });
-      } while (localCursor2 == null);
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
-    label395:
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      localParcel1.writeLong(paramLong1);
+      localParcel1.writeLong(paramLong2);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
     for (;;)
     {
-      Field localField;
-      int i;
-      boolean bool;
       try
       {
-        Object localObject = atnp.a(Class.forName(paramString + "." + str1));
-        if (localCursor2.moveToFirst())
+        localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+        if (paramArConfigInfo != null)
         {
-          String[] arrayOfString = SecurityUtile.b(localCursor2.getString(0)).split(",");
-          localObject = ((List)localObject).iterator();
-          if (((Iterator)localObject).hasNext())
+          localParcel1.writeInt(1);
+          paramArConfigInfo.writeToParcel(localParcel1, 0);
+          if (paramArEffectConfig != null)
           {
-            localField = (Field)((Iterator)localObject).next();
-            i = 1;
-            if (i >= arrayOfString.length) {
-              break label395;
+            localParcel1.writeInt(1);
+            paramArEffectConfig.writeToParcel(localParcel1, 0);
+            if (paramARCommonConfigInfo == null) {
+              break label131;
             }
-            String str2 = arrayOfString[i].trim().split(" ")[0];
-            if (!localField.getName().equals(str2)) {
-              break label279;
-            }
-            i = 1;
-            if (i != 0) {
-              continue;
-            }
-            if (!localField.isAnnotationPresent(atnw.class)) {
-              break label286;
-            }
-            i = 0;
-            bool = true;
-            localArrayList.add(atnp.a(str1, localField.getName(), (String)atnp.a.get(localField.getType()), bool, i));
-            continue;
+            localParcel1.writeInt(1);
+            paramARCommonConfigInfo.writeToParcel(localParcel1, 0);
+            this.a.transact(4, localParcel1, localParcel2, 0);
+            localParcel2.readException();
           }
         }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        localParcel1.writeInt(0);
       }
-      catch (ClassNotFoundException localClassNotFoundException)
+      finally
       {
-        localCursor2.close();
+        localParcel2.recycle();
+        localParcel1.recycle();
       }
-      label279:
-      i += 1;
       continue;
-      label286:
-      if (localField.isAnnotationPresent(atnv.class))
-      {
-        i = ((atnv)localField.getAnnotation(atnv.class)).a();
-        bool = true;
-        continue;
-        localCursor1.close();
-        com.tencent.mobileqq.app.SQLiteDatabase.beginTransactionLog();
-        paramSQLiteDatabase.beginTransaction();
-        try
-        {
-          paramString = localArrayList.iterator();
-          while (paramString.hasNext()) {
-            paramSQLiteDatabase.execSQL((String)paramString.next());
-          }
-          paramSQLiteDatabase.setTransactionSuccessful();
-        }
-        finally
-        {
-          paramSQLiteDatabase.endTransaction();
-          com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
-        }
-        paramSQLiteDatabase.endTransaction();
-        com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
-      }
-      else
-      {
-        i = 0;
-        bool = false;
-        continue;
-        i = 0;
-      }
+      label131:
+      localParcel1.writeInt(0);
     }
   }
   
-  public ajrl build(String paramString)
+  public IBinder asBinder()
   {
-    if (this.dbHelper == null)
-    {
-      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, "arkapp_" + paramString + ".db", null, 1);
-      this.dbHelper = new ajrl(this.mInnerDbHelper);
-    }
-    return this.dbHelper;
-  }
-  
-  public String getPackageName()
-  {
-    return getClass().getPackage().getName();
-  }
-  
-  public void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    a(getPackageName(), paramSQLiteDatabase);
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aleq
  * JD-Core Version:    0.7.0.1
  */

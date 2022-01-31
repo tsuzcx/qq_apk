@@ -1,18 +1,40 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
 
 public class vqb
-  implements View.OnLongClickListener
+  extends vpu
 {
-  public vqb(InnerListView paramInnerListView, int paramInt) {}
+  protected EditVideoParams a;
+  public String c;
   
-  public boolean onLongClick(View paramView)
+  public vqb(int paramInt1, String paramString, int paramInt2)
   {
-    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
-      return InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
-    }
-    return false;
+    super(paramInt1, paramString, paramInt2);
+  }
+  
+  public vqb(int paramInt1, String paramString, int paramInt2, EditVideoParams paramEditVideoParams)
+  {
+    super(paramInt1, paramString, paramInt2);
+    this.a = paramEditVideoParams;
+  }
+  
+  @NonNull
+  public Class<? extends vpv> a()
+  {
+    return vqd.class;
+  }
+  
+  @NonNull
+  public vpv a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return new vqd(this, paramContext, paramViewGroup, null);
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

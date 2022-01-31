@@ -1,28 +1,8 @@
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-
-class qzi
-  implements View.OnClickListener
+public abstract interface qzi
 {
-  qzi(qzh paramqzh) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    try
-    {
-      ((ClipboardManager)paramView.getContext().getSystemService("clipboard")).setText(this.a.a.b.getString("id_attribute_text"));
-      return;
-    }
-    catch (Exception paramView)
-    {
-      QLog.d("WebProteusViewCreator", 1, "showAsDropDown error,msg:" + paramView.toString());
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

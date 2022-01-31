@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -12,8 +12,9 @@ import android.media.MediaFormat;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import android.text.TextUtils;
-import baaf;
-import baip;
+import axkh;
+import bbbj;
+import bbjw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
@@ -26,21 +27,25 @@ import com.tencent.mobileqq.mini.sdk.BridgeInfo;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.io.File;
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Pattern;
+import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import vlm;
-import vni;
+import vyi;
+import wae;
 
 public class VideoJsPlugin
   extends BaseJsPlugin
@@ -49,50 +54,59 @@ public class VideoJsPlugin
   public static final String SP_VIDEO_PATH = "miniapp_video_path";
   private static final String TAG = "VideoJsPlugin";
   private static final boolean USE_NATIVE_CAMERA_FLAG = true;
+  private static final ExecutorService copyExecutor = Executors.newFixedThreadPool(5);
+  private static final ExecutorService executor;
+  private static AtomicBoolean isDownloadFFmpeg = new AtomicBoolean(false);
+  private static volatile boolean isFFmpegReady;
   private static final Pattern timePattern = Pattern.compile("(?<=time=)[\\d:.]*");
+  private String FFMPEG_ADDITIONAL_PARAM = QzoneConfig.getInstance().getConfig("qqminiapp", "miniFfmpegVideoCompressParam", "-profile:v main -crf 29");
   private ConcurrentHashMap<Integer, BridgeInfo> bridgeMap;
   private long chooseVideoMaxDuration = QzoneConfig.getInstance().getConfig("qqminiapp", "miniAppChooseVideoMaxDuration", 600000L);
   private long chooseVideoMaxSize = QzoneConfig.getInstance().getConfig("qqminiapp", "miniAppChooseVideoMaxSize", 1610612736L);
   private Set<String> eventMap = new HashSet();
-  private vni ffmpeg;
+  private wae ffmpeg;
   private Activity mActivity;
-  private BroadcastReceiver mAvatarReceiver = new VideoJsPlugin.2(this);
+  private BroadcastReceiver mAvatarReceiver = new VideoJsPlugin.3(this);
   private boolean mAvatarReceiverRegistered;
   private int mCallBackId = -1;
   private String sourceTypeAlbum = "album";
   private String sourceTypeCamera = "camera";
   private boolean waitForResult;
   
+  static
+  {
+    executor = Executors.newSingleThreadExecutor();
+  }
+  
   public VideoJsPlugin()
   {
     this.eventMap.add("chooseVideo");
     this.eventMap.add("saveVideoToPhotosAlbum");
+    loadFFmpeg();
   }
   
   private File createVideoFile(Context paramContext)
   {
-    String str = "MP4_" + System.currentTimeMillis() + "_";
-    paramContext = paramContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
     try
     {
-      paramContext = File.createTempFile(str, ".mp4", paramContext);
+      paramContext = File.createTempFile("MP4_" + System.currentTimeMillis() + "_", ".mp4", paramContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES));
       return paramContext;
     }
-    catch (IOException paramContext)
+    catch (Throwable paramContext)
     {
-      QLog.w("VideoJsPlugin", 1, "createVideoFile: ", paramContext);
+      QLog.e("VideoJsPlugin", 1, "createVideoFile: ", paramContext);
     }
     return null;
   }
   
-  private void execCommand(String paramString1, String paramString2, LocalMediaInfo paramLocalMediaInfo)
+  private void execCommand(String paramString1, String paramString2, LocalMediaInfo paramLocalMediaInfo, int paramInt)
   {
     if (this.ffmpeg == null) {
-      this.ffmpeg = vni.a(BaseApplicationImpl.getApplication());
+      this.ffmpeg = wae.a(BaseApplicationImpl.getApplication());
     }
     AppBrandRuntime localAppBrandRuntime = AppBrandRuntimeContainer.g().getCurrentAppBrandRuntime();
     if (localAppBrandRuntime != null) {
-      showLoading(localAppBrandRuntime, ajjy.a(2131650504));
+      showLoading(localAppBrandRuntime, ajyc.a(2131716295));
     }
     long l1 = System.currentTimeMillis();
     long l2 = paramLocalMediaInfo.mDuration;
@@ -100,14 +114,14 @@ public class VideoJsPlugin
     try
     {
       String[] arrayOfString = paramString1.split(" ");
-      this.ffmpeg.a(arrayOfString, new VideoJsPlugin.4(this, l1, paramString1, paramLocalMediaInfo, paramString2, l2, localAppBrandRuntime));
+      this.ffmpeg.a(arrayOfString, new VideoJsPlugin.6(this, l1, paramString1, paramLocalMediaInfo, paramInt, paramString2, l2, localAppBrandRuntime));
       return;
     }
-    catch (Exception paramString1)
+    catch (Exception paramString2)
     {
       do
       {
-        paramString1.printStackTrace();
+        QLog.w("VideoJsPlugin", 1, "execCommand: failed " + paramString1, paramString2);
       } while (localAppBrandRuntime == null);
       hideLoading(localAppBrandRuntime);
     }
@@ -171,7 +185,7 @@ public class VideoJsPlugin
       } while (localIntent.resolveActivity(paramActivity.getPackageManager()) == null);
       localFile = createVideoFile(paramActivity);
     } while (localFile == null);
-    MiniAppController.getInstance().setActivityResultListener(new VideoJsPlugin.9(this, localFile, paramBoolean1));
+    MiniAppController.getInstance().setActivityResultListener(new VideoJsPlugin.11(this, localFile, paramBoolean1));
     localIntent.putExtra("output", FileProvider7Helper.getUriForFile(paramActivity, localFile));
     int i;
     if (paramInt >= 1)
@@ -208,7 +222,7 @@ public class VideoJsPlugin
     localIntent.putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
     localIntent.putExtra("PhotoConst.IS_PREVIEW_VIDEO", false);
     paramActivity.startActivity(localIntent);
-    baaf.a(paramActivity, false, true);
+    bbbj.a(paramActivity, false, true);
   }
   
   private void handleJsCallBack(String paramString, long paramLong, LocalMediaInfo paramLocalMediaInfo, int paramInt)
@@ -222,6 +236,7 @@ public class VideoJsPlugin
       localJSONObject.put("size", paramLong);
       localJSONObject.put("height", paramLocalMediaInfo.mediaHeight);
       localJSONObject.put("width", paramLocalMediaInfo.mediaWidth);
+      localJSONObject.put("__plugin_ready__", new File(axkh.a(MobileQQ.getContext())).exists());
       handleNativeResponseOk(paramInt, "chooseVideo", localJSONObject);
       return;
     }
@@ -269,18 +284,18 @@ public class VideoJsPlugin
   private void handleVideoResult(File paramFile, boolean paramBoolean)
   {
     // Byte code:
-    //   0: getstatic 314	android/os/Build$VERSION:SDK_INT	I
+    //   0: getstatic 362	android/os/Build$VERSION:SDK_INT	I
     //   3: bipush 16
     //   5: if_icmpge +4 -> 9
     //   8: return
-    //   9: new 586	java/io/FileInputStream
+    //   9: new 658	java/io/FileInputStream
     //   12: dup
     //   13: aload_1
-    //   14: invokespecial 589	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   14: invokespecial 661	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   17: astore 6
-    //   19: new 316	android/media/MediaExtractor
+    //   19: new 364	android/media/MediaExtractor
     //   22: dup
-    //   23: invokespecial 590	android/media/MediaExtractor:<init>	()V
+    //   23: invokespecial 662	android/media/MediaExtractor:<init>	()V
     //   26: astore 5
     //   28: aload 6
     //   30: astore 8
@@ -288,14 +303,14 @@ public class VideoJsPlugin
     //   34: astore 7
     //   36: aload 5
     //   38: aload 6
-    //   40: invokevirtual 594	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   43: invokevirtual 598	android/media/MediaExtractor:setDataSource	(Ljava/io/FileDescriptor;)V
+    //   40: invokevirtual 666	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
+    //   43: invokevirtual 670	android/media/MediaExtractor:setDataSource	(Ljava/io/FileDescriptor;)V
     //   46: aload 6
     //   48: astore 8
     //   50: aload 5
     //   52: astore 7
     //   54: aload 5
-    //   56: invokestatic 600	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/VideoJsPlugin:getAndSelectVideoTrackIndex	(Landroid/media/MediaExtractor;)I
+    //   56: invokestatic 672	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/VideoJsPlugin:getAndSelectVideoTrackIndex	(Landroid/media/MediaExtractor;)I
     //   59: istore_3
     //   60: iload_3
     //   61: iconst_m1
@@ -306,15 +321,15 @@ public class VideoJsPlugin
     //   71: astore 7
     //   73: aload 5
     //   75: iload_3
-    //   76: invokevirtual 335	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
+    //   76: invokevirtual 383	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
     //   79: astore 9
     //   81: aload 6
     //   83: astore 8
     //   85: aload 5
     //   87: astore 7
-    //   89: new 279	com/tencent/mobileqq/activity/photo/LocalMediaInfo
+    //   89: new 325	com/tencent/mobileqq/activity/photo/LocalMediaInfo
     //   92: dup
-    //   93: invokespecial 601	com/tencent/mobileqq/activity/photo/LocalMediaInfo:<init>	()V
+    //   93: invokespecial 673	com/tencent/mobileqq/activity/photo/LocalMediaInfo:<init>	()V
     //   96: astore 4
     //   98: iconst_0
     //   99: istore_3
@@ -323,16 +338,16 @@ public class VideoJsPlugin
     //   104: aload 5
     //   106: astore 7
     //   108: aload 9
-    //   110: ldc_w 603
-    //   113: invokevirtual 606	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   110: ldc_w 675
+    //   113: invokevirtual 678	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   116: ifeq +408 -> 524
     //   119: aload 6
     //   121: astore 8
     //   123: aload 5
     //   125: astore 7
     //   127: aload 9
-    //   129: ldc_w 603
-    //   132: invokevirtual 610	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   129: ldc_w 675
+    //   132: invokevirtual 682	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
     //   135: istore_3
     //   136: goto +388 -> 524
     //   139: aload 6
@@ -341,70 +356,70 @@ public class VideoJsPlugin
     //   145: astore 7
     //   147: aload 4
     //   149: aload 9
-    //   151: ldc_w 526
-    //   154: invokevirtual 610	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   157: putfield 534	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
+    //   151: ldc_w 574
+    //   154: invokevirtual 682	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   157: putfield 582	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
     //   160: aload 6
     //   162: astore 8
     //   164: aload 5
     //   166: astore 7
     //   168: aload 4
     //   170: aload 9
-    //   172: ldc_w 531
-    //   175: invokevirtual 610	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   178: putfield 529	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
+    //   172: ldc_w 579
+    //   175: invokevirtual 682	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   178: putfield 577	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
     //   181: aload 6
     //   183: astore 8
     //   185: aload 5
     //   187: astore 7
     //   189: aload 4
     //   191: aload 9
-    //   193: ldc_w 612
-    //   196: invokevirtual 616	android/media/MediaFormat:getLong	(Ljava/lang/String;)J
+    //   193: ldc_w 684
+    //   196: invokevirtual 688	android/media/MediaFormat:getLong	(Ljava/lang/String;)J
     //   199: l2d
-    //   200: ldc2_w 617
+    //   200: ldc2_w 689
     //   203: ddiv
-    //   204: invokestatic 621	java/lang/Math:round	(D)J
-    //   207: putfield 282	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mDuration	J
+    //   204: invokestatic 693	java/lang/Math:round	(D)J
+    //   207: putfield 328	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mDuration	J
     //   210: aload 6
     //   212: astore 8
     //   214: aload 5
     //   216: astore 7
     //   218: aload 4
     //   220: aload_1
-    //   221: invokevirtual 623	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   224: putfield 626	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
+    //   221: invokevirtual 695	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   224: putfield 698	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
     //   227: aload 6
     //   229: astore 8
     //   231: aload 5
     //   233: astore 7
     //   235: aload 4
     //   237: aload_1
-    //   238: invokevirtual 629	java/io/File:length	()J
-    //   241: putfield 632	com/tencent/mobileqq/activity/photo/LocalMediaInfo:fileSize	J
+    //   238: invokevirtual 701	java/io/File:length	()J
+    //   241: putfield 704	com/tencent/mobileqq/activity/photo/LocalMediaInfo:fileSize	J
     //   244: aload 4
     //   246: astore_1
     //   247: aload 6
     //   249: ifnull +8 -> 257
     //   252: aload 6
-    //   254: invokevirtual 635	java/io/FileInputStream:close	()V
+    //   254: invokevirtual 707	java/io/FileInputStream:close	()V
     //   257: aload_1
     //   258: astore 4
     //   260: aload 5
     //   262: ifnull +11 -> 273
     //   265: aload 5
-    //   267: invokevirtual 638	android/media/MediaExtractor:release	()V
+    //   267: invokevirtual 710	android/media/MediaExtractor:release	()V
     //   270: aload_1
     //   271: astore 4
     //   273: aload 4
     //   275: ifnonnull +149 -> 424
     //   278: aload_0
     //   279: aload_0
-    //   280: getfield 58	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/VideoJsPlugin:mCallBackId	I
-    //   283: ldc 104
+    //   280: getfield 86	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/VideoJsPlugin:mCallBackId	I
+    //   283: ldc 141
     //   285: aconst_null
-    //   286: ldc_w 540
-    //   289: invokespecial 544	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/VideoJsPlugin:handleNativeResponseFail	(ILjava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)V
+    //   286: ldc_w 610
+    //   289: invokespecial 614	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/VideoJsPlugin:handleNativeResponseFail	(ILjava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)V
     //   292: return
     //   293: aload 6
     //   295: astore 8
@@ -412,18 +427,18 @@ public class VideoJsPlugin
     //   299: astore 7
     //   301: aload 4
     //   303: aload 9
-    //   305: ldc_w 531
-    //   308: invokevirtual 610	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   311: putfield 534	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
+    //   305: ldc_w 579
+    //   308: invokevirtual 682	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   311: putfield 582	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
     //   314: aload 6
     //   316: astore 8
     //   318: aload 5
     //   320: astore 7
     //   322: aload 4
     //   324: aload 9
-    //   326: ldc_w 526
-    //   329: invokevirtual 610	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   332: putfield 529	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
+    //   326: ldc_w 574
+    //   329: invokevirtual 682	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   332: putfield 577	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
     //   335: goto -154 -> 181
     //   338: astore 7
     //   340: aload 4
@@ -436,19 +451,19 @@ public class VideoJsPlugin
     //   353: astore 7
     //   355: ldc 14
     //   357: iconst_1
-    //   358: ldc_w 640
+    //   358: ldc_w 712
     //   361: aload 4
-    //   363: invokestatic 243	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   363: invokestatic 355	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   366: aload 6
     //   368: ifnull +8 -> 376
     //   371: aload 6
-    //   373: invokevirtual 635	java/io/FileInputStream:close	()V
+    //   373: invokevirtual 707	java/io/FileInputStream:close	()V
     //   376: aload_1
     //   377: astore 4
     //   379: aload 5
     //   381: ifnull -108 -> 273
     //   384: aload 5
-    //   386: invokevirtual 638	android/media/MediaExtractor:release	()V
+    //   386: invokevirtual 710	android/media/MediaExtractor:release	()V
     //   389: aload_1
     //   390: astore 4
     //   392: goto -119 -> 273
@@ -460,11 +475,11 @@ public class VideoJsPlugin
     //   402: aload 6
     //   404: ifnull +8 -> 412
     //   407: aload 6
-    //   409: invokevirtual 635	java/io/FileInputStream:close	()V
+    //   409: invokevirtual 707	java/io/FileInputStream:close	()V
     //   412: aload 7
     //   414: ifnull +8 -> 422
     //   417: aload 7
-    //   419: invokevirtual 638	android/media/MediaExtractor:release	()V
+    //   419: invokevirtual 710	android/media/MediaExtractor:release	()V
     //   422: aload_1
     //   423: athrow
     //   424: iload_2
@@ -472,17 +487,17 @@ public class VideoJsPlugin
     //   428: aload_0
     //   429: aload 4
     //   431: iconst_1
-    //   432: invokespecial 164	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/VideoJsPlugin:startCompress	(Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;Z)V
+    //   432: invokespecial 222	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/VideoJsPlugin:startCompress	(Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;Z)V
     //   435: return
     //   436: aload_0
-    //   437: invokestatic 376	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
+    //   437: invokestatic 424	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
     //   440: aload 4
-    //   442: getfield 626	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
-    //   445: invokevirtual 643	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getWxFilePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   442: getfield 698	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
+    //   445: invokevirtual 715	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getWxFilePath	(Ljava/lang/String;)Ljava/lang/String;
     //   448: aload 4
-    //   450: getfield 632	com/tencent/mobileqq/activity/photo/LocalMediaInfo:fileSize	J
+    //   450: getfield 704	com/tencent/mobileqq/activity/photo/LocalMediaInfo:fileSize	J
     //   453: aload 4
-    //   455: invokespecial 170	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/VideoJsPlugin:respGetVideo	(Ljava/lang/String;JLcom/tencent/mobileqq/activity/photo/LocalMediaInfo;)V
+    //   455: invokespecial 228	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/VideoJsPlugin:respGetVideo	(Ljava/lang/String;JLcom/tencent/mobileqq/activity/photo/LocalMediaInfo;)V
     //   458: return
     //   459: astore 4
     //   461: goto -204 -> 257
@@ -533,16 +548,16 @@ public class VideoJsPlugin
     //   0	540	2	paramBoolean	boolean
     //   59	476	3	i	int
     //   96	358	4	localObject1	Object
-    //   459	1	4	localIOException1	IOException
-    //   464	1	4	localIOException2	IOException
-    //   469	1	4	localIOException3	IOException
-    //   489	1	4	localIOException4	IOException
-    //   502	1	4	localIOException5	IOException
-    //   512	1	4	localIOException6	IOException
+    //   459	1	4	localIOException1	java.io.IOException
+    //   464	1	4	localIOException2	java.io.IOException
+    //   469	1	4	localIOException3	java.io.IOException
+    //   489	1	4	localIOException4	java.io.IOException
+    //   502	1	4	localIOException5	java.io.IOException
+    //   512	1	4	localIOException6	java.io.IOException
     //   26	480	5	localMediaExtractor1	MediaExtractor
     //   17	476	6	localObject2	Object
     //   34	287	7	localMediaExtractor2	MediaExtractor
-    //   338	6	7	localIOException7	IOException
+    //   338	6	7	localIOException7	java.io.IOException
     //   353	124	7	localMediaExtractor3	MediaExtractor
     //   30	453	8	localObject3	Object
     //   79	246	9	localMediaFormat	MediaFormat
@@ -586,7 +601,28 @@ public class VideoJsPlugin
   
   private void hideLoading(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppBrandTask.runTaskOnUiThread(new VideoJsPlugin.7(this, paramAppBrandRuntime));
+    AppBrandTask.runTaskOnUiThread(new VideoJsPlugin.9(this, paramAppBrandRuntime));
+  }
+  
+  private static void loadFFmpeg()
+  {
+    if (isFFmpegReady) {
+      return;
+    }
+    int i = VideoEnvironment.a("AVCodec", MobileQQ.sMobileQQ.getApplicationContext());
+    QLog.i("VideoJsPlugin", 1, "loadFFmpeg: " + i);
+    if (i == 0)
+    {
+      QLog.i("VideoJsPlugin", 1, "loadFFmpeg: is already load");
+      isFFmpegReady = true;
+      return;
+    }
+    if (!isDownloadFFmpeg.compareAndSet(false, true))
+    {
+      QLog.i("VideoJsPlugin", 1, "loadFFmpeg: is downloading already");
+      return;
+    }
+    executor.execute(new VideoJsPlugin.1());
   }
   
   private void registerAvatarReceiver(Activity paramActivity)
@@ -616,7 +652,7 @@ public class VideoJsPlugin
       return;
     }
     int i = this.mCallBackId;
-    ThreadManager.getFileThreadHandler().post(new VideoJsPlugin.3(this, paramString, paramLocalMediaInfo, paramLong, i));
+    ThreadManager.getFileThreadHandler().post(new VideoJsPlugin.4(this, paramString, paramLocalMediaInfo, paramLong, i));
   }
   
   /* Error */
@@ -633,43 +669,43 @@ public class VideoJsPlugin
     //   9: ifnonnull +14 -> 23
     //   12: ldc 14
     //   14: iconst_2
-    //   15: ldc_w 687
-    //   18: invokestatic 689	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   15: ldc_w 792
+    //   18: invokestatic 794	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   21: iload_3
     //   22: ireturn
     //   23: aload_2
     //   24: ifnonnull +14 -> 38
     //   27: ldc 14
     //   29: iconst_2
-    //   30: ldc_w 691
-    //   33: invokestatic 689	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   30: ldc_w 796
+    //   33: invokestatic 794	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   36: iconst_0
     //   37: ireturn
-    //   38: invokestatic 376	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
-    //   41: ldc_w 693
-    //   44: invokevirtual 696	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
+    //   38: invokestatic 424	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
+    //   41: ldc_w 798
+    //   44: invokevirtual 801	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
     //   47: astore 6
-    //   49: new 231	java/io/File
+    //   49: new 277	java/io/File
     //   52: dup
     //   53: aload 6
-    //   55: invokespecial 697	java/io/File:<init>	(Ljava/lang/String;)V
+    //   55: invokespecial 596	java/io/File:<init>	(Ljava/lang/String;)V
     //   58: astore 11
     //   60: aload 11
-    //   62: invokevirtual 700	java/io/File:exists	()Z
+    //   62: invokevirtual 599	java/io/File:exists	()Z
     //   65: ifeq +9 -> 74
     //   68: aload 11
-    //   70: invokevirtual 703	java/io/File:delete	()Z
+    //   70: invokevirtual 804	java/io/File:delete	()Z
     //   73: pop
-    //   74: new 705	java/io/FileOutputStream
+    //   74: new 806	java/io/FileOutputStream
     //   77: dup
     //   78: aload 11
-    //   80: invokespecial 706	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   80: invokespecial 807	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   83: astore 7
-    //   85: new 708	java/io/BufferedOutputStream
+    //   85: new 809	java/io/BufferedOutputStream
     //   88: dup
     //   89: aload 7
     //   91: sipush 4096
-    //   94: invokespecial 711	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;I)V
+    //   94: invokespecial 812	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;I)V
     //   97: astore 10
     //   99: aload 10
     //   101: astore 9
@@ -678,10 +714,10 @@ public class VideoJsPlugin
     //   107: iload 5
     //   109: istore 4
     //   111: aload_1
-    //   112: getstatic 717	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   112: getstatic 818	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   115: bipush 100
     //   117: aload 10
-    //   119: invokevirtual 722	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   119: invokevirtual 823	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   122: istore_3
     //   123: aload 10
     //   125: astore 9
@@ -690,7 +726,7 @@ public class VideoJsPlugin
     //   131: iload_3
     //   132: istore 4
     //   134: aload 10
-    //   136: invokevirtual 725	java/io/BufferedOutputStream:flush	()V
+    //   136: invokevirtual 826	java/io/BufferedOutputStream:flush	()V
     //   139: aload 10
     //   141: astore 9
     //   143: aload 7
@@ -698,21 +734,21 @@ public class VideoJsPlugin
     //   147: iload_3
     //   148: istore 4
     //   150: aload 11
-    //   152: invokevirtual 623	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   152: invokevirtual 695	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   155: astore_1
     //   156: aload 10
     //   158: astore 9
     //   160: aload 7
     //   162: astore 8
     //   164: aload_2
-    //   165: invokestatic 376	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
+    //   165: invokestatic 424	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
     //   168: aload_1
-    //   169: invokevirtual 643	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getWxFilePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   172: putfield 506	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbnailPath	Ljava/lang/String;
+    //   169: invokevirtual 715	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getWxFilePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   172: putfield 554	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbnailPath	Ljava/lang/String;
     //   175: aload 7
     //   177: ifnull +8 -> 185
     //   180: aload 7
-    //   182: invokevirtual 726	java/io/FileOutputStream:close	()V
+    //   182: invokevirtual 827	java/io/FileOutputStream:close	()V
     //   185: aload_1
     //   186: astore 6
     //   188: iload_3
@@ -720,35 +756,35 @@ public class VideoJsPlugin
     //   191: aload 10
     //   193: ifnull +14 -> 207
     //   196: aload 10
-    //   198: invokevirtual 727	java/io/BufferedOutputStream:close	()V
+    //   198: invokevirtual 828	java/io/BufferedOutputStream:close	()V
     //   201: iload_3
     //   202: istore 4
     //   204: aload_1
     //   205: astore 6
     //   207: iload 4
     //   209: istore_3
-    //   210: invokestatic 324	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   210: invokestatic 372	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   213: ifeq -192 -> 21
     //   216: ldc 14
     //   218: iconst_2
-    //   219: new 194	java/lang/StringBuilder
+    //   219: new 240	java/lang/StringBuilder
     //   222: dup
-    //   223: invokespecial 195	java/lang/StringBuilder:<init>	()V
-    //   226: ldc_w 729
-    //   229: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   223: invokespecial 241	java/lang/StringBuilder:<init>	()V
+    //   226: ldc_w 830
+    //   229: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   232: aload 6
-    //   234: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   237: invokevirtual 216	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   240: invokestatic 290	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   234: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   237: invokevirtual 262	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   240: invokestatic 336	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   243: iload 4
     //   245: ireturn
     //   246: astore_2
     //   247: aload_2
-    //   248: invokevirtual 730	java/io/IOException:printStackTrace	()V
+    //   248: invokevirtual 831	java/io/IOException:printStackTrace	()V
     //   251: goto -66 -> 185
     //   254: astore_2
     //   255: aload_2
-    //   256: invokevirtual 730	java/io/IOException:printStackTrace	()V
+    //   256: invokevirtual 831	java/io/IOException:printStackTrace	()V
     //   259: aload_1
     //   260: astore 6
     //   262: iload_3
@@ -771,7 +807,7 @@ public class VideoJsPlugin
     //   288: astore 9
     //   290: aload 7
     //   292: astore 8
-    //   294: invokestatic 324	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   294: invokestatic 372	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   297: ifeq +21 -> 318
     //   300: aload_2
     //   301: astore 9
@@ -779,13 +815,13 @@ public class VideoJsPlugin
     //   305: astore 8
     //   307: ldc 14
     //   309: iconst_2
-    //   310: ldc_w 732
+    //   310: ldc_w 833
     //   313: aload 6
-    //   315: invokestatic 243	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   315: invokestatic 355	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   318: aload 7
     //   320: ifnull +8 -> 328
     //   323: aload 7
-    //   325: invokevirtual 726	java/io/FileOutputStream:close	()V
+    //   325: invokevirtual 827	java/io/FileOutputStream:close	()V
     //   328: aload_1
     //   329: astore 6
     //   331: iload_3
@@ -793,7 +829,7 @@ public class VideoJsPlugin
     //   334: aload_2
     //   335: ifnull -128 -> 207
     //   338: aload_2
-    //   339: invokevirtual 727	java/io/BufferedOutputStream:close	()V
+    //   339: invokevirtual 828	java/io/BufferedOutputStream:close	()V
     //   342: aload_1
     //   343: astore 6
     //   345: iload_3
@@ -801,7 +837,7 @@ public class VideoJsPlugin
     //   348: goto -141 -> 207
     //   351: astore_2
     //   352: aload_2
-    //   353: invokevirtual 730	java/io/IOException:printStackTrace	()V
+    //   353: invokevirtual 831	java/io/IOException:printStackTrace	()V
     //   356: aload_1
     //   357: astore 6
     //   359: iload_3
@@ -809,7 +845,7 @@ public class VideoJsPlugin
     //   362: goto -155 -> 207
     //   365: astore 6
     //   367: aload 6
-    //   369: invokevirtual 730	java/io/IOException:printStackTrace	()V
+    //   369: invokevirtual 831	java/io/IOException:printStackTrace	()V
     //   372: goto -44 -> 328
     //   375: astore_1
     //   376: aconst_null
@@ -819,20 +855,20 @@ public class VideoJsPlugin
     //   382: aload 7
     //   384: ifnull +8 -> 392
     //   387: aload 7
-    //   389: invokevirtual 726	java/io/FileOutputStream:close	()V
+    //   389: invokevirtual 827	java/io/FileOutputStream:close	()V
     //   392: aload 9
     //   394: ifnull +8 -> 402
     //   397: aload 9
-    //   399: invokevirtual 727	java/io/BufferedOutputStream:close	()V
+    //   399: invokevirtual 828	java/io/BufferedOutputStream:close	()V
     //   402: aload_1
     //   403: athrow
     //   404: astore_2
     //   405: aload_2
-    //   406: invokevirtual 730	java/io/IOException:printStackTrace	()V
+    //   406: invokevirtual 831	java/io/IOException:printStackTrace	()V
     //   409: goto -17 -> 392
     //   412: astore_2
     //   413: aload_2
-    //   414: invokevirtual 730	java/io/IOException:printStackTrace	()V
+    //   414: invokevirtual 831	java/io/IOException:printStackTrace	()V
     //   417: goto -15 -> 402
     //   420: astore_1
     //   421: aconst_null
@@ -877,7 +913,7 @@ public class VideoJsPlugin
     //   1	458	4	bool2	boolean
     //   4	104	5	bool3	boolean
     //   47	311	6	localObject1	Object
-    //   365	75	6	localIOException	IOException
+    //   365	75	6	localIOException	java.io.IOException
     //   446	17	6	localLocalMediaInfo	LocalMediaInfo
     //   470	1	6	localException	Exception
     //   83	348	7	localObject2	Object
@@ -911,42 +947,66 @@ public class VideoJsPlugin
   
   private void showLoading(AppBrandRuntime paramAppBrandRuntime, String paramString)
   {
-    AppBrandTask.runTaskOnUiThread(new VideoJsPlugin.5(this, paramAppBrandRuntime, paramString));
+    AppBrandTask.runTaskOnUiThread(new VideoJsPlugin.7(this, paramAppBrandRuntime, paramString));
   }
   
   private void startCompress(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    try
+    for (;;)
     {
-      int i = paramLocalMediaInfo.path.lastIndexOf(".");
+      int i;
+      Object localObject;
       String str;
-      if (i < 0)
+      try
       {
-        localObject = "";
+        i = paramLocalMediaInfo.path.lastIndexOf(".");
+        if (i < 0)
+        {
+          localObject = "";
+          if (paramLocalMediaInfo.path.contains(" ")) {
+            copyExecutor.execute(new VideoJsPlugin.5(this, paramLocalMediaInfo, (String)localObject, paramBoolean));
+          }
+        }
+        else
+        {
+          localObject = paramLocalMediaInfo.path.substring(i + 1);
+          continue;
+        }
         str = MiniAppFileManager.getInstance().getTmpPath((String)localObject);
         localObject = new File(str);
         if (((File)localObject).exists()) {
           ((File)localObject).delete();
         }
         QLog.i("VideoJsPlugin", 2, "startCompress: " + paramLocalMediaInfo.orientation);
-        i = paramLocalMediaInfo.mediaHeight / 2;
-        if (!paramBoolean) {
-          break label166;
+        if (paramLocalMediaInfo.mediaWidth > 3000) {
+          break label314;
+        }
+        if (paramLocalMediaInfo.mediaHeight <= 3000) {
+          break label270;
         }
       }
-      label166:
-      for (Object localObject = "-i " + paramLocalMediaInfo.path + " -r 24 -y -vf scale=-1:" + i + " -c:v libx264 -preset ultrafast " + str;; localObject = "-i " + paramLocalMediaInfo.path + " -r 24 -y -c:v libx264 -preset ultrafast " + str)
+      catch (Exception paramLocalMediaInfo)
       {
-        execCommand((String)localObject, str, paramLocalMediaInfo);
+        int j;
+        QLog.e("VideoJsPlugin", 1, "startCompress=e=" + paramLocalMediaInfo.getMessage());
         return;
-        localObject = paramLocalMediaInfo.path.substring(i + 1);
-        break;
       }
-      return;
-    }
-    catch (Exception paramLocalMediaInfo)
-    {
-      QLog.e("VideoJsPlugin", 1, "startCompress=e=" + paramLocalMediaInfo.getMessage());
+      j = paramLocalMediaInfo.mediaHeight / i;
+      if (paramBoolean)
+      {
+        localObject = "-i " + paramLocalMediaInfo.path + " -r 20 -y -vf scale=-1:" + j + " " + this.FFMPEG_ADDITIONAL_PARAM + " " + str;
+        execCommand((String)localObject, str, paramLocalMediaInfo, i);
+        return;
+        label270:
+        i = 2;
+      }
+      else
+      {
+        localObject = "-i " + paramLocalMediaInfo.path + " -r 20 -y -c:v libx264 -preset ultrafast " + str;
+        continue;
+        label314:
+        i = 4;
+      }
     }
   }
   
@@ -974,13 +1034,14 @@ public class VideoJsPlugin
   
   private void updateLoading(AppBrandRuntime paramAppBrandRuntime, String paramString)
   {
-    AppBrandTask.runTaskOnUiThread(new VideoJsPlugin.6(this, paramAppBrandRuntime, paramString));
+    AppBrandTask.runTaskOnUiThread(new VideoJsPlugin.8(this, paramAppBrandRuntime, paramString));
   }
   
   public String handleNativeRequest(String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
   {
     i = 0;
     QLog.d("VideoJsPlugin", 2, "handleNativeRequest event=" + paramString1 + ",jsonParams=" + paramString2 + ",callbackId=" + paramInt + ",webview=" + paramJsRuntime);
+    loadFFmpeg();
     paramJsRuntime = new BridgeInfo(paramJsRuntime, paramInt);
     if (this.bridgeMap != null) {
       this.bridgeMap.put(Integer.valueOf(paramInt), paramJsRuntime);
@@ -990,7 +1051,7 @@ public class VideoJsPlugin
     {
       paramString2 = new JSONObject(paramString2);
       if (!"chooseVideo".equals(paramString1)) {
-        break label420;
+        break label423;
       }
       registerAvatarReceiver(this.jsPluginEngine.getActivityContext());
       paramJsRuntime = paramString2.optJSONArray("sourceType");
@@ -1017,14 +1078,14 @@ public class VideoJsPlugin
         if ("saveVideoToPhotosAlbum".equals(paramString1))
         {
           paramString2 = paramString2.optString("filePath");
-          if (baip.a(paramString2))
+          if (bbjw.a(paramString2))
           {
             handleNativeResponseFail(paramInt, paramString1, null, "fail file not exists");
           }
           else
           {
             paramString2 = MiniAppFileManager.getInstance().getAbsolutePath(paramString2);
-            if (vlm.a(this.jsPluginEngine.getActivityContext(), paramString2, getSaveVideoFilePath()))
+            if (vyi.a(this.jsPluginEngine.getActivityContext(), paramString2, getSaveVideoFilePath()))
             {
               handleNativeResponseOk(paramInt, paramString1, null);
             }
@@ -1055,7 +1116,7 @@ public class VideoJsPlugin
       }
       i = paramString2.optInt("maxDuration");
       if (paramJsRuntime.length() == 2) {
-        AppBrandTask.runTaskOnUiThread(new VideoJsPlugin.1(this, i, bool1, bool2));
+        AppBrandTask.runTaskOnUiThread(new VideoJsPlugin.2(this, i, bool1, bool2));
       }
       for (;;)
       {

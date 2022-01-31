@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import ahmj;
+import ahzb;
 
 public class RDBaseDataManager$1
   implements Runnable
 {
-  public RDBaseDataManager$1(ahmj paramahmj) {}
+  public RDBaseDataManager$1(ahzb paramahzb) {}
   
   public void run()
   {
-    ahmj.a(this.this$0);
+    ahzb.a(this.this$0);
   }
 }
 

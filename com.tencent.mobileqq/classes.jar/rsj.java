@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
+import android.view.View;
 
-public final class rsj
-  implements Parcelable.Creator<ProfileParams.CurLoginUsr>
+public abstract interface rsj
 {
-  public ProfileParams.CurLoginUsr a(Parcel paramParcel)
-  {
-    return new ProfileParams.CurLoginUsr(paramParcel.readString(), paramParcel.readString());
-  }
+  public abstract void a(View paramView, int paramInt, long paramLong);
   
-  public ProfileParams.CurLoginUsr[] a(int paramInt)
-  {
-    return new ProfileParams.CurLoginUsr[paramInt];
-  }
+  public abstract void b(View paramView, int paramInt, long paramLong);
 }
 
 

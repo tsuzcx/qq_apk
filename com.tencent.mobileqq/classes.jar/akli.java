@@ -1,16 +1,31 @@
-public abstract interface akli
+import com.tencent.mobileqq.app.automator.step.CheckFriendsLastLoginInfo;
+
+public class akli
+  extends ajxl
 {
-  public abstract void a();
+  private akli(CheckFriendsLastLoginInfo paramCheckFriendsLastLoginInfo) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  protected void onUpdateLastLoginInfo(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i = 0;
+    if (!paramBoolean1) {
+      this.a.a(6);
+    }
+    for (;;)
+    {
+      if (i != 0) {
+        this.a.a(7);
+      }
+      return;
+      if (paramBoolean2) {
+        i = 1;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akli
  * JD-Core Version:    0.7.0.1
  */

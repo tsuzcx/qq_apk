@@ -1,14 +1,28 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class aeij
-  implements bepb
+  implements DialogInterface.OnClickListener
 {
-  aeij(aegy paramaegy) {}
+  aeij(aeif paramaeif, int paramInt) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!this.a.al) && (this.a.am))
+    if (paramInt == 1)
     {
-      this.a.al = true;
-      ruf.a("SUBSCRIPT_AIO_COST", null);
+      if (this.jdField_a_of_type_Int != 0) {
+        break label47;
+      }
+      this.jdField_a_of_type_Aeif.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(1) });
+    }
+    for (;;)
+    {
+      aeif.b(this.jdField_a_of_type_Aeif, null);
+      return;
+      label47:
+      if (this.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_Aeif.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(2) });
+      }
     }
   }
 }

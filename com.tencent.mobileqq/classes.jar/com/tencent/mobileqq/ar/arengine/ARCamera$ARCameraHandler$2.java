@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import akqy;
-import akra;
+import alfk;
+import alfm;
 
 public class ARCamera$ARCameraHandler$2
   implements Runnable
 {
-  public ARCamera$ARCameraHandler$2(akra paramakra) {}
+  public ARCamera$ARCameraHandler$2(alfm paramalfm) {}
   
   public void run()
   {
-    akqy.a(this.a.a);
+    alfk.a(this.a.a);
   }
 }
 

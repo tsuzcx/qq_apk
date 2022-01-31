@@ -1,16 +1,39 @@
-public abstract interface bcch
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.webview.swift.UnVisibleWebViewFragment;
+import com.tencent.qphone.base.util.QLog;
+
+public class bcch
+  implements View.OnLongClickListener
 {
-  public abstract void a(bcci parambcci);
+  public bcch(UnVisibleWebViewFragment paramUnVisibleWebViewFragment) {}
   
-  public abstract void b(bcci parambcci);
-  
-  public abstract void c(bcci parambcci);
-  
-  public abstract void d(bcci parambcci);
+  public boolean onLongClick(View paramView)
+  {
+    if (!this.a.jdField_a_of_type_Bces.a("web_view_long_click", true))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
+      }
+      return true;
+    }
+    if (!this.a.jdField_a_of_type_Bces.a("image_long_click", false))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
+      }
+      return false;
+    }
+    bced localbced = (bced)this.a.jdField_a_of_type_Bcdq.a(8);
+    if ((localbced != null) && (localbced.a(paramView))) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcch
  * JD-Core Version:    0.7.0.1
  */

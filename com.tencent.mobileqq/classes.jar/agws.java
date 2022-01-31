@@ -1,10 +1,8 @@
+import android.os.Bundle;
+
 public abstract interface agws
 {
-  public abstract void l();
-  
-  public abstract void m();
-  
-  public abstract void n();
+  public abstract void a(Bundle paramBundle);
 }
 
 

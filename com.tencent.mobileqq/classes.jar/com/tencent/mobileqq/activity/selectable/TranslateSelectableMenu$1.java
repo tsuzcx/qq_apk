@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.selectable;
 
-import aciy;
-import ahpw;
+import actn;
+import aico;
 import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.mobileqq.widget.ContainerView;
 
 public class TranslateSelectableMenu$1
   implements Runnable
 {
-  public TranslateSelectableMenu$1(ahpw paramahpw, ContainerView paramContainerView) {}
+  public TranslateSelectableMenu$1(aico paramaico, ContainerView paramContainerView) {}
   
   public void run()
   {
-    this.a.a.setLineSpacing(aciy.a(6.0F, this.a.getResources()), 1.0F);
+    this.a.a.setLineSpacing(actn.a(6.0F, this.a.getResources()), 1.0F);
     this.a.a.setTextSize(1, 24.0F);
     this.a.a.setGravity(8388611);
-    int i = aciy.a(16.0F, this.a.getResources());
-    int j = aciy.a(12.0F, this.a.getResources());
+    int i = actn.a(16.0F, this.a.getResources());
+    int j = actn.a(12.0F, this.a.getResources());
     this.a.a.setPadding(j, i, j, i);
   }
 }

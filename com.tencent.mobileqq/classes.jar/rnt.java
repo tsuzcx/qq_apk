@@ -1,146 +1,331 @@
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class rnt
 {
-  private static rnt jdField_a_of_type_Rnt;
-  private ToServiceMsg jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  
-  public static rnt a()
+  public static Bitmap a(Window paramWindow, Bitmap paramBitmap)
   {
-    if (jdField_a_of_type_Rnt == null) {}
     try
     {
-      if (jdField_a_of_type_Rnt == null) {
-        jdField_a_of_type_Rnt = new rnt();
+      if ((ImmersiveUtils.isSupporImmersive() == 1) && ((paramWindow.getAttributes().flags & 0x400) != 1024))
+      {
+        int i = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getContext());
+        return Bitmap.createBitmap(paramBitmap, 0, i, paramBitmap.getWidth(), paramBitmap.getHeight() - i, null, false);
       }
-      return jdField_a_of_type_Rnt;
+      paramWindow = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), null, false);
+      return paramWindow;
     }
-    finally {}
+    catch (OutOfMemoryError paramWindow)
+    {
+      paramWindow.printStackTrace();
+      return null;
+    }
+    catch (Exception paramWindow)
+    {
+      for (;;)
+      {
+        paramWindow.printStackTrace();
+      }
+    }
+  }
+  
+  public static Pair<String, Bitmap> a(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ScreenShotImageUtil", 2, "generateScreenShotImageWithQRCode->begin time:" + System.currentTimeMillis());
+    }
+    for (;;)
+    {
+      try
+      {
+        localResources = BaseApplicationImpl.getContext().getResources();
+        paramString1 = BitmapFactory.decodeFile(paramString1);
+        k = paramString1.getWidth();
+        m = paramString1.getHeight();
+        int n = actn.a(0.5F, localResources);
+        int i = actn.a(90.0F, localResources);
+        j = Math.max(paramInt, k);
+        localBitmap = Bitmap.createBitmap(j, m + n + i, Bitmap.Config.ARGB_8888);
+        localCanvas = new Canvas(localBitmap);
+        localPaint = new Paint();
+        if (paramInt > k)
+        {
+          localPaint.setColor(Color.parseColor("#f7f7f9"));
+          localCanvas.drawRect(0.0F, 0.0F, paramInt, m, localPaint);
+        }
+        if (k >= paramInt)
+        {
+          localCanvas.drawBitmap(paramString1, 0.0F, 0.0F, localPaint);
+          localPaint.setColor(Color.parseColor("#DEDFE0"));
+          localCanvas.drawRect(0.0F, m, j, m + n, localPaint);
+          paramInt = m + n;
+          localPaint.setColor(-1);
+          localCanvas.drawRect(0.0F, paramInt, j, paramInt + i, localPaint);
+          localCanvas.drawBitmap(BitmapFactory.decodeResource(localResources, 2130841221), actn.a(13.0F, localResources), actn.a(25.0F, localResources) + paramInt, localPaint);
+          localPaint.setColor(-16777216);
+          localPaint.setTextSize(actn.a(2, 18, localResources));
+          localCanvas.drawText("QQ看点", actn.a(60.0F, localResources), actn.a(42.0F, localResources) + paramInt, localPaint);
+          localPaint.setColor(Color.parseColor("#777777"));
+          localPaint.setTextSize(actn.a(2, 14, localResources));
+          localCanvas.drawText(localResources.getString(2131695592), actn.a(60.0F, localResources), actn.a(61.0F, localResources) + paramInt, localPaint);
+          paramString1 = "https://post.mp.qq.com/tmpl/default/client/article/html/jump.html?action=openUrl&url=" + URLEncoder.encode(paramString2, "UTF-8");
+          localObject = new HashMap();
+          ((HashMap)localObject).put("url", paramString1);
+          str = (String)nam.a((HashMap)localObject).get("url");
+          if (QLog.isColorLevel()) {
+            QLog.d("ScreenShotImageUtil", 2, "generateScreenShotImageWithQRCode->shortenUrl:" + str);
+          }
+          localObject = new HashMap();
+          if ((TextUtils.isEmpty(str)) || (str.length() >= paramString1.length())) {
+            continue;
+          }
+          ((HashMap)localObject).put("param_errorCode", "0");
+          axrl.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "actReadInJoyShortenUrl", true, 0L, 0L, (HashMap)localObject, "");
+          paramString1 = Uri.parse(paramString2);
+        }
+      }
+      catch (OutOfMemoryError paramString1)
+      {
+        Resources localResources;
+        int k;
+        int m;
+        int j;
+        Bitmap localBitmap;
+        Canvas localCanvas;
+        Paint localPaint;
+        Object localObject;
+        String str;
+        paramString1 = null;
+        paramString2 = "";
+        continue;
+      }
+      catch (Exception paramString1)
+      {
+        paramString1 = null;
+        paramString2 = "";
+        continue;
+      }
+      try
+      {
+        paramString1 = paramString1.getQueryParameter("_wv");
+        if (paramString1 != null) {
+          continue;
+        }
+        paramString2 = "";
+        paramString1 = Uri.parse(str);
+      }
+      catch (Exception paramString1)
+      {
+        try
+        {
+          paramString1 = paramString1.getQueryParameter("_wv");
+          localObject = paramString1;
+          if (paramString1 == null) {
+            localObject = "";
+          }
+          paramString1 = str;
+          if (!TextUtils.isEmpty(paramString2))
+          {
+            paramString1 = str;
+            if (TextUtils.isEmpty((CharSequence)localObject))
+            {
+              if (!str.contains("?")) {
+                continue;
+              }
+              paramString1 = str + "&_wv=" + paramString2;
+            }
+          }
+          paramString2 = paramString1;
+          if (paramString1.startsWith("http://")) {
+            paramString2 = paramString1.replaceFirst("http://", "https://");
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("ScreenShotImageUtil", 2, "generateScreenShotImageWithQRCode->use new qrCode:" + paramString2);
+          }
+          paramString1 = batu.a(paramString2, localResources, actn.a(80.0F, localResources), 0, false);
+          paramString2 = paramString1;
+          if (paramString1 == null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ScreenShotImageUtil", 2, "generateScreenShotImageWithQRCode->use old kandian qrCode!");
+            }
+            paramString2 = BitmapFactory.decodeResource(localResources, 2130841227);
+          }
+          localCanvas.drawBitmap(paramString2, j - actn.a(5.0F, localResources) - paramString2.getWidth(), actn.a(5.0F, localResources) + paramInt, localPaint);
+          paramString2 = a(localBitmap, paramString3);
+          paramString1 = localBitmap;
+          if (QLog.isDevelopLevel()) {
+            QLog.d("ScreenShotImageUtil", 2, "generateScreenShotImageWithQRCode->end time:" + System.currentTimeMillis());
+          }
+          return new Pair(paramString2, paramString1);
+          localCanvas.drawBitmap(paramString1, new Rect(0, 0, k, m), new Rect((paramInt - k) / 2, 0, (k + paramInt) / 2, m), localPaint);
+          continue;
+          paramString1 = paramString1;
+          paramString1.printStackTrace();
+          paramString1 = "";
+        }
+        catch (Exception paramString1)
+        {
+          paramString1.printStackTrace();
+          paramString1 = "";
+          continue;
+          paramString1 = str + "?_wv=" + paramString2;
+          continue;
+        }
+      }
+      if (TextUtils.isEmpty(str))
+      {
+        ((HashMap)localObject).put("param_errorCode", "1");
+        axrl.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "actReadInJoyShortenUrl", false, 0L, 0L, (HashMap)localObject, "");
+        paramString1 = null;
+      }
+      else if (str.equals(paramString1))
+      {
+        ((HashMap)localObject).put("param_errorCode", "2");
+      }
+      else if (str.length() >= paramString1.length())
+      {
+        ((HashMap)localObject).put("param_errorCode", "3");
+        continue;
+        paramString2 = paramString1;
+      }
+    }
   }
   
   /* Error */
-  public void a(ToServiceMsg paramToServiceMsg)
+  public static String a(Bitmap paramBitmap, String paramString)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: invokestatic 26	rns:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Z
-    //   6: ifne +14 -> 20
-    //   9: ldc 28
-    //   11: iconst_1
-    //   12: ldc 30
-    //   14: invokestatic 36	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: return
-    //   20: invokestatic 39	rns:a	()J
-    //   23: lstore_2
-    //   24: aload_0
-    //   25: getfield 41	rnt:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
-    //   28: ifnonnull +16 -> 44
-    //   31: aload_0
-    //   32: new 43	com/tencent/biz/pubaccount/readinjoy/weaknet/WeakNetManager$1
-    //   35: dup
-    //   36: aload_0
-    //   37: lload_2
-    //   38: invokespecial 46	com/tencent/biz/pubaccount/readinjoy/weaknet/WeakNetManager$1:<init>	(Lrnt;J)V
-    //   41: putfield 41	rnt:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
-    //   44: invokestatic 52	obz:b	()Landroid/os/Handler;
-    //   47: aload_0
-    //   48: getfield 41	rnt:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
-    //   51: invokevirtual 58	android/os/Handler:removeCallbacks	(Ljava/lang/Runnable;)V
-    //   54: invokestatic 62	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   57: ifeq +11 -> 68
-    //   60: ldc 28
-    //   62: iconst_2
-    //   63: ldc 64
-    //   65: invokestatic 36	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   68: aload_0
-    //   69: aload_1
-    //   70: putfield 16	rnt:jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg	Lcom/tencent/qphone/base/remote/ToServiceMsg;
-    //   73: invokestatic 52	obz:b	()Landroid/os/Handler;
-    //   76: aload_0
-    //   77: getfield 41	rnt:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
-    //   80: lload_2
-    //   81: invokevirtual 68	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
-    //   84: pop
-    //   85: ldc 28
-    //   87: iconst_1
-    //   88: iconst_2
-    //   89: anewarray 4	java/lang/Object
-    //   92: dup
-    //   93: iconst_0
-    //   94: ldc 70
-    //   96: aastore
-    //   97: dup
-    //   98: iconst_1
-    //   99: lload_2
-    //   100: invokestatic 76	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   103: aastore
-    //   104: invokestatic 79	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   107: goto -90 -> 17
-    //   110: astore_1
-    //   111: aload_0
-    //   112: monitorexit
-    //   113: aload_1
-    //   114: athrow
+    //   0: new 340	java/io/File
+    //   3: dup
+    //   4: getstatic 346	ajsf:cy	Ljava/lang/String;
+    //   7: invokestatic 350	bbuv:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   10: invokespecial 353	java/io/File:<init>	(Ljava/lang/String;)V
+    //   13: astore_3
+    //   14: aload_3
+    //   15: invokevirtual 356	java/io/File:exists	()Z
+    //   18: ifne +8 -> 26
+    //   21: aload_3
+    //   22: invokevirtual 359	java/io/File:mkdirs	()Z
+    //   25: pop
+    //   26: new 361	java/text/SimpleDateFormat
+    //   29: dup
+    //   30: ldc_w 363
+    //   33: invokespecial 364	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;)V
+    //   36: new 366	java/util/Date
+    //   39: dup
+    //   40: invokestatic 82	java/lang/System:currentTimeMillis	()J
+    //   43: invokespecial 369	java/util/Date:<init>	(J)V
+    //   46: invokevirtual 373	java/text/SimpleDateFormat:format	(Ljava/util/Date;)Ljava/lang/String;
+    //   49: astore_3
+    //   50: new 67	java/lang/StringBuilder
+    //   53: dup
+    //   54: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   57: getstatic 346	ajsf:cy	Ljava/lang/String;
+    //   60: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: aload_1
+    //   64: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: aload_3
+    //   68: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: ldc_w 375
+    //   74: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   80: invokestatic 350	bbuv:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   83: astore 4
+    //   85: new 340	java/io/File
+    //   88: dup
+    //   89: aload 4
+    //   91: invokespecial 353	java/io/File:<init>	(Ljava/lang/String;)V
+    //   94: astore_3
+    //   95: aload 4
+    //   97: astore_1
+    //   98: aload_3
+    //   99: invokevirtual 356	java/io/File:exists	()Z
+    //   102: ifne +38 -> 140
+    //   105: new 377	java/io/FileOutputStream
+    //   108: dup
+    //   109: aload_3
+    //   110: invokespecial 380	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   113: astore_3
+    //   114: aload_3
+    //   115: astore_1
+    //   116: aload_0
+    //   117: getstatic 386	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   120: bipush 100
+    //   122: aload_3
+    //   123: invokevirtual 390	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   126: istore_2
+    //   127: iload_2
+    //   128: ifeq +53 -> 181
+    //   131: aload 4
+    //   133: astore_0
+    //   134: aload_3
+    //   135: invokestatic 396	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   138: aload_0
+    //   139: astore_1
+    //   140: aload_1
+    //   141: areturn
+    //   142: astore 4
+    //   144: aconst_null
+    //   145: astore_0
+    //   146: aload_0
+    //   147: astore_1
+    //   148: aload 4
+    //   150: invokevirtual 55	java/lang/Exception:printStackTrace	()V
+    //   153: aload_0
+    //   154: invokestatic 396	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   157: ldc_w 261
+    //   160: areturn
+    //   161: astore_0
+    //   162: aconst_null
+    //   163: astore_1
+    //   164: aload_1
+    //   165: invokestatic 396	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   168: aload_0
+    //   169: athrow
+    //   170: astore_0
+    //   171: goto -7 -> 164
+    //   174: astore 4
+    //   176: aload_3
+    //   177: astore_0
+    //   178: goto -32 -> 146
+    //   181: ldc_w 261
+    //   184: astore_0
+    //   185: goto -51 -> 134
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	115	0	this	rnt
-    //   0	115	1	paramToServiceMsg	ToServiceMsg
-    //   23	77	2	l	long
+    //   0	188	0	paramBitmap	Bitmap
+    //   0	188	1	paramString	String
+    //   126	2	2	bool	boolean
+    //   13	164	3	localObject	Object
+    //   83	49	4	str	String
+    //   142	7	4	localException1	Exception
+    //   174	1	4	localException2	Exception
     // Exception table:
     //   from	to	target	type
-    //   2	17	110	finally
-    //   20	44	110	finally
-    //   44	68	110	finally
-    //   68	107	110	finally
-  }
-  
-  /* Error */
-  public void b(ToServiceMsg paramToServiceMsg)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 16	rnt:jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg	Lcom/tencent/qphone/base/remote/ToServiceMsg;
-    //   6: aload_1
-    //   7: if_acmpne +29 -> 36
-    //   10: invokestatic 52	obz:b	()Landroid/os/Handler;
-    //   13: aload_0
-    //   14: getfield 41	rnt:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
-    //   17: invokevirtual 58	android/os/Handler:removeCallbacks	(Ljava/lang/Runnable;)V
-    //   20: aload_0
-    //   21: aconst_null
-    //   22: putfield 16	rnt:jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg	Lcom/tencent/qphone/base/remote/ToServiceMsg;
-    //   25: ldc 28
-    //   27: iconst_1
-    //   28: ldc 81
-    //   30: invokestatic 36	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: return
-    //   36: ldc 28
-    //   38: iconst_1
-    //   39: ldc 83
-    //   41: invokestatic 36	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   44: goto -11 -> 33
-    //   47: astore_1
-    //   48: aload_0
-    //   49: monitorexit
-    //   50: aload_1
-    //   51: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	52	0	this	rnt
-    //   0	52	1	paramToServiceMsg	ToServiceMsg
-    // Exception table:
-    //   from	to	target	type
-    //   2	33	47	finally
-    //   36	44	47	finally
+    //   105	114	142	java/lang/Exception
+    //   105	114	161	finally
+    //   116	127	170	finally
+    //   148	153	170	finally
+    //   116	127	174	java/lang/Exception
   }
 }
 

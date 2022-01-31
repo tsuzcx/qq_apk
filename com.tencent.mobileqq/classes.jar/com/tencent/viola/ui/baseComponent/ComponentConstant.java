@@ -36,6 +36,9 @@ public class ComponentConstant
   public static final String CMP_TYPE_TRANSFORM = "transform";
   public static final String CMP_TYPE_VIDEO = "kd-video";
   public static final String CMP_TYPE_WATERFALL_LIST = "waterfall-list";
+  public static final String COMP_OP_ADD = "add";
+  public static final String COMP_OP_REMOVE = "remove";
+  public static final String COMP_OP_UPDATE = "update";
 }
 
 

@@ -1,83 +1,108 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import com.tencent.av.utils.QQFrameByFrameAnimation.1;
 
 public class msy
-  implements BusinessObserver
 {
-  public msy(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
+  public int a;
+  public Handler a;
+  View jdField_a_of_type_AndroidViewView = null;
+  Runnable jdField_a_of_type_JavaLangRunnable = new QQFrameByFrameAnimation.1(this);
+  public msx a;
+  public int[] a;
+  public int b = 0;
+  public int c = 0;
+  public int d = 0;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public msy()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {
-      if (!EqqAccountDetailActivity.a(this.a)) {
-        this.a.d(2131629887);
-      }
-    }
-    for (;;)
+    this.jdField_a_of_type_Msx = null;
+    this.jdField_a_of_type_Int = 300;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+  }
+  
+  public void a()
+  {
+    this.c += 1;
+    int i;
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0))
     {
-      EqqAccountDetailActivity.a(this.a);
-      if (EqqAccountDetailActivity.b(this.a) == 0) {
-        EqqAccountDetailActivity.a(this.a);
+      i = this.jdField_a_of_type_ArrayOfInt[(this.c % this.jdField_a_of_type_ArrayOfInt.length)];
+      if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageButton)) {
+        break label67;
       }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("crmtest", 4, "receive sendCrmDetailInfoRequest, ts=" + System.currentTimeMillis());
-      }
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(i);
+    }
+    label67:
+    while (!(this.jdField_a_of_type_AndroidViewView instanceof Button)) {
       return;
-      if (paramBoolean) {}
-      try
+    }
+    Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(i);
+    localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+    ((Button)this.jdField_a_of_type_AndroidViewView).setCompoundDrawables(null, localDrawable, null, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(msx parammsx)
+  {
+    this.jdField_a_of_type_Msx = parammsx;
+  }
+  
+  public void a(int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0))
+    {
+      this.c = 0;
+      if ((this.jdField_a_of_type_AndroidViewView instanceof ImageButton)) {
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.jdField_a_of_type_ArrayOfInt[0]);
+      }
+      if ((this.jdField_a_of_type_AndroidViewView instanceof Button))
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
-          localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
-          {
-            if ((this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail == null) || ((localGetEqqAccountDetailInfoResponse.seqno.has()) && (localGetEqqAccountDetailInfoResponse.seqno.get() != this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.seqno)))
-            {
-              this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetEqqAccountDetailInfoResponse = localGetEqqAccountDetailInfoResponse;
-              paramBundle = new EqqDetail(this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetEqqAccountDetailInfoResponse);
-              if ((EqqAccountDetailActivity.b(this.a)) && (paramBundle.followType == 1))
-              {
-                this.a.a(paramBundle, false);
-                continue;
-              }
-              this.a.a(paramBundle, true);
-              continue;
-            }
-            if ((!EqqAccountDetailActivity.c(this.a)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.followType != 1)) {
-              continue;
-            }
-            this.a.f();
-            continue;
-          }
-          this.a.d(2131629887);
-          continue;
-        }
-        if (EqqAccountDetailActivity.d(this.a)) {
-          continue;
-        }
-        this.a.d(2131629887);
+        Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(this.jdField_a_of_type_ArrayOfInt[0]);
+        localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+        ((Button)this.jdField_a_of_type_AndroidViewView).setCompoundDrawables(null, localDrawable, null, null);
       }
-      catch (Exception paramBundle) {}
-      if (!EqqAccountDetailActivity.e(this.a)) {
-        this.a.d(2131629887);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Msx != null) {
+        this.jdField_a_of_type_Msx.d();
       }
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    if (this.jdField_a_of_type_Msx != null) {
+      this.jdField_a_of_type_Msx.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     msy
  * JD-Core Version:    0.7.0.1
  */

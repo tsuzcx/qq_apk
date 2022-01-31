@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.contact;
 
-import aese;
-import aesj;
-import aesl;
+import afda;
+import afdf;
+import afdh;
 
 public class RecommendTroopListWrapper$2$1
   implements Runnable
 {
-  public RecommendTroopListWrapper$2$1(aesl paramaesl, String paramString) {}
+  public RecommendTroopListWrapper$2$1(afdh paramafdh, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aesl.a.a != null) {
-      this.jdField_a_of_type_Aesl.a.a.a(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Afdh.a.a != null) {
+      this.jdField_a_of_type_Afdh.a.a.a(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

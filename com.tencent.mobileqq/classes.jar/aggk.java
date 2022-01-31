@@ -1,16 +1,66 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.widget.AdapterView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-abstract interface aggk
+public class aggk
+  extends ampb
 {
-  public abstract Intent a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
+  public static aggj a()
+  {
+    return (aggj)ampm.a().a(470);
+  }
   
-  public abstract void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
+  public int a()
+  {
+    return 470;
+  }
   
-  public abstract void b(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
+  @NonNull
+  public aggj a(int paramInt)
+  {
+    return new aggj();
+  }
   
-  public abstract void c(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
+  @Nullable
+  public aggj a(ampi[] paramArrayOfampi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfampi[0].a);
+    }
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
+      return aggj.a(paramArrayOfampi);
+    }
+    return null;
+  }
+  
+  public Class<aggj> a()
+  {
+    return aggj.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("mini_msg_config", 0, "onUpdate " + paramObject);
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 

@@ -3,24 +3,24 @@ package com.tencent.mobileqq.webview.swift.component;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import bbbd;
-import bbms;
-import bbmy;
+import bced;
+import bcpq;
+import bcpw;
 
 public class SwiftBrowserLongClickHandler$5
   implements Runnable
 {
-  public SwiftBrowserLongClickHandler$5(bbbd parambbbd, String paramString) {}
+  public SwiftBrowserLongClickHandler$5(bced parambced, String paramString) {}
   
   public void run()
   {
     Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
     localIntent.setData(Uri.parse("file://" + this.a));
     this.this$0.jdField_a_of_type_AndroidAppActivity.sendBroadcast(localIntent);
-    if ((this.this$0.jdField_a_of_type_Bbms != null) && (this.this$0.jdField_a_of_type_Bbms.isShowing())) {
-      this.this$0.jdField_a_of_type_Bbms.dismiss();
+    if ((this.this$0.jdField_a_of_type_Bcpq != null) && (this.this$0.jdField_a_of_type_Bcpq.isShowing())) {
+      this.this$0.jdField_a_of_type_Bcpq.dismiss();
     }
-    bbmy.a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 2, this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131651444, new Object[] { this.a }), 1).b(this.this$0.jdField_a_of_type_Int);
+    bcpw.a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 2, this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131717236, new Object[] { this.a }), 1).b(this.this$0.jdField_a_of_type_Int);
   }
 }
 

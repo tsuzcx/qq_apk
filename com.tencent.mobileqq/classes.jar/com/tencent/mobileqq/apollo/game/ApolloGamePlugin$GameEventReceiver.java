@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.game;
 
-import aing;
+import ajae;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -26,7 +26,7 @@ public class ApolloGamePlugin$GameEventReceiver
         if (QLog.isColorLevel()) {
           QLog.d("ApolloGamePlugin", 2, new Object[] { "[onReceive] action=", paramContext });
         }
-      } while ((aing.a() == null) || (!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) || (!"apolloGameWebMessage".equals(paramIntent.getStringExtra("event"))));
+      } while ((ajae.a() == null) || (!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) || (!"apolloGameWebMessage".equals(paramIntent.getStringExtra("event"))));
       paramContext = paramIntent.getStringExtra("data");
     } while (TextUtils.isEmpty(ApolloGamePlugin.a(this.a)));
     this.a.a(0, "sc.apolloGameWebMessage.local", paramContext);

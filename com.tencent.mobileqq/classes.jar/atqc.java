@@ -1,10 +1,20 @@
-public abstract interface atqc
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+
+class atqc
+  implements View.OnClickListener
 {
-  public abstract atpn getPicDownloadInfo();
+  atqc(atpi paramatpi) {}
   
-  public abstract atqd getPicUploadInfo();
-  
-  public abstract boolean isSendFromLocal();
+  public void onClick(View paramView)
+  {
+    if (!this.a.a.onBackEvent())
+    {
+      this.a.a.finish();
+      this.a.a.b(false);
+    }
+  }
 }
 
 

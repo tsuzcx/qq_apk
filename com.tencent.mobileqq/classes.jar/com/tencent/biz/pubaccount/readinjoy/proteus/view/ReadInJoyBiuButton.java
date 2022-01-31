@@ -18,13 +18,13 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Color
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.ButtonBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.ButtonBase.ClickStatus;
-import ndn;
-import nsh;
-import obz;
-import ows;
-import pre;
-import qoe;
-import rvf;
+import noo;
+import odr;
+import onk;
+import pik;
+import qdd;
+import rap;
+import shx;
 
 public class ReadInJoyBiuButton
   extends ButtonBase
@@ -61,25 +61,25 @@ public class ReadInJoyBiuButton
       return;
     }
     SocializeFeedsInfo localSocializeFeedsInfo = paramArticleInfo.mSocialFeedInfo;
-    if (rvf.a(paramArticleInfo.mChannelID)) {}
+    if (shx.a(paramArticleInfo.mChannelID)) {}
     String str2;
     for (String str1 = "0X8009361";; str1 = "0X8007EE4")
     {
-      str2 = obz.a(paramArticleInfo, true);
-      if ((!qoe.i(paramArticleInfo)) && (!qoe.a(paramArticleInfo)) && (!qoe.j(paramArticleInfo)) && (!qoe.k(paramArticleInfo))) {
+      str2 = onk.a(paramArticleInfo, true);
+      if ((!rap.i(paramArticleInfo)) && (!rap.a(paramArticleInfo)) && (!rap.j(paramArticleInfo)) && (!rap.k(paramArticleInfo))) {
         break label154;
       }
-      if (!qoe.o(paramArticleInfo)) {
-        ndn.a(null, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Pre.jdField_a_of_type_Long), str1, str1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), "0", "" + paramArticleInfo.mStrategyId, str2, false);
+      if (!rap.o(paramArticleInfo)) {
+        noo.a(null, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Qdd.jdField_a_of_type_Long), str1, str1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), "0", "" + paramArticleInfo.mStrategyId, str2, false);
       }
-      if ((obz.k(paramArticleInfo)) || (obz.l(paramArticleInfo))) {
+      if ((onk.k(paramArticleInfo)) || (onk.l(paramArticleInfo))) {
         break;
       }
-      qoe.a(paramArticleInfo, (int)paramArticleInfo.mChannelID);
+      rap.a(paramArticleInfo, (int)paramArticleInfo.mChannelID);
       return;
     }
     label154:
-    ndn.a(null, paramArticleInfo.mSubscribeID, str1, str1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(paramArticleInfo.mArticleID), "" + paramArticleInfo.mStrategyId, str2, false);
+    noo.a(null, paramArticleInfo.mSubscribeID, str1, str1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(paramArticleInfo.mArticleID), "" + paramArticleInfo.mStrategyId, str2, false);
   }
   
   public int getComMeasuredHeight()
@@ -118,8 +118,8 @@ public class ReadInJoyBiuButton
     if (((paramView instanceof Activity)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null))
     {
       paramView = (Activity)paramView;
-      localIntent = ows.a(paramView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      if (nsh.b() != 1) {
+      localIntent = pik.a(paramView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      if (odr.b() != 1) {
         break label103;
       }
     }

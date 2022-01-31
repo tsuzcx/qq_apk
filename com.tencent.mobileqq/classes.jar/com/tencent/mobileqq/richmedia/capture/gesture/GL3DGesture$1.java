@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.richmedia.capture.gesture;
 
-import autn;
-import awke;
+import avsw;
+import axjk;
 import com.tencent.mobileqq.shortvideo.ptvfilter.material.GameplayEngine;
 
 public class GL3DGesture$1
   implements Runnable
 {
-  public GL3DGesture$1(autn paramautn, awke paramawke) {}
+  public GL3DGesture$1(avsw paramavsw, axjk paramaxjk) {}
   
   public void run()
   {

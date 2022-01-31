@@ -1,21 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-
-class biel
-  implements View.OnTouchListener
+public abstract interface biel
 {
-  biel(bief parambief) {}
+  public abstract void a(String paramString);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return this.a.a.a(paramMotionEvent);
-  }
+  public abstract void a(String paramString, long paramLong, bidw parambidw, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biel
  * JD-Core Version:    0.7.0.1
  */

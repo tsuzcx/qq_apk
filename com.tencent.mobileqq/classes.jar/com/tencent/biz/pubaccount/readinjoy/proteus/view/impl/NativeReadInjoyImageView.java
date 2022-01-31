@@ -13,10 +13,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import obj;
-import pbp;
-import rct;
-import rcw;
+import omu;
+import pnh;
+import rph;
+import rpk;
 
 public class NativeReadInjoyImageView
   extends KandianUrlImageView
@@ -36,13 +36,13 @@ public class NativeReadInjoyImageView
   public NativeReadInjoyImageView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Rct.a(false);
+    this.jdField_a_of_type_Rph.a(false);
   }
   
   public NativeReadInjoyImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Rct.a(false);
+    this.jdField_a_of_type_Rph.a(false);
   }
   
   public String a()
@@ -73,8 +73,8 @@ public class NativeReadInjoyImageView
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    rcw localrcw = this.jdField_a_of_type_Rct.a();
-    if ((localrcw == null) || (localrcw.jdField_a_of_type_Boolean)) {
+    rpk localrpk = this.jdField_a_of_type_Rph.a();
+    if ((localrpk == null) || (localrpk.jdField_a_of_type_Boolean)) {
       setImageSrc(this.jdField_a_of_type_JavaLangString);
     }
   }
@@ -100,8 +100,8 @@ public class NativeReadInjoyImageView
   public void onFinishTemporaryDetach()
   {
     super.onFinishTemporaryDetach();
-    rcw localrcw = this.jdField_a_of_type_Rct.a();
-    if ((localrcw == null) || (localrcw.jdField_a_of_type_Boolean)) {
+    rpk localrpk = this.jdField_a_of_type_Rph.a();
+    if ((localrpk == null) || (localrpk.jdField_a_of_type_Boolean)) {
       setImageSrc(this.jdField_a_of_type_JavaLangString);
     }
   }
@@ -148,7 +148,7 @@ public class NativeReadInjoyImageView
           this.jdField_a_of_type_JavaNetURL = new URL(this.jdField_a_of_type_JavaLangString);
           QLog.d("NativeReadInjoyImageView", 2, "setImageSrc | current path changed ");
           QLog.d("NativeReadInjoyImageView", 2, "setImageSrc | mPathUrl :" + this.jdField_a_of_type_JavaNetURL);
-          obj.a(this, this.jdField_a_of_type_JavaNetURL, getContext());
+          omu.a(this, this.jdField_a_of_type_JavaNetURL, getContext());
           return;
         }
       }
@@ -165,7 +165,7 @@ public class NativeReadInjoyImageView
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
     if (paramBoolean) {
-      setPublicAccountImageDownListener(new pbp(null));
+      setPublicAccountImageDownListener(new pnh(null));
     }
   }
   

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.faceunlock;
 
-import afjv;
+import afvs;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.hardware.Camera.Size;
 import android.media.MediaRecorder;
 import android.os.Handler;
-import awij;
+import axhp;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
 public class QFaceUnlockCameraCaptureUnit$3
   implements Runnable
 {
-  public QFaceUnlockCameraCaptureUnit$3(afjv paramafjv) {}
+  public QFaceUnlockCameraCaptureUnit$3(afvs paramafvs) {}
   
   public void run()
   {
@@ -23,31 +23,31 @@ public class QFaceUnlockCameraCaptureUnit$3
       if (QLog.isColorLevel()) {
         QLog.i("QFaceUnlockCameraCaptureUnit", 0, "startRecord begin");
       }
-      if (afjv.a(this.this$0) == null) {
-        afjv.a(this.this$0, new MediaRecorder());
+      if (afvs.a(this.this$0) == null) {
+        afvs.a(this.this$0, new MediaRecorder());
       }
-      if (awij.a().a != null)
+      if (axhp.a().a != null)
       {
-        Object localObject2 = awij.a().a.getParameters();
+        Object localObject2 = axhp.a().a.getParameters();
         Object localObject1 = ((Camera.Parameters)localObject2).getSupportedPreviewSizes();
         localObject2 = ((Camera.Parameters)localObject2).getSupportedVideoSizes();
-        localObject1 = afjv.a(this.this$0, (List)localObject1, (List)localObject2);
-        awij.a().a.unlock();
-        afjv.a(this.this$0).setOrientationHint(270);
-        afjv.a(this.this$0).reset();
-        afjv.a(this.this$0).setCamera(awij.a().a);
-        afjv.a(this.this$0).setAudioSource(0);
-        afjv.a(this.this$0).setVideoSource(1);
-        afjv.a(this.this$0).setOutputFormat(2);
-        afjv.a(this.this$0).setVideoSize(((Camera.Size)localObject1).width, ((Camera.Size)localObject1).height);
-        afjv.a(this.this$0).setVideoEncoder(2);
-        afjv.a(this.this$0).setAudioEncoder(3);
-        afjv.a(this.this$0).setVideoEncodingBitRate(5242880);
-        afjv.a(this.this$0, ShortVideoUtils.c());
-        afjv.a(this.this$0).setOutputFile(afjv.a(this.this$0));
-        afjv.a(this.this$0).prepare();
-        afjv.a(this.this$0).start();
-        afjv.a(this.this$0).postDelayed(afjv.a(this.this$0), 1000L);
+        localObject1 = afvs.a(this.this$0, (List)localObject1, (List)localObject2);
+        axhp.a().a.unlock();
+        afvs.a(this.this$0).setOrientationHint(270);
+        afvs.a(this.this$0).reset();
+        afvs.a(this.this$0).setCamera(axhp.a().a);
+        afvs.a(this.this$0).setAudioSource(0);
+        afvs.a(this.this$0).setVideoSource(1);
+        afvs.a(this.this$0).setOutputFormat(2);
+        afvs.a(this.this$0).setVideoSize(((Camera.Size)localObject1).width, ((Camera.Size)localObject1).height);
+        afvs.a(this.this$0).setVideoEncoder(2);
+        afvs.a(this.this$0).setAudioEncoder(3);
+        afvs.a(this.this$0).setVideoEncodingBitRate(5242880);
+        afvs.a(this.this$0, ShortVideoUtils.c());
+        afvs.a(this.this$0).setOutputFile(afvs.a(this.this$0));
+        afvs.a(this.this$0).prepare();
+        afvs.a(this.this$0).start();
+        afvs.a(this.this$0).postDelayed(afvs.a(this.this$0), 1000L);
         if (QLog.isColorLevel()) {
           QLog.i("QFaceUnlockCameraCaptureUnit", 0, "startRecord end");
         }
@@ -57,7 +57,7 @@ public class QFaceUnlockCameraCaptureUnit$3
     catch (Exception localException)
     {
       QLog.e("QFaceUnlockCameraCaptureUnit", 1, "startRecord fail, Exception:" + localException.getMessage());
-      afjv.a(this.this$0, false);
+      afvs.a(this.this$0, false);
     }
   }
 }

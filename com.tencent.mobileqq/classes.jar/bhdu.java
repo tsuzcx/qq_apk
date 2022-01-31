@@ -1,42 +1,23 @@
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-
 public class bhdu
-  implements Animation.AnimationListener
 {
-  public bhdu(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  private static String a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEffectCameraCaptureUnit", 2, "clearAnimation end!");
+    if (a != null) {
+      return a;
     }
-    if (QIMEffectCameraCaptureUnit.e(this.a) == null) {
-      return;
-    }
-    this.a.v = true;
-    QIMEffectCameraCaptureUnit.e(this.a).setText(2131633700);
-    QIMEffectCameraCaptureUnit.e(this.a).startAnimation(this.a.b);
-    this.a.a.setStartOffset(3000L);
-    this.a.a.setAnimationListener(QIMEffectCameraCaptureUnit.b(this.a));
-    QIMEffectCameraCaptureUnit.e(this.a).setAnimation(this.a.a);
-    this.a.a.startNow();
+    return "";
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public static void a(String paramString)
   {
-    this.a.v = true;
+    a = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhdu
  * JD-Core Version:    0.7.0.1
  */

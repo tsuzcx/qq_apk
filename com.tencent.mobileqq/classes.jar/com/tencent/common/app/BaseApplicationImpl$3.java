@@ -1,6 +1,6 @@
 package com.tencent.common.app;
 
-import awrn;
+import axrl;
 import java.util.HashMap;
 
 class BaseApplicationImpl$3
@@ -13,7 +13,7 @@ class BaseApplicationImpl$3
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_retryIndex", Integer.toString(this.jdField_a_of_type_Int));
     localHashMap.put("param_uin", this.jdField_a_of_type_JavaLangString);
-    awrn.a(BaseApplicationImpl.getApplication()).a(this.jdField_a_of_type_JavaLangString, "PcActiveSuccB", true, 0L, 0L, localHashMap, "", true);
+    axrl.a(BaseApplicationImpl.getApplication()).a(this.jdField_a_of_type_JavaLangString, "PcActiveSuccB", true, 0L, 0L, localHashMap, "", true);
   }
 }
 

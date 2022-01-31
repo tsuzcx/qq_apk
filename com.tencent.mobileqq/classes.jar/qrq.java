@@ -1,19 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-public class qrq
-  extends ajjh
+public abstract interface qrq
 {
-  public qrq(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  public abstract void a();
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if (((this.a.a == 0) || (this.a.a == 70)) && (paramBoolean))
-    {
-      QLog.d("ReadInJoyListViewGroup", 1, "onUpdateFriendInfo uin:" + paramString);
-      this.a.q();
-    }
-  }
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder);
+  
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean);
 }
 
 

@@ -1,21 +1,104 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.widget.stageview.StageEffectView.5.1;
-import com.tencent.av.widget.stageview.StageMemberView;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.SystemClock;
+import android.view.KeyEvent;
+import android.view.View;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-public class mkq
-  implements Animation.AnimationListener
+public abstract class mkq
 {
-  public mkq(StageEffectView.5.1 param1) {}
+  protected int a;
+  protected long a;
+  public final VideoInviteActivity a;
+  protected int b;
+  protected long b;
+  protected int c;
+  protected long c;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public mkq(VideoInviteActivity paramVideoInviteActivity)
   {
-    this.a.a.a.a(true);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity = paramVideoInviteActivity;
+    this.jdField_a_of_type_Long = AudioHelper.b();
+    this.jdField_b_of_type_Int = muf.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity);
+    this.jdField_b_of_type_Int = muf.b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void BtnOnClick(View paramView) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Resources a()
+  {
+    return this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.getResources();
+  }
+  
+  public <T extends View> T a(int paramInt)
+  {
+    return this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.findViewById(paramInt);
+  }
+  
+  public String a(int paramInt)
+  {
+    return this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.getString(paramInt);
+  }
+  
+  public void a() {}
+  
+  public void a(Context paramContext, String paramString, Intent paramIntent) {}
+  
+  protected void a(String paramString)
+  {
+    axqw.b(null, "CliOper", "", "", paramString, paramString, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i), "");
+  }
+  
+  public void a(mkq parammkq)
+  {
+    if (parammkq != null)
+    {
+      this.jdField_b_of_type_Long = parammkq.jdField_b_of_type_Long;
+      this.c = parammkq.c;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
+      return;
+    }
+    this.c = SystemClock.elapsedRealtime();
+  }
+  
+  public boolean a(int paramInt, KeyEvent paramKeyEvent)
+  {
+    return false;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void h() {}
+  
+  public void i() {}
+  
+  public void j() {}
 }
 
 

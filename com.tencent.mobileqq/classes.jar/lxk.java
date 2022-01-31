@@ -1,14 +1,36 @@
-import android.widget.RelativeLayout;
-import com.tencent.av.ui.QavPanel;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class lxk
-  implements lxr
+  implements ServiceConnection
 {
-  public lxk(QavPanel paramQavPanel) {}
+  public lxk(QQServiceForAV paramQQServiceForAV) {}
   
-  public void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean) {}
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceConnected name=" + paramComponentName + ", service=" + paramIBinder);
+    QQServiceForAV.b(this.a, true);
+  }
   
-  public void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean) {}
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceDisconnected name=" + paramComponentName);
+    QQServiceForAV.b(this.a, false);
+    try
+    {
+      BaseApplicationImpl.getContext().unbindService(this);
+      return;
+    }
+    catch (Throwable paramComponentName)
+    {
+      QLog.e("QQServiceForAV", 1, "onServiceDisconnected unbindService exception:" + paramComponentName, paramComponentName);
+    }
+  }
 }
 
 

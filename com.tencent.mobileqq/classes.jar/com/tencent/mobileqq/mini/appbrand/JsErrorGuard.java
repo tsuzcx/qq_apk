@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand;
 
-import ajjy;
+import ajyc;
 import android.os.Handler;
 import android.os.Looper;
-import bbmy;
+import bcpw;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
@@ -53,7 +53,7 @@ public class JsErrorGuard
     if ((this.mLoadingDialog != null) && (this.mLoadingDialog.isShowing())) {
       this.mLoadingDialog.dismiss();
     }
-    bbmy.a(this.mAppBrandRuntime.activity, ajjy.a(2131640102), 0).a();
+    bcpw.a(this.mAppBrandRuntime.activity, ajyc.a(2131705887), 0).a();
   }
   
   private void onX5Succeed()
@@ -65,11 +65,11 @@ public class JsErrorGuard
       }
       if (this.mRestartDialog == null)
       {
-        this.mRestartDialog = new JsErrorGuard.PermissionDialog(this.mAppBrandRuntime.activity, 2131690181);
-        this.mRestartDialog.setTitle(ajjy.a(2131640100));
-        this.mRestartDialog.setMessage(ajjy.a(2131640098));
-        this.mRestartDialog.setNegativeButton(ajjy.a(2131640096), new JsErrorGuard.7(this));
-        this.mRestartDialog.setPositiveButton(ajjy.a(2131640099), new JsErrorGuard.8(this));
+        this.mRestartDialog = new JsErrorGuard.PermissionDialog(this.mAppBrandRuntime.activity, 2131755791);
+        this.mRestartDialog.setTitle(ajyc.a(2131705885));
+        this.mRestartDialog.setMessage(ajyc.a(2131705883));
+        this.mRestartDialog.setNegativeButton(ajyc.a(2131705881), new JsErrorGuard.7(this));
+        this.mRestartDialog.setPositiveButton(ajyc.a(2131705884), new JsErrorGuard.8(this));
         this.mRestartDialog.setCanceledOnTouchOutside(false);
       }
       if (!this.mRestartDialog.isShowing()) {
@@ -98,7 +98,7 @@ public class JsErrorGuard
       if (this.mLoadingDialog == null) {
         this.mLoadingDialog = new JsErrorGuard.LoadingDialog(this.mAppBrandRuntime.activity);
       }
-      this.mLoadingDialog.setTitle(ajjy.a(2131640101));
+      this.mLoadingDialog.setTitle(ajyc.a(2131705886));
     } while (this.mLoadingDialog.isShowing());
     this.mLoadingDialog.show();
   }

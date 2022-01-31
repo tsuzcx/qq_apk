@@ -1,15 +1,33 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ListView;
 
 public class atvh
-  implements Comparator<PersonalityLabelInfo>
+  implements bfob
 {
-  public atvh(PersonalityLabel paramPersonalityLabel) {}
+  public atvh(NearbyMomentFragment paramNearbyMomentFragment) {}
   
-  public int a(PersonalityLabelInfo paramPersonalityLabelInfo1, PersonalityLabelInfo paramPersonalityLabelInfo2)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    return -(int)(paramPersonalityLabelInfo1.modTime - paramPersonalityLabelInfo2.modTime);
+    int i = 0;
+    if (paramInt == 0)
+    {
+      paramInt = i;
+      if (NearbyMomentFragment.a(this.a).getLastVisiblePosition() == NearbyMomentFragment.a(this.a).getCount() - 1)
+      {
+        paramAbsListView = NearbyMomentFragment.a(this.a).getChildAt(NearbyMomentFragment.a(this.a).getLastVisiblePosition() - NearbyMomentFragment.a(this.a).getFirstVisiblePosition());
+        paramInt = i;
+        if (NearbyMomentFragment.a(this.a).getHeight() >= paramAbsListView.getBottom()) {
+          paramInt = 1;
+        }
+      }
+      if (paramInt != 0) {
+        NearbyMomentFragment.a(this.a);
+      }
+    }
   }
 }
 

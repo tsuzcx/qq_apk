@@ -1,57 +1,383 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAllFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiBaseInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.pb.emosm.EmosmPb.SmallYellowItem;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 public class aocp
-  extends apdj
+  extends anyc
 {
-  public aocp(QfileRecentAllFileTabView paramQfileRecentAllFileTabView) {}
+  public static final String a;
+  public static final String b;
+  public static final String c;
+  public static final int h;
+  public int a;
+  private Drawable a;
+  public int b;
+  public boolean b;
+  public String d;
   
-  public void a()
+  static
   {
-    this.a.a.a().b();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().s();
-    Object localObject = aonm.b();
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    jdField_a_of_type_JavaLangString = ajyc.a(2131714698);
+    jdField_b_of_type_JavaLangString = ajyc.a(2131714701);
+    jdField_c_of_type_JavaLangString = ajyc.a(2131714700);
+    int j = anya.jdField_b_of_type_Int / 20;
+    if (anya.jdField_b_of_type_Int % 20 == 0) {}
+    for (int i = 0;; i = 1)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (aonk.a(((FileManagerEntity)((Iterator)localObject).next()).Uuid)) {
-          awqx.b(QfileRecentAllFileTabView.b(this.a), "dc00898", "", "", "0X800A087", "0X800A087", 0, 0, "", "", "", "");
+      h = i + j;
+      return;
+    }
+  }
+  
+  public aocp(int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  {
+    this.jdField_c_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt3;
+    this.d = paramString;
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public static final int a(int[] paramArrayOfInt)
+  {
+    return (paramArrayOfInt.length + 19) / 20;
+  }
+  
+  public static List<aoah> a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    return a(paramQQAppInterface, 7, paramInt);
+  }
+  
+  public static List<aoah> a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
+  {
+    if (paramQQAppInterface == null)
+    {
+      QLog.e("SystemAndEmojiEmoticonInfo", 1, "getEmoticonList app = null");
+      return null;
+    }
+    ArrayList localArrayList1 = anwm.a().a(1).b();
+    ArrayList localArrayList2 = anwm.a().a(2).b();
+    ArrayList localArrayList3 = new ArrayList(localArrayList1.size() + localArrayList2.size());
+    if ((paramInt2 != 2) && (paramInt2 != 3))
+    {
+      i = 0;
+      while (i < paramInt1)
+      {
+        localArrayList3.add(new aocp(7, 3, -1, jdField_a_of_type_JavaLangString, false));
+        i += 1;
+      }
+      paramQQAppInterface = ((anxx)paramQQAppInterface.getManager(172)).a();
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 1))
+      {
+        j = 0;
+        i = 0;
+        for (;;)
+        {
+          if ((j >= paramQQAppInterface.size()) || (i >= paramInt1 * 3))
+          {
+            if (i >= paramInt1 * 3) {
+              break;
+            }
+            j = i % paramInt1;
+            if (j == 0) {
+              break;
+            }
+            i = 0;
+            while (i < paramInt1 - j)
+            {
+              localArrayList3.add(new aocp(7, 1, -1, "", false));
+              i += 1;
+            }
+          }
+          EmosmPb.SmallYellowItem localSmallYellowItem = (EmosmPb.SmallYellowItem)paramQQAppInterface.get(j);
+          int k = 1;
+          if (localSmallYellowItem.type.get() == 2) {
+            k = 2;
+          }
+          localArrayList3.add(new aocp(7, k, localSmallYellowItem.id.get(), "", true));
+          j += 1;
+          i += 1;
         }
+      }
+      QLog.e("SystemAndEmojiEmoticonInfo", 1, "CommonlyUsedSystemEmoji IS NULL");
+    }
+    int i = 0;
+    while (i < paramInt1)
+    {
+      localArrayList3.add(new aocp(7, 3, -1, jdField_b_of_type_JavaLangString, false));
+      i += 1;
+    }
+    int j = localArrayList1.size();
+    i = 0;
+    if (i < j)
+    {
+      if (((Integer)localArrayList1.get(i)).intValue() == -1) {
+        localArrayList3.add(new aocp(7, 1, 0, "", false));
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localArrayList3.add(new aocp(7, 1, ((Integer)localArrayList1.get(i)).intValue(), "", false));
+      }
+    }
+    j = localArrayList1.size() % paramInt1;
+    if (j > 0)
+    {
+      i = 0;
+      while (i < paramInt1 - j)
+      {
+        localArrayList3.add(new aocp(7, 1, -1, "", false));
+        i += 1;
+      }
+    }
+    if (paramInt2 != 2)
+    {
+      paramInt2 = 0;
+      while (paramInt2 < paramInt1)
+      {
+        localArrayList3.add(new aocp(7, 3, -1, jdField_c_of_type_JavaLangString, false));
+        paramInt2 += 1;
+      }
+      paramInt2 = 0;
+      while (paramInt2 < localArrayList2.size())
+      {
+        localArrayList3.add(new aocp(7, 2, ((Integer)localArrayList2.get(paramInt2)).intValue(), "", false));
+        paramInt2 += 1;
+      }
+      i = localArrayList2.size() % paramInt1;
+      if (i > 0)
+      {
+        paramInt2 = 0;
+        while (paramInt2 < paramInt1 - i)
+        {
+          localArrayList3.add(new aocp(7, 2, -1, "", false));
+          paramInt2 += 1;
+        }
+      }
+    }
+    return localArrayList3;
+  }
+  
+  public static List<anyc> a(int[] paramArrayOfInt)
+  {
+    ArrayList localArrayList = new ArrayList(paramArrayOfInt.length + anya.jdField_b_of_type_Int);
+    int j = anya.jdField_b_of_type_Int % 20;
+    int i = anya.jdField_b_of_type_Int - 1;
+    while (i >= anya.jdField_b_of_type_Int - j)
+    {
+      localArrayList.add(new aocp(7, 2, i, "", false));
+      i -= 1;
+    }
+    i = 0;
+    while (i < 20 - j)
+    {
+      localArrayList.add(new aocp(7, 2, -1, "", false));
+      i += 1;
+    }
+    i = anya.jdField_b_of_type_Int - j - 1;
+    while (i >= 0)
+    {
+      localArrayList.add(new aocp(7, 2, i, "", false));
+      i -= 1;
+    }
+    j = paramArrayOfInt.length;
+    i = 0;
+    while (i < j)
+    {
+      localArrayList.add(new aocp(7, 1, paramArrayOfInt[i], "", false));
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = a(paramQQAppInterface, 0);
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
+    {
+      int i = 0;
+      while ((i < 84) && (i < paramQQAppInterface.size()))
+      {
+        Object localObject = (aoah)paramQQAppInterface.get(i);
+        if ((localObject instanceof aocp))
+        {
+          localObject = (aocp)localObject;
+          if ((((aocp)localObject).jdField_c_of_type_Int != 3) && (((aocp)localObject).jdField_b_of_type_Int != -1))
+          {
+            localObject = (URLDrawable)((aocp)localObject).a(false);
+            if ((localObject != null) && (((URLDrawable)localObject).getStatus() != 1)) {
+              ((URLDrawable)localObject).startDownload();
+            }
+          }
+        }
+        i += 1;
       }
     }
   }
   
-  public void f()
+  public Drawable a(int paramInt, boolean paramBoolean)
   {
-    this.a.a.a().t();
+    int i;
+    if ((1 == this.jdField_a_of_type_Int) && (this.jdField_b_of_type_Int != -1))
+    {
+      if ((paramInt < 0) || (paramInt >= ayjw.jdField_a_of_type_Int)) {
+        throw new IllegalArgumentException("invaid sys emotcation index: " + paramInt);
+      }
+      i = ayjw.jdField_b_of_type_ArrayOfInt[paramInt];
+    }
+    while (i == -1)
+    {
+      QLog.e("SystemAndEmojiEmoticonInfo", 1, "getSystemEmojiStaticImg index error 11; index = " + paramInt);
+      return null;
+      if ((2 == this.jdField_a_of_type_Int) && (this.jdField_b_of_type_Int != -1))
+      {
+        if (paramInt < 0) {
+          throw new IllegalArgumentException("invaid emoji index: " + paramInt);
+        }
+        if ((paramInt >= 0) && (paramInt < ayjw.jdField_b_of_type_Int)) {
+          i = 2130839808 + paramInt;
+        } else {
+          QLog.e("SystemAndEmojiEmoticonInfo", 1, "getSystemEmojiStaticImg index error; index = " + paramInt);
+        }
+      }
+      else
+      {
+        i = -1;
+      }
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplication.getContext().getResources().getDrawable(2130837718);
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        try
+        {
+          URL localURL = new URL("protocol_vas_extension_image", "RESOURCE_IMG", i + "");
+          URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+          localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+          localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+          localURLDrawableOptions.mUseThreadPool = paramBoolean;
+          return URLDrawable.getDrawable(localURL, localURLDrawableOptions);
+        }
+        catch (MalformedURLException localMalformedURLException)
+        {
+          localMalformedURLException.printStackTrace();
+          QLog.e("SystemAndEmojiEmoticonInfo", 1, "getSystemEmojiStaticImg url exception e = " + localMalformedURLException.getMessage());
+        }
+        localException = localException;
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+        QLog.e("SystemAndEmojiEmoticonInfo", 1, "SystemAndEmojiEmoticonInfo getdrawable exception e: = " + localException.getMessage());
+      }
+    }
+    return null;
   }
   
-  public void g()
+  public Drawable a(Context paramContext, float paramFloat)
   {
-    this.a.a.a().G();
+    return a(this.jdField_b_of_type_Int, true);
+  }
+  
+  public Drawable a(boolean paramBoolean)
+  {
+    return a(this.jdField_b_of_type_Int, paramBoolean);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  {
+    if (this.jdField_b_of_type_Int == -1) {
+      return;
+    }
+    int i = paramEditText.getSelectionStart();
+    int j = paramEditText.getSelectionEnd();
+    Editable localEditable = paramEditText.getEditableText();
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (paramContext = ayla.c(this.jdField_b_of_type_Int);; paramContext = ayla.a(this.jdField_b_of_type_Int))
+    {
+      localEditable.replace(i, j, paramContext);
+      paramEditText.requestFocus();
+      a(paramQQAppInterface, paramSessionInfo);
+      if (this.jdField_b_of_type_Boolean) {
+        axqw.b(paramQQAppInterface, "CliOper", "", "", "ep_mall", "0X800717F", 0, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", "", "");
+      }
+      if ((paramQQAppInterface != null) && (ayla.a(this.jdField_b_of_type_Int)) && (paramSessionInfo != null)) {
+        VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "0X800812C", ApolloUtil.b(paramSessionInfo.jdField_a_of_type_Int), 0, new String[] { String.valueOf(this.jdField_b_of_type_Int), String.valueOf(airz.a(paramQQAppInterface)) });
+      }
+      anwm.a().a(this.jdField_a_of_type_Int).a(this.jdField_b_of_type_Int, 1);
+      return;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    EmosmPb.SmallYellowItem localSmallYellowItem = new EmosmPb.SmallYellowItem();
+    localSmallYellowItem.id.set(this.jdField_b_of_type_Int);
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (int i = 1;; i = 2)
+    {
+      localSmallYellowItem.type.set(i);
+      long l = System.currentTimeMillis();
+      localSmallYellowItem.ts.set(l);
+      String str2 = "";
+      String str1 = str2;
+      if (paramSessionInfo != null)
+      {
+        str1 = str2;
+        if (!TextUtils.isEmpty(paramSessionInfo.jdField_b_of_type_JavaLangString)) {
+          str1 = paramSessionInfo.jdField_b_of_type_JavaLangString;
+        }
+      }
+      QLog.d("SystemAndEmojiEmoticonInfo", 1, "send saveemoji type = " + i + ";id = " + this.jdField_b_of_type_Int + ";ts = " + l + ";troopUin = " + str1);
+      if (paramQQAppInterface != null)
+      {
+        paramQQAppInterface = (anxx)paramQQAppInterface.getManager(172);
+        if (paramQQAppInterface != null) {
+          paramQQAppInterface.a(localSmallYellowItem);
+        }
+      }
+      return;
+    }
+  }
+  
+  public Drawable b(Context paramContext, float paramFloat)
+  {
+    Object localObject2 = null;
+    Object localObject1;
+    if ((this.jdField_a_of_type_Int == 1) && (this.jdField_b_of_type_Int != -1)) {
+      localObject1 = ayla.a(this.jdField_b_of_type_Int, true);
+    }
+    do
+    {
+      do
+      {
+        return localObject1;
+        localObject1 = localObject2;
+      } while (this.jdField_a_of_type_Int != 2);
+      localObject1 = localObject2;
+    } while (this.jdField_b_of_type_Int == -1);
+    return super.b(paramContext, paramFloat);
   }
 }
 

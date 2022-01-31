@@ -3,6 +3,7 @@ package com.tencent.mobileqq.mini.entry.desktop;
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
 import NS_MINI_INTERFACE.INTERFACE.StModuleInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -13,7 +14,6 @@ import android.widget.TextView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager;
-import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.BaseExposureReport;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.CardModuleExposureData;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopRecommendModuleInfo;
@@ -36,33 +36,33 @@ class MiniAppDesktopAdapter$RecommendModuleViewHolder
   public MiniAppDesktopAdapter$RecommendModuleViewHolder(View paramView)
   {
     super(paramView);
-    this.mBackGroundImage = ((ImageView)paramView.findViewById(2131304559));
-    this.mTitleIcon = ((ImageView)paramView.findViewById(2131304564));
-    this.mTitle = ((TextView)paramView.findViewById(2131304563));
-    this.mRecommendNumber = ((TextView)paramView.findViewById(2131304562));
-    this.mRecommendDesc = ((TextView)paramView.findViewById(2131304560));
-    this.mApps.add(paramView.findViewById(2131304553));
-    this.mApps.add(paramView.findViewById(2131304554));
-    this.mApps.add(paramView.findViewById(2131304555));
-    this.mApps.add(paramView.findViewById(2131304556));
-    this.mApps.add(paramView.findViewById(2131304557));
+    this.mBackGroundImage = ((ImageView)paramView.findViewById(2131370241));
+    this.mTitleIcon = ((ImageView)paramView.findViewById(2131370246));
+    this.mTitle = ((TextView)paramView.findViewById(2131370245));
+    this.mRecommendNumber = ((TextView)paramView.findViewById(2131370244));
+    this.mRecommendDesc = ((TextView)paramView.findViewById(2131370242));
+    this.mApps.add(paramView.findViewById(2131370235));
+    this.mApps.add(paramView.findViewById(2131370236));
+    this.mApps.add(paramView.findViewById(2131370237));
+    this.mApps.add(paramView.findViewById(2131370238));
+    this.mApps.add(paramView.findViewById(2131370239));
   }
   
-  public void bindView(DesktopRecommendModuleInfo paramDesktopRecommendModuleInfo)
+  public void bindView(Activity paramActivity, DesktopRecommendModuleInfo paramDesktopRecommendModuleInfo)
   {
-    Object localObject = paramDesktopRecommendModuleInfo.moduleInfo;
+    INTERFACE.StModuleInfo localStModuleInfo = paramDesktopRecommendModuleInfo.moduleInfo;
     try
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      Drawable localDrawable = this.itemView.getContext().getResources().getDrawable(2130847234);
+      Drawable localDrawable = this.itemView.getContext().getResources().getDrawable(2130847451);
       localURLDrawableOptions.mFailedDrawable = localDrawable;
       localURLDrawableOptions.mLoadingDrawable = localDrawable;
-      this.mBackGroundImage.setImageDrawable(MiniAppUtils.getDrawable(((INTERFACE.StModuleInfo)localObject).backgroundPic.get(), localURLDrawableOptions));
+      this.mBackGroundImage.setImageDrawable(MiniAppUtils.getDrawable(localStModuleInfo.backgroundPic.get(), localURLDrawableOptions));
       label62:
-      MiniAppUtils.setImage(this.mTitleIcon, ((INTERFACE.StModuleInfo)localObject).titleIcon.get());
-      this.mTitle.setText(((INTERFACE.StModuleInfo)localObject).title.get());
-      this.mRecommendNumber.setText(((INTERFACE.StModuleInfo)localObject).appTotalNum.get() + "");
-      this.mRecommendDesc.setText(((INTERFACE.StModuleInfo)localObject).desc.get());
+      MiniAppUtils.setImage(this.mTitleIcon, localStModuleInfo.titleIcon.get());
+      this.mTitle.setText(localStModuleInfo.title.get());
+      this.mRecommendNumber.setText(localStModuleInfo.appTotalNum.get() + "");
+      this.mRecommendDesc.setText(localStModuleInfo.desc.get());
       int i = 0;
       int j;
       for (;;)
@@ -72,11 +72,11 @@ class MiniAppDesktopAdapter$RecommendModuleViewHolder
           break;
         }
         j = i;
-        if (i >= ((INTERFACE.StModuleInfo)localObject).userAppList.size()) {
+        if (i >= localStModuleInfo.userAppList.size()) {
           break;
         }
         ((ImageView)this.mApps.get(i)).setVisibility(0);
-        ((ImageView)this.mApps.get(i)).setImageDrawable(MiniAppUtils.getIcon(this.itemView.getContext(), ((INTERFACE.StUserAppInfo)((INTERFACE.StModuleInfo)localObject).userAppList.get(i)).appInfo.icon.get(), true));
+        ((ImageView)this.mApps.get(i)).setImageDrawable(MiniAppUtils.getIcon(this.itemView.getContext(), ((INTERFACE.StUserAppInfo)localStModuleInfo.userAppList.get(i)).appInfo.icon.get(), true));
         i += 1;
       }
       while (j < this.mApps.size())
@@ -85,21 +85,11 @@ class MiniAppDesktopAdapter$RecommendModuleViewHolder
         ((ImageView)this.mApps.get(j)).setVisibility(4);
         j += 1;
       }
-      MiniAppUtils.setJump(this.itemView, paramDesktopRecommendModuleInfo.jumpMoreInfo, 3008);
-      paramDesktopRecommendModuleInfo = MiniAppUtils.getAppInterface();
-      if (paramDesktopRecommendModuleInfo != null)
-      {
-        paramDesktopRecommendModuleInfo = (MiniAppExposureManager)paramDesktopRecommendModuleInfo.getManager(322);
-        localObject = new MiniAppExposureManager.CardModuleExposureData("desktop", "featured", "expo", null);
-        if (paramDesktopRecommendModuleInfo.getDesktopPullDownState() == 3) {
-          paramDesktopRecommendModuleInfo.addReportItem((MiniAppExposureManager.BaseExposureReport)localObject);
-        }
+      MiniAppUtils.setJump(paramActivity, this.itemView, paramDesktopRecommendModuleInfo.jumpMoreInfo, 3008);
+      paramActivity = MiniAppUtils.getAppInterface();
+      if (paramActivity != null) {
+        ((MiniAppExposureManager)paramActivity.getManager(322)).putReportDataToMap("featured", new MiniAppExposureManager.CardModuleExposureData("desktop", "featured", "expo", null));
       }
-      else
-      {
-        return;
-      }
-      paramDesktopRecommendModuleInfo.putReportDataToMap("featured", (MiniAppExposureManager.BaseExposureReport)localObject);
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)

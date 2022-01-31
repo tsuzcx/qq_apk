@@ -5,17 +5,17 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ViewGroup.LayoutParams;
-import baxr;
-import bayp;
+import bcal;
+import bcbj;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.microapp.widget.ProgressView;
 import com.tencent.smtt.sdk.WebView;
-import vms;
+import vzo;
 
 public class ProgressWebView$MiniAppWebviewBuilder
-  extends baxr
-  implements bayp
+  extends bcal
+  implements bcbj
 {
   ProgressView progressView;
   
@@ -34,7 +34,7 @@ public class ProgressWebView$MiniAppWebviewBuilder
   public void buildLayout()
   {
     this.progressView = new ProgressView(this.mWebview.getContext());
-    this.progressView.setLayoutParams(new ViewGroup.LayoutParams(-1, vms.a(this.mWebview.getContext(), 3.0F)));
+    this.progressView.setLayoutParams(new ViewGroup.LayoutParams(-1, vzo.a(this.mWebview.getContext(), 3.0F)));
     this.progressView.b(Color.parseColor("#12B7F5"));
     this.mWebview.addView(this.progressView);
   }

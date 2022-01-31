@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.mini.entry;
 
-import android.util.Log;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 
 final class MiniAppUtils$9
@@ -15,31 +13,21 @@ final class MiniAppUtils$9
   {
     if (this.val$appConfig != null)
     {
-      if (!MiniAppUtils.access$100(this.val$appConfig)) {
-        break label81;
+      if (!MiniAppUtils.isFromPullDownEntry(this.val$appConfig)) {
+        break label45;
       }
-      MiniAppUtils.access$200(this.val$appConfig);
+      MiniAppUtils.access$100(this.val$appConfig);
+      if (QzoneConfig.getInstance().getConfig("qqminiapp", "backAutoHide", 0) == 2) {
+        MiniAppUtils.updateMiniAppList(100);
+      }
     }
-    label81:
+    label45:
     while ((this.val$appConfig.config == null) || (this.val$appConfig.config.isAppStoreMiniApp())) {
-      try
-      {
-        i = QzoneConfig.getInstance().getConfig("qqminiapp", "backAutoHide", 0);
-        if (i == 1) {
-          MiniAppUtils.updateMiniAppList(100);
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.e("MiniAppUtils", 1, "updatePullDownEntryListData, exception:" + Log.getStackTraceString(localException));
-          int i = 0;
-        }
-      }
+      return;
     }
-    MiniAppUtils.access$300(MiniAppInfo.copy(this.val$appConfig.config));
+    MiniAppInfo localMiniAppInfo = MiniAppInfo.copy(this.val$appConfig.config);
+    localMiniAppInfo.debugInfo = null;
+    MiniAppUtils.access$200(localMiniAppInfo);
   }
 }
 

@@ -20,7 +20,7 @@ public class PipeLinearLayout
   private Runnable jdField_a_of_type_JavaLangRunnable = new PipeLinearLayout.1(this);
   private final ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private volatile boolean jdField_a_of_type_Boolean;
-  private final int[] jdField_a_of_type_ArrayOfInt = { 2131306675, 2131306676, 2131306677 };
+  private final int[] jdField_a_of_type_ArrayOfInt = { 2131372377, 2131372378, 2131372379 };
   private Handler jdField_b_of_type_AndroidOsHandler;
   private final ArrayList<Long> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   
@@ -52,7 +52,7 @@ public class PipeLinearLayout
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131493971, this);
+    LayoutInflater.from(getContext()).inflate(2131559539, this);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   

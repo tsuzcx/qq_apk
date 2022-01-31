@@ -1,27 +1,18 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbTranslucentBrowserActivity;
-
-public class agux
-  implements Animation.AnimationListener
+class agux
+  implements bcvx
 {
-  public agux(SpringHbTranslucentBrowserActivity paramSpringHbTranslucentBrowserActivity) {}
+  agux(aguv paramaguv, Runnable paramRunnable) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt)
   {
-    if (SpringHbTranslucentBrowserActivity.a(this.a) != null) {
-      SpringHbTranslucentBrowserActivity.a(this.a).setAlpha(1.0F);
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agux
  * JD-Core Version:    0.7.0.1
  */

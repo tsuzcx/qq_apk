@@ -1,160 +1,201 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import org.json.JSONException;
+import com.tencent.biz.pubaccount.readinjoy.viola.adapter.ViolaReportDelegate.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.adapter.ViolaReportDelegate.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.commons.IReportDelegate;
+import com.tencent.viola.core.ViolaEnvironment;
+import com.tencent.viola.utils.ViolaUtils;
+import java.net.URLEncoder;
+import java.util.HashMap;
 import org.json.JSONObject;
 
 public class rww
+  implements IReportDelegate
 {
-  private static WSRedDotPushMsg a()
+  public static String a;
+  public HashMap<String, String> a;
+  
+  static
   {
-    Object localObject = rxi.a();
-    if (localObject != null)
-    {
-      localObject = ((rxi)localObject).a;
-      if (localObject != null)
-      {
-        sai.b("WeishiActivityHelper", "transformTrendsTabConfigToPushMsg mStrategyConfig=" + ((rxk)localObject).a);
-        if (!TextUtils.isEmpty(((rxk)localObject).a)) {
-          return WSRedDotPushMsg.getInstance(((rxk)localObject).a);
-        }
-      }
-    }
-    return null;
+    jdField_a_of_type_JavaLangString = "ViolaReportDelegate";
   }
   
-  private static WSRedDotPushMsg a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public rww()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("TrendsTab RedDot Msg : ");
-    if (paramAppInfo != null) {}
-    for (Object localObject = paramAppInfo.buffer.get();; localObject = "appInfo is null.")
-    {
-      sai.b("WeishiActivityHelper", (String)localObject);
-      if ((paramAppInfo == null) || (TextUtils.isEmpty(paramAppInfo.buffer.get()))) {
-        break label154;
-      }
-      try
-      {
-        localObject = new JSONObject(paramAppInfo.buffer.get());
-        paramAppInfo = ((JSONObject)localObject).optString("_show_mission");
-        localObject = ((JSONObject)localObject).optJSONObject("msg");
-        if ((localObject == null) || (TextUtils.isEmpty(paramAppInfo))) {
-          break label154;
-        }
-        paramAppInfo = ((JSONObject)localObject).optJSONObject(paramAppInfo);
-        if (paramAppInfo == null) {
-          break label154;
-        }
-        paramAppInfo = paramAppInfo.optString("extinfo");
-        sai.b("WeishiActivityHelper", "TrendsTab RedDot extInfoStr : " + paramAppInfo);
-        paramAppInfo = WSRedDotPushMsg.getInstance(paramAppInfo);
-        return paramAppInfo;
-      }
-      catch (JSONException paramAppInfo)
-      {
-        paramAppInfo.printStackTrace();
-      }
-    }
-    label154:
-    return null;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public static void a(Activity paramActivity, Intent paramIntent, WSRedDotPushMsg paramWSRedDotPushMsg)
+  private JSONObject a(String paramString)
   {
-    if (paramIntent == null)
+    JSONObject localJSONObject = new JSONObject();
+    String str1 = Uri.parse(paramString).getQueryParameter("v_bid");
+    try
     {
-      sai.d("WeishiActivityHelper", "gotoVideoLayerFromTrendsTab intent is null.");
+      localJSONObject.put(ViolaEnvironment.COMMON_UIN, onk.a());
+      localJSONObject.put(ViolaEnvironment.COMMON_NET, Integer.toString(onk.a(BaseApplication.getContext())));
+      localJSONObject.put(ViolaEnvironment.COMMON_OPERATION_VERSION, bbct.e());
+      localJSONObject.put(ViolaEnvironment.COMMON_QQ_VERSION, "8.2.8");
+      localJSONObject.put(ViolaEnvironment.COMMON_PHONE_TYPE, Build.MODEL);
+      String str2 = ViolaEnvironment.COMMON_BIZ;
+      if (TextUtils.isEmpty(str1)) {}
+      for (str1 = paramString;; str1 = paramString + "&offlineVersion=" + mze.a(str1))
+      {
+        localJSONObject.put(str2, URLEncoder.encode(str1));
+        localJSONObject.put(ViolaEnvironment.COMMON_PLATFORM, "0");
+        localJSONObject.put(ViolaEnvironment.COMMON_OPEN_COUNT, Integer.toString(rwa.a));
+        if (!TextUtils.isEmpty(paramString)) {
+          localJSONObject.put(ViolaEnvironment.COMMON_PAGE_NAME, ViolaUtils.getPageName(paramString));
+        }
+        localJSONObject.put(ViolaEnvironment.COMMON_RELEASE, "1");
+        return localJSONObject;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "initCommonDataJson Exception:" + paramString.getMessage());
+      }
+    }
+  }
+  
+  public void a()
+  {
+    ThreadManager.post(new ViolaReportDelegate.2(this), 8, null, true);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    ThreadManager.post(new ViolaReportDelegate.1(this, paramString, paramInt), 8, null, true);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1)) && (paramString2.equals(this.jdField_a_of_type_JavaUtilHashMap.get(paramString1)))) {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(paramString1);
+    }
+  }
+  
+  public void addReportData(String paramString1, String paramString2)
+  {
+    if ((ViolaEnvironment.KEY_SO.equals(paramString1)) && (ViolaEnvironment.SO_START.equals(paramString2)))
+    {
+      if (this.jdField_a_of_type_JavaUtilHashMap.size() >= 2)
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.clear();
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
       return;
     }
-    if (paramWSRedDotPushMsg != null) {
-      paramIntent.putExtra("key_weishi_push_msg_data", paramWSRedDotPushMsg);
-    }
-    bfpr.a(paramActivity, bfpy.a(), paramIntent);
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
   }
   
-  public static void a(Context paramContext, String paramString)
+  public void dropFrameMonitor(int paramInt, String paramString)
   {
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    if (!(paramContext instanceof Activity)) {
-      localIntent.addFlags(268435456);
-    }
-    localIntent.putExtra("big_brother_source_key", "biz_src_gzh_weishi");
-    localIntent.putExtra("url", paramString);
-    paramContext.startActivity(localIntent);
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
-  {
-    paramInt = 1;
-    sai.d("WeishiActivityHelper", "外部跳转微视公众号 from=" + paramString);
-    if (paramContext == null)
+    if (paramInt == 0)
     {
-      sai.d("WSPushLog", "WeishiActivityHelper handleJumpTargetVideoFeed, context is null.");
+      aaad.a().a(paramString, false);
       return;
     }
-    if (TextUtils.equals(paramString, "from_home_page"))
+    aaad.a().a(paramString);
+  }
+  
+  public HashMap<String, String> getBaseReportData(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    String str1 = Uri.parse(paramString).getQueryParameter("v_bid");
+    localHashMap.put(ViolaEnvironment.COMMON_UIN, onk.a());
+    localHashMap.put(ViolaEnvironment.COMMON_NET, Integer.toString(onk.a(BaseApplication.getContext())));
+    localHashMap.put(ViolaEnvironment.COMMON_OPERATION_VERSION, bbct.e());
+    localHashMap.put(ViolaEnvironment.COMMON_QQ_VERSION, "8.2.8");
+    localHashMap.put(ViolaEnvironment.COMMON_PHONE_TYPE, Build.MODEL);
+    String str2 = ViolaEnvironment.COMMON_BIZ;
+    if (TextUtils.isEmpty(str1)) {}
+    for (str1 = paramString;; str1 = paramString + "&offlineVersion=" + mze.a(str1))
     {
-      paramString = sam.a();
-      rzw.a(paramString);
-      rzu.a(paramString);
-      if (a(paramContext, paramString, 2, null))
+      localHashMap.put(str2, URLEncoder.encode(str1));
+      localHashMap.put(ViolaEnvironment.COMMON_PLATFORM, "0");
+      localHashMap.put(ViolaEnvironment.COMMON_OPEN_COUNT, Integer.toString(rwa.a));
+      if (!TextUtils.isEmpty(paramString)) {
+        localHashMap.put(ViolaEnvironment.COMMON_PAGE_NAME, ViolaUtils.getPageName(paramString));
+      }
+      localHashMap.put(ViolaEnvironment.COMMON_RELEASE, "1");
+      localHashMap.put(ViolaEnvironment.COMMON_APPLICATION, "1");
+      return localHashMap;
+    }
+  }
+  
+  public void reportData(String paramString)
+  {
+    if (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty())
+    {
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(ViolaEnvironment.COMMON_UIN)) {
+        this.jdField_a_of_type_JavaUtilHashMap.putAll(getBaseReportData(paramString));
+      }
+      paramString = ViolaUtils.copyMap(this.jdField_a_of_type_JavaUtilHashMap);
+      if (!paramString.isEmpty()) {
+        onk.a(onk.a(), true, paramString);
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    }
+  }
+  
+  public void reportHttpData(HashMap<String, String> paramHashMap, String paramString)
+  {
+    paramHashMap.putAll(getBaseReportData(paramString));
+    onk.b(onk.a(), true, paramHashMap);
+  }
+  
+  public void reportJsError(boolean paramBoolean, int paramInt, String paramString)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("error_code", paramInt);
+      localJSONObject.put("error_msg", paramString);
+      localJSONObject.put("is_renderJs", paramBoolean);
+      noo.a(null, null, "0X800AC69", "0X800AC69", 0, 0, "", "", "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
       {
-        paramContext = WSPublicAccReport.getInstance();
-        if (paramString == null) {}
-        for (;;)
-        {
-          paramContext.enterPublicAccReport(paramString, paramInt);
-          rwz.a().b();
-          return;
-          paramInt = paramString.mStrategyInfo.getType();
-        }
+        paramString.printStackTrace();
       }
     }
-    WSPublicAccReport.getInstance().enterPublicAccReport(null, 1);
-    WSRecommendFragment.a(paramContext);
   }
   
-  public static void a(Context paramContext, boolean paramBoolean, BusinessInfoCheckUpdate.AppInfo paramAppInfo, Intent paramIntent)
+  public void reportPageProcess(String paramString1, String paramString2, String paramString3)
   {
-    sai.b("WeishiActivityHelper", "handleTrendsTabClick hasRedDot = " + paramBoolean);
-    if (paramBoolean)
+    try
     {
-      paramAppInfo = a(paramAppInfo);
-      rzw.b();
-    }
-    for (;;)
-    {
-      rzw.a(paramAppInfo, paramBoolean);
-      WSPublicAccReport.getInstance().enterTrendsTabReport(paramAppInfo, paramBoolean);
-      if (!a(paramContext, paramAppInfo, 6, paramIntent)) {
-        break;
+      paramString3 = a(paramString3);
+      if (paramString3 != null)
+      {
+        paramString3.put(paramString1, paramString2);
+        onk.a(onk.a(), true, paramString3);
+        a();
       }
       return;
-      paramAppInfo = a();
     }
-    a((Activity)paramContext, paramIntent, paramAppInfo);
+    catch (Exception paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "reportPageProcessNew Exception:" + paramString1.getMessage());
+    }
   }
   
-  private static boolean a(Context paramContext, WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
+  public void reportRunningData(HashMap<String, String> paramHashMap, String paramString)
   {
-    sai.a("WeishiActivityHelper", "handleRedDotClick scene=" + paramInt + ", pushMsgData=" + paramWSRedDotPushMsg);
-    if ((paramWSRedDotPushMsg != null) && (paramWSRedDotPushMsg.mStrategyInfo != null))
-    {
-      rzi localrzi = (rzi)paramWSRedDotPushMsg.mStrategyInfo;
-      paramWSRedDotPushMsg = rzq.a(paramWSRedDotPushMsg, paramInt, paramIntent);
-      if (paramWSRedDotPushMsg != null) {
-        return paramWSRedDotPushMsg.a(paramContext, localrzi);
-      }
-    }
-    return false;
+    paramHashMap.putAll(getBaseReportData(paramString));
+    onk.c(onk.a(), true, paramHashMap);
   }
 }
 

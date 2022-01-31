@@ -1,85 +1,62 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.Iterator;
+import java.util.List;
 
-public class vjd
-  extends BaseAdapter
+class vjd
+  extends SimpleObserver<vsd>
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private vjf jdField_a_of_type_Vjf;
-  private int b;
-  private int c;
+  vjd(vjc paramvjc, vsd paramvsd) {}
   
-  public vjd(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  public void a(vsd paramvsd)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  public Bitmap a(int paramInt)
-  {
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Vjf = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-  }
-  
-  public void a(LocalMediaInfo paramLocalMediaInfo)
-  {
-    if (this.jdField_a_of_type_Vjf == null) {
+    super.onNext(paramvsd);
+    this.jdField_a_of_type_Vjc.jdField_a_of_type_Vja.b();
+    this.jdField_a_of_type_Vjc.jdField_a_of_type_Vja.getActivity().overridePendingTransition(0, 0);
+    this.jdField_a_of_type_Vjc.o();
+    this.jdField_a_of_type_Vjc.jdField_b_of_type_Boolean = false;
+    Iterator localIterator = this.jdField_a_of_type_Vjc.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((vhn)localIterator.next()).b(paramvsd);
+    }
+    this.jdField_a_of_type_Vjc.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Vjc.jdField_a_of_type_Vja.b();
+    paramvsd = (vib)this.jdField_a_of_type_Vjc.a(vib.class);
+    if (paramvsd != null) {
+      paramvsd.k();
+    }
+    if (this.jdField_a_of_type_Vjc.jdField_b_of_type_JavaUtilList.isEmpty())
+    {
+      paramvsd = this.jdField_a_of_type_Vjc.jdField_a_of_type_Vja.getActivity();
+      if (paramvsd != null)
+      {
+        ((EditWebVideoActivity)paramvsd).d(ajyc.a(2131703967));
+        vjc.a(this.jdField_a_of_type_Vjc, paramvsd, this.jdField_a_of_type_Vjc.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a, this.jdField_a_of_type_Vsd.a);
+      }
       return;
     }
-    this.jdField_a_of_type_Vjf.a(paramLocalMediaInfo);
+    bcpw.a(this.jdField_a_of_type_Vjc.jdField_a_of_type_Vja.a(), ajyc.a(2131703966), 0).a();
+    this.jdField_a_of_type_Vjc.jdField_a_of_type_Vja.getActivity().finish();
   }
   
-  public void a(vjf paramvjf)
+  public void onCancel()
   {
-    this.jdField_a_of_type_Vjf = paramvjf;
+    super.onCancel();
   }
   
-  public int getCount()
+  public void onError(@NonNull Error paramError)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      int i = (int)(uwv.a(this.jdField_a_of_type_AndroidContentContext.getResources()) * this.b);
-      paramViewGroup = new ViewGroup.LayoutParams(this.b, i);
-      paramView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      paramView.setLayoutParams(paramViewGroup);
-      paramViewGroup = new vje();
-      paramViewGroup.a = paramView;
-      paramViewGroup.a.setImageDrawable(new ColorDrawable(-12303292));
-      paramView.setTag(paramViewGroup);
+    super.onError(paramError);
+    this.jdField_a_of_type_Vjc.jdField_b_of_type_JavaUtilList.add(paramError);
+    if (QLog.isColorLevel()) {
+      QLog.e("EditWebVideoActivity", 2, "publish error:", paramError);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Vjf.a(paramViewGroup.a, Integer.valueOf(paramInt));
-      return paramView;
-      paramViewGroup = (vje)paramView.getTag();
-    }
+    bcpw.a(this.jdField_a_of_type_Vjc.jdField_a_of_type_Vja.a(), ajyc.a(2131703970), 0).a();
+    this.jdField_a_of_type_Vjc.jdField_a_of_type_Vja.getActivity().finish();
   }
 }
 

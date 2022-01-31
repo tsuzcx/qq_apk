@@ -1,22 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class bicw
-  implements DialogInterface.OnClickListener
+final class bicw
+  implements aptu
 {
-  bicw(bicr parambicr) {}
+  bicw(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
-    dov.com.qq.im.capture.view.MusicProviderView.a = false;
-    this.a.a.a.a(this.a.a.a());
-    bicr.a(this.a);
+    apue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, BaseActivity.sTopActivity);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bicw
  * JD-Core Version:    0.7.0.1
  */

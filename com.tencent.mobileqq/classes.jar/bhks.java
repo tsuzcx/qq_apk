@@ -1,36 +1,43 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class bhks
-  extends ssd
+public class bhks
+  extends MSFServlet
 {
-  bhks(bhkr parambhkr, String paramString)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super(paramString);
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    super.onLocationFinish(paramInt, paramSosoLbsInfo);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      this.a.jdField_a_of_type_Bhkq.jdField_a_of_type_Double = paramSosoLbsInfo.a.jdField_a_of_type_Double;
-      this.a.jdField_a_of_type_Bhkq.b = paramSosoLbsInfo.a.b;
-      urk.b("FacePoiManager", "onLocationUpdate() latitude=" + this.a.jdField_a_of_type_Bhkq.jdField_a_of_type_Double + " longitude=" + this.a.jdField_a_of_type_Bhkq.b);
-      if (this.a.jdField_a_of_type_Boolean) {
-        this.a.jdField_a_of_type_Bhkq.a();
-      }
+    if (paramFromServiceMsg != null) {
+      bhkr.a().c(paramFromServiceMsg.getResultCode());
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    this.a.jdField_a_of_type_Bhkq.jdField_a_of_type_Double = 0.0D;
-    this.a.jdField_a_of_type_Bhkq.b = 0.0D;
-    urk.b("FacePoiManager", "onLocationUpdate() error");
-    this.a.jdField_a_of_type_Bhkq.jdField_a_of_type_Bhkt.a(false, false, null, null);
+    QLog.d("QzoneOnlineTimeServlet", 2, "fromServiceMsg==msg");
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    paramIntent = paramIntent.getSerializableExtra("list");
+    QLog.d("QzoneOnlineTimeServlet", 1, "uin:" + getAppRuntime().getLongAccountUin());
+    bhkq localbhkq = new bhkq(getAppRuntime().getLongAccountUin(), (ArrayList)paramIntent);
+    byte[] arrayOfByte = localbhkq.encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null) {
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localbhkq.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhks
  * JD-Core Version:    0.7.0.1
  */

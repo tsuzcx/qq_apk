@@ -1,28 +1,41 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
+import java.util.List;
 
 public class aqww
-  implements DownloadParams.DecodeHandler
+  extends RecyclerView.Adapter<FontBubblePanelView<T>.aqwx>
 {
-  public aqww(FloatIconLayout paramFloatIconLayout) {}
+  public aqww(FontBubblePanelView paramFontBubblePanelView) {}
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public FontBubblePanelView<T>.aqwx a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("FloatBaseLayout.Icon", 4, "ROUND_FACE_DECODER");
+    paramViewGroup = LayoutInflater.from(this.a.getContext()).inflate(2131562600, paramViewGroup, false);
+    return new aqwx(this.a, paramViewGroup);
+  }
+  
+  public void a(FontBubblePanelView<T>.aqwx paramFontBubblePanelView, int paramInt)
+  {
+    if (paramInt < FontBubblePanelView.a(this.a).size()) {
+      this.a.a(paramFontBubblePanelView, (FontBubble)FontBubblePanelView.a(this.a).get(paramInt));
     }
-    if (paramBitmap == null) {
-      return null;
-    }
-    return bacm.a(paramBitmap, this.a.d / 2, this.a.d / 2, this.a.d / 2);
+  }
+  
+  public int getItemCount()
+  {
+    return FontBubblePanelView.a(this.a).size();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return ((FontBubble)FontBubblePanelView.a(this.a).get(paramInt)).viewType;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqww
  * JD-Core Version:    0.7.0.1
  */

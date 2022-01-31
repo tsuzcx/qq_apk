@@ -1,12 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.immersion.stickersampleapp.HapticManager;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
 class aefc
-  implements DialogInterface.OnClickListener
+  implements adnz
 {
-  aefc(aeeh paramaeeh) {}
+  aefc(aefb paramaefb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    UnlimitedBladeWorks.a(this.a.a).b = true;
+    UnlimitedBladeWorks.a(this.a.a).a = false;
+    if (UnlimitedBladeWorks.a(this.a.a) != null)
+    {
+      UnlimitedBladeWorks.a(this.a.a).a();
+      if (UnlimitedBladeWorks.b(this.a.a))
+      {
+        HapticManager.a().c(UnlimitedBladeWorks.a(this.a.a));
+        UnlimitedBladeWorks.a(this.a.a, 0);
+      }
+    }
+  }
 }
 
 

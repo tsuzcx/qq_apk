@@ -1,44 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-
-public class biir
-  extends JobSegment<Bitmap, Bitmap>
+class biir
+  implements biob
 {
-  public int a;
+  biir(biim parambiim) {}
   
-  public biir()
+  public void a()
   {
-    this.a = 10;
+    biim.a(this.a).a(null);
   }
   
-  public biir(int paramInt)
+  public void a(biqn parambiqn)
   {
-    this.a = paramInt;
-  }
-  
-  public static Bitmap a(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
-  {
-    if (paramBitmap == null) {
-      return null;
-    }
-    bain.a(paramBitmap, paramInt);
-    return paramBitmap;
-  }
-  
-  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
-  {
-    long l = System.currentTimeMillis();
-    paramJobContext = a(paramBitmap, this.a, false);
-    urk.b("BlurJobSegment", "blur time = " + (System.currentTimeMillis() - l) + ", blur ratio = " + this.a);
-    if (paramJobContext == null)
+    if (biim.a(this.a) == bivx.a)
     {
-      super.notifyError(new BitmapError("BlurJobSegment", 7));
+      biim.a(this.a).a(parambiqn);
       return;
     }
-    super.notifyResult(paramJobContext);
+    bizq.d("AEPituCameraUnit", "onMaterialSelected---but current capture mode is not normal");
   }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

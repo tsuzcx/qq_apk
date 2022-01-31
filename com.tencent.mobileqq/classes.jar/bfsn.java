@@ -1,20 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qzone.TranslucentActivity;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class bfsn
-  implements DialogInterface.OnDismissListener
+class bfsn
+  implements PopupWindow.OnDismissListener
 {
-  public bfsn(TranslucentActivity paramTranslucentActivity) {}
+  bfsn(bfsm parambfsm) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onDismiss()
   {
-    this.a.finish();
+    this.a.jdField_a_of_type_Bfsq = null;
+    this.a.jdField_a_of_type_Bfsp = null;
+    this.a.c();
+    onk.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfsn
  * JD-Core Version:    0.7.0.1
  */

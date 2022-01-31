@@ -1,40 +1,142 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QConfigureException;
+import com.tencent.qphone.base.util.MD5;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
 
-public class ahfo
-  implements bbhg
+public abstract class ahfo<T>
+  extends ampb<T>
 {
-  public ahfo(LoginView paramLoginView, ImageView paramImageView, int paramInt) {}
-  
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return 0;
   }
   
-  public void a(boolean paramBoolean)
+  public Class<T> a()
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localImageView.setVisibility(i);
-      return;
+    return null;
+  }
+  
+  @NonNull
+  public T a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("springHb_BaseConfProcessor", 2, "[migrateOldOrDefaultContent]" + a());
+    }
+    return null;
+  }
+  
+  protected abstract T a(ampi[] paramArrayOfampi);
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("springHb_BaseConfProcessor", 2, "[onUpdate] onReqNoReceive = " + a());
     }
   }
   
-  public void b(boolean paramBoolean)
+  public void a(int paramInt)
   {
-    if (paramBoolean)
+    if (QLog.isColorLevel()) {
+      QLog.i("springHb_BaseConfProcessor", 2, "[onReqNoReceive] failCode=" + paramInt + " type: " + a());
+    }
+    try
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.5F);
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if ((localQQAppInterface != null) && (paramInt == -2)) {
+        ahic.a(2, 2, a(), ahic.a(a()), ampm.a().a(a(), localQQAppInterface.getCurrentAccountUin()), true, new String[0]);
+      }
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void a(T paramT)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("springHb_BaseConfProcessor", 2, "[onUpdate] " + a());
+    }
+    try
+    {
+      paramT = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      ahic.a(paramT, 1, 0, a(), ahic.a(a()), ampm.a().a(a(), paramT.getCurrentAccountUin()), false, ahic.a(a()));
+      return;
+    }
+    catch (Throwable paramT)
+    {
+      QLog.e("springHb_BaseConfProcessor", 1, QLog.getStackTraceString(paramT));
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  @Nullable
+  public T b(ampi[] paramArrayOfampi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("springHb_BaseConfProcessor", 2, "[onParsed]" + a());
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramArrayOfampi == null) || (paramArrayOfampi.length == 0))
+    {
+      if (localQQAppInterface != null)
+      {
+        ahic.a(2, 3, a(), ahic.a(a()), ampm.a().a(a(), localQQAppInterface.getCurrentAccountUin()), true, new String[] { "parse config fail!" });
+        return null;
+      }
+    }
+    else
+    {
+      try
+      {
+        int i = paramArrayOfampi[0].jdField_a_of_type_Int;
+        ahic.a(a(), i);
+        ahic.a(a(), MD5.toMD5(paramArrayOfampi[0].jdField_a_of_type_JavaLangString));
+        paramArrayOfampi = a(paramArrayOfampi);
+        return paramArrayOfampi;
+      }
+      catch (Exception paramArrayOfampi)
+      {
+        if (localQQAppInterface != null)
+        {
+          if (!(paramArrayOfampi instanceof JSONException)) {
+            break label207;
+          }
+          ahic.a(2, 5, a(), ahic.a(a()), ampm.a().a(a(), localQQAppInterface.getCurrentAccountUin()), true, new String[] { QLog.getStackTraceString(paramArrayOfampi.getCause()) });
+        }
+      }
+      for (;;)
+      {
+        throw new QConfigureException(paramArrayOfampi.getMessage());
+        label207:
+        ahic.a(2, 4, a(), ahic.a(a()), ampm.a().a(a(), localQQAppInterface.getCurrentAccountUin()), true, new String[] { QLog.getStackTraceString(paramArrayOfampi.getCause()) });
+      }
+    }
+    return null;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahfo
  * JD-Core Version:    0.7.0.1
  */

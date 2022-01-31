@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
-import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.sdk.MiniAppException;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
@@ -16,50 +13,41 @@ class UIJsPlugin$16
   
   public void run()
   {
-    for (;;)
+    try
     {
-      try
+      Object localObject = new JSONObject(this.val$jsonParams);
+      int i = ((JSONObject)localObject).optInt("htmlId");
+      localObject = ((JSONObject)localObject).optJSONObject("position");
+      if (localObject == null) {
+        break label269;
+      }
+      int j = ((JSONObject)localObject).optInt("left");
+      int k = ((JSONObject)localObject).optInt("top");
+      int m = ((JSONObject)localObject).optInt("width");
+      int n = ((JSONObject)localObject).optInt("height");
+      localObject = this.this$0.jsPluginEngine.getWebviewContainer(this.val$webview);
+      if (localObject != null)
       {
-        Object localObject1 = new JSONObject(this.val$jsonParams);
-        int i = ((JSONObject)localObject1).optInt("htmlId");
-        localObject1 = ((JSONObject)localObject1).optJSONObject("position");
-        if (localObject1 == null) {
-          break label295;
-        }
-        int j = ((JSONObject)localObject1).optInt("left");
-        int k = ((JSONObject)localObject1).optInt("top");
-        int m = ((JSONObject)localObject1).optInt("width");
-        int n = ((JSONObject)localObject1).optInt("height");
-        localObject1 = ((AppBrandPageContainer)this.this$0.jsPluginEngine.appBrandRuntime.getContainer()).getPageByWebViewId(this.val$webview.getPageWebViewId());
-        if (localObject1 == null) {
-          break label328;
-        }
-        localObject1 = ((AbsAppBrandPage)localObject1).getCurrentWebviewContainer();
-        if (localObject1 != null)
+        if (((WebviewContainer)localObject).insertHTMLWebView(i, j, k, m, n))
         {
-          if (((WebviewContainer)localObject1).insertHTMLWebView(i, j, k, m, n))
-          {
-            this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
-            return;
-          }
-          this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, "create webview failed.", this.val$callbackId);
+          this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
           return;
         }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("[mini] UIJsPlugin", 1, this.val$event + " error.", localException);
-        this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
+        this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, "create webview failed.", this.val$callbackId);
         return;
       }
-      this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
-      throw new MiniAppException("insertHtmlWebView fail, can not find WebviewContainer, pageWebviewId=" + this.val$webview.getPageWebViewId());
-      label295:
-      this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
-      throw new MiniAppException("insertHtmlWebView fail, position is empty");
-      label328:
-      Object localObject2 = null;
     }
+    catch (Exception localException)
+    {
+      QLog.e("[mini] UIJsPlugin", 1, this.val$event + " error.", localException);
+      this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
+      return;
+    }
+    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
+    throw new MiniAppException("insertHtmlWebView fail, can not find WebviewContainer, pageWebviewId=" + this.val$webview.getPageWebViewId());
+    label269:
+    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
+    throw new MiniAppException("insertHtmlWebView fail, position is empty");
   }
 }
 

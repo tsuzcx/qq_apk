@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.minigame.utils.VConsoleLogManager;
 
 class GameActivity$14
   implements Runnable
@@ -10,10 +9,11 @@ class GameActivity$14
   
   public void run()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param_proc_name", BaseApplicationImpl.getApplication().getQQProcessName());
-    localBundle.putString("param_proc_modulename", "mini_app_client_module");
-    this.this$0.onProcessBackground(localBundle);
+    if (!GameActivity.access$2100(this.this$0))
+    {
+      GameActivity.access$2200(this.this$0);
+      GameActivity.access$2400(this.this$0).updateVconsoleView(GameActivity.access$2300(this.this$0), GameActivity.access$1400(this.this$0), false);
+    }
   }
 }
 

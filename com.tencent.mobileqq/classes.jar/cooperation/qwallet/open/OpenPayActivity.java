@@ -209,67 +209,67 @@ public class OpenPayActivity
   private void c(Bundle paramBundle)
   {
     // Byte code:
-    //   0: new 345	bfoj
+    //   0: new 345	bgwq
     //   3: dup
-    //   4: invokespecial 346	bfoj:<init>	()V
+    //   4: invokespecial 346	bgwq:<init>	()V
     //   7: astore 5
     //   9: aload 5
     //   11: iconst_1
-    //   12: putfield 347	bfoj:jdField_d_of_type_Int	I
+    //   12: putfield 347	bgwq:jdField_d_of_type_Int	I
     //   15: aload 5
     //   17: ldc_w 349
-    //   20: putfield 351	bfoj:b	Ljava/lang/String;
+    //   20: putfield 351	bgwq:b	Ljava/lang/String;
     //   23: aload 5
     //   25: aload_1
     //   26: ldc_w 290
     //   29: invokevirtual 77	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   32: putfield 353	bfoj:i	Ljava/lang/String;
+    //   32: putfield 353	bgwq:i	Ljava/lang/String;
     //   35: aload 5
     //   37: aload_1
     //   38: ldc_w 355
     //   41: invokevirtual 359	android/os/Bundle:getInt	(Ljava/lang/String;)I
-    //   44: putfield 360	bfoj:jdField_c_of_type_Int	I
+    //   44: putfield 360	bgwq:jdField_c_of_type_Int	I
     //   47: aload 5
     //   49: aload_1
     //   50: ldc_w 362
     //   53: invokevirtual 77	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   56: putfield 364	bfoj:a	Ljava/lang/String;
+    //   56: putfield 364	bgwq:a	Ljava/lang/String;
     //   59: aload 5
     //   61: ldc 64
-    //   63: putfield 367	bfoj:j	Ljava/lang/String;
+    //   63: putfield 367	bgwq:j	Ljava/lang/String;
     //   66: aload 5
-    //   68: invokevirtual 369	bfoj:a	()Z
+    //   68: invokevirtual 369	bgwq:a	()Z
     //   71: ifeq +75 -> 146
     //   74: aload 5
     //   76: aload_1
     //   77: ldc_w 371
     //   80: invokevirtual 77	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   83: putfield 373	bfoj:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   83: putfield 373	bgwq:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   86: aload 5
     //   88: aload_1
     //   89: ldc_w 375
     //   92: invokevirtual 77	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   95: putfield 377	bfoj:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   95: putfield 377	bgwq:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   98: aload 5
     //   100: aload_1
     //   101: ldc_w 379
     //   104: invokevirtual 77	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   107: putfield 381	bfoj:e	Ljava/lang/String;
+    //   107: putfield 381	bgwq:e	Ljava/lang/String;
     //   110: aload 5
     //   112: aload_1
     //   113: ldc_w 383
     //   116: invokevirtual 77	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   119: putfield 386	bfoj:f	Ljava/lang/String;
+    //   119: putfield 386	bgwq:f	Ljava/lang/String;
     //   122: aload 5
     //   124: aload_1
     //   125: ldc_w 388
     //   128: invokevirtual 77	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   131: putfield 391	bfoj:g	Ljava/lang/String;
+    //   131: putfield 391	bgwq:g	Ljava/lang/String;
     //   134: aload 5
     //   136: aload_1
     //   137: ldc_w 393
     //   140: invokevirtual 77	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   143: putfield 396	bfoj:h	Ljava/lang/String;
+    //   143: putfield 396	bgwq:h	Ljava/lang/String;
     //   146: aload_0
     //   147: getfield 398	cooperation/qwallet/open/OpenPayActivity:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
     //   150: ldc 99
@@ -304,7 +304,7 @@ public class OpenPayActivity
     //   214: iconst_2
     //   215: if_icmpne +124 -> 339
     //   218: aload 5
-    //   220: invokevirtual 408	bfoj:a	()Ljava/lang/String;
+    //   220: invokevirtual 408	bgwq:a	()Ljava/lang/String;
     //   223: astore_1
     //   224: aload_1
     //   225: invokestatic 120	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -314,7 +314,7 @@ public class OpenPayActivity
     //   235: aload_1
     //   236: invokevirtual 413	java/lang/String:getBytes	()[B
     //   239: iconst_0
-    //   240: invokestatic 419	baaw:encode	([BI)[B
+    //   240: invokestatic 419	bbca:encode	([BI)[B
     //   243: invokespecial 421	java/lang/String:<init>	([B)V
     //   246: astore_1
     //   247: aload 4
@@ -366,7 +366,7 @@ public class OpenPayActivity
     //   346: astore_1
     //   347: aload 5
     //   349: aload_1
-    //   350: invokevirtual 461	bfoj:a	(Landroid/os/Bundle;)V
+    //   350: invokevirtual 461	bgwq:a	(Landroid/os/Bundle;)V
     //   353: aload 4
     //   355: ldc_w 423
     //   358: invokevirtual 427	android/content/Intent:setAction	(Ljava/lang/String;)Landroid/content/Intent;
@@ -429,7 +429,7 @@ public class OpenPayActivity
     //   155	239	2	str1	String
     //   165	207	3	str2	String
     //   208	207	4	localIntent	Intent
-    //   7	341	5	localbfoj	bfoj
+    //   7	341	5	localbgwq	bgwq
     // Exception table:
     //   from	to	target	type
     //   231	247	328	java/lang/Exception

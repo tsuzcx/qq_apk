@@ -5,7 +5,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.webkit.JavascriptInterface;
-import baip;
+import bbjw;
 import com.tencent.mobileqq.microapp.apkg.f;
 import com.tencent.mobileqq.microapp.apkg.r;
 import com.tencent.mobileqq.microapp.apkg.t;
@@ -68,7 +68,7 @@ public class PageWebview
   
   private void onWebViewReady(f paramf)
   {
-    if (baip.a(this.wxssJsStr))
+    if (bbjw.a(this.wxssJsStr))
     {
       String str = paramf.g(this.mRouteUrl);
       if (!TextUtils.isEmpty(str)) {
@@ -161,7 +161,7 @@ public class PageWebview
   
   public void loadPageWebviewJs(f paramf)
   {
-    if (baip.a(this.mRouteUrl)) {}
+    if (bbjw.a(this.mRouteUrl)) {}
     while ((this.hasFLoad) || (!this.hasLoadHtmlFinish)) {
       return;
     }

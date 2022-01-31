@@ -1,31 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
-public class mov
-  implements mos
+class mov
+  extends lkg
 {
-  public void a(String paramString1, int paramInt, String paramString2)
+  mov(mou parammou) {}
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
-    QLog.i(paramString1, paramInt, paramString2);
+    c();
   }
   
-  public boolean a()
+  protected void b(long paramLong, boolean paramBoolean)
   {
-    return QLog.isColorLevel();
+    c();
   }
   
-  public void b(String paramString1, int paramInt, String paramString2)
+  void c()
   {
-    QLog.d(paramString1, paramInt, paramString2);
-  }
-  
-  public boolean b()
-  {
-    return QLog.isDevelopLevel();
+    mpc localmpc = this.a.a();
+    if ((localmpc != null) && (localmpc.a())) {
+      ((AVRedPacketManager)this.a.a.a(6)).c(this.a.a.a().a().j);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mov
  * JD-Core Version:    0.7.0.1
  */

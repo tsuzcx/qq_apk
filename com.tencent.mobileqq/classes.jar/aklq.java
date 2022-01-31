@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.ARRelationShipAIOMsg;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.util.Comparator;
 
-public final class aklq
-  implements Parcelable.Creator<ARRelationShipAIOMsg>
+public class aklq
+  implements Comparator<File>
 {
-  public ARRelationShipAIOMsg a(Parcel paramParcel)
-  {
-    return new ARRelationShipAIOMsg(paramParcel);
-  }
+  public aklq(CleanCache paramCleanCache) {}
   
-  public ARRelationShipAIOMsg[] a(int paramInt)
+  public int a(File paramFile1, File paramFile2)
   {
-    return new ARRelationShipAIOMsg[paramInt];
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aklq
  * JD-Core Version:    0.7.0.1
  */

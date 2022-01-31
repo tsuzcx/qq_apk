@@ -3,10 +3,10 @@ package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import mod;
+import mzc;
 
 class IVOfflinePluginImpl$4
-  implements mod
+  implements mzc
 {
   IVOfflinePluginImpl$4(IVOfflinePluginImpl paramIVOfflinePluginImpl, long paramLong) {}
   

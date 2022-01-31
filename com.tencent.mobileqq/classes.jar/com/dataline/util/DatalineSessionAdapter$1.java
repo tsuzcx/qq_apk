@@ -1,15 +1,15 @@
 package com.dataline.util;
 
-import dr;
+import fk;
 
 public class DatalineSessionAdapter$1
   implements Runnable
 {
-  public DatalineSessionAdapter$1(dr paramdr) {}
+  public DatalineSessionAdapter$1(fk paramfk) {}
   
   public void run()
   {
-    dr.a(this.this$0, true);
+    fk.a(this.this$0, true);
   }
 }
 

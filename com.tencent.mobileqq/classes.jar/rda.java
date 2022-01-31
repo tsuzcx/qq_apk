@@ -1,10 +1,21 @@
-public abstract interface rda<V>
+import com.tencent.widget.AbsListView;
+
+class rda
+  extends oyg
 {
-  public abstract void a(V paramV);
+  rda(rcy paramrcy, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    super(paramString);
+  }
+  
+  public void a(oya paramoya)
+  {
+    paramoya.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rda
  * JD-Core Version:    0.7.0.1
  */

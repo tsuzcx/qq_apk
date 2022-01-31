@@ -1,32 +1,42 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
 
 public class asni
-  implements begw
+  implements DialogInterface.OnClickListener
 {
-  public asni(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, begr parambegr) {}
+  public asni(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    paramInt = asnx.a().a();
+    if (1 == paramInt)
     {
+      this.a.l();
+      if (this.a.a) {
+        asoe.a("0X800A253", 3);
+      }
+    }
+    while (2 != paramInt)
+    {
+      return;
+      asoe.a("0X800A253", 1);
+      return;
+    }
+    if (this.a.d) {
+      asoe.a("0X800A244", 2);
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Begr != null) {
-        this.jdField_a_of_type_Begr.dismiss();
-      }
+      this.a.l();
       return;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.f(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
-      continue;
-      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+      asoe.a("0X800A244", 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     asni
  * JD-Core Version:    0.7.0.1
  */

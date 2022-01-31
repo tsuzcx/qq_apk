@@ -1,16 +1,23 @@
-import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
-public abstract interface bini
+class bini
+  extends RecyclerView.ViewHolder
 {
-  public abstract int a();
+  private TextView a;
   
-  public abstract void a();
+  public bini(View paramView)
+  {
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131362150));
+  }
   
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract void a(binj parambinj);
-  
-  public abstract void a(Runnable paramRunnable);
+  public void a(@NonNull binj parambinj)
+  {
+    this.a.setText(parambinj.a);
+  }
 }
 
 

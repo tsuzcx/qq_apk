@@ -1,25 +1,7 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-
-public abstract interface bayp
-{
-  public abstract void buildBottomBar();
-  
-  public abstract void buildContentView(Bundle paramBundle);
-  
-  public abstract void buildData();
-  
-  public abstract void buildLayout();
-  
-  public abstract void buildTitleBar();
-  
-  public abstract void buildWebView(AppInterface paramAppInterface);
-  
-  public abstract void preInitWebviewPlugin();
-}
+public abstract interface bayp {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bayp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,19 @@
-import android.graphics.PointF;
-import android.support.annotation.NonNull;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-public class biiv
+class biiv
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public float a;
-  public int a;
-  public PointF a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
-  public int d;
-  public int e;
+  private biiv(biim parambiim) {}
   
-  public biiv(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public void onLongPress(MotionEvent paramMotionEvent)
   {
-    this(new PointF(0.0F, 0.0F), 1.0F, 0.0F, 0.0F, 0.0F, paramInt1, paramInt2, paramInt5, paramInt3, paramInt4);
-  }
-  
-  public biiv(PointF paramPointF, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPointF = paramPointF;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
-    this.jdField_d_of_type_Float = paramFloat4;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_d_of_type_Int = paramInt4;
-    this.e = paramInt5;
-  }
-  
-  public static biiv a(@NonNull biiv parambiiv)
-  {
-    return new biiv(parambiiv.jdField_a_of_type_AndroidGraphicsPointF, parambiiv.jdField_a_of_type_Float, parambiiv.jdField_b_of_type_Float, parambiiv.jdField_c_of_type_Float, parambiiv.jdField_d_of_type_Float, parambiiv.jdField_a_of_type_Int, parambiiv.jdField_b_of_type_Int, parambiiv.jdField_c_of_type_Int, parambiiv.jdField_d_of_type_Int, parambiiv.e);
-  }
-  
-  public String toString()
-  {
-    return "LayerParams{centerP=" + this.jdField_a_of_type_AndroidGraphicsPointF + ", scale=" + this.jdField_a_of_type_Float + ", rotate=" + this.jdField_b_of_type_Float + ", translateXValue=" + this.jdField_c_of_type_Float + ", translateYValue=" + this.jdField_d_of_type_Float + ", width=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", textColor=" + this.jdField_d_of_type_Int + ", textSize=" + this.e + '}';
+    if ((biim.a(this.a) != bivx.c) && (System.currentTimeMillis() - biim.a(this.a) > 5000L))
+    {
+      biim.a(this.a).a(196614, new Object[0]);
+      biim.a(this.a, System.currentTimeMillis());
+      this.a.d(0);
+    }
   }
 }
 

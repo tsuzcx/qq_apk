@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import alzf;
-import amnh;
-import amnt;
+import amov;
+import ando;
+import anea;
 
 public class ConfigServlet$4
   implements Runnable
 {
-  public ConfigServlet$4(amnh paramamnh, String paramString) {}
+  public ConfigServlet$4(ando paramando, String paramString) {}
   
   public void run()
   {
-    alzf.a.c(this.a);
+    amov.a.c(this.a);
   }
 }
 

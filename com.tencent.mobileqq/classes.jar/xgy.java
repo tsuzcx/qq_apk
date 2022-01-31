@@ -1,72 +1,66 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListReq;
+import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListRsp;
+import NS_QQ_STORY_CLIENT.CLIENT.StUinTime;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.mini.servlet.ProtoBufRequest;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class xgy
+public class xgy
+  extends ProtoBufRequest
 {
-  public Rect a;
-  public int c = 2;
-  public boolean c;
+  private final CLIENT.StGetStoryFeedListReq a = new CLIENT.StGetStoryFeedListReq();
   
-  public static int a(Rect paramRect, Drawable paramDrawable)
+  public xgy(int paramInt, CLIENT.StUinTime paramStUinTime)
   {
-    float f1 = paramRect.width();
-    float f2 = paramRect.height();
-    float f3 = paramDrawable.getIntrinsicWidth();
-    float f4 = paramDrawable.getIntrinsicHeight();
-    if ((f1 <= 0.0F) || (f2 <= 0.0F) || (f3 <= 0.0F) || (f4 <= 0.0F)) {}
-    do
-    {
-      return 0;
-      f1 = f1 * f4 / (f2 * f3);
-      if (f1 < 1.0F) {
-        return 1;
-      }
-    } while (f1 <= 1.0F);
-    return 2;
+    this.a.listType.set(paramInt);
+    this.a.uinTime.set(paramStUinTime);
+    this.a.listNum.set(10);
   }
   
-  public abstract int a();
-  
-  public Rect a()
+  @Nullable
+  public static CLIENT.StGetStoryFeedListRsp a(byte[] paramArrayOfByte)
   {
+    if (paramArrayOfByte == null)
+    {
+      a("data is null");
+      return null;
+    }
+    paramArrayOfByte = decode(paramArrayOfByte);
+    if (paramArrayOfByte == null)
+    {
+      a("storyData is null");
+      return null;
+    }
+    CLIENT.StGetStoryFeedListRsp localStGetStoryFeedListRsp = new CLIENT.StGetStoryFeedListRsp();
+    try
+    {
+      localStGetStoryFeedListRsp.mergeFrom(paramArrayOfByte);
+      return localStGetStoryFeedListRsp;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      a("onResponse fail." + paramArrayOfByte);
+    }
     return null;
   }
   
-  public void a(int paramInt)
+  private static void a(String paramString)
   {
-    this.c = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.e("GetMineStoryFeedListRequest", 2, paramString);
+    }
   }
   
-  public boolean a(boolean paramBoolean)
+  public byte[] getBusiBuf()
   {
-    return true;
-  }
-  
-  public int b()
-  {
-    return this.c;
-  }
-  
-  public Rect b()
-  {
-    return this.a;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public abstract Drawable c();
-  
-  public int d()
-  {
-    return 0;
+    return this.a.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xgy
  * JD-Core Version:    0.7.0.1
  */

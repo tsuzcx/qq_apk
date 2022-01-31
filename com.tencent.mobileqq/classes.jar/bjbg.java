@@ -1,22 +1,10 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-
-public class bjbg
+public abstract interface bjbg
 {
-  public int a;
-  public Bitmap a;
+  public abstract void a(bjbf parambjbf);
   
-  protected void finalize()
-  {
-    super.finalize();
-    if ((this.a != null) && (!this.a.isRecycled()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Frames", 2, "recycle bitmap");
-      }
-      this.a.recycle();
-    }
-  }
+  public abstract void a(bjbf parambjbf, int paramInt);
+  
+  public abstract void b(bjbf parambjbf);
 }
 
 

@@ -1,45 +1,13 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.qphone.base.util.BaseApplication;
-
-public class axsr
+class axsr
 {
-  public static axsr a;
+  public int a;
+  public long a;
   
-  public static axsr a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new axsr();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public int a()
-  {
-    return badq.a(BaseApplication.getContext());
-  }
-  
-  public String a()
-  {
-    try
-    {
-      String str = AppNetConnInfo.getCurrentAPN();
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
+  private axsr(axsq paramaxsq) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axsr
  * JD-Core Version:    0.7.0.1
  */

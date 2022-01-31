@@ -1,24 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class tzo
-  implements vqk
+  extends QQUIEventReceiver<tzm, tkp>
 {
-  public tzo(ShareGroupInnerListView paramShareGroupInnerListView) {}
-  
-  public void a()
+  public tzo(@NonNull tzm paramtzm)
   {
-    if ((this.a.jdField_a_of_type_Tzp != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
-      this.a.jdField_a_of_type_Tzp.a(this.a.jdField_a_of_type_JavaLangString);
+    super(paramtzm);
+  }
+  
+  public void a(@NonNull tzm paramtzm, @NonNull tkp paramtkp)
+  {
+    veg.b("InteractWidgetPageHolder", "receive poll info event.");
+    if (paramtzm.d()) {
+      paramtzm.a(paramtzm.jdField_a_of_type_Int, paramtzm.b, paramtzm.jdField_a_of_type_Uav, paramtzm.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder);
     }
   }
   
-  public boolean a(boolean paramBoolean)
+  public Class acceptEventClass()
   {
-    if (this.a.jdField_a_of_type_Tzp != null) {
-      return this.a.jdField_a_of_type_Tzp.a(this.a.jdField_a_of_type_JavaLangString);
-    }
-    return false;
+    return tkp.class;
   }
 }
 

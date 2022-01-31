@@ -1,6 +1,15 @@
-public class bgmz
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class bgmz
+  implements DialogInterface.OnDismissListener
 {
-  protected void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2) {}
+  bgmz(bgmt parambgmt) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    bgmt.a(this.a, null);
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import ajjy;
+import ajyc;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -13,10 +13,10 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import awqx;
-import bbkt;
-import bbku;
-import bbmy;
+import axqw;
+import bcnr;
+import bcns;
+import bcpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -28,7 +28,7 @@ public class ParticipleBottomMenuView
 {
   private int jdField_a_of_type_Int;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private bbku jdField_a_of_type_Bbku;
+  private bcns jdField_a_of_type_Bcns;
   private ParticipleView jdField_a_of_type_ComTencentMobileqqWidgetParticipleView;
   private int jdField_b_of_type_Int;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
@@ -55,20 +55,20 @@ public class ParticipleBottomMenuView
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    LayoutInflater.from(getContext()).inflate(2131493791, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131305569));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131305573));
-    this.c = ((ImageView)findViewById(2131305571));
-    this.d = ((ImageView)findViewById(2131305575));
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(a(ajjy.a(2131642100)));
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(a(ajjy.a(2131642104)));
-    this.c.setContentDescription(a(ajjy.a(2131642103)));
-    this.d.setContentDescription(a(ajjy.a(2131642101)));
-    TextView localTextView = (TextView)findViewById(2131312451);
-    findViewById(2131305570).setOnClickListener(this);
-    findViewById(2131305574).setOnClickListener(this);
-    findViewById(2131305572).setOnClickListener(this);
-    findViewById(2131305576).setOnClickListener(this);
+    LayoutInflater.from(getContext()).inflate(2131559362, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371265));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371269));
+    this.c = ((ImageView)findViewById(2131371267));
+    this.d = ((ImageView)findViewById(2131371271));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(a(ajyc.a(2131707885)));
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(a(ajyc.a(2131707889)));
+    this.c.setContentDescription(a(ajyc.a(2131707888)));
+    this.d.setContentDescription(a(ajyc.a(2131707886)));
+    TextView localTextView = (TextView)findViewById(2131378278);
+    findViewById(2131371266).setOnClickListener(this);
+    findViewById(2131371270).setOnClickListener(this);
+    findViewById(2131371268).setOnClickListener(this);
+    findViewById(2131371272).setOnClickListener(this);
     localTextView.setOnClickListener(this);
     if ((paramAttributeSet != null) && (paramContext != null))
     {
@@ -98,7 +98,7 @@ public class ParticipleBottomMenuView
   
   public String a(String paramString)
   {
-    return getContext().getString(2131625013, new Object[] { paramString });
+    return getContext().getString(2131690574, new Object[] { paramString });
   }
   
   public void a()
@@ -110,19 +110,19 @@ public class ParticipleBottomMenuView
         if (QLog.isColorLevel()) {
           QLog.d("ParticipleBottomMenuView", 2, "updateMenuIcon enable STATE_BLACK");
         }
-        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130844680);
-        this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130844705);
-        this.c.setBackgroundResource(2130844686);
-        this.d.setBackgroundResource(2130844718);
+        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130844761);
+        this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130844786);
+        this.c.setBackgroundResource(2130844767);
+        this.d.setBackgroundResource(2130844799);
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.d("ParticipleBottomMenuView", 2, "updateMenuIcon enable STATE_WHITE");
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130844677);
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130844692);
-      this.c.setBackgroundResource(2130844683);
-      this.d.setBackgroundResource(2130844698);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130844758);
+      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130844773);
+      this.c.setBackgroundResource(2130844764);
+      this.d.setBackgroundResource(2130844779);
       return;
     }
     if (this.jdField_a_of_type_Int == 1)
@@ -130,25 +130,25 @@ public class ParticipleBottomMenuView
       if (QLog.isColorLevel()) {
         QLog.d("ParticipleBottomMenuView", 2, "updateMenuIcon unable STATE_BLACK");
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130844678);
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130844693);
-      this.c.setBackgroundResource(2130844684);
-      this.d.setBackgroundResource(2130844695);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130844759);
+      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130844774);
+      this.c.setBackgroundResource(2130844765);
+      this.d.setBackgroundResource(2130844776);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("ParticipleBottomMenuView", 2, "updateMenuIcon unable STATE_BLACK");
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130844679);
-    this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130844694);
-    this.c.setBackgroundResource(2130844685);
-    this.d.setBackgroundResource(2130844699);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130844760);
+    this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130844775);
+    this.c.setBackgroundResource(2130844766);
+    this.d.setBackgroundResource(2130844780);
   }
   
   public void a(ParticipleView paramParticipleView)
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView = paramParticipleView;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView.setOnParticipleSelectChangeListener(new bbkt(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView.setOnParticipleSelectChangeListener(new bcnr(this));
   }
   
   public void b()
@@ -163,12 +163,12 @@ public class ParticipleBottomMenuView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Bbku != null)
+    if (this.jdField_a_of_type_Bcns != null)
     {
-      if (paramView.getId() == 2131312451)
+      if (paramView.getId() == 2131378278)
       {
-        this.jdField_a_of_type_Bbku.a();
-        awqx.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35F", "0X800A35F", 0, 0, "", "", "", "");
+        this.jdField_a_of_type_Bcns.a();
+        axqw.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35F", "0X800A35F", 0, 0, "", "", "", "");
       }
     }
     else {
@@ -181,37 +181,37 @@ public class ParticipleBottomMenuView
       {
         switch (paramView.getId())
         {
-        case 2131305571: 
-        case 2131305573: 
-        case 2131305575: 
+        case 2131371267: 
+        case 2131371269: 
+        case 2131371271: 
         default: 
           return;
-        case 2131305570: 
-          this.jdField_a_of_type_Bbku.a(str);
-          awqx.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35A", "0X800A35A", 0, 0, "", "", "", "");
+        case 2131371266: 
+          this.jdField_a_of_type_Bcns.a(str);
+          axqw.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35A", "0X800A35A", 0, 0, "", "", "", "");
           return;
-        case 2131305572: 
-          this.jdField_a_of_type_Bbku.c(str);
-          awqx.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35B", "0X800A35B", 0, 0, "", "", "", "");
+        case 2131371268: 
+          this.jdField_a_of_type_Bcns.c(str);
+          axqw.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35B", "0X800A35B", 0, 0, "", "", "", "");
           return;
-        case 2131305574: 
-          this.jdField_a_of_type_Bbku.b(str);
-          awqx.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35C", "0X800A35C", 0, 0, "", "", "", "");
+        case 2131371270: 
+          this.jdField_a_of_type_Bcns.b(str);
+          axqw.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35C", "0X800A35C", 0, 0, "", "", "", "");
           return;
         }
-        this.jdField_a_of_type_Bbku.d(str);
-        awqx.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35E", "0X800A35E", 0, 0, "", "", "", "");
+        this.jdField_a_of_type_Bcns.d(str);
+        axqw.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35E", "0X800A35E", 0, 0, "", "", "", "");
         return;
       }
-      bbmy.a(BaseApplicationImpl.getContext(), -1, ajjy.a(2131642099), 0).a();
+      bcpw.a(BaseApplicationImpl.getContext(), -1, ajyc.a(2131707884), 0).a();
       return;
     }
-    bbmy.a(getContext(), ajjy.a(2131642102), 0).a();
+    bcpw.a(getContext(), ajyc.a(2131707887), 0).a();
   }
   
-  public void setOnMenuClickListener(bbku parambbku)
+  public void setOnMenuClickListener(bcns parambcns)
   {
-    this.jdField_a_of_type_Bbku = parambbku;
+    this.jdField_a_of_type_Bcns = parambcns;
   }
 }
 

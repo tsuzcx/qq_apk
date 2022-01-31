@@ -1,6 +1,6 @@
 package cooperation.troop;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.app.Dialog;
 import android.widget.TextView;
@@ -16,7 +16,7 @@ public class TroopBaseProxyActivity
     {
       try
       {
-        paramActivity = new Dialog(paramActivity, 2131690181);
+        paramActivity = new Dialog(paramActivity, 2131755791);
         Activity localActivity = paramActivity;
       }
       catch (OutOfMemoryError localOutOfMemoryError1)
@@ -24,9 +24,9 @@ public class TroopBaseProxyActivity
         try
         {
           paramActivity.setCancelable(true);
-          paramActivity.setContentView(2131493818);
+          paramActivity.setContentView(2131559386);
           paramActivity.show();
-          ((TextView)paramActivity.findViewById(2131305861)).setText(ajjy.a(2131649461));
+          ((TextView)paramActivity.findViewById(2131371557)).setText(ajyc.a(2131715251));
           localActivity = paramActivity;
           return localActivity;
         }

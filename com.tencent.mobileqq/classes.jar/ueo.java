@@ -1,29 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.8.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
+import mqq.os.MqqHandler;
 
 public class ueo
-  extends QQUIEventReceiver<uec, sxr>
+  implements TVK_IMediaPlayer.OnSeekCompleteListener
 {
-  public ueo(@NonNull uec paramuec)
-  {
-    super(paramuec);
-  }
+  ueo(ueg paramueg) {}
   
-  public void a(@NonNull uec paramuec, @NonNull sxr paramsxr)
+  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (uec.a(paramuec) == null)
-    {
-      urk.b(this.TAG, "ignore this user info event. %s.", paramsxr.toString());
-      return;
-    }
-    urk.a(this.TAG, "receive user info event. %s.", paramsxr.toString());
-    uec.a(paramuec).c();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return sxr.class;
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.8.1(this, paramTVK_IMediaPlayer));
   }
 }
 

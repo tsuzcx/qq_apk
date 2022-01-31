@@ -1,20 +1,37 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment.4.1;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import java.util.HashMap;
 
 public class agsd
-  implements agrr
+  extends agsc
 {
-  public agsd(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    DrawRedpacketPannelPreviewFragment.a(this.a).post(new DrawRedpacketPannelPreviewFragment.4.1(this, paramBoolean));
-  }
+  public SessionInfo a;
+  public vug a;
+  public HashMap<String, PhotoSendParams> b;
+  public long c = -1L;
+  public String c;
+  public HashMap<String, byte[]> c;
+  public String d;
+  public String e;
+  public String f;
+  public int h;
+  public boolean l;
+  public boolean m;
+  public boolean n;
+  public boolean o = true;
+  public boolean p;
+  public boolean q;
+  public boolean r;
+  public boolean s;
+  public boolean t;
+  public boolean u;
+  public boolean v;
+  public boolean w;
+  public boolean x;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agsd
  * JD-Core Version:    0.7.0.1
  */

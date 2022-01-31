@@ -1,174 +1,72 @@
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Collections;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class azzy
 {
-  public static long a(Context paramContext, String paramString)
+  public static String a(List<Integer> paramList)
   {
-    long l = 0L;
-    paramContext = paramContext.getSharedPreferences(String.valueOf(ajed.G), 0);
-    paramString = "troop_flagEx_" + paramString;
-    if (paramContext.contains(paramString)) {
-      l = paramContext.getLong(paramString, 0L);
+    int j = 0;
+    int k = paramList.size();
+    Collections.sort(paramList);
+    if (k == 1) {
+      return String.format(ajyc.a(2131705685), new Object[] { Integer.valueOf(((Integer)paramList.get(0)).intValue() + 1) });
     }
-    return l;
-  }
-  
-  public static String a(Context paramContext, String paramString)
-  {
-    Object localObject = null;
-    SharedPreferences localSharedPreferences = paramContext.getSharedPreferences(String.valueOf(ajed.G), 0);
-    paramString = "troop_name_" + paramString;
-    paramContext = localObject;
-    if (localSharedPreferences.contains(paramString)) {
-      paramContext = localSharedPreferences.getString(paramString, null);
+    int i = 0;
+    if (i < k - 1) {
+      if (((Integer)paramList.get(i)).intValue() + 1 == ((Integer)paramList.get(i + 1)).intValue()) {}
     }
-    return paramContext;
-  }
-  
-  public static String a(String paramString)
-  {
-    Object localObject = null;
-    Matcher localMatcher = Pattern.compile("\\d+", 2).matcher(paramString);
-    for (paramString = localObject; localMatcher.find(); paramString = localMatcher.group()) {}
-    return paramString;
-  }
-  
-  public static String a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    List localList = a(paramString);
-    String str2;
-    if (localList.size() > 0)
+    for (i = 0;; i = 1)
     {
-      int i = 0;
-      String str1 = paramString;
-      str2 = str1;
-      if (i < localList.size())
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("第");
+      if (i != 0) {
+        localStringBuilder.append(((Integer)paramList.get(0)).intValue() + 1).append("-").append(((Integer)paramList.get(k - 1)).intValue() + 1).append("段");
+      }
+      for (;;)
       {
-        String str3 = (String)localList.get(i);
-        str2 = "\"" + str3 + "\"";
-        int j = paramString.indexOf(str2);
-        if (str2.length() + j == paramString.length()) {}
-        for (str2 = babh.a(paramQQAppInterface, str3, true);; str2 = babh.b(paramQQAppInterface, str3, true))
+        return localStringBuilder.toString();
+        i += 1;
+        break;
+        while ((j < k) && (j < 3))
         {
-          str1 = a(str1, str3, str2);
-          i += 1;
-          break;
+          localStringBuilder.append(((Integer)paramList.get(j)).intValue() + 1);
+          if ((j + 1 < k) && (j + 1 < 3)) {
+            localStringBuilder.append("、");
+          }
+          j += 1;
+        }
+        if (k > 3) {
+          localStringBuilder.append("等").append(k).append("段");
+        } else {
+          localStringBuilder.append("段");
         }
       }
     }
-    else
-    {
-      str2 = paramString;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    if (paramQQAppInterface == null) {
+      return;
     }
-    return str2;
+    paramQQAppInterface.getApp().getSharedPreferences("homework_troop_config" + paramQQAppInterface.c(), 0).edit().putBoolean("ReciteGuideTipShow", paramBoolean).commit();
   }
   
-  public static String a(String paramString1, String paramString2, String paramString3)
+  public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    if (paramString2.equals(paramString3)) {
-      return paramString1;
+    if (paramQQAppInterface == null) {
+      return false;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString3);
-    return paramString1.replace("\"" + paramString2 + "\"", localStringBuilder.toString());
-  }
-  
-  private static List<String> a(String paramString)
-  {
-    Object localObject = Pattern.compile("\"\\d+\"", 2);
-    Pattern localPattern = Pattern.compile("\\d+", 2);
-    ArrayList localArrayList = new ArrayList();
-    paramString = ((Pattern)localObject).matcher(paramString);
-    while (paramString.find())
-    {
-      localObject = localPattern.matcher(paramString.group());
-      while (((Matcher)localObject).find()) {
-        localArrayList.add(((Matcher)localObject).group());
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt)
-  {
-    paramContext = paramContext.getSharedPreferences(String.valueOf(ajed.G), 0);
-    paramString = "troop_option_" + paramString;
-    paramContext.edit().putInt(paramString, paramInt).commit();
-  }
-  
-  public static void a(Context paramContext, String paramString, long paramLong)
-  {
-    paramContext = paramContext.getSharedPreferences(String.valueOf(ajed.G), 0);
-    paramString = "troop_flagEx_" + paramString;
-    paramContext.edit().putLong(paramString, paramLong).commit();
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    paramContext = paramContext.getSharedPreferences(String.valueOf(ajed.G), 0);
-    paramString1 = "troop_name_" + paramString1;
-    paramContext.edit().putString(paramString1, paramString2).commit();
-  }
-  
-  public static String b(Context paramContext, String paramString)
-  {
-    Object localObject = null;
-    SharedPreferences localSharedPreferences = paramContext.getSharedPreferences(String.valueOf(ajed.G), 0);
-    paramString = "troop_question_" + paramString;
-    paramContext = localObject;
-    if (localSharedPreferences.contains(paramString)) {
-      paramContext = localSharedPreferences.getString(paramString, null);
-    }
-    return paramContext;
-  }
-  
-  public static String b(String paramString)
-  {
-    Object localObject = null;
-    Matcher localMatcher = Pattern.compile("\"\\d+\"", 2).matcher(paramString);
-    paramString = localObject;
-    if (localMatcher.find()) {
-      paramString = localMatcher.group();
-    }
-    return paramString;
-  }
-  
-  public static void b(Context paramContext, String paramString1, String paramString2)
-  {
-    paramContext = paramContext.getSharedPreferences(String.valueOf(ajed.G), 0);
-    paramString1 = "troop_question_" + paramString1;
-    paramContext.edit().putString(paramString1, paramString2).commit();
-  }
-  
-  public static String c(Context paramContext, String paramString)
-  {
-    Object localObject = null;
-    SharedPreferences localSharedPreferences = paramContext.getSharedPreferences(String.valueOf(ajed.G), 0);
-    paramString = "troop_answer_" + paramString;
-    paramContext = localObject;
-    if (localSharedPreferences.contains(paramString)) {
-      paramContext = localSharedPreferences.getString(paramString, null);
-    }
-    return paramContext;
-  }
-  
-  public static void c(Context paramContext, String paramString1, String paramString2)
-  {
-    paramContext = paramContext.getSharedPreferences(String.valueOf(ajed.G), 0);
-    paramString1 = "troop_answer_" + paramString1;
-    paramContext.edit().putString(paramString1, paramString2).commit();
+    return paramQQAppInterface.getApp().getSharedPreferences("homework_troop_config" + paramQQAppInterface.c(), 0).getBoolean("ReciteGuideTipShow", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azzy
  * JD-Core Version:    0.7.0.1
  */

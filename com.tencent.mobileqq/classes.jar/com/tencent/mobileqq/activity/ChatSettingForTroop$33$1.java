@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import aakt;
-import azmx;
+import aaul;
+import baob;
 import java.util.ArrayList;
 
 public class ChatSettingForTroop$33$1
   implements Runnable
 {
-  public ChatSettingForTroop$33$1(aakt paramaakt, ArrayList paramArrayList) {}
+  public ChatSettingForTroop$33$1(aaul paramaaul, ArrayList paramArrayList) {}
   
   public void run()
   {
-    if (ChatSettingForTroop.a(this.jdField_a_of_type_Aakt.a) != null) {
-      ChatSettingForTroop.a(this.jdField_a_of_type_Aakt.a).a(this.jdField_a_of_type_Aakt.a.app, this.jdField_a_of_type_JavaUtilArrayList);
+    if (ChatSettingForTroop.a(this.jdField_a_of_type_Aaul.a) != null) {
+      ChatSettingForTroop.a(this.jdField_a_of_type_Aaul.a).a(this.jdField_a_of_type_Aaul.a.app, this.jdField_a_of_type_JavaUtilArrayList);
     }
   }
 }

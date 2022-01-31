@@ -1,13 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
-
-public class pam
-  implements ViewBase.IBuilder
+public class pam<T>
 {
-  public ViewBase build(VafContext paramVafContext)
+  private long jdField_a_of_type_Long;
+  T jdField_a_of_type_JavaLangObject;
+  public boolean a;
+  private long b;
+  
+  public pam(T paramT)
   {
-    return new pal(paramVafContext);
+    this(paramT, localObject, 600000L);
+    if (localObject == null) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public pam(T paramT, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramLong;
+    this.b = System.currentTimeMillis();
+    Object localObject;
+    this.jdField_a_of_type_Long = localObject;
+  }
+  
+  public T a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a(T paramT)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    this.b = System.currentTimeMillis();
+  }
+  
+  public boolean a()
+  {
+    return System.currentTimeMillis() - this.b >= this.jdField_a_of_type_Long;
   }
 }
 

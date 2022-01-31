@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.recite.ui;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -23,38 +23,38 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import ayxk;
-import ayxp;
-import ayxq;
-import ayxv;
-import ayxw;
-import ayxx;
-import ayxy;
-import ayxz;
-import ayya;
-import ayyb;
-import ayyc;
-import ayyd;
-import ayyr;
-import ayzg;
-import ayzh;
-import ayzk;
-import ayzl;
-import ayzm;
-import ayzq;
-import azac;
-import azgl;
-import azgm;
-import azvv;
-import azzx;
-import babr;
-import bafb;
-import baka;
-import bakb;
-import bbmy;
-import bepn;
-import bepo;
-import bepp;
+import azyc;
+import azyh;
+import azyi;
+import azyn;
+import azyo;
+import azyp;
+import azyq;
+import azyr;
+import azys;
+import azyt;
+import azyu;
+import azyv;
+import azzj;
+import azzy;
+import azzz;
+import baac;
+import baad;
+import baae;
+import baai;
+import baau;
+import baho;
+import bahp;
+import bawz;
+import bbbb;
+import bbcv;
+import bbgg;
+import bblk;
+import bbll;
+import bcpw;
+import bfxh;
+import bfxi;
+import bfxj;
 import com.qq.wx.voice.recognizer.VoiceRecognizer;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -70,13 +70,13 @@ import com.tencent.protofile.homework.hw_recite_score.hw_recite_score.ReqReciteS
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import mmj;
+import mxi;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ReciteFragment
   extends AbsHomeWorkFragment
-  implements View.OnClickListener, AbsListView.OnScrollListener, CompoundButton.OnCheckedChangeListener, ayyr, ayzk, azgl, bakb
+  implements View.OnClickListener, AbsListView.OnScrollListener, CompoundButton.OnCheckedChangeListener, azzj, baac, baho, bbll
 {
   long jdField_a_of_type_Long = 0L;
   public Handler a;
@@ -84,15 +84,15 @@ public class ReciteFragment
   Button jdField_a_of_type_AndroidWidgetButton;
   CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  ayxp jdField_a_of_type_Ayxp;
-  protected ayxq a;
-  ayzh jdField_a_of_type_Ayzh;
-  ayzl jdField_a_of_type_Ayzl;
-  protected ayzq a;
-  public azac a;
-  protected azgm a;
-  protected baka a;
-  protected bepn a;
+  azyh jdField_a_of_type_Azyh;
+  protected azyi a;
+  azzz jdField_a_of_type_Azzz;
+  baad jdField_a_of_type_Baad;
+  protected baai a;
+  public baau a;
+  protected bahp a;
+  protected bblk a;
+  protected bfxh a;
   public ArticleInfo a;
   ReciteDisplayView jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView;
   ReciteRecordLayout jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout;
@@ -134,49 +134,49 @@ public class ReciteFragment
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
     a(true);
-    int i = (int)this.jdField_a_of_type_Azac.jdField_a_of_type_Long;
+    int i = (int)this.jdField_a_of_type_Baau.jdField_a_of_type_Long;
     if (QLog.isColorLevel()) {
       QLog.d("ReciteFragment", 2, new Object[] { "onCompleteRecite wordTotalCount=", Integer.valueOf(paramInt1), ", errorCount=", Integer.valueOf(paramInt2), ", remindCount=", Integer.valueOf(paramInt3), " time=", Integer.valueOf(i) });
     }
     hw_recite_score.ReqReciteScore localReqReciteScore = new hw_recite_score.ReqReciteScore();
     localReqReciteScore.error_times.set(paramInt2);
     localReqReciteScore.remind_times.set(paramInt3);
-    localReqReciteScore.total_time.set((int)this.jdField_a_of_type_Azac.jdField_a_of_type_Long);
+    localReqReciteScore.total_time.set((int)this.jdField_a_of_type_Baau.jdField_a_of_type_Long);
     localReqReciteScore.total_word.set(paramInt1);
     if ((paramInt1 <= 0) || (i <= 0)) {
       return;
     }
-    mmj.a(super.getActivity().app, new ayyb(this, paramInt3, paramInt2), localReqReciteScore.toByteArray(), "HwSvc.get_recite_score");
+    mxi.a(super.getActivity().app, new azyt(this, paramInt3, paramInt2), localReqReciteScore.toByteArray(), "HwSvc.get_recite_score");
   }
   
   public void a(int paramInt1, String paramString, int paramInt2)
   {
-    if (this.jdField_a_of_type_Ayzl != null) {
-      this.jdField_a_of_type_Ayzl.a();
+    if (this.jdField_a_of_type_Baad != null) {
+      this.jdField_a_of_type_Baad.a();
     }
     this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-    if (this.jdField_a_of_type_Baka != null)
+    if (this.jdField_a_of_type_Bblk != null)
     {
-      this.jdField_a_of_type_Baka.f();
-      this.jdField_a_of_type_Baka = null;
+      this.jdField_a_of_type_Bblk.f();
+      this.jdField_a_of_type_Bblk = null;
     }
   }
   
   public void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView = ((ReciteDisplayView)a(2131309150));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131309149));
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView = ((ReciteDisplayView)a(2131374894));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131374893));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)a(2131298427));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)a(2131363983));
     this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131312483));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131378309));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     if (!ThemeUtil.isInNightMode(super.a()))
     {
       this.vg.a(true);
-      this.vg.setBackgroundResource(2130838503);
-      this.rightViewImg.setImageResource(2130843118);
-      this.rightViewImg.setOnClickListener(new ayxv(this));
+      this.vg.setBackgroundResource(2130838514);
+      this.rightViewImg.setImageResource(2130843201);
+      this.rightViewImg.setOnClickListener(new azyn(this));
       if (this.jdField_b_of_type_Int != 3) {
         break label342;
       }
@@ -187,20 +187,20 @@ public class ReciteFragment
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout = ((ReciteRecordLayout)a(2131309268));
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout = ((ReciteRecordLayout)a(2131375012));
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.setOnReciteListener(this);
-      this.jdField_a_of_type_Ayxq = new ayxq(super.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView);
-      this.jdField_a_of_type_Ayxq.a((SpriteVideoView)a(2131310926));
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.addFooterView(this.jdField_a_of_type_Ayxq.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Ayxq.c();
+      this.jdField_a_of_type_Azyi = new azyi(super.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView);
+      this.jdField_a_of_type_Azyi.a((SpriteVideoView)a(2131376735));
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.addFooterView(this.jdField_a_of_type_Azyi.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Azyi.c();
       b();
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131311834));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131377649));
       if (this.jdField_b_of_type_Int == 3) {
-        this.jdField_a_of_type_Ayxq.a(false, this.jdField_a_of_type_Azac.b, this.jdField_a_of_type_Azac.jdField_f_of_type_Int, this.jdField_a_of_type_Azac.jdField_a_of_type_Long, this.jdField_a_of_type_Azac.jdField_d_of_type_Int, this.jdField_a_of_type_Azac.e);
+        this.jdField_a_of_type_Azyi.a(false, this.jdField_a_of_type_Baau.b, this.jdField_a_of_type_Baau.jdField_f_of_type_Int, this.jdField_a_of_type_Baau.jdField_a_of_type_Long, this.jdField_a_of_type_Baau.jdField_d_of_type_Int, this.jdField_a_of_type_Baau.e);
       }
-      this.jdField_a_of_type_AndroidViewView = a(2131301524);
+      this.jdField_a_of_type_AndroidViewView = a(2131367134);
       return;
-      this.rightViewImg.setImageResource(2130843119);
+      this.rightViewImg.setImageResource(2130843202);
       break;
       label342:
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
@@ -214,7 +214,7 @@ public class ReciteFragment
   {
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setDuration(200L);
-    localAlphaAnimation.setAnimationListener(new ayxy(this, paramButton));
+    localAlphaAnimation.setAnimationListener(new azyq(this, paramButton));
     paramButton.startAnimation(localAlphaAnimation);
     paramButton = new AlphaAnimation(0.0F, 1.0F);
     paramButton.setDuration(300L);
@@ -228,20 +228,20 @@ public class ReciteFragment
     if (paramWordInfo == null) {
       return;
     }
-    if (this.jdField_a_of_type_Ayxp != null) {
-      this.jdField_a_of_type_Ayxp.a(paramWordInfo);
+    if (this.jdField_a_of_type_Azyh != null) {
+      this.jdField_a_of_type_Azyh.a(paramWordInfo);
     }
-    if (this.jdField_a_of_type_Ayzl == null) {
-      this.jdField_a_of_type_Ayzl = new ayzl(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs, this.jdField_a_of_type_Ayxp, this.jdField_a_of_type_Azac.g);
+    if (this.jdField_a_of_type_Baad == null) {
+      this.jdField_a_of_type_Baad = new baad(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs, this.jdField_a_of_type_Azyh, this.jdField_a_of_type_Baau.g);
     }
-    this.jdField_a_of_type_Ayzl.a(paramWordInfo.paragraphPos, paramWordInfo.wordPos, paramWordInfo.getStatus());
+    this.jdField_a_of_type_Baad.a(paramWordInfo.paragraphPos, paramWordInfo.wordPos, paramWordInfo.getStatus());
   }
   
   public void a(@Nullable String paramString) {}
   
   public void a(String paramString, double paramDouble)
   {
-    this.jdField_a_of_type_Azac.jdField_d_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Baau.jdField_d_of_type_JavaLangString = paramString;
     if (QLog.isColorLevel()) {
       QLog.i("ReciteFragment", 2, "onRecordEnd: totalTime = " + paramDouble);
     }
@@ -250,21 +250,21 @@ public class ReciteFragment
   public void a(String paramString, int paramInt1, int paramInt2)
   {
     List localList;
-    ayxp localayxp;
-    if ((this.jdField_a_of_type_Ayzl == null) && (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo != null))
+    azyh localazyh;
+    if ((this.jdField_a_of_type_Baad == null) && (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo != null))
     {
       localList = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs;
-      localayxp = this.jdField_a_of_type_Ayxp;
-      if (this.jdField_a_of_type_Azac == null) {
+      localazyh = this.jdField_a_of_type_Azyh;
+      if (this.jdField_a_of_type_Baau == null) {
         break label76;
       }
     }
     label76:
-    for (paramString = this.jdField_a_of_type_Azac.g;; paramString = null)
+    for (paramString = this.jdField_a_of_type_Baau.g;; paramString = null)
     {
-      this.jdField_a_of_type_Ayzl = new ayzl(localList, localayxp, paramString);
-      if (this.jdField_a_of_type_Ayzl != null) {
-        this.jdField_a_of_type_Ayzl.a(paramInt2);
+      this.jdField_a_of_type_Baad = new baad(localList, localazyh, paramString);
+      if (this.jdField_a_of_type_Baad != null) {
+        this.jdField_a_of_type_Baad.a(paramInt2);
       }
       return;
     }
@@ -278,7 +278,7 @@ public class ReciteFragment
     if (TextUtils.isEmpty(paramString2)) {
       return;
     }
-    this.jdField_a_of_type_Ayzh.a(paramDouble1, paramString2.split(" "));
+    this.jdField_a_of_type_Azzz.a(paramDouble1, paramString2.split(" "));
   }
   
   public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
@@ -313,60 +313,60 @@ public class ReciteFragment
     if (paramBoolean)
     {
       this.jdField_b_of_type_Int = 2;
-      if (this.jdField_a_of_type_Ayzl == null) {
-        this.jdField_a_of_type_Ayzl = new ayzl(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs, this.jdField_a_of_type_Ayxp, this.jdField_a_of_type_Azac.g);
+      if (this.jdField_a_of_type_Baad == null) {
+        this.jdField_a_of_type_Baad = new baad(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs, this.jdField_a_of_type_Azyh, this.jdField_a_of_type_Baau.g);
       }
-      this.jdField_a_of_type_Azac.g = this.jdField_a_of_type_Ayzl.a();
+      this.jdField_a_of_type_Baau.g = this.jdField_a_of_type_Baad.a();
       this.leftView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(ajjy.a(2131647437));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(ajyc.a(2131713225));
       this.rightViewImg.setVisibility(8);
     }
     for (;;)
     {
       VoiceRecognizer.shareInstance().destroy();
-      this.jdField_a_of_type_Azac.jdField_a_of_type_Long = ((System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000L);
+      this.jdField_a_of_type_Baau.jdField_a_of_type_Long = ((System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000L);
       return;
       this.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_Ayxq.d();
+      this.jdField_a_of_type_Azyi.d();
       this.leftView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(ajjy.a(2131647436));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(ajyc.a(2131713224));
       this.rightViewImg.setVisibility(0);
     }
   }
   
   protected void b()
   {
-    this.jdField_a_of_type_Ayzq = new ayzq();
+    this.jdField_a_of_type_Baai = new baai();
     QQAppInterface localQQAppInterface = super.a();
     if (localQQAppInterface != null) {
-      this.jdField_a_of_type_Azgm = this.jdField_a_of_type_Ayzq.a(localQQAppInterface, this, this.jdField_a_of_type_Azac.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Azac.jdField_a_of_type_JavaUtilList, 10003);
+      this.jdField_a_of_type_Bahp = this.jdField_a_of_type_Baai.a(localQQAppInterface, this, this.jdField_a_of_type_Baau.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Baau.jdField_a_of_type_JavaUtilList, 10003);
     }
   }
   
   protected void b(String paramString)
   {
-    if ((this.jdField_a_of_type_Baka != null) && (this.jdField_a_of_type_Baka.a() == 3)) {
-      this.jdField_a_of_type_Baka.c();
+    if ((this.jdField_a_of_type_Bblk != null) && (this.jdField_a_of_type_Bblk.a() == 3)) {
+      this.jdField_a_of_type_Bblk.c();
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Baka == null)
+      if (this.jdField_a_of_type_Bblk == null)
       {
-        if (this.jdField_a_of_type_Ayxp != null) {
-          this.jdField_a_of_type_Ayxp.a();
+        if (this.jdField_a_of_type_Azyh != null) {
+          this.jdField_a_of_type_Azyh.a();
         }
-        this.jdField_a_of_type_Baka = new baka(paramString, new Handler(), 1);
-        this.jdField_a_of_type_Baka.a(super.getActivity());
-        this.jdField_a_of_type_Baka.a(this);
-        this.jdField_a_of_type_Baka.c();
+        this.jdField_a_of_type_Bblk = new bblk(paramString, new Handler(), 1);
+        this.jdField_a_of_type_Bblk.a(super.getActivity());
+        this.jdField_a_of_type_Bblk.a(this);
+        this.jdField_a_of_type_Bblk.c();
         this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.smoothScrollToPosition(0);
       }
       return;
-      if (this.jdField_a_of_type_Baka != null) {
+      if (this.jdField_a_of_type_Bblk != null) {
         k();
       }
     }
@@ -386,7 +386,7 @@ public class ReciteFragment
         this.c.setTextColor(Color.parseColor("#424245"));
         this.c.setText(a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.title));
         this.c.setGravity(1);
-        this.c.setPadding(0, azvv.a(getActivity(), 26.0F), 0, 0);
+        this.c.setPadding(0, bawz.a(getActivity(), 26.0F), 0, 0);
         this.c.setIncludeFontPadding(false);
         this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.addHeaderView(this.c);
       }
@@ -398,7 +398,7 @@ public class ReciteFragment
         this.d.setText(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.author);
         this.d.setGravity(1);
         this.d.setIncludeFontPadding(false);
-        this.d.setPadding(0, azvv.a(getActivity(), 16.0F), 0, azvv.a(getActivity(), 12.0F));
+        this.d.setPadding(0, bawz.a(getActivity(), 16.0F), 0, bawz.a(getActivity(), 12.0F));
         this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.addHeaderView(this.d);
       }
       Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.iterator();
@@ -411,15 +411,15 @@ public class ReciteFragment
         ((ParagraphInfo)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.get(i)).resetWordsReciteStatus();
         i += 1;
       }
-      this.jdField_a_of_type_Ayxp = new ayxp(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView, super.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.type, ayxp.c);
+      this.jdField_a_of_type_Azyh = new azyh(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView, super.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.type, azyh.c);
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.setArticleInfo(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo);
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.setFragment(this);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.setAdapter(this.jdField_a_of_type_Ayxp);
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.setAdapter(this.jdField_a_of_type_Azyh);
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.setOnScrollListener(this);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       return;
     }
-    bbmy.a(super.getActivity(), ajjy.a(2131647445), 0).a();
+    bcpw.a(super.getActivity(), ajyc.a(2131713233), 0).a();
   }
   
   public void d()
@@ -436,10 +436,10 @@ public class ReciteFragment
   
   public void f()
   {
-    if (this.jdField_a_of_type_Azac != null) {}
-    for (String str = this.jdField_a_of_type_Azac.jdField_f_of_type_JavaLangString;; str = "")
+    if (this.jdField_a_of_type_Baau != null) {}
+    for (String str = this.jdField_a_of_type_Baau.jdField_f_of_type_JavaLangString;; str = "")
     {
-      azzx.a("Grp_edu", "Grp_recite", "Disturb_Recite_Again_Clk", 0, 0, new String[] { str });
+      bbbb.a("Grp_edu", "Grp_recite", "Disturb_Recite_Again_Clk", 0, 0, new String[] { str });
       return;
     }
   }
@@ -452,20 +452,20 @@ public class ReciteFragment
     if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout != null) {
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.c();
     }
-    bafb localbafb = babr.a(super.getActivity(), 230).setMessage(2131632202).setNegativeButton(ajjy.a(2131647438), new ayya(this)).setPositiveButton(ajjy.a(2131647446), new ayxz(this));
-    localbafb.setCancelable(false);
-    localbafb.show();
+    bbgg localbbgg = bbcv.a(super.getActivity(), 230).setMessage(2131697927).setNegativeButton(ajyc.a(2131713226), new azys(this)).setPositiveButton(ajyc.a(2131713234), new azyr(this));
+    localbbgg.setCancelable(false);
+    localbbgg.show();
   }
   
   public int getContentLayoutId()
   {
-    return 2131494785;
+    return 2131560357;
   }
   
   public void h()
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs == null) || (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.isEmpty())) {
-      bbmy.a(c(this), ajjy.a(2131647442), 0).a();
+      bcpw.a(c(this), ajyc.a(2131713230), 0).a();
     }
     QQAppInterface localQQAppInterface;
     do
@@ -485,22 +485,22 @@ public class ReciteFragment
       }
     } while (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.a(super.getActivity())));
     this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_Ayxq.d();
+    this.jdField_a_of_type_Azyi.d();
     k();
     this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
     m();
     this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     a(this.jdField_a_of_type_AndroidWidgetButton, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout);
-    this.jdField_a_of_type_Ayzh = new ayzh(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo, this, localQQAppInterface, this.jdField_a_of_type_Azac.jdField_f_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.setmReciteDetectManager(this.jdField_a_of_type_Ayzh);
-    this.jdField_a_of_type_Ayxp = new ayxp(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView, super.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.type, ayxp.jdField_d_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.setAdapter(this.jdField_a_of_type_Ayxp);
-    this.jdField_a_of_type_Ayxp.notifyDataSetChanged();
-    setLeftButton(ajjy.a(2131647440), this);
-    setRightButton(2131632200, this);
+    this.jdField_a_of_type_Azzz = new azzz(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo, this, localQQAppInterface, this.jdField_a_of_type_Baau.jdField_f_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.setmReciteDetectManager(this.jdField_a_of_type_Azzz);
+    this.jdField_a_of_type_Azyh = new azyh(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView, super.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.type, azyh.jdField_d_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.setAdapter(this.jdField_a_of_type_Azyh);
+    this.jdField_a_of_type_Azyh.notifyDataSetChanged();
+    setLeftButton(ajyc.a(2131713228), this);
+    setRightButton(2131697925, this);
     this.rightViewImg.setVisibility(8);
-    this.jdField_a_of_type_Ayzl = new ayzl(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs, this.jdField_a_of_type_Ayxp, null);
+    this.jdField_a_of_type_Baad = new baad(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs, this.jdField_a_of_type_Azyh, null);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
@@ -508,9 +508,9 @@ public class ReciteFragment
   protected void i()
   {
     Object localObject = super.a();
-    localObject = babr.a(super.getActivity(), 230).setMessage(2131632201).setNegativeButton(ajjy.a(2131647444), new ayyd(this)).setPositiveButton(ajjy.a(2131647443), new ayyc(this, (QQAppInterface)localObject));
-    ((bafb)localObject).setCancelable(false);
-    ((bafb)localObject).show();
+    localObject = bbcv.a(super.getActivity(), 230).setMessage(2131697926).setNegativeButton(ajyc.a(2131713232), new azyv(this)).setPositiveButton(ajyc.a(2131713231), new azyu(this, (QQAppInterface)localObject));
+    ((bbgg)localObject).setCancelable(false);
+    ((bbgg)localObject).show();
   }
   
   public void init(Bundle paramBundle)
@@ -519,12 +519,12 @@ public class ReciteFragment
     paramBundle = paramBundle.getString("HomeWorkConstants:homework_default_request_key");
     try
     {
-      this.jdField_a_of_type_Azac = new azac(new JSONObject(paramBundle));
-      if (this.jdField_a_of_type_Azac.jdField_a_of_type_Int == 1) {}
+      this.jdField_a_of_type_Baau = new baau(new JSONObject(paramBundle));
+      if (this.jdField_a_of_type_Baau.jdField_a_of_type_Int == 1) {}
       for (this.jdField_b_of_type_Int = 3;; this.jdField_b_of_type_Int = 0)
       {
         this.jdField_a_of_type_AndroidOsHandler = new Handler();
-        new ayzm(super.getActivity(), "3171", "libWXVoice.so", "WXVoice").a();
+        new baae(super.getActivity(), "3171", "libWXVoice.so", "WXVoice").a();
         return;
       }
     }
@@ -541,43 +541,43 @@ public class ReciteFragment
   
   protected void j()
   {
-    if ((this.jdField_a_of_type_Baka != null) && (this.jdField_a_of_type_Baka.a() == 2)) {
-      this.jdField_a_of_type_Baka.e();
+    if ((this.jdField_a_of_type_Bblk != null) && (this.jdField_a_of_type_Bblk.a() == 2)) {
+      this.jdField_a_of_type_Bblk.e();
     }
   }
   
   protected void k()
   {
-    if (this.jdField_a_of_type_Baka != null)
+    if (this.jdField_a_of_type_Bblk != null)
     {
-      this.jdField_a_of_type_Baka.f();
-      this.jdField_a_of_type_Baka = null;
+      this.jdField_a_of_type_Bblk.f();
+      this.jdField_a_of_type_Bblk = null;
     }
   }
   
   protected void l()
   {
-    if (this.jdField_a_of_type_Bepn == null)
+    if (this.jdField_a_of_type_Bfxh == null)
     {
-      this.jdField_a_of_type_Bepn = new bepp(bepn.a(super.getActivity()).b(0).a(true).a(ajjy.a(2131647441)).a(17.0F).b(0).c(50).a(-1)).b(-16777216).a(3).a().a();
-      this.jdField_a_of_type_Bepn.setOutsideTouchable(false);
-      this.jdField_a_of_type_Bepn.setFocusable(false);
-      this.jdField_a_of_type_Bepn.a(82);
-      this.jdField_a_of_type_Bepn.a(new ayxw(this));
+      this.jdField_a_of_type_Bfxh = new bfxj(bfxh.a(super.getActivity()).b(0).a(true).a(ajyc.a(2131713229)).a(17.0F).b(0).c(50).a(-1)).b(-16777216).a(3).a().a();
+      this.jdField_a_of_type_Bfxh.setOutsideTouchable(false);
+      this.jdField_a_of_type_Bfxh.setFocusable(false);
+      this.jdField_a_of_type_Bfxh.a(82);
+      this.jdField_a_of_type_Bfxh.a(new azyo(this));
     }
-    if (!this.jdField_a_of_type_Bepn.isShowing())
+    if (!this.jdField_a_of_type_Bfxh.isShowing())
     {
-      this.jdField_a_of_type_Bepn.a(this.rightViewImg);
-      ayzg.a(super.a(), true);
+      this.jdField_a_of_type_Bfxh.a(this.rightViewImg);
+      azzy.a(super.a(), true);
     }
   }
   
   public void m()
   {
-    if (this.jdField_a_of_type_Bepn != null)
+    if (this.jdField_a_of_type_Bfxh != null)
     {
-      this.jdField_a_of_type_Bepn.dismiss();
-      this.jdField_a_of_type_Bepn = null;
+      this.jdField_a_of_type_Bfxh.dismiss();
+      this.jdField_a_of_type_Bfxh = null;
     }
   }
   
@@ -602,10 +602,10 @@ public class ReciteFragment
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Azac.jdField_d_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Baau.jdField_d_of_type_JavaLangString))
     {
       if (paramBoolean) {
-        b(this.jdField_a_of_type_Azac.jdField_d_of_type_JavaLangString);
+        b(this.jdField_a_of_type_Baau.jdField_d_of_type_JavaLangString);
       }
     }
     else {
@@ -631,27 +631,27 @@ public class ReciteFragment
             return;
             if (this.jdField_b_of_type_Int == 0)
             {
-              if (!ayzm.a(super.getActivity(), "libWXVoice.so"))
+              if (!baae.a(super.getActivity(), "libWXVoice.so"))
               {
-                paramView = babr.a(super.getActivity(), 230).setMessage(2131632006).setNegativeButton(2131632007, new ayxx(this));
+                paramView = bbcv.a(super.getActivity(), 230).setMessage(2131697725).setNegativeButton(2131697726, new azyp(this));
                 paramView.setCancelable(false);
                 paramView.show();
               }
               h();
               if (localQQAppInterface != null) {
-                azzx.a(localQQAppInterface, this.jdField_a_of_type_Azac.jdField_f_of_type_JavaLangString, "Grp_recite", "In_Recite_Clk", 0, 0, new String[] { this.jdField_a_of_type_Azac.jdField_f_of_type_JavaLangString, "", this.jdField_a_of_type_Azac.b, "" });
+                bbbb.a(localQQAppInterface, this.jdField_a_of_type_Baau.jdField_f_of_type_JavaLangString, "Grp_recite", "In_Recite_Clk", 0, 0, new String[] { this.jdField_a_of_type_Baau.jdField_f_of_type_JavaLangString, "", this.jdField_a_of_type_Baau.b, "" });
               }
             }
             else if (this.jdField_b_of_type_Int == 2)
             {
               try
               {
-                a(azac.a(this.jdField_a_of_type_Azac));
+                a(baau.a(this.jdField_a_of_type_Baau));
                 b(this);
                 if (localQQAppInterface != null)
                 {
-                  azzx.a(localQQAppInterface, this.jdField_a_of_type_Azac.jdField_f_of_type_JavaLangString, "Grp_recite", "Finish_Recite_Clk", 0, 0, new String[] { this.jdField_a_of_type_Azac.jdField_f_of_type_JavaLangString, "", this.jdField_a_of_type_Azac.b, "" });
-                  azzx.a("Grp_edu", "Grp_recite", "Finish_Recite_Clk_another", 0, 0, new String[] { this.jdField_a_of_type_Azac.jdField_f_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Azac.e), String.valueOf(this.jdField_a_of_type_Azac.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Azac.jdField_d_of_type_Int) });
+                  bbbb.a(localQQAppInterface, this.jdField_a_of_type_Baau.jdField_f_of_type_JavaLangString, "Grp_recite", "Finish_Recite_Clk", 0, 0, new String[] { this.jdField_a_of_type_Baau.jdField_f_of_type_JavaLangString, "", this.jdField_a_of_type_Baau.b, "" });
+                  bbbb.a("Grp_edu", "Grp_recite", "Finish_Recite_Clk_another", 0, 0, new String[] { this.jdField_a_of_type_Baau.jdField_f_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Baau.e), String.valueOf(this.jdField_a_of_type_Baau.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Baau.jdField_d_of_type_Int) });
                   return;
                 }
               }
@@ -664,22 +664,22 @@ public class ReciteFragment
           }
           h();
         } while (localQQAppInterface == null);
-        azzx.a("Grp_edu", "Grp_recite", "Finish_Recite_Again_Clk", 0, 0, new String[] { this.jdField_a_of_type_Azac.jdField_f_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Azac.e), String.valueOf(this.jdField_a_of_type_Azac.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Azac.jdField_d_of_type_Int) });
+        bbbb.a("Grp_edu", "Grp_recite", "Finish_Recite_Again_Clk", 0, 0, new String[] { this.jdField_a_of_type_Baau.jdField_f_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Baau.e), String.valueOf(this.jdField_a_of_type_Baau.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Baau.jdField_d_of_type_Int) });
         return;
       } while (this.jdField_b_of_type_Int != 1);
       i();
       return;
-    } while (this.jdField_a_of_type_Ayzh == null);
-    this.jdField_a_of_type_Ayzh.d();
+    } while (this.jdField_a_of_type_Azzz == null);
+    this.jdField_a_of_type_Azzz.d();
   }
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Ayxq != null) {
-      this.jdField_a_of_type_Ayxq.b();
+    if (this.jdField_a_of_type_Azyi != null) {
+      this.jdField_a_of_type_Azyi.b();
     }
-    if (this.jdField_a_of_type_Azgm != null) {
-      this.jdField_a_of_type_Azgm.cancel(true);
+    if (this.jdField_a_of_type_Bahp != null) {
+      this.jdField_a_of_type_Bahp.cancel(true);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout != null) {
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.e();
@@ -692,8 +692,8 @@ public class ReciteFragment
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Ayxq != null) {
-      this.jdField_a_of_type_Ayxq.a();
+    if (this.jdField_a_of_type_Azyi != null) {
+      this.jdField_a_of_type_Azyi.a();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout != null) {
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.d();
@@ -705,8 +705,8 @@ public class ReciteFragment
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Ayxq != null) {
-      this.jdField_a_of_type_Ayxq.a();
+    if (this.jdField_a_of_type_Azyi != null) {
+      this.jdField_a_of_type_Azyi.a();
     }
   }
   
@@ -728,7 +728,7 @@ public class ReciteFragment
     if ((this.jdField_b_of_type_Int == 0) && (!this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_Boolean = true;
-      if (!ayzg.a(super.a())) {
+      if (!azzy.a(super.a())) {
         l();
       }
     }

@@ -1,32 +1,236 @@
-import android.support.annotation.NonNull;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import java.util.List;
 
 public class tyr
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, swq>
+  extends wcr
 {
-  public tyr(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public static final String KEY = "PlayerCommentSegment";
+  private int jdField_a_of_type_Int;
+  private tyf jdField_a_of_type_Tyf;
+  private tys jdField_a_of_type_Tys = new tys(this);
+  private tyt jdField_a_of_type_Tyt = new tyt();
+  private tyu jdField_a_of_type_Tyu = new tyu(this);
+  private tyx jdField_a_of_type_Tyx;
+  public ups a;
+  
+  public tyr(Context paramContext)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    super(paramContext);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull swq paramswq)
+  private boolean b()
   {
-    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramswq.jdField_a_of_type_JavaLangString)) {}
-    while ((paramswq.b) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "onGetShareGroupVideos: 是否来自缓存=" + paramswq.b + " groupId=" + paramQQStoryShareGroupProfileActivity.b + ", event=" + paramswq.toString());
-    }
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramswq);
+    return (this.jdField_a_of_type_Tyf == null) || (this.jdField_a_of_type_Tyf.a());
   }
   
-  public Class acceptEventClass()
+  public int a()
   {
-    return swq.class;
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ups != null)) {
+      return this.jdField_a_of_type_Ups.a(b()).size();
+    }
+    return 0;
+  }
+  
+  public View a(int paramInt, vas paramvas, ViewGroup paramViewGroup)
+  {
+    if ((this.jdField_a_of_type_Ups == null) || (paramInt > this.jdField_a_of_type_Ups.a(b()).size()))
+    {
+      veg.e("Q.qqstory.detail.DetailCommentSegment", "bind view failed. position is out of bound.");
+      return paramvas.a();
+    }
+    CommentEntry localCommentEntry = (CommentEntry)this.jdField_a_of_type_Ups.a(b()).get(paramInt);
+    if (localCommentEntry == null)
+    {
+      veg.e("Q.qqstory.detail.DetailCommentSegment", "bind view failed. data is null.");
+      return paramvas.a();
+    }
+    paramViewGroup = (ImageView)paramvas.a(2131362939);
+    TextView localTextView1 = (TextView)paramvas.a(2131370816);
+    TextView localTextView2 = (TextView)paramvas.a(2131364469);
+    Object localObject1 = (LinearLayout)paramvas.a(2131364463);
+    TextView localTextView3 = (TextView)paramvas.a(2131369480);
+    ImageView localImageView = (ImageView)paramvas.a(2131364480);
+    ProgressBar localProgressBar = (ProgressBar)paramvas.a(2131364505);
+    if (localCommentEntry.type == 1)
+    {
+      paramViewGroup.setVisibility(8);
+      ((LinearLayout)localObject1).setVisibility(8);
+      localTextView3.setVisibility(0);
+      localTextView3.setText(localCommentEntry.content);
+      if (QQStoryContext.a())
+      {
+        localTextView2.setBackgroundResource(2130845547);
+        localTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166351));
+        localTextView2.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166351));
+        localTextView3.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166349));
+      }
+      return paramvas.a();
+    }
+    paramViewGroup.setVisibility(0);
+    ((LinearLayout)localObject1).setVisibility(0);
+    localTextView3.setVisibility(8);
+    localObject1 = localCommentEntry.commentId + localCommentEntry.feedId + localCommentEntry.status + this.jdField_a_of_type_Tys.hashCode() + "bubble_style";
+    Object localObject2 = tax.a().a((String)localObject1);
+    label352:
+    QQUserUIItem localQQUserUIItem;
+    Drawable localDrawable;
+    if (localObject2 != null)
+    {
+      localTextView2.setText((CharSequence)localObject2);
+      localQQUserUIItem = ((tdo)tdc.a(2)).c(localCommentEntry.authorUnionId);
+      localDrawable = bbdr.b();
+      if (localQQUserUIItem != null) {
+        break label616;
+      }
+      localObject1 = "";
+      label383:
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        break label626;
+      }
+      paramInt = 1;
+      label393:
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        break label631;
+      }
+      localObject2 = "V";
+      label405:
+      if (localQQUserUIItem != null) {
+        break label638;
+      }
+      paramViewGroup.setImageDrawable(localDrawable);
+      label416:
+      if ((localQQUserUIItem != null) && (localQQUserUIItem.isAvailable())) {
+        break label751;
+      }
+      paramViewGroup = new SpannableStringBuilder(tsu.b);
+      label440:
+      if (paramInt != 0)
+      {
+        paramInt = paramViewGroup.length();
+        paramViewGroup.append((CharSequence)localObject2);
+        upz.a(paramViewGroup, (String)localObject1, paramInt, paramViewGroup.length());
+      }
+      localTextView1.setText(paramViewGroup);
+      if (localCommentEntry.status != 2) {
+        break label791;
+      }
+      localImageView.setVisibility(0);
+      localProgressBar.setVisibility(8);
+    }
+    for (;;)
+    {
+      localTextView2.setOnTouchListener(this.jdField_a_of_type_Tyt);
+      localTextView2.setSpannableFactory(ayki.a);
+      localTextView2.setTextColor(-16777216);
+      break;
+      localObject2 = upz.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ups.a, localCommentEntry, this.jdField_a_of_type_Tys);
+      localTextView2.setText((CharSequence)localObject2);
+      if (localCommentEntry.isReply())
+      {
+        localQQUserUIItem = ((tdo)tdc.a(2)).c(localCommentEntry.replierUnionId);
+        if ((localQQUserUIItem == null) || (!localQQUserUIItem.isAvailable())) {
+          break label352;
+        }
+        tax.a().a((String)localObject1, (CharSequence)localObject2);
+        break label352;
+      }
+      tax.a().a((String)localObject1, (CharSequence)localObject2);
+      break label352;
+      label616:
+      localObject1 = localQQUserUIItem.getUserIconUrl();
+      break label383;
+      label626:
+      paramInt = 0;
+      break label393;
+      label631:
+      localObject2 = "";
+      break label405;
+      label638:
+      if ((localQQUserUIItem.isVipButNoFriend()) || (localQQUserUIItem.isNotDovUser()))
+      {
+        vzo.b(paramViewGroup, localQQUserUIItem.headUrl, 60, 60, localDrawable, "QQStory_player");
+        break label416;
+      }
+      if (!TextUtils.isEmpty(localQQUserUIItem.qq))
+      {
+        paramViewGroup.setImageDrawable(baxt.a(tsu.a(), 1, localQQUserUIItem.qq, 3, localDrawable, localDrawable));
+        break label416;
+      }
+      if (nam.a(localQQUserUIItem.headUrl))
+      {
+        vzo.b(paramViewGroup, localQQUserUIItem.headUrl, 60, 60, localDrawable, "QQStory_player");
+        break label416;
+      }
+      paramViewGroup.setImageDrawable(localDrawable);
+      break label416;
+      label751:
+      if (localQQUserUIItem.isVipButNoFriend())
+      {
+        paramViewGroup = new SpannableStringBuilder(localQQUserUIItem.nickName);
+        break label440;
+      }
+      paramViewGroup = new SpannableStringBuilder(localQQUserUIItem.getDisplayName());
+      break label440;
+      label791:
+      localImageView.setVisibility(8);
+      if (localCommentEntry.status == 1) {
+        localProgressBar.setVisibility(0);
+      } else {
+        localProgressBar.setVisibility(8);
+      }
+    }
+  }
+  
+  public CommentEntry a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_Ups == null) || (paramInt >= this.jdField_a_of_type_Ups.a(this.jdField_a_of_type_Tyf.a()).size())) {
+      return null;
+    }
+    return (CommentEntry)this.jdField_a_of_type_Ups.a(this.jdField_a_of_type_Tyf.a()).get(paramInt);
+  }
+  
+  public String a()
+  {
+    return "PlayerCommentSegment";
+  }
+  
+  public vas a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = new vas(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561241, paramViewGroup, false));
+    paramViewGroup.a(this.jdField_a_of_type_Tyu);
+    paramViewGroup.a(2131362939).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131370816).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131364470).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131364470).setOnLongClickListener(paramViewGroup);
+    paramViewGroup.a(2131369480).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131369480).setOnLongClickListener(paramViewGroup);
+    return paramViewGroup;
+  }
+  
+  public void a(tyf paramtyf, tyx paramtyx, int paramInt)
+  {
+    this.jdField_a_of_type_Tyf = paramtyf;
+    this.jdField_a_of_type_Tyx = paramtyx;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(ups paramups)
+  {
+    this.jdField_a_of_type_Ups = paramups;
   }
 }
 

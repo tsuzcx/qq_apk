@@ -1,29 +1,75 @@
-import android.annotation.TargetApi;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-final class ruq
-  implements DialogInterface.OnClickListener
+public class ruq
 {
-  ruq(int paramInt1, int paramInt2, Runnable paramRunnable) {}
-  
-  @TargetApi(11)
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static String a(int paramInt, String paramString)
   {
-    paramInt = 1;
-    bgmq.a("readinjoy_user_data_switch", Integer.valueOf(0));
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new JSONObject();
     try
     {
-      if (this.jdField_a_of_type_Int == 1) {
-        paramInt = 0;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("url", paramString);
+      localJSONObject.put("num", paramInt);
+      paramString = localJSONObject.toString();
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return "";
+  }
+  
+  public static onr a(int paramInt)
+  {
+    return new onr().b().a(paramInt);
+  }
+  
+  public static onr a(int paramInt, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    localonr = a(paramInt);
+    try
+    {
+      paramString1 = localonr.b(paramString1).a("URL", paramString2);
+      if (paramBoolean) {}
+      for (paramInt = 1;; paramInt = 0)
+      {
+        paramString1 = paramString1.a("ad_page", paramInt);
+        return paramString1;
       }
-      paramDialogInterface.put("click_src", paramInt);
-      paramDialogInterface.put("user_data_alert_interval", this.b);
-      paramDialogInterface.put("click_opt", 1);
+      return localonr;
+    }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+  }
+  
+  public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, qdm paramqdm)
+  {
+    if ((paramqdm instanceof qdo)) {}
+    for (String str = ((qdo)paramqdm).f;; str = "0")
+    {
+      noo.a(null, "", paramString, paramString, 0, 0, String.valueOf(paramInt3), String.valueOf(paramInt1), String.valueOf(paramqdm.jdField_a_of_type_Int), a(paramInt2, paramqdm.e, str, paramqdm.jdField_a_of_type_Boolean).a(), false);
+      return;
+    }
+  }
+  
+  public static void a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    onr localonr = a(paramInt1);
+    if (paramBoolean) {
+      paramInt1 = 1;
+    }
+    try
+    {
+      for (;;)
+      {
+        localonr.a("ad_page_include", paramInt1);
+        noo.a(null, "", paramString, paramString, 0, 0, String.valueOf(paramInt2), "", "", localonr.a(), false);
+        return;
+        paramInt1 = 0;
+      }
     }
     catch (JSONException localJSONException)
     {
@@ -32,9 +78,15 @@ final class ruq
         localJSONException.printStackTrace();
       }
     }
-    ndn.a(null, "", "0X800A809", "0X800A809", 0, 0, "", "", "", paramDialogInterface.toString(), false);
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+  }
+  
+  public static void a(String paramString, int paramInt, qdm paramqdm)
+  {
+    if ((paramqdm instanceof qdo)) {}
+    for (paramqdm = ((qdo)paramqdm).f;; paramqdm = "0")
+    {
+      noo.a(null, "", paramString, paramString, 0, 0, String.valueOf(paramInt), "", "", a(paramInt, paramqdm), false);
+      return;
     }
   }
 }

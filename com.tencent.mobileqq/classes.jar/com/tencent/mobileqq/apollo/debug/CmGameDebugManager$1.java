@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo.debug;
 
-import aikb;
-import aikc;
-import aikk;
+import aiwu;
+import aiwv;
+import aixd;
 import java.lang.ref.WeakReference;
 
 public class CmGameDebugManager$1
   implements Runnable
 {
-  public CmGameDebugManager$1(aikb paramaikb, aikk paramaikk) {}
+  public CmGameDebugManager$1(aiwu paramaiwu, aixd paramaixd) {}
   
   public void run()
   {
-    if ((aikb.a(this.this$0) != null) && (aikb.a(this.this$0).get() != null)) {
-      ((aikc)aikb.a(this.this$0).get()).a(this.a.a);
+    if ((aiwu.a(this.this$0) != null) && (aiwu.a(this.this$0).get() != null)) {
+      ((aiwv)aiwu.a(this.this$0).get()).a(this.a.a);
     }
   }
 }

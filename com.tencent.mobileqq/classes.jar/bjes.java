@@ -1,20 +1,47 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
-public class bjes
-  implements Animation.AnimationListener
+class bjes
+  implements bkyv
 {
-  public bjes(BeautyBar paramBeautyBar) {}
+  bjes(bjer parambjer) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    biyj.a("", "0X8007C05", BeautyBar.a(this.a) + "", "", "", "");
+    synchronized (bjer.a(this.a))
+    {
+      if (paramPtvTemplateInfo.id.equals(bjer.a(this.a).id))
+      {
+        bjer.a(this.a).downloading = true;
+        bjer.a(this.a, 1.0F * paramInt / 100.0F);
+        bjer.a(this.a, 1);
+      }
+      return;
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  {
+    synchronized (bjer.a(this.a))
+    {
+      if (paramPtvTemplateInfo.id.equals(bjer.a(this.a).id))
+      {
+        bjer.a(this.a).downloading = false;
+        bjer.a(this.a).usable = paramBoolean;
+      }
+      if (paramBoolean)
+      {
+        if (bjer.a(this.a).id.equals(paramPtvTemplateInfo.id))
+        {
+          bjer.a(this.a, 3);
+          bjer.a(this.a, 1.0F);
+          this.a.b();
+        }
+        return;
+      }
+      this.a.a(4);
+      bjer.a(this.a, 2);
+    }
+  }
 }
 
 

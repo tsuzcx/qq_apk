@@ -1,12 +1,18 @@
-public abstract interface vip
+import com.tencent.qphone.base.util.QLog;
+
+class vip
+  implements bcph
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, String paramString);
+  vip(vim paramvim) {}
   
-  public abstract void a(String paramString);
+  public void a(bcpf parambcpf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambcpf);
+    }
+  }
   
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, String paramString);
-  
-  public abstract boolean a();
+  public void a(bcpf parambcpf, int paramInt1, int paramInt2) {}
 }
 
 

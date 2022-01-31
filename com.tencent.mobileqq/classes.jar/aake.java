@@ -1,42 +1,31 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aake
-  implements View.OnClickListener
+  implements bfoq
 {
-  public aake(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aake(AssociatedAccountActivity paramAssociatedAccountActivity, bfol parambfol) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramView.getId())
+    switch (paramInt)
     {
     default: 
       return;
-    case 2131302804: 
-      ChatSettingForTroop.f(this.a);
-      this.a.finish();
-      return;
     }
-    ChatSettingForTroop.g(this.a);
-    String str2;
-    if (this.a.a.isMember)
-    {
-      paramView = "grpData_admin";
-      str2 = this.a.a.troopUin;
-      if (!this.a.a.isMember) {
-        break label135;
-      }
+    this.jdField_a_of_type_Bfol.cancel();
+    paramView = (ayav)this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app.getManager(61);
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a.iterator();
+    while (localIterator.hasNext()) {
+      paramView.c(((SubAccountInfo)localIterator.next()).subuin);
     }
-    label135:
-    for (String str1 = azzx.a(this.a.a);; str1 = "0")
-    {
-      azzx.a("Grp_set_new", paramView, "clk_upright", 0, 0, new String[] { str2, str1 });
-      return;
-      paramView = "grpData_visitor";
-      break;
-    }
+    AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.getString(2131690809));
+    AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
   }
 }
 

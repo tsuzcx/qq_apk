@@ -1,33 +1,11 @@
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.view.HeaderScrollView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-public class aewi
-  implements afex
+public abstract interface aewi
 {
-  public aewi(TroopView paramTroopView) {}
+  public abstract List<? extends aewh> a(String paramString);
   
-  public void a(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("addContacts.TroopView", 2, "onRefreshResult. position:" + paramInt + " success:" + paramBoolean);
-    }
-    paramObject = TroopView.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      paramObject = paramObject.obtainMessage(14, paramInt, i);
-      TroopView.a(this.a).sendMessage(paramObject);
-      return;
-    }
-  }
-  
-  public void ap_()
-  {
-    if ((TroopView.a(this.a) != null) && (!TroopView.a(this.a).a())) {
-      TroopView.a(this.a).scrollTo(0, TroopView.a(this.a).a());
-    }
-  }
+  public abstract boolean a(QQAppInterface paramQQAppInterface, String paramString);
 }
 
 

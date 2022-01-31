@@ -1,37 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.biz.PoiMapActivity.TabView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.VideoLayerUIBase;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
 public class mli
-  implements View.OnClickListener
+  implements Observer
 {
-  public mli(PoiMapActivity paramPoiMapActivity) {}
+  private WeakReference<VideoLayerUIBase> a;
   
-  public void onClick(View paramView)
+  public mli(VideoLayerUIBase paramVideoLayerUIBase)
   {
-    if ((paramView instanceof PoiMapActivity.TabView))
-    {
-      this.a.a(((PoiMapActivity.TabView)paramView).a);
-      this.a.i();
-      if (QLog.isDevelopLevel()) {
-        QLog.i("PoiMapActivity", 4, "mTabClickListener" + ((PoiMapActivity.TabView)paramView).a);
-      }
-      if (PoiMapActivity.a(this.a)) {
-        this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), "", "", "", "");
-      }
-    }
-    else
-    {
+    this.a = new WeakReference(paramVideoLayerUIBase);
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    VideoLayerUIBase localVideoLayerUIBase = (VideoLayerUIBase)this.a.get();
+    if (localVideoLayerUIBase == null) {
       return;
     }
-    this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), this.a.f, this.a.e, "", "");
+    VideoLayerUIBase.a(localVideoLayerUIBase, paramObservable, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mli
  * JD-Core Version:    0.7.0.1
  */

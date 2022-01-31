@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ttpic.openapi.model.WMEditItem;
+import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager.IPrePullListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class bgzr
-  implements View.OnClickListener
+  implements MiniAppPrePullManager.IPrePullListener
 {
-  bgzr(bgzn parambgzn, bgzv parambgzv, WMEditItem paramWMEditItem) {}
+  bgzr(bgzq parambgzq) {}
   
-  public void onClick(View paramView)
+  public void onPrePullCallback(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    bgzn.a(this.jdField_a_of_type_Bgzn, this.jdField_a_of_type_Bgzv.a, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem);
+    QLog.d("QzoneIPCModule", 4, String.format("after preload For QQ MINI Program %b", new Object[] { Boolean.valueOf(paramBoolean) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgzr
  * JD-Core Version:    0.7.0.1
  */

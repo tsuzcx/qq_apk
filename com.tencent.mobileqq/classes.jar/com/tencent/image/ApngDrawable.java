@@ -75,18 +75,25 @@ public class ApngDrawable
   
   public static boolean isApngFile(File paramFile)
   {
+    if (paramFile == null) {
+      return false;
+    }
     paramFile = new RandomAccessFile(paramFile, "r");
     byte[] arrayOfByte = new byte[SIGNATURE.length];
     paramFile.read(arrayOfByte);
     paramFile.close();
     int i = 0;
-    while (i < SIGNATURE.length)
+    for (;;)
     {
+      if (i >= SIGNATURE.length) {
+        break label62;
+      }
       if (arrayOfByte[i] != SIGNATURE[i]) {
-        return false;
+        break;
       }
       i += 1;
     }
+    label62:
     return true;
   }
   

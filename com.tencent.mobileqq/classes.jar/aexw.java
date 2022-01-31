@@ -1,239 +1,459 @@
-import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
+import android.text.format.Time;
+import android.view.LayoutInflater;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import tencent.im.s2c.msgtype0x210.submsgtype0x87.SubMsgType0x87.CloneInfo;
-import tencent.im.s2c.msgtype0x210.submsgtype0x87.SubMsgType0x87.MsgBody;
-import tencent.im.s2c.msgtype0x210.submsgtype0x87.SubMsgType0x87.MsgNotify;
+import mqq.app.NewIntent;
 
-@TargetApi(11)
 public class aexw
+  implements aeyv
 {
-  public static final HashMap<String, Long> a;
-  public static final HashSet<String> a;
-  public static boolean a;
+  private static HashMap<String, Boolean> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static HashMap<String, Integer> b = new HashMap();
+  private aeyx jdField_a_of_type_Aeyx;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  static
+  public static String a(String paramString)
   {
-    jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public static void a()
-  {
-    synchronized (jdField_a_of_type_JavaUtilHashSet)
-    {
-      jdField_a_of_type_Boolean = false;
-      jdField_a_of_type_JavaUtilHashSet.clear();
-      return;
-    }
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CloneFriendPushHelper", 2, "initSet, uin=" + paramQQAppInterface.c() + ", hasInit=" + jdField_a_of_type_Boolean);
-    }
-    synchronized (jdField_a_of_type_JavaUtilHashSet)
-    {
-      if (jdField_a_of_type_Boolean) {
-        return;
-      }
-      jdField_a_of_type_JavaUtilHashSet.clear();
-      paramQQAppInterface = paramQQAppInterface.getPreferences().getStringSet("cloneFriendPush_" + paramQQAppInterface.c(), null);
-      if (paramQQAppInterface != null) {
-        jdField_a_of_type_JavaUtilHashSet.addAll(paramQQAppInterface);
-      }
-      jdField_a_of_type_Boolean = true;
-      return;
-    }
+    return "voice_shown_hot_friend_tip_bar_" + paramString;
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
+    String str1 = paramQQAppInterface.getCurrentAccountUin();
+    String str2 = str1 + "_" + paramString;
     if (QLog.isColorLevel()) {
-      QLog.d("CloneFriendPushHelper", 2, "removeUin, uin=" + paramString);
+      QLog.d("ReduFriendServlet", 2, "afterShowHotFriendTip() is called,mapKey is:" + str2);
     }
-    synchronized (jdField_a_of_type_JavaUtilHashSet)
+    Object localObject = BaseApplication.getContext().getSharedPreferences("free_call", 0);
+    String str3 = a(str1);
+    boolean bool = ((SharedPreferences)localObject).getBoolean(str3, false);
+    if (bool) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReduFriendServlet", 2, "shownHotFriendTip is:" + bool + ",not need to save value");
+      }
+    }
+    do
     {
-      if (!jdField_a_of_type_Boolean) {
-        a(paramQQAppInterface);
-      }
-      if (jdField_a_of_type_JavaUtilHashSet.contains(paramString))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("CloneFriendPushHelper", 2, "addUin, contains, need remove");
-        }
-        jdField_a_of_type_JavaUtilHashSet.remove(paramString);
-        paramQQAppInterface.getPreferences().edit().putStringSet("cloneFriendPush_" + paramQQAppInterface.c(), jdField_a_of_type_JavaUtilHashSet).commit();
-      }
       return;
-    }
+      localObject = ((SharedPreferences)localObject).edit();
+      ((SharedPreferences.Editor)localObject).putBoolean(str3, true);
+      long l = awzw.a();
+      ((SharedPreferences.Editor)localObject).putString("voice_hot_friend_tip_show_time" + str1, String.valueOf(l * 1000L));
+      ((SharedPreferences.Editor)localObject).commit();
+      jdField_a_of_type_JavaUtilHashMap.put(str2, Boolean.TRUE);
+      b(paramQQAppInterface, paramString);
+    } while (!QLog.isColorLevel());
+    QLog.d("ReduFriendServlet", 2, "shownHotFriendTip is:" + bool + ",need to save value");
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, SubMsgType0x87.MsgBody paramMsgBody)
+  public static String[] a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  {
+    paramQQAppInterface = BaseApplication.getContext().getSharedPreferences("free_call", 0);
+    long l = Long.parseLong(paramQQAppInterface.getString(b(paramString), "-1"));
+    if (Math.abs(paramLong - l) >= 86400000L)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReduFriendServlet", 2, "currTime is:" + paramLong + ",pullHotFriendTimeLong is:" + l + ",need to pull hot friend");
+      }
+      return null;
+    }
+    return paramQQAppInterface.getString(c(paramString), "").split("\\|");
+  }
+  
+  public static String b(String paramString)
+  {
+    return "free_call_pull_hot_friend_time_" + paramString;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
+    paramQQAppInterface = paramQQAppInterface + "_" + paramString;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReduFriendServlet", 2, "incrementHotFriendEnterAIOTimes() is called,mapKey is:" + paramQQAppInterface);
+    }
+    if (jdField_a_of_type_JavaUtilHashMap.get(paramQQAppInterface) != null)
+    {
+      paramString = (Integer)b.get(paramQQAppInterface);
+      if (paramString == null)
+      {
+        b.put(paramQQAppInterface, Integer.valueOf(1));
+        if (QLog.isColorLevel()) {
+          QLog.d("ReduFriendServlet", 2, "shownHotFriendTip flag exist,beforeTimes is:" + paramString);
+        }
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      for (;;)
+      {
+        return;
+        b.put(paramQQAppInterface, Integer.valueOf(paramString.intValue() + 1));
+      }
+    }
+    QLog.d("ReduFriendServlet", 2, "shownHotFriendTip flag does not exist,not increment time");
+  }
+  
+  public static String c(String paramString)
+  {
+    return "free_call_hot_friend_" + paramString;
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("CloneFriendPushHelper", 2, "onLinePush onReceivePush, app=" + paramQQAppInterface + ", msgBody=" + paramMsgBody);
+      QLog.d("ReduFriendServlet", 2, "removeShownHotFriendTipFlag() is called");
     }
-    List localList = paramMsgBody.rpt_msg_msg_notify.get();
-    Object localObject1;
-    String str2;
-    String str1;
-    String str3;
-    int j;
-    if ((localList != null) && (localList.size() > 0))
+    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
+    paramQQAppInterface = paramQQAppInterface + "_" + paramString;
+    jdField_a_of_type_JavaUtilHashMap.remove(paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 40;
+  }
+  
+  public int a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
+  {
+    Object localObject3 = paramQQAppInterface.getCurrentAccountUin();
+    Object localObject4 = (String)localObject3 + "_" + paramString;
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendHotTipsBar", 2, "shouldShowHotFriendVoiceCallBar() ==> ,mapKey is:" + (String)localObject4);
+    }
+    Object localObject2 = "";
+    localObject1 = localObject2;
+    for (;;)
     {
-      int i = 0;
-      if (i < localList.size())
+      try
       {
-        paramMsgBody = (SubMsgType0x87.MsgNotify)localList.get(i);
-        if ((paramMsgBody != null) && (paramMsgBody.uint32_reqsubtype.get() == 2) && (paramMsgBody.msg_clone_info.has()))
+        if (jdField_a_of_type_JavaUtilHashMap.get(localObject4) == null) {
+          continue;
+        }
+        localObject1 = localObject2;
+        localObject3 = (Integer)b.get(localObject4);
+        if (localObject3 != null)
         {
-          paramMsgBody = (SubMsgType0x87.CloneInfo)paramMsgBody.msg_clone_info.get();
-          if (paramMsgBody != null)
+          localObject1 = localObject2;
+          if (((Integer)localObject3).intValue() > 3) {
+            continue;
+          }
+        }
+        localObject1 = localObject2;
+        localObject3 = ((ajxn)paramQQAppInterface.getManager(51)).e(paramString);
+        if (localObject3 == null) {
+          continue;
+        }
+        localObject1 = localObject2;
+        if ((((Friends)localObject3).abilityBits & 1L) == 0L) {
+          continue;
+        }
+        localObject1 = localObject2;
+        i = ((Friends)localObject3).getNetWorkType();
+        if (i != 2) {
+          continue;
+        }
+        j = 2;
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("FriendHotTipsBar", 2, "shouldShowVoiceHotFriendTipBar() ==> step is:" + "");
+          i = j;
+        }
+      }
+      finally
+      {
+        try
+        {
+          int j;
+          Object localObject5;
+          long l;
+          int k;
+          int m;
+          int n;
+          int i1;
+          axqw.b(paramQQAppInterface, "CliOper", "", "", "Free_call", "Free_call_tips", 0, 0, "", "", "", "");
+          int i = 1;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("FriendHotTipsBar", 2, "shouldShowVoiceHotFriendTipBar() ==> step is:" + "can show hot friend voice call bar");
+          return 1;
+        }
+        finally
+        {
+          localObject1 = "can show hot friend voice call bar";
+        }
+        paramQQAppInterface = finally;
+      }
+      return i;
+      i = 1;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("FriendHotTipsBar", 2, "shouldShowVoiceHotFriendTipBar() ==> step is:" + "find true flag from memory");
+        return 1;
+        localObject1 = localObject2;
+        c(paramQQAppInterface, paramString);
+        i = 2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("FriendHotTipsBar", 2, "shouldShowVoiceHotFriendTipBar() ==> step is:" + "find true flag from memory but friend abilityBits does not contain support voice flag");
+          return 2;
+          localObject1 = localObject2;
+          c(paramQQAppInterface, paramString);
+          localObject1 = localObject2;
+          paramQQAppInterface = "find true flag from memory but enterAIOTimes is too large,enterAIOTimes is:" + localObject3 + ",MAX_ENTER_TIMES is:" + 3;
+          i = 2;
+          if (QLog.isColorLevel())
           {
-            localObject1 = String.valueOf(paramMsgBody.uint64_uin.get());
-            str2 = paramMsgBody.bytes_remark.get().toStringUtf8();
-            if (paramMsgBody.uint32_show_in_aio.get() != 1) {
-              break label292;
+            QLog.d("FriendHotTipsBar", 2, "shouldShowVoiceHotFriendTipBar() ==> step is:" + paramQQAppInterface);
+            return 2;
+            localObject1 = localObject2;
+            localObject4 = BaseApplication.getContext().getSharedPreferences("free_call", 0);
+            localObject1 = localObject2;
+            if (((SharedPreferences)localObject4).getBoolean(a((String)localObject3), false))
+            {
+              i = 2;
+              if (QLog.isColorLevel())
+              {
+                QLog.d("FriendHotTipsBar", 2, "shouldShowVoiceHotFriendTipBar() ==> step is:" + "has shown hot friend tip");
+                return 2;
+              }
+            }
+            else
+            {
+              localObject1 = localObject2;
+              localObject5 = ((SharedPreferences)localObject4).getString("voice_remark_tip_show_time" + (String)localObject3, "");
+              localObject1 = localObject2;
+              l = awzw.a() * 1000L;
+              localObject1 = localObject2;
+              localObject4 = new Time();
+              localObject1 = localObject2;
+              if (QLog.isColorLevel())
+              {
+                localObject1 = localObject2;
+                QLog.d("FriendHotTipsBar", 2, "multiRemarkTipShowTime is:" + (String)localObject5 + ",currTimeMillis is:" + l);
+              }
+              if (localObject5 != null)
+              {
+                localObject1 = localObject2;
+                if (((String)localObject5).length() > 0)
+                {
+                  localObject1 = localObject2;
+                  localObject5 = ((String)localObject5).split("\\|");
+                  localObject1 = localObject2;
+                  ((Time)localObject4).set(l);
+                  localObject1 = localObject2;
+                  i = ((Time)localObject4).year;
+                  localObject1 = localObject2;
+                  j = ((Time)localObject4).month;
+                  localObject1 = localObject2;
+                  k = ((Time)localObject4).monthDay;
+                  localObject1 = localObject2;
+                  ((Time)localObject4).set(Long.parseLong(localObject5[(localObject5.length - 1)]));
+                  localObject1 = localObject2;
+                  m = ((Time)localObject4).year;
+                  localObject1 = localObject2;
+                  n = ((Time)localObject4).month;
+                  localObject1 = localObject2;
+                  i1 = ((Time)localObject4).monthDay;
+                  if ((i == m) && (j == n) && (k == i1))
+                  {
+                    i = 2;
+                    if (!QLog.isColorLevel()) {
+                      continue;
+                    }
+                    QLog.d("FriendHotTipsBar", 2, "shouldShowVoiceHotFriendTipBar() ==> step is:" + "has shown remark tip this day");
+                    return 2;
+                  }
+                }
+              }
+              localObject1 = localObject2;
+              if (!bbev.h(BaseApplication.getContext()))
+              {
+                localObject1 = localObject2;
+                if (!bbev.c(BaseApplication.getContext()))
+                {
+                  i = 2;
+                  if (!QLog.isColorLevel()) {
+                    continue;
+                  }
+                  QLog.d("FriendHotTipsBar", 2, "shouldShowVoiceHotFriendTipBar() ==> step is:" + "my network is not wifi or 3g or 4g");
+                  return 2;
+                }
+              }
+              localObject1 = localObject2;
+              localObject4 = a(paramQQAppInterface, (String)localObject3, awzw.a());
+              if (localObject4 == null)
+              {
+                paramString = "there is no hot friend,need to pull";
+                if (paramBoolean)
+                {
+                  localObject1 = paramString;
+                  localObject2 = new NewIntent(paramQQAppInterface.getApp(), axcs.class);
+                  localObject1 = paramString;
+                  ((NewIntent)localObject2).putExtra("k_uin", (String)localObject3);
+                  localObject1 = paramString;
+                  paramQQAppInterface.startServlet((NewIntent)localObject2);
+                  i = 3;
+                  if (QLog.isColorLevel())
+                  {
+                    QLog.d("FriendHotTipsBar", 2, "shouldShowVoiceHotFriendTipBar() ==> step is:" + "there is no hot friend,need to pull");
+                    return 3;
+                  }
+                }
+                else
+                {
+                  i = 2;
+                  if (QLog.isColorLevel())
+                  {
+                    QLog.d("FriendHotTipsBar", 2, "shouldShowVoiceHotFriendTipBar() ==> step is:" + "there is no hot friend,need to pull");
+                    return 2;
+                  }
+                }
+              }
+              else
+              {
+                localObject1 = localObject2;
+                localObject3 = new HashMap();
+                i = 0;
+                localObject1 = localObject2;
+                if (i < localObject4.length)
+                {
+                  localObject1 = localObject2;
+                  ((HashMap)localObject3).put(localObject4[i], localObject4[i]);
+                  i += 1;
+                }
+                else
+                {
+                  localObject1 = localObject2;
+                  if (((HashMap)localObject3).get(paramString) != null)
+                  {
+                    localObject1 = localObject2;
+                    localObject3 = ((ajxn)paramQQAppInterface.getManager(51)).e(paramString);
+                    if (localObject3 == null)
+                    {
+                      localObject1 = localObject2;
+                      paramQQAppInterface = "can not find friend,friendUin is:" + paramString;
+                      i = 2;
+                      if (!QLog.isColorLevel()) {
+                        continue;
+                      }
+                      QLog.d("FriendHotTipsBar", 2, "shouldShowVoiceHotFriendTipBar() ==> step is:" + paramQQAppInterface);
+                      return 2;
+                    }
+                  }
+                  else
+                  {
+                    localObject1 = localObject2;
+                    paramQQAppInterface = "friend does not exist in hot friend,friendUin is:" + paramString + ",hotFriend is:" + Arrays.toString((Object[])localObject4);
+                    i = 2;
+                    if (!QLog.isColorLevel()) {
+                      continue;
+                    }
+                    QLog.d("FriendHotTipsBar", 2, "shouldShowVoiceHotFriendTipBar() ==> step is:" + paramQQAppInterface);
+                    return 2;
+                  }
+                  localObject1 = localObject2;
+                  if ((((Friends)localObject3).abilityBits & 1L) == 0L)
+                  {
+                    localObject1 = localObject2;
+                    paramQQAppInterface = "friend abilityBits does not contain support voice flag,f.abilityBits is:" + ((Friends)localObject3).abilityBits;
+                    i = 2;
+                    if (QLog.isColorLevel())
+                    {
+                      QLog.d("FriendHotTipsBar", 2, "shouldShowVoiceHotFriendTipBar() ==> step is:" + paramQQAppInterface);
+                      return 2;
+                    }
+                  }
+                  else
+                  {
+                    localObject1 = localObject2;
+                    i = ((Friends)localObject3).getNetWorkType();
+                    if (i == 2)
+                    {
+                      i = 2;
+                      if (!QLog.isColorLevel()) {
+                        continue;
+                      }
+                      QLog.d("FriendHotTipsBar", 2, "shouldShowVoiceHotFriendTipBar() ==> step is:" + "");
+                      return 2;
+                    }
+                  }
+                }
+              }
             }
           }
         }
-        label292:
-        for (boolean bool = true;; bool = false)
-        {
-          str1 = String.valueOf(paramMsgBody.uint64_to_uin.get());
-          str3 = paramMsgBody.bytes_to_nick.get().toStringUtf8();
-          j = paramMsgBody.uint32_src_gender.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("CloneFriendPushHelper", 2, "cloneInfo, uinC=" + (String)localObject1 + ", nickC=" + str2 + ", showInAio=" + bool + ", uinB=" + str1 + ", nickB=" + str3 + ", gender=" + j);
-          }
-          if (bool) {
-            break label298;
-          }
-          i += 1;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendHotTipsBar", 2, "shouldShowVoiceHotFriendTipBar() ==> step is:" + (String)localObject1);
+    }
+    throw paramQQAppInterface;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560632, null);
+    paramVarArgs.findViewById(2131372954).setOnClickListener(new aexx(this));
+    return paramVarArgs;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) {
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendHotTipsBar", 2, "curType != Friend");
+      }
+    }
+    andi localandi;
+    do
+    {
+      do
+      {
+        return;
+        localandi = andi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        if (!localandi.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 1)) {
           break;
         }
-        label298:
-        paramMsgBody = str1 + (String)localObject1 + paramQQAppInterface.c();
-        if (jdField_a_of_type_JavaUtilHashMap.get(paramMsgBody) != null) {
-          break label381;
-        }
-      }
-    }
-    label381:
-    for (long l1 = 0L;; l1 = ((Long)jdField_a_of_type_JavaUtilHashMap.get(paramMsgBody)).longValue())
-    {
-      long l2 = System.currentTimeMillis();
-      jdField_a_of_type_JavaUtilHashMap.put(paramMsgBody, Long.valueOf(l2));
-      if (Math.abs(l2 - l1) >= 60000L) {
-        break;
-      }
-      QLog.d("CloneFriendPushHelper", 1, "onReceivePush, gap < 60s");
+      } while (!QLog.isColorLevel());
+      QLog.d("FriendHotTipsBar", 2, "hasNetTipShow today");
+      return;
+    } while ((a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true) != 1) || (!this.jdField_a_of_type_Aeyx.a(this, new Object[0])));
+    a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    localandi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 1);
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    if (paramInt != 1000) {
       return;
     }
-    MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
-    Object localObject2 = ajjy.a(2131636163);
-    String str4 = String.format("%s(%s)", new Object[] { str2, localObject1 });
-    String str5 = ajjy.a(2131636161);
-    if (j == 1) {}
-    for (paramMsgBody = ajjy.a(2131636155);; paramMsgBody = ajjy.a(2131636158))
-    {
-      String str7 = String.format(str5, new Object[] { paramMsgBody });
-      String str6 = String.format("%s(%s)", new Object[] { str3, str1 });
-      paramMsgBody = ajjy.a(2131636159);
-      str5 = ajjy.a(2131636156);
-      aqax localaqax = new aqax(str1, str1, (String)localObject2 + str4 + str7 + str6 + "的好友列表中。\n不想和他们是好友关系，可选择" + paramMsgBody + "。\n不想再被其他好友克隆，可选择" + str5 + "。", 0, -5040, 2686977, awao.a());
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("key_action", 44);
-      localBundle.putString("key_action_DATA", (String)localObject1);
-      j = ((String)localObject2).length();
-      localaqax.a(j, str4.length() + j, localBundle);
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putInt("key_action", 44);
-      ((Bundle)localObject2).putString("key_action_DATA", str1);
-      int k = str4.length();
-      j = str7.length() + (j + k);
-      localaqax.a(j, str6.length() + j, (Bundle)localObject2);
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putInt("key_action", 45);
-      ((Bundle)localObject2).putString("key_action_DATA", (String)localObject1);
-      ((Bundle)localObject2).putString("key_a_action_DATA", String.format(ajjy.a(2131636162), new Object[] { str4, str6 }));
-      j = j + str6.length() + "的好友列表中。\n不想和他们是好友关系，可选择".length();
-      localaqax.a(j, paramMsgBody.length() + j, (Bundle)localObject2);
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putInt("key_action", 1);
-      ((Bundle)localObject1).putString("key_action_DATA", "https://ti.qq.com/friendship_auth/index.html?_wv=3#clone_setting");
-      j = j + paramMsgBody.length() + "。\n不想再被其他好友克隆，可选择".length();
-      localaqax.a(j, str5.length() + j, (Bundle)localObject1);
-      localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, localaqax);
-      aqay.a(paramQQAppInterface, localMessageForUniteGrayTip);
-      paramMsgBody = new MessageForText();
-      paramMsgBody.istroop = 0;
-      paramMsgBody.frienduin = str1;
-      paramMsgBody.senderuin = str1;
-      paramMsgBody.isread = true;
-      paramMsgBody.msg = String.format(ajjy.a(2131636160), new Object[] { str2, str3, str1 });
-      paramMsgBody.time = awao.a();
-      paramQQAppInterface.a().a(paramMsgBody, paramQQAppInterface.c());
-      paramMsgBody = new MessageForUniteGrayTip();
-      paramMsgBody.initGrayTipMsg(paramQQAppInterface, new aqax(str1, str1, ajjy.a(2131636157), 0, -5020, 2686977, awao.a()));
-      aqay.a(paramQQAppInterface, paramMsgBody);
-      paramQQAppInterface.reportClickEvent("CliOper", "", "", "0X8008071", "0X8008071", 0, 0, "", "", "", "");
-      b(paramQQAppInterface, str1);
-      break;
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    synchronized (jdField_a_of_type_JavaUtilHashSet)
-    {
-      if (!jdField_a_of_type_Boolean) {
-        a(paramQQAppInterface);
-      }
-      boolean bool = jdField_a_of_type_JavaUtilHashSet.contains(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("CloneFriendPushHelper", 2, "hasUin, uin=" + paramString + ", has=" + bool);
-      }
-      return bool;
-    }
-  }
-  
-  private static void b(QQAppInterface paramQQAppInterface, String paramString)
-  {
     if (QLog.isColorLevel()) {
-      QLog.d("CloneFriendPushHelper", 2, "addUin, uin=" + paramString);
+      QLog.d("FriendHotTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====>");
     }
-    synchronized (jdField_a_of_type_JavaUtilHashSet)
-    {
-      if (!jdField_a_of_type_Boolean) {
-        a(paramQQAppInterface);
-      }
-      if (!jdField_a_of_type_JavaUtilHashSet.contains(paramString))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("CloneFriendPushHelper", 2, "addUin, not contains, need add");
-        }
-        jdField_a_of_type_JavaUtilHashSet.add(paramString);
-        paramQQAppInterface.getPreferences().edit().putStringSet("cloneFriendPush_" + paramQQAppInterface.c(), jdField_a_of_type_JavaUtilHashSet).commit();
-      }
-      return;
-    }
+    a();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 2000 };
+  }
+  
+  public int b()
+  {
+    return 5;
   }
 }
 

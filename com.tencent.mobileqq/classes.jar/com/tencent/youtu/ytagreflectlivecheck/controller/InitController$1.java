@@ -23,7 +23,6 @@ class InitController$1
   {
     if (paramString != null)
     {
-      if (paramString != null) {}
       try
       {
         if (paramString.equals(""))

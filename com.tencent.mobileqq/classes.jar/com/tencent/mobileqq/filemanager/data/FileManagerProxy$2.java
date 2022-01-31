@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.data;
 
 import android.content.ContentValues;
-import aons;
+import apen;
 
 public class FileManagerProxy$2
   implements Runnable
 {
-  public FileManagerProxy$2(aons paramaons, ContentValues paramContentValues, long paramLong) {}
+  public FileManagerProxy$2(apen paramapen, ContentValues paramContentValues, long paramLong) {}
   
   public void run()
   {

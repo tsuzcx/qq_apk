@@ -1,20 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class bffl
-  implements DialogInterface.OnClickListener
+public abstract interface bffl
 {
-  bffl(bffc parambffc, vux paramvux) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Vux.a();
-    paramDialogInterface.dismiss();
-  }
+  public abstract void onMoreItemSelected(besi parambesi, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bffl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.filemanager.core;
 
 import android.content.Context;
-import aojd;
-import aoji;
+import aozx;
+import apac;
 import java.util.HashMap;
 
 public final class FileVideoManager$4
   implements Runnable
 {
-  public FileVideoManager$4(Context paramContext, aoji paramaoji) {}
+  public FileVideoManager$4(Context paramContext, apac paramapac) {}
   
   public void run()
   {
-    if (aojd.a == null) {
-      aojd.a = new aojd(null);
+    if (aozx.a == null) {
+      aozx.a = new aozx(null);
     }
-    if (aojd.a(aojd.a) == null) {
-      aojd.a(aojd.a, new HashMap());
+    if (aozx.a(aozx.a) == null) {
+      aozx.a(aozx.a, new HashMap());
     }
-    aojd.a(aojd.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aoji);
+    aozx.a(aozx.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Apac);
   }
 }
 

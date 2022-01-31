@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.model;
 
-import akmy;
-import akso;
-import akwn;
+import albk;
+import alha;
+import alkz;
 
 public class QQARSession$21
   implements Runnable
 {
-  public QQARSession$21(akwn paramakwn, int paramInt) {}
+  public QQARSession$21(alkz paramalkz, int paramInt) {}
   
   public void run()
   {
-    if ((akwn.b(this.this$0)) && (this.this$0.a == 2) && (akwn.a(this.this$0) != null))
+    if ((alkz.b(this.this$0)) && (this.this$0.a == 2) && (alkz.a(this.this$0) != null))
     {
-      akmy localakmy = new akmy(akwn.a(this.this$0));
-      akwn.a(this.this$0).a(0, localakmy, this.a);
+      albk localalbk = new albk(alkz.a(this.this$0));
+      alkz.a(this.this$0).a(0, localalbk, this.a);
     }
   }
 }

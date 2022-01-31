@@ -1,42 +1,57 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
 
 public class abgf
-  implements CompoundButton.OnCheckedChangeListener
+  implements bfoq
 {
-  public abgf(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public abgf(FriendProfileImageActivity paramFriendProfileImageActivity, abgm paramabgm, boolean paramBoolean, bfol parambfol) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, new Object[] { "avCallOnCheckedChangeListener::onCheckedChanged: invoked. ", " isChecked: ", Boolean.valueOf(paramBoolean) });
-    }
-    if (!NotifyPushSettingActivity.a(this.a).b())
+    switch (paramInt)
     {
-      NotifyPushSettingActivity.a(this.a).a(this.a);
-      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(null);
-      paramCompoundButton = NotifyPushSettingActivity.a(this.a);
-      paramBoolean = bool;
-      if (!NotifyPushSettingActivity.a(this.a).a()) {
-        paramBoolean = true;
-      }
-      paramCompoundButton.setChecked(paramBoolean);
-      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(this.a.a);
     }
-    do
+    for (;;)
     {
+      this.jdField_a_of_type_Bfol.dismiss();
       return;
-      mfs.a(this.a.app.getCurrentAccountUin(), paramBoolean);
-      if (!paramBoolean) {
-        awqx.b(this.a.app, "dc00898", "", "", "0X800A33D", "0X800A33D", 0, 0, "", "", "", "");
+      bazo.a(this.jdField_a_of_type_Abgm.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        axqw.b(localQQAppInterface, "dc00898", "", "", "0X800A8CA", "0X800A8CA", 0, 0, paramView, "", "", "");
+        break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("IphoneTitleBarActivity", 2, "isChecked[" + paramBoolean + "]");
+      bazo.a(this.jdField_a_of_type_Abgm.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        axqw.b(localQQAppInterface, "dc00898", "", "", "0X800A8CB", "0X800A8CB", 0, 0, paramView, "", "", "");
+        break;
+      }
+      FriendProfileImageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, this.jdField_a_of_type_Abgm.c, this.jdField_a_of_type_Abgm.d);
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        axqw.b(localQQAppInterface, "dc00898", "", "", "0X800A8CC", "0X800A8CC", 0, 0, paramView, "", "", "");
+        break;
+      }
+      bazo.b(this.jdField_a_of_type_Abgm.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        axqw.b(localQQAppInterface, "dc00898", "", "", "0X800A8CD", "0X800A8CD", 0, 0, paramView, "", "", "");
+        break;
+      }
+      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b(this.jdField_a_of_type_Abgm);
+      }
+    }
   }
 }
 

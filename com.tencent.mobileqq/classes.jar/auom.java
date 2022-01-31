@@ -1,41 +1,21 @@
-import com.tencent.TMG.utils.QLog;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import java.util.ArrayList;
 
-final class auom
-  implements axxi
+public abstract class auom
+  implements auol
 {
-  auom(QzoneZipCacheHelperCallBack paramQzoneZipCacheHelperCallBack) {}
+  public final void a(int paramInt) {}
   
-  public void a(axxh paramaxxh)
-  {
-    QLog.i("QzoneGiftUtil", 1, "onPreDownloadStart");
-  }
+  public final void a(int paramInt, ArrayList<aunu> paramArrayList) {}
   
-  public void onResp(axsq paramaxsq)
-  {
-    if (paramaxsq != null)
-    {
-      if (paramaxsq.a == 0)
-      {
-        this.a.onResult(true);
-        QLog.i("QzoneGiftUtil", 1, "onResp download res file, success.");
-      }
-      while (paramaxsq.a != 1) {
-        return;
-      }
-      this.a.onResult(false);
-      QLog.e("QzoneGiftUtil", 1, "onResp download res file, fail.");
-      return;
-    }
-    QLog.e("QzoneGiftUtil", 1, "downloadFile onResp = null");
-    this.a.onResult(false);
-  }
+  public final void b(int paramInt, aunu paramaunu) {}
   
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
+  public final void c(int paramInt, aunu paramaunu) {}
+  
+  public final void d(int paramInt, aunu paramaunu) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auom
  * JD-Core Version:    0.7.0.1
  */

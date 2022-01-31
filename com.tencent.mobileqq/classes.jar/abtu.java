@@ -1,54 +1,61 @@
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.AutoCompleteTextView;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import java.util.Locale;
+import android.support.v4.app.Fragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.PublicBaseFragment;
 
 public class abtu
-  implements begw
 {
-  public abtu(SubLoginActivity paramSubLoginActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static void a(Activity paramActivity, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
   {
-    if (this.a.jdField_b_of_type_Boolean) {
-      return;
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
     }
-    if (paramInt == 0)
-    {
-      paramView = null;
-      if (SubLoginActivity.a(this.a) != null) {
-        paramView = SubLoginActivity.a(this.a).getText().toString();
-      }
-      if (TextUtils.isEmpty(paramView)) {
-        break label193;
-      }
+    localIntent.setClass(paramActivity, paramClass);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    paramActivity.startActivityForResult(localIntent, paramInt);
+  }
+  
+  public static void a(Context paramContext, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
+  {
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
     }
-    label193:
-    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://ti.qq.com/safe/forgetpw?source_id=2756", paramView });; paramView = "https://ti.qq.com/safe/forgetpw?source_id=2756")
-    {
-      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-      localIntent.putExtra("uin", SubLoginActivity.a(this.a));
-      localIntent.putExtra("reqType", 3);
-      localIntent.putExtra("url", paramView);
-      this.a.startActivity(localIntent);
-      for (;;)
-      {
-        this.a.jdField_b_of_type_Boolean = true;
-        this.a.a.dismiss();
-        return;
-        if (paramInt == 1)
-        {
-          paramView = new Intent(this.a, LoginPhoneNumActivity.class);
-          paramView.putExtra("isSubaccount", true);
-          paramView.putExtra("fromWhere", this.a.jdField_b_of_type_JavaLangString);
-          this.a.startActivity(paramView);
-        }
-      }
+    localIntent.setClass(paramContext, paramClass);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    paramContext.startActivity(localIntent);
+  }
+  
+  public static void a(Context paramContext, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
+  {
+    a(paramContext, null, paramClass, paramClass1);
+  }
+  
+  public static void a(Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
+  {
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
     }
+    localIntent.setClass(BaseApplicationImpl.getApplication(), paramClass);
+    localIntent.addFlags(268435456);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    BaseApplicationImpl.getApplication().startActivity(localIntent);
+  }
+  
+  public static void a(Fragment paramFragment, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
+  {
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.setClass(paramFragment.getActivity(), paramClass);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    paramFragment.startActivityForResult(localIntent, paramInt);
   }
 }
 

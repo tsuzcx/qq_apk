@@ -1,39 +1,46 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.widget.ConfigClearableEditText;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
 
-public class bbhe
-  implements TextWatcher
+class bbhe
+  implements View.OnClickListener
 {
-  public bbhe(ConfigClearableEditText paramConfigClearableEditText) {}
+  bbhe(bbhb parambbhb, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    paramCharSequence = this.a.getText().toString();
-    if (this.a.isFocused())
+    this.jdField_a_of_type_Bbhb.hideSoftInputFromWindow();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
     {
-      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
-        this.a.setClearButtonVisible(false);
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bbhb, 1);
+      if (this.jdField_a_of_type_Bbhb.c)
+      {
+        if (!this.jdField_a_of_type_Bbhb.jdField_a_of_type_Boolean) {
+          break label93;
+        }
+        this.jdField_a_of_type_Bbhb.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bbhb.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
       }
     }
-    else {
-      return;
-    }
-    if ((ConfigClearableEditText.b(this.a)) || (ConfigClearableEditText.c(this.a)))
+    for (;;)
     {
-      this.a.setClearButtonVisible(true);
-      return;
+      this.jdField_a_of_type_Bbhb.c = false;
+      label93:
+      try
+      {
+        if (this.jdField_a_of_type_Bbhb.isShowing()) {
+          this.jdField_a_of_type_Bbhb.dismiss();
+        }
+        return;
+      }
+      catch (Exception paramView) {}
+      this.jdField_a_of_type_Bbhb.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bbhb.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
     }
-    this.a.setClearButtonVisible(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbhe
  * JD-Core Version:    0.7.0.1
  */

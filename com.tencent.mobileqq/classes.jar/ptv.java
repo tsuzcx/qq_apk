@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyPrivacyListView;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmallVideo;
 
 public class ptv
-  implements View.OnClickListener
+  extends ptn
 {
-  public ptv(ReadInJoyPrivacyListView paramReadInJoyPrivacyListView) {}
-  
-  public void onClick(View paramView)
+  public ptv(Context paramContext, baxk parambaxk, rap paramrap)
   {
-    ReadInJoyPrivacyListView.a(this.a);
+    super(paramContext, parambaxk, paramrap);
+  }
+  
+  public pqt g()
+  {
+    this.jdField_a_of_type_Pqs = new ComponentContentSmallVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

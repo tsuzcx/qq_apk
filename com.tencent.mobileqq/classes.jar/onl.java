@@ -1,34 +1,18 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0xc90.RspBody;
+import android.content.Context;
 
-class onl
-  extends mmk
+final class onl
+  implements rwi
 {
-  onl(onj paramonj, rbo paramrbo) {}
+  onl(Context paramContext, String paramString) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a()
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
-    {
-      paramBundle = new oidb_0xc90.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (this.jdField_a_of_type_Rbo != null) {
-        this.jdField_a_of_type_Rbo.a(true, paramInt, paramBundle);
-      }
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(onj.a, 2, "requestNewCommunityMsg onResult(), exception = " + QLog.getStackTraceString(paramArrayOfByte));
-    }
+    onk.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     onl
  * JD-Core Version:    0.7.0.1
  */

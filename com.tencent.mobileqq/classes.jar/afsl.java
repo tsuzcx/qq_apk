@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.widget.SingleLineTextView;
 
 class afsl
-  implements View.OnClickListener
+  extends aimv
 {
-  afsl(afsj paramafsj) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.setText("");
-  }
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public MayKnowRecommend a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 

@@ -1,45 +1,36 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.subscribe.comment.EmoView;
+import com.tencent.qphone.base.util.QLog;
 
-public class wau
-  implements AdapterView.OnItemClickListener
+final class wau
+  extends wad
 {
-  public wau(EmoView paramEmoView, int paramInt) {}
+  wau(wad paramwad) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onFailure(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (paramInt == 27)
-    {
-      if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
-        bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
-      }
-      if (!bool1) {
-        EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
     }
-    do
-    {
-      do
-      {
-        return;
-        paramInt = (this.jdField_a_of_type_Int - 1) * 27 + paramInt;
-      } while (paramInt >= 107);
-      paramAdapterView = wbh.b[way.b[paramInt]];
-      bool1 = bool2;
-      if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
-        bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(paramAdapterView);
-      }
-    } while (bool1);
-    EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(paramAdapterView);
+    this.a.onFailure(paramString);
+    vel.a("music_composite", "music_clip", 0, 1, new String[0]);
+  }
+  
+  public void onStart()
+  {
+    super.onStart();
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    paramString = String.valueOf(System.currentTimeMillis() - this.b);
+    vel.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
+    if (QLog.isColorLevel()) {
+      QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 2, "音乐截取成功耗时：" + paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wau
  * JD-Core Version:    0.7.0.1
  */

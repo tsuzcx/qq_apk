@@ -1,40 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.VideoController;
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.VideoController.AnyChatReqTimeoutRunnable;
+import com.tencent.av.app.VideoAppInterface;
 
 public class ldu
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public ldu(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public ldu(VideoController.AnyChatReqTimeoutRunnable paramAnyChatReqTimeoutRunnable) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
-    {
-      paramContext = paramIntent.getStringExtra("reason");
-      if ((paramContext != null) && (paramContext.equals("homekey")))
-      {
-        awqx.b(null, "CliOper", "", "", "0X8004210", "0X8004210", 0, 0, "", "", "", "");
-        this.a.c(-1038L);
-      }
+    if (this.a.this$0.a().d == null) {
+      this.a.this$0.a().d = this.a.this$0.a().a.c;
     }
-    boolean bool;
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramContext.equals("android.intent.action.SCREEN_OFF"));
-      bool = VideoController.a(this.a);
-      if (bool) {
-        awqx.b(null, "CliOper", "", "", "0X800420C", "0X800420C", 0, 0, "", "", "", "");
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w(this.a.b, 1, "ACTION_SCREEN_OFF, isScreenLocked[" + bool + "]");
+    this.a.this$0.a(this.a.a, 2131230741, 1, this.a.this$0.b);
+    this.a.this$0.a().a("AnyChatReqTimeoutRunnable", 6);
+    this.a.this$0.a.a(new Object[] { Integer.valueOf(14), Integer.valueOf(9), this.a.this$0.a().d, Long.valueOf(this.a.a) });
   }
 }
 

@@ -1,12 +1,29 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import com.tencent.qphone.base.util.QLog;
 
-final class apce
-  implements Comparator<Map.Entry<String, Integer>>
+class apce
+  extends apbi
 {
-  public int a(Map.Entry<String, Integer> paramEntry1, Map.Entry<String, Integer> paramEntry2)
+  public apce(apbe paramapbe)
   {
-    return ((Integer)paramEntry2.getValue()).intValue() - ((Integer)paramEntry1.getValue()).intValue();
+    super(paramapbe);
+  }
+  
+  protected String a()
+  {
+    return "StateSaveToWeiYunByPCWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    apbe.b(this.jdField_a_of_type_Apbe, 11, 7);
+    apbe.c(this.jdField_a_of_type_Apbe, 11, 7);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateSaveToWeiYunByPC)");
+    this.jdField_a_of_type_Apbi = new apcc(this.jdField_a_of_type_Apbe);
   }
 }
 

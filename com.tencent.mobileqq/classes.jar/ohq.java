@@ -1,59 +1,31 @@
-import android.support.annotation.NonNull;
-
-class ohq
-  implements Comparable<ohq>
+public class ohq
 {
-  public float a;
   public int a;
   public long a;
+  public CharSequence a;
   public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
-  public long c;
+  public CharSequence b;
   
-  private ohq(ohp paramohp)
+  public ohq(String paramString, long paramLong, CharSequence paramCharSequence)
   {
-    this.jdField_b_of_type_JavaLangString = "nil";
+    this(paramString, paramLong, paramCharSequence, 0);
   }
   
-  public int a(ohq paramohq)
+  public ohq(String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
   {
-    if (paramohq.jdField_a_of_type_Long > this.jdField_a_of_type_Long) {
-      return 1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    paramString = paramCharSequence;
+    if (paramCharSequence == null) {
+      paramString = "";
     }
-    if (paramohq.jdField_a_of_type_Long == this.jdField_a_of_type_Long) {
-      return 0;
-    }
-    return -1;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    int j = 1;
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_b_of_type_Long).append("_").append(this.jdField_a_of_type_Int).append("_").append(this.c).append("_").append(String.format("%.2f", new Object[] { Float.valueOf(this.jdField_a_of_type_Float) })).append("_");
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = 1;
-      localStringBuilder = localStringBuilder.append(i).append("_");
-      if (!this.jdField_b_of_type_Boolean) {
-        break label128;
-      }
-    }
-    label128:
-    for (int i = j;; i = 0)
-    {
-      return i + "_" + this.jdField_b_of_type_JavaLangString;
-      i = 0;
-      break;
-    }
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ohq
  * JD-Core Version:    0.7.0.1
  */

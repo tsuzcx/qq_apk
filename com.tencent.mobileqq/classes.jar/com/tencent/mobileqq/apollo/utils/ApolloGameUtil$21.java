@@ -2,7 +2,7 @@ package com.tencent.mobileqq.apollo.utils;
 
 import android.content.Context;
 import android.content.res.Resources;
-import bbmy;
+import bcpw;
 
 final class ApolloGameUtil$21
   implements Runnable
@@ -11,7 +11,7 @@ final class ApolloGameUtil$21
   
   public void run()
   {
-    bbmy.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131167766));
+    bcpw.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865));
   }
 }
 

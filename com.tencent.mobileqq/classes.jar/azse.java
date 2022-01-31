@@ -1,28 +1,71 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.CheckConErroObserver;
 
-class azse
-  implements DialogInterface.OnClickListener
+public class azse
+  extends CheckConErroObserver
 {
-  azse(azsd paramazsd) {}
+  azsf jdField_a_of_type_Azsf;
+  azsg jdField_a_of_type_Azsg;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public azse(TroopFileProtoReqMgr paramTroopFileProtoReqMgr, azsg paramazsg, azsf paramazsf)
   {
-    paramDialogInterface = String.format("https://qun.qq.com/qunpay/gifts/buy.html?_bid=2204&_wvSb=1&from=7&troopUin=%s", new Object[] { this.a.a.b });
-    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
-    localIntent.putExtra("selfSet_leftViewText", ajjy.a(2131649902));
-    localIntent.putExtra("hide_more_button", true);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("url", this.a.a.a(paramDialogInterface));
-    this.a.a.startActivity(localIntent);
+    this.jdField_a_of_type_Azsg = paramazsg;
+    this.jdField_a_of_type_Azsf = paramazsf;
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    Object localObject = "";
+    if (paramBundle != null)
+    {
+      localObject = paramBundle.getString("msf_con_erro");
+      paramBundle = (Bundle)localObject;
+      if (localObject == null) {
+        paramBundle = "";
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopFileProtoReqMgr", 2, "CheckConErroObserverImp.onReceive -> msfConErro: " + paramBundle);
+      }
+      localObject = paramBundle;
+      if (this.jdField_a_of_type_Azsg != null)
+      {
+        FromServiceMsg localFromServiceMsg = this.jdField_a_of_type_Azsg.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
+        localObject = paramBundle;
+        if (localFromServiceMsg != null)
+        {
+          localFromServiceMsg.addAttribute("_tag_socket_connerror", paramBundle);
+          localObject = paramBundle;
+        }
+      }
+    }
+    if ((this.jdField_a_of_type_Azsf != null) && (this.jdField_a_of_type_Azsf.jdField_a_of_type_Mxm != null))
+    {
+      paramBundle = new Bundle();
+      if (this.jdField_a_of_type_Azsf.jdField_a_of_type_AndroidOsBundle != null) {
+        paramBundle.putAll(this.jdField_a_of_type_Azsf.jdField_a_of_type_AndroidOsBundle);
+      }
+      if (this.jdField_a_of_type_Azsg.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg == null) {
+        break label287;
+      }
+      paramBundle.putString("data_error_msg", this.jdField_a_of_type_Azsg.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getBusinessFailMsg());
+      paramBundle.putInt("data_error_code", this.jdField_a_of_type_Azsg.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getBusinessFailCode());
+      azsr.a("TroopFileProtoReqMgr", azsr.a, "cookie<" + this.jdField_a_of_type_Azsg.jdField_a_of_type_Azsf.b + "> onProtoResponse fail end. failCode:" + this.jdField_a_of_type_Azsg.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getBusinessFailCode() + " retryCount:" + this.jdField_a_of_type_Azsg.jdField_a_of_type_Akaw.c + " msfConErro:" + (String)localObject);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Azsf.jdField_a_of_type_Mxm.a(-1, null, this.jdField_a_of_type_Azsf.jdField_a_of_type_AndroidOsBundle);
+      return;
+      label287:
+      azsr.a("TroopFileProtoReqMgr", azsr.a, "cookie<" + this.jdField_a_of_type_Azsg.jdField_a_of_type_Azsf.b + "> onProtoResponse fail end. msfConErro:" + (String)localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azse
  * JD-Core Version:    0.7.0.1
  */

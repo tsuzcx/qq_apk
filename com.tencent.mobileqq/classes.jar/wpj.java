@@ -1,6 +1,6 @@
 public abstract interface wpj
 {
-  public abstract void a();
+  public abstract void a(String paramString, wpi paramwpi);
 }
 
 

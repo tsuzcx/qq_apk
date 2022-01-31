@@ -1,22 +1,45 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.tissue.v8rt.engine.LibLoader;
+import java.io.File;
 
-final class bfde
-  implements bfdg
+public class bfde
+  implements LibLoader
 {
-  public void a(boolean paramBoolean, Context paramContext, bfdi parambfdi)
+  public boolean loadSo()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
+    if (bekd.a == null)
+    {
+      Log.i("V8JsLoader", "tissueEnv is null");
+      return false;
     }
-    if (paramBoolean) {
-      bfcz.f(paramContext, parambfdi);
+    Object localObject = bekd.a.getNativeLibDir();
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      Log.i("V8JsLoader", "libsDir is empty");
+      return false;
     }
+    try
+    {
+      System.loadLibrary("v8jni");
+      System.loadLibrary("uvjni");
+      localObject = new File((String)localObject, "libtv8rt.so");
+      if ((!((File)localObject).isFile()) || (!((File)localObject).canRead())) {
+        throw new UnsatisfiedLinkError("libtv8rt.so is broken");
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+      return false;
+    }
+    System.load(localThrowable.getAbsolutePath());
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfde
  * JD-Core Version:    0.7.0.1
  */

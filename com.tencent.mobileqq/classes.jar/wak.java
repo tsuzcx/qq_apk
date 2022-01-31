@@ -1,25 +1,45 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.TextUtils;
+import java.util.ArrayList;
 
-class wak
-  implements View.OnClickListener
+public class wak
 {
-  wak(wai paramwai, CertifiedAccountMeta.StComment paramStComment) {}
+  public int a;
+  public String a;
+  public ArrayList<Object> a;
+  public wam a;
+  public String[] a;
   
-  public void onClick(View paramView)
+  public wak() {}
+  
+  public wak(String[] paramArrayOfString, String paramString, wam paramwam)
   {
-    if (vzz.a(this.jdField_a_of_type_Wai.a) != null)
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_Wam = paramwam;
+  }
+  
+  public String toString()
+  {
+    String str1;
+    if (this.jdField_a_of_type_ArrayOfJavaLangString == null)
     {
-      vzz.a(this.jdField_a_of_type_Wai.a, vzz.a(this.jdField_a_of_type_Wai.a).a(vzz.a(this.jdField_a_of_type_Wai.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment));
-      vzz.b(this.jdField_a_of_type_Wai.a, true);
+      str1 = "null";
+      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+        break label86;
+      }
     }
-    vzz.a(this.jdField_a_of_type_Wai.a).dismiss();
+    label86:
+    for (String str2 = "null";; str2 = TextUtils.join(",", this.jdField_a_of_type_JavaUtilArrayList.toArray()))
+    {
+      return "FFmpegCommandUnit{ cmdType :" + this.jdField_a_of_type_Int + "\n cmd: " + str1 + "\n output: " + this.jdField_a_of_type_JavaLangString + "\n arguments: " + str2;
+      str1 = TextUtils.join(" ", this.jdField_a_of_type_ArrayOfJavaLangString);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     wak
  * JD-Core Version:    0.7.0.1
  */

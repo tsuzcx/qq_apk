@@ -1,16 +1,16 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import java.util.ArrayList;
 
 class qli
-  implements qlk<RecyclerView.ViewHolder>
 {
-  qli(qlh paramqlh, int paramInt) {}
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder)
-  {
-    if ((paramViewHolder instanceof qln)) {
-      ((qln)paramViewHolder).a(this.jdField_a_of_type_Int);
-    }
-  }
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<qlq> a = new ArrayList();
+  public int b;
+  public long b;
+  public String b;
+  public int c;
 }
 
 

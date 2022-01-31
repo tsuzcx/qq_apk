@@ -1,10 +1,19 @@
-import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface advb
+class advb
+  implements View.OnClickListener
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  advb(adva paramadva) {}
   
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  public void onClick(View paramView)
+  {
+    actn.n = true;
+    if (this.a.a()) {
+      return;
+    }
+    adva.a(this.a).onClick(paramView);
+  }
 }
 
 

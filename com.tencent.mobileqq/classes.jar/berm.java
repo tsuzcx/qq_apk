@@ -1,217 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.PluginInfo;
 
-public class berm<T extends RecyclerView.Adapter>
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+public final class berm
+  implements Parcelable.Creator<PluginInfo>
 {
-  private final T jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
-  private berq jdField_a_of_type_Berq;
-  private berr jdField_a_of_type_Berr;
-  private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final List<View> b = new ArrayList();
-  
-  public berm(T paramT)
+  public PluginInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramT;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.registerAdapterDataObserver(new bern(this));
+    PluginInfo localPluginInfo = new PluginInfo();
+    PluginInfo.a(localPluginInfo, paramParcel.readString());
+    PluginInfo.b(localPluginInfo, paramParcel.readString());
+    return localPluginInfo;
   }
   
-  public int a()
+  public PluginInfo[] a(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public T a()
-  {
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
-  }
-  
-  public berm a(berq paramberq)
-  {
-    this.jdField_a_of_type_Berq = paramberq;
-    return this;
-  }
-  
-  protected void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if (this.jdField_a_of_type_Berr != null) {
-      this.jdField_a_of_type_Berr.a(paramViewHolder, paramInt);
-    }
-  }
-  
-  public void a(@NonNull View paramView)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramView);
-  }
-  
-  public void a(berr paramberr)
-  {
-    this.jdField_a_of_type_Berr = paramberr;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return paramInt < this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public boolean a(View paramView)
-  {
-    return this.jdField_a_of_type_JavaUtilList.contains(paramView);
-  }
-  
-  public void b(@NonNull View paramView)
-  {
-    this.jdField_a_of_type_JavaUtilList.remove(paramView);
-  }
-  
-  public boolean b(int paramInt)
-  {
-    return paramInt >= getItemCount() - this.b.size();
-  }
-  
-  public void c(@NonNull View paramView)
-  {
-    this.b.add(paramView);
-  }
-  
-  public boolean c(int paramInt)
-  {
-    return (paramInt >= -1000) && (paramInt < this.jdField_a_of_type_JavaUtilList.size() - 1000);
-  }
-  
-  public boolean d(int paramInt)
-  {
-    return (paramInt >= -2000) && (paramInt < this.b.size() - 2000);
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount() + this.b.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return ((View)this.jdField_a_of_type_JavaUtilList.get(paramInt)).hashCode();
-    }
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount()) {
-      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemId(paramInt - this.jdField_a_of_type_JavaUtilList.size());
-    }
-    return ((View)this.b.get(paramInt - this.jdField_a_of_type_JavaUtilList.size() - this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount())).hashCode();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return paramInt - 1000;
-    }
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount()) {
-      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemViewType(paramInt - this.jdField_a_of_type_JavaUtilList.size());
-    }
-    return paramInt - 2000 - this.jdField_a_of_type_JavaUtilList.size() - this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
-        localObject1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
-      }
-      localObject2 = localObject1;
-      if (localObject1 == null)
-      {
-        localObject2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
-        paramViewHolder.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      }
-      ((StaggeredGridLayoutManager.LayoutParams)localObject2).setFullSpan(true);
-      a(paramViewHolder, paramInt);
-      return;
-    }
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount())
-    {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - this.jdField_a_of_type_JavaUtilList.size());
-      return;
-    }
-    localObject1 = localObject2;
-    if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
-      localObject1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
-    }
-    localObject2 = localObject1;
-    if (localObject1 == null)
-    {
-      localObject2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
-      paramViewHolder.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    }
-    ((StaggeredGridLayoutManager.LayoutParams)localObject2).setFullSpan(true);
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt, List<Object> paramList)
-  {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      super.onBindViewHolder(paramViewHolder, paramInt, paramList);
-      return;
-    }
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount())
-    {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - this.jdField_a_of_type_JavaUtilList.size(), paramList);
-      return;
-    }
-    super.onBindViewHolder(paramViewHolder, paramInt, paramList);
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (c(paramInt))
-    {
-      paramInt = Math.abs(paramInt + 1000);
-      return new bero(this, (View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-    }
-    if (d(paramInt))
-    {
-      paramInt = Math.abs(paramInt + 2000);
-      return new berp(this, (View)this.b.get(paramInt));
-    }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
-  }
-  
-  public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)
-  {
-    super.onViewAttachedToWindow(paramViewHolder);
-    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter != null) && ((paramViewHolder instanceof bequ))) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onViewAttachedToWindow(paramViewHolder);
-    }
-  }
-  
-  public void onViewDetachedFromWindow(RecyclerView.ViewHolder paramViewHolder)
-  {
-    super.onViewDetachedFromWindow(paramViewHolder);
-    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter != null) && ((paramViewHolder instanceof bequ))) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onViewDetachedFromWindow(paramViewHolder);
-    }
-  }
-  
-  public void onViewRecycled(RecyclerView.ViewHolder paramViewHolder)
-  {
-    super.onViewRecycled(paramViewHolder);
-    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter != null) && ((paramViewHolder instanceof bequ))) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onViewRecycled(paramViewHolder);
-    }
+    return new PluginInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     berm
  * JD-Core Version:    0.7.0.1
  */

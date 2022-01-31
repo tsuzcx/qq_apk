@@ -1,24 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 class aoul
-  implements apca
+  extends aown
 {
-  aoul(aouk paramaouk) {}
+  aoul(aouk paramaouk, aoup paramaoup) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
   {
-    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(this.a.a.d());
-    if (this.a.a.a != null) {
-      this.a.a.a.d();
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Aoup.a(paramString2);
+      return;
     }
+    this.jdField_a_of_type_Aoup.a(paramInt, paramString1);
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoul
  * JD-Core Version:    0.7.0.1
  */

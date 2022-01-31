@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-
-public final class axeo
-  implements Parcelable.Creator<TeamWorkFileImportInfo>
+public abstract interface axeo
 {
-  public TeamWorkFileImportInfo a(Parcel paramParcel)
-  {
-    return new TeamWorkFileImportInfo(paramParcel);
-  }
+  public abstract void G_();
   
-  public TeamWorkFileImportInfo[] a(int paramInt)
-  {
-    return new TeamWorkFileImportInfo[paramInt];
-  }
+  public abstract void a(String paramString1, int paramInt, String paramString2);
+  
+  public abstract void a(String paramString, long paramLong1, long paramLong2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axeo
  * JD-Core Version:    0.7.0.1
  */

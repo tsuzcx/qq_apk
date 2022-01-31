@@ -1,18 +1,9 @@
-public class azkn
+class azkn
+  implements bfps
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
+  azkn(azkk paramazkk) {}
+  
+  public void a() {}
 }
 
 

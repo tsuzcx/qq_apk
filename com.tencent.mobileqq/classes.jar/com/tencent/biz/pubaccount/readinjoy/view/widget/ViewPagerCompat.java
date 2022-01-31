@@ -9,16 +9,16 @@ import android.view.MotionEvent;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import rhu;
-import rhv;
+import ruk;
+import rul;
 
 public class ViewPagerCompat
   extends ViewPager
 {
   private List<ViewPager.OnPageChangeListener> jdField_a_of_type_JavaUtilList;
-  private rhv jdField_a_of_type_Rhv;
+  private rul jdField_a_of_type_Rul;
   private boolean jdField_a_of_type_Boolean = true;
-  private List<rhu> b;
+  private List<ruk> b;
   
   public ViewPagerCompat(Context paramContext)
   {
@@ -34,8 +34,8 @@ public class ViewPagerCompat
   
   private void a()
   {
-    this.jdField_a_of_type_Rhv = new rhv(this, null);
-    super.setOnPageChangeListener(this.jdField_a_of_type_Rhv);
+    this.jdField_a_of_type_Rul = new rul(this, null);
+    super.setOnPageChangeListener(this.jdField_a_of_type_Rul);
   }
   
   public void a(ViewPager.OnPageChangeListener paramOnPageChangeListener)
@@ -46,12 +46,12 @@ public class ViewPagerCompat
     this.jdField_a_of_type_JavaUtilList.add(paramOnPageChangeListener);
   }
   
-  public void a(rhu paramrhu)
+  public void a(ruk paramruk)
   {
     if (this.b == null) {
       this.b = new ArrayList();
     }
-    this.b.add(paramrhu);
+    this.b.add(paramruk);
   }
   
   public void b(ViewPager.OnPageChangeListener paramOnPageChangeListener)
@@ -61,10 +61,10 @@ public class ViewPagerCompat
     }
   }
   
-  public void b(rhu paramrhu)
+  public void b(ruk paramruk)
   {
     if (this.b != null) {
-      this.b.remove(paramrhu);
+      this.b.remove(paramruk);
     }
   }
   
@@ -110,7 +110,7 @@ public class ViewPagerCompat
       int i = 0;
       while (i < j)
       {
-        ((rhu)this.b.get(i)).a(this, localPagerAdapter, paramPagerAdapter);
+        ((ruk)this.b.get(i)).a(this, localPagerAdapter, paramPagerAdapter);
         i += 1;
       }
     }

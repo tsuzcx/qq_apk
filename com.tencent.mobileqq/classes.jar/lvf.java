@@ -1,15 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
-
-public class lvf
-  implements DialogInterface.OnClickListener
+public abstract class lvf
+  extends lur
 {
-  public lvf(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  protected long b;
+  public lvr[] c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(long paramLong)
   {
-    paramDialogInterface.dismiss();
+    long l = this.jdField_a_of_type_Long;
+    if (this.c != null)
+    {
+      int i = (int)((paramLong - l) % this.b * this.c.length / this.b);
+      if ((i >= 0) && (i < this.c.length)) {
+        this.jdField_a_of_type_Lvr = this.c[i];
+      }
+    }
+  }
+  
+  public void b()
+  {
+    super.b();
+    if (this.c != null)
+    {
+      lvr[] arrayOflvr = this.c;
+      int j = arrayOflvr.length;
+      int i = 0;
+      while (i < j)
+      {
+        lvr locallvr = arrayOflvr[i];
+        if (locallvr != null) {
+          locallvr.a();
+        }
+        i += 1;
+      }
+      this.c = null;
+    }
   }
 }
 

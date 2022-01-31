@@ -1,21 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 class aseu
-  extends askb
+  implements DialogInterface.OnClickListener
 {
-  aseu(asep paramasep, int paramInt) {}
+  aseu(ases paramases, BaseChatPie paramBaseChatPie, short paramShort) {}
   
-  protected void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      asfl.a("realHasUnreadMsg", new Object[] { "onNearbyProcStart" });
+    if (paramInt == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(1);
     }
-    asep.a(this.jdField_a_of_type_Asep, 4100, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      if (paramInt == 1)
+      {
+        this.jdField_a_of_type_Ases.a(this.jdField_a_of_type_Short, true, true);
+        axqw.b(ases.a(this.jdField_a_of_type_Ases), "dc00898", "", "", "0X8009978", "0X8009978", this.jdField_a_of_type_Ases.a(this.jdField_a_of_type_Short), this.jdField_a_of_type_Ases.a(this.jdField_a_of_type_Short), "", "", "", "");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aseu
  * JD-Core Version:    0.7.0.1
  */

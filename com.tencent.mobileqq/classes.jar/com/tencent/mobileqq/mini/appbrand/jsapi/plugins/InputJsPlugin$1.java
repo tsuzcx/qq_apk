@@ -9,7 +9,7 @@ import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.mobileqq.mini.widget.MiniAppTextArea;
+import com.tencent.mobileqq.mini.widget.MiniAppTextArea1;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,9 +31,9 @@ class InputJsPlugin$1
       if (localObject2 != null)
       {
         this.this$0.jsPluginEngine.setCurInputId(this.val$inputId);
-        ((MiniAppTextArea)localObject2).setFocusable(true);
-        ((MiniAppTextArea)localObject2).setFocusableInTouchMode(true);
-        ((MiniAppTextArea)localObject2).requestFocus();
+        ((MiniAppTextArea1)localObject2).setFocusable(true);
+        ((MiniAppTextArea1)localObject2).setFocusableInTouchMode(true);
+        ((MiniAppTextArea1)localObject2).requestFocus();
         localObject1 = (InputMethodManager)((WebviewContainer)localObject1).getContext().getSystemService("input_method");
         if (localObject1 != null) {
           ((InputMethodManager)localObject1).showSoftInput((View)localObject2, 0);

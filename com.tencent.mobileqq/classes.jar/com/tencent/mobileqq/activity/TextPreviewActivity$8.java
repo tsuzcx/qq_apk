@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
-import fv;
+import ho;
 
 class TextPreviewActivity$8
   implements Runnable
@@ -12,10 +12,10 @@ class TextPreviewActivity$8
   
   public void run()
   {
-    Drawable localDrawable = this.this$0.jdField_a_of_type_Fv.a(this.this$0.e);
+    Drawable localDrawable = this.this$0.jdField_a_of_type_Ho.a(this.this$0.e);
     if (localDrawable == null)
     {
-      TextPreviewActivity.a(this.this$0.e, this.this$0.app, this.this$0.jdField_a_of_type_Batl);
+      TextPreviewActivity.a(this.this$0.e, this.this$0.app, this.this$0.jdField_a_of_type_Bbwf);
       return;
     }
     Message localMessage = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(18);

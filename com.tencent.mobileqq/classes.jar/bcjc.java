@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.CreateVirtualResult;
+import android.view.View;
 
-public final class bcjc
-  implements Parcelable.Creator<CreateVirtualResult>
+public abstract interface bcjc
 {
-  public CreateVirtualResult a(Parcel paramParcel)
-  {
-    return new CreateVirtualResult(paramParcel);
-  }
-  
-  public CreateVirtualResult[] a(int paramInt)
-  {
-    return new CreateVirtualResult[paramInt];
-  }
+  public abstract void a(View paramView);
 }
 
 

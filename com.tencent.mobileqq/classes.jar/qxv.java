@@ -1,61 +1,63 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.widget.HorizontalLabelLayout;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class qxv
-  implements qxs
 {
-  public int a(BaseData paramBaseData)
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private qpy jdField_a_of_type_Qpy;
+  private qxb jdField_a_of_type_Qxb;
+  private six jdField_a_of_type_Six;
+  
+  qxv(Activity paramActivity, qxb paramqxb)
   {
-    switch (paramBaseData.p)
-    {
-    case 9: 
-    case 10: 
-    case 11: 
-    case 12: 
-    default: 
-      throw new IllegalArgumentException();
-    case 7: 
-    case 13: 
-      return 7;
-    case 8: 
-    case 14: 
-      return 8;
-    case 15: 
-      return 13;
-    }
-    return 14;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Qxb = paramqxb;
+    this.jdField_a_of_type_Six = ((six)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(126));
+    this.jdField_a_of_type_Qpy = new qpy(paramActivity, 1);
   }
   
-  public qxr a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  void a()
   {
-    LayoutInflater localLayoutInflater = LayoutInflater.from(paramContext);
-    switch (a(paramBaseData))
-    {
-    case 9: 
-    case 10: 
-    case 11: 
-    case 12: 
-    default: 
-      throw new IllegalArgumentException();
-    case 7: 
-      return new qxz(this, localLayoutInflater.inflate(2131494352, paramViewGroup, false), paramBaseData);
-    case 8: 
-      return new qxx(this, localLayoutInflater.inflate(2131494349, paramViewGroup, false), paramBaseData);
-    case 13: 
-      paramViewGroup = new HorizontalLabelLayout(paramContext);
-      int i = aciy.a(15.0F, paramContext.getResources());
-      paramViewGroup.setPadding(i, 0, i, 0);
-      return new qxw(this, paramViewGroup, paramBaseData);
-    }
-    return new qxy(this, localLayoutInflater.inflate(2131494275, paramViewGroup, false), paramBaseData);
+    this.jdField_a_of_type_Qpy.a();
   }
   
-  public boolean a(BaseData paramBaseData)
+  void a(VideoInfo paramVideoInfo)
   {
-    return (paramBaseData.p == 7) || (paramBaseData.p == 8) || (paramBaseData.p == 13) || (paramBaseData.p == 14) || (paramBaseData.p == 15) || (paramBaseData.p == 16);
+    int i = 0;
+    boolean bool;
+    if (!paramVideoInfo.l)
+    {
+      bool = true;
+      paramVideoInfo.l = bool;
+      if (!paramVideoInfo.l) {
+        break label53;
+      }
+      i = paramVideoInfo.u + 1;
+    }
+    for (;;)
+    {
+      paramVideoInfo.u = i;
+      this.jdField_a_of_type_Six.a(paramVideoInfo, paramVideoInfo.l);
+      return;
+      bool = false;
+      break;
+      label53:
+      if (paramVideoInfo.u > 0) {
+        i = paramVideoInfo.u - 1;
+      }
+    }
+  }
+  
+  void a(VideoInfo paramVideoInfo, int paramInt1, int paramInt2)
+  {
+    if (!paramVideoInfo.l) {
+      a(paramVideoInfo);
+    }
+    if ((paramInt1 >= 0) && (paramInt2 >= 0)) {
+      this.jdField_a_of_type_Qpy.a(paramInt1, paramInt2);
+    }
   }
 }
 

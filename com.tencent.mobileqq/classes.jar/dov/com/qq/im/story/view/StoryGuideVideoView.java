@@ -6,11 +6,11 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bjlo;
+import blbz;
 import dov.com.tencent.mobileqq.richmedia.capture.view.FadedButton;
 import dov.com.tencent.mobileqq.richmedia.capture.view.GuideVideoView;
 import mqq.os.MqqHandler;
-import vms;
+import vzo;
 
 public class StoryGuideVideoView
   extends GuideVideoView
@@ -31,13 +31,13 @@ public class StoryGuideVideoView
     addView((View)localObject, -1, -1);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
     ((RelativeLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewFadedButton.setBackgroundResource(2130845661);
-    localLayoutParams = new RelativeLayout.LayoutParams(bjlo.a(40.0F), bjlo.a(40.0F));
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewFadedButton.setBackgroundResource(2130845843);
+    localLayoutParams = new RelativeLayout.LayoutParams(blbz.a(40.0F), blbz.a(40.0F));
     localLayoutParams.addRule(10);
     localLayoutParams.addRule(11);
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewFadedButton.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewFadedButton.setOnClickListener(this);
-    int i = vms.a(getContext(), 17.0F);
+    int i = vzo.a(getContext(), 17.0F);
     localLayoutParams.setMargins(0, this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingTop() - i, this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingRight() - i, 0);
     ((RelativeLayout)localObject).addView(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewFadedButton);
   }

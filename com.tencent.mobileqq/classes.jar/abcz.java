@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.MainFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 
 public class abcz
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public abcz(MainFragment paramMainFragment) {}
+  public abcz(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
-    }
+    ForwardTroopListFragment.a(this.a);
   }
 }
 

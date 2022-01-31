@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aegy;
-import ajoy;
+import aerv;
+import akdi;
 import android.os.Handler;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -9,13 +9,13 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class PublicAccountChatPie$4
   implements Runnable
 {
-  public PublicAccountChatPie$4(aegy paramaegy) {}
+  public PublicAccountChatPie$4(aerv paramaerv) {}
   
   public void run()
   {
-    Object localObject = (ajoy)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
+    Object localObject = (akdi)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
     if (localObject != null) {}
-    for (localObject = ((ajoy)localObject).b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);; localObject = null)
+    for (localObject = ((akdi)localObject).b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);; localObject = null)
     {
       if (localObject != null) {
         this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);

@@ -1,130 +1,62 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.BlockingQueue;
 
 public class ajmk
-  extends Handler
 {
-  private HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private List<Message> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public int a;
+  public long a;
+  public ajmj a;
+  public Map<Integer, Long> a;
+  public BlockingQueue<ajmh> a;
+  public boolean a;
+  public long b;
+  public long c;
   
-  public ajmk(MessageHandler paramMessageHandler, Looper paramLooper)
+  public ajmk(int paramInt)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a()
+  public String toString()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{").append("spanId:").append(this.jdField_a_of_type_Int).append(",result:").append(this.jdField_a_of_type_Ajmj);
+    Iterator localIterator;
+    if (this.jdField_a_of_type_JavaUtilMap != null)
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
-        break label69;
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
-        sendMessage((Message)localIterator.next());
-      }
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    label69:
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "updateUnreadWorker doC2CUpdateNow");
-    }
-  }
-  
-  public void a(Message paramMessage)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
-    {
-      paramMessage = paramMessage.getData();
-      if ((paramMessage != null) && (paramMessage.containsKey("update_unread_uin")) && (paramMessage.containsKey("update_unread_time")))
+      localStringBuilder.append(",extra:[");
+      localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (localIterator.hasNext())
       {
-        String str = paramMessage.getString("update_unread_uin");
-        int i = paramMessage.getInt("update_unread_type", 0);
-        long l = paramMessage.getLong("update_unread_time");
-        this.jdField_a_of_type_JavaUtilHashSet.add(akbm.a(str, i) + "&" + l);
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        if (QLog.isColorLevel()) {
+          localStringBuilder.append("{").append(localEntry.getKey()).append(",").append(localEntry.getValue()).append("}");
+        } else {
+          localStringBuilder.append("{").append(localEntry.getKey()).append("}");
+        }
       }
-      return;
+      localStringBuilder.append("]");
     }
-  }
-  
-  void a(String paramString, int paramInt, long paramLong)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+    if (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null)
     {
-      if (this.jdField_a_of_type_JavaUtilHashSet.contains(akbm.a(paramString, paramInt) + "&" + paramLong)) {
-        this.jdField_a_of_type_JavaUtilHashSet.remove(akbm.a(paramString, paramInt) + "&" + paramLong);
+      localStringBuilder.append(",anno:[");
+      localIterator = this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.iterator();
+      while (localIterator.hasNext()) {
+        localStringBuilder.append(((ajmh)localIterator.next()).toString());
       }
-      return;
+      localStringBuilder.append("]");
     }
-  }
-  
-  public boolean a(Message paramMessage)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
-    {
-      paramMessage = paramMessage.getData();
-      if ((paramMessage != null) && (paramMessage.containsKey("update_unread_uin")) && (paramMessage.containsKey("update_unread_time")))
-      {
-        String str = paramMessage.getString("update_unread_uin");
-        int i = paramMessage.getInt("update_unread_type", 0);
-        long l = paramMessage.getLong("update_unread_time");
-        boolean bool = this.jdField_a_of_type_JavaUtilHashSet.contains(akbm.a(str, i) + "&" + l);
-        return bool;
-      }
-      return false;
-    }
-  }
-  
-  public void b(Message paramMessage)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramMessage);
-      return;
-    }
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1: 
-      do
-      {
-        return;
-        paramMessage = paramMessage.getData();
-      } while ((paramMessage == null) || (!paramMessage.containsKey("update_unread_uin")) || (!paramMessage.containsKey("update_unread_time")));
-      String str = paramMessage.getString("update_unread_uin");
-      int i = paramMessage.getInt("update_unread_type", 0);
-      long l = paramMessage.getLong("update_unread_time");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "msg update_c2c_unread-->uin:" + str + ", uinType:" + i + ", lastReadTime:" + l);
-      }
-      a(str, i, l);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.a().a(str, i, l);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(2002, true, null);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "updateUnreadWorker C2CWorkerTimeout");
-    }
-    a();
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajmk
  * JD-Core Version:    0.7.0.1
  */

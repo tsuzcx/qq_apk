@@ -1,35 +1,17 @@
-import android.view.View;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class afpu
-  extends apfd
+  extends akim
 {
-  afpu(afps paramafps) {}
+  afpu(afpo paramafpo) {}
   
-  public void a(View paramView)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if ((afps.a(this.a)) && (afps.a(this.a) != null))
-    {
-      if (paramView.getId() != 2131299880) {
-        break label43;
-      }
-      afps.a(this.a).a(1);
+    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
+    if (localBitmap != null) {
+      afpo.a(this.a, paramString, localBitmap);
     }
-    label43:
-    do
-    {
-      return;
-      if (paramView.getId() == 2131299885)
-      {
-        afps.a(this.a).a(3);
-        return;
-      }
-      if (paramView.getId() == 2131299881)
-      {
-        afps.a(this.a).a(2);
-        return;
-      }
-    } while (paramView.getId() != 2131299879);
-    afps.a(this.a).a(4);
   }
 }
 

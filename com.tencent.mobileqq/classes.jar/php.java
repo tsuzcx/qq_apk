@@ -1,18 +1,20 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
 
-public class php
-  extends phn
+class php
+  implements rad
 {
-  public php(Context paramContext, azwg paramazwg, qoe paramqoe)
+  php(pho parampho) {}
+  
+  public void a()
   {
-    super(paramContext, paramazwg, paramqoe);
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.b();
+    this.a.jdField_a_of_type_Phq.a(true);
   }
   
-  public pez g()
+  public void b()
   {
-    this.jdField_a_of_type_Pey = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.b();
+    this.a.jdField_a_of_type_Phq.a(false);
   }
 }
 

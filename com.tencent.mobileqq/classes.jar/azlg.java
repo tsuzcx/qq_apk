@@ -1,14 +1,18 @@
-import tencent.im.oidb.cmd0x857.TroopTips0x857.RedGrayTipsInfo;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.troop.createNewTroop.AbsNewTroopBaseView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
 
-class azlg
+public class azlg
+  extends AnimatorListenerAdapter
 {
-  String jdField_a_of_type_JavaLangString;
-  TroopTips0x857.RedGrayTipsInfo jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$RedGrayTipsInfo;
+  public azlg(NewTroopCreateActivity paramNewTroopCreateActivity) {}
   
-  public azlg(azlf paramazlf, String paramString, TroopTips0x857.RedGrayTipsInfo paramRedGrayTipsInfo)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$RedGrayTipsInfo = paramRedGrayTipsInfo;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView.a(this.a.jdField_a_of_type_Boolean);
+    }
   }
 }
 

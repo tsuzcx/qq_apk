@@ -1,27 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class abgp
-  extends BroadcastReceiver
+  implements amnf
 {
-  WeakReference<PayBridgeActivity> a;
+  public abgp(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public abgp(PayBridgeActivity paramPayBridgeActivity)
+  public void a()
   {
-    this.a = new WeakReference(paramPayBridgeActivity);
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
+    }
   }
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((paramIntent != null) && ("action_launch_completed".equals(paramIntent.getAction())) && ("qwallet_plugin.apk".equals(paramIntent.getStringExtra("plugin_apk"))) && (this.a != null))
+    if (paramInt2 == 0) {}
+    for (paramInt1 = 0;; paramInt1 = 1)
     {
-      paramContext = (PayBridgeActivity)this.a.get();
-      if (paramContext != null) {
-        paramContext.b = true;
-      }
+      this.a.c = true;
+      this.a.a(paramInt1, true);
+      return;
     }
   }
 }

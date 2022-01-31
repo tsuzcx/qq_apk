@@ -1,32 +1,13 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
 
-class amxo
-  extends Handler
+@Deprecated
+public abstract interface amxo
 {
-  amxo(amxm paramamxm, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (amxm.c(this.a));
-    QLog.e("VoiceInputHelper", 1, "checkPermission uncertain");
-    this.a.onGetError(1830002);
-  }
+  public abstract ExcitingTransferDownloadConfig a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amxo
  * JD-Core Version:    0.7.0.1
  */

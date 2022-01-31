@@ -1,105 +1,47 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Set;
-import mqq.manager.Manager;
+import eipc.EIPCConnection;
+import eipc.EIPClientConnectListener;
 
-public class ahch
-  implements Manager
+class ahch
+  implements EIPClientConnectListener
 {
-  public static ahch a;
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean;
+  ahch(ahcf paramahcf, long paramLong) {}
   
-  public ahch()
+  public void connectFailed()
   {
-    a();
-  }
-  
-  public static ahch a()
-  {
-    if (jdField_a_of_type_Ahch == null) {}
-    try
+    ahcf.a(this.jdField_a_of_type_Ahcf, false);
+    ahcf.b(this.jdField_a_of_type_Ahcf, false);
+    synchronized (ahcf.a(this.jdField_a_of_type_Ahcf))
     {
-      if (jdField_a_of_type_Ahch == null) {
-        jdField_a_of_type_Ahch = new ahch();
+      ahcf.a(this.jdField_a_of_type_Ahcf).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletIPCConnector", 2, "connectFailed:" + ahcf.a(this.jdField_a_of_type_Ahcf));
       }
-      return jdField_a_of_type_Ahch;
-    }
-    finally {}
-  }
-  
-  private void a()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (localQQAppInterface == null) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = baig.s(localQQAppInterface.getApp(), localQQAppInterface.c());
-      this.jdField_a_of_type_JavaUtilSet = localQQAppInterface.getApp().getSharedPreferences("RecentPubAccManager" + localQQAppInterface.getCurrentAccountUin(), 0).getStringSet("white_list_key", null);
-    } while (!QLog.isColorLevel());
-    QLog.d("RecentPubAccManager", 2, "loadFromSp   mBlackUinList:" + this.jdField_a_of_type_JavaUtilSet + ",  Switch: " + this.jdField_a_of_type_Boolean);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Set<String> paramSet)
-  {
-    if (paramQQAppInterface == null) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RecentPubAccManager", 2, "setUnFollowPubAccWhiteList: " + paramSet);
-        }
-        this.jdField_a_of_type_JavaUtilSet = paramSet;
-        paramQQAppInterface.getApp().getSharedPreferences("RecentPubAccManager" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putStringSet("white_list_key", paramSet).apply();
-      }
-      finally {}
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if (paramQQAppInterface == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentPubAccManager", 2, "setUnFollowPubAccSwitch: " + paramBoolean);
+  }
+  
+  public void connectSuccess(EIPCConnection arg1)
+  {
+    long l = System.currentTimeMillis();
+    if (??? != null) {
+      ahcf.a(this.jdField_a_of_type_Ahcf, ???.procName);
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    baig.k(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_JavaUtilSet != null)
+    ahcf.a(this.jdField_a_of_type_Ahcf, true);
+    ahcf.b(this.jdField_a_of_type_Ahcf, false);
+    synchronized (ahcf.a(this.jdField_a_of_type_Ahcf))
     {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_JavaUtilSet.contains(paramString)) {
-        bool1 = true;
+      ahcf.a(this.jdField_a_of_type_Ahcf).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletIPCConnector", 2, "connectSuccess:" + ahcf.a(this.jdField_a_of_type_Ahcf) + "|" + (l - this.jdField_a_of_type_Long));
       }
+      return;
     }
-    return bool1;
   }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahch
  * JD-Core Version:    0.7.0.1
  */

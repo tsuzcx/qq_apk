@@ -1,33 +1,17 @@
-import android.content.Intent;
 import android.view.View;
-import com.dataline.activities.LiteAdvanceActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import mqq.app.MobileQQ;
+import android.view.View.OnClickListener;
+import com.dataline.activities.LiteActivity;
 
 public class ch
-  implements begw
+  implements View.OnClickListener
 {
-  public ch(LiteAdvanceActivity paramLiteAdvanceActivity, begr parambegr) {}
+  public ch(LiteActivity paramLiteActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.cancel();
-      return;
-      awrm.a(this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getApplication().getApplicationContext(), this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getCurrentAccountUin(), "dl_ckclearmsg");
-      paramView = (ajgm)this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.a(8);
-      paramView.a(32, true);
-      paramView.e();
-      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.a().a(this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.a).a();
-      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.getIntent().putExtra("clear_flag", true);
-      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.setResult(-1, this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.getIntent());
-      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.finish();
-    }
+    actn.n = true;
+    paramView = (fw)paramView.getTag();
+    this.a.b(paramView);
   }
 }
 

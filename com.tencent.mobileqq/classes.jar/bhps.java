@@ -1,21 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 
-public class bhps
-  implements ValueAnimator.AnimatorUpdateListener
+public final class bhps
+  implements bhko
 {
-  public bhps(QIMCircleProgress paramQIMCircleProgress) {}
+  public bhps(Handler paramHandler) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.c();
+    if ("cmd.uploadCommentVideo".equals(paramString))
+    {
+      paramString = new Message();
+      paramString.obj = paramBundle;
+      this.a.sendMessage(paramString);
+      if ((paramBundle.getBundle("data") != null) && (paramBundle.getBundle("data").getInt("status") != 2)) {
+        bhkl.a().b(this);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhps
  * JD-Core Version:    0.7.0.1
  */

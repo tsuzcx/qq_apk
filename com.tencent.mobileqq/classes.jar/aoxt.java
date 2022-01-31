@@ -1,83 +1,99 @@
-import android.app.Activity;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
-public class aoxt
-  extends aoxw
+class aoxt
+  extends xbc
 {
-  private apcz a;
+  aoxt(aoxs paramaoxs) {}
   
-  public aoxt(aovk paramaovk, Activity paramActivity)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    super(paramaovk, paramActivity);
-    this.jdField_a_of_type_Apcz = new aoxu(this);
-  }
-  
-  private boolean c()
-  {
-    return (d()) && (!this.jdField_a_of_type_Aovk.f());
-  }
-  
-  private boolean d()
-  {
-    return (apck.a(this.jdField_a_of_type_AndroidAppActivity.getBaseContext(), this.jdField_a_of_type_Aovk.b(), this.jdField_a_of_type_Aovk.c())) || (axfs.b(this.jdField_a_of_type_Aovk.c(), this.jdField_a_of_type_Aovk.b(), this.jdField_a_of_type_Aovk.c()));
-  }
-  
-  public void a()
-  {
-    super.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("SimpleFilePresenter<FileAssistant>", 1, "FileBrowserPresenter init: type = preview simple");
-    }
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_Aovk.f())) || (16 == this.jdField_a_of_type_Aovk.b()))
+    if (aoxs.a(this.a))
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d(false);
-      if (this.jdField_a_of_type_Aovk.b() != 16) {
-        break label123;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131626869));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(true);
-      if (this.jdField_a_of_type_Aovk.i()) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(false);
-      }
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult but has been stopped filename " + aoxs.a(this.a));
       return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(this.jdField_a_of_type_Aovk.f());
-      break;
-      label123:
-      if (this.jdField_a_of_type_Aovk.d())
-      {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131627033));
-      }
-      else
-      {
-        if (c()) {
-          break label178;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131627198));
-      }
     }
-    label178:
-    Object localObject;
-    if (badq.d(BaseApplicationImpl.getContext())) {
-      if (badq.h(BaseApplication.getContext())) {
-        localObject = BaseApplicationImpl.getContext().getString(2131627220);
-      }
-    }
-    for (;;)
+    if (paramInt1 == -103)
     {
-      localObject = apck.a((String)localObject, ajjy.a(2131642623), this.jdField_a_of_type_Apcz);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a((SpannableString)localObject);
-      break;
-      localObject = BaseApplicationImpl.getContext().getString(2131627222);
-      continue;
-      localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131627198);
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult retCode[" + paramInt1 + "] clientwording[" + paramString3 + "] filename " + aoxs.a(this.a));
+      aoxs.a(this.a).a(aowt.a(aoxs.a(this.a), true), false);
+      return;
+    }
+    if ((paramInt1 != 0) && (paramInt1 != -1))
+    {
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult retCode[" + paramInt1 + "] clientwording[" + paramString3 + "] filename " + aoxs.a(this.a));
+      aoxs.a(this.a).a(aowt.a(aoxs.a(this.a), false), false);
+      return;
+    }
+    if (!paramBoolean)
+    {
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult return failed filename " + aoxs.a(this.a));
+      aoxs.a(this.a).a(aowt.a(aoxs.a(this.a), false), true);
+      return;
+    }
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult strNewPath[" + paramString1 + "] busId[" + paramInt2 + "] mnDstBusId[" + aoxs.a(this.a) + "] filename " + aoxs.a(this.a));
+    aoxs.a(this.a, paramString1);
+    aoxs.a(this.a).putString("_m_ForwardUuid", aoxs.b(this.a));
+    if (aoxs.a(this.a) != 102)
+    {
+      aoxs.a(this.a).a(aoxs.b(this.a), aoxs.a(this.a));
+      return;
+    }
+    aoxs.a(this.a, paramInt2);
+    aoxs.a(this.a).putString("_m_ForwardBusType", String.valueOf(aoxs.b(this.a)));
+    paramInt2 = 0;
+    paramInt1 = paramInt2;
+    if (!aoxs.c(this.a).isEmpty()) {}
+    try
+    {
+      paramInt1 = Integer.parseInt(aoxs.c(this.a));
+      i = 0;
+      paramInt2 = i;
+      if (aoxs.d(this.a).isEmpty()) {}
+    }
+    catch (NumberFormatException paramString1)
+    {
+      try
+      {
+        paramInt2 = Integer.parseInt(aoxs.d(this.a));
+        j = 0;
+        i = j;
+        if (aoxs.e(this.a).isEmpty()) {}
+      }
+      catch (NumberFormatException paramString1)
+      {
+        try
+        {
+          for (;;)
+          {
+            i = Integer.parseInt(aoxs.e(this.a));
+            if (aowt.a(this.a.a) != null) {
+              break;
+            }
+            QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult mApp is null filename " + aoxs.a(this.a));
+            aoxs.a(this.a).a(aowt.a(aoxs.a(this.a), false), false);
+            return;
+            paramString1 = paramString1;
+            QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult mstrImageWidth[" + aoxs.c(this.a) + "] is error filename " + aoxs.a(this.a));
+            paramInt1 = paramInt2;
+          }
+          paramString1 = paramString1;
+          QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult mstrImageHeight[" + aoxs.d(this.a) + "] is error filename " + aoxs.a(this.a));
+          paramInt2 = i;
+        }
+        catch (NumberFormatException paramString1)
+        {
+          int i;
+          for (;;)
+          {
+            int j;
+            QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult mstrVideoDuration[" + aoxs.e(this.a) + "] is error filename " + aoxs.a(this.a));
+            i = j;
+          }
+          QLog.d("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult will call sendFeeds filename " + aoxs.a(this.a));
+          aowt.a(aowt.a(this.a.a), aoxs.b(this.a), aoxs.b(this.a), aoxs.b(this.a), aoxs.a(this.a), 0, paramInt1, paramInt2, i, false, aoxs.a(this.a), aoxs.a(this.a));
+        }
+      }
     }
   }
 }

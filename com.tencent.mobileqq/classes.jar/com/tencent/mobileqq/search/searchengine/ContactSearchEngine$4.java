@@ -1,39 +1,39 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import avtz;
-import avug;
-import avva;
-import avvn;
-import avvo;
+import awts;
+import awtz;
+import awut;
+import awvg;
+import awvh;
 import java.util.List;
 
 public class ContactSearchEngine$4
   implements Runnable
 {
-  public ContactSearchEngine$4(avtz paramavtz, avvn paramavvn) {}
+  public ContactSearchEngine$4(awts paramawts, awvg paramawvg) {}
   
   public void run()
   {
-    List localList1 = avtz.a(this.this$0, this.a);
-    avva localavva = avtz.a(this.this$0);
-    avvo localavvo;
-    if ((localavva != null) && (localList1 != null))
+    List localList1 = awts.a(this.this$0, this.a);
+    awut localawut = awts.a(this.this$0);
+    awvh localawvh;
+    if ((localawut != null) && (localList1 != null))
     {
-      localavvo = new avvo(this.a.a, 1);
-      if (avtz.a(this.this$0) == null) {
-        localavva.a(localList1, localavvo);
+      localawvh = new awvh(this.a.a, 1);
+      if (awts.a(this.this$0) == null) {
+        localawut.a(localList1, localawvh);
       }
     }
     else
     {
       return;
     }
-    localavva.a(localList1);
-    List localList2 = avtz.a(this.this$0).a(this.a);
+    localawut.a(localList1);
+    List localList2 = awts.a(this.this$0).a(this.a);
     if ((localList2 != null) && (!localList2.isEmpty())) {
       localList1.addAll(localList2);
     }
-    localavva.a(localList1, localavvo);
+    localawut.a(localList1, localawvh);
   }
 }
 

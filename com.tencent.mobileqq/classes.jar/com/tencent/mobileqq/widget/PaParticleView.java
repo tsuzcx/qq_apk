@@ -3,7 +3,7 @@ package com.tencent.mobileqq.widget;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
-import bbkp;
+import bcnn;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -12,29 +12,29 @@ public class PaParticleView
 {
   int jdField_a_of_type_Int;
   protected Paint a;
-  ArrayList<bbkp> jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<bcnn> jdField_a_of_type_JavaUtilArrayList;
   Random jdField_a_of_type_JavaUtilRandom;
   public int b;
   public int c;
   protected int d;
   public int e;
   
-  private void a(bbkp parambbkp)
+  private void a(bcnn parambcnn)
   {
     if (this.e == 0) {
-      if ((parambbkp.jdField_a_of_type_Float > this.b) || (parambbkp.b > this.c)) {
-        parambbkp.b = 0.0F;
+      if ((parambcnn.jdField_a_of_type_Float > this.b) || (parambcnn.b > this.c)) {
+        parambcnn.b = 0.0F;
       }
     }
-    for (parambbkp.jdField_a_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.b);; parambbkp.jdField_a_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.b))
+    for (parambcnn.jdField_a_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.b);; parambcnn.jdField_a_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.b))
     {
       do
       {
-        parambbkp.jdField_a_of_type_Float += parambbkp.d;
-        parambbkp.b += parambbkp.c;
+        parambcnn.jdField_a_of_type_Float += parambcnn.d;
+        parambcnn.b += parambcnn.c;
         return;
-      } while ((parambbkp.jdField_a_of_type_Float <= this.b) && (parambbkp.b >= this.e));
-      parambbkp.b = this.c;
+      } while ((parambcnn.jdField_a_of_type_Float <= this.b) && (parambcnn.b >= this.e));
+      parambcnn.b = this.c;
     }
   }
   
@@ -46,9 +46,9 @@ public class PaParticleView
       int i = 0;
       while (i < this.jdField_a_of_type_Int)
       {
-        bbkp localbbkp = (bbkp)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        a(localbbkp);
-        paramCanvas.drawBitmap(localbbkp.jdField_a_of_type_AndroidGraphicsBitmap, localbbkp.jdField_a_of_type_Float, localbbkp.b, this.jdField_a_of_type_AndroidGraphicsPaint);
+        bcnn localbcnn = (bcnn)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        a(localbcnn);
+        paramCanvas.drawBitmap(localbcnn.jdField_a_of_type_AndroidGraphicsBitmap, localbcnn.jdField_a_of_type_Float, localbcnn.b, this.jdField_a_of_type_AndroidGraphicsPaint);
         i += 1;
       }
     }

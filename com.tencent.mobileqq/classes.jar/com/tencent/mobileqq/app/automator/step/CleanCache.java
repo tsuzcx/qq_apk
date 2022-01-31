@@ -1,22 +1,23 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import aeor;
-import ajed;
-import ajfi;
-import ajxe;
-import ajxf;
-import ajxg;
-import ajxh;
+import aezn;
+import ajsf;
+import ajtk;
+import aklo;
+import aklp;
+import aklq;
+import aklr;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import apck;
-import atmp;
-import atmq;
-import atmr;
-import avbk;
-import awrn;
-import bace;
+import apue;
+import aukn;
+import auko;
+import aukp;
+import awbd;
+import axrl;
+import bbdj;
+import bbuv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -42,7 +43,7 @@ public class CleanCache
   
   static
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { ajed.bi };
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { ajsf.bk };
   }
   
   public static final void a(String paramString)
@@ -69,16 +70,16 @@ public class CleanCache
       QLog.d("ZhituManager", 2, "cleanZhituCache...");
     }
     long l1 = System.currentTimeMillis();
-    if (aeor.f()) {
+    if (aezn.f()) {
       return;
     }
-    aeor.d(true);
-    Object localObject1 = ajed.aU + "zhitu";
-    localObject1 = new File((String)localObject1 + "/" + "origin/");
+    aezn.d(true);
+    Object localObject1 = ajsf.aW + "zhitu";
+    localObject1 = new File(bbuv.a((String)localObject1 + "/" + "origin/"));
     int n;
     int k;
     int j;
-    label150:
+    label153:
     int i;
     int m;
     if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
@@ -89,7 +90,7 @@ public class CleanCache
         n = localObject1.length;
         if (n > 200)
         {
-          Arrays.sort((Object[])localObject1, new ajxg(this));
+          Arrays.sort((Object[])localObject1, new aklq(this));
           int i1 = localObject1.length;
           k = 0;
           j = 0;
@@ -101,10 +102,10 @@ public class CleanCache
             if (QLog.isColorLevel()) {
               QLog.d("QQInitHandler", 2, "cleanZhituCache ===> deleteCount=" + j + ", delete dir=" + localObject2.getAbsolutePath());
             }
-            bace.a(localObject2.getAbsolutePath());
+            bbdj.a(localObject2.getAbsolutePath());
             i = j + 1;
             if (i < n - 50) {
-              break label319;
+              break label322;
             }
             m = n;
           }
@@ -114,16 +115,16 @@ public class CleanCache
     for (;;)
     {
       long l2 = System.currentTimeMillis();
-      aeor.d(false);
+      aezn.d(false);
       if (!QLog.isColorLevel()) {
         break;
       }
       QLog.d("QQInitHandler", 2, "delShortVideoCache(), totalCount=" + m + ", deleteCount= " + i + ", targetDeleteCount=" + (m - 50) + ", cost: " + (l2 - l1) + " ms");
       return;
-      label319:
+      label322:
       k += 1;
       j = i;
-      break label150;
+      break label153;
       i = 0;
       m = n;
       continue;
@@ -140,7 +141,7 @@ public class CleanCache
       QLog.d("ZhituManager", 2, "cleanLightVideoCache...");
     }
     long l1 = System.currentTimeMillis();
-    Object localObject1 = new File(avbk.a);
+    Object localObject1 = new File(awbd.a);
     int n;
     int k;
     if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
@@ -152,7 +153,7 @@ public class CleanCache
         m = n;
         if (n > 25)
         {
-          Arrays.sort((Object[])localObject1, new ajxh(this));
+          Arrays.sort((Object[])localObject1, new aklr(this));
           int i1 = localObject1.length;
           k = 0;
           i = j;
@@ -163,7 +164,7 @@ public class CleanCache
             if (QLog.isColorLevel()) {
               QLog.d("QQInitHandler", 2, "cleanLightVideoCache ===> deleteCount=" + j + ", delete dir=" + localObject2.getAbsolutePath());
             }
-            bace.a(localObject2.getAbsolutePath());
+            bbdj.a(localObject2.getAbsolutePath());
             i = j + 1;
             if (i < n - 10) {
               break label264;
@@ -199,15 +200,15 @@ public class CleanCache
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "initNoMediaFile");
     }
-    ajfi.c();
-    apck.a();
+    ajtk.c();
+    apue.a();
     String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
     {
       String str = arrayOfString[i];
-      if (bace.a(str)) {
+      if (bbdj.a(str)) {
         a(str);
       }
       i += 1;
@@ -222,10 +223,10 @@ public class CleanCache
       Object localObject = new File("/data/data/com.tencent.mobileqq/files/crashinfo/");
       if ((localObject != null) && (((File)localObject).exists()))
       {
-        localObject = ((File)localObject).listFiles(new ajxe(this));
+        localObject = ((File)localObject).listFiles(new aklo(this));
         if ((localObject != null) && (localObject.length > 10))
         {
-          Arrays.sort((Object[])localObject, new ajxf(this));
+          Arrays.sort((Object[])localObject, new aklp(this));
           while (i < localObject.length)
           {
             localObject[i].delete();
@@ -244,7 +245,7 @@ public class CleanCache
   void e()
   {
     Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getEntityManagerFactory().createEntityManager();
-    List localList = ((atmp)localObject2).a(Setting.class, new Setting().getTableName(), false, null, null, null, null, null, null);
+    List localList = ((aukn)localObject2).a(Setting.class, new Setting().getTableName(), false, null, null, null, null, null, null);
     int i;
     if (localList != null) {
       i = localList.size();
@@ -313,14 +314,14 @@ public class CleanCache
           }
         }
         i = ((List)localObject3).size();
-        if ((localObject3 == null) || (i <= 0) || (!((atmp)localObject2).a())) {}
+        if ((localObject3 == null) || (i <= 0) || (!((aukn)localObject2).a())) {}
       }
     }
     for (;;)
     {
       try
       {
-        ((atmp)localObject2).a().a();
+        ((aukn)localObject2).a().a();
         localObject3 = ((List)localObject3).iterator();
         if (((Iterator)localObject3).hasNext())
         {
@@ -328,7 +329,7 @@ public class CleanCache
           if (localSetting2 == null) {
             continue;
           }
-          ((atmp)localObject2).b(localSetting2);
+          ((aukn)localObject2).b(localSetting2);
           continue;
         }
         Setting localSetting1;
@@ -339,7 +340,7 @@ public class CleanCache
         if (QLog.isColorLevel()) {
           QLog.e("QQInitHandler", 2, "cleanSetingData,", localException1);
         }
-        ((atmp)localObject2).a().b();
+        ((aukn)localObject2).a().b();
         if (localList == null) {
           break label739;
         }
@@ -365,14 +366,14 @@ public class CleanCache
           j = i;
           i = k;
           continue;
-          ((atmp)localObject2).a().c();
-          ((atmp)localObject2).a().b();
+          ((aukn)localObject2).a().c();
+          ((aukn)localObject2).a().b();
           continue;
         }
       }
       finally
       {
-        ((atmp)localObject2).a().b();
+        ((aukn)localObject2).a().b();
       }
       i = j;
       j = k;
@@ -385,7 +386,7 @@ public class CleanCache
         ((HashMap)localObject2).put("dataSize", String.valueOf(k));
         ((HashMap)localObject2).put("highSize", String.valueOf(i));
         ((HashMap)localObject2).put("lowSize", String.valueOf(j));
-        awrn.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.mApp.getCurrentAccountUin(), "qq_head_setting", false, 0L, 0L, (HashMap)localObject2, "");
+        axrl.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.mApp.getCurrentAccountUin(), "qq_head_setting", false, 0L, 0L, (HashMap)localObject2, "");
         label739:
         return;
       }

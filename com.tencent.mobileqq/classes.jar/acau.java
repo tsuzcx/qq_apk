@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.TroopAdmin;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
-public final class acau
-  implements Parcelable.Creator<TroopMemberListActivity.TroopAdmin>
+public class acau
+  implements View.OnClickListener
 {
-  public TroopMemberListActivity.TroopAdmin a(Parcel paramParcel)
-  {
-    return new TroopMemberListActivity.TroopAdmin(paramParcel, null);
-  }
+  public acau(SelectedAndSearchBar paramSelectedAndSearchBar, View.OnClickListener paramOnClickListener) {}
   
-  public TroopMemberListActivity.TroopAdmin[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new TroopMemberListActivity.TroopAdmin[paramInt];
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acau
  * JD-Core Version:    0.7.0.1
  */

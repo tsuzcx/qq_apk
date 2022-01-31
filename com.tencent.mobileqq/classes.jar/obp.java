@@ -1,67 +1,60 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
+import java.util.List;
 
-final class obp
-  implements WtTicketPromise
+class obp
+  extends BaseAdapter
 {
-  obp(TicketManager paramTicketManager, QQAppInterface paramQQAppInterface) {}
+  obp(obm paramobm) {}
   
-  public void Done(Ticket paramTicket)
+  public int getCount()
   {
-    int j = 0;
-    int i;
-    if (paramTicket == null) {
-      i = 1;
+    return obm.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return obm.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559945, null);
+      paramViewGroup = new obq(this.a);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378370));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368530));
+      paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      QLog.i(obm.a(), 1, "getPskeyFromServerAndRetry get pskey from server : Done, result: " + i);
-      obm.a(this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "m.tencent.com"));
-      if ((!TextUtils.isEmpty(obm.b())) && (obm.b().length() > 0)) {
-        QLog.i(obm.a(), 1, "getPskeyFromServerAndRetry get pskey from server success!");
+      GiftServiceBean localGiftServiceBean = (GiftServiceBean)getItem(paramInt);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localGiftServiceBean.t);
+      if (obm.a(this.a) != paramInt) {
+        break;
       }
-      return;
-      if ((paramTicket != null) && (paramTicket._pskey_map == null))
-      {
-        i = 2;
-      }
-      else
-      {
-        i = j;
-        if (paramTicket != null)
-        {
-          i = j;
-          if (paramTicket._pskey_map != null)
-          {
-            i = j;
-            if (paramTicket._pskey_map.get("m.tencent.com") == null) {
-              i = 3;
-            }
-          }
-        }
-      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842334);
+      return paramView;
+      paramViewGroup = (obq)paramView.getTag();
     }
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    QLog.i(obm.a(), 1, "getPskeyFromServerAndRetry get pskey from server : Failed, " + paramErrMsg);
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    QLog.i(obm.a(), 1, "getPskeyFromServerAndRetry get pskey from server : Timeout, " + paramErrMsg);
+    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842335);
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     obp
  * JD-Core Version:    0.7.0.1
  */

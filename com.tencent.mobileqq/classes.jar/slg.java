@@ -1,80 +1,56 @@
-import java.util.concurrent.ConcurrentHashMap;
+import UserGrowth.stSimpleMetaFeed;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class slg
+  extends skv
 {
-  public static ConcurrentHashMap<Class<?>, Class<?>> a = new ConcurrentHashMap();
-  public static ConcurrentHashMap<Class<?>, Class<?>> b = new ConcurrentHashMap();
+  private TextView a;
   
-  static
+  private slg(ViewGroup paramViewGroup, sji paramsji)
   {
-    a.put(txb.class, sld.class);
-    b.put(spv.class, sle.class);
+    super(paramViewGroup, paramsji, 2131560119);
   }
   
-  public static <I> I a(Class<? extends I> paramClass, Class<I> paramClass1, Object... paramVarArgs)
+  public static slg a(ViewGroup paramViewGroup, sji paramsji)
   {
-    try
-    {
-      if (paramClass.equals(txb.class))
-      {
-        Object localObject = paramClass1.cast(new sld());
-        return localObject;
-      }
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      urk.e("ExtensionFactoryImplement", "parse int exception");
-      try
-      {
-        paramClass = (Class)a.get(paramClass);
-        if (paramClass != null)
-        {
-          if (sks.class.isAssignableFrom(paramClass)) {
-            break label110;
-          }
-          throw new IllegalArgumentException("createExtendableObject class " + paramClass.getName() + " should have a KeepConstructor interface");
-        }
-      }
-      catch (Exception paramClass)
-      {
-        urk.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
-      }
-      return slh.a(paramClass1);
-    }
-    label110:
-    paramClass = slh.a(paramClass, paramVarArgs);
-    return paramClass;
+    return new slg(paramViewGroup, paramsji);
   }
   
-  public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
+  protected void a()
   {
-    if (!sks.class.isAssignableFrom(paramClass)) {
-      throw new IllegalArgumentException("createExtendableObject class " + paramClass.getName() + " should have a KeepConstructor interface");
+    this.a = ((TextView)a(2).findViewById(2131379105));
+  }
+  
+  protected void a(int paramInt)
+  {
+    super.a(paramInt);
+    this.a.setVisibility(paramInt);
+  }
+  
+  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    super.a(paramstSimpleMetaFeed);
+    if (paramstSimpleMetaFeed == null) {
+      return;
     }
-    try
+    TextView localTextView = this.a;
+    if (TextUtils.isEmpty(paramstSimpleMetaFeed.feed_desc)) {}
+    for (int i = 8;; i = 0)
     {
-      Class localClass = (Class)b.get(paramClass);
-      if (localClass != null)
-      {
-        if (sks.class.isAssignableFrom(localClass)) {
-          break label124;
-        }
-        throw new IllegalArgumentException("createExtendableObject class " + localClass.getName() + " should have a KeepConstructor interface");
-      }
+      localTextView.setVisibility(i);
+      this.a.setText(paramstSimpleMetaFeed.feed_desc);
+      a(1, paramstSimpleMetaFeed);
+      a(2, 1, paramstSimpleMetaFeed);
+      return;
     }
-    catch (Exception localException)
-    {
-      urk.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
-    }
-    return slh.a(paramClass, paramVarArgs);
-    label124:
-    Object localObject = slh.a(localException, paramVarArgs);
-    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     slg
  * JD-Core Version:    0.7.0.1
  */

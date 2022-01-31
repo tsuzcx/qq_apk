@@ -1,18 +1,9 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import android.widget.RelativeLayout;
 
 public class aoaz
-  implements ValueAnimator.AnimatorUpdateListener
+  extends anxe
 {
-  public aoaz(FileAssistantActivity paramFileAssistantActivity) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    FileAssistantActivity.a(this.a).getLayoutParams().height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    FileAssistantActivity.a(this.a).requestLayout();
-  }
+  RelativeLayout[] a;
 }
 
 

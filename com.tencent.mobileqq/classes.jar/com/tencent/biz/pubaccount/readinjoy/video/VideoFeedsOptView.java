@@ -13,8 +13,8 @@ import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import baig;
-import baop;
+import bbjn;
+import bbql;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
@@ -25,12 +25,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import ndn;
-import pzs;
-import qeg;
-import qeh;
-import qmu;
-import qmv;
+import noo;
+import qls;
+import qqe;
+import qqf;
+import qzd;
+import qze;
 
 public class VideoFeedsOptView
   extends ImageView
@@ -102,14 +102,14 @@ public class VideoFeedsOptView
   
   private void c()
   {
-    qmv localqmv = new qmv(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
-    localqmv.a(this.f).w(this.jdField_b_of_type_Int);
+    qze localqze = new qze(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+    localqze.a(this.f).x(this.jdField_b_of_type_Int);
     if (this.jdField_b_of_type_Boolean)
     {
-      ndn.a(null, null, "0X800932F", "0X800932F", 0, 0, String.valueOf(this.jdField_a_of_type_Int), "", "", localqmv.a().a(), false);
+      noo.a(null, null, "0X800932F", "0X800932F", 0, 0, String.valueOf(this.jdField_a_of_type_Int), "", "", localqze.a().a(), false);
       return;
     }
-    ndn.a(null, null, "0X8009033", "0X8009033", 0, 0, String.valueOf(this.jdField_a_of_type_Int), "", "", localqmv.a().a(), false);
+    noo.a(null, null, "0X8009033", "0X8009033", 0, 0, String.valueOf(this.jdField_a_of_type_Int), "", "", localqze.a().a(), false);
   }
   
   public void a()
@@ -145,7 +145,7 @@ public class VideoFeedsOptView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setImageUrl(VideoInfo paramVideoInfo, String paramString1, int paramInt1, int paramInt2, boolean paramBoolean, pzs parampzs, int paramInt3, int paramInt4, String paramString2, String paramString3, int paramInt5, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt6, int paramInt7)
+  public void setImageUrl(VideoInfo paramVideoInfo, String paramString1, int paramInt1, int paramInt2, boolean paramBoolean, qls paramqls, int paramInt3, int paramInt4, String paramString2, String paramString3, int paramInt5, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt6, int paramInt7)
   {
     if ((TextUtils.equals(paramString2, this.jdField_a_of_type_JavaLangString)) && (TextUtils.equals(paramString3, this.jdField_b_of_type_JavaLangString)) && (TextUtils.equals(paramString6, this.e))) {}
     do
@@ -156,16 +156,16 @@ public class VideoFeedsOptView
         {
           return;
         } while (TextUtils.isEmpty(paramString7));
-        if (!parampzs.a.containsKey(paramString7)) {
-          parampzs.a.put(paramString7, Integer.valueOf(0));
+        if (!paramqls.a.containsKey(paramString7)) {
+          paramqls.a.put(paramString7, Integer.valueOf(0));
         }
-      } while (((Integer)parampzs.a.get(paramString7)).intValue() >= paramInt6);
-      if (!DateUtils.isToday(baig.b("ug_prefix_ug_1get3_opt_day_show_time")))
+      } while (((Integer)paramqls.a.get(paramString7)).intValue() >= paramInt6);
+      if (!DateUtils.isToday(bbjn.b("ug_prefix_ug_1get3_opt_day_show_time")))
       {
-        baig.a("ug_prefix_ug_1get3_opt_day_show_time", System.currentTimeMillis());
-        baig.a("ug_prefix_ug_1get3_opt_day_click_" + paramString7, 0);
+        bbjn.a("ug_prefix_ug_1get3_opt_day_show_time", System.currentTimeMillis());
+        bbjn.a("ug_prefix_ug_1get3_opt_day_click_" + paramString7, 0);
       }
-    } while ((baig.a("ug_prefix_ug_1get3_opt_day_click_" + paramString7) >= paramInt7) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)));
+    } while ((bbjn.a("ug_prefix_ug_1get3_opt_day_click_" + paramString7) >= paramInt7) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)));
     this.jdField_a_of_type_JavaLangString = paramString2;
     this.jdField_b_of_type_JavaLangString = paramString3;
     this.c = paramString4;
@@ -187,15 +187,15 @@ public class VideoFeedsOptView
     paramString2.putBoolean("key_use_auto_scale_params", false);
     paramString2.putBoolean("key_use_cache", false);
     paramString3 = new ColorDrawable(Color.parseColor("#00000000"));
-    paramVideoInfo = baop.a(BaseApplicationImpl.sApplication.getRuntime(), paramVideoInfo + paramString1, this.jdField_a_of_type_JavaLangString, paramString3, new int[] { paramInt5 }, "-opt_png-", paramString2);
+    paramVideoInfo = bbql.a(BaseApplicationImpl.sApplication.getRuntime(), paramVideoInfo + paramString1, this.jdField_a_of_type_JavaLangString, paramString3, new int[] { paramInt5 }, "-opt_png-", paramString2);
     if (paramVideoInfo != null)
     {
       if (paramVideoInfo.getStatus() == 2) {
         paramVideoInfo.restartDownload();
       }
-      paramVideoInfo.setURLDrawableListener(new qeg(this, paramVideoInfo));
+      paramVideoInfo.setURLDrawableListener(new qqe(this, paramVideoInfo));
     }
-    setOnClickListener(new qeh(this, parampzs, paramString7, paramInt4, paramInt3));
+    setOnClickListener(new qqf(this, paramqls, paramString7, paramInt4, paramInt3));
     setImageDrawable(paramVideoInfo);
   }
 }

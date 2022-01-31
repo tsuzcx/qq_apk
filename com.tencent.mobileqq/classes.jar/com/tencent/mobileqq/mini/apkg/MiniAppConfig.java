@@ -112,6 +112,11 @@ public class MiniAppConfig
     return (this.config != null) && (this.config.isInternalApp());
   }
   
+  public boolean isLimitedAccessApp()
+  {
+    return (this.config != null) && (this.config.isLimitedAccessApp());
+  }
+  
   public boolean isReportTypeMiniGame()
   {
     return (this.config != null) && (this.config.isReportTypeMiniGame());

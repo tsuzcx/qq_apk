@@ -1,29 +1,68 @@
+import android.support.v4.view.PagerAdapter;
 import android.view.View;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.widget.AdapterView;
+import android.view.ViewGroup;
+import com.tencent.av.ui.beauty.BeautyBaseView;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-class mmc
-  implements behi
+public class mmc
+  extends PagerAdapter
 {
-  mmc(mmb parammmb, PoiMapActivity paramPoiMapActivity) {}
+  final List<BeautyBaseView> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public mmc(List<BeautyBaseView> paramList)
   {
-    this.jdField_a_of_type_Mmb.a(paramInt, true);
-    int i = this.jdField_a_of_type_Mmb.jdField_a_of_type_ComTencentBizPoiMapActivity.a.length;
-    paramInt = 0;
-    while (paramInt < i)
-    {
-      if (this.jdField_a_of_type_Mmb.e != paramInt) {
-        this.jdField_a_of_type_Mmb.jdField_a_of_type_ComTencentBizPoiMapActivity.a[paramInt].a(-1, false);
-      }
-      paramInt += 1;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    Collection localCollection;
+    if (localCollection != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(localCollection);
     }
+  }
+  
+  public BeautyBaseView a(int paramInt)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramInt >= 0)
+    {
+      localObject1 = localObject2;
+      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+        localObject1 = (BeautyBaseView)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      }
+    }
+    return localObject1;
+  }
+  
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  {
+    if ((paramViewGroup != null) && ((paramObject instanceof BeautyBaseView))) {
+      paramViewGroup.removeView((BeautyBaseView)paramObject);
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    BeautyBaseView localBeautyBaseView = a(paramInt);
+    if ((paramViewGroup != null) && (localBeautyBaseView != null)) {
+      paramViewGroup.addView(localBeautyBaseView);
+    }
+    return localBeautyBaseView;
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mmc
  * JD-Core Version:    0.7.0.1
  */

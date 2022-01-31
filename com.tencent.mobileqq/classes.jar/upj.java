@@ -1,23 +1,27 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
 
-public class upj
+class upj
+  extends ParallelJobSegment<String, upf>
 {
   public int a;
-  public final long a;
-  public final String a;
-  public boolean a;
-  public String b = "";
   
-  public upj(String paramString)
+  public upj(upd paramupd, int paramInt)
   {
-    this.jdField_a_of_type_Int = 1000;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    super("RequestLikeListSegment");
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public ErrorMessage a()
+  protected void a(JobContext paramJobContext, String paramString)
   {
-    return new ErrorMessage(this.jdField_a_of_type_Int, this.b);
+    upx localupx = new upx();
+    localupx.jdField_a_of_type_JavaLangString = paramString;
+    localupx.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Int != -1) {
+      localupx.c = this.jdField_a_of_type_Int;
+    }
+    syr.a().a(localupx, new upk(this, paramJobContext, paramString));
   }
 }
 

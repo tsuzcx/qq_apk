@@ -1,20 +1,9 @@
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.biz.now.NowVideoLayout;
 
 public class axxe
 {
-  private Map<String, String> a = new HashMap();
-  
-  public String a(String paramString)
-  {
-    paramString = axxc.a(paramString);
-    return (String)this.a.get(paramString);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.a.put(paramString1, paramString2);
-  }
+  public axvw a;
+  public NowVideoLayout a;
 }
 
 

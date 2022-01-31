@@ -1,23 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView.OnItemClickListener;
-
-class asdm
-  implements View.OnClickListener
+public abstract interface asdm
 {
-  asdm(asdk paramasdk) {}
-  
-  public void onClick(View paramView)
-  {
-    asdo localasdo = (asdo)paramView.getTag();
-    if (this.a.a != null) {
-      this.a.a.onItemClick(null, paramView, localasdo.a, localasdo.a);
-    }
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asdm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,17 @@
-public class aqee
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+
+class aqee
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
+  aqee(aqed paramaqed) {}
+  
+  public int getSpanSize(int paramInt)
+  {
+    if (this.a.getItemViewType(paramInt) == aqdz.b) {
+      return 5;
+    }
+    return 1;
+  }
 }
 
 

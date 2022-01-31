@@ -1,16 +1,16 @@
 package cooperation.weiyun;
 
-import bbmy;
-import bgtv;
+import bcpw;
+import bicx;
 
 public class WeiyunAIOUtils$WeiyunCallbackImpl$2
   implements Runnable
 {
-  public WeiyunAIOUtils$WeiyunCallbackImpl$2(bgtv parambgtv, String paramString) {}
+  public WeiyunAIOUtils$WeiyunCallbackImpl$2(bicx parambicx, String paramString) {}
   
   public void run()
   {
-    bbmy.a(bgtv.a(this.this$0), 1, this.a, 1).b(bgtv.a(this.this$0));
+    bcpw.a(bicx.a(this.this$0), 1, this.a, 1).b(bicx.a(this.this$0));
   }
 }
 

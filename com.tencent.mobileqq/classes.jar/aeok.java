@@ -1,17 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aeok
-  implements DialogInterface.OnClickListener
+class aeok
+  extends aqun
 {
-  public aeok(VideoStatusTipsBar paramVideoStatusTipsBar) {}
+  aeok(aeoe paramaeoe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a()
   {
-    mga.e(false, false);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (((aqug)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      aeoe.a(this.a).a(this.a.jdField_a_of_type_Aexy, new Object[0]);
+    }
+  }
+  
+  protected void b()
+  {
+    if (((aqug)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      this.a.jdField_a_of_type_Aexy.a();
+    }
+  }
+  
+  protected void c()
+  {
+    if ((((aqug)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (aeoe.b(this.a).a() == 14)) {
+      aeoe.c(this.a).a();
     }
   }
 }

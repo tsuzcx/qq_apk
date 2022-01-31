@@ -1,130 +1,98 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.hce.HcePluginManager.1;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
-import mqq.manager.Manager;
-
-public class bfco
-  implements Manager
+public abstract class bfco
+  extends bfau
+  implements bfdc
 {
-  public bfcp a;
-  private HashSet<String> a;
-  public byte[] a;
+  protected begz a;
+  public bfav a;
+  public bfaz a;
+  public bfav b;
+  public bfaz b;
+  public bfav c;
+  public bfaz c;
+  public bfav d;
+  public bfaz d;
+  public bfaz e = new bfaz(this, Integer.valueOf(6));
+  public bfaz f = new bfaz(this, Integer.valueOf(8));
+  public bfaz g = new bfaz(this, Integer.valueOf(10));
   
-  public bfco(AppInterface paramAppInterface)
+  public bfco(begz parambegz)
   {
-    this.jdField_a_of_type_JavaUtilHashSet = new HcePluginManager.1(this);
+    this.jdField_a_of_type_Bfaz = new bfaz(this, Integer.valueOf(1));
+    this.jdField_b_of_type_Bfaz = new bfaz(this, Integer.valueOf(2));
+    this.jdField_c_of_type_Bfaz = new bfaz(this, Integer.valueOf(-1));
+    this.jdField_d_of_type_Bfaz = new bfaz(this, Integer.valueOf(4));
+    this.jdField_a_of_type_Bfav = new bfav(this, 3).a(this.jdField_d_of_type_Bfaz);
+    this.jdField_b_of_type_Bfav = new bfav(this, 5).a(this.e);
+    this.jdField_c_of_type_Bfav = new bfav(this, 7).a(this.f);
+    this.jdField_d_of_type_Bfav = new bfav(this, 9).a(this.g);
+    this.jdField_a_of_type_Begz = parambegz;
+    a();
   }
   
-  public static bfco a()
+  protected void a()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (bfco)((QQAppInterface)localAppRuntime).getManager(291);
+    a(new bfba(this).a(this.jdField_a_of_type_Bfaz).b(this.jdField_b_of_type_Bfaz).a(Integer.valueOf(3)));
+    a(new bfba(this).a(this.jdField_b_of_type_Bfaz).b(this.jdField_a_of_type_Bfav).a(Integer.valueOf(4)));
+    a(new bfba(this).a(this.jdField_d_of_type_Bfaz).b(this.jdField_b_of_type_Bfav).a(Integer.valueOf(5)));
+    a(new bfba(this).a(this.e).b(this.jdField_c_of_type_Bfav).a(Integer.valueOf(6)));
+    a(new bfba(this).a(this.f).b(this.jdField_d_of_type_Bfav).a(Integer.valueOf(7)));
+    a(this.jdField_a_of_type_Bfaz);
+  }
+  
+  public void a(bfaz parambfaz)
+  {
+    bfaz localbfaz = a();
+    if (localbfaz == this.jdField_b_of_type_Bfav) {
+      beyr.a(this.jdField_a_of_type_Begz.a(), 14, "0");
     }
-    return null;
-  }
-  
-  public static String a()
-  {
-    String str2 = "";
-    String str1 = str2;
-    if (BaseApplicationImpl.getApplication().getRuntime() != null)
+    for (;;)
     {
-      str1 = str2;
-      if (BaseApplicationImpl.getApplication().getRuntime().getAccount() != null) {
-        str1 = MD5.toMD5(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      super.a(parambfaz);
+      return;
+      if (this.e == localbfaz) {
+        beyr.a(this.jdField_a_of_type_Begz.a(), 15, "0");
+      } else if (localbfaz == this.jdField_d_of_type_Bfav) {
+        beyr.a(this.jdField_a_of_type_Begz.a(), 104, "0");
+      } else if (this.g == localbfaz) {
+        beyr.a(this.jdField_a_of_type_Begz.a(), 105, "0");
       }
     }
-    return str1;
   }
   
-  public int a(byte[] paramArrayOfByte)
+  public void a(String paramString)
   {
-    if (paramArrayOfByte == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("HcePluginManager", 2, "matchAID fail  commandApdu is null");
-      }
-      return -1;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      byte[] arrayOfByte = bfcl.a(str);
-      if (QLog.isColorLevel()) {
-        QLog.i("HcePluginManager", 2, "aidApdu: " + bfcl.a(arrayOfByte) + " commandApdu" + bfcl.a(paramArrayOfByte));
-      }
-      if (Arrays.equals(arrayOfByte, paramArrayOfByte))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("HcePluginManager", 2, "matchAID succ, aid=" + str);
-        }
-        return 0;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("HcePluginManager", 2, "matchAID fail  no match aid");
-    }
-    return -1;
+    this.jdField_a_of_type_Bfav.a(paramString);
+    b(Integer.valueOf(4));
   }
   
-  public long a()
+  public void a(String paramString1, String paramString2)
   {
-    String str = azzf.a(BaseApplicationImpl.getApplication(), "vfcStartTime");
-    if (baip.a(str)) {
-      return 0L;
-    }
-    return Long.parseLong(str);
-  }
-  
-  public void a()
-  {
-    azzf.a(BaseApplicationImpl.getApplication(), "vfcStartTime", System.currentTimeMillis() + "");
-  }
-  
-  public void a(Context paramContext, int paramInt)
-  {
-    if (paramContext != null) {
-      azzf.a(paramContext, "vfcState", paramInt + "");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("HcePluginManager", 2, "onVfcPluginLifecycle state " + paramInt + " Context " + paramContext);
-    }
+    this.jdField_b_of_type_Bfav.a(paramString1, paramString2);
+    b(Integer.valueOf(5));
   }
   
   public boolean a()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    return (localAppRuntime != null) && (localAppRuntime.isLogin());
+    return this.g == a();
   }
   
-  public boolean a(Context paramContext)
+  public abstract void b();
+  
+  public void b(String paramString)
   {
-    return (paramContext != null) && ("1".equals(azzf.a(paramContext, "vfcState")));
+    this.jdField_c_of_type_Bfav.a(paramString);
+    b(Integer.valueOf(6));
   }
   
-  public boolean a(byte[] paramArrayOfByte)
+  public void c(String paramString)
   {
-    return (paramArrayOfByte.length >= 2) && (paramArrayOfByte[0] == 0) && (paramArrayOfByte[1] == -92);
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_Bfcp = null;
+    this.jdField_d_of_type_Bfav.a(paramString);
+    b(Integer.valueOf(7));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfco
  * JD-Core Version:    0.7.0.1
  */

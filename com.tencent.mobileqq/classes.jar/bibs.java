@@ -1,31 +1,26 @@
+import android.os.IBinder;
+import android.os.IBinder.DeathRecipient;
+
 class bibs
-  implements bisp<Boolean, bisu>
+  implements IBinder.DeathRecipient
 {
-  bibs(bibq parambibq) {}
+  bibs(bibr parambibr) {}
   
-  public Void a(Boolean paramBoolean, bisu parambisu)
+  public void binderDied()
   {
-    if ((!paramBoolean.booleanValue()) || (parambisu == null) || (parambisu.jdField_a_of_type_AndroidGraphicsBitmap == null))
+    bdoe.b("WadlProxyServiceManager", "wadl download process is died!");
+    bibr.a(this.a).asBinder().unlinkToDeath(bibr.a(this.a), 0);
+    bibr.a(this.a, null);
+    if ((bibr.a(this.a) != null) && (bibr.a(this.a).a()))
     {
-      urk.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail error! thumbnail = (null)");
-      return null;
+      bdoe.b("WadlProxyServiceManager", "download process died restart service");
+      this.a.b();
     }
-    urk.b("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d", Integer.valueOf(parambisu.jdField_a_of_type_Int));
-    if (parambisu.jdField_a_of_type_Int >= this.a.a.length)
-    {
-      urk.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d OutOfArrayBounds", new Object[] { Integer.valueOf(parambisu.jdField_a_of_type_Int) });
-      return null;
-    }
-    urk.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "thumbnailProgress index: %d thumbnail done!", Integer.valueOf(parambisu.jdField_a_of_type_Int));
-    this.a.a[parambisu.jdField_a_of_type_Int] = bibt.a(this.a.a[parambisu.jdField_a_of_type_Int], parambisu.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.a.a[parambisu.jdField_a_of_type_Int].jdField_a_of_type_JavaLangString = parambisu.jdField_a_of_type_JavaLangString;
-    this.a.j();
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bibs
  * JD-Core Version:    0.7.0.1
  */

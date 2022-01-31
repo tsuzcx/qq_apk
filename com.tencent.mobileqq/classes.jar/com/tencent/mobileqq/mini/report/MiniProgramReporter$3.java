@@ -17,12 +17,14 @@ class MiniProgramReporter$3
     }
     for (;;)
     {
-      MiniProgramReporter.access$300(this.this$0);
+      MiniProgramReporter.access$400(this.this$0);
       return;
       if (this.val$singleDcData.dcid.get() == 9) {
         MiniProgramReporter.access$100(this.this$0).add(this.val$singleDcData);
+      } else if (this.val$singleDcData.dcid.get() == 5) {
+        MiniProgramReporter.access$200(this.this$0).add(this.val$singleDcData);
       } else {
-        QLog.e("MiniProgramReporter", 1, " should not report by dcReport " + MiniProgramReporter.access$200(this.val$singleDcData));
+        QLog.e("MiniProgramReporter", 1, " should not report by dcReport " + MiniProgramReporter.access$300(this.val$singleDcData));
       }
     }
   }

@@ -1,37 +1,92 @@
-import com.tencent.biz.qqstory.model.item.AddressItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.POI;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetPOIList;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 public class sdk
-  extends slu
+  implements sei
 {
-  List<AddressItem> a = new ArrayList();
+  int jdField_a_of_type_Int = 0;
+  Object jdField_a_of_type_JavaLangObject = null;
+  final sei jdField_a_of_type_Sei;
+  int b = -1;
+  int c = -1;
   
-  public sdk(qqstory_service.RspBatchGetPOIList paramRspBatchGetPOIList)
+  public sdk(sei paramsei)
   {
-    super(paramRspBatchGetPOIList.result);
-    paramRspBatchGetPOIList = paramRspBatchGetPOIList.poi_list.get();
-    if (paramRspBatchGetPOIList != null)
-    {
-      paramRspBatchGetPOIList = paramRspBatchGetPOIList.iterator();
-      while (paramRspBatchGetPOIList.hasNext())
-      {
-        qqstory_service.POI localPOI = (qqstory_service.POI)paramRspBatchGetPOIList.next();
-        AddressItem localAddressItem = AddressItem.getAddressFromProtoObject(localPOI.address);
-        localAddressItem.poiType = localPOI.poi_type.get();
-        this.a.add(localAddressItem);
-      }
+    this.jdField_a_of_type_Sei = paramsei;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Int == 0) {
+      return;
     }
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaLangObject = null;
+      this.jdField_a_of_type_Int = 0;
+      return;
+      this.jdField_a_of_type_Sei.a(this.b, this.c);
+      continue;
+      this.jdField_a_of_type_Sei.b(this.b, this.c);
+      continue;
+      this.jdField_a_of_type_Sei.a(this.b, this.c, this.jdField_a_of_type_JavaLangObject);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_Int == 1) && (paramInt1 >= this.b) && (paramInt1 <= this.b + this.c))
+    {
+      this.c += paramInt2;
+      this.b = Math.min(paramInt1, this.b);
+      return;
+    }
+    a();
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public void a(int paramInt1, int paramInt2, Object paramObject)
+  {
+    if ((this.jdField_a_of_type_Int == 3) && (paramInt1 <= this.b + this.c) && (paramInt1 + paramInt2 >= this.b) && (this.jdField_a_of_type_JavaLangObject == paramObject))
+    {
+      int i = this.b;
+      int j = this.c;
+      this.b = Math.min(paramInt1, this.b);
+      this.c = (Math.max(i + j, paramInt1 + paramInt2) - this.b);
+      return;
+    }
+    a();
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Int = 3;
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_Int == 2) && (this.b >= paramInt1) && (this.b <= paramInt1 + paramInt2))
+    {
+      this.c += paramInt2;
+      this.b = paramInt1;
+      return;
+    }
+    a();
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    a();
+    this.jdField_a_of_type_Sei.c(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sdk
  * JD-Core Version:    0.7.0.1
  */

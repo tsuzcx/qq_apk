@@ -1,51 +1,28 @@
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import java.lang.ref.WeakReference;
 
-public abstract interface bbex
-  extends bazo
+class bbex
+  implements DialogInterface.OnKeyListener
 {
-  public abstract long getDetect302Time();
+  bbex(bbew parambbew) {}
   
-  public abstract boolean getIsReloadUrl();
-  
-  public abstract long getOpenUrlAfterCheckOfflineTime();
-  
-  public abstract long getReadIndexFromOfflineTime();
-  
-  public abstract JSONObject getX5Performance();
-  
-  public abstract long getgetWebViewTime();
-  
-  public abstract long getinitBrowserTime();
-  
-  public abstract long getinitTBSTime();
-  
-  public abstract long getinitTime();
-  
-  public abstract boolean getisWebViewCache();
-  
-  public abstract long getmClickTime();
-  
-  public abstract long getmOnCreateMilliTimeStamp();
-  
-  public abstract boolean getmPerfFirstLoadTag();
-  
-  public abstract long getmStartLoadUrlMilliTimeStamp();
-  
-  public abstract long getmTimeBeforeLoadUrl();
-  
-  public abstract long getonCreateTime();
-  
-  public abstract long getpluginFinished();
-  
-  public abstract long getviewInflateTime();
-  
-  public abstract boolean isMainPageUseLocalFile();
-  
-  public abstract void setX5Performance(JSONObject paramJSONObject);
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 4)
+    {
+      this.a.dismiss();
+      ((Activity)this.a.a.get()).finish();
+      return true;
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbex
  * JD-Core Version:    0.7.0.1
  */

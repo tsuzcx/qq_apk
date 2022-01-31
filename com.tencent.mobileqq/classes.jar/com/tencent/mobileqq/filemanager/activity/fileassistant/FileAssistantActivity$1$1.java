@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.fileassistant;
 
-import ajjy;
+import ajyc;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.TextView;
@@ -12,10 +12,10 @@ class FileAssistantActivity$1$1
   
   public void run()
   {
-    this.a.this$0.a = ((ViewStub)this.a.this$0.findViewById(2131313511));
+    this.a.this$0.a = ((ViewStub)this.a.this$0.findViewById(2131379346));
     View localView = this.a.this$0.a.inflate();
     this.a.this$0.a.setVisibility(0);
-    ((TextView)localView.findViewById(2131312552)).setText(ajjy.a(2131638698));
+    ((TextView)localView.findViewById(2131378377)).setText(ajyc.a(2131704483));
   }
 }
 

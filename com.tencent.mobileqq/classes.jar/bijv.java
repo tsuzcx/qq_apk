@@ -1,28 +1,13 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.support.annotation.Nullable;
 
 class bijv
-  extends AnimatorListenerAdapter
+  implements bjob<bioi>
 {
-  bijv(bijr parambijr) {}
+  bijv(biju parambiju) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(@Nullable bioi parambioi)
   {
-    urk.b(bijo.a, "scaleAnimator cancel!");
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    urk.b(bijo.a, "scaleAnimator end!");
-    this.a.w = 1.0F;
-    this.a.j = false;
-    this.a.a.k();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    urk.b(bijo.a, "scaleAnimator start!");
-    this.a.j = true;
+    biju.a(this.a, parambioi);
   }
 }
 

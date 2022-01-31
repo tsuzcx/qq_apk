@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajda;
+import ajrc;
 import android.content.res.Resources;
 
 public class ApolloPanel$CmshowAppController$1
   implements Runnable
 {
-  public ApolloPanel$CmshowAppController$1(ajda paramajda) {}
+  public ApolloPanel$CmshowAppController$1(ajrc paramajrc) {}
   
   public void run()
   {
-    if ((ajda.a(this.a) == 3) && (!ApolloPanel.a(this.a.a, "sp_key_apollo_show_navigate_tip")))
+    if ((ajrc.a(this.a) == 3) && (!ApolloPanel.a(this.a.a, "sp_key_apollo_show_navigate_tip")))
     {
-      ApolloPanel.a(this.a.a, ApolloPanel.a(this.a.a), 49, this.a.a.getResources().getString(2131624521), 5);
+      ApolloPanel.a(this.a.a, ApolloPanel.a(this.a.a), 49, this.a.a.getResources().getString(2131690075), 5);
       ApolloPanel.a(this.a.a, "sp_key_apollo_show_navigate_tip");
     }
-    while (((ajda.a(this.a) != 0) && (ajda.a(this.a) != 2)) || (ApolloPanel.a(this.a.a, "sp_key_apollo_show_download_tip"))) {
+    while (((ajrc.a(this.a) != 0) && (ajrc.a(this.a) != 2)) || (ApolloPanel.a(this.a.a, "sp_key_apollo_show_download_tip"))) {
       return;
     }
-    ApolloPanel.a(this.a.a, ApolloPanel.a(this.a.a), 49, this.a.a.getResources().getString(2131624520), 5);
+    ApolloPanel.a(this.a.a, ApolloPanel.a(this.a.a), 49, this.a.a.getResources().getString(2131690074), 5);
     ApolloPanel.a(this.a.a, "sp_key_apollo_show_download_tip");
   }
 }

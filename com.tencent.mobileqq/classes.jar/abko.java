@@ -1,46 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQIdentiferLegacy;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.activity.Leba;
 
 public class abko
-  implements EIPCResultCallback
+  extends atzm
 {
-  public abko(QQIdentiferLegacy paramQQIdentiferLegacy, boolean paramBoolean) {}
+  public abko(Leba paramLeba) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  protected void a(Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQIdentiferLegacy", 2, "callServer error_code:" + paramEIPCResult.code);
-    }
-    switch (paramEIPCResult.code)
-    {
-    default: 
-      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        QQIdentiferLegacy.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy);
-      }
-      return;
-      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
-      continue;
-      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
-      if (paramEIPCResult.data != null) {
-        QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, (FaceDetectForThirdPartyManager.AppConf)paramEIPCResult.data.getSerializable("FaceRecognition.AppConf"));
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QQIdentiferLegacy", 2, "callServer error_code:" + QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy));
-        continue;
-        QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
-        QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, true);
-      }
-    }
+    Leba.c(this.a);
   }
 }
 

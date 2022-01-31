@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-
-public class akem
-  extends aken
+class akem
+  implements bgka
 {
-  public akem(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  akem(akef paramakef, byte[] paramArrayOfByte) {}
+  
+  public void a(bgjz parambgjz)
   {
-    super(paramQQAppInterface, paramProxyManager);
-    this.a = DataLineMsgRecord.tableName(0);
+    parambgjz.a(this.jdField_a_of_type_ArrayOfByte);
+    parambgjz.a();
   }
 }
 

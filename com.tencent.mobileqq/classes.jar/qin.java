@@ -1,23 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
-
-class qin
-  implements DialogInterface.OnDismissListener
+public abstract interface qin
 {
-  qin(qim paramqim) {}
+  public abstract void a();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
-    }
-    if (qim.a(this.a) != null) {
-      qim.a(this.a).a(qim.a(this.a), qim.b(this.a), false, false);
-    }
-    qim.a(this.a, true);
-    qim.b(this.a, false);
-  }
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt, String paramString1, String paramString2, String paramString3);
 }
 
 

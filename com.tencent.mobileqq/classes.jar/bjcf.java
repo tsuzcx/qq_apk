@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.data.QIMBeautyItem;
 
-public class bjcf
-  implements DialogInterface.OnClickListener
+public final class bjcf
+  implements Parcelable.Creator<QIMBeautyItem>
 {
-  public bjcf(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public QIMBeautyItem a(Parcel paramParcel)
   {
-    this.a.s();
+    return new QIMBeautyItem(paramParcel);
+  }
+  
+  public QIMBeautyItem[] a(int paramInt)
+  {
+    return new QIMBeautyItem[paramInt];
   }
 }
 

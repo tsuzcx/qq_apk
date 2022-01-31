@@ -1,43 +1,30 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment.1.1;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class qet
-  implements pxm
+  implements rth
 {
-  public qet(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  public qet(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    if ((VideoFeedsRecommendFragment.a(this.a)) && (VideoFeedsRecommendFragment.a(this.a) != null) && (VideoFeedsRecommendFragment.a(this.a).a != null) && (VideoFeedsRecommendFragment.a(this.a).a.a != null) && (VideoFeedsRecommendFragment.a(this.a).a.a.a != null) && (VideoFeedsRecommendFragment.a(this.a) != null)) {
-      if ((npi.e(VideoFeedsRecommendFragment.a(this.a).a.a.a)) && (!VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).c)))
-      {
-        localVideoInfo = VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).c);
-        if (localVideoInfo != null)
-        {
-          i = VideoFeedsRecommendFragment.a(this.a).getAdapterPosition() - 1;
-          j = VideoFeedsRecommendFragment.a(this.a).c;
-          VideoFeedsRecommendFragment.a(this.a).a(i, j, localVideoInfo);
-          noy.a(this.a.getActivity(), 50, true);
-        }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverUGCActivity", 2, "startDrag!");
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (ReadInJoyDeliverUGCActivity.a(this.a) != 0)
+    {
+      Integer localInteger = (Integer)ReadInJoyDeliverUGCActivity.a(this.a).remove(paramInt1);
+      ReadInJoyDeliverUGCActivity.a(this.a).add(paramInt2, localInteger);
+      noo.a(null, "", "0X800953F", "0X800953F", 0, 0, "", "", "", onk.e(), false);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverUGCActivity", 2, "change position old position=" + paramInt1 + " new position" + paramInt2);
       }
     }
-    while ((VideoFeedsRecommendFragment.a(this.a) == null) || (VideoFeedsRecommendFragment.a(this.a) == null))
-    {
-      VideoInfo localVideoInfo;
-      int i;
-      int j;
-      VideoFeedsRecommendFragment.a(this.a).postDelayed(new VideoFeedsRecommendFragment.1.1(this, i + 1), 0L);
-      do
-      {
-        return;
-      } while (VideoFeedsRecommendFragment.a(this.a) == null);
-      VideoFeedsRecommendFragment.a(this.a).c();
-      return;
-    }
-    VideoFeedsRecommendFragment.a(this.a).c(VideoFeedsRecommendFragment.a(this.a).a);
   }
 }
 

@@ -1,10 +1,27 @@
-public abstract interface afhu
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
+
+public class afhu
+  implements View.OnClickListener
 {
-  public abstract void c();
+  public afhu(Face2FaceAddContactFragment paramFace2FaceAddContactFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    int i = Face2FaceAddContactFragment.a(this.a).length();
+    if (i >= 4) {
+      return;
+    }
+    Face2FaceAddContactFragment.a(this.a, paramView, i);
+    i = Face2FaceAddContactFragment.a(this.a).length();
+    Face2FaceAddContactFragment.a(this.a, i);
+    Face2FaceAddContactFragment.b(this.a, i);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afhu
  * JD-Core Version:    0.7.0.1
  */

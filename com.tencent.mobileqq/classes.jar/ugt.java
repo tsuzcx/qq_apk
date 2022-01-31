@@ -1,8 +1,4 @@
-public abstract interface ugt
-{
-  public abstract void a(boolean paramBoolean);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ugt

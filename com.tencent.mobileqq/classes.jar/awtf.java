@@ -1,85 +1,38 @@
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.content.Context;
+import com.tencent.image.AbstractGifImage;
 
 public class awtf
+  extends awte
 {
-  private int jdField_a_of_type_Int;
-  private LinkedHashMap<String, Integer> jdField_a_of_type_JavaUtilLinkedHashMap;
-  private int b;
-  
-  public awtf(int paramInt1, int paramInt2)
+  protected awtc a(Context paramContext)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(paramInt1, 0.5F, true);
+    return new awxr(this, paramContext);
   }
   
-  public Map<String, Integer> a()
+  public void a(String paramString1, String paramString2, String paramString3)
   {
-    HashMap localHashMap = null;
-    label110:
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-        if (localIterator.hasNext())
-        {
-          Map.Entry localEntry = (Map.Entry)localIterator.next();
-          if (((Integer)localEntry.getValue()).intValue() < this.b) {
-            break label110;
-          }
-          if (localHashMap == null)
-          {
-            localHashMap = new HashMap();
-            localHashMap.put(localEntry.getKey(), localEntry.getValue());
-            break label110;
-          }
-        }
-        else
-        {
-          return localHashMap;
-        }
-      }
+    super.a(paramString1, paramString2, paramString3);
+    paramString1 = a();
+    if (paramString1 != null) {
+      paramString1.e();
     }
   }
   
-  public void a()
+  public void b()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-      return;
-    }
+    super.b();
+    AbstractGifImage.pauseAll();
   }
   
-  public void a(String paramString)
+  public void c()
   {
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
-      {
-        if (this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(paramString))
-        {
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString, Integer.valueOf(((Integer)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString)).intValue() + 1));
-          if (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() <= this.jdField_a_of_type_Int) {
-            break;
-          }
-          paramString = (Map.Entry)this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator().next();
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramString.getKey());
-        }
-      }
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString, Integer.valueOf(1));
-    }
+    super.c();
+    AbstractGifImage.resumeAll();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awtf
  * JD-Core Version:    0.7.0.1
  */

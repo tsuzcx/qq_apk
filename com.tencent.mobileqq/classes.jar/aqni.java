@@ -1,43 +1,31 @@
-import android.os.Bundle;
-import com.tencent.biz.huiyin.HuiyinRedDotProto.RedDotGetRsp;
-import com.tencent.biz.huiyin.ILiveProto.iLiveResponse;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import mqq.observer.BusinessObserver;
+import android.app.Activity;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
 
 class aqni
-  implements BusinessObserver
+  implements aqlz
 {
-  aqni(aqnd paramaqnd, aqnl paramaqnl) {}
+  aqni(aqnh paramaqnh, URLDrawable paramURLDrawable, aqmg paramaqmg) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt, URLDrawable paramURLDrawable) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
   {
-    Object localObject;
+    this.jdField_a_of_type_Aqnh.a.b.setVisibility(8);
     if (paramBoolean)
     {
-      localObject = paramBundle.getByteArray("data");
-      paramBundle = new ILiveProto.iLiveResponse();
-    }
-    try
-    {
-      paramBundle.mergeFrom((byte[])localObject);
-      localObject = new HuiyinRedDotProto.RedDotGetRsp();
-      ((HuiyinRedDotProto.RedDotGetRsp)localObject).mergeFrom(paramBundle.ex.get().toByteArray());
-      this.jdField_a_of_type_Aqnd.a = ((int)((HuiyinRedDotProto.RedDotGetRsp)localObject).totalNum.get());
-      this.jdField_a_of_type_Aqnl.a(this.jdField_a_of_type_Aqnd.a);
+      this.jdField_a_of_type_Aqnh.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      paramInt = this.jdField_a_of_type_ComTencentImageURLDrawable.getExifOrientation();
+      this.jdField_a_of_type_Aqmg.a = paramInt;
+      aqne.a(this.jdField_a_of_type_Aqnh.a.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
       return;
     }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
+    bcpw.a(this.jdField_a_of_type_Aqnh.a.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Aqnh.a.jdField_a_of_type_AndroidAppActivity.getString(2131695340), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqni
  * JD-Core Version:    0.7.0.1
  */

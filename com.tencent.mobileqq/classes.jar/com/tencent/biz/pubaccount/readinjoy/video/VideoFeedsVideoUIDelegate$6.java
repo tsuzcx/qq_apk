@@ -1,17 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import android.widget.TextView;
-import qcn;
-import qhf;
+import qtk;
 
 public class VideoFeedsVideoUIDelegate$6
   implements Runnable
 {
-  public VideoFeedsVideoUIDelegate$6(qhf paramqhf, TextView paramTextView) {}
+  public VideoFeedsVideoUIDelegate$6(qtk paramqtk, int paramInt, String paramString) {}
   
   public void run()
   {
-    qcn.a(this.a, 8);
+    qtk.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

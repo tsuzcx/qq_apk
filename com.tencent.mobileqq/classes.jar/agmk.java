@@ -1,21 +1,12 @@
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
-class agmk
-  extends agmg
+public abstract interface agmk
 {
-  agmk(agmj paramagmj) {}
-  
-  public void a(int paramInt)
-  {
-    if (((paramInt == 1) || (paramInt == 10)) && (this.a.a.a != null)) {
-      this.a.a.a.dismiss();
-    }
-  }
+  public abstract void a(int paramInt, LocalMediaInfo paramLocalMediaInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agmk
  * JD-Core Version:    0.7.0.1
  */

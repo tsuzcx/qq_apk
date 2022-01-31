@@ -1,39 +1,25 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
+import android.text.Spannable;
+import android.text.Spannable.Factory;
 
-public class aykj
-  implements View.OnFocusChangeListener
+final class aykj
+  extends Spannable.Factory
 {
-  public aykj(NewTroopContactView paramNewTroopContactView) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public Spannable newSpannable(CharSequence paramCharSequence)
   {
-    if (paramBoolean)
-    {
-      paramView = this.a.a();
-      if (paramView != null)
+    if ((!ayki.b) && ((paramCharSequence instanceof ayki))) {
+      try
       {
-        paramView.d(true);
-        paramView.a(NewTroopContactView.a(this.a), this.a.jdField_a_of_type_JavaUtilArrayList);
-        FragmentTransaction localFragmentTransaction = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity.getSupportFragmentManager().beginTransaction();
-        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
-          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
-        }
-        localFragmentTransaction.add(2131309439, paramView);
-        localFragmentTransaction.commitAllowingStateLoss();
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = paramView;
+        ayki localayki = (ayki)((ayki)paramCharSequence).clone();
+        return localayki;
       }
+      catch (CloneNotSupportedException localCloneNotSupportedException) {}
     }
+    return super.newSpannable(paramCharSequence);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aykj
  * JD-Core Version:    0.7.0.1
  */

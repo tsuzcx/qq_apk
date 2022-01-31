@@ -1,24 +1,12 @@
-class athx
+import android.os.Bundle;
+
+public abstract interface athx
 {
-  public int a;
-  public atht a;
-  public athu a;
-  public athw a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b = true;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  
-  private athx(athi paramathi) {}
+  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     athx
  * JD-Core Version:    0.7.0.1
  */

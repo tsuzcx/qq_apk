@@ -1,37 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class bgig
-  implements bgdf
+class bgig
+  implements View.OnClickListener
 {
-  public void a(BaseResp paramBaseResp)
+  bgig(bgif parambgif) {}
+  
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.isEmpty(bgif.jdField_a_of_type_JavaLangString)) && (bgif.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null)) {
-      bgif.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.callJs(bgif.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(paramBaseResp.errCode) });
-    }
-    for (;;)
-    {
-      bgif.jdField_a_of_type_JavaLangString = null;
-      bgif.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = null;
-      bgde.a().b(this);
-      return;
-      switch (paramBaseResp.errCode)
-      {
-      case -2: 
-      case -1: 
-      default: 
-        vvp.a(1, 2131653595);
-        break;
-      case 0: 
-        vvp.a(2, 2131653612);
-      }
+    if ((this.a.a.a != null) && (!this.a.a.a.isFinishing())) {
+      this.a.a.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgig
  * JD-Core Version:    0.7.0.1
  */

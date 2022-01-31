@@ -1,26 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.vip.KCWraperV2.1;
-import dualsim.common.IPhoneInfoBridge;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
 
-public class batx
-  implements IPhoneInfoBridge
+class batx
+  implements DialogInterface.OnDismissListener
 {
-  public batx(KCWraperV2.1 param1) {}
+  batx(batu parambatu) {}
   
-  public String a(String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ("imei".equals(paramString)) {
-      return befc.a("a4bd32");
+    this.a.jdField_b_of_type_Boolean = false;
+    if ((!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) || (((this.a.jdField_a_of_type_Int == 0) || (this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 2) || (this.a.jdField_a_of_type_Int == 3) || (this.a.jdField_a_of_type_Int == 4)) && ((this.a.jdField_b_of_type_Int == 1) || (this.a.jdField_b_of_type_Int == 0)))) {
+      return;
     }
-    if ("imsi".equals(paramString)) {
-      return befc.b("a4bd32");
-    }
-    return "";
-  }
-  
-  public boolean isAllow(String paramString)
-  {
-    return !TextUtils.isEmpty(a(paramString));
+    ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
   }
 }
 

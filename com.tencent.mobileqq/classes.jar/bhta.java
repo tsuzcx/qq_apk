@@ -1,50 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.util.List;
+import com.tencent.component.network.utils.thread.ThreadPool.Job;
+import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
 
-class bhta
-  implements View.OnClickListener
+public final class bhta
+  implements ThreadPool.Job<Object>
 {
-  bhta(bhsz parambhsz, int paramInt) {}
+  public bhta(String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public Object run(ThreadPool.JobContext paramJobContext)
   {
-    bhsz.a(this.jdField_a_of_type_Bhsz, this.jdField_a_of_type_Int);
-    bhtb localbhtb;
-    if (this.jdField_a_of_type_Int != bhsz.a(this.jdField_a_of_type_Bhsz))
-    {
-      int i = bhsz.a(this.jdField_a_of_type_Bhsz);
-      bhsz.a(this.jdField_a_of_type_Bhsz, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bhsz.notifyItemChanged(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bhsz.notifyItemChanged(i);
-      if (bhsz.a(this.jdField_a_of_type_Bhsz) != null)
-      {
-        localbhtb = bhsz.a(this.jdField_a_of_type_Bhsz);
-        if (this.jdField_a_of_type_Int != 0) {
-          break label128;
-        }
-      }
-    }
-    label128:
-    for (paramView = null;; paramView = (wqk)bhsz.a(this.jdField_a_of_type_Bhsz).get(this.jdField_a_of_type_Int - 1))
-    {
-      localbhtb.a(paramView);
-      if (this.jdField_a_of_type_Int != 0) {
-        break;
-      }
-      bhcm.a().j("none");
-      bhci.a().E();
-      bhcs.a("AEGIFStickerAdapter", 1, "【Gif Material Click】: null");
-      return;
-    }
-    bhcm.a().j(((wqk)bhsz.a(this.jdField_a_of_type_Bhsz).get(this.jdField_a_of_type_Int - 1)).a);
-    bhci.a().E();
-    bhcs.a("AEGIFStickerAdapter", 1, "【Gif Material Click】: " + ((wqk)bhsz.a(this.jdField_a_of_type_Bhsz).get(this.jdField_a_of_type_Int - 1)).a);
+    QzoneZipCacheHelper.access$100().a(QzoneZipCacheHelper.access$100().a(QzoneZipCacheHelper.access$000(this.a, this.b)), true);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhta
  * JD-Core Version:    0.7.0.1
  */

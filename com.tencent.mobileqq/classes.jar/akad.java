@@ -1,23 +1,26 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
 class akad
-  implements akae
+  implements bfoq
 {
-  akad(akac paramakac, msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq) {}
+  akad(akac paramakac, bfol parambfol) {}
   
-  public ToServiceMsg a()
+  public void OnClick(View paramView, int paramInt)
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Akac.a.createToServiceMsg("PbMessageSvc.PbMsgReadedReport");
-    byte[] arrayOfByte = this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbMsgReadedReportReq.toByteArray();
-    if (arrayOfByte != null)
+    switch (paramInt)
     {
-      localToServiceMsg.putWupBuffer(arrayOfByte);
-      localToServiceMsg.setEnableFastResend(true);
-      return localToServiceMsg;
     }
-    return null;
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfol.e();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("MayknowRecommendManager", 2, " onMsgTabRecommendBClick recommend_item_menu hide clicked");
+      }
+      this.jdField_a_of_type_Akac.h();
+      axqw.b(null, "dc00899", "Grp_recom", "", "msg_tab", "clk_hide", 0, 0, "", "", "", "");
+    }
   }
 }
 

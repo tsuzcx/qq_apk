@@ -1,101 +1,58 @@
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.articlesummary.articlesummary.AnswerDetail;
 
 public class qam
-  extends qah
 {
-  private qan jdField_a_of_type_Qan;
-  private boolean jdField_a_of_type_Boolean = true;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c = "";
   
-  public qam(pzs parampzs, qan paramqan)
+  public qam()
   {
-    super(parampzs, paramqan);
-    this.jdField_a_of_type_Qan = paramqan;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  private void k(boolean paramBoolean)
+  public static qam a(articlesummary.AnswerDetail paramAnswerDetail)
   {
-    View localView;
-    if (this.jdField_a_of_type_Qan.a != null)
-    {
-      localView = this.jdField_a_of_type_Qan.a;
-      if (!paramBoolean) {
-        break label30;
-      }
+    qam localqam = new qam();
+    if (paramAnswerDetail.question_rowkey.has()) {
+      localqam.jdField_a_of_type_JavaLangString = paramAnswerDetail.question_rowkey.get();
     }
-    label30:
-    for (int i = 0;; i = 8)
-    {
-      localView.setVisibility(i);
-      return;
+    if (paramAnswerDetail.question_title.has()) {
+      localqam.jdField_b_of_type_JavaLangString = paramAnswerDetail.question_title.get();
     }
+    if (paramAnswerDetail.answer_content.has()) {
+      localqam.c = paramAnswerDetail.answer_content.get();
+    }
+    if (paramAnswerDetail.agreed_num.has()) {
+      localqam.jdField_a_of_type_Int = paramAnswerDetail.agreed_num.get();
+    }
+    if (paramAnswerDetail.card_style.has()) {
+      localqam.jdField_b_of_type_Int = paramAnswerDetail.card_style.get();
+    }
+    return localqam;
   }
   
-  public void a(VideoInfo paramVideoInfo, boolean paramBoolean)
+  public articlesummary.AnswerDetail a()
   {
-    super.a(paramVideoInfo, paramBoolean);
-    if ((TextUtils.isEmpty(paramVideoInfo.c)) || (paramVideoInfo.a(pzs.a(this.jdField_a_of_type_Pzs))))
-    {
-      k(false);
-      return;
+    articlesummary.AnswerDetail localAnswerDetail = new articlesummary.AnswerDetail();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localAnswerDetail.question_rowkey.set(this.jdField_a_of_type_JavaLangString);
     }
-    k(true);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) || (!paramBoolean2))
-    {
-      this.jdField_a_of_type_Qan.w.setVisibility(8);
-      k(false);
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localAnswerDetail.question_title.set(this.jdField_b_of_type_JavaLangString);
     }
-    for (;;)
-    {
-      super.a(paramBoolean1, paramBoolean2);
-      return;
-      if (paramBoolean2)
-      {
-        this.jdField_a_of_type_Qan.w.setVisibility(0);
-        k(true);
-        this.jdField_a_of_type_Boolean = false;
-      }
+    if (!TextUtils.isEmpty(this.c)) {
+      localAnswerDetail.answer_content.set(this.c);
     }
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Qan.w.getVisibility() == 8) {
-      qcn.a(this.jdField_a_of_type_Qan.w, 0);
-    }
-    if ((this.jdField_a_of_type_Qan.a != null) && (this.jdField_a_of_type_Qan.a.getVisibility() == 8)) {
-      qcn.a(this.jdField_a_of_type_Qan.a, 0);
-    }
-    super.c(paramBoolean);
-  }
-  
-  protected void h(boolean paramBoolean)
-  {
-    super.h(paramBoolean);
-    if (paramBoolean)
-    {
-      if ((!pzs.a(this.jdField_a_of_type_Pzs)) && (this.jdField_a_of_type_Qan.w.getVisibility() == 8)) {
-        qcn.a(this.jdField_a_of_type_Qan.w, 0);
-      }
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.jdField_a_of_type_Qan.w.getVisibility() == 0) {
-        qcn.a(this.jdField_a_of_type_Qan.w, 8);
-      }
-      if ((this.jdField_a_of_type_Qan.a != null) && (this.jdField_a_of_type_Qan.a.getVisibility() == 0)) {
-        qcn.a(this.jdField_a_of_type_Qan.a, 8);
-      }
-    }
-    this.jdField_a_of_type_Boolean = true;
+    localAnswerDetail.agreed_num.set(this.jdField_a_of_type_Int);
+    localAnswerDetail.card_style.set(this.jdField_b_of_type_Int);
+    return localAnswerDetail;
   }
 }
 

@@ -1,38 +1,32 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
+import org.json.JSONException;
 
 public class azxi
+  implements View.OnClickListener
 {
-  public static String a(Context paramContext)
-  {
-    if (paramContext == null) {}
-    do
-    {
-      return null;
-      paramContext = paramContext.getFilesDir();
-    } while (paramContext == null);
-    return paramContext.getParent() + "/lib/";
-  }
+  public azxi(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public static void a(String paramString)
+  public void onClick(View paramView)
   {
-    if ((paramString != null) && ((paramString.contains("NativeGifFactory")) || (paramString.contains("NativeGifIndex8")) || (paramString.contains("libkIndexGif")) || (paramString.contains("libskia"))))
+    bfmr.b(paramView);
+    try
     {
-      BaseApplicationImpl.getApplication().getSharedPreferences("early_qq.android.native.gif", 4).edit().putBoolean("use_new_gif_so", false).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("GifSoLoader", 2, String.format("Crash in libkIndexGif support library at %s process!", new Object[] { BaseApplicationImpl.getMobileQQ().getQQProcessName() }));
-      }
+      this.a.h();
+      return;
+    }
+    catch (JSONException paramView)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("PublishHomeWorkFragment", 2, "on publish homework error, parse json error", paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azxi
  * JD-Core Version:    0.7.0.1
  */

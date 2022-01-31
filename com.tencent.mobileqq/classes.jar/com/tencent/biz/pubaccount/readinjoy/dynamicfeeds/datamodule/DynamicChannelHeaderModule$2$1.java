@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 
 import android.os.Bundle;
-import ogd;
-import oge;
 import org.json.JSONObject;
+import oro;
+import orp;
 
 public class DynamicChannelHeaderModule$2$1
   implements Runnable
 {
-  public DynamicChannelHeaderModule$2$1(oge paramoge, JSONObject paramJSONObject, Bundle paramBundle) {}
+  public DynamicChannelHeaderModule$2$1(orp paramorp, JSONObject paramJSONObject, Bundle paramBundle) {}
   
   public void run()
   {
-    ogd.a(this.jdField_a_of_type_Oge.jdField_a_of_type_Ogd, this.jdField_a_of_type_Oge.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Oge.jdField_a_of_type_Ofj);
+    oro.a(this.jdField_a_of_type_Orp.jdField_a_of_type_Oro, this.jdField_a_of_type_Orp.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Orp.jdField_a_of_type_Oqu);
   }
 }
 

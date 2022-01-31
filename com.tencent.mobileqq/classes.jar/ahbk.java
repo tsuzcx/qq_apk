@@ -1,133 +1,89 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import android.text.TextUtils;
+import com.tencent.commonsdk.util.MD5Coding;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.Map;
 
-class ahbk
-  extends benv
+public class ahbk
+  extends bbwf
 {
-  ahbk(ahbj paramahbj, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  public ahbk(PreloadManager paramPreloadManager, DownloadParam paramDownloadParam, ahbt paramahbt, WeakReference paramWeakReference) {}
   
-  public void a(int paramInt, Object paramObject, benu[] paramArrayOfbenu)
+  public void onDoneFile(bbwg parambbwg)
   {
-    if ((paramArrayOfbenu == null) || (paramArrayOfbenu.length <= 0)) {
-      return;
+    super.onDoneFile(parambbwg);
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadManager", 2, "RealTime onDoneFile|" + parambbwg.jdField_a_of_type_Int + "|" + parambbwg.jdField_a_of_type_JavaLangString + "|" + ((File)parambbwg.jdField_a_of_type_JavaUtilMap.get(parambbwg.jdField_a_of_type_JavaLangString)).getAbsolutePath());
     }
-    if ((paramObject instanceof RecentBaseData)) {}
-    label395:
-    for (int j = ((RecentBaseData)paramObject).mMenuFlag;; j = 0)
+    Object localObject2;
+    Object localObject1;
+    if ((parambbwg.jdField_a_of_type_Int == 0) && (parambbwg.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(parambbwg.jdField_a_of_type_JavaLangString)))
     {
-      if (((paramObject instanceof RecentBaseData)) && ((((RecentBaseData)paramObject).a() == 1008) || (((RecentBaseData)paramObject).a() == 7220)))
+      localObject2 = (File)parambbwg.jdField_a_of_type_JavaUtilMap.get(parambbwg.jdField_a_of_type_JavaLangString);
+      if (localObject2 == null)
       {
-        if ((paramArrayOfbenu.length >= 0) || (!ahcb.a(((RecentBaseData)paramObject).a())) || (!ahch.a().a()) || (ahch.a().a(((RecentBaseData)paramObject).a()))) {
-          break label435;
+        localObject1 = "";
+        localObject1 = MD5Coding.encodeFile2HexStr((String)localObject1);
+        if ((localObject2 == null) || (!((File)localObject2).exists()) || (TextUtils.isEmpty((CharSequence)localObject1))) {
+          break label266;
         }
-        paramArrayOfbenu[0].b = 6;
-        paramArrayOfbenu[0].a = 1;
+        if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.md5ForChecked)) || (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.md5ForChecked.equalsIgnoreCase((String)localObject1))) {
+          break label236;
+        }
+        if (this.jdField_a_of_type_Ahbt != null) {
+          this.jdField_a_of_type_Ahbt.onResult(2, PreloadManager.PathResult.getFailRes(parambbwg.jdField_a_of_type_JavaLangString));
+        }
+        PreloadManager.a(parambbwg.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
+        ahic.a(2, parambbwg.c, parambbwg.jdField_a_of_type_Int);
       }
-      label151:
-      label429:
-      label435:
-      for (int i = 1;; i = 0)
+    }
+    label236:
+    label376:
+    label378:
+    do
+    {
+      for (;;)
       {
-        paramInt = i;
-        if (i < paramArrayOfbenu.length)
-        {
-          paramArrayOfbenu[i].b = 0;
-          paramArrayOfbenu[i].a = 0;
-          paramInt = i + 1;
-        }
-        while (paramInt < paramArrayOfbenu.length)
-        {
-          paramArrayOfbenu[paramInt].b = -1;
-          paramArrayOfbenu[paramInt].a = -1;
-          paramInt += 1;
-          continue;
-          if (paramArrayOfbenu.length >= 0) {
-            break label429;
-          }
-          paramInt = j & 0xF0;
-          if (paramInt != 32) {
-            break label369;
-          }
-          paramArrayOfbenu[0].b = 2;
-          paramArrayOfbenu[0].a = 1;
-          i = 1;
-        }
+        return;
+        localObject1 = ((File)localObject2).getAbsolutePath();
+        break;
+        ahcw.a(parambbwg.jdField_a_of_type_JavaLangString, (String)localObject1, NetConnInfoCenter.getServerTimeMillis(), this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
+        ahic.a(0, parambbwg.c, parambbwg.jdField_a_of_type_Int);
         for (;;)
         {
-          label213:
-          paramInt = i;
-          int k;
-          if (i < paramArrayOfbenu.length)
-          {
-            paramInt = i;
-            if ((paramObject instanceof RecentBaseData))
-            {
-              paramInt = i;
-              if (((RecentBaseData)paramObject).a())
-              {
-                k = 0xF0000 & j;
-                if (k != 65536) {
-                  break label395;
-                }
-                paramArrayOfbenu[i].b = 4;
-                paramArrayOfbenu[i].a = 1;
-                paramInt = i + 1;
-              }
-            }
+          if (!PreloadManager.a((PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get())) {
+            break label376;
           }
-          for (;;)
-          {
-            i = paramInt;
-            if (paramInt < paramArrayOfbenu.length)
-            {
-              i = paramInt;
-              if ((j & 0xF) == 1)
-              {
-                paramArrayOfbenu[paramInt].b = 0;
-                paramArrayOfbenu[paramInt].a = 0;
-                i = paramInt + 1;
-              }
-            }
-            paramInt = i;
-            if (i >= paramArrayOfbenu.length) {
-              break label151;
-            }
-            paramInt = i;
-            if ((j & 0x300000) != 2097152) {
-              break label151;
-            }
-            paramArrayOfbenu[i].b = 6;
-            paramArrayOfbenu[i].a = 1;
-            paramInt = i + 1;
-            break label151;
+          if (parambbwg.jdField_a_of_type_Int != 0) {
+            break label378;
+          }
+          localObject1 = ahcw.a(parambbwg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.isForceUnzip, 0, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
+          localObject2 = new PreloadManager.PathResult();
+          ((PreloadManager.PathResult)localObject2).url = parambbwg.jdField_a_of_type_JavaLangString;
+          ((PreloadManager.PathResult)localObject2).filePath = ((ResourceInfo)localObject1).filePath;
+          ((PreloadManager.PathResult)localObject2).folderPath = ((ResourceInfo)localObject1).folderPath;
+          if (this.jdField_a_of_type_Ahbt == null) {
             break;
-            label369:
-            if (paramInt != 16) {
-              break label429;
-            }
-            paramArrayOfbenu[0].b = 3;
-            paramArrayOfbenu[0].a = 0;
-            i = 1;
-            break label213;
-            paramInt = i;
-            if (k == 131072)
-            {
-              paramArrayOfbenu[i].b = 5;
-              paramArrayOfbenu[i].a = 1;
-              paramInt = i + 1;
-            }
           }
-          i = 0;
+          this.jdField_a_of_type_Ahbt.onResult(0, (PreloadManager.PathResult)localObject2);
+          return;
+          ahic.a(1, parambbwg.c, parambbwg.jdField_a_of_type_Int);
         }
       }
-    }
+    } while (this.jdField_a_of_type_Ahbt == null);
+    label266:
+    this.jdField_a_of_type_Ahbt.onResult(1, PreloadManager.PathResult.getFailRes(parambbwg.jdField_a_of_type_JavaLangString, parambbwg.jdField_a_of_type_Int));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahbk
  * JD-Core Version:    0.7.0.1
  */

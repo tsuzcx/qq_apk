@@ -1,6 +1,21 @@
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+
 public class atxw
+  extends atxx
 {
-  public static final int[] a = { -1000, -2000, -20000, -2002, -2022, -1035, -2001, -2007, -1049, -2058 };
+  public atxw(String paramString, atyf paramatyf)
+  {
+    super(paramString, paramatyf);
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130839026);
+    this.jdField_a_of_type_Int = -1;
+  }
 }
 
 

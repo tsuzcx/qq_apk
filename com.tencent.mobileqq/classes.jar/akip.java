@@ -1,69 +1,74 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class akip
+class akip
+  extends Handler
 {
-  private static akip a;
-  
-  public static akip a()
+  akip(akio paramakio, Looper paramLooper, QQAppInterface paramQQAppInterface)
   {
-    if (a == null) {
-      a = new akip();
-    }
-    return a;
+    super(paramLooper);
   }
   
-  public void a(long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("AR_选图_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1001: 
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadPhoto", 2, "Get Message Progress. clientKey= " + paramMessage.arg1 + " progress=" + paramMessage.arg2);
+      }
+      i = paramMessage.arg1;
+      this.jdField_a_of_type_Akio.a(paramMessage.what, i, paramMessage.arg2);
+      return;
+    case 1000: 
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadPhoto", 2, "Get Message Finished. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
+      }
+      i = paramMessage.arg1;
+      this.jdField_a_of_type_Akio.a(paramMessage.what, i, paramMessage.arg2);
+      return;
+    case 1003: 
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadPhoto", 2, "Get Message failed. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
+      }
+      i = paramMessage.arg1;
+      this.jdField_a_of_type_Akio.a(paramMessage.what, i, paramMessage.arg2);
+      return;
+    case 1005: 
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadPhoto", 2, "Get Message task removed. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
+      }
+      i = paramMessage.arg1;
+      this.jdField_a_of_type_Akio.a(paramMessage.what, i, paramMessage.arg2);
+      this.jdField_a_of_type_Akio.a.remove(i);
+      return;
+    case 1004: 
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadPhoto", 2, "Get Message no task. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
+      }
+      this.jdField_a_of_type_Akio.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2);
+      this.jdField_a_of_type_Akio.a.clear();
+      return;
     }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("AR_选图_启动累计耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong2 - paramLong1) }));
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("AR_识别_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
-    }
-  }
-  
-  public void b(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("QR_识别_启动累计耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong2 - paramLong1) }));
-    }
-  }
-  
-  public void c(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("AR_追踪_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
-    }
-  }
-  
-  public void d(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("人脸_特征提取_单帧耗时 time cost=%sms", new Object[] { Long.valueOf(paramLong) }));
-    }
-  }
-  
-  public void e(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("人脸_追踪_单帧耗时 time cost=%sms", new Object[] { Long.valueOf(paramLong) }));
-    }
+    paramMessage = (Object[])paramMessage.obj;
+    int i = ((Integer)paramMessage[0]).intValue();
+    akit localakit = (akit)paramMessage[1];
+    int j = ((Integer)paramMessage[2]).intValue();
+    int k = ((Integer)paramMessage[3]).intValue();
+    this.jdField_a_of_type_Akio.a(localakit.jdField_a_of_type_Long, j, k);
+    this.jdField_a_of_type_Akio.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, localakit.jdField_a_of_type_JavaLangString, localakit.jdField_a_of_type_Long, j, k);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akip
  * JD-Core Version:    0.7.0.1
  */

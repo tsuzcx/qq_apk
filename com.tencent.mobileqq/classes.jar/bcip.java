@@ -1,26 +1,20 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
+
 public class bcip
+  extends akim
 {
-  public static final bcip a;
-  public static final bcip b;
-  public static final bcip c = new bcip("ANDROID.QQ.NEWYYBAPK", "7001");
-  public String a;
-  public String b;
+  public bcip(WerewolvesHostInterface paramWerewolvesHostInterface, QQAppInterface paramQQAppInterface) {}
   
-  static
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    jdField_a_of_type_Bcip = new bcip("ANDROID.QQ.WLISTAPK", "7003");
-    jdField_b_of_type_Bcip = new bcip("ANDROID.QQ.YYBAPK", "7002");
-  }
-  
-  bcip(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.manager.a().a(6, new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(paramBoolean2) });
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bcip
  * JD-Core Version:    0.7.0.1
  */

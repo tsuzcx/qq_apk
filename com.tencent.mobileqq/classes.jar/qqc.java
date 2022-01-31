@@ -1,82 +1,14 @@
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-public class qqc
-  extends ont
+public abstract interface qqc
 {
-  public qqc(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
-  {
-    QLog.d("ReadInJoyFastWebBottomSocialView", 1, new Object[] { "handleDoFavoriteResult, isSuccess = ", Boolean.valueOf(paramBoolean), ", rowKey = ", paramString1, ", operationType = ", Integer.valueOf(paramInt), ", cid = ", paramString2 });
-    if ((ReadInJoyFastWebBottomSocialView.a(this.a) == null) || (ReadInJoyFastWebBottomSocialView.a(this.a) == null))
-    {
-      QLog.d("ReadInJoyFastWebBottomSocialView", 1, "handleDoFavoriteResult but articleInfo is null.");
-      return;
-    }
-    bbmy localbbmy;
-    if ((paramBoolean) && (ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID.equals(paramString1)))
-    {
-      localbbmy = new bbmy(ReadInJoyFastWebBottomSocialView.a(this.a));
-      localbbmy.d(2000);
-      localbbmy.b(2);
-      localbbmy.a(bbmy.a(2));
-      QLog.d("ReadInJoyFastWebBottomSocialView", 1, "handleDoFavoriteResult,operationType=" + paramInt + ",button status:" + ReadInJoyFastWebBottomSocialView.d(this.a).isSelected());
-      if (paramInt != 1) {
-        break label319;
-      }
-      ArrayList localArrayList = (ArrayList)ReadInJoyFastWebBottomSocialView.a(this.a).get(ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID);
-      paramString1 = localArrayList;
-      if (localArrayList == null) {
-        paramString1 = new ArrayList();
-      }
-      paramString1.add(paramString2);
-      ReadInJoyFastWebBottomSocialView.a(this.a).put(ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID, paramString1);
-      if (!ReadInJoyFastWebBottomSocialView.d(this.a).isSelected()) {
-        break label308;
-      }
-      localbbmy.a(ReadInJoyFastWebBottomSocialView.a);
-      ReadInJoyFastWebBottomSocialView.b(this.a, true);
-      localbbmy.a();
-    }
-    for (;;)
-    {
-      ReadInJoyFastWebBottomSocialView.b(this.a, false);
-      return;
-      label308:
-      ReadInJoyFastWebBottomSocialView.c(this.a, false);
-      continue;
-      label319:
-      if (paramInt == 2)
-      {
-        ReadInJoyFastWebBottomSocialView.a(this.a).remove(ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID);
-        if (!ReadInJoyFastWebBottomSocialView.d(this.a).isSelected())
-        {
-          localbbmy.a(ReadInJoyFastWebBottomSocialView.b);
-          ReadInJoyFastWebBottomSocialView.b(this.a, false);
-          localbbmy.a();
-        }
-        else
-        {
-          ReadInJoyFastWebBottomSocialView.c(this.a, true);
-        }
-      }
-    }
-  }
+  public abstract void a(Object paramObject);
   
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, ArrayList<String> paramArrayList)
-  {
-    QLog.d("ReadInJoyFastWebBottomSocialView", 1, "handleFavoriteStatus, isSuccess = " + paramBoolean1 + ", rowKey =  " + paramString + ", isFavorite = " + paramBoolean2 + ", cidList = " + paramArrayList);
-    if ((paramBoolean1) && (ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID.equals(paramString)))
-    {
-      ReadInJoyFastWebBottomSocialView.a(this.a).put(paramString, paramArrayList);
-      ReadInJoyFastWebBottomSocialView.b(this.a, paramBoolean2);
-    }
-  }
+  public abstract void a(Object paramObject, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
 }
 
 

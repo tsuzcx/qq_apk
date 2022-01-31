@@ -1,50 +1,9 @@
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import java.util.List;
 
 public abstract interface ahpo
 {
-  public abstract int a();
-  
-  public abstract int a(int paramInt1, int paramInt2);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(@NonNull ahpq paramahpq);
-  
-  public abstract void a(ChatMessage paramChatMessage);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract void b(@ColorInt int paramInt);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract boolean b();
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void c(@ColorInt int paramInt);
-  
-  public abstract boolean c();
-  
-  public abstract int d();
-  
-  public abstract void d();
+  public abstract List<View> a();
 }
 
 

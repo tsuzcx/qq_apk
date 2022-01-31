@@ -1,16 +1,24 @@
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Point;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 
-class qou
-  extends omr
+final class qou
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  qou(qoe paramqoe, String paramString, List paramList)
-  {
-    super(paramString);
-  }
+  qou(WindowManager paramWindowManager, ViewGroup paramViewGroup, WindowManager.LayoutParams paramLayoutParams) {}
   
-  public void a(oml paramoml)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramoml.a(this.jdField_a_of_type_JavaUtilList);
+    if ((this.jdField_a_of_type_AndroidViewWindowManager == null) || (this.jdField_a_of_type_AndroidViewViewGroup == null)) {
+      return;
+    }
+    paramValueAnimator = (Point)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = paramValueAnimator.y;
+    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = paramValueAnimator.x;
+    this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_AndroidViewViewGroup, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
   }
 }
 

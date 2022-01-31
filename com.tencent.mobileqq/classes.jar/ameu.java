@@ -1,87 +1,80 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
 
-public class ameu
-  extends alzl<bhny>
+public final class ameu
 {
-  public int a()
+  public static void a(View paramView, float paramFloat)
   {
-    return 307;
-  }
-  
-  @NonNull
-  public bhny a(int paramInt)
-  {
-    return new bhny();
-  }
-  
-  @Nullable
-  public bhny a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length == 0)) {
-      return null;
-    }
-    paramArrayOfalzs = paramArrayOfalzs[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMTemplateConfigProcessor", 2, "handleQIMTemplateConfig onParsed, content:" + paramArrayOfalzs);
-    }
-    return new bhnv().a(paramArrayOfalzs, bjin.a.getAbsolutePath(), "temp_faceu_zip", new amev(this));
-  }
-  
-  public Class<bhny> a()
-  {
-    return bhny.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMTemplateConfigProcessor", 2, "handleQIMTemplateConfig onReqFailed");
-    }
-  }
-  
-  public void a(bhny parambhny)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMTemplateConfigProcessor", 2, "handleQIMTemplateConfig onUpdate");
-    }
-  }
-  
-  public int b()
-  {
-    if (!bjin.a()) {
-      return 0;
-    }
-    return baig.E(BaseApplicationImpl.getContext());
-  }
-  
-  public int b(int paramInt)
-  {
-    if (!bjin.a())
+    if (amet.a)
     {
-      QLog.i("QIMTemplateConfigProcessor", 1, "config file not exist");
-      alzw.a().a(307, 0);
-      return 0;
+      amet.a(paramView).a(paramFloat);
+      return;
     }
-    return super.b(paramInt);
+    amev.c(paramView, paramFloat);
   }
   
-  public boolean b()
+  public static void b(View paramView, float paramFloat)
   {
-    return false;
+    if (amet.a)
+    {
+      amet.a(paramView).d(paramFloat);
+      return;
+    }
+    amev.d(paramView, paramFloat);
   }
   
-  public boolean c()
+  public static void c(View paramView, float paramFloat)
   {
-    return true;
+    if (amet.a)
+    {
+      amet.a(paramView).e(paramFloat);
+      return;
+    }
+    amev.e(paramView, paramFloat);
+  }
+  
+  public static void d(View paramView, float paramFloat)
+  {
+    if (amet.a)
+    {
+      amet.a(paramView).b(paramFloat);
+      return;
+    }
+    amev.a(paramView, paramFloat);
+  }
+  
+  public static void e(View paramView, float paramFloat)
+  {
+    if (amet.a)
+    {
+      amet.a(paramView).c(paramFloat);
+      return;
+    }
+    amev.b(paramView, paramFloat);
+  }
+  
+  public static void f(View paramView, float paramFloat)
+  {
+    if (amet.a)
+    {
+      amet.a(paramView).g(paramFloat);
+      return;
+    }
+    amev.f(paramView, paramFloat);
+  }
+  
+  public static void g(View paramView, float paramFloat)
+  {
+    if (amet.a)
+    {
+      amet.a(paramView).h(paramFloat);
+      return;
+    }
+    amev.g(paramView, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ameu
  * JD-Core Version:    0.7.0.1
  */

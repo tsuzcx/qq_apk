@@ -1,57 +1,64 @@
 import android.content.Intent;
-import com.tencent.av.app.VideoAppInterface;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.ui.AVLoadingDialogActivity;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
-import com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig;
-import com.tencent.mobileqq.utils.confighandler.QAVFunCallHandler;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import java.lang.ref.WeakReference;
 
 public class mbt
+  extends Handler
 {
-  public static int a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  final String a;
+  
+  public mbt(String paramString)
   {
-    int i = 0;
-    if (paramBoolean2) {
-      if (!paramBoolean1) {
-        break label67;
-      }
-    }
-    label67:
-    for (i = bavz.a(paramAppRuntime, paramString, 6, paramBoolean1, null); i != 0; i = bavz.a(paramAppRuntime, paramAppRuntime.getAccount(), 6, paramBoolean1, paramString))
-    {
-      if (AudioHelper.e()) {
-        QLog.w("QAVConfig_382", 1, "getFunVideoId, 已经有默认配置, fcId[" + i + "]");
-      }
-      return i;
-    }
-    paramString = BusinessCommonConfig.getInstance(paramAppRuntime);
-    if (paramString != null)
-    {
-      paramAppRuntime = (QAVFunCallHandler)paramString.getConfigHandler(382);
-      paramAppRuntime = paramAppRuntime.getConfigDirect();
-      if (paramAppRuntime == null) {
-        break label137;
-      }
-      i = paramAppRuntime.getActivityFCId();
-    }
-    label137:
-    for (;;)
-    {
-      return i;
-      paramAppRuntime = new QAVFunCallHandler(paramAppRuntime.getAccount());
-      break;
-    }
+    this.a = paramString;
   }
   
-  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("tencent.video.v2q.AnnimateDownloadStart");
-    localIntent.setPackage(paramVideoAppInterface.getApp().getPackageName());
-    localIntent.putExtra("callId", paramInt);
-    paramVideoAppInterface.getApp().sendBroadcast(localIntent);
+    if ((paramMessage.obj != null) && ((paramMessage.obj instanceof WeakReference)))
+    {
+      localObject = (WeakReference)paramMessage.obj;
+      if (localObject != null)
+      {
+        localObject = ((WeakReference)localObject).get();
+        if ((localObject == null) || (!(localObject instanceof AVLoadingDialogActivity))) {}
+      }
+    }
+    for (Object localObject = new WeakReference((AVLoadingDialogActivity)localObject);; localObject = null)
+    {
+      switch (paramMessage.what)
+      {
+      }
+      do
+      {
+        do
+        {
+          return;
+        } while ((localObject == null) || (((WeakReference)localObject).get() == null));
+        paramMessage = (Intent)((AVLoadingDialogActivity)((WeakReference)localObject).get()).getIntent().getParcelableExtra("avactivity_intent");
+        paramMessage.setExtrasClassLoader(ResultRecord.class.getClassLoader());
+        long l = mtm.a(paramMessage);
+        QLog.w(this.a, 1, "avideo handleMessage MSG_START_AVACTIVITY, seq[" + l + "]");
+        try
+        {
+          AudioHelper.a(this.a + ".MSG_START_AVACTIVITY", paramMessage.getExtras());
+          ((AVLoadingDialogActivity)((WeakReference)localObject).get()).startActivity(paramMessage);
+          ((AVLoadingDialogActivity)((WeakReference)localObject).get()).overridePendingTransition(2130772164, 0);
+          return;
+        }
+        catch (Exception paramMessage)
+        {
+          QLog.w(this.a, 1, "MSG_START_AVACTIVITY, Exception, seq[" + l + "]", paramMessage);
+          return;
+        }
+      } while ((localObject == null) || (((WeakReference)localObject).get() == null));
+      ((AVLoadingDialogActivity)((WeakReference)localObject).get()).finish();
+      return;
+    }
   }
 }
 

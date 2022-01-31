@@ -1,33 +1,29 @@
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+
 public class uim
+  extends sth<uhz, tah>
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  
-  public void a()
+  public uim(uhz paramuhz)
   {
-    this.a = null;
-    this.b = null;
-    this.c = null;
-    this.d = null;
+    super(paramuhz);
   }
   
-  public void a(uim paramuim)
+  public void a(@NonNull uhz paramuhz, @NonNull tah paramtah)
   {
-    if (paramuim.a != null) {
-      this.a = paramuim.a;
-    }
-    if (paramuim.b != null) {
-      this.b = paramuim.b;
-    }
-    if (paramuim.c != null) {
-      this.c = paramuim.c;
-    }
-    if (paramuim.d != null) {
-      this.d = paramuim.d;
+    if ((paramuhz.a != null) && (TextUtils.equals(paramuhz.a.b, paramtah.a)))
+    {
+      veg.a(this.TAG, "receive feed info change event. %s.", paramtah.toString());
+      paramuhz.i();
     }
   }
+  
+  public Class acceptEventClass()
+  {
+    return tah.class;
+  }
+  
+  public void b(@NonNull uhz paramuhz, @NonNull tah paramtah) {}
 }
 
 

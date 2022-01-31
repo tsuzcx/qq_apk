@@ -1,19 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.view.View;
+import com.tencent.widget.ListView;
 
-class ren
-  implements OnCompositionLoadedListener
+public abstract interface ren
+  extends bftk
 {
-  ren(rem paramrem, Runnable paramRunnable) {}
+  public abstract void a(int paramInt1, View paramView, ListView paramListView, int paramInt2);
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
-  {
-    RefreshAnimView.a(this.jdField_a_of_type_Rem.a, paramLottieComposition);
-    if (paramLottieComposition != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
-  }
+  public abstract void a(View paramView, ListView paramListView, int paramInt);
 }
 
 

@@ -1,15 +1,18 @@
-import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
 
 class aehi
-  implements ndl
+  implements bcph
 {
-  aehi(aehh paramaehh) {}
+  aehi(aegu paramaegu) {}
   
-  public void a()
+  public void a(bcpf parambcpf)
   {
-    aegy.b(this.a.a, false);
-    this.a.a.a.sendEmptyMessage(1);
+    if (QLog.isColorLevel()) {
+      QLog.i("AIOGalleryScene", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambcpf);
+    }
   }
+  
+  public void a(bcpf parambcpf, int paramInt1, int paramInt2) {}
 }
 
 

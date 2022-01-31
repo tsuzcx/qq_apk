@@ -1,32 +1,86 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.confess.ConfessPlugin;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import android.os.Build;
+import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.List;
 
 public class alyf
-  implements aliw
+  extends alyc
 {
-  public alyf(ConfessPlugin paramConfessPlugin) {}
+  private float[] d = new float[4];
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public alyf(Context paramContext, int paramInt, SensorManager paramSensorManager, alxu paramalxu)
   {
-    if (QLog.isColorLevel())
+    super(paramContext, paramInt, paramSensorManager, paramalxu);
+    Sensor localSensor;
+    if (paramInt == 5)
     {
-      QLog.i("ConfessPlugin", 4, "preLoadQQSelfHeaderBitmap onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
-      if ((this.a.a != null) && (this.a.mRuntime != null) && (this.a.mRuntime.a() != null) && (TextUtils.equals(paramString1, this.a.mRuntime.a().getCurrentAccountUin())))
-      {
-        ThreadManager.getUIHandler().removeCallbacks(ConfessPlugin.a(this.a));
-        ThreadManager.getUIHandler().post(ConfessPlugin.a(this.a));
+      paramInt = 15;
+      paramContext = paramSensorManager.getDefaultSensor(paramInt);
+      localSensor = paramSensorManager.getDefaultSensor(1);
+      paramSensorManager = paramSensorManager.getDefaultSensor(4);
+      if ((paramSensorManager == null) || (paramContext == null) || (Build.VERSION.SDK_INT < 9)) {
+        break label150;
+      }
+      paramalxu.onSensorSupport(4, true);
+      this.jdField_a_of_type_JavaUtilList.add(paramContext);
+      QLog.i("OrientationProvider2", 2, "Gyroscope support,model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
+    }
+    for (;;)
+    {
+      if (localSensor == null) {
+        break label298;
+      }
+      paramalxu.onSensorSupport(1, true);
+      this.jdField_a_of_type_JavaUtilList.add(localSensor);
+      return;
+      paramInt = 11;
+      break;
+      label150:
+      paramalxu.onSensorSupport(4, false);
+      if (paramSensorManager == null) {
+        QLog.i("OrientationProvider2", 2, "Gyroscope not support,model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
+      } else if (paramContext == null) {
+        if (Build.VERSION.SDK_INT >= 9) {
+          QLog.i("OrientationProvider2", 2, "Gyroscope not support(rotationVectorSensor),model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
+        } else {
+          QLog.i("OrientationProvider2", 2, "Gyroscope not support(sdk < 9),model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
+        }
       }
     }
+    label298:
+    paramalxu.onSensorSupport(1, false);
+  }
+  
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    if (this.jdField_a_of_type_Alxu == null) {
+      return;
+    }
+    this.jdField_a_of_type_Alxu.updateAccelerometer(paramFloat1, paramFloat2, paramFloat3, paramLong);
+  }
+  
+  @TargetApi(9)
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    if ((paramSensorEvent.sensor.getType() == 11) || (paramSensorEvent.sensor.getType() == 15))
+    {
+      SensorManager.getQuaternionFromVector(this.d, paramSensorEvent.values);
+      this.jdField_a_of_type_Alxu.onRotationUpdateQuaternion(this.d);
+    }
+    while (paramSensorEvent.sensor.getType() != 1) {
+      return;
+    }
+    a(paramSensorEvent.values[0], paramSensorEvent.values[1], paramSensorEvent.values[2], paramSensorEvent.timestamp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alyf
  * JD-Core Version:    0.7.0.1
  */

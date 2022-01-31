@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.utils.httputils;
 
-import baku;
-import bakw;
+import bbme;
+import bbmg;
 
 class HttpCommunicator$1
   implements Runnable
 {
-  HttpCommunicator$1(HttpCommunicator paramHttpCommunicator, bakw parambakw, baku parambaku) {}
+  HttpCommunicator$1(HttpCommunicator paramHttpCommunicator, bbmg parambbmg, bbme parambbme) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Bakw, this.jdField_a_of_type_Baku);
+    this.this$0.a(this.jdField_a_of_type_Bbmg, this.jdField_a_of_type_Bbme);
   }
 }
 

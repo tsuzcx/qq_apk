@@ -1,11 +1,17 @@
-public class actp
+import com.tencent.qphone.base.util.QLog;
+
+final class actp
+  implements bcak
 {
-  public int a;
-  public byte[] a;
-  
-  actp(acto paramacto)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = 0;
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebAccelerator", 2, "preStart QWeb Process");
+      }
+      actd.a();
+    }
   }
 }
 

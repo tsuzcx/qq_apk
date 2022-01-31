@@ -1,30 +1,49 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
 
 public class two
-  extends sgl<twm, sxf>
 {
-  public two(twm paramtwm)
+  public String a;
+  public String b;
+  
+  public two(@NonNull String paramString)
   {
-    super(paramtwm);
+    this.a = paramString;
+    vxs.a(paramString);
   }
   
-  public void a(@NonNull twm paramtwm, @NonNull sxf paramsxf)
+  public boolean equals(Object paramObject)
   {
-    if ((twm.a(paramtwm) != null) && (paramsxf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramsxf.jdField_a_of_type_JavaUtilList.contains(twm.a(paramtwm).a)))
+    if (this == paramObject) {}
+    do
     {
-      urk.a("WeiShiFlowBannerVideoInfoController", "GetStoryTagInfoReceiver receive tag info change event. %s", paramsxf.b.toString());
-      paramtwm.a.i();
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (two)paramObject;
+      if (this.a != null) {
+        return this.a.equals(paramObject.a);
+      }
+    } while (paramObject.a == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.a != null) {
+      return this.a.hashCode();
+    }
+    return 0;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.b == null) {}
+    for (String str = "";; str = this.b) {
+      return str + this.a;
     }
   }
-  
-  public Class acceptEventClass()
-  {
-    return sxf.class;
-  }
-  
-  public void b(@NonNull twm paramtwm, @NonNull sxf paramsxf) {}
 }
 
 

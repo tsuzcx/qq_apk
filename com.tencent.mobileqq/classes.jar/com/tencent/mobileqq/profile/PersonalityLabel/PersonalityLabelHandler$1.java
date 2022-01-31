@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import atwx;
+import auuw;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class PersonalityLabelHandler$1
   implements Runnable
 {
-  public PersonalityLabelHandler$1(String paramString, QQAppInterface paramQQAppInterface, atwx paramatwx, byte[] paramArrayOfByte) {}
+  public PersonalityLabelHandler$1(String paramString, QQAppInterface paramQQAppInterface, auuw paramauuw, byte[] paramArrayOfByte) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-      this.jdField_a_of_type_Atwx.a.vPersonalityLabelV2 = this.jdField_a_of_type_ArrayOfByte;
+      this.jdField_a_of_type_Auuw.a.vPersonalityLabelV2 = this.jdField_a_of_type_ArrayOfByte;
     }
   }
 }

@@ -9,14 +9,14 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import aqlr;
-import aqlu;
-import aqlv;
-import aqlx;
-import aqlz;
-import aqmd;
-import aqme;
-import bgfp;
+import arfw;
+import arfz;
+import arga;
+import argc;
+import arge;
+import argi;
+import argj;
+import bhoh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
 import com.tencent.hydevteam.pluginframework.installedplugin.UseDynamicPluginLoaderInstalledPlugin;
@@ -34,16 +34,16 @@ public class HuayangLoadbackgroudActivity
   public static long a;
   private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   private static Map<String, InstalledApk> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private aqlx jdField_a_of_type_Aqlx;
-  private aqlz jdField_a_of_type_Aqlz = new aqlv(this);
+  private argc jdField_a_of_type_Argc;
+  private arge jdField_a_of_type_Arge = new arga(this);
   private IVPluginInfo jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo;
   private String jdField_a_of_type_JavaLangString;
   private long b;
   
   static
   {
-    jdField_a_of_type_AndroidContentBroadcastReceiver = new aqlu();
-    if (TextUtils.equals(bgfp.a(BaseApplicationImpl.sApplication), BaseApplicationImpl.sApplication.getPackageName() + ":troophomework"))
+    jdField_a_of_type_AndroidContentBroadcastReceiver = new arfz();
+    if (TextUtils.equals(bhoh.a(BaseApplicationImpl.sApplication), BaseApplicationImpl.sApplication.getPackageName() + ":troophomework"))
     {
       IntentFilter localIntentFilter = new IntentFilter("action_iv_plugin_update");
       BaseApplicationImpl.sApplication.registerReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
@@ -81,16 +81,16 @@ public class HuayangLoadbackgroudActivity
   
   public void onBackPressed()
   {
-    if (aqlr.a(this.jdField_a_of_type_JavaLangString)) {
-      aqmd.a("2691706");
+    if (arfw.a(this.jdField_a_of_type_JavaLangString)) {
+      argi.a("2691706");
     }
     for (;;)
     {
       finish();
-      sendBroadcast(new Intent(aqlr.b(this.jdField_a_of_type_JavaLangString)));
+      sendBroadcast(new Intent(arfw.b(this.jdField_a_of_type_JavaLangString)));
       return;
-      if (aqlr.b(this.jdField_a_of_type_JavaLangString)) {
-        aqmd.a("2597724");
+      if (arfw.b(this.jdField_a_of_type_JavaLangString)) {
+        argi.a("2597724");
       }
     }
   }
@@ -145,34 +145,34 @@ public class HuayangLoadbackgroudActivity
     String str = ((Bundle)localObject1).getString("uin");
     this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo = ((IVPluginInfo)((Bundle)localObject1).getParcelable("ivpluginInfo"));
     boolean bool2 = ((Bundle)localObject1).getBoolean("needStart", false);
-    aqmd.a = TextUtils.equals(paramBundle, "hy_sixgod");
-    aqme.a(this, paramBundle);
+    argi.a = TextUtils.equals(paramBundle, "hy_sixgod");
+    argj.a(this, paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.c = this.jdField_a_of_type_JavaLangString;
     if (bool1)
     {
-      if (aqlr.a(this.jdField_a_of_type_JavaLangString)) {
-        aqmd.a("2691705");
+      if (arfw.a(this.jdField_a_of_type_JavaLangString)) {
+        argi.a("2691705");
       }
       for (;;)
       {
-        this.jdField_a_of_type_Aqlx = aqlx.a(this, localUseDynamicPluginLoaderInstalledPlugin);
-        this.jdField_a_of_type_Aqlx.a(this.jdField_a_of_type_Aqlz);
-        this.jdField_a_of_type_Aqlx.a((String)localObject2, bool2, true, this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo, str, paramBundle);
+        this.jdField_a_of_type_Argc = argc.a(this, localUseDynamicPluginLoaderInstalledPlugin);
+        this.jdField_a_of_type_Argc.a(this.jdField_a_of_type_Arge);
+        this.jdField_a_of_type_Argc.a((String)localObject2, bool2, true, this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo, str, paramBundle);
         return;
-        if (aqlr.b(this.jdField_a_of_type_JavaLangString)) {
-          aqmd.a("2597722");
+        if (arfw.b(this.jdField_a_of_type_JavaLangString)) {
+          argi.a("2597722");
         }
       }
     }
-    aqlx.a(this, localUseDynamicPluginLoaderInstalledPlugin).a((String)localObject2, bool2, false, this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo, str, paramBundle);
+    argc.a(this, localUseDynamicPluginLoaderInstalledPlugin).a((String)localObject2, bool2, false, this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo, str, paramBundle);
     finish();
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Aqlx != null) {
-      this.jdField_a_of_type_Aqlx.b(this.jdField_a_of_type_Aqlz);
+    if (this.jdField_a_of_type_Argc != null) {
+      this.jdField_a_of_type_Argc.b(this.jdField_a_of_type_Arge);
     }
   }
   

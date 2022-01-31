@@ -1,22 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
 
-public class afnb
-  implements DialogInterface.OnClickListener
+class afnb
+  implements View.OnClickListener
 {
-  public afnb(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment) {}
+  afnb(afna paramafna) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.a.getActivity().setResult(8001);
+    if (afna.a(this.a))
+    {
+      TroopSuspiciousFragment.a(afna.a(this.a));
+      return;
+    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afnb
  * JD-Core Version:    0.7.0.1
  */

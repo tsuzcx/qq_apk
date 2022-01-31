@@ -1,23 +1,41 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import android.content.Context;
+import android.text.TextUtils;
 
-public class nuu
-  extends Editable.Factory
+final class nuu
+  implements amah
 {
-  public nuu(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  nuu(boolean paramBoolean, String paramString1, Context paramContext, String paramString2) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((paramCharSequence instanceof nsi)) {
-      return (Editable)paramCharSequence;
+    int i = 1;
+    if (nut.a() == paramInt1)
+    {
+      amav.a().a(paramInt1);
+      nut.a(-1);
+      if ((2 != paramInt2) && (1 != paramInt2)) {
+        break label101;
+      }
     }
-    return new nsi(paramCharSequence, 3, 20);
+    label101:
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      if ((-1 == paramInt2) && (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidContentContext != null)) {
+        onk.f(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+      }
+      String str = this.b;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramInt2 = i;; paramInt2 = 0)
+      {
+        onk.a(str, paramInt1, paramInt2);
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nuu
  * JD-Core Version:    0.7.0.1
  */

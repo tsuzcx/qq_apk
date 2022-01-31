@@ -6,6 +6,8 @@ import com.tencent.youtu.ytcommon.tools.wejson.WeJson;
 public class LiveStyleResponse
 {
   private static String TAG = "LiveStyleResponse";
+  public String action_data;
+  public String color_data;
   public String data;
   public int errorcode;
   public String errormsg;

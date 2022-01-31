@@ -1,43 +1,46 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
-import com.tencent.qqmini.sdk.manager.EngineChannel;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.open.wadl.WadlJsBridgeService;
+import cooperation.wadl.ipc.WadlParams;
 
-class bdoo
-  implements bdol
+public final class bdoo
+  extends Handler
 {
-  bdoo(bdom parambdom, EngineChannel paramEngineChannel, BaseLibInfo paramBaseLibInfo) {}
-  
-  public void a()
+  public bdoo(WadlJsBridgeService paramWadlJsBridgeService, Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(54, null);
+    super(paramLooper);
   }
   
-  public void a(float paramFloat, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putFloat("engineInstallerProgress", paramFloat);
-    localBundle.putString("engineInstallerMessage", paramString);
-    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(53, localBundle);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(52, null);
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(54, null);
-    bdoi localbdoi = (bdoi)bdom.b(this.jdField_a_of_type_Bdom).get(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType);
-    if (localbdoi != null) {
-      localbdoi.b(this);
+    String str = (String)paramMessage.obj;
+    bdoe.b(WadlJsBridgeService.a(), "The obj field of msg:" + paramMessage.what + "," + paramMessage.obj);
+    switch (paramMessage.what)
+    {
+    case 2: 
+    case 3: 
+    default: 
+    case 0: 
+    case 4: 
+      for (;;)
+      {
+        this.a.stopSelf(paramMessage.arg1);
+        return;
+        biby.a().b(4, str);
+      }
+    case 5: 
+      biby.a().a(4, str);
+      return;
     }
+    paramMessage = new WadlParams(str, "");
+    paramMessage.d = 4;
+    biby.a().b(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdoo
  * JD-Core Version:    0.7.0.1
  */

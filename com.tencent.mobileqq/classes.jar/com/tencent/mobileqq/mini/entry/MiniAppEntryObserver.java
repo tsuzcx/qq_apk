@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.entry;
 
-import ajfe;
+import ajtg;
 
 public class MiniAppEntryObserver
-  implements ajfe
+  implements ajtg
 {
   public void onMiniAppEntryChanged() {}
   

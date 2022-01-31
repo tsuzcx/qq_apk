@@ -1,13 +1,16 @@
-public class bikk
+import android.support.annotation.Nullable;
+
+class bikk
+  implements bjob<bioi>
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  bikk(bikc parambikc) {}
   
-  public String toString()
+  public void a(@Nullable bioi parambioi)
   {
-    return "TextInfo{text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", textColor=" + this.jdField_a_of_type_Int + ", size=" + this.b + ", state=" + this.c + '}';
+    bikc.a(this.a, parambioi);
+    if (bikc.a(this.a) != null) {
+      bikc.a(this.a).a(bikc.a(this.a).a(), bikc.a(this.a));
+    }
   }
 }
 

@@ -1,16 +1,23 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView;
+import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView.1;
+
 public class batq
+  implements Animator.AnimatorListener
 {
-  public boolean a;
+  public batq(PhantomPicView.1 param1) {}
   
-  public batq()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a = false;
+    this.a.this$0.c();
   }
   
-  public batq(boolean paramBoolean)
-  {
-    this.a = paramBoolean;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

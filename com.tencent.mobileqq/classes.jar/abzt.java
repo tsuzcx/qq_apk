@@ -1,19 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
 public class abzt
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public abzt(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public abzt(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.d == 11) {
-      awqx.b(this.a.app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
-    }
-    this.a.b.cancel();
+    this.a.a(this.a.a);
   }
 }
 

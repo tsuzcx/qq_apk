@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import mqq.app.AppRuntime.Status;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
 
-public class ajir
-  implements atkb
+public abstract interface ajir
 {
-  public ajir(FrameHelperActivity paramFrameHelperActivity) {}
+  public abstract void a(int paramInt);
   
-  public void a(AppRuntime.Status paramStatus)
-  {
-    this.a.v();
-  }
+  public abstract void a(ApolloTextureView paramApolloTextureView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajir
  * JD-Core Version:    0.7.0.1
  */

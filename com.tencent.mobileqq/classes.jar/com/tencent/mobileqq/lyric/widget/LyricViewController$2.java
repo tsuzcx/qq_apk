@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.lyric.widget;
 
-import arfr;
+import asbt;
 import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
 
 public class LyricViewController$2
   extends TimerTaskManager.TimerTaskRunnable
 {
-  public LyricViewController$2(arfr paramarfr) {}
+  public LyricViewController$2(asbt paramasbt) {}
   
   public void a()
   {
     if (!a()) {
-      arfr.a(this.this$0);
+      asbt.a(this.this$0);
     }
   }
 }

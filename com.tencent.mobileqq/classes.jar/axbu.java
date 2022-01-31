@@ -1,8 +1,14 @@
-import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface axbu
+class axbu
+  implements yot
 {
-  public abstract Bitmap a(axbb paramaxbb, String paramString1, String paramString2);
+  axbu(axbt paramaxbt, int paramInt) {}
+  
+  public void a(int paramInt, String paramString)
+  {
+    QLog.i("Q.lebatab.GameCenterManagerImp", 1, "on push code=" + paramInt + " cmd=" + this.jdField_a_of_type_Int);
+  }
 }
 
 

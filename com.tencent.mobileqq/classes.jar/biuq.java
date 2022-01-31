@@ -1,34 +1,24 @@
-import android.os.SystemClock;
-import com.tribe.async.async.JobSegment;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.gif.giftext.viewmodel.AEGIFMaterialViewModel.3.1;
+import dov.com.qq.im.ae.gif.giftext.viewmodel.AEGIFMaterialViewModel.3.2;
+import mqq.os.MqqHandler;
 
-public abstract class biuq<IN, OUT>
-  extends JobSegment<IN, OUT>
+public class biuq
+  implements biqq
 {
-  protected long a;
-  private final String a;
-  private long b;
+  biuq(biuo parambiuo) {}
   
-  public biuq()
+  public void a(MetaMaterial paramMetaMaterial)
   {
-    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.publish.edit." + getClass().getSimpleName());
+    ThreadManager.getUIHandler().post(new AEGIFMaterialViewModel.3.1(this, paramMetaMaterial));
   }
   
-  public void call(IN paramIN)
-  {
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    super.call(paramIN);
-  }
+  public void a(MetaMaterial paramMetaMaterial, int paramInt) {}
   
-  public void notifyError(Error paramError)
+  public void b(MetaMaterial paramMetaMaterial)
   {
-    this.b = SystemClock.uptimeMillis();
-    super.notifyError(paramError);
-  }
-  
-  public void notifyResult(OUT paramOUT)
-  {
-    this.b = SystemClock.uptimeMillis();
-    super.notifyResult(paramOUT);
+    ThreadManager.getUIHandler().post(new AEGIFMaterialViewModel.3.2(this, paramMetaMaterial));
   }
 }
 

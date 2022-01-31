@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import bbmy;
+import bcpw;
 
 class ConferenceFlyTicketActivity$1
   implements Runnable
@@ -9,7 +9,7 @@ class ConferenceFlyTicketActivity$1
   
   public void run()
   {
-    bbmy.a(this.this$0, this.a, 0).b(this.this$0.getTitleBarHeight());
+    bcpw.a(this.this$0, this.a, 0).b(this.this$0.getTitleBarHeight());
     this.this$0.finish();
   }
 }

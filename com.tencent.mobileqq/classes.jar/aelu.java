@@ -1,43 +1,19 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
-class aelu
-  implements URLDrawable.URLDrawableListener
+public class aelu
 {
-  aelu(aels paramaels) {}
+  public String a;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public aelu(String paramString)
   {
-    aels.a(this.a).remove(paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener onLoadCanceled");
-    }
+    this.a = paramString;
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    aels.a(this.a, paramURLDrawable);
-    aels.a(this.a).remove(paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener onLoadFialed");
-    }
-  }
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public boolean a()
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = aels.a(this.a);
-    aels.a(this.a, paramURLDrawable, l1 - l2);
-    aels.a(this.a, true);
-    aels.a(this.a).remove(paramURLDrawable);
-    this.a.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener downloadSuccess");
-    }
+    return false;
   }
 }
 

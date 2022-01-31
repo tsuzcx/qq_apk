@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bacm;
+import bbdr;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.widget.CircleProgress;
@@ -22,14 +22,14 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import cooperation.qzone.util.QZLog;
 import java.util.List;
 import java.util.Timer;
-import vms;
-import vvy;
-import wgf;
+import vzo;
+import wiv;
+import wvg;
 
 public class VideoNextFeedsView
   extends FrameLayout
 {
-  private int jdField_a_of_type_Int = vms.a(getContext(), 18.0F);
+  private int jdField_a_of_type_Int = vzo.a(getContext(), 18.0F);
   private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -38,12 +38,12 @@ public class VideoNextFeedsView
   private final String jdField_a_of_type_JavaLangString = "VideoNextFeedsView";
   private List<CertifiedAccountMeta.StFeed> jdField_a_of_type_JavaUtilList;
   private Timer jdField_a_of_type_JavaUtilTimer;
-  private wgf jdField_a_of_type_Wgf;
+  private wvg jdField_a_of_type_Wvg;
   private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = vms.a(getContext(), 331.0F);
+  private int jdField_b_of_type_Int = vzo.a(getContext(), 331.0F);
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int jdField_c_of_type_Int = vms.a(getContext(), 75.0F);
+  private int jdField_c_of_type_Int = vzo.a(getContext(), 75.0F);
   private TextView jdField_c_of_type_AndroidWidgetTextView;
   private int d;
   private int e;
@@ -79,7 +79,7 @@ public class VideoNextFeedsView
         break;
       }
       localStFeed = (CertifiedAccountMeta.StFeed)this.jdField_a_of_type_JavaUtilList.get(this.g);
-    } while ((localStFeed == null) || (!vvy.a(localStFeed.type.get())));
+    } while ((localStFeed == null) || (!wiv.a(localStFeed.type.get())));
     for (;;)
     {
       if (localStFeed == null)
@@ -89,14 +89,14 @@ public class VideoNextFeedsView
       }
       ImageView localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
       String str = localStFeed.poster.icon.get();
-      int i = vms.a(getContext(), this.jdField_a_of_type_Int);
-      int j = vms.a(getContext(), this.jdField_a_of_type_Int);
+      int i = vzo.a(getContext(), this.jdField_a_of_type_Int);
+      int j = vzo.a(getContext(), this.jdField_a_of_type_Int);
       Context localContext = getContext();
       if (this.jdField_a_of_type_Boolean) {}
       for (float f1 = 10.0F;; f1 = 9.0F)
       {
-        vms.a(localImageView, str, i, j, vms.a(localContext, f1), bacm.b(), null);
-        vms.a(this.jdField_a_of_type_AndroidWidgetImageView, localStFeed.cover.url.get(), this.d, this.e, getResources().getDrawable(2130839258), null);
+        vzo.a(localImageView, str, i, j, vzo.a(localContext, f1), bbdr.b(), null);
+        vzo.a(this.jdField_a_of_type_AndroidWidgetImageView, localStFeed.cover.url.get(), this.d, this.e, getResources().getDrawable(2130839282), null);
         this.jdField_b_of_type_AndroidWidgetTextView.setText(localStFeed.title.get());
         this.jdField_a_of_type_AndroidWidgetTextView.setText(localStFeed.poster.nick.get());
         this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = localStFeed;
@@ -109,16 +109,16 @@ public class VideoNextFeedsView
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131493153, null);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558709, null);
     addView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131302998));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131312437));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131312438));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131312293));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131302999));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)this.jdField_a_of_type_AndroidViewView.findViewById(2131299257));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368632));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378263));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378264));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378113));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368633));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)this.jdField_a_of_type_AndroidViewView.findViewById(2131364820));
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(30, Color.parseColor("#ffffff"), 100, Color.parseColor("#ffffff"));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(vms.a(getContext(), 1.0F));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(vzo.a(getContext(), 1.0F));
     setVisibility(8);
   }
   
@@ -139,8 +139,8 @@ public class VideoNextFeedsView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Wgf != null) {
-      this.jdField_a_of_type_Wgf.a(b());
+    if (this.jdField_a_of_type_Wvg != null) {
+      this.jdField_a_of_type_Wvg.a(b());
     }
   }
   
@@ -185,9 +185,9 @@ public class VideoNextFeedsView
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public void setOnCounterListener(wgf paramwgf)
+  public void setOnCounterListener(wvg paramwvg)
   {
-    this.jdField_a_of_type_Wgf = paramwgf;
+    this.jdField_a_of_type_Wvg = paramwvg;
   }
   
   public void setUIState(boolean paramBoolean1, boolean paramBoolean2)

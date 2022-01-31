@@ -1,291 +1,329 @@
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Set;
+import java.util.TreeSet;
 
 public class anzm
-  extends anzd
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int = 50;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
-  private BaseFileAssistantActivity jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity;
-  private int jdField_b_of_type_Int;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
-  private LinkedHashMap<String, List<FileManagerEntity>> jdField_b_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  private View.OnClickListener c;
-  private View.OnClickListener d;
+  public static String a = "https://i.gtimg.cn/qqshow/admindata/comdata/vipSmallEmoji_item_[epId]/[eId].gif";
+  public static String b = "https://i.gtimg.cn/qqshow/admindata/comdata/vipSmallEmoji_item_[epId]/[eId]_apng.png";
+  public static String c = "https://i.gtimg.cn/qqshow/admindata/comdata/vipSmallEmoji_item_[epId]/xydata.json";
+  public static String d = "https://i.gtimg.cn/qqshow/admindata/comdata/vipSmallEmoji_item_[epId]/[eId].png";
+  public static String e = "https://i.gtimg.cn/club/item/parcel/item/[eIdSub]/[eId]/ring.amr";
+  public static String f = "https://i.gtimg.cn/club/item/parcel/item/[eIdSub]/[eId]/pngframe.zip";
+  public static String g = "https://i.gtimg.cn/club/item/parcel/item/[eIdSub]/[eId]/126x126.png";
+  public static String h = "https://i.gtimg.cn/club/item/parcel/item/[eIdSub]/[eId]/[width]_[height]";
+  public static String i = "https://i.gtimg.cn/club/item/parcel/item/[eIdSub]/[eId]/[width]_[height]_apng";
+  public static String j = "https://i.gtimg.cn/club/item/parcel/item/[eIdSub]/[eId]/[width]x[height].png";
+  public static String k = "https://gxh.vip.qq.com/club/item/parcel/img/parcel/[mod]/[epId]/200x200.png";
+  public static String l = "https://gxh.vip.qq.com/qqshow/admindata/comdata/vipSmallEmoji_item_[epId]/200x200.png";
+  public static String m = ajsf.ct + "[epId]" + File.separator;
+  public static String n = ajsf.bR + "[epId]" + File.separator;
+  public static String o = n + "[eId].amr";
+  public static String p = n + "[eId]_thu.png";
+  public static String q = n + "[eId]_aio.png";
+  public static String r = n + "[epId].jtmp";
+  public static String s = n + "[eId]";
+  public static String t = n + "[eId]_apng";
+  public static String u = n + "h5_json.zip";
+  public static String v = n + "h5magic" + File.separator;
+  public static String w = v + "index.html";
+  public static String x = v + "fileList";
+  public static String y = n + "[epId].zip";
+  public static String z = n + "pngframe/";
   
-  public anzm(BaseFileAssistantActivity paramBaseFileAssistantActivity, Object paramObject, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2, View.OnClickListener paramOnClickListener3, View.OnLongClickListener paramOnLongClickListener, View.OnClickListener paramOnClickListener4)
+  public static askd a()
   {
-    super(paramBaseFileAssistantActivity, paramObject);
-    this.jdField_a_of_type_AndroidContentContext = paramBaseFileAssistantActivity;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = paramBaseFileAssistantActivity;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramBaseFileAssistantActivity);
-    this.jdField_b_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)paramObject);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener1;
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener2;
-    this.c = paramOnClickListener3;
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
-    this.d = paramOnClickListener4;
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    this.jdField_b_of_type_Int = ((int)(2.0F * this.jdField_a_of_type_Float));
-    this.jdField_a_of_type_Int = a(4);
-  }
-  
-  private int a(int paramInt)
-  {
-    DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics();
-    return (int)(localDisplayMetrics.widthPixels - localDisplayMetrics.density * ((paramInt - 1) * 2)) / paramInt;
-  }
-  
-  private View a(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject = (LinearLayout)paramView;
-    paramView = (View)localObject;
-    if (localObject == null) {
-      paramView = a(paramViewGroup);
-    }
-    paramView.removeAllViews();
-    anzo localanzo = (anzo)paramView.getTag();
-    int i = 0;
-    for (;;)
+    try
     {
-      View localView;
-      if (i < 4)
-      {
-        localView = b(paramInt1, paramInt2 * 4 + i, paramBoolean, localanzo.a[i], paramViewGroup);
-        if (localView != null) {}
+      AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (localAppInterface != null) {
+        return (askd)localAppInterface.getManager(14);
       }
-      else
-      {
-        return paramView;
-      }
-      localanzo.a[i] = localView;
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
-      localObject = localLayoutParams;
-      if (localLayoutParams == null) {
-        localObject = new LinearLayout.LayoutParams(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-      }
-      ((LinearLayout.LayoutParams)localObject).width = this.jdField_a_of_type_Int;
-      ((LinearLayout.LayoutParams)localObject).height = this.jdField_a_of_type_Int;
-      if (i != 0) {
-        ((LinearLayout.LayoutParams)localObject).leftMargin = this.jdField_b_of_type_Int;
-      }
-      ((LinearLayout.LayoutParams)localObject).topMargin = this.jdField_b_of_type_Int;
-      localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      paramView.addView(localView);
-      i += 1;
     }
-  }
-  
-  private LinearLayout a(ViewGroup paramViewGroup)
-  {
-    paramViewGroup = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    paramViewGroup.setOrientation(0);
-    paramViewGroup.setClickable(false);
-    paramViewGroup.setLongClickable(false);
-    paramViewGroup.setTag(new anzo(null));
-    return paramViewGroup;
-  }
-  
-  private View b(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = getChild(paramInt1, paramInt2);
-    if (paramViewGroup != null) {}
-    View localView;
-    for (FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramViewGroup;; localView = null)
+    catch (ClassCastException localClassCastException)
     {
-      if (localFileManagerEntity == null) {
-        return null;
-      }
-      if (paramView == null) {
-        paramViewGroup = paramView;
-      }
       for (;;)
       {
-        try
-        {
-          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131494893, null);
-          paramViewGroup = paramView;
-          localanzc = new anzc();
-          paramViewGroup = paramView;
-          localanzc.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131302158));
-          paramViewGroup = paramView;
-          localanzc.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131302175));
-          paramViewGroup = paramView;
-          localanzc.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131302172));
-          paramViewGroup = paramView;
-          localanzc.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-          paramViewGroup = paramView;
-          localanzc.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setOnClickListener(this.c);
-          paramViewGroup = paramView;
-          localanzc.jdField_a_of_type_AndroidWidgetImageView.setTag(localanzc);
-          paramViewGroup = paramView;
-          localanzc.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setTag(localanzc);
-          paramViewGroup = paramView;
-          paramView.setTag(localanzc);
-          try
-          {
-            localanzc.jdField_a_of_type_JavaLangObject = localFileManagerEntity;
-            localanzc.jdField_a_of_type_Int = paramInt2;
-            localanzc.jdField_b_of_type_Int = paramInt1;
-            localanzc.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAdjustViewBounds(false);
-            localanzc.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            localanzc.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setDefaultImage(2130846730);
-            localanzc.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncClipSize(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-            apck.a(localanzc.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileManagerEntity);
-            paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131626883) + localFileManagerEntity.fileName;
-            if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.f()) {
-              continue;
-            }
-            localanzc.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-            if (!aonm.a(localFileManagerEntity)) {
-              continue;
-            }
-            paramViewGroup = paramViewGroup + this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131626884);
-            localanzc.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840158);
-            paramView.setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getResources().getColor(2131101537));
-            paramView.setOnLongClickListener(null);
-            localanzc.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramViewGroup);
-            localanzc.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setContentDescription(paramViewGroup);
-            return paramView;
-          }
-          catch (Exception localException)
-          {
-            paramViewGroup = paramView;
-          }
-        }
-        catch (Exception paramView)
-        {
-          anzc localanzc;
-          localView = paramView;
-          continue;
-        }
-        localException.printStackTrace();
-        QLog.e("#######", 1, localException.toString());
-        return paramViewGroup;
-        paramViewGroup = paramView;
-        localanzc = (anzc)paramView.getTag();
-        continue;
-        paramViewGroup = paramViewGroup + ajjy.a(2131643909);
-        localanzc.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-        localanzc.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844777);
-        paramView.setOnLongClickListener(this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
-        continue;
-        localanzc.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        localanzc.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+        localClassCastException.printStackTrace();
+        Object localObject = null;
       }
-    }
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int + this.jdField_b_of_type_Int;
-  }
-  
-  public Object getChild(int paramInt1, int paramInt2)
-  {
-    Object localObject = this.jdField_b_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    int i = 0;
-    while (((Iterator)localObject).hasNext())
-    {
-      String str = (String)((Iterator)localObject).next();
-      if (i == paramInt1)
-      {
-        localObject = (List)this.jdField_b_of_type_JavaUtilLinkedHashMap.get(str);
-        if (paramInt2 >= ((List)localObject).size()) {
-          return null;
-        }
-        return ((List)localObject).get(paramInt2);
-      }
-      i += 1;
     }
     return null;
   }
   
-  public long getChildId(int paramInt1, int paramInt2)
+  public static List<aoak> a(QQAppInterface paramQQAppInterface)
   {
-    return paramInt2;
+    paramQQAppInterface = new ArrayList();
+    paramQQAppInterface.add(new aoak(7, 7, null));
+    paramQQAppInterface.add(new aoak(4, 4, null));
+    paramQQAppInterface.add(new aoak(11, 4, null));
+    return paramQQAppInterface;
   }
   
-  public View getChildView(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
+  public static List<aoak> a(QQAppInterface paramQQAppInterface, int paramInt, boolean paramBoolean)
   {
-    return a(paramInt1, paramInt2, paramBoolean, paramView, paramViewGroup);
-  }
-  
-  public int getChildrenCount(int paramInt)
-  {
-    int k = 0;
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    int i = 0;
-    for (;;)
+    long l1 = System.currentTimeMillis();
+    List localList2 = Collections.synchronizedList(new ArrayList());
+    Object localObject = (askd)paramQQAppInterface.getManager(14);
+    List localList1 = ((askd)localObject).a(paramInt);
+    localList2.add(new aoak(7, 7, null));
+    if (paramInt == 0)
     {
-      int j = k;
-      if (localIterator.hasNext())
+      localList2.add(new aoak(4, 4, null));
+      paramQQAppInterface = (anrs)paramQQAppInterface.getManager(334);
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.c())) {
+        localList2.add(new aoak(11, 4, null));
+      }
+    }
+    paramQQAppInterface = ((askd)localObject).a(false, paramInt, paramBoolean);
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0)) {
+      localList2.add(new aoak(8, 3, null));
+    }
+    if (localList1 != null)
+    {
+      localObject = localList1.iterator();
+      paramInt = 0;
+      if (((Iterator)localObject).hasNext())
       {
-        String str = (String)localIterator.next();
-        if (i != paramInt) {
-          break label82;
+        EmoticonPackage localEmoticonPackage = (EmoticonPackage)((Iterator)localObject).next();
+        label260:
+        int i1;
+        if ((localEmoticonPackage.type != 1) && (3 != localEmoticonPackage.jobType) && (1 != localEmoticonPackage.jobType) && (5 != localEmoticonPackage.jobType))
+        {
+          localList1 = null;
+          if (localEmoticonPackage.jobType == 4)
+          {
+            paramQQAppInterface = new aoak(10, 7, localEmoticonPackage);
+            i1 = paramInt;
+            if (paramQQAppInterface != null)
+            {
+              localList2.add(paramQQAppInterface);
+              i1 = paramInt;
+            }
+            label277:
+            paramQQAppInterface = localEmoticonPackage.epId;
+            if (localEmoticonPackage.status != 2) {
+              break label392;
+            }
+          }
         }
-        paramInt = ((List)this.jdField_b_of_type_JavaUtilLinkedHashMap.get(str)).size();
-        if (paramInt < 4) {
-          j = 1;
+        label392:
+        for (boolean bool = true;; bool = false)
+        {
+          anzj.a(paramQQAppInterface, bool);
+          paramInt = i1;
+          break;
+          paramQQAppInterface = localList1;
+          if (localEmoticonPackage.jobType != 0) {
+            break label260;
+          }
+          paramQQAppInterface = localList1;
+          if (paramBoolean) {
+            break label260;
+          }
+          paramQQAppInterface = new aoak(6, 4, localEmoticonPackage);
+          break label260;
+          if (3 != localEmoticonPackage.jobType)
+          {
+            i1 = paramInt;
+            if (5 != localEmoticonPackage.jobType) {
+              break label277;
+            }
+          }
+          i1 = paramInt;
+          if (paramInt != 0) {
+            break label277;
+          }
+          localList2.add(new aoak(9, 4, localEmoticonPackage));
+          i1 = 1;
+          break label277;
         }
       }
-      else
+    }
+    long l2 = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonUtils", 2, "prepare data cost time:" + (l2 - l1));
+    }
+    return localList2;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, EmoticonPackage paramEmoticonPackage, int paramInt)
+  {
+    if ((paramQQAppInterface != null) && (paramEmoticonPackage != null))
+    {
+      paramQQAppInterface = (anvs)paramQQAppInterface.getManager(43);
+      if ((paramQQAppInterface.a(paramEmoticonPackage.epId) < 0.0F) && (b()))
       {
-        return j;
+        if (QLog.isColorLevel()) {
+          QLog.d("EmoticonUtils", 2, "downloadNormalEmotion wifi auto download emotion , epid = " + paramEmoticonPackage.epId);
+        }
+        paramQQAppInterface.a(paramEmoticonPackage, false, false, paramInt);
       }
-      return paramInt / 4 + 1;
-      label82:
-      i += 1;
     }
   }
   
-  public Object getGroup(int paramInt)
+  public static void a(aykp[] paramArrayOfaykp, float paramFloat1, float paramFloat2, boolean paramBoolean1, int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Activity paramActivity, boolean paramBoolean2)
   {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    int i = 0;
-    while (localIterator.hasNext())
+    if ((paramArrayOfaykp == null) || (paramQQAppInterface == null) || (paramSessionInfo == null) || (paramActivity == null)) {}
+    Object localObject1;
+    int i2;
+    do
     {
-      String str = (String)localIterator.next();
-      if (i == paramInt) {
-        return str;
+      return;
+      localObject1 = new TreeSet();
+      int i1 = 0;
+      i2 = paramInt1;
+      paramInt1 = i1;
+      while (paramInt1 < paramArrayOfaykp.length)
+      {
+        Object localObject2 = paramArrayOfaykp[paramInt1];
+        boolean bool = paramBoolean1;
+        int i3 = i2;
+        i1 = paramInt2;
+        if ((localObject2 instanceof aykr))
+        {
+          localObject2 = (aykr)localObject2;
+          float f1 = ((aykr)localObject2).a;
+          float f2 = ((aykr)localObject2).b;
+          float f3 = ((aykr)localObject2).c;
+          float f4 = ((aykr)localObject2).d;
+          int i4 = ((aykr)localObject2).e;
+          int i5 = ((aykr)localObject2).f;
+          ((TreeSet)localObject1).add(Integer.valueOf(i4));
+          bool = paramBoolean1;
+          i3 = i2;
+          i1 = paramInt2;
+          if (!paramBoolean2)
+          {
+            bool = paramBoolean1;
+            i3 = i2;
+            i1 = paramInt2;
+            if (paramFloat1 >= f1)
+            {
+              bool = paramBoolean1;
+              i3 = i2;
+              i1 = paramInt2;
+              if (paramFloat1 <= f3)
+              {
+                bool = paramBoolean1;
+                i3 = i2;
+                i1 = paramInt2;
+                if (paramFloat2 >= f2)
+                {
+                  bool = paramBoolean1;
+                  i3 = i2;
+                  i1 = paramInt2;
+                  if (paramFloat2 <= f4)
+                  {
+                    bool = paramBoolean1;
+                    i3 = i2;
+                    i1 = paramInt2;
+                    if (!paramBoolean1)
+                    {
+                      bool = true;
+                      i1 = i5;
+                      i3 = i4;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        paramInt1 += 1;
+        paramBoolean1 = bool;
+        i2 = i3;
+        paramInt2 = i1;
       }
-      i += 1;
+    } while (!paramBoolean1);
+    if (((TreeSet)localObject1).size() == 1)
+    {
+      ((askd)paramQQAppInterface.getManager(14)).b(String.valueOf(i2), 0, new anzn(paramSessionInfo, paramQQAppInterface, i2, paramActivity));
+      return;
     }
-    return null;
+    paramSessionInfo = ((TreeSet)localObject1).iterator();
+    for (paramArrayOfaykp = ""; paramSessionInfo.hasNext(); paramArrayOfaykp = paramArrayOfaykp + localObject1 + ",") {
+      localObject1 = (Integer)paramSessionInfo.next();
+    }
+    paramSessionInfo = paramArrayOfaykp;
+    if (!paramArrayOfaykp.equals("")) {
+      paramSessionInfo = paramArrayOfaykp.substring(0, paramArrayOfaykp.length() - 1);
+    }
+    EmojiHomeUiPlugin.openSmallEmojiListPage(paramActivity, paramQQAppInterface.getAccount(), 11, paramSessionInfo);
+    axqw.b(paramQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007000", 0, 0, String.valueOf(i2), String.valueOf(paramInt2), "", "");
   }
   
-  public int getGroupCount()
+  public static boolean a()
   {
-    return this.jdField_b_of_type_JavaUtilLinkedHashMap.keySet().size();
+    int i1 = bbev.a(BaseApplication.getContext());
+    return (i1 == 1) || (i1 == 3) || (i1 == 4);
   }
   
-  public long getGroupId(int paramInt)
+  public static boolean a(int paramInt)
   {
-    return paramInt;
+    return (paramInt & 0x1) == 1;
+  }
+  
+  public static boolean a(EmoticonPackage paramEmoticonPackage)
+  {
+    return (paramEmoticonPackage != null) && (paramEmoticonPackage.status == 2) && ((paramEmoticonPackage.updateFlag & 0x1) == 1);
+  }
+  
+  public static byte[] a(String paramString)
+  {
+    int i2 = paramString.length() / 2;
+    byte[] arrayOfByte = new byte[i2];
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      arrayOfByte[i1] = Integer.valueOf(paramString.substring(i1 * 2, i1 * 2 + 2), 16).byteValue();
+      i1 += 1;
+    }
+    return arrayOfByte;
+  }
+  
+  public static List<aoak> b(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = new ArrayList();
+    paramQQAppInterface.add(new aoak(7, 7, null));
+    return paramQQAppInterface;
+  }
+  
+  public static boolean b()
+  {
+    return bbev.a(BaseApplication.getContext()) == 1;
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt & 0x2) == 2;
+  }
+  
+  public static boolean c()
+  {
+    BaseApplication localBaseApplication = BaseApplication.getContext();
+    int i1 = bbev.a(localBaseApplication);
+    boolean bool = SettingCloneUtil.readValue(localBaseApplication, null, localBaseApplication.getString(2131695321), "qqsetting_auto_receive_magic_face_key", true);
+    return ((i1 == 3) || (i1 == 4)) && (!bool);
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    return (paramInt == 0) || (paramInt == 1) || (paramInt == 3000) || (paramInt == 99999);
   }
 }
 

@@ -1,21 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.mobileqq.data.MedalList;
+import com.tencent.mobileqq.data.MedalList.Info;
+import java.util.ArrayList;
 
 public class bcqf
-  implements View.OnClickListener
 {
-  public bcqf(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  private MedalList a;
   
-  public void onClick(View paramView)
+  public int a()
   {
-    azyk.a(this.a, this.a.jdField_a_of_type_AndroidWidgetImageView, this.a.jdField_a_of_type_Atwx.a.a);
+    if (this.a != null) {
+      return this.a.infoList.size();
+    }
+    return 0;
+  }
+  
+  public int a(int paramInt)
+  {
+    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
+      return ((MedalList.Info)this.a.infoList.get(paramInt)).type;
+    }
+    return 0;
+  }
+  
+  public String a(int paramInt)
+  {
+    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
+      return ((MedalList.Info)this.a.infoList.get(paramInt)).value;
+    }
+    return null;
+  }
+  
+  public void a(MedalList paramMedalList)
+  {
+    this.a = paramMedalList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcqf
  * JD-Core Version:    0.7.0.1
  */

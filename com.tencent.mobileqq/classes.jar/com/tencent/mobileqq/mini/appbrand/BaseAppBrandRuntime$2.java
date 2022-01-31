@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand;
 
-import bbms;
+import bcpq;
 
 class BaseAppBrandRuntime$2
   implements Runnable

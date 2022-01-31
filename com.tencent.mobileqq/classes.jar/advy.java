@@ -1,38 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
 
 class advy
-  implements DialogInterface.OnClickListener
+  implements ayvy
 {
-  advy(advv paramadvv, int paramInt, Object paramObject, adyb paramadyb) {}
+  advy(advu paramadvu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(ArrayList<MessageRecord> paramArrayList)
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    case 2: 
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOGalleryScene", 2, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
-      }
-      break;
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOImageData));
-      advv.a(this.jdField_a_of_type_Advv, (AIOImageData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Adyb);
-      this.jdField_a_of_type_Advv.u();
-      return;
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOShortVideoData));
-    advv.a(this.jdField_a_of_type_Advv, (AIOShortVideoData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Adyb);
-    this.jdField_a_of_type_Adyb.a.a = true;
-    this.jdField_a_of_type_Advv.u();
+    this.a.b();
   }
 }
 

@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.widget.TextView;
+import bfqb;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
 class CapsuleButton$5
-  implements EIPCResultCallback
+  implements Runnable
 {
-  CapsuleButton$5(CapsuleButton paramCapsuleButton, MiniAppInfo paramMiniAppInfo) {}
+  CapsuleButton$5(CapsuleButton paramCapsuleButton) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void run()
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.code == -100))
+    if ((CapsuleButton.access$400() > 0) && (CapsuleButton.access$500(this.this$0) != null) && (!CapsuleButton.access$500(this.this$0).isAnimating()))
     {
-      AppBrandTask.runTaskOnUiThread(new CapsuleButton.5.1(this));
+      CapsuleButton.access$600(this.this$0).setVisibility(0);
+      bfqb.a(CapsuleButton.access$600(this.this$0), 7, CapsuleButton.access$400(), 0);
       return;
     }
-    CapsuleButton.access$700(this.this$0, this.val$miniAppInfo);
+    CapsuleButton.access$600(this.this$0).setVisibility(8);
   }
 }
 

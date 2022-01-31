@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.troopgift;
 
-import aejb;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import azqt;
+import barx;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class TroopInteractGiftAnimationController$5
   implements Runnable
 {
-  public TroopInteractGiftAnimationController$5(azqt paramazqt) {}
+  public TroopInteractGiftAnimationController$5(barx parambarx) {}
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Aejb == null) {
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie == null) {
       return;
     }
-    this.this$0.jdField_a_of_type_Aejb.c.removeView(this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.c.removeView(this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView);
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton != null) {
       this.this$0.jdField_a_of_type_AndroidViewViewGroup.removeView(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton);
     }

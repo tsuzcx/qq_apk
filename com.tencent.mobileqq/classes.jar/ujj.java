@@ -1,9 +1,18 @@
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public final class ujj
-  extends sfo
+class ujj
+  implements DialogInterface.OnDismissListener
 {
-  public FeedItem a;
+  ujj(uji paramuji, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    }
+  }
 }
 
 

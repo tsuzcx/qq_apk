@@ -1,42 +1,65 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCPUMonitor.1.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.articlesummary.articlesummary.AggregatedList;
+import tencent.im.oidb.articlesummary.articlesummary.ArticleSummary;
+import tencent.im.oidb.articlesummary.articlesummary.FeedsInfo;
+import tencent.im.oidb.articlesummary.articlesummary.SocializeFeedsInfo;
 
-public final class qay
-  extends BroadcastReceiver
+public class qay
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public ArrayList<qaz> a;
+  articlesummary.AggregatedList a;
+  
+  public static qay a(articlesummary.AggregatedList paramAggregatedList)
   {
-    paramContext = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    if ((paramAggregatedList != null) && (paramAggregatedList.rpt_article_summary.has()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(qax.a(), 2, "Intent.ACTION_SCREEN_OFF");
-      }
-      if ((qax.a().get() == 0) && (qax.b().get() < qax.a()))
+      qay localqay = new qay();
+      Object localObject = paramAggregatedList.rpt_article_summary.get();
+      localqay.jdField_a_of_type_JavaUtilArrayList = new ArrayList(((List)localObject).size());
+      localqay.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$AggregatedList = paramAggregatedList;
+      paramAggregatedList = ((List)localObject).iterator();
+      while (paramAggregatedList.hasNext())
       {
-        qax.a(new Thread(new VideoFeedsCPUMonitor.1.1(this)));
-        qax.a().set(1);
-        qax.a().start();
+        localObject = (articlesummary.ArticleSummary)paramAggregatedList.next();
+        articlesummary.FeedsInfo localFeedsInfo = (articlesummary.FeedsInfo)((articlesummary.ArticleSummary)localObject).msg_feeds_info.get();
+        qaz localqaz = new qaz();
+        localqaz.jdField_a_of_type_Long = ((articlesummary.ArticleSummary)localObject).msg_feeds_info.msg_social_feeds_info.uint64_feeds_id.get();
+        localqaz.jdField_b_of_type_Long = ((articlesummary.ArticleSummary)localObject).uint64_algorithm_id.get();
+        if (localFeedsInfo.feeds_type.has()) {
+          localqaz.jdField_a_of_type_Int = localFeedsInfo.feeds_type.get();
+        }
+        if (((articlesummary.ArticleSummary)localObject).uint32_strategy_id.has()) {
+          localqaz.jdField_b_of_type_Int = ((articlesummary.ArticleSummary)localObject).uint32_strategy_id.get();
+        }
+        if (((articlesummary.ArticleSummary)localObject).uint64_recommend_seq.has()) {
+          localqaz.c = ((articlesummary.ArticleSummary)localObject).uint64_recommend_seq.get();
+        }
+        localqay.jdField_a_of_type_JavaUtilArrayList.add(localqaz);
       }
+      return localqay;
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (!"android.intent.action.SCREEN_ON".equals(paramContext));
-      if (QLog.isColorLevel()) {
-        QLog.d(qax.a(), 2, "Intent.ACTION_SCREEN_ON");
-      }
-    } while (qax.a().get() != 1);
-    if ((qax.a() != null) && (qax.a().isAlive())) {
-      qax.a().interrupt();
-    }
-    qax.a().set(3);
+    return null;
+  }
+  
+  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    return (paramBaseArticleInfo.mExtraBiuBriefInfo != null) && (!paramBaseArticleInfo.isExtraBiuExpanded) && (paramBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList != null) && (!paramBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList.isEmpty());
+  }
+  
+  public static boolean b(BaseArticleInfo paramBaseArticleInfo)
+  {
+    return (paramBaseArticleInfo.mExtraBiuBriefInfo != null) && (paramBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList != null) && (!paramBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList.isEmpty());
+  }
+  
+  public byte[] a()
+  {
+    return ((articlesummary.AggregatedList)this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$AggregatedList.get()).toByteArray();
   }
 }
 

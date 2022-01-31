@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.content.pm.PackageManager;
-import babr;
-import bafb;
+import bbcv;
+import bbgg;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 
 class InternalJSPlugin$4
@@ -14,7 +14,7 @@ class InternalJSPlugin$4
   
   public void run()
   {
-    babr.a(this.val$activity, 230, null, String.format(ajjy.a(2131640013), new Object[] { this.val$appName }), ajjy.a(2131640020), ajjy.a(2131640021), new InternalJSPlugin.4.1(this), new InternalJSPlugin.4.2(this)).show();
+    bbcv.a(this.val$activity, 230, null, String.format(ajyc.a(2131705798), new Object[] { this.val$appName }), ajyc.a(2131705805), ajyc.a(2131705806), new InternalJSPlugin.4.1(this), new InternalJSPlugin.4.2(this)).show();
   }
 }
 

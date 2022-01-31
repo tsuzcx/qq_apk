@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import ndn;
-import qmu;
-import qmv;
-import qoe;
+import noo;
+import qzd;
+import qze;
+import rap;
 
 public class ReadInJoyBaseAdapter$14
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$14(qoe paramqoe, BaseArticleInfo paramBaseArticleInfo) {}
+  public ReadInJoyBaseAdapter$14(rap paramrap, BaseArticleInfo paramBaseArticleInfo) {}
   
   public void run()
   {
     if (this.a != null) {
-      ndn.a(null, "", "0X8008E28", "0X8008E28", 0, 0, "", "", "", new qmv(null, null, this.a.mVideoVid, this.a.innerUniqueID).a((int)this.a.mChannelID).O((int)qoe.b(this.this$0)).R(0).a().a(), false);
+      noo.a(null, "", "0X8008E28", "0X8008E28", 0, 0, "", "", "", new qze(null, null, this.a.mVideoVid, this.a.innerUniqueID).a((int)this.a.mChannelID).P((int)rap.b(this.this$0)).S(0).a().a(), false);
     }
   }
 }

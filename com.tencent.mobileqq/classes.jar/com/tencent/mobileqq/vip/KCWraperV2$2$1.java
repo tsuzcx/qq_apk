@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vip;
 
-import baue;
+import bbwy;
 
 class KCWraperV2$2$1
   implements Runnable

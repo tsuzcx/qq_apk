@@ -1,48 +1,171 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.util.LruCache;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class amrd<T>
+public class amrd
+  extends amrp
+  implements ampd<String>
 {
-  private LruCache<String, T> a = new amre(this, (int)Runtime.getRuntime().maxMemory() / 32);
+  protected String a;
+  public ArrayList<amrn> a;
   
-  private static int a(Bitmap paramBitmap)
+  public amrd()
   {
-    if (paramBitmap == null) {
-      return 0;
-    }
-    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  private int b(T paramT)
+  private static alrw a(JSONObject paramJSONObject)
   {
-    if ((paramT instanceof Bitmap)) {
-      return a((Bitmap)paramT);
+    if (paramJSONObject == null) {
+      return null;
     }
-    if ((paramT instanceof BitmapDrawable)) {
-      return a(((BitmapDrawable)paramT).getBitmap());
-    }
-    return 0;
-  }
-  
-  protected int a(T paramT)
-  {
-    return 0;
-  }
-  
-  public void a(int paramInt)
-  {
-    try
+    alrw localalrw = new alrw();
+    localalrw.jdField_a_of_type_Int = paramJSONObject.optInt("type", -1);
+    localalrw.d = paramJSONObject.optString("md5", null);
+    localalrw.jdField_b_of_type_JavaLangString = paramJSONObject.optString("url", null);
+    localalrw.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name", null);
+    localalrw.c = paramJSONObject.optString("identifier", null);
+    if (!localalrw.a())
     {
-      this.a.trimToSize(paramInt);
+      QLog.i("AIDictConfig", 1, "getDictInfoFromJSON, invalid dict info");
+      return null;
+    }
+    QLog.i("AIDictConfig", 1, "onParse getDictInfoFromJSON  info.type=" + localalrw.jdField_a_of_type_Int + ", info.md5=" + localalrw.d + ", info.url=" + localalrw.jdField_b_of_type_JavaLangString + ",  info.name =" + localalrw.jdField_a_of_type_JavaLangString + ",  info.identifier =" + localalrw.c);
+    paramJSONObject = paramJSONObject.optJSONObject("diff");
+    if (paramJSONObject != null)
+    {
+      localalrw.e = paramJSONObject.optString("url");
+      localalrw.f = paramJSONObject.optString("diff-md5");
+      localalrw.g = paramJSONObject.optString("source-md5");
+      if (!localalrw.b()) {
+        localalrw.a();
+      }
+      QLog.i("AIDictConfig", 1, "onParse getDictInfoFromJSON info.diffURL=" + localalrw.e + ", info.diffMD5=" + localalrw.f + ", info.diffSourceMD5=" + localalrw.g);
+    }
+    return localalrw;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(String paramString)
+  {
+    int k = 0;
+    if (TextUtils.isEmpty(paramString))
+    {
+      ArkAppCenter.c("AIDictConfig", "onParse,fileOrRes is null");
       return;
     }
-    finally {}
+    this.jdField_a_of_type_JavaLangString = paramString;
+    Object localObject1;
+    int i;
+    Object localObject2;
+    Object localObject3;
+    Object localObject5;
+    int j;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.c = paramString.optString("environment");
+      this.jdField_b_of_type_JavaLangString = paramString.optString("timestamp");
+      this.d = paramString.optString("ark_dict_init");
+      this.e = paramString.optString("netType", "");
+      localObject1 = paramString.optJSONArray("conditional_dict_list");
+      if (localObject1 == null) {
+        break label420;
+      }
+      i = 0;
+      if (i >= ((JSONArray)localObject1).length()) {
+        break label420;
+      }
+      localObject2 = ((JSONArray)localObject1).optJSONObject(i);
+      if (localObject2 == null) {
+        break label517;
+      }
+      localObject3 = ((JSONObject)localObject2).optJSONObject("condition");
+      Object localObject4 = ((JSONObject)localObject2).optJSONObject("dict");
+      if ((localObject3 == null) || (localObject4 == null)) {
+        break label517;
+      }
+      localObject2 = new amrn();
+      localObject5 = new amrm();
+      ((amrm)localObject5).jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).optString("date", "");
+      ((amrn)localObject2).jdField_a_of_type_Amrm = ((amrm)localObject5);
+      localObject3 = new amrp();
+      ((amrp)localObject3).c = ((JSONObject)localObject4).optString("environment");
+      ((amrp)localObject3).jdField_b_of_type_JavaLangString = ((JSONObject)localObject4).optString("timestamp");
+      ((amrp)localObject3).d = ((JSONObject)localObject4).optString("ark_dict_init");
+      ((amrp)localObject3).e = ((JSONObject)localObject4).optString("netType", "");
+      QLog.i("AIDictConfig", 1, "onParse conditional_dict_list tDict.environment=" + ((amrp)localObject3).c + ", tDict.mTimestamp =" + ((amrp)localObject3).jdField_b_of_type_JavaLangString + ", tDict.mArkDictInit =" + ((amrp)localObject3).d + ", tDict.mNetType =" + ((amrp)localObject3).e + ", tCondition.mData =" + ((amrm)localObject5).jdField_a_of_type_JavaLangString);
+      localObject4 = ((JSONObject)localObject4).optJSONArray("word_dict_list");
+      if (localObject4 == null) {
+        break label400;
+      }
+      localObject5 = new ArrayList();
+      j = 0;
+      label343:
+      if (j < ((JSONArray)localObject4).length())
+      {
+        JSONObject localJSONObject = ((JSONArray)localObject4).optJSONObject(j);
+        if (localJSONObject == null) {
+          break label524;
+        }
+        ((ArrayList)localObject5).add(a(localJSONObject));
+      }
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("AIDictConfig", 1, "onParse error e = ", paramString);
+      return;
+    }
+    ((amrp)localObject3).jdField_b_of_type_JavaUtilArrayList = ((ArrayList)localObject5);
+    label400:
+    ((amrn)localObject2).jdField_a_of_type_Amrp = ((amrp)localObject3);
+    this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+    break label517;
+    label420:
+    paramString = paramString.optJSONArray("word_dict_list");
+    if (paramString != null)
+    {
+      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+      i = k;
+    }
+    for (;;)
+    {
+      if (i < paramString.length())
+      {
+        localObject1 = paramString.optJSONObject(i);
+        if (localObject1 != null)
+        {
+          localObject1 = a((JSONObject)localObject1);
+          this.jdField_b_of_type_JavaUtilArrayList.add(localObject1);
+        }
+      }
+      else
+      {
+        QLog.d("AIDictConfig", 1, new Object[] { "mWordDictList list size =", Integer.valueOf(this.jdField_b_of_type_JavaUtilArrayList.size()) });
+        return;
+        label517:
+        i += 1;
+        break;
+        label524:
+        j += 1;
+        break label343;
+      }
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amrd
  * JD-Core Version:    0.7.0.1
  */

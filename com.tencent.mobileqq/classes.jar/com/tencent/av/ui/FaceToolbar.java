@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
-import awqx;
+import axqw;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.EffectOperateManager;
@@ -24,29 +24,30 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import krx;
-import kvq;
-import kxa;
-import kxi;
-import kxl;
-import kyo;
-import kys;
-import ley;
-import lfi;
-import lqb;
-import lrg;
-import lsv;
-import lsw;
-import lwf;
-import lwk;
-import lwl;
-import lxe;
-import lxf;
+import lcl;
+import lgf;
+import lhp;
+import lhw;
+import lhz;
+import lje;
+import lji;
+import lpq;
+import lpz;
+import lwa;
+import mat;
+import mbz;
+import mdo;
+import mdp;
+import mgx;
+import mhc;
+import mhd;
+import mhv;
+import mhw;
 import mqq.app.MobileQQ;
 
 public class FaceToolbar
   extends BaseToolbar
-  implements View.OnClickListener, kxa<FaceItem>, lwl
+  implements View.OnClickListener, lhp<FaceItem>, mhd
 {
   public static String TAG = "FaceToolbar";
   static String unbaleInfo;
@@ -59,38 +60,38 @@ public class FaceToolbar
   View linePendant;
   View lineVoiceSticker;
   BroadcastReceiver mActionReceiver = null;
-  lwf mAdapterFace;
-  lwf mAdapterInteractiveVideo;
-  lwf mAdapterPendant;
-  lwf mAdapterVoiceSticker;
-  lwk mFaceClickCallback = new lsw(this);
-  public kxi mFaceManager;
-  ArrayList<lxf> mFaceTmpList;
-  ArrayList<lxf> mInteractiveVideoTmpList;
+  mgx mAdapterFace;
+  mgx mAdapterInteractiveVideo;
+  mgx mAdapterPendant;
+  mgx mAdapterVoiceSticker;
+  mhc mFaceClickCallback = new mdp(this);
+  public lhw mFaceManager;
+  ArrayList<mhw> mFaceTmpList;
+  ArrayList<mhw> mInteractiveVideoTmpList;
   HorizontalListView mListView;
-  ArrayList<lxf> mPeandantTmpList;
+  ArrayList<mhw> mPeandantTmpList;
   private RedTouch mRedTouchInteractiveVideo;
   int mSelectTab = 0;
-  kyo mSupportManager;
-  lrg mUIInfo = null;
-  ArrayList<lxf> mVoiceStickerTmpList;
+  lje mSupportManager;
+  mbz mUIInfo = null;
+  ArrayList<mhw> mVoiceStickerTmpList;
   
   public FaceToolbar(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
   {
     super(paramVideoAppInterface, paramAVActivity);
   }
   
-  private ArrayList<lxf> getList(String paramString)
+  private ArrayList<mhw> getList(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = new lxf();
-    ((lxf)localObject1).jdField_a_of_type_JavaLangString = "-1";
+    Object localObject1 = new mhw();
+    ((mhw)localObject1).jdField_a_of_type_JavaLangString = "-1";
     localArrayList.add(0, localObject1);
-    boolean bool3 = kys.b();
+    boolean bool3 = lji.b();
     boolean bool1;
     boolean bool4;
     boolean bool5;
-    if ((ley.b()) && (ley.a(this.mApp)))
+    if ((lpq.b()) && (lpq.a(this.mApp)))
     {
       bool1 = true;
       bool4 = this.mSupportManager.a(3, "normal");
@@ -99,30 +100,30 @@ public class FaceToolbar
       QLog.w(TAG, 1, "getList, type[" + paramString + "], supportNormal[" + bool4 + "], supportInteract[" + bool5 + "], supportCreative[" + bool6 + "], isSOExist[" + bool3 + "], isLibPagSOExist[" + bool1 + "]");
       if ("pendant".equals(paramString))
       {
-        localObject1 = new lxf();
-        ((lxf)localObject1).jdField_a_of_type_JavaLangString = "0";
-        ((lxf)localObject1).jdField_b_of_type_JavaLangString = String.valueOf(2130841594);
+        localObject1 = new mhw();
+        ((mhw)localObject1).jdField_a_of_type_JavaLangString = "0";
+        ((mhw)localObject1).jdField_b_of_type_JavaLangString = String.valueOf(2130841686);
         if (bool5) {
           break label407;
         }
         bool2 = true;
         label214:
-        ((lxf)localObject1).jdField_c_of_type_Boolean = bool2;
-        ((lxf)localObject1).d = this.mApp.getApp().getString(2131630058);
+        ((mhw)localObject1).jdField_c_of_type_Boolean = bool2;
+        ((mhw)localObject1).d = this.mApp.getApp().getString(2131695745);
         localArrayList.add(localObject1);
       }
       if ("creativecop".equals(paramString))
       {
-        localObject1 = new lxf();
-        ((lxf)localObject1).jdField_a_of_type_JavaLangString = "0";
-        ((lxf)localObject1).jdField_b_of_type_JavaLangString = String.valueOf(2130841594);
+        localObject1 = new mhw();
+        ((mhw)localObject1).jdField_a_of_type_JavaLangString = "0";
+        ((mhw)localObject1).jdField_b_of_type_JavaLangString = String.valueOf(2130841686);
         if (bool5) {
           break label412;
         }
         bool2 = true;
         label287:
-        ((lxf)localObject1).jdField_c_of_type_Boolean = bool2;
-        ((lxf)localObject1).d = this.mApp.getApp().getString(2131630058);
+        ((mhw)localObject1).jdField_c_of_type_Boolean = bool2;
+        ((mhw)localObject1).d = this.mApp.getApp().getString(2131695745);
         localArrayList.add(localObject1);
       }
       if (!"creativecop".equals(paramString)) {
@@ -170,8 +171,8 @@ public class FaceToolbar
           for (bool1 = true;; bool1 = false)
           {
             localObject2 = getListItemInfoFromEmotionInfo((FaceItem)localObject2, bool4, bool1);
-            if (("pendant".equals(paramString)) && (!checkPeerFaceSupport()) && (((lxf)localObject2).jdField_a_of_type_JavaLangString.equals("huanlian")) && (bool5) && (bool4) && (bool3)) {
-              ((lxf)localObject2).jdField_c_of_type_Boolean = true;
+            if (("pendant".equals(paramString)) && (!checkPeerFaceSupport()) && (((mhw)localObject2).jdField_a_of_type_JavaLangString.equals("huanlian")) && (bool5) && (bool4) && (bool3)) {
+              ((mhw)localObject2).jdField_c_of_type_Boolean = true;
             }
             localArrayList.add(localObject2);
             break;
@@ -183,55 +184,55 @@ public class FaceToolbar
     return localArrayList;
   }
   
-  static lxf getListItemFromInteractiveFilterItemInfo(FaceItem paramFaceItem, boolean paramBoolean)
+  static mhw getListItemFromInteractiveFilterItemInfo(FaceItem paramFaceItem, boolean paramBoolean)
   {
-    lxf locallxf = new lxf();
-    locallxf.jdField_a_of_type_Int = 3;
-    locallxf.jdField_a_of_type_JavaLangString = paramFaceItem.getId();
-    locallxf.jdField_c_of_type_JavaLangString = paramFaceItem.getText();
-    locallxf.jdField_b_of_type_JavaLangString = paramFaceItem.getIconurl();
-    locallxf.jdField_b_of_type_Int = paramFaceItem.getVipLevel();
-    locallxf.d = paramFaceItem.getDesc();
+    mhw localmhw = new mhw();
+    localmhw.jdField_a_of_type_Int = 3;
+    localmhw.jdField_a_of_type_JavaLangString = paramFaceItem.getId();
+    localmhw.jdField_c_of_type_JavaLangString = paramFaceItem.getText();
+    localmhw.jdField_b_of_type_JavaLangString = paramFaceItem.getIconurl();
+    localmhw.jdField_b_of_type_Int = paramFaceItem.getVipLevel();
+    localmhw.d = paramFaceItem.getDesc();
     if (!paramBoolean)
     {
       paramBoolean = true;
-      locallxf.jdField_c_of_type_Boolean = paramBoolean;
-      if (!locallxf.jdField_c_of_type_Boolean) {
+      localmhw.jdField_c_of_type_Boolean = paramBoolean;
+      if (!localmhw.jdField_c_of_type_Boolean) {
         break label88;
       }
     }
     label88:
-    for (locallxf.jdField_a_of_type_Boolean = true;; locallxf.jdField_a_of_type_Boolean = paramFaceItem.isUsable())
+    for (localmhw.jdField_a_of_type_Boolean = true;; localmhw.jdField_a_of_type_Boolean = paramFaceItem.isUsable())
     {
-      locallxf.jdField_a_of_type_JavaLangObject = paramFaceItem;
-      return locallxf;
+      localmhw.jdField_a_of_type_JavaLangObject = paramFaceItem;
+      return localmhw;
       paramBoolean = false;
       break;
     }
   }
   
-  static lxf getListItemInfoFromEmotionInfo(FaceItem paramFaceItem, boolean paramBoolean1, boolean paramBoolean2)
+  static mhw getListItemInfoFromEmotionInfo(FaceItem paramFaceItem, boolean paramBoolean1, boolean paramBoolean2)
   {
-    lxf locallxf = new lxf();
-    locallxf.jdField_a_of_type_Int = 1;
-    locallxf.jdField_a_of_type_JavaLangString = paramFaceItem.getId();
-    locallxf.jdField_c_of_type_JavaLangString = paramFaceItem.getText();
-    locallxf.jdField_b_of_type_JavaLangString = paramFaceItem.getIconurl();
-    locallxf.jdField_b_of_type_Int = paramFaceItem.getVipLevel();
-    locallxf.d = paramFaceItem.getDesc();
+    mhw localmhw = new mhw();
+    localmhw.jdField_a_of_type_Int = 1;
+    localmhw.jdField_a_of_type_JavaLangString = paramFaceItem.getId();
+    localmhw.jdField_c_of_type_JavaLangString = paramFaceItem.getText();
+    localmhw.jdField_b_of_type_JavaLangString = paramFaceItem.getIconurl();
+    localmhw.jdField_b_of_type_Int = paramFaceItem.getVipLevel();
+    localmhw.d = paramFaceItem.getDesc();
     if ((!paramBoolean1) || ((!paramBoolean2) && (paramFaceItem.isInteract())))
     {
       paramBoolean1 = true;
-      locallxf.jdField_c_of_type_Boolean = paramBoolean1;
-      if (!locallxf.jdField_c_of_type_Boolean) {
+      localmhw.jdField_c_of_type_Boolean = paramBoolean1;
+      if (!localmhw.jdField_c_of_type_Boolean) {
         break label99;
       }
     }
     label99:
-    for (locallxf.jdField_a_of_type_Boolean = true;; locallxf.jdField_a_of_type_Boolean = paramFaceItem.isUsable())
+    for (localmhw.jdField_a_of_type_Boolean = true;; localmhw.jdField_a_of_type_Boolean = paramFaceItem.isUsable())
     {
-      locallxf.jdField_a_of_type_JavaLangObject = paramFaceItem;
-      return locallxf;
+      localmhw.jdField_a_of_type_JavaLangObject = paramFaceItem;
+      return localmhw;
       paramBoolean1 = false;
       break;
     }
@@ -254,39 +255,39 @@ public class FaceToolbar
       bool1 = bool2;
       if (!paramVideoController.a().k)
       {
-        unbaleInfo = paramVideoController.a().getString(2131630081);
+        unbaleInfo = paramVideoController.a().getString(2131695768);
         bool1 = false;
       }
     }
     return bool1;
   }
   
-  public boolean checkDimmStatus(lxf paramlxf)
+  public boolean checkDimmStatus(mhw parammhw)
   {
-    int j = 2131630105;
+    int j = 2131695792;
     boolean bool2 = false;
     boolean bool1 = bool2;
     int i;
     int k;
-    if (paramlxf.jdField_c_of_type_Boolean)
+    if (parammhw.jdField_c_of_type_Boolean)
     {
-      lfi.e();
-      ley.c(this.mApp);
-      if (!"huanlian".equalsIgnoreCase(paramlxf.jdField_a_of_type_JavaLangString)) {
+      lpz.e();
+      lpq.c(this.mApp);
+      if (!"huanlian".equalsIgnoreCase(parammhw.jdField_a_of_type_JavaLangString)) {
         break label216;
       }
       if (this.mSupportManager.a(3, "SUPPORT_SWITCH_FACE")) {
         break label171;
       }
-      i = 2131630105;
+      i = 2131695792;
       k = i;
     }
     for (;;)
     {
-      if ((!paramlxf.jdField_c_of_type_Boolean) && ((paramlxf.jdField_a_of_type_JavaLangObject instanceof FaceItem)))
+      if ((!parammhw.jdField_c_of_type_Boolean) && ((parammhw.jdField_a_of_type_JavaLangObject instanceof FaceItem)))
       {
-        localObject = (FaceItem)paramlxf.jdField_a_of_type_JavaLangObject;
-        paramlxf.jdField_a_of_type_Boolean = ((FaceItem)localObject).isUsable();
+        localObject = (FaceItem)parammhw.jdField_a_of_type_JavaLangObject;
+        parammhw.jdField_a_of_type_Boolean = ((FaceItem)localObject).isUsable();
         if (!((FaceItem)localObject).isSameType("face")) {
           break label556;
         }
@@ -295,9 +296,9 @@ public class FaceToolbar
         }
       }
       label123:
-      paramlxf = (AVActivity)this.mActivity.get();
-      if ((k != 0) && (paramlxf != null)) {
-        lqb.a(this.mApp, 1010, k);
+      parammhw = (AVActivity)this.mActivity.get();
+      if ((k != 0) && (parammhw != null)) {
+        mat.a(this.mApp, 1010, k);
       }
       bool1 = bool2;
       if (k != 0) {
@@ -308,26 +309,26 @@ public class FaceToolbar
       i = this.mSupportManager.a(3, "SUPPORT_SWITCH_FACE");
       if (i == -1)
       {
-        i = 2131630102;
+        i = 2131695789;
         break;
       }
       if (i == 0)
       {
-        i = 2131630101;
+        i = 2131695788;
         break;
       }
-      paramlxf.jdField_c_of_type_Boolean = false;
+      parammhw.jdField_c_of_type_Boolean = false;
       i = 0;
       break;
       label216:
-      Object localObject = (FaceItem)this.mFaceManager.a(paramlxf.jdField_a_of_type_JavaLangString);
+      Object localObject = (FaceItem)this.mFaceManager.a(parammhw.jdField_a_of_type_JavaLangString);
       if (localObject != null)
       {
         boolean bool3 = ((FaceItem)localObject).isInCreative();
         if (bool3)
         {
           bool1 = this.mSupportManager.a(3, "creative");
-          if ((ley.b()) && (ley.a(this.mApp)))
+          if ((lpq.b()) && (lpq.a(this.mApp)))
           {
             i = 1;
             label279:
@@ -345,12 +346,12 @@ public class FaceToolbar
             break;
           }
           k = j;
-          if (!(paramlxf.jdField_a_of_type_JavaLangObject instanceof FaceItem)) {
+          if (!(parammhw.jdField_a_of_type_JavaLangObject instanceof FaceItem)) {
             break;
           }
-          localObject = (FaceItem)paramlxf.jdField_a_of_type_JavaLangObject;
-          bool1 = kys.b();
-          if ((ley.b()) && (ley.a(this.mApp)))
+          localObject = (FaceItem)parammhw.jdField_a_of_type_JavaLangObject;
+          bool1 = lji.b();
+          if ((lpq.b()) && (lpq.a(this.mApp)))
           {
             i = 1;
             label338:
@@ -365,13 +366,13 @@ public class FaceToolbar
           label482:
           for (bool1 = true;; bool1 = false)
           {
-            paramlxf.jdField_c_of_type_Boolean = bool1;
+            parammhw.jdField_c_of_type_Boolean = bool1;
             k = j;
             break;
             i = 0;
             break label279;
             label380:
-            j = 2131630398;
+            j = 2131696098;
             if (i == 0) {
               break label638;
             }
@@ -389,17 +390,17 @@ public class FaceToolbar
             i = this.mSupportManager.a(3, (String)localObject);
             if (i == -1)
             {
-              j = 2131630102;
+              j = 2131695789;
               i = 0;
               break label286;
             }
             if (i == 0)
             {
-              j = 2131630100;
+              j = 2131695787;
               i = 0;
               break label286;
             }
-            j = 2131630398;
+            j = 2131696098;
             i = 1;
             break label286;
             i = 0;
@@ -411,7 +412,7 @@ public class FaceToolbar
           if ((!bool3) || (((!bool4) || (!bool1)) && (((FaceItem)localObject).isInteract()))) {}
           for (bool1 = true;; bool1 = false)
           {
-            paramlxf.jdField_c_of_type_Boolean = bool1;
+            parammhw.jdField_c_of_type_Boolean = bool1;
             k = j;
             break;
           }
@@ -535,7 +536,7 @@ public class FaceToolbar
       label144:
       ((View)localObject).setVisibility(i);
       localObject = this.lineInteractiveVideo;
-      if ((paramInt != 4) || (!ley.b())) {
+      if ((paramInt != 4) || (!lpq.b())) {
         break label375;
       }
       i = 0;
@@ -575,7 +576,7 @@ public class FaceToolbar
       }
       this.mListView.setAdapter(this.mAdapterPendant);
       this.mAdapterPendant.notifyDataSetChanged();
-      kxl.b((String)localObject);
+      lhz.b((String)localObject);
     }
     for (;;)
     {
@@ -613,26 +614,26 @@ public class FaceToolbar
       {
         this.mListView.setAdapter(this.mAdapterFace);
         this.mAdapterFace.notifyDataSetChanged();
-        kxl.c((String)localObject);
+        lhz.c((String)localObject);
       }
       else if (paramInt == 3)
       {
         this.mListView.setAdapter(this.mAdapterVoiceSticker);
         this.mAdapterVoiceSticker.notifyDataSetChanged();
-        kxl.d((String)localObject);
+        lhz.d((String)localObject);
       }
       else if (paramInt == 4)
       {
         this.mListView.setAdapter(this.mAdapterInteractiveVideo);
         this.mAdapterInteractiveVideo.notifyDataSetChanged();
-        awqx.b(null, "CliOper", "", "", "0X800A74B", "0X800A74B", 0, 0, "", "", "", "");
+        axqw.b(null, "CliOper", "", "", "0X800A74B", "0X800A74B", 0, 0, "", "", "", "");
       }
     }
   }
   
   void enterDoubleScreen()
   {
-    kxl.a(this.mApp.a().a(this.mApp.a().a().d) + "");
+    lhz.a(this.mApp.a().a(this.mApp.a().a().d) + "");
     this.mApp.a().a(4, "1");
     ((AVActivity)this.mActivity.get()).a(2, false);
   }
@@ -650,7 +651,7 @@ public class FaceToolbar
     {
       boolean bool2;
       boolean bool3;
-      lxf locallxf;
+      mhw localmhw;
       boolean bool1;
       do
       {
@@ -665,7 +666,7 @@ public class FaceToolbar
               if (paramInt != 0) {
                 break;
               }
-              bool2 = kys.b();
+              bool2 = lji.b();
               bool3 = this.mSupportManager.a(3, "normal");
               bool4 = this.mSupportManager.a(3, "interact");
               if (QLog.isDevelopLevel()) {
@@ -675,14 +676,14 @@ public class FaceToolbar
             localIterator = this.mPeandantTmpList.iterator();
             while (localIterator.hasNext())
             {
-              locallxf = (lxf)localIterator.next();
-              if ((locallxf.jdField_a_of_type_JavaLangObject instanceof FaceItem))
+              localmhw = (mhw)localIterator.next();
+              if ((localmhw.jdField_a_of_type_JavaLangObject instanceof FaceItem))
               {
-                FaceItem localFaceItem = (FaceItem)locallxf.jdField_a_of_type_JavaLangObject;
+                FaceItem localFaceItem = (FaceItem)localmhw.jdField_a_of_type_JavaLangObject;
                 if ((!bool3) || (((!bool4) || (!bool2)) && (localFaceItem.isInteract()))) {}
                 for (bool1 = true;; bool1 = false)
                 {
-                  locallxf.jdField_c_of_type_Boolean = bool1;
+                  localmhw.jdField_c_of_type_Boolean = bool1;
                   break;
                 }
               }
@@ -691,7 +692,7 @@ public class FaceToolbar
           this.mAdapterPendant.notifyDataSetChanged();
           return;
         } while (paramInt != 1);
-        if ((!ley.b()) || (!ley.a(this.mApp))) {
+        if ((!lpq.b()) || (!lpq.a(this.mApp))) {
           break;
         }
         bool1 = true;
@@ -703,11 +704,11 @@ public class FaceToolbar
       Iterator localIterator = this.mInteractiveVideoTmpList.iterator();
       if (localIterator.hasNext())
       {
-        locallxf = (lxf)localIterator.next();
+        localmhw = (mhw)localIterator.next();
         if ((!bool3) || (!bool1)) {}
         for (bool2 = true;; bool2 = false)
         {
-          locallxf.jdField_c_of_type_Boolean = bool2;
+          localmhw.jdField_c_of_type_Boolean = bool2;
           break label310;
           bool1 = false;
           break;
@@ -717,15 +718,15 @@ public class FaceToolbar
     this.mAdapterInteractiveVideo.notifyDataSetChanged();
   }
   
-  protected lrg getUIInfo()
+  protected mbz getUIInfo()
   {
     if (this.mUIInfo == null)
     {
-      this.mUIInfo = new lrg();
+      this.mUIInfo = new mbz();
       this.mUIInfo.d = 2;
-      this.mUIInfo.f = 2131494018;
-      this.mUIInfo.e = 2130841413;
-      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131630501);
+      this.mUIInfo.f = 2131559589;
+      this.mUIInfo.e = 2130841493;
+      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131696204);
     }
     return this.mUIInfo;
   }
@@ -742,7 +743,7 @@ public class FaceToolbar
   
   public void notifyEvent(Integer paramInteger, Object paramObject1, Object paramObject2)
   {
-    krx.c(TAG, "notifyEvent :" + paramInteger + "|" + paramObject1 + "|" + paramObject2);
+    lcl.c(TAG, "notifyEvent :" + paramInteger + "|" + paramObject1 + "|" + paramObject2);
     this.mApp.a(new Object[] { paramInteger, paramObject1, paramObject2 });
   }
   
@@ -750,7 +751,7 @@ public class FaceToolbar
   {
     long l = AudioHelper.b();
     EffectSettingUi.a(this.mApp, l);
-    if ((paramView.getId() == 2131298058) || (paramView.getId() == 2131297990))
+    if ((paramView.getId() == 2131363608) || (paramView.getId() == 2131363538))
     {
       enterDoubleScreen();
       switch (paramView.getId())
@@ -770,28 +771,28 @@ public class FaceToolbar
       return;
       chooseTab(4);
     } while (this.mRedTouchInteractiveVideo == null);
-    this.mApp.a(this.mRedTouchInteractiveVideo, 5);
+    lwa.a(this.mApp, this.mRedTouchInteractiveVideo, 5);
     this.mRedTouchInteractiveVideo = null;
   }
   
   protected void onCreate(long paramLong, AVActivity paramAVActivity)
   {
     QLog.w(TAG, 1, "TAG, onCreate, seq[" + paramLong + "]");
-    this.mFaceManager = ((kxi)this.mApp.a(3));
-    this.mSupportManager = ((kyo)this.mApp.a(5));
+    this.mFaceManager = ((lhw)this.mApp.a(3));
+    this.mSupportManager = ((lje)this.mApp.a(5));
     this.mSelectTab = 0;
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131302046));
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131367664));
     this.mListView.setStayDisplayOffsetZero(true);
-    this.linePendant = this.toolbarView.findViewById(2131303554);
-    this.lineFace = this.toolbarView.findViewById(2131303543);
-    this.lineVoiceSticker = this.toolbarView.findViewById(2131303569);
-    this.lineInteractiveVideo = this.toolbarView.findViewById(2131303549);
-    this.btnPendant = ((FrameLayout)this.toolbarView.findViewById(2131298058));
-    this.btnFace = ((FrameLayout)this.toolbarView.findViewById(2131297990));
-    this.btnVoiceSticker = ((FrameLayout)this.toolbarView.findViewById(2131298146));
-    this.btnInteractiveVideo = ((FrameLayout)this.toolbarView.findViewById(2131298017));
-    boolean bool1 = lfi.a();
-    boolean bool2 = ley.b();
+    this.linePendant = this.toolbarView.findViewById(2131369223);
+    this.lineFace = this.toolbarView.findViewById(2131369212);
+    this.lineVoiceSticker = this.toolbarView.findViewById(2131369238);
+    this.lineInteractiveVideo = this.toolbarView.findViewById(2131369218);
+    this.btnPendant = ((FrameLayout)this.toolbarView.findViewById(2131363608));
+    this.btnFace = ((FrameLayout)this.toolbarView.findViewById(2131363538));
+    this.btnVoiceSticker = ((FrameLayout)this.toolbarView.findViewById(2131363699));
+    this.btnInteractiveVideo = ((FrameLayout)this.toolbarView.findViewById(2131363567));
+    boolean bool1 = lpz.a();
+    boolean bool2 = lpq.b();
     if (!bool1) {
       this.btnPendant.setVisibility(8);
     }
@@ -808,8 +809,8 @@ public class FaceToolbar
     Object localObject;
     if (this.mRedTouchInteractiveVideo == null)
     {
-      localObject = this.toolbarView.findViewById(2131303549);
-      this.mRedTouchInteractiveVideo = this.mApp.a((View)localObject, 5);
+      localObject = this.toolbarView.findViewById(2131369218);
+      this.mRedTouchInteractiveVideo = lwa.a(this.mApp, (View)localObject, 5);
     }
     this.mFaceTmpList = getList("face");
     this.mPeandantTmpList = getList("pendant");
@@ -818,22 +819,22 @@ public class FaceToolbar
     {
       localObject = getList("creativecop");
       this.mInteractiveVideoTmpList = ((ArrayList)localObject);
-      this.mAdapterFace = new lwf(this.mApp, paramAVActivity, this.mFaceTmpList, this.mListView);
+      this.mAdapterFace = new mgx(this.mApp, paramAVActivity, this.mFaceTmpList, this.mListView);
       this.mAdapterFace.a(this.mFaceClickCallback);
       this.mAdapterFace.a(this);
       this.mAdapterFace.a(false);
       this.mAdapterFace.b(false);
-      this.mAdapterPendant = new lwf(this.mApp, paramAVActivity, this.mPeandantTmpList, this.mListView);
+      this.mAdapterPendant = new mgx(this.mApp, paramAVActivity, this.mPeandantTmpList, this.mListView);
       this.mAdapterPendant.a(this.mFaceClickCallback);
       this.mAdapterPendant.a(this);
       this.mAdapterPendant.a(true);
       this.mAdapterPendant.b(true);
-      this.mAdapterVoiceSticker = new lwf(this.mApp, paramAVActivity, this.mVoiceStickerTmpList, this.mListView);
+      this.mAdapterVoiceSticker = new mgx(this.mApp, paramAVActivity, this.mVoiceStickerTmpList, this.mListView);
       this.mAdapterVoiceSticker.a(this.mFaceClickCallback);
       this.mAdapterVoiceSticker.a(this);
       this.mAdapterVoiceSticker.a(false);
       this.mAdapterVoiceSticker.b(false);
-      this.mAdapterInteractiveVideo = new lwf(this.mApp, paramAVActivity, this.mInteractiveVideoTmpList, this.mListView);
+      this.mAdapterInteractiveVideo = new mgx(this.mApp, paramAVActivity, this.mInteractiveVideoTmpList, this.mListView);
       this.mAdapterInteractiveVideo.a(this.mFaceClickCallback);
       this.mAdapterInteractiveVideo.a(this);
       this.mAdapterInteractiveVideo.a(true);
@@ -847,8 +848,8 @@ public class FaceToolbar
       }
       chooseTab(4);
       label690:
-      bool1 = kys.b();
-      if ((!ley.b()) || (!ley.a(this.mApp))) {
+      bool1 = lji.b();
+      if ((!lpq.b()) || (!lpq.a(this.mApp))) {
         break label849;
       }
     }
@@ -859,7 +860,7 @@ public class FaceToolbar
     {
       if (((!bool1) || (i == 0)) && (this.mActionReceiver == null))
       {
-        this.mActionReceiver = new lsv(this);
+        this.mActionReceiver = new mdo(this);
         paramAVActivity = new IntentFilter();
         paramAVActivity.addAction("tencent.video.q2v.ptusoDownloadRet");
         paramAVActivity.addAction("tencent.video.q2v.ptuLibpagDownloadRet");
@@ -898,15 +899,15 @@ public class FaceToolbar
     this.mAdapterFace = null;
     this.mAdapterPendant = null;
     this.mAdapterVoiceSticker = null;
-    lxf locallxf;
+    mhw localmhw;
     if (this.mFaceTmpList != null)
     {
       paramVideoAppInterface = this.mFaceTmpList.iterator();
       while (paramVideoAppInterface.hasNext())
       {
-        locallxf = (lxf)paramVideoAppInterface.next();
-        if ((!"0".equals(locallxf.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(locallxf.jdField_b_of_type_JavaLangString))) {
-          URLDrawable.removeMemoryCacheByUrl(locallxf.jdField_b_of_type_JavaLangString);
+        localmhw = (mhw)paramVideoAppInterface.next();
+        if ((!"0".equals(localmhw.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localmhw.jdField_b_of_type_JavaLangString))) {
+          URLDrawable.removeMemoryCacheByUrl(localmhw.jdField_b_of_type_JavaLangString);
         }
       }
     }
@@ -916,9 +917,9 @@ public class FaceToolbar
       paramVideoAppInterface = this.mPeandantTmpList.iterator();
       while (paramVideoAppInterface.hasNext())
       {
-        locallxf = (lxf)paramVideoAppInterface.next();
-        if ((!"0".equals(locallxf.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(locallxf.jdField_b_of_type_JavaLangString))) {
-          URLDrawable.removeMemoryCacheByUrl(locallxf.jdField_b_of_type_JavaLangString);
+        localmhw = (mhw)paramVideoAppInterface.next();
+        if ((!"0".equals(localmhw.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localmhw.jdField_b_of_type_JavaLangString))) {
+          URLDrawable.removeMemoryCacheByUrl(localmhw.jdField_b_of_type_JavaLangString);
         }
       }
     }
@@ -928,9 +929,9 @@ public class FaceToolbar
       paramVideoAppInterface = this.mVoiceStickerTmpList.iterator();
       while (paramVideoAppInterface.hasNext())
       {
-        locallxf = (lxf)paramVideoAppInterface.next();
-        if ((!"0".equals(locallxf.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(locallxf.jdField_b_of_type_JavaLangString))) {
-          URLDrawable.removeMemoryCacheByUrl(locallxf.jdField_b_of_type_JavaLangString);
+        localmhw = (mhw)paramVideoAppInterface.next();
+        if ((!"0".equals(localmhw.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localmhw.jdField_b_of_type_JavaLangString))) {
+          URLDrawable.removeMemoryCacheByUrl(localmhw.jdField_b_of_type_JavaLangString);
         }
       }
     }
@@ -940,9 +941,9 @@ public class FaceToolbar
       paramVideoAppInterface = this.mInteractiveVideoTmpList.iterator();
       while (paramVideoAppInterface.hasNext())
       {
-        locallxf = (lxf)paramVideoAppInterface.next();
-        if ((!"0".equals(locallxf.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(locallxf.jdField_b_of_type_JavaLangString))) {
-          URLDrawable.removeMemoryCacheByUrl(locallxf.jdField_b_of_type_JavaLangString);
+        localmhw = (mhw)paramVideoAppInterface.next();
+        if ((!"0".equals(localmhw.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localmhw.jdField_b_of_type_JavaLangString))) {
+          URLDrawable.removeMemoryCacheByUrl(localmhw.jdField_b_of_type_JavaLangString);
         }
       }
     }
@@ -1003,7 +1004,7 @@ public class FaceToolbar
     EffectOperateManager localEffectOperateManager = (EffectOperateManager)this.mApp.a(8);
     if ((localEffectOperateManager != null) && (localEffectOperateManager.a()) && (paramFaceItem != null))
     {
-      krx.c(TAG, "onItemSelectedChanged type: " + paramFaceItem.getType() + ", id: " + paramFaceItem.getId());
+      lcl.c(TAG, "onItemSelectedChanged type: " + paramFaceItem.getType() + ", id: " + paramFaceItem.getId());
       paramFaceItem = paramFaceItem.getType();
       if ("pendant".equals(paramFaceItem)) {
         chooseTab(2);
@@ -1087,7 +1088,7 @@ public class FaceToolbar
         break label116;
       }
       str = "0";
-      krx.c(TAG, "setLastSelectedIndex:" + str);
+      lcl.c(TAG, "setLastSelectedIndex:" + str);
       if (this.mSelectTab != 2) {
         break label125;
       }
@@ -1134,19 +1135,19 @@ public class FaceToolbar
     else {
       return;
     }
-    localAVActivity.a.a().a(Boolean.valueOf(false), 0, 2130841579);
+    localAVActivity.a.a().a(Boolean.valueOf(false), 0, 2130841671);
   }
   
-  public void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, lxf paramlxf, lxe paramlxe)
+  public void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, mhw parammhw, mhv parammhv)
   {
-    paramAppInterface = (FaceItem)this.mFaceManager.a(paramlxf.jdField_a_of_type_JavaLangString);
+    paramAppInterface = (FaceItem)this.mFaceManager.a(parammhw.jdField_a_of_type_JavaLangString);
     if (paramAppInterface != null)
     {
       this.mFaceManager.a(paramLong, paramAppInterface);
       return;
     }
     QLog.w(TAG, 1, "startDownloadTemplate, item为空, seq[" + paramLong + "]");
-    paramlxe.a(paramLong, paramlxf.jdField_a_of_type_JavaLangString, false);
+    parammhv.a(paramLong, parammhw.jdField_a_of_type_JavaLangString, false);
   }
   
   public void update(Object[] paramArrayOfObject)

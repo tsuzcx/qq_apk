@@ -1,30 +1,57 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.lang.ref.WeakReference;
 
-final class akdx
-  extends batl
+public class akdx
+  extends Handler
 {
-  akdx(String paramString) {}
-  
-  public void onCancel(batm parambatm)
+  public akdx(QQAppInterface paramQQAppInterface, Looper paramLooper)
   {
-    akdt.jdField_a_of_type_Batm = null;
-    QLog.d(akdt.jdField_a_of_type_JavaLangString, 1, "downloadZipFile cancel");
+    super(paramLooper);
   }
   
-  public void onDone(batm parambatm)
+  public void handleMessage(Message paramMessage)
   {
-    akdt.jdField_a_of_type_Batm = null;
-    if (parambatm.a() == 3)
+    switch (paramMessage.what)
     {
-      QLog.d(akdt.jdField_a_of_type_JavaLangString, 1, "download finished " + akdt.f);
-      parambatm = new File(this.jdField_a_of_type_JavaLangString);
-      if ((parambatm.exists()) && (akdt.a(parambatm))) {
-        QLog.d(akdt.jdField_a_of_type_JavaLangString, 1, "downloadZipFile suc and zip succ");
-      }
-      return;
     }
-    QLog.d(akdt.jdField_a_of_type_JavaLangString, 1, new Object[] { "downloadZipFile failed: ", parambatm.b, " code=", Integer.valueOf(parambatm.a) });
+    do
+    {
+      return;
+      paramMessage = (QQAppInterface)((WeakReference)paramMessage.obj).get();
+      if (paramMessage != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("QQAppInterface", 2, "getOnlineFriend app is null");
+    return;
+    long l1 = QQAppInterface.e;
+    long l3 = SystemClock.uptimeMillis();
+    long l2 = Math.abs(l3 - this.a.c);
+    if ((!"0".equals(paramMessage.getCurrentAccountUin())) && (l2 >= QQAppInterface.e))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQAppInterface", 2, "getOnlineFriend");
+      }
+      this.a.c = l3;
+      FriendListHandler localFriendListHandler = (FriendListHandler)paramMessage.a(1);
+      if (localFriendListHandler != null) {
+        localFriendListHandler.d(paramMessage.getCurrentAccountUin(), (byte)0);
+      }
+    }
+    if (l2 < QQAppInterface.e) {
+      l1 = QQAppInterface.e - l2;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAppInterface", 2, "getOnlineFriend send next msg " + l1);
+    }
+    paramMessage = this.a.a.obtainMessage(0, new WeakReference(paramMessage));
+    this.a.a.sendMessageDelayed(paramMessage, l1);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.notifymsg;
 
-import agon;
-import agop;
-import agwj;
+import ahbc;
+import ahbe;
+import ahiy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
@@ -16,23 +16,23 @@ public final class NotifyMsgManager$4
   {
     do
     {
-      synchronized (agop.jdField_a_of_type_JavaLangObject)
+      synchronized (ahbe.jdField_a_of_type_JavaLangObject)
       {
-        if (agop.jdField_a_of_type_Agon == null) {
-          agop.jdField_a_of_type_Agon = new agon(BaseApplicationImpl.getContext());
+        if (ahbe.jdField_a_of_type_Ahbc == null) {
+          ahbe.jdField_a_of_type_Ahbc = new ahbc(BaseApplicationImpl.getContext());
         }
-        ??? = agwj.a();
+        ??? = ahiy.a();
         if (??? == null) {
           return;
         }
       }
-    } while (agop.jdField_a_of_type_Agon == null);
+    } while (ahbe.jdField_a_of_type_Ahbc == null);
     if (this.jdField_a_of_type_Boolean)
     {
-      agop.jdField_a_of_type_Agon.b(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
+      ahbe.jdField_a_of_type_Ahbc.b(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
       return;
     }
-    agop.jdField_a_of_type_Agon.c(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
+    ahbe.jdField_a_of_type_Ahbc.c(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

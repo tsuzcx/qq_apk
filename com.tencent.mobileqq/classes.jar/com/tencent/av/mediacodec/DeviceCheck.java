@@ -9,11 +9,10 @@ import android.os.Build.VERSION;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import kvz;
-import lao;
-import lef;
-import lek;
-import lel;
+import lgo;
+import low;
+import loy;
+import lpc;
 
 @SuppressLint({"NewApi"})
 public class DeviceCheck
@@ -129,14 +128,14 @@ public class DeviceCheck
   @TargetApi(16)
   public static boolean c()
   {
-    List localList = lef.a(lef.b);
+    List localList = low.a(low.b);
     int i = 0;
     for (;;)
     {
       MediaCodecInfo.CodecCapabilities localCodecCapabilities;
       if (i < localList.size())
       {
-        localCodecCapabilities = lef.a((MediaCodecInfo)localList.get(i), lef.b);
+        localCodecCapabilities = low.a((MediaCodecInfo)localList.get(i), low.b);
         if ((localCodecCapabilities != null) && (localCodecCapabilities.colorFormats != null)) {}
       }
       else
@@ -159,14 +158,14 @@ public class DeviceCheck
   @TargetApi(16)
   public static boolean d()
   {
-    List localList = lef.b(lef.b);
+    List localList = low.b(low.b);
     int i = 0;
     for (;;)
     {
       MediaCodecInfo.CodecCapabilities localCodecCapabilities;
       if (i < localList.size())
       {
-        localCodecCapabilities = lef.a((MediaCodecInfo)localList.get(i), lef.b);
+        localCodecCapabilities = low.a((MediaCodecInfo)localList.get(i), low.b);
         if (localCodecCapabilities != null) {}
       }
       else
@@ -190,13 +189,13 @@ public class DeviceCheck
   public static boolean e()
   {
     boolean bool2 = false;
-    List localList = lef.a(lef.a);
+    List localList = low.a(low.a);
     int i = 0;
     boolean bool1 = bool2;
     MediaCodecInfo.CodecCapabilities localCodecCapabilities;
     if (i < localList.size())
     {
-      localCodecCapabilities = lef.a((MediaCodecInfo)localList.get(i), lef.a);
+      localCodecCapabilities = low.a((MediaCodecInfo)localList.get(i), low.a);
       if ((localCodecCapabilities != null) && (localCodecCapabilities.colorFormats != null)) {}
     }
     for (;;)
@@ -221,7 +220,7 @@ public class DeviceCheck
   public static boolean f()
   {
     boolean bool2 = false;
-    List localList = lef.b(lef.a);
+    List localList = low.b(low.a);
     int i = 0;
     for (;;)
     {
@@ -230,7 +229,7 @@ public class DeviceCheck
       int j;
       if (i < localList.size())
       {
-        localCodecCapabilities = lef.a((MediaCodecInfo)localList.get(i), lef.a);
+        localCodecCapabilities = low.a((MediaCodecInfo)localList.get(i), low.a);
         if (localCodecCapabilities != null) {
           j = 0;
         }
@@ -254,19 +253,19 @@ public class DeviceCheck
   public static boolean g()
   {
     if (h()) {}
-    lao locallao;
-    lek locallek;
-    lel locallel;
+    lpc locallpc;
+    loy localloy1;
+    loy localloy2;
     do
     {
       do
       {
         return false;
       } while (Build.VERSION.SDK_INT < 21);
-      locallao = kvz.a(BaseApplicationImpl.getContext());
-      locallek = new lek();
-      locallel = new lel();
-    } while (((!locallek.d(locallao)) || (!locallek.a(locallao, 2)) || (!locallek.c(locallao)) || (!locallek.a(locallao, 1))) && ((!locallel.d(locallao)) || (!locallel.a(locallao, 2)) || (!locallel.c(locallao)) || (!locallel.a(locallao, 1))));
+      locallpc = new lpc(lgo.a(BaseApplicationImpl.getContext()));
+      localloy1 = locallpc.d();
+      localloy2 = locallpc.c();
+    } while ((localloy1 == null) || (!localloy1.a) || (!locallpc.a(2)) || (localloy2 == null) || (!localloy2.a) || (!locallpc.a(1)));
     if (QLog.isColorLevel()) {
       QLog.d("DeviceCheck", 2, "SUPPORT Async API");
     }

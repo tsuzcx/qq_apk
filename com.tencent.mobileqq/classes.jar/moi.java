@@ -1,41 +1,61 @@
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.biz.common.offline.HtmlOffline.6;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-public class moi
-  implements moc
+public final class moi
+  extends mgx
 {
-  public moi(HtmlOffline.6 param6) {}
+  WeakReference<ZimuToolbar> a;
   
-  public void loaded(String paramString, int paramInt)
+  public moi(AppInterface paramAppInterface, Context paramContext, ArrayList<mhw> paramArrayList, HorizontalListView paramHorizontalListView, ZimuToolbar paramZimuToolbar)
   {
-    long l = System.currentTimeMillis() - this.a.jdField_a_of_type_Long;
-    if (mof.a.a()) {
-      mof.a.a("HtmlCheckUpdate", 2, "js call downloadUpdate callback:" + paramInt + ", time:" + l);
-    }
-    if (paramInt == 0) {
-      if (mof.b(this.a.b)) {
-        this.a.jdField_a_of_type_Moc.loaded(null, 0);
+    super(paramAppInterface, paramContext, paramArrayList, paramHorizontalListView);
+    this.a = new WeakReference(paramZimuToolbar);
+  }
+  
+  public void a(String paramString1, long paramLong, String paramString2)
+  {
+    boolean bool1 = false;
+    int j;
+    int i;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      j = getCount();
+      i = 1;
+      if (i < j)
+      {
+        mhw localmhw = a(i);
+        if ((localmhw != null) && (paramString2.equals(localmhw.a))) {
+          bool1 = true;
+        }
       }
     }
     for (;;)
     {
-      BidDownloader.b(this.a.b);
-      mof.a(this.a.b, paramInt, l, mpq.a(this.a.jdField_a_of_type_AndroidContentContext));
+      if (QLog.isDevelopLevel()) {
+        QLog.w("QAVPtvTemplateAdapter", 1, "setSelectedItem, id[" + paramString2 + "], find[" + bool1 + "], seq[" + paramLong + "], from[" + paramString1 + "], mCurSelectedPosition[" + this.d + "]");
+      }
+      j = this.d;
+      boolean bool2 = a(i);
+      if (bool2) {
+        a(paramLong, this.d);
+      }
+      QLog.w("QAVPtvTemplateAdapter", 1, "setSelectedItem end, from[" + paramString1 + "], seq[" + paramLong + "], id[" + paramString2 + "], find[" + bool1 + "], index[" + i + "], Pos[" + j + "->" + this.d + "], selectResult[" + bool2 + "]");
       return;
-      this.a.jdField_a_of_type_Moc.loaded(null, 6);
-      continue;
-      this.a.jdField_a_of_type_Moc.loaded(null, 2);
+      i += 1;
+      break;
+      i = 1;
     }
-  }
-  
-  public void progress(int paramInt)
-  {
-    this.a.jdField_a_of_type_Moc.progress(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     moi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,21 @@
-public class aekp
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
+
+class aekp
+  implements View.OnTouchListener
 {
-  public int a;
-  public String a;
+  aekp(aeko paramaeko, aekj paramaekj) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    paramView = paramView.getParent();
+    if (paramView != null) {
+      paramView.requestDisallowInterceptTouchEvent(true);
+    }
+    return false;
+  }
 }
 
 

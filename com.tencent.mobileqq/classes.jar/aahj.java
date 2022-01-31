@@ -1,27 +1,20 @@
-import android.os.Handler;
 import android.view.View;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class aahj
-  implements begw
+  implements View.OnClickListener
 {
-  public aahj(ChatHistory paramChatHistory, MessageRecord paramMessageRecord, begr parambegr) {}
+  public aahj(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
+    default: 
       return;
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.obtainMessage(1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.sendMessageDelayed(paramView, 800L);
-      Utils.executeAsyncTaskOnThreadPool(new aahk(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
     }
+    AddFriendVerifyActivity.c(this.a);
   }
 }
 

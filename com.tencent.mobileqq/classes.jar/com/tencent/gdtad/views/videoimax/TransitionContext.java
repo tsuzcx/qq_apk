@@ -1,7 +1,7 @@
 package com.tencent.gdtad.views.videoimax;
 
-import abju;
-import ajed;
+import abtu;
+import ajsf;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
@@ -21,7 +21,8 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import azue;
+import bavi;
+import bbuv;
 import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter.Params;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.views.video.GdtVideoData;
@@ -36,10 +37,10 @@ import java.lang.ref.WeakReference;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo;
-import yny;
-import ysk;
-import ysl;
-import ysm;
+import yxs;
+import zcc;
+import zcd;
+import zce;
 
 public class TransitionContext
 {
@@ -68,7 +69,7 @@ public class TransitionContext
   
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    yny.a("TransitionContext", "enterAnimation() called with: l = [" + paramInt1 + "], t = [" + paramInt2 + "], width = [" + paramInt3 + "], height = [" + paramInt4 + "]");
+    yxs.a("TransitionContext", "enterAnimation() called with: l = [" + paramInt1 + "], t = [" + paramInt2 + "], width = [" + paramInt3 + "], height = [" + paramInt4 + "]");
     Object localObject1 = (Activity)this.jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoSpliceAdapter$Params.activity.get();
     Object localObject2 = ((Activity)localObject1).getWindow();
     a((Window)localObject2);
@@ -80,15 +81,15 @@ public class TransitionContext
     paramInt4 = paramInt2 + paramInt4;
     int i = ((FrameLayout)localObject2).getWidth();
     int j = ((FrameLayout)localObject2).getHeight();
-    yny.a("TransitionContext", "enterAnimation() destinationClipBottom = [" + j + "]");
+    yxs.a("TransitionContext", "enterAnimation() destinationClipBottom = [" + j + "]");
     this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxEnterImageView.setLayoutParams((ViewGroup.LayoutParams)localObject3);
     localRect.set(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxEnterImageView.setClipBoundsCompact(localRect);
     localObject3 = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Activity)localObject1).getResources().getDrawable(2130849314);
-    ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Activity)localObject1).getResources().getDrawable(2130849314);
+    ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Activity)localObject1).getResources().getDrawable(2130849549);
+    ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Activity)localObject1).getResources().getDrawable(2130849549);
     localObject1 = URLDrawable.getDrawable(((GdtAd)GdtAd.class.cast(this.jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoSpliceAdapter$Params.ad)).info.display_info.basic_info.img.get(), (URLDrawable.URLDrawableOptions)localObject3);
-    ((URLDrawable)localObject1).setDecodeHandler(azue.m);
+    ((URLDrawable)localObject1).setDecodeHandler(bavi.m);
     ((URLDrawable)localObject1).setTag(new int[] { 50 });
     this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxEnterImageView.setImageDrawable((Drawable)localObject1);
     this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxEnterImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -96,8 +97,8 @@ public class TransitionContext
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(500L);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new AccelerateInterpolator());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ysk(this, paramInt1, paramInt2, paramInt3, i, j, paramInt4, localRect));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new ysl(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new zcc(this, paramInt1, paramInt2, paramInt3, i, j, paramInt4, localRect));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new zcd(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -116,8 +117,8 @@ public class TransitionContext
         URLDrawable.DEBUG = false;
         if ("mounted".equals(Environment.getExternalStorageState()))
         {
-          localFile = new File(ajed.aU);
-          URLDrawable.init(paramContext, new ysm(paramContext, new File(localFile, "diskcache")));
+          localFile = new File(bbuv.a(ajsf.aW));
+          URLDrawable.init(paramContext, new zce(paramContext, new File(localFile, "diskcache")));
           c = true;
           return;
         }
@@ -142,7 +143,7 @@ public class TransitionContext
   
   private void a(ImageView paramImageView)
   {
-    yny.a("TransitionContext", "finishEnterAnimator() called with: maskView = [" + paramImageView + "]");
+    yxs.a("TransitionContext", "finishEnterAnimator() called with: maskView = [" + paramImageView + "]");
     ViewGroup localViewGroup = (ViewGroup)paramImageView.getParent();
     if (localViewGroup != null) {
       localViewGroup.removeView(paramImageView);
@@ -163,7 +164,7 @@ public class TransitionContext
   
   private void c()
   {
-    yny.a("TransitionContext", "sendAnimationEnd() called");
+    yxs.a("TransitionContext", "sendAnimationEnd() called");
     if (this.jdField_a_of_type_AndroidOsResultReceiver != null) {
       this.jdField_a_of_type_AndroidOsResultReceiver.send(1, null);
     }
@@ -171,7 +172,7 @@ public class TransitionContext
   
   private void d()
   {
-    yny.a("TransitionContext", "startImaxActivity() called");
+    yxs.a("TransitionContext", "startImaxActivity() called");
     Intent localIntent = new Intent();
     GdtImaxData localGdtImaxData = new GdtImaxData();
     GdtAd localGdtAd = (GdtAd)GdtAd.class.cast(this.jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoSpliceAdapter$Params.ad);
@@ -202,12 +203,12 @@ public class TransitionContext
     localIntent.putExtra("data", localGdtImaxData);
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("callback", new TransitionContext.MyResultReceiver(new Handler(Looper.getMainLooper()), this));
-    abju.a((Activity)this.jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoSpliceAdapter$Params.activity.get(), localIntent, PublicTransFragmentActivityForTool.class, GdtVideoImaxFragment.class, 1);
+    abtu.a((Activity)this.jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoSpliceAdapter$Params.activity.get(), localIntent, PublicTransFragmentActivityForTool.class, GdtVideoImaxFragment.class, 1);
   }
   
   public void a()
   {
-    yny.a("TransitionContext", "onAnimationEnd() called");
+    yxs.a("TransitionContext", "onAnimationEnd() called");
     this.b = true;
     if (this.jdField_a_of_type_Boolean) {
       c();
@@ -216,7 +217,7 @@ public class TransitionContext
   
   public void b()
   {
-    yny.a("TransitionContext", "start() called");
+    yxs.a("TransitionContext", "start() called");
     a(this.jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoSpliceAdapter$Params.mediaViewLocationRect.left, this.jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoSpliceAdapter$Params.mediaViewLocationRect.top, this.jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoSpliceAdapter$Params.mediaViewLocationRect.width(), this.jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoSpliceAdapter$Params.mediaViewLocationRect.height());
     d();
   }

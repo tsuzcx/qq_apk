@@ -1,34 +1,61 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment;
-import java.util.ArrayList;
+import android.support.v4.util.SparseArrayCompat;
 
-class afja
-  implements View.OnClickListener
+public class afja<T>
 {
-  afja(afiu paramafiu, int paramInt, ArrayList paramArrayList) {}
+  SparseArrayCompat<afiz<T>> a = new SparseArrayCompat();
   
-  public void onClick(View paramView)
+  public int a()
   {
-    if (!afiu.a(this.jdField_a_of_type_Afiu))
+    return this.a.size();
+  }
+  
+  public int a(T paramT, int paramInt)
+  {
+    int i = this.a.size() - 1;
+    while (i >= 0)
     {
-      if (this.jdField_a_of_type_Int == 1) {
-        SDKSetEmotionPreviewFragment.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0), afiu.a(this.jdField_a_of_type_Afiu), null);
+      if (((afiz)this.a.valueAt(i)).a(paramT, paramInt)) {
+        return this.a.keyAt(i);
       }
+      i -= 1;
     }
-    else {
-      return;
+    throw new IllegalArgumentException("No ItemViewDelegate added that matches position=" + paramInt + " in data source");
+  }
+  
+  public afiz a(int paramInt)
+  {
+    return (afiz)this.a.get(paramInt);
+  }
+  
+  public afja<T> a(afiz<T> paramafiz)
+  {
+    int i = this.a.size();
+    if (paramafiz != null) {
+      this.a.put(i, paramafiz);
     }
-    paramView = new Intent();
-    paramView.putStringArrayListExtra("path_list", this.jdField_a_of_type_JavaUtilArrayList);
-    PublicFragmentActivity.a(afiu.a(this.jdField_a_of_type_Afiu), paramView, SDKSetEmotionPreviewFragment.class);
+    return this;
+  }
+  
+  public void a(afjh paramafjh, T paramT, int paramInt)
+  {
+    int j = this.a.size();
+    int i = 0;
+    while (i < j)
+    {
+      afiz localafiz = (afiz)this.a.valueAt(i);
+      if (localafiz.a(paramT, paramInt))
+      {
+        localafiz.a(paramafjh, paramT, paramInt);
+        return;
+      }
+      i += 1;
+    }
+    throw new IllegalArgumentException("No ItemViewDelegateManager added that matches position=" + paramInt + " in data source");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afja
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.biz.videostory.network.request;
 
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
-import bfpj;
-import bfpk;
+import bgxq;
+import bgxr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -15,8 +15,8 @@ import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
-import wxr;
-import wxt;
+import xgr;
+import xgt;
 
 public abstract class VSBaseRequest
   implements Serializable
@@ -50,7 +50,7 @@ public abstract class VSBaseRequest
     if ((paramVSBaseRequest == null) || (paramVSBaseRequest.getRequestByteData() == null)) {
       return false;
     }
-    return wxt.a().a(BaseApplicationImpl.sApplication.getRuntime().getAccount() + bfpk.a() + new String(paramVSBaseRequest.getRequestByteData()));
+    return xgt.a().a(BaseApplicationImpl.sApplication.getRuntime().getAccount() + bgxr.a() + new String(paramVSBaseRequest.getRequestByteData()));
   }
   
   public static void reMoveCache(VSBaseRequest paramVSBaseRequest)
@@ -58,7 +58,7 @@ public abstract class VSBaseRequest
     if ((paramVSBaseRequest == null) || (paramVSBaseRequest.getRequestByteData() == null)) {
       return;
     }
-    wxt.a().a(BaseApplicationImpl.sApplication.getRuntime().getAccount() + bfpk.a() + new String(paramVSBaseRequest.getRequestByteData()));
+    xgt.a().a(BaseApplicationImpl.sApplication.getRuntime().getAccount() + bgxr.a() + new String(paramVSBaseRequest.getRequestByteData()));
   }
   
   public abstract MessageMicro decode(byte[] paramArrayOfByte);
@@ -67,13 +67,13 @@ public abstract class VSBaseRequest
   {
     PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
     localStQWebReq.Seq.set(this.mSeq);
-    localStQWebReq.qua.set(bfpk.a());
-    localStQWebReq.deviceInfo.set(bfpj.a().c());
+    localStQWebReq.qua.set(bgxr.a());
+    localStQWebReq.deviceInfo.set(bgxq.a().c());
     byte[] arrayOfByte = getRequestByteData();
     localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(arrayOfByte));
     localStQWebReq.traceid.set(this.mTraceId);
     if (isEnableCache()) {
-      this.mRequestKey = (getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + bfpk.a() + new String(arrayOfByte));
+      this.mRequestKey = (getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + bgxr.a() + new String(arrayOfByte));
     }
     return localStQWebReq.toByteArray();
   }

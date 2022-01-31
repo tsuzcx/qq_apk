@@ -1,51 +1,38 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class arrd
-  implements bbpw
+  implements Handler.Callback
 {
-  public arrd(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
+  public arrd(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void a(View paramView, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    switch (paramInt)
+    switch (paramMessage.what)
     {
     default: 
-      return;
-    case 2: 
-      MsgBackupTransportFragment.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "transfer is going, page is in link page! click cancel btn! sIsShouQiBtnClick= " + arpa.jdField_a_of_type_Boolean + ", isStart = " + this.a.jdField_a_of_type_Boolean);
-      }
-      if (MsgBackupTransportFragment.a(this.a) == 2)
-      {
-        if (!this.a.jdField_d_of_type_Boolean) {
-          break label129;
-        }
-        arsa.a("0X800A243", 2);
-      }
-      while (this.a.jdField_a_of_type_Boolean)
-      {
-        this.a.k();
-        return;
-        label129:
-        arsa.a("0X800A243", 1);
-      }
-      if (MsgBackupTransportFragment.a(this.a) == 1)
-      {
-        this.a.onBackEvent();
-        return;
-      }
-      this.a.a(this.a.getActivity());
-      return;
+      return true;
     }
-    arpa.jdField_a_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "transfer is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= " + arpa.jdField_a_of_type_Boolean + ", curSpeed = " + this.a.jdField_a_of_type_Long + ", hasFinishedCount = " + this.a.jdField_d_of_type_Int);
+    paramMessage = this.a.a();
+    if (paramMessage != null)
+    {
+      paramMessage.a = (SystemClock.elapsedRealtime() - paramMessage.c + paramMessage.a);
+      paramMessage.c = SystemClock.elapsedRealtime();
+      boolean bool = ListenTogetherManager.a(this.a).a(paramMessage);
+      QLog.i("ListenTogether.Seek", 1, "MSG_TYPE_TIME_SYNC seek is: " + paramMessage.a + " currentTime: " + System.currentTimeMillis() + " result: " + bool);
     }
-    arpa.a().a(this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Int, 3, this.a.getActivity());
-    arsa.a("0X800A249");
+    for (;;)
+    {
+      ListenTogetherManager.a(this.a).removeMessages(1001);
+      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, arqq.a().a);
+      return true;
+      QLog.i("ListenTogether.Manager", 1, "MSG_TYPE_TIME_SYNC startPlay musicInfo is null.");
+    }
   }
 }
 

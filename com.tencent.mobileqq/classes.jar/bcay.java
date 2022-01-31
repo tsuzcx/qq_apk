@@ -1,35 +1,18 @@
-import com.tencent.open.appcommon.JsWebWorker;
-import java.lang.reflect.Method;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-public class bcay
+class bcay
 {
-  public Class a;
-  public String a;
-  public Map<Integer, Object> a;
-  public Map<String, Method> b = new HashMap();
-  
-  public bcay(JsWebWorker paramJsWebWorker)
-  {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      localIterator.next();
-    }
-    this.jdField_a_of_type_JavaUtilMap = null;
-    this.b = null;
-  }
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
+  int c;
+  int d;
+  int e;
+  int f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcay
  * JD-Core Version:    0.7.0.1
  */

@@ -6,14 +6,14 @@ public class OverScrollHelper
 {
   public static final int ORIENTATION_HORIZONTAL = 1;
   
-  public static void setUpOverScroll(RecyclerView paramRecyclerView, int paramInt)
+  public static void setUpOverScroll(RecyclerView paramRecyclerView, int paramInt, OverScrollHelper.OverScrollListener paramOverScrollListener)
   {
     switch (paramInt)
     {
     default: 
       return;
     }
-    new HorizontalOverScrollBounceEffectDecorator(new RecyclerViewOverScrollDecorAdapter(paramRecyclerView));
+    new HorizontalOverScrollBounceEffectDecorator(new RecyclerViewOverScrollDecorAdapter(paramRecyclerView), paramOverScrollListener);
   }
 }
 

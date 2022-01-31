@@ -1,40 +1,22 @@
-import android.view.SurfaceView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
 
 public class azzn
+  implements wdg
 {
-  public static void a(SurfaceView paramSurfaceView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public azzn(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  
+  public void a() {}
+  
+  public boolean a(boolean paramBoolean)
   {
-    if (paramSurfaceView == null)
-    {
-      QLog.e("SurfaceViewUtil", 2, "SurfaceViewUtil resetLayoutParams error: surfaceView==null");
-      return;
-    }
-    if ((paramInt2 <= 0) || (paramInt1 <= 0) || (paramInt3 <= 0) || (paramInt4 <= 0))
-    {
-      QLog.e("SurfaceViewUtil", 2, "SurfaceViewUtil resetLayoutParams error: width height <= 0");
-      return;
-    }
-    if (paramInt2 / paramInt1 > paramInt4 / paramInt3)
-    {
-      paramInt1 = (int)(paramInt1 * paramInt4 / paramInt3);
-      paramInt1 = (int)((paramInt2 - paramInt1) / 2.0F);
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.setMargins(0, paramInt1, 0, paramInt1);
-      paramSurfaceView.setLayoutParams(localLayoutParams);
-      return;
-    }
-    paramInt2 = (int)(paramInt2 * paramInt3 / paramInt4);
-    paramInt1 = (int)((paramInt1 - paramInt2) / 2.0F);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localLayoutParams.setMargins(paramInt1, 0, paramInt1, 0);
-    paramSurfaceView.setLayoutParams(localLayoutParams);
+    this.a.b(this.a.a.getText().toString());
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     azzn
  * JD-Core Version:    0.7.0.1
  */

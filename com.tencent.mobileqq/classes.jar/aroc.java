@@ -1,14 +1,21 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import org.json.JSONObject;
 
-class aroc
-  implements arol<Pair<String, Integer>, EmoticonPackage>
+public class aroc
+  implements View.OnClickListener
 {
-  aroc(arnz paramarnz) {}
+  public aroc(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject) {}
   
-  public EmoticonPackage a(Pair<String, Integer> paramPair)
+  public void onClick(View paramView)
   {
-    return this.a.c((String)paramPair.first, ((Integer)paramPair.second).intValue());
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.b(this.jdField_a_of_type_OrgJsonJSONObject);
+    paramView = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
+    if (!TextUtils.isEmpty(paramView)) {
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(paramView, new String[] { String.valueOf(0) });
+    }
   }
 }
 

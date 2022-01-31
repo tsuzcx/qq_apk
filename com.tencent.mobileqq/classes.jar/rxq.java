@@ -1,16 +1,31 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class rxq
+public class rxq
   implements DialogInterface.OnClickListener
 {
-  rxq(int paramInt1, int paramInt2) {}
+  public rxq(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    rzw.b(112, 2, 0);
-    rzu.a(117, this.a, this.b, null);
+    paramDialogInterface = new JSONObject();
+    try
+    {
+      paramDialogInterface.put("button", 0);
+      paramDialogInterface.put("buttonText", this.jdField_a_of_type_OrgJsonJSONObject.optString("cancelBtnText", ""));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
+      return;
+    }
+    catch (JSONException paramDialogInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(BridgeModule.TAG, 2, "showDialog error" + paramDialogInterface.getMessage());
+    }
   }
 }
 

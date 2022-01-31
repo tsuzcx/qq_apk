@@ -1,59 +1,98 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.magicface.DecoderUtil;
+import com.tencent.mobileqq.magicface.model.MagicfaceXBigDecoder.1;
+import com.tencent.mobileqq.magicface.model.MagicfaceXBigDecoder.2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.manager.Manager;
-import tencent.im.oidb.cmd0x938.cmd0x938.CommParamReq;
-import tencent.im.oidb.cmd0x938.cmd0x938.ReqBody;
-import tencent.im.oidb.oidb_0x8da.oidb_0x8da.ReqBody;
-import tencent.im.oidb.oidb_0x8da.oidb_0x8da.UserInfo;
 
 public class asdf
-  implements Manager
+  extends asdc
 {
-  AppInterface a;
+  public Object a;
+  Runnable a;
+  public Object b;
+  Runnable b;
+  public volatile boolean b;
   
-  public asdf(AppInterface paramAppInterface)
+  public asdf()
   {
-    this.a = paramAppInterface;
-  }
-  
-  public void a(long paramLong, asco paramasco)
-  {
-    oidb_0x8da.ReqBody localReqBody = new oidb_0x8da.ReqBody();
-    oidb_0x8da.UserInfo localUserInfo = new oidb_0x8da.UserInfo();
-    localUserInfo.uint64_uin.set(paramLong);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(localUserInfo);
-    localReqBody.rpt_msg_user_info.set(localArrayList);
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_b_of_type_JavaLangObject = new Object();
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangRunnable = new MagicfaceXBigDecoder.1(this);
+    this.jdField_b_of_type_JavaLangRunnable = new MagicfaceXBigDecoder.2(this);
     if (QLog.isColorLevel()) {
-      QLog.e("Q..troop.faceScore", 2, "getTinyIdByUin, uin=" + paramLong);
+      QLog.i("MagicfaceXBigDecoder", 2, "==MagicfaceXBigDecoder init=");
     }
-    mmj.a(this.a, new asdh(this, paramasco, paramLong), localReqBody.toByteArray(), "OidbSvc.0x8da_1", 2266, 0, null, 0L);
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil = new DecoderUtil();
+    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createVideoDecoder() == 0) || (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createAlphaDecoder() != 0)) {}
   }
   
-  public void a(asco paramasco)
+  public void a()
   {
-    cmd0x938.ReqBody localReqBody = new cmd0x938.ReqBody();
-    cmd0x938.CommParamReq localCommParamReq = new cmd0x938.CommParamReq();
-    localCommParamReq.bytes_version.set(ByteStringMicro.copyFromUtf8("8.2.6"));
-    localCommParamReq.uint32_platform.set(1);
-    localReqBody.msg_comm_param.set(localCommParamReq);
-    if (QLog.isColorLevel()) {
-      QLog.e("Q..troop.faceScore", 2, "fetchGrayAbility");
+    try
+    {
+      this.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_Ascy.b;
+      if (this.jdField_a_of_type_ArrayOfByte == null) {
+        return;
+      }
+      this.d = this.jdField_a_of_type_Ascy.jdField_a_of_type_ArrayOfByte;
+      if (this.d != null)
+      {
+        b();
+        if ((this.c != null) && (this.f != null))
+        {
+          new Thread(this.jdField_b_of_type_JavaLangRunnable).start();
+          this.jdField_a_of_type_JavaLangRunnable.run();
+          return;
+        }
+      }
     }
-    mmj.a(this.a, new asdg(this, paramasco), localReqBody.toByteArray(), "OidbSvc.0x938_1", 2360, 1, null, 0L);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.i("MagicfaceXBigDecoder", 2, "Exception=" + localException.toString());
+      }
+    }
   }
   
-  public void onDestroy() {}
+  void b()
+  {
+    try
+    {
+      this.c = new byte[921600];
+      this.f = new byte[921600];
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      localOutOfMemoryError.printStackTrace();
+    }
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MagicfaceXBigDecoder", 2, "==MagicfaceXBigDecoder release=");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+      label37:
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil = null;
+      super.c();
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      break label37;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asdf
  * JD-Core Version:    0.7.0.1
  */

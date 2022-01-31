@@ -2,20 +2,20 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.VideoInfo;
-import pzs;
-import qao;
-import qap;
+import qls;
+import qmm;
+import qmr;
 
 public class VideoFeedsAdapter$ShortVideoItemDelegate$1
   implements Runnable
 {
-  public VideoFeedsAdapter$ShortVideoItemDelegate$1(qao paramqao, VideoInfo paramVideoInfo) {}
+  public VideoFeedsAdapter$ShortVideoItemDelegate$1(qmm paramqmm, VideoInfo paramVideoInfo) {}
   
   public void run()
   {
-    qao.a(this.jdField_a_of_type_Qao).a.setHorizontalMargin(qao.a(this.jdField_a_of_type_Qao).j.getWidth());
-    qao.a(this.jdField_a_of_type_Qao).a.setVisibility(0);
-    qao.a(this.jdField_a_of_type_Qao).a.setArticleInfo(pzs.a(this.jdField_a_of_type_Qao.a), this.jdField_a_of_type_Qao.a, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, pzs.c(this.jdField_a_of_type_Qao.a), pzs.e(this.jdField_a_of_type_Qao.a));
+    qmm.a(this.jdField_a_of_type_Qmm).a.setHorizontalMargin(qmm.a(this.jdField_a_of_type_Qmm).i.getWidth());
+    qmm.a(this.jdField_a_of_type_Qmm).a.setVisibility(0);
+    qmm.a(this.jdField_a_of_type_Qmm).a.setArticleInfo(qls.a(this.jdField_a_of_type_Qmm.a), this.jdField_a_of_type_Qmm.a, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, qls.c(this.jdField_a_of_type_Qmm.a), qls.e(this.jdField_a_of_type_Qmm.a));
   }
 }
 

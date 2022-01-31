@@ -1,138 +1,43 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.Fragment;
+import android.widget.EditText;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
 
 public class aohr
+  implements aola
 {
-  public static int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    int j = -1;
-    int i;
-    if (paramChatMessage.isMultiMsg) {
-      i = apck.a(paramChatMessage);
-    }
-    while ((paramChatMessage instanceof MessageForFile)) {
-      if (i == 0)
-      {
-        return 61;
-        if ((paramChatMessage instanceof MessageForFile))
-        {
-          paramQQAppInterface = paramQQAppInterface.a().a(paramChatMessage.uniseq, paramChatMessage.frienduin, paramChatMessage.istroop);
-          i = j;
-          if (paramQQAppInterface != null)
-          {
-            i = j;
-            if (paramQQAppInterface.cloudType != 0) {
-              i = apck.a(paramQQAppInterface.fileName);
-            }
-          }
-        }
-        else
-        {
-          i = j;
-          if ((paramChatMessage instanceof MessageForTroopFile)) {
-            i = apck.a(((MessageForTroopFile)paramChatMessage).fileName);
-          }
-        }
-      }
-      else
-      {
-        if (i == 2) {
-          return 65;
-        }
-        return 3;
-      }
-    }
-    if ((paramChatMessage instanceof MessageForTroopFile))
-    {
-      if (i == 0) {
-        return 61;
-      }
-      if (i == 2) {
-        return 65;
-      }
-      return 3;
-    }
-    return 3;
-  }
+  public aohr(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  public static adlz a(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, ChatMessage paramChatMessage)
+  public void a()
   {
-    if (paramInt == 3) {
-      paramBaseAdapter = new admc(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.a()) {
+      this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.b();
     }
-    for (;;)
+    this.a.b = "";
+    ExtendFriendProfileEditFragment.b(this.a, 0);
+    Fragment localFragment = this.a.getParentFragment();
+    if ((localFragment != null) && ((localFragment instanceof ExtendFriendEditFragment))) {
+      ((ExtendFriendEditFragment)localFragment).a = null;
+    }
+    ExtendFriendProfileEditFragment.a(this.a, null);
+    ExtendFriendProfileEditFragment.c(this.a);
+    if (ExtendFriendProfileEditFragment.b(this.a))
     {
-      paramChatMessage = a(paramQQAppInterface, paramContext, paramSessionInfo, paramChatMessage);
-      paramAIOAnimationConatiner = paramChatMessage;
-      if (paramChatMessage == null)
-      {
-        QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleItemBuilder error, bubbleModel is not.");
-        paramAIOAnimationConatiner = new aohj(paramQQAppInterface, paramContext, paramSessionInfo);
-      }
-      paramBaseAdapter.a(paramAIOAnimationConatiner);
-      return paramBaseAdapter;
-      if (paramInt == 61)
-      {
-        paramBaseAdapter = new adlx(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-      }
-      else if (paramInt == 65)
-      {
-        paramBaseAdapter = new adme(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-      }
-      else
-      {
-        QLog.e("QFileBubbleBuilderFactory", 1, "");
-        paramBaseAdapter = new admc(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-      }
+      ExtendFriendProfileEditFragment.a(this.a, true);
+      ExtendFriendProfileEditFragment.b(this.a);
     }
-  }
-  
-  public static aohs a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage.isMultiMsg)
+    do
     {
-      String str = paramChatMessage.getExtInfoFromExtStr("_m_ForwardFileType");
-      if (!TextUtils.isEmpty(str))
-      {
-        QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleModel, fileType[" + str + "] extInfo[" + paramChatMessage.extStr + "]");
-        int i = Integer.parseInt(str);
-        if (i == 3) {
-          return new aoht(paramQQAppInterface, paramContext, paramSessionInfo);
-        }
-        if (i == 1) {
-          return new aohk(paramQQAppInterface, paramContext, paramSessionInfo);
-        }
-        if (i == 2) {
-          return new aohk(paramQQAppInterface, paramContext, paramSessionInfo);
-        }
-        QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleModel error, not support fileType. fileType[" + str + "] extInfo[" + paramChatMessage.extStr + "]");
-        return new aohj(paramQQAppInterface, paramContext, paramSessionInfo);
-      }
-      QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleModel error,multi file not exist fileType. extInfo[" + paramChatMessage.extStr + "]");
-      return new aohj(paramQQAppInterface, paramContext, paramSessionInfo);
-    }
-    if ((paramChatMessage instanceof MessageForFile)) {
-      return new aohk(paramQQAppInterface, paramContext, paramSessionInfo);
-    }
-    if ((paramChatMessage instanceof MessageForTroopFile)) {
-      return new aoht(paramQQAppInterface, paramContext, paramSessionInfo);
-    }
-    QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleModel error, is not file msg.");
-    return new aohj(paramQQAppInterface, paramContext, paramSessionInfo);
+      return;
+      ExtendFriendProfileEditFragment.a(this.a, false);
+    } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString())));
+    ExtendFriendProfileEditFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aohr
  * JD-Core Version:    0.7.0.1
  */

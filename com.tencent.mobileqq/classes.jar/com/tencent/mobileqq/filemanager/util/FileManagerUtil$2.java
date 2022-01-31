@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
-import apcb;
-import apdq;
+import aptv;
+import apvk;
 
 public final class FileManagerUtil$2
   implements Runnable
@@ -14,18 +14,18 @@ public final class FileManagerUtil$2
   {
     try
     {
-      apdq.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
-      apcb.b(2131627239);
+      apvk.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+      aptv.b(2131692877);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      apcb.a(ajjy.a(2131638736));
+      aptv.a(ajyc.a(2131704521));
       return;
     }
     catch (Exception localException)
     {
-      apcb.a(2131627238);
+      aptv.a(2131692876);
     }
   }
 }

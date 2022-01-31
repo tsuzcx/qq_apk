@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aciy;
+import actn;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -34,7 +34,7 @@ public class PttAudioPlayView
   private int e;
   private int f = 1;
   private int g;
-  private int h = 2130838034;
+  private int h = 2130838042;
   
   public PttAudioPlayView(Context paramContext)
   {
@@ -72,7 +72,7 @@ public class PttAudioPlayView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.f);
     this.jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode);
-    this.d = aciy.a(paramInt, getContext().getResources());
+    this.d = actn.a(paramInt, getContext().getResources());
   }
   
   public void a()
@@ -110,7 +110,7 @@ public class PttAudioPlayView
       }
       this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_8888);
       this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), this.h);
-      this.jdField_c_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130838035);
+      this.jdField_c_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130838043);
       this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
     if (this.e != 0) {

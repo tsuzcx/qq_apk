@@ -1,11 +1,18 @@
-public final class awte
+import android.content.Context;
+
+public abstract class awte
+  extends awth
 {
-  public long a;
-  public Object a;
+  protected abstract awtc a(Context paramContext);
+  
+  public int b()
+  {
+    return 1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awte
  * JD-Core Version:    0.7.0.1
  */

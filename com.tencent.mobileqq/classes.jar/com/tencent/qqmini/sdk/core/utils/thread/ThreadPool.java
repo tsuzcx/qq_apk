@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.utils.thread;
 
-import bdhu;
-import bdhv;
-import bdhw;
+import belx;
+import bely;
+import belz;
 
 public class ThreadPool
 {
-  public static final bdhu a = new bdhv(null);
-  bdhw a;
-  bdhw b;
+  public static final belx a = new bely(null);
+  belz a;
+  belz b;
 }
 
 

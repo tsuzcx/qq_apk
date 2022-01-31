@@ -1,30 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
+import android.os.Bundle;
 
-public class anql
-  implements View.OnTouchListener
+public abstract class anql
 {
-  public anql(ExtendFriendFragment paramExtendFriendFragment) {}
+  private static int seed;
+  public int key;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public anql()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    int i = seed;
+    seed = i + 1;
+    this.key = i;
   }
+  
+  public abstract void onBindedToClient();
+  
+  public abstract void onDisconnectWithService();
+  
+  public abstract void onPushMsg(Bundle paramBundle);
+  
+  public abstract void onResponse(Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anql
  * JD-Core Version:    0.7.0.1
  */

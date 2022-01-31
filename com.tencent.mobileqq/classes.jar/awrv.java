@@ -1,129 +1,132 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.widget.TextView;
+import java.util.List;
 
 public class awrv
+  implements awrb<awoe, awwo>
 {
-  public static awrv a;
-  private String a;
-  public Map<String, Boolean> a;
-  public Map<String, Boolean> b = new ConcurrentHashMap();
+  protected awra a;
+  private baxk a;
   
-  static
+  public awrv(baxk parambaxk)
   {
-    jdField_a_of_type_Awrv = new awrv("qzone");
+    this.jdField_a_of_type_Baxk = parambaxk;
+    this.jdField_a_of_type_Awra = a(parambaxk);
   }
   
-  public awrv(String paramString)
+  public awrv(baxk parambaxk, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaLangString = ("StatisticHitRateCollector_" + paramString);
+    this.jdField_a_of_type_Baxk = parambaxk;
+    this.jdField_a_of_type_Awra = a(parambaxk, paramInt);
   }
   
-  public static awrv a()
+  public awrv(baxk parambaxk, boolean paramBoolean)
   {
-    return jdField_a_of_type_Awrv;
+    this.jdField_a_of_type_Baxk = parambaxk;
+    this.jdField_a_of_type_Awra = a(parambaxk, paramBoolean);
   }
   
-  public static String a()
+  public awra a()
   {
-    AppRuntime localAppRuntime = null;
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl != null) {
-      localAppRuntime = localBaseApplicationImpl.getRuntime();
+    return this.jdField_a_of_type_Awra;
+  }
+  
+  protected awra<awog, awwp> a(baxk parambaxk)
+  {
+    return new awry(parambaxk);
+  }
+  
+  protected awra<awog, awwp> a(baxk parambaxk, int paramInt)
+  {
+    return new awqh(parambaxk, paramInt);
+  }
+  
+  protected awra<awog, awwp> a(baxk parambaxk, boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      return a(parambaxk);
     }
-    if (localAppRuntime == null) {
-      return "0";
-    }
-    if (localAppRuntime.getAccount() == null) {
-      return "0";
-    }
-    return localAppRuntime.getAccount();
+    return new awqy(parambaxk);
   }
   
-  public void a(String paramString)
+  public void a(awoe paramawoe, awwo paramawwo)
   {
-    a(paramString, "actQZLoadHitRateRed");
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    Boolean localBoolean = (Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
-    if ((localBoolean == null) || (!localBoolean.booleanValue()))
+    int i = 0;
+    Object localObject = (awof)paramawoe;
+    a(paramawwo, (awof)localObject);
+    int n = ((awof)localObject).a();
+    paramawoe = paramawwo.a();
+    if ((paramawoe != null) && (paramawoe != null))
     {
-      localBoolean = (Boolean)this.b.get(paramString2);
-      if ((localBoolean != null) && (localBoolean.booleanValue()))
+      localObject = ((awof)localObject).a();
+      if (localObject != null)
       {
-        this.jdField_a_of_type_JavaUtilMap.put(paramString2, Boolean.valueOf(true));
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "hitEnd sucess action = " + paramString2 + " , hit = true, uin = " + paramString1);
-        }
-        awrn.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, null, null);
-        this.jdField_a_of_type_JavaUtilMap.remove(paramString2);
-        this.b.remove(paramString2);
-      }
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "preloadMark preloadAction = " + paramString + " , flag = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      b(a(), paramString);
-    }
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, Boolean.valueOf(false));
-    this.b.put(paramString, Boolean.valueOf(true));
-  }
-  
-  public void b(String paramString)
-  {
-    a(paramString, "actQZLoadHitRateLeba");
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    if (paramString2 != null)
-    {
-      Boolean localBoolean = (Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
-      if ((localBoolean == null) || (!localBoolean.booleanValue()))
-      {
-        localBoolean = (Boolean)this.b.get(paramString2);
-        if ((localBoolean != null) && (localBoolean.booleanValue()))
+        i = 0;
+        int j;
+        label68:
+        int k;
+        if (i < paramawoe.size())
         {
-          this.jdField_a_of_type_JavaUtilMap.put(paramString2, Boolean.valueOf(true));
-          if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "hitEnd action = " + paramString2 + " , hit = false, uin = " + paramString1);
+          j = 1;
+          if (i >= ((List)localObject).size()) {
+            break label296;
           }
-          awrn.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, false, 0L, 0L, null, null);
-          this.jdField_a_of_type_JavaUtilMap.remove(paramString2);
-          this.b.remove(paramString2);
+          k = 1;
+          label82:
+          if (i >= n) {
+            break label302;
+          }
+        }
+        label296:
+        label302:
+        for (int m = 1;; m = 0)
+        {
+          if ((m & k & j) == 0) {
+            break label308;
+          }
+          ((awwp)paramawoe.get(i)).a().setVisibility(0);
+          ((awwp)paramawoe.get(i)).a().setTag(2131379208, ((List)localObject).get(i));
+          ((awwp)paramawoe.get(i)).a().setTag(2131379213, paramawoe.get(i));
+          ((awwp)paramawoe.get(i)).a().setTag(2131379209, Integer.valueOf(i));
+          ((awwp)paramawoe.get(i)).a().setTag(2131379207, Integer.valueOf(paramawoe.size()));
+          ((awwp)paramawoe.get(i)).a().setTag(2131379210, this.jdField_a_of_type_Awra);
+          this.jdField_a_of_type_Awra.a((awoe)((List)localObject).get(i), (awwq)paramawoe.get(i));
+          i += 1;
+          break;
+          j = 0;
+          break label68;
+          k = 0;
+          break label82;
+        }
+        label308:
+        i = Math.min(((List)localObject).size(), n);
+        while (i < paramawoe.size())
+        {
+          ((awwp)paramawoe.get(i)).a().setVisibility(8);
+          i += 1;
         }
       }
+      while (i < paramawoe.size())
+      {
+        ((awwp)paramawoe.get(i)).a().setVisibility(8);
+        i += 1;
+      }
+    }
+    if (paramawwo.b() != null) {
+      paramawwo.b().setVisibility(8);
     }
   }
   
-  public void c(String paramString)
+  protected void a(awwo paramawwo, awof paramawof)
   {
-    a(paramString, "actQZLoadHitRateProfile");
-  }
-  
-  public void d(String paramString)
-  {
-    Iterator localIterator = new ArrayList(this.b.keySet()).iterator();
-    while (localIterator.hasNext()) {
-      b(paramString, (String)localIterator.next());
+    if (paramawwo.a() != null) {
+      paramawwo.a().setText(paramawof.a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awrv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.transfile;
 
-import axql;
+import ayqs;
 
 public class ForwardSdkShareProcessor$ForwardStep$1
   implements Runnable
 {
-  public ForwardSdkShareProcessor$ForwardStep$1(axql paramaxql) {}
+  public ForwardSdkShareProcessor$ForwardStep$1(ayqs paramayqs) {}
   
   public void run()
   {
-    axql.a(this.a).a();
+    ayqs.a(this.a).a();
   }
 }
 

@@ -1,197 +1,162 @@
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.qnreading.PreLoader.1;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyAdVideoGuide;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONArray;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import cooperation.qzone.util.NetworkState;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class peq
+  implements phs
 {
-  private static String jdField_a_of_type_JavaLangString = "PreLoader";
-  private static boolean c = true;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private Set<String> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean d;
-  private boolean e;
-  
-  public static peq a()
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    return per.a();
+    return null;
   }
   
-  private void a(BaseArticleInfo paramBaseArticleInfo)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    if (paramBaseArticleInfo.proteusItemsData != null) {}
-    try
-    {
-      paramBaseArticleInfo = new JSONObject(paramBaseArticleInfo.proteusItemsData).optString("article_jump_url");
-      if ((!TextUtils.isEmpty(paramBaseArticleInfo)) && (paramBaseArticleInfo.startsWith("mqqapi://readinjoy/open?src_type=internal&target=4")))
-      {
-        paramBaseArticleInfo = befm.a(paramBaseArticleInfo);
-        String str = (String)paramBaseArticleInfo.get("appSchema");
-        if (("com.tencent.reading".equals(paramBaseArticleInfo.get("appPackageName"))) && (str != null))
-        {
-          paramBaseArticleInfo = (String)befm.a(Uri.decode(str)).get("rowkey");
-          if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramBaseArticleInfo))
-          {
-            this.jdField_a_of_type_JavaUtilSet.add(paramBaseArticleInfo);
-            QLog.d(jdField_a_of_type_JavaLangString, 1, "searchKBArticleId cache: " + paramBaseArticleInfo);
-          }
-        }
-      }
-      return;
-    }
-    catch (Exception paramBaseArticleInfo)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, paramBaseArticleInfo, new Object[] { "" });
-    }
+    return pdt.a(paramInt, paramBaseArticleInfo);
   }
   
-  private void a(Set<String> paramSet)
+  public void a(int paramInt1, Container paramContainer, pax parampax, int paramInt2)
   {
-    ThreadManager.executeOnNetWorkThread(new PreLoader.1(this, paramSet));
-  }
-  
-  private void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.getInt("ret") == 0)
-        {
-          paramString = paramString.getJSONArray("fullnews");
-          int i = 0;
-          while (i < paramString.length())
-          {
-            JSONObject localJSONObject = (JSONObject)paramString.get(i);
-            String str = localJSONObject.getString("id");
-            this.jdField_a_of_type_JavaUtilMap.put(str, Uri.encode(localJSONObject.toString()));
-            this.jdField_a_of_type_JavaUtilSet.remove(str);
-            i += 1;
-          }
-        }
-        return;
-      }
-      catch (Exception paramString)
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, paramString, new Object[] { "" });
-      }
-    }
-  }
-  
-  private boolean a()
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "isNeedPreload isNeedCheckPreload: " + this.b + " isConfigNeedPreload: " + this.jdField_a_of_type_Boolean + " isInstalledKB:" + this.d);
-    return (this.b) && (this.jdField_a_of_type_Boolean) && (this.d);
-  }
-  
-  private void c()
-  {
-    boolean bool = true;
-    if (this.e) {}
-    AladdinConfig localAladdinConfig;
-    do
-    {
-      return;
-      localAladdinConfig = Aladdin.getConfig(209);
-    } while (localAladdinConfig == null);
-    if (localAladdinConfig.getIntegerFromString("is_preload_open", 0) == 1) {}
+    ViewBase localViewBase = paramContainer.getVirtualView();
+    if ((parampax != null) && ((parampax.a() instanceof AdvertisementInfo)) && (((AdvertisementInfo)parampax.a()).isHideForAnimate)) {}
     for (;;)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      if (!c) {
-        break;
-      }
-      this.d = bady.a(BaseApplicationImpl.getApplication(), "com.tencent.reading");
-      c = false;
       return;
-      bool = false;
-    }
-  }
-  
-  public String a(String paramString)
-  {
-    if (!a()) {}
-    String str;
-    do
-    {
-      return paramString;
-      str = (String)befm.a(paramString).get("rowkey");
-      str = (String)this.jdField_a_of_type_JavaUtilMap.get(str);
-    } while (TextUtils.isEmpty(str));
-    paramString = paramString + "&item=" + str;
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "item=" + str.length());
-    return paramString;
-  }
-  
-  public void a()
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "onCreate");
-    this.b = true;
-    c();
-  }
-  
-  public void a(int paramInt, List<Long> paramList)
-  {
-    if (!a()) {
-      return;
-    }
-    b(ogy.a().a(Integer.valueOf(paramInt), paramList));
-  }
-  
-  public void a(List<ArticleInfo> paramList)
-  {
-    if (paramList == null) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(paramList);
-    b(localArrayList);
-  }
-  
-  public void b()
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "onDestroy");
-    this.b = false;
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_JavaUtilSet.clear();
-  }
-  
-  public void b(List<BaseArticleInfo> paramList)
-  {
-    if (!a()) {}
-    do
-    {
-      return;
-      if (paramList == null)
+      Object localObject1;
+      Object localObject2;
+      if (NetworkState.isWifiConn())
       {
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "startRequest articleInfos == null");
+        localObject1 = localViewBase.findViewBaseByName("id_large_video_icon");
+        if (localObject1 != null) {
+          ((ViewBase)localObject1).setVisibility(0);
+        }
+        localObject1 = localViewBase.findViewBaseByName("id_video_bg");
+        if (localObject1 != null) {
+          ((ViewBase)localObject1).setVisibility(8);
+        }
+        omu.a(false, localViewBase, null);
+        if ((parampax == null) || (!(parampax.a() instanceof AdvertisementInfo)) || (!((AdvertisementInfo)parampax.a()).isShowingGuide)) {
+          break label572;
+        }
+        localObject1 = (AdvertisementInfo)parampax.a();
+        localObject2 = localViewBase.findViewBaseByName("id_large_video_icon");
+        if (localObject2 != null) {
+          ((ViewBase)localObject2).setVisibility(8);
+        }
+        localObject2 = localViewBase.findViewBaseByName("id_video_bg");
+        if (localObject2 != null) {
+          ((ViewBase)localObject2).setVisibility(8);
+        }
+        localObject2 = localViewBase.findViewBaseByName("id_large_video_duration");
+        if ((localObject2 != null) && (((ViewBase)localObject2).getNativeView() != null)) {
+          ((ViewBase)localObject2).getNativeView().setVisibility(8);
+        }
+        paramContainer = ((View)paramContainer.getParent()).findViewById(2131362001);
+        if ((paramContainer instanceof ReadInJoyAdVideoGuide)) {
+          paramContainer.setVisibility(0);
+        }
+      }
+      try
+      {
+        localObject2 = new JSONObject(((AdvertisementInfo)localObject1).mAdExt).optString("pkg_name");
+        ((ReadInJoyAdVideoGuide)paramContainer).setAppInfo(((AdvertisementInfo)localObject1).mAdProductType, ((AdvertisementInfo)localObject1).mAdCorporateLogo, ((AdvertisementInfo)localObject1).mAdCorporationName, (String)localObject2, oau.e((AdvertisementInfo)localObject1));
+        while ((parampax != null) && (parampax.a() != null) && (AdvertisementInfo.isAdvertisementInfo(parampax.a())))
+        {
+          paramContainer = localViewBase.findViewBaseByName("id_view_AdDownloadView");
+          if ((paramContainer != null) && ((paramContainer instanceof oce)))
+          {
+            paramContainer = (oce)paramContainer;
+            paramContainer.a(paramInt1);
+            paramContainer.a(parampax, true);
+          }
+          paramContainer = localViewBase.findViewBaseByName("id_view_Ad_CompleteGudie");
+          if ((paramContainer == null) || (!(paramContainer instanceof pko))) {
+            break;
+          }
+          parampax = (AdvertisementInfo)parampax.a();
+          if ((!parampax.isShowingGuide) || (!parampax.mShowAdButton)) {
+            break label625;
+          }
+          paramContainer.setVisibility(0);
+          return;
+          localObject1 = localViewBase.findViewBaseByName("id_large_video_icon");
+          if (localObject1 != null) {
+            ((ViewBase)localObject1).setVisibility(8);
+          }
+          localObject1 = localViewBase.findViewBaseByName("id_video_bg");
+          if (localObject1 != null) {
+            ((ViewBase)localObject1).setVisibility(0);
+          }
+          localObject2 = (NativeText)localViewBase.findViewBaseByName("id_video_paly_text");
+          if (localObject2 != null)
+          {
+            localObject1 = ajyc.a(2131699808);
+            if (bbwc.a() == 1)
+            {
+              localObject1 = ajyc.a(2131699807);
+              label469:
+              ((NativeText)localObject2).setText((CharSequence)localObject1);
+            }
+          }
+          else
+          {
+            if (parampax == null) {
+              break label566;
+            }
+          }
+          label566:
+          for (localObject1 = parampax.a();; localObject1 = null)
+          {
+            omu.a(localViewBase, (BaseArticleInfo)localObject1);
+            break;
+            if (parampax == null) {
+              break label636;
+            }
+            ArticleInfo localArticleInfo = parampax.a();
+            if (!(localArticleInfo instanceof AdvertisementInfo)) {
+              break label636;
+            }
+            long l = ((AdvertisementInfo)localArticleInfo).mAdVideoFileSize;
+            if (l <= 0L) {
+              break label636;
+            }
+            localObject1 = qol.b(l) + ajyc.a(2131699809);
+            break label469;
+          }
+          label572:
+          paramContainer = ((View)paramContainer.getParent()).findViewById(2131362001);
+          if (paramContainer != null) {
+            paramContainer.setVisibility(8);
+          }
+          paramContainer = localViewBase.findViewBaseByName("id_large_video_duration");
+          if ((paramContainer != null) && (paramContainer.getNativeView() != null)) {
+            paramContainer.getNativeView().setVisibility(0);
+          }
+        }
+        label625:
+        paramContainer.setVisibility(8);
         return;
       }
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "startRequest");
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        a((BaseArticleInfo)paramList.next());
+      catch (JSONException paramContainer)
+      {
+        label636:
+        for (;;) {}
       }
-    } while (this.jdField_a_of_type_JavaUtilSet.size() <= 0);
-    a(this.jdField_a_of_type_JavaUtilSet);
+    }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pax parampax, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

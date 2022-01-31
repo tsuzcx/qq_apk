@@ -1,30 +1,10 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import java.lang.ref.WeakReference;
-
-public class ajiz
-  implements Handler.Callback
+public abstract interface ajiz
 {
-  private WeakReference<FrameHelperActivity> a;
-  
-  public ajiz(FrameHelperActivity paramFrameHelperActivity)
-  {
-    this.a = new WeakReference(paramFrameHelperActivity);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    FrameHelperActivity localFrameHelperActivity = (FrameHelperActivity)this.a.get();
-    if (localFrameHelperActivity != null) {
-      localFrameHelperActivity.a(paramMessage);
-    }
-    return false;
-  }
+  public abstract void a(String paramString1, boolean paramBoolean, long paramLong, Object paramObject, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajiz
  * JD-Core Version:    0.7.0.1
  */

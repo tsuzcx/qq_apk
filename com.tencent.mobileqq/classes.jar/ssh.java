@@ -1,16 +1,12 @@
-class ssh
-  implements sgr
+public abstract interface ssh
 {
-  ssh(ssg paramssg, ssi paramssi) {}
+  public abstract void a(sqb paramsqb);
   
-  public void a(String paramString, int paramInt) {}
+  public abstract void a(sqb paramsqb, int paramInt);
   
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    ssg.a(this.jdField_a_of_type_Ssg, new ssk[] { new ssk(this.jdField_a_of_type_Ssi, paramLong1, paramLong2) });
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public void a(String paramString1, String paramString2) {}
+  public abstract void e();
 }
 
 

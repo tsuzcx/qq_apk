@@ -1,6 +1,16 @@
-public abstract interface pxm
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderSubscribe;
+
+public class pxm
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public pxm(ComponentHeaderSubscribe paramComponentHeaderSubscribe) {}
+  
+  public void onClick(View paramView)
+  {
+    ComponentHeaderSubscribe.a(this.a);
+  }
 }
 
 

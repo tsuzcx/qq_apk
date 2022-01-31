@@ -1,7 +1,44 @@
-public final class axms
+public class axms
+  implements ajtg
 {
-  public static final String a = ajjy.a(2131649212);
-  public static final String b = ajjy.a(2131649226);
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3, String paramString, long paramLong) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt) {}
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            paramObject = (Object[])paramObject;
+          } while ((paramObject == null) || (paramObject.length != 3));
+          a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+          return;
+          paramObject = (Object[])paramObject;
+        } while ((paramObject == null) || (paramObject.length != 5));
+        a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), ((Boolean)paramObject[2]).booleanValue(), (String)paramObject[3], ((Long)paramObject[4]).longValue());
+        return;
+        paramObject = (Object[])paramObject;
+      } while ((paramObject == null) || (paramObject.length != 3));
+      a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue());
+      return;
+      paramObject = (Object[])paramObject;
+    } while ((paramObject == null) || (paramObject.length != 3));
+    b(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+  }
 }
 
 

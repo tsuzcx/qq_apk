@@ -1,27 +1,54 @@
-import io.flutter.view.FlutterNativeView;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qidian.QidianProfileCardActivity;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bdul
-  extends bduj
+  extends URLDrawableDownListener.Adapter
 {
-  private FlutterNativeView a;
+  String jdField_a_of_type_JavaLangString = "";
+  WeakReference<URLImageView> jdField_a_of_type_JavaLangRefWeakReference = null;
+  boolean jdField_a_of_type_Boolean = true;
+  WeakReference<QQAppInterface> b = null;
+  WeakReference<Drawable> c = null;
+  WeakReference<QidianProfileCardActivity> d = null;
   
-  public void a(bdwp parambdwp)
+  public bdul(QidianProfileCardActivity paramQidianProfileCardActivity, QQAppInterface paramQQAppInterface, URLImageView paramURLImageView, String paramString, Drawable paramDrawable, boolean paramBoolean)
   {
-    super.a(parambdwp);
-    parambdwp = new bdvs(this, this.jdField_a_of_type_Bduk);
-    parambdwp.a(null);
-    this.jdField_a_of_type_Bdvc = parambdwp;
-    parambdwp.a(this.jdField_a_of_type_IoFlutterViewFlutterNativeView);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramURLImageView);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = new WeakReference(paramQQAppInterface);
+    this.c = new WeakReference(paramDrawable);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = new WeakReference(paramQidianProfileCardActivity);
   }
   
-  public void a(FlutterNativeView paramFlutterNativeView)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_IoFlutterViewFlutterNativeView = paramFlutterNativeView;
+    super.onLoadSuccessed(paramView, paramURLDrawable);
+    paramView = (URLImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+    QidianProfileCardActivity localQidianProfileCardActivity = (QidianProfileCardActivity)this.d.get();
+    if ((paramView != null) && (localQQAppInterface != null) && (localQidianProfileCardActivity != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      paramURLDrawable = new BitmapDrawable(QidianProfileCardActivity.a(localQQAppInterface, paramURLDrawable, this.jdField_a_of_type_Boolean));
+      if (this.jdField_a_of_type_Boolean) {
+        localQidianProfileCardActivity.b.put(this.jdField_a_of_type_JavaLangString, paramURLDrawable);
+      }
+      paramView.setImageDrawable(paramURLDrawable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bdul
  * JD-Core Version:    0.7.0.1
  */

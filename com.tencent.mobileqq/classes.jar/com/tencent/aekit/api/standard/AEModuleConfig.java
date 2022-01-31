@@ -9,6 +9,7 @@ public class AEModuleConfig
   private boolean enableDefaultBasic3;
   private boolean enableDumpFilterParams;
   private boolean enableProfiler;
+  private boolean enableReducedMeidaLibrary;
   private boolean enableResourceCheck;
   private boolean isFramebufferFetchEnable;
   private boolean isLoadSo;
@@ -37,6 +38,7 @@ public class AEModuleConfig
     this.enableDataReport = AEModuleConfig.Builder.access$1200(paramBuilder);
     this.enableProfiler = AEModuleConfig.Builder.access$1300(paramBuilder);
     this.enableDumpFilterParams = AEModuleConfig.Builder.access$1400(paramBuilder);
+    this.enableReducedMeidaLibrary = AEModuleConfig.Builder.access$1500(paramBuilder);
   }
   
   public static AEModuleConfig.Builder newBuilder()
@@ -102,6 +104,11 @@ public class AEModuleConfig
   public boolean isEnableProfiler()
   {
     return this.enableProfiler;
+  }
+  
+  public boolean isEnableReducedMeidaLibrary()
+  {
+    return this.enableReducedMeidaLibrary;
   }
   
   public boolean isEnableResourceCheck()

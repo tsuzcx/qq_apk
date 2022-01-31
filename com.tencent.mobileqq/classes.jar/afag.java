@@ -1,16 +1,16 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationFragment;
+import java.util.List;
 
 public class afag
-  implements View.OnClickListener
 {
-  public afag(ConnectionsExplorationFragment paramConnectionsExplorationFragment) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  @bazd(a=String.class)
+  List<String> jdField_a_of_type_JavaUtilList;
+  String b;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    this.a.getActivity().finish();
+    return "ZhituReportRequest{, type=" + this.jdField_a_of_type_Int + ", md5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", text='" + bfkp.a(this.b) + '\'' + '}';
   }
 }
 

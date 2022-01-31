@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
-
-public class arta
-  implements aruq
+public abstract interface arta
 {
-  public arta(MultiAIOFragment paramMultiAIOFragment) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    MultiAIOFragment.a(this.a).setViewPagerBusy(paramBoolean);
-  }
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arta
  * JD-Core Version:    0.7.0.1
  */

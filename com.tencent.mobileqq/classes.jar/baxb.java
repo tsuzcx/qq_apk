@@ -1,70 +1,72 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
-import java.io.File;
-
 public class baxb
 {
-  public static final int a = ListenChangeVoicePanel.a.length;
-  
-  public static String a(String paramString)
+  public static int a(byte paramByte)
   {
-    String str = paramString.substring(0, paramString.lastIndexOf(".")).concat(".pcm");
-    new File(paramString).renameTo(new File(str));
-    return str;
+    return paramByte & 0xFF;
   }
   
-  public static String a(String paramString, int paramInt)
+  public static int a(byte[] paramArrayOfByte)
   {
-    int i = paramString.lastIndexOf(".");
-    return paramString.substring(0, i).concat("_" + paramInt).concat(paramString.substring(i, paramString.length()));
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    new File(paramString1).delete();
-    new File(paramString2).delete();
     int i = 0;
-    while (i < a)
+    int j = 0;
+    while (i < 4)
     {
-      new File(a(paramString1, i)).delete();
+      j = j << 8 | a(paramArrayOfByte[i]);
       i += 1;
     }
+    return j;
   }
   
-  public static void a(String paramString1, String paramString2, int paramInt)
+  public static int a(byte[] paramArrayOfByte, int paramInt)
   {
-    String str = null;
-    new File(paramString1).delete();
-    new File(paramString2).delete();
-    int i = 0;
-    paramString2 = str;
-    if (i < a)
+    int j = 0;
+    int i = paramInt;
+    while (i < paramInt + 4)
     {
-      str = a(paramString1, i);
-      if (i == paramInt) {
-        paramString2 = str;
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        new File(str).delete();
-      }
-    }
-    if (paramString2 != null) {
-      new File(paramString2).renameTo(new File(paramString1));
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    new File(paramString1).deleteOnExit();
-    new File(paramString2).deleteOnExit();
-    int i = 0;
-    while (i < a)
-    {
-      new File(a(paramString1, i)).deleteOnExit();
+      j = j << 8 | a(paramArrayOfByte[i]);
       i += 1;
     }
+    return j;
+  }
+  
+  public static short a(byte[] paramArrayOfByte)
+  {
+    int i = 0;
+    short s = 0;
+    while (i < 2)
+    {
+      s = (short)((short)(s << 8) | a(paramArrayOfByte[i]));
+      i += 1;
+    }
+    return s;
+  }
+  
+  public static byte[] a(int paramInt)
+  {
+    byte[] arrayOfByte = new byte[4];
+    int j = 0;
+    int i = paramInt;
+    paramInt = j;
+    while (paramInt < 4)
+    {
+      arrayOfByte[paramInt] = Integer.valueOf(i >>> 24).byteValue();
+      i <<= 8;
+      paramInt += 1;
+    }
+    return arrayOfByte;
+  }
+  
+  public static byte[] a(short paramShort)
+  {
+    return new byte[] { (byte)(paramShort >>> 8), (byte)paramShort };
+  }
+  
+  public static byte[] b(int paramInt)
+  {
+    int i = (byte)(paramInt & 0xFF);
+    int j = (byte)((0xFF00 & paramInt) >> 8);
+    int k = (byte)((0xFF0000 & paramInt) >> 16);
+    return new byte[] { (byte)((0xFF000000 & paramInt) >> 24), k, j, i };
   }
 }
 

@@ -1,18 +1,13 @@
 package com.tencent.mobileqq.troop.activity;
 
-import agem;
-import java.io.File;
-
 class TroopAvatarWallEditActivity$13
   implements Runnable
 {
-  TroopAvatarWallEditActivity$13(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, File paramFile) {}
+  TroopAvatarWallEditActivity$13(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
   
   public void run()
   {
-    if (!this.this$0.b.a(this.a.getPath(), null)) {
-      this.this$0.b(4);
-    }
+    TroopAvatarWallEditActivity.b(this.this$0);
   }
 }
 

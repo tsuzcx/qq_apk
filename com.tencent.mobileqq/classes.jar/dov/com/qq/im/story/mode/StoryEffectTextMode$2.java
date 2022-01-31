@@ -1,15 +1,15 @@
 package dov.com.qq.im.story.mode;
 
-import bhzq;
+import bjrh;
 
 public class StoryEffectTextMode$2
   implements Runnable
 {
-  public StoryEffectTextMode$2(bhzq parambhzq) {}
+  public StoryEffectTextMode$2(bjrh parambjrh) {}
   
   public void run()
   {
-    bhzq.a(this.this$0);
+    bjrh.a(this.this$0);
   }
 }
 

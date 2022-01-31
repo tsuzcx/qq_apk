@@ -1,52 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
 class aknq
-  implements akuc
+  implements Animator.AnimatorListener
 {
-  aknq(aknp paramaknp, String paramString, akuc paramakuc) {}
+  aknq(akno paramakno) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_Akuc != null) {
-      this.jdField_a_of_type_Akuc.a();
-    }
+    akno.a(this.a, false);
+    akno.a(this.a);
   }
   
-  public void a(long paramLong1, long paramLong2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_Akuc != null) {
-      this.jdField_a_of_type_Akuc.a(paramLong1, paramLong2);
-    }
+    akno.a(this.a, false);
+    akno.a(this.a);
   }
   
-  public void a(boolean paramBoolean, akud paramakud)
-  {
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + paramakud.d + ", filename = " + paramakud.c + ", url = " + paramakud.jdField_a_of_type_JavaLangString);
-    if (paramBoolean) {
-      if (!aknp.a(this.jdField_a_of_type_Aknp, paramakud.c, paramakud.b))
-      {
-        aknp.a(this.jdField_a_of_type_Aknp, paramakud.c);
-        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
-      }
-    }
-    while (this.jdField_a_of_type_Akuc == null)
-    {
-      return;
-      if ((!paramakud.d.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Aknp.a(paramakud.d, paramakud.c, paramakud.b) != 0)) {}
-    }
-    this.jdField_a_of_type_Akuc.a(paramBoolean, paramakud);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void b()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_Akuc != null) {
-      this.jdField_a_of_type_Akuc.b();
-    }
+    akno.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aknq
  * JD-Core Version:    0.7.0.1
  */

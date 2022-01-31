@@ -1,9 +1,9 @@
 package dov.com.qq.im;
 
-import bhfm;
-import bhgs;
-import bjad;
 import bjae;
+import bjbk;
+import bkqp;
+import bkqq;
 import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
 
 class QIMEffectCameraCaptureUnit$8
@@ -13,14 +13,14 @@ class QIMEffectCameraCaptureUnit$8
   
   public void run()
   {
-    Object localObject = ((bhgs)bhfm.a(5)).a;
+    Object localObject = ((bjbk)bjae.a(5)).a;
     VideoFilterViewPager localVideoFilterViewPager = this.this$0.a;
     if ((localVideoFilterViewPager != null) && (localObject != null))
     {
-      localObject = ((bjad)localObject).a(0);
+      localObject = ((bkqp)localObject).a(0);
       if (localObject != null)
       {
-        localVideoFilterViewPager.a(((bjae)localObject).c);
+        localVideoFilterViewPager.a(((bkqq)localObject).c);
         localVideoFilterViewPager.b();
       }
     }

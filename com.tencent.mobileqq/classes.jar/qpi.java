@@ -1,6 +1,18 @@
-public abstract interface qpi
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+
+class qpi
+  implements oei
 {
-  public abstract void c();
+  qpi(qpg paramqpg) {}
+  
+  public void a(int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("VALUE_CAMERA_CAPTURE_SO_DOWNLOAD_STATUS", paramInt);
+    QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_CAMERA_CAPTURE_SO_DOWNLOAD", localBundle, null);
+  }
 }
 
 

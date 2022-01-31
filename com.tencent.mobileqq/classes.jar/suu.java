@@ -1,25 +1,12 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class suu
-  extends QQUIEventReceiver<suo, tna>
+public abstract interface suu
 {
-  public suu(@NonNull suo paramsuo)
-  {
-    super(paramsuo);
-  }
+  public abstract void a(String paramString1, String paramString2, int paramInt);
   
-  public void a(@NonNull suo paramsuo, @NonNull tna paramtna)
-  {
-    if ((paramsuo.a.a().equals(paramtna.jdField_a_of_type_JavaLangString)) && ((paramtna.jdField_a_of_type_Tjs instanceof tkg))) {
-      paramsuo.a(((tkg)paramtna.jdField_a_of_type_Tjs).a(), paramtna.b);
-    }
-  }
+  public abstract void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt);
   
-  public Class acceptEventClass()
-  {
-    return tna.class;
-  }
+  public abstract void b(String paramString1, String paramString2, int paramInt);
 }
 
 

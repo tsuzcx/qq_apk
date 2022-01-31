@@ -1,20 +1,17 @@
-public abstract interface aush
+public class aush
 {
-  public abstract void a(int paramInt);
+  public final String a;
+  public final String b;
   
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void c();
-  
-  public abstract void c(String paramString);
-  
-  public abstract void d();
+  private aush(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aush
  * JD-Core Version:    0.7.0.1
  */

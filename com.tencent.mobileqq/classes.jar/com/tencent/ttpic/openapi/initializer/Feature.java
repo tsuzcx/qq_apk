@@ -3,12 +3,12 @@ package com.tencent.ttpic.openapi.initializer;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.res.AssetManager;
-import android.os.Environment;
 import android.text.TextUtils;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.aekit.openrender.AEOpenRenderConfig;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.baseutils.io.FileUtils;
+import com.tencent.ttpic.baseutils.io.FileUtils.AssetFileComparator;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.openapi.initializer.so.SoDependencyUtil;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
@@ -20,7 +20,6 @@ import java.util.List;
 public abstract class Feature
   implements Destroyable, Initializable
 {
-  private static final String DEFAULT_COPY_ASSETS_DIR = Environment.getExternalStorageDirectory().getPath() + File.separator + "Tencent" + File.separator + "aekit";
   private static final String TAG = "AEKitFeature";
   private Object initLock = new Object();
   protected boolean isInited = false;
@@ -103,22 +102,43 @@ public abstract class Feature
           return false;
         }
         str = paramString + File.separator + localModelInfo.fileName;
-        if (new File(str).exists()) {
-          break label186;
+        File localFile = new File(str);
+        if ((!localFile.exists()) || (localFile.isDirectory()) || (!FileUtils.SIMPLE_ASSET_MD5_COMPARATOR.equals(AEModule.getContext(), localModelInfo.getFullAssetsPathNoPrefix(), localFile))) {
+          break label236;
         }
+      }
+    }
+    label236:
+    for (int i = 0;; i = 1)
+    {
+      if (i != 0) {
         LogUtils.i("AEKitFeature", "copy resource: " + str);
       }
-    }
-    label186:
-    for (boolean bool2 = FileUtils.copyAssets(AEModule.getContext(), localModelInfo.getFullAssetsPathNoPrefix(), str);; bool2 = true)
-    {
-      AEOpenRenderConfig.checkStrictMode(bool2, "copy res file failed: " + localModelInfo.getFullAssetsPathNoPrefix());
-      if ((bool1) && (bool2)) {}
-      for (bool1 = true;; bool1 = false) {
-        break;
+      for (boolean bool2 = FileUtils.copyAssets(AEModule.getContext(), localModelInfo.getFullAssetsPathNoPrefix(), str);; bool2 = true)
+      {
+        AEOpenRenderConfig.checkStrictMode(bool2, "copy res file failed: " + localModelInfo.getFullAssetsPathNoPrefix());
+        if ((bool1) && (bool2)) {}
+        for (bool1 = true;; bool1 = false) {
+          break;
+        }
+        return bool1;
       }
-      return bool1;
     }
+  }
+  
+  private String getDefaultCopyAssetsDir()
+  {
+    try
+    {
+      Object localObject = AEModule.getContext();
+      localObject = ((Context)localObject).getExternalFilesDir(null).getPath() + File.separator + "Tencent" + File.separator + "aekit";
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return null;
   }
   
   protected static String getFullLibname(String paramString)
@@ -318,7 +338,7 @@ public abstract class Feature
   {
     if ((TextUtils.isEmpty(FeatureManager.getResourceDir())) && (TextUtils.isEmpty(getResourceDirOverrideFeatureManager())))
     {
-      File localFile = new File(DEFAULT_COPY_ASSETS_DIR, getName());
+      File localFile = new File(getDefaultCopyAssetsDir(), getName());
       if (!localFile.exists()) {
         localFile.mkdirs();
       }

@@ -4,20 +4,20 @@ import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import sqg;
-import sqs;
-import upt;
+import tdc;
+import tdo;
+import vcp;
 
 public class MessageNotifySegment$1
   implements Runnable
 {
-  public MessageNotifySegment$1(upt paramupt, ImageView paramImageView, Drawable paramDrawable) {}
+  public MessageNotifySegment$1(vcp paramvcp, ImageView paramImageView, Drawable paramDrawable) {}
   
   public void run()
   {
-    sqs localsqs = (sqs)sqg.a(2);
-    String str = localsqs.b(Long.toString(upt.a(this.this$0)), true);
-    ThreadManager.getUIHandler().post(new MessageNotifySegment.1.1(this, str, localsqs));
+    tdo localtdo = (tdo)tdc.a(2);
+    String str = localtdo.b(Long.toString(vcp.a(this.this$0)), true);
+    ThreadManager.getUIHandler().post(new MessageNotifySegment.1.1(this, str, localtdo));
   }
 }
 

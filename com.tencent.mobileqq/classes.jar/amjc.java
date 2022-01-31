@@ -1,18 +1,21 @@
+import android.view.View;
+
 public class amjc
+  implements amjh
 {
-  public String a;
-  public boolean a;
-  public String b = "https://club.vip.qq.com/interact/recovery?_wv=16777218&friend=%s&type=%d";
-  
-  public amjc()
+  public String a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = ajjy.a(2131645474);
+    return "彩签业务类型";
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    bcpw.a(paramView.getContext(), 0, "service type: " + paramInt, 1000).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amjc
  * JD-Core Version:    0.7.0.1
  */

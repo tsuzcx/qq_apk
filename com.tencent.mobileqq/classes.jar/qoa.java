@@ -1,24 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.view.RainView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
 
-public class qoa
-  implements axbf
+class qoa
+  implements DialogInterface.OnClickListener
 {
-  public qoa(RainView paramRainView, axci paramaxci) {}
+  qoa(qny paramqny, boolean paramBoolean) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.b(this.jdField_a_of_type_Axci);
-    if ((RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).incrementAndGet() == RainView.a() * RainView.b() * RainView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).get()) && (RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView) != null))
-    {
-      RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).set(0);
-      RainView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).set(0);
-      RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).a();
-      if (QLog.isColorLevel()) {
-        QLog.d("SpriteGLView", 2, "rain animation end");
-      }
+    if (!this.jdField_a_of_type_Boolean) {
+      if (!qny.a(this.jdField_a_of_type_Qny)) {}
     }
+    while (!(qny.a(this.jdField_a_of_type_Qny) instanceof Activity))
+    {
+      return;
+      this.jdField_a_of_type_Qny.b();
+      return;
+    }
+    oau.b(qny.a(this.jdField_a_of_type_Qny));
+    oal.a(qny.a(this.jdField_a_of_type_Qny), qny.a(this.jdField_a_of_type_Qny).o, qny.a(this.jdField_a_of_type_Qny).p, "");
   }
 }
 

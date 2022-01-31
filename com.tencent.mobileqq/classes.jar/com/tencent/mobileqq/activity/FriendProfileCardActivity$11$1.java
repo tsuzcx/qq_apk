@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import aatr;
-import ajjj;
-import atwx;
+import abdl;
+import ajxn;
+import auuw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 
 public class FriendProfileCardActivity$11$1
   implements Runnable
 {
-  public FriendProfileCardActivity$11$1(aatr paramaatr) {}
+  public FriendProfileCardActivity$11$1(abdl paramabdl) {}
   
   public void run()
   {
-    Card localCard = ((ajjj)this.a.a.app.getManager(51)).b(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
+    Card localCard = ((ajxn)this.a.a.app.getManager(51)).b(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
     this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataCard = localCard;
     if (localCard != null) {
       this.a.a.runOnUiThread(new FriendProfileCardActivity.11.1.1(this));

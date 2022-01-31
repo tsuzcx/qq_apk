@@ -1,97 +1,121 @@
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
-class aixk
+public class aixk
 {
-  aixi jdField_a_of_type_Aixi = null;
-  aixm jdField_a_of_type_Aixm;
-  axro jdField_a_of_type_Axro;
-  boolean jdField_a_of_type_Boolean = false;
-  
-  boolean a(aixi paramaixi, int paramInt)
+  public static int a(int paramInt)
   {
-    String str1;
-    if (!aixj.b(paramaixi))
-    {
-      String str2 = paramaixi.jdField_a_of_type_JavaLangString;
-      str1 = paramaixi.b;
-      String str3 = aixj.a(paramaixi);
-      axro localaxro = new axro();
-      localaxro.jdField_a_of_type_Axrt = new aixl(this, str1, paramaixi);
-      localaxro.a(str1);
-      localaxro.jdField_a_of_type_JavaLangString = str2;
-      localaxro.jdField_a_of_type_Int = 0;
-      localaxro.jdField_c_of_type_JavaLangString = new File(str3).getPath();
-      localaxro.jdField_c_of_type_Int = badq.a(axsr.a().a());
-      paramaixi = aing.a().getNetEngine(0);
-      if (paramaixi == null) {
-        break label206;
-      }
-      this.jdField_a_of_type_Axro = localaxro;
-      paramaixi.a(this.jdField_a_of_type_Axro);
+    if (a(paramInt)) {
+      return 1;
     }
-    label206:
-    for (boolean bool = true;; bool = false)
-    {
-      if ((!bool) && (this.jdField_a_of_type_Aixm != null)) {
-        this.jdField_a_of_type_Aixm.a(3, "");
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("TMG_Downloader", 2, String.format("downloadRes, md5[%s], etr[%s]", new Object[] { str1, Boolean.valueOf(bool) }));
-      }
-      return bool;
-      if (this.jdField_a_of_type_Aixm != null) {
-        this.jdField_a_of_type_Aixm.a(0, "So Already Exist!!!");
-      }
-      return false;
-    }
+    return 0;
   }
   
-  boolean a(aixi paramaixi, aixm paramaixm)
+  public static int a(int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Aixm = paramaixm;
-    boolean bool;
-    if (this.jdField_a_of_type_Boolean)
+    int i = paramInt * 400 / 540;
+    if (i <= paramLong * 0.7D)
     {
-      if ((this.jdField_a_of_type_Aixi == paramaixi) || (TextUtils.isEmpty(paramaixi.b)) || (paramaixi.b.equals(this.jdField_a_of_type_Aixi.b))) {
-        break label214;
-      }
+      paramInt = i;
+      if (i > 0) {}
+    }
+    else
+    {
+      paramInt = (int)(paramLong * 0.7D);
+    }
+    return paramInt;
+  }
+  
+  public static aisn a(QQAppInterface paramQQAppInterface, String paramString, ApolloBaseInfo paramApolloBaseInfo, int paramInt)
+  {
+    if ((paramQQAppInterface == null) || (paramApolloBaseInfo == null) || (TextUtils.isEmpty(paramString)))
+    {
+      QLog.e("ApolloDrawerInfoManager", 1, "checkDrawerRoleDressInfo param err");
+      return null;
+    }
+    int i = 0;
+    int[] arrayOfInt = null;
+    int j = 0;
+    aisn localaisn = null;
+    int k = airz.a(paramQQAppInterface, paramString);
+    int m = paramApolloBaseInfo.apolloStatus;
+    aiwn localaiwn = paramApolloBaseInfo.getApolloDress();
+    if (localaiwn != null)
+    {
+      i = localaiwn.jdField_a_of_type_Int;
+      arrayOfInt = localaiwn.a();
+    }
+    localaiwn = paramApolloBaseInfo.getApolloDress3D();
+    paramApolloBaseInfo = localaisn;
+    if (localaiwn != null)
+    {
+      j = localaiwn.jdField_a_of_type_Int;
+      paramApolloBaseInfo = localaiwn.a();
+    }
+    localaisn = new aisn();
+    localaisn.jdField_a_of_type_Int = i;
+    localaisn.jdField_a_of_type_ArrayOfInt = arrayOfInt;
+    localaisn.jdField_b_of_type_Int = j;
+    localaisn.jdField_b_of_type_ArrayOfInt = paramApolloBaseInfo;
+    localaisn.c = m;
+    localaisn.d = k;
+    localaisn.e = ajfj.b(paramInt);
+    boolean bool;
+    if (m != 1)
+    {
       bool = true;
+      QLog.e("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo apollo not open from:", Integer.valueOf(paramInt), ",apolloFeatureFlag:", Integer.valueOf(m) });
+      ajlq.a(localaisn.e, 10, 101, new Object[] { "apollo not open, flag:", Integer.valueOf(m) });
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TMG_Downloader", 2, String.format("DownloadContrl, mDownloading[%s], reDownload[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(bool) }));
+      localaisn.jdField_a_of_type_Boolean = bool;
+      if ((!bool) && (QLog.isColorLevel())) {
+        QLog.d("ApolloDrawerInfoManager", 2, new Object[] { "checkDrawerRoleDressInfo from:", Integer.valueOf(paramInt), ",result:", localaisn.toString() });
       }
-      if (!bool)
+      ajlq.a(localaisn.e, 10, new Object[] { localaisn.toString() });
+      return localaisn;
+      if ((k == 1) && ((i <= 0) || (arrayOfInt == null) || (arrayOfInt.length <= 0) || ((i > 0) && (!ajkk.a(paramString, i, arrayOfInt, paramQQAppInterface)))))
       {
-        return this.jdField_a_of_type_Boolean;
         bool = true;
+        QLog.e("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo basic not ready, from:", Integer.valueOf(paramInt), ",result:", localaisn.toString() });
+        ajlq.a(localaisn.e, 10, 111, new Object[] { "basic not ready:" + localaisn.toString() });
       }
       else
       {
-        if (this.jdField_a_of_type_Axro != null)
+        if ((k == 2) && ((j <= 0) || (paramApolloBaseInfo == null) || (paramApolloBaseInfo.length <= 0) || ((j > ajmu.jdField_a_of_type_Int) && (!ajkk.a(paramString, j, paramApolloBaseInfo, paramQQAppInterface)))))
         {
-          paramaixm = aing.a().getNetEngine(0);
-          if (paramaixm != null)
-          {
-            QLog.d("TMG_Downloader", 2, String.format("DownloadContrl, cancelReq[%s]", new Object[] { (String)this.jdField_a_of_type_Axro.a() }));
-            paramaixm.b(this.jdField_a_of_type_Axro);
-          }
+          QLog.d("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo 3D not ready, from:", Integer.valueOf(paramInt), ",result:", localaisn.toString() });
+          ajlq.a(localaisn.e, 10, new Object[] { "3D role/dress not ready but show basic" });
         }
-        this.jdField_a_of_type_Aixi = paramaixi;
-        this.jdField_a_of_type_Axro = null;
-        if (QLog.isColorLevel()) {
-          QLog.d("TMG_Downloader", 2, String.format("DownloadContrl, mInfo[%s]", new Object[] { this.jdField_a_of_type_Aixi }));
+        if (!ApolloEngine.a())
+        {
+          QLog.d("ApolloDrawerInfoManager", 1, "so is not ready");
+          ajlq.a(localaisn.e, 10, 102, new Object[] { "so not ready" });
+          bool = true;
         }
-        this.jdField_a_of_type_Boolean = a(this.jdField_a_of_type_Aixi, 1);
-        return this.jdField_a_of_type_Boolean;
-        label214:
-        bool = false;
+        else
+        {
+          bool = false;
+        }
       }
     }
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return paramInt == 6;
+  }
+  
+  public static int b(int paramInt)
+  {
+    if (a(paramInt)) {
+      return 3;
+    }
+    return 2;
   }
 }
 

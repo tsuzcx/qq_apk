@@ -1,15 +1,22 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.util.Pair;
 
-public class acea
-  implements DialogInterface.OnDismissListener
+class acea
+  implements DialogInterface.OnClickListener
 {
-  public acea(UpgradeActivity paramUpgradeActivity) {}
+  acea(acdz paramacdz, ayao paramayao, Pair paramPair) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    this.jdField_a_of_type_Ayao.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
+    if (!ayao.a(this.jdField_a_of_type_Acdz.a.app))
+    {
+      this.jdField_a_of_type_Acdz.a.setTitle("");
+      ayan.a(this.jdField_a_of_type_Acdz.a.app, this.jdField_a_of_type_Acdz.a, null);
+    }
+    this.jdField_a_of_type_Acdz.a.finish();
   }
 }
 

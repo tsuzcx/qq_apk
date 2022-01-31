@@ -1,7 +1,7 @@
 package com.etrump.mixlayout;
 
 import android.graphics.Typeface;
-import fe;
+import gx;
 
 public class ETFont
 {
@@ -155,7 +155,7 @@ public class ETFont
   public void onDestroy()
   {
     if (0L != this.m_diyHandle) {
-      fe.a(this.m_diyHandle);
+      gx.a(this.m_diyHandle);
     }
   }
   
@@ -165,7 +165,7 @@ public class ETFont
       return;
     }
     this.mDIYConfigString = paramString;
-    this.m_diyHandle = fe.a(this, paramString);
+    this.m_diyHandle = gx.a(this, paramString);
   }
   
   public void setBold(boolean paramBoolean)

@@ -1,35 +1,44 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
+import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
-public class area
-  extends akfx
+public final class area
+  implements PluginManagerUpdater
 {
-  public int a;
-  public boolean a;
-  public int b;
+  private final File a;
   
   public area(String paramString)
   {
-    super(paramString);
+    this.a = new File("/data/local/tmp/" + paramString + "PluginManager.apk");
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public File getLatest()
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Int = ((int)(paramSosoLbsInfo.a.b * 1000000.0D));
-      this.b = ((int)(paramSosoLbsInfo.a.a * 1000000.0D));
+    if (this.a.exists()) {
+      return this.a;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("LoginUserGuideHelper", 2, String.format("onLocationFinish [%s, %s, %s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b) }));
-    }
+    return null;
+  }
+  
+  public Future<Boolean> isAvailable(File paramFile)
+  {
+    return akhl.a(16).submit(new arec(this, paramFile));
+  }
+  
+  public Future<File> update()
+  {
+    return akhl.a(16).submit(new areb(this));
+  }
+  
+  public boolean wasUpdating()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     area
  * JD-Core Version:    0.7.0.1
  */

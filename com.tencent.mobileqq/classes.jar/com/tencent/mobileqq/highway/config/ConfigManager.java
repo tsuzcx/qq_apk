@@ -14,22 +14,35 @@ import com.tencent.mobileqq.highway.utils.PTVUpConfigInfo;
 import com.tencent.mobileqq.highway.utils.VideoUpConfigInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AppRuntime;
 
 public class ConfigManager
   implements IHwManager
 {
+  private static final String BDH_FILE_DIR;
+  private static final String CUSTOM_ENV_FILE_NAME = "custom_env";
   private static final String HW_CONFIG_PUSH_FILENAME = "highway_config_push";
   private static final String HW_CONFIG_SSOGET_FILENAME = "highway_config_ssoget";
+  private static final String STORE_KEY_ID = "STORE_KEY_ID";
+  private static final String STORE_KEY_IP = "STORE_KEY_IP";
+  private static final String STORE_KEY_PORT = "STORE_KEY_PORT";
   public static final String TAG = "HWConfigManager";
+  private static int mCustomID;
   private static volatile ConfigManager mUniqueInstance;
   public static int mUseHardCodeIp = -1;
   private Context mContext4MSFGet;
   public int mCurnetIptype;
+  private EndPoint mCustomEnvAddr;
+  private boolean mCustomeEnvInit;
   private IpContainer mGetIpContainer;
   private ArrayList<HwNetSegConf> mHCNetSegConfList;
   private HardCodeIpList mHardCodeIpList;
@@ -38,6 +51,17 @@ public class ConfigManager
   public Ipv6Available mIpv6Available;
   private boolean mIsGettingConfg;
   private IpContainer mPushIpContainer;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (BaseApplication.getContext().getExternalFilesDir(null) == null) {}
+    for (String str = BaseApplication.getContext().getFilesDir().getAbsolutePath();; str = BaseApplication.getContext().getExternalFilesDir(null).getAbsolutePath())
+    {
+      BDH_FILE_DIR = str + "/tencent/MobileQQ/bdh/";
+      return;
+    }
+  }
   
   private ConfigManager(Context paramContext, AppRuntime paramAppRuntime, String paramString, HwEngine paramHwEngine)
   {
@@ -50,6 +74,11 @@ public class ConfigManager
     this.mHCNetSegConfList.add(new HwNetSegConf(3L, 16384L, 6L, 2L));
     this.mHCNetSegConfList.add(new HwNetSegConf(4L, 32768L, 8L, 2L));
     initIpConfig(paramContext, paramAppRuntime);
+  }
+  
+  public static int getCustomEnvId()
+  {
+    return mCustomID;
   }
   
   public static ConfigManager getInstance(Context paramContext, HwEngine paramHwEngine)
@@ -82,6 +111,47 @@ public class ConfigManager
     return null;
   }
   
+  private void initCustomEnv()
+  {
+    try
+    {
+      Object localObject1;
+      if (!this.mCustomeEnvInit)
+      {
+        localObject1 = new File(BDH_FILE_DIR, "custom_env");
+        boolean bool = ((File)localObject1).exists();
+        if (!bool) {}
+      }
+      try
+      {
+        Object localObject4 = new FileInputStream((File)localObject1);
+        localObject1 = new Properties();
+        ((Properties)localObject1).load((InputStream)localObject4);
+        localObject4 = ((Properties)localObject1).getProperty("STORE_KEY_ID");
+        if (localObject4 != null) {
+          mCustomID = Integer.parseInt((String)localObject4);
+        }
+        localObject4 = ((Properties)localObject1).getProperty("STORE_KEY_IP");
+        localObject1 = ((Properties)localObject1).getProperty("STORE_KEY_PORT");
+        if ((localObject4 != null) && (localObject1 != null)) {
+          this.mCustomEnvAddr = new EndPoint((String)localObject4, Integer.valueOf((String)localObject1).intValue());
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          localException = localException;
+          localException.printStackTrace();
+        }
+      }
+      finally {}
+      this.mCustomeEnvInit = true;
+      return;
+    }
+    finally {}
+  }
+  
   private void initIpConfig(Context paramContext, AppRuntime paramAppRuntime)
   {
     this.mHcDomainCandicateList = new CopyOnWriteArrayList();
@@ -104,6 +174,218 @@ public class ConfigManager
     this.mGetIpContainer.onConnSuccess(paramEndPoint);
   }
   
+  /* Error */
+  public static void saveCustomEnv(String paramString1, String paramString2, String paramString3)
+  {
+    // Byte code:
+    //   0: new 79	java/io/File
+    //   3: dup
+    //   4: getstatic 94	com/tencent/mobileqq/highway/config/ConfigManager:BDH_FILE_DIR	Ljava/lang/String;
+    //   7: invokespecial 281	java/io/File:<init>	(Ljava/lang/String;)V
+    //   10: astore 4
+    //   12: aload_0
+    //   13: invokestatic 287	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   16: ifeq +24 -> 40
+    //   19: aload_1
+    //   20: invokestatic 287	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   23: ifeq +17 -> 40
+    //   26: aload_2
+    //   27: invokestatic 287	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   30: ifeq +10 -> 40
+    //   33: aload 4
+    //   35: invokevirtual 290	java/io/File:delete	()Z
+    //   38: pop
+    //   39: return
+    //   40: aload 4
+    //   42: invokevirtual 190	java/io/File:exists	()Z
+    //   45: ifne +42 -> 87
+    //   48: aload 4
+    //   50: invokevirtual 293	java/io/File:mkdirs	()Z
+    //   53: ifne +34 -> 87
+    //   56: ldc 26
+    //   58: iconst_2
+    //   59: new 60	java/lang/StringBuilder
+    //   62: dup
+    //   63: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   66: ldc_w 295
+    //   69: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: aload 4
+    //   74: invokevirtual 298	java/io/File:getPath	()Ljava/lang/String;
+    //   77: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   80: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   83: invokestatic 304	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   86: return
+    //   87: new 79	java/io/File
+    //   90: dup
+    //   91: aload 4
+    //   93: ldc 11
+    //   95: invokespecial 307	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   98: astore 6
+    //   100: aload 6
+    //   102: invokevirtual 290	java/io/File:delete	()Z
+    //   105: pop
+    //   106: aload 6
+    //   108: invokevirtual 310	java/io/File:createNewFile	()Z
+    //   111: ifeq +214 -> 325
+    //   114: new 312	java/io/FileOutputStream
+    //   117: dup
+    //   118: aload 6
+    //   120: invokespecial 313	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   123: astore 5
+    //   125: aload 5
+    //   127: astore 4
+    //   129: new 197	java/util/Properties
+    //   132: dup
+    //   133: invokespecial 198	java/util/Properties:<init>	()V
+    //   136: astore 7
+    //   138: aload 5
+    //   140: astore 4
+    //   142: aload_0
+    //   143: invokestatic 287	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   146: ifne +16 -> 162
+    //   149: aload 5
+    //   151: astore 4
+    //   153: aload 7
+    //   155: ldc 21
+    //   157: aload_0
+    //   158: invokevirtual 317	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   161: pop
+    //   162: aload 5
+    //   164: astore 4
+    //   166: aload_1
+    //   167: invokestatic 287	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   170: ifne +16 -> 186
+    //   173: aload 5
+    //   175: astore 4
+    //   177: aload 7
+    //   179: ldc 23
+    //   181: aload_1
+    //   182: invokevirtual 317	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   185: pop
+    //   186: aload 5
+    //   188: astore 4
+    //   190: aload_2
+    //   191: invokestatic 287	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   194: istore_3
+    //   195: iload_3
+    //   196: ifne +27 -> 223
+    //   199: aload 5
+    //   201: astore 4
+    //   203: aload_2
+    //   204: invokestatic 212	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   207: ifle +16 -> 223
+    //   210: aload 5
+    //   212: astore 4
+    //   214: aload 7
+    //   216: ldc 19
+    //   218: aload_2
+    //   219: invokevirtual 317	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   222: pop
+    //   223: aload 5
+    //   225: astore 4
+    //   227: aload 7
+    //   229: aload 5
+    //   231: ldc_w 319
+    //   234: invokevirtual 323	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
+    //   237: aload 5
+    //   239: ifnull -200 -> 39
+    //   242: aload 5
+    //   244: invokevirtual 326	java/io/FileOutputStream:close	()V
+    //   247: return
+    //   248: astore_0
+    //   249: return
+    //   250: astore_0
+    //   251: aload 5
+    //   253: astore 4
+    //   255: aload_0
+    //   256: invokevirtual 327	java/lang/NumberFormatException:printStackTrace	()V
+    //   259: goto -36 -> 223
+    //   262: astore_0
+    //   263: aload 5
+    //   265: astore 4
+    //   267: aload_0
+    //   268: invokevirtual 328	java/io/IOException:printStackTrace	()V
+    //   271: aload 5
+    //   273: astore 4
+    //   275: aload 6
+    //   277: invokevirtual 290	java/io/File:delete	()Z
+    //   280: pop
+    //   281: aload 5
+    //   283: ifnull -244 -> 39
+    //   286: aload 5
+    //   288: invokevirtual 326	java/io/FileOutputStream:close	()V
+    //   291: return
+    //   292: astore_0
+    //   293: return
+    //   294: astore_0
+    //   295: aconst_null
+    //   296: astore 4
+    //   298: aload 4
+    //   300: ifnull +8 -> 308
+    //   303: aload 4
+    //   305: invokevirtual 326	java/io/FileOutputStream:close	()V
+    //   308: aload_0
+    //   309: athrow
+    //   310: astore_1
+    //   311: goto -3 -> 308
+    //   314: astore_0
+    //   315: goto -17 -> 298
+    //   318: astore_0
+    //   319: aconst_null
+    //   320: astore 5
+    //   322: goto -59 -> 263
+    //   325: aconst_null
+    //   326: astore 5
+    //   328: goto -91 -> 237
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	331	0	paramString1	String
+    //   0	331	1	paramString2	String
+    //   0	331	2	paramString3	String
+    //   194	2	3	bool	boolean
+    //   10	294	4	localObject	Object
+    //   123	204	5	localFileOutputStream	java.io.FileOutputStream
+    //   98	178	6	localFile	File
+    //   136	92	7	localProperties	Properties
+    // Exception table:
+    //   from	to	target	type
+    //   242	247	248	java/lang/Exception
+    //   203	210	250	java/lang/NumberFormatException
+    //   214	223	250	java/lang/NumberFormatException
+    //   129	138	262	java/io/IOException
+    //   142	149	262	java/io/IOException
+    //   153	162	262	java/io/IOException
+    //   166	173	262	java/io/IOException
+    //   177	186	262	java/io/IOException
+    //   190	195	262	java/io/IOException
+    //   203	210	262	java/io/IOException
+    //   214	223	262	java/io/IOException
+    //   227	237	262	java/io/IOException
+    //   255	259	262	java/io/IOException
+    //   286	291	292	java/lang/Exception
+    //   100	125	294	finally
+    //   303	308	310	java/lang/Exception
+    //   129	138	314	finally
+    //   142	149	314	finally
+    //   153	162	314	finally
+    //   166	173	314	finally
+    //   177	186	314	finally
+    //   190	195	314	finally
+    //   203	210	314	finally
+    //   214	223	314	finally
+    //   227	237	314	finally
+    //   255	259	314	finally
+    //   267	271	314	finally
+    //   275	281	314	finally
+    //   100	125	318	java/io/IOException
+  }
+  
+  public void clearIpv6Cfg(Context paramContext)
+  {
+    this.mPushIpContainer.cleanIpv6Cfg(paramContext);
+    this.mGetIpContainer.cleanIpv6Cfg(paramContext);
+  }
+  
   public SparseArray<HwNetSegConf> getAllBuzSegConfs(Context paramContext)
   {
     SparseArray localSparseArray = new SparseArray();
@@ -111,6 +393,12 @@ public class ConfigManager
     localSparseArray.put(0, getNetSegConf(paramContext, 0));
     localSparseArray.put(0, getNetSegConf(paramContext, 0));
     return localSparseArray;
+  }
+  
+  public EndPoint getCustomEnvAddr()
+  {
+    initCustomEnv();
+    return this.mCustomEnvAddr;
   }
   
   public HwEngine getHwEngine()
@@ -191,6 +479,10 @@ public class ConfigManager
   
   public EndPoint getNextSrvAddr(Context paramContext, AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
   {
+    Object localObject3 = getCustomEnvAddr();
+    if (localObject3 != null) {
+      return localObject3;
+    }
     Object localObject2;
     if (this.mPushIpContainer != null)
     {
@@ -202,7 +494,6 @@ public class ConfigManager
     }
     for (Object localObject1 = localObject2;; localObject1 = null)
     {
-      Object localObject3;
       if (this.mGetIpContainer != null)
       {
         localObject3 = this.mGetIpContainer.findIpCurNet(paramContext, paramBoolean);
@@ -213,57 +504,58 @@ public class ConfigManager
       }
       for (localObject2 = localObject3;; localObject2 = null)
       {
-        if ((localObject1 != null) && (localObject2 != null)) {
+        if ((localObject1 != null) && (localObject2 != null))
+        {
+          localObject3 = localObject1;
           if (((EndPoint)localObject1).timestamp > ((EndPoint)localObject2).timestamp) {
-            localObject3 = localObject1;
+            break;
+          }
+          return localObject2;
+        }
+        localObject3 = localObject1;
+        if (localObject1 != null) {
+          break;
+        }
+        if (localObject2 != null) {
+          return localObject2;
+        }
+        if (!this.mIsGettingConfg)
+        {
+          this.mContext4MSFGet = paramContext;
+          HwServlet.getConfig(paramAppRuntime, paramString);
+        }
+        if (this.mPushIpContainer != null)
+        {
+          paramString = this.mPushIpContainer.findIpRecent(paramContext, paramBoolean);
+          localObject1 = paramString;
+          if (paramString != null)
+          {
+            BdhLogUtil.LogEvent("C", "getNextSrvAddr, mPushIpContainer.findIpRecent, epFromPush = " + paramString.toString() + " with key= " + paramString.keyOfAPN + ", timestamp = " + paramString.timestamp);
+            localObject1 = paramString;
           }
         }
-        do
+        if (this.mGetIpContainer != null)
         {
-          do
+          paramString = this.mGetIpContainer.findIpRecent(paramContext, paramBoolean);
+          localObject2 = paramString;
+          if (paramString != null)
           {
-            do
-            {
-              return localObject3;
-              return localObject2;
-              localObject3 = localObject1;
-            } while (localObject1 != null);
-            if (localObject2 != null) {
-              return localObject2;
-            }
-            if (!this.mIsGettingConfg)
-            {
-              this.mContext4MSFGet = paramContext;
-              HwServlet.getConfig(paramAppRuntime, paramString);
-            }
-            if (this.mPushIpContainer != null)
-            {
-              paramString = this.mPushIpContainer.findIpRecent(paramContext, paramBoolean);
-              localObject1 = paramString;
-              if (paramString != null)
-              {
-                BdhLogUtil.LogEvent("C", "getNextSrvAddr, mPushIpContainer.findIpRecent, epFromPush = " + paramString.toString() + " with key= " + paramString.keyOfAPN + ", timestamp = " + paramString.timestamp);
-                localObject1 = paramString;
-              }
-            }
-            if (this.mGetIpContainer != null)
-            {
-              paramString = this.mGetIpContainer.findIpRecent(paramContext, paramBoolean);
-              localObject2 = paramString;
-              if (paramString != null)
-              {
-                BdhLogUtil.LogEvent("C", "getNextSrvAddr, mGetIpContainer.findIpRecent, epFromGet =  " + paramString.toString() + " with key= " + paramString.keyOfAPN + ", timestamp = " + paramString.timestamp);
-                localObject2 = paramString;
-              }
-            }
-            if ((localObject1 == null) || (localObject2 == null)) {
-              break;
-            }
-            localObject3 = localObject1;
-          } while (((EndPoint)localObject1).timestamp > ((EndPoint)localObject2).timestamp);
-          return localObject2;
+            BdhLogUtil.LogEvent("C", "getNextSrvAddr, mGetIpContainer.findIpRecent, epFromGet =  " + paramString.toString() + " with key= " + paramString.keyOfAPN + ", timestamp = " + paramString.timestamp);
+            localObject2 = paramString;
+          }
+        }
+        if ((localObject1 != null) && (localObject2 != null))
+        {
           localObject3 = localObject1;
-        } while (localObject1 != null);
+          if (((EndPoint)localObject1).timestamp > ((EndPoint)localObject2).timestamp) {
+            break;
+          }
+          return localObject2;
+        }
+        localObject3 = localObject1;
+        if (localObject1 != null) {
+          break;
+        }
         if (localObject2 != null) {
           return localObject2;
         }
@@ -378,12 +670,12 @@ public class ConfigManager
         OpenUpConfig.updateFromSrv(paramHwConfig.openUpConf);
       }
       if (paramHwConfig.videoConf == null) {
-        break label146;
+        break label147;
       }
       VideoUpConfigInfo.updateFromSrc(paramHwConfig.videoConf);
-      label109:
+      label110:
       if (paramHwConfig.ptvCof == null) {
-        break label157;
+        break label159;
       }
       PTVUpConfigInfo.updateFromSrc(paramHwConfig.ptvCof);
     }
@@ -393,10 +685,10 @@ public class ConfigManager
       return;
       com.tencent.mobileqq.highway.iplearning.IpLearningImpl.sEnableIpLearning = 0;
       break;
-      label146:
+      label147:
       BdhLogUtil.LogEvent("C", "onSrvAddrPush : hwConfig.videoConf is null ");
-      break label109;
-      label157:
+      break label110;
+      label159:
       BdhLogUtil.LogEvent("C", "onSrvAddrPush : hwConfig.ptvCof is null ");
     }
   }

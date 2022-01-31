@@ -1,22 +1,34 @@
-import android.view.KeyEvent;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.teamwork.spread.TroopFileAIOMsgTips.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class ayhj
-  implements azpi
+  extends aygx
 {
-  public ayhj(TroopBarReplyActivity paramTroopBarReplyActivity) {}
-  
-  public boolean a(int paramInt, KeyEvent paramKeyEvent)
+  public ayhj(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, ayhd paramayhd)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1)) {
-      TroopBarReplyActivity.a(this.a, false);
+    super(paramQQAppInterface, paramChatMessage, paramayhd);
+  }
+  
+  protected String a()
+  {
+    return ((MessageForTroopFile)this.a).fileName;
+  }
+  
+  protected void a(aygy paramaygy)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopFileAIOMsgTips", 1, "getWordsList by TroopFile[" + System.currentTimeMillis() + "]");
     }
-    return false;
+    ThreadManager.post(new TroopFileAIOMsgTips.1(this, paramaygy), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ayhj
  * JD-Core Version:    0.7.0.1
  */

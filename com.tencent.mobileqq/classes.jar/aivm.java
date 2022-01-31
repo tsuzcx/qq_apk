@@ -1,26 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XListView;
 import java.util.List;
 
-class aivm
-  implements aihm
+public class aivm
+  extends ahmx
 {
-  aivm(aivl paramaivl, String paramString) {}
-  
-  public void a(boolean paramBoolean, String paramString1, List<aihj> paramList, String paramString2)
+  public aivm(HotChatCenterFragment paramHotChatCenterFragment, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, ahmq paramahmq, int paramInt)
   {
-    QLog.i("ApolloPluginRscLoader", 1, "downloadApolloRes onDownLoadFinish success:" + paramBoolean);
-    if (paramBoolean)
+    super(paramContext, paramQQAppInterface, paramXListView, paramahmq, paramInt);
+  }
+  
+  public void a(RecentBaseData paramRecentBaseData, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.a(paramRecentBaseData, paramString);
+  }
+  
+  public void b(RecentBaseData paramRecentBaseData, String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      if (this.jdField_a_of_type_Aivl.jdField_a_of_type_JavaIoFile.exists())
-      {
-        this.jdField_a_of_type_Aivl.jdField_a_of_type_Aivd.a(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_Aivl.jdField_a_of_type_Int + ajjy.a(2131634704));
-        return;
-      }
-      this.jdField_a_of_type_Aivl.jdField_a_of_type_Aivd.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Aivl.jdField_a_of_type_Int + ajjy.a(2131634715));
-      return;
+      this.jdField_a_of_type_JavaUtilList.remove(paramRecentBaseData);
+      notifyDataSetChanged();
     }
-    this.jdField_a_of_type_Aivl.jdField_a_of_type_Aivd.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Aivl.jdField_a_of_type_Int + ajjy.a(2131634712));
   }
 }
 

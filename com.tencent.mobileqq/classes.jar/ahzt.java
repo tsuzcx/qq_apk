@@ -1,223 +1,95 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SearchHistory;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.util.Log;
+import com.tencent.maxvideo.trim.TrimNative;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import java.util.List;
 
 public class ahzt
-  extends ahyx
-  implements aviq, begh
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
-  private boolean jdField_b_of_type_Boolean;
+  private static int a;
+  private static int b;
+  private static int c;
+  private static int d;
   
-  public ahzt(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, List<avin> paramList, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2, boolean paramBoolean)
+  public static int a(String paramString, int paramInt1, int paramInt2)
   {
-    super(paramContext, paramQQAppInterface, paramXListView, paramList);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener1;
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener2;
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    return a(paramString, paramInt1, paramInt2, true);
   }
   
-  private void a(TextView paramTextView, boolean paramBoolean)
+  public static int a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    if (paramTextView == null) {
-      return;
+    a = paramInt5;
+    b = paramInt6;
+    try
+    {
+      paramInt1 = TrimNative.prepare(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
+      return paramInt1;
     }
+    catch (Throwable paramString)
+    {
+      QLog.e("ThumbnailUtils", 1, "init failed:" + Log.getStackTraceString(paramString));
+    }
+    return -444;
+  }
+  
+  public static int a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    c = paramInt1;
+    d = paramInt2;
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
-      {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramTextView.getContext().getResources().getDrawable(2130841234);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ImmersiveUtils.a(15.0F), ImmersiveUtils.a(15.0F));
+      if (c <= d) {
+        break label55;
       }
-      ThemeUtil.setThemeFilter(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, ThemeUtil.curThemeId);
-      paramTextView.setCompoundDrawables(null, null, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
-      return;
+      c = 480;
+      d = (int)(d / (paramInt1 * 1.0D / 480.0D));
     }
-    paramTextView.setCompoundDrawables(null, null, null, null);
-  }
-  
-  public void a()
-  {
-    super.a();
-  }
-  
-  protected boolean a(ahyy paramahyy)
-  {
-    boolean bool2 = super.a(paramahyy);
-    boolean bool1 = bool2;
-    if ((paramahyy instanceof ahzu))
-    {
-      paramahyy = (ahzu)paramahyy;
-      if ((bool2) && (!paramahyy.jdField_a_of_type_Boolean)) {
-        bool1 = true;
-      }
-    }
-    else
-    {
-      return bool1;
-    }
-    return false;
-  }
-  
-  public void c()
-  {
-    super.b();
-  }
-  
-  public int getCount()
-  {
-    int i = super.getCount();
-    if (i > 5) {
-      return 5;
-    }
-    return i;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    boolean bool2 = true;
-    if (paramView == null)
-    {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131493295, paramViewGroup, false);
-      paramViewGroup = new ahzu();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131302963));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131303062));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131302944));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312436));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131309617);
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setContentDescription(ajjy.a(2131636767));
-      avjb.a(paramViewGroup.jdField_a_of_type_AndroidWidgetTextView);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312428));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312577));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131302965));
-      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131312503);
-      paramView.setTag(paramViewGroup);
-    }
-    Object localObject1;
     for (;;)
     {
-      localObject1 = (avin)getItem(paramInt);
-      if (localObject1 != null) {
-        break;
-      }
-      QLog.w("ContactsSearchResultAdapter", 1, "getView entity is null.");
-      return paramView;
-      paramViewGroup = (ahzu)paramView.getTag();
+      return TrimNative.initGetFrame(paramString, c, d);
+      label55:
+      d = 480;
+      c = (int)(c / (paramInt2 * 1.0D / 480.0D));
     }
-    Object localObject2 = ((avin)localObject1).c();
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
-    if (String.valueOf(9954L).equals(((avin)localObject1).d())) {}
-    for (boolean bool1 = true;; bool1 = false)
+  }
+  
+  public static Bitmap a(long paramLong1, long paramLong2)
+  {
+    if ((c <= 0) || (d <= 0)) {}
+    Bitmap localBitmap;
+    do
     {
-      a(paramViewGroup.jdField_a_of_type_AndroidWidgetTextView, bool1);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(((avin)localObject1).b());
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(((avin)localObject1).b());
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(((avin)localObject1).a());
-      paramViewGroup.jdField_a_of_type_JavaLangString = ((avin)localObject1).d();
-      paramViewGroup.jdField_a_of_type_Int = ((avin)localObject1).c();
-      if ((localObject1 instanceof avhr))
-      {
-        SearchHistory localSearchHistory = ((avhr)localObject1).a();
-        bool1 = bool2;
-        if (localSearchHistory.type != 56938)
-        {
-          if (localSearchHistory.type != 56942) {
-            break label524;
-          }
-          bool1 = bool2;
-        }
-      }
-      for (;;)
-      {
-        paramViewGroup.jdField_a_of_type_Boolean = bool1;
-        if (paramViewGroup.jdField_a_of_type_Boolean)
-        {
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841491);
-          paramViewGroup.d.setVisibility(0);
-          paramViewGroup.d.setText(babh.a((String)localObject2));
-          label386:
-          localObject2 = ((avin)localObject1).a();
-          if (localObject2 != null) {
-            break label561;
-          }
-          paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-          label407:
-          if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null)
-          {
-            paramView.setTag(-1, Integer.valueOf(paramInt));
-            paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-          }
-          if (this.jdField_b_of_type_AndroidViewView$OnClickListener != null)
-          {
-            paramViewGroup.jdField_a_of_type_AndroidViewView.setTag(-1, Long.valueOf(((SearchHistory)((avin)localObject1).a()).getId()));
-            paramViewGroup.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-          }
-          localObject1 = paramView.findViewById(2131299715);
-          if (paramInt != getCount() - 1) {
-            break label581;
-          }
-          ((View)localObject1).setVisibility(8);
-        }
-        for (;;)
-        {
-          if (paramViewGroup.jdField_b_of_type_AndroidViewView == null) {
-            break label588;
-          }
-          if (!avjb.a(paramViewGroup.jdField_a_of_type_JavaLangString)) {
-            break label590;
-          }
-          paramViewGroup.jdField_b_of_type_AndroidViewView.setVisibility(0);
-          return paramView;
-          label524:
-          bool1 = false;
-          break;
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(a(paramViewGroup.jdField_a_of_type_JavaLangString, paramViewGroup.jdField_a_of_type_Int));
-          paramViewGroup.d.setVisibility(8);
-          break label386;
-          label561:
-          paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-          paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
-          break label407;
-          label581:
-          ((View)localObject1).setVisibility(0);
-        }
-        label588:
+      return null;
+      localBitmap = Bitmap.createBitmap(c, d, Bitmap.Config.ARGB_8888);
+      if (TrimNative.getFrame(paramLong1, paramLong2, localBitmap) == 0) {
         break;
-        label590:
-        paramViewGroup.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        return paramView;
-        bool1 = false;
       }
-    }
+    } while ((localBitmap == null) || (localBitmap.isRecycled()));
+    localBitmap.recycle();
+    return null;
+    return localBitmap;
+  }
+  
+  public static Bitmap b(long paramLong1, long paramLong2)
+  {
+    if ((a <= 0) || (b <= 0)) {}
+    Bitmap localBitmap;
+    do
+    {
+      return null;
+      localBitmap = Bitmap.createBitmap(a, b, Bitmap.Config.ARGB_8888);
+      if (TrimNative.getThumbnail(paramLong1, paramLong2, localBitmap) == 0) {
+        break;
+      }
+    } while ((localBitmap == null) || (localBitmap.isRecycled()));
+    localBitmap.recycle();
+    return null;
+    return localBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahzt
  * JD-Core Version:    0.7.0.1
  */

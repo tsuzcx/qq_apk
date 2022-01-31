@@ -1,66 +1,23 @@
-import java.util.ArrayList;
+import android.os.Bundle;
 
-public class bcey
+class bcey
+  implements wxw
 {
-  protected static bcey a;
-  protected ArrayList<bcex> a;
+  bcey(bcet parambcet) {}
   
-  public static bcey a()
+  public void a(Bundle paramBundle)
   {
-    try
+    int i = paramBundle.getInt("fontSize", 1);
+    if (i != this.a.b)
     {
-      if (jdField_a_of_type_Bcey == null)
-      {
-        jdField_a_of_type_Bcey = new bcey();
-        jdField_a_of_type_Bcey.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      bcey localbcey = jdField_a_of_type_Bcey;
-      return localbcey;
-    }
-    finally {}
-  }
-  
-  public ArrayList<bcex> a()
-  {
-    return jdField_a_of_type_Bcey.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(bcex parambcex)
-  {
-    int j = jdField_a_of_type_Bcey.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      if ((bcex)jdField_a_of_type_Bcey.jdField_a_of_type_JavaUtilArrayList.get(i) == parambcex) {
-        return;
-      }
-      i += 1;
-    }
-    jdField_a_of_type_Bcey.jdField_a_of_type_JavaUtilArrayList.add(parambcex);
-  }
-  
-  public void b(bcex parambcex)
-  {
-    int j = jdField_a_of_type_Bcey.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        if ((bcex)jdField_a_of_type_Bcey.jdField_a_of_type_JavaUtilArrayList.get(i) == parambcex) {
-          jdField_a_of_type_Bcey.jdField_a_of_type_JavaUtilArrayList.remove(i);
-        }
-      }
-      else {
-        return;
-      }
-      i += 1;
+      this.a.b = i;
+      this.a.b(this.a.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bcey
  * JD-Core Version:    0.7.0.1
  */

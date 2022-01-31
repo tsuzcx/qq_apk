@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.utils;
 
 import android.content.Context;
-import audm;
-import audo;
-import awrn;
-import bahn;
+import avcs;
+import avcu;
+import axrl;
+import bbis;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.qphone.base.BaseConstants;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -16,12 +16,12 @@ import java.nio.ShortBuffer;
 import java.util.HashMap;
 
 public final class WechatNsWrapper
-  extends audo
+  extends avcu
 {
   public static boolean a;
-  short[] a;
-  int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  long jdField_a_of_type_Long;
+  short[] jdField_a_of_type_ArrayOfShort;
+  private boolean b;
   
   public WechatNsWrapper(Context paramContext)
   {
@@ -55,7 +55,7 @@ public final class WechatNsWrapper
       HashMap localHashMap = new HashMap();
       localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
       localHashMap.put("throwable", localThrowable.getMessage());
-      awrn.a(BaseApplication.getContext()).a(null, "actWechatNsLoadFail", false, 0L, 0L, localHashMap, "");
+      axrl.a(BaseApplication.getContext()).a(null, "actWechatNsLoadFail", false, 0L, 0L, localHashMap, "");
     }
   }
   
@@ -69,16 +69,16 @@ public final class WechatNsWrapper
   {
     int i = 960;
     super.a(paramInt1, paramInt2, paramInt3);
-    if (this.jdField_b_of_type_Int == 0) {}
+    if (this.jdField_a_of_type_Long == 0L) {}
     for (;;)
     {
       try
       {
-        this.jdField_b_of_type_Int = nsNew();
+        this.jdField_a_of_type_Long = nsNew();
         if (QLog.isColorLevel()) {
-          QLog.d("SilkCodecWrapper", 2, "silkEncoderNew =" + this.jdField_b_of_type_Int);
+          QLog.d("SilkCodecWrapper", 2, "silkEncoderNew =" + this.jdField_a_of_type_Long);
         }
-        paramInt2 = nsInit(this.jdField_b_of_type_Int, paramInt1);
+        paramInt2 = nsInit(this.jdField_a_of_type_Long, paramInt1);
         if (paramInt2 != 0) {
           continue;
         }
@@ -95,11 +95,11 @@ public final class WechatNsWrapper
           continue;
         }
         QLog.d("SilkCodecWrapper", 2, "init silk codec =" + localException.toString());
-        this.jdField_b_of_type_Int = 0;
+        this.jdField_a_of_type_Long = 0L;
         jdField_a_of_type_Boolean = false;
         continue;
       }
-      this.jdField_a_of_type_Int = bahn.a(paramInt1);
+      this.jdField_a_of_type_Int = bbis.a(paramInt1);
       this.jdField_a_of_type_ArrayOfShort = new short[this.jdField_a_of_type_Int / 2];
       this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
       this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
@@ -108,7 +108,7 @@ public final class WechatNsWrapper
         paramInt1 = this.jdField_a_of_type_Int * 2;
       }
       this.c = new byte[paramInt1];
-      this.jdField_a_of_type_Audm = new audm(this.c, 0);
+      this.jdField_a_of_type_Avcs = new avcs(this.c, 0);
       return;
       bool = false;
     }
@@ -126,14 +126,14 @@ public final class WechatNsWrapper
   
   public void b()
   {
-    if (this.jdField_b_of_type_Int != 0)
+    if (this.jdField_a_of_type_Long != 0L)
     {
-      int i = nsDelete(this.jdField_b_of_type_Int);
+      int i = nsDelete(this.jdField_a_of_type_Long);
       if (QLog.isColorLevel()) {
         QLog.d("SilkCodecWrapper", 2, "deleteCodec =" + i);
       }
     }
-    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
   }
   
   public void close()
@@ -142,24 +142,24 @@ public final class WechatNsWrapper
     b();
   }
   
-  public native int nsDelete(int paramInt);
+  public native int nsDelete(long paramLong);
   
-  public native int nsInit(int paramInt1, int paramInt2);
+  public native int nsInit(long paramLong, int paramInt);
   
-  public native int nsNew();
+  public native long nsNew();
   
-  public native int nsProcess(int paramInt1, short[] paramArrayOfShort, int paramInt2);
+  public native int nsProcess(long paramLong, short[] paramArrayOfShort, int paramInt);
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if ((this.jdField_b_of_type_Int != 0) && (this.jdField_b_of_type_Boolean)) {
+    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Boolean)) {
       if (this.jdField_a_of_type_JavaIoPipedInputStream.read(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int) != -1) {}
     }
     while (this.jdField_a_of_type_JavaIoPipedInputStream.read(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int) == -1)
     {
       return -1;
       a(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfShort);
-      nsProcess(this.jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_ArrayOfByte.length);
+      nsProcess(this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_ArrayOfByte.length);
       a(this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_ArrayOfByte);
       System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, paramInt1, this.jdField_a_of_type_Int);
       return this.jdField_a_of_type_Int;

@@ -1,13 +1,11 @@
-import android.view.View;
-import android.view.ViewGroup;
-
-public abstract interface aggi
+public class aggi
 {
-  public abstract View a(int paramInt, View paramView, ViewGroup paramViewGroup);
-  
-  public abstract View a(int paramInt, View paramView, ViewGroup paramViewGroup, agfw paramagfw, agft paramagft);
-  
-  public abstract View b(int paramInt, View paramView, ViewGroup paramViewGroup, agfw paramagfw, agft paramagft);
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public int d;
 }
 
 

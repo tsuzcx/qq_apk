@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.view.ViewGroup;
-import anxr;
+import aook;
 
 public class FilePreviewActivity$9$4
   implements Runnable
 {
-  public FilePreviewActivity$9$4(anxr paramanxr) {}
+  public FilePreviewActivity$9$4(aook paramaook) {}
   
   public void run()
   {

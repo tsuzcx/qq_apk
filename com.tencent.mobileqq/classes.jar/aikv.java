@@ -1,37 +1,27 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import java.util.List;
 
-public class aikv
-  extends aiks
+class aikv
+  implements View.OnClickListener
 {
-  public aikv(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_Int = 0;
-  }
+  aikv(aiku paramaiku, aikt paramaikt, int paramInt) {}
   
-  public void a(aisu paramaisu, Context paramContext, QQAppInterface paramQQAppInterface) {}
-  
-  public void a(aisu paramaisu, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Boolean) || (!this.c)) {}
-    SharedPreferences localSharedPreferences;
-    do
+    if (this.jdField_a_of_type_Aikt.a.isChecked()) {}
+    for (((akrm)this.jdField_a_of_type_Aiku.a.get(this.jdField_a_of_type_Int)).a = false;; ((akrm)this.jdField_a_of_type_Aiku.a.get(this.jdField_a_of_type_Int)).a = true)
     {
+      this.jdField_a_of_type_Aiku.notifyItemChanged(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Aiku.a();
       return;
-      this.b = true;
-      localSharedPreferences = paramContext.getSharedPreferences("apollo_sp", 0);
-    } while (!localSharedPreferences.getBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", true));
-    aisl.a(paramaisu, ajjy.a(2131638819), 7, 0);
-    localSharedPreferences.edit().putBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", false).commit();
-    a(paramContext, paramQQAppInterface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aikv
  * JD-Core Version:    0.7.0.1
  */

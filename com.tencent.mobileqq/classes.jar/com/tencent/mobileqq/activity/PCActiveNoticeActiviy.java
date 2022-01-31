@@ -1,53 +1,53 @@
 package com.tencent.mobileqq.activity;
 
-import abgn;
-import abgo;
-import ajjy;
+import abqn;
+import abqo;
+import ajyc;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import awqx;
-import babr;
-import bafb;
+import axqw;
+import bbcv;
+import bbgg;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class PCActiveNoticeActiviy
   extends BaseActivity
 {
-  private bafb jdField_a_of_type_Bafb;
+  private bbgg jdField_a_of_type_Bbgg;
   private String jdField_a_of_type_JavaLangString;
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131493776);
+    super.setContentView(2131559347);
     if ((getIntent() != null) && (getIntent().getExtras() != null)) {}
     for (this.jdField_a_of_type_JavaLangString = getIntent().getExtras().getString("uin"); TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString); this.jdField_a_of_type_JavaLangString = null)
     {
       finish();
       return false;
     }
-    if ((this.jdField_a_of_type_Bafb != null) && (this.jdField_a_of_type_Bafb.isShowing())) {
-      this.jdField_a_of_type_Bafb.dismiss();
+    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {
+      this.jdField_a_of_type_Bbgg.dismiss();
     }
-    paramBundle = ajjy.a(2131642123);
-    this.jdField_a_of_type_Bafb = null;
-    this.jdField_a_of_type_Bafb = babr.a(this, 230);
-    this.jdField_a_of_type_Bafb.setContentView(2131493323);
-    this.jdField_a_of_type_Bafb.setTitle(null).setMessage(getString(2131629296)).setPositiveButton(2131629295, new abgn(this));
-    this.jdField_a_of_type_Bafb.setTextContentDescription(paramBundle);
-    this.jdField_a_of_type_Bafb.setOnKeyListener(new abgo(this));
-    this.jdField_a_of_type_Bafb.show();
-    awqx.b(null, "CliOper", "", "", "0X8004973", "0X8004973", 0, 0, "", "", "", "");
+    paramBundle = ajyc.a(2131707908);
+    this.jdField_a_of_type_Bbgg = null;
+    this.jdField_a_of_type_Bbgg = bbcv.a(this, 230);
+    this.jdField_a_of_type_Bbgg.setContentView(2131558883);
+    this.jdField_a_of_type_Bbgg.setTitle(null).setMessage(getString(2131694973)).setPositiveButton(2131694972, new abqn(this));
+    this.jdField_a_of_type_Bbgg.setTextContentDescription(paramBundle);
+    this.jdField_a_of_type_Bbgg.setOnKeyListener(new abqo(this));
+    this.jdField_a_of_type_Bbgg.show();
+    axqw.b(null, "CliOper", "", "", "0X8004973", "0X8004973", 0, 0, "", "", "", "");
     return false;
   }
   
   public void finish()
   {
-    if ((this.jdField_a_of_type_Bafb != null) && (this.jdField_a_of_type_Bafb.isShowing())) {
-      this.jdField_a_of_type_Bafb.dismiss();
+    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {
+      this.jdField_a_of_type_Bbgg.dismiss();
     }
-    this.jdField_a_of_type_Bafb = null;
+    this.jdField_a_of_type_Bbgg = null;
     super.finish();
   }
   

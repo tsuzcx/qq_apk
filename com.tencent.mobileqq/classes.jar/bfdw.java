@@ -1,15 +1,16 @@
-public abstract interface bfdw
-  extends bfdx
+public class bfdw
 {
-  public abstract void b(boolean paramBoolean, String paramString);
-  
-  public abstract void e(String paramString);
-  
-  public abstract void f(String paramString);
+  public static com.tencent.smtt.sdk.ValueCallback a(android.webkit.ValueCallback paramValueCallback)
+  {
+    if (paramValueCallback != null) {
+      return new bfdx(paramValueCallback);
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfdw
  * JD-Core Version:    0.7.0.1
  */

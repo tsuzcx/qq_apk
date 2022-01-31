@@ -1,25 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.qzonevip.gift.particle.ParticleExplodeView;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.MessageRecord;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class auoo
-  extends AnimatorListenerAdapter
+public abstract interface auoo
 {
-  public auoo(ParticleExplodeView paramParticleExplodeView) {}
+  public abstract MessageRecord a(im_msg_body.RichText paramRichText);
   
-  public void onAnimationEnd(Animator arg1)
-  {
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
-    }
-  }
+  public abstract void a(auop paramauop);
+  
+  public abstract void b(auop paramauop);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     auoo
  * JD-Core Version:    0.7.0.1
  */

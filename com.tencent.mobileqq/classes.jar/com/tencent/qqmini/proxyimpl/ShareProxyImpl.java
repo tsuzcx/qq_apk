@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import baip;
-import bdng;
-import bdnw;
-import bfpr;
-import bfpy;
+import bbjw;
+import bers;
+import besl;
+import bgxy;
+import bgyf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
@@ -33,7 +33,7 @@ import java.io.File;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import urk;
+import veg;
 
 public class ShareProxyImpl
   implements ShareProxy
@@ -48,7 +48,7 @@ public class ShareProxyImpl
       if (paramString.getStatus() != 1) {
         break label44;
       }
-      urk.b("ShareProxyImpl", "URLDrawable's status is SUCCESSED.");
+      veg.b("ShareProxyImpl", "URLDrawable's status is SUCCESSED.");
       paramURLDrawableListener.onLoadSuccessed(paramString);
     }
     for (;;)
@@ -57,7 +57,7 @@ public class ShareProxyImpl
       paramString.downloadImediatly();
       return;
       label44:
-      urk.b("ShareProxyImpl", "start load URLDrawable.");
+      veg.b("ShareProxyImpl", "start load URLDrawable.");
     }
   }
   
@@ -86,9 +86,9 @@ public class ShareProxyImpl
     if (QLog.isColorLevel()) {
       QLog.d("AppBrandRuntime", 2, "startSharePicToQzone. content=" + paramString1 + ",localPicPath=" + paramString2);
     }
-    bfpy localbfpy = bfpy.a();
-    localbfpy.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    bfpr.a(paramActivity, localbfpy, paramString2, paramString3, paramString1, -1);
+    bgyf localbgyf = bgyf.a();
+    localbgyf.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    bgxy.a(paramActivity, localbgyf, paramString2, paramString3, paramString1, -1);
     paramActivity = new Bundle();
     paramActivity.putString("key_mini_report_event_action_type", "user_click");
     paramActivity.putString("key_mini_report_event_sub_action_type", "custom_button");
@@ -97,14 +97,19 @@ public class ShareProxyImpl
     QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_report_event", paramActivity, null);
   }
   
+  public int getDefaultShareTarget()
+  {
+    return 0;
+  }
+  
   public void onJsShareAppMessage(Object paramObject, AsyncResult paramAsyncResult)
   {
-    if (!(paramObject instanceof bdng))
+    if (!(paramObject instanceof bers))
     {
-      bdnw.c("ShareProxyImpl", "onJsShareAppMessage. Unknown type of data");
+      besl.c("ShareProxyImpl", "onJsShareAppMessage. Unknown type of data");
       return;
     }
-    paramObject = (bdng)paramObject;
+    paramObject = (bers)paramObject;
     switch (paramObject.jdField_b_of_type_Int)
     {
     default: 
@@ -127,96 +132,96 @@ public class ShareProxyImpl
   
   public void onJsShareAppPictureMessage(Object paramObject, AsyncResult paramAsyncResult)
   {
-    if (!(paramObject instanceof bdng))
+    if (!(paramObject instanceof bers))
     {
-      bdnw.c("ShareProxyImpl", "onJsShareAppPictureMessage. Unknown type of data");
+      besl.c("ShareProxyImpl", "onJsShareAppPictureMessage. Unknown type of data");
       return;
     }
-    paramObject = (bdng)paramObject;
+    paramObject = (bers)paramObject;
     if (paramObject.jdField_a_of_type_Boolean)
     {
-      shareNetworkPicMessage(paramObject, paramAsyncResult);
+      shareLocalPicMessage(paramObject);
       return;
     }
-    shareLocalPicMessage(paramObject);
+    shareNetworkPicMessage(paramObject, paramAsyncResult);
   }
   
-  public void shareLocalPicMessage(bdng parambdng)
+  public void shareLocalPicMessage(bers parambers)
   {
-    if (!parambdng.jdField_a_of_type_Boolean)
+    if (!parambers.jdField_a_of_type_Boolean)
     {
-      bdnw.c("ShareProxyImpl", "shareLocalPicMessage. not local pic");
+      besl.c("ShareProxyImpl", "shareLocalPicMessage. not local pic");
       return;
     }
-    Object localObject = parambdng.jdField_b_of_type_JavaLangString;
+    Object localObject = parambers.jdField_b_of_type_JavaLangString;
     if (localObject == null)
     {
-      bdnw.c("ShareProxyImpl", "shareLocalPicMessage. local pic is null");
+      besl.c("ShareProxyImpl", "shareLocalPicMessage. local pic is null");
       return;
     }
     if (((String)localObject).startsWith(BaseApplicationImpl.getContext().getFilesDir().getPath()))
     {
       localObject = new File((String)localObject);
       String str = ((File)localObject).getName();
-      ThreadManager.excute(new ShareProxyImpl.6(this, (File)localObject, str), 64, new ShareProxyImpl.7(this, str, parambdng), true);
+      ThreadManager.excute(new ShareProxyImpl.6(this, (File)localObject, str), 64, new ShareProxyImpl.7(this, str, parambers), true);
       return;
     }
-    realSharePic(parambdng.jdField_a_of_type_AndroidAppActivity, parambdng.jdField_a_of_type_JavaLangString, parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name, (String)localObject, parambdng.jdField_b_of_type_Int);
+    realSharePic(parambers.jdField_a_of_type_AndroidAppActivity, parambers.jdField_a_of_type_JavaLangString, parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name, (String)localObject, parambers.jdField_b_of_type_Int);
   }
   
-  public void shareNetworkPicMessage(bdng parambdng, AsyncResult paramAsyncResult)
+  public void shareNetworkPicMessage(bers parambers, AsyncResult paramAsyncResult)
   {
-    paramAsyncResult = parambdng.jdField_a_of_type_AndroidAppActivity;
-    ThreadManager.getUIHandler().post(new ShareProxyImpl.5(this, paramAsyncResult, parambdng));
+    paramAsyncResult = parambers.jdField_a_of_type_AndroidAppActivity;
+    ThreadManager.getUIHandler().post(new ShareProxyImpl.5(this, paramAsyncResult, parambers));
   }
   
-  public void shareQQArk(bdng parambdng, AsyncResult paramAsyncResult)
+  public void shareQQArk(bers parambers, AsyncResult paramAsyncResult)
   {
-    if ((parambdng == null) || (parambdng.jdField_a_of_type_AndroidAppActivity == null)) {}
-    while ((!(parambdng.jdField_a_of_type_AndroidAppActivity instanceof GameActivity1)) || (parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null)) {
+    if ((parambers == null) || (parambers.jdField_a_of_type_AndroidAppActivity == null)) {}
+    while ((!(parambers.jdField_a_of_type_AndroidAppActivity instanceof GameActivity1)) || (parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null)) {
       return;
     }
     ShareProxyImpl.1 local1 = new ShareProxyImpl.1(this, paramAsyncResult);
-    if (parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel != null)
+    if (parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel != null)
     {
-      paramAsyncResult = new com.tencent.mobileqq.mini.sdk.EntryModel(parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel.jdField_a_of_type_Int, parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel.jdField_a_of_type_Long, parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel.jdField_a_of_type_JavaLangString, parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel.jdField_a_of_type_Boolean);
-      if (parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareChatModel == null) {
+      paramAsyncResult = new com.tencent.mobileqq.mini.sdk.EntryModel(parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel.jdField_a_of_type_Int, parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel.jdField_a_of_type_Long, parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel.jdField_a_of_type_JavaLangString, parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel.jdField_a_of_type_Boolean);
+      if (parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareChatModel == null) {
         break label281;
       }
     }
     label281:
-    for (com.tencent.mobileqq.mini.sdk.ShareChatModel localShareChatModel = new com.tencent.mobileqq.mini.sdk.ShareChatModel(parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareChatModel.jdField_a_of_type_Int, parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareChatModel.jdField_a_of_type_Long, parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareChatModel.jdField_a_of_type_JavaLangString);; localShareChatModel = null)
+    for (com.tencent.mobileqq.mini.sdk.ShareChatModel localShareChatModel = new com.tencent.mobileqq.mini.sdk.ShareChatModel(parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareChatModel.jdField_a_of_type_Int, parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareChatModel.jdField_a_of_type_Long, parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareChatModel.jdField_a_of_type_JavaLangString);; localShareChatModel = null)
     {
-      MiniProgramShareUtils.shareAsArkMessage(parambdng.jdField_a_of_type_AndroidAppActivity, new MiniArkShareModelBuilder().setAppId(parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId).setTitle(parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name).setDescription(parambdng.jdField_a_of_type_JavaLangString).setShareScene(1).setShareTemplateType(1).setShareBusinessType(parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.getReportType()).setPicUrl(parambdng.jdField_b_of_type_JavaLangString).setVidUrl(null).setJumpUrl(parambdng.c).setIconUrl(parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.iconUrl).setVersionType(parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.verType).setVersionId(parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.versionId).setWebURL(parambdng.d).setTemplateId(parambdng.e).setTemplateData(parambdng.f).setEntryModel(paramAsyncResult).setShareChatModel(localShareChatModel).setShareTarget(parambdng.jdField_b_of_type_Int).createMiniArkShareModel(), parambdng.jdField_b_of_type_Boolean, parambdng.jdField_a_of_type_Int, local1);
+      MiniProgramShareUtils.shareAsArkMessage(parambers.jdField_a_of_type_AndroidAppActivity, new MiniArkShareModelBuilder().setAppId(parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId).setTitle(parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name).setDescription(parambers.jdField_a_of_type_JavaLangString).setShareScene(1).setShareTemplateType(1).setShareBusinessType(parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.getReportType()).setPicUrl(parambers.jdField_b_of_type_JavaLangString).setVidUrl(null).setJumpUrl(parambers.c).setIconUrl(parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.iconUrl).setVersionType(parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.verType).setVersionId(parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.versionId).setWebURL(parambers.d).setTemplateId(parambers.e).setTemplateData(parambers.f).setEntryModel(paramAsyncResult).setShareChatModel(localShareChatModel).setShareTarget(parambers.jdField_b_of_type_Int).createMiniArkShareModel(), parambers.jdField_b_of_type_Boolean, parambers.jdField_a_of_type_Int, local1);
       return;
       paramAsyncResult = null;
       break;
     }
   }
   
-  public void shareQzone(bdng parambdng)
+  public void shareQzone(bers parambers)
   {
-    Activity localActivity = parambdng.jdField_a_of_type_AndroidAppActivity;
+    Activity localActivity = parambers.jdField_a_of_type_AndroidAppActivity;
     String str;
     Intent localIntent;
-    if (baip.a(parambdng.jdField_a_of_type_JavaLangString))
+    if (bbjw.a(parambers.jdField_a_of_type_JavaLangString))
     {
-      str = parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.desc;
+      str = parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.desc;
       localIntent = new Intent();
       localIntent.setClassName("com.tencent.mobileqq", QZoneShareActivity.class.getName());
       localIntent.putExtra("isSharedFromMiniProgram", true);
-      localIntent.putExtra("miniShareParamAppId", parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId);
-      localIntent.putExtra("miniShareParamTitle", parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name);
+      localIntent.putExtra("miniShareParamAppId", parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId);
+      localIntent.putExtra("miniShareParamTitle", parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name);
       localIntent.putExtra("miniShareParamDescription", str);
       localIntent.putExtra("miniShareParamShareScene", 1);
       localIntent.putExtra("miniShareParamTemplateType", 1);
-      localIntent.putExtra("miniShareParamBusinessType", parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.getReportType());
-      localIntent.putExtra("miniShareParamPicUrl", parambdng.jdField_b_of_type_JavaLangString);
-      localIntent.putExtra("miniShareParamJumpUrl", parambdng.c);
-      localIntent.putExtra("miniShareParamIconUrl", parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.iconUrl);
-      localIntent.putExtra("miniShareParamVersionType", parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.verType);
-      localIntent.putExtra("miniShareParamVersionId", parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.versionId);
-      if (parambdng.jdField_a_of_type_Int != 11) {
+      localIntent.putExtra("miniShareParamBusinessType", parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.getReportType());
+      localIntent.putExtra("miniShareParamPicUrl", parambers.jdField_b_of_type_JavaLangString);
+      localIntent.putExtra("miniShareParamJumpUrl", parambers.c);
+      localIntent.putExtra("miniShareParamIconUrl", parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.iconUrl);
+      localIntent.putExtra("miniShareParamVersionType", parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.verType);
+      localIntent.putExtra("miniShareParamVersionId", parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.versionId);
+      if (parambers.jdField_a_of_type_Int != 11) {
         break label247;
       }
     }
@@ -226,14 +231,14 @@ public class ShareProxyImpl
       localIntent.putExtra("miniShareIsFromInnerButton", bool);
       localActivity.startActivity(localIntent);
       return;
-      str = parambdng.jdField_a_of_type_JavaLangString;
+      str = parambers.jdField_a_of_type_JavaLangString;
       break;
     }
   }
   
-  public void shareToWeChat(bdng parambdng, int paramInt)
+  public void shareToWeChat(bers parambers, int paramInt)
   {
-    Activity localActivity = parambdng.jdField_a_of_type_AndroidAppActivity;
+    Activity localActivity = parambers.jdField_a_of_type_AndroidAppActivity;
     if (!WXShareHelper.a().a())
     {
       ThreadManagerV2.getUIHandlerV2().post(new ShareProxyImpl.2(this, localActivity));
@@ -245,20 +250,20 @@ public class ShareProxyImpl
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntime", 2, "startShareToWeChat. title=" + parambdng.jdField_a_of_type_JavaLangString + ",sharePicPath=" + parambdng.jdField_b_of_type_JavaLangString + ",entryPath=" + parambdng.c);
+      QLog.d("AppBrandRuntime", 2, "startShareToWeChat. title=" + parambers.jdField_a_of_type_JavaLangString + ",sharePicPath=" + parambers.jdField_b_of_type_JavaLangString + ",entryPath=" + parambers.c);
     }
-    MiniAppInfo localMiniAppInfo = parambdng.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+    MiniAppInfo localMiniAppInfo = parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
     if (localMiniAppInfo == null)
     {
       QLog.e("AppBrandRuntime", 1, "startShareToWeChat. apkgInfo is null!");
       return;
     }
-    String str2 = parambdng.jdField_a_of_type_JavaLangString;
+    String str2 = parambers.jdField_a_of_type_JavaLangString;
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = localMiniAppInfo.desc;
     }
-    MiniProgramShareUtils.shareAsWeChatMsg(localMiniAppInfo.appId, localMiniAppInfo.name, str1, 1, 1, localMiniAppInfo.getReportType(), parambdng.jdField_b_of_type_JavaLangString, null, parambdng.c, localMiniAppInfo.iconUrl, localMiniAppInfo.verType, localMiniAppInfo.versionId, null, paramInt, new ShareProxyImpl.4(this, localActivity, parambdng, paramInt, str1, localMiniAppInfo));
+    MiniProgramShareUtils.shareAsWeChatMsg(localMiniAppInfo.appId, localMiniAppInfo.name, str1, 1, 1, localMiniAppInfo.getReportType(), parambers.jdField_b_of_type_JavaLangString, null, parambers.c, localMiniAppInfo.iconUrl, localMiniAppInfo.verType, localMiniAppInfo.versionId, null, paramInt, new ShareProxyImpl.4(this, localActivity, parambers, paramInt, str1, localMiniAppInfo));
   }
   
   public void showShareMenuForInnerShareButton(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, HashMap<String, Integer> paramHashMap, int paramInt) {}

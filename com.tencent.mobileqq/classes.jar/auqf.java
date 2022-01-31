@@ -1,43 +1,109 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.mobileqq.redtouch.RedDisplayInfo;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Transformation;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public final class auqf
-  implements Parcelable.Creator<RedAppInfo>
+public class auqf
 {
-  public RedAppInfo a(Parcel paramParcel)
+  public Drawable a;
+  public Transformation a;
+  public ArrayList<Animation> a;
+  public float b = 1.0F;
+  public float c = 1.0F;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j = 255;
+  
+  public auqf()
   {
-    RedAppInfo localRedAppInfo = new RedAppInfo();
-    RedAppInfo.a(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.b(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.c(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.a(localRedAppInfo, paramParcel.readString());
-    RedAppInfo.b(localRedAppInfo, paramParcel.readString());
-    RedAppInfo.d(localRedAppInfo, paramParcel.readInt());
-    localRedAppInfo.a = new ArrayList();
-    paramParcel.readList(localRedAppInfo.a, null);
-    RedAppInfo.e(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.f(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.c(localRedAppInfo, paramParcel.readString());
-    RedAppInfo.g(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.h(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.i(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.j(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.a(localRedAppInfo, (RedDisplayInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-    RedAppInfo.k(localRedAppInfo, paramParcel.readInt());
-    return localRedAppInfo;
+    this.jdField_a_of_type_AndroidViewAnimationTransformation = new Transformation();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public RedAppInfo[] a(int paramInt)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    return new RedAppInfo[paramInt];
+    this.f = paramInt1;
+    this.g = paramInt2;
+    this.h = paramInt3;
+    this.i = paramInt4;
+  }
+  
+  public void a(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramAnimation);
+    paramAnimation.start();
+  }
+  
+  public boolean a(Canvas paramCanvas)
+  {
+    if ((this.j != 0) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
+    {
+      paramCanvas.save();
+      paramCanvas.translate(this.f, this.g);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.j);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.h, this.i);
+      paramCanvas.scale(this.b, this.c, this.h / 2, this.i / 2);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      paramCanvas.restore();
+    }
+    paramCanvas = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    boolean bool = false;
+    if (paramCanvas.hasNext())
+    {
+      Animation localAnimation = (Animation)paramCanvas.next();
+      if ((bool) || (localAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation))) {}
+      for (bool = true;; bool = false) {
+        break;
+      }
+    }
+    return bool;
+  }
+  
+  public void a_(Drawable paramDrawable) {}
+  
+  public void c()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public void c(Canvas paramCanvas)
+  {
+    if ((this.j != 0) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
+    {
+      paramCanvas.save();
+      paramCanvas.translate(this.f, this.g);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.j);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.h, this.i);
+      paramCanvas.scale(this.b, this.c, this.h / 2, this.i / 2);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      paramCanvas.restore();
+    }
+  }
+  
+  public boolean c()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    boolean bool = false;
+    if (localIterator.hasNext())
+    {
+      Animation localAnimation = (Animation)localIterator.next();
+      if ((bool) || (localAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation))) {}
+      for (bool = true;; bool = false) {
+        break;
+      }
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     auqf
  * JD-Core Version:    0.7.0.1
  */

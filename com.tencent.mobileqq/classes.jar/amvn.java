@@ -1,52 +1,75 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class amvn
-  extends amum
+  extends ampb<amvo>
 {
-  public amvo a;
-  public String b;
-  public boolean b;
-  
-  public static amvn a(JSONObject paramJSONObject)
+  public int a()
   {
-    amvn localamvn = new amvn();
-    localamvn.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
-    localamvn.jdField_b_of_type_JavaLangString = paramJSONObject.optString("action");
-    localamvn.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isChecked", true);
-    localamvn.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("isAddByUser");
-    return localamvn;
+    return 92;
   }
   
-  public JSONObject a()
+  @NonNull
+  public amvo a(int paramInt)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("name", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("action", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
-      localJSONObject.put("isAddByUser", this.jdField_b_of_type_Boolean);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return localJSONObject;
+    return new amvo();
   }
   
-  public boolean a()
+  @Nullable
+  public amvo a(ampi[] paramArrayOfampi)
   {
-    return this.jdField_b_of_type_Boolean;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyCommonConfProcessor", 2, "[onParsed]");
+    }
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    {
+      amvo localamvo = new amvo();
+      localamvo.a(paramArrayOfampi);
+      return localamvo;
+    }
+    return new amvo();
+  }
+  
+  public Class<amvo> a()
+  {
+    return amvo.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyCommonConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public void a(amvo paramamvo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyCommonConfProcessor", 2, "[onUpdate]");
+    }
+  }
+  
+  public int b()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)onk.a();
+    if (localQQAppInterface != null)
+    {
+      String str = localQQAppInterface.c();
+      return bbjn.M(localQQAppInterface.getApp(), str);
+    }
+    return 0;
   }
   
   public boolean b()
   {
-    if (this.jdField_a_of_type_Amvo == null) {
-      return this.jdField_a_of_type_Boolean;
-    }
-    return this.jdField_a_of_type_Amvo.jdField_a_of_type_Boolean;
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

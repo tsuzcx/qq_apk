@@ -1,33 +1,74 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class aewv
-  implements View.OnClickListener
+public class aewv
+  extends ampb<aewu>
 {
-  public int a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public PressEffectImageView a;
-  public View b;
-  
-  aewv(aewt paramaewt) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    String str = this.jdField_a_of_type_Aewt.a(this.jdField_a_of_type_Int);
-    if (paramView == this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView)
+    return 410;
+  }
+  
+  @NonNull
+  public aewu a(int paramInt)
+  {
+    return new aewu();
+  }
+  
+  @Nullable
+  public aewu a(ampi[] paramArrayOfampi)
+  {
+    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
     {
-      aeww.a().b(aewt.a(this.jdField_a_of_type_Aewt), str);
-      this.jdField_a_of_type_Aewt.a();
+      aewu localaewu = aewu.a(paramArrayOfampi[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerRecConfigProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
+      }
+      return localaewu;
     }
-    while ((paramView != this.jdField_a_of_type_AndroidViewView) || (aewt.a(this.jdField_a_of_type_Aewt) == null)) {
-      return;
+    return null;
+  }
+  
+  public Class<aewu> a()
+  {
+    return aewu.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aewu paramaewu)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      String str = ((QQAppInterface)localObject).c();
+      aexd.a(BaseApplicationImpl.getApplication(), str, paramaewu.a());
+      aexd.a((QQAppInterface)localObject, paramaewu.a());
     }
-    aewt.a(this.jdField_a_of_type_Aewt).a(str);
+  }
+  
+  public boolean a()
+  {
+    return super.a();
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.structmsg.view;
 
 import android.widget.TextView;
-import awun;
+import axup;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 
 public class StructMsgItemTitle
-  extends awun
+  extends axup
 {
   public boolean c;
   public boolean d;
-  public int i;
+  public int k;
   
   public StructMsgItemTitle()
   {
@@ -42,7 +42,7 @@ public class StructMsgItemTitle
   public void a(boolean paramBoolean, int paramInt)
   {
     this.c = paramBoolean;
-    this.i = paramInt;
+    this.k = paramInt;
   }
   
   public void b(boolean paramBoolean)
@@ -52,12 +52,12 @@ public class StructMsgItemTitle
   
   public int c()
   {
-    return 2131312553;
+    return 2131378378;
   }
   
   public int e()
   {
-    if ((this.c) && (this.i != 0)) {
+    if ((this.c) && (this.k != 0)) {
       return -1;
     }
     return -16777216;

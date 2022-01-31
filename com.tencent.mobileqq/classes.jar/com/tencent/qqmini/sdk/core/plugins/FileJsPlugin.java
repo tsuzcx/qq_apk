@@ -2,18 +2,17 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
 import android.util.Base64;
-import bdcy;
-import bdeu;
-import bdew;
-import bdfz;
-import bdgg;
-import bdgi;
-import bdgo;
-import bdgr;
-import bdhe;
-import bdnw;
-import bdnx;
-import bdyo;
+import begy;
+import beiu;
+import beiw;
+import beka;
+import bekg;
+import beki;
+import bekq;
+import beku;
+import belh;
+import besl;
+import bffv;
 import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.proxy.UploaderProxy;
@@ -60,7 +59,7 @@ public class FileJsPlugin
   {
     paramString = this.mMiniAppInfo;
     if (paramString != null) {}
-    for (long l = paramString.usrFileSizeLimit; !bdeu.a().a(2, paramInt, this.mIsMiniGame, l); l = 0L) {
+    for (long l = paramString.usrFileSizeLimit; !beiu.a().a(2, paramInt, this.mIsMiniGame, l); l = 0L) {
       throw new IOException("the maximum size of the file storage is exceeded");
     }
   }
@@ -70,7 +69,7 @@ public class FileJsPlugin
     if (paramString.endsWith("Sync")) {
       return paramFileTask.run();
     }
-    bdew.a(new FileJsPlugin.19(this, paramFileTask), 16, null, true);
+    beiw.a(new FileJsPlugin.18(this, paramFileTask), 16, null, true);
     return "";
   }
   
@@ -94,24 +93,24 @@ public class FileJsPlugin
     return str1.replace(" ", "%20");
   }
   
-  private String handleCallbackFail(bdfz parambdfz, JSONObject paramJSONObject, String paramString)
+  private String handleCallbackFail(beka parambeka, JSONObject paramJSONObject, String paramString)
   {
-    if (!parambdfz.jdField_a_of_type_JavaLangString.endsWith("Sync"))
+    if (!parambeka.jdField_a_of_type_JavaLangString.endsWith("Sync"))
     {
-      parambdfz.a(paramJSONObject, paramString);
+      parambeka.a(paramJSONObject, paramString);
       return "";
     }
-    return bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, paramJSONObject, paramString).toString();
+    return bekg.a(parambeka.jdField_a_of_type_JavaLangString, paramJSONObject, paramString).toString();
   }
   
-  private String handleCallbackOK(bdfz parambdfz, JSONObject paramJSONObject)
+  private String handleCallbackOK(beka parambeka, JSONObject paramJSONObject)
   {
-    if (!parambdfz.jdField_a_of_type_JavaLangString.endsWith("Sync"))
+    if (!parambeka.jdField_a_of_type_JavaLangString.endsWith("Sync"))
     {
-      parambdfz.a(paramJSONObject);
+      parambeka.a(paramJSONObject);
       return "";
     }
-    return bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, paramJSONObject).toString();
+    return bekg.a(parambeka.jdField_a_of_type_JavaLangString, paramJSONObject).toString();
   }
   
   private boolean isEncodingSupport(String paramString)
@@ -126,14 +125,14 @@ public class FileJsPlugin
     }
     catch (Throwable paramString)
     {
-      bdnw.d("FileJsPlugin", "isEncodingSupport exception,e:" + paramString.getMessage(), paramString);
+      besl.d("FileJsPlugin", "isEncodingSupport exception,e:" + paramString.getMessage(), paramString);
     }
     return false;
   }
   
   private Object readFile(String paramString1, String paramString2)
   {
-    paramString2 = bdgo.a(new File(paramString2));
+    paramString2 = bekq.a(new File(paramString2));
     if (paramString2 == null) {
       return null;
     }
@@ -141,10 +140,10 @@ public class FileJsPlugin
       return Base64.encodeToString(paramString2, 2);
     }
     if ("binary".equals(paramString1)) {
-      return bdhe.a(paramString2);
+      return belh.a(paramString2);
     }
     if ("hex".equals(paramString1)) {
-      return bdhe.a(new String(paramString2));
+      return belh.a(new String(paramString2));
     }
     if ("__internal__array_buffer".equals(paramString1)) {
       return paramString2;
@@ -156,7 +155,7 @@ public class FileJsPlugin
     }
     catch (Throwable paramString1)
     {
-      bdnw.d("FileJsPlugin", "read file err", paramString1);
+      besl.d("FileJsPlugin", "read file err", paramString1);
     }
     return null;
   }
@@ -166,7 +165,7 @@ public class FileJsPlugin
     if (paramArrayOfByte != null)
     {
       checkUsrFileSize(paramString3, paramArrayOfByte.length);
-      return bdgo.a(paramString3, paramArrayOfByte, paramBoolean);
+      return bekq.a(paramString3, paramArrayOfByte, paramBoolean);
     }
     if ("base64".equals(paramString2)) {
       paramArrayOfByte = Base64.decode(paramString1, 2);
@@ -174,9 +173,9 @@ public class FileJsPlugin
     while ((paramString2.equals("binary")) || (paramString2.equals("hex")) || (paramString2.equals("base64")))
     {
       checkUsrFileSize(paramString3, paramArrayOfByte.length);
-      return bdgo.a(paramString3, paramArrayOfByte, paramBoolean);
+      return bekq.a(paramString3, paramArrayOfByte, paramBoolean);
       if ("hex".equals(paramString2)) {
-        paramArrayOfByte = bdhe.a(paramString1);
+        paramArrayOfByte = belh.a(paramString1);
       } else {
         paramArrayOfByte = paramString1.getBytes();
       }
@@ -184,81 +183,81 @@ public class FileJsPlugin
     paramArrayOfByte = Charset.forName(paramString2).encode(new String(paramArrayOfByte, Charset.forName("utf8")));
     paramString1 = paramArrayOfByte.array();
     checkUsrFileSize(paramString3, paramArrayOfByte.limit());
-    return bdgo.a(paramString3, paramString1, paramBoolean, paramArrayOfByte.limit());
+    return bekq.a(paramString3, paramString1, paramBoolean, paramArrayOfByte.limit());
   }
   
-  public String access(bdfz parambdfz)
+  public String access(beka parambeka)
   {
     long l = System.currentTimeMillis();
-    return execFileTask(parambdfz.jdField_a_of_type_JavaLangString, new FileJsPlugin.5(this, parambdfz, l));
+    return execFileTask(parambeka.jdField_a_of_type_JavaLangString, new FileJsPlugin.4(this, parambeka, l));
   }
   
-  public String appendFile(bdfz parambdfz)
+  public String appendFile(beka parambeka)
   {
     try
     {
-      Object localObject = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString);
+      Object localObject = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
       String str1 = ((JSONObject)localObject).optString("filePath");
       String str2 = ((JSONObject)localObject).optString("data");
       String str3 = ((JSONObject)localObject).optString("encoding", "utf8");
-      localObject = bdgr.a(this.mMiniAppContext, (JSONObject)localObject, "data");
+      localObject = beku.a(this.mMiniAppContext, (JSONObject)localObject, "data");
       if (localObject != null) {}
-      for (localObject = ((bdgr)localObject).a;; localObject = null)
+      for (localObject = ((beku)localObject).a;; localObject = null)
       {
-        parambdfz = execFileTask(parambdfz.jdField_a_of_type_JavaLangString, new FileJsPlugin.6(this, str3, parambdfz, str1, (byte[])localObject, str2));
-        return parambdfz;
+        parambeka = execFileTask(parambeka.jdField_a_of_type_JavaLangString, new FileJsPlugin.5(this, str3, parambeka, str1, str2, (byte[])localObject));
+        return parambeka;
       }
       return "{}";
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
-      parambdfz.printStackTrace();
+      parambeka.printStackTrace();
     }
   }
   
-  public String copyFile(bdfz parambdfz)
+  public String copyFile(beka parambeka)
   {
     long l = System.currentTimeMillis();
     try
     {
-      Object localObject = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString);
+      Object localObject = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
       String str = ((JSONObject)localObject).optString("srcPath");
       localObject = ((JSONObject)localObject).optString("destPath");
-      parambdfz = execFileTask(parambdfz.jdField_a_of_type_JavaLangString, new FileJsPlugin.8(this, str, parambdfz, (String)localObject, l));
-      return parambdfz;
+      parambeka = execFileTask(parambeka.jdField_a_of_type_JavaLangString, new FileJsPlugin.7(this, str, parambeka, (String)localObject, l));
+      return parambeka;
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
-      parambdfz.printStackTrace();
+      parambeka.printStackTrace();
     }
     return "";
   }
   
-  public String createDownloadTask(bdfz parambdfz)
+  public String createDownloadTask(beka parambeka)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
       String str2 = String.valueOf(this.downloadTaskId.getAndIncrement());
       String str3 = localJSONObject.optString("url");
       boolean bool = localJSONObject.optBoolean("__skipDomainCheck__", false);
       Object localObject2 = localJSONObject.optJSONObject("header");
-      String str1 = bdeu.a().c(localJSONObject.optString("filePath"));
+      String str1 = beiu.a().c(localJSONObject.optString("filePath"));
       if (TextUtils.isEmpty(str3))
       {
-        bdnw.d("FileJsPlugin", "download url is null");
-        return bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, null, "download url is null.").toString();
+        besl.d("FileJsPlugin", "download url is null");
+        return bekg.a(parambeka.jdField_a_of_type_JavaLangString, null, "download url is null.").toString();
       }
-      if (!bdyo.a(this.mMiniAppInfo, bool, str3, 2))
+      if (!bffv.a(this.mMiniAppInfo, bool, str3, 2))
       {
-        bdnw.d("FileJsPlugin", "download url Domain not configured." + str3);
-        return bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, null, "Domain not configured.").toString();
+        besl.d("FileJsPlugin", "download url Domain not configured." + str3);
+        return bekg.a(parambeka.jdField_a_of_type_JavaLangString, null, "Domain not configured.").toString();
       }
-      if ((!TextUtils.isEmpty(str3)) && (bdyo.a(this.mMiniAppInfo, bool, str3, 2)))
+      if ((!TextUtils.isEmpty(str3)) && (bffv.a(this.mMiniAppInfo, bool, str3, 2)))
       {
         Object localObject1;
         if (TextUtils.isEmpty(str1)) {
-          localObject1 = bdeu.a().g(str3);
+          localObject1 = beiu.a().g(str3);
         }
         try
         {
@@ -267,8 +266,8 @@ public class FileJsPlugin
             str3 = getDownloadUrl(str3);
             this.downloadMap.put(str2, str3);
             long l = System.currentTimeMillis();
-            localObject2 = bdhe.a((JSONObject)localObject2);
-            ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(str3, (Map)localObject2, (String)localObject1, 60, new FileJsPlugin.2(this, str2, parambdfz, l, str3, (String)localObject1, localJSONObject, str1));
+            localObject2 = belh.a((JSONObject)localObject2);
+            ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(str3, (Map)localObject2, (String)localObject1, 60, new FileJsPlugin.2(this, str2, parambeka, l, str3, (String)localObject1, localJSONObject, str1));
           }
           for (;;)
           {
@@ -276,136 +275,116 @@ public class FileJsPlugin
             {
               localObject1 = new JSONObject();
               ((JSONObject)localObject1).put("downloadTaskId", str2);
-              localObject1 = bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, (JSONObject)localObject1).toString();
+              localObject1 = bekg.a(parambeka.jdField_a_of_type_JavaLangString, (JSONObject)localObject1).toString();
               return localObject1;
             }
             catch (Throwable localThrowable)
             {
-              bdnw.d("FileJsPlugin", parambdfz.jdField_a_of_type_JavaLangString + " return error.", localThrowable);
+              besl.d("FileJsPlugin", parambeka.jdField_a_of_type_JavaLangString + " return error.", localThrowable);
               continue;
             }
             localObject1 = str1;
             break;
-            bdnw.a("FileJsPlugin", "download failed, savepath is null.");
+            besl.a("FileJsPlugin", "download failed, savepath is null.");
             localObject1 = new JSONObject();
             ((JSONObject)localObject1).put("downloadTaskId", str2);
             ((JSONObject)localObject1).put("state", "fail");
             ((JSONObject)localObject1).put("errMsg", "Download Failed, savepath is null");
-            parambdfz.jdField_a_of_type_Bdcy.a("onDownloadTaskStateChange", ((JSONObject)localObject1).toString(), 0);
+            parambeka.jdField_a_of_type_Begy.a("onDownloadTaskStateChange", ((JSONObject)localObject1).toString(), 0);
           }
         }
         catch (Exception localException)
         {
           for (;;)
           {
-            bdnw.d("FileJsPlugin", "download failed." + localException);
+            besl.d("FileJsPlugin", "download failed." + localException);
           }
         }
       }
-      bdnw.c("FileJsPlugin", "check download DomainValid fail, callbackFail, event:" + parambdfz.jdField_a_of_type_JavaLangString + ", callbackId:" + parambdfz.jdField_b_of_type_Int + ", url:" + str3);
+      besl.c("FileJsPlugin", "check download DomainValid fail, callbackFail, event:" + parambeka.jdField_a_of_type_JavaLangString + ", callbackId:" + parambeka.jdField_b_of_type_Int + ", url:" + str3);
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
-      parambdfz.printStackTrace();
+      parambeka.printStackTrace();
       return "";
     }
-    parambdfz = bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, null, "download url error.").toString();
-    return parambdfz;
+    parambeka = bekg.a(parambeka.jdField_a_of_type_JavaLangString, null, "download url error.").toString();
+    return parambeka;
   }
   
-  public String createFileSystemInstance(bdfz parambdfz)
+  public String createFileSystemInstance(beka parambeka)
   {
     return "{}";
   }
   
-  public String createLoadSubPackageTask(bdfz parambdfz)
-  {
-    try
-    {
-      String str = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString).optString("moduleName");
-      int i = this.curPreloadTaskId + 1;
-      this.curPreloadTaskId = i;
-      JSONObject localJSONObject = new JSONObject();
-      bdnx.a().a(this.mApkgInfo, this.mMiniAppInfo, str, new FileJsPlugin.4(this, i, str, parambdfz));
-      localJSONObject.put("loadTaskId", i);
-      parambdfz = bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, localJSONObject).toString();
-      return parambdfz;
-    }
-    catch (Throwable parambdfz)
-    {
-      parambdfz.printStackTrace();
-    }
-    return "";
-  }
-  
-  public String createUploadTask(bdfz parambdfz)
+  public String createUploadTask(beka parambeka)
   {
     long l = System.currentTimeMillis();
     try
     {
-      Object localObject3 = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString);
+      Object localObject3 = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
       String str1 = ((JSONObject)localObject3).optString("url");
       boolean bool = ((JSONObject)localObject3).optBoolean("__skipDomainCheck__", false);
       Object localObject1 = ((JSONObject)localObject3).optString("filePath");
       String str2 = ((JSONObject)localObject3).optString("name");
-      String str3 = bdeu.a().a((String)localObject1);
+      String str3 = beiu.a().a((String)localObject1);
       File localFile = new File(str3);
       if (TextUtils.isEmpty(str1))
       {
-        bdnw.c("FileJsPlugin", "upload url is empty.");
-        return bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, null, ":upload url is empty : " + str1).toString();
+        besl.c("FileJsPlugin", "upload url is empty.");
+        return bekg.a(parambeka.jdField_a_of_type_JavaLangString, null, ":upload url is empty : " + str1).toString();
       }
-      if (bdyo.a(this.mMiniAppInfo, bool, str1, 3))
+      if (!bffv.a(this.mMiniAppInfo, bool, str1, 3))
       {
-        bdnw.c("FileJsPlugin", "check upload DomainValid fail, callbackFail, event:" + parambdfz.jdField_a_of_type_JavaLangString + ", callbackId:" + parambdfz.jdField_b_of_type_Int + ", url:" + str1);
-        return bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, null, "url not in domain list, 请求域名不合法").toString();
+        besl.c("FileJsPlugin", "check upload DomainValid fail, callbackFail, event:" + parambeka.jdField_a_of_type_JavaLangString + ", callbackId:" + parambeka.jdField_b_of_type_Int + ", url:" + str1);
+        return bekg.a(parambeka.jdField_a_of_type_JavaLangString, null, "url not in domain list, 请求域名不合法").toString();
       }
       if (TextUtils.isEmpty(str3))
       {
-        bdnw.c("FileJsPlugin", "upload file error. " + str3);
-        return bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, null, ":file doesn't exist").toString();
+        besl.c("FileJsPlugin", "upload file error. " + str3);
+        return bekg.a(parambeka.jdField_a_of_type_JavaLangString, null, ":file doesn't exist").toString();
       }
       if (TextUtils.isEmpty(str2))
       {
-        bdnw.c("FileJsPlugin", "upload file name error. " + str2);
-        return bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, null, ":file name is error").toString();
+        besl.c("FileJsPlugin", "upload file name error. " + str2);
+        return bekg.a(parambeka.jdField_a_of_type_JavaLangString, null, ":file name is error").toString();
       }
-      int i = parambdfz.jdField_b_of_type_Int;
+      int i = parambeka.jdField_b_of_type_Int;
       Object localObject2 = ((JSONObject)localObject3).optJSONObject("header");
       localObject3 = ((JSONObject)localObject3).optJSONObject("formData");
       if (TextUtils.isEmpty((CharSequence)localObject1)) {}
       for (localObject1 = "";; localObject1 = ((String)localObject1).replace("wxfile://", ""))
       {
-        localObject2 = bdhe.a((JSONObject)localObject2);
-        localObject3 = bdhe.a((JSONObject)localObject3);
-        ((UploaderProxy)ProxyManager.get(UploaderProxy.class)).upload(str1, (Map)localObject2, str3, str2, (String)localObject1, (Map)localObject3, 60, new FileJsPlugin.3(this, i, parambdfz, l, localFile));
+        localObject2 = belh.a((JSONObject)localObject2);
+        localObject3 = belh.a((JSONObject)localObject3);
+        ((UploaderProxy)ProxyManager.get(UploaderProxy.class)).upload(str1, (Map)localObject2, str3, str2, (String)localObject1, (Map)localObject3, 60, new FileJsPlugin.3(this, i, parambeka, l, localFile));
         this.uploadMap.put(Integer.valueOf(i), str1);
         try
         {
           localObject1 = new JSONObject();
           ((JSONObject)localObject1).put("uploadTaskId", i);
-          localObject1 = bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, (JSONObject)localObject1).toString();
+          localObject1 = bekg.a(parambeka.jdField_a_of_type_JavaLangString, (JSONObject)localObject1).toString();
           return localObject1;
         }
         catch (Throwable localThrowable)
         {
           localThrowable.printStackTrace();
-          bdnw.d("FileJsPlugin", parambdfz.jdField_a_of_type_JavaLangString + " return error.", localThrowable);
+          besl.d("FileJsPlugin", parambeka.jdField_a_of_type_JavaLangString + " return error.", localThrowable);
         }
       }
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
       for (;;)
       {
-        parambdfz.printStackTrace();
+        parambeka.printStackTrace();
       }
     }
     return "";
   }
   
   /* Error */
-  public void getFileInfo(bdfz parambdfz)
+  public void getFileInfo(beka parambeka)
   {
     // Byte code:
     //   0: aconst_null
@@ -413,7 +392,7 @@ public class FileJsPlugin
     //   3: new 243	org/json/JSONObject
     //   6: dup
     //   7: aload_1
-    //   8: getfield 376	bdfz:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   8: getfield 376	beka:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   11: invokespecial 377	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   14: astore_3
     //   15: aload_3
@@ -421,19 +400,19 @@ public class FileJsPlugin
     //   19: invokevirtual 382	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   22: astore 5
     //   24: aload_3
-    //   25: ldc_w 617
-    //   28: ldc_w 619
+    //   25: ldc_w 593
+    //   28: ldc_w 595
     //   31: invokevirtual 389	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   34: astore_3
-    //   35: invokestatic 143	bdeu:a	()Lbdeu;
+    //   35: invokestatic 143	beiu:a	()Lbeiu;
     //   38: aload 5
-    //   40: invokevirtual 575	bdeu:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   40: invokevirtual 547	beiu:a	(Ljava/lang/String;)Ljava/lang/String;
     //   43: astore 7
-    //   45: ldc_w 619
+    //   45: ldc_w 595
     //   48: aload_3
     //   49: invokevirtual 286	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   52: ifne +167 -> 219
-    //   55: ldc_w 621
+    //   55: ldc_w 597
     //   58: aload_3
     //   59: invokevirtual 286	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   62: ifeq +162 -> 224
@@ -452,36 +431,36 @@ public class FileJsPlugin
     //   94: dup
     //   95: invokespecial 494	org/json/JSONObject:<init>	()V
     //   98: astore 6
-    //   100: ldc_w 621
+    //   100: ldc_w 597
     //   103: aload_3
     //   104: invokevirtual 286	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   107: ifeq +52 -> 159
     //   110: aload 7
-    //   112: invokestatic 624	bdha:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   112: invokestatic 600	beld:a	(Ljava/lang/String;)Ljava/lang/String;
     //   115: astore_3
     //   116: aload_3
     //   117: ifnull +9 -> 126
     //   120: aload_3
-    //   121: invokevirtual 627	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   121: invokevirtual 603	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   124: astore 4
     //   126: aload 6
-    //   128: ldc_w 629
+    //   128: ldc_w 605
     //   131: aload 4
     //   133: invokevirtual 498	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   136: pop
     //   137: aload 6
-    //   139: ldc_w 631
+    //   139: ldc_w 607
     //   142: aload 5
-    //   144: invokevirtual 633	java/io/File:length	()J
-    //   147: invokevirtual 636	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   144: invokevirtual 609	java/io/File:length	()J
+    //   147: invokevirtual 612	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   150: pop
     //   151: aload_1
     //   152: aload 6
-    //   154: invokevirtual 247	bdfz:a	(Lorg/json/JSONObject;)Ljava/lang/String;
+    //   154: invokevirtual 247	beka:a	(Lorg/json/JSONObject;)Ljava/lang/String;
     //   157: pop
     //   158: return
     //   159: aload 7
-    //   161: invokestatic 639	bdyv:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   161: invokestatic 615	bfgc:a	(Ljava/lang/String;)Ljava/lang/String;
     //   164: astore_3
     //   165: goto -49 -> 116
     //   168: astore_3
@@ -489,15 +468,15 @@ public class FileJsPlugin
     //   171: new 217	java/lang/StringBuilder
     //   174: dup
     //   175: invokespecial 218	java/lang/StringBuilder:<init>	()V
-    //   178: ldc_w 641
+    //   178: ldc_w 617
     //   181: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   184: aload_3
     //   185: invokevirtual 267	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   188: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   191: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   194: invokestatic 453	bdnw:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   194: invokestatic 453	besl:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   197: aload_1
-    //   198: invokevirtual 643	bdfz:b	()Ljava/lang/String;
+    //   198: invokevirtual 619	beka:b	()Ljava/lang/String;
     //   201: pop
     //   202: return
     //   203: astore_1
@@ -506,8 +485,8 @@ public class FileJsPlugin
     //   208: return
     //   209: aload_1
     //   210: aconst_null
-    //   211: ldc_w 645
-    //   214: invokevirtual 236	bdfz:a	(Lorg/json/JSONObject;Ljava/lang/String;)Ljava/lang/String;
+    //   211: ldc_w 621
+    //   214: invokevirtual 236	beka:a	(Lorg/json/JSONObject;Ljava/lang/String;)Ljava/lang/String;
     //   217: pop
     //   218: return
     //   219: iconst_1
@@ -519,7 +498,7 @@ public class FileJsPlugin
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	229	0	this	FileJsPlugin
-    //   0	229	1	parambdfz	bdfz
+    //   0	229	1	parambeka	beka
     //   76	150	2	i	int
     //   14	151	3	localObject1	Object
     //   168	17	3	localThrowable	Throwable
@@ -544,14 +523,14 @@ public class FileJsPlugin
     //   209	218	203	org/json/JSONException
   }
   
-  public String getSavedFileInfo(bdfz parambdfz)
+  public String getSavedFileInfo(beka parambeka)
   {
     for (;;)
     {
       try
       {
-        localObject1 = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString).optString("filePath");
-        localObject2 = bdeu.a().a((String)localObject1);
+        localObject1 = new JSONObject(parambeka.jdField_b_of_type_JavaLangString).optString("filePath");
+        localObject2 = beiu.a().a((String)localObject1);
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           continue;
         }
@@ -561,35 +540,35 @@ public class FileJsPlugin
         }
         localObject1 = new JSONObject();
       }
-      catch (JSONException parambdfz)
+      catch (JSONException parambeka)
       {
         Object localObject1;
         Object localObject2;
-        parambdfz.printStackTrace();
+        parambeka.printStackTrace();
         continue;
-        parambdfz.a(null, "no such file" + localThrowable);
+        parambeka.a(null, "no such file" + localThrowable);
         continue;
-        parambdfz.a(null, "no such file" + localThrowable);
+        parambeka.a(null, "no such file" + localThrowable);
         continue;
       }
       try
       {
         ((JSONObject)localObject1).put("size", ((File)localObject2).length());
         ((JSONObject)localObject1).put("createTime", ((File)localObject2).lastModified() / 1000L);
-        parambdfz.a((JSONObject)localObject1);
+        parambeka.a((JSONObject)localObject1);
         return "";
       }
       catch (Throwable localThrowable)
       {
         localThrowable.printStackTrace();
-        parambdfz.b();
+        parambeka.b();
       }
     }
   }
   
-  public String getSavedFileList(bdfz parambdfz)
+  public String getSavedFileList(beka parambeka)
   {
-    Object localObject1 = bdeu.a().a();
+    Object localObject1 = beiu.a().a();
     try
     {
       localJSONArray = new JSONArray();
@@ -610,7 +589,7 @@ public class FileJsPlugin
         JSONObject localJSONObject;
         label132:
         localThrowable.printStackTrace();
-        parambdfz.b();
+        parambeka.b();
         continue;
         i += 1;
       }
@@ -621,7 +600,7 @@ public class FileJsPlugin
       if ((localObject2 != null) && (localObject2.exists()) && (localObject2.isFile()))
       {
         localJSONObject = new JSONObject();
-        localJSONObject.put("filePath", bdeu.a().e(localObject2.getAbsolutePath()));
+        localJSONObject.put("filePath", beiu.a().e(localObject2.getAbsolutePath()));
         localJSONObject.put("size", localObject2.length());
         localJSONObject.put("createTime", localObject2.lastModified() / 1000L);
         localJSONArray.put(localJSONObject);
@@ -631,49 +610,49 @@ public class FileJsPlugin
     {
       localObject1 = new JSONObject();
       ((JSONObject)localObject1).put("fileList", localJSONArray);
-      parambdfz.a((JSONObject)localObject1);
+      parambeka.a((JSONObject)localObject1);
       return "";
     }
   }
   
-  public String mkdir(bdfz parambdfz)
+  public String mkdir(beka parambeka)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
       String str = localJSONObject.optString("dirPath");
-      parambdfz = execFileTask(parambdfz.jdField_a_of_type_JavaLangString, new FileJsPlugin.9(this, str, localJSONObject, parambdfz));
-      return parambdfz;
+      parambeka = execFileTask(parambeka.jdField_a_of_type_JavaLangString, new FileJsPlugin.8(this, str, localJSONObject, parambeka));
+      return parambeka;
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
-      parambdfz.printStackTrace();
+      parambeka.printStackTrace();
     }
     return "{}";
   }
   
-  public String openDocument(bdfz parambdfz)
+  public String openDocument(beka parambeka)
   {
     try
     {
-      new JSONObject(parambdfz.jdField_b_of_type_JavaLangString).optString("filePath");
-      bdgi.a(new FileJsPlugin.18(this));
+      new JSONObject(parambeka.jdField_b_of_type_JavaLangString).optString("filePath");
+      beki.a(new FileJsPlugin.17(this));
       return "";
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
       for (;;)
       {
-        parambdfz.printStackTrace();
+        parambeka.printStackTrace();
       }
     }
   }
   
-  public String operateDownloadTask(bdfz parambdfz)
+  public String operateDownloadTask(beka parambeka)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
       String str = localJSONObject.optString("downloadTaskId");
       if (("abort".equals(localJSONObject.optString("operationType"))) && (this.downloadMap.containsKey(str)))
       {
@@ -682,239 +661,239 @@ public class FileJsPlugin
       }
       return "";
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
       try
       {
         localJSONObject.put("downloadTaskId", str);
-        parambdfz = bdgg.a(parambdfz.jdField_a_of_type_JavaLangString, localJSONObject).toString();
-        return parambdfz;
+        parambeka = bekg.a(parambeka.jdField_a_of_type_JavaLangString, localJSONObject).toString();
+        return parambeka;
       }
-      catch (Throwable parambdfz)
+      catch (Throwable parambeka)
       {
         break label106;
       }
-      parambdfz = parambdfz;
-      parambdfz.printStackTrace();
+      parambeka = parambeka;
+      parambeka.printStackTrace();
     }
   }
   
-  public String operateUploadTask(bdfz parambdfz)
+  public String operateUploadTask(beka parambeka)
   {
     try
     {
-      parambdfz = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString);
-      int i = parambdfz.optInt("uploadTaskId");
-      if (("abort".equals(parambdfz.optString("operationType"))) && (this.uploadMap.containsKey(Integer.valueOf(i)))) {
+      parambeka = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
+      int i = parambeka.optInt("uploadTaskId");
+      if (("abort".equals(parambeka.optString("operationType"))) && (this.uploadMap.containsKey(Integer.valueOf(i)))) {
         ((UploaderProxy)ProxyManager.get(UploaderProxy.class)).abort((String)this.uploadMap.get(Integer.valueOf(i)));
       }
       return "";
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
       for (;;)
       {
-        parambdfz.printStackTrace();
+        parambeka.printStackTrace();
       }
     }
   }
   
-  public String readFile(bdfz parambdfz)
+  public String readFile(beka parambeka)
   {
     long l = System.currentTimeMillis();
     try
     {
-      Object localObject = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString);
+      Object localObject = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
       String str2 = ((JSONObject)localObject).optString("filePath");
       String str1 = ((JSONObject)localObject).optString("encoding", "__internal__array_buffer");
       localObject = str1;
       if (TextUtils.isEmpty(str1)) {
         localObject = "__internal__array_buffer";
       }
-      parambdfz = execFileTask(parambdfz.jdField_a_of_type_JavaLangString, new FileJsPlugin.10(this, str2, parambdfz, (String)localObject, l));
-      return parambdfz;
+      parambeka = execFileTask(parambeka.jdField_a_of_type_JavaLangString, new FileJsPlugin.9(this, str2, parambeka, (String)localObject, l));
+      return parambeka;
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
-      parambdfz.printStackTrace();
+      parambeka.printStackTrace();
     }
     return "{}";
   }
   
-  public String readdir(bdfz parambdfz)
+  public String readdir(beka parambeka)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
       String str = localJSONObject.optString("dirPath");
-      parambdfz = execFileTask(parambdfz.jdField_a_of_type_JavaLangString, new FileJsPlugin.11(this, str, localJSONObject, parambdfz));
-      return parambdfz;
+      parambeka = execFileTask(parambeka.jdField_a_of_type_JavaLangString, new FileJsPlugin.10(this, str, localJSONObject, parambeka));
+      return parambeka;
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
-      parambdfz.printStackTrace();
+      parambeka.printStackTrace();
     }
     return "";
   }
   
-  public String removeSavedFile(bdfz parambdfz)
+  public String removeSavedFile(beka parambeka)
   {
     for (;;)
     {
       try
       {
-        Object localObject = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString);
+        Object localObject = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
         String str = ((JSONObject)localObject).optString("filePath");
         if ((TextUtils.isEmpty(str)) || (((JSONObject)localObject).isNull("filePath"))) {
-          return handleCallbackFail(parambdfz, null, "fail parameter error: parameter.dirPath should be String instead of Null;");
+          return handleCallbackFail(parambeka, null, "fail parameter error: parameter.dirPath should be String instead of Null;");
         }
-        if (bdeu.a().a(str) != 1) {
+        if (beiu.a().a(str) != 1) {
           continue;
         }
-        localObject = bdeu.a().a(str);
-        if (!bdgo.b((String)localObject)) {
+        localObject = beiu.a().a(str);
+        if (!bekq.b((String)localObject)) {
           continue;
         }
-        bdgo.a((String)localObject, false);
-        parambdfz.a();
+        bekq.a((String)localObject, false);
+        parambeka.a();
       }
-      catch (JSONException parambdfz)
+      catch (JSONException parambeka)
       {
-        parambdfz.printStackTrace();
+        parambeka.printStackTrace();
         continue;
-        parambdfz.a(null, "not a store filePath");
+        parambeka.a(null, "not a store filePath");
         continue;
       }
       return "";
-      parambdfz.a(null, "not a store filePath");
+      parambeka.a(null, "not a store filePath");
     }
   }
   
-  public String rename(bdfz parambdfz)
+  public String rename(beka parambeka)
   {
     try
     {
-      Object localObject = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString);
+      Object localObject = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
       String str = ((JSONObject)localObject).optString("oldPath");
       localObject = ((JSONObject)localObject).optString("newPath");
-      parambdfz = execFileTask(parambdfz.jdField_a_of_type_JavaLangString, new FileJsPlugin.12(this, str, parambdfz, (String)localObject));
-      return parambdfz;
+      parambeka = execFileTask(parambeka.jdField_a_of_type_JavaLangString, new FileJsPlugin.11(this, str, parambeka, (String)localObject));
+      return parambeka;
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
-      parambdfz.printStackTrace();
+      parambeka.printStackTrace();
     }
     return "";
   }
   
-  public String rmdir(bdfz parambdfz)
+  public String rmdir(beka parambeka)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
       String str = localJSONObject.optString("dirPath");
       boolean bool = localJSONObject.optBoolean("recursive");
-      parambdfz = execFileTask(parambdfz.jdField_a_of_type_JavaLangString, new FileJsPlugin.13(this, str, localJSONObject, parambdfz, bool));
-      return parambdfz;
+      parambeka = execFileTask(parambeka.jdField_a_of_type_JavaLangString, new FileJsPlugin.12(this, str, localJSONObject, parambeka, bool));
+      return parambeka;
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
-      parambdfz.printStackTrace();
+      parambeka.printStackTrace();
     }
     return "";
   }
   
-  public String saveFile(bdfz parambdfz)
+  public String saveFile(beka parambeka)
   {
     long l = System.currentTimeMillis();
     try
     {
-      Object localObject = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString);
+      Object localObject = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
       String str = ((JSONObject)localObject).optString("tempFilePath");
       localObject = ((JSONObject)localObject).optString("filePath");
-      parambdfz = execFileTask(parambdfz.jdField_a_of_type_JavaLangString, new FileJsPlugin.7(this, str, parambdfz, (String)localObject, l));
-      return parambdfz;
+      parambeka = execFileTask(parambeka.jdField_a_of_type_JavaLangString, new FileJsPlugin.6(this, str, parambeka, (String)localObject, l));
+      return parambeka;
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
-      parambdfz.printStackTrace();
+      parambeka.printStackTrace();
     }
     return "";
   }
   
-  public String stat(bdfz parambdfz)
+  public String stat(beka parambeka)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
       String str = localJSONObject.optString("path");
       boolean bool = localJSONObject.optBoolean("recursive");
-      parambdfz = execFileTask(parambdfz.jdField_a_of_type_JavaLangString, new FileJsPlugin.14(this, str, parambdfz, bool));
-      return parambdfz;
+      parambeka = execFileTask(parambeka.jdField_a_of_type_JavaLangString, new FileJsPlugin.13(this, str, parambeka, bool));
+      return parambeka;
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
-      parambdfz.printStackTrace();
+      parambeka.printStackTrace();
     }
     return "{}";
   }
   
-  public String unlink(bdfz parambdfz)
+  public String unlink(beka parambeka)
   {
     try
     {
-      String str = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString).optString("filePath");
-      parambdfz = execFileTask(parambdfz.jdField_a_of_type_JavaLangString, new FileJsPlugin.15(this, str, parambdfz));
-      return parambdfz;
+      String str = new JSONObject(parambeka.jdField_b_of_type_JavaLangString).optString("filePath");
+      parambeka = execFileTask(parambeka.jdField_a_of_type_JavaLangString, new FileJsPlugin.14(this, str, parambeka));
+      return parambeka;
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
-      parambdfz.printStackTrace();
+      parambeka.printStackTrace();
     }
     return "";
   }
   
-  public String unzip(bdfz parambdfz)
+  public String unzip(beka parambeka)
   {
     long l = System.currentTimeMillis();
     try
     {
-      Object localObject = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString);
+      Object localObject = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
       String str = ((JSONObject)localObject).optString("zipFilePath");
       localObject = ((JSONObject)localObject).optString("targetPath");
-      parambdfz = execFileTask(parambdfz.jdField_a_of_type_JavaLangString, new FileJsPlugin.16(this, str, parambdfz, (String)localObject, l));
-      return parambdfz;
+      parambeka = execFileTask(parambeka.jdField_a_of_type_JavaLangString, new FileJsPlugin.15(this, str, parambeka, (String)localObject, l));
+      return parambeka;
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
-      parambdfz.printStackTrace();
+      parambeka.printStackTrace();
     }
     return "";
   }
   
-  public String writeFile(bdfz parambdfz)
+  public String writeFile(beka parambeka)
   {
     byte[] arrayOfByte = null;
     long l = System.currentTimeMillis();
     try
     {
-      Object localObject = new JSONObject(parambdfz.jdField_b_of_type_JavaLangString);
+      Object localObject = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
       String str2 = ((JSONObject)localObject).optString("filePath");
       if (((JSONObject)localObject).isNull("data")) {}
       for (String str1 = null;; str1 = ((JSONObject)localObject).optString("data"))
       {
         String str3 = ((JSONObject)localObject).optString("encoding", "utf8");
-        localObject = bdgr.a(this.mMiniAppContext, (JSONObject)localObject, "data");
+        localObject = beku.a(this.mMiniAppContext, (JSONObject)localObject, "data");
         if (localObject != null) {
-          arrayOfByte = ((bdgr)localObject).a;
+          arrayOfByte = ((beku)localObject).a;
         }
-        return execFileTask(parambdfz.jdField_a_of_type_JavaLangString, new FileJsPlugin.17(this, str1, arrayOfByte, parambdfz, str3, str2, l));
+        return execFileTask(parambeka.jdField_a_of_type_JavaLangString, new FileJsPlugin.16(this, str1, arrayOfByte, parambeka, str3, str2, l));
       }
       return "";
     }
-    catch (JSONException parambdfz)
+    catch (JSONException parambeka)
     {
-      parambdfz.printStackTrace();
+      parambeka.printStackTrace();
     }
   }
 }

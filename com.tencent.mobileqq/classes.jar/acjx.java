@@ -1,12 +1,21 @@
-import com.tencent.mobileqq.data.ChatMessage;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-public abstract interface acjx
+public class acjx
+  implements View.OnClickListener
 {
-  public abstract void a_(ChatMessage paramChatMessage);
+  public acjx(TroopMemberListActivity paramTroopMemberListActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.b.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acjx
  * JD-Core Version:    0.7.0.1
  */

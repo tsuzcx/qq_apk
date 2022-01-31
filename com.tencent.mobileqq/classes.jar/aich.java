@@ -1,25 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.view.View;
 
-class aich
-  extends ajuc
+public abstract interface aich
 {
-  aich(aicc paramaicc) {}
+  public abstract void a();
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
-  {
-    String str = String.valueOf(paramLong1);
-    if ((str != null) && (str.equals(aicc.a(this.a))))
-    {
-      aicc.a(this.a, String.valueOf(paramLong2), paramBoolean, paramInt);
-      QLog.d("RobotAdapter", 2, "onAddRobot  success" + paramBoolean + " resultCode " + paramInt);
-      return;
-    }
-    QLog.i("RobotAdapter", 2, "onAddRobot  troop" + paramLong1 + " cur " + aicc.a(this.a));
-  }
+  public abstract void a(@NonNull View paramView1, int paramInt1, int paramInt2, @NonNull View paramView2, boolean paramBoolean);
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aich
  * JD-Core Version:    0.7.0.1
  */

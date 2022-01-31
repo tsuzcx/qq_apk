@@ -1,31 +1,14 @@
-import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.SquareImageView;
 
-class roh
-  implements begw
+public class roh
 {
-  roh(rog paramrog, rof paramrof, int paramInt, begr parambegr) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-    }
-    rog.a(this.jdField_a_of_type_Rog, this.jdField_a_of_type_Rof);
-    paramInt = this.jdField_a_of_type_Rof.b;
-    int i = this.jdField_a_of_type_Rof.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Rof.jdField_a_of_type_Int != 1) {
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      long l = rol.a().a(this.jdField_a_of_type_Rof);
-      awqx.b(rog.a(this.jdField_a_of_type_Rog), "dc01160", "Pb_account_lifeservice", "" + this.jdField_a_of_type_Rof.jdField_a_of_type_JavaLangString, "0X80067F2", "0X80067F2", 0, 0, "" + (this.jdField_a_of_type_Int + 1), "" + l, "" + i, "" + paramInt);
-      break;
-    }
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public TextView a;
+  public SquareImageView a;
+  roj jdField_a_of_type_Roj;
+  TextView b;
 }
 
 

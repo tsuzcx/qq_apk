@@ -1,46 +1,28 @@
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.QQStoryWarningActivity;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
 
-final class tik
-  extends tgl
+public class tik
+  implements View.OnClickListener
 {
-  tik(String paramString1, String paramString2, int paramInt, Context paramContext) {}
+  public tik(MsgTabStoryNodeView paramMsgTabStoryNodeView, Context paramContext) {}
   
-  public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 0) && (paramStoryVideoItem != null))
+    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeView.a.isShown()) {}
+    for (int i = 1;; i = 0)
     {
-      paramString = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString, this.b), this.jdField_a_of_type_Int).a();
-      OpenPlayerBuilder.UIStyle localUIStyle = paramString.mUIStyle;
-      if (paramStoryVideoItem.mInteractStatus == 1) {}
-      for (paramInt = 1;; paramInt = 2)
-      {
-        localUIStyle.bottomWidgetShowFlag = paramInt;
-        paramString.mUIStyle.mPlayerRepeatMode = 1;
-        tij.a(this.jdField_a_of_type_AndroidContentContext, paramString, null);
-        return;
+      vel.a("msg_tab", "clk_all", 0, i, new String[0]);
+      paramView = bbej.a(QQStoryContext.a(), this.jdField_a_of_type_AndroidContentContext, "qqstory://qstory/open?from=msgTab");
+      vxs.a(paramView);
+      if (paramView != null) {
+        paramView.c();
       }
-    }
-    if (paramInt == 10100)
-    {
-      paramString = new Intent(this.jdField_a_of_type_AndroidContentContext, QQStoryWarningActivity.class);
-      paramString.putExtra("tipsResource", ajjy.a(2131648754));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramString);
       return;
     }
-    if (!TextUtils.isEmpty(paramString))
-    {
-      bbmy.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, paramString, 0).a();
-      return;
-    }
-    bbmy.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, ajjy.a(2131648755) + paramInt, 0).a();
   }
 }
 

@@ -1,21 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.Conversation;
 
-class aawd
-  implements begw
+public class aawd
+  implements DialogInterface.OnDismissListener
 {
-  aawd(aawc paramaawc, aawp paramaawp, begr parambegr) {}
+  public aawd(Conversation paramConversation) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Begr.dismiss();
-      return;
-      this.jdField_a_of_type_Aawc.a.b(this.jdField_a_of_type_Aawp);
+    if (paramDialogInterface == Conversation.a(this.a)) {
+      Conversation.a(this.a, null);
     }
   }
 }

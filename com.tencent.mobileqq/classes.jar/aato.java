@@ -1,80 +1,71 @@
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment.MyTroopObserver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopInfo;
+import MQQ.GetRoamToastRsp;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
 
 public class aato
-  extends ajuc
+  extends akfz
 {
-  public aato(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public aato(ChatSettingActivity paramChatSettingActivity) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void a(String paramString, int paramInt)
   {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.a();
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (paramInt1 != 2) {
-          break;
-        }
-      } while (paramInt2 != 0);
-      this.a.a();
+    ChatSettingActivity.d(this.a);
+  }
+  
+  public void a(boolean paramBoolean, GetRoamToastRsp paramGetRoamToastRsp)
+  {
+    if (this.a.a == null) {
       return;
-    } while ((paramInt1 != 9) || (paramInt2 != 0));
-    this.a.a();
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if (this.a.a != null) {
-      this.a.a.a();
     }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("contacts.fragment.TroopFragment", 2, "onUpdateTroopList " + paramBoolean);
+    Object localObject1;
+    Object localObject2;
+    if ((paramBoolean) && (paramGetRoamToastRsp != null) && (!TextUtils.isEmpty(paramGetRoamToastRsp.sToast)) && (((akfw)this.a.app.a(13)).a(paramGetRoamToastRsp)))
+    {
+      localObject1 = paramGetRoamToastRsp.sToast;
+      int i = ((String)localObject1).indexOf('#');
+      if (i < 0) {
+        break label306;
+      }
+      int j = ((String)localObject1).indexOf('#', i + 1);
+      if (j < 0) {
+        break label306;
+      }
+      localObject2 = new SpannableStringBuilder();
+      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, 0, i);
+      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, i + 1, j);
+      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, j + 1, ((String)localObject1).length());
+      ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(-12541697), i, j - 1, 33);
+      localObject1 = localObject2;
     }
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().postDelayed(new ForwardTroopListFragment.MyTroopObserver.1(this), 500L);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
-  {
-    if (paramBoolean) {
-      this.a.a();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.a();
-    }
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.a();
-    }
-  }
-  
-  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
-  {
-    if (paramBoolean) {
-      this.a.a();
+    label298:
+    label306:
+    for (;;)
+    {
+      this.a.c.setText((CharSequence)localObject1);
+      this.a.a.setTag(paramGetRoamToastRsp);
+      this.a.a.setVisibility(0);
+      axqw.b(this.a.app, "dc00898", "", "", "0X8009E31", "0X8009E31", 0, 0, "", "", "", "");
+      return;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = ChatSettingActivity.a(this.a);
+        localObject2 = new StringBuilder().append("onGetRoamToast: ").append(paramBoolean).append(",");
+        if (paramGetRoamToastRsp != null) {
+          break label298;
+        }
+      }
+      for (paramGetRoamToastRsp = "null";; paramGetRoamToastRsp = paramGetRoamToastRsp.sToast)
+      {
+        QLog.d((String)localObject1, 2, paramGetRoamToastRsp);
+        this.a.a.setVisibility(8);
+        return;
+      }
     }
   }
 }

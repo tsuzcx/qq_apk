@@ -1,26 +1,26 @@
 package com.tencent.open.wadl;
 
-import ajjy;
+import ajyc;
 import android.app.Activity;
 import android.content.Context;
-import babr;
-import bafb;
-import bcex;
-import bckj;
-import bckk;
-import bckl;
+import bbcv;
+import bbgg;
+import bdiy;
+import bdok;
+import bdol;
+import bdom;
 import com.tencent.smtt.sdk.WebView;
 import cooperation.wadl.ipc.WadlParams;
 
 public class WadlJsBridgeCallBack$2
   implements Runnable
 {
-  public WadlJsBridgeCallBack$2(bckj parambckj, WadlParams paramWadlParams) {}
+  public WadlJsBridgeCallBack$2(bdok parambdok, WadlParams paramWadlParams) {}
   
   public void run()
   {
-    if (bckj.a(this.this$0) != null) {}
-    for (Object localObject = bckj.a(this.this$0).getWebview();; localObject = null)
+    if (bdok.a(this.this$0) != null) {}
+    for (Object localObject = bdok.a(this.this$0).getWebview();; localObject = null)
     {
       if (localObject != null)
       {
@@ -31,7 +31,7 @@ public class WadlJsBridgeCallBack$2
       }
       return;
     }
-    babr.a((Context)localObject, 230, null, "主人的手机空间不足咯，继续下载可能导致本次下载出现异常哦~\n建议主人手动清理手机空间，帮助本次下载顺利完成。", ajjy.a(2131651078), ajjy.a(2131651077), new bckk(this), new bckl(this)).show();
+    bbcv.a((Context)localObject, 230, null, "主人的手机空间不足咯，继续下载可能导致本次下载出现异常哦~\n建议主人手动清理手机空间，帮助本次下载顺利完成。", ajyc.a(2131716869), ajyc.a(2131716868), new bdol(this), new bdom(this)).show();
   }
 }
 

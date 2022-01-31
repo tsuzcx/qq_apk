@@ -2,21 +2,21 @@ package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import ayzz;
-import azar;
-import bgnv;
+import baar;
+import babj;
+import bhwp;
 
 public class AudioItem$1
   implements Runnable
 {
-  public AudioItem$1(azar paramazar, ayzz paramayzz) {}
+  public AudioItem$1(babj parambabj, baar parambaar) {}
   
   public void run()
   {
-    String str = bgnv.a(this.a.b);
+    String str = bhwp.a(this.a.b);
     this.a.b(str);
     if (!TextUtils.isEmpty(str)) {
-      ((Activity)azar.a(this.this$0)).runOnUiThread(new AudioItem.1.1(this));
+      ((Activity)babj.a(this.this$0)).runOnUiThread(new AudioItem.1.1(this));
     }
   }
 }

@@ -5,23 +5,23 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import qlv;
+import qya;
 
 public class MultiVideoNormalItemHolder$4
   implements Runnable
 {
-  public MultiVideoNormalItemHolder$4(qlv paramqlv) {}
+  public MultiVideoNormalItemHolder$4(qya paramqya) {}
   
   public void run()
   {
     this.this$0.b.setVisibility(8);
     this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842442);
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.this$0.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().findViewById(2131297736);
+    this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842516);
+    RelativeLayout localRelativeLayout = (RelativeLayout)this.this$0.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().findViewById(2131363286);
     if (localRelativeLayout != null) {
       localRelativeLayout.setVisibility(4);
     }
-    localRelativeLayout = (RelativeLayout)this.this$0.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().findViewById(2131297735);
+    localRelativeLayout = (RelativeLayout)this.this$0.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().findViewById(2131363285);
     if (localRelativeLayout != null) {
       localRelativeLayout.setVisibility(4);
     }

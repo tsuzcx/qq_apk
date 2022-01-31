@@ -8,9 +8,9 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import bajq;
+import bbkx;
 import dov.com.qq.im.capture.view.QIMCircleProgress;
-import vms;
+import vzo;
 
 public class AnimationQIMCircleProgress
   extends QIMCircleProgress
@@ -42,16 +42,16 @@ public class AnimationQIMCircleProgress
     this.jdField_e_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_e_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    setBackgroundResource(2130843544);
-    this.o = bajq.a(30.0F);
-    this.p = bajq.a(6.0F);
+    setBackgroundResource(2130843627);
+    this.o = bbkx.a(30.0F);
+    this.p = bbkx.a(6.0F);
     this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
   }
   
   public void a(int paramInt)
   {
     if (this.jdField_e_of_type_Boolean) {
-      setBackgroundResource(2130837633);
+      setBackgroundResource(2130837639);
     }
     for (;;)
     {
@@ -60,7 +60,7 @@ public class AnimationQIMCircleProgress
       if ((paramInt != 1) && (this.d)) {
         setBackgroundDrawable(null);
       } else {
-        setBackgroundResource(2130843544);
+        setBackgroundResource(2130843627);
       }
     }
   }
@@ -96,14 +96,14 @@ public class AnimationQIMCircleProgress
     this.jdField_e_of_type_Boolean = paramBoolean;
     if (this.jdField_e_of_type_Boolean)
     {
-      setBackgroundResource(2130837633);
-      setCenterCircleColor(getResources().getColor(2131100565));
+      setBackgroundResource(2130837639);
+      setCenterCircleColor(getResources().getColor(2131166155));
     }
     for (;;)
     {
       invalidate();
       return;
-      setBackgroundResource(2130843544);
+      setBackgroundResource(2130843627);
       setCenterCircleColor(-1);
     }
   }
@@ -123,7 +123,7 @@ public class AnimationQIMCircleProgress
   
   protected void d(Canvas paramCanvas)
   {
-    int i = vms.a(getContext(), 3.0F);
+    int i = vzo.a(getContext(), 3.0F);
     Color.parseColor("#33000000");
     float f1 = this.i / 2;
     float f2 = this.i / 2;
@@ -137,8 +137,8 @@ public class AnimationQIMCircleProgress
   public void setCenterView()
   {
     super.setCenterView();
-    this.m = bajq.a(3.0F);
-    this.n = (bajq.a(53.0F) / 2);
+    this.m = bbkx.a(3.0F);
+    this.n = (bbkx.a(53.0F) / 2);
   }
   
   public void setDrawCenterCircle(boolean paramBoolean)
@@ -160,7 +160,7 @@ public class AnimationQIMCircleProgress
     {
       invalidate();
       return;
-      setBackgroundResource(2130843544);
+      setBackgroundResource(2130843627);
     }
   }
 }

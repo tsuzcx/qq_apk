@@ -13,17 +13,17 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
-import sfp;
-import sqd;
-import sqg;
-import sqs;
-import ulr;
-import uls;
-import urk;
+import ssl;
+import tcz;
+import tdc;
+import tdo;
+import uyn;
+import uyo;
+import veg;
 
 public class StoryItem
   extends BaseUIItem
-  implements sfp
+  implements ssl
 {
   public static final int TYPE_EXPIRE = 2;
   public static final int TYPE_NORMAL = 0;
@@ -51,7 +51,7 @@ public class StoryItem
     this.key = paramStoryEntry.key;
     this.type = paramStoryEntry.type;
     this.unionId = paramStoryEntry.unionId;
-    this.user = ((sqs)sqg.a(2)).b(this.unionId);
+    this.user = ((tdo)tdc.a(2)).b(this.unionId);
     if (this.user == null)
     {
       this.user = new QQUserUIItem();
@@ -89,11 +89,11 @@ public class StoryItem
   
   public void convertFrom(int paramInt, qqstory_struct.StoryDes paramStoryDes)
   {
-    Object localObject = (sqs)sqg.a(2);
+    Object localObject = (tdo)tdc.a(2);
     QQUserUIItem localQQUserUIItem = new QQUserUIItem();
     localQQUserUIItem.convertFrom(paramStoryDes.user);
-    this.user = ((sqs)localObject).a(localQQUserUIItem);
-    localObject = ((sqd)sqg.a(5)).a(this.user.uid, paramInt);
+    this.user = ((tdo)localObject).a(localQQUserUIItem);
+    localObject = ((tcz)tdc.a(5)).a(this.user.uid, paramInt);
     if (paramStoryDes.new_story_time.has())
     {
       this.updateTime = (paramStoryDes.new_story_time.get() * 1000L);
@@ -154,7 +154,7 @@ public class StoryItem
       }
       catch (Exception paramStoryDes)
       {
-        urk.b("Q.qqstory.home.StoryItem", "decode json fail", paramStoryDes);
+        veg.b("Q.qqstory.home.StoryItem", "decode json fail", paramStoryDes);
         return;
       }
       if (localObject != null)
@@ -238,7 +238,7 @@ public class StoryItem
   
   public float getCountDown()
   {
-    return ulr.a(this.updateTime);
+    return uyn.a(this.updateTime);
   }
   
   public String getCoverUrl()
@@ -248,7 +248,7 @@ public class StoryItem
   
   public String getTime()
   {
-    return ulr.a(this.updateTime);
+    return uyn.a(this.updateTime);
   }
   
   public String getTitle()
@@ -267,7 +267,7 @@ public class StoryItem
   
   public String toString()
   {
-    return uls.a(new Object[] { "StoryItem{ key=", this.key, ", type=", Integer.valueOf(this.type), ", user=", this.user, ", updateTime=", Long.valueOf(this.updateTime), ", cover= ", this.cover, ", totalTime=", Long.valueOf(this.totalTime), ", videoCount=", Integer.valueOf(this.videoCount), ", unReadCount=", Integer.valueOf(this.unReadCount), ", liveVideo=", this.liveVideo, ", storyLabel=", this.storyLabel, ", mDoodleText=", this.mDoodleText });
+    return uyo.a(new Object[] { "StoryItem{ key=", this.key, ", type=", Integer.valueOf(this.type), ", user=", this.user, ", updateTime=", Long.valueOf(this.updateTime), ", cover= ", this.cover, ", totalTime=", Long.valueOf(this.totalTime), ", videoCount=", Integer.valueOf(this.videoCount), ", unReadCount=", Integer.valueOf(this.unReadCount), ", liveVideo=", this.liveVideo, ", storyLabel=", this.storyLabel, ", mDoodleText=", this.mDoodleText });
   }
 }
 

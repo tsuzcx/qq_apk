@@ -1,25 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.Map;
-import java.util.Set;
+import java.util.List;
 
 public abstract interface ojt
-  extends ojc<BaseArticleInfo>
+  extends ojs
 {
-  public abstract void a(Map<Long, pov> paramMap, boolean paramBoolean);
+  public abstract void onCommentCreate(boolean paramBoolean, oii paramoii, List<oii> paramList, int paramInt);
   
-  public abstract void a(Map<Long, pov> paramMap, boolean paramBoolean, Map<Long, rvk> paramMap1, String paramString);
+  public abstract void onCommentCreate(boolean paramBoolean1, oii paramoii, boolean paramBoolean2, List<oii> paramList, int paramInt);
   
-  public abstract void a(Set<Long> paramSet, Map<Long, pov> paramMap);
+  public abstract void onCommentDelete(int paramInt1, boolean paramBoolean, oii paramoii, int paramInt2);
   
-  public abstract void a(boolean paramBoolean);
+  public abstract void onCommentLikeOrDislike(boolean paramBoolean, String paramString, int paramInt1, int paramInt2);
   
-  public abstract void a(boolean paramBoolean, String paramString);
+  public abstract void onCommentLoadMore(int paramInt1, boolean paramBoolean1, List<oii> paramList, boolean paramBoolean2, int paramInt2);
   
-  public abstract void b(boolean paramBoolean);
+  public abstract void onCommentReply(boolean paramBoolean, oii paramoii);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ojt
  * JD-Core Version:    0.7.0.1
  */

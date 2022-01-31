@@ -1,6 +1,16 @@
-public abstract interface dg
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.dataline.activities.LiteActivity;
+
+public class dg
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public dg(LiteActivity paramLiteActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.finish();
+  }
 }
 
 

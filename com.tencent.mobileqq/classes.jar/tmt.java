@@ -1,25 +1,43 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqProfileStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileStoryFeedIdList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class tmt
-  extends QQUIEventReceiver<tmq, syl>
+  extends syv
 {
-  public tmt(@NonNull tmq paramtmq)
+  public String a;
+  public String b;
+  
+  public String a()
   {
-    super(paramtmq);
+    return sxp.a("StorySvc.get_profile_feed_id_list");
   }
   
-  public void a(@NonNull tmq paramtmq, @NonNull syl paramsyl)
+  public syq a(byte[] paramArrayOfByte)
   {
-    urk.b("InteractWidgetPageHolder", "receive send vid rate data result event.");
-    if (paramtmq.d()) {
-      paramtmq.a(paramtmq.jdField_a_of_type_Int, paramtmq.b, paramtmq.jdField_a_of_type_Tnz, paramtmq.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder);
+    qqstory_service.RspProfileStoryFeedIdList localRspProfileStoryFeedIdList = new qqstory_service.RspProfileStoryFeedIdList();
+    try
+    {
+      localRspProfileStoryFeedIdList.mergeFrom(paramArrayOfByte);
+      return new tmu(localRspProfileStoryFeedIdList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
   }
   
-  public Class acceptEventClass()
+  protected byte[] a()
   {
-    return syl.class;
+    qqstory_service.ReqProfileStoryFeedIdList localReqProfileStoryFeedIdList = new qqstory_service.ReqProfileStoryFeedIdList();
+    localReqProfileStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    localReqProfileStoryFeedIdList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localReqProfileStoryFeedIdList.toByteArray();
   }
 }
 

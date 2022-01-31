@@ -1,13 +1,17 @@
-class tdy
-  extends tcu
+public class tdy
 {
-  tdy(tdo paramtdo, tew paramtew) {}
-  
-  public boolean b()
-  {
-    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_Tew.d);
-    return true;
-  }
+  @vym(a="align")
+  public int a;
+  @vym(a="image")
+  public String a;
+  @vym(a="picture_margin")
+  public int[] a;
+  @vym(a="picture_width")
+  public int b;
+  @vym(a="picture_height")
+  public int c;
+  @vym(a="standard_width")
+  public int d;
 }
 
 

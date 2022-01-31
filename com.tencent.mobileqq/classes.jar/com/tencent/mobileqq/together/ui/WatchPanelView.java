@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.together.ui;
 
-import aciy;
+import actn;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -11,8 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import axnx;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import bavi;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.widget.PatchedButton;
@@ -22,12 +21,11 @@ public class WatchPanelView
   extends RelativeLayout
   implements View.OnClickListener
 {
-  public int a;
+  int jdField_a_of_type_Int;
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   public View.OnClickListener a;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  DownloadParams.DecodeHandler jdField_a_of_type_ComTencentImageDownloadParams$DecodeHandler = new axnx(this);
   URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
   PatchedButton jdField_a_of_type_ComTencentWidgetPatchedButton;
   TextView b;
@@ -40,14 +38,14 @@ public class WatchPanelView
   
   private void b()
   {
-    LayoutInflater.from(getContext()).inflate(2131495063, this, true);
-    setBackgroundResource(2130837661);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131311716));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131311719));
-    this.jdField_a_of_type_ComTencentWidgetPatchedButton = ((PatchedButton)findViewById(2131311717));
-    this.b = ((TextView)findViewById(2131311718));
+    LayoutInflater.from(getContext()).inflate(2131560638, this, true);
+    setBackgroundResource(2130837671);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377530));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377533));
+    this.jdField_a_of_type_ComTencentWidgetPatchedButton = ((PatchedButton)findViewById(2131377531));
+    this.b = ((TextView)findViewById(2131377532));
     this.jdField_a_of_type_ComTencentWidgetPatchedButton.setOnClickListener(this);
-    this.jdField_a_of_type_Int = aciy.a(39.0F, getResources());
+    this.jdField_a_of_type_Int = actn.a(39.0F, getResources());
   }
   
   public void a()
@@ -86,8 +84,8 @@ public class WatchPanelView
         ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-        ((URLDrawable)localObject).setDecodeHandler(this.jdField_a_of_type_ComTencentImageDownloadParams$DecodeHandler);
-        ((URLDrawable)localObject).startDownload();
+        ((URLDrawable)localObject).setTag(bavi.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, 6));
+        ((URLDrawable)localObject).setDecodeHandler(bavi.e);
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
         this.jdField_a_of_type_AndroidWidgetImageView.setTag(paramString);
         if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {

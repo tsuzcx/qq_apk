@@ -1,23 +1,12 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.List;
 
-class bacx
-  implements View.OnClickListener
+public abstract interface bacx
 {
-  bacx(bacn parambacn) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((bacn.a(this.a) != null) && (bacn.a(this.a).isShowing())) {
-      bacn.a(this.a).dismiss();
-    }
-    bacn.a(this.a);
-  }
+  public abstract void a(List<badc> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bacx
  * JD-Core Version:    0.7.0.1
  */

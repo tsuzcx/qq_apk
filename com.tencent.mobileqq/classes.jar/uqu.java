@@ -1,24 +1,38 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
+import android.graphics.drawable.Drawable;
 
-public class uqu
-  implements Animation.AnimationListener
+class uqu
+  implements anyb
 {
-  public uqu(NewMessageYellowBar paramNewMessageYellowBar) {}
+  uqu(uqs paramuqs) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(anyc paramanyc)
   {
-    this.a.setVisibility(8);
+    if (((paramanyc instanceof aocp)) && (uqs.a(this.a) != null)) {
+      ((aocp)paramanyc).a(uqs.a(), uqs.a(this.a), uqs.a(this.a), null);
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(anyc paramanyc1, anyc paramanyc2, Drawable paramDrawable) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public boolean a(anyc paramanyc)
   {
-    this.a.a.setAlpha(1.0F);
+    return false;
   }
+  
+  public void b()
+  {
+    if (uqs.a(this.a) != null) {
+      ayla.a(uqs.a(this.a));
+    }
+  }
+  
+  public void b(anyc paramanyc) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 

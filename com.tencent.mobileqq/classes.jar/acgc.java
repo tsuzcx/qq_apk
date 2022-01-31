@@ -1,25 +1,32 @@
-import android.view.animation.Animation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
 public class acgc
-  extends beem
+  implements bfug
 {
-  public acgc(VisitorsActivity paramVisitorsActivity) {}
+  public acgc(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(bfuf parambfuf)
   {
-    if ((paramAnimation == this.a.b) && (this.a.d)) {
-      this.a.centerView.setText("");
+    boolean bool = false;
+    switch (parambfuf.a)
+    {
+    default: 
+      return;
+    case 0: 
+      parambfuf = this.a;
+      if (!this.a.d) {
+        bool = true;
+      }
+      parambfuf.d = bool;
+      asfb.a().b(this.a.app, this.a.d);
+      return;
     }
-    this.a.centerView.clearAnimation();
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (paramAnimation == this.a.a) {
-      this.a.centerView.setText(2131628889);
-    }
+    parambfuf = new Intent(this.a, TroopAssisSettingActivity.class);
+    parambfuf.setFlags(67108864);
+    this.a.startActivity(parambfuf);
+    axqw.b(this.a.app, "P_CliOper", "Grp_msg", "", "help_list", "Clk_set", 0, 0, "", "", "", "");
   }
 }
 

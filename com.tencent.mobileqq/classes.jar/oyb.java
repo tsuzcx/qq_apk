@@ -1,52 +1,54 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil.ProteusLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.handlers.DailyHandler.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.ListView;
+import java.util.Map;
 
 public class oyb
-  implements LogUtil.ProteusLog
+  extends oya
 {
-  public void d(String paramString1, int paramInt, String paramString2)
+  public int a()
   {
-    QLog.d(paramString1, paramInt, paramString2);
+    return 3;
   }
   
-  public void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  public void a(View paramView, ListView paramListView) {}
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    QLog.d(paramString1, paramInt, paramString2, paramThrowable);
+    paramAdapterView = (ArticleInfo)a((int)paramLong);
+    if (oox.c(b())) {
+      if (!onk.a(paramAdapterView)) {
+        break label35;
+      }
+    }
+    label35:
+    for (paramInt = 4;; paramInt = 2)
+    {
+      olm.a(paramInt);
+      return;
+    }
   }
   
-  public void e(String paramString1, int paramInt, String paramString2)
+  public void a(Map<Long, qar> paramMap, boolean paramBoolean)
   {
-    QLog.e(paramString1, paramInt, paramString2);
-  }
-  
-  public void e(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, paramInt, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.i(paramString1, paramInt, paramString2);
-  }
-  
-  public void i(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
-  {
-    QLog.i(paramString1, paramInt, paramString2, paramThrowable);
-  }
-  
-  public boolean isColorLevel()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public void w(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.w(paramString1, paramInt, paramString2);
-  }
-  
-  public void w(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
-  {
-    QLog.w(paramString1, paramInt, paramString2, paramThrowable);
+    super.a(paramMap, paramBoolean);
+    if (oox.c(b()))
+    {
+      paramMap = a();
+      if (bhvh.v()) {
+        break label36;
+      }
+      QLog.d("DailyHandler", 1, "detachFromViewGroup,now cmd is 0x68b");
+    }
+    label36:
+    while (paramMap == null) {
+      return;
+    }
+    ThreadManager.executeOnSubThread(new DailyHandler.1(this, paramMap.a));
   }
 }
 

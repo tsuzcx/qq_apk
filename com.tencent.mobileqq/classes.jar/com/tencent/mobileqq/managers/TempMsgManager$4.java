@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.managers;
 
-import ariq;
-import arit;
+import ases;
+import asev;
 import java.util.Map;
 
 public class TempMsgManager$4
   implements Runnable
 {
-  public TempMsgManager$4(ariq paramariq, short paramShort, boolean paramBoolean) {}
+  public TempMsgManager$4(ases paramases, short paramShort, boolean paramBoolean) {}
   
   public void run()
   {
-    if (ariq.a(this.this$0) != null) {
-      ariq.a(this.this$0).a(this.jdField_a_of_type_Short, this.jdField_a_of_type_Boolean, ((Boolean)ariq.a(this.this$0).get(ariq.a(this.this$0, this.jdField_a_of_type_Short))).booleanValue());
+    if (ases.a(this.this$0) != null) {
+      ases.a(this.this$0).a(this.jdField_a_of_type_Short, this.jdField_a_of_type_Boolean, ((Boolean)ases.a(this.this$0).get(ases.a(this.this$0, this.jdField_a_of_type_Short))).booleanValue());
     }
   }
 }

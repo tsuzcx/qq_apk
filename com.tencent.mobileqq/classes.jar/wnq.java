@@ -1,49 +1,27 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.common.app.AppInterface;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface.OnShowListener;
+import com.tencent.biz.subscribe.event.CommentListShowStateEvent;
 
-public class wnq
-  implements DialogInterface.OnClickListener
+class wnq
+  implements DialogInterface.OnShowListener
 {
-  public wnq(TroopGiftPanel paramTroopGiftPanel, int paramInt) {}
+  wnq(wnl paramwnl, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    if ((this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Wnc != null) && (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Wnc.a != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Wnc.a.c)))
-    {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c();
-      if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.j == 2) {
-        awqx.b(null, "dc00899", "Grp_flower", "", "C2C", "Clk_topay", 0, 0, "", "", "", "");
-      }
+    if (wnl.a(this.jdField_a_of_type_Wnl) != null) {
+      wnl.a(this.jdField_a_of_type_Wnl).a(paramDialogInterface);
     }
-    else
-    {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.j == 6)
-    {
-      awqx.b(null, "dc00899", "Grp_flower", "", "discuss_grp", "Clk_topay", 0, 0, "", "", "", "");
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.j == 7)
-    {
-      awqx.b(null, "dc00899", "Grp_flower", "", "temp_c2c", "Clk_topay", 0, 0, "", "", "", "");
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4)
-    {
-      ajnb.a("gift_store", "pay_tip", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() + "", "", "");
-      return;
-    }
-    awqx.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_topay", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mje.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+    paramDialogInterface = wsy.a().a(wnl.a(this.jdField_a_of_type_Wnl), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
+    wnl.a(this.jdField_a_of_type_Wnl).a(paramDialogInterface);
+    wpw.a().a(new CommentListShowStateEvent(true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wnq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,22 @@
-public abstract interface amqm
+public class amqm
+  extends amql
 {
-  public abstract void a(String paramString1, String paramString2);
+  private amrd a;
   
-  public abstract void a(String paramString1, String paramString2, Throwable paramThrowable);
+  amqm(String paramString, amrd paramamrd)
+  {
+    super(paramString);
+    this.a = paramamrd;
+  }
   
-  public abstract void b(String paramString1, String paramString2);
-  
-  public abstract void c(String paramString1, String paramString2);
-  
-  public abstract void d(String paramString1, String paramString2);
-  
-  public abstract void e(String paramString1, String paramString2);
+  public amrd a()
+  {
+    return this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqm
  * JD-Core Version:    0.7.0.1
  */

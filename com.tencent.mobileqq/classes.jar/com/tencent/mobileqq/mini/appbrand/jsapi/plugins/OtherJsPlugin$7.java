@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alrv;
+import amgo;
 
 class OtherJsPlugin$7
   implements Runnable
 {
-  OtherJsPlugin$7(OtherJsPlugin paramOtherJsPlugin, alrv paramalrv) {}
+  OtherJsPlugin$7(OtherJsPlugin paramOtherJsPlugin, amgo paramamgo) {}
   
   public void run()
   {

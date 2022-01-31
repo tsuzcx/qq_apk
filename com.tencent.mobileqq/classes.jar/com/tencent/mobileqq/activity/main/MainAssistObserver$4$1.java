@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.main;
 
-import afrd;
-import bfpr;
+import agdc;
+import bgxy;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class MainAssistObserver$4$1
   implements Runnable
 {
-  public MainAssistObserver$4$1(afrd paramafrd, QQAppInterface paramQQAppInterface) {}
+  public MainAssistObserver$4$1(agdc paramagdc, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    bfpr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "MainAssistObserver");
+    bgxy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "MainAssistObserver");
   }
 }
 

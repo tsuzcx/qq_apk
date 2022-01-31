@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import bduu;
+import bfbc;
 
 public class AppBrandPageContainer$2$1
   implements Runnable
 {
-  public AppBrandPageContainer$2$1(bduu parambduu) {}
+  public AppBrandPageContainer$2$1(bfbc parambfbc) {}
   
   public void run()
   {

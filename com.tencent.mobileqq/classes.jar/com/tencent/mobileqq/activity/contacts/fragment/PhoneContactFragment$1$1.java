@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import afdx;
+import afpv;
 import com.tencent.mobileqq.activity.phone.PhoneContactStatusCheckView;
 
 class PhoneContactFragment$1$1
@@ -11,8 +11,8 @@ class PhoneContactFragment$1$1
   public void run()
   {
     this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneContactStatusCheckView.b(this.a.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (this.a.this$0.jdField_a_of_type_Afdx != null) {
-      this.a.this$0.jdField_a_of_type_Afdx.notifyDataSetChanged();
+    if (this.a.this$0.jdField_a_of_type_Afpv != null) {
+      this.a.this$0.jdField_a_of_type_Afpv.notifyDataSetChanged();
     }
   }
 }

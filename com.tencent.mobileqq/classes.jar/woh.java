@@ -1,14 +1,45 @@
-import java.util.List;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.subscribe.comment.EmoView;
 
-public abstract interface woh
+public class woh
+  implements AdapterView.OnItemClickListener
 {
-  public abstract void a(int paramInt);
+  public woh(EmoView paramEmoView, int paramInt) {}
   
-  public abstract void a(List<azkb> paramList, wne paramwne);
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (paramInt == 27)
+    {
+      if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
+        bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
+      }
+      if (!bool1) {
+        EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        paramInt = (this.jdField_a_of_type_Int - 1) * 27 + paramInt;
+      } while (paramInt >= 107);
+      paramAdapterView = wou.b[wol.b[paramInt]];
+      bool1 = bool2;
+      if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
+        bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(paramAdapterView);
+      }
+    } while (bool1);
+    EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(paramAdapterView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     woh
  * JD-Core Version:    0.7.0.1
  */

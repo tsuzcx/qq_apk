@@ -1,25 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-
 public class bbnx
-  extends Animation
 {
-  public bbnx(ShaderAnimLayout paramShaderAnimLayout) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public bbnx(int paramInt1, String paramString1, int paramInt2, String paramString2)
   {
-    if (this.a.jdField_a_of_type_Boolean == true) {}
-    for (this.a.jdField_a_of_type_Float = (1.0F - paramFloat);; this.a.jdField_a_of_type_Float = paramFloat)
-    {
-      this.a.invalidate();
-      return;
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbnx
  * JD-Core Version:    0.7.0.1
  */

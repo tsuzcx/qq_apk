@@ -1,47 +1,131 @@
 import android.graphics.Bitmap;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.VoiceResStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
+import java.util.List;
 
 public class aclc
-  implements agpe
+  extends aimu
 {
-  public aclc(CustomizeStrategyFactory.VoiceResStrategy.1 param1) {}
+  public List<acky> a;
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public aclc(List<acky> paramList)
   {
-    paramPathResult = paramPathResult.folderPath;
-    if (paramInt == 0) {}
-    try
+    super(paramList, paramList.app, paramList.jdField_a_of_type_ComTencentWidgetXListView, 1, true);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (TroopMemberListActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity))
     {
-      Object localObject = paramPathResult + File.separator;
-      localObject = (String)localObject + "aio.png";
-      localObject = SafeBitmapFactory.decodeFile((String)localObject, bacm.a((String)localObject, (int)(CustomizeStrategyFactory.a * 47.0F + 0.5D)));
-      if (localObject != null) {
-        this.a.a.icon = ((Bitmap)localObject);
-      }
-      this.a.a.resPath = paramPathResult;
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "VOICE_LOCK_RES info.icon=" + this.a.a.icon + ",resPath=" + this.a.a.resPath);
+      acky localacky = (acky)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if ((TextUtils.isEmpty(localacky.m)) && (!TextUtils.isEmpty(localacky.p)) && (!TextUtils.isEmpty(localacky.g)) && (!localacky.g.equals(localacky.p))) {
+        return 1;
       }
     }
-    catch (Throwable paramPathResult)
-    {
-      for (;;)
+    return 0;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int i = getItemViewType(paramInt);
+    Object localObject;
+    label54:
+    boolean bool;
+    if (paramView == null) {
+      if (i == 0)
       {
-        paramPathResult.printStackTrace();
+        paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562551, paramViewGroup, false);
+        paramView = new aclf(paramViewGroup, false);
+        paramViewGroup.setTag(paramView);
+        localObject = paramView;
+        paramView = paramViewGroup;
+        paramViewGroup = (ViewGroup)localObject;
+        localObject = (acky)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        paramViewGroup.g.setTag(((acky)localObject).a);
+        paramViewGroup.b.setTag(((acky)localObject).a);
+        paramViewGroup.jdField_a_of_type_AndroidViewView.setTag(((acky)localObject).a);
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetTroopMemberListSlideItem.setTag(Integer.valueOf(paramInt));
+        TroopMemberListActivity localTroopMemberListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity;
+        Bitmap localBitmap = a(1, ((acky)localObject).a);
+        if (i != 1) {
+          break label307;
+        }
+        bool = true;
+        label143:
+        localTroopMemberListActivity.a(paramViewGroup, (acky)localObject, localBitmap, true, bool);
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 12)
+        {
+          if (!this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_Acla.jdField_a_of_type_JavaUtilList.contains(localObject)) {
+            break label313;
+          }
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        }
       }
     }
-    CustomizeStrategyFactory.a().a(this.a.a);
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_Ajsa != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_Ajsa.a(paramViewGroup, (acky)localObject);
+        if (paramViewGroup.f.getVisibility() == 0)
+        {
+          paramInt = VipUtils.d(2);
+          paramViewGroup.e.setMaxWidth(paramInt);
+          TroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, paramViewGroup.e, paramViewGroup.d, ((acky)localObject).a, paramInt);
+        }
+      }
+      return paramView;
+      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562555, paramViewGroup, false);
+      paramView = new aclf(paramViewGroup, true);
+      break;
+      paramViewGroup = (aclf)paramView.getTag();
+      break label54;
+      label307:
+      bool = false;
+      break label143;
+      label313:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aclc
  * JD-Core Version:    0.7.0.1
  */

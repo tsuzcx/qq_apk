@@ -1,26 +1,26 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.camera.CameraUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class mdv
-  extends mfk
+final class mdv
 {
-  public kvw a;
-  public kzq a;
-  public lru a;
+  public int a;
+  long jdField_a_of_type_Long;
+  View jdField_a_of_type_AndroidViewView = null;
+  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
+  TextView jdField_a_of_type_AndroidWidgetTextView = null;
+  boolean jdField_a_of_type_Boolean = false;
+  ImageView jdField_b_of_type_AndroidWidgetImageView = null;
+  TextView jdField_b_of_type_AndroidWidgetTextView = null;
+  boolean jdField_b_of_type_Boolean = true;
+  ImageView jdField_c_of_type_AndroidWidgetImageView = null;
+  TextView jdField_c_of_type_AndroidWidgetTextView = null;
+  public boolean c;
   
-  mdv(med parammed)
+  private mdv(mdq parammdq)
   {
-    super(parammed);
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_Kzq = new mdw(this);
-    this.jdField_a_of_type_Kvw = new mdx(this);
-    this.jdField_a_of_type_Lru = new mdy(this);
-    CameraUtils.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication()).a(this.jdField_a_of_type_Kzq);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Kvw);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Lru);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_c_of_type_Boolean = true;
   }
 }
 

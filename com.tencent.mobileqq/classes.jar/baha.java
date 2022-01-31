@@ -1,14 +1,19 @@
-import android.widget.TextView;
+import android.os.Handler;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.6.1.1;
 
-class baha
+public class baha
+  implements aycb
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  baha(bagz parambagz) {}
   
-  private baha(bagu parambagu) {}
+  public void a()
+  {
+    this.a.a.a.post(new AIOAnimationControlManager.6.1.1(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baha
  * JD-Core Version:    0.7.0.1
  */

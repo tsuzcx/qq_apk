@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aiyu;
+import ajmw;
 
 public class ApolloDaoManager$1
   implements Runnable
 {
-  public ApolloDaoManager$1(aiyu paramaiyu) {}
+  public ApolloDaoManager$1(ajmw paramajmw) {}
   
   /* Error */
   public void run()
@@ -14,61 +14,61 @@ public class ApolloDaoManager$1
     //   0: aconst_null
     //   1: astore_2
     //   2: aload_0
-    //   3: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   6: getfield 27	aiyu:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   3: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   6: getfield 27	ajmw:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   9: ifnull +896 -> 905
     //   12: aload_0
-    //   13: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   16: getfield 27	aiyu:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   13: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   16: getfield 27	ajmw:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   19: invokevirtual 33	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   22: astore_2
     //   23: goto +882 -> 905
     //   26: aload_0
-    //   27: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   30: getfield 27	aiyu:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   33: invokevirtual 37	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Latmq;
-    //   36: invokevirtual 43	atmq:createEntityManager	()Latmp;
+    //   27: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   30: getfield 27	ajmw:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   33: invokevirtual 37	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lauko;
+    //   36: invokevirtual 43	auko:createEntityManager	()Laukn;
     //   39: astore_2
     //   40: aload_2
     //   41: ifnull +868 -> 909
     //   44: aload_0
-    //   45: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
+    //   45: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
     //   48: iconst_1
     //   49: aconst_null
-    //   50: invokevirtual 46	aiyu:a	(ZLjava/util/List;)V
+    //   50: invokevirtual 46	ajmw:a	(ZLjava/util/List;)V
     //   53: aload_2
     //   54: ldc 48
-    //   56: invokevirtual 53	atmp:a	(Ljava/lang/Class;)Ljava/util/List;
+    //   56: invokevirtual 53	aukn:a	(Ljava/lang/Class;)Ljava/util/List;
     //   59: astore 4
     //   61: aload 4
     //   63: ifnull +72 -> 135
     //   66: aload_0
-    //   67: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   70: getfield 56	aiyu:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   67: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   70: getfield 56	ajmw:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   73: astore_3
     //   74: aload_3
     //   75: monitorenter
     //   76: aload_0
-    //   77: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
+    //   77: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
     //   80: aload 4
-    //   82: putfield 56	aiyu:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   82: putfield 56	ajmw:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   85: iconst_0
     //   86: istore_1
     //   87: iload_1
     //   88: aload_0
-    //   89: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   92: getfield 56	aiyu:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   89: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   92: getfield 56	ajmw:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   95: invokeinterface 62 1 0
     //   100: if_icmpge +33 -> 133
     //   103: aload_0
-    //   104: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
+    //   104: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
     //   107: aload_0
-    //   108: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   111: getfield 56	aiyu:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   108: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   111: getfield 56	ajmw:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   114: iload_1
     //   115: invokeinterface 66 2 0
     //   120: checkcast 48	com/tencent/mobileqq/data/ApolloActionData
-    //   123: invokestatic 69	aiyu:a	(Laiyu;Lcom/tencent/mobileqq/data/ApolloActionData;)V
+    //   123: invokestatic 69	ajmw:a	(Lajmw;Lcom/tencent/mobileqq/data/ApolloActionData;)V
     //   126: iload_1
     //   127: iconst_1
     //   128: iadd
@@ -78,117 +78,117 @@ public class ApolloDaoManager$1
     //   134: monitorexit
     //   135: aload_2
     //   136: ldc 71
-    //   138: invokevirtual 53	atmp:a	(Ljava/lang/Class;)Ljava/util/List;
+    //   138: invokevirtual 53	aukn:a	(Ljava/lang/Class;)Ljava/util/List;
     //   141: astore 4
     //   143: aload 4
     //   145: ifnull +24 -> 169
     //   148: aload_0
-    //   149: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   152: getfield 74	aiyu:b	Ljava/util/List;
+    //   149: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   152: getfield 74	ajmw:b	Ljava/util/List;
     //   155: astore_3
     //   156: aload_3
     //   157: monitorenter
     //   158: aload_0
-    //   159: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
+    //   159: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
     //   162: aload 4
-    //   164: putfield 74	aiyu:b	Ljava/util/List;
+    //   164: putfield 74	ajmw:b	Ljava/util/List;
     //   167: aload_3
     //   168: monitorexit
     //   169: aload_2
     //   170: ldc 76
-    //   172: invokevirtual 53	atmp:a	(Ljava/lang/Class;)Ljava/util/List;
+    //   172: invokevirtual 53	aukn:a	(Ljava/lang/Class;)Ljava/util/List;
     //   175: astore 4
     //   177: aload 4
     //   179: ifnull +24 -> 203
     //   182: aload_0
-    //   183: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   186: getfield 79	aiyu:c	Ljava/util/List;
+    //   183: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   186: getfield 79	ajmw:c	Ljava/util/List;
     //   189: astore_3
     //   190: aload_3
     //   191: monitorenter
     //   192: aload_0
-    //   193: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
+    //   193: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
     //   196: aload 4
-    //   198: putfield 79	aiyu:c	Ljava/util/List;
+    //   198: putfield 79	ajmw:c	Ljava/util/List;
     //   201: aload_3
     //   202: monitorexit
     //   203: aload_2
     //   204: ldc 81
-    //   206: invokevirtual 53	atmp:a	(Ljava/lang/Class;)Ljava/util/List;
+    //   206: invokevirtual 53	aukn:a	(Ljava/lang/Class;)Ljava/util/List;
     //   209: astore 4
     //   211: aload_0
-    //   212: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   215: getfield 84	aiyu:d	Ljava/util/List;
+    //   212: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   215: getfield 84	ajmw:d	Ljava/util/List;
     //   218: ifnull +29 -> 247
     //   221: aload_0
-    //   222: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   225: getfield 84	aiyu:d	Ljava/util/List;
+    //   222: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   225: getfield 84	ajmw:d	Ljava/util/List;
     //   228: astore_3
     //   229: aload_3
     //   230: monitorenter
     //   231: aload 4
     //   233: ifnull +12 -> 245
     //   236: aload_0
-    //   237: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
+    //   237: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
     //   240: aload 4
-    //   242: putfield 84	aiyu:d	Ljava/util/List;
+    //   242: putfield 84	ajmw:d	Ljava/util/List;
     //   245: aload_3
     //   246: monitorexit
     //   247: aload_2
     //   248: ldc 86
-    //   250: invokevirtual 53	atmp:a	(Ljava/lang/Class;)Ljava/util/List;
+    //   250: invokevirtual 53	aukn:a	(Ljava/lang/Class;)Ljava/util/List;
     //   253: astore 4
     //   255: aload_0
-    //   256: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   259: getfield 89	aiyu:e	Ljava/util/List;
+    //   256: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   259: getfield 89	ajmw:e	Ljava/util/List;
     //   262: ifnull +29 -> 291
     //   265: aload_0
-    //   266: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   269: getfield 89	aiyu:e	Ljava/util/List;
+    //   266: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   269: getfield 89	ajmw:e	Ljava/util/List;
     //   272: astore_3
     //   273: aload_3
     //   274: monitorenter
     //   275: aload 4
     //   277: ifnull +12 -> 289
     //   280: aload_0
-    //   281: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
+    //   281: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
     //   284: aload 4
-    //   286: putfield 89	aiyu:e	Ljava/util/List;
+    //   286: putfield 89	ajmw:e	Ljava/util/List;
     //   289: aload_3
     //   290: monitorexit
     //   291: aload_2
     //   292: ldc 91
-    //   294: invokevirtual 53	atmp:a	(Ljava/lang/Class;)Ljava/util/List;
+    //   294: invokevirtual 53	aukn:a	(Ljava/lang/Class;)Ljava/util/List;
     //   297: astore 4
     //   299: aload 4
     //   301: ifnull +43 -> 344
     //   304: aload_0
-    //   305: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   308: getfield 94	aiyu:f	Ljava/util/List;
+    //   305: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   308: getfield 94	ajmw:f	Ljava/util/List;
     //   311: ifnull +33 -> 344
     //   314: aload_0
-    //   315: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   318: getfield 94	aiyu:f	Ljava/util/List;
+    //   315: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   318: getfield 94	ajmw:f	Ljava/util/List;
     //   321: astore_3
     //   322: aload_3
     //   323: monitorenter
     //   324: aload_0
-    //   325: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
+    //   325: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
     //   328: aload 4
-    //   330: putfield 94	aiyu:f	Ljava/util/List;
+    //   330: putfield 94	ajmw:f	Ljava/util/List;
     //   333: aload_0
-    //   334: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
+    //   334: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
     //   337: aload 4
-    //   339: invokevirtual 98	aiyu:g	(Ljava/util/List;)V
+    //   339: invokevirtual 98	ajmw:g	(Ljava/util/List;)V
     //   342: aload_3
     //   343: monitorexit
     //   344: aload_0
-    //   345: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   348: getfield 94	aiyu:f	Ljava/util/List;
+    //   345: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   348: getfield 94	ajmw:f	Ljava/util/List;
     //   351: ifnull +18 -> 369
     //   354: aload_0
-    //   355: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   358: getfield 94	aiyu:f	Ljava/util/List;
+    //   355: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   358: getfield 94	ajmw:f	Ljava/util/List;
     //   361: invokeinterface 62 1 0
     //   366: ifne +22 -> 388
     //   369: ldc 100
@@ -196,13 +196,13 @@ public class ApolloDaoManager$1
     //   372: ldc 102
     //   374: invokestatic 108	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   377: aload_0
-    //   378: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   381: getfield 27	aiyu:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   378: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   381: getfield 27	ajmw:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   384: lconst_0
     //   385: invokestatic 113	com/tencent/mobileqq/apollo/utils/ApolloGameUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;J)V
     //   388: aload_2
     //   389: ldc 115
-    //   391: invokevirtual 53	atmp:a	(Ljava/lang/Class;)Ljava/util/List;
+    //   391: invokevirtual 53	aukn:a	(Ljava/lang/Class;)Ljava/util/List;
     //   394: astore 4
     //   396: aload 4
     //   398: ifnull +44 -> 442
@@ -210,24 +210,24 @@ public class ApolloDaoManager$1
     //   403: invokeinterface 62 1 0
     //   408: ifle +34 -> 442
     //   411: aload_0
-    //   412: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   415: getfield 117	aiyu:g	Ljava/util/List;
+    //   412: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   415: getfield 117	ajmw:g	Ljava/util/List;
     //   418: ifnull +24 -> 442
     //   421: aload_0
-    //   422: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   425: getfield 117	aiyu:g	Ljava/util/List;
+    //   422: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   425: getfield 117	ajmw:g	Ljava/util/List;
     //   428: astore_3
     //   429: aload_3
     //   430: monitorenter
     //   431: aload_0
-    //   432: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
+    //   432: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
     //   435: aload 4
-    //   437: putfield 117	aiyu:g	Ljava/util/List;
+    //   437: putfield 117	ajmw:g	Ljava/util/List;
     //   440: aload_3
     //   441: monitorexit
     //   442: aload_2
     //   443: ldc 119
-    //   445: invokevirtual 53	atmp:a	(Ljava/lang/Class;)Ljava/util/List;
+    //   445: invokevirtual 53	aukn:a	(Ljava/lang/Class;)Ljava/util/List;
     //   448: astore 4
     //   450: aload 4
     //   452: ifnull +44 -> 496
@@ -235,24 +235,24 @@ public class ApolloDaoManager$1
     //   457: invokeinterface 62 1 0
     //   462: ifle +34 -> 496
     //   465: aload_0
-    //   466: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   469: getfield 122	aiyu:h	Ljava/util/List;
+    //   466: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   469: getfield 122	ajmw:h	Ljava/util/List;
     //   472: ifnull +24 -> 496
     //   475: aload_0
-    //   476: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   479: getfield 122	aiyu:h	Ljava/util/List;
+    //   476: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   479: getfield 122	ajmw:h	Ljava/util/List;
     //   482: astore_3
     //   483: aload_3
     //   484: monitorenter
     //   485: aload_0
-    //   486: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
+    //   486: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
     //   489: aload 4
-    //   491: putfield 122	aiyu:h	Ljava/util/List;
+    //   491: putfield 122	ajmw:h	Ljava/util/List;
     //   494: aload_3
     //   495: monitorexit
     //   496: aload_2
     //   497: ldc 124
-    //   499: invokevirtual 53	atmp:a	(Ljava/lang/Class;)Ljava/util/List;
+    //   499: invokevirtual 53	aukn:a	(Ljava/lang/Class;)Ljava/util/List;
     //   502: astore 4
     //   504: aload 4
     //   506: ifnull +45 -> 551
@@ -260,25 +260,25 @@ public class ApolloDaoManager$1
     //   511: invokeinterface 62 1 0
     //   516: ifle +35 -> 551
     //   519: aload_0
-    //   520: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   523: invokestatic 127	aiyu:a	(Laiyu;)Ljava/util/List;
+    //   520: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   523: invokestatic 127	ajmw:a	(Lajmw;)Ljava/util/List;
     //   526: ifnull +25 -> 551
     //   529: aload_0
-    //   530: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   533: invokestatic 127	aiyu:a	(Laiyu;)Ljava/util/List;
+    //   530: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   533: invokestatic 127	ajmw:a	(Lajmw;)Ljava/util/List;
     //   536: astore_3
     //   537: aload_3
     //   538: monitorenter
     //   539: aload_0
-    //   540: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
+    //   540: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
     //   543: aload 4
-    //   545: invokestatic 130	aiyu:a	(Laiyu;Ljava/util/List;)Ljava/util/List;
+    //   545: invokestatic 130	ajmw:a	(Lajmw;Ljava/util/List;)Ljava/util/List;
     //   548: pop
     //   549: aload_3
     //   550: monitorexit
     //   551: aload_2
     //   552: ldc 132
-    //   554: invokevirtual 53	atmp:a	(Ljava/lang/Class;)Ljava/util/List;
+    //   554: invokevirtual 53	aukn:a	(Ljava/lang/Class;)Ljava/util/List;
     //   557: astore 4
     //   559: aload 4
     //   561: ifnull +190 -> 751
@@ -286,18 +286,18 @@ public class ApolloDaoManager$1
     //   566: invokeinterface 62 1 0
     //   571: ifle +180 -> 751
     //   574: aload_0
-    //   575: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   578: getfield 134	aiyu:i	Ljava/util/List;
+    //   575: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   578: getfield 134	ajmw:i	Ljava/util/List;
     //   581: ifnull +170 -> 751
     //   584: aload_0
-    //   585: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   588: invokestatic 137	aiyu:a	(Laiyu;)Ljava/lang/Object;
+    //   585: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   588: invokestatic 137	ajmw:a	(Lajmw;)Ljava/lang/Object;
     //   591: astore_3
     //   592: aload_3
     //   593: monitorenter
     //   594: aload_0
-    //   595: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   598: getfield 134	aiyu:i	Ljava/util/List;
+    //   595: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   598: getfield 134	ajmw:i	Ljava/util/List;
     //   601: invokeinterface 140 1 0
     //   606: aload 4
     //   608: invokeinterface 144 1 0
@@ -313,8 +313,8 @@ public class ApolloDaoManager$1
     //   639: invokevirtual 157	com/tencent/mobileqq/apollo/data/ApolloGameRedDot:isTimeValid	()Z
     //   642: ifeq -27 -> 615
     //   645: aload_0
-    //   646: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   649: getfield 134	aiyu:i	Ljava/util/List;
+    //   646: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   649: getfield 134	ajmw:i	Ljava/util/List;
     //   652: aload 5
     //   654: invokeinterface 161 2 0
     //   659: pop
@@ -391,7 +391,7 @@ public class ApolloDaoManager$1
     //   750: monitorexit
     //   751: aload_2
     //   752: ldc 173
-    //   754: invokevirtual 53	atmp:a	(Ljava/lang/Class;)Ljava/util/List;
+    //   754: invokevirtual 53	aukn:a	(Ljava/lang/Class;)Ljava/util/List;
     //   757: astore 4
     //   759: aload 4
     //   761: ifnull +44 -> 805
@@ -399,24 +399,24 @@ public class ApolloDaoManager$1
     //   766: invokeinterface 62 1 0
     //   771: ifle +34 -> 805
     //   774: aload_0
-    //   775: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   778: getfield 176	aiyu:j	Ljava/util/List;
+    //   775: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   778: getfield 176	ajmw:j	Ljava/util/List;
     //   781: ifnull +24 -> 805
     //   784: aload_0
-    //   785: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   788: getfield 176	aiyu:j	Ljava/util/List;
+    //   785: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   788: getfield 176	ajmw:j	Ljava/util/List;
     //   791: astore_3
     //   792: aload_3
     //   793: monitorenter
     //   794: aload_0
-    //   795: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
+    //   795: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
     //   798: aload 4
-    //   800: putfield 176	aiyu:j	Ljava/util/List;
+    //   800: putfield 176	ajmw:j	Ljava/util/List;
     //   803: aload_3
     //   804: monitorexit
     //   805: aload_2
     //   806: ldc 178
-    //   808: invokevirtual 53	atmp:a	(Ljava/lang/Class;)Ljava/util/List;
+    //   808: invokevirtual 53	aukn:a	(Ljava/lang/Class;)Ljava/util/List;
     //   811: astore 4
     //   813: aload 4
     //   815: ifnull +39 -> 854
@@ -426,33 +426,33 @@ public class ApolloDaoManager$1
     //   828: aload 4
     //   830: ifnull +24 -> 854
     //   833: aload_0
-    //   834: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   837: getfield 181	aiyu:k	Ljava/util/List;
+    //   834: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   837: getfield 181	ajmw:k	Ljava/util/List;
     //   840: astore_3
     //   841: aload_3
     //   842: monitorenter
     //   843: aload_0
-    //   844: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
+    //   844: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
     //   847: aload 4
-    //   849: putfield 181	aiyu:k	Ljava/util/List;
+    //   849: putfield 181	ajmw:k	Ljava/util/List;
     //   852: aload_3
     //   853: monitorexit
     //   854: aload_2
-    //   855: invokestatic 184	com/tencent/mobileqq/apollo/utils/ApolloGameUtil:a	(Latmp;)V
+    //   855: invokestatic 184	com/tencent/mobileqq/apollo/utils/ApolloGameUtil:a	(Laukn;)V
     //   858: aload_0
-    //   859: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   862: invokevirtual 186	aiyu:a	()V
+    //   859: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   862: invokevirtual 186	ajmw:a	()V
     //   865: aload_0
-    //   866: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   869: getfield 27	aiyu:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   866: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   869: getfield 27	ajmw:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   872: ifnull +37 -> 909
     //   875: aload_0
-    //   876: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Laiyu;
-    //   879: getfield 27	aiyu:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   876: getfield 12	com/tencent/mobileqq/apollo/utils/ApolloDaoManager$1:this$0	Lajmw;
+    //   879: getfield 27	ajmw:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   882: sipush 153
     //   885: invokevirtual 190	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   888: checkcast 192	aifg
-    //   891: invokevirtual 195	aifg:l	()V
+    //   888: checkcast 192	airz
+    //   891: invokevirtual 195	airz:l	()V
     //   894: return
     //   895: astore_2
     //   896: aload_3
@@ -483,7 +483,7 @@ public class ApolloDaoManager$1
     //   729	4	2	localObject8	Object
     //   734	4	2	localObject9	Object
     //   739	4	2	localObject10	Object
-    //   744	111	2	localatmp	atmp
+    //   744	111	2	localaukn	aukn
     //   895	4	2	localObject11	Object
     //   900	6	2	localObject12	Object
     //   59	789	4	localObject14	Object

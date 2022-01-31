@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import bace;
-import bgmq;
+import bbdj;
+import bhvh;
 import com.tencent.qphone.base.util.QLog;
 
 class TaskManager$7
@@ -13,9 +13,9 @@ class TaskManager$7
   {
     QLog.d("kandianreport.taskmanager", 1, "reset");
     this.this$0.stopAllTasks();
-    bace.a(TaskManager.access$700());
-    bace.a(KandianReportSoLoader.getSoLoadDir());
-    bgmq.a("kandianreport_ON", Integer.valueOf(0));
+    bbdj.a(TaskManager.access$700());
+    bbdj.a(KandianReportSoLoader.getSoLoadDir());
+    bhvh.a("kandianreport_ON", Integer.valueOf(0));
   }
 }
 

@@ -1,51 +1,16 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.search.SearchTypeDetailActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
 
 public class aoot
-  implements aoos
+  implements DialogInterface.OnCancelListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private List<Integer> jdField_a_of_type_JavaUtilList;
+  public aoot(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public aoot(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, List<Integer> paramList)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      QLog.i("QFileOfflineSearchTypeController", 4, "unknown search type.");
-      return;
-    case 3: 
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 1, 0, "", "", "", "");
-      SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-      return;
-    case 2: 
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 2, 0, "", "", "", "");
-      SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-      return;
-    case 0: 
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 3, 0, "", "", "", "");
-      SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-      return;
-    case 1: 
-      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 4, 0, "", "", "", "");
-      SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-      return;
-    }
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 5, 0, "", "", "", "");
-    SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
+    this.a.a.a(null);
+    LocalFileBrowserActivity.a(this.a);
   }
 }
 

@@ -1,7 +1,7 @@
 package cooperation.hce;
 
-import agmq;
-import agpq;
+import agzf;
+import ahcf;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
@@ -11,9 +11,9 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.support.annotation.RequiresApi;
-import bfcl;
-import bfco;
-import bfcp;
+import bgkc;
+import bgkf;
+import bgkg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qipc.QIPCServerHelper;
@@ -27,7 +27,7 @@ import mqq.app.AppRuntime;
 @RequiresApi(api=19)
 public class HceService
   extends HostApduService
-  implements bfcp
+  implements bgkg
 {
   private int jdField_a_of_type_Int;
   private PowerManager jdField_a_of_type_AndroidOsPowerManager;
@@ -70,10 +70,10 @@ public class HceService
     boolean bool1 = bool2;
     if ((localObject instanceof QQAppInterface))
     {
-      localObject = (agmq)((AppRuntime)localObject).getManager(245);
+      localObject = (agzf)((AppRuntime)localObject).getManager(245);
       bool1 = bool2;
       if (localObject != null) {
-        if (((agmq)localObject).a("vfcBusCard", 1, new String[] { "switch" }) != 1) {
+        if (((agzf)localObject).a("vfcBusCard", 1, new String[] { "switch" }) != 1) {
           break label90;
         }
       }
@@ -93,10 +93,10 @@ public class HceService
     try
     {
       if (QLog.isColorLevel()) {
-        QLog.d("IpcModule", 2, "sendCAPDU capdu: " + bfcl.a(paramBundle.getByteArray("capdu")) + " vfcFlag: " + bfco.a());
+        QLog.d("IpcModule", 2, "sendCAPDU capdu: " + bgkc.a(paramBundle.getByteArray("capdu")) + " vfcFlag: " + bgkf.a());
       }
-      paramBundle.putString("vfcAccountFlag", bfco.a());
-      agpq.a().a();
+      paramBundle.putString("vfcAccountFlag", bgkf.a());
+      ahcf.a().a();
       paramBundle = QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:hce", 1, "ApduIpcModule", "sendCapdu", paramBundle);
       this.jdField_a_of_type_Int += 1;
       if (paramBundle != null)
@@ -106,7 +106,7 @@ public class HceService
         {
           paramBundle = paramBundle.getByteArray("radpdu");
           if (QLog.isColorLevel()) {
-            QLog.d("apdu", 2, "收到插件的rapdu: " + bfcl.a(paramBundle));
+            QLog.d("apdu", 2, "收到插件的rapdu: " + bgkc.a(paramBundle));
           }
           sendResponseApdu(paramBundle);
         }
@@ -142,23 +142,23 @@ public class HceService
           QLog.d("IpcModule", 2, "commandApdu=" + BaseApplicationImpl.sApplication.isRuntimeReady() + ",sInjectResult=" + BaseApplicationImpl.sInjectResult);
         }
         if ((!"Success".equals(BaseApplicationImpl.sInjectResult)) || (!BaseApplicationImpl.sApplication.isRuntimeReady())) {
-          return bfcl.b;
+          return bgkc.b;
         }
-        localObject = bfco.a();
+        localObject = bgkf.a();
         if (this.jdField_a_of_type_AndroidOsPowerManager == null) {
           this.jdField_a_of_type_AndroidOsPowerManager = ((PowerManager)getSystemService("power"));
         }
-        if ((!b()) || (localObject == null) || (!((bfco)localObject).a()) || (!a()))
+        if ((!b()) || (localObject == null) || (!((bgkf)localObject).a()) || (!a()))
         {
           if (QLog.isColorLevel()) {
             QLog.w("IpcModule", 2, "processCommandApdu isRuntimeReady=" + BaseApplicationImpl.sApplication.isRuntimeReady() + ",sInjectResult=" + BaseApplicationImpl.sInjectResult);
           }
-          return bfcl.b;
+          return bgkc.b;
         }
-        if ((!a(this, "com.tencent.mobileqq:hce")) || ((!((bfco)localObject).a(this)) && (((bfco)localObject).a(paramArrayOfByte))))
+        if ((!a(this, "com.tencent.mobileqq:hce")) || ((!((bgkf)localObject).a(this)) && (((bgkf)localObject).a(paramArrayOfByte))))
         {
-          ((bfco)localObject).a = paramArrayOfByte;
-          switch (((bfco)localObject).a(paramArrayOfByte))
+          ((bgkf)localObject).a = paramArrayOfByte;
+          switch (((bgkf)localObject).a(paramArrayOfByte))
           {
           }
         }
@@ -178,11 +178,11 @@ public class HceService
       a((Bundle)localObject);
       break label340;
       if (QLog.isColorLevel()) {
-        QLog.w("IpcModule", 2, "from last startTime：" + (System.currentTimeMillis() - ((bfco)localObject).a()));
+        QLog.w("IpcModule", 2, "from last startTime：" + (System.currentTimeMillis() - ((bgkf)localObject).a()));
       }
-      if (System.currentTimeMillis() - ((bfco)localObject).a() > 5000L)
+      if (System.currentTimeMillis() - ((bgkf)localObject).a() > 5000L)
       {
-        ((bfco)localObject).a();
+        ((bgkf)localObject).a();
         startActivity(new Intent(this, HcePluginInstallActivity.class));
       }
     }

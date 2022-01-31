@@ -1,16 +1,12 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
-
-public class vrv
-  implements ValueAnimator.AnimatorUpdateListener
+class vrv
 {
-  public vrv(RotateCircleImageView paramRotateCircleImageView) {}
+  final int jdField_a_of_type_Int;
+  final vrw jdField_a_of_type_Vrw;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public vrv(vrw paramvrw, int paramInt)
   {
-    RotateCircleImageView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    this.jdField_a_of_type_Vrw = paramvrw;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

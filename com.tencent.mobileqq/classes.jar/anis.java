@@ -1,19 +1,9 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
-public class anis
-  extends RadioButton
+public abstract interface anis
 {
-  public anis(EmoticonPagerRadioGroup paramEmoticonPagerRadioGroup, Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  public boolean performClick()
-  {
-    return true;
-  }
+  public abstract void a(View paramView, MessageForDeviceFile paramMessageForDeviceFile);
 }
 
 

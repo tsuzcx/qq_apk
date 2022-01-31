@@ -1,27 +1,38 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
 
 public class aycu
-  implements InputFilter
+  extends aycx
+  implements aybb
 {
-  public aycu(AbsPublishActivity paramAbsPublishActivity) {}
+  protected String b;
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public aycu(SpriteNativeView paramSpriteNativeView, String paramString)
   {
-    if (paramCharSequence != null)
-    {
-      paramCharSequence = paramCharSequence.toString();
-      if (azho.a(paramCharSequence, '\n') + azho.a(paramSpanned.toString(), '\n') > 100) {
-        return paramCharSequence.replaceAll("\n", "");
-      }
-    }
-    return null;
+    super(paramSpriteNativeView);
+    this.b = paramString;
+  }
+  
+  protected ImageView a()
+  {
+    return new PressEffectImageView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getContext());
+  }
+  
+  public String a()
+  {
+    return this.b;
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aycu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 
-public class aoqt
-  implements AdapterView.OnItemClickListener
+class aoqt
+  implements aptu
 {
-  public aoqt(FileBrowserActivity paramFileBrowserActivity) {}
+  aoqt(aoqq paramaoqq, WeiYunFileInfo paramWeiYunFileInfo) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a()
   {
-    paramAdapterView = paramView.getTag();
-    if (paramAdapterView == null) {
-      return;
-    }
-    this.a.a.b();
-    ((baia)paramAdapterView).a.a.onClick(paramView);
+    FileManagerEntity localFileManagerEntity = apue.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo);
+    QfileBaseCloudFileTabView.i(this.jdField_a_of_type_Aoqq.a).a().b(localFileManagerEntity);
+    QfileBaseCloudFileTabView.j(this.jdField_a_of_type_Aoqq.a).a().a(localFileManagerEntity);
+    this.jdField_a_of_type_Aoqq.a.a(localFileManagerEntity);
   }
+  
+  public void b() {}
 }
 
 

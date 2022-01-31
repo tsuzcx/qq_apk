@@ -6,20 +6,20 @@ import NS_MINI_INTERFACE.INTERFACE.StFriendRanking;
 import NS_MINI_INTERFACE.INTERFACE.StModuleInfo;
 import NS_MINI_INTERFACE.INTERFACE.StSearchModuleInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
-import agtk;
-import agxk;
-import ajfe;
-import ajjy;
-import akie;
-import amda;
+import ahfz;
+import ahjz;
+import ajtg;
+import ajyc;
+import akwq;
+import amtc;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import atmo;
-import atmp;
-import atmq;
+import aukm;
+import aukn;
+import auko;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -56,7 +56,7 @@ import mqq.os.MqqHandler;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
-import ynv;
+import yxr;
 
 public class DesktopDataManager
   implements Manager
@@ -72,14 +72,14 @@ public class DesktopDataManager
   private static byte[] mLock = new byte[0];
   private List<DesktopItemInfo> adapterItemInfos;
   private boolean canLoadMoreRecent = true;
-  private Runnable deleteErrorSpFile = new DesktopDataManager.30(this);
-  private List<DesktopItemInfo> desktopItemInfos;
+  private Runnable deleteErrorSpFile = new DesktopDataManager.31(this);
+  private List<DesktopItemInfo> desktopItemInfos = new ArrayList();
   private DesktopSpringEntryInfo desktopSpringEntryInfo;
   private volatile boolean hasInitData;
   private volatile boolean hasPullSearchData;
-  private Runnable initLocalDataRunnable = new DesktopDataManager.14(this);
+  private Runnable initLocalDataRunnable = new DesktopDataManager.15(this);
   private boolean isLoadingMoreRecent;
-  private Map<String, DesktopAdData> mAdReportMap = new HashMap();
+  private ConcurrentHashMap<String, DesktopAdData> mAdReportMap = new ConcurrentHashMap();
   private DesktopDataManager.DataChangeListener mDataChangeListener;
   private volatile COMM.StCommonExt mExtInfo;
   private volatile DesktopDataManager.HongBaoResBuilder mHongBaoResBuilder;
@@ -90,7 +90,7 @@ public class DesktopDataManager
   private volatile int mRedDataState = -1;
   private volatile long mRefreshInternal = 3600L;
   private volatile int mRequestCount;
-  private ajfe redDotObserver = new DesktopDataManager.26(this);
+  private ajtg redDotObserver = new DesktopDataManager.27(this);
   
   public DesktopDataManager(QQAppInterface paramQQAppInterface)
   {
@@ -103,7 +103,7 @@ public class DesktopDataManager
     if (this.desktopItemInfos == null) {
       return;
     }
-    runOnMainThread(new DesktopDataManager.24(this, paramMiniAppInfo));
+    runOnMainThread(new DesktopDataManager.25(this, paramMiniAppInfo));
   }
   
   private void appendMyAppData(List<INTERFACE.StModuleInfo> paramList)
@@ -116,17 +116,10 @@ public class DesktopDataManager
     runOnMainThread(new DesktopDataManager.7(this, paramList));
   }
   
-  private static String buildDeskTopAppInfoString(DesktopAppInfo paramDesktopAppInfo, int paramInt1, int paramInt2)
+  private static String buildDeskTopAppInfoString(String paramString, int paramInt1, int paramInt2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("position:").append(paramInt1).append("_").append("moduletype:").append(paramInt2).append("_").append("appid:").append(paramDesktopAppInfo.mMiniAppInfo.appId);
-    return localStringBuilder.toString();
-  }
-  
-  private static String buildDeskTopModuleInfoString(DesktopAppModuleInfo paramDesktopAppModuleInfo, int paramInt1, int paramInt2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("position:").append(paramInt1).append("_").append("moduletype:").append(paramInt2).append("_").append("title:").append(paramDesktopAppModuleInfo.moduleTitle);
+    localStringBuilder.append("position:").append(paramInt1).append("_").append("moduletype:").append(paramInt2).append("_").append("appid:").append(paramString);
     return localStringBuilder.toString();
   }
   
@@ -137,19 +130,12 @@ public class DesktopDataManager
     return localStringBuilder.toString();
   }
   
-  private static String buildDeskTopSearchInfoString(DesktopSearchInfo paramDesktopSearchInfo, int paramInt1, int paramInt2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("position:").append(paramInt1).append("_").append("moduletype:").append(paramInt2).append("_").append("appid:").append(paramDesktopSearchInfo.mAppInfo.appId);
-    return localStringBuilder.toString();
-  }
-  
   private void changeMyAppOrder(String paramString, int paramInt1, int paramInt2)
   {
     if (this.desktopItemInfos == null) {
       return;
     }
-    runOnMainThread(new DesktopDataManager.25(this, paramInt1, paramInt2));
+    runOnMainThread(new DesktopDataManager.26(this, paramInt1, paramInt2));
   }
   
   private void checkAddSpringBanner()
@@ -163,7 +149,7 @@ public class DesktopDataManager
     {
       return;
     }
-    Object localObject = (agtk)((AppInterface)localObject).getManager(342);
+    Object localObject = (ahfz)((AppInterface)localObject).getManager(342);
     Iterator localIterator = this.adapterItemInfos.iterator();
     DesktopItemInfo localDesktopItemInfo;
     do
@@ -178,7 +164,7 @@ public class DesktopDataManager
       if (i != -1) {
         this.adapterItemInfos.remove(i);
       }
-      if ((((agtk)localObject).h()) && (this.desktopSpringEntryInfo != null))
+      if ((((ahfz)localObject).h()) && (this.desktopSpringEntryInfo != null))
       {
         localIterator = this.adapterItemInfos.iterator();
         while (localIterator.hasNext())
@@ -197,7 +183,7 @@ public class DesktopDataManager
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.i("DesktopDataManager", 1, "getData...isShowEntryBanner:" + ((agtk)localObject).h() + ",desktopSpringEntryInfo" + this.desktopSpringEntryInfo);
+      QLog.i("DesktopDataManager", 1, "getData...isShowEntryBanner:" + ((ahfz)localObject).h() + ",desktopSpringEntryInfo" + this.desktopSpringEntryInfo);
       return;
     }
   }
@@ -231,7 +217,7 @@ public class DesktopDataManager
       if (i1 >= 0) {
         break label144;
       }
-      this.adapterItemInfos.add(new DesktopAppModuleInfo(3, ajjy.a(2131637342)));
+      this.adapterItemInfos.add(new DesktopAppModuleInfo(3, ajyc.a(2131703127)));
       this.adapterItemInfos.add(new DesktopEmptyGuideInfo(3));
       if ((!paramBoolean) || (this.mDataChangeListener == null)) {
         break;
@@ -315,10 +301,10 @@ public class DesktopDataManager
           do
           {
             return;
-          } while (!amda.m());
+          } while (!amtc.m());
           localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
         } while (localObject == null);
-        localObject = ((atmp)localObject).a(MiniAppSettingSwitchInfoEntity.class, MiniAppSettingSwitchInfoEntity.class.getSimpleName(), false, "key = ?", new String[] { "redDot" }, null, null, null, null);
+        localObject = ((aukn)localObject).a(MiniAppSettingSwitchInfoEntity.class, MiniAppSettingSwitchInfoEntity.class.getSimpleName(), false, "key = ?", new String[] { "redDot" }, null, null, null, null);
       } while ((localObject == null) || (((List)localObject).size() <= 0));
       localObject = (MiniAppSettingSwitchInfoEntity)((List)localObject).get(0);
     } while ((localObject == null) || (!"redDot".equals(((MiniAppSettingSwitchInfoEntity)localObject).key)));
@@ -368,16 +354,18 @@ public class DesktopDataManager
     }
   }
   
-  private List<DesktopItemInfo> convertData(List<INTERFACE.StUserAppInfo> paramList, List<INTERFACE.StModuleInfo> paramList1, INTERFACE.StSearchModuleInfo paramStSearchModuleInfo)
+  private void convertData(List<INTERFACE.StUserAppInfo> paramList, List<INTERFACE.StModuleInfo> paramList1, INTERFACE.StSearchModuleInfo paramStSearchModuleInfo)
   {
-    if ((paramList1 == null) || (paramList1.size() <= 0)) {
-      return null;
+    QLog.d("DesktopDataManager", 1, "convertData start!");
+    if ((paramList1 == null) || (paramList1.size() <= 0))
+    {
+      QLog.e("DesktopDataManager", 1, "convertData, moduleInfos is null.");
+      return;
     }
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    this.mRecommendExposureList.clear();
+    ArrayList localArrayList3 = new ArrayList();
     this.hasPullSearchData = false;
-    Object localObject1;
     if ((paramStSearchModuleInfo != null) && (paramStSearchModuleInfo.searchApp.get() != null))
     {
       localObject1 = (INTERFACE.StUserAppInfo)paramStSearchModuleInfo.searchApp.get();
@@ -391,118 +379,118 @@ public class DesktopDataManager
     if ((paramList != null) && (paramList.size() != 0))
     {
       paramList = paramList.iterator();
-      int i = 0;
-      if (paramList.hasNext())
+      while (paramList.hasNext())
       {
         localObject1 = (INTERFACE.StUserAppInfo)paramList.next();
-        if (localObject1 == null) {
-          break label881;
+        if (localObject1 != null)
+        {
+          localObject1 = new DesktopAppInfo(2, MiniAppInfo.from((INTERFACE.StUserAppInfo)localObject1));
+          ((DesktopAppInfo)localObject1).setIsFixApp(true);
+          ((DesktopAppInfo)localObject1).deleteEnable = false;
+          ((DesktopAppInfo)localObject1).dragEnable = false;
+          ((DesktopAppInfo)localObject1).dropEnable = false;
+          paramStSearchModuleInfo.add(localObject1);
         }
-        localObject1 = new DesktopAppInfo(2, MiniAppInfo.from((INTERFACE.StUserAppInfo)localObject1));
-        ((DesktopAppInfo)localObject1).setIsFixApp(true);
-        ((DesktopAppInfo)localObject1).deleteEnable = false;
-        ((DesktopAppInfo)localObject1).dragEnable = false;
-        ((DesktopAppInfo)localObject1).dropEnable = false;
-        paramStSearchModuleInfo.add(localObject1);
-        i += 1;
       }
     }
-    label876:
-    label881:
+    Object localObject1 = paramList1.iterator();
+    INTERFACE.StModuleInfo localStModuleInfo;
     for (;;)
     {
-      break;
-      localObject1 = paramList1.iterator();
-      INTERFACE.StModuleInfo localStModuleInfo;
-      for (;;)
+      if (((Iterator)localObject1).hasNext())
       {
-        if (((Iterator)localObject1).hasNext())
-        {
-          localStModuleInfo = (INTERFACE.StModuleInfo)((Iterator)localObject1).next();
-          if (localStModuleInfo != null) {
-            if (localStModuleInfo.moduleType.get() == 6)
-            {
-              paramList = new DesktopPopularModuleInfo(6);
-              paramList.mergePbData(localStModuleInfo);
-              localArrayList1.add(paramList);
-              localArrayList2.add(localStModuleInfo);
-            }
-            else if (localStModuleInfo.moduleType.get() == 4)
-            {
-              localArrayList1.add(new DesktopRecommendModuleInfo(4, localStModuleInfo));
-              localArrayList2.add(localStModuleInfo);
-            }
-            else if (localStModuleInfo.moduleType.get() == 5)
-            {
-              paramList = localStModuleInfo.ranks.get();
-              if ((paramList != null) && (!paramList.isEmpty()))
-              {
-                paramList = paramList.iterator();
-                while (paramList.hasNext()) {
-                  localArrayList1.add(new DesktopFriendsPkModuleInfo(5, localStModuleInfo, (INTERFACE.StFriendRanking)paramList.next()));
-                }
-              }
-              localArrayList2.add(localStModuleInfo);
-            }
-            else if (localStModuleInfo.moduleType.get() == 7)
-            {
-              paramList = new DesktopDittoInfo(7);
-              paramList.mergePbData(localStModuleInfo);
-              localArrayList1.add(paramList);
-              localArrayList2.add(localStModuleInfo);
-            }
-            else
-            {
-              if ((localStModuleInfo.moduleType.get() < 0) || (TextUtils.isEmpty(localStModuleInfo.title.get()))) {
-                break label876;
-              }
-              paramList1 = new DesktopAppModuleInfo(localStModuleInfo.moduleType.get(), localStModuleInfo.title.get(), (INTERFACE.StUserAppInfo)localStModuleInfo.jumpMoreApp.get());
-              localArrayList1.add(paramList1);
-              paramList = paramList1;
-              if (paramList1.getModuleType() == 2)
-              {
-                paramList = paramList1;
-                if (paramStSearchModuleInfo.size() > 0) {
-                  localArrayList1.addAll(paramStSearchModuleInfo);
-                }
-              }
-            }
-          }
-        }
-      }
-      for (paramList = paramList1;; paramList = null)
-      {
-        if ((paramList != null) && (localStModuleInfo.userAppList.get() != null) && (localStModuleInfo.userAppList.get().size() > 0))
-        {
-          paramList1 = localStModuleInfo.userAppList.get().iterator();
-          while (paramList1.hasNext())
+        localStModuleInfo = (INTERFACE.StModuleInfo)((Iterator)localObject1).next();
+        if (localStModuleInfo != null) {
+          if (localStModuleInfo.moduleType.get() == 6)
           {
-            Object localObject2 = (INTERFACE.StUserAppInfo)paramList1.next();
-            localObject2 = new DesktopAppInfo(localStModuleInfo.moduleType.get(), MiniAppInfo.from((INTERFACE.StUserAppInfo)localObject2));
-            if ((paramList.getModuleType() == 2) && (((DesktopAppInfo)localObject2).mMiniAppInfo != null))
-            {
-              RecommendAppInfo localRecommendAppInfo = new RecommendAppInfo(((DesktopAppInfo)localObject2).mMiniAppInfo.appId, 0, System.currentTimeMillis());
-              QLog.d("DesktopDataManager-Recommend", 2, "convertData add " + localRecommendAppInfo.toString());
-              this.mRecommendExposureList.add(localRecommendAppInfo);
-            }
-            localArrayList1.add(localObject2);
+            paramList = new DesktopPopularModuleInfo(6);
+            paramList.mergePbData(localStModuleInfo);
+            localArrayList1.add(paramList);
+            localArrayList2.add(localStModuleInfo);
           }
-          break;
+          else if (localStModuleInfo.moduleType.get() == 4)
+          {
+            localArrayList1.add(new DesktopRecommendModuleInfo(4, localStModuleInfo));
+            localArrayList2.add(localStModuleInfo);
+          }
+          else if (localStModuleInfo.moduleType.get() == 5)
+          {
+            paramList = localStModuleInfo.ranks.get();
+            if ((paramList != null) && (!paramList.isEmpty()))
+            {
+              paramList = paramList.iterator();
+              while (paramList.hasNext()) {
+                localArrayList1.add(new DesktopFriendsPkModuleInfo(5, localStModuleInfo, (INTERFACE.StFriendRanking)paramList.next()));
+              }
+            }
+            localArrayList2.add(localStModuleInfo);
+          }
+          else if (localStModuleInfo.moduleType.get() == 7)
+          {
+            paramList = new DesktopDittoInfo(7);
+            paramList.mergePbData(localStModuleInfo);
+            localArrayList1.add(paramList);
+            localArrayList2.add(localStModuleInfo);
+          }
+          else
+          {
+            if ((localStModuleInfo.moduleType.get() < 0) || (TextUtils.isEmpty(localStModuleInfo.title.get()))) {
+              break label944;
+            }
+            paramList1 = new DesktopAppModuleInfo(localStModuleInfo.moduleType.get(), localStModuleInfo.title.get(), (INTERFACE.StUserAppInfo)localStModuleInfo.jumpMoreApp.get());
+            localArrayList1.add(paramList1);
+            paramList = paramList1;
+            if (paramList1.getModuleType() == 2)
+            {
+              paramList = paramList1;
+              if (paramStSearchModuleInfo.size() > 0) {
+                localArrayList1.addAll(paramStSearchModuleInfo);
+              }
+            }
+          }
         }
-        if ((localStModuleInfo.moduleType.get() != 2) || (localStModuleInfo.useOld.get() != 0)) {
-          break;
-        }
-        this.mRecommendExposureList.clear();
-        break;
-        setDesktopAppPositionInfoToSp(localArrayList1);
-        paramList = new ArrayList();
-        paramList.addAll(localArrayList1);
-        insertEntityWithBatch(paramList);
-        saveCardModuleData(localArrayList2);
-        updateRecommendExposureSp();
-        QLog.d("DesktopDataManager", 1, "convertData, app List: " + localArrayList1.toString());
-        return localArrayList1;
       }
+    }
+    label944:
+    for (paramList = paramList1;; paramList = null)
+    {
+      if ((paramList != null) && (localStModuleInfo.userAppList.get() != null) && (localStModuleInfo.userAppList.get().size() > 0))
+      {
+        paramList1 = localStModuleInfo.userAppList.get().iterator();
+        while (paramList1.hasNext())
+        {
+          Object localObject2 = (INTERFACE.StUserAppInfo)paramList1.next();
+          localObject2 = new DesktopAppInfo(localStModuleInfo.moduleType.get(), MiniAppInfo.from((INTERFACE.StUserAppInfo)localObject2));
+          if ((paramList.getModuleType() == 2) && (((DesktopAppInfo)localObject2).mMiniAppInfo != null))
+          {
+            RecommendAppInfo localRecommendAppInfo = new RecommendAppInfo(((DesktopAppInfo)localObject2).mMiniAppInfo.appId, 0, System.currentTimeMillis());
+            QLog.d("DesktopDataManager-Recommend", 2, "convertData add " + localRecommendAppInfo.toString());
+            localArrayList3.add(localRecommendAppInfo);
+          }
+          if ((((DesktopAppInfo)localObject2).mMiniAppInfo != null) && (((DesktopAppInfo)localObject2).mMiniAppInfo.isLimitedAccessApp())) {
+            ((DesktopAppInfo)localObject2).dragEnable = false;
+          }
+          if (((DesktopAppInfo)localObject2).mMiniAppInfo != null) {
+            ((DesktopAppInfo)localObject2).mMiniAppInfo.debugInfo = null;
+          }
+          localArrayList1.add(localObject2);
+        }
+        break;
+      }
+      if ((localStModuleInfo.moduleType.get() != 2) || (localStModuleInfo.useOld.get() != 0)) {
+        break;
+      }
+      localArrayList3.clear();
+      break;
+      setDesktopAppPositionInfoToSp(localArrayList1);
+      paramList = new ArrayList();
+      paramList.addAll(localArrayList1);
+      insertEntityWithBatch(paramList);
+      saveCardModuleData(localArrayList2);
+      updateRecommendExposureSp();
+      QLog.d("DesktopDataManager", 1, "convertData end. size = " + localArrayList1.size());
+      runOnMainThread(new DesktopDataManager.9(this, localArrayList3, localArrayList1));
+      return;
     }
   }
   
@@ -535,12 +523,12 @@ public class DesktopDataManager
       return;
     }
     QLog.e("DesktopDataManager", 2, "test1: size: " + this.desktopItemInfos.size());
-    runOnMainThread(new DesktopDataManager.23(this, paramString));
+    runOnMainThread(new DesktopDataManager.24(this, paramString));
   }
   
   private void deleteEntity(MiniAppInfo paramMiniAppInfo)
   {
-    ThreadManager.excute(new DesktopDataManager.15(this, paramMiniAppInfo), 32, null, true);
+    ThreadManager.excute(new DesktopDataManager.16(this, paramMiniAppInfo), 32, null, true);
   }
   
   private void deleteEntity(List<DesktopItemInfo> paramList)
@@ -587,7 +575,7 @@ public class DesktopDataManager
         if (i == 0) {
           break label149;
         }
-        ThreadManagerV2.excute(new DesktopDataManager.9(this, paramMiniAppInfo), 16, null, true);
+        ThreadManagerV2.excute(new DesktopDataManager.10(this, paramMiniAppInfo), 16, null, true);
         return;
         i -= 1;
         break;
@@ -624,7 +612,7 @@ public class DesktopDataManager
         {
           DeskTopAppEntity localDeskTopAppEntity = (DeskTopAppEntity)paramList.get(i);
           localDeskTopAppEntity.setStatus(1001);
-          if (((atmp)localObject).a(localDeskTopAppEntity, "uniqueId=?", new String[] { localDeskTopAppEntity.uniqueId })) {
+          if (((aukn)localObject).a(localDeskTopAppEntity, "uniqueId=?", new String[] { localDeskTopAppEntity.uniqueId })) {
             localStringBuilder.append(localDeskTopAppEntity.name).append("_0, ");
           } else {
             localStringBuilder.append(localDeskTopAppEntity.name).append("_1, ");
@@ -644,7 +632,7 @@ public class DesktopDataManager
   
   private void deleteRedDotDataFromDB(String paramString)
   {
-    ThreadManager.excute(new DesktopDataManager.28(this, paramString), 32, null, true);
+    ThreadManager.excute(new DesktopDataManager.29(this, paramString), 32, null, true);
   }
   
   private boolean findMiniApp(MiniAppInfo paramMiniAppInfo)
@@ -922,12 +910,12 @@ public class DesktopDataManager
   
   private void insertEntity(DesktopItemInfo paramDesktopItemInfo)
   {
-    ThreadManagerV2.excute(new DesktopDataManager.17(this, paramDesktopItemInfo), 32, null, true);
+    ThreadManagerV2.excute(new DesktopDataManager.18(this, paramDesktopItemInfo), 32, null, true);
   }
   
   private void insertEntityWithBatch(List<DesktopItemInfo> paramList)
   {
-    ThreadManagerV2.excute(new DesktopDataManager.18(this, paramList), 32, null, true);
+    ThreadManagerV2.excute(new DesktopDataManager.19(this, paramList), 32, null, true);
   }
   
   private int mappingPosition(int paramInt)
@@ -1057,12 +1045,12 @@ public class DesktopDataManager
     ArrayList localArrayList = new ArrayList();
     if (localObject1 != null)
     {
-      List localList1 = ((atmp)localObject1).a(DeskTopAppEntity.class, DeskTopAppEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+      List localList1 = ((aukn)localObject1).a(DeskTopAppEntity.class, DeskTopAppEntity.class.getSimpleName(), false, null, null, null, null, null, null);
       List localList2 = queryCardModuleData(paramAppInterface);
       paramAppInterface = getDesktopAppPositionInfoFromSp();
       StringBuilder localStringBuilder = new StringBuilder();
       if (localList1 == null) {
-        break label1109;
+        break label1135;
       }
       int i = localList1.size();
       HashMap localHashMap = new HashMap();
@@ -1083,7 +1071,7 @@ public class DesktopDataManager
         {
           label168:
           if (!((Iterator)localObject2).hasNext()) {
-            break label1027;
+            break label1053;
           }
           DesktopDataManager.PositionItemInfo localPositionItemInfo = (DesktopDataManager.PositionItemInfo)((Iterator)localObject2).next();
           Object localObject3;
@@ -1214,7 +1202,7 @@ public class DesktopDataManager
                   while (paramAppInterface.hasNext())
                   {
                     localObject1 = (DesktopCardEntity)paramAppInterface.next();
-                    if ((localObject1 != null) && (localPositionItemInfo.moduleType == ((DesktopCardEntity)localObject1).moduleType))
+                    if ((localObject1 != null) && (localPositionItemInfo.moduleType == ((DesktopCardEntity)localObject1).moduleType) && (!TextUtils.isEmpty(localPositionItemInfo.moduleTitle)) && (localPositionItemInfo.moduleTitle.equals(((DesktopCardEntity)localObject1).title)))
                     {
                       localObject3 = ((DesktopCardEntity)localObject1).createStModuleInfo();
                       if (localObject3 != null)
@@ -1235,14 +1223,14 @@ public class DesktopDataManager
           }
         }
       }
-      label1027:
+      label1053:
       QLog.e("DesktopDataManager", 1, "query, before size=" + i + ", after size = " + localList1.size() + ", DB cache app List = [" + localStringBuilder.toString() + "]");
       if (localList1.size() < i) {
         deleteOldEntity(localList1);
       }
     }
     return localArrayList;
-    label1109:
+    label1135:
     QLog.e("DesktopDataManager", 1, "query, tempList is null.");
     return localArrayList;
   }
@@ -1250,11 +1238,11 @@ public class DesktopDataManager
   private List<DesktopCardEntity> queryCardModuleData(AppInterface paramAppInterface)
   {
     Object localObject = null;
-    atmp localatmp = paramAppInterface.getEntityManagerFactory().createEntityManager();
+    aukn localaukn = paramAppInterface.getEntityManagerFactory().createEntityManager();
     new ArrayList();
     paramAppInterface = localObject;
-    if (localatmp != null) {
-      paramAppInterface = localatmp.a(DesktopCardEntity.class, DesktopCardEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+    if (localaukn != null) {
+      paramAppInterface = localaukn.a(DesktopCardEntity.class, DesktopCardEntity.class.getSimpleName(), false, null, null, null, null, null, null);
     }
     return paramAppInterface;
   }
@@ -1264,7 +1252,7 @@ public class DesktopDataManager
     if (paramMiniAppInfo == null) {
       return;
     }
-    ThreadManager.getUIHandler().post(new DesktopDataManager.11(paramMiniAppInfo));
+    ThreadManager.getUIHandler().post(new DesktopDataManager.12(paramMiniAppInfo));
   }
   
   private void registerObserver()
@@ -1278,12 +1266,17 @@ public class DesktopDataManager
       return;
     }
     QLog.d("DesktopDataManager", 2, "test: size: " + this.desktopItemInfos.size());
-    runOnMainThread(new DesktopDataManager.22(this, paramString));
+    runOnMainThread(new DesktopDataManager.23(this, paramString));
   }
   
   private void saveCardModuleData(List<INTERFACE.StModuleInfo> paramList)
   {
-    ThreadManagerV2.excute(new DesktopDataManager.19(this, paramList), 32, null, true);
+    ThreadManagerV2.excute(new DesktopDataManager.20(this, paramList), 32, null, true);
+  }
+  
+  private void sendUserAppListRequestV2(COMM.StCommonExt paramStCommonExt, ArrayList<RecommendAppInfo> paramArrayList)
+  {
+    ThreadManager.excute(new DesktopDataManager.2(this, paramStCommonExt, paramArrayList), 128, null, false);
   }
   
   private void sendUserAppListRequestV2(COMM.StCommonExt paramStCommonExt, ArrayList<RecommendAppInfo> paramArrayList, ArrayList<Integer> paramArrayList1)
@@ -1292,7 +1285,7 @@ public class DesktopDataManager
     for (int i = 1;; i = 0)
     {
       QLog.d("DesktopDataManager", 1, "sendUserAppListRequestV2, cacheValue: " + i);
-      MiniAppCmdUtil.getInstance().getUserAppListV2(paramStCommonExt, paramArrayList, paramArrayList1, i, new DesktopDataManager.2(this));
+      MiniAppCmdUtil.getInstance().getUserAppListV2(paramStCommonExt, paramArrayList, paramArrayList1, i, new DesktopDataManager.3(this));
       paramArrayList1 = MiniAppUtils.getAppInterface();
       if (paramArrayList1 != null)
       {
@@ -1302,7 +1295,7 @@ public class DesktopDataManager
         long l2 = System.currentTimeMillis();
         if (l2 - l1 > QzoneConfig.getInstance().getConfig("qqminiapp", "getappletsnotificationsettinginterval", 1L) * 1000L)
         {
-          paramArrayList1 = (akie)paramArrayList1.getBusinessHandler(148);
+          paramArrayList1 = (akwq)paramArrayList1.getBusinessHandler(148);
           if (paramArrayList1 != null)
           {
             paramArrayList1.a();
@@ -1318,7 +1311,7 @@ public class DesktopDataManager
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(paramList);
-    ThreadManager.executeOnFileThread(new DesktopDataManager.4(localArrayList));
+    ThreadManager.executeOnFileThread(new DesktopDataManager.5(localArrayList));
   }
   
   private static void setGetRecommendIntervalTime(long paramLong)
@@ -1329,60 +1322,59 @@ public class DesktopDataManager
     }
   }
   
-  private boolean updateEntity(atmp paramatmp, atmo paramatmo)
+  private boolean updateEntity(aukn paramaukn, aukm paramaukm)
   {
     boolean bool2 = false;
     boolean bool1 = false;
-    if (paramatmp.a()) {
-      if (paramatmo.getStatus() == 1000)
+    if (paramaukn.a()) {
+      if (paramaukm.getStatus() == 1000)
       {
-        paramatmp.b(paramatmo);
-        if (paramatmo.getStatus() == 1001) {
+        paramaukn.b(paramaukm);
+        if (paramaukm.getStatus() == 1001) {
           bool1 = true;
         }
-        paramatmp.a();
+        paramaukn.a();
       }
     }
     do
     {
       return bool1;
-      if ((paramatmo.getStatus() != 1001) && (paramatmo.getStatus() != 1002)) {
+      if ((paramaukm.getStatus() != 1001) && (paramaukm.getStatus() != 1002)) {
         break;
       }
-      bool1 = paramatmp.a(paramatmo);
+      bool1 = paramaukn.a(paramaukm);
       break;
       bool1 = bool2;
     } while (!QLog.isColorLevel());
-    QLog.d("DesktopDataManager", 2, "updateEntity em closed e=" + paramatmo.getTableName());
+    QLog.d("DesktopDataManager", 2, "updateEntity em closed e=" + paramaukm.getTableName());
     return false;
   }
   
   private void updateMiniAppStartRecord(MiniAppInfo paramMiniAppInfo)
   {
-    int m = 0;
     if ((paramMiniAppInfo == null) || (TextUtils.isEmpty(paramMiniAppInfo.appId)) || (this.desktopItemInfos == null))
     {
       QLog.e("DesktopDataManager", 1, "insertAppInfo error app info is invalid, appInfo = " + paramMiniAppInfo);
-      break label50;
+      break label47;
     }
-    label50:
+    label47:
     while (paramMiniAppInfo.isSpecialMiniApp()) {
       return;
     }
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    DesktopItemInfo localDesktopItemInfo;
+    Object localObject;
     int k;
     for (int j = -1; i < this.desktopItemInfos.size(); j = k)
     {
-      localDesktopItemInfo = (DesktopItemInfo)this.desktopItemInfos.get(i);
+      localObject = (DesktopItemInfo)this.desktopItemInfos.get(i);
       k = j;
-      if ((localDesktopItemInfo instanceof DesktopAppInfo))
+      if ((localObject instanceof DesktopAppInfo))
       {
         k = j;
-        if (localDesktopItemInfo.getModuleType() == 1)
+        if (((DesktopItemInfo)localObject).getModuleType() == 1)
         {
-          localArrayList.add(localDesktopItemInfo);
+          localArrayList.add(localObject);
           k = j;
           if (j == -1) {
             k = i;
@@ -1394,48 +1386,51 @@ public class DesktopDataManager
     if (localArrayList.size() > 0)
     {
       i = 0;
-      label165:
+      label162:
       if (i >= localArrayList.size()) {
-        break label336;
+        break label349;
       }
-      localDesktopItemInfo = (DesktopItemInfo)localArrayList.get(i);
-      DesktopAppInfo localDesktopAppInfo = (DesktopAppInfo)localDesktopItemInfo;
+      localObject = (DesktopItemInfo)localArrayList.get(i);
+      DesktopAppInfo localDesktopAppInfo = (DesktopAppInfo)localObject;
       if ((paramMiniAppInfo.appId.equals(localDesktopAppInfo.mMiniAppInfo.appId)) && (paramMiniAppInfo.verType == localDesktopAppInfo.mMiniAppInfo.verType)) {
-        this.desktopItemInfos.remove(localDesktopItemInfo);
+        this.desktopItemInfos.remove(localObject);
       }
     }
-    for (i = 1;; i = m)
+    for (i = 1;; i = 0)
     {
       if (i != 0)
       {
-        if ((j == -1) || (localDesktopItemInfo == null)) {
+        if ((j == -1) || (localObject == null)) {
           break;
         }
-        this.desktopItemInfos.add(j, localDesktopItemInfo);
+        this.desktopItemInfos.add(j, localObject);
         return;
         i += 1;
-        break label165;
+        break label162;
       }
-      paramMiniAppInfo = new DesktopAppInfo(1, paramMiniAppInfo);
+      localObject = new DesktopAppInfo(1, paramMiniAppInfo);
       if (j == -1) {
         break;
       }
-      this.desktopItemInfos.add(j, paramMiniAppInfo);
-      insertEntity(paramMiniAppInfo);
+      if (paramMiniAppInfo.isLimitedAccessApp()) {
+        ((DesktopItemInfo)localObject).dragEnable = false;
+      }
+      this.desktopItemInfos.add(j, localObject);
+      insertEntity((DesktopItemInfo)localObject);
       return;
       paramMiniAppInfo = new DesktopAppInfo(1, paramMiniAppInfo);
       this.desktopItemInfos.add(paramMiniAppInfo);
       insertEntity(paramMiniAppInfo);
       return;
-      label336:
-      localDesktopItemInfo = null;
+      label349:
+      localObject = null;
     }
   }
   
   private void updateRecommendExposureSp()
   {
     ArrayList localArrayList = new ArrayList(this.mRecommendExposureList);
-    ThreadManager.getSubThreadHandler().post(new DesktopDataManager.21(this, localArrayList));
+    ThreadManager.getSubThreadHandler().post(new DesktopDataManager.22(this, localArrayList));
   }
   
   private void updateRedDotData(MiniAppRedDotEntity paramMiniAppRedDotEntity)
@@ -1443,45 +1438,45 @@ public class DesktopDataManager
     if (paramMiniAppRedDotEntity == null) {
       return;
     }
-    ThreadManagerV2.excute(new DesktopDataManager.27(this, paramMiniAppRedDotEntity), 32, null, true);
+    ThreadManagerV2.excute(new DesktopDataManager.28(this, paramMiniAppRedDotEntity), 32, null, true);
   }
   
-  private boolean updateRedDotData(atmp paramatmp, atmo paramatmo)
+  private boolean updateRedDotData(aukn paramaukn, aukm paramaukm)
   {
     boolean bool2 = false;
     boolean bool1 = false;
-    if (paramatmp.a()) {
-      if (paramatmo.getStatus() == 1000)
+    if (paramaukn.a()) {
+      if (paramaukm.getStatus() == 1000)
       {
-        paramatmp.b(paramatmo);
-        if (paramatmo.getStatus() == 1001) {
+        paramaukn.b(paramaukm);
+        if (paramaukm.getStatus() == 1001) {
           bool1 = true;
         }
-        paramatmp.a();
+        paramaukn.a();
       }
     }
     do
     {
       return bool1;
-      if ((paramatmo.getStatus() != 1001) && (paramatmo.getStatus() != 1002)) {
+      if ((paramaukm.getStatus() != 1001) && (paramaukm.getStatus() != 1002)) {
         break;
       }
-      bool1 = paramatmp.a(paramatmo);
+      bool1 = paramaukn.a(paramaukm);
       break;
       bool1 = bool2;
     } while (!QLog.isColorLevel());
-    QLog.d("DesktopDataManager", 2, "updateEntity em closed e=" + paramatmo.getTableName());
+    QLog.d("DesktopDataManager", 2, "updateEntity em closed e=" + paramaukm.getTableName());
     return false;
   }
   
   private void useDefaultRecommendApps()
   {
-    ThreadManager.getSubThreadHandler().post(new DesktopDataManager.13(this));
+    ThreadManager.getSubThreadHandler().post(new DesktopDataManager.14(this));
   }
   
   public void asyncQueryMiniAppPushRedDotData()
   {
-    ThreadManagerV2.excute(new DesktopDataManager.29(this), 32, null, true);
+    ThreadManagerV2.excute(new DesktopDataManager.30(this), 32, null, true);
   }
   
   public void checkMiniAppAdReport(MiniAppInfo paramMiniAppInfo, int paramInt)
@@ -1500,7 +1495,7 @@ public class DesktopDataManager
   
   public void clearRecommendExposureList()
   {
-    ThreadManager.getUIHandler().post(new DesktopDataManager.20(this));
+    ThreadManager.getUIHandler().post(new DesktopDataManager.21(this));
   }
   
   public MiniAppInfo findMiniApp(String paramString, int paramInt)
@@ -1517,26 +1512,6 @@ public class DesktopDataManager
       }
     }
     QLog.d("DesktopDataManager", 1, "findMiniApp, failed to find Miniapp, appId = " + paramString);
-    return null;
-  }
-  
-  public MiniAppInfo findMiniAppStore()
-  {
-    if ((this.desktopItemInfos == null) || (this.desktopItemInfos.size() <= 0)) {
-      return null;
-    }
-    Iterator localIterator = this.desktopItemInfos.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (DesktopItemInfo)localIterator.next();
-      if ((localObject instanceof DesktopAppInfo))
-      {
-        localObject = (DesktopAppInfo)localObject;
-        if ((localObject != null) && (((DesktopAppInfo)localObject).mMiniAppInfo != null) && ("1108291530".equals(((DesktopAppInfo)localObject).mMiniAppInfo.appId))) {
-          return ((DesktopAppInfo)localObject).mMiniAppInfo;
-        }
-      }
-    }
     return null;
   }
   
@@ -1592,7 +1567,7 @@ public class DesktopDataManager
     HashMap localHashMap = new HashMap();
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < this.desktopItemInfos.size())
+    while ((this.desktopItemInfos != null) && (i < this.desktopItemInfos.size()))
     {
       localObject = (DesktopItemInfo)this.desktopItemInfos.get(i);
       if (((localObject instanceof DesktopAppInfo)) && ((((DesktopItemInfo)localObject).getModuleType() == 1) || (((DesktopItemInfo)localObject).getModuleType() == 3) || (((DesktopItemInfo)localObject).getModuleType() == 2)))
@@ -1607,17 +1582,17 @@ public class DesktopDataManager
     if ((localArrayList == null) || (localArrayList.size() <= 0)) {
       return localHashMap;
     }
-    boolean bool = amda.i();
+    boolean bool = amtc.i();
     if (QLog.isColorLevel()) {
       QLog.d("DesktopDataManager", 2, "getRedDotData, showPublicAccountRedDot: " + bool);
     }
     Object localObject = MiniAppUtils.getAppInterface();
     if (localObject != null) {}
-    for (localObject = ((agxk)((AppInterface)localObject).getManager(315)).a();; localObject = null)
+    for (localObject = ((ahjz)((AppInterface)localObject).getManager(315)).a();; localObject = null)
     {
       int j = 0;
       MiniAppInfo localMiniAppInfo;
-      label305:
+      label312:
       Integer localInteger1;
       Integer localInteger2;
       while (j < localArrayList.size())
@@ -1626,7 +1601,7 @@ public class DesktopDataManager
         if ((localMiniAppInfo != null) && (!TextUtils.isEmpty(localMiniAppInfo.appId)))
         {
           if ((localObject == null) || (!((Set)localObject).contains(localMiniAppInfo.appId))) {
-            break label305;
+            break label312;
           }
           if (QLog.isColorLevel()) {
             QLog.d("DesktopDataManager", 2, "getRedDotData, unReceiveMsgAppids ignore appid: " + localMiniAppInfo.appId);
@@ -1637,10 +1612,10 @@ public class DesktopDataManager
         localInteger1 = (Integer)this.mPublicAccountRedDotMap.get(localMiniAppInfo.appId);
         localInteger2 = (Integer)this.mPushRedDotMap.get(localMiniAppInfo.appId);
         if ((localInteger1 == null) || (localInteger1.intValue() <= 0) || (!bool)) {
-          break label413;
+          break label420;
         }
       }
-      label413:
+      label420:
       for (i = localInteger1.intValue() + 0;; i = 0)
       {
         int k = i;
@@ -1737,7 +1712,7 @@ public class DesktopDataManager
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(3));
-    MiniAppCmdUtil.getInstance().getUserAppListV2(paramStCommonExt, null, localArrayList, 0, new DesktopDataManager.3(this));
+    MiniAppCmdUtil.getInstance().getUserAppListV2(paramStCommonExt, null, localArrayList, 0, new DesktopDataManager.4(this));
   }
   
   public void loadMoreRecentIfNeed()
@@ -1762,7 +1737,7 @@ public class DesktopDataManager
         QLog.i("DesktopDataManager", 1, "loadMoreRencentApp start");
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(Integer.valueOf(1));
-        MiniAppCmdUtil.getInstance().getUserAppListV2(this.mMoreRencentExtInfo, null, localArrayList, 0, new DesktopDataManager.10(this));
+        MiniAppCmdUtil.getInstance().getUserAppListV2(this.mMoreRencentExtInfo, null, localArrayList, 0, new DesktopDataManager.11(this));
       }
       return;
     }
@@ -1784,7 +1759,7 @@ public class DesktopDataManager
           try
           {
             Object localObject = new JSONObject(localDesktopAdData.miniAppInfo.amsAdInfo);
-            localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(ynv.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localObject));
+            localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localObject));
             localObject = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject).report_info.exposure_url.get() + "&slot=" + localDesktopAdData.position;
             MiniAppUtils.reportMiniAppAd((String)localObject);
             QLog.d("DesktopDataManager", 1, "gdtAdReport, exposure_url: " + (String)localObject + ", name: " + localDesktopAdData.miniAppInfo.name);
@@ -1960,21 +1935,18 @@ public class DesktopDataManager
     ThreadManager.getUIHandler().post(paramRunnable);
   }
   
-  public void sendUserAppListRequestV2(COMM.StCommonExt paramStCommonExt, ArrayList<RecommendAppInfo> paramArrayList)
+  public void sendDropDownAppListRequestAsync()
   {
-    COMM.StCommonExt localStCommonExt = paramStCommonExt;
-    if (paramStCommonExt == null) {
-      localStCommonExt = new COMM.StCommonExt();
+    Object localObject2 = this.mExtInfo;
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new COMM.StCommonExt();
     }
-    if (!hasGdtCookie(localStCommonExt))
-    {
-      paramStCommonExt = MiniAppUtils.getSpDesktopGdtCookie();
-      COMM.Entry localEntry = new COMM.Entry();
-      localEntry.key.set("gdt_cookie");
-      localEntry.value.set(paramStCommonExt);
-      localStCommonExt.mapInfo.get().add(localEntry);
+    localObject2 = new ArrayList();
+    if (this.mRecommendExposureList.size() > 0) {
+      ((ArrayList)localObject2).addAll(this.mRecommendExposureList);
     }
-    sendUserAppListRequestV2(localStCommonExt, paramArrayList, new ArrayList());
+    sendUserAppListRequestV2((COMM.StCommonExt)localObject1, (ArrayList)localObject2);
   }
   
   public void setDataChangeListener(DesktopDataManager.DataChangeListener paramDataChangeListener)
@@ -2067,9 +2039,9 @@ public class DesktopDataManager
     }
   }
   
-  public void updateData(List<INTERFACE.StUserAppInfo> paramList, List<INTERFACE.StModuleInfo> paramList1, INTERFACE.StSearchModuleInfo paramStSearchModuleInfo, boolean paramBoolean)
+  public void updateData(List<INTERFACE.StUserAppInfo> paramList, List<INTERFACE.StModuleInfo> paramList1, INTERFACE.StSearchModuleInfo paramStSearchModuleInfo)
   {
-    runOnMainThread(new DesktopDataManager.5(this, paramList, paramList1, paramStSearchModuleInfo, paramBoolean));
+    convertData(paramList, paramList1, paramStSearchModuleInfo);
   }
   
   public void updateDesktopData(List<DesktopItemInfo> paramList, boolean paramBoolean)
@@ -2117,7 +2089,7 @@ public class DesktopDataManager
   
   public void updateModuleMyApp(MiniAppInfo paramMiniAppInfo)
   {
-    runOnMainThread(new DesktopDataManager.16(this, paramMiniAppInfo));
+    runOnMainThread(new DesktopDataManager.17(this, paramMiniAppInfo));
   }
   
   public void updateRecommendExposureNumber(String paramString)
@@ -2146,7 +2118,7 @@ public class DesktopDataManager
   
   public void useLocalDataIfRequestFailed()
   {
-    ThreadManager.excute(new DesktopDataManager.12(this), 32, null, true);
+    ThreadManager.excute(new DesktopDataManager.13(this), 32, null, true);
   }
 }
 

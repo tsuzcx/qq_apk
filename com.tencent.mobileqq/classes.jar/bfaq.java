@@ -1,18 +1,19 @@
-import android.content.Context;
-import java.util.Observable;
+import com.tencent.smtt.sdk.ValueCallback;
+import java.util.List;
 
-public class bfaq
-  extends Observable
+class bfaq
+  implements ValueCallback
 {
-  public void a(Context paramContext)
+  bfaq(bfap parambfap, String paramString) {}
+  
+  public void onReceiveValue(Object paramObject)
   {
-    setChanged();
-    notifyObservers(paramContext);
+    bfap.a(this.jdField_a_of_type_Bfap).add(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfaq
  * JD-Core Version:    0.7.0.1
  */

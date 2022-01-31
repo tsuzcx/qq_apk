@@ -1,6 +1,15 @@
-public abstract interface qia
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class qia
+  implements View.OnClickListener
 {
-  public abstract void c(boolean paramBoolean);
+  qia(qhz paramqhz) {}
+  
+  public void onClick(View paramView)
+  {
+    qhz.a(this.a).a(paramView);
+  }
 }
 
 

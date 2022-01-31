@@ -1,18 +1,23 @@
 package com.tencent.biz.pubaccount;
 
-import ajjy;
-import alrv;
+import ajyc;
+import amgo;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.util.Log;
-import bgmq;
+import bhvh;
 import com.tencent.biz.pubaccount.util.PublicAccountCompactSwipeBackLayout;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
 import java.util.regex.Pattern;
+import org.json.JSONException;
+import org.json.JSONObject;
+import sgj;
 
 public class PublicAccountBrowser
   extends QQBrowserActivity
@@ -22,7 +27,7 @@ public class PublicAccountBrowser
   
   static
   {
-    jdField_a_of_type_JavaLangString = ajjy.a(2131642988);
+    jdField_a_of_type_JavaLangString = ajyc.a(2131708773);
   }
   
   public PublicAccountBrowser()
@@ -40,7 +45,7 @@ public class PublicAccountBrowser
     paramString = BaseApplicationImpl.getApplication();
     if (paramString != null)
     {
-      paramString = bgmq.a(paramString.getRuntime(), false, true);
+      paramString = bhvh.a(paramString.getRuntime(), false, true);
       if (paramString != null)
       {
         paramString = paramString.edit();
@@ -98,6 +103,24 @@ public class PublicAccountBrowser
     if (getIntent().getBooleanExtra("public_account_finish_animation_out_to_bottom", false)) {
       overridePendingTransition(0, 2130771978);
     }
+  }
+  
+  public ColorNote getColorNote()
+  {
+    ColorNote localColorNote = super.getColorNote();
+    if (sgj.c(getIntent().getStringExtra("url"))) {}
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(new String(localColorNote.getReserve()));
+      localJSONObject.put("h5_type_read_in_joy", true);
+      localColorNote.mReserve = localJSONObject.toString().getBytes();
+      return localColorNote;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("PublicAccountBrowser", 1, localJSONException, new Object[0]);
+    }
+    return localColorNote;
   }
 }
 

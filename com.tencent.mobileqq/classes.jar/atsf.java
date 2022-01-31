@@ -1,22 +1,23 @@
-public class atsf
+import android.text.Editable;
+import android.text.TextWatcher;
+
+class atsf
+  implements TextWatcher
 {
-  int jdField_a_of_type_Int;
-  int[] jdField_a_of_type_ArrayOfInt;
+  atsf(atsa paramatsa) {}
   
-  private atsf(int[] paramArrayOfInt, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    this.jdField_a_of_type_Int = paramInt;
+    atbp.a(this.a.e, 90);
   }
   
-  static atsf a(int[] paramArrayOfInt, int paramInt)
-  {
-    return new atsf(paramArrayOfInt, paramInt);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsf
  * JD-Core Version:    0.7.0.1
  */

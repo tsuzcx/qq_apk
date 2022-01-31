@@ -1,19 +1,50 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.os.Message;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aakh
-  implements View.OnClickListener
+  extends MqqHandler
 {
-  public aakh(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
+  public aakh(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    switch (paramMessage.what)
+    {
     }
-    ChatSettingForTroop.h(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (AssociatedAccountManageActivity.a(this.a) == null) {
+        AssociatedAccountManageActivity.a(this.a, new bcpq(this.a, this.a.getTitleBarHeight()));
+      }
+      if ((!this.a.isFinishing()) && (!AssociatedAccountManageActivity.a(this.a).isShowing()))
+      {
+        try
+        {
+          AssociatedAccountManageActivity.a(this.a).show();
+        }
+        catch (Exception localException) {}
+        if (QLog.isColorLevel())
+        {
+          QLog.e("AssociatedAccountManage", 2, "QQProgressDialog show exception.", localException);
+          continue;
+          if ((AssociatedAccountManageActivity.a(this.a) != null) && (AssociatedAccountManageActivity.a(this.a).isShowing()))
+          {
+            AssociatedAccountManageActivity.a(this.a).dismiss();
+            AssociatedAccountManageActivity.a(this.a, null);
+            continue;
+            if (AssociatedAccountManageActivity.a(this.a) != null) {
+              AssociatedAccountManageActivity.a(this.a).cancel();
+            }
+            AssociatedAccountManageActivity.a(this.a, bcpw.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
+          }
+        }
+      }
+    }
   }
 }
 

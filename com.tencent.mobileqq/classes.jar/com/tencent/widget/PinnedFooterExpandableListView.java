@@ -9,23 +9,23 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
-import begh;
-import belx;
-import bely;
-import belz;
-import bemg;
+import bfob;
+import bftr;
+import bfts;
+import bftt;
+import bfua;
 
 public class PinnedFooterExpandableListView
   extends XExpandableListView
-  implements begh
+  implements bfob
 {
   int jdField_a_of_type_Int;
   Context jdField_a_of_type_AndroidContentContext = null;
   public View a;
-  begh jdField_a_of_type_Begh = null;
-  private bely jdField_a_of_type_Bely;
-  belz jdField_a_of_type_Belz = null;
-  bemg jdField_a_of_type_Bemg = null;
+  bfob jdField_a_of_type_Bfob = null;
+  private bfts jdField_a_of_type_Bfts;
+  bftt jdField_a_of_type_Bftt = null;
+  bfua jdField_a_of_type_Bfua = null;
   boolean jdField_a_of_type_Boolean;
   int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
@@ -113,10 +113,10 @@ public class PinnedFooterExpandableListView
   private void b()
   {
     Object localObject = a();
-    if (!(localObject instanceof bemg)) {
+    if (!(localObject instanceof bfua)) {
       return;
     }
-    localObject = (bemg)localObject;
+    localObject = (bfua)localObject;
     int i2 = getFirstVisiblePosition();
     int k = getLastVisiblePosition();
     int i3 = c(a(k));
@@ -127,7 +127,7 @@ public class PinnedFooterExpandableListView
     int m = k - 1;
     int i5 = c(a(j));
     int i;
-    if (i3 == ((bemg)localObject).getGroupCount() - 1)
+    if (i3 == ((bfua)localObject).getGroupCount() - 1)
     {
       i = 1;
       label98:
@@ -145,10 +145,10 @@ public class PinnedFooterExpandableListView
       if ((localObject != null) && (i1 - ((View)localObject).getTop() >= n))
       {
         j = i3 + 1;
-        if ((this.jdField_a_of_type_Bemg != null) && (j < this.jdField_a_of_type_Bemg.getGroupCount()))
+        if ((this.jdField_a_of_type_Bfua != null) && (j < this.jdField_a_of_type_Bfua.getGroupCount()))
         {
           this.jdField_c_of_type_Int = j;
-          this.jdField_a_of_type_Bemg.a(this.jdField_a_of_type_AndroidViewView, j);
+          this.jdField_a_of_type_Bfua.a(this.jdField_a_of_type_AndroidViewView, j);
         }
         k = ((View)localObject).getTop() + n;
         j = k;
@@ -166,10 +166,10 @@ public class PinnedFooterExpandableListView
         this.jdField_a_of_type_AndroidViewView.layout(0, j, this.jdField_a_of_type_Int, j + n);
         return;
       }
-      if ((this.jdField_a_of_type_Bemg != null) && (i3 < this.jdField_a_of_type_Bemg.getGroupCount()))
+      if ((this.jdField_a_of_type_Bfua != null) && (i3 < this.jdField_a_of_type_Bfua.getGroupCount()))
       {
         this.jdField_c_of_type_Int = i3;
-        this.jdField_a_of_type_Bemg.a(this.jdField_a_of_type_AndroidViewView, i3);
+        this.jdField_a_of_type_Bfua.a(this.jdField_a_of_type_AndroidViewView, i3);
       }
       if ((i != 0) && (j != k))
       {
@@ -180,8 +180,8 @@ public class PinnedFooterExpandableListView
       if (b(a(m)) == 0)
       {
         setFooterEnable(false);
-        if (this.jdField_a_of_type_Bely != null) {
-          this.jdField_a_of_type_Bely.a();
+        if (this.jdField_a_of_type_Bfts != null) {
+          this.jdField_a_of_type_Bfts.a();
         }
         this.jdField_c_of_type_Int = -1;
         this.jdField_a_of_type_AndroidViewView.layout(0, -n, this.jdField_a_of_type_Int, -this.jdField_b_of_type_Int);
@@ -198,11 +198,11 @@ public class PinnedFooterExpandableListView
       for (;;)
       {
         i = i3 + 1;
-        if ((this.jdField_a_of_type_Bemg == null) || (i >= this.jdField_a_of_type_Bemg.getGroupCount())) {
+        if ((this.jdField_a_of_type_Bfua == null) || (i >= this.jdField_a_of_type_Bfua.getGroupCount())) {
           break;
         }
         this.jdField_c_of_type_Int = i;
-        this.jdField_a_of_type_Bemg.a(this.jdField_a_of_type_AndroidViewView, i);
+        this.jdField_a_of_type_Bfua.a(this.jdField_a_of_type_AndroidViewView, i);
         return;
         this.jdField_a_of_type_AndroidViewView.layout(0, i4, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int + i4);
       }
@@ -223,13 +223,13 @@ public class PinnedFooterExpandableListView
           return;
         } while (!this.jdField_a_of_type_Boolean);
         localExpandableListAdapter = a();
-      } while (!(localExpandableListAdapter instanceof bemg));
-      this.jdField_a_of_type_Bemg = ((bemg)localExpandableListAdapter);
-      i = this.jdField_a_of_type_Bemg.a();
+      } while (!(localExpandableListAdapter instanceof bfua));
+      this.jdField_a_of_type_Bfua = ((bfua)localExpandableListAdapter);
+      i = this.jdField_a_of_type_Bfua.a();
     } while (i == 0);
     this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(i, this, false);
     if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new belx(this, this));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new bftr(this, this));
     }
     requestLayout();
   }
@@ -293,8 +293,8 @@ public class PinnedFooterExpandableListView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_Belz != null) {
-      this.jdField_a_of_type_Belz.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.jdField_a_of_type_Bftt != null) {
+      this.jdField_a_of_type_Bftt.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
@@ -314,15 +314,15 @@ public class PinnedFooterExpandableListView
     if (this.jdField_a_of_type_AndroidViewView != null) {
       b();
     }
-    if (this.jdField_a_of_type_Begh != null) {
-      this.jdField_a_of_type_Begh.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (this.jdField_a_of_type_Bfob != null) {
+      this.jdField_a_of_type_Bfob.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_Begh != null) {
-      this.jdField_a_of_type_Begh.onScrollStateChanged(paramAbsListView, paramInt);
+    if (this.jdField_a_of_type_Bfob != null) {
+      this.jdField_a_of_type_Bfob.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
   
@@ -347,19 +347,19 @@ public class PinnedFooterExpandableListView
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
   
-  public void setListener(bely parambely)
+  public void setListener(bfts parambfts)
   {
-    this.jdField_a_of_type_Bely = parambely;
+    this.jdField_a_of_type_Bfts = parambfts;
   }
   
-  public void setOnLayoutListener(belz parambelz)
+  public void setOnLayoutListener(bftt parambftt)
   {
-    this.jdField_a_of_type_Belz = parambelz;
+    this.jdField_a_of_type_Bftt = parambftt;
   }
   
-  public void setOnScrollListener(begh parambegh)
+  public void setOnScrollListener(bfob parambfob)
   {
-    this.jdField_a_of_type_Begh = parambegh;
+    this.jdField_a_of_type_Bfob = parambfob;
   }
 }
 

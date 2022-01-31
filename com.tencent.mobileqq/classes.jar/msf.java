@@ -1,12 +1,10 @@
 public abstract interface msf
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void b(int paramInt);
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     msf
  * JD-Core Version:    0.7.0.1
  */

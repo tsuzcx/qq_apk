@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import batm;
-import bato;
+import bbwg;
+import bbwi;
 
 public final class ApolloSSOConfig$3
   implements Runnable
 {
-  public ApolloSSOConfig$3(batm parambatm) {}
+  public ApolloSSOConfig$3(bbwg parambbwg) {}
   
   public void run()
   {
-    bato.a(this.a, null);
+    bbwi.a(this.a, null);
   }
 }
 

@@ -1,29 +1,32 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.widget.RadioGroup;
-import com.tencent.mobileqq.fragment.SimpleDebugFragment;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.8.1;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.8.2;
 
 public class appz
-  implements bbpw
+  implements apab
 {
-  public appz(SimpleDebugFragment paramSimpleDebugFragment, RadioGroup paramRadioGroup) {}
+  appz(appp paramappp) {}
   
-  public void a(View paramView, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
-    {
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFragmentSimpleDebugFragment.getActivity().finish();
+    this.a.a(paramInt, paramString);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.a.a.runOnUiThread(new VideoFilePresenter.8.1(this, paramString1));
+  }
+  
+  public void aC_() {}
+  
+  public void aD_()
+  {
+    this.a.a.runOnUiThread(new VideoFilePresenter.8.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     appz
  * JD-Core Version:    0.7.0.1
  */

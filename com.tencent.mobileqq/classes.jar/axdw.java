@@ -1,149 +1,129 @@
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class axdw
-  extends beot
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  List<axdy> jdField_a_of_type_JavaUtilList;
-  Map<String, axdy> jdField_a_of_type_JavaUtilMap = new HashMap();
-  
-  public axdw(QQAppInterface paramQQAppInterface, Context paramContext, View.OnClickListener paramOnClickListener, List<axdy> paramList)
+  public static int a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).getInt("short_video_msg_config_version", 0);
   }
   
-  public String a(String paramString)
+  public static String a(Context paramContext, int paramInt)
   {
-    Object localObject = (axdy)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localObject == null) {
-      return paramString;
-    }
-    localObject = babh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((axdy)localObject).jdField_a_of_type_JavaLangString, ((axdy)localObject).b, ((axdy)localObject).jdField_a_of_type_Int);
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      ((axdy)this.jdField_a_of_type_JavaUtilMap.get(paramString)).c = ((String)localObject);
-    }
-    return ((axdy)this.jdField_a_of_type_JavaUtilMap.get(paramString)).c;
+    return paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).getString("short_video_msg_tail_jumping_url_" + paramInt, "");
   }
   
-  public void a(int paramInt)
+  public static void a(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    paramContext = paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).edit();
+    paramContext.putInt("short_video_msg_config_version", paramInt);
+    paramContext.apply();
   }
   
-  public void a(axdy paramaxdy)
+  public static void a(Context paramContext, String paramString, int paramInt)
   {
-    if (paramaxdy == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.add(0, paramaxdy);
-    this.jdField_a_of_type_JavaUtilMap.put(paramaxdy.jdField_a_of_type_JavaLangString, paramaxdy);
-  }
-  
-  public void a(String paramString)
-  {
-    axdy localaxdy = (axdy)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localaxdy == null) {
-      return;
-    }
-    localaxdy.c = a(paramString);
-    notifyDataSetChanged();
-  }
-  
-  public void b(String paramString)
-  {
-    paramString = (axdy)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-    this.jdField_a_of_type_JavaUtilList.remove(paramString);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    label110:
-    axdy localaxdy;
-    if (paramView == null)
+    Object localObject = a(paramContext, paramInt);
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131496890, null);
-      paramViewGroup = new axdx(this);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131301870));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131305136));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131310659));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297267));
-      paramView.setTag(paramViewGroup);
-      if (this.jdField_a_of_type_Int != 2) {
-        break label230;
-      }
-      paramViewGroup.b.setVisibility(8);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      localaxdy = (axdy)getItem(paramInt);
-      String str = String.valueOf(localaxdy.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo.uint64_uin.get());
-      azwp localazwp = azwp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, str);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localazwp);
-      str = a(str);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      paramInt = localaxdy.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo.uint32_right.get();
-      if (paramInt != 1) {
-        break label249;
-      }
-      paramViewGroup.b.setText(2131654200);
+      paramString = ((String)localObject).replace("$GCODE$", paramString);
+      localObject = new Intent(paramContext, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", paramString);
+      paramContext.startActivity((Intent)localObject);
+      return;
     }
+    QLog.i("ShortVideoMsgTailHelper", 1, "jumpUrl is empty");
+  }
+  
+  public static void a(Context paramContext, List<String> paramList)
+  {
+    if (paramList == null) {}
+    try
+    {
+      if (!QLog.isColorLevel()) {
+        break label300;
+      }
+      QLog.i("ShortVideoMsgTailHelper", 2, "updateShortVideoMsgTailConfig, configs == null");
+      return;
+    }
+    catch (JSONException paramContext)
+    {
+      QLog.e("ShortVideoMsgTailHelper", 1, paramContext.toString(), paramContext);
+      return;
+    }
+    paramList = paramList.iterator();
     for (;;)
     {
-      paramViewGroup.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo = localaxdy.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo;
-      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      return paramView;
-      paramViewGroup = (axdx)paramView.getTag();
-      break;
-      label230:
-      paramViewGroup.b.setVisibility(0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      break label110;
-      label249:
-      if (paramInt == 2) {
-        paramViewGroup.b.setText(2131654201);
-      } else {
-        paramViewGroup.b.setText(ajjy.a(2131648989));
+      Object localObject;
+      int j;
+      SharedPreferences.Editor localEditor;
+      int i;
+      if (paramList.hasNext())
+      {
+        localObject = (String)paramList.next();
+        if (QLog.isColorLevel()) {
+          QLog.i("ShortVideoMsgTailHelper", 2, "updateShortVideoMsgTailConfig, config=" + (String)localObject);
+        }
+        localObject = new JSONArray((String)localObject);
+        j = ((JSONArray)localObject).length();
+        if (j > 0)
+        {
+          localEditor = paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).edit();
+          i = 0;
+        }
+      }
+      else
+      {
+        while (i < j)
+        {
+          JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
+          int k = localJSONObject.getInt("type");
+          if (k != 0) {
+            if (!"1".equals(localJSONObject.optString("isShow"))) {
+              break label294;
+            }
+          }
+          label294:
+          for (boolean bool = true;; bool = false)
+          {
+            localEditor.putBoolean("short_video_msg_tail_is_show_" + k, bool);
+            localEditor.putString("short_video_msg_tail_wording_" + k, localJSONObject.optString("wording"));
+            localEditor.putString("short_video_msg_tail_jumping_url_" + k, localJSONObject.optString("jumpUrl"));
+            localEditor.apply();
+            break;
+            QLog.i("ShortVideoMsgTailHelper", 1, "type == 0");
+            break;
+          }
+          label300:
+          return;
+          i += 1;
+        }
       }
     }
+  }
+  
+  public static boolean a(Context paramContext, int paramInt)
+  {
+    return paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).getBoolean("short_video_msg_tail_is_show_" + paramInt, false);
+  }
+  
+  public static String b(Context paramContext, int paramInt)
+  {
+    return paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).getString("short_video_msg_tail_wording_" + paramInt, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axdw
  * JD-Core Version:    0.7.0.1
  */

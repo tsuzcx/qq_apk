@@ -1,6 +1,6 @@
 package com.tencent.open.appstore.receiver;
 
-import bcds;
+import bdht;
 
 class InstallStateReceiver$2
   implements Runnable
@@ -9,7 +9,7 @@ class InstallStateReceiver$2
   
   public void run()
   {
-    bcds.c("InstallStateReceiver", "[onReceive] ACTION_PACKAGE_REPLACED >> " + this.a);
+    bdht.c("InstallStateReceiver", "[onReceive] ACTION_PACKAGE_REPLACED >> " + this.a);
     InstallStateReceiver.a(this.this$0, this.b, 2);
   }
 }

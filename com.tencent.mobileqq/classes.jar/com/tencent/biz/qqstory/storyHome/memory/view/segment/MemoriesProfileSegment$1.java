@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.memory.view.segment;
 
-import sqg;
-import sqs;
-import uga;
-import uhs;
+import tdc;
+import tdo;
+import usw;
+import uuo;
 
 public class MemoriesProfileSegment$1
   implements Runnable
 {
-  public MemoriesProfileSegment$1(uhs paramuhs) {}
+  public MemoriesProfileSegment$1(uuo paramuuo) {}
   
   public void run()
   {
-    ((sqs)sqg.a(2)).a(uhs.a(this.this$0).a);
+    ((tdo)tdc.a(2)).a(uuo.a(this.this$0).a);
   }
 }
 

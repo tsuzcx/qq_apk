@@ -1,21 +1,23 @@
-import android.os.IInterface;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public abstract interface atpc
-  extends IInterface
+public class atpc
+  implements View.OnClickListener
 {
-  public abstract int a();
+  public atpc(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2);
-  
-  public abstract int[] a();
-  
-  public abstract boolean[] a();
+  public void onClick(View paramView)
+  {
+    if ((this.a.a != null) && (!this.a.isFinishing()))
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+    }
+    this.a.c();
+    axqw.b(this.a.app, "CliOper", "", "", "0X8004824", "0X8004824", 0, 0, "", "", "", "");
+  }
 }
 
 

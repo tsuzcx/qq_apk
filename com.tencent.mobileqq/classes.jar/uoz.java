@@ -1,22 +1,23 @@
 import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class uoz
-  extends QQUIEventReceiver<uoh, sxr>
+class uoz
+  extends SimpleJob
 {
-  public uoz(@NonNull uoh paramuoh)
+  uoz(uoy paramuoy, String paramString, upb paramupb, boolean paramBoolean)
   {
-    super(paramuoh);
+    super(paramString);
   }
   
-  public void a(@NonNull uoh paramuoh, @NonNull sxr paramsxr)
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
   {
-    paramuoh.i();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return sxr.class;
+    this.jdField_a_of_type_Uoy.a();
+    this.jdField_a_of_type_Uoy.b();
+    ((tbz)tdc.a(17)).a(this.jdField_a_of_type_Upb.a, uoy.a(this.jdField_a_of_type_Uoy).a, uoy.a(this.jdField_a_of_type_Uoy).a(), this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Uoy.a("Q.qqstory.detail:CommentListPageLoader");
+    return null;
   }
 }
 

@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.comment.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import nwv;
+import oig;
 
 public class AnchorData
   implements Parcelable
 {
-  public static final Parcelable.Creator<AnchorData> CREATOR = new nwv();
+  public static final Parcelable.Creator<AnchorData> CREATOR = new oig();
   public String a;
   public boolean a;
   public String b;

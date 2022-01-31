@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/gsh" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     <View android:id="@id/epz" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     <View android:id="@id/eql" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     <View android:id="@id/eqe" android:layout_width="wrap_content" android:layout_height="wrap_content" />
@@ -11,4 +12,5 @@
     <View android:id="@id/eqg" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     <View android:id="@id/eqk" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     <View android:id="@id/eqj" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:id="@id/gsg" android:layout_width="wrap_content" android:layout_height="wrap_content" />
 </LinearLayout>

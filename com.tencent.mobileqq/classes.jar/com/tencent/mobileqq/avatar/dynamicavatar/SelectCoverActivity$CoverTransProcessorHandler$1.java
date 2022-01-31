@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import ajjy;
-import alkl;
-import alkx;
-import alla;
-import azyk;
+import ajyc;
+import alyz;
+import alzl;
+import alzo;
+import bazo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.io.File;
 
 public class SelectCoverActivity$CoverTransProcessorHandler$1
   implements Runnable
 {
-  public SelectCoverActivity$CoverTransProcessorHandler$1(alla paramalla, SelectCoverActivity paramSelectCoverActivity, QQAppInterface paramQQAppInterface) {}
+  public SelectCoverActivity$CoverTransProcessorHandler$1(alzo paramalzo, SelectCoverActivity paramSelectCoverActivity, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -19,11 +19,11 @@ public class SelectCoverActivity$CoverTransProcessorHandler$1
     File localFile = new File(str);
     if ((localFile != null) && (localFile.exists()))
     {
-      alkx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, 37, this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.e, 200);
-      azyk.a(str);
+      alzl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, 37, this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.e, 200);
+      bazo.a(str);
       return;
     }
-    SelectCoverActivity.a(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity, 2, ajjy.a(2131647926), 0);
+    SelectCoverActivity.a(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity, 2, ajyc.a(2131713713), 0);
   }
 }
 

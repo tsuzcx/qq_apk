@@ -1,26 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
-
-public class ltf
-  implements View.OnTouchListener
+public abstract interface ltf
 {
-  public ltf(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
-  }
+  public abstract void a(int paramInt, ltl paramltl);
 }
 
 

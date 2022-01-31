@@ -1,83 +1,57 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.entry.MiniAppEntryHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build.VERSION;
+import java.util.AbstractCollection;
+import java.util.ArrayDeque;
+import java.util.concurrent.ArrayBlockingQueue;
 
-public class amcy
-  extends alzl<amcx>
+public class amcy<T>
 {
-  public static amcx a()
+  final AbstractCollection<T> a;
+  
+  public amcy(int paramInt)
   {
-    return (amcx)alzw.a().a(446);
+    if (Build.VERSION.SDK_INT >= 9)
+    {
+      this.a = new ArrayDeque();
+      return;
+    }
+    this.a = new ArrayBlockingQueue(30);
   }
   
-  public int a()
+  public T a()
   {
-    return 446;
-  }
-  
-  @NonNull
-  public amcx a(int paramInt)
-  {
-    return new amcx();
-  }
-  
-  @Nullable
-  public amcx a(alzs[] paramArrayOfalzs)
-  {
-    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
-      return amcx.a(paramArrayOfalzs);
+    if (Build.VERSION.SDK_INT >= 9)
+    {
+      if ((this.a instanceof ArrayDeque)) {
+        return ((ArrayDeque)this.a).poll();
+      }
+    }
+    else if ((this.a instanceof ArrayBlockingQueue)) {
+      return ((ArrayBlockingQueue)this.a).poll();
     }
     return null;
   }
   
-  public Class<amcx> a()
+  public void a()
   {
-    return amcx.class;
+    this.a.clear();
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(amcx paramamcx)
+  public void a(T paramT)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppApiReportProcessor", 2, "onUpdate " + paramamcx.toString());
-    }
-    paramamcx = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramamcx instanceof QQAppInterface))
-    {
-      paramamcx = (MiniAppEntryHandler)((QQAppInterface)paramamcx).a(149);
-      if (paramamcx != null) {
-        paramamcx.notifyUI(0, true, null);
+    if (Build.VERSION.SDK_INT >= 9) {
+      if ((this.a instanceof ArrayDeque)) {
+        ((ArrayDeque)this.a).offer(paramT);
       }
     }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    while (!(this.a instanceof ArrayBlockingQueue)) {
+      return;
+    }
+    ((ArrayBlockingQueue)this.a).offer(paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amcy
  * JD-Core Version:    0.7.0.1
  */

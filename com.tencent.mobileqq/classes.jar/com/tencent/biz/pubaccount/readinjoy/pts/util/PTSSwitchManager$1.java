@@ -5,74 +5,95 @@ import android.text.TextUtils;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.qphone.base.util.QLog;
-import pep;
+import ppo;
+import pqj;
 
 public class PTSSwitchManager$1
   implements Runnable
 {
-  public PTSSwitchManager$1(pep parampep) {}
+  public PTSSwitchManager$1(pqj parampqj) {}
   
   public void run()
   {
     boolean bool4 = false;
-    Object localObject = Build.CPU_ABI;
+    Object localObject = Aladdin.getConfig(266);
     boolean bool1;
-    int i;
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).contains("armeabi")))
-    {
-      bool1 = true;
-      localObject = Aladdin.getConfig(223);
-      if (localObject == null) {
-        break label221;
+    if (localObject != null) {
+      if (((AladdinConfig)localObject).getIntegerFromString("pts_jsc_switch", 0) == 1) {
+        bool1 = true;
       }
-      if (((AladdinConfig)localObject).getIntegerFromString("pts_switch", 0) != 1) {
-        break label200;
-      }
-      i = 1;
     }
     for (;;)
     {
-      label55:
-      AladdinConfig localAladdinConfig = Aladdin.getConfig(246);
-      int j;
-      if (localObject != null) {
-        if (localAladdinConfig.getIntegerFromString("pts_item_view_switch", 0) == 1) {
-          j = 1;
+      pqj.a(this.this$0, bool1);
+      QLog.i("PTSSwitchManager", 1, "[init], ptsJSCEnabled = " + pqj.a(this.this$0));
+      label111:
+      int i;
+      if (pqj.a(this.this$0))
+      {
+        ppo.a().a();
+        localObject = Build.CPU_ABI;
+        if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).contains("armeabi"))) {
+          break label283;
         }
+        bool1 = true;
+        localObject = Aladdin.getConfig(223);
+        if (localObject == null) {
+          break label309;
+        }
+        if (((AladdinConfig)localObject).getIntegerFromString("pts_switch", 0) != 1) {
+          break label288;
+        }
+        i = 1;
       }
       for (;;)
       {
-        label82:
-        if ((i != 0) && (bool1)) {}
-        for (boolean bool2 = true;; bool2 = false)
-        {
-          boolean bool3 = bool4;
-          if (j != 0)
-          {
-            bool3 = bool4;
-            if (bool1) {
-              bool3 = true;
-            }
+        label138:
+        AladdinConfig localAladdinConfig = Aladdin.getConfig(246);
+        int j;
+        if (localObject != null) {
+          if (localAladdinConfig.getIntegerFromString("pts_item_view_switch", 0) == 1) {
+            j = 1;
           }
-          QLog.i("PTSSwitchManager", 1, "[init], pageEnabledTmp = " + bool2 + ", viewEnabledTmp = " + bool3 + ", isArm = " + bool1);
-          if ((bool2) || (bool3)) {
-            pep.a(this.this$0);
-          }
-          pep.a(this.this$0, bool2);
-          pep.b(this.this$0, bool3);
-          return;
-          bool1 = false;
-          break;
-          label200:
-          i = 0;
-          break label55;
-          j = 0;
-          break label82;
         }
-        j = 0;
+        for (;;)
+        {
+          label165:
+          if ((i != 0) && (bool1)) {}
+          for (boolean bool2 = true;; bool2 = false)
+          {
+            boolean bool3 = bool4;
+            if (j != 0)
+            {
+              bool3 = bool4;
+              if (bool1) {
+                bool3 = true;
+              }
+            }
+            QLog.i("PTSSwitchManager", 1, "[init], pageEnabledTmp = " + bool2 + ", viewEnabledTmp = " + bool3 + ", isArm = " + bool1);
+            if ((bool2) || (bool3)) {
+              pqj.a(this.this$0);
+            }
+            pqj.b(this.this$0, bool2);
+            pqj.c(this.this$0, bool3);
+            return;
+            bool1 = false;
+            break;
+            label283:
+            bool1 = false;
+            break label111;
+            label288:
+            i = 0;
+            break label138;
+            j = 0;
+            break label165;
+          }
+          j = 0;
+        }
+        label309:
+        i = 0;
       }
-      label221:
-      i = 0;
+      bool1 = false;
     }
   }
 }

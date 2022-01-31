@@ -1,16 +1,32 @@
-import android.telephony.PhoneStateListener;
-import android.telephony.SignalStrength;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 class mir
-  extends PhoneStateListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  mir(mip parammip) {}
+  mir(miq parammiq) {}
   
-  public void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super.onSignalStrengthsChanged(paramSignalStrength);
-    this.a.c = this.a.a(paramSignalStrength);
-    this.a.d = this.a.b(paramSignalStrength);
+    paramValueAnimator.getAnimatedFraction();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    float f;
+    if (i <= 220)
+    {
+      f = i / 220.0F;
+      miq.a(this.a).setAlpha(f);
+    }
+    if (i <= 160)
+    {
+      f = i / 100.0F;
+      miq.a(this.a).setAlpha(f);
+    }
+    if (miq.a(this.a) != null) {
+      miq.a(this.a).requestLayout();
+    }
   }
 }
 

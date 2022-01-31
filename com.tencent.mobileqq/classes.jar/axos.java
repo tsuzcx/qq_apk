@@ -1,194 +1,27 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.BaseTransFileController.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
+import java.io.File;
+import java.util.Comparator;
 
-public abstract class axos
-  implements axrt
+public class axos
+  implements Comparator<File>
 {
-  public int a;
-  public long a;
-  public amfs a;
-  public axot a;
-  public AppInterface a;
-  public ConcurrentHashMap<String, baky> a;
-  AtomicBoolean a;
+  public axos(MigrateSubscribeDB paramMigrateSubscribeDB) {}
   
-  public axos(AppInterface paramAppInterface)
+  public int a(File paramFile1, File paramFile2)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(20);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richmedia.TransFileController", 2, "construct transfilecontroller:" + this);
+    long l = paramFile2.lastModified() - paramFile1.lastModified();
+    if (l > 0L) {
+      return 1;
     }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Axot = new axot(this, ThreadManager.getSubThreadLooper());
-    ThreadManager.executeOnSubThread(new BaseTransFileController.1(this));
-  }
-  
-  public abstract axou a(axvt paramaxvt);
-  
-  public baky a(String paramString, long paramLong)
-  {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) {
-      return (baky)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString + paramLong);
+    if (l == 0L) {
+      return 0;
     }
-    return null;
+    return -1;
   }
-  
-  protected Set<String> a(ConcurrentHashMap<String, baky> paramConcurrentHashMap)
-  {
-    HashSet localHashSet = new HashSet();
-    if (paramConcurrentHashMap != null) {}
-    for (paramConcurrentHashMap = paramConcurrentHashMap.keySet(); paramConcurrentHashMap != null; paramConcurrentHashMap = null)
-    {
-      paramConcurrentHashMap = paramConcurrentHashMap.iterator();
-      while (paramConcurrentHashMap.hasNext()) {
-        localHashSet.add((String)paramConcurrentHashMap.next());
-      }
-    }
-    return localHashSet;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = a(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      Object localObject = (baky)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
-      if ((localObject instanceof axou))
-      {
-        localObject = (axou)localObject;
-        ((axou)localObject).j();
-        ((axou)localObject).a();
-        ((axou)localObject).b();
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
-      }
-    }
-  }
-  
-  public void a(axvs paramaxvs)
-  {
-    axou.a(paramaxvs);
-  }
-  
-  public void a(axvt paramaxvt)
-  {
-    paramaxvt = paramaxvt.a();
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramaxvt))
-    {
-      Object localObject = (baky)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramaxvt);
-      if ((localObject instanceof axou))
-      {
-        localObject = (axou)localObject;
-        ((axou)localObject).j();
-        ((axou)localObject).a();
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramaxvt);
-      }
-    }
-  }
-  
-  public boolean a(axvt paramaxvt)
-  {
-    Object localObject = paramaxvt.a();
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localObject))
-      {
-        paramaxvt = a(paramaxvt);
-        if ((paramaxvt != null) && (paramaxvt.c() == 0))
-        {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject, paramaxvt);
-          paramaxvt.c((String)localObject);
-          if (this.jdField_a_of_type_Axot != null)
-          {
-            this.jdField_a_of_type_Axot.a(paramaxvt);
-            return true;
-          }
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.richmedia.TransFileController", 2, "bad bad:" + paramaxvt.jdField_a_of_type_Long);
-        }
-        long l = System.currentTimeMillis();
-        if (this.jdField_a_of_type_Long <= 0L) {
-          this.jdField_a_of_type_Long = l;
-        }
-        if (l - this.jdField_a_of_type_Long > 2000L) {
-          this.jdField_a_of_type_Long = l;
-        }
-        for (this.jdField_a_of_type_Int = 0;; this.jdField_a_of_type_Int += 1)
-        {
-          if (this.jdField_a_of_type_Int > 500) {
-            QLog.e("Q.richmedia.TransFileController", 1, "bad bad 日志频繁打印" + QLog.getStackTraceString(new Throwable()));
-          }
-          localObject = (axou)a(paramaxvt.c, paramaxvt.jdField_a_of_type_Long);
-          if (localObject != null)
-          {
-            if ((paramaxvt.b == 131078) && (((axou)localObject).a != null) && (((axou)localObject).a.jdField_a_of_type_Atpa == null) && (paramaxvt.jdField_a_of_type_Atpa != null))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.richmedia.TransFileController", 2, "multimsg-replace callback to predownload");
-              }
-              ((axou)localObject).a.jdField_a_of_type_Atpa = paramaxvt.jdField_a_of_type_Atpa;
-            }
-            ((axou)localObject).b();
-          }
-          return false;
-        }
-      }
-    }
-    else if (QLog.isColorLevel()) {
-      QLog.e("Q.richmedia.TransFileController", 2, axob.a(new Exception("tranfilecontroller closed")));
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (paramString == null) {}
-    while (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString) == null) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void b(axvs paramaxvs)
-  {
-    axou.b(paramaxvs);
-  }
-  
-  public void onResp(axsq paramaxsq)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("doPreConn req").append(paramaxsq.jdField_a_of_type_Axsp).append(" result:");
-      if (paramaxsq.jdField_a_of_type_Int != 0) {
-        break label55;
-      }
-    }
-    label55:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.e("Q.richmedia.TransFileController", 2, bool);
-      return;
-    }
-  }
-  
-  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axos
  * JD-Core Version:    0.7.0.1
  */

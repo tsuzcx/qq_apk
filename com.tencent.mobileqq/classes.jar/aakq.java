@@ -1,256 +1,43 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Message;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.troop.activity.TroopTagViewActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import mqq.observer.AccountObserver;
 
 public class aakq
-  extends Handler
+  extends AccountObserver
 {
-  public aakq(ChatSettingForTroop paramChatSettingForTroop) {}
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void handleMessage(Message paramMessage)
+  public aakq(AssociatedAccountManageActivity paramAssociatedAccountManageActivity, String paramString, boolean paramBoolean)
   {
-    if ((this.a.jdField_c_of_type_Boolean) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null)) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          switch (paramMessage.what)
-          {
-          default: 
-            return;
-          case 1: 
-            this.a.c();
-            return;
-          case 6: 
-            if (QLog.isColorLevel()) {
-              QLog.i("Q.chatopttroop", 2, "MSG_UPDATE_TROOP_MEMBER_CARD");
-            }
-            break;
-          }
-        } while (this.a.jdField_a_of_type_ArrayOfAndroidViewView == null);
-        paramMessage = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[6];
-      } while (paramMessage == null);
-      if (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopColorNick))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.chatopttroop", 2, "handle MSG_UPDATE_TROOP_MEMBER_CARD message and update nick");
-        }
-        localObject1 = new axjq(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopColorNick, 16).a();
-        paramMessage.setRightText((CharSequence)localObject1);
-        bami.a(this.a.app, paramMessage.a(), (Spannable)localObject1);
-        return;
-      }
-      paramMessage.setRightText(this.a.getString(2131632097));
-      bami.a(this.a.app, paramMessage.a(), new SpannableString(""));
-      return;
-      localObject2 = this.a.jdField_a_of_type_ArrayOfAndroidViewView[4];
-    } while (localObject2 == null);
-    Object localObject1 = null;
-    if (paramMessage.obj != null) {
-      localObject1 = (String)paramMessage.obj;
-    }
-    ChatSettingForTroop.a(this.a, (View)localObject2, (String)localObject1);
-    return;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void onDeleteAccount(boolean paramBoolean)
+  {
     if (QLog.isColorLevel()) {
-      QLog.i("Q.chatopttroop", 2, "MSG_UPDATE_INFO");
+      QLog.d("AssociatedAccountManage", 2, "DelHistoryAccountObserver onDeleteAccount isSuccess " + paramBoolean + ",peerUin:" + this.jdField_a_of_type_JavaLangString + ",isDeleteHistory:" + this.jdField_a_of_type_Boolean);
     }
-    if (this.a.jdField_c_of_type_AndroidWidgetTextView != null) {
-      this.a.jdField_c_of_type_AndroidWidgetTextView.setText(ajjy.a(2131635960) + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.wMemberNum + ajjy.a(2131635966));
-    }
-    this.a.b(true);
-    this.a.e();
-    this.a.a(this.a.e);
-    ChatSettingForTroop.j(this.a);
-    return;
-    Object localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTags;
-    localObject1 = new Intent(this.a, TroopTagViewActivity.class);
-    ((Intent)localObject1).putExtra("troopuin", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-    ((Intent)localObject1).putExtra("isAdmin", false);
-    paramMessage = "";
-    int i;
-    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopClassExtText))
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity;
+    if (Build.VERSION.SDK_INT > 10) {}
+    for (int i = 4;; i = 0)
     {
-      paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopClassExtText;
-      i = 1;
-    }
-    for (;;)
-    {
-      if (i != 0) {
-        ((Intent)localObject1).putExtra("subclass", paramMessage);
-      }
-      Object localObject3;
-      if ((localObject2 != null) && (((List)localObject2).size() > 0))
+      localObject = ((AssociatedAccountManageActivity)localObject).getSharedPreferences("Last_Login", i);
+      if ((paramBoolean) && (localObject != null) && (((SharedPreferences)localObject).contains("uin")) && (((SharedPreferences)localObject).getString("uin", "").equals(this.jdField_a_of_type_JavaLangString)))
       {
-        paramMessage = new StringBuffer();
-        localObject2 = ((List)localObject2).iterator();
-        for (;;)
-        {
-          if (((Iterator)localObject2).hasNext())
-          {
-            localObject3 = (String)((Iterator)localObject2).next();
-            paramMessage.append((String)localObject3 + "\n");
-            continue;
-            if ((this.a.jdField_a_of_type_Azri == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_Azri.a))) {
-              break label1404;
-            }
-            if (ajjy.a(2131635953).equals(this.a.jdField_a_of_type_Azri.a))
-            {
-              i = 0;
-              break;
-            }
-            paramMessage = this.a.jdField_a_of_type_Azri.a;
-            i = 1;
-            break;
-          }
+        ((SharedPreferences)localObject).edit().remove("uin").commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("AssociatedAccountManage", 2, "delete Last_Login");
         }
-        paramMessage.deleteCharAt(paramMessage.length() - 1);
-        ((Intent)localObject1).putExtra("tags", paramMessage.toString());
       }
-      ((Intent)localObject1).putExtra("act_type", 1);
-      ((Intent)localObject1).putExtra("uin", this.a.app.getCurrentAccountUin());
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim())
-      {
-        this.a.startActivityForResult((Intent)localObject1, 11);
-        return;
+      if ((paramBoolean) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_JavaLangString);
       }
-      this.a.startActivity((Intent)localObject1);
       return;
-      View localView1 = this.a.jdField_a_of_type_ArrayOfAndroidViewView[8];
-      View localView2 = this.a.jdField_a_of_type_ArrayOfAndroidViewView[9];
-      Switch localSwitch;
-      if ((localView2 != null) && (localView1 != null) && ((localView1 instanceof FormSwitchItem)))
-      {
-        localObject2 = (FormSimpleItem)localView2.findViewById(2131302772);
-        localSwitch = ((FormSwitchItem)localView1).a();
-        localObject3 = (TextView)localView2.findViewById(2131302534);
-        ((TextView)localObject3).setBackgroundResource(2130839146);
-        localObject1 = "";
-        paramMessage = "";
-        Boolean localBoolean = (Boolean)this.a.jdField_a_of_type_Bahr.c.get(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-        if ((localBoolean != null) && (localBoolean.booleanValue())) {
-          break label1204;
-        }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null) {
-          break;
-        }
-        i = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopmask;
-        if (i != 1) {
-          break label1045;
-        }
-        localView1.setBackgroundResource(2130839151);
-        localView1.getBackground().setAlpha(255);
-        if (localSwitch.isChecked())
-        {
-          localSwitch.setTag(Boolean.TRUE);
-          localSwitch.setChecked(false);
-        }
-        localView2.setVisibility(8);
-        paramMessage = "";
-        localObject1 = "";
-        this.a.b.setVisibility(8);
-        if (ChatSettingForTroop.a(this.a) != null) {
-          ChatSettingForTroop.d(this.a);
-        }
-      }
-      for (;;)
-      {
-        ((FormSimpleItem)localObject2).setRightText(new axkd((CharSequence)localObject1, 3));
-        ((TextView)localObject3).setText(paramMessage);
-        ((TextView)localObject3).setTextColor(this.a.getResources().getColor(2131101333));
-        ariz.a().c(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-        return;
-        label1045:
-        localView1.setBackgroundResource(2130839154);
-        localView1.getBackground().setAlpha(255);
-        if (!localSwitch.isChecked())
-        {
-          localSwitch.setTag(Boolean.TRUE);
-          localSwitch.setChecked(true);
-        }
-        localView2.setVisibility(0);
-        switch (i)
-        {
-        default: 
-          paramMessage = "";
-          localObject1 = "";
-          break;
-        case 2: 
-          localObject1 = this.a.getString(2131632165);
-          paramMessage = this.a.getString(2131632167);
-          break;
-        case 3: 
-          localObject1 = this.a.getString(2131627566);
-          paramMessage = this.a.getString(2131632163);
-          break;
-        case 4: 
-          localObject1 = this.a.getString(2131632169);
-          paramMessage = this.a.getString(2131632171);
-          break;
-          label1204:
-          localView2.setVisibility(0);
-          localView1.setBackgroundResource(2130839154);
-          localView1.getBackground().setAlpha(255);
-          this.a.b.setVisibility(0);
-        }
-      }
-      paramMessage = this.a.jdField_a_of_type_ArrayOfAndroidViewView[27];
-      if (paramMessage != null)
-      {
-        localObject1 = (TextView)paramMessage.findViewById(2131311534);
-        if (localObject1 != null)
-        {
-          ((TextView)localObject1).setTextColor(Color.parseColor("#00b6f9"));
-          if ("1103".equals(ThemeUtil.getCurrentThemeId())) {
-            ((TextView)localObject1).setAlpha(0.5F);
-          }
-        }
-        paramMessage = (ProgressBar)paramMessage.findViewById(2131306257);
-        if (paramMessage != null) {
-          paramMessage.setVisibility(8);
-        }
-      }
-      bbmy.a(this.a, 2, this.a.getString(2131625258), 0).a();
-      return;
-      i = paramMessage.arg1;
-      paramMessage = this.a.jdField_a_of_type_ArrayOfAndroidViewView[30];
-      if (!(paramMessage instanceof FormSimpleItem)) {
-        break;
-      }
-      localObject1 = (FormSimpleItem)paramMessage;
-      if (i == 0) {}
-      for (paramMessage = null;; paramMessage = this.a.getResources().getDrawable(2130849053))
-      {
-        ((FormSimpleItem)localObject1).setRightIcon(paramMessage);
-        return;
-      }
-      label1404:
-      i = 0;
     }
   }
 }

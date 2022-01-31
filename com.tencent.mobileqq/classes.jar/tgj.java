@@ -1,6 +1,23 @@
-public abstract interface tgj
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+
+public class tgj
+  extends syq
 {
-  public abstract void a(int paramInt);
+  public long a;
+  public int b;
+  
+  public tgj(qqstory_service.RspCheckActivity paramRspCheckActivity)
+  {
+    super(paramRspCheckActivity.result);
+    this.b = paramRspCheckActivity.is_activity.get();
+    this.a = paramRspCheckActivity.next_check_time.get();
+  }
+  
+  public String toString()
+  {
+    return "MsgTabCheckActiveResponse{active=" + this.b + ", nextCheckTime=" + this.a + '}';
+  }
 }
 
 

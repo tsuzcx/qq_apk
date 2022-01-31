@@ -54,7 +54,7 @@ class FlingTrackerHandler$1
         ((ImageView)localObject1).setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
         localTopLayout.setBehind((View)localObject1);
       }
-      while ((this.this$0.a()) && (FlingTrackerHandler.a(this.this$0) != null) && (FlingTrackerHandler.a(this.this$0).getDrawable() == null))
+      while ((this.this$0.b()) && (FlingTrackerHandler.a(this.this$0) != null) && (FlingTrackerHandler.a(this.this$0).getDrawable() == null))
       {
         FlingTrackerHandler.a(this.this$0);
         return;
@@ -62,7 +62,7 @@ class FlingTrackerHandler$1
         FlingTrackerHandler.a(this.this$0).postDelayed(this, 100L);
         return;
         label303:
-        if (!this.this$0.a())
+        if (!this.this$0.b())
         {
           ((ViewGroup)localObject2).addView(FlingTrackerHandler.a(this.this$0));
           ((ViewGroup)localObject2).removeView(FlingTrackerHandler.a(this.this$0));

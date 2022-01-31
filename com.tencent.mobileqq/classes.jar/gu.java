@@ -1,78 +1,10 @@
-import com.google.zxing.EncodeHintType;
-import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import java.util.Map;
-
-public final class gu
+public abstract interface gu
 {
-  private static gq a(he paramhe, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramhe = paramhe.a();
-    if (paramhe == null) {
-      throw new IllegalStateException();
-    }
-    int k = paramhe.b();
-    int m = paramhe.a();
-    int i = (paramInt3 << 1) + k;
-    int j = (paramInt3 << 1) + m;
-    paramInt1 = Math.max(paramInt1, i);
-    paramInt3 = Math.max(paramInt2, j);
-    int n = Math.min(paramInt1 / i, paramInt3 / j);
-    j = (paramInt1 - k * n) / 2;
-    paramInt2 = (paramInt3 - m * n) / 2;
-    gq localgq = new gq(paramInt1, paramInt3);
-    paramInt1 = 0;
-    while (paramInt1 < m)
-    {
-      i = 0;
-      paramInt3 = j;
-      while (i < k)
-      {
-        if (paramhe.a(i, paramInt1) == 1) {
-          localgq.a(paramInt3, paramInt2, n, n);
-        }
-        i += 1;
-        paramInt3 += n;
-      }
-      paramInt2 += n;
-      paramInt1 += 1;
-    }
-    return localgq;
-  }
-  
-  public gq a(String paramString, int paramInt1, int paramInt2, Map<EncodeHintType, ?> paramMap)
-  {
-    if (paramString.length() == 0) {
-      throw new IllegalArgumentException("Found empty contents");
-    }
-    if ((paramInt1 < 0) || (paramInt2 < 0)) {
-      throw new IllegalArgumentException("Requested dimensions are too small: " + paramInt1 + 'x' + paramInt2);
-    }
-    Object localObject1 = ErrorCorrectionLevel.L;
-    Object localObject2 = localObject1;
-    int i;
-    if (paramMap != null)
-    {
-      localObject2 = (ErrorCorrectionLevel)paramMap.get(EncodeHintType.ERROR_CORRECTION);
-      if (localObject2 != null) {
-        localObject1 = localObject2;
-      }
-      Integer localInteger = (Integer)paramMap.get(EncodeHintType.MARGIN);
-      localObject2 = localObject1;
-      if (localInteger != null) {
-        i = localInteger.intValue();
-      }
-    }
-    for (;;)
-    {
-      return a(ha.a(paramString, (ErrorCorrectionLevel)localObject1, paramMap), paramInt1, paramInt2, i);
-      i = 4;
-      localObject1 = localObject2;
-    }
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     gu
  * JD-Core Version:    0.7.0.1
  */

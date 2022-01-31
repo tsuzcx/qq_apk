@@ -1,23 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.music.SongInfo;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class arzt
-  implements Parcelable.Creator<SongInfo>
+public class arzt
 {
-  public SongInfo a(Parcel paramParcel)
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new arzu(this);
+  private arzv jdField_a_of_type_Arzv;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  public arzt(QQAppInterface paramQQAppInterface)
   {
-    return new SongInfo(paramParcel, null);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
   }
   
-  public SongInfo[] a(int paramInt)
+  public void a()
   {
-    return new SongInfo[paramInt];
+    BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+  }
+  
+  public void a(arzv paramarzv)
+  {
+    this.jdField_a_of_type_Arzv = paramarzv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     arzt
  * JD-Core Version:    0.7.0.1
  */

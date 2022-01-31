@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.util;
 
-import auts;
-import autu;
+import avtb;
+import avtd;
 import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport;
 import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport.BoyItem;
 import java.util.ArrayList;
@@ -14,16 +14,16 @@ public final class CaptureReportUtil$1
   
   public void run()
   {
-    auts.a(this.a.mGameTotalScore, this.a.mGameDuration);
+    avtb.a(this.a.mGameTotalScore, this.a.mGameDuration);
     Iterator localIterator = this.a.mBoyData.iterator();
     while (localIterator.hasNext())
     {
       BoyDataReport.BoyItem localBoyItem = (BoyDataReport.BoyItem)localIterator.next();
       if (localBoyItem.mEnd) {
-        auts.a(localBoyItem.mId, "" + localBoyItem.mScore, auts.a(localBoyItem.status));
+        avtb.a(localBoyItem.mId, "" + localBoyItem.mScore, avtb.a(localBoyItem.status));
       }
     }
-    autu.a().a(this.a);
+    avtd.a().a(this.a);
   }
 }
 

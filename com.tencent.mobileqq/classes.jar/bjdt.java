@@ -1,6 +1,19 @@
-class bjdt
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+
+public class bjdt
+  implements View.OnClickListener
 {
-  private static final bjds a = new bjds(null);
+  public bjdt(HummingActivity paramHummingActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    if (bjdp.b()) {
+      return;
+    }
+    HummingActivity.a(this.a);
+  }
 }
 
 

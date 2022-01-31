@@ -1,30 +1,29 @@
-import android.content.Context;
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class ven
+  implements DialogInterface.OnKeyListener
 {
-  public static ver a(Context paramContext, String paramString)
-  {
-    paramContext = ver.a(paramContext);
-    if (paramContext != null)
-    {
-      paramContext = paramContext.iterator();
-      while (paramContext.hasNext())
-      {
-        ver localver = (ver)paramContext.next();
-        if (TextUtils.equals(paramString, localver.a)) {
-          return localver;
-        }
-      }
-    }
-    return null;
-  }
+  public ven(CommonPicUploadFragment paramCommonPicUploadFragment) {}
   
-  public static boolean a(Context paramContext)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    return !TextUtils.isEmpty(azzf.a(paramContext, "qqstory_savedMusicList"));
+    if (paramInt == 84) {
+      return true;
+    }
+    if (paramInt == 4)
+    {
+      this.a.a();
+      paramDialogInterface = this.a.a;
+      paramKeyEvent = this.a.a;
+      paramDialogInterface.setResult(0);
+      this.a.a.finish();
+      return true;
+    }
+    return false;
   }
 }
 

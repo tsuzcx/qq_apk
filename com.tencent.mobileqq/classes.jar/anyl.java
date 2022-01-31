@@ -1,21 +1,26 @@
-import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
 public class anyl
   implements View.OnClickListener
 {
-  public anyl(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity, FileManagerEntity paramFileManagerEntity) {}
+  public anyl(EmoticonMainPanel paramEmoticonMainPanel) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent();
-    paramView.putExtra("isNeedFinish", true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.setResult(-1, paramView);
-    TroopFileZipPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity);
-    awqx.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.app, "dc00899", "Grp_files", null, "oper", "pre_arc_close", 0, 0, "" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, "", "", "1");
+    long l = System.currentTimeMillis();
+    if (l - this.a.b > 1000L)
+    {
+      this.a.b = l;
+      paramView = new Bundle();
+      paramView.putInt("AECAMERA_MODE", 202);
+      paramView.putInt("VIDEO_STORY_FROM_TYPE", birc.i.a());
+      birg.a((BaseActivity)this.a.a, 120, paramView);
+      axqw.b(((BaseActivity)this.a.a).app, "dc00898", "", "", "0X800A36E", "0X800A36E", 0, 0, "", "", "", "");
+    }
   }
 }
 

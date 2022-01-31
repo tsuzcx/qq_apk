@@ -24,7 +24,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import befo;
+import bfni;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
 import com.tencent.qphone.base.util.QLog;
@@ -507,7 +507,7 @@ public class BubbleImageView
   protected void b()
   {
     this.jdField_e_of_type_Boolean = jdField_f_of_type_Boolean;
-    if (befo.e())
+    if (bfni.e())
     {
       this.jdField_a_of_type_Int = 1;
       a();
@@ -582,7 +582,7 @@ public class BubbleImageView
     {
       l1 = System.currentTimeMillis() - l1;
       boolean bool = false;
-      if (befo.e()) {
+      if (bfni.e()) {
         bool = paramCanvas.isHardwareAccelerated();
       }
       if ((QLog.isColorLevel()) && (l1 > 10L)) {
@@ -611,7 +611,7 @@ public class BubbleImageView
     if (this.jdField_e_of_type_Boolean) {
       setLayerType(1, null);
     }
-    while ((this.jdField_a_of_type_Int != 1) || (!befo.e())) {
+    while ((this.jdField_a_of_type_Int != 1) || (!bfni.e())) {
       return;
     }
     setLayerType(2, null);
@@ -621,7 +621,7 @@ public class BubbleImageView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if ((this.jdField_a_of_type_Int == 1) && (befo.e())) {
+    if ((this.jdField_a_of_type_Int == 1) && (bfni.e())) {
       setLayerType(0, null);
     }
   }

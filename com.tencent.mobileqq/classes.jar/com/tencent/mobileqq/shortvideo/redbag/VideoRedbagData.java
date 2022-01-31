@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.shortvideo.redbag;
 
 import android.content.ContentValues;
-import atmo;
-import atmp;
-import atmq;
+import aukm;
+import aukn;
+import auko;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
@@ -16,14 +16,14 @@ import mqq.app.AppRuntime;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="shortVideoId,uniseq")
 public class VideoRedbagData
-  extends atmo
+  extends aukm
 {
   public static String TAG = "VideoRedbagData";
   public int redBagStat;
   public String shortVideoId;
   public long uniseq;
   
-  private static atmp getEntityManager()
+  private static aukn getEntityManager()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
@@ -54,7 +54,7 @@ public class VideoRedbagData
       QLog.d(TAG, 1, "query uniseq, em null");
       return new ArrayList();
     }
-    localObject = (ArrayList)((atmp)localObject).a(VideoRedbagData.class, "select * from " + VideoRedbagData.class.getSimpleName() + " where shortVideoId=?", VideoRedbagData.class.getSimpleName(), "shortVideoId=?", new String[] { paramString });
+    localObject = (ArrayList)((aukn)localObject).a(VideoRedbagData.class, "select * from " + VideoRedbagData.class.getSimpleName() + " where shortVideoId=?", VideoRedbagData.class.getSimpleName(), "shortVideoId=?", new String[] { paramString });
     paramString = new ArrayList();
     if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
     {
@@ -72,13 +72,13 @@ public class VideoRedbagData
   
   public static boolean queryRewardStat(String paramString)
   {
-    atmp localatmp = getEntityManager();
-    if (localatmp == null)
+    aukn localaukn = getEntityManager();
+    if (localaukn == null)
     {
       QLog.d(TAG, 1, "query stat, em null");
       return false;
     }
-    paramString = (ArrayList)localatmp.a(VideoRedbagData.class, "select * from " + VideoRedbagData.class.getSimpleName() + " where shortVideoId=?", VideoRedbagData.class.getSimpleName(), "shortVideoId=?", new String[] { paramString });
+    paramString = (ArrayList)localaukn.a(VideoRedbagData.class, "select * from " + VideoRedbagData.class.getSimpleName() + " where shortVideoId=?", VideoRedbagData.class.getSimpleName(), "shortVideoId=?", new String[] { paramString });
     if ((paramString != null) && (!paramString.isEmpty()))
     {
       paramString = paramString.iterator();
@@ -93,10 +93,10 @@ public class VideoRedbagData
   
   public static boolean updateRewardStat(String paramString)
   {
-    atmp localatmp = getEntityManager();
+    aukn localaukn = getEntityManager();
     ContentValues localContentValues = new ContentValues();
     localContentValues.put("redBagStat", Boolean.valueOf(true));
-    return localatmp.a(VideoRedbagData.class.getSimpleName(), localContentValues, "shortVideoId=?", new String[] { paramString });
+    return localaukn.a(VideoRedbagData.class.getSimpleName(), localContentValues, "shortVideoId=?", new String[] { paramString });
   }
 }
 

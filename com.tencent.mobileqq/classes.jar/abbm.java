@@ -1,17 +1,53 @@
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.FontSettingActivity.AioListAdapter.1;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class abbm
-  extends VasQuickUpdateManager.CallBacker
+  extends BaseAdapter
 {
-  public abbm(LikeRankingListActivity paramLikeRankingListActivity) {}
+  public abbm(FontSettingActivity paramFontSettingActivity) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public int getCount()
   {
-    if ((paramLong == 15L) && (paramString1.startsWith("card.")) && (paramInt1 == 0) && (this.a.a != null)) {
-      this.a.b(this.a.a);
+    return this.a.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramView = this.a.jdField_a_of_type_Abbo.a(paramInt, getCount(), (ChatMessage)this.a.jdField_a_of_type_JavaUtilList.get(paramInt), paramView, paramViewGroup, null);
+    paramViewGroup = (aecg)paramView.getTag();
+    paramViewGroup.d.setOnClickListener(null);
+    if ((paramViewGroup.d instanceof AnimationTextView)) {
+      ((AnimationTextView)paramViewGroup.d).onDoubleClick = null;
     }
+    if ((FontSettingActivity.a(this.a)) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
+    {
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.a();
+    }
+    if ((this.a.c) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
+    {
+      this.a.c = false;
+      FontSettingActivity.a(this.a).postDelayed(new FontSettingActivity.AioListAdapter.1(this), 100L);
+    }
+    return paramView;
   }
 }
 

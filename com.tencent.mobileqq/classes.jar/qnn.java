@@ -1,45 +1,27 @@
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
-import android.view.animation.Interpolator;
-import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
-import com.tencent.widget.AbsListView;
 
-public class qnn
-  implements begh
+class qnn
+  extends Handler
 {
-  public qnn(DailyTitleBarSwitcher paramDailyTitleBarSwitcher) {}
+  qnn(qnm paramqnm) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramInt1 <= 1) && (this.a.getVisibility() == 0))
+    switch (paramMessage.what)
     {
-      paramAbsListView = paramAbsListView.getChildAt(0);
-      if (paramAbsListView != null)
+    default: 
+    case 1: 
+      do
       {
-        paramInt1 = paramAbsListView.getHeight();
-        paramInt2 = paramAbsListView.getTop();
-        if ((paramInt1 != 0) && (paramInt2 != 0))
-        {
-          float f = paramInt2 * -1.0F / paramInt1;
-          DailyTitleBarSwitcher.a(this.a, DailyTitleBarSwitcher.a(this.a).getInterpolation(f));
-          return;
-        }
-        DailyTitleBarSwitcher.a(this.a, 0.0F);
         return;
-      }
-      DailyTitleBarSwitcher.a(this.a, 0.0F);
+      } while ((qnm.a(this.a) == null) || (qnm.a(this.a) == null) || (qnm.a(this.a).getVisibility() != 0) || (!bhvh.f()));
+      qnm.a(this.a, qnm.a(this.a));
+      sendEmptyMessageDelayed(2, 3000L);
       return;
     }
-    DailyTitleBarSwitcher.a(this.a, 1.0F);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      this.a.setLayerType(0, null);
-      return;
-    }
-    this.a.setLayerType(2, null);
+    this.a.a();
   }
 }
 

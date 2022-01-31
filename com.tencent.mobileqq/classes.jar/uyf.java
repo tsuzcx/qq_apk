@@ -1,224 +1,328 @@
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import android.support.annotation.NonNull;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class uyf
-  extends uyn
-  implements Drawable.Callback
 {
-  public static final String a;
-  public int a;
-  public uyg a;
-  public vcv a;
-  public vcw a;
-  public boolean a;
+  public static final String[] a;
+  protected int a;
+  public long a;
+  protected String a;
+  protected ArrayList<StoryVideoItem> a;
+  protected HashMap<String, StoryVideoItem> a;
+  public tef a;
+  protected boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public int e;
+  public int f;
+  public int g;
   
   static
   {
-    jdField_a_of_type_JavaLangString = uyf.class.getSimpleName();
+    jdField_a_of_type_ArrayOfJavaLangString = sxp.a(2130968659);
   }
   
-  public uyf(DoodleView paramDoodleView)
+  public uyf()
   {
-    super(paramDoodleView);
-    this.jdField_a_of_type_Vcv = new vcv();
-    this.jdField_a_of_type_Vcv.a(false);
-    this.jdField_a_of_type_Vcv.a(6.0F);
-    this.jdField_a_of_type_Vcv.b(0.2F);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Tef = new tef();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  private void a(MotionEvent paramMotionEvent)
+  public int a()
   {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    if (this.jdField_a_of_type_Vcv.b(this.jdField_a_of_type_Vcw, f1, f2)) {
-      if (this.jdField_a_of_type_Uyg != null) {
-        this.jdField_a_of_type_Uyg.a(this.jdField_a_of_type_Vcw);
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_JavaUtilArrayList.size();
+    }
+    return 0;
+  }
+  
+  public StoryVideoItem a(String paramString)
+  {
+    return (StoryVideoItem)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public String a(int paramInt, TextPaint paramTextPaint)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    int j = this.c;
+    int n = this.e;
+    int i1 = this.jdField_d_of_type_Int;
+    long l2 = this.jdField_a_of_type_Long;
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    String str;
+    do
+    {
+      str = localStringBuilder.toString();
+      int i;
+      do
+      {
+        return str;
+        if (j == 0) {
+          return sxp.a(2131699688);
+        }
+        localStringBuilder.append(vzo.a(j)).append("个小视频");
+        if (j > 0) {
+          localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[0]).append("浏览").append(this.jdField_a_of_type_Long);
+        }
+        return localStringBuilder.toString();
+        if (this.jdField_a_of_type_Boolean)
+        {
+          localStringBuilder.append(vzo.a(j)).append("个小视频");
+          return localStringBuilder.toString();
+        }
+        localStringBuilder.append(sxp.a(2131699702, new Object[] { Integer.valueOf(this.g) }));
+        return localStringBuilder.toString();
+        if (this.jdField_a_of_type_Boolean)
+        {
+          localStringBuilder.append(vzo.a(j)).append("个小视频");
+          if (this.jdField_a_of_type_Long > 0L) {
+            localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[0]).append("浏览").append(this.jdField_a_of_type_Long);
+          }
+          if (this.jdField_d_of_type_Int > 0) {
+            localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[1]).append("赞").append(vzo.a(this.jdField_d_of_type_Int));
+          }
+          if (this.e <= 0) {
+            break;
+          }
+          localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[1]).append("评论").append(vzo.a(this.e));
+          break;
+        }
+        localStringBuilder.append(vzo.a(this.f)).append("个小视频发送失败");
+        break;
+        long l1 = l2;
+        int k = i1;
+        i = n;
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+        {
+          localStringBuilder.append("最近");
+          int m = this.jdField_a_of_type_JavaUtilArrayList.size();
+          l1 = l2;
+          k = i1;
+          i = n;
+          j = m;
+          if (this.jdField_a_of_type_Tef != null)
+          {
+            i = this.jdField_a_of_type_Tef.b;
+            k = this.jdField_a_of_type_Tef.jdField_a_of_type_Int;
+            l1 = this.jdField_a_of_type_Tef.c;
+            j = m;
+          }
+        }
+        localStringBuilder.append(vzo.a(j)).append("个小视频");
+        str = localStringBuilder.toString();
+        if (l1 > 0L) {
+          localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[0]).append("浏览").append(l1);
+        }
+        if ((paramTextPaint != null) && (paramTextPaint.measureText(localStringBuilder.toString()) > paramInt)) {
+          return str;
+        }
+        str = localStringBuilder.toString();
+        if (k > 0) {
+          localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[1]).append("赞").append(vzo.a(k));
+        }
+      } while ((paramTextPaint != null) && (paramTextPaint.measureText(localStringBuilder.toString()) > paramInt));
+      str = localStringBuilder.toString();
+      if (i > 0) {
+        localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[1]).append("评论").append(vzo.a(i));
       }
-    }
-    while ((this.jdField_a_of_type_Vcv.a(this.jdField_a_of_type_Vcw, f1, f2)) || (!this.jdField_a_of_type_Vcv.a(this.jdField_a_of_type_Vcw, f1, f2, true)) || (this.jdField_a_of_type_Uyg == null) || (this.jdField_a_of_type_Vcw == null)) {
-      return;
-    }
-    urk.b(jdField_a_of_type_JavaLangString, "click the item:" + this.jdField_a_of_type_Vcw);
-    this.jdField_a_of_type_Uyg.a(this.jdField_a_of_type_Vcw, 0, 0);
+    } while ((paramTextPaint == null) || (paramTextPaint.measureText(localStringBuilder.toString()) <= paramInt));
+    return str;
   }
   
-  private boolean a(float paramFloat1, float paramFloat2)
+  public ArrayList<StoryVideoItem> a()
   {
-    return this.jdField_a_of_type_Vcv.a(this.jdField_a_of_type_Vcw, paramFloat1, paramFloat2, true);
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public vcw a()
-  {
-    return this.jdField_a_of_type_Vcw;
+    return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Vcw = null;
-    this.jdField_a_of_type_Vcv.a();
-  }
-  
-  protected void a(Canvas paramCanvas)
-  {
-    if (this.jdField_a_of_type_Vcw == null) {
-      return;
+    uzn.a(this);
+    this.jdField_a_of_type_Int = 0;
+    this.f = 0;
+    this.jdField_d_of_type_Boolean = false;
+    this.g = 0;
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
+      if (this.c > 0) {}
     }
-    paramCanvas.save();
-    this.jdField_a_of_type_Vcw.a(paramCanvas);
-    paramCanvas.restore();
-  }
-  
-  public void a(uyg paramuyg)
-  {
-    this.jdField_a_of_type_Uyg = paramuyg;
-  }
-  
-  public void a(vcw paramvcw)
-  {
-    this.jdField_a_of_type_Vcw = paramvcw;
-    if (this.jdField_a_of_type_Vcw == null) {}
     do
     {
       return;
-      if ((this.jdField_a_of_type_Vcw instanceof uyj))
+      this.jdField_a_of_type_Int = 3;
+      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        this.jdField_a_of_type_Vcv.a(6.0F);
-        this.jdField_a_of_type_Vcv.b(0.2F);
-        return;
+        StoryVideoItem localStoryVideoItem = (StoryVideoItem)localIterator.next();
+        int i = uyn.a(localStoryVideoItem.mUploadStatus);
+        if ((i == 1) || (i == 0))
+        {
+          this.jdField_a_of_type_Int = 1;
+          this.g += 1;
+        }
+        if (localStoryVideoItem.isUploadFail()) {
+          this.f += 1;
+        }
+        if (!TextUtils.isEmpty(localStoryVideoItem.mDoodleText)) {
+          this.jdField_d_of_type_Boolean = true;
+        }
       }
-    } while (!(this.jdField_a_of_type_Vcw instanceof uxx));
-    this.jdField_a_of_type_Vcv.a(18.0F);
-    this.jdField_a_of_type_Vcv.b(0.2F);
+    } while (this.jdField_a_of_type_Int == 1);
+    if (this.f > 0)
+    {
+      this.jdField_a_of_type_Int = 2;
+      return;
+    }
+    this.jdField_a_of_type_Int = 3;
   }
   
-  public boolean a()
+  public void a(StoryVideoItem paramStoryVideoItem)
   {
-    return false;
+    try
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(0, paramStoryVideoItem);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramStoryVideoItem.mVid, paramStoryVideoItem);
+      return;
+    }
+    finally
+    {
+      paramStoryVideoItem = finally;
+      throw paramStoryVideoItem;
+    }
   }
   
-  protected boolean a(MotionEvent paramMotionEvent)
+  public void a(String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    return false;
+    if (paramStoryVideoItem == null) {}
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramStoryVideoItem.mVid, paramStoryVideoItem);
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        if (((StoryVideoItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).mVid.equals(paramString))
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.set(i, paramStoryVideoItem);
+          return;
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public void a(List<StoryVideoItem> paramList)
+  {
+    try
+    {
+      paramList = new ArrayList(paramList).iterator();
+      while (paramList.hasNext())
+      {
+        StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramList.next();
+        if (localStoryVideoItem != null)
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.add(localStoryVideoItem);
+          this.jdField_a_of_type_JavaUtilHashMap.put(localStoryVideoItem.mVid, localStoryVideoItem);
+        }
+      }
+    }
+    finally {}
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Vcw = null;
-    g();
-  }
-  
-  public void b(Canvas paramCanvas)
-  {
-    throw new IllegalStateException("TextFaceEditLayer should not save");
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Vcw != null;
-  }
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    if (this.jdField_a_of_type_Vcv.a(this.jdField_a_of_type_Vcw, f1, f2, true))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "accept inside x:" + paramMotionEvent.getX() + " y:" + paramMotionEvent.getY());
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void b(StoryVideoItem paramStoryVideoItem)
+  {
+    if (paramStoryVideoItem == null) {}
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramStoryVideoItem.mVid, paramStoryVideoItem);
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        if (((StoryVideoItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).mVid.equals(paramStoryVideoItem.mVid))
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.set(i, paramStoryVideoItem);
+          return;
+        }
+        i += 1;
       }
-      return true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "accept outside x:" + paramMotionEvent.getX() + " y:" + paramMotionEvent.getY());
-    }
-    return false;
   }
   
-  public boolean c(MotionEvent paramMotionEvent)
+  public void c(StoryVideoItem paramStoryVideoItem)
   {
-    return false;
-  }
-  
-  public boolean e(MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_a_of_type_Uyo != null) {
-      this.jdField_a_of_type_Uyo.a(this, paramMotionEvent);
-    }
-    int i = (int)paramMotionEvent.getY();
-    int j = Math.abs(i - this.jdField_a_of_type_Int);
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
+    if (paramStoryVideoItem == null) {
+      return;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Vcv.a(paramMotionEvent, true);
-      if (this.jdField_a_of_type_Vcw == null) {
-        break;
-      }
-      this.jdField_a_of_type_Uyg.a(this.jdField_a_of_type_Vcw.f, this.jdField_a_of_type_Vcw.k, (int)this.jdField_a_of_type_Vcw.l, (int)this.jdField_a_of_type_Vcw.m, this.jdField_a_of_type_Vcw.a, this.jdField_a_of_type_Vcw.e, 2);
-      return true;
-      this.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Vcw != null)
+      int i;
+      try
       {
-        this.jdField_a_of_type_Vcw.e = false;
-        this.jdField_a_of_type_Vcw.f = false;
-      }
-      a(paramMotionEvent.getX(0), paramMotionEvent.getY(0));
-      if (this.jdField_a_of_type_Vcw != null)
-      {
-        this.jdField_a_of_type_Vcv.a(this.jdField_a_of_type_Vcw);
-        continue;
-        if (this.jdField_a_of_type_Vcw != null) {
-          this.jdField_a_of_type_Vcw.f = true;
-        }
-        if (j > 10)
+        this.jdField_a_of_type_JavaUtilHashMap.remove(paramStoryVideoItem.mVid);
+        i = 0;
+        if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          this.jdField_a_of_type_Boolean = true;
-          continue;
-          if (this.jdField_a_of_type_Vcw != null)
-          {
-            this.jdField_a_of_type_Vcw.e = false;
-            this.jdField_a_of_type_Vcw.f = false;
-          }
-          if (!this.jdField_a_of_type_Boolean) {
-            a(paramMotionEvent);
-          }
-          this.jdField_a_of_type_Vcv.a();
-          continue;
-          if (this.jdField_a_of_type_Vcw != null)
-          {
-            this.jdField_a_of_type_Vcw.e = true;
-            continue;
-            if (this.jdField_a_of_type_Vcw != null) {
-              this.jdField_a_of_type_Vcw.e = false;
-            }
+          if (((StoryVideoItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).mVid.equals(paramStoryVideoItem.mVid)) {
+            this.jdField_a_of_type_JavaUtilArrayList.remove(i);
           }
         }
+        else
+        {
+          if ((this.jdField_a_of_type_JavaUtilArrayList.size() != 0) || (this.jdField_a_of_type_Tef == null)) {
+            break;
+          }
+          this.jdField_a_of_type_Tef.b = 0;
+          this.jdField_a_of_type_Tef.jdField_a_of_type_Int = 0;
+          this.jdField_a_of_type_Tef.c = 0;
+          paramStoryVideoItem = (tcv)tdc.a(10);
+          paramStoryVideoItem.b("qqstory_my_visiter_count", Integer.valueOf(0));
+          paramStoryVideoItem.b("qqstory_my_newest_video_cover", "");
+          paramStoryVideoItem.b("qqstory_my_newest_video_vid", "");
+          break;
+        }
       }
+      finally {}
+      i += 1;
     }
-    this.jdField_a_of_type_Uyg.a(false, 0.0F, 0, 0, null, false, 2);
-    return true;
   }
-  
-  public void invalidateDrawable(@NonNull Drawable paramDrawable)
-  {
-    g();
-  }
-  
-  public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
-  
-  public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable) {}
 }
 
 

@@ -1,73 +1,111 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
-import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.open.adapter.OpenAppClient;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForAIOStoryVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
-class adkn
-  implements View.OnClickListener
+public class adkn
+  extends actq
 {
-  adkn(adkm paramadkm) {}
+  public int a;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public void onClick(View paramView)
+  public adkn(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
-    ohp.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null);
-    paramView = (adko)aciy.a(paramView);
-    if (rry.a(paramView.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidContentContext)) {}
-    for (;;)
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297948);
+    int i = paramContext.getResources().getDimensionPixelSize(2131297949);
+    this.f = i;
+    this.jdField_e_of_type_Int = i;
+    this.d = (paramContext.getResources().getDisplayMetrics().widthPixels - paramContext.getResources().getDimensionPixelSize(2131296308) * 2);
+    this.c = paramContext.getResources().getDimensionPixelSize(2131297947);
+  }
+  
+  private View a(View paramView, adkp paramadkp)
+  {
+    View localView = paramView;
+    if (paramView == null)
     {
-      paramView = paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-      if ((paramView instanceof MessageForPubAccount))
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558725, null);
+      paramadkp.jdField_b_of_type_AndroidViewView = localView.findViewById(2131364692);
+      paramadkp.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362369));
+      paramadkp.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362370));
+      paramadkp.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)localView.findViewById(2131362367));
+      paramadkp.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362368));
+      paramadkp.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(this.jdField_a_of_type_Int);
+      paramView = new bbaq(-1, this.jdField_e_of_type_Int, this.f);
+      paramadkp.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
+    }
+    return localView;
+  }
+  
+  protected actr a()
+  {
+    return new adkp(this);
+  }
+  
+  protected View a(MessageRecord paramMessageRecord, actr paramactr, View paramView, LinearLayout paramLinearLayout, acxn paramacxn)
+  {
+    paramLinearLayout = (MessageForAIOStoryVideo)paramMessageRecord;
+    paramactr = (adkp)paramactr;
+    paramView = a(paramView, paramactr);
+    paramMessageRecord = (String)paramactr.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getTag(2131372944);
+    if ((!TextUtils.isEmpty(paramLinearLayout.cover)) && (bbbd.a(paramLinearLayout.cover, paramMessageRecord))) {}
+    for (int i = 0;; i = 1)
+    {
+      if (i != 0) {}
+      try
       {
-        paramView = (MessageForPubAccount)paramView;
-        if ((paramView.mPAMessage != null) && (paramView.mPAMessage.mMsgId > 0L)) {
-          awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", paramView.frienduin, "mp_msg_sys_14", "msg_click", 0, 1, 0, Long.toString(paramView.mPAMessage.mMsgId), "", "", "");
+        paramMessageRecord = new URL(paramLinearLayout.cover);
+        if (paramMessageRecord != null)
+        {
+          bbaa.a(paramactr.jdField_a_of_type_AndroidWidgetImageView, paramLinearLayout.cover);
+          paramMessageRecord = URLDrawable.getDrawable(paramMessageRecord, this.d, this.c);
+          paramMessageRecord.setDecodeHandler(bavi.s);
+          paramactr.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageDrawable(paramMessageRecord);
+          paramactr.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setTag(2131372944, paramLinearLayout.cover);
+        }
+        if (jdField_e_of_type_Boolean) {
+          paramView.setContentDescription(paramLinearLayout.text);
+        }
+        paramactr.jdField_b_of_type_AndroidViewView.setOnClickListener(new adko(this, paramLinearLayout));
+        return paramView;
+      }
+      catch (Exception paramMessageRecord)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("ChatItemBuilder", 2, " AIOStoryVideoBuilder:  url has problem");
+          }
+          paramMessageRecord = null;
         }
       }
-      return;
-      if ((paramView.b == null) || (!paramView.b.equals("open_local"))) {
-        break;
-      }
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("schemaurl", paramView.c);
-      ((Bundle)localObject).putString("uin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      OpenAppClient.b((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Bundle)localObject);
     }
-    Object localObject = new Intent(this.a.jdField_a_of_type_AndroidContentContext, PublicAccountBrowser.class);
-    ((Intent)localObject).putExtra("uin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    ((Intent)localObject).putExtra("url", paramView.c);
-    ((Intent)localObject).putExtra("assignBackText", this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131625011));
-    ((Intent)localObject).putExtra("puin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    ((Intent)localObject).putExtra("source_name", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-    MessageForPubAccount localMessageForPubAccount;
-    if ((paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForPubAccount))
-    {
-      localMessageForPubAccount = (MessageForPubAccount)paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-      if ((localMessageForPubAccount.mPAMessage == null) || (localMessageForPubAccount.mPAMessage.mMsgId <= 0L)) {
-        break label449;
-      }
-    }
-    label449:
-    for (long l = localMessageForPubAccount.mPAMessage.mMsgId;; l = -1L)
-    {
-      if (l >= 0L) {
-        ((Intent)localObject).putExtra("msg_id", String.valueOf(l));
-      }
-      ((Intent)localObject).putExtra("fromAio", true);
-      ((Intent)localObject).putExtra("big_brother_source_key", rtr.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString));
-      rtr.a((Intent)localObject, paramView.c);
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-      awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramView.c, "", "", "");
-      break;
-    }
+  }
+  
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
+  
+  public bblt[] a(View paramView)
+  {
+    return null;
   }
 }
 

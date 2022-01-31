@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.JumpInfo;
-
-public final class pqs
-  implements Parcelable.Creator<SocializeFeedsInfo.JumpInfo>
+public abstract interface pqs
 {
-  public SocializeFeedsInfo.JumpInfo a(Parcel paramParcel)
-  {
-    return new SocializeFeedsInfo.JumpInfo(paramParcel);
-  }
+  public abstract void a(Object paramObject);
   
-  public SocializeFeedsInfo.JumpInfo[] a(int paramInt)
-  {
-    return new SocializeFeedsInfo.JumpInfo[paramInt];
-  }
+  public abstract void a(prb paramprb);
 }
 
 

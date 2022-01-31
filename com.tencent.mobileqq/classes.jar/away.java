@@ -1,81 +1,157 @@
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgTimerController.1;
+import com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgTimerController.2;
+import com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgTimerController.3;
+import com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgTimerController.4;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+
 public class away
+  implements Handler.Callback
 {
-  public byte a;
-  public long a;
-  public String a;
-  public short a;
-  public byte[] a;
-  public byte b;
-  public long b;
-  public String b;
-  public short b;
-  public byte[] b;
-  public byte c;
-  public long c;
-  public String c;
-  public byte[] c;
-  public long d;
-  public long e;
-  public long f;
-  public long g;
-  public long h;
-  public long i;
-  public long j;
-  public long k;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), null);
+  private awaz jdField_a_of_type_Awaz;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private HashMap<Long, Runnable> jdField_a_of_type_JavaUtilHashMap;
+  private boolean jdField_a_of_type_Boolean;
+  private Handler b = new Handler(ThreadManager.getSubThreadLooper(), this);
   
-  public away(awax paramawax, long paramLong, String paramString, byte paramByte1, byte paramByte2)
+  public away(awaz paramawaz)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Byte = paramByte1;
-    this.jdField_a_of_type_Byte = paramByte2;
+    this.jdField_a_of_type_Awaz = paramawaz;
   }
   
-  public away(awax paramawax, long paramLong1, String paramString, byte paramByte1, byte paramByte2, long paramLong2, long paramLong3, long paramLong4, long paramLong5, short paramShort, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte paramByte3, long paramLong6)
+  public Runnable a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Byte = paramByte1;
-    this.jdField_a_of_type_Byte = paramByte2;
-    this.g = paramLong2;
-    this.h = paramLong3;
-    this.i = paramLong4;
-    this.j = paramLong5;
-    this.jdField_b_of_type_Short = paramShort;
-    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte1;
-    this.jdField_c_of_type_ArrayOfByte = paramArrayOfByte2;
-    this.jdField_c_of_type_Byte = paramByte3;
-    this.k = paramLong6;
+    OrderMediaMsgTimerController.1 local1 = new OrderMediaMsgTimerController.1(this, paramLong);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(local1, 8000L);
+    return local1;
   }
   
-  public away(awax paramawax, long paramLong1, String paramString1, byte paramByte1, byte paramByte2, long paramLong2, String paramString2, long paramLong3, long paramLong4, short paramShort, long paramLong5, String paramString3, long paramLong6)
+  public Runnable a(String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_Byte = paramByte1;
-    this.jdField_a_of_type_Byte = paramByte2;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_Long = paramLong3;
-    this.d = paramLong4;
-    this.jdField_a_of_type_Short = paramShort;
-    this.e = paramLong5;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.f = paramLong6;
+    paramString = new OrderMediaMsgTimerController.2(this, paramString);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramString, 8000L);
+    return paramString;
   }
   
-  public away(awax paramawax, long paramLong, String paramString, byte paramByte1, byte paramByte2, byte[] paramArrayOfByte)
+  public void a()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Byte = paramByte1;
-    this.jdField_a_of_type_Byte = paramByte2;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong))))
+    {
+      if (this.jdField_a_of_type_AndroidOsHandler != null) {
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks((Runnable)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)));
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
+    }
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong))) {
+      return;
+    }
+    OrderMediaMsgTimerController.4 local4 = new OrderMediaMsgTimerController.4(this, paramLong, paramInt1, paramInt2);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(local4, 30000L);
+    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), local4);
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(paramRunnable);
+    }
+  }
+  
+  public boolean a(long paramLong)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaLangRunnable = new OrderMediaMsgTimerController.3(this, paramLong);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
+    this.jdField_a_of_type_Boolean = true;
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (localIterator.hasNext())
+      {
+        Runnable localRunnable = (Runnable)localIterator.next();
+        if (this.jdField_a_of_type_AndroidOsHandler != null) {
+          this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localRunnable);
+        }
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      this.jdField_a_of_type_JavaUtilHashMap = null;
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+    if (this.b != null)
+    {
+      this.b.removeCallbacksAndMessages(null);
+      this.b = null;
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    long l = 0L;
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMessage.obj != null) && (this.jdField_a_of_type_Awaz != null))
+      {
+        this.jdField_a_of_type_Awaz.a(paramMessage.obj);
+        continue;
+        if (paramMessage.obj != null) {
+          l = ((Long)paramMessage.obj).longValue();
+        }
+        if (this.jdField_a_of_type_Awaz != null)
+        {
+          this.jdField_a_of_type_Awaz.a(l);
+          continue;
+          if (paramMessage.obj != null) {
+            l = ((Long)paramMessage.obj).longValue();
+          }
+          if (this.jdField_a_of_type_Awaz != null) {
+            this.jdField_a_of_type_Awaz.a(l, paramMessage.arg1, paramMessage.arg2);
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     away
  * JD-Core Version:    0.7.0.1
  */

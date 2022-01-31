@@ -1,16 +1,22 @@
-import android.text.SpannableString;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract class benl
+class benl
+  implements View.OnClickListener
 {
-  public String a;
-  public int b;
-  public int c;
+  benl(benh parambenh) {}
   
-  public abstract void a(SpannableString paramSpannableString);
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+    if (benh.a(this.a) != null) {
+      benh.a(this.a).onDismiss();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     benl
  * JD-Core Version:    0.7.0.1
  */

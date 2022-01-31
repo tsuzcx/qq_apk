@@ -1,21 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Build.VERSION;
-import com.tencent.av.gaudio.GaInviteActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class ldh
-  implements DialogInterface.OnClickListener
+class ldh
+  extends Handler
 {
-  public ldh(GaInviteActivity paramGaInviteActivity) {}
+  WeakReference<ldf> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  ldh(ldf paramldf)
   {
-    if (this.a.isFinishing()) {}
-    while (((Build.VERSION.SDK_INT >= 17) && (this.a.isDestroyed())) || (paramInt == 1)) {
+    this.a = new WeakReference(paramldf);
+  }
+  
+  public void a()
+  {
+    sendMessage(obtainMessage(1));
+  }
+  
+  public void b()
+  {
+    sendMessage(obtainMessage(3));
+    removeMessages(1);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    ldf localldf = (ldf)this.a.get();
+    if (localldf != null) {}
+    switch (paramMessage.what)
+    {
+    case 2: 
+    default: 
+    case 1: 
+      do
+      {
+        return;
+        ldf.a(localldf, paramMessage.what);
+      } while (ldf.a(localldf) == 2);
+      sendMessageDelayed(obtainMessage(paramMessage.what), 15000L);
       return;
     }
-    ChatActivityUtils.a(this.a, true, new ldi(this));
+    ldf.a(localldf);
   }
 }
 

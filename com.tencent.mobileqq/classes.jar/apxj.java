@@ -1,23 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
-
-public final class apxj
-  implements Parcelable.Creator<PadFaceAd>
+class apxj
+  implements bcvx
 {
-  public PadFaceAd a(Parcel paramParcel)
-  {
-    return new PadFaceAd(paramParcel);
-  }
+  apxj(apxg paramapxg) {}
   
-  public PadFaceAd[] a(int paramInt)
+  public void a(int paramInt)
   {
-    return new PadFaceAd[paramInt];
+    if (paramInt == 2) {
+      this.a.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apxj
  * JD-Core Version:    0.7.0.1
  */

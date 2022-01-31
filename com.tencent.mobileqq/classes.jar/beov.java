@@ -1,38 +1,28 @@
-import android.database.DataSetObservable;
-import android.database.DataSetObserver;
-import java.util.ArrayList;
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.ResultReceiver;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 class beov
-  extends DataSetObservable
+  implements Handler.Callback
 {
-  beov(beot parambeot) {}
+  beov(beou parambeou) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public boolean handleMessage(Message paramMessage)
   {
-    for (;;)
-    {
-      int i;
-      synchronized (this.mObservers)
-      {
-        i = this.mObservers.size() - 1;
-        if (i >= 0)
-        {
-          DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
-          if ((localDataSetObserver instanceof beou)) {
-            ((beou)localDataSetObserver).a(paramInt1, paramInt2);
-          } else {
-            localDataSetObserver.onChanged();
-          }
-        }
-      }
-      return;
-      i -= 1;
-    }
+    int i = paramMessage.what;
+    paramMessage.getData().setClassLoader(beou.a(this.a).getClassLoader());
+    MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramMessage.getData().getParcelable("KEY_APPINFO");
+    ResultReceiver localResultReceiver = (ResultReceiver)paramMessage.getData().getParcelable("receiver");
+    beou.a(this.a, i, paramMessage.getData(), localMiniAppInfo, localResultReceiver);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     beov
  * JD-Core Version:    0.7.0.1
  */

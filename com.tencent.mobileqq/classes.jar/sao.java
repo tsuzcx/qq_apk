@@ -1,23 +1,29 @@
-import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
 
-final class sao
-  implements rcu
+public class sao
+  implements View.OnKeyListener
 {
-  sao(RoundImageView paramRoundImageView) {}
+  private sao(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public void a(rcw paramrcw, int paramInt) {}
-  
-  public void a(rcw paramrcw, Throwable paramThrowable) {}
-  
-  public void a(rcw paramrcw, rcs paramrcs)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramrcs != null)
+    paramView = ReadInJoyNewSearchActivity.a(this.a).getText().toString().trim();
+    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0) && (!TextUtils.isEmpty(paramView)))
     {
-      paramrcw = paramrcs.a();
-      if (paramrcw != null) {
-        this.a.setImageBitmap(paramrcw);
+      paramKeyEvent = (InputMethodManager)this.a.getSystemService("input_method");
+      if (paramKeyEvent != null) {
+        paramKeyEvent.hideSoftInputFromWindow(ReadInJoyNewSearchActivity.a(this.a).getWindowToken(), 2);
       }
+      ReadInJoyNewSearchActivity.a(this.a, paramView);
+      this.a.a(paramView);
     }
+    return false;
   }
 }
 

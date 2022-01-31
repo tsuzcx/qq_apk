@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.view.View;
-import begr;
-import begw;
+import bfol;
+import bfoq;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class UIJsPlugin$13$3
-  implements begw
+  implements bfoq
 {
-  UIJsPlugin$13$3(UIJsPlugin.13 param13, begr parambegr) {}
+  UIJsPlugin$13$3(UIJsPlugin.13 param13, bfol parambfol) {}
   
   public void OnClick(View paramView, int paramInt)
   {

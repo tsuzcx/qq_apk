@@ -4,20 +4,20 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bakz;
+import bbmj;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.ArrayList;
-import poz;
+import qav;
 import tencent.im.oidb.articlesummary.articlesummary.DisLikeInfo;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.DisLikeInfo;
 
 public class DislikeInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DislikeInfo> CREATOR = new poz();
+  public static final Parcelable.Creator<DislikeInfo> CREATOR = new qav();
   public long a;
   public String a;
   public byte[] a;
@@ -51,7 +51,7 @@ public class DislikeInfo
       if (i >= j) {
         break;
       }
-      localObject2 = (String)localObject1 + bakz.a(((DislikeInfo)paramArrayList.get(i)).jdField_a_of_type_ArrayOfByte);
+      localObject2 = (String)localObject1 + bbmj.a(((DislikeInfo)paramArrayList.get(i)).jdField_a_of_type_ArrayOfByte);
       localObject1 = localObject2;
       if (i != j - 1) {
         localObject1 = (String)localObject2 + "_";
@@ -77,7 +77,7 @@ public class DislikeInfo
         DislikeInfo localDislikeInfo = new DislikeInfo();
         try
         {
-          localDisLikeInfo.mergeFrom(bakz.a(paramString[i]));
+          localDisLikeInfo.mergeFrom(bbmj.a(paramString[i]));
           localDislikeInfo.a(localDisLikeInfo);
           localArrayList.add(localDislikeInfo);
           i += 1;

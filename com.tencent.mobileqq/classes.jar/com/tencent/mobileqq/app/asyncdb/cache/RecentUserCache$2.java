@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.asyncdb.cache;
 
-import ajed;
+import ajsf;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import atmo;
+import aukm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SQLiteDatabase;
 import com.tencent.mobileqq.data.ConversationInfo;
@@ -33,11 +33,11 @@ class RecentUserCache$2
         Iterator localIterator = RecentUserCache.b(this.this$0).values().iterator();
         if (localIterator.hasNext())
         {
-          atmo localatmo = (atmo)localIterator.next();
-          if ((localatmo == null) || (!ajed.D.equals(((RecentUser)localatmo).uin))) {
+          aukm localaukm = (aukm)localIterator.next();
+          if ((localaukm == null) || (!ajsf.D.equals(((RecentUser)localaukm).uin))) {
             break label381;
           }
-          localObject1 = (RecentUser)localatmo;
+          localObject1 = (RecentUser)localaukm;
           break label381;
         }
       }
@@ -46,20 +46,20 @@ class RecentUserCache$2
         ??? = RecentUserCache.b(this.this$0).a();
         if (localObject1 != null)
         {
-          localObject1 = this.this$0.a((atmo)localObject1);
+          localObject1 = this.this$0.a((aukm)localObject1);
           if (RecentUserCache.c(this.this$0).containsKey(localObject1)) {
             RecentUserCache.d(this.this$0).remove(localObject1);
           }
         }
-        int i = ((SQLiteDatabase)???).a("recent", "uin=?", new String[] { ajed.D });
+        int i = ((SQLiteDatabase)???).a("recent", "uin=?", new String[] { ajsf.D });
         if (QLog.isColorLevel()) {
           QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgrade | RecentUser delCount = " + i);
         }
-        i = ((SQLiteDatabase)???).a(ConversationInfo.getConversationInfoTableName(), "uin=?", new String[] { ajed.D });
+        i = ((SQLiteDatabase)???).a(ConversationInfo.getConversationInfoTableName(), "uin=?", new String[] { ajsf.D });
         if (QLog.isColorLevel()) {
           QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgrade | conversationinfo delCount = " + i);
         }
-        i = ((SQLiteDatabase)???).a(MessageRecord.getTableName(ajed.D, 4000), "frienduin=?", new String[] { ajed.D });
+        i = ((SQLiteDatabase)???).a(MessageRecord.getTableName(ajsf.D, 4000), "frienduin=?", new String[] { ajsf.D });
         if (QLog.isColorLevel()) {
           QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgrade | MessageRecord.RecommendMsg delCount = " + i);
         }

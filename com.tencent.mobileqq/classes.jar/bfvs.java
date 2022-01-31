@@ -1,45 +1,59 @@
-import NS_USER_ACTION_REPORT.ItemInfo;
-import NS_USER_ACTION_REPORT.PageInfo;
-import NS_USER_ACTION_REPORT.TraceInfo;
-import NS_USER_ACTION_REPORT.UserActionReport;
-import java.util.ArrayList;
+import com.tencent.widget.TCWDatePicker;
+import com.tencent.widget.TCWNumberPicker;
+import java.util.Calendar;
 
-class bfvs
+public class bfvs
+  implements bfvz
 {
-  private bfvp jdField_a_of_type_Bfvp;
-  private ArrayList<ItemInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public bfvs(TCWDatePicker paramTCWDatePicker) {}
   
-  public UserActionReport a()
+  public void a(TCWNumberPicker paramTCWNumberPicker, int paramInt1, int paramInt2)
   {
-    UserActionReport localUserActionReport = new UserActionReport();
-    Object localObject = new PageInfo();
-    ((PageInfo)localObject).appid = this.jdField_a_of_type_Bfvp.c;
-    ((PageInfo)localObject).page_id = this.jdField_a_of_type_Bfvp.d;
-    ((PageInfo)localObject).item_infos = this.jdField_a_of_type_JavaUtilArrayList;
-    localUserActionReport.page_info = ((PageInfo)localObject);
-    localObject = new TraceInfo();
-    ((TraceInfo)localObject).trace_id = this.jdField_a_of_type_Bfvp.jdField_a_of_type_JavaLangString;
-    ((TraceInfo)localObject).trace_num = this.jdField_a_of_type_Bfvp.jdField_a_of_type_Int;
-    ((TraceInfo)localObject).trace_detail = this.jdField_a_of_type_Bfvp.a();
-    localUserActionReport.trace_info = ((TraceInfo)localObject);
-    return localUserActionReport;
-  }
-  
-  public bfvs a(ItemInfo paramItemInfo)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramItemInfo);
-    return this;
-  }
-  
-  public bfvs a(bfvp parambfvp)
-  {
-    this.jdField_a_of_type_Bfvp = parambfvp;
-    return this;
+    TCWDatePicker.b(this.a).setTimeInMillis(TCWDatePicker.a(this.a).getTimeInMillis());
+    int i;
+    if (paramTCWNumberPicker == TCWDatePicker.a(this.a))
+    {
+      i = TCWDatePicker.b(this.a).getActualMaximum(5);
+      if ((paramInt1 == i) && (paramInt2 == 1)) {
+        TCWDatePicker.b(this.a).add(5, 1);
+      }
+    }
+    for (;;)
+    {
+      TCWDatePicker.a(this.a, TCWDatePicker.b(this.a).get(1), TCWDatePicker.b(this.a).get(2), TCWDatePicker.b(this.a).get(5));
+      TCWDatePicker.b(this.a);
+      TCWDatePicker.c(this.a);
+      return;
+      if ((paramInt1 == 1) && (paramInt2 == i))
+      {
+        TCWDatePicker.b(this.a).add(5, -1);
+      }
+      else
+      {
+        TCWDatePicker.b(this.a).add(5, paramInt2 - paramInt1);
+        continue;
+        if (paramTCWNumberPicker == TCWDatePicker.b(this.a))
+        {
+          TCWDatePicker.a(this.a);
+          if ((paramInt1 == 11) && (paramInt2 == 0)) {
+            TCWDatePicker.b(this.a).add(2, 1);
+          } else if ((paramInt1 == 0) && (paramInt2 == 11)) {
+            TCWDatePicker.b(this.a).add(2, -1);
+          } else {
+            TCWDatePicker.b(this.a).add(2, paramInt2 - paramInt1);
+          }
+        }
+        else if (paramTCWNumberPicker == TCWDatePicker.c(this.a))
+        {
+          TCWDatePicker.b(this.a).set(1, paramInt2);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfvs
  * JD-Core Version:    0.7.0.1
  */

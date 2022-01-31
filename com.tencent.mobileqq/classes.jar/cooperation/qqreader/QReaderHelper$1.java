@@ -1,8 +1,8 @@
 package cooperation.qqreader;
 
-import bflq;
+import bgtq;
 import com.tencent.mobileqq.app.QQAppInterface;
-import mof;
+import mze;
 
 public final class QReaderHelper$1
   implements Runnable
@@ -11,7 +11,7 @@ public final class QReaderHelper$1
   
   public void run()
   {
-    mof.b("2036", this.a, true, new bflq(this));
+    mze.b("2036", this.a, true, new bgtq(this));
   }
 }
 

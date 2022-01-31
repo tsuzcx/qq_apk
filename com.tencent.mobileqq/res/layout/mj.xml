@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:stroke="http://schemas.android.com/apk/res-auto">
     <com.tencent.widget.XPanelContainer android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true">
         <RelativeLayout android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <dov.com.qq.im.capture.text.EditTextPreView android:gravity="center" android:id="@id/jhn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/jhb" android:layout_centerVertical="true" />
+            <dov.com.qq.im.capture.text.EditTextPreView android:gravity="center" android:id="@id/jhn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/jhb" android:layout_centerVertical="true" android:contentDescription="@null" />
             <LinearLayout android:orientation="vertical" android:id="@id/jhb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
                 <dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout android:id="@id/f8l" android:layout_width="fill_parent" android:layout_height="50.0dip" />
                 <include android:id="@id/btx" layout="@layout/b5s" />

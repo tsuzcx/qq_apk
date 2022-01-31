@@ -1,40 +1,45 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-
 public class bdgk
 {
-  public static bdik a(Context paramContext, int paramInt)
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public String d;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  
+  public bdgk(String paramString1, String paramString2)
   {
-    return a(paramContext, paramInt, null, null, 2131628566, 2131628579, null, null);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
   
-  public static bdik a(Context paramContext, int paramInt, String paramString1, CharSequence paramCharSequence, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  public bdgk(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
   {
-    paramContext = new bdik(paramContext, 2131690144);
-    paramContext.setContentView(2131493726);
-    paramContext.a(paramString1);
-    paramContext.a(paramCharSequence);
-    paramContext.a(paramString2, paramOnClickListener2);
-    paramContext.b(paramString3, paramOnClickListener1);
-    paramContext.setCanceledOnTouchOutside(false);
-    return paramContext;
-  }
-  
-  public static bdik a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
-  {
-    paramContext = new bdik(paramContext, 2131690144);
-    paramContext.setContentView(2131493726);
-    paramContext.a(paramString1);
-    paramContext.a(paramString2);
-    paramContext.a(paramInt2, paramOnClickListener2);
-    paramContext.b(paramInt3, paramOnClickListener1);
-    paramContext.setCanceledOnTouchOutside(false);
-    return paramContext;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_d_of_type_JavaLangString = paramString4;
+    this.jdField_d_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdgk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,28 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.music.SongInfo;
 
 class aswg
-  implements View.OnClickListener
+  extends asvj
 {
-  aswg(asvw paramasvw) {}
+  aswg(aswe paramaswe) {}
   
-  public void onClick(View paramView)
+  public void onPlaySongChanged(SongInfo paramSongInfo)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.getIntExtra("param_mode", 0) == 1)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131633403);
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.finish();
-      return;
+    if (aswe.a(this.a) != null) {
+      aswe.a(this.a, aswe.a(this.a).a());
     }
-    this.a.b();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.i == 0)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131633403);
-      return;
+  }
+  
+  public void onPlayStateChanged(int paramInt)
+  {
+    aswe.a(this.a, paramInt);
+    if (paramInt == 2) {
+      aswe.a(this.a, aswe.a(this.a).c());
     }
-    if (this.a.a())
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131633393);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aswg
  * JD-Core Version:    0.7.0.1
  */

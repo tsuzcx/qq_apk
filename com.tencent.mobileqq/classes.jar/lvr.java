@@ -1,57 +1,38 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiMembersAudioUI;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 
 public class lvr
-  extends kur
 {
-  public lvr(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public Bitmap a;
+  public Rect a;
   
-  protected void a(int paramInt)
+  public lvr(Bitmap paramBitmap)
   {
-    if (this.a.b()) {
-      return;
-    }
-    this.a.c(paramInt);
-  }
-  
-  protected void a(long paramLong, ArrayList<kth> paramArrayList, int paramInt1, int paramInt2)
-  {
-    if (this.a.b()) {
-      return;
-    }
-    this.a.a(paramLong, paramArrayList, paramInt1, paramInt2);
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
-  {
-    if (this.a.b()) {}
-    do
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
     {
-      do
-      {
-        return;
-      } while (paramLong != this.a.jdField_a_of_type_Long);
-      if (paramBoolean)
-      {
-        this.a.b(paramInt);
-        return;
-      }
-    } while (((paramInt != 10) && (paramInt != 1)) || (!MultiVideoEnterPageActivity.a(this.a)));
-    this.a.a(paramInt);
+      this.jdField_a_of_type_AndroidGraphicsRect.right = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+      this.jdField_a_of_type_AndroidGraphicsRect.bottom = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    }
   }
   
-  protected void d()
+  public void a()
   {
-    if (this.a.b()) {}
-    while (this.a.jdField_a_of_type_Boolean) {
-      return;
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
     }
-    super.d();
-    ArrayList localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.e();
-    localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.a(localArrayList.size(), localArrayList);
-    this.a.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a(localArrayList);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_a_of_type_AndroidGraphicsRect = null;
+  }
+  
+  public void a(Canvas paramCanvas, Rect paramRect, Paint paramPaint)
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, paramRect, paramPaint);
+    }
   }
 }
 

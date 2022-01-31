@@ -1,15 +1,26 @@
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
 
-public abstract class auqq
+class auqq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public RegisterNewBaseActivity a;
-  public QQAppInterface a;
+  auqq(auqi paramauqi, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
   
-  protected auqq(RegisterNewBaseActivity paramRegisterNewBaseActivity)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity = paramRegisterNewBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.app;
+    if (paramValueAnimator.getAnimatedValue() == null) {}
+    float f;
+    do
+    {
+      return;
+      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+      int i = (int)(-auqi.a(this.jdField_a_of_type_Auqi) * (1.0F - f));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    } while (!this.jdField_a_of_type_Auqi.f);
+    this.b.setAlpha(f);
   }
 }
 

@@ -1,71 +1,64 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForLimitChatTopic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.limitchat.TopicTextView;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-public class adil
-  extends acjb
+class adil
+  implements arup
 {
-  public adil(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-  }
+  adil(adik paramadik) {}
   
-  protected acjc a()
+  public void a(aruk paramaruk, int paramInt)
   {
-    return new adim();
-  }
-  
-  protected View a(MessageRecord paramMessageRecord, acjc paramacjc, View paramView, LinearLayout paramLinearLayout, acmv paramacmv)
-  {
-    MessageForLimitChatTopic localMessageForLimitChatTopic = (MessageForLimitChatTopic)paramMessageRecord;
-    if ((paramacjc instanceof adim)) {}
-    for (paramLinearLayout = (adim)paramacjc;; paramLinearLayout = null)
-    {
-      if ((paramView == null) || (paramLinearLayout == null))
-      {
-        paramacmv = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131493623, null);
-        paramView = new adim();
-        paramacmv.setTag(paramView);
-        paramLinearLayout = paramView;
-      }
-      for (;;)
-      {
-        paramLinearLayout.jdField_a_of_type_ComTencentMobileqqLimitchatTopicTextView = ((TopicTextView)paramacmv.findViewById(2131312553));
-        paramLinearLayout.b = paramacmv.findViewById(2131297594);
-        paramLinearLayout.jdField_a_of_type_Long = paramMessageRecord.uniseq;
-        paramLinearLayout.jdField_a_of_type_ComTencentMobileqqLimitchatTopicTextView.setTopicText(localMessageForLimitChatTopic.msg);
-        if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-          paramLinearLayout.b.setBackgroundResource(2130840147);
-        }
-        for (;;)
-        {
-          if (e)
-          {
-            paramacjc.b.append(localMessageForLimitChatTopic.msg);
-            paramacmv.setContentDescription(paramacjc.b.toString());
-          }
-          return paramacmv;
-          paramLinearLayout.b.setBackgroundResource(2130840148);
-        }
-        paramacmv = paramView;
-      }
+    if ((adik.a(this.a) == adik.a(this.a).a().a()) && (adik.a(this.a, paramaruk.a(), paramaruk.a()))) {
+      adik.a(this.a).a().a();
     }
   }
   
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
+  public void a(aruk paramaruk, int paramInt1, int paramInt2) {}
   
-  public bakj[] a(View paramView)
+  public void a(aruk paramaruk, LocationRoom.Venue paramVenue, List<arui> paramList)
   {
-    return new bakj[0];
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareHelper", 2, "[queryLocationRoom] onUpdateUserLocations: invoked. sessionUin: " + paramaruk.a() + " itemList: " + paramList.size());
+    }
+    paramVenue = arzl.a(adik.a(this.a).a).a().a();
+    if ((paramVenue != null) && (paramVenue.equals(paramaruk))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationShareHelper", 2, new Object[] { "onUpdateUserLocations: invoked. ", " roomKey: ", paramaruk, " currentFloatWindowVisibleRoomKey: ", paramVenue });
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (!adik.a(this.a, paramaruk.a(), paramaruk.a()));
+      if ((paramList != null) && (!paramList.isEmpty())) {
+        break;
+      }
+    } while (adik.a(this.a) != adik.a(this.a).a().a());
+    adik.a(this.a).a().a();
+    return;
+    paramVenue = new ArrayList();
+    int i = 0;
+    while (i < paramList.size())
+    {
+      paramVenue.add(((arui)paramList.get(i)).a());
+      i += 1;
+    }
+    boolean bool = paramVenue.contains(adik.a(this.a).a.c());
+    adik.a(this.a).a(bool, adik.a(this.a, paramaruk, (String)paramVenue.get(0)), paramList.size(), paramVenue);
+    adik.a(this.a).a().a(adik.a(this.a), new Object[0]);
+  }
+  
+  public void b(aruk paramaruk, int paramInt)
+  {
+    if ((adik.a(this.a) == adik.a(this.a).a().a()) && (adik.a(this.a, paramaruk.a(), paramaruk.a()))) {
+      adik.a(this.a).a().a();
+    }
   }
 }
 

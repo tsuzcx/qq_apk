@@ -1,23 +1,35 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ajqz
-  extends akfx
+public class ajqz
+  implements ajri
 {
-  ajqz(ajqy paramajqy, String paramString, boolean paramBoolean)
+  public ajqz(ApolloPanel paramApolloPanel) {}
+  
+  public void a(ApolloPanelGuideView paramApolloPanelGuideView)
   {
-    super(paramString, paramBoolean);
+    ApolloPanel.e(this.a);
+    if (!ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip"))
+    {
+      ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip");
+      ApolloPanel.a(this.a, ApolloPanel.a(this.a), 49, this.a.getResources().getString(2131690116), 5);
+    }
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void b(ApolloPanelGuideView paramApolloPanelGuideView)
   {
-    QLog.d("RedpointHandler", 1, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
-    ajqy.a(this.a, paramInt, paramSosoLbsInfo);
+    ApolloPanel.e(this.a);
+    paramApolloPanelGuideView = (bbqp)this.a.a.a.a(71);
+    paramApolloPanelGuideView.a(new ajra(this, paramApolloPanelGuideView));
+    paramApolloPanelGuideView.c("guide_page", 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajqz
  * JD-Core Version:    0.7.0.1
  */

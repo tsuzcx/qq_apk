@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adjv;
+import aduw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.medalwall.MedalWallMng;
 
 public class MedalNewsItemBuilder$3
   implements Runnable
 {
-  public MedalNewsItemBuilder$3(adjv paramadjv) {}
+  public MedalNewsItemBuilder$3(aduw paramaduw) {}
   
   public void run()
   {

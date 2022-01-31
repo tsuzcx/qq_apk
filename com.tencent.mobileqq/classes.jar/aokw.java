@@ -1,21 +1,19 @@
-class aokw
-  extends aoko
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendHorizontalTagsView;
+
+public class aokw
 {
-  aokw(aokk paramaokk)
-  {
-    super(paramaokk);
-    this.a = true;
-    this.b = true;
-  }
+  public int a;
+  public String a;
   
-  protected String a()
+  public aokw(ExtendFriendHorizontalTagsView paramExtendFriendHorizontalTagsView, int paramInt, String paramString)
   {
-    return "StateEnd";
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aokw
  * JD-Core Version:    0.7.0.1
  */

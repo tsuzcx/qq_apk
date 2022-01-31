@@ -1,26 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class adpw
-  implements Animator.AnimatorListener
+  extends acun
 {
-  public adpw(SixCombolEffectView paramSixCombolEffectView, adpz paramadpz) {}
+  public RelativeLayout a;
+  public URLDrawable a;
+  public BubbleImageView a;
+  public MessageProgressView a;
+  public RelativeLayout b;
+  public int e;
+  public int f;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (!SixCombolEffectView.a) {
-      return;
-    }
-    this.jdField_a_of_type_Adpz.b.start();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public adpw(adps paramadps) {}
 }
 
 

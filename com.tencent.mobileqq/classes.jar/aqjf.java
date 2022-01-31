@@ -1,56 +1,37 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
-import java.io.File;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
 
-class aqjf
-  implements TVK_ICacheMgr.IPreloadCallback
+public class aqjf
+  extends Handler
 {
-  private aqjf(aqjb paramaqjb) {}
+  public aqjf(QQSettingMsgClearFragment paramQQSettingMsgClearFragment) {}
   
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    synchronized (aqjb.a(this.a))
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      aqja.b("onPreLoadFailed vid:" + paramString1 + ", i:" + paramInt + ", callbackMsg:" + paramString2);
-      aqjb.b(this.a, aqjb.a(this.a));
-      return;
     }
-  }
-  
-  public void onPreLoadSucess(String paramString1, String paramString2)
-  {
-    synchronized (aqjb.a(this.a))
+    do
     {
-      aqja.b("onPreLoadSucess vid:" + paramString1 + ", detail:" + paramString2);
-      try
-      {
-        paramString2 = new JSONObject(paramString2);
-        long l1 = paramString2.optLong("fileSize");
-        long l2 = paramString2.optLong("offset");
-        if ((l1 > 0L) && (l2 > 0L) && (l2 >= l1))
-        {
-          paramString2 = aqjb.a(paramString1);
-          aqja.b("onPreLoadSucess path:" + paramString2);
-          aqjb.a(this.a, paramString1);
-          File localFile = new File(aqjb.b(paramString1));
-          if (localFile.exists()) {
-            localFile.renameTo(new File(paramString2));
-          }
-          aqjb.b(this.a, paramString1);
-          aqjb.b(this.a, aqjb.a(this.a));
-          aqjb.b(this.a);
-        }
-      }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          QLog.d("ImaxAdvertisement", 1, "onPreLoadSucess", paramString1);
-        }
-      }
       return;
-    }
+      paramMessage = this.a.getActivity();
+      if ((paramMessage != null) && (!paramMessage.isFinishing()))
+      {
+        this.a.jdField_a_of_type_Bcpq.a(this.a.getString(2131690809));
+        this.a.jdField_a_of_type_Bcpq.d(2130848617);
+        this.a.jdField_a_of_type_Bcpq.b(false);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+      return;
+    } while ((this.a.jdField_a_of_type_Bcpq == null) || (!this.a.jdField_a_of_type_Bcpq.isShowing()));
+    this.a.jdField_a_of_type_Bcpq.cancel();
+    this.a.jdField_a_of_type_Bcpq.a(this.a.getString(2131690811));
+    this.a.jdField_a_of_type_Bcpq.c(true);
+    this.a.jdField_a_of_type_Bcpq.a(false);
+    this.a.jdField_a_of_type_Bcpq.b(true);
   }
 }
 

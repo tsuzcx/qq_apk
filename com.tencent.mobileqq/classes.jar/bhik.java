@@ -1,54 +1,18 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
-
-public class bhik
-  implements BusinessObserver
+public abstract interface bhik
 {
-  public void a() {}
+  public abstract void a(bhij parambhij);
   
-  public void b() {}
+  public abstract void b(bhij parambhij);
   
-  public void c() {}
+  public abstract void c(bhij parambhij);
   
-  public void d() {}
+  public abstract void d(bhij parambhij);
   
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      b();
-      return;
-    case 2: 
-      c();
-      return;
-    case 3: 
-      a();
-      return;
-    case 4: 
-      d();
-      return;
-    case 5: 
-      e();
-      return;
-    case 6: 
-      f();
-      return;
-    }
-    g();
-  }
+  public abstract void e(bhij parambhij);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhik
  * JD-Core Version:    0.7.0.1
  */

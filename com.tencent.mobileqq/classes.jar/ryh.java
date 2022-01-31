@@ -1,43 +1,20 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class ryh
-  extends rxz
+  extends shd
 {
-  private TextView a;
+  public ryh(BridgeModule paramBridgeModule) {}
   
-  private ryh(ViewGroup paramViewGroup, rwm paramrwm)
+  public bbje a(Integer paramInteger)
   {
-    super(paramViewGroup, paramrwm, 2131494547);
-  }
-  
-  public static ryh a(ViewGroup paramViewGroup, rwm paramrwm)
-  {
-    return new ryh(paramViewGroup, paramrwm);
-  }
-  
-  protected void a()
-  {
-    this.a = ((TextView)a(1).findViewById(2131313269));
-  }
-  
-  protected void a(int paramInt)
-  {
-    super.a(paramInt);
-    this.a.setVisibility(paramInt);
-  }
-  
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    super.a(paramstSimpleMetaFeed);
-    if (paramstSimpleMetaFeed == null) {
-      return;
+    bbje localbbje = super.a(paramInteger);
+    if ((paramInteger.intValue() == 11) && (localbbje != null))
+    {
+      localbbje.b = 2130843424;
+      localbbje.a = BaseApplicationImpl.getApplication().getString(2131693393);
     }
-    this.a.setText(paramstSimpleMetaFeed.feed_desc);
-    a(1, paramstSimpleMetaFeed);
-    a(2, 2, paramstSimpleMetaFeed);
+    return localbbje;
   }
 }
 

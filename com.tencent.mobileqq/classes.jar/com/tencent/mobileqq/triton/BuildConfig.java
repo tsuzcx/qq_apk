@@ -8,7 +8,7 @@ public final class BuildConfig
   public static final String FLAVOR = "";
   public static final int VERSION_CODE = 8;
   public static final String VERSION_NAME = "1.1.2";
-  public static final long buildVersion = 1577784069982L;
+  public static final long buildVersion = 1581929008032L;
 }
 
 

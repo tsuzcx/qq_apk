@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.activity.delDownloadFile;
 
-import aoav;
-import apcc;
-import apfs;
+import aoro;
+import aptw;
+import apxv;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -20,14 +20,14 @@ public class QfileLocalFileDelPicTabView$1
     }
     this.this$0.jdField_b_of_type_Boolean = true;
     this.this$0.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    TreeMap localTreeMap = new TreeMap(new aoav(this));
+    TreeMap localTreeMap = new TreeMap(new aoro(this));
     Iterator localIterator = QfileLocalFileDelPicTabView.a(this.this$0).iterator();
     while (localIterator.hasNext())
     {
-      apfs localapfs = (apfs)localIterator.next();
-      QfileLocalFileDelPicTabView.a(this.this$0, localapfs.a(), localapfs, this.this$0.jdField_b_of_type_JavaUtilList, 0, localTreeMap, 1000, null);
+      apxv localapxv = (apxv)localIterator.next();
+      QfileLocalFileDelPicTabView.a(this.this$0, localapxv.a(), localapxv, this.this$0.jdField_b_of_type_JavaUtilList, 0, localTreeMap, 1000, null);
     }
-    apcc.a(localTreeMap, 0, this.this$0.jdField_a_of_type_JavaUtilLinkedHashMap, null, this.this$0.jdField_a_of_type_JavaUtilList);
+    aptw.a(localTreeMap, 0, this.this$0.jdField_a_of_type_JavaUtilLinkedHashMap, null, this.this$0.jdField_a_of_type_JavaUtilList);
     QfileLocalFileDelPicTabView.a(this.this$0, new QfileLocalFileDelPicTabView.1.2(this));
   }
 }

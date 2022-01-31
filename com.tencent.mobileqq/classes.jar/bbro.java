@@ -1,23 +1,29 @@
-import MWIFI.SCGet3rdCloudCheck;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.vas.VasResEngine.VasResDrawable;
 
-final class bbro
-  implements ajvk
+public class bbro
+  implements URLDrawable.URLDrawableListener
 {
-  bbro(QQAppInterface paramQQAppInterface, ajvj paramajvj) {}
+  public bbro(VasResDrawable paramVasResDrawable) {}
   
-  public void a(int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajvj);
+    if (paramURLDrawable != null) {
+      VasResDrawable.a(this.a, paramURLDrawable);
     }
+    this.a.invalidateSelf();
   }
-  
-  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbro
  * JD-Core Version:    0.7.0.1
  */

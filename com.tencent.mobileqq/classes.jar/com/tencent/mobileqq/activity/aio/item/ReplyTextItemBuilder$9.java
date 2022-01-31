@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity.aio.item;
 
 import android.text.SpannableString;
 import android.widget.TextView;
-import axjq;
-import babh;
+import ayju;
+import bbcl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
@@ -16,8 +16,8 @@ public final class ReplyTextItemBuilder$9
   
   public void run()
   {
-    String str = babh.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mSourceMsgSenderUin + "");
-    SpannableString localSpannableString = new axjq(str, 16).a();
+    String str = bbcl.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mSourceMsgSenderUin + "");
+    SpannableString localSpannableString = new ayju(str, 16).a();
     ThreadManager.getUIHandler().post(new ReplyTextItemBuilder.9.1(this, str, localSpannableString));
   }
 }

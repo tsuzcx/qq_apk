@@ -1,14 +1,81 @@
-public abstract interface apzi
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.BinaryMessenger;
+import java.util.HashMap;
+
+public class apzi
 {
-  public abstract void a(String paramString);
+  private static apzi jdField_a_of_type_Apzi;
+  private BinaryMessenger jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger;
+  private HashMap<String, apzg> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public abstract void a(String paramString1, String paramString2);
+  public static apzi a()
+  {
+    if (jdField_a_of_type_Apzi == null) {}
+    try
+    {
+      if (jdField_a_of_type_Apzi == null) {
+        jdField_a_of_type_Apzi = new apzi();
+      }
+      return jdField_a_of_type_Apzi;
+    }
+    finally {}
+  }
   
-  public abstract void b(String paramString);
+  private void a()
+  {
+    a(new apzq("sso_channel", this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger));
+    a(new apzj("com.tencent.qflutter/apm", this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger));
+    a(new apzm("com.tencent.qflutter/scfsetting", this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger));
+  }
   
-  public abstract void c(String paramString);
+  private void a(apzg paramapzg)
+  {
+    if (TextUtils.isEmpty(paramapzg.a())) {
+      QLog.d("QFlutter.ChannelManager", 1, "add channel channel name is emptyS");
+    }
+    do
+    {
+      return;
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramapzg.a()))
+      {
+        apzg localapzg = (apzg)this.jdField_a_of_type_JavaUtilHashMap.remove(paramapzg.a());
+        if (localapzg != null) {
+          localapzg.a();
+        }
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramapzg.a(), paramapzg);
+    } while (!QLog.isColorLevel());
+    QLog.d("QFlutter.ChannelManager", 2, String.format("addChannel, channelName: %s", new Object[] { paramapzg.a() }));
+  }
   
-  public abstract void d(String paramString);
+  private void b() {}
+  
+  private void c() {}
+  
+  public <T extends apzg> T a(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      return (apzg)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    }
+    return null;
+  }
+  
+  public void a(BinaryMessenger paramBinaryMessenger)
+  {
+    if (paramBinaryMessenger == this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger)
+    {
+      QLog.d("QFlutter.ChannelManager", 1, "already registered channels");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.ChannelManager", 2, "registerChannels");
+    }
+    this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger = paramBinaryMessenger;
+    a();
+    b();
+    c();
+  }
 }
 
 

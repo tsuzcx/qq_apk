@@ -1,58 +1,53 @@
-public class bfkr
+public final class bfkr
+  implements Cloneable
 {
-  public static int a;
-  public static String a;
-  public static int b;
-  public static String b;
-  public static int c;
-  public static String c;
-  public static String d;
-  public static String e;
-  public static String f;
-  public static String g;
-  public static String h;
-  public static String i;
-  public static String j;
-  public static String k;
-  public static String l;
-  public static String m;
-  public static String n;
-  public static String o;
-  public static String p;
-  public static String q;
-  public static String r;
-  public static String s = "merge_contact";
-  public static String t = "restore_contact";
-  public static String u = "mainui";
+  private long a;
   
-  static
+  public bfkr(long paramLong)
   {
-    jdField_a_of_type_JavaLangString = "qqpim";
-    jdField_b_of_type_JavaLangString = "com.tencent.mobileqq:tool";
-    jdField_c_of_type_JavaLangString = "qqpimPlugin";
-    d = "getTipsInfo";
-    e = "clickTipsInfo";
-    f = "getIsQQPimServiceRunning";
-    g = "noticeServiceActive";
-    h = "noticeHasBackup";
-    i = "com.qqpim.activity.QQPimSyncActivity";
-    j = "com.qqpim.activity.QQPimDownloadActivity";
-    k = "com.qqpim.service.QQPimSyncServer";
-    l = "account";
-    m = "a2";
-    n = "tipsInfo";
-    o = "activity_type";
-    p = "repeat_contact_num";
-    q = "cloud_contact_num";
-    r = "click_tips_type";
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-    jdField_c_of_type_Int = 3;
+    this.a = paramLong;
+  }
+  
+  public bfkr(byte[] paramArrayOfByte)
+  {
+    this(paramArrayOfByte, 0);
+  }
+  
+  public bfkr(byte[] paramArrayOfByte, int paramInt)
+  {
+    this.a = (paramArrayOfByte[(paramInt + 3)] << 24 & 0xFF000000);
+    this.a += (paramArrayOfByte[(paramInt + 2)] << 16 & 0xFF0000);
+    this.a += (paramArrayOfByte[(paramInt + 1)] << 8 & 0xFF00);
+    this.a += (paramArrayOfByte[paramInt] & 0xFF);
+  }
+  
+  public long a()
+  {
+    return this.a;
+  }
+  
+  public byte[] a()
+  {
+    return new byte[] { (byte)(int)(this.a & 0xFF), (byte)(int)((this.a & 0xFF00) >> 8), (byte)(int)((this.a & 0xFF0000) >> 16), (byte)(int)((this.a & 0xFF000000) >> 24) };
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof bfkr))) {}
+    while (this.a != ((bfkr)paramObject).a()) {
+      return false;
+    }
+    return true;
+  }
+  
+  public int hashCode()
+  {
+    return (int)this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfkr
  * JD-Core Version:    0.7.0.1
  */

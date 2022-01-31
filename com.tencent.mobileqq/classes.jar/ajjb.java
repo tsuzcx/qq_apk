@@ -1,41 +1,17 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import android.widget.ImageView.ScaleType;
 
-public final class ajjb
-  implements atka
+public class ajjb
 {
-  private WeakReference<FrameHelperActivity> a;
-  
-  public ajjb(FrameHelperActivity paramFrameHelperActivity)
-  {
-    this.a = new WeakReference(paramFrameHelperActivity);
-  }
-  
-  public void a()
-  {
-    FrameHelperActivity localFrameHelperActivity = (FrameHelperActivity)this.a.get();
-    if (localFrameHelperActivity == null) {}
-    FragmentActivity localFragmentActivity;
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      do
-      {
-        return;
-        localFragmentActivity = localFrameHelperActivity.getActivity();
-      } while ((localFragmentActivity == null) || (localFragmentActivity.getAppInterface() == null));
-      localQQAppInterface = localFragmentActivity.app;
-    } while ((!atok.a().a(localQQAppInterface, localFragmentActivity)) || ((FrameHelperActivity.a(localFrameHelperActivity) != null) && (FrameHelperActivity.a(localFrameHelperActivity).isShowing())));
-    FrameHelperActivity.a(localFrameHelperActivity, localQQAppInterface, localFragmentActivity);
-    awqx.b(localQQAppInterface, "dc00898", "", "", "0X800A00D", "0X800A00D", 0, 0, "", "", "", "");
-  }
+  public int a;
+  public ImageView.ScaleType a = ImageView.ScaleType.CENTER_INSIDE;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajjb
  * JD-Core Version:    0.7.0.1
  */
